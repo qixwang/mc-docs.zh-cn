@@ -1,16 +1,16 @@
 ---
-author: IEvangelist
+author: trevorbye
 ms.service: cognitive-services
 ms.topic: include
 origin.date: 03/11/2020
-ms.date: 03/16/2020
+ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: ce65ac2a591d1ab34480db4f2351f86f37e1596c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 30f70cd9d4f2afa5eea5af9cac1682060e9e9ec5
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80151764"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126766"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -52,11 +52,11 @@ import azure.cognitiveservices.speech as speechsdk
 * 使用主机：传入主机地址。 密钥或授权令牌是可选的。
 * 使用授权令牌：传入授权令牌和关联的区域。
 
-让我们看看如何使用密钥和区域创建 [`SpeechConfig`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python)。
+让我们看看如何使用密钥和区域创建 [`SpeechConfig`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python)。 请查看[区域支持](https://docs.azure.cn/cognitive-services/speech-service/regions#speech-sdk)页以找到你的区域标识符。
 
 ```Python
-speech_host, speech_key = "wss://YourServiceRegion.stt.speech.azure.cn/", "YourSubscriptionKey"
-speech_config = speechsdk.SpeechConfig(host=speech_host, subscription=speech_key)
+speech_key, service_region = "YourSubscriptionKey", "YourServiceRegion"
+speech_config = speechsdk.SpeechConfig(subscription=speech_key, region=service_region)
 ```
 
 ## <a name="initialize-a-recognizer"></a>初始化识别器
@@ -75,14 +75,14 @@ speech_recognizer = speechsdk.SpeechRecognizer(speech_config=speech_config)
 > [了解如何获取音频输入设备的设备 ID](../../../how-to-select-audio-input-devices.md)。
 
 ```Python
-audio_config = AudioConfig(device_name="<device id>")
+audio_config = AudioConfig(device_name="<device id>");
 speech_recognizer = speechsdk.SpeechRecognizer(speech_config=speech_config, audio_config=audio_config)
 ```
 
 如果要提供音频文件而不是使用麦克风，则仍需要提供 `audio_config`。 但是，在创建 [`AudioConfig`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.audio.audioconfig?view=azure-python) 时，你需要使用 `filename` 参数，而不是提供 `device_name`。
 
 ```Python
-audio_filename = "YourAudioFile.wav"
+audio_filename = "whatstheweatherlike.wav"
 audio_input = speechsdk.AudioConfig(filename=audio_filename)
 speech_recognizer = speechsdk.SpeechRecognizer(speech_config=speech_config, audio_config=audio_input)
 ```

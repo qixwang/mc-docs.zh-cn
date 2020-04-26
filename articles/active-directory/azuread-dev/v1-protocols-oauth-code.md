@@ -5,23 +5,21 @@ services: active-directory
 documentationcenter: .net
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: azuread-dev
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/24/2020
+ms.date: 04/23/2020
 ms.author: v-junlch
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 7da83c86f02a1df62b84f3c3942398679a5b79ab
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ROBOTS: NOINDEX
+ms.openlocfilehash: 28668e4d6e4e4e16f63ed0f16b7413318a318001
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79291101"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126315"
 ---
 # <a name="authorize-access-to-azure-active-directory-web-applications-using-the-oauth-20-code-grant-flow"></a>使用 OAuth 2.0 代码授权流来授权访问 Azure Active Directory Web 应用程序
 
@@ -284,10 +282,10 @@ WWW-Authenticate: Bearer authorization_uri="https://login.partner.microsoftonlin
 #### <a name="error-parameters"></a>错误参数
 | 参数 | 说明 |
 | --- | --- |
-| authorization_uri |授权服务器的 URI（物理终结点）。 此值还用作查找键，可从发现终结点获取有关服务器的详细信息。 <p><p> 客户端必须验证授权服务器是否受信任。 Azure AD 对资源进行保护时，只需验证 URL 是否以 Azure AD 支持的 https://login.partner.microsoftonline.cn 或其他主机名开头即可。 特定于租户的资源应始终返回特定于租户的授权 URI。 |
+| authorization_uri |授权服务器的 URI（物理终结点）。 此值还用作查找键，可从发现终结点获取有关服务器的详细信息。 <p><p> 客户端必须验证授权服务器是否受信任。 Azure AD 对资源进行保护时，只需验证 URL 是否以 Azure AD 支持的 `https://login.partner.microsoftonline.cn` 或其他主机名开头即可。 特定于租户的资源应始终返回特定于租户的授权 URI。 |
 | error |[OAuth 2.0 授权框架](https://tools.ietf.org/html/rfc6749)第 5.2 部分中定义的错误代码值。 |
 | error_description |错误的更详细说明。 此消息不是最终用户友好的。 |
-| resource_id |返回资源的唯一标识符。 客户端应用程序在请求资源的令牌时，可以使用此标识符作为 `resource` 参数的值。 <p><p> 对于客户端应用程序，验证此值非常重要，否则恶意服务可能会引发 elevation-of-privileges 攻击  <p><p> 防止攻击的建议策略是验证 `resource_id` 是否与正在访问的 Web API URL 基部分相匹配。 例如，如果正在访问 https://service.contoso.com/data ，则 `resource_id` 可以是 https://service.contoso.com/ 。 客户端应用程序必须拒绝不以基 URL 开头的 `resource_id` ，除非存在可靠的替代方法来验证该 ID。 |
+| resource_id |返回资源的唯一标识符。 客户端应用程序在请求资源的令牌时，可以使用此标识符作为 `resource` 参数的值。 <p><p> 对于客户端应用程序，验证此值非常重要，否则恶意服务可能会引发 elevation-of-privileges 攻击  <p><p> 防止攻击的建议策略是验证 `resource_id` 是否与正在访问的 Web API URL 基部分相匹配。 例如，如果正在访问 `https://service.contoso.com/data` ，则 `resource_id` 可以是 `https://service.contoso.com/` 。 客户端应用程序必须拒绝不以基 URL 开头的 `resource_id` ，除非存在可靠的替代方法来验证该 ID。 |
 
 #### <a name="bearer-scheme-error-codes"></a>持有者方案错误代码
 RFC 6750 规范为在响应中使用 WWW-Authenticate 标头和持有者方案的资源定义了以下错误。

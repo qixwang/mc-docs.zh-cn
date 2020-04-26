@@ -5,14 +5,14 @@ author: rockboyfor
 ms.service: virtual-network
 ms.topic: article
 origin.date: 08/26/2019
-ms.date: 01/06/2020
+ms.date: 04/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 0db1ebd9b237b8871d2d374d39d248c75622ddd1
-ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
+ms.openlocfilehash: 3db7fed8987d9d093afd1c2e2de4441c5b4d5126
+ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599856"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82093280"
 ---
 # <a name="move-an-azure-virtual-network-to-another-region-by-using-azure-powershell"></a>使用 Azure PowerShell 将 Azure 虚拟网络移到另一个区域
 
@@ -32,7 +32,7 @@ ms.locfileid: "75599856"
 
 - 验证 Azure 订阅是否允许在目标区域中创建虚拟网络。 若要启用所需配额，请联系支持部门。
 
-- 确保订阅提供足够的资源，以支持在此过程中添加虚拟网络。 有关详细信息，请参阅 [Azure 订阅和服务限制、配额与约束](/azure-subscription-service-limits#networking-limits)。
+- 确保订阅提供足够的资源，以支持在此过程中添加虚拟网络。 有关详细信息，请参阅 [Azure 订阅和服务限制、配额与约束](/azure-resource-manager/management/azure-subscription-service-limits#networking-limits)。
 
 ## <a name="prepare-for-the-move"></a>准备移动
 在本部分，你将使用资源管理器模板来准备好要移动的虚拟网络。 然后，使用 Azure PowerShell 命令将虚拟网络移到目标区域。
@@ -255,4 +255,3 @@ Remove-AzResourceGroup -Name <target-resource-group-name>
 - [将 Azure 虚拟机移到另一个区域](/site-recovery/azure-to-azure-tutorial-migrate)
 
 <!-- Update_Description: update meta properties, wording update, update link -->
-<!--NEW.date: 01/06/2020-->

@@ -5,14 +5,14 @@ author: rockboyfor
 ms.service: virtual-network
 ms.topic: article
 origin.date: 08/26/2019
-ms.date: 01/06/2020
+ms.date: 04/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 231b074f113a9ccba60a364971b286bcb8d514ae
-ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
+ms.openlocfilehash: edc1378c681a04995149945dd16c3e57e46ecf81
+ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599857"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82093276"
 ---
 # <a name="move-an-azure-virtual-network-to-another-region-by-using-the-azure-portal"></a>使用 Azure 门户将 Azure 虚拟网络移到另一个区域
 
@@ -32,7 +32,7 @@ ms.locfileid: "75599857"
 
 - 验证 Azure 订阅是否允许在目标区域中创建虚拟网络。 若要启用所需配额，请联系支持部门。
 
-- 确保订阅提供足够的资源，以支持在此过程中添加虚拟网络。 有关详细信息，请参阅 [Azure 订阅和服务限制、配额与约束](/azure-subscription-service-limits#networking-limits)。
+- 确保订阅提供足够的资源，以支持在此过程中添加虚拟网络。 有关详细信息，请参阅 [Azure 订阅和服务限制、配额与约束](/azure-resource-manager/management/azure-subscription-service-limits#networking-limits)。
 
 ## <a name="prepare-for-the-move"></a>准备移动
 在本部分，你将使用资源管理器模板来准备好要移动的虚拟网络。 然后，使用 Azure 门户将虚拟网络移到目标区域。
@@ -81,7 +81,6 @@ ms.locfileid: "75599857"
                         "10.0.0.0/16"
                     ]
                 },
-
     ```
 
 1. 若要获取区域位置代码，请参阅 [Azure 位置](https://azure.microsoft.com/global-infrastructure/locations/)。 区域的代码是不带空格的区域名称（例如，**中国北部** = **chinanorth**）。
@@ -95,18 +94,18 @@ ms.locfileid: "75599857"
         ```json
         "resources": [
             {
-            "type": "Microsoft.Network/virtualNetworks",
-            "apiVersion": "2019-06-01",
-            "name": "[parameters('virtualNetworks_myVNET1_name')]",
-            "location": "<target-region>",
-            "properties": {
-                "provisioningState": "Succeeded",
-                "resourceGuid": "6e2652be-35ac-4e68-8c70-621b9ec87dcb",
-                "addressSpace": {
-                    "addressPrefixes": [
-                    "10.0.0.0/16"
-                ]
-            },
+                "type": "Microsoft.Network/virtualNetworks",
+                "apiVersion": "2019-06-01",
+                "name": "[parameters('virtualNetworks_myVNET1_name')]",
+                "location": "<target-region>",
+                "properties": {
+                    "provisioningState": "Succeeded",
+                    "resourceGuid": "6e2652be-35ac-4e68-8c70-621b9ec87dcb",
+                    "addressSpace": {
+                        "addressPrefixes": [
+                        "10.0.0.0/16"
+                    ]
+                },
 
         ```
 
@@ -144,37 +143,37 @@ ms.locfileid: "75599857"
         若要在更改 *template.json* 文件中的地址前缀，请在两处进行编辑：前一节中的代码，以及以下代码的 **type** 节。 更改以下代码中的 **addressPrefix** 属性，使之与前一节的代码中的 **addressPrefix** 属性相匹配。
 
         ```json
-                "type": "Microsoft.Network/virtualNetworks/subnets",
-                "apiVersion": "2019-06-01",
-                "name": "[concat(parameters('virtualNetworks_myVNET1_name'), '/GatewaySubnet')]",
-                "dependsOn": [
-                    "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_myVNET1_name'))]"
-                ],
-                "properties": {
-                    "provisioningState": "Succeeded",
-                    "addressPrefix": "10.0.1.0/29",
-                    "serviceEndpoints": [],
-                    "delegations": [],
-                    "privateEndpointNetworkPolicies": "Enabled",
-                    "privateLinkServiceNetworkPolicies": "Enabled"
-                }
-            },
-            {
-                "type": "Microsoft.Network/virtualNetworks/subnets",
-                "apiVersion": "2019-06-01",
-                "name": "[concat(parameters('virtualNetworks_myVNET1_name'), '/subnet-1')]",
-                "dependsOn": [
-                    "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_myVNET1_name'))]"
-                ],
-                "properties": {
-                    "provisioningState": "Succeeded",
-                    "addressPrefix": "10.0.0.0/24",
-                    "delegations": [],
-                    "privateEndpointNetworkPolicies": "Enabled",
-                    "privateLinkServiceNetworkPolicies": "Enabled"
-                }
+        {
+            "type": "Microsoft.Network/virtualNetworks/subnets",
+            "apiVersion": "2019-06-01",
+            "name": "[concat(parameters('virtualNetworks_myVNET1_name'), '/GatewaySubnet')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_myVNET1_name'))]"
+            ],
+            "properties": {
+                "provisioningState": "Succeeded",
+                "addressPrefix": "10.0.1.0/29",
+                "serviceEndpoints": [],
+                "delegations": [],
+                "privateEndpointNetworkPolicies": "Enabled",
+                "privateLinkServiceNetworkPolicies": "Enabled"
             }
-        ]
+        },
+        {
+            "type": "Microsoft.Network/virtualNetworks/subnets",
+            "apiVersion": "2019-06-01",
+            "name": "[concat(parameters('virtualNetworks_myVNET1_name'), '/subnet-1')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_myVNET1_name'))]"
+            ],
+            "properties": {
+                "provisioningState": "Succeeded",
+                "addressPrefix": "10.0.0.0/24",
+                "delegations": [],
+                "privateEndpointNetworkPolicies": "Enabled",
+                "privateLinkServiceNetworkPolicies": "Enabled"
+            }
+        }
         ```
 
 1. 在在线编辑器中选择“保存”。 
@@ -213,4 +212,3 @@ ms.locfileid: "75599857"
 - [将 Azure 虚拟机移到另一个区域](/site-recovery/azure-to-azure-tutorial-migrate)
 
 <!-- Update_Description: update meta properties, wording update, update link -->
-<!--NEW.date: 01/06/2020-->

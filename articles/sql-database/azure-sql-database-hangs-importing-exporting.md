@@ -9,13 +9,14 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: ''
 origin.date: 09/27/2019
-ms.date: 02/17/2020
-ms.openlocfilehash: a5227d17a15e708ce152408b1143ba02959ac2fc
-ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
+ms.date: 04/27/2020
+manager: digimobile
+ms.openlocfilehash: d9d2850f428784b1e3e2faba4a41f3d948266233
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77155727"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126869"
 ---
 # <a name="azure-sql-database-importexport-service-takes-a-long-time-to-import-or-export-a-database"></a>Azure SQL 数据库导入/导出服务需要很长时间来导入或导出数据库
 
@@ -40,14 +41,14 @@ Azure SQL 数据库导入/导出服务为每个区域提供有限数量的计算
 
 * [使用 SQLPackage 实用程序导出到 BACPAC 文件](/sql-database/sql-database-export#export-to-a-bacpac-file-using-the-sqlpackage-utility)。
 * [使用 SQL Server Management Studio (SSMS) 导出到 BACPAC 文件](/sql-database/sql-database-export#export-to-a-bacpac-file-using-sql-server-management-studio-ssms)。
-* 通过 Microsoft SQL Server Data-Tier Application Framework (DacFx) API 直接在代码中运行 BACPAC 导入或导出。 如需其他信息，请参阅：
+* 通过 Microsoft SQL Server Data-Tier Application Framework (DacFx) API 直接在代码中运行 BACPAC 导入或导出。 有关其他信息，请参阅：
   * [导出数据层应用程序](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/export-a-data-tier-application)
   * [Microsoft.SqlServer.Dac Namespace](https://docs.microsoft.com/dotnet/api/microsoft.sqlserver.dac)（Microsoft.SqlServer.Dac 命名空间）
   * [下载 DACFx](https://www.microsoft.com/download/details.aspx?id=55713)
 
 ## <a name="things-to-consider-when-you-export-or-import-an-azure-sql-database"></a>导出或导入 Azure SQL 数据库时要考虑的事项
 
-* 本文讨论的所有方法用光了数据库事务单位 (DTU) 配额，导致 Azure SQL 数据库服务进行相关限制。 可以[在 Azure 门户中查看数据库的 DTU 统计信息](/sql-database/sql-database-monitor-tune-overview#monitor-database-performance)。 如果数据库达到其资源限制，请[升级服务层级](/sql-database/sql-database-scale-resources)以添加更多资源。
+* 本文讨论的所有方法用光了数据库事务单位 (DTU) 配额，导致 Azure SQL 数据库服务进行相关限制。 可以[在 Azure 门户中查看数据库的 DTU 统计信息](/sql-database/sql-database-monitor-tune-overview#sql-database-resource-monitoring)。 如果数据库达到其资源限制，请[升级服务层级](/sql-database/sql-database-scale-resources)以添加更多资源。
 * 理想情况下，应该在 SQL 数据库所在区域的 VM 中运行客户端应用程序（例如 sqlpackage 实用程序或自定义 DAC 应用程序）。 否则，可能会遇到与网络延迟相关的性能问题。
 * 在没有聚集索引的情况下导出大型表可能会很慢，甚至会导致故障。 出现此行为的原因是：表不能拆分，因此无法以并行方式导出， 而只能在单个事务中导出，这导致在导出过程中出现性能降低的情况，并且存在故障的可能，大型表尤其如此。
 

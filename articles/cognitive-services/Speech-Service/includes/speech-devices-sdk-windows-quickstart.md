@@ -1,17 +1,17 @@
 ---
-author: IEvangelist
+author: trevorbye
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
 origin.date: 02/20/2020
-ms.date: 03/16/2020
+ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: 4c187f3c4b228eb4d650555df11e736f9cce9177
-ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
+ms.openlocfilehash: 62ff4da3bc5ce10173be9cf985f273be007bf961
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80151551"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126783"
 ---
 本快速入门介绍如何使用适用于 Windows 的语音设备 SDK 来生成支持语音的产品。
 
@@ -37,7 +37,7 @@ ms.locfileid: "80151551"
 
 <!-- Conversation Transcription is currently only available for "en-US" and "zh-CN", in the "chinaeast2" regions. You must have a speech key in one of those regions to use Conversation Transcription. -->
 
-<!-- If you plan to use the intents you'll need a [Language Understanding Service (LUIS)](https://docs.microsoft.com/azure/cognitive-services/luis/azureibizasubscription) subscription. To learn more about LUIS and intent recognition, see [Recognize speech intents with LUIS, C#](https://docs.azure.cn/cognitive-services/speech-service/how-to-recognize-intents-from-speech-csharp). A [sample LUIS model](https://aka.ms/sdsdk-luis) is available for this app. -->
+<!-- If you plan to use the intents you'll need a [Language Understanding Service (LUIS)](https://docs.azure.cn/cognitive-services/luis/azureibizasubscription) subscription. To learn more about LUIS and intent recognition, see [Recognize speech intents with LUIS, C#](https://docs.azure.cn/cognitive-services/speech-service/how-to-recognize-intents-from-speech-csharp). A [sample LUIS model](https://aka.ms/sdsdk-luis) is available for this app. -->
 
 ## <a name="create-and-configure-the-project"></a>创建和配置项目
 
@@ -75,7 +75,7 @@ ms.locfileid: "80151551"
         <dependency>
              <groupId>com.microsoft.cognitiveservices.speech</groupId>
              <artifactId>client-sdk</artifactId>
-             <version>1.10.0</version>
+             <version>1.11.0</version>
         </dependency>
     </dependencies>
    ```

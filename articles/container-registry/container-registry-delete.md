@@ -3,14 +3,14 @@ title: 删除映像资源
 description: 详细介绍如何通过使用 Azure CLI 命令删除容器映像数据有效管理注册表大小。
 ms.topic: article
 origin.date: 07/31/2019
+ms.date: 04/06/2020
 ms.author: v-yeche
-ms.date: 12/09/2019
-ms.openlocfilehash: 3bf55c6ee24468e18391541822b9d5638f24591e
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.openlocfilehash: e8bd8d79166815641bc651e2851c9866ae3a6b8a
+ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74885027"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82093224"
 ---
 # <a name="delete-container-images-in-azure-container-registry-using-the-azure-cli"></a>使用 Azure CLI 删除 Azure 容器注册表中的容器映像
 
@@ -45,9 +45,12 @@ ms.locfileid: "74885027"
 例如，从注册表“myregistry”中删除“acr-helloworld:latest”映像：
 
 ```azurecli
-$ az acr repository delete --name myregistry --image acr-helloworld:latest
+az acr repository delete --name myregistry --image acr-helloworld:latest
+```
+
+```output
 This operation will delete the manifest 'sha256:0a2e01852872580b2c2fea9380ff8d7b637d3928783c55beb3f21a6e58d5d108' and all the following images: 'acr-helloworld:latest', 'acr-helloworld:v3'.
-Are you sure you want to continue? (y/n): y
+Are you sure you want to continue? (y/n):
 ```
 
 > [!TIP]
@@ -59,8 +62,11 @@ Are you sure you want to continue? (y/n): y
 
 要按摘要删除，请先列出包含想要删除的映像的存储库清单摘要。 例如：
 
-```console
-$ az acr repository show-manifests --name myregistry --repository acr-helloworld
+```azurecli
+az acr repository show-manifests --name myregistry --repository acr-helloworld
+```
+
+```output
 [
   {
     "digest": "sha256:0a2e01852872580b2c2fea9380ff8d7b637d3928783c55beb3f21a6e58d5d108",
@@ -88,10 +94,13 @@ az acr repository delete --name <acrName> --image <repositoryName>@<digest>
 
 例如，要删除上述输出（具有标记“v2”）中列出的最后一个清单：
 
-```console
-$ az acr repository delete --name myregistry --image acr-helloworld@sha256:3168a21b98836dda7eb7a846b3d735286e09a32b0aa2401773da518e7eba3b57
+```azurecli
+az acr repository delete --name myregistry --image acr-helloworld@sha256:3168a21b98836dda7eb7a846b3d735286e09a32b0aa2401773da518e7eba3b57
+```
+
+```output
 This operation will delete the manifest 'sha256:3168a21b98836dda7eb7a846b3d735286e09a32b0aa2401773da518e7eba3b57' and all the following images: 'acr-helloworld:v2'.
-Are you sure you want to continue? (y/n): y
+Are you sure you want to continue? (y/n): 
 ```
 
 从注册表中删除 `acr-helloworld:v2` 映像，正如该映像的任何唯一的层数据一样。 如果清单与多个标记关联，还删除所有相关联的标记。
@@ -147,11 +156,15 @@ fi
 
 如[清单摘要](container-registry-concepts.md#manifest-digest)部分中所述，使用现有标记推送已修改的映像时，会取消标记之前推送的映像，从而导致孤立（或“无关联”）的映像  。 之前推送的映像的清单及其层数据仍保留在注册表中。 请注意以下事件序列：
 
-1. 推送具有标记 latest 的映像 acr-helloworld：`docker push myregistry.azurecr.cn/acr-helloworld:latest`  
+1. 推送具有标记 latest 的映像 acr-helloworld：`docker push myregistry.azurecr.cn/acr-helloworld:latest` 
 1. 检查存储库 acr-helloworld 的清单  ：
 
-    ```console
-    $ az acr repository show-manifests --name myregistry --repository acr-helloworld
+    ```azurecli
+    az acr repository show-manifests --name myregistry --repository acr-helloworld
+
+    ```
+
+    ```output
     [
      {
        "digest": "sha256:d2bdc0c22d78cde155f53b4092111d7e13fe28ebf87a945f94b19c248000ceec",
@@ -164,11 +177,14 @@ fi
     ```
 
 1. 修改 acr-helloworld Dockerfile 
-1. 推送具有标记 latest 的映像 acr-helloworld：`docker push myregistry.azurecr.cn/acr-helloworld:latest`  
+1. 推送具有标记 latest 的映像 acr-helloworld：`docker push myregistry.azurecr.cn/acr-helloworld:latest` 
 1. 检查存储库 acr-helloworld 的清单  ：
 
-    ```console
-    $ az acr repository show-manifests --name myregistry --repository acr-helloworld
+    ```azurecli
+    az acr repository show-manifests --name myregistry --repository acr-helloworld
+    ```
+
+    ```output
     [
      {
        "digest": "sha256:7ca0e0ae50c95155dbb0e380f37d7471e98d2232ed9e31eece9f9fb9078f2728",

@@ -14,15 +14,15 @@ ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 09/18/2018
-ms.date: 11/25/2019
+ms.date: 04/13/2020
 ms.author: v-yeche
 ms.custom: ''
-ms.openlocfilehash: 9f109fcdfc8997ceace98e2f8fbd77c9c5d1f783
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+ms.openlocfilehash: 08d00ae08fc44c1e242df2a679d8640530be90b1
+ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
-ms.locfileid: "74657977"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82093359"
 ---
 # <a name="enable-containers-to-use-azure-virtual-network-capabilities"></a>启用容器以使用 Azure 虚拟网络功能
 
@@ -54,7 +54,7 @@ Pod 将显示在属于虚拟网络一部分的虚拟机中。 Pod 的 IP 地址�
 
 ## <a name="limits"></a>限制
 
-该插件支持每台虚拟机最多 250 个 Pod，虚拟网络中最多 16,000 个 Pod。 这些限制因 [Azure Kubernetes 服务](../azure-subscription-service-limits.md?toc=%2fvirtual-network%2ftoc.json#azure-kubernetes-service-limits)会有所不同。
+该插件支持每台虚拟机最多 250 个 Pod，虚拟网络中最多 16,000 个 Pod。 这些限制因 [Azure Kubernetes 服务](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fvirtual-network%2ftoc.json#azure-kubernetes-service-limits)会有所不同。
 
 ## <a name="using-the-plug-in"></a>使用该插件
 

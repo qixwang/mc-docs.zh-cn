@@ -4,27 +4,27 @@ description: 了解如何为 Reliable Services Service Fabric 应用程序配置
 author: rockboyfor
 ms.topic: conceptual
 origin.date: 06/11/2018
-ms.date: 02/24/2020
+ms.date: 04/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: ce8e94e3b61e2f3f4bd0dc4991ef87d90219db7d
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 2accd34268b95b3f30c5e7a5b3dc75ec2c87a5a4
+ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79292015"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82093477"
 ---
 # <a name="reliable-services-application-and-service-manifest-examples"></a>Reliable Services 应用程序和服务清单示例
-下面是应用程序和服务清单的示例，这些清单适用于带 ASP.NET Core Web 前端和有状态后端的 Service Fabric 应用程序。 这些示例的目的是说明什么设置可用以及如何使用它们。 这些应用程序和服务清单基于 [Service Fabric .NET 快速入门](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/)清单。
+下面是包含 ASP.NET Core Web 前端和有状态后端的 Service Fabric 应用程序的应用程序和服务清单示例。 这些示例的用途是展示有哪些设置可用以及如何使用它们。 这些应用程序和服务清单基于 [Service Fabric .NET 快速入门](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/)清单。
 
-以下功能会显示：
+展示了以下功能：
 
 |清单|功能|
 |---|---|
-|[应用程序清单](#application-manifest)| [资源调控](service-fabric-resource-governance.md)、[使用本地管理员帐户运行服务](service-fabric-application-runas-security.md)、[将默认策略应用到所有服务代码包](service-fabric-application-runas-security.md#apply-a-default-policy-to-all-service-code-packages)、[创建用户和组主体](service-fabric-application-runas-security.md)、在服务实例之间共享数据包、[重新服务终结点](service-fabric-service-manifest-resources.md#overriding-endpoints-in-servicemanifestxml)| 
-|FrontEndService 服务清单| [在服务启动时运行脚本](service-fabric-run-script-at-service-startup.md)、[定义 HTTPS 终结点](service-fabric-tutorial-dotnet-app-enable-https-endpoint.md#define-an-https-endpoint-in-the-service-manifest) | 
+|[应用程序清单](#application-manifest)| [资源监管](service-fabric-resource-governance.md)、[以本地管理员帐户运行服务](service-fabric-application-runas-security.md)、[将默认策略应用到所有服务代码包](service-fabric-application-runas-security.md#apply-a-default-policy-to-all-service-code-packages)、[创建用户和组主体](service-fabric-application-runas-security.md)、在服务实例之间共享数据包、[重写服务终结点](service-fabric-service-manifest-resources.md#overriding-endpoints-in-servicemanifestxml)| 
+|FrontEndService 服务清单| [服务启动时运行脚本](service-fabric-run-script-at-service-startup.md)、[定义 HTTPS 终结点](service-fabric-tutorial-dotnet-app-enable-https-endpoint.md#define-an-https-endpoint-in-the-service-manifest) | 
 |BackEndService 服务清单| [声明配置包](service-fabric-application-and-service-manifests.md)、[声明数据包](service-fabric-application-and-service-manifests.md)、[配置终结点](service-fabric-service-manifest-resources.md)| 
 
-请参阅[应用程序清单元素](#application-manifest-elements)、[VotingWeb 服务清单元素](#votingweb-service-manifest-elements)和 [VotingData 服务清单元素](#votingdata-service-manifest-elements)，详细了解特定的 XML 元素。
+有关特定 XML 元素的详细信息，请参阅[应用程序清单元素](#application-manifest-elements)、[VotingWeb 服务清单元素](#votingweb-service-manifest-elements)和 [VotingData 服务清单元素](#votingdata-service-manifest-elements)。
 
 ## <a name="application-manifest"></a>应用程序清单
 
@@ -70,7 +70,7 @@ ms.locfileid: "79292015"
                                 MemorySwapInMB="[MemorySwapInMB]"/>
 
       <!-- Share the data package across multiple instances of the VotingData service-->
-      <PackageSharingPolicy PackageRef="VotingDataPkg.Data"/>
+      <PackageSharingPolicy PackageRef="Data"/>
 
       <!-- Give read rights on the "DataEndpoint" endpoint to the Customer2 account.-->
       <SecurityAccessPolicy GrantRights="Read" PrincipalRef="Customer2" ResourceRef="DataEndpoint" ResourceType="Endpoint"/>         
@@ -289,13 +289,13 @@ ms.locfileid: "79292015"
 按引用导入服务清单。 当前，服务清单文件 (ServiceManifest.xml) 必须存在于生成包中。 有关详细信息，请参阅 [ServiceManifestRef 元素](service-fabric-service-model-schema-elements.md#ServiceManifestRefElementServiceManifestRefTypeComplexTypeDefinedInServiceManifestImportelement)
 
 ### <a name="resourceoverrides-element"></a>ResourceOverrides 元素
-指定在服务清单资源中声明的终结点的资源重写。 有关详细信息，请参阅 [ResourceOverrides 元素](service-fabric-service-model-schema-elements.md#ResourceOverridesElementResourceOverridesTypeComplexTypeDefinedInServiceManifestImportelement)
+指定服务清单资源中声明的终结点的资源重写。 有关详细信息，请参阅 [ResourceOverrides 元素](service-fabric-service-model-schema-elements.md#ResourceOverridesElementResourceOverridesTypeComplexTypeDefinedInServiceManifestImportelement)
 
 ### <a name="endpoints-element"></a>Endpoints 元素
 要重写的终结点。 有关详细信息，请参阅 [Endpoints 元素](service-fabric-service-model-schema-elements.md#EndpointsElementanonymouscomplexTypeComplexTypeDefinedInResourceOverridesTypecomplexType)
 
 ### <a name="endpoint-element"></a>Endpoint 元素
-要重写的已在服务清单中声明的终结点。 有关详细信息，请参阅 [Endpoint 元素](service-fabric-service-model-schema-elements.md#EndpointElementEndpointOverrideTypeComplexTypeDefinedInEndpointselement)
+服务清单中声明的要重写的终结点。 有关详细信息，请参阅 [Endpoint 元素](service-fabric-service-model-schema-elements.md#EndpointElementEndpointOverrideTypeComplexTypeDefinedInEndpointselement)
 
 ### <a name="policies-element"></a>Policies 元素
 描述要在导入的服务清单中应用的策略（终结点绑定、包共享、运行方式和安全访问权限）。 有关详细信息，请参阅 [Policies 元素](service-fabric-service-model-schema-elements.md#PoliciesElementServiceManifestImportPoliciesTypeComplexTypeDefinedInServiceManifestImportelement)
@@ -331,7 +331,7 @@ ms.locfileid: "79292015"
 描述此应用程序运行服务和安全资源所需的安全主体（用户、组）。 主体在 policies 节中引用。 有关详细信息，请参阅 [Principals 元素](service-fabric-service-model-schema-elements.md#PrincipalsElementSecurityPrincipalsTypeComplexTypeDefinedInApplicationManifestTypecomplexTypeDefinedInEnvironmentTypecomplexType)
 
 ### <a name="groups-element"></a>Groups 元素
-将组集声明为可在策略中引用的安全主体。 如果不同的服务入口点有多个用户，而且这些用户需要拥有特定的常见组级别权限，Groups 就特别有用。 有关详细信息，请参阅 [Groups 元素](service-fabric-service-model-schema-elements.md#GroupsElementanonymouscomplexTypeComplexTypeDefinedInSecurityPrincipalsTypecomplexType)
+将组集声明为可在策略中引用的安全主体。 如果不同的服务入口点对应有多个用户，而且这些用户需要拥有特定的常见组级别权限，则组就很有用。 有关详细信息，请参阅 [Groups 元素](service-fabric-service-model-schema-elements.md#GroupsElementanonymouscomplexTypeComplexTypeDefinedInSecurityPrincipalsTypecomplexType)
 
 ### <a name="group-element"></a>Group 元素
 将组声明为可在策略中引用的安全主体。 有关详细信息，请参阅 [Group 元素](service-fabric-service-model-schema-elements.md#GroupElementanonymouscomplexTypeComplexTypeDefinedInGroupselement)
@@ -389,7 +389,7 @@ ms.locfileid: "79292015"
  有关详细信息，请参阅 [Arguments 元素](service-fabric-service-model-schema-elements.md#ArgumentsElementxs:stringComplexTypeDefinedInExeHostEntryPointTypecomplexType)
 
 ### <a name="workingfolder-element"></a>WorkingFolder 元素
-部署应用程序时所在群集节点上的代码包中的进程工作目录。 可以指定三个值：Work（默认值）、CodePackage 或 CodeBase。 CodeBase 指定将工作目录设置为在代码包中定义 EXE 时所在的目录。 CodePackage 将工作目录设置为代码包的根目录，不管在代码包目录中定义 EXE 时的位置如何。 Work 将工作目录设置为在节点上创建的唯一文件夹。  整个应用程序实例的此文件夹是同一个文件夹。 默认情况下，应用程序中所有进程的工作目录设置为应用程序工作文件夹。 这是允许进程写入数据的位置。 建议不要在代码包或代码库中写入数据，因为这些文件夹可能是在不同的应用程序实例之间共享的，可能会被删除。 有关详细信息，请参阅 [WorkingFolder 元素](service-fabric-service-model-schema-elements.md#WorkingFolderElementanonymouscomplexTypeComplexTypeDefinedInExeHostEntryPointTypecomplexType)
+部署应用程序时所在群集节点上的代码包中的进程工作目录。 可以指定三个值：Work（默认）、CodePackage 或 CodeBase。 CodeBase 指定将工作目录设置为在代码包中定义 EXE 时所在的目录。 CodePackage 将工作目录设置为代码包的根目录，不管在代码包目录中定义 EXE 时的位置如何。 Work 将工作目录设置为在节点上创建的唯一文件夹。  整个应用程序实例的此文件夹是同一个文件夹。 默认情况下，应用程序中所有进程的工作目录设置为应用程序工作文件夹。 这是允许进程写入数据的位置。 建议不要在代码包或代码库中写入数据，因为这些文件夹可能是在不同的应用程序实例之间共享的，可能会被删除。 有关详细信息，请参阅 [WorkingFolder 元素](service-fabric-service-model-schema-elements.md#WorkingFolderElementanonymouscomplexTypeComplexTypeDefinedInExeHostEntryPointTypecomplexType)
 
 ### <a name="consoleredirection-element"></a>ConsoleRedirection 元素
 
@@ -403,7 +403,7 @@ EntryPoint 指定的可执行文件通常是长时间运行的服务主机。 �
  有关详细信息，请参阅 [ExeHost 元素](service-fabric-service-model-schema-elements.md#ExeHostElementanonymouscomplexTypeComplexTypeDefinedInEntryPointDescriptionTypecomplexType)
 
 ### <a name="configpackage-element"></a>ConfigPackage 元素
-声明一个按 Name 特性命名的文件夹，该文件夹位于 Settings.xml 文件所在的 PackageRoot 中。 此文件包含进程用户定义的键值对设置，进程可在运行时读回这些设置。 升级期间，如果仅更改了 ConfigPackage 版本，则不重启正在运行的进程。 相反，一个回调会告知进程配置设置已更改，以便动态重新加载。 有关详细信息，请参阅 [ConfigPackage 元素](service-fabric-service-model-schema-elements.md#ConfigPackageElementConfigPackageTypeComplexTypeDefinedInServiceManifestTypecomplexTypeDefinedInDigestedConfigPackageelement)
+声明一个按 Name 特性命名的文件夹，该文件夹位于包含 Settings.xml 文件的 PackageRoot 中。 此文件包含进程用户定义的键值对设置，进程可在运行时读回这些设置。 升级期间，如果仅更改了 ConfigPackage 版本，则不重启正在运行的进程。 相反，回调会向进程通知配置设置已更改，以便可以重新动态加载这些设置。 有关详细信息，请参阅 [ConfigPackage 元素](service-fabric-service-model-schema-elements.md#ConfigPackageElementConfigPackageTypeComplexTypeDefinedInServiceManifestTypecomplexTypeDefinedInDigestedConfigPackageelement)
 
 ### <a name="resources-element"></a>Resources 元素
 描述此服务使用的资源，可以在不修改已编译代码的情况下声明，并可以在部署服务时更改。 通过应用程序清单的 Principals 和 Policies 节控制对这些资源的访问。 有关详细信息，请参阅 [Resources 元素](service-fabric-service-model-schema-elements.md#ResourcesElementResourcesTypeComplexTypeDefinedInServiceManifestTypecomplexType)
@@ -412,7 +412,7 @@ EntryPoint 指定的可执行文件通常是长时间运行的服务主机。 �
 定义服务的终结点。 有关详细信息，请参阅 [Endpoints 元素](service-fabric-service-model-schema-elements.md#EndpointsElementanonymouscomplexTypeComplexTypeDefinedInResourcesTypecomplexType)
 
 ### <a name="endpoint-element"></a>Endpoint 元素
-要重写的已在服务清单中声明的终结点。 有关详细信息，请参阅 [Endpoint 元素](service-fabric-service-model-schema-elements.md#EndpointElementEndpointOverrideTypeComplexTypeDefinedInEndpointselement)
+服务清单中声明的要重写的终结点。 有关详细信息，请参阅 [Endpoint 元素](service-fabric-service-model-schema-elements.md#EndpointElementEndpointOverrideTypeComplexTypeDefinedInEndpointselement)
 
 ## <a name="votingdata-service-manifest-elements"></a>VotingData 服务清单元素
 ### <a name="servicemanifest-element"></a>ServiceManifest 元素
@@ -437,10 +437,10 @@ EntryPoint 指定的可执行文件通常是长时间运行的服务主机。 �
 可执行文件名称。  例如，“MySetup.bat”或“MyServiceHost.exe”。 有关详细信息，请参阅 [Program 元素](service-fabric-service-model-schema-elements.md#ProgramElementxs:stringComplexTypeDefinedInExeHostEntryPointTypecomplexType)
 
 ### <a name="workingfolder-element"></a>WorkingFolder 元素
-部署应用程序时所在群集节点上的代码包中的进程工作目录。 可以指定三个值：Work（默认值）、CodePackage 或 CodeBase。 CodeBase 指定将工作目录设置为在代码包中定义 EXE 时所在的目录。 CodePackage 将工作目录设置为代码包的根目录，不管在代码包目录中定义 EXE 时的位置如何。 Work 将工作目录设置为在节点上创建的唯一文件夹。  整个应用程序实例的此文件夹是同一个文件夹。 默认情况下，应用程序中所有进程的工作目录设置为应用程序工作文件夹。 这是允许进程写入数据的位置。 建议不要在代码包或代码库中写入数据，因为这些文件夹可能是在不同的应用程序实例之间共享的，可能会被删除。 有关详细信息，请参阅 [WorkingFolder 元素](service-fabric-service-model-schema-elements.md#WorkingFolderElementanonymouscomplexTypeComplexTypeDefinedInExeHostEntryPointTypecomplexType)
+部署应用程序时所在群集节点上的代码包中的进程工作目录。 可以指定三个值：Work（默认）、CodePackage 或 CodeBase。 CodeBase 指定将工作目录设置为在代码包中定义 EXE 时所在的目录。 CodePackage 将工作目录设置为代码包的根目录，不管在代码包目录中定义 EXE 时的位置如何。 Work 将工作目录设置为在节点上创建的唯一文件夹。  整个应用程序实例的此文件夹是同一个文件夹。 默认情况下，应用程序中所有进程的工作目录设置为应用程序工作文件夹。 这是允许进程写入数据的位置。 建议不要在代码包或代码库中写入数据，因为这些文件夹可能是在不同的应用程序实例之间共享的，可能会被删除。 有关详细信息，请参阅 [WorkingFolder 元素](service-fabric-service-model-schema-elements.md#WorkingFolderElementanonymouscomplexTypeComplexTypeDefinedInExeHostEntryPointTypecomplexType)
 
 ### <a name="configpackage-element"></a>ConfigPackage 元素
-声明一个按 Name 特性命名的文件夹，该文件夹位于 Settings.xml 文件所在的 PackageRoot 中。 此文件包含进程用户定义的键值对设置，进程可在运行时读回这些设置。 升级期间，如果仅更改了 ConfigPackage 版本，则不重启正在运行的进程。 相反，一个回调会告知进程配置设置已更改，以便动态重新加载。 有关详细信息，请参阅 [ConfigPackage 元素](service-fabric-service-model-schema-elements.md#ConfigPackageElementConfigPackageTypeComplexTypeDefinedInServiceManifestTypecomplexTypeDefinedInDigestedConfigPackageelement)
+声明一个按 Name 特性命名的文件夹，该文件夹位于包含 Settings.xml 文件的 PackageRoot 中。 此文件包含进程用户定义的键值对设置，进程可在运行时读回这些设置。 升级期间，如果仅更改了 ConfigPackage 版本，则不重启正在运行的进程。 相反，回调会向进程通知配置设置已更改，以便可以重新动态加载这些设置。 有关详细信息，请参阅 [ConfigPackage 元素](service-fabric-service-model-schema-elements.md#ConfigPackageElementConfigPackageTypeComplexTypeDefinedInServiceManifestTypecomplexTypeDefinedInDigestedConfigPackageelement)
 
 ### <a name="datapackage-element"></a>DataPackage 元素
 声明一个按 Name 特性命名的文件夹，该文件夹位于将要由进程在运行时使用的静态数据文件所在的 PackageRoot 中。 升级服务清单中所列的任何数据包时，Service Fabric 会回收主机和支持包中指定的所有 EXE 和 DLLHOST。 有关详细信息，请参阅 [DataPackage 元素](service-fabric-service-model-schema-elements.md#DataPackageElementDataPackageTypeComplexTypeDefinedInServiceManifestTypecomplexTypeDefinedInDigestedDataPackageelement)
@@ -452,6 +452,6 @@ EntryPoint 指定的可执行文件通常是长时间运行的服务主机。 �
 定义服务的终结点。 有关详细信息，请参阅 [Endpoints 元素](service-fabric-service-model-schema-elements.md#EndpointsElementanonymouscomplexTypeComplexTypeDefinedInResourcesTypecomplexType)
 
 ### <a name="endpoint-element"></a>Endpoint 元素
-要重写的已在服务清单中声明的终结点。 有关详细信息，请参阅 [Endpoint 元素](service-fabric-service-model-schema-elements.md#EndpointElementEndpointOverrideTypeComplexTypeDefinedInEndpointselement)
+服务清单中声明的要重写的终结点。 有关详细信息，请参阅 [Endpoint 元素](service-fabric-service-model-schema-elements.md#EndpointElementEndpointOverrideTypeComplexTypeDefinedInEndpointselement)
 
 <!-- Update_Description: update meta properties -->

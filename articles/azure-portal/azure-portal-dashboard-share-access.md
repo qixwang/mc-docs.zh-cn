@@ -5,7 +5,6 @@ services: azure-portal
 documentationcenter: ''
 author: mgblythe
 manager: mtillman
-editor: tysonn
 ms.assetid: 8908a6ce-ae0c-4f60-a0c9-b3acfe823365
 ms.service: azure-portal
 ms.devlang: NA
@@ -13,14 +12,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: na
 origin.date: 03/23/2020
-ms.date: 03/30/2020
+ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: f103648fcffff5003c6895318a850f92e10c288f
-ms.sourcegitcommit: 44d3fe59952847e5394bbe6c05bd6f333bb56345
+ms.openlocfilehash: 4aae464cf90238c8195d650473841883703a4372
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80522065"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126866"
 ---
 # <a name="share-azure-dashboards-by-using-role-based-access-control"></a>通过使用基于角色的访问控制来共享 Azure 仪表板
 

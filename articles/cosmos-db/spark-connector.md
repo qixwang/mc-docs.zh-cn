@@ -5,14 +5,14 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 05/21/2019
-ms.date: 07/29/2019
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: 9f35f9c0b492d8612d87a361080a3650b1ef220f
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: fe47bf930b48cc80640781a540b5190f255062a9
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "72842904"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134702"
 ---
 # <a name="accelerate-big-data-analytics-by-using-the-apache-spark-to-azure-cosmos-db-connector"></a>使用 Apache Spark 到 Azure Cosmos DB 的连接器加速大数据分析
 
@@ -115,7 +115,7 @@ val writeConfig = Config(Map(
   "Masterkey" -> "YOUR-KEY-HERE",
   "Database" -> "DepartureDelays",
   "Collection" -> "flights_fromsea",
-  "Upsert" : "true"
+  "Upsert" -> "true"
 ))
 
 // Write to Cosmos DB from the flights DataFrame
@@ -276,12 +276,12 @@ mvn clean package
 
 * **使用 Spark 和 Cosmos DB 确保航班准时（西雅图）** [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/On-Time%20Flight%20Performance%20with%20Spark%20and%20Cosmos%20DB%20-%20Seattle.ipynb) | [html](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/On-Time%20Flight%20Performance%20with%20Spark%20and%20Cosmos%20DB%20-%20Seattle.html)：使用 HDInsight Jupyter Notebook 服务将 Spark 连接到 Cosmos DB，以展示 Spark SQL 和图形帧，并使用机器学习管道预测航班延误。
     
-    <!--Not Available on * **Twitter Source with Apache Spark and Azure Cosmos DB Change Feed**: [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/Twitter%20with%20Spark%20and%20Azure%20Cosmos%20DB%20Change%20Feed.ipynb) | [html](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/Twitter%20with%20Spark%20and%20Azure%20Cosmos%20DB%20Change%20Feed.html)-->
+    <!--Not Available on * **Twitter Source with Apache Spark and Azure Cosmos DB Change Feed**: -->
 
 * **使用 Apache Spark 查询 Cosmos DB 图形**：[ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/Using%20Apache%20Spark%20to%20query%20Cosmos%20DB%20Graphs.ipynb) | [html](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/Using%20Apache%20Spark%20to%20query%20Cosmos%20DB%20Graphs.html)
     
-    <!--Not Available on * **[Connecting Azure Databricks to Azure Cosmos DB](https://docs.databricks.com/spark/latest/data-sources/azure/cosmosdb-connector.html)** using `azure-cosmosdb-spark`.  Linked here is also an Azure Databricks version of the [On-Time Flight Performance notebook](https://github.com/dennyglee/databricks/tree/master/notebooks/Users/denny%40databricks.com/azure-databricks).-->
-
+    <!--Not Available on * **Connecting Azure Databricks to Azure Cosmos DB** using `azure-cosmosdb-spark`-->
+    
 * **[使用 Azure Cosmos DB 和 HDInsight (Apache Spark) 的 Lambda 体系结构](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/readme.md)** ：可以使用 Cosmos DB 和 Spark 减少维护大数据管道所造成的操作开销。
 
 ## <a name="more-information"></a>更多信息
@@ -327,5 +327,4 @@ mvn clean package
 
 此外，还可以查看 [Apache Spark SQL、数据帧和数据集指南](https://spark.apache.org/docs/latest/sql-programming-guide.html)以及 [Azure HDInsight 上的 Apache Spark](../hdinsight/spark/apache-spark-jupyter-spark-sql.md) 一文。
 
-<!--Update_Description: wording update -->
-
+<!-- Update_Description: update meta properties, wording update, update link -->

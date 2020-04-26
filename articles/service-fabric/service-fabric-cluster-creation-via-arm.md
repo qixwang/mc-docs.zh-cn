@@ -3,14 +3,14 @@ title: 创建 Azure Service Fabric 群集
 description: 了解如何使用 Azure 资源管理器在 Azure 中设置安全的 Service Fabric 群集。  可以使用默认模板或自己的群集模板创建群集。
 ms.topic: conceptual
 origin.date: 08/16/2018
+ms.date: 04/13/2020
 ms.author: v-yeche
-ms.date: 01/06/2020
-ms.openlocfilehash: 2074fbdb35a06fd932cd7fb320d066da0764a157
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: f0a5eb834604398d995378056e8bf0148f892be6
+ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742362"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82093391"
 ---
 # <a name="create-a-service-fabric-cluster-using-azure-resource-manager"></a>使用 Azure 资源管理器创建 Service Fabric 群集 
 > [!div class="op_single_selector"]
@@ -27,7 +27,7 @@ ms.locfileid: "75742362"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必备条件 
+## <a name="prerequisites"></a>先决条件 
 在本文中，使用 Service Fabric RM powershell 或 Azure CLI 模块部署群集：
 
 * [Azure PowerShell 4.1 及更高版本][azure-powershell]
@@ -266,7 +266,7 @@ $parameterFilePath="c:\mytemplates\mytemplate.json"
 $templateFilePath="c:\mytemplates\mytemplateparm.json"
 $secretID="https://test1.vault.azure.cn:443/secrets/testcertificate4/55ec7c4dc61a462bbc645ffc9b4b225f"
 
-New-AzServiceFabricCluster -ResourceGroupName $resourceGroupName -SecretIdentifier $secretId -TemplateFile $templateFilePath -ParameterFile $parameterFilePath 
+New-AzServiceFabricCluster -ResourceGroupName $resourceGroupName -SecretIdentifier $secretID -TemplateFile $templateFilePath -ParameterFile $parameterFilePath 
 ```
 
 使用 Azure CLI 部署群集：
@@ -275,11 +275,11 @@ New-AzServiceFabricCluster -ResourceGroupName $resourceGroupName -SecretIdentifi
 declare $resourceGroupName = "testRG"
 declare $parameterFilePath="c:\mytemplates\mytemplate.json"
 declare $templateFilePath="c:\mytemplates\mytemplateparm.json"
-declare $secertId="https://test1.vault.azure.cn:443/secrets/testcertificate4/55ec7c4dc61a462bbc645ffc9b4b225f"
+declare $secretID="https://test1.vault.azure.cn:443/secrets/testcertificate4/55ec7c4dc61a462bbc645ffc9b4b225f"
 
 az sf cluster create --resource-group $resourceGroupName --location $resourceGroupLocation  \
-    --secret-identifier az $secretID  \
-    --template-file $templateFilePath --parameter-file $parametersFilePath 
+    --secret-identifier $secretID  \
+    --template-file $templateFilePath --parameter-file $parameterFilePath 
 ```
 
 ## <a name="next-steps"></a>后续步骤

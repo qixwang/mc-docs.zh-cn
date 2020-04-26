@@ -2,18 +2,18 @@
 title: 使用 .NET SDK 将数据批量导入 Azure Cosmos DB SQL API 帐户
 description: 了解如何通过生成 .NET 控制台应用程序将数据导入或引入到 Azure Cosmos DB 来优化导入数据所需的预配吞吐量 (RU/s)
 author: rockboyfor
-ms.author: v-yeche
 ms.service: cosmos-db
 ms.topic: tutorial
 origin.date: 11/04/2019
-ms.date: 02/10/2020
+ms.date: 04/27/2020
+ms.author: v-yeche
 ms.reviewer: sngun
-ms.openlocfilehash: 25790b12f4de6a66e50112e88bcaf01f587f08d2
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 37d913dd3e6a9fc373c73cbd0fe9ef3a2ab9d807
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77068333"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134876"
 ---
 # <a name="bulk-import-data-to-azure-cosmos-db-sql-api-account-by-using-the-net-sdk"></a>使用 .NET SDK 将数据批量导入 Azure Cosmos DB SQL API 帐户
 

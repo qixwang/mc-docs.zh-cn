@@ -9,12 +9,12 @@ ms.date: 02/10/2020
 ms.author: v-yeche
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: 21289f08b61106802e0621b8e0e34ca726bc70b2
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 2a1935bb1895507229f47884b5ee1aa111597928
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77068340"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134883"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>排查使用 Azure Cosmos DB 时遇到的查询问题
 
@@ -402,3 +402,4 @@ WHERE c.foodGroup = "Vegetables and Vegetable Products" AND c._ts > 1575503264
 * [.NET SDK 性能提示](performance-tips.md)
 
 <!-- Update_Description: update meta properties, wording update, update link -->
+

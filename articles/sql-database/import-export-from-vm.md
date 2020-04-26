@@ -11,13 +11,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: ''
 origin.date: 01/08/2020
-ms.date: 02/17/2020
-ms.openlocfilehash: 27bee0f98efffb91bda87c5fb41917eddf9566bc
-ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
+ms.date: 04/27/2020
+ms.openlocfilehash: df3e592ef60a8d7e7b2be13f5edf21cb97dd88c7
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2020
-ms.locfileid: "79497302"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126812"
 ---
 # <a name="import-or-export-an-azure-sql-database-without-allowing-azure-services-to-access-the-server"></a>导入或导出 Azure SQL 数据库但不允许 Azure 服务访问服务器
 
@@ -55,7 +55,7 @@ ms.locfileid: "79497302"
 
 4. 关闭“连接到虚拟机”窗体。 
 5. 若要连接到 VM，请打开下载的 RDP 文件。
-6. 出现提示时，选择“连接”  。 在 Mac 上，需要一个 RDP 客户端，例如 Mac 应用商店提供的这个[远程桌面客户端](https://itunes.apple.com/us/app/microsoft-remote-desktop/id715768417?mt=12)。
+6. 出现提示时，选择“连接”  。 在 Mac 上，需要一个 RDP 客户端，例如 Mac 应用商店提供的这个[远程桌面客户端](https://apps.apple.com/app/microsoft-remote-desktop-10/id1295203466?mt=12)。
 
 7. 输入在创建虚拟机时指定的用户名和密码，然后选择“确定”。 
 

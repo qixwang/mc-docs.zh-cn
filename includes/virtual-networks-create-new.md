@@ -6,15 +6,15 @@ author: rockboyfor
 ms.service: virtual-network
 ms.topic: include
 origin.date: 03/01/2020
-ms.date: 03/23/2020
+ms.date: 04/13/2020
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: 17f181408710661fb855b33a53955a943d33056a
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 84d7f23b59bd092a73dce273130ce9fed3a26953
+ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80109795"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82093383"
 ---
 ## <a name="create-the-virtual-network"></a>创建虚拟网络
 
@@ -55,3 +55,5 @@ ms.locfileid: "80109795"
 8. 选择“查看 + 创建”  选项卡，或选择“查看 + 创建”  按钮。
 
 9. 选择“创建”  。
+
+<!-- Update_Description: update meta properties, wording update, update link -->

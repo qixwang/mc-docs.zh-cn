@@ -5,14 +5,14 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 07/17/2019
-ms.date: 02/10/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: 81cb2a2171544f13fbb4a1f3eb7eae99057fd2d6
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 633b9eb99dcaeed652983fef4aebf6257becf6b5
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77028746"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134708"
 ---
 <!--Verify sucessfully-->
 # <a name="serverless-database-computing-using-azure-cosmos-db-and-azure-functions"></a>使用 Azure Cosmos DB 和 Azure Functions 的无服务器数据库计算
@@ -111,7 +111,7 @@ Azure Cosmos DB 和 Azure Functions 支持采用以下方式集成数据库和�
 
 在 Azure 门户和 Visual Studio 2019 中可以本机集成 Azure Cosmos DB 和 Azure Functions。
 
-* 可在 Azure Functions 门户中创建触发器。 有关快速入门说明，请参阅[在 Azure 门户中创建适用于 Cosmos DB 的 Azure Functions 触发器](/azure-functions/functions-create-cosmos-db-triggered-function)。
+* 可在 Azure Functions 门户中创建触发器。 有关快速入门说明，请参阅[在 Azure 门户中创建适用于 Cosmos DB 的 Azure Functions 触发器](../azure-functions/functions-create-cosmos-db-triggered-function.md)。
 * 在 Azure Cosmos DB 门户中，可将适用于 Cosmos DB 的 Azure Functions 触发器添加到同一资源组中的现有 Azure 函数应用。
 * 在 Visual Studio 2019 中，可以使用 [Azure Functions 工具](../azure-functions/functions-develop-vs.md)创建触发器：
 
@@ -147,9 +147,9 @@ Azure Functions 的优点：
 
 现在让我们真正连接 Azure Cosmos DB 和 Azure Functions： 
 
-* [在 Azure 门户中创建适用于 Cosmos DB 的 Azure Functions 触发器](/azure-functions/functions-create-cosmos-db-triggered-function)
-* [使用 Azure Cosmos DB 输入绑定创建 Azure Functions HTTP 触发器](/azure-functions/functions-bindings-cosmosdb)
-* [Azure Cosmos DB 绑定和触发器](../azure-functions/functions-bindings-cosmosdb.md)
+* [在 Azure 门户中创建适用于 Cosmos DB 的 Azure Functions 触发器](../azure-functions/functions-create-cosmos-db-triggered-function.md)
+* [使用 Azure Cosmos DB 输入绑定创建 Azure Functions HTTP 触发器](../azure-functions/functions-bindings-cosmosdb.md?tabs=csharp)
+* [Azure Cosmos DB 绑定和触发器](../azure-functions/functions-bindings-cosmosdb-v2.md)
 
 <!--Verify sucessfully-->
 <!-- Update_Description: update meta properties, wording update, update link -->

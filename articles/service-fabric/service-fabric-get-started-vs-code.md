@@ -4,14 +4,14 @@ description: 本文概述如何使用 Visual Studio Code 创建 Service Fabric �
 author: rockboyfor
 ms.topic: article
 origin.date: 06/29/2018
-ms.date: 02/24/2020
+ms.date: 04/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 626f64da8ba02b38f0b7097d2962427f051605c2
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 98637989d09487358bb15b59ac25e3912888a60a
+ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79292024"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82093450"
 ---
 # <a name="service-fabric-for-visual-studio-code"></a>Service Fabric for Visual Studio Code
 
@@ -49,7 +49,7 @@ ms.locfileid: "79292024"
 必须为 .NET Core/C# 开发安装以下必备组件：
 
 * [.NET Core](https://www.microsoft.com/net/learn/get-started)（2.0.0 或更高版本）
-* 调试 C# 服务时所需的 [C# for Visual Studio Code (Powered by OmniSharp) VS Code 扩展](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)。 可通过以下方法之一安装该扩展：在 VS Code 中的**活动栏**上单击“扩展”图标并搜索该扩展，或者从 VS Code 市场安装。
+* 调试 C# 服务时所需的 [C# for Visual Studio Code (Powered by OmniSharp) VS Code 扩展](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)。 可通过以下方法之一安装该扩展：在 VS Code 中的**活动栏**上单击“扩展”图标并搜索该扩展，或者从 VS Code 市场安装。
 
 ## <a name="setup"></a>设置
 
@@ -130,4 +130,4 @@ ms.locfileid: "79292024"
 * 了解如何[使用 VS Code 开发和调试 C# Service Fabric 应用程序](./service-fabric-develop-csharp-applications-with-vs-code.md)。
 * 了解如何[使用 VS Code 开发和调试 Java Service Fabric 应用程序](./service-fabric-develop-java-applications-with-vs-code.md)。
 
-<!-- Update_Description: update link, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

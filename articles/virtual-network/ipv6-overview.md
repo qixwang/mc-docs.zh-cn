@@ -10,14 +10,15 @@ ms.service: virtual-network
 ms.devlang: NA
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 01/13/2020
+origin.date: 12/19/2019
+ms.date: 04/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: c4da34b1bdd339b5584eae6b34f53b34b5a638b1
-ms.sourcegitcommit: bc5f8b4f8ccd7c723f64055825508d1dfcc2162b
+ms.openlocfilehash: c12365bc4412545581124918e4ce57eb1a246c25
+ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75859218"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82093325"
 ---
 # <a name="what-is-ipv6-for-azure-virtual-network"></a>Azure 虚拟网络 IPv6 是什么？
 
@@ -68,7 +69,7 @@ Azure VNet IPv6 提供以下功能：
     - 可以通过负载均衡规则的“浮动 IP”功能，在后端实例上重复使用可选的 IPv6 端口  
 - [标准 IPv6 内部负载均衡器](ipv6-dual-stack-standard-internal-load-balancer-powershell.md)支持在 Azure VNET 内部创建弹性多层应用程序。  
 - 基本 IPv6 公共负载均衡器支持与传统部署实现兼容
-- [保留的 IPv6 公共 IP 地址和地址范围](ipv6-public-ip-address-prefix.md)提供稳定、可预测的 IPv6 地址，方便将公司和客户的 Azure 托管应用程序列入允许列表。
+- [保留的 IPv6 公共 IP 地址和地址范围](ipv6-public-ip-address-prefix.md)提供稳定、可预测的 IPv6 地址，方便将公司和客户的 Azure 托管应用程序列入白名单。
 - 实例级公共 IP 提供与单个 VM 的 IPv6 Internet 直接连接。
 - [将 IPv6 添加到现有的仅使用 IPv4 的部署](ipv6-add-to-existing-vnet-powershell.md) - 使用此功能可以轻松将 IPv6 连接添加到现有的仅使用 IPv4 的部署，而无需重新创建部署。  在此过程中 IPv4 网络流量不受影响，因此，根据应用程序和 OS，有时甚至可以将 IPv6 添加到实时服务。    
 - 可让 Internet 客户端使用所选的协议，凭借 Azure DNS 对 IPv6 (AAAA) 记录的支持无缝访问双堆栈应用程序。 
@@ -76,7 +77,7 @@ Azure VNet IPv6 提供以下功能：
 - [虚拟网络 (VNET) 对等互连](virtual-network-peering-overview.md) - 区域内部和全球对等互连 - 可以无缝连接双堆栈 VNET - 对等互连网络中的 VM 上的 IPv4 和 IPv6 终结点能够相互通信。 将部署过渡到双堆栈时，甚至可以将双堆栈对等互连到仅使用 IPv4 的 VNET。 
 - 可以使用负载均衡器指标/警报与网络观察程序功能（例如数据包捕获、NSG 流日志、连接故障排除和连接监视）实现 IPv6 故障排除与诊断。   
 
-## <a name="scope"></a>作用域
+## <a name="scope"></a>范围
 Azure VNET IPv6 是一个基础功能集，可让客户在 Azure 中托管双堆栈 (IPv4 + IPv6) 应用程序。  我们有意不断地将 IPv6 支持添加到更多的 Azure 网络功能，最终提供 Azure PaaS 服务的双堆栈版本，但在此过程中，仍可以通过双堆栈虚拟机上的 IPv4 终结点访问所有 Azure PaaS 服务。   
 
 ## <a name="limitations"></a>限制

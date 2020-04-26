@@ -3,14 +3,14 @@ title: 为 Windows 群集启用磁盘加密
 description: 本文介绍如何在 Azure 资源管理器中使用 Azure Key Vault 为 Azure Service Fabric 群集节点启用磁盘加密。
 ms.topic: article
 origin.date: 03/22/2019
-ms.date: 02/24/2020
+ms.date: 04/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: fcea17a7684b588d6a02f7487a7044f466a27337
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.openlocfilehash: a9d24ff3c7a81583f5a6d6fef7bc0e214e9ed9f3
+ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77540433"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82093453"
 ---
 # <a name="enable-disk-encryption-for-azure-service-fabric-cluster-nodes-in-windows"></a>为 Windows 中的 Azure Service Fabric 群集节点启用磁盘加密 
 > [!div class="op_single_selector"]
@@ -33,7 +33,7 @@ ms.locfileid: "77540433"
 
 **自我注册** 
 
-针对虚拟机规模集的磁盘加密预览版需要自我注册。 使用以下步骤： 
+针对虚拟机规模集的磁盘加密预览版需要自我注册。 请使用以下步骤： 
 
 1. 首先运行以下命令：
     ```powershell
@@ -44,7 +44,7 @@ ms.locfileid: "77540433"
     Get-AzProviderFeature -ProviderNamespace "Microsoft.Compute" -FeatureName "UnifiedDiskEncryption"
     Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
     ```
-**Azure 密钥保管库** 
+**Azure Key Vault** 
 
 1. 在规模集所在的同一订阅和区域中创建 Key Vault，然后在该 Key Vault 中使用相应的 PowerShell cmdlet 选择“EnabledForDiskEncryption”访问策略。  也可以运行以下命令，在 Azure 门户中使用 Azure Key Vault UI 设置策略。
     ```powershell
@@ -53,7 +53,7 @@ ms.locfileid: "77540433"
 2. 安装最新版本的 [Azure CLI](https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest)，其中包含新的加密命令。
 3. 安装最新版本的 [Azure PowerShell 中的 Azure SDK](https://github.com/Azure/azure-powershell/releases)。 以下是在规模集实例上启用 ([Set](https://docs.microsoft.com/powershell/module/az.compute/set-azvmssdiskencryptionextension)) 加密、检索 ([Get](https://docs.microsoft.com/powershell/module/az.compute/get-azvmssvmdiskencryption)) 加密状态以及删除 ([disable](https://docs.microsoft.com/powershell/module/az.compute/disable-azvmssdiskencryption)) 加密所需的虚拟机规模集 Azure 磁盘加密 cmdlet。
 
-    | 命令 | 版本 |  Source  |
+    | Command | 版本 |  源  |
     | ------------- |-------------| ------------|
     | Get-AzVmssDiskEncryptionStatus   | 1.0.0 或更高版本 | Az.Compute |
     | Get-AzVmssVMDiskEncryptionStatus   | 1.0.0 或更高版本 | Az.Compute |
@@ -193,7 +193,7 @@ Disable-AzVmssDiskEncryption -ResourceGroupName $rgName -VMScaleSetName $VmssNam
 
 ```
 
-```CLI
+```azurecli
 
 az vmss encryption disable -g <resourceGroupName> -n <VMSS name>
 
@@ -204,5 +204,4 @@ az vmss encryption disable -g <resourceGroupName> -n <VMSS name>
 
 [customize-your-cluster-template]: https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure#creating-a-custom-arm-template
 
-<!-- Update_Description: new article about service fabric enable azure disk encryption windows -->
-<!--NEW.date: 12/16/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

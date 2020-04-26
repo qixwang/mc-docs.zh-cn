@@ -3,25 +3,22 @@ title: 获取用于调用 Web API 的令牌（移动应用）| Azure
 titleSuffix: Microsoft identity platform
 description: 了解如何构建用于调用 Web API 的移动应用。 （获取应用的令牌。）
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/25/2020
+ms.date: 04/22/2020
 ms.author: v-junlch
-ms.reviwer: brandwe
+ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 9916f34ff4d751f201d7390d37c039850a90f507
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.openlocfilehash: 74b95f29ef2e81fbb37750fdefd7ab15d25fec3a
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77653167"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126456"
 ---
 # <a name="get-a-token-for-a-mobile-app-that-calls-web-apis"></a>获取调用 Web API 的移动应用的令牌
 
@@ -29,7 +26,7 @@ ms.locfileid: "77653167"
 
 ## <a name="define-a-scope"></a>定义范围
 
-请求令牌时，需定义范围。 范围决定了应用能够访问哪些数据。  
+请求令牌时，需定义作用域。 作用域决定了应用能够访问哪些数据。
 
 定义范围的最简单方法是将所需 Web API 的 `App ID URI` 与范围 `.default` 组合在一起。 此定义告知 Microsoft 标识平台，应用需要在门户中设置的所有范围。
 
@@ -44,7 +41,7 @@ let scopes = ["https://microsoftgraph.chinacloudapi.cn/.default"]
 ```
 
 ### <a name="xamarin"></a>Xamarin
-```csharp 
+```csharp
 var scopes = new [] {"https://microsoftgraph.chinacloudapi.cn/.default"};
 ```
 
@@ -75,13 +72,13 @@ sampleApp.getAccounts(new PublicClientApplication.AccountsLoadedCallback() {
             /* No accounts or > 1 account. */
         }
     }
-});    
+});
 
 [...]
 
 // No accounts found. Interactively request a token.
 // TODO: Create an interactive callback to catch successful or failed requests.
-sampleApp.acquireToken(getActivity(), SCOPES, getAuthInteractiveCallback());        
+sampleApp.acquireToken(getActivity(), SCOPES, getAuthInteractiveCallback());
 ```
 
 #### <a name="ios"></a>iOS
@@ -92,22 +89,22 @@ sampleApp.acquireToken(getActivity(), SCOPES, getAuthInteractiveCallback());
 
 NSArray *scopes = @[@"https://microsoftgraph.chinacloudapi.cn/.default"];
 NSString *accountIdentifier = @"my.account.id";
-    
+
 MSALAccount *account = [application accountForIdentifier:accountIdentifier error:nil];
-    
+
 MSALSilentTokenParameters *silentParams = [[MSALSilentTokenParameters alloc] initWithScopes:scopes account:account];
 [application acquireTokenSilentWithParameters:silentParams completionBlock:^(MSALResult *result, NSError *error) {
-        
+
     if (!error)
     {
         // You'll want to get the account identifier to retrieve and reuse the account
         // for later acquireToken calls
         NSString *accountIdentifier = result.account.identifier;
-            
-        // Access token to call the Web API
+
+        // Access token to call the web API
         NSString *accessToken = result.accessToken;
     }
-        
+
     // Check the error
     if (error && [error.domain isEqual:MSALErrorDomain] && error.code == MSALErrorInteractionRequired)
     {
@@ -116,34 +113,34 @@ MSALSilentTokenParameters *silentParams = [[MSALSilentTokenParameters alloc] ini
     }
 }];
 ```
- 
+
 ```swift
 
 let scopes = ["https://microsoftgraph.chinacloudapi.cn/.default"]
 let accountIdentifier = "my.account.id"
-        
+
 guard let account = try? application.account(forIdentifier: accountIdentifier) else { return }
 let silentParameters = MSALSilentTokenParameters(scopes: scopes, account: account)
 application.acquireTokenSilent(with: silentParameters) { (result, error) in
-            
+
     guard let authResult = result, error == nil else {
-                
+
     let nsError = error! as NSError
-                
+
     if (nsError.domain == MSALErrorDomain &&
         nsError.code == MSALError.interactionRequired.rawValue) {
-                    
+
             // Interactive auth will be required, call acquireToken()
             return
          }
          return
      }
-            
+
     // You'll want to get the account identifier to retrieve and reuse the account
     // for later acquireToken calls
     let accountIdentifier = authResult.account.identifier
-            
-    // Access token to call the Web API
+
+    // Access token to call the web API
     let accessToken = authResult.accessToken
 }
 ```
@@ -152,15 +149,15 @@ application.acquireTokenSilent(with: silentParameters) { (result, error) in
 
 ```objc
 UIViewController *viewController = ...; // Pass a reference to the view controller that should be used when getting a token interactively
-MSALWebviewParameters *webParameters = [[MSALWebviewParameters alloc] initWithParentViewController:viewController];
+MSALWebviewParameters *webParameters = [[MSALWebviewParameters alloc] initWithAuthPresentationViewController:viewController];
 MSALInteractiveTokenParameters *interactiveParams = [[MSALInteractiveTokenParameters alloc] initWithScopes:scopes webviewParameters:webParameters];
 [application acquireTokenWithParameters:interactiveParams completionBlock:^(MSALResult *result, NSError *error) {
-    if (!error) 
+    if (!error)
     {
         // You'll want to get the account identifier to retrieve and reuse the account
         // for later acquireToken calls
         NSString *accountIdentifier = result.account.identifier;
-            
+
         NSString *accessToken = result.accessToken;
     }
 }];
@@ -168,15 +165,15 @@ MSALInteractiveTokenParameters *interactiveParams = [[MSALInteractiveTokenParame
 
 ```swift
 let viewController = ... // Pass a reference to the view controller that should be used when getting a token interactively
-let webviewParameters = MSALWebviewParameters(parentViewController: viewController)
+let webviewParameters = MSALWebviewParameters(authPresentationViewController: viewController)
 let interactiveParameters = MSALInteractiveTokenParameters(scopes: scopes, webviewParameters: webviewParameters)
 application.acquireToken(with: interactiveParameters, completionBlock: { (result, error) in
-                
+
     guard let authResult = result, error == nil else {
         print(error!.localizedDescription)
         return
     }
-                
+
     // Get access token from result
     let accessToken = authResult.accessToken
 })
@@ -210,13 +207,13 @@ catch(MsalUiRequiredException)
 
 #### <a name="mandatory-parameters-in-msalnet"></a>MSAL.NET 中的必需参数
 
-`AcquireTokenInteractive` 只有一个必需的参数：`scopes`。 `scopes` 参数枚举用于定义所需令牌范围的字符串。 如果令牌用于 Microsoft Graph，可以在每个 Microsoft Graph API 的 API 参考文档中找到所需的范围。 参阅参考文档中的“权限”部分。 
+`AcquireTokenInteractive` 只有一个必需的参数：`scopes`。 `scopes` 参数枚举用于定义所需令牌范围的字符串。 如果令牌用于 Microsoft Graph，可以在每个 Microsoft Graph API 的 API 参考文档中找到所需的范围。 参阅参考文档中的“权限”部分。
 
 在 Android 上，可以在使用 `PublicClientApplicationBuilder` 创建应用时指定父活动。 如果当时未指定父活动，以后可以使用 `.WithParentActivityOrWindow` 来指定，如以下部分中所述。 如果指定了父活动，交互后，令牌将交回给该父活动。 如果未指定父活动，`.ExecuteAsync()` 调用将引发异常。
 
 #### <a name="specific-optional-parameters-in-msalnet"></a>MSAL.NET 中特定的可选参数
 
-以下部分介绍 MSAL.NET 中的可选参数。 
+以下部分介绍 MSAL.NET 中的可选参数。
 
 ##### <a name="withprompt"></a>WithPrompt
 
@@ -226,19 +223,19 @@ catch(MsalUiRequiredException)
 
 该类定义以下常量：
 
-- `SelectAccount` 强制安全令牌服务 (STS) 显示帐户选择对话框。 该对话框包含用户与其建立了会话的帐户。 若要让用户在不同的标识之间进行选择，可以使用此选项。 此选项会驱动 MSAL 向标识提供者发送 `prompt=select_account`。 
-    
+- `SelectAccount` 强制安全令牌服务 (STS) 显示帐户选择对话框。 该对话框包含用户与其建立了会话的帐户。 若要让用户在不同的标识之间进行选择，可以使用此选项。 此选项会驱动 MSAL 向标识提供者发送 `prompt=select_account`。
+
     `SelectAccount` 常量是默认值，它根据可用信息有效提供可能最佳的体验。 可用信息可能包括帐户、用户会话存在性等。 除非有合理的理由，否则请不要更改此默认值。
-- `Consent` 用于提示用户授予许可，即使以前曾经授予过许可。 在这种情况下，MSAL 会将 `prompt=consent` 发送到标识提供者。 
+- `Consent` 用于提示用户授予许可，即使以前曾经授予过许可。 在这种情况下，MSAL 会将 `prompt=consent` 发送到标识提供者。
 
     你可能希望在注重安全的应用程序中使用 `Consent` 常量。在此类应用程序中，组织监管政策要求用户在每次使用该应用程序时都会看到许可对话框。
-- `ForceLogin` 使服务能够提示用户提供凭据，即使并不需要提示。 
+- `ForceLogin` 使服务能够提示用户提供凭据，即使并不需要提示。
 
     如果令牌获取失败，而你想要让用户重新登录，则此选项会很有用。 在这种情况下，MSAL 会将 `prompt=login` 发送到标识提供者。 你可能希望在注重安全的应用程序中使用此选项。在此类应用程序中，组织监管政策要求用户在每次访问该应用程序的特定部分时都要登录。
 - `Never` 仅适用于 .NET 4.5 和 Windows 运行时 (WinRT)。 此常量不会提示用户，而是尝试使用隐藏的嵌入式 Web 视图中存储的 Cookie。 有关详细信息，请参阅[在 MSAL.NET 中使用 Web 浏览器](/active-directory/develop/msal-net-web-browsers)。
 
     如果此选项失败，则 `AcquireTokenInteractive` 会引发异常，告知需要进行 UI 交互。 然后，需要使用另一个 `Prompt` 参数。
-- `NoPrompt` 不会向标识提供者发送提示。 
+- `NoPrompt` 不会向标识提供者发送提示。
 
     此选项仅适用于 Azure Active Directory B2C 中的编辑配置文件策略。 有关详细信息，请参阅 [B2C 细节](https://aka.ms/msal-net-b2c-specificities)。
 
@@ -246,7 +243,7 @@ catch(MsalUiRequiredException)
 
 在你希望用户提前许可多个资源的高级方案中使用 `WithExtraScopeToConsent` 修饰符。 如果你不想要使用增量许可（这种许可通常与 MSAL.NET 或 Microsoft 标识平台 2.0 配合使用），可以使用此修饰符。 有关详细信息，请参阅[让用户提前许可多个资源](scenario-desktop-production.md#have-the-user-consent-upfront-for-several-resources)。
 
-下面是代码示例： 
+下面是代码示例：
 
 ```csharp
 var result = await app.AcquireTokenInteractive(scopesForCustomerApi)
@@ -262,7 +259,7 @@ var result = await app.AcquireTokenInteractive(scopesForCustomerApi)
 
 建议不要直接使用协议来获取令牌。 如果这样做，应用将不支持某些涉及单一登录 (SSO)、设备管理和条件访问的方案。
 
-使用协议获取移动应用的令牌时，请发出两个请求： 
+使用协议获取移动应用的令牌时，请发出两个请求：
 
 * 获取授权代码
 * 用该代码交换令牌。
@@ -298,4 +295,3 @@ client_id=<CLIENT_ID>
 > [!div class="nextstepaction"]
 > [调用 Web API](scenario-mobile-call-api.md)
 
-<!-- Update_Description: wording update -->

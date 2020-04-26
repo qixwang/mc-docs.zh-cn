@@ -5,14 +5,14 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 08/15/2019
-ms.date: 09/30/2019
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: 3532825e494d3b2639844ad4a293882132774488
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 73904ef3be93c8e974cf51aab0f91e3d302ea062
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "71306745"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134643"
 ---
 # <a name="use-the-change-feed-estimator"></a>使用更改源估算器
 
@@ -35,7 +35,6 @@ ms.locfileid: "71306745"
 例如，如果更改源处理器定义如下：
 
 ```csharp
-
 Container leaseContainer = client.GetContainer(databaseId, Program.leasesContainer);
 Container monitoredContainer = client.GetContainer(databaseId, Program.monitoredContainer);
 ChangeFeedProcessor changeFeedProcessor = monitoredContainer
@@ -49,7 +48,6 @@ ChangeFeedProcessor changeFeedProcessor = monitoredContainer
 那么，若要初始化某个估算器来度量该处理器，正确的方式是使用 `GetChangeFeedEstimatorBuilder`，如下所示：
 
 ```csharp
-
 ChangeFeedProcessor changeFeedEstimator = monitoredContainer
     .GetChangeFeedEstimatorBuilder("changeFeedEstimator", Program.HandleEstimationAsync, TimeSpan.FromMilliseconds(1000))
     .WithLeaseContainer(leaseContainer)
@@ -64,7 +62,6 @@ ChangeFeedProcessor changeFeedEstimator = monitoredContainer
 例如，下面是用于接收估算的委托：
 
 ```csharp
-
 static async Task HandleEstimationAsync(long estimation, CancellationToken cancellationToken)
 {
     if (estimation > 0)

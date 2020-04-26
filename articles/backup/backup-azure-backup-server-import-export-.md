@@ -8,12 +8,12 @@ ms.topic: conceptual
 origin.date: 1/28/2020
 ms.date: 03/06/2020
 ms.author: v-lingwu
-ms.openlocfilehash: 7f887e73654272ce66b64d645aa8edb8d7a50b10
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 1f3be7efa4ffa3e29b5dff019a0a7e4eb790eded
+ms.sourcegitcommit: b80d236ce3c706abc25bbaa41b0ccddd896e48fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79290851"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81873153"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server"></a>DPM 和 Azure 备份服务器的脱机备份工作流
 
@@ -120,7 +120,7 @@ Azure 备份的脱机种子设定过程与 [Azure 导入/导出服务](../storag
     >[!NOTE]
     > 若要查找 Azure 用户 ID，请执行以下步骤之一：
     >
-    >* 在已连接到 Azure 的 PowerShell 中运行 `Get-AzureRmADUser -UserPrincipalName �Account Holder�s email as appears in the portal�` 命令。
+    >* 在已连接到 Azure 的 PowerShell 中运行 `Get-AzureRmADUser -UserPrincipalName "Account Holder's email as appears in the portal"` 命令。
     >* 转到注册表路径 `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\DbgSettings\OnlineBackup; Name: CurrentUserId;`。
 
 1. 右键单击在上一步骤中添加的字符串并选择“修改”。  在“值”中，提供在步骤 7 中导出的证书的指纹。 然后选择“确定”。 

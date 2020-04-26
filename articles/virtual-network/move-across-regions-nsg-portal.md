@@ -5,14 +5,14 @@ author: rockboyfor
 ms.service: virtual-network
 ms.topic: article
 origin.date: 08/31/2019
-ms.date: 01/06/2020
+ms.date: 04/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 1382a0d5dbdfbca5b3a0319f7da1134718a3db89
-ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
+ms.openlocfilehash: c806b7856927c149503f6721b8b59f733ac3c772
+ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599820"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82093312"
 ---
 # <a name="move-azure-network-security-group-nsg-to-another-region-using-the-azure-portal"></a>使用 Azure 门户将 Azure 网络安全组 (NSG) 移到另一个区域
 
@@ -32,7 +32,7 @@ Azure 安全组不能从一个区域移到另一个区域。 但是，可以使�
 
 - 验证 Azure 订阅是否允许在已使用的目标区域中创建 NSG。 请联系支持部门，启用所需配额。
 
-- 确保订阅提供足够的资源，以便为此过程添加 NSG。  请参阅 [Azure 订阅和服务限制、配额和约束](/azure-subscription-service-limits#networking-limits)。
+- 确保订阅提供足够的资源，以便为此过程添加 NSG。  请参阅 [Azure 订阅和服务限制、配额和约束](/azure-resource-manager/management/azure-subscription-service-limits#networking-limits)。
 
 ## <a name="prepare-and-move"></a>准备并移动
 以下步骤说明如何使用资源管理器模板准备网络安全组，以进行配置和安全规则的移动，并使用门户将 NSG 配置和安全规则移到目标区域。
@@ -178,5 +178,4 @@ Azure 安全组不能从一个区域移到另一个区域。 但是，可以使�
 - [将资源移到新资源组或订阅中](/azure-resource-manager/resource-group-move-resources)
 - [将 Azure VM 移到另一区域](/site-recovery/azure-to-azure-tutorial-migrate)
 
-<!-- Update_Description: new article about move across regions nsg portal -->
-<!--NEW.date: 01/06/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

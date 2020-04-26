@@ -6,15 +6,15 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: include
 origin.date: 04/06/2018
-ms.date: 02/10/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: 37a3ac9bcd2b999e521e4ce65c4df1342cd883cb
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: f49ba1ae6d612afaf2e8370be4b0b2c4a7215d2f
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77067914"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134898"
 ---
 创建 Azure 存储帐户的最简单方法是使用 [Azure 门户](https://portal.azure.cn)。 若要了解更多信息，请参阅 [创建存储帐户](../articles/storage/common/storage-account-create.md)。
 

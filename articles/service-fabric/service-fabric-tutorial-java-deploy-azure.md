@@ -4,15 +4,15 @@ description: 本教程介绍如何将 Java Service Fabric 应用程序部署到 
 author: rockboyfor
 ms.topic: tutorial
 origin.date: 02/26/2018
-ms.date: 01/13/2020
+ms.date: 04/13/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 18899a4361b52310ee3c4f9c6e66b802403a734c
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: 988cbfc8a0a5bf8a38312528acdaa8399e8c9f89
+ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742032"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82093504"
 ---
 # <a name="tutorial-deploy-a-java-application-to-a-service-fabric-cluster-in-azure"></a>教程：将 Java 应用程序部署到 Azure 中的 Service Fabric 群集
 
@@ -24,7 +24,7 @@ ms.locfileid: "75742032"
 > * 在 Azure 中创建安全的 Linux 群集
 > * 将应用程序部署到群集
 
-在此系列教程中，你将学习如何：
+在此系列教程中，你会学习如何：
 
 > [!div class="checklist"]
 > * [生成 Java Service Fabric Reliable Services 应用程序](service-fabric-tutorial-create-java-app.md)
@@ -43,7 +43,7 @@ ms.locfileid: "75742032"
 * 安装用于 [Mac](service-fabric-get-started-mac.md) 或 [Linux](service-fabric-get-started-linux.md) 的 Service Fabric SDK
 * [安装 Python 3](https://wiki.python.org/moin/BeginnersGuide/Download)
 
-## <a name="create-a-service-fabric-cluster-in-azure"></a>在 Azure 中创建 Service Fabric 群集
+## <a name="create-a-service-fabric-cluster-in-azure"></a>缩放 Azure 中的 Service Fabric 群集
 
 以下步骤创建的资源是将应用程序部署到 Service Fabric 群集所必需的。 另外还会设置通过 ELK（Elasticsearch、Logstash、Kibana）堆栈监视解决方案的运行状况所需的资源。 具体说来，[事件中心](https://www.azure.cn/home/features/event-hubs/)用作接收器，接收来自 Service Fabric 的日志。 根据配置，它可以将日志从 Service Fabric 群集发送到 Logstash 实例。
 
@@ -55,13 +55,13 @@ ms.locfileid: "75742032"
 
 2. 登录到 Azure 帐户
 
-    ```bash
+    ```azurecli
     az login
     ```
 
 3. 设置需要用于创建资源的 Azure 订阅
 
-    ```bash
+    ```azurecli
     az account set --subscription [SUBSCRIPTION-ID]
     ```
 
@@ -75,7 +75,7 @@ ms.locfileid: "75742032"
 
     上述命令返回以下信息，该信息应该记下来供以后使用。
 
-    ```
+    ```output
     Source Vault Resource Id: /subscriptions/<subscription_id>/resourceGroups/testkeyvaultrg/providers/Microsoft.KeyVault/vaults/<name>
     Certificate URL: https://<name>.vault.azure.cn/secrets/<cluster-dns-name-for-certificate>/<guid>
     Certificate Thumbprint: <THUMBPRINT>
@@ -83,7 +83,7 @@ ms.locfileid: "75742032"
 
 5. 为存储日志的存储帐户创建一个资源组
 
-    ```bash
+    ```azurecli
     az group create --location [REGION] --name [RESOURCE-GROUP-NAME]
 
     Example: az group create --location chinanorth --name teststorageaccountrg
@@ -91,7 +91,7 @@ ms.locfileid: "75742032"
 
 6. 创建一个存储帐户，用来存储要生成的日志
 
-    ```bash
+    ```azurecli
     az storage account create -g [RESOURCE-GROUP-NAME] -l [REGION] --name [STORAGE-ACCOUNT-NAME] --kind Storage
 
     Example: az storage account create -g teststorageaccountrg -l chinanorth --name teststorageaccount --kind Storage
@@ -103,13 +103,13 @@ ms.locfileid: "75742032"
 
 8. 复制帐户 SAS URL，留待创建 Service Fabric 群集之用。 它类似于以下 URL：
 
-    ```
+    ```output
     ?sv=2017-04-17&ss=bfqt&srt=sco&sp=rwdlacup&se=2018-01-31T03:24:04Z&st=2018-01-30T19:24:04Z&spr=https,http&sig=IrkO1bVQCHcaKaTiJ5gilLSC5Wxtghu%2FJAeeY5HR%2BPU%3D
     ```
 
 9. 创建包含事件中心资源的资源组。 事件中心用于将消息从 Service Fabric 发送到运行 ELK 资源的服务器。
 
-    ```bash
+    ```azurecli
     az group create --location [REGION] --name [RESOURCE-GROUP-NAME]
 
     Example: az group create --location chinanorth --name testeventhubsrg
@@ -117,7 +117,7 @@ ms.locfileid: "75742032"
 
 10. 使用以下命令创建事件中心资源。 按提示输入 namespaceName、eventHubName、consumerGroupName、sendAuthorizationRule 和 receiveAuthorizationRule 的详细信息。
 
-    ```bash
+    ```azurecli
     az group deployment create -g [RESOURCE-GROUP-NAME] --template-file eventhubsdeploy.json
 
     Example:
@@ -160,7 +160,7 @@ ms.locfileid: "75742032"
 
     复制返回的 JSON 中的 **sr** 字段的值。 **sr** 字段值是 EventHubs 的 SAS 令牌。 以下 URL 是 **sr** 字段的示例：
 
-    ```bash
+    ```output
     https%3A%2F%testeventhub.servicebus.chinacloudapi.cn%testeventhub&sig=7AlFYnbvEm%2Bat8ALi54JqHU4i6imoFxkjKHS0zI8z8I%3D&se=1517354876&skn=sender
     ```
 
@@ -219,27 +219,20 @@ ms.locfileid: "75742032"
     ./install.sh
     ```
 
-5. 若要访问 Service Fabric Explorer，请打开最常用的浏览器，然后键入 https://testlinuxcluster.chinanorth.cloudapp.chinacloudapi.cn:19080 。 从证书存储中选择需要用来连接到此终结点的证书。 如果使用 Linux 计算机，则必须将通过 *new-service-fabric-cluster-certificate.sh* 脚本生成的证书导入到 Chrome 中，然后才能查看 Service Fabric Explorer。 如果使用 Mac，则必须将 PFX 文件安装到密钥链中。 你注意到应用程序已安装到群集上。
+5. 若要访问 Service Fabric Explorer，请打开最常用的浏览器，然后键入 `https://testlinuxcluster.chinanorth.cloudapp.chinacloudapi.cn:19080` 。 从证书存储中选择需要用来连接到此终结点的证书。 如果使用 Linux 计算机，则必须将通过 *new-service-fabric-cluster-certificate.sh* 脚本生成的证书导入到 Chrome 中，然后才能查看 Service Fabric Explorer。 如果使用 Mac，则必须将 PFX 文件安装到密钥链中。 你注意到应用程序已安装到群集上。
 
     ![SFX Java Azure](./media/service-fabric-tutorial-java-deploy-azure/sfxjavaonazure.png)
 
-6. 若要访问应用程序，请键入 https://testlinuxcluster.chinanorth.cloudapp.chinacloudapi.cn:8080
+6. 若要访问应用程序，请键入 `https://testlinuxcluster.chinanorth.cloudapp.chinacloudapi.cn:8080`
 
     ![Voting 应用 Java Azure](./media/service-fabric-tutorial-java-deploy-azure/votingappjavaazure.png)
 
-7. 若要从群集中卸载应用程序，请在 **Scripts** 文件夹中运行 *uninstall.sh* 脚本
+7. 若要从群集中卸载应用程序，请在 *Scripts* 文件夹中运行 **uninstall.sh** 脚本
 
     ```bash
     ./uninstall.sh
     ```
 
-## <a name="next-steps"></a>后续步骤
-
-在本教程中，你已学习了如何执行以下操作：
-
-> [!div class="checklist"]
-> * 在 Azure 中创建安全的 Linux 群集
-> * 创建通过 ELK 进行监视所需的资源
-
+<!--Not Available on ## Next steps-->
 <!-- Not Available on [Set up Monitoring & Diagnostics](service-fabric-tutorial-java-elk.md)-->
 <!-- Update_Description: wording update, update link  -->

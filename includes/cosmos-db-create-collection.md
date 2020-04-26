@@ -6,15 +6,15 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: include
 origin.date: 04/13/2018
-ms.date: 06/17/2019
+ms.date: 04/27/2020
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: 90fc3034d46f23000aeaeae0aca897f41827a567
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 3eef5671221a4cb3e8bb77180ff7780b915f1acd
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "67151463"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134955"
 ---
 现在可以在 Azure 门户中使用数据资源管理器工具来创建数据库和容器。 
 
@@ -28,7 +28,7 @@ ms.locfileid: "67151463"
 
     |设置|建议的值|说明
     |---|---|---|
-    |**数据库 ID**|任务|输入 ToDoList  作为新数据库的名称。 数据库名称必须包含 1 到 255 个字符，不能包含 `/, \\, #, ?` 或尾随空格。 选中“预配数据库吞吐量”选项，这样就可以在数据库中的所有容器之间共享预配给该数据库的吞吐量。  此选项还有助于节省成本。 |
+    |**数据库 ID**|任务|输入 *Tasks* 作为新数据库的名称。 数据库名称必须包含 1 到 255 个字符，不能包含 `/, \\, #, ?` 或尾随空格。 选中“预配数据库吞吐量”选项，这样就可以在数据库中的所有容器之间共享预配给该数据库的吞吐量。  此选项还有助于节省成本。 |
     |**吞吐量**|400|将吞吐量保留为每秒 400 个请求单位 (RU/s)。 如果想要减少延迟，以后可以增加吞吐量。| 
     |**容器 ID**|Items|输入 *Items* 作为新容器的名称。 容器 ID 与数据库名称的字符要求相同。|
     |**分区键**| /category| 本文中所述的示例使用 /category  作为分区键。|
@@ -37,4 +37,4 @@ ms.locfileid: "67151463"
 
     选择“确定”  。 数据资源管理器将显示新的数据库和容器。
 
-<!--Update_Description: wording update-->
+<!-- Update_Description: update meta properties, wording update, update link -->

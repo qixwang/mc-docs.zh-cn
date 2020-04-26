@@ -8,12 +8,12 @@ ms.topic: tutorial
 origin.date: 07/19/2019
 ms.date: 08/19/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 87a81c52deac3da88953e4551320789b33c4c294
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 372361e0a6cb371e58577d25484b712d5a042136
+ms.sourcegitcommit: b80d236ce3c706abc25bbaa41b0ccddd896e48fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79293156"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81873131"
 ---
 # <a name="get-started-with-log-analytics-in-azure-monitor"></a>Azure Monitor 中的 Log Analytics 入门
 
@@ -180,7 +180,7 @@ Event
 ![保存函数](media/get-started-portal/save-function.png)
 
 >[!NOTE]
->保存查询或编辑已保存的查询时，在“名称”  字段中支持以下字符 - `a�z, A�Z, 0-9, -, _, ., <space>, (, ), |`。
+>保存查询或编辑已保存的查询时，在“名称”  字段中支持以下字符 - `a-z, A-Z, 0-9, -, _, ., <space>, (, ), |`。
 
 Log Analytics 查询始终保存到选定的工作区中，并与该工作区的其他用户共享。
 

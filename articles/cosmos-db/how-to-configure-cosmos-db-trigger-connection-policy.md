@@ -5,14 +5,14 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 07/17/2019
-ms.date: 09/30/2019
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: 9a49ae999c624f940677cae0b00ca09002dd0cfc
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 02b1f487a946991d3732b1c4098af198f9d24088
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "71306832"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134923"
 ---
 # <a name="how-to-configure-the-connection-policy-used-by-azure-functions-trigger-for-cosmos-db"></a>如何配置适用于 Cosmos DB 的 Azure Functions 触发器使用的连接策略
 
@@ -24,7 +24,7 @@ ms.locfileid: "71306832"
 
 ## <a name="changing-the-connection-mode-and-protocol"></a>更改连接模式和协议
 
-有两个密钥配置设置可用于配置客户端连接策略 - **连接模式**和**连接协议**。 可以更改 Cosmos DB 的 Azure Functions 触发器和所有 [Azure Cosmos DB 绑定](../azure-functions/functions-bindings-cosmosdb-v2.md#output)使用的默认连接模式与协议。 若要更改默认设置，需要在 Azure Functions 项目或 Azure Functions 应用中找到 `host.json` 文件，并添加以下[附加设置](../azure-functions/functions-bindings-cosmosdb-v2.md#hostjson-settings)：
+有两个密钥配置设置可用于配置客户端连接策略 - **连接模式**和**连接协议**。 可以更改 Cosmos DB 的 Azure Functions 触发器和所有 [Azure Cosmos DB 绑定](../azure-functions/functions-bindings-cosmosdb-v2-output.md)使用的默认连接模式与协议。 若要更改默认设置，需要在 Azure Functions 项目或 Azure Functions 应用中找到 `host.json` 文件，并添加以下[附加设置](../azure-functions/functions-bindings-cosmosdb-v2-output.md#hostjson-settings)：
 
 ```js
 {
@@ -57,4 +57,4 @@ ms.locfileid: "71306832"
 * [Azure Cosmos DB 性能提示](./performance-tips.md)
 * [示例代码](https://github.com/ealsur/serverless-recipes/tree/master/connectionmode)
 
-<!-- Update_Description: wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

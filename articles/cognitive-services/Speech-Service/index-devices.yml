@@ -5,19 +5,19 @@ metadata:
   title: 语音设备文档 - 教程和 API 参考 - Azure 认知服务 | Microsoft Docs
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
-  author: IEvangelist
+  author: trevorbye
   manager: nitinme
   ms.service: speech-service
   ms.topic: landing-page
   origin.date: 03/10/2020
-  ms.date: 03/16/2020
+  ms.date: 04/20/2020
   ms.author: v-tawe
-  ms.openlocfilehash: 191eaf12cbaad9c8e8a4a0197a10f792c99708ba
-  ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
+  ms.openlocfilehash: dafc3ca2d060e4dd9a4eb9aa9e24f6e4967b8365
+  ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/24/2020
-  ms.locfileid: "80151689"
+  ms.lasthandoff: 04/24/2020
+  ms.locfileid: "82127070"
 landingContent:
 - title: 关于语音设备 SDK
   linkLists:

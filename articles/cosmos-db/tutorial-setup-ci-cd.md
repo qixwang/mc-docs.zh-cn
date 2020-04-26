@@ -5,15 +5,15 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: tutorial
 origin.date: 01/28/2020
-ms.date: 02/10/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
 ms.reviewer: sngun
-ms.openlocfilehash: 78083e97f85fcc1f51d24b1c8da321ba81272b72
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: ee493f4bce25bd16286fd232d7df59989ad0f706
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77067890"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134884"
 ---
 # <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>在 Azure DevOps 中通过 Azure Cosmos DB 模拟器生成任务设置 CI/CD 管道
 
@@ -180,6 +180,6 @@ namespace todo.Tests
 
 若要详细了解如何将模拟器用于本地开发和测试，请参阅[将 Azure Cosmos DB 模拟器用于本地开发和测试](/cosmos-db/local-emulator)。
 
-若要导出模拟器 SSL 证书，请参阅[导出 Azure Cosmos DB 模拟器证书供 Java、Python 和 Node.js 使用](/cosmos-db/local-emulator-export-ssl-certificates)
+若要导出模拟器 TLS/SSL 证书，请参阅[导出 Azure Cosmos DB 模拟器证书以便与 Java、Python 和 Node.js 配合使用](/cosmos-db/local-emulator-export-ssl-certificates)
 
 <!-- Update_Description: update meta properties, wording update, update link -->

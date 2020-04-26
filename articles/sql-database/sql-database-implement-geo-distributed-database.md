@@ -1,6 +1,6 @@
 ---
 title: 实现地理分散的解决方案
-description: 了解如何配置 Azure SQL 数据库和应用程序，以便故障转移到复制的数据库，以及进行测试性故障转移。
+description: 了解如何配置 Azure SQL 数据库和应用程序以便故障转移到复制的数据库，以及如何测试故障转移。
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -12,16 +12,16 @@ ms.author: v-jay
 ms.reviewer: mathoma, carlrab
 origin.date: 03/12/2019
 ms.date: 12/16/2019
-ms.openlocfilehash: 1db3419c3b849fc3d2260d80aa1efe84ba3d5b2f
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 2e3bcd339229e2b15070ee9fe7e1ce36fdeb023d
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336279"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126598"
 ---
 # <a name="tutorial-implement-a-geo-distributed-database"></a>教程：实现地理分散的数据库
 
-配置故障转移到远程区域所需的 Azure SQL 数据库和应用程序，然后测试故障转移计划。 你将学习如何执行以下操作：
+配置 Azure SQL 数据库和应用程序以便故障转移到远程区域中并测试故障转移计划。 学习如何：
 
 > [!div class="checklist"]
 > - 创建[故障转移组](sql-database-auto-failover-group.md)
@@ -30,36 +30,36 @@ ms.locfileid: "75336279"
 
 如果没有 Azure 订阅，可在开始前[创建一个 1 元试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 > [!IMPORTANT]
 > PowerShell Azure 资源管理器模块仍受 Azure SQL 数据库的支持，但所有未来的开发都是针对 Az.Sql 模块的。 若要了解这些 cmdlet，请参阅 [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 Az 模块和 AzureRm 模块中的命令参数大体上是相同的。
 
-若要完成本教程，请确保已安装以下项目：
+若要完成本教程，请确保已安装以下各项：
 
 - [Azure PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs)。
-- Azure SQL 数据库中的单一数据库。 若要创建一个，请使用：
-  - [Portal](sql-database-single-database-get-started.md)
+- Azure SQL 数据库中的单一数据库。 若要创建一个，请使用以下各项：
+  - [门户](sql-database-single-database-get-started.md)
   - [CLI](sql-database-cli-samples.md)
   - [PowerShell](sql-database-powershell-samples.md)
 
   > [!NOTE]
-  > 本教程使用 *AdventureWorksLT* 示例数据库。
+  > 本教程使用 AdventureWorksLT 示例数据库  。
 
-- Java 和 Maven，请参阅 [Build an app using SQL Server](https://www.microsoft.com/sql-server/developer-get-started/)（使用 SQL Server 生成应用），突出显示 **Java**，选择环境，然后按步骤操作。
+- Java 和 Maven，请参阅[使用 SQL Server 生成应用](https://www.microsoft.com/sql-server/developer-get-started/)，突出显示“Java”并选择环境，然后按步骤操作  。
 
 > [!IMPORTANT]
-> 请务必设置防火墙规则，以便使用要在其上执行本教程中步骤的计算机的公共 IP 地址。 数据库级防火墙规则会自动复制到辅助服务器。
+> 请务必设置防火墙规则，以使用本教程中执行步骤的计算机的公共 IP 地址。 数据库级防火墙规则会自动复制到辅助服务器。
 >
-> 有关信息，请参阅[创建数据库级防火墙规则](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database)；若要确定计算机的用于服务器级防火墙规则的 IP 地址，请参阅[创建服务器级防火墙](sql-database-server-level-firewall-rule.md)。  
+> 有关详细信息，请参阅[创建数据库级防火墙规则](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database)，或参阅[创建服务器级防火墙](sql-database-server-level-firewall-rule.md)，确定用于计算机的服务器级防火墙规则的 IP 地址。  
 
 ## <a name="create-a-failover-group"></a>创建故障转移组
 
-使用 Azure PowerShell 创建[故障转移组](sql-database-auto-failover-group.md)，以便在现有的 Azure SQL Server 和另一区域的全新 Azure SQL Server 之间进行故障转移。 然后，将示例数据库添加到故障转移组。
+使用 Azure PowerShell，在现有 Azure SQL 服务器和另一个区域中的新 Azure SQL 服务器之间创建[故障转移组](sql-database-auto-failover-group.md)。 然后将示例数据库添加到故障转移组。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 > [!IMPORTANT]
 > [!INCLUDE [sample-powershell-install](../../includes/sample-powershell-install-no-ssh.md)]
@@ -91,12 +91,12 @@ Get-AzSqlDatabase -ResourceGroupName $resourceGroup -ServerName $server -Databas
     Add-AzSqlDatabaseToFailoverGroup -ResourceGroupName $resourceGroup -ServerName $server -FailoverGroupName $failoverGroup
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 > [!IMPORTANT]
 > 运行 `az login` 以登录到 Azure。
 
-```powershell
+```azurecli
 $admin = "<adminName>"
 $password = "<password>"
 $resourceGroup = "<resourceGroupName>"
@@ -119,7 +119,7 @@ az sql failover-group create --name $failoverGroup --partner-server $drServer `
 
 * * *
 
-异地复制设置也可在 Azure 门户中更改，方法是：选择数据库，然后选择“设置”   >   “异地复制”。
+还可以通过选择数据库，然后选择“设置” **“异地复制”，在 Azure 门户中更改异地复制设置** >   。
 
 ![异地复制设置](./media/sql-database-implement-geo-distributed-database/geo-replication.png)
 
@@ -131,7 +131,7 @@ az sql failover-group create --name $failoverGroup --partner-server $drServer `
    mvn archetype:generate "-DgroupId=com.sqldbsamples" "-DartifactId=SqlDbSample" "-DarchetypeArtifactId=maven-archetype-quickstart" "-Dversion=1.0.0"
    ```
 
-1. 键入 **Y**，然后按 **Enter**。
+1. 键入“Y”，然后按 ENTER   。
 
 1. 将目录切换到新项目。
 
@@ -139,9 +139,9 @@ az sql failover-group create --name $failoverGroup --partner-server $drServer `
    cd SqlDbSample
    ```
 
-1. 使用最常用的编辑器，打开项目文件夹中的 *pom.xml* 文件。
+1. 使用喜爱的编辑器，打开项目文件夹中的 pom.xml 文件夹  。
 
-1. 通过添加下面的 `dependency` 节来添加 Microsoft JDBC Driver for SQL Server 依赖项。 此依赖项必须粘贴在更大的 `dependencies` 节中。
+1. 通过添加以下 `dependency` 部分添加 Microsoft JDBC Driver for SQL Server。 依赖项必须粘贴在更大的 `dependencies` 部分中。
 
    ```xml
    <dependency>
@@ -151,7 +151,7 @@ az sql failover-group create --name $failoverGroup --partner-server $drServer `
    </dependency>
    ```
 
-1. 将 `properties` 节添加到 `dependencies` 节之后，指定 Java 版本：
+1. 通过在 `properties` 部分后添加 `dependencies` 部分来指定 Java 版本：
 
    ```xml
    <properties>
@@ -160,7 +160,7 @@ az sql failover-group create --name $failoverGroup --partner-server $drServer `
    </properties>
    ```
 
-1. 将 `build` 节添加到 `properties` 节之后，为清单文件提供支持：
+1. 通过在 `build` 部分后添加 `properties` 部分来支持清单文件：
 
    ```xml
    <build>
@@ -181,9 +181,9 @@ az sql failover-group create --name $failoverGroup --partner-server $drServer `
    </build>
    ```
 
-1. 保存并关闭 *pom.xml* 文件。
+1. 保存并关闭 pom.xml 文件  。
 
-1. 打开 ..\SqlDbSample\src\main\java\com\sqldbsamples 中的 *App.java* 文件，将内容替换为以下代码：
+1. 打开 App.java 文件（位于 ..\SqlDbSample\src\main\java\com\sqldbsamples）并将内容替换为以下代码  ：
 
    ```java
    package com.sqldbsamples;
@@ -289,7 +289,7 @@ az sql failover-group create --name $failoverGroup --partner-server $drServer `
    }
    ```
 
-1. 保存并关闭 *App.java* 文件。
+1. 保存并关闭 App.java 文件  。
 
 1. 在命令控制台中运行以下命令：
 
@@ -297,7 +297,7 @@ az sql failover-group create --name $failoverGroup --partner-server $drServer `
    mvn package
    ```
 
-1. 启动应用程序。如果不手动停止，应用程序将运行大约 1 小时，让你有时间运行故障转移测试。
+1. 启动应用程序，该应用程序将运行约 1 小时，一直到手动停止，从而留出时间来运行故障转移测试。
 
    ```bash
    mvn -q -e exec:java "-Dexec.mainClass=com.sqldbsamples.App"
@@ -316,9 +316,9 @@ az sql failover-group create --name $failoverGroup --partner-server $drServer `
 
 ## <a name="test-failover"></a>测试故障转移
 
-运行以下脚本来模拟故障转移，观察应用程序结果。 注意在数据库迁移过程中某些插入和选择操作是如何失败的。
+运行下列脚本来模拟故障转移并观察应用程序结果。 请注意数据库迁移过程中某些插入和选择的失败方法。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 可使用以下命令，检查灾难恢复服务器在测试过程中的角色：
 
@@ -327,41 +327,41 @@ az sql failover-group create --name $failoverGroup --partner-server $drServer `
     -ResourceGroupName $resourceGroup -ServerName $drServer).ReplicationRole
 ```
 
-若要测试某个故障转移，请执行以下操作：
+若要测试故障转移，请执行以下操作：
 
-1. 启动对故障转移组的手动故障转移：
+1. 启动故障转移组的手动故障转移：
 
    ```powershell
    Switch-AzSqlDatabaseFailoverGroup -ResourceGroupName $myresourcegroupname `
     -ServerName $drServer -FailoverGroupName $failoverGroup
    ```
 
-1. 将故障转移组还原到主服务器：
+1. 将故障转移组还原为主服务器：
 
    ```powershell
    Switch-AzSqlDatabaseFailoverGroup -ResourceGroupName $resourceGroup `
     -ServerName $server -FailoverGroupName $failoverGroup
    ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 可使用以下命令，检查灾难恢复服务器在测试过程中的角色：
 
-```azure-cli
+```azurecli
 az sql failover-group show --name $failoverGroup --resource-group $resourceGroup --server $drServer
 ```
 
-若要测试某个故障转移，请执行以下操作：
+若要测试故障转移，请执行以下操作：
 
-1. 启动对故障转移组的手动故障转移：
+1. 启动故障转移组的手动故障转移：
 
-   ```azure-cli
+   ```azurecli
    az sql failover-group set-primary --name $failoverGroup --resource-group $resourceGroup --server $drServer
    ```
 
 1. 将故障转移组还原为主服务器：
 
-   ```azure-cli
+   ```azurecli
    az sql failover-group set-primary --name $failoverGroup --resource-group $resourceGroup --server $server
    ```
 
@@ -369,7 +369,7 @@ az sql failover-group show --name $failoverGroup --resource-group $resourceGroup
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，已配置 Azure SQL 数据库和应用程序以便故障转移到远程区域中，并测试了故障转移计划。 你已了解如何：
+在本教程中，已配置 Azure SQL 数据库和应用程序以便故障转移到远程区域中，并测试了故障转移计划。 你已了解如何执行以下操作：
 
 > [!div class="checklist"]
 > - 创建异地复制故障转移组

@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: overview
 origin.date: 06/24/2019
-ms.date: 02/10/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: 81d3e829356e73e3f52a32f48d5009d523949f2b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: b439f48756d8781d5e7d4053dc87291d02fbfa64
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "76980527"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134929"
 ---
 <!--Verify sucessfully-->
 # <a name="azure-cosmos-db-gremlin-graph-support"></a>Azure Cosmos DB Gremlin 图形支持
@@ -48,11 +48,9 @@ TinkerPop 是涵盖多种图形技术的标准。 因此，它使用标准的术
 | 边缘功能 | AddEdges、RemoveEdges、StringIds、UserSuppliedIds、AddProperty、RemoveProperty | 支持创建、修改和删除边缘 |
 | 边缘属性功能 | Properties、BooleanValues、ByteValues、DoubleValues、FloatValues、IntegerValues、LongValues、StringValues | 支持创建、修改和删除边缘属性 |
 
-## <a name="gremlin-wire-format-graphson"></a>Gremlin 网络格式：GraphSON
+## <a name="gremlin-wire-format"></a>Gremlin 网络格式
 
-从 Gremlin 操作返回结果时，Azure Cosmos DB 使用 [GraphSON 格式](https://tinkerpop.apache.org/docs/current/reference/#graphson)。 Azure Cosmos DB 目前支持“GraphSONv2”版本。 GraphSON 是 Gremlin 标准格式，它使用 JSON 来表示顶点、边缘和属性（单值和多值属性）。
-
-例如，以下代码片段显示了从 Azure Cosmos DB *返回到客户端*的某个顶点的 GraphSON 表示形式。 
+从 Gremlin 操作返回结果时，Azure Cosmos DB 使用 JSON 格式。 Azure Cosmos DB 目前支持 JSON 格式。 例如，以下代码片段显示了从 Azure Cosmos DB 返回到客户端的某个顶点的 JSON 表示形式。 
 
 ```json
   {
@@ -91,9 +89,9 @@ TinkerPop 是涵盖多种图形技术的标准。 因此，它使用标准的术
   }
 ```
 
-下面介绍 GraphSON 使用的顶点属性：
+下面介绍了顶点的 JSON 格式使用的属性：
 
-| properties | 说明 | 
+| 属性 | 说明 | 
 | --- | --- |
 | `id` | 顶点的 ID。 必须唯一（在适用的情况下，可与 `_partition` 的值合并）。 如果未提供任何值，则系统会自动提供一个包含 GUID 的值 | 
 | `label` | 顶点的标签。 此属性用于描述实体类型。 |

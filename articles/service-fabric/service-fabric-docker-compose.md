@@ -2,14 +2,15 @@
 title: Azure Service Fabric Docker Compose 部署预览版
 description: Azure Service Fabric 接受 Docker Compose 格式，因此可以更轻松地安排使用 Service Fabric 的现有容器。 这种支持目前处于预览状态。
 ms.topic: conceptual
-ms.date: 01/13/2020
+origin.date: 02/23/2018
+ms.date: 04/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 729f3f91d4217357655ff2090125f4edacc48754
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 5a0859e625d8877f21c9db1836b7e13afd1a3951
+ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79292030"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82093452"
 ---
 # <a name="docker-compose-deployment-support-in-azure-service-fabric-preview"></a>Azure Service Fabric 中的 Docker Compose 部署支持（预览版）
 
@@ -20,7 +21,7 @@ Docker 使用 [docker-compose.yml](https://docs.docker.com/compose) 文件定义
 若要使用此预览版，请通过 Azure 门户以及相应的 SDK 使用 5.7 版本或更高版本的 Service Fabric 运行时创建群集。 
 
 > [!NOTE]
-> 此功能处于预览版，在生产环境中不受支持。
+> 此功能处于预览状态，在生产环境中不受支持。
 > 以下示例基于运行时版本 6.0 和 SDK 版本 2.8。
 
 ## <a name="deploy-a-docker-compose-file-on-service-fabric"></a>在 Service Fabric 上部署一个 Docker Compose 文件
@@ -70,37 +71,37 @@ Get-ServiceFabricComposeDeploymentUpgrade -DeploymentName TestContainerApp
 
 或者，可以使用以下 Service Fabric CLI 命令：
 
-```azurecli
+```shell
 sfctl compose create --deployment-name TestContainerApp --file-path docker-compose.yml [ [ --user --encrypted-pass ] | [ --user --has-pass ] ] [ --timeout ]
 ```
 
 创建部署后，可以使用以下命令检查其状态：
 
-```azurecli
+```shell
 sfctl compose status --deployment-name TestContainerApp [ --timeout ]
 ```
 
 若要删除 Compose 部署，请使用以下命令：
 
-```azurecli
+```shell
 sfctl compose remove  --deployment-name TestContainerApp [ --timeout ]
 ```
 
 若要启动 Compose 部署升级，请使用以下命令：
 
-```azurecli
+```shell
 sfctl compose upgrade --deployment-name TestContainerApp --file-path docker-compose-v2.yml [ [ --user --encrypted-pass ] | [ --user --has-pass ] ] [--upgrade-mode Monitored] [--failure-action Rollback] [ --timeout ]
 ```
 
 若要回滚 Compose 部署升级，请使用以下命令：
 
-```azurecli
+```shell
 sfctl compose upgrade-rollback --deployment-name TestContainerApp [ --timeout ]
 ```
 
 接受升级之后，可以使用以下命令跟踪升级进度：
 
-```azurecli
+```shell
 sfctl compose upgrade-status --deployment-name TestContainerApp
 ```
 

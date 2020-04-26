@@ -1,16 +1,16 @@
 ---
-author: IEvangelist
+author: trevorbye
 ms.service: cognitive-services
 ms.topic: include
 origin.date: 03/11/2020
-ms.date: 03/16/2020
+ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: 96d6cb5eea991720b11991f355f56372030a50fa
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 953c019e69f981a726b43538b3f2e0e05b93a252
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80151760"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126763"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -37,10 +37,10 @@ ms.locfileid: "80151760"
 * 使用主机：传入主机地址。 密钥或授权令牌是可选的。
 * 使用授权令牌：传入授权令牌和关联的区域。
 
-让我们看看如何使用密钥和区域创建 [`SpeechConfig`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig?view=azure-java-stable)。
+让我们看看如何使用密钥和区域创建 [`SpeechConfig`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig?view=azure-java-stable)。 请查看[区域支持](https://docs.azure.cn/cognitive-services/speech-service/regions#speech-sdk)页以找到你的区域标识符。
 
 ```java
-SpeechConfig config = SpeechConfig.fromHost(new URI("wss://YourServiceRegion.stt.speech.azure.cn/"), "YourSubscriptionKey");
+SpeechConfig config = SpeechConfig.fromSubscription("YourSubscriptionKey", "YourServiceRegion");
 ```
 
 ## <a name="initialize-a-recognizer"></a>初始化识别器
@@ -84,7 +84,7 @@ SpeechRecognizer recognizer = new SpeechRecognizer(config, audioConfig);
 用于 Java 的语音 SDK 的[识别器类](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer?view=azure-java-stable)公开了一些可用于语音识别的方法。
 
 * 单步识别（异步）- 在非阻塞（异步）模式下执行识别。 这将识别单个言语。 单个言语的结束是通过在结束时倾听静音或处理最长 15 秒音频时确定的。
-* 连续识别（异步）- 异步启动连续识别操作。 如果要提供音频文件而不是使用麦克风，则仍需要提供。 若要停止异步连续识别，请调用 [stopContinuousRecognitionAsync](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer?view=azure-java-stable#stopcontinuousrecognitionasync)。
+* 连续识别（异步）- 异步启动连续识别操作。 如果要提供音频文件而不是使用麦克风，则仍需要提供。 若要停止异步连续识别，请调用 [stopContinuousRecognitionAsync](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer.stopcontinuousrecognitionasync)。
 
 > [!NOTE]
 > 详细了解如何[选择语音识别模式](../../../how-to-choose-recognition-mode.md)。
@@ -129,7 +129,7 @@ switch (result.getReason()) {
 
 ### <a name="continuous-recognition"></a>连续识别
 
-连续识别涉及的方面比单步识别多一点。 它要求你订阅 `recognizing`、`recognized` 和 `canceled` 事件以获取识别结果。 若要停止识别，必须调用 [`stopContinuousRecognitionAsync`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer?view=azure-java-stable#stopcontinuousrecognitionasync)。 下面是有关如何对音频输入文件执行连续识别的示例。
+连续识别涉及的方面比单步识别多一点。 它要求你订阅 `recognizing`、`recognized` 和 `canceled` 事件以获取识别结果。 若要停止识别，必须调用 [`stopContinuousRecognitionAsync`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer.stopcontinuousrecognitionasync)。 下面是有关如何对音频输入文件执行连续识别的示例。
 
 首先，我们将定义输入并初始化一个 [`SpeechRecognizer`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer?view=azure-java-stable)：
 
@@ -186,7 +186,7 @@ recognizer.sessionStopped.addEventListener((s, e) -> {
 });
 ```
 
-完成所有设置后，可以调用 [`stopContinuousRecognitionAsync`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer?view=azure-java-stable#startcontinuousrecognitionasync)。
+完成所有设置后，可以调用 [`stopContinuousRecognitionAsync`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer.stopcontinuousrecognitionasync)。
 
 ```java
 // Starts continuous recognition. Uses StopContinuousRecognitionAsync() to stop recognition.

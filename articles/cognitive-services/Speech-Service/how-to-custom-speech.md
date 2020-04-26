@@ -3,20 +3,20 @@ title: 自定义语音识别入门 - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 自定义语音识别是一组联机工具，可用于针对你的应用程序、工具和产品评估并改进我们的语音转文本准确度。 只需准备几个测试性音频文件即可开始。 请遵循以下链接开始创建自定义语音转文本体验。
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 origin.date: 02/17/2020
-ms.date: 03/16/2020
+ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: 22198aa185acd1a8e8efe7be43b6ce4e03c8c6af
-ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
+ms.openlocfilehash: 7ced8d92e1d5f6436385dd34fe1a99497405064e
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80151695"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82127055"
 ---
 # <a name="what-is-custom-speech"></a>什么是自定义语音识别？
 

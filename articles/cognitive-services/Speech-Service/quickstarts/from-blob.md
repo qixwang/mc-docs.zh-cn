@@ -3,21 +3,21 @@ title: 快速入门：识别存储在 Blob 存储中的语音
 titleSuffix: Azure Cognitive Services
 description: 在本快速入门中，你将使用批量听录 REST API 以异步方式识别存储在 SAS Blob 中的语音。
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
 origin.date: 02/10/2020
-ms.date: 03/16/2020
+ms.date: 04/20/2020
 ms.author: v-tawe
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 885fdca7d108e0f7af5df3fda02b38d99bb7edb2
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: ae1355b39190873f33d6a8ab64dbe7fdc679de4f
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80151596"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126387"
 ---
 # <a name="quickstart-recognize-speech-stored-in-blob-storage"></a>快速入门：识别存储在 Blob 存储中的语音
 

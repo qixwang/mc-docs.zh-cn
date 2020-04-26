@@ -5,21 +5,20 @@ services: azure-portal
 documentationcenter: ''
 author: adamabmsft
 manager: mtillman
-editor: tysonn
 ms.service: azure-portal
 ms.devlang: NA
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: na
 origin.date: 03/23/2020
-ms.date: 03/30/2020
+ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: 8608aa119a7eee0574a54d284304827bc0a0299b
-ms.sourcegitcommit: 260800ede66f48c886d1426a0fac18b4d402b4f2
+ms.openlocfilehash: c7433a989d9d424f3a9541f4ac2c5a6ce54b1831
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80586661"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126714"
 ---
 # <a name="programmatically-create-azure-dashboards"></a>以编程方式创建 Azure 仪表板
 

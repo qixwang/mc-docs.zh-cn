@@ -1,17 +1,17 @@
 ---
-author: IEvangelist
+author: trevorbye
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
 origin.date: 02/20/2020
-ms.date: 03/16/2020
+ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: 3a8fdb4f3bc181e265f256243ec681524a9fad24
-ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
+ms.openlocfilehash: ef0b821621a7a0152486d4b8be24f528f9c984a1
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80151552"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126782"
 ---
 本快速入门介绍如何使用适用于 Android 的语音设备 SDK 来生成支持语音的产品。
 
@@ -19,7 +19,7 @@ ms.locfileid: "80151552"
 
 示例应用程序的源代码随附在语音设备 SDK 中， 也可在 [GitHub 上获取](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 开始使用语音设备 SDK 之前，需要：
 
@@ -36,9 +36,9 @@ ms.locfileid: "80151552"
 
 <!-- - If you plan to use the Conversation Transcription you must use a [circular microphone device](../get-speech-devices-sdk.md) and this feature is currently only available for "en-US" and "zh-CN" in regions, "chinaeast2". You must have a speech key in one of those regions to use Conversation Transcription. -->
 
-<!-- - If you plan to use the Speech service to identify intents (or actions) from user utterances, you'll need a [Language Understanding Service (LUIS)](https://docs.microsoft.com/azure/cognitive-services/luis/azureibizasubscription) subscription. To learn more about LUIS and intent recognition, see [Recognize speech intents with LUIS, C#](https://docs.azure.cn/cognitive-services/speech-service/how-to-recognize-intents-from-speech-csharp). -->
+<!-- - If you plan to use the Speech service to identify intents (or actions) from user utterances, you'll need a [Language Understanding Service (LUIS)](https://docs.azure.cn/cognitive-services/luis/azureibizasubscription) subscription. To learn more about LUIS and intent recognition, see [Recognize speech intents with LUIS, C#](https://docs.azure.cn/cognitive-services/speech-service/how-to-recognize-intents-from-speech-csharp). -->
 
-  <!-- You can [create a simple LUIS model](https://docs.microsoft.com/azure/cognitive-services/luis/) or use the sample LUIS model, LUIS-example.json. The sample LUIS model is available from the [Speech Devices SDK download site](https://aka.ms/sdsdk-luis). To upload your model's JSON file to the [LUIS portal](https://www.luis.ai/home), select **Import new app**, and then select the JSON file. -->
+  <!-- You can [create a simple LUIS model](https://docs.azure.cn/cognitive-services/luis/) or use the sample LUIS model, LUIS-example.json. The sample LUIS model is available from the [Speech Devices SDK download site](https://aka.ms/sdsdk-luis). To upload your model's JSON file to the [LUIS portal](https://www.luis.ai/home), select **Import new app**, and then select the JSON file. -->
 ""
 ## <a name="set-up-the-device"></a>设置设备
 
@@ -48,7 +48,7 @@ ms.locfileid: "80151552"
 
 1. 你的设备应列在“选择设备”下。  选择设备旁边的“视图”按钮。 
 
-1. 选择文件夹图标，然后选择“设置” > “WLAN”连接到无线网络。  
+1. 选择文件夹图标，然后选择“设置” **“WLAN”连接到无线网络。**  >  
 
    ![Vysor WLAN](../media/speech-devices-sdk/qsg-4.png)
 
@@ -59,7 +59,7 @@ ms.locfileid: "80151552"
    >
    > ![Vysor 文件夹](../media/speech-devices-sdk/qsg-10.png)
    >
-   > Select <bpt id="p1">**</bpt>Settings<ept id="p1">**</ept>. 搜索“mac 地址”，然后选择“Mac 地址” > “高级 WLAN”。   记下对话框底部附近显示的 MAC 地址。
+   > 选择“设置”。  搜索“mac 地址”，然后选择“Mac 地址” **“高级 WLAN”。**  >   记下对话框底部附近显示的 MAC 地址。
    >
    > ![Vysor MAC 地址](../media/speech-devices-sdk/qsg-11.png)
    >
@@ -97,7 +97,7 @@ ms.locfileid: "80151552"
     通过将以下行添加到 dependencies 节来更新 **build.gradle(Module:app)** 。 
 
     ```xml
-    implementation'com.microsoft.cognitiveservices.speech:client-sdk:1.10.0'
+    implementation'com.microsoft.cognitiveservices.speech:client-sdk:1.11.0'
     ```
 
 1. 将语音订阅密钥添加到源代码。

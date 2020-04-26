@@ -3,15 +3,15 @@ title: 在 Azure 中创建 Linux Service Fabric 群集
 description: 了解如何使用 Azure CLI 将 Linux Service Fabric 群集部署到现有 Azure 虚拟网络。
 ms.topic: conceptual
 origin.date: 02/14/2019
-ms.date: 01/13/2020
+ms.date: 04/13/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 3c6434b0bd24361ed9cedfda02652d213c4d6a16
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: 0afbc83809db121bd246f7f93be90d2051f14acb
+ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742070"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82093506"
 ---
 # <a name="deploy-a-linux-service-fabric-cluster-into-an-azure-virtual-network"></a>将 Linux Service Fabric 群集部署到 Azure 虚拟网络
 
@@ -74,7 +74,7 @@ ms.locfileid: "75742070"
 
 在 **Microsoft.Network/loadBalancers** 资源中，配置了负载均衡器，并为以下端口设置了探测和规则：
 
-* 客户端连接终结点：19000
+* 连接终结点:19000
 * HTTP 网关终结点：19080
 * 应用程序端口：80
 * 应用程序端口：443
@@ -92,7 +92,7 @@ ms.locfileid: "75742070"
 
 [AzureDeploy.Parameters][parameters] 参数文件声明用于部署群集和关联资源的多个值。 可能需要使用某些参数来修改部署：
 
-|参数|示例值|注释|
+|参数|示例值|说明|
 |---|---||
 |adminUserName|vmadmin| 群集 VM 的管理员用户名。 |
 |adminPassword|Password#1234| 群集 VM 的管理员密码。|
@@ -149,21 +149,25 @@ VaultName="linuxclusterkeyvault"
 VaultGroupName="linuxclusterkeyvaultgroup"
 CertPath="C:\MyCertificates"
 
-az sf cluster create --resource-group $ResourceGroupName --location $Location --cluster-name $ClusterName --template-file C:\temp\cluster\AzureDeploy.json --parameter-file C:\temp\cluster\AzureDeploy.Parameters.json --certificate-password $Password --certificate-output-folder $CertPath --certificate-subject-name $ClusterName.$Location.cloudapp.chinacloudapi.cn --vault-name $VaultName --vault-resource-group $ResourceGroupName
+az sf cluster create --resource-group $ResourceGroupName --location $Location \
+   --cluster-name $ClusterName --template-file C:\temp\cluster\AzureDeploy.json \
+   --parameter-file C:\temp\cluster\AzureDeploy.Parameters.json --certificate-password $Password \
+   --certificate-output-folder $CertPath --certificate-subject-name $ClusterName.$Location.cloudapp.chinacloudapi.cn \
+   --vault-name $VaultName --vault-resource-group $ResourceGroupName
 ```
 
 ## <a name="connect-to-the-secure-cluster"></a>连接到安全群集
 
 使用密钥通过 Service Fabric CLI 命令 `sfctl cluster select` 连接到群集。  请注意仅针对自签名证书使用 **--no-verify** 选项。
 
-```azurecli
+```console
 sfctl cluster select --endpoint https://aztestcluster.chinaeast.cloudapp.chinacloudapi.cn:19080 \
 --pem ./aztestcluster201709151446.pem --no-verify
 ```
 
 检查是否已连接并使用 `sfctl cluster health` 命令检查群集是否处于正常状态。
 
-```azurecli
+```console
 sfctl cluster health
 ```
 
@@ -180,4 +184,4 @@ sfctl cluster health
 [template]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Ubuntu-3-NodeTypes-Secure/AzureDeploy.json
 [parameters]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Ubuntu-3-NodeTypes-Secure/AzureDeploy.Parameters.json
 
-<!-- Update_Description: update meta properties, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

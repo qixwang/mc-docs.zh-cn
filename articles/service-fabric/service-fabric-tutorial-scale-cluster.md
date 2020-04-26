@@ -1,30 +1,30 @@
 ---
-title: 在 Azure 中缩放 Service Fabric 群集
+title: 缩放 Azure 中的 Service Fabric 群集
 description: 本教程介绍如何横向扩展和缩小 Azure 中的 Service Fabric 群集，以及如何清理剩余资源。
 ms.topic: tutorial
 origin.date: 07/22/2019
-ms.date: 02/24/2020
+ms.date: 04/13/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 48cbb2aa42efb61832347829129883cafefe318f
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.openlocfilehash: dda5ae273ef7264276add94fe3fadb6dafff76b9
+ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77540559"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82093337"
 ---
 # <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>教程：在 Azure 中缩放 Service Fabric 群集
 
 本教程是系列教程的第三部分，介绍如何扩大和缩小现有群集。 完成时，将知道如何缩放群集以及如何清理剩余的资源。  有关缩放 Azure 中运行的群集的详细信息，请阅读[缩放 Service Fabric 群集](service-fabric-cluster-scaling.md)。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
-> * 添加和删除节点（横向扩展和缩小）
-> * 添加和删除节点类型（横向扩展和缩小）
+> * 添加和删除节点（横向扩展和横向缩减）
+> * 添加和删除节点类型（横向扩展和横向缩减）
 > * 增加节点资源（纵向扩展）
 
-在此系列教程中，你将学习如何：
+在此系列教程中，你会学习如何：
 > [!div class="checklist"]
 > * 使用模板在 Azure 上创建安全 [Windows 群集](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
 > * [监视群集](service-fabric-tutorial-monitor-cluster.md)
@@ -39,7 +39,7 @@ ms.locfileid: "77540559"
 在开始学习本教程之前：
 
 * 如果还没有 Azure 订阅，请创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)
-* 安装 [Azure Powershell](https://docs.microsoft.com/powershell/azure/install-Az-ps) 或 [Azure CLI](https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest)。
+* 安装 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps) 或 [Azure CLI](https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest)。
 * 在 Azure 上创建安全 [Windows 群集](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
 
 ## <a name="important-considerations-and-guidelines"></a>重要注意事项和指南
@@ -48,9 +48,9 @@ ms.locfileid: "77540559"
 
 是否需要向群集添加超过 100 个节点？  单一 Service Fabric 节点类型/规模集不能包含超过 100 个节点/VM。  若要将群集扩展到超过 100 个节点，需[添加更多节点类型](#add-nodes-to-or-remove-nodes-from-a-node-type)。
 
-应用程序是否有多个服务，其中是否有任何服务需面向公众或面向 Internet？  典型的应用程序包含可接收客户端输入的前端网关服务，以及一个或多个与前端服务通信的后端服务。 在这种情况下，建议向群集[添加至少两个节点类型](#add-nodes-to-or-remove-nodes-from-a-node-type)。  
+应用程序是否有多个服务，其中是否有任何服务需是面向公众或面向 Internet 的服务？  典型的应用程序包含可接收客户端输入的前端网关服务，以及一个或多个与前端服务通信的后端服务。 在这种情况下，建议向群集[添加至少两个节点类型](#add-nodes-to-or-remove-nodes-from-a-node-type)。  
 
-服务是否有不同的基础结构需求，例如，更多的 RAM 或更高的 CPU 周期？ 例如，应用程序包含前端服务和后端服务。 前端服务可以在容量较小（如 D2 的 VM 大小）且向 Internet 开放了端口的 VM 上运行。 但是，后端服务是计算密集型的服务，需要放在容量较大（D4、D6、D15 等的 VM 大小）且不面向 Internet 的 VM 上运行。 在这种情况下，建议向群集[添加两个或多个节点类型](#add-nodes-to-or-remove-nodes-from-a-node-type)。 这样，每个节点类型都有不同的属性，例如，Internet 连接或 VM 大小。 也可以单独缩放 VM 的数目。
+服务是否有不同的基础结构需求，例如，更多的 RAM 或更高的 CPU 周期？ 例如，应用程序包含前端服务和后端服务。 前端服务可以在容量较小（D2 等的 VM 大小）且向 Internet 开放了端口的 VM 上运行。 但是，后端服务计算密集型的服务，需要放在容量较大（D4、D6、D15 等的 VM 大小）且不连接到 Internet 的 VM 上运行。 在这种情况下，建议向群集[添加两个或多个节点类型](#add-nodes-to-or-remove-nodes-from-a-node-type)。 这样，每个节点类型都有不同的属性，例如，Internet 连接或 VM 大小。 也可以单独缩放 VM 的数目。
 
 缩放 Azure 群集时，请记住以下准则：
 
@@ -69,7 +69,7 @@ ms.locfileid: "77540559"
 
 1. 在 [Azure 门户](https://portal.azure.cn)中，转到包含群集的资源组（如果按本教程操作，即为 **sfclustertutorialgroup**）。 
 
-2. 在左窗格中选择“部署”，或者选择“部署”下的链接。   
+2. 在左窗格中，选择“部署”  或选择“部署”  下的链接。 
 
 3. 从列表中选择最近的成功部署。
 
@@ -77,7 +77,7 @@ ms.locfileid: "77540559"
 
 ## <a name="add-nodes-to-or-remove-nodes-from-a-node-type"></a>添加或删除某个节点类型的节点
 
-横向扩展和缩减或水平缩放会更改群集中的节点数。 横向扩展和缩减时，会添加更多虚拟机实例到规模集。 这些实例成为 Service Fabric 使用的节点。 Service Fabric 知道规模集什么时候添加了更多实例（通过扩大实现）并自动做出反应。 随时可以缩放群集，即使该群集上正在运行工作负荷。
+横向扩展和缩减或水平缩放会更改群集中的节点数。 横向缩减或扩展时，会添加更多虚拟机实例到规模集。 这些实例成为 Service Fabric 使用的节点。 Service Fabric 知道规模集什么时候添加了更多实例（通过扩大实现）并自动做出反应。 随时可以缩放群集，即使该群集上正在运行工作负荷。
 
 ### <a name="update-the-template"></a>更新模板
 
@@ -94,7 +94,7 @@ ms.locfileid: "77540559"
 New-AzResourceGroupDeployment -ResourceGroupName sfclustertutorialgroup -TemplateFile c:\temp\template.json -TemplateParameterFile c:\temp\parameters.json -Name "ChangingInstanceCount"
 ```
 或者运行以下 Azure CLI 命令：
-```azure-cli
+```azurecli
 az group deployment create --resource-group sfclustertutorialgroup --template-file c:\temp\template.json --parameters c:\temp\parameters.json
 ```
 
@@ -780,7 +780,7 @@ az group deployment create --resource-group sfclustertutorialgroup --template-fi
             }
         ],    
     }
-}
+}                
 ```
 
 在 parameters.json  文件中，添加以下新参数和值：
@@ -800,7 +800,7 @@ az group deployment create --resource-group sfclustertutorialgroup --template-fi
 New-AzResourceGroupDeployment -ResourceGroupName sfclustertutorialgroup -TemplateFile c:\temp\template.json -TemplateParameterFile c:\temp\parameters.json -Name "AddingNodeType"
 ```
 或者运行以下 Azure CLI 命令：
-```azure-cli
+```azurecli
 az group deployment create --resource-group sfclustertutorialgroup --template-file c:\temp\template.json --parameters c:\temp\parameters.json
 ```
 
@@ -846,7 +846,7 @@ Foreach($node in $nodes)
 
 从最近的部署的资源组中[导出模板和参数文件](#export-the-template-for-the-resource-group)。  打开 Parameters.json  文件。  如果使用本教程中的[示例模板][template]部署了群集，群集中就有三个节点类型。  
 
-第二个节点类型中 VM 的大小在 vmNodeType1Size  参数中设置。  将 vmNodeType1Size  参数值从 Standard_D2_V2 更改为 [Standard_D3_V2](/virtual-machines/windows/sizes-general#dv2-series)，这会让每个 VM 实例的资源增加一倍。
+第二个节点类型中 VM 的大小在 vmNodeType1Size  参数中设置。  将 vmNodeType1Size  参数值从 Standard_D2_V2 更改为 [Standard_D3_V2](../virtual-machines/dv2-dsv2-series.md)，这会让每个 VM 实例的资源增加一倍。
 
 所有三个节点类型的 VM SKU 在 vmImageSku  参数中设置。  同样，更改节点类型的 VM SKU 应慎重，不建议对主节点类型执行此操作。
 
@@ -857,17 +857,17 @@ Foreach($node in $nodes)
 New-AzResourceGroupDeployment -ResourceGroupName sfclustertutorialgroup -TemplateFile c:\temp\template.json -TemplateParameterFile c:\temp\parameters.json -Name "ScaleUpNodeType"
 ```
 或者运行以下 Azure CLI 命令：
-```azure-cli
+```azurecli
 az group deployment create --resource-group sfclustertutorialgroup --template-file c:\temp\template.json --parameters c:\temp\parameters.json
 ```
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你已学习了如何执行以下操作：
+在本教程中，你了解了如何执行以下操作：
 
 > [!div class="checklist"]
-> * 添加和删除节点（横向扩展和缩小）
-> * 添加和删除节点类型（横向扩展和缩小）
+> * 添加和删除节点（横向扩展和横向缩减）
+> * 添加和删除节点类型（横向扩展和横向缩减）
 > * 增加节点资源（纵向扩展）
 
 接下来，请转到以下教程了解如何升级群集运行时。

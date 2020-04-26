@@ -3,14 +3,14 @@ title: 基础映像更新 - 任务
 description: 了解应用程序容器映像的基础映像，并了解基础映像更新如何触发 Azure 容器注册表任务。
 ms.topic: article
 origin.date: 01/22/2019
-ms.date: 03/09/2020
+ms.date: 04/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 2e002a33288a52a98fa139f7910d6e8300f38625
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.openlocfilehash: 2fd04c61c8f5226ab5133160765927e262d5707b
+ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78850542"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82093481"
 ---
 <!--Verify sucessfully-->
 <!--Parts of released files-->
@@ -58,7 +58,7 @@ ms.locfileid: "78850542"
 
 * **触发依赖项跟踪** - 若要启用某个 ACR 任务来确定并跟踪容器映像的依赖项（包括其基础映像），必须先将该任务触发**至少一次**。 例如，使用 [az acr task run][az-acr-task-run] 命令手动触发该任务。
 
-* **基础映像的稳定标记** - 若要在更新基础映像时触发任务，基础映像必须有一个稳定的标记，例如 `node:9-alpine`。  在将 OS 和框架修补到最新稳定版本时会更新的基础映像往往带有此标记。 如果使用新的版本标记更新基础映像，则不会触发任务。 有关映像标记的详细信息，请参阅[最佳做法指南](container-registry-image-tag-version.md)。 
+* **基础映像的稳定标记** - 若要在更新基础映像时触发任务，基础映像必须有一个稳定的标记，例如 *。* `node:9-alpine` 在将 OS 和框架修补到最新稳定版本时会更新的基础映像往往带有此标记。 如果使用新的版本标记更新基础映像，则不会触发任务。 有关映像标记的详细信息，请参阅[最佳做法指南](container-registry-image-tag-version.md)。 
 
 * **其他任务触发器** - 在由基础映像更新触发的任务中，你还可以启用基于[源代码提交](container-registry-tutorial-build-task.md)或[计划](container-registry-tasks-scheduled.md)的触发器。 基础映像更新还可以触发[多步骤任务](container-registry-tasks-multi-step.md)。
 
@@ -96,5 +96,4 @@ ms.locfileid: "78850542"
 [quick-build-01-fork]: ./media/container-registry-tutorial-quick-build/quick-build-01-fork.png
 [quick-build-02-browser]: ./media/container-registry-tutorial-quick-build/quick-build-02-browser.png
 
-<!-- Update_Description: new article about container registry tasks base images -->
-<!--NEW.date: 03/09/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

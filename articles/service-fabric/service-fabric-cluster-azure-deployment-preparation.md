@@ -3,14 +3,14 @@ title: 规划 Azure Service Fabric 群集部署
 description: 了解如何规划和准备 Azure 中的生产 Service Fabric 群集部署。
 ms.topic: conceptual
 origin.date: 03/20/2019
-ms.date: 02/24/2020
+ms.date: 04/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 8ae4e5cd871eb12eae188935f421c6677fca5a09
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.openlocfilehash: bcc69a35115c5ae0e4300da3d3aa2d9e73e41d2e
+ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77540195"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82093473"
 ---
 # <a name="plan-and-prepare-for-a-cluster-deployment"></a>规划和准备群集部署
 
@@ -79,7 +79,6 @@ ms.locfileid: "77540195"
         "virtualMachineProfile": {
             "storageProfile": {
                 "osDisk": {
-                        "vhdContainers": ["[concat(reference(concat('Microsoft.Storage/storageAccounts/', parameters('vmStorageAccountName')), variables('storageApiVersion')).primaryEndpoints.blob, parameters('vmStorageAccountContainerName'))]"],
                         "caching": "ReadOnly",
                         "createOption": "FromImage",
                         "diffDiskSettings": {

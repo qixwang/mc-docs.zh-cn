@@ -2,26 +2,21 @@
 title: 单页应用登录和注销 - Microsoft 标识平台 | Azure
 description: 了解如何生成单页应用程序（登录）
 services: active-directory
-documentationcenter: dev-center-name
 author: navyasric
 manager: CelesteDG
-editor: ''
-ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/25/2020
+ms.date: 04/22/2020
 ms.author: v-junlch
 ms.custom: aaddev
-ms.openlocfilehash: ccc5e46099d2eea29728108fca9fe9335051da34
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.openlocfilehash: 18bc1d0411e0a8e634a122b9de1c8ec8da33cd38
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77653152"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126442"
 ---
 # <a name="single-page-application-sign-in-and-sign-out"></a>单页应用程序：登录和注销
 
@@ -68,26 +63,50 @@ userAgentApplication.loginPopup(loginRequest).then(function (loginResponse) {
 借助 MSAL Angular 包装器，可通过将 `MsalGuard` 添加到路由定义来确保应用程序中特定路由的安全。 访问该路由时，此防护会调用用于登录的方法。
 
 ```javascript
-// In app.routes.ts
-{ path: 'product', component: ProductComponent, canActivate : [MsalGuard],
-    children: [
-      { path: 'detail/:id', component: ProductDetailComponent  }
+// In app-routing.module.ts
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+import { ProfileComponent } from './profile/profile.component';
+import { MsalGuard } from '@azure/msal-angular';
+import { HomeComponent } from './home/home.component';
+
+const routes: Routes = [
+  {
+    path: 'profile',
+    component: ProfileComponent,
+    canActivate: [
+      MsalGuard
     ]
-   },
-  { path: 'myProfile' ,component: MsGraphComponent, canActivate : [MsalGuard] },
+  },
+  {
+    path: '',
+    component: HomeComponent
+  }
+];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes, { useHash: false })],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }
 ```
 
 对于弹出窗口体验，请启用 `popUp` 配置选项。 也可传递需要许可的作用域，如下所示：
 
 ```javascript
-//In app.module.ts
+// In app.module.ts
 @NgModule({
-  imports: [ MsalModule.forRoot({
-                clientID: 'your_app_id',
-                popUp: true,
-                consentScopes: ["https://microsoftgraph.chinacloudapi.cn/User.ReadWrite"]
-            })]
-         })
+    imports: [
+        MsalModule.forRoot({
+            auth: {
+                clientId: 'your_app_id',
+            }
+        }, {
+            popUp: true,
+            consentScopes: ["https://microsoftgraph.chinacloudapi.cn/User.ReadWrite"]
+        })
+    ]
+})
 ```
 ---
 
@@ -130,9 +149,8 @@ MSAL 库提供 `logout` 方法，该方法会清除浏览器存储中的缓存�
 
 ```javascript
 const config = {
-
     auth: {
-        clientID: 'your_app_id',
+        clientId: 'your_app_id',
         redirectUri: "your_app_redirect_uri", //defaults to application start page
         postLogoutRedirectUri: "your_app_logout_redirect_uri"
     }
@@ -148,11 +166,15 @@ userAgentApplication.logout();
 ```javascript
 //In app.module.ts
 @NgModule({
-  imports: [ MsalModule.forRoot({
-                clientID: 'your_app_id',
+    imports: [
+        MsalModule.forRoot({
+            auth: {
+                clientId: 'your_app_id',
                 postLogoutRedirectUri: "your_app_logout_redirect_uri"
-            })]
-         })
+            }
+        })
+    ]
+})
 
 // In app.component.ts
 this.authService.logout();
@@ -165,4 +187,3 @@ this.authService.logout();
 > [!div class="nextstepaction"]
 > [获取应用的令牌](scenario-spa-acquire-token.md)
 
-<!-- Update_Description: wording update -->

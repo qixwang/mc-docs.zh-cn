@@ -1,16 +1,18 @@
 ---
-author: wolfma61
+author: IEvangelist
 ms.service: cognitive-services
 ms.topic: include
-origin.date: 05/07/2018
-ms.date: 04/01/2019
+origin.date: 03/25/2020
+ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: 4697e7cf49577860ef77b36c238d5238cfbb6940
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.openlocfilehash: 9f88d6cc6e61068a9a932acf4d9c2a5a9c552353
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74389280"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126277"
 ---
 > [!IMPORTANT]
-> 通过在此页上下载适用于 Azure 认知服务的语音 SDK 的任何组件，即表示你已同意其许可证。 请参阅[针对语音 SDK 的 Microsoft 软件许可条款](https://csspeechstorage.blob.core.windows.net/drop/license201809.html)。
+> 下载任何 Azure 认知服务语音 SDK，即表示你已确认接受其许可条款。 有关详细信息，请参阅：
+> - <a href="https://csspeechstorage.blob.core.windows.net/drop/license201809.html" target="_blank">适用于语音 SDK 的 Microsoft 软件许可条款<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+> - <a href="https://csspeechstorage.blob.core.windows.net/drop/1.0.0/ThirdPartyNotices.html" target="_blank">第三方软件声明<span class="docon docon-navigate-external x-hidden-focus"></span></a>

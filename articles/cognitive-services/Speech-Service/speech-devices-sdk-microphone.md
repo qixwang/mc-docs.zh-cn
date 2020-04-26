@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 origin.date: 07/16/2019
-ms.date: 03/16/2020
+ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: 142f2e4dd95382d6b091d0c8537774b58dbc8a7c
-ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
+ms.openlocfilehash: 04ae0f51ee8e19d6448d1c5e31fae11e99abf171
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80151538"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126771"
 ---
 # <a name="speech-devices-sdk-microphone-array-recommendations"></a>语音设备 SDK 麦克风阵列建议
 
@@ -32,7 +32,7 @@ ms.locfileid: "80151538"
 | --- | -------------- | --- | ------------ | --- |
 |     | <img src="media/speech-devices-sdk/7-mic-c.png" alt="7 mic circular array" width="150"/> | <img src="media/speech-devices-sdk/4-mic-c.png" alt="4 mic circular array" width="150"/> | <img src="media/speech-devices-sdk/4-mic-l.png" alt="4 mic linear array" width="150"/> | <img src="media/speech-devices-sdk/2-mic-l.png" alt="2 mic linear array" width="150"/> |
 | \# 麦克风数目 | 7 | 4 | 4 | 2 |
-| 几何结构 | 6 个外置，1 个中置，半径 = 42.5 毫米，均匀排布间距 | 3 个外置，1 个中置，半径 = 42.5 毫米，均匀排布间距 | 长度 = 120 毫米，间距 = 40 毫米 | 间距 = 40 毫米 |
+| Geometry | 6 个外置，1 个中置，半径 = 42.5 毫米，均匀排布间距 | 3 个外置，1 个中置，半径 = 42.5 毫米，均匀排布间距 | 长度 = 120 毫米，间距 = 40 毫米 | 间距 = 40 毫米 |
 
 应根据上述每个阵列的编号（从 0 开始递增）排列麦克风声道的顺序。 需要为 Microsoft 音频堆栈提供额外的音频播放参考流才能让它执行回声消除。
 

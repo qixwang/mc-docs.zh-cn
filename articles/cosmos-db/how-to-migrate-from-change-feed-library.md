@@ -5,14 +5,14 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 09/17/2019
-ms.date: 10/28/2019
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: a878ab73eec1b98e4e708998f0b555a6bd841158
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 55d3e61176b2d2add48f57b336c25dabd9c9f6b3
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "72970249"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134646"
 ---
 # <a name="migrate-from-the-change-feed-processor-library-to-the-azure-cosmos-db-net-v3-sdk"></a>从更改源处理器库迁移到 Azure Cosmos DB .NET V3 SDK
 
@@ -31,7 +31,6 @@ ms.locfileid: "72970249"
 例如，如果用于生成更改源处理器的原始代码如下所示：
 
 ```csharp
-
 ChangeFeedProcessorLibrary.DocumentCollectionInfo monitoredCollectionInfo = new ChangeFeedProcessorLibrary.DocumentCollectionInfo()
 {
     DatabaseName = databaseId,
@@ -69,7 +68,6 @@ var oldChangeFeedProcessor = await builder
 迁移的代码将如下所示：
 
 ```csharp
-
 Container leaseContainer = client.GetContainer(databaseId, Program.leasesContainer);
 Container monitoredContainer = client.GetContainer(databaseId, Program.monitoredContainer);
 ChangeFeedProcessor changeFeedProcessor = monitoredContainer
@@ -86,7 +84,6 @@ ChangeFeedProcessor changeFeedProcessor = monitoredContainer
 而委托可以是静态方法：
 
 ```csharp
-
 static async Task HandleChangesAsync(IReadOnlyCollection<ToDoItem> changes, CancellationToken cancellationToken)
 {
     foreach (ToDoItem item in changes)
@@ -124,5 +121,4 @@ SDK V3 更改源处理器将在首次执行迁移的应用程序代码时自动�
 * [使用更改源估算器](how-to-use-change-feed-estimator.md)
 * [更改源处理器开始时间](how-to-configure-change-feed-start-time.md)
 
-<!--Update_Description: new articles on how to migrate from change feed library  -->
-<!--New.date: 10/28/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

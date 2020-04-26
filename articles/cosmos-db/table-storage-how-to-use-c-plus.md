@@ -6,15 +6,15 @@ ms.subservice: cosmosdb-table
 ms.devlang: cpp
 ms.topic: sample
 origin.date: 10/07/2019
-ms.date: 02/10/2020
-ms.author: v-yeche
+ms.date: 04/27/2020
 author: rockboyfor
-ms.openlocfilehash: f6b231ec6d6ba30d02d8c8f3335a3ecc9500d801
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.author: v-yeche
+ms.openlocfilehash: 7cea165b968fb29f2e345c6db31f473578be06aa
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77068357"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134897"
 ---
 # <a name="how-to-use-azure-table-storage-and-azure-cosmos-db-table-api-with-c"></a>如何通过 C++ 使用 Azure 表存储或 Azure Cosmos DB 表 API
 

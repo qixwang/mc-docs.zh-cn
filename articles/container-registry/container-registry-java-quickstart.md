@@ -4,14 +4,14 @@ description: 使用 Maven Jib 插件生成容器化 Java 应用并将其推送�
 author: rockboyfor
 ms.topic: quickstart
 origin.date: 02/26/2020
-ms.date: 03/09/2020
+ms.date: 04/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 6838bbb44a78e81d1909e5450b2d4f8d27c84188
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.openlocfilehash: e2b20d724e2dc46b10cc5b1e79ccf38da8addaac
+ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78850489"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82093245"
 ---
 # <a name="quickstart-build-and-push-java-container-images-to-azure-container-registry"></a>快速入门：生成 Java 容器映像并将其推送到 Azure 容器注册表
 
@@ -21,12 +21,9 @@ ms.locfileid: "78850489"
 
 * Azure 订阅；如果没有 Azure 订阅，可激活 [MSDN 订阅者权益](https://www.azure.cn/offers/ms-mc-arz-msdn/index.html)或注册 [Azure 试用帐户](https://www.azure.cn/pricing/free-trial)。
 * [Azure 命令行接口 (CLI)](https://docs.azure.cn/cli/overview?view=azure-cli-latest)。
-* 一个受支持的 Java 开发工具包 (JDK)。 有关在 Azure 上进行开发时可供使用的 JDK 的详细信息，请参阅 <https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable>。
-
-    <!--CORRECT ON REDIRECT TO https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable-->
-
+* 一个受支持的 Java 开发工具包 (JDK)。 有关在 Azure 上进行开发时可供使用的 JDK 的详细信息，请参阅 <https://docs.azure.cn/java/java-supported-jdk-runtime?view=azure-java-stable>。
 * Apache 的 [Maven](http://maven.apache.org) 生成工具（版本 3 或以上）。
-* 一个 [Git](https://git-scm.com) 客户端。
+* [Git](https://git-scm.com) 客户端。
 * [Docker](https://www.docker.com) 客户端。
 * [ACR Docker 凭据帮助器](https://github.com/Azure/acr-docker-credential-helper)。
 
@@ -151,7 +148,7 @@ ms.locfileid: "78850489"
 
 ## <a name="verify-your-container-image"></a>验证容器映像
 
-祝贺！ 现已在 Azure 支持的 JDK 中生成了容器化 Java 应用，并已将其推送到 ACR。 接下来可通过以下方式测试映像：将其部署到 Azure 应用服务，或使用以下命令（请替换占位符）将其提取到本地：
+祝贺你！ 现已在 Azure 支持的 JDK 中生成了容器化 Java 应用，并已将其推送到 ACR。 接下来可通过以下方式测试映像：将其部署到 Azure 应用服务，或使用以下命令（请替换占位符）将其提取到本地：
 
 ```bash
 docker pull <your registry name>.azurecr.cn/gs-spring-boot-docker:v1

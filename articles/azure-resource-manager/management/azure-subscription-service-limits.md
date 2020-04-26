@@ -3,14 +3,14 @@ title: Azure 订阅限制和配额
 description: 提供常见的 Azure 订阅和服务限制、配额和约束的列表。 本文包括有关如何增加限制以及最大值的信息。
 ms.topic: conceptual
 origin.date: 02/24/2020
-ms.date: 03/23/2020
+ms.date: 04/20/2020
 ms.author: v-yeche
-ms.openlocfilehash: 14b6771dead4e233fb99aeee1b2eb78362c9622e
-ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
+ms.openlocfilehash: 796718e5e6255d02324429caf8edb7b6011bbffd
+ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
-ms.locfileid: "79543923"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82093515"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure 订阅和服务限制、配额和约束
 
@@ -167,7 +167,7 @@ ms.locfileid: "79543923"
 
 [!INCLUDE [azure-backup-limits](../../../includes/azure-backup-limits.md)]
 
-## <a name="batch-limits"></a>批处理限制
+## <a name="batch-limits"></a>Batch 限制
 
 [!INCLUDE [azure-batch-limits](../../../includes/azure-batch-limits.md)]
 
@@ -260,6 +260,8 @@ ms.locfileid: "79543923"
 ### <a name="network-watcher-limits"></a>网络观察程序限制
 
 [!INCLUDE [network-watcher-limits](../../../includes/network-watcher-limits.md)]
+
+<a name="private-link-limits"></a>
 
 <!--Not Available on ### Private Link limits-->
 
@@ -366,7 +368,7 @@ ms.locfileid: "79543923"
 [!INCLUDE [azure-virtual-machines-limits](../../../includes/azure-virtual-machines-limits.md)]
 
 <a name="limits-and-the-azure-resource-manager"></a>
-### <a name="virtual-machines-limits---azure-resource-manager"></a>虚拟机限制 - Azure Resource Manager
+### <a name="virtual-machines-limits---azure-resource-manager"></a>虚拟机限制 - Azure 资源管理器
 
 使用 Azure 资源管理器和 Azure 资源组时，以下限制适用。
 

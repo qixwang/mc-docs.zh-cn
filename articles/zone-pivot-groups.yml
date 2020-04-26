@@ -7,7 +7,7 @@ groups:
   - id: client-operating-system-linux
     title: Linux
   - id: client-operating-system-macos
-    title: MacOS
+    title: macOS
   - id: client-operating-system-windows
     title: Windows
 - id: URL-test-interface
@@ -17,7 +17,7 @@ groups:
   - id: url-test-tool-curl
     title: cURL
   - id: url-test-tool-postman
-    title: postman
+    title: Postman
 - id: programming-languages-set-one
   title: 编程语言
   prompt: 选择编程语言
@@ -29,7 +29,7 @@ groups:
   - id: programming-language-java
     title: Java
   - id: programming-language-javascript
-    title: Javascript
+    title: JavaScript
   - id: programming-language-python
     title: Python
 - id: programming-languages-set-two
@@ -79,7 +79,7 @@ groups:
   - id: programming-language-go
     title: Go
   - id: programming-language-javascript
-    title: Javascript
+    title: JavaScript
   - id: programming-language-python
     title: Python
   - id: programming-language-ruby
@@ -91,7 +91,7 @@ groups:
   - id: programming-language-csharp
     title: C#
   - id: programming-language-javascript
-    title: Javascript
+    title: JavaScript
   - id: programming-language-python
     title: Python
 - id: programming-languages-set-seven
@@ -127,7 +127,7 @@ groups:
   - id: programming-language-python
     title: Python
   - id: programming-language-javascript
-    title: Javascript
+    title: JavaScript
   - id: programming-language-java
     title: Java
   - id: programming-language-other
@@ -141,9 +141,27 @@ groups:
   - id: programming-language-java
     title: Java
   - id: programming-language-javascript
-    title: Javascript
+    title: JavaScript
   - id: programming-language-python
     title: Python
+- id: programming-languages-set-eleven
+  title: 编程语言
+  prompt: 选择编程语言
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-python
+    title: Python
+- id: programming-languages-set-fifteen
+  title: 编程语言
+  prompt: 选择编程语言
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-go
+    title: Go
 - id: cogsvcs-text-analytics-features
   title: 文本分析功能
   prompt: 选择文本分析功能产品/服务
@@ -160,14 +178,14 @@ groups:
   pivots:
   - id: programming-language-csharp
     title: C#
+  - id: programming-language-java
+    title: Java
   - id: programming-language-javascript
-    title: Javascript
+    title: JavaScript
   - id: programming-language-powershell
     title: PowerShell
   - id: programming-language-python
     title: Python
-  - id: programming-language-typescript
-    title: TypeScript
 - id: programming-languages-text-analytics
   title: 编程语言
   prompt: 选择编程语言。
@@ -179,7 +197,7 @@ groups:
   - id: programming-language-java
     title: Java
   - id: programming-language-javascript
-    title: Javascript
+    title: JavaScript
   - id: programming-language-other
     title: 其他语言...
 - id: programming-languages-set-diberry-3core
@@ -189,9 +207,17 @@ groups:
   - id: programming-language-csharp
     title: C#
   - id: programming-language-javascript
-    title: Javascript
+    title: JavaScript
   - id: programming-language-python
     title: Python
+- id: java-build-tools-set
+  title: 生成工具
+  prompt: 选择生成工具
+  pivots:
+  - id: java-build-tools-maven
+    title: Maven
+  - id: java-build-tools-gradle
+    title: Gradle
 - id: platforms-set-of-three
   title: 平台
   prompt: 选择平台
@@ -214,10 +240,54 @@ groups:
     title: Java
   - id: programming-language-objectivec
     title: Objective-C
+- id: programming-languages-set-thirteen
+  title: 编程语言
+  prompt: 选择编程语言
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-cpp
+    title: C+
+  - id: programming-language-java
+    title: Java
+- id: code-editors-set-one
+  title: 代码编辑器
+  prompt: 选择代码编辑器
+  pivots:
+  - id: code-editor-vscode
+    title: Visual Studio Code
+  - id: code-editor-visualstudio
+    title: Visual Studio
+- id: programming-languages-set-fourteen
+  title: 编程语言
+  prompt: 选择编程语言
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-more
+    title: 更多语言...
+- id: programming-languages-set-sixteen
+  title: 编程语言
+  prompt: 选择编程语言
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-cpp
+    title: C++
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-javascript
+    title: JavaScript
+  - id: programming-language-python
+    title: Python
+  - id: programming-language-more
+    title: 更多语言...
 metadata:
-  ms.openlocfilehash: b88d722c704c2d6c8be32b6c235903a1ca6198c8
-  ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
+  ms.openlocfilehash: b33472d1460f41a127c3528648699161e6b2c14c
+  ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/24/2020
-  ms.locfileid: "80151752"
+  ms.lasthandoff: 04/24/2020
+  ms.locfileid: "82126697"

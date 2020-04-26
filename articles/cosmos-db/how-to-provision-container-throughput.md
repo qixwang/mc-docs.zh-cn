@@ -5,14 +5,14 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 12/13/2019
-ms.date: 02/10/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: 03fe0ea1c76962d15dacbb7e0a5999a4015d3207
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: bee362957ae9e22748143ffdf87397fc97cd1edc
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "76980485"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134647"
 ---
 # <a name="provision-throughput-on-an-azure-cosmos-container"></a>在 Azure Cosmos 容器上预配吞吐量
 
@@ -66,6 +66,7 @@ await client.CreateDocumentCollectionAsync(
 ```
 
 ### <a name="net-v3-sdk"></a>.NET V3 SDK
+
 ```csharp
 // Create a container with a partition key and provision throughput of 1000 RU/s
 string containerName = "myContainerName";

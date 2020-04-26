@@ -8,12 +8,12 @@ origin.date: 01/24/2020
 ms.date: 03/19/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: cab15bfcfe388cdfe2d5a3827dfded8aeb6a161a
-ms.sourcegitcommit: 303a16c7117b6f3495ef0493b4ae8ccb67d7dbba
+ms.openlocfilehash: 8580f299fd86cff8d09d6d16ebe4dcecb504fb75
+ms.sourcegitcommit: 9b0a89269a7e422570b7bc0ca983f60d2f317d48
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80342349"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81675788"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>应用服务环境的网络注意事项 #
 
@@ -211,15 +211,15 @@ ASE 具有一些需要注意的 IP 地址。 它们具有以下特点：
 
     ![NSG 和路由][7]
 
-## <a name="service-endpoints"></a>服务终结点 ##
+<!-- ## Service Endpoints ##
 
-可以通过服务终结点将多租户服务的访问权限限制给一组 Azure 虚拟网络和子网。 若要详细了解服务终结点，请参阅[虚拟网络服务终结点][serviceendpoints]文档。 
+Service Endpoints enable you to restrict access to multi-tenant services to a set of Azure virtual networks and subnets. You can read more about Service Endpoints in the [Virtual Network Service Endpoints][serviceendpoints] documentation. 
 
-在资源上启用服务终结点时，有些已创建路由的优先级高于所有其他路由。 如果在包含强制隧道 ASE 的任意 Azure 服务中使用服务终结点，则不会对发往这些服务的流量应用强制隧道。 
+When you enable Service Endpoints on a resource, there are routes created with higher priority than all other routes. If you use Service Endpoints on any Azure service, with a forced tunneled ASE, the traffic to those services will not be forced tunneled. 
 
-在包含 Azure SQL 实例的子网上启用服务终结点时，所有与该子网有连接的 Azure SQL 实例必定会启用服务终结点。 如果需要从同一子网访问多个 Azure SQL 实例，则不能在一个 Azure SQL 实例上启用服务终结点，而在另一个实例上不启用。 对于服务终结点，任何其他 Azure 服务的行为都不类似于 Azure SQL。 对 Azure 存储启用服务终结点时，可以锁定从子网对该资源进行的访问，但仍可访问其他 Azure 存储帐户，即使这些帐户未启用服务终结点。  
+When Service Endpoints is enabled on a subnet with an Azure SQL instance, all Azure SQL instances connected to from that subnet must have Service Endpoints enabled. if you want to access multiple Azure SQL instances from the same subnet, you can't enable Service Endpoints on one Azure SQL instance and not on another. No other Azure service behaves like Azure SQL with respect to Service Endpoints. When you enable Service Endpoints with Azure Storage, you lock access to that resource from your subnet but can still access other Azure Storage accounts even if they do not have Service Endpoints enabled.  
 
-![服务终结点][8]
+![Service Endpoints][8] -->
 
 <!--Image references-->
 [1]: ./media/network_considerations_with_an_app_service_environment/networkase-overflow.png

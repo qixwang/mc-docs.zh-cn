@@ -11,12 +11,12 @@ ms.topic: conceptual
 origin.date: 06/04/2019
 ms.date: 07/11/2019
 ms.author: v-junlch
-ms.openlocfilehash: b62650db72feeca526787d72edd6305614735e11
-ms.sourcegitcommit: 8f49da0084910bc97e4590fc1a8fe48dd4028e34
+ms.openlocfilehash: 1308a8814ae7e03d851cd6c765a10813b8293859
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67844730"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126855"
 ---
 # <a name="how-the-translator-text-api-counts-characters"></a>文本翻译 API 如何计算字符数
 
@@ -41,6 +41,6 @@ ms.locfileid: "67844730"
 对 Detect 和 BreakSentence 方法的调用不计入字符消耗。 但是，我们希望 Detect 和 BreakSentence 方法的调用次数与其他计数函数的使用次数成合理的比例。 如果发出的 Detect 或 BreakSentence 调用的数量是其他计数方法数量的 100 倍，Microsoft 保留限制使用 Detect 和 BreakSentence 方法的权利。
 
 
-有关字符计数的详细信息，请参阅 [Microsoft Translator FAQ](https://www.microsoft.com/en-us/translator/faq.aspx)。
+有关字符计数的详细信息，请参阅 [Microsoft Translator FAQ](https://www.microsoft.com/translator/faq.aspx)。
 
 <!-- Update_Description: wording update -->

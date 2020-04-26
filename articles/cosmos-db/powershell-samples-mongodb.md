@@ -5,18 +5,24 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: sample
 origin.date: 12/02/2019
-ms.date: 02/10/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: 3dd09b41ecd10bae0ea3fe232ff9a0cdd81806f9
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 30fe7305e1ac9cbae19a16fbe009b5a45eb90779
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77028772"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134583"
 ---
 # <a name="azure-powershell-samples-for-azure-cosmos-db-mongodb-api"></a>适用于 Azure Cosmos DB 的 Azure PowerShell 示例 - MongoDB API
 
 下表包含用于 Azure Cosmos DB for MongoDB API 的示例 Azure PowerShell 脚本的链接。
+
+> [!NOTE]
+> 目前，你只能使用 PowerShell、CLI 和资源管理器模板为 MongoDB 帐户创建 3.2 版的 Azure Cosmos DB API for MongoDB（即，使用格式为 `*.documents.azure.cn` 的终结点的帐户）。 若要创建 3.6 版帐户，请改用 Azure 门户。
+
+> [!NOTE]
+> 该示例使用 [Az.CosmosDB](https://docs.microsoft.com/powershell/module/az.cosmosdb) 管理 cmdlet。 请注意，`Az.CosmosDB` cmdlet 仍处于预览状态，可能会在发布前更改。 请定期检查 `Az.CosmosDB` 是否有更新。
 
 | | |
 |---|---|
@@ -30,4 +36,4 @@ ms.locfileid: "77028772"
 |[创建启用 IP 防火墙的 Cosmos 帐户](scripts/powershell/common/ps-account-firewall-create.md)| 创建启用 IP 防火墙的 Azure Cosmos 帐户。 |
 |||
 
-<!--Update_Description: update meta properties, update reference link -->
+<!-- Update_Description: update meta properties, wording update, update link -->

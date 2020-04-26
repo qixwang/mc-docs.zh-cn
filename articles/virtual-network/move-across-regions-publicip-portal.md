@@ -5,14 +5,14 @@ author: rockboyfor
 ms.service: virtual-network
 ms.topic: article
 origin.date: 08/29/2019
-ms.date: 01/06/2020
+ms.date: 04/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 380b1e16dd59478d3f3d499d76c9067ec505f17c
-ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
+ms.openlocfilehash: d59e1c316bbac5d156d256a489ebb9024c508c1b
+ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599859"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82093287"
 ---
 # <a name="move-azure-public-ip-to-another-region-using-the-azure-portal"></a>使用 Azure 门户将 Azure 公共 IP 移到另一个区域
 
@@ -32,7 +32,7 @@ Azure 公共 IP 特定于区域，不能从一个区域移到另一个区域。 
 
 - 验证 Azure 订阅是否允许在已使用的目标区域中创建公共 IP。 请联系支持部门，启用所需配额。
 
-- 确保订阅提供足够的资源，以便为此过程添加公共 IP。  请参阅 [Azure 订阅和服务限制、配额和约束](/azure-subscription-service-limits#networking-limits)。
+- 确保订阅提供足够的资源，以便为此过程添加公共 IP。  请参阅 [Azure 订阅和服务限制、配额和约束](/azure-resource-manager/management/azure-subscription-service-limits#networking-limits)。
 
 ## <a name="prepare-and-move"></a>准备并移动
 以下步骤说明如何使用资源管理器模板准备公共 IP，以进行配置移动，并使用 Azure 门户将公共 IP 配置移到目标区域。
@@ -167,4 +167,3 @@ Azure 公共 IP 特定于区域，不能从一个区域移到另一个区域。 
 - [将 Azure VM 移到另一区域](/site-recovery/azure-to-azure-tutorial-migrate)
 
 <!-- Update_Description: update meta properties, wording update, update link -->
-<!--NEW.date: 01/06/2020-->

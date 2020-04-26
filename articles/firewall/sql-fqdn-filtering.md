@@ -6,14 +6,14 @@ author: rockboyfor
 ms.service: firewall
 ms.topic: article
 origin.date: 07/19/2019
-ms.date: 08/26/2019
+ms.date: 04/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: f7a44a6e7f1fc8018a2a0aad7b9f38d6202763b2
-ms.sourcegitcommit: 599d651afb83026938d1cfe828e9679a9a0fb69f
+ms.openlocfilehash: 72a04f5b14e42137086c72835875a0a180fa74e5
+ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69993495"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82093253"
 ---
 # <a name="configure-azure-firewall-application-rules-with-sql-fqdns"></a>配置使用 SQL FQDN 的 Azure 防火墙应用程序规则
 
@@ -38,8 +38,10 @@ ms.locfileid: "69993495"
 ## <a name="configure-using-azure-cli"></a>使用 Azure CLI 进行配置
 
 1. [使用 Azure CLI 部署 Azure 防火墙](deploy-cli.md)。
-2. 如果筛选发往 Azure SQL 数据库、SQL 数据仓库或 SQL 托管实例的流量，请确保将 SQL 连接模式设置为“代理”。  若要了解如何切换 SQL 连接模式，请参阅 [Azure SQL 连接体系结构](/sql-database/sql-database-connectivity-architecture#change-azure-sql-database-connection-policy)。 
+2. 如果筛选发往 Azure SQL 数据库、SQL 数据仓库或 SQL 托管实例的流量，请确保将 SQL 连接模式设置为“代理”。  若要了解如何切换 SQL 连接模式，请参阅 [Azure SQL 连接体系结构](/sql-database/sql-database-connectivity-architecture)。 
 
+    <!--Pending on [Azure SQL Connectivity Settings](/sql-database/sql-database-connectivity-settings#change-connection-policy-via-azure-cli)-->
+    
     > [!NOTE]
     > 与重定向模式相比，SQL 代理模式可能会增大延迟。   若要继续使用重定向模式（在 Azure 中建立客户端连接的默认模式），可以在防火墙[网络规则](tutorial-firewall-deploy-portal.md#configure-a-network-rule)中使用 SQL [服务标记](service-tags.md)筛选访问流量。
 
@@ -60,7 +62,9 @@ ms.locfileid: "69993495"
 
 ## <a name="configure-using-the-azure-portal"></a>使用 Azure 门户进行配置
 1. [使用 Azure CLI 部署 Azure 防火墙](deploy-cli.md)。
-2. 如果筛选发往 Azure SQL 数据库、SQL 数据仓库或 SQL 托管实例的流量，请确保将 SQL 连接模式设置为“代理”。  若要了解如何切换 SQL 连接模式，请参阅 [Azure SQL 连接体系结构](../sql-database/sql-database-connectivity-architecture.md#change-azure-sql-database-connection-policy)。 
+2. 如果筛选发往 Azure SQL 数据库、SQL 数据仓库或 SQL 托管实例的流量，请确保将 SQL 连接模式设置为“代理”。  若要了解如何切换 SQL 连接模式，请参阅 [Azure SQL 连接体系结构](../sql-database/sql-database-connectivity-architecture.md)。 
+
+    <!--Pending on [Azure SQL Connectivity Settings](/sql-database/sql-database-connectivity-settings#change-azure-sql-database-connection-policy)-->
 
     > [!NOTE]
     > 与重定向模式相比，SQL 代理模式可能会增大延迟。   若要继续使用重定向模式（在 Azure 中建立客户端连接的默认模式），可以在防火墙[网络规则](tutorial-firewall-deploy-portal.md#configure-a-network-rule)中使用 SQL [服务标记](service-tags.md)筛选访问流量。

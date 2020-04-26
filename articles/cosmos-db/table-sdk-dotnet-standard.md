@@ -2,19 +2,19 @@
 title: Azure Cosmos DB 表 API .NET Standard SDK 和资源
 description: 了解有关 Azure Cosmos DB 表 API 的全部信息。
 author: rockboyfor
-ms.author: v-yeche
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 origin.date: 03/18/2019
-ms.date: 02/10/2020
-ms.openlocfilehash: 66adc3e4808906aefc3c42bc3b5f54ce4873b8bf
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 04/27/2020
+ms.author: v-yeche
+ms.openlocfilehash: 8a556df79c015b51527047446b8ccdd576fae7a0
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77067862"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134901"
 ---
 <!--Verify sucessfully-->
 # <a name="azure-cosmos-db-table-net-standard-api-download-and-release-notes"></a>Azure Cosmos DB 表 .NET Standard API：下载和发行说明

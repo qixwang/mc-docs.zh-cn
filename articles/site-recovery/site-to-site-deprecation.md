@@ -7,14 +7,14 @@ manager: digimobile
 ms.service: site-recovery
 ms.topic: article
 origin.date: 02/25/2020
-ms.date: 03/09/2020
+ms.date: 04/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: e078e2eec4cd56ac6c15ebaca2b921ec5f39abe2
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.openlocfilehash: 78d9ae40e415398d8c312c2c8baf1588bcc63b74
+ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78850543"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82093426"
 ---
 # <a name="deprecation-of-disaster-recovery-between-customer-managed-sites-with-vmm-using-azure-site-recovery"></a>使用 Azure Site Recovery 在客户管理的站点（包含 VMM）之间进行灾难恢复功能的弃用
 
@@ -33,7 +33,7 @@ ms.locfileid: "78850543"
 
 - 一旦这些方案被弃用，除非客户按照替代方法进行操作，否则现有复制可能会中断。 客户将无法在 Azure 门户中通过 Azure Site Recovery 体验来查看、管理或执行任何 DR 相关操作。
 
-## <a name="alternatives"></a>替代方法 
+## <a name="alternatives"></a>备选方法 
 
 下面是客户可以选择的替代方法，可以确保在方案被弃用后，其 DR 策略不会受到影响。 
 
@@ -64,5 +64,4 @@ ms.locfileid: "78850543"
 ## <a name="next-steps"></a>后续步骤
 规划弃用并选择最适合你的基础设施和业务的替代选项。 如果你对此有任何疑问，请联系 Azure 支持部门。
 
-<!-- Update_Description: new article about site to site deprecation -->
-<!--NEW.date: 03/09/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

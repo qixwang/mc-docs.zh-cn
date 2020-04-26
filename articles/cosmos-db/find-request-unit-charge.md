@@ -5,14 +5,14 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 09/01/2019
-ms.date: 09/30/2019
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: 84ce0eff20b16636bb6c13ddf2e274786305810f
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 4c8cf18b53c3f1f9323d8eb465246e6571e94738
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "71306751"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134939"
 ---
 # <a name="find-the-request-unit-charge-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中查找请求单位费用
 
@@ -342,3 +342,4 @@ if (tableResult.RequestCharge.HasValue) // would be false when using Azure Stora
 * [使用 Azure Cosmos DB 中的指标进行监视和调试](use-metrics.md)
 
 <!--Update_Description: wording update -->
+

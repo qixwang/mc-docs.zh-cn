@@ -6,12 +6,12 @@ origin.date: 10/04/2019
 ms.date: 03/23/2020
 ms.topic: tutorial
 ms.author: v-yeche
-ms.openlocfilehash: a96f0177373fe53c9364c6dbdf155c609c5bbaae
-ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
+ms.openlocfilehash: 4f67e24d2cd44bd5fb6a0923c73574f6f00c3294
+ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
-ms.locfileid: "79543886"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82093522"
 ---
 # <a name="tutorial-use-parameter-files-to-deploy-your-resource-manager-template"></a>教程：使用参数文件部署资源管理器模板
 
@@ -300,13 +300,6 @@ az deployment group create \
 3. 选择资源组名称。
 4. 在顶部菜单中选择“删除资源组”。 
 
-## <a name="next-steps"></a>后续步骤
-
-恭喜！你已完成本简介，知道如何将模板部署到 Azure 了。 如果你有任何意见和建议，请在反馈部分告知我们。 谢谢！
-
-你现在可以学习有关模板的更高级概念了。 下一教程会更详细地探讨如何根据模板参考文档来定义要部署的资源。
-
-> [!div class="nextstepaction"]
-> [利用模板参考](template-tutorial-create-encrypted-storage-accounts.md)
+<!--Pending on ## Next steps-->
 
 <!-- Update_Description: update meta properties, wording update, update link -->

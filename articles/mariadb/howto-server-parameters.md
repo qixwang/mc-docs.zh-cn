@@ -5,14 +5,14 @@ author: WenJason
 ms.author: v-jay
 ms.service: mariadb
 ms.topic: conceptual
-origin.date: 12/9/2019
-ms.date: 01/13/2020
-ms.openlocfilehash: 1d7338ec8d624eca343f93d48f73dfde522bb743
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+origin.date: 4/1/2020
+ms.date: 04/27/2020
+ms.openlocfilehash: 1cf26f07eab79d5bd179b7567e287aa9566cb1c5
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79291196"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82127051"
 ---
 # <a name="how-to-configure-server-parameters-in-azure-database-for-mariadb-by-using-the-azure-portal"></a>如何使用 Azure 门户在 Azure Database for MariaDB 中配置服务器参数
 
@@ -56,7 +56,7 @@ InnoDB 缓冲池和最大连接数不可配置，因[定价层](concepts-pricing
 
 以下附加服务器参数不可在系统中配置：
 
-|**参数**|**固定值**|
+|**Parameter**|**固定值**|
 | :------------------------ | :-------- |
 |基本层中的 innodb_file_per_table|OFF|
 |innodb_flush_log_at_trx_commit|1|
@@ -69,10 +69,10 @@ InnoDB 缓冲池和最大连接数不可配置，因[定价层](concepts-pricing
 
 ### <a name="populating-the-time-zone-tables"></a>填充时区表
 
-可以通过从 MySQL 命令行或 MySQL Workbench 等工具调用 `az_load_timezone` 存储过程，填充服务器上的时区表。
+可以通过从 MySQL 命令行或 MySQL Workbench 等工具调用 `mysql.az_load_timezone` 存储过程，填充服务器上的时区表。
 
 > [!NOTE]
-> 如果正在运行 MySQL Workbench 中的 `az_load_timezone` 命令，可能需要先使用 `SET SQL_SAFE_UPDATES=0;` 关闭安全更新模式。
+> 如果正在运行 MySQL Workbench 中的 `mysql.az_load_timezone` 命令，可能需要先使用 `SET SQL_SAFE_UPDATES=0;` 关闭安全更新模式。
 
 ```sql
 CALL mysql.az_load_timezone();

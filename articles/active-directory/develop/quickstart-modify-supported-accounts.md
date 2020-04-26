@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 02/24/2020
+ms.date: 04/22/2020
 ms.author: v-junlch
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: 7f0326a1b7201d308ec2ccaca18c73794b6065de
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.openlocfilehash: 1ee3ac6c731ba0a12a7e474830eadd912a82e197
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77653420"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126493"
 ---
 # <a name="quickstart-modify-the-accounts-supported-by-an-application"></a>快速入门：修改应用程序支持的帐户
 
@@ -49,7 +49,7 @@ ms.locfileid: "77653420"
 如果正在编写一个要供组织外部的客户或合作伙伴使用的应用程序，则需要在 Azure 门户中更新应用程序定义。
 
 > [!IMPORTANT]
-> Azure AD 要求多租户应用程序的应用程序 ID URI 全局唯一。 应用 ID URI 是在协议消息中标识应用程序的方式之一。 就单租户应用程序而言，应用 ID URI 在该租户中保持唯一便已足够。 就多租户应用程序而言，该 URI 必须全局唯一，以便 Azure AD 能够在所有租户中找到该应用程序。 系统通过要求应用 ID URI 必须具有与已验证 Azure AD 租户域匹配的主机名，来强制实施全局唯一性。 例如，如果租户的名称为 contoso.onmicrosoft.cn，则有效的应用 ID URI 为 https://contoso.partner.onmschina.cn/myapp 。 如果租户具有已验证的域 contoso.com，则有效的应用 ID URI 也是 https://contoso.com/myapp 。 如果应用程序 ID URI 不遵循此模式，则将应用程序设置为多租户就会失败。
+> Azure AD 要求多租户应用程序的应用程序 ID URI 全局唯一。 应用 ID URI 是在协议消息中标识应用程序的方式之一。 就单租户应用程序而言，应用 ID URI 在该租户中保持唯一便已足够。 就多租户应用程序而言，该 URI 必须全局唯一，以便 Azure AD 能够在所有租户中找到该应用程序。 系统通过要求应用 ID URI 必须具有与已验证 Azure AD 租户域匹配的主机名，来强制实施全局唯一性。 例如，如果租户的名称为 contoso.onmicrosoft.cn，则有效的应用 ID URI 为 `https://contoso.partner.onmschina.cn/myapp` 。 如果租户具有已验证的域 contoso.com，则有效的应用 ID URI 也是 `https://contoso.com/myapp` 。 如果应用程序 ID URI 不遵循此模式，则将应用程序设置为多租户就会失败。
 
 ### <a name="to-change-who-can-access-your-application"></a>更改谁能够访问你的应用程序
 
@@ -86,4 +86,3 @@ ms.locfileid: "77653420"
 
 深入了解使用 Azure Active Directory 开发应用程序时应使用的品牌准则，请参阅[应用程序的品牌准则](howto-add-branding-in-azure-ad-apps.md)。
 
-<!-- Update_Description: link update -->

@@ -11,14 +11,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 01/10/2019
-ms.date: 01/13/2020
+ms.date: 04/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: cc6f677e7d14039f044a00121a7ea9109d93fec9
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: e78f53860249fbe76b6175b2104fa177bc5e26d4
+ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79293199"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82093319"
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>创建、更改或删除虚拟网络
 
@@ -88,7 +88,7 @@ ms.locfileid: "79293199"
 
         ![网络接口概述](./media/manage-virtual-network/vnet-overview.png)
 
-        可以选择“资源组”或“订阅名称”旁边的“更改”，将虚拟网络移动到其他订阅或资源组。    若要了解如何移动虚拟网络，请参阅[将资源移动到不同的资源组或订阅](../azure-resource-manager/resource-group-move-resources.md?toc=%2fvirtual-network%2ftoc.json)。 该文章列出了先决条件，以及如何使用 Azure 门户、PowerShell 和 Azure CLI 移动资源。 所有连接到虚拟网络的资源都必须随着虚拟网络移动。
+        可以选择“资源组”或“订阅名称”旁边的“更改”，将虚拟网络移动到其他订阅或资源组。    若要了解如何移动虚拟网络，请参阅[将资源移动到不同的资源组或订阅](../azure-resource-manager/management/move-resource-group-and-subscription.md?toc=%2fvirtual-network%2ftoc.json)。 该文章列出了先决条件，以及如何使用 Azure 门户、PowerShell 和 Azure CLI 移动资源。 所有连接到虚拟网络的资源都必须随着虚拟网络移动。
     - **地址空间**：地址空间：列出分配给虚拟网络的地址空间。 若要了解如何添加和删除地址空间内的地址范围，请完成[添加或删除地址范围](#add-or-remove-an-address-range)中的步骤。
     - **已连接的设备**：列出连接到虚拟网络的所有资源。 在上一个屏幕截图中，有三个网络接口和一个负载均衡器连接到虚拟网络。 将列出已创建并连接到虚拟网络的所有新资源。 如果删除某个已连接到虚拟网络的资源，则它将不再出现在列表中。
     - **子网**：显示存在于虚拟网络内的子网列表。 若要了解如何添加和删除子网，请参阅[管理子网](virtual-network-manage-subnet.md)。
@@ -97,10 +97,10 @@ ms.locfileid: "79293199"
     - **属性**：显示有关虚拟网络的设置，包括虚拟网络的资源 ID 及其所在的 Azure 订阅。
     - **示意图**：该图提供已连接到虚拟网络的所有设备的可视表示形式。 图示提供一些有关设备的关键信息。 若要在此视图中管理设备，请选择设备。
     - **常用 Azure 设置**：若要详细了解常见的 Azure 设置，请参阅以下信息：
-        - [活动日志](../azure-monitor/platform/activity-logs-overview.md)
+        - [活动日志](../azure-monitor/platform/platform-logs-overview.md)
         - [访问控制 (IAM)](../role-based-access-control/overview.md)
-        - [标记](../azure-resource-manager/resource-group-using-tags.md?toc=%2fvirtual-network%2ftoc.json)
-        - [锁](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fvirtual-network%2ftoc.json)
+        - [标记](../azure-resource-manager/management/tag-resources.md?toc=%2fvirtual-network%2ftoc.json)
+        - [锁](../azure-resource-manager/management/lock-resources.md?toc=%2fvirtual-network%2ftoc.json)
         - [自动化脚本](../azure-resource-manager/management/manage-resource-groups-portal.md#export-resource-groups-to-templates)
 
  命令
@@ -149,7 +149,7 @@ ms.locfileid: "79293199"
 4. 选择以下选项之一：
     
     - **默认（Azure 提供）** ：所有资源名称和专用 IP 地址会自动注册到 Azure DNS 服务器。 可以解析连接到同一虚拟网络的任何资源之间的名称。 不能使用此选项跨虚拟网络解析名称。 若要跨虚拟网络解析名称，必须使用自定义 DNS 服务器。
-    - **自定义**：可以添加一个或多个服务器，直至达到虚拟网络的 Azure 限制。 若要了解有关 DNS 服务器限制的详细信息，请参阅 [Azure 限制](../azure-subscription-service-limits.md?toc=%2fvirtual-network%2ftoc.json#virtual-networking-limits-classic)。 可以使用以下选项：
+    - **自定义**：可以添加一个或多个服务器，直至达到虚拟网络的 Azure 限制。 若要了解有关 DNS 服务器限制的详细信息，请参阅 [Azure 限制](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fvirtual-network%2ftoc.json#virtual-networking-limits-classic)。 可以使用以下选项：
     - **添加地址**：将服务器添加到虚拟网络 DNS 服务器列表。 此选项还会将 DNS 服务器注册到 Azure。 如果已将 DNS 服务器注册到 Azure，则可以在列表中选择该 DNS 服务器。
     - **删除地址**：在要删除的服务器旁，选择“...”，然后选择“删除”   。 删除服务器只会将服务器从此虚拟网络列表中删除。 DNS 服务器在 Azure 中仍为注册状态，可供其他虚拟网络使用。
     - **重新排列 DNS 服务器的地址**：确认按所处环境的正确顺序列出 DNS 服务器，这一点很重要。 将按指定顺序使用 DNS 服务器列表， 而不是按轮循方式来使用。 如果列表中的第一个 DNS 服务器可以访问，则无论此 DNS 服务器是否正常运行，客户端都会使用该 DNS 服务器。 删除列出的所有 DNS 服务器，然后按照所需顺序，将这些服务器重新添加到列表中。

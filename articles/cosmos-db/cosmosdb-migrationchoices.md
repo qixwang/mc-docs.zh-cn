@@ -5,14 +5,14 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 10/23/2019
-ms.date: 12/16/2019
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: 57fd55ece0d4635089a14ea6d4855f7c6832ee9f
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: d9999b9a06a2d418a6c2136b8f127b4403ec2f0e
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75334544"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134964"
 ---
 # <a name="options-to-migrate-your-on-premises-or-cloud-data-to-azure-cosmos-db"></a>用于将本地或云数据迁移到 Azure Cosmos DB 的选项
 
@@ -39,7 +39,7 @@ ms.locfileid: "75334544"
 |Offline|[Azure Cosmos DB Spark 连接器](/cosmos-db/spark-connector)|&bull; 利用 Azure Cosmos DB 批量执行程序库 <br/>&bull; 适合用于大型数据集 <br/>&bull; 需要自定义的 Spark 设置 <br/>&bull; Spark 对架构不一致性比较敏感，这可能会在迁移过程中造成问题 |
 |Offline|[包含 Cosmos DB 批量执行程序库的自定义工具](/cosmos-db/migrate-cosmosdb-data)|&bull; 提供检查点和死信功能，可提高迁移复原能力 <br/>&bull; 适合用于极大型数据集 (10 TB+)  <br/>&bull; 需要对此工具进行自定义设置，使其作为应用服务运行 |
 |联机|[Cosmos DB Functions + ChangeFeed API](/cosmos-db/change-feed-functions)|&bull; 易于设置 <br/>&bull; 仅当源是 Azure Cosmos DB 容器时才适用 <br/>&bull; 不适合用于大型数据集 <br/>&bull; 不捕获源容器中的删除操作 |
-|联机|[使用 ChangeFeed 的自定义迁移服务](https://aka.ms/CosmosDBMigrationSample)|&bull; 提供进度跟踪 <br/>&bull; 仅当源是 Azure Cosmos DB 容器时才适用 <br/>&bull; 也适用于较大的数据集 <br/>&bull; 要求用户设置一个应用服务来托管更改源处理器 <br/>&bull; 不捕获源容器中的删除操作|
+|联机|[使用 ChangeFeed 的自定义迁移服务](https://github.com/nomiero/CosmosDBLiveETLSample)|&bull; 提供进度跟踪 <br/>&bull; 仅当源是 Azure Cosmos DB 容器时才适用 <br/>&bull; 也适用于较大的数据集 <br/>&bull; 要求用户设置一个应用服务来托管更改源处理器 <br/>&bull; 不捕获源容器中的删除操作|
 
 <!--Not Avaialble on [Striim](/cosmos-db/cosmosdb-sql-api-migrate-data-striim)-->
 <!--Not Avaialble on |Online|[Striim](/cosmos-db/cosmosdb-sql-api-migrate-data-striim)|&bull; Works with a large variety of sources like Oracle, DB2, SQL Server <br/>&bull; Easy to build ETL pipelines and provides a dashboard for monitoring <br/>&bull; Supports larger datasets <br/>&bull; Since this is a third-party tool, it needs to be purchased from the marketplace and installed in the user's environment|-->
@@ -77,6 +77,6 @@ ms.locfileid: "75334544"
 
 * 若要进行详细了解，请试用那些在 [.NET](bulk-executor-dot-net.md) 和 [Java](bulk-executor-java.md) 中使用批量执行程序库的示例应用程序。 
 * 批量执行程序库已集成到 Cosmos DB Spark 连接器中。若要进行详细的了解，请参阅 [Azure Cosmos DB Spark 连接器](spark-connector.md)一文。  
-* 若要获得大规模迁移的更多帮助，请通过开具 [Azure 支持票证](https://support.azure.cn/support/support-azure/)联系 Azure Cosmos DB 产品团队。 
+* 如需大规模迁移方面的更多帮助，请通过开具支持票证来联系 Azure Cosmos DB 产品团队：选择“常规建议”问题类型，“大规模迁移(TB+)”问题子类型。
 
 <!-- Update_Description: update meta properties, wording update, update link -->

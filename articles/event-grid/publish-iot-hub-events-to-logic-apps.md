@@ -8,12 +8,12 @@ ms.topic: tutorial
 origin.date: 11/21/2019
 ms.date: 3/16/2020
 ms.author: v-lingwu
-ms.openlocfilehash: e22e8fe78e319cea6bd961ffa561332a4d937d3c
-ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
+ms.openlocfilehash: 840f33c6b5bbb596a26d6d65513c22113f378917
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2020
-ms.locfileid: "79452604"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126531"
 ---
 # <a name="tutorial-send-email-notifications-about-azure-iot-hub-events-using-event-grid-and-logic-apps"></a>教程：使用事件网格和逻辑应用发送有关 Azure IoT 中心事件的电子邮件通知
 
@@ -33,7 +33,7 @@ ms.locfileid: "79452604"
 
 ### <a name="create-a-logic-app-resource"></a>创建逻辑应用资源
 
-1. 在 [Azure 门户](https://portal.azure.com)中，选择“创建资源”，然后在搜索框中键入“逻辑应用”并选择“返回”  。 从结果中选择“逻辑应用”  。
+1. 在 [Azure 门户](https://portal.azure.cn)中，选择“创建资源”，然后在搜索框中键入“逻辑应用”并选择“返回”  。 从结果中选择“逻辑应用”  。
 
    ![创建逻辑应用](./media/publish-iot-hub-events-to-logic-apps/select-logic-app.png)
 

@@ -5,15 +5,15 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: sample
-origin.date: 07/03/2019
-ms.date: 01/20/2020
+origin.date: 03/18/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: 4f380cab37bd42c3ea442d084b1031f900a0d428
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 91a3b321993b55baa8e7686bd402709ef20209e6
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "76270090"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134577"
 ---
 # <a name="get-throughput-rus-for-a-database-or-collection-for-azure-cosmos-db---mongodb-api"></a>获取 Azure Cosmos DB 的数据库或集合的吞吐量（RU/秒）- MongoDB API
 
@@ -24,26 +24,26 @@ ms.locfileid: "76270090"
 ## <a name="sample-script"></a>示例脚本
 
 ```powershell
-# Get RU for an Azure Cosmos MongoDB API database or collection
-$apiVersion = "2015-04-08"
-$resourceGroupName = "myResourceGroup"
-$accountName = "mycosmosaccount"
-$databaseName = "database1"
-$collectionName = "collection1"
-$databaseThroughputResourceName = $accountName + "/mongodb/" + $databaseName + "/throughput"
-$databaseThroughputResourceType = "Microsoft.DocumentDb/databaseAccounts/apis/databases/settings"
-$collectionThroughputResourceName = $accountName + "/mongodb/" + $databaseName + "/" + $collectionName + "/throughput"
-$collectionThroughputResourceType = "Microsoft.DocumentDb/databaseAccounts/apis/databases/collections/settings"
+# Reference: Az.CosmosDB | https://docs.microsoft.com/powershell/module/az.cosmosdb
+# --------------------------------------------------
+# Purpose
+# Get database or collection throughput
+# --------------------------------------------------
+# Variables - ***** SUBSTITUTE YOUR VALUES *****
+$resourceGroupName = "myResourceGroup" # Resource Group must already exist
+$accountName = "myaccount" # Must be all lower case
+$databaseName = "myDatabase" # Keyspace with shared throughput
+$collectionName = "myCollection" # Table with dedicated throughput
+# --------------------------------------------------
 
-# Get the throughput for a database (returns RU/s or 404 "Not found" error if not set)
-Get-AzResource -ResourceType $databaseThroughputResourceType `
-    -ApiVersion $apiVersion -ResourceGroupName $resourceGroupName `
-    -Name $databaseThroughputResourceName  | Select-Object Properties
+Write-Host "Get database shared throughput"
+Get-AzCosmosDBMongoDBDatabaseThroughput -ResourceGroupName $resourceGroupName `
+    -AccountName $accountName -Name $databaseName
 
-# Get the throughput for a collection (returns RU/s or 404 "Not found" error if not set)
-Get-AzResource -ResourceType $collectionThroughputResourceType `
-    -ApiVersion $apiVersion -ResourceGroupName $resourceGroupName `
-    -Name $collectionThroughputResourceName  | Select-Object Properties
+Write-Host "Get collection dedicated throughput"
+Get-AzCosmosDBMongoDBCollectionThroughput -ResourceGroupName $resourceGroupName `
+    -AccountName $accountName -DatabaseName $databaseName `
+    -Name $collectionName
 
 ```
 
@@ -61,8 +61,9 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 
 | Command | 说明 |
 |---|---|
-|**Azure 资源**| |
-| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | 创建资源。 |
+|**Azure Cosmos DB**| |
+| [Get-AzCosmosDBMongoDBDatabaseThroughput](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbmongodbdatabasethroughput) | 获取指定 MongoDB API 数据库的吞吐量值。 |
+| [Get-AzCosmosDBMongoDBCollectionThroughput](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbmongodbcollectionthroughput) | 获取指定 MongoDB API 集合的吞吐量值。 |
 |**Azure 资源组**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | 删除资源组，包括所有嵌套的资源。 |
 |||
@@ -73,4 +74,4 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 
 可以在 [Azure Cosmos DB PowerShell 脚本](../../../powershell-samples.md)中找到其他 Azure Cosmos DB PowerShell 脚本示例。
 
-<!-- Update_Description: wording update-->
+<!-- Update_Description: update meta properties, wording update, update link -->

@@ -13,17 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-origin.date: 05/02/2019
-ms.date: 07/04/2019
+ms.date: 04/23/2020
 ms.subservice: hybrid
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 33c25bd1ea96043ab84e4bf7d1d0837677fbde55
-ms.sourcegitcommit: 5f85d6fe825db38579684ee1b621d19b22eeff57
+ms.openlocfilehash: 30bac8b894629243f1d38c8839d3519fd2821792
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67568632"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126564"
 ---
 # <a name="changing-the-adsync-service-account-password"></a>更改 ADSync 服务帐户密码
 如果更改了 ADSync 服务帐户密码，则将无法正常启动同步服务，除非已放弃加密密钥并重新初始化 ADSync 服务帐户密码。 
@@ -41,12 +40,12 @@ Azure AD Connect 是同步服务的一部分，它使用加密密钥来存储 AD
 
 
 - 如果尝试在 Windows 服务控制管理器中启动同步服务，会收到“Windows 无法在本地计算机上启动 Azure AD 同步服务”错误。  **错误 1069：服务因登录失败而无法启动。** “
-- 在 Windows 事件查看器中，系统事件日志包含**事件 ID 为 7038** 且内容为“ADSync 服务无法通过当前配置的密码登录，因为出现以下错误:用户名或密码不正确。” 
+- 在 Windows 事件查看器中，系统事件日志包含**事件 ID 为 7038** 且内容为“ADSync 服务无法通过当前配置的密码登录，因为出现以下错误:**用户名或密码不正确。”**
 
 其次，在特定条件下，如果密码已更新，则同步服务无法再通过 DPAPI 检索加密密钥。 没有加密密钥，同步服务就不能解密在本地 AD 和 Azure AD 之间进行同步所需的密码。
 此时会出现错误，例如：
 
-- 如果尝试在 Windows 服务控制管理器中启动同步服务，但却无法检索加密密钥，则该服务会失败，并且会出现错误“<strong>Windows 无法在本地计算机上启动 Azure AD Sync”错误。有关详细信息，请查看系统事件日志。如果该服务是非 Microsoft 服务，请联系服务供应商，并请参阅特定于服务的错误代码 -21451857952。”
+- 如果尝试在 Windows 服务控制管理器中启动同步服务，但却无法检索加密密钥，则该服务会失败，并且会出现错误“<strong>Windows 无法在本地计算机上启动 Azure AD Sync”错误。有关详细信息，请查看系统事件日志。如果该服务是非 Microsoft 服务，请联系服务供应商，并请参阅特定于服务的错误代码 -21451857952</strong>。”
 - 在 Windows 事件查看器中，应用程序事件日志包含**事件 ID 为 6028** 且内容为“服务器加密密钥无法访问”的错误消息。 
 
 若要确保不收到这些错误，请在更改密码时，按照[放弃 ADSync 服务帐户加密密钥](#abandoning-the-adsync-service-account-encryption-key)中的过程进行操作。
@@ -71,21 +70,21 @@ Azure AD Connect 是同步服务的一部分，它使用加密密钥来存储 AD
 
 4. [启动同步服务](#start-the-synchronization-service)
 
-#### 停止同步服务 <a name="stop-the-synchronization-service"></a>
+#### <a name="stop-the-synchronization-service"></a>停止同步服务 <a name="stop-the-synchronization-service"></a>
 首先可以在 Windows 服务控制管理器中停止该服务。  尝试停止该服务时，请确保该服务未在运行。  如果该服务在运行，请等到它完成后再停止它。
 
 
 1. 转到“Windows 服务控制管理器”（“启动”→“服务”）。
 2. 选择“Azure AD 同步”，并单击“停止”。 
 
-#### 放弃现有的加密密钥 <a name="abandon-the-existing-encryption-key"></a>
+#### <a name="abandon-the-existing-encryption-key"></a>放弃现有的加密密钥 <a name="abandon-the-existing-encryption-key"></a>
 放弃现有的加密密钥，以便创建新的加密密钥：
 
 1. 以管理员身份登录到 Azure AD Connect 服务器。
 
 2. 启动新的 PowerShell 会话。
 
-3. 导航到文件夹 `$env:Program Files\Azure AD Sync\bin\`
+3. 导航到文件夹 `'$env:ProgramFiles\Azure AD Sync\bin\'`
 
 4. 运行命令 `./miiskmu.exe /a`
 
@@ -94,7 +93,7 @@ Azure AD Connect 是同步服务的一部分，它使用加密密钥来存储 AD
 #### <a name="provide-the-password-of-the-ad-ds-connector-account"></a>提供 AD DS 连接器帐户的密码
 由于存储在数据库中的现有密码再也不能解密，因此需要为同步服务提供 AD DS 连接器帐户的密码。 同步服务使用新的加密密钥对密码加密：
 
-1. 启动 Synchronization Service Manager（“开始”→ 同步服务）。
+1. 启动 Synchronization Service Manager（“开始”→ Synchronization Service）。
 </br>![Sync Service Manager](./media/how-to-connect-sync-change-serviceacct-pass/startmenu.png)  
 2. 转到“连接器”选项卡。 
 3. 选择与本地 AD 对应的“AD 连接器”。  如果有多个 AD 连接器，请针对每个连接器重复以下步骤。
@@ -113,7 +112,7 @@ Azure AD Connect 是同步服务的一部分，它使用加密密钥来存储 AD
 ![Azure AD Connect 同步加密密钥实用工具](./media/how-to-connect-sync-change-serviceacct-pass/key7.png)
 4. 如果成功，会看到 PowerShell 命令提示符。
 
-#### 启动同步服务 <a name="start-the-synchronization-service"></a>
+#### <a name="start-the-synchronization-service"></a>启动同步服务 <a name="start-the-synchronization-service"></a>
 同步服务可以访问加密密钥及其所需的所有密码以后，即可在 Windows 服务控制管理器中重新启动该服务：
 
 
@@ -127,4 +126,3 @@ Azure AD Connect 是同步服务的一部分，它使用加密密钥来存储 AD
 
 * [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)
 
-<!-- Update_Description: wording update -->

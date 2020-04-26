@@ -2,14 +2,15 @@
 title: 用于生成、测试和修补映像的多步骤任务
 description: 介绍多步骤任务，这是 Azure 容器注册表中 ACR 任务的一项功能，可以提供用于在云中生成、测试和修补容器映像的基于任务的工作流。
 ms.topic: article
+origin.date: 03/28/2019
+ms.date: 04/06/2020
 ms.author: v-yeche
-ms.date: 12/09/2019
-ms.openlocfilehash: 586902fef1b2cd1867bad711a19be495879127f4
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.openlocfilehash: 6f21b666e8c3236476625e92345cd5d8aface487
+ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74885016"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82093390"
 ---
 <!--Verify sucessfully-->
 # <a name="run-multi-step-build-test-and-patch-tasks-in-acr-tasks"></a>在 ACR 任务中运行多步骤生成、测试和修补任务
@@ -51,33 +52,33 @@ ACR 任务中的多步骤任务定义为 YAML 文件中的一系列步骤。 每
 以下代码片段演示如何组合使用这些任务步骤类型。 多步骤任务使用类似于以下内容的 YAML 文件可以像从 Dockerfile 构建单个映像并推送到注册表一样简单：
 
 ```yml
-version: v1.0.0
+version: v1.1.0
 steps:
-  - build: -t {{.Run.Registry}}/hello-world:{{.Run.ID}} .
-  - push: ["{{.Run.Registry}}/hello-world:{{.Run.ID}}"]
+  - build: -t $Registry/hello-world:$ID .
+  - push: ["$Registry/hello-world:$ID"]
 ```
 
 或更复杂，例如以下虚构的多步骤定义，其中包括用于生成、测试 helm 包和 helm 部署的步骤（未显示容器注册表和 Helm 存储库配置）：
 
 ```yml
-version: v1.0.0
+version: v1.1.0
 steps:
   - id: build-web
-    build: -t {{.Run.Registry}}/hello-world:{{.Run.ID}} .
+    build: -t $Registry/hello-world:$ID .
     when: ["-"]
   - id: build-tests
-    build -t {{.Run.Registry}}/hello-world-tests ./funcTests
+    build -t $Registry/hello-world-tests ./funcTests
     when: ["-"]
   - id: push
-    push: ["{{.Run.Registry}}/helloworld:{{.Run.ID}}"]
+    push: ["$Registry/helloworld:$ID"]
     when: ["build-web", "build-tests"]
   - id: hello-world-web
-    cmd: {{.Run.Registry}}/helloworld:{{.Run.ID}}
+    cmd: $Registry/helloworld:$ID
   - id: funcTests
-    cmd: {{.Run.Registry}}/helloworld:{{.Run.ID}}
+    cmd: $Registry/helloworld:$ID
     env: ["host=helloworld:80"]
-  - cmd: {{.Run.Registry}}/functions/helm package --app-version {{.Run.ID}} -d ./helm ./helm/helloworld/
-  - cmd: {{.Run.Registry}}/functions/helm upgrade helloworld ./helm/helloworld/ --reuse-values --set helloworld.image={{.Run.Registry}}/helloworld:{{.Run.ID}}
+  - cmd: $Registry/functions/helm package --app-version $ID -d ./helm ./helm/helloworld/
+  - cmd: $Registry/functions/helm upgrade helloworld ./helm/helloworld/ --reuse-values --set helloworld.image=$Registry/helloworld:$ID
 ```
 
 有关多个方案的多步骤任务 YAML 文件和 Dockerfile，请参阅[任务示例](container-registry-tasks-samples.md)。
@@ -96,8 +97,11 @@ az acr run --registry <acrName> -f build-push-hello-world.yaml https://github.co
 
 运行该任务时，输出应显示 YAML 文件中定义的每个步骤的进度。 在以下输出中，步骤显示为 `acb_step_0` 和 `acb_step_1`。
 
-```console
-$ az acr run --registry myregistry -f build-push-hello-world.yaml https://github.com/Azure-Samples/acr-tasks.git
+```azurecli
+az acr run --registry myregistry -f build-push-hello-world.yaml https://github.com/Azure-Samples/acr-tasks.git
+```
+
+```output
 Sending context to registry: myregistry...
 Queued a run with ID: yd14
 Waiting for an agent...
@@ -139,7 +143,6 @@ The following dependencies were found:
     tag: latest
     digest: sha256:0add3ace90ecb4adbf7777e9aacf18357296e799f81cabc9fde470971e499788
   git: {}
-
 
 Run ID: yd14 was successful after 19s
 ```

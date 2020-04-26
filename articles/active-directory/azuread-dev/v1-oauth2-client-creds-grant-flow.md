@@ -2,27 +2,23 @@
 title: 使用 OAuth2.0 进行 Azure AD 服务到服务身份验证 | Microsoft 文档
 description: 本文介绍如何使用 OAuth2.0 客户端凭据授权流通过 HTTP 消息实现服务到服务身份验证。
 services: active-directory
-documentationcenter: .net
 author: rwike77
 manager: CelesteDG
-editor: ''
-ms.assetid: a7f939d9-532d-4b6d-b6d3-95520207965d
 ms.service: active-directory
 ms.subservice: azuread-dev
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/24/2020
+ms.date: 04/23/2020
 ms.author: v-junlch
 ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 7b968c72d5de1ff7ebb9924c8f7219c02be8b3e6
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ROBOTS: NOINDEX
+ms.openlocfilehash: eb8f0d4217efda7241fca421d07729908aafe215
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77653615"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126321"
 ---
 # <a name="service-to-service-calls-using-client-credentials-shared-secret-or-certificate"></a>使用客户端凭据（共享密钥或证书）进行服务到服务调用
 
@@ -41,7 +37,7 @@ OAuth 2.0 客户端凭据授权流允许 Web 服务（机密客户端  ）在调
 4. 受保护资源中的数据返回到客户端应用程序。
 
 ## <a name="register-the-services-in-azure-ad"></a>在 Azure AD 中注册服务
-在 Azure Active Directory (Azure AD) 中注册调用服务和接收服务。 有关详细说明，请参阅 [将应用程序与 Azure Active Directory 集成](../develop/quickstart-register-app.md?toc=/active-directory/azuread-dev/toc.json&bc=/active-directory/azuread-dev/breadcrumb/toc.json)。
+在 Azure Active Directory (Azure AD) 中注册调用服务和接收服务。 有关详细说明，请参阅 [Integrating applications with Azure Active Directory](../develop/quickstart-register-app.md?toc=/active-directory/azuread-dev/toc.json&bc=/active-directory/azuread-dev/breadcrumb/toc.json)（将应用程序与 Azure Active Directory 集成）。
 
 ## <a name="request-an-access-token"></a>请求访问令牌
 若要请求访问令牌，对特定于租户的 Azure AD 终结点使用 HTTP POST。
@@ -53,18 +49,18 @@ https://login.partner.microsoftonline.cn/<tenant id>/oauth2/token
 ## <a name="service-to-service-access-token-request"></a>服务到服务访问令牌请求
 有两种情况，具体取决于客户端应用程序选择由共享密钥还是由证书保护。
 
-### <a name="first-case-access-token-request-with-a-shared-secret"></a>第一种情况：使用共享机密访问令牌请求
+### <a name="first-case-access-token-request-with-a-shared-secret"></a>第一种情况：使用共享密钥访问令牌请求
 使用共享密钥时，服务到服务访问令牌请求包含以下参数：
 
 | 参数 |  | 说明 |
 | --- | --- | --- |
-| grant_type |必填 |指定请求的授权类型。 在客户端凭据授权流中，该值必须是 client_credentials。  |
+| grant_type |必填 |指定请求的授权类型。 在客户端凭据授权流中，该值必须是 **client_credentials**。 |
 | client_id |必填 |指定调用 Web 服务的 Azure AD 客户端 ID。 要查找调用应用程序的客户端 ID，请在 [Azure 门户](https://portal.azure.cn)中，依次单击“Azure Active Directory”和“应用注册”，然后单击该应用程序   。 client_id 是应用程序 ID  |
 | client_secret |必填 |在 Azure AD 中输入为调用 Web 服务或 daemon 应用程序注册的密钥。 要创建密钥，请在 Azure 门户中，依次单击“Azure Active Directory”>“应用注册”并单击该应用程序，然后依次单击“设置”>“密钥”，并添加密钥     。  提供此机密时请对其进行 URL 编码。 |
 | resource |必填 |输入接收 Web 服务的应用 ID URI。 要查找应用 ID URI，请在 Azure 门户中，依次单击“Azure Active Directory”和“应用注册”，并单击服务应用程序，然后依次单击“设置”和“属性”     。 |
 
 #### <a name="example"></a>示例
-以下 HTTP POST 请求 https://service.contoso.com/ Web 服务的[访问令牌](../develop/access-tokens.md?toc=/active-directory/azuread-dev/toc.json&bc=/active-directory/azuread-dev/breadcrumb/toc.json)。 `client_id` 标识请求访问令牌的 Web 服务。
+以下 HTTP POST 请求 [ Web 服务的](../develop/access-tokens.md?toc=/active-directory/azuread-dev/toc.json&bc=/active-directory/azuread-dev/breadcrumb/toc.json)访问令牌 `https://service.contoso.com/` 。 `client_id` 标识请求访问令牌的 Web 服务。
 
 ```
 POST /contoso.com/oauth2/token HTTP/1.1
@@ -79,7 +75,7 @@ grant_type=client_credentials&client_id=625bc9f6-3bf6-4b6d-94ba-e97cf07a22de&cli
 
 | 参数 |  | 说明 |
 | --- | --- | --- |
-| grant_type |必填 |指定请求的响应类型。 在客户端凭据授权流中，该值必须是 client_credentials。  |
+| grant_type |必填 |指定请求的响应类型。 在客户端凭据授权流中，该值必须是 **client_credentials**。 |
 | client_id |必填 |指定调用 Web 服务的 Azure AD 客户端 ID。 要查找调用应用程序的客户端 ID，请在 [Azure 门户](https://portal.azure.cn)中，依次单击“Azure Active Directory”和“应用注册”，然后单击该应用程序   。 client_id 是应用程序 ID  |
 | client_assertion_type |必填 |值必须是 `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` |
 | client_assertion |必填 | 断言（JSON Web 令牌），需使用作为凭据向应用程序注册的证书进行创建和签名。 有关如何注册证书以及断言的格式，请阅读[证书凭据](../develop/active-directory-certificate-credentials.md?toc=/active-directory/azuread-dev/toc.json&bc=/active-directory/azuread-dev/breadcrumb/toc.json)的相关信息。|
@@ -88,7 +84,7 @@ grant_type=client_credentials&client_id=625bc9f6-3bf6-4b6d-94ba-e97cf07a22de&cli
 请注意，参数几乎与共享密钥请求的参数相同，只不过 client_secret 参数替换为两个参数：client_assertion_type 和 client_assertion。
 
 #### <a name="example"></a>示例
-以下 HTTP POST 请求具有证书的 https://service.contoso.com/ Web 服务的访问令牌。 `client_id` 标识请求访问令牌的 Web 服务。
+以下 HTTP POST 请求具有证书的 `https://service.contoso.com/` Web 服务的访问令牌。 `client_id` 标识请求访问令牌的 Web 服务。
 
 ```
 POST /<tenant_id>/oauth2/token HTTP/1.1
@@ -105,7 +101,7 @@ resource=https%3A%2F%contoso.partner.onmschina.cn%2Ffc7664b4-cdd6-43e1-9365-c2e1
 | 参数 | 说明 |
 | --- | --- |
 | access_token |请求的访问令牌。 调用 Web 服务可以使用此令牌向接收 Web 服务进行身份验证。 |
-| token_type |指示令牌类型值。 Azure AD 唯一支持的类型是 Bearer  。 有关持有者令牌的详细信息，请参阅 [OAuth 2.0 授权框架：持有者令牌用法 (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt)。 |
+| token_type |指示令牌类型值。 Azure AD 唯一支持的类型是 **Bearer**。 有关持有者令牌的详细信息，请参阅 [OAuth2.0 授权框架：持有者令牌用法 (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt)。 |
 | expires_in |访问令牌的有效期（以秒为单位）。 |
 | expires_on |访问令牌的过期时间。 该日期表示为自 1970-01-01T0:0:0Z UTC 至过期时间的秒数。 此值用于确定缓存令牌的生存期。 |
 | not_before |访问令牌可用的时间。 该日期表示为自 1970-01-01T0:0:0Z UTC 至令牌有效时间的秒数。|

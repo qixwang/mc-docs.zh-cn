@@ -4,15 +4,15 @@ description: 了解如何使用 Azure Cosmos DB SDK 注册和调用存储过程�
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
-origin.date: 09/17/2019
-ms.date: 02/10/2020
+origin.date: 02/24/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: 01c0cf3d697bed439e7440ab2c4ff053f8655340
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: d083b4334ab26337ff973eb84199a9c0b7791b11
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "76980456"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134637"
 ---
 # <a name="how-to-register-and-use-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>如何在 Azure Cosmos DB 中注册和使用存储过程、触发器与用户定义的函数
 
@@ -75,15 +75,17 @@ StoredProcedureResponse storedProcedureResponse = await client.GetContainer("dat
 以下代码演示如何使用 .NET SDK V3 调用存储过程：
 
 ```csharp
-dynamic newItem = new
+dynamic[] newItems = new dynamic[]
 {
-    category = "Personal",
-    name = "Groceries",
-    description = "Pick up strawberries",
-    isComplete = false
+    new {
+        category = "Personal",
+        name = "Groceries",
+        description = "Pick up strawberries",
+        isComplete = false
+    }
 };
 
-var result = await client.GetContainer("database", "container").Scripts.ExecuteStoredProcedureAsync<string>("spCreateToDoItem", new PartitionKey("Personal"), newItem);
+var result = await client.GetContainer("database", "container").Scripts.ExecuteStoredProcedureAsync<string>("spCreateToDoItem", new PartitionKey("Personal"), newItems);
 ```
 
 ### <a name="stored-procedures---java-sdk"></a>存储过程 - Java SDK
@@ -652,4 +654,4 @@ results = list(client.QueryItems(
 - [如何在 Azure Cosmos DB 中编写存储过程、触发器和用户定义的函数](how-to-write-stored-procedures-triggers-udfs.md)
 - [如何在 Azure Cosmos DB 中使用 Javascript 查询 API 编写存储过程和触发器](how-to-write-javascript-query-api.md)
 
-<!-- Update_Description: update meta properties, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

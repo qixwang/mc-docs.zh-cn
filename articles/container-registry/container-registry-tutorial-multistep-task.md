@@ -3,15 +3,15 @@ title: 教程 - 多步骤 ACR 任务
 description: 本教程介绍如何配置一个 Azure 容器注册表任务，以便在向 Git 存储库提交源代码时，在云中自动触发多步骤工作流来生成、运行和推送容器映像。
 ms.topic: tutorial
 origin.date: 05/09/2019
+ms.date: 04/06/2020
 ms.author: v-yeche
-ms.date: 12/09/2019
 ms.custom: seodec18, mvc
-ms.openlocfilehash: ffa87de709e567bfdf6be83e91dff4c49f16ba12
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.openlocfilehash: 95576c2015642864075333560aeaf4e91d1f77a4
+ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74885014"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82093510"
 ---
 # <a name="tutorial-run-a-multi-step-container-workflow-in-the-cloud-when-you-commit-source-code"></a>教程：提交源代码时在云中运行多步骤容器工作流
 
@@ -71,7 +71,7 @@ steps:
 
 首先，使用适用于环境的值填充这些 shell 环境变量。 此步骤并非必须执行的步骤，但它能让在此教程中执行多个 Azure CLI 命令更容易。 如果未填充这些环境变量，则每当示例命令中出现每个值，都必须手动替换该值。
 
-```azurecli
+```console
 ACR_NAME=<registry-name>        # The name of your Azure container registry
 GIT_USER=<github-username>      # Your GitHub user account name
 GIT_PAT=<personal-access-token> # The PAT you generated in the previous section
@@ -92,7 +92,7 @@ az acr task create \
 
 成功的 [az acr task create][az-acr-task-create] 命令的输出应如下所示：
 
-```console
+```output
 {
   "agentConfiguration": {
     "cpu": 2
@@ -157,7 +157,7 @@ az acr task run --registry $ACR_NAME --name example1
 
 默认情况下，执行此命令时，`az acr task run` 命令会将日志流式传输到控制台。 输出显示每个任务步骤的运行进度。 以下输出经过简化，只显示关键步骤。
 
-```console
+```output
 Queued a run with ID: cf19
 Waiting for an agent...
 2019/05/03 03:03:31 Downloading source code...
@@ -219,13 +219,13 @@ Run ID: cf19 was successful after 18s
 
 首先，确保你位于包含[存储库][sample-repo]的本地克隆的目录中：
 
-```azurecli
+```console
 cd acr-build-helloworld-node
 ```
 
 接下来执行以下命令，创建新文件，并将其提交和推送给你在 GitHub 上的存储库分支：
 
-```azurecli
+```console
 echo "Hello World!" > hello.txt
 git add hello.txt
 git commit -m "Testing ACR Tasks"
@@ -234,8 +234,7 @@ git push origin master
 
 执行 `git push` 命令时可能需要提供 GitHub 凭据。 提供 GitHub 用户名并输入之前为密码创建的个人访问令牌 (PAT)。
 
-```console
-$ git push origin master
+```azurecli
 Username for 'https://github.com': <github-username>
 Password for 'https://githubuser@github.com': <personal-access-token>
 ```
@@ -248,8 +247,7 @@ az acr task logs --registry $ACR_NAME
 
 输出结果类似于以下内容，显示当前执行（或最近执行）的任务：
 
-```console
-$ az acr task logs --registry $ACR_NAME
+```output
 Showing logs of the last created run.
 Run ID: cf1d
 
@@ -268,9 +266,7 @@ az acr task list-runs --registry $ACR_NAME --output table
 
 该命令产生的输出应如下所示。 将显示 ACR 任务已执行的运行，并在最近执行的任务的 TRIGGER 列中显示“Git Commit”：
 
-```console
-$ az acr task list-runs --registry $ACR_NAME --output table
-
+```output
 RUN ID    TASK       PLATFORM    STATUS     TRIGGER    STARTED               DURATION
 --------  ---------  ----------  ---------  ---------  --------------------  ----------
 cf1d      example1   linux       Succeeded  Commit     2019-05-03T04:16:44Z  00:00:37
@@ -362,7 +358,7 @@ az acr task run --registry $ACR_NAME --name example2
 
 输出：
 
-```console
+```output
 Queued a run with ID: cf1g
 Waiting for an agent...
 2019/05/03 04:33:39 Downloading source code...
@@ -474,7 +470,7 @@ Run ID: cf1g was successful after 46s
 [az-acr-task-create]: https://docs.azure.cn/cli/acr/task?view=azure-cli-latest#az-acr-task-create
 [az-acr-task-run]: https://docs.azure.cn/cli/acr/task?view=azure-cli-latest#az-acr-task-run
 [az-acr-task-list-runs]: https://docs.azure.cn/cli/acr/task?view=azure-cli-latest#az-acr-task-list-runs
-[az-acr-task-credential-add]: https://docs.azure.cn/cli/acr/task/credential?view=azure-cli-latest#az-acr-task-credential-add    
+[az-acr-task-credential-add]: https://docs.microsoft.com/cli/azure/acr/task/credential?view=azure-cli-latest#az-acr-task-credential-add    
 [az-login]: https://docs.azure.cn/cli/reference-index?view=azure-cli-latest#az-login
 
 <!-- IMAGES -->
@@ -482,4 +478,4 @@ Run ID: cf1g was successful after 46s
 [build-task-01-new-token]: ./media/container-registry-tutorial-build-tasks/build-task-01-new-token.png
 [build-task-02-generated-token]: ./media/container-registry-tutorial-build-tasks/build-task-02-generated-token.png
 
-<!-- Update_Description: wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

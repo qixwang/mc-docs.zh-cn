@@ -4,16 +4,16 @@ description: 了解如何连接到应用程序最近的 Graph 数据库终结点
 author: rockboyfor
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
-ms.topic: overview
+ms.topic: conceptual
 origin.date: 09/09/2019
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.date: 12/16/2019
-ms.openlocfilehash: ecc2f8252441b07e01ec7cc2412666a597a27b90
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 8c58ac9f18a4902d3cee957a6e88d0c6718d1599
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75336399"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134639"
 ---
 # <a name="regional-endpoints-for-azure-cosmos-db-graph-account"></a>Azure Cosmos DB Graph 帐户的区域终结点
 Azure Cosmos DB Graph 数据库是[多区域分布](distribute-data-globally.md)的，因此应用程序可以使用多个读取终结点。 需要在多个位置具有写入访问权限的应用程序应启用[多主数据库](how-to-multi-master.md)功能。
@@ -28,7 +28,7 @@ Azure Cosmos DB Graph 数据库是[多区域分布](distribute-data-globally.md)
 
 Cosmos DB Graph 数据库引擎正在多个区域中运行，其中每个区域都包含多个群集。 每个群集都有数百台计算机。 Cosmos DB Graph 帐户 DNS CNAME accountname.gremlin.cosmos.azure.cn  解析为群集的 DNS A 记录。 负载平衡器的单个 IP 地址将隐藏内部群集拓扑。
 
-将为 Cosmos DB Graph 帐户的每个区域创建一个区域 DNS CNAME 记录。 区域终结点的格式是 accountname-region.gremlin.cosmos.azure.cn  。 通过删除 [Azure 区域](https://www.azure.cn/home/features/products-by-region/)名称中的所有空格获取区域终结点的区域段。 例如，`"China East 2"` 多区域数据库帐户的 `"contoso"` 区域将具有 DNS CNAME contoso-chinaeast2.gremlin.cosmos.azure.cn 
+将为 Cosmos DB Graph 帐户的每个区域创建一个区域 DNS CNAME 记录。 区域终结点的格式是 accountname-region.gremlin.cosmos.azure.cn  。 通过删除 [Azure 区域](https://azure.microsoft.com/global-infrastructure/regions/)名称中的所有空格获取区域终结点的区域段。 例如，`"China East 2"` 多区域数据库帐户的 `"contoso"` 区域将具有 DNS CNAME contoso-chinaeast2.gremlin.cosmos.azure.cn 
 
 TinkerPop Gremlin 客户端设计用于单台服务器。 应用程序可将多区域可写入 DNS CNAME 用于读取和写入流量。 可识别区域的应用程序应使用区域终结点来读取流量。 仅在特定区域配置为接受写入时，才将区域终结点用于写入流量。 
 

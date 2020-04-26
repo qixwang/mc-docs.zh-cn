@@ -6,15 +6,15 @@ author: rockboyfor
 ms.service: virtual-wan
 ms.topic: tutorial
 origin.date: 02/13/2019
-ms.date: 03/30/2020
+ms.date: 04/03/2020
 ms.author: v-yeche
 Customer intent: As someone with a networking background, I want to connect my corporate on-premises network(s) to my VNets using Virtual WAN and ExpressRoute.
-ms.openlocfilehash: e3b180d508e5db9b8dc3bdc2eee974d4878f62a0
-ms.sourcegitcommit: 4810b75d1e1db78d9747e99735468a6ab861be2d
+ms.openlocfilehash: a1d89fa3307dbe6bccdd456290827c028d34596b
+ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80291292"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82093470"
 ---
 <!--RELEASE BEFORE CONFIRMATION-->
 <!--NOT SUPPORT the ExpressRoute Global Reach on China?-->

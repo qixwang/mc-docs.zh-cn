@@ -3,15 +3,16 @@ title: 在 Azure 中的 Service Fabric 上创建容器映像
 description: 本教程介绍如何创建多容器 Service Fabric 应用程序的容器映像。
 author: rockboyfor
 ms.topic: tutorial
-ms.date: 01/13/2020
+origin.date: 07/22/2019
+ms.date: 04/13/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 456b3360ad9b8c6241ffaf757530cce62ae1f755
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: 86ff190a37cdcb0fd7a5ec8853f6467c7653db5d
+ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742103"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82093505"
 ---
 <!--Verify successfully-->
 # <a name="tutorial-create-container-images-on-a-linux-service-fabric-cluster"></a>教程：在 Linux Service Fabric 群集上创建容器映像
@@ -82,27 +83,27 @@ tiangolo/uwsgi-nginx-flask   python3.6           590e17342131        5 days ago 
 
 首先，运行 **az login** 命令，登录 Azure 帐户。
 
-```bash
+```azurecli
 az login
 ```
 
 接下来，使用 **az account** 命令来选择订阅，创建 Azure 容器注册表。 必须输入你的 Azure 订阅的订阅 ID 来代替 <subscription_id>。
 
-```bash
+```azurecli
 az account set --subscription <subscription_id>
 ```
 
 在部署 Azure 容器注册表时，首先需要一个资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。
 
-使用 **az group create** 命令创建资源组。 本示例在 *chinanorth* 区域中创建名为 *myResourceGroup* 的资源组。
+使用“az group create”命令创建资源组  。 本示例在 *chinanorth* 区域中创建名为 *myResourceGroup* 的资源组。
 
-```bash
+```azurecli
 az group create --name <myResourceGroup> --location chinanorth
 ```
 
 使用 **az acr create** 命令创建 Azure 容器注册表。 将 \<acrName> 替换为要在订阅下创建的容器注册表的名称。 此名称必须为字母数字且唯一。
 
-```bash
+```azurecli
 az acr create --resource-group <myResourceGroup> --name <acrName> --sku Basic --admin-enabled true
 ```
 
@@ -112,7 +113,7 @@ az acr create --resource-group <myResourceGroup> --name <acrName> --sku Basic --
 
 先登录 ACR 实例，再向其推送映像。 使用 **az acr login** 命令完成此操作。 请提供创建容器注册表时所使用的唯一名称。
 
-```bash
+```azurecli
 az acr login --name <acrName>
 ```
 
@@ -138,13 +139,13 @@ tiangolo/uwsgi-nginx-flask   python3.6           590e17342131        5 days ago 
 
 要获取 loginServer 名称，请运行以下命令：
 
-```bash
+```azurecli
 az acr show --name <acrName> --query loginServer --output table
 ```
 
 这将输出包含以下结果的表。 在将 **azure-vote-front** 映像推送到下一步中的容器注册表之前，此结果将用于标记该映像。
 
-```bash
+```output
 Result
 ------------------
 <acrName>.azurecr.cn
@@ -160,7 +161,7 @@ docker tag azure-vote-front <acrName>.azurecr.cn/azure-vote-front:v1
 
 输出：
 
-```bash
+```output
 REPOSITORY                             TAG                 IMAGE ID            CREATED             SIZE
 azure-vote-front                       latest              052c549a75bf        23 minutes ago      708MB
 <acrName>.azurecr.cn/azure-vote-front   v1                  052c549a75bf       23 minutes ago      708MB
@@ -184,13 +185,13 @@ docker push 命令需要几分钟才能完成。
 
 若要返回已推送到 Azure 容器注册表的映像列表，请运行 [az acr repository list](https://docs.azure.cn/cli/acr/repository?view=azure-cli-latest#az-acr-repository-list) 命令。 使用 ACR 实例名称更新命令。
 
-```bash
+```azurecli
 az acr repository list --name <acrName> --output table
 ```
 
 输出：
 
-```bash
+```output
 Result
 ----------------
 azure-vote-front

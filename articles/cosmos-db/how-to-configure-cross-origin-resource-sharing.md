@@ -5,14 +5,14 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 10/11/2019
-ms.date: 12/16/2019
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: 983c2d27e794c7e9b489386b6fd37a34783f0151
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 6c33c54db5d4fd88a76b8d32b3c4e58b9f2cd05a
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75335722"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134913"
 ---
 # <a name="configure-cross-origin-resource-sharing-cors"></a>配置跨源资源共享 (CORS)
 
@@ -42,23 +42,21 @@ ms.locfileid: "75335722"
 
 ```json
 {
-    {
-      "type": "Microsoft.DocumentDB/databaseAccounts",
-      "name": "[variables('accountName')]",
-      "apiVersion": "2019-08-01",
-      "location": "[parameters('location')]",
-      "kind": "GlobalDocumentDB",
-      "properties": {
-        "consistencyPolicy": "[variables('consistencyPolicy')[parameters('defaultConsistencyLevel')]]",
-        "locations": "[variables('locations')]",
-        "databaseAccountOfferType": "Standard",
-        "cors": [
-                    {
-                        "allowedOrigins": "*"
-                    }
-                ]
-        }
-    }
+  "type": "Microsoft.DocumentDB/databaseAccounts",
+  "name": "[variables('accountName')]",
+  "apiVersion": "2019-08-01",
+  "location": "[parameters('location')]",
+  "kind": "GlobalDocumentDB",
+  "properties": {
+    "consistencyPolicy": "[variables('consistencyPolicy')[parameters('defaultConsistencyLevel')]]",
+    "locations": "[variables('locations')]",
+    "databaseAccountOfferType": "Standard",
+    "cors": [
+      {
+        "allowedOrigins": "*"
+      }
+    ]
+  }
 }
 ```
 

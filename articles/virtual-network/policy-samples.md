@@ -14,15 +14,15 @@ ms.topic: sample
 ms.tgt_pltfrm: ''
 ms.workload: ''
 origin.date: 05/02/2018
-ms.date: 02/24/2020
+ms.date: 04/13/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: b25ff2c8265338d4c844751b44d78e165e6e0bdd
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.openlocfilehash: 39b4e87a1122d4e3498aedd3ac7e3eb2be4b51d9
+ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77653283"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82093274"
 ---
 # <a name="azure-policy-sample-built-ins-for-virtual-network"></a>适用于虚拟网络的 Azure Policy 内置示例
 

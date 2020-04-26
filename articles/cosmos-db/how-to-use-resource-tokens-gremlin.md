@@ -4,16 +4,16 @@ description: 了解如何创建资源令牌并使用它们访问图形数据库�
 author: rockboyfor
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
-ms.topic: overview
+ms.topic: conceptual
 origin.date: 09/06/2019
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.date: 12/16/2019
-ms.openlocfilehash: 784f21e1541072e3c2dae91f5406ea1db89316e3
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 833fb797da3dddbced1f89514f23637231e939be
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75336398"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134638"
 ---
 # <a name="use-azure-cosmos-db-resource-tokens-with-the-gremlin-sdk"></a>通过 Gremlin SDK 使用 Azure Cosmos DB 资源令牌
 

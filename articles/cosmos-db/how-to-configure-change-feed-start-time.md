@@ -5,14 +5,14 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 08/13/2019
-ms.date: 09/30/2019
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: 8ae0a43169ff9596b0582e7e2d319f9d2709bd35
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 4e4747defade986d18b53e728dacb2bd8209e89a
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "71306682"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134924"
 ---
 # <a name="how-to-configure-the-change-feed-processor-start-time"></a>如何配置更改源处理器的开始时间
 
@@ -27,7 +27,6 @@ ms.locfileid: "71306682"
 将 **的实例传递给** 生成器扩展，可将更改源处理器初始化为从`DateTime`特定的日期和时间`WithStartTime`开始读取更改：
 
 ```csharp
-
 Container leaseContainer = client.GetContainer(databaseId, Program.leasesContainer);
 Container monitoredContainer = client.GetContainer(databaseId, Program.monitoredContainer);
 ChangeFeedProcessor changeFeedProcessor = monitoredContainer
@@ -46,7 +45,6 @@ ChangeFeedProcessor changeFeedProcessor = monitoredContainer
 在其他方案（例如数据迁移，或分析容器的整个历史记录）中，需要从**该容器的生存期开始时间**读取更改源。 为此，可以在生成器扩展中使用 `WithStartTime`，但需要传递 `DateTime.MinValue.ToUniversalTime()`，以便生成最小 `DateTime` 值的 UTC 表示形式，如下所示：
 
 ```csharp
-
 Container leaseContainer = client.GetContainer(databaseId, Program.leasesContainer);
 Container monitoredContainer = client.GetContainer(databaseId, Program.monitoredContainer);
 ChangeFeedProcessor changeFeedProcessor = monitoredContainer

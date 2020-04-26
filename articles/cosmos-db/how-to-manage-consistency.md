@@ -5,14 +5,14 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 12/02/2019
-ms.date: 02/10/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: da04783d6273524470779d37e9a4b3ac43000c34
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: bf99c9ecd82d5ef16bb7f7bea7eb4aa9f4521a66
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292552"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134912"
 ---
 # <a name="manage-consistency-levels-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中管理一致性级别
 
@@ -26,7 +26,7 @@ ms.locfileid: "79292552"
 
 ### <a name="cli"></a>CLI
 
-```bash
+```azurecli
 # create with a default consistency
 az cosmosdb create --name <name of Cosmos DB Account> --resource-group <resource group name> --default-consistency-level Session
 

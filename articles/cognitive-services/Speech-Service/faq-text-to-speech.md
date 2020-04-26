@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 origin.date: 07/05/2019
-ms.date: 01/27/2020
+ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: 95bb624fa60ac2826293bd3cf63f360b942a9c58
-ms.sourcegitcommit: 3f9d780a22bb069402b107033f7de78b10f90dde
+ms.openlocfilehash: 230b5d3b69c4dc595847f6d931619a9fb2a6327e
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77179335"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126983"
 ---
 # <a name="text-to-speech-frequently-asked-questions"></a>文本转语音常见问题
 

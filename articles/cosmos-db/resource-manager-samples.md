@@ -4,15 +4,15 @@ description: 使用 Azure 资源管理器模板创建和配置 Azure Cosmos DB�
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
-origin.date: 11/08/2019
-ms.date: 12/16/2019
+origin.date: 04/14/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: 6528ab642de68a0c643a8dcfb39e2e11c52a84fa
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 3241d1d83648acc3a3a4914b2f51e890a9be4ad8
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75335841"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134578"
 ---
 <!--Verify successfully-->
 # <a name="azure-resource-manager-templates-for-azure-cosmos-db"></a>Azure Cosmos DB 的 Azure 资源管理器模板
@@ -25,6 +25,8 @@ ms.locfileid: "75335841"
 |---|---|
 |[创建 Azure Cosmos 帐户、数据库、容器](manage-sql-with-resource-manager.md#create-resource) | 此模板在两个区域创建一个 SQL (Core) API 帐户，区域中的两个容器具有共享数据库吞吐量，一个容器具有专用吞吐量。 吞吐量可以更新，只需重新提交包含已更新吞吐量属性值的模板即可。 |
 |[通过存储过程、触发器和 UDF 创建 Azure Cosmos 帐户、数据库和容器](manage-sql-with-resource-manager.md#create-sproc) | 此模板通过存储过程、触发器和用于容器的 UDF 在两个区域中创建一个 SQL (Core) API 帐户。 |
+
+<!--PENDING ON [Create a private endpoint for an existing Azure Cosmos account](how-to-configure-private-endpoints.md#create-a-private-endpoint-by-using-a-resource-manager-template)-->
 
 ## <a name="mongodb-api"></a>MongoDB API
 

@@ -6,14 +6,14 @@ author: rockboyfor
 ms.service: virtual-wan
 ms.topic: conceptual
 origin.date: 02/19/2020
-ms.date: 03/30/2020
+ms.date: 04/03/2020
 ms.author: v-yeche
-ms.openlocfilehash: adff38e5e7ec8981e2e14272a0e7f858916c17fc
-ms.sourcegitcommit: 4810b75d1e1db78d9747e99735468a6ab861be2d
+ms.openlocfilehash: 0e1d2a50f124ca23f69071408f28b0eca5b34458
+ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80291334"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82093524"
 ---
 # <a name="create-an-azure-active-directory-tenant-for-p2s-openvpn-protocol-connections"></a>为 P2S OpenVPN 协议连接创建 Azure Active Directory 租户
 

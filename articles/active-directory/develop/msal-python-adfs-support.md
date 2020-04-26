@@ -14,12 +14,12 @@ ms.author: v-junlch
 ms.reviewer: nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 58eccf71ca2a8c3a4cc3342402fd6bf674d6e8fb
-ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
+ms.openlocfilehash: 1dd4d0e04d9631611d4c87de3732856e957b9b3f
+ms.sourcegitcommit: b80d236ce3c706abc25bbaa41b0ccddd896e48fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75776977"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81873093"
 ---
 # <a name="active-directory-federation-services-support-in-msal-for-python"></a>适用于 Python 的 MSAL 中的 Active Directory 联合身份验证服务支持
 
@@ -50,7 +50,7 @@ ms.locfileid: "75776977"
 
 无论是直接连接到 Active Directory 联合身份验证服务 (AD FS) 还是通过 Active Directory 进行连接，以下内容都适用。
 
-使用 `acquire_token_by_username_password` 获取令牌时，MSAL Python 会让标识提供者根据用户名进行联系。 MSAL Python 从标识提供者获取 [SAML 1.1 令牌](reference-saml-tokens.md)，然后将其提供给 Azure AD，后者会返回 JSON Web 令牌 (JWT)。
+使用 `acquire_token_by_username_password` 获取令牌时，MSAL Python 会让标识提供者根据用户名进行联系。 MSAL Python 从标识提供者获取 SAML 1.1 令牌，然后将其提供给 Azure AD，后者会返回 JSON Web 令牌 (JWT)。
 
 ## <a name="connecting-directly-to-ad-fs"></a>直接连接到 AD FS
 

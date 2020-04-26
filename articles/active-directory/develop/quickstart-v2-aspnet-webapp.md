@@ -4,20 +4,19 @@ description: 了解如何使用 OpenID Connect 在 ASP.NET Web 应用上实现 M
 services: active-directory
 author: jmprieur
 manager: CelesteDG
-ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 03/20/2020
+ms.date: 04/22/2020
 ms.author: v-junlch
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: c63d35adc9fa5c52bef7ffeb0b4317980a0703b4
-ms.sourcegitcommit: 6568c59433d7e80ab06e9fe76d4791f761ed6775
+ms.openlocfilehash: c831a51e6aa4069634aeba69354bb0ebbe2cd7cc
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80243135"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126489"
 ---
 # <a name="quickstart-add-microsoft-identity-platform-sign-in-to-an-aspnet-web-app"></a>快速入门：向 ASP.NET Web 应用添加 Microsoft 标识平台登录功能
 本快速入门通过代码示例了解 ASP.NET Web 应用如何从任何 Azure Active Directory (Azure AD) 实例登录工作和学校帐户。  （有关说明，请参阅[示例工作原理](#how-the-sample-works)。）
@@ -66,7 +65,7 @@ ms.locfileid: "80243135"
 > [!div renderon="portal"]
 > 使用 Visual Studio 2019 运行项目。
 > [!div renderon="portal" id="autoupdate" class="nextstepaction"]
-> [下载代码示例]()
+> [下载代码示例](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-DotNet/archive/master.zip)
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>步骤 3：应用已配置并可以运行
@@ -98,7 +97,7 @@ ms.locfileid: "80243135"
 
 > [!div class="sxs-lookup" renderon="portal"]
 > > [!NOTE]
-> > Enter_the_Supported_Account_Info_Here
+> > `Enter_the_Supported_Account_Info_Here`
 
 ## <a name="more-information"></a>详细信息
 
@@ -156,7 +155,7 @@ public void Configuration(IAppBuilder app)
 }
 ```
 
-> |Where  |  |
+> |其中  |  |
 > |---------|---------|
 > | `ClientId`     | Azure 门户中注册的应用程序的应用程序 ID |
 > | `Authority`    | 用户要进行身份验证的 STS 终结点。 对于公有云，通常为 <https://login.partner.microsoftonline.cn/{tenant}/v2.0>，其中 {tenant} 是租户名称、租户 ID 或者引用常用终结点（用于多租户应用程序）的 common  |
@@ -206,4 +205,3 @@ public void SignIn()
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
-<!-- Update_Description: wording update -->

@@ -5,7 +5,6 @@ services: azure-portal
 documentationcenter: ''
 author: adamabmsft
 manager: mtillman
-editor: tysonn
 ms.service: azure-portal
 ms.devlang: NA
 ms.topic: conceptual
@@ -13,13 +12,13 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 origin.date: 12/20/2019
 ms.author: v-tawe
-ms.date: 02/17/2020
-ms.openlocfilehash: 4404f702dcef4f821eeeabb0c09f9b5d09b403d1
-ms.sourcegitcommit: 260800ede66f48c886d1426a0fac18b4d402b4f2
+ms.date: 04/20/2020
+ms.openlocfilehash: a02283904b35a8849dfa04b27380bf26cf3bf42a
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80586823"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126706"
 ---
 # <a name="the-structure-of-azure-dashboards"></a>Azure 仪表板结构
 本文档将使用以下仪表板作为示例，介绍 Azure 仪表板的结构：

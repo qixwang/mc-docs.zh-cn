@@ -7,15 +7,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-origin.date: 11/07/2019
-ms.date: 01/13/2020
+origin.date: 04/02/2020
+ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: 1a44537d4b6360741bf2e5799a08ac4e9e92698e
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 2240bbe3970937aab77453b08072a6378b0131a3
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75631004"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126654"
 ---
 **选择目标环境**
 

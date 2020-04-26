@@ -3,14 +3,14 @@ author: erhopf
 ms.service: cognitive-services
 ms.topic: include
 origin.date: 02/20/2019
-ms.date: 03/16/2020
+ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: a665ec19d0446dfcf9da9416ec289eb4b1578f96
-ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
+ms.openlocfilehash: 65b7bf85dc7b67c5235f5d28f00cc818bdd87eb0
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80151672"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126275"
 ---
 1. 启动 Eclipse。
 
@@ -20,19 +20,19 @@ ms.locfileid: "80151672"
 
 1. 片刻之后，Eclipse IDE 的主窗口将会显示。 关闭**欢迎**屏幕（如果存在）。
 
-1. 从 Eclipse 菜单栏上，通过选择“文件” > “新建” > “项目”创建一个新项目。   
+1. 从 Eclipse 菜单栏上，通过选择“文件” **“新建”** “项目”创建一个新项目。 >    >  
 
-1. 会显示“新建项目”对话框  。 选择“Java 项目”  ，然后选择“下一步”  。
+1. 将显示“新建项目”对话框  。 选择“Java 项目”  ，然后选择“下一步”  。
 
    ![“新建项目”对话框的屏幕截图，其中突出显示了 Java 项目](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-jre-02-select-wizard.png)
 
-1. 此时将启动“新建 Java 项目”向导  。 在“项目名称”  字段中，输入 **quickstart**，然后选择 **JavaSE 1.8** 作为执行环境。 选择“完成”。 
+1. 此时将启动“新建 Java 项目”向导  。 在“项目名称”  字段中，输入 **quickstart**，然后选择 **JavaSE 1.8** 作为执行环境。 选择“完成”  。
 
    ![“新建 Java 项目”向导的屏幕截图](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-jre-03-create-java-project.png)
 
 1. 如果出现了“打开关联的透视图?”窗口，请选择“打开透视图”。  
 
-1. 在**包资源管理器**中，右键单击 **quickstart** 项目。 从上下文菜单中选择“配置” > “转换为 Maven 项目”。  
+1. 在**包资源管理器**中，右键单击 **quickstart** 项目。 从上下文菜单中选择“配置” **“转换为 Maven 项目”。**  >  
 
    ![包资源管理器的屏幕截图](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-jre-04-convert-to-maven-project.png)
 
@@ -54,7 +54,7 @@ ms.locfileid: "80151672"
     </repositories>
     ```
 
-   * 还添加 `dependencies` 元素（使用语音 SDK 版本 1.9.0 作为依赖项）：
+   * 此外，还添加一个 `dependencies` 元素（使用语音 SDK 版本 1.11.0 作为依赖项）：
 
     ```xml
     <dependencies>

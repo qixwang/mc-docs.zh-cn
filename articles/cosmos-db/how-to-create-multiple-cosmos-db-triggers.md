@@ -5,14 +5,14 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 07/17/2019
-ms.date: 02/10/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: 12279b9bfcb5ec57bb865207e422e10ebaa6c14f
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 1a01f6f06018f22a4bf57345ff8dc541dd67767c
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "76980520"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134908"
 ---
 # <a name="create-multiple-azure-functions-triggers-for-cosmos-db"></a>创建多个适用于 Cosmos DB 的 Azure Functions 触发器
 
@@ -39,7 +39,7 @@ ms.locfileid: "76980520"
 
 ## <a name="configuring-a-shared-leases-container"></a>配置共享的租用容器
 
-若要配置共享的租用容器，需要在触发器上进行的唯一额外配置是在使用 C# 时添加 `LeaseCollectionPrefix` [属性](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---attributes-and-annotations)，或在使用 JavaScript 时添加 `leaseCollectionPrefix` [属性](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger)。 属性的值应是特定触发器的逻辑描述符。
+若要配置共享的租用容器，需要在触发器上进行的唯一额外配置是在使用 C# 时添加 `LeaseCollectionPrefix` [属性](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#attributes-and-annotations)，或在使用 JavaScript 时添加 `leaseCollectionPrefix` [属性](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md)。 属性的值应是特定触发器的逻辑描述符。
 
 例如，如果有三个触发器：一个发送电子邮件，一个执行聚合以创建具体化视图，一个将更改发送到另一个存储，供以后分析，那么可以将“电子邮件”的 `LeaseCollectionPrefix` 分配到第一个触发器，“具体化”分配到第二个触发器，“分析”分配到第三个触发器。
 
@@ -109,8 +109,8 @@ public static void MaterializedViews([CosmosDBTrigger(
 
 ## <a name="next-steps"></a>后续步骤
 
-* 请参阅[适用于 Cosmos DB 的 Azure Functions 触发器](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration)的完整配置
-* 检查所有语言的扩展[示例列表](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger)。
+* 请参阅[适用于 Cosmos DB 的 Azure Functions 触发器](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration)的完整配置
+* 检查所有语言的扩展[示例列表](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md)。
 * 使用 Azure Cosmos DB 和 Azure Functions [GitHub 存储库](https://github.com/ealsur/serverless-recipes/tree/master/cosmosdbtriggerscenarios)访问无服务器方案以获取更多示例。
 
 <!-- Update_Description: update meta properties, wording update, update link -->

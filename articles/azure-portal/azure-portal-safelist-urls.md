@@ -5,17 +5,17 @@ services: azure-portal
 keywords: ''
 author: mgblythe
 ms.author: v-tawe
-origin.date: 01/29/2020
-ms.date: 02/17/2020
+origin.date: 04/10/2020
+ms.date: 04/20/2020
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 33922800a6eccf56726c98d480a53ae15274232c
-ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
+ms.openlocfilehash: 5eadaa590c8dbad09e066b526064fa948095150d
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028192"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82127059"
 ---
 # <a name="safelist-the-azure-portal-urls-on-your-firewall-or-proxy-server"></a>在防火墙或代理服务器上将 Azure 门户 URL 加入安全列表
 
@@ -27,7 +27,7 @@ ms.locfileid: "77028192"
 
 Azure 门户的安全列表的 URL 终结点特定于部署组织时所在的 Azure 云。 若要让发往这些终结点的网络流量绕过限制，请选择你的云。 然后，将 URL 列表添加到代理服务器或防火墙。
 
-#### <a name="public-cloudtabpublic-cloud"></a>[公有云](#tab/public-cloud)
+#### <a name="public-cloud"></a>[公有云](#tab/public-cloud)
 
 ```
 *.aadcdn.microsoftonline-p.com
@@ -51,7 +51,7 @@ Azure 门户的安全列表的 URL 终结点特定于部署组织时所在的 Az
 *.windows-int.net
 ```
 
-#### <a name="us-government-cloudtabus-government-cloud"></a>[美国政府云](#tab/us-government-cloud)
+#### <a name="us-government-cloud"></a>[美国政府云](#tab/us-government-cloud)
 
 ```
 *.azure.us
@@ -64,7 +64,7 @@ Azure 门户的安全列表的 URL 终结点特定于部署组织时所在的 Az
 *.windowsazure.us
 ```
 
-#### <a name="china-government-cloudtabchina-government-cloud"></a>[中国政府云](#tab/china-government-cloud)
+#### <a name="china-government-cloud"></a>[中国政府云](#tab/china-government-cloud)
 
 ```
 *.azure.cn
@@ -81,13 +81,3 @@ Azure 门户的安全列表的 URL 终结点特定于部署组织时所在的 Az
 > 发往这些终结点的流量使用标准的 TCP 端口：80 (HTTP) 和 443 (HTTPS)。
 >
 >
-## <a name="next-steps"></a>后续步骤
-
-需要将 IP 地址加入安全列表？ 下载适合你的云的 Microsoft Azure 数据中心 IP 范围的列表：
-
-* [全球](https://www.microsoft.com/download/details.aspx?id=56519)
-* [美国政府](https://www.microsoft.com/download/details.aspx?id=57063)
-* [德国](https://www.microsoft.com/download/details.aspx?id=57064)
-* [中国](https://www.microsoft.com/download/details.aspx?id=57062)
-
-其他 Microsoft 服务使用其他 URL 和 IP 地址进行连接。 若要优化 Microsoft 365 服务的网络连接，请参阅[为 Office 365 设置网络](https://docs.microsoft.com/office365/enterprise/set-up-network-for-office-365)。

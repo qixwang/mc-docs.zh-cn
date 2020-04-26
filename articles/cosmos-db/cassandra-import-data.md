@@ -2,21 +2,21 @@
 title: 将数据迁移到 Azure Cosmos DB 中的 Cassandra API 帐户 - 教程
 description: 本教程介绍如何使用 CQL Copy 命令和 Spark 将数据从 Apache Cassandra 复制到 Azure Cosmos DB 中的 Cassandra API 帐户
 author: rockboyfor
-ms.author: v-yeche
 ms.reviewer: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: tutorial
 origin.date: 12/03/2018
-ms.date: 01/20/2020
+ms.date: 04/27/2020
+ms.author: v-yeche
 ms.custom: seodec18
 Customer intent: As a developer, I want to migrate my existing Cassandra workloads to Azure Cosmos DB so that the overhead to manage resources, clusters, and garbage collection is automatically handled by Azure Cosmos DB.
-ms.openlocfilehash: d0f3637614e1aac6fa605526588d02459e466594
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 09e95ffdf58df0a0dc7e443163b6d4dfec597606
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "76270067"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134980"
 ---
 <!--Verify sucessfully-->
 # <a name="tutorial-migrate-your-data-to-cassandra-api-account-in-azure-cosmos-db"></a>教程：将数据迁移到 Azure Cosmos DB 中的 Cassandra API 帐户
@@ -69,7 +69,7 @@ ms.locfileid: "76270067"
 
 *  增加吞吐量：数据迁移的持续时间取决于为 Azure Cosmos DB 中的表预配的吞吐量。 在迁移期间增加吞吐量。 提高吞吐量后，可避免受到速率限制，并缩短迁移时间。 完成迁移后，减少吞吐量以节约成本。 此外，还建议在源数据库所在的同一区域中拥有 Azure Cosmos 帐户。 
 
-*  启用 SSL：Azure Cosmos DB 具有严格的安全要求和标准。 请确保在与帐户进行交互时启用 SSL。 当你将 CQL 与 SSH 配合使用时，可以选择提供 SSL 信息。
+* 启用 TLS：  Azure Cosmos DB 具有严格的安全要求和标准。 请确保在与帐户进行交互时启用 TLS。 当你将 CQL 与 SSH 配合使用时，可以选择提供 TLS 信息。
 
 ## <a name="options-to-migrate-data"></a>迁移数据的选项
 
@@ -120,3 +120,4 @@ ms.locfileid: "76270067"
 > [Azure Cosmos DB 中的可优化数据一致性级别](../cosmos-db/consistency-levels.md)
 
 <!--Update_Description: update link -->
+

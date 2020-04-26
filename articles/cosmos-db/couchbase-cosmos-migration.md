@@ -4,15 +4,15 @@ description: 有关从 CouchBase 迁移到 Azure Cosmos DB SQL API 的分步指�
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 02/11/2020
-ms.date: 03/30/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
 author: rockboyfor
-ms.openlocfilehash: 2ce421d31e8f9280ddabbec4bacdd181a0fa4584
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 79f23018a79aef6d14628db9795d107de7bf1d02
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80342373"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134518"
 ---
 # <a name="migrate-from-couchbase-to-azure-cosmos-db-sql-api"></a>从 CouchBase 迁移到 Azure Cosmos DB SQL API
 
@@ -459,5 +459,4 @@ Mono<CosmosItemResponse> objMono = objItem.delete(ro);
 * 若要优化代码，请参阅 [Azure Cosmos DB 性能提示](./performance-tips-async-java.md)一文。
 * 若要探索 Java 异步 V3 SDK，请访问 [SDK 参考](https://github.com/Azure/azure-cosmosdb-java/tree/v3) GitHub 存储库。
 
-<!-- Update_Description: new article about couchbase cosmos migration -->
-<!--NEW.date: 03/09/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

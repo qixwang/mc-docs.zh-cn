@@ -5,7 +5,6 @@ services: azure-portal
 documentationcenter: ''
 author: sewatson
 manager: mtillman
-editor: tysonn
 ms.assetid: ff422f36-47d2-409b-8a19-02e24b03ffe7
 ms.service: azure-portal
 ms.devlang: NA
@@ -13,14 +12,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: na
 origin.date: 03/23/2020
-ms.date: 03/30/2020
+ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: b829cbb3dcb3d4caf04989c88bba213abe0e38f6
-ms.sourcegitcommit: 44d3fe59952847e5394bbe6c05bd6f333bb56345
+ms.openlocfilehash: 345f3fe6ac5165c0f2e75fa1698cabe1cad92387
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80522073"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126715"
 ---
 # <a name="create-and-share-dashboards-in-the-azure-portal"></a>在 Azure 门户中创建和共享仪表板
 
@@ -30,9 +29,9 @@ Azure 门户提供默认仪表板作为起点。 你可以编辑默认仪表板�
 
 ## <a name="create-a-new-dashboard"></a>创建新的仪表板
 
-在此示例中，我们将创建新的专用仪表板并分配名称。 请从以下步骤开始：
+在此示例中，我们将创建新的专用仪表板并分配名称。 执行以下步骤以便开始：
 
-1. 登录到 [Azure 门户](https://portal.azure.cn)。
+1. 登录 [Azure 门户](https://portal.azure.cn)。
 
 1. 在 Azure 门户菜单上，选择“仪表板”  。 默认视图可能已设置为“仪表板”。
 

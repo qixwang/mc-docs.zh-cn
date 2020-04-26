@@ -10,12 +10,12 @@ ms.date: 3/16/2020
 ms.topic: quickstart
 ms.service: event-grid
 ms.custom: subject-armqs
-ms.openlocfilehash: 62ebdf289606b36f6124bdb0a57de31ef6b4a052
-ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
+ms.openlocfilehash: 14e996ee3430d7bb5d1091277ceb4c6e0fa35cef
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2020
-ms.locfileid: "79452596"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126833"
 ---
 # <a name="route-blob-storage-events-to-web-endpoint-by-using-azure-resource-manager-template"></a>使用 Azure 资源管理器模板将 Blob 存储事件路由到 Web 终结点
 
@@ -23,9 +23,9 @@ Azure 事件网格是针对云的事件处理服务。 在本文中，你将使�
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
+如果没有 Azure 订阅，可在开始前创建一个 [试用帐户](https://www.azure.cn/pricing/1rmb-trial) 。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 ### <a name="create-a-message-endpoint"></a>创建消息终结点
 
@@ -33,7 +33,7 @@ Azure 事件网格是针对云的事件处理服务。 在本文中，你将使�
 
 1. 选择“部署到 Azure”  将解决方案部署到你的订阅。 在 Azure 门户中，为参数提供值。
 
-    [部署到 Azure](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json)
+    [部署到 Azure](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json)
 1. 部署可能需要几分钟才能完成。 部署成功后，请查看 Web 应用以确保它正在运行。 在 Web 浏览器中导航到 `https://<your-site-name>.chinacloudsites.cn`
 
 1. 查看站点，但是尚未有事件发布到它。
@@ -164,5 +164,5 @@ Azure 事件网格是针对云的事件处理服务。 在本文中，你将使�
 
 - [Azure 资源管理器文档](/azure-resource-manager)
 - [在 Azure 资源管理器模板中定义资源](https://docs.microsoft.com/azure/templates/)
-- [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/)
+- [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/)
 - [Azure 事件网格概述](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Eventgrid)。

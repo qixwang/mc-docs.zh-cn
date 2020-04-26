@@ -9,17 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 01/06/2020
+ms.date: 04/22/2020
 ms.author: v-junlch
 ms.custom: aaddev
 ms.reviewer: shoatman
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa593e0c828549aa94cc754f5466b9fa22693e42
-ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
+ms.openlocfilehash: fb4b8ed2be680083e7f1317afea769f7495b03ce
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75776997"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126508"
 ---
 # <a name="android-microsoft-authentication-library-configuration-file"></a>Android Microsoft 身份验证库配置文件
 
@@ -74,9 +73,9 @@ Android Microsoft 身份验证库 (MSAL) 随附了一个[默认的配置 JSON �
 
 | 类型 | 目标受众 | 租户 ID | Authority_Url | 生成的终结点 | 注释 |
 |------|------------|------------|----------------|----------------------|---------|
-| AAD | AzureADMyOrg | contoso.com | | https://login.partner.microsoftonline.cn/contoso.com | 只有 contoso.com 中的帐户才能获取令牌。 任何已验证的域或租户 GUID 都可用作租户 ID。 |
-| AAD | AzureADMultipleOrgs | | | https://login.partner.microsoftonline.cn/organizations | 在此终结点上只能使用 Azure Active Directory 帐户。 Microsoft 帐户可以是组织的成员。 若要使用 Microsoft 帐户获取组织中资源的令牌，请指定要从中获取令牌的组织租户。 |
-| B2C | | | 参阅“生成的终结点” | https://login.partner.microsoftonline.cn/tfp/contoso.partner.onmschina.cn/B2C_1_SISOPolicy/ | 只有 contoso.partner.onmschina.cn 租户中的帐户才能获取令牌。 在此示例中，B2C 策略是颁发机构 URL 路径的一部分。 |
+| AAD | AzureADMyOrg | contoso.com | | `https://login.partner.microsoftonline.cn/contoso.com` | 只有 contoso.com 中的帐户才能获取令牌。 任何已验证的域或租户 GUID 都可用作租户 ID。 |
+| AAD | AzureADMultipleOrgs | | | `https://login.partner.microsoftonline.cn/organizations` | 在此终结点上只能使用 Azure Active Directory 帐户。 Microsoft 帐户可以是组织的成员。 若要使用 Microsoft 帐户获取组织中资源的令牌，请指定要从中获取令牌的组织租户。 |
+| B2C | | | 参阅“生成的终结点” | `https://login.partner.microsoftonline.cn/tfp/contoso.partner.onmschina.cn/B2C_1_SISOPolicy/` | 只有 contoso.partner.onmschina.cn 租户中的帐户才能获取令牌。 在此示例中，B2C 策略是颁发机构 URL 路径的一部分。 |
 
 > [!NOTE]
 > 在 MSAL 中无法启用和禁用授权机构验证。
@@ -331,4 +330,3 @@ Android Microsoft 身份验证库 (MSAL) 随附了一个[默认的配置 JSON �
    sampleApp = new PublicClientApplication.createMultipleAccountPublicClientApplication(getApplicationContext(), R.raw.auth_config);
    ```
 
-<!-- Update_Description: wording update -->

@@ -5,15 +5,15 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 06/11/2019
-ms.date: 01/20/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
 ms.reviewer: sngun
-ms.openlocfilehash: 71e2c9896e03cd2d6156e0261dba5e9954005a22
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 14cc2df4378554cd935d81f80a9aadf143daee5f
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "76270069"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134977"
 ---
 <!--Verify successfully-->
 # <a name="certificate-based-authentication-for-an-azure-ad-identity-to-access-keys-from-an-azure-cosmos-db-account"></a>为基于证书的身份验证配置 Azure AD 标识以从 Azure Cosmos DB 帐户访问密钥
@@ -149,10 +149,13 @@ New-AzureADApplicationKeyCredential -ObjectId $application.ObjectId -CustomKeyId
     ```powershell
     Connect-AzAccount -Environment AzureChinaCloud -ApplicationId <Your_Application_ID> -CertificateThumbprint $cert.Thumbprint -ServicePrincipal -Tenant <Tenant_ID_of_your_application>
 
-    Invoke-AzResourceAction -Action listKeys -ResourceType "Microsoft.DocumentDB/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName <Resource_Group_Name_of_your_Azure_Cosmos_account> -ResourceName <Your_Azure_Cosmos_Account_Name> 
+    Get-AzCosmosDBAccountKey `
+      -ResourceGroupName "<Resource_Group_Name_of_your_Azure_Cosmos_account>" `
+      -Name "<Your_Azure_Cosmos_Account_Name>" `
+      -Type "Keys"
     ```
 
-以上命令将显示 Azure Cosmos 帐户的主要和辅助主密钥。 可以查看 Azure Cosmos 帐户的活动日志，以验证获取密钥的请求是否成功，以及“sampleApp”应用程序是否发起了该事件。 
+以上命令将显示 Azure Cosmos 帐户的主要和辅助主密钥。 可以查看 Azure Cosmos 帐户的活动日志，以验证获取密钥的请求是否成功，以及“sampleApp”应用程序是否发起了该事件。
 
 ![验证 Azure AD 中的获取密钥调用](./media/certificate-based-authentication/activity-log-validate-results.png)
 

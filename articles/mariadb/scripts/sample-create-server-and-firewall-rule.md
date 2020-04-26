@@ -8,13 +8,13 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc
 origin.date: 11/28/2018
-ms.date: 05/27/2019
-ms.openlocfilehash: 9db183c6227399b6f4aa26c9cfc785a3aa4ac849
-ms.sourcegitcommit: 193f49f19c361ac6f49c59045c34da5797ed60ac
+ms.date: 04/13/2020
+ms.openlocfilehash: 0136a288bd2d902cb72841a49e26b22b7dc39a49
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68732263"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126791"
 ---
 # <a name="create-a-mariadb-server-and-configure-a-firewall-rule-using-the-azure-cli"></a>使用 Azure CLI 创建 MariaDB 服务器并配置防火墙规则
 此示例 CLI 脚本创建 Azure Database for MariaDB 服务器，并配置服务器级防火墙规则。 成功运行此脚本后，可以通过所有 Azure 服务和配置的 IP 地址访问 MariaDB 服务器。
@@ -67,10 +67,10 @@ az group delete --name myresourcegroup
 | **命令** | **说明** |
 |---|---|
 | [az group create](/cli/group#az-group-create) | 创建用于存储所有资源的资源组。 |
-| [az mariadb server create](/cli/mariadb/server#az-mariadb-server-create) | 创建用于托管数据库的 MariaDB 服务器。 |
-| [az mariadb server firewall create](/cli/mariadb/server/firewall-rule#az-mariadb-server-firewall-rule-create) | 创建一个防火墙规则，以允许从输入的 IP 地址范围访问服务器及其下的所有数据库。 |
+| [az mariadb server create](https://docs.microsoft.com/cli/azure/mariadb/server#az-mariadb-server-create) | 创建用于托管数据库的 MariaDB 服务器。 |
+| [az mariadb server firewall create](https://docs.microsoft.com/cli/azure/mariadb/server/firewall-rule#az-mariadb-server-firewall-rule-create) | 创建一个防火墙规则，以允许从输入的 IP 地址范围访问服务器及其下的所有数据库。 |
 | [az group delete](/cli/group#az-group-delete) | 删除资源组，包括所有嵌套的资源。 |
 
 ## <a name="next-steps"></a>后续步骤
-- 阅读有关 Azure CLI 的更多信息：[Azure CLI 文档](/cli)。
-- 请尝试其他脚本：[Azure Database for MariaDB 的 Azure CLI 示例](../sample-scripts-azure-cli.md)
+- 有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](/cli)。
+- 尝试其他脚本：[Azure Database for MariaDB 的 Azure CLI 示例](../sample-scripts-azure-cli.md)

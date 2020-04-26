@@ -9,17 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 01/06/2020
+ms.date: 04/22/2020
 ms.author: v-junlch
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 52c193b5624194170d44fd68dff950bc0991ee2f
-ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
+ms.openlocfilehash: 6ee206d7ad5f975c7cc98c134dc65ce679e6747d
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75776991"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126503"
 ---
 # <a name="confidential-client-assertions"></a>机密客户端断言
 
@@ -40,7 +39,7 @@ MSAL.NET 可以通过四种方法将凭据或断言提供给机密客户端应�
 
 ### <a name="signed-assertions"></a>签名断言
 
-签名客户端断言采用签名 JWT 形式，其有效负载包含 Azure AD 强制要求的、Base64 编码的身份验证声明。 若要使用它，请执行以下步骤：
+签名客户端断言采用签名 JWT 形式，其有效负载包含 Azure AD 强制要求的、Base64 编码的身份验证声明。 使用方式：
 
 ```csharp
 string signedClientAssertion = ComputeAssertion();
@@ -51,9 +50,9 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 
 Azure AD 预期的声明为：
 
-声明类型 | Value | 说明
+声明类型 | 值 | 说明
 ---------- | ---------- | ----------
-aud | https://login.partner.microsoftonline.cn/{tenantId}/v2.0 | “aud”（受众）声明标识 JWT 预期的接收者（在这里为 Azure AD）。请参阅 [RFC 7519 的 4.1.3 部分]
+aud | `https://login.partner.microsoftonline.cn/{tenantId}/v2.0` | “aud”（受众）声明标识 JWT 预期的接收者（在这里为 Azure AD）。请参阅 [RFC 7519 的 4.1.3 部分]
 exp | 2019 年 6 月 27 日，周四 15:04:17 GMT+0200（罗马夏令时） | “exp”（过期时间）声明指定只能在哪个时间（含）之前接受 JWT 的处理。 请参阅 [RFC 7519 的 4.1.4 部分]
 iss | {ClientID} | “iss”（颁发者）声明标识颁发了 JWT 的主体。 此声明的处理取决于应用程序。 “iss”值是一个区分大小写的字符串，其中包含 StringOrURI 值。 [RFC 7519 的 4.1.1 部分]
 jti | （一个 GUID） | “jti”(JWT ID) 声明为 JWT 提供唯一标识符。 分配标识符值时，所用方式必须确保几乎不可能将同一值意外分配给不同的数据对象；如果应用程序使用多个颁发者，还必须防止在不同的颁发者生成的值之间发生冲突。 可以使用“jti”声明防止重播 JWT。 “jti”值是一个区分大小写的字符串。 [RFC 7519 的 4.1.7 部分]
@@ -197,6 +196,5 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 
 如果传入的目录中的某个声明与某个必需声明相同，则会考虑其他声明的值。 它会重写 MSAL.NET 计算的声明。
 
-若要提供你自己的声明（包括 Azure AD 预期的必需声明），请针对 `mergeWithDefaultClaims` 参数传入 `false`。
+若要提供你自己的声明（包括 Azure AD 预期的必需声明），请针对 `false` 参数传入 `mergeWithDefaultClaims`。
 
-<!-- Update_Description: wording update -->

@@ -4,15 +4,15 @@ description: 使用 Azure 资源管理器模板创建和配置 Azure Cosmos DB f
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
-origin.date: 11/12/2019
-ms.date: 02/10/2020
+origin.date: 04/14/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: c17d945048e187ea56b392273b21172d83d879c4
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: d73b151b687377a4e8642c506a33a1bf2a7d0502
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79293401"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134656"
 ---
 <!--Verify successfully-->
 # <a name="manage-azure-cosmos-db-sql-core-api-resources-with-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板管理 Azure Cosmos DB SQL (Core) API 资源
@@ -43,7 +43,7 @@ ms.locfileid: "79293401"
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "accountName": {
@@ -436,6 +436,7 @@ az cosmosdb show --resource-group $resourceGroupName --name accountName --output
 <!--Not Available on instead of using CloudShell-->
 
 <a name="create-sproc"></a>
+
 ## <a name="create-an-azure-cosmos-db-container-with-server-side-functionality"></a>使用服务器端功能创建 Azure Cosmos DB 容器
 
 可以使用 Azure 资源管理器模板创建包含存储过程、触发器和用户定义的函数的 Azure Cosmos DB 容器。
@@ -447,7 +448,7 @@ az cosmosdb show --resource-group $resourceGroupName --name accountName --output
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "accountName": {

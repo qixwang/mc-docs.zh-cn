@@ -2,20 +2,20 @@
 title: 语音服务
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
 origin.date: 12/06/2019
-ms.date: 03/23/2020
+ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: 051ea70845a8f8f6a21afd263fa36d9f582f837a
-ms.sourcegitcommit: e94ed1c9eff4e88be2ca389909e60b14cc0d92f8
+ms.openlocfilehash: fa60a3bebbcee5b77c041c421c4e305029ec1714
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79084537"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126748"
 ---
 ## <a name="reference-docs"></a>参考文档
 

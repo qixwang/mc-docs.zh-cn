@@ -2,19 +2,19 @@
 title: Azure Cosmos DB 中的更改源处理器库
 description: 了解如何使用 Azure Cosmos DB 更改源处理器库来读取更改源、更改源处理器的组件
 author: rockboyfor
-ms.author: v-yeche
 ms.service: cosmos-db
 ms.devlang: dotnet
 ms.topic: conceptual
 origin.date: 12/03/2019
-ms.date: 01/20/2020
+ms.date: 04/27/2020
+ms.author: v-yeche
 ms.reviewer: sngun
-ms.openlocfilehash: 254916461960ac86f83e462de8a49f1ea8030c77
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 1785ab00deae75965e01688278abdf2c9f2dcd5e
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "76270051"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134772"
 ---
 # <a name="change-feed-processor-in-azure-cosmos-db"></a>Azure Cosmos DB 更改源处理器 
 
@@ -44,7 +44,7 @@ ms.locfileid: "76270051"
 
 ```csharp
 /// <summary>
-/// Start the Change Feed Processor to listen for changes and process them with the HandlerChangesAsync implementation.
+/// Start the Change Feed Processor to listen for changes and process them with the HandleChangesAsync implementation.
 /// </summary>
 private static async Task<ChangeFeedProcessor> StartChangeFeedProcessorAsync(
     CosmosClient cosmosClient,

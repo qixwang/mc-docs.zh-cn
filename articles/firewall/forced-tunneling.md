@@ -6,14 +6,14 @@ author: rockboyfor
 ms.service: firewall
 ms.topic: article
 origin.date: 02/24/2020
-ms.date: 03/09/2020
+ms.date: 04/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 87066ab21a58037e135b4e1d31fe4afd5094ef80
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.openlocfilehash: 00f93df4f5ea5b51b9f1a6264b9a8dc21195b11e
+ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78850524"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82093518"
 ---
 # <a name="azure-firewall-forced-tunneling-preview"></a>Azure 防火墙强制隧道（预览版）
 

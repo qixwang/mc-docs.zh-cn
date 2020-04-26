@@ -5,15 +5,15 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: sample
-origin.date: 05/18/2019
-ms.date: 01/20/2020
+origin.date: 03/18/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: 7412cf7ac418453b7cac87981b19a0bc03b817d8
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 84a77ae42cd7f1f215cf42e6ec4bc868ebfe6c20
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "76270104"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134579"
 ---
 <!--Verify successfully-->
 # <a name="create-a-keyspace-and-table-for-azure-cosmos-db---cassandra-api"></a>创建 Azure Cosmos DB 的密钥空间和表 - Cassandra API
@@ -25,91 +25,108 @@ ms.locfileid: "76270104"
 ## <a name="sample-script"></a>示例脚本
 
 ```powershell
-# Create an Azure Cosmos Account for Cassandra API with multi-master enabled, a keyspace with shared throughput,
-# and a table with defined schema, also with dedicated throughput, last writer wins conflict resolution policy 
-# and custom conflict resolver path
-
-#generate a random 10 character alphanumeric string to ensure unique resource names
-$uniqueId=$(-join ((97..122) + (48..57) | Get-Random -Count 15 | % {[char]$_}))
-
-$apiVersion = "2015-04-08"
-$location = "China North 2"
-$resourceGroupName = "myResourceGroup"
-$accountName = "mycosmosaccount-$uniqueId" # must be lower case.
-$apiType = "EnableCassandra"
-$accountResourceType = "Microsoft.DocumentDb/databaseAccounts"
-$keyspaceName = "keyspace1"
-$keyspaceResourceName = $accountName + "/cassandra/" + $keyspaceName
-$keyspaceResourceType = "Microsoft.DocumentDb/databaseAccounts/apis/keyspaces"
-$tableName = "table1"
-$tableResourceName = $accountName + "/cassandra/" + $keyspaceName + "/" + $tableName
-$tableResourceType = "Microsoft.DocumentDb/databaseAccounts/apis/keyspaces/tables"
-
-# Create account
-$locations = @(
-    @{ "locationName"="China North 2"; "failoverPriority"=0 },
-    @{ "locationName"="China East 2"; "failoverPriority"=1 }
+# Reference: Az.CosmosDB | https://docs.microsoft.com/powershell/module/az.cosmosdb
+# --------------------------------------------------
+# Purpose
+# Create Cosmos Cassandra API account with automatic failover,
+# a keyspace, and a table with defined schema, dedicated throughput, and
+# conflict resolution policy with last writer wins and custom resolver path.
+# --------------------------------------------------
+Function New-RandomString{Param ([Int]$Length = 10) return $(-join ((97..122) + (48..57) | Get-Random -Count $Length | ForEach-Object {[char]$_}))}
+# --------------------------------------------------
+$uniqueId = New-RandomString -Length 7 # Random alphanumeric string for unique resource names
+$apiKind = "Cassandra"
+# --------------------------------------------------
+# Variables - ***** SUBSTITUTE YOUR VALUES *****
+$locations = @("China East", "China North") # Regions ordered by failover priority
+$resourceGroupName = "myResourceGroup" # Resource Group must already exist
+$accountName = "cosmos-$uniqueId" # Must be all lower case
+$consistencyLevel = "BoundedStaleness"
+$maxStalenessInterval = 300
+$maxStalenessPrefix = 100000
+$tags = @{Tag1 = "MyTag1"; Tag2 = "MyTag2"; Tag3 = "MyTag3"}
+$keyspaceName = "mykeyspace"
+$tableName = "mytable"
+$tableRUs = 400
+$partitionKeys = @("machine", "cpu", "mtime")
+$clusterKeys = @( 
+    @{ name = "loadid"; orderBy = "Asc" };
+    @{ name = "duration"; orderBy = "Desc" }
 )
+$columns = @(
+    @{ name = "loadid"; type = "uuid" };
+    @{ name = "machine"; type = "uuid" };
+    @{ name = "cpu"; type = "int" };
+    @{ name = "mtime"; type = "int" };
+    @{ name = "load"; type = "float" };
+    @{ name = "duration"; type = "float" }
+)
+# --------------------------------------------------
+# Account
+Write-Host "Creating account $accountName"
+# Cassandra not yet supported in New-AzCosmosDBAccount
+# $account = New-AzCosmosDBAccount -ResourceGroupName $resourceGroupName `
+    # -Location $locations -Name $accountName -ApiKind $apiKind -Tag $tags `
+    # -DefaultConsistencyLevel $consistencyLevel `
+    # -MaxStalenessIntervalInSeconds $maxStalenessInterval `
+    # -MaxStalenessPrefix $maxStalenessPrefix `
+    # -EnableAutomaticFailover:$true
+# Account creation: use New-AzResource with property object
+# --------------------------------------------------
+$azAccountResourceType = "Microsoft.DocumentDb/databaseAccounts"
+$azApiVersion = "2020-03-01"
+$azApiType = "EnableCassandra"
 
-$consistencyPolicy = @{
-    "defaultConsistencyLevel"="BoundedStaleness";
-    "maxIntervalInSeconds"=300;
-    "maxStalenessPrefix"=100000
+$azLocations = @()
+$i = 0
+ForEach ($location in $locations) {
+    $azLocations += @{ locationName = "$location"; failoverPriority = $i++ }
 }
 
-$accountProperties = @{
-    "capabilities"= @( @{ "name"=$apiType } );
-    "databaseAccountOfferType"="Standard";
-    "locations"=$locations;
-    "consistencyPolicy"=$consistencyPolicy;
-    "enableMultipleWriteLocations"="true"
+$azConsistencyPolicy = @{
+    defaultConsistencyLevel = $consistencyLevel;
+    maxIntervalInSeconds = $maxStalenessInterval;
+    maxStalenessPrefix = $maxStalenessPrefix;
 }
 
-New-AzResource -ResourceType $accountResourceType `
-    -ApiVersion $apiVersion -ResourceGroupName $resourceGroupName -Location $location `
-    -Name $accountName -PropertyObject $accountProperties
-
-# Create keyspace with shared throughput
-$keyspaceProperties = @{
-    "resource"=@{ "id"=$keyspaceName };
-    "options"=@{ "Throughput"= 400 }
+$azAccountProperties = @{
+    capabilities = @( @{ name = $azApiType; } );
+    databaseAccountOfferType = "Standard";
+    locations = $azLocations;
+    consistencyPolicy = $azConsistencyPolicy;
+    enableAutomaticFailover = "true";
 }
 
-New-AzResource -ResourceType $keyspaceResourceType `
-    -ApiVersion $apiVersion -ResourceGroupName $resourceGroupName `
-    -Name $keyspaceResourceName -PropertyObject $keyspaceProperties
+New-AzResource -ResourceType $azAccountResourceType -ApiVersion $azApiVersion `
+    -ResourceGroupName $resourceGroupName -Location $locations[0] `
+    -Name $accountName -PropertyObject $azAccountProperties `
+    -Tag $tags -Force
 
-# Create a table with dedicated throughput and last writer wins conflict resolution policy
-$tableProperties = @{
-    "resource"=@{
-        "id"=$tableName; 
-        "schema"= @{
-            "columns"= @(
-                @{ "name"= "loadid"; "type"= "uuid" };
-                @{ "name"= "machine"; "type"= "uuid" };
-                @{ "name"= "cpu"; "type"= "int" };
-                @{ "name"= "mtime"; "type"= "int" };
-                @{ "name"= "load"; "type"= "float" };
-            );
-            "partitionKeys"= @(
-                @{ "name"= "machine" };
-                @{ "name"= "cpu" };
-                @{ "name"= "mtime" }; 
-            );
-            "clusterKeys"= @( 
-                @{ "name"= "loadid"; "orderBy"= "asc" }
-            )
-        }
-    };
-    "conflictResolutionPolicy"=@{
-        "mode"="lastWriterWins"; 
-        "conflictResolutionPath"="myResolutionPath"
-    }; 
-    "options"=@{ "Throughput"=400 }
-} 
-New-AzResource -ResourceType $tableResourceType `
-    -ApiVersion $apiVersion -ResourceGroupName $resourceGroupName `
-    -Name $tableResourceName -PropertyObject $tableProperties 
+$account = Get-AzCosmosDBAccount -ResourceGroupName $resourceGroupName -Name $accountName
+
+Write-Host "Creating keyspace $keyspaceName"
+$keyspace = Set-AzCosmosDBCassandraKeyspace -InputObject $account `
+    -Name $keyspaceName
+
+# Table Schema
+$psClusterKeys = @()
+ForEach ($clusterKey in $clusterKeys) {
+    $psClusterKeys += New-AzCosmosDBCassandraClusterKey -Name $clusterKey.name -OrderBy $clusterKey.orderBy
+}
+
+$psColumns = @()
+ForEach ($column in $columns) {
+    $psColumns += New-AzCosmosDBCassandraColumn -Name $column.name -Type $column.type
+}
+
+$schema = New-AzCosmosDBCassandraSchema `
+    -PartitionKey $partitionKeys `
+    -ClusterKey $psClusterKeys `
+    -Column $psColumns
+
+Write-Host "Creating table $tableName"
+$table = Set-AzCosmosDBCassandraTable -InputObject $keyspace `
+    -Name $tableName -Schema $schema -Throughput $tableRUs 
 
 ```
 
@@ -129,6 +146,12 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 |---|---|
 |**Azure 资源**| |
 | [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | 创建资源。 |
+|**Azure Cosmos DB**| |
+| [Set-AzCosmosDBCassandraKeyspace](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbcassandrakeyspace) | 创建或更新 Cosmos DB Cassandra API 密钥空间。 |
+| [New-AzCosmosDBCassandraClusterKey](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbcassandraclusterkey) | 新建 CosmosDB Cassandra 群集密钥。 |
+| [New-AzCosmosDBCassandraColumn](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbcassandracolumn) | 新建 CosmosDB Cassandra 列。 |
+| [New-AzCosmosDBCassandraSchema](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbcassandraschema) | 新建 CosmosDB Cassandra 架构。 |
+| [Set-AzCosmosDBCassandraTable](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbcassandratable) | 创建或更新 Cosmos DB Cassandra API 表。 |
 |**Azure 资源组**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | 删除资源组，包括所有嵌套的资源。 |
 |||
@@ -139,4 +162,4 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 
 可以在 [Azure Cosmos DB PowerShell 脚本](../../../powershell-samples.md)中找到其他 Azure Cosmos DB PowerShell 脚本示例。
 
-<!--Update_Description: wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

@@ -4,14 +4,14 @@ description: 升级运行独立 Service Fabric 群集的 Azure Service Fabric �
 author: rockboyfor
 ms.topic: conceptual
 origin.date: 11/09/2018
-ms.date: 02/24/2020
+ms.date: 04/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 2add356f55dd74aea2a612bf86a1b2f06fcb2082
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.openlocfilehash: af76e3a8ad065924659ecf54748f4e4a4b9b4f28
+ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77540467"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82093502"
 ---
 # <a name="upgrade-the-service-fabric-version-that-runs-on-your-cluster"></a>升级群集上运行的 Service Fabric 版本 
 
@@ -141,7 +141,7 @@ ms.locfileid: "77540467"
     Register-ServiceFabricClusterPackage -Code -CodePackagePath <name of the .cab file>
 
     ###### Here is a filled-out example
-    Register-ServiceFabricClusterPackage -Code -CodePackagePath .\MicrosoftAzureServiceFabric.5.3.301.9590.cab
+    Register-ServiceFabricClusterPackage -Code -CodePackagePath MicrosoftAzureServiceFabric.5.3.301.9590.cab
     ```
 6. 开始将群集升级到可用版本。
 
@@ -170,4 +170,4 @@ ms.locfileid: "77540467"
 
 [getfabversions]: ./media/service-fabric-cluster-upgrade-windows-server/getfabversions.PNG
 
-<!--Update_Description: update meta properties, wording update, update link -->
+<!-- Update_Description: update meta properties, wording update, update link -->

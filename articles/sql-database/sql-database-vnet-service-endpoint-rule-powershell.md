@@ -4,21 +4,20 @@ description: 提供 PowerShell 脚本为 Azure SQL 数据库和 Azure Synapse �
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
-ms.custom: ''
 ms.devlang: PowerShell
 ms.topic: conceptual
 author: WenJason
 ms.author: v-jay
 ms.reviewer: genemi, vanto
 origin.date: 03/12/2019
-ms.date: 03/16/2020
+ms.date: 04/27/2020
 tags: azure-synapse
-ms.openlocfilehash: bfd43a8ec6f76d991561f463623a2da6b97fd270
-ms.sourcegitcommit: dc862610e2169c1fce6fb0ae9eb7dd7567f86a0a
+ms.openlocfilehash: 7e062ae36e8616fc04e32e56aedb7f11b89c5137
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79293717"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126808"
 ---
 # <a name="powershell--create-a-virtual-service-endpoint-and-vnet-rule-for-sql"></a>PowerShell：创建适用于 SQL 的虚拟网络服务终结点和 VNet 规则
 

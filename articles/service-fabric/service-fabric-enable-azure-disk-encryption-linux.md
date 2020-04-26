@@ -3,14 +3,14 @@ title: 为 Linux 群集启用磁盘加密
 description: 本文介绍如何使用 Azure 资源管理器和 Azure Key Vault 为 Linux 中的 Azure Service Fabric 群集节点启用磁盘加密。
 ms.topic: article
 origin.date: 03/22/2019
-ms.date: 02/24/2020
+ms.date: 04/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 36b6472dcef3ec03b98502bb013771407045486c
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.openlocfilehash: 29a2419166e941a7c3e4343dfd9db1ccc6cdac37
+ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77540677"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82093454"
 ---
 # <a name="enable-disk-encryption-for-azure-service-fabric-cluster-nodes-in-linux"></a>为 Linux 中的 Azure Service Fabric 群集节点启用磁盘加密 
 > [!div class="op_single_selector"]
@@ -29,7 +29,7 @@ ms.locfileid: "77540677"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 **自我注册**
 
@@ -83,7 +83,7 @@ Set-AzContext -SubscriptionId <guid>
 
 ```
 
-```CLI
+```azurecli
 
 azure login -e AzureChinaCloud
 az account set --subscription $subscriptionId
@@ -230,5 +230,4 @@ az vmss encryption disable -g <resourceGroupName> -n <VMSS name>
 ## <a name="next-steps"></a>后续步骤
 现在，你应已获得一个安全群集，并知道了如何为 Service Fabric 群集节点与虚拟机规模集启用和禁用磁盘加密。 有关适用于 Linux 中 Service Fabric 群集节点的类似指导，请参阅[适用于 Windows 的磁盘加密](service-fabric-enable-azure-disk-encryption-windows.md)。
 
-<!-- Update_Description: new article about service fabric enable azure disk encryption linux -->
-<!--NEW.date: 12/16/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

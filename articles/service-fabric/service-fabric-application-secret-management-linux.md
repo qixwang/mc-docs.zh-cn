@@ -4,14 +4,14 @@ description: 了解如何在 Linux 群集上设置加密证书并对机密进行
 author: rockboyfor
 ms.topic: conceptual
 origin.date: 01/04/2019
-ms.date: 02/24/2020
+ms.date: 04/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: ec8259e47a95763761d4aa4f457ee319410081f5
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.openlocfilehash: 4dd87327c0c3d9a9a664a12419062206290fe2cc
+ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77540690"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82093478"
 ---
 # <a name="set-up-an-encryption-certificate-and-encrypt-secrets-on-linux-clusters"></a>在 Linux 群集上设置加密证书并对机密进行加密
 本文展示了如何在 Linux 群集上设置加密证书并使用它来加密机密。 对于 Windows 群集，请参阅[在 Windows 群集上设置加密证书并对机密进行加密][secret-management-windows-specific-link]。
@@ -20,7 +20,7 @@ ms.locfileid: "77540690"
 数据加密证书专门用来对服务 Settings.xml 中的[参数][parameters-link]以及服务 ServiceManifest.xml 中的[环境变量][environment-variables-link]进行加密和解密。 它不用于密码文本的身份验证或签名。 该证书必须满足以下要求：
 
 * 证书必须包含私钥。
-* 证书密钥用法必须包括数据加密 (10)，不应包括服务器身份验证或客户端身份验证。
+* 证书密钥用途必须包括数据加密 (10)，不应包括服务器身份验证或客户端身份验证。
 
     例如，可以通过以下命令使用 OpenSSL 来生成所需的证书：
 
@@ -30,14 +30,14 @@ ms.locfileid: "77540690"
     ```
 
 ## <a name="install-the-certificate-in-your-cluster"></a>在群集中安装证书
-必须在群集中每个节点上的 `/var/lib/sfcerts` 下安装此证书。 用来运行该服务的用户帐户（默认情况下为 sfuser）对已安装的证书（对于当前示例为 `/var/lib/sfcerts/TestCert.pem`）**应当具有读取访问权限**。
+必须在群集中每个节点上的 `/var/lib/sfcerts` 下安装此证书。 用来运行该服务的用户帐户（默认情况下为 sfuser）对已安装的证书（对于当前示例为 **）** 应当具有读取访问权限`/var/lib/sfcerts/TestCert.pem`。
 
 ## <a name="encrypt-secrets"></a>加密机密
 以下代码片段可用来加密机密。 此代码片段仅对值进行加密；**不**对密码文本进行签名。 若要生成机密值的密文，**必须使用**群集中安装的同一个加密证书。
 
 ```console
 user@linux:$ echo "Hello World!" > plaintext.txt
-user@linux:$ iconv -f ASCII -t UTF-16LE plaintext.txt -o plaintext_UTF-16.txt
+user@linux:$ iconv -f ASCII -t UTF-16LE plaintext.txt | tr -d '\n' > plaintext_UTF-16.txt
 user@linux:$ openssl smime -encrypt -in plaintext_UTF-16.txt -binary -outform der TestCert.pem | base64 > encrypted.txt
 ```
 所生成的输出到 encrypted.txt 中的 base-64 编码字符串包含机密密文，以及用来将其加密的证书相关信息。 可以通过使用 OpenSSL 将其解密来验证其有效性。

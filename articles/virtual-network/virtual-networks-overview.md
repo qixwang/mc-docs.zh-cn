@@ -12,14 +12,14 @@ ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 06/19/2019
-ms.date: 02/24/2020
+ms.date: 04/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 0c45e09ab167a27f0509ccb38b370fce89c49f2b
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.openlocfilehash: a060d6df30d1980b4ff666d7efc7f285fceeddc2
+ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77653489"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82093467"
 ---
 # <a name="what-is-azure-virtual-network"></a>什么是 Azure 虚拟网络？
 
@@ -41,7 +41,7 @@ Azure 虚拟网络 (VNet) 是 Azure 中专用网络的基本构建块。 VNet �
 - 确保地址空间不重叠。 确保 VNet 地址空间（CIDR 块）不与组织的其他网络范围重叠。
 - 子网不应涵盖 VNet 的整个地址空间。 提前规划，为将来留出一些地址空间。
 - 建议使用少量的大型 VNet，而不要使用多个小型 VNet。 这可以防止出现管理开销。
-- 使用网络完全组 (NSG) 保护 VNet。
+- 通过将网络安全组 (NSG) 分配给 VNet 下的子网来保护 VNet。
 
 <a name="internet"></a>
 ## <a name="communicate-with-the-internet"></a>与 Internet 通信
@@ -89,7 +89,7 @@ Azure 资源采用下述某种方式安全地相互通信：
 
 ## <a name="azure-vnet-limits"></a>Azure VNet 的限制
 
-可部署的 Azure 资源数存在一定的限制。 大多数 Azure 网络限制设置在最大值。 但是，你可以根据 [VNet 限制页](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits)中的指定，[提高某些网络限制](https://support.azure.cn/zh-cn/support/support-azure/)。 
+可部署的 Azure 资源数存在一定的限制。 大多数 Azure 网络限制设置在最大值。 但是，你可以根据 [VNet 限制页](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits)中的指定，[提高某些网络限制](https://support.azure.cn/support/support-azure/)。 
 
 ## <a name="pricing"></a>定价
 
@@ -99,4 +99,4 @@ Azure 资源采用下述某种方式安全地相互通信：
 
 若要使用虚拟网络来入门，请先创建一个虚拟网络，向其部署一些 VM，然后在 VM 之间通信。 有关详细信息，请参阅[创建虚拟网络](quick-create-portal.md)快速入门。
 
-<!--Update_Description: update meta properties, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

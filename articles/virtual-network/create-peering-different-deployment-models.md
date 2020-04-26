@@ -14,26 +14,26 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 11/15/2018
-ms.date: 07/22/2019
+ms.date: 04/13/2020
 ms.author: v-yeche
 ms.reviewer: anavin
-ms.openlocfilehash: 87ad09798a538239c828867f95c9e55a742140f4
-ms.sourcegitcommit: 021dbf0003a25310a4c8582a998c17729f78ce42
+ms.openlocfilehash: 228429521eb84ff15cafd4e77089ce19c111620a
+ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68514198"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82093347"
 ---
 # <a name="create-a-virtual-network-peering---different-deployment-models-same-subscription"></a>创建虚拟网络对等互连 - 不同的部署模型，相同的订阅
 
 本文介绍如何在通过不同部署模型创建的虚拟网络间创建虚拟网络对等互连。 这两个虚拟网络位于同一订阅。 在两个虚拟网络之间建立对等互连可让不同虚拟网络中的资源以相同的带宽和延迟彼此通信，就像这些资源位于同一个虚拟网络中一样。 了解有关[虚拟网络对等互连](virtual-network-peering-overview.md)的详细信息。
 
-创建虚拟网络对等互连的步骤有所不同，具体取决于虚拟网络是否位于相同订阅，以及创建虚拟网络的 [ Azure 部署模型](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fvirtual-network%2ftoc.json)。 单击下表中的方案，了解如何采用其他方案创建虚拟网络对等互连：
+创建虚拟网络对等互连的步骤有所不同，具体取决于虚拟网络是否位于相同订阅，以及创建虚拟网络的 [ Azure 部署模型](../azure-resource-manager/management/deployment-models.md?toc=%2fvirtual-network%2ftoc.json)。 单击下表中的方案，了解如何采用其他方案创建虚拟网络对等互连：
 
 |Azure 部署模型  | Azure 订阅  |
 |--------- |---------|
 |[均为资源管理器模型](tutorial-connect-virtual-networks-portal.md) |相同|
-|[均为 Resource Manager 模型](create-peering-different-subscriptions.md) |不同|
+|[均为资源管理器模型](create-peering-different-subscriptions.md) |不同|
 |[一个为资源管理器模型，一个为经典模型](create-peering-different-deployment-models-subscriptions.md) |不同|
 
 不能在通过经典部署模型部署的两个虚拟网络之间创建虚拟网络对等互连。 如需连接两个通过经典部署模型创建的虚拟网络，可使用 Azure [VPN 网关](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fvirtual-network%2ftoc.json)来连接它们。
@@ -56,7 +56,7 @@ ms.locfileid: "68514198"
     - **资源组**：选择“新建”，并输入 myResourceGroup  
     - **位置**：*中国东部*
 4. 单击“+ 新建”  。 在“在市场中搜索”框中，键入“虚拟网络”   。 单击搜索结果中出现的“虚拟网络”  。
-5. 在“虚拟网络”边栏选项卡的“选择部署模型”框中选择“经典”，然后单击“创建”     。
+5. 在“虚拟网络”边栏选项卡的“选择部署模型”框中选择“经典”，单击“创建”     。
 6. 在“创建虚拟网络”边栏选项卡中，为以下设置输入或选择值，然后单击“创建”：  
     - 名称：myVnet2  
     - **地址空间**：*10.1.0.0/16*
@@ -75,8 +75,8 @@ ms.locfileid: "68514198"
      - **订阅**：选择订阅
      - **虚拟网络**：单击“选择虚拟网络”，然后单击“myVnet2”。  
      - **允许虚拟网络访问：** 确保选中“已启用”。 
-    本教程不使用其他任何设置。 若要了解所有对等互连设置，请参阅[管理虚拟网络对等互连](virtual-network-manage-peering.md#create-a-peering)。
-12. 在上一步骤中单击“确定”后，“添加对等互连”边栏选项卡将会关闭，并再次出现“myVnet1 - 对等互连”边栏选项卡。    几秒钟后，创建的对等互连将显示在该边栏选项卡中。 创建的 myVnet1ToMyVnet2 对等互连的“对等互连状态”列中列出了“已连接”    。
+    本教程不使用其他任何设置。 若要了解所有对等互连设置，请阅读[管理虚拟网络对等互连](virtual-network-manage-peering.md#create-a-peering)。
+12. 在上一步骤中单击“确定”后，“添加对等互连”边栏选项卡将会关闭，并再次出现“myVnet1 - 对等互连”边栏选项卡。    几秒钟后，创建的对等互连将显示在该边栏选项卡中。 创建的 **myVnet1ToMyVnet2** 对等互连的“对等互连状态”列中列出了“已连接”   。
 
     现已建立对等互连。 在任一虚拟网络中创建的任何 Azure 资源现在都可通过其 IP 地址相互通信。 如果为虚拟网络使用默认的 Azure 名称解析，则虚拟网络中的资源无法跨虚拟网络解析名称。 若要跨对等互连中的虚拟网络解析名称，必须创建自己的 DNS 服务器。 了解如何[使用自己的 DNS 服务器进行名称解析](virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)。
 13. **可选**：尽管本教程未介绍如何创建虚拟机，但可以在每个虚拟网络中创建一个虚拟机并将其相互连接，以验证连接性。
@@ -85,15 +85,15 @@ ms.locfileid: "68514198"
 <a name="cli"></a>
 ## <a name="create-peering---azure-cli"></a>创建对等互连 - Azure CLI
 
-使用 Azure 经典 CLI 和 Azure CLI 完成以下步骤。 可以通过在本地计算机上安装[经典 CLI](https://docs.azure.cn/zh-cn/cli/install-classic-cli?toc=%2fvirtual-network%2ftoc.json?view=azure-cli-latest) 和 [CLI](https://docs.azure.cn/zh-cn/cli/install-azure-cli?toc=%2fvirtual-network%2ftoc.json?view=azure-cli-latest) 并运行命令来完成这些步骤。
+使用 Azure 经典 CLI 和 Azure CLI 完成以下步骤。 可以通过在本地计算机上安装[经典 CLI](https://docs.azure.cn/cli/install-classic-cli?toc=%2fvirtual-network%2ftoc.json?view=azure-cli-latest) 和 [CLI](https://docs.azure.cn/cli/install-azure-cli?toc=%2fvirtual-network%2ftoc.json?view=azure-cli-latest) 并运行命令来完成这些步骤。
 
 <!-- Correct on install-classic-cli REPLACE install-cli-version-1.0-->
 <!-- Not Available on the Azure Cloud Shell-->
 
-[!INCLUDE [azure-cli-2-azurechinacloud-environment-parameter](../../includes/azure-cli-2-azurechinacloud-environment-parameter.md)]
-
 1. 打开 CLI 命令并使用 `azure login -e AzureChinaCloud` 命令登录 Azure。
+    
     <!--Not Available on Azure Cloud Shell-->
+    
 2. 输入 `azure config mode asm` 命令，在服务管理模式下运行 CLI 命令。
 3. 输入以下命令创建虚拟网络（经典）：
 
@@ -150,7 +150,7 @@ ms.locfileid: "68514198"
       --output table
     ```
 
-    该输出将在 PeeringState 列中显示“已连接”   。 
+    该输出会在 **PeeringState** 列中显示“已连接”  。 
 
     在任一虚拟网络中创建的任何 Azure 资源现在都可通过其 IP 地址相互通信。 如果为虚拟网络使用默认的 Azure 名称解析，则虚拟网络中的资源无法跨虚拟网络解析名称。 若要跨对等互连中的虚拟网络解析名称，必须创建自己的 DNS 服务器。 了解如何[使用自己的 DNS 服务器进行名称解析](virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)。
 7. **可选**：尽管本教程未介绍如何创建虚拟机，但可以在每个虚拟网络中创建一个虚拟机并将其相互连接，以验证连接性。

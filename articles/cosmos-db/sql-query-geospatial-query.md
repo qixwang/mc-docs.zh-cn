@@ -5,14 +5,14 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 02/20/2020
-ms.date: 03/09/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: 5392172c3db089de75e2a42bb482573e99f70595
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 5f5e5a18059443c53fa8d63921c3a8c4cf3d233b
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78850560"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134741"
 ---
 <!--Verified successfully-->
 <!--Partial content for the verified articles-->
@@ -187,5 +187,4 @@ SQL .NET SDK 还提供存根方法 `Distance()` 和 `Within()`，供用户在 LI
 * 详细了解 [Azure Cosmos DB 中的地理空间数据和 GeoJSON 位置数据](sql-query-geospatial-intro.md)
 * 详细了解如何[使用 Azure Cosmos DB 为空间数据编制索引](sql-query-geospatial-index.md)
 
-<!-- Update_Description: new article about sql query geospatial query -->
-<!--NEW.date: 03/09/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

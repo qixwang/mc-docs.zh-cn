@@ -1,16 +1,16 @@
 ---
-author: IEvangelist
+author: trevorbye
 ms.service: cognitive-services
 ms.topic: include
 origin.date: 03/06/2020
-ms.date: 03/16/2020
+ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: 548867096075a9d5675a78a205958680acaf1ee6
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: e45a26080ef53e40d7aa12039bb422d145ce58b3
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80151766"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126764"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -38,10 +38,10 @@ ms.locfileid: "80151766"
 * 使用主机：传入主机地址。 密钥或授权令牌是可选的。
 * 使用授权令牌：传入授权令牌和关联的区域。
 
-让我们看看如何使用密钥和区域创建 [`SpeechConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig)。
+让我们看看如何使用密钥和区域创建 [`SpeechConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig)。 请查看[区域支持](https://docs.azure.cn/cognitive-services/speech-service/regions#speech-sdk)页以找到你的区域标识符。
 
 ```cpp
-auto config = SpeechConfig::FromHost("wss://YourServiceRegion.stt.speech.azure.cn/", "YourSubscriptionKey");
+auto config = SpeechConfig::FromSubscription("YourSubscriptionKey", "YourServiceRegion");
 ```
 
 ## <a name="initialize-a-recognizer"></a>初始化识别器

@@ -3,22 +3,24 @@ title: 语音转文本 - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 使用语音转文本功能，可将音频流实时听录为文本。 应用程序、工具或设备可以使用、显示和处理此文本输入。 此服务可与文本转语音（语音合成）和语音翻译功能无缝协作。
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 origin.date: 03/12/2019
-ms.date: 03/16/2020
+ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: b578ab0de48e7ffe3dfc84395d7e04c06206b416
-ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
+ms.openlocfilehash: 95812e26534ab06bc9b3534692c8f8cd1095a8d6
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80151513"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126747"
 ---
 # <a name="what-is-speech-to-text"></a>什么是语音转文本？
+
+[!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
 使用语音服务提供的语音转文本（也称为语音识别）功能，可将音频流实时听录为文本。 应用程序、工具或设备可以使用、显示和处理此文本即命令输入。 此服务由 Microsoft 对 Cortana 和 Office 产品使用的同一识别技术提供支持。 它可与<a href="./speech-translation.md" target="_blank">翻译<span class="docon docon-navigate-external x-hidden-focus"></span></a>和<a href="./text-to-speech.md" target="_blank">文本转语音<span class="docon docon-navigate-external x-hidden-focus"></span></a>服务产品无缝地协同工作。 有关可用语音转文本语言的完整列表，请参阅[支持的语言](language-support.md#speech-to-text)。
 
@@ -28,7 +30,6 @@ ms.locfileid: "80151513"
 > [!NOTE]
 > Bing Speech was decommissioned on October 15, 2019. If your applications, tools, or products are using the Bing Speech APIs or Custom Speech, we've created guides to help you migrate to the Speech service.
 > - [Migrate from Bing Speech to the Speech service](how-to-migrate-from-bing-speech.md)
-> - [Migrate from Custom Speech to the Speech service](how-to-migrate-from-custom-speech-service.md)
 -->
 
 ## <a name="get-started-with-speech-to-text"></a>语音转文本入门

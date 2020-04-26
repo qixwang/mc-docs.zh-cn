@@ -8,12 +8,12 @@ ms.topic: quickstart
 origin.date: 11/04/2019
 ms.date: 11/25/2019
 ms.author: v-tawe
-ms.openlocfilehash: 6cb95ca7dcee12290c8995a42ee9810c15d6c9b8
-ms.sourcegitcommit: a4b88888b83bf080752c3ebf370b8650731b01d1
+ms.openlocfilehash: e76135478e70a22b5a4d4d14f00cd43a4b5dfaa4
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74179068"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126668"
 ---
 # <a name="quickstart-create-a-chat-room-by-using-signalr-service"></a>快速入门：使用 SignalR 服务创建聊天室
 
@@ -96,7 +96,7 @@ Azure SignalR 服务是一项 Azure 服务，可帮助开发者轻松生成具�
     此机密使用配置 API 进行访问。 在所有支持的平台上，冒号 (:) 可以在配置 API 的配置名称中使用。 请参阅[按环境进行的配置](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/index?tabs=basicconfiguration&view=aspnetcore-2.0)。 
 
 
-4. 打开 Startup.cs，并通过调用仅适用于 ASP.NET Core 2 的 `services.AddSignalR().AddAzureSignalR()` 方法更新 `ConfigureServices` 方法，从而使用 Azure SignalR 服务  ：
+4. 打开 Startup.cs，并通过调用 `services.AddSignalR().AddAzureSignalR()` 方法更新 `ConfigureServices` 方法，从而使用 Azure SignalR 服务  ：
 
     ```csharp
     public void ConfigureServices(IServiceCollection services)
@@ -105,7 +105,6 @@ Azure SignalR 服务是一项 Azure 服务，可帮助开发者轻松生成具�
         services.AddSignalR().AddAzureSignalR();
     }
     ```
-    对于 ASP.NET Core 3+，`ConfigureServices` 方法不需要进行任何更改。
 
     此代码不会向 `AddAzureSignalR()` 传递参数，而是使用默认配置密钥作为 SignalR 服务资源连接字符串。 默认配置密钥为 *Azure:SignalR:ConnectionString*。
 
@@ -135,8 +134,8 @@ Azure SignalR 服务是一项 Azure 服务，可帮助开发者轻松生成具�
 
 在 SignalR 中，集线器是核心组件，用于公开一组可从客户端调用的方法。 本部分通过两种方法定义集线器类： 
 
-* `Broadcast`：此方法向所有客户端广播消息。
-* `Echo`：此方法将消息发送回调用方。
+* `Broadcast`设置用户帐户 ：此方法向所有客户端广播消息。
+* `Echo`设置用户帐户 ：此方法将消息发送回调用方。
 
 这两个方法都使用 ASP.NET Core SignalR SDK 提供的 `Clients` 接口。 使用此接口可以访问所有已连接的客户端，因此你可将内容推送到客户端。
 

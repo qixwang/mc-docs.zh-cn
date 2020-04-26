@@ -6,21 +6,21 @@ ms.author: v-jay
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: conceptual
-origin.date: 04/09/2019
-ms.date: 05/27/2019
-ms.openlocfilehash: 6b518454b2c678f60f4b6b10a76a0fcbcdc383b6
-ms.sourcegitcommit: 60169f39663ae62016f918bdfa223c411e249883
+origin.date: 3/18/2019
+ms.date: 04/13/2020
+ms.openlocfilehash: 7d947e04edd152b4d07613caf4b83f786a7f534b
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66173349"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82127077"
 ---
 # <a name="create-and-manage-azure-database-for-mariadb-firewall-rules-by-using-the-azure-cli"></a>使用 Azure CLI 创建和管理 Azure Database for MariaDB 防火墙规则
 可以使用服务器级防火墙规则，管理从特定的 IP 地址或某个范围的 IP 地址对 Azure Database for MariaDB 服务器的访问。 使用便捷的 Azure CLI 命令，可创建、更新、删除、列出和显示防火墙规则，用于管理服务器。 有关 Azure Database for MariaDB 的概述，请参阅 [Azure Database for MariaDB 服务器防火墙规则](./concepts-firewall-rules.md)。
 
 也可使用虚拟网络 (VNet) 规则来保护对服务器进行的访问。 详细了解如何[使用 Azure CLI 创建和管理虚拟网络服务终结点和规则](howto-manage-vnet-cli.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 * [安装 Azure CLI](/cli/install-azure-cli)。
 * [Azure Database for MariaDB 服务器和数据库](quickstart-create-mariadb-server-database-using-azure-cli.md)。
 
@@ -52,20 +52,20 @@ ms.locfileid: "66173349"
    az account set --subscription <your subscription id>
    ```
 
-5. 如果不确定其名称，请列出订阅和资源组的 Azure Databases for MariaDB 服务器。 使用 [az mariadb server list](/cli/mariadb/server#az-mariadb-server-list) 命令。
+5. 如果不确定其名称，请列出订阅和资源组的 Azure Databases for MariaDB 服务器。 使用 [az mariadb server list](https://docs.microsoft.com/cli/azure/mariadb/server#az-mariadb-server-list) 命令。
 
    ```azurecli
    az mariadb server list --resource-group myresourcegroup
    ```
 
-   请注意列表中的名称属性，需要该属性来指定要使用的 MariaDB 服务器。 如果需要，请确认该服务器的详细信息，并使用名称属性来确保其正确。 使用 [az mariadb server show](/cli/mariadb/server#az-mariadb-server-show) 命令。
+   请注意列表中的名称属性，需要该属性来指定要使用的 MariaDB 服务器。 如果需要，请确认该服务器的详细信息，并使用名称属性来确保其正确。 使用 [az mariadb server show](https://docs.microsoft.com/cli/azure/mariadb/server#az-mariadb-server-show) 命令。
 
    ```azurecli
    az mariadb server show --resource-group myresourcegroup --name mydemoserver
    ```
 
 ## <a name="list-firewall-rules-on-azure-database-for-mariadb-server"></a>列出 Azure Database for MariaDB 服务器上的防火墙规则 
-使用服务器名称和资源组名称，列出服务器上现有的服务器防火墙规则。 使用 [az mariadb server firewall list](/cli/mariadb/server/firewall-rule#az-mariadb-server-firewall-rule-list) 命令。  请注意，应在“--server”开关（而不是在“--name”开关）中指定服务器名称属性   。 
+使用服务器名称和资源组名称，列出服务器上现有的服务器防火墙规则。 使用 [az mariadb server firewall list](https://docs.microsoft.com/cli/azure/mariadb/server/firewall-rule#az-mariadb-server-firewall-rule-list) 命令。  请注意，应在“--server”开关（而不是在“--name”开关）中指定服务器名称属性   。 
 ```azurecli
 az mariadb server firewall-rule list --resource-group myresourcegroup --server-name mydemoserver
 ```
@@ -74,7 +74,7 @@ az mariadb server firewall-rule list --resource-group myresourcegroup --server-n
 az mariadb server firewall-rule list --resource-group myresourcegroup --server-name mydemoserver --output table
 ```
 ## <a name="create-a-firewall-rule-on-azure-database-for-mariadb-server"></a>针对 Azure Database for MariaDB 服务器创建防火墙规则
-使用 Azure MariaDB 服务器名称和资源组名称，在服务器上创建新的防火墙规则。 使用 [az mariadb server firewall create](/cli/mariadb/server/firewall-rule#az-mariadb-server-firewall-rule-create) 命令。 提供规则名称以及规则的起始 IP 和结束 IP（对一系列 IP 地址提供访问权限）。
+使用 Azure MariaDB 服务器名称和资源组名称，在服务器上创建新的防火墙规则。 使用 [az mariadb server firewall create](https://docs.microsoft.com/cli/azure/mariadb/server/firewall-rule#az-mariadb-server-firewall-rule-create) 命令。 提供规则名称以及规则的起始 IP 和结束 IP（对一系列 IP 地址提供访问权限）。
 ```azurecli
 az mariadb server firewall-rule create --resource-group myresourcegroup --server-name mydemoserver --name FirewallRule1 --start-ip-address 13.83.152.0 --end-ip-address 13.83.152.15
 ```
@@ -96,7 +96,7 @@ az mariadb server firewall-rule create --resource-group myresourcegroup --server
 成功后，每个 create 命令输出会列出已创建的防火墙规则的详细信息，默认采用 JSON 格式。 如果失败，输出会改为显示错误消息文本。
 
 ## <a name="update-a-firewall-rule-on-azure-database-for-mariadb-server"></a>更新 Azure Database for MariaDB 服务器的防火墙规则 
-使用 Azure MariaDB 服务器名称和资源组名称，更新服务器上已有的防火墙规则。 使用 [az mariadb server firewall update](/cli/mariadb/server/firewall-rule#az-mariadb-server-firewall-rule-update) 命令。 输入现有防火墙规则的名称，并提供要更新的起始 IP 和结束 IP 属性。
+使用 Azure MariaDB 服务器名称和资源组名称，更新服务器上已有的防火墙规则。 使用 [az mariadb server firewall update](https://docs.microsoft.com/cli/azure/mariadb/server/firewall-rule#az-mariadb-server-firewall-rule-update) 命令。 输入现有防火墙规则的名称，并提供要更新的起始 IP 和结束 IP 属性。
 ```azurecli
 az mariadb server firewall-rule update --resource-group myresourcegroup --server-name mydemoserver --name FirewallRule1 --start-ip-address 13.83.152.0 --end-ip-address 13.83.152.1
 ```
@@ -106,14 +106,14 @@ az mariadb server firewall-rule update --resource-group myresourcegroup --server
 > 如果不存在防火墙规则，更新命令将创建规则。
 
 ## <a name="show-firewall-rule-details-on-azure-database-for-mariadb-server"></a>显示 Azure Database for MariaDB 服务器的防火墙规则详细信息
-使用 Azure MariaDB 服务器名称和资源组名称，显示服务器上已有的防火墙规则的详细信息。 使用 [az mariadb server firewall show](/cli/mariadb/server/firewall-rule#az-mariadb-server-firewall-rule-show) 命令。 输入现有防火墙规则的名称。
+使用 Azure MariaDB 服务器名称和资源组名称，显示服务器上已有的防火墙规则的详细信息。 使用 [az mariadb server firewall show](https://docs.microsoft.com/cli/azure/mariadb/server/firewall-rule#az-mariadb-server-firewall-rule-show) 命令。 输入现有防火墙规则的名称。
 ```azurecli
 az mariadb server firewall-rule show --resource-group myresourcegroup --server-name mydemoserver --name FirewallRule1
 ```
 成功后，命令输出会列出指定的防火墙规则的详细信息，默认采用 JSON 格式。 如果失败，输出会改为显示错误消息文本。
 
 ## <a name="delete-a-firewall-rule-on-azure-database-for-mariadb-server"></a>删除 Azure Database for MariaDB 服务器的防火墙规则
-使用 Azure MariaDB 服务器名称和资源组名称，从服务器中删除已有的防火墙规则。 使用 [az mariadb server firewall delete](/cli/mariadb/server/firewall-rule#az-mariadb-server-firewall-rule-delete) 命令。 输入现有防火墙规则的名称。
+使用 Azure MariaDB 服务器名称和资源组名称，从服务器中删除已有的防火墙规则。 使用 [az mariadb server firewall delete](https://docs.microsoft.com/cli/azure/mariadb/server/firewall-rule#az-mariadb-server-firewall-rule-delete) 命令。 输入现有防火墙规则的名称。
 ```azurecli
 az mariadb server firewall-rule delete --resource-group myresourcegroup --server-name mydemoserver --name FirewallRule1
 ```

@@ -5,6 +5,8 @@
   items:
     - name: 什么是 Azure Active Directory？
       href: active-directory-whatis.md
+    - name: 将 Azure AD 与 ADDS 进行比较
+      href: active-directory-compare-azure-ad-to-ad.md
 - name: 快速入门
   expanded: true
   items:
@@ -15,14 +17,18 @@
 - name: 概念
   expanded: true
   items:
-    - name: 组和访问管理
-      href: active-directory-manage-groups.md
-    - name: Azure AD 体系结构
-      href: active-directory-architecture.md
-    - name: 默认用户权限
-      href: users-default-permissions.md
-    - name: 将 Azure AD 与 ADDS 进行比较
-      href: active-directory-compare-azure-ad-to-ad.md
+    - name: 组和用户
+      items:
+        - name: 组和访问管理
+          href: active-directory-manage-groups.md
+        - name: 基于组的许可
+          href: active-directory-licensing-whatis-azure-portal.md
+        - name: 默认用户权限
+          href: users-default-permissions.md
+    - name: 体系结构
+      items:
+        - name: Azure AD 体系结构
+          href: active-directory-architecture.md
 - name: 操作指南
   expanded: true
   items:
@@ -58,10 +64,12 @@
           href: add-users-azure-active-directory.md
         - name: 添加或更改用户配置文件信息
           href: active-directory-users-profile-azure-portal.md
-        - name: 重置用户的密码
+        - name: 重置用户密码
           href: active-directory-users-reset-password-azure-portal.md
         - name: 向用户分配角色
           href: active-directory-users-assign-role-azure-portal.md
+        - name: 为用户分配或删除许可证
+          href: license-users-groups.md
         - name: 还原已删除的用户
           href: active-directory-users-restore.md
 - name: 资源

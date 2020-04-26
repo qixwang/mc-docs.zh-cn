@@ -11,13 +11,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: carlrab
 origin.date: 03/10/2020
-ms.date: 03/30/2020
-ms.openlocfilehash: 65367733299131c4fad78ab6feb5701be54a494f
-ms.sourcegitcommit: 90660563b5d65731a64c099b32fb9ec0ce2c51c6
+ms.date: 04/27/2020
+ms.openlocfilehash: a2c7a656edcc68174f4b6fbe8402a56a0640f65c
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80341759"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82127087"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>在 Azure SQL 数据库中缩放单一数据库资源
 
@@ -74,7 +74,7 @@ ms.locfileid: "80341759"
 
 从 PowerShell 命令提示符下，设置 `$resourceGroupName`、`$serverName` 和 `$databaseName`，然后运行以下命令：
 
-```powershell
+```azurecli
 $operationName = (az sql db op list --resource-group $resourceGroupName --server $serverName --database $databaseName --query "[?state=='InProgress'].name" --out tsv)
 if (-not [string]::IsNullOrEmpty($operationName)) {
     (az sql db op cancel --resource-group $resourceGroupName --server $serverName --database $databaseName --name $operationName)

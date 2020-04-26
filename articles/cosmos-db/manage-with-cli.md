@@ -4,15 +4,15 @@ description: 使用 Azure CLI 管理 Azure Cosmos DB 帐户、数据库和容器
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
-origin.date: 01/21/2020
-ms.date: 02/10/2020
+origin.date: 04/13/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: daa07bacb6bd94287bacad51c961959d604cce00
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: fd4e49e49fca6f0c1ee05bb13ab1c08779e70918
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79293399"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134654"
 ---
 # <a name="manage-azure-cosmos-resources-using-azure-cli"></a>使用 Azure CLI 管理 Azure Cosmos 资源
 
@@ -51,24 +51,24 @@ az cosmosdb create \
 > 此命令可添加和删除区域，但不可修改故障转移优先级或触发手动故障转移。 请参阅[设置故障转移优先级](#set-failover-priority)和[触发手动故障转移](#trigger-manual-failover)。
 
 ```azurecli
-resourceGroupName = 'myResourceGroup'
-accountName = 'mycosmosaccount' # must be lower case and <31 characters
+resourceGroupName='myResourceGroup'
+accountName='mycosmosaccount' # must be lower case and <31 characters
 
 # Create an account with 2 regions
 az cosmosdb create --name $accountName --resource-group $resourceGroupName \
-    --locations regionName= "China North 2" failoverPriority=0 isZoneRedundant=False \
-    --locations regionName= "China East 2" failoverPriority=1 isZoneRedundant=False
+    --locations regionName="China North 2" failoverPriority=0 isZoneRedundant=False \
+    --locations regionName="China East 2" failoverPriority=1 isZoneRedundant=False
 
 # Add a region
 az cosmosdb update --name $accountName --resource-group $resourceGroupName \
-    --locations regionName= "China North 2" failoverPriority=0 isZoneRedundant=False \
-    --locations regionName= "China East 2" failoverPriority=1 isZoneRedundant=False \
-    --locations regionName= "China East" failoverPriority=2 isZoneRedundant=False
+    --locations regionName="China North 2" failoverPriority=0 isZoneRedundant=False \
+    --locations regionName="China East 2" failoverPriority=1 isZoneRedundant=False \
+    --locations regionName="China East" failoverPriority=2 isZoneRedundant=False
 
 # Remove a region
 az cosmosdb update --name $accountName --resource-group $resourceGroupName \
-    --locations regionName= "China North 2" failoverPriority=0 isZoneRedundant=False \
-    --locations regionName= "China East 2" failoverPriority=1 isZoneRedundant=False
+    --locations regionName="China North 2" failoverPriority=0 isZoneRedundant=False \
+    --locations regionName="China East 2" failoverPriority=1 isZoneRedundant=False
 ```
 
 ## <a name="enable-multiple-write-regions"></a>启用多个写入区域
@@ -77,8 +77,8 @@ az cosmosdb update --name $accountName --resource-group $resourceGroupName \
 
 ```azurecli
 # Update an Azure Cosmos account from single to multi-master
-resourceGroupName = 'myResourceGroup'
-accountName = 'mycosmosaccount'
+resourceGroupName='myResourceGroup'
+accountName='mycosmosaccount'
 
 # Get the account resource id for an existing account
 accountId=$(az cosmosdb show -g $resourceGroupName -n $accountName --query id -o tsv)
@@ -92,8 +92,8 @@ az cosmosdb update --ids $accountId --enable-multiple-write-locations true
 
 ```azurecli
 # Assume region order is initially 'China North 2'=0 'China East 2'=1 'China East'=2 for account
-resourceGroupName = 'myResourceGroup'
-accountName = 'mycosmosaccount'
+resourceGroupName='myResourceGroup'
+accountName='mycosmosaccount'
 
 # Get the account resource id for an existing account
 accountId=$(az cosmosdb show -g $resourceGroupName -n $accountName --query id -o tsv)
@@ -107,8 +107,8 @@ az cosmosdb failover-priority-change --ids $accountId \
 
 ```azurecli
 # Enable automatic failover on an existing account
-resourceGroupName = 'myResourceGroup'
-accountName = 'mycosmosaccount'
+resourceGroupName='myResourceGroup'
+accountName='mycosmosaccount'
 
 # Get the account resource id for an existing account
 accountId=$(az cosmosdb show -g $resourceGroupName -n $accountName --query id -o tsv)
@@ -123,8 +123,8 @@ az cosmosdb update --ids $accountId --enable-automatic-failover true
 
 ```azurecli
 # Assume region order is initially 'China North 2'=0 'China East 2'=1 'China East'=2 for account
-resourceGroupName = 'myResourceGroup'
-accountName = 'mycosmosaccount'
+resourceGroupName='myResourceGroup'
+accountName='mycosmosaccount'
 
 # Get the account resource id for an existing account
 accountId=$(az cosmosdb show -g $resourceGroupName -n $accountName --query id -o tsv)
@@ -275,17 +275,17 @@ az cosmosdb sql container create \
 
 ```azurecli
 # Create an Azure Cosmos container with TTL of one day
-resourceGroupName = 'myResourceGroup'
-accountName = 'mycosmosaccount'
-databaseName = 'database1'
-containerName = 'container1'
+resourceGroupName='myResourceGroup'
+accountName='mycosmosaccount'
+databaseName='database1'
+containerName='container1'
 
 az cosmosdb sql container update \
     -g $resourceGroupName \
     -a $accountName \
     -d $databaseName \
     -n $containerName \
-    --ttl = 86400
+    --ttl=86400
 ```
 
 ## <a name="create-a-container-with-a-custom-index-policy"></a>创建带有自定义索引策略的容器
@@ -375,4 +375,4 @@ az cosmosdb sql container throughput update \
 - [Azure CLI 参考](https://docs.azure.cn/cli/cosmosdb?view=azure-cli-latest)
 - [针对 Azure Cosmos DB 的其他 Azure CLI 示例](cli-samples.md)
 
-<!-- Update_Description: update meta properties, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

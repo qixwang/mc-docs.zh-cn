@@ -11,13 +11,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: sstein, carlrab, srbozovi, bonova
 origin.date: 02/18/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: 3a7c35a7e88e0d9e6d579a9928f415f1ee590588
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 04/27/2020
+ms.openlocfilehash: bf8212825a6d079575ac4e66b784be5eef7fa29d
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336056"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82127073"
 ---
 # <a name="quickstart-configure-azure-vm-to-connect-to-an-azure-sql-database-managed-instance"></a>快速入门：配置 Azure VM，以便连接到 Azure SQL 数据库托管实例
 
@@ -74,7 +74,7 @@ ms.locfileid: "75336056"
 
 2. 根据下表中的信息填充窗体：
 
-   | 设置| 建议的值 | Description |
+   | 设置| 建议的值 | 说明 |
    | ---------------- | ----------------- | ----------- |
    | **订阅** | 有效的订阅 | 必须是有权在其中创建新资源的订阅。 |
    | **资源组** |在[创建托管实例](sql-database-managed-instance-get-started.md)快速入门中指定的资源组。|此资源组必须是 VNet 所在的资源组。|
@@ -121,7 +121,7 @@ ms.locfileid: "75336056"
 
 4. 关闭“连接到虚拟机”窗体。 
 5. 若要连接到 VM，请打开下载的 RDP 文件。
-6. 出现提示时，选择“连接”  。 在 Mac 上，需要一个 RDP 客户端，例如 Mac 应用商店提供的这个[远程桌面客户端](https://itunes.apple.com/us/app/microsoft-remote-desktop/id715768417?mt=12)。
+6. 出现提示时，选择“连接”  。 在 Mac 上，需要一个 RDP 客户端，例如 Mac 应用商店提供的这个[远程桌面客户端](https://apps.apple.com/app/microsoft-remote-desktop-10/id1295203466?mt=12)。
 
 7. 输入在创建虚拟机时指定的用户名和密码，然后选择“确定”。 
 

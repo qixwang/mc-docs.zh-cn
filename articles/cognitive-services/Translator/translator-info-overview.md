@@ -12,12 +12,12 @@ origin.date: 12/09/2019
 ms.date: 03/26/2020
 ms.author: v-lingwu
 ms.custom: seodec18
-ms.openlocfilehash: 7d71a3abb8c93633a98c9fe91330d1b45bd27447
-ms.sourcegitcommit: 303a16c7117b6f3495ef0493b4ae8ccb67d7dbba
+ms.openlocfilehash: c2a0d81b4f52fe49fead8e3d4c12fd6f8fea2a28
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80342384"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82127044"
 ---
 # <a name="what-is-the-translator-text-api"></a>什么是文本翻译 API？
 
@@ -43,7 +43,7 @@ Microsoft Translator 为翻译、直译、语言检测和字典提供多语言�
 
 NMT 模型是该 API 的核心，对最终用户不可见。 唯一明显的区别是改进的翻译质量，尤其是针对中文、日语和阿拉伯语等语言。
 
-详细了解 [NMT 的工作原理](https://www.microsoft.com/en-us/translator/mt.aspx#nnt)
+详细了解 [NMT 的工作原理](https://www.microsoft.com/translator/mt.aspx#nnt)
 
 ## <a name="next-steps"></a>后续步骤
 

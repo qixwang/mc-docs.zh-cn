@@ -2,25 +2,22 @@
 title: 登录/注销用户并调用 Microsoft Graph (Android) - Microsoft 标识平台 | Azure
 description: 从 Microsoft 标识平台 (Android) 获取访问令牌并调用需要访问令牌的 Microsoft Graph 或 API
 services: active-directory
-documentationcenter: dev-center-name
 author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/10/2020
+ms.date: 04/22/2020
 ms.author: v-junlch
-ms.reviwer: brandwe
+ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 6c95ff68f0e406bc26211de4720b85b46701de48
-ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
+ms.openlocfilehash: 3408435df4b46cf05cbd30f9b5a19a049f63e675
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2020
-ms.locfileid: "79133812"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126424"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-from-an-android-application"></a>教程：从 Android 应用程序将用户登录并调用 Microsoft Graph 
 
@@ -94,7 +91,7 @@ ms.locfileid: "79133812"
 
 1. 在 Android Studio 的项目窗格中，导航到 **app\src\main\res**。
 2. 右键单击“res”  ，选择“新建”   >   “目录”。 输入 `raw` 作为新目录名称，然后单击“确定”。 
-3. 在 **app** > **src** > **main** > **res** > **raw** 中，新建名为 `auth_configbn_single_account.json` 的 JSON 文件，然后粘贴以前保存的 MSAL 配置。 
+3. 在 **app** > **src** > **main** > **res** > **raw** 中，新建名为 `auth_config_single_account.json` 的 JSON 文件，然后粘贴以前保存的 MSAL 配置。 
 
     在“重定向 URI”下方，粘贴： 
     ```json
@@ -193,7 +190,7 @@ import com.microsoft.identity.client.exception.*;
 ## <a name="instantiate-publicclientapplication"></a>实例化 PublicClientApplication
 #### <a name="initialize-variables"></a>初始化变量 
 ```java
-private final static String[] SCOPES = {"File.Read"};
+private final static String[] SCOPES = {"Files.Read"};
 /* Azure AD v2 Configs */
 final static String AUTHORITY = "https://login.partner.microsoftonline.cn/common";
 private ISingleAccountPublicClientApplication mSingleAccountApp;
@@ -586,6 +583,4 @@ private void performOperationOnSignOut() {
 ## <a name="get-help"></a>获取帮助
 
 如果对本教程或 Microsoft 标识平台有疑问，请访问[帮助和支持](/active-directory/develop/developer-support-help-options)。
-
-<!-- Update_Description: wording update -->
 

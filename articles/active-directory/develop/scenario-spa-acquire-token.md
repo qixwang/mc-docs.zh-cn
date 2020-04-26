@@ -2,24 +2,21 @@
 title: 获取令牌以调用 Web API（单页应用） - Microsoft 标识平台
 description: 了解如何构建单页应用程序（获取用于调用 API 的令牌）
 services: active-directory
-documentationcenter: dev-center-name
 author: negoe
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/25/2020
+ms.date: 04/22/2020
 ms.author: v-junlch
 ms.custom: aaddev
-ms.openlocfilehash: f702114ece8eb24713ba0bd0938b0b715d2407f5
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.openlocfilehash: afdc7c74d4a19c970ba93cd824f58695a96fb945
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77653154"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126449"
 ---
 # <a name="single-page-application-acquire-a-token-to-call-an-api"></a>单页应用程序：获取用于调用 API 的令牌
 
@@ -76,22 +73,40 @@ MSAL Angular 包装器提供 HTTP 侦听器，后者会自动以无提示方式�
 可以在 `protectedResourceMap` 配置选项中指定 API 的作用域。 `MsalInterceptor` 将在自动获取令牌时请求这些作用域。
 
 ```javascript
-//In app.module.ts
+// app.module.ts
 @NgModule({
-  imports: [ MsalModule.forRoot({
-                clientID: 'your_app_id',
-                protectedResourceMap: {"https://microsoftgraph.chinacloudapi.cn/v1.0/me", 
-                ["https://microsoftgraph.chinacloudapi.cn/user.read", 
-                 "https://microsoftgraph.chinacloudapi.cn/mail.send"]}
-            })]
-         })
-
-providers: [ ProductService, {
-        provide: HTTP_INTERCEPTORS,
-        useClass: MsalInterceptor,
-        multi: true
+  declarations: [
+    // ...
+  ],
+  imports: [
+    // ...
+    MsalModule.forRoot({
+      auth: {
+        clientId: 'Enter_the_Application_Id_Here',
+      }
+    },
+    {
+      popUp: !isIE,
+      consentScopes: [
+        'https://microsoftgraph.chinacloudapi.cn/user.read',
+        'openid',
+        'profile',
+      ],
+      protectedResourceMap: [
+        ['https://microsoftgraph.chinacloudapi.cn/v1.0/me', ['https://microsoftgraph.chinacloudapi.cn/user.read']]
+      ]
+    })
+  ],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: MsalInterceptor,
+      multi: true
     }
-   ],
+  ],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
 ```
 
 以无提示方式获取令牌时，不管是成功还是失败，MSAL Angular 都会提供回叫，可进行订阅。 此外还要记住取消订阅。
@@ -105,7 +120,7 @@ providers: [ ProductService, {
 
 ngOnDestroy() {
    this.broadcastService.getMSALSubject().next(1);
-   if(this.subscription) {
+   if (this.subscription) {
      this.subscription.unsubscribe();
    }
  }
@@ -151,16 +166,16 @@ userAgentApplication.acquireTokenSilent(accessTokenRequest).then(function(access
 
 - 在应用程序的令牌中包括其他声明。
 - 更改 Azure AD 在令牌中返回的某些声明的行为。
-- 添加和访问应用程序的自定义声明。 
+- 添加和访问应用程序的自定义声明。
 
 若要请求 `IdToken` 中的可选声明，可以将一个字符串化声明对象发送到 `AuthenticationParameters.ts` 类的 `claimsRequest` 字段。
 
 ```javascript
-"optionalClaims":  
+"optionalClaims":
    {
       "idToken": [
             {
-                  "name": "auth_time", 
+                  "name": "auth_time",
                   "essential": true
              }
       ],
@@ -186,4 +201,3 @@ myMSALObj.acquireTokenPopup(request);
 > [!div class="nextstepaction"]
 > [调用 Web API](scenario-spa-call-api.md)
 
-<!-- Update_Description: wording update -->

@@ -6,19 +6,19 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: include
 origin.date: 04/05/2019
-ms.date: 04/15/2019
+ms.date: 04/27/2020
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: 42c3899b204cc6fe545a9b4d73db6b5a4e853f25
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 7923690d7583a486680fd7f0c8793b0d246a73d2
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "63825066"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134498"
 ---
 可以在数据资源管理器中使用查询来检索和筛选数据。
 
-1. 在数据资源管理器的“文档”选项卡顶部，  查看默认查询 `SELECT * FROM c`。 此查询按 ID 顺序检索并显示集合中的所有文档。 
+1. 在数据资源管理器的“项”选项卡顶部，  查看默认查询 `SELECT * FROM c`。 此查询检索并显示容器中按 ID 排序的所有文档。 
 
     ![数据资源管理器中的默认查询是“SELECT * FROM c”](./media/cosmos-db-create-sql-api-query-data/azure-cosmosdb-data-explorer-query.png)
 
@@ -33,3 +33,5 @@ ms.locfileid: "63825066"
 如果熟悉 SQL 语法，可以在查询谓词框中输入任何受支持的 [SQL 查询](../articles/cosmos-db/sql-api-sql-query.md)。 还可以使用数据资源管理器创建存储过程、UDF 和触发器以执行服务器端业务逻辑。 
 
 数据资源管理器可以通过 Azure 门户轻松访问 API 中提供的所有内置编程数据访问功能。 也可通过门户缩放吞吐量、获取密钥和连接字符串，以及查看 Azure Cosmos DB 帐户的指标和 SLA。
+
+<!-- Update_Description: update meta properties, wording update, update link -->

@@ -10,15 +10,14 @@ ms.topic: conceptual
 author: WenJason
 ms.author: v-jay
 ms.reviewer: carlrab
-manager: digimobile
 origin.date: 09/25/2018
-ms.date: 08/26/2019
-ms.openlocfilehash: 3a18d10d19c49ca45d8c6ece92e8d1b30c7b675e
-ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
+ms.date: 04/27/2019
+ms.openlocfilehash: 6669eaa41e0c3efa797c087986a3fe4ae0c0a0dd
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77155705"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126971"
 ---
 # <a name="accelerate-real-time-big-data-analytics-with-spark-connector-for-azure-sql-database-and-sql-server"></a>通过适用于 Azure SQL 数据库和 SQL Server 的 Spark 连接器，加速实时大数据分析
 
@@ -29,13 +28,13 @@ ms.locfileid: "77155705"
 
 ## <a name="official-supported-versions"></a>官方支持的版本
 
-| 组件                            |版本                  |
-| :----------------------------------- | :---------------------- |
-| Apache Spark                         |2.0.2 或更高版本           |
-| Scala                                |2.10 或更高版本            |
-| Microsoft JDBC Driver for SQL Server |6.2 或更高版本             |
-| Microsoft SQL Server                 |SQL Server 2008 或更高版本 |
-| Azure SQL 数据库                   |支持                |
+| 组件                            | 版本                  |
+| :----------------------------------- | :----------------------- |
+| Apache Spark                         | 2.0.2 或更高版本           |
+| Scala                                | 2.10 或更高版本            |
+| Microsoft JDBC Driver for SQL Server | 6.2 或更高版本             |
+| Microsoft SQL Server                 | SQL Server 2008 或更高版本 |
+| Azure SQL 数据库                   | 支持                |
 
 适用于 Azure SQL 数据库和 SQL Server 的 Spark 连接器利用 Microsoft JDBC Driver for SQL Server 在 Spark 辅助角色节点和 SQL 数据库之间移动数据：
  
@@ -91,7 +90,7 @@ val config = Config(Map(
 ))
 
 //Read all data in table dbo.Clients
-val collection = sqlContext.read.sqlDb(config)
+val collection = sqlContext.read.sqlDB(config)
 collection.show()
 ```
 
@@ -120,7 +119,7 @@ import com.microsoft.azure.sqldb.spark.config.Config
 import com.microsoft.azure.sqldb.spark.query._
 val query = """
               |UPDATE Customers
-              |SET ContactName = 'Alfred Schmidt', City= 'Frankfurt'
+              |SET ContactName = 'Alfred Schmidt', City = 'Frankfurt'
               |WHERE CustomerID = 1;
             """.stripMargin
 
@@ -148,13 +147,13 @@ import com.microsoft.azure.sqldb.spark.connect._
 val config = Config(Map(
   "url"            -> "mysqlserver.database.chinacloudapi.cn",
   "databaseName"   -> "MyDatabase",
-  "user"           -> "username ",
+  "user"           -> "username",
   "password"       -> "*********",
   "authentication" -> "ActiveDirectoryPassword",
   "encrypt"        -> "true"
 ))
 
-val collection = sqlContext.read.SqlDB(config)
+val collection = sqlContext.read.sqlDB(config)
 collection.show()
 ```
 
@@ -171,12 +170,12 @@ import com.microsoft.azure.sqldb.spark.connect._
 val config = Config(Map(
   "url"                   -> "mysqlserver.database.chinacloudapi.cn",
   "databaseName"          -> "MyDatabase",
-  "accessToken"           -> "access_token ",
+  "accessToken"           -> "access_token",
   "hostNameInCertificate" -> "*.database.chinacloudapi.cn",
   "encrypt"               -> "true"
 ))
 
-val collection = sqlContext.read.SqlDB(config)
+val collection = sqlContext.read.sqlDB(config)
 collection.show()
 ```
 

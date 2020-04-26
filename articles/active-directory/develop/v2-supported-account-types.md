@@ -2,33 +2,28 @@
 title: 支持的帐户类型 - Microsoft 标识平台 | Azure
 description: 有关受众的概念文档以及应用程序中受支持的帐户类型
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/06/2020
+ms.date: 04/23/2020
 ms.author: v-junlch
 ms.reviewer: saeeda
 ms.custom: aaddev, identityplatformtop40
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5679de016735854cefd8fdfce3ca5b43761b24d
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: bd46e1d576c74550494e35a162610e5567f80283
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79291023"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126381"
 ---
 # <a name="supported-account-types"></a>支持的帐户类型
 
 本文介绍了应用程序支持的帐户类型（有时称为受众）。
 
-<!-- This section can be in an include for many of the scenarios (SPA, Web App signing-in users, protecting a Web API, Desktop (depending on the flows), Mobile -->
+<!-- This section can be in an include for many of the scenarios (SPA, web app signing-in users, protecting a web API, Desktop (depending on the flows), Mobile -->
 
 ## <a name="supported-accounts-types-in-microsoft-identity-platform-applications"></a>Microsoft 标识平台应用程序中支持的帐户类型
 
@@ -59,4 +54,3 @@ ms.locfileid: "79291023"
 - 了解有关 [Azure Active Directory 中的租赁](./single-and-multi-tenant-apps.md)的详细信息
 - 了解有关[国家/地区云](./authentication-national-cloud.md)的详细信息
 
-<!-- Update_Description: wording update -->

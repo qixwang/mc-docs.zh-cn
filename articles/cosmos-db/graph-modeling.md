@@ -4,16 +4,16 @@ description: 了解如何使用 Azure Cosmos DB Gremlin API 为图形数据库�
 author: rockboyfor
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
-ms.topic: overview
+ms.topic: conceptual
 origin.date: 12/02/2019
-ms.date: 02/10/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: f68b7bc7d83b21f39031437edfaa91ec4666f098
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 89c751447e2b09d0eebb525b7c30cb5834fd452e
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "76980529"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134937"
 ---
 # <a name="graph-data-modeling-for-azure-cosmos-db-gremlin-api"></a>Azure Cosmos DB Gremlin API 的图形数据建模
 

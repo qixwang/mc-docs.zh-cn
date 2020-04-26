@@ -2,18 +2,18 @@
 title: 了解 Azure Cosmos DB 帐单
 description: 本文通过一些示例介绍如何了解 Azure Cosmos DB 帐单。
 author: rockboyfor
-ms.author: v-yeche
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 08/01/2019
-ms.date: 02/10/2020
+ms.date: 04/27/2020
+ms.author: v-yeche
 ms.reviewer: sngun
-ms.openlocfilehash: 1bae6d1799ccb35774c8c31c321b61b237b5aadd
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 286b0c400be087cce0a8fb8676b6ba03fbb37d25
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77067887"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134873"
 ---
 # <a name="understand-your-azure-cosmos-db-bill"></a>了解 Azure Cosmos DB 帐单
 
@@ -104,7 +104,7 @@ Azure Cosmos DB 是完全托管的云原生数据库服务，仅针对预配的�
 |3 个其他区域 - 中国东部、中国北部 2 和中国东部 2 的吞吐量帐单       | 3 * 10K RU/秒 * 24 * 31    |每 100 RU/秒每小时 0.082 元  |18,303 元|
 |中国北部容器的存储帐单      | 250 GB    |2\.576 元/GB  |644 元|
 |3 个其他区域 - 中国东部、中国北部 2 和中国东部 2 的存储帐单      | 3 * 250 GB    |2\.576 元/GB  |1,932 元|
-|**总计**     |     |  |**26,980 元**|
+|**总计** |     |  |**26,980 元**|
 
 此外，假定每月从中国北部的容器中传出 100 GB 数据，将数据复制到中国东部、中国北部 2 和中国东部 2。  则需要按数据传输速率为导出部分付费。
 

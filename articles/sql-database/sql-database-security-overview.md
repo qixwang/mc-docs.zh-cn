@@ -11,13 +11,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: vanto, carlrab, emlisa
 origin.date: 05/14/2019
-ms.date: 03/30/2020
-ms.openlocfilehash: ee6acfb2026aad1f4d9e0a5fc078b710ea25615e
-ms.sourcegitcommit: 90660563b5d65731a64c099b32fb9ec0ce2c51c6
+ms.date: 04/27/2020
+ms.openlocfilehash: 37e19311089f3a3e1292177fce3e5e7b8584e829
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80341793"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126726"
 ---
 # <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Azure SQL 数据库安全功能概述
 
