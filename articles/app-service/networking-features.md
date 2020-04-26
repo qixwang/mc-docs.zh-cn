@@ -8,12 +8,12 @@ origin.date: 02/27/2020
 ms.date: 03/30/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 27881f5a3b067a4fa678e066c5d1c3ddfe56f170
-ms.sourcegitcommit: 44d3fe59952847e5394bbe6c05bd6f333bb56345
+ms.openlocfilehash: 540d495a0374056c688c8a04e369563cedb91906
+ms.sourcegitcommit: 9b0a89269a7e422570b7bc0ca983f60d2f317d48
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80522061"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81675787"
 ---
 # <a name="app-service-networking-features"></a>应用服务网络功能
 
@@ -29,7 +29,8 @@ Azure 应用服务是一种分布式系统。 处理传入 HTTP/HTTPS 请求的�
 |---------------------|-------------------|
 | 应用分配的地址 | 混合连接 |
 | 访问限制 | 需要网关的 VNet 集成 |
-| 服务终结点 | VNet 集成 |
+
+<!-- | Service Endpoints | VNet Integration | -->
 
 除非另有说明，否则所有功能都可以配合使用。 可以混合使用这些功能来解决各种问题。
 
@@ -42,7 +43,7 @@ Azure 应用服务是一种分布式系统。 处理传入 HTTP/HTTPS 请求的�
 | 支持应用的基于 IP 的 SSL 需求 | 应用分配的地址 |
 | 应用的非共享专用入站地址 | 应用分配的地址 |
 | 从一组妥善定义的地址限制对应用的访问 | 访问限制 |
-| 限制从 VNet 中的资源访问应用 | 服务终结点 </br> ILB ASE |
+| 限制从 VNet 中的资源访问应用 | ILB ASE |
 | 在 VNet 中的专用 IP 上公开我的应用 | ILB ASE </br> 包含服务终结点的应用程序网关上用于入站通信的专用 IP |
 | 使用 WAF 保护我的应用 | 应用程序网关 + ILB ASE </br> 包含服务终结点的应用程序网关 </br> 提供访问限制的 Azure Front Door |
 | 对发往不同区域中的应用的流量进行负载均衡 | 提供访问限制的 Azure Front Door | 
@@ -54,7 +55,7 @@ Azure 应用服务是一种分布式系统。 处理传入 HTTP/HTTPS 请求的�
 |---------------------|-------------------|
 | 访问位于同一区域的 Azure 虚拟网络中的资源 | VNet 集成 </br> ASE |
 | 访问位于不同区域的 Azure 虚拟网络中的资源 | 需要网关的 VNet 集成 </br> ASE 和 VNet 对等互连 |
-| 访问通过服务终结点保护的资源 | VNet 集成 </br> ASE |
+| 访问通过服务终结点保护的资源 | ASE |
 | 访问未连接到 Azure 的专用网络中的资源 | 混合连接 |
 | 跨 ExpressRoute 线路访问资源 | VNet 集成 </br> ASE | 
 | 保护来自 Web 应用的出站流量 | VNet 集成和网络安全组 </br> ASE | 
@@ -99,18 +100,18 @@ Azure 应用服务缩放单元为每个部署中的多个客户提供支持。 �
 
 若要锁定对应用的访问，以便只能从 Azure 虚拟网络 (VNet) 中的资源访问它，则当源位于 VNet 中时，需要指定一个静态公共地址。 如果资源没有公共地址，则应改用服务终结点功能。 在[配置访问限制][iprestrictions]教程中了解如何启用此功能。
 
-### <a name="service-endpoints"></a>服务终结点
+<!-- ### Service endpoints
 
-使用服务终结点可以锁定对应用的**入站**访问，使源地址必须来自所选的一组子网。 此功能可与 IP 访问限制结合使用。 服务终结点在与 IP 访问限制相同的用户体验中设置。 可以生成访问规则的允许/拒绝列表，其中包括公共地址以及 VNet 中的子网。 此功能支持如下方案：
+Service endpoints allows you to lock down **inbound** access to your app such that the source address must come from a set of subnets that you select. This feature works in conjunction with the IP Access Restrictions. Service endpoints are set in the same user experience as the IP Access Restrictions. You can build an allow/deny list of access rules that includes public addresses as well as subnets in your VNets. This feature supports scenarios such as:
 
-![服务终结点](media/networking-features/service-endpoints.png)
+![service endpoints](media/networking-features/service-endpoints.png)
 
-* 设置包含你的应用的应用程序网关，以锁定发往该应用的入站流量
-* 将对应用的访问权限限制为 VNet 中的资源。 这可能包括 VM、ASE，甚至其他使用 VNet 集成的应用 
+* Setting up an Application Gateway with your app to lock down inbound traffic to your app
+* Restricting access to your app to resources in your VNet. This can include VMs, ASEs, or even other apps that use VNet Integration 
 
-![包含应用程序网关的服务终结点](media/networking-features/service-endpoints-appgw.png)
+![service endpoints with application gateway](media/networking-features/service-endpoints-appgw.png)
 
-可以在[配置服务终结点访问限制][serviceendpoints]教程中详细了解如何配置包含你的应用的服务终结点
+You can learn more about configuring service endpoints with your app in the tutorial on [Configuring Service Endpoint Access Restrictions][serviceendpoints] -->
 
 <!--
 ### Private Endpoint (Preview)
@@ -153,19 +154,19 @@ Private Endpoint is a network interface that connects you privately and securely
 
 启用此功能后，应用将使用配置了目标 VNet 的 DNS 服务器。 可在有关[应用服务 VNet 集成][vnetintegrationp2s]的文档中详细了解此功能。 
 
-### <a name="vnet-integration"></a>VNet 集成
+<!-- ### VNet Integration
 
-网关所需的 VNet 集成功能非常有用，但仍不能解决跨 ExpressRoute 访问资源的问题。 在需要跨 ExpressRoute 连接进行访问的情况下，应用需要能够调用服务终结点保护的服务。 为了同时解决这两个附加需求，我们添加了另一项 VNet 集成功能。 借助新的 VNet 集成功能，可将应用的后端放置在位于同一区域的资源管理器 VNet 中的子网内。 无法从已经位于 VNet 中的应用服务环境使用此功能。 使用此功能可以：
+The gateway required VNet Integration feature is very useful but still does not solve accessing resources across ExpressRoute. On top of needing to reach across ExpressRoute connections, there is a need for apps to be able to make calls to service endpoint secured services. To solve both of those additional needs, another VNet Integration capability was added. The new VNet Integration feature enables you to place the backend of your app in a subnet in a Resource Manager VNet in the same region. This feature is not available from an App Service Environment, which is already in a VNet. This feature enables:
 
-* 访问位于同一区域的资源管理器 VNet 中的资源
-* 访问通过服务终结点保护的资源 
-* 访问可跨 ExpressRoute 或 VPN 连接访问的资源
-* 保护所有出站流量 
-* 强制通过隧道来传输所有出站流量。 
+* Accessing resources in Resource Manager VNets in the same region
+* Accessing resources that are secured with service endpoints 
+* Accessing resources that are accessible across ExpressRoute or VPN connections
+* Securing all outbound traffic 
+* Force tunneling all outbound traffic. 
 
-![VNet 集成](media/networking-features/vnet-integration.png)
+![VNet Integration](media/networking-features/vnet-integration.png)
 
-若要详细了解此功能，请阅读有关[应用服务 VNet 集成][vnetintegration]的文档。
+To learn more about this feature, read the docs on [App Service VNet Integration][vnetintegration]. -->
 
 ## <a name="app-service-environment"></a>应用服务环境 
 
@@ -208,8 +209,9 @@ ASE 提供最佳的隔离和专用应用托管，但也附带了一些管理难�
 
 一个常见的请求是如何在 VNet 中放置应用。 将应用放入 VNet 意味着应用的入站和出站终结点都位于 VNet 中。 ASE 提供最佳的解决方案来解决此问题，但是，组合功能可以在多租户服务中实现大部分需求。 例如，可通过以下方式使用专用入站和出站地址托管仅限 Intranet 的应用程序：
 
+<!-- * Securing inbound traffic to your app with service endpoints  -->
+
 * 使用专用入站和出站地址创建应用程序网关
-* 使用服务终结点保护应用的入站流量 
 * 使用新的 VNet 集成，使应用后端位于 VNet 中 
 
 此部署样式不会针对发往 Internet 的出站流量提供专用地址，也无法让你锁定来自应用的所有出站流量。  此部署样式主要实现只能通过 ASE 实现的目的。 

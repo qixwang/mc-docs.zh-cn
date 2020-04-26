@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 中为 SMTP 横幅检查配置反向查找区域
+title: 为 SMTP 横幅检查配置反向查找区域
 titlesuffix: Azure Virtual Network
 description: 介绍如何在 Azure 中为 SMTP 横幅检查配置反向查找区域
 services: virtual-network
@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 origin.date: 10/31/2018
-ms.date: 11/25/2019
+ms.date: 04/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: c002dc7c91dbf562d7ecc90c3befd1734d144233
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+ms.openlocfilehash: 6c3ab44eb384c2f330bc7d1ce4ca44a0e94957f4
+ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
-ms.locfileid: "74657670"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82093339"
 ---
 # <a name="configure-reverse-lookup-zones-for-an-smtp-banner-check"></a>为 SMTP 横幅检查配置反向查找区域
 
@@ -35,7 +35,7 @@ ms.locfileid: "74657670"
 
 对于 Azure 中的虚拟 IP 地址，将在 Azure 拥有的域区域（而不是自定义域区域）中创建反向记录。
 
-若要在 Azure 拥有区域配置 PTR 记录，请使用 PublicIpAddress 资源的 -ReverseFqdn 属性。 有关详细信息，请参阅[为 Azure 中托管的服务配置反向 DNS](/dns/dns-reverse-dns-for-azure-services/)。
+若要在 Azure 拥有区域配置 PTR 记录，请使用 PublicIpAddress 资源的 -ReverseFqdn 属性。 有关详细信息，请参阅[为 Azure 中托管的服务配置反向 DNS](../dns/dns-reverse-dns-for-azure-services.md)。
 
 配置 PTR 记录时，请确保 IP 地址和反向 FQDN 为订阅所有。 如果尝试设置不属于订阅的反向 FQDN，将收到以下错误消息：
 
@@ -49,4 +49,4 @@ Set-AzPublicIpAddress : ReverseFqdn mail.contoso.com that PublicIPAddress ip01 i
 
 如果将 SMTP 横幅手动更改为与默认反向 FQDN 相匹配，远程邮件服务器仍可能失败，因为它可能期望 SMTP 横幅主机与域的 MX 记录相匹配。
 
-<!-- Update_Description: update meta properties  -->
+<!-- Update_Description: update meta properties, wording update, update link -->

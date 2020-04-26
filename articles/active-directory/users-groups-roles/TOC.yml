@@ -21,12 +21,14 @@
       href: /role-based-access-control/rbac-and-directory-admin-roles
     - name: 基于组的许可基础知识
       href: /active-directory/fundamentals/active-directory-licensing-whatis-azure-portal
+    - name: 使用组管理访问权限
+      href: /active-directory/fundamentals/active-directory-manage-groups
 - name: 操作指南
   expanded: true
   items:
     - name: 管理用户
       items:
-        - name: 将新用户添加到 Azure AD
+        - name: 创建用户
           href: /active-directory/fundamentals/add-users-azure-active-directory
         - name: 管理用户个人资料
           href: /active-directory/fundamentals/active-directory-users-profile-azure-portal
@@ -50,22 +52,24 @@
           href: /active-directory/connect/active-directory-aadconnect
     - name: 管理组
       items:
-        - name: 使用组管理访问权限
+        - name: 使用 Azure AD 组管理访问权限
           href: /active-directory/fundamentals/active-directory-manage-groups
-        - name: 在 Azure 门户中管理组
+        - name: 创建组（Azure 门户）
           href: /active-directory/fundamentals/active-directory-groups-create-azure-portal
         - name: 管理组 - 用于 Graph 的 PowerShell (v2)
           href: groups-settings-v2-cmdlets.md
-        - name: 管理组成员
+        - name: 使用 PowerShell MSOnline 管理组
+          href: groups-settings-cmdlets.md
+        - name: 添加或删除组成员
           href: /active-directory/fundamentals/active-directory-groups-members-azure-portal
+        - name: 还原已删除的组
+          href: groups-restore-deleted.md
+        - name: 管理组设置
+          href: /active-directory/fundamentals/active-directory-groups-settings-azure-portal
         - name: 管理组所有者
           href: /active-directory/fundamentals/active-directory-accessmanagement-managing-group-owners
         - name: 管理组中的组
           href: /active-directory/fundamentals/active-directory-groups-membership-azure-portal
-        - name: 还原已过期或已删除的组
-          href: groups-restore-deleted.md
-        - name: 管理组设置
-          href: /active-directory/fundamentals/active-directory-groups-settings-azure-portal
     - name: 分配许可证
       items:
         - name: 将许可证分配给组
@@ -74,21 +78,22 @@
           href: licensing-groups-resolve-problems.md
         - name: 将基于用户的许可更改为基于组的许可
           href: licensing-groups-migrate-users.md
-        - name: 更改用户的许可证
+        - name: 更改用户或组的许可证
           href: licensing-groups-change-licenses.md
         - name: 使用 PowerShell 和 Graph 进行组许可
           href: licensing-ps-examples.md
         - name: 用于许可的服务计划 ID
           href: licensing-service-plan-reference.md
     - name: Azure AD 管理员角色
+      expanded: true
       items:
         - name: 角色和权限
           href: directory-assign-admin-roles.md
         - name: 查看和分配角色
           href: directory-manage-roles-portal.md
-        - name: 自定义角色预览版
+        - name: 自定义角色
           items:
-            - name: 自定义角色预览版
+            - name: 自定义角色
               href: roles-custom-overview.md
             - name: 创建自定义角色
               href: roles-create-custom.md
@@ -98,7 +103,7 @@
               href: /active-directory/fundamentals/active-directory-users-assign-role-azure-portal
             - name: 使用 PowerShell 分配自定义角色
               href: roles-assign-powershell.md
-            - name: 自定义角色预览权限
+            - name: 自定义角色权限
               href: roles-custom-available-permissions.md
             - name: 委托应用管理权限
               href: roles-delegate-app-roles.md
@@ -106,10 +111,14 @@
           href: roles-delegate-by-task.md
         - name: Microsoft 365 角色
           href: roles-m365-workload-docs.md
-        - name: 管理员角色安全性
+        - name: 角色安全性
           items:
             - name: 创建紧急帐户
               href: directory-emergency-access.md
+        - name: 管理单元
+          items:
+            - name: 管理单元概述
+              href: directory-administrative-units.md
     - name: 管理登录
       items:
         - name: 登录选项

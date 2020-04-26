@@ -50,6 +50,8 @@
               href: container-registry-get-started-docker-cli.md
             - name: 推送和拉取 OCI 项目
               href: container-registry-oci-artifacts.md
+            - name: 推送和拉取 Helm 图表
+              href: container-registry-helm-repos.md
             - name: 查看存储库
               href: container-registry-repositories.md
             - name: 导入容器映像
@@ -62,24 +64,28 @@
                   href: container-registry-delete.md
                 - name: 无标记清单的保留策略（预览版）
                   href: container-registry-retention-policy.md
+                - name: 自动清除标记和清单（预览版）
+                  href: container-registry-auto-purge.md
             - name: 使用 ACR webhook
               href: container-registry-webhook.md
-            - name: Helm 图表存储库（预览版）
-              href: container-registry-helm-repos.md
         - name: 安全性和身份验证
           items:
             - name: 身份验证
               items:
                 - name: 身份验证概述
                   href: container-registry-authentication.md
-                - name: 服务主体身份验证
+                - name: 使用服务主体进行身份验证
                   href: container-registry-auth-service-principal.md
-                - name: 托管标识身份验证
+                - name: 使用托管标识进行身份验证
                   href: container-registry-authentication-managed-identity.md
                 - name: 从 Azure Kubernetes 服务 (AKS) 进行身份验证
                   href: ../aks/cluster-container-registry-integration.md?toc=/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json
             - name: 基于角色的访问控制
               href: container-registry-roles.md
+            - name: 内容信任
+              href: container-registry-content-trust.md
+            - name: 加密注册表数据（预览版）
+              href: container-registry-customer-managed-keys.md
         - name: 注册表和其他 Azure 服务
           expanded: false
           items:
@@ -140,6 +146,10 @@
               href: container-registry-tasks-cross-registry-authentication.md
             - name: 使用密钥保管库进行外部身份验证
               href: container-registry-tasks-authentication-key-vault.md
+        - name: 使用 Buildpacks 生成映像（预览版）
+          href: container-registry-tasks-pack-build.md
+        - name: 查看任务日志
+          href: container-registry-tasks-logs.md
 - name: 参考
   expanded: false
   items:

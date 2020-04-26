@@ -10,13 +10,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: sstein
 origin.date: 10/18/2019
-ms.date: 02/17/2020
-ms.openlocfilehash: 76fce58456b784eee38111affd41ca475f7188b3
-ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
+ms.date: 02/27/2020
+ms.openlocfilehash: 5631a0ef73bf018c73a514899e6e2ac652258354
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77155740"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126606"
 ---
 # <a name="sql-hyperscale-performance-troubleshooting-diagnostics"></a>SQL 超大规模服务层级性能故障排除诊断
 
@@ -24,7 +24,7 @@ ms.locfileid: "77155740"
 
 ## <a name="log-rate-throttling-waits"></a>日志速率限制等待
 
-每个 Azure SQL 数据库服务级别通过[日志速率调控](sql-database-resource-limits-database-server.md#transaction-log-rate-governance)来强制实施日志生成速率限制。 在超大规模数据库中，无论服务级别是什么，日志生成限制目前都设置为 100 MB/秒。 但有时，必须限制主计算副本上的日志生成速率，以保持符合可恢复性 SLA。 如果在应用日志服务中的新日志记录后，[页面服务器或其他计算副本](sql-database-service-tier-hyperscale.md#distributed-functions-architecture)明显滞后，则会发生此限制。
+在超大规模数据库中，无论服务级别是什么，日志生成限制目前都设置为 100 MB/秒。 但有时，必须限制主计算副本上的日志生成速率，以保持符合可恢复性 SLA。 如果在应用日志服务中的新日志记录后，[页面服务器或其他计算副本](sql-database-service-tier-hyperscale.md#distributed-functions-architecture)明显滞后，则会发生此限制。
 
 以下等待类型（在 [sys.dm_os_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql/) 中）描述了在主计算副本上限制日志速率的原因：
 

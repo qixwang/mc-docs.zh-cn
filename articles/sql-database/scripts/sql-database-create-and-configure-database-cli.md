@@ -1,5 +1,5 @@
 ---
-title: CLI 示例 - 创建 Azure SQL 数据库 | Microsoft Docs
+title: CLI 示例 - 创建 Azure SQL 数据库
 description: 使用此 Azure CLI 示例脚本创建 SQL 数据库。
 services: sql-database
 ms.service: sql-database
@@ -10,101 +10,74 @@ ms.topic: sample
 author: WenJason
 ms.author: v-jay
 ms.reviewer: ''
-manager: digimobile
 origin.date: 06/25/2019
-ms.date: 09/09/2019
-ms.openlocfilehash: a142f898daa658f3b5c29e86e44c68f95edf3bfb
-ms.sourcegitcommit: 2610641d9fccebfa3ebfffa913027ac3afa7742b
+ms.date: 04/27/2020
+ms.openlocfilehash: 04b95579d9580b274193abf3d2f4329bab301cf0
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70373012"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126802"
 ---
 # <a name="use-cli-to-create-a-single-azure-sql-database-and-configure-a-firewall-rule"></a>使用 CLI 创建单一 Azure SQL 数据库并配置防火墙规则
 
 此 Azure CLI 脚本示例创建 Azure SQL 数据库，并配置服务器级防火墙规则。 成功运行该脚本后，可以通过所有 Azure 服务和配置的 IP 地址访问 SQL 数据库。
 
-[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
-
-本主题需要运行 Azure CLI 版本 2.0 或更高版本。 运行 `az --version` 即可查找版本。 如需进行安装或升级，请参阅[安装 Azure CLI]( /cli/install-azure-cli)。 
+本主题需要运行 Azure CLI 版本 2.0 或更高版本。 运行 `az --version` 即可查找版本。 如需进行安装或升级，请参阅[安装 Azure CLI](/cli/install-azure-cli)。
 
 ## <a name="sample-script"></a>示例脚本
 
+### <a name="sign-in-to-azure"></a>登录 Azure
+
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
+
+### <a name="run-the-script"></a>运行脚本
+
 ```azurecli
 #!/bin/bash
+location="China East"
+randomIdentifier=random123
 
-# set execution context (if necessary)
-az account set --subscription <replace with your subscription name or id>
+resource="resource-$randomIdentifier"
+server="server-$randomIdentifier"
+database="database-$randomIdentifier"
 
-# Set the resource group name and location for your server
-$resourceGroupName=myResourceGroup-$RANDOM
-$location=chinaeast
+login="sampleLogin"
+password="samplePassword123!"
 
-# Set an admin login and password for your database
-$adminlogin=ServerAdmin
-$password=`openssl rand -base64 16`
-# password=<EnterYourComplexPasswordHere1>
+startIP=0.0.0.0
+endIP=0.0.0.0
 
-# The logical server name has to be unique in the system
-$servername=server-$RANDOM
+echo "Creating $resource..."
+az group create --name $resource --location "$location"
 
-# The ip address range that you want to allow to access your DB
-$startip=0.0.0.0
-$endip=0.0.0.0
+echo "Creating $server in $location..."
+az sql server create --name $server --resource-group $resource --location "$location" --admin-user $login --admin-password $password
 
-# Create a resource group
-az group create \
-    --name $resourceGroupName \
-    --location $location
+echo "Configuring firewall..."
+az sql server firewall-rule create --resource-group $resource --server $server -n AllowYourIp --start-ip-address $startIP --end-ip-address $endIP
 
-# Create a logical server in the resource group
-az sql server create \
-    --name $servername \
-    --resource-group $resourceGroupName \
-    --location $location  \
-    --admin-user $adminlogin \
-    --admin-password $password
-
-# Configure a firewall rule for the server
-az sql server firewall-rule create \
-    --resource-group $resourceGroupName \
-    --server $servername \
-    -n AllowYourIp \
-    --start-ip-address $startip \
-    --end-ip-address $endip
-
-# Create a database in the server
-az sql db create \
-    --resource-group $resourceGroupName \
-    --server $servername \
-    --name mySampleDatabase \
-    --sample-name AdventureWorksLT \
-    --edition GeneralPurpose \
-    --family Gen4 \
-    --capacity 1 
-
-# Echo random password
-echo $password
+echo "Creating $database on $server..."
+az sql db create --resource-group $resource --server $server --name $database --sample-name AdventureWorksLT --edition GeneralPurpose --family Gen4 --capacity 1
 ```
-## <a name="clean-up-deployment"></a>清理部署
+
+### <a name="clean-up-deployment"></a>清理部署
 
 使用以下命令删除资源组及其相关的所有资源。
 
 ```azurecli
-az group delete --name $resourceGroupName
+az group delete --name $resource
 ```
 
-## <a name="script-explanation"></a>脚本说明
+## <a name="sample-reference"></a>示例参考
 
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 注释 |
+| | |
 |---|---|
-| [az group create](/cli/group#az-group-create) | 创建用于存储所有资源的资源组。 |
-| [az sql server create](/cli/sql/server#az-sql-server-create) | 创建托管单一数据库或弹性池的 SQL 数据库服务器。 |
-| [az sql server firewall create](/cli/sql/server/firewall-rule#az-sql-server-firewall-rule-create) | 创建一个防火墙规则，允许从输入的 IP 地址范围访问 SQL 数据库服务器上的所有单一数据库和弹性池。 |
-| [az sql db create](/cli/sql/db#az-sql-db-create) | 创建单一数据库或弹性池。 |
-| [az group delete](/cli/resource#az-resource-delete) | 删除资源组，包括所有嵌套的资源。 |
+| [az sql server](/cli/sql/server#az-sql-server-create) | 服务器命令 |
+| [az sql server firewall](/cli/sql/server/firewall-rule#az-sql-server-firewall-rule-create) | 服务器防火墙命令。 |
+| [az sql db](/cli/sql/db#az-sql-db-create) | 数据库命令。 |
 
 ## <a name="next-steps"></a>后续步骤
 

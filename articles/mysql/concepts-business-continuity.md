@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: conceptual
 origin.date: 02/01/2019
 ms.date: 11/04/2019
-ms.openlocfilehash: 40fd785cf79b47c365f654d8f468dd83ca861495
-ms.sourcegitcommit: cb2caa72ec0e0922a57f2fa1056c25e32c61b570
+ms.openlocfilehash: ad4f550e5e3fd223a43278c9e04b8877ca58b829
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73142144"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126886"
 ---
 # <a name="understand-business-continuity-in-azure-database-for-mysql"></a>了解 Azure Database for MySQL 中的业务连续性
 

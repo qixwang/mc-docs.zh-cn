@@ -8,14 +8,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
 origin.date: 12/17/2019
-ms.date: 01/13/2020
+ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: c0a51559eec418ef2019f46df7aa83fe2a316bf5
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 5e60b8eeaddf5d2fe9611c7a3dfbf69cf0101da9
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75631058"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126940"
 ---
 **选择目标环境**
 #### <a name="linux"></a>[Linux](#tab/linux)

@@ -5,19 +5,19 @@ metadata:
   title: 文本转语音文档 - 教程和 API 参考 - Azure 认知服务 | Microsoft Docs
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
-  author: IEvangelist
+  author: trevorbye
   manager: nitinme
   ms.service: speech-service
   ms.topic: landing-page
   origin.date: 03/10/2020
-  ms.date: 03/16/2020
+  ms.date: 04/20/2020
   ms.author: v-tawe
-  ms.openlocfilehash: b6634c48d8b5c4f0d17686cc47c7054b5c277ca4
-  ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
+  ms.openlocfilehash: 65be0f1e0fcf187705d6cc264150a5a6d5fab22f
+  ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/24/2020
-  ms.locfileid: "80151679"
+  ms.lasthandoff: 04/24/2020
+  ms.locfileid: "82126790"
 landingContent:
 - title: 关于文本转语音
   linkLists:
@@ -25,6 +25,8 @@ landingContent:
     links:
     - text: 什么是文本转语音？
       url: text-to-speech.md
+    - text: 语音合成基础知识
+      url: text-to-speech-basics.md
   - linkListType: quickstart
     links:
     - text: 将语音合成到扬声器
@@ -48,7 +50,7 @@ landingContent:
     - text: 标准语音支持
       url: language-support.md#standard-voices
     - text: 神经语音支持
-      url: language-support.md#neural-voices
+      url: language-support.md#neural-voices-free-preview
     - text: SSML 语音集
       url: speech-ssml-phonetic-sets.md
     - text: 文本转语音定价

@@ -11,12 +11,12 @@ ms.topic: conceptual
 origin.date: 12/23/2019
 ms.date: 03/02/2020
 ms.author: v-yiso
-ms.openlocfilehash: b2eb2106f134ae18cbcccf85d6c114a80b585847
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: ed5ef33f0245b8a2758884fa683d75fb5875fea1
+ms.sourcegitcommit: 4aeecfcc59cb42ba0b712a729d278d03bffc719a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77563377"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81791019"
 ---
 # <a name="create-apache-hbase-clusters-on-hdinsight-in-azure-virtual-network"></a>在 Azure 虚拟网络中的 HDInsight 上创建 Apache HBase 群集
 了解如何在 [Azure 虚拟网络][1]中创建 Azure HDInsight Apache HBase 群集。
@@ -27,7 +27,7 @@ ms.locfileid: "77563377"
 * 提高性能，因为流量不必通过多个网关和负载均衡器。
 * 能够以更安全的方式处理敏感信息，而无需公开公共终结点。
 
-如果没有 Azure 订阅，请在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。
+如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。
 
 ## <a name="create-apache-hbase-cluster-into-virtual-network"></a>在虚拟网络中创建 Apache HBase 群集
 在本部分中，通过 [Azure 资源管理器模板](../../azure-resource-manager/resource-group-template-deploy.md)在 Azure 虚拟网络中使用从属 Azure 存储帐户创建基于 Linux 的 Apache HBase 群集。 若要了解其他群集创建方法以及设置，请参阅[创建 HDInsight 群集](../hdinsight-hadoop-provision-linux-clusters.md)。 有关使用模板在 HDInsight 中创建 Apache Hadoop 群集的详细信息，请参阅[使用 Azure 资源管理器模板在 HDInsight 中创建 Apache Hadoop 群集](../hdinsight-hadoop-create-linux-clusters-arm-templates.md)

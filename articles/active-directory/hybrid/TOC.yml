@@ -179,8 +179,6 @@
   items:
     - name: 混合标识所需的端口和协议
       href: reference-connect-ports.md
-    - name: Azure AD Connect 版本历史记录
-      href: reference-connect-version-history.md
     - name: 连接器版本历史记录
       href: reference-connect-sync-connector-version-history.md
     - name: 帐户和权限

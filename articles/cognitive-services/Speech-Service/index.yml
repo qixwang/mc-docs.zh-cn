@@ -7,43 +7,46 @@ metadata:
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
   description: 识别语音、合成语音、获取实时翻译、听录对话，或将语音集成到机器人体验中。
-  author: IEvangelist
+  author: trevorbye
   manager: nitinme
   ms.service: speech-service
   ms.topic: hub-page
-  origin.date: 02/11/2020
-  ms.date: 03/16/2020
+  origin.date: 03/24/2020
+  ms.date: 04/20/2020
   ms.author: v-tawe
-  ms.openlocfilehash: 16feed3d1b3f4be8016bdf33f7c2c91d19aaa4c0
-  ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
+  ms.openlocfilehash: d349ba1e87f30ee0bc2efbd01b8a619164daa462
+  ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/24/2020
-  ms.locfileid: "80151680"
+  ms.lasthandoff: 04/24/2020
+  ms.locfileid: "82127008"
 highlightedContent:
   items:
   - title: 什么是语音服务？
     itemType: overview
     url: overview.md
+  - title: 关于语音 SDK
+    itemType: overview
+    url: speech-sdk.md
   - title: 语音 SDK 发行说明
     itemType: whats-new
     url: releasenotes.md
   - title: 语音服务中的语言支持
     itemType: reference
     url: language-support.md
-  - title: 创建语音服务资源
-    itemType: how-to-guide
-    url: get-started.md
 conceptualContent:
   items:
   - title: 语音转文本
     links:
-    - itemType: how-to-guide
-      text: 语音识别基础知识
-      url: speech-to-text-basics.md
     - itemType: quickstart
       text: 识别来自麦克风的语音
       url: quickstarts/speech-to-text-from-microphone.md
+    - itemType: quickstart
+      text: 识别音频文件中的语音
+      url: quickstarts/speech-to-text-from-file.md
+    - itemType: how-to-guide
+      text: 语音识别基础知识
+      url: speech-to-text-basics.md
     footerLink:
       text: 查看更多
       url: index-speech-to-text.yml
@@ -55,6 +58,9 @@ conceptualContent:
     - itemType: quickstart
       text: 将语音合成到音频文件
       url: quickstarts/text-to-speech-audio-file.md
+    - itemType: how-to-guide
+      text: 语音合成基础知识
+      url: text-to-speech-basics.md
     footerLink:
       text: 查看更多
       url: index-text-to-speech.yml
@@ -66,9 +72,9 @@ conceptualContent:
     - itemType: quickstart
       text: 将语音翻译为多种目标语言
       url: quickstarts/translate-speech-to-text-multiple-languages.md
-    - itemType: quickstart
-      text: 将语音翻译为语音
-      url: quickstarts/translate-speech-to-speech.md
+    - itemType: how-to-guide
+      text: 语音翻译基础知识
+      url: speech-translation-basics.md
     footerLink:
       text: 查看更多
       url: index-speech-translation.yml

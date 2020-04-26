@@ -8,24 +8,23 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 01/06/2020
+ms.date: 04/22/2020
 ms.author: v-junlch
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2eebd9eedae3d0b16c0461947259208769b499e6
-ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
+ms.openlocfilehash: 6606e2e172ae4955a66eb94b57542bf0ea12fc7a
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75776964"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126479"
 ---
 # <a name="quickstart-call-an-aspnet-web-api-protected-by-microsoft-identity-platform"></a>快速入门：调用受 Microsoft 标识平台保护的 ASP.NET Web API
 
 在本快速入门中，你将公开一个 Web API 并对其进行保护，以便只有经过身份验证的用户可以访问它。 本示例演示如何公开 ASP.NET Web API，使它可以接受与 Microsoft 标识平台集成的任何公司或组织中的工作和学校帐户颁发的令牌。
 
-本示例还包括一个 Windows 桌面应用程序 (WPF) 客户端，用于演示如何请求用于访问 Web API 的访问令牌。
+本示例还包含 Windows 桌面应用程序 (WPF) 客户端，该客户端演示了如何请求访问令牌以访问 Web API。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要运行本示例，需要满足以下先决条件：
 
@@ -67,16 +66,16 @@ ms.locfileid: "75776964"
    - 选择“添加范围” 
    - 选择“保存并继续”，接受建议的应用程序 ID URI (api://{clientId}) 
    - 输入以下参数：
-     - 对于“范围名称”，请使用 `access_as_user` 
+     - 对于“范围名称”，请使用 `access_as_user`
      - 确保为“谁能许可”选择了“管理员和用户”选项   。
-     - 在“管理员许可显示名称”中键入 `Access TodoListService as a user` 
-     - 在“管理员许可说明”中键入 `Accesses the TodoListService Web API as a user` 
-     - 在“用户许可显示名称”中键入 `Access TodoListService as a user` 
-     - 在“用户许可说明”中键入 `Accesses the TodoListService Web API as a user` 
+     - 在“管理员许可显示名称”中键入 `Access TodoListService as a user`
+     - 在“管理员许可说明”中键入 `Accesses the TodoListService web API as a user`
+     - 在“用户许可显示名称”中键入 `Access TodoListService as a user`
+     - 在“用户许可说明”中键入 `Accesses the TodoListService web API as a user`
      - 将“状态”保留为“已启用”  
      - 选择“添加范围” 
 
-### <a name="configure-the-service-project-to-match-the-registered-web-api"></a>配置服务项目以匹配注册的 Web API 
+### <a name="configure-the-service-project-to-match-the-registered-web-api"></a>配置服务项目以匹配注册的 Web API
 
 1. 在 Visual Studio 中打开解决方案，然后打开 **TodoListService** 项目根目录下的 **Web.config** 文件。
 1. 将 `ida:ClientId` 参数的值替换为刚刚在 Azure 门户中注册的应用程序的“客户端 ID (应用程序 ID)”。 
@@ -87,7 +86,7 @@ ms.locfileid: "75776964"
 
    > 注意：请确保此 ID 使用以下格式：
    >
-   > `api://{TodoListService-Application-ID}/access_as_user` 
+   > `api://{TodoListService-Application-ID}/access_as_user`
    >
    >（其中，{TodoListService-Application-ID} 是表示 TodoListService 的应用程序 ID 的 GUID）。
 
@@ -109,7 +108,7 @@ ms.locfileid: "75776964"
 1. 选择“API 权限”部分 
    - 单击“添加权限”  按钮，然后
    - 选择“我的 API”  选项卡。
-   - 在 API 列表中选择 `AppModelv2-NativeClient-DotNet-TodoListService API`，或输入 Web API 的名称。
+   - 在 API 列表中，选择 `AppModelv2-NativeClient-DotNet-TodoListService API` 或你为 Web API 输入的名称。
    - 如果未选中 **access_as_user** 权限，请将其选中。 如有必要，请使用搜索框。
    - 选择“添加权限”按钮 
 
@@ -127,12 +126,12 @@ ms.locfileid: "75776964"
 
 ## <a name="pre-authorize-your-client-application"></a>为客户端应用程序预先授权
 
-允许其他目录中的用户访问你的 Web API 的方式之一是，通过在 Web API 的已预先授权应用程序列表中添加客户端应用程序中的应用程序 ID，来预先授权客户端应用程序访问该 Web API。   添加已预先授权的客户端后，不需要用户许可使用你的 Web API。 遵循以下步骤为 Web 应用程序预先授权：
+允许其他目录中的用户访问 Web API 的方法之一是：在 Web API 的预授权应用程序列表中添加来自客户端应用程序的应用程序 ID，从而预先授予客户端应用程序访问 Web API 的权限   。 通过添加预授权的客户端，无需用户同意即可使用 Web API。 遵循以下步骤为 Web 应用程序预先授权：
 
 1. 返回 *Azure 门户*并打开 **TodoListService** 的属性。
 1. 在“公开 API”部分，单击“已授权的客户端应用程序”部分下的“添加客户端应用程序”。   
 1. 在“客户端 ID”字段中，粘贴 `TodoListClient` 应用程序的应用程序 ID。 
-1. 在“授权范围”部分，选择此 Web API `api://<Application ID>/access_as_user` 的范围。 
+1. 在“授权范围”  部分中，为此 Web API `api://<Application ID>/access_as_user` 选择范围。
 1. 按页面底部的“添加应用程序”按钮。 
 
 ## <a name="run-your-project"></a>运行项目
@@ -164,4 +163,3 @@ ms.locfileid: "75776964"
 > [!div class="nextstepaction"]
 > [受保护的 Web API 方案](scenario-protected-web-api-overview.md)
 
-<!-- Update_Description: wording update -->

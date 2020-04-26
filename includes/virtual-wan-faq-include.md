@@ -9,12 +9,12 @@ origin.date: 10/17/2019
 ms.date: 03/30/2020
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: 144d9e991b62adcb36ebe842378d8205aa3165ec
-ms.sourcegitcommit: 4810b75d1e1db78d9747e99735468a6ab861be2d
+ms.openlocfilehash: a0b6d5d66b79db50d5852ef91934bd947cf05998
+ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80291274"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82096015"
 ---
 ### <a name="what-is-the-difference-between-an-azure-virtual-network-gateway-vpn-gateway-and-an-azure-virtual-wan-vpn-gateway"></a>Azure 虚拟网络网关（VPN 网关）和 Azure 虚拟 WAN VPN 网关之间有什么区别？
 
@@ -90,7 +90,6 @@ ms.locfileid: "80291274"
 
 ### <a name="how-do-i-calculate-price-of-a-hub"></a>如何计算中心的价格？
 
-* 根据使用的中心服务付费。 例如，你有 10 个需要连接到 Azure 虚拟 WAN 的分支或本地设备表示连接到中心的 VPN 端点。 假设这是 1 个缩放单元的 VPN，为 500 Mbps，费用为 0.361 美元/小时。 每个连接的费用为 0.05 美元/小时。 10 个连接的每小时服务总费用为 0.361 + 0.5 美元/小时。 离开 Azure 的数据流量也将收费。
 
 * 还有其他的中心费用。 请参阅[定价](https://www.azure.cn/pricing/details/virtual-wan/)页面。
 

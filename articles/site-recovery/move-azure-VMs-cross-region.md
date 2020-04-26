@@ -1,23 +1,23 @@
 ---
-title: 使用 Azure Site Recovery 服务将 Azure IaaS VM 移动到另一个 Azure 区域 | Azure Docs
+title: 使用 Azure Site Recovery 将 Azure VM 移动到另一个区域
 description: 使用 Azure Site Recovery 将 Azure IaaS VM 从一个 Azure 区域移动到另一个 Azure 区域。
 services: site-recovery
 author: rockboyfor
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 09/30/2019
+origin.date: 01/28/2019
+ms.date: 04/13/2020
 ms.author: v-yeche
 ms.custom: MVC
-ms.openlocfilehash: 18caf8de2cda61c31134e1aaa66ae5ad8adc6d76
-ms.sourcegitcommit: 332ae4986f49c2e63bd781685dd3e0d49c696456
+ms.openlocfilehash: f3760d9252c4a7b4a30c3a510304459c55731fdc
+ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71340868"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82093437"
 ---
 <!--Verify successfully-->
-
-# <a name="move-azure-vms-to-another-region"></a>将 Azure VM 移动到另一区域
+# <a name="move-azure-vms-to-another-azure-region"></a>将 Azure VM 移动到另一个 Azure 区域
 
 你可能想要将 Azure 基础结构即服务 (IaaS) 虚拟机从一个区域移到另一个区域，以提高可靠性、可用性或更好地满足监管要求。 本教程介绍如何使用 Azure Site Recovery 将 VM 移到另一区域。 将了解如何执行以下操作：
 
@@ -71,10 +71,10 @@ ms.locfileid: "71340868"
     为源 VM 启用复制时，Azure Site Recovery 会自动发现并创建虚拟网络和存储帐户。 你也可以预先创建这些资源，并在执行启用复制的步骤期间将这些资源分配到 VM。 但是，其他任何资源必须在目标区域中手动创建。 请参阅以下文档，根据源 VM 的配置创建最常用的网络资源。
 
     - [网络安全组](/virtual-network/manage-network-security-group)
-    - [负载均衡器](/load-balancer/)
+    - [负载均衡器](/load-balancer)
     - [公共 IP](../virtual-network/virtual-network-public-ip-address.md)
 
-    对于其他任何网络组件，请参阅 [Azure 网络文档](/#pivot=products&panel=network)。 
+    对于其他任何网络组件，请参阅 [Azure 网络文档](/?pivot=products&panel=network)。 
 
 4. 若要在执行移动之前测试配置，请在目标区域中手动[创建非生产网络](/virtual-network/quick-create-portal)。 测试设置可以尽量减少对生产环境造成的干扰，也是建议的做法。
 
@@ -118,7 +118,7 @@ Site Recovery 会检索与订阅和资源组关联的 VM 列表。
     
     <!--MOONCAKE: **Protected Items** to replace **Setting**-->
     
-2. 在“测试故障转移”  中，选择要用于故障转移的恢复点：
+2. 在“测试故障转移”中，选择要用于故障转移的恢复点  ：
 
     - **最新处理**：将 VM 故障转移到由 Site Recovery 服务处理的最新恢复点。 将显示时间戳。 使用此选项无需费时处理数据，因此恢复时间目标 (RTO) 会较低。
     - **最新应用一致**：将所有 VM 故障转移到最新的应用一致性恢复点。 将显示时间戳。

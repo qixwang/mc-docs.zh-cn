@@ -7,15 +7,15 @@ ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: conceptual
 origin.date: 05/28/2019
-ms.date: 01/20/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
 ms.reviewer: sngun
-ms.openlocfilehash: 174fa458f01fcf7f0b2721458229fbc25055caef
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: c06ae41e32a68260fcea5088007540e63ce32bc9
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "76270070"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134984"
 ---
 # <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>使用 Bulk Executor Java 库针对 Azure Cosmos DB 数据执行批量操作
 
@@ -23,40 +23,43 @@ ms.locfileid: "76270070"
 
 目前，批量执行程序库仅受 Azure Cosmos DB SQL API 和 Gremlin API 帐户支持。 本文介绍如何配合使用 SQL API 帐户和批量执行程序 Java 库。 若要了解如何配合使用 Gremlin API 和批量执行程序 .NET 库，请参阅[在 Azure Cosmos DB Gremlin API 中执行批量操作](bulk-executor-graph-dotnet.md)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
-* 如果没有 Azure 订阅，可在开始前创建一个 [试用帐户](https://www.azure.cn/pricing/1rmb-trial/) 。  
+* 如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。  
 
-* 可以通过 [ 终结点使用 ](/cosmos-db/local-emulator)Azure Cosmos DB 模拟器`https://localhost:8081`。 [对请求进行身份验证](local-emulator.md#authenticating-requests)中提供了主密钥。  
+* 可以通过 `https://localhost:8081` 终结点使用 [Azure Cosmos DB 模拟器](/cosmos-db/local-emulator)。 [对请求进行身份验证](local-emulator.md#authenticating-requests)中提供了主密钥。  
 
     <!-- Not Available on [Try Azure Cosmos DB for free](https://www.azure.cn/try/cosmosdb/) -->
 
 * [Java 开发工具包 (JDK) 1.7+](https://docs.azure.cn/java/java-supported-jdk-runtime?view=azure-java-stable)  
-    - 在 Ubuntu 上运行 `apt-get install default-jdk`，以便安装 JDK。  
+    
+    <!--CORRECT ON 1.7+ (https://docs.azure.cn/java/java-supported-jdk-runtime?view=azure-java-stable)--》
+    
+    - On Ubuntu, run `apt-get install default-jdk` to install the JDK.  
 
-    - 请确保设置 JAVA_HOME 环境变量，使之指向在其中安装了 JDK 的文件夹。
+    - Be sure to set the JAVA_HOME environment variable to point to the folder where the JDK is installed.
 
-* [下载](https://maven.apache.org/download.cgi)和[安装](https://maven.apache.org/install.html)[Maven](https://maven.apache.org/) 二进制存档  
+* [Download](https://maven.apache.org/download.cgi) and [install](https://maven.apache.org/install.html) a [Maven](https://maven.apache.org/) binary archive  
 
-    - 在 Ubuntu 上，可以通过运行 `apt-get install maven` 来安装 Maven。
+    - On Ubuntu, you can run `apt-get install maven` to install Maven.
 
-* 使用 Java 快速入门文章的[创建数据库帐户](create-sql-api-java.md#create-a-database-account)部分所述的步骤创建 Azure Cosmos DB SQL API 帐户。
+* Create an Azure Cosmos DB SQL API account by using the steps described in the [create database account](create-sql-api-java.md#create-a-database-account) section of the Java quickstart article.
 
-## <a name="clone-the-sample-application"></a>克隆示例应用程序
+## Clone the sample application
 
-现在，我们从 GitHub 下载示例 Java 应用程序来接着处理代码。 此应用程序针对 Azure Cosmos DB 数据执行批量操作。 若要克隆该应用程序，请打开命令提示符，导航到要将该应用程序复制到的目录，然后运行以下命令：
+Now let's switch to working with code by downloading a sample Java application from GitHub. This application performs bulk operations on Azure Cosmos DB data. To clone the application, open a command prompt, navigate to the directory where you want to copy the application and run the following command:
 
 ```
  git clone https://github.com/Azure/azure-cosmosdb-bulkexecutor-java-getting-started.git 
 ```
 
-克隆的存储库包含相对于“\azure-cosmosdb-bulkexecutor-java-getting-started\samples\bulkexecutor-sample\src\main\java\com\microsoft\azure\cosmosdb\bulkexecutor”文件夹的两个示例：“bulkimport”和“bulkupdate”。 “bulkimport”应用程序会生成随机文档并将其导入 Azure Cosmos DB。 “bulkupdate”应用程序会更新 Azure Cosmos DB 中的某些文档。 在后续部分，我们将查看其中每个示例应用中的代码。 
+The cloned repository contains two samples "bulkimport" and "bulkupdate" relative to the "\azure-cosmosdb-bulkexecutor-java-getting-started\samples\bulkexecutor-sample\src\main\java\com\microsoft\azure\cosmosdb\bulkexecutor" folder. The "bulkimport" application generates random documents and imports them to Azure Cosmos DB. The "bulkupdate" application updates some documents in Azure Cosmos DB. In the next sections, we will review the code in each of these sample apps. 
 
-## <a name="bulk-import-data-to-azure-cosmos-db"></a>将数据批量导入 Azure Cosmos DB
+## Bulk import data to Azure Cosmos DB
 
-1. Azure Cosmos DB 的连接字符串将作为参数读取，并分配到 CmdLineConfiguration.java 文件中定义的变量。  
+1. The Azure Cosmos DB's connection strings are read as arguments and assigned to variables defined in CmdLineConfiguration.java file.  
 
-2. 接下来，使用以下语句初始化 DocumentClient 对象：  
+2. Next the DocumentClient object is initialized by using the following statements:  
 
     ```java
     ConnectionPolicy connectionPolicy = new ConnectionPolicy();
@@ -68,7 +71,7 @@ ms.locfileid: "76270070"
       ConsistencyLevel.Session)
     ```
 
-3. 根据等待时间和限制请求使用较大重试值初始化 DocumentBulkExecutor 对象。 然后，这些值将设置为 0，以将阻塞控制权传递给 DocumentBulkExecutor（在其生存期内都会保留此控制权）。  
+3. The DocumentBulkExecutor object is initialized with a high retry values for wait time and throttled requests. And then they are set to 0 to pass congestion control to DocumentBulkExecutor for its lifetime.  
 
     ```java
     // Set client's retry options high for initialization
@@ -91,12 +94,12 @@ ms.locfileid: "76270070"
     client.getConnectionPolicy().getRetryOptions().setMaxRetryAttemptsOnThrottledRequests(0);
     ```
 
-4. 调用 importAll API，以便生成要批量导入 Azure Cosmos 容器的随机文档。 可以在 CmdLineConfiguration.java 文件中配置命令行配置。
+4. Call the importAll API that generates random documents to bulk import into an Azure Cosmos container. You can configure the command line configurations within the CmdLineConfiguration.java file.
 
     ```java
     BulkImportResponse bulkImportResponse = bulkExecutor.importAll(documents, false, true, null);
     ```
-    批量导入 API 接受 JSON 序列化文档的集合并使用以下语法，有关更多详细信息，请参阅 [API 文档](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.bulkexecutor)：
+    The bulk import API accepts a collection of JSON-serialized documents and it has the following syntax, for more details, see the [API documentation](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.bulkexecutor):
     
     <!--CORRECT ON (https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.bulkexecutor)-->
     
@@ -110,7 +113,7 @@ ms.locfileid: "76270070"
 
     importAll 方法接受以下参数：
 
-    |**Parameter**  |**说明**  |
+    |**参数**  |**说明**  |
     |---------|---------|
     |isUpsert    |   用于启用文档更新插入的标志。 如果已存在具有给定 ID 的文档，则会更新该文档。  |
     |disableAutomaticIdGeneration     |   用于禁用自动生成 ID 的标志。 此值默认设置为 true。   |
@@ -118,7 +121,7 @@ ms.locfileid: "76270070"
 
     **批量导入响应对象定义**批量导入 API 调用的结果包含以下 get 方法：
 
-    |**Parameter**  |**说明**  |
+    |**参数**  |**说明**  |
     |---------|---------|
     |int getNumberOfDocumentsImported()  |   从提供给批量导入 API 调用的文档中成功导入的文档总数。      |
     |double getTotalRequestUnitsConsumed()   |  批量导入 API 调用消耗的请求单位 (RU) 总数。       |
@@ -176,13 +179,13 @@ ms.locfileid: "76270070"
 
     updateAll 方法接受以下参数：
 
-    |**Parameter** |**说明** |
+    |**参数** |**说明** |
     |---------|---------|
     |maxConcurrencyPerPartitionRange   |  每个分区键范围的最大并发度。 默认值为 20。 |
 
     **批量导入响应对象定义**批量导入 API 调用的结果包含以下 get 方法：
 
-    |**Parameter** |**说明**  |
+    |**参数** |**说明**  |
     |---------|---------|
     |int getNumberOfDocumentsUpdated()  |   从提供给批量更新 API 调用的文档中成功更新的文档总数。      |
     |double getTotalRequestUnitsConsumed() |  批量更新 API 调用消耗的请求单位 (RU) 总数。       |

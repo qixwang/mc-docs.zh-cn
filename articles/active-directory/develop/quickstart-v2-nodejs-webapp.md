@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 02/24/2020
+ms.date: 04/22/2020
 ms.author: v-junlch
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: dadb803ff9b1b8ffef273dc9a49e0fec489ab450
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.openlocfilehash: c3bb1144eb57a3039d3f1dcdc4fe4087dba92ac4
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77653413"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126476"
 ---
 # <a name="quickstart-add-sign-in-using-openid-connect-to-a-nodejs-web-app"></a>快速入门：向 Node.js Web 应用添加使用 OpenID Connect 登录功能
 
@@ -30,7 +30,7 @@ ms.locfileid: "77653413"
 
 * [Office 365 开发人员计划](https://docs.microsoft.com/office/developer-program/office-365-developer-program)
 
-## <a name="register-your-application"></a>注册应用程序 
+## <a name="register-your-application"></a>注册应用程序
 1. 使用工作或学校帐户登录到 [Azure 门户](https://portal.azure.cn/)。
 1. 如果你的帐户在多个 Azure AD 租户中存在：
     - 从页面右上角的菜单中选择你的个人资料，然后选择“切换目录”。 
@@ -51,7 +51,7 @@ ms.locfileid: "77653413"
 1. 在应用的“概述”页上，找到“应用程序(客户端) ID”值，并记下该值供稍后使用。   稍后需要在此项目中使用此值来配置应用程序。
 
 1. 在应用的页面列表中，选择“身份验证”。 
-    - 在“重定向 URI”部分，选择组合框中的“Web”并输入以下重定向 URI：`http://localhost:3000/auth/openid/return`  
+    - 在“重定向 URI”部分，选择组合框中的“Web”并输入以下重定向 URI：`http://localhost:3000/auth/openid/return` 
     - 在“高级设置”  部分，将“注销 URL”设置为 `http://localhost:3000`。 
     - 在“高级设置”>“隐式授权”部分，选中“ID 令牌”，因为此示例需要启用“[隐式授权流](/active-directory/develop/v2-oauth2-implicit-grant-flow)”才能将用户登录。  
 
@@ -78,7 +78,7 @@ ms.locfileid: "77653413"
 
 从项目根目录中运行以下命令：
 
-`$ npm install`  
+`$ npm install`
 
 ## <a name="configure-the-application"></a>配置应用程序
 
@@ -129,4 +129,3 @@ $ node app.js | bunyan
 > [!div class="nextstepaction"]
 > [可将用户登录的 Web 应用方案](scenario-web-app-sign-user-overview.md)
 
-<!-- Update_Description: wording update -->

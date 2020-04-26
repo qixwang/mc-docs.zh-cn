@@ -6,14 +6,14 @@ author: Wenjason
 ms.service: dns
 ms.topic: tutorial
 origin.date: 9/25/2018
-ms.date: 03/23/2020
+ms.date: 04/27/2020
 ms.author: v-jay
-ms.openlocfilehash: 1b8bc117b19ba4d7451330087789837897981efb
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: d8fa367d43005f9211aae2ff44e955e25776061b
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80115824"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134807"
 ---
 # <a name="tutorial-configure-an-alias-record-to-refer-to-an-azure-public-ip-address"></a>教程：配置表示 Azure 公共 IP 地址的别名记录 
 
@@ -21,8 +21,8 @@ ms.locfileid: "80115824"
 
 > [!div class="checklist"]
 > * 创建网络基础结构。
-> * 创建 Web 服务器虚拟机。
-> * 创建别名记录。
+> * 使用公共 IP 创建 Web 服务器虚拟机。
+> * 创建指向公共 IP 的别名记录。
 > * 测试别名记录。
 
 
@@ -49,7 +49,7 @@ ms.locfileid: "80115824"
 4. 对于“设置”  ，请选择“VNet-Servers”  虚拟网络和“SN-Web”  子网。 对于公共入站端口，请选择“HTTP” > “HTTPS” > “RDP (3389)”，然后选择“确定”     。
 5. 在“摘要”  页中，选择“创建”  。
 
-此过程需要几分钟才能完成。
+此过程需要几分钟才能完成。 虚拟机会有一个附加的 NIC，该 NIC 将有一个名为 Web-01-ip 的基本动态公共 IP。 每次重启虚拟机时，此公共 IP 都会更改。
 
 ### <a name="install-iis"></a>安装 IIS
 

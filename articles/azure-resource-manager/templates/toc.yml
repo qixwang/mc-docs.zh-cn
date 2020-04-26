@@ -42,8 +42,6 @@
           href: template-tutorial-use-parameter-file.md
     - name: 高级
       items:
-        - name: 利用模板参考
-          href: template-tutorial-create-encrypted-storage-accounts.md
         - name: 创建多个实例
           displayName: 'iteration,copy'
           href: template-tutorial-create-multiple-instances.md

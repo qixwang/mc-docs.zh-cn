@@ -2,19 +2,19 @@
 title: 使用 .NET V4 SDK 管理 Azure Cosmos DB SQL API 资源
 description: 关于使用 .NET V4 SDK 生成控制台应用以管理 Azure Cosmos DB SQL API 帐户资源的快速入门。
 author: rockboyfor
-ms.author: v-yeche
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
 origin.date: 01/10/2020
-ms.date: 02/10/2020
-ms.openlocfilehash: 7c2f45124b194b8be6d95c69bcaa3ee70549edef
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 04/27/2020
+ms.author: v-yeche
+ms.openlocfilehash: c347b6ce719bbb9b2aa10c6894f250d74e21f927
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "76980543"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134956"
 ---
 # <a name="quickstart-build-a-console-app-using-the-net-v4-sdk-to-manage-azure-cosmos-db-sql-api-account-resources"></a>快速入门：使用 .NET V4 SDK 生成控制台应用以管理 Azure Cosmos DB SQL API 帐户资源。
 
@@ -60,8 +60,7 @@ Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服�
 
 <!--CORRECT ON globlly unique-->
 
-Azure Cosmos 帐户名必须是全局唯一的，请确保在本地电脑上运行该命令之前更新 `mysqlapicosmosdb` 值。
-
+Azure Cosmos 帐户名必须是全局唯一的，请确保在运行该命令之前更新 `mysqlapicosmosdb` 值。
 
 ```azurecli
 

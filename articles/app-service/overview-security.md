@@ -7,12 +7,12 @@ origin.date: 08/24/2018
 ms.date: 03/30/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 6bb79dd6fc22db17599da19bcf0e0d9fd59bec09
-ms.sourcegitcommit: 44d3fe59952847e5394bbe6c05bd6f333bb56345
+ms.openlocfilehash: b5abb28d8b000745e54daf7db92c3d1c57d80e74
+ms.sourcegitcommit: 9b0a89269a7e422570b7bc0ca983f60d2f317d48
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80522120"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81675784"
 ---
 # <a name="security-in-azure-app-service"></a>Azure 应用服务中的安全性
 
@@ -85,7 +85,7 @@ Azure 应用服务提供用户或客户端应用的统包身份验证和授权�
 
 当应用连接到 Azure 资源（例如 [SQL 数据库](/services/sql-database/)和 [Azure 存储](/storage/)）时，连接一直保持在 Azure 中，不会跨越任何网络边界。 但是，连接经过 Azure 中的共享网络，因此请务必确保连接已加密。 
 
-如果应用托管在[应用服务环境](environment/intro.md)中，则应该[使用虚拟网络服务终结点连接到受支持的 Azure 服务](../virtual-network/virtual-network-service-endpoints-overview.md)。
+<!-- If your app is hosted in an [App Service environment](environment/intro.md), you should [connect to supported Azure services using Virtual Network service endpoints](../virtual-network/virtual-network-service-endpoints-overview.md). -->
 
 ### <a name="resources-inside-an-azure-virtual-network"></a>Azure 虚拟网络中的资源
 

@@ -1,24 +1,20 @@
 ---
-title: 扩大 Azure SQL 数据库 | Microsoft 文档
+title: 扩大
 description: 软件即服务 (SaaS) 开发人员可以使用这些工具轻松地在云中创建可缩放的弹性数据库
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
-ms.custom: ''
-ms.devlang: ''
 ms.topic: conceptual
 author: WenJason
 ms.author: v-jay
-ms.reviewer: ''
-manager: digimobile
 origin.date: 01/25/2019
-ms.date: 08/19/2019
-ms.openlocfilehash: 2551051fc87ac287b27291e72230c3a1130401e9
-ms.sourcegitcommit: 52ce0d62ea704b5dd968885523d54a36d5787f2d
+ms.date: 04/27/2020
+ms.openlocfilehash: b319ae3959760218ae0c73c2b73ccca986f21b25
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69544378"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126997"
 ---
 # <a name="scaling-out-with-azure-sql-database"></a>Scaling out with Azure SQL Database（使用 Azure SQL 数据库进行扩展）
 可以使用 **弹性数据库** 工具轻松地扩展 Azure SQL 数据库。 借助这些工具和功能，可以使用 Azure SQL 数据库中的数据库资源来为事务工作负荷，尤其是服务型软件 (SaaS) 应用程序创建解决方案  。 弹性数据库包括：
@@ -66,7 +62,7 @@ VM 和 blob 存储可以轻松实现云应用程序的弹性和缩放需求 - �
 * 可以通过使用 Azure PowerShell cmdlet 更改服务层级或者通过将数据库放入弹性池中，来实现纵向缩放。
 
 ## <a name="sharding"></a>分片
-*分片* 是一项可跨许多独立的数据库分发大量相同结构数据的技术。 这项技术尤其受到最终客户或企业创建软件即服务 (SAAS) 产品的云开发人员的欢迎。 这些最终客户通常称为“租户”。 需要分片的原因有很多：  
+分片是一项可跨许多独立数据库、分发大量相同结构数据的技术  。 这项技术尤其受到最终客户或企业创建软件即服务 (SAAS) 产品的云开发人员的欢迎。 这些最终客户通常称为“租户”。 需要分片的原因有很多：  
 
 * 数据总量过大，超出单一数据库的约束范围
 * 整个工作负载的事务吞吐量超出单一数据库的容量

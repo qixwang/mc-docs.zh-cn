@@ -5,14 +5,14 @@ author: WenJason
 ms.author: v-jay
 ms.service: mariadb
 ms.topic: conceptual
-origin.date: 09/13/2019
-ms.date: 11/04/2019
-ms.openlocfilehash: bcad8c46e0fd0b360e057ff8c567fd3e08857c8a
-ms.sourcegitcommit: f643ddf75a3178c37428b75be147c9383384a816
+origin.date: 3/18/2020
+ms.date: 04/13/2020
+ms.openlocfilehash: b50a4f2cf8f0808473999e0727390e001a65b694
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73191579"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82127050"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-the-azure-cli-and-rest-api"></a>如何使用 Azure CLI 和 REST API 在 Azure Database for MariaDB 中创建和管理只读副本
 
@@ -97,7 +97,7 @@ az mariadb server replica stop --name mydemoreplicaserver --resource-group myres
 
 ### <a name="delete-a-replica-server"></a>删除副本服务器
 
-可以通过运行 **[az mariadb server delete](/cli/mariadb/server)** 命令删除只读副本服务器。
+可以通过运行 **[az mariadb server delete](https://docs.microsoft.com/cli/azure/mariadb/server)** 命令删除只读副本服务器。
 
 ```azurecli
 az mariadb server delete --resource-group myresourcegroup --name mydemoreplicaserver
@@ -108,7 +108,7 @@ az mariadb server delete --resource-group myresourcegroup --name mydemoreplicase
 > [!IMPORTANT]
 > 删除主服务器会停止复制到所有副本服务器，并删除主服务器本身。 副本服务器成为现在支持读取和写入的独立服务器。
 
-若要删除主服务器，可以运行 **[az mariadb server delete](/cli/mariadb/server)** 命令。
+若要删除主服务器，可以运行 **[az mariadb server delete](https://docs.microsoft.com/cli/azure/mariadb/server)** 命令。
 
 ```azurecli
 az mariadb server delete --resource-group myresourcegroup --name mydemoserver

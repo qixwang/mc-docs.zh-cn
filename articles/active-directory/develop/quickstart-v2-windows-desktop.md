@@ -1,5 +1,5 @@
 ---
-title: Microsoft 标识平台 Windows 桌面快速入门 | Microsoft Docs
+title: Microsoft 标识平台 Windows 桌面快速入门
 description: 了解 Windows 桌面 .NET (XAML) 应用程序如何获取访问令牌并调用受 Microsoft 标识平台终结点保护的 API
 services: active-directory
 author: jmprieur
@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 03/20/2020
+ms.date: 04/22/2020
 ms.author: v-junlch
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 35242042e8ecb1711f9a37e7d881d620b46d289c
-ms.sourcegitcommit: 6568c59433d7e80ab06e9fe76d4791f761ed6775
+ms.openlocfilehash: e5812bde18de30df0e8c5d30f221f547503974f0
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80243119"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126464"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-windows-desktop-app"></a>快速入门：获取令牌并从 Windows 桌面应用中调用 Microsoft Graph API
 
@@ -62,7 +62,7 @@ ms.locfileid: "80243119"
 #### <a name="step-2-download-your-visual-studio-project"></a>步骤 2：下载 Visual Studio 项目
 
 > [!div renderon="docs"]
-> [下载 Visual Studio 项目](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2/archive/msal3x.zip)  
+> [下载 Visual Studio 项目](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2/archive/msal3x.zip)
 
 > [!div class="sxs-lookup" renderon="portal"]
 > 使用 Visual Studio 2019 运行项目。
@@ -71,11 +71,11 @@ ms.locfileid: "80243119"
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>步骤 3：应用已配置并可以运行
-> 我们已经为项目配置了应用属性的值，并且该项目已准备好运行。 
+> 我们已经为项目配置了应用属性的值，并且该项目已准备好运行。
 
 > [!div class="sxs-lookup" renderon="portal"]
 > > [!NOTE]
-> > Enter_the_Supported_Account_Info_Here
+> > `Enter_the_Supported_Account_Info_Here`
 
 > [!div renderon="docs"]
 > #### <a name="step-3-configure-your-visual-studio-project"></a>步骤 3：配置 Visual Studio 项目
@@ -87,7 +87,7 @@ ms.locfileid: "80243119"
 >    private static string ClientId = "Enter_the_Application_Id_here";
 >    private static string Tenant = "Enter_the_Tenant_Info_Here";
 >    ```
-> 
+>
 > 其中：
 > - `Enter_the_Application_Id_here` - 是已注册应用程序的**应用程序（客户端）ID**。
 > - `Enter_the_Tenant_Info_Here` - 设置为以下选项之一：
@@ -178,5 +178,3 @@ authResult = await App.PublicClientApp.AcquireTokenSilent(scopes, firstAccount)
 > [!div class="nextstepaction"]
 > [调用 Graph API 教程](tutorial-v2-windows-desktop.md)
 
-
-<!-- Update_Description: wording update -->

@@ -6,15 +6,15 @@ tags: azure-resource-manager
 ms.service: cosmos-db
 ms.topic: quickstart
 origin.date: 02/27/2020
-ms.date: 03/30/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
 ms.custom: subject-armqs
-ms.openlocfilehash: e87db398109d2837376a1499ff4c0fd7585eb3cf
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 9071bc42433cfff9b2dd618b81687068db09a3f4
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80342370"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134589"
 ---
 <!--Verified successfully-->
 # <a name="quickstart-create-an-azure-cosmos-db-and-a-container-by-using-azure-resource-manager-template"></a>快速入门：使用 Azure 资源管理器模板创建 Azure Cosmos DB 和容器
@@ -41,7 +41,7 @@ Azure 订阅，或免费的 Azure Cosmos DB 试用帐户
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "accountName": {
@@ -247,8 +247,10 @@ Azure 订阅，或免费的 Azure Cosmos DB 试用帐户
 
 1. 选择下图登录到 Azure 并打开一个模板。 该模板将创建 Azure Cosmos 帐户、数据库和容器。
 
-    <a href="https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-create%2Fazuredeploy.json"><img src="./media/quick-create-template/deploy-to-azure.png" alt="deploy to azure"/></a>
+    [![“部署到 Azure”](./media/quick-create-template/deploy-to-azure.png)](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-create%2Fazuredeploy.json)
 
+    <!--CORRECT ON media/quick-create-template/deploy-to-azure.png-->
+    
 2. 选择或输入以下值。
 
     ![资源管理器模板, Azure Cosmos DB 集成, 部署门户](./media/quick-create-template/create-cosmosdb-using-template-portal.png)
@@ -260,7 +262,7 @@ Azure 订阅，或免费的 Azure Cosmos DB 试用帐户
     * **位置**：选择一个位置。  例如，**中国北部**。
     * **帐户名称**：输入 Azure Cosmos 帐户的名称。 它必须全局唯一。 
         
-        <!--CORRECT ON globally unique-->
+        <!--MOONCAKE: CORRECT ON globally unique-->
         
     * **位置**：输入要在其中创建 Azure Cosmos 帐户的位置。 Azure Cosmos 帐户必须与资源组处于同一位置。
     * **主要区域**：Azure Cosmos 帐户的主要副本区域。
@@ -332,5 +334,4 @@ Write-Host "Press [ENTER] to continue..."
 - 了解有关 [Azure 资源管理器](../azure-resource-manager/management/overview.md)的详细信息
 - 获取其他 [Azure Cosmos DB 资源管理器模板](resource-manager-samples.md)
 
-<!-- Update_Description: new article about quick create template -->
-<!--NEW.date: 02/10/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

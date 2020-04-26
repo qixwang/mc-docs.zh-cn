@@ -11,15 +11,15 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
-origin.date: 12/12/2018
-ms.date: 06/10/2019
+origin.date: 01/22/2019
+ms.date: 04/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 048c5e23ab3a6ebe557398a010e803607ae7af7d
-ms.sourcegitcommit: df1b896faaa87af1d7b1f06f1c04d036d5259cc2
+ms.openlocfilehash: ca3c219ef36a083ffa8d819fa269e403548616f6
+ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66250391"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82093376"
 ---
 # <a name="quickstart-create-a-virtual-network-using-the-azure-cli"></a>快速入门：使用 Azure CLI 创建虚拟网络
 
@@ -29,17 +29,17 @@ ms.locfileid: "66250391"
 
 [!INCLUDE [azure-cli-2-azurechinacloud-environment-parameter](../../includes/azure-cli-2-azurechinacloud-environment-parameter.md)]
 
-如果决定在本地安装并使用 Azure CLI，本快速入门要求使用 Azure CLI 2.0.28 或更高版本。 若要查找已安装的版本，请运行 `az --version`。 有关安装或升级信息，请参阅[安装 Azure CLI](https://docs.azure.cn/zh-cn/cli/install-azure-cli?view=azure-cli-latest)。
+如果决定在本地安装并使用 Azure CLI，本快速入门要求使用 Azure CLI 2.0.28 或更高版本。 若要查找已安装的版本，请运行 `az --version`。 有关安装或升级信息，请参阅[安装 Azure CLI](https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest)。
 
 ## <a name="create-a-resource-group-and-a-virtual-network"></a>创建资源组和虚拟网络
 
-在创建虚拟网络之前，必须创建一个资源组用于托管该虚拟网络。 使用 [az group create](https://docs.azure.cn/zh-cn/cli/group?view=azure-cli-latest#az-group-create) 创建资源组。 此示例在 chinaeast 位置创建一个名为 myResourceGroup 的资源组   ：
+在创建虚拟网络之前，必须创建一个资源组用于托管该虚拟网络。 使用 [az group create](https://docs.azure.cn/cli/group?view=azure-cli-latest#az-group-create) 创建资源组。 此示例在 chinaeast 位置创建一个名为 myResourceGroup 的资源组   ：
 
 ```azurecli
 az group create --name myResourceGroup --location chinaeast
 ```
 
-使用 [az network vnet create](https://docs.azure.cn/zh-cn/cli/network/vnet?view=azure-cli-latest#az-network-vnet-create) 创建虚拟网络。 此示例创建名为 myVirtualNetwork 的默认虚拟网络，它具有一个名为 default 的子网   ：
+使用 [az network vnet create](https://docs.azure.cn/cli/network/vnet?view=azure-cli-latest#az-network-vnet-create) 创建虚拟网络。 此示例创建名为 myVirtualNetwork 的默认虚拟网络，它具有一个名为 default 的子网   ：
 
 ```azurecli
 az network vnet create \
@@ -54,7 +54,7 @@ az network vnet create \
 
 ### <a name="create-the-first-vm"></a>创建第一个 VM
 
-使用 [az vm create](https://docs.azure.cn/zh-cn/cli/vm?view=azure-cli-latest#az-vm-create) 创建 VM。 如果默认密钥位置中尚不存在 SSH 密钥，该命令会创建它们。 若要使用特定的一组密钥，请使用 `--ssh-key-value` 选项。 `--no-wait` 选项会在后台创建 VM，因此可继续执行下一步。 此示例创建名为 myVm1 的 VM  ：
+使用 [az vm create](https://docs.azure.cn/cli/vm?view=azure-cli-latest#az-vm-create) 创建 VM。 如果默认密钥位置中尚不存在 SSH 密钥，该命令会创建它们。 若要使用特定的一组密钥，请使用 `--ssh-key-value` 选项。 `--no-wait` 选项会在后台创建 VM，因此可继续执行下一步。 此示例创建名为 myVm1 的 VM  ：
 
 ```azurecli
 az vm create \
@@ -81,7 +81,7 @@ az vm create \
 
 创建 VM 可能需要数分钟的时间。 Azure 创建 VM 后，Azure CLI 会返回如下输出：
 
-```azurecli
+```output
 {
   "fqdns": "",
   "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVm2",
@@ -99,7 +99,7 @@ az vm create \
 
 ## <a name="connect-to-a-vm-from-the-internet"></a>从 Internet 连接到 VM
 
-在此命令中，将 `<publicIpAddress>` 替换为 myVm2 VM 的公用 IP 地址  ：
+在此命令中，将 `<publicIpAddress>` 替换为 myVm2 VM 的公共 IP 地址  ：
 
 ```bash
 ssh <publicIpAddress>
@@ -119,7 +119,7 @@ ping myVm1 -c 4
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不再需要资源组及其所有资源，可以使用 [az group delete](https://docs.azure.cn/zh-cn/cli/group?view=azure-cli-latest#az-group-delete) 将其删除：
+如果不再需要资源组及其所有资源，可以使用 [az group delete](https://docs.azure.cn/cli/group?view=azure-cli-latest#az-group-delete) 将其删除：
 
 ```azurecli
 az group delete --name myResourceGroup --yes
@@ -131,4 +131,4 @@ az group delete --name myResourceGroup --yes
 
 Azure 可让 VM 之间进行不受限制的私下通信。 默认情况下，Azure 仅允许从 Internet 到 Windows VM 的入站远程桌面连接。 要了解有关配置不同类型的 VM 网络通信的详细信息，请转到[筛选网络流量](tutorial-filter-network-traffic.md)教程。
 
-<!-- Update_Description: update meta properties-->
+<!-- Update_Description: update meta properties, wording update, update link -->

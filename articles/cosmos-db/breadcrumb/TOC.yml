@@ -1,0 +1,67 @@
+- name: Azure
+  tocHref: /
+  topicHref: /index
+  items:
+    - name: Cosmos DB
+      tocHref: /data-factory/
+      topicHref: /cosmos-db/index
+- name: Azure
+  tocHref: /
+  topicHref: /index
+  items:
+    - name: Cosmos DB
+      tocHref: /search/
+      topicHref: /cosmos-db/index
+- name: Azure
+  tocHref: /
+  topicHref: /index
+  items:
+    - name: Cosmos DB
+      tocHref: /azure-functions/
+      topicHref: /cosmos-db/index
+- name: Azure
+  tocHref: /
+  topicHref: /index
+  items:
+    - name: Cosmos DB
+      tocHref: /dms/
+      topicHref: /cosmos-db/index
+- name: Azure
+  tocHref: /
+  topicHref: /index
+  items:
+    - name: Cosmos DB
+      tocHref: /hdinsight/
+      topicHref: /cosmos-db/index
+- name: Azure
+  tocHref: /
+  topicHref: /index
+  items:
+    - name: Cosmos DB
+      tocHref: /logic-apps/
+      topicHref: /cosmos-db/index
+- name: Azure
+  tocHref: /
+  topicHref: /index
+  items:
+    - name: Cosmos DB
+      tocHref: /stream-analytics/
+      topicHref: /cosmos-db/index
+- name: Azure
+  tocHref: /
+  topicHref: /index
+  items:
+    - name: Cosmos DB
+      tocHref: /virtual-network/
+      topicHref: /cosmos-db/index
+- name: Azure
+  tocHref: /java/
+  topicHref: /index
+  items:
+    - name: Cosmos DB
+      tocHref: 'https://docs.azure.cn/java/?view=azure-java-stable'
+      topicHref: /cosmos-db/index
+      items:
+        - name: Cosmos DB
+          tocHref: 'https://docs.azure.cn/java/spring-framework/?view=azure-java-stable'
+          topicHref: /cosmos-db/index

@@ -9,14 +9,14 @@ metadata:
   ms.collection: collection
   author: rockboyfor
   origin.date: 09/16/2019
+  ms.date: 04/13/2020
   ms.author: v-yeche
-  ms.date: 01/06/2020
-  ms.openlocfilehash: 0ee6e828e56be40aa0d71b7750d3ad75183a6f6e
-  ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+  ms.openlocfilehash: 5494d1319b8f98724cc116a850379e6190f23938
+  ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 01/03/2020
-  ms.locfileid: "75631658"
+  ms.lasthandoff: 04/23/2020
+  ms.locfileid: "82093482"
 landingContent:
 - title: 关于 Azure 专用链接
   linkLists:

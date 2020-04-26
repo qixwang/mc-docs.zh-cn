@@ -1,5 +1,5 @@
 ---
-title: 配置多重身份验证 - Azure SQL | Microsoft Docs
+title: 配置多重身份验证
 description: 了解如何将多重身份验证与 SSMS 搭配用于 SQL 数据库和 SQL 数据仓库。
 services: sql-database
 ms.service: sql-database
@@ -11,13 +11,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: vanto
 origin.date: 08/27/2019
-ms.date: 09/30/2019
-ms.openlocfilehash: a07b75f509db3075b06aa5de8128b61f5f507f33
-ms.sourcegitcommit: 5c3d7acb4bae02c370f6ba4d9096b68ecdd520dd
+ms.date: 04/27/2020
+ms.openlocfilehash: 89bead8582962002978c264ccca88f983bea5ff8
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262913"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126974"
 ---
 # <a name="configure-multi-factor-authentication-for-sql-server-management-studio-and-azure-ad"></a>为 SQL Server Management Studio 和 Azure AD 配置多重身份验证
 
@@ -33,7 +33,7 @@ ms.locfileid: "71262913"
 3. **配置 SQL 数据库或 SQL 数据仓库以进行 Azure AD 身份验证** - 有关分步说明，请参阅[使用 Azure Active Directory 身份验证连接到 SQL 数据库或 SQL 数据仓库](sql-database-aad-authentication.md)。
 4. **下载 SSMS** - 在客户端计算机上，从[下载 SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx) 下载最新的 SSMS。 对于本主题中的所有功能，请至少使用 2017 年 7 月的版本 17.2。  
 
-## <a name="connecting-by-using-universal-authentication-with-ssms"></a>使用 SSMS 通用身份验证进行连接
+## <a name="connecting-by-using-universal-authentication-with-ssms"></a>使用通用身份验证搭配 SSMS 进行连接
 
 以下步骤演示如何使用最新的 SSMS 连接到 SQL 数据库或 SQL 数据仓库。
 
@@ -47,7 +47,7 @@ ms.locfileid: "71262913"
    但是，如果要使用 SSMS 17.x 或更早版本以来宾用户身份进行连接，则必须单击“选项”  ，然后在“连接属性”  对话框中，填写“AD 域名或租户 ID”  框。
    ![mfa-tenant-ssms](./media/sql-database-ssms-mfa-auth/mfa-tenant-ssms.png)
 
-4. 像往常一样，必须对 SQL 数据库和 SQL 数据仓库单击“选项”，然后在“选项”对话框中指定数据库。   （如果连接的用户是来宾用户（如 joe@outlook.com），则必须选中该框并在“选项”中添加当前 AD 域名或租户 ID。 请参阅[使用 SQL 数据库和 SQL 数据仓库（针对 MFA 的 SSMS 支持）进行通用身份验证](sql-database-ssms-mfa-authentication.md)。 然后单击“连接”  。  
+4. 像往常一样，必须对 SQL 数据库和 SQL 数据仓库单击“选项”  ，然后在“选项”  对话框中指定数据库。 （如果连接的用户是来宾用户（如 joe@outlook.com），则必须选中该框并在“选项”中添加当前 AD 域名或租户 ID。 请参阅[使用 SQL 数据库和 SQL 数据仓库（针对 MFA 的 SSMS 支持）进行通用身份验证](sql-database-ssms-mfa-authentication.md)。 然后单击“连接”  。  
 5. 显示“登录到帐户”  对话框时，提供 Azure Active Directory 标识的帐户和密码。 如果用户属于与 Azure AD 联合的域，则无需任何密码。  
    ![2mfa-sign-in][2]  
 
@@ -59,7 +59,7 @@ ms.locfileid: "71262913"
    ![3mfa-setup][3]  
 7. 通过第二个可能出现的一次性对话框，可以选择身份验证方法的详细信息。 可能的选项由管理员配置。  
    ![4mfa-verify-1][4]  
-8. Azure Active Directory 向你发送确认信息。 收到验证码后，将其输入到“**输入验证码**”框中，并单击“**登录**”。  
+8. Azure Active Directory 向你发送确认信息。 收到验证码后，将其输入到“输入验证码”  框中，然后单击“登录”  。  
    ![5mfa-verify-2][5]  
 
 验证完成后，SSMS 便会正常连接（假设凭据和防火墙访问有效）。

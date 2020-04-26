@@ -9,14 +9,14 @@ metadata:
   ms.topic: landing-page
   ms.collection: collection
   author: rockboyfor
+  ms.date: 04/27/2020
   ms.author: v-yeche
-  ms.date: 02/10/2020
-  ms.openlocfilehash: e6fab564821873e5a84934ac29b41788d2eb488a
-  ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+  ms.openlocfilehash: 5bb8ee7b048dfbdc4ea7ccb0f6170428a74aa5a9
+  ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 04/17/2020
-  ms.locfileid: "76980458"
+  ms.lasthandoff: 04/24/2020
+  ms.locfileid: "82134627"
 landingContent:
 - title: 关于 Azure Cosmos DB
   linkLists:
@@ -140,6 +140,8 @@ landingContent:
       url: how-to-provision-container-throughput.md
     - text: 获取请求单位费用
       url: find-request-unit-charge.md
+    - text: 使用 Azure Functions 计时器缩放
+      url: scale-on-schedule.md
 - title: 使用 SQL API 构建应用
   linkLists:
   - linkListType: quickstart
@@ -176,7 +178,7 @@ landingContent:
       url: sql-api-sdk-dotnet.md
     - text: Java
       url: sql-api-sdk-java.md
-    - text: JavaScript
+    - text: Javascript
       url: sql-api-sdk-node.md
     - text: REST
       url: /rest/api/cosmos-db/

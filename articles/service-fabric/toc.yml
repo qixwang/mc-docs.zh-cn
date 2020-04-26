@@ -585,8 +585,6 @@
           items:
             - name: 使用 Azure Pipelines 设置持续集成
               href: service-fabric-set-up-continuous-integration.md
-            - name: 使用 Jenkins 部署 Linux 应用程序
-              href: service-fabric-cicd-your-linux-applications-with-jenkins.md
     - name: 设置和配置反向代理
       items:
         - name: 设置和配置反向代理

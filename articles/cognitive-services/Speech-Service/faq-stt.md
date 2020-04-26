@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 origin.date: 12/04/2019
-ms.date: 03/16/2020
+ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: 01fc9ce81f8141884a991c3165c9c226ac74758d
-ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
+ms.openlocfilehash: ff3635a3f44eaa803675035b5b43b29ad686dcdb
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80151709"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126985"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>语音转文本常见问题解答
 
@@ -46,7 +46,7 @@ ms.locfileid: "80151709"
 
 **答**：集合中可以拥有的模型数量没有限制。
 
-**问：我意识到自己犯了一个错误。如何取消正在进行的数据导入或模型创建？**
+**问：我意识到自己犯了一个错误。** 如何取消正在进行的数据导入或模型创建？
 
 **答**：当前无法回滚声学或语言适应过程。 可以在导入的数据和模型处于终点状态时删除它们。
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 origin.date: 09/04/2019
 ms.date: 01/13/2020
 ms.author: v-tawe
-ms.openlocfilehash: 586be336fc65a34b46e674dcf4365c9e7996620b
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.openlocfilehash: 00e5c914739a4a0015d91ab2669e8c585c3a13c9
+ms.sourcegitcommit: 9b0a89269a7e422570b7bc0ca983f60d2f317d48
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600522"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81675785"
 ---
 # <a name="security-controls-for-azure-app-service"></a>Azure 应用服务的安全控制
 
@@ -21,9 +21,10 @@ ms.locfileid: "75600522"
 
 ## <a name="network"></a>网络
 
+<!-- | Service endpoint support| Yes | Available for App Service.| [Azure App Service Access Restrictions](app-service-ip-restrictions.md) -->
+
 | 安全控制 | Yes/No | 注释 | 文档
 |---|---|--|
-| 服务终结点支持| 是 | 适用于应用服务。| [Azure 应用服务访问限制](app-service-ip-restrictions.md)
 | VNet 注入支持| 是 | 应用服务环境是对专用于单个客户的应用服务的专用实现，已注入到客户的虚拟网络中。 | [应用服务环境简介](environment/intro.md)
 | 网络隔离和防火墙支持| 是 | 对于应用服务的公共多租户变体，客户可以配置网络 ACL（IP 限制），锁定允许的入站流量。  应用服务环境直接部署到虚拟网络中，因此可以通过 NSG 来确保安全。 | [Azure 应用服务访问限制](app-service-ip-restrictions.md)
 | 强制隧道支持| 是 | 应用服务环境可以部署到客户的虚拟网络中，其中已配置强制隧道。 | [使用强制隧道配置应用服务环境](environment/forced-tunnel-support.md)
@@ -49,7 +50,7 @@ ms.locfileid: "75600522"
 |---|---|--|
 | 服务器端静态加密：Microsoft 管理的密钥 | 是 | 网站文件内容存储在 Azure 存储中，后者自动对内容进行静态加密。 <br><br>客户提供的机密会进行静态加密。 机密在存储到应用服务配置数据库中时会进行静态加密。<br><br>本地附加的磁盘可以由网站选择性地用作临时存储 (D:\local and %TMP%)。 本地附加的磁盘不进行静态加密。 | [静态数据的 Azure 存储加密](../storage/common/storage-service-encryption.md)
 | 服务器端静态加密：客户管理的密钥 (BYOK) | 是 | 客户可以选择将应用程序机密存储在 Key Vault 中，在运行时检索它们。 | [使用应用服务和 Azure Functions 的 Key Vault 引用（预览版）](app-service-key-vault-references.md)
-| 列级加密（Azure 数据服务）| 不适用 | |
+| 列级加密（Azure 数据服务）| 空值 | |
 | 传输中加密（例如 ExpressRoute 加密、VNet 中加密，以及 VNet-VNet 加密）| 是 | 客户可以将网站配置为要求将 HTTPS 用于入站流量。  | [How to make an Azure App Service HTTPS only](https://blogs.msdn.microsoft.com/benjaminperkins/2017/11/30/how-to-make-an-azure-app-service-https-only/)（如何将 Azure 应用服务设置为“仅限 HTTPS”）（博客文章）
 | 加密的 API 调用| 是 | 可以通过基于 HTTPS 的 [Azure 资源管理器](../azure-resource-manager/index.yml)调用进行管理调用，以便配置应用服务。 |
 

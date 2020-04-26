@@ -11,13 +11,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: vanto
 origin.date: 03/12/2019
-ms.date: 03/16/2020
-ms.openlocfilehash: 0fc31a07463055a6ba12c8c6c43d22ef9ac34dbb
-ms.sourcegitcommit: dc862610e2169c1fce6fb0ae9eb7dd7567f86a0a
+ms.date: 04/27/2020
+ms.openlocfilehash: db37cd59bd625db62a0d7f4ad0e1cf6ceaaec0fa
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79293744"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126848"
 ---
 # <a name="powershell-and-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>PowerShell 和 CLI：使用 Azure Key Vault 中由客户管理的密钥启用透明数据加密
 
@@ -31,7 +31,6 @@ ms.locfileid: "79293744"
   - [Key Vault 的 PowerShell 说明](../key-vault/quick-create-powershell.md)
     - Key Vault 必须包含用于 TDE 的以下属性：
   - [软删除](../key-vault/key-vault-ovw-soft-delete.md)和清除保护
-  - [如何将 Key Vault 软删除与 PowerShell 配合使用](../key-vault/key-vault-soft-delete-powershell.md) 
 - 密钥必须包含用于 TDE 的以下特性：
    - 无过期日期
    - 未禁用
@@ -128,7 +127,7 @@ Get-AzSqlDatabaseTransparentDataEncryptionActivity -ResourceGroupName <SQLDataba
 
 ## <a name="assign-an-azure-ad-identity-to-your-server"></a>将 Azure AD 标识分配到服务器
 
-```powershell
+```azurecli
 # create server (with identity) and database
 az sql server create --name <servername> --resource-group <rgname>  --location <location> --admin-user <user> --admin-password <password> --assign-identity
 az sql db create --name <dbname> --server <servername> --resource-group <rgname>
@@ -139,7 +138,7 @@ az sql db create --name <dbname> --server <servername> --resource-group <rgname>
 
 ## <a name="grant-key-vault-permissions-to-your-server"></a>向服务器授予 Key Vault 权限
 
-```powershell
+```azurecli
 # create key vault, key and grant permission
 az keyvault create --name <kvname> --resource-group <rgname> --location <location> --enable-soft-delete true
 az keyvault key create --name <keyname> --vault-name <kvname> --protection software
@@ -151,7 +150,7 @@ az keyvault set-policy --name <kvname>  --object-id <objectid> --resource-group 
 
 ## <a name="add-the-key-vault-key-to-the-server-and-set-the-tde-protector"></a>将 Key Vault 密钥添加到服务器并设置 TDE 保护器
 
-```powershell
+```azurecli
 # add server key and update encryption protector
 az sql server key create --server <servername> --resource-group <rgname> --kid <keyID>
 az sql server tde-key set --server <servername> --server-key-type AzureKeyVault  --resource-group <rgname> --kid <keyID>
@@ -162,7 +161,7 @@ az sql server tde-key set --server <servername> --server-key-type AzureKeyVault 
 
 ## <a name="turn-on-tde"></a>启用 TDE
 
-```powershell
+```azurecli
 # enable encryption
 az sql db tde set --database <dbname> --server <servername> --resource-group <rgname> --status Enabled
 ```
@@ -171,7 +170,7 @@ az sql db tde set --database <dbname> --server <servername> --resource-group <rg
 
 ## <a name="check-the-encryption-state-and-encryption-activity"></a>检查加密状态和加密活动
 
-```powershell
+```azurecli
 # get encryption scan progress
 az sql db tde list-activity --database <dbname> --server <servername> --resource-group <rgname>  
 
@@ -189,7 +188,7 @@ az sql db tde show --database <dbname> --server <servername> --resource-group <r
 
    ```powershell
    Set-AzSqlDatabaseTransparentDataEncryption -ServerName <LogicalServerName> -ResourceGroupName <SQLDatabaseResourceGroupName> `
-      -DatabaseName <DatabaseName> -State "Disabled”
+      -DatabaseName <DatabaseName> -State "Disabled"
    ```
 
 - 使用 [Get-AzSqlServerKeyVaultKey](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlserverkeyvaultkey) cmdlet 可返回已添加到服务器的 Key Vault 密钥列表。

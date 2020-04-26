@@ -5,15 +5,15 @@ services: vpn-gateway
 author: rockboyfor
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 02/18/2020
+ms.date: 04/03/2020
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: 11761e19823b88db08c3f3e109776bc397d98b86
-ms.sourcegitcommit: 4810b75d1e1db78d9747e99735468a6ab861be2d
+ms.openlocfilehash: d62f86670d05fd8e1acee13b331b09110aa22d59
+ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80291319"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82093523"
 ---
 <a name="tenant"></a>
 ## <a name="1-create-the-azure-ad-tenant"></a>1.创建 Azure AD 租户

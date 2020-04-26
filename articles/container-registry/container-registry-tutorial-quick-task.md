@@ -2,15 +2,16 @@
 title: 教程 - 快速容器映像生成
 description: 本教程介绍如何使用 Azure 容器注册表任务（ACR 任务）在 Azure 中生成 Docker 容器映像，然后将其部署到 Azure 容器实例。
 ms.topic: tutorial
+origin.date: 09/24/2018
+ms.date: 04/06/2020
 ms.author: v-yeche
-ms.date: 12/09/2019
 ms.custom: seodec18, mvc
-ms.openlocfilehash: c70a43f1b15e049e972b6d78dd4aa14c6a0ce7a2
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.openlocfilehash: 151c67b1cca0e957b10a046f5bdc13153197a7cb
+ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74885013"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82093508"
 ---
 # <a name="tutorial-build-and-deploy-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>教程：使用 Azure 容器注册表任务在云中生成并部署容器映像
 
@@ -25,8 +26,7 @@ ms.locfileid: "74885013"
 > [!div class="checklist"]
 > * 获取示例应用程序源代码
 > * 在 Azure 中生成容器映像
-
-<!--Not Available on > * Deploy a container to Azure Container Instances-->
+> * 将容器部署到 Azure 容器实例
 
 后续教程将会介绍如何使用 ACR 任务在代码提交和基础映像更新时自动生成容器映像。 ACR 任务也可运行[多步骤任务](container-registry-tasks-multi-step.md)，使用 YAML 文件来定义相关步骤，以便生成并推送多个容器，并可选择对其进行测试。
 
@@ -54,13 +54,13 @@ ms.locfileid: "74885013"
 
 使用 `git` 克隆存储库，将“\<your-github-username\>”替换为你的 GitHub 用户名  ：
 
-```azurecli
+```console
 git clone https://github.com/<your-github-username>/acr-build-helloworld-node
 ```
 
 输入包含源代码的目录：
 
-```azurecli
+```console
 cd acr-build-helloworld-node
 ```
 
@@ -74,7 +74,7 @@ cd acr-build-helloworld-node
 
 为使执行示例命令更轻松，本系列教程使用 shell 环境变量。 执行以下命令来设置 `ACR_NAME` 变量。 将“\<registry-name\>”替换为新容器注册表的唯一名称  。 注册表名称在 Azure 中必须唯一，仅包含小写字母，并且包含 5-50 个字母数字字符。 本教程中创建的其他资源都基于该名称，因此仅需要修改该第一个变量。
 
-```azurecli
+```console
 ACR_NAME=<registry-name>
 ```
 
@@ -95,8 +95,7 @@ az acr build --registry $ACR_NAME --image helloacrtasks:v1 .
 
 [az acr build][az-acr-build] 命令的输出类似于以下示例。 可以看到源代码（“上下文”）已上传到 Azure，同时可以看到 ACR 任务在云中运行的 `docker build` 操作的详细信息。 由于 ACR 任务使用 `docker build` 生成映像，因此无需对 Dockerfile 进行任何更改即可立即开始使用 ACR 任务。
 
-```console
-$ az acr build --registry $ACR_NAME --image helloacrtasks:v1 .
+```output
 Packing source code into tar file to upload...
 Sending build context (4.813 KiB) to ACR...
 Queued a build with build ID: da1
@@ -165,16 +164,133 @@ Run ID: da1 was successful after 1m9.970148252s
 
 在接近输出末尾的位置，ACR 任务显示其为映像找到的依赖项。 这使 ACR 任务可在基础映像更新（如基础映像基于 OS 或框架补丁进行更新）时自动化映像生成。 该系列教程稍后会介绍针对基础映像更新的 ACR 任务支持。
 
-<!--Not Available on ## Deploy to Azure Container Instances-->
+## <a name="deploy-to-azure-container-instances"></a>部署到 Azure 容器实例
+
+ACR 任务默认将成功生成的映像自动推送到注册表，这样即可立即从注册表部署这些映像。
+
+本部分将创建 Azure Key Vault 和服务主体，然后使用服务主体的凭据将容器部署到 Azure 容器实例 (ACI)。
+
+### <a name="configure-registry-authentication"></a>配置注册表身份验证
+
+所有生产方案都应使用[服务主体][service-principal-auth]访问 Azure 容器注册表。 使用服务主体可以提供对容器映像的基于角色的访问控制。 例如，可将服务主体配置为拥有注册表的仅限提取的访问权限。
+
+#### <a name="create-a-key-vault"></a>创建密钥保管库
+
+如果 [Azure Key Vault](/key-vault/) 中没有保管库，请在 Azure CLI 中使用以下命令创建一个保管库。
+
+```azurecli
+AKV_NAME=$ACR_NAME-vault
+
+az keyvault create --resource-group $RES_GROUP --name $AKV_NAME
+```
+
+#### <a name="create-a-service-principal-and-store-credentials"></a>创建服务主体并存储凭据
+
+现在需要创建服务主体，并将其凭据存储在 Key Vault 中。
+
+请使用 [az ad sp create-for-rbac][az-ad-sp-create-for-rbac] 命令创建服务主体，使用 [az keyvault secret set][az-keyvault-secret-set] 将服务主体的**密码**存储在保管库中：
+
+```azurecli
+# Create service principal, store its password in AKV (the registry *password*)
+az keyvault secret set \
+  --vault-name $AKV_NAME \
+  --name $ACR_NAME-pull-pwd \
+  --value $(az ad sp create-for-rbac \
+                --name $ACR_NAME-pull \
+                --scopes $(az acr show --name $ACR_NAME --query id --output tsv) \
+                --role acrpull \
+                --query password \
+                --output tsv)
+```
+
+上述命令中的 `--role` 参数使用“acrpull”  角色配置服务主体，该角色授予其对注册表的只拉取访问权限。 若要同时授予推送和拉取访问权限，请将 `--role` 参数更改为“acrpush”  。
+
+接下来，将服务主体的 appId（传递给 Azure 容器注册表用于身份验证的“用户名”）存储在保管库中   ：
+
+```azurecli
+# Store service principal ID in AKV (the registry *username*)
+az keyvault secret set \
+    --vault-name $AKV_NAME \
+    --name $ACR_NAME-pull-usr \
+    --value $(az ad sp show --id http://$ACR_NAME-pull --query appId --output tsv)
+```
+
+现已创建 Azure Key Vault 并在其中存储了两个机密：
+
+* `$ACR_NAME-pull-usr`：用作容器注册表**用户名**的服务主体 ID。
+* `$ACR_NAME-pull-pwd`：用作容器注册表**密码**的服务主体密码。
+
+现在，当你或你的应用程序和服务从注册表提取映像时，可以按名称引用这些机密。
+
+### <a name="deploy-a-container-with-azure-cli"></a>使用 Azure CLI 部署容器
+
+将服务主体凭据作为 Azure Key Vault 机密存储后，应用程序和服务可以使用它们来访问专用注册表。
+
+执行以下 [az container create][az-container-create] 命令来部署容器实例。 该命令使用 Azure Key Vault 中存储的服务主体凭据对容器注册表进行身份验证。
+
+```azurecli
+az container create \
+    --resource-group $RES_GROUP \
+    --name acr-tasks \
+    --image $ACR_NAME.azurecr.cn/helloacrtasks:v1 \
+    --registry-login-server $ACR_NAME.azurecr.cn \
+    --registry-username $(az keyvault secret show --vault-name $AKV_NAME --name $ACR_NAME-pull-usr --query value -o tsv) \
+    --registry-password $(az keyvault secret show --vault-name $AKV_NAME --name $ACR_NAME-pull-pwd --query value -o tsv) \
+    --dns-name-label acr-tasks-$ACR_NAME \
+    --query "{FQDN:ipAddress.fqdn}" \
+    --output table
+```
+
+`--dns-name-label` 值必须在 Azure 中唯一，因此，上述命令会将容器注册表名称追加到容器的 DNS 名称标签。 该命令的输出显示容器的完全限定域名 (FQDN)，例如：
+
+```output
+FQDN
+----------------------------------------------
+acr-tasks-myregistry.chinanorth.azurecontainer.console.azure.cn
+```
+
+记下容器的 FQDN，后续部分将会用到它。
+
+### <a name="verify-the-deployment"></a>验证部署
+
+若要查看容器的启动过程，请使用 [az container attach][az-container-attach] 命令：
+
+```azurecli
+az container attach --resource-group $RES_GROUP --name acr-tasks
+```
+
+`az container attach` 输出在拉取映像和启动时会首先显示容器状态，然后将本地控制台的 STDOUT 和 STDERR 绑定到容器的 STDOUT 和 STDERR。
+
+```output
+Container 'acr-tasks' is in state 'Running'...
+(count: 1) (last timestamp: 2018-08-22 18:39:10+00:00) pulling image "myregistry.azurecr.cn/helloacrtasks:v1"
+(count: 1) (last timestamp: 2018-08-22 18:39:15+00:00) Successfully pulled image "myregistry.azurecr.cn/helloacrtasks:v1"
+(count: 1) (last timestamp: 2018-08-22 18:39:17+00:00) Created container
+(count: 1) (last timestamp: 2018-08-22 18:39:17+00:00) Started container
+
+Start streaming logs:
+Server running at http://localhost:80
+```
+
+出现 `Server running at http://localhost:80` 时，在浏览器中导航到容器的 FQDN 以查看正在运行的应用程序。 FQDN 应已在上一部分执行的 `az container create` 命令的输出中显示。
+
+![浏览器中呈现示例应用程序的屏幕截图][quick-build-02-browser]
+
+若要从容器拆离控制台，请按 `Control+C`。
+
 ## <a name="clean-up-resources"></a>清理资源
 
+使用 [az container delete][az-container-delete] 命令停止容器实例：
 
-删除你在本教程中创建的所有资源  。 但是，本系列的[下一个教程](container-registry-tutorial-build-task.md)也会使用这些资源，因此，如果直接前往下一个教程，则可以保留这些资源。
+```azurecli
+az container delete --resource-group $RES_GROUP --name acr-tasks
+```
 
-<!--Not Available on , including the container registry, key vault, and service principal, issue the following commands.-->
+若要删除本教程中创建的所有资源，包括容器注册表、密钥保管库和服务主体，请运行以下命令  。 但是，本系列的[下一个教程](container-registry-tutorial-build-task.md)也会使用这些资源，因此，如果直接前往下一个教程，则可以保留这些资源。
 
 ```azurecli
 az group delete --resource-group $RES_GROUP
+az ad sp delete --id http://$ACR_NAME-pull
 ```
 
 ## <a name="next-steps"></a>后续步骤
@@ -193,9 +309,9 @@ az group delete --resource-group $RES_GROUP
 [azure-cli]: https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest
 [az-acr-build]: https://docs.azure.cn/cli/acr?view=azure-cli-latest#az-acr-build
 [az-ad-sp-create-for-rbac]: https://docs.azure.cn/cli/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac
-[az-container-attach]: https://docs.azure.cn/cli/container?view=azure-cli-latest#az-container-attach
-[az-container-create]: https://docs.azure.cn/cli/container?view=azure-cli-latest#az-container-create
-[az-container-delete]: https://docs.azure.cn/cli/container?view=azure-cli-latest#az-container-delete
+[az-container-attach]: https://docs.microsoft.com/cli/azure/container?view=azure-cli-latest#az-container-attach
+[az-container-create]: https://docs.microsoft.com/cli/azure/container?view=azure-cli-latest#az-container-create
+[az-container-delete]: https://docs.microsoft.com/cli/azure/container?view=azure-cli-latest#az-container-delete
 [az-keyvault-create]: https://docs.azure.cn/cli/keyvault/secret?view=azure-cli-latest#az-keyvault-create
 [az-keyvault-secret-set]: https://docs.azure.cn/cli/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-set
 [az-login]: https://docs.azure.cn/cli/reference-index?view=azure-cli-latest#az-login
@@ -206,4 +322,4 @@ az group delete --resource-group $RES_GROUP
 [quick-build-01-fork]: ./media/container-registry-tutorial-quick-build/quick-build-01-fork.png
 [quick-build-02-browser]: ./media/container-registry-tutorial-quick-build/quick-build-02-browser.png
 
-<!-- Update_Description: wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

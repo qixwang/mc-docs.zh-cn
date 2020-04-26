@@ -13,12 +13,12 @@ ms.reviewer: mathoma, carlrab
 manager: digimobile
 origin.date: 06/21/2019
 ms.date: 11/19/2019
-ms.openlocfilehash: eeffe56784942fab6698c406ce558605501376ca
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: bb7c2de9eaf6efa979019ff0fafdd90275a1ab4c
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79293533"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126675"
 ---
 # <a name="restore-an-azure-sql-database-or-failover-to-a-secondary"></a>还原 Azure SQL 数据库或故障转移到辅助数据库
 
@@ -27,12 +27,8 @@ Azure SQL 数据库提供以下功能，以便在服务中断后进行恢复：
 - [活动异地复制](sql-database-active-geo-replication.md)
 - [自动故障转移组](sql-database-auto-failover-group.md)
 - [异地还原](sql-database-recovery-using-backups.md#point-in-time-restore)
-- [区域冗余数据库](sql-database-high-availability.md)
 
 若要了解业务连续性方案以及支持这些方案的功能，请参阅[业务连续性](sql-database-business-continuity.md)。
-
-> [!NOTE]
-> 如果使用区域冗余高级或业务关键数据库或池，将自动执行恢复过程，此材料的其余部分将不适用。
 
 > [!NOTE]
 > 主数据库和辅助数据库都需要有相同的服务层级。 另外，强烈建议创建与主数据库具有相同计算大小（DTU 或 vCore）的辅助数据库。 有关详细信息，请参阅[作为主数据库进行升级或降级](sql-database-active-geo-replication.md#upgrading-or-downgrading-primary-database)。

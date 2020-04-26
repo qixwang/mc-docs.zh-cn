@@ -9,12 +9,12 @@ ms.topic: tutorial
 origin.date: 11/10/2018
 ms.date: 05/27/2019
 ms.custom: mvc
-ms.openlocfilehash: 0abc5841314e973435d3e6f8da06d9bf98df9874
-ms.sourcegitcommit: 1dac7ad3194357472b9c0d554bf1362c391d1544
+ms.openlocfilehash: 48e35a62ca2ffbfa5f68e1d8e62391c5f04f2cb7
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68308885"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126914"
 ---
 # <a name="tutorial-design-an-azure-database-for-mariadb-using-azure-cli"></a>教程：使用 Azure CLI 设计 Azure Database for MariaDB
 

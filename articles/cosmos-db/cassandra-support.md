@@ -2,23 +2,23 @@
 title: Azure Cosmos DB Cassandra API 支持的 Apache Cassandra 功能
 description: 了解 Azure Cosmos DB Cassandra API 中的 Apache Cassandra 功能支持
 author: rockboyfor
-ms.author: v-yeche
 ms.reviewer: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 origin.date: 09/24/2018
-ms.date: 01/20/2020
-ms.openlocfilehash: f01822400a4af8f5f801a83508344bd80208223b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 04/27/2020
+ms.author: v-yeche
+ms.openlocfilehash: bf81dd5b335e56df597b866754900f27b6340074
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292949"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134776"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API 支持的 Apache Cassandra 功能 
 
-Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服务。 你可以通过 Cassandra 查询语言 (CQL) v4 [线路协议](https://github.com/apache/cassandra/blob/trunk/doc/native_protocol_v4.spec)兼容的开放源代码 Cassandra 客户端[驱动程序](https://cassandra.apache.org/doc/latest/getting_started/drivers.html?highlight=driver)与 Azure Cosmos DB Cassandra API 进行通信。 
+Azure Cosmos DB 是 Azure 提供的多区域分布式多模型数据库服务。 你可以通过 Cassandra 查询语言 (CQL) v4 [线路协议](https://github.com/apache/cassandra/blob/trunk/doc/native_protocol_v4.spec)兼容的开放源代码 Cassandra 客户端[驱动程序](https://cassandra.apache.org/doc/latest/getting_started/drivers.html?highlight=driver)与 Azure Cosmos DB Cassandra API 进行通信。 
 
 通过使用 Azure Cosmos DB Cassandra API，你可以尽享 Apache Cassandra ApI 带来的诸多优势，以及 Azure Cosmos DB 提供的各项企业功能。 企业功能包括[多区域分发](distribute-data-globally.md)、[自动横向扩展分区](partition-data.md)、可用性和延迟保证、空闲时加密、备份等。
 
@@ -48,9 +48,9 @@ Azure Cosmos DB Cassandra API 支持以下 CQL 数据类型：
 * boolean  
 * counter  
 * date  
-* Decimal  
-* double  
-* FLOAT  
+* decimal  
+* Double  
+* float  
 * frozen  
 * inet  
 * int  
@@ -74,7 +74,7 @@ Azure Cosmos DB Cassandra API 支持以下 CQL 数据类型：
 
 Azure Cosmos DB Cassandra API 支持以下 CQL 函数：
 
-* 标记  
+* 令牌  
 * 聚合函数
     * min, max, avg, count
 * Blob 转换函数 
@@ -95,7 +95,7 @@ Azure Cosmos DB Cassandra API 支持以下 CQL 函数：
 
 ## <a name="cassandra-api-limits"></a>Cassandra API 限制
 
-Azure Cosmos DB Cassandra API 对表中存储的数据大小没有任何限制。 在确保遵循分区键限制的同时，可以存储数百 TB 或 PB 的数据。 同样，每个实体或等效行对列数没有任何限制。 但是，实体的总大小不应超过 2 MB。 与所有其他 API 一样，每个分区键的数据都不能超过 10 GB。
+Azure Cosmos DB Cassandra API 对表中存储的数据大小没有任何限制。 在确保遵循分区键限制的同时，可以存储数百 TB 或 PB 的数据。 同样，每个实体或等效行对列数没有任何限制。 但是，实体的总大小不应超过 2 MB。 与所有其他 API 一样，每个分区键的数据都不能超过 20 GB。
 
 ## <a name="tools"></a>工具 
 
@@ -107,7 +107,7 @@ Azure Cosmos DB Cassandra API 是一个托管的服务平台。 它不需要任�
 
 CQLSH 命令行实用程序随 Apache Cassandra 3.1.1 一起提供，设置一些环境变量即可直接使用。
 
-**Windows：**
+**Windows:**
 
 如果使用 Windows，建议启用[适用于 Linux 的 Windows 文件系统](https://docs.microsoft.com/windows/wsl/install-win10#install-the-windows-subsystem-for-linux)。 然后即可按照以下 linux 命令进行操作。
 
@@ -125,7 +125,7 @@ keytool -importcert -alias bc2025ca -file bc2025.crt
 
 # Install the Cassandra libraries in order to get CQLSH:
 echo "deb http://www.apache.org/dist/cassandra/debian 311x main" | sudo tee -a /etc/apt/sources.list.d/cassandra.sources.list
-curl https://www.apache.org/dist/cassandra/KEYS | sudo apt-key add -
+curl https://downloads.apache.org/cassandra/KEYS | sudo apt-key add -
 sudo apt-get update
 sudo apt-get install cassandra
 
@@ -144,6 +144,8 @@ Azure Cosmos DB 在 Cassandra API 帐户上支持以下数据库命令。
 
 * CREATE KEYSPACE（忽略此命令的复制设置）
 * CREATE TABLE 
+* CREATE INDEX（无需指定索引名称，并且还不支持完全冻结索引）
+* ALLOW FILTERING
 * ALTER TABLE 
 * USE 
 * INSERT 
@@ -170,7 +172,7 @@ Azure Cosmos DB 在 Cassandra API 帐户上支持以下数据库命令。
 
 ## <a name="consistency-mapping"></a>一致性映射 
 
-Azure Cosmos DB Cassandra API 为读取操作提供了一致性选择。  一致性映射的信息详见[此文](consistency-levels-across-apis.md#cassandra-mapping)。
+Azure Cosmos DB Cassandra API 为读取操作提供了一致性选择。  一致性映射的详细信息[在这里](consistency-levels-across-apis.md#cassandra-mapping)。
 
 ## <a name="permission-and-role-management"></a>权限和角色管理
 

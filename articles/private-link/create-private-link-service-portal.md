@@ -7,14 +7,14 @@ author: rockboyfor
 ms.service: private-link
 ms.topic: quickstart
 origin.date: 02/03/2020
-ms.date: 02/24/2020
+ms.date: 04/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 529c984e34842b4865b7834b99c63715db4bc500
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.openlocfilehash: f474c75c9f48009b53271ffdaa52698fbb0924f1
+ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77541140"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82093465"
 ---
 # <a name="quickstart-create-a-private-link-service-by-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建专用链接服务
 
@@ -30,21 +30,22 @@ Azure 专用链接服务是指你自己的、由专用链接管理的服务。 �
 
 首先创建虚拟网络。 然后创建一个与专用链接服务配合使用的内部负载均衡器。
 
-### <a name="create-the-virtual-network"></a>创建虚拟网络
+## <a name="virtual-network-and-parameters"></a>虚拟网络和参数
 
 在本部分，请创建虚拟网络。 此外，将创建子网来托管用于访问专用链接服务的负载均衡器。
 
-1. 在门户的左上方，选择“创建资源”   > “网络”   > “虚拟网络”  。
+在本部分中，你需要将步骤中的以下参数替换为以下信息：
 
-1. 在“创建虚拟网络”窗格中输入或选择以下值： 
+| 参数                   | Value                |
+|-----------------------------|----------------------|
+| **\<resource-group-name>** | myResourceGroupLB |
+| **\<virtual-network-name>** | myVNet          |
+| **\<region-name>** | 中国东部 2      |
+| **\<IPv4-address-space>** | 10.3.0.0\16          |
+| **\<subnet-name>** | myBackendSubnet        |
+| **\<subnet-address-range>** | 10.3.0.0\24          |
 
-    - **名称**：输入 **myVNet**。
-    - **ResourceGroup**：选择“新建”，输入 **myResourceGroupLB**，然后选择“确定”。  
-    - **子网** > **名称**：输入 **myBackendSubnet**。
-
-1. 选择“创建”  。
-
-   ![创建虚拟网络](../load-balancer/media/tutorial-load-balancer-basic-internal-portal/2-load-balancer-virtual-network.png)
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 ### <a name="create-a-standard-load-balancer"></a>创建标准负载均衡器
 

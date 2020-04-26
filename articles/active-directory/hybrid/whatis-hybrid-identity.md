@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
 origin.date: 11/28/2018
-ms.date: 03/15/2019
+ms.date: 04/23/2019
 ms.subservice: hybrid
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 28df6c4079df58fef7d731773227c90566290695
-ms.sourcegitcommit: 46a8da077726a15b5923e4e688fd92153ebe2bf0
+ms.openlocfilehash: d087a4172c00088f067785752f54c28d30a56d2b
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58186664"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126543"
 ---
 # <a name="hybrid-identity-and-microsoft-identity-solutions"></a>混合标识和 Microsoft 标识解决方案
 使用 [Azure Active Directory (Azure AD)](../../active-directory/fundamentals/active-directory-whatis.md) 混合标识解决方案可将本地目录与 Azure AD 同步，同时仍可在本地管理用户。 如果计划将本地 Windows Server Active Directory 与 Azure AD 进行同步，首先需要决定是使用托管标识还是使用联合标识。 
@@ -80,7 +80,6 @@ Azure AD Connect 专用于满足和完成混合标识目标的 Microsoft 工具�
 - [密码哈希同步](how-to-connect-password-hash-synchronization.md)|
 - [Azure AD Connect 和联合身份验证](how-to-connect-fed-whatis.md)
 - [Azure AD Connect 同步](how-to-connect-sync-whatis.md)
-- [版本历史记录](reference-connect-version-history.md)
 - [Azure AD Connect 常见问题解答](reference-connect-faq.md)
 
 <!-- Update_Description: update metedata properties -->

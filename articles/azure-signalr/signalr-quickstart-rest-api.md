@@ -4,15 +4,15 @@ description: 通过以下示例了解如何将 REST API 与 Azure SignalR 服务
 author: sffamily
 ms.service: signalr
 ms.topic: quickstart
-origin.date: 03/01/2019
-ms.date: 12/16/2019
+origin.date: 11/13/2019
+ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: 0e2151f0513193f704fb5d6af94b190919544dc9
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.openlocfilehash: 29c034f2c8c296236e52d7755e1f9863a4e35f6a
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600581"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126669"
 ---
 # <a name="quickstart-broadcast-real-time-messages-from-console-app"></a>快速入门：从控制台应用广播实时消息
 
@@ -112,7 +112,7 @@ broadcast
 
 可以启动具有不同客户端名称的多个客户端。
 
-## <a name="usage"> </a> 与第三方服务集成
+## <a name="integration-with-third-party-services"></a><a name="usage"> </a> 与第三方服务集成
 
 Azure SignalR 服务允许第三方服务与系统集成。
 
@@ -132,10 +132,17 @@ API | `1.0-preview` | `1.0`
 [广播到所有对象](#broadcast) | **&#x2713;** | **&#x2713;**
 [广播到组](#broadcast-group) | **&#x2713;** | **&#x2713;**
 广播到某些组 | **&#x2713;** (已弃用) | `N / A`
-[发送到特定用户](#send-user) | **&#x2713;** | **&#x2713;**
+[发送给用户](#send-user) | **&#x2713;** | **&#x2713;**
 发送到某些用户 | **&#x2713;** (已弃用) | `N / A`
 [将用户添加到组](#add-user-to-group) | `N / A` | **&#x2713;**
 [从组中删除用户](#remove-user-from-group) | `N / A` | **&#x2713;**
+[检查用户是否存在](#check-user-existence) | `N / A` | **&#x2713;**
+[从所有组中删除用户](#remove-user-from-all-groups) | `N / A` | **&#x2713;**
+[发送到连接](#send-connection) | `N / A` | **&#x2713;**
+[向组中添加连接](#add-connection-to-group) | `N / A` | **&#x2713;**
+[从组中删除连接](#remove-connection-from-group) | `N / A` | **&#x2713;**
+[关闭客户端连接](#close-connection) | `N / A` | **&#x2713;**
+[服务运行状况](#service-health) | `N / A` | **&#x2713;**
 
 <a name="broadcast"> </a>
 ### <a name="broadcast-to-everyone"></a>广播到所有人
@@ -154,7 +161,7 @@ API | `1.0-preview` | `1.0`
 `1.0` | `POST` | `https://<instance-name>.service.signalr.azure.cn/api/v1/hubs/<hub-name>/groups/<group-name>` | 同上
 
 <a name="send-user"> </a>
-### <a name="sending-to-specific-users"></a>发送到特定用户
+### <a name="sending-to-a-user"></a>发送给用户
 
 版本 | API HTTP 方法 | 请求 URL | 请求正文
 --- | --- | --- | ---
@@ -174,6 +181,69 @@ API | `1.0-preview` | `1.0`
 版本 | API HTTP 方法 | 请求 URL
 --- | --- | ---
 `1.0` | `DELETE` | `https://<instance-name>.service.signalr.azure.cn/api/v1/hubs/<hub-name>/groups/<group-name>/users/<userid>`
+
+<a name="check-user-existence"> </a>
+### <a name="check-user-existence-in-a-group"></a>检查用户是否存在于组中
+
+API 版本 | API HTTP 方法 | 请求 URL
+---|---|---
+`1.0` | `GET` | `https://<instance-name>.service.signalr.azure.cn/api/v1/hubs/<hub-name>/users/<user-id>/groups/<group-name>`
+`1.0` | `GET` | `https://<instance-name>.service.signalr.azure.cn/api/v1/hubs/<hub-name>/groups/<group-name>/users/<user-id>` 
+
+响应状态代码 | 说明
+---|---
+`200` | 用户存在
+`404` | 用户不存在
+
+<a name="remove-user-from-all-groups"> </a>
+### <a name="remove-a-user-from-all-groups"></a>从所有组中删除用户
+
+API 版本 | API HTTP 方法 | 请求 URL
+---|---|---
+`1.0` | `DELETE` | `https://<instance-name>.service.signalr.azure.cn/api/v1/hubs/<hub-name>/users/<user-id>/groups`
+
+<a name="send-connection"> </a>
+### <a name="send-message-to-a-connection"></a>将消息发送到连接
+
+API 版本 | API HTTP 方法 | 请求 URL | 请求正文
+---|---|---|---
+`1.0` | `POST` | `https://<instance-name>.service.signalr.azure.cn/api/v1/hubs/<hub-name>/connections/<connection-id>` | `{ "target":"<method-name>", "arguments":[ ... ] }`
+
+<a name="add-connection-to-group"> </a>
+### <a name="add-a-connection-to-a-group"></a>向组中添加连接
+
+API 版本 | API HTTP 方法 | 请求 URL
+---|---|---
+`1.0` | `PUT` | `https://<instance-name>.service.signalr.azure.cn/api/v1/hubs/<hub-name>/groups/<group-name>/connections/<connection-id>`
+`1.0` | `PUT` | `https://<instance-name>.service.signalr.azure.cn/api/v1/hubs/<hub-name>/connections/<connection-id>/groups/<group-name>`
+
+<a name="remove-connection-from-group"> </a>
+### <a name="remove-a-connection-from-a-group"></a>从组中删除连接
+
+API 版本 | API HTTP 方法 | 请求 URL
+---|---|---
+`1.0` | `DELETE` | `https://<instance-name>.service.signalr.azure.cn/api/v1/hubs/<hub-name>/groups/<group-name>/connections/<connection-id>`
+`1.0` | `DELETE` | `https://<instance-name>.service.signalr.azure.cn/api/v1/hubs/<hub-name>/connections/<connection-id>/groups/<group-name>`
+
+<a name="close-connection"> </a>
+### <a name="close-a-client-connection"></a>关闭客户端连接
+
+API 版本 | API HTTP 方法 | 请求 URL
+---|---|---
+`1.0` | `DELETE` | `https://<instance-name>.service.signalr.azure.cn/api/v1/hubs/<hub-name>/connections/<connection-id>`
+`1.0` | `DELETE` | `https://<instance-name>.service.signalr.azure.cn/api/v1/hubs/<hub-name>/connections/<connection-id>?reason=<close-reason>`
+
+<a name="service-health"> </a>
+### <a name="service-health"></a>服务运行状况
+
+API 版本 | API HTTP 方法 | 请求 URL
+---|---|---                             
+`1.0` | `GET` | `https://<instance-name>.service.signalr.azure.cn/api/v1/health`
+
+响应状态代码 | 说明
+---|---
+`200` | 服务良好
+`503` | 服务不可用
 
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
 

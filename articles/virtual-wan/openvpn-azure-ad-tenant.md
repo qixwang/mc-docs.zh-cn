@@ -8,12 +8,12 @@ ms.topic: conceptual
 origin.date: 12/27/2019
 ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: 4a13b2ac71f3423e74b94476c1cc6814761d436e
-ms.sourcegitcommit: 303a16c7117b6f3495ef0493b4ae8ccb67d7dbba
+ms.openlocfilehash: 608fbf57f33bc59fcf8a72c7192f7b96733f743d
+ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80342424"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82093479"
 ---
 # <a name="create-an-azure-active-directory-tenant-for-p2s-openvpn-protocol-connections"></a>为 P2S OpenVPN 协议连接创建 Azure Active Directory 租户
 
@@ -83,7 +83,7 @@ ms.locfileid: "80342424"
     Azure 中国世纪互联
 
     ```
-    https://https://login.chinacloudapi.cn/common/oauth2/authorize?client_id=49f817b6-84ae-4cc0-928c-73f27289b3aa&response_type=code&redirect_uri=https://portal.azure.cn&nonce=1234&prompt=admin_consent
+    https://login.chinacloudapi.cn/common/oauth2/authorize?client_id=49f817b6-84ae-4cc0-928c-73f27289b3aa&response_type=code&redirect_uri=https://portal.azure.cn&nonce=1234&prompt=admin_consent
     ```
 
 5. 出现提示时，请选择“全局管理员”帐户。 

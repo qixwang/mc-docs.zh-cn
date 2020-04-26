@@ -4,17 +4,17 @@ description: 了解如何使用 Studio 3T 连接到 Azure Cosmos DB 的 API for 
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: conceptual
-origin.date: 11/01/2019
-ms.date: 02/10/2020
+origin.date: 03/20/2020
+ms.date: 04/27/2020
 author: rockboyfor
 ms.author: v-yeche
 ms.custom: seodec18
-ms.openlocfilehash: ae848e0c5a7f4663e7ddf91129d7d2acc033e89e
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 5a549c12a4a17a6b5a0ef9f988ef16bf5c55cb89
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77028821"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134673"
 ---
 # <a name="connect-to-an-azure-cosmos-account-using-studio-3t"></a>使用 Studio 3T 连接到 Azure Cosmos 帐户
 
@@ -22,9 +22,6 @@ ms.locfileid: "77028821"
 
 * 下载并安装 [Studio 3T](https://studio3t.com/)。
 * 获取 Azure Cosmos 帐户的[连接字符串](connect-mongodb-account.md)信息。
-
-> [!NOTE]
-> 目前，Cosmos DB 的 API for MongoDB 支持 Robo 3T v1.2 及更低版本。
 
 ## <a name="create-the-connection-in-studio-3t"></a>在 Studio 3T 中创建连接
 
@@ -117,6 +114,6 @@ ms.locfileid: "77028821"
 ## <a name="next-steps"></a>后续步骤
 
 - 了解如何将 [Robo 3T](mongodb-robomongo.md) 与 Azure Cosmos DB 的用于 MongoDB 的 API 配合使用。
-- 使用 Azure Cosmos DB 的用于 MongoDB 的 API 浏览 MongoDB [示例](mongodb-samples.md)。
+- 通过 Azure Cosmos DB 的用于 MongoDB 的 API 来浏览 MongoDB [示例](mongodb-samples.md)。
 
 <!-- Update_Description: update meta properties, wording update -->

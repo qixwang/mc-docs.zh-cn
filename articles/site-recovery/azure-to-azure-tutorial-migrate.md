@@ -1,20 +1,20 @@
 ---
-title: 使用 Azure Site Recovery 服务将 Azure IaaS VM 移动到另一个 Azure 区域 | Azure
+title: 使用 Azure Site Recovery 将 Azure VM 移动到另一个区域
 description: 使用 Azure Site Recovery 将 Azure IaaS VM 从一个 Azure 区域移动到另一个 Azure 区域。
 services: site-recovery
 author: rockboyfor
 ms.service: site-recovery
 ms.topic: tutorial
 origin.date: 01/28/2019
-ms.date: 09/30/2019
+ms.date: 04/13/2020
 ms.author: v-yeche
 ms.custom: MVC
-ms.openlocfilehash: d0bb0a42e9f7fe492b9b5f805ee253bd12a68ea8
-ms.sourcegitcommit: 332ae4986f49c2e63bd781685dd3e0d49c696456
+ms.openlocfilehash: e13c3edef036b1709fab6724a777ac1e68626678
+ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71340888"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82093495"
 ---
 # <a name="move-azure-vms-to-another-region"></a>将 Azure VM 移动到另一区域
 
@@ -22,13 +22,13 @@ ms.locfileid: "71340888"
 
 <!--Not Available on  For example, you want to improve reliability and availability of your existing VMs, to improve manageability, or to move for governance reasons. For more information, see the [Azure VM move overview](azure-to-azure-move-overview.md)-->
 
-可以使用 [Azure Site Recovery](site-recovery-overview.md) 服务来管理和协调本地计算机和 Azure VM 灾难恢复，以实现业务连续性和灾难恢复 (BCDR)。 此外可以使用 Site Recovery 来管理 Azure VM 移动到次要区域。
+可以使用 [Azure Site Recovery](site-recovery-overview.md) 服务来管理和协调本地计算机和 Azure VM 灾难恢复，以实现业务连续性和灾难恢复 (BCDR)。 此外可以使用 Site Recovery 来管理将 Azure VM 移动到次要区域的过程。
 
 在本教程中，你将：
 
 > [!div class="checklist"]
 > 
-> * 验证先决条件以进行移动
+> * 验证进行移动的先决条件
 > * 准备源 VM 和目标区域
 > * 复制数据和启用复制
 > * 测试配置和执行移动
@@ -80,7 +80,7 @@ ms.locfileid: "71340888"
     - [网络安全组](/virtual-network/manage-network-security-group)
     - [负载均衡器](/load-balancer)
     - [公共 IP](../virtual-network/virtual-network-public-ip-address.md)
-    - 对于其他任何网络组件，请参阅[网络文档](/#pivot=products&panel=network)。
+    - 对于其他任何网络组件，请参阅[网络文档](/?pivot=products&panel=network)。
 
 ## <a name="prepare"></a>准备
 以下步骤演示如何使用 Azure Site Recovery 作为解决方案来准备要移动的虚拟机。 

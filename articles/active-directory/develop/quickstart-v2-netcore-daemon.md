@@ -5,20 +5,19 @@ description: 了解如何从 .NET Core 应用获取令牌并使用令牌调用�
 services: active-directory
 author: jmprieur
 manager: CelesteDG
-ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 03/20/2020
+ms.date: 04/22/2020
 ms.author: v-junlch
-ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 0aa0d67e5dcbc31f0896f0c59096a4cca6e0e217
-ms.sourcegitcommit: 6568c59433d7e80ab06e9fe76d4791f761ed6775
+ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
+ms.openlocfilehash: ec4c798db2bfd1a8aedad9c7e67eb9329ef5653e
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80243127"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126478"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-using-console-apps-identity"></a>快速入门：使用控制台应用的标识获取令牌并调用 Microsoft Graph API
 
@@ -51,7 +50,7 @@ ms.locfileid: "80243127"
 > 1. 如果你的帐户有权访问多个租户，请在右上角选择该帐户，并将门户会话设置为所需的 Azure AD 租户。
 > 1. 导航到面向开发人员的 Microsoft 标识平台的[应用注册](https://portal.azure.cn/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)页。
 > 1. 选择“新注册”。 
-> 1. 出现“注册应用程序”页后，请输入应用程序的注册信息。  
+> 1. 出现“注册应用程序”页后，请输入应用程序的注册信息。 
 > 1. 在“名称”  部分输入一个会显示给应用用户的有意义的应用程序名称，例如 `Daemon-console`，然后选择“注册”以创建应用程序。 
 > 1. 注册以后，选择“证书和机密”菜单。 
 > 1. 在“客户端机密”下，选择“+ 新建客户端机密”。   为它提供一个名称，然后选择“添加”。  将机密复制到安全位置。 稍后需要在代码中使用它。
@@ -61,7 +60,7 @@ ms.locfileid: "80243127"
 
 > [!div class="sxs-lookup" renderon="portal"]
 > ### <a name="download-and-configure-your-quickstart-app"></a>下载并配置快速入门应用
-> 
+>
 > #### <a name="step-1-configure-your-application-in-azure-portal"></a>步骤 1：在 Azure 门户中配置应用程序
 > 为使本快速入门的代码示例正常运行，需创建客户端机密，并添加 Graph API 的 **User.Read.All** 应用程序权限。
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
@@ -82,15 +81,15 @@ ms.locfileid: "80243127"
 
 > [!div class="sxs-lookup" renderon="portal"]
 > > [!NOTE]
-> > Enter_the_Supported_Account_Info_Here
-    
+> > `Enter_the_Supported_Account_Info_Here`
+
 > [!div renderon="docs"]
 > #### <a name="step-3-configure-your-visual-studio-project"></a>步骤 3：配置 Visual Studio 项目
-> 
+>
 > 1. 将 zip 文件提取到靠近磁盘根目录的本地文件夹，例如 **C:\Azure-Samples**。
 > 1. 在 Visual Studio 中打开解决方案 - **1-Call-MSGraph\daemon-console.sln**（可选）。
 > 1. 编辑 **appsettings.json**，将字段 `ClientId`、`Tenant`、`ClientSecret` 的值替换为以下内容：
-> 
+>
 >    ```json
 >    "Tenant": "Enter_the_Tenant_Id_Here",
 >    "ClientId": "Enter_the_Application_Id_Here",
@@ -197,7 +196,6 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
                                           .WithClientSecret(config.ClientSecret)
                                           .WithAuthority(new Uri(config.Authority))
                                           .Build();
-);
 ```
 
 > | 其中： ||
@@ -219,7 +217,7 @@ result = await app.AcquireTokenForClient(scopes)
 
 > |其中：| |
 > |---------|---------|
-> | `scopes` | 包含请求的范围。 对于机密客户端，这应该使用与 `{Application ID URI}/.default` 类似的格式，指示所请求的范围是在 Azure 门户的应用对象集中静态定义的范围（就 Microsoft Graph 来说，`{Application ID URI}` 指向 `https://microsoftgraph.chinacloudapi.cn`）。 就自定义 Web API 来说，`{Application ID URI}` 在  Azure 门户的应用程序注册（预览版）的“公开 API”部分定义。 |
+> | `scopes` | 包含请求的范围。 对于机密客户端，这应该使用与 `{Application ID URI}/.default` 类似的格式，指示所请求的范围是在 Azure 门户的应用对象集中静态定义的范围（就 Microsoft Graph 来说，`{Application ID URI}` 指向 `https://microsoftgraph.chinacloudapi.cn`）。 对于自定义 Web API，`{Application ID URI}` 是在 Azure 门户的应用程序注册（预览版）的“公开 API”  部分中定义的。 |
 
 有关详细信息，请参阅 [`AcquireTokenForClient` 的参考文档](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplication.acquiretokenforclient?view=azure-dotnet)
 
@@ -247,4 +245,3 @@ result = await app.AcquireTokenForClient(scopes)
 > [!div class="nextstepaction"]
 > [客户端凭据 Oauth 流](v2-oauth2-client-creds-grant-flow.md)
 
-<!-- Update_Description: wording update -->

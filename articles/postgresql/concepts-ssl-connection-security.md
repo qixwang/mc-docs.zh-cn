@@ -6,13 +6,13 @@ ms.author: v-jay
 ms.service: postgresql
 ms.topic: conceptual
 origin.date: 03/10/2020
-ms.date: 03/30/2020
-ms.openlocfilehash: 320a6600e94d318785fbf39401b3ced044e9f2bd
-ms.sourcegitcommit: 303a16c7117b6f3495ef0493b4ae8ccb67d7dbba
+ms.date: 04/27/2020
+ms.openlocfilehash: 0b02cdcaa1b510134c2c48eb3ef116d8106e0b8c
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80342422"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126878"
 ---
 # <a name="configure-ssl-connectivity-in-azure-database-for-postgresql---single-server"></a>在 Azure Database for PostgreSQL - 单一服务器中配置 SSL 连接
 
@@ -80,31 +80,6 @@ psql "sslmode=verify-full sslrootcert=root.crt host=mydemoserver.postgres.databa
 
 > [!TIP]
 > 确认传递给 `sslrootcert` 的值与你保存的证书的文件路径匹配。
-
-## <a name="tls-connectivity-in-azure-database-for-postgresql-single-server"></a>Azure Database for PostgreSQL 单一服务器中的 TLS 连接
-
-对于使用传输层安全性 (TLS) 连接到数据库服务器的客户端，Azure Database for PostgreSQL - 单一服务器支持加密。 TLS 是一种行业标准协议，可确保在数据库服务器与客户端应用程序之间实现安全的网络连接，使你能够满足合规性要求。
-
-### <a name="tls-settings"></a>TLS 设置
-
-对于连接到 Azure Database for PostgreSQL 单一服务器的客户端，客户现在能够强制为其使用 TLS 版本。 若要使用 TLS 选项，请使用“最低 TLS 版本”选项设置。  此选项设置允许以下值：
-
-|  最低 TLS 设置             | 支持的 TLS 版本                |
-|:---------------------------------|-------------------------------------:|
-| TLSEnforcementDisabled（默认值） | 不需要 TLS                      |
-| TLS1_0                           | TLS 1.0、TLS 1.1、TLS 1.2 及更高版本 |
-| TLS1_1                           | TLS 1.1、TLS 1.2 及更高版本          |
-| TLS1_2                           | TLS 版本 1.2 及更高版本           |
-
-
-例如，将此最低 TLS 设置版本设置为 TLS 1.0 意味着服务器将允许使用 TLS 1.0、1.1 和 1.2 + 的客户端进行连接。 或者，将此选项设置为 1.2 意味着仅允许使用 TLS 1.2 的客户端进行连接，并且将拒绝 TLS 1.0 和 TLS 1.1 的所有连接。
-
-> [!Note] 
-> Azure Database for PostgreSQL 单一服务器默认对所有新服务器禁用 TLS。
->
-> 目前，Azure Database for PostgreSQL 支持的 TLS 版本为 TLS 1.0、1.1 和 1.2。
-
-若要了解如何为 Azure Database for PostgreSQL 单一服务器指定 TLS 设置，请参阅[如何配置 TLS 设置](concepts-ssl-connection-security.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

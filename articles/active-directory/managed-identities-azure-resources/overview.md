@@ -12,15 +12,15 @@ ms.subservice: msi
 ms.devlang: ''
 ms.topic: overview
 ms.custom: mvc
-ms.date: 03/24/2020
+ms.date: 04/23/2020
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e87ae2e37ac7f796eb619219bbad9ad6ae9b9043
-ms.sourcegitcommit: 6568c59433d7e80ab06e9fe76d4791f761ed6775
+ms.openlocfilehash: aaf264c43707ea1f57d4620f05ae5b269cd441f0
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80243052"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126530"
 ---
 # <a name="what-are-managed-identities-for-azure-resources"></a>什么是 Azure 资源的托管标识？
 
@@ -51,8 +51,12 @@ Azure Active Directory (Azure AD) 中的 Azure 资源托管标识功能可以解
 - **用户分配托管标识**是作为独立的 Azure 资源创建的。 在创建过程中，Azure 会在由所用订阅信任的 Azure AD 租户中创建一个标识。 在创建标识后，可以将标识分配到一个或多个 Azure 服务实例。 用户分配标识的生命周期与它所分配到的 Azure 服务实例的生命周期是分开管理的。
 
 在内部，托管标识是特殊类型的服务主体，它们已锁定，只能与 Azure 资源配合使用。 删除托管标识时，相应的服务主体也会自动删除。
+此外，在创建用户分配的标识或系统分配的标识时，托管标识资源提供程序 (MSRP) 会在内部向该标识颁发证书。 
 
-代码可以使用托管标识来请求支持 Azure AD 身份验证的服务的访问令牌。 Azure 负责滚动更新服务实例使用的凭据。
+代码可以使用托管标识来请求支持 Azure AD 身份验证的服务的访问令牌。 Azure 负责滚动更新服务实例使用的凭据。 
+
+## <a name="credential-rotation"></a>凭据轮换
+凭据轮换由托管 Azure 资源的资源提供程序控制。 默认情况下，凭据每隔 46 天会轮换一次。 新凭据是由资源提供程序请求的，因此，资源提供程序的等待时间可能会超过 46 天。
 
 下图演示了托管服务标识如何与 Azure 虚拟机 (VM) 协同工作：
 
@@ -135,6 +139,7 @@ Azure Active Directory (Azure AD) 中的 Azure 资源托管标识功能可以解
 * [Azure 容器注册表任务](../../container-registry/container-registry-tasks-authentication-managed-identity.md)
 * [Azure 事件中心](../../event-hubs/authenticate-managed-identity.md)
 * [Azure Functions](/app-service/overview-managed-identity)
+* [Azure 逻辑应用](/logic-apps/create-managed-service-identity)
 * [Azure 服务总线](../../service-bus-messaging/service-bus-managed-service-identity.md)
 * [Azure 数据工厂](../../data-factory/data-factory-service-identity.md)
 

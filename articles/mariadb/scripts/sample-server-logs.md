@@ -7,14 +7,14 @@ ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc
-origin.date: 11/28/2018
-ms.date: 05/27/2019
-ms.openlocfilehash: ced6db23c4c3859bca9e1eb1eacb4eb90a008730
-ms.sourcegitcommit: 193f49f19c361ac6f49c59045c34da5797ed60ac
+origin.date: 12/02/2019
+ms.date: 04/13/2020
+ms.openlocfilehash: bfe9f5117064d1bbee701598315dbd14a1da8c82
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68732406"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126917"
 ---
 # <a name="enable-and-download-server-slow-query-logs-of-an-azure-database-for-mariadb-server-using-azure-cli"></a>使用 Azure CLI 启用和下载 Azure Database for MariaDB 服务器的服务器慢查询日志
 此示例 CLI 脚本可启用和下载单个 Azure Database for MariaDB 服务器的慢查询日志。
@@ -91,11 +91,11 @@ az group delete --name myresourcegroup
 | **命令** | **说明** |
 |---|---|
 | [az group create](/cli/group#az-group-create) | 创建用于存储所有资源的资源组。 |
-| [az mariadb server create](/cli/mariadb/server#az-mariadb-server-create) | 创建用于托管数据库的 MariaDB 服务器。 |
-| [az mariadb server configuration list](/cli/mariadb/server/configuration#az-mariadb-server-configuration-list) | 列出服务器的配置值。 |
-| [az mariadb server configuration set](/cli/mariadb/server/configuration#az-mariadb-server-configuration-set) | 更新服务器的配置。 |
-| [az mariadb server-logs list](/cli/mariadb/server-logs#az-mariadb-server-logs-list) | 列出服务器的日志文件。 |
-| [az mariadb server-logs download](/cli/mariadb/server-logs#az-mariadb-server-logs-download) | 下载日志文件。 |
+| [az mariadb server create](https://docs.microsoft.com/cli/azure/mariadb/server#az-mariadb-server-create) | 创建用于托管数据库的 MariaDB 服务器。 |
+| [az mariadb server configuration list](https://docs.microsoft.com/cli/azure/mariadb/server/configuration#az-mariadb-server-configuration-list) | 列出服务器的配置值。 |
+| [az mariadb server configuration set](https://docs.microsoft.com/cli/azure/mariadb/server/configuration#az-mariadb-server-configuration-set) | 更新服务器的配置。 |
+| [az mariadb server-logs list](https://docs.microsoft.com/cli/azure/mariadb/server-logs#az-mariadb-server-logs-list) | 列出服务器的日志文件。 |
+| [az mariadb server-logs download](https://docs.microsoft.com/cli/azure/mariadb/server-logs#az-mariadb-server-logs-download) | 下载日志文件。 |
 | [az group delete](/cli/group#az-group-delete) | 删除资源组，包括所有嵌套的资源。 |
 
 ## <a name="next-steps"></a>后续步骤

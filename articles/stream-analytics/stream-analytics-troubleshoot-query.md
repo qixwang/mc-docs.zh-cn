@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 origin.date: 12/07/2018
 ms.date: 08/07/2019
-ms.openlocfilehash: 33cf70704569f24d9fd109d0e91b0ab14ca837e6
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 8f8828720e1d02cd504418b5c98608c8784dcbca
+ms.sourcegitcommit: b80d236ce3c706abc25bbaa41b0ccddd896e48fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78155126"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81873141"
 ---
 # <a name="troubleshoot-azure-stream-analytics-queries"></a>Azure 流分析查询的故障排除
 
@@ -52,7 +52,7 @@ ms.locfileid: "78155126"
 
 ![流分析 SELECT INTO 查询示例](./media/stream-analytics-select-into/stream-analytics-select-into-query1.png)
 
-请注意，虽然作业正在运行，但在输出中未生成任何事件。 在此处所示的“监视”  磁贴上，可以看到输入正在生成数据，但不知道 **JOIN** 的哪个步骤导致所有事件被丢弃。
+请注意，虽然作业正在运行，但在输出中未生成任何事件。 在“监视”  磁贴上，可以看见输入正在生成数据，但不知道 JOIN 的哪个步骤导致所有事件被删除  。
 
 ![流分析监视磁贴](./media/stream-analytics-select-into/stream-analytics-select-into-monitor.png)
 

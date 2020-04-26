@@ -2,18 +2,18 @@
 title: Azure Cosmos 容器的多区域分布式事务和分析存储（个人预览版）
 description: 了解 Azure Cosmos 容器的事务和分析存储及其配置选项。
 author: rockboyfor
-ms.author: v-yeche
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 09/30/2019
-ms.date: 02/10/2020
+ms.date: 04/27/2020
+ms.author: v-yeche
 ms.reviewer: sngun
-ms.openlocfilehash: 4cc46bfa19c8637f139f9156aade1dc7b8a56244
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 944d68be915c094867888771096afd6a8272c5e4
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "76980533"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134938"
 ---
 # <a name="multiple-regionally-distributed-transactional-and-analytical-storage-for-azure-cosmos-containers"></a>Azure Cosmos 容器的多区域分布式事务和分析存储
 
@@ -29,10 +29,10 @@ Azure Cosmos 容器由两个存储引擎提供内部支持 - 事务存储引擎�
 
 事务存储引擎以本地 SSD 为后盾，而分析存储则存储在群集外部的经济型 SSD 存储上。 下表汇总了事务存储与分析存储之间的重要差异。
 
-|Feature  |事务存储  |分析存储 |
+|功能  |事务存储  |分析存储 |
 |---------|---------|---------|
 |每个 Azure Cosmos 容器的最大存储空间 |   无限制      |    无限制     |
-|每个逻辑分区键的最大存储空间   |   10 GB      |   无限制      |
+|每个逻辑分区键的最大存储空间   |   20 GB      |   无限制      |
 |存储编码  |   行导向，使用内部格式。   |   列导向，使用 Apache Parquet 格式。 |
 |存储区域性 |   以本地/群集内部 SSD 为后盾的复制存储。 |  以经济型远程/群集外部 SSD 为后盾的复制存储。       |
 |持续性  |    99.99999（7-9 秒）     |  99.99999（7-9 秒）       |
@@ -41,7 +41,7 @@ Azure Cosmos 容器由两个存储引擎提供内部支持 - 事务存储引擎�
 |每 GB 价格    |   请参阅[定价页](https://www.azure.cn/pricing/details/cosmos-db/)     |   请参阅[定价页](https://www.azure.cn/pricing/details/cosmos-db/)        |
 |存储事务的价格    |  请参阅[定价页](https://www.azure.cn/pricing/details/cosmos-db/)         |   请参阅[定价页](https://www.azure.cn/pricing/details/cosmos-db/)        |
 
-<!--Not Avaialble on Line 34 and Etcd-->
+<!--Not Avaialble on Line 34 and etcd(Private Preview)-->
 
 ## <a name="benefits-of-transactional-and-analytical-storage"></a>事务存储和分析存储的优势
 

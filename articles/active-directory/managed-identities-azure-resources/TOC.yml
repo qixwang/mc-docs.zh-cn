@@ -48,6 +48,8 @@
       href: /app-service/overview-managed-identity?context=azure/active-directory/managed-identities-azure-resources/context/msi-context
     - name: Azure 事件中心
       href: /event-hubs/authenticate-managed-identity?context=azure/active-directory/managed-identities-azure-resources/context/msi-context
+    - name: Azure 容器实例
+      href: /container-instances/container-instances-managed-identity?context=azure/active-directory/managed-identities-azure-resources/context/msi-context
 - name: 操作指南
   items:
     - name: 在 VM 上配置托管标识
@@ -80,7 +82,7 @@
       items:
         - name: 获取访问令牌
           href: how-to-use-vm-token.md
-        - name: 使用托管标识登录到 Powershell 和 CLI
+        - name: 使用托管标识登录到 PowerShell 和 CLI
           href: how-to-use-vm-sign-in.md
         - name: 与 Azure SDK 配合使用
           href: how-to-use-vm-sdk.md
@@ -122,8 +124,14 @@
       href: '/dotnet/api/microsoft.azure.management.resourcemanager.fluent.authentication#azure-dotnet'
     - name: Java
       href: 'https://github.com/Azure/azure-libraries-for-java#ready-to-run-code-samples-for-virtual-machines'
+    - name: Python
+      href: 'https://docs.microsoft.com/windows/python/'
     - name: Ruby
       href: 'https://rubygems.org/gems/azure_mgmt_msi'
+    - name: Node.js
+      href: 'https://nodejs.org/en/docs/'
+    - name: Go
+      href: 'https://golang.org/doc/'
 - name: 资源
   items:
     - name: 反馈和已知问题

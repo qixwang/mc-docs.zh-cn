@@ -7,17 +7,17 @@ author: navyasric
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 03/20/2020
+ms.date: 04/22/2020
 ms.author: v-junlch
-ms.openlocfilehash: 5917fdc2bbb32a6dd3da95a1c8e86e99fdc077a7
-ms.sourcegitcommit: 6568c59433d7e80ab06e9fe76d4791f761ed6775
+ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript
+ms.openlocfilehash: 787a960bbcd7388b04d22f3b3617d6e0c5610d76
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80243123"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126475"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>快速入门：在 JavaScript SPA 中登录用户并获得访问令牌
 
@@ -26,7 +26,7 @@ ms.locfileid: "80243123"
 ## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅 - [创建订阅](https://www.azure.cn/pricing/1rmb-trial)
-* [Node.js](https://nodejs.org/en/download/)。
+* [Node.js](https://nodejs.org/en/download/)
 * [Visual Studio Code](https://code.visualstudio.com/download)（用于编辑项目文件）
 
 
@@ -39,7 +39,7 @@ ms.locfileid: "80243123"
 > 1. 使用工作或学校帐户登录到 [Azure 门户](https://portal.azure.cn)。
 > 1. 如果你的帐户有权访问多个租户，请在右上角选择该帐户，然后将门户会话设置为要使用的 Azure Active Directory (Azure AD) 租户。
 > 1. 转到新的 [Azure 门户 - 应用注册](https://portal.azure.cn/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs)窗格。
-> 1. 输入应用程序的名称。 
+> 1. 输入应用程序的名称。
 > 1. 在“支持的帐户类型”下，选择“任何组织目录中的帐户”。  
 > 1. 选择“注册”  。
 > 1. 遵照说明下载内容，系统会自动配置新应用程序。
@@ -79,10 +79,9 @@ ms.locfileid: "80243123"
 > 使用 Node.js 在 Web 服务器中运行项目
 
 > [!div renderon="portal" id="autoupdate" class="nextstepaction"]
-> [下载代码示例]()
+> [下载代码示例](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/quickstart.zip)
 
 > [!div renderon="docs"]
-
 > #### <a name="step-3-configure-your-javascript-app"></a>步骤 3：配置 JavaScript 应用
 >
 > 在 JavaScriptSPA  文件夹中，编辑 authConfig.js  ，并在 `msalConfig` 下设置 `clientID`、`authority` 和 `redirectUri` 值。
@@ -100,13 +99,13 @@ ms.locfileid: "80243123"
 >      cacheLocation: "sessionStorage", // This configures where your cache will be stored
 >      storeAuthStateInCookie: false, // Set this to "true" if you are having issues on IE11 or Edge
 >    }
->  };  
+>  };
 >
 >```
 
 > [!div renderon="portal"]
 > > [!NOTE]
-> > Enter_the_Supported_Account_Info_Here
+> > `Enter_the_Supported_Account_Info_Here`
 
 > [!div renderon="docs"]
 >
@@ -123,10 +122,10 @@ ms.locfileid: "80243123"
 >
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>步骤 3：应用已配置并可以运行
-> 我们已经为项目配置了应用属性的值。 
+> 我们已经为项目配置了应用属性的值。
 
 > [!div renderon="docs"]
-> 
+>
 > 然后，仍在同一文件夹中，编辑 graphConfig.js  文件，以便为 `apiConfig` 对象设置 `graphMeEndpoint` 和 `graphMeEndpoint`。
 > ```javascript
 >   // Add here the endpoints for MS Graph API services you would like to use.
@@ -200,7 +199,7 @@ npm install msal
       cacheLocation: "sessionStorage", // This configures where your cache will be stored
       storeAuthStateInCookie: false, // Set this to "true" if you are having issues on IE11 or Edge
     }
-  };  
+  };
 
 const myMSALObj = new Msal.UserAgentApplication(msalConfig);
 ```
@@ -235,7 +234,7 @@ myMSALObj.loginPopup(loginRequest)
 
 > |Where  |  |
 > |---------|---------|
-> | `scopes`   | （可选）包含在登录时为了获得用户许可而请求的范围。 例如：`["https://microsoftgraph.chinacloudapi.cn/user.read"]` 适用于 Microsoft Graph，`[ "<Application ID URL>/scope" ]` 适用于自定义 Web API（即 `api://<Application ID>/access_as_user`）。 |
+> | `scopes`   | （可选）包含在登录时为了获得用户许可而请求的范围。 例如：`["https://microsoftgraph.chinacloudapi.cn/user.read"]`（针对 Microsoft Graph）或 `[ "<Application ID URL>/scope" ]`（针对自定义 Web API，即 `api://<Application ID>/access_as_user`）。 |
 
 > [!TIP]
 > 另外，你可能希望使用 `loginRedirect` 方法将当前页重定向到登录页，而不是显示弹出窗口。
@@ -308,4 +307,3 @@ myMSALObj.acquireTokenPopup(requestObj)
 > [!div class="nextstepaction"]
 > [MSAL.js GitHub 存储库](https://github.com/AzureAD/microsoft-authentication-library-for-js)
 
-<!-- Update_Description: wording update -->

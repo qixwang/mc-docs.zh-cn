@@ -26,6 +26,8 @@
     - name: 单页应用
       displayName: SPA
       items:
+        - name: Angular
+          href: quickstart-v2-angular.md
         - name: Javascript
           href: quickstart-v2-javascript.md
     - name: Web 应用
@@ -69,6 +71,8 @@
     - name: 单页应用
       displayName: SPA
       items:
+        - name: Angular
+          href: tutorial-v2-angular.md
         - name: Javascript
           href: tutorial-v2-javascript-spa.md
     - name: Web 应用
@@ -219,8 +223,12 @@
               href: scenario-mobile-app-configuration.md
             - name: 移动平台特定的配置
               items:
+                - name: 适用于 Apple 设备的 Microsoft 企业 SSO 插件
+                  href: apple-sso-plugin.md
                 - name: 适用于 Android 设备的共享设备模式
-                  href: shared-device-mode.md
+                  href: msal-android-shared-devices.md
+                - name: 适用于 iOS 设备的共享设备模式
+                  href: msal-ios-shared-devices.md
                 - name: Xamarin Android
                   href: msal-net-xamarin-android-considerations.md
                 - name: Android 上的系统浏览器
@@ -302,6 +310,17 @@
           href: msal-handling-exceptions.md
         - name: 日志记录
           href: msal-logging.md
+        - name: 共享设备
+          items:
+            - name: 概述 - 共享设备
+              href: msal-shared-devices.md
+              displayName: 'shared device mode, firstline worker, frontline worker'
+            - name: 适用于 iOS 设备的共享设备模式
+              href: msal-ios-shared-devices.md
+              displayName: 'firstline worker, frontline worker'
+            - name: 适用于 Android 设备的共享设备模式
+              href: msal-android-shared-devices.md
+              displayName: 'firstline worker, frontline worker'
         - name: 单一登录
           displayName: SSO
           items:
@@ -384,10 +403,6 @@
               href: access-tokens.md
             - name: 证书凭据
               href: active-directory-certificate-credentials.md
-        - name: SAML 2.0 协议
-          items:
-            - name: SAML 令牌
-              href: reference-saml-tokens.md
     - name: 应用程序配置
       displayName: App configuration
       items:
@@ -414,6 +429,8 @@
         - name: 应用程序同意体验
           displayName: App consent experiences
           href: application-consent-experience.md
+    - name: 条件性访问
+      href: v2-conditional-access-dev-guide.md
     - name: 国家云
       items:
         - name: 概述

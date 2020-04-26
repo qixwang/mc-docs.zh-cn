@@ -6,22 +6,18 @@
       href: private-link-overview.md
 - name: 快速入门
   items:
-    - name: 创建专用终结点
-      items:
-        - name: Azure 门户
-          href: create-private-endpoint-portal.md
-        - name: Azure CLI
-          href: create-private-endpoint-cli.md
-        - name: Azure PowerShell
-          href: create-private-endpoint-powershell.md
-    - name: 创建专用链接服务
-      items:
-        - name: Azure 门户
-          href: create-private-link-service-portal.md
-        - name: Azure PowerShell
-          href: create-private-link-service-powershell.md
-        - name: Azure CLI
-          href: create-private-link-service-cli.md
+    - name: 创建专用终结点 - 门户
+      href: create-private-endpoint-portal.md
+    - name: 创建专用终结点 - PowerShell
+      href: create-private-endpoint-powershell.md
+    - name: 创建专用终结点 - Azure CLI
+      href: create-private-endpoint-cli.md
+    - name: 创建专用链接服务 - 门户
+      href: create-private-link-service-portal.md
+    - name: 创建专用链接服务 - PowerShell
+      href: create-private-link-service-powershell.md
+    - name: 创建专用链接服务 - Azure CLI
+      href: create-private-link-service-cli.md
 - name: 概念
   items:
     - name: 专用终结点
@@ -34,6 +30,8 @@
       href: create-private-endpoint-storage-portal.md
     - name: 专门连接到 Cosmos DB 帐户
       href: create-private-endpoint-cosmosdb-portal.md
+    - name: 专门连接到 Web 应用
+      href: create-private-endpoint-webapp-portal.md
     - name: 对专用终结点禁用网络策略
       href: disable-private-endpoint-network-policy.md
     - name: 对专用链接服务禁用网络策略

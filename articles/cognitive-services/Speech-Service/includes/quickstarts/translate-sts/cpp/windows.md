@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-origin.date: 12/09/2019
-ms.date: 03/16/2020
+origin.date: 04/04/2020
+ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: 4d2260fdf7b6460e64336a979847062d07cd5a3b
-ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
+ms.openlocfilehash: ef62fed049d452e51a81f98c2120662dbd0ff88d
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80151578"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126751"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -24,7 +24,7 @@ ms.locfileid: "80151578"
 
 > [!div class="checklist"]
 > * [创建一个 Azure 搜索资源](../../../../get-started.md)
-> * [设置开发环境并创建空项目](../../../../quickstarts/setup-platform.md?tabs=windows)
+> * [设置开发环境并创建空项目](../../../../quickstarts/setup-platform.md?tabs=windows&pivots=programming-language-cpp)
 
 ## <a name="add-sample-code"></a>添加示例代码
 
@@ -43,19 +43,19 @@ ms.locfileid: "80151578"
 
    void TranslateSpeechToSpeech()
    {
-       // Creates an instance of a speech translation config with specified host and subscription key.
+       // Creates an instance of a speech translation config with specified subscription key and service region.
        // Replace with your own subscription key and region identifier from here: https://docs.azure.cn/cognitive-services/speech-service/regions
-       auto config = SpeechConfig::FromHost("wss://YourServiceRegion.stt.speech.azure.cn/", "YourSubscriptionKey");
+       auto config = SpeechTranslationConfig::FromSubscription("YourSubscriptionKey", "YourServiceRegion");
 
        // Sets source and target languages.
-       // Replace with the languages of your choice, from list found here: https://docs.azure.cn/cognitive-services/speech-service/language-support#speech-translation
+       // Replace with the languages of your choice, from list found here: https://aka.ms/speech/sttt-languages
        auto fromLanguage = "en-US";
        auto toLanguage = "de";
        config->SetSpeechRecognitionLanguage(fromLanguage);
        config->AddTargetLanguage(toLanguage);
 
        // Sets the synthesis output voice name.
-       // Replace with the languages of your choice, from list found here: https://docs.azure.cn/cognitive-services/speech-service/language-support#text-to-speech
+       // Replace with the languages of your choice, from list found here: https://aka.ms/speech/tts-languages
        config->SetVoiceName("de-DE-Hedda");
 
        // Creates a translation recognizer using the default microphone audio input device.

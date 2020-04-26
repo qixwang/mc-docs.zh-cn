@@ -43,7 +43,7 @@
                   href: storage-quickstart-blobs-python.md
                 - name: Python (v2.1 SDK)
                   href: storage-quickstart-blobs-python-legacy.md
-            - name: JavaScript
+            - name: Javascript
               items:
                 - name: JavaScript（适用于 Node.js 的 v12 SDK）
                   href: storage-quickstart-blobs-nodejs.md
@@ -99,7 +99,7 @@
           href: ../common/storage-samples-java.md?toc=%2fstorage%2fblobs%2ftoc.json
         - name: Python
           href: ../common/storage-samples-python.md?toc=%2fstorage%2fblobs%2ftoc.json
-        - name: JavaScript
+        - name: Javascript
           href: ../common/storage-samples-javascript.md?toc=%2fstorage%2fblobs%2ftoc.json
         - name: Azure PowerShell
           href: storage-samples-blobs-powershell.md
@@ -192,11 +192,11 @@
                       href: ../common/storage-import-export-tool-repairing-an-import-job-v1.md?toc=%2fstorage%2fblobs%2ftoc.json
                     - name: 修复导出作业
                       href: ../common/storage-import-export-tool-repairing-an-export-job-v1.md?toc=%2fstorage%2fblobs%2ftoc.json
-                - name: 常见问题解答
+                - name: 常见问题
                   href: ../common/storage-import-export-service-faq.md?toc=%2fstorage%2fblobs%2ftoc.json
                 - name: REST API
                   href: 'https://docs.microsoft.com/rest/api/storageimportexport/jobs'
-                - name: 存档
+                - name: Archive
                   items:
                     - name: 准备用于导入的驱动器 (v1)
                     - name: 准备用于导入的驱动器 (v2)
@@ -222,6 +222,8 @@
                   href: ../common/storage-analytics-logging.md?toc=%2fstorage%2fblobs%2ftoc.json
         - name: 事件处理
           href: storage-blob-event-overview.md
+        - name: 更改源
+          href: storage-blob-change-feed.md
         - name: 页 Blob 功能
           href: storage-blob-pageblob-overview.md
         - name: 静态网站
@@ -355,6 +357,8 @@
           href: storage-custom-domain-name.md
         - name: 将事件路由到自定义终结点
           href: storage-blob-event-quickstart.md
+        - name: 处理更改源日志
+          href: storage-blob-change-feed-how-to.md
         - name: 传输数据
           items:
             - name: AzCopy
@@ -479,7 +483,7 @@
               href: ../common/storage-ref-azcopy-remove.md?toc=%2fstorage%2fblobs%2ftoc.json
             - name: azcopy sync
               href: ../common/storage-ref-azcopy-sync.md?toc=%2fstorage%2fblobs%2ftoc.json
-        - name: 资源管理器模板
+        - name: Resource Manager 模板
           displayName: ARM
           href: 'https://docs.microsoft.com/azure/templates/microsoft.storage/allversions'
     - name: 资源
@@ -566,7 +570,7 @@
           href: ../common/storage-samples-java.md?toc=%2fstorage%2fblobs%2ftoc.json
         - name: Python
           href: ../common/storage-samples-python.md?toc=%2fstorage%2fblobs%2ftoc.json
-        - name: JavaScript
+        - name: Javascript
           href: ../common/storage-samples-javascript.md?toc=%2fstorage%2fblobs%2ftoc.json
     - name: 概念
       items:
@@ -580,7 +584,7 @@
           href: ../blobs/data-lake-storage-namespace.md?toc=%2fstorage%2fblobs%2ftoc.json
         - name: 关于存储帐户
           href: ../common/storage-account-overview.md?toc=%2fstorage%2fblobs%2ftoc.json
-        - name: 最佳做法
+        - name: 最佳实践
           href: data-lake-storage-best-practices.md
         - name: 数据冗余
           href: ../common/storage-redundancy.md?toc=%2fstorage%2fblobs%2ftoc.json
@@ -701,7 +705,7 @@
               href: data-lake-storage-directory-file-acl-java.md
             - name: Python
               href: data-lake-storage-directory-file-acl-python.md
-            - name: JavaScript
+            - name: Javascript
               href: data-lake-storage-directory-file-acl-javascript.md
             - name: PowerShell
               href: data-lake-storage-directory-file-acl-powershell.md
@@ -753,7 +757,7 @@
           href: 'https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.0.0-preview.6/index.html'
         - name: Python
           href: 'https://azuresdkdocs.blob.core.windows.net/$web/python/azure-storage-file-datalake/12.0.0b5/index.html'
-        - name: JavaScript
+        - name: Javascript
           href: 'https://www.npmjs.com/package/@azure/storage-file-datalake/v/12.0.0-preview.6'
         - name: REST
           href: 'https://docs.microsoft.com/rest/api/storageservices/data-lake-storage-gen2'
@@ -793,7 +797,7 @@
               href: ../common/storage-ref-azcopy-remove.md?toc=%2fstorage%2fblobs%2ftoc.json
             - name: azcopy sync
               href: ../common/storage-ref-azcopy-sync.md?toc=%2fstorage%2fblobs%2ftoc.json
-        - name: 资源管理器模板
+        - name: Resource Manager 模板
           displayName: ARM
           href: 'https://docs.microsoft.com/azure/templates/microsoft.storage/allversions'
     - name: 资源

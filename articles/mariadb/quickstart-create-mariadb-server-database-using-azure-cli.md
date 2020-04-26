@@ -1,24 +1,24 @@
 ---
-title: 快速入门：创建 Azure Database for MariaDB 服务器 - Azure CLI
+title: 快速入门：创建服务器 - Azure CLI - Azure Database for MariaDB
 description: 本快速入门教程介绍如何使用 Azure CLI 在 Azure 资源组中创建 Azure Database for MariaDB 服务器。
 author: WenJason
 ms.author: v-jay
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: quickstart
-origin.date: 01/09/2019
-ms.date: 12/02/2019
+origin.date: 3/18/2020
+ms.date: 04/27/2020
 ms.custom: mvc
-ms.openlocfilehash: efced4fd527d9bb3c8a60c8c413ca025c9362336
-ms.sourcegitcommit: 9597d4da8af58009f9cef148a027ccb7b32ed8cf
+ms.openlocfilehash: 71f59745ad56fc036490082caa9131a27793ea87
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74655440"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126801"
 ---
 # <a name="create-an-azure-database-for-mariadb-server-by-using-the-azure-cli"></a>使用 Azure CLI 创建 Azure Database for MariaDB 服务器
 
-Azure CLI 可用于从命令行或脚本创建和管理 Azure 资源。 本快速入门教程介绍如何使用 Azure CLI 在大约 5 分钟内在 Azure 资源组中创建 Azure Database for MariaDB 服务器。 
+Azure CLI 可用于从命令行或脚本创建和管理 Azure 资源。 本快速入门教程介绍如何使用 Azure CLI 在大约 5 分钟内在 Azure 资源组中创建 Azure Database for MariaDB 服务器。
 
 如果没有 Azure 订阅，请在开始前创建一个[试用帐户](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth)。
 
@@ -42,7 +42,7 @@ az group create --name myresourcegroup --location chinaeast2
 
 ## <a name="create-an-azure-database-for-mariadb-server"></a>创建 Azure Database for MariaDB 服务器
 
-使用 [az mariadb server create](/cli/mariadb/server#az-mariadb-server-create) 命令创建 Azure Database for MariaDB 服务器。 一个服务器可以管理多个数据库。 通常，每个项目或每个用户使用一个单独的数据库。
+使用 [az mariadb server create](https://docs.microsoft.com/cli/azure/mariadb/server#az-mariadb-server-create) 命令创建 Azure Database for MariaDB 服务器。 一个服务器可以管理多个数据库。 通常，每个项目或每个用户使用一个单独的数据库。
 
 设置 | 示例值 | 说明
 ---|---|---
@@ -73,13 +73,12 @@ az mariadb server create --resource-group myresourcegroup --name mydemoserver  -
 
 > [!NOTE]
 > 如果轻量级计算和 I/O 足以满足工作负荷要求，请考虑使用“基本”定价层。 请注意，在“基本”定价层中创建的服务器以后不能扩展到“常规用途”或“内存优化”定价层。 有关详细信息，请参阅[定价页](https://azure.cn/pricing/details/mariadb/)。
-> 
 
 ## <a name="configure-a-firewall-rule"></a>配置防火墙规则
 
-使用 [az mariadb server firewall-rule create](/cli/mariadb/server/firewall-rule#az-mariadb-server-firewall-rule-create) 命令创建 Azure Database for MariaDB 服务器级防火墙规则。 服务器级防火墙规则允许外部应用程序（如 mysql 命令行工具或 MySQL Workbench）通过 Azure Database for MariaDB 服务防火墙连接到服务器。 
+使用 [az mariadb server firewall-rule create](https://docs.microsoft.com/cli/azure/mariadb/server/firewall-rule#az-mariadb-server-firewall-rule-create) 命令创建 Azure Database for MariaDB 服务器级防火墙规则。 服务器级防火墙规则允许外部应用程序（如 mysql 命令行工具或 MySQL Workbench）通过 Azure Database for MariaDB 服务防火墙连接到服务器。 
 
-以下示例创建名为 `AllowMyIP` 的防火墙规则，该规则允许从特定的 IP 地址 (192.168.0.1) 进行连接。 替换 IP 地址或 IP 地址范围，这些地址或地址范围对应于要从其进行连接的位置。 
+以下示例创建名为 `AllowMyIP` 的防火墙规则，该规则允许从特定的 IP 地址 (192.168.0.1) 进行连接。 替换 IP 地址或 IP 地址范围，这些地址或地址范围对应于要从其进行连接的位置。
 
 ```azurecli
 az mariadb server firewall-rule create --resource-group myresourcegroup --server mydemoserver --name AllowMyIP --start-ip-address 192.168.0.1 --end-ip-address 192.168.0.1
@@ -87,14 +86,13 @@ az mariadb server firewall-rule create --resource-group myresourcegroup --server
 
 > [!NOTE]
 > 连接到 Azure Database for MariaDB 时，经端口 3306 进行通信。 如果尝试从企业网络内部进行连接，则可能不允许经端口 3306 的出站流量。 在这种情况下，若要连接到服务器，必须要求 IT 部门打开端口 3306。
-> 
 
 ## <a name="configure-ssl-settings"></a>配置 SSL 设置
 
 默认情况下，在服务器和客户端应用程序之间强制实施 SSL 连接。 此默认设置可通过 Internet 加密数据流确保“传输中”数据的安全性。 就本快速入门来说，请禁用服务器的 SSL 连接。 建议不要对生产服务器禁用 SSL。 有关详细信息，请参阅[配置应用程序中的 SSL 连接性以安全连接到 Azure Database for MariaDB](./howto-configure-ssl.md)。
 
 以下示例禁止在 Azure Database for MariaDB 服务器上强制实施 SSL：
- 
+
 ```azurecli
 az mariadb server update --resource-group myresourcegroup --name mydemoserver --ssl-enforcement Disabled
 ```
@@ -155,6 +153,7 @@ az mariadb server show --resource-group myresourcegroup --name mydemoserver
    ```sql
    status
    ```
+
    应会看到类似于以下文本的内容：
 
    ```bash
@@ -231,7 +230,7 @@ az mariadb server show --resource-group myresourcegroup --name mydemoserver
 az group delete --name myresourcegroup
 ```
 
-如果只需删除在本快速入门中创建的服务器，请运行 [az mariadb server delete](/cli/mariadb/server#az-mariadb-server-delete) 命令：
+如果只需删除在本快速入门中创建的服务器，请运行 [az mariadb server delete](https://docs.microsoft.com/cli/azure/mariadb/server#az-mariadb-server-delete) 命令：
 
 ```azurecli
 az mariadb server delete --resource-group myresourcegroup --name mydemoserver

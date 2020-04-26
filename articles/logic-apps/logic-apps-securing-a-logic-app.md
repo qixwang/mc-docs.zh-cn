@@ -10,12 +10,12 @@ ms.workload: integration
 origin.date: 10/11/2019
 ms.author: v-yiso
 ms.date: 02/24/2020
-ms.openlocfilehash: ec90b7f56f56107f0c6b2822ee4d91b66144e4da
-ms.sourcegitcommit: 305361c96d1d5288d3dda7e81833820640e2afac
+ms.openlocfilehash: 18843374371fc2a88bc45edfc7a0f3153cf8de7c
+ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2020
-ms.locfileid: "80108528"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82093351"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>在 Azure 逻辑应用中保护访问和数据
 
@@ -688,8 +688,8 @@ HTTP 和 HTTPS 终结点支持各种身份验证。 根据用于发出访问这�
 
 * [使用 Azure API 管理中的客户端证书身份验证保护 API](../api-management/api-management-howto-mutual-certificates-for-clients.md)
 * [使用 Azure API 管理中的客户端证书身份验证保护后端服务](../api-management/api-management-howto-mutual-certificates.md)
-* [使用客户端证书保护 RESTful 服务](../active-directory-b2c/secure-rest-api-dotnet-certificate-auth.md)
-    
+
+    <!--Not Available on * [Secure your RESTfuL service by using client certificates](../active-directory-b2c/secure-rest-api-dotnet-certificate-auth.md)-->
     <!--Not Available on * [Certificate credentials for application authentication](../active-directory/develop/active-directory-certificate-credentials.md)-->
     
 * [在 Azure 应用服务的应用程序代码中使用 SSL 证书](../app-service/configure-ssl-certificate-in-code.md)

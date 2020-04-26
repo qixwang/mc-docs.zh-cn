@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
-ms.date: 03/24/2020
+ms.date: 04/24/2020
 ms.author: v-junlch
 author: iainfoulds
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d93ef246508b2cbca26477b7846a051c4d8e2285
-ms.sourcegitcommit: 6568c59433d7e80ab06e9fe76d4791f761ed6775
+ms.openlocfilehash: 4d0220ecad69adc5bf73a09eff14cb57c62f41bb
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80243183"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126341"
 ---
 # <a name="tutorial-enable-azure-active-directory-self-service-password-reset-writeback-to-an-on-premises-environment"></a>教程：启用到本地环境的 Azure Active Directory 自助式密码重置写回
 
@@ -51,10 +51,9 @@ Azure AD Connect 可用于在本地 AD DS 环境与 Azure AD 之间同步用户�
 若要正常使用 SSPR 写回，必须为 Azure AD Connect 中指定的帐户设置适当的权限和选项。 如果不确定当前使用的是哪个帐户，请打开 Azure AD Connect 并选择“查看当前配置”选项。  需要向其添加权限的帐户列在“已同步的目录”下。  必须为该帐户设置以下权限和选项：
 
 * **重置密码**
-* **更改密码**
 * 对 `lockoutTime` 的写入权限 
 * 对 `pwdLastSet` 的写入权限 
-* 对以下任一项的扩展权限  ：
+*  “不过期密码”的扩展权限，针对于：
    * 相应林中各个域  的根对象
    * 要纳入 SSPR 范围的用户组织单位 (OU)
 
@@ -69,7 +68,6 @@ Azure AD Connect 可用于在本地 AD DS 环境与 Azure AD 之间同步用户�
 1. 对于“主体”，请选择权限应该应用到的帐户（Azure AD Connect 使用的帐户）。 
 1. 在“应用到”  下拉列表中，选择“后代用户对象”  。
 1. 在“权限”  下，选中以下选项所对应的框：
-    * **更改密码**
     * **重置密码**
 1. 在“属性”下，选中以下选项对应的框。  需要滚动列表才能看到这些选项，默认情况下可能已设置这些选项：
     * **写入 lockoutTime**

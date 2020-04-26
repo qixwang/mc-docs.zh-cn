@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.devlang: dotnet
 ms.topic: quickstart
-origin.date: 05/21/2019
-ms.date: 02/10/2020
+origin.date: 02/21/2020
+ms.date: 04/30/2020
 ms.author: v-yeche
-ms.openlocfilehash: 15940ea1e2aed3543f92569ef3674a9d0be07bd5
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: d6d95beb5dc5f3a43edaed4fcea9d1e9f300c394
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292938"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134783"
 ---
 <!--Verify sucessfully-->
 # <a name="quickstart-build-a-net-framework-or-core-application-using-the-azure-cosmos-db-gremlin-api-account"></a>快速入门：使用 Azure Cosmos DB Gremlin API 帐户生成 .NET Framework 或 Core 应用程序
@@ -84,72 +84,85 @@ Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服�
 
 以下代码片段全部摘自 Program.cs 文件。
 
-* 跟踪上面创建的帐户设置连接参数（第 19 行）： 
+* 跟踪上面创建的帐户设置连接参数： 
 
     ```csharp
-    private static string hostname = "your-endpoint.gremlin.cosmos.azure.cn";
+    private string EndpointUrl = Environment.GetEnvironmentVariable("EndpointUrl");
+    private string PrimaryKey = Environment.GetEnvironmentVariable("PrimaryKey");
     private static int port = 443;
-    private static string authKey = "your-authentication-key";
-    private static string database = "your-database";
-    private static string collection = "your-graph-container";
+    private static string database = "your-database-name";
+    private static string container = "your-container-or-graph-name";
+
     ```
 
-* 要执行的 Gremlin 命令列在字典中（第 26 行）：
+* 要执行的 Gremlin 命令列在字典中：
 
     ```csharp
     private static Dictionary<string, string> gremlinQueries = new Dictionary<string, string>
     {
-        { "Cleanup",        "g.V().drop()" },
-        { "AddVertex 1",    "g.addV('person').property('id', 'thomas').property('firstName', 'Thomas').property('age', 44).property('pk', 'pk')" },
-        { "AddVertex 2",    "g.addV('person').property('id', 'mary').property('firstName', 'Mary').property('lastName', 'Andersen').property('age', 39).property('pk', 'pk')" },
-        { "AddVertex 3",    "g.addV('person').property('id', 'ben').property('firstName', 'Ben').property('lastName', 'Miller').property('pk', 'pk')" },
-        { "AddVertex 4",    "g.addV('person').property('id', 'robin').property('firstName', 'Robin').property('lastName', 'Wakefield').property('pk', 'pk')" },
-        { "AddEdge 1",      "g.V('thomas').addE('knows').to(g.V('mary'))" },
-        { "AddEdge 2",      "g.V('thomas').addE('knows').to(g.V('ben'))" },
-        { "AddEdge 3",      "g.V('ben').addE('knows').to(g.V('robin'))" },
-        { "UpdateVertex",   "g.V('thomas').property('age', 44)" },
-        { "CountVertices",  "g.V().count()" },
-        { "Filter Range",   "g.V().hasLabel('person').has('age', gt(40))" },
-        { "Project",        "g.V().hasLabel('person').values('firstName')" },
-        { "Sort",           "g.V().hasLabel('person').order().by('firstName', decr)" },
-        { "Traverse",       "g.V('thomas').out('knows').hasLabel('person')" },
-        { "Traverse 2x",    "g.V('thomas').out('knows').hasLabel('person').out('knows').hasLabel('person')" },
-        { "Loop",           "g.V('thomas').repeat(out()).until(has('id', 'robin')).path()" },
-        { "DropEdge",       "g.V('thomas').outE('knows').where(inV().has('id', 'mary')).drop()" },
-        { "CountEdges",     "g.E().count()" },
-        { "DropVertex",     "g.V('thomas').drop()" },
+       { "Cleanup",        "g.V().drop()" },
+       { "AddVertex 1",    "g.addV('person').property('id', 'thomas').property('firstName', 'Thomas').property('age', 44).property('pk', 'pk')" },
+       { "AddVertex 2",    "g.addV('person').property('id', 'mary').property('firstName', 'Mary').property('lastName', 'Andersen').property('age', 39).property('pk', 'pk')" },
+       { "AddVertex 3",    "g.addV('person').property('id', 'ben').property('firstName', 'Ben').property('lastName', 'Miller').property('pk', 'pk')" },
+       { "AddVertex 4",    "g.addV('person').property('id', 'robin').property('firstName', 'Robin').property('lastName', 'Wakefield').property('pk', 'pk')" },
+       { "AddEdge 1",      "g.V('thomas').addE('knows').to(g.V('mary'))" },
+       { "AddEdge 2",      "g.V('thomas').addE('knows').to(g.V('ben'))" },
+       { "AddEdge 3",      "g.V('ben').addE('knows').to(g.V('robin'))" },
+       { "UpdateVertex",   "g.V('thomas').property('age', 44)" },
+       { "CountVertices",  "g.V().count()" },
+       { "Filter Range",   "g.V().hasLabel('person').has('age', gt(40))" },
+       { "Project",        "g.V().hasLabel('person').values('firstName')" },
+       { "Sort",           "g.V().hasLabel('person').order().by('firstName', decr)" },
+       { "Traverse",       "g.V('thomas').out('knows').hasLabel('person')" },
+       { "Traverse 2x",    "g.V('thomas').out('knows').hasLabel('person').out('knows').hasLabel('person')" },
+       { "Loop",           "g.V('thomas').repeat(out()).until(has('id', 'robin')).path()" },
+       { "DropEdge",       "g.V('thomas').outE('knows').where(inV().has('id', 'mary')).drop()" },
+       { "CountEdges",     "g.E().count()" },
+       { "DropVertex",     "g.V('thomas').drop()" },
     };
     ```
 
-* 使用上面提供的参数创建 `GremlinServer` 连接对象（第 52 行）：
+* 使用上面提供的参数创建新的 `GremlinServer` 和 `GremlinClient` 连接对象：
 
     ```csharp
-    var gremlinServer = new GremlinServer(hostname, port, enableSsl: true, 
-                                                    username: "/dbs/" + database + "/colls/" + collection, 
-                                                    password: authKey);
-    ```
+    var gremlinServer = new GremlinServer(EndpointUrl, port, enableSsl: true, 
+                                           username: "/dbs/" + database + "/colls/" + container, 
+                                           password: PrimaryKey);
 
-* 创建新的 `GremlinClient` 对象（第 56 行）：
-
-    ```csharp
-    var gremlinClient = new GremlinClient(gremlinServer, new GraphSON2Reader(), new GraphSON2Writer(), GremlinClient.GraphSON2MimeType);
-    ```
-
-* 通过将 `GremlinClient` 对象与异步任务配合使用来执行每一个 Gremlin 查询（第 63 行）。 此时会从上面定义的字典中读取 Gremlin 查询（第 26 行）：
-
-    ```csharp
-    var results = await gremlinClient.SubmitAsync<dynamic>(query.Value);
-    ```
-
-* 使用 Newtonsoft.Json 中的 `JsonSerializer` 类，检索结果并读取已格式化为字典的值：
-
-    ```csharp
-    foreach (var result in results)
+    using (var gremlinClient = new GremlinClient(gremlinServer, new GraphSON2Reader(), new GraphSON2Writer(), GremlinClient.GraphSON2MimeType))
     {
-        // The vertex results are formed as dictionaries with a nested dictionary for their properties
-        string output = JsonConvert.SerializeObject(result);
-        Console.WriteLine(String.Format("\tResult:\n\t{0}", output));
+
+    ```
+
+* 通过将 `GremlinClient` 对象与异步任务配合使用来执行每一个 Gremlin 查询。 可以从上一步中定义的字典读取 Gremlin 查询，并执行它们。 稍后使用 Newtonsoft.Json 包中的 `JsonSerializer` 类，获取结果并读取已格式化为字典的值：
+
+    ```csharp
+    foreach (var query in gremlinQueries)
+    {
+       Console.WriteLine(String.Format("Running this query: {0}: {1}", query.Key, query.Value));
+
+       // Create async task to execute the Gremlin query.
+       var resultSet = SubmitRequest(gremlinClient, query).Result;
+       if (resultSet.Count > 0)
+       {
+           Console.WriteLine("\tResult:");
+           foreach (var result in resultSet)
+           {
+               // The vertex results are formed as Dictionaries with a nested dictionary for their properties
+               string output = JsonConvert.SerializeObject(result);
+               Console.WriteLine($"\t{output}");
+           }
+           Console.WriteLine();
+       }
+
+       // Print the status attributes for the result set.
+       // This includes the following:
+       //  x-ms-status-code            : This is the sub-status code which is specific to Cosmos DB.
+       //  x-ms-total-request-charge   : The total request units charged for processing a request.
+       PrintStatusAttributes(resultSet.StatusAttributes);
+       Console.WriteLine();
     }
+
     ```
 
 ## <a name="update-your-connection-string"></a>更新连接字符串
@@ -164,29 +177,22 @@ Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服�
 
     ![复制终结点](./media/create-graph-dotnet/endpoint.png)
 
-    若要运行此示例，请复制 **Gremlin 终结点**值，删除末尾的端口号，也就是说，URI 将变为 `https://<your cosmos db account name>.gremlin.cosmos.azure.cn`
+    若要运行此示例，请复制 **Gremlin 终结点**值，删除末尾的端口号，也就是说，URI 将变为 `https://<your cosmos db account name>.gremlin.cosmos.azure.cn`。 终结点值应类似于 `testgraphacct.gremlin.cosmos.azure.cn`
 
-2. 在 Program.cs 中粘贴该值，使之覆盖第 19 行的 `hostname` 变量中的 `your-endpoint`。 
+1. 接下来，从 Azure 门户中导航到“密钥”选项卡并复制“主密钥”值。   
 
-    `"private static string hostname = "<your cosmos db account name>.gremlin.cosmos.azure.cn";`
+1. 复制帐户的 URI 和主键以后，请将其保存到运行应用程序的本地计算机的新环境变量中。 若要设置环境变量，请打开命令提示符窗口，并运行以下命令。 确保替换 <Your_Azure_Cosmos_account_URI> 和 <Your_Azure_Cosmos_account_PRIMARY_KEY> 值。
 
-    终结点值现在应如下所示：
+    ```console
+    setx EndpointUrl "https://<your cosmos db account name>.gremlin.cosmos.azure.cn"
+    setx PrimaryKey "<Your_Azure_Cosmos_account_PRIMARY_KEY>"
+    ```
 
-    `"private static string hostname = "testgraphacct.gremlin.cosmos.azure.cn";`
+1. 打开 *Program.cs* 文件，将 "database" 和 "container" 变量更新为在上面创建的数据库和容器的名称（也是图形名称）。
 
-3. 接下来，从门户中导航到“密钥”选项卡并复制“主密钥”值，将其粘贴到 `authkey` 变量中，替换第 21 行中的 `"your-authentication-key"` 占位符。   
+    `private static string database = "your-database-name";` `private static string container = "your-container-or-graph-name";`
 
-    `private static string authKey = "your-authentication-key";`
-
-4. 根据上面创建的数据库的信息，将数据库名称粘贴到第 22 行的 `database` 变量中。 
-
-    `private static string database = "your-database";`
-
-5. 同样，根据上面创建的容器的信息，将集合（也是图形名称）粘贴到第 23 行的 `collection` 变量中。 
-
-    `private static string collection = "your-collection-or-graph";`
-
-6. 保存 Program.cs 文件。 
+1. 保存 Program.cs 文件。 
 
 现已使用与 Azure Cosmos DB 进行通信所需的所有信息更新应用。 
 
@@ -223,5 +229,4 @@ Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服�
 > [!div class="nextstepaction"]
 > [使用 Gremlin 查询](tutorial-query-graph.md)
 
-<!--Update_Description: wording update, wording update -->
-
+<!-- Update_Description: update meta properties, wording update, update link -->

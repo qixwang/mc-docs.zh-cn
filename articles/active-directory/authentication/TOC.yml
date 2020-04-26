@@ -9,18 +9,30 @@
   items:
     - name: 启用自助式密码重置
       href: tutorial-enable-sspr.md
+    - name: 启用 Azure 多重身份验证
+      href: tutorial-enable-azure-mfa.md
     - name: 启用向本地进行密码写回
       href: tutorial-enable-sspr-writeback.md
 - name: 概念
   expanded: true
   items:
+    - name: 自助式密码重置
+      items:
+        - name: 密码重置工作原理
+          href: concept-sspr-howitworks.md
+        - name: 本地集成
+          href: concept-sspr-writeback.md
+        - name: 策略
+          href: concept-sspr-policy.md
+        - name: 许可证
+          href: concept-sspr-licensing.md
     - name: 多重身份验证
       items:
         - name: MFA 工作原理
           href: concept-mfa-howitworks.md
-        - name: 为用户授予许可
+        - name: 许可证
           href: concept-mfa-licensing.md
-        - name: MFA 常见问题解答
+        - name: 常见问题
           href: multi-factor-authentication-faq.md
 - name: 操作指南
   items:
@@ -32,16 +44,16 @@
           href: howto-sspr-authenticationdata.md
         - name: 用于 Windows 客户端的 SSPR
           href: howto-sspr-windows.md
-    - name: 基于云的 MFA
+    - name: Azure 多重身份验证
       items:
         - name: 部署指南
           href: howto-mfa-getstarted.md
-        - name: 每用户 MFA
-          href: howto-mfa-userstates.md
-        - name: 用户和设备设置
-          href: howto-mfa-userdevicesettings.md
         - name: 配置设置
           href: howto-mfa-mfasettings.md
+        - name: 配置用户
+          href: howto-mfa-userdevicesettings.md
+        - name: 启用每用户 MFA
+          href: howto-mfa-userstates.md
         - name: Directory 联合身份验证
           items:
             - name: Windows Server 2016 AD FS 适配器
@@ -51,12 +63,22 @@
         - name: 开始使用证书身份验证
           href: active-directory-certificate-based-authentication-get-started.md
           items:
-            - name: Android 设备上的 CBA
+            - name: 在 Android 设备上使用
               href: active-directory-certificate-based-authentication-android.md
-            - name: iOS 设备上的 CBA
+            - name: 在 iOS 设备上使用
               href: active-directory-certificate-based-authentication-ios.md
+    - name: 报告
+      items:
+        - name: 使用情况和见解
+          href: howto-authentication-methods-usage-insights.md
+        - name: SSPR 报告
+          href: howto-sspr-reporting.md
     - name: 故障排除
       items:
+        - name: 对 SSPR 进行故障排除
+          href: active-directory-passwords-troubleshoot.md
+        - name: SSPR 常见问题解答
+          href: active-directory-passwords-faq.md
         - name: MFA 常见问题解答
           href: multi-factor-authentication-faq.md
 - name: 参考
@@ -73,3 +95,5 @@
       href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD'
     - name: 定价
       href: 'https://www.azure.cn/pricing/details/active-directory/'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-active-directory'

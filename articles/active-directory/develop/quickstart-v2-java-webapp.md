@@ -1,6 +1,6 @@
 ---
 title: Microsoft 标识平台 Java Web 应用快速入门 | Azure
-description: 了解如何使用 OpenID Connect 在 Java Web 应用中实现 Microsoft 登录。
+description: 了解如何使用 OpenID Connect 在 Java Web 应用中实现 Microsoft 登录
 services: active-directory
 author: sangonzal
 manager: CelesteDG
@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 03/20/2020
+ms.date: 04/22/2020
 ms.author: v-junlch
 ms.custom: aaddev, scenarios:getting-started, languages:Java
-ms.openlocfilehash: f4504e0307dcfcbdefafea8de719ecc64cc66724
-ms.sourcegitcommit: 6568c59433d7e80ab06e9fe76d4791f761ed6775
+ms.openlocfilehash: d6adea1f20037561d5218b161727cb317ca1204f
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80243130"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126483"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>快速入门：向 Java Web 应用添加 Microsoft 登录功能
 
@@ -36,27 +36,27 @@ ms.locfileid: "80243130"
 >
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>选项 1：注册并自动配置应用，然后下载代码示例
 >
-> 1. 访问 [Azure 门户 - 应用注册](https://portal.azure.cn/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps)。
+> 1. 转到 [Azure 门户 - 应用注册](https://portal.azure.cn/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/JavaQuickstartPage/sourceType/docs)快速入门体验。
 > 1. 输入应用程序的名称并选择“注册”  。
-> 1. 遵照说明下载内容，系统会自动配置新应用程序。
+> 1. 按照门户快速入门体验中的说明下载自动配置的应用程序代码。
 >
 > ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>选项 2：注册并手动配置应用程序和代码示例
 >
 > #### <a name="step-1-register-your-application"></a>步骤 1：注册应用程序
 >
-> 若要注册应用程序并将应用的注册信息手动添加到解决方案，请执行以下步骤：
+> 若要注册应用程序并将应用的注册信息手动添加到应用程序，请执行以下步骤：
 >
 > 1. 使用工作或学校帐户登录到 [Azure 门户](https://portal.azure.cn)。
 > 1. 如果你的帐户有权访问多个租户，请在右上角选择该帐户，并将门户会话设置为所需的 Azure AD 租户。
 >
-> 1. 导航到面向开发人员的 Microsoft 标识平台的[应用注册](/active-directory/develop/)页。
+> 1. 导航到面向开发人员的 Microsoft 标识平台的[应用注册](https://portal.azure.cn/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)页。
 > 1. 选择“新注册”。 
 > 1. “注册应用程序”页出现后，请输入应用程序的注册信息： 
 >    - 在“名称”  部分输入一个会显示给应用用户的有意义的应用程序名称，例如 `java-webapp`。
->    - 暂时将“重定向 URI”留空，并选择“注册”。  
+>    - 选择“注册”  。
 > 1. 在“概述”页上，找到应用程序的“应用程序(客户端) ID”和“目录(租户) ID”值。    复制这些值供稍后使用。
 > 1. 从菜单中选择“身份验证”，然后添加以下信息  ：
->    - 在“重定向 URI”中添加 `https://localhost:8080/msal4jsample/secure/aad` 和 `https://localhost:8080/msal4jsample/graph/me`。 
+>    - 添加“Web”平台配置。   将这些 `https://localhost:8080/msal4jsample/secure/aad` 和 `https://localhost:8080/msal4jsample/graph/me` 添加为“重定向 URI”。 
 >    - 选择“保存”  。
 > 1. 从菜单中选择“证书和机密”  ，并在“客户端密码”  部分中，单击“新建客户端密码”  ：
 >
@@ -84,22 +84,26 @@ ms.locfileid: "80243130"
 
 > [!div class="sxs-lookup" renderon="portal"]
 > 下载项目并将 zip 文件解压缩到更靠近根文件夹的本地文件夹（例如，**C:\Azure-Samples**）
-> 
+>
 > 若要将 https 与 localhost 一起使用，请填写 server.ssl.key 属性。 若要生成自签名证书，请使用 keytool 实用工具（包含在 JRE 中）。
 >
 >  ```
 >   Example:
 >   keytool -genkeypair -alias testCert -keyalg RSA -storetype PKCS12 -keystore keystore.p12 -storepass password
 >
->   server.ssl.key-store-type=PKCS12  
->   server.ssl.key-store=classpath:keystore.p12  
->   server.ssl.key-store-password=password  
+>   server.ssl.key-store-type=PKCS12
+>   server.ssl.key-store=classpath:keystore.p12
+>   server.ssl.key-store-password=password
 >   server.ssl.key-alias=testCert
 >   ```
 >   将生成的 keystore 文件放在“resources”文件夹中。
-   
+
 > [!div renderon="portal" id="autoupdate" class="nextstepaction"]
-> [下载代码示例]()
+> [下载代码示例](https://github.com/Azure-Samples/ms-identity-java-webapp/archive/master.zip)
+
+> [!div class="sxs-lookup" renderon="portal"]
+> > [!NOTE]
+> > `Enter_the_Supported_Account_Info_Here`
 
 > [!div renderon="docs"]
 > #### <a name="step-3-configure-the-code-sample"></a>步骤 3：配置代码示例
@@ -126,9 +130,9 @@ ms.locfileid: "80243130"
 >   Example:
 >   keytool -genkeypair -alias testCert -keyalg RSA -storetype PKCS12 -keystore keystore.p12 -storepass password
 >
->   server.ssl.key-store-type=PKCS12  
->   server.ssl.key-store=classpath:keystore.p12  
->   server.ssl.key-store-password=password  
+>   server.ssl.key-store-type=PKCS12
+>   server.ssl.key-store=classpath:keystore.p12
+>   server.ssl.key-store-password=password
 >   server.ssl.key-alias=testCert
 >   ```
 >   将生成的 keystore 文件放在“resources”文件夹中。
@@ -153,8 +157,56 @@ ms.locfileid: "80243130"
     - *注销*：将当前用户从应用程序中注销，并将其重定向到主页。
     - *显示用户信息*：获取 Microsoft Graph 的令牌，并使用包含令牌的请求调用 Microsoft Graph，这会返回有关已登录用户的基本信息。
 
+##### <a name="running-from-tomcat"></a>从 Tomcat 运行
 
-   
+若要将 Web 示例部署到 Tomcat，需要对源代码进行一些更改。
+
+1. 打开 ms-identity-java-webapp/pom.xml
+    - 在 `<name>msal-web-sample</name>` 下添加 `<packaging>war</packaging>`
+    - 添加依赖项：
+
+         ```xml
+         <dependency>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-starter-tomcat</artifactId>
+          <scope>provided</scope>
+         </dependency>
+         ```
+
+2. 打开 ms-identity-java-webapp/src/main/java/com.microsoft.azure.msalwebsample/MsalWebSampleApplication
+
+    - 删除所有源代码，将其替换为以下内容：
+
+   ```Java
+    package com.microsoft.azure.msalwebsample;
+
+    import org.springframework.boot.SpringApplication;
+    import org.springframework.boot.autoconfigure.SpringBootApplication;
+    import org.springframework.boot.builder.SpringApplicationBuilder;
+    import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+
+    @SpringBootApplication
+    public class MsalWebSampleApplication extends SpringBootServletInitializer {
+
+     public static void main(String[] args) {
+      SpringApplication.run(MsalWebSampleApplication.class, args);
+     }
+
+     @Override
+     protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+      return builder.sources(MsalWebSampleApplication.class);
+     }
+    }
+   ```
+
+3. 打开命令提示符，转到项目的根文件夹，然后运行 `mvn package`
+    - 这会在 /targets 目录中生成一个 `msal-web-sample-0.1.0.war` 文件。
+    - 将此文件重命名为 `ROOT.war`
+    - 使用 Tomcat 或任何其他 J2EE 容器解决方案部署此 war 文件。
+        - 若要在 Tomcat 容器上部署，请将 .war 文件复制到 Tomcat 安装目录下的 webapps 文件夹中，然后启动 Tomcat 服务器。
+
+此 WAR 会自动托管在 https://localhost:8080/ 中。
+
 > [!IMPORTANT]
 > 本快速入门应用程序使用客户端机密将自己标识为机密客户端。 由于客户端机密是以纯文本形式添加到项目文件的，因此为了安全起见，建议在考虑将应用程序用作生产应用程序之前，使用证书来代替客户端机密。 有关如何使用证书的详细信息，请参阅[用于应用程序身份验证的证书凭据](/active-directory/develop/active-directory-certificate-credentials)。
 
@@ -169,6 +221,8 @@ MSAL for Java (MSAL4J) 是一个 Java 库，用于用户登录和请求令牌，
 
 使用 Maven 或 Gradle 将 MSAL4J 添加到应用程序，以通过对应用程序的 pom.xml (Maven) 或 build.gradle (Gradle) 文件进行以下更改来管理依赖项。
 
+在 pom.xml 中：
+
 ```XML
 <dependency>
     <groupId>com.microsoft.azure</groupId>
@@ -176,6 +230,8 @@ MSAL for Java (MSAL4J) 是一个 Java 库，用于用户登录和请求令牌，
     <version>1.0.0</version>
 </dependency>
 ```
+
+在 build.gradle 中：
 
 ```$xslt
 compile group: 'com.microsoft.azure', name: 'msal4j', version: '1.0.0'
@@ -200,11 +256,6 @@ import com.microsoft.aad.msal4j.*;
 
 > [!div class="nextstepaction"]
 > [授权代码 Oauth 流](/active-directory/develop/v2-oauth2-auth-code-flow)
-
-帮助我们改进 Microsoft 标识平台。 通过完成简短的两问题调查，告诉我们你的想法。
-
-> [!div class="nextstepaction"]
-> [Microsoft 标识平台调查](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyKrNDMV_xBIiPGgSvnbQZdUQjFIUUFGUE1SMEVFTkdaVU5YT0EyOEtJVi4u)
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 

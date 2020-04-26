@@ -50,8 +50,6 @@
           href: ../develop/access-tokens.md?toc=/active-directory/azuread-dev/toc.json&bc=/active-directory/azuread-dev/breadcrumb/toc.json
         - name: 证书凭据
           href: ../develop/active-directory-certificate-credentials.md?toc=/active-directory/azuread-dev/toc.json&bc=/active-directory/azuread-dev/breadcrumb/toc.json
-        - name: SAML 令牌
-          href: ../develop/reference-saml-tokens.md?toc=/active-directory/azuread-dev/toc.json&bc=/active-directory/azuread-dev/breadcrumb/toc.json
     - name: 应用程序配置
       items:
         - name: 应用程序和服务主体

@@ -5,19 +5,19 @@ metadata:
   title: 语音翻译文档 - 教程和 API 参考 - Azure 认知服务 | Microsoft Docs
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
-  author: IEvangelist
+  author: trevorbye
   manager: nitinme
   ms.service: speech-service
   ms.topic: landing-page
-  origin.date: 03/10/2020
-  ms.date: 03/16/2020
+  origin.date: 04/13/2020
+  ms.date: 04/20/2020
   ms.author: v-tawe
-  ms.openlocfilehash: 14d1cb8c1493a990140e38f3604a01fb23a82281
-  ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
+  ms.openlocfilehash: d8eb77ce752cc0ed917acfbb9cefef6b62bce32f
+  ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/24/2020
-  ms.locfileid: "80151682"
+  ms.lasthandoff: 04/24/2020
+  ms.locfileid: "82126800"
 landingContent:
 - title: 关于语音翻译
   linkLists:
@@ -25,6 +25,8 @@ landingContent:
     links:
     - text: 什么是语音翻译？
       url: speech-translation.md
+    - text: 语音翻译基础知识
+      url: speech-translation-basics.md
   - linkListType: quickstart
     links:
     - text: 将语音翻译为文本

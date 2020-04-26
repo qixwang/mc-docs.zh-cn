@@ -9,15 +9,15 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 origin.date: 11/05/2019
-ms.date: 03/16/2020
+ms.date: 04/20/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 2d7d934f7ce476c08c52c6db3a663c95eb35ea25
-ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
+ms.openlocfilehash: 21e2f3b2ddf59bc6b719229220c4347d625b8d9f
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80151540"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134991"
 ---
 # <a name="speech-service-supported-regions"></a>语音服务支持的区域
 
@@ -29,7 +29,7 @@ ms.locfileid: "80151540"
 
 ## <a name="speech-sdk"></a>语音 SDK
 
-在[语音 SDK](speech-sdk.md) 中，区域指定为字符串（例如，在 C# 语音 SDK 中用作 `SpeechConfig.FromHost` 的参数）。
+在[语音 SDK](speech-sdk.md) 中，区域指定为字符串（例如，在 C# 语音 SDK 中用作 `SpeechConfig.FromSubscription` 的参数）。
 
 ### <a name="speech-to-text-text-to-speech-and-translation"></a>语音转文本、文本转语音和翻译
 
@@ -39,7 +39,7 @@ ms.locfileid: "80151540"
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-region-identifier.md)]
 
-如果使用[语音 SDK](speech-sdk.md)，则区域由**区域标识符**指定（例如，作为 `SpeechConfig.FromHost` 的参数）。 请确保该区域与订阅的区域匹配。
+如果使用[语音 SDK](speech-sdk.md)，则区域由**区域标识符**指定（例如，作为 `SpeechConfig.FromSubscription` 的参数）。 请确保该区域与订阅的区域匹配。
 
 <!-- ### Intent recognition -->
 

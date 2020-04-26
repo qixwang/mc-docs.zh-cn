@@ -4,15 +4,15 @@ description: 获取不同版本的 Azure Cosmos 模拟器发行说明并下载�
 ms.service: cosmos-db
 ms.topic: tutorial
 author: rockboyfor
-ms.author: v-yeche
 origin.date: 06/20/2019
-ms.date: 02/10/2020
-ms.openlocfilehash: 3bd6da73ef2e5fd316cf87d232941bc74e33cfce
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 04/27/2020
+ms.author: v-yeche
+ms.openlocfilehash: e160f7cc47e63388331b96731bded0c976992b76
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77028931"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134620"
 ---
 # <a name="azure-cosmos-emulator---release-notes-and-download-information"></a>Azure Cosmos 模拟器 - 发行说明和下载信息
 
@@ -26,6 +26,10 @@ ms.locfileid: "77028931"
 |**入门**|[使用 Azure Cosmos 模拟器在本地开发](local-emulator.md)|
 
 ## <a name="release-notes"></a>发行说明
+
+### <a name="291"></a>2.9.1
+
+- 此版本修复了查询 API 支持中的几个问题，并恢复了与旧版操作系统（例如 Windows Server 2012）的兼容性。
 
 ### <a name="290"></a>2.9.0
 

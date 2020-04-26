@@ -12,12 +12,12 @@ ms.author: v-jay
 ms.reviewer: carlrab
 origin.date: 08/20/2019
 ms.date: 12/16/2019
-ms.openlocfilehash: 15bedd7bce2018b962a9f8eef5a70e98817befa7
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 9c76ee5723a0246bb53bcb109c219d767b9cb412
+ms.sourcegitcommit: 4aeecfcc59cb42ba0b712a729d278d03bffc719a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77155741"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81791023"
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>使用 SQL 数据同步跨多个云和本地数据库同步数据
 

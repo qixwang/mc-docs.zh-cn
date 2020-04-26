@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 origin.date: 11/05/2019
-ms.date: 02/17/2020
+ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: 925b650862848efd228e0cdb7098825b19bfff37
-ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
+ms.openlocfilehash: 5addb8bed41adae5ac4ba46d9fa808dd45e4e6c3
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028184"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126942"
 ---
 # <a name="support-and-help-options"></a>支持和帮助选项
 

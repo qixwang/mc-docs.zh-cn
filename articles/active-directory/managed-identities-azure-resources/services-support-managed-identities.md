@@ -4,18 +4,18 @@ description: 支持 Azure 资源托管标识和 Azure AD 身份验证的服务�
 services: active-directory
 author: MarkusVi
 ms.author: v-junlch
-ms.date: 03/24/2020
+ms.date: 04/23/2020
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: msi
 manager: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6eb1ffa43f24eac522d79fd656f1ac24e941bfb2
-ms.sourcegitcommit: 6568c59433d7e80ab06e9fe76d4791f761ed6775
+ms.openlocfilehash: 771641f7e6eca92b13dc95bac47a340cabdfacd8
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80243049"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126522"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>支持 Azure 资源托管标识的服务
 
@@ -32,8 +32,8 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 | 托管标识类型 | 所有正式发布版<br>全球 Azure 区域 | Azure Government | Azure 德国 | Azure 中国世纪互联 |
 | --- | :-: | :-: | :-: | :-: |
-| 系统分配 | ![可用][check] | 预览 | 预览 | 预览 | 
-| 用户分配 | ![可用][check] | 预览 | 预览 | 预览 |
+| 系统分配 | ![可用][check] | ![可用][check] | 预览 | 预览 | 
+| 用户分配 | ![可用][check] | ![可用][check] | 预览 | 预览 |
 
 请参阅以下列表来配置 Azure 虚拟机的托管标识（在可用的区域中）：
 
@@ -63,7 +63,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 | 托管标识类型 | 所有正式发布版<br>全球 Azure 区域 | Azure Government | Azure 德国 | Azure 中国世纪互联 |
 | --- | :-: | :-: | :-: | :-: |
 | 系统分配 | ![可用][check] | ![可用][check] | ![可用][check] | ![可用][check] |
-| 用户分配 | ![可用][check] | 不可用 | 不可用 | 不可用 |
+| 用户分配 | ![可用][check] | ![可用][check]  | ![可用][check]  | ![可用][check] |
 
 请参阅以下列表来配置 Azure 应用服务的托管标识（在可用的区域中）：
 
@@ -77,7 +77,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 托管标识类型 |所有正式发布版<br>全球 Azure 区域 | Azure Government | Azure 德国 | Azure 中国世纪互联 |
 | --- | :-: | :-: | :-: | :-: |
 | 系统分配 | ![可用][check] | ![可用][check] | ![可用][check] | ![可用][check] |
-| 用户分配 | ![可用][check] | 不可用 | 不可用 | 不可用 |
+| 用户分配 | ![可用][check] | ![可用][check]  | ![可用][check]  | ![可用][check]  |
 
 请参阅以下列表来配置 Azure Functions 的托管标识（在可用的区域中）：
 
@@ -96,7 +96,8 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 请参阅以下列表来配置 Azure 逻辑应用的托管标识（在可用的区域中）：
 
-- [Azure Resource Manager 模板](/app-service/overview-managed-identity)
+- [Azure 门户](/logic-apps/create-managed-service-identity#enable-system-assigned-identity-in-azure-portal)
+- [Azure Resource Manager 模板](/logic-apps/logic-apps-azure-resource-manager-templates-overview)
 
 ### <a name="azure-data-factory-v2"></a>Azure 数据工厂 V2
 
@@ -116,8 +117,8 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 托管标识类型 | 所有正式发布版<br>全球 Azure 区域 | Azure Government | Azure 德国 | Azure 中国世纪互联 |
 | --- | :-: | :-: | :-: | :-: |
-| 系统分配 | ![可用][check] | ![可用][check] | 不可用 | 不可用 |
-| 用户分配 | 不可用 | 不可用 | 不可用 | 不可用 |
+| 系统分配 | ![可用][check] | ![可用][check] | 不可用 | ![可用][check] |
+| 用户分配 | 预览 | 预览 | 不可用 | 预览 |
 
 请参阅以下列表来配置 Azure API 管理的托管标识（在可用的区域中）：
 
@@ -257,6 +258,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 | Azure Government | | ![可用][check] |
 | Azure 德国 |  | ![可用][check] |
 | Azure 中国世纪互联 | `https://*.asazure.chinacloudapi.cn` | ![可用][check] |
+
 
 
 [check]: ./media/services-support-managed-identities/check.png "可用"

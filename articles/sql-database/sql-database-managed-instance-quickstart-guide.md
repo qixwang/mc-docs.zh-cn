@@ -12,12 +12,12 @@ ms.author: v-jay
 ms.reviewer: sstein, carlr
 origin.date: 07/11/2019
 ms.date: 11/04/2019
-ms.openlocfilehash: 932c9323de61c52c5b0f8887271800e91b4caf35
-ms.sourcegitcommit: 97fa37512f79417ff8cd86e76fe62bac5d24a1bd
+ms.openlocfilehash: 1fc632f8e75a23a0ac95f4bebe315ec718b1e446
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73041234"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82127035"
 ---
 # <a name="getting-started-with-azure-sql-database-managed-instance"></a>Azure SQL 数据库托管实例入门
 
@@ -31,7 +31,7 @@ ms.locfileid: "73041234"
 
 作为第一步，你需要使用将放置托管实例的网络环境创建第一个托管实例，并启用从要执行查询的计算机或虚拟机到托管实例的连接。 可以使用下列指南：
 
-- [使用 Azure 门户创建托管实例](sql-database-managed-instance-get-started.md)。 在 Azure 门户中配置所需的参数（用户名/密码、核心数、最大存储量），并自动创建 Azure 网络环境，而无需了解网络详细信息和基础结构要求。 只需确保有一个当前允许创建托管实例的[订阅类型](sql-database-managed-instance-resource-limits.md#supported-subscription-types)即可。 若要使用自己的网络，或者要自定义网络，请参阅[为 Azure SQL 数据库托管实例配置现有虚拟网络](sql-database-managed-instance-configure-vnet-subnet.md)或[为 Azure SQL 数据库托管实例创建虚拟网络](sql-database-managed-instance-create-vnet-subnet.md)。
+- [使用 Azure 门户创建托管实例](sql-database-managed-instance-get-started.md)。 在 Azure 门户中配置所需的参数（用户名/密码、核心数、最大存储量），并自动创建 Azure 网络环境，而无需了解网络详细信息和基础结构要求。 若要使用自己的网络，或者要自定义网络，请参阅[为 Azure SQL 数据库托管实例配置现有虚拟网络](sql-database-managed-instance-configure-vnet-subnet.md)或[为 Azure SQL 数据库托管实例创建虚拟网络](sql-database-managed-instance-create-vnet-subnet.md)。
 - 托管实例在其自身的不带公共终结点的 VNet 中创建。 若要进行客户端应用程序访问，可“在同一 VNet（不同子网）中创建 VM”，或参考以下快速入门之一“从客户端计算机与 VNet 建立点到站点 VPN 连接”   ：
   - 在托管实例上启用[公共终结点](sql-database-managed-instance-public-endpoint-configure.md)，以便从环境直接访问数据。
   - [在托管实例 VNet 中创建 Azure 虚拟机](sql-database-managed-instance-configure-vm.md)以建立客户端应用程序（包括 SQL Server Management Studio）连接。

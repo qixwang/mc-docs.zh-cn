@@ -30,8 +30,6 @@
       href: ../vpn-gateway/point-to-site-about.md?toc=%2fvirtual-wan%2ftoc.json
 - name: 操作指南
   items:
-    - name: 配置全局 VNet 对等互连
-      href: global-peering-vnet.md
     - name: 升级虚拟 WAN SKU
       href: upgrade-virtual-wan.md
     - name: 站点到站点

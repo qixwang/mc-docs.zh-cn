@@ -6,13 +6,13 @@ ms.author: v-jay
 ms.service: postgresql
 ms.topic: conceptual
 origin.date: 01/23/2020
-ms.date: 02/10/2020
-ms.openlocfilehash: 90d8024cd0911f6c6adaf69b20579750c10e5f49
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.date: 04/27/2020
+ms.openlocfilehash: b86d85556572d2c8ee4a723077b66bb3a9d78f25
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77068316"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126976"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL（单一服务器）中的只读副本
 
@@ -79,14 +79,14 @@ EXTRACT (EPOCH FROM now() - pg_last_xact_replay_timestamp());
 在 PostgreSQL 版本 10 中：
 
 ```SQL
-select pg_wal_lsn_diff(pg_current_wal_lsn(), stat.replay_lsn) 
+select pg_wal_lsn_diff(pg_current_wal_lsn(), replay_lsn) 
 AS total_log_delay_in_bytes from pg_stat_replication;
 ```
 
 在 PostgreSQL 9.6 和更低版本中：
 
 ```SQL
-select pg_xlog_location_diff(pg_current_xlog_location(), stat.replay_location) 
+select pg_xlog_location_diff(pg_current_xlog_location(), replay_location) 
 AS total_log_delay_in_bytes from pg_stat_replication;
 ```
 
@@ -127,7 +127,7 @@ AS total_log_delay_in_bytes from pg_stat_replication;
 
 本部分汇总了有关只读副本功能的注意事项。
 
-### <a name="prerequisites"></a>必备条件
+### <a name="prerequisites"></a>先决条件
 创建只读副本之前，必须将主服务器上的 `azure.replication_support` 参数设置为 **REPLICA**。 更改此参数后，需要重启服务器才能使更改生效。 `azure.replication_support` 参数仅适用于“常规用途”和“内存优化”层。
 
 ### <a name="new-replicas"></a>新副本

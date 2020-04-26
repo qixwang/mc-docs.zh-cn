@@ -12,12 +12,12 @@ ms.author: v-jay
 ms.reviewer: sashan, moslake, carlrab
 origin.date: 01/30/2020
 ms.date: 02/17/2020
-ms.openlocfilehash: 5ed3e4044ea61054e73bc3f2688ff3e48ee3cf65
-ms.sourcegitcommit: 90660563b5d65731a64c099b32fb9ec0ce2c51c6
+ms.openlocfilehash: 127b585ed6980e84b441937214b2775eea2c8d22
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80341777"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126602"
 ---
 # <a name="azure-sql-database-service-tiers"></a>Azure SQL 数据库服务层级
 
@@ -47,13 +47,13 @@ Azure SQL 数据库基于 SQL Server 数据库引擎体系结构，该体系结�
 | **TempDB 大小** | 单一数据库/弹性池 | [每个 vCore 32 GB](sql-database-vcore-resource-limits-single-databases.md#general-purpose---provisioned-compute---gen4) | [每个 vCore 32 GB](sql-database-vcore-resource-limits-single-databases.md#hyperscale---provisioned-compute---gen5) | [每个 vCore 32 GB](sql-database-vcore-resource-limits-single-databases.md#business-critical---provisioned-compute---gen4) |
 | | 托管实例  | [每个 vCore 24 GB](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) | 空值 | 最大 2 TB - [受存储大小限制](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) |
 | **日志写入吞吐量** | 单一数据库 | [每个 vCore 1.875 MB/秒（最大 30 MB/秒）](sql-database-vcore-resource-limits-single-databases.md#general-purpose---provisioned-compute---gen4) | 100 MB/秒 | [每个 vCore 6 MB/秒（最大 96 MB/秒）](sql-database-vcore-resource-limits-single-databases.md#business-critical---provisioned-compute---gen4) |
-| | 托管实例 | [每个 vCore 3 MB/秒（最大 22 MB/秒）](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) | 不适用 | [每个 vCore 4 MB/秒（最大 48 MB/秒）](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) |
-|**可用性**|全部| 99.99% |  [99.95%（具有一个次要副本），99.99%（具有更多副本）](sql-database-service-tier-hyperscale-faq.md#what-slas-are-provided-for-a-hyperscale-database) | 99.99% <br/> [99.995%（具有区域冗余单一数据库）](https://azure.microsoft.com/blog/understanding-and-leveraging-azure-sql-database-sla/) |
+| | 托管实例 | [每个 vCore 3 MB/秒（最大 22 MB/秒）](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) | 空值 | [每个 vCore 4 MB/秒（最大 48 MB/秒）](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) |
+|**可用性**|全部| 99.99% |  [99.95%（具有一个次要副本），99.99%（具有更多副本）](sql-database-service-tier-hyperscale-faq.md#what-slas-are-provided-for-a-hyperscale-database) | 99.99% |
 |**备份**|全部|RA-GRS，7-35 天（默认为 7 天）| RA-GRS，7 天，恒定的时间时点恢复 (PITR) | RA-GRS，7-35 天（默认为 7 天） |
-|**内存中 OLTP** | | 不适用 | 不适用 | 可用 |
+|**内存中 OLTP** | | 空值 | 空值 | 可用 |
 |**只读副本**| | 0 内置 <br> 0 - 4 使用[异地复制](sql-database-active-geo-replication.md) | 0 - 4 内置 | 1 内置，包含在价格中 <br> 0 - 4 使用[异地复制](sql-database-active-geo-replication.md) |
 |**定价/计费** | 单一数据库 | [vCore、保留存储和备份存储](https://azure.cn/pricing/details/sql-database/)收费。 <br/>IOPS 不收取费用。 | [每个副本的 vCore 和已用存储](https://azure.cn/pricing/details/sql-database/)收费。 <br/>尚未收费的 IOPS。 | [vCore、保留存储和备份存储](https://azure.cn/pricing/details/sql-database/)收费。 <br/>IOPS 不收取费用。 |
-|| 托管实例 | [vCore、保留存储和备份存储](https://azure.cn/pricing/details/sql-database/)收费。 <br/>IOPS 不收取费用| 空值 | [vCore、保留存储和备份存储](https://azure.cn/pricing/details/sql-database/)收费。 <br/>IOPS 不收取费用。| 
+|| 托管实例 | [vCore、保留存储和备份存储](https://azure.cn/pricing/details/sql-database/)收费。 <br/>IOPS 不收取费用| 不适用 | [vCore、保留存储和备份存储](https://azure.cn/pricing/details/sql-database/)收费。 <br/>IOPS 不收取费用。| 
 |**折扣模型**| | [Azure 混合权益](sql-database-azure-hybrid-benefit.md)（在开发/测试订阅中不可用）<br/>[提前支付](/billing/billing-sign-up-azure-account-and-get-a-pia-subscription)开发/测试订阅| [Azure 混合权益](sql-database-azure-hybrid-benefit.md)（在开发/测试订阅中不可用）<br/>[提前支付](/billing/billing-sign-up-azure-account-and-get-a-pia-subscription)开发/测试订阅| [Azure 混合权益](sql-database-azure-hybrid-benefit.md)（在开发/测试订阅中不可用）<br/>[提前支付](/billing/billing-sign-up-azure-account-and-get-a-pia-subscription)开发/测试订阅|
 
 有关详细信息，请参阅[单一数据库 (vCore)](sql-database-vcore-resource-limits-single-databases.md)、[单一数据库池 (vCore)](sql-database-dtu-resource-limits-single-databases.md)、[单一数据库 (DTU)](sql-database-dtu-resource-limits-single-databases.md)、[单一数据库池 (DTU)](sql-database-dtu-resource-limits-single-databases.md)和[托管实例](sql-database-managed-instance-resource-limits.md)页中服务层级之间的详细差异。

@@ -12,13 +12,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: ''
 origin.date: 08/22/2019
-ms.date: 03/16/2020
-ms.openlocfilehash: 5287679f80bce8d4f207863067290090a49aa32d
-ms.sourcegitcommit: dc862610e2169c1fce6fb0ae9eb7dd7567f86a0a
+ms.date: 04/27/2020
+ms.openlocfilehash: a7cbc82f13b76395d6f59f1db64af94027d949bd
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79293770"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82127029"
 ---
 # <a name="choose-the-right-deployment-option-in-azure-sql"></a>在 Azure SQL 中选择适当的部署选项
 
@@ -120,7 +120,7 @@ ms.locfileid: "79293770"
 
 对于 **SQL 虚拟机**，Azure 提供 99.95% 的可用性 SLA（仅涵盖虚拟机）。 此 SLA 不涵盖 VM 上运行的进程（例如 SQL Server），并且要求你在可用性集中托管至少两个 VM 实例。 有关最新信息，请参阅 [VM SLA](https://www.azure.cn/support/sla/virtual-machines/)。 为了在 VM 中实现数据库高可用性 (HA)，应在 SQL Server 中配置一个受支持的高可用性选项，例如 [AlwaysOn 可用性组](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server)。 使用支持的高可用性选项不会提供更多 SLA，但使用户能够实现 >99.99% 的数据库可用性。
 
-### <a name="market"></a>迁移到 Azure 的时机
+### <a name="time-to-move-to-azure"></a><a name="market"></a>迁移到 Azure 的时机
 
 当开发人员工作效率和新解决方案的快速面市时间至关重要时，**SQL 数据库**（单一数据库或弹性池）是云设计应用程序的理想解决方案。 此选项提供类似于编程 DBA 的功能，非常适合云架构师和开发人员，因为它能降低管理基础操作系统和数据库的需求。
 

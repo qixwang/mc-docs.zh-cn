@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-origin.date: 08/24/2019
-ms.date: 03/16/2020
+origin.date: 04/04/2020
+ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: 89abc82be7fe8a5ec9125f7dc8f196ba87eb9a69
-ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
+ms.openlocfilehash: 9a511092d09fe2bde4074ab8a1d4114e31e634d3
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80151617"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82150913"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -24,7 +24,7 @@ ms.locfileid: "80151617"
 
 > [!div class="checklist"]
 > * [创建一个 Azure 搜索资源](../../../../get-started.md)
-> * [设置开发环境并创建空项目](../../../../quickstarts/setup-platform.md?tabs=windows)
+> * [设置开发环境并创建空项目](../../../../quickstarts/setup-platform.md?tabs=windows&pivots=programming-language-cpp)
 
 ## <a name="add-sample-code"></a>添加示例代码
 
@@ -41,9 +41,9 @@ ms.locfileid: "80151617"
     
     void synthesizeSpeech()
     {
-        // Creates an instance of a speech config with specified host and subscription key.
+        // Creates an instance of a speech config with specified subscription key and service region.
         // Replace with your own subscription key and service region (e.g., "chinaeast2").
-        auto config = SpeechConfig::FromHost("https://YourServiceRegion.tts.speech.azure.cn/", "YourSubscriptionKey");
+        auto config = SpeechConfig::FromSubscription("YourSubscriptionKey", "YourServiceRegion");
     
         // Creates a speech synthesizer using the default speaker as audio output. The default spoken language is "en-us".
         auto synthesizer = SpeechSynthesizer::FromConfig(config);
@@ -104,7 +104,8 @@ ms.locfileid: "80151617"
 
 ## <a name="next-steps"></a>后续步骤
 
-[!INCLUDE [footer](./footer.md)]
+[!INCLUDE [Speech synthesis basics](../../text-to-speech-next-steps.md)]
+
 
 <!-- ## See also -->
 

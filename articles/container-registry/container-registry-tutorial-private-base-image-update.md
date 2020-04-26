@@ -3,20 +3,20 @@ title: 教程 - 通过基础映像更新触发映像生成
 description: 在本教程中，你将配置一个 Azure 容器注册表任务，以便在更新另一个专用 Azure 容器注册表中的基础映像时，在云中自动触发容器映像生成。
 ms.topic: tutorial
 origin.date: 01/22/2020
-ms.date: 03/09/2020
+ms.date: 04/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: b1977ef9a73f65e3bcc64994ce3cb74119adb265
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.openlocfilehash: d6bc7d50b5a9e0900a445ddb19b1e4cb52d39777
+ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78850518"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82093509"
 ---
 <!--Verify sucessfully-->
 <!--Part content of released articles-->
 # <a name="tutorial-automate-container-image-builds-when-a-base-image-is-updated-in-another-private-container-registry"></a>教程：在更新另一个专用 Azure 容器注册表中的基础映像时自动化容器映像生成 
 
-ACR 任务支持在容器基础映像更新时自动化的生成执行，例如在某个基础映像中修补 OS 或应用程序框架时。 本教程介绍当容器基础映像已推送到注册表时，如何在 ACR 任务中创建在云中触发生成的任务。
+ACR 任务支持在容器的[基础映像更新](container-registry-tasks-base-images.md)时自动化映像生成，例如在某个基础映像中修补 OS 或应用程序框架时。 
 
 本教程介绍在将容器的基础映像推送到另一个 Azure 容器注册表时，如何创建在云中触发生成的 ACR 任务。 你还可以尝试在某篇教程中学习如何创建 ACR 任务，以便在将基本映像推送到[同一 Azure 容器注册表](container-registry-tutorial-base-image-update.md)时触发映像生成。
 
@@ -307,9 +307,6 @@ docker stop updatedapp
 [az-acr-task-run]: https://docs.azure.cn/cli/acr/task?view=azure-cli-latest#az-acr-task-run
 [az-acr-task-show]: https://docs.azure.cn/cli/acr/task?view=azure-cli-latest#az-acr-task-show
 [az-acr-task-credential-add]: https://docs.microsoft.com/cli/azure/acr/task/credential?view=azure-cli-latest#az-acr-task-credential-add
-
-<!--CORRECT ON acr/task/credential TO REDIRECT TO https://docs.microsoft.com/-->
-
 [az-acr-login]: https://docs.azure.cn/cli/acr?view=azure-cli-latest#az-acr-login
 [az-acr-task-list-runs]: https://docs.azure.cn/cli/acr/task?view=azure-cli-latest#az-acr-task-list-runs
 [az-acr-task]: https://docs.azure.cn/cli/acr?view=azure-cli-latest#az-acr-task

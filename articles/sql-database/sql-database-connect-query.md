@@ -1,5 +1,5 @@
 ---
-title: Azure SQL 数据库连接和查询快速入门 | Microsoft Docs
+title: 连接和查询快速入门
 description: 演示如何连接和查询 Azure SQL 数据库的 Azure SQL 数据库快速入门。
 services: sql-database
 ms.service: sql-database
@@ -11,13 +11,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: ''
 origin.date: 12/18/2018
-ms.date: 11/04/2019
-ms.openlocfilehash: cb57a56ca37b470629b00475e33eaac361c5ee48
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.date: 04/27/2020
+ms.openlocfilehash: 5044bd2fa6114fffc763b396e8893948f362cfce
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79292236"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126683"
 ---
 # <a name="quickstarts-azure-sql-database-connect-and-query"></a>快速入门：Azure SQL 数据库连接和查询
 
@@ -76,7 +76,7 @@ Azure 提供或支持的所有驱动程序使用传输层安全性 (TLS) 连接 
 | C# | Windows、Linux、macOS | [实体框架](https://docs.microsoft.com/ef)<br>[实体框架核心](https://docs.microsoft.com/ef/core/index) |
 | Java | Windows、Linux、macOS |[Hibernate ORM](https://hibernate.org/orm)|
 | PHP | Windows、Linux、macOS | [Laravel (Eloquent)](https://laravel.com/docs/eloquent)<br>[Doctrine](https://www.doctrine-project.org/projects/orm.html) |
-| Node.js | Windows、Linux、macOS | [Sequelize ORM](https://docs.sequelizejs.com) |
+| Node.js | Windows、Linux、macOS | [Sequelize ORM](https://sequelize.org/) |
 | Python | Windows、Linux、macOS |[Django](https://www.djangoproject.com/) |
 | Ruby | Windows、Linux、macOS | [Ruby on Rails](https://rubyonrails.org/) |
 ||||

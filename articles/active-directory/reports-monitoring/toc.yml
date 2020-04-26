@@ -22,6 +22,8 @@
   items:
     - name: 报告
       items:
+        - name: 管理 Azure AD 中的非活动用户帐户
+          href: howto-manage-inactive-user-accounts.md
         - name: 配置报告 API 的先决条件
           href: howto-configure-prerequisites-for-reporting-api.md
     - name: 故障排除

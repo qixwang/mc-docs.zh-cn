@@ -15,18 +15,21 @@ origin.date: 12/09/2019
 ms.date: 01/13/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 6cb987f10f63047a31b458befc4532c09ca9ce12
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.openlocfilehash: 4c76cbbd1e3a337931e0045adaf367321d8d95c2
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600608"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126924"
 ---
 # <a name="application-gateway-integration-with-service-endpoints"></a>应用程序网关与服务终结点的集成
 应用服务有三种变体，需要对它们采用略微不同的配置，才能使其与 Azure 应用程序网关集成。 这些变体包括普通应用服务（也称为多租户）、内部负载均衡器 (ILB) 应用服务环境 (ASE) 和外部 ASE。 本文逐步介绍如何使用应用服务（多租户）对其进行配置，并讨论有关 ILB 和外部 ASE 的注意事项。
 
 ## <a name="integration-with-app-service-multi-tenant"></a>与应用服务（多租户）集成
-应用服务（多租户）具有面向 Internet 的公共终结点。 使用[服务终结点](../../virtual-network/virtual-network-service-endpoints-overview.md)可以只允许来自 Azure 虚拟网络中特定子网的流量，并阻止其他所有流量。 在以下方案中，我们将使用此功能来确保应用服务实例只能接收来自特定应用程序网关实例的流量。
+
+<!-- Using [service endpoints](../../virtual-network/virtual-network-service-endpoints-overview.md) you can allow traffic only from a specific subnet within an Azure Virtual Network and block everything else. -->
+
+应用服务（多租户）具有面向 Internet 的公共终结点。 在以下方案中，我们将使用此功能来确保应用服务实例只能接收来自特定应用程序网关实例的流量。
 
 ![应用程序网关与应用服务的集成](./media/app-gateway-with-service-endpoints/service-endpoints-appgw.png)
 
@@ -37,7 +40,7 @@ ms.locfileid: "75600608"
 1. 参考应用服务文档中的某篇快速入门（例如 [.Net Core 快速入门](../../app-service/app-service-web-get-started-dotnet.md)）创建应用服务
 2. 参考[门户快速入门](../../application-gateway/quick-create-portal.md)创建应用程序网关，但请跳过“添加后端目标”部分。
 3. [将应用服务配置为应用程序网关中的后端](../../application-gateway/configure-web-app-portal.md)，但请跳过“限制访问”部分。
-4. 最后，[使用服务终结点创建访问限制](../../app-service/app-service-ip-restrictions.md#service-endpoints)。
+4. 最后，[使用服务终结点创建访问限制](../../app-service/app-service-ip-restrictions.md)。
 
 现在，可以通过应用程序网关访问应用服务，但如果尝试直接访问应用服务，将会收到 403 HTTP 错误，表示网站已停止。
 

@@ -7,18 +7,17 @@ metadata:
   manager: daveba
   ms.author: v-junlch
   ms.collection: na
-  origin.date: 08/27/2019
-  ms.date: 10/09/2019
+  ms.date: 04/23/2020
   ms.service: active-directory
   ms.subservice: na
   ms.topic: landing-page
   services: active-directory
-  ms.openlocfilehash: 46c7cc7177753568b3e48bd2208c417790faa3fa
-  ms.sourcegitcommit: 74f50c9678e190e2dbb857be530175f25da8905e
+  ms.openlocfilehash: 22a93a35d3d961461d56e8e6fc891df0c5da260d
+  ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/12/2019
-  ms.locfileid: "72292042"
+  ms.lasthandoff: 04/24/2020
+  ms.locfileid: "82126368"
 landingContent:
 - title: 关于 Azure AD
   linkLists:
@@ -62,5 +61,7 @@ landingContent:
     links:
     - text: 添加或删除用户
       url: add-users-azure-active-directory.md
+    - text: 向用户分配角色
+      url: active-directory-users-assign-role-azure-portal.md
     - text: 将许可证分配给用户
       url: license-users-groups.md

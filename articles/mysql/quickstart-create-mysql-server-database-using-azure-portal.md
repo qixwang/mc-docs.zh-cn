@@ -6,14 +6,14 @@ ms.author: v-jay
 ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
-origin.date: 12/02/2019
-ms.date: 02/10/2020
-ms.openlocfilehash: d035bcc0dd360a44f1362ac5d52b6725d2c7ca35
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+origin.date: 3/20/2020
+ms.date: 04/27/2020
+ms.openlocfilehash: 04006685784874a95b55821bb6c91a21a4df2c90
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77068045"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126794"
 ---
 # <a name="create-an-azure-database-for-mysql-server-by-using-the-azure-portal"></a>使用 Azure 门户创建 Azure Database for MySQL 服务器
 
@@ -61,7 +61,7 @@ Azure Database for MySQL 是一种托管服务，可用于在云中运行、管�
 
    ![“创建服务器 - 定价层”窗口](./media/quickstart-create-mysql-server-database-using-azure-portal/3-pricing-tier.png)
 
-4. 选择“创建”  以预配服务器。 预配可能需要长达 20 分钟的时间。
+4. 选择“查看 + 创建”  以预配服务器。 预配可能需要长达 20 分钟的时间。
    
 5. 在工具栏上选择“通知”（钟形图标）以监视部署过程。 
    
@@ -175,7 +175,7 @@ Azure Database for MySQL 服务在服务器级别创建防火墙。 除非创建
 ## <a name="connect-to-the-server-by-using-the-mysql-workbench-gui-tool"></a>使用 MySQL Workbench GUI 工具连接到服务器
 若要使用 GUI 工具 MySQL Workbench 连接到服务器，请执行以下步骤：
 
-1.  打开客户端计算机上的 MySQL Workbench 应用程序。 可以从 [Download MySQL Workbench](https://dev.mysql.com/downloads/workbench/)（下载 MySQL Workbench）下载并安装 MySQL Workbench。
+1. 打开客户端计算机上的 MySQL Workbench 应用程序。 可以从 [Download MySQL Workbench](https://dev.mysql.com/downloads/workbench/)（下载 MySQL Workbench）下载并安装 MySQL Workbench。
 
 2. 创建新连接。 选择“MySQL 连接”标题旁边的加号 (+) 图标。 
 

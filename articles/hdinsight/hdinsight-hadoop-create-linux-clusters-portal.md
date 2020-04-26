@@ -13,12 +13,12 @@ ms.workload: big-data
 origin.date: 02/19/2020
 ms.date: 03/23/2020
 ms.author: v-yiso
-ms.openlocfilehash: 6bd4ffcc57c825119fba6ab6841812f9a3cc30fe
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 29ed889ee968183026524aa88a3a4bec3bef054a
+ms.sourcegitcommit: 4aeecfcc59cb42ba0b712a729d278d03bffc719a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79295974"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81791024"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-by-using-the-azure-portal"></a>使用 Azure 门户在 HDInsight 中创建基于 Linux 的群集
 
@@ -30,7 +30,7 @@ Azure 门户是一种基于 Web 的管理工具，用于管理 Microsoft Azure �
 
 Azure 门户会公开大部分的群集属性。 使用 Azure 资源管理器模板可以隐藏许多详细信息。 有关详细信息，请参阅[使用资源管理器模板在 HDInsight 中创建 Apache Hadoop 群集](hdinsight-hadoop-create-linux-clusters-arm-templates.md)。
 
-如果没有 Azure 订阅，请在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
+如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 
 ## <a name="create-clusters"></a>创建群集
 

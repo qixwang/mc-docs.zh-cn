@@ -1,0 +1,40 @@
+---
+author: trevorbye
+ms.service: cognitive-services
+ms.topic: include
+origin.date: 03/09/2020
+ms.date: 04/20/2020
+ms.author: v-tawe
+ms.openlocfilehash: 9767967eabe6bef7db900309eadf5e44203e9713
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82127018"
+---
+处理压缩音频是使用 [GStreamer](https://gstreamer.freedesktop.org) 实现的。 出于许可原因，GStreamer 二进制文件未编译，也未与语音 SDK 链接。 开发人员需要安装几个依赖项和插件。
+
+# <a name="ubuntu-1604-1804-or-debian-9"></a>[Ubuntu 16.04、18.04 或 Debian 9](#tab/debian)
+
+```sh
+sudo apt install libgstreamer1.0-0 \
+gstreamer1.0-plugins-base \
+gstreamer1.0-plugins-good \
+gstreamer1.0-plugins-bad \
+gstreamer1.0-plugins-ugly
+```
+
+# <a name="rehl--centos"></a>[REHL/CentOS](#tab/centos)
+
+```sh
+sudo yum install gstreamer1 \
+gstreamer1-plugins-base \
+gstreamer1-plugins-good \
+gstreamer1-plugins-bad-free \
+gstreamer1-plugins-ugly-free
+```
+
+> [!NOTE]
+> 在 RHEL/CentOS 上，按照[如何配置 OpenSSL for Linux](../../../../how-to-configure-openssl-linux.md) 中的说明进行操作。
+
+---

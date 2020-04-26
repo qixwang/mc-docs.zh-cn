@@ -11,14 +11,14 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: vanto, carlrab
 origin.date: 02/05/2020
-ms.date: 03/16/2020
+ms.date: 04/27/2020
 tags: azure-synapse
-ms.openlocfilehash: 2d3c24ab7b6f79d4b74c6933dfe9a24af4f0c0c6
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: f75470b2708e985db0f9894bbccaf5a10f327859
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79293734"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126908"
 ---
 # <a name="advanced-threat-protection-for-azure-sql-database"></a>Azure SQL 数据库的高级威胁防护
 

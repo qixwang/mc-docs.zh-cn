@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
 origin.date: 08/23/2019
-ms.date: 11/26/2019
+ms.date: 04/23/2019
 ms.subservice: hybrid
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f9a3df9a498a814deb3917e22cc8494fbf067af4
-ms.sourcegitcommit: 9597d4da8af58009f9cef148a027ccb7b32ed8cf
+ms.openlocfilehash: 4ebbb9834a8213eac35e3c859e6f311aa80c7b10
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74655400"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126550"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect 常见问题解答
 
@@ -182,7 +182,7 @@ Azure AD Connect 不支持纯 IPv6 环境。
 若要了解如何升级到最新版本，请参阅 [Azure AD Connect：从旧版升级到最新版本](how-to-upgrade-previous-version.md)。 
 
 **问：我们去年已升级到最新版本的 Azure AD Connect。是否需要再次升级？**  
-Azure AD Connect 团队会对该服务进行频繁的更新。 若要充分利用 Bug 修复、安全更新和新功能的优势，必须使用最新版本来保持服务器的最新状态。 如果启用自动升级，则会自动更新软件版本。 若要查找 Azure AD Connect 的版本发布历史记录，请参阅 [Azure AD Connect：版本发布历史记录](reference-connect-version-history.md)。
+Azure AD Connect 团队会对该服务进行频繁的更新。 若要充分利用 Bug 修复、安全更新和新功能的优势，必须使用最新版本来保持服务器的最新状态。 如果启用自动升级，则会自动更新软件版本。 
 
 **问：执行升级需要多长时间？对我的用户有什么影响？**  
 升级所需时间取决于租户大小。 对于大型组织而言，最好是在晚上或周末升级。 在升级期间不会发生同步活动。

@@ -3,21 +3,21 @@ title: 语言支持 - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 语音服务支持多种语言，可用于语音到文本和文本到语音转换，以及语音翻译。 本文提供按服务功能分类的语言支持的完整列表。
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 origin.date: 03/26/2020
-ms.date: 03/30/2020
+ms.date: 04/20/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: bdf7f5e483bb8cd2b8d7a0d29d77ecba5898ec8a
-ms.sourcegitcommit: 76280dd9854dc0ff0ba1e5e62fb3dc3af049fbe2
+ms.openlocfilehash: adf0adbee932e2961a5eec73a961674e73f52b4b
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80479068"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126693"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>语音服务的语言和语音支持
 

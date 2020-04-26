@@ -8,12 +8,12 @@ origin.date: 06/06/2019
 ms.date: 03/30/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 31ce7ad9c9b523114b65dc5d800e3335908fda6d
-ms.sourcegitcommit: 44d3fe59952847e5394bbe6c05bd6f333bb56345
+ms.openlocfilehash: 94a04836b145816eed8142068c6a5a20f300c97e
+ms.sourcegitcommit: 9b0a89269a7e422570b7bc0ca983f60d2f317d48
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80522091"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81675786"
 ---
 # <a name="azure-app-service-access-restrictions"></a>Azure 应用服务访问限制 #
 
@@ -21,11 +21,13 @@ ms.locfileid: "80522091"
 
 访问限制功能适用于所有应用服务托管的工作负载，包括 Web 应用、API 应用和 Functions。
 
-向应用发出请求时，将会根据访问限制列表中的 IP 地址规则评估 FROM IP 地址。 如果 FROM 地址位于配置为使用 Microsoft.Web 服务终结点的子网中，则会根据访问限制列表中的虚拟网络规则比较源子网。 如果列表中的规则不允许访问该地址，则服务会以 [HTTP 403](https://wikipedia.org/wiki/HTTP_403) 状态代码进行答复。
+ <!-- If the FROM address is in a subnet that is configured with service endpoints to Microsoft.Web, then the source subnet is compared against the virtual network rules in your access restrictions list.  -->
+
+向应用发出请求时，将会根据访问限制列表中的 IP 地址规则评估 FROM IP 地址。 如果列表中的规则不允许访问该地址，则服务会以 [HTTP 403](https://wikipedia.org/wiki/HTTP_403) 状态代码进行答复。
 
 访问限制功能是在应用服务前端角色（即代码运行所在的辅助角色主机中的上游）中实现的。 因此，访问限制是有效的网络 ACL。
 
-限制从 Azure 虚拟网络 (VNet) 访问 Web 应用的功能称为[服务终结点][serviceendpoints]。 使用服务终结点可以限制为从选定的子网对多租户服务进行访问。 必须在网络端以及用于启用该功能的服务中启用该功能。 
+<!-- The ability to restrict access to your web app from an Azure Virtual Network (VNet) is called [service endpoints][serviceendpoints]. Service endpoints enable you to restrict access to a multi-tenant service from selected subnets. It must be enabled on both the networking side as well as the service that it is being enabled with.  -->
 
 ![访问限制流](media/app-service-ip-restrictions/access-restrictions-flow.png)
 
@@ -39,7 +41,9 @@ ms.locfileid: "80522091"
 
 ![列出访问限制](media/app-service-ip-restrictions/access-restrictions-browse.png)
 
-该列表将显示应用中的所有当前限制。 如果应用中存在 VNet 限制，该表将显示是否为 Microsoft.Web 启用了服务终结点。 如果应用中未定义限制，则可以从任何位置访问应用。  
+<!-- If you have a VNet restriction on your app, the table will show if service endpoints are enabled for Microsoft.Web. -->
+
+该列表将显示应用中的所有当前限制。 如果应用中未定义限制，则可以从任何位置访问应用。  
 
 ## <a name="adding-ip-address-rules"></a>添加 IP 地址规则
 
@@ -51,15 +55,7 @@ ms.locfileid: "80522091"
 
 若要设置基于 IP 地址的规则，请选择 IPv4 或 IPv6 类型。 对于 IPv4 和 IPv6 地址，必须在 CIDR 表示法中指定 IP 地址表示法。 若要指定确切的地址，可以使用类似 1.2.3.4/32 的格式，其中前四个八位字节代表自己的 IP 地址，/32 为掩码。 所有地址的 IPv4 CIDR 表示法都为 0.0.0.0/0。 要详细了解 CIDR 表示法，请阅读[无类别域际路由选择](https://wikipedia.org/wiki/Classless_Inter-Domain_Routing)。 
 
-## <a name="service-endpoints"></a>服务终结点
-
-通过服务终结点，可以限制对选定 Azure 虚拟网络子网的访问。 若要限制对特定子网的访问，请使用虚拟网络类型创建限制规则。 可以选择要允许或拒绝访问的订阅、VNet 和子网。 如果尚未为选定子网的 Microsoft.Web 启用服务终结点，系统会自动启用它，除非你选中了不再询问的相应复选框。 有关何时要在应用而不是子网中启用它，在很大程度上取决于你是否有权在子网中启用服务终结点。 如果需要让其他某人在子网中启用服务终结点，可以选中相应的复选框，在预期将来要在子网中启用服务终结点的情况下，为服务终结点配置应用。 
-
-![添加 VNet 访问限制规则](media/app-service-ip-restrictions/access-restrictions-vnet-add.png)
-
-服务终结点不能用于限制对在应用服务环境中运行的应用程序的访问。 当应用处于应用服务环境中时，可以使用 IP 访问规则来控制对应用的访问。 
-
-通过服务终结点，可以为应用配置应用程序网关或其他 WAF 设备。 还可以为多层应用程序配置安全后端。 有关某些可能性的更多详细信息，请阅读[网络功能和应用服务](networking-features.md)和[应用程序网关与服务终结点的集成](networking/app-gateway-with-service-endpoints.md)。
+<!-- ## Service endpoints -->
 
 ## <a name="managing-access-restriction-rules"></a>管理访问限制规则
 

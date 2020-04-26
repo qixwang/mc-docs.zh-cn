@@ -100,6 +100,10 @@
                   href: concepts-query-store-scenarios.md
                 - name: 查询存储最佳做法
                   href: concepts-query-store-best-practices.md
+            - name: Query Performance Insight
+              href: concepts-query-performance-insight.md
+            - name: 性能建议
+              href: concepts-performance-recommendations.md
         - name: 开发
           items:
             - name: 连接库
@@ -118,6 +122,8 @@
           items:
             - name: 只读副本
               href: concepts-read-replicas.md
+            - name: 逻辑解码
+              href: concepts-logical.md
 - name: 操作指南
   items:
     - name: 单个服务器
@@ -218,7 +224,7 @@
       href: 'https://www.azure.cn/pricing/details/postgresql/'
     - name: MSDN 论坛
       href: 'https://social.msdn.microsoft.com/forums/azure/zh-CN/home?forum=AzureDatabaseforPostgreSQL'
-    - name: 堆栈溢出
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-database-postgresql'
     - name: 视频
       items:

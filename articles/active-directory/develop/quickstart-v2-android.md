@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 03/20/2020
+ms.date: 04/22/2020
 ms.author: v-junlch
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:Android
-ms.openlocfilehash: 49e18eb51c09029702fda8f2a756206e71bbf954
-ms.sourcegitcommit: 6568c59433d7e80ab06e9fe76d4791f761ed6775
+ms.openlocfilehash: 08ea5541cd689984c97660875a079d3e8c51dbfe
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80243146"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126491"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>快速入门：从 Android 应用登录用户并调用 Microsoft Graph API
 
@@ -66,7 +66,7 @@ ms.locfileid: "80243146"
 
 > [!div class="sxs-lookup" renderon="portal"]
 > > [!NOTE]
-> > Enter_the_Supported_Account_Info_Here
+> > `Enter_the_Supported_Account_Info_Here`
 
 > [!div renderon="docs"]
 > ## <a name="step-1-get-the-sample-app"></a>步骤 1：获取示例应用
@@ -207,7 +207,7 @@ mSingleAccountApp.signOut(new ISingleAccountPublicClientApplication.SignOutCallb
 * 如果许可已撤销
 * 如果应用显式要求许可
 * 当应用程序首次请求资源的访问权限时
-* 需要 MFA 时
+* 需要 MFA 或其他条件访问策略时
 
 通过涉及用户的 UI 以交互方式获取令牌的代码位于 `callGraphApiInteractiveButton` 单击处理程序中的 `SingleAccountModeFragment.java` 的 `initializeUI()` 内：
 
@@ -388,7 +388,7 @@ private void loadAccounts() {
 * 如果许可已撤销 
 * 如果应用显式要求许可 
 * 当应用程序首次请求资源的访问权限时
-* 需要 MFA 时
+* 需要 MFA 或其他条件访问策略时
 
 多帐户应用通常使用 `acquireToken()` 调用通过涉及用户的 UI 以交互方式获取令牌。  以交互方式获取令牌的代码位于 `callGraphApiInteractiveButton` 单击处理程序中的 `MultipleAccountModeFragment.java` 文件的 `initializeUI()` 内：
 
@@ -493,6 +493,4 @@ mMultipleAccountApp.removeAccount(accountList.get(accountListSpinner.getSelected
 > [适用于 Android 库 wiki 的 MSAL](https://github.com/AzureAD/microsoft-authentication-library-for-android/wiki)
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
-
-<!-- Update_Description: wording update -->
 

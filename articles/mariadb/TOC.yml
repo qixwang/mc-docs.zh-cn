@@ -144,6 +144,8 @@
           items:
             - name: Azure 门户
               href: howto-configure-audit-logs-portal.md
+            - name: Azure CLI
+              href: howto-configure-audit-logs-cli.md
     - name: 监视
       items:
         - name: 针对指标创建警报
@@ -177,7 +179,7 @@
 - name: 参考
   items:
     - name: Azure CLI
-      href: /cli/mariadb
+      href: 'https://docs.microsoft.com/cli/azure/mariadb'
     - name: REST API
       href: 'https://docs.microsoft.com/rest/api/mariadb'
     - name: Resource Manager 模板
