@@ -3,25 +3,23 @@ title: 教程 - 在 Azure 门户中备份 Linux 虚拟机 | Azure
 description: 本教程介绍如何在 Azure 门户中使用 Azure 备份保护 Linux 虚拟机。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: rockboyfor
-manager: digimobile
-editor: tysonn
+author: Johnnytechn
+manager: gwallace
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-origin.date: 07/27/2017
-ms.date: 10/14/2019
-ms.author: v-yeche
+ms.date: 04/20/2020
+ms.author: v-johya
 ms.custom: mvc
-ms.openlocfilehash: deb12acd6aba69f60c047a9bc118b58376f230bc
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: f683e2063fc7fed1322c3d7bddfdbe62e9c0116f
+ms.sourcegitcommit: ebedf9e489f5218d4dda7468b669a601b3c02ae5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "72272514"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82159181"
 ---
 # <a name="tutorial-back-up-and-restore-files-for-linux-virtual-machines-in-azure"></a>教程：在 Azure 中备份和还原 Linux 虚拟机的文件
 
@@ -34,16 +32,17 @@ ms.locfileid: "72272514"
 
 ## <a name="backup-overview"></a>备份概述
 
-当 Azure 备份服务启动备份时，将触发备份扩展来创建时间点快照。 Azure 备份服务在 Linux 中使用 _VMSnapshotLinux_ 扩展。 该扩展是在首次 VM 备份（如果 VM 正在运行）期间安装的。 如果 VM 未运行，备份服务将创建基础存储的快照（因为在 VM 停止时不会发生任何应用程序写入）。
+当 Azure 备份服务启动备份时，将触发备份扩展来创建时间点快照。 Azure 备份服务在 Linux 中使用 _VMSnapshotLinux_ 扩展。 该扩展是在首次 VM 备份（如果 VM 正在运行）期间安装的。 如果 VM 未运行，备份服务会创建基础存储的快照（因为在 VM 停止时不会发生任何应用程序写入）。
 
 默认情况下，Azure 备份为 Linux VM 创建文件系统一致备份，但可以[使用前脚本和后脚本框架将其配置为创建应用程序一致备份](/backup/backup-azure-linux-app-consistent)。 Azure 备份服务创建快照后，数据将传输到保管库。 为最大限度地提高效率，服务仅标识和传输自上次备份以后已更改的数据块。
 
 数据传输完成后，会删除快照并创建恢复点。
 
+
 ## <a name="create-a-backup"></a>创建备份
 在恢复服务保管库中创建计划每日备份：
 
-1. 登录 [Azure 门户](https://portal.azure.cn/)。
+1. 登录到 [Azure 门户](https://portal.azure.cn/)。
 2. 在左侧菜单中选择“虚拟机”。  
 3. 从列表中选择要备份的 VM。
 4. 在 VM 边栏选项卡上的“设置”部分中，单击“备份”。   此时会打开“启用备份”边栏选项卡。 
@@ -64,10 +63,11 @@ ms.locfileid: "72272514"
 
 本示例演示如何恢复默认 nginx 网页 /var/www/html/index.nginx-debian.html。 本示例中的 VM 的公共 IP 地址为 *13.69.75.209*。 可使用以下命令找到 VM 的 IP 地址：
 
- ```bash 
+ ```azurecli
  az vm show --resource-group myResourceGroup --name myVM -d --query [publicIps] --o tsv
  ```
 
+ 
 1. 在本地计算机上打开浏览器，并键入 VM 的公共 IP 地址查看默认的 nginx 网页。
 
     ![默认的 nginx 网页](./media/tutorial-backup-vms/nginx-working.png)
@@ -77,6 +77,7 @@ ms.locfileid: "72272514"
     ```bash
     ssh 13.69.75.209
     ```
+
 2. 删除 /var/www/html/index.nginx-debian.html。
 
     ```bash
@@ -92,8 +93,8 @@ ms.locfileid: "72272514"
 7. 从列表中选择 VM。
 8. 在 VM 边栏选项卡上的“设置”部分中，单击“备份”。   此时会打开“备份”边栏选项卡。  
 9. 在边栏选项卡顶部的菜单中，选择“文件恢复”。  此时会打开“文件恢复”边栏选项卡。 
-10. 在“步骤 1: 选择恢复点”中，从下拉列表中选择恢复点。 
-11. 在“步骤 2: 下载脚本以浏览并恢复文件”中，单击“下载可执行文件”按钮。   将下载的文件保存到本地计算机。
+10. 在“步骤 1: 选择恢复点”中，  从下拉列表中选择一个恢复点。
+11. 在“步骤 2: **  下载脚本以浏览并恢复文件”中，单击“下载可执行文件”按钮。 将下载的文件保存到本地计算机。
 7. 单击“下载脚本”在本地下载脚本文件。 
 8. 打开 Bash 提示符并键入以下命令。请将 *Linux_myVM_05 05 2017.sh* 替换为下载的脚本的正确路径和文件名，将 *azureuser* 替换为 VM 的用户名，将 *13.69.75.209* 替换为 VM 的公共 IP 地址。
 
@@ -121,16 +122,16 @@ ms.locfileid: "72272514"
 
 12. 脚本的输出将提供装入点的路径。 输出与下面类似：
 
-    ```bash
+    ```output
     Azure VM Backup - File Recovery
     ______________________________________________
-
+                          
     Connecting to recovery point using ISCSI service...
-
+    
     Connection succeeded!
-
+    
     Please wait while we attach volumes of the recovery point to this machine...
-
+                         
     ************ Volumes of the recovery point and their mount paths on this machine ************
 
     Sr.No.  |  Disk  |  Volume  |  MountPath 
@@ -154,11 +155,11 @@ ms.locfileid: "72272514"
 
     ![默认的 nginx 网页](./media/tutorial-backup-vms/nginx-working.png)
 
-18. 在本地计算机上，返回到 Azure 门户的浏览器选项卡，并在“步骤 3: 恢复后卸载磁盘”中单击“卸载磁盘”按钮。   如果忘记执行此步骤，与装入点的连接会在 12 小时后自动关闭。 在这 12 个小时后，若要创建新的装入点，需要下载新脚本。
+18. 在本地计算机上，返回到 Azure 门户的浏览器选项卡，在“步骤 3:   恢复后卸载磁盘中，单击“卸载磁盘”按钮。 如果忘记执行此步骤，与装入点的连接会在 12 小时后自动关闭。 在这 12 个小时后，若要创建新的装入点，需要下载新脚本。
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你了解了如何执行以下操作：
+在本教程中，你已学习了如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建 VM 的备份

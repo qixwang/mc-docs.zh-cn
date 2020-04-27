@@ -11,12 +11,12 @@ ms.topic: conceptual
 origin.date: 01/14/2020
 ms.date: 03/16/2020
 ms.author: v-tawe
-ms.openlocfilehash: 3613a7fd9cc5ffeb86ccd7300a86e6f26244dfaa
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: ad8c0dd6f2432d370da9420d791d24d1d45dbf1c
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80386222"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134809"
 ---
 # <a name="speech-services-with-sovereign-clouds"></a>将语音服务与主权云配合使用
 
@@ -24,8 +24,7 @@ ms.locfileid: "80386222"
 
 一个位于中国的 Azure 数据中心，可直接访问中国移动、中国电信、中国联通和其他主要承运商主干网络，为中国用户提供高速且稳定的本地网络访问体验。
 - 区域：中国东部 2（上海）
-- SpeechSDK 中的 SR：*config.FromHost("wss://chinaeast2.stt.speech.azure.cn", "\<your-key\>");*
-- SpeechSDK 中的 TTS：*config.FromHost("https[]()://chinaeast2.tts.speech.azure.cn", "\<your-key\>");*
+- SpeechSDK: *config.FromSubscription("YourSubscriptionKey", "YourServiceRegion");*
 - 身份验证令牌：https[]()://chinaeast2.api.cognitive.azure.cn/sts/v1.0/issueToken
 - Azure 门户： https://portal.azure.cn
 - 自定义语音识别门户： https://speech.azure.cn/CustomSpeech

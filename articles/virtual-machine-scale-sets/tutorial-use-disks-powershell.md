@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 02/10/2020
 ms.author: v-junlch
 ms.custom: mvc
-ms.openlocfilehash: c4f6ec2ae2757386c74028ed49a69fcd01b79fe4
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: c6014711ba73f2ad05ff06c77c654e2f9cbaa700
+ms.sourcegitcommit: b80d236ce3c706abc25bbaa41b0ccddd896e48fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77128864"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81873149"
 ---
 # <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-azure-powershell"></a>教程：通过 Azure PowerShell 对虚拟机规模集创建和使用磁盘
 

@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: quickstart
-ms.date: 02/25/2020
+ms.date: 04/23/2020
 ms.author: v-junlch
-ms.custom: fasttrack-edit
+ms.custom: it-pro, seodec18, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b4b6c94e62f2abad53202000523cb3ecb63a2275
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: c89f1ee9e936064e7e15c1151d080f27cbcf45c6
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79291018"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126374"
 ---
 # <a name="quickstart-create-a-new-tenant-in-azure-active-directory"></a>快速入门：在 Azure Active Directory 中创建一个新租户
 可以使用 Azure Active Directory (Azure AD) 门户执行所有管理任务，包括为组织创建新的租户。 
@@ -56,7 +56,7 @@ ms.locfileid: "79291018"
 将使用域 contoso.partner.onmschina.cn 创建新租户。
 
 ## <a name="clean-up-resources"></a>清理资源
-如果不打算继续使用此应用程序，可按以下步骤删除此租户：
+如果不打算继续使用此应用程序，可按以下步骤删除该租户：
 
 - 确保你已登录到要通过 Azure 门户中的“目录 + 订阅”  筛选器删除的目录，并根据需要切换到目标目录。
 - 选择 Azure Active Directory，然后在“Contoso - 概述”页面上，选择“删除目录”    。
@@ -76,4 +76,3 @@ ms.locfileid: "79291018"
 
 - 了解 Azure AD，包括[基本许可信息、术语和关联的功能](active-directory-whatis.md)。
 
-<!-- Update_Description: wording update -->

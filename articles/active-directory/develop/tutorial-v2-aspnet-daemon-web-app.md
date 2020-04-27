@@ -2,26 +2,21 @@
 title: 生成使用 Microsoft 标识平台终结点的多租户守护程序
 description: 本教程介绍如何从 Windows 桌面 (WPF) 应用程序调用受 Azure Active Directory 保护的 ASP.NET Web API。 WPF 客户端对用户进行身份验证，请求访问令牌，并调用 Web API。
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
-ms.assetid: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/23/2020
+ms.date: 04/22/2020
 ms.author: v-junlch
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 95fdc258fadb61c56925ebb0d1b5b04b2e9b5769
-ms.sourcegitcommit: 6568c59433d7e80ab06e9fe76d4791f761ed6775
+ms.openlocfilehash: c4cbee850081a35d1ba563304aa06c88ed6b2715
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80243092"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126423"
 ---
 # <a name="tutorial-build-a-multitenant-daemon-that-uses-the-microsoft-identity-platform-endpoint"></a>教程：生成使用 Microsoft 标识平台终结点的多租户守护程序
 
@@ -35,7 +30,7 @@ ms.locfileid: "80243092"
 
 如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 
-该应用是作为 ASP.NET MVC 应用程序生成的。 它使用 OWIN OpenID Connect 中间件将用户登录。  
+该应用是作为 ASP.NET MVC 应用程序生成的。 它使用 OWIN OpenID Connect 中间件将用户登录。
 
 本示例中的“守护程序”组件是 API 控制器 `SyncController.cs`。 调用该控制器时，它会从 Microsoft Graph 提取客户的 Azure Active Directory (Azure AD) 租户中的用户列表。 `SyncController.cs` 由 Web 应用程序中的 AJAX 调用触发。 它使用[适用于 .NET 的 Microsoft 身份验证库 (MSAL)](msal-overview.md) 获取 Microsoft Graph 的访问令牌。
 
@@ -114,7 +109,7 @@ git clone https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2.git
    - 在“重定向 URI (可选)”部分的组合框中选择“Web”，然后输入以下重定向 URI：  
        - **https://localhost:44316/**
        - **https://localhost:44316/Account/GrantPermissions**
-          
+
      如果有两个以上的重定向 URI，则需要在成功创建应用后，从“身份验证”选项卡中添加这些 URI。 
 1. 选择“注册”  以创建应用程序。
 1. 在应用的“概述”页上，找到“应用程序(客户端) ID”值，并记下该值供稍后使用。   稍后需要使用它为此项目配置 Visual Studio 配置文件。
@@ -126,7 +121,7 @@ git clone https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2.git
 
    1. 输入密钥说明（例如“应用机密”）。 
    1. 选择密钥持续时间（“1 年”、“2 年”或“永不过期”）    。
-   1. 选择“添加”按钮。  
+   1. 选择“添加”按钮。 
    1. 显示密钥值后，请将其复制并保存到安全位置。 稍后将需要此密钥来配置 Visual Studio 中的项目。 此密钥以后不再显示，也无法通过任何其他方式检索它。
 1. 在应用的页面列表中，选择“API 权限”。  然后：
    1. 选择“添加权限”  按钮。
@@ -179,21 +174,21 @@ git clone https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2.git
 
 ## <a name="re-create-the-sample-app"></a>重新创建示例应用
 
-1. 在 Visual Studio 中，创建新的 **Visual C#** **ASP.NET Web 应用程序(.NET Framework)** 项目。 
+1. 在 Visual Studio 中，创建新的 **Visual C#** **ASP.NET Web 应用程序(.NET Framework)** 项目。
 1. 在下一屏幕中选择“MVC”项目模板。  另外，请为 **Web API** 添加文件夹和核心引用，因为稍后要添加 Web API 控制器。 将项目的所选身份验证模式保留为默认设置：“无身份验证”。 
-1. 在“解决方案资源管理器”窗口中选择该项目，然后按 **F4** 键。  
+1. 在“解决方案资源管理器”窗口中选择该项目，然后按 **F4** 键。 
 1. 在项目属性中，将“已启用 SSL”设置为“True”。   记下“SSL URL”中的信息。  在 Azure 门户中配置此应用程序的注册时需要用到这些信息。
-1. 添加以下 ASP.NET OWIN 中间件 NuGet 包： 
+1. 添加以下 ASP.NET OWIN 中间件 NuGet 包：
    - Microsoft.Owin.Security.ActiveDirectory
    - Microsoft.Owin.Security.Cookies
    - Microsoft.Owin.Host.SystemWeb
    - Microsoft.IdentityModel.Protocol.Extensions
    - Microsoft.Owin.Security.OpenIdConnect
-   - Microsoft.Identity.Client 
+   - Microsoft.Identity.Client
 1. 在 **App_Start** 文件夹中：
-   1. 创建名为 **Startup.Auth.cs** 的类。 
-   1. 从命名空间名称中删除 **.App_Start**。 
-   1. 将 **Startup** 类的代码替换为示例应用的同一文件中的代码。       
+   1. 创建名为 **Startup.Auth.cs** 的类。
+   1. 从命名空间名称中删除 **.App_Start**。
+   1. 将 **Startup** 类的代码替换为示例应用的同一文件中的代码。
    请务必使用整个类定义。 定义将从 **public class Startup** 更改为 **public partial class Startup**。
 1. 在 **Startup.Auth.cs**中，通过添加 Visual Studio IntelliSense 建议的 **using** 语句来解决缺少引用的问题。
 1. 右键单击该项目，然后依次选择“添加”、“类”。  
@@ -225,12 +220,12 @@ git clone https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2.git
 1. 创建网站后，在“仪表板”中找到它，并将其选中以打开应用服务的“概述”屏幕。  
 1. 在应用服务的“概述”选项卡中，选择“获取发布配置文件”链接下载该配置文件并保存。   可以使用其他部署机制，例如，从源代码管理进行部署。
 1. 切换到 Visual Studio，然后：
-   1. 转到 **dotnet-web-daemon-v2** 项目。 
+   1. 转到 **dotnet-web-daemon-v2** 项目。
    1. 在解决方案资源管理器中右键单击该项目，然后选择“发布”。 
    1. 在底部栏上选择“导入配置文件”，然后导入先前下载的发布配置文件。 
 1. 选择“配置”  。
 1. 在“连接”选项卡上更新目标 URL，使其使用“https”。  例如，使用 [https://dotnet-web-daemon-v2-contoso.chinacloudsites.cn](https://dotnet-web-daemon-v2-contoso.chinacloudsites.cn)。 选择“**下一步**”。
-1. 在“设置”选项卡上，确保已清除“启用组织身份验证”。    
+1. 在“设置”选项卡上，确保已清除“启用组织身份验证”。  
 1. 选择“保存”  。 在主屏幕上选择“发布”。 
 
 Visual Studio 将发布项目，同时自动打开浏览器并加载该项目的 URL。 如果看到该项目的默认网页，则表示发布成功。
@@ -276,4 +271,3 @@ Visual Studio 将发布项目，同时自动打开浏览器并加载该项目的
 
 对于更简单的多租户控制台守护程序应用程序，请参阅 [.NET Core 守护程序快速入门](quickstart-v2-netcore-daemon.md)。
 
-<!-- Update_Description: wording update -->

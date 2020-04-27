@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 origin.date: 02/12/2020
-ms.date: 03/16/2020
+ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: 86a826cae300b3227d24906ae6b71c7f1ff4a4b0
-ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
+ms.openlocfilehash: 0c8c54300342edafdbc044cd44629588b9e95233
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80151710"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126986"
 ---
 # <a name="release-notes-speech-devices-sdk"></a>发行说明：语音设备 SDK
 
@@ -59,7 +59,7 @@ ms.locfileid: "80151710"
 **重大更改**
 
 - 由于新出现的关键字技术，所有关键字必须在改进的关键字门户中重新创建。 若要从设备中完全删除旧的关键字，请卸载旧应用。
-  - adb uninstall com.microsoft.coginitiveservices.speech.samples.sdsdkstarterapp
+  - adb uninstall com.microsoft.cognitiveservices.speech.samples.sdsdkstarterapp
 
 ## <a name="speech-devices-sdk-140-2019-apr-release"></a>语音设备 SDK 1.4.0：2019 年 4 月发布
 
@@ -71,8 +71,8 @@ ms.locfileid: "80151710"
 - 更新了关键字处理，请参阅“中断性变更”。
 - 示例应用程序添加了选择语言的功能，适用于语音识别和翻译。
 
-<!-- **Breaking changes** -->
 <!-- create kws not available -->
+<!-- **Breaking changes** -->
 <!-- - [Installing a keyword](https://docs.azure.cn/cognitive-services/speech-service/speech-devices-sdk-create-kws) has been simplified, it is now part of the app and does not need separate installation on the device. -->
 <!-- - The keyword recognition has changed, and two events are supported. -->
 <!--   - `RecognizingKeyword,` indicates the speech result contains (unverified) keyword text. -->

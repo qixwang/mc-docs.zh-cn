@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 02/10/2020
 ms.author: v-junlch
 ms.custom: mvc
-ms.openlocfilehash: 2291abee03e6beb3ae538a3c0e8974924beb95b6
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 6ae856bdf2b357fdb29aa476c1ffac18ff1aa322
+ms.sourcegitcommit: b80d236ce3c706abc25bbaa41b0ccddd896e48fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77128844"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81873147"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-azure-powershell"></a>教程：使用 Azure PowerShell 自动缩放虚拟机规模集
 

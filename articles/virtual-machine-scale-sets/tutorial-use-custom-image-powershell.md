@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 02/10/2020
 ms.author: v-junlch
 ms.custom: mvc
-ms.openlocfilehash: 2f8a1e2586892c2d42237ad3211821fc99857a02
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 84417eebabce7c6dd3710bf0e761d54fade6f494
+ms.sourcegitcommit: b80d236ce3c706abc25bbaa41b0ccddd896e48fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77128865"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81873145"
 ---
 # <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-azure-powershell"></a>教程：通过 Azure PowerShell 创建和使用虚拟机规模集的自定义映像
 

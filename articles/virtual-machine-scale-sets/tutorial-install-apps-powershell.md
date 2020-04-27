@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 02/10/2020
 ms.author: v-junlch
 ms.custom: mvc
-ms.openlocfilehash: 50d532ea29282e6e48609d3e350a062375719942
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 7798baa69e9a4a13bf7beb6914bd2c498027d457
+ms.sourcegitcommit: b80d236ce3c706abc25bbaa41b0ccddd896e48fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77128834"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81873146"
 ---
 # <a name="tutorial-install-applications-in-virtual-machine-scale-sets-with-azure-powershell"></a>教程：使用 Azure PowerShell 在虚拟机规模集中安装应用程序
 
