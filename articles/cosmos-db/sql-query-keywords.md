@@ -4,22 +4,23 @@ description: 了解 Azure Cosmos DB 的 SQL 关键字。
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
-origin.date: 06/20/2019
-ms.date: 07/29/2019
+origin.date: 04/10/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: cdd5b4101272b1b84e0e5ef4e0d11262bf6c737f
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 87880af86eb94d4184419e037a40b3eb9e1528a6
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79291667"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134557"
 ---
 # <a name="keywords-in-azure-cosmos-db"></a>Azure Cosmos DB 中的关键字
+
 本文详细介绍可在 Azure Cosmos DB SQL 查询中使用的关键字。
 
 ## <a name="between"></a>BETWEEN
 
-与在 ANSI SQL 中一样，可以使用 BETWEEN 关键字来对字符串或数字值的范围表达查询。 例如，以下查询返回其中第一个孩子的年级为 1-5（含）的所有项。
+可以使用 `BETWEEN` 关键字来表达针对字符串或数值范围的查询。 例如，以下查询返回其中第一个孩子的年级为 1-5（含）的所有项。
 
 ```sql
     SELECT *
@@ -27,7 +28,7 @@ ms.locfileid: "79291667"
     WHERE c.grade BETWEEN 1 AND 5
 ```
 
-与在 ANSI-SQL 中不同，你还可以在 FROM 子句中使用 BETWEEN 子句，如以下示例所示。
+还可以在 `SELECT` 子句中使用 `BETWEEN` 关键字，如以下示例所示。
 
 ```sql
     SELECT (c.grade BETWEEN 0 AND 10)
@@ -37,18 +38,18 @@ ms.locfileid: "79291667"
 与 ANSI SQL 不同，在 SQL API 中，可以针对混合类型的属性表达范围查询。 例如，在某些项中，`grade` 可能是类似于 `5` 的数字；而在其他一些项中，它可能是类似于 `grade4` 的字符串。 在这些情况下（与在 JavaScript 中一样），两个不同类型之间的比较会生成 `Undefined`，因此会跳过该项。
 
 > [!TIP]
-> 为了更快地执行查询，请创建一个索引策略，该策略针对 BETWEEN 子句筛选的任何数字属性或路径使用范围索引类型。
+> 为了更快地执行查询，请创建一个索引策略，该策略对 `BETWEEN` 子句筛选的任何数值属性或路径使用范围索引类型。
 
 ## <a name="distinct"></a>DISTINCT
 
-DISTINCT 关键字消除了查询投影中的重复项。
+`DISTINCT` 关键字可消除查询投影中的重复项。
+
+在此示例中，查询将投影每个姓氏的值：
 
 ```sql
 SELECT DISTINCT VALUE f.lastName
 FROM Families f
 ```
-
-在此示例中，查询将投影每个姓氏的值。
 
 结果有：
 
@@ -102,7 +103,13 @@ FROM f
     }
 ]
 ```
-<a name="in"></a>
+
+不支持查询包含使用 `DISTINCT` 的聚合系统函数和子查询。 例如，不支持以下查询：
+
+```sql
+SELECT COUNT(1) FROM (SELECT DISTINCT f.lastName FROM f)
+```
+
 ## <a name="in"></a>IN
 
 使用 IN 关键字可以检查指定的值是否与列表中的任一值匹配。 例如，以下查询返回 `id` 为 `WakefieldFamily` 或 `AndersenFamily` 的所有家庭项。
@@ -121,11 +128,13 @@ FROM f
     WHERE Families.address.state IN ("NY", "WA", "CA", "PA", "OH", "OR", "MI", "WI", "MN", "FL")
 ```
 
-SQL API 支持[循环访问 JSON 数组](sql-query-object-array.md#Iteration)，它可以通过 FROM 源中的 IN 关键字添加一个新的构造。 
+SQL API 支持[循环访问 JSON 数组](sql-query-object-array.md#Iteration)，它可以通过 FROM 源中的 IN 关键字添加一个新的构造。
 
-## <a name="top"></a>返回页首
+如果在 `IN` 筛选器中包含分区键，则查询会自动地仅筛选出相关分区。
 
-TOP 关键字以未定义的顺序返回前 `N` 个查询结果。 最佳做法是结合使用 TOP 与 ORDER BY 子句，将结果限制为前 `N` 个有序值。 要预见性地指示哪些行受到 TOP 的影响，只能结合使用这两个子句。
+## <a name="top"></a>TOP
+
+TOP 关键字以未定义的顺序返回前 `N` 个查询结果。 最佳做法是将 TOP 与 `ORDER BY` 子句配合使用，将结果限制为前 `N` 个有序值。 要预见性地指示哪些行受到 TOP 的影响，只能结合使用这两个子句。
 
 可以结合一个常量值使用 TOP（如以下示例中所示），或者在参数化查询中结合一个变量值使用 TOP。
 
@@ -162,4 +171,4 @@ TOP 关键字以未定义的顺序返回前 `N` 个查询结果。 最佳做法�
 - [联接](sql-query-join.md)
 - [子查询](sql-query-subquery.md)
 
-<!-- Update_Description: wording update, update link -->
+<!-- Update_Description: update meta properties, wording update, update link -->

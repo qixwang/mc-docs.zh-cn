@@ -4,25 +4,36 @@ description: 了解 Azure Cosmos DB 中的用户定义函数。
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
-origin.date: 05/31/2019
-ms.date: 09/09/2019
+origin.date: 04/09/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: 085ecf79f7521c4a95c03f98a745c64cb28fe6c4
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 0c378c8d59182c43788cebfd927b1cf34daff911
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "70254845"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134801"
 ---
 # <a name="user-defined-functions-udfs-in-azure-cosmos-db"></a>Azure Cosmos DB 中的用户定义函数 (UDF)
 
 SQL API 支持用户定义函数 (UDF)。 使用标量 UDF，可以传入零个或多个参数，并返回单个参数结果。 API 会检查每个参数 JSON 值是否合法。  
 
-API 扩展了 SQL 语法，支持使用 UDF 的自定义应用程序逻辑。 可将 UDF 注册到 SQL API，然后在 SQL 查询中引用它们。 事实上，UDF 经过精心设计，可从查询调用。 作为一种定理，UDF 不能像其他 JavaScript 类型（例如存储过程和触发器）一样访问上下文对象。 查询是只读的，可以在主要或次要副本上运行。 与其他 JavaScript 类型不同，UDF 只能在次要副本上运行。
+## <a name="udf-use-cases"></a>UDF 用例
 
-以下示例在 Cosmos 数据库中的某个项容器下注册一个 UDF。 该示例创建了名为 `REGEX_MATCH` 的 UDF。 它接受两个 JSON 字符串值：`input` 和 `pattern`，并使用 JavaScript 的 `string.match()` 函数检查第一个值是否与第二个值中指定的模式相匹配。
+API 扩展了 SQL 语法，支持使用 UDF 的自定义应用程序逻辑。 可将 UDF 注册到 SQL API，然后在 SQL 查询中引用它们。 与存储过程和触发器不同，UDF 为只读。
+
+使用 UDF 可以扩展 Azure Cosmos DB 的查询语言。 UDF 是在查询投影中表达复杂业务逻辑的好方法。
+
+但是，我们建议在以下情况下避免使用 UDF：
+
+- Azure Cosmos DB 中已存在等效的[系统函数](sql-query-system-functions.md)。 系统函数将始终使用比等效 UDF 更少的 RU。
+- UDF 是查询的 `WHERE` 子句中唯一的筛选器。 UDF 不利用索引，因此，计算 UDF 需要加载文档。 在 `WHERE` 子句中将使用索引的附加筛选器谓词与 UDF 组合在一起可减少 UDF 处理的文档数。
+
+如果在查询中必须多次使用同一 UDF，则应该引用[子查询](sql-query-subquery.md#evaluate-once-and-reference-many-times)中的 UDF，这样可使用 JOIN 表达式计算 UDF 一次，但引用它多次。
 
 ## <a name="examples"></a>示例
+
+以下示例在 Cosmos 数据库中的某个项容器下注册一个 UDF。 该示例创建了名为 `REGEX_MATCH` 的 UDF。 它接受两个 JSON 字符串值：`input` 和 `pattern`，并使用 JavaScript 的 `string.match()` 函数检查第一个值是否与第二个值中指定的模式相匹配。
 
 ```javascript
     UserDefinedFunction regexMatchUdf = new UserDefinedFunction
@@ -133,4 +144,4 @@ API 扩展了 SQL 语法，支持使用 UDF 的自定义应用程序逻辑。 �
 - [系统函数](sql-query-system-functions.md)
 - [聚合](sql-query-aggregates.md)
 
-<!-- Update_Description: wording update, update link -->
+<!-- Update_Description: update meta properties, wording update, update link -->

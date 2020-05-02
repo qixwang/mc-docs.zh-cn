@@ -8,16 +8,17 @@ ms.service: active-directory
 ms.subservice: azuread-dev
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/24/2020
+ms.date: 04/23/2020
 ms.author: v-junlch
-ms.reviewer: saeeda, jmprieur, andret
+ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 64d99a1eff3db00c8ccbcafc2cb04e367e212977
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ROBOTS: NOINDEX
+ms.openlocfilehash: 3a7cada39f49506d9b6580d3d9861fae096c4ada
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77653647"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126330"
 ---
 # <a name="native-apps"></a>本机应用
 
@@ -33,8 +34,8 @@ ms.locfileid: "77653647"
 
 如果使用 AD 身份验证库，它会替你处理下面所述的大多数协议细节，例如浏览器弹出窗口、令牌缓存以及对刷新令牌的处理。
 
-1. 本机应用程序使用浏览器弹出窗口向 Azure AD 中的授权终结点发出请求。 此请求包括本机应用程序的应用程序 ID 和重定向 URI（如 Azure 门户中所示），以及 Web API 的应用程序 ID URI。 如果用户尚未登录，系统同样会提示他们登录
-1. Azure AD 对用户进行身份验证。 如果它是一个多租户应用程序并且需要许可才能使用应用程序，用户需要表示许可（如果他们尚未如此做）。 在用户授予许可并成功进行身份验证后，Azure AD 会将一个授权代码响应发回客户端应用程序的重定向 URI。
+1. 本机应用程序使用浏览器弹出窗口向 Azure AD 中的授权终结点发出请求。 此请求包括本机应用程序的应用程序 ID 和重定向 URI（如 Azure 门户中所示），以及 Web API 的应用程序 ID URI。 如果用户尚未登录，系统会再次提示他们登录
+1. Azure AD 对用户进行身份验证。 如果它是一个多租户应用程序并且需要许可才能使用应用程序，则用户需要表示许可（如果他们尚未如此做）。 在用户授予许可并成功进行身份验证后，Azure AD 会将一个授权代码响应发回客户端应用程序的重定向 URI。
 1. Azure AD 将授权代码响应发回重定向 URI 时，客户端应用程序将停止浏览器交互并从响应中提取授权代码。 使用此授权代码，客户端应用程序向 Azure AD 的令牌终结点发送请求，请求中包括授权代码、关于客户端应用程序的详细信息（应用程序 ID 和重定向 URI）以及所需的资源（Web API 的应用程序 ID URI）。
 1. Azure AD 对授权代码和关于客户端应用程序和 Web API 的信息进行验证。 验证成功时，Azure AD 返回两个令牌：一个 JWT 访问令牌和一个 JWT 刷新令牌。 此外，Azure AD 还会返回关于用户的基本信息，例如其显示名称和租户 ID。
 1. 通过 HTTPS，客户端应用程序使用返回的 JWT 访问令牌在发往 Web API 的请求的 Authorization 标头中添加一个具有“Bearer”限定符的 JWT 字符串。 然后，Web API 对 JWT 令牌进行验证，如果验证成功，则返回所需的资源。
@@ -52,7 +53,7 @@ ms.locfileid: "77653647"
 若要向 Azure AD v1.0 终结点注册应用程序，请参阅[注册应用](../develop/quickstart-register-app.md?toc=/active-directory/azuread-dev/toc.json&bc=/active-directory/azuread-dev/breadcrumb/toc.json)。
 
 * 单租户 - 本机应用程序和 Web API 必须在 Azure AD 的同一个目录中进行注册。 可以对 Web API 进行配置以公开一组权限，并使用这些权限来限制本机应用程序对其资源的访问。 然后，客户端应用程序从 Azure 门户的“对其他应用程序的权限”下拉菜单中选择所需的权限。
-* 多租户 - 首先，本机应用程序只在开发人员或发布者的目录中进行注册。 其次，本机应用程序在配置后会指示它在正常运行时所需的权限。 目标目录中的用户或管理员许可应用程序的要求，使应用程序可供其组织使用时，此必需权限列表会显示在一个对话框中。 某些应用程序只需要用户级权限，组织中的任何用户都可以表示许可。 另外一些应用程序需要管理员级权限，组织中的用户无法许可。 只有目录管理员可以对需要此级别的权限的应用程序表示许可。 当用户或管理员许可后，才会在其目录中注册该 Web API。 
+* 多租户 - 首先，本机应用程序只在开发人员或发布者的目录中注册过。 其次，本机应用程序在配置后会指示它在正常运行时所需的权限。 目标目录中的用户或管理员许可应用程序的要求，使应用程序可供其组织使用时，此必需权限列表会显示在一个对话框中。 某些应用程序只需要用户级权限，组织中的任何用户都可以表示许可。 另外一些应用程序需要管理员级权限，组织中的用户无法许可。 只有目录管理员可以对需要此级别的权限的应用程序表示许可。 当用户或管理员许可后，才会在其目录中注册该 Web API。 
 
 ## <a name="token-expiration"></a>令牌过期
 

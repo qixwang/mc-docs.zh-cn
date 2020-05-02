@@ -4,14 +4,14 @@ description: 有关 Azure 容器注册表服务的常见问题的解答
 author: rockboyfor
 ms.topic: article
 origin.date: 07/02/2019
+ms.date: 04/06/2020
 ms.author: v-yeche
-ms.date: 12/09/2019
-ms.openlocfilehash: 2442ecd772a4ad639998e1485208fabc376de235
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.openlocfilehash: 41bb5f4d9d141bd0a4a3e52e626616d81ed8e776
+ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74885025"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82093223"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>有关 Azure 容器注册表的常见问题解答
 
@@ -106,10 +106,8 @@ az role assignment create --role "Reader" --assignee user@contoso.com --scope /s
 - [为何删除映像后，注册表配额用量未减少？](#why-does-the-registry-quota-usage-not-reduce-after-deleting-images)
 - [如何验证存储配额更改？](#how-do-i-validate-storage-quota-changes)
 - [在容器中运行 CLI 时如何对注册表进行身份验证？](#how-do-i-authenticate-with-my-registry-when-running-the-cli-in-a-container)
-- [Azure 容器注册表是否提供仅限 TLS v1.2 的配置，如何启用 TLS v1.2？](#does-azure-container-registry-offer-tls-v12-only-configuration-and-how-to-enable-tls-v12)
-    
-    <!--Not Available on - [Does Azure Container Registry support Content Trust?](#does-azure-container-registry-support-content-trust)-->
-
+- [如何启用 TLS 1.2？](#how-to-enable-tls-12)
+- [Azure 容器注册表是否支持内容信任？](#does-azure-container-registry-support-content-trust)
 - [在无权管理注册表资源的情况下如何授予提取或推送映像的访问权限？](#how-do-i-grant-access-to-pull-or-push-images-without-permission-to-manage-the-registry-resource)
 - [如何为注册表启用自动映像隔离？](#how-do-i-enable-automatic-image-quarantine-for-a-registry)
 
@@ -121,13 +119,13 @@ ACR 支持 Docker 注册表 HTTP API V2。 可通过 `https://<your registry log
 
 在 bash 中：
 
-```bash
+```azurecli
 az acr repository show-manifests -n myRegistry --repository myRepository --query "[?tags[0]==null].digest" -o tsv  | xargs -I% az acr repository delete -n myRegistry -t myRepository@%
 ```
 
 在 PowerShell 中：
 
-```powershell
+```azurecli
 az acr repository show-manifests -n myRegistry --repository myRepository --query "[?tags[0]==null].digest" -o tsv | %{ az acr repository delete -n myRegistry -t myRepository@$_ }
 ```
 
@@ -158,13 +156,13 @@ docker push myregistry.azurecr.cn/1gb:latest
 
 在 Azure 门户中应该可以看到存储用量已增加，或者可以使用 CLI 查询用量。
 
-```bash
+```azurecli
 az acr show-usage -n myregistry
 ```
 
 使用 Azure CLI 或门户删除映像，并在几分钟后检查更新的用量。
 
-```bash
+```azurecli
 az acr repository delete -n myregistry --image 1gb
 ```
 
@@ -188,13 +186,25 @@ apk --update add docker
 az acr login -n MyRegistry
 ```
 
-### <a name="does-azure-container-registry-offer-tls-v12-only-configuration-and-how-to-enable-tls-v12"></a>Azure 容器注册表是否提供仅限 TLS v1.2 的配置，如何启用 TLS v1.2？
+### <a name="how-to-enable-tls-12"></a>如何启用 TLS 1.2？
 
-是的。 使用任何最近发布的 Docker 客户端（18.03.0 和更高版本）启用 TLS。 
+使用任何最近发布的 Docker 客户端（18.03.0 和更高版本）启用 TLS 1.2。 
 
-<!--Not Available on ### Does Azure Container Registry support Content Trust?-->
-<!--Not Available on [Content Trust in Azure Container Registry](container-registry-content-trust.md).-->
-<!--Not Available on #### Where is the file for the thumbprint located?-->
+> [!IMPORTANT]
+> 从 2020 年 1 月 13 日开始，Azure 容器注册表将要求服务器和应用程序的所有安全连接都使用 TLS 1.2。 对 TLS 1.0 和 1.1 的支持将停用。
+
+### <a name="does-azure-container-registry-support-content-trust"></a>Azure 容器注册表是否支持内容信任？
+
+支持，可以在 Azure 容器注册表中使用受信任映像，因为 [Docker Notary](https://docs.docker.com/notary/getting_started/) 已集成且可以启用。 有关详细信息，请参阅 [Azure 容器注册表中的内容信任](container-registry-content-trust.md)。
+
+#### <a name="where-is-the-file-for-the-thumbprint-located"></a>指纹文件位于何处？
+
+在 `~/.docker/trust/tuf/myregistry.azurecr.cn/myrepository/metadata` 下：
+
+* 所有角色（委托角色除外）的公钥和证书都存储在 `root.json` 中。
+* 委托角色的公钥和证书将存储在其父角色的 JSON 文件（例如，`targets/releases` 角色的 `targets.json`）中。
+
+建议在 Docker 和 Notary 客户端完成总体 TUF 验证后验证这些公钥和证书。
 
 ### <a name="how-do-i-grant-access-to-pull-or-push-images-without-permission-to-manage-the-registry-resource"></a>在无权管理注册表资源的情况下如何授予提取或推送映像的访问权限？
 
@@ -215,7 +225,7 @@ ACR 支持提供不同权限级别的[自定义角色](container-registry-roles.
 
     或者，将角色分配到由应用程序 ID 标识的服务主体：
 
-    ```
+    ```azurecli
     az role assignment create --scope resource_id --role AcrPull --assignee 00000000-0000-0000-0000-000000000000
     ```
 
@@ -235,7 +245,7 @@ ACR 支持提供不同权限级别的[自定义角色](container-registry-roles.
 
 * 提取映像：
 
-    ```azurecli
+    ```bash
     docker pull myregistry.azurecr.cn/hello-world
     ```
 
@@ -290,13 +300,11 @@ grep OPTIONS /etc/sysconfig/docker
 
 例如，Fedora 28 服务器使用以下 Docker 守护程序选项：
 
-```
-OPTIONS='--selinux-enabled --log-driver=journald --live-restore'
-```
+`OPTIONS='--selinux-enabled --log-driver=journald --live-restore'`
 
 如果缺少 `--signature-verification=false`，`docker pull` 将会失败并出现如下所示的错误：
 
-```bash
+```output
 Trying to pull repository myregistry.azurecr.cn/myimage ...
 unauthorized: authentication required
 ```
@@ -304,9 +312,8 @@ unauthorized: authentication required
 若要解决该错误：
 1. 将选项 `--signature-verification=false` 添加到 Docker 守护程序配置文件 `/etc/sysconfig/docker`。 例如：
 
-    ```
-    OPTIONS='--selinux-enabled --log-driver=journald --live-restore --signature-verification=false'
-    ```
+    `OPTIONS='--selinux-enabled --log-driver=journald --live-restore --signature-verification=false'`
+
 2. 运行以下命令重启 Docker 守护程序服务：
 
     ```bash
@@ -424,7 +431,7 @@ curl $redirect_url
 
 ### <a name="why-does-my-pull-or-push-request-fail-with-disallowed-operation"></a>为什么我的拉取或推送请求失败，出现操作不被允许的情况？
 
-下面是会导致操作被禁用的一些情况：
+下面是操作可能不被允许的一些情况：
 * 不再支持经典注册表。 请使用 [az acr update](https://docs.azure.cn/cli/acr?view=azure-cli-latest#az-acr-update) 或 Azure 门户升级到受支持的 [SKU](https://aka.ms/acr/skus)。
 * 映像或存储库可能会处于锁定状态，导致无法删除或更新。 可以使用 [az acr show repository](/container-registry/container-registry-image-lock) 命令来查看当前属性。
 * 如果映像处于隔离状态，则会禁用某些操作。 详细了解[隔离](https://github.com/Azure/acr/tree/master/docs/preview/quarantine)。
@@ -471,9 +478,7 @@ az acr task list-runs -r $myregistry --run-status Running --query '[].runId' -o 
 
 如果将本地源文件夹传递到 `az acr build` 命令，则默认会从上传的包中排除 `.git` 文件夹。 可以使用以下设置创建 `.dockerignore` 文件。 这会告知命令还原已上传包中 `.git` 下的所有文件。 
 
-```sh
-!.git/**
-```
+`!.git/**`
 
 此设置也适用于 `az acr run` 命令。
 

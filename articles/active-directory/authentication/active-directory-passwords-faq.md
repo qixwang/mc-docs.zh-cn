@@ -4,19 +4,19 @@ description: 有关 Azure AD 自助密码重置的常见问题解答
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
-ms.date: 02/26/2020
+ms.topic: how-to
+ms.date: 04/24/2020
 ms.author: v-junlch
 author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cfbc9935d8df51c83d2cf7968018d6b413175f66
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.openlocfilehash: 86d6d4748f553bfc74a96da5d132e4a21330f8d0
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77653406"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126224"
 ---
 # <a name="password-management-frequently-asked-questions"></a>密码管理常见问题
 
@@ -46,7 +46,7 @@ ms.locfileid: "77653406"
   >
 * **问：我能否代表用户定义密码重置数据？**
 
-  > **答:** 能。可以使用 Azure AD Connect、PowerShell 或 [Azure 门户](https://portal.azure.cn)实现此目的。 有关详细信息，请参阅 [Azure AD 自助密码重置使用的数据](howto-sspr-authenticationdata.md)。
+  > **答:** 能。可以使用 Azure AD Connect、PowerShell、[Azure 门户](https://portal.azure.cn)或 Microsoft 365 管理中心实现此目的。 有关详细信息，请参阅 [Azure AD 自助密码重置使用的数据](howto-sspr-authenticationdata.md)。
   >
   >
 * **问：我能否从本地同步安全问题数据？**
@@ -71,7 +71,7 @@ ms.locfileid: "77653406"
   >
 * **问：注册门户如何确定为用户显示哪些选项？**
 
-  > **答:** 密码重置注册门户只会显示为用户启用的选项。 可以在目录的“配置”选项卡的“用户密码重置策略”部分找到这些选项。   例如，如果没有启用安全问题，则用户无法针对该选项进行注册。
+  > **答:** 密码重置注册门户只会显示为用户启用的选项。 可以在目录的“配置”选项卡的“用户密码重置策略”部分下找到这些选项。   例如，如果没有启用安全问题，则用户无法针对该选项进行注册。
   >
   >
 * **问：用户何时才会被视为已注册用户？**
@@ -107,9 +107,9 @@ ms.locfileid: "77653406"
   > **答:** 密码重置 UI、短信和语音呼叫实现了相同语言的本地化，这些语言与 Office 365 所支持的语言相同。
   >
   >
-* **问：在自己目录的配置选项卡中设置组织品牌项目后，哪些密码重置体验部分会带有品牌信息？**
+* **问：在目录的配置选项卡中设置组织品牌项目后，哪些密码重置体验部分会带有品牌信息？**
 
-  > **答:** 密码重置门户不但会显示组织徽标，而且支持配置指向某一自定义电子邮件或 URL 的“请与管理员联系”链接。 密码重置发送的任何电子邮件都会在电子邮件正文中包括组织的徽标、颜色、名称，是根据该特定名称的设置自定义的。
+  > **答:** 密码重置门户不但会显示组织徽标，而且支持配置指向某一自定义电子邮件或 URL 的“请与管理员联系”链接。 密码重置发送的任何电子邮件都会在电子邮件正文中包含组织的徽标、颜色和名称，并且根据该特定名称的设置进行自定义。
   >
   >
 * **问：如何告知用户可在何处重置密码？**
@@ -124,7 +124,7 @@ ms.locfileid: "77653406"
   >
 * **问：当用户重置密码时是否支持解锁本地 Active Directory 帐户？**
 
-  > **答:** 是的。 如果用户重置其密码且已通过 Azure AD Connect 部署密码写回，则当该用户重置其密码时，会自动解锁其帐户。
+  > **答:** 是的。 用户重置其密码时，如果已通过 Azure AD Connect 部署了密码写回，则在重置密码时该用户的帐户会自动解锁。
   >
   >
 * **问：如何将密码重置直接集成到用户的桌面登录体验中？**
@@ -235,7 +235,7 @@ ms.locfileid: "77653406"
   >
 * **问：是否可以使用一个 API 来访问密码重置数据或注册报告数据？**
 
-  > **答:** 是的。 若要了解如何才能访问密码重置报告数据流，请参阅[了解如何以编程方式访问密码重置报告事件](https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-reports-and-events-preview)。
+  > **答:** 是的。 若要了解如何访问密码重置报告数据，请参阅 [Azure Log Analytics REST API 参考](https://docs.microsoft.com/rest/api/loganalytics/)。
   >
   >
 
@@ -266,7 +266,7 @@ ms.locfileid: "77653406"
   > **答:** 密码写回适用于从本地 Active Directory 同步到 Azure AD 的用户帐户，包括联合用户、密码哈希同步用户和传递身份验证用户。
   >
   >
-* **问：密码写回是否会强制实施我的域密码策略？**
+* **问：密码写回是否会强制实施我的域的密码策略？**
 
   > **答:** 是的。 密码写回会强制实施密码使用期限、历史记录、复杂性、筛选器以及可能对本地域密码实施的任何其他限制。
   >
@@ -291,4 +291,3 @@ ms.locfileid: "77653406"
 * [SSPR 中的所有选项有哪些？它们有哪些含义？](concept-sspr-howitworks.md)
 * [我认为有些功能被破坏。如何对 SSPR 进行故障排除？](active-directory-passwords-troubleshoot.md)
 
-<!-- Update_Description: wording update -->

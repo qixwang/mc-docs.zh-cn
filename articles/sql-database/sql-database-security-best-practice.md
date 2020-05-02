@@ -8,14 +8,14 @@ author: WenJason
 ms.author: v-jay
 ms.topic: article
 origin.date: 02/20/2020
-ms.date: 03/16/2020
+ms.date: 04/27/2020
 ms.reviewer: ''
-ms.openlocfilehash: 850f02927b83c68a215b96e75cce617dfec20e56
-ms.sourcegitcommit: 90660563b5d65731a64c099b32fb9ec0ce2c51c6
+ms.openlocfilehash: f3e8a8ba17866eb4d6202c1baeaa6386688c5f24
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80341794"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126721"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database"></a>用于解决 Azure SQL 数据库常见安全要求的 playbook
 
@@ -90,14 +90,14 @@ ms.locfileid: "80341794"
 
 - 创建 Azure AD 租户，[创建用户](../active-directory/fundamentals/add-users-azure-active-directory.md)来表示人类用户，并创建[服务主体](../active-directory/develop/app-objects-and-service-principals.md)来表示应用、服务和自动化工具。 服务主体相当于 Windows 和 Linux 中的服务帐户。 
 
-- 通过组分配向 Azure AD 主体分配资源访问权限：创建 Azure AD 组，向组授予访问权限，并将各个成员添加到组中。 在数据库中，创建包含的数据库用户用于映射 Azure AD 组。 若要在数据库内分配权限，请将用户置于具有合适权限的数据库角色中。
+- 通过组分配向 Azure AD 主体分配资源访问权限：创建 Azure AD 组，向组授予访问权限，并将各个成员添加到组中。 在数据库中，创建包含的数据库用户用于映射 Azure AD 组。 若要在数据库中分配权限，请将与 Azure AD 组关联的用户置于具有适当权限的数据库角色中。
   - 请参阅文章[通过 SQL 配置和管理 Azure Active Directory 身份验证](sql-database-aad-authentication-configure.md)以及[通过 SQL 使用 Azure AD 进行身份验证](sql-database-aad-authentication.md)。
   > [!NOTE]
   > 在托管实例中，还可以创建映射到 master 数据库中的 Azure AD 主体的登录名。 请参阅 [CREATE LOGIN (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current)。
 
 - 使用 Azure AD 组可以简化权限管理，组所有者和资源所有者都可以在组中添加/删除成员。 
 
-- 为 SQL 数据库服务器创建单独的 Azure AD 管理员组。
+- 为每个 SQL DB 服务器创建单独的 Azure AD 管理员组。
 
   - 请参阅[为 Azure SQL 数据库服务器预配 Azure Active Directory 管理员](sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)一文。
 
@@ -109,7 +109,7 @@ ms.locfileid: "80341794"
 > [!NOTE]
 > - Azure AD 身份验证记录在 Azure SQL 审核日志中，而不是记录在 Azure AD 登录日志中。
 > - 在 Azure 中授予的 RBAC 权限不适用于 Azure SQL 数据库权限。 必须使用现有的 SQL 权限在 SQL 数据库中手动创建/映射此类权限。
-> - 在客户端上，Azure AD 身份验证需有权访问 Internet，或通过用户定义的路由 (UDR) 访问 VNet。
+> - 在客户端上，Azure AD 身份验证需要访问 Internet，或通过用户定义的路由 (UDR) 访问 VNet。
 
 ### <a name="multi-factor-authentication-mfa"></a>多重身份验证 (MFA)
 
@@ -208,7 +208,7 @@ SQL 身份验证是指使用用户名和密码连接到 Azure SQL 数据库时�
 
 ## <a name="access-management"></a>访问管理
 
-访问管理是控制和管理已授权用户对 Azure SQL 数据库的访问与特权的过程。
+访问管理（也称为授权）是控制和管理已授权用户对 Azure SQL 数据库的访问权限与特权的过程。
 
 ### <a name="implement-principle-of-least-privilege"></a>实施最低特权原则
 
@@ -220,7 +220,7 @@ SQL 身份验证是指使用用户名和密码连接到 Azure SQL 数据库时�
 
 仅分配完成所需任务而需要的[权限](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine)：
 
-- 在 SQL 数据平面中： 
+- 在 SQL 数据库中： 
     - 使用粒度权限和用户定义的数据库角色（或 MI 中的服务器角色）： 
         1. 创建所需的角色
             - [CREATE ROLE](https://docs.microsoft.com/sql/t-sql/statements/create-role-transact-sql)
@@ -289,7 +289,7 @@ SQL 身份验证是指使用用户名和密码连接到 Azure SQL 数据库时�
   - 在托管实例中为服务器范围的任务（创建新的登录名和数据库）创建服务器角色。 
   - 为数据库级任务创建数据库角色。
 
-- 对于某些敏感任务，考虑创建由证书签名的特殊存储过程，以代表用户执行这些任务。 
+- 对于某些敏感任务，考虑创建由证书签名的特殊存储过程，以代表用户执行这些任务。 数字签名存储过程的一个重要优点是，如果更改了该过程，则会立即删除授予该过程的旧版本的权限。
   - 示例：[教程：使用证书为存储过程签名](https://docs.microsoft.com/sql/relational-databases/tutorial-signing-stored-procedures-with-a-certificate) 
 
 - 使用 Azure Key Vault 中客户管理的密钥实现透明数据加密 (TDE)，以便在数据所有者与安全所有者之间实现职责分离。 
@@ -298,7 +298,7 @@ SQL 身份验证是指使用用户名和密码连接到 Azure SQL 数据库时�
 - 为了确保 DBA 无法看到高度敏感的数据但仍可执行 DBA 任务，可将 Always Encrypted 与角色分离配合使用。 
   - 请参阅文章 [Always Encrypted 密钥管理概述](https://docs.microsoft.com/sql/relational-databases/security/encryption/overview-of-key-management-for-always-encrypted)、[使用角色分离的密钥预配](https://docs.microsoft.com/sql/relational-databases/security/encryption/configure-always-encrypted-keys-using-powershell#KeyProvisionWithRoles)和[使用角色分离的列主密钥轮换](https://docs.microsoft.com/sql/relational-databases/security/encryption/rotate-always-encrypted-keys-using-powershell#column-master-key-rotation-with-role-separation)。 
 
-- 如果这种做法不可行（最起码在不付出极大成本和工作量的情况下做不到这一点，但如果付出，又可能会导致系统几乎无用），可以通过补偿性的控制措施来采取折衷办法，例如： 
+- 如果使用 Always Encrypted 不可行（最起码在不付出极大成本和工作量的情况下做不到这一点，但如果付出，甚至可能会导致系统几乎不可用），可以通过补偿性的控制措施来采取折衷办法，例如： 
   - 在过程中进行人工干预。 
   - 审核线索 – 有关审核的详细信息，请参阅[审核关键安全事件](#audit-critical-security-events)。
 
@@ -310,7 +310,7 @@ SQL 身份验证是指使用用户名和密码连接到 Azure SQL 数据库时�
 
 - 当权限与所需权限完全匹配时使用内置角色 – 如果多个内置角色的所有权限的联合导致 100% 匹配，则还可以同时分配多个角色。 
 
-- 当内置角色授予的权限过多或不足时，创建并使用自定义角色。 
+- 当内置角色授予的权限过多或不足时，创建并使用用户定义的角色。 
 
 - 还可以在 T-SQL 的 SQL 代理作业步骤中或使用适用于 RBAC 角色的 Azure PIM，暂时执行角色分配（也称为动态职责分离 (DSD)）。 
 
@@ -320,7 +320,7 @@ SQL 身份验证是指使用用户名和密码连接到 Azure SQL 数据库时�
 
 - 可以检索内置 RBAC 角色的定义以查看所用的权限，并通过 PowerShell 根据这些信息的摘录和累积创建自定义角色。
 
-- 由于 db_owner 数据库角色的任何成员都可以更改透明数据加密 (TDE) 等安全设置或更改 SLO，因此，应谨慎地为此成员身份授予权限。 但是，许多任务要求使用 db_owner 特权。 例如，更改数据库选项等任何数据库设置的任务。 在任何解决方案中，审核都发挥着关键的作用。
+- 由于 db_owner 数据库角色的任何成员都可以更改透明数据加密 (TDE) 等安全设置或更改 SLO，因此，应谨慎地授予此成员身份。 但是，许多任务要求使用 db_owner 特权。 例如，更改数据库选项等任何数据库设置的任务。 在任何解决方案中，审核都发挥着关键的作用。
 
 - 无法限制 db_owner 的权限，因此应阻止管理帐户查看用户数据。 如果数据库中包含高度敏感的数据，可以使用 Always Encrypted 来安全阻止 db_owners 或任何其他 DBA 查看这些数据。
 
@@ -431,11 +431,11 @@ SQL 身份验证是指使用用户名和密码连接到 Azure SQL 数据库时�
 
 - 如果需要支持数据计算（相等性），请使用确定性加密。 否则请使用随机加密。 避免将确定性加密用于低熵数据集或采用众所周知分布形式的数据集。 
 
-- 如果你担心第三方在未经同意的情况下以合法方式访问你的数据，请确保有权访问纯文本形式的密钥和数据的所有应用程序与工具在 Azure 云外部运行。 如果第三方无权访问密钥，则除非绕过加密，否则他们无法解密数据。
+- 如果你担心第三方在未经你同意的情况下以合法方式访问你的数据，请确保有权访问纯文本形式的密钥和数据的所有应用程序与工具都在 Azure 云外部运行。 如果第三方无权访问密钥，则除非绕过加密，否则他们无法解密数据。
 
 - Always Encrypted 无法轻松支持授予对密钥（和受保护数据）的临时访问权限。 例如，如果需要与 DBA 共享密钥，使 DBA 能够对敏感数据和加密的数据执行一些清理操作。 可靠撤销 DBA 的数据访问权限的唯一方法是，同时轮换用于保护数据的列加密密钥和列主密钥，而这是一项开销较高的操作。 
 
-- 若要访问已加密列中的纯文本值，用户需要有权访问用于保护列的 CMK，此 CMK 是在保存 CMK 的密钥存储中配置的。 用户还需要拥有“查看任何列主密钥定义”和“查看任何列加密密钥定义”数据库权限。  
+- 若要访问已加密列中的纯文本值，用户需要有权访问用于保护列的列主密钥 (CMK)（在保存 CMK 的密钥存储中进行配置）。 用户还需要拥有“查看任何列主密钥定义”和“查看任何列加密密钥定义”数据库权限。  
 
 ### <a name="control-access-of-application-users-to-sensitive-data-through-encryption"></a>通过加密控制应用程序用户对敏感数据的访问
 
@@ -536,6 +536,7 @@ SQL 身份验证是指使用用户名和密码连接到 Azure SQL 数据库时�
 > 托管实例公共终结点默认未启用，必须显式启用它。 如果公司政策禁止使用公共终结点，请首先使用 [Azure Policy](../governance/policy/overview.md) 来防止启用公共终结点。
 
 - 设置 Azure 网络组件： 
+  - 按照 [Azure 网络安全最佳做法](../security/fundamentals/network-best-practices.md)进行操作。
   - 根据 [Azure 虚拟网络常见问题解答 (FAQ)](../virtual-network/virtual-networks-faq.md) 和计划中所述的最佳做法规划虚拟网络 (VNet) 配置。 
   - 将 VNet 划分为多个子网，并将类似角色的资源（例如，前端与后端资源）分配到同一子网。
   - 使用[网络安全组 (NSG)](../virtual-network/security-overview.md) 来控制 Azure VNet 边界范围内子网之间的流量。
@@ -615,7 +616,7 @@ SQL 身份验证是指使用用户名和密码连接到 Azure SQL 数据库时�
 **最佳做法**：
 
 - 在数据库服务器上配置用于审核事件的 [SQL 数据库审核](sql-database-auditing.md)后，将会审核该服务器上所有现有的和新建的数据库。
-- 审核策略默认包括对数据库执行的所有操作（查询、存储过程，以及成功和失败的登录），这可能会导致生成大量的审核日志。 建议客户[使用 PowerShell 对不同类型的操作和操作组配置审核](sql-database-auditing.md#subheading-7)。 此项配置有助于控制审核的操作数量，并将事件丢失的风险降到最低。 自定义审核配置可让客户仅捕获所需的审核数据。
+- 审核策略默认包括对数据库执行的所有操作（查询、存储过程，以及成功和失败的登录），这可能会导致生成大量的审核日志。 建议客户[使用 PowerShell 对不同类型的操作和操作组配置审核](sql-database-auditing.md#manage-auditing)。 此项配置有助于控制审核的操作数量，并将事件丢失的风险降到最低。 自定义审核配置可让客户仅捕获所需的审核数据。
 - 可以在 [Azure 门户](https://portal.azure.cn/)中直接使用审核日志，或者从配置的存储位置使用。 
 
 
@@ -691,7 +692,7 @@ SQL 身份验证是指使用用户名和密码连接到 Azure SQL 数据库时�
 **如何实现**：
 
 - 结合使用 SQL 审核和数据分类。 
-  - 在 [SQL 数据库审核](sql-database-auditing.md)日志中，可以专门跟踪对敏感数据的访问。 还可以查看访问的数据及其敏感性标签等信息。 有关详细信息，请参阅[审核对敏感数据的访问](sql-database-data-discovery-and-classification.md#subheading-3)。 
+  - 在 [SQL 数据库审核](sql-database-auditing.md)日志中，可以专门跟踪对敏感数据的访问。 还可以查看访问的数据及其敏感性标签等信息。 有关详细信息，请参阅[审核对敏感数据的访问](sql-database-data-discovery-and-classification.md#audit-sensitive-data)。 
 
 **最佳做法**：
 

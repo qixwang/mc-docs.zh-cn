@@ -1,30 +1,30 @@
 ---
 title: 自助密码重置策略 - Azure Active Directory
-description: 配置 Azure AD 自助密码重置策略选项
+description: 了解各种 Azure Active Directory 自助式密码重置策略选项
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 02/07/2020
+ms.date: 04/24/2020
 ms.author: v-junlch
 author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81e09f1ac10412be0a33150a5308408189406820
-ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
+ms.openlocfilehash: 6a00840b6c20d89613c251ba895b2b6938631d7c
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77067562"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126220"
 ---
-# <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Azure Active Directory 中的密码策略和限制
+# <a name="self-service-password-reset-policies-and-restrictions-in-azure-active-directory"></a>Azure Active Directory 中的自助式密码重置策略和限制
 
 本文介绍与 Azure Active Directory (Azure AD) 租户中的用户帐户关联的密码策略和复杂性要求。
 
 ## <a name="administrator-reset-policy-differences"></a>管理员重置策略差异
 
-***Microsoft 对任何 Azure 管理员角色强制实施强大的默认双门密码重置策略*** ，此策略可能与你为用户定义的策略不同，并且无法更改。 你应始终以未被分配任何 Azure 管理员角色的用户身份测试密码重置功能。
+Microsoft 为任意 Azure 管理员角色强制实施默认强双门密码重置策略   。 此策略可能与你为用户定义的策略不同，因此无法更改此策略。 你应始终以未被分配任何 Azure 管理员角色的用户身份测试密码重置功能。
 
 使用双门策略，**管理员将无法使用安全问题**。
 
@@ -59,15 +59,15 @@ ms.locfileid: "77067562"
 
 ### <a name="exceptions"></a>异常
 
-单门策略需要一条身份验证数据，如电子邮件地址*或*电话号码。 单门策略在以下情况下适用：
+单门策略需要一条身份验证数据，如电子邮件地址或电话号码。 单门策略在以下情况下适用：
 
 * 它在试用订阅的前 30 天中；或
-* 尚未为 Azure AD 租户配置自定义域，因此使用的是默认值（即，*.partner.onmschina.cn  ）。 请注意，建议不要将默认的“*.partner.onmschina.cn”  域用于生产环境；并且
+* 尚未为 Azure AD 租户配置自定义域，因此使用的是默认值（即，*.partner.onmschina.cn  ）。 建议不要将默认的“*.partner.onmschina.cn”  域用于生产环境；并且
 * Azure AD Connect 未同步标识
 
 ## <a name="userprincipalname-policies-that-apply-to-all-user-accounts"></a>适用于所有用户帐户的 UserPrincipalName 策略
 
-需登录到 Azure AD 的每个用户帐户都必须有唯一的与其帐户关联的用户主体名称 (UPN) 属性值。 下表概括了既适用于同步到云的本地 Active Directory 用户帐户，又适用于仅限云的用户帐户的策略：
+需登录到 Azure AD 的每个用户帐户都必须有唯一的与其帐户关联的用户主体名称 (UPN) 属性值。 下表概括了既适用于同步到云的本地 Active Directory 域服务用户帐户，又适用于仅限云的用户帐户的策略：
 
 | 属性 | UserPrincipalName 要求 |
 | --- | --- |
@@ -81,7 +81,7 @@ ms.locfileid: "77067562"
 
 | 属性 | 要求 |
 | --- | --- |
-| 允许的字符 |<ul><li>A - Z</li><li>a - z</li><li>0 - 9</li> <li>@ # $ % ^ & * - _ ! + = [ ] { } &#124; \ : ‘ , . ? / \` ~ " ( ) ;</li> <li>空白</li></ul> |
+| 允许的字符 |<ul><li>A - Z</li><li>a - z</li><li>0 - 9</li> <li>@ # $ % ^ & * - _ ! + = [ ] { } &#124; \ : ' , . ? / \` ~ " ( ) ;</li> <li>空白</li></ul> |
 | 不允许的字符 | Unicode 字符。 |
 | 密码限制 |<ul><li>至少 8 个字符，最多包含 256 个字符。</li><li>需满足以下 4 项中的 3 项：<ul><li>小写字符。</li><li>大写字符。</li><li>数字 (0-9)。</li><li>符号（请参阅前面的密码限制）。</li></ul></li></ul> |
 | 密码过期期限（最长密码期限） |<ul><li>默认值：“90”天  。</li><li>可通过 Windows PowerShell 的 Azure Active Directory 模块中的 `Set-MsolPasswordPolicy` cmdlet 来配置该值。</li></ul> |
@@ -93,7 +93,7 @@ ms.locfileid: "77067562"
 
 ## <a name="set-password-expiration-policies-in-azure-ad"></a>在 Azure AD 中设置密码过期策略
 
-Azure 云服务的全局管理员或用户管理员可使用用于 Windows PowerShell 的 Azure AD 模块将用户密码设置为不过期。 还可以使用 Windows PowerShell cmdlet 删除永不过期配置，或者查看已将哪些用户密码设置为永不过期。 
+Azure 云服务的全局管理员或用户管理员可使用用于 Windows PowerShell 的 Azure AD 模块将用户密码设置为不过期    。 还可以使用 Windows PowerShell cmdlet 删除永不过期配置，或者查看已将哪些用户密码设置为永不过期。
 
 本指南适用于其他提供程序（如 Intune 和 Office 365），这些提供程序也依赖于 Azure AD 提供标识和目录服务。 密码过期是策略中唯一可更改的部分。
 
@@ -102,12 +102,12 @@ Azure 云服务的全局管理员或用户管理员可使用用于 Windows Power
 
 ## <a name="set-or-check-the-password-policies-by-using-powershell"></a>使用 PowerShell 设置或检查密码策略
 
-若要开始，需要[下载并安装 Azure AD PowerShell 模块](https://docs.microsoft.com/powershell/module/Azuread/?view=azureadps-2.0)。 安装后，可以按照以下步骤配置每个字段。
+首先，[下载并安装 Azure AD PowerShell 模块](https://docs.microsoft.com/powershell/module/Azuread/?view=azureadps-2.0)。 安装该模块后，请按照以下步骤配置每个字段。
 
 ### <a name="check-the-expiration-policy-for-a-password"></a>检查密码过期策略
 
 1. 使用用户管理员或公司管理员凭据连接到 Windows PowerShell。
-1. 执行以下命令之一：
+1. 运行下列命令之一：
 
    * 若要查看单个用户的密码是否已设置为永不过期，请使用要查看的用户的 UPN（例如 aprilr\@contoso.partner.onmschina.cn  ）或用户 ID 运行以下 cmdlet：
 
@@ -156,22 +156,11 @@ Azure 云服务的全局管理员或用户管理员可使用用于 Windows Power
    ```
 
    > [!WARNING]
-   > 设置为 `-PasswordPolicies DisablePasswordExpiration` 的密码仍会基于 `pwdLastSet` 属性过时。 如果将用户密码设置为永不过期，则 90 多天过后密码过期。 基于 `pwdLastSet` 属性，如果将过期更改为 `-PasswordPolicies None`，则所有 `pwdLastSet` 早于 90 天的密码将需要用户在下一次登录时更改它们。 此更改可能会影响很多用户。
+   > 设置为 `-PasswordPolicies DisablePasswordExpiration` 的密码仍会基于 `pwdLastSet` 属性过时。 基于 `pwdLastSet` 属性，如果将过期更改为 `-PasswordPolicies None`，则所有 `pwdLastSet` 早于 90 天的密码将需要用户在下一次登录时更改它们。 此更改可能会影响很多用户。
 
 ## <a name="next-steps"></a>后续步骤
 
-以下文章提供了有关通过 Azure AD 进行密码重置的更多信息：
+若要开始进行 SSPR，请参阅[教程：使用户能够使用 Azure Active Directory 自助式密码重置来解锁其帐户或重置密码](tutorial-enable-sspr.md)。
 
-* [如何成功推出 SSPR？](howto-sspr-deployment.md)
-* [重置或更改密码](../user-help/active-directory-passwords-update-your-own-password.md)。
-* [注册自助服务密码重置](../user-help/active-directory-passwords-reset-register.md)。
-* [是否有许可问题？](concept-sspr-licensing.md)
-* [SSPR 使用哪些数据？应为用户填充哪些数据？](howto-sspr-authenticationdata.md)
-* [哪些身份验证方法可供用户使用？](concept-sspr-howitworks.md#authentication-methods)
-* [什么是密码写回？我为什么关心它？](howto-sspr-writeback.md)
-* [如何报告 SSPR 中的活动？](howto-sspr-reporting.md)
-* [SSPR 中的所有选项有哪些？它们有哪些含义？](concept-sspr-howitworks.md)
-* [我认为有些功能被破坏。如何对 SSPR 进行故障排除？](active-directory-passwords-troubleshoot.md)
-* [我有在别处未涵盖的问题](active-directory-passwords-faq.md)
+如果你或用户遇到 SSPR 问题，请参阅[排查自助式密码重置问题](active-directory-passwords-troubleshoot.md)
 
-<!-- Update_Description: wording update -->

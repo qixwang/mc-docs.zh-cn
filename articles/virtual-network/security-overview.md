@@ -1,7 +1,7 @@
 ---
-title: Azure 安全组概述
+title: Azure 网络安全组概述
 titlesuffix: Azure Virtual Network
-description: 了解网络和应用程序安全组。 安全组可以帮助你筛选 Azure 资源之间的网络流量。
+description: 了解网络安全组。 网络安全组可帮助你筛选 Azure 资源之间的网络流量。
 services: virtual-network
 documentationcenter: na
 author: rockboyfor
@@ -10,23 +10,23 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-origin.date: 01/22/2020
-ms.date: 02/24/2020
+origin.date: 02/27/2020
+ms.date: 04/13/2020
 ms.author: v-yeche
 ms.reviewer: kumud
-ms.openlocfilehash: fe5ee765cdc7640f935afb662729a05a7128122c
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: ea8599ee0dbc30bd33bf2afafcb765b32756dd1c
+ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79291684"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82093341"
 ---
-# <a name="security-groups"></a>安全组
+# <a name="network-security-groups"></a>网络安全组
 <a name="network-security-groups"></a>
 
-可以使用网络安全组来筛选 Azure [虚拟网络](virtual-networks-overview.md)中出入 Azure 资源的网络流量。 网络安全组包含[安全规则](#security-rules)，这些规则可允许或拒绝多种 Azure 资源的入站和出站网络流量。 若要了解哪些 Azure 资源可以部署到虚拟网络中并与网络安全组关联，请参阅 [Azure 服务的虚拟网络集成](virtual-network-for-azure-services.md)。 可以为每项规则指定源和目标、端口以及协议。
+可以使用网络安全组来筛选 Azure 虚拟网络中出入 Azure 资源的网络流量。 网络安全组包含安全规则，这些规则可允许或拒绝多种 Azure 资源的入站和出站网络流量。 若要了解哪些 Azure 资源可以部署到虚拟网络中并与网络安全组关联，请参阅 [Azure 服务的虚拟网络集成](virtual-network-for-azure-services.md)。 可以为每项规则指定源和目标、端口以及协议。
 
-本文介绍网络安全组概念，目的是让你提高其使用效率。 如果从未创建过网络安全组，可以先完成一个快速[教程](tutorial-filter-network-traffic.md)，获取一些创建经验。 如果已熟悉网络安全组，需要对其进行管理，请参阅[管理网络安全组](manage-network-security-group.md)。 如果有通信问题，需要对网络安全组进行故障排除，请参阅[诊断虚拟机网络流量筛选器问题](diagnose-network-traffic-filter-problem.md)。 可以通过[网络安全组流日志](../network-watcher/network-watcher-nsg-flow-logging-portal.md?toc=%2fvirtual-network%2ftoc.json)来[分析网络流量](../network-watcher/traffic-analytics.md?toc=%2fvirtual-network%2ftoc.json)，这些流量流入和流出的资源组都有关联的网络安全组。
+本文介绍网络安全组概念，目的是让你提高其使用效率。 如果从未创建过网络安全组，可以先完成一个快速[教程](tutorial-filter-network-traffic.md)，获取一些创建经验。 如果已熟悉网络安全组，需要对其进行管理，请参阅[管理网络安全组](manage-network-security-group.md)。 如果有通信问题，需要对网络安全组进行故障排除，请参阅[诊断虚拟机网络流量筛选器问题](diagnose-network-traffic-filter-problem.md)。 可以通过[网络安全组流日志](../network-watcher/network-watcher-nsg-flow-logging-portal.md?toc=%2fvirtual-network%2ftoc.json)来分析网络流量，这些流量流入和流出的资源组都有关联的网络安全组。
 
 ## <a name="security-rules"></a>安全规则
 
@@ -47,107 +47,67 @@ ms.locfileid: "79291684"
 
 在网络安全组中创建的安全规则存在数量限制。 有关详细信息，请参阅 [Azure 限制](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)。
 
-## <a name="augmented-security-rules"></a>扩充式安全规则
-
-扩充式安全规则简化了虚拟网络的安全定义，可让我们以更少的规则定义更大、更复杂的网络安全策略。 可将多个端口和多个显式 IP 地址和范围合并成一个易于理解的安全规则。 可在规则的源、目标和端口字段中使用扩充式规则。 若要简化安全规则定义的维护，可将扩充式安全规则与[服务标记](service-tags-overview.md)或[应用程序安全组](#application-security-groups)合并。 可在规则中指定的地址、范围和端口的数量存在限制。 有关详细信息，请参阅 [Azure 限制](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)。
-
-## <a name="service-tags"></a>服务标记
-
-服务标记表示给定 Azure 服务中的一组 IP 地址前缀。 它有助于将频繁更新网络安全规则的复杂性降至最低。
-
-有关详细信息，请参阅 [Azure 服务标记](service-tags-overview.md)。 
-
-## <a name="default-security-rules"></a>默认安全规则
+### <a name="default-security-rules"></a>默认安全规则
 
 Azure 在你所创建的每个网络安全组中创建以下默认规则：
 
-### <a name="inbound"></a>入站
+#### <a name="inbound"></a>入站
 
-#### <a name="allowvnetinbound"></a>AllowVNetInBound
+##### <a name="allowvnetinbound"></a>AllowVNetInBound
 
 |优先级|Source|源端口|目标|目标端口|协议|访问|
 |---|---|---|---|---|---|---|
 |65000|VirtualNetwork|0-65535|VirtualNetwork|0-65535|任意|允许|
 
-#### <a name="allowazureloadbalancerinbound"></a>AllowAzureLoadBalancerInBound
+##### <a name="allowazureloadbalancerinbound"></a>AllowAzureLoadBalancerInBound
 
 |优先级|Source|源端口|目标|目标端口|协议|访问|
 |---|---|---|---|---|---|---|
 |65001|AzureLoadBalancer|0-65535|0.0.0.0/0|0-65535|任意|允许|
 
-#### <a name="denyallinbound"></a>DenyAllInbound
+##### <a name="denyallinbound"></a>DenyAllInbound
 
 |优先级|Source|源端口|目标|目标端口|协议|访问|
 |---|---|---|---|---|---|---|
 |65500|0.0.0.0/0|0-65535|0.0.0.0/0|0-65535|任意|拒绝|
 
-### <a name="outbound"></a>出站
+#### <a name="outbound"></a>出站
 
-#### <a name="allowvnetoutbound"></a>AllowVnetOutBound
+##### <a name="allowvnetoutbound"></a>AllowVnetOutBound
 
 |优先级|Source|源端口| 目标 | 目标端口 | 协议 | 访问 |
 |---|---|---|---|---|---|---|
 | 65000 | VirtualNetwork | 0-65535 | VirtualNetwork | 0-65535 | 任意 | 允许 |
 
-#### <a name="allowinternetoutbound"></a>AllowInternetOutBound
+##### <a name="allowinternetoutbound"></a>AllowInternetOutBound
 
 |优先级|Source|源端口| 目标 | 目标端口 | 协议 | 访问 |
 |---|---|---|---|---|---|---|
 | 65001 | 0.0.0.0/0 | 0-65535 | Internet | 0-65535 | 任意 | 允许 |
 
-#### <a name="denyalloutbound"></a>DenyAllOutBound
+##### <a name="denyalloutbound"></a>DenyAllOutBound
 
 |优先级|Source|源端口| 目标 | 目标端口 | 协议 | 访问 |
 |---|---|---|---|---|---|---|
 | 65500 | 0.0.0.0/0 | 0-65535 | 0.0.0.0/0 | 0-65535 | 任意 | 拒绝 |
 
-在“源”和“目标”列表中，“VirtualNetwork”、“AzureLoadBalancer”和“Internet”是[服务标记](service-tags-overview.md)，而不是 IP 地址。      在“协议”列中，**Any** 包含 TCP、UDP 和 ICMP。 创建规则时，可以指定 TCP、UDP、ICMP 或 Any。 “源”和“目标”列中的“0.0.0.0/0”表示所有地址。    Azure 门户、Azure CLI 或 Powershell 等客户端可以使用 * 或任何字符来表示此表达式。
+在“源”和“目标”列表中，“VirtualNetwork”、“AzureLoadBalancer”和“Internet”是[服务标记](service-tags-overview.md)，而不是 IP 地址。      在“协议”列中，**Any** 包含 TCP、UDP 和 ICMP。 创建规则时，可以指定 TCP、UDP、ICMP 或 Any。 “源”和“目标”列中的“0.0.0.0/0”表示所有地址。    Azure 门户、Azure CLI 或 PowerShell 等客户端可以使用“*”或任何字符来表示此表达式。
 
 不能删除默认规则，但可以通过创建更高优先级的规则来替代默认规则。
 
-## <a name="application-security-groups"></a>应用程序安全组
+### <a name="augmented-security-rules"></a>扩充式安全规则
 
-使用应用程序安全组可将网络安全性配置为应用程序结构的固有扩展，从而可以基于这些组将虚拟机分组以及定义网络安全策略。 可以大量重复使用安全策略，而无需手动维护显式 IP 地址。 平台会处理显式 IP 地址和多个规则集存在的复杂性，让你专注于业务逻辑。 若要更好地理解应用程序安全组，请考虑以下示例：
+扩充式安全规则简化了虚拟网络的安全定义，可让我们以更少的规则定义更大、更复杂的网络安全策略。 可将多个端口和多个显式 IP 地址和范围合并成一个易于理解的安全规则。 可在规则的源、目标和端口字段中使用扩充式规则。 若要简化安全规则定义的维护，可将扩充式安全规则与[服务标记](service-tags-overview.md)或[应用程序安全组](#application-security-groups)合并。 可在规则中指定的地址、范围和端口的数量存在限制。 有关详细信息，请参阅 [Azure 限制](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)。
 
-![应用程序安全组](./media/security-groups/application-security-groups.png)
+#### <a name="service-tags"></a>服务标记
 
-在上图中，*NIC1* 和 *NIC2* 是 *AsgWeb* 应用程序安全组的成员。 *NIC3* 是 *AsgLogic* 应用程序安全组的成员。 *NIC4* 是 *AsgDb* 应用程序安全组的成员。 虽然此示例中的每个网络接口只是一个应用程序安全组的成员，但实际上一个网络接口可以是多个应用程序安全组的成员，具体取决于 [Azure 限制](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)。 这些网络接口都没有关联的网络安全组。 *NSG1* 关联到两个子网，包含以下规则：
+服务标记表示给定 Azure 服务中的一组 IP 地址前缀。 它有助于将频繁更新网络安全规则的复杂性降至最低。
 
-### <a name="allow-http-inbound-internet"></a>Allow-HTTP-Inbound-Internet
+有关详细信息，请参阅 [Azure 服务标记](service-tags-overview.md)。 有关如何使用存储服务标记限制网络访问的示例，请参阅[限制对 PaaS 资源的网络访问](tutorial-restrict-network-access-to-resources.md)。
 
-若要让流量从 Internet 流到 Web 服务器，此规则是必需的。 由于来自 Internet 的入站流量被 [DenyAllInbound](#denyallinbound) 默认安全规则拒绝，因此 *AsgLogic* 或 *AsgDb* 应用程序安全组不需更多规则。
+#### <a name="application-security-groups"></a>应用程序安全组
 
-|优先级|Source|源端口| 目标 | 目标端口 | 协议 | 访问 |
-|---|---|---|---|---|---|---|
-| 100 | Internet | * | AsgWeb | 80 | TCP | 允许 |
-
-### <a name="deny-database-all"></a>Deny-Database-All
-
-由于 [AllowVNetInBound](#allowvnetinbound) 默认安全规则允许在同一虚拟网络中的资源之间进行的所有通信，因此需要使用此规则来拒绝来自所有资源的流量。
-
-|优先级|Source|源端口| 目标 | 目标端口 | 协议 | 访问 |
-|---|---|---|---|---|---|---|
-| 120 | * | * | AsgDb | 1433 | 任意 | 拒绝 |
-
-### <a name="allow-database-businesslogic"></a>Allow-Database-BusinessLogic
-
-此规则允许从 *AsgLogic* 应用程序安全组到 *AsgDb* 应用程序安全组的流量。 此规则的优先级高于 *Deny-Database-All* 规则的优先级。 因此，此规则在 *Deny-Database-All* 规则之前处理，这样系统就会允许来自 *AsgLogic* 应用程序安全组的流量，而阻止所有其他流量。
-
-|优先级|Source|源端口| 目标 | 目标端口 | 协议 | 访问 |
-|---|---|---|---|---|---|---|
-| 110 | AsgLogic | * | AsgDb | 1433 | TCP | 允许 |
-
-将应用程序安全组指定为源或目标的规则只会应用到属于应用程序安全组成员的网络接口。 如果网络接口不是应用程序安全组的成员，则规则不会应用到网络接口，即使网络安全组关联到子网。
-
-应用程序安全组具有以下约束：
-
-- 一个订阅中可以有的应用程序安全组存在数量限制，此外还有其他与应用程序安全组相关的限制。 有关详细信息，请参阅 [Azure 限制](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)。
-- 可将一个应用程序安全组指定为安全规则中的源和目标。 不能在源或目标中指定多个应用程序安全组。
-- 分配给应用程序安全组的所有网络接口都必须存在于分配给应用程序安全组的第一个网络接口所在的虚拟网络中。 例如，如果分配给名为 *AsgWeb* 的应用程序安全组的第一个网络接口位于名为 *VNet1* 的虚拟网络中，则分配给 *ASGWeb* 的所有后续网络接口都必须存在于 *VNet1* 中。 不能向同一应用程序安全组添加来自不同虚拟网络的网络接口。
-- 如果在安全规则中将应用程序安全组指定为源和目标，则两个应用程序安全组中的网络接口必须存在于同一虚拟网络中。 例如，如果 *AsgLogic* 包含来自 *VNet1* 的网络接口，*AsgDb* 包含来自 *VNet2* 的网络接口，则不能在一项规则中将 *AsgLogic* 分配为源，将 *AsgDb* 分配为目标。 源和目标应用程序安全组中的所有网络接口需存在于同一虚拟网络中。
-
-> [!TIP]
-> 为了尽量减少所需的安全规则数和需要更改规则的情况，请尽可能使用服务标记或应用程序安全组来规划所需的应用程序安全组并创建规则，而不要使用单个 IP 地址或 IP 地址范围。
+使用应用程序安全组可将网络安全性配置为应用程序结构的固有扩展，从而可以基于这些组将虚拟机分组以及定义网络安全策略。 可以大量重复使用安全策略，而无需手动维护显式 IP 地址。 若要了解详细信息，请参阅[应用程序安全组](application-security-groups.md)。
 
 ## <a name="how-traffic-is-evaluated"></a>如何评估流量
 
@@ -191,7 +151,7 @@ Azure 在你所创建的每个网络安全组中创建以下默认规则：
 
 ## <a name="azure-platform-considerations"></a>Azure 平台注意事项
 
-- **主机节点的虚拟 IP**：基本的基础结构服务（例如 DHCP、DNS、IMDS和运行状况监视）是通过虚拟化主机 IP 地址 168.63.129.16 和 169.254.169.254 提供的。 这些 IP 地址属于 Azure，是仅有的用于所有区域的虚拟化 IP 地址，没有其他用途。
+- **主机节点的虚拟 IP**：基本的基础结构服务（如 DHCP、DNS、IMDS 和运行状况监视）通过虚拟化主机 IP 地址 168.63.129.16 和 169.254.169.254 提供。 这些 IP 地址属于 Azure，是仅有的用于所有区域的虚拟化 IP 地址，没有其他用途。 有效安全规则和有效路由不会包括这些平台规则。 若要替代此基本基础结构通信，可以在网络安全组规则上使用以下[服务标记](service-tags-overview.md)创建一个安全规则来拒绝流量：AzurePlatformDNS、AzurePlatformIMDS、AzurePlatformLKM。 了解如何[诊断网络流量筛选](diagnose-network-traffic-filter-problem.md)和[诊断网络路由](diagnose-network-routing-problem.md)。
 - **许可（密钥管理服务）** ：在虚拟机中运行的 Windows 映像必须获得许可。 为了确保许可，会向处理此类查询的密钥管理服务主机服务器发送请求。 该请求是通过端口 1688 以出站方式提出的。 对于使用[默认路由 0.0.0.0/0](virtual-networks-udr-overview.md#default-route) 配置的部署，此平台规则会被禁用。
 - **负载均衡池中的虚拟机**：应用的源端口和地址范围来自源计算机，而不是来自负载均衡器。 目标端口和地址范围是目标计算机的，而不是负载均衡器的。
 - **Azure 服务实例**：在虚拟网络子网中部署了多个 Azure 服务的实例，例如 HDInsight、应用程序服务环境和虚拟机规模集。 有关可部署到虚拟网络的服务的完整列表，请参阅 [Azure 服务的虚拟网络](virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network)。 在将网络安全组应用到部署了资源的子网之前，请确保熟悉每个服务的端口要求。 如果拒绝服务所需的端口，服务将无法正常工作。
@@ -200,7 +160,7 @@ Azure 在你所创建的每个网络安全组中创建以下默认规则：
     如果是在 2017 年 11 月 15 日之前创建的 Azure 订阅，则除了能够使用 SMTP 中继服务，还可以直接通过 TCP 端口 25 发送电子邮件。 如果是在 2017 年 11 月 15 日之后创建的订阅，则可能无法直接通过端口 25 发送电子邮件。 经端口 25 的出站通信行为取决于订阅类型，如下所示：
 
     - **企业协议**：允许端口 25 的出站通信。 可以将出站电子邮件直接从虚拟机发送到外部电子邮件提供商，不受 Azure 平台的限制。 
-    - **标准预付费套餐：** 阻止所有资源通过端口 25 进行出站通信。 如需将电子邮件从虚拟机直接发送到外部电子邮件提供商（不使用经身份验证的 SMTP 中继），可以请求去除该限制。 21Vianet 会自行审核和批准此类请求，并且只在进行防欺诈检查后授予相关权限。 若要提交请求，请建立一个问题类型为“技术”、“虚拟网络连接”、“无法发送电子邮件（SMTP/端口 25）”的支持案例。    在支持案例中，请详细说明为何你的订阅需要将电子邮件直接发送到邮件提供商，而不经过经身份验证的 SMTP 中继。 如果订阅得到豁免，则只有在豁免日期之后创建的虚拟机能够经端口 25 进行出站通信。
+    - **标准预付费套餐：** 阻止所有资源通过端口 25 进行出站通信。 如需将电子邮件从虚拟机直接发送到外部电子邮件提供商（不使用经身份验证的 SMTP 中继），可以请求去除该限制。 Azure 会自行审核和批准此类请求，并且只在进行防欺诈检查后授予相关权限。 若要提交请求，请建立一个问题类型为“技术”、“虚拟网络连接”、“无法发送电子邮件（SMTP/端口 25）”的支持案例。    在支持案例中，请详细说明为何你的订阅需要将电子邮件直接发送到邮件提供商，而不经过经身份验证的 SMTP 中继。 如果订阅得到豁免，则只有在豁免日期之后创建的虚拟机能够经端口 25 进行出站通信。
     - **MSDN、Azure Pass、Azure 开放许可、教育、BizSpark 和试用版**：阻止所有资源通过端口 25 进行出站通信。 不能请求去除该限制，因为不会针对请求授予相关权限。 若需从虚拟机发送电子邮件，则需使用 SMTP 中继服务。
     - **云服务提供商**：如果无法使用安全的 SMTP 中继，通过云服务提供商消耗 Azure 资源的客户可以通过其云服务提供商创建支持案例，并请求提供商代表他们创建取消阻止案例。
     

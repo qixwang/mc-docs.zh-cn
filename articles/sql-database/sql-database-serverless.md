@@ -10,14 +10,14 @@ ms.topic: conceptual
 author: WenJason
 ms.author: v-jay
 ms.reviewer: sstein, carlrab
-origin.date: 3/11/2020
-ms.date: 03/30/2020
-ms.openlocfilehash: e2130ea1e4b999ecd4727a0debad03979ea37479
-ms.sourcegitcommit: 90660563b5d65731a64c099b32fb9ec0ce2c51c6
+origin.date: 04/03/2020
+ms.date: 04/27/2020
+ms.openlocfilehash: 0dcef336dfdeb7db556d9b00a1524ed8c31ffb56
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80341783"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82127007"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL 数据库无服务器
 
@@ -140,6 +140,8 @@ Azure SQL 数据库无服务器计算层是适用于单一数据库的计算层�
 |修改特定的数据库元数据|添加新的数据库标记。<br>更改最大 vCore 数、最小 vCore 数或自动暂停延迟。|
 |SQL Server Management Studio (SSMS)|使用早于 18.1 的 SSMS 版本并为服务器中的任何数据库打开新的查询窗口，将恢复同一服务器中任何自动暂停的数据库。 如果使用 SSMS 版本 18.1 或更高版本，则不会发生此行为。|
 
+监视解决方案、管理解决方案或其他执行上述任何操作的解决方案将触发自动恢复。
+
 在部署某些需要数据库联机的服务更新期间，也会触发自动恢复。
 
 ### <a name="connectivity"></a>连接
@@ -152,13 +154,13 @@ Azure SQL 数据库无服务器计算层是适用于单一数据库的计算层�
 
 ### <a name="customer-managed-transparent-data-encryption-byok"></a>客户托管透明数据加密 (BYOK)
 
-如果使用[客户托管透明数据加密](transparent-data-encryption-byok-azure-sql.md) (BYOK)，并且在发生密钥删除或吊销时自动暂停了无服务器数据库，则该数据库将保持自动暂停状态。  在这种情况下，下一次尝试恢复时，该数据库将保持暂停状态，直到大约 10 分钟或更短时间后其状态转换为“不可访问”。  该数据库变为不可访问后，恢复过程将与预配的计算数据库相同。  如果在发生密钥删除或吊销时无服务器数据库处于联机状态，则大约 10 分钟或更短时间后，该数据库也将变得不可访问，其方式与预配的计算数据库相同。
+如果使用[客户托管透明数据加密](transparent-data-encryption-byok-azure-sql.md) (BYOK)，并且在发生密钥删除或吊销时自动暂停了无服务器数据库，则该数据库将保持自动暂停状态。  在这种情况下，在下次恢复数据库后，大约 10 分钟内数据库将无法访问。  该数据库变为不可访问后，恢复过程将与预配的计算数据库相同。  如果在发生密钥删除或吊销时无服务器数据库处于联机状态，则该数据库也将在大约 10 分钟内变得不可访问，其方式与预配的计算数据库相同。
 
 ## <a name="onboarding-into-serverless-compute-tier"></a>载入无服务器计算层
 
 创建新的数据库，或将现有数据库移动到无服务器计算层中的模式与在预配计算层中创建新的数据库相同，均包含以下两个步骤。
 
-1. 指定服务目标名称。 服务目标规定了服务层、硬件代次和最大 vCore 数。 下表显示了服务目标选项：
+1. 指定服务目标。 服务目标规定了服务层、硬件代次和最大 vCore 数。 下表显示了服务目标选项：
 
    |服务目标名称|服务层|硬件代次|最大 vCore 数|
    |---|---|---|---|
@@ -177,12 +179,12 @@ Azure SQL 数据库无服务器计算层是适用于单一数据库的计算层�
    |参数|可选的值|默认值|
    |---|---|---|---|
    |最小 vCore 数|取决于配置的最大 vCore 数 - 请参阅[资源限制](sql-database-vcore-resource-limits-single-databases.md#general-purpose---serverless-compute---gen5)。|0.5 个 vCore|
-   |自动暂停延迟|最低：60 分钟（1 小时）<br>最大值：10080 分钟（7 天）<br>增量：60 分钟<br>禁用自动暂停：-1|60 分钟|
+   |自动暂停延迟|最低：60 分钟（1 小时）<br>最大值：10080 分钟（7 天）<br>增量：10 分钟<br>禁用自动暂停：-1|60 分钟|
 
 
 ### <a name="create-new-database-in-serverless-compute-tier"></a>在无服务器计算层中创建新数据库 
 
-以下示例在无服务器计算层中创建新数据库。 这些示例显式指定最小 vCore 数、最大 vCore 数和自动暂停延迟。
+以下示例在无服务器计算层中创建新数据库。
 
 #### <a name="use-azure-portal"></a>使用 Azure 门户
 
@@ -206,7 +208,7 @@ az sql db create -g $resourceGroupName -s $serverName -n $databaseName `
 
 #### <a name="use-transact-sql-t-sql"></a>使用 Transact-SQL (T-SQL)
 
-以下示例在无服务器计算层中创建新数据库。
+使用 T-SQL 时，最小 vCore 数和自动暂停延迟将应用默认值。
 
 ```sql
 CREATE DATABASE testdb
@@ -217,7 +219,7 @@ CREATE DATABASE testdb
 
 ### <a name="move-database-from-provisioned-compute-tier-into-serverless-compute-tier"></a>将数据库从预配的计算层移到无服务器计算层
 
-以下示例将某个数据库从预配的计算层中移入无服务器计算层。 这些示例显式指定最小 vCore 数、最大 vCore 数和自动暂停延迟。
+以下示例将某个数据库从预配的计算层中移入无服务器计算层。
 
 #### <a name="use-powershell"></a>使用 PowerShell
 
@@ -238,7 +240,7 @@ az sql db update -g $resourceGroupName -s $serverName -n $databaseName `
 
 #### <a name="use-transact-sql-t-sql"></a>使用 Transact-SQL (T-SQL)
 
-以下示例将某个数据库从预配的计算层中移入无服务器计算层。
+使用 T-SQL 时，最小 vCore 数和自动暂停延迟将应用默认值。
 
 ```sql
 ALTER DATABASE testdb 

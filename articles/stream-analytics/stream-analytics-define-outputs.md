@@ -1,21 +1,18 @@
 ---
 title: 了解 Azure 流分析的输出
 description: 本文介绍 Azure 流分析提供的数据输出选项，包括用于分析结果的 Power BI。
-services: stream-analytics
-author: lingliw
-ms.author: v-lingwu
-manager: digimobile
-ms.reviewer: jasonh
+author: Johnnytechn
+ms.author: v-johya
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-origin.date: 02/14/2020
-ms.date: 02/27/2020
-ms.openlocfilehash: 6b0912311cbd647d0398fb270ca0c46c04e16532
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 04/23/2020
+ms.openlocfilehash: eb23b4be2cb1a7d1294a3aabb5709334da4b8547
+ms.sourcegitcommit: ebedf9e489f5218d4dda7468b669a601b3c02ae5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78155133"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82159206"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>了解 Azure 流分析的输出
 
@@ -23,23 +20,18 @@ ms.locfileid: "78155133"
 
 设计流分析查询时，使用 [INTO 子句](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics)引用输出的名称。 可针对每个作业使用单个输出，也可通过在查询中提供多个 INTO 子句，针对每个流式处理作业使用多个输出（如果需要）。
 
-要创建、编辑和测试流分析作业输出，可使用 [Azure 门户](stream-analytics-quick-create-portal.md#configure-job-output)、[Azure PowerShell](stream-analytics-quick-create-powershell.md#configure-output-to-the-job)、[.Net API](https://docs.azure.cn/zh-cn/dotnet/api/microsoft.azure.management.streamanalytics.ioutputsoperations?view=azure-dotnet)、[REST API](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-output) 和 [Visual Studio](stream-analytics-quick-create-vs.md)。
+若要创建、编辑和测试流分析作业输出，可使用 [Azure 门户](stream-analytics-quick-create-portal.md#configure-job-output)、[Azure PowerShell](stream-analytics-quick-create-powershell.md#configure-output-to-the-job)、[.NET API](https://docs.azure.cn/zh-cn/dotnet/api/microsoft.azure.management.streamanalytics.ioutputsoperations?view=azure-dotnet)、[REST API](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-output) 和 [Visual Studio](stream-analytics-quick-create-vs.md)。
 
 <!-- Not Available on [Visual Studio](stream-analytics-quick-create-vs.md)-->
 
-部分输出类型支持[分区](#partitioning)，并且[输出批大小](#output-batch-size)可变化以优化吞吐量。
-
-<!-- Not Available ## Azure Data Lake Store-->
-
-<!-- Not Available on Azure Data Lake Store output from Stream Analytics is currently not available in the Azure China (21Vianet) and Azure Germany (T-Systems International) regions.-->
-
-<!-- Not Available ### Authorize an Azure Data Lake Store -->
-
-<!-- Not Available ### Renew Data Lake Store Authorization -->
+某些输出类型支持[分区](#partitioning)。 [输出批大小](#output-batch-size)可变，这是为了优化吞吐量。
+<!-- Not Available ## Azure Data Lake Storage Gen 1-->
 
 ## <a name="sql-database"></a>SQL 数据库
-可以将 [Azure SQL 数据库](/sql-database/)用作本质上为关系型数据的输出，也可以将其用于所依赖的内容在关系数据库中托管的应用程序。 流分析作业将写入到 SQL 数据库的现有表中。 表架构必须与作业输出中的字段及其类型完全匹配。 还可以通过 SQL 数据库输出选项将 [Azure SQL 数据仓库](/sql-data-warehouse/)指定为输出。 若要了解提高写入吞吐量的方法，请参阅[以 Azure SQL 数据库作为输出的流分析](stream-analytics-sql-output-perf.md)一文。
 
+可以将 [Azure SQL 数据库](https://docs.azure.cn/zh-cn/sql-database/)用作本质上为关系型数据的输出，也可以将其用于所依赖的内容在关系数据库中托管的应用程序。 流分析作业将写入到 SQL 数据库的现有表中。 表架构必须与作业输出中的字段及其类型完全匹配。 还可以通过 SQL 数据库输出选项将 [Azure SQL 数据仓库](https://docs.azure.cn/zh-cn/sql-data-warehouse/)指定为输出。 若要了解提高写入吞吐量的方法，请参阅[以 Azure SQL 数据库作为输出的流分析](stream-analytics-sql-output-perf.md)一文。
+
+<!--waiting to be moved about https://docs.azure.cn/zh-cn/sql-data-warehouse/ -->
 还可以使用 [Azure SQL 数据库托管实例](/sql-database/sql-database-managed-instance)作为输出。 必须[在 Azure SQL 数据库托管实例中配置公共终结点](/sql-database/sql-database-managed-instance-public-endpoint-configure)，然后在 Azure 流分析中手动配置以下设置。 还可以通过手动配置以下设置来支持运行附加了数据库的 SQL Server 的 Azure 虚拟机。
 
 下表列出了属性名称和用于创建 SQL 数据库输出的属性说明。
@@ -48,17 +40,18 @@ ms.locfileid: "78155133"
 | --- | --- |
 | 输出别名 |在查询中使用的友好名称，用于将查询输出定向到此数据库。 |
 | 数据库 | 将输出发送到的数据库的名称。 |
-| 服务器名称 | SQL 数据库服务器名称。 对于 Azure SQL 数据库托管实例，需要指定端口 3342。 例如，sampleserver.public.database.windows.net,3342  |
+| 服务器名称 | SQL 数据库服务器名称。 对于 Azure SQL 数据库托管实例，需要指定端口 3342。 例如，“sampleserver.public.database.chinacloudapi.cn,3342”  |
 | 用户名 | 对数据库拥有写入访问权限的用户名。 流分析仅支持 SQL 身份验证。 |
 | 密码 | 用于连接到数据库的密码。 |
 | 表 | 将写入输出的表名称。 表名称区分大小写。 此表的架构应与字段数量以及作业输出生成的字段类型完全匹配。 |
 |继承分区方案| 一个用于继承先前查询步骤的分区方案，以启用具有多个表的写入器的完全并行拓扑的选项。 有关详细信息，请参阅从 [Azure 流分析输出到 Azure SQL 数据库](stream-analytics-sql-output-perf.md)。|
 |最大批数| 每个批量插入事务一起发送的推荐记录数上限。|
-> 目前，流分析中的作业输出支持 Azure SQL 数据库产品/服务。 但是，不支持附加了数据库，运行 SQL Server 的 Azure 虚拟机。 这在将来的版本中可能会有所改变。
-> 
 
-## <a name="blob-storage"></a>Blob 存储
-Azure Blob 存储提供了一种经济高效且可缩放的解决方案，用于在云中存储大量非结构化数据。 有关 Blob 存储及其用法的简介，请参阅[如何使用 Blob](../storage/blobs/storage-dotnet-how-to-use-blobs.md)。
+## <a name="blob-storage-and-azure-data-lake-gen2"></a>Blob 存储和 Azure Data Lake Gen2
+
+Data Lake Storage Gen2 使 Azure 存储成为在 Azure 上构建企业 Data Lake 的基础。 Data Lake Storage Gen2 从一开始就设计为处理数千万亿字节的信息，同时保持数百千兆位的吞吐量，可让你轻松管理大量数据。Data Lake Storage Gen2 的一个基本特征是在 Blob 存储中添加分层命名空间。
+
+Azure Blob 存储提供了一种经济高效且可缩放的解决方案，用于在云中存储大量非结构化数据。 有关 Blob 存储及其用法的简介，请参阅[使用 Azure 门户上传、下载和列出 blob](../storage/blobs/storage-quickstart-blobs-portal.md)。
 
 下表列出了用于创建 Blob 或 ADLS Gen2 输出的属性名称及其说明。
 
@@ -76,7 +69,7 @@ Azure Blob 存储提供了一种经济高效且可缩放的解决方案，用于
 |最长时间（仅 Parquet）|每批的最长等待时间。 在此时间后，即使不满足最小行数要求，也会将该批写入输出。 当前默认值为 1 分钟，允许的最大值为 2 小时。 如果 blob 输出具有路径模式频率，则等待时间不能超出分区时间范围。|
 | 编码    | 如果使用 CSV 或 JSON 格式，则必须指定一种编码格式。 目前只支持 UTF-8 这种编码格式。 |
 | 分隔符   | 仅适用于 CSV 序列化。 流分析支持大量的常见分隔符以对 CSV 数据进行序列化。 支持的值为逗号、分号、空格、制表符和竖线。 |
-| 格式      | 仅适用于 JSON 序列化。 “行分隔”指定通过新行分隔各个 JSON 对象，从而格式化输出  。 “数组”指定输出会被格式化为 JSON 对象的数组  。 仅当作业停止或流分析移动到下个时间段时，才关闭此数组。 一般而言，最好使用分隔行 JSON，因为在继续写入输出文件时，无需任何特殊处理。 |
+| 格式      | 仅适用于 JSON 序列化。 “行分隔”指定通过新行分隔各个 JSON 对象，从而格式化输出  。 如果选择“行分隔”  ，则读取 JSON 时，一次读取一个对象。 整个内容本身将不是有效的 JSON。 “数组”指定输出会被格式化为 JSON 对象的数组  。 仅当作业停止或流分析移动到下个时间段时，才关闭此数组。 一般而言，最好使用分隔行 JSON，因为在继续写入输出文件时，无需任何特殊处理。 |
 
 使用 blob 存储作为输出时，在以下情况下 blob 中创建一个新文件：
 
@@ -90,14 +83,15 @@ Azure Blob 存储提供了一种经济高效且可缩放的解决方案，用于
 * 如果按照自定义字段对输出进行分区（其中分区键基数超过 8000），则可能每个分区键创建一个新的 blob。
 
 ## <a name="event-hubs"></a>事件中心
-[Azure 事件中心](/event-hubs/)服务是具有高扩展性的发布 - 订阅事件引入器。 事件中心每秒可收集数百万个事件。 当流分析作业的输出成为另一个流式处理作业的输入时，可以将事件中心用作输出。
+
+[Azure 事件中心](https://docs.azure.cn/zh-cn/event-hubs/)服务是具有高扩展性的发布 - 订阅事件引入器。 事件中心每秒可收集数百万个事件。 当流分析作业的输出成为另一个流式处理作业的输入时，可以将事件中心用作输出。 若要了解最大消息大小和批大小优化，请参阅[输出批大小](#output-batch-size)部分。
 
 需要使用几个参数才能将事件中心内的数据流配置为输出。
 
 | 属性名称 | 说明 |
 | --- | --- |
 | 输出别名 | 查询中使用的易记名称，用于将查询输出定向到此事件中心。 |
-| 事件中心命名空间 |一组消息处理实体的容器。 创建新的事件中心后，还创建了事件中心命名空间。 |
+| 事件中心命名空间 | 一组消息处理实体的容器。 创建新的事件中心后，还创建了事件中心命名空间。 |
 | 事件中心名称 | 事件中心输出的名称。 |
 | 事件中心策略名称 | 共享访问策略，可以在事件中心的“配置”选项卡上创建。  每个共享访问策略具有名称、所设权限以及访问密钥。 |
 | 事件中心策略密钥 | 用于对事件中心命名空间的访问权限进行身份验证的共享访问密钥。 |
@@ -105,24 +99,13 @@ Azure Blob 存储提供了一种经济高效且可缩放的解决方案，用于
 | 事件序列化格式 | 输出数据的序列化格式。 支持 JSON、CSV 和 Avro。 |
 | 编码 | 对于 CSV 和 JSON，目前只支持 UTF-8 这种编码格式。 |
 | 分隔符 | 仅适用于 CSV 序列化。 流分析支持大量的常见分隔符以对 CSV 格式的数据进行序列化。 支持的值为逗号、分号、空格、制表符和竖线。 |
-| 格式 | 仅适用于 JSON 序列化。 “行分隔”指定通过新行分隔各个 JSON 对象，从而格式化输出  。 “数组”指定输出会被格式化为 JSON 对象的数组  。  |
-| 属性列 | 可选。 需要作为传出消息的用户属性而不是有效负载附加的逗号分隔列。 [输出的自定义元数据属性](#custom-metadata-properties-for-output)部分详细介绍了此功能。 |
+| 格式 | 仅适用于 JSON 序列化。 “行分隔”指定通过新行分隔各个 JSON 对象，从而格式化输出  。 如果选择“行分隔”  ，则读取 JSON 时，一次读取一个对象。 整个内容本身将不是有效的 JSON。 “数组”指定输出会被格式化为 JSON 对象的数组  。  |
 | 属性列 | 可选。 需要作为传出消息的用户属性而不是有效负载附加的逗号分隔列。 [输出的自定义元数据属性](#custom-metadata-properties-for-output)部分详细介绍了此功能。 |
 
 <!-- Not Available ## Power BI-->
-
-<!-- Not Available on Power BI output from Stream Analytics is currently not available in the Azure China (21Vianet) and Azure Germany (T-Systems International) regions.-->
-
-<!-- Not Available ### Authorize a Power BI account-->
-
-<!-- Not Available ### Configure the Power BI output properties-->
-
-<!-- Not Available ### Authorize a Power BI account-->
-
-<!-- Not Available ### Renew Power BI Authorization-->
-
 ## <a name="table-storage"></a>表存储
-[Azure 表存储](../storage/common/storage-introduction.md)提供了具有高可用性且可大规模缩放的存储，因此应用程序可以自动缩放以满足用户需求。 表存储是世纪互联推出的 NoSQL 键/属性存储，适用于对架构的约束较少的结构化数据。 Azure 表存储可用于持久地存储数据，方便进行高效的检索。
+
+[Azure 表存储](../storage/common/storage-introduction.md)提供了具有高可用性且可大规模缩放的存储，因此应用程序可以自动缩放以满足用户需求。 表存储是 Azure 推出的 NoSQL 键/属性存储，适用于对架构的约束较少的结构化数据。 Azure 表存储可用于持久地存储数据，方便进行高效的检索。
 
 下表列出了用于创建表输出的属性名称及其说明。
 
@@ -134,7 +117,7 @@ Azure Blob 存储提供了一种经济高效且可缩放的解决方案，用于
 | 表名称 |表的名称。 如果表不存在，则创建该表。 |
 | 分区键 |包含分区键的输出列的名称。 分区键是某个表中分区的唯一标识符，分区键构成了实体主键的第一部分。 它是最大可为 1 KB 的字符串值。 |
 | 行键 |包含行键的输出列的名称。 行键是某个分区中实体的唯一标识符。 行键构成了实体主键的第二部分。 行键是最大可为 1 KB 的字符串值。 |
-| 批大小 |批处理操作的记录数。 默认值 (100) 对大部分作业来说都已足够。 有关修改设置的详细信息，请参阅[表批处理操作规范](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.table._table_batch_operation)。 |
+| 批大小 |批处理操作的记录数。 默认值 (100) 对大部分作业来说都已足够。 有关修改设置的详细信息，请参阅[表批处理操作规范](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.table.tablebatchoperation)。 |
 
 ## <a name="service-bus-queues"></a>服务总线队列
 
@@ -154,7 +137,7 @@ Azure Blob 存储提供了一种经济高效且可缩放的解决方案，用于
 | 事件序列化格式 |输出数据的序列化格式。 支持 JSON、CSV 和 Avro。 |
 | 编码 |对于 CSV 和 JSON，目前只支持 UTF-8 这种编码格式。 |
 | 分隔符 |仅适用于 CSV 序列化。 流分析支持大量的常见分隔符以对 CSV 格式的数据进行序列化。 支持的值为逗号、分号、空格、制表符和竖线。 |
-| 格式 |仅适用于 JSON 类型。 “行分隔”指定通过新行分隔各个 JSON 对象，从而格式化输出  。 “数组”指定输出会被格式化为 JSON 对象的数组  。 |
+| 格式 |仅适用于 JSON 类型。 “行分隔”指定通过新行分隔各个 JSON 对象，从而格式化输出  。 如果选择“行分隔”  ，则读取 JSON 时，一次读取一个对象。 整个内容本身将不是有效的 JSON。 “数组”指定输出会被格式化为 JSON 对象的数组  。 |
 | 属性列 | 可选。 需要作为传出消息的用户属性而不是有效负载附加的逗号分隔列。 [输出的自定义元数据属性](#custom-metadata-properties-for-output)部分详细介绍了此功能。 |
 | 系统属性列 | 可选。 需要附加到传出消息而不是附加到有效负载的系统属性和相应列名的键值对。 [服务总线队列和主题输出的系统属性](#system-properties-for-service-bus-queue-and-topic-outputs)部分详细介绍了此功能。  |
 
@@ -180,51 +163,10 @@ Azure Blob 存储提供了一种经济高效且可缩放的解决方案，用于
 
 分区数[基于服务总线 SKU 和大小](../service-bus-messaging/service-bus-partitioning.md)。 分区键是每个分区的唯一整数值。
 
-## <a name="azure-cosmos-db"></a>Azure Cosmos DB
-[Azure Cosmos DB](/documentdb/) 是一种分布全球的多模型数据库服务，它提供全球范围内不设限的弹性缩放、丰富查询和自动索引（经由与架构无关的数据模型）、可靠的低延迟及行业领先的综合 SLA。 若要了解流分析的 Cosmos DB 集合选项，请参阅[将 Cosmos DB 用作输出的流分析](stream-analytics-documentdb-output.md)一文。
+<!-- Not Available on ## Azure Cosmos DB -->
 
-<!-- Not Available on Azure Cosmos DB output from Stream Analytics is currently not available in the Azure China (21Vianet) and Azure Germany (T-Systems International) regions.-->
-
-> [!Note]
-> 目前，Azure 流分析仅支持使用 SQL API 连接到 Azure Cosmos DB。
-> 尚不支持使用其他 Azure Cosmos DB API。 如果使用其他 API 将 Azure 流分析指向 创建的 Azure Cosmos DB 帐户，则可能无法正确存储数据。
-
-下表描述了用于创建 Azure Cosmos DB 输出的属性。
-
-| 属性名称 | 说明 |
-| --- | --- |
-| 输出别名 | 用于在流分析查询中引用此输出的别名。 |
-| 接收器 | Azure Cosmos DB。 |
-| 导入选项 | 选择“从订阅中选择 Cosmos DB”或“手动提供 Cosmos DB 设置”   。
-| 帐户 ID | Azure Cosmos DB 帐户的名称或终结点 URI。 |
-| 帐户密钥 | Azure Cosmos DB 帐户的共享访问密钥。 |
-| 数据库 | Azure Cosmos DB 数据库名称。 |
-| 容器名称 | 要使用的容器名称，该名称必须在 Cosmos DB 中存在。 示例：  <br /><ul><li> _MyContainer_：名为“MyContainer”的容器必须存在。</li>|
-| 文档 ID |可选。 输出事件中的字段的名称，该字段用于指定插入或更新操作所基于的主键。
 
 <!-- Not Available on ## Azure Functions-->
-
-<!-- Not Available on Azure Functions output from Stream Analytics is currently not available in the Azure China (21Vianet) and Azure Germany (T-Systems International) regions.-->
-
-Azure 流分析通过 HTTP 触发器调用 Azure Functions。 提供具有以下可配置属性的 Azure Functions 输出适配器：
-
-| 属性名称 | 说明 |
-| --- | --- |
-| 函数应用 |Azure Functions 应用的名称。 |
-| 函数 |Azure Functions 应用中的函数的名称。 |
-| 键 |若要使用其他订阅中的 Azure 函数，可提供用于访问该函数的密钥。 |
-| 最大批大小 |此属性可用于设置将发送到 Azure 函数的每个输出批的最大大小。 输入单元以字节为单位。 默认情况下，此值为 262,144 字节 (256 KB)。 |
-| 最大批数  |一个用于指定发送到 Azure Functions 的每个批中的最大事件数的属性。 默认值为 100。 |
-
-对于已成功处理的批，Azure 流分析预期函数应用中的 HTTP 状态为 200。
-
-当 Azure 流分析从 Azure 函数收到 413（“http 请求实体过大”）异常时，它将减小发送到 Azure Functions 的批的大小。 在 Azure Function 代码中，使用此异常以确保 Azure 流分析不会发送过大的批。 另请确保函数中使用的最大批次数和最大批次大小值与在流分析门户中输入的值一致。
-
-> [!NOTE]
-> 在测试连接过程中，流分析会将空批发送到 Azure Functions，以测试两者之间的连接是否正常。 确保 Functions 应用处理空批请求，以确保通过连接测试。
-
-另外，如果时间窗口中没有任何事件登录，则不生成任何输出。 因此，不会调用 **computeResult** 函数。 此行为与内置窗口化聚合函数一致。
-
 ## <a name="custom-metadata-properties-for-output"></a>输出的自定义元数据属性 
 
 可将查询列作为用户属性附加到传出的消息。 这些列不会进入有效负载。 这些属性以字典形式在输出消息中提供。 键是列名，值是属性字典中的列值。   支持除“记录”和“数组”以外的其他所有流分析数据类型。  
@@ -244,8 +186,8 @@ Azure 流分析通过 HTTP 触发器调用 Azure Functions。 提供具有以下
 
 ![事件自定义属性](./media/stream-analytics-define-outputs/09-stream-analytics-custom-properties.png)
 
-## <a name="system-properties-for-service-bus-queue-and-topic-outputs"></a>服务总线队列和主题输出的系统属性 <a name="system-properties-for-service-bus-queue-and-topic-outputs"></a>
-可将查询列作为[系统属性](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet#properties)附加到传出的服务总线队列或主题消息。 这些列不会进入有效负载，而是将查询列值填充到相应的 BrokeredMessage [系统属性](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet#properties)中。
+## <a name="system-properties-for-service-bus-queue-and-topic-outputs"></a>服务总线队列和主题输出的系统属性 
+可将查询列作为[系统属性](https://docs.azure.cn/zh-cn/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet#properties)附加到传出的服务总线队列或主题消息。 这些列不会进入有效负载，而是将查询列值填充到相应的 BrokeredMessage [系统属性](https://docs.azure.cn/zh-cn/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet#properties)中。
 支持这些系统属性 - `MessageId, ContentType, Label, PartitionKey, ReplyTo, SessionId, CorrelationId, To, ForcePersistence, TimeToLive, ScheduledEnqueueTimeUtc`。
 这些列的字符串值将分析成相应的系统属性值类型，任何分析失败将被视为数据错误。
 此字段以 JSON 对象格式提供。 有关此格式的详细信息如下：
@@ -256,7 +198,7 @@ Azure 流分析通过 HTTP 触发器调用 Azure Functions。 提供具有以下
 * 键和值以冒号分隔。
 * 每个键值对以逗号分隔。
 
-下面演示了此属性的用法 –
+下面演示了此属性的用法 -
 
 * 查询：`select *, column1, column2 INTO queueOutput FROM iotHubInput`
 * 系统属性列：`{ "MessageId": "column1", "PartitionKey": "column2"}`
@@ -287,18 +229,18 @@ Azure 流分析使用大小可变的批来处理事件和写入到输出。 通�
 
 下表阐述了输出批处理的一些注意事项：
 
-| 输出类型 | 最大消息大小 | 批大小优化 |
+| 输出类型 |    最大消息大小 | 批大小优化 |
 | :--- | :--- | :--- |
-| Azure Data Lake Store | 请参阅 [Data Lake Storage 限制](../azure-subscription-service-limits.md)。 | 每个写入操作最高 4 MB。 |
+| Azure Data Lake Store | 请参阅 [Data Lake Storage 限制](../azure-resource-manager/management/azure-subscription-service-limits.md)。 | 每个写入操作最高 4 MB。 |
 | Azure SQL 数据库 | 可使用最大批计数进行配置。 默认情况下，单个批量插入操作最多可插入 10,000 行，最少可插入 100 行。<br />请参阅 [Azure SQL 限制](../sql-database/sql-database-resource-limits.md)。 |  每个批最初是按照最大批计数批量插入的。 根据 SQL 的可重试错误对半拆分批（直到达到最小批计数）。 |
-| Azure Blob 存储 | 参阅 [Azure 存储限制](../azure-subscription-service-limits.md#storage-limits)。 | 最大 Blob 块大小为 4 MB。<br />最大 Blob 块计数为 50,000。 |
-| Azure 事件中心  | 每条消息 256 KB 或 1 MB。 <br />请参阅[事件中心限制](../event-hubs/event-hubs-quotas.md)。 |  如果输入/输出分区未对齐，则每个事件将单独打包成不超过最大消息大小的 `EventData`，并在批中发送。 如果使用[自定义元数据属性](#custom-metadata-properties-for-output)，也会发生这种情况。 <br /><br />  如果输入/输出分区已对齐，则多个事件将打包成不超过最大消息大小的单个 `EventData` 实例，然后发送。 |
+| Azure Blob 存储 | 参阅 [Azure 存储限制](../azure-resource-manager/management/azure-subscription-service-limits.md#storage-limits)。 | 最大 Blob 块大小为 4 MB。<br />最大 Blob 块计数为 50,000。 |
+| Azure 事件中心    | 每条消息 256 KB 或 1 MB。 <br />请参阅[事件中心限制](../event-hubs/event-hubs-quotas.md)。 |    如果输入/输出分区未对齐，则每个事件将单独打包成不超过最大消息大小的 `EventData`，并在批中发送。 如果使用[自定义元数据属性](#custom-metadata-properties-for-output)，也会发生这种情况。 <br /><br />  如果输入/输出分区已对齐，则多个事件将打包成不超过最大消息大小的单个 `EventData` 实例，然后发送。    |
 | Power BI | 请参阅 [Power BI REST API 限制](https://msdn.microsoft.com/library/dn950053.aspx)。 |
-| Azure 表存储 | 参阅 [Azure 存储限制](../azure-subscription-service-limits.md#storage-limits)。 | 默认为单个事务 100 个实体。 可根据需要将其配置为更小的值。 |
-| Azure 服务总线队列   | 在标准层中为每条消息 256 KB，在高级层中为 1MB。<br /> 请参阅[服务总线限制](../service-bus-messaging/service-bus-quotas.md)。 | 对每条消息使用单个事件。 |
+| Azure 表存储 | 参阅 [Azure 存储限制](../azure-resource-manager/management/azure-subscription-service-limits.md#storage-limits)。 | 默认为单个事务 100 个实体。 可根据需要将其配置为更小的值。 |
+| Azure 服务总线队列    | 在标准层中为每条消息 256 KB，在高级层中为 1MB。<br /> 请参阅[服务总线限制](../service-bus-messaging/service-bus-quotas.md)。 | 对每条消息使用单个事件。 |
 | Azure 服务总线主题 | 在标准层中为每条消息 256 KB，在高级层中为 1MB。<br /> 请参阅[服务总线限制](../service-bus-messaging/service-bus-quotas.md)。 | 对每条消息使用单个事件。 |
-| Azure Cosmos DB   | 请参阅 [Azure Cosmos DB 限制](../azure-subscription-service-limits.md#azure-cosmos-db-limits)。 | 批大小和写入频率根据 Azure Cosmos DB 响应动态调整。 <br /> 流分析不会施加预先确定的限制。 |
-| Azure Functions   | | 默认批大小为 262,144 字节 (256 KB)。 <br /> 每批的默认事件计数为 100。 <br />
+| Azure Cosmos DB    | 请参阅 [Azure Cosmos DB 限制](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-cosmos-db-limits)。 | 批大小和写入频率根据 Azure Cosmos DB 响应动态调整。 <br /> 流分析不会施加预先确定的限制。 |
+| Azure Functions    | | 默认批大小为 262,144 字节 (256 KB)。 <br /> 每批的默认事件计数为 100。 <br /> 批大小是可配置的，可在流分析输出选项中增大或减小。
 
 ## <a name="next-steps"></a>后续步骤
 > [!div class="nextstepaction"]

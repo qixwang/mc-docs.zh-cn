@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 03/23/2020
+ms.date: 04/24/2020
 ms.author: v-junlch
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9be31cb9b4c6127661be3fdf32b969bcb648066d
-ms.sourcegitcommit: 6568c59433d7e80ab06e9fe76d4791f761ed6775
+ms.openlocfilehash: 14fcd54bb383050cc6b73ce6d38aa8e707616d59
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80243169"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126297"
 ---
 # <a name="conditional-access-grant"></a>条件访问：授予
 
@@ -35,7 +35,6 @@ ms.locfileid: "80243169"
 在授予访问权限时，管理员可以选择强制实施一项或多项控制。 这些控制包括以下选项： 
 
 - [需要多重身份验证（Azure 多重身份验证）](../authentication/concept-mfa-howitworks.md)
-- [要求将设备标记为合规 (Microsoft Intune)](https://docs.microsoft.com/intune/protect/device-compliance-get-started)
 - [“需要已批准的客户端应用”](app-based-conditional-access.md)
 
 当管理员组合使用这些选项时，可以选择以下方法：
@@ -51,11 +50,13 @@ ms.locfileid: "80243169"
 
 ### <a name="require-device-to-be-marked-as-compliant"></a>要求将设备标记为合规
 
-部署了 Microsoft Intune 的组织可以根据从其设备返回的信息来识别符合具体合规要求的设备。 此策略合规性信息将从 Intune 转发到 Azure AD，其中的条件访问可以决定是要授予还是阻止对资源的访问。 有关合规性策略的详细信息，请参阅[使用 Intune 在设备上设置规则以允许访问组织中的资源](https://docs.microsoft.com/intune/protect/device-compliance-get-started)一文。
+部署了 Microsoft Intune 的组织可以根据从其设备返回的信息来识别符合具体合规要求的设备。 此策略合规性信息将从 Intune 转发到 Azure AD，其中的条件访问可以决定是要授予还是阻止对资源的访问。 
 
 ### <a name="require-approved-client-app"></a>需要批准的客户端应用
 
-组织可以要求只能尝试从已批准的客户端应用访问选定的云应用。
+组织可以要求只能尝试从已批准的客户端应用访问选定的云应用。 这些已批准的客户端应用支持 [Intune 应用保护策略](https://docs.microsoft.com/intune/app-protection-policy)，而不受任何移动设备管理 (MDM) 解决方案影响。
+
+为了利用此授权控制，条件访问要求在 Azure Active Directory 中注册设备，这需要使用代理应用。 代理应用可以是适用于 iOS 的 Microsoft Authenticator，也可以是适用于 Android 设备的 Microsoft 公司门户。 如果用户尝试进行身份验证时设备上未安装代理应用，则会将用户重定向到应用商店来安装代理应用。
 
 此设置适用于以下 iOS 和 Android 应用：
 
@@ -71,6 +72,7 @@ ms.locfileid: "80243169"
 - Microsoft Kaizala
 - Microsoft Launcher
 - Microsoft Office
+- Microsoft Office 中心
 - Microsoft OneDrive
 - Microsoft OneNote
 - Microsoft Outlook
@@ -87,12 +89,14 @@ ms.locfileid: "80243169"
 - Microsoft Visio
 - Microsoft Word
 - Microsoft Yammer
+- Microsoft Whiteboard
 
 **备注**
 
 - 批准的客户端应用支持 Intune 移动应用管理功能。
 - “需要批准的客户端应用”  要求：
    - 仅支持 iOS 和 Android 作为设备平台条件。
+   - 注册设备需要代理应用。 在 iOS 上，代理应用是 Microsoft Authenticator；在 Android 上，代理应用是 Intune 公司门户应用。
 - 条件访问无法将 InPrivate 模式下的 Microsoft Edge 视为已批准的客户端应用。
 
 请参阅文章[如何：使用条件访问要求使用批准的设备应用访问云应用](app-based-conditional-access.md)，以获取配置示例。
@@ -100,6 +104,8 @@ ms.locfileid: "80243169"
 ### <a name="require-app-protection-policy"></a>需要应用保护策略
 
 在条件访问策略中，你可以要求客户端应用上先存在 [Intune 应用保护策略](https://docs.microsoft.com/intune/app-protection-policy)，然后才能访问所选云应用。 
+
+为了利用此授权控制，条件访问要求在 Azure Active Directory 中注册设备，这需要使用代理应用。 代理应用可以是适用于 iOS 的 Microsoft Authenticator，也可以是适用于 Android 设备的 Microsoft 公司门户。 如果用户尝试进行身份验证时设备上未安装代理应用，则会将用户重定向到应用商店来安装代理应用。
 
 此设置适用于以下客户端应用：
 
@@ -113,6 +119,7 @@ ms.locfileid: "80243169"
 - 适用于应用保护策略的应用支持带策略保护的 Intune 移动应用程序管理功能。
 - “需要应用保护策略”要求： 
     - 仅支持 iOS 和 Android 作为设备平台条件。
+    - 注册设备需要代理应用。 在 iOS 上，代理应用是 Microsoft Authenticator；在 Android 上，代理应用是 Intune 公司门户应用。
 
 ## <a name="next-steps"></a>后续步骤
 

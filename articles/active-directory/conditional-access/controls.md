@@ -5,43 +5,27 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: article
-ms.date: 03/23/2020
+ms.date: 04/24/2020
 ms.author: v-junlch
 author: MicrosoftGuyJFlo
 manager: daveba
-ms.reviewer: calebb
+ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0da0fc13012838e2bf6397d0b090545a6e862e3c
-ms.sourcegitcommit: 6568c59433d7e80ab06e9fe76d4791f761ed6775
+ms.openlocfilehash: 65c3ddbc3aabae60db938573bf1136c04bb7c285
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80243168"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126288"
 ---
 # <a name="custom-controls-preview"></a>自定义控件（预览版）
 
-自定义控件是 Azure Active Directory Premium P1 版的一项功能。 使用自定义控件时，用户将被重定向至兼容服务，以满足 Azure Active Directory 之外的其他要求。 若要满足此控件要求，用户浏览器将重定向至外部服务，执行任何需要的身份验证或验证活动，然后重定向回 Azure Active Directory。 Azure Active Directory 将验证响应，如果用户已成功完成身份验证或验证，该用户将继续留在条件访问流中。
+自定义控件是 Azure Active Directory 的预览功能。 使用自定义控件时，用户将被重定向到兼容服务，以满足 Azure Active Directory 之外的身份验证要求。 若要满足此控件要求，用户浏览器将重定向到外部服务，执行任何所需的身份验证，然后重定向回 Azure Active Directory。 Azure Active Directory 将验证响应，如果用户已成功完成身份验证或验证，该用户将继续留在条件访问流中。
 
-通过这些控件可以将某些外部或自定义服务用作条件访问控制，并在一般情况下扩展条件访问的功能。
-
-提供商当前提供的兼容服务包括：
-
-- [Duo Security](https://duo.com/docs/azure-ca)
-- [Entrust Datacard](https://www.entrustdatacard.com/products/authentication/intellitrust)
-- [GSMA](https://mobileconnect.io/azure/)
-- [Ping 标识](https://documentation.pingidentity.com/pingid/pingidAdminGuide/index.shtml#pid_c_AzureADIntegration.html)
-- [RSA](https://community.rsa.com/docs/DOC-81278)
-- [SecureAuth](https://docs.secureauth.com/pages/viewpage.action?pageId=47238992#)
-- [Silverfort](https://www.silverfort.io/company/using-silverfort-mfa-with-azure-active-directory/)
-- [Symantec VIP](https://help.symantec.com/home/VIP_Integrate_with_Azure_AD)
-- [Thales (Gemalto)](https://resources.eu.safenetid.com/help/AzureMFA/Azure_Help/Index.htm)
-- [Trusona](https://www.trusona.com/docs/azure-ad-integration-guide)
-
-有关这些服务的详细信息，请直接与提供商联系。
 
 ## <a name="creating-custom-controls"></a>创建自定义控件
 
-若要创建自定义控件，应首先联系想使用的控件的提供商。 每个非 Microsoft 提供商在注册、订阅或以其他方式加入服务以及指示想要与条件访问集成方面都有自己的进程和要求。 此时，提供商将提供采用 JSON 格式的数据块。 使用此数据可使提供商和条件访问一起服务于租户，创建新控件，并确定条件访问如何判断用户是否通过提供商成功执行了验证。
+自定义控件使用有限的一组已批准身份验证提供程序。 若要创建自定义控件，应首先联系想使用的控件的提供商。 每个非 Microsoft 提供商在注册、订阅或以其他方式加入服务以及指示想要与条件访问集成方面都有自己的进程和要求。 此时，提供商将提供采用 JSON 格式的数据块。 使用此数据可使提供商和条件访问一起服务于租户，创建新控件，并确定条件访问如何判断用户是否通过提供商成功执行了验证。
 
 复制 JSON 数据，然后将其粘贴到相关文本框中。 不要对 JSON 做任何更改，除非用户明确理解所做的更改。 做出任何更改可能中断提供商和 Microsoft 之间的联系，并且有可能将你和你的用户锁定在帐户之外。
 

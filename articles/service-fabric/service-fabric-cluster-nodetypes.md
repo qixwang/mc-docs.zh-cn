@@ -3,19 +3,21 @@ title: 节点类型和虚拟机规模集
 description: 了解 Azure Service Fabric 节点类型如何与虚拟机规模集相关联，以及如何远程连接到规模集实例或群集节点。
 ms.topic: conceptual
 origin.date: 03/23/2018
-ms.date: 02/24/2020
+ms.date: 04/13/2020
 ms.author: v-yeche
 ms.custom: sfrev
-ms.openlocfilehash: 499aef9ad78db29d84d4f6ff4d587644a0fed1f8
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.openlocfilehash: 37b9ea75b7dacba98b4011ae711c3b03cccfdfa4
+ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77540191"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82093456"
 ---
 # <a name="azure-service-fabric-node-types-and-virtual-machine-scale-sets"></a>Azure Service Fabric 节点类型与虚拟机规模集
 
-[虚拟机规模集](/virtual-machine-scale-sets)是一种 Azure 计算资源。 可使用规模集以集的形式部署和管理虚拟机集合。 Azure Service Fabric 群集中定义的每个节点类型均设置了独立的规模集。 规模集中每个虚拟机上均通过 Microsoft.Azure.ServiceFabric  虚拟机扩展安装了 Service Fabric 运行时。 可独立增加或减少每个节点类型、更改每个群集节点上运行的 OS SKU、打开不同的端口集，并使用不同的容量指标。
+[虚拟机规模集](/virtual-machine-scale-sets)是一种 Azure 计算资源。 可使用规模集以集的形式部署和管理虚拟机集合。 在 Azure Service Fabric 群集中定义的每个节点类型都只设置了一个规模集：多个节点类型不能由同一规模集提供支持，而一个节点类型（在大多数情况下）不应由多个规模集提供支持。 此情况的一个例外是[垂直缩放](service-fabric-best-practices-capacity-scaling.md#vertical-scaling-considerations)节点类型这一罕见情况，即当副本从原始规模集迁移到已升级规模集时，临时有两个具有相同 `nodeTypeRef` 值的规模集。
+
+规模集中每个虚拟机上均通过 Microsoft.Azure.ServiceFabric  虚拟机扩展安装了 Service Fabric 运行时。 可独立增加或减少每个节点类型、更改每个群集节点上运行的 OS SKU、打开不同的端口集，并使用不同的容量指标。
 
 下图显示了一个具有两个节点类型（分别名为“FrontEnd”  和“BackEnd”  ）的群集。 每个节点类型具有五个节点。
 
@@ -73,7 +75,7 @@ Service Fabric 虚拟机扩展用于将 Service Fabric 启动到 Azure 虚拟机
 
 | **名称** | **允许的值**  | **指导或简短说明** |
 | --- | ---  | --- |
-| name | string  | 扩展的唯一名称 |
+| name | string | 扩展的唯一名称 |
 | type | “ServiceFabricLinuxNode”或“ServiceFabricWindowsNode” | 确定 OS Service Fabric 正启动到 |
 | autoUpgradeMinorVersion | true 或 false | 启用自动升级 SF 运行时次要版本的功能 |
 | publisher | Microsoft.Azure.ServiceFabric | Service Fabric 扩展发布者的名称 |

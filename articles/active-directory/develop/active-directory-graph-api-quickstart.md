@@ -4,26 +4,25 @@ description: Azure Active Directory (Azure AD) 图形 API 通过 OData REST API 
 services: active-directory
 author: rwike77
 manager: CelesteDG
-ms.assetid: 9dc268a9-32e8-402c-a43f-02b183c295c5
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 02/24/2020
+ms.date: 04/22/2020
 ms.author: v-junlch
 ms.reviewer: sureshja
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 323777d408db2653803b1337ea2391cb3e270a25
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.openlocfilehash: 20a7b0694093be9a6ae697a7d17ded1eb5935581
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77653308"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126256"
 ---
 # <a name="how-to-use-the-azure-ad-graph-api"></a>如何：使用 Azure AD 图形 API
 
 > [!IMPORTANT]
-> 强烈建议使用 [Microsoft Graph](https://developer.microsoft.com/graph)（而非 Azure AD Graph API）访问 Azure Active Directory (Azure AD) 资源。 目前，我们在集中开发 Microsoft Graph，未计划进一步改进 Azure AD Graph API。 Azure AD Graph API 仍可能适用的方案数量非常有限；有关详细信息，请参阅 [Microsoft Graph or the Azure AD Graph](https://dev.office.com/blogs/microsoft-graph-or-azure-ad-graph)（Microsoft Graph 或 Azure AD Graph）博客文章和[将 Azure AD Graph 应用迁移到 Microsoft Graph](https://docs.microsoft.com/graph/migrate-azure-ad-graph-overview)。
+> 强烈建议使用 [Microsoft Graph](https://developer.microsoft.com/graph)（而非 Azure AD Graph API）访问 Azure Active Directory (Azure AD) 资源。 目前，我们在集中开发 Microsoft Graph，未计划进一步改进 Azure AD Graph API。 Azure AD Graph API 仍可能适用的方案数量非常有限；有关详细信息，请参阅 [Microsoft Graph or the Azure AD Graph](https://developer.microsoft.com/office/blogs/microsoft-graph-or-azure-ad-graph/)（Microsoft Graph 或 Azure AD Graph）博客文章和[将 Azure AD Graph 应用迁移到 Microsoft Graph](https://docs.microsoft.com/graph/migrate-azure-ad-graph-overview)。
 
 Azure AD Graph API 通过 OData REST API 终结点提供对 Azure AD 的编程访问权限。 应用程序可以使用 Azure AD 图形 API 对目录数据和对象执行创建、读取、更新和删除 (CRUD) 操作。 例如，可以使用 Azure AD 图形 API 创建新用户、查看或更新用户的属性、更改用户的密码、检查基于角色的访问的组成员身份、禁用或删除用户。 有关 Azure AD 图形 API 功能和应用方案的详细信息，请参阅 [Azure AD 图形 API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog) 和 [Azure AD 图形 API 先决条件](https://msdn.microsoft.com/library/hh974476.aspx)。 Azure AD Graph API 仅适用于工作或学校/组织帐户。
 
@@ -35,12 +34,12 @@ Azure AD Graph API 通过 OData REST API 终结点提供对 Azure AD 的编程�
 
 * **服务根**：在 Azure AD 图形 API 中，服务根始终是 https://graph.chinacloudapi.cn 。
 * **租户标识符**：此部分可以是已验证（注册）的域名，在前面示例中为 contoso.com。 也可以是租户对象 ID 或者“myorganization”或“me”别名。 有关详细信息，请参阅[对 Azure AD 图形 API 中的实体和操作进行寻址](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-operations-overview)。
-* **资源路径**：URL 的此部分标识要交互的资源（用户、组、特定用户或特定组，等等）。在上面的示例中，它是用于对资源集寻址的顶级“组”。 也可以对特定的实体寻址，例如“users/{objectId}”或“users/userPrincipalName”。
-* **查询参数**：问号 (?) 用于分隔资源路径部分与查询参数部分。 需要对 Azure AD 图形 API 中的所有请求提供“api-version”查询参数。 Azure AD 图形 API 还支持以下 OData 查询选项： **$filter**、 **$orderby**、 **$expand**、 **$top** 和 **$format**。 当前不支持以下查询选项： **$count**、 **$inlinecount** 和 **$skip**。 有关详细信息，请参阅 [Azure AD 图形 API 支持的查询、筛选和分页选项](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-supported-queries-filters-and-paging-options)。
+* **资源路径**：URL 的此部分标识要交互的资源（用户、组、特定用户或特定组，等等）。在上面的示例中，它是用于对资源集寻址的顶级“组”。 也可以对特定实体寻址，例如“users/{objectId}”或“users/userPrincipalName”。
+* **查询参数**：问号 (?) 用于分隔资源路径部分与查询参数部分。 Azure AD 图形 API 中的所有请求都需要“api-version”查询参数。 Azure AD 图形 API 还支持以下 OData 查询选项： **$filter**、 **$orderby**、 **$expand**、 **$top** 和 **$format**。 当前不支持以下查询选项： **$count**、 **$inlinecount** 和 **$skip**。 有关详细信息，请参阅 [Azure AD 图形 API 支持的查询、筛选和分页选项](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-supported-queries-filters-and-paging-options)。
 
 ## <a name="graph-api-versions"></a>图形 API 版本
 
-可以在“api-version”查询参数中指定图形 API 请求的版本。 对于版本 1.5 及更高版本，使用数字版本值：api-version=1.6。 对于早期版本，使用遵循 YYYY-MM-DD 格式的日期字符串；例如，api-version=2013-11-08。 对于预览功能，使用字符串“beta”；例如，api-version=beta。 若要详细了解图形 API 版本之间的差异，请参阅 [Azure AD 图形 API 版本控制](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-versioning)。
+可以在“api-version”查询参数中指定图形 API 请求的版本。 对于版本 1.5 及更高版本，使用数字版本值：api-version=1.6。 对于早期版本，使用遵循 YYYY-MM-DD 格式的日期字符串；例如，api-version=2013-11-08。 对于预览功能，请使用字符串“beta”；例如，api-version=beta。 若要详细了解图形 API 版本之间的差异，请参阅 [Azure AD 图形 API 版本控制](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-versioning)。
 
 ## <a name="graph-api-metadata"></a>图形 API 元数据
 
@@ -123,4 +122,3 @@ Azure AD Graph API 通过 OData REST API 终结点提供对 Azure AD 的编程�
 * 了解有关 [Azure AD 图形 API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog)
 * 了解有关 [Azure AD 图形 API 权限范围](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes)的详细信息
 
-<!-- Update_Description: link update -->

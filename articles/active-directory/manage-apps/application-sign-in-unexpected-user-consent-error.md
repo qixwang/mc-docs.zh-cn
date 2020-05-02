@@ -12,17 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-origin.date: 07/11/2017
-ms.date: 07/04/2019
+ms.date: 04/24/2020
 ms.author: v-junlch
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4e39efae65fb4e4ac95fa7b81da8e933e4c97b2b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 2b3729c07557f7a0c636cf008147d9cf3fd04176
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "67568600"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126538"
 ---
 # <a name="unexpected-error-when-performing-consent-to-an-application"></a>对应用程序执行许可时发生的意外错误
 
@@ -34,8 +33,11 @@ ms.locfileid: "67568600"
 
 ## <a name="requesting-not-authorized-permissions-error"></a>请求未授予的权限错误
 * **AADSTS90093：** &lt;clientAppDisplayName&gt; 正在请求一个或多个你无权授予的权限。 请与管理员联系，他/她可代表你对此应用程序进行许可。
+* AADSTS90094：  &lt;clientAppDisplayName&gt; 需要访问组织中资源的权限（只有管理员可以授予）。 请先让管理员授予对此应用的权限，然后你才能使用此应用。
 
 当非公司管理员用户尝试使用的应用程序请求只有管理员才能授予的权限时，会发生此错误。 此错误可通过管理员代表其组织授予访问此应用程序的权限进行解决。
+
+如果 Microsoft 检测到权限请求存在风险而阻止用户许可应用程序，则也可能会发生此错误。 在这种情况下，还将记录一个审核事件，其“类别”为“ApplicationManagement”、“活动类型”为“许可应用程序”、“状态原因”为“检测到风险应用程序”。
 
 ## <a name="policy-prevents-granting-permissions-error"></a>策略阻止权限授予错误
 * **AADSTS90093：** &lt;tenantDisplayName&gt; 管理员设置的策略阻止授予 &lt;name of app&gt; 请求的权限。 请与 &lt;tenantDisplayName&gt; 管理员联系，他/她可代表你授予对此应用的权限。
@@ -80,5 +82,5 @@ ms.locfileid: "67568600"
 
 [Azure Active Directory（v2.0 终结点）中的范围、权限和许可](/active-directory/develop/active-directory-v2-scopes)
 
-<!-- Update_Description: wording update -->
+
 

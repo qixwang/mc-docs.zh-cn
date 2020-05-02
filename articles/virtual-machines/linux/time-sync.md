@@ -1,25 +1,23 @@
 ---
-title: Azure 中 Linux VM 的时间同步 | Azure
+title: Azure 中 Linux VM 的时间同步
 description: Linux 虚拟机的时间同步。
 services: virtual-machines-linux
 documentationcenter: ''
-author: rockboyfor
-manager: digimobile
-editor: tysonn
+author: Johnnytechn
+manager: gwallace
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-origin.date: 09/17/2018
-ms.date: 10/14/2019
-ms.author: v-yeche
-ms.openlocfilehash: c0b25951e6a879da9266b974b73a52e945bd6df3
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 04/20/2020
+ms.author: v-johya
+ms.openlocfilehash: c61f9d406e6828c99f644a897f42e3a92e71a8b4
+ms.sourcegitcommit: ebedf9e489f5218d4dda7468b669a601b3c02ae5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "72272795"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82159183"
 ---
 # <a name="time-sync-for-linux-vms-in-azure"></a>Azure 中 Linux VM 的时间同步
 
@@ -44,7 +42,7 @@ Azure 主机与内部 Azure 时间服务器同步，后者从 Azure 拥有的带
 
 在独立硬件上，Linux OS 仅在启动时读取主机硬件时钟数据。 然后，时钟会通过 Linux 内核中的中断计时器来维护。 在此配置中，时钟会随着时间的推移而出现偏差。 在 Azure 上的较新的 Linux 发行版中，VM 可以使用 Linux Integration Services (LIS) 中随附的 VMICTimeSync 提供程序，从主机更频繁地查询时钟更新。
 
-虚拟机与主机的交互也可能影响时钟。 在[内存保留维护](maintenance-and-updates.md#maintenance-that-doesnt-require-a-reboot)期间，VM 会暂停最多 30 秒的时间。 例如，在维护开始之前，VM 时钟显示上午 10:00:00，这种状态会持续 28 秒。 在 VM 恢复后，VM 上的时钟仍显示上午 10:00:00，这样就造成 28 秒的偏差。 为了进行纠正，VMICTimeSync 服务会监视主机上发生的情况，并会提示用户在 VM 上进行更改以纠正时间偏差。
+虚拟机与主机的交互也可能影响时钟。 在[内存保留维护](../maintenance-and-updates.md#maintenance-that-doesnt-require-a-reboot)期间，VM 会暂停最多 30 秒的时间。 例如，在维护开始之前，VM 时钟显示上午 10:00:00，这种状态会持续 28 秒。 在 VM 恢复后，VM 上的时钟仍显示上午 10:00:00，这样就造成 28 秒的偏差。 为了进行纠正，VMICTimeSync 服务会监视主机上发生的情况，并会提示用户在 VM 上进行更改以纠正时间偏差。
 
 <!-- Not Available on Anchor #memory-preserving-maintenance-->
 
@@ -54,6 +52,8 @@ Azure 主机与内部 Azure 时间服务器同步，后者从 Azure 拥有的带
 - 如果日志（或其他数据）在时间上不一致，则很难弄清楚系统中发生了什么。 同一事件看起来就像是在不同的时间发生，难以进行关联。
 - 如果时钟存在偏差，则可能造成计费不正确。
 
+
+
 ## <a name="configuration-options"></a>配置选项
 
 一般情况下，可以通过三种方式为托管在 Azure 中的 Linux VM 配置时间同步：
@@ -61,6 +61,7 @@ Azure 主机与内部 Azure 时间服务器同步，后者从 Azure 拥有的带
 - Azure 市场映像的默认配置使用 NTP 时间和 VMICTimeSync 主机时间。 
 - 仅主机（使用 VMICTimeSync）。
 - 在使用或不使用 VMICTimeSync 主机时间的情况下，使用另一外部时间服务器。
+
 
 ### <a name="use-the-default"></a>使用默认值
 
@@ -140,7 +141,7 @@ cat /sys/class/ptp/ptp0/clock_name
 
 ### <a name="chrony"></a>chrony
 
-在 CentOS 7.x 上，[chrony](https://chrony.tuxfamily.org/) 配置为使用 PTP 源时钟。 网络时间协议守护程序 (ntpd) 不支持 PTP 源，因此建议使用 **chronyd**。 若要启用 PTP，请更新 **chrony.conf**。
+在 CentOS 7.x 上，[chrony](https://chrony.tuxfamily.org/) 配置为使用 PTP 源时钟。 旧的 Linux 发行版使用网络时间协议守护程序 (ntpd)（不支持 PTP 源），而不是使用 chrony。 要在这些版本中启用 PTP，必须使用以下代码手动安装并配置 chrony（在 chrony.conf 中）：
 
 <!--Not Available on Red Hat Enterprise Linux-->
 
@@ -151,13 +152,25 @@ refclock PHC /dev/ptp0 poll 3 dpoll -2 offset 0
 <!--Not Available on [Configure NTP](https://access.redhat.com/documentation/red_hat_enterprise_linux/7/html/system_administrators_guide/s1-configure_ntp)-->
 <!--Not Available on Red Hat -->
 
-有关 chrony 的详细信息，请参阅 [Using chrony](https://access.redhat.com/documentation/red_hat_enterprise_linux/7/html/system_administrators_guide/sect-using_chrony)（使用 chrony）。
+有关 chrony 的详细信息，请参阅[使用 chrony](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/sect-using_chrony)。
 
 如果同时启用了 chrony 和 TimeSync 源，则可将一个源标记为“首选”，这样就会将另一个源设置为“备用”。  由于 NTP 服务在遇到大偏差时更新时钟需要很长时间，因此可以使用 VMICTimeSync，后者在出现 VM 暂停事件时恢复时钟的速度远远快于单独使用基于 NTP 的工具的速度。
 
+默认情况下，chronyd 会加快或减慢系统时钟以修复任何时间偏移。 如果偏移量过大，chrony 将无法修复偏移。 若要解决此问题，可以更改 /etc/chrony.conf  中的 `makestep` 参数，以便在偏移量超过指定的阈值时强制进行时间同步。
+
+ ```bash
+makestep 1.0 -1
+```
+
+在这里，如果偏移量大于 1 秒，chrony 会强制进行时间更新。 若要应用更改，请重启 chronyd 服务：
+
+```bash
+systemctl restart chronyd
+```
+
 ### <a name="systemd"></a>systemd 
 
-在 Ubuntu 和 SUSE 上，时间同步使用 [systemd](https://www.freedesktop.org/wiki/Software/systemd/) 进行配置。 有关 Ubuntu 的详细信息，请参阅 [Time Synchronization](https://help.ubuntu.com/lts/serverguide/NTP.html)（时间同步）。 有关 SUSE 的详细信息，请参阅 [SUSE Linux Enterprise Server 12 SP3 Release Notes](https://www.suse.com/releasenotes/x86_64/SUSE-SLES/12-SP3/#InfraPackArch.ArchIndependent.SystemsManagement)（SUSE Linux Enterprise Server 12 SP3 发行说明）中的 4.5.8 部分。
+在 19.10 以前的 SUSE 和 Ubuntu 版本中，使用 [systemd](https://www.freedesktop.org/wiki/Software/systemd/) 配置时间同步。 有关 Ubuntu 的详细信息，请参阅[时间同步](https://help.ubuntu.com/lts/serverguide/NTP.html)。 有关 SUSE 的详细信息，请参阅 [SUSE Linux Enterprise Server 12 SP3 发行说明](https://www.suse.com/releasenotes/x86_64/SUSE-SLES/12-SP3/#InfraPackArch.ArchIndependent.SystemsManagement)中的第 4.5.8 节。
 
 ## <a name="next-steps"></a>后续步骤
 

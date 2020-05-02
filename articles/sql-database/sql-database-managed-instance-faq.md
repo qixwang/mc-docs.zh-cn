@@ -10,14 +10,14 @@ ms.topic: conceptual
 author: WenJason
 ms.author: v-jay
 ms.reviewer: sstein, carlrab
-origin.date: 07/16/2019
-ms.date: 03/16/2020
-ms.openlocfilehash: bf202130dc71e6ac762d2c8787b67d64ec768170
-ms.sourcegitcommit: dc862610e2169c1fce6fb0ae9eb7dd7567f86a0a
+origin.date: 03/17/2020
+ms.date: 04/27/2020
+ms.openlocfilehash: 98418dbda73b662afeb2757f114c505a305ef708
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79293660"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126684"
 ---
 # <a name="sql-database-managed-instance-frequently-asked-questions-faq"></a>SQL 数据库托管实例常见问题解答 (FAQ)
 
@@ -43,13 +43,13 @@ ms.locfileid: "79293660"
 
 **在何处可以找到已知问题和 bug？**
 
-有关 bug 和已知问题，请参阅[已知问题](sql-database-managed-instance-transact-sql-information.md#Issues)。
+有关 bug 和已知问题，请参阅[已知问题](sql-database-release-notes.md#known-issues)。
 
 ## <a name="new-features"></a>新增功能
 
 **在何处可以找到最新功能和公共预览版功能？**
 
-对于新功能和预览功能，请参阅[发行说明](/sql-database/sql-database-release-notes?tabs=managed-instance)。
+对于新功能和预览功能，请参阅[发行说明](sql-database-release-notes.md?tabs=managed-instance)。
 
 ## <a name="deployment-times"></a>部署时间 
 
@@ -61,7 +61,11 @@ ms.locfileid: "79293660"
 
 **托管实例是否可与本地 SQL Server 同名？**
 
-托管实例的名称必须以 *database.chinacloudapi.cn* 结尾。 若要使用其他 DNS 区域而不是默认区域，例如 **mi-another-name**.contoso.com： 
+不支持更改托管实例名称。
+
+可以更改托管实例默认 DNS 区域“.database.chinacloudapi.cn”  。 
+
+若要使用其他 DNS 区域而不是默认区域（例如“.contoso.com”  ），请执行以下操作： 
 - 使用 CliConfig 定义别名。 该工具只是一个注册表设置包装器，因此也可以使用组策略或脚本完成此操作
 - 将 *CNAME* 与 *TrustServerCertificate=true* 选项一起使用。
 
@@ -118,24 +122,24 @@ ms.locfileid: "79293660"
 
 **如何针对管理端口设置入站 NSG 规则？**
 
-内置防火墙功能可在群集中的所有虚拟机上配置 Windows 防火墙，以便仅允许与 Microsoft 管理/部署计算机关联的 IP 范围发起的入站连接，并有效地保护管理工作站，防止攻击者通过网络层入侵。
+托管实例控制平面会维护用于保护管理端口的 NSG 规则。
 
-下面是端口的用途：
+下面是管理端口的用途：
 
 端口 9000 和 9003 由 Service Fabric 基础结构使用。 Service Fabric 的主要作用是使虚拟群集保持正常，并根据组件副本数保持目标状态。
 
 端口 1438、1440 和 1452 由节点代理使用。 节点代理是群集中运行的一个应用程序，控制平面使用它来执行管理命令。
 
-除了网络层上的内置防火墙以外，还可以使用证书来保护通信。
+除了 NSG 规则外，内置防火墙还会保护网络层上的实例。 在应用程序层上，使用证书保护通信。
   
 有关详细信息以及如何验证内置防火墙，请参阅 [Azure SQL 数据库托管实例的内置防火墙](sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md)。
 
 
-## <a name="mitigate-network-risks"></a>缓解网络风险  
+## <a name="mitigate-data-exfiltration-risks"></a>缓解数据透露风险  
 
-**如何缓解网络风险？**
+**如何缓解数据透露风险？**
 
-为了缓解任何网络风险，我们建议客户应用一组安全设置和控制措施：
+为了缓解任何数据透露风险，我们建议客户应用一组安全设置和控制：
 
 - 针对所有数据库启用[透明数据加密 (TDE)](/sql-database/transparent-data-encryption-azure-sql)。
 - 禁用公共语言运行时 (CLR)。 也建议在本地禁用 CLR。
@@ -173,19 +177,19 @@ DNS 配置最终会刷新：
 一种解决方法是将托管实例降级为 4 个 vCore，然后再次将其升级。 这样刷新 DNS 配置会产生一种负面影响。
 
 
-## <a name="static-ip-address"></a>静态 IP 地址
+## <a name="ip-address"></a>IP 地址
+
+**能否使用 IP 地址连接到托管实例？**
+
+不支持使用 IP 地址连接到托管实例。 托管实例主机名会映射到托管实例虚拟群集前面的负载均衡器。 由于一个虚拟群集可以托管多个托管实例，因此如果不指定名称，则无法将连接路由到正确的托管实例。
+
+有关托管实例虚拟群集体系结构的详细信息，请参阅[虚拟群集连接体系结构](sql-database-managed-instance-connectivity-architecture.md#virtual-cluster-connectivity-architecture)。
 
 **托管实例是否可以使用静态 IP 地址？**
 
 在罕见但必要的情况下，我们可能需要将托管实例联机迁移到新的虚拟群集。 需要进行这种迁移的原因是，我们的技术堆栈发生了变化，旨在提高服务的安全性和可靠性。 迁移到新的虚拟群集会导致映射到托管实例主机名的 IP 地址发生变化。 托管实例服务不会提出静态 IP 地址支持，且有权在不另行通知的情况下，在定期维护周期更改此 IP 地址。
 
 出于此原因，我们强烈反对依赖于 IP 地址的不可变性，因为这可能会导致不必要的停机时间。
-
-## <a name="moving-mi"></a>移动 MI
-
-**是否可将托管实例或其 VNet 移到另一个资源组？**
-
-不可以，这是当前的平台限制。 创建托管实例后，不支持将托管实例或 VNet 移到另一个资源组或订阅。
 
 ## <a name="change-time-zone"></a>更改时区
 

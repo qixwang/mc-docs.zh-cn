@@ -1,31 +1,25 @@
 ---
-title: 排查 MSAL 的 Objective-C 问题 | Microsoft 标识平台
-description: 了解如何处理将 SSL 证书与 MSAL.Objective-C 库配合使用时出现的各种问题。
+title: 排查 TLS/SSL 问题 (MSAL iOS/macOS) | Azure
+titleSuffix: Microsoft identity platform
+description: 了解如何处理将 TLS/SSL 证书与 MSAL.Objective-C 库配合使用时出现的各种问题。
 services: active-directory
-documentationcenter: ''
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-origin.date: 08/28/2019
-ms.date: 11/01/2019
+ms.date: 04/22/2020
 ms.author: v-junlch
-ms.reviewer: ''
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 11fd83ff73cb84dc8f48345b3fb883c697a1f598
-ms.sourcegitcommit: a88cc623ed0f37731cb7cd378febf3de57cf5b45
+ms.openlocfilehash: abe33e0b8e4c3467cfa9a9fe7e173b6f9948d7f1
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73831015"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126428"
 ---
-# <a name="how-to-troubleshoot-msal-for-ios-and-macos-ssl-issues"></a>如何：排查 iOS 和 MacOS SSL 的 MSAL 问题
+# <a name="how-to-troubleshoot-msal-for-ios-and-macos-tlsssl-issues"></a>如何：排查 iOS 和 macOS TLS/SSL 的 MSAL 问题
 
 本文介绍如何排查使用[用于 iOS 和 macOS 的 Microsoft Authentication 库 (MSAL)](reference-v2-libraries.md) 时可能会遇到的问题
 
@@ -33,15 +27,15 @@ ms.locfileid: "73831015"
 
 **错误 -1200**：“出现 SSL 错误，无法安全地连接到服务器。”
 
-此错误意味着连接不安全。 证书无效时会发生此错误。 有关详细信息，包括哪个服务器导致 SSL 检查故障，请参阅错误对象的 `userInfo` 字典中的 `NSURLErrorFailingURLErrorKey`。
+此错误意味着连接不安全。 证书无效时会发生此错误。 有关详细信息（包括哪个服务器没有通过 TLS 检查），请参考错误对象的 `userInfo` 字典中的 `NSURLErrorFailingURLErrorKey`。
 
 此错误来自 Apple 的网络库。 NSURL 错误代码的完整列表位于 macOS 和 iOS 的 SDK 的 NSURLError.h 中。 有关此错误的更多详细信息，请参阅 [URL Loading System Error Codes](https://developer.apple.com/documentation/foundation/1508628-url_loading_system_error_codes?language=objc)（URL 加载系统错误代码）。
 
 ## <a name="certificate-issues"></a>证书问题
 
-如果提供无效证书的 URL 连接到你要将其用作身份验证流的一部分的服务器，则在诊断问题时，可以先使用一个 SSL 验证服务（例如 [Qualys SSL Labs Analyzer](https://www.ssllabs.com/ssltest/analyze.html)）来测试该 URL。 它会针对一系列广泛的方案和浏览器测试服务器，并针对许多已知漏洞进行检查。
+如果提供无效证书的 URL 连接到你要在身份验证流中使用的服务器，则在诊断问题时，可以先使用 SSL 验证服务（如 [SSL 服务器测试](https://www.ssllabs.com/ssltest/analyze.html)）测试该 URL。 它会针对一系列广泛的方案和浏览器测试服务器，并针对许多已知漏洞进行检查。
 
-默认情况下，Apple 的新[应用传输安全性 (ATS)](https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CocoaKeys.html#//apple_ref/doc/uid/TP40009251-SW35) 功能会将更严格的安全策略应用到使用 SSL 证书的应用。 某些操作系统和 Web 浏览器已开始在默认情况下强制实施这些策略中的一部分。 出于安全原因，我们建议不要禁用 ATS。
+默认情况下，Apple 的新[应用传输安全性 (ATS)](https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CocoaKeys.html#//apple_ref/doc/uid/TP40009251-SW35) 功能会将更严格的安全策略应用到使用 TLS/SSL 证书的应用。 某些操作系统和 Web 浏览器已开始在默认情况下强制实施这些策略中的一部分。 出于安全原因，我们建议不要禁用 ATS。
 
 使用 SHA-1 哈希的证书存在已知的漏洞。 大多数新式 Web 浏览器不允许使用 SHA-1 哈希的证书。
 

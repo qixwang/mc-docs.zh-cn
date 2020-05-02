@@ -5,18 +5,20 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 01/13/2020
-ms.date: 03/30/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: 3538a6f8c5ca6d7d690f756c41dae6dcf0ebf196
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: c00430fe9c5047b05ecf48988de833e1e6a0438f
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80342369"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134657"
 ---
 # <a name="elastically-scale-an-azure-cosmos-db-cassandra-api-account"></a>弹性缩放 Azure Cosmos DB Cassandra API 帐户
 
-有多种不同的选项可以探索用于 Cassandra 的 Azure Cosmos DB API 的弹性。 若要了解如何在 Azure Cosmos DB 中有效进行缩放，必须知道如何根据系统中的性能需求预配适当数量的请求单位（RU/秒）。 若要详细了解请求单位，请参阅[请求单位](request-units.md)一文。 
+有多种不同的选项可以探索 Azure Cosmos DB API for Cassandra 的弹性。 若要了解如何在 Azure Cosmos DB 中有效进行缩放，必须知道如何根据系统中的性能需求预配适当数量的请求单位（RU/秒）。 若要详细了解请求单位，请参阅[请求单位](request-units.md)一文。 
+
+对于 Cassandra API，可以使用 [.NET 和 Java SDK](/cosmos-db/find-request-unit-charge#cassandra-api) 检索单个查询的请求单位费用。 这有助于确定你在服务中需要预配的 RU 数/秒。
 
 ![数据库操作消耗请求单位](./media/request-units/request-units.png)
 
@@ -24,7 +26,7 @@ ms.locfileid: "80342369"
 
 如果客户端消耗的资源（RU/秒）超过了预配的量，Azure Cosmos DB 将返回速率限制 (429) 错误。 Azure Cosmos DB 中的 Cassandra API 在 Cassandra 本机协议中将这些异常解释为过载错误。 
 
-如果系统对延迟不敏感，使用重试可能就足以应对吞吐量速率限制。 请参阅 [Java 代码示例](https://github.com/Azure-Samples/azure-cosmos-cassandra-java-retry-sample)，了解如何通过 Java 使用用于 [Cassandra 重试策略](https://github.com/Azure/azure-cosmos-cassandra-extensions)的 [Azure Cosmos DB 扩展](https://docs.datastax.com/en/developer/java-driver/4.4/manual/core/retries/)，从而以透明方式处理速率限制。 还可以使用 [Spark 扩展](https://mvnrepository.com/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper)来处理速率限制。
+如果系统对延迟不敏感，使用重试可能就足以应对吞吐量速率限制。 请参阅 [Java 代码示例](https://github.com/Azure-Samples/azure-cosmos-cassandra-java-retry-sample)，了解如何通过 Java 使用用于 [Cassandra 重试策略](https://docs.datastax.com/en/developer/java-driver/4.4/manual/core/retries/)的 [Azure Cosmos DB 扩展](https://github.com/Azure/azure-cosmos-cassandra-extensions)，从而以透明方式处理速率限制。 还可以使用 [Spark 扩展](https://mvnrepository.com/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper)来处理速率限制。
 
 ## <a name="manage-scaling"></a>管理缩放
 
@@ -71,5 +73,4 @@ ms.locfileid: "80342369"
 
 - 通过使用 Java 应用程序开始[创建 Cassandra API 帐户、数据库和表](create-cassandra-api-account-java.md)
 
-<!-- Update_Description: new article about manage scale cassandra -->
-<!--NEW.date: 03/09/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 03/11/2020
+ms.date: 04/24/2020
 ms.author: v-junlch
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5caf38887c4bba9a9f60305ee6fae8edc5194335
-ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
+ms.openlocfilehash: e7d170db13360916ea7c4670372450628a2d547e
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2020
-ms.locfileid: "79133888"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126737"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory 门户中的“登录活动”报告
 
@@ -44,7 +44,11 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 
 ### <a name="what-azure-ad-license-do-you-need-to-access-sign-in-activity"></a>访问登录活动需要什么 Azure AD 许可证？
 
-* 租户必须具有与之关联的 Azure AD Premium 许可证，才能查看包含所有登录活动的报告。 请参阅 [Azure Active Directory Premium 入门](../fundamentals/active-directory-get-started-premium.md)来升级 Azure Active Directory 版本。 如果在升级之前没有数据活动，则在升级到高级版许可证后，数据需要经过几天才会显示在报表中。
+- [所有版本的 Azure AD](reference-reports-data-retention.md#how-long-does-azure-ad-store-the-data) 中都提供了登录活动报告。
+
+- 若要使用 API 访问登录数据，租户必须拥有与之关联的 [Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) 许可证。
+
+
 
 ## <a name="sign-ins-report"></a>登录报告
 
@@ -166,13 +170,17 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 **相关性 ID** - 活动的相关性 ID。
 
 
+
+
 **条件访问** - 已应用的条件访问规则的状态
 
-- 未应用 
+- **未应用**：在登录过程中未对用户和应用程序应用任何策略。
 
-- Success
+- **成功**：在登录过程中对用户和应用程序应用了一个或多个条件访问策略（但不一定是其他条件）。 
 
-- 失败
+- **失败**：在登录过程中应用了一个或多个条件访问策略，但不符合这些策略。
+
+
 
 
 

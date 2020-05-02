@@ -10,16 +10,16 @@ ms.assetid: 6d42fb79-d9cf-48da-8445-f482c4c536af
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/15/2020
+ms.date: 04/23/2020
 ms.subservice: hybrid
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9797cb843e0e7a91169703f245a47354c1212d2a
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 9dac0596c93b3ea13dc2e50430d9ac192842ed3f
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79291006"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126595"
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Azure AD Connect 的自定义安装
 如果希望有更多的安装选项，可以使用 Azure AD Connect“自定义设置”。  如果拥有多个林或希望配置未覆盖在快速安装中的可选功能，可以使用它。 它适用于[**快速安装**](how-to-connect-install-express.md)不能满足部署或拓扑的所有情况。
@@ -199,16 +199,16 @@ Azure 中国区目前不支持单一登录 (SSO)。
 
 * 已启用远程管理的、用作联合服务器的 Windows Server 2012 R2 或更高版服务器
 * 已启用远程管理的、用作 Web 应用程序代理服务器的 Windows Server 2012 R2 或更高版服务器
-* 要使用的联合身份验证服务名称（例如 sts.contoso.com）的 SSL 证书
+* 要使用的联合身份验证服务名称（例如 sts.contoso.com）的 TLS/SSL 证书
 
 >[!NOTE]
->可以使用 Azure AD Connect 更新 AD FS 场的 SSL 证书，即使不使用它来管理联合身份验证信任。
+>可以使用 Azure AD Connect 更新 AD FS 场的 TLS/SSL 证书，即使不使用它来管理联合身份验证信任。
 
 ### <a name="ad-fs-configuration-pre-requisites"></a>AD FS 配置先决条件
 若要使用 Azure AD Connect 配置 AD FS 场，请确保已在远程服务器上启用 WinRM。 确保已完成[联合身份验证先决条件](how-to-connect-install-prerequisites.md#prerequisites-for-federation-installation-and-configuration)中的其他任务。 此外，请仔细查看[表 3 - Azure AD Connect 和联合服务器/WAP](reference-connect-ports.md#table-3---azure-ad-connect-and-ad-fs-federation-serverswap) 中列出的端口要求。
 
 ### <a name="create-a-new-ad-fs-farm-or-use-an-existing-ad-fs-farm"></a>创建新的 AD FS 场或使用现有的 AD FS 场
-可以使用现有的 AD FS 场，或选择创建新的 AD FS 场。 如果选择创建新的场，则需要提供 SSL 证书。 如果 SSL 证书受密码保护，系统会提示输入密码。
+可以使用现有的 AD FS 场，或选择创建新的 AD FS 场。 如果选择创建新的场，则需要提供 TLS/SSL 证书。 如果 TLS/SSL 证书受密码保护，系统会提示输入密码。
 
 ![AD FS 场](./media/how-to-connect-install-custom/adfs1.png)
 
@@ -274,7 +274,7 @@ AD FS 服务需要域服务帐户来验证用户，以及在 Active Directory �
 ## <a name="configuring-federation-with-pingfederate"></a>配置使用 PingFederate 的联合身份验证
 使用 Azure AD Connect 配置 PingFederate 非常简单，只需单击几下鼠标即可。 但是，以下先决条件是必需的。
 - PingFederate 8.4 或更高版本。  有关详细信息，请参阅 [PingFederate 与 Azure Active Directory 和 Office 365 的集成](https://docs.pingidentity.com/bundle/O365IG20_sm_integrationGuide/page/O365IG_c_integrationGuide.html)
-- 要使用的联合身份验证服务名称（例如 sts.contoso.com）的 SSL 证书
+- 要使用的联合身份验证服务名称（例如 sts.contoso.com）的 TLS/SSL 证书
 
 ### <a name="verify-the-domain"></a>验证域
 选择使用 PingFederate 进行联合身份验证之后，会要求你要验证要进行联合身份验证的域。  从下拉框中选择域。
@@ -378,4 +378,3 @@ Azure AD Connect 将尝试验证从上一步中的 PingFederate 元数据检索�
 
 了解有关[将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。
 
-<!-- Update_Description: wording update -->

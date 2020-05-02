@@ -6,14 +6,14 @@ author: rockboyfor
 ms.service: private-link
 ms.topic: conceptual
 origin.date: 09/16/2019
-ms.date: 02/24/2020
+ms.date: 04/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: d3cd30ffde9ee2452299c69661f227102972c195
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.openlocfilehash: f4849f970ea05c32a344e1fde9135fc027cd36d4
+ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77540023"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82093493"
 ---
 # <a name="what-is-azure-private-link-service"></a>什么是 Azure 专用链接服务？
 
@@ -97,7 +97,7 @@ Azure 专用链接服务是对你自己的、由 Azure 专用链接驱动的服�
 
 ## <a name="getting-connection-information-using-tcp-proxy-v2"></a>使用 TCP 代理 v2 获取连接信息
 
-使用专用链接服务时，来自专用终结点的数据包的源 IP 地址是服务提供商端的网络地址转换 (NAT)，使用从提供商的虚拟网络分配的 NAT IP。 因此，应用程序将接收分配的 NAT IP 地址，而非接收服务使用者的实际源 IP 地址。 如果应用程序需要来自使用方的实际源 IP 地址，则你可以在服务上启用代理协议，并从代理协议标头中检索该信息。 除了源 IP 地址外，代理协议标头还携带专用终结点的 LinkID。 源 IP 地址和 LinkID 的组合可以帮助服务提供商唯一识别其使用者。 有关代理协议的详细信息，请访问此处。 
+使用专用链接服务时，来自专用终结点的数据包的源 IP 地址是服务提供商端的网络地址转换 (NAT)，使用从提供商的虚拟网络分配的 NAT IP。 因此，应用程序将接收分配的 NAT IP 地址，而非接收服务使用者的实际源 IP 地址。 如果应用程序需要来自使用方的实际源 IP 地址，则你可以在服务上启用代理协议，并从代理协议标头中检索该信息。 除了源 IP 地址外，代理协议标头还携带专用终结点的 LinkID。 源 IP 地址和 LinkID 的组合可以帮助服务提供商唯一识别其使用者。 有关代理协议的详细信息，请访问[此处](https://www.haproxy.org/download/1.8/doc/proxy-protocol.txt)。 
 
 此信息使用自定义的 Type-Length-Value (TLV) 向量进行编码，如下所示：
 
@@ -105,10 +105,13 @@ Azure 专用链接服务是对你自己的、由 Azure 专用链接驱动的服�
 
 |字段 |长度（八进制）  |说明  |
 |---------|---------|----------|
-|Type  |1        |PP2_TYPE_AZURE (0xEE)|
+|类型  |1        |PP2_TYPE_AZURE (0xEE)|
 |Length  |2      |值的长度|
 |Value  |1     |PP2_SUBTYPE_AZURE_PRIVATEENDPOINT_LINKID (0x01)|
 |  |4        |UINT32（4个字节），表示专用终结点的 LINKID。 编码为 little endian 格式。|
+
+ > [!NOTE]
+ > 服务提供商负责确保在专用链接服务上启用代理协议时，将标准负载均衡器后面的服务配置为按照[规范](https://www.haproxy.org/download/1.8/doc/proxy-protocol.txt)分析代理协议标头。 如果在专用链接服务上启用了代理协议设置，但未将服务提供商的服务配置为分析该标头，则请求会失败。 同样，如果服务提供商的服务需要代理协议标头，而专用链接服务上未启用该设置，则请求会失败。 启用代理协议设置后，代理协议标头也将包含在从主机到后端虚拟机的 HTTP/TCP 运行状况探测中，即使标头中没有客户端信息也是如此。 
 
 ## <a name="limitations"></a>限制
 

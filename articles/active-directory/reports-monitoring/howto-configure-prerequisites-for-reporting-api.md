@@ -13,29 +13,30 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 03/25/2020
+ms.date: 04/24/2020
 ms.author: v-junlch
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00b3d37f1f5a11f2658ce17041b709cbcfc053e9
-ms.sourcegitcommit: 6568c59433d7e80ab06e9fe76d4791f761ed6775
+ms.openlocfilehash: d11ce23995f766785f16fd9495b97e104ad002f7
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80243189"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126789"
 ---
 # <a name="prerequisites-to-access-the-azure-active-directory-reporting-api"></a>访问 Azure Active Directory 报告 API 的先决条件
 
-[Azure Active Directory (Azure AD) 报告 API](https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-reports-and-events-preview) 通过一组基于 REST 的 API，可让你以编程方式访问数据。 可从编程语言和工具中调用这些 API。
+Azure Active Directory (Azure AD) 报告 API 通过一组基于 REST 的 API，让你以编程方式访问数据。 可从编程语言和工具中调用这些 API。
 
 报告 API 使用 [OAuth](/api-management/api-management-howto-protect-backend-with-aad) 授权访问 Web API。
 
 若要准备访问报告 API，需要执行以下操作：
 
 1. [分配角色](#assign-roles)
-2. [注册应用程序](#register-an-application)
-3. [授予权限](#grant-permissions)
-4. [收集配置设置](#gather-configuration-settings)
+2. [许可证要求](#license-requirements)
+3. [注册应用程序](#register-an-application)
+4. [授予权限](#grant-permissions)
+5. [收集配置设置](#gather-configuration-settings)
 
 ## <a name="assign-roles"></a>分配角色
 
@@ -46,6 +47,10 @@ ms.locfileid: "80243189"
 - 安全管理员
 
 - 全局管理员角色
+
+## <a name="license-requirements"></a>许可证要求
+
+Azure AD 租户只有在关联了 Azure AD Premium 许可证的情况下才能访问租户的登录报告。 若要访问任何 Azure AD 租户的登录报告，需要 Azure AD Premium P1（或更高版本）许可证。 或者，如果目录类型为 Azure AD B2C，则无需满足任何其他许可证要求即可通过 API 访问登录报告。 
 
 
 ## <a name="register-an-application"></a>注册应用程序

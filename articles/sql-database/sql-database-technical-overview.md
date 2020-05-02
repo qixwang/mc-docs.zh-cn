@@ -12,17 +12,19 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: carlrab
 origin.date: 04/08/2019
-ms.date: 03/30/2020
-ms.openlocfilehash: 079398027cddea5da409ce6bb094fd49e902bd5f
-ms.sourcegitcommit: 90660563b5d65731a64c099b32fb9ec0ce2c51c6
+ms.date: 04/27/2020
+ms.openlocfilehash: 7846a883137445e18e09df73ddde1e716f62c373
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80341751"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126911"
 ---
 # <a name="what-is-the-azure-sql-database-service"></a>什么是 Azure SQL 数据库服务？
 
-Azure SQL 数据库是通用的关系数据库，以托管服务的形式提供。 使用它可为 Azure 中的应用程序和解决方案创建高可用性和高性能数据存储层。 SQL 数据库可成为各种新式云应用程序的正确选择，因为它可让你处理关系数据和[非关系结构](sql-database-multi-model-features.md)（例如图形、JSON、空间和 XML）。
+Azure SQL 数据库是一个完全托管的平台即服务 (PaaS) 数据库引擎，可在无需用户参与的情况下处理大多数数据库管理功能，如升级、修补、备份和监控。 Azure SQL 数据库始终运行于最新稳定版 SQL Server 数据库引擎和具有 99.99% 可用性的已修补 OS 之上。 Azure SQL 数据库中内置的 PaaS 功能可让你专注于对业务至关重要的特定于域的数据库管理和优化活动。
+
+使用 Azure SQL 数据库，可以为 Azure 中的应用程序和解决方案创建高度可用且高性能的数据存储层。 SQL 数据库可成为各种新式云应用程序的正确选择，因为它可让你处理关系数据和[非关系结构](sql-database-multi-model-features.md)（例如图形、JSON、空间和 XML）。
 
 SQL 数据库基于 [Microsoft SQL Server 数据库引擎](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation?toc=/sql-database/toc.json)的最新稳定版本。 你可以使用高级查询处理功能集，例如[高性能内存中技术](sql-database-in-memory.md)和[智能查询处理](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=/sql-database/toc.json)。 事实上，SQL Server 的最新功能会先发布到 SQL 数据库，然后再发布到 SQL Server 本身。 无需投入任何修补或升级开销，即可获得 SQL Server 的最新功能，这些功能已在数百万个数据库中进行测试。 
 
@@ -69,7 +71,7 @@ SQL 数据库提供以下购买模型：
 Azure SQL 数据库提供了三个专为不同类型的应用程序设计的服务层级：
 - [常规用途/标准](sql-database-service-tier-general-purpose.md)服务层级设计用于常见工作负荷。 它提供以预算导向的、均衡的计算和存储选项。
 - [业务关键型/高级](sql-database-service-tier-business-critical.md)服务层级专为事务率较高、I/O 延迟最低的 OLTP 应用程序而设计。 它使用多个独立副本，提供最高级别的故障恢复能力。
-- [超大规模](sql-database-service-tier-hyperscale.md)服务层级专为超大型 OLTP 数据库设计，能够自动缩放存储和流畅地缩放计算。 
+- [超大规模](sql-database-service-tier-hyperscale.md)服务层级专为超大型 OLTP 数据库设计，能够自动缩放存储和流畅地缩放计算。
 
 ### <a name="elastic-pools-to-maximize-resource-utilization"></a>弹性池可以最大化资源利用率
 
@@ -98,7 +100,7 @@ Azure SQL 数据库提供高级监视和故障排除功能，可帮助你更深�
 
 [查询存储](https://docs.microsoft.com/sql/relational-databases/performance/best-practice-with-the-query-store) - 内置的 SQL Server 监视功能，它可以实时记录查询性能，并使你能够识别潜在的性能问题和排名靠前的资源使用者。 自动优化和建议提供有关性能退化以及存在缺失或重复索引的查询的建议。 使用 Azure SQL 数据库中的自动优化可以手动应用脚本来解决问题，或者让 Azure SQL 数据库应用修复措施。 SQL 数据库还可以测试并验证该修复措施是否起了作用，并根据结果保留或还原更改。 除了查询存储和自动优化功能外，还可以使用标准的 [DMV 和 XEvent](sql-database-monitoring-with-dmvs.md) 来监视工作负荷性能。
 
-Azure 提供[内置的性能监视](sql-database-performance.md)和[警报](sql-database-insights-alerts-portal.md)工具，将它们与性能评分相结合，可以监视数千个数据库的状态。 使用这些工具，可以根据当前的或预计的性能需求，快速评估纵向扩展或纵向缩减产生的影响。 此外，SQL 数据库可[发出指标和诊断日志](sql-database-metrics-diag-logging.md)，以便更轻松地监视。 可配置 SQL 数据库，将资源使用情况、辅助角色和会话以及连接性存储到以下 Azure 资源之一：
+Azure 提供[内置的性能监视](sql-database-performance-guidance.md)和[警报](sql-database-insights-alerts-portal.md)工具，将它们与性能评分相结合，可以监视数千个数据库的状态。 使用这些工具，可以根据当前的或预计的性能需求，快速评估纵向扩展或纵向缩减产生的影响。 此外，SQL 数据库可[发出指标和诊断日志](sql-database-metrics-diag-logging.md)，以便更轻松地监视。 可配置 SQL 数据库，将资源使用情况、辅助角色和会话以及连接性存储到以下 Azure 资源之一：
 
 - **Azure 存储**：用于低价存档大量遥测数据。
 - **Azure 事件中心**：用于将 SQL 数据库遥测与自定义监视解决方案或热门管道集成。
@@ -108,11 +110,11 @@ Azure 提供[内置的性能监视](sql-database-performance.md)和[警报](sql-
 
 ## <a name="availability-capabilities"></a>可用性功能
 
-在传统的 SQL Server 环境中，通常需要在本地设置至少两台计算机。 这些计算机包含确切数目的、以同步方式维护的数据副本，以便在单个计算机或组件出现故障时提供保护。 此环境提供高可用性，但在发生损毁数据中心的自然灾难时无法提供保护。
+Azure SQL 数据库使你的企业可以在中断期间继续运营。 在传统的 SQL Server 环境中，通常需要在本地设置至少两台计算机。 这些计算机包含确切数目的、以同步方式维护的数据副本，以便在单个计算机或组件出现故障时提供保护。 此环境提供高可用性，但在发生损毁数据中心的自然灾难时无法提供保护。
 
 灾难恢复假设灾难性事件在局部地区发生，而远地部署了另一个包含数据副本的计算机或计算机组。 在 SQL Server 中，可以使用以异步模式运行的 Always On 可用性组来获取此功能。 人们通常不想等到远端复制完成后再提交事务，因此，在执行计划外故障转移时可能会丢失数据。
 
-高级和业务关键服务层级中的数据库的某些功能已经与可用性组的同步功能[非常类似](sql-database-high-availability.md#premium-and-business-critical-service-tier-availability)。 较低服务层级中的数据库使用[不同但等效的机制](sql-database-high-availability.md#basic-standard-and-general-purpose-service-tier-availability)通过存储提供冗余。 内置逻辑可帮助防范单个计算机发生故障。 使用活动异地复制功能可以在灾难损毁整个区域时提供保护。
+高级和业务关键服务层级中的数据库已[执行与可用性组同步类似的操作](sql-database-high-availability.md#premium-and-business-critical-service-tier-availability)。 较低服务层级中的数据库使用[不同但等效的机制](sql-database-high-availability.md#basic-standard-and-general-purpose-service-tier-availability)通过存储提供冗余。 内置逻辑可帮助防范单个计算机发生故障。 使用活动异地复制功能可以在灾难损毁整个区域时提供保护。
 
 事实上，Azure 的服务级别协议 [(SLA)](https://www.azure.cn/zh-cn/support/sla/sql-data/)（由 Azure 管理的数据中心的全球网络提供支持）有助于保持应用全天候运行。 Azure 平台完全管理每个数据库，并保证不会丢失数据并实现高百分比数据可用性。 Azure 会自动处理修补、备份、复制、故障检测；基础的潜在硬件、软件或网络故障；部署 bug 修复、故障转移、数据库升级和其他维护任务。 标准可用性是通过将计算层与存储层相隔离来实现的。 高级可用性的实现方式是将计算和存储层集成到单个节点以提高性能，然后实施类似于 Always On 可用性组的技术。 有关 Azure SQL 数据库的高可用性功能的完整讨论，请参阅 [SQL 数据库可用性](sql-database-high-availability.md)。 
 

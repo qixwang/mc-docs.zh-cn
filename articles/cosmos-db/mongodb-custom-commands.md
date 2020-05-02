@@ -1,18 +1,18 @@
 ---
-title: 用于管理 Azure Cosmos DB's API for MongoDB 中的数据的 MongoDB 扩展命令
+title: 用于管理 Azure Cosmos DB API for MongoDB 中的数据的 MongoDB 扩展命令
 description: 本文介绍如何使用 MongoDB 扩展命令来管理 Azure Cosmos DB's API for MongoDB 中存储的数据。
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 03/26/2019
-ms.date: 02/10/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: 241b6a3e5f7038b70eaebf0ae7b13ccb2cff7c14
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: c5ae5adb5ef76b66b6b46c4e30190e9cf5a53715
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77028815"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134529"
 ---
 # <a name="use-mongodb-extension-commands-to-manage-data-stored-in-azure-cosmos-dbs-api-for-mongodb"></a>使用 MongoDB 扩展命令管理 Azure Cosmos DB's API for MongoDB 中存储的数据 
 
@@ -22,7 +22,7 @@ Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服�
 
 ## <a name="mongodb-protocol-support"></a>MongoDB 协议支持
 
-默认情况下，Azure Cosmos DB's API for MongoDB 与 MongoDB 服务器版本 3.2 兼容。有关详细信息，请参阅[支持的功能和语法](mongodb-feature-support.md)。 在 MongoDB 版本 3.4 中添加的功能或查询运算符目前在 Azure Cosmos DB's API for MongoDB 中以预览版提供。 针对 Azure Cosmos DB’s API for MongoDB 中存储的数据执行 CRUD 操作时，以下扩展命令支持 Azure Cosmos DB 特定的功能：
+默认情况下，Azure Cosmos DB's API for MongoDB 与 MongoDB 服务器版本 3.2 兼容。有关详细信息，请参阅[支持的功能和语法](mongodb-feature-support.md)。 在 MongoDB 版本 3.4 中添加的功能或查询运算符目前在 Azure Cosmos DB's API for MongoDB 中以预览版提供。 针对 Azure Cosmos DB API for MongoDB 中存储的数据执行 CRUD 操作时，以下扩展命令支持特定的 Azure Cosmos DB 功能：
 
 * [创建数据库](#create-database)
 * [更新数据库](#update-database)
@@ -45,9 +45,9 @@ Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服�
 
 下表描述了该命令中的参数：
 
-|**字段**|类型  |**说明** |
+|**字段**|**类型** |**说明** |
 |---------|---------|---------|
-| customAction   |  字符串  |   自定义命令的名称，必须是“CreateDatabase”。      |
+| customAction   |  string  |   自定义命令的名称，必须是“CreateDatabase”。      |
 | offerThroughput | int  | 对数据库设置的预配吞吐量。 此参数是可选的。 |
 
 ### <a name="output"></a>输出
@@ -88,9 +88,9 @@ db.runCommand({customAction: "CreateDatabase", offerThroughput: 1000 });
 
 下表描述了该命令中的参数：
 
-|**字段**|类型  |**说明** |
+|**字段**|**类型** |**说明** |
 |---------|---------|---------|
-| customAction    |    字符串     |   自定义命令的名称。 必须是“UpdateDatabase”。      |
+| customAction    |    string     |   自定义命令的名称。 必须是“UpdateDatabase”。      |
 |  offerThroughput   |  int       |     要对数据库设置的新预配吞吐量。    |
 
 ### <a name="output"></a>输出
@@ -121,15 +121,15 @@ db.runCommand({customAction: "UpdateDatabase", offerThroughput: 1200 });
 
 下表描述了该命令中的参数：
 
-|**字段**|类型  |**说明** |
+|**字段**|**类型** |**说明** |
 |---------|---------|---------|
-|  customAction   |   字符串      |   自定义命令的名称。 必须是“GetDatabase”|
+|  customAction   |   string      |   自定义命令的名称。 必须是“GetDatabase”|
 
 ### <a name="output"></a>输出
 
 如果该命令成功，则响应包含带有以下字段的文档：
 
-|**字段**|类型  |**说明** |
+|**字段**|**类型** |**说明** |
 |---------|---------|---------|
 |  `ok`   |   `int`     |   响应的状态。 1 == 成功。 0 == 失败。      |
 | `database`    |    `string`        |   数据库的名称。      |
@@ -164,12 +164,12 @@ db.runCommand({customAction: "GetDatabase"});
 
 下表描述了该命令中的参数：
 
-|**字段**|类型  |**说明** |
-|---------|---------|---------|
-| customAction    | 字符串 | 自定义命令的名称。 必须是“CreateCollection”     |
-| collection      | 字符串 | 集合的名称                                   |
-| offerThroughput | int    | 要对数据库设置的预配吞吐量。 它是一个可选参数 |
-| shardKey        | 字符串 | 要在其中创建分片集合的分片键路径。 它是一个可选参数 |
+| **字段** | **类型** | **必需** | **说明** |
+|---------|---------|---------|---------|
+| customAction | string | 必须 | 自定义命令的名称。 必须是“CreateCollection”。|
+| collection | string | 必须 | 集合的名称。 不允许使用特殊字符。|
+| offerThroughput | int | 可选* | 要在数据库上设置的预配吞吐量。 如果未提供此参数，它将默认为最小值（400 RU/秒）。 *若要指定超过 10,000 RU/秒的吞吐量，需要使用 `shardKey` 参数。|
+| shardKey | string | 可选* | 分片集合的分片键的路径。 如果在 `offerThroughput` 中设置的 RU/秒超过 10,000，则需要此参数。  如果指定了此参数，则插入的所有文档都需要此值。 |
 
 ### <a name="output"></a>输出
 
@@ -188,7 +188,7 @@ db.runCommand({customAction: "CreateCollection", collection: "testCollection", o
 
 **创建分片集合**
 
-若要创建名为“testCollection”、预配吞吐量为 1000 RU 的分片集合，请使用以下命令：
+若要创建名为“testCollection”、预配吞吐量为 1000 RU、shardkey 属性为“a.b”的分片集合，请使用以下命令：
 
 ```shell
 use test
@@ -210,10 +210,10 @@ db.runCommand({customAction: "CreateCollection", collection: "testCollection", o
 
 下表描述了该命令中的参数：
 
-|**字段**|类型  |**说明** |
+|**字段**|**类型** |**说明** |
 |---------|---------|---------|
-|  customAction   |   字符串      |   自定义命令的名称。 必须是“UpdateCollection”。      |
-|  collection   |   字符串      |   集合的名称。       |
+|  customAction   |   string      |   自定义命令的名称。 必须是“UpdateCollection”。      |
+|  collection   |   string      |   集合的名称。       |
 | offerThroughput   |int|   要对集合设置的预配吞吐量。|
 
 ## <a name="output"></a>输出
@@ -245,16 +245,16 @@ db.runCommand({customAction: "UpdateCollection", collection: "testCollection", o
 
 下表描述了该命令中的参数：
 
-|**字段**|类型  |**说明** |
+|**字段**|**类型** |**说明** |
 |---------|---------|---------|
-| customAction    |   字符串      |   自定义命令的名称。 必须是“GetCollection”。      |
-| collection    |    字符串     |    集合的名称。     |
+| customAction    |   string      |   自定义命令的名称。 必须是“GetCollection”。      |
+| collection    |    string     |    集合的名称。     |
 
 ### <a name="output"></a>输出
 
 如果该命令成功，则响应包含带有以下字段的文档
 
-|**字段**|类型  |**说明** |
+|**字段**|**类型** |**说明** |
 |---------|---------|---------|
 |  `ok`   |    `int`     |   响应的状态。 1 == 成功。 0 == 失败。      |
 | `database`    |    `string`     |   数据库的名称。      |
@@ -280,7 +280,7 @@ db.runCommand({customAction: "GetCollection", collection: "testCollection"});
 
 如果未指定，则自定义响应包含带有以下字段的文档：
 
-|**字段**|类型  |**说明** |
+|**字段**|**类型** |**说明** |
 |---------|---------|---------|
 |  `ok`   |    `int`     |   响应的状态。 1 == 成功。 0 == 失败。      |
 | `code`    |   `int`      |   仅当命令失败时才返回（即，正常 == 0）。 包含 MongoDB 错误代码。 这是一个可选的响应参数。      |

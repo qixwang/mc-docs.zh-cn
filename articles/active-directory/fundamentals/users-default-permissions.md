@@ -8,18 +8,17 @@ ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-origin.date: 02/16/2019
-ms.date: 10/25/2019
+ms.date: 04/23/2020
 ms.author: v-junlch
 ms.reviewer: vincesm
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ad8e76427b1b2cb53bc8e0b05c4eb1f3661af7a2
-ms.sourcegitcommit: e60779782345a5428dd1a0b248f9526a8d421343
+ms.openlocfilehash: 4e7a992566fd31a0338e87c1277ffa15faa9ebc1
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72912783"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126583"
 ---
 # <a name="what-are-the-default-user-permissions-in-azure-active-directory"></a>Azure Active Directory 中的默认用户权限是什么？
 在 Azure Active Directory (Azure AD) 中，所有用户都被授予一组默认权限。 用户的访问权限由用户的类型、其[角色分配](active-directory-users-assign-role-azure-portal.md)及其对单个对象的所有权构成。 本文将会介绍这些默认权限，并将成员和来宾用户的默认权限进行比较。 只能在 Azure AD 的用户设置中更改默认用户权限。
@@ -52,9 +51,9 @@ Directory | 读取所有公司信息<br>读取所有域<br>读取所有合作伙
 ---------- | ------------
 用户可以注册应用程序 | 将此选项设置为“否”可阻止用户创建应用程序注册。 然后，通过将特定的个人添加到“应用程序开发人员”角色，可以将该能力重新授予这些个人。
 允许用户使用 LinkedIn 连接工作或学校帐户 | 将此选项设置为“否”可阻止用户使用其 LinkedIn 帐户连接其工作或学校帐户。  
-能够创建安全组 | 将此选项设置为“否”可阻止用户创建安全组。 全局管理员和用户管理员仍可创建安全组。
-能够创建 Office 365 组 | 将此选项设置为“否”可阻止用户创建 Office 365 组。 将此选项设置为“某些”可让选定的一组用户创建 Office 365 组。 全局管理员和用户管理员仍可创建 Office 365 组。
-限制访问 Azure AD 管理门户 | 将此选项设置为“是”可阻止用户仅通过 Azure 门户访问 Azure Active Directory。
+能够创建安全组 | 将此选项设置为“否”可阻止用户创建安全组。 全局管理员和用户管理员仍可创建安全组。 有关操作方法，请参阅[用于配置组设置的 Azure Active Directory cmdlet](../users-groups-roles/groups-settings-cmdlets.md)。
+能够创建 Office 365 组 | 将此选项设置为“否”可阻止用户创建 Office 365 组。 将此选项设置为“某些”可让选定的一组用户创建 Office 365 组。 全局管理员和用户管理员仍可创建 Office 365 组。 有关操作方法，请参阅[用于配置组设置的 Azure Active Directory cmdlet](../users-groups-roles/groups-settings-cmdlets.md)。
+限制访问 Azure AD 管理门户 | 如果将此选项设为“否”，则允许非管理员使用 Azure AD 管理门户读取和管理 Azure AD 资源。 如果设为“是”，则限制所有非管理员在管理门户中访问任何 Azure AD 数据。 重要说明：此设置不会限制使用 PowerShell 或其他客户端（如 Visual Studio）访问 Azure AD 数据。 设为“是”时，若要向特定的非管理员用户授予使用 Azure AD 管理门户的权限，请分配任何管理角色（如“目录读者”角色）。 此角色允许读取基本目录信息，默认情况下成员用户有这些信息（来宾和服务主体没有）。
 能够读取其他用户 | 此设置仅可在 PowerShell 中使用。 将此标记设置为 $false 可阻止所有非管理员用户从目录读取用户信息。 此标记不会阻止读取其他 Microsoft 服务（如 Exchange Online）中的用户信息。 此设置适用于特殊情况，因此不建议将此标记设置为 $false。
 
 ## <a name="object-ownership"></a>对象所有权
@@ -136,4 +135,3 @@ Directory | 读取所有公司信息<br>读取所有域<br>读取所有合作伙
 * 有关 Azure Active Directory 如何与 Azure 订阅相关联的详细信息，请参阅 [How Azure subscriptions are associated with Azure Active Directory](active-directory-how-subscriptions-associated-directory.md)（Azure 订阅与 Azure Active Directory 的关联方式）
 * [管理用户](add-users-azure-active-directory.md)
 
-<!-- Update_Description: wording update -->

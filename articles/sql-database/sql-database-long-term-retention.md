@@ -1,6 +1,6 @@
 ---
-title: 将备份存储长达 10 年
-description: 了解 Azure SQL 数据库如何支持将完整数据库备份存储长达 10 年。
+title: 长期备份保留
+description: 了解 Azure SQL 数据库如何通过长期保留策略支持将完整数据库备份存储长达 10 年。
 services: sql-database
 ms.service: sql-database
 ms.subservice: backup-restore
@@ -11,21 +11,23 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: mathoma, carlrab
 origin.date: 05/18/2019
-ms.date: 03/16/2020
-ms.openlocfilehash: 000475ca245f0480333d062956172d5013ddded4
-ms.sourcegitcommit: 90660563b5d65731a64c099b32fb9ec0ce2c51c6
+ms.date: 04/27/2020
+ms.openlocfilehash: 42d1272ddb1d45fd1b917c8964ef5fc10825533d
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80341818"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82127072"
 ---
-# <a name="store-azure-sql-database-backups-for-up-to-10-years"></a>将 Azure SQL 数据库备份存储 10 年之久
+# <a name="azure-sql-database-long-term-retention"></a>Azure SQL 数据库长期保留
 
-出于法规要求、符合性或其他商业目的，许多应用程序要求保留 Azure SQL 数据库的[自动备份](sql-database-automated-backups.md)功能提供的过去 7-35 天的数据库备份。 通过使用长期保留 (LTR) 功能，可以将指定的 SQL 数据库完整备份存储在可以进行读取访问异地冗余存储的 Azure Blob 存储中长达 10 年。 然后，可以将任何备份还原为新数据库。 有关 Azure 存储冗余的详细信息，请参阅 [Azure 存储冗余](../storage/common/storage-redundancy.md)。
+出于法规要求、符合性或其他商业目的，许多应用程序要求保留 Azure SQL 数据库的[自动备份](sql-database-automated-backups.md)功能提供的过去 7-35 天的数据库备份。 通过使用长期保留 (LTR) 功能，可以将指定的 SQL 数据库完整备份存储在可以进行读取访问异地冗余存储的 Azure Blob 存储中长达 10 年。 然后，可以将任何备份还原为新数据库。 有关 Azure 存储冗余的详细信息，请参阅 [Azure 存储冗余](../storage/common/storage-redundancy.md)。 
+
+可为单一数据库和共用数据库启用长期保留。Azure SQL 数据库托管实例的长期保留功能以受限公共预览版形式提供。 
 
 > [!NOTE]
-> 可以为单一数据库和共用数据库启用 LTR。 对于托管实例中的实例数据库，它还不可用。 可以使用 SQL 代理作业来安排[仅复制数据库备份](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server)作为超过 35 天的 LTR 的替代方案。
-> 
+> 可以使用 SQL 代理作业来安排[仅复制数据库备份](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server)作为超过 35 天的 LTR 的替代方案。
+
 
 ## <a name="how-sql-database-long-term-retention-works"></a>SQL 数据库长期保留的工作原理
 
@@ -75,6 +77,16 @@ W=12 周（84 天）、M=12 个月（365 天）、Y=10 年（3650 天）、WeekO
 
 > [!NOTE]
 > 在发生导致故障转移的服务中断问题后恢复原始的主数据库时，该数据库将变成新的辅助数据库。 因此，在该数据库重新变成主数据库之前，备份创建操作不会恢复，并且现有的 LTR 策略不会生效。 
+
+## <a name="managed-instance-support"></a>托管实例支持
+
+在 Azure SQL 数据库托管实例中使用长期备份保留有以下限制：
+
+- **受限公共预览版** - 此预览版仅适用于 EA 订阅和云解决方案提供商订阅，并受到有限可用性的限制。  
+- [仅限 PowerShell  ](sql-database-managed-instance-long-term-backup-retention-configure.md) - 目前不支持 Azure 门户。 必须使用 PowerShell 启用 LTR。 
+
+若要请求注册，请创建 [Azure 支持票证](https://support.azure.cn/support/support-azure/)。
+
 
 ## <a name="configure-long-term-backup-retention"></a>配置长期备份保留
 

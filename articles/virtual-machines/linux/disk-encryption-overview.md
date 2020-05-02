@@ -1,19 +1,19 @@
 ---
 title: 启用适用于 Linux VM 的 Azure 磁盘加密
 description: 本文介绍如何启用适用于 Linux VM 的 Azure 磁盘加密。
-author: rockboyfor
-ms.service: security
+author: Johnnytechn
+ms.service: virtual-machines-linux
+ms.subservice: security
 ms.topic: article
-ms.author: v-yeche
-origin.date: 08/06/2019
-ms.date: 02/10/2020
+ms.author: v-johya
+ms.date: 04/20/2020
 ms.custom: seodec18
-ms.openlocfilehash: b1c05d50e0782309940de28f13848aafa9df79ee
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 7568d8b1bcb16ec39f6cc55a1856e5b0ca3bebc0
+ms.sourcegitcommit: ebedf9e489f5218d4dda7468b669a601b3c02ae5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292151"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82159032"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>适用于 Linux VM 的 Azure 磁盘加密 
 
@@ -21,18 +21,18 @@ Azure 磁盘加密有助于保护数据，使组织能够信守在安全性与�
 
 如果使用 [Azure 安全中心](../../security-center/index.yml)，则当 VM 未加密时，你会收到警报。 这些警报显示为“高严重性”，建议加密这些 VM。
 
-![Azure 安全中心磁盘加密警报](media/disk-encryption/security-center-disk-encryption-fig1.png)
+![Azure 安全中心磁盘加密警报](./media/disk-encryption/security-center-disk-encryption-fig1.png)
 
 > [!WARNING]
 > - 如果之前是使用 Azure 磁盘加密与 Azure AD 来加密 VM，则必须继续使用此选项来加密 VM。 有关详细信息，请参阅[使用 Azure AD 进行的 Azure 磁盘加密（以前的版本）](disk-encryption-overview-aad.md)。 
-> - 某些建议可能会导致数据、网络或计算资源使用量增加，从而产生额外许可或订阅成本。 必须具有有效的活动 Azure 订阅，才能在 Azure 的受支持区域中创建资源。
+> - 某些建议可能会导致数据、网络或计算资源使用量增加，从而产生额外的许可或订阅成本。 必须具有有效的活动 Azure 订阅，才能在 Azure 的受支持区域中创建资源。
 > - 目前，第 2 代 VM 不支持 Azure 磁盘加密。 有关详细信息，请参阅 [Azure 对第 2 代 VM 的支持](/virtual-machines/windows/generation-2)。
 
 只需几分钟，即可通过[使用 Azure CLI 创建和加密 Linux VM 快速入门](disk-encryption-cli-quickstart.md)或[使用 Azure Powershell 创建和加密 Linux VM 快速入门](disk-encryption-powershell-quickstart.md)了解适用于 Linux 的 Azure 磁盘加密的基础知识。
 
 ## <a name="supported-vms-and-operating-systems"></a>支持的 VM 和操作系统
 
-### <a name="supported-vm-sizes"></a>支持的 VM 大小
+### <a name="supported-vms"></a>支持的 VM
 
 Linux VM 提供了[多种大小](sizes.md)。 Azure 磁盘加密不适用于[基本的 A 系列 VM](https://www.azure.cn/pricing/details/virtual-machines/)，也不适用于不符合以下最低内存要求的虚拟机：
 
@@ -46,7 +46,10 @@ Linux VM 提供了[多种大小](sizes.md)。 Azure 磁盘加密不适用于[基
 
 在 Linux 虚拟机上完成 OS 磁盘加密过程后，可将 VM 配置为以更少的内存运行。 
 
-Azure 磁盘加密还可用于使用高级存储的 VM。 
+Azure 磁盘加密还可用于使用高级存储的 VM。
+
+Azure 磁盘加密在[第 2 代 VM](generation-2.md#generation-1-vs-generation-2-capabilities) 上不可用。 有关更多例外，请参阅 [Azure 磁盘加密：不支持的方案](disk-encryption-linux.md#unsupported-scenarios)。
+<!--Not Available on Lsv2-series VM in china -->
 
 ### <a name="supported-operating-systems"></a>支持的操作系统
 
@@ -60,7 +63,7 @@ Azure 磁盘加密还可用于使用高级存储的 VM。
 | --- | --- |--- |
 | Ubuntu | 18.04| OS 和数据磁盘 |
 | Ubuntu | 16.04| OS 和数据磁盘 |
-| Ubuntu | 14.04.5<br />[其 Azure 优化内核更新到 4.15 或更高版本](disk-encryption-troubleshooting.md) | OS 和数据磁盘 |
+| Ubuntu | 14.04.5</br>[其 Azure 优化内核更新到 4.15 或更高版本](disk-encryption-troubleshooting.md) | OS 和数据磁盘 |
 | CentOS | 7.7 | OS 和数据磁盘 |
 | CentOS | 7.6 | OS 和数据磁盘 |
 | CentOS | 7.5 | OS 和数据磁盘 |
@@ -68,20 +71,20 @@ Azure 磁盘加密还可用于使用高级存储的 VM。
 | CentOS | 7.3 | OS 和数据磁盘 |
 | CentOS | 7.2n | OS 和数据磁盘 |
 | CentOS | 6.8 | 数据磁盘 |
-| OpenSUSE | 42.3 | 数据磁盘 |
+| openSUSE | 42.3 | 数据磁盘 |
 | SLES | 12-SP4 | 数据磁盘 |
 | SLES | 12-SP3 | 数据磁盘 |
 
 <!--Not Available on | RHEL | 7.7 -->
 
 > [!NOTE]
-> RHEL OS 以及 RHEL7 标准预付费套餐映像的数据磁盘支持新的 ADE 实现。 ADE 目前不支持 RHEL 自带订阅 (BYOS) 映像。 
+> RHEL OS 以及 RHEL7 标准预付费套餐映像的数据磁盘支持新的 Azure 磁盘加密实现。  
 
 ## <a name="additional-vm-requirements"></a>其他 VM 要求
 
 Azure 磁盘加密要求系统上存在 dm-dm-crypt 和 vfat 模块。 在默认映像中删除或禁用 vfat 会阻止系统读取密钥卷，以及在后续重新启动时获取用于解锁磁盘的密钥。 从系统中删除 vfat 模块的系统强化步骤与 Azure 磁盘加密不兼容。 
 
-在启用加密之前，要加密的数据磁盘必须在 /etc/fstab 中正确列出。 为此条目使用永久性块设备名，因为每次重新启动后，不能依赖于使用“/dev/sdX”格式的设备名来与同一磁盘相关联，尤其是应用加密后。 有关此行为的详细信息，请参阅：[排查 Linux VM 设备名更改问题](troubleshoot-device-names-problems.md)
+在启用加密之前，要加密的数据磁盘必须在 /etc/fstab 中正确列出。 为此条目使用永久性块设备名，因为每次重新启动后，不能依赖于使用“/dev/sdX”格式的设备名来与同一磁盘相关联，尤其是应用加密后。 有关此行为的更多详细信息，请参阅：[排查 Linux VM 设备名称更改问题](troubleshoot-device-names-problems.md)
 
 确保正确配置用于装载的 /etc/fstab 设置。 若要配置这些设置，请运行 mount -a 命令，或重新启动 VM 并以这种方法触发重新装载。 装载完成后，检查 lsblk 命令的输出，以验证驱动器是否仍已装载。 
 - 如果在启用加密之前 /etc/fstab 文件未正确装载该驱动器，则 Azure 磁盘加密无法将其正确装载。
@@ -94,10 +97,10 @@ Azure 磁盘加密要求系统上存在 dm-dm-crypt 和 vfat 模块。 在默认
 ## <a name="networking-requirements"></a>网络要求
 
 若要启用 Azure 磁盘加密功能，Linux VM 必须符合以下网络终结点配置要求：
-  - 若要获取用于连接到密钥保管库的令牌，Linux VM 必须能够连接到 Azure Active Directory 终结点 \[login.chinacloudapi.cn\]。
+  - Linux VM 必须能够连接到 Azure Active Directory 终结点 \[login.partner.microsoftonline.cn\]，以获取用于连接密钥保管库的令牌。
   - 若要将加密密钥写入密钥保管库，Linux VM 必须能够连接到密钥保管库终结点。
   - Linux VM 必须能够连接到托管 Azure 扩展存储库的 Azure 存储终结点和托管 VHD 文件的 Azure 存储帐户。
-  - 如果安全策略限制从 Azure VM 到 Internet 的访问，可以解析上述 URI，并配置特定的规则以允许与这些 IP 建立出站连接。 有关详细信息，请参阅[防火墙后的 Azure Key Vault](../../key-vault/key-vault-access-behind-firewall.md)。  
+  -  如果安全策略限制从 Azure VM 到 Internet 的访问，可以解析上述 URI，并配置特定的规则以允许与这些 IP 建立出站连接。 有关详细信息，请参阅[防火墙后的 Azure Key Vault](../../key-vault/key-vault-access-behind-firewall.md)。  
 
 ## <a name="encryption-key-storage-requirements"></a>加密密钥存储要求  
 
@@ -111,12 +114,12 @@ Azure 磁盘加密需要 Azure Key Vault 来控制和管理磁盘加密密钥和
 | 术语 | 定义 |
 | --- | --- |
 | Azure Key Vault | Key Vault 是基于联邦信息处理标准 (FIPS) 验证的硬件安全模块。 这些标准有助于保护加密密钥和敏感机密。 有关详细信息，请参阅 [Azure Key Vault](https://www.azure.cn/home/features/key-vault/) 文档和[创建和配置用于 Azure 磁盘加密的密钥保管库](disk-encryption-key-vault.md)。 |
-| Azure CLI | [Azure CLI](https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest) 经过了优化，可从命令行管理 Azure 资源。|
+| Azure CLI | [Azure CLI](/cli/install-azure-cli) 经过了优化，可从命令行管理 Azure 资源。|
 | DM-Crypt |[DM-Crypt](https://gitlab.com/cryptsetup/cryptsetup/wikis/DMCrypt) 是基于 Linux 的透明磁盘加密子系统，用于在 Linux VM 上启用磁盘加密。 |
 | 密钥加密密钥 (KEK) | 可用于保护或包装机密的非对称密钥 (RSA 2048)。 你可以提供软件保护密钥。 有关详细信息，请参阅 [Azure Key Vault](https://www.azure.cn/home/features/key-vault/) 文档和[创建和配置用于 Azure 磁盘加密的密钥保管库](disk-encryption-key-vault.md)。 |
 | PowerShell cmdlet | 有关详细信息，请参阅 [Azure PowerShell cmdlet](https://docs.microsoft.com/powershell/azure/overview)。 |
 
-<!--MOONCAKE: LINE 112 Not Available on HSM-->
+<!--MOONCAKE: LINE 113 Not Available on HSM-->
 <!--MOONCAKE: You can provide a hardware security module (HSM)-protected key or software-protected key.-->
 
 ## <a name="next-steps"></a>后续步骤

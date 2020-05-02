@@ -3,7 +3,7 @@ title: Azure 元数据服务 - 适用于 Linux VM 的计划事件
 description: 使用 Azure 元数据服务为 Linux 虚拟机计划事件。
 services: virtual-machines-windows, virtual-machines-linux, cloud-services
 documentationcenter: ''
-author: rockboyfor
+author: Johnnytechn
 manager: digimobile
 editor: ''
 tags: ''
@@ -13,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 02/22/2018
-ms.date: 02/10/2020
-ms.author: v-yeche
-ms.openlocfilehash: 7399dbd3b385b0882cc6b3f9a4d8486f19866f29
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 04/13/2020
+ms.author: v-johya
+ms.openlocfilehash: 0c8ec8dab2e3a6ebcdb8c27eae6b81d88e01a1d9
+ms.sourcegitcommit: ebedf9e489f5218d4dda7468b669a601b3c02ae5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77428183"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82159187"
 ---
 <!--MOONCAKE: "Preempt" equal to low priority which not support on China-->
 
@@ -49,7 +49,7 @@ ms.locfileid: "77428183"
 预定事件提供以下用例中的事件：
 
 - [平台启动的维护](/virtual-machines/linux/maintenance-and-updates)（例如 VM 重启、主机的实时迁移或内存保留更新）
-- 降级的硬件
+- 虚拟机正在根据预测很快会出现故障的[降级主机硬件](https://azure.microsoft.com/blog/find-out-when-your-virtual-machine-hardware-is-degraded-with-scheduled-events)上运行
 - 用户启动的维护（例如，用户重启或重新部署 VM）
 
 <!--Not Available on [Spot VM](spot-vms.md) -->
@@ -72,12 +72,12 @@ ms.locfileid: "77428183"
 ### <a name="endpoint-discovery"></a>终结点发现
 对于启用了 VNET 的 VM，元数据服务可通过不可路由的静态 IP (`169.254.169.254`) 使用。 最新版本的计划事件的完整终结点是： 
 
- > `http://169.254.169.254/metadata/scheduledevents?api-version=2017-11-01`
+ > `http://169.254.169.254/metadata/scheduledevents?api-version=2019-01-01`
 
 如果不是在虚拟网络中创建 VM（云服务和经典 VM 的默认情况），则需使用额外的逻辑以发现要使用的 IP 地址。 若要了解如何[发现主机终结点](https://github.com/azure-samples/virtual-machines-python-scheduled-events-discover-endpoint-for-non-vnet-vm)，请参阅此示例。
 
 ### <a name="version-and-region-availability"></a>版本和区域可用性
-计划事件服务受版本控制。 版本是必需的，当前版本为 `2017-11-01`。
+计划事件服务受版本控制。 版本是必需的，当前版本为 `2019-01-01`。
 
 | 版本 | 发布类型 | 区域 | 发行说明 | 
 | - | - | - | - | 
@@ -109,7 +109,7 @@ ms.locfileid: "77428183"
 
 #### <a name="bash"></a>Bash
 ```
-curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-version=2017-08-01
+curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-version=2019-01-01
 ```
 
 响应包含计划事件的数组。 数组为空意味着目前没有计划事件。
@@ -152,8 +152,10 @@ curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-versio
 | 冻结| 15 分钟 |
 | 重新启动 | 15 分钟 |
 | 重新部署 | 10 分钟 |
-
-<!--Not Available on | Preempt | 30 seconds |-->
+<!--不可用于 | Preempt | 30 秒 |-->
+<!--不可用于 | 终止 | [用户可配置](../../virtual-machine-scale-sets/virtual-machine-scale-sets-terminate-notification.md#enable-terminate-notifications)：5 - 15 分钟 |-->
+> [!NOTE] 
+> 在某些情况下，由于硬件降级，Azure 能够预测主机故障，并会尝试通过对迁移进行计划来缓解服务中断。 受影响的虚拟机会收到计划事件，该事件的 `NotBefore` 通常是将来几天的时间。 实际时间因预测的故障风险评估而异。 Azure 会尝试尽可能提前 7 天发出通知，但实际时间会有所不同，如果预测硬件即将发生故障的可能性很大，则实际时间可能会更短。 为了在系统启动迁移之前硬件出现故障时将服务风险降至最低，我们建议你尽快自行重新部署虚拟机。
 
 ### <a name="start-an-event"></a>启动事件 
 
@@ -172,7 +174,7 @@ curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-versio
 
 #### <a name="bash-sample"></a>Bash 示例
 ```
-curl -H Metadata:true -X POST -d '{"StartRequests": [{"EventId": "f020ba2e-3bc0-4c40-a10b-86575a9eabd5"}]}' http://169.254.169.254/metadata/scheduledevents?api-version=2017-11-01
+curl -H Metadata:true -X POST -d '{"StartRequests": [{"EventId": "f020ba2e-3bc0-4c40-a10b-86575a9eabd5"}]}' http://169.254.169.254/metadata/scheduledevents?api-version=2019-01-01
 ```
 
 > [!NOTE] 
@@ -189,8 +191,9 @@ import json
 import socket
 import urllib2
 
-metadata_url = "http://169.254.169.254/metadata/scheduledevents?api-version=2017-08-01"
+metadata_url = "http://169.254.169.254/metadata/scheduledevents?api-version=2019-01-01"
 this_host = socket.gethostname()
+
 
 def get_scheduled_events():
     req = urllib2.Request(metadata_url)
@@ -198,6 +201,7 @@ def get_scheduled_events():
     resp = urllib2.urlopen(req)
     data = json.loads(resp.read())
     return data
+
 
 def handle_scheduled_events(data):
     for evt in data['Events']:
@@ -212,18 +216,18 @@ def handle_scheduled_events(data):
                 " is scheduled for " + eventtype + " not before " + notbefore)
             # Add logic for handling events here
 
+
 def main():
     data = get_scheduled_events()
     handle_scheduled_events(data)
+
 
 if __name__ == '__main__':
     main()
 ```
 
 ## <a name="next-steps"></a>后续步骤 
-
 <!-- Not Available on [Scheduled Events on Azure Friday](https://channel9.msdn.com/Shows/Azure-Friday/Using-Azure-Scheduled-Events-to-Prepare-for-VM-Maintenance) -->
-
 - 在 [Azure 实例元数据计划事件 GitHub 存储库](https://github.com/Azure-Samples/virtual-machines-scheduled-events-discover-endpoint-for-non-vnet-vm)中查看计划事件代码示例。
 - 详细了解[实例元数据服务](instance-metadata-service.md)中提供的 API。
 - [Azure 中 Linux 虚拟机的计划内维护](planned-maintenance.md)。

@@ -1,21 +1,21 @@
 ---
-title: 快速入门：将 Node.js MongoDB 应用连接到 Azure Cosmos DB
+title: 快速入门 - 将 Node.js MongoDB 应用连接到 Azure Cosmos DB
 description: 本快速入门演示如何将以 Node.js 编写的现有 MongoDB 应用连接到 Azure Cosmos DB。
 author: rockboyfor
-ms.author: v-yeche
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: quickstart
 origin.date: 05/21/2019
-ms.date: 02/10/2020
+ms.date: 04/27/2020
+ms.author: v-yeche
 ms.custom: seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: 1f70953d0d51e8dcb9f6b1d35a7bf7431aeb484f
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 67686be68b45e273e7dc447ca49c37b54be1bd44
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "76980549"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134958"
 ---
 # <a name="quickstart-migrate-an-existing-mongodb-nodejs-web-app-to-azure-cosmos-db"></a>快速入门：将现有的 MongoDB Node.js Web 应用迁移到 Azure Cosmos DB 
 
@@ -28,25 +28,20 @@ ms.locfileid: "76980549"
 > * [Golang](create-mongodb-golang.md)
 >  
 
-本快速入门演示如何使用以 Node.js 编写的现有 MongoDB 应用，并将其连接到支持 MongoDB 客户端的 Azure Cosmos 数据库。 换言之，应用程序完全知道数据存储在 Cosmos 数据库中。
+在本快速入门中，你将使用 Azure 本地 Shell 以及从 GitHub 克隆的 MEAN（MongoDB、Express、Angular 和 Node.js）应用来创建和管理 Azure Cosmos DB for Mongo DB API 帐户。 Azure Cosmos DB 是一种多模型数据库服务，可让你通过多区域分布和水平缩放功能快速创建和查询文档、表、键/值和图数据库。
 
-Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服务。 可快速创建和查询文档、键/值和图形数据库，所有这些都受益于 Cosmos DB 核心的多区域分布和水平缩放功能。
+## <a name="prerequisites"></a>先决条件
+- 具有活动订阅的 Azure 帐户。 [免费创建一个](https://www.azure.cn/pricing/1rmb-trial/)。 你还可以将 [Azure Cosmos DB 模拟器](https://aka.ms/cosmosdb-emulator)与连接字符串 `.mongodb://localhost:C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==@localhost:10255/admin?ssl=true` 配合使用。
 
-完成本教程后，[Cosmos DB](https://www.azure.cn/home/features/cosmos-db/) 中会运行一个 MEAN（MongoDB、Express、Angular 和 Node.js）应用程序。 
+    <!--Not Available on [try Azure Cosmos DB for free](https://www.azure.cn/try/cosmosdb/)-->
 
-![在 Azure 应用服务中运行的 MEAN.js 应用](./media/create-mongodb-nodejs/meanjs-in-azure.png)
+- [Node.js](https://nodejs.org/)，应具备 Node.js 的实践知识。
+- [Git](https://git-scm.com/downloads)。
+- [Azure CLI 2.0+](https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest)。
+
+<!--Not Avaialble on If you don't want to use Azure Cloud Shell-->
 
 [!INCLUDE [azure-cli-2-azurechinacloud-environment-parameter](../../includes/azure-cli-2-azurechinacloud-environment-parameter.md)]
-
-如果选择在本地安装并使用 CLI，本主题要求运行 Azure CLI 2.0 版或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest)。 
-
-## <a name="prerequisites"></a>先决条件 
-如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。 
-[!INCLUDE [cosmos-db-emulator-mongodb](../../includes/cosmos-db-emulator-mongodb.md)]
-
-除 Azure CLI 之外，还需要在本地安装 [Node.js](https://nodejs.org/) 和 [Git](https://www.git-scm.com/downloads)，以运行 `npm` 和 `git` 命令。
-
-应该具备 Node.js 的实践知识。 本快速入门并未介绍有关开发 Node.js 应用程序的一般信息。
 
 ## <a name="clone-the-sample-application"></a>克隆示例应用程序
 
@@ -72,6 +67,8 @@ Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服�
 
 ## <a name="run-the-application"></a>运行应用程序
 
+此 MongoDB 应用程序以 node.js 编写，连接到支持 MongoDB 客户端的 Azure Cosmos DB 数据库。 换言之，应用程序完全知道数据存储在 Azure Cosmos DB 数据库中。
+
 安装所需的包并启动应用程序。
 
 ```bash
@@ -81,9 +78,11 @@ npm start
 ```
 应用程序将尝试连接到 MongoDB 源，并在输出返回“[MongoError: connect ECONNREFUSED 127.0.0.1:27017]”时失败，继续下一步退出应用程序。
 
-## <a name="log-in-to-azure"></a>登录 Azure
+## <a name="sign-in-to-azure"></a>登录 Azure
 
-如果使用已安装的 Azure CLI，请使用 [az login](https://docs.azure.cn/cli/reference-index?view=azure-cli-latest#az-login) 命令登录到 Azure 订阅，按屏幕说明操作。 
+如果选择在本地安装并使用 CLI，本主题要求运行 Azure CLI 2.0 版或更高版本。 运行 `az --version` 即可查找版本。
+
+<!--Not Available on  If you need to install or upgrade, see [Install Azure CLI]-->
 
 [!INCLUDE [azure-cli-2-azurechinacloud-environment-parameter](../../includes/azure-cli-2-azurechinacloud-environment-parameter.md)]
 
@@ -162,7 +161,7 @@ DB/databaseAccounts/<cosmosdb-name>",
 
 ## <a name="connect-your-nodejs-application-to-the-database"></a>将 Node.js 应用程序连接至数据库
 
-在此步骤中，将 MEAN.js 示例应用程序连接到刚创建的 Cosmos 数据库。 
+在此步骤中，将 MEAN.js 示例应用程序连接到你刚才创建的 Azure Cosmos DB 数据库帐户。 
 
 <a name="devconfig"></a>
 ## <a name="configure-the-connection-string-in-your-nodejs-application"></a>在 Node.js 应用程序中配置连接字符串
@@ -184,6 +183,7 @@ module.exports = {
 ## <a name="retrieve-the-key"></a>检索密钥
 
 <!--MOONCAKE: CORRECT ON reference with global URL-->
+<!--CORRECT ON [az cosmosdb keys list](https://docs.microsoft.com/cli/azure/cosmosdb/keys?view=azure-cli-latest#az-cosmosdb-keys-list)-->
 
 若要连接到 Cosmos 数据库，需要使用数据库密钥。 使用 [az cosmosdb keys list](https://docs.microsoft.com/cli/azure/cosmosdb/keys?view=azure-cli-latest#az-cosmosdb-keys-list) 命令检索主键。
 
@@ -191,7 +191,6 @@ module.exports = {
 az cosmosdb keys list --name <cosmosdb-name> --resource-group myResourceGroup --query "primaryMasterKey"
 ```
 
-<!--CORRECT ON [az cosmosdb keys list](https://docs.microsoft.com/cli/azure/cosmosdb/keys?view=azure-cli-latest#az-cosmosdb-keys-list)-->
 <!--MOONCAKE: CORRECT ON reference with global URL-->
 
 Azure CLI 输出类似于以下示例的信息。 
@@ -245,7 +244,7 @@ Cosmos 数据库中存储的数据可用于在 Azure 门户中查看和查询。
 ```
 
 > [!NOTE] 
-> `ssl=true` 选项很重要，因为 [Cosmos DB 需要 SSL](connect-mongodb-account.md#connection-string-requirements)。 
+> 由于 Cosmos DB 的要求，`ssl=true` 选项很重要。 有关详细信息，请参阅[连接字符串要求](connect-mongodb-account.md#connection-string-requirements)。
 >
 >
 
@@ -261,7 +260,7 @@ git commit -m "configured MongoDB connection string"
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你已了解如何创建 Cosmos 帐户、创建集合和运行控制台应用。 现在可以向你的 Cosmos 数据库导入更多数据。 
+本快速入门介绍了如何使用 Azure 本地 Shell 创建 Azure Cosmos DB MongoDB API 帐户，以及如何创建和运行 MEAN.js 应用以将用户添加到该帐户。 现在可以将其他数据导入 Azure Cosmos DB 帐户了。
 
 > [!div class="nextstepaction"]
 > [将 MongoDB 数据导入 Azure Cosmos DB](mongodb-migrate.md)

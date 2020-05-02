@@ -2,27 +2,22 @@
 title: OAuth 2.0 隐式授权流 - Microsoft 标识平台 | Azure
 description: 使用 Microsoft 标识平台隐式流保护单页应用。
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
-ms.assetid: 3605931f-dc24-4910-bb50-5375defec6a8
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/23/2020
+ms.date: 04/23/2020
 ms.author: v-junlch
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: ad7fded27b1eaa0d39b4075b5b9db31efc7a9759
-ms.sourcegitcommit: 6568c59433d7e80ab06e9fe76d4791f761ed6775
+ms.openlocfilehash: 1b34a1baa3d7ab8df6d649daef7def97d7ffb7e2
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80243080"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126402"
 ---
 # <a name="microsoft-identity-platform-and-implicit-grant-flow"></a>Microsoft 标识平台和隐式授权流
 
@@ -32,7 +27,7 @@ ms.locfileid: "80243080"
 * 许多授权服务器与标识提供者不支持 CORS 请求。
 * 重定向离开应用程序的完整网页浏览器变得对用户经验特别有侵略性。
 
-对于这些应用程序（AngularJS、Ember.js、React.js 等），Microsoft 标识平台支持 OAuth 2.0 隐式授权流。 有关隐式流的说明，请参阅 [OAuth 2.0 规范](https://tools.ietf.org/html/rfc6749#section-4.2)。 其主要优点是它可让应用程序从 Microsoft 标识平台获取令牌，无需要执行后端服务器凭据交换。 这可让应用登录用户、维护会话，并获取客户端 JavaScript 代码中所有其他 Web API 的令牌。 使用隐式流时有几个重要的安全注意事项，具体而言，是关于[客户端](https://tools.ietf.org/html/rfc6749#section-10.3)和[用户模拟](https://tools.ietf.org/html/rfc6749#section-10.3)的注意事项。
+对于这些应用程序（Angular、Ember.js、React.js 等），Microsoft 标识平台支持 OAuth 2.0 隐式授权流。 有关隐式流的说明，请参阅 [OAuth 2.0 规范](https://tools.ietf.org/html/rfc6749#section-4.2)。 其主要优点是它可让应用程序从 Microsoft 标识平台获取令牌，无需要执行后端服务器凭据交换。 这可让应用登录用户、维护会话，并获取客户端 JavaScript 代码中所有其他 Web API 的令牌。 使用隐式流时有几个重要的安全注意事项，具体而言，是关于[客户端](https://tools.ietf.org/html/rfc6749#section-10.3)和[用户模拟](https://tools.ietf.org/html/rfc6749#section-10.3)的注意事项。
 
 本文介绍如何在应用程序中直接针对协议进行编程。  如果可能，建议你改用受支持的 Microsoft 身份验证库 (MSAL) 来[获取令牌并调用受保护的 Web API](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows)。  另请参阅[使用 MSAL 的示例应用](sample-v2-code.md)。
 
@@ -43,16 +38,16 @@ ms.locfileid: "80243080"
 
 ## <a name="suitable-scenarios-for-the-oauth2-implicit-grant"></a>OAuth2 隐式授权的适用方案
 
-OAuth2 规范声明，设计隐式授权是为了实现用户代理应用程序，即在浏览器中执行的 JavaScript 应用程序。 此类应用程序的鲜明特征是，JavaScript 代码用于访问服务器资源（通常是 Web API）以及相应地更新应用程序用户体验。 以 Gmail 或 Outlook Web Access 之类的应用程序为例：在收件箱中选择某封邮件时，只有邮件可视化面板会更改以显示新的选择内容，页面的其余部分保持不变。 此特征明显不同于传统的基于重定向的 Web 应用，在后者中，每个用户交互都会造成整页回发，并造成整页呈现新的服务器响应。
+OAuth2 规范声明，设计隐式授权是为了实现用户代理应用程序，即在浏览器中执行的 JavaScript 应用程序。 此类应用程序的最典型特征是，JavaScript 代码用于访问服务器资源（通常是 Web API）以及相应地更新应用程序用户体验。 以 Gmail 或 Outlook Web Access 之类的应用程序为例：在收件箱中选择某封邮件时，只有邮件可视化面板会更改以显示新的选择内容，页面的其余部分保持不变。 此特征明显不同于传统的基于重定向的 Web 应用，在后者中，每个用户交互都会造成整页回发，并造成整页呈现新的服务器响应。
 
 将基于 JavaScript 的方法发挥到极致的应用程序称为单页应用程序或 SPA。 其思想是，这些应用程序仅提供初始 HTML 页和关联的 JavaScript，所有后续交互都由通过 JavaScript 执行的 Web API 调用驱动。 但是，应用程序大多是由回传驱动，但偶尔执行 JS 调用的混合方法也并非罕见；关于隐式流用法的介绍也与这些方法有关。
 
-基于重定向的应用程序通常通过 Cookie 确保请求的安全性，但该方法不适用于 JavaScript 应用程序。 Cookie 仅适用于生成 Cookie 时所针对的域，而 JavaScript 调用可能会定向到其他域。 事实上，情况往往是这样的：以调用 Microsoft 图形 API、Office API、Azure API 的应用程序为例 – 这些应用程序全都位于提供应用程序的域之外。 JavaScript 应用程序的发展趋势是完全没有后端，全部依赖于第三方 Web API 来实现其业务功能。
+基于重定向的应用程序通常通过 Cookie 确保请求的安全性，但该方法不适用于 JavaScript 应用程序。 Cookie 仅适用于生成 Cookie 时所针对的域，而 JavaScript 调用可能会定向到其他域。 事实上，情况往往是这样的：以调用 Microsoft 图形 API、Office API、Azure API 的应用程序为例 – 这些应用程序全都位于提供应用程序的域之外。 JavaScript 应用程序的发展趋势是完全没有后端，全部依赖第三方 Web API 来实现其业务功能。
 
-当前情况下，若要保护对 Web API 的调用，首选方法是使用 OAuth2 持有者令牌方法，该方法的每个调用都伴随 OAuth2 访问令牌的使用。 Web API 会检查传入的访问令牌，如果在其中发现所需的范围，则会授予对已请求操作的访问权限。 隐式流提供了方便的机制供 JavaScript 应用程序获取 Web API 的访问令牌，并提供很多与 Cookie 相关的优点：
+当前情况下，若要保护对 Web API 的调用，首选方法是使用 OAuth2 持有者令牌方法，其中每个调用都带有一个 OAuth2 访问令牌。 Web API 会检查传入的访问令牌，如果在其中找到所需的范围，则会向请求操作授予访问权限。 隐式流提供了方便的机制供 JavaScript 应用程序获取 Web API 的访问令牌，并提供了很多与 Cookie 相关的优点：
 
 * 可以可靠地获取令牌而无需跨源调用 – 强制注册令牌要返回到的重定向 URI 可保证令牌不会转到其他位置
-* JavaScript 应用程序可以针对任意数目的目标 Web API 获取所需数目的访问令牌 – 对域没有限制
+* JavaScript 应用程序可以针对任意数目的目标 Web API 获取所需数目的访问令牌 - 对域没有限制
 * 会话或本地存储等 HTML5 功能可授予令牌缓存和生存期管理的完全控制权，但是 Cookie 管理对于应用而言是不透明的
 * 访问令牌不容易遭受跨站点请求伪造 (CSRF) 攻击
 
@@ -64,11 +59,14 @@ OAuth2 规范声明，设计隐式授权是为了实现用户代理应用程序�
 
 ## <a name="is-the-implicit-grant-suitable-for-my-app"></a>隐式授权适合我的应用吗？
 
-与其他授权相比，隐式授权具有更多风险，需要注意的方面已有详细记录（例如，[在隐式流中误用访问令牌来模拟资源所有者][OAuth2-Spec-Implicit-Misuse] 和 [OAuth 2.0 威胁模型和安全注意事项][OAuth2-Threat-Model-And-Security-Implications]）。 但是，风险走势之所以较高，主要是因为它要启用执行活动代码的应用程序，并由远程资源提供给浏览器。 如果要规划一个 SPA 体系结构，则不要设置后端组件或尝试通过 JavaScript 调用 Web API，而应使用隐式流来获取令牌。
+与其他授权相比，隐式授权具有更多风险，需要注意的方面已有详细记录（例如，[在隐式流中误用访问令牌来模拟资源所有者][OAuth2-Spec-Implicit-Misuse]和 [OAuth 2.0 威胁模型和安全注意事项][OAuth2-Threat-Model-And-Security-Implications]）。 但是，风险走势之所以较高，主要是因为它要启用执行活动代码的应用程序，并由远程资源提供给浏览器。 如果要规划一个 SPA 体系结构，则不要设置后端组件或尝试通过 JavaScript 调用 Web API，而应使用隐式流来获取令牌。
 
 如果应用程序是本机客户端，则隐式流并不太适合。 在使用本机客户端的情况下，如果没有 Azure AD 会话 Cookie，应用程序无法长时间维持一个会话。 这意味着，在为新资源获取访问令牌时，应用程序会反复提示用户。
 
-如果要开发包含后端的 Web 应用程序，并需要从其后端代码使用 API，则也不适合使用隐式流。 其他授权可以提供更强大的功能。 例如，授予 OAuth2 客户端凭据即可获取的令牌能够反映分配给应用程序本身的权限，这不同于用户委派。 这意味着，即使在用户未积极参与某个会话这样的情况下，客户端也可始终对资源进行程序性的访问。 不仅如此，此类授权还提供更严格的安全保证。 例如，访问令牌从不在用户浏览器中传输，因此不会有被保存在浏览器历史记录中的风险，诸如此类。 在请求令牌时，客户端应用程序还可以进行严格的身份验证。
+如果要开发包含后端的 Web 应用程序，并需要从其后端代码使用 API，则也不适合使用隐式流。 其他授权可以提供更强大的功能。 例如，授予 OAuth2 客户端凭据即可获取的令牌能够反映分配给应用程序本身的权限，这不同于用户委派。 这意味着，即使在用户未积极参与某个会话这样的情况下，客户端也可始终对资源进行程序性的访问。 不仅如此，此类授权还提供更严格的安全保证。 例如，访问令牌从不通过用户浏览器传输，因此不会有被保存在浏览器历史记录中的风险，等等。 在请求令牌时，客户端应用程序还可以进行严格的身份验证。
+
+[OAuth2-Spec-Implicit-Misuse]: https://tools.ietf.org/html/rfc6749#section-10.16
+[OAuth2-Threat-Model-And-Security-Implications]: https://tools.ietf.org/html/rfc6819
 
 ## <a name="protocol-diagram"></a>协议图
 
@@ -158,7 +156,7 @@ error=access_denied
 
 已经将用户登录到单页应用，现在可以通过无提示方式获取访问令牌以调用受到 Microsoft 标识平台保护的 Web API，例如 [Microsoft Graph](https://developer.microsoft.com/graph)。 即使已使用 `token` response_type 收到令牌，仍然可以使用此方法获取其他资源的令牌，而无需再次将用户重定向到登录页。
 
-在正常的 OpenID Connect/OAuth 流中，可以通过对 Microsoft 标识平台 `/token` 终结点进行请求来实现此目的。 但是，Microsoft 标识平台终结点不支持 CORS 请求，因此进行 AJAX 调用以获取和刷新令牌是不可能的。 相反，可以在隐藏的 iframe 中使用隐式流，以获取其他 Web API 的新令牌： 
+在正常的 OpenID Connect/OAuth 流中，可以通过对 Microsoft 标识平台 `/token` 终结点进行请求来实现此目的。 但是，Microsoft 标识平台终结点不支持 CORS 请求，因此进行 AJAX 调用以获取和刷新令牌是不可能的。 相反，可以在隐藏的 iframe 中使用隐式流，以获取其他 Web API 的新令牌：
 
 ```
 // Line breaks for legibility only
@@ -167,7 +165,7 @@ https://login.partner.microsoftonline.cn/{tenant}/oauth2/v2.0/authorize?
 client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &response_type=token
 &redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
-&scope=https%3A%2F%2Fmicrosoftgraph.chinacloudapi.cn%2Fuser.read 
+&scope=https%3A%2F%2Fmicrosoftgraph.chinacloudapi.cn%2Fuser.read
 &response_mode=fragment
 &state=12345
 &nonce=678910
@@ -245,4 +243,3 @@ https://login.partner.microsoftonline.cn/{tenant}/oauth2/v2.0/logout?post_logout
 
 * 重温 [MSAL JS 示例](sample-v2-code.md)以开始编码。
 
-<!-- Update_Description: wording update -->

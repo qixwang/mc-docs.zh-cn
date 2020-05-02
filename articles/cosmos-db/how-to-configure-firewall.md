@@ -5,14 +5,14 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 10/31/2019
-ms.date: 12/16/2019
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: 318baedb9e16a557b89f28053c05f48aed9d4e03
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: b2838359ae6fe296b1303a18ad304802fcef679a
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75335818"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134917"
 ---
 # <a name="configure-ip-firewall-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中配置 IP 防火墙
 
@@ -46,20 +46,20 @@ ms.locfileid: "75335818"
 <!-- Not Availble on |US Gov|52.244.48.71|-->
 <!-- Not Availble on |All regions except the above three|104.42.195.92,40.76.54.131,52.176.6.30,52.169.50.45,52.187.184.26|-->
 
-若要允许访问 Azure 门户，可以选择“允许从 Azure 门户访问”选项，如以下屏幕截图所示  ：
+可以通过选择“允许从 Azure 门户访问”  选项，允许请求访问 Azure 门户，如以下屏幕截图所示：
 
 ![此屏幕截图显示了如何启用对 Azure 门户的访问](./media/how-to-configure-firewall/enable-azure-portal.png)
 
 ### <a name="allow-requests-from-multiple-regional-azure-datacenters-or-other-sources-within-azure"></a>允许来自多区域的 Azure 数据中心或 Azure 中的其他源的请求
 
-如果通过不提供静态 IP 的服务（例如 Azure 流分析和 Azure Functions）访问 Azure Cosmos DB 帐户，仍可使用 IP 防火墙来限制访问。 若要允许从此类服务访问 Azure Cosmos DB 帐户，请将 IP 地址 0.0.0.0 添加到允许的 IP 地址列表。 0\.0.0.0 地址限制从 Azure 数据中心 IP 范围向 Azure Cosmos DB 帐户发出的请求。 此设置不允许任何其他 IP 范围访问 Azure Cosmos DB 帐户。
+如果通过不提供静态 IP 的服务（例如 Azure 流分析和 Azure Functions）访问 Azure Cosmos DB 帐户，仍可使用 IP 防火墙来限制访问。 要想允许从 Azure 中的其他源进行访问，可以选择“接受来自 Azure 数据中心内部的连接”选项，如以下屏幕截图所示  ：
+
+![此屏幕截图显示了如何在 Azure 门户中打开“防火墙”页](./media/how-to-configure-firewall/enable-azure-services.png)
+
+如果启用此选项，则会将 IP 地址 `0.0.0.0` 添加到允许的 IP 地址列表中。 `0.0.0.0` IP 地址仅限从 Azure 数据中心 IP 范围向 Azure Cosmos DB 帐户发送请求。 此设置不允许任何其他 IP 范围访问 Azure Cosmos DB 帐户。
 
 > [!NOTE]
 > 该选项将防火墙配置为允许来自 Azure 的所有请求，包括来自 Azure 中部署的其他客户的订阅的请求。 此选项允许的 IP 地址较为广泛，因为限制了防火墙策略的有效性。 仅当请求并非来自虚拟网络中的静态 IP 或子网时，才使用此选项。 选择此选项将自动允许从 Azure 门户进行访问，因为 Azure 门户在 Azure 中部署。
-
-要想允许访问 Azure 门户，可以选择“接受来自 Azure 数据中心内部的连接”选项，如以下屏幕截图所示  ：
-
-![此屏幕截图显示了如何在 Azure 门户中打开“防火墙”页](./media/how-to-configure-firewall/enable-azure-services.png)
 
 ### <a name="requests-from-your-current-ip"></a>来自当前 IP 的请求
 
@@ -87,7 +87,7 @@ ms.locfileid: "75335818"
 
 如以下屏幕截图所示，可以在 Azure 门户中检索虚拟机的 IP 地址：
 
-![该屏幕截图显示在 Azure 门户中显示的虚拟机的公共 IP 地址](./media/how-to-configure-firewall/public-ip-addresses-dns.png)
+![显示在 Azure 门户中显示的虚拟机的公共 IP 地址的屏幕截图](./media/how-to-configure-firewall/public-ip-addresses-dns.png)
 
 将虚拟机实例添加到组时，这些实例会自动获得 Azure Cosmos DB 帐户的访问权限。
 

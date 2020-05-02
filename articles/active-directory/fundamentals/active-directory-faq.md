@@ -9,17 +9,16 @@ ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-origin.date: 11/12/2018
-ms.date: 08/27/2019
+ms.date: 04/23/2020
 ms.author: v-junlch
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f726d6812d003a0853784eac9ffa7358ab3687f7
-ms.sourcegitcommit: 18a0d2561c8b60819671ca8e4ea8147fe9d41feb
+ms.openlocfilehash: f81df1585f0503d56b5344d71e1572546c6be5ad
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70134196"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126367"
 ---
 # <a name="frequently-asked-questions-about-azure-active-directory"></a>有关 Azure Active Directory 的常见问题
 Azure Active Directory (Azure AD) 是综合性的标识即服务 (IDaaS) 解决方案，涉及到标识、访问管理和安全的方方面面。
@@ -28,9 +27,9 @@ Azure Active Directory (Azure AD) 是综合性的标识即服务 (IDaaS) 解决�
 
 
 ## <a name="access-azure-and-azure-active-directory"></a>访问 Azure 和 Azure Active Directory
-**问：尝试在 Azure 门户中访问 Azure AD 时，为何出现“找不到订阅”错误？**
+**问：尝试在 Azure 门户中访问 Azure AD 时，为何收到“找不到订阅”错误？**
 
-**答:** 若要访问 Azure 门户，每个用户都需要 Azure 订阅的权限。 如果订阅为付费型 Office 365 订阅或 Azure AD 订阅，请访问 [https://account.windowsazure.cn/Home/Index](https://account.windowsazure.cn/Home/Index)，了解一次性激活步骤。 否则需要激活一个试用版 [Azure 帐户](https://www.azure.cn/pricing/1rmb-trial/)或付费版订阅。
+**答:** 若要访问 Azure 门户，每个用户都需要 Azure 订阅的权限。 如果没有付费 Office 365 或 Azure AD 订阅，则需要激活 [Azure 帐户](https://www.azure.cn/pricing/1rmb-trial/)或付费订阅。
 
 有关详细信息，请参阅：
 
@@ -83,7 +82,7 @@ Azure AD 付费型服务（例如企业移动性 + 安全性）可通过综合�
 - - -
 **问：如果尝试更改 Office 365/Azure AD 密码时忘记了现有的密码，该怎么办？**
 
-**答:** 对于这种情况，有几个选项。  在可用的情况下，使用自助密码重置 (SSPR)。  SSPR 是否适用取决于其配置方式。  
+**答:** 对于这种情况，有几个选项。  在可用的情况下，使用自助密码重置 (SSPR)。  SSPR 是否适用取决于其配置方式。  有关详细信息，请参阅 [密码重置门户的工作原理](../authentication/howto-sspr-deployment.md)。
 
 对于 Office 365 用户，管理员可以使用 [重置用户密码](https://support.office.com/article/Admins-Reset-user-passwords-7A5D073B-7FAE-4AA5-8F96-9ECD041ABA9C?ui=en-US&rs=en-US&ad=US)中所述的步骤重置密码。
 
@@ -123,16 +122,15 @@ Azure AD 付费型服务（例如企业移动性 + 安全性）可通过综合�
 * 直接登录到联合应用
 * 联合、基于密码或现有应用的深层链接
 
+---
+**问：如何要求访问特定应用程序的用户进行多重身份验证？**
 
-- - -
+**答:** 使用 Azure AD 条件访问，可以针对每个应用程序分配独特的访问策略。 可以在策略中要求用户始终进行多重身份验证，或者在未连接到本地网络时才进行。  
 
-**问：什么是 SaaS 应用的自动化用户预配？**
-
-**答:** 使用 Azure AD 可在许多流行的云 (SaaS) 应用程序中自动创建、维护和删除用户标识。
+有关详细信息，请参阅[保护对 Office 365 和其他连接到 Azure Active Directory 的应用的访问](../conditional-access/overview.md)。
 
 - - -
 **问：是否可以通过 Azure AD 设置安全的 LDAP 连接？**
 
-**答:** 否。 Azure AD 不支持 LDAP 协议。
+**答:** 否。 Azure AD 不直接支持轻型目录访问协议 (LDAP) 或安全 LDAP。 
 
-<!-- Update_Description: wording update -->

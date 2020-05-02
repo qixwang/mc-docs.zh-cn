@@ -6,14 +6,14 @@ manager: digimobile
 ms.service: site-recovery
 ms.topic: article
 origin.date: 04/08/2019
-ms.date: 02/24/2020
+ms.date: 04/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 32181645f0e2f685b49de24a78dd40526a877475
-ms.sourcegitcommit: 781f68d27903687f0aa9e1ed273eee25c6d129a1
+ms.openlocfilehash: 07e52dc0cd81d1da1f49604cb092b2c4ac237a8d
+ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77611294"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82093516"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-errors"></a>排查 Azure 到 Azure VM 复制错误
 
@@ -43,7 +43,7 @@ ms.locfileid: "77611294"
 <a name="trusted-root-certificates-error-code-151066"></a>
 ## <a name="trusted-root-certificates-error-code-151066"></a>受信任的根证书（错误代码 151066）
 
-如果 VM 上不存在所有最新的受信任根证书，则“启用复制”Site Recovery 作业可能会失败。 如果没有这些证书，VM 发出的 Site Recovery 服务调用的身份验证和授权会失败。 
+如果 VM 上不存在所有最新的受信任根证书，则“启用复制”Site Recovery 作业可能会失败。 如果没有这些证书，VM 发出的 Site Recovery 服务调用的身份验证和授权会失败。
 
 如果“启用复制”作业失败，将出现以下消息：
 
@@ -167,78 +167,58 @@ ms.locfileid: "77611294"
 
 ## <a name="outbound-connectivity-for-site-recovery-urls-or-ip-ranges-error-code-151037-or-151072"></a>Site Recovery URL 或 IP范围的出站连接（错误代码 151037 或 151072）
 
-要使 Site Recovery 复制正常运行，需要建立从 VM 到特定 URL 或 IP 范围的出站连接。 如果 VM 位于防火墙后或使用网络安全组 (NSG) 规则来控制出站连接，则可能会遇到以下问题之一。
+要使 Site Recovery 复制正常工作，需要从 VM 到特定 URL 的出站连接。 如果 VM 位于防火墙后或使用网络安全组 (NSG) 规则来控制出站连接，则可能会遇到以下问题之一。 请注意，虽然我们继续支持通过 URL 进行出站访问，但不再支持使用 IP 范围的允许列表。
 
 <a name="issue-1-failed-to-register-azure-virtual-machine-with-site-recovery-151195-br"></a>
-### <a name="issue-1-failed-to-register-the-azure-virtual-machine-with-site-recovery-error-code-151195"></a>问题 1：无法向 Site Recovery 注册 Azure 虚拟机（错误代码 151195）
+### <a name="issue-1-failed-to-register-azure-virtual-machine-with-site-recovery-151195-br-"></a>问题 1：未能向 Site Recovery 注册 Azure 虚拟机 (151195) <br />
+- 可能的原因  <br />
+    - 由于 DNS 解析失败而无法建立到 Site Recovery 终结点的连接。
+    - 在重新保护期间，对虚拟机进行故障转移但无法从 DR 区域访问 DNS 服务器时经常会出现此问题。
 
-#### <a name="possible-cause"></a>可能的原因 
+- **解决方法**
+    - 如果你使用的是自定义 DNS，请确保可以从灾难恢复区域访问 DNS 服务器。 若要检查你是否具有自定义 DNS，请转到“VM”>“灾难恢复网络”>“DNS 服务器”。 尝试从虚拟机访问 DNS 服务器。 如果它无法访问，请通过对 DNS 服务器进行故障转移或创建 DR 网络与 DNS 之间站点的行来使其可访问。
 
-由于 DNS 解析失败，无法与 Site Recovery 终结点建立连接。
+    ![com-error](./media/azure-to-azure-troubleshoot-errors/custom_dns.png)
 
-在重新保护期间，对虚拟机进行故障转移但无法从灾难恢复 (DR) 区域访问 DNS 服务器时经常会发生此问题。
+### <a name="issue-2-site-recovery-configuration-failed-151196"></a>问题 2：Site Recovery 配置失败 (151196)
+- 可能的原因  <br />
+    - 无法建立到 Office 365 身份验证和标识 IP4 终结点的连接。
 
-#### <a name="fix-the-problem"></a>解决问题
+- **解决方法**
+    - Azure Site Recovery 需要具有对 Office 365 IP 范围的访问权限来进行身份验证。
+        如果使用 Azure 网络安全组 (NSG) 规则/防火墙代理控制 VM 的出站网络连接，请确保使用基于 [Azure Active Directory (AAD) 服务标记](../virtual-network/security-overview.md#service-tags)的 NSG 规则允许访问 AAD。 我们不再支持基于 IP 地址的 NSG 规则。
 
-如果你使用的是自定义 DNS，请确保可以从灾难恢复区域访问 DNS 服务器。 若要检查你是否具有自定义 DNS，请在 VM 上转到“灾难恢复网络” > “DNS 服务器”。  
+### <a name="issue-3-site-recovery-configuration-failed-151197"></a>问题 3：Site Recovery 配置失败 (151197)
+- 可能的原因  <br />
+    - 无法建立到 Azure Site Recovery 服务终结点的连接。
 
-![自定义 DNS 服务器列表](./media/azure-to-azure-troubleshoot-errors/custom_dns.PNG)
+- **解决方法**
+    - 如果使用 Azure 网络安全组 (NSG) 规则/防火墙代理来控制 VM 的出站网络连接，请确保使用服务标记。 我们不再支持通过 NSG 对 Azure Site Recovery (ASR) 使用 IP 地址的允许列表。
 
-尝试从虚拟机访问 DNS 服务器。 如果该服务器不可访问，请通过对 DNS 服务器进行故障转移或创建 DR 网络与 DNS 之间站点的行来使其可访问。
+### <a name="issue-4-a2a-replication-failed-when-the-network-traffic-goes-through-on-premise-proxy-server-151072"></a>问题 4：当网络流量通过本地代理服务器时 A2A 复制失败 (151072)
+- 可能的原因  <br />
+    - 自定义代理设置无效，并且 ASR 移动服务代理未在 IE 中自动检测到代理设置
 
-### <a name="issue-2-site-recovery-configuration-failed-error-code-151196"></a>问题 2：Site Recovery 配置失败（错误代码 151196）
+- **解决方法**
+    1. 移动服务代理通过 Windows 上的 IE 和 Linux 上的 /etc/environment 检测代理设置。
+    2. 如果只想对 ASR 移动服务设置代理，可在位于以下路径的 ProxyInfo.conf 中提供代理详细信息：<br />
+        - ***Linux*** 上的 ``/usr/local/InMage/config/``
+        - ***Windows*** 上的 ``C:\ProgramData\Microsoft Azure Site Recovery\Config``
+    3. ProxyInfo.conf 应包含采用以下 INI 格式的代理设置。<br />
+            
+            *[proxy]*<br />
+            *Address=http://1.2.3.4*<br />
+            *Port=567*<br />
+            
+    4. ASR 移动服务代理仅支持***未经身份验证的代理***。
 
-#### <a name="possible-cause"></a>可能的原因
+### <a name="fix-the-problem"></a>解决问题
 
-无法与 Office 365 身份验证和标识 IP4 终结点建立连接。
-
-#### <a name="fix-the-problem"></a>解决问题
-
-Site Recovery 需要具有对 Office 365 IP 范围的访问权限来进行身份验证。
-如果你使用 Azure NSG 规则或防火墙代理控制 VM 上的出站网络连接，请确保允许到 Office 365 IP 范围的通信。 创建一个基于 [Azure Active Directory (Azure AD) 服务标记](../virtual-network/security-overview.md#service-tags)的 NSG 规则，并允许访问与 Azure AD 对应的所有 IP 地址。 如果将来向 Azure AD 添加新地址，则必须创建新的 NSG 规则。
-
-> [!NOTE]
-> 如果 VM 位于“标准”内部负载均衡器之后，则负载均衡器默认无法访问 Office 365 IP 范围（即 login.chinacloudapi.cn）。  请将内部负载均衡器类型更改为“基本”，或根据[配置负载均衡和出站规则](../load-balancer/configure-load-balancer-outbound-cli.md)一文中所述创建出站访问权限。 
-
-### <a name="issue-3-site-recovery-configuration-failed-error-code-151197"></a>问题 3：Site Recovery 配置失败（错误代码 151197）
-
-#### <a name="possible-cause"></a>可能的原因
-
-无法与 Site Recovery 服务终结点建立连接。
-
-#### <a name="fix-the-problem"></a>解决问题
-
-Site Recovery 需要根据区域访问 [Site Recovery IP 范围](/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-ip-address-ranges)。 请确保可以从虚拟机访问所需的 IP 范围。
-
-### <a name="issue-4-azure-to-azure-replication-failed-when-the-network-traffic-goes-through-an-on-premises-proxy-server-error-code-151072"></a>问题 4：当网络流量通过本地代理服务器时 Azure 到 Azure 复制失败（错误代码 151072）
-
-#### <a name="possible-cause"></a>可能的原因
-
-自定义代理设置无效，并且 Site Recovery 移动服务代理未在 Internet Explorer 中自动检测到代理设置。
-
-#### <a name="fix-the-problem"></a>解决问题
-
-移动服务代理通过 Windows 上的 Internet Explorer 和 Linux 上的 /etc/environment 检测代理设置。
-
-如果你只想为移动服务设置代理，可以在位于以下位置的 ProxyInfo.conf 文件中提供代理详细信息：
-
-- **Linux**：/usr/local/InMage/config/
-- **Windows**：C:\ProgramData\Microsoft Azure Site Recovery\Config
-
-在 ProxyInfo.conf 中，采用以下初始化文件格式提供代理设置：
-
-> [*proxy*]
-
-> Address= *http://1.2.3.4*
-
-> Port=*567*
-
-> [!NOTE]
-> Site Recovery 移动服务代理仅支持未经身份验证的代理  。
+若要将[所需 URL](azure-to-azure-about-networking.md#outbound-connectivity-for-urls) 添加到允许列表，请按照[网络指南文档](site-recovery-azure-to-azure-networking-guidance.md)中的步骤进行操作。
 
 ### <a name="more-information"></a>详细信息
 
-若要指定[所需的 URL](azure-to-azure-about-networking.md#outbound-connectivity-for-urls) 或[所需的 IP 范围](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges)，请遵循[关于 Azure 到 Azure 复制中的网络](site-recovery-azure-to-azure-networking-guidance.md)中的指导。
+若要指定[所需的 URL](azure-to-azure-about-networking.md#outbound-connectivity-for-urls) 或[所需的 IP 范围](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags)，请遵循[关于 Azure 到 Azure 复制中的网络](site-recovery-azure-to-azure-networking-guidance.md)中的指导。
 
 ## <a name="disk-not-found-in-the-machine-error-code-150039"></a>计算机中找不到磁盘（错误代码 150039）
 
@@ -459,7 +439,7 @@ Linux GRUB 配置文件（/boot/grub/menu.lst、/boot/grub/grub.cfg、/boot/grub
 
 - File /boot/grub2/grub.cfg
 
-    > linux   /boot/vmlinuz-3.12.49-11-default **root=/dev/sda2**  ${extra_cmdline} **resume=/dev/sda1** splash=silent quiet showopts
+    > linux   /boot/vmlinuz-3.12.49-11-default **root=/dev/sda2** ${extra_cmdline} **resume=/dev/sda1** splash=silent quiet showopts
 
 - File: /boot/grub/menu.lst
 
@@ -500,7 +480,7 @@ GRUB 配置文件（/boot/grub/menu.lst、/boot/grub/grub.cfg、/boot/grub2/grub
 
 - File: /boot/grub/menu.lst on RHEL6:
 
-    > kernel /vmlinuz-2.6.32-754.el6.x86_64 ro root=UUID=36dd8b45-e90d-40d6-81ac-ad0d0725d69e rd_NO_LUKS LANG=en_US.UTF-8 rd_NO_MD SYSFONT=latarcyrheb-sun16 crashkernel=auto **rd_LVM_LV=rootvg/lv_root**  KEYBOARDTYPE=pc KEYTABLE=us **rd_LVM_LV=rootvg/lv_swap** rd_NO_DM rhgb quiet
+    > kernel /vmlinuz-2.6.32-754.el6.x86_64 ro root=UUID=36dd8b45-e90d-40d6-81ac-ad0d0725d69e rd_NO_LUKS LANG=en_US.UTF-8 rd_NO_MD SYSFONT=latarcyrheb-sun16 crashkernel=auto **rd_LVM_LV=rootvg/lv_root** KEYBOARDTYPE=pc KEYTABLE=us **rd_LVM_LV=rootvg/lv_swap** rd_NO_DM rhgb quiet
 
 在每个示例中，以粗体显示的部分指明，GRUB 必须在卷组“rootvg”中检测到名为“root”和“swap”的两个 LVM 设备。
 
@@ -515,7 +495,7 @@ Site Recovery 移动服务有多个组件，其中一个称为筛选器驱动程
 > [!NOTE]
 > 这只是一条警告。 即使在新代理更新后，现有的复制也能继续正常工作。 可以选择每当需要获得新筛选器驱动程序的优势时才重启，但如果不重启，旧的筛选器驱动程序也能保持正常工作。
 >
-> 除了筛选器驱动程序以外，无需重启，移动服务更新中其他任何增强和修复的优势也能生效。  
+> 除了筛选器驱动程序以外，无需重启，移动服务更新中其他任何增强和修复的优势也能生效。
 
 ## <a name="protection-couldnt-be-enabled-because-the-replica-managed-disk-already-exists-without-expected-tags-in-the-target-resource-group-error-code-150161"></a>由于副本托管磁盘已存在，但目标资源组中不包含预期的标记，因此无法启用保护（错误代码 150161）
 

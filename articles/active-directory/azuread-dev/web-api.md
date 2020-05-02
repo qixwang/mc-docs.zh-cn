@@ -5,23 +5,21 @@ services: active-directory
 documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: azuread-dev
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/24/2020
+ms.date: 04/23/2020
 ms.author: v-junlch
-ms.reviewer: saeeda, jmprieur, andret
+ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 6b0f93a48c5c5886f20344cc9cdb03edbed8f776
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ROBOTS: NOINDEX
+ms.openlocfilehash: 1b32b7fe8a6c0c4ab6ec64d12faff8a4bcf8636c
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77653603"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126314"
 ---
 # <a name="web-api"></a>Web API
 
@@ -72,7 +70,7 @@ Web API 应用是需要通过 Web API 获取资源的 Web 应用。 在此方案
 
 若要向 Azure AD v1.0 终结点注册应用程序，请参阅[注册应用](../develop/quickstart-register-app.md?toc=/active-directory/azuread-dev/toc.json&bc=/active-directory/azuread-dev/breadcrumb/toc.json)。
 
-* 单租户 - 对于应用程序标识和委托用户标识这两种情况，Web 应用和 Web API 都必须在 Azure AD 的同一个目录中进行注册。 可以对 Web API 进行配置以公开一组权限，并使用这些权限来限制 Web 应用程序对其资源的访问。 如果使用的是委托用户标识类型，则 Web 应用需要从 Azure 门户的“对其他应用程序的权限”  下拉菜单中选择所需的权限。 如果使用的是应用程序标识类型，则不需要此步骤。
+* 单租户 - 对于应用程序标识和委托用户标识这两种情况，Web 应用和 Web API 都必须在 Azure AD 的同一个目录中进行注册。 可以对 Web API 进行配置以公开一组权限，这些权限用于限制 Web 应用程序对其资源的访问。 如果使用的是委托用户标识类型，则 Web 应用需要从 Azure 门户的“对其他应用程序的权限”  下拉菜单中选择所需的权限。 如果使用的是应用程序标识类型，则不需要此步骤。
 * 多租户 - 首先，Web 应用在配置后会指示它在正常运行时所需的权限。 目标目录中的用户或管理员许可应用程序的要求，使应用程序可供其组织使用时，此必需权限列表会显示在一个对话框中。 某些应用程序只需要用户级权限，组织中的任何用户都可以表示许可。 另外一些应用程序需要管理员级权限，组织中的用户无法许可。 只有目录管理员可以对需要此级别的权限的应用程序表示许可。 用户或管理员许可后，在其目录中注册 Web 应用程序和 Web API。
 
 ## <a name="token-expiration"></a>令牌过期

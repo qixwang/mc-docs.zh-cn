@@ -3,53 +3,61 @@ title: 自定义浏览器和 Web 视图 (MSAL iOS/macOS) | Azure
 titleSuffix: Microsoft identity platform
 description: 了解如何自定义用于登录用户的 MSAL iOS/macOS 浏览器体验。
 services: active-directory
-author: tylermsft
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 01/06/2020
+ms.date: 04/22/2020
 ms.author: v-junlch
 ms.reviewer: oldalton
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: c09159ff236888fd717cf13b8075ff9aa8ca2bbb
-ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
+ms.openlocfilehash: 9edac52a9a6a07d7aea39c55172b46d8b1904522
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75776826"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126243"
 ---
 # <a name="how-to-customize-browsers-and-webviews-for-iosmacos"></a>如何：自定义 iOS/macOS 的浏览器和 WebView
 
-完成交互式身份验证需要使用 Web 浏览器。 在 iOS 上，Microsoft 身份验证库 (MSAL) 默认使用系统 Web 浏览器（可能显示在应用的顶部）执行交互式身份验证，以将用户登录。 使用系统浏览器的好处是可与其他应用程序和 Web 应用程序共享单一登录 (SSO) 状态。
+完成交互式身份验证需要使用 Web 浏览器。 在 iOS 和 macOS 10.15+ 上，Microsoft 身份验证库 (MSAL) 默认使用系统 Web 浏览器（可能显示在应用的顶部）执行交互式身份验证，以将用户登录。 使用系统浏览器的好处是可与其他应用程序和 Web 应用程序共享单一登录 (SSO) 状态。
 
 可以通过将配置自定义为其他用于显示 Web 内容的选项来更改体验，例如：
 
 仅对 iOS 而言：
 
-- [ASWebAuthenticationSession](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession?language=objc)
 - [SFAuthenticationSession](https://developer.apple.com/documentation/safariservices/sfauthenticationsession?language=objc) 
 - [SFSafariViewController](https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller?language=objc)
 
 对于 iOS 和 macOS：
 
+- [ASWebAuthenticationSession](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession?language=objc)
 - [WKWebView](https://developer.apple.com/documentation/webkit/wkwebview?language=objc)。
 
-适用于 macOS 的 MSAL 仅支持 `WKWebView`。
+MSAL for macOS 仅在较早的 OS 版本上支持 `WKWebView`。 仅在 macOS 10.15 及更高版本上支持 `ASWebAuthenticationSession`。 
 
 ## <a name="system-browsers"></a>系统浏览器
 
-对于 iOS，`ASWebAuthenticationSession`、`SFAuthenticationSession` 和 `SFSafariViewController` 被视为系统浏览器。 一般情况下，系统浏览器将与 Safari 浏览器应用程序共享 Cookie 和其他网站数据。
+对于 iOS，`ASWebAuthenticationSession`、`SFAuthenticationSession` 和 `SFSafariViewController` 被视为系统浏览器。 对于 macOS，只有 `ASWebAuthenticationSession` 可用。 一般情况下，系统浏览器将与 Safari 浏览器应用程序共享 Cookie 和其他网站数据。
 
 默认情况下，MSAL 会动态检测 iOS 版本，并选择适用于该版本的建议系统浏览器。 在 iOS 12+ 上，系统浏览器为 `ASWebAuthenticationSession`。 
+
+### <a name="default-configuration-for-ios"></a>iOS 的默认配置
 
 | 版本 | Web 浏览器 |
 |:-------------:|:-------------:|
 | iOS 12+ | ASWebAuthenticationSession |
 | iOS 11 | SFAuthenticationSession |
 | iOS 10 | SFSafariViewController |
+
+### <a name="default-configuration-for-macos"></a>macOS 的默认配置
+
+| 版本 | Web 浏览器 |
+|:-------------:|:-------------:|
+| macOS 10.15+ | ASWebAuthenticationSession |
+| 其他版本 | WKWebView |
 
 开发人员还可为 MSAL 应用选择不同的系统浏览器：
 
@@ -66,10 +74,10 @@ ms.locfileid: "75776826"
 
 | 技术    | 浏览器类型  | iOS 可用性 | macOS 可用性 | 共享 Cookie 和其他数据  | MSAL 可用性 | SSO |
 |:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|-------------:|
-| [ASWebAuthenticationSession](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession) | 系统 | iOS12 和更高版本 | macOS 10.15 和更高版本 | 是 | 仅限 iOS | 具有 Safari 实例
+| [ASWebAuthenticationSession](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession) | 系统 | iOS12 和更高版本 | macOS 10.15 和更高版本 | 是 | iOS 和 macOS 10.15+ | 具有 Safari 实例
 | [SFAuthenticationSession](https://developer.apple.com/documentation/safariservices/sfauthenticationsession) | 系统 | iOS11 和更高版本 | 不适用 | 是 | 仅限 iOS |  具有 Safari 实例
-| [SFSafariViewController](https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller) | 系统 | iOS11 和更高版本 | 不适用 | 否 | 仅限 iOS | 否**
-| **SFSafariViewController** | 系统 | iOS10 | 不适用 | 是 | 仅限 iOS |  具有 Safari 实例
+| [SFSafariViewController](https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller) | 系统 | iOS11 和更高版本 | 空值 | 否 | 仅限 iOS | 否**
+| **SFSafariViewController** | 系统 | iOS10 | 空值 | 是 | 仅限 iOS |  具有 Safari 实例
 | **WKWebView**  | 应用中 | iOS8 和更高版本 | macOS 10.10 和更高版本 | 否 | iOS 和 macOS | 否**
 
 ** 要正常进行 SSO，需要在应用之间共享令牌。 这需要使用令牌缓存或中介应用程序，例如适用于 iOS 的 Microsoft Authenticator。
@@ -94,7 +102,7 @@ Objective-C
 ```objc
 UIViewController *myParentController = ...;
 WKWebView *myCustomWebView = ...;
-MSALWebviewParameters *webViewParameters = [[MSALWebviewParameters alloc] initWithParentViewController:myParentController];
+MSALWebviewParameters *webViewParameters = [[MSALWebviewParameters alloc] initWithAuthPresentationViewController:myParentController];
 webViewParameters.webviewType = MSALWebviewTypeWKWebView;
 webViewParameters.customWebview = myCustomWebView;
 MSALInteractiveTokenParameters *interactiveParameters = [[MSALInteractiveTokenParameters alloc] initWithScopes:@[@"myscope"] webviewParameters:webViewParameters];
@@ -105,7 +113,7 @@ Swift
 ```swift
 let myParentController: UIViewController = ...
 let myCustomWebView: WKWebView = ...
-let webViewParameters = MSALWebviewParameters(parentViewController: myParentController)
+let webViewParameters = MSALWebviewParameters(authPresentationViewController: myParentController)
 webViewParameters.webviewType = MSALWebviewType.wkWebView
 webViewParameters.customWebview = myCustomWebView
 let interactiveParameters = MSALInteractiveTokenParameters(scopes: ["myscope"], webviewParameters: webViewParameters)
@@ -139,21 +147,26 @@ MSAL 支持的所有 Web 浏览器类型都在 [MSALWebviewType 枚举](https://
 ```objc
 typedef NS_ENUM(NSInteger, MSALWebviewType)
 {
-#if TARGET_OS_IPHONE
-    // For iOS 11 and up, uses AuthenticationSession (ASWebAuthenticationSession
-    // or SFAuthenticationSession).
-    // For older versions, with AuthenticationSession not being available, uses
-    // SafariViewController.
+    /**
+     For iOS 11 and up, uses AuthenticationSession (ASWebAuthenticationSession or SFAuthenticationSession).
+     For older versions, with AuthenticationSession not being available, uses SafariViewController.
+     For macOS 10.15 and above uses ASWebAuthenticationSession
+     For older macOS versions uses WKWebView
+     */
     MSALWebviewTypeDefault,
     
-    // Use SFAuthenticationSession/ASWebAuthenticationSession
+    /** Use ASWebAuthenticationSession where available.
+     On older iOS versions uses SFAuthenticationSession
+     Doesn't allow any other webview type, so if either of these are not present, fails the request*/
     MSALWebviewTypeAuthenticationSession,
     
-    // Use SFSafariViewController for all versions.
+#if TARGET_OS_IPHONE
+    
+    /** Use SFSafariViewController for all versions. */
     MSALWebviewTypeSafariViewController,
     
 #endif
-    // Use WKWebView
+    /** Use WKWebView */
     MSALWebviewTypeWKWebView,
 };
 ```
@@ -162,4 +175,3 @@ typedef NS_ENUM(NSInteger, MSALWebviewType)
 
 详细了解[身份验证流和应用程序方案](authentication-flows-app-scenarios.md)
 
-<!-- Update_Description: wording update -->

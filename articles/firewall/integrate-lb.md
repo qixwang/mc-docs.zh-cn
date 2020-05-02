@@ -5,15 +5,15 @@ services: firewall
 author: rockboyfor
 ms.service: firewall
 ms.topic: article
-origin.date: 11/19/2019
-ms.date: 12/09/2019
+origin.date: 02/28/2020
+ms.date: 04/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 23f3339996ce9f5973e359d1ff8fb9325b3afaa6
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: bb3f8e01cfdf960673e0ba4decd56043d7edf1a9
+ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75334986"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82093462"
 ---
 # <a name="integrate-azure-firewall-with-azure-standard-load-balancer"></a>将 Azure 防火墙与 Azure 标准负载均衡器相集成
 
@@ -40,9 +40,23 @@ ms.locfileid: "75334986"
 
 ![非对称路由](media/integrate-lb/Firewall-LB-asymmetric.png)
 
-例如，以下路由适用于公共 IP 地址为 13.86.122.41、专用 IP 地址为 10.3.1.4 的防火墙。
+### <a name="route-table-example"></a>路由表示例
 
-![路由表](media/integrate-lb/route-table.png)
+例如，以下路由适用于公共 IP 地址为 20.185.97.136、专用 IP 地址为 10.0.1.4 的防火墙。
+
+> [!div class="mx-imgBorder"]
+> ![路由表](media/integrate-lb/route-table.png)
+
+### <a name="nat-rule-example"></a>NAT 规则示例
+
+在下面的示例中，NAT 规则会对 RDP 流量进行网络地址转换，使之在到达防火墙 (20.185.97.136) 后再发往负载均衡器 (20.42.98.220)：
+
+> [!div class="mx-imgBorder"]
+> ![NAT 规则](media/integrate-lb/nat-rule-02.png)
+
+### <a name="health-probes"></a>运行状况探测
+
+请记住，如果你对端口 80 使用 TCP 运行状况探测，或者使用 HTTP/HTTPS 探测，则需要在负载均衡器池中的主机上运行 Web 服务。
 
 ## <a name="internal-load-balancer"></a>内部负载均衡器
 
@@ -57,6 +71,8 @@ ms.locfileid: "75334986"
 若要进一步增强负载均衡方案的安全性，可以使用网络安全组 (NSG)。
 
 例如，可以在负载均衡虚拟机所在的后端子网中创建 NSG。 允许源自防火墙 IP 地址/端口的传入流量。
+
+![网络安全组](media/integrate-lb/nsg-01.png)
 
 有关 NSG 的详细信息，请参阅[安全组](../virtual-network/security-overview.md)。
 

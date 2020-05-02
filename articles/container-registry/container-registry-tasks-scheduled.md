@@ -3,14 +3,14 @@ title: 教程 - 计划 ACR 任务
 description: 本教程介绍如何通过设置一个或多个计时器触发器按定义的计划运行 Azure 容器注册表任务
 ms.topic: article
 origin.date: 06/27/2019
+ms.date: 04/06/2020
 ms.author: v-yeche
-ms.date: 12/09/2019
-ms.openlocfilehash: 9495517376c8bbcdbba1e1dcd984db6af6d71bee
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.openlocfilehash: 13b83cbe0eee202681fb6623daf5fcd0be557887
+ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74884863"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82093513"
 ---
 <!--Verify Successfully-->
 # <a name="run-an-acr-task-on-a-defined-schedule"></a>按定义的计划运行 ACR 任务
@@ -60,8 +60,11 @@ az acr task create \
 
 运行 [az acr task show][az-acr-task-show] 命令查看该计时器触发器是否已配置。 默认情况下，还启用了基础映像更新触发器。
 
-```console
-$ az acr task show --name mytask --registry registry --output table
+```azurecli
+az acr task show --name mytask --registry registry --output table
+```
+
+```output
 NAME      PLATFORM    STATUS    SOURCE REPOSITORY       TRIGGERS
 --------  ----------  --------  -------------------     -----------------
 mytask    linux       Enabled                           BASE_IMAGE, TIMER
@@ -75,7 +78,7 @@ az acr task run --name mytask --registry myregistry
 
 如果容器成功运行，输出将如下所示：
 
-```console
+```output
 Queued a run with ID: cf2a
 Waiting for an agent...
 2019/06/28 21:03:36 Using acb_vol_2ca23c46-a9ac-4224-b0c6-9fde44eb42d2 as the home volume
@@ -96,7 +99,7 @@ az acr task list-runs --name mytask --registry myregistry --output table
 
 如果计时器成功，输出将如下所示：
 
-```console
+```output
 RUN ID    TASK     PLATFORM    STATUS     TRIGGER    STARTED               DURATION
 --------  -------- ----------  ---------  ---------  --------------------  ----------
 [...]
@@ -201,9 +204,22 @@ cron 表达式使用的时区为协调世界时 (UTC)。 时间为 24 小时制�
 |`"30 9 * * 1-5"`|每个工作日的 9:30 UTC|
 |`"30 9 * Jan Mon"`|一月份的每个星期一 9:30 UTC|
 
-<!--Not Available on ## Next steps-->
-<!--Not Available on [Automatically purge images from an Azure container registry](container-registry-auto-purge.md)-->
-<!--Not Available on  [ACR Tasks tutorial series](container-registry-tutorial-quick-task.md)-->
+## <a name="clean-up-resources"></a>清理资源
+
+若要删除本系列教程中创建的所有资源（包括容器注册表、容器实例、密钥保管库和服务主体），请发出以下命令：
+
+```azurecli
+az group delete --resource-group $RES_GROUP
+az ad sp delete --id http://$ACR_NAME-pull
+```
+
+## <a name="next-steps"></a>后续步骤
+
+本教程介绍了如何创建由计时器自动触发的 Azure 容器注册表任务。 
+
+<!--Pending on [Automatically purge images from an Azure container registry](container-registry-auto-purge.md)-->
+
+有关由源代码提交或基础映像更新触发的任务的示例，请参阅 [ACR 任务系列教程](container-registry-tutorial-quick-task.md)中的其他文章。
 
 <!-- LINKS - External -->
 

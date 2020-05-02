@@ -2,17 +2,17 @@
 title: 在 Azure Cosmos 容器和数据库上预配吞吐量
 description: 了解如何为 Azure Cosmos 容器和数据库设置预配的吞吐量。
 author: rockboyfor
-ms.author: v-yeche
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 08/12/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: 13f39424b1f5e7fdb975d067dc6c38acdeed43cc
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 04/27/2020
+ms.author: v-yeche
+ms.openlocfilehash: 2b986f9282ccaf682aebd6bc4d7d49e4b913a7c2
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79291881"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134705"
 ---
 # <a name="provision-throughput-on-containers-and-databases"></a>在容器和数据库上预配吞吐量
 
@@ -61,23 +61,11 @@ Azure Cosmos 数据库是一组容器的管理单元。 数据库包含一组不
 
 如果逻辑分区上的工作负荷消耗的吞吐量超过了分配给特定逻辑分区的吞吐量，操作将受到速率限制。 出现速率限制时，可以增大整个数据库的吞吐量，或重试操作。 有关分区的详细信息，请参阅[逻辑分区](partition-data.md)。
 
-对某个数据库预配的吞吐量可由该数据库内的容器共享。 数据库级共享吞吐量中的每个新容器将需要 100 RU/秒。 预配包含共享数据库产品/服务的容器时：
+共享吞吐量数据库中的容器共享分配给该数据库的吞吐量（RU/秒）。 你最多可以有四个容器，在数据库上的最低吞吐量为 400 RU/秒。 头四个容器之后的每个新容器将需要至少 100 RU/秒的额外吞吐量。 例如，如果你有一个包含八个容器的共享吞吐量数据库，则数据库上的最小吞吐量将为 800 RU/秒。
 
-* 每 25 个容器分组到一个分区集中，并且在分区集中的容器之间共享数据库吞吐量 (D)。 如果数据库中最多有 25 个容器，并且在任何时间点，如果你只使用一个容器，则该容器可使用的吞吐量为“D”吞吐量的最大值。
-
-* 对于在 25 个容器之后创建的每个新容器，将创建一个新的分区集，并在创建的新分区集之间分配数据库吞吐量（即 2 个分区集是 D/2，3 个分区集是 D/3…）。 在任何时间点，如果仅使用数据库中的一个容器，则该容器可以分别使用（D/2, D/3, D/4… 吞吐量）的最大值。 鉴于吞吐量降低，建议你在一个数据库中创建的容器不超过 25 个。
-
-**示例**
-
-* 如果创建一个名为“MyDB”的数据库，其预配置吞吐量为 10000 RU/秒。
-
-* 如果在“MyDB”下预配 25 个容器，则所有容器都将分组到一个分区集中。 在任何时间点，如果仅使用数据库中的一个容器，那么它最多可以使用 10000 RU/秒 (D)。
-
-* 预配第 26 个容器时，将创建一个新的分区集，并且吞吐量将在这两个分区集之间平均分配。 因此，在任何时间点，如果仅使用数据库中的一个容器，那么它最多可以使用 5000 RU/秒 (D/2)。 因为有两个分区集，所以吞吐量可共享性因子将分成 D/2。
-
-    下图以图形方式演示了前面的示例：
-
-    ![数据库级吞吐量的可共享性因子](./media/set-throughput/database-level-throughput-shareability-factor.png)
+> [!NOTE]
+> 在 2020 年 2 月，我们引入了一项更改（允许在共享吞吐量数据库中最多拥有 25 个容器），因此可以更好地实现跨容器的吞吐量共享。 有了头 25 个容器之后，仅当容器[预配了专用吞吐量](#set-throughput-on-a-database-and-a-container)（与数据库的共享吞吐量分离）时，才能向数据库添加更多容器。<br />
+如果 Azure Cosmos DB 帐户已包含一个具有 >=25 个容器的共享吞吐量数据库，则该帐户和同一 Azure 订阅中的所有其他帐户均不受此更改限制。 如果有反馈或疑问，请[联系产品支持](https://support.azure.cn/support/support-azure/)。 
 
 如果工作负荷涉及到删除数据库中的所有集合并重新创建集合，则我们建议删除空数据库，再重新创建新的数据库，然后创建集合。 下图显示了物理分区如何托管属于数据库中不同容器的一个或多个逻辑分区：
 
@@ -100,11 +88,11 @@ Azure Cosmos 数据库是一组容器的管理单元。 数据库包含一组不
 
 ## <a name="update-throughput-on-a-database-or-a-container"></a>在数据库或容器上更新吞吐量
 
-创建 Azure Cosmos 容器或数据库后，可以更新预配的吞吐量。 对于可以在数据库或容器上配置的最大预配吞吐量，没有任何限制。 最小预配吞吐量取决于以下因素： 
+创建 Azure Cosmos 容器或数据库后，可以更新预配的吞吐量。 对于可以在数据库或容器上配置的最大预配吞吐量，没有任何限制。 [最小预配吞吐量](concepts-limits.md#storage-and-throughput)取决于以下因素： 
 
 * 曾经存储在容器中的最大数据大小
 * 曾经在容器上预配的最大吞吐量
-* 曾经在数据库中创建的具有共享吞吐量的 Azure Cosmos 容器的最大数目。 
+* 具有共享吞吐量的数据库中 Azure Cosmos 容器的当前数量。 
 
 可以通过 SDK 以编程方式检索容器或数据库的最小吞吐量，也可以在 Azure 门户中查看值。 使用 .NET SDK 时，可以通过 [DocumentClient.ReplaceOfferAsync](https://docs.azure.cn/dotnet/api/microsoft.azure.documents.client.documentclient.replaceofferasync?view=azure-dotnet) 方法缩放预配的吞吐量值。 使用 Java SDK 时，可以通过 [RequestOptions.setOfferThroughput](sql-api-java-samples.md#offer-examples) 方法缩放预配的吞吐量值。 
 
@@ -122,7 +110,7 @@ Azure Cosmos 数据库是一组容器的管理单元。 数据库包含一组不
 |分配或提供给特定容器的 RU 数|无保证。 为给定容器分配的 RU 数取决于多种属性。 属性可以是为共享吞吐量的容器选择的分区键、工作负荷的分布，以及容器的数量。 |对容器配置的所有 RU 专门保留给该容器使用。|
 |容器的最大存储|不受限制。|不受限制。|
 |容器的每个逻辑分区的最大吞吐量|10K RU|10K RU|
-|容器的每个逻辑分区的最大存储（数据 + 索引）|10 GB|10 GB|
+|容器的每个逻辑分区的最大存储（数据 + 索引）|20 GB|20 GB|
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -130,4 +118,4 @@ Azure Cosmos 数据库是一组容器的管理单元。 数据库包含一组不
 * 了解[如何对 Azure Cosmos 容器预配吞吐量](how-to-provision-container-throughput.md)。
 * 了解[如何对 Azure Cosmos 数据库预配吞吐量](how-to-provision-database-throughput.md)。
 
-<!-- Update_Description: udpate meta properties, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/10/2019
+ms.date: 04/23/2020
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 96b763f2f80266dbdec868cd15d92f9482d7cd55
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: b0ce5ead438344c1902675899c21e9cbba63b565
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79290966"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126537"
 ---
 # <a name="create-list-or-delete-a-user-assigned-managed-identity-using-the-azure-cli"></a>使用 Azure CLI 创建、列出或删除用户分配的托管标识
 
@@ -35,11 +35,15 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 - 如果还没有 Azure 帐户，请先[注册试用帐户](https://www.azure.cn/pricing/1rmb-trial/)，然后再继续。
 - 若要运行 CLI 脚本示例，可以[安装 Azure CLI 的最新版本](/cli/install-azure-cli)（2.0.13 或更高版本）。 使用与要在其下部署用户分配的托管标识的 Azure 订阅关联的帐户通过 `az login` 登录到 Azure。
 
+
+> [!NOTE]
+> 若要在通过 CLI 使用应用服务主体时修改用户权限，必须在 CLI 对 Graph API 执行 GET 请求时在 Azure AD Graph API 中提供服务主体附加权限。 否则，你可能最终收到“权限不足，无法完成操作”消息。 为此，你需要进入 Azure Active Directory 中的“应用注册”，选择你的应用，单击“API 权限”，向下滚动并选择“Azure Active Directory Graph”。 从那里选择“应用程序权限”，然后添加适当的权限。 
+
 ## <a name="create-a-user-assigned-managed-identity"></a>创建用户分配的托管标识 
 
 若要创建用户分配的托管标识，你的帐户需要[托管标识参与者](/role-based-access-control/built-in-roles#managed-identity-contributor)角色分配。
 
-使用 [az identity create](https://docs.microsoft.com/cli/azure/identity#az-identity-create) 命令创建用户分配的托管标识。 `-g` 参数指定要从中创建用户分配的托管标识的资源组，`-n` 参数指定其名称。 将 `<RESOURCE GROUP>` 和 `<USER ASSIGNED IDENTITY NAME>` 参数值替换为自己的值：
+使用 [az identity create](https://docs.microsoft.com/en-us/cli/azure/identity#az-identity-create) 命令创建用户分配的托管标识。 `-g` 参数指定要从中创建用户分配的托管标识的资源组，`-n` 参数指定其名称。 将 `<RESOURCE GROUP>` 和 `<USER ASSIGNED IDENTITY NAME>` 参数值替换为自己的值：
 
 [!INCLUDE [ua-character-limit](../../../includes/managed-identity-ua-character-limits.md)]
 
@@ -50,7 +54,7 @@ az identity create -g <RESOURCE GROUP> -n <USER ASSIGNED IDENTITY NAME>
 
 若要列出/读取用户分配的托管标识，你的帐户需要[托管标识操作员](/role-based-access-control/built-in-roles#managed-identity-operator)或[托管标识参与者](/role-based-access-control/built-in-roles#managed-identity-contributor)角色分配。
 
-若要列出用户分配的托管标识，请使用 [az identity list](https://docs.microsoft.com/cli/azure/identity#az-identity-list) 命令。 将 `<RESOURCE GROUP>` 替换为自己的值：
+若要列出用户分配的托管标识，请使用 [az identity list](https://docs.microsoft.com/en-us/cli/azure/identity#az-identity-list) 命令。 将 `<RESOURCE GROUP>` 替换为自己的值：
 
 ```azurecli
 az identity list -g <RESOURCE GROUP>
@@ -63,7 +67,7 @@ az identity list -g <RESOURCE GROUP>
 
 若要删除用户分配的托管标识，你的帐户需要[托管标识参与者](/role-based-access-control/built-in-roles#managed-identity-contributor)角色分配。
 
-若要删除用户分配的托管标识，请使用 [az identity delete](https://docs.microsoft.com/cli/azure/identity#az-identity-delete) 命令。  -n 参数指定其名称，-g 参数指定创建了用户分配的托管标识的资源组。 将 `<USER ASSIGNED IDENTITY NAME>` 和 `<RESOURCE GROUP>` 参数值替换为自己的值：
+若要删除用户分配的托管标识，请使用 [az identity delete](https://docs.microsoft.com/en-us/cli/azure/identity#az-identity-delete) 命令。  -n 参数指定其名称，-g 参数指定创建了用户分配的托管标识的资源组。 将 `<USER ASSIGNED IDENTITY NAME>` 和 `<RESOURCE GROUP>` 参数值替换为自己的值：
 
  ```azurecli
 az identity delete -n <USER ASSIGNED IDENTITY NAME> -g <RESOURCE GROUP>
@@ -73,10 +77,10 @@ az identity delete -n <USER ASSIGNED IDENTITY NAME> -g <RESOURCE GROUP>
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure CLI 标识命令的完整列表，请参阅 [az identity](https://docs.microsoft.com/cli/azure/identity)。
+有关 Azure CLI 标识命令的完整列表，请参阅 [az identity](https://docs.microsoft.com/en-us/cli/azure/identity)。
 
 有关如何向 Azure VM 分配用户分配的托管标识的信息，请参阅[使用 Azure CLI 在 Azure VM 上配置 Azure 资源的托管标识](qs-configure-cli-windows-vm.md#user-assigned-managed-identity)
 
 
  
-<!-- Update_Description: link update -->
+

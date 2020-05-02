@@ -1,26 +1,24 @@
 ---
 title: 错误和异常 (MSAL)
 titleSuffix: Microsoft identity platform
-description: 了解如何处理 MSAL 应用程序中的错误和异常以及声明质询。
+description: 了解如何处理 MSAL 应用程序中的错误和异常、条件访问与声明质询。
 services: active-directory
 author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/24/2020
+ms.date: 04/22/2020
 ms.author: v-junlch
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 94c882fe43ef9235b69ec02d700227d8e277d49d
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.openlocfilehash: c174357a930ccb88d81a7555236edaecc28fceb7
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77653444"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126507"
 ---
 # <a name="handle-msal-exceptions-and-errors"></a>处理 MSAL 异常和错误
 
@@ -32,7 +30,7 @@ Microsoft 身份验证库 (MSAL) 中的异常旨在帮助应用开发人员进�
 
 处理异常和错误时，可以使用异常类型本身和错误代码来区分不同的异常。  有关错误代码的列表，请参阅[身份验证和授权错误代码](reference-aadsts-error-codes.md)。
 
-在登录体验中，你可能会遇到有关许可、令牌颁发和兑换以及用户属性的错误。
+在登录体验中，你可能会遇到有关许可、条件访问（MFA、基于位置的限制）、令牌颁发和兑换以及用户属性的错误。
 
 有关应用错误处理的更多详细信息，请参阅以下与你所用语言匹配的部分。
 
@@ -50,7 +48,7 @@ Microsoft 身份验证库 (MSAL) 中的异常旨在帮助应用开发人员进�
 
 | 异常 | 错误代码 | 缓解措施|
 | --- | --- | --- |
-| [MsalUiRequiredException](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.msaluirequiredexception?view=azure-dotnet) | AADSTS65001：用户或管理员尚未许可使用名为“{appName}”、ID 为“{appId}”的应用程序。 针对此用户和资源发送交互式授权请求。| 需要先获取用户的许可。 如果未使用 .NET Core（它没有任何 Web UI），请调用 `AcquireTokeninteractive`（仅一次）。 如果你使用 .NET Core 或者不希望执行 `AcquireTokenInteractive`，则用户可以导航到某个 URL 来提供许可： https://login.partner.microsoftonline.cn/common/oauth2/v2.0/authorize?client_id={clientId}&response_type=code&scope=user.read 。 若要调用 `AcquireTokenInteractive`，请使用 `app.AcquireTokenInteractive(scopes).WithAccount(account).WithClaims(ex.Claims).ExecuteAsync();`|
+| [MsalUiRequiredException](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.msaluirequiredexception?view=azure-dotnet) | AADSTS65001：用户或管理员尚未许可使用名为“{appName}”、ID 为“{appId}”的应用程序。 针对此用户和资源发送交互式授权请求。| 需要先获取用户的许可。 如果未使用 .NET Core（它没有任何 Web UI），请调用 `AcquireTokeninteractive`（仅一次）。 如果你使用 .NET Core 或者不希望执行 `AcquireTokenInteractive`，则用户可以导航到某个 URL 来提供许可：`https://login.partner.microsoftonline.cn/common/oauth2/v2.0/authorize?client_id={clientId}&response_type=code&scope=user.read`。 若要调用 `AcquireTokenInteractive`，请使用 `app.AcquireTokenInteractive(scopes).WithAccount(account).WithClaims(ex.Claims).ExecuteAsync();`|
 | [MsalUiRequiredException](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.msaluirequiredexception?view=azure-dotnet) | AADSTS50079：用户必须使用多重身份验证 (MFA)。| 无缓解措施。 如果为租户配置了 MFA 并且 Azure Active Directory (AAD) 决定强制实施 MFA，则需要回退到 `AcquireTokenInteractive` 或 `AcquireTokenByDeviceCode` 等交互式流。|
 | [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet) |AADSTS90010：不支持通过 */common* 或 */consumers* 终结点的授予类型。 请使用 */organizations* 或特定于租户的终结点。 使用了 */common*。| 根据 Azure AD 发出的消息中所述，颁发机构需要使用一个租户或 */organizations*。|
 | [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet) | AADSTS70002：请求正文必须包含以下参数：`client_secret or client_assertion`。| 如果应用程序未注册为 Azure AD 中的公共客户端应用程序，则可能会引发此异常。 在 Azure 门户中编辑应用程序的清单，并将 `allowPublicClient` 设置为 `true`。 |
@@ -500,6 +498,58 @@ MSAL 生成的所有错误将连同 `MSALErrorDomain` 域一起返回。
     application.acquireTokenSilent(with: silentParameters, completionBlock: completionBlock)
 ```
 
+---
+
+## <a name="conditional-access-and-claims-challenges"></a>条件访问和声明质询
+
+以无提示方式获取令牌时，如果你尝试访问的 API 需要[条件访问声明质询](../azuread-dev/conditional-access-dev-guide.md)（例如 MFA 策略），则应用程序可能会收到错误。
+
+处理此错误的模式是使用 MSAL 以交互方式获取令牌。 以交互方式获取令牌会提示用户，并使他们能够满足所需的条件访问策略。
+
+在某些情况下调用需要条件访问的 API 时，API 返回的错误中可能会包含声明质询。 例如，如果条件访问策略要求使用托管设备 (Intune)，则错误将类似于 [AADSTS53000:需要管理你的设备才能访问此资源](reference-aadsts-error-codes.md)。 在这种情况下，可以在令牌获取调用中传递声明，使系统提示用户，以满足相应的策略。
+
+### <a name="net"></a>.NET
+
+从 MSAL.NET 调用需要条件访问的 API 时，应用程序需要处理声明质询异常。 此错误将显示为 [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet)，其中的 [Claims](/dotnet/api/microsoft.identity.client.msalserviceexception.claims?view=azure-dotnet) 属性不为空。
+
+若要处理声明质询，需要使用 `PublicClientApplicationBuilder` 类的 `.WithClaim()` 方法。
+
+### <a name="javascript"></a>Javascript
+
+使用 MSAL.js 以无提示方式获取令牌时（使用 `acquireTokenSilent`），如果你尝试访问的 API 需要[条件访问声明质询](../azuread-dev/conditional-access-dev-guide.md)（例如 MFA 策略），则应用程序可能会收到错误。
+
+处理此错误的模式是发出交互式调用（例如 `acquireTokenPopup` 或 `acquireTokenRedirect`）以获取 MSAL.js 中的令牌，如以下示例所示：
+
+```javascript
+myMSALObj.acquireTokenSilent(accessTokenRequest).then(function (accessTokenResponse) {
+    // call API
+}).catch( function (error) {
+    if (error instanceof InteractionRequiredAuthError) {
+        // Extract claims from error message
+        accessTokenRequest.claimsRequest = extractClaims(error.errorMessage);
+        // call acquireTokenPopup in case of InteractionRequiredAuthError failure
+        myMSALObj.acquireTokenPopup(accessTokenRequest).then(function (accessTokenResponse) {
+            // call API
+        }).catch(function (error) {
+            console.log(error);
+        });
+    }
+});
+```
+
+以交互方式获取令牌会提示用户，并使他们能够满足所需的条件访问策略。
+
+调用需要条件访问的 API 时，API 返回的错误中可能会包含声明质询。 在这种情况下，可将错误中返回的声明传递到 `AuthenticationParameters.ts` 类的 `claimsRequest` 字段，以符合相应的策略。 
+
+有关更多详细信息，请参阅[请求其他声明](active-directory-optional-claims.md)。
+
+### <a name="msal-for-ios-and-macos"></a>适用于 iOS 和 MacOS 的 MSAL
+
+适用于 iOS 和 macOS 的 MSAL 允许你在交互式和无提示令牌获取方案中请求特定声明。
+
+若要请求自定义声明，请在 `MSALSilentTokenParameters` 或 `MSALInteractiveTokenParameters`中指定 `claimsRequest`。
+
+有关详细信息，请参阅[使用适用于 iOS 和 macOS 的 MSAL 请求自定义声明](request-custom-claims.md)。
 
 ## <a name="retrying-after-errors-and-exceptions"></a>出现错误和异常后重试
 
@@ -553,4 +603,3 @@ do
 } while (retry);
 ```
 
-<!-- Update_Description: update metedata properties -->

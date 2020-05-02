@@ -12,13 +12,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: vanto
 origin.date: 03/09/2020
-ms.date: 03/30/2020
-ms.openlocfilehash: 7eba07e81a97885a0e5d0ea7135e4fe248c5b575
-ms.sourcegitcommit: 90660563b5d65731a64c099b32fb9ec0ce2c51c6
+ms.date: 04/27/2020
+ms.openlocfilehash: c8c1e27784c05fc6fa1032219a0ca3e8c08651ec
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80341803"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82127030"
 ---
 # <a name="azure-sql-database-and-data-warehouse-network-access-controls"></a>Azure SQL 数据库和数据仓库网络访问控制
 
@@ -28,9 +28,9 @@ ms.locfileid: "80341803"
 > [!IMPORTANT]
 > 本文不  适用于 **Azure SQL 数据库托管实例**。 有关网络配置的详细信息，请参阅[连接到托管实例](sql-database-managed-instance-connect-app.md)。
 
-从 [Azure 门户](sql-database-single-database-get-started.md)创建新的 Azure SQL Server 时，结果是格式为“yourservername.database.chinacloudapi.cn”  的公共终结点。
+从 [Azure 门户](sql-database-single-database-get-started.md)新建 Azure SQL Server 时，结果是格式为“yourservername.database.chinacloudapi.cn”  的公共终结点。
 
-你可以使用以下网络访问控制来有选择地允许通过公共终结点访问 SQl 数据库：
+你可以使用以下网络访问控制来有选择地允许通过公共终结点访问 SQL 数据库：
 - 允许 Azure 服务：设置为“打开”时，Azure 边界内的其他资源（例如 Azure 虚拟机）可以访问 SQL 数据库
 
 - IP 防火墙规则：使用此功能可以显式允许从特定的 IP 地址（例如，从本地计算机）建立连接
@@ -52,10 +52,10 @@ ms.locfileid: "80341803"
 在许多情况下，“打开”设置的访问权限宽松度会超过大多数客户的需要。他们可能希望将此设置指定为“关闭”，并将其替换为限制性更强的 IP 防火墙规则或虚拟网络防火墙规则。   这样做会影响 Azure 中的 VM 上运行的以下功能，这些 VM 不在你的 VNet 中，因此会通过 Azure IP 地址连接到 SQL 数据库。
 
 ### <a name="import-export-service"></a>导入/导出服务
-当“允许 Azure 服务访问服务器”设置为“关闭”时，导入导出服务无法正常工作。  不过，可通过以下方式解决此问题：[在 Azure VM 中手动运行 sqlpackage.exe，或者直接在代码中使用 DACFx API 执行导出](/sql-database/import-export-from-vm)。
+当“允许访问 Azure 服务”设置为“关闭”时，导入/导出服务无法正常工作。   不过，可通过以下方式解决此问题：[在 Azure VM 中手动运行 sqlpackage.exe，或者直接在代码中使用 DACFx API 执行导出](/sql-database/import-export-from-vm)。
 
 ### <a name="data-sync"></a>数据同步
-若要在“允许 Azure 服务访问服务器”设置为“关闭”的情况下使用数据同步功能，需要创建单个防火墙规则条目，以便为托管**中心**数据库的区域，从 **SQL 服务标记**[添加 IP 地址](sql-database-server-level-firewall-rule.md)。 
+若要在“允许访问 Azure 服务”设置为“关闭”的情况下使用数据同步功能，需要创建单个防火墙规则条目，以便从托管中心  数据库的区域的 SQL 服务标记  [添加 IP 地址](sql-database-server-level-firewall-rule.md)。  
 将这些服务器级防火墙规则添加到同时托管**中心**数据库和**成员**数据库（可能位于不同的区域）的逻辑服务器
 
 使用以下 PowerShell 脚本生成与中国东部 2 区域的 SQL 服务标记对应的 IP 地址

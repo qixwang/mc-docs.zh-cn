@@ -9,22 +9,21 @@ ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-origin.date: 09/06/2018
-ms.date: 11/28/2019
+ms.date: 04/23/2020
 ms.author: v-junlch
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ed2a15fe3e7371d57a578169b5cd0572f71abb48
-ms.sourcegitcommit: 9597d4da8af58009f9cef148a027ccb7b32ed8cf
+ms.openlocfilehash: d5edc5acb4a6e2428779177c13d535506c0e0243
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74655381"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126378"
 ---
 # <a name="assign-or-remove-licenses-in-the-azure-active-directory-portal"></a>在 Azure Active Directory 门户中分配或删除许可证
 
-许多 Azure Active Directory (Azure AD) 服务要求针对该服务向每个用户或组（以及关联成员）授予许可。 只有具有活动许可证的用户才能访问和使用符合该要求的已许可 Azure AD 服务。
+许多 Azure Active Directory (Azure AD) 服务要求针对该服务向每个用户或组（以及关联成员）授予许可。 只有具有活动许可证的用户才能访问和使用符合该要求的已许可 Azure AD 服务。 许可证按租户应用，不能转让给其他租户。 
 
 ## <a name="available-license-plans"></a>可用许可计划
 
@@ -137,6 +136,9 @@ ms.locfileid: "74655381"
 1. 选择“删除许可证”  。
 
     ![“许可的组”页，突出显示了“删除许可证”选项](./media/license-users-groups/license-products-group-blade-with-remove-option-highlight.png)
+    
+    > [!NOTE]
+    > 当同步到 Azure AD 的本地用户帐户超出了同步的范围，或者当同步被删除时，该用户将在 Azure AD 中被软删除。 发生这种情况时，直接分配给用户或通过基于组的许可分配给用户的许可证将标记为“已挂起”  ，而不是“已删除”  。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -148,4 +150,3 @@ ms.locfileid: "74655381"
 
 - [添加或更改个人资料信息](active-directory-users-profile-azure-portal.md)
 
-<!-- Update_Description: wording update -->
