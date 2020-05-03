@@ -2,14 +2,14 @@
 author: erhopf
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 07/30/2019
-ms.author: erhopf
-ms.openlocfilehash: ba125359accd89ef26ea475bf40883a79a70153f
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 04/20/2020
+ms.author: v-tawe
+ms.openlocfilehash: a03a5751525484d73510ea67b4fd741af46355bc
+ms.sourcegitcommit: d6db729fea7d491d876d491f19ff89ef52384329
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "71151855"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82516016"
 ---
 以下限制适用于每个 Azure 订阅的认知服务资源数。 每个认知服务可能都有其他限制，有关详细信息，请参阅 [Azure 认知服务](/cognitive-services/)。
 

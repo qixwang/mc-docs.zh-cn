@@ -11,15 +11,17 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 origin.date: 09/13/2019
-ms.date: 03/02/2019
-ms.openlocfilehash: 665d77b4d57469af566243d729a14e0cfd244acb
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/11/2019
+ms.openlocfilehash: 9d99ee45638fd9ee5c2e0371e34040e233c75b9a
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77653683"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82197852"
 ---
 # <a name="copy-data-to-an-azure-cognitive-search-index-using-azure-data-factory"></a>使用 Azure 数据工厂将数据复制到 Azure 认知搜索索引
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文概述了如何使用 Azure 数据工厂中的复制活动将数据复制到 Azure 认知搜索索引。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 

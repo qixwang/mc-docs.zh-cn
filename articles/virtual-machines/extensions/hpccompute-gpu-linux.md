@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 origin.date: 02/11/2019
-ms.date: 11/11/2019
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: 457b8ea854d545de1fe9e0acbe668eba3fdc01fe
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: fc60222086b0367dd70aeba97dabe73d3f3f3283
+ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292811"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82596027"
 ---
 # <a name="nvidia-gpu-driver-extension-for-linux"></a>适用于 Linux 的 NVIDIA GPU 驱动程序扩展
 
@@ -146,15 +146,15 @@ Set-AzVMExtension
 以下示例镜像了上述 Azure 资源管理器和 PowerShell 示例，并添加了自定义设置作为非默认驱动程序安装的示例。 具体而言，它更新 OS 内核并安装特定的 CUDA 工具包版本驱动程序。
 
 ```azurecli
-az vm extension set `
-  --resource-group myResourceGroup `
-  --vm-name myVM `
-  --name NvidiaGpuDriverLinux `
-  --publisher Microsoft.HpcCompute `
-  --version 1.2 `
-  --settings '{ `
-    "updateOS": true, `
-    "driverVersion": "9.1.85", `
+az vm extension set \
+  --resource-group myResourceGroup \
+  --vm-name myVM \
+  --name NvidiaGpuDriverLinux \
+  --publisher Microsoft.HpcCompute \
+  --version 1.2 \
+  --settings '{ \
+    "updateOS": true, \
+    "driverVersion": "9.1.85", \
   }'
 ```
 
@@ -199,4 +199,4 @@ az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 
 有关 N 系列 VM 的详细信息，请参阅 [GPU 优化虚拟机大小](../linux/sizes-gpu.md)。
 
-<!-- Update_Description: wording update, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

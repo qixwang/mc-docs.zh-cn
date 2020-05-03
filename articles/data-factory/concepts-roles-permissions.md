@@ -2,7 +2,7 @@
 title: Azure 数据工厂的角色和权限
 description: 介绍创建数据工厂并使用子资源所需的角色和权限。
 origin.date: 11/5/2018
-ms.date: 03/02/2020
+ms.date: 05/11/2020
 ms.topic: conceptual
 ms.service: data-factory
 services: data-factory
@@ -11,14 +11,17 @@ ms.workload: data-services
 author: WenJason
 ms.author: v-jay
 manager: digimobile
-ms.openlocfilehash: f40c84527eb2b8d2f9f404636031c23db4249dc3
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: d44d4e121c0fdfcbabd0385cef242fd9df45170d
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77653256"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82198247"
 ---
 # <a name="roles-and-permissions-for-azure-data-factory"></a>Azure 数据工厂的角色和权限
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+
 
 本文介绍创建和管理 Azure 数据工厂资源所需的角色，以及由这些角色授予的权限。
 

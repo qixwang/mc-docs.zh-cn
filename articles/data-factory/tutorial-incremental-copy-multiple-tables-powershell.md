@@ -11,15 +11,17 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 origin.date: 01/30/2020
-ms.date: 03/23/2020
-ms.openlocfilehash: 33ba25219f9ecd22b21442dce2c1261e357b09a9
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/11/2020
+ms.openlocfilehash: ece6f354d202003e22a741d12293984600c60f1e
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79497104"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82198122"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>以递增方式将数据从 SQL Server 中的多个表加载到 Azure SQL 数据库
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 在本教程中，你将创建一个带管道的 Azure 数据工厂，该管道将增量数据从本地 SQL Server 中的多个表加载到 Azure SQL 数据库。    
 

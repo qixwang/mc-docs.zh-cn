@@ -11,15 +11,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 origin.date: 7/12/2019
-ms.date: 01/06/2020
-ms.openlocfilehash: a1f7bf9b447da6260b775cd2993e61354df6c0ec
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/11/2020
+ms.openlocfilehash: 96c7fe4dea26472021e3cadb4643b0600fff82ef
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75623903"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82197999"
 ---
 # <a name="move-files-with-azure-data-factory"></a>使用 Azure 数据工厂移动文件
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文介绍一个解决方案模板，使用它可以在基于文件的存储之间，将一个文件夹中的文件移到另一个文件夹。 此模板的常见使用场景之一：不断地将文件放入源存储的登陆文件夹。 通过创建计划触发器，ADF 管道可以定期将这些文件从源存储移到目标存储。  ADF 管道实现“移动文件”的方式是从登陆文件夹中获取文件，将每个文件复制到目标存储中的另一个文件夹，然后从源存储中的登陆文件夹删除相同的文件。
 

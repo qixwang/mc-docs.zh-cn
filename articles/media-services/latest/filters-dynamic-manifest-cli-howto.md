@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 origin.date: 06/13/2019
-ms.date: 09/23/2019
+ms.date: 04/13/2020
 ms.author: v-jay
 ms.custom: seodec18
-ms.openlocfilehash: e6221900b21e42b499f08fe12dcb4dc8ce135ca9
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 7fac9609af0c13aeb65e99777b7b66c23e0e7db2
+ms.sourcegitcommit: 95efd248f5ee3701f671dbd5cfe0aec9c9959a24
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "71125597"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82507706"
 ---
 # <a name="creating-filters-with-cli"></a>使用 CLI 创建筛选器 
 
@@ -28,7 +28,7 @@ ms.locfileid: "71125597"
 
 有关此功能及其使用方案的详细说明，请参阅[动态清单](filters-dynamic-manifest-overview.md)和[筛选器](filters-concept.md)。
 
-本主题说明如何为点播视频资产配置筛选器，并使用适用于媒体服务 v3 的 CLI 创建[帐户筛选器](/cli/ams/account-filter?view=azure-cli-latest)和[资产筛选器](/cli/ams/asset-filter?view=azure-cli-latest)。 
+本主题说明如何为点播视频资产配置筛选器，并使用适用于媒体服务 v3 的 CLI 创建[帐户筛选器](https://docs.microsoft.com/cli/azure/ams/account-filter?view=azure-cli-latest)和[资产筛选器](https://docs.microsoft.com/cli/azure/ams/asset-filter?view=azure-cli-latest)。 
 
 > [!NOTE]
 > 请确保查看 [presentationTimeRange](filters-concept.md#presentationtimerange)。
@@ -81,7 +81,7 @@ ms.locfileid: "71125597"
 
 ## <a name="create-account-filters"></a>创建帐户筛选器
 
-以下 [az ams account-filter](/cli/ams/account-filter?view=azure-cli-latest) 命令创建帐户筛选器，其中包含[之前定义的](#define-a-filter)筛选器曲目选项。 
+以下 [az ams account-filter](https://docs.microsoft.com/cli/azure/ams/account-filter?view=azure-cli-latest) 命令创建帐户筛选器，其中包含[之前定义的](#define-a-filter)筛选器曲目选项。 
 
 该命令允许你传递一个可选 `--tracks` 参数，该参数包含表示曲目选择的 JSON。  使用 @{file} 从文件加载 JSON，请指定整个文件路径：
 
@@ -93,7 +93,7 @@ az ams account-filter create -a amsAccount -g resourceGroup -n filterName --trac
 
 ## <a name="create-asset-filters"></a>创建资产筛选器
 
-以下 [az ams asset-filter](/cli/ams/asset-filter?view=azure-cli-latest) 命令创建资产筛选器，其中包含[之前定义的](#define-a-filter)筛选器曲目选项。 
+以下 [az ams asset-filter](https://docs.microsoft.com/cli/azure/ams/asset-filter?view=azure-cli-latest) 命令创建资产筛选器，其中包含[之前定义的](#define-a-filter)筛选器曲目选项。 
 
 ```azurecli
 az ams asset-filter create -a amsAccount -g resourceGroup -n filterName --asset-name assetName --tracks @tracks.json
@@ -133,4 +133,4 @@ az ams streaming-locator create -a amsAccount -g resourceGroup -n streamingLocat
 
 ## <a name="see-also"></a>另请参阅
 
-[Azure CLI](/cli/ams?view=azure-cli-latest)
+[Azure CLI](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)

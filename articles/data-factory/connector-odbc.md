@@ -10,16 +10,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 origin.date: 01/09/2020
-ms.date: 03/02/2020
+ms.date: 05/11/2020
 ms.author: v-jay
-ms.openlocfilehash: 2abea7e67b8ab55b5feecc4c9472cce6a1ea1819
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 45013082c2be69d075b02339c9ee8f724342e14d
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79291767"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82198290"
 ---
 # <a name="copy-data-from-and-to-odbc-data-stores-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 ODBC 数据存储复制数据
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文概述了如何在 Azure 数据工厂中使用复制活动从/向 ODBC 数据存储复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 

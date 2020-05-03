@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 origin.date: 01/16/2018
-ms.date: 04/06/2019
+ms.date: 05/11/2020
 ms.author: v-yiso
-ms.openlocfilehash: ed780e56020703398c42a344a05bb55765a2eb4a
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: ed91f924de1ee2abbcc571a8530f7eb7cad4df23
+ms.sourcegitcommit: 95efd248f5ee3701f671dbd5cfe0aec9c9959a24
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80343576"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82507739"
 ---
 # <a name="use-the-iot-extension-for-azure-cli-for-azure-iot-hub-device-management"></a>针对 Azure IoT 中心设备管理，使用适用于 Azure CLI 的 IoT 扩展
 
@@ -74,13 +74,13 @@ ms.locfileid: "80343576"
 
 通过运行以下命令登录到 Azure 帐户：
 
-```bash
+```azurecli
 az login
 ```
 
 ## <a name="direct-methods"></a>直接方法
 
-```bash
+```azurecli
 az iot hub invoke-device-method --device-id <your device id> --hub-name <your hub name> --method-name <the method name> --method-payload <the method payload>
 ```
 
@@ -88,7 +88,7 @@ az iot hub invoke-device-method --device-id <your device id> --hub-name <your hu
 
 通过运行以下命令将所需属性间隔设置为 3000：
 
-```bash
+```azurecli
 az iot hub device-twin update -n <your hub name> -d <your device id> --set properties.desired.interval = 3000
 ```
 
@@ -98,7 +98,7 @@ az iot hub device-twin update -n <your hub name> -d <your device id> --set prope
 
 通过运行以下命令获取报告的设备属性：
 
-```bash
+```azurecli
 az iot hub device-twin show -n <your hub name> -d <your device id>
 ```
 
@@ -108,13 +108,13 @@ az iot hub device-twin show -n <your hub name> -d <your device id>
 
 通过运行以下命令显示设备的标记和属性：
 
-```bash
+```azurecli
 az iot hub device-twin show --hub-name <your hub name> --device-id <your device id>
 ```
 
 通过运行以下命令向设备添加字段角色 = 温度和湿度：
 
-```bash
+```azurecli
 az iot hub device-twin update --hub-name <your hub name> --device-id <your device id> --set tags = '{"role":"temperature&humidity"}}'
 ```
 
@@ -122,13 +122,13 @@ az iot hub device-twin update --hub-name <your hub name> --device-id <your devic
 
 通过运行以下命令查询角色标记 =“温度和湿度”的设备：
 
-```bash
+```azurecli
 az iot hub query --hub-name <your hub name> --query-command "SELECT * FROM devices WHERE tags.role = 'temperature&humidity'"
 ```
 
 通过运行以下命令查询除角色标记 =“温度和湿度”的设备以外的所有设备：
 
-```bash
+```azurecli
 az iot hub query --hub-name <your hub name> --query-command "SELECT * FROM devices WHERE tags.role != 'temperature&humidity'"
 ```
 

@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
 origin.date: 06/13/2019
-ms.date: 04/06/2020
+ms.date: 04/13/2020
 ms.author: v-jay
-ms.openlocfilehash: d2a24417a64cd38ed6e5a9cb6e55fa559f8caaf4
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 7348481ef71ef56622b2a4beae1e2fccef0ecf15
+ms.sourcegitcommit: 95efd248f5ee3701f671dbd5cfe0aec9c9959a24
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80625762"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82507617"
 ---
 # <a name="tutorial-stream-live-with-media-services"></a>教程：使用媒体服务进行实时流式传输
 
 > [!NOTE]
-> 尽管本教程使用了 [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet) 示例，但 [REST API](https://docs.microsoft.com/rest/api/media/liveevents)、[CLI](/cli/ams/live-event?view=azure-cli-latest) 或其他受支持的 [SDK](media-services-apis-overview.md#sdks) 的常规步骤是相同的。
+> 尽管本教程使用了 [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet) 示例，但 [REST API](https://docs.microsoft.com/rest/api/media/liveevents)、[CLI](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest) 或其他受支持的 [SDK](media-services-apis-overview.md#sdks) 的常规步骤是相同的。
 
 在 Azure 媒体服务中，[直播活动](https://docs.microsoft.com/rest/api/media/liveevents)负责处理实时传送视频流内容。 直播活动提供输入终结点（引入 URL），然后由你将该终结点提供给实时编码器。 直播活动从实时编码器接收实时输入流，并通过一个或多个[流式处理终结点](https://docs.microsoft.com/rest/api/media/streamingendpoints)使其可用于流式处理。 直播活动还提供可用于预览的预览终结点（预览 URL），并在进一步处理和传递流之前对流进行验证。 本教程演示如何使用 .NET Core 创建**直通**类型的直播活动。
 

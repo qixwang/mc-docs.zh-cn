@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 origin.date: 03/14/2019
-ms.date: 03/04/2020
+ms.date: 04/13/2020
 ms.author: v-jay
 ms.reviewer: kilroyh;yanmf;juliako
-ms.openlocfilehash: 78c2cc569cf42950cdc251fd9b804be4a7a99aac
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: a93e12793250984791881ef64225f93a082f4fc8
+ms.sourcegitcommit: 95efd248f5ee3701f671dbd5cfe0aec9c9959a24
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78412456"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82507698"
 ---
 # <a name="design-of-a-content-protection-system-with-access-control-using-azure-media-services"></a>使用 Azure 媒体服务设计带访问控制的内容保护系统 
 
@@ -310,7 +310,7 @@ DRM 许可证传送服务始终会检查来自 Azure AD 的当前/有效公钥�
 * Azure AD 对应用程序进行身份验证并返回用来调用 Web API 的 JWT 访问令牌。
 * 通过 HTTPS，Web 应用程序使用返回的 JWT 访问令牌在发往 Web API 的请求的“Authorization”标头中添加一个具有“Bearer”限定符的 JWT 字符串。 然后，Web API 对 JWT 进行验证。 如果验证成功，则返回所需的资源。
 
-在此应用程序标识流中，Web API 相信 Web 应用程序已对用户进行了身份验证。 因此，此模式称为受信任的子系统。 [授权流示意图](/active-directory/active-directory-protocols-oauth-code)描绘了授权代码授予流的工作原理。
+在此应用程序标识流中，Web API 相信 Web 应用程序已对用户进行了身份验证。 因此，此模式称为受信任的子系统。 [授权流示意图](/active-directory/azuread-dev/v1-protocols-oauth-code)描绘了授权代码授予流的工作原理。
 
 在具有令牌限制的许可证获取中，遵循相同的受信任子系统模式。 媒体服务中的许可证传送服务是 Web API 资源，即 Web 应用程序需要访问的“后端资源”。 那么，访问令牌位于何处？
 

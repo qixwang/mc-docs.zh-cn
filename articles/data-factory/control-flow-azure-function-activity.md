@@ -11,16 +11,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 origin.date: 01/09/2019
-ms.date: 03/23/2020
-ms.openlocfilehash: e822f2c86e8f1b4f230700defb88d68eb204dc6a
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/11/2020
+ms.openlocfilehash: 804bc414f7b6841339b309218d66b58d27256d2f
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79497240"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82197794"
 ---
 # <a name="azure-function-activity-in-azure-data-factory"></a>Azure 数据工厂中的 Azure 函数活动
-
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 通过 Azure 函数活动可以在数据工厂管道中运行 [Azure Functions](../azure-functions/functions-overview.md)。 若要运行 Azure 函数，需要创建链接服务连接以及指定计划执行的 Azure 函数的活动。
 
 有关此功能的 8 分钟简介和演示，请观看以下视频：

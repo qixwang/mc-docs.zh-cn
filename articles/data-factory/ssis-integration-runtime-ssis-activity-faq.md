@@ -11,15 +11,17 @@ ms.reviewer: sawinark
 manager: digimobile
 ms.custom: seo-lt-2019
 origin.date: 04/15/2019
-ms.date: 03/23/2020
-ms.openlocfilehash: d28b3d6b096cc27a2a7df2c54e167e1b280eb707
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/11/2020
+ms.openlocfilehash: 9267448d5f24ec51aa2aefa23a0d5deb7dbbb6ec
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79497317"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82197992"
 ---
 # <a name="troubleshoot-package-execution-in-the-ssis-integration-runtime"></a>排查 SSIS Integration Runtime 中的包执行问题
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 本文描述了在执行 SSIS Integration Runtime 中的 SQL Server Integration Services (SSIS) 包时可能遇到的最常见错误， 并描述了潜在的原因，以及解决这些错误的操作。
 

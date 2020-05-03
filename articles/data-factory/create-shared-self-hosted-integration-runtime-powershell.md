@@ -11,15 +11,17 @@ author: WenJason
 manager: digimobile
 ms.custom: seo-lt-2019
 origin.date: 10/31/2018
-ms.date: 03/02/2020
-ms.openlocfilehash: 7eb4a01735fb7d663660e7b277c6750ccc356767
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/11/2020
+ms.openlocfilehash: fe08e589875965084eb602802b8b9e53f407cdc7
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77653508"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82197767"
 ---
 # <a name="create-a-shared-self-hosted-integration-runtime-in-azure-data-factory"></a>在 Azure 数据工厂中创建共享自承载集成运行时
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 本指南介绍如何在 Azure 数据工厂中创建共享自承载集成运行时。 然后可在另一个数据工厂中使用共享自托管集成运行时。
 

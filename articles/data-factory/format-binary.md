@@ -8,16 +8,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 origin.date: 11/26/2019
-ms.date: 01/06/2020
+ms.date: 05/11/2020
 ms.author: v-jay
-ms.openlocfilehash: 2a9d731ee0047dbc026faa292f0f5f4bf1a7961d
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 31e73f83ff7b29574337173bea764ae595562c74
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79293178"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82197796"
 ---
 # <a name="binary-format-in-azure-data-factory"></a>Azure 数据工厂中的二进制格式
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 以下连接器支持二进制格式：[Amazon S3](connector-amazon-simple-storage-service.md)、[Azure Blob](connector-azure-blob-storage.md)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、[Azure 文件存储](connector-azure-file-storage.md)、[文件系统](connector-file-system.md)、[FTP](connector-ftp.md)、[Google 云存储](connector-google-cloud-storage.md)、[HDFS](connector-hdfs.md)、[HTTP](connector-http.md) 和 [SFTP](connector-sftp.md)。
 

@@ -12,15 +12,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 origin.date: 12/24/2018
-ms.date: 01/06/2020
-ms.openlocfilehash: 80052b04542a56b370dbf6726a8e4623aeb8005e
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/11/2020
+ms.openlocfilehash: b3008931467d32bce028418fc8d7d4c90b64c832
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75623912"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82198218"
 ---
 # <a name="delta-copy-from-a-database-with-a-control-table"></a>使用控制表从数据库执行增量复制
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文介绍一个模板。借助该模板，可以使用一个存储高水印值的外部控制表，以增量方式将数据库表中的新行或已更新的行加载到 Azure。
 

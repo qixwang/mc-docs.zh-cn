@@ -2,27 +2,27 @@
 title: 塑造 JSON 的最佳做法 - Azure 时序见解查询 | Microsoft Docs
 description: 了解如何通过塑造 JSON 提高 Azure 时序见解查询的效率。
 services: time-series-insights
-author: ashannon7
+author: deepakpalled
+ms.author: v-junlch
 manager: cshankar
 ms.service: time-series-insights
 ms.topic: article
-origin.date: 12/05/2019
-ms.date: 01/27/2020
-ms.author: v-yiso
+ms.date: 04/28/2020
 ms.custom: seodec18
-ms.openlocfilehash: 320110b045b04166e308057ac263159e6b1b50ec
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: f0e2142fe6ce6c96aac9fb10a92d1957d23949a7
+ms.sourcegitcommit: e3512c5c2bbe61704d5c8cbba74efd56bfe91927
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "76966516"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82267655"
 ---
-# <a name="shape-json-to-maximize-query-performance"></a>塑造 JSON 以最大化查询性能 
+# <a name="shape-json-to-maximize-query-performance"></a>塑造 JSON 以最大化查询性能
 
 本文提供有关如何塑造 JSON 以最大化 Azure 时序见解查询效率的指导。
 
 
 ## <a name="best-practices"></a>最佳实践
+
 考虑如何将事件发送到时序见解。 即，始终：
 
 1. 尽量高效地通过网络发送数据。
@@ -117,7 +117,7 @@ ms.locfileid: "76966516"
 
 示例 JSON 有效负载：
 
-```json
+```JSON
 [
     {
         "deviceId": "FXXX",
@@ -193,7 +193,9 @@ ms.locfileid: "76966516"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 阅读有关[将 IoT 中心设备消息发送到云](/iot-hub/iot-hub-devguide-messages-construct)的详细信息。
+- 阅读有关[将 IoT 中心设备消息发送到云](../iot-hub/iot-hub-devguide-messages-construct.md)的详细信息。
 
 - 请参阅 [Azure 时序见解查询语法](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-syntax)，以详细了解时序见解数据访问 REST API 的查询语法。
+
 - 了解[如何调整事件](./time-series-insights-send-events.md)。
+

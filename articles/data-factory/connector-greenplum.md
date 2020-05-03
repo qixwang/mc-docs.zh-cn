@@ -10,16 +10,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 origin.date: 09/04/2019
-ms.date: 01/06/2020
+ms.date: 05/11/2020
 ms.author: v-jay
-ms.openlocfilehash: c680e6d02e8860ae393436a364fe2d9956a9dc8b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 402e4b5fc6d06eb33838d9359a3f9427e9030a38
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75623737"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82198237"
 ---
 # <a name="copy-data-from-greenplum-using-azure-data-factory"></a>使用 Azure 数据工厂从 Greenplum 复制数据
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从 Greenplum 复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 

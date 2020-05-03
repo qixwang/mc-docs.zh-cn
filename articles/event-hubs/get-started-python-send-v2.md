@@ -7,14 +7,14 @@ ms.service: event-hubs
 ms.workload: core
 ms.topic: quickstart
 origin.date: 02/11/2020
-ms.date: 03/09/2020
+ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: 5b9aed196bdf48371d895b02b0e214765eccd8fb
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 9ee50f02f083511aa469c358fbb84d40ab1f540e
+ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78155109"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82588742"
 ---
 # <a name="send-events-to-or-receive-events-from-event-hubs-by-using-python-azure-eventhub-version-5"></a>使用 Python（azure-eventhub 版本 5）向/从事件中心发送/接收事件
 本快速入门介绍如何使用 **azure-eventhub 版本 5** Python 包向事件中心发送事件以及从事件中心接收事件。
@@ -80,6 +80,7 @@ ms.locfileid: "78155109"
 
     > [!NOTE]
     > 有关完整源代码（包括参考性注释），请参阅 [GitHub send_async.py 页](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/samples/async_samples/send_async.py)。
+    
 
 ## <a name="receive-events"></a>接收事件
 本快速入门使用 Azure Blob 存储作为检查点存储。 检查点存储用于保存检查点（即，上次读取位置）。  

@@ -11,15 +11,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 origin.date: 06/15/2018
-ms.date: 01/06/2020
-ms.openlocfilehash: facdbb06287b408f6bdca29ee46144b15efb41f1
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/11/2020
+ms.openlocfilehash: 4e621f0a0359a2d705e3c9741cc9a717c2ed672b
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75624221"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82197787"
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Azure 数据工厂中的查找活动
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 查找活动可以从任何 Azure 数据工厂支持的数据源检索数据集。 在以下方案中使用它：
 - 动态确定哪些对象在后续活动中工作，而不是针对对象名称进行硬编码。 一些对象示例包括文件和表。

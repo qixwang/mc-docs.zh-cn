@@ -1,7 +1,7 @@
 ---
-title: 教程：R 中的逻辑回归模型
+title: 教程：使用 R 创建机器学习模型
 titleSuffix: Azure Machine Learning
-description: 在本教程中，我们使用 R 包 azuremlsdk 和 caret 创建一个逻辑回归模型，以预测交通事故中的死亡几率。
+description: 在本教程中，我们将使用 Azure 机器学习 R SDK 创建逻辑回归模型，该模型预测交通事故中的死亡几率。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,18 +10,18 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 origin.date: 02/07/2020
-ms.date: 03/16/2020
-ms.openlocfilehash: 93d7e8e431aad3dd986762344f6eb9aaf4158b9f
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/11/2020
+ms.openlocfilehash: 7b683a12eaf52973e517f5b30cd30b2338f08693
+ms.sourcegitcommit: d210eb03ed6432aeefd3e9b1c77d2c92a6a8dbca
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78849867"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82591449"
 ---
-# <a name="tutorial-create-a-logistic-regression-model-in-r-with-azure-machine-learning"></a>教程：通过 Azure 机器学习在 R 中创建逻辑回归模型
+# <a name="tutorial-use-r-to-create-a-machine-learning-model"></a>教程：使用 R 创建机器学习模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-在本教程中，我们将使用 R 和 Azure 机器学习创建逻辑回归模型，该模型预测交通事故中的死亡几率。 完成本教程后，我们将获得 Azure 机器学习 R SDK 的实践知识，继而可以开发更复杂的试验和工作流。
+在本教程中，我们将使用 Azure 机器学习 R SDK 创建逻辑回归模型，该模型预测交通事故中的死亡几率。 你将了解 Azure 机器学习云资源如何与 R 一起工作，提供一个可缩放的环境以用来训练和部署模型。  
 
 将在本教程中执行以下任务：
 > [!div class="checklist"]
@@ -64,7 +64,7 @@ Azure 机器学习工作区是云中的基础资源，用于试验、训练和�
 
 1. 打开“Samples”文件夹  。
 
-1. 打开 **R** 文件夹。
+1. 打开 R 文件夹  。
 
 1. 打开包含版本号的文件夹。  此数字表示 R SDK 的当前版本。
 
@@ -76,13 +76,13 @@ Azure 机器学习工作区是云中的基础资源，用于试验、训练和�
 
 ## <a name="a-nameopenopen-rstudio"></a><a name="open">打开 RStudio
 
-在计算实例或笔记本 VM 上使用 RStudio 运行本教程。  
+在计算实例或 Notebook VM 上使用 RStudio 运行此教程。  
 
 1. 选择左侧的“计算”  。
 
-1. 添加一个计算资源（如果不存在计算资源）。
+1. 如果没有计算资源，请添加一个。
 
-1. 计算运行后，使用 **RStudio** 链接打开 RStudio。
+1. 计算运行后，使用 RStudio 链接打开 RStudio  。
 
 1. 在 RStudio 中，“vignettes”文件夹位于右下位置“文件”部分中的“用户”下几级的位置    。  在 vignettes 下选择“train-and-deploy-to-aci”文件夹，找到本教程中所需的文件  。 
 
@@ -98,7 +98,24 @@ Azure 机器学习工作区是云中的基础资源，用于试验、训练和�
 * 创建用于训练的远程计算目标
 
 ### <a name="install-required-packages"></a>安装所需程序包
-本教程假设已安装 Azure ML SDK。 继续导入 **azuremlsdk** 包。
+
+ * 从 CRAN 安装最新版本。
+
+    ```R
+    # install the latest version from CRAN
+    install.packages("azuremlsdk")
+    azuremlsdk::install_azureml(envname = 'r-reticulate')
+    ```
+    
+* 或从 GitHub 安装开发版本。
+
+    ```R
+    # or install the development version from GitHub
+    remotes::install_github('https://github.com/Azure/azureml-sdk-for-r')
+    azuremlsdk::install_azureml(envname = 'r-reticulate')
+    ```
+
+现在，继续导入 azuremlsdk  包。
 
 ```R
 library(azuremlsdk)

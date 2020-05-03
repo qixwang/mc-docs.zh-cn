@@ -8,15 +8,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 origin.date: 01/08/2020
-ms.date: 03/23/2020
-ms.openlocfilehash: 698318093a04b8c2f0654424c181e52808170912
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/11/2020
+ms.openlocfilehash: 66ea8088f3da81eaa8a28efb76962388ea9dafe7
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79497401"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82198009"
 ---
 # <a name="bulk-copy-from-files-to-database"></a>从文件向数据库进行批量复制
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文介绍了一个解决方案模板，你可以使用该模板将数据从 Azure Data Lake Storage Gen2 批量复制到 Azure Synapse Analytics/Azure SQL 数据库。
 

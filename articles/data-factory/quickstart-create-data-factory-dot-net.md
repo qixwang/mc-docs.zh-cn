@@ -12,16 +12,18 @@ ms.tgt_pltfrm: ''
 ms.devlang: dotnet
 ms.topic: quickstart
 origin.date: 06/24/2019
-ms.date: 01/06/2020
+ms.date: 05/11/2020
 ms.author: v-jay
-ms.openlocfilehash: 28cc55af81049cd0640052cd97bbc488a44a9f81
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 04aa2a48b41afa32e3833955ab1599c4da6797b6
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79291924"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82198028"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-net-sdk"></a>快速入门：使用 .NET SDK 创建数据工厂和管道
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 此快速入门介绍了如何使用 .NET SDK 创建一个 Azure 数据工厂。 在此数据工厂中创建的管道会将数据从 Azure Blob 存储中的一个文件夹**复制**到另一个文件夹。 有关如何使用 Azure 数据工厂**转换**数据的教程，请参阅[教程：使用 Spark 转换数据](tutorial-transform-data-spark-portal.md)。
 
@@ -45,7 +47,7 @@ ms.locfileid: "79291924"
 1. 在[创建 Azure Active Directory 应用程序](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)中，创建一个应用程序来表示正在本教程中创建的 .NET 应用程序。 对于登录 URL，可以提供虚拟 URL，如本文中所示 (`https://contoso.org/exampleapp`)。
 2. 在[获取用于登录的值](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in)中，获取应用程序 ID 和租户 ID，并记下这些值，稍后要在本教程中使用它们   。 
 3. 在[证书与机密](../active-directory/develop/howto-create-service-principal-portal.md#certificates-and-secrets)中，获取身份验证密钥，并记此值，稍后要在本教程中使用它  。
-4. 在[将应用程序分配给角色](../active-directory/develop/howto-create-service-principal-portal.md#assign-the-application-to-a-role)中，在订阅级别将应用程序分配到“参与者”角色，让该应用程序可以在订阅中创建数据工厂  。
+4. 在[将应用程序分配给角色](../active-directory/develop/howto-create-service-principal-portal.md#assign-a-role-to-the-application)中，在订阅级别将应用程序分配到“参与者”角色，让该应用程序可以在订阅中创建数据工厂  。
 
 ## <a name="create-a-visual-studio-project"></a>创建 Visual Studio 项目
 

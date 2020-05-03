@@ -6,19 +6,19 @@ author: WenJason
 ms.service: automation
 ms.topic: include
 origin.date: 12/13/2018
-ms.date: 12/09/2019
+ms.date: 05/11/2020
 ms.author: v-jay
 ms.custom: include file
-ms.openlocfilehash: 8d16c187ab3d147fb221483b89f31d723ac2f852
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 23df2f5bb9fb90354c3537808ce832a8b697664b
+ms.sourcegitcommit: 95efd248f5ee3701f671dbd5cfe0aec9c9959a24
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74885187"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82516018"
 ---
 #### <a name="process-automation"></a>流程自动化
 
-| 资源 | 最大限制 |说明|
+| 资源 | 限制 |说明|
 | --- | --- |---|
 | 每个 Azure 自动化帐户每 30 秒可以提交的新作业的最大数量（非计划的作业） |100 |达到此限制时，后续作业创建请求会失败。 客户端会收到错误响应。|
 | 每个自动化帐户相同时间实例并发运行的作业的最大数量（非计划的作业） |200 |达到此限制时，后续作业创建请求会失败。 客户端会收到错误响应。|

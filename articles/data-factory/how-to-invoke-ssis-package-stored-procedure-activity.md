@@ -12,16 +12,19 @@ ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: conceptual
 origin.date: 04/17/2018
-ms.date: 03/02/2020
+ms.date: 05/11/2020
 ms.author: v-jay
-ms.openlocfilehash: f0ad2b90ce7749880fe38638beeb839a121ec269
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 36358956b002a1a556e2572d1a122388ff6406fc
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77653501"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82198063"
 ---
 # <a name="run-an-ssis-package-with-the-stored-procedure-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用存储过程活动运行 SSIS 包
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+
 本文介绍如何使用存储过程活动在 Azure 数据工厂管道中运行 SSIS 包。 
 
 ## <a name="prerequisites"></a>先决条件

@@ -11,16 +11,21 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 origin.date: 01/10/2018
-ms.date: 01/06/2020
-ms.openlocfilehash: 8cc9cdaf38f7383ba922a1e8aa95dbf917145c53
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/11/2020
+ms.openlocfilehash: 2d4e268e399345be9f750693bf2c2886c9bc1516
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75623711"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82197792"
 ---
 # <a name="execute-pipeline-activity-in-azure-data-factory"></a>Azure 数据工厂中的 Execute Pipeline 活动
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 Execute Pipeline 活动允许一个数据工厂管道调用另一个管道。
+
+
 
 ## <a name="syntax"></a>语法
 

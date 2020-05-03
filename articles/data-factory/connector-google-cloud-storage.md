@@ -9,16 +9,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 origin.date: 12/10/2019
-ms.date: 03/02/2020
+ms.date: 05/11/2020
 ms.author: v-jay
-ms.openlocfilehash: 4eee8252a90740b7df7135a67be374abf6eaa379
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 368c04fe90c87fd48199cc29d8e25af2e64414ed
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77653530"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82197847"
 ---
 # <a name="copy-data-from-google-cloud-storage-using-azure-data-factory"></a>使用 Azure 数据工厂从 Google 云存储复制数据
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文概述了如何从 Google 云存储复制数据。 若要了解 Azure 数据工厂，请阅读[介绍性文章](introduction.md)。
 

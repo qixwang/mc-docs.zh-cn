@@ -11,15 +11,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 origin.date: 08/27/2019
-ms.date: 01/06/2020
-ms.openlocfilehash: c37bc063fb8dd834f3d8cc6ad7ed0372ef813955
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/11/2020
+ms.openlocfilehash: a477962cb97a2da385a443229452604846eea099
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77653524"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82198229"
 ---
 # <a name="copy-data-from-and-to-microsoft-access-data-stores-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 Microsoft Access 数据存储复制数据
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文概述了如何在 Azure 数据工厂中使用复制活动从 Microsoft Access 数据存储复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 

@@ -3,14 +3,14 @@ title: 将资源移动到新的订阅或资源组
 description: 使用 Azure Resource Manager 将资源移到新的资源组或订阅。
 ms.topic: conceptual
 origin.date: 03/02/2020
-ms.date: 03/23/2020
+ms.date: 04/30/2020
 ms.author: v-yeche
-ms.openlocfilehash: ebf7475514c32f3de6d79a4804dab89555dd54d9
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 42077074959082bb25f8a976ed33aeabfe120377
+ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79543891"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82596261"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>将资源移到新的资源组或订阅
 

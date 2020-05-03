@@ -7,14 +7,14 @@ manager: digimobile
 ms.service: virtual-machines
 ms.topic: troubleshooting
 origin.date: 06/15/2018
-ms.date: 03/09/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: fcd4be95e8c4e360f40d52820595ea3b9e0bdaa7
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 9b08e093f8481195c1e70202690fc683051304da
+ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79084502"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82596354"
 ---
 # <a name="supportability-of-adding-azure-vms-to-an-existing-availability-set"></a>将 Azure VM 添加到现有可用性集的可支持性
 
@@ -35,5 +35,4 @@ ms.locfileid: "79084502"
 
 由于专用 RDMA 后端网络的要求，不能混合使用 A8/A9 VM 大小。
 
-<!-- Update_Description: new article about virtual machines availability set supportability -->
-<!--NEW.date: 03/09/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

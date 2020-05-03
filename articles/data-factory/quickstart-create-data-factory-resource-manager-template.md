@@ -7,18 +7,20 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: quickstart
 origin.date: 02/20/2019
-ms.date: 03/02/2020
+ms.date: 05/11/2020
 author: WenJason
 ms.author: v-jay
 manager: digimobile
-ms.openlocfilehash: 26f29104be711d4cb27d2d9bfb2ae6dec2d0b4fb
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 107c931231dcd55ca108e5ddf1683d3f8905f80a
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79293320"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82198238"
 ---
 # <a name="tutorial-create-an-azure-data-factory-using-azure-resource-manager-template"></a>教程：使用 Azure 资源管理器模板创建 Azure 数据工厂
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 本快速入门介绍如何使用 Azure 资源管理器模板来创建 Azure 数据工厂。 在此数据工厂中创建的管道会将数据从 Azure Blob 存储中的一个文件夹**复制**到另一个文件夹。 有关如何使用 Azure 数据工厂**转换**数据的教程，请参阅[教程：使用 Spark 转换数据](transform-data-using-spark.md)。
 
@@ -633,7 +635,7 @@ Azure 存储链接服务指定一个连接字符串，数据工厂服务在运�
 
 #### <a name="trigger"></a>触发器
 
-定义一个每小时运行一次管道的触发器。 部署的触发器处于已停止状态。 使用 **Start-AzDataFactoryV2Trigger** cmdlet 启动触发器。 有关触发器的详细信息，请参阅[管道执行和触发器](concepts-pipeline-execution-triggers.md#triggers)一文。
+定义一个每小时运行一次管道的触发器。 部署的触发器处于已停止状态。 使用 **Start-AzDataFactoryV2Trigger** cmdlet 启动触发器。 有关触发器的详细信息，请参阅[管道执行和触发器](concepts-pipeline-execution-triggers.md#trigger-execution)一文。
 
 ```json
 {  

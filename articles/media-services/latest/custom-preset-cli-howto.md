@@ -11,14 +11,14 @@ ms.workload: ''
 ms.topic: article
 ms.custom: ''
 origin.date: 05/14/2019
-ms.date: 04/06/2020
+ms.date: 04/13/2020
 ms.author: v-jay
-ms.openlocfilehash: 7db178ce7c72d3e916a6622a207a56900ddc15bc
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 0a31243b6981e00f9ac60db1035bd38a00606211
+ms.sourcegitcommit: 95efd248f5ee3701f671dbd5cfe0aec9c9959a24
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80625796"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82507732"
 ---
 # <a name="how-to-encode-with-a-custom-transform---azure-cli"></a>如何对自定义转换进行编码 - Azure CLI
 
@@ -143,4 +143,4 @@ az ams transform create -a amsaccount -g amsResourceGroup -n customTransformName
 
 ## <a name="see-also"></a>另请参阅
 
-[Azure CLI](/cli/ams?view=azure-cli-latest)
+[Azure CLI](https://docs.microsoft.com/cli/azure/ams)

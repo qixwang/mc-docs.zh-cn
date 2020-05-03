@@ -4,14 +4,14 @@ description: 演示在部署托管应用程序时如何使用 Azure Key Vault �
 author: rockboyfor
 ms.topic: conceptual
 origin.date: 01/30/2019
-ms.date: 03/23/2020
+ms.date: 04/30/2020
 ms.author: v-yeche
-ms.openlocfilehash: fda013686140d5ff110b5349aa1a29c10d6f9238
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 07da98f8a9d5aad66fb6807c93ea080298ea4151
+ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79543872"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82596185"
 ---
 # <a name="access-key-vault-secret-when-deploying-azure-managed-applications"></a>部署 Azure 托管应用程序时访问 Key Vault 机密
 

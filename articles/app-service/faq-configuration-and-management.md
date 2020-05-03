@@ -9,12 +9,12 @@ ms.topic: article
 origin.date: 10/30/2018
 ms.date: 03/23/2020
 ms.author: v-tawe
-ms.openlocfilehash: 5a5ffba08abe484e05dcaa55c7635c0fb8363443
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 36cc22301617cc4b489d57566e4df88a78dc1397
+ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79546957"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82588668"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Azure Web 应用配置及管理常见问题解答
 
@@ -68,7 +68,7 @@ ms.locfileid: "79546957"
 
 对于在 Windows 上运行的应用服务，请参阅[默认时区](https://docs.microsoft.com/windows-hardware/manufacture/desktop/default-time-zones)一文中的“时区”  列了解接受的值。 
 
-<!-- For the App services that run on Linux, set the [TZ database name](https://wikipedia.org/wiki/List_of_tz_database_time_zones) as the time zone value. Here is an example of TZ database name: America/Adak. -->
+<!-- For the App services that run on Linux, set the TZ database name as the time zone value. Here is an example of TZ database name: America/Adak. -->
 
 ## <a name="why-do-my-continuous-webjobs-sometimes-fail"></a>为什么连续 Web 作业有时会失败？
 

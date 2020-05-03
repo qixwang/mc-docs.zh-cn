@@ -10,13 +10,13 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 origin.date: 02/10/2020
-ms.date: 03/16/2020
-ms.openlocfilehash: 100b24662dd70dd4e8e78e1aa88dee7c7a2e2911
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/11/2020
+ms.openlocfilehash: 7fce9085262ea461746c507652e6c2e31fddcadb
+ms.sourcegitcommit: d210eb03ed6432aeefd3e9b1c77d2c92a6a8dbca
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292159"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82591457"
 ---
 # <a name="tutorial-get-started-creating-your-first-ml-experiment-with-the-python-sdk"></a>教程：开始使用 Python SDK 创建第一个 ML 试验
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -81,19 +81,19 @@ Azure 机器学习工作区是云中的基础资源，用于试验、训练和�
     
 1. 选择 **tutorials/create-first-ml-experiment** 文件夹中的 **tutorial-1st-experiment-sdk-train.ipynb** 文件。
 
-1. 在顶部栏上，选择用来运行笔记本的计算实例。 这些 VM 中已预先配置了[运行 Azure 机器学习所需的一切设置](concept-compute-instance.md#contents)。 可以选择任何工作区用户创建的 VM。 
+1. 在顶部栏上，选择用来运行笔记本的计算实例。 这些 VM 中已预先配置了[运行 Azure 机器学习所需的一切设置](concept-compute-instance.md#contents)。 
 
 1. 如果未找到任何 VM，请选择“+ 添加”来创建计算实例 VM  。 
 
     1. 创建 VM 时请提供其名称。  该名称必须包含 2 到 16 个字符。 有效字符为字母、数字和 - 字符。该名称必须在整个 Azure 订阅中唯一。
 
-    1.  从可用选项中选择虚拟机大小。
+    1.  从提供的选项中选择虚拟机大小。
 
     1. 然后选择“创建”  。 设置 VM 可能需要大约 5 分钟时间。
 
 1. VM 可用后，它将显示在顶部工具栏中。  现在，可以使用工具栏中的“全部运行”，或者在笔记本的代码单元中按 **Shift+Enter**，来运行笔记本。 
 
-如果你有自定义小工具或更喜欢使用 Jupyter/JupyterLab，请选择最右侧的 **Jupyter** 下拉菜单，然后选择 **Jupyter** 或 **JupyterLab**。 此时将打开新的浏览器窗口。
+如果你有自定义小组件或喜欢使用 Jupyter/JupyterLab，请在最右侧选择“Jupyter”下拉菜单，然后选择“Jupyter”或“JupyterLab”    。 系统将打开新的浏览器窗口。
 
 ## <a name="next-steps"></a>后续步骤
 

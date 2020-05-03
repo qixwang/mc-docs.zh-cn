@@ -5,15 +5,15 @@ author: yegu-ms
 ms.service: cache
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.date: 03/17/2020
+ms.date: 04/26/2020
 ms.author: v-junlch
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: ccb1c5d549f211915ff0d42dbf900e7cccb38d6e
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 6afa9ea4c31f73a83e8fd2f21e7bf5c6bb1df477
+ms.sourcegitcommit: e3512c5c2bbe61704d5c8cbba74efd56bfe91927
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79497170"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82267591"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-nodejs"></a>快速入门：将 Azure Redis 缓存与 Node.js 配合使用
 
@@ -24,7 +24,7 @@ ms.locfileid: "79497170"
 - Azure 订阅 - [创建订阅](https://www.azure.cn/pricing/1rmb-trial/)
 - [node_redis](https://github.com/mranney/node_redis)，可以使用命令 `npm install redis` 安装。 
 
-有关使用其他 Node.js 客户端的示例，请使用与 [Node.js Redis 客户端](https://redis.io/clients#nodejs)中列出的 Node.js 客户端对应的各个文档。
+有关使用其他 Node.js 客户端的示例，请参阅 [Node.js Redis 客户端](https://redis.io/clients#nodejs)中所列的适用于 Node.js 客户端的各个文档。
 
 ## <a name="create-a-cache"></a>创建缓存
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
@@ -41,7 +41,7 @@ set REDISCACHEKEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 ## <a name="connect-to-the-cache"></a>连接到缓存
 
-最新版本的 [node_redis](https://github.com/mranney/node_redis) 支持使用 SSL 连接到 Azure Redis 缓存。 下面的示例展示了如何使用 SSL 终结点 6380 连接到 Azure Redis 缓存。 
+最新版本的 [node_redis](https://github.com/mranney/node_redis) 支持使用 TLS 连接到 Azure Cache for Redis。 以下示例演示如何使用 TLS 终结点 6380 连接到 Azure Cache for Redis。 
 
 ```js
 var redis = require("redis");
@@ -69,7 +69,7 @@ bluebird.promisifyAll(redis.Multi.prototype);
 
 async function testCache() {
 
-    // Connect to the Azure Cache for Redis over the SSL port using the key.
+    // Connect to the Azure Cache for Redis over the TLS port using the key.
     var cacheConnection = redis.createClient(6380, process.env.REDISCACHEHOSTNAME, 
         {auth_pass: process.env.REDISCACHEKEY, tls: {servername: process.env.REDISCACHEHOSTNAME}});
         
@@ -105,7 +105,7 @@ testCache();
 node redistest.js
 ```
 
-在以下示例中可以看到，`Message` 键事先已包含一个缓存值，该值是使用 Azure 门户中的 Redis 控制台设置的。 应用更新了该缓存值。 应用还执行了 `PING` 和 `CLIENT LIST` 命令。
+在下面的示例中，可以看到 `Message` 键以前有一个缓存值，该值是使用 Azure 门户中的 Redis 控制台设置的。 应用更新了该缓存值。 应用还执行了 `PING` 和 `CLIENT LIST` 命令。
 
 ![已完成的 Redis 缓存应用](./media/cache-nodejs-get-started/redis-cache-app-complete.png)
 
@@ -136,4 +136,3 @@ node redistest.js
 > [!div class="nextstepaction"]
 > [创建使用 Azure Redis 缓存的 ASP.NET Web 应用。](./cache-web-app-howto.md)
 
-<!-- Update_Description: wording update -->

@@ -2,20 +2,20 @@
 title: 教程 - 使用参数文件部署模板
 description: 使用参数文件，其中包含的值可用于部署 Azure 资源管理器模板。
 author: rockboyfor
-origin.date: 10/04/2019
-ms.date: 03/23/2020
+origin.date: 03/27/2020
+ms.date: 04/30/2020
 ms.topic: tutorial
 ms.author: v-yeche
-ms.openlocfilehash: 4f67e24d2cd44bd5fb6a0923c73574f6f00c3294
-ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
+ms.openlocfilehash: 5830d89ce1deb66d1178e88949355b61b23283a1
+ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82093522"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82596110"
 ---
-# <a name="tutorial-use-parameter-files-to-deploy-your-resource-manager-template"></a>教程：使用参数文件部署资源管理器模板
+# <a name="tutorial-use-parameter-files-to-deploy-your-arm-template"></a>教程：使用参数文件部 ARM 模板
 
-本教程介绍如何使用[参数文件](parameter-files.md)存储在部署过程中传递的值。 在以前的教程中，我们通过部署命令使用了内联参数。 此方法适用于测试模板，但在自动进行部署时，为环境传递一组值可能会更容易。 参数文件可以方便你针对特定的环境将参数值打包。 在本教程中，我们将针对开发和生产环境创建参数文件。 完成该过程需要大约 **12 分钟**。
+本教程介绍如何使用[参数文件](parameter-files.md)存储在部署过程中传递的值。 在以前的教程中，我们通过部署命令使用了内联参数。 此方法适用于测试 Azure 资源管理器 (ARM) 模板，但是当自动执行部署时，可以更容易地为环境传递一组值。 参数文件可以方便你针对特定的环境将参数值打包。 在本教程中，我们将针对开发和生产环境创建参数文件。 完成该过程需要大约 **12 分钟**。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -29,7 +29,7 @@ ms.locfileid: "82093522"
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "storagePrefix": {
@@ -156,7 +156,7 @@ ms.locfileid: "82093522"
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "storagePrefix": {
@@ -187,7 +187,7 @@ ms.locfileid: "82093522"
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "storagePrefix": {
@@ -225,7 +225,7 @@ ms.locfileid: "82093522"
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
-$templateFile = "{provide-the-path-to-the-template-file}"
+$templateFile = "{path-to-the-template-file}"
 $parameterFile="{path-to-azuredeploy.parameters.dev.json}"
 New-AzResourceGroup `
   -Name myResourceGroupDev `
@@ -239,8 +239,11 @@ New-AzResourceGroupDeployment `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
+若要运行此部署命令，必须具有 Azure CLI 的 [最新版本](https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest)。
+
 ```azurecli
-templateFile="{provide-the-path-to-the-template-file}"
+templateFile="{path-to-the-template-file}"
+devParameterFile="{path-to-azuredeploy.parameters.dev.json}"
 az group create \
   --name myResourceGroupDev \
   --location "China East"
@@ -248,7 +251,7 @@ az deployment group create \
   --name devenvironment \
   --resource-group myResourceGroupDev \
   --template-file $templateFile \
-  --parameters azuredeploy.parameters.dev.json
+  --parameters $devParameterFile
 ```
 
 ---
@@ -272,6 +275,7 @@ New-AzResourceGroupDeployment `
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
+prodParameterFile="{path-to-azuredeploy.parameters.prod.json}"
 az group create \
   --name myResourceGroupProd \
   --location "China North"
@@ -279,16 +283,19 @@ az deployment group create \
   --name prodenvironment \
   --resource-group myResourceGroupProd \
   --template-file $templateFile \
-  --parameters azuredeploy.parameters.prod.json
+  --parameters $prodParameterFile
 ```
 
 ---
+
+> [!NOTE]
+> 如果部署失败，请将 **debug** 开关和部署命令配合使用来显示调试日志。  还可以使用 **verbose** 开关来显示完整的调试日志。
 
 ## <a name="verify-deployment"></a>验证部署
 
 可以通过在 Azure 门户中浏览资源组来验证部署。
 
-1. 登录到 [Azure 门户](https://portal.azure.cn)。
+1. 登录 [Azure 门户](https://portal.azure.cn)。
 1. 在左侧菜单中选择“资源组”。 
 1. 可以看到在本教程中部署的两个新资源组。
 1. 选择任一资源组，查看部署的资源。 请注意，这些资源与我们在参数文件中为该环境指定的值匹配。
@@ -300,6 +307,13 @@ az deployment group create \
 3. 选择资源组名称。
 4. 在顶部菜单中选择“删除资源组”。 
 
-<!--Pending on ## Next steps-->
+## <a name="next-steps"></a>后续步骤
+
+恭喜！你已完成本简介，知道如何将模板部署到 Azure 了。 如果你有任何意见和建议，请在反馈部分告知我们。 谢谢！
+
+下一个教程系列将详细介绍如何部署模板。
+
+> [!div class="nextstepaction"]
+> [部署本地模板](./deployment-tutorial-local-template.md)
 
 <!-- Update_Description: update meta properties, wording update, update link -->

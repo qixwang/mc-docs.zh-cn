@@ -12,14 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
 origin.date: 10/31/2018
-ms.date: 11/11/2019
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: 204ef400af0134ba0f070dda667ebce4fd207d46
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 3764f8da4b36e0ab6bcc81b6306ff706dbc971c8
+ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74116900"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82596364"
 ---
 # <a name="install-the-azure-virtual-machine-agent-in-offline-mode"></a>在脱机模式下安装 Azure 虚拟机代理 
 
@@ -108,6 +108,8 @@ Azure 虚拟机代理（VM 代理）可提供多种有用的功能，例如本�
 
 ### <a name="use-the-provisionguestagent-property-for-classic-vms"></a>对于经典 VM，使用 ProvisionGuestAgent 属性
 
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
+
 如果使用经典模型创建了 VM，请使用 Azure PowerShell 模块更新 ProvisionGuestAgent  属性。 该属性会通知 Azure 该 VM 已安装 VM 代理。
 
 若要设置 ProvisionGuestAgent  属性，请在 Azure PowerShell 中运行以下命令：
@@ -130,4 +132,4 @@ GuestAgentStatus:Microsoft.WindowsAzure.Commands.ServiceManagement.Model.Persist
 - [Azure 虚拟机代理概述](../extensions/agent-windows.md)
 - [适用于 Windows 的虚拟机扩展和功能](../extensions/features-windows.md)
 
-<!-- Update_Description: update meta properties, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

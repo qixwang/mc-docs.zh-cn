@@ -1,19 +1,19 @@
 ---
 title: 教程 - 使用 Azure PowerShell 自动缩放规模集
 description: 了解如何使用 Azure PowerShell 随 CPU 需求的增减自动缩放虚拟机规模集
-author: cynthn
+author: ju-shim
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.topic: tutorial
-ms.date: 02/10/2020
+ms.date: 04/28/2020
 ms.author: v-junlch
 ms.custom: mvc
-ms.openlocfilehash: 6ae856bdf2b357fdb29aa476c1ffac18ff1aa322
-ms.sourcegitcommit: b80d236ce3c706abc25bbaa41b0ccddd896e48fc
+ms.openlocfilehash: f1c483a218db62f815810deddcd50000edf53b93
+ms.sourcegitcommit: e3512c5c2bbe61704d5c8cbba74efd56bfe91927
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81873147"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82267616"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-azure-powershell"></a>教程：使用 Azure PowerShell 自动缩放虚拟机规模集
 
@@ -27,7 +27,7 @@ ms.locfileid: "81873147"
 > * 对 VM 实例进行压力测试并触发自动缩放规则
 > * 在需求下降时自动横向缩减
 
-如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 
 存在影响 Azure PowerShell 模块版本 6.8.1 或更高版本的已知问题。 本教程只能使用 Azure PowerShell 模块版本 6.0.0 到 6.8.0 运行。 运行 `Get-Module -ListAvailable AzureRM` 即可查找版本。 如果在本地运行 PowerShell，则还需运行 `Connect-AzureRmAccount` 来创建与 Azure 的连接。
 
@@ -42,7 +42,7 @@ $myScaleSet = "myScaleSet"
 $myLocation = "China North"
 ```
 
-现在，使用 [New-AzureRmVmss](https://docs.microsoft.com/powershell/module/azurerm.compute/new-azurermvmss) 创建一个虚拟机规模集。 若要将流量分配到单独的 VM 实例，则还要创建负载均衡器。 负载均衡器包含的规则可在 TCP 端口 80 上分配流量，并允许 TCP 端口 3389 上的远程桌面流量，以及 TCP 端口 5985 上的 PowerShell 远程流量。 出现提示时，请针对规模集中的 VM 实例提供自己的所需管理凭据：
+现在，使用 [New-AzureRmVmss](https://docs.microsoft.com/powershell/module/azurerm.compute/new-azurermvmss) 创建虚拟机规模集。 若要将流量分配到单独的 VM 实例，则还要创建负载均衡器。 负载均衡器包含的规则可在 TCP 端口 80 上分配流量，并允许 TCP 端口 3389 上的远程桌面流量，以及 TCP 端口 5985 上的 PowerShell 远程流量。 出现提示时，请针对规模集中的 VM 实例提供自己的所需管理凭据：
 
 ```azurepowershell
 New-AzureRmVmss `
@@ -64,7 +64,7 @@ New-AzureRmVmss `
 
 此规则使用以下参数：
 
-| 参数               | 说明                                                                                                         | Value          |
+| 参数               | 说明                                                                                                         | 值          |
 |-------------------------|---------------------------------------------------------------------------------------------------------------------|----------------|
 | *-MetricName*           | 监视和应用规模集操作的性能指标。                                                   | CPU 百分比 |
 | *-TimeGrain*            | 为进行而收集指标分析的频率。                                                                   | 1 分钟       |
@@ -209,7 +209,7 @@ mstsc /v 52.168.121.216:50002
 
 
 ## <a name="monitor-the-active-autoscale-rules"></a>监视活动的自动缩放规则
-若要监视规模集中的 VM 实例数，请使用 **while**。 自动缩放规模需要 5 分钟的时间才能启动横向扩展过程，以便响应由每个 VM 实例上的 **CPUStress* 生成的 CPU 负载：
+若要监视规模集中的 VM 实例数，请使用 **while**。 自动缩放规模需要 5 分钟的时间才能启动横向扩展过程，以便响应由每个 VM 实例上的 **CPUStress** 生成的 CPU 负载：
 
 ```azurepowershell
 while (1) {Get-AzureRmVmssVM `
@@ -239,7 +239,7 @@ MYRESOURCEGROUP   myScaleSet_6   chinanorth Standard_DS2                   6    
 
 
 ## <a name="clean-up-resources"></a>清理资源
-若要删除规模集和其他资源，请使用 [Remove-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/azurerm.resources/remove-azurermresourcegroup) 删除资源组及其所有资源。 `-Force` 参数将确认是否希望删除资源，而不会有额外提示。 `-AsJob` 参数会使光标返回提示符处，无需等待操作完成。
+若要删除规模集和其他资源，请使用 [Remove-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/azurerm.resources/remove-azurermresourcegroup) 删除资源组及其所有资源。 `-Force` 参数将确认是否希望删除资源，不会显示询问是否删除的额外提示。 `-AsJob` 参数会使光标返回提示符处，不会等待操作完成。
 
 ```azurepowershell
 Remove-AzureRmResourceGroup -Name "myResourceGroup" -Force -AsJob
@@ -260,4 +260,3 @@ Remove-AzureRmResourceGroup -Name "myResourceGroup" -Force -AsJob
 > [!div class="nextstepaction"]
 > [适用于 Azure PowerShell 的规模集脚本示例](powershell-samples.md)
 
-<!-- Update_Description: update metedata properties -->

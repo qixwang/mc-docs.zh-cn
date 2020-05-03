@@ -11,15 +11,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 origin.date: 1/10/2020
-ms.date: 03/02/2020
-ms.openlocfilehash: dc9414878e84a95af93f4579d449776c331d25f2
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/11/2020
+ms.openlocfilehash: 57213f975a3994cd0081560ee789239aa3c8fc47
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77653685"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82198161"
 ---
 # <a name="configure-an-azure-sql-server-integration-services-ssis-integration-runtime-ir-to-join-a-virtual-network"></a>配置 Azure SQL Server Integration Services (SSIS) 集成运行时 (IR) 以加入虚拟网络
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本教程提供使用 Azure 门户配置 Azure-SQL Server Integration Services (SSIS) 集成运行时 (IR) 以加入虚拟网络的基本步骤。
 

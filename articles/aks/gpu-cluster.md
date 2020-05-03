@@ -9,12 +9,12 @@ ms.topic: article
 origin.date: 05/16/2019
 ms.date: 09/23/2019
 ms.author: v-yeche
-ms.openlocfilehash: fd70d924343a7aa4ae5b24ab5879fd07e7bf8b11
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: b75b7bfb21041e197deff4df186f5e9c97e9bf0e
+ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79290824"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82596183"
 ---
 # <a name="use-gpus-for-compute-intensive-workloads-on-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 上将 GPU 用于计算密集型工作负荷
 
@@ -399,7 +399,7 @@ kubectl delete jobs samples-tf-mnist-demo
 [kubectl delete]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#delete
 [kubectl-create]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create
 [azure-pricing]: https://www.azure.cn/pricing/
-[azure-availability]: https://www.azure.cn/home/features/products-by-region/
+[azure-availability]: https://status.azure.com/status/
 [nvidia-github]: https://github.com/NVIDIA/k8s-device-plugin
 
 <!-- LINKS - internal -->

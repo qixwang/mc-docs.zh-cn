@@ -11,15 +11,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 origin.date: 03/25/2019
-ms.date: 03/23/2020
-ms.openlocfilehash: 000101e4f2eacef7cca8f2b99f7dce26efed68ba
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/11/2020
+ms.openlocfilehash: 8cb66e653f16a528be473cba1ed6a323fd548a6d
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79497321"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82197770"
 ---
 # <a name="webhook-activity-in-azure-data-factory"></a>Azure 数据工厂中的 Webhook 活动
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Webhook 活动可通过自定义代码控制管道的执行。 使用 Webhook 活动，客户的代码可以调用终结点并为其传递回调 URL。 管道运行在继续下一个活动之前，会等待系统调用回调。
 

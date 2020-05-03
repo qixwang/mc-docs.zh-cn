@@ -2,20 +2,20 @@
 title: 快速入门：使用 REST API 在 Python 中创建搜索索引
 titleSuffix: Azure Cognitive Search
 description: 介绍如何使用 Python、Jupyter Notebook 和 Azure 认知搜索 REST API 创建索引、加载数据以及运行查询。
-author: tchristiani
+author: HeidiSteen
 manager: nitinme
 ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.devlang: rest-api
-origin.date: 02/10/2020
-ms.date: 03/02/2020
-ms.openlocfilehash: d51c5d4a25ce6fbdc20c6939a36f036c470493db
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+origin.date: 04/01/2020
+ms.date: 04/20/2020
+ms.openlocfilehash: 9c43e625d5e32e8531ceda6eb1d7fc643ab09e96
+ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80243710"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82588741"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-python-using-jupyter-notebooks"></a>快速入门：在 Python 中使用 Jupyter Notebook 创建 Azure 认知搜索索引
 
@@ -24,7 +24,7 @@ ms.locfileid: "80243710"
 > * [PowerShell (REST)](search-create-index-rest-api.md)
 > * [C#](search-create-index-dotnet.md)
 > * [Postman (REST)](search-get-started-postman.md)
-> * [Portal](search-create-index-portal.md)
+> * [门户](search-create-index-portal.md)
 > 
 
 使用 Python 和 [Azure 认知搜索 REST API](https://docs.microsoft.com/rest/api/searchservice/) 生成可创建、加载和查询 Azure 认知搜索索引的 Jupyter Notebook。 本文介绍如何逐步生成笔记本。 你也可以[下载并运行一个已完成的 Jupyter Python 笔记本](https://github.com/Azure-Samples/azure-search-python-samples)。
@@ -35,7 +35,7 @@ ms.locfileid: "80243710"
 
 本快速入门需要以下服务和工具。 
 
-+ [Anaconda 3.x](https://www.anaconda.com/distribution/#download-section)，提供 Python 3.x 和 Jupyter Notebooks。
++ [Anaconda 3.x](https://www.anaconda.com/distribution/#download-section)，提供 Python 3.x 和 Jupyter Notebook。
 
 + [创建 Azure 认知搜索服务](search-create-service-portal.md)或在当前订阅下[查找现有服务](https://portal.azure.cn/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 对于本快速入门，可以使用免费层。 
 
@@ -65,7 +65,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
    from pprint import pprint
    ```
 
-1. 在第二个单元格中，输入在每个请求时都用作常量的请求元素。 将搜索服务名称 (YOUR-SEARCH-SERVICE-NAME) 和管理 API 密钥 (YOUR-ADMIN-API-KEY) 替换为有效的值。 
+1. 在第二个单元格中，输入用作每个请求中的常量的请求元素。 将搜索服务名称 (YOUR-SEARCH-SERVICE-NAME) 和管理员 API 密钥 (YOUR-ADMIN-API-KEY) 替换为有效值。 
 
    ```python
    endpoint = 'https://<YOUR-SEARCH-SERVICE-NAME>.search.azure.cn/'
@@ -93,7 +93,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
 ## <a name="1---create-an-index"></a>1 - 创建索引
 
-除非使用门户，否则在加载数据之前，服务中必须存在一个索引。 此步骤使用[创建索引 REST API](https://docs.microsoft.com/rest/api/searchservice/create-index) 向服务推送索引架构。
+除非使用门户，服务中必须预先存在一个索引才能加载数据。 此步骤使用[创建索引 REST API](https://docs.microsoft.com/rest/api/searchservice/create-index) 向服务推送索引架构。
 
 索引的所需元素包括名称、字段集合和键。 字段集合定义文档的结构。  每个字段具有一个确定其用法的名称、类型和属性（例如，该字段在搜索结果是否可全文搜索、可筛选或可检索）。 在索引中，必须将一个 `Edm.String` 类型的字段指定为文档标识的键。 
 
@@ -149,7 +149,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
 ## <a name="2---load-documents"></a>2 - 加载文档
 
-若要推送文档，请向索引的 URL 终结点发出 HTTP POST 请求。 REST API 为[添加、更新或删除文档](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents)。 文档源自于 GitHub 上的 [HotelsData](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotels/HotelsData_toAzureSearch.JSON)。
+若要推送文档，请向索引的 URL 终结点发出 HTTP POST 请求。 REST API 为[添加、更新或删除文档](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents)。 文档源自 GitHub 上的 [HotelsData](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotels/HotelsData_toAzureSearch.JSON)。
 
 1. 在新单元格中，提供符合索引架构的四个文档。 指定每个文档的上传操作。
 
@@ -198,7 +198,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
         "@search.action": "upload",
         "HotelId": "3",
         "HotelName": "Triple Landscape Hotel",
-        "Description": "The Hotel stands out for its gastronomic excellence under the management of William Dough, who advises on and oversees all of the Hotel’s restaurant services.",
+        "Description": "The Hotel stands out for its gastronomic excellence under the management of William Dough, who advises on and oversees all of the Hotel's restaurant services.",
         "Description_fr": "L'hôtel est situé dans une place du XIXe siècle, qui a été agrandie et rénovée aux plus hautes normes architecturales pour créer un hôtel moderne, fonctionnel et de première classe dans lequel l'art et les éléments historiques uniques coexistent avec le confort le plus moderne.",
         "Category": "Resort and Spa",
         "Tags": [ "air conditioning", "bar", "continental breakfast" ],
@@ -245,7 +245,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
    pprint(index_content)
    ```
 
-3. 运行每个步骤，将文档推送到搜索服务中的索引。 结果应类似于以下示例。 
+3. 运行每个步骤，将文档推送到搜索服务中的索引。 结果应如以下示例所示。 
 
     ![将文档发送到索引](media/search-get-started-python/load-index.png "将文档发送到索引")
 
@@ -257,48 +257,62 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
    ```python
    searchstring = '&search=*&$count=true'
-   ```
 
-1. 在新单元格中提供以下示例，以根据字词“hotels”和“wifi”执行搜索。 添加 $select 以指定要包含在搜索结果中的字段。
-
-   ```python
-   searchstring = '&search=hotels wifi&$count=true&$select=HotelId,HotelName'
-   ```
-
-1. 在另一个单元格中构建请求。 此 GET 请求针对 hotels-quickstart 索引的文档集合，将附加在上一步骤中指定的查询。
-
-   ```python
    url = endpoint + "indexes/hotels-quickstart/docs" + api_version + searchstring
    response  = requests.get(url, headers=headers, json=searchstring)
    query = response.json()
    pprint(query)
    ```
 
-1. 运行每个步骤。 结果应类似于以下输出。 
+1. 在新单元格中提供以下示例，以根据字词“hotels”和“wifi”执行搜索。 添加 $select 以指定要包含在搜索结果中的字段。
+
+   ```python
+   searchstring = '&search=hotels wifi&$count=true&$select=HotelId,HotelName'
+
+   url = endpoint + "indexes/hotels-quickstart/docs" + api_version + searchstring
+   response  = requests.get(url, headers=headers, json=searchstring)
+   query = response.json()
+   pprint(query)   
+   ```
+
+   结果应如以下输出所示。 
 
     ![搜索索引](media/search-get-started-python/search-index.png "搜索索引")
 
-1. 请尝试其他几个查询示例，以大致了解语法。 可将 `searchstring` 替换为以下示例，然后重新运行搜索请求。 
-
-   应用筛选器： 
+1. 接下来，应用一个 $filter 表达式，该表达式仅选择评级高于 4 的酒店。 
 
    ```python
    searchstring = '&search=*&$filter=Rating gt 4&$select=HotelId,HotelName,Description,Rating'
+
+   url = endpoint + "indexes/hotels-quickstart/docs" + api_version + searchstring
+   response  = requests.get(url, headers=headers, json=searchstring)
+   query = response.json()
+   pprint(query)     
    ```
 
-   采用前两个结果：
+1. 默认情况下，搜索引擎返回前 50 个文档，但你可以使用 top 和 skip 来添加分页，并选择每个结果中的文档数。 此查询在每个结果集中返回两个文档。
 
    ```python
-   searchstring = '&search=boutique&$top=2&$select=HotelId,HotelName,Description,Category'
+   searchstring = '&search=boutique&$top=2&$select=HotelId,HotelName,Description'
+
+   url = endpoint + "indexes/hotels-quickstart/docs" + api_version + searchstring
+   response  = requests.get(url, headers=headers, json=searchstring)
+   query = response.json()
+   pprint(query)
    ```
 
-    按特定的字段排序：
+1. 上一示例使用 $orderby 按城市对结果排序。 此示例包含“地址”集合中的字段。
 
    ```python
-   searchstring = '&search=pool&$orderby=Address/City&$select=HotelId, HotelName, Address/City, Address/StateProvince, Tags'
+   searchstring = '&search=pool&$orderby=Address/City&$select=HotelId, HotelName, Address/City, Address/StateProvince'
+
+   url = endpoint + "indexes/hotels-quickstart/docs" + api_version + searchstring
+   response  = requests.get(url, headers=headers, json=searchstring)
+   query = response.json()
+   pprint(query)
    ```
 
-## <a name="clean-up"></a>清理
+## <a name="clean-up"></a>清除
 
 在自己的订阅中操作时，最好在项目结束时确定是否仍需要已创建的资源。 持续运行资源可能会产生费用。 可以逐个删除资源，也可以删除资源组以删除整个资源集。
 

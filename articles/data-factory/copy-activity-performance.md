@@ -12,15 +12,17 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 origin.date: 03/11/2020
-ms.date: 03/23/2020
-ms.openlocfilehash: 294f1e5c21de76851a37155958923d6d0b59802a
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/11/2020
+ms.openlocfilehash: f4cf06f4430a3136cbbc5923f48f87f90d220210
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79497363"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82198268"
 ---
 # <a name="copy-activity-performance-and-scalability-guide"></a>复制活动性能和可伸缩性指南
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 无论是要执行从 Data Lake 或企业数据仓库 (EDW) 到 Azure 的大规模数据迁移，还是要将数据从不同的源大规模引入到 Azure 以进行大数据分析，实现最佳性能和可伸缩性都至关重要。  Azure 数据工厂提供高性能、可复原且经济高效的机制用于大规模引入数据，因此，想要生成高性能、可缩放数据引入管道的数据工程师非常适合使用数据工厂。
 

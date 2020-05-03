@@ -5,7 +5,6 @@ services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.author: v-jay
 author: WenJason
@@ -13,15 +12,16 @@ manager: digimobile
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 origin.date: 11/20/2019
-ms.date: 01/06/2020
-ms.openlocfilehash: 8e451f529e879469a588ef8536b9c2a9943aedc7
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/11/2020
+ms.openlocfilehash: bba82a0c99d45cb12dadc985da21f654afbe3e0c
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75624228"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82198052"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 Dynamics 365 (Common Data Service) 或 Dynamics CRM 复制数据
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文概述如何使用 Azure 数据工厂中的复制活动从/向 Microsoft Dynamics 365 或 Microsoft Dynamics CRM 复制数据。 本文是根据总体概述复制活动的[复制活动概述](copy-activity-overview.md)一文编写的。
 
@@ -326,7 +326,7 @@ Dynamics 链接服务支持以下属性。
 | ignoreNullValues | 指示是否忽略 null 值从输入数据（键字段除外）期间写入操作。<br/>允许的值为 **true** 和 **false**。<br>- **True**：执行更新插入/更新操作时，保持目标对象中的数据不变。 插入在执行插入操作时定义的默认值。<br/>- **False**：执行更新插入/更新操作时，将目标对象中的数据更新为 NULL。 执行插入操作时插入 NULL 值。 | 否（默认值为 false） |
 
 >[!NOTE]
->接收器“writeBatchSize”  和 Dynamics 接收器的复制活动“[parallelCopies](copy-activity-performance.md#parallel-copy)”  的默认值都是 10。 因此，会将 100 条记录同时提交到 Dynamics。
+>接收器“writeBatchSize”  和 Dynamics 接收器的复制活动“[parallelCopies](copy-activity-performance-features.md#parallel-copy)”  的默认值都是 10。 因此，会将 100 条记录同时提交到 Dynamics。
 
 对于 Dynamics 365（联机版），存在[每个组织进行 2 次并发批量调用](https://msdn.microsoft.com/library/jj863631.aspx#Run-time%20limitations)的限制。 如果超出此限制，则会在执行第一个请求之前引发“服务器忙”错误。 保持“writeBatchSize”小于或等于 10 可避免这种并发调用的限制。
 

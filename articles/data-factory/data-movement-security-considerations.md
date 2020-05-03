@@ -10,16 +10,18 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-origin.date: 06/15/2018
-ms.date: 03/02/2020
-ms.openlocfilehash: eb009cb07ef591646a93311e353c774ec7966d0e
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+origin.date: 03/11/2020
+ms.date: 05/11/2020
+ms.openlocfilehash: 1022ec05d26c74d86e9b4eff6b20ea892b6a02fe
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77653504"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82197803"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Azure 数据工厂中数据移动的安全注意事项
+
+ [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 本文介绍 Azure 数据工厂中数据移动服务用于帮助保护数据的基本安全基础结构。 数据工厂管理资源建立在 Azure 安全基础结构上，并使用 Azure 提供的所有可能的安全措施。
 
@@ -76,7 +78,7 @@ ms.locfileid: "77653504"
 某些数据存储支持静态数据加密。 我们建议为这些数据存储启用数据加密机制。 
 
 #### <a name="azure-sql-data-warehouse"></a>Azure SQL 数据仓库
-Azure SQL 数据仓库中的透明数据加密 (TDE) 可帮助对静态数据进行实时加密和解密，避免恶意活动造成的威胁。 此行为对客户端透明。 有关详细信息，请参阅[保护 SQL 数据仓库中的数据库](../sql-data-warehouse/sql-data-warehouse-overview-manage-security.md)。
+Azure SQL 数据仓库中的透明数据加密 (TDE) 可帮助对静态数据进行实时加密和解密，避免恶意活动造成的威胁。 此行为对客户端透明。 有关详细信息，请参阅[保护 SQL 数据仓库中的数据库](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-manage-security.md)。
 
 #### <a name="azure-sql-database"></a>Azure SQL 数据库
 Azure SQL 数据库还支持透明数据加密 (TDE)，它无需更改应用程序，即可对数据执行实时加密和解密，从而帮助防止恶意活动的威胁。 此行为对客户端透明。 有关详细信息，请参阅 [SQL 数据库和数据仓库的透明数据加密](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)。
@@ -147,7 +149,7 @@ Azure 虚拟网络是网络在云中的逻辑表示形式。 可以通过设置 
 
 ### <a name="firewall-configurations-and-allow-list-setting-up-for-ip-addresses"></a><a name="firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway"></a> 防火墙配置和针对 IP 地址设置的允许列表
 
-#### <a name="firewall-requirements-for-on-premisesprivate-network"></a>本地/专用网络的防火墙要求  
+#### <a name="firewall-requirements-for-on-premisesprivate-network"></a>本地/专用网络的防火墙要求    
 在企业中，企业防火墙在组织的中央路由器上运行。 Windows 防火墙在安装自承载集成运行时的本地计算机上作为守护程序运行。 
 
 下表提供了企业防火墙的出站端口和域要求：

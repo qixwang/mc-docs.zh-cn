@@ -11,15 +11,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 origin.date: 05/22/2019
-ms.date: 01/06/2020
-ms.openlocfilehash: baeafb3879fbbb698508c9aa22b5f71afd486661
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/11/2020
+ms.openlocfilehash: da99e55529c664518400026c22a03ffd266bc27a
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75624184"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82197961"
 ---
 # <a name="copy-data-from-sap-business-warehouse-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 SAP Business Warehouse 复制数据
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文介绍如何使用 Azure 数据工厂通过 Open Hub 将 SAP Business Warehouse (BW) 中的数据复制到 Azure Data Lake Storage Gen2。 可以使用类似的过程将数据复制到其他[受支持的接收器数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。
 

@@ -6,17 +6,19 @@ author: WenJason
 ms.service: data-factory
 ms.topic: troubleshooting
 origin.date: 01/09/2020
-ms.date: 03/02/2020
+ms.date: 05/11/2020
 ms.author: v-jay
 ms.reviewer: craigg
-ms.openlocfilehash: 7413d76f14b9cf153e548012f6c1a3e793180a08
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 0e1ada5c446095b18ea7fe1a9bf9a16501d5bc49
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77653516"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82197876"
 ---
 # <a name="troubleshoot-azure-data-factory-connectors"></a>排查 Azure 数据工厂连接器问题
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文探讨 Azure 数据工厂中的连接器的常用故障排除方法。
   

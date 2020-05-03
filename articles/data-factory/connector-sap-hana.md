@@ -2,7 +2,7 @@
 title: 从 SAP HANA 复制数据
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 SAP HANA 复制到支持的接收器数据存储。
 services: data-factory
-ms.author: jingwang
+ms.author: v-jay
 author: WenJason
 manager: digimobile
 ms.reviewer: douglasl
@@ -11,15 +11,17 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 origin.date: 02/17/2020
-ms.date: 03/23/2020
-ms.openlocfilehash: 13c3f106cc1b4cc18dcb38106c83573a876b8689
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/11/2020
+ms.openlocfilehash: 0dea3b7c4b75d815560853236dfe6210a20552fc
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79497341"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82197820"
 ---
 # <a name="copy-data-from-sap-hana-using-azure-data-factory"></a>使用 Azure 数据工厂从 SAP HANA 复制数据
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 本文概述了如何使用 Azure 数据工厂中的复制活动从 SAP HANA 数据库复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
 >[!TIP]
@@ -185,7 +187,7 @@ SAP HANA 链接的服务支持以下属性：
 |:--- |:--- |:--- |
 | type | 复制活动 source 的 type 属性必须设置为：**SapHanaSource** | 是 |
 | 查询 | 指定要从 SAP HANA 实例读取数据的 SQL 查询。 | 是 |
-| partitionOptions | 指定用于从 SAP HANA 引入数据的数据分区选项。 从[从 SAP HANA 进行并行复制](#parallel-copy-from-sap-hana)部分了解详细信息。<br>允许的值为：**None**（默认值）、**PhysicalPartitionsOfTable**、**SapHanaDynamicRange**。 从[从 SAP HANA 进行并行复制](#parallel-copy-from-sap-hana)部分了解详细信息。 `PhysicalPartitionsOfTable` 只能在从表而非查询中复制数据时使用。 <br>启用分区选项（即，该选项不为 `None`）时，用于从 SAP HANA 并行加载数据的并行度由复制活动上的 [`parallelCopies`](copy-activity-performance.md#parallel-copy) 设置控制。 | False |
+| partitionOptions | 指定用于从 SAP HANA 引入数据的数据分区选项。 从[从 SAP HANA 进行并行复制](#parallel-copy-from-sap-hana)部分了解详细信息。<br>允许的值为：**None**（默认值）、**PhysicalPartitionsOfTable**、**SapHanaDynamicRange**。 从[从 SAP HANA 进行并行复制](#parallel-copy-from-sap-hana)部分了解详细信息。 `PhysicalPartitionsOfTable` 只能在从表而非查询中复制数据时使用。 <br>启用分区选项（即，该选项不为 `None`）时，用于从 SAP HANA 并行加载数据的并行度由复制活动上的 [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) 设置控制。 | False |
 | partitionSettings | 指定数据分区的设置组。<br>当分区选项是 `SapHanaDynamicRange` 时适用。 | False |
 | partitionColumnName | 指定将由分区用于并行复制的源列的名称。 如果未指定，系统会自动检测表的索引或主键并将其用作分区列。<br>当分区选项是 `SapHanaDynamicRange` 时适用。 如果使用查询来检索源数据，请在 WHERE 子句中挂接 `?AdfHanaDynamicRangePartitionCondition`。 请参阅[从 SAP HANA 进行并行复制](#parallel-copy-from-sap-hana)部分的示例。 | 在使用 `SapHanaDynamicRange` 分区时为“是”。 |
 | packetSize | 指定网络数据包大小 (KB)，以便将数据拆分成多个块。 如果有大量的数据需要复制，则大多数情况下，提高数据包大小可以提高从 SAP HANA 读取数据的速度。 调整数据包大小时，建议进行性能测试。 | 否。<br>默认值为 2048 (2MB)。 |
@@ -230,7 +232,7 @@ SAP HANA 链接的服务支持以下属性：
 
 ![分区选项的屏幕截图](./media/connector-sap-hana/connector-sap-hana-partition-options.png)
 
-启用分区复制时，数据工厂将对 SAP HANA 源运行并行查询，以按分区检索数据。 可通过复制活动中的 [`parallelCopies`](copy-activity-performance.md#parallel-copy) 设置控制并行度。 例如，如果将 `parallelCopies` 设置为 4，则数据工厂会根据指定的分区选项和设置并行生成并运行 4 个查询，每个查询从 SAP HANA 检索一部分数据。
+启用分区复制时，数据工厂将对 SAP HANA 源运行并行查询，以按分区检索数据。 可通过复制活动中的 [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) 设置控制并行度。 例如，如果将 `parallelCopies` 设置为 4，则数据工厂会根据指定的分区选项和设置并行生成并运行 4 个查询，每个查询从 SAP HANA 检索一部分数据。
 
 建议同时启用并行复制和数据分区，尤其是从 SAP HANA 引入大量数据时。 下面是适用于不同方案的建议配置。 将数据复制到基于文件的数据存储中时，建议将数据作为多个文件写入文件夹（仅指定文件夹名称），在这种情况下，性能优于写入单个文件。
 

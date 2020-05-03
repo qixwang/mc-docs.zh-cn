@@ -8,12 +8,12 @@ ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: b37abc655472a3c466e414417fcf7bc5f2d1a392
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 5f2eb0886a02ad05216130006404091ec9faf909
+ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80586813"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82588602"
 ---
 # <a name="how-to-provision-for-multitenancy"></a>如何预配多租户 
 
@@ -248,7 +248,7 @@ ms.locfileid: "80586813"
 
 在组注册中使用对称密钥证明时，不会直接使用注册组密钥。 相反，你为每个设备创建唯一派生的密钥，并在[使用对称密钥进行组注册](concepts-symmetric-key-attestation.md#group-enrollments)中提及。
 
-若要生成设备密钥，请使用组主键计算设备的唯一注册 ID 的 [HMAC-SHA256](https://wikipedia.org/wiki/HMAC)，并将结果转换为 Base64 格式。
+若要生成设备密钥，请使用组主键计算设备的唯一注册 ID 的 HMAC-SHA256，并将结果转换为 Base64 格式。
 
 不要在设备代码中包含你的组主键。
 

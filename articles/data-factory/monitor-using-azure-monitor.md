@@ -11,15 +11,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 origin.date: 12/11/2018
-ms.date: 03/02/2020
-ms.openlocfilehash: 9e1525572005da47e999882e6396ac44ece28eae
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/11/2020
+ms.openlocfilehash: cbc9f2e76df7f40c774529500fe909d0d05b48a3
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77653588"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82198045"
 ---
 # <a name="alert-and-monitor-data-factories-by-using-azure-monitor"></a>使用 Azure Monitor 发出警报和监视数据工厂
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 云应用程序比较复杂，包含很多移动部件。 监视功能可以提供数据来确保应用程序始终处于正常运行状态。 监视功能还有助于避免潜在问题，或者排查以往的问题。
 

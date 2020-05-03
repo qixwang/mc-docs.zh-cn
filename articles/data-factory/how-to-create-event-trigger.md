@@ -11,15 +11,16 @@ manager: digimobile
 ms.reviewer: maghan
 ms.topic: conceptual
 origin.date: 10/18/2018
-ms.date: 03/02/2020
-ms.openlocfilehash: 7a45bce1d061bcc264b9201e14758e7a4b68756b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/11/2020
+ms.openlocfilehash: f2f9f9d364c427bf92cf73a1547182da65854c91
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77653681"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82198234"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-an-event"></a>如何运行管道的触发器来响应事件
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文介绍了可以在数据工厂管道中创建的基于事件的触发器。
 
@@ -100,4 +101,4 @@ ms.locfileid: "77653681"
 | **Blob 路径结尾** | `foldername/file.txt` | 接收任何容器下 `foldername` 文件夹中名为 `file.txt` 的 blob 事件。 |
 
 ## <a name="next-steps"></a>后续步骤
-有关触发器的详细信息，请参阅[管道执行和触发器](concepts-pipeline-execution-triggers.md#triggers)。
+有关触发器的详细信息，请参阅[管道执行和触发器](concepts-pipeline-execution-triggers.md#trigger-execution)。

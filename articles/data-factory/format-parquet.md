@@ -8,16 +8,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 origin.date: 04/29/2019
-ms.date: 02/23/2020
+ms.date: 05/11/2020
 ms.author: v-jay
-ms.openlocfilehash: 598c04f711d1381f8f463e7130f8e606840e1793
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: a0b69695e8b9a273d3975a5f2c965a28918aa4c6
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79497350"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82197965"
 ---
 # <a name="parquet-format-in-azure-data-factory"></a>Azure 数据工厂中的 Parquet 格式
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 如果要**分析 Parquet 文件或以 Parquet 格式写入数据**，请遵循此文章中的说明。 
 

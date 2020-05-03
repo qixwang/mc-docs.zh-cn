@@ -10,16 +10,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 origin.date: 12/10/2019
-ms.date: 03/02/2020
+ms.date: 05/11/2020
 ms.author: v-jay
-ms.openlocfilehash: 54e527e9626f9fd042ab94d604e3b2f5c91bcc65
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 977463169193a04f6dc6fcff8cc765ef2c9e63ce
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77653533"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82197854"
 ---
 # <a name="copy-data-to-or-from-a-file-system-by-using-azure-data-factory"></a>使用 Azure 数据工厂向/从文件系统复制数据
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文概述了如何将数据复制到文件系统以及从文件系统复制数据。 若要了解 Azure 数据工厂，请阅读[介绍性文章](introduction.md)。
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: philmea
-ms.openlocfilehash: 944b40edd40dc0783960c04a5e79580c20bcb2ad
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: b6c32708a7310596b40ab83a45195add2c8827b1
+ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80586825"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82588608"
 ---
 # <a name="how-to-provision-legacy-devices-using-symmetric-keys"></a>使用对称密钥预配旧设备
 
@@ -146,7 +146,7 @@ sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6
 
 ## <a name="derive-a-device-key"></a>派生一个设备密钥 
 
-若要生成设备密钥，请使用组主键计算设备的唯一注册 ID 的 [HMAC-SHA256](https://wikipedia.org/wiki/HMAC)，并将结果转换为 Base64 格式。
+若要生成设备密钥，请使用组主键计算设备的唯一注册 ID 的 HMAC-SHA256，并将结果转换为 Base64 格式。
 
 不要在设备代码中包含你的组主键。
 

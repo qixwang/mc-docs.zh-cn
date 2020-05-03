@@ -11,15 +11,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 origin.date: 12/13/2019
-ms.date: 03/02/2020
-ms.openlocfilehash: 17a173764e4be2d0569bac76b64f2c8959c2ea42
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/11/2020
+ms.openlocfilehash: c3033e820914735b394ac6e520b935be5e858873
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77653254"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82198282"
 ---
 # <a name="copy-data-from-amazon-simple-storage-service-using-azure-data-factory"></a>使用 Azure 数据工厂从 Amazon 简单存储服务复制数据
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文概述了如何从 Amazon 简单存储服务 (Amazon S3) 复制数据。 若要了解 Azure 数据工厂，请阅读[介绍性文章](introduction.md)。
 

@@ -10,15 +10,17 @@ ms.author: v-jay
 ms.reviewer: ''
 manager: digimobile
 origin.date: 12/19/2019
-ms.date: 01/06/2020
-ms.openlocfilehash: 29cdc2d4f81e26999b0ab9d5eae5891cf2d66675
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/11/2020
+ms.openlocfilehash: 5de48e81c730592a8909e1301e683453023b73c3
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75624314"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82197959"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Azure 数据工厂中的视觉对象创作
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Azure 数据工厂用户界面体验 (UX) 允许你以可视方式创作和部署资源为你的数据工厂而无需编写任何代码。 通过此无代码的界面，可将活动拖放到管道画布上、执行测试运行、以迭代方式进行调试，以及部署和监视管道运行。
 

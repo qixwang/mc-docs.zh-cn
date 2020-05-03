@@ -1,27 +1,19 @@
 ---
 title: 快速入门：将 Azure Redis 缓存与 Java 配合使用
 description: 本快速入门将创建一个使用 Azure Redis 缓存的新 Java 应用
-services: cache
-documentationcenter: ''
 author: yegu-ms
-manager: jhubbard
-editor: ''
-ms.assetid: 29275a5e-2e39-4ef2-804f-7ecc5161eab9
 ms.service: cache
 ms.devlang: java
 ms.topic: quickstart
-ms.tgt_pltfrm: cache
-ms.workload: tbd
-origin.date: 05/23/2018
-ms.date: 10/29/2019
+ms.date: 04/26/2020
 ms.author: v-junlch
 ms.custom: mvc, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 54d77a4362763a208a01f8bdad6f509a6d6c52b6
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 9b58b5e384c757dcccb45e1970760315115382d9
+ms.sourcegitcommit: e3512c5c2bbe61704d5c8cbba74efd56bfe91927
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "73068815"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82267610"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-java"></a>快速入门：将 Azure Redis 缓存与 Java 配合使用
 
@@ -90,7 +82,7 @@ public class App
         String cacheHostname = System.getenv("REDISCACHEHOSTNAME");
         String cachekey = System.getenv("REDISCACHEKEY");
 
-        // Connect to the Azure Cache for Redis over the SSL port using the key.
+        // Connect to the Azure Cache for Redis over the TLS/SSL port using the key.
         JedisShardInfo shardInfo = new JedisShardInfo(cacheHostname, 6380, useSsl);
         shardInfo.setPassword(cachekey); /* Use your access key. */
         Jedis jedis = new Jedis(shardInfo);      
@@ -165,4 +157,3 @@ mvn exec:java -D exec.mainClass=example.demo.App
 > [!div class="nextstepaction"]
 > [创建使用 Azure Redis 缓存的 ASP.NET Web 应用。](./cache-web-app-howto.md)
 
-<!-- Update_Description: wording update -->

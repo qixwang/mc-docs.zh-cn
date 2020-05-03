@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 origin.date: 12/20/2018
-ms.date: 11/11/2019
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: 2ada76ff8e83be04009feeda5d084c942447200e
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 3896c64d2cb6c1667c3aa2a46476ec16dfc896d5
+ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74116951"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82596392"
 ---
 # <a name="windows-activation-fails-in-forced-tunneling-scenario"></a>在强制隧道方案中，Windows 激活失败
 
@@ -57,8 +57,6 @@ Azure 中国云的 KMS 服务器的 IP 地址为 42.159.7.249。 其 DNS 名称�
 若要添加自定义路由，请执行以下步骤：
 
 ### <a name="for-resource-manager-vms"></a>对于资源管理器 VM
-
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 > [!NOTE] 
 > 激活使用公共 IP 地址，并将受标准 SKU 负载均衡器配置的影响。 请仔细查看 [Azure 中的出站连接](/load-balancer/load-balancer-outbound-connections)以了解要求。
@@ -98,6 +96,8 @@ Azure 中国云的 KMS 服务器的 IP 地址为 42.159.7.249。 其 DNS 名称�
 
 ### <a name="for-classic-vms"></a>对于经典 VM
 
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
+
 1. 打开 Azure PowerShell，然后[登录到 Azure 订阅](https://docs.microsoft.com/powershell/azure/authenticate-azureps)。
 2. 运行以下命令：
 
@@ -127,5 +127,5 @@ Azure 中国云的 KMS 服务器的 IP 地址为 42.159.7.249。 其 DNS 名称�
 - [KMS 客户端安装密钥](https://docs.microsoft.com/windows-server/get-started/kmsclientkeys)
 - [查看并选择激活方法](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj134256(v=ws.11))
 
-<!--Update_Description: wording update -->
-
+<!--Correct on  https://docs.microsoft.com/previous-versions/windows -->
+<!-- Update_Description: update meta properties, wording update, update link -->

@@ -3,15 +3,15 @@ title: 快速入门：带有模板的新策略分配
 description: 本快速入门介绍如何使用资源管理器模板创建策略分配以识别不合规的资源。
 ms.author: v-tawe
 origin.date: 03/16/2020
-ms.date: 03/30/2020
+ms.date: 04/20/2020
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.openlocfilehash: ddef43b4f150121693cca12e9d5ec2157b1449f9
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: d9027216e6a0fd0fd986a1c8faaf911d4b20bf6f
+ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80586816"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82588739"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-by-using-a-resource-manager-template"></a>快速入门：使用资源管理器模板创建策略分配以识别不合规的资源
 
@@ -83,7 +83,7 @@ ms.locfileid: "80586816"
 
 1. 选择下图登录到 Azure 门户并打开模板：
 
-   [![将策略模板部署到 Azure](./media/assign-policy-template/deploy-to-azure.png)](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurepolicy-assign-builtinpolicy-resourcegroup%2Fazuredeploy.json)
+   [![将策略模板部署到 Azure](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurepolicy-assign-builtinpolicy-resourcegroup%2Fazuredeploy.json)
 
 1. 选择或输入以下值：
 

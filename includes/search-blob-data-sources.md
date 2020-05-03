@@ -1,16 +1,16 @@
 ---
 author: mgottein
-ms.service: search
+ms.service: cognitive-search
 ms.topic: include
 origin.date: 05/02/2019
-ms.date: 03/02/2019
+ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: 029203bf14ddadd8bacfe5093c54cdb4aa95841b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 4391fb17c088f49b70ed4ee0b92006b885f79976
+ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77501411"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82595293"
 ---
 * PDF
 * Microsoft Office 格式：DOCX/DOC/DOCM、XLSX/XLS/XLSM、PPTX/PPT/PPTM、MSG（Outlook 电子邮件）、XML（2003 和 2006 Word XML）

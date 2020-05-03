@@ -7,18 +7,21 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 origin.date: 07/25/2018
-ms.date: 03/23/2020
+ms.date: 05/11/2020
 author: v-jay
 ms.author: daperlov
 manager: digimobile
-ms.openlocfilehash: d5b36676f7f9e26498a63d8ca345ecb99ad788d7
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 3928802cfb8ac0a1a178ec26d5e6312d2c5fd113
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79497263"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82198241"
 ---
-# <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>在 Azure 数据工厂中监视集成运行时  
+# <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>在 Azure 数据工厂中监视集成运行时
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+  
 **集成运行时**是 Azure 数据工厂用于在不同的网络环境之间提供多种数据集成功能的计算基础结构。 数据工厂提供三种类型的集成运行时：
 
 - Azure 集成运行时

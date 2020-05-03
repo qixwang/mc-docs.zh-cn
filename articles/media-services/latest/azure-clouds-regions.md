@@ -12,12 +12,12 @@ ms.topic: article
 origin.date: 01/21/2020
 ms.date: 04/06/2020
 ms.author: v-jay
-ms.openlocfilehash: 1f0c594b6148140b578a6af70993a5c39771da37
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 087cf1abf219ce800efec1843d11c3c3291b5669
+ms.sourcegitcommit: 95efd248f5ee3701f671dbd5cfe0aec9c9959a24
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80625774"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82507651"
 ---
 # <a name="clouds-and-regions-in-which-azure-media-services-v3-exists"></a>存在 Azure 媒体服务 v3 的云和区域
 
@@ -25,8 +25,8 @@ Azure 媒体服务 v3 可通过 Azure 资源管理器清单在 Azure 中国世�
 
 ## <a name="feature-availability-in-azure-clouds"></a>Azure 云中的功能可用性
 
-| Feature||Azure 中国世纪互联|
-| --- | --- | --- | --- | --- |
+| Feature|Azure 中国世纪互联|
+| --- | --- |
 | [VideoAnalyzerPreset](analyzing-video-audio-files-concept.md) | 不可用 |
 | [AudioAnalyzerPreset](analyzing-video-audio-files-concept.md) | 不可用 |
 | [StandardEncoderPreset](encoding-concept.md) | 可用 |

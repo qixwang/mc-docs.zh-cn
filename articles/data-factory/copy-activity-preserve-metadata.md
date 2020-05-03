@@ -9,17 +9,19 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-origin.date: 12/12/2019
-ms.date: 01/06/2020
+origin.date: 03/24/2020
+ms.date: 05/11/2020
 ms.author: v-jay
-ms.openlocfilehash: bb0e9dad0ad3413af265aa09f4d6b367ebb50282
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: e2b7a6b4d01e124ddcbb7763c9ff698f358eab72
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79293210"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82198267"
 ---
 #  <a name="preserve-metadata-and-acls-using-copy-activity-in-azure-data-factory"></a>使用 Azure 数据工厂中的复制活动保留元数据和 ACL
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 当使用 Azure 数据工厂复制活动将数据从源复制到接收器时，在以下情况下，还可以保留元数据和 ACL。
 
@@ -41,7 +43,7 @@ ms.locfileid: "79293210"
 ```json
 "activities":[
     {
-        "name": "CopyFromGen1ToGen2",
+        "name": "CopyAndPreserveMetadata",
         "type": "Copy",
         "typeProperties": {
             "source": {

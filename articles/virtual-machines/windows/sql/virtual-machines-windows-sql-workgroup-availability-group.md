@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 origin.date: 01/29/2020
-ms.date: 03/09/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: 4d181dad87a4b3466f60bc57e1b8aa8a58a32413
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 899c5eb99a117bc4e04e33bc0659bf37c478a483
+ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79084522"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82596215"
 ---
 # <a name="configure-a-workgroup-availability-group"></a>配置工作组可用性组 
 
@@ -287,9 +287,8 @@ GO
 
 最后一个步骤使用 [Azure 门户](virtual-machines-windows-portal-sql-alwayson-int-listener.md)或 [PowerShell](virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md) 配置负载均衡器
 
-## <a name="next-steps"></a>后续步骤
+<!--Not Available on ## Next Steps-->
 
-还可以使用 [Az SQL VM CLI](virtual-machines-windows-sql-availability-group-cli.md) 配置可用性组。
-
+<!--Not Available on [Az SQL VM CLI](virtual-machines-windows-sql-availability-group-cli.md)-->
 <!-- Update_Description: new article about virtual machines windows sql workgroup availability group -->
 <!--NEW.date: 03/09/2020-->

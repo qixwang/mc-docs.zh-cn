@@ -11,12 +11,12 @@ ms.custom: seodec18
 origin.date: 11/05/2019
 ms.date: 03/16/2020
 ms.author: v-tawe
-ms.openlocfilehash: 1fef330ccd6d3b72937f447096a2d2440a99bd51
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 3e2973f9122a05569952d38a83d0d35b2712e470
+ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80243924"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82588789"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建事件中心
 
@@ -82,7 +82,6 @@ New-AzEventHub -ResourceGroupName myResourceGroup -NamespaceName namespace_name 
 [创建一个试用帐户]: https://www.azure.cn/pricing/1rmb-trial/
 [Install and Configure Azure PowerShell]: https://docs.microsoft.com/powershell/azure/install-az-ps
 [New-AzResourceGroup]: https://docs.microsoft.com/powershell/module/az.resources/new-Azresourcegroup
-[fully qualified domain name]: https://wikipedia.org/wiki/Fully_qualified_domain_name
 [3]: ./media/event-hubs-quickstart-powershell/sender1.png
 [4]: ./media/event-hubs-quickstart-powershell/receiver1.png
 [5]: ./media/event-hubs-quickstart-powershell/metrics.png

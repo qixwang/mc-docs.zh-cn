@@ -6,16 +6,18 @@ author: WenJason
 ms.service: data-factory
 ms.topic: troubleshooting
 origin.date: 11/07/2019
-ms.date: 03/23/2020
+ms.date: 05/11/2020
 ms.author: v-jay
-ms.openlocfilehash: 80054b8f958a0d887547c180d31fdade7133a4e1
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: b2f2b380da855c2f5f90f8505dacbae7f7cbf0e8
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79497399"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82198010"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>排查自承载集成运行时问题
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文探讨 Azure 数据工厂中的自承载集成运行时的常用故障排除方法。
 

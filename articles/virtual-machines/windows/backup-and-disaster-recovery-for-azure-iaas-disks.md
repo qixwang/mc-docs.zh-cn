@@ -5,15 +5,15 @@ author: rockboyfor
 ms.service: virtual-machines-linux
 ms.topic: conceptual
 origin.date: 07/19/2017
-ms.date: 02/10/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
 ms.subservice: disks
-ms.openlocfilehash: 121a0235f8f66788ac37a49369c89207b8a8ba20
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 3a7eac25c3a2a3833c6ed1961875a58b9af802e4
+ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77428831"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82596017"
 ---
 # <a name="backup-and-disaster-recovery-for-azure-iaas-disks"></a>Azure IaaS 磁盘的备份和灾难恢复
 

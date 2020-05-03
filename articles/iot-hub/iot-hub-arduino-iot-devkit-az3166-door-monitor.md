@@ -8,14 +8,14 @@ services: iot-hub
 ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 origin.date: 03/19/2018
-ms.date: 02/17/2020
+ms.date: 05/11/2020
 ms.author: liydu
-ms.openlocfilehash: bfc88c3313875af075d1e3ac26c80ddadbba2a36
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: fa207ec9fe58b2239084216483c0c20f38cf3b98
+ms.sourcegitcommit: 95efd248f5ee3701f671dbd5cfe0aec9c9959a24
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77068378"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82507677"
 ---
 # <a name="door-monitor----using-azure-functions-and-sendgrid-send-email-when-a-door-is-opened"></a>门监视器 - 使用 Azure Functions 和 SendGrid 在门打开时发送电子邮件           
 
@@ -107,7 +107,7 @@ API 密钥仅显示一次。 请确保将其安全地复制和存储，因为下
 
 填充注册表单上的字段。
 
-* **资源组**：创建用于托管 SendGrid 服务的资源组，或使用现有资源组。 请参阅[使用资源组管理 Azure 资源](/azure-resource-manager/resource-group-portal)。
+   * **资源组**：创建用于托管 SendGrid 服务的资源组，或使用现有资源组。 请参阅[使用资源组管理 Azure 资源](../azure-resource-manager/management/manage-resource-groups-portal.md)。
 
 * **IoT 中心名称**：IoT 中心的名称。 选择一个不同于你的其他服务的唯一名称。
 

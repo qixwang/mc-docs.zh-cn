@@ -12,16 +12,18 @@ ms.workload: data-services
 ms.devlang: python
 ms.topic: quickstart
 origin.date: 01/22/2018
-ms.date: 03/23/2020
+ms.date: 05/11/2020
 ms.custom: seo-python-october2019
-ms.openlocfilehash: 05f87706c567d32a19a5ba35a883dce3521f0108
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 5ed30df4ba53380efde4a52f8f5b534271108eed
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79497193"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82198087"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-python"></a>快速入门：使用 Python 创建数据工厂和管道
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 在本快速入门中，你将使用 Python 创建数据工厂。 此数据工厂中的管道将数据从 Azure Blob 存储中的一个文件夹复制到另一个文件夹。
 

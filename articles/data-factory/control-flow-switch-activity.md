@@ -9,15 +9,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 origin.date: 10/08/2019
-ms.date: 01/06/2020
-ms.openlocfilehash: cb1a395f7d30f30a339bc76ae250640fd9d56010
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/11/2020
+ms.openlocfilehash: 47037e9495669f7f040bc91928fd8d6ff73d54a5
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75624220"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82197784"
 ---
 # <a name="switch-activity-in-azure-data-factory"></a>Azure 数据工厂中的 Switch 活动
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Switch 活动提供的功能与编程语言中 switch 语句提供的功能相同。 它计算一组与条件求值匹配的 case 相对应的活动。
 

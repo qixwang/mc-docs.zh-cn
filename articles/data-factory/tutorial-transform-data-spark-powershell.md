@@ -7,18 +7,21 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 origin.date: 01/22/2018
-ms.date: 01/06/2020
+ms.date: 05/11/2020
 author: WenJason
 ms.author: v-jay
 manager: digimobile
-ms.openlocfilehash: 51251b862c5b8a1fbb78d6bfd14733511abe5a14
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: ca1e63ea5b027823aac0993fc883dbe6d94c4b60
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75623842"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82198096"
 ---
 # <a name="transform-data-in-the-cloud-by-using-spark-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用 Spark 活动转换云中的数据
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+
 本教程使用 Azure PowerShell 创建一个数据工厂管道，该管道可以使用 Spark 活动和按需 HDInsight 链接服务转换数据。 在本教程中执行以下步骤：
 
 > [!div class="checklist"]

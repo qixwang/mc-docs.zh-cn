@@ -5,17 +5,17 @@ services: container-service
 author: rockboyfor
 ms.topic: article
 origin.date: 11/04/2019
-ms.date: 03/09/2020
+ms.date: 04/30/2020
 ms.author: v-yeche
-ms.openlocfilehash: 2729f75376598e7430c2638977e80988d519fdee
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 8a6bf35d73d8c93a4159e7f6f96df2b9a0dc52c6
+ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79290833"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82596184"
 ---
-<!--NOT SUITABLE FOR MOONCAKE-->
-<!--REASON: PRODUCTION TEAM NOTIFIED-->
+<!--CONFIRME WITH DONG LIU SUCCESSFULLY-->
+<!--NEW FEATURES HAS BEEN RELEASED ON AZURE CHINA CLOUD-->
 # <a name="github-actions-for-deploying-to-kubernetes-service"></a>用于将容器部署到 Kubernetes 服务的 GitHub Actions
 
 可以通过 [GitHub Actions](https://help.github.com/en/articles/about-github-actions) 灵活地生成自动化软件开发生命周期工作流。 Kubernetes 操作 [azure/aks-set-context@v1](https://github.com/Azure/aks-set-context) 促进到 Azure Kubernetes 服务群集的部署。 此操作设置目标 AKS 群集上下文，该上下文可供其他操作（例如 [azure/k8s-deploy](https://github.com/Azure/k8s-deploy/tree/master)、[azure/k8s-create-secret](https://github.com/Azure/k8s-create-secret/tree/master) 等）使用，也可运行任何 kubectl 命令。

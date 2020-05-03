@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-origin.date: 03/12/2020
-ms.date: 03/16/2020
+origin.date: 04/03/2020
+ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: eef4dcd4a28227170f04eaa4febf8ebf30533319
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 764079f5484c5c30667f88f0d7ad6a45955894e6
+ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80272914"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82595265"
 ---
 |名称 |说明 |效果 |版本 |GitHub |
 |---|---|---|---|---|

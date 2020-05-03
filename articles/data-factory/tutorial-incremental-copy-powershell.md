@@ -11,15 +11,17 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-dt-2019
 origin.date: 01/22/2018
-ms.date: 03/02/2020
-ms.openlocfilehash: a9b1c1e761decba944b6641bc283c1ba4c75005d
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/11/2020
+ms.openlocfilehash: 5ee7c5c8d4720f618746fb29692cb4e660de0c51
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79291267"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82198098"
 ---
 # <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage-using-powershell"></a>使用 PowerShell 以增量方式将 Azure SQL 数据库中的数据加载到 Azure Blob 存储
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 在本教程中，请创建一个带管道的 Azure 数据工厂，将增量数据从 Azure SQL 数据库中的表加载到 Azure Blob 存储。
 

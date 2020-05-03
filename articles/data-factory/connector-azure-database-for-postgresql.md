@@ -11,15 +11,17 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 origin.date: 09/16/2019
-ms.date: 01/06/2020
-ms.openlocfilehash: af2ed158cdd6d26692cfa84010bf2ac4c65fe900
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/11/2020
+ms.openlocfilehash: aafaccb702da5b7f678ed893c2d645d5a6c3b6ef
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75624239"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82197851"
 ---
 # <a name="copy-data-to-and-from-azure-database-for-postgresql-by-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure Database for PostgreSQL 复制数据
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文介绍了如何使用 Azure 数据工厂中的复制活动功能从 Azure Database for PostgreSQL 复制数据。 本文是在总体概述复制活动的 [Azure 数据工厂中的复制活动](copy-activity-overview.md)的基础上编写的。
 

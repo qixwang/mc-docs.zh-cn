@@ -10,12 +10,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 665314580619c4278b712861c5be7b3d07e8b62a
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 087dfa824ebde728e6659e3d3b3c5b49ca33b657
+ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80586804"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82588496"
 ---
 # <a name="quickstart-provision-a-simulated-tpm-device-using-the-azure-iot-c-sdk"></a>快速入门：使用 Azure IoT C SDK 预配模拟的 TPM 设备
 
@@ -150,7 +150,7 @@ Azure IoT 设备预配服务支持两类注册：
 
 ## <a name="simulate-first-boot-sequence-for-the-device"></a>模拟设备的首次启动顺序
 
-在本部分，我们将示例代码配置为使用[高级消息队列协议 (AMQP)](https://wikipedia.org/wiki/Advanced_Message_Queuing_Protocol) 向设备预配服务实例发送设备的启动序列。 此启动序列使得设备可被识别并分配到与设备预配服务实例链接的 IoT 中心。
+在本部分，我们将示例代码配置为使用高级消息队列协议 (AMQP) 向设备预配服务实例发送设备的启动序列。 此启动序列使得设备可被识别并分配到与设备预配服务实例链接的 IoT 中心。
 
 1. 在 Azure 门户中，选择设备预配服务的“概述”选项卡，并复制“ID 范围”值。  
 

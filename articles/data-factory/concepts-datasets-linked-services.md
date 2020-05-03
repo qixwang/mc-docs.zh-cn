@@ -11,15 +11,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 origin.date: 04/25/2019
-ms.date: 10/14/2019
-ms.openlocfilehash: 19ca1c6d42da2728aaf959764092913ff6260ff5
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/11/2020
+ms.openlocfilehash: 2ca31a83004650c49fcdaf1412592332c6200f34
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292348"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82197941"
 ---
 # <a name="datasets-in-azure-data-factory"></a>Azure 数据工厂中的数据集
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+
 
 本文介绍了数据集的涵义，采用 JSON 格式定义数据集的方式以及数据集在 Azure 数据工厂管道中的用法。
 

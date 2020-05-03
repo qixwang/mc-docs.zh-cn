@@ -12,15 +12,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 origin.date: 03/02/2020
-ms.date: 03/23/2020
-ms.openlocfilehash: e614c12f4701b4bfd6396026d3882ad74ba946a5
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/11/2020
+ms.openlocfilehash: 10562c8b2f3d2e7221ad5327aa8844af7f7b00dc
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79497352"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82197887"
 ---
 # <a name="copy-data-from-and-to-sftp-server-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 SFTP 服务器复制数据
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文概述了如何从/向 SFTP 服务器复制数据。 若要了解 Azure 数据工厂，请阅读[介绍性文章](introduction.md)。
 

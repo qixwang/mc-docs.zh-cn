@@ -11,15 +11,17 @@ ms.reviewer: sawinark
 manager: digimobile
 ms.custom: seo-lt-2019
 origin.date: 07/08/2019
-ms.date: 01/06/2020
-ms.openlocfilehash: 4fda5d5cb8c8ef7492f1d1b451ce9c6e41d442e0
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/11/2020
+ms.openlocfilehash: 3d55485cbcce6c48be72e58bd1aecb2fd0975e9c
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75623891"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82197997"
 ---
 # <a name="troubleshoot-ssis-integration-runtime-management-in-azure-data-factory"></a>在 Azure 数据工厂中排查 SSIS Integration Runtime 管理问题
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 本文提供的故障排除指南针对 Azure-SQL Server Integration Services (SSIS) Integration Runtime (IR)（简称 SSIS IR）中的管理问题。
 

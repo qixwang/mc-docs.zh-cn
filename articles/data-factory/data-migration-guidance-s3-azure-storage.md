@@ -11,15 +11,17 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 origin.date: 8/04/2019
-ms.date: 03/16/2020
-ms.openlocfilehash: e5c926bcb2844aead3fd0c47c00207be82f1bafd
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/11/2020
+ms.openlocfilehash: a12a691694067138fbfeed207658d6422b35e03d
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79497359"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82197804"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-amazon-s3-to-azure-storage"></a>使用 Azure 数据工厂将数据从 Amazon S3 迁移到 Azure 存储 
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Azure 数据工厂提供高性能、稳健且经济高效的机制用于将数据从 Amazon S3 大规模迁移到 Azure Blob 存储或 Azure Data Lake Storage Gen2。  本文提供面向数据工程师和开发人员的以下信息： 
 

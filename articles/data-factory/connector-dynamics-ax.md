@@ -3,24 +3,26 @@ title: 从 Dynamics AX 复制数据
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 Dynamics AX 复制到受支持的接收器数据存储。
 services: data-factory
 documentationcenter: ''
+ms.author: v-jay
 author: WenJason
 manager: digimobile
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 origin.date: 08/01/2019
-ms.date: 01/06/2020
-ms.author: v-jay
-ms.openlocfilehash: fdef0677d1730228783ee246c209f8a4a7bf6cb2
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/11/2020
+ms.openlocfilehash: 8fc108726812ebf81658c8f5d738710c5040b62e
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77653532"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82198214"
 ---
 # <a name="copy-data-from-dynamics-ax-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 Dynamics AX 复制数据
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从 Dynamics AX 源复制数据。 本文是根据总体概述复制活动的 [Azure 数据工厂中的复制活动](copy-activity-overview.md)编写的。
 

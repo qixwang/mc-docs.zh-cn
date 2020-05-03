@@ -9,14 +9,14 @@ manager: cshankar
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 02/19/2020
+ms.date: 04/28/2020
 ms.custom: seodec18
-ms.openlocfilehash: c401f08f6f44e4d1ce58106e9130c3555101c04d
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 27211089b83fbbcfa410d4bd936ccf74c3fee9da
+ms.sourcegitcommit: e3512c5c2bbe61704d5c8cbba74efd56bfe91927
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77494466"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82267673"
 ---
 # <a name="create-time-series-insights-resources-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板创建时序见解资源
 
@@ -53,29 +53,29 @@ GitHub 上已发布 [201-timeseriesinsights-environment-with-eventhub](https://g
 
      若要创建参数文件，请复制 [201-timeseriesinsights-environment-with-eventhub](https://github.com/Azure/azure-quickstart-templates/blob/master/201-timeseriesinsights-environment-with-eventhub/azuredeploy.parameters.json) 文件。
 
-     ```JSON
-     {
-      "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
-      "contentVersion": "1.0.0.0",
-      "parameters": {
-          "eventHubNamespaceName": {
-              "value": "GEN-UNIQUE"
-          },
-          "eventHubName": {
-              "value": "GEN-UNIQUE"
-          },
-          "consumerGroupName": {
-              "value": "GEN-UNIQUE"
-          },
-          "environmentName": {
-            "value": "GEN-UNIQUE"
-          },
-          "eventSourceName": {
-            "value": "GEN-UNIQUE"
-          }
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+      "eventHubNamespaceName": {
+          "value": "GEN-UNIQUE"
+      },
+      "eventHubName": {
+          "value": "GEN-UNIQUE"
+      },
+      "consumerGroupName": {
+          "value": "GEN-UNIQUE"
+      },
+      "environmentName": {
+        "value": "GEN-UNIQUE"
+      },
+      "eventSourceName": {
+        "value": "GEN-UNIQUE"
       }
-    }
-    ```
+  }
+}
+```
 
     <div id="required-parameters"></div>
 

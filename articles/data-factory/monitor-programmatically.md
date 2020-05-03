@@ -5,21 +5,23 @@ services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 origin.date: 01/16/2018
-ms.date: 01/06/2020
+ms.date: 05/11/2020
 author: WenJason
 ms.author: v-jay
 manager: digimobile
-ms.openlocfilehash: 24b74d13315843e32404930149416b0a97964b75
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 8f70a1d8a5a13497c2af200ab461d47b94a79810
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75624198"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82198239"
 ---
 # <a name="programmatically-monitor-an-azure-data-factory"></a>以编程方式监视 Azure 数据工厂
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+
 本文介绍如何使用不同的软件开发工具包 (SDK) 监视数据工厂中的管道。 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]

@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: quickstart
-origin.date: 12/05/2019
-ms.date: 03/02/2020
-ms.openlocfilehash: eb39aace1999ff06a0ca77e4eb15d0eeb8c43ee8
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+origin.date: 03/25/2020
+ms.date: 04/20/2020
+ms.openlocfilehash: dcf9e33b7b6eaac5e3633c5ca4f2c619e047098a
+ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77501430"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82588720"
 ---
 # <a name="quickstart-create-a-search-app-in-the-portal-azure-cognitive-search"></a>快速入门：在门户中创建搜索应用（Azure 认知搜索）
 
@@ -24,13 +24,13 @@ ms.locfileid: "77501430"
 
 ## <a name="prerequisites"></a>先决条件
 
-需升级到[最新版 Microsoft Edge](https://www.microsoft.com/edge)，或者现在就使用 Google 的适用于本快速入门的 Chrome 浏览器。
+升级到[最新版 Microsoft Edge](https://www.microsoft.com/edge)，或者使用 Google 的适用于本快速入门的 Chrome 浏览器。
 
 [创建 Azure 认知搜索服务](search-create-service-portal.md)或在当前订阅下[查找现有服务](https://portal.azure.cn/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 可以使用本快速入门的免费服务。 
 
 [创建一个索引](search-create-index-portal.md)用作应用程序的基础。 
 
-本快速入门使用内置的“房地产”示例数据和索引，因为该示例包含缩略图。 若要创建本练习中使用的索引，请运行“导入数据”向导，并选择“realestate-us-sample”数据源。  
+本快速入门使用内置的“房地产”示例数据和索引，因为该示例包含缩略图（向导支持将图像添加到结果页）。 若要创建本练习中使用的索引，请运行“导入数据”向导，并选择“realestate-us-sample”数据源。  
 
 ![示例数据的数据源页](media/search-create-app-portal/import-data-realestate.png)
 
@@ -92,7 +92,7 @@ ms.locfileid: "77501430"
 
 基础索引由虚构生成的、已在不同文档中复制的数据构成，说明有时与图像不符。 如果基于自己的索引创建应用，则预期会获得更有整体性的体验。
 
-![运行应用程序](media/search-create-app-portal/run-app.png)
+![运行应用](media/search-create-app-portal/run-app.png)
 
 
 ## <a name="clean-up-resources"></a>清理资源

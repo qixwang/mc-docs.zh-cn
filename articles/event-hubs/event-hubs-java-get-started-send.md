@@ -7,14 +7,14 @@ ms.service: event-hubs
 ms.workload: core
 ms.topic: quickstart
 origin.date: 02/11/2020
-ms.date: 03/16/2020
+ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: 1481b74492db81c49bb47b1312fafa45a1256ed0
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 426dfeb85c3cfdc4ffbdcfa6c2dea86c8ca23e33
+ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80243926"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82588790"
 ---
 # <a name="use-java-to-send-events-to-or-receive-events-from-azure-event-hubs-azure-eventhubs"></a>使用 Java 向/从 Azure 事件中心 (azure-eventhubs) 发送/接收事件
 
@@ -111,7 +111,7 @@ public class SimpleSend {
         // handling different flavors of ingestion to Event Hubs here.
         final ScheduledExecutorService executorService = Executors.newScheduledThreadPool(4);
 
-        // Each EventHubClient instance spins up a new TCP/SSL connection, which is expensive.
+        // Each EventHubClient instance spins up a new TCP/TLS connection, which is expensive.
         // It is always a best practice to reuse these instances. The following sample shows this.
         final EventHubClient ehClient = EventHubClient.createSync(connStr.toString(), executorService);
 
@@ -315,7 +315,8 @@ eventHubClient.closeSync();
         
            System.out.println("End of sample");
        }
-    ```
+   }
+   ```
 3. 使用以下代码另外创建一个名为 `EventProcessor` 的类：
    
     ```java

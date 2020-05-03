@@ -6,15 +6,15 @@ author: WenJason
 ms.service: vpn-gateway
 ms.topic: include
 origin.date: 03/17/2020
-ms.date: 04/06/2020
+ms.date: 05/11/2020
 ms.author: v-jay
 ms.custom: include file
-ms.openlocfilehash: 61ad04f73cf34495329d763615b8672691246c6f
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 3cc376e53e3d261999147e4bc10dcbfa4088a106
+ms.sourcegitcommit: 95efd248f5ee3701f671dbd5cfe0aec9c9959a24
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80634405"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82507686"
 ---
 ## <a name="windows-clients"></a><a name="windows"></a>Windows 客户端
 
@@ -131,7 +131,7 @@ ms.locfileid: "80634405"
 5. 从 .pfx 中提取私钥和 base64 指纹。 有多种方法可执行此操作。 其中一种方法是在计算机上使用 OpenSSL。
 
     ```
-    openssl.exe pkcs12 -in "filename.pfx" -nodes -out "profileinfo.txt"
+    openssl pkcs12 -in "filename.pfx" -nodes -out "profileinfo.txt"
     ```
    *profileinfo.txt* 文件将包含 CA 和客户端证书的私钥与指纹。 请务必使用客户端证书的指纹。
 

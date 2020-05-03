@@ -8,13 +8,13 @@ ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 11/04/2019
-ms.date: 03/16/2020
-ms.openlocfilehash: 81a76d02c79f64ae067571b744ac3278040c8987
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 04/20/2020
+ms.openlocfilehash: c36b66cd11551c4b70fac151f50f6b5410455759
+ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80243740"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82588758"
 ---
 # <a name="image-analysis-cognitive-skill"></a>图像分析认知技能
 
@@ -56,10 +56,11 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
             "context": "/document/normalized_images/*",
             "defaultLanguageCode": "en",
             "visualFeatures": [
-                "Tags",
-                "Categories",
-                "Description",
-                "Faces"
+                "tags",
+                "categories",
+                "description",
+                "faces",
+                "brands"
             ],
             "inputs": [
                 {
@@ -79,6 +80,9 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
                 },
                 {
                     "name": "faces"
+                },
+                {
+                    "name": "brands"
                 }
             ]
         }
@@ -313,6 +317,10 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
         {
             "sourceFieldName": "/document/normalized_images/*/faces/*",
             "targetFieldName": "faces"
+        },
+        {
+            "sourceFieldName": "/document/normalized_images/*/brands/*/name",
+            "targetFieldName": "brands"
         }
 ```
 ### <a name="variation-on-output-field-mappings-nested-properties"></a>输出字段映射的变体（嵌套属性）
@@ -486,6 +494,7 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
         "brands":[  
            {  
               "name":"Microsoft",
+              "confidence": 0.903,
               "rectangle":{  
                  "x":20,
                  "y":97,

@@ -7,18 +7,18 @@ ms.topic: conceptual
 origin.date: 11/21/2019
 ms.date: 01/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: a716ba23ebce802dc0af5fd2f6f03a1d1c69ca34
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: cab4290413b49fdb2496adeaa8cef5d94c9794b7
+ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75631132"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82596192"
 ---
 # <a name="moving-azure-resources-across-regions"></a>跨区域移动 Azure 资源
 
 本文提供有关跨 Azure 区域移动 Azure 资源的信息。
 
-Azure 地理位置和区域构成了 Azure 全球基础结构的基础。 Azure [地理位置](https://azure.microsoft.com/global-infrastructure/geographies/)通常包含两个或更多个 [Azure 区域](https://www.azure.cn/home/features/products-by-region/)。 区域是一个地理位置和多个数据中心内的地区。 
+Azure 地理位置和区域构成了 Azure 全球基础结构的基础。 Azure [地理位置](https://azure.microsoft.com/global-infrastructure/geographies/)通常包含两个或更多个 [Azure 区域](https://status.azure.com/status/)。 区域是一个地理位置和多个数据中心内的地区。 
 
 <!--Not Avaialble on  and Availability Zones-->
 <!--Not Available on containing Availability Zones, -->

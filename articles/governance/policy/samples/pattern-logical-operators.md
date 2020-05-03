@@ -1,16 +1,16 @@
 ---
 title: 模式：策略定义中的逻辑运算符
 description: 此 Azure Policy 模式通过示例介绍了如何使用策略定义中的逻辑运算符。
-origin.date: 01/31/2020
-ms.date: 03/09/2020
+origin.date: 04/15/2020
+ms.date: 04/20/2020
 ms.author: v-tawe
 ms.topic: sample
-ms.openlocfilehash: 5a74fb69dfb85038c985a04d7e3ba1d263eab300
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 866b55d25a4e6db92339cccef9019f4b1068f0fa
+ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78048861"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82588737"
 ---
 # <a name="azure-policy-pattern-logical-operators"></a>Azure Policy 模式：逻辑运算符
 
@@ -132,6 +132,73 @@ ms.locfileid: "78048861"
 ```
 
 此 **policyRule.if** 块也包含单个 **allOf**，但每个条件都使用 **not** 逻辑运算符进行包装。 系统会先评估 **not** 逻辑运算符中的条件，然后评估该 **not**，以便确定整个子句是 true 还是 false。 如果 **not** 逻辑运算符的评估结果为 true，则会触发策略效果。
+
+## <a name="sample-3-combining-logical-operators"></a>示例 3：组合逻辑运算符
+
+此策略定义评估 Java Spring 帐户，以查看跟踪是否已启用或是否处于成功状态。
+
+```json
+{
+   "properties": {
+       "displayName": "Audit Azure Spring Cloud instances where distributed tracing is not enabled",
+       "description": "Distributed tracing tools in Azure Spring Cloud allow debugging and monitoring the complex interconnections between microservices in an application. Distributed tracing tools should be enabled and in a healthy state.",
+       "mode": "Indexed",
+       "policyRule": {
+           "if": {
+               "allOf": [{
+                       "field": "type",
+                       "equals": "Microsoft.AppPlatform/Spring"
+                   },
+                   {
+                       "anyOf": [{
+                               "field": "Microsoft.AppPlatform/Spring/trace.enabled",
+                               "notEquals": "true"
+                           },
+                           {
+                               "field": "Microsoft.AppPlatform/Spring/trace.state",
+                               "notEquals": "Succeeded"
+                           }
+                       ]
+                   }
+               ]
+           },
+           "then": {
+               "effect": "audit"
+           }
+       }
+   }
+}
+```
+
+### <a name="sample-3-explanation"></a>示例 3：说明
+
+```json
+"policyRule": {
+   "if": {
+       "allOf": [{
+               "field": "type",
+               "equals": "Microsoft.AppPlatform/Spring"
+           },
+           {
+               "anyOf": [{
+                       "field": "Microsoft.AppPlatform/Spring/trace.enabled",
+                       "notEquals": "true"
+                   },
+                   {
+                       "field": "Microsoft.AppPlatform/Spring/trace.state",
+                       "notEquals": "Succeeded"
+                   }
+               ]
+           }
+       ]
+   },
+   "then": {
+       "effect": "audit"
+   }
+}
+```
+
+此 policyRule.if  块同时包含 allOf  和 anyOf  逻辑运算符。 只要一个包含的条件为 true，anyOf  逻辑运算符就会计算为 true。 由于 type  位于 allOf  的核心，因此它必须始终计算为 true。 如果 type  和 anyOf  中的条件之一均为 true，则会触发策略效果。
 
 ## <a name="next-steps"></a>后续步骤
 

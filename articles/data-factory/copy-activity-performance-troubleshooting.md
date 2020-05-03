@@ -12,15 +12,17 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 origin.date: 03/11/2020
-ms.date: 03/23/2020
-ms.openlocfilehash: 109c265a0cfd9dc4cf16a9a298020ea6808a8473
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/11/2020
+ms.openlocfilehash: f6ce82f49b03fb5ff915d69650ef9206c458c157
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79497407"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82198269"
 ---
 # <a name="troubleshoot-copy-activity-performance"></a>排查复制活动的性能问题
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文概述如何排查 Azure 数据工厂中复制活动的性能问题。 
 
@@ -89,7 +91,7 @@ ms.locfileid: "79497407"
 
   - 检查复制源和接收器模式： 
 
-    - 如果复制模式支持 4 个以上的数据集成单位 (DIU) - 请参阅[此部分](copy-activity-performance.md#data-integration-units)中的详细信息，一般情况下，可以尝试增加 DIU 以获得更好的性能。 
+    - 如果复制模式支持 4 个以上的数据集成单位 (DIU) - 请参阅[此部分](copy-activity-performance-features.md#data-integration-units)中的详细信息，一般情况下，可以尝试增加 DIU 以获得更好的性能。 
 
     - 否则，请考虑将单个大型数据集拆分为多个小型数据集，并让每个并发运行的复制作业处理一部分数据。 为此，可以使用 Lookup/GetMetadata + ForEach + Copy。 请参阅[从多个容器复制文件](solution-template-copy-files-multiple-containers.md)、[将数据从 Amazon S3 迁移到 ADLS Gen2](solution-template-migration-s3-azure.md) 或[使用控制表进行批量复制](solution-template-bulk-copy-with-control-table.md)解决方案模板，其中提供了一般性的示例。
 
@@ -103,7 +105,7 @@ ms.locfileid: "79497407"
 
   - 检查复制源和接收器模式： 
 
-    - 如果复制模式支持 4 个以上的数据集成单位 (DIU) - 请参阅[此部分](copy-activity-performance.md#data-integration-units)中的详细信息，一般情况下，可以尝试增加 DIU 以获得更好的性能。 
+    - 如果复制模式支持 4 个以上的数据集成单位 (DIU) - 请参阅[此部分](copy-activity-performance-features.md#data-integration-units)中的详细信息，一般情况下，可以尝试增加 DIU 以获得更好的性能。 
 
     - 否则，请逐步优化[并行复制](copy-activity-performance-features.md)，同时请注意，过多的并行复制可能会进一步损害性能。
 
@@ -178,7 +180,7 @@ ms.locfileid: "79497407"
 * Azure Blob 存储：[Blob 存储的可伸缩性和性能目标](../storage/blobs/scalability-targets.md)和 [Blob 存储的性能与可伸缩性查检表](../storage/blobs/storage-performance-checklist.md)。
 * Azure 表存储：[表存储的可伸缩性和性能目标](../storage/tables/scalability-targets.md)和[表存储的性能与可伸缩性查检表](../storage/tables/storage-performance-checklist.md)。
 * Azure SQL 数据库：可[监视性能](../sql-database/sql-database-single-database-monitor.md)并检查数据库事务单位 (DTU) 百分比。
-* Azure SQL 数据仓库：其功能以数据仓库单位 (DWU) 衡量。 请参阅[管理 Azure SQL 数据仓库中的计算能力（概述）](../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)。
+* Azure SQL 数据仓库：其功能以数据仓库单位 (DWU) 衡量。 请参阅[管理 Azure SQL 数据仓库中的计算能力（概述）](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)。
 * Azure Cosmos DB：[Azure Cosmos DB 中的性能级别](../cosmos-db/performance-levels.md)。
 * 本地 SQL Server：[性能监视和优化](https://msdn.microsoft.com/library/ms189081.aspx)。
 * 本地文件服务器：[文件服务器性能优化](https://msdn.microsoft.com/library/dn567661.aspx)。

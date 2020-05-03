@@ -14,12 +14,12 @@ ms.topic: article
 origin.date: 03/18/2019
 ms.date: 04/06/2020
 ms.author: v-jay
-ms.openlocfilehash: 071c3411588ed0f50d4067a65152051317ea315a
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 792fa2961ad69d6c115821d328a14a7402addaec
+ms.sourcegitcommit: 95efd248f5ee3701f671dbd5cfe0aec9c9959a24
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80625777"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82507642"
 ---
 # <a name="implement-failover-streaming-with-media-services-v2"></a>使用媒体服务 v2 实现故障转移流式处理
 
@@ -582,7 +582,7 @@ using System.Runtime.Serialization.Json;
     {
         if (string.IsNullOrEmpty(mediaServicesApiServerUri))
         {
-        mediaServicesApiServerUri = "https://media.windows.net/api/";
+        mediaServicesApiServerUri = "https://media.chinacloudapi.cn/api/";
         }
         if (!mediaServicesApiServerUri.EndsWith("/"))
         mediaServicesApiServerUri = mediaServicesApiServerUri + "/";

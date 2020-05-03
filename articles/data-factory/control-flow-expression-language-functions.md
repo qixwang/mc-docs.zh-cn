@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 origin.date: 11/25/2019
-ms.date: 01/06/2020
-ms.openlocfilehash: 2851571d3973d95cb4f559b5938e95561e73a8f0
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/11/2020
+ms.openlocfilehash: e9054953b3c07ba7e83ed2e85817b614f2efb1ea
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75624306"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82198258"
 ---
 # <a name="expressions-and-functions-in-azure-data-factory"></a>Azure 数据工厂中的表达式和函数
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文提供了有关 Azure 数据工厂支持的表达式和函数的详细信息。 
 
