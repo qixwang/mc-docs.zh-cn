@@ -11,17 +11,17 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: sashan,moslake,josack
 origin.date: 11/19/2019
-ms.date: 02/17/2020
-ms.openlocfilehash: c926692ed8b6c08d2f469816404de6a45b64ca27
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.date: 04/27/2020
+ms.openlocfilehash: 87de5a828e329b26f65829d136df43af563720f8
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79291492"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126943"
 ---
-# <a name="sql-database-resource-limits-for-azure-sql-database-server"></a>Azure SQL 数据库服务器的 SQL 数据库资源限制
+# <a name="sql-database-resource-limits"></a>SQL 数据库资源限制
 
-本文概述了管理单一数据库和弹性池的 SQL 数据库服务器的 SQL 数据库资源限制。 它还提供了有关在达到或超过这些资源限制时会发生什么情况的信息。
+本文概述了管理单一数据库和弹性池的 SQL 数据库服务器的 SQL 数据库资源限制。 其中提供了有关在达到或超出这些资源限制时会发生什么情况的信息。
 
 > [!NOTE]
 > 有关托管实例限制，请参阅[托管实例的 SQL 数据库资源限制](sql-database-managed-instance-resource-limits.md)。
@@ -38,14 +38,14 @@ ms.locfileid: "79291492"
 | 每个服务器的最大池数 | 受限于 DTU 或 vCore 数。 例如，如果每个池是 1000 个 DTU，则一个服务器可以支持 54 个池。|
 |||
 
-> [!NOTE]
-> 若要获得超过默认数量的 DTU/eDTU 配额、vCore 配额或服务器，可以在 Azure 门户中为订阅提交问题类型为“配额”的新支持请求。 每个服务器的 DTU/eDTU 配额和数据库限制约束了每个服务器的弹性池数。
-
 > [!IMPORTANT]
 > 随着数据库的数量接近每个 SQL 数据库服务器的限制，可能出现以下情况：
 >
 > - 对主数据库运行查询的延迟增加。  这包括资源利用率统计信息的视图，如 sys.resource_stats。
 > - 管理操作和呈现门户视点（涉及枚举服务器中的数据库）的延迟增加。
+
+> [!NOTE]
+> 若要获取更高的 DTU/eDTU 配额、vCore 配额或超过默认数量的服务器，请在 Azure 门户中提交新的支持请求。
 
 ### <a name="storage-size"></a>存储大小
 
@@ -59,7 +59,7 @@ ms.locfileid: "79291492"
 计算使用率变高时，风险缓解选项包括：
 
 - 提高数据库或弹性池的计算大小，为数据库提供更多计算资源。 请参阅[缩放单一数据库资源](sql-database-single-database-scale.md)和[缩放弹性池资源](sql-database-elastic-pool-scale.md)。
-- 优化查询，减少每个查询的资源使用率。 有关详细信息，请参阅[查询优化/提示](sql-database-performance-guidance.md#query-tuning-and-hinting)。
+- 优化查询，以降低每个查询的资源占用。 有关详细信息，请参阅[查询优化/提示](sql-database-performance-guidance.md#query-tuning-and-hinting)。
 
 ### <a name="storage"></a>存储
 
@@ -79,35 +79,22 @@ ms.locfileid: "79291492"
 
 - 提高数据库或弹性池的服务层级或计算大小。 请参阅[缩放单一数据库资源](sql-database-single-database-scale.md)和[缩放弹性池资源](sql-database-elastic-pool-scale.md)。
 - 如果争用计算资源造成了辅助角色使用率上升，请优化查询，以降低每项查询的资源使用率。 有关详细信息，请参阅[查询优化/提示](sql-database-performance-guidance.md#query-tuning-and-hinting)。
+- 减小 [MAXDOP](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-the-max-degree-of-parallelism-server-configuration-option#Guidelines)（最大并行度）设置。
+- 优化查询工作负荷，以减少查询受阻的发生次数和持续时间。
 
-### <a name="transaction-log-rate-governance"></a>事务日志速率调控
+### <a name="resource-consumption-by-user-workloads-and-internal-processes"></a>用户工作负荷和内部进程的资源消耗量
 
-事务日志速率调控是 Azure SQL 数据库中的一个进程，用于限制批量插入、SELECT INTO 和索引生成等工作负荷的高引入速率。 无论针对数据文件发出多少 IO，系统都会对日志记录生成速率跟踪并实施这些限制，使其保持在亚秒级以下，并限制吞吐量。  目前，事务日志生成速率会线性提高到与硬件相关的临界点，在 vCore 购买模型中，允许的最大日志速率为 96 MB/秒。 
+将在 [sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database?view=azuresqldb-current) 和 [sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database?view=azuresqldb-current) 视图的 `avg_cpu_percent` 和 `avg_memory_usage_percent` 列中报告每个数据库中的用户工作负荷的 CPU 和内存消耗量。 对于弹性池，将在 [sys.elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) 视图中报告池级别的资源消耗量。 对于池级别的[单一数据库](/azure-monitor/platform/metrics-supported#microsoftsqlserversdatabases)和[弹性池](/azure-monitor/platform/metrics-supported#microsoftsqlserverselasticpools)，还会通过 Azure Monitor 指标 `cpu_percent` 报告用户工作负荷的 CPU 消耗量。
 
-> [!NOTE]
-> 向事务日志文件发出的实际物理 IO 不会受到调控或限制。
+Azure SQL 数据库需要使用计算资源来实现核心服务功能，例如高可用性和灾难恢复、数据库备份和还原、监视、查询存储、自动优化，等等。对于这些内部进程，系统会从总体资源中为其留出有限的一部分特定资源，使剩余的资源可供用户工作负荷使用。 当内部进程不使用计算资源时，系统会将其提供给用户工作负荷使用。
 
-日志速率的设置应该做到可在各种场合下实现并保持该速率，同时，整个系统可以在尽量减轻对用户负载造成的影响的前提下保持其功能。 日志速率调控可确保事务日志备份保留在已发布的可恢复性 SLA 范围内。  这种调控还可以防止次要副本带来过多的积压工作。
+将在 [sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database?view=azuresqldb-current) 和 [sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database?view=azuresqldb-current) 视图的 `avg_instance_cpu_percent` 和 `avg_instance_memory_percent` 列内，报告托管单一数据库或弹性池的 SQL Server 实例上用户工作负荷与内部进程的 CPU 和内存总消耗量。 对于池级别的[单一数据库](/azure-monitor/platform/metrics-supported#microsoftsqlserversdatabases)和[弹性池](/azure-monitor/platform/metrics-supported#microsoftsqlserverselasticpools)，还会通过 Azure Monitor 指标 `sqlserver_process_core_percent` 和 `sqlserver_process_memory_percent` 报告此数据。
 
-生成日志记录后，将评估每个操作，以确定是否要将其延迟，从而保持最大所需日志速率（MB/秒）。 将日志记录刷新到存储时不会增大延迟，日志速率调控是在日志速率生成期间应用的。
+在性能监视和故障排除上下文中，必须考虑用户 CPU 消耗量（`avg_cpu_percent`、`cpu_percent`），以及用户工作负荷和内部进程的 CPU 总消耗量（`avg_instance_cpu_percent`、`sqlserver_process_core_percent`）   。
 
-在运行时实施的实际日志生成速率还可能受到反馈机制（暂时降低允许的日志速率，使系统保持稳定）的影响。 日志文件空间管理可避免遇到日志空间不间的情况，可用性组复制机制可以暂时降低总体系统限制。
+用户 CPU 消耗量的计算值为每个服务目标中用户工作负荷限制的一个百分比  。 用户 CPU 利用率为 100% 表示用户工作负荷达到了服务目标的限制  。 但是，当 CPU 总消耗量达到 70-100% 范围时，即使报告的用户 CPU 消耗量明显低于 100%，也可能会看到用户工作负荷吞吐量保持平稳，但查询延迟增大   。 对适度分配的计算资源但相对密集的用户工作负荷使用较小的服务目标时，更有可能会发生这种情况。 当内部进程临时需要更多的资源时（例如，在创建数据库的新副本时），使用较小的服务目标也可能发生这种情况。
 
-可通过以下 wait 类型（在 [sys.dm_db_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-wait-stats-azure-sql-database) DMV 中公开）查看日志速率调控器流量的形状：
-
-| Wait 类型 | 注释 |
-| :--- | :--- |
-| LOG_RATE_GOVERNOR | 数据库限制 |
-| POOL_LOG_RATE_GOVERNOR | 池限制 |
-| INSTANCE_LOG_RATE_GOVERNOR | 实例级限制 |  
-| HADR_THROTTLE_LOG_RATE_SEND_RECV_QUEUE_SIZE | 反馈控制。高级/业务关键型工作负荷中的可用性组物理复制不会保持 |  
-| HADR_THROTTLE_LOG_RATE_LOG_SIZE | 反馈控制。限制速率可以避免出现日志空间不足的情况 |
-|||
-
-当日志速率限制阻碍实现所需的可伸缩性时，请考虑以下选项：
-- 纵向扩展到更高的服务级别，以获得 96 MB/秒的最大日志速率。 
-- 如果加载的数据是暂时性的（例如 ETL 过程中的暂存数据），可将其载入 tempdb（记录最少量的数据）。 
-- 对于分析方案，可将数据载入聚集列存储涵盖的表中。 这样，可以通过压缩来降低所需的日志速率。 此方法确实会增大 CPU 利用率，并且仅适用于可从聚集列存储索引受益的数据集。 
+当 CPU 总消耗量较高时，缓解措施与前面所述相同，也包括增大服务目标和/或优化用户工作负荷  。
 
 ## <a name="next-steps"></a>后续步骤
 
