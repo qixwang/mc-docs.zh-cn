@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 origin.date: 12/26/2019
-ms.date: 02/10/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: acb685929590864013bc04711d5274d38d4b0e8e
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: a01c1ccd5cfa08d0bcfff54014c11f154d2eb9ae
+ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77428070"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82596231"
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>SQL Server VM 的存储配置
 
@@ -54,6 +54,7 @@ ms.locfileid: "77428070"
 ![预配期间的 SQL Server VM 存储配置](./media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-configuration.png)
 
 <!--Remove the customized on configuration-->
+<!--Not exists on Azure China Cloud-->
 
 根据所做的选择，Azure 会在创建 VM 后执行以下存储配置任务：
 

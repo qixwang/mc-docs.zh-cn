@@ -2,20 +2,20 @@
 title: 教程 - 将参数添加到模板
 description: 将参数添加到 Azure 资源管理器模板，使其可重复使用。
 author: rockboyfor
-origin.date: 10/04/2019
-ms.date: 03/23/2020
+origin.date: 03/31/2020
+ms.date: 04/30/2020
 ms.topic: tutorial
 ms.author: v-yeche
-ms.openlocfilehash: f91c7d7120472c6fe5181f8a44ac78e773a35bb3
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: c6c79761e2d245aba149b9014ef9587442855625
+ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79543852"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82596124"
 ---
-# <a name="tutorial-add-parameters-to-your-resource-manager-template"></a>教程：将参数添加到资源管理器模板
+# <a name="tutorial-add-parameters-to-your-arm-template"></a>教程：将参数添加到 ARM 模板
 
-在[前一篇教程](template-tutorial-add-resource.md)中，你已了解如何将存储帐户添加到模板，然后部署该模板。 本教程将介绍如何通过添加参数来改进模板。 完成本教程大约需要 **14 分钟**。
+在[前一篇教程](template-tutorial-add-resource.md)中，你已了解如何将存储帐户添加到模板，然后部署该模板。 本教程介绍如何通过添加参数来改进 Azure 资源管理器 (ARM) 模板。 完成本教程大约需要 **14 分钟**。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -29,7 +29,7 @@ ms.locfileid: "79543852"
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "resources": [
     {
@@ -59,7 +59,7 @@ ms.locfileid: "79543852"
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "storageName": {
@@ -104,6 +104,8 @@ New-AzResourceGroupDeployment `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
+若要运行此部署命令，必须具有 Azure CLI 的 [最新版本](https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest)。
+
 ```azurecli
 az deployment group create \
   --name addnameparameter \
@@ -130,7 +132,7 @@ az deployment group create \
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "storageName": {
@@ -197,13 +199,16 @@ az deployment group create \
 
 ---
 
+> [!NOTE]
+> 如果部署失败，请将 **debug** 开关和部署命令配合使用来显示调试日志。  还可以使用 **verbose** 开关来显示完整的调试日志。
+
 若要查看模板的灵活性，请重新部署。 这一次，请将 SKU 参数设置为 **Standard_GRS**。 可以传入新名称来创建不同的存储帐户，或者使用同一个名称来更新现有的存储帐户。 这两个选项都是有效的。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
-  -Name usedefaultsku `
+  -Name usenondefaultsku `
   -ResourceGroupName myResourceGroup `
   -TemplateFile $templateFile `
   -storageName "{your-unique-name}" `
@@ -214,7 +219,7 @@ New-AzResourceGroupDeployment `
 
 ```azurecli
 az deployment group create \
-  --name usedefaultsku \
+  --name usenondefaultsku \
   --resource-group myResourceGroup \
   --template-file $templateFile \
   --parameters storageSKU=Standard_GRS storageName={your-unique-name}

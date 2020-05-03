@@ -20,12 +20,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: aa9b4a9b6e7d7f86dc9e579cd66178826de0df7b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 73a4dc5834117c03bb395dc2354950c90b54ffbf
+ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79290931"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82588734"
 ---
 # <a name="odata-filter-syntax-in-azure-cognitive-search"></a>Azure 认知搜索中的 OData $filter 语法
 
@@ -33,7 +33,7 @@ ms.locfileid: "79290931"
 
 ## <a name="syntax"></a>语法
 
-OData 语言中的筛选器是一个布尔表达式，而该表达式又可以是多种类型的表达式之一，如以下 EBNF（[扩展巴科斯-瑙尔范式](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)）所示：
+OData 语言中的筛选器是一个布尔表达式，而该表达式又可以是多种类型的表达式之一，如以下 EBNF（扩展巴科斯-瑙尔范式）所示：
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 

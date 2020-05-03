@@ -15,12 +15,12 @@ ms.topic: troubleshooting
 origin.date: 11/01/2018
 ms.date: 11/11/2019
 ms.author: v-yeche
-ms.openlocfilehash: eafe1ccb4bc22ce85ece4308baae5044cd17fdde
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 333a30849f8c0a0da0d3405a9e0ad9ed7b45bb62
+ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74116888"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82596331"
 ---
 # <a name="troubleshoot-deploying-linux-virtual-machine-issues-in-azure"></a>排查 Azure 中的 Linux 虚拟机部署问题
 
@@ -61,9 +61,9 @@ ms.locfileid: "74116888"
 
 ## <a name="is-n-series-vms-available-in-my-region"></a>我所在的地区是否提供 N 系列 VM？
 
-可以从[可用产品(按区域)](https://www.azure.cn/home/features/products-by-region) 以及[此处](https://www.azure.cn/pricing/details/virtual-machines)的定价来查看可用性。
+可以从[可用产品(按区域)](https://status.azure.com/status/) 以及[此处](https://www.azure.cn/pricing/details/virtual-machines)的定价来查看可用性。
 
-<!--MOONCAKE: CORRECT ON [Products available by region table](https://www.azure.cn/home/features/products-by-region)-->
+<!--MOONCAKE: CORRECT ON [Products available by region table](https://status.azure.com/status/)-->
 
 ## <a name="i-am-not-able-to-see-vm-size-family-that-i-want-when-resizing-my-vm"></a>在调整 VM 的大小时，我看不到我需要的 VM 大小系列。
 

@@ -15,12 +15,12 @@ ms.topic: troubleshooting
 origin.date: 11/01/2018
 ms.date: 11/11/2019
 ms.author: v-yeche
-ms.openlocfilehash: 1b9b9d870f4fb5b8d8080129bd7f0e2c29c3c7b6
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 8bad54acd62652922d0959c549610b3fdf1a98d6
+ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78237488"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82596330"
 ---
 # <a name="troubleshoot-deploying-windows-virtual-machine-issues-in-azure"></a>排查在 Azure 中部署 Windows 虚拟机时遇到的问题
 
@@ -87,7 +87,7 @@ ms.locfileid: "78237488"
 
 ## <a name="is-n-series-vms-available-in-my-region"></a>我所在的地区是否提供 N 系列 VM？
 
-可以从[可用产品(按区域)](https://www.azure.cn/home/features/products-by-region) 以及[此处](https://www.azure.cn/pricing/details/virtual-machines/)的定价来查看可用性。
+可以从[可用产品(按区域)](https://status.azure.com/status/) 以及[此处](https://www.azure.cn/pricing/details/virtual-machines/)的定价来查看可用性。
 
 ## <a name="what-client-images-can-i-use-and-deploy-in-azure-and-how-to-i-get-them"></a>可以在 Azure 中使用和部署哪些客户端映像，以及如何获取它们？
 

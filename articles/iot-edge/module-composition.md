@@ -4,17 +4,17 @@ description: 了解部署清单如何声明要部署的模块、如何部署这�
 author: kgremban
 manager: philmea
 ms.author: v-tawe
-origin.date: 05/28/2019
-ms.date: 03/02/2020
+origin.date: 03/26/2020
+ms.date: 04/20/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 6400774d43a5e51d1a76fa7cc4324fe70742fc4f
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 60d2ed807f6109eed02721a4792852b6e823124f
+ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79293169"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82588773"
 ---
 # <a name="learn-how-to-deploy-modules-and-establish-routes-in-iot-edge"></a>了解如何在 IoT Edge 中部署模块和建立路由
 
@@ -253,6 +253,9 @@ IoT Edge 中心会一直存储消息，直到达到在 `storeAndForwardConfigura
             "type": "docker",
             "status": "running",
             "restartPolicy": "always",
+            "env": {
+              "tempLimit": {"value": "100"}
+            },
             "settings": {
               "image": "myacr.azurecr.cn/filtermodule:latest",
               "createOptions": "{}"

@@ -8,16 +8,16 @@ ms.topic: conceptual
 origin.date: 07/23/2019
 ms.date: 10/28/2019
 ms.custom: seodec18
-ms.openlocfilehash: a5104a20d71c52c42bf15160d27d13b437df80e7
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 71721efc13681114099d91eb24476f4132b1ea60
+ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "72914387"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82596390"
 ---
 # <a name="regional-presence-with-azure-cosmos-db"></a>Azure Cosmos DB 的区域可用性
 
-Azure Cosmos DB 是 Azure 中的一项基础服务，默认情况下，在所有提供 Azure 的区域均可使用。 目前，Azure 在中国的 [4 个区域](https://www.azure.cn/home/features/products-by-region/)提供。 
+Azure Cosmos DB 是 Azure 中的一项基础服务，默认情况下，在所有提供 Azure 的区域均可使用。 目前，Azure 在中国的 [4 个区域](https://status.azure.com/status/)提供。 
 
 <!--Not Available on ![Azure Cosmos DB regional availability](./media/regional-presence/regional-presence.png)-->
 Cosmos DB 在提供给客户的 Azure 中国云环境中均可使用：

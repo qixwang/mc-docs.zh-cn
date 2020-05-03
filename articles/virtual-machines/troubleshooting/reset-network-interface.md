@@ -11,14 +11,14 @@ ms.service: virtual-machines-windows
 ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 origin.date: 11/16/2018
-ms.date: 02/10/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: 1f40454a141426ced7857739bb349981a466d07f
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: eeaee0adf4fcc59cfb92a846bdf6b8479ccc1301
+ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292521"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82595967"
 ---
 # <a name="how-to-reset-network-interface-for-azure-windows-vm"></a>如何为 Azure Windows VM 重置网络接口 
 
@@ -72,6 +72,8 @@ ms.locfileid: "79292521"
 3. 尝试通过 RDP 连接到计算机。  如果成功，可以根据需要将专用 IP 地址更改回原始 IP 地址。 否则，可以保留它。
 
 ### <a name="for-classic-vms"></a>对于经典 VM
+
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 
 要重置网络接口，请执行下列步骤：
 
@@ -130,4 +132,4 @@ ms.locfileid: "79292521"
 
 6. 现在，所有不可用的适配器应该都已从系统中清除。
 
-<!-- Update_Description: wording update, update link -->
+<!-- Update_Description: update meta properties, wording update, update link -->

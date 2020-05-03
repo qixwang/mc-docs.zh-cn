@@ -11,15 +11,17 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 origin.date: 02/27/2020
-ms.date: 03/23/2020
-ms.openlocfilehash: 7c79e74ba8e08dd9055f6f9eb6c3a14ff866de58
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/11/2020
+ms.openlocfilehash: 1295564dab782742ee8777ad97e7a45c8f6ff4d4
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79497323"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82198199"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>使用 Azure 数据工厂批量复制多个表
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本教程演示如何**将 Azure SQL 数据库中的多个表复制到 Azure Synapse Analytics（前称为 SQL 数据仓库）** 。 在其他复制方案中，也可以应用相同的模式。 例如，将 SQL Server/Oracle 中的表复制到 Azure SQL 数据库/Azure Synapse Analytics（前称为 SQL 数据仓库）/Azure Blob，将 Blob 中的不同路径复制到 Azure SQL 数据库表。
 
@@ -79,7 +81,7 @@ ms.locfileid: "79497323"
  
    Azure 数据工厂的名称必须 **全局唯一**。 如果看到名称字段的以下错误，请更改数据工厂的名称（例如，改为 yournameADFTutorialBulkCopyDF）。 有关数据工厂项目命名规则，请参阅[数据工厂 - 命名规则](naming-rules.md)一文。
   
-       `Data factory name “ADFTutorialBulkCopyDF” is not available`
+       `Data factory name "ADFTutorialBulkCopyDF" is not available`
 1. 选择要在其中创建数据工厂的 Azure **订阅**。 
 1. 对于**资源组**，请执行以下步骤之一：
      

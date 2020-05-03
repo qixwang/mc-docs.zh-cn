@@ -4,14 +4,14 @@ description: 介绍为托管应用程序创建自定义角色定义的概念。
 ms.topic: conceptual
 author: rockboyfor
 origin.date: 09/16/2019
-ms.date: 01/20/2020
+ms.date: 04/30/2020
 ms.author: v-yeche
-ms.openlocfilehash: 30662796b2921145f49d1872c77b7ca8b6ee460e
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 56bb02c802d448d7587a9e2ceca55211e20d328b
+ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "76170624"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82596273"
 ---
 # <a name="custom-role-definition-artifact-in-azure-managed-applications"></a>Azure 托管应用程序中的自定义角色定义项目
 
@@ -21,7 +21,7 @@ ms.locfileid: "76170624"
 
 ## <a name="custom-role-definition-artifact"></a>自定义角色定义项目
 
-需要将自定义角色定义项目命名为 customRoleDefinition.json。 请将其放置在特定级别中，该级别与创建托管应用程序定义的 .zip 包中的 createUiDefinition.json 和 mainTemplate.json 属于同一级别。 若要了解如何创建 .zip 包并发布托管应用程序定义，请参阅[发布托管应用程序定义。](publish-managed-app-definition-quickstart.md)
+需要将自定义角色定义项目命名为 customRoleDefinition.json。 请将其放置在特定级别中，该级别与创建托管应用程序定义的 .zip 包中的 createUiDefinition.json 和 mainTemplate.json 属于同一级别。 若要了解如何创建 .zip 包并发布托管应用程序定义，请参阅[发布托管应用程序定义。](publish-service-catalog-app.md)
 
 ## <a name="custom-role-definition-schema"></a>自定义角色定义架构
 
@@ -69,5 +69,4 @@ customRoleDefinition.json 文件有一个顶级 `roles` 属性，该属性是角
 |id|是|内置角色的 ID。 可以使用完整 ID 或只使用 GUID。|
 |roleName|是|内置角色的名称。|
 
-<!-- Update_Description: new article about concepts custom role definition -->
-<!--NEW.date: 01/20/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->
