@@ -8,12 +8,12 @@ ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 2d63a9e3f5398cad3bd8d2909b35467fe027da3d
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 76e1bb1b755211e021bfc2332d2bbc1aba1218f1
+ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80586810"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82588599"
 ---
 # <a name="how-to-use-custom-allocation-policies"></a>如何使用自定义分配策略
 
@@ -341,7 +341,7 @@ ms.locfileid: "80586810"
 
 在本部分，你将创建两个唯一的设备密钥。 一个密钥将用于模拟的烤箱设备。 另一个密钥将用于模拟的热泵设备。
 
-若要生成设备密钥，请使用前面记下的“主密钥”来计算每个设备的设备注册 ID 的 [HMAC-SHA256](https://wikipedia.org/wiki/HMAC)，并将结果转换为 Base64 格式。  有关使用注册组创建派生设备密钥的详细信息，请参阅[对称密钥证明](concepts-symmetric-key-attestation.md)的组注册部分。
+若要生成设备密钥，请使用前面记下的“主密钥”来计算每个设备的设备注册 ID 的 HMAC-SHA256，并将结果转换为 Base64 格式。**** 有关使用注册组创建派生设备密钥的详细信息，请参阅[对称密钥证明](concepts-symmetric-key-attestation.md)的组注册部分。
 
 对于本文中的示例，使用以下两个设备注册 ID 并计算这两个设备的设备密钥。 这两个注册 ID 都具有有效的后缀，以与自定义分配策略的示例代码结合使用：
 

@@ -6,15 +6,15 @@ author: WenJason
 ms.service: vpn-gateway
 ms.topic: tutorial
 origin.date: 10/17/2019
-ms.date: 12/02/2019
+ms.date: 05/11/2019
 ms.author: v-jay
 ms.custom: mvc
-ms.openlocfilehash: 6db7af0e2f98a42406ad3825020f8696827838c4
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 545c37642450fb1616228c67c4c14fd8fffceba7
+ms.sourcegitcommit: 95efd248f5ee3701f671dbd5cfe0aec9c9959a24
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80634561"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82507681"
 ---
 # <a name="tutorial-create-and-manage-s2s-vpn-connections-using-powershell"></a>教程：使用 PowerShell 创建和管理 S2S VPN 连接
 
@@ -87,7 +87,7 @@ $Connection1 = "VNet1ToSite1"
 
 ```azurepowershell
 New-AzLocalNetworkGateway -Name $LNG1 -ResourceGroupName $RG1 `
-  -Location 'China North' -GatewayIpAddress $LNGIP1 -AddressPrefix $LNGprefix1,$LNGprefix2
+  -Location $Location1 -GatewayIpAddress $LNGIP1 -AddressPrefix $LNGprefix1,$LNGprefix2
 ```
 
 ## <a name="create-a-s2s-vpn-connection"></a>创建 S2S VPN 连接

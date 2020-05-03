@@ -8,12 +8,12 @@ ms.topic: article
 origin.date: 06/25/2019
 md.date: 03/23/2020
 ms.author: v-tawe
-ms.openlocfilehash: 02b4983c843acdd7923581f445b2bfbba1f8781c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: b6967c758329be8cfac305439599ec65388dc5bc
+ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80151750"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82588688"
 ---
 # <a name="how-to-use-the-azure-mobile-apps-sdk-for-android"></a>如何使用用于 Android 的 Azure 移动应用 SDK
 
@@ -1281,7 +1281,6 @@ client.setGsonBuilder(
 
 <!-- URLs. -->
 [Get started with Azure Mobile Apps]: app-service-mobile-android-get-started.md
-[ASCII control codes C0 and C1]: https://wikipedia.org/wiki/Data_link_escape_character#C1_set
 [Mobile Services SDK for Android]: https://go.microsoft.com/fwlink/p/?LinkID=717033
 [Azure portal]: https://portal.azure.cn
 [身份验证入门]: app-service-mobile-android-get-started-users.md

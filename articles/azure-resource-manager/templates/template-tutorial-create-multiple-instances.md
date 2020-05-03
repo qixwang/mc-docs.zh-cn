@@ -2,20 +2,20 @@
 title: 创建多个资源实例
 description: 了解如何创建 Azure 资源管理器模板，以用于创建多个 Azure 资源实例。
 author: rockboyfor
-origin.date: 03/04/2019
-ms.date: 03/23/2020
+origin.date: 04/08/2020
+ms.date: 04/30/2020
 ms.topic: tutorial
 ms.author: v-yeche
-ms.openlocfilehash: 99df04c087a6d3e1d182515a27bd05f5eeb6eb48
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: cce23fdfaa0327999840969f578109dc4bc30c4c
+ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79543912"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82596067"
 ---
-# <a name="tutorial-create-multiple-resource-instances-with-resource-manager-templates"></a>教程：使用资源管理器模板创建多个资源实例
+# <a name="tutorial-create-multiple-resource-instances-with-arm-templates"></a>教程：使用 ARM 模板创建多个资源实例
 
-了解如何在 Azure 资源管理器模板中进行迭代操作，以创建 Azure 资源的多个实例。 在本教程中，你将修改一个模板，以便创建三个存储帐户实例。
+了解如何在 Azure 资源管理器 (ARM) 模板中进行迭代操作，以创建 Azure 资源的多个实例。 在本教程中，你将修改一个模板，以便创建三个存储帐户实例。
 
 ![“Azure 资源管理器创建多个实例”示意图](./media/template-tutorial-create-multiple-instances/resource-manager-template-create-multiple-instances-diagram.png)
 
@@ -32,11 +32,11 @@ ms.locfileid: "79543912"
 
 若要完成本文，需要做好以下准备：
 
-* 包含资源管理器工具扩展的 Visual Studio Code。 请参阅[使用 Visual Studio Code 创建 Azure 资源管理器模板](use-vs-code-to-create-template.md)。
+* 包含资源管理器工具扩展的 Visual Studio Code。 请参阅[使用 Visual Studio Code 创建 ARM 模板](use-vs-code-to-create-template.md)。
 
 ## <a name="open-a-quickstart-template"></a>打开快速入门模板
 
-[Azure 快速入门模板](https://github.com/Azure/azure-quickstart-templates/)是资源管理器模板的存储库。 无需从头开始创建模板，只需找到一个示例模板并对其自定义即可。 本快速入门中使用的模板称为[创建标准存储帐户](https://github.com/Azure/azure-quickstart-templates/tree/master/101-storage-account-create/)。 该模板定义 Azure 存储帐户资源。
+[Azure 快速入门模板](https://github.com/Azure/azure-quickstart-templates/)是 ARM 模板的存储库。 无需从头开始创建模板，只需找到一个示例模板并对其自定义即可。 本快速入门中使用的模板称为[创建标准存储帐户](https://github.com/Azure/azure-quickstart-templates/tree/master/101-storage-account-create/)。 该模板定义 Azure 存储帐户资源。
 
 1. 在 Visual Studio Code 中，选择“文件” **“打开文件”。** > 
 2. 在“文件名”中粘贴以下 URL： 
@@ -68,7 +68,7 @@ ms.locfileid: "79543912"
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "storageAccountType": {
@@ -94,24 +94,24 @@ ms.locfileid: "79543912"
   "resources": [
     {
       "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2019-04-01",
       "name": "[concat(copyIndex(),'storage', uniqueString(resourceGroup().id))]",
-      "apiVersion": "2018-02-01",
       "location": "[parameters('location')]",
       "sku": {
         "name": "[parameters('storageAccountType')]"
       },
-      "kind": "Storage",
-      "properties": {},
+      "kind": "StorageV2",
       "copy": {
         "name": "storagecopy",
         "count": 3
-      }
+      },
+      "properties": {}
     }
   ]
 }
 ```
 
-有关创建多个实例的详细信息，请参阅[在 Azure 资源管理器模板中部署资源或属性的多个实例](./copy-resources.md)
+有关创建多个实例的详细信息，请参阅[在 ARM 模板中部署资源或属性的多个实例](./copy-resources.md)
 
 ## <a name="deploy-the-template"></a>部署模板
 
@@ -122,17 +122,22 @@ ms.locfileid: "79543912"
 若要列出全部三个存储帐户，请省略 --name 参数：
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
 ```azurecli
-echo "Enter the Resource Group name:" &&
-read resourceGroupName &&
-az storage account list --resource-group $resourceGroupName
+echo "Enter a project name that is used to generate resource group name:" &&
+read projectName &&
+resourceGroupName="${projectName}rg" &&
+az storage account list --resource-group $resourceGroupName &&
+echo "Press [ENTER] to continue ..."
 ```
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
-$resourceGroupName = Read-Host -Prompt "Enter the resource group name"
+$projectName = Read-Host -Prompt "Enter a project name that is used to generate resource group name"
+$resourceGroupName = "${projectName}rg"
 Get-AzStorageAccount -ResourceGroupName $resourceGroupName
+Write-Host "Press [ENTER] to continue ..."
 ```
 
 ---
@@ -145,7 +150,7 @@ Get-AzStorageAccount -ResourceGroupName $resourceGroupName
 
 1. 在 Azure 门户上的左侧菜单中选择“资源组”  。
 2. 在“按名称筛选”字段中输入资源组名称。 
-3. 选择资源组名称。  应会看到，该资源组中总共有六个资源。
+3. 选择资源组名称。  应会看到，该资源组中总共有三个资源。
 4. 在顶部菜单中选择“删除资源组”。 
 
 ## <a name="next-steps"></a>后续步骤

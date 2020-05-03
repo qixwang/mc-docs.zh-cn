@@ -3,14 +3,14 @@ title: 密钥保管库机密与模板
 description: 说明在部署期间如何以参数形式从密钥保管库传递机密。
 ms.topic: conceptual
 origin.date: 01/06/2020
-ms.date: 03/23/2020
+ms.date: 04/30/2020
 ms.author: v-yeche
-ms.openlocfilehash: 78aa63f2bf1510f893d2cfad80a91a339ecb2d15
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 1bad5b19ebbddf7778868f9e582e64d5947e3067
+ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79543902"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82596234"
 ---
 # <a name="use-azure-key-vault-to-pass-secure-parameter-value-during-deployment"></a>在部署过程中使用 Azure Key Vault 传递安全参数值
 
@@ -239,7 +239,7 @@ Set-AzKeyVaultAccessPolicy `
 
 ```azurecli
 az group create --name SqlGroup --location chinanorth2
-az group deployment create \
+az deployment group create \
   --resource-group SqlGroup \
   --template-uri <template-file-URI> \
   --parameters <parameter-file>

@@ -11,12 +11,12 @@ ms.topic: conceptual
 origin.date: 12/04/2019
 ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: ff3635a3f44eaa803675035b5b43b29ad686dcdb
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.openlocfilehash: 78bcb76cb1f3d7de052b080e1b4872743d4e54f3
+ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82126985"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82588533"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>语音转文本常见问题解答
 
@@ -164,7 +164,7 @@ ms.locfileid: "82126985"
 
 **问：什么是字错误率 (WER) 以及如何计算此错误率？**
 
-**答**：WER 是用于语音识别的评估指标。 WER 由错误总数（包括插入、删除和替换）除以引用听录中的总字数得出。 有关详细信息，请参阅[字错误率](https://wikipedia.org/wiki/Word_error_rate)。
+**答**：WER 是用于语音识别的评估指标。 WER 由错误总数（包括插入、删除和替换）除以引用听录中的总字数得出。
 
 **问：如何确定准确度测试的结果是否良好？**
 

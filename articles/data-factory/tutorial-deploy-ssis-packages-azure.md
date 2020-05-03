@@ -10,19 +10,21 @@ ms.devlang: ''
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 origin.date: 12/23/2019
-ms.date: 03/23/2020
+ms.date: 05/11/2020
 author: WenJason
 ms.author: v-jay
 ms.reviewer: douglasl
 manager: digimobile
-ms.openlocfilehash: 401a3a00c072376a608e1fc920300a0ce2328b72
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: b93f11a7dc8c8221413eda01eb6c4fe97aba1632
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79497138"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82198166"
 ---
 # <a name="provision-the-azure-ssis-integration-runtime-in-azure-data-factory"></a>在 Azure 数据工厂中预配 Azure-SSIS 集成运行时
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 本教程提供使用 Azure 门户在 Azure 数据工厂中预配 Azure-SQL Server Integration Services (SSIS) 集成运行时 (IR) 的步骤。 Azure-SSIS IR 支持：
 

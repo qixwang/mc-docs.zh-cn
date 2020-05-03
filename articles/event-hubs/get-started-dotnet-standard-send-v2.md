@@ -12,14 +12,14 @@ ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
 origin.date: 02/11/2020
-ms.date: 03/23/2020
+ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: 2c5b08d7d233a9c2f17b2e65ef33da2ed33ce7f8
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 4bf3968b4c7d75077b6572298fb5133acd56073b
+ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79133852"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82588723"
 ---
 # <a name="send-events-to-and-receive-events-from-azure-event-hubs---net-core-azuremessagingeventhubs"></a>向/从 Azure 事件中心发送/接收事件 - .NET Core (Azure.Messaging.EventHubs) 
 本快速入门介绍如何使用 **Azure.Messaging.EventHubs** .NET Core 库向事件中心发送事件以及从事件中心接收事件。 
@@ -203,7 +203,7 @@ ms.locfileid: "79133852"
         static Task ProcessEventHandler(ProcessEventArgs eventArgs)
         { 
             // Write the body of the event to the console window
-            Console.WriteLine("\tRecevied event: {0}", Encoding.UTF8.GetString(eventArgs.Data.Body.ToArray())); 
+            Console.WriteLine("\tReceived event: {0}", Encoding.UTF8.GetString(eventArgs.Data.Body.ToArray())); 
             return Task.CompletedTask; 
         }
 

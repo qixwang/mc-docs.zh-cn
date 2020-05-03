@@ -7,16 +7,16 @@ manager: philmea
 ms.reviewer: kgremban
 ms.author: v-tawe
 origin.date: 10/14/2019
-ms.date: 03/30/2020
+ms.date: 04/20/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 0af93e0779209a2822dd0c90309b799bea87b3d8
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: c073a67f09e5cf0056f358bcb2be05ee8b55ca24
+ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80586648"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82588413"
 ---
 # <a name="tutorial-develop-and-deploy-a-python-iot-edge-module-for-linux-devices"></a>教程：为 Linux 设备开发并部署 Python IoT Edge 模块
 
@@ -266,7 +266,7 @@ ms.locfileid: "80586648"
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，创建了 IoT Edge 模块，其中包含用于筛选 IoT Edge 设备生成的原始数据的代码。 准备好生成自己的模块时，可以详细了解如何[开发自己的 IoT Edge 模块](module-development.md)或如何[使用 Visual Studio Code 开发模块](how-to-vs-code-develop-module.md)。 有关 IoT Edge 模块的示例，包括模拟温度模块，请参阅 [IoT Edge 模块示例](https://github.com/Azure/iotedge/tree/master/edge-modules)和 [IoT Python SDK 示例](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/advanced-edge-scenarios)。
+在本教程中，创建了 IoT Edge 模块，其中包含用于筛选 IoT Edge 设备生成的原始数据的代码。 准备好生成自己的模块时，可以详细了解如何[开发自己的 IoT Edge 模块](module-development.md)或如何[使用 Visual Studio Code 开发模块](how-to-vs-code-develop-module.md)。 有关 IoT Edge 模块的示例，包括模拟温度模块，请参阅 [IoT Edge 模块示例](https://github.com/Azure/iotedge/tree/master/edge-modules)和 [IoT Python SDK 示例](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/async-edge-scenarios)。
 
 可以继续学习后续教程，了解 Azure IoT Edge 如何帮助你部署 Azure 云服务，以在边缘位置处理和分析数据。
 

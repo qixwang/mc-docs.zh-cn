@@ -3,22 +3,22 @@ title: 使用模板导入 SQL BACPAC 文件
 description: 了解如何使用 Azure SQL 数据库扩展，以通过 Azure 资源管理器模板导入 SQL BACPAC 文件。
 author: rockboyfor
 origin.date: 12/09/2019
-ms.date: 03/23/2020
+ms.date: 04/30/2020
 ms.topic: tutorial
 ms.author: v-yeche
-ms.openlocfilehash: 146dae15bb826f567573e8cc53c03613e391bb57
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 8135f500691f7e6ed8d887051a6a19a2f956e9bf
+ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79543864"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82596071"
 ---
 <!--Verify successfully-->
-# <a name="tutorial-import-sql-bacpac-files-with-azure-resource-manager-templates"></a>教程：使用 Azure 资源管理器模板导入 SQL BACPAC 文件
+# <a name="tutorial-import-sql-bacpac-files-with-arm-templates"></a>教程：使用 ARM 模板导入 SQL BACPAC 文件
 
-了解如何使用 Azure SQL 数据库扩展，以通过 Azure 资源管理器模板导入 BACPAC 文件。 部署项目包括主模板文件以及完成部署所需的任何文件。 BACPAC 文件是一个项目。 
+了解如何使用 Azure SQL 数据库扩展，以通过 Azure 资源管理器 (ARM) 模板导入 BACPAC 文件。 部署项目包括主模板文件以及完成部署所需的任何文件。 BACPAC 文件是一个项目。
 
-在本教程中，我们将创建一个模板来部署 Azure SQL Server 和 SQL 数据库并导入一个 BACPAC 文件。 若要了解如何使用 Azure 资源管理器模板来部署 Azure 虚拟机扩展，请参阅[教程：使用 Azure 资源管理器模板部署虚拟机扩展](./template-tutorial-deploy-vm-extensions.md)。
+在本教程中，我们将创建一个模板来部署 Azure SQL Server 和 SQL 数据库并导入一个 BACPAC 文件。 要了解如何使用 ARM 模板来部署 Azure 虚拟机扩展，请参阅[教程：使用 ARM 模板部署虚拟机扩展](./template-tutorial-deploy-vm-extensions.md)。
 
 本教程涵盖以下任务：
 
@@ -35,20 +35,20 @@ ms.locfileid: "79543864"
 
 若要完成本文，需要做好以下准备：
 
-* 包含资源管理器工具扩展的 Visual Studio Code。 请参阅[使用 Visual Studio Code 创建 Azure 资源管理器模板](./use-vs-code-to-create-template.md)。
+* 包含资源管理器工具扩展的 Visual Studio Code。 请参阅[使用 Visual Studio Code 创建 ARM 模板](./use-vs-code-to-create-template.md)。
 * 若要增强安全性，请使用为 Azure SQL Server 管理员帐户生成的密码。 下面是一个可用于生成密码的示例：
 
     ```console
     openssl rand -base64 32
     ```
 
-    Azure Key Vault 旨在保护加密密钥和其他机密。 有关详细信息，请参阅[教程：在资源管理器模板部署中集成 Azure Key Vault](./template-tutorial-use-key-vault.md)。 我们还建议你每三个月更新一次密码。
+    Azure Key Vault 旨在保护加密密钥和其他机密。 有关详细信息，请参阅[教程：在 ARM 模板部署中集成 Azure Key Vault](./template-tutorial-use-key-vault.md)。 我们还建议你每三个月更新一次密码。
 
 ## <a name="prepare-a-bacpac-file"></a>准备 BACPAC 文件
 
 BACPAC 文件在 [GitHub](https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-sql-extension/SQLDatabaseExtension.bacpac) 中共享。 若要创建自己的文件，请参阅[将 Azure SQL 数据库导出到 BACPAC 文件](../../sql-database/sql-database-export.md)。 如果选择将文件发布到你自己的位置，则必须在教程的后面部分更新模板。
 
-必须先将 BACPAC 文件存储在 Azure 存储帐户中，然后才能使用资源管理器模板导入该文件。 下面的 PowerShell 脚本通过以下步骤准备 BACPAC 文件：
+必须先将 BACPAC 文件存储在 Azure 存储帐户中，然后才能使用 ARM 模板导入该文件。 下面的 PowerShell 脚本通过以下步骤准备 BACPAC 文件：
 
 * 下载 BACPAC 文件。
 * 创建 Azure 存储帐户。
@@ -370,9 +370,9 @@ Write-Host "Press [ENTER] to continue ..."
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你部署了 SQL Server 和 SQL 数据库并导入了 BACPAC 文件。 BACPAC 文件存储在 Azure 存储帐户中。 得到该 URL 的任何人都可以访问该文件。 若要了解如何保护 BACPAC 文件（项目），请参阅：
+在本教程中，你部署了 SQL Server 和 SQL 数据库并导入了 BACPAC 文件。 若要了解如何排查模板部署问题，请参阅：
 
 > [!div class="nextstepaction"]
-> [保护项目](./template-tutorial-secure-artifacts.md)
+> [排查 ARM 模板部署问题](./template-tutorial-troubleshoot.md)
 
 <!-- Update_Description: update meta properties, wording update, update link -->

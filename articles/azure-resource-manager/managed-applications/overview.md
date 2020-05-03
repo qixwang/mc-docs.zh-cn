@@ -4,14 +4,14 @@ description: 描述 Azure 托管应用程序的概念，这些应用程序提供
 author: rockboyfor
 ms.topic: overview
 origin.date: 07/12/2019
-ms.date: 01/20/2020
+ms.date: 04/30/2020
 ms.author: v-yeche
-ms.openlocfilehash: c762f402e0dfbe7c1856c8c7748f755066dfe456
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 3288b324b1d4865c320bd3e54627c6bb8cdc5cf9
+ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "76170755"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82596181"
 ---
 # <a name="azure-managed-applications-overview"></a>Azure 托管应用程序概述
 
@@ -19,8 +19,7 @@ ms.locfileid: "76170755"
 
 托管应用程序类似于市场中的解决方案模板，但有一个重大差异。 在托管应用程序中，资源将部署到由应用发布者管理的资源组。 资源组在使用者的订阅中，但发布者租户中的标识有权访问该资源组。 发布者指定解决方案的持续支持费用。
 
-> [!NOTE]
-> 以前，适用于 Azure 客户提供程序的文档包含在适用于托管应用程序的文档中。 但该文档现已改变位置。 现在，请参阅 [Azure 自定义提供程序](../custom-providers/overview.md)。
+<!--Not Available on [Azure Custom Providers](../custom-providers/overview.md)-->
 
 ## <a name="advantages-of-managed-applications"></a>托管应用程序的优点
 
@@ -85,7 +84,7 @@ IT 团队可以使用托管应用程序为组织中的用户提供预先批准�
 在本文中，你了解了使用托管应用程序的好处。 请转到下一篇文章以创建托管应用程序定义。
 
 > [!div class="nextstepaction"]
-> [快速入门：发布 Azure 托管应用程序定义](publish-managed-app-definition-quickstart.md)
+> [快速入门：发布 Azure 托管应用程序定义](publish-service-catalog-app.md)
 
 <!-- Update_Description: new article about overview -->
 <!--NEW.date: 01/20/2020-->
