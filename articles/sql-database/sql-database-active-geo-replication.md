@@ -10,14 +10,14 @@ ms.topic: conceptual
 author: WenJason
 ms.author: v-jay
 ms.reviewer: mathoma, carlrab
-origin.date: 07/09/2019
-ms.date: 02/17/2020
-ms.openlocfilehash: baf6a825db9ba28634fe3ba5bd99d690227a1b56
-ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
+origin.date: 04/06/2020
+ms.date: 04/27/2020
+ms.openlocfilehash: 676d0fd900acd50cca6d9784a4c5ded31c852f93
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77155597"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126636"
 ---
 # <a name="creating-and-using-active-geo-replication"></a>创建并使用活动异地复制
 
@@ -111,14 +111,16 @@ ms.locfileid: "77155597"
 
 ## <a name="configuring-secondary-database"></a>配置辅助数据库
 
-主数据库和辅助数据库都需要有相同的服务层级。 另外，强烈建议创建与主数据库具有相同计算大小（DTU 或 vCore）的辅助数据库。 如果主数据库遇到很大的写入工作负荷，则计算大小较小的辅助数据库可能在进度上跟不上主数据库。 这会导致辅助数据库上出现重做滞后，并且可能会出现不可用性问题。 在需要强制性故障转移的情况下，如果辅助数据库滞后于主数据库，则还存在丢失大量数据的风险。 若要缓解这些风险，需要通过有效的活动异地复制来限制主数据库的日志速率，让辅助数据库能够跟上进度。 辅助数据库的配置不平衡的另一结果是，在故障转移后，应用程序的性能会由于新的主数据库的计算能力不足而受影响。 需要升级它的计算能力，使之达到所需的级别，但这在解决服务中断问题之前是不可能的。 
+主数据库和辅助数据库都需要有相同的服务层级。 另外，强烈建议创建与主数据库具有相同计算大小（DTU 或 vCore）的辅助数据库。 如果主数据库遇到很大的写入工作负载，则计算较小的辅助数据库可能在进度上跟不上主数据库。 这会导致辅助数据库上出现重做滞后，并且可能会导致辅助数据库不可用。 为了缓解这些风险，必要时，活动异地复制会限制主数据库的事务日志速率，让辅助数据库能够跟上进度。 
 
+辅助数据库的配置不平衡的另一结果是，在故障转移后，应用程序的性能可能会由于新的主数据库的计算能力不足而受影响。 在这种情况下，需要将数据库服务目标纵向扩展到所需的级别。这可能会占用大量时间和计算资源，并且在纵向扩展过程结束时需要执行[高可用性](sql-database-high-availability.md)故障转移。
 
-> [!IMPORTANT]
-> 不能保证已发布的 RPO 为 5 秒，除非为辅助数据库配置的计算大小与为主数据库配置的相同。 
+如果决定创建计算大小较小的辅助数据库，可参阅 Azure 门户中的日志 IO 百分比图表，它可以很好地评估维持复制负载所需的辅助数据库的最小计算大小。 例如，如果主数据库是 P6 (1000 DTU)，其日志写入百分比为 50%，则辅助数据库至少必须是 P4 (500 DTU)。 若要检索历史日志 IO 数据，请使用 [sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) 视图。 若要以更高粒度检索最新的日志写入数据，以便更好地反映日志速率的短期峰值，请使用 [sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) 视图。
 
+由于辅助数据库上的计算大小较小而在主数据库上进行的事务日志速率限制是使用 HADR_THROTTLE_LOG_RATE_MISMATCHED_SLO 等待类型报告的，可通过 [sys.dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) 和 [sys.dm_os_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql) 数据库视图查看。 
 
-如果决定创建具有较低计算大小的辅助数据库，Azure 门户上的日志 IO 百分比图表提供了一种评估维持复制负荷所需的辅助数据库的最小计算大小的好办法。 例如，如果你的主数据库是 P6 (1000 DTU)，其日志 IO 百分比为 50%，则辅助数据库需要至少为 P4 (500 DTU)。 还可以使用 [sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) 或 [sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) 数据库视图检索日志 IO 数据。  限制在 [sys.dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) 和 [sys.dm_os_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql) 数据库视图中报告为 HADR_THROTTLE_LOG_RATE_MISMATCHED_SLO 等待状态。 
+> [!NOTE]
+> 主数据库上的事务日志速率也可能会因与辅助数据库上计算大小较小无关的原因而受限制。 即使辅助数据库上的计算大小等于或大于主数据库上的计算大小，也可能会发生这种限制。
 
 有关 SQL 数据库计算大小的详细信息，请参阅[什么是 SQL 数据库服务层级](sql-database-purchase-models.md)。
 
@@ -154,6 +156,7 @@ ms.locfileid: "77155597"
 
 > [!NOTE]
 > 有时候，主数据库上的 *replication_lag_sec* 的值为 NULL，这意味着主数据库目前不知道辅助数据库辅助数据库有多远。   这通常发生在进程重启之后，应该是一个暂时情况。 如果 *replication_lag_sec* 在长时间内一直返回 NULL，考虑向应用程序报警。 这表示辅助数据库因永久连接故障而无法与主数据库通信。 此外还有情况可能会导致辅助数据库上的 *last_commit* 时间与主数据库上的该时间的差异变得很大。 例如 如果在长期没有进行更改的情况下进行提交，则该差异会突然变成一个很大的值，然后快速回到 0。 如果这两个值之间的差异长时间保持很大，可将其视为一种错误情况。
+
 
 ## <a name="programmatically-managing-active-geo-replication"></a>以编程方式管理活动异地复制
 

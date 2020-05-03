@@ -5,25 +5,25 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: conceptual
-origin.date: 11/18/2019
-ms.date: 12/16/2019
+origin.date: 03/20/2020
+ms.date: 04/27/2020
 author: rockboyfor
 ms.author: v-yeche
 ms.custom: seodec18
-ms.openlocfilehash: 15a88af5b0d552c6b9115714c0d3a0ea4a61f848
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 5be8bc4c293cae64cd2e4cd8bc6d04d810fc4396
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75335850"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134859"
 ---
 # <a name="connect-a-nodejs-mongoose-application-to-azure-cosmos-db"></a>将 Node.js Mongoose 应用程序连接到 Azure Cosmos DB
 
-本教程演示了在 Cosmos DB 中存储数据时如何使用 [Mongoose 框架](https://mongoosejs.com/)。 我们使用 Azure Cosmos DB 的用于 MongoDB 的 API 来执行本演练。 不熟悉该接口的读者应知道，Mongoose 是 Node.js 中适用于 MongoDB 的对象建模框架，提供简单直接的、基于架构的解决方案来为应用程序数据建模。
+本教程演示在 Cosmos DB 中存储数据时如何使用 [Mongoose 框架](https://mongoosejs.com/)。 本演练使用 Azure Cosmos DB 的用于 MongoDB 的 API。 不熟悉该接口的读者应知道，Mongoose 是 Node.js 中适用于 MongoDB 的对象建模框架，提供简单直接的、基于架构的解决方案来为应用程序数据建模。
 
 Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服务。 可快速创建和查询文档、键/值和图形数据库，所有这些都受益于 Cosmos DB 核心的多区域分布和水平缩放功能。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -33,9 +33,19 @@ Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服务。 
 
 ## <a name="create-a-cosmos-account"></a>创建 Cosmos 帐户
 
-让我们创建一个 Cosmos 帐户。 如果已经有想要使用的帐户，可以直接跳到“设置 Node.js 应用程序”。 如果使用 Azure Cosmos DB 仿真器，请遵循 [Azure Cosmos DB 仿真器](local-emulator.md)中的步骤设置该仿真器，并直接跳到“设置 Node.js 应用程序”。
+让我们创建 Cosmos 帐户。 如果已经有想要使用的帐户，可以直接跳到“设置 Node.js 应用程序”。 如果使用 Azure Cosmos DB 仿真器，请遵循 [Azure Cosmos DB 仿真器](local-emulator.md)中的步骤设置该仿真器，并直接跳到“设置 Node.js 应用程序”。
 
 [!INCLUDE [cosmos-db-create-dbaccount-mongodb](../../includes/cosmos-db-create-dbaccount-mongodb.md)]
+
+### <a name="create-a-database"></a>创建数据库 
+在此应用程序中，我们将介绍在 Azure Cosmos DB 中创建集合的两种方法： 
+- **将每个对象模型存储在一个单独的集合中**：建议[创建具有专用吞吐量的数据库](set-throughput.md#set-throughput-on-a-database)。 使用此容量模型会更为经济高效。
+
+    :::image type="content" source="./media/mongodb-mongoose/db-level-throughput.png" alt-text="Node.js 教程 - Azure 门户的屏幕截图，其中显示了如何在数据资源管理器中为 Azure Cosmos DB 帐户创建数据库，用于 Mongoose Node 模块":::
+
+- **将所有对象模型存储在单个 Cosmos DB 集合中**：如果希望将所有模型存储在单个集合中，只需在不选择“预配吞吐量”选项的情况下创建新数据库即可。 使用此容量模型时，将为每个对象模型创建每个具有自己的吞吐容量的集合。
+
+创建数据库后，将在下面的 `COSMOSDB_DBNAME` 环境变量中使用此名称。
 
 ## <a name="set-up-your-nodejs-application"></a>设置 Node.js 应用程序
 
@@ -48,8 +58,8 @@ Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服务。 
 
     回答以下问题，然后即可开始创建项目。
 
-1. 将一个新文件添加到该文件夹，并将此文件命名为 ```index.js```。
-1. 使用一个 ```npm install``` 选项安装所需的包：
+2. 将一个新文件添加到该文件夹，并将此文件命名为 ```index.js```。
+3. 使用一个 ```npm install``` 选项安装所需的包：
     * Mongoose：```npm install mongoose@5 --save```
 
         > [!Note]
@@ -60,25 +70,26 @@ Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服务。 
         >[!Note]
         > ```--save``` 标志将依赖项添加到 package.json 文件。
 
-1. 导入 index.js 文件中的依赖项。
+4. 导入 index.js 文件中的依赖项。
+
     ```JavaScript
     var mongoose = require('mongoose');
     var env = require('dotenv').config();   //Use the .env file to load the variables
     ```
 
-1. 将 Cosmos DB 连接字符串和 Cosmos DB 名称添加到 ```.env``` 文件。 将占位符 {cosmos-account-name} 和 {dbname} 替换为你自己的 Cosmos 帐户名称和数据库名称，不要带大括号符号。
+5. 将 Cosmos DB 连接字符串和 Cosmos DB 名称添加到 ```.env``` 文件。 将占位符 {cosmos-account-name} 和 {dbname} 替换为你自己的 Cosmos 帐户名称和数据库名称，不要带大括号符号。
 
     ```JavaScript
-   # You can get the following connection details from the Azure portal. You can find the details on the Connection string pane of your Azure Cosmos account.
+    # You can get the following connection details from the Azure portal. You can find the details on the Connection string pane of your Azure Cosmos account.
 
-   COSMODDB_USER = "<Azure Cosmos account's user name>"
-   COSMOSDB_PASSWORD = "<Azure Cosmos account passowrd>"
-   COSMOSDB_DBNAME = "<Azure Cosmos database name>"
-   COSMOSDB_HOST= "<Azure Cosmos Host name>"
-   COSMOSDB_PORT=10255
+    COSMODDB_USER = "<Azure Cosmos account's user name, usually the database account name>"
+    COSMOSDB_PASSWORD = "<Azure Cosmos account password, this is one of the keys specified in your account>"
+    COSMOSDB_DBNAME = "<Azure Cosmos database name>"
+    COSMOSDB_HOST= "<Azure Cosmos Host name>"
+    COSMOSDB_PORT=10255
     ```
 
-1. 将以下代码添加到 index.js 末尾，以使用 Mongoose 框架连接到 Cosmos DB。
+6. 将以下代码添加到 index.js 末尾，以使用 Mongoose 框架连接到 Cosmos DB。
     ```JavaScript
     mongoose.connect("mongodb://"+process.env.COSMOSDB_HOST+":"+process.env.COSMOSDB_PORT+"/"+process.env.COSMOSDB_DBNAME+"?ssl=true&replicaSet=globaldb", {
       auth: {
@@ -94,19 +105,15 @@ Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服务。 
 
     连接到 Azure Cosmos DB 后，可以在 Mongoose 中立即开始设置对象模型。
 
-## <a name="caveats-to-using-mongoose-with-cosmos-db"></a>有关将 Mongoose 与 Cosmos DB 配合使用的注意事项
+## <a name="best-practices-for-using-mongoose-with-cosmos-db"></a>将 Mongoose 与 Cosmos DB 配合使用的最佳做法
 
-对于你创建的每个模型，Mongoose 都会创建一个新集合。 但是，考虑到 Cosmos DB 的按集合计费模型，如果有多个稀疏填充的对象模型，则它可能不是最具成本效益的方式。
+对于你创建的每个模型，Mongoose 会创建新的集合。 解决此问题的最好方法是使用前面讨论的[数据库级吞吐量选项](set-throughput.md#set-throughput-on-a-database)。 若要使用单个集合，需要使用 Mongoose [鉴别器](https://mongoosejs.com/docs/discriminators.html)。 鉴别器是架构继承机制。 使用鉴别器可在同一底层 MongoDB 集合的底层创建多个具有重叠架构的模型。
 
-本演练介绍上述两种模型。 首先演练如何为每个集合存储一种类型的数据。 这是 Mongoose 的实际行为。
-
-Mongoose 还存在称作[鉴别器](https://mongoosejs.com/docs/discriminators.html)的概念。 鉴别器是架构继承机制。 使用鉴别器可在同一底层 MongoDB 集合的底层创建多个具有重叠架构的模型。
-
-可将各种数据模型存储在同一集合中，然后在查询时使用筛选子句，只提取所需的数据。
+可将各种数据模型存储在同一集合中，然后在查询时使用筛选子句，只提取所需的数据。 让我们来看看每个模型。
 
 ### <a name="one-collection-per-object-model"></a>每个对象模型一个集合
 
-默认的 Mongoose 行为是在每次创建对象模型时创建一个 MongoDB 集合。 本部分探讨了如何使用 Azure Cosmos DB 的用于 MongoDB 的 API 来实现此目的。 当对象模型包含大量数据时，我们建议使用此方法。 这是 Mongoose 的默认操作模型，因此，如果你熟悉 Mongoose 的话，则可能也熟悉此模型。
+本部分探讨如何使用 Azure Cosmos DB 的用于 MongoDB 的 API 实现此目的。 此方法是我们建议的方法，因为它可以控制成本和容量。 因此，数据库上的请求单位数量不取决于对象模型的数量。 这是 Mongoose 的默认操作模型，因此，你可能熟悉此模型。
 
 1. 再次打开 ```index.js```。
 
@@ -305,7 +312,7 @@ Mongoose 还存在称作[鉴别器](https://mongoosejs.com/docs/discriminators.h
     });
     ```
 
-可以看到，Mongoose 鉴别器的用法非常简单。 如果你的某个应用使用 Mongoose 框架，可以根据本教程中所述的方法，让该应用程序使用 Azure Cosmos 的用于 MongoDB 的 API 正常运行，且无需做出过多的更改。
+可以看到，Mongoose 鉴别器的用法非常简单。 如果你的某个应用使用 Mongoose 框架，可以根据本教程中所述的方法，让该应用程序使用 Azure Cosmos 的用于 MongoDB 的 API 启动并运行，无需做出过多的更改。
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -315,9 +322,10 @@ Mongoose 还存在称作[鉴别器](https://mongoosejs.com/docs/discriminators.h
 
 - 了解如何将 [Studio 3T](mongodb-mongochef.md) 与 Azure Cosmos DB 的用于 MongoDB 的 API 配合使用。
 - 了解如何将 [Robo 3T](mongodb-robomongo.md) 与 Azure Cosmos DB 的用于 MongoDB 的 API 配合使用。
-- 使用 Azure Cosmos DB 的用于 MongoDB 的 API 浏览 MongoDB [示例](mongodb-samples.md)。
+- 通过 Azure Cosmos DB 的用于 MongoDB 的 API 来浏览 MongoDB [示例](mongodb-samples.md)。
 
 [alldata]: ./media/mongodb-mongoose/mongo-collections-alldata.png
 [multiple-coll]: ./media/mongodb-mongoose/mongo-mutliple-collections.png
+[dbleveltp]: ./media/mongodb-mongoose/db-level-throughput.png
 
-<!-- Update_Description: update meta properties, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

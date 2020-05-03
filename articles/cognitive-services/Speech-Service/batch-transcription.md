@@ -1,37 +1,46 @@
 ---
-title: 如何使用批量听录 - 语音服务
+title: 什么是批量听录 - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 如果要听录存储（如 Azure Blob）中的大量音频，则批量听录是理想的选择。 使用专用 REST API 可以通过共享访问签名 (SAS) URI 指向音频文件并异步接收听录。
 services: cognitive-services
-author: PanosPeriorellis
+author: wolfma61
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-origin.date: 12/17/2019
-ms.date: 03/16/2020
+origin.date: 03/18/2020
+ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: b6440bce52cf372caedb3a03c07e63d181c97a41
-ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
+ms.openlocfilehash: 04d599e21245a5707a16f75e1695e65d5faacf2f
+ms.sourcegitcommit: b80d236ce3c706abc25bbaa41b0ccddd896e48fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80151712"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81873138"
 ---
-# <a name="how-to-use-batch-transcription"></a>如何使用批量听录
+# <a name="what-is-batch-transcription"></a>什么是批量听录？
 
-批量听录非常适合用于在存储中听录大量音频。 使用专用 REST API 可以通过共享访问签名 (SAS) URI 指向音频文件并异步接收听录结果。
+批量听录是一组 REST API 操作，可用于听录存储中的大量音频。 你可以指向具有共享访问签名 (SAS) URI 的音频文件并异步接收听录结果。
 
-该 API 提供异步语音转文本听录和其他功能。 可以使用 REST API 来公开方法，以执行以下操作：
+异步语音转文本听录只是其中的一项功能。 可以使用批量听录 REST API 调用以下方法：
 
-- 创建批处理请求
-- 查询状态
-- 下载听录结果
-- 从服务中删除听录信息
 
-详细的 API 以 [Swagger 文档](https://chinaeast2.cris.azure.cn/swagger/ui/index#/Custom%20Speech%20transcriptions%3A)的形式在标题 `Custom Speech transcriptions` 下提供。
 
-批量听录作业是按“尽力而为”的原则安排的。 目前，无法预估作业何时更改为正在运行状态。 在正常的系统负载下，几分钟内应该就可以发生该作业。 进入运行状态后，实际听录的处理速度比实时音频更快。
+|    批量听录操作                                             |    方法    |    REST API 调用                                   |
+|------------------------------------------------------------------------------|--------------|----------------------------------------------------|
+|    创建一个新的听录。                                              |    POST      |    api/speechtotext/v2.0/transcriptions            |
+|    检索经过身份验证的订阅的听录列表。    |    GET       |    api/speechtotext/v2.0/transcriptions            |
+|    获取脱机听录支持的区域设置列表。              |    GET       |    api/speechtotext/v2.0/transcriptions/locales    |
+|    更新由 ID 标识的听录的可变详细信息。    |    PATCH     |    api/speechtotext/v2.0/transcriptions/{id}       |
+|    删除指定的听录任务。                                 |    DELETE    |    api/speechtotext/v2.0/transcriptions/{id}       |
+|    获取由给定 ID 标识的听录。                        |    GET       |    api/speechtotext/v2.0/transcriptions/{id}       |
+
+
+
+
+你可以查看和测试详细的 API，它以 [Swagger 文档](https://chinaeast2.cris.azure.cn/swagger/ui/index#/Custom%20Speech%20transcriptions%3A)的形式显示在标题 `Custom Speech transcriptions` 下。
+
+批量听录作业是按“尽力而为”的原则安排的。 目前，无法预估作业何时会变为正在运行状态。 在正常的系统负载下，几分钟内应该就可以发生该作业。 进入运行状态后，实际听录的处理速度比实时音频更快。
 
 凭借易用的 API，无需部署自定义终结点，且无需遵守任何并发性要求。
 
@@ -42,7 +51,7 @@ ms.locfileid: "80151712"
 与语音服务的其他所有功能一样，需要按照[入门指南](get-started.md)通过 [Azure 门户](https://portal.azure.cn)创建订阅密钥。
 
 >[!NOTE]
-> 若要使用批量听录，需要具备语音服务的标准订阅 (S0)。 免费订阅密钥 (F0) 不可用。 有关详细信息，请参阅[定价和限制](https://www.azure.cn/pricing/details/cognitive-services/)。
+> 若要使用批量听录，需要具备语音服务的标准订阅 (S0)。 免费订阅密钥 (F0) 无效。 有关详细信息，请参阅[定价和限制](https://www.azure.cn/pricing/details/cognitive-services/)。
 
 ### <a name="custom-models"></a>自定义模式
 
@@ -54,11 +63,11 @@ ms.locfileid: "80151712"
 
 批量听录 API 支持以下格式：
 
-| 格式 | 编解码器 | 比特率 | 采样率 |
-|--------|-------|---------|-------------|
-| WAV | PCM | 16 位 | 8 kHz 或 16 kHz，单声道或立体声 |
-| MP3 | PCM | 16 位 | 8 kHz 或 16 kHz，单声道或立体声 |
-| OGG | OPUS | 16 位 | 8 kHz 或 16 kHz，单声道或立体声 |
+| 格式 | 编解码器 | 比特率 | 采样率                     |
+|--------|-------|---------|---------------------------------|
+| WAV    | PCM   | 16 位  | 8 kHz 或 16 kHz，单声道或立体声 |
+| MP3    | PCM   | 16 位  | 8 kHz 或 16 kHz，单声道或立体声 |
+| OGG    | OPUS  | 16 位  | 8 kHz 或 16 kHz，单声道或立体声 |
 
 对于立体声音频流，在听录期间会拆分左右声道。 对于每个声道，将创建一个 JSON 结果文件。 开发人员可利用为每个言语生成的时间戳创建有序的最终脚本。
 
@@ -121,21 +130,21 @@ ms.locfileid: "80151712"
       `AddSentiment`
    :::column-end:::
    :::column span="2":::
-      指定应将情绪添加到言语。 接受的值为 `true`（为每个言语启用情绪）和 `false`（默认值，为每个言语禁用情绪）。
+      指定是否应当向言语应用情绪分析。 接受的值为 `true`（启用此项）和 `false`（默认值，禁用此项）。 有关更多详细信息，请参阅[情绪分析](#sentiment-analysis)。
 :::row-end:::
 :::row:::
    :::column span="1":::
       `AddDiarization`
    :::column-end:::
    :::column span="2":::
-      指定应该对预期为包含两个语音的单声道输入执行分割聚类分析。 接受的值为 `true`（启用分割聚类）和 `false`（默认值，禁用分割聚类）。 还需要将 `AddWordLevelTimestamps` 设置为 true。
+      指定应该对输入（预期为包含两个语音的单声道）执行分割聚类分析。 接受的值为 `true`（启用分割聚类）和 `false`（默认值，禁用分割聚类）。 还需要将 `AddWordLevelTimestamps` 设置为 true。
 :::row-end:::
 :::row:::
    :::column span="1":::
       `TranscriptionResultsContainerUrl`
    :::column-end:::
    :::column span="2":::
-      Azure 中可写容器的可选 URL（包含[服务 SAS](../../storage/common/storage-sas-overview.md)）。 结果将存储在此容器中。
+      Azure 中可写容器的可选 URL（包含[服务 SAS](../../storage/common/storage-sas-overview.md)）。 结果存储在此容器中。
 :::row-end:::
 
 ### <a name="storage"></a>存储
@@ -148,7 +157,7 @@ ms.locfileid: "80151712"
 
 ```json
 {
-  "AudioFileResults":[ 
+  "AudioFileResults":[
     {
       "AudioFileName": "Channel.0.wav | Channel.1.wav"      'maximum of 2 channels supported'
       "AudioFileUrl": null                                  'always null'
@@ -210,18 +219,47 @@ ms.locfileid: "80151712"
 
 结果包含以下形式：
 
-|Form|内容|
-|-|-|
-|`Lexical`|识别的实际单词。
-|`ITN`|已识别文本的反向文本规范化形式。 已应用缩写（“doctor smith”缩写为“dr smith”）、电话号码和其他转换。
-|`MaskedITN`|应用了亵渎内容屏蔽的 ITN 形式。
-|`Display`|已识别文本的显示形式。 包括添加的标点和大小写。
+:::row:::
+   :::column span="1":::
+      **形式**
+   :::column-end:::
+   :::column span="2":::
+      **内容**
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `Lexical`
+   :::column-end:::
+   :::column span="2":::
+      识别的实际单词。
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `ITN`
+   :::column-end:::
+   :::column span="2":::
+      已识别文本的反向文本规范化形式。 已应用缩写（“doctor smith”缩写为“dr smith”）、电话号码和其他转换。
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `MaskedITN`
+   :::column-end:::
+   :::column span="2":::
+      应用了亵渎内容屏蔽的 ITN 形式。
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `Display`
+   :::column-end:::
+   :::column span="2":::
+      已识别文本的显示形式。 包括添加的标点和大小写。
+:::row-end:::
 
 ## <a name="speaker-separation-diarization"></a>讲述人分离（分割聚类）
 
 分割聚类是将讲述人语音分隔成音频片段的过程。 Batch 管道支持分割聚类，并且能够识别单声道录制内容中的两个讲述人。 此功能不适用于立体声录音。
 
-所有听录输出包含一个 `SpeakerId`。 如果不使用分割聚类，将在 JSON 输出中显示 `"SpeakerId": null`。 对于分割聚类，我们支持两段语音，因此讲述人将标识为 `"1"` 或 `"2"`。
+所有听录输出包含一个 `SpeakerId`。 如果不使用分割聚类，则会在 JSON 输出中显示 `"SpeakerId": null`。 对于分割聚类，我们支持两段语音，因此讲述人标识为 `"1"` 或 `"2"`。
 
 若要请求分割聚类，只需在 HTTP 请求中添加相关的参数，如下所示。
 
@@ -251,7 +289,11 @@ ms.locfileid: "80151712"
 - 将消极通话转变为积极通话时的良好交互情况
 - 了解客户对某个产品或服务喜欢和不喜欢的方面
 
-情绪根据词法形式按音频段评分。 该音频段内的整个文本用于计算情绪。 不会计算整个听录的聚合情绪。
+情绪根据词法形式按音频段评分。 该音频段内的整个文本用于计算情绪。 不会计算整个听录的聚合情绪。 当前，情绪分析仅适用于英语。
+
+> [!NOTE]
+> 建议改用 Microsoft 文本分析 API。 它提供了情绪分析以外的更多高级功能，例如关键短语提取、自动语言检测，等等。 可以在[文本分析文档](https://azure.microsoft.com/services/cognitive-services/text-analytics/)中找到信息和示例。
+>
 
 下面是 JSON 输出示例：
 
@@ -291,7 +333,7 @@ ms.locfileid: "80151712"
 
 ## <a name="best-practices"></a>最佳实践
 
-听录服务可以处理大量的已提交听录内容。 可以通过[听录方法](https://chinaeast2.cris.azure.cn/swagger/ui/index#/Custom%20Speech%20transcriptions%3A/GetTranscriptions)中的 `GET` 查询听录的状态。 通过指定 `take` 参数来保持以合理的大小（数百）返回信息。 检索结果后，定期从服务中[删除听录](https://chinaeast2.cris.azure.cn/swagger/ui/index#/Custom%20Speech%20transcriptions%3A/DeleteTranscription)。 这可以保证快速获取听录管理调用的回复。
+听录服务可以处理大量的已提交听录内容。 可以通过[听录方法](https://chinaeast2.cris.azure.cn/swagger/ui/index#/Custom%20Speech%20transcriptions%3A/GetTranscriptions)中的 `GET` 查询听录的状态。 通过指定 `take` 参数来保持以合理的大小（数百）返回信息。 检索结果后，定期从服务中[删除听录](https://chinaeast2.cris.azure.cn/swagger/ui/index#/Custom%20Speech%20transcriptions%3A/DeleteTranscription)。 这可以保证快速从听录管理调用获得回复。
 
 ## <a name="sample-code"></a>代码示例
 
@@ -329,7 +371,7 @@ private const string Name = "Simple transcription";
 private const string Description = "Simple transcription description";
 ```
 
-示例代码将设置客户端并提交听录请求。 然后它将轮询状态信息并打印关于转录进度的详细信息。
+示例代码设置客户端并提交听录请求。 然后，它会轮询状态信息并输出关于听录进度的详细信息。
 
 ```csharp
 // get all transcriptions for the user
@@ -399,4 +441,4 @@ foreach (var transcription in transcriptions)
 
 ## <a name="next-steps"></a>后续步骤
 
-* [获取试用订阅](https://www.azure.cn/pricing/1rmb-trial/)
+- [获取试用订阅](https://www.azure.cn/pricing/1rmb-trial/)

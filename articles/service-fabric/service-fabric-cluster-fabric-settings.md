@@ -3,14 +3,14 @@ title: 更改 Azure Service Fabric 群集设置
 description: 本文介绍可以自定义的结构设置和结构升级策略。
 ms.topic: reference
 origin.date: 08/30/2019
-ms.date: 02/24/2020
+ms.date: 04/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: dec0a1adcc22499a35a3305852107b4527a1a824
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: e08b42f378043e25b4777f328bb816cf4e0c16c3
+ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79292577"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82093457"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>自定义 Service Fabric 群集设置
 本文介绍可以自定义的 Service Fabric 群集的各种结构设置。 对于 Azure 中托管的群集，可以通过 [Azure 门户](https://portal.azure.cn)或使用 Azure 资源管理器模板自定义设置。 对于独立群集，可通过更新 ClusterConfig.json  文件并对群集执行配置升级来自定义设置。 有关详细信息，请参阅[升级独立群集的配置](service-fabric-cluster-config-upgrade-windows-server.md)。
@@ -560,9 +560,12 @@ ms.locfileid: "79292577"
 |PlacementSearchTimeout | 以秒为单位的时间，默认值为 0.5 |动态| 指定以秒为单位的时间跨度。 这是放置服务时，返回结果之前可搜索的最长时间。 |
 |PLBRefreshGap | 以秒为单位的时间，默认值为 1 |动态| 指定以秒为单位的时间跨度。 定义 PLB 再次刷新状态之前必须经过的最短时间。 |
 |PreferredLocationConstraintPriority | Int，默认值为 2| 动态|确定首选位置约束的优先级：0：硬；1：软；2：优化；负值：忽略 |
+|PreferredPrimaryDomainsConstraintPriority| Int，默认值为 1 | 动态| 确定首选主域约束的优先级：0：硬；1：软；负值：忽略 |
 |PreferUpgradedUDs|bool，默认值为 FALSE|动态|启用和禁用首选移动到已升级 UD 的逻辑。 从 SF 7.0 开始，此参数的默认值从 TRUE 更改为 FALSE。|
 |PreventTransientOvercommit | Bool，默认值为 false | 动态|确定 PLB 是否应该立即对由启动的移动所释放的资源进行计数。 默认情况下，PLB 可以在同一节点上发起移出和移入操作，这会造成暂时性过载。 将此参数设置为 true 可防止这种过载，并可禁用按需碎片整理（也称为 placementWithMove）。 |
 |ScaleoutCountConstraintPriority | Int，默认值为 0 |动态| 确定横向扩展计数约束的优先级：0：硬；1：软；负值：忽略。 |
+|SubclusteringEnabled|布尔值，默认为 FALSE | 动态 |在计算用于平衡的标准偏差时确认子群集 |
+|SubclusteringReportingPolicy| Int，默认值为 1 |动态|定义如何以及是否发送子群集运行状况报告：0：不报告；1：警告；2：正常 |
 |SwapPrimaryThrottlingAssociatedMetric | string，默认值为“”|静态| 此限制的关联指标名称。 |
 |SwapPrimaryThrottlingEnabled | Bool，默认值为 false|动态| 确定是否启用交换主限制。 |
 |SwapPrimaryThrottlingGlobalMaxValue | Int，默认值为 0 |动态| 全局范围内所允许的最大交换主副本数。 |
@@ -570,6 +573,7 @@ ms.locfileid: "79292577"
 |UpgradeDomainConstraintPriority | Int，默认值为 1| 动态|确定升级域约束的优先级：0：硬；1：软；负值：忽略。 |
 |UseMoveCostReports | Bool，默认值为 false | 动态|指示 LB 忽略评分函数的成本元素，从而可能产生大量可优化均衡放置的移动。 |
 |UseSeparateSecondaryLoad | Bool，默认值为 true | 动态|该设置确定是否使用不同的辅助负载。 |
+|UseSeparateSecondaryMoveCost|布尔值，默认为 FALSE | 动态|此设置确定 PLB 是否应当为每个节点上的辅助负载使用不同的移动成本。如果关闭了 UseSeparateSecondaryMoveCost：为一个节点上的辅助负载报告的移动成本将覆盖（所有其他节点上）每个辅助负载的移动成本。如果开启了 UseSeparateSecondaryMoveCost：为一个节点上的辅助负载报告的移动成本将仅在该辅助负载上生效（不影响其他节点上的辅助负载）。如果副本发生故障，则会使用在服务级别上指定的默认移动成本创建新副本。如果 PLB 移动现有副本，则移动成本与之匹配。 |
 |ValidatePlacementConstraint | Bool，默认值为 true |动态| 指定更新服务的 ServiceDescription 时，是否验证服务的 PlacementConstraint 表达式。 |
 |ValidatePrimaryPlacementConstraintOnPromote| Bool，默认值为 TRUE |动态|指定在故障转移时是否评估主要首选项的服务 PlacementConstraint 表达式。 |
 |VerboseHealthReportLimit | Int，默认值为 20 | 动态|定义副本进入未放置状态的次数超过多少次后，便报告副本运行状况警告（如果已启用详细运行状况报告）。 |
@@ -676,7 +680,8 @@ ms.locfileid: "79292577"
 |DisableFirewallRuleForDomainProfile| bool，默认值为 TRUE |静态| 指示是否不应对域配置文件启用防火墙规则 |
 |DisableFirewallRuleForPrivateProfile| bool，默认值为 TRUE |静态| 指示是否不应对专用配置文件启用防火墙规则 | 
 |DisableFirewallRuleForPublicProfile| bool，默认值为 TRUE | 静态|指示是否不应对公共配置文件启用防火墙规则 |
-| EnforceLinuxMinTlsVersion | bool，默认值为 FALSE | 动态 | 前提是设置为 true；仅支持 TLS 版本 1.2+。  前提是设置为 false；支持更早期的 TLS 版本。 近适用于 Linux |
+| EnforceLinuxMinTlsVersion | bool，默认值为 FALSE | 静态 | 前提是设置为 true；仅支持 TLS 版本 1.2+。  前提是设置为 false；支持更早期的 TLS 版本。 近适用于 Linux |
+| EnforcePrevalidationOnSecurityChanges | bool，默认值为 FALSE| 动态 | 此标志控制群集升级在检测到群集的安全设置发生更改时的行为。 如果设置为“true”，则群集升级会尝试确保与任何表示规则匹配的证书中至少有一个可以通过相应的验证规则。 在将新设置应用于任何节点之前会执行预验证，但它仅在启动升级时承载群集管理器服务主要副本的节点上运行。 默认值当前设置为“false”，从版本 7.1 起，对于新的 Azure Service Fabric 群集，此设置将设置为“true”。|
 |FabricHostSpn| string，默认值为“” |静态| FabricHost 的服务主体名称；结构作为单个域用户（gMSA/域用户帐户）运行并且 FabricHost 在计算机帐户下运行时。 该参数是 FabricHost 的 IPC 侦听器的 SPN；由于 FabricHost 在计算机帐户下运行，所以该参数默认留空 |
 |IgnoreCrlOfflineError|bool，默认值为 FALSE|动态|服务器端验证传入客户端证书时，是否忽略 CRL 脱机错误 |
 |IgnoreSvrCrlOfflineError|bool，默认值为 TRUE|动态|客户端验证传入服务器证书时，是否忽略 CRL 脱机错误；默认值为 true。 具有吊销的服务器证书的攻击需要破坏 DNS；比具有吊销的客户端证书的攻击更难。 |
@@ -685,6 +690,7 @@ ms.locfileid: "79292577"
 |SettingsX509StoreName| string，默认值为“MY”| 动态|结构用于保护配置的 X509 证书存储 |
 |UseClusterCertForIpcServerTlsSecurity|bool，默认值为 FALSE|静态|是否使用群集证书保护 IPC 服务器 TLS 传输单元 |
 |X509Folder|string，默认值为 /var/lib/waagent|静态|X509 证书和私钥所在的文件夹 |
+|TLS1_2_CipherList| string| 静态|如果设置为非空字符串，则将替代 TLS 1.2 和更低版本支持的密码列表。 请参阅“openssl-ciphers”文档，了解如何检索支持的密钥列表和列表格式。TLS1.2 强密码列表的示例：“ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES-128-GCM-SHA256:ECDHE-ECDSA-AES256-CBC-SHA384:ECDHE-ECDSA-AES128-CBC-SHA256:ECDHE-RSA-AES256-CBC-SHA384:ECDHE-RSA-AES128-CBC-SHA256”仅适用于 Linux。 |
 
 ## <a name="securityadminclientx509names"></a>Security/AdminClientX509Names
 

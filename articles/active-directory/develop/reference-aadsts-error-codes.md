@@ -2,26 +2,22 @@
 title: Azure AD 身份验证和授权错误代码
 description: 了解 Azure AD 安全令牌服务 (STS) 返回的 AADSTS 错误代码。
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: reference
-ms.date: 03/10/2020
+ms.date: 04/22/2020
 ms.author: v-junlch
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 295079ac91af59ce2f46e37d2dc2495c063a52b3
-ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
+ms.openlocfilehash: f8cdc39c75bf0b13e5392b4a5a594efe0d75ed6e
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2020
-ms.locfileid: "79133820"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126462"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Azure AD 身份验证和授权错误代码
 
@@ -32,10 +28,53 @@ ms.locfileid: "79133820"
 >
 > 本文档是为开发者和管理员提供的指导，但决不应当被客户自己使用。 错误代码可能会随时更改，以便提供更详细的错误消息，以在开发者构建应用程序时为其提供帮助。 依赖于文本或错误代码的应用程序随着时间的推移将会损坏。
 
-## <a name="lookup-current-error-code-information"></a>查找当前错误代码信息
-错误代码和消息可能会更改。  有关最新信息，请查看 [https://login.partner.microsoftonline.cn/error](https://login.partner.microsoftonline.cn/error) 页，以查找 AADSTS 错误说明、修复程序和一些建议的解决方法。  
+## <a name="handling-error-codes-in-your-application"></a>处理应用程序中的错误代码
 
-针对返回的错误代码的数字部分进行搜索。  例如，如果收到错误代码“AADSTS16000”，则在 [https://login.partner.microsoftonline.cn/error](https://login.partner.microsoftonline.cn/error) 中搜索“16000”。  还可以通过将错误代码编号添加到 URL [https://login.partner.microsoftonline.cn/error?code=16000](https://login.partner.microsoftonline.cn/error?code=16000) 来直接链接到特定错误。
+[OAuth 2.0 规范](https://tools.ietf.org/html/rfc6749#section-5.2)介绍如何在身份验证期间使用错误响应的 `error` 部分处理错误。 
+
+下面是一个错误响应示例：
+
+```json
+{
+  "error": "invalid_scope",
+  "error_description": "AADSTS70011: The provided value for the input parameter 'scope' is not valid. The scope https://example.contoso.com/activity.read is not valid.\r\nTrace ID: 255d1aef-8c98-452f-ac51-23d051240864\r\nCorrelation ID: fb3d2015-bc17-4bb9-bb85-30c5cf1aaaa7\r\nTimestamp: 2016-01-09 02:02:12Z",
+  "error_codes": [
+    70011
+  ],
+  "timestamp": "2016-01-09 02:02:12Z",
+  "trace_id": "255d1aef-8c98-452f-ac51-23d051240864",
+  "correlation_id": "fb3d2015-bc17-4bb9-bb85-30c5cf1aaaa7", 
+  "error_uri":"https://login.partner.microsoftonline.cn/error?code=70011"
+}
+```
+
+| 参数         | 说明    |
+|-------------------|----------------|
+| `error`       | 一个错误码字符串，可用来对发生的错误类型进行分类，并应当用来响应错误。 |
+| `error_description` | 帮助开发人员识别身份验证错误根本原因的特定错误消息。 绝对不要使用此字段来响应代码中的错误。 |
+| `error_codes` | 可帮助诊断的 STS 特定错误代码列表。  |
+| `timestamp`   | 发生错误的时间。 |
+| `trace_id`    | 可帮助诊断的请求唯一标识符。 |
+| `correlation_id` | 可帮助跨组件诊断的请求唯一标识符。 |
+| `error_uri` |  指向错误查找页面的链接，该页面中包含有关错误的其他信息。  这仅供开发人员使用，不向用户提供。  仅当错误查找系统具有相关错误的其他信息时才提供 - 并非所有错误都提供了其他信息。|
+
+`error` 字段有多个可能值 - 请查看协议文档链接和 OAuth 2.0 规范来详细了解特定错误（例如，[设备代码流](v2-oauth2-device-code.md)中的 `authorization_pending`）以及如何响应它们。  下面列出了一些常见错误：
+
+| 错误代码         | 说明        | 客户端操作    |
+|--------------------|--------------------|------------------|
+| `invalid_request`  | 协议错误，例如，缺少必需的参数。 | 修复并重新提交请求。|
+| `invalid_grant`    | 某些身份验证材料（身份验证代码、刷新令牌、访问令牌、PKCE 质询）无效、无法分析、缺失或在其他方面无法使用 | 尝试对 `/authorize` 终结点发出新请求来获取新的授权代码。  考虑查看和验证应用程序对协议的使用。 |
+| `unauthorized_client` | 经过身份验证的客户端无权使用此权限授予类型。 | 客户端应用程序未注册到 Azure AD 中或者未添加到用户的 Azure AD 租户时，通常会出现这种情况。 应用程序可以提示用户，并说明如何安装应用程序并将其添加到 Azure AD。 |
+| `invalid_client` | 客户端身份验证失败。  | 客户端凭据无效。 若要修复，应用程序管理员应更新凭据。   |
+| `unsupported_grant_type` | 授权服务器不支持权限授予类型。 | 更改请求中的授权类型。 这种类型的错误应该只在开发过程中发生，并且应该在初始测试过程中检测到。 |
+| `invalid_resource` | 目标资源无效，原因是它不存在，Azure AD 找不到它，或者未正确配置。 | 这表示未在租户中配置该资源（如果存在）。 应用程序可以提示用户，并说明如何安装应用程序并将其添加到 Azure AD。  在开发过程中，这通常表示错误地设置了测试租户，或者在所请求范围的名称中有拼写错误。 |
+| `interaction_required` | 请求需要用户交互。 例如，需要额外的身份验证步骤。 | 请以交互方式用同一资源重试请求，以便用户能够完成所需的任何质询。  |
+| `temporarily_unavailable` | 服务器暂时繁忙，无法处理请求。 | 重试请求。 客户端应用程序可向用户说明，其响应由于临时状况而延迟。 |
+
+## <a name="lookup-current-error-code-information"></a>查找当前错误代码信息
+错误代码和消息可能会更改。  有关最新信息，请查看 `https://login.partner.microsoftonline.cn/error` 页，以查找 AADSTS 错误说明、修复程序和一些建议的解决方法。  
+
+针对返回的错误代码的数字部分进行搜索。  例如，如果收到错误代码“AADSTS16000”，则在 `https://login.partner.microsoftonline.cn/error` 中搜索“16000”。  还可以通过将错误代码编号添加到 URL `https://login.partner.microsoftonline.cn/error?code=16000` 来直接链接到特定错误。
 
 ## <a name="aadsts-error-codes"></a>AADSTS 错误代码
 
@@ -133,6 +172,7 @@ ms.locfileid: "79133820"
 | AADSTS50180 | WindowsIntegratedAuthMissing - 需要 Windows 集成身份验证。 为租户启用无缝 SSO。 |
 | AADSTS50187 | DeviceInformationNotProvided - 服务无法执行设备身份验证。 |
 | AADSTS50196 | LoopDetected - 检测到客户端循环。 检查应用的逻辑，以确保实现了令牌缓存，并且正确处理了错误情况。  该应用在太短的时间内发出了太多相同请求，表明它处于错误状态或滥用请求令牌。 |
+| AADSTS50197 | ConflictingIdentities - 找不到用户。 请尝试再次登录。 |
 | AADSTS50199 | CmsiInterrupt - 出于安全原因，此请求需要用户确认。  由于这是“interaction_required”错误，因此客户端应进行交互式身份验证。之所以发生这种情况，是因为系统 Web 视图已用于请求本机应用程序的令牌，必须提示用户询问此应用是否确实为他们要登录的应用。|
 | AADSTS51000 | RequiredFeatureNotEnabled - 已禁用该功能。 |
 | AADSTS51001 | DomainHintMustbePresent - 必须使用本地安全标识符或本地 UPN 提供域提示。 |
@@ -271,9 +311,12 @@ ms.locfileid: "79133820"
 | AADSTS700020 | InteractionRequired - 访问权限授予需要交互。 |
 | AADSTS700022 | InvalidMultipleResourcesScope - 为输入参数范围提供的值无效，因为它包含多个资源。 |
 | AADSTS700023 | InvalidResourcelessScope - 请求访问令牌时，为输入参数范围提供的值无效。 |
+| AADSTS7000222| InvalidClientSecretExpiredKeysProvided - 提供的客户端密钥已过期。 访问 Azure 门户，为你的应用创建新密钥，或者考虑使用证书凭据提高安全性： https://docs.azure.cn/active-directory/develop/active-directory-certificate-credentials |
+| AADSTS700005 | InvalidGrantRedeemAgainstWrongTenant - 提供的授权代码是用于其他租户的，因此已被拒绝。 兑换 OAuth2 授权代码时所针对的租户必须是获取该代码时所针对的租户（根据情况使用 /common 或 {tenant ID} 进行指定） |
 | AADSTS1000000 | UserNotBoundError - 绑定 API 要求 Azure AD 用户同时使用外部 IDP 进行身份验证，但尚未执行此操作。 |
 | AADSTS1000002 | BindCompleteInterruptError - 绑定已成功完成，但必须通知用户。 |
 | AADSTS7000112 | UnauthorizedClientApplicationDisabled - 应用程序处于禁用状态。 |
+| AADSTS7500529 | 值“SAMLId-Guid”不是有效的 SAML ID - Azure AD 使用此属性填充返回的响应的 InResponseTo 属性。 ID 的开头不能是数字，因此常见的策略是在 GUID 的字符串表示形式前面加上类似于“id”的字符串。 例如，id6c1c178c166d486687be4aaf5e482730 是有效的 ID。 |
 
 ## <a name="next-steps"></a>后续步骤
 

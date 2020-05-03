@@ -8,12 +8,12 @@ ms.topic: article
 origin.date: 03/05/2020
 ms.date: 03/23/2020
 ms.author: v-yeche
-ms.openlocfilehash: ab1e23aeba72fe292a781ca78b61fd4ce3eca917
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: ee69b5708930ffd352957b7aa3f25abf051d5042
+ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80109785"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82093458"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>适用于 Azure 逻辑应用的连接器
 
@@ -86,19 +86,12 @@ ms.locfileid: "80109785"
 
 |   |   |   |   |
 |---|---|---|---|
-| [![API 图标][azure-functions-icon]<br />**Azure Functions**][azure-functions-doc] | 从逻辑应用调用运行自定义代码片段（C# 或 Node.js）的 Azure 函数。 | [![API icon][inline-code-icon]<br />**内联代码**][azure-functions-doc] | 从逻辑应用添加和运行 JavaScript 代码片段。 |
+| [![API 图标][azure-functions-icon]<br />**Azure Functions**][azure-functions-doc] | 从逻辑应用调用运行自定义代码片段（C# 或 Node.js）的 Azure 函数。 | [![API 图标][inline-code-icon]<br />**内联代码**][azure-functions-doc] | 从逻辑应用添加和运行 JavaScript 代码片段。 |
 |||||
 
-### <a name="control-workflow"></a>控制工作流
+<!--Not Available on ### Control workflow-->
+<!--Not Available on [scope-doc]-->
 
-逻辑应用提供用于在逻辑应用工作流中构建和控制操作的内置操作：
-
-|   |   |   |   |
-|---|---|---|---|
-| [![“内置”图标][condition-icon]<br />**条件**][condition-doc] | 评估条件，并根据条件是 true 还是 false 运行不同的操作。 | [![“内置”图标][for-each-icon]<br />**For each**][for-each-doc] | 对数组中的每个项执行相同的操作。 |
-| [![内置操作图标][scope-icon]<br />**范围**][scope-doc] | 将操作分组到范围，以便在该范围内的操作完成运行后，获取这些操作的自身状态。  | [![“内置”图标][switch-icon]<br />**Switch**][switch-doc] | 将操作分组到案例，而案例分配有唯一的值（默认案例除外）。  仅运行其分配值与表达式、对象或令牌的结果相匹配的案例。 如果不存在任何匹配项，则运行默认案例。 |
-| [![“内置”图标][terminate-icon]<br />**Terminate**][terminate-doc] | 停止当前正在运行的逻辑应用工作流。 | [![“内置”图标][until-icon]<br />**Until**][until-doc] | 重复操作，直到指定的条件为 true 或某个状态发生更改。 |
-|||||
 
 ### <a name="manage-or-manipulate-data"></a>管理或处理数据
 
@@ -121,12 +114,14 @@ ms.locfileid: "80109785"
 |---|---|---|---|
 | [![API 图标][azure-service-bus-icon]<br />**Azure 服务总线**][azure-service-bus-doc] | 使用逻辑应用中最常用的连接器管理异步消息、会话和主题订阅。 | [![API 图标][sql-server-icon]<br />**SQL Server**][sql-server-doc] | 连接到本地 SQL Server 或云中的 Azure SQL 数据库，以便可以管理记录、运行存储过程或执行查询。 |
 | [![API 图标][azure-blob-storage-icon]<br />**Azure Blob<br />存储**][azure-blob-storage-doc] | 连接到存储帐户，以便可以创建和管理 Blob 内容。 | [![API 图标][office-365-outlook-icon]<br />**Office 365<br />Outlook**][office-365-outlook-doc] | 连接到 Office 365 电子邮件帐户，以便可以创建和管理电子邮件、任务、日历事件和会议、联系人、请求，等等。 |
-| [![API icon][sftp-ssh-icon]<br />**SFTP-SSH**][sftp-ssh-doc] | 使用 SSH 连接到可从 Internet 访问的 SFTP 服务器，以便可以处理文件和文件夹。 | [![API 图标][sharepoint-online-icon]<br />**SharePoint<br />Online**][sharepoint-online-doc] | 连接到 SharePoint Online，以便可以管理文件、附件、文件夹，等等。 | 
-| [![API 图标][dynamics-365-icon]<br />**Dynamics 365<br />** ][dynamics-365-doc] | 连接到 Dynamics 365 帐户，以便可以创建和管理记录、项，等等。 | [![API 图标][azure-queues-icon]<br />**Azure <br />队列**][azure-queues-doc] | 连接到 Azure 存储帐户，以便可以创建和管理队列与消息 |
+| [![API 图标][sftp-ssh-icon]<br />**SFTP-SSH**][sftp-ssh-doc] | 使用 SSH 连接到可从 Internet 访问的 SFTP 服务器，以便可以处理文件和文件夹。 | [![API 图标][sharepoint-online-icon]<br />**SharePoint<br />Online**][sharepoint-online-doc] | 连接到 SharePoint Online，以便可以管理文件、附件、文件夹，等等。 | 
 | [![API 图标][ftp-icon]<br />**FTP**][ftp-doc] | 连接到可从 Internet 访问的 FTP 服务器，以便可以处理文件和文件夹。 | [![API 图标][file-system-icon]<br />**文件<br />系统**][file-system-doc] | 连接到本地文件共享，以便可以创建和管理文件。 |
 | [![API 图标][azure-event-hubs-icon]<br />**Azure 事件中心**][azure-event-hubs-doc] | 通过事件中心使用和发布事件。 例如，通过事件中心获取逻辑应用的输出，然后将输出发送到实时分析提供程序。 | [![API 图标][azure-event-grid-icon]<br />**Azure 事件**<br />**网格**][azure-event-grid-doc] | 监视事件网格发布的事件（例如，当 Azure 资源或第三方资源发生更改时）。 |
-| [![API 图标][salesforce-icon]<br />**Salesforce**][salesforce-doc] | 连接到 Salesforce 帐户，以便可以创建和管理记录、作业、对象，等等。 | [![API 图标][twitter-icon]<br />**Twitter**][twitter-doc] | 连接到 Twitter 帐户，以便可以管理推文、关注者、时间表，等等。 将推文保存到 SQL、Excel 或 SharePoint。 |
+| [![API 图标][salesforce-icon]<br />**Salesforce**][salesforce-doc] | 连接到 Salesforce 帐户，以便可以创建和管理记录、作业、对象，等等。 | [![API 图标][azure-queues-icon]<br />**Azure <br />队列**][azure-queues-doc] | 连接到 Azure 存储帐户，以便可以创建和管理队列与消息 |
 |||||
+
+<!--Not Available on Line 116 [dynamics-365-icon]-->
+<!--Not Available on Line 116 [twitter-icon]-->
 
 <a name="on-premises-connectors"></a>
 
@@ -136,9 +131,12 @@ ms.locfileid: "80109785"
 
 |   |   |   |   |   |
 |---|---|---|---|---|
-| [![API 图标][biztalk-server-icon]<br />**BizTalk** <br />**Server**][biztalk-server-doc] | [![API 图标][file-system-icon]<br />**文件<br />系统**][file-system-doc] | [![API 图标][ibm-db2-icon]<br />**IBM DB2**][ibm-db2-doc] | [![API 图标][ibm-informix-icon]<br />**IBM** <br />**Informix**][ibm-informix-doc] | [![API 图标][mysql-icon]<br />**MySQL**][mysql-doc] |
 | [![API 图标][oracle-db-icon]<br />**Oracle DB**][oracle-db-doc] | [![API 图标][postgre-sql-icon]<br />**PostgreSQL**][postgre-sql-doc] | [![API 图标][sharepoint-server-icon]<br />**SharePoint <br />Server**][sharepoint-server-doc] | [![API 图标][sql-server-icon]<br />**SQL <br />Server**][sql-server-doc] | [![API 图标][teradata-icon]<br />**Teradata**][teradata-doc] |
+| [![API 图标][biztalk-server-icon]<br />**BizTalk** <br />**Server**][biztalk-server-doc] | [![API 图标][file-system-icon]<br />**文件<br />系统**][file-system-doc] | [![API 图标][mysql-icon]<br />**MySQL**][mysql-doc] | | |
 |||||
+
+<!--Not Available on [ibm-db2-icon]-->
+<!--Not Available on [ibm-informix-icon]-->
 
 <a name="integration-account-connectors"></a>
 
@@ -190,7 +188,10 @@ ms.locfileid: "80109785"
 
 每个连接器的触发器和操作提供其自身的属性，你可以配置这些属性。 许多连接器还要求先与目标服务或系统建立连接，并提供身份验证凭据或其他配置详细信息，然后，你才能在逻辑应用中使用某个触发器或操作。  例如，必须授权与 Twitter 帐户建立连接才能访问数据，或者让系统代表你发贴。
 
-对于使用 Azure Active Directory (Azure AD) OAuth 的连接器，创建连接意味着要登录到服务（例如 Office 365、Salesforce 或 GitHub），其中的访问令牌[已加密](../security/fundamentals/encryption-overview.md)并安全存储在 Azure 机密存储中。 其他连接器（例如 FTP 和 SQL）需要提供包含服务器地址、用户名和密码等配置详细信息的连接。 这些连接配置详细信息同样加密并安全存储。 详细了解 [Azure 中的加密](../security/fundamentals/encryption-overview.md)。
+对于使用 Azure Active Directory (Azure AD) OAuth 的连接器，创建连接意味着要登录到服务（例如 Office 365、Salesforce 或 GitHub），其中的访问令牌已加密并安全地存储在 Azure 机密存储中。 其他连接器（例如 FTP 和 SQL）需要提供包含服务器地址、用户名和密码等配置详细信息的连接。 这些连接配置详细信息同样加密并安全存储。
+
+<!--Not Available on [encrypted](../security/fundamentals/encryption-overview.md)-->
+<!--Not Available on [encryption in Azure](../security/fundamentals/encryption-overview.md)-->
 
 只要目标服务或系统允许，连接就可以访问该服务或系统。 对于使用 Azure AD OAuth 连接的服务（例如 Office 365 和 Dynamics），Azure 逻辑应用会无限期地刷新访问令牌。 其他服务可能会限制在不刷新令牌的情况下，Azure 逻辑应用能够使用该令牌多长时间。 一般情况下，某些操作（例如更改密码）会使所有访问令牌失效。
 
@@ -198,7 +199,8 @@ ms.locfileid: "80109785"
 
 ## <a name="custom-apis-and-connectors"></a>自定义 API 和连接器
 
-若要调用运行自定义代码或者无法作为连接器使用的 API，可以通过[创建自定义 API 应用](../logic-apps/logic-apps-create-api-app.md)来扩展逻辑应用平台。 还可以针对任何基于 REST 或 SOAP 的 API [创建自定义连接器](../logic-apps/custom-connector-overview.md)，使这些 API 可供 Azure 订阅中的任何逻辑应用使用。  若要使自定义 API 应用或连接器可供任何人在 Azure 中使用，可以[提交连接器进行 Azure 认证](https://docs.microsoft.com/en-us/connectors/custom-connectors/submit-certification)。
+若要调用运行自定义代码或者无法作为连接器使用的 API，可以通过[创建自定义 API 应用](../logic-apps/logic-apps-create-api-app.md)来扩展逻辑应用平台。 还可以针对任何基于 REST 或 SOAP 的 API [创建自定义连接器](../logic-apps/custom-connector-overview.md)，使这些 API 可供 Azure 订阅中的任何逻辑应用使用。  若要使自定义 API 应用或连接器可供任何人在 Azure 中使用，可以[提交连接器进行 Azure 认证](https://docs.microsoft.com/connectors/custom-connectors/submit-certification)。
+
 <!--Not Available on integration service environment(ISE)-->
 
 ## <a name="next-steps"></a>后续步骤
@@ -232,42 +234,58 @@ ms.locfileid: "80109785"
 [schedule-delay-until-doc]: ./connectors-native-delay.md "延迟运行下一操作"
 [schedule-recurrence-doc]:  ./connectors-native-recurrence.md "按重复计划运行逻辑应用"
 [schedule-sliding-window-doc]: ./connectors-native-sliding-window.md "运行需要处理连续区块中的数据的逻辑应用"
-[scope-doc]: ../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md "将操作组织成组，以便在该组中的操作完成运行后获取这些操作的自身状态"
+
+<!--Not Available on [scope-doc]: ../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md "Organize actions into groups, which get their own status after the actions in group finish running"-->
+
 [switch-doc]: ../logic-apps/logic-apps-control-flow-switch-statement.md "将操作组织成分配有唯一值的案例。仅运行其值与表达式、对象或令牌的结果相匹配的案例。如果不存在任何匹配项，则运行默认案例"
 [terminate-doc]: ../logic-apps/logic-apps-workflow-actions-triggers.md#terminate-action "停止或取消逻辑应用的正在运行的工作流"
 [until-doc]: ../logic-apps/logic-apps-control-flow-loops.md#until-loop "重复操作，直到指定的条件为 true 或某个状态发生更改"
 [data-operations-doc]: ../logic-apps/logic-apps-perform-data-operations.md "执行数据操作，如筛选数组或创建 CSV 和 HTML 表"
 [variables-doc]: ../logic-apps/logic-apps-create-variables-store-values.md "使用变量执行操作，例如初始化、设置、递增、递减和追加到字符串或数组变量"
 
-<!--Managed API doc links-->
-[azure-event-hubs-doc]: ./connectors-create-api-azure-event-hubs.md "连接到 Azure 事件中心。在逻辑应用与事件中心之间接收和发送事件"
+<!--Managed connector doc links-->
+
+[azure-blob-storage-doc]: ./connectors-create-api-azureblobstorage.md "使用 Azure Blob 存储连接器管理 Blob 容器中的文件"
+[azure-cosmos-db-doc]: /connectors/documentdb/ "连接到 Azure Cosmos DB，以便访问文档和存储过程"
+[azure-event-grid-doc]: ../event-grid/monitor-virtual-machine-changes-event-grid-logic-app.md "监视事件网格发布的事件（例如，当 Azure 资源或第三方资源发生更改时）"
+[azure-event-hubs-doc]: ./connectors-create-api-azure-event-hubs.md "连接到 Azure 事件中心，以便在逻辑应用与事件中心之间接收和发送事件"
+[azure-file-storage-doc]: /connectors/azurefile/ "连接到 Azure 存储帐户，以便创建、更新、获取和删除文件"
+[azure-queues-doc]: /connectors/azurequeues/ "连接到 Azure 存储帐户，以便创建和管理队列与消息"
+[azure-service-bus-doc]: ./connectors-create-api-servicebus.md "从服务总线队列和主题发送消息，并从服务总线队列和订阅接收消息"
+[azure-sql-data-warehouse-doc]: /connectors/sqldw/ "连接到 Azure SQL 数据仓库，以便查看数据"
+[azure-table-storage-doc]: /connectors/azuretables/ "连接到 Azure 存储帐户，以便创建、更新和查询表与其他对象"
+[biztalk-server-doc]: /connectors/biztalk/ "连接到 BizTalk Server，以便将基于 BizTalk 的应用程序与 Azure 逻辑应用一起运行"
 [box-doc]: ./connectors-create-api-box.md "连接到 Box。上传、获取、删除、列出文件，等等"
 [dropbox-doc]: ./connectors-create-api-dropbox.md "连接到 Dropbox。上传、获取、删除、列出文件，等等"
-[dynamics-365-doc]: ./connectors-create-api-crmonline.md "连接到 Dynamics CRM Online，以便可以处理 CRM Online 数据"
+
+<!--Not Available on [dynamics-365-doc]: ./connectors-create-api-crmonline.md "Connect to Dynamics CRM Online so that you can work with CRM Online data"-->
+
 [facebook-doc]: ./connectors-create-api-facebook.md "连接到 Facebook。发布到时间线、获取页面源，等等"
 [file-system-doc]: ../logic-apps/logic-apps-using-file-connector.md "连接到本地文件系统"
 [ftp-doc]: ./connectors-create-api-ftp.md "连接到 FTP/FTPS 服务器以执行 FTP 任务，例如上传、获取、删除文件，等等"
 [github-doc]: ./connectors-create-api-github.md "连接到 GitHub，对问题进行跟踪"
-[google-calendar-doc]: ./connectors-create-api-googlecalendar.md "连接到 Google Calendar 即可管理日历。"
-[google-drive-doc]: ./connectors-create-api-googledrive.md "连接到 GoogleDrive，以便使用数据"
-[google-sheets-doc]: ./connectors-create-api-googlesheet.md "连接到 Google Sheets 以便可以修改表单"
+[google-calendar-doc]: ./connectors-create-api-googlecalendar.md "连接到 Google Calendar，以便管理日历"
+[google-drive-doc]: ./connectors-create-api-googledrive.md "连接到 GoogleDrive，以便处理数据"
+[google-sheets-doc]: ./connectors-create-api-googlesheet.md "连接到 Google Sheets，以便修改工作表"
 [google-tasks-doc]: ./connectors-create-api-googletasks.md "连接到 Google Tasks，以便管理任务"
-[ibm-db2-doc]: ./connectors-create-api-db2.md "连接到云中或本地的 IBM DB2。更新行、获取表，等等"
+[ibm-3270-doc]: ./connectors-run-3270-apps-ibm-mainframe-create-api-3270.md "连接到 IBM 大型机上的 3270 应用"
+<!--Not Available on [ibm-db2-doc]: ./connectors-create-api-db2.md "Connect to IBM DB2 in the cloud or on-premises. Update a row, get a table, and more"-->
+
 [ibm-informix-doc]: ./connectors-create-api-informix.md "连接到云中或本地的 Informix。读取行、列出表，等等"
 [ibm-mq-doc]: ./connectors-create-api-mq.md "连接到本地或 Azure 中的 IBM MQ 以发送和接收消息"
 [instagram-doc]: ./connectors-create-api-instagram.md "连接到 Instagram。触发事件或针对事件进行操作"
 [mailchimp-doc]: ./connectors-create-api-mailchimp.md "连接到 MailChimp 帐户。管理邮件和自动执行邮件操作"
 [mandrill-doc]: ./connectors-create-api-mandrill.md "连接到 Mandrill 进行通信"
-[microsoft-translator-doc]: ./connectors-create-api-microsofttranslator.md "连接到 Microsoft Translator。翻译文字、检测语言，等等" 
-[office-365-outlook-doc]: ./connectors-create-api-office365-outlook.md "连接到 Office 365 帐户。发送和接收电子邮件、管理日历和联系人，等等"
-[office-365-users-doc]: ./connectors-create-api-office365-users.md 
-[office-365-video-doc]: ./connectors-create-api-office365-video.md "获取视频信息、视频列表和频道，以及 Office 365 视频的播放 URL"
-[onedrive-doc]: ./connectors-create-api-onedrive.md "连接到个人 Microsoft OneDrive。上传、删除、列出文件，等等"
-[onedrive-for-business-doc]: ./connectors-create-api-onedriveforbusiness.md "连接到企业 Microsoft OneDrive。上传、删除、列出文件，等等"
-[oracle-db-doc]: ./connectors-create-api-oracledatabase.md "连接到 Oracle 数据库以添加、插入和删除行以及执行其他操作"
-[outlook.com-doc]: ./connectors-create-api-outlook.md "连接到 Outlook 邮箱。管理电子邮件、日历、联系人等"
-[project-online-doc]: ./connectors-create-api-projectonline.md "连接到 Microsoft Project Online。管理项目、任务、资源等"
-[rss-doc]: ./connectors-create-api-rss.md "发布和检索源项，在新项发布到 RSS 源时触发操作。"
+[mysql-doc]: /connectors/mysql/ "连接到本地 MySQL 数据库，以便读取和写入数据"
+[office-365-outlook-doc]: ./connectors-create-api-office365-outlook.md "连接到 Office 365 帐户，以便发送和接收电子邮件、管理日历和联系人，以及执行其他操作"
+[office-365-users-doc]: ./connectors-create-api-office365-users.md
+[onedrive-doc]: ./connectors-create-api-onedrive.md "连接到个人 Azure OneDrive，以便上传、删除、列出文件，以及执行其他操作"
+[onedrive-for-business-doc]: ./connectors-create-api-onedriveforbusiness.md "连接到企业 Azure OneDrive，以便上传、删除、列出文件，以及执行其他操作"
+[oracle-db-doc]: ./connectors-create-api-oracledatabase.md "连接到 Oracle 数据库，以便添加、插入、删除行，以及执行其他操作"
+[outlook.com-doc]: ./connectors-create-api-outlook.md "连接到 Outlook 邮箱，以便管理电子邮件、日历、联系人，以及执行其他操作"
+[postgre-sql-doc]: /connectors/postgresql/ "连接到 PostgreSQL 数据库，以便从表中读取数据"
+[project-online-doc]: ./connectors-create-api-projectonline.md "连接到 Azure Project Online，以便管理项目、任务、资源，以及执行其他操作"
+[rss-doc]: ./connectors-create-api-rss.md "发布和检索源项，在新项发布到 RSS 源时触发操作"
 [salesforce-doc]: ./connectors-create-api-salesforce.md "连接到 Salesforce 帐户。管理帐户、潜在客户、商机等"
 [sap-connector-doc]: ../logic-apps/logic-apps-using-sap-connector.md "连接到本地 SAP 系统"
 [sendgrid-doc]: ./connectors-create-api-sendgrid.md "连接到 SendGrid。发送电子邮件和管理收件人列表"
@@ -281,7 +299,9 @@ ms.locfileid: "80109785"
 [teradata-doc]: /connectors/teradata/ "连接到 Teradata 数据库以从表中读取数据"
 [trello-doc]: ./connectors-create-api-trello.md "连接到 Trello。管理项目，与任何人一起组织任何事情"
 [twilio-doc]: ./connectors-create-api-twilio.md "连接到 Twilio。发送和获取消息、获取可用号码，管理来电号码，等等"
-[twitter-doc]: ./connectors-create-api-twitter.md "连接到 Twitter。获取时间线、发布推文，等等"
+
+<!--Not Available on [twitter-doc]: ./connectors-create-api-twitter.md "Connect to Twitter. Get timelines, post tweets, and more"-->
+
 [yammer-doc]: ./connectors-create-api-yammer.md "连接到 Yammer。发布消息、获取新消息，等等"
 [youtube-doc]: ./connectors-create-api-youtube.md "连接到 YouTube。管理视频和频道"
 
@@ -317,6 +337,7 @@ ms.locfileid: "80109785"
 [http-response-icon]: ./media/apis-list/response.png
 [http-swagger-icon]: ./media/apis-list/http-swagger.png
 [http-webhook-icon]: ./media/apis-list/http-webhook.png
+[inline-code-icon]: ./media/apis-list/inline-code.png
 [schedule-icon]: ./media/apis-list/recurrence.png
 [scope-icon]: ./media/apis-list/scope.png
 [switch-icon]: ./media/apis-list/switch.png
@@ -324,21 +345,26 @@ ms.locfileid: "80109785"
 [until-icon]: ./media/apis-list/until.png
 [variables-icon]: ./media/apis-list/variables.png
 
-<!--Managed API icons-->
+<!--Managed connector icons-->
+
 [appfigures-icon]: ./media/apis-list/appfigures.png
 [asana-icon]: ./media/apis-list/asana.png
 [azure-automation-icon]: ./media/apis-list/azure-automation.png
 [azure-blob-storage-icon]: ./media/apis-list/azure-blob-storage.png
 [azure-cognitive-services-text-analytics-icon]: ./media/apis-list/azure-cognitive-services-text-analytics.png
+[azure-cosmos-db-icon]: ./media/apis-list/azure-cosmos-db.png
 [azure-data-lake-icon]: ./media/apis-list/azure-data-lake.png
 [azure-document-db-icon]: ./media/apis-list/azure-document-db.png
 [azure-event-grid-icon]: ./media/apis-list/azure-event-grid.png
 [azure-event-grid-publish-icon]: ./media/apis-list/azure-event-grid-publish.png
 [azure-event-hubs-icon]: ./media/apis-list/azure-event-hubs.png
+[azure-file-storage-icon]: ./media/apis-list/azure-file-storage.png
 [azure-ml-icon]: ./media/apis-list/azure-ml.png
 [azure-queues-icon]: ./media/apis-list/azure-queues.png
 [azure-resource-manager-icon]: ./media/apis-list/azure-resource-manager.png
 [azure-service-bus-icon]: ./media/apis-list/azure-service-bus.png
+[azure-sql-data-warehouse-icon]: ./media/apis-list/azure-sql-data-warehouse.png
+[azure-table-storage-icon]: ./media/apis-list/azure-table-storage.png
 [basecamp-3-icon]: ./media/apis-list/basecamp.png
 [bitbucket-icon]: ./media/apis-list/bitbucket.png
 [bitly-icon]: ./media/apis-list/bitly.png
@@ -362,8 +388,10 @@ ms.locfileid: "80109785"
 [google-tasks-icon]: ./media/apis-list/google-tasks.png
 [hipchat-icon]: ./media/apis-list/hipchat.png
 [ibm-3270-icon]: ./media/apis-list/ibm-3270.png
-[ibm-db2-icon]: ./media/apis-list/ibm-db2.png
-[ibm-informix-icon]: ./media/apis-list/ibm-informix.png
+
+<!--Not Avaialble on [ibm-db2-icon]: ./media/apis-list/ibm-db2.png-->
+<!--Not Avaialble on [ibm-informix-icon]: ./media/apis-list/ibm-informix.png-->
+
 [ibm-mq-icon]: ./media/apis-list/ibm-mq.png
 [insightly-icon]: ./media/apis-list/insightly.png
 [instagram-icon]: ./media/apis-list/instagram.png
@@ -371,11 +399,9 @@ ms.locfileid: "80109785"
 [jira-icon]: ./media/apis-list/jira.png
 [mailchimp-icon]: ./media/apis-list/mailchimp.png
 [mandrill-icon]: ./media/apis-list/mandrill.png
-[microsoft-translator-icon]: ./media/apis-list/microsoft-translator.png
 [mysql-icon]: ./media/apis-list/mysql.png
 [office-365-outlook-icon]: ./media/apis-list/office-365.png
 [office-365-users-icon]: ./media/apis-list/office-365-users.png
-[office-365-video-icon]: ./media/apis-list/office-365-video.png
 [onedrive-icon]: ./media/apis-list/onedrive.png
 [onedrive-for-business-icon]: ./media/apis-list/onedrive-business.png
 [oracle-db-icon]: ./media/apis-list/oracle-db.png
@@ -389,7 +415,7 @@ ms.locfileid: "80109785"
 [salesforce-icon]: ./media/apis-list/salesforce.png
 [sap-icon]: ./media/apis-list/sap.png
 [send-grid-icon]: ./media/apis-list/sendgrid.png
-[sftp-icon]: ./media/apis-list/sftp.png
+[sftp-ssh-icon]: ./media/apis-list/sftp.png
 [sharepoint-online-icon]: ./media/apis-list/sharepoint-online.png
 [sharepoint-server-icon]: ./media/apis-list/sharepoint-server.png
 [slack-icon]: ./media/apis-list/slack.png
@@ -405,11 +431,11 @@ ms.locfileid: "80109785"
 [vimeo-icon]: ./media/apis-list/vimeo.png
 [visual-studio-team-services-icon]: ./media/apis-list/visual-studio-team-services.png
 [wordpress-icon]: ./media/apis-list/wordpress.png
-[wunderlist-icon]: ./media/apis-list/wunderlist.png
 [yammer-icon]: ./media/apis-list/yammer.png
 [youtube-icon]: ./media/apis-list/youtube.png
 
 <!-- Enterprise Integration Pack icons -->
+
 [as2-icon]: ./media/apis-list/as2.png
 [edifact-icon]: ./media/apis-list/edifact.png
 [flat-file-encode-icon]: ./media/apis-list/flat-file-encoding.png

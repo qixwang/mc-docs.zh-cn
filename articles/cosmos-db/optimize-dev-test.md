@@ -1,22 +1,22 @@
 ---
 title: Azure Cosmos DB 中的开发和测试优化
-description: 本文介绍 Azure Cosmos DB 如何为免费开发和测试服务提供多种选择。
+description: 本文介绍 Azure Cosmos DB 为服务的免费开发和测试提供多个选项的情况。
 author: rockboyfor
-ms.author: v-yeche
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 05/21/2019
-ms.date: 10/28/2019
-ms.openlocfilehash: aa471692f41a189032e8574d15622c50718bf1c9
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 04/27/2020
+ms.author: v-yeche
+ms.openlocfilehash: 2111ace02daedda61e9bd9a01fbf6807f556acbc
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "72914419"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134600"
 ---
 # <a name="optimize-development-and-testing-cost-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中优化开发和测试成本
 
-本文介绍免费使用 Azure Cosmos DB 进行开发和测试的不同选项。
+本文介绍免费使用 Azure Cosmos DB 进行开发和测试的各种选项，以及在开发或测试帐户中进行成本优化的各种技巧。
 
 ## <a name="azure-cosmos-db-emulator-locally-downloadable-version"></a>Azure Cosmos DB 模拟器（可以本地下载的版本）
 
@@ -25,9 +25,15 @@ ms.locfileid: "72914419"
 <!--Not Available on ## Try Azure Cosmos DB for free-->
 <!--Not Available on [Try Azure Cosmos DB for free](https://www.azure.cn/try/cosmosdb/)-->
 
-## <a name="azure-free-account"></a>Azure 免费帐户
+## <a name="azure-trial-account"></a>Azure 试用帐户
 
 Azure Cosmos DB 包含在 [Azure 试用帐户](https://www.azure.cn/pricing/1rmb-trial)中，该帐户提供 Azure 信用额度和资源，可以免费使用特定的一段时间。 特别对于 Azure Cosmos DB，该试用帐户提供 5 GB 的存储和 400 RU 的全年预配吞吐量。 任何开发人员都可以通过此体验轻松地测试 Azure Cosmos DB 的功能，或者将其与其他 Azure 服务集成，没有任何费用。 Azure 试用帐户提供 $200 的信用额度，可以在头 30 天使用。 在选择升级之前，即使开始使用服务也不会收费。 若要开始操作，请访问 [Azure 试用帐户](https://www.azure.cn/pricing/1rmb-trial)页。
+
+## <a name="use-shared-throughput-databases"></a>使用共享吞吐量数据库
+
+在[共享吞吐量数据库](set-throughput.md#set-throughput-on-a-database)中，数据库中的所有容器共享数据库的已预配吞吐量（RU/秒）。 例如，如果为数据库预配了 400 RU/秒并且有四个容器，则所有四个容器共享此 400 RU/秒的吞吐量。 在开发或测试环境中，对每个容器的访问可能不是很频繁，因此，需求低于最小值 400 RU/秒，将容器置于共享吞吐量数据库中有助于优化成本。 
+
+例如，假设你的开发或测试帐户有四个容器。 如果创建具有专用吞吐量（最小为 400 RU/秒）的四个容器，则总吞吐量将为 1600 RU/秒。 相反，如果创建一个共享吞吐量数据库（至少 400 RU/秒）并将容器置于其中，则总吞吐量将只有 400 RU/秒。 通常情况下，共享吞吐量数据库非常适合不需要在任何单个容器上保证吞吐量的方案。  详细了解[共享吞吐量数据库](set-throughput.md#set-throughput-on-a-database)。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -41,4 +47,4 @@ Azure Cosmos DB 包含在 [Azure 试用帐户](https://www.azure.cn/pricing/1rmb
 * 详细了解如何[优化查询成本](optimize-cost-queries.md)
 * 详细了解[优化多区域 Azure Cosmos 帐户的成本](optimize-cost-regions.md)
 
-<!-- Update_Description: update meta properties, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

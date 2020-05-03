@@ -10,14 +10,14 @@ ms.topic: conceptual
 author: WenJason
 ms.author: v-jay
 ms.reviewer: sstein, bonova, carlrab
-origin.date: 04/16/2019
-ms.date: 03/30/2020
-ms.openlocfilehash: b021162538be03d8988a4bbb1af6aa10abce9da8
-ms.sourcegitcommit: 90660563b5d65731a64c099b32fb9ec0ce2c51c6
+origin.date: 03/17/2020
+ms.date: 04/27/2020
+ms.openlocfilehash: 5b0e4fb53e59c0f44c68bc9fc4305f83fb8e4501
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80341817"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82127064"
 ---
 # <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>Azure SQL 数据库中托管实例的连接体系结构
 
@@ -94,9 +94,8 @@ Azure 使用一个管理终结点来管理托管实例。 此终结点位于该�
 
 - **专用子网：** 托管实例的子网不能包含其他任何关联的云服务，且不能是网关子网。 该子网不能包含除该托管实例以外的其他任何资源，以后无法在该子网中添加其他类型的资源。
 - **子网委派**：需将托管实例的子网委托给 `Microsoft.Sql/managedInstances` 资源提供程序。
-- **网络安全组 (NSG)** ：NSG 需与托管实例的子网相关联。 当托管实例配置为使用重定向连接时，可以使用某个 NSG 通过筛选端口 1433 和端口 11000-11999 上的流量，来控制对托管实例数据终结点的访问。 服务将自动添加所需的[规则](#mandatory-inbound-security-rules-with-service-aided-subnet-configuration)，使管理流量能够不间断地流动。
-- **用户定义的路由 (UDR) 表：** UDR 表需与托管实例的子网相关联。 可将条目添加到路由表，以通过虚拟网络网关或虚拟网络设备 (NVA) 路由发往本地专用 IP 范围的流量。 服务将自动添加所需的[条目](#user-defined-routes-with-service-aided-subnet-configuration)，使管理流量能够不间断地流动。
-- **服务终结点：** 使用服务终结点可以在保存备份/审核日志的存储帐户中配置虚拟网络规则。
+- **网络安全组 (NSG)** ：NSG 需与托管实例的子网相关联。 当托管实例配置为使用重定向连接时，可以使用某个 NSG 通过筛选端口 1433 和端口 11000-11999 上的流量，来控制对托管实例数据终结点的访问。 服务会自动预配并保留当前的[规则](#mandatory-inbound-security-rules-with-service-aided-subnet-configuration)，使管理流量能够不间断地流动。
+- **用户定义的路由 (UDR) 表：** UDR 表需与托管实例的子网相关联。 可将条目添加到路由表，以通过虚拟网络网关或虚拟网络设备 (NVA) 路由发往本地专用 IP 范围的流量。 服务会自动预配并保留当前的[条目](#user-defined-routes-with-service-aided-subnet-configuration)，使管理流量能够不间断地流动。
 - **足够的 IP 地址：** 托管实例子网必须至少有 16 个 IP 地址。 建议的最少数目为 32 个 IP 地址。 有关详细信息，请参阅[确定托管实例的子网大小](sql-database-managed-instance-determine-size-vnet-subnet.md)。 根据[托管实例的网络要求](#network-requirements)配置托管实例后，可将其部署在[现有网络](sql-database-managed-instance-configure-vnet-subnet.md)中。 否则，请创建[新的网络和子网](sql-database-managed-instance-create-vnet-subnet.md)。
 
 > [!IMPORTANT]
@@ -108,7 +107,7 @@ Azure 使用一个管理终结点来管理托管实例。 此终结点位于该�
 |------------|----------------------------|--------|-----------------|-----------|------|
 |管理  |9000、9003、1438、1440、1452|TCP     |SqlManagement    |MI SUBNET  |允许 |
 |            |9000、9003                  |TCP     |CorpnetSaw       |MI SUBNET  |允许 |
-|            |9000、9003                  |TCP     |65.55.188.0/24、167.220.0.0/16、131.107.0.0/16、94.245.87.0/24|MI SUBNET  |允许 |
+|            |9000、9003                  |TCP     |CorpnetPublic    |MI SUBNET  |允许 |
 |mi_subnet   |任意                         |任意     |MI SUBNET        |MI SUBNET  |允许 |
 |health_probe|任意                         |任意     |AzureLoadBalancer|MI SUBNET  |允许 |
 
@@ -116,7 +115,7 @@ Azure 使用一个管理终结点来管理托管实例。 此终结点位于该�
 
 | 名称       |端口          |协议|Source           |目标|操作|
 |------------|--------------|--------|-----------------|-----------|------|
-|管理  |443、12000    |TCP     |MI SUBNET        |AzureChinaCloud |允许 |
+|管理  |443、12000    |TCP     |MI SUBNET        |AzureCloud |允许 |
 |mi_subnet   |任意           |任意     |MI SUBNET        |MI SUBNET  |允许 |
 
 ### <a name="user-defined-routes-with-service-aided-subnet-configuration"></a>采用服务辅助子网配置的用户定义的路由 
@@ -126,31 +125,33 @@ Azure 使用一个管理终结点来管理托管实例。 此终结点位于该�
 |subnet-to-vnetlocal|MI SUBNET|虚拟网络|
 |mi-13-64-11-nexthop-internet|13.64.0.0/11|Internet|
 |mi-13-104-14-nexthop-internet|13.104.0.0/14|Internet|
+|mi-20-33-16-nexthop-internet|20.33.0.0/16|Internet|
 |mi-20-34-15-nexthop-internet|20.34.0.0/15|Internet|
 |mi-20-36-14-nexthop-internet|20.36.0.0/14|Internet|
 |mi-20-40-13-nexthop-internet|20.40.0.0/13|Internet|
+|mi-20-48-12-nexthop-internet|20.48.0.0/12|Internet|
+|mi-20-64-10-nexthop-internet|20.64.0.0/10|Internet|
 |mi-20-128-16-nexthop-internet|20.128.0.0/16|Internet|
+|mi-20-135-16-nexthop-internet|20.135.0.0/16|Internet|
+|mi-20-136-16-nexthop-internet|20.136.0.0/16|Internet|
 |mi-20-140-15-nexthop-internet|20.140.0.0/15|Internet|
+|mi-20-143-16-nexthop-internet|20.143.0.0/16|Internet|
 |mi-20-144-14-nexthop-internet|20.144.0.0/14|Internet|
 |mi-20-150-15-nexthop-internet|20.150.0.0/15|Internet|
 |mi-20-160-12-nexthop-internet|20.160.0.0/12|Internet|
 |mi-20-176-14-nexthop-internet|20.176.0.0/14|Internet|
 |mi-20-180-14-nexthop-internet|20.180.0.0/14|Internet|
 |mi-20-184-13-nexthop-internet|20.184.0.0/13|Internet|
+|mi-20-192-10-nexthop-internet|20.192.0.0/10|Internet|
 |mi-40-64-10-nexthop-internet|40.64.0.0/10|Internet|
 |mi-51-4-15-nexthop-internet|51.4.0.0/15|Internet|
 |mi-51-8-16-nexthop-internet|51.8.0.0/16|Internet|
 |mi-51-10-15-nexthop-internet|51.10.0.0/15|Internet|
-|mi-51-12-15-nexthop-internet|51.12.0.0/15|Internet|
 |mi-51-18-16-nexthop-internet|51.18.0.0/16|Internet|
 |mi-51-51-16-nexthop-internet|51.51.0.0/16|Internet|
 |mi-51-53-16-nexthop-internet|51.53.0.0/16|Internet|
 |mi-51-103-16-nexthop-internet|51.103.0.0/16|Internet|
 |mi-51-104-15-nexthop-internet|51.104.0.0/15|Internet|
-|mi-51-107-16-nexthop-internet|51.107.0.0/16|Internet|
-|mi-51-116-16-nexthop-internet|51.116.0.0/16|Internet|
-|mi-51-120-16-nexthop-internet|51.120.0.0/16|Internet|
-|mi-51-124-16-nexthop-internet|51.124.0.0/16|Internet|
 |mi-51-132-16-nexthop-internet|51.132.0.0/16|Internet|
 |mi-51-136-15-nexthop-internet|51.136.0.0/15|Internet|
 |mi-51-138-16-nexthop-internet|51.138.0.0/16|Internet|
@@ -188,6 +189,7 @@ Azure 使用一个管理终结点来管理托管实例。 此终结点位于该�
 |mi-111-221-16-20-nexthop-internet|111.221.16.0/20|Internet|
 |mi-111-221-64-18-nexthop-internet|111.221.64.0/18|Internet|
 |mi-129-75-16-nexthop-internet|129.75.0.0/16|Internet|
+|mi-131-107-16-nexthop-internet|131.107.0.0/16|Internet|
 |mi-131-253-1-24-nexthop-internet|131.253.1.0/24|Internet|
 |mi-131-253-3-24-nexthop-internet|131.253.3.0/24|Internet|
 |mi-131-253-5-24-nexthop-internet|131.253.5.0/24|Internet|
@@ -221,6 +223,7 @@ Azure 使用一个管理终结点来管理托管实例。 此终结点位于该�
 |mi-157-54-15-nexthop-internet|157.54.0.0/15|Internet|
 |mi-157-56-14-nexthop-internet|157.56.0.0/14|Internet|
 |mi-157-60-16-nexthop-internet|157.60.0.0/16|Internet|
+|mi-167-105-16-nexthop-internet|167.105.0.0/16|Internet|
 |mi-167-220-16-nexthop-internet|167.220.0.0/16|Internet|
 |mi-168-61-16-nexthop-internet|168.61.0.0/16|Internet|
 |mi-168-62-15-nexthop-internet|168.62.0.0/15|Internet|
@@ -229,8 +232,6 @@ Azure 使用一个管理终结点来管理托管实例。 此终结点位于该�
 |mi-192-48-225-24-nexthop-internet|192.48.225.0/24|Internet|
 |mi-192-84-159-24-nexthop-internet|192.84.159.0/24|Internet|
 |mi-192-84-160-23-nexthop-internet|192.84.160.0/23|Internet|
-|mi-192-100-102-24-nexthop-internet|192.100.102.0/24|Internet|
-|mi-192-100-103-24-nexthop-internet|192.100.103.0/24|Internet|
 |mi-192-197-157-24-nexthop-internet|192.197.157.0/24|Internet|
 |mi-193-149-64-19-nexthop-internet|193.149.64.0/19|Internet|
 |mi-193-221-113-24-nexthop-internet|193.221.113.0/24|Internet|
@@ -276,6 +277,18 @@ Azure 使用一个管理终结点来管理托管实例。 此终结点位于该�
 |mi-213-199-128-18-nexthop-internet|213.199.128.0/18|Internet|
 |mi-216-32-180-22-nexthop-internet|216.32.180.0/22|Internet|
 |mi-216-220-208-20-nexthop-internet|216.220.208.0/20|Internet|
+|mi-23-96-13-nexthop-internet|23.96.0.0/13|Internet|
+|mi-42-159-16-nexthop-internet|42.159.0.0/16|Internet|
+|mi-51-13-17-nexthop-internet|51.13.0.0/17|Internet|
+|mi-51-107-16-nexthop-internet|51.107.0.0/16|Internet|
+|mi-51-116-16-nexthop-internet|51.116.0.0/16|Internet|
+|mi-51-120-16-nexthop-internet|51.120.0.0/16|Internet|
+|mi-51-120-128-17-nexthop-internet|51.120.128.0/17|Internet|
+|mi-51-124-16-nexthop-internet|51.124.0.0/16|Internet|
+|mi-102-37-18-nexthop-internet|102.37.0.0/18|Internet|
+|mi-102-133-16-nexthop-internet|102.133.0.0/16|Internet|
+|mi-199-30-16-20-nexthop-internet|199.30.16.0/20|Internet|
+|mi-204-79-180-24-nexthop-internet|204.79.180.0/24|Internet|
 ||||
 
 \* MI SUBNET 是指子网的 IP 地址范围，采用 x.x.x.x/y 格式。 可以在 Azure 门户上的子网属性中找到此信息。
@@ -283,6 +296,15 @@ Azure 使用一个管理终结点来管理托管实例。 此终结点位于该�
 此外，还可以将条目添加到路由表，以通过虚拟网络网关或虚拟网络设备 (NVA) 路由发往本地专用 IP 范围的流量。
 
 如果虚拟网络包含自定义 DNS，则自定义 DNS 服务器必须能够解析公共 DNS 记录。 使用其他功能（例如 Azure AD 身份验证）可能需要解析其他 FQDN。 有关详细信息，请参阅[设置自定义 DNS](sql-database-managed-instance-custom-dns.md)。
+
+### <a name="networking-constraints"></a>网络约束
+
+**出站连接上会强制实施 TLS 1.2**：2020 年 1 月，Microsoft 对所有 Azure 服务中的服务内流量强制实施了 TLS 1.2。 对于 Azure SQL 数据库托管实例，这导致在用于复制的出站连接上和到 SQL Server 的链接服务器连接上强制实施了 TLS 1.2。 如果是将早于 2016 版的 SQL Server 版本用于托管实例，请确保已应用[特定于 TLS 1.2 的更新](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server)。
+
+托管实例当前不支持以下虚拟网络功能：
+- **Microsoft 对等互连**：在与托管实例所在的虚拟网络直接或间接对等互连的快速路由线路上启用 [Microsoft 对等互连](../expressroute/expressroute-faqs.md#microsoft-peering)会影响虚拟网络内的托管实例组件与它依赖的服务之间的流量，导致可用性问题。 向已启用 Microsoft 对等互连的虚拟网络部署托管实例预计会失败。
+- **全局虚拟网络对等互连**：由于[所记录的负载均衡器约束](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)，对于托管实例，跨 Azure 区域的[虚拟网络对等互连](../virtual-network/virtual-network-peering-overview.md)连接不起作用。
+- **AzurePlatformDNS**：使用 AzurePlatformDNS [服务标记](../virtual-network/service-tags-overview.md)阻止平台 DNS 解析会导致托管实例不可用。 尽管托管实例支持将客户定义的 DNS 用于引擎内的 DNS 解析，但平台操作依赖于平台 DNS。
 
 ### <a name="deprecated-network-requirements-without-service-aided-subnet-configuration"></a>[已弃用] 不采用服务辅助子网配置时的网络要求
 
@@ -299,7 +321,7 @@ Azure 使用一个管理终结点来管理托管实例。 此终结点位于该�
 
 ### <a name="mandatory-inbound-security-rules"></a>强制性入站安全规则
 
-| 名称       |端口                        |协议|Source           |目标|操作|
+| 名称       |端口                        |协议|源           |目标|操作|
 |------------|----------------------------|--------|-----------------|-----------|------|
 |管理  |9000、9003、1438、1440、1452|TCP     |任意              |MI SUBNET  |允许 |
 |mi_subnet   |任意                         |任意     |MI SUBNET        |MI SUBNET  |允许 |
@@ -319,6 +341,7 @@ Azure 使用一个管理终结点来管理托管实例。 此终结点位于该�
 
 > [!IMPORTANT]
 > 尽管所需的入站安全规则允许来自端口 9000、9003、1438、1440 和 1452 上的任意资源的流量，但这些端口受内置防火墙的保护  。 有关详细信息，请参阅[确定管理终结点地址](sql-database-managed-instance-find-management-endpoint-ip-address.md)。
+
 > [!NOTE]
 > 如果在托管实例中使用事务复制，并使用任何实例数据库作为发布方或分发方，请在子网的安全规则中打开端口 445（TCP 出站）。 此端口允许访问 Azure 文件共享。
 
@@ -328,14 +351,52 @@ Azure 使用一个管理终结点来管理托管实例。 此终结点位于该�
 |----|--------------|-------|
 |subnet_to_vnetlocal|MI SUBNET|虚拟网络|
 |mi-13-64-11-nexthop-internet|13.64.0.0/11|Internet|
-|mi-13-96-13-nexthop-internet|13.96.0.0/13|Internet|
 |mi-13-104-14-nexthop-internet|13.104.0.0/14|Internet|
-|mi-20-8-nexthop-internet|20.0.0.0/8|Internet|
-|mi-23-96-13-nexthop-internet|23.96.0.0/13|Internet|
+|mi-20-33-16-nexthop-internet|20.33.0.0/16|Internet|
+|mi-20-34-15-nexthop-internet|20.34.0.0/15|Internet|
+|mi-20-36-14-nexthop-internet|20.36.0.0/14|Internet|
+|mi-20-40-13-nexthop-internet|20.40.0.0/13|Internet|
+|mi-20-48-12-nexthop-internet|20.48.0.0/12|Internet|
+|mi-20-64-10-nexthop-internet|20.64.0.0/10|Internet|
+|mi-20-128-16-nexthop-internet|20.128.0.0/16|Internet|
+|mi-20-135-16-nexthop-internet|20.135.0.0/16|Internet|
+|mi-20-136-16-nexthop-internet|20.136.0.0/16|Internet|
+|mi-20-140-15-nexthop-internet|20.140.0.0/15|Internet|
+|mi-20-143-16-nexthop-internet|20.143.0.0/16|Internet|
+|mi-20-144-14-nexthop-internet|20.144.0.0/14|Internet|
+|mi-20-150-15-nexthop-internet|20.150.0.0/15|Internet|
+|mi-20-160-12-nexthop-internet|20.160.0.0/12|Internet|
+|mi-20-176-14-nexthop-internet|20.176.0.0/14|Internet|
+|mi-20-180-14-nexthop-internet|20.180.0.0/14|Internet|
+|mi-20-184-13-nexthop-internet|20.184.0.0/13|Internet|
+|mi-20-192-10-nexthop-internet|20.192.0.0/10|Internet|
 |mi-40-64-10-nexthop-internet|40.64.0.0/10|Internet|
-|mi-42-159-16-nexthop-internet|42.159.0.0/16|Internet|
-|mi-51-8-nexthop-internet|51.0.0.0/8|Internet|
-|mi-52-8-nexthop-internet|52.0.0.0/8|Internet|
+|mi-51-4-15-nexthop-internet|51.4.0.0/15|Internet|
+|mi-51-8-16-nexthop-internet|51.8.0.0/16|Internet|
+|mi-51-10-15-nexthop-internet|51.10.0.0/15|Internet|
+|mi-51-18-16-nexthop-internet|51.18.0.0/16|Internet|
+|mi-51-51-16-nexthop-internet|51.51.0.0/16|Internet|
+|mi-51-53-16-nexthop-internet|51.53.0.0/16|Internet|
+|mi-51-103-16-nexthop-internet|51.103.0.0/16|Internet|
+|mi-51-104-15-nexthop-internet|51.104.0.0/15|Internet|
+|mi-51-132-16-nexthop-internet|51.132.0.0/16|Internet|
+|mi-51-136-15-nexthop-internet|51.136.0.0/15|Internet|
+|mi-51-138-16-nexthop-internet|51.138.0.0/16|Internet|
+|mi-51-140-14-nexthop-internet|51.140.0.0/14|Internet|
+|mi-51-144-15-nexthop-internet|51.144.0.0/15|Internet|
+|mi-52-96-12-nexthop-internet|52.96.0.0/12|Internet|
+|mi-52-112-14-nexthop-internet|52.112.0.0/14|Internet|
+|mi-52-125-16-nexthop-internet|52.125.0.0/16|Internet|
+|mi-52-126-15-nexthop-internet|52.126.0.0/15|Internet|
+|mi-52-130-15-nexthop-internet|52.130.0.0/15|Internet|
+|mi-52-132-14-nexthop-internet|52.132.0.0/14|Internet|
+|mi-52-136-13-nexthop-internet|52.136.0.0/13|Internet|
+|mi-52-145-16-nexthop-internet|52.145.0.0/16|Internet|
+|mi-52-146-15-nexthop-internet|52.146.0.0/15|Internet|
+|mi-52-148-14-nexthop-internet|52.148.0.0/14|Internet|
+|mi-52-152-13-nexthop-internet|52.152.0.0/13|Internet|
+|mi-52-160-11-nexthop-internet|52.160.0.0/11|Internet|
+|mi-52-224-11-nexthop-internet|52.224.0.0/11|Internet|
 |mi-64-4-18-nexthop-internet|64.4.0.0/18|Internet|
 |mi-65-52-14-nexthop-internet|65.52.0.0/14|Internet|
 |mi-66-119-144-20-nexthop-internet|66.119.144.0/20|Internet|
@@ -344,7 +405,9 @@ Azure 使用一个管理终结点来管理托管实例。 此终结点位于该�
 |mi-91-190-216-21-nexthop-internet|91.190.216.0/21|Internet|
 |mi-94-245-64-18-nexthop-internet|94.245.64.0/18|Internet|
 |mi-103-9-8-22-nexthop-internet|103.9.8.0/22|Internet|
-|mi-103-25-156-22-nexthop-internet|103.25.156.0/22|Internet|
+|mi-103-25-156-24-nexthop-internet|103.25.156.0/24|Internet|
+|mi-103-25-157-24-nexthop-internet|103.25.157.0/24|Internet|
+|mi-103-25-158-23-nexthop-internet|103.25.158.0/23|Internet|
 |mi-103-36-96-22-nexthop-internet|103.36.96.0/22|Internet|
 |mi-103-255-140-22-nexthop-internet|103.255.140.0/22|Internet|
 |mi-104-40-13-nexthop-internet|104.40.0.0/13|Internet|
@@ -353,7 +416,23 @@ Azure 使用一个管理终结点来管理托管实例。 此终结点位于该�
 |mi-111-221-16-20-nexthop-internet|111.221.16.0/20|Internet|
 |mi-111-221-64-18-nexthop-internet|111.221.64.0/18|Internet|
 |mi-129-75-16-nexthop-internet|129.75.0.0/16|Internet|
-|mi-131-253-16-nexthop-internet|131.253.0.0/16|Internet|
+|mi-131-107-16-nexthop-internet|131.107.0.0/16|Internet|
+|mi-131-253-1-24-nexthop-internet|131.253.1.0/24|Internet|
+|mi-131-253-3-24-nexthop-internet|131.253.3.0/24|Internet|
+|mi-131-253-5-24-nexthop-internet|131.253.5.0/24|Internet|
+|mi-131-253-6-24-nexthop-internet|131.253.6.0/24|Internet|
+|mi-131-253-8-24-nexthop-internet|131.253.8.0/24|Internet|
+|mi-131-253-12-22-nexthop-internet|131.253.12.0/22|Internet|
+|mi-131-253-16-23-nexthop-internet|131.253.16.0/23|Internet|
+|mi-131-253-18-24-nexthop-internet|131.253.18.0/24|Internet|
+|mi-131-253-21-24-nexthop-internet|131.253.21.0/24|Internet|
+|mi-131-253-22-23-nexthop-internet|131.253.22.0/23|Internet|
+|mi-131-253-24-21-nexthop-internet|131.253.24.0/21|Internet|
+|mi-131-253-32-20-nexthop-internet|131.253.32.0/20|Internet|
+|mi-131-253-61-24-nexthop-internet|131.253.61.0/24|Internet|
+|mi-131-253-62-23-nexthop-internet|131.253.62.0/23|Internet|
+|mi-131-253-64-18-nexthop-internet|131.253.64.0/18|Internet|
+|mi-131-253-128-17-nexthop-internet|131.253.128.0/17|Internet|
 |mi-132-245-16-nexthop-internet|132.245.0.0/16|Internet|
 |mi-134-170-16-nexthop-internet|134.170.0.0/16|Internet|
 |mi-134-177-16-nexthop-internet|134.177.0.0/16|Internet|
@@ -371,6 +450,7 @@ Azure 使用一个管理终结点来管理托管实例。 此终结点位于该�
 |mi-157-54-15-nexthop-internet|157.54.0.0/15|Internet|
 |mi-157-56-14-nexthop-internet|157.56.0.0/14|Internet|
 |mi-157-60-16-nexthop-internet|157.60.0.0/16|Internet|
+|mi-167-105-16-nexthop-internet|167.105.0.0/16|Internet|
 |mi-167-220-16-nexthop-internet|167.220.0.0/16|Internet|
 |mi-168-61-16-nexthop-internet|168.61.0.0/16|Internet|
 |mi-168-62-15-nexthop-internet|168.62.0.0/15|Internet|
@@ -379,8 +459,6 @@ Azure 使用一个管理终结点来管理托管实例。 此终结点位于该�
 |mi-192-48-225-24-nexthop-internet|192.48.225.0/24|Internet|
 |mi-192-84-159-24-nexthop-internet|192.84.159.0/24|Internet|
 |mi-192-84-160-23-nexthop-internet|192.84.160.0/23|Internet|
-|mi-192-100-102-24-nexthop-internet|192.100.102.0/24|Internet|
-|mi-192-100-103-24-nexthop-internet|192.100.103.0/24|Internet|
 |mi-192-197-157-24-nexthop-internet|192.197.157.0/24|Internet|
 |mi-193-149-64-19-nexthop-internet|193.149.64.0/19|Internet|
 |mi-193-221-113-24-nexthop-internet|193.221.113.0/24|Internet|
@@ -426,6 +504,18 @@ Azure 使用一个管理终结点来管理托管实例。 此终结点位于该�
 |mi-213-199-128-18-nexthop-internet|213.199.128.0/18|Internet|
 |mi-216-32-180-22-nexthop-internet|216.32.180.0/22|Internet|
 |mi-216-220-208-20-nexthop-internet|216.220.208.0/20|Internet|
+|mi-23-96-13-nexthop-internet|23.96.0.0/13|Internet|
+|mi-42-159-16-nexthop-internet|42.159.0.0/16|Internet|
+|mi-51-13-17-nexthop-internet|51.13.0.0/17|Internet|
+|mi-51-107-16-nexthop-internet|51.107.0.0/16|Internet|
+|mi-51-116-16-nexthop-internet|51.116.0.0/16|Internet|
+|mi-51-120-16-nexthop-internet|51.120.0.0/16|Internet|
+|mi-51-120-128-17-nexthop-internet|51.120.128.0/17|Internet|
+|mi-51-124-16-nexthop-internet|51.124.0.0/16|Internet|
+|mi-102-37-18-nexthop-internet|102.37.0.0/18|Internet|
+|mi-102-133-16-nexthop-internet|102.133.0.0/16|Internet|
+|mi-199-30-16-20-nexthop-internet|199.30.16.0/20|Internet|
+|mi-204-79-180-24-nexthop-internet|204.79.180.0/24|Internet|
 ||||
 
 ## <a name="next-steps"></a>后续步骤

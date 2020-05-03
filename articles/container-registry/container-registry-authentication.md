@@ -1,27 +1,36 @@
 ---
-title: 使用 Azure 容器注册表进行身份验证
-description: Azure 容器注册表的身份验证选项，包括使用 Azure Active Directory 标识、使用服务主体以及使用可选的管理凭据进行登录。
-services: container-registry
-author: rockboyfor
-manager: digimobile
-ms.service: container-registry
+title: 注册表身份验证选项
+description: 专用 Azure 容器注册表的身份验证选项，包括使用 Azure Active Directory 标识、使用服务主体以及使用可选的管理凭据进行登录。
 ms.topic: article
-origin.date: 12/21/2018
-ms.date: 09/23/2019
+origin.date: 01/30/2020
+ms.date: 04/06/2020
 ms.author: v-yeche
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fdc06bf942ce88a0970ab4b2eccc5d2ce5a59ed1
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 705c4523c4b954397ee7146a6c37c25c52284cc9
+ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79292235"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82093483"
 ---
-# <a name="authenticate-with-a-private-docker-container-registry"></a>使用私有 Docker 容器注册表进行身份验证
+# <a name="authenticate-with-an-azure-container-registry"></a>使用 Azure 容器注册表进行身份验证
 
 可通过几种方法使用 Azure 容器注册表进行身份验证，并且每种方法适用于一种或多种注册表使用方案。
 
 建议的方法包括通过[个人登录](#individual-login-with-azure-ad)来直接向注册表进行身份验证，或者应用程序和容器业务流程协调程序可以通过使用 Azure Active Directory (Azure AD) [服务主体](#service-principal)执行无人参与或“无外设”身份验证。
+
+## <a name="authentication-options"></a>身份验证选项
+
+下表列出了可用的身份验证方法和推荐方案。 有关详细信息，请参阅链接的内容。
+
+| 方法                               | 如何进行身份验证                                           | 方案                                                            | RBAC                             | 限制                                |
+|---------------------------------------|-------------------------------------------------------|---------------------------------------------------------------------|----------------------------------|--------------------------------------------|
+| [单个 AD 标识](#individual-login-with-azure-ad)                | Azure CLI 中的 `az acr login`                              | 开发人员、测试人员的交互式推送/拉取                                    | 是                              | AD 令牌必须每隔 3 小时续订一次     |
+| [AD 服务主体](#service-principal)                  | `docker login`<br/><br/>Azure CLI 中的 `az acr login`<br/><br/> API 或工具中的注册表登录设置<br/><br/> [Kubernetes 拉取机密](container-registry-auth-kubernetes.md)                                           | 从 CI/CD 管道进行的无人参与推送<br/><br/> 到 Azure 或外部服务的无人参与拉取  | 是                              | 存储过程密码默认有效期为 1 年       |                                                           
+| [与 AKS 集成](../aks/cluster-container-registry-integration.md?toc=/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json)                    | 创建或更新 AKS 群集时附加注册表  | 到 AKS 群集的无人参与拉取                                                  | 否，仅限拉取访问             | 仅适用于 AKS 群集            |
+| [Azure 资源的托管标识](container-registry-authentication-managed-identity.md)  | `docker login`<br/><br/>Azure CLI 中的  `az acr login`                                        | 从 Azure CI/CD 管道进行的无人参与推送<br/><br/> 到 Azure 服务的无人参与拉取<br/><br/>   | 是                              | 仅从[支持 Azure 资源托管标识](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-managed-identities-for-azure-resources)的 Azure 服务使用              |
+| [管理员用户](#admin-account)                            | `docker login`                                          | 各个开发人员或测试人员的交互式推送/拉取                           | 否，始终仅限拉取和推送访问  | 每个注册表一个帐户，不建议用于多个用户         |
+
+<!--Pending on | [Repository-scoped access token](container-registry-repository-scoped-permissions.md)               | `docker login`<br/><br/>`az acr login` in Azure CLI   | Interactive push/pull to repository by individual developer or tester<br/><br/> Unattended push/pull to repository by individual system or external device                  | Yes                              | Not currently integrated with AD identity  |-->
 
 ## <a name="individual-login-with-azure-ad"></a>使用 Azure AD 进行单次登录
 
@@ -31,11 +40,14 @@ ms.locfileid: "79292235"
 az acr login --name <acrName>
 ```
 
-使用 `az acr login` 进行登录时，CLI 将使用执行 [az login](https://docs.azure.cn/cli/reference-index?view=azure-cli-latest#az-login) 时创建的令牌和注册表对会话进行无缝身份验证。 以这种方式登录后，系统会缓存凭据，并且会话中的后续 `docker` 命令将不再需要用户名或密码。 
+使用 `az acr login` 进行登录时，CLI 将使用执行 [az login](https://docs.azure.cn/cli/reference-index?view=azure-cli-latest#az-login) 时创建的令牌和注册表对会话进行无缝身份验证。 若要完成身份验证流，你的环境中必须已安装且正在运行 Docker。 `az acr login` 使用 Docker 客户端在 `docker.config` 文件中设置 Azure Active Directory 令牌。 以这种方式登录后，系统会缓存凭据，并且会话中的后续 `docker` 命令将不再需要用户名或密码。
 
-对于注册表访问，`az acr login` 使用的令牌有效期为 1 小时，因此，建议在运行 `docker` 命令之前始终登录到注册表。 如果令牌过期，可以通过再次使用 `az acr login` 命令重新进行身份验证来刷新令牌。 
+> [!TIP]
+> 当希望将 Docker 映像以外的项目（例如 [OCI 项目](container-registry-oci-artifacts.md)）推送或拉取到注册表时，还可以使用 `az acr login` 来对单个标识进行身份验证。  
 
-配合使用 `az acr login` 和 Azure 标识可提供[基于角色的访问](../role-based-access-control/role-assignments-portal.md)。 在某些情况下，你可能希望使用 Azure AD 中你自己的个人标识登录注册表。 对于跨服务方案，或者若要在不想管理个人访问的情况下满足工作组的需求，还可以使用 [Azure 资源的托管标识](container-registry-authentication-managed-identity.md)进行登录。
+对于注册表访问，`az acr login` 使用的令牌有效期为 3 小时  ，因此，建议在运行 `docker` 命令之前始终登录到注册表。 如果令牌过期，可以通过再次使用 `az acr login` 命令重新进行身份验证来刷新令牌。 
+
+配合使用 `az acr login` 和 Azure 标识可提供[基于角色的访问](../role-based-access-control/role-assignments-portal.md)。 在某些情况下，你可能希望使用 Azure AD 中你自己的个人标识登录注册表。 对于跨服务方案，或者若要在不想管理个人访问的情况下满足工作组或部署工作流的需求，还可以使用 [Azure 资源的托管标识](container-registry-authentication-managed-identity.md)进行登录。
 
 ## <a name="service-principal"></a>服务主体
 
@@ -51,7 +63,7 @@ az acr login --name <acrName>
 
 有关完整的角色列表，请参阅 [Azure 容器注册表角色和权限](container-registry-roles.md)。
 
-有关创建服务主体以使用 Azure 容器注册表进行身份验证的 CLI 脚本，以及有关使用服务主体的指导，请参阅[使用服务主体进行 Azure 容器注册表身份验证](container-registry-auth-service-principal.md)。
+有关创建服务主体以使用 Azure 容器注册表进行身份验证的 CLI 脚本，以及更多指导，请参阅[使用服务主体进行 Azure 容器注册表身份验证](container-registry-auth-service-principal.md)。
 
 ## <a name="admin-account"></a>管理员帐户
 
@@ -87,4 +99,4 @@ az acr update -n <acrName> --admin-enabled true
 
 [auth-portal-01]: ./media/container-registry-authentication/auth-portal-01.png
 
-<!-- Update_Description: update meta properties, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

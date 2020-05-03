@@ -1,43 +1,50 @@
 ---
-title: 自助式密码重置部署 - Azure Active Directory
-description: 有关成功实现 Azure AD 自助式密码重置的策略
+title: Azure Active Directory 自助式密码重置的部署注意事项
+description: 了解成功实现 Azure AD 自助式密码重置的部署注意事项和策略
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 02/26/2020
+ms.date: 04/24/2020
 ms.author: v-junlch
 author: barbaraselden
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd9b170597ca7fc699d93f5d22e3b6b25ca056ab
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.openlocfilehash: 967c498b46375cda141feb07e9e212f477d518a4
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77653400"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126346"
 ---
-# <a name="plan-an-azure-active-directory-self-service-password-reset"></a>规划 Azure Active Directory 自助式密码重置
+# <a name="plan-an-azure-active-directory-self-service-password-reset-deployment"></a>规划 Azure Active Directory 自助式密码重置部署
 
-> [!NOTE]
-> 本部署计划提供有关部署 Azure AD 自助式密码重置 (SSPR) 的规划指导和最佳做法。 <br>**如果你正在寻求某个可以恢复帐户的 SSPR 工具，请访问 [https://passwordreset.activedirectory.windowsazure.cn](https://passwordreset.activedirectory.windowsazure.cn)** 。
+> [!IMPORTANT]
+> 本部署计划提供有关部署 Azure AD 自助式密码重置 (SSPR) 的指导和最佳做法。
+>
+> **如果你是最终用户并且需要返回到你的帐户，请转到 [https://passwordreset.activedirectory.windowsazure.cn](https://passwordreset.activedirectory.windowsazure.cn)** 。
 
-自助式密码重置 (SSPR) 是一项 Azure Active Directory (AD) 功能，可让用户自行重置其密码，而无需求助于 IT 工作人员。 无论何时何地，用户都可以快速解锁帐户并继续工作。 由于员工可以自行解锁，组织可以降低大多数常见密码相关问题造成的非产出时间和较高的支持成本。 
+自助式密码重置 (SSPR) 是一项 Azure Active Directory (AD) 功能，可让用户自行重置其密码，无需求助于 IT 工作人员。 无论何时何地，用户都可以快速解锁帐户并继续工作。 由于员工可以自行解锁，组织可以降低大多数常见密码相关问题造成的非产出时间和较高的支持成本。
 
 SSPR 提供以下重要功能：
 
 * 自助式服务可让最终用户重置其过期或未过期的密码，而无需请求管理员或帮助台提供支持。
-
 * [密码写回](/active-directory/authentication/concept-sspr-writeback)可以通过云管理本地密码以及解决帐户锁定问题。
-
 * 密码管理活动报告使管理员可以深入了解发生在其组织中的密码重置和注册活动。
+
+本部署指南展示了如何规划并测试 SSPR 推出策略。
+
+若要在实际操作中快速了解 SSPR，然后再返回来了解其他部署注意事项，请执行以下操作：
+
+> [!div class="nextstepaction"]
+> [启用自助式密码重置 (SSPR)](tutorial-enable-sspr.md)
 
 ## <a name="learn-about-sspr"></a>了解 SSPR
 
 详细了解 SSPR。 参阅[工作原理：Azure AD 自助式密码重置](/active-directory/authentication/concept-sspr-howitworks)。
 
-### <a name="key-benefits"></a>重要优势
+### <a name="key-benefits"></a>主要优点
 
 启用 SSPR 的重要优势包括：
 
@@ -104,7 +111,7 @@ Azure Active Directory 按用户许可，这意味着，每个用户需要为其
 
 Microsoft 建议组织为 SSPR 和多重身份验证启用组合注册体验。 启用此组合注册体验后，用户只需选择其注册信息一次即可启用这两项功能。
 
-组合注册体验不需要组织同时启用 SSPR 和 Azure 多重身份验证。 组合注册为组织提供更好的用户体验。 
+组合注册体验不需要组织同时启用 SSPR 和 Azure 多重身份验证。 组合注册为组织提供更好的用户体验。
 
 ## <a name="plan-the-deployment-project"></a>规划部署项目
 
@@ -130,7 +137,7 @@ Microsoft 建议组织为 SSPR 和多重身份验证启用组合注册体验。 
 
 ### <a name="plan-a-pilot"></a>规划试点
 
-建议在测试环境中使用 SSPR 的初始配置。 从一个试点组开始，为组织中的一部分用户启用 SSPR。 
+建议使用测试环境中的 SSPR 初始配置。 从一个试点组开始，为组织中的一部分用户启用 SSPR。 
 
 若要创建组，请参阅如何[在 Azure Active Directory 中创建组并添加成员](/active-directory/active-directory-groups-create-azure-portal)。 
 
@@ -183,7 +190,7 @@ Microsoft 建议组织为 SSPR 和多重身份验证启用组合注册体验。 
 
 ### <a name="customization-settings"></a>自定义设置
 
-自定义支持电子邮件或 URL，以确保遇到问题的用户能够立即获得帮助，这一点至关重要。 请将此选项设置为用户熟悉的常见服务台电子邮件地址或网页。 
+自定义支持电子邮件或 URL，确保遇到问题的用户能够立即获得帮助，这一点至关重要。 请将此选项设置为用户熟悉的常见服务台电子邮件地址或网页。 
 
 有关详细信息，请参阅[自定义自助式密码重置的 Azure AD 功能](/active-directory/authentication/concept-sspr-customization)。
 
@@ -241,17 +248,17 @@ Microsoft 建议组织为 SSPR 和多重身份验证启用组合注册体验。 
 
 尽管 SSPR 通常不会产生用户问题，但支持人员必须准备好应对可能出现的问题。 尽管管理员可以通过 Azure AD 门户重置最终用户的密码，但最好是帮助最终用户通过自助支持过程来解决问题。
 
-为使支持团队取得成功，可以基于用户发来的问题创建 FAQ。 以下是一些示例：
+为使支持团队取得成功，可以根据用户发来的问题撰写常见问题解答。 以下是一些示例：
 
 | 方案| 说明 |
 | - | - |
-| 用户无法使用任何已注册的身份验证方法| 用户正在尝试重置其密码，但无法使用他们已注册的任何身份验证方法（例如：他们的手机遗忘在家中，并且无法访问电子邮件） |
+| 用户无法使用任何已注册的身份验证方法| 用户正在尝试重置其密码，但无法使用已注册的任何身份验证方法（例如：其手机遗忘在家中，并且无法访问电子邮件） |
 | 用户的办公电话或手机上未收到短信或呼叫| 用户正在尝试通过短信或呼叫来验证其身份，但未收到短信/呼叫。 |
 | 用户无法访问密码重置门户| 用户想要重置其密码，但未启用密码重置，因此无法访问该页来更新密码。 |
 | 用户无法设置新密码| 用户在密码重置流期间完成了验证，但无法设置新密码。 |
 | 用户在 Windows 10 设备上未看到“重置密码”链接| 用户正在尝试从 Windows 10 锁屏界面重置密码，但该设备未加入 Azure AD，或者未启用 Intune 设备策略 |
 
-### <a name="plan-roll-back"></a>规划回滚
+### <a name="plan-rollback"></a>规划回滚
 
 若要回滚部署：
 
@@ -304,7 +311,7 @@ Azure AD 可以通过审核和报告提供有关 SSPR 性能的附加信息。
 > [!NOTE]
 >  必须是[全局管理员](/active-directory/users-groups-roles/directory-assign-admin-roles)，并且必须选择为组织收集这些数据。 若要做出此选择，必须在 Azure 门户上至少访问“报告”选项卡或审核日志一次。 在此之前，不会为组织收集数据。
 
-注册和密码重置的审核日志可供使用 30 天。 如果企业中的安全审核需要更长的保留期，则需要导出日志，并在 Azure Sentinel、Splunk 或 ArcSight 等 SIEM 工具中使用它。
+注册和密码重置的审核日志可供使用 30 天。 如果企业中的安全审核需要更长的保留期，则需导出日志，并在 Azure Sentinel、Splunk 或 ArcSight 等 SIEM 工具中使用它。
 
 ![SSPR 报告屏幕截图](./media/howto-sspr-deployment/sspr-reporting.png)
 
@@ -320,7 +327,6 @@ Azure AD 可以通过审核和报告提供有关 SSPR 性能的附加信息。
 
 ### <a name="helpful-documentation"></a>有用的文档
 
-* 有哪些身份验证方法？
 
 * [工作原理：Azure AD 自助式密码重置](/active-directory/authentication/concept-sspr-howitworks)
 
@@ -332,7 +338,7 @@ Azure AD 可以通过审核和报告提供有关 SSPR 性能的附加信息。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要开始部署 SSPR，请参阅[完成 Azure AD 自助式密码重置试点推行](/active-directory/authentication/tutorial-sspr-pilot)
+* 若要开始部署 SSPR，请参阅[启用 Azure AD 自助式密码重置](tutorial-enable-sspr.md)
 
 <!-- Update_Description: wording update -->
 

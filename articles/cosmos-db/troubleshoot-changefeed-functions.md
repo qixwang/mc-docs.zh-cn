@@ -3,17 +3,17 @@ title: 排查使用适用于 Cosmos DB 的 Azure Functions 触发器时出现的
 description: 使用适用于 Cosmos DB 的 Azure Functions 触发器时出现的常见问题及其解决方法和诊断步骤
 author: rockboyfor
 ms.service: cosmos-db
-origin.date: 07/17/2019
-ms.date: 02/10/2020
+origin.date: 03/13/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: ce12708b79f992b74515b4756632461381765c4f
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 611a11a008f65b691d68c010ccc1151b98ad3a9a
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77067899"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134881"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-functions-trigger-for-cosmos-db"></a>诊断和排查使用适用于 Cosmos DB 的 Azure Functions 触发器时出现的问题
 
@@ -53,6 +53,10 @@ Azure 函数失败并出现错误消息“源集合 'collection-name' (在数据
 
 旧版 Azure Cosmos DB 扩展不支持使用在[共享吞吐量数据库](./set-throughput.md#set-throughput-on-a-database)中创建的租约容器。 若要解决此问题，请更新 [Microsoft.Azure.WebJobs.Extensions.CosmosDB](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.CosmosDB) 扩展以获取最新版本。
 
+### <a name="azure-function-fails-to-start-with-partitionkey-must-be-supplied-for-this-operation"></a>Azure 函数无法启动且出现“必须为此操作提供 PartitionKey”消息。
+
+此错误表明你当前正在使用具有旧的[扩展依赖关系](#dependencies)的分区租用集合。 请升级到最新的可用版本。 如果当前正在 Azure Functions V1 上运行，则需要升级到 Azure Functions V2。
+
 ### <a name="azure-function-fails-to-start-with-the-lease-collection-if-partitioned-must-have-partition-key-equal-to-id"></a>Azure 函数无法启动并出现错误“租约集合(如果已分区)必须有与 ID 相同的分区键”。
 
 此错误表示当前租约容器已分区，但分区键路径不是 `/id`。 若要解决此问题，需要使用 `/id` 作为分区键来重新创建租约容器。
@@ -65,11 +69,18 @@ Azure 函数失败并出现错误消息“源集合 'collection-name' (在数据
 
 这种情形可能是多种原因造成的，应检查所有这些原因：
 
-1. Azure 函数是否部署在 Azure Cosmos 帐户所在的同一区域？ 为获得最佳的网络延迟，Azure 函数和 Azure Cosmos 帐户应共置在同一个 Azure 区域。
-2. Azure Cosmos 容器中发生的更改是连续性的还是偶发性的？
-如果是后者，则原因可能是存储更改的时间与 Azure 函数拾取更改的时间有一段延迟。 这是因为，在内部，当触发器检查 Azure Cosmos 容器中的更改但未找到等待读取的更改时，它会休眠配置的一段时间（默认为 5 秒），然后检查新的更改（以避免 RU 消耗量过高）。 可以通过触发器`FeedPollDelay/feedPollDelay`配置[中的 ](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration) 设置来配置此休眠时间（该值预期以毫秒为单位）。
+1. Azure 函数是否部署在 Azure Cosmos 帐户所在的同一区域？ 为了获得最佳的网络延迟，应将 Azure 函数和 Azure Cosmos 帐户并置在同一个 Azure 区域。
+2. Azure Cosmos 容器中发生的更改是持续性的还是偶发性的？
+如果是后者，原因可能是存储更改与 Azure 函数拾取更改的时间有所延迟。 这是因为，在内部，当触发器检查 Azure Cosmos 容器中的更改但未找到任何等待读取的更改时，它将休眠一定的时间（可配置，默认为 5 秒），然后检查新的更改（以避免 RU 消耗量偏高）。 可以通过触发器的[配置](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration)中的 `FeedPollDelay/feedPollDelay` 设置来配置此休眠时间（该值预期以毫秒为单位）。
 3. Azure Cosmos 容器可能受到[速率限制](./request-units.md)。
 4. 可以使用触发器中的 `PreferredLocations` 属性来指定 Azure 区域的逗号分隔列表，以定义自定义的首选连接顺序。
+
+### <a name="some-changes-are-repeated-in-my-trigger"></a>某些更改在我的触发器中重复
+
+“更改”这一概念指的是对文档的操作。 收到同一文档的事件的最常见情况有：
+* 帐户使用的是“最终”一致性。 在“最终”一致性级别使用更改源时，后续更改源读取操作之间可能存在重复事件（一个读取操作的最后一个事件显示为下一个操作的第一个事件）。
+* 文档正在更新。 更改源可能包含对相同文档的多个操作。如果该文档正在接收更新，则它可能会收到多个事件（每个更新一个事件）。 若要区分对同一文档的不同操作，一个简单方法是跟踪`_lsn`每个更改的 [ 属性](change-feed.md#change-feed-and-_etag-_lsn-or-_ts)。 如果它们不匹配，则这些更改是对同一文档的不同更改。
+* 如果只通过 `id` 来标识文档，请记住，文档的唯一标识符是 `id` 加上其分区键（可以有两个 `id` 相同但分区键不同的文档）。
 
 ### <a name="some-changes-are-missing-in-my-trigger"></a>触发器中缺少某些更改
 
@@ -84,20 +95,20 @@ Azure 函数失败并出现错误消息“源集合 'collection-name' (在数据
 > [!NOTE]
 > 默认情况下，如果在代码执行期间发生未经处理的异常，则适用于 Cosmos DB 的 Azure Functions 触发器不会重试一批更改。 这意味着，更改未抵达目标的原因是无法处理它们。
 
-如果你发现触发器根本未收到某些更改，则最常见的情形是有**另一个 Azure 函数正在运行**。 该函数可能是部署在 Azure 中的另一个 Azure 函数，或者是在开发人员计算机本地运行的、采用**完全相同配置**（相同的受监视容器和租约容器）的 Azure 函数，并且此 Azure 函数正在窃取你的 Azure 函数预期要处理的更改子集。
+如果你发现触发器根本未收到某些更改，则最常见的情形是有另一个 Azure 函数正在运行  。 该函数可能是部署在 Azure 中的另一个 Azure 函数，或者是在开发人员计算机本地运行的、采用**完全相同配置**（相同的受监视容器和租约容器）的 Azure 函数，并且此 Azure 函数正在窃取你的 Azure 函数预期要处理的更改子集。
 
-此外，如果你知道正在运行多少个 Azure 函数应用实例，则也可以验证这种情况。 如果检查租约容器并统计其中包含的租约项数，这些项中的非重复 `Owner` 属性值应等于函数应用的实例数。 如果所有者数目超过已知 Azure 函数应用实例的数目，则表示这些额外的所有者正在“窃取”更改。
+此外，如果你知道正在运行多少个 Azure 函数应用实例，则也可以验证这种情况。 如果检查租约容器并统计其中包含的租约项数，这些项中的非重复 `Owner` 属性值应等于函数应用的实例数。 如果所有者数目超过已知的 Azure 函数应用实例数，则表示这些多出的所有者正在“窃取”更改。
 
-解决此问题的简单方法之一是将采用新值/不同值的 `LeaseCollectionPrefix/leaseCollectionPrefix` 应用到你的函数，或使用新的租约容器进行测试。
+若要解决此问题，一个简单的方法是将采用新值/不同值的 `LeaseCollectionPrefix/leaseCollectionPrefix` 应用到你的函数，或使用新的租约容器进行测试。
 
-### <a name="need-to-restart-and-re-process-all-the-items-in-my-container-from-the-beginning"></a>需要重启并从头开始重新处理容器中的所有项 
-若要从头开始重新处理容器中的所有项：
+### <a name="need-to-restart-and-reprocess-all-the-items-in-my-container-from-the-beginning"></a>需要重启并从头开始重新处理容器中的所有项 
+若要从头开始重新处理容器中的所有项，请执行以下操作：
 1. 如果 Azure 函数当前正在运行，请将其停止。 
 1. 删除租约集合中的文档（或删除租约集合并重新创建一个空集合）
-1. 将函数中的 [StartFromBeginning](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration) CosmosDBTrigger 属性设置为 true。 
+1. 将函数中的 [StartFromBeginning](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration) CosmosDBTrigger 属性设置为 true。 
 1. 重启 Azure 函数。 现在，它会从头开始读取并处理所有更改。 
 
-如果将 [StartFromBeginning](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration) 设置为 true，则会告知 Azure 函数要从头开始读取集合历史记录的更改，而不是从当前时间开始读取。 这仅适用于尚未创建租约（即租约集合中的文档）的情况。 如果已创建租约，将此属性设置为 true 将不起作用；在这种情况下，当某个函数停止并重启时，它将从租约集合中定义的最后一个检查点开始读取。 若要从头开始重新处理，请遵循上述步骤 1-4。 
+如果将 [StartFromBeginning](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration) 设置为 true，则会告知 Azure 函数要从头开始读取集合历史记录的更改，而不是从当前时间开始读取。 这仅适用于尚未创建租约（即租约集合中的文档）的情况。 如果已创建租约，将此属性设置为 true 将不起作用；在这种情况下，当某个函数停止并重启时，它将从租约集合中定义的最后一个检查点开始读取。 若要从头开始重新处理，请完成上面的步骤 1-4。 
 
 ### <a name="binding-can-only-be-done-with-ireadonlylistdocument-or-jarray"></a>只能通过 IReadOnlyList\<Document> 或 JArray 进行绑定
 
@@ -107,7 +118,7 @@ Azure 函数失败并出现错误消息“源集合 'collection-name' (在数据
 
 ### <a name="changing-azure-functions-polling-interval-for-the-detecting-changes"></a>更改 Azure 函数在检测更改时的轮询间隔
 
-如此前针对[接收更改花费了太长的时间](./troubleshoot-changefeed-functions.md#my-changes-take-too-long-to-be-received)解释的那样，Azure 函数会休眠一定的时间（可配置，默认为 5 秒），然后检查新的更改（以避免 RU 消耗量偏高）。 可以通过触发器`FeedPollDelay/feedPollDelay`配置[中的 ](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration) 设置来配置此休眠时间（该值预期以毫秒为单位）。
+如此前针对[接收更改花费了太长的时间](./troubleshoot-changefeed-functions.md#my-changes-take-too-long-to-be-received)解释的那样，Azure 函数会休眠一定的时间（可配置，默认为 5 秒），然后检查新的更改（以避免 RU 消耗量偏高）。 可以通过触发器的[配置](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration)中的 `FeedPollDelay/feedPollDelay` 设置来配置此休眠时间（该值预期以毫秒为单位）。
 
 ## <a name="next-steps"></a>后续步骤
 
