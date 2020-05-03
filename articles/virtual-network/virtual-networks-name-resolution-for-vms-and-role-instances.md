@@ -10,32 +10,35 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-origin.date: 03/25/2019
-ms.date: 02/24/2020
+origin.date: 03/02/2020
+ms.date: 04/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 0492da7ae2630b7dbd940d9b9c0f2112b4cf7736
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 086c52967de76a8b9422190c9077748b20cef066
+ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79290980"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82093468"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Azure 虚拟网络中资源的名称解析
 
 可能需要允许虚拟机 (VM) 以及部署在虚拟网络中的其他资源相互通信，具体取决于如何使用 Azure 托管 IaaS、PaaS 和混合解决方案。 尽管可以通过使用 IP 地址实现通信，但使用容易记住且不会更改的名称要简单得多。 
 
-当部署在虚拟网络中的资源需要将域名解析到内部 IP 地址时，它们可以使用两种方法之一：
+当部署在虚拟网络中的资源需要将域名解析到内部 IP 地址时，它们可以使用三种方法之一：
 
+* [Azure DNS 专用区域](../dns/private-dns-overview.md)
 * [Azure 提供的名称解析](#azure-provided-name-resolution)
 * [使用自己的 DNS 服务器的名称解析](#name-resolution-that-uses-your-own-dns-server)（可能会将查询转发到 Azure 提供的 DNS 服务器）
 
 使用的名称解析类型取决于资源需要以怎样的方式进行相互通信。 下表说明了方案和相应的名称解析解决方案：
 
 > [!NOTE]
-> 根据方案，你可能想要使用 Azure DNS 专用区域。 有关详细信息，请参阅[在专用域中使用 Azure DNS](../dns/private-dns-overview.md)。
->
+> Azure DNS 专用区域是首选的解决方案，可让你灵活管理 DNS 区域和记录。 有关详细信息，请参阅[在专用域中使用 Azure DNS](../dns/private-dns-overview.md)。
 
-| **方案** | **解决方案** | **后缀** |
+> [!NOTE]
+> 如果使用 Azure 提供的 DNS，则相应的 DNS 后缀会自动应用到虚拟机。 对于所有其他选项，必须使用完全限定的域名 (FQDN)，或手动将相应的 DNS 后缀应用到虚拟机。
+
+| **方案** | **解决方案** | **DNS 后缀** |
 | --- | --- | --- |
 | 位于相同虚拟网络的 VM 或位于相同云服务的 Azure 云服务角色实例之间的名称解析。 | [Azure DNS 专用区域](../dns/private-dns-overview.md)或 [Azure 提供的名称解析](#azure-provided-name-resolution) |主机名或 FQDN |
 | 位于不同虚拟网络的 VM 或位于不同云服务的角色实例之间的名称解析。 |[Azure DNS 专用区域](../dns/private-dns-overview.md)或客户管理的 DNS 服务器（在虚拟网络之间转发查询，以通过 Azure（DNS 代理）进行解析）。 请参阅[使用自己的 DNS 服务器进行名称解析](#name-resolution-that-uses-your-own-dns-server)。 |仅 FQDN |
@@ -44,17 +47,18 @@ ms.locfileid: "79290980"
 | 从应用服务 Web 应用到不同虚拟网络中 VM 之间的名称解析。 |客户托管的 DNS 服务器，该服务器在虚拟网络之间转发查询，并由 Azure 进行解析（DNS 代理）。 请参阅[使用自己的 DNS 服务器进行名称解析](#name-resolution-that-uses-your-own-dns-server)。 |仅 FQDN |
 | 解析来自 Azure 中 VM 或角色实例的本地计算机和服务名称。 |客户托管的 DNS 服务器（例如本地域控制器、本地只读域控制器或使用区域传送同步的 DNS 辅助服务器）。 请参阅[使用自己的 DNS 服务器进行名称解析](#name-resolution-that-uses-your-own-dns-server)。 |仅 FQDN |
 | 解析本地计算机中的 Azure 主机名。 |将查询转发到相应虚拟网络中客户托管的 DNS 代理服务器，该代理服务器将查询转发到 Azure 进行解析。 请参阅[使用自己的 DNS 服务器进行名称解析](#name-resolution-that-uses-your-own-dns-server)。 |仅 FQDN |
-| 针对内部 IP 的反向 DNS。 |[使用自己的 DNS 服务器的名称解析](#name-resolution-that-uses-your-own-dns-server)。 |不适用 |
+| 针对内部 IP 的反向 DNS。 |[Azure DNS 专用区域](../dns/private-dns-overview.md)、[Azure 提供的名称解析](#azure-provided-name-resolution)或[使用你自己的 DNS 服务器的名称解析](#name-resolution-that-uses-your-own-dns-server)。 |不适用 |
 | 位于不同云服务（而非虚拟网络）中的 VM 或角色实例之间的名称解析。 |不适用。 不同云服务中的 VM 和角色实例之间的连接在虚拟网络外部不受支持。 |不适用|
 
 <a name="azure-provided-name-resolution"></a>
 ## <a name="azure-provided-name-resolution"></a>Azure 提供的名称解析
 
-除公共 DNS 名称解析之外，Azure 还为驻留在相同虚拟网络或云服务中的 VM 和角色实例提供内部名称解析。 云服务中的 VM 和实例共享相同的 DNS 后缀，因此仅使用主机名便可。 但在使用经典部署模型部署的虚拟网络中，不同云服务具有不同的 DNS 后缀。 在这种情况下，需要使用 FQDN 解析不同云服务的名称。 在使用 Azure 资源管理器部署模型部署的虚拟网络内，整个虚拟网络中的 DNS 后缀一致，因此无需 FQDN。 DNS 名称可分配给 VM 和网络接口。 虽然 Azure 提供的名称解析不需要任何配置，但并不适合所有部署方案，参见上表详细说明。
+Azure 提供的名称解析仅提供基本的权威 DNS 功能。 如果使用此选项，则 Azure 会自动管理 DNS 区域名称和记录，你无法控制 DNS 区域名称或 DNS 记录的生命周期。 如果需要对虚拟网络使用全功能 DNS 解决方案，必须使用 [Azure DNS 专用区域](../dns/private-dns-overview.md)或[客户托管 DNS 服务器](#name-resolution-that-uses-your-own-dns-server)。
+
+除公共 DNS 名称解析之外，Azure 还为驻留在相同虚拟网络或云服务中的 VM 和角色实例提供内部名称解析。 云服务中的 VM 和实例共享相同的 DNS 后缀，因此仅使用主机名便可。 但在使用经典部署模型部署的虚拟网络中，不同云服务具有不同的 DNS 后缀。 在这种情况下，需要使用 FQDN 解析不同云服务的名称。 在使用 Azure 资源管理器部署模型部署的虚拟网络中，某个虚拟网络中的所有虚拟机的 DNS 后缀是一致的，因此无需 FQDN。 DNS 名称可分配给 VM 和网络接口。 虽然 Azure 提供的名称解析不需要任何配置，但并不适合所有部署方案，参见上表详细说明。
 
 > [!NOTE]
 > 在使用云服务 Web 和辅助角色的情况下，还可以使用 Azure 服务管理 REST API 访问角色实例的内部 IP 地址。 有关详细信息，请参阅[服务管理 REST API 参考](https://msdn.microsoft.com/library/azure/ee460799.aspx)。 地址基于角色名称和实例编号。 
->
 >
 
 ### <a name="features"></a>功能
@@ -71,6 +75,7 @@ Azure 提供的名称解析包括以下功能：
 
 使用 Azure 提供的名称解析时要注意的问题：
 * 不能修改 Azure 创建的 DNS 后缀。
+* DNS 查找范围限定为虚拟网络。 无法从其他虚拟网络解析针对一个虚拟网络创建的 DNS 名称。
 * 不能手动注册自己的记录。
 * 不支持 WINS 和 NetBIOS。 在 Windows 资源管理器中看不到 VM。
 * 主机名必须符合 DNS。 名称只能使用 0-9、a-z 和“-”，并且不能以“-”开头或结尾。
@@ -78,7 +83,17 @@ Azure 提供的名称解析包括以下功能：
 * 在经典部署模型中，每个虚拟网络仅注册前 180 个云服务中的 VM。 此限制不适用于 Azure 资源管理器中的虚拟网络。
 * Azure DNS IP 地址为 168.63.129.16。 这是静态 IP 地址，不会更改。
 
-<a name="azure-provided-name-resolution"></a>
+### <a name="reverse-dns-considerations"></a>反向 DNS 注意事项
+所有基于 ARM 的虚拟网络都支持反向 DNS。 可以发出反向 DNS 查询（PTR 查询），以将虚拟机的 IP 地址映射到虚拟机的 FQDN。
+* 针对虚拟机 IP 地址的所有 PTR 查询会返回 \[vmname\].internal.chinacloudapp.cn 格式的 FQDN
+* 对 \[vmname\].internal.chinacloudapp.cn 格式的 FQDN 执行正向查找会解析为分配给虚拟机的 IP 地址。
+* 如果虚拟网络已作为注册虚拟网络链接到 [Azure DNS 专用区域](../dns/private-dns-overview.md)，则反向 DNS 查询会返回两条记录。 一条记录的格式为 \[vmname\].[priatednszonename]，另一条记录的格式为 \[vmname\].internal.chinacloudapp.cn
+* 反向 DNS 查找的范围限定为给定的虚拟网络，即使该虚拟网络已对等互连到其他虚拟网络。 对位于对等互连虚拟网络中的虚拟机的 IP 地址执行反向 DNS 查询（PTR 查询）会返回 NXDOMAIN。
+
+> [!NOTE]
+> 若要跨虚拟网络执行反向 DNS 查找，可以创建一个反向查找区域 (in-addr.arpa) [Azure DNS 专用区域](../dns/private-dns-overview.md)，并将其链接到多个虚拟网络。 但是，必须手动管理虚拟机的反向 DNS 记录。
+>
+
 ## <a name="dns-client-configuration"></a>DNS 客户端配置
 
 本部分介绍客户端缓存和客户端重试。
@@ -108,8 +123,6 @@ Azure 提供的名称解析包括以下功能：
 
 > [!NOTE]
 > dnsmasq 包只是适用于 Linux 的众多 DNS 缓存中的一个。 在使用之前，请检查其是否适合特定需求，且没有安装其他缓存。
->
->
 
 ### <a name="client-side-retries"></a>客户端重试
 
@@ -173,8 +186,7 @@ DNS 转发还可用于在虚拟网络之间进行 DNS 解析，可以通过本�
 * 禁止从 Internet 进行访问，减少外部代理带来的威胁。
 
 > [!NOTE]
-> 为获得最佳性能，在将 Azure VM 用作 DNS 服务器时，应禁用 IPv6。 [公共 IP 地址](virtual-network-public-ip-address.md) 应分配给每个 DNS 服务器 VM。 如需获取更多性能分析和优化（使用 Windows Server 作为 DNS 服务器时），请参阅[递归 Windows DNS Server 2012 R2 的名称解析性能](https://blogs.technet.com/b/networking/archive/2015/08/19/name-resolution-performance-of-a-recursive-windows-dns-server-2012-r2.aspx)。
-> 
+> 为获得最佳性能，在将 Azure VM 用作 DNS 服务器时，应禁用 IPv6。 [公共 IP 地址](virtual-network-public-ip-address.md) 应分配给每个 DNS 服务器 VM。 
 > 
 
 ### <a name="web-apps"></a>Web 应用
@@ -197,15 +209,11 @@ DNS 转发还可用于在虚拟网络之间进行 DNS 解析，可以通过本�
 
 > [!NOTE]
 > 不应直接在 VM 中编辑网络连接属性，例如 DNS 服务器 IP。 这是因为，在更换虚拟网络适配器后，可能会在服务修复过程中擦除这些属性。 这同时适用于 Windows VM 和 Linux VM。
->
->
 
 使用 Azure 资源管理器部署模型时，可为虚拟网络和网络接口指定 DNS 服务器。 有关详细信息，请参阅[管理虚拟网络](manage-virtual-network.md)和[管理网络接口](virtual-network-network-interface.md)。
 
 > [!NOTE]
 > 如果为虚拟网络选择自定义 DNS 服务器，则必须至少指定一个 DNS 服务器 IP 地址；否则，虚拟网络将忽略配置，而改用由 Azure 提供的 DNS。
->
->
 
 使用经典部署模型时，可以在 Azure 门户或[网络配置文件](https://msdn.microsoft.com/library/azure/jj157100)中指定虚拟网络的 DNS 服务器。 对于云服务器，可以通过[服务配置文件](https://msdn.microsoft.com/library/azure/ee758710)或者在 PowerShell 中使用 [New-AzureVM](https://docs.microsoft.com/powershell/module/servicemanagement/azure/new-azurevm) 指定 DNS 服务器。
 

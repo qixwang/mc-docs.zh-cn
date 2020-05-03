@@ -1,6 +1,6 @@
 ---
-title: 登录名和用户
-description: 了解 Azure SQL 数据库和 Azure Synapse Analytics 如何使用登录名和用户帐户对用户的访问进行身份验证，并使用角色和显式权限来授权登录名与用户在数据库中以及在服务器级别执行操作。
+title: 使用登录名和用户帐户授权服务器和数据库访问
+description: 了解 Azure SQL 数据库和 Azure Synapse Analytics 如何验证使用登录名和用户帐户进行访问的用户的身份。 此外，了解如何使用数据库角色和显式权限来授权登录名和用户执行操作及查询数据。
 keywords: sql 数据库安全,数据库安全管理,登录安全,数据库安全,数据库访问权限
 services: sql-database
 ms.service: sql-database
@@ -11,57 +11,67 @@ ms.topic: conceptual
 author: WenJason
 ms.author: v-jay
 ms.reviewer: carlrab
-origin.date: 03/12/2020
-ms.date: 03/30/2020
-ms.openlocfilehash: 9f8d46cc8a307f66799978973cd94748663225ba
-ms.sourcegitcommit: 90660563b5d65731a64c099b32fb9ec0ce2c51c6
+origin.date: 03/23/2020
+ms.date: 04/27/2020
+ms.openlocfilehash: 76d6de0519a5c99ca99c76bcc905eb5b9e3390b9
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80341816"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82127068"
 ---
-# <a name="granting-database-access-and-authorization-to-sql-database-and-azure-synapse-analytics-using-logins-and-user-accounts"></a>在 SQL 数据库和 Azure Synapse Analytics 中使用登录名和用户帐户授予数据库访问权限及授权
-
-在完成身份验证的情况下访问 Azure SQL 数据库和 Azure Synapse Analytics（前称为 Azure SQL 数据仓库）中的数据库是使用登录名和用户帐户进行管理的。 [身份验证](sql-database-security-overview.md#authentication)是证明用户所声明身份的过程。 
-
-- 登录名是 master 数据库中的个人帐户
-- 用户帐户是任一数据库中的个人帐户，不一定与登录名相关联
-
-> [!IMPORTANT]
-> 为简单起见，在本文的余下内容中，Azure SQL 数据库和 Azure Synapse Analytics（前称为 Azure SQL 数据仓库）中的数据库统称为 Azure SQL 数据库。
-
-数据库用户使用用户帐户连接到 Azure SQL 数据库，并使用以下两种方法之一完成身份验证：
-
-- [SQL 身份验证](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication)：由登录名或用户帐户名以及存储在 Azure SQL 数据库中的关联密码构成。
-- [Azure Active Directory 身份验证](sql-database-aad-authentication.md)：使用存储在 Azure Active Directory 中的登录凭据
-
-对在 Azure SQL 数据库中访问数据和执行各种操作的授权是使用数据库角色和显式权限进行管理的。 [授权](sql-database-security-overview.md#authorization)是指在 Azure SQL 数据库中分配给用户的权限，并决定允许用户执行的操作。  授权由用户帐户的数据库[角色成员资格](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/database-level-roles)和[对象级权限](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine)控制。 作为最佳实践，应向用户授予所需的最低权限。
+# <a name="authorizing-database-access-to-authenticated-users-to-sql-database-and-azure-synapse-analytics-using-logins-and-user-accounts"></a>授权已经过身份验证的用户使用登录名和用户帐户访问 SQL 数据库和 Azure Synapse Analytics 中的数据库
 
 本文介绍：
 
+- 用于配置 Azure SQL 数据库和 Azure Synapse Analytics（前称为 Azure SQL 数据仓库）的选项，目的是使用户能够执行管理任务和访问这些数据库中存储的数据。
 - 最初创建新 Azure SQL 数据库后的访问权限和授权配置
 - 如何在 master 数据库中添加登录名和用户帐户，然后为这些帐户授予管理权限
 - 如何在用户数据库中添加与登录名关联的，或者用作“包含的用户帐户”的用户帐户
 - 使用数据库角色和显式权限配置在用户数据库中拥有权限的用户帐户
 
+> [!IMPORTANT]
+> 为了简单起见，在本文的余下内容中，Azure SQL 数据库和 Azure Synapse Analytics（前称为 Azure SQL 数据仓库）中的数据库统称为数据库或 Azure SQL。
+
+## <a name="authentication-and-authorization"></a>身份验证和授权
+
+[身份验证](sql-database-security-overview.md#authentication)是证明用户所声明身份的过程。  某个用户使用用户帐户连接到数据库。
+当用户尝试连接到数据库时，需要提供用户帐户和身份验证信息。 将使用以下两种身份验证方法之一对用户进行身份验证：
+
+- [SQL 身份验证](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication)。
+
+  使用此身份验证方法时，用户将提交用户帐户名和关联的密码以建立连接。 对于已关联到登录名的用户帐户，此密码存储在 master 数据库中；对于未关联到登录名的用户帐户，此密码存储在包含用户帐户的数据库中。
+- [Azure Active Directory 身份验证](sql-database-aad-authentication.md)
+
+  使用此身份验证方法时，用户将提交用户帐户名，并请求服务使用 Azure Active Directory 中存储的凭据信息。
+
+**登录名和用户**：在 Azure SQL 中，数据库中的用户帐户可以与 master 数据库中存储的登录名相关联，也可以是单个数据库中存储的用户名。
+
+- 登录名是 master 数据库中的单个帐户，一个或多个数据库中的用户帐户可以关联到该帐户  。 使用登录名时，用户帐户的凭据信息将与该登录名一起存储。
+- 用户帐户是任何数据库中的单个帐户，该帐户可以但不一定要关联到登录名  。 使用未关联到登录名的用户帐户时，凭据信息将与该用户帐户一起存储。
+
+访问数据和执行各种操作所需的[授权](sql-database-security-overview.md#authorization)是使用数据库角色和显式权限进行管理的  。 授权是指为用户分配权限，它决定了该用户可以执行哪些操作。 授权由用户帐户的数据库[角色成员资格](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/database-level-roles)和[对象级权限](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine)控制。 作为最佳实践，应向用户授予所需的最低权限。
+
 ## <a name="existing-logins-and-user-accounts-after-creating-a-new-database"></a>创建新数据库后的现有登录名和用户帐户
 
-创建第一个 Azure SQL 数据库部署时，需为该登录名指定管理员登录名和关联的密码。 此管理帐户称为“服务器管理员”。  在部署期间，将在 master 数据库和用户数据库中进行以下登录名和用户配置：
+创建第一个 Azure SQL 部署时，需为该登录名指定管理员登录名和关联的密码。 此管理帐户称为“服务器管理员”。  在部署期间，将在 master 数据库和用户数据库中进行以下登录名和用户配置：
 
 - 使用指定的登录名创建拥有管理特权的 SQL 登录名。 [登录名](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/principals-database-engine#sa-login)是用于登录到 SQL 数据库的个人用户帐户。
 - 此登录名对所有数据库拥有完全管理权限，充当[服务器级主体](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/principals-database-engine)。 此登录名在 SQL 数据库中拥有所有可用权限，且不能受到限制。 在托管实例中，此登录名将添加到 [sysadmin 固定服务器角色](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/server-level-roles)（单一数据库或共用数据库中不存在此角色）。
 - 将在每个用户数据库中为此登录名创建名为 `dbo` 的[用户帐户](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/getting-started-with-database-engine-permissions#database-users)。 [dbo](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/principals-database-engine) 用户在数据库中拥有所有数据库权限，将映射到 `db_owner` 固定数据库角色。 本文稍后将介绍其他固定数据库角色。
 
-若要确定 SQL Server 的管理员帐户，请打开 Azure 门户，然后导航到 SQL Server 或 SQL 数据库的“属性”选项卡。 
+若要确定数据库的管理员帐户，请打开 Azure 门户，然后导航到服务器或托管实例的“属性”选项卡。 
 
-![SQL 服务器管理员](media/sql-database-manage-logins/sql-admins.png)
+![SQL Server 管理员](media/sql-database-manage-logins/sql-admins.png)
+
+![SQL Server 管理员](media/sql-database-manage-logins/sql-admins2.png)
 
 > [!IMPORTANT]
 > 创建管理员登录名后，无法对其进行更改。 若要重置逻辑服务器管理员的密码，请转到 [Azure 门户](https://portal.azure.cn)，单击“SQL Server”，从列表中选择服务器，然后单击“重置密码”。   若要重置托管实例服务器的密码，请转到 Azure 门户，单击该实例，然后单击“重置密码”。  也可以使用 PowerShell 或 Azure CLI。
 
 ## <a name="create-additional-logins-and-users-having-administrative-permissions"></a>创建拥有管理权限的其他登录名和用户
 
-此时，只是配置了使用单个 SQL 登录名和用户帐户来访问 SQL 数据库。 若要创建其他拥有完全管理权限或部分管理权限的登录名，可使用以下选项（取决于部署模式）：
+此时，只是配置了使用单个 SQL 登录名和用户帐户来访问 Azure SQL 实例。 若要创建其他拥有完全管理权限或部分管理权限的登录名，可使用以下选项（取决于部署模式）：
 
 - **创建拥有完全管理权限的 Azure Active Directory 管理员帐户**
 
@@ -112,7 +122,7 @@ ms.locfileid: "80341816"
 有关演示如何创建登录名和用户的示例，请参阅：
 
 - [为单一数据库或共用数据库创建登录名](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-current#examples-1)
-- [为托管实例数据库创建登录名](https://docs.microsoft.com/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current#examples-2)
+- [为托管实例数据库创建登录名](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current#examples-2)
 - [为 Azure Synapse Analytics 数据库创建登录名](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azure-sqldw-latest#examples-3)
 - [创建用户](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql#examples)
 - [创建 Azure AD 包含的用户](sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)
