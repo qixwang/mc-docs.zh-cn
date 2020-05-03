@@ -3,14 +3,14 @@ title: Azure Service Fabric 中心机密存储
 description: 本文介绍如何使用 Azure Service Fabric 中的中心机密存储。
 ms.topic: conceptual
 origin.date: 07/25/2019
-ms.date: 02/24/2020
+ms.date: 04/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: b376d6e1b237da7398830e07565262a2d3259a8c
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.openlocfilehash: 481cef92c4a09462494e42992e669dded60b3d3f
+ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77540492"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82093329"
 ---
 # <a name="central-secrets-store-in-azure-service-fabric"></a>Azure Service Fabric 中的中心机密存储 
 本文介绍如何使用 Azure Service Fabric 中的中心机密存储 (CSS) 在 Service Fabric 应用程序中创建机密。 CSS 是一个本地机密存储缓存，用于保存敏感数据，例如，已在内存中加密的密码、令牌和密钥。
@@ -74,7 +74,8 @@ ms.locfileid: "77540492"
 若要使用 REST API 创建 `supersecret` 机密资源，请向 `https://<clusterfqdn>:19080/Resources/Secrets/supersecret?api-version=6.4-preview` 发出 PUT 请求。 需要提供群集证书或管理客户端证书来创建机密资源。
 
 ```powershell
-Invoke-WebRequest  -Uri https://<clusterfqdn>:19080/Resources/Secrets/supersecret?api-version=6.4-preview -Method PUT -CertificateThumbprint <CertThumbprint>
+$json = '{"properties": {"kind": "inlinedValue", "contentType": "text/plain", "description": "supersecret"}}'
+Invoke-WebRequest  -Uri https://<clusterfqdn>:19080/Resources/Secrets/supersecret?api-version=6.4-preview -Method PUT -CertificateThumbprint <CertThumbprint> -Body $json
 ```
 
 ## <a name="set-the-secret-value"></a>设置机密值
@@ -102,7 +103,7 @@ Invoke-WebRequest  -Uri https://<clusterfqdn>:19080/Resources/Secrets/supersecre
         "properties": {
           "kind": "inlinedValue",
             "description": "Application Secret",
-            "contentType": "text/plain",
+            "contentType": "text/plain"
         }
     },
     {
@@ -123,8 +124,12 @@ Invoke-WebRequest  -Uri https://<clusterfqdn>:19080/Resources/Secrets/supersecre
 
 使用以下 REST API 脚本设置机密值。
 ```powershell
-$Params = @{"properties": {"value": "mysecretpassword"}}
+$Params = '{"properties": {"value": "mysecretpassword"}}'
 Invoke-WebRequest -Uri https://<clusterfqdn>:19080/Resources/Secrets/supersecret/values/ver1?api-version=6.4-preview -Method PUT -Body $Params -CertificateThumbprint <ClusterCertThumbprint>
+```
+### <a name="examine-the-secret-value"></a>检查机密值
+```powershell
+Invoke-WebRequest -CertificateThumbprint <ClusterCertThumbprint> -Method POST -Uri "https:<clusterfqdn>/Resources/Secrets/supersecret/values/ver1/list_value?api-version=6.4-preview"
 ```
 ## <a name="use-the-secret-in-your-application"></a>在应用程序中使用机密
 

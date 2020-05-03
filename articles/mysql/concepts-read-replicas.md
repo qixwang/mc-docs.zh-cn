@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: conceptual
 origin.date: 01/16/2020
 ms.date: 02/10/2020
-ms.openlocfilehash: b6be75c2e94793a49e6db41274a8124971e9957d
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 700d92a2eb37bc347e5efc81682207022506ab57
+ms.sourcegitcommit: 4aeecfcc59cb42ba0b712a729d278d03bffc719a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77068373"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81791034"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Azure Database for MySQL 中的只读副本
 

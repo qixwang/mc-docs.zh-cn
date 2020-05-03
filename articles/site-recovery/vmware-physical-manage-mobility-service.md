@@ -1,21 +1,21 @@
 ---
-title: 在服务器上管理移动代理以使用 Azure Site Recovery 对 VMware VM 和物理服务器进行灾难恢复 | Azure
+title: 使用 Azure Site Recovery 管理 VMware/物理服务器的移动代理
 description: 管理可使用 Azure Site Recovery 将 VMware VM 和物理服务器灾难恢复到 Azure 的移动服务代理。
 author: rockboyfor
 manager: digimobile
 ms.service: site-recovery
 ms.topic: conceptual
 origin.date: 03/25/2019
-ms.date: 09/30/2019
+ms.date: 04/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 746f71e887ddac3870da42003152d2b51bab5b37
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: d72565c6a8e5ae93de95b164104d97f0a93e4938
+ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79292311"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82093241"
 ---
-# <a name="manage-mobility-agent-on-protected-machines"></a>管理受保护计算机上的移动代理
+# <a name="manage-the-mobility-agent"></a>管理移动代理 
 
 使用 Azure Site Recovery 进行从 VMware VM 和物理服务器到 Azure 的灾难恢复时，请在服务器上设置移动代理。 移动代理协调受保护计算机、配置服务器/横向扩展进程服务器之间的通信，并管理数据复制。 本文概述了在部署移动代理后对其进行管理时要执行的常见任务。
 
@@ -37,11 +37,26 @@ ms.locfileid: "79292311"
 
 ## <a name="update-mobility-service-through-powershell-script-on-windows-server"></a>在 Windows 服务器上通过 powershell 脚本更新移动服务
 
+开始在受保护的计算机上更新移动服务之前，请确保部署中的配置服务器、横向扩展进程服务器及所有主目标服务器均已更新。
+
 使用以下脚本通过 power shell cmdlet 更新服务器上的移动服务
 
 ```azurepowershell
 Update-AzRecoveryServicesAsrMobilityService -ReplicationProtectedItem $rpi -Account $fabric.fabricSpecificDetails.RunAsAccounts[0]
 ```
+
+## <a name="update-mobility-service-manually-on-each-protected-server"></a>在每个受保护的服务器上手动更新移动服务
+
+1. 开始在受保护的计算机上更新移动服务之前，请确保部署中的配置服务器、横向扩展进程服务器及所有主目标服务器均已更新。
+
+2. 根据服务器的操作系统[找到代理安装程序](vmware-physical-mobility-service-overview.md#locate-installer-files)。
+
+    > [!IMPORTANT]
+    > 如果要在不同的 Azure 区域之间复制 Azure IaaS VM，请不要使用此方法。 
+    
+    <!--Not Available on [our guidance](azure-to-azure-autoupdate.md)-->
+
+3. 将安装文件复制到受保护的计算机上，并运行该文件以更新移动代理。
 
 ## <a name="update-account-used-for-push-installation-of-mobility-service"></a>更新用于推送安装移动服务的帐户
 
@@ -81,4 +96,4 @@ Update-AzRecoveryServicesAsrMobilityService -ReplicationProtectedItem $rpi -Acco
 - [为 VMware VM 设置灾难恢复](vmware-azure-tutorial.md)
 - [为物理服务器设置灾难恢复](physical-azure-disaster-recovery.md)
 
-<!--Update_Description: wording update  -->
+<!-- Update_Description: update meta properties, wording update, update link -->

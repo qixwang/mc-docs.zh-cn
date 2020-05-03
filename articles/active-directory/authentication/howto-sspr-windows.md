@@ -4,19 +4,19 @@ description: 如何使用 Windows 登录屏幕上的“忘记了密码”启用�
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
-ms.date: 02/26/2020
+ms.topic: how-to
+ms.date: 04/24/2020
 ms.author: v-junlch
 author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f34021b62997e1f6353a2c68d983b5de713662c
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.openlocfilehash: 729e0a67e43aa595ad95d8dab8e82305830110db
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77653398"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126342"
 ---
 # <a name="how-to-enable-password-reset-from-the-windows-login-screen"></a>如何：从 Windows 登录屏幕启用密码重置
 
@@ -43,7 +43,7 @@ ms.locfileid: "77653398"
 - 组合使用下面三个特定的设置可能会导致此功能失效。
     - 交互式登录：不需要 CTRL+ALT+DEL = Disabled
     - DisableLockScreenAppNotifications = 1 或 Enabled
-    - IsContentDeliveryPolicyEnforced = 1 或 True
+    - Windows SKU 不是家庭版或专业版
 
 ## <a name="windows-10-password-reset"></a>Windows 10 密码重置
 
@@ -117,8 +117,8 @@ Azure AD 审核日志将包含有关密码重置发生的 IP 地址和 ClientTyp
 
 `HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\Credential Providers\{86D2F0AC-2171-46CF-9998-4E33B3D7FD4F}`
 
-- 若要启用详细日志记录，请创建 `REG_DWORD: “EnableLogging”` 并将其设置为 1。
-- 若要禁用详细日志记录，请将 `REG_DWORD: “EnableLogging”` 更改为 0。
+- 若要启用详细日志记录，请创建 `REG_DWORD: "EnableLogging"` 并将其设置为 1。
+- 若要禁用详细日志记录，请将 `REG_DWORD: "EnableLogging"` 更改为 0。
 
 ## <a name="what-do-users-see"></a>用户看到什么
 
@@ -134,4 +134,3 @@ Azure AD 审核日志将包含有关密码重置发生的 IP 地址和 ClientTyp
 
 [配置 Windows 10](https://docs.microsoft.com/windows/configuration/)
 
-<!-- Update_Description: wording update -->

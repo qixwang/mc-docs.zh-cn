@@ -10,13 +10,14 @@ ms.subservice: azuread-dev
 ms.custom: aaddev
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 02/24/2020
-ms.openlocfilehash: e53f0a4c493fd9b828b947f543b323fa29a6caf3
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.date: 04/23/2020
+ROBOTS: NOINDEX
+ms.openlocfilehash: f5ff12ef3ab6a860d13e4cbba65c26823ab439da
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77653665"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126336"
 ---
 # <a name="error-handling-best-practices-for-azure-active-directory-authentication-library-adal-clients"></a>Azure Active Directory 身份验证库 (ADAL) 客户端的错误处理最佳做法
 
@@ -542,7 +543,7 @@ adb logcat > "C:\logmsg\logfile.txt";
 
 #### <a name="operating-system-errors"></a>操作系统错误
 
-用户使用 Web 视图和身份验证功能时，登录期间可能会出现 iOS 错误。 这可能是由 SSL 错误、超时或网络错误等情况引起的：
+用户使用 Web 视图和身份验证功能时，登录期间可能会出现 iOS 错误。 这可能是由 TLS 错误、超时或网络错误等情况引起的：
 
 - 对于权利共享，不能永久登录且缓存显示为空。 通过将以下代码行添加到密钥链可解决该问题：`[[ADAuthenticationSettings sharedInstance] setSharedCacheKeychainGroup:nil];`
 - 对于 NsUrlDomain 错误集，需根据应用逻辑更改操作。 有关可处理的特定实例，请参阅 [NSURLErrorDomain 参考文档](https://developer.apple.com/documentation/foundation/nsurlerrordomain#declarations)。

@@ -1,23 +1,22 @@
 ---
-title: 教程：在门户中配置 SSL 终端 - Azure 应用程序网关
-description: 在本教程中，你将了解如何使用 Azure 门户配置应用程序网关并为 SSL 终端添加证书。
+title: 教程：在门户中配置 TLS 终止 - Azure 应用程序网关
+description: 本教程介绍如何使用 Azure 门户配置应用程序网关并添加 TLS 终止证书。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
-origin.date: 11/13/2019
-ms.date: 11/21/2019
+ms.date: 04/26/2020
 ms.author: v-junlch
-ms.openlocfilehash: 17b3445b73049dbe8262ba6ea6092a81d88b4050
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 26885287b97703cf29a4b94a2183184eb7409712
+ms.sourcegitcommit: e3512c5c2bbe61704d5c8cbba74efd56bfe91927
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74327160"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82267658"
 ---
-# <a name="tutorial-configure-an-application-gateway-with-ssl-termination-using-the-azure-portal"></a>教程：通过 Azure 门户使用 SSL 终端配置应用程序网关
+# <a name="tutorial-configure-an-application-gateway-with-tls-termination-using-the-azure-portal"></a>教程：使用 Azure 门户配置带有 TLS 终止的应用程序网关
 
-可通过 Azure 门户使用 SSL 终端的证书配置使用虚拟机作为后端服务器的[应用程序网关](overview.md)。
+可以使用 Azure 门户为使用虚拟机作为后端服务器的[应用程序网关](overview.md)配置 TLS 终止证书。
 
 本教程介绍如何执行下列操作：
 
@@ -226,7 +225,7 @@ Export-PfxCertificate `
       -ExtensionType CustomScriptExtension `
       -TypeHandlerVersion 1.4 `
       -SettingString '{"commandToExecute":"powershell Add-WindowsFeature Web-Server; powershell Add-Content -Path \"C:\\inetpub\\wwwroot\\Default.htm\" -Value $($env:computername)"}' `
-      -Location ChinaNorth
+      -Location ChinaNorth2
     ```
 
 3. 使用以前完成的步骤创建第二个虚拟机并安装 IIS。 使用 *myVM2* 作为虚拟机名称，以及作为 **Set-AzVMExtension** cmdlet 的 **VMName** 设置。
@@ -268,6 +267,5 @@ Export-PfxCertificate `
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [详细了解应用程序网关 SSL 支持](ssl-overview.md)
+> [详细了解应用程序网关 TLS 支持](ssl-overview.md)
 
-<!-- Update_Description: wording update -->

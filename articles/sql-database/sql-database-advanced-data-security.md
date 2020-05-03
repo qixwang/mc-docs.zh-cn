@@ -11,13 +11,13 @@ author: WenJason
 manager: digimobile
 ms.reviewer: vanto
 origin.date: 03/31/2019
-ms.date: 02/17/2020
-ms.openlocfilehash: cf29fd9559e2bcc5fcab24b6250021f79ac8844d
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.date: 04/27/2020
+ms.openlocfilehash: f975f35efc3792558f123b2e882db81af1426698
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79292451"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126635"
 ---
 # <a name="advanced-data-security-for-azure-sql-database"></a>Azure SQL 数据库的高级数据安全
 
@@ -27,7 +27,7 @@ ms.locfileid: "79292451"
 
 高级数据安全性 (ADS) 提供一组高级 SQL 安全功能，包括数据发现和分类、漏洞评估和高级威胁防护。
 
-- [数据发现和分类](sql-database-data-discovery-and-classification.md)提供了内置于 Azure SQL 数据库的功能，用于发现、分类、标记和保护数据库中的敏感数据。 它可用于直观查看数据库分类状态，以及跟踪对数据库内和其边界外的敏感数据的访问。
+- [数据发现和分类](sql-database-data-discovery-and-classification.md)提供了内置于 Azure SQL 数据库的功能，用于发现数据库中的敏感数据并对其进行分类、标记和报告。 它可用于直观查看数据库分类状态，以及跟踪对数据库内和其边界外的敏感数据的访问。
 - [漏洞评估](sql-vulnerability-assessment.md)是一项易于配置的服务，可以发现、跟踪并帮助修正潜在的数据库漏洞。 它可直观查看安全状态，包括解决安全问题的可操作步骤，并可加强数据库的防御工事。
 - [高级威胁防护](sql-database-threat-detection-overview.md)检测异常活动，指出尝试访问或利用数据库的行为异常且可能有害。 它不断监视数据库的可疑活动，并针对潜在漏洞、SQL 注入攻击和异常数据库访问模式提供即时的安全警报。 高级威胁防护警报提供可疑活动的详细信息，并建议如何调查和缓解威胁。
 

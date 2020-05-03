@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/25/2020
+ms.date: 04/23/2020
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 65d08f0b2ce1a2a96c8f2186ebe15a27b0c9b1df
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.openlocfilehash: 925cb37390a99235c8f89b6ef4da168d14d5020c
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77653411"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126539"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-to-acquire-an-access-token"></a>如何在 Azure VM 上使用 Azure 资源的托管标识获取访问令牌 
 
@@ -75,7 +75,7 @@ GET 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-0
 | `GET` | HTTP 谓词，指示想要从终结点检索数据。 在本例中，该数据为 OAuth 访问令牌。 | 
 | `http://169.254.169.254/metadata/identity/oauth2/token` | 实例元数据服务的 Azure 资源的托管标识终结点。 |
 | `api-version`  | 查询字符串参数，指示 IMDS 终结点的 API 版本。 请使用 API `2018-02-01` 或更高版本。 |
-| `resource` | 一个查询字符串参数，表示目标资源的应用 ID URI。 它也会显示在所颁发令牌的 `aud`（受众）声明中。 本示例请求一个用于访问 Azure 资源管理器的、应用 ID URI 为 https://management.chinacloudapi.cn/ 的令牌。 |
+| `resource` | 一个查询字符串参数，表示目标资源的应用 ID URI。 它也会显示在所颁发令牌的 `aud`（受众）声明中。 本示例请求一个用于访问 Azure 资源管理器的、应用 ID URI 为 `https://management.chinacloudapi.cn/` 的令牌。 |
 | `Metadata` | 一个 HTTP 请求标头字段，Azure 资源的托管标识需要使用该元素来缓解服务器端请求伪造 (SSRF) 攻击。 必须将此值设置为“true”（全小写）。 |
 | `object_id` | （可选）一个查询字符串参数，指示要将此令牌用于的托管标识的 object_id。 如果 VM 有用户分配的多个托管标识，则为必需的。|
 | `client_id` | （可选）一个查询字符串参数，指示要将此令牌用于的托管标识的 client_id。 如果 VM 有用户分配的多个托管标识，则为必需的。|
@@ -92,7 +92,7 @@ Metadata: true
 | ------- | ----------- |
 | `GET` | HTTP 谓词，指示想要从终结点检索数据。 在本例中，该数据为 OAuth 访问令牌。 | 
 | `http://localhost:50342/oauth2/token` | Azure 资源的托管标识终结点，其中 50342 是可配置的默认端口。 |
-| `resource` | 一个查询字符串参数，表示目标资源的应用 ID URI。 它也会显示在所颁发令牌的 `aud`（受众）声明中。 本示例请求一个用于访问 Azure 资源管理器的、应用 ID URI 为 https://management.chinacloudapi.cn/ 的令牌。 |
+| `resource` | 一个查询字符串参数，表示目标资源的应用 ID URI。 它也会显示在所颁发令牌的 `aud`（受众）声明中。 本示例请求一个用于访问 Azure 资源管理器的、应用 ID URI 为 `https://management.chinacloudapi.cn/` 的令牌。 |
 | `Metadata` | 一个 HTTP 请求标头字段，Azure 资源的托管标识需要使用该元素来缓解服务器端请求伪造 (SSRF) 攻击。 必须将此值设置为“true”（全小写）。|
 | `object_id` | （可选）一个查询字符串参数，指示要将此令牌用于的托管标识的 object_id。 如果 VM 有用户分配的多个托管标识，则为必需的。|
 | `client_id` | （可选）一个查询字符串参数，指示要将此令牌用于的托管标识的 client_id。 如果 VM 有用户分配的多个托管标识，则为必需的。|
@@ -377,7 +377,7 @@ Azure 资源的托管标识终结点通过 HTTP 响应消息标头的状态代�
 | 400 错误的请求 | bad_request_102 | 未指定必需的元数据标头 | 请求中缺少 `Metadata` 请求标头字段，或者该字段的格式不正确。 必须将该值指定为 `true`（全小写）。 有关示例，请参阅前面 REST 部分中的“示例请求”。|
 | 401 未授权 | unknown_source | 未知源 *\<URI\>* | 检查是否已正确设置 HTTP GET 请求 URI 的格式。 必须将 `scheme:host/resource-path` 部分指定为 `http://localhost:50342/oauth2/token`。 有关示例，请参阅前面 REST 部分中的“示例请求”。|
 |           | invalid_request | 请求中缺少必需的参数、包含无效的参数值、多次包含某个参数，或格式不正确。 |  |
-|           | unauthorized_client | 客户端无权使用此方法请求访问令牌。 | 此错误是由某个未使用本地环回调用扩展的请求，或者在未正确配置 Azure 资源的托管标识的 VM 上发出请求造成的。 如需 VM 配置方面的帮助，请参阅[使用 Azure 门户在 VM 上配置 Azure 资源的托管标识](qs-configure-portal-windows-vm.md)。 |
+|           | unauthorized_client | 客户端无权使用此方法请求访问令牌。 | 此错误是由于某个请求未使用本地环回来调用扩展导致的，或者是由于发出请求的 VM 没有为 Azure 资源正确配置托管标识导致的。 如需 VM 配置方面的帮助，请参阅[使用 Azure 门户在 VM 上配置 Azure 资源的托管标识](qs-configure-portal-windows-vm.md)。 |
 |           | access_denied | 资源所有者或授权服务器拒绝了请求。 |  |
 |           | unsupported_response_type | 授权服务器不支持使用此方法获取访问令牌。 |  |
 |           | invalid_scope | 请求的范围无效、未知或格式不正确。 |  |
@@ -411,4 +411,4 @@ Azure 资源的托管标识终结点通过 HTTP 响应消息标头的状态代�
 
 
 
-<!-- Update_Description: link update -->
+

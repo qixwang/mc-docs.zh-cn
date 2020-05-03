@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 01/09/2020
+ms.date: 04/24/2020
 ms.author: v-junlch
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 344a4bc52c4acfc9003dc3ec9a76458070bef926
-ms.sourcegitcommit: bc5f8b4f8ccd7c723f64055825508d1dfcc2162b
+ms.openlocfilehash: dcc6b83605f9e8db3cd6ec1cecb90937579f2e8f
+ms.sourcegitcommit: d6db729fea7d491d876d491f19ff89ef52384329
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75859275"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82275349"
 ---
 # <a name="conditional-access-require-compliant-devices"></a>条件访问：要求符合的设备
 
@@ -27,7 +27,7 @@ ms.locfileid: "75859275"
 * 要求操作系统版本有一个下限或上限
 * 要求设备未越狱或取得 root 权限
 
-此策略符合性信息会转发给 Azure AD，其中的条件访问可以进行决策，确定是授予还是阻止资源访问权限。
+此策略符合性信息会转发给 Azure AD，其中的条件访问可以进行决策，确定是授予还是阻止资源访问权限。 有关设备合规性策略的详细信息，可参阅[使用 Intune 在设备上设置规则以允许访问组织中的资源](https://docs.microsoft.com/intune/protect/device-compliance-get-started)一文
 
 ## <a name="create-a-conditional-access-policy"></a>创建条件访问策略
 
@@ -44,10 +44,14 @@ ms.locfileid: "75859275"
 1. 在“云应用或操作”   >   “包括”下，选择“所有云应用”。 
    1. 如果必须将特定应用程序排除在策略之外，可以在“选择排除的云应用”下的“排除”选项卡中选择它们，然后选择“选择”。   
    1. 选择“完成”  。
+1. 在“条件”   >   “客户端应用(预览)”下，将“配置”设置为“是”，然后选择“完成”。   
 1. 在“访问控制”   >   “授予”下，选择“要求将设备标记为合规”。 
    1. 选择“选择”  。
 1. 确认设置，然后将“启用策略”设置为“打开”。  
 1. 选择“创建”  ，以便创建启用策略所需的项目。
+
+> [!NOTE]
+> 即使你按照上述步骤为“所有用户”  和“所有云应用”  选择“要求将设备标记为合规”  ，也可以将新设备注册到 Intune。 “要求将设备标记为合规”  控制不会阻止 Intune 注册。 
 
 ### <a name="known-behavior"></a>已知行为
 

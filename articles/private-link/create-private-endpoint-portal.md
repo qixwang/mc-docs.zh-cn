@@ -6,14 +6,14 @@ author: rockboyfor
 ms.service: private-link
 ms.topic: quickstart
 origin.date: 09/16/2019
-ms.date: 02/24/2020
+ms.date: 04/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: e28f47810181678d6d82e8260facdd32413def3c
-ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
+ms.openlocfilehash: be9e2e7e29423cd06a535af2baf0089e825ea5f6
+ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78304703"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82093384"
 ---
 # <a name="quickstart-create-a-private-endpoint-using-azure-portal"></a>快速入门：使用 Azure 门户创建专用终结点
 
@@ -28,39 +28,43 @@ ms.locfileid: "78304703"
 ## <a name="create-a-vm"></a>创建 VM
 在本部分，你将创建虚拟网络和子网来托管用于访问专用链接资源（在本示例中为 Azure 中的某个 SQL 服务器）的 VM。
 
-### <a name="create-the-virtual-network"></a>创建虚拟网络
+## <a name="virtual-network-and-parameters"></a>虚拟网络和参数
 
 在本部分，你将创建虚拟网络和子网来托管用于访问专用链接资源的 VM。
 
-1. 在屏幕的左上方，选择“创建资源” > “网络” > “虚拟网络”    。
-1. 在“创建虚拟网络”  中，输入或选择以下信息：
+在本部分中，你需要将步骤中的以下参数替换为以下信息：
 
-    | 设置 | Value |
-    | ------- | ----- |
-    | 名称 | 输入 *MyVirtualNetwork*。 |
-    | 地址空间 | 输入 10.1.0.0/16  。 |
-    | 订阅 | 选择订阅。|
-    | 资源组 | 选择“新建”，输入 myResourceGroup，然后选择“确定”    。 |
-    | 位置 | 选择“chinaeast2”  。|
-    | 子网 - 名称 | 输入 *mySubnet*。 |
-    | 子网 - 地址范围 | 输入 10.1.0.0/24  。 |
-    |||
-1. 将其余的设置保留默认值，然后选择“创建”  。
+| 参数                   | 值                |
+|-----------------------------|----------------------|
+| **\<resource-group-name>** | MyResourceGroup |
+| **\<virtual-network-name>** | myVirtualNetwork          |
+| **\<region-name>** | 中国东部 2|
+| **\<IPv4-address-space>** | 10.1.0.0\16          |
+| **\<subnet-name>** | mySubnet        |
+| **\<subnet-address-range>** | 10.1.0.0\24          |
+
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 ### <a name="create-virtual-machine"></a>创建虚拟机
 
+<!-- MOONCAKE: CUSTOMIZATION-->
+
 1. 在 Azure 门户屏幕的左上角，选择“创建资源”  ，在“新建”  页的“搜索市场”  筛选框中键入“Windows Server 2019 Datacenter”  ，然后单击 Enter 键，并在搜索结果中选择“Windows Server 2019 Datacenter”  。
 
+1. 在“Windows Server 2019 Datacenter”页中选择“创建”  。
+
+    <!-- MOONCAKE: CUSTOMIZATION-->
+    
 1. 在“创建虚拟机 - 基本信息”  中，输入或选择以下信息：
 
-    | 设置 | Value |
+    | 设置 | 值 |
     | ------- | ----- |
     | **项目详细信息** | |
     | 订阅 | 选择订阅。 |
     | 资源组 | 选择“myResourceGroup”。  已在上一部分创建此内容。  |
     | **实例详细信息** |  |
     | 虚拟机名称 | 输入 *myVm*。 |
-    | 区域 | 选择“chinaeast2”  。 |
+    | 区域 | 选择“中国东部 2”  。 |
     | 可用性选项 | 保留默认值“不需要基础结构冗余”  。 |
     | 映像 | 选择“Windows Server 2019 Datacenter”。  |
     | 大小 | 保留默认值“标准 DS1 v2”  。 |
@@ -80,7 +84,7 @@ ms.locfileid: "78304703"
 
 1. 在“创建虚拟机 - 基本信息”  中，选择以下信息：
 
-    | 设置 | Value |
+    | 设置 | 值 |
     | ------- | ----- |
     | 虚拟网络 | 保留默认值“MyVirtualNetwork”  。  |
     | 地址空间 | 保留默认值“10.1.0.0/24”。 |
@@ -97,11 +101,17 @@ ms.locfileid: "78304703"
 ## <a name="create-a-sql-database-server"></a>创建 SQL 数据库服务器
 在本部分，你将在 Azure 中创建一个 SQL 数据库服务器。 
 
-1. 在 Azure 门户屏幕的左上方，选择“创建资源” > “数据库” > “SQL 数据库”。   
+<!-- MOONCAKE: CUSTOMIZATION-->
 
+1. 在 Azure 门户屏幕的左上角，选择“创建资源”  ，在“新建”  页的“搜索市场”  筛选框中键入“SQL 数据库”  ，然后单击 Enter 键，并在搜索结果中选择“SQL 数据库”  。
+
+1. 在“SQL 数据库”页中选择“创建”  。
+
+    <!-- MOONCAKE: CUSTOMIZATION-->
+    
 1. 在“创建 SQL 数据库 - 基本信息”中，输入或选择以下信息： 
 
-    | 设置 | Value |
+    | 设置 | 值 |
     | ------- | ----- |
     | **数据库详细信息** | |
     | 订阅 | 选择订阅。 |
@@ -112,7 +122,7 @@ ms.locfileid: "78304703"
 5. 在“服务器”  中，选择“新建”  。 
 6. 在“新建服务器”中，输入或选择以下信息  ：
 
-    | 设置 | Value |
+    | 设置 | 值 |
     | ------- | ----- |
     |服务器名称  | 输入 *myserver*。 如果此名称已被使用，请创建唯一的名称。|
     | 服务器管理员登录名| 输入所选的管理员名称。 |
@@ -129,12 +139,18 @@ ms.locfileid: "78304703"
 
 在本部分，你将创建一个 SQL 服务器并在其中添加专用终结点。 
 
+<!-- MOONCAKE: CUSTOMIZATION-->
+
 1. 在 Azure 门户屏幕的左上角，选择“创建资源”  ，在“新建”  页的“搜索市场”  筛选框中键入“专用链接”  ，然后单击 Enter 键，并在搜索结果中选择“专用链接”  。
 
+1. 在“专用链接”页中选择“创建”  。
+
+    <!-- MOONCAKE: CUSTOMIZATION-->
+    
 2. 在“专用链接中心 - 概述”中的“与服务建立专用连接”选项的旁边，选择“启动”。   
 1. 在“创建专用终结点(预览版) - 基本信息”中，输入或选择以下信息： 
 
-    | 设置 | Value |
+    | 设置 | 值 |
     | ------- | ----- |
     | **项目详细信息** | |
     | 订阅 | 选择订阅。 |
@@ -146,7 +162,7 @@ ms.locfileid: "78304703"
 5. 在完成时选择“下一步:  资源”。
 6. 在“创建专用终结点 - 资源”中，输入或选择以下信息： 
 
-    | 设置 | Value |
+    | 设置 | 值 |
     | ------- | ----- |
     |连接方法  | 选择“连接到我的目录中的 Azure 资源”。|
     | 订阅| 选择订阅。 |
@@ -157,7 +173,7 @@ ms.locfileid: "78304703"
 7. 在完成时选择“下一步:  配置”。
 8. 在“创建专用终结点(预览版) - 配置”中，输入或选择以下信息： 
 
-    | 设置 | Value |
+    | 设置 | 值 |
     | ------- | ----- |
     |**网络**| |
     | 虚拟网络| 选择“MyVirtualNetwork”。  |
@@ -214,7 +230,7 @@ ms.locfileid: "78304703"
 
 4. 在“连接服务器”中，输入或选择以下信息  ：
 
-    | 设置 | Value |
+    | 设置 | 值 |
     | ------- | ----- |
     | 服务器类型| 选择“数据库引擎”。 |
     | 服务器名称| 选择“myserver.database.chinacloudapi.cn”  |

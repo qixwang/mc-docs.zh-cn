@@ -1,21 +1,18 @@
 ---
-title: 将 OCI 项目推送到专用 Azure 容器注册表
+title: 推送和拉取 OCI 项目
 description: 在 Azure 中使用专用容器注册表推送和拉取开放容器计划 (OCI) 项目
-services: container-registry
 author: rockboyfor
 manager: digimobile
-ms.service: container-registry
 ms.topic: article
-origin.date: 08/30/2019
-ms.date: 09/23/2019
+origin.date: 03/11/2020
+ms.date: 04/06/2020
 ms.author: v-yeche
-ms.custom: ''
-ms.openlocfilehash: 2712b7458805e9f48c06c186e0652f77239a4488
-ms.sourcegitcommit: 0d07175c0b83219a3dbae4d413f8e012b6e604ed
+ms.openlocfilehash: db90dc243402c149aa2b3cfa167a714b1d89bafd
+ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71306877"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82093247"
 ---
 <!--Verify successfully-->
 # <a name="push-and-pull-an-oci-artifact-using-an-azure-container-registry"></a>使用 Azure 容器注册表推送和拉取 OCI 项目
@@ -70,10 +67,20 @@ echo "Here is an artifact!" > artifact.txt
 
 使用 `oras push` 命令将该文本文件推送到注册表。 以下示例将示例文本文件推送到 `samples/artifact` 存储库。 注册表通过完全限定的注册表名称 *myregistry.azurecr.cn*（全小写）进行标识。 此项目标记为 `1.0`。 默认情况下，此项目有一个未定义的类型，该类型通过文件名 `artifact.txt` 后的媒体类型  字符串进行标识。 有关其他类型，请参阅 [OCI Artifacts](https://github.com/opencontainers/artifacts)（OCI 项目）。 
 
+**Linux**
+
 ```bash
 oras push myregistry.azurecr.cn/samples/artifact:1.0 \
     --manifest-config /dev/null:application/vnd.unknown.config.v1+json \
     ./artifact.txt:application/vnd.unknown.layer.v1+txt
+```
+
+**Windows**
+
+```cmd
+.\oras.exe push myregistry.azurecr.cn/samples/artifact:1.0 ^
+    --manifest-config NUL:application/vnd.unknown.config.v1+json ^
+    .\artifact.txt:application/vnd.unknown.layer.v1+txt
 ```
 
 成功推送后，输出将如下所示：

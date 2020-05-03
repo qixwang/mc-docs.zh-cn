@@ -3,7 +3,7 @@ title: Azure 中虚拟机的 cloud-init 支持
 description: 在 Azure 中预配时用于配置 VM 的 cloud-init 功能概述。
 services: virtual-machines-linux
 documentationcenter: ''
-author: rockboyfor
+author: Johnnytechn
 manager: digimobile
 editor: ''
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.topic: article
 origin.date: 01/23/2019
-ms.date: 02/10/2020
-ms.author: v-yeche
-ms.openlocfilehash: e22654b6b71d358687b3dbb2f67236a282e1f762
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 04/13/2020
+ms.author: v-johya
+ms.openlocfilehash: c158ef09299b9b6c6cbc6d71217a74f81f65694f
+ms.sourcegitcommit: ebedf9e489f5218d4dda7468b669a601b3c02ae5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77428929"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82159168"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>Azure 中虚拟机的 cloud-init 支持
 本文介绍了在 Azure 中使用 [cloud-init](https://cloudinit.readthedocs.io) 在预配时间配置虚拟机 (VM) 或虚拟机规模集的现有支持。 Azure 预配资源后，这些 cloud-init 配置即会在第一次启动时运行。  
@@ -56,7 +56,7 @@ cloud-init 还支持不同的分发版。 例如，不需使用  apt-get install
 |:--- |:--- |:--- |:--- |:--- |:--- |
 |OpenLogic 7.7 |CentOS |7-CI |7.7.20190920 |是（请注意，这是一个预览版映像，在所有 CentOS 7.7 映像都支持 cloud-init 后，将在 2020 年中期删除此映像，到时会有通告） | 是 - 包版本的支持：*18.5-3.el7.centos*|
 
-* 本文将在 2020 年 2 月更新启用 cloud-init 的 CentOS 7.7 映像 
+* 本文将在 2020 年 3 月更新启用 cloud-init 的 CentOS 7.7 映像 
 
 <!--Not Available on ### Oracle-->
 

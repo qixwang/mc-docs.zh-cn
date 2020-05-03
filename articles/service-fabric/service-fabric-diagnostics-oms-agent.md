@@ -4,14 +4,14 @@ description: 了解如何设置 Log Analytics 代理以监视 Azure Service Fabr
 author: rockboyfor
 ms.topic: conceptual
 origin.date: 04/16/2018
-ms.date: 02/24/2020
+ms.date: 04/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: a626bf733b0214b1251c8128631a13060baf0edf
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.openlocfilehash: 48f633d5c261214a3bbd6bc90f4c52e99bcdc256
+ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77539972"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82093430"
 ---
 # <a name="performance-monitoring-with-azure-monitor-logs"></a>使用 Azure Monitor 日志进行性能监视
 
@@ -38,17 +38,17 @@ ms.locfileid: "77539972"
 
 3. 若要建立 Windows 群集，请单击“Windows 服务器”；若要创建 Linux 群集，请单击“Linux 服务器”   。 此页将显示 `workspace ID` 和 `workspace key`（在门户中列为“主键”）。 下一步骤需要使用这两个值。
 
-4. 在本地 Shell 中使用 `vmss extension set` API 运行以下命令来将 Log Analytics 代理安装到群集中：
+4. 运行以下命令使用 `vmss extension set` API 将 Log Analytics 代理安装到群集中：
 
     对于 Windows 群集：
 
-    ```sh
+    ```azurecli
     az vmss extension set --name MicrosoftMonitoringAgent --publisher Microsoft.EnterpriseCloud.Monitoring --resource-group <nameOfResourceGroup> --vmss-name <nameOfNodeType> --settings "{'workspaceId':'<Log AnalyticsworkspaceId>'}" --protected-settings "{'workspaceKey':'<Log AnalyticsworkspaceKey>'}"
     ```
 
     对于 Linux 群集：
 
-    ```sh
+    ```azurecli
     az vmss extension set --name OmsAgentForLinux --publisher Microsoft.EnterpriseCloud.Monitoring --resource-group <nameOfResourceGroup> --vmss-name <nameOfNodeType> --settings "{'workspaceId':'<Log AnalyticsworkspaceId>'}" --protected-settings "{'workspaceKey':'<Log AnalyticsworkspaceKey>'}"
     ```
 
@@ -58,7 +58,7 @@ ms.locfileid: "77539972"
 
 5. 15 分钟内即可将代理成功添加到节点上。 可使用 `az vmss extension list` API 验证是否已添加代理：
 
-    ```sh
+    ```azurecli
     az vmss extension list --resource-group <nameOfResourceGroup> --vmss-name <nameOfNodeType>
     ```
 
@@ -100,5 +100,4 @@ ms.locfileid: "77539972"
 * 配置 Azure Monitor 日志，以便设置有助于检测和诊断的[自动警报](../azure-monitor/platform/alerts-overview.md)
 * 作为替代方法，可以通过 [Azure 诊断扩展收集性能计数器并将其发送到 Application Insights](service-fabric-diagnostics-event-aggregation-wad.md#add-the-application-insights-sink-to-the-resource-manager-template)
 
-<!-- Update_Description: new article about service fabric diagnostics oms agent -->
-<!--NEW.date: 12/16/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

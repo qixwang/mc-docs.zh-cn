@@ -1,22 +1,21 @@
 ---
-title: 快速入门：创建使用 Azure Redis 缓存的 Python 应用
+title: 快速入门：创建 Python 应用 - Azure Cache for Redis
 description: 本快速入门介绍如何创建使用 Azure Redis 缓存的 Python 应用。
 author: yegu-ms
+ms.author: v-junlch
 ms.service: cache
 ms.devlang: python
 ms.topic: quickstart
-origin.date: 11/05/2019
-ms.date: 11/22/2019
-ms.author: v-junlch
 ms.custom:
 - mvc
 - seo-python-october2019
-ms.openlocfilehash: 2fb4e0ec39b083987a73d9011fc614ab5d673550
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 04/26/2020
+ms.openlocfilehash: 8b7e371d38649fb01a038ad339325f8d0484c36a
+ms.sourcegitcommit: e3512c5c2bbe61704d5c8cbba74efd56bfe91927
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74461636"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82267588"
 ---
 # <a name="quickstart-create-a-python-app-that-uses-azure-cache-for-redis"></a>快速入门：创建使用 Azure Redis 缓存的 Python 应用
 
@@ -55,7 +54,7 @@ b'bar'
 ```
 
 > [!IMPORTANT]
-> 对于 Azure Redis 缓存版本 3.0 或更高版本，强制执行 SSL 证书检查。 连接到 Azure Redis 缓存时，必须显式设置 ssl_ca_certs。 对于 RedHat Linux，ssl_ca_certs 位于 /etc/pki/tls/certs/ca-bundle.crt 证书中  。
+> 对于 Azure Cache for Redis 3.0 或更高版本，请强制执行 TLS/SSL 证书检查。 连接到 Azure Redis 缓存时，必须显式设置 ssl_ca_certs。 对于 RedHat Linux，ssl_ca_certs 位于 /etc/pki/tls/certs/ca-bundle.crt 证书中  。
 
 ## <a name="create-a-python-sample-app"></a>创建 Python 示例应用
 
@@ -111,4 +110,3 @@ for c in result:
 > [创建简单的使用 Azure Redis 缓存的 ASP.NET Web 应用。](./cache-web-app-howto.md)
 
 
-<!-- Update_Description: wording update -->

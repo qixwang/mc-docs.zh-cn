@@ -134,7 +134,7 @@
       href: pricing-concepts.md
     - name: 命名规则
       href: naming-rules.md
-- name: 操作方法指南
+- name: 操作指南
   items:
     - name: 作者
       items:
@@ -455,6 +455,8 @@
           href: create-shared-self-hosted-integration-runtime-powershell.md
     - name: 在 Azure 中运行 SSIS 包
       items:
+        - name: 使用 Azure SQL 托管实例代理运行 SSIS 包
+          href: how-to-invoke-ssis-package-managed-instance-agent.md
         - name: 使用 Azure 支持的 dtexec 实用工具运行 SSIS 包
           href: how-to-invoke-ssis-package-azure-enabled-dtexec.md
         - name: 使用“执行 SSIS 包”活动运行 SSIS 包
@@ -481,6 +483,8 @@
           href: configure-bcdr-azure-ssis-integration-runtime.md
         - name: 使用弹性数据库作业清理 SSISDB 日志
           href: how-to-clean-up-ssisdb-logs-with-elastic-jobs.md
+        - name: 通过 SSMS 迁移 SSIS 作业
+          href: how-to-migrate-ssis-job-ssms.md
     - name: 创建触发器
       items:
         - name: 创建基于事件的触发器
@@ -547,7 +551,7 @@
       href: 'https://docs.microsoft.com/powershell/module/az.datafactory/'
     - name: REST API
       href: 'https://docs.microsoft.com/rest/api/datafactory'
-    - name: 资源管理器模板
+    - name: Resource Manager 模板
       href: 'https://docs.microsoft.com/azure/templates/microsoft.datafactory/allversions'
     - name: Python
       href: 'https://docs.microsoft.com/python/api/overview/azure/datafactory?view=azure-python'
@@ -555,7 +559,7 @@
   items:
     - name: 白皮书
       href: whitepapers.md
-    - name: 常见问题解答
+    - name: 常见问题
       href: frequently-asked-questions.md
     - name: 提出问题 - MSDN 论坛
       href: 'https://social.msdn.microsoft.com/Forums/zh-CN/home'

@@ -5,18 +5,18 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 09/13/2019
-ms.date: 10/28/2019
+ms.date: 04/27/2020
 ms.author: v-yeche
 ms.custom: query-reference
-ms.openlocfilehash: 66e96f2065072202f2011eef8b51b12daf0e4f31
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: b8d53ffa0cb29ad910ebca41c27c0fc5cdf6ec97
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "72914669"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134840"
 ---
 # <a name="st_intersects-azure-cosmos-db"></a>ST_INTERSECTS (Azure Cosmos DB)
- 返回一个布尔表达式，指示第一个参数中指定的 GeoJSON 对象（点、多边形或 LineString）是否与第二个参数中的 GeoJSON（点、多边形或 LineString）相交。  
+ 返回一个布尔表达式，指示在第一个参数中指定的 GeoJSON 对象（点、多边形或 LineString）是否与第二个参数中的 GeoJSON（点、多边形或 LineString）相交。  
 
 ## <a name="syntax"></a>语法
 
@@ -46,11 +46,15 @@ WHERE ST_INTERSECTS(a.location, {
 })  
 ```  
 
- 下面是结果集：  
+ 下面是结果集。  
 
 ```json
 [{ "id": "IntersectingPolygon" }]  
 ```  
+
+## <a name="remarks"></a>备注
+
+此系统函数将从[地理空间索引](index-policy.md#spatial-indexes)中获益。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -58,5 +62,4 @@ WHERE ST_INTERSECTS(a.location, {
 - [系统函数 Azure Cosmos DB](sql-query-system-functions.md)
 - [Azure Cosmos DB 简介](introduction.md)
 
-<!--Update_Description: new articles on sql query st intersects  -->
-<!--New.date: 10/28/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

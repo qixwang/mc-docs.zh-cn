@@ -1,5 +1,5 @@
 ---
-title: 教程：使用 Azure Cosmos DB 异步 Java SDK 构建 Java 应用以管理 SQL API 帐户中的数据
+title: 教程 - 使用 Azure Cosmos DB 异步 Java SDK 构建 Java 应用以管理 SQL API 帐户中的数据
 description: 本教程介绍如何通过异步 Java 应用程序在 Azure Cosmos DB 中使用 SQL API 帐户来存储和访问数据。
 author: rockboyfor
 ms.service: cosmos-db
@@ -7,15 +7,15 @@ ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: tutorial
 origin.date: 11/05/2019
-ms.date: 02/10/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
 Customer intent: As a developer, I want to build a Java application with the Async Java SDK to access and manage Azure Cosmos DB resources so that customers can utilize the multiple-region distribution, elastic scaling, multi-master, and other capabilities offered by Azure Cosmos DB.
-ms.openlocfilehash: 6a8cd41358b34306b4dd795784a46c1862b6e836
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 56ef1e6230c1c61cc27a973fc32653892b81e368
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77028741"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134703"
 ---
 <!--Verify sucessfully-->
 # <a name="tutorial-build-a-java-app-with-the-async-java-sdk-to-manage-data-stored-in-a-sql-api-account"></a>教程：使用异步 Java SDK 生成 Java 应用，以便管理存储在 SQL API 帐户中的数据

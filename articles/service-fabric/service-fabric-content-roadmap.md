@@ -5,12 +5,12 @@ ms.topic: conceptual
 origin.date: 12/08/2017
 ms.author: v-yeche
 ms.date: 01/06/2020
-ms.openlocfilehash: 001aa7b6b6e67966b7393c1837ecf14d177b6901
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: e47e8e48ff6773299eaada6b7117dd72068e55f2
+ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75741885"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82093471"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>想要了解 Service Fabric 吗？
 Service Fabric 是分布式系统平台，可借助它轻松打包、部署和管理可缩放且可靠的微服务。  不过，Service Fabric 的外围应用领域广泛，有很多东西需要学习。  本文简要说明了 Service Fabric，并介绍了核心概念、编程模型、应用程序生命周期、测试、群集和运行状况监视。 请参阅[概述](service-fabric-overview.md)和[什么是微服务？](service-fabric-overview-microservices.md)，概览相关信息，并了解如何使用 Service Fabric 创建微服务。 本文包含的内容列表虽不完整，但确实提供了 Service Fabric 每个应用领域的概述和入门文章链接。 
@@ -56,7 +56,7 @@ Service Fabric 是分布式系统平台，可借助它轻松打包、部署和�
 在分区中，无状态命名服务具有实例，而有状态命名服务具有副本。 通常，无状态命名服务只有一个分区，因为它们没有内部状态。 分区实例提供[可用性](service-fabric-availability-services.md)。 如果一个实例失败，其他实例可继续正常运行，然后 Service Fabric 会创建新的实例。 有状态命名服务在副本中保持其状态，每个分区都有自己的副本集。 在一个副本（以下称为“主副本”）上执行读取和写入操作。 因写入操作发生的状态更改会复制到其他多个副本（以下称为活动辅助副本）。 如果某个副本失败，Service Fabric 将从现有副本创建新副本。
 
 ## <a name="stateless-and-stateful-microservices-for-service-fabric"></a>无状态和有状态 Service Fabric 微服务
-使用 Service Fabric，可以生成包含微服务或容器的应用程序。 无状态微服务（例如网关、Web 代理）不维护除请求及其来自服务的响应之外任何可变状态。 Azure 云服务辅助角色是无状态服务的一个示例。 有状态微服务（例如，用户帐户、数据库、设备、购物车、队列）维护除请求及其响应之外的可变、授权状态。 当今的 Internet 规模应用程序包含无状态和有状态微服务的组合。 
+使用 Service Fabric，可以生成包含微服务或容器的应用程序。 无状态微服务（例如协议网关和 Web 代理）不在请求以及服务对请求的响应之外维持可变状态。 Azure 云服务辅助角色是无状态服务的一个示例。 有状态微服务（例如，用户帐户、数据库、设备、购物车、队列）维护除请求及其响应之外的可变、授权状态。 当今的 Internet 规模应用程序包含无状态和有状态微服务的组合。 
 
 Service Fabric 的关键区别在于，大力注重使用[内置编程模型](service-fabric-choose-framework.md)或容器化有状态服务生成有状态服务。 [应用程序方案](service-fabric-application-scenarios.md)介绍了可使用有状态服务的方案。
 
@@ -89,10 +89,10 @@ Service Fabric 与 [ASP.NET Core](service-fabric-reliable-services-communication
 ## <a name="application-lifecycle"></a>应用程序生命周期
 与其他平台一样，Service Fabric 上的应用程序通常会经历以下几个阶段：设计、开发、测试、部署、升级、维护和删除。 Service Fabric 为云应用程序的整个应用程序生命周期提供一流的支持：从开发到部署、到日常管理和维护，再到最终解除授权。 服务模型使多个不同角色可以独立参与到应用程序生命周期中。 [Service Fabric 应用程序生命周期](service-fabric-application-lifecycle.md)一文提供了有关 API 的概述，以及在 Service Fabric 应用程序生命周期的各个阶段，它们是如何被不同角色所使用的。 
 
-可以使用 [PowerShell cmdlet](https://docs.microsoft.com/powershell/module/ServiceFabric/)、[CLI 命令](service-fabric-sfctl.md)、[C# API](https://docs.azure.cn/dotnet/api/system.fabric.fabricclient.applicationmanagementclient?view=azure-dotnet)、[Java API](https://docs.azure.cn/java/api/overview/servicefabric?view=azure-java-stable) 和 [REST API](https://docs.microsoft.com/rest/api/servicefabric/) 管理整个应用生命周期。 还可以使用 [Azure Pipelines](service-fabric-set-up-continuous-integration.md) 或 [Jenkins](service-fabric-cicd-your-linux-applications-with-jenkins.md) 等工具来设置持续集成/持续部署管道。
+可以使用 [PowerShell cmdlet](https://docs.microsoft.com/powershell/module/ServiceFabric/)、[CLI 命令](service-fabric-sfctl.md)、[C# API](https://docs.azure.cn/dotnet/api/system.fabric.fabricclient.applicationmanagementclient?view=azure-dotnet)、[Java API](https://docs.azure.cn/java/api/overview/servicefabric?view=azure-java-stable) 和 [REST API](https://docs.microsoft.com/rest/api/servicefabric/) 管理整个应用生命周期。 还可以使用 [Azure Pipelines](service-fabric-set-up-continuous-integration.md) 等工具来设置持续集成/持续部署管道。
 
 <!--MOONCAKE: CORRECT on https://docs.azure.cn/java/api/overview/servicefabric -->
-
+<!--Not Available on  or [Jenkins](service-fabric-cicd-your-linux-applications-with-jenkins.md)-->
 
 ## <a name="test-applications-and-services"></a>测试应用程序和服务
 若要创建真正的云规模服务，请务必确保应用程序和服务能够经受住现实中发生的故障。 故障分析服务是在 Service Fabric 基础上专为测试服务构建的。 借助[故障分析服务](service-fabric-testability-overview.md)，可以引入有意义的故障，并对应用程序运行完整的测试方案。 这些故障和方案执行并验证服务在整个生命周期内要经历的大量状态和转换，所有一切都以受控、安全且一致的方式进行。

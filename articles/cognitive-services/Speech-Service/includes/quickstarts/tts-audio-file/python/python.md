@@ -1,22 +1,16 @@
 ---
-title: 快速入门：将语音合成音频文件，Python - 语音服务
-titleSuffix: Azure Cognitive Services
-description: TBD
-services: cognitive-services
-author: chlandsi
-manager: nitinme
+author: trevorbye
 ms.service: cognitive-services
-ms.subservice: speech-service
 ms.topic: include
-origin.date: 07/05/2019
-ms.date: 03/16/2020
+origin.date: 04/04/2020
+ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: bdffc7a1d7c8dbd6ee326c64e19e98c641f9475c
-ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
+ms.openlocfilehash: 964c4e0c3906742e7382699499ec874bebace7b6
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80151588"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82150945"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -25,32 +19,35 @@ ms.locfileid: "80151588"
 * Python 语音 SDK 包适用于以下操作系统：
     * Windows：x64 和 x86。
     * Mac：macOS X 10.12 或更高版本。
-    * Linux：基于 x64 的 Ubuntu 16.04、Ubuntu 18.04、Debian 9、RHEL 8、CentOS 8。
+    * Linux：基于 x64 的 Ubuntu 16.04/18.04、Debian 9、RHEL 7/8、CentOS 7/8。
 * 在 Linux 上，请运行以下命令安装所需的包：
+* 需要语音 SDK 版本 1.10.0 或更高版本。
 
-  * 在 Ubuntu 上：
+# <a name="ubuntu"></a>[Ubuntu](#tab/ubuntu)
 
-    ```sh
-    sudo apt-get update
-    sudo apt-get install build-essential libssl1.0.0 libasound2
-    ```
+```Bash
+sudo apt-get update
+sudo apt-get install build-essential libssl1.0.0 libasound2
+```
 
-  * 在 Debian 9 上：
+# <a name="debian-9"></a>[Debian 9](#tab/debian)
 
-    ```sh
-    sudo apt-get update
-    sudo apt-get install build-essential libssl1.0.2 libasound2
-    ```
+```Bash
+sudo apt-get update
+sudo apt-get install build-essential libssl1.0.2 libasound2
+```
 
-  * 在 RHEL/CentOS 8 上：
+# <a name="rhel--centos-8"></a>[RHEL / CentOS 8](#tab/rhel-centos)
 
-    ```sh
-    sudo yum update
-    sudo yum install alsa-lib openssl python3
-    ```
+```Bash
+sudo yum update
+sudo yum install alsa-lib openssl python3
+```
 
 > [!NOTE]
-> 在 RHEL/CentOS 8 上，按照[如何配置 OpenSSL for Linux](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md) 上的说明进行操作。
+> 在 RHEL/CentOS 7/8 上，按照[如何配置为 Linux 配置 OpenSSL](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md) 上的说明进行操作。
+
+---
 
 * 在 Windows 上，需要安装适用于平台的 [Microsoft Visual C++ Redistributable for Visual Studio 2019](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)。
 
@@ -60,7 +57,7 @@ ms.locfileid: "80151588"
 
 此命令从语音 SDK 的 [PyPI](https://pypi.org/) 安装 Python 包：
 
-```sh
+```Bash
 pip install azure-cognitiveservices-speech
 ```
 
@@ -78,7 +75,7 @@ pip install azure-cognitiveservices-speech
 
 可将本快速入门中的[示例代码](#sample-code)复制到源文件 `quickstart.py`，然后在 IDE 或控制台中运行该代码
 
-```sh
+```Bash
 python quickstart.py
 ```
 
@@ -86,18 +83,17 @@ python quickstart.py
 
 ### <a name="sample-code"></a>代码示例
 
-````Python
-
+````python
 import azure.cognitiveservices.speech as speechsdk
 
 # Replace with your own subscription key and region identifier from here: https://docs.azure.cn/cognitive-services/speech-service/regions
-speech_host, speech_key = "https://YourServiceRegion.tts.speech.azure.cn/", "YourSubscriptionKey"
-speech_config = speechsdk.SpeechConfig(host=speech_host, subscription=speech_key)
+speech_key, service_region = "YourSubscriptionKey", "YourServiceRegion"
+speech_config = speechsdk.SpeechConfig(subscription=speech_key, region=service_region)
 
 # Creates an audio configuration that points to an audio file.
 # Replace with your own audio filename.
 audio_filename = "helloworld.wav"
-audio_output = speechsdk.AudioOutputConfig(filename=audio_filename)
+audio_output = speechsdk.audio.AudioOutputConfig(filename=audio_filename)
 
 # Creates a synthesizer with the given settings
 speech_synthesizer = speechsdk.SpeechSynthesizer(speech_config=speech_config, audio_config=audio_output)
@@ -121,7 +117,7 @@ elif result.reason == speechsdk.ResultReason.Canceled:
 
 ### <a name="install-and-use-the-speech-sdk-with-visual-studio-code"></a>通过 Visual Studio Code 安装并使用语音 SDK
 
-1. 在计算机上下载并安装 64 位版本的 [Python](https://www.python.org/downloads/)（3.5 或更高版本）。
+1. 在计算机上下载并安装 64 位版本的 [Python](https://www.python.org/downloads/)（3.5 到 3.8）。
 1. 下载并安装 [Visual Studio Code](https://code.visualstudio.com/Download)。
 1. 打开 Visual Studio Code 并安装 Python 扩展。 在菜单中选择“文件”   >   “首选项” >   “扩展”。 搜索 **Python**。
 
@@ -139,14 +135,14 @@ elif result.reason == speechsdk.ResultReason.Canceled:
 1. 复制 [Python 代码](#sample-code)并将其粘贴到新建的文件，然后保存文件。
 1. 插入语音服务订阅信息。
 1. 如果已选择 Python 解释器，窗口底部的状态栏左侧会显示它。
-   否则，会显示可用 Python 解释器的列表。 打开命令面板 (Ctrl+Shift+P) 并输入 **Python:Select Interpreter**。 选择适当的解释器。
+   否则，会显示可用 Python 解释器的列表。 打开命令面板 (<kbd>Ctrl+Shift+P</kbd>) 并输入 **Python:Select Interpreter**。 选择适当的解释器。
 1. 如果尚未为所选的 Python 解释器安装， 可以从 Visual Studio Code 内部安装语音 SDK Python 包。
-   若要安装语音 SDK 包，请打开终端。 再次启动命令面板 (Ctrl+Shift+P) 并输入 **Terminal:Create New Integrated Terminal** 来打开终端。
+   若要安装语音 SDK 包，请打开终端。 再次启动命令面板 (<kbd>Ctrl+Shift+P</kbd>) 并输入 **Terminal:Create New Integrated Terminal** 来打开终端。
    在打开的终端中，输入命令 `python -m pip install azure-cognitiveservices-speech`，或者输入适用于系统的命令。
 1. 若要运行示例代码，请在编辑器中的某个位置单击右键。 选择“在终端中运行 Python 文件”。 
    文本转换为语音，并保存在指定的音频数据中。
 
-   ```text
+   ```console
    Speech synthesized to [helloworld.wav] for text [Hello world!]
    ```
 
@@ -154,7 +150,7 @@ elif result.reason == speechsdk.ResultReason.Canceled:
 
 ## <a name="next-steps"></a>后续步骤
 
-[!INCLUDE [footer](./footer.md)]
+[!INCLUDE [Speech synthesis basics](../../text-to-speech-next-steps.md)]
 
 <!-- ## See also -->
 

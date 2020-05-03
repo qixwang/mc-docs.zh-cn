@@ -11,14 +11,17 @@ ms.topic: include
 origin.date: 12/09/2019
 ms.date: 01/27/2020
 ms.author: v-tawe
-ms.openlocfilehash: aa3db99c5e47dfabdebeb7ba2158f45a159ecd46
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: a68d6a8fb309d65081a6bcb20a311e58e19146fc
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "76123541"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82150995"
 ---
 ## <a name="additional-language-and-platform-support"></a>其他语言和平台支持
+
+> [!IMPORTANT]
+> 需要语音 SDK 版本 1.10.0 或更高版本。
 
 如果已单击此选项卡，则可能看不到采用你偏好的编程语言的快速入门。 别担心，我们在 GitHub 上提供了其他快速入门材料和代码示例。 使用表格查找适用于编程语言和平台/OS 组合的相应示例。
 

@@ -4,14 +4,14 @@ description: 通过在本地开发群集上采用 Visual Studio 进行开发和�
 author: rockboyfor
 ms.topic: conceptual
 origin.date: 11/02/2017
-ms.date: 01/13/2020
+ms.date: 04/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 9fa2547f5855f37335c710304b48cdf4be80dea9
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: ec0a43f52ac0731434770dbbdd327caf6fedb684
+ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742316"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82093472"
 ---
 # <a name="debug-your-service-fabric-application-by-using-visual-studio"></a>使用 Visual Studio 调试 Service Fabric 应用程序
 > [!div class="op_single_selector"]
@@ -20,7 +20,7 @@ ms.locfileid: "75742316"
 >
 
 ## <a name="debug-a-local-service-fabric-application"></a>调试本地 Service Fabric 应用程序
-可以通过在本地计算机开发群集中部署和调试 Azure Service Fabric 应用程序来节省时间和资金。 Visual Studio 2019 或 2015 可以将应用程序部署到本地群集，并将调试器自动连接到应用程序的所有实例。 Visual Studio 必须以管理员身份运行才能连接调试器。
+可以通过在本地计算机开发群集中部署和调试 Azure Service Fabric 应用程序来节省时间和资金。 Visual Studio 2019 或 2015 可以将应用程序部署到本地群集，并将调试器自动连接到应用程序的所有实例。 必须以管理员身份运行 Visual Studio 才能连接调试器。
 
 1. 按照[设置 Service Fabric 开发环境](service-fabric-get-started.md)中的步骤启动本地开发群集。
 2. 按 **F5** 或单击“**调试**” > **开始调试**。

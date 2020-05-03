@@ -6,15 +6,15 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: quickstart
-ms.date: 03/30/2020
+ms.date: 04/26/2020
 ms.author: v-junlch
 ms.custom: mvc
-ms.openlocfilehash: 04e9e7ab1f99efbca00e730bb66c1c1b769acbd7
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 404528da01b9d72affa03096e5c162788d8f42c8
+ms.sourcegitcommit: e3512c5c2bbe61704d5c8cbba74efd56bfe91927
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80581865"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82267693"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---resource-manager-template"></a>快速入门：使用 Azure 应用程序网关定向 Web 流量 - 资源管理器模板
 
@@ -401,7 +401,7 @@ ms.locfileid: "80581865"
 
 1. 选择“部署到 Azure”  ，登录到 Azure 并打开模板。 该模板在运行 IIS 的后端池中创建应用程序网关、网络基础结构和两个虚拟机。
 
-   <a href="https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fag-docs-qs%2Fazuredeploy.json"><img src="./media/quick-create-template/deploy-to-azure.png" alt="deploy to azure"/></a>
+   [![“部署到 Azure”](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fag-docs-qs%2Fazuredeploy.json)
 
 2. 选择或创建资源组，键入虚拟机管理员用户名和密码。
 3. 选择“我同意上述条款和条件”，然后选择“购买”   。 部署可能需要 20 分钟或更长时间才能完成。

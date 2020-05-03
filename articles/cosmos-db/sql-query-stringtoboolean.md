@@ -4,16 +4,16 @@ description: 了解 Azure Cosmos DB 中的 SQL 系统函数 StringToBoolean。
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
-origin.date: 09/13/2019
-ms.date: 10/28/2019
+origin.date: 03/03/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
 ms.custom: query-reference
-ms.openlocfilehash: c3a0a054f9185cafe5abe3e508a68567c9afdad0
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 20cf9fdd479542131b384e25ad2f96b7d7c00485
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "72914648"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134830"
 ---
 # <a name="stringtoboolean-azure-cosmos-db"></a>StringToBoolean (Azure Cosmos DB)
  返回已转换为布尔值的表达式。 如果表达式无法转换，则返回未定义的表达式。  
@@ -48,7 +48,7 @@ SELECT
     StringToBoolean("false    ") AS b3
 ```  
 
- 下面是结果集：  
+ 下面是结果集。  
 
 ```json
 [{"b1": true, "b2": false, "b3": false}]
@@ -64,7 +64,7 @@ SELECT
     StringToBoolean("False")
 ```  
 
-下面是结果集：  
+下面是结果集。  
 
 ```json
 [{}]
@@ -81,11 +81,15 @@ SELECT
     StringToBoolean(true)
 ```  
 
-下面是结果集：  
+下面是结果集。  
 
 ```json
 [{}]
 ```  
+
+## <a name="remarks"></a>备注
+
+此系统函数不会使用索引。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -93,5 +97,4 @@ SELECT
 - [系统函数 Azure Cosmos DB](sql-query-system-functions.md)
 - [Azure Cosmos DB 简介](introduction.md)
 
-<!--Update_Description: new articles on sql query string to boolean  -->
-<!--New.date: 10/28/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

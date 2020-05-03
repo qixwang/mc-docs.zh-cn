@@ -5,15 +5,15 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 09/13/2019
-ms.date: 10/28/2019
+ms.date: 04/27/2020
 ms.author: v-yeche
 ms.custom: query-reference
-ms.openlocfilehash: 8424b5fcb59716c335dcba6b30cb1fc8469719fd
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 0d3252baff971a48615ac754ad1e92a274276f3d
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "72914722"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134729"
 ---
 # <a name="is_defined-azure-cosmos-db"></a>IS_DEFINED (Azure Cosmos DB)
  返回一个布尔，它指示属性是否已经分配了值。  
@@ -35,17 +35,21 @@ IS_DEFINED(<expr>)
 
 ## <a name="examples"></a>示例
 
-  以下示例检查了指定的 JSON 文档内是否存在属性。 由于存在 "a"，第一个会返回 true，但由于不存在 "b"，第二个会返回 false。  
+  以下示例检查指定的 JSON 文档中是否存在某个属性。 第一个示例返回 true，因为“a” 存在；第二个示例返回 false，因为“b”不存在。  
 
 ```sql
 SELECT IS_DEFINED({ "a" : 5 }.a) AS isDefined1, IS_DEFINED({ "a" : 5 }.b) AS isDefined2 
 ```  
 
- 下面是结果集：  
+ 下面是结果集。  
 
 ```json
 [{"isDefined1":true,"isDefined2":false}]  
 ```  
+
+## <a name="remarks"></a>备注
+
+此系统函数将从[范围索引](index-policy.md#includeexclude-strategy)中获益。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -53,5 +57,4 @@ SELECT IS_DEFINED({ "a" : 5 }.a) AS isDefined1, IS_DEFINED({ "a" : 5 }.b) AS isD
 - [系统函数 Azure Cosmos DB](sql-query-system-functions.md)
 - [Azure Cosmos DB 简介](introduction.md)
 
-<!--Update_Description: new articles on sql query is defined -->
-<!--New.date: 10/28/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

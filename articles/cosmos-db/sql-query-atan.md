@@ -4,19 +4,19 @@ description: 了解 Azure Cosmos DB 中的 Arctangent (ATAN ) SQL 系统函数�
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
-origin.date: 09/13/2019
-ms.date: 02/10/2020
+origin.date: 03/04/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
 ms.custom: query-reference
-ms.openlocfilehash: 711ad2b5417cac1a78fee24cfc30a76c75d4d9b7
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: be497a759abfe11c7d454206d94ecfa7ca255870
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77028693"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134870"
 ---
 # <a name="atan-azure-cosmos-db"></a>ATAN (Azure Cosmos DB)
- 返回角度（弧度），其正切是指定的数值表达式。 它也称为反正切函数。  
+ 返回角度（弧度），其正切是指定的数值表达式。 这也被称为反正切。  
 
 ## <a name="syntax"></a>语法
 
@@ -27,11 +27,11 @@ ATAN(<numeric_expr>)
 ## <a name="arguments"></a>参数
 
 *numeric_expr*  
-  为数值表达式。  
+  是一个数值表达式。  
 
 ## <a name="return-types"></a>返回类型
 
-  返回数值表达式。  
+  返回一个数值表达式。  
 
 ## <a name="examples"></a>示例
 
@@ -41,11 +41,15 @@ ATAN(<numeric_expr>)
 SELECT ATAN(-45.01) AS atan  
 ```  
 
- 下面是结果集：  
+ 下面是结果集。  
 
 ```json
 [{"atan": -1.5485826962062663}]  
 ```  
+
+## <a name="remarks"></a>备注
+
+此系统函数不会使用索引。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -12,17 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-origin.date: 04/25/2019
-ms.date: 03/27/2020
+ms.date: 04/23/2020
 ms.subservice: hybrid
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: af1cac5117c10981b45dae1b43ac2588f80537b8
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.openlocfilehash: fe2e2700ae29892a78d6c7b2f024626f72e083f8
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80343212"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126555"
 ---
 # <a name="troubleshoot-azure-ad-connectivity"></a>排查 Azure AD 连接问题
 本文说明 Azure AD Connect 与 Azure AD 之间的连接的工作方式，以及如何排查连接问题。 这些问题很有可能出现在包含代理服务器的环境中。
@@ -79,10 +78,10 @@ Azure AD Connect 使用现代身份验证（使用 ADAL 库）来进行身份验
 如果安装向导已成功连接到 Azure AD，但无法验证密码本身，则会看到此错误：  
 ![密码不正确。](./media/tshoot-connect-connectivity/badpassword.png)
 
-* 密码是否为临时密码并且必须更改？ 它是否确实为正确的密码？ 请尝试登录到 https://login.partner.microsoftonline.cn （在 Azure AD Connect 服务器以外的另一台计算机上），并验证该帐户是否可用。
+* 密码是否为临时密码并且必须更改？ 它是否确实为正确的密码？ 请尝试登录到 `https://login.partner.microsoftonline.cn` （在 Azure AD Connect 服务器以外的另一台计算机上），并验证该帐户是否可用。
 
 ### <a name="verify-proxy-connectivity"></a>验证代理连接
-要验证 Azure AD Connect 服务器是否确实与代理和 Internet 建立了连接，可使用一些 PowerShell 来查看代理是否允许 Web 请求。 在 PowerShell 命令提示符下运行 `Invoke-WebRequest -Uri https://adminwebservice.partner.microsoftonline.cn/ProvisioningService.svc`。 （从技术上讲，第一个调用是对 https://login.partner.microsoftonline.cn 发出的并且此 URI 也能正常运行，但另一个 URI 的响应速度更快。）
+要验证 Azure AD Connect 服务器是否确实与代理和 Internet 建立了连接，可使用一些 PowerShell 来查看代理是否允许 Web 请求。 在 PowerShell 命令提示符下运行 `Invoke-WebRequest -Uri https://adminwebservice.partner.microsoftonline.cn/ProvisioningService.svc`。 （从技术上讲，第一个调用是对 `https://login.partner.microsoftonline.cn` 发出的并且此 URI 也能正常运行，但另一个 URI 的响应速度更快。）
 
 PowerShell 使用 machine.config 中的配置来联系代理。 winhttp/netsh 中的设置应该不会影响这些 cmdlet。
 
@@ -105,7 +104,7 @@ Azure AD Connect 向 Azure AD 发送导出请求时，在生成响应之前，Az
 ## <a name="the-communication-pattern-between-azure-ad-connect-and-azure-ad"></a>Azure AD Connect 与 Azure AD 之间的通信模式
 如果已遵循上述步骤但仍无法连接，现在可以开始查看网络日志。 本部分说明正常且成功的连接模式。 此外，还将列出你在阅读网络日志时可能会忽略的常见辅助信息。
 
-* 有向 https://dc.services.visualstudio.com 发出的调用。 不需要在代理中打开该 URL 即可成功安装，可以忽略这些调用。
+* 有向 `https://dc.services.visualstudio.com` 发出的调用。 不需要在代理中打开该 URL 即可成功安装，可以忽略这些调用。
 * 可以看到 DNS 解析列出要处于 DNS 命名空间 nsatc.net 的实际主机，以及不在 partner.microsoftonline.cn 下的其他命名空间。 但是，实际服务器名称中不会有任何 Web 服务请求，因此不需要将这些 URL 添加到代理。
 * 终结点 adminwebservice 和 provisioningapi 是发现终结点，用于找出要使用的实际终结点。 这些终结点根据区域而有所不同。
 
@@ -166,7 +165,7 @@ Azure AD Connect 向 Azure AD 发送导出请求时，在生成响应之前，Az
 ### <a name="authorization-failure"></a>授权失败
 未能授权用户在 Azure AD 中执行操作。
 
-### <a name="authentication-cancelled"></a>身份验证已取消
+### <a name="authentication-canceled"></a>身份验证已取消
 多重身份验证 (MFA) 质询已取消。
 
 <div id="connect-msolservice-failed">
@@ -188,6 +187,23 @@ Azure AD Connect 向 Azure AD 发送导出请求时，在生成响应之前，Az
 
 ### <a name="azure-ad-global-admin-role-needed"></a>需要 Azure AD 全局管理员角色
 用户已成功完成身份验证。 但用户未分配有全局管理员角色。 此处介绍[如何将全局管理员角色分配给](../users-groups-roles/directory-assign-admin-roles.md)用户。 
+
+<div id="privileged-identity-management">
+<!--
+  Empty div just to act as an alias for the "Privileged Identity Management Enabled" header
+  because we used the mentioned id in the code to jump to this section.
+-->
+</div>
+
+### <a name="privileged-identity-management-enabled"></a>Privileged Identity Management 已启用
+身份验证成功。 已启用 Privileged Identity Management，但你目前不是全局管理员。 有关详细信息，请参阅 [Privileged Identity Management](../privileged-identity-management/pim-getting-started.md)。
+
+<div id="get-msolcompanyinformation-failed">
+<!--
+  Empty div just to act as an alias for the "Company Information Unavailable" header
+  because we used the mentioned id in the code to jump to this section.
+-->
+</div>
 
 ### <a name="company-information-unavailable"></a>公司信息不可用
 身份验证成功。 无法从 Azure AD 检索公司信息。
@@ -222,4 +238,3 @@ Azure AD Connect 向 Azure AD 发送导出请求时，在生成响应之前，Az
 ## <a name="next-steps"></a>后续步骤
 了解有关[将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。
 
-<!-- Update_Description: wording update -->

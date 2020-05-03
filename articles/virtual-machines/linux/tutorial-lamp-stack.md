@@ -1,9 +1,9 @@
 ---
-title: 教程 - 在 Azure 中的 Linux 虚拟机上部署 LAMP | Azure
+title: 教程 - 在 Azure 中的 Linux 虚拟机上安装 LAMP Web 服务器
 description: 本教程介绍如何在 Azure 中的 Linux 虚拟机上安装 LAMP 堆栈
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: rockboyfor
+author: Johnnytechn
 manager: digimobile
 editor: ''
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.topic: tutorial
 origin.date: 01/30/2019
-ms.date: 11/11/2019
-ms.author: v-yeche
-ms.openlocfilehash: ad6c80bb0bdd9175373e5f861a0e731c3a4a6481
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 04/13/2020
+ms.author: v-johya
+ms.openlocfilehash: e58482e96e3a565f8c6985e1bd5264207c188449
+ms.sourcegitcommit: ebedf9e489f5218d4dda7468b669a601b3c02ae5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "73831333"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82159177"
 ---
 # <a name="tutorial-install-a-lamp-web-server-on-a-linux-virtual-machine-in-azure"></a>教程：在 Azure 中的 Linux 虚拟机上安装 LAMP Web 服务器
 
@@ -111,7 +111,7 @@ sudo sh -c 'echo "<?php phpinfo(); ?>" > /var/www/html/info.php'
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程在 Azure 中部署了一台 LAMP 服务器。 你已了解如何执行以下操作：
+本教程在 Azure 中部署了一台 LAMP 服务器。 你已了解如何：
 
 > [!div class="checklist"]
 > * 创建 Ubuntu VM
@@ -120,10 +120,10 @@ sudo sh -c 'echo "<?php phpinfo(); ?>" > /var/www/html/info.php'
 > * 验证安装和配置
 > * 在 LAMP 服务器上安装 WordPress
 
-转到下一教程，了解如何使用 SSL 证书保护 Web 服务器。
+转到下一教程，了解如何使用 TLS/SSL 证书保护 Web 服务器。
 
 > [!div class="nextstepaction"]
-> [使用 SSL 保护 Web 服务器](tutorial-secure-web-server.md)
+> [使用 TLS 保护 Web 服务器](tutorial-secure-web-server.md)
 
 [2]: ./media/tutorial-lamp-stack/phpsuccesspage.png
 [3]: ./media/tutorial-lamp-stack/apachesuccesspage.png

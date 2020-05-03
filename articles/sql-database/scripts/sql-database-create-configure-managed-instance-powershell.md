@@ -13,19 +13,19 @@ ms.reviewer: carlrab
 manager: digimobile
 origin.date: 03/25/2019
 ms.date: 08/19/2019
-ms.openlocfilehash: 2f9b550bfb476562a486a1e90d569809e9c11cbd
-ms.sourcegitcommit: 52ce0d62ea704b5dd968885523d54a36d5787f2d
+ms.openlocfilehash: a23cb86ed41878e4a9fbdd4380beff7526dab8a2
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69544859"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82127076"
 ---
 # <a name="use-powershell-to-create-an-azure-sql-database-managed-instance"></a>使用 PowerShell 创建 Azure SQL 数据库托管实例
 
 此 PowerShell 脚本示例在新虚拟网络的专用子网中创建 Azure SQL 数据库托管实例。 它还为虚拟网络配置路由表和网络安全组。 成功运行脚本后，即可从虚拟网络或本地环境访问托管实例。 请参阅[将 Azure VM 配置为连接到 Azure SQL 数据库托管实例](../sql-database-managed-instance-configure-vm.md)和[配置从本地到 Azure SQL 数据库托管实例的点到站点连接](../sql-database-managed-instance-configure-p2s.md)。
 
 > [!IMPORTANT]
-> 有关限制，请参阅[支持的区域](../sql-database-managed-instance-resource-limits.md#supported-regions)和[支持的订阅类型](../sql-database-managed-instance-resource-limits.md#supported-subscription-types)。
+> 有关限制，请参阅[支持的区域](../sql-database-managed-instance-resource-limits.md#supported-regions)。
 
 本教程需要 AZ PowerShell 1.4.0 或更高版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](https://docs.microsoft.com/powershell/azure/install-az-ps)（安装 Azure PowerShell 模块）。 需要运行 `Connect-AzAccount -Environment AzureChinaCloud` 以创建与 Azure 的连接。
 

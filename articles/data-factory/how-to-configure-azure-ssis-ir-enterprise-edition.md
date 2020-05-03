@@ -1,26 +1,26 @@
 ---
-title: 预配 Azure-SSIS 集成运行时企业版 | Microsoft Docs
+title: 预配 Azure-SSIS 集成运行时企业版
 description: 本文介绍 Azure-SSIS 集成运行时企业版的功能以及如何配置它
 services: data-factory
-documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 origin.date: 04/13/2018
-ms.date: 07/08/2019
+ms.date: 05/11/2020
 author: WenJason
 ms.author: v-jay
 ms.reviewer: douglasl
 manager: digimobile
-ms.openlocfilehash: 2560b89a1fd82b338586287a07486107e0c14179
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 593a5ee23f1ab19c0e2d04a148f24575803af363
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "67569721"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82198233"
 ---
 # <a name="provision-enterprise-edition-for-the-azure-ssis-integration-runtime"></a>预配 Azure-SSIS 集成运行时企业版
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 在 Azure-SSIS 集成运行时企业版中可以使用以下高级功能：
 -   变更数据捕获 (CDC) 组件
@@ -43,7 +43,7 @@ ms.locfileid: "67569721"
 | 模糊分组和模糊查找转换  | 模糊分组和模糊查找转换已预装在 Azure-SSIS IR 企业版上。 这些组件支持使用 SQL Server 和 Azure SQL 数据库来存储参考数据。 |
 | 字词提取和字词查找转换 | 字词提取和字词查找转换已预装在 Azure-SSIS IR 企业版上。 这些组件支持使用 SQL Server 和 Azure SQL 数据库来存储参考数据。 |
 
-## <a name="instructions"></a>Instructions
+## <a name="instructions"></a>说明
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

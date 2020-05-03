@@ -11,21 +11,18 @@ ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 origin.date: 10/09/2018
-ms.date: 02/10/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: 11fd5d8a507b42386590d0c8dc6210730ba65c85
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 697c56602a58d98c45debaa3030083cec53e22f4
+ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77428839"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82596355"
 ---
 # <a name="azure-vm-startup-is-stuck-at-windows-update"></a>Azure VM 启动在更新 Windows 时停滞
 
 本文可帮助你解决虚拟机 (VM) 在启动过程中停滞在 Windows 更新阶段的问题。 
-
-> [!NOTE] 
-> Azure 具有用于创建和处理资源的两个不同的部署模型： [Resource Manager 和经典](../../azure-resource-manager/management/deployment-models.md)。 本文介绍如何使用 Resource Manager 部署模型。 建议为新部署使用此模型，而不是使用经典部署模型。
 
 ## <a name="symptom"></a>症状
 

@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-origin.date: 12/09/2019
-ms.date: 03/01/2020
+origin.date: 04/13/2019
+ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: 1d34472326aa7190f0e1e6d4a4088de68d58bbc6
-ms.sourcegitcommit: 892137d117bcaf9d88aec0eb7ca756fe39613344
+ms.openlocfilehash: 83a4f5636d945d94e9c8fafcd63183fdc8883d7b
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78048905"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126701"
 ---
 # <a name="quickstart-get-the-list-of-text-to-speech-voices-using-nodejs"></a>快速入门：使用 Node.js 获取“文本转语音”语音的列表
 
@@ -28,9 +28,10 @@ ms.locfileid: "78048905"
 
 本快速入门需要：
 
-* [Node 8.12.x 或更高版本](https://nodejs.org/en/)
-* [Visual Studio](https://visualstudio.microsoft.com/downloads/)、[Visual Studio Code](https://code.visualstudio.com/download) 或你喜欢用的文本编辑器
+* <a href="https://nodejs.org/en/" target="_blank">Node 8.12.x 或更高版本 <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+* <a href="https://visualstudio.microsoft.com/downloads/" target="_blank">Visual Studio<span class="docon docon-navigate-external x-hidden-focus"></span></a>、<a href="https://code.visualstudio.com/download" target="_blank">Visual Studio Code<span class="docon docon-navigate-external x-hidden-focus"></span></a> 或你喜欢用的文本编辑器
 * 语音服务的 Azure 订阅密钥。 [免费获得一个！](get-started.md)
+* 需要语音 SDK 版本 1.10.0 或更高版本。
 
 ## <a name="create-a-project-and-require-dependencies"></a>创建项目并声明需要的依赖项
 

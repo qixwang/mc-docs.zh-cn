@@ -4,18 +4,18 @@ description: 向托管应用程序的使用者展示了如何通过 Azure 门户
 author: rockboyfor
 ms.topic: conceptual
 origin.date: 10/04/2018
-ms.date: 01/20/2020
+ms.date: 04/30/2020
 ms.author: v-yeche
-ms.openlocfilehash: 1c6dcc1d0e4dbde83a4e890cf8706f0f840fd90c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: fc7230d3f625703f34c5a92afea06f7eba7fc4d3
+ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "76170650"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82596096"
 ---
-# <a name="deploy-service-catalog-app-through-azure-portal"></a>通过 Azure 门户部署服务目录应用
+# <a name="quickstart-deploy-service-catalog-app-through-azure-portal"></a>快速入门：通过 Azure 门户部署服务目录应用
 
-在[前面的快速入门](publish-managed-app-definition-quickstart.md)中，你已发布了一个托管应用程序定义。 在本快速入门中，你将基于该定义创建一个服务目录应用。
+在[前面的快速入门](publish-service-catalog-app.md)中，你已发布了一个托管应用程序定义。 在本快速入门中，你将基于该定义创建一个服务目录应用。
 
 ## <a name="create-service-catalog-app"></a>创建服务目录应用
 

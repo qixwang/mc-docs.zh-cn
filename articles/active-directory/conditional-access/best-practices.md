@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: article
-ms.date: 01/09/2020
+ms.date: 04/24/2020
 ms.author: v-junlch
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a4ee213cdbf97925da8efac9b621e23d74acbd3e
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 3b3903e5f9bdf3a5d8bd9d20ae4fafac99317491
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79291092"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126301"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Azure Active Directory 中条件访问的最佳做法
 
@@ -98,7 +98,7 @@ ms.locfileid: "79291092"
 
 常见的相互连接的应用程序包括 Microsoft Flow、Microsoft Planner、Microsoft Teams、Office 365 Exchange Online、Office 365 SharePoint Online 和 Office 365 Yammer。
 
-如果访问权限是在会话或任务的开始时控制的，则这对需要用户交互（例如多重身份验证）的策略来说很重要。 如果你不这样做，用户将无法完成应用中的某些任务。 例如，如果你在访问 SharePoint 时要求在非托管设备上进行多重身份验证，但在访问电子邮件时却不这样做，则在电子邮件中工作的用户无法将 SharePoint 文件附加到邮件中。 有关详细信息，可参阅此文：[Azure Active Directory 条件访问中的服务依赖项是什么？](service-dependencies.md)。
+如果访问权限是在会话或任务的开始时控制的，则这对需要用户交互（例如多重身份验证）的策略来说很重要。 如果你不这样做，用户将无法完成应用中的某些任务。 例如，如果你要求在非托管设备上访问 SharePoint 时进行多重身份验证，但不要求在访问电子邮件时这样做，则在电子邮件中工作的用户无法将 SharePoint 文件附加到邮件中。 有关详细信息，可参阅此文：[Azure Active Directory 条件访问中的服务依赖项是什么？](service-dependencies.md)。
 
 ## <a name="what-you-should-avoid-doing"></a>应避免的操作
 
@@ -147,6 +147,6 @@ ms.locfileid: "79291092"
 
 如果希望了解：
 
-- 如何配置条件访问策略，请参阅[通过 Azure Active Directory 条件访问要求特定应用必须使用 MFA](app-based-mfa.md)。
+- 如何配置条件访问策略，请参阅[通过 Azure Active Directory 条件访问要求特定应用必须使用 MFA](/active-directory/authentication/tutorial-enable-azure-mfa)。
 - 若要了解如何规划条件访问策略，请参阅[如何在 Azure Active Directory 中规划条件访问部署](plan-conditional-access.md)。
 

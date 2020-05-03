@@ -8,14 +8,14 @@ metadata:
   ms.service: virtual-machines-windows
   ms.topic: landing-page
   author: rockboyfor
-  ms.date: 03/30/2020
+  ms.date: 04/27/2020
   ms.author: v-yeche
-  ms.openlocfilehash: fba5a2a92424505040268d6cdc0c75e01a8aaaf2
-  ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+  ms.openlocfilehash: 141d68c26210e96cccc571636d267b8696a5d325
+  ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 04/17/2020
-  ms.locfileid: "79543947"
+  ms.lasthandoff: 04/30/2020
+  ms.locfileid: "82596383"
 landingContent:
 - title: 排查部署失败问题
   linkLists:
@@ -27,7 +27,7 @@ landingContent:
       url: troubleshoot-deployment-new-vm-windows.md
     - text: 解决无效模板错误
       url: ../../azure-resource-manager/templates/error-invalid-template.md
-    - text: 解决 SKU 不可用的错误
+    - text: 解决 SKU 不可用错误
       url: https://docs.azure.cn/azure-resource-manager/templates/error-sku-not-available
 - title: VM 部署指南
   linkLists:
@@ -59,7 +59,7 @@ landingContent:
       url: https://docs.azure.cn/virtual-machines/troubleshooting/reset-rdp
     - text: 使用脱机方法重置 Azure VM 的本地 Windows 密码
       url: https://docs.azure.cn/virtual-machines/troubleshooting/reset-local-password-without-agent
-    - text: Azure 中 Windows VM 特定 RDP 错误消息故障排除
+    - text: 排查发送到 Azure 中 Windows VM 的特定 RDP 错误消息
       url: https://docs.azure.cn/virtual-machines/troubleshooting/troubleshoot-specific-rdp-errors
     - text: 排查与 Azure 虚拟机的远程桌面连接的问题
       url: https://docs.azure.cn/virtual-machines/troubleshooting/troubleshoot-rdp-connection

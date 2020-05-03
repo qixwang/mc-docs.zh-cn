@@ -1,5 +1,5 @@
 ---
-title: 快速入门：将表 API 与 Node.js 配合使用 - Azure Cosmos DB
+title: 快速入门 - 将表 API 与 Node.js 配合使用 - Azure Cosmos DB
 description: 本快速入门介绍如何在 Azure 门户和 Node.js 中使用 Azure Cosmos DB 表 API 创建应用程序
 author: rockboyfor
 ms.service: cosmos-db
@@ -7,14 +7,14 @@ ms.subservice: cosmosdb-table
 ms.devlang: nodejs
 ms.topic: quickstart
 origin.date: 08/06/2019
-ms.date: 09/09/2019
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: 4006d0843ad47e4eed86a60a638106539bb1a799
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 5b00848c62f5b334476488eeb1d7db527ad548f1
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "70254822"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134944"
 ---
 <!--Verify sucessfully-->
 # <a name="quickstart-build-a-table-api-app-with-nodejs-and-azure-cosmos-db"></a>快速入门：使用 Node.js 和 Azure Cosmos DB 生成表 API 应用
@@ -26,24 +26,21 @@ ms.locfileid: "70254822"
 > * [Python](create-table-python.md)
 > 
 
-本快速入门介绍如何使用 Node.js 和 Azure Cosmos DB [表 API](table-introduction.md)，通过克隆 GitHub 中的示例来生成应用。 此外，本快速入门还介绍了如何创建 Azure Cosmos DB 帐户，以及如何在基于 Web 的 Azure 门户中使用数据资源管理器创建表和实体。
+在本快速入门中，我们创建一个 Azure Cosmos DB 表 API 帐户，并使用从 GitHub 克隆的数据资源管理器和 Node.js 应用创建表和条目。 Azure Cosmos DB 是一种多模型数据库服务，可让你通过多区域分布和水平缩放功能快速创建和查询文档、表、键/值和图数据库。
 
-Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服务。 可快速创建和查询文档、键/值、宽列和图形数据库，所有这些都受益于 Azure Cosmos DB 核心的多区域分布和水平缩放功能。 
+## <a name="prerequisites"></a>先决条件
 
-## <a name="prerequisites"></a>必备条件
+- 具有活动订阅的 Azure 帐户。 [免费创建一个](https://www.azure.cn/pricing/1rmb-trial/)。 你还可以使用 [Azure Cosmos DB 模拟器](https://aka.ms/cosmosdb-emulator)以及 URI `https://localhost:8081` 和密钥 `C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==`。
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-[!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
-
-此外：
-
-* [Node.js](https://nodejs.org/en/) 版本 v0.10.29 或更高版本
-* [Git](https://git-scm.com/)
+    <!--Not Available on [try Azure Cosmos DB for free](https://www.azure.cn/try/cosmosdb/)-->
+    
+- [Node.js 0.10.29+](https://nodejs.org/)。
+- [Git](https://git-scm.com/downloads)。
 
 ## <a name="create-a-database-account"></a>创建数据库帐户
 
 > [!IMPORTANT] 
-> 必须新建表 API 帐户，才能使用正式发布的表 API SDK。 正式发布的 SDK 不支持在预览期间创建的表 API 帐户。
+> 需创建新的适用于公开发表版表 API SDK 的表 API 帐户。 在预览期间创建的表 API 帐户不受公开发布版 SDK 的支持。
 >
 
 [!INCLUDE [cosmos-db-create-dbaccount-table](../../includes/cosmos-db-create-dbaccount-table.md)]
@@ -72,7 +69,7 @@ Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服�
     cd "C:\git-samples"
     ```
 
-3. 运行下列命令以克隆示例存储库。 此命令在计算机上创建示例应用程序的副本。
+3. 运行下列命令，克隆示例存储库。 此命令在计算机上创建示例应用程序的副本。
 
     ```bash
     git clone https://github.com/Azure-Samples/storage-table-node-getting-started.git
@@ -82,23 +79,23 @@ Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服�
 
 现在返回到 Azure 门户，获取连接字符串信息，并将其复制到应用。 这样，应用程序就可以与托管的数据库进行通信。 
 
-1. 在 [Azure 门户](https://portal.azure.cn/)中，单击“连接字符串”  。 
+1. 在 [Azure 门户](https://portal.azure.cn/)的 Azure Cosmos DB 帐户中，选择“连接字符串”  。 
 
     ![在“连接字符串”窗格中查看并复制所需的连接字符串信息](./media/create-table-nodejs/connection-string.png)
 
 2. 使用右侧的复制按钮复制主连接字符串。
 
-3. 打开 app.config 文件，然后将值粘贴到第三行上的 connectionString 中。 
+3. 打开 *app.config* 文件，然后将值粘贴到第三行的 connectionString 中。 
 
     > [!IMPORTANT]
     > 如果终结点使用 documents.azure.cn，则意味着帐户为预览版帐户，需创建适用于公开发布版表 API SDK 的[新的表 API 帐户](#create-a-database-account)。
     >
 
-3. 保存 app.config 文件。
+3. 保存 *app.config* 文件。
 
 现已使用与 Azure Cosmos DB 进行通信所需的所有信息更新应用。 
 
-## <a name="run-the-app"></a>运行应用
+## <a name="run-the-app"></a>运行应用程序
 
 1. 在 git 终端窗口中，运行 `cd` 切换到 storage-table-java-getting-started 文件夹。
 
@@ -106,13 +103,13 @@ Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服�
     cd "C:\git-samples\storage-table-node-getting-started"
     ```
 
-2. 运行以下命令在本地安装 azure、[node-uuid]、[nconf] 和 [async] 模块，并为它们在 package.json文件中保存一个条目
+2. 运行以下命令，在本地安装 [azure]、[node-uuid]、[nconf] 和 [async] 模块，并为它们在 *package.json* 文件中保存一个条目。
 
    ```
    npm install azure-storage node-uuid async nconf --save
    ```
 
-2. 在 git 终端窗口中，运行以下命令来启动节点应用程序。
+2. 在 git 终端窗口中运行以下命令，以便运行 Node.js 应用程序。
 
     ```
     node ./tableSample.js 
@@ -132,9 +129,9 @@ Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服�
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门教程中，已了解如何创建 Azure Cosmos DB 帐户、使用数据资源管理器创建表和运行应用。  现在可以使用表 API 进行数据查询了。  
+在本快速入门中，你了解了如何创建 Azure Cosmos DB 帐户、如何使用数据资源管理器创建表，以及如何运行 Node.js 应用来添加表数据。  现在可以使用表 API 进行数据查询了。  
 
 > [!div class="nextstepaction"]
 > [将表数据导入表 API](table-import.md)
 
-<!--Update_Description: update meta properties  -->
+<!-- Update_Description: update meta properties, wording update, update link -->

@@ -4,19 +4,19 @@ description: 了解 Azure Cosmos DB 中的 SQL 系统函数 REVERSE。
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
-origin.date: 09/13/2019
-ms.date: 10/28/2019
+origin.date: 03/03/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
 ms.custom: query-reference
-ms.openlocfilehash: ca02b053647492e05471796d1af935c3e3a526c9
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 5a61391c83869b65ff81379a8c807f1fa2ed65af
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "72914683"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134759"
 ---
 # <a name="reverse-azure-cosmos-db"></a>REVERSE (Azure Cosmos DB)
- 返回字符串值的逆序。  
+ 返回字符串值的逆序排序形式。  
 
 ## <a name="syntax"></a>语法
 
@@ -31,7 +31,7 @@ REVERSE(<str_expr>)
 
 ## <a name="return-types"></a>返回类型
 
-  返回字符串表达式。  
+  返回一个字符串表达式。  
 
 ## <a name="examples"></a>示例
 
@@ -41,11 +41,15 @@ REVERSE(<str_expr>)
 SELECT REVERSE("Abc") AS reverse  
 ```  
 
- 下面是结果集：  
+ 下面是结果集。  
 
 ```json
 [{"reverse": "cbA"}]  
 ```  
+
+## <a name="remarks"></a>备注
+
+此系统函数不会使用索引。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -53,5 +57,4 @@ SELECT REVERSE("Abc") AS reverse
 - [系统函数 Azure Cosmos DB](sql-query-system-functions.md)
 - [Azure Cosmos DB 简介](introduction.md)
 
-<!--Update_Description: new articles on sql query reverse  -->
-<!--New.date: 10/28/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

@@ -3,16 +3,16 @@ title: 设置 Windows 开发环境
 description: 安装运行时、SDK 和工具并创建本地开发群集。 完成此设置后，就可以在 Windows 上开始生成应用程序。
 author: rockboyfor
 ms.topic: conceptual
-origin.date: 02/05/2020
-ms.date: 02/24/2020
+origin.date: 03/02/2020
+ms.date: 04/13/2020
 ms.author: v-yeche
 ms.custom: sfrev
-ms.openlocfilehash: 8b9d91001cd41cc58b7a73da2704940d53995c14
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.openlocfilehash: 7af8082e2a4e948cba5c914a65af25689c34edaf
+ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77540423"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82093448"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>在 Windows 上准备开发环境
 
@@ -27,7 +27,7 @@ ms.locfileid: "77540423"
 
 <!-- MOONCAKE: Not Available on [Azure Service Fabric applications][1]-->
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 ### <a name="supported-operating-system-versions"></a>支持的操作系统版本
 
@@ -72,15 +72,15 @@ Service Fabric 工具是 Visual Studio 2017 和 2019 中 Azure 开发工作负�
 
 当前版本包括：
 
-* Service Fabric SDK and Tools 4.0.466
-* Service Fabric 运行时 7.0.466
+* Service Fabric SDK and Tools 4.0.470
+* Service Fabric 运行时 7.0.470
 
 有关支持版本的列表，请参阅 [Service Fabric 版本](service-fabric-versions.md)
 
 > [!NOTE]
 > 应用程序或群集升级不支持单机群集 (OneBox)；如果需要执行群集升级，或在执行应用程序升级时遇到任何问题，请删除 OneBox 群集并重新创建它。 
 
-## <a name="enable-powershell-script-execution"></a>允许执行 PowerShell 脚本
+## <a name="enable-powershell-script-execution"></a><a name="enable-powershell-script-execution"></a>允许执行 PowerShell 脚本
 
 Service Fabric 使用 Windows PowerShell 脚本创建本地开发群集和部署 Visual Studio 中的应用程序。 默认情况下，Windows 会阻止这些脚本运行。 要启用它们，必须修改 PowerShell 执行策略。 以管理员身份打开 PowerShell 并输入以下命令：
 

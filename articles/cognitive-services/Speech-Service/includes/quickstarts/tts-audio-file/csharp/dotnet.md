@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-origin.date: 10/28/2019
-ms.date: 03/16/2020
+origin.date: 04/04/2020
+ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: 2d9429a28e2ed4f90684b46ae0223430ab6da257
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: f0ee21d213eb09ed700351adbb0aa6d986493d7a
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80151587"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82150931"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -24,7 +24,8 @@ ms.locfileid: "80151587"
 
 > [!div class="checklist"]
 > * [创建一个 Azure 搜索资源](../../../../get-started.md)
-> * [设置开发环境并创建空项目](../../../../quickstarts/setup-platform.md?tabs=dotnet)
+> * [设置开发环境并创建空项目](../../../../quickstarts/setup-platform.md?tabs=dotnet&pivots=programming-language-csharp)
+> * 需要语音 SDK 版本 1.10.0 或更高版本。
 
 ## <a name="open-your-project-in-visual-studio"></a>在 Visual Studio 中打开项目
 
@@ -67,7 +68,7 @@ namespace helloworld
 ````C#
 // Replace with your own subscription key and region identifier from here: https://docs.azure.cn/cognitive-services/speech-service/regions
 // The default language is "en-us".
-var config = SpeechConfig.FromHost(new Uri("https://YourServiceRegion.tts.speech.azure.cn/"), "YourSubscriptionKey");
+var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
 ````
 
 ## <a name="create-an-audio-configuration"></a>创建音频配置
@@ -145,7 +146,7 @@ namespace helloworld
     {
         public static async Task SynthesisToAudioFileAsync()
         {
-            var config = SpeechConfig.FromHost(new Uri("https://YourServiceRegion.tts.speech.azure.cn/"), "YourSubscriptionKey");
+            var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
 
             var fileName = "helloworld.wav";
             using (var fileOutput = AudioConfig.FromWavFileOutput(fileName))
@@ -197,7 +198,7 @@ namespace helloworld
 
 ## <a name="next-steps"></a>后续步骤
 
-[!INCLUDE [footer](./footer.md)]
+[!INCLUDE [Speech synthesis basics](../../text-to-speech-next-steps.md)]
 
 <!-- ## See also -->
 

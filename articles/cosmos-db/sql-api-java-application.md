@@ -1,5 +1,5 @@
 ---
-title: 教程：使用 Azure Cosmos DB 的 Java 应用程序开发教程
+title: 教程 - 使用 Azure Cosmos DB 开发 Java 应用程序教程
 description: 教程：此 Java Web 应用程序教程展示了如何使用 Azure Cosmos DB 和 SQL API 从 Azure 网站上托管的 Java 应用程序来存储和访问数据。
 author: rockboyfor
 ms.service: cosmos-db
@@ -7,14 +7,14 @@ ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: tutorial
 origin.date: 11/05/2019
-ms.date: 12/16/2019
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: d11817d8e77aa13609346d76f6ee79f562c88c1b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: ca317055af41f0539ca30798477394f5559d6f27
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75335739"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134699"
 ---
 # <a name="tutorial-build-a-java-web-application-using-azure-cosmos-db-and-the-sql-api"></a>教程：使用 Azure Cosmos DB 和 SQL API 构建 Java Web 应用程序
 
@@ -49,6 +49,9 @@ ms.locfileid: "75335739"
   [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
 * [Java 开发工具包 (JDK) 7+](https://docs.azure.cn/java/java-supported-jdk-runtime?view=azure-java-stable)。
+
+    <!--CORRECT ON https://docs.azure.cn/java/java-supported-jdk-runtime-->
+    
 * [Eclipse IDE for Java EE Developers。](https://www.eclipse.org/downloads/packages/release/luna/sr1/eclipse-ide-java-ee-developers)
 * [已启用 Java 运行时环境（例如 Tomcat 或 Jetty）的 Azure 网站。](../app-service/app-service-web-get-started-java.md)
 

@@ -5,15 +5,15 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 05/23/2019
-ms.date: 02/10/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
 ms.reviewer: sngun
-ms.openlocfilehash: 5201f71e7b31e1b2c552584d6fb19ca7254243b0
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 3dd5ca0f2553d7a9b38215535a98824694d8c412
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77068328"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134872"
 ---
 # <a name="access-azure-cosmos-db-from-virtual-networks-vnet"></a>从虚拟网络 (VNet) 访问 Azure Cosmos DB
 
@@ -51,7 +51,7 @@ ms.locfileid: "77068328"
 只有已添加到 Azure Cosmos 帐户的虚拟网络及其子网才拥有此访问权限。 将对等互连的虚拟网络中的子网添加到帐户之后，对等互连的 VNet 才可以访问该帐户。
 
 ### <a name="what-is-the-maximum-number-of-subnets-allowed-to-access-a-single-cosmos-account"></a>最多允许多少个子网访问单个 Cosmos 帐户？ 
-目前，最多允许 64 个子网访问一个 Azure Cosmos 帐户。
+目前，最多允许 256 个子网访问一个 Azure Cosmos 帐户。
 
 ### <a name="can-i-enable-access-from-vpn-and-express-route"></a>是否可以启用从 VPN 和 Express Route 进行访问？ 
 若要在本地通过 Express Route 访问 Azure Cosmos 帐户，需要启用 Azure 对等互连。 创建 IP 防火墙或虚拟网络访问规则后，可以在 Azure Cosmos 帐户 IP 防火墙中添加用于 Azure 对等互连的公共 IP 地址，以允许本地服务访问 Azure Cosmos 帐户。 

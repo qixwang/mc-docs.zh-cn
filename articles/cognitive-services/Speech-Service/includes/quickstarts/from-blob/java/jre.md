@@ -1,16 +1,16 @@
 ---
-author: IEvangelist
+author: trevorbye
 ms.service: cognitive-services
 ms.topic: include
 origin.date: 01/13/2020
-ms.date: 03/16/2020
+ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: 24460d69d6b9a67c65b1143c59458a86cd691593
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 7b5193c693f3687c8ebf6e762f002e0b36b46b2c
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80151592"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82150942"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -20,7 +20,7 @@ ms.locfileid: "80151592"
 > * [设置开发环境并创建空项目](../../../../quickstarts/setup-platform.md?tabs=jre&pivots=programmming-language-java)
 > * [创建 Azure 语音资源](../../../../get-started.md)
 > * [将源文件上传到 Azure blob](https://docs.azure.cn/storage/blobs/storage-quickstart-blobs-portal)
-
+> * 需要语音 SDK 版本 1.10.0 或更高版本。
 
 ## <a name="open-your-project-in-eclipse"></a>在 Eclipse 中打开项目
 

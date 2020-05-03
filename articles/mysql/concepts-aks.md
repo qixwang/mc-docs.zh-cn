@@ -1,18 +1,18 @@
 ---
-title: 将 Azure Kubernetes 服务 (AKS) 与 Azure Database for MySQL 连接
+title: 连接到 Azure Kubernetes 服务 - Azure Database for MySQL
 description: 了解如何将 Azure Kubernetes 服务与 Azure Database for MySQL 连接
 author: WenJason
 ms.author: v-jay
 ms.service: mysql
 ms.topic: conceptual
-origin.date: 11/28/2018
-ms.date: 05/20/2019
-ms.openlocfilehash: bf6c735d726cd29baf988da4b97786838ee9e47a
-ms.sourcegitcommit: 2a020ee232b901b13c9f1c4d27ad65228a34d58b
+origin.date: 3/28/2020
+ms.date: 04/27/2020
+ms.openlocfilehash: 2b020b904966fe6321284d59dd42506f8f021650
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68391989"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82127002"
 ---
 # <a name="connecting-azure-kubernetes-service-and-azure-database-for-mysql"></a>连接 Azure Kubernetes 服务和 Azure Database for MySQL
 
@@ -54,3 +54,4 @@ az network nic list --resource-group nodeResourceGroup -o table
 
 ## <a name="next-steps"></a>后续步骤
 - [创建 Azure Kubernetes 服务群集](../aks/kubernetes-walkthrough.md)
+- 了解如何[使用 OSBA 和 Azure Database for MySQL 从 Helm 图表安装 WordPress](/aks/)

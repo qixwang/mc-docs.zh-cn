@@ -1,25 +1,28 @@
 ---
-title: 使用 Azure 数据工厂以增量方式复制数据 | Microsoft Docs
+title: 以增量方式复制数据
 description: 这些教程介绍如何以增量方式将数据从源数据存储复制到目标数存储。 第一个从一个表复制数据。
 services: data-factory
 documentationcenter: ''
 author: WenJason
+ms.author: v-jay
 manager: digimobile
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
+ms.custom: seo-lt-2019
 origin.date: 01/22/2018
-ms.date: 11/11/2019
-ms.author: v-jay
-ms.openlocfilehash: 064f9aba679398bc8895f18dd392089addc69d2c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/11/2020
+ms.openlocfilehash: 017b9e1f2581f1d7d0aaa808ffd12ee485bc6da8
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "73648608"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82198101"
 ---
 # <a name="incrementally-load-data-from-a-source-data-store-to-a-destination-data-store"></a>以增量方式将数据从源数据存储加载到目标数据存储
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 在数据集成解决方案中，一种广泛使用的方案是在完成初始的完整数据加载后以增量方式加载数据。 此部分的教程介绍如何使用不同的方法，通过 Azure 数据工厂以增量方式加载数据。
 
@@ -55,7 +58,7 @@ ms.locfileid: "73648608"
 - [按 LastModifiedDate 复制新文件](solution-template-copy-new-files-lastmodifieddate.md)
 
 ## <a name="loading-new-files-only-by-using-time-partitioned-folder-or-file-name"></a>仅通过使用时间分区文件夹或文件名称来加载新文件。
-仅可以复制新文件，其中文件或文件夹已经过时间分区，时间片信息作为文件或文件夹名称的一部分（如 /yyyy/mm/dd/file.csv）。 这是用于增量加载新文件的性能最好的方法。 
+仅可以复制新文件，其中文件或文件夹已经过时间分区，时间片信息作为文件或文件夹名称的一部分（如 /yyyy/mm/dd/file.csv）。 这是以增量方式加载新文件的最高性能方法。 
 
 有关分步说明，请参阅以下教程： <br/>
 - [基于时间分区文件夹或文件名称以增量方式将新文件从 Azure Blob 存储复制到 Azure Blob 存储](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md)

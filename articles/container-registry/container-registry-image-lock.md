@@ -3,14 +3,14 @@ title: 锁定图像
 description: 设置容器映像或存储库的属性，使之不会在 Azure 容器注册表中遭到删除或覆盖。
 ms.topic: article
 origin.date: 09/30/2019
+ms.date: 04/06/2020
 ms.author: v-yeche
-ms.date: 12/09/2019
-ms.openlocfilehash: 1339b890b54387df0f5552aa30019518d84a82da
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.openlocfilehash: 0d41f5a83448207b153f7315118339ddb382f2db
+ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74885022"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82093248"
 ---
 # <a name="lock-a-container-image-in-an-azure-container-registry"></a>锁定 Azure 容器注册表中的容器映像
 
@@ -19,15 +19,17 @@ ms.locfileid: "74885022"
 本文要求在 Azure Local Shell 中或本地运行 Azure CLI（建议使用 2.0.55 或更高版本）。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli]。
 
 > [!IMPORTANT]
-> 本文不适用于锁定整个注册表（例如，在 Azure CLI 中使用 `az lock` 命令）。 锁定注册表资源不会阻止你在存储库中创建、更新或删除数据。 锁定注册表只会影响管理操作，如添加或删除复制，或删除注册表本身。 有关详细信息，请参阅[锁定资源以防止意外更改](../azure-resource-manager/resource-group-lock-resources.md)。
-
-<!--Not Available on **Settings > Locks** in the Azure portal, or -->
+> 本文不适用于锁定整个注册表，例如，在 Azure 门户中使用“设置”>“锁定”  ，或在 Azure CLI 中使用 `az lock` 命令。 锁定注册表资源不会阻止你在存储库中创建、更新或删除数据。 锁定注册表只会影响管理操作，如添加或删除复制，或删除注册表本身。 有关详细信息，请参阅[锁定资源以防止意外更改](../azure-resource-manager/management/lock-resources.md)。
 
 ## <a name="scenarios"></a>方案
 
 默认情况下，Azure 容器注册表中带标记的映像是可变的，因此，如果具有相应的权限，你可以反复更新带有相同标记的映像并将其推送到注册表。  还可以根据需要[删除](container-registry-delete.md)容器映像。 开发映像并需要保持注册表的大小时，此行为很有用。
 
-但是，将容器映像部署到生产环境时，可能需要不可变的容器映像。  不可变的映像是指不能意外删除或覆盖的映像。 使用 [az acr repository update][az-acr-repository-update] 命令设置存储库属性，以便可以：
+但是，将容器映像部署到生产环境时，可能需要不可变的容器映像。  不可变的映像是指不能意外删除或覆盖的映像。
+
+有关对注册表中的映像进行标记和版本控制的策略，请参阅[有关对容器映像进行标记和版本控制的建议](container-registry-image-tag-version.md)。
+
+使用 [az acr repository update][az-acr-repository-update] 命令设置存储库属性，以便可以：
 
 * 锁定某个映像版本或整个存储库
 
@@ -44,7 +46,7 @@ ms.locfileid: "74885022"
 
 ```azurecli
 az acr repository show \
-    --name myregistry --repository myrepo
+    --name myregistry --repository myrepo \
     --output jsonc
 ```
 

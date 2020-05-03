@@ -2,20 +2,20 @@
 title: 快速入门 - 在门户中创建注册表
 description: 快速了解如何使用 Azure 门户在 Azure 容器注册表中创建专用 Docker 注册表。
 ms.topic: quickstart
-origin.date: 01/22/2019
+origin.date: 03/03/2020
+ms.date: 04/06/2020
 ms.author: v-yeche
-ms.date: 12/09/2019
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 924e08b92a4e240145ac33d449113fde9771bf22
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.openlocfilehash: b99ab7e5adefe9702a87d91435f5f463e6ebcf34
+ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74884867"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82093229"
 ---
 # <a name="quickstart-create-a-private-container-registry-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建专用容器注册表
 
-Azure 容器注册表是 Azure 中的专用 Docker 注册表，你可在其中存储和管理专用 Docker 容器映像。 在本快速入门教程中，你会使用 Azure 门户创建容器注册表。 然后，使用 Docker 命令将容器映像推送到注册表中，最终从注册表提取并运行该映像。
+Azure 容器注册表是 Azure 中的专用 Docker 注册表，你可在其中存储和管理专用 Docker 容器映像和相关的项目。 在本快速入门教程中，你会使用 Azure 门户创建容器注册表。 然后，使用 Docker 命令将容器映像推送到注册表中，最终从注册表提取并运行该映像。
 
 若要登录到注册表以使用容器映像，本快速入门要求运行 Azure CLI（建议使用 2.0.55 或更高版本）。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli]。
 
@@ -29,7 +29,7 @@ Azure 容器注册表是 Azure 中的专用 Docker 注册表，你可在其中�
 
 <!--MOONCAKE:  Customized to match MC-->
 
-选择“创建资源”  ，在“新建”  选项卡的搜索筛选器中键入“容器注册表”  ，然后单击回车键。
+选择“创建资源”，在“新建”页的搜索筛选器中键入“容器注册表”，然后按回车键。   
 
 ![在 Azure 门户中创建容器注册表][qs-portal-01]
 
@@ -43,9 +43,11 @@ Azure 容器注册表是 Azure 中的专用 Docker 注册表，你可在其中�
 
 <!--MOONCAKE:  Customized to match MC-->
 
-在“注册表名称”和“资源组”中输入值   。 注册表名称在 Azure 中必须唯一，并且包含 5-50 个字母数字字符。 对于本快速入门，在 `China North` 位置创建名为 `myResourceGroup` 的新资源组，对于 **SKU**，选择“基本”。 选择“创建”，部署 ACR 实例  。
+在“基本信息”选项卡中，输入“资源组”和“注册表名称”的值   。  注册表名称在 Azure 中必须唯一，并且包含 5-50 个字母数字字符。 对于本快速入门，在 `China North` 位置创建名为 `myResourceGroup` 的新资源组，对于 **SKU**，选择“基本”。 
 
 ![在 Azure 门户中创建容器注册表][qs-portal-03]
+
+接受其余设置的默认值。 然后选择“查看 + 创建”  。 查看设置后，选择“创建”  。
 
 本快速入门将创建一个“基本”注册表。该注册表已针对成本进行优化，是可供开发人员了解 Azure 容器注册表的选项。  有关可用服务层级的详细信息，请参阅[容器注册表 SKU][container-registry-skus]。
 
@@ -53,11 +55,13 @@ Azure 容器注册表是 Azure 中的专用 Docker 注册表，你可在其中�
 
 ![Azure 门户中的容器注册表概述][qs-portal-05]
 
-记下“登录服务器”的值。  结合 Azure CLI 和 Docker 使用注册表时，请在以下步骤中使用此值。
+记下“登录服务器”的值。  使用 Docker 推送和拉取映像时，请在以下步骤中使用此值。
 
 ## <a name="log-in-to-registry"></a>登录到注册表
 
-在推送和拉取容器映像之前，必须登录到 ACR 实例。 在操作系统中打开命令外壳，然后在 Azure CLI 中使用 [az acr login][az-acr-login] 命令。
+在推送和拉取容器映像之前，必须登录到 ACR 实例。 在操作系统中打开命令外壳，然后在 Azure CLI 中使用 [az acr login][az-acr-login] 命令。 （登录时仅指定注册表名称。 不要包含“azurecr.cn”后缀。）
+
+<!--CORRECT ON azurecr.cn-->
 
 ```azurecli
 az acr login --name <acrName>
@@ -83,10 +87,12 @@ az acr login --name <acrName>
 
 ![在 Azure 门户中删除资源组][qs-portal-08]
 
-<!--Not Available on ## Next steps-->
-<!--Not Available on In this quickstart, you created an Azure Container Registry with the Azure portal, pushed a container image, and pulled and ran the image from the registry.-->
-<!--Not Available on  Continue to the Azure Container Registry tutorials for a deeper look at ACR-->
-<!-- Not Availble on > [Azure Container Registry tutorials][container-registry-tutorial-quick-task]-->
+## <a name="next-steps"></a>后续步骤
+
+本快速入门介绍了如何使用 Azure 门户创建 Azure 容器注册表、推送容器映像，以及提取和运行注册表中的映像。 请继续阅读 Azure 容器注册表教程，以更深入地了解 ACR。
+
+> [!div class="nextstepaction"]
+> [Azure 容器注册表教程][container-registry-tutorial-quick-task]
 
 <!-- IMAGES -->
 
@@ -109,10 +115,10 @@ az acr login --name <acrName>
 [docker-windows]: https://docs.docker.com/docker-for-windows/
 
 <!-- LINKS - internal -->
-<!-- Not Availble on [container-registry-tutorial-quick-task]: container-registry-tutorial-quick-task.md-->
 
+[container-registry-tutorial-quick-task]: container-registry-tutorial-quick-task.md
 [container-registry-skus]: container-registry-skus.md
 [azure-cli]: https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest
 [az-acr-login]: https://docs.azure.cn/cli/acr?view=azure-cli-latest#az-acr-login
 
-<!-- Update_Description: update meta properties, update link, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

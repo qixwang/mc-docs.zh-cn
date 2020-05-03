@@ -1,8 +1,7 @@
 ---
-title: Azure 数据工厂管道中的分支 | Microsoft Docs
+title: 使用 Azure 门户对管道中的活动进行分支和链接
 description: 了解如何通过分支和链接活动控制 Azure 数据工厂中的数据流。
 services: data-factory
-documentationcenter: ''
 author: WenJason
 ms.author: v-jay
 manager: digimobile
@@ -10,16 +9,20 @@ ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
+ms.custom: seo-lt-2019; seo-dt-2019
 origin.date: 01/11/2018
-ms.date: 10/14/2019
-ms.openlocfilehash: 4c082076a94fc3eef90bcda3a3d3306269f870c4
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/11/2020
+ms.openlocfilehash: 502fd9962c8805b7e32cbcfbc34ece25f15071ac
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77653584"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82198201"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>数据工厂管道中的分支和链接活动
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+
 在本教程中，我们将创建一个数据工厂管道来展示某些控制流功能。 此管道执行从 Azure Blob 存储容器中某个容器到同一存储帐户中另一个容器的简单复制。 如果复制活动成功，该管道会在告知成功结果的电子邮件中发送成功复制操作的详细信息（例如写入的数据量）。 如果复制活动失败，该管道会在告知失败结果的电子邮件中发送复制失败的详细信息（例如错误消息）。 整个教程讲解了如何传递参数。
 
 方案的综合概述：![概述](media/tutorial-control-flow-portal/overview.png)
@@ -38,7 +41,7 @@ ms.locfileid: "77653584"
 
 本教程使用 Azure 门户。 可以使用其他机制来与 Azure 数据工厂交互，具体请参阅目录中的“快速入门”。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * **Azure 订阅**。 如果没有 Azure 订阅，可在开始前创建一个 [1 元人民币试用](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth)帐户。
 * **Azure 存储帐户**。 可将 Blob 存储用作**源**数据存储。 如果没有 Azure 存储帐户，请参阅[创建存储帐户](../storage/common/storage-account-create.md)一文获取创建步骤。
@@ -148,8 +151,8 @@ https://prodxxx.chinaeast.logic.azure.cn:443/workflows/000000/triggers/manual/pa
 4. 选择“V2”  作为“版本”  。
 5. 选择数据工厂的**位置**。 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
 6. 选择“固定到仪表板”  。     
-7. 单击“创建”。       
-8. 在仪表板上，会看到状态为“正在部署数据工厂”的以下磁贴。 
+7. 单击**创建**。      
+8. 在仪表板上，你会看状态如下的以下磁贴：“正在部署数据工厂”  。
 
     ![“正在部署数据工厂”磁贴](media/tutorial-control-flow-portal/deploying-data-factory.png)
 9. 创建完成后，可以看到图中所示的“数据工厂”页。 
@@ -266,13 +269,13 @@ https://prodxxx.chinaeast.logic.azure.cn:443/workflows/000000/triggers/manual/pa
         ```
 
         ![第二个 Web 活动的设置](./media/tutorial-control-flow-portal/web-activity2-settings.png)         
-22. 在管道设计器中选择“复制”活动，单击  **按钮，然后选择“错误”。+->**   
+22. 在管道设计器中选择“复制”活动，单击 **+->** 按钮，然后选择“错误”。    
 
     ![第二个 Web 活动的设置](./media/tutorial-control-flow-portal/select-copy-failure-link.png)
 23. 将“复制”活动旁边的**红色**按钮拖放到第二个“Web”活动 **SendFailureEmailActivity**。 可以四处移动活动，使管道如下图所示：
 
     ![包含所有活动的完整管道](./media/tutorial-control-flow-portal/full-pipeline.png)
-24. 若要验证管道，请单击工具栏中的“验证”按钮。  单击  **按钮关闭“管道验证输出”窗口。>>**
+24. 若要验证管道，请单击工具栏中的“验证”按钮。  单击 **>>** 按钮关闭“管道验证输出”窗口。 
 
     ![验证管道](./media/tutorial-control-flow-portal/validate-pipeline.png)
 24. 若要将实体（数据集、管道等）发布到数据工厂服务，请选择“全部发布”。  等待“已成功发布”消息出现。 

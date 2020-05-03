@@ -4,16 +4,16 @@ description: 了解 Azure Cosmos DB 中的 SQL 系统函数 StringToObject。
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
-origin.date: 09/13/2019
-ms.date: 10/28/2019
+origin.date: 03/03/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
 ms.custom: query-reference
-ms.openlocfilehash: 7f45cf3251f66f51378cb2356b8b8b6c3b4ff426
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 5ff3aef9f1944721d89dccfba36320ecca14574f
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "72914641"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134475"
 ---
 # <a name="stringtoobject-azure-cosmos-db"></a>StringToObject (Azure Cosmos DB)
  返回已转换为对象的表达式。 如果表达式无法转换，则返回未定义的表达式。  
@@ -47,7 +47,7 @@ SELECT
     StringToObject("{\"C\":[{\"c1\":[5,6,7]},{\"c2\":8},{\"c3\":9}]}") AS obj4
 ``` 
 
-下面是结果集：
+下面是结果集。
 
 ```json
 [{"obj1": {}, 
@@ -66,7 +66,7 @@ SELECT
     StringToObject("{'a':[1,2,3]}")
 ```
 
-下面是结果集：
+下面是结果集。
 
 ```json
 [{}]
@@ -79,7 +79,7 @@ SELECT
     StringToObject("{a:[1,2,3]}")
 ```
 
-下面是结果集：
+下面是结果集。
 
 ```json
 [{}]
@@ -99,11 +99,15 @@ SELECT
     StringToObject(undefined)
 ``` 
 
- 下面是结果集：
+ 下面是结果集。
 
 ```json
 [{}]
 ```
+
+## <a name="remarks"></a>备注
+
+此系统函数不会使用索引。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -111,5 +115,4 @@ SELECT
 - [系统函数 Azure Cosmos DB](sql-query-system-functions.md)
 - [Azure Cosmos DB 简介](introduction.md)
 
-<!--Update_Description: new articles on sql query string to object  -->
-<!--New.date: 10/28/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

@@ -11,12 +11,12 @@ ms.topic: conceptual
 origin.date: 12/09/2019
 ms.date: 03/01/2020
 ms.author: v-tawe
-ms.openlocfilehash: b3f348ea81f523cececfa4186f3ce1921c01a861
-ms.sourcegitcommit: 892137d117bcaf9d88aec0eb7ca756fe39613344
+ms.openlocfilehash: f5958c950a0f6b7d9cd6466a81442ea38b43d7ba
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78042306"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126776"
 ---
 # <a name="text-to-speech-rest-api"></a>文本转语音 REST API
 
@@ -28,7 +28,7 @@ ms.locfileid: "78042306"
 * 有关区域可用性的信息，请参阅[区域](regions.md#text-to-speech)。
 
 > [!IMPORTANT]
-> 标准语音和神经语音的费用各不相同（预览版免费）。 有关详细信息，请参阅[定价](https://www.azure.cn/pricing/details/cognitive-services/)。
+> 费用因标准语音和神经语音（免费预览版）而异。 有关详细信息，请参阅[定价](https://www.azure.cn/pricing/details/cognitive-services/)。
 
 使用此 API 之前，请了解：
 
@@ -52,7 +52,7 @@ ms.locfileid: "78042306"
 
 | 标头 | 说明 | 必需/可选 |
 |--------|-------------|---------------------|
-| `Authorization` | 前面带有单词 `Bearer` 的授权令牌。 有关详细信息，请参阅[身份验证](#authentication)。 | 必须 |
+| `Authorization` | 前面带有单词 `Bearer` 的授权令牌。 有关详细信息，请参阅[身份验证](#authentication)。 | 必需 |
 
 ### <a name="request-body"></a>请求正文
 
@@ -82,35 +82,44 @@ Authorization: Bearer [Base64 access_token]
         "Name": "Microsoft Server Speech Text to Speech Voice (ar-EG, Hoda)",
         "ShortName": "ar-EG-Hoda",
         "Gender": "Female",
-        "Locale": "ar-EG"
+        "Locale": "ar-EG",
+        "SampleRateHertz": "16000",
+        "VoiceType": "Standard"
     },
     {
         "Name": "Microsoft Server Speech Text to Speech Voice (ar-SA, Naayf)",
         "ShortName": "ar-SA-Naayf",
         "Gender": "Male",
-        "Locale": "ar-SA"
+        "Locale": "ar-SA",
+        "SampleRateHertz": "16000",
+        "VoiceType": "Standard"
     },
     {
         "Name": "Microsoft Server Speech Text to Speech Voice (bg-BG, Ivan)",
         "ShortName": "bg-BG-Ivan",
         "Gender": "Male",
-        "Locale": "bg-BG"
+        "Locale": "bg-BG",
+        "SampleRateHertz": "16000",
+        "VoiceType": "Standard"
     },
     {
         "Name": "Microsoft Server Speech Text to Speech Voice (ca-ES, HerenaRUS)",
         "ShortName": "ca-ES-HerenaRUS",
         "Gender": "Female",
-        "Locale": "ca-ES"
+        "Locale": "ca-ES",
+        "SampleRateHertz": "16000",
+        "VoiceType": "Standard"
     },
     {
-        "Name": "Microsoft Server Speech Text to Speech Voice (cs-CZ, Jakub)",
-        "ShortName": "cs-CZ-Jakub",
-        "Gender": "Male",
-        "Locale": "cs-CZ"
+        "Name": "Microsoft Server Speech Text to Speech Voice (zh-CN, XiaoxiaoNeural)",
+        "ShortName": "zh-CN-XiaoxiaoNeural",
+        "Gender": "Female",
+        "Locale": "zh-CN",
+        "SampleRateHertz": "24000",
+        "VoiceType": "Neural"
     },
 
     ...
-
 ]
 ```
 
@@ -124,7 +133,8 @@ Authorization: Bearer [Base64 access_token]
 | 400 | 错误的请求 | 必需参数缺失、为空或为 null。 或者，传递给必需参数或可选参数的值无效。 常见问题是标头太长。 |
 | 401 | 未授权 | 请求未经授权。 确保订阅密钥或令牌有效并在正确的区域中。 |
 | 429 | 请求过多 | 已经超过了订阅允许的配额或请求速率。 |
-| 502 | 错误的网关 | 网络或服务器端问题。 也可能表示标头无效。 |
+| 502 | 错误的网关    | 网络或服务器端问题。 也可能表示标头无效。 |
+
 
 ## <a name="convert-text-to-speech"></a>将文本转换到语音
 
@@ -142,10 +152,10 @@ Authorization: Bearer [Base64 access_token]
 
 | 标头 | 说明 | 必需/可选 |
 |--------|-------------|---------------------|
-| `Authorization` | 前面带有单词 `Bearer` 的授权令牌。 有关详细信息，请参阅[身份验证](#authentication)。 | 必须 |
-| `Content-Type` | 指定所提供的文本的内容类型。 接受的值：`application/ssml+xml`。 | 必须 |
-| `X-Microsoft-OutputFormat` | 指定音频输出格式。 有关接受值的完整列表，请参阅[音频输出](#audio-outputs)。 | 必须 |
-| `User-Agent` | 应用程序名称。 提供的值必须少于 255 个字符。 | 必须 |
+| `Authorization` | 前面带有单词 `Bearer` 的授权令牌。 有关详细信息，请参阅[身份验证](#authentication)。 | 必需 |
+| `Content-Type` | 指定所提供的文本的内容类型。 接受的值：`application/ssml+xml`。 | 必需 |
+| `X-Microsoft-OutputFormat` | 指定音频输出格式。 有关接受值的完整列表，请参阅[音频输出](#audio-outputs)。 | 必需 |
+| `User-Agent` | 应用程序名称。 提供的值必须少于 255 个字符。 | 必需 |
 
 ### <a name="audio-outputs"></a>音频输出
 
@@ -185,7 +195,7 @@ Content-Length: 225
 Authorization: Bearer [Base64 access_token]
 
 <speak version='1.0' xml:lang='en-US'><voice xml:lang='en-US' xml:gender='Female'
-    name='en-US-JessaRUS'>
+    name='en-US-AriaRUS'>
         Microsoft Speech Service Text-to-Speech API
 </voice></speak>
 ```
@@ -208,12 +218,10 @@ Authorization: Bearer [Base64 access_token]
 | 413 | 请求实体太大 | SSML 输入超过了 1024 个字符。 |
 | 415 | 不支持的媒体类型 | 可能是提供了错误的 `Content-Type`。 `Content-Type` 应设置为 `application/ssml+xml`。 |
 | 429 | 请求过多 | 已经超过了订阅允许的配额或请求速率。 |
-| 502 | 错误的网关 | 网络或服务器端问题。 也可能表示标头无效。 |
+| 502 | 错误的网关    | 网络或服务器端问题。 也可能表示标头无效。 |
 
 如果 HTTP 状态为 `200 OK`，则响应正文包含采用所请求格式的音频文件。 可以一边传输一边播放此文件，或者将其保存到缓冲区或文件中。
 
 ## <a name="next-steps"></a>后续步骤
 
 - [获取语音试用订阅](https://www.azure.cn/pricing/1rmb-trial/)
-- [自定义声学模型](how-to-customize-acoustic-models.md)
-- [自定义语言模型](how-to-customize-language-model.md)

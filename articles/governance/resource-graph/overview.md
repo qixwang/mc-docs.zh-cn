@@ -3,14 +3,14 @@ title: Azure Resource Graph 概述
 description: 了解如何使用 Azure Resource Graph 服务跨订阅和租户对资源进行大规模的复杂查询。
 ms.author: v-tawe
 origin.date: 03/02/2020
-ms.date: 03/16/2020
+ms.date: 04/20/2020
 ms.topic: overview
-ms.openlocfilehash: 6aa29612213d0d692a666fd794a0d5b230c68916
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 17136f36ae25b2bc6dcab9a05d6d7d319876c509
+ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80243902"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82588616"
 ---
 # <a name="what-is-azure-resource-graph"></a>什么是 Azure Resource Graph？
 

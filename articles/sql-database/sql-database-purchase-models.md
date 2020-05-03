@@ -12,12 +12,12 @@ ms.author: v-jay
 ms.reviewer: carlrab
 origin.date: 03/09/2020
 ms.date: 03/30/2020
-ms.openlocfilehash: 40a5a546bdcefa881cdb95f36bcea235734f1a44
-ms.sourcegitcommit: 90660563b5d65731a64c099b32fb9ec0ce2c51c6
+ms.openlocfilehash: 199cb4bfa8de3525af801e69fbbf89a77755c4d3
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80341804"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82127028"
 ---
 # <a name="choose-between-the-vcore-and-the-dtu-purchasing-models"></a>在 vCore 和 DTU 购买模型之间进行选择
 

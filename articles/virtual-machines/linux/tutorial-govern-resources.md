@@ -1,25 +1,23 @@
 ---
-title: 教程：了解如何使用 Azure CLI 管理 Linux 虚拟机
+title: 教程 - 了解如何使用 Azure CLI 管理 Linux 虚拟机
 description: 本教程介绍如何使用 Azure CLI 通过应用 RBAC、策略、锁和标记来管理 Azure 虚拟机。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: rockboyfor
-manager: digimobile
-editor: tysonn
+author: Johnnytechn
+manager: gwallace
 ms.service: virtual-machines-linux
 ms.workload: infrastructure
 ms.tgt_pltfrm: vm-linux
 ms.topic: tutorial
-origin.date: 09/30/2019
-ms.date: 02/10/2020
-ms.author: v-yeche
+ms.date: 04/20/2020
+ms.author: v-johya
 ms.custom: mvc
-ms.openlocfilehash: 7e1e2e2d65e41aa97debedaefaf39e0f07b2e55f
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: fd06e8751ee323a0daeff610c2107088c39fc80d
+ms.sourcegitcommit: ebedf9e489f5218d4dda7468b669a601b3c02ae5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77427999"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82159180"
 ---
 # <a name="tutorial-learn-about-linux-virtual-machine-management-with-azure-cli"></a>教程：了解如何使用 Azure CLI 管理 Linux 虚拟机
 
@@ -224,6 +222,7 @@ az lock delete --ids $vmlock $nsglock
 ```azurecli 
 az group delete --name myResourceGroup
 ```
+
 
 ## <a name="next-steps"></a>后续步骤
 

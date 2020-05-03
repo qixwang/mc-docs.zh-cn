@@ -9,20 +9,22 @@ ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-origin.date: 02/01/2020
-ms.date: 03/23/2020
+origin.date: 03/27/2020
+ms.date: 05/11/2020
 author: v-jay
 ms.author: v-jay
 ms.reviewer: douglasl
 manager: digimobile
-ms.openlocfilehash: 7e00b602f6753ae562efa41507a0befc9e17dccb
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: a374ca7ddfdcf91f7d80e075c5bb5eb96a5582ac
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79497135"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82198167"
 ---
 # <a name="set-up-an-azure-ssis-ir-in-azure-data-factory-by-using-powershell"></a>使用 PowerShell 在 Azure 数据工厂中设置 Azure-SSIS IR
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 本教程介绍如何在 Azure 数据工厂中设置 Azure-SQL Server Integration Services Integration Runtime (Azure-SSIS IR)。 Azure-SSIS IR 支持运行部署到以下位置的包：
 * 由 Azure SQL 数据库服务器实例或托管实例承载的 SSIS 目录 (SSISDB)（项目部署模型）。
@@ -45,7 +47,7 @@ ms.locfileid: "79497135"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-- Azure 订阅。 如果没有 Azure 订阅，可在开始前创建一个 [1 元人民币试用](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth)帐户。 有关 Azure-SSIS IR 的概念性信息，请参阅 [Azure-SSIS Integration Runtime 概述](concepts-integration-runtime.md#azure-ssis-integration-runtime)。
+- Azure 订阅。 如果没有 Azure 订阅，可在开始前创建一个 [1 元人民币试用帐户](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth)。 有关 Azure-SSIS IR 的概念性信息，请参阅 [Azure-SSIS Integration Runtime 概述](concepts-integration-runtime.md#azure-ssis-integration-runtime)。
 
 - （可选）Azure SQL 数据库服务器。 如果还没有数据库服务器，请在启动之前在 Azure 门户中创建一个。 Azure 数据工厂进而会在此数据库服务器上创建 SSISDB。 建议在集成运行时所在的同一 Azure 区域中创建数据库服务器。 此配置允许集成运行时将执行日志写入 SSISDB 而无需跨 Azure 区域。 
     - 根据所选的数据库服务器，系统可以代表你将 SSISDB 创建为单一数据库、弹性池的一部分，或者在托管实例中创建。 有关如何选择用于承载 SSISDB 的数据库服务器类型的指导，请参阅[比较 Azure SQL 数据库单一数据库、弹性池和托管实例](../data-factory/create-azure-ssis-integration-runtime.md#comparison-of-a-sql-database-single-database-elastic-pool-and-managed-instance)。
@@ -96,7 +98,7 @@ $AzureSSISLicenseType = "LicenseIncluded" # LicenseIncluded by default, while Ba
 $AzureSSISMaxParallelExecutionsPerNode = 8
 # Custom setup info: Standard/express custom setups
 $SetupScriptContainerSasUri = "" # OPTIONAL to provide a SAS URI of blob container for standard custom setup where your script and its associated files are stored
-$ExpressCustomSetup = "[RunCmdkey|SetEnvironmentVariable|SentryOne.TaskFactory|oh22is.SQLPhonetics.NET|oh22is.HEDDA.IO or leave it empty]" # OPTIONAL to configure an express custom setup without script
+$ExpressCustomSetup = "[RunCmdkey|SetEnvironmentVariable|SentryOne.TaskFactory|oh22is.SQLPhonetics.NET|oh22is.HEDDA.IO|KingswaySoft.IntegrationToolkit|KingswaySoft.ProductivityPack|Theobald.XtractIS or leave it empty]" # OPTIONAL to configure an express custom setup without script
 
 ### SSISDB info
 $SSISDBServerEndpoint = "[your Azure SQL Database server name.database.chinacloudapi.cn or managed instance name.public.DNS prefix.database.chinacloudapi.cn,3342 or leave it empty if you're not using SSISDB]" # WARNING: If you use SSISDB, please ensure that there is no existing SSISDB on your database server, so we can prepare and manage one on your behalf    
@@ -250,6 +252,24 @@ if(![string]::IsNullOrEmpty($ExpressCustomSetup))
     {
         $setup = New-Object Microsoft.Azure.Management.DataFactory.Models.ComponentSetup($ExpressCustomSetup)
     }
+    if($ExpressCustomSetup -eq "KingswaySoft.IntegrationToolkit")
+    {
+        $licenseKey = New-Object Microsoft.Azure.Management.DataFactory.Models.SecureString("YourLicenseKey")
+        $setup = New-Object Microsoft.Azure.Management.DataFactory.Models.ComponentSetup($ExpressCustomSetup, $licenseKey)
+    }
+    if($ExpressCustomSetup -eq "KingswaySoft.ProductivityPack")
+    {
+        $licenseKey = New-Object Microsoft.Azure.Management.DataFactory.Models.SecureString("YourLicenseKey")
+        $setup = New-Object Microsoft.Azure.Management.DataFactory.Models.ComponentSetup($ExpressCustomSetup, $licenseKey)
+    }    
+    if($ExpressCustomSetup -eq "Theobald.XtractIS")
+    {
+        $jsonData = Get-Content -Raw -Path YourLicenseFile.json
+        $jsonData = $jsonData -replace '\s',''
+        $jsonData = $jsonData.replace('"','\"')
+        $licenseKey = New-Object Microsoft.Azure.Management.DataFactory.Models.SecureString($jsonData)
+        $setup = New-Object Microsoft.Azure.Management.DataFactory.Models.ComponentSetup($ExpressCustomSetup, $licenseKey)
+    }
     # Create an array of one or more express custom setups
     $setups = New-Object System.Collections.ArrayList
     $setups.Add($setup)
@@ -343,7 +363,7 @@ $AzureSSISLicenseType = "LicenseIncluded" # LicenseIncluded by default, while Ba
 $AzureSSISMaxParallelExecutionsPerNode = 8
 # Custom setup info: Standard/express custom setups
 $SetupScriptContainerSasUri = "" # OPTIONAL to provide a SAS URI of blob container for standard custom setup where your script and its associated files are stored
-$ExpressCustomSetup = "[RunCmdkey|SetEnvironmentVariable|SentryOne.TaskFactory|oh22is.SQLPhonetics.NET|oh22is.HEDDA.IO or leave it empty]" # OPTIONAL to configure an express custom setup without script
+$ExpressCustomSetup = "[RunCmdkey|SetEnvironmentVariable|SentryOne.TaskFactory|oh22is.SQLPhonetics.NET|oh22is.HEDDA.IO|KingswaySoft.IntegrationToolkit|KingswaySoft.ProductivityPack|Theobald.XtractIS or leave it empty]" # OPTIONAL to configure an express custom setup without script
 
 ### SSISDB info
 $SSISDBServerEndpoint = "[your Azure SQL Database server name.database.chinacloudapi.cn or managed instance name.public.DNS prefix.database.chinacloudapi.cn,3342 or leave it empty if you're not using SSISDB]" # WARNING: If you want to use SSISDB, ensure that there is no existing SSISDB on your database server, so we can prepare and manage one on your behalf    
@@ -452,6 +472,24 @@ if(![string]::IsNullOrEmpty($ExpressCustomSetup))
     {
         $setup = New-Object Microsoft.Azure.Management.DataFactory.Models.ComponentSetup($ExpressCustomSetup)
     }
+    if($ExpressCustomSetup -eq "KingswaySoft.IntegrationToolkit")
+    {
+        $licenseKey = New-Object Microsoft.Azure.Management.DataFactory.Models.SecureString("YourLicenseKey")
+        $setup = New-Object Microsoft.Azure.Management.DataFactory.Models.ComponentSetup($ExpressCustomSetup, $licenseKey)
+    }
+    if($ExpressCustomSetup -eq "KingswaySoft.ProductivityPack")
+    {
+        $licenseKey = New-Object Microsoft.Azure.Management.DataFactory.Models.SecureString("YourLicenseKey")
+        $setup = New-Object Microsoft.Azure.Management.DataFactory.Models.ComponentSetup($ExpressCustomSetup, $licenseKey)
+    }    
+    if($ExpressCustomSetup -eq "Theobald.XtractIS")
+    {
+        $jsonData = Get-Content -Raw -Path YourLicenseFile.json
+        $jsonData = $jsonData -replace '\s',''
+        $jsonData = $jsonData.replace('"','\"')
+        $licenseKey = New-Object Microsoft.Azure.Management.DataFactory.Models.SecureString($jsonData)
+        $setup = New-Object Microsoft.Azure.Management.DataFactory.Models.ComponentSetup($ExpressCustomSetup, $licenseKey)
+    }
     # Create an array of one or more express custom setups
     $setups = New-Object System.Collections.ArrayList
     $setups.Add($setup)
@@ -510,8 +548,8 @@ write-host("If any cmdlet is unsuccessful, please consider using -Debug option f
 
 - [在 Azure 中部署、运行和监视 SSIS 包](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-deploy-run-monitor-tutorial)   
 - [连接到 Azure 中的 SSISDB](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-connect-to-catalog-database)
-- [在 Azure 中计划包执行](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages)
 - [使用 Windows 身份验证连接到本地数据源](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-connect-with-windows-auth) 
+- [在 Azure 中计划包执行](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages)
 
 ## <a name="next-steps"></a>后续步骤
 

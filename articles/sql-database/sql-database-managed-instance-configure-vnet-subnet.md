@@ -1,5 +1,5 @@
 ---
-title: 为 Azure SQL 数据库托管实例配置现有虚拟网络 | Microsoft Docs
+title: 为托管实例配置现有虚拟网络
 description: 本文介绍如何配置可在其中部署 Azure SQL 数据库托管实例的现有虚拟网络和子网。
 services: sql-database
 ms.service: sql-database
@@ -10,15 +10,14 @@ ms.topic: conceptual
 author: WenJason
 ms.author: v-jay
 ms.reviewer: sstein, bonova, carlrab
-manager: digimobile
-origin.date: 01/15/2019
-ms.date: 08/19/2019
-ms.openlocfilehash: 2a359de1858ee859ab4ca77f908417eebcda0459
-ms.sourcegitcommit: 52ce0d62ea704b5dd968885523d54a36d5787f2d
+origin.date: 03/17/2020
+ms.date: 04/27/2020
+ms.openlocfilehash: 7a2fb48b9025b8ee4978d0d7df29a0c59a02187b
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69544255"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82127067"
 ---
 # <a name="configure-an-existing-virtual-network-for-azure-sql-database-managed-instance"></a>为 Azure SQL 数据库托管实例配置现有虚拟网络
 
@@ -40,7 +39,7 @@ Azure SQL 数据库托管实例必须部署在专用于托管实例的 Azure [�
 如果希望在现有子网内创建托管实例，建议使用以下 PowerShell 脚本来准备子网：
 
 ```powershell
-$scriptUrlBase = 'https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/manage/azure-sql-db-managed-instance/prepare-subnet'
+$scriptUrlBase = 'https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/manage/azure-sql-db-managed-instance/delegate-subnet'
 
 $parameters = @{
     subscriptionId = '<subscriptionId>'
@@ -49,7 +48,7 @@ $parameters = @{
     subnetName = '<subnetName>'
     }
 
-Invoke-Command -ScriptBlock ([Scriptblock]::Create((iwr ($scriptUrlBase+'/prepareSubnet.ps1?t='+ [DateTime]::Now.Ticks)).Content)) -ArgumentList $parameters
+Invoke-Command -ScriptBlock ([Scriptblock]::Create((iwr ($scriptUrlBase+'/delegateSubnet.ps1?t='+ [DateTime]::Now.Ticks)).Content)) -ArgumentList $parameters
 ```
 
 该脚本通过三个步骤来准备子网：

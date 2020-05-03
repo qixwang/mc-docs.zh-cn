@@ -2,26 +2,23 @@
 title: Azure Active Directory 中的服务到服务应用
 description: 介绍什么是服务到服务应用，以及有关此应用类型的协议流、注册和令牌到期的基础知识。
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: azuread-dev
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/24/2020
+ms.date: 04/23/2020
 ms.author: v-junlch
-ms.reviewer: saeeda, jmprieur, andret
+ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 64bd11b17e35ac3405805d06260d695e7b8b8943
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ROBOTS: NOINDEX
+ms.openlocfilehash: 21687cb72bfedf85cb9eda10c1ff103f03b08eea
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77653620"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126329"
 ---
 # <a name="service-to-service-apps"></a>服务到服务应用
 
@@ -35,7 +32,7 @@ ms.locfileid: "77653620"
 
 - 需要调用 Web API 的服务器应用程序（如 Web API），基于 OAuth 2.0 代理草案规范构建
 
-    在此方案中，假定用户已在某个本机应用程序上通过了身份验证，并且此本机应用程序需要调用 Web API。 Azure AD 颁发一个 JWT 访问令牌来调用 Web API。 如果 Web API 需要调用另一个下游 Web API，它可以使用 on-behalf-of 流来委托用户的标识并通过第二层 Web API 进行身份验证。
+    在此方案中，假定用户已在某个本机应用程序上通过了身份验证，并且此本机应用程序需要调用 Web API。 Azure AD 颁发一个 JWT 访问令牌来调用 Web API。 如果 Web API 需要调用另一个下游 Web API，它可以使用代理流来委托用户的标识并通过第二层 Web API 进行身份验证。
 
 ## <a name="diagram"></a>图示
 
@@ -64,7 +61,7 @@ ms.locfileid: "77653620"
 
 ## <a name="app-registration"></a>应用注册
 
-* 单租户 - 对于应用程序标识和委托用户标识这两种情况，守护程序或服务器应用程序都必须在 Azure AD 的同一个目录中进行注册。 可以对 Web API 进行配置以公开一组权限，并使用这些权限来限制后台或服务器对其资源的访问。 如果使用的是委托的用户标识类型，则服务器应用程序需要选择所需的权限。 在用于应用程序注册的“API 权限”页中，  在选择“添加权限”并选择  API 系列后，请选择“委托的权限”，然后选择你的权限  。 如果使用的是应用程序标识类型，则不需要此步骤。
+* 单租户 - 对于应用程序标识和委托用户标识这两种情况，守护程序或服务器应用程序都必须在 Azure AD 的同一个目录中进行注册。 可以对 Web API 进行配置以公开一组权限，并使用这些权限来限制守护程序或服务器对其资源的访问。 如果使用的是委托的用户标识类型，则服务器应用程序需要选择所需的权限。 在用于应用程序注册的“API 权限”页中，  在选择“添加权限”并选择  API 系列后，请选择“委托的权限”，然后选择你的权限  。 如果使用的是应用程序标识类型，则不需要此步骤。
 * 多租户 - 首先，守护程序或服务器应用程序在配置后会指示它在正常运行时所需的权限。 目标目录中的用户或管理员许可应用程序的要求，使应用程序可供其组织使用时，此必需权限列表会显示在一个对话框中。 某些应用程序只需要用户级权限，组织中的任何用户都可以表示许可。 另外一些应用程序需要管理员级权限，组织中的用户无法许可。 只有目录管理员可以对需要此级别的权限的应用程序表示许可。 当用户或管理员表示许可后，将在其目录中注册这两个 Web API。
 
 ## <a name="token-expiration"></a>令牌过期

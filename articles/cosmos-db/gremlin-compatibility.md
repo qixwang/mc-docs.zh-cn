@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: reference
 origin.date: 09/10/2019
-ms.date: 02/10/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: 9b9cdc7213db8ae25dcdc8a6cace6b8b191c7f11
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: a5abcdfd0330cd488ec9fb6dc24621dd7e71bf58
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "76980528"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134934"
 ---
 # <a name="azure-cosmos-db-gremlin-compatibility"></a>Azure Cosmos DB Gremlin 兼容性
 Azure Cosmos DB Graph 引擎紧密遵循 [Apache TinkerPop](https://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps) 遍历步骤规范，但是存在差异。
@@ -30,13 +30,15 @@ Azure Cosmos DB Graph 引擎紧密遵循 [Apache TinkerPop](https://tinkerpop.ap
 
 * ***`match()`*** 允许使用声明性模式匹配来查询图。 此功能不可用。
 
+    <!--CORRECT ON match()-->
+    
 * 不支持顶点或边上的***对象作为属性***。 属性只能是基元类型或数组。
 
 * 不支持***按数组属性排序*** `order().by(<array property>)`。 只支持按基元类型排序。
 
 * 不支持***非基元 JSON 类型***。 使用 `string`、`number` 或 `true`/`false` 类型。 不支持 `null` 值。 
 
-* 目前不支持 ***GraphSONv3*** 序列化程序。 在连接配置中使用 `GraphSONv2` Serializer、Reader 和 Writer 类。
+* 目前不支持 ***GraphSONv3*** 序列化程序。 在连接配置中使用 `GraphSONv2` Serializer、Reader 和 Writer 类。 Azure Cosmos DB Gremlin API 返回的结果的格式与 GraphSON 格式不同。 
 
 * 目前不支持 **Lambda 表达式和函数**。 这包括 `.map{<expression>}`、`.by{<expression>}` 和 `.filter{<expression>}` 函数。 若要了解详细信息，并了解如何使用 Gremlin 步骤重写这些函数，请参阅[关于 Lambda 的说明](http://tinkerpop.apache.org/docs/current/reference/#a-note-on-lambdas)。
 

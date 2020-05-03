@@ -3,20 +3,20 @@ title: 语音合成标记语言 (SSML) - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 使用语音合成标记语言来控制文本到语音转换中的发音和韵律。
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-origin.date: 03/05/2020
-ms.date: 03/16/2020
+origin.date: 03/23/2020
+ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: 224ded93965f54cbff493145fdd7528b6c5ea27f
-ms.sourcegitcommit: c11cf8d623535943168d5cb43afef2d27a271765
+ms.openlocfilehash: 3eee4d0b947a2cacfec461260af51e9be2e8b1d7
+ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80386224"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82588775"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>通过语音合成标记语言 (SSML) 改善合成
 
@@ -56,7 +56,7 @@ SSML 的语音服务实现基于万维网联合会的[语音合成标记语言�
 **语法**
 
 ```xml
-<speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="string"></speak>
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="string"></speak>
 ```
 
 **属性**
@@ -65,7 +65,7 @@ SSML 的语音服务实现基于万维网联合会的[语音合成标记语言�
 |-----------|-------------|---------------------|
 | `version` | 指示用于解释文档标记的 SSML 规范的版本。 当前版本为 1.0。 | 必须 |
 | `xml:lang` | 指定根文档的语言。 该值可以包含小写的双字母语言代码（例如 `en`），或者语言代码加上大写的国家/地区代码（例如 `en-US`）。 | 必须 |
-| `xmlns` | 指定文档的 URI，用于定义 SSML 文档的标记词汇（元素类型和属性名称）。 当前 URI 为 https://www.w3.org/2001/10/synthesis 。 | 必须 |
+| `xmlns` | 指定文档的 URI，用于定义 SSML 文档的标记词汇（元素类型和属性名称）。 当前 URI 为 http://www.w3.org/2001/10/synthesis 。 | 必须 |
 
 ## <a name="choose-a-voice-for-text-to-speech"></a>选择文本转语音所用的语音
 
@@ -88,11 +88,11 @@ SSML 的语音服务实现基于万维网联合会的[语音合成标记语言�
 **示例**
 
 > [!NOTE]
-> 本示例使用 `en-US-Jessa24kRUS` 语音。 有关支持的语音的完整列表，请参阅[语言支持](language-support.md#text-to-speech)。
+> 本示例使用 `en-US-AriaRUS` 语音。 有关支持的语音的完整列表，请参阅[语言支持](language-support.md#text-to-speech)。
 
 ```XML
-<speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice name="en-US-Jessa24kRUS">
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
+    <voice name="en-US-AriaRUS">
         This is the text that is spoken.
     </voice>
 </speak>
@@ -182,12 +182,12 @@ speechConfig!.setPropertyTo(
 **示例**
 
 ```xml
-<speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice name="en-US-Jessa24kRUS">
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
+    <voice name="en-US-AriaRUS">
         Good morning!
     </voice>
     <voice name="en-US-Guy24kRUS">
-        Good morning to you too Jessa!
+        Good morning to you too Aria!
     </voice>
 </speak>
 ```
@@ -200,8 +200,7 @@ speechConfig!.setPropertyTo(
 默认情况下，对于标准和神经语音，文本转语音服务将使用中性讲话风格合成文本。 使用神经语音时，可以使用 `<mstts:express-as>` 元素调整讲话风格，以表达喜悦、同情或情绪。 这是语音服务特有的可选元素。
 
 目前，支持调整以下神经语音的讲话风格：
-* `en-US-JessaNeural`
-* `pt-BR-FranciscaNeural`
+* `en-US-AriaNeural`
 * `zh-CN-XiaoxiaoNeural`
 
 更改将在句子级别应用，风格因语音而异。 如果某种风格不受支持，该服务将以默认的中性讲话风格返回语音。
@@ -209,37 +208,38 @@ speechConfig!.setPropertyTo(
 **语法**
 
 ```xml
-<mstts:express-as type="string"></mstts:express-as>
+<mstts:express-as style="string"></mstts:express-as>
 ```
 
 **属性**
 
 | 属性 | 说明 | 必需/可选 |
 |-----------|-------------|---------------------|
-| `type` | 指定讲话风格。 目前，讲话风格特定于语音。 | 如果调整神经语音的讲话风格，则此属性是必需的。 如果使用 `mstts:express-as`，则必须提供类型。 如果提供无效的值，将忽略此元素。 |
+| `style` | 指定讲话风格。 目前，讲话风格特定于语音。 | 如果调整神经语音的讲话风格，则此属性是必需的。 如果使用 `mstts:express-as`，则必须提供风格。 如果提供无效的值，将忽略此元素。 |
 
 参考下表来确定每种神经语音支持的讲话风格。
 
-| 语音 | 类型 | 说明 |
-|-------|------|-------------|
-| `en-US-JessaNeural` | `type="cheerful"` | 表达积极和愉快的情感 |
-| | `type="empathy"` | 表达关心和理解 |
-| | `type="chat"` | 以一种随性、放松的音调讲话 |
-| | `type="newscast"` | 以正式的音调表达，类似于新闻发布会 |
-| | `type="customerservice"` | 作为客户服务以友好且耐心的方式讲话 |
-| `pt-BR-FranciscaNeural` | `type="cheerful"` | 表达积极和愉快的情感 |
-| `zh-CN-XiaoxiaoNeural` | `type="newscast"` | 以正式的音调表达，类似于新闻发布会 |
-| | `type="sentiment"` | 传达感人的祝词或经历 |
+| 语音                   | Style                     | 说明                                                 |
+|-------------------------|---------------------------|-------------------------------------------------------------|
+| `en-US-AriaNeural`      | `style="newscast"`        | 以正式专业的语气叙述新闻 |
+|                         | `style="customerservice"` | 以友好热情的语气为客户提供支持  |
+|                         | `style="chat"`            | 表达轻松随意的语气                         |
+|                         | `style="cheerful"`        | 表达积极愉快的语气                         |
+|                         | `style="empathetic"`      | 表达关心和理解               |
+| `zh-CN-XiaoxiaoNeural`  | `style="newscast"`        | 以正式专业的语气叙述新闻 |
+|                         | `style="customerservice"` | 以友好热情的语气为客户提供支持  |
+|                         | `style="assistant"`       | 以热情而轻松的语气对数字助理讲话    |
+|                         | `style="lyrical"`         | 以优美又带感伤的方式表达情感         |
 
 **示例**
 
 此 SSML 代码片段演示如何使用 `<mstts:express-as>` 元素将讲话风格更改为 `cheerful`。
 
 ```xml
-<speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis"
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis"
        xmlns:mstts="https://www.w3.org/2001/mstts" xml:lang="en-US">
-    <voice name="en-US-JessaNeural">
-        <mstts:express-as type="cheerful">
+    <voice name="en-US-AriaNeural">
+        <mstts:express-as style="cheerful">
             That'd be just amazing!
         </mstts:express-as>
     </voice>
@@ -267,21 +267,20 @@ speechConfig!.setPropertyTo(
 | `strength` | 使用以下值之一指定暂停的相对持续时间：<ul><li>无</li><li>x-weak</li><li>weak</li><li>medium（默认值）</li><li>strong</li><li>x-strong</li></ul> | 可选 |
 | `time` | 指定暂停的绝对持续时间，以秒或毫秒为单位。 例如，`2s` 和 `500` 是有效值 | 可选 |
 
-| Strength | 说明 |
-|----------|-------------|
-| None，或者不提供任何值 | 0 毫秒 |
-| x-weak | 250 毫秒 |
-| weak | 500 毫秒 |
-| 中 | 750 毫秒 |
-| strong | 1000 毫秒 |
-| x-strong | 1250 毫秒 |
-
+| Strength                      | 说明 |
+|-------------------------------|-------------|
+| None，或者不提供任何值 | 0 毫秒        |
+| x-weak                        | 250 毫秒      |
+| weak                          | 500 毫秒      |
+| 中                        | 750 毫秒      |
+| strong                        | 1000 毫秒     |
+| x-strong                      | 1250 毫秒     |
 
 **示例**
 
 ```xml
-<speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice name="en-US-Jessa24kRUS">
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
+    <voice name="en-US-AriaRUS">
         Welcome to Microsoft Cognitive Services <break time="100ms" /> Text-to-Speech API.
     </voice>
 </speak>
@@ -305,8 +304,8 @@ speechConfig!.setPropertyTo(
 **示例**
 
 ```XML
-<speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice name="en-US-Jessa24kRUS">
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
+    <voice name="en-US-AriaRUS">
         <p>
             <s>Introducing the sentence element.</s>
             <s>Used to mark individual sentences.</s>
@@ -335,23 +334,31 @@ speechConfig!.setPropertyTo(
 
 | 属性 | 说明 | 必需/可选 |
 |-----------|-------------|---------------------|
-| `alphabet` | 指定在 `ph` 属性中合成字符串发音时要使用的音标。 指定音标的字符串必须以小写字母指定。 下面是可以指定的可能音标。<ul><li>`ipa` &ndash; 国际音标</li><li>`sapi` &ndash; 语音服务音标</li><li>`ups` &ndash; 通用音素集</li></ul><br>音标仅适用于元素中的 `phoneme`。 有关详细信息，请参阅[音标参考](https://en.wikipedia.org/wiki/International_Phonetic_Alphabet)。 | 可选 |
+| `alphabet` | 指定在 `ph` 属性中合成字符串发音时要使用的音标。 指定音标的字符串必须以小写字母指定。 下面是可以指定的可能音标。<ul><li>`ipa` &ndash; 国际音标 </li><li>`sapi` &ndash; [语音服务音标](speech-ssml-phonetic-sets.md)</li><li>`ups` &ndash; 通用音素集</li></ul><br>音标仅适用于元素中的 `phoneme`。 | 可选 |
 | `ph` | 一个字符串，包含用于在 `phoneme` 元素中指定单词发音的音素。 如果指定的字符串包含无法识别的音素，则文本转语音 (TTS) 服务将拒绝整个 SSML 文档，并且不会生成文档中指定的任何语音输出。 | 如果使用音素，则此属性是必需的。 |
 
 **示例**
 
-```XML
-<speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice name="en-US-Jessa24kRUS">
-        <s>His name is Mike <phoneme alphabet="ups" ph="JH AU"> Zhou </phoneme></s>
+```xml
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
+    <voice name="en-US-AriaRUS">
+        <phoneme alphabet="ipa" ph="t&#x259;mei&#x325;&#x27E;ou&#x325;"> tomato </phoneme>
     </voice>
 </speak>
 ```
 
 ```xml
 <speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice name="en-US-Jessa24kRUS">
-        <phoneme alphabet="ipa" ph="t&#x259;mei&#x325;&#x27E;ou&#x325;"> tomato </phoneme>
+    <voice name="en-US-AriaRUS">
+        <phoneme alphabet="sapi" ph="iy eh n y uw eh s"> en-US </phoneme>
+    </voice>
+</speak>
+```
+
+```xml
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
+    <voice name="en-US-AriaRUS">
+        <s>His name is Mike <phoneme alphabet="ups" ph="JH AU"> Zhou </phoneme></s>
     </voice>
 </speak>
 ```
@@ -368,9 +375,9 @@ TTS 有时不能准确地对某个词发音，例如，公司名称或外文名�
 
 **属性**
 
-| 属性 | 说明 | 必需/可选 |
-|-----------|-------------|---------------------|
-| `uri` | 外部 PLS 文档的地址。 | 必需。 |
+| 属性 | 说明                               | 必需/可选 |
+|-----------|-------------------------------------------|---------------------|
+| `uri`     | 外部 PLS 文档的地址。 | 必需。           |
 
 **使用情况**
 
@@ -434,13 +441,13 @@ Could you help leave a message to Robert Benigni for me?
 <?xml version="1.0" encoding="UTF-16"?>
 <lexicon version="1.0" 
       xmlns="http://www.w3.org/2005/01/pronunciation-lexicon"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-      xsi:schemaLocation="http://www.w3.org/2005/01/pronunciation-lexicon 
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.w3.org/2005/01/pronunciation-lexicon
         http://www.w3.org/TR/2007/CR-pronunciation-lexicon-20071212/pls.xsd"
       alphabet="sapi" xml:lang="en-US">
   <lexeme>
-    <grapheme>BTW</grapheme> 
-    <alias> By the way </alias> 
+    <grapheme>BTW</grapheme>
+    <alias> By the way </alias>
   </lexeme>
   <lexeme>
     <grapheme> Benigni </grapheme>
@@ -481,7 +488,7 @@ Could you help leave a message to Robert Benigni for me?
 **示例**
 
 ```xml
-<speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
     <voice name="en-US-Guy24kRUS">
         <prosody rate="+30.00%">
             Welcome to Microsoft Cognitive Services Text-to-Speech API.
@@ -497,8 +504,8 @@ Could you help leave a message to Robert Benigni for me?
 **示例**
 
 ```xml
-<speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice name="en-US-Jessa24kRUS">
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
+    <voice name="en-US-AriaRUS">
         <prosody volume="+20.00%">
             Welcome to Microsoft Cognitive Services Text-to-Speech API.
         </prosody>
@@ -513,7 +520,7 @@ Could you help leave a message to Robert Benigni for me?
 **示例**
 
 ```xml
-<speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
     <voice name="en-US-Guy24kRUS">
         Welcome to <prosody pitch="high">Microsoft Cognitive Services Text-to-Speech API.</prosody>
     </voice>
@@ -528,8 +535,8 @@ Could you help leave a message to Robert Benigni for me?
 **示例**
 
 ```xml
-<speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice name="en-US-Jessa24kRUS">
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
+    <voice name="en-US-AriaRUS">
         <prosody contour="(80%,+20%) (90%,+30%)" >
             Good morning.
         </prosody>
@@ -579,8 +586,8 @@ Could you help leave a message to Robert Benigni for me?
 语音合成引擎将以下示例朗读为“Your first request was for one room on October nineteenth twenty ten with early arrival at twelve thirty five PM.”
  
 ```XML
-<speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice name="en-US-Jessa24kRUS">
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
+    <voice name="en-US-AriaRUS">
         <p>
         Your <say-as interpret-as="ordinal"> 1st </say-as> request was for <say-as interpret-as="cardinal"> 1 </say-as> room
         on <say-as interpret-as="date" format="mdy"> 10/19/2010 </say-as>, with early arrival at <say-as interpret-as="time" format="hms12"> 12:35pm </say-as>.
@@ -595,7 +602,7 @@ Could you help leave a message to Robert Benigni for me?
 
 包含在 SSML 文档中的任何音频必须满足以下要求：
 
-* MP3 必须托管在可通过 Internet 访问的 HTTPS 终结点上。 必须使用 HTTPS，托管 MP3 文件的域必须提供有效的受信任 SSL 证书。
+* MP3 必须托管在可通过 Internet 访问的 HTTPS 终结点上。 必须使用 HTTPS，托管 MP3 文件的域必须提供有效的受信任 TLS/SSL 证书。
 * MP3 必须是有效的 MP3 文件 (MPEG v2)。
 * 比特率必须是 48 kbps。
 * 采样率必须是 16,000 Hz。
@@ -610,15 +617,15 @@ Could you help leave a message to Robert Benigni for me?
 
 **属性**
 
-| 属性 | 说明 | 必需/可选 |
-|-----------|-------------|---------------------|
-| `src` | 指定音频文件的位置/URL。 | 在 SSML 文档中使用音频元素时，此属性是必需的。 |
+| 属性 | 说明                                   | 必需/可选                                        |
+|-----------|-----------------------------------------------|------------------------------------------------------------|
+| `src`     | 指定音频文件的位置/URL。 | 在 SSML 文档中使用音频元素时，此属性是必需的。 |
 
 **示例**
 
 ```xml
-<speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice name="en-US-Jessa24kRUS">
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
+    <voice name="en-US-AriaRUS">
         <p>
             <audio src="https://contoso.com/opinionprompt.wav"/>
             Thanks for offering your opinion. Please begin speaking after the beep.
@@ -658,7 +665,7 @@ Could you help leave a message to Robert Benigni for me?
 ```xml
 <speak version="1.0" xml:lang="en-US" xmlns:mstts="http://www.w3.org/2001/mstts">
     <mstts:backgroundaudio src="https://contoso.com/sample.wav" volume="0.7" fadein="3000" fadeout="4000"/>
-    <voice name="Microsoft Server Speech Text to Speech Voice (en-US, Jessa24kRUS)">
+    <voice name="Microsoft Server Speech Text to Speech Voice (en-US, AriaRUS)">
         The text provided in this document will be spoken over the background audio.
     </voice>
 </speak>

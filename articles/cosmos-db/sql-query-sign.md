@@ -4,16 +4,16 @@ description: 了解 Azure Cosmos DB 中的 SQL 系统函数 SIGN。
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
-origin.date: 09/13/2019
-ms.date: 10/28/2019
+origin.date: 03/03/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
 ms.custom: query-reference
-ms.openlocfilehash: 2558960d3da990f4fef4523bf3a35f5454afd6c5
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 6187c4a4d4574051c35a18499c04955437c0b33a
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "72914668"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134753"
 ---
 # <a name="sign-azure-cosmos-db"></a>SIGN (Azure Cosmos DB)
  返回指定数值表达式的正数 (+1)、零 (0) 或负数 (-1)。  
@@ -27,11 +27,11 @@ SIGN(<numeric_expr>)
 ## <a name="arguments"></a>参数
 
 *numeric_expr*  
-  为数值表达式。  
+  是一个数值表达式。  
 
 ## <a name="return-types"></a>返回类型
 
-  返回数值表达式。  
+  返回一个数值表达式。  
 
 ## <a name="examples"></a>示例
 
@@ -41,11 +41,15 @@ SIGN(<numeric_expr>)
 SELECT SIGN(-2) AS s1, SIGN(-1) AS s2, SIGN(0) AS s3, SIGN(1) AS s4, SIGN(2) AS s5  
 ```  
 
- 下面是结果集：  
+ 下面是结果集。  
 
 ```json
 [{s1: -1, s2: -1, s3: 0, s4: 1, s5: 1}]  
 ```  
+
+## <a name="remarks"></a>备注
+
+此系统函数不会使用索引。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -53,5 +57,4 @@ SELECT SIGN(-2) AS s1, SIGN(-1) AS s2, SIGN(0) AS s3, SIGN(1) AS s4, SIGN(2) AS 
 - [系统函数 Azure Cosmos DB](sql-query-system-functions.md)
 - [Azure Cosmos DB 简介](introduction.md)
 
-<!--Update_Description: new articles on sql query sign  -->
-<!--New.date: 10/28/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

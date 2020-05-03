@@ -5,15 +5,15 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 09/13/2019
-ms.date: 10/28/2019
+ms.date: 04/27/2020
 ms.author: v-yeche
 ms.custom: query-reference
-ms.openlocfilehash: 5363008102e8a1db224b56f68fe9a7d0bab94f0a
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 399230b6d771b781e1d7803fc1386da55cf3db37
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "72914721"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134565"
 ---
 # <a name="is_number-azure-cosmos-db"></a>IS_NUMBER (Azure Cosmos DB)
  返回一个布尔值，指示指定表达式的类型是否为数字。  
@@ -48,11 +48,15 @@ SELECT
     IS_NUMBER({prop: "value"}.prop2) AS isNum7  
 ```  
 
- 下面是结果集：  
+ 下面是结果集。  
 
 ```json
 [{"isNum1":false,"isNum2":true,"isNum3":false,"isNum4":false,"isNum5":false,"isNum6":false,"isNum7":false}]  
 ```  
+
+## <a name="remarks"></a>备注
+
+此系统函数将从[范围索引](index-policy.md#includeexclude-strategy)中获益。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -60,5 +64,4 @@ SELECT
 - [系统函数 Azure Cosmos DB](sql-query-system-functions.md)
 - [Azure Cosmos DB 简介](introduction.md)
 
-<!--Update_Description: new articles on sql query is number  -->
-<!--New.date: 10/28/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

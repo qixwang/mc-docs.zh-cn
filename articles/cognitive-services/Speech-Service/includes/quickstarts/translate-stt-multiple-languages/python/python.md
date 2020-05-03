@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-origin.date: 12/09/2019
-ms.date: 03/16/2020
+origin.date: 04/04/2020
+ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: 7f840138e1543fe62e178d4df48231aaa771c01e
-ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
+ms.openlocfilehash: 57c3559abcd44b9b773a66aeee135dec869f97e7
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80151573"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82150833"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -24,7 +24,8 @@ ms.locfileid: "80151573"
 
 > [!div class="checklist"]
 > * [创建一个 Azure 搜索资源](../../../../get-started.md)
-> * [设置开发环境并创建空项目](../../../../quickstarts/setup-platform.md?tabs=python)
+> * [设置开发环境并创建空项目](../../../../quickstarts/setup-platform.md?tabs=python&pivots=programming-language-python)
+> * 需要语音 SDK 版本 1.10.0 或更高版本。
 
 ## <a name="add-sample-code"></a>添加示例代码
 
@@ -37,10 +38,9 @@ ms.locfileid: "80151573"
 
     def translate_speech_to_text():
 
-        # Creates an instance of a speech translation config with specified host and subscription key.
+        # Creates an instance of a speech translation config with specified subscription key and service region.
         # Replace with your own subscription key and region identifier from here: https://docs.azure.cn/cognitive-services/speech-service/regions
-        speech_host, speech_key = "wss://YourServiceRegion.stt.speech.azure.cn/", "YourSubscriptionKey"
-        translation_config = speechsdk.translation.SpeechTranslationConfig(host=speech_host, subscription=speech_key)
+        translation_config = speechsdk.translation.SpeechTranslationConfig(subscription=speech_key, region=service_region)
 
         # Sets source and target languages.
         # Replace with the languages of your choice, from list found here: https://docs.azure.cn/cognitive-services/speech-service/language-support#speech-translation

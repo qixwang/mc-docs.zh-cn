@@ -11,12 +11,12 @@ ms.topic: include
 origin.date: 10/14/2019
 ms.date: 03/16/2020
 ms.author: v-tawe
-ms.openlocfilehash: bea6daeb26c3facee28d94080118697507328d37
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: b51286f1af9f28042fe265c7854aef5a94b55ac3
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80151670"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82150930"
 ---
 本指南介绍如何安装用于 Linux 的[语音 SDK](~/articles/cognitive-services/speech-service/speech-sdk.md)
 
@@ -31,6 +31,8 @@ Linux（Ubuntu 16.04、Ubuntu 18.04、Debian 9、RHEL 8、CentOS 8）
 若要完成本快速入门，你需要：
 
 * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
+
+* 需要语音 SDK 版本 1.10.0 或更高版本。
 
 * 支持的 Linux 平台会要求安装某些库（要求安装 `libssl` 以获取安全套接字层支持；要求安装 `libasound2` 以获取声音支持）。 请参阅下面的发行版，了解安装这些库的正确版本所需的命令。
 

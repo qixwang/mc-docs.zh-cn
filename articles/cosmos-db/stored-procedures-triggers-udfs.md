@@ -4,16 +4,16 @@ description: 本文介绍 Azure Cosmos DB 中存储过程、触发器和用户�
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
-origin.date: 08/01/2019
-ms.date: 02/10/2020
+origin.date: 04/09/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
 ms.reviewer: sngun
-ms.openlocfilehash: ed94a995fe64fdb0fe7e292150ba857cd9e573d9
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 84efab8bffc7b6473145418f58c00dc7a51b83a3
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79291480"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134900"
 ---
 # <a name="stored-procedures-triggers-and-user-defined-functions"></a>存储过程、触发器和用户定义的函数
 
@@ -56,7 +56,7 @@ Azure Cosmos DB 提供 JavaScript 的语言集成式事务执行。 在 Azure Co
 
 ### <a name="scope-of-a-transaction"></a>事务的范围
 
-如果存储过程与某个 Azure Cosmos 容器相关联，则存储过程将在逻辑分区键的事务范围内执行。 每个存储过程执行必须包含一个对应于事务范围的逻辑分区键值。 有关详细信息，请参阅 [Azure Cosmos DB 分区](partition-data.md)一文。
+存储过程将与 Azure Cosmos 容器关联，存储过程的执行范围限定于一个逻辑分区键。 存储过程必须在执行期间包括一个逻辑分区键值，用于定义事务范围的逻辑分区。 有关详细信息，请参阅 [Azure Cosmos DB 分区](partition-data.md)一文。
 
 ### <a name="commit-and-rollback"></a>提交和回滚
 
@@ -92,7 +92,7 @@ Azure Cosmos DB 提供可以通过对 Azure Cosmos 项执行操作来调用的�
 <a name="udfs"></a>
 ## <a name="user-defined-functions"></a>用户定义的函数
 
-使用用户定义的函数 (UDF) 可以轻松扩展 SQL API 查询语言语法和实现自定义业务逻辑。 只能在查询中调用 UDF。 UDF 对上下文对象没有访问权限，旨在用作仅限计算的 JavaScript。 因此，UDF 可以在次要副本上运行。 有关示例，请参阅[如何编写用户定义的函数](how-to-write-stored-procedures-triggers-udfs.md#udfs)一文。
+使用[用户定义的函数](sql-query-udfs.md) (UDF) 可以轻松扩展 SQL API 查询语言语法和实现自定义业务逻辑。 只能在查询中调用 UDF。 UDF 对上下文对象没有访问权限，旨在用作仅限计算的 JavaScript。 因此，UDF 可以在次要副本上运行。 有关示例，请参阅[如何编写用户定义的函数](how-to-write-stored-procedures-triggers-udfs.md#udfs)一文。
 
 <a name="jsqueryapi"></a>
 ## <a name="javascript-language-integrated-query-api"></a>JavaScript 语言集成的查询 API
@@ -109,4 +109,4 @@ Azure Cosmos DB 提供可以通过对 Azure Cosmos 项执行操作来调用的�
 
 * [使用 JavaScript 语言集成式查询 API](javascript-query-api.md)
 
-<!--Update_Description: update meta properties, wording update-->
+<!-- Update_Description: update meta properties, wording update, update link -->

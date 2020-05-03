@@ -4,12 +4,12 @@ description: 遵循最佳做法，让 Service Fabric 应用程序和群集做好
 ms.topic: conceptual
 ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 663389565fd3ae8487d2f10f76aa3059dd9f33b9
-ms.sourcegitcommit: 671ff43b99572ca295968769278ee726954f1016
+ms.openlocfilehash: 07fd7370f5998efd9434dd83faea492224c6c555
+ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76508766"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82093488"
 ---
 # <a name="production-readiness-checklist"></a>生产就绪情况核对清单
 
@@ -41,7 +41,10 @@ ms.locfileid: "76508766"
 1. 为服务建立恢复点目标 (RPO)，设置[灾难恢复流程](service-fabric-disaster-recovery.md)并进行测试。
 1. 手动或以编程方式计划群集的[缩放](service-fabric-cluster-scaling.md)。
 1. 计划群集节点的[修补](service-fabric-patch-orchestration-application.md)。 
-1. 建立一个 CI/CD 管道，以便不断测试最新的更改。 例如，使用 [Azure DevOps](service-fabric-tutorial-deploy-app-with-cicd-vsts.md) 或 [Jenkins](service-fabric-cicd-your-linux-applications-with-jenkins.md)
+1. 建立一个 CI/CD 管道，以便不断测试最新的更改。 例如，使用 [Azure DevOps](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)。
+
+    <!--Not Available on  or [Jenkins](service-fabric-cicd-your-linux-applications-with-jenkins.md)-->
+    
 1. 使用[故障分析服务](service-fabric-testability-overview.md)测试负载下的开发和暂存集群，并引入受控[混沌测试](service-fabric-controlled-chaos.md)。 
 1. 计划应用程序的[缩放](service-fabric-concepts-scalability.md)。 
 

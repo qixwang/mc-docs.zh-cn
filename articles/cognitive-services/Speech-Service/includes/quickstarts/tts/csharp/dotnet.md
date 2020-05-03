@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-origin.date: 08/27/2019
-ms.date: 03/16/2020
+origin.date: 04/04/2020
+ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: 3032aaaf956124fa7811ecad95477cc9be8e4bc3
-ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
+ms.openlocfilehash: 3e70987aa0fa0411a63c831f747583425b7b6fb1
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80151618"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82151033"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -24,7 +24,8 @@ ms.locfileid: "80151618"
 
 > [!div class="checklist"]
 > * [创建一个 Azure 搜索资源](../../../../get-started.md)
-> * [设置开发环境并创建空项目](../../../../quickstarts/setup-platform.md?tabs=dotnet)
+> * [设置开发环境并创建空项目](../../../../quickstarts/setup-platform.md?tabs=dotnet&pivots=programming-language-csharp)
+> * 需要语音 SDK 版本 1.10.0 或更高版本。
 
 ## <a name="add-sample-code"></a>添加示例代码
 
@@ -41,10 +42,10 @@ ms.locfileid: "80151618"
         {
             public static async Task SynthesisToSpeakerAsync()
             {
-                // Creates an instance of a speech config with specified host and subscription key.
+                // Creates an instance of a speech config with specified subscription key and service region.
                 // Replace with your own subscription key and service region (e.g., "chinaeast2").
                 // The default language is "en-us".
-                var config = SpeechConfig.FromHost(new Uri("https://YourServiceRegion.tts.speech.azure.cn/"), "YourSubscriptionKey");
+                var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
     
                 // Creates a speech synthesizer using the default speaker as audio output.
                 using (var synthesizer = new SpeechSynthesizer(config))
@@ -106,7 +107,7 @@ ms.locfileid: "80151618"
 
 ## <a name="next-steps"></a>后续步骤
 
-[!INCLUDE [footer](./footer.md)]
+[!INCLUDE [Speech synthesis basics](../../text-to-speech-next-steps.md)]
 
 <!-- ## See also -->
 

@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 origin.date: 01/21/2020
-ms.date: 02/17/2020
-ms.openlocfilehash: 9d83fab97f62fc1dd37f9756fcfff2a4efae2626
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 04/27/2020
+ms.openlocfilehash: e6a79e5a48e59807ebac40d8a4e3f107422cf3e5
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77192458"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134827"
 ---
 # <a name="tutorial-migrate-sql-server-to-a-single-database-or-pooled-database-in-azure-sql-database-online-using-dms"></a>教程：使用 DMS 将 SQL Server 联机迁移到 Azure SQL 数据库中的单一数据库或共用数据库
 
@@ -26,6 +26,7 @@ ms.locfileid: "77192458"
 
 本教程介绍如何执行下列操作：
 > [!div class="checklist"]
+>
 > - 通过使用数据迁移助手来评估本地数据库。
 > - 通过使用数据迁移助手迁移示例架构。
 > - 创建 Azure 数据库迁移服务的实例。
@@ -282,7 +283,7 @@ ms.locfileid: "77192458"
     如果没有安装受信任的证书，SQL Server 会在实例启动时生成自签名证书。 此证书用于加密客户端连接的凭据。
 
     > [!CAUTION]
-    > 使用自签名证书加密的 SSL 连接不提供可靠的安全性。 它们易遭受中间人攻击。 不得在生产环境中或在连接到 Internet 的服务器上依赖使用自签名证书的 SSL。
+    > 使用自签名证书加密的 TLS 连接不提供强安全性。 它们易遭受中间人攻击。 在生产环境中或在连接到 Internet 的服务器上不应依赖使用自签名证书的 TLS。
 
    ![源详细信息](media/tutorial-sql-server-to-azure-sql-online/dms-source-details3.png)
 

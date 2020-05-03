@@ -11,20 +11,17 @@ ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 origin.date: 10/08/2018
-ms.date: 02/10/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: fcb10ca5fcd087e134ed56b61d39e853a7bcb778
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 5729b8ab7d6d1c4583c7a39a6bc5207d957f2ed6
+ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78850593"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82596332"
 ---
 # <a name="windows-shows-critical-service-failed-on-blue-screen-when-booting-an-azure-vm"></a>启动 Azure VM 时 Windows 在蓝色屏幕上显示“关键服务失败”
 本文介绍在 Azure 中启动 Windows 虚拟机 (VM) 时可能会遇到的“关键服务失败”错误， 并提供用于解决问题的故障排除步骤。 
-
-> [!NOTE] 
-> Azure 具有用于创建和处理资源的两个不同的部署模型：[资源管理器部署模型和经典部署模型](../../azure-resource-manager/management/deployment-models.md)。 本文介绍如何使用 Resource Manager 部署模型。建议对新部署使用该模型，而不是经典部署模型。
 
 ## <a name="symptom"></a>症状 
 
@@ -87,7 +84,7 @@ Windows VM 不启动。 在[启动诊断](./boot-diagnostics.md)中检查启动�
     reg unload HKLM\BROKENSYSTEM
     ```
     
-<!--MOONCAKE: this Serial Console means to Windows/Vista enable Serial Console, Not Azure VM Serial Console function in Azure Portal-->
+    <!--MOONCAKE: this Serial Console means to Windows/Vista enable Serial Console, Not Azure VM Serial Console function in Azure Portal-->
 
 ### <a name="replace-the-unsigned-drivers"></a>替换未签名的驱动程序
 
@@ -180,5 +177,5 @@ Windows VM 不启动。 在[启动诊断](./boot-diagnostics.md)中检查启动�
     bcddit /store <OS DISK LETTER>:\boot\bcd /set {default} recoveryenabled no
     bcdedit /store <OS DISK LETTER>:\boot\bcd /set {default} integrityservicesenable
     ```
-    
-<!-- Update_Description: wording update -->
+
+<!-- Update_Description: update meta properties, wording update, update link -->

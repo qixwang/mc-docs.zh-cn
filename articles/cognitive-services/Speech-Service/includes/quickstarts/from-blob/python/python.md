@@ -1,25 +1,26 @@
 ---
-author: IEvangelist
+author: trevorbye
 ms.service: cognitive-services
 ms.topic: include
-origin.date: 01/13/2020
-ms.date: 03/16/2020
+origin.date: 04/04/2020
+ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: ce68687ebd9d6aaf620f6c14bbfc8637ca2557bd
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 5a4208339679a6f5e7e28dc5f6b5e532ae419824
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80151594"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82150713"
 ---
 ## <a name="prerequisites"></a>先决条件
 
 在开始之前，请务必：
 
 > [!div class="checklist"]
-> * [设置开发环境并创建空项目](../../../../quickstarts/setup-platform.md)
+> * [设置开发环境并创建空项目](../../../../quickstarts/setup-platform.md?pivots=programming-language-python)
 > * [创建 Azure 语音资源](../../../../get-started.md)
 > * [将源文件上传到 Azure blob](https://docs.azure.cn/storage/blobs/storage-quickstart-blobs-portal)
+> * 需要语音 SDK 版本 1.10.0 或更高版本。
 
 ## <a name="download-and-install-the-api-client-library"></a>下载并安装 API 客户端库
 
@@ -42,11 +43,11 @@ ms.locfileid: "80151594"
 > ```py
 > from swagger_client.models.model import Model  # noqa: F401,E501
 > ```
-> 文件 `swagger_client/models/model.py` 中包含以下内容的行
+> 文件 `swagger_client/models/model.py` 中包含以下内容的行和
 > ```py
 > from swagger_client.models.inner_error import InnerError  # noqa: F401,E501
 > ```
-> 和文件 `swagger_client/models/inner_error.py` 中包含以下内容的行来进行修复。 错误消息将告知安装这些文件的位置。
+> 文件 `swagger_client/models/inner_error.py` 中包含以下内容的行来进行修复。 错误消息将告知安装这些文件的位置。
 
 ## <a name="install-other-dependencies"></a>安装其他依赖项
 

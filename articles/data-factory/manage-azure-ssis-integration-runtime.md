@@ -1,26 +1,28 @@
 ---
-title: 重新配置 Azure-SSIS 集成运行时 | Microsoft Docs
+title: 重新配置 Azure-SSIS 集成运行时
 description: 了解在预配 Azure-SSIS 集成运行时之后，如何在 Azure 数据工厂中对其进行重新配置。
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 origin.date: 01/22/2018
-ms.date: 07/08/2019
+ms.date: 05/11/2020
 author: WenJason
 ms.author: v-jay
 ms.reviewer: douglasl
 manager: digimobile
-ms.openlocfilehash: 0b048210f9783c9da047454d0a2d55ea6fd22d62
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 158c784ffd15ef57c897549ade8afd8ae9e4da2c
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "67570411"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82197935"
 ---
 # <a name="reconfigure-the-azure-ssis-integration-runtime"></a>重新配置 Azure-SSIS 集成运行时
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+
 本文介绍如何重新配置现在的 Azure-SSIS 集成运行时。 若要在 Azure 数据工厂中创建 Azure-SSIS 集成运行时 (IR)，请参阅[创建 Azure-SSIS 集成运行时](create-azure-ssis-integration-runtime.md)。  
 
 ## <a name="data-factory-ui"></a>数据工厂 UI 

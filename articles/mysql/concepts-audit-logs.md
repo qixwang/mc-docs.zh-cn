@@ -5,14 +5,14 @@ author: WenJason
 ms.author: v-jay
 ms.service: mysql
 ms.topic: conceptual
-origin.date: 12/09/2019
-ms.date: 01/13/2020
-ms.openlocfilehash: 25936b90308bfc888fd090f268d805e9253fe697
-ms.sourcegitcommit: 4f4694991e1c70929c7112ad45a0c404ddfbc8da
+origin.date: 3/19/2019
+ms.date: 04/27/2020
+ms.openlocfilehash: 43ee01e7bc3201a8a951f7523f56874b0ddc6ff5
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75776675"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126890"
 ---
 # <a name="audit-logs-in-azure-database-for-mysql"></a>Azure Database for MySQL 中的审核日志
 
@@ -117,6 +117,9 @@ ms.locfileid: "75776675"
 
 ### <a name="table-access"></a>表访问权限
 
+> [!NOTE]
+> 只有 MySQL 5.7 输出表访问日志。
+
 | **属性** | **说明** |
 |---|---|
 | `TenantId` | 租户 ID |
@@ -139,6 +142,60 @@ ms.locfileid: "75776675"
 | `table_s` | 访问的表的名称 |
 | `sql_text_s` | 完整查询文本 |
 | `\_ResourceId` | 资源 URI |
+
+## <a name="analyze-logs-in-azure-monitor-logs"></a>分析 Azure Monitor 日志中的日志
+
+将审核日志通过诊断日志以管道方式传送到 Azure Monitor 日志后，便可以对审核事件进行进一步分析。 下面是一些可帮助你入门的示例查询。 请确保使用你的服务器名称更新下面的内容。
+
+- 列出特定服务器上的 GENERAL 事件
+
+    ```kusto
+    AzureDiagnostics
+    | where LogicalServerName_s == '<your server name>'
+    | where Category == 'MySqlAuditLogs' and event_class_s == "general_log"
+    | project TimeGenerated, LogicalServerName_s, event_class_s, event_subclass_s, event_time_t, user_s , ip_s , sql_text_s 
+    | order by TimeGenerated asc nulls last 
+    ```
+
+- 列出特定服务器上的 CONNECTION 事件
+
+    ```kusto
+    AzureDiagnostics
+    | where LogicalServerName_s == '<your server name>'
+    | where Category == 'MySqlAuditLogs' and event_class_s == "connection_log"
+    | project TimeGenerated, LogicalServerName_s, event_class_s, event_subclass_s, event_time_t, user_s , ip_s , sql_text_s 
+    | order by TimeGenerated asc nulls last
+    ```
+
+- 汇总特定服务器上的已审核事件
+
+    ```kusto
+    AzureDiagnostics
+    | where LogicalServerName_s == '<your server name>'
+    | where Category == 'MySqlAuditLogs'
+    | project TimeGenerated, LogicalServerName_s, event_class_s, event_subclass_s, event_time_t, user_s , ip_s , sql_text_s 
+    | summarize count() by event_class_s, event_subclass_s, user_s, ip_s
+    ```
+
+- 绘制特定服务器上的审核事件类型分布图
+
+    ```kusto
+    AzureDiagnostics
+    | where LogicalServerName_s == '<your server name>'
+    | where Category == 'MySqlAuditLogs'
+    | project TimeGenerated, LogicalServerName_s, event_class_s, event_subclass_s, event_time_t, user_s , ip_s , sql_text_s 
+    | summarize count() by LogicalServerName_s, bin(TimeGenerated, 5m)
+    | render timechart 
+    ```
+
+- 列出已为审核日志启用诊断日志的所有 MySQL 服务器上的已审核事件
+
+    ```kusto
+    AzureDiagnostics
+    | where Category == 'MySqlAuditLogs'
+    | project TimeGenerated, LogicalServerName_s, event_class_s, event_subclass_s, event_time_t, user_s , ip_s , sql_text_s 
+    | order by TimeGenerated asc nulls last
+    ``` 
 
 ## <a name="next-steps"></a>后续步骤
 

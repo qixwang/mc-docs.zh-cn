@@ -1,19 +1,19 @@
 ---
-title: 处理 Azure Database for MariaDB 的暂时性连接错误 | Microsoft Docs
+title: 暂时性连接错误 - Azure Database for MariaDB
 description: 了解如何处理 Azure Database for MariaDB 的暂时性连接错误。
 keywords: mysql 连接, 连接字符串, 连接问题, 暂时性错误, 连接错误
 author: WenJason
 ms.author: v-jay
 ms.service: mariadb
 ms.topic: conceptual
-origin.date: 11/09/2018
-ms.date: 05/27/2019
-ms.openlocfilehash: 6022cec1507eeb9fa843f0fdabb8c52ff3ccf147
-ms.sourcegitcommit: 60169f39663ae62016f918bdfa223c411e249883
+origin.date: 3/18/2020
+ms.date: 04/27/2020
+ms.openlocfilehash: 582c5503b813ce6791fce7d9d895eb421caf70b8
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66173298"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126898"
 ---
 # <a name="handling-of-transient-connectivity-errors-for-azure-database-for-mariadb"></a>处理 Azure Database for MariaDB 的暂时性连接错误
 

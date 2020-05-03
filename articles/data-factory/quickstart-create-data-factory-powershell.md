@@ -11,17 +11,20 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: quickstart
-origin.date: 01/22/2018
-ms.date: 03/02/2020
+origin.date: 04/10/2020
+ms.date: 05/11/2020
 ms.author: v-jay
-ms.openlocfilehash: 2f76c26d5356a3a13db08c9286310be526eb3f9a
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 827f61d07d92e72b49ec9a4dad31b5da594d0702
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77653585"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82198089"
 ---
 # <a name="quickstart-create-an-azure-data-factory-using-powershell"></a>快速入门：使用 PowerShell 创建 Azure 数据工厂
+
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 此快速入门介绍了如何使用 PowerShell 创建 Azure 数据工厂。 在此数据工厂中创建的管道会将数据从 Azure Blob 存储中的一个文件夹**复制**到另一个文件夹。 有关如何使用 Azure 数据工厂**转换**数据的教程，请参阅[教程：使用 Spark 转换数据](transform-data-using-spark.md)。
 

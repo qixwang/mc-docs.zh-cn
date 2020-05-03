@@ -1,5 +1,5 @@
 ---
-title: 以 Azure SQL 数据库托管实例为数据库工作负荷目标的 SSIS 迁移 | Microsoft Docs
+title: 以 Azure SQL 数据库托管实例为数据库工作负荷目标的 SSIS 迁移
 description: 以 Azure SQL 数据库托管实例为数据库工作负荷目标的 SSIS 迁移。
 services: data-factory
 documentationcenter: ''
@@ -9,18 +9,19 @@ ms.reviewer: ''
 manager: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 origin.date: 9/12/2019
-ms.date: 10/14/2019
-ms.openlocfilehash: d0b5d3006e45e536d32039bb118b6796bc3fe2e3
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/11/2020
+ms.openlocfilehash: 815ae35f0077154d6b4e15cf323f171d0129543c
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "72275882"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82198231"
 ---
 # <a name="ssis-migration-with-azure-sql-database-managed-instance-as-the-database-workload-destination"></a>以 Azure SQL 数据库托管实例为数据库工作负荷目标的 SSIS 迁移
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 将数据库工作负荷从本地 SQL Server 迁移到 Azure SQL 数据库托管实例时，应熟悉 [Azure 数据迁移服务](/dms/dms-overview) (DMS) 和[使用 DMS 进行的 Azure SQL 数据库托管实例迁移的网络拓扑](/dms/resource-network-topologies)。
 

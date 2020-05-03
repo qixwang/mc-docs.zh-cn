@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 数据工厂从 Sybase 复制数据 | Microsoft Docs
+title: 使用 Azure 数据工厂从 Sybase 复制数据
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 Sybase 复制到支持的接收器数据存储。
 services: data-factory
 documentationcenter: ''
@@ -8,19 +8,19 @@ manager: digimobile
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 origin.date: 09/04/2019
-ms.date: 11/11/2019
+ms.date: 05/11/2020
 ms.author: v-jay
-ms.openlocfilehash: 8aaf6174aa36ee0305c8b86ff82d316670afc50f
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 40214b88e38eec169ab586086f66703d793e5a4f
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "73648685"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82197878"
 ---
 # <a name="copy-data-from-sybase-using-azure-data-factory"></a>使用 Azure 数据工厂从 Sybase 复制数据
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从 Sybase 数据库复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 

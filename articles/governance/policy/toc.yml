@@ -78,7 +78,7 @@
     - name: 使用来宾配置审核 VM
       displayName: 'provider, tools, definition'
       href: ./concepts/guest-configuration.md
-- name: 操作方法指南
+- name: 操作指南
   items:
     - name: 适用于 VS Code 的 Azure Policy 扩展
       displayName: visual studio code
@@ -122,6 +122,12 @@
           href: /dotnet/api/microsoft.azure.management.resourcemanager.models.policyassignment
         - name: 策略定义
           href: /dotnet/api/microsoft.azure.management.resourcemanager.models.policydefinition
+    - name: 用于 Java 的 Azure SDK
+      items:
+        - name: 分配
+          href: 'https://docs.microsoft.com/java/api/com.microsoft.azure.management.resources.policyassignment?view=azure-java-stable'
+        - name: 策略定义
+          href: 'https://docs.microsoft.com/java/api/com.microsoft.azure.management.resources.PolicyDefinitions?view=azure-java-stable'
     - name: 用于 Node 的 Azure SDK
       items:
         - name: 策略
@@ -140,7 +146,7 @@
       items:
         - name: 事件
           href: 'https://docs.microsoft.com/rest/api/policy-insights/policyevents'
-        - name: States
+        - name: 状态
           href: 'https://docs.microsoft.com/rest/api/policy-insights/policystates'
         - name: 分配
           href: 'https://docs.microsoft.com/rest/api/resources/policyassignments'
@@ -154,7 +160,7 @@
           href: 'https://docs.microsoft.com/rest/api/policy-insights/remediations'
         - name: 来宾配置
           href: 'https://docs.microsoft.com/rest/api/guestconfiguration/'
-    - name: 资源管理器模板
+    - name: Resource Manager 模板
       items:
         - name: 分配
           href: /azure/templates/microsoft.authorization/policyassignments

@@ -2,25 +2,21 @@
 title: Microsoft 标识平台 UWP 入门 | Azure
 description: 通用 Windows 平台应用程序 (UWP) 如何通过 Microsoft 标识平台终结点调用需要访问令牌的 API。
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/23/2020
+ms.date: 04/23/2020
 ms.author: v-junlch
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 1bf3e713cdf88fbd1d8c42e4f5001acb87969fbe
-ms.sourcegitcommit: 6568c59433d7e80ab06e9fe76d4791f761ed6775
+ms.openlocfilehash: b297ba253a8c8dc721948527bc8bed4f5ed92570
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80243100"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126413"
 ---
 # <a name="call-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>从通用 Windows 平台应用程序 (XAML) 调用 Microsoft 图形 API
 
@@ -120,15 +116,15 @@ Visual Studio 创建 *MainPage.xaml* 作为项目模板的一部分。 打开此
         //Set the scope for API call to https://microsoftgraph.chinacloudapi.cn/user.read
         string[] scopes = new string[] { "https://microsoftgraph.chinacloudapi.cn/user.read" };
 
-        // Below are the clientId (Application Id) of your app registration and the tenant information. 
+        // Below are the clientId (Application Id) of your app registration and the tenant information.
         // You have to replace:
         // - the content of ClientID with the Application Id for your app registration
         // - the content of Tenant with the information about the accounts allowed to sign in in your application:
         //   - for Work or School account in your org, use your tenant ID, or domain
         //   - for any Work or School accounts, use organizations
-        private const string ClientId = "0b8b0665-bc13-4fdc-bd72-e0227b9fc011";        
+        private const string ClientId = "0b8b0665-bc13-4fdc-bd72-e0227b9fc011";
 
-        public IPublicClientApplication PublicClientApp { get; } 
+        public IPublicClientApplication PublicClientApp { get; }
 
         public MainPage()
         {
@@ -153,8 +149,8 @@ Visual Studio 创建 *MainPage.xaml* 作为项目模板的一部分。 打开此
          ResultText.Text = string.Empty;
          TokenInfoText.Text = string.Empty;
 
-         // It's good practice to not do work on the UI thread, so use ConfigureAwait(false) whenever possible.            
-         IEnumerable<IAccount> accounts = await PublicClientApp.GetAccountsAsync().ConfigureAwait(false); 
+         // It's good practice to not do work on the UI thread, so use ConfigureAwait(false) whenever possible.
+         IEnumerable<IAccount> accounts = await PublicClientApp.GetAccountsAsync().ConfigureAwait(false);
          IAccount firstAccount = accounts.FirstOrDefault();
 
          try
@@ -239,7 +235,7 @@ Visual Studio 创建 *MainPage.xaml* 作为项目模板的一部分。 打开此
        {
            var request = new System.Net.Http.HttpRequestMessage(System.Net.Http.HttpMethod.Get, url);
            // Add the token in Authorization header
-           request.Headers.Authorization = 
+           request.Headers.Authorization =
              new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
            response = await httpClient.SendAsync(request);
            var content = await response.Content.ReadAsStringAsync();
@@ -436,4 +432,3 @@ Microsoft Graph API 需要 `user.read` 作用域来读取用户的个人资料�
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
-<!-- Update_Description: wording update -->

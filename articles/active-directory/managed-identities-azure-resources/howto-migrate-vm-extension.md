@@ -1,5 +1,5 @@
 ---
-title: 停止使用托管标识 VM 扩展并开始使用 Azure 实例元数据服务终结点
+title: 停止使用托管标识 VM 扩展 - Azure AD
 description: 有关停止使用 VM 扩展并开始使用 Azure 实例元数据服务 (IMDS) 进行身份验证的分步说明。
 services: active-directory
 documentationcenter: ''
@@ -12,15 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-origin.date: 02/25/2018
-ms.date: 08/05/2019
+ms.date: 04/23/2020
 ms.author: v-junlch
-ms.openlocfilehash: 687ff47237b44313ab43d8c09eb09628b5df6dba
-ms.sourcegitcommit: 461c7b2e798d0c6f1fe9c43043464080fb8e8246
+ms.openlocfilehash: 4d283a51eab41907d81dc242cb3ee14a36232772
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68818671"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126532"
 ---
 # <a name="how-to-stop-using-the-virtual-machine-managed-identities-extension-and-start-using-the-azure-instance-metadata-service"></a>如何停止使用虚拟机托管标识扩展并开始使用 Azure 实例元数据服务
 
@@ -124,7 +123,7 @@ Metadata: true
 | ------- | ----------- |
 | `GET` | HTTP 谓词，指示想要从终结点检索数据。 在本例中，该数据为 OAuth 访问令牌。 | 
 | `http://localhost:50342/oauth2/token` | Azure 资源的托管标识终结点，其中 50342 是可配置的默认端口。 |
-| `resource` | 一个查询字符串参数，表示目标资源的应用 ID URI。 它也会显示在所颁发令牌的 `aud`（受众）声明中。 本示例请求一个用于访问 Azure 资源管理器的、应用 ID URI 为 https://management.chinacloudapi.cn/ 的令牌。 |
+| `resource` | 一个查询字符串参数，表示目标资源的应用 ID URI。 它也会显示在所颁发令牌的 `aud`（受众）声明中。 本示例请求一个用于访问 Azure 资源管理器的、应用 ID URI 为 `https://management.chinacloudapi.cn/` 的令牌。 |
 | `Metadata` | 一个 HTTP 请求标头字段，Azure 资源的托管标识需要使用该元素来缓解服务器端请求伪造 (SSRF) 攻击。 必须将此值设置为“true”（全小写）。|
 | `object_id` | （可选）一个查询字符串参数，指示要将此令牌用于的托管标识的 object_id。 如果 VM 有用户分配的多个托管标识，则为必需的。|
 | `client_id` | （可选）一个查询字符串参数，指示要将此令牌用于的托管标识的 client_id。 如果 VM 有用户分配的多个托管标识，则为必需的。|

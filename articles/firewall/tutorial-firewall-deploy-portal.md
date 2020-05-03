@@ -1,20 +1,20 @@
 ---
-title: 教程：使用 Azure 门户部署和配置 Azure 防火墙
+title: 教程 - 使用 Azure 门户部署和配置 Azure 防火墙
 description: 本教程介绍如何使用 Azure 门户部署和配置 Azure 防火墙。
 services: firewall
 author: rockboyfor
 ms.service: firewall
 ms.topic: tutorial
-origin.date: 10/28/2019
-ms.date: 02/24/2020
+origin.date: 02/21/2020
+ms.date: 04/06/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 1675bd8319f2ddf900424254bb1d14eb25772f2f
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 20991fc21fc10f402216bd9035b73970facb2b3c
+ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79292124"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82093252"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>教程：使用 Azure 门户部署和配置 Azure 防火墙
 
@@ -27,7 +27,7 @@ ms.locfileid: "79292124"
 
 将网络流量路由到用作子网默认网关的防火墙时，网络流量受到配置的防火墙规则的控制。
 
-在本教程中，你将创建一个包含三个子网的单个简化 VNet，以便于部署。 对于生产部署，我们建议使用[中心辐射模型](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)，其中，防火墙在其自身的 VNet 中。 工作负荷服务器在包含一个或多个子网的同一区域中的对等 VNet 内。
+在本教程中，你将创建一个包含三个子网的单个简化 VNet，以便于部署。 对于生产部署，我们建议使用[中心辐射模型](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)。 防火墙位于其自身的 VNet 中。 工作负荷服务器在包含一个或多个子网的同一区域中的对等 VNet 内。
 
 * **AzureFirewallSubnet** - 防火墙在此子网中。
 * **Workload-SN** - 工作负荷服务器在此子网中。 此子网的网络流量通过防火墙。
@@ -61,7 +61,7 @@ ms.locfileid: "79292124"
 2. 在 Azure 门户菜单上，选择“资源组”或从任意页面搜索并选择“资源组”   。 然后选择“添加”  。
 3. 对于“资源组名称”，请输入“Test-FW-RG”   。
 4. 对于“订阅”，请选择自己的订阅。 
-5. 对于“资源组位置”，请选择一个位置。  创建的所有后续资源必须位于同一位置。
+5. 对于“资源组位置”，请选择一个位置。  你创建的所有其他资源必须位于同一位置。
 6. 选择“创建”  。
 
 ### <a name="create-a-vnet"></a>创建 VNet
@@ -71,10 +71,7 @@ ms.locfileid: "79292124"
 > [!NOTE]
 > AzureFirewallSubnet 子网的大小为 /26。 有关子网大小的详细信息，请参阅 [Azure 防火墙常见问题解答](firewall-faq.md#why-does-azure-firewall-need-a-26-subnet-size)。
 
-1. 在 Azure 门户菜单中，选择“创建资源”  。
-
-    <!--Not Available on Home page for Azure China Cloud-->
-    
+1. 在 Azure 门户菜单或“主页”页上，选择“创建资源”   。
 1. 选择“网络” > “虚拟网络”。  
 1. 对于“名称”，请键入 **Test-FW-VN**。 
 1. 对于“地址空间”，请键入 **10.0.0.0/16**。 
@@ -102,14 +99,11 @@ ms.locfileid: "79292124"
 
 现在，创建跳转虚拟机和工作负荷虚拟机，并将其放入相应的子网。
 
-1. 在 Azure 门户菜单中，选择“创建资源”  。
-    
-    <!--Not Available on Home page for Azure China Cloud-->
-    
+1. 在 Azure 门户菜单或“主页”页上，选择“创建资源”   。
 2. 选择“计算”，然后在“特色”列表中选择“Windows Server 2016 Datacenter”。  
 3. 输入虚拟机的以下值：
 
-    |设置  |Value  |
+    |设置  |值  |
     |---------|---------|
     |资源组     |**Test-FW-RG**|
     |虚拟机名称     |**Srv-Jump**|
@@ -130,7 +124,7 @@ ms.locfileid: "79292124"
 
 使用下表中的信息配置名为 **Srv-Work** 的另一个虚拟机。 剩余的配置与 Srv-Work 虚拟机相同。
 
-|设置  |Value  |
+|设置  |值  |
 |---------|---------|
 |子网|**Workload-SN**|
 |公共 IP|**无**|
@@ -140,15 +134,12 @@ ms.locfileid: "79292124"
 
 将防火墙部署到 VNet。
 
-1. 在 Azure 门户菜单中，选择“创建资源”  。
-
-    <!--Not Available on Home page for Azure China Cloud-->
-    
+1. 在 Azure 门户菜单或“主页”页上，选择“创建资源”   。
 2. 在搜索框中键入“防火墙”，然后按 **Enter**。 
 3. 选择“防火墙”，然后选择“创建”   。
 4. 在“创建防火墙”页上，使用下表配置防火墙： 
 
-    |设置  |Value  |
+    |设置  |值  |
     |---------|---------|
     |订阅     |\<订阅\>|
     |资源组     |**Test-FW-RG** |
@@ -204,10 +195,11 @@ ms.locfileid: "79292124"
 6. 对于“优先级”，请键入 **200**。 
 7. 对于“操作”，请选择“允许”。  
 8. 在“规则”  下的“目标 FQDN”  中，键入 **Allow-QQ** 作为**名称**。
-9. 对于“源地址”，请键入 **10.0.2.0/24**。 
-10. 对于“协议:端口”，请键入 **http, https**。 
-11. 对于“目标 FQDN”，请键入 **www.qq.com** 
-12. 选择“添加” 。 
+9. 对于**源类型**，请选择“IP 地址”  。
+10. 对于**源**，请键入 **10.0.2.0/24**。
+11. 对于“协议:端口”，请键入 **http, https**。 
+12. 对于“目标 FQDN”，请键入 **www.qq.com** 
+13. 选择“添加” 。 
 
 Azure 防火墙包含默认情况下允许的基础结构 FQDN 的内置规则集合。 这些 FQDN 特定于平台，不能用于其他目的。 有关详细信息，请参阅[基础结构 FQDN](infrastructure-fqdns.md)。
 
@@ -220,10 +212,11 @@ Azure 防火墙包含默认情况下允许的基础结构 FQDN 的内置规则�
 3. 对于“名称”，请键入 **Net-Coll01**。 
 4. 对于“优先级”，请键入 **200**。 
 5. 对于“操作”，请选择“允许”。  
-6. 在“规则”下，为“名称”键入 **Allow-DNS**。  
+6. 在“规则”下，对于“名称”键入 **Allow-DNS**。   
 7. 对于“协议”，请选择“UDP”。  
-8. 对于“源地址”，请键入 **10.0.2.0/24**。 
-9. 对于“目标地址”，请键入 **209.244.0.3,209.244.0.4**
+9. 对于**源类型**，请选择“IP 地址”  。
+1. 对于**源**，请键入 **10.0.2.0/24**。
+2. 对于**目标地址**，请键入 **209.244.0.3,209.244.0.4**
 
     这些是由 CenturyLink 操作的公共 DNS 服务器。
 1. 对于“目标端口”，请键入 **53**。 

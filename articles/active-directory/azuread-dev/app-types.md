@@ -8,16 +8,17 @@ ms.service: active-directory
 ms.subservice: azuread-dev
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/24/2020
+ms.date: 04/23/2020
 ms.author: v-junlch
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
-ms.openlocfilehash: 316ed11fe6f2a19bc54213bc111d67796d464d18
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ROBOTS: NOINDEX
+ms.openlocfilehash: f50492632cffe38fd599941f6accbff1cb862e33
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77653660"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126335"
 ---
 # <a name="application-types-in-v10"></a>v1.0 中的应用程序类型
 
@@ -50,7 +51,7 @@ Azure Active Directory (Azure AD) 支持各种新型应用体系结构的身份�
 
 ### <a name="registering-an-app-that-uses-the-azure-ad-v10-endpoint"></a>注册使用 Azure AD v1.0 终结点的应用程序
 
-将身份验证外包给 Azure AD 的任何应用程序都必须在目录中进行注册。 此步骤需要告诉 Azure AD 关于应用程序的情况，包括应用程序所在的 URL、在进行身份验证后要将回复发送到的 URL、用以标识应用程序的 URI，以及其他信息。 该信息是必需的，有以下几个重要原因：
+将身份验证外包给 Azure AD 的任何应用程序都必须在目录中进行注册。 此步骤涉及告知 Azure AD 有关应用程序的信息，包括应用程序所在的 URL、在身份验证后要将回复发送到的 URL、用于标识应用程序的 URI，以及其他信息。 该信息是必需的，有以下几个重要原因：
 
 * 在处理登录或者交换令牌时，Azure AD 需要与应用程序进行通信。 Azure AD 和应用程序之间传递的信息包括以下内容：
   
@@ -71,7 +72,7 @@ Azure Active Directory (Azure AD) 支持各种新型应用体系结构的身份�
 
 ### <a name="additional-considerations-when-developing-single-tenant-or-multi-tenant-apps"></a>开发单租户应用或多租户应用时的其他注意事项
 
-与开发单租户应用程序相比，当开发多租户应用程序时，会出现一些额外的注意事项。 例如，如果要使应用程序可供多个目录中的用户使用，需要一种机制来确定用户在哪个租户中。 单租户应用程序只需要在自己的目录中查找用户，而多租户应用程序需要从 Azure AD 中的所有目录来识别特定用户。 为此，Azure AD 提供了一个通用身份验证终结点而不是特定于租户的终结点，这样任何多租户应用程序都可以在其中对登录请求进行定向。 对于 Azure AD 中的所有目录，此终结点为 https://login.partner.microsoftonline.cn/common ，而特定于租户的终结点可能为 https://login.partner.microsoftonline.cn/contoso.partner.onmschina.cn 。 在开发应用程序时考虑通用终结点尤为重要，因为在登录、注销和令牌验证期间需要必要的逻辑来处理多租户。
+与开发单租户应用程序相比，当开发多租户应用程序时，会出现一些额外的注意事项。 例如，如果要使应用程序可供多个目录中的用户使用，则需要使用一种机制来确定用户所在的租户。 单租户应用程序只需要在自己的目录中查找用户，而多租户应用程序需要从 Azure AD 中的所有目录来识别特定用户。 为此，Azure AD 提供了一个通用身份验证终结点而不是特定于租户的终结点，这样任何多租户应用程序都可以在其中对登录请求进行定向。 对于 Azure AD 中的所有目录，此终结点为 `https://login.partner.microsoftonline.cn/common`，而特定于租户的终结点可能为 `https://login.partner.microsoftonline.cn/contoso.partner.onmschina.cn`。 在开发应用程序时考虑公用终结点尤为重要，因为在登录、注销和令牌验证期间需要必要的逻辑来处理多租户。
 
 如果当前正在开发单租户应用程序，但希望它可供许多组织使用，可以轻松地在 Azure AD 中更改该应用程序及其配置，使其支持多租户。 此外，无论在单租户应用程序中还是在多租户应用程序中提供身份验证，Azure AD 都会对所有目录中的所有令牌使用相同的签名密钥。
 

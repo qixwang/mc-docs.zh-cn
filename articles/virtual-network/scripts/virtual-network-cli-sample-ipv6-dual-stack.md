@@ -1,5 +1,5 @@
 ---
-title: Azure CLI 脚本示例 - 配置 IPv6 虚拟网络终结点
+title: Azure CLI 脚本示例 - 配置 IPv6 前端
 titlesuffix: Azure Virtual Network
 description: 使用 Azure CLI 在 Azure 虚拟网络中启用 IPv6 终结点
 services: virtual-network
@@ -10,15 +10,14 @@ ms.service: virtual-network
 ms.devlang: NA
 ms.topic: article
 ms.workload: infrastructure-services
-origin.date: 04/23/2019
-ms.date: 12/02/2019
+ms.date: 04/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: ea9083a935dffe44870c01930b618f3540f21cc2
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+ms.openlocfilehash: 5fbcecb4163385fb32897da46a1b5804efab4edb
+ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
-ms.locfileid: "74658126"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82093256"
 ---
 # <a name="configure-ipv6-endpoints-in-virtual-network-script-sample"></a>在虚拟网络中配置 IPv6 终结点的脚本示例
 

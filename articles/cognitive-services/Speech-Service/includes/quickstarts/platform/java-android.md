@@ -11,12 +11,12 @@ ms.topic: include
 origin.date: 10/11/2019
 ms.date: 01/13/2020
 ms.author: v-tawe
-ms.openlocfilehash: 34579d223c9342bebe2656c0fb6b722f8a0a81bf
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 2e456553d4bde5378acce896abb815197ce54974
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75630997"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82150837"
 ---
 本指南介绍如何安装用于 Java on Android 的[语音 SDK](~/articles/cognitive-services/speech-service/speech-sdk.md)。 该安装基于语音 SDK Maven 包和 Android Studio 3.3。
 
@@ -30,6 +30,9 @@ ms.locfileid: "75630997"
 语音 SDK 与具有 32/64 位 ARM 和 Intel x86/x64 兼容处理器的 Android 设备兼容。
 
 ## <a name="install-the-speech-sdk-using-android-studio"></a>使用 Android Studio 安装语音 SDK
+
+> [!IMPORTANT]
+> 需要语音 SDK 版本 1.10.0 或更高版本。
 
 [!INCLUDE [](~/includes/cognitive-services-speech-service-quickstart-java-android-create-proj.md)]
 

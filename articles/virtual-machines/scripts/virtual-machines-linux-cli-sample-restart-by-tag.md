@@ -5,7 +5,6 @@ services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: rockboyfor
 manager: digimobile
-editor: tysonn
 tags: azure-service-management
 ms.assetid: ''
 ms.service: virtual-machines-linux
@@ -14,15 +13,15 @@ ms.topic: sample
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 origin.date: 03/01/2017
-ms.date: 09/16/2019
+ms.date: 04/27/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 166bb3ec66c288889f4044e1f37f19f11fa6ac9e
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 545da4527d473350d099d9da7b9cb3f11267ee02
+ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "70920971"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82596408"
 ---
 # <a name="restart-vms"></a>重新启动 VM
 
@@ -34,13 +33,13 @@ ms.locfileid: "70920971"
 
 第一种方法重新启动资源组中的所有 VM。
 
-```bash
+```azurecli
 az vm restart --ids $(az vm list --resource-group myResourceGroup --query "[].id" -o tsv)
 ```
 
-第二种方法使用 `az resource list` 获取带标记的 VM，筛选出是 VM 的资源，并重新启动那些 VM。
+第二种方法使用 `az resource list` 获取带标记的 VM，并筛选出是 VM 的资源，然后重新启动那些 VM。
 
-```bash
+```azurecli
 az vm restart --ids $(az resource list --tag "restart-tag" --query "[?type=='Microsoft.Compute/virtualMachines'].id" -o tsv)
 ```
 
@@ -52,11 +51,11 @@ az vm restart --ids $(az resource list --tag "restart-tag" --query "[?type=='Mic
 第一个脚本用来预配虚拟机。
 它使用了 no-wait 选项，因此，命令不会等待每个 VM 完成部署便会返回。
 第二个脚本等到 VM 完全部署后才会返回。
-第三个脚本重新启动已预配的所有 VM，然后仅重新启动带标记的 VM。
+第三个脚本重新启动已部署的所有 VM，并仅重新启动带标记的 VM。
 
 ### <a name="provision-the-vms"></a>预配 VM
 
-此脚本创建一个资源组，它创建三个 VM 并重新启动。
+此脚本创建一个资源组，并它创建三个 VM 并重新启动。
 其中的两个带有标记。
 
 ```azurecli
@@ -110,7 +109,7 @@ az vm restart --ids $(az resource list --tag "restart-tag" --query "[?type=='Mic
 
 运行脚本示例后，可以使用以下命令删除资源组、VM 以及所有相关的资源。
 
-```azurecli 
+```azurecli
 az group delete -n myResourceGroup --no-wait --yes
 ```
 
@@ -118,14 +117,19 @@ az group delete -n myResourceGroup --no-wait --yes
 
 此脚本使用以下命令创建资源组、虚拟机、可用性集、负载均衡器和所有相关资源。 表中的每条命令均链接到特定于命令的文档。
 
-| Command | 说明 |
+| 命令 | 注释 |
 |---|---|
 | [az group create](https://docs.azure.cn/cli/group?view=azure-cli-latest#az-group-create) | 创建用于存储所有资源的资源组。 |
 | [az vm create](https://docs.azure.cn/cli/vm?view=azure-cli-latest#az-vm-create) | 创建虚拟机。  |
-| [az vm list](https://docs.azure.cn/cli/vm?view=azure-cli-latest#az-vm-list) | 与 `--query` 一起使用，用来确保在重新启动 VM 之前已对其进行了预配，然后获取这些 VM 的 ID 以将其重新启动。 |
-| [az vm list](https://docs.azure.cn/cli/vm?view=azure-cli-latest#az-vm-list) | 与 `--query` 一起使用来获取使用该标记的 VM 的 ID。 |
+| [az vm list](https://docs.azure.cn/cli/vm?view=azure-cli-latest#az-vm-list) | 与 `--query` 一起使用，用来确保在重新启动 VM 之前已对其进行了预配，获取这些 VM 的 ID 以将其重新启动。 |
+| [az resource list](https://docs.azure.cn/cli/resource?view=azure-cli-latest#az-resource-list) | 与 `--query` 一起使用来获取使用该标记的 VM 的 ID。 |
 | [az vm restart](https://docs.azure.cn/cli/vm?view=azure-cli-latest#az-vm-restart) | 重新启动 VM。 |
 | [az group delete](https://docs.azure.cn/cli/group?view=azure-cli-latest#az-group-delete)  | 删除资源组，包括所有嵌套的资源。 |
+
+<!--MOONCAKE: CORRECT ON THE LAST THRESS ROWS-->
+<!--CORRECT ON [az vm create](https://docs.azure.cn/cli/vm?view=azure-cli-latest#az-vm-create)-->
+<!--CORRECT ON [az resource list](https://docs.azure.cn/cli/resource?view=azure-cli-latest#az-resource-list)-->
+<!--CORRECT ON [az group delete](https://docs.azure.cn/cli/group?view=azure-cli-latest#az-group-delete)-->
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -133,4 +137,4 @@ az group delete -n myResourceGroup --no-wait --yes
 
 可以在 [Azure Linux VM 文档](../linux/cli-samples.md?toc=%2fvirtual-machines%2flinux%2ftoc.json)中找到其他虚拟机 CLI 脚本示例。
 
-<!--Update_Description: update meta properties, update link -->
+<!-- Update_Description: update meta properties, wording update, update link -->

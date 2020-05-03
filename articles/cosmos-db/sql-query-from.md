@@ -5,14 +5,14 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 12/02/2019
-ms.date: 02/10/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: d7e3398060b7b748ce59f863cca4ba65958f6ee4
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 2cfdfa70fb6fea3f5741f1ef378e4a4e25dc761c
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77028651"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134662"
 ---
 # <a name="from-clause-in-azure-cosmos-db"></a>Azure Cosmos DB 中的 FROM 子句
 
@@ -50,11 +50,11 @@ FROM <from_specification>
 
 - `<from_source>`  
 
-    指定一个具有或不具有别名的数据源。 如果未指定别名，将从 `<container_expression>` 中使用以下规则推断：  
+    指定数据源，可以带别名，也可以不带别名。 如果未指定别名，则会使用以下规则从 `<container_expression>` 推断别名：  
 
     -  如果表达式为 container_name，那么 container_name 将用作别名。  
 
-    -  如果表达式为 `<container_expression>`，其次是 property_name，那么 property_name 将用作别名。 如果表达式为 container_name，那么 container_name 将用作别名。  
+    -  如果表达式是 `<container_expression>`，则会将 property_name 用作别名。 如果表达式为 container_name，那么 container_name 将用作别名。  
 
 - AS `input_alias`  
 
@@ -78,11 +78,11 @@ FROM <from_specification>
 
 - `input_alias`  
 
-    指定应从提供的别名定义的其他源中检索文档。  
+    指定应当从由提供的别名定义的其他源检索文档。  
 
-- `<container_expression> '.' property_`  
+- `<container_expression> '.' property_name`  
 
-    指定应通过访问由指定容器表达式检索的所有文档的 `property_name` 属性或 array_index 数组元素来检索文档。  
+    指定应通过访问 `property_name` 属性来检索文档。  
 
 - `<container_expression> '[' "property_name" | array_index ']'`  
 
@@ -90,7 +90,7 @@ FROM <from_specification>
 
 ## <a name="remarks"></a>备注
 
-`<from_source>(`) 中提供或推断的所有别名必须唯一。 语法 `<container_expression>.`property_name 等同于 `<container_expression>' ['"property_name"']'`。 但是，如果属性名称包含非标识符字符，则可以使用后一种语法。  
+在 `<from_source>(` 中提供或推断出的所有别名都必须是唯一的。 语法 `<container_expression>.`property_name 与 `<container_expression>' ['"property_name"']'` 相同。 但是，如果属性名称包含非标识符字符，则可以使用后一种语法。  
 
 ### <a name="handling-missing-properties-missing-array-elements-and-undefined-values"></a>处理未命中属性、未命中数组元素和未定义值
 
@@ -148,7 +148,7 @@ FROM 子句可将源化简为更小的子集。 要在每个项中仅枚举子�
     ]
 ```
 
-上述查询使用数组作为源，但你也可以使用对象作为源。 该查询考虑将源中任何有效的已定义 JSON 值包含在结果中。 以下示例将排除不带 `Families` 值的 `address.state`。
+上述查询使用数组作为源，但你也可以使用对象作为源。 该查询考虑将源中任何有效的已定义 JSON 值包含在结果中。 以下示例将排除不带 `address.state` 值的 `Families`。
 
 ```sql
     SELECT *

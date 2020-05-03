@@ -3,9 +3,8 @@ title: 通过 Azure CLI 从自定义磁盘上传并创建 Linux VM
 description: 使用资源管理器部署模型和 Azure CLI 创建虚拟硬盘 (VHD) 并将其上传到 Azure
 services: virtual-machines-linux
 documentationcenter: ''
-author: rockboyfor
-manager: digimobile
-editor: tysonn
+author: Johnnytechn
+manager: gwallace
 tags: azure-resource-manager
 ms.assetid: a8c7818f-eb65-409e-aa91-ce5ae975c564
 ms.service: virtual-machines-linux
@@ -13,15 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.topic: article
-origin.date: 07/10/2017
-ms.date: 02/10/2020
-ms.author: v-yeche
-ms.openlocfilehash: 4cee97838b3c79ab6e3a13196ee6b848b3b5f766
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 04/20/2020
+ms.author: v-johya
+ms.openlocfilehash: be14df6afbd6263b0f3ec1f456fe747938f62dfe
+ms.sourcegitcommit: ebedf9e489f5218d4dda7468b669a601b3c02ae5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77428905"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82159190"
 ---
 # <a name="upload-and-create-a-linux-vm-from-custom-disk-with-the-azure-cli"></a>通过 Azure CLI 从自定义磁盘上传并创建 Linux VM
 
@@ -82,7 +80,7 @@ az vm create --resource-group myResourceGroup --location chinanorth \
     --use-unmanaged-disk
 ```
 
-目标存储帐户必须与上传虚拟磁盘的目标位置相同。 还需要指定或根据提示输入 **az vm create** 命令所需的所有其他参数，例如虚拟网络、公共 IP 地址、用户名和 SSH 密钥。 阅读有关[可用 CLI Resource Manager 参数](../azure-cli-arm-commands.md#azure-vm-commands-to-manage-your-azure-virtual-machines)的详细信息。
+目标存储帐户必须与上传虚拟磁盘的目标位置相同。 还需要指定或根据提示输入 **az vm create** 命令所需的所有其他参数，例如虚拟网络、公共 IP 地址、用户名和 SSH 密钥。 阅读有关[可用经典 CLI 资源管理器参数](../azure-cli-arm-commands.md#azure-vm-commands-to-manage-your-azure-virtual-machines)的详细信息。
 
 ## <a name="requirements"></a>要求
 若要完成以下步骤，需要：
@@ -155,7 +153,7 @@ az storage account keys list --resource-group myResourceGroup --account-name mys
 
 输出类似于：
 
-```azurecli
+```output
 info:    Executing command storage account keys list
 + Getting storage account keys
 data:    Name  Key                                                                                       Permissions
@@ -205,6 +203,7 @@ az vm create --resource-group myResourceGroup --location chinanorth \
 
 仍需要指定或根据提示输入 **az vm create** 命令所需的所有其他参数，例如用户名和 SSH 密钥。
 
+
 ## <a name="resource-manager-template"></a>Resource Manager 模板
 Azure Resource Manager 模板是一个 JavaScript 对象表示法 (JSON) 文件，它定义了希望生成的环境。 这些模板细分为不同的资源提供程序，如计算或网络。 可以使用现有模板，也可以编写自己的模板。 阅读有关[使用 Resource Manager 和模板](../../azure-resource-manager/management/overview.md)的详细信息。
 
@@ -241,6 +240,7 @@ az group deployment create --resource-group myNewResourceGroup \
 az group deployment create --resource-group myNewResourceGroup \
   --template-file /path/to/mytemplate.json
 ```
+
 
 ## <a name="next-steps"></a>后续步骤
 准备好并上传自定义虚拟磁盘之后，可以阅读有关[使用 Resource Manager 和模板](../../azure-resource-manager/management/overview.md)的详细信息。 可能还需要向新 VM [添加数据磁盘](add-disk.md?toc=%2fvirtual-machines%2flinux%2ftoc.json)。 如果需要访问在 VM 上运行的应用程序，请务必[打开端口和终结点](nsg-quickstart.md?toc=%2fvirtual-machines%2flinux%2ftoc.json)。

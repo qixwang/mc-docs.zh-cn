@@ -3,37 +3,40 @@ title: 什么是语音服务？
 titleSuffix: Azure Cognitive Services
 description: 语音服务在单个 Azure 订阅中统合了语音转文本、文本转语音以及语音翻译功能。 使用语音 SDK、语音设备 SDK 或 REST API 在应用程序、工具和设备中添加语音。
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: overview
 origin.date: 03/12/2020
-ms.date: 03/16/2020
+ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: a367cb822bf45d2e950085816be04a488ca34071
-ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
+ms.openlocfilehash: 73e027435076dbd62ca485d090d77f1e7ed8a7fe
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80151673"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126703"
 ---
 # <a name="what-is-the-speech-service"></a>什么是语音服务？
 
 语音服务在单个 Azure 订阅中统合了语音转文本、文本转语音以及语音翻译功能。 使用[语音 SDK](speech-sdk-reference.md)、[语音设备 SDK](speech-devices-sdk-android-quickstart.md) 或 [REST API](rest-apis.md) 可以轻松在应用程序、工具和设备中启用语音。
 
 <!-- > [!IMPORTANT] -->
-<!-- > The Speech service has replaced Bing Speech API, Translator Speech, and Custom Speech. See _How-to guides > Migration_ for migration instructions. -->
+<!-- > The Speech service has replaced Bing Speech API and Translator Speech. See _How-to guides > Migration_ for migration instructions. -->
 
 这些功能构成了语音服务。 请使用下表中的链接详细了解每项功能的常见用例或浏览 API 参考信息。
 
 | 服务 | 功能 | 说明 | SDK | REST |
 |---------|---------|-------------|-----|------|
-| [语音转文本](speech-to-text.md) | 语音转文本 | 语音转文本可将音频流实时听录为应用程序、工具或设备可以使用或显示的文本。 结合[语言理解 (LUIS)](https://docs.azure.cn/cognitive-services/luis/) 使用语音转文本可以从听录的语音中派生用户意向，以及处理语音命令。 | [是](https://docs.azure.cn/cognitive-services/speech-service/speech-sdk-reference) | [是](https://docs.azure.cn/cognitive-services/speech-service/rest-apis) |
-| | [批量听录](batch-transcription.md) | 使用批量听录能够以异步方式对大量的数据进行语音转文本听录。 这是一个基于 REST 的服务，它使用的终结点与自定义和模型管理相同。 | 否 | [是](https://chinaeast2.cris.azure.cn/swagger/ui/index) |
+| [语音转文本](speech-to-text.md) | 实时语音转文本 | 语音转文本可将音频流或本地文件实时转录或翻译为文本，应用程序、工具或设备可以使用或显示这些文本。 结合[语言理解 (LUIS)](https://docs.azure.cn/cognitive-services/luis/) 使用语音转文本可以从听录的语音中派生用户意向，以及处理语音命令。 | [是](https://docs.azure.cn/cognitive-services/speech-service/speech-sdk-reference) | [是](https://docs.azure.cn/cognitive-services/speech-service/rest-apis) |
+| | [批量语音转文本](batch-transcription.md) | 批量语音转文本支持对 Azure Blob 存储中存储的大量语音音频数据进行异步语音到文本转录。 除了将语音音频转换为文本，批量语音转文本还允许进行分割聚类和情感分析。 | 否 | [是](https://chinaeast2.cris.azure.cn/swagger/ui/index) |
 | | [创建自定义语音识别模型](#customize-your-speech-experience) | 如果使用语音转文本在独特的环境中进行识别和听录，则可以创建并训练自定义的声学、语言和发音模型，以解决环境干扰或行业特定的词汇。 | 否 | [是](https://chinaeast2.cris.azure.cn/swagger/ui/index) |
 | [文本转语音](text-to-speech.md) | 文本转语音 | 文本转语音可使用[语音合成标记语言 (SSML)](speech-synthesis-markup.md) 将输入文本转换为类似人类的合成语音。 可以选择标准语音或神经语音（请参阅[语言支持](language-support.md)）。 | [是](https://docs.azure.cn/cognitive-services/speech-service/speech-sdk-reference) | [是](https://docs.azure.cn/cognitive-services/speech-service/rest-apis) |
 | [语音翻译](speech-translation.md) | 语音翻译 | 使用语音翻译可在应用程序、工具和设备中实现实时的多语言语音翻译。 进行语音转语音和语音转文本翻译时可以使用此服务。 | [是](https://docs.azure.cn/cognitive-services/speech-service/speech-sdk-reference) | 否 |
+
+
+[!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
 ## <a name="try-the-speech-service"></a>试用语音服务
 
@@ -53,6 +56,9 @@ ms.locfileid: "80151673"
 <!-- - [Tutorial: Build a Flask app to translate text, analyze sentiment, and synthesize translated text to speech, REST](/cognitive-services/translator/tutorial-build-flask-app-translation-synthesis) -->
 
 ## <a name="get-sample-code"></a>获取示例代码
+
+> [!IMPORTANT]
+> 需要语音 SDK 版本 1.10.0 或更高版本。
 
 GitHub 上提供了语音服务的示例代码。 这些示例涵盖了常见方案，例如，从文件或流中读取音频、连续和单次识别，以及使用自定义模型。 使用以下链接查看 SDK 和 REST 示例：
 

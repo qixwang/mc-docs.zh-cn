@@ -5,24 +5,21 @@ services: active-directory
 documentationcenter: dev-center-name
 author: rwike77
 manager: CelesteDG
-editor: ''
-ms.assetid: 0c84e7d0-16aa-4897-82f2-f53c6c990fd9
 ms.service: active-directory
 ms.subservice: azuread-dev
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/24/2020
+ms.date: 04/23/2020
 ms.author: v-junlch
 ms.reviewer: saeeda, sureshja, hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 1711b4e03a6ec66f2fc524bb0f6273411b39d176
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ROBOTS: NOINDEX
+ms.openlocfilehash: 49b6e0db0bf04c3b563bf135af9700b5ffb1dcbf
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77653636"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126323"
 ---
 # <a name="what-is-authentication"></a>什么是身份验证？
 
@@ -45,16 +42,16 @@ ms.locfileid: "77653636"
 
 ![Web 应用程序登录概述](./media/v1-authentication-scenarios/auth-basics-microsoft-identity-platform.svg)
 
-下面是需要了解的图表中显示的各种组件的相关信息：
+下面是你需要了解的示意图中显示的各种组件的相关信息：
 
-* Azure AD 是标识提供程序。 标识提供程序负责对组织的目录中存在的用户和应用程序的标识进行验证，并在那些用户和应用程序成功通过身份验证时颁发安全令牌。
+* Azure AD 是标识提供程序。 标识提供程序负责对组织的目录中存在的用户和应用程序的标识进行验证，并在这些用户和应用程序成功通过身份验证时颁发安全令牌。
 * 要将身份验证外包给 Azure AD 的应用程序必须在 Azure Active Directory (Azure AD) 中进行注册。 Azure AD 在目录中注册并唯一标识应用。
 * 开发人员可以使用开源 Azure AD 身份验证库处理协议细节，方便你进行身份验证。 有关详细信息，请参阅 Microsoft 标识平台 [v2.0 身份验证库](../develop/reference-v2-libraries.md?toc=/active-directory/azuread-dev/toc.json&bc=/active-directory/azuread-dev/breadcrumb/toc.json)和 [v1.0 身份验证库](active-directory-authentication-libraries.md)。
 * 在用户通过身份验证后，应用程序必须对用户的安全令牌进行验证以确保身份验证是成功的。 可查找各种语言和框架的快速入门、教程和代码示例，了解应用程序必须执行的操作。
   * 要快速构建应用并添加功能（如获取令牌、刷新令牌、进行用户登录、显示某些用户信息），请参阅文档的“快速入门”部分  。
   * 要深入了解顶级身份验证开发人员任务的案例过程，例如获取访问令牌并在调用 Microsoft Graph API 和其他 API 时使用它们，使用 OpenID Connect 通过传统的基于 Web 浏览器的应用实现 Microsoft 登录等，请参阅文档的“教程”部分  。
   * 要下载代码示例，请转到 [GitHub](https://github.com/Azure-Samples?q=active-directory)。
-* 身份验证过程的请求和响应流是由所使用的身份验证协议（例如 OAuth 2.0、OpenID Connect、WS 联合身份验证或 SAML 2.0）决定的。 有关协议的详细信息，请参阅文档中的“概念”>“身份验证协议”部分  。
+* 身份验证过程的请求和响应流由所使用的身份验证协议（例如 OAuth 2.0、OpenID Connect 或 WS 联合身份验证）确定。 有关协议的详细信息，请参阅文档中的“概念”>“身份验证协议”部分  。
 
 在上面的示例方案中，你可以根据以下两个角色对应用进行分类：
 

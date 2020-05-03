@@ -3,23 +3,22 @@ title: 如何在 Chrome 浏览器中处理 SameSite Cookie 更改 | Azure
 titleSuffix: Microsoft identity platform
 description: 了解如何在 Chrome 浏览器中处理 SameSite Cookie 更改。
 services: active-directory
-documentationcenter: ''
 author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/05/2020
+ms.date: 04/22/2020
 ms.author: v-junlch
 ms.reviewer: kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: e861cc4f01212b264ee6f2c46e60126693ab6f3b
-ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
+ms.openlocfilehash: 3186a99e51ee8ec95bbd5d878ae31e3e7d98b78f
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77067749"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126236"
 ---
 # <a name="handle-samesite-cookie-changes-in-chrome-browser"></a>在 Chrome 浏览器中处理 SameSite Cookie 更改
 
@@ -36,7 +35,7 @@ ms.locfileid: "77067749"
 
 最近[对 SameSite 标准所做的更新](https://tools.ietf.org/html/draft-west-cookie-incrementalism-00)提议在未将任何值设置为 Lax 时，通过产生默认的 `SameSite` 行为来保护应用。 此缓解措施意味着，HTTP 请求（从其他站点发出的 GET 除外）中的 Cookie 将受到限制。 此外，引入了 **None** 值来消除对所发送 Cookie 的限制。 这些更新即将在下一个 Chrome 浏览器版本中发布。
 
-当 Web 应用使用响应模式“form_post”通过 Microsoft 标识平台进行身份验证时，登录服务器将使用 HTTP POST 来响应应用程序，以发送令牌或授权代码。 由于这是一个跨域请求 (从 `login.partner.microsoftonline.cn` 发送到域 - 例如 https://contoso.com/auth) ，应用设置的 Cookie 现在需要遵守 Chrome 中的新规则。 需要在跨站点方案中使用的 Cookie 是保留 *state* 和 *nonce* 值的 Cookie，它们也在登录请求中发送。 Azure AD 会丢弃其他一些 Cookie 来保留会话。
+当 Web 应用使用响应模式“form_post”通过 Microsoft 标识平台进行身份验证时，登录服务器将使用 HTTP POST 来响应应用程序，以发送令牌或授权代码。 由于这是一个跨域请求（从 `login.partner.microsoftonline.cn` 发送到域 - 例如 ）`https://contoso.com/auth`，因此应用设置的 Cookie 现在需要遵守 Chrome 中的新规则。 需要在跨站点方案中使用的 Cookie 是保留 *state* 和 *nonce* 值的 Cookie，它们也在登录请求中发送。 Azure AD 会丢弃其他一些 Cookie 来保留会话。
 
 如果不更新 Web 应用，这种新行为会导致身份验证失败。
 
@@ -48,7 +47,7 @@ ms.locfileid: "77067749"
 
 以下代码示例演示了此方法。
 
-# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+# <a name="net"></a>[.NET](#tab/dotnet)
 
 下表显示了可以解决 ASP.NET 和 ASP.NET Core 示例中的 SameSite 更改的拉取请求。
 
@@ -63,13 +62,13 @@ ms.locfileid: "77067749"
 - [使用 ASP.NET Core 中的 SameSite Cookie](https://docs.microsoft.com/aspnet/core/security/samesite)
 - [有关 SameSite 问题的 ASP.NET 博客](https://devblogs.microsoft.com/aspnet/upcoming-samesite-cookie-changes-in-asp-net-and-asp-net-core/)
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 | 示例 |
 | ------ |
 |  [ms-identity-python-webapp](https://github.com/Azure-Samples/ms-identity-python-webapp)  |
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 | 示例 | 拉取请求 |
 | ------ | ------------ |

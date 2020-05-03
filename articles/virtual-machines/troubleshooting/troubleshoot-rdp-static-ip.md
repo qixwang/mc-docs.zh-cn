@@ -11,21 +11,18 @@ ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 origin.date: 11/08/2018
-ms.date: 02/10/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: 2d0b5787e3db890f76bd2826e99b7dba8e1b8284
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 68ddee1e57194b57c67eefd9c7e0ae7940ac0cce
+ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77428846"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82596356"
 ---
 # <a name="cannot-remote-desktop-to-azure-virtual-machines-because-of-static-ip"></a>由于静态 IP 而无法通过远程桌面连接到 Azure 虚拟机
 
 本文介绍了在 VM 中配置静态 IP 后无法通过远程桌面连接到 Azure Windows 虚拟机 (VM) 的问题。
-
-> [!NOTE]
-> Azure 具有用于创建和处理资源的两个不同的部署模型： [Resource Manager 和经典](../../azure-resource-manager/management/deployment-models.md)。 本文介绍如何使用资源管理器部署模型。建议对新部署使用该模型，而不要使用经典部署模型。
 
 ## <a name="symptoms"></a>症状
 
@@ -56,6 +53,6 @@ VM 具有一个在 Windows 中的网络接口上定义的静态 IP 地址。 此
 <!-- Not Available on use Serial control to enable DHCP or-->
 <!-- Not Available on ### Use Serial control-->
 
-如果要为 VM 配置静态 IP，请参阅[为 VM 配置静态 IP 地址](../../virtual-network/virtual-networks-static-private-ip-arm-pportal.md)。
+之后，如果希望为 VM 配置静态 IP，请参阅[为 VM 配置静态 IP 地址](../../virtual-network/virtual-networks-static-private-ip-arm-pportal.md)。
 
 <!-- Update_Description: update meta properties, wording update -->

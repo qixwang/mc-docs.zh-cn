@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 origin.date: 03/11/2020
-ms.date: 03/16/2020
+ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: e29d7d8ce96f1f3e6a35c5641715eb34d4a3c0cc
-ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
+ms.openlocfilehash: 993fd843bedd12e25d6b2b81dfeaa7e096c6fdc0
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80151514"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82127006"
 ---
 # <a name="what-is-the-speech-devices-sdk"></a>什么是语音设备 SDK？
 
@@ -35,6 +35,9 @@ ms.locfileid: "80151514"
 <!-- The Speech Devices SDK enables a variety of voice-enabled scenarios, drive-thru ordering systems, [conversation transcription](conversation-transcription-service.md), and smart speakers. You can respond to users with text, speak back to them in a default or [custom voice](how-to-custom-voice-create-voice.md), provide search results, and more. We look forward to seeing what you build! -->
 
 ## <a name="get-the-speech-devices-sdk"></a>获取语音设备 SDK
+
+> [!IMPORTANT]
+> 需要语音 SDK 版本 1.10.0 或更高版本。
 
 ### <a name="android"></a>Android
 

@@ -65,7 +65,7 @@
       href: user-overview.md
     - name: 用户配置文件属性
       href: user-profile-attributes.md
-- name: 操作方法指南
+- name: 操作指南
   items:
     - name: 应用集成
       items:
@@ -182,7 +182,7 @@
                 - name: ClaimsTransformations
                   href: claimstransformations.md
                   items:
-                    - name: Boolean
+                    - name: 布尔
                       href: boolean-transformations.md
                     - name: Date
                       href: date-transformations.md
@@ -269,9 +269,6 @@
         - name: 使用 PowerShell 管理策略
           href: manage-custom-policies-powershell.md
           displayName: 'scripting, scripts, psh, custom policy'
-    - name: 管理用户 - Azure 门户
-      href: manage-users-portal.md
-      displayName: 'create users, add users, delete users'
     - name: 安全 API 管理 API
       href: secure-api-management.md
       displayName: 'apim, api management, migrate, b2clogin.cn'
@@ -327,7 +324,7 @@
       href: 'https://azure.microsoft.com/updates/?product=active-directory-b2c'
     - name: 解决方案和培训
       href: solution-articles.md
-    - name: 堆栈溢出
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-ad-b2c+identity-experience-framework'
     - name: 支持
       href: support-options.md

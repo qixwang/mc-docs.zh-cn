@@ -4,16 +4,16 @@ description: 了解 Azure Cosmos DB 中的 DEGREES SQL 系统函数，该函数�
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
-origin.date: 09/13/2019
-ms.date: 02/10/2020
+origin.date: 03/03/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
 ms.custom: query-reference
-ms.openlocfilehash: f3396a21ac4b23d35978169db71301fd0debec02
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: d64fe4bd499cc5e31824dabeaae067c82cec4e7d
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77028667"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134459"
 ---
 # <a name="degrees-azure-cosmos-db"></a>DEGREES (Azure Cosmos DB)
  返回指定角度（弧度）的相应角度（度）。  
@@ -27,25 +27,29 @@ DEGREES (<numeric_expr>)
 ## <a name="arguments"></a>参数
 
 *numeric_expr*  
-  为数值表达式。  
+  是一个数值表达式。  
 
 ## <a name="return-types"></a>返回类型
 
-  返回数值表达式。  
+  返回一个数值表达式。  
 
 ## <a name="examples"></a>示例
 
-  以下示例将返回 PI/2 弧度角的度数。  
+  以下示例返回 PI/2 弧度表示的角度的度数。  
 
 ```sql
 SELECT DEGREES(PI()/2) AS degrees  
 ```  
 
- 下面是结果集：  
+ 下面是结果集。  
 
 ```json
 [{"degrees": 90}]  
 ```  
+
+## <a name="remarks"></a>备注
+
+此系统函数不会使用索引。
 
 ## <a name="next-steps"></a>后续步骤
 

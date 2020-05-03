@@ -1,5 +1,5 @@
 ---
-title: 解决 Azure Databases for MariaDB 的连接问题
+title: 排查连接问题 - Azure Database for MariaDB
 description: 了解如何排查与 Azure Database for MariaDB 的连接问题，包括需要重试的暂时性错误、防火墙问题和服务中断。
 author: WenJason
 ms.author: v-jay
@@ -7,12 +7,12 @@ ms.service: mariadb
 ms.topic: troubleshooting
 origin.date: 11/09/2018
 ms.date: 11/19/2019
-ms.openlocfilehash: 224a586e421e3843c2b93097f16568d41a4adf7d
-ms.sourcegitcommit: a4b88888b83bf080752c3ebf370b8650731b01d1
+ms.openlocfilehash: 7393dcefcd6a8a638be3c45ee82aa9d5999dfe6a
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74179002"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82127049"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-mariadb"></a>解决 Azure Databases for MariaDB 的连接问题
 
@@ -47,15 +47,15 @@ ms.locfileid: "74179002"
 如果应用程序一直无法连接到 Azure Database for MariaDB，通常表示下列其中一项出现了问题：
 
 * 防火墙配置：Azure Database for MariaDB 服务器或客户端防火墙正在阻止连接。
-* 客户端上的网络重新配置：已添加新的 IP 地址或代理服务器。
-* 用户错误：例如，连接参数的键入错误（例如，在连接字符串中键入了服务器名称，或者在用户名中遗漏了 *\@servername* 后缀）。
+* 客户端上的网络重新配置：添加了新的 IP 地址或代理服务器。
+* 用户失误：例如，连接参数的键入错误（例如，在连接字符串中键入了服务器名称，或者在用户名中遗漏了 *\@servername* 后缀）。
 
 ### <a name="steps-to-resolve-persistent-connectivity-issues"></a>解决永久性连接问题的步骤
 
-1. 设置[防火墙规则](howto-manage-firewall-portal.md)以允许客户端 IP 地址。 （仅出于临时测试目的）使用 0.0.0.0 作为起始 IP 地址，使用 255.255.255.255 作为结束 IP 地址，来设置一个防火墙规则。 这会在所有 IP 地址上打开服务器。 如果这样可以解决连接性问题，请删除此规则，再针对适当限制的 IP 地址或地址范围创建防火墙规则。
+1. 设置[防火墙规则](howto-manage-firewall-portal.md)以允许客户端 IP 地址。 （仅出于临时测试目的）使用 0.0.0.0 作为起始 IP 地址，使用 255.255.255.255 作为结束 IP 地址，来设置一个防火墙规则。 这样会使服务器向所有 IP 地址开放。 如果这样可以解决连接性问题，请删除此规则，再针对适当限制的 IP 地址或地址范围创建防火墙规则。
 2. 在客户端与 Internet 之间的所有防火墙上，确保为出站连接打开端口 3306。
 3. 验证连接字符串和其他连接设置。 查看[如何将应用程序连接到 Azure Database for MariaDB](howto-connection-string.md)。
-4. 在仪表板中检查服务运行状况。 如果你认为发生了区域性服务中断，请参阅[有关使用 Azure Database for MariaDB 确保业务连续性的概述](concepts-business-continuity.md)了解恢复到新区域所要执行的步骤。
+4. 在仪表板中检查服务运行状况。 如果你认为发生了区域性服务中断，请参阅[有关使用 Azure Database for MariaDB 确保业务连续性的概述](concepts-business-continuity.md)，了解恢复到新区域所要执行的步骤。
 
 ## <a name="next-steps"></a>后续步骤
 

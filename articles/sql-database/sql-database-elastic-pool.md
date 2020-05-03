@@ -10,14 +10,14 @@ ms.topic: conceptual
 author: WenJason
 ms.author: v-jay
 ms.reviewer: ninarn, carlrab
-origin.date: 08/06/2019
-ms.date: 03/30/2020
-ms.openlocfilehash: 1d41319b51fb0e00ad69fe51f6b49b82f595b64f
-ms.sourcegitcommit: 90660563b5d65731a64c099b32fb9ec0ce2c51c6
+origin.date: 04/09/2020
+ms.date: 04/27/2020
+ms.openlocfilehash: 671c9dcd2860376a171ed6c30002204e8c9853a7
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80341832"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82127023"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>弹性池有助于管理和缩放多个 Azure SQL 数据库
 
@@ -106,9 +106,9 @@ SaaS 开发人员构建在由多个数据库组成的大规模数据层上的应
 - 池中所有数据库使用的最大资源（最大 DTU 数或最大 vCore 数，具体取决于所选的资源模型）。
 - 池中所有数据库使用的最大存储字节。
 
-有关每个资源模型提供的服务层级，请参阅[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)或[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)。
+有关每个资源模型的可用服务层级和限制，请参阅[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)或[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)。
 
-在无法使用工具的情况下，以下分步步骤有助于评估池是否比单一数据库更具成本效益：
+以下步骤可帮助你评估池是否比单一数据库更具成本效益：
 
 1. 通过如下方式来估算池所需的 eDTU 或 vCore：
 
@@ -199,5 +199,5 @@ SaaS 开发人员构建在由多个数据库组成的大规模数据层上的应
 
 ## <a name="next-steps"></a>后续步骤
 
+- 有关定价信息，请参阅[弹性池定价](https://www.azure.cn/pricing/details/sql-database/)。
 - 若要缩放弹性池，请参阅[缩放弹性池](sql-database-elastic-pool-scale.md)和[缩放弹性池 - 示例代码](scripts/sql-database-monitor-and-scale-pool-powershell.md)
-- 有关视频，请参阅[有关 Azure SQL 数据库弹性功能的 Microsoft 虚拟大学视频课程](https://mva.microsoft.com/training-courses/elastic-database-capabilities-with-azure-sql-db-16554)

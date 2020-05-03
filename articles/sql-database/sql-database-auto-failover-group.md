@@ -12,12 +12,12 @@ ms.author: v-jay
 ms.reviewer: mathoma, carlrab
 origin.date: 2/10/2020
 ms.date: 03/16/2020
-ms.openlocfilehash: 47cde36bc6d809ee5a5426863d9630380e5b80f6
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: a3c16a45bb8ac6bfc69d64a2d5a8e08bb06ef674
+ms.sourcegitcommit: 4aeecfcc59cb42ba0b712a729d278d03bffc719a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79293816"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81791026"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>使用自动故障转移组可以实现多个数据库的透明、协调式故障转移
 

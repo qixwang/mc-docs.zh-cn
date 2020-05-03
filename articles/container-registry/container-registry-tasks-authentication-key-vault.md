@@ -1,19 +1,16 @@
 ---
-title: Azure 容器注册表任务中的外部身份验证
-description: 在 Azure 容器注册表 (ACR) 任务中启用 Azure 资源的托管标识，使该任务能够读取存储在 Azure Key Vault 中的 Docker Hub 凭据。
-services: container-registry
-author: rockboyfor
-ms.service: container-registry
+title: 通过 ACR 任务进行外部身份验证
+description: 配置 Azure 容器注册表任务（ACR 任务）以使用 Azure 资源的托管标识读取 Azure 密钥保管库中存储的 Docker Hub 凭据。
 ms.topic: article
-origin.date: 07/12/2019
-ms.date: 08/26/2019
+origin.date: 01/14/2020
+ms.date: 04/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: ca79cf673c4e78beb5a3639cb914be59ff41f77e
-ms.sourcegitcommit: 18a0d2561c8b60819671ca8e4ea8147fe9d41feb
+ms.openlocfilehash: 89c55b1aefd04c489a4c5da2c4ffdce589f5eead
+ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70134528"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82093503"
 ---
 <!--Verify successfully-->
 # <a name="external-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>ACR 任务中使用 Azure 托管标识的外部身份验证 
@@ -26,7 +23,7 @@ ms.locfileid: "70134528"
 
 ## <a name="scenario-overview"></a>方案概述
 
-示例任务将读取存储在 Azure Key Vault 中的 Docker Hub 凭据。 这些凭据适用于对 Docker Hub 中的专用存储库拥有写入（推送）权限的 Docker Hub 帐户。 若要读取凭据，请使用托管标识配置任务，并为其分配适当的权限。 与标识关联的任务将生成一个映像，并登录到 Docker Hub，以将映像推送到专用存储库。 
+示例任务将读取存储在 Azure Key Vault 中的 Docker Hub 凭据。 这些凭据适用于对专用 Docker Hub 存储库具有写入（推送）权限的 Docker Hub 帐户。 若要读取凭据，请使用托管标识配置任务，并为其分配适当的权限。 与标识关联的任务将生成一个映像，并登录到 Docker Hub，以将映像推送到专用存储库。 
 
 此示例演示了使用用户分配的或系统分配的托管标识的步骤。 选择哪种标识取决于组织的需求。
 
@@ -77,7 +74,7 @@ az keyvault secret set \
 此示例任务的步骤在一个 [YAML 文件](container-registry-tasks-reference-yaml.md)中定义。 在本地工作目录中创建名为 `dockerhubtask.yaml` 的文件，并粘贴以下内容。 请务必将该文件中的 Key Vault 名称替换为自己的 Key Vault 名称。
 
 ```yml
-version: v1.0.0
+version: v1.1.0
 # Replace mykeyvault with the name of your key vault
 secrets:
   - id: username
@@ -86,12 +83,12 @@ secrets:
     keyvault: https://mykeyvault.vault.azure.cn/secrets/Password
 steps:
 # Log in to Docker Hub
-  - cmd: docker login --username '{{.Secrets.username}}' --password '{{.Secrets.password}}'
+  - cmd: bash echo '{{.Secrets.password}}' | docker login --username '{{.Secrets.username}}' --password-stdin 
 # Build image
-  - build: -t {{.Values.PrivateRepo}}:{{.Run.ID}} https://github.com/Azure-Samples/acr-tasks.git -f hello-world.dockerfile
+  - build: -t {{.Values.PrivateRepo}}:$ID https://github.com/Azure-Samples/acr-tasks.git -f hello-world.dockerfile
 # Push image to private repo in Docker Hub
   - push:
-    - {{.Values.PrivateRepo}}:{{.Run.ID}}
+    - {{.Values.PrivateRepo}}:$ID
 ```
 
 任务步骤将执行以下操作：
@@ -146,7 +143,10 @@ az acr task create \
 运行以下 [az keyvault set-policy][az-keyvault-set-policy] 命令来设置对 Key Vault 的访问策略。 以下示例允许标识读取 Key Vault 中的机密。 
 
 ```azurecli
-az keyvault set-policy --name mykeyvault --resource-group myResourceGroup --object-id $principalID --secret-permissions get
+az keyvault set-policy --name mykeyvault \
+  --resource-group myResourceGroup \
+  --object-id $principalID \
+  --secret-permissions get
 ```
 
 ## <a name="manually-run-the-task"></a>手动运行任务
@@ -154,7 +154,7 @@ az keyvault set-policy --name mykeyvault --resource-group myResourceGroup --obje
 若要验证启用了托管标识的任务是否成功运行，请使用 [az acr task run][az-acr-task-run] 命令手动触发该任务。 `--set` 参数用于将专用存储库名称传递给该任务。 在此示例中，占位符存储库名称为 *hubuser/hubrepo*。
 
 ```azurecli
-az acr task run --name dockerhubtask --registry myregistry --set PrivateRepo=hubuser/hubrepo 
+az acr task run --name dockerhubtask --registry myregistry --set PrivateRepo=hubuser/hubrepo
 ```
 
 如果该任务成功运行，则输出将显示对 Docker Hub 的身份验证成功，并且映像已成功生成并推送到专用存储库：
@@ -220,18 +220,17 @@ Run ID: cf24 was successful after 15s
 [az-acr-repository-show-tags]: https://docs.azure.cn/cli/acr/repository?view=azure-cli-latest#az-acr-repository-show-tags
 [az-role-assignment-create]: https://docs.azure.cn/cli/role/assignment?view=azure-cli-latest#az-role-assignment-create
 [az-acr-login]: https://docs.azure.cn/cli/acr?view=azure-cli-latest#az-acr-login
-[az-identity-create]: https://docs.azure.cn/cli/identity?view=azure-cli-latest#az-identity-create
-[az-identity-show]: https://docs.azure.cn/cli/identity?view=azure-cli-latest#az-identity-show
+[az-identity-create]: https://docs.microsoft.com/cli/azure/identity?view=azure-cli-latest#az-identity-create
+[az-identity-show]: https://docs.microsoft.com/cli/azure/identity?view=azure-cli-latest#az-identity-show
 [azure-cli]: https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest
 [az-acr-task-create]: https://docs.azure.cn/cli/acr/task?view=azure-cli-latest#az-acr-task-create
 [az-acr-task-show]: https://docs.azure.cn/cli/acr/task?view=azure-cli-latest#az-acr-task-show
 [az-acr-task-run]: https://docs.azure.cn/cli/acr/task?view=azure-cli-latest#az-acr-task-run
 [az-acr-task-list-runs]: https://docs.azure.cn/cli/acr/task?view=azure-cli-latest#az-acr-task-list-runs
-[az-acr-task-credential-add]: https://docs.azure.cn/cli/acr/task/credential?view=azure-cli-latest#az-acr-task-credential-add
+[az-acr-task-credential-add]: https://docs.microsoft.com/cli/azure/acr/task/credential?view=azure-cli-latest#az-acr-task-credential-add
 [az-group-create]: https://docs.azure.cn/cli/group??view=azure-cli-latest#az-group-create
 [az-keyvault-create]: https://docs.azure.cn/cli/keyvault??view=azure-cli-latest#az-keyvault-create
 [az-keyvault-secret-set]: https://docs.azure.cn/cli/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-set
 [az-keyvault-set-policy]: https://docs.azure.cn/cli/keyvault?view=azure-cli-latest#az-keyvault-set-policy
 
-<!--Update_Description: new articles on container registry task auth key vault -->
-<!--ms.date: 09/02/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

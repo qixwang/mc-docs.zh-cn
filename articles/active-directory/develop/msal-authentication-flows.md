@@ -3,22 +3,22 @@ title: MSAL 身份验证流 | Azure
 titleSuffix: Microsoft identity platform
 description: 了解 Microsoft 身份验证库 (MSAL) 使用的身份验证流和授权。
 services: active-directory
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 02/06/2020
+ms.date: 04/22/2020
 ms.author: v-junlch
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 79897efb36ed80e8c5a0b8135e8284b93cf0010d
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 5b485cbd7e40bf3cf0ba1699e7e9a34def7fa270
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79291080"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126524"
 ---
 # <a name="authentication-flows"></a>身份验证流
 
@@ -151,7 +151,7 @@ MSAL 支持 [OAuth 2 设备代码流](v2-oauth2-device-code.md)，可让用户�
 
 在上图中：
 
-1. 每当需要用户身份验证时，应用将提供一个代码，并要求用户使用另一台设备（例如，已连接到 Internet 的智能手机）转到某个 URL（例如 https://microsoft.com/devicelogin) ）。 然后，系统会提示用户输入该代码，并转到完成正常身份验证的体验，包括许可提示和多重身份验证（如果需要）。
+1. 每当需要用户身份验证时，应用将提供一个代码，并要求用户使用另一台设备（例如，已连接到 Internet 的智能手机）访问某个 URL（例如 `https://microsoft.com/devicelogin`）。 然后，系统会提示用户输入该代码，并转到完成正常身份验证的体验，包括许可提示和多重身份验证（如果需要）。
 
 2. 成功完成身份验证后，命令行应用会通过传回通道收到所需的令牌，并使用这些令牌执行所需的 Web API 调用。
 
@@ -225,7 +225,7 @@ MSAL 支持 [OAuth 2 资源所有者密码凭据授予](v2-oauth-ropc.md)，后�
 
 除了 [Windows 集成身份验证约束](#integrated-windows-authentication)以外，以下约束也适用：
 
-- 用户名/密码流与多重身份验证不兼容。 因此，如果应用在 Azure AD 租户中运行，而该租户中的租户管理员需要多重身份验证，则你无法使用此流。 许多组织都会提出这种要求。
+- 用户名/密码流与条件访问和多重身份验证不兼容。 因此，如果应用在 Azure AD 租户中运行，而该租户中的租户管理员需要多重身份验证，则你无法使用此流。 许多组织都会提出这种要求。
 - 它仅适用工作和学校帐户。
 - 可在 .NET Desktop 和 .NET Core 中使用该流，但不能在通用 Windows 平台中使用。
 
@@ -233,4 +233,3 @@ MSAL 支持 [OAuth 2 资源所有者密码凭据授予](v2-oauth-ropc.md)，后�
 
 有关使用 MSAL.NET 和 Azure AD B2C 的详细信息，请参阅[将 ROPC 与 Azure AD B2C (MSAL.NET) 配合使用](msal-net-aad-b2c-considerations.md#resource-owner-password-credentials-ropc-with-azure-ad-b2c)。
 
-<!-- Update_Description: link update -->

@@ -5,14 +5,14 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 11/04/2019
-ms.date: 02/24/2020
+ms.date: 04/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: fc78ba760d7585e1f0697642ea8bd07d3a92443d
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.openlocfilehash: e025e7f8ed4034308e3683df9811882638dfb377
+ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77540530"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82093492"
 ---
 # <a name="connect-privately-to-an-azure-cosmos-account-using-azure-private-link"></a>使用 Azure 专用链接以私密方式连接到 Azure Cosmos 帐户
 
@@ -26,34 +26,36 @@ Azure 专用终结点是 Azure 中专用链接的构建基块。 它使 Azure �
 
 ## <a name="create-a-vm"></a>创建 VM
 
-### <a name="create-the-virtual-network"></a>创建虚拟网络
+## <a name="virtual-network-and-parameters"></a>虚拟网络和参数
 
 在本部分中，你将创建虚拟网络和子网来托管用于访问专用链接资源（在本例中为 Azure Cosmos 帐户）的 VM。
 
-1. 在屏幕的左上方，选择“创建资源” > “网络” > “虚拟网络”    。
+在本部分中，你需要将步骤中的以下参数替换为以下信息：
 
-1. 在“创建虚拟网络”  中，输入或选择以下信息：
+| 参数                   | 值                |
+|-----------------------------|----------------------|
+| **\<resource-group-name>** | MyResourceGroup|
+| **\<virtual-network-name>** | myVirtualNetwork         |
+| **\<region-name>** | 中国东部 2|
+| **\<IPv4-address-space>** | 10.1.0.0\16          |
+| **\<subnet-name>** | mySubnet        |
+| **\<subnet-address-range>** | 10.1.0.0\24          |
 
-    | 设置 | Value |
-    | ------- | ----- |
-    | 名称 | 输入 *MyVirtualNetwork*。 |
-    | 地址空间 | 输入 10.1.0.0/16  。 |
-    | 订阅 | 选择订阅。|
-    | 资源组 | 选择“新建”，输入 myResourceGroup，然后选择“确定”    。 |
-    | 位置 | 选择“chinaeast2”  。|
-    | 子网 - 名称 | 输入 *mySubnet*。 |
-    | 子网 - 地址范围 | 输入 10.1.0.0/24  。 |
-    |||
-
-1. 将其余的设置保留默认值，然后选择“创建”  。
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 ### <a name="create-the-virtual-machine"></a>创建虚拟机
 
-1. 在 Azure 门户屏幕的左上方，选择“创建资源” > “计算” > “虚拟机”。   
+<!-- MOONCAKE: CUSTOMIZATION-->
+
+1. 在 Azure 门户屏幕的左上角，选择“创建资源”  ，在“新建”  页的“搜索市场”  筛选框中键入“Windows Server 2019 Datacenter”  ，然后单击 Enter 键，并在搜索结果中选择“Windows Server 2019 Datacenter”  。
+
+1. 在“Windows Server 2019 Datacenter”页中选择“创建”  。
+
+    <!-- MOONCAKE: CUSTOMIZATION-->
 
 1. 在“创建虚拟机 - 基本信息”  中，输入或选择以下信息：
 
-    | 设置 | Value |
+    | 设置 | 值 |
     | ------- | ----- |
     | **项目详细信息** | |
     | 订阅 | 选择订阅。 |
@@ -80,7 +82,7 @@ Azure 专用终结点是 Azure 中专用链接的构建基块。 它使 Azure �
 
 1. 在“创建虚拟机 - 基本信息”  中，选择以下信息：
 
-    | 设置 | Value |
+    | 设置 | 值 |
     | ------- | ----- |
     | 虚拟网络 | 保留默认值“MyVirtualNetwork”  。  |
     | 地址空间 | 保留默认值“10.1.0.0/24”。 |

@@ -5,15 +5,15 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 09/13/2019
-ms.date: 10/28/2019
+ms.date: 04/27/2020
 ms.author: v-yeche
 ms.custom: query-reference
-ms.openlocfilehash: eecd15d1f7333ab6f5a3af4004d3ad7000833b9d
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 4d39f7d6e568eb7ce85c162e7617ebc412975625
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "72914703"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134553"
 ---
 # <a name="length-azure-cosmos-db"></a>LENGTH (Azure Cosmos DB)
  返回指定字符串表达式的字符数。  
@@ -31,21 +31,25 @@ LENGTH(<str_expr>)
 
 ## <a name="return-types"></a>返回类型
 
-  返回数值表达式。  
+  返回一个数值表达式。  
 
 ## <a name="examples"></a>示例
 
-  以下示例将返回字符串的长度。  
+  以下示例返回某个字符串的长度。  
 
 ```sql
 SELECT LENGTH("abc") AS len 
 ```  
 
- 下面是结果集：  
+ 下面是结果集。  
 
 ```json
 [{"len": 3}]  
 ```  
+
+## <a name="remarks"></a>备注
+
+此系统函数不会使用索引。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -53,5 +57,4 @@ SELECT LENGTH("abc") AS len
 - [系统函数 Azure Cosmos DB](sql-query-system-functions.md)
 - [Azure Cosmos DB 简介](introduction.md)
 
-<!--Update_Description: new articles on sql query length  -->
-<!--New.date: 10/28/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

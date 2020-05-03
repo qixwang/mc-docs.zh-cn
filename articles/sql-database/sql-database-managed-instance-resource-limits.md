@@ -11,13 +11,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 origin.date: 02/25/2020
-ms.date: 03/16/2020
-ms.openlocfilehash: dad9b289df6c97463f56419c3bc66cc42e19040a
-ms.sourcegitcommit: dc862610e2169c1fce6fb0ae9eb7dd7567f86a0a
+ms.date: 04/27/2020
+ms.openlocfilehash: 8f847742b378e207180299157a1a8a7954c2c97d
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79293661"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82127032"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Azure SQL 数据库托管实例资源限制概述
 
@@ -26,9 +26,9 @@ ms.locfileid: "79293661"
 > [!NOTE]
 > 有关支持的功能和 T-SQL 语句的差异，请参阅[功能差异](sql-database-features.md)和 [T-SQL 语句支持](sql-database-managed-instance-transact-sql-information.md)。 有关单一数据库和托管实例中服务层级之间的一般差异，请参阅[服务层级比较](sql-database-service-tiers-general-purpose-business-critical.md#service-tier-comparison)。
 
-## <a name="hardware-generation-characteristics"></a>硬件代次特征
+## <a name="hardware-generation-characteristics"></a>硬件代系特征
 
-托管实例的某些特征和资源限制取决于底层基础结构和体系结构。 Azure SQL 数据库托管实例可部署在两个硬件代次上：Gen4 和 Gen5。 硬件代次具有不同的特征，如下表所述：
+托管实例的某些特征和资源限制取决于底层基础结构和体系结构。 Azure SQL 数据库托管实例可部署在两个硬件代系上：Gen4 和 Gen5。 硬件代系具有不同的特征，如下表所述：
 
 |   | **Gen4** | **Gen5** |
 | --- | --- | --- |
@@ -44,7 +44,7 @@ ms.locfileid: "79293661"
 
 ### <a name="in-memory-oltp-available-space"></a>内存中 OLTP 可用空间 
 
-[业务关键](sql-database-service-tier-business-critical.md)服务层级中的内存中 OLTP 空间量取决于 vCore 数和硬件代次。 下表列出了可用于内存中 OLTP 对象的内存限制。
+[业务关键](sql-database-service-tier-business-critical.md)服务层级中的内存中 OLTP 空间量取决于 vCore 数和硬件代系。 下表列出了可用于内存中 OLTP 对象的内存限制。
 
 | 内存中 OLTP 空间  | **Gen5** | **Gen4** |
 | --- | --- | --- |
@@ -68,8 +68,8 @@ ms.locfileid: "79293661"
 | 最大数据库大小 | 不超过当前可用的实例大小（最大为 2 TB - 8 TB，具体取决于 vCore 数）。 | 不超过当前可用的实例大小（最大为 1 TB - 2 TB，具体取决于 vCore 数）。 |
 | 最大 tempDB 大小 | 限制为 24 GB/vCore (96 - 1,920 GB) 和当前可用的实例存储大小。<br/>添加更多 vCore 以获得更多 TempDB 空间。<br/> 日志文件大小限制为 120 GB。| 不超过当前可用的实例存储大小。 |
 | 每个实例的数据库数目上限 | 除非已达到实例存储大小限制，否则为 100。 | 除非已达到实例存储大小限制，否则为 100。 |
-| 每个实例的数据库文件数目上限 | 除非已达到实例存储大小或 [Azure 高级磁盘存储分配空间](sql-database-managed-instance-transact-sql-information.md#exceeding-storage-space-with-small-database-files)限制，否则最大为 280。 | 除非已达到实例存储大小限制，否则为每个数据库 32,767 个文件。 |
-| 最大数据文件大小 | 限制为当前可用的实例存储大小（最大 2 TB - 8 TB）和 [Azure 高级磁盘存储分配空间](sql-database-managed-instance-transact-sql-information.md#exceeding-storage-space-with-small-database-files)。 | 限制为当前可用的实例存储大小（最大为 1 TB - 2 TB）。 |
+| 每个实例的数据库文件数目上限 | 除非已达到实例存储大小或 [Azure 高级磁盘存储分配空间](sql-database-release-notes.md#exceeding-storage-space-with-small-database-files)限制，否则最大为 280。 | 除非已达到实例存储大小限制，否则为每个数据库 32,767 个文件。 |
+| 最大数据文件大小 | 限制为当前可用的实例存储大小（最大 2 TB - 8 TB）和 [Azure 高级磁盘存储分配空间](sql-database-release-notes.md#exceeding-storage-space-with-small-database-files)。 | 限制为当前可用的实例存储大小（最大为 1 TB - 2 TB）。 |
 | 最大日志文件大小 | 限制为 2 TB 和当前可用的实例存储大小。 | 限制为 2 TB 和当前可用的实例存储大小。 |
 | 数据/日志 IOPS（近似值） | 每个实例最多 30-40 K IOPS*，每个文件 500 - 7500<br/>\*[增大文件大小以获取更多 IOPS](#file-io-characteristics-in-general-purpose-tier)| 10 K - 200 K (2500 IOPS/vCore)<br/>添加更多 vCore 以获得更好的 IO 性能。 |
 | 日志写入吞吐量限制（每个实例） | 3 MB/s（每个 vCore）<br/>最大 22 MB/s | 4 MB/秒（每个 vCore）<br/>最大 48 MB/s |
@@ -90,7 +90,7 @@ ms.locfileid: "79293661"
 
 在“常规用途”服务层级中，每个数据库文件可获得专用的 IOPS 和吞吐量（具体取决于文件大小）。 文件越大，获得的 IOPS 和吞吐量越多。 下表显示了数据库文件的 IO 特征：
 
-| 文件大小           | 0 - 128 GiB | 128 - 256 GiB | 256 - 512 GiB | 0.5 - 1 TiB    | 1 - 2 TiB    | 2 - 4 TiB | 4 - 8 TiB |
+| 文件大小 | >=0 且 <=128 GiB | >128 且 <=256 GiB | >256 且 <= 512 GiB | >0.5 且 <=1 TiB    | >1 且 <=2 TiB    | >2 且 <=4 TiB | >4 且 <=8 TiB |
 |---------------------|-------|-------|-------|-------|-------|-------|-------|
 | 每个文件的 IOPS       | 500   | 1100 | 2300              | 5000              | 7500              | 7500              | 12,500   |
 | 每个文件的吞吐量 | 100 MiB/秒 | 125 MiB/秒 | 150 MiB/秒 | 200 MiB/秒 | 250 MiB/秒 | 250 MiB/秒 | 480 MiB/秒 | 
@@ -102,12 +102,6 @@ ms.locfileid: "79293661"
 ## <a name="supported-regions"></a>支持的区域
 
 托管实例只能在[支持的区域](https://azure.microsoft.com/global-infrastructure/services/?regions=china-non-regional,china-east,china-east-2,china-north,china-north-2&products=all)中创建。 若要在当前不支持的区域中创建托管实例，可以[发送支持请求](https://support.azure.cn/zh-cn/support/support-azure/)。
-
-## <a name="supported-subscription-types"></a>支持的订阅类型
-
-目前，托管实例仅支持以下订阅类型中的部署：
-
-- [提前支付](https://docs.azure.cn/billing/billing-sign-up-azure-account-and-get-a-pia-subscription)
 
 ## <a name="regional-resource-limitations"></a>区域资源限制
 

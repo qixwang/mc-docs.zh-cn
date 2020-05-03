@@ -2,17 +2,17 @@
 title: 在 Azure Cosmos DB 中优化吞吐量成本
 description: 本文介绍如何优化 Azure Cosmos DB 中存储的数据的吞吐量成本。
 author: rockboyfor
-ms.author: v-yeche
 ms.service: cosmos-db
 ms.topic: conceptual
-origin.date: 08/26/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: 32754ee8da556e9efe2237230995ce322f7ddb8a
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+origin.date: 02/07/2020
+ms.date: 04/27/2020
+ms.author: v-yeche
+ms.openlocfilehash: a1b84057b2f046d2b81262f1dc8f673ad65767cc
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75335847"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134603"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中优化预配的吞吐量成本
 
@@ -59,7 +59,7 @@ ms.locfileid: "75335847"
 |SQL API|数据库|容器|
 |Azure Cosmos DB 的用于 MongoDB 的 API|数据库|集合|
 |Cassandra API|密钥空间|表|
-|Gremlin API|数据库帐户|图形|
+|Gremlin API|数据库帐户|Graph|
 |表 API|数据库帐户|表|
 
 在不同的级别预配吞吐量可以根据工作负荷特征优化成本。 如前所述，随时能够以编程方式针对单个容器或者同时针对一组容器增加或减少预配的吞吐量。 根据工作负荷的变化弹性缩放吞吐量，只需为配置的吞吐量付费。 如果单个容器或一组容器分布在多个区域之间，则所有区域都能保证提供针对这些容器配置的吞吐量。
@@ -124,7 +124,7 @@ connectionPolicy.RetryOptions.MaxRetryWaitTimeInSeconds = 60;
 
 ## <a name="scale-your-throughput-elastically-and-on-demand"></a>按需弹性缩放吞吐量 
 
-由于你需要为预配的吞吐量付费，因此，使预配的吞吐量符合需要有助于避免未使用的吞吐量产生费用。 随时可以按需扩展或缩减预配的吞吐量。  
+由于你需要为预配的吞吐量付费，因此，使预配的吞吐量符合需要有助于避免未使用的吞吐量产生费用。 随时可以按需扩展或缩减预配的吞吐量。 如果吞吐量需求非常可预测，则可以通过 Azure Functions 使用计时器触发器来[按计划增加或减少吞吐量](scale-on-schedule.md)。 
 
 * 监视 RU 消耗量以及受速率限制的请求比率可以发现，在整个一天或一周中，并不需要保持恒定的预配吞吐量。 在晚上或周末，收到的流量可能更少。 使用 Azure 门户或者 Azure Cosmos DB 本机 SDK 或 REST API 可以随时缩放预配的吞吐量。 Azure Cosmos DB 的 REST API 提供终结点用于以编程方式更新容器的性能级别，以及根据日期时间或者星期日期直接在代码中调整吞吐量。 执行此操作不会造成任何停机，通常在一分钟内就能产生效果。 
 
@@ -188,4 +188,4 @@ connectionPolicy.RetryOptions.MaxRetryWaitTimeInSeconds = 60;
 * 详细了解如何[优化查询成本](optimize-cost-queries.md)
 * 详细了解[优化多区域 Azure Cosmos 帐户的成本](optimize-cost-regions.md)
 
-<!-- Update_Description: update meta properties, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

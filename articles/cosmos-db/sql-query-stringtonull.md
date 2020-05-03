@@ -4,16 +4,16 @@ description: 了解 Azure Cosmos DB 中的 SQL 系统函数 StringToNull。
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
-origin.date: 09/13/2019
-ms.date: 10/28/2019
+origin.date: 03/03/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
 ms.custom: query-reference
-ms.openlocfilehash: 6906e66d73726fe5b9e9f58f6938ee5d2e39bb49
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: e24d350a9e4cde870a3a71740e87f8793aba6198
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "72914642"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134609"
 ---
 # <a name="stringtonull-azure-cosmos-db"></a>StringToNull (Azure Cosmos DB)
  返回已转换为 Null 的表达式。 如果表达式无法转换，则返回未定义的表达式。  
@@ -48,7 +48,7 @@ SELECT
     IS_NULL(StringToNull("null   ")) AS n3
 ```  
 
- 下面是结果集：  
+ 下面是结果集。  
 
 ```json
 [{"n1": null, "n2": null, "n3": true}]
@@ -64,7 +64,7 @@ SELECT
     StringToNull("Null")
 ```  
 
- 下面是结果集：  
+ 下面是结果集。  
 
 ```json
 [{}]
@@ -80,11 +80,15 @@ SELECT
     StringToNull(NaN) 
 ```  
 
- 下面是结果集：  
+ 下面是结果集。  
 
 ```json
 [{}]
 ```  
+
+## <a name="remarks"></a>备注
+
+此系统函数不会使用索引。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -92,5 +96,4 @@ SELECT
 - [系统函数 Azure Cosmos DB](sql-query-system-functions.md)
 - [Azure Cosmos DB 简介](introduction.md)
 
-<!--Update_Description: new articles on sql query string to null  -->
-<!--New.date: 10/28/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

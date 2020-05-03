@@ -12,7 +12,7 @@
       href: quickstart-sql-vm-create-powershell.md
 - name: 概念
   items:
-    - name: 最佳做法
+    - name: 最佳实践
       items:
         - name: 性能最佳做法
           href: virtual-machines-windows-sql-performance.md
@@ -48,7 +48,7 @@
               href: virtual-machines-windows-sql-automated-patching.md
             - name: 配置 Azure Key Vault 集成
               href: virtual-machines-windows-ps-sql-keyvault.md
-- name: 操作方法指南
+- name: 操作指南
   items:
     - name: 创建 SQL VM
       items:
@@ -74,7 +74,7 @@
               href: virtual-machines-windows-portal-sql-availability-group-dr.md
             - name: 手动配置
               items:
-                - name: 必备条件
+                - name: 先决条件
                   href: virtual-machines-windows-portal-sql-availability-group-prereq.md
                 - name: 教程
                   href: virtual-machines-windows-portal-sql-availability-group-tutorial.md
@@ -100,7 +100,7 @@
       href: 'https://docs.microsoft.com/rest/api/'
 - name: 资源
   items:
-    - name: 常见问题解答
+    - name: 常见问题
       href: virtual-machines-windows-sql-server-iaas-faq.md
     - name: 定价
       href: virtual-machines-windows-sql-server-pricing-guidance.md

@@ -2,22 +2,22 @@
 title: 教程 - 创建和部署模板
 description: 创建第一个 Azure 资源管理器模板。 本教程将介绍模板文件语法，以及如何部署存储帐户。
 author: rockboyfor
-origin.date: 10/04/2019
-ms.date: 03/23/2020
+origin.date: 03/27/2020
+ms.date: 04/30/2020
 ms.topic: tutorial
 ms.author: v-yeche
-ms.openlocfilehash: 7757f09281d0f46dc441c4ccb4e72a0362e3fe71
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 6780dbbc8f7b992eda6a930c192826665e5d7858
+ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79543915"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82596070"
 ---
-# <a name="tutorial-create-and-deploy-your-first-azure-resource-manager-template"></a>教程：创建和部署第一个 Azure 资源管理器模板
+# <a name="tutorial-create-and-deploy-your-first-arm-template"></a>教程：创建和部署第一个 ARM 模板
 
-本教程介绍 Azure 资源管理器模板。 其中将会说明如何创建初学者模板并将其部署到 Azure。 本教程还将介绍模板的结构，以及使用模板时所需的工具。 完成本教程大约需要 **12 分钟**，但实际时间根据需要安装的工具数量而异。
+本教程介绍 Azure 资源管理器 (ARM) 模板。 其中将会说明如何创建初学者模板并将其部署到 Azure。 本教程还将介绍模板的结构，以及使用模板时所需的工具。 完成本教程大约需要 **12 分钟**，但实际时间根据需要安装的工具数量而异。
 
-本文是相关教学系列的第一篇教程。 在学习该教学系列的过程中，你将逐步修改入门模板，直到学会了资源管理器模板的所有核心组成部分。 这些元素是更复杂的模板的构建基块。 我们希望在本教学系列结束时，你能够自信地创建自己的模板，并准备好使用这些模板自动完成部署。
+本文是相关教学系列的第一篇教程。 在学习该教学系列的过程中，你将逐步修改入门模板，直到了解了 ARM 模板的所有核心部分。 这些元素是更复杂的模板的构建基块。 我们希望在本教学系列结束时，你能够自信地创建自己的模板，并准备好使用这些模板自动完成部署。
 
 若要了解使用模板的好处，以及为何要使用模板自动完成部署，请参阅 [Azure 资源管理器模板](overview.md)。
 
@@ -29,11 +29,11 @@ ms.locfileid: "79543915"
 
 ### <a name="editor"></a>编辑器
 
-模板是一些 JSON 文件。 若要创建模板，需要一个好用的 JSON 编辑器。 我们建议使用带有资源管理器工具扩展的 Visual Studio Code。 如果需要安装这些工具，请参阅[使用 Visual Studio Code 创建 Azure 资源管理器模板](use-vs-code-to-create-template.md)。
+模板是一些 JSON 文件。 若要创建模板，需要一个好用的 JSON 编辑器。 我们建议使用带有资源管理器工具扩展的 Visual Studio Code。 如果需要安装这些工具，请参阅[使用 Visual Studio Code 创建 ARM 模板](use-vs-code-to-create-template.md)。
 
 ### <a name="command-line-deployment"></a>命令行部署
 
-还需要使用 Azure PowerShell 或 Azure CLI 来部署模板。 有关安装说明，请参阅：
+还需要使用 Azure PowerShell 或 Azure CLI 来部署模板。 如果使用 Azure CLI，则必须具有最新版本。 有关安装说明，请参阅：
 
 - [安装 Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps)
 - [在 Windows 上安装 Azure CLI](https://docs.azure.cn/cli/install-azure-cli-windows?view=azure-cli-latest)
@@ -54,7 +54,7 @@ ms.locfileid: "79543915"
 
     ```json
     {
-      "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+      "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
       "contentVersion": "1.0.0.0",
       "resources": []
     }
@@ -68,7 +68,7 @@ ms.locfileid: "79543915"
 
     JSON 文件包含以下元素：
 
-    - **$schema**：指定 JSON 架构文件的位置。 架构文件描述模板中可用的属性。 例如，架构定义 **resources** 作为模板的有效属性之一。 架构的日期为 2015-01-01，请不要担心。 此架构版本是最新的，其中包含所有最新功能。 之所以未更改架构日期，是因为自从推出以来，它尚未发生重大更改。
+    - **$schema**：指定 JSON 架构文件的位置。 架构文件描述模板中可用的属性。 例如，架构定义 **resources** 作为模板的有效属性之一。 不要担心架构的日期为 2019-04-01。 此架构版本是最新的，其中包含所有最新功能。 之所以未更改架构日期，是因为自从推出以来，它尚未发生重大更改。
     - **contentVersion**：指定模板的版本（例如 1.0.0.0）。 可为此元素提供任意值。 使用此值记录模板中的重要更改。 使用模板部署资源时，此值可用于确保使用正确的模板。
     - **resources**：包含要部署或更新的资源。 此元素目前是空的，但稍后要添加资源。
 
@@ -132,6 +132,8 @@ New-AzResourceGroupDeployment `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
+若要运行此部署命令，必须具有 Azure CLI 的 [最新版本](https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest)。
+
 ```azurecli
 templateFile="{provide-the-path-to-the-template-file}"
 az deployment group create \
@@ -153,6 +155,9 @@ az deployment group create \
 ![Azure CLI 部署预配状态](./media/template-tutorial-create-first-template/azure-cli-provisioning-state.png)
 
 ---
+
+> [!NOTE]
+> 如果部署失败，请将 **debug** 开关和部署命令配合使用来显示调试日志。  还可以使用 **verbose** 开关来显示完整的调试日志。
 
 ## <a name="verify-deployment"></a>验证部署
 

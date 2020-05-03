@@ -1,18 +1,18 @@
 ---
-title: 配置和访问审核日志 - Azure Database for MySQL
+title: 访问审核日志 - Azure 门户 - Azure Database for MySQL
 description: 本文介绍如何从 Azure 门户配置和访问 Azure Database for MySQL 中的审核日志。
 author: WenJason
 ms.author: v-jay
 ms.service: mysql
 ms.topic: conceptual
-origin.date: 06/24/2019
-ms.date: 11/04/2019
-ms.openlocfilehash: 3a76ec00c1d9f51c95655fc28327bbf625658eab
-ms.sourcegitcommit: cb2caa72ec0e0922a57f2fa1056c25e32c61b570
+origin.date: 4/13/2020
+ms.date: 4/27/2020
+ms.openlocfilehash: a34bad856bb1d697fadc515d6820daf7ef86b028
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73142090"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126858"
 ---
 # <a name="configure-and-access-audit-logs-for-azure-database-for-mysql-in-the-azure-portal"></a>在 Azure 门户中配置和访问 Azure Database for MySQL 的审核日志
 
@@ -70,4 +70,5 @@ ms.locfileid: "73142090"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 详细了解 Azure Database for MySQL 中的[审核日志](concepts-audit-logs.md)。
+- 详细了解 Azure Database for MySQL 中的[审核日志](concepts-audit-logs.md)
+- 了解如何在 [Azure CLI](howto-configure-audit-logs-cli.md) 中配置审核日志

@@ -4,15 +4,15 @@ description: 了解如何配置和更改默认索引策略，以便自动编制�
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
-origin.date: 09/10/2019
-ms.date: 10/28/2019
+origin.date: 03/26/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: d704df2354e85dca61d8354dcaf43064c72e93a7
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 02fb96932b255d447d936a3d24a31dc008782d4f
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292551"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134630"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Azure Cosmos DB 中的索引策略
 
@@ -31,10 +31,11 @@ Azure Cosmos DB 支持两种索引模式：
 - **无**：针对该容器禁用索引。 将容器用作单纯的键-值存储时，通常会使用此设置，在此情况下无需使用辅助索引。 它还可用于改善批量操作的性能。 批量操作完成后，可将索引模式设置为“一致”，然后使用 [IndexTransformationProgress](how-to-manage-indexing-policy.md#use-the-net-sdk-v2) 进行监视，直到完成。
 
 > [!NOTE]
-> Cosmos DB 还支持延迟索引模式。 当引擎未执行任何其他工作时，延迟索引将以低得多的优先级对索引执行更新。 这可能导致查询结果**不一致或不完整**。 此外，对批量操作使用延迟索引而不是“无”也不会带来任何好处，因为对索引模式进行任何更改会导致删除再重建索引。 出于此原因，我们不建议客户使用该模式。 若要改善批量操作的性能，请将索引模式设置为“无”，然后恢复为“一致”模式并监视容器的 `IndexTransformationProgress` 属性，直到完成。
+> Azure Cosmos DB 还支持延迟索引模式。 当引擎未执行任何其他工作时，延迟索引将以低得多的优先级对索引执行更新。 这可能导致查询结果**不一致或不完整**。 如果计划查询 Cosmos 容器，则不应选择“延迟索引”。
 
 默认情况下，索引策略设置为 `automatic`。 为此，可将索引策略中的 `automatic` 属性设置为 `true`。 将此属性设置为 `true` 可让 Azure CosmosDB 在写入文档时自动为文档编制索引。
 
+<a name="include-exclude-paths"></a>
 ## <a name="including-and-excluding-property-paths"></a>包含和排除属性路径
 
 自定义索引策略可以指定要在索引编制中显式包含或排除的属性路径。 通过优化编制索引的路径数量，可以减少容器使用的存储量并改善写入操作的延迟。 这些路径是遵循[索引概述部分所述的方法](index-overview.md#from-trees-to-property-paths)定义的，补充要求如下：
@@ -76,7 +77,9 @@ Azure Cosmos DB 支持两种索引模式：
 
 - 对于包含常规字符（包括字母数字字符和下划线 _）的路径，无需在双引号中转义路径字符串（例如 "/path/?"）。 对于包含其他特殊字符的路径，需要在双引号中转义路径字符串（例如 "/\"path-abc\"/?"）。 如果预期路径中会出现特殊字符，出于安全考虑，可以转义每个路径。 在功能上，转义每个路径与仅转义包含特殊字符的路径没有任何差别。
 
-- 默认情况下，系统属性“etag”被排除在索引之外，除非将 etag 添加到索引所包含的路径中。
+- 默认情况下，系统属性 `_etag` 被排除在索引之外，除非将 etag 添加到索引所包含的路径中。
+
+- 如果将索引模式设为“一致”  ，则会自动为系统属性 `id` 和 `_ts` 编制索引。
 
 包含和排除路径时，可能会遇到以下属性：
 
@@ -88,7 +91,7 @@ Azure Cosmos DB 支持两种索引模式：
 
 如果未指定，这些属性将使用以下默认值：
 
-| **属性名称**     | **默认值** |
+| **属性名称** | **默认值** |
 | ----------------------- | -------------------------------- |
 | `kind`   | `range` |
 | `precision`   | `-1`  |
@@ -100,7 +103,7 @@ Azure Cosmos DB 支持两种索引模式：
 
 在索引策略中定义空间路径时，应定义要将哪个索引 ```type``` 应用到该路径。 空间索引的可能类型包括：
 
-* 点
+* Point
 
 * Polygon
 
@@ -135,7 +138,7 @@ Azure Cosmos DB 默认不会创建任何空间索引。 若要使用空间 SQL �
 
 考虑以下示例，其中针对属性 name、age 和 _ts 定义了组合索引：
 
-| **组合索引**     | **示例 `ORDER BY` 查询**      | **是否受组合索引的支持？** |
+| **组合索引** | **示例 `ORDER BY` 查询** | **是否受组合索引的支持？** |
 | ----------------------- | -------------------------------- | -------------- |
 | ```(name ASC, age ASC)```   | ```SELECT * FROM c ORDER BY c.name ASC, c.age asc``` | ```Yes```            |
 | ```(name ASC, age ASC)```   | ```SELECT * FROM c ORDER BY c.age ASC, c.name asc```   | ```No```             |
@@ -178,7 +181,7 @@ SELECT * FROM c WHERE c.name = "John" AND c.age > 18
 
 考虑以下示例，其中针对属性 name、age 和 timestamp 定义了组合索引：
 
-| **组合索引**     | **示例查询**      | **是否受组合索引的支持？** |
+| **组合索引** | **示例查询** | **是否受组合索引的支持？** |
 | ----------------------- | -------------------------------- | -------------- |
 | ```(name ASC, age ASC)```   | ```SELECT * FROM c WHERE c.name = "John" AND c.age = 18``` | ```Yes```            |
 | ```(name ASC, age ASC)```   | ```SELECT * FROM c WHERE c.name = "John" AND c.age > 18```   | ```Yes```             |
@@ -225,7 +228,7 @@ SELECT * FROM c WHERE c.name = "John", c.age = 18 ORDER BY c.name, c.age, c.time
 * 对于包含针对一个属性的筛选器并包含一个使用不同属性的独立 `ORDER BY` 子句的查询，如果未为它定义组合索引，该查询仍会成功。 但是，使用组合索引可以减少查询的 RU 开销，尤其是 `ORDER BY` 子句中的属性具有较高的基数时。
 * 有关为包含多个属性的 `ORDER BY` 查询，以及为包含针对多个属性的筛选器的查询创建组合查询的所有注意事项仍然适用。
 
-| **组合索引**                      | **示例 `ORDER BY` 查询**                                  | **是否受组合索引的支持？** |
+| **组合索引** | **示例 `ORDER BY` 查询** | **是否受组合索引的支持？** |
 | ---------------------------------------- | ------------------------------------------------------------ | --------------------------------- |
 | ```(name ASC, timestamp ASC)```          | ```SELECT * FROM c WHERE c.name = "John" ORDER BY c.name ASC, c.timestamp ASC``` | `Yes` |
 | ```(name ASC, timestamp ASC)```          | ```SELECT * FROM c WHERE c.name = "John" ORDER BY c.timestamp ASC, c.name ASC``` | `No`  |

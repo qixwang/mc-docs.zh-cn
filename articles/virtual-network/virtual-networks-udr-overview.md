@@ -13,15 +13,15 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 10/26/2017
-ms.date: 02/24/2020
+ms.date: 04/13/2020
 ms.author: v-yeche
 ms.reviewer: kumud
-ms.openlocfilehash: 36f1a4c3d8ca0ed17caa392f3a32e92ece64c201
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 87c0120526592e5fa7414cd9f6ff9b3910e6d239
+ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79292067"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82093442"
 ---
 # <a name="virtual-network-traffic-routing"></a>虚拟网络流量路由
 
@@ -35,7 +35,7 @@ Azure 自动创建系统路由，并将路由分配到虚拟网络中的每个�
 
 每个路由包含地址前缀和下一跃点类型。 将离开子网的流量发送到某个路由的地址前缀中的 IP 地址时，包含前缀的该路由是 Azure 使用的路由。 详细了解当多个路由包含相同的前缀或重叠前缀时，[Azure 如何选择路由](#how-azure-selects-a-route)。 只要创建了虚拟网络，Azure 就会自动为虚拟网络中的每个子网创建下述默认的系统路由：
 
-|Source |地址前缀                                        |下一跃点类型  |
+|源 |地址前缀                                        |下一跃点类型  |
 |-------|---------                                               |---------      |
 |默认|对虚拟网络唯一                           |虚拟网络|
 |默认|0.0.0.0/0                                               |Internet       |
@@ -58,7 +58,7 @@ Azure 自动创建系统路由，并将路由分配到虚拟网络中的每个�
 
 Azure 会针对不同的 Azure 功能添加其他默认的系统路由，但前提是你启用这些功能。 Azure 会根据功能将可选的默认路由添加到虚拟网络中的特定子网，或者添加到虚拟网络中的所有子网。 启用不同的功能时，Azure 可能添加的其他系统路由和下一跃点类型为：
 
-|Source                 |地址前缀                       |下一跃点类型|向其添加路由的虚拟网络中的子网|
+|源                 |地址前缀                       |下一跃点类型|向其添加路由的虚拟网络中的子网|
 |-----                  |----                                   |---------                    |--------|
 |默认                |对虚拟网络唯一，例如：10.1.0.0/16|VNet 对等互连                 |全部|
 |虚拟网络网关|从本地通过 BGP 播发的前缀，或者在本地网关中配置的前缀     |虚拟网络网关      |全部|
@@ -77,11 +77,11 @@ Azure 会针对不同的 Azure 功能添加其他默认的系统路由，但前�
 
 ### <a name="user-defined"></a>用户定义
 
-可以在 Azure 中创建自定义或用户定义路由，以便替代 Azure 的默认系统路由，或者向子网的路由表添加其他路由。 可以在 Azure 中创建一个路由表，然后将该路由表关联到零个或零个以上的虚拟网络子网。 每个子网可以有一个与之关联的路由表，也可以没有。 若要了解可以添加到路由表的最大路由数，以及可以为每个 Azure 订阅创建的最大用户定义路由表数，请参阅 [Azure 限制](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fvirtual-network%2ftoc.json#networking-limits)。 如果创建一个路由表并将其关联到子网，则其中的路由会与 Azure 默认情况下添加到子网的默认路由组合在一起，或者将其替代。
+可以在 Azure 中创建自定义或用户定义（静态）路由，以便替代 Azure 的默认系统路由，或者向子网的路由表添加其他路由。 可以在 Azure 中创建一个路由表，然后将该路由表关联到零个或零个以上的虚拟网络子网。 每个子网可以有一个与之关联的路由表，也可以没有。 若要了解可以添加到路由表的最大路由数，以及可以为每个 Azure 订阅创建的最大用户定义路由表数，请参阅 [Azure 限制](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fvirtual-network%2ftoc.json#networking-limits)。 如果创建一个路由表并将其关联到子网，则其中的路由会与 Azure 默认情况下添加到子网的默认路由组合在一起，或者将其替代。
 
 可以在创建用户定义路由时指定下面的下一跃点类型：
 
-* **虚拟设备**：虚拟设备是通常情况下运行防火墙等网络应用程序的虚拟机。 若要了解各种可在虚拟网络中部署的预配置网络虚拟设备，请参阅 [Azure 市场](https://market.azure.cn/zh-cn/marketplace/apps?search=networking&page=1&subcategories=appliances)。 使用“虚拟设备”跃点类型创建路由时，也指定下一跃点 IP 地址。  IP 地址可以是：
+* **虚拟设备**：虚拟设备是通常情况下运行防火墙等网络应用程序的虚拟机。 若要了解各种可在虚拟网络中部署的预配置网络虚拟设备，请参阅 [Azure 市场](https://market.azure.cn/marketplace/apps?search=networking&page=1&subcategories=appliances)。 使用“虚拟设备”跃点类型创建路由时，也指定下一跃点 IP 地址。  IP 地址可以是：
 
     * 附加到虚拟机的网络接口的[专用 IP 地址](virtual-network-ip-addresses-overview-arm.md#private-ip-addresses)。 如果网络接口附加到虚拟机，而虚拟机将网络流量转发到不是自己地址的地址，则该网络接口必须为其启用 Azure 选项“启用 IP 转发”。  此设置禁止 Azure 在源和目标中检查网络接口。 详细了解如何[为网络接口启用 IP 转发](virtual-network-network-interface.md#enable-or-disable-ip-forwarding)。 虽然“启用 IP 转发”是一项  Azure 设置，但你也可能需要在虚拟机的操作系统中启用 IP 转发，否则设备无法在分配到 Azure 网络接口的专用 IP 地址之间转发流量。 如果必须将流量路由到公共 IP 地址，则设备需通过代理来路由流量，或者通过网络地址转换将源的专用 IP 地址转换为其自己的专用 IP 地址，然后再由 Azure 将网络地址转换为公共 IP 地址，这样才能将流量发送到 Internet。 若要确定虚拟机中的必需设置，请参阅操作系统或网络应用程序的文档。 若要了解 Azure 中的出站连接，请参阅[了解出站连接](../load-balancer/load-balancer-outbound-connections.md?toc=%2fvirtual-network%2ftoc.json)。<br />
 
@@ -143,7 +143,7 @@ Azure 会针对不同的 Azure 功能添加其他默认的系统路由，但前�
 
 例如，路由表包含以下路由：
 
-|Source   |地址前缀  |下一跃点类型           |
+|源   |地址前缀  |下一跃点类型           |
 |---------|---------         |-------                 |
 |默认  | 0.0.0.0/0        |Internet                |
 |User     | 0.0.0.0/0        |虚拟网络网关 |
@@ -215,7 +215,7 @@ Azure 会针对不同的 Azure 功能添加其他默认的系统路由，但前�
 
 图中  Subnet1 的路由表包含以下路由：
 
-| ID | Source  |  状态  | 地址前缀 |         下一跃点类型         | 下一跃点 IP 地址 | 用户定义路由的名称 |
+| ID | 源  |  状态  | 地址前缀 |         下一跃点类型         | 下一跃点 IP 地址 | 用户定义路由的名称 |
 |----|---------|---------|------------------|-------------------------------|---------------------|-------------------------|
 | 1  | 默认 | 无效 |   10.0.0.0/16    |        虚拟网络        |                     |                         |
 | 2  |  User   | 活动  |   10.0.0.0/16    |       虚拟设备       |     10.0.100.4      |      Within-VNet1       |
@@ -249,7 +249,7 @@ Azure 会针对不同的 Azure 功能添加其他默认的系统路由，但前�
 
 图中  Subnet2 的路由表包含以下路由：
 
-|Source  |状态  |地址前缀    |下一跃点类型             |下一跃点 IP 地址|
+|源  |状态  |地址前缀    |下一跃点类型             |下一跃点 IP 地址|
 |------- |-------|------              |-------                   |--------           
 |默认 |活动 |10.0.0.0/16         |虚拟网络           |                   |
 |默认 |活动 |10.1.0.0/16         |VNet 对等互连              |                   |
@@ -270,4 +270,4 @@ Azure 会针对不同的 Azure 功能添加其他默认的系统路由，但前�
 * [查看子网的所有路由](diagnose-network-routing-problem.md)。 用户定义的路由表仅显示子网的用户定义路由，不显示其默认路由和 BGP 路由。 查看所有路由时，会显示网络接口所在子网的默认路由、BGP 路由和用户定义路由。<br />
 * [确定下一跃点类型](../network-watcher/diagnose-vm-network-routing-problem.md?toc=%2fvirtual-network%2ftoc.json)（虚拟机和目标 IP 地址之间）。 Azure 网络观察程序下一跃点功能用于确定流量是否离开子网并路由到你所期望的位置。
 
-<!-- Update_Description: update meta properties, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

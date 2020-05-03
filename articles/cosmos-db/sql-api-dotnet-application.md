@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: tutorial
-origin.date: 11/05/2019
-ms.date: 02/10/2020
+origin.date: 02/27/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: 9e94bcfe1103577344a4f9a32eebef6563a29ce2
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 49429e6c36e8706ee6d1677a9c432ae8c15f9054
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77028742"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134707"
 ---
 # <a name="tutorial-develop-an-aspnet-core-mvc-web-application-with-azure-cosmos-db-by-using-net-sdk"></a>教程：通过 .NET SDK 开发使用 Azure Cosmos DB 的 ASP.NET Core MVC Web 应用程序
 
@@ -203,6 +203,176 @@ Azure Cosmos DB 使用 JSON 来移动和存储数据。 可以使用 `JsonProper
 
 完成这些步骤后，请关闭 Visual Studio 中的所有 *cshtml* 文档，因为稍后要返回到这些视图。
 
+<a name="initialize-services"></a>
+### <a name="declare-and-initialize-services"></a>声明并初始化服务
+
+首先我们添加一个类，其中包含用于连接和使用 Azure Cosmos DB 的逻辑。 在本教程中，我们会将该逻辑封装到名为 `CosmosDBService` 的类和名为 `ICosmosDBService` 的接口中。 此服务执行 CRUD 操作。 此外，它还执行读取源操作，例如列出不完整的项以及创建、编辑和删除项。
+
+1. 在“解决方案资源管理器”中，右键单击项目并选择“添加” > “新建文件夹”。    将文件夹命名为“服务”。 
+
+1. 右键单击“服务”文件夹，并选择“添加” > “类”。    将新类命名为 *CosmosDBService*，然后选择“添加”。 
+
+1. 将 *CosmosDBService.cs* 的内容替换为以下代码：
+
+    ```csharp
+    namespace todo.Services
+    {
+       using System.Collections.Generic;
+       using System.Linq;
+       using System.Threading.Tasks;
+       using todo.Models;
+       using Microsoft.Azure.Cosmos;
+       using Microsoft.Azure.Cosmos.Fluent;
+       using Microsoft.Extensions.Configuration;
+
+       public class CosmosDbService : ICosmosDbService
+       {
+           private Container _container;
+
+           public CosmosDbService(
+               CosmosClient dbClient,
+               string databaseName,
+               string containerName)
+           {
+               this._container = dbClient.GetContainer(databaseName, containerName);
+           }
+
+           public async Task AddItemAsync(Item item)
+           {
+               await this._container.CreateItemAsync<Item>(item, new PartitionKey(item.Id));
+           }
+
+           public async Task DeleteItemAsync(string id)
+           {
+               await this._container.DeleteItemAsync<Item>(id, new PartitionKey(id));
+           }
+
+           public async Task<Item> GetItemAsync(string id)
+           {
+               try
+               {
+                   ItemResponse<Item> response = await this._container.ReadItemAsync<Item>(id, new PartitionKey(id));
+                   return response.Resource;
+               }
+               catch(CosmosException ex) when (ex.StatusCode == System.Net.HttpStatusCode.NotFound)
+               { 
+                   return null;
+               }
+
+           }
+
+           public async Task<IEnumerable<Item>> GetItemsAsync(string queryString)
+           {
+               var query = this._container.GetItemQueryIterator<Item>(new QueryDefinition(queryString));
+               List<Item> results = new List<Item>();
+               while (query.HasMoreResults)
+               {
+                   var response = await query.ReadNextAsync();
+
+                   results.AddRange(response.ToList());
+               }
+
+               return results;
+           }
+
+           public async Task UpdateItemAsync(string id, Item item)
+           {
+               await this._container.UpsertItemAsync<Item>(item, new PartitionKey(id));
+           }
+       }
+    }
+
+    ```
+
+1. 右键单击“服务”文件夹，并选择“添加” > “类”。    将新类命名为“ICosmosDBService”  ，并选择“添加”。 
+
+1. 将以下代码添加到 ICosmosDBService  类：
+
+    ```csharp
+    namespace todo.Services
+    {
+       using System.Collections.Generic;
+       using System.Threading.Tasks;
+       using todo.Models;
+
+       public interface ICosmosDbService
+       {
+           Task<IEnumerable<Item>> GetItemsAsync(string query);
+           Task<Item> GetItemAsync(string id);
+           Task AddItemAsync(Item item);
+           Task UpdateItemAsync(string id, Item item);
+           Task DeleteItemAsync(string id);
+       }
+    }
+
+    ```
+
+1. 打开解决方案中的 Startup.cs  文件，并将 `ConfigureServices` 方法替换为：
+
+    ```csharp
+    public void ConfigureServices(IServiceCollection services)
+    {
+        services.Configure<CookiePolicyOptions>(options =>
+        {
+            // This lambda determines whether user consent for non-essential cookies is needed for a given request.
+            options.CheckConsentNeeded = context => true;
+            options.MinimumSameSitePolicy = SameSiteMode.None;
+        });
+
+
+        services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+        services.AddSingleton<ICosmosDbService>(InitializeCosmosClientInstanceAsync(Configuration.GetSection("CosmosDb")).GetAwaiter().GetResult());
+    }
+    ```
+
+    此步骤中的代码会根据配置，将客户端初始化为要通过 [ASP.NET Core 中的依赖项注入](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection)功能注入的单一实例。
+
+1. 在同一文件中添加以下 **InitializeCosmosClientInstanceAsync** 方法，用于读取配置并初始化客户端。
+
+    ```csharp
+    /// <summary>
+    /// Creates a Cosmos DB database and a container with the specified partition key. 
+    /// </summary>
+    /// <returns></returns>
+    private static async Task<CosmosDbService> InitializeCosmosClientInstanceAsync(IConfigurationSection configurationSection)
+    {
+        string databaseName = configurationSection.GetSection("DatabaseName").Value;
+        string containerName = configurationSection.GetSection("ContainerName").Value;
+        string account = configurationSection.GetSection("Account").Value;
+        string key = configurationSection.GetSection("Key").Value;
+        CosmosClientBuilder clientBuilder = new CosmosClientBuilder(account, key);
+        CosmosClient client = clientBuilder
+                            .WithConnectionModeDirect()
+                            .Build();
+        CosmosDbService cosmosDbService = new CosmosDbService(client, databaseName, containerName);
+        DatabaseResponse database = await client.CreateDatabaseIfNotExistsAsync(databaseName);
+        await database.Database.CreateContainerIfNotExistsAsync(containerName, "/id");
+
+        return cosmosDbService;
+    }
+
+    ```
+
+1. 在项目的 appsettings.json  文件中定义配置，如以下代码片段所示：
+
+    ```json
+    {
+     "Logging": {
+       "LogLevel": {
+         "Default": "Warning"
+       }
+     },
+     "AllowedHosts": "*",
+     "CosmosDb": {
+       "Account": "<Endpoint URI of your Azure Cosmos account>",
+       "Key": "<PRIMARY KEY of your Azure Cosmos account>",
+       "DatabaseName": "Tasks",
+       "ContainerName": "Item"
+     }
+    }
+    
+    ```
+
 <a name="add-a-controller"></a>
 ### <a name="add-a-controller"></a>添加控制器
 
@@ -330,172 +500,16 @@ Azure Cosmos DB 使用 JSON 来移动和存储数据。 可以使用 `JsonProper
 
 我们还会在方法参数中使用 **Bind** 属性，帮助防范过度提交攻击。 有关详细信息，请参阅[教程：使用 ASP.NET MVC 中的实体框架实现 CRUD 功能][Basic CRUD Operations in ASP.NET MVC]。
 
-<a name="connect-to-cosmosdb"></a>
-## <a name="step-5-connect-to-azure-cosmos-db"></a>步骤 5：连接到 Azure Cosmos DB
-
-准备好标准的 MVC 材料后，接下来让我们添加代码来连接到 Azure Cosmos DB 并执行 CRUD 操作。
-
-<a name="perform-crud-operations"></a>
-### <a name="perform-crud-operations-on-the-data"></a>对数据执行 CRUD 操作
-
-首先我们添加一个类，其中包含用于连接和使用 Azure Cosmos DB 的逻辑。 在本教程中，我们会将该逻辑封装到名为 `CosmosDBService` 的类和名为 `ICosmosDBService` 的接口中。 此服务执行 CRUD 操作。 此外，它还执行读取源操作，例如列出不完整的项以及创建、编辑和删除项。
-
-1. 在“解决方案资源管理器”中，右键单击项目并选择“添加” > “新建文件夹”。    将文件夹命名为“服务”。 
-
-1. 右键单击“服务”文件夹，并选择“添加” > “类”。    将新类命名为 *CosmosDBService*，然后选择“添加”。 
-
-1. 将 *CosmosDBService.cs* 的内容替换为以下代码：
-
-    ```csharp
-    namespace todo.Services
-    {
-       using System.Collections.Generic;
-       using System.Linq;
-       using System.Threading.Tasks;
-       using todo.Models;
-       using Microsoft.Azure.Cosmos;
-       using Microsoft.Azure.Cosmos.Fluent;
-       using Microsoft.Extensions.Configuration;
-
-       public class CosmosDbService : ICosmosDbService
-       {
-           private Container _container;
-
-           public CosmosDbService(
-               CosmosClient dbClient,
-               string databaseName,
-               string containerName)
-           {
-               this._container = dbClient.GetContainer(databaseName, containerName);
-           }
-
-           public async Task AddItemAsync(Item item)
-           {
-               await this._container.CreateItemAsync<Item>(item, new PartitionKey(item.Id));
-           }
-
-           public async Task DeleteItemAsync(string id)
-           {
-               await this._container.DeleteItemAsync<Item>(id, new PartitionKey(id));
-           }
-
-           public async Task<Item> GetItemAsync(string id)
-           {
-               try
-               {
-                   ItemResponse<Item> response = await this._container.ReadItemAsync<Item>(id, new PartitionKey(id));
-                   return response.Resource;
-               }
-               catch(CosmosException ex) when (ex.StatusCode == System.Net.HttpStatusCode.NotFound)
-               { 
-                   return null;
-               }
-
-           }
-
-           public async Task<IEnumerable<Item>> GetItemsAsync(string queryString)
-           {
-               var query = this._container.GetItemQueryIterator<Item>(new QueryDefinition(queryString));
-               List<Item> results = new List<Item>();
-               while (query.HasMoreResults)
-               {
-                   var response = await query.ReadNextAsync();
-
-                   results.AddRange(response.ToList());
-               }
-
-               return results;
-           }
-
-           public async Task UpdateItemAsync(string id, Item item)
-           {
-               await this._container.UpsertItemAsync<Item>(item, new PartitionKey(id));
-           }
-       }
-    }
-
-    ```
-
-1. 重复上述两个步骤，但这次请使用名称 *ICosmosDBService* 并使用以下代码：
-
-    ```csharp
-    namespace todo.Services
-    {
-       using System.Collections.Generic;
-       using System.Threading.Tasks;
-       using todo.Models;
-
-       public interface ICosmosDbService
-       {
-           Task<IEnumerable<Item>> GetItemsAsync(string query);
-           Task<Item> GetItemAsync(string id);
-           Task AddItemAsync(Item item);
-           Task UpdateItemAsync(string id, Item item);
-           Task DeleteItemAsync(string id);
-       }
-    }
-
-    ```
-
-1. 在 **ConfigureServices** 处理程序中添加以下行：
-
-    ```csharp
-    services.AddSingleton<ICosmosDbService>(InitializeCosmosClientInstanceAsync(Configuration.GetSection("CosmosDb")).GetAwaiter().GetResult());
-    ```
-
-    上述步骤中的代码接收 `CosmosClient` 作为构造函数的一部分。 我们需要遵循 ASP.NET Core 管道转到项目的 *Startup.cs* 文件。 此步骤中的代码会根据配置，将客户端初始化为要通过 [ASP.NET Core 中的依赖项注入](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection)功能注入的单一实例。
-
-1. 在同一文件中添加以下 **InitializeCosmosClientInstanceAsync** 方法，用于读取配置并初始化客户端。
-
-    ```csharp
-    /// <summary>
-    /// Creates a Cosmos DB database and a container with the specified partition key. 
-    /// </summary>
-    /// <returns></returns>
-    private static async Task<CosmosDbService> InitializeCosmosClientInstanceAsync(IConfigurationSection configurationSection)
-    {
-        string databaseName = configurationSection.GetSection("DatabaseName").Value;
-        string containerName = configurationSection.GetSection("ContainerName").Value;
-        string account = configurationSection.GetSection("Account").Value;
-        string key = configurationSection.GetSection("Key").Value;
-        CosmosClientBuilder clientBuilder = new CosmosClientBuilder(account, key);
-        CosmosClient client = clientBuilder
-                            .WithConnectionModeDirect()
-                            .Build();
-        CosmosDbService cosmosDbService = new CosmosDbService(client, databaseName, containerName);
-        DatabaseResponse database = await client.CreateDatabaseIfNotExistsAsync(databaseName);
-        await database.Database.CreateContainerIfNotExistsAsync(containerName, "/id");
-
-        return cosmosDbService;
-    }
-
-    ```
-
-1. 在项目的 *appsettings.json* 文件中定义配置。 打开该文件，并添加名为 **CosmosDb** 的节：
-
-    ```csharp
-     "CosmosDb": {
-        "Account": "<enter the URI from the Keys blade of the Azure Portal>",
-        "Key": "<enter the PRIMARY KEY, or the SECONDARY KEY, from the Keys blade of the Azure  Portal>",
-        "DatabaseName": "Tasks",
-        "ContainerName": "Items"
-      }
-    ```
-
-如果你运行该应用程序，ASP.NET Core 的管道将实例化 **CosmosDbService**，并将单个实例作为单一实例保留。 当 **ItemController** 处理客户端请求时，它会接收此单个实例，并可将其用于 CRUD 操作。
-
-现在，如果构建并立即运行此项目，则会看到如下所示内容：
-
-![屏幕截图：本数据库教程创建的待办事项列表 Web 应用程序](./media/sql-api-dotnet-application/build-and-run-the-project-now.png)
-
 <a name="run-the-application"></a>
-## <a name="step-6-run-the-application-locally"></a>步骤 6：在本地运行应用程序
+## <a name="step-5-run-the-application-locally"></a>步骤 5：在本地运行应用程序
 
 若要在本地计算机中测试应用程序，请使用以下步骤：
 
-1. 在 Visual Studio 中按 F5，以在调试模式下生成应用程序。 这样应该可以构建应用程序，并启动包含先前看到的空白网格页面的浏览器：
+1. 在 Visual Studio 中按 F5 即可在调试模式下构建应用程序。 这样应该可以构建应用程序，并启动包含先前看到的空白网格页面的浏览器：
 
     ![按本教程创建的待办事项列表 Web 应用程序屏幕截图](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-create-an-item-a.png)
+    
+    如果应用程序改为打开到主页，请将 `/Item` 追加到 url。
 
 1. 选择“新建”链接，并在“名称”和“说明”字段中添加值。    将“已完成”复选框保留未选中状态。  如果选中此复选框，应用会添加处于已完成状态的新项。 该项不再会显示在初始列表中。
 
@@ -512,7 +526,7 @@ Azure Cosmos DB 使用 JSON 来移动和存储数据。 可以使用 `JsonProper
 1. 测试应用后，按 Ctrl+F5 停止调试应用。 可以开始部署了！
 
 <a name="deploy-the-application-to-azure"></a>
-## <a name="step-7-deploy-the-application"></a>步骤 7：部署应用程序
+## <a name="step-6-deploy-the-application"></a>步骤 6：部署应用程序
 
 现在，已经拥有了可以使用 Azure Cosmos DB 正常工作的完整应用程序，接下来我们要将此 Web 应用部署到 Azure 应用服务。  
 

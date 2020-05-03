@@ -11,14 +11,14 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-origin.date: 02/17/2020
-ms.date: 03/30/2020
-ms.openlocfilehash: fdda0357b4d2e248bab4a1e7127cdcd022a37a37
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+origin.date: 04/11/2020
+ms.date: 04/27/2020
+ms.openlocfilehash: af41cf95741a1c5b5817351b3952229f069af3a4
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80341727"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134575"
 ---
 # <a name="tutorial-migrate-rds-postgresql-to-azure-db-for-postgresql-online-using-dms"></a>教程：使用 DMS 将 RDS PostgreSQL 联机迁移到 Azure DB for PostgreSQL
 
@@ -50,7 +50,7 @@ ms.locfileid: "80341727"
 
 * 下载并安装 [PostgreSQL 社区版](https://www.postgresql.org/download/) 9.5、9.6 或 10。 源 PostgreSQL 服务器版本必须是 9.5.11、9.6.7、10 或更高版本。 有关详细信息，请参阅[支持的 PostgreSQL 数据库版本](/postgresql/concepts-supported-versions)一文。
 
-    另外，RDS PostgreSQL 版本必须与 Azure Database for PostgreSQL 版本相符。 例如，RDS PostgreSQL 9.5.11.5 只能迁移到 Azure Database for PostgreSQL 9.5.11，不能迁移到 9.6.7 版本。
+   另请注意，目标 Azure Database for PostgreSQL 版本必须等于或晚于 RDS PostgreSQL 版本。 例如，RDS PostgreSQL 9.6 只能迁移到 Azure Database for PostgreSQL 9.6、10 或 11，而不能迁移到 Azure Database for PostgreSQL 9.5。
 
 * 创建 [Azure Database for PostgreSQL](/postgresql/quickstart-create-server-database-portal) 的实例。 有关如何使用 pgAdmin 连接到 PostgreSQL 服务器的详细信息，请参阅此文档[部分](/postgresql/quickstart-create-server-database-portal#connect-to-the-postgresql-server-using-pgadmin)。
 * 使用 Azure 资源管理器部署模型创建 Azure 数据库迁移服务的 Azure 虚拟网络，它将使用 [ExpressRoute](/expressroute/expressroute-introduction) 或 [VPN](/vpn-gateway/vpn-gateway-about-vpngateways) 为本地源服务器提供站点到站点连接。 有关创建虚拟网络的详细信息，请参阅[虚拟网络文档](/virtual-network/)，尤其是提供了分步详细信息的快速入门文章。

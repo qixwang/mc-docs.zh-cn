@@ -4,16 +4,16 @@ description: 了解 Azure Cosmos DB 中的 SQL 系统函数 StringToNumber。
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
-origin.date: 09/13/2019
-ms.date: 10/28/2019
+origin.date: 03/03/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
 ms.custom: query-reference
-ms.openlocfilehash: 0df4bf5c252ab6506cbcd142f02fee90877fb71c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: f171f12218fe272af2497c2424ad483be0ad1b83
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "72914644"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134608"
 ---
 # <a name="stringtonumber-azure-cosmos-db"></a>StringToNumber (Azure Cosmos DB)
  返回已转换为数字值的表达式。 如果表达式无法转换，则返回未定义的表达式。  
@@ -47,7 +47,7 @@ SELECT
     StringToNumber("-1.79769e+308") AS num4
 ```  
 
- 下面是结果集：  
+ 下面是结果集。  
 
 ```json
 {{"num1": 1, "num2": 3.14, "num3": 60, "num4": -1.79769e+308}}
@@ -60,7 +60,7 @@ SELECT
     StringToNumber("0xF")
 ```  
 
- 下面是结果集：  
+ 下面是结果集。  
 
 ```json
 {{}}
@@ -78,11 +78,15 @@ SELECT
     StringToNumber(NaN)
 ```  
 
- 下面是结果集：  
+ 下面是结果集。  
 
 ```json
 {{}}
 ```  
+
+## <a name="remarks"></a>备注
+
+此系统函数不会使用索引。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -90,5 +94,4 @@ SELECT
 - [系统函数 Azure Cosmos DB](sql-query-system-functions.md)
 - [Azure Cosmos DB 简介](introduction.md)
 
-<!--Update_Description: new articles on sql query string to number  -->
-<!--New.date: 10/28/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

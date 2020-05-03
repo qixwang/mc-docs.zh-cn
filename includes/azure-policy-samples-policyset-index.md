@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: faf5e3959808a01231c3d4bf35dcfc8140514e8c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: ff8f32db9c9923e0cb85177044b34fbd282fff12
+ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78048881"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82595282"
 ---
 ## <a name="guest-configuration"></a>来宾配置
 
@@ -14,9 +14,9 @@ ms.locfileid: "78048881"
 
 [!INCLUDE [azure-policy-samples-policyset-monitoring](azure-policy-samples-policyset-monitoring.md)]
 
-## <a name="regulatory-compliance"></a>合规性
+<!-- ## Regulatory Compliance
 
-[!INCLUDE [azure-policy-samples-policyset-regulatory-compliance](azure-policy-samples-policyset-regulatory-compliance.md)]
+[!INCLUDE [azure-policy-samples-policyset-regulatory-compliance](azure-policy-samples-policyset-regulatory-compliance.md)] -->
 
 ## <a name="security-center"></a>安全中心
 

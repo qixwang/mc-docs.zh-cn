@@ -3,28 +3,27 @@ title: 初始化 MSAL.js 客户端应用 | Azure
 titleSuffix: Microsoft identity platform
 description: 了解如何使用适用于 JavaScript 的 Microsoft 身份验证库 (MSAL.js) 初始化客户端应用程序。
 services: active-directory
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 01/15/2020
+ms.date: 04/22/2020
 ms.author: v-junlch
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8cc28d2b41c7ecc3e5218ff04541c98a13c66afc
-ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
+ms.openlocfilehash: 3b4fa8871fd4ed2c7660cbf4b44c9f90385fe594
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76116792"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126506"
 ---
 # <a name="initialize-client-applications-using-msaljs"></a>使用 MSAL.js 初始化客户端应用程序
 本文介绍如何使用用户代理应用程序的实例初始化适用于 JavaScript 的 Microsoft 身份验证库 (MSAL.js)。 该用户代理应用程序是某种形式的公共客户端应用程序，其中的客户端代码在 Web 浏览器等用户代理中执行。 这些客户端不存储机密，因为浏览器上下文可公开访问。 若要详细了解客户端应用程序类型和应用程序配置选项，请阅读[概述](msal-client-applications.md)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 在初始化应用程序之前，首先需要[使用 Azure 门户将其注册](scenario-spa-app-registration.md)，使应用能够与 Microsoft 标识平台集成。 注册后，可能需要以下信息（可在 Azure 门户中找到）：
 
 - 客户端 ID（表示应用程序 GUID 的字符串）
@@ -36,7 +35,7 @@ ms.locfileid: "76116792"
 
 在单纯的 JavaScript/Typescript 应用程序中，可按如下所示使用 MSAL.js。 通过使用配置对象实例化 `UserAgentApplication` 来初始化 MSAL 身份验证上下文。 要初始化 MSAL.js，最起码需要提供的配置是可从门户获取的应用程序 clientID。
 
-对于使用重定向流的身份验证方法（`loginRedirect` 和 `acquireTokenRedirect`），需要通过 `handleRedirectCallback()` 方法显式注册一个返回成功或错误结果的回调。 之所以需要这样做，是因为重定向流不会像弹出窗口体验中的方法那样返回约定。
+在 MSAL.js 1.2.x 或更早版本中，对于使用重定向流的身份验证方法（`loginRedirect` 和 `acquireTokenRedirect`），需要通过 `handleRedirectCallback()` 方法显式注册一个返回成功或错误结果的回调。 之所以需要这样做，是因为重定向流不会像弹出窗口体验中的方法那样返回约定。 这在 MSAL.js 1.3.0 版中是可选项。
 
 ```javascript
 // Configuration object constructed
@@ -115,7 +114,7 @@ export type Configuration = {
         * `https://login.partner.microsoftonline.cn/<tenant>` - tenant 是与租户关联的域（例如 contoso.partner.onmschina.cn），或者表示目录的 `TenantID` 属性的 GUID，仅用于将特定组织的用户登录。
         * `https://login.partner.microsoftonline.cn/common` - 用于通过工作和学校帐户将用户登录。
         * `https://login.partner.microsoftonline.cn/organizations/` - 用于通过工作和学校帐户将用户登录。
-    * 在 Azure AD B2C 中，其格式为 `https://<instance>/tfp/<tenant>/<policyName>/`，其中 instance 是 Azure AD B2C 域（即 {your-tenant-name}.b2clogin.cn），tenant 是 Azure AD B2C 租户的名称（即 {your-tenant-name}.partner.onmschina.cn），policyName 是要应用的 B2C 策略的名称。
+    * 在 Azure AD B2C 中，其格式为 `https://<instance>/tfp/<tenant>/<policyName>/`，其中 instance 是 Azure AD B2C 域（即 {your-tenant-name}.b2clogin.com），tenant 是 Azure AD B2C 租户的名称（即 {your-tenant-name}.partner.onmschina.cn），policyName 是要应用的 B2C 策略的名称。
 
 
 - **validateAuthority**：可选。  验证令牌的颁发者。 默认值为 `true`。 对于 B2C 应用程序，由于颁发机构值是已知的，并且根据不同的策略而异，因此，颁发机构验证不起作用，必须设置为 `false`。
@@ -143,4 +142,3 @@ export type Configuration = {
 
 - **protectedResourceMap**：可选。  资源到范围的映射，MSAL 在 Web API 调用中使用这种映射自动附加访问令牌。 将获取资源的单个访问令牌。 因此，可按如下所示映射特定的资源路径：{"https://microsoftgraph.chinacloudapi.cn/v1.0/me", ["https://microsoftgraph.chinacloudapi.cn/user.read"]}；或按如下所示映射资源的应用 URL：{"https://microsoftgraph.chinacloudapi.cn/", ["user.read", "mail.send"]}。 对于 CORS 调用，必须进行这种映射。 默认为 `null`。
 
-<!-- Update_Description: wording update -->

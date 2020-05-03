@@ -1,19 +1,19 @@
 ---
-title: 如何在 Azure Database for MariaDB 中备份和还原服务器
+title: 备份和还原 - Azure CLI - Azure Database for MariaDB
 description: 了解如何使用 Azure CLI 在 Azure Database for MariaDB 中备份和还原服务器。
 author: WenJason
 ms.author: v-jay
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: conceptual
-origin.date: 10/25/2019
-ms.date: 11/18/2019
-ms.openlocfilehash: c3a37ef694db3305024a03191681a69ca76279bd
-ms.sourcegitcommit: c863b31d8ead7e5023671cf9b58415542d9fec9c
+origin.date: 3/27/2020
+ms.date: 04/27/2020
+ms.openlocfilehash: f030df3fc7d242d373ce692b2b2428811a865fbd
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020867"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82127026"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-mariadb-using-the-azure-cli"></a>如何使用 Azure CLI 在 Azure Database for MariaDB 中备份和还原服务器
 
@@ -56,7 +56,7 @@ az mariadb server update --name mydemoserver --resource-group myresourcegroup --
 
 可以将服务器还原到以前的某个时间点。 将还原的数据复制到新服务器，并且现有服务器将保持不变。 例如，如果某个表在今天中午意外删除，可以还原到就在中午之前的时间。 然后可以从服务器的已还原副本中检索缺少的表和数据。
 
-若要还原服务器，请使用 Azure CLI [az mariadb server restore](/cli/mariadb/server#az-mariadb-server-restore) 命令。
+若要还原服务器，请使用 Azure CLI [az mariadb server restore](https://docs.microsoft.com/cli/azure/mariadb/server#az-mariadb-server-restore) 命令。
 
 ### <a name="run-the-restore-command"></a>运行还原命令
 
@@ -81,7 +81,7 @@ az mariadb server restore --resource-group myresourcegroup --name mydemoserver-r
 
 还原过程完成后，找到新服务器，验证数据是否已按预期还原。 新服务器具有在启动还原时对现有服务器有效的相同服务器管理员登录名和密码。 可以从新服务器的“概述”  页更改密码。
 
-还原期间创建的新服务器没有原始服务器上存在的防火墙规则或 VNet 服务终结点。 需要为此新服务器单独设置这些规则。
+在还原期间创建的新服务器没有原始服务器上存在的 VNet 服务终结点。 需要为此新服务器单独设置这些规则。 将从原始服务器还原防火墙规则。
 
 ## <a name="geo-restore"></a>异地还原
 
@@ -122,7 +122,7 @@ az mariadb server georestore --resource-group newresourcegroup --name mydemoserv
 
 还原过程完成后，找到新服务器，验证数据是否已按预期还原。 新服务器具有在启动还原时对现有服务器有效的相同服务器管理员登录名和密码。 可以从新服务器的“概述”  页更改密码。
 
-还原期间创建的新服务器没有原始服务器上存在的防火墙规则或 VNet 服务终结点。 需要为此新服务器单独设置这些规则。
+在还原期间创建的新服务器没有原始服务器上存在的 VNet 服务终结点。 需要为此新服务器单独设置这些规则。 将从原始服务器还原防火墙规则。
 
 ## <a name="next-steps"></a>后续步骤
 

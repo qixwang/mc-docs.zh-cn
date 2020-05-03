@@ -1,4 +1,4 @@
-- name: 有关如何管理 Azure 资源的文档
+- name: 管理 Azure 资源文档
   href: index.yml
 - name: 概述
   items:
@@ -50,6 +50,8 @@
           href: region-move-support.md
         - name: 服务
           items:
+            - name: Azure IoT 中心
+              href: ../../iot-hub/iot-hub-how-to-clone.md?toc=/azure-resource-manager/toc.json
             - name: Azure VM
               href: ../../site-recovery/azure-to-azure-tutorial-migrate.md?toc=/azure-resource-manager/toc.json
             - name: Azure 存储
@@ -62,11 +64,15 @@
               href: ../../virtual-network/move-across-regions-nsg-portal.md?toc=/azure-resource-manager/toc.json
             - name: 公共 IP 地址
               href: ../../virtual-network/move-across-regions-publicip-portal.md?toc=/azure-resource-manager/toc.json
+            - name: 虚拟网络
+              href: ../../virtual-network/move-across-regions-nsg-portal.md?toc=/azure-resource-manager/toc.json
     - name: Tags
       items:
-        - name: 标记资源
+        - name: 使用标记
           href: tag-resources.md
-        - name: 标记支持
+        - name: 策略 - 合规性
+          href: tag-policies.md
+        - name: 支持的资源类型
           href: tag-support.md
     - name: 管理资源组
       items:

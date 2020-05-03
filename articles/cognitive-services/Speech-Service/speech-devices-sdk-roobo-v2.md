@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 origin.date: 02/20/2020
-ms.date: 03/16/2020
+ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: 9611e418bf4f35ed835c03395edb4867e6e8c0a0
-ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
+ms.openlocfilehash: 63ec3340fb49681a7cfeef4fcffb632c5e477d9e
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80151768"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82127071"
 ---
 # <a name="device-roobo-smart-audio-dev-kit-v2"></a>设备：Roobo 智能音频开发工具包 v2
 

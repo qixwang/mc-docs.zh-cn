@@ -11,13 +11,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: carlrab
 origin.date: 02/08/2019
-ms.date: 02/17/2020
-ms.openlocfilehash: dd7a8fbfcc0af47c84aaece62ce478e57d71ad2b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 04/27/2020
+ms.openlocfilehash: 027443af4f2308fe92aec5898e3bc3855a3550ed
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77155702"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82127034"
 ---
 # <a name="transactional-replication-with-single-pooled-and-instance-databases-in-azure-sql-database"></a>对 Azure SQL 数据库中的单一数据库、共用数据库和实例数据库进行事务复制
 
@@ -96,7 +96,7 @@ ms.locfileid: "77155702"
 - 连接时，在复制参与者之间使用 SQL 身份验证。 
 - 复制功能使用的工作目录的 Azure 存储帐户共享。 
 - 需要在托管实例子网的安全规则中打开端口 445（TCP 出站）才能访问 Azure 文件共享。 
-- 如果发布服务器/分发服务器位于托管实例上，而订阅服务器位于本地，则需要打开端口 1433（TCP 出站）。
+- 如果发布服务器/分发服务器位于托管实例上，而订阅服务器没有位于其上，则需要打开端口 1433（TCP 出站）。 对于端口 1433 目标服务标记  ，你可能还需要将 `allow_linkedserver_outbound` 的托管实例 NSG 出站安全规则从 `virtualnetwork` 更改为 `internet`。 
 - 所有类型的复制参与者（发布服务器、分发服务器、拉取订阅服务器和推送订阅服务器）都可以放置在托管实例上，但发布服务器和分发服务器必须同时在云中或同时在本地。
 - 如果发布服务器、分发服务器和/或订阅服务器位于不同的虚拟网络中，则必须在每个实体之间建立 VPN 对等互连，使发布服务器与分发服务器之间存在 VPN 对等互连，并且/或者分发服务器与订阅服务器之间存在 VPN 对等互连。 
 
@@ -182,6 +182,7 @@ ms.locfileid: "77155702"
 ## <a name="next-steps"></a>后续步骤
 
 - [配置 MI 发布服务器与订阅服务器之间的复制](replication-with-sql-database-managed-instance.md)
+- [配置 MI 发布服务器、MI 分发服务器和 SQL Server 订阅服务器之间的复制](sql-database-managed-instance-configure-replication-tutorial.md)
 - [创建发布](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)。
 - 使用 Azure SQL 数据库服务器名称作为订阅服务器（例如 `N'azuresqldbdns.database.chinacloudapi.cn`）并使用 Azure SQL 数据库名称作为目标数据库（例如 **Adventureworks**）来[创建推送订阅](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription)。 )
 

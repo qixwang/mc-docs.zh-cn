@@ -12,17 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-origin.date: 05/31/2018
-ms.date: 04/09/2019
+ms.date: 04/23/2020
 ms.subservice: hybrid
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 65503880c52c4b01eaa8315e1fb26104fa2b2656
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 23e9545bd3f5f45b64207b42b92f934cfbd9c2ab
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79290985"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126553"
 ---
 # <a name="azure-ad-connect-user-sign-in-options"></a>Azure AD Connect 用户登录选项
 Azure Active Directory (Azure AD) Connect 可让用户使用同一组密码登录云和本地资源。 本文介绍每个标识模型的重要概念，以帮助你选择登录到 Azure AD 时想要使用的标识。
@@ -66,7 +65,7 @@ Azure AD 支持以下身份验证方法：
 
 * 用于联合服务器的 Windows Server 2012 R2 服务器。
 * 用于 Web 应用程序代理的 Windows Server 2012 R2 服务器。
-* 一个 .pfx 文件，其中包含目标联合服务名称的 SSL 证书。 例如：fs.contoso.com。
+* 一个 .pfx 文件，其中包含一个所需联合服务名称的 TLS/SSL 证书。 例如：fs.contoso.com。
 
 如果要部署新场或使用现有场，则需要：
 
@@ -152,7 +151,7 @@ Azure AD 登录页列出了针对本地 Active Directory 定义的 UPN 后缀，
 | 未验证 |在这种情况下，Azure AD Connect 将发出提示，并提供有关如何在后面的阶段验证域的相应详细信息。 |
 | 已验证 |在这种情况下，可以继续进行配置，而不需要采取任何进一步的操作。 |
 
-## 更改用户登录方法 <a name="changing-user-sign-in-method"></a>
+## <a name="changing-the-user-sign-in-method"></a>更改用户登录方法 <a name="changing-user-sign-in-method"></a>
 在使用向导完成 Azure AD Connect 的初始配置后，可以使用 Azure AD Connect 中的可用任务将用户的登录方法在“联合”、“密码哈希同步之间切换。 再次运行 Azure AD Connect 向导，随后将看到可执行的任务列表。 在任务列表中选择“更改用户登录”。 
 
 ![更改用户登录](./media/plan-connect-user-signin/changeusersignin.png)
@@ -174,4 +173,3 @@ Azure AD 登录页列出了针对本地 Active Directory 定义的 UPN 后缀，
 - 了解有关[将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。
 - 了解有关 [Azure AD Connect 设计概念](plan-connect-design-concepts.md)的详细信息。
 
-<!-- Update_Description: wording update -->

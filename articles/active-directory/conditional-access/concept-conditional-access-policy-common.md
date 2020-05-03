@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 02/07/2020
+ms.date: 04/24/2020
 ms.author: v-junlch
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d7b8e9cd0b7568580d522757e29c8de6eb0e9be
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.openlocfilehash: f855398b3ca5a007aee1aabb6d354eec1a4144a6
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77540050"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126296"
 ---
 # <a name="common-conditional-access-policies"></a>常用条件访问策略
 
@@ -32,13 +32,16 @@ ms.locfileid: "77540050"
 
 ## <a name="typical-policies-deployed-by-organizations"></a>组织部署的典型策略
 
+* [阻止旧式身份验证](howto-conditional-access-policy-block-legacy.md)\*
 * [要求对管理员执行 MFA](howto-conditional-access-policy-admin-mfa.md)\*
 * [要求将 MFA 用于 Azure 管理](howto-conditional-access-policy-azure-management.md)\*
 * [要求对所有用户进行 MFA](howto-conditional-access-policy-all-users-mfa.md)\*
-* [阻止旧式身份验证](howto-conditional-access-policy-block-legacy.md)\*
-* 基于风险的条件访问（需要 Azure AD Premium P2）
+
+## <a name="additional-policies"></a>其他策略
+
 * [按位置阻止访问](howto-conditional-access-policy-location.md)
 * [需要兼容设备](howto-conditional-access-policy-compliant-device.md)
+* [阻止访问，但特定应用除外](howto-conditional-access-policy-block-access.md)
 
 ## <a name="next-steps"></a>后续步骤
 

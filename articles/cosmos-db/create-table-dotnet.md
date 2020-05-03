@@ -1,5 +1,5 @@
 ---
-title: 快速入门：将表 API 与 .NET 配合使用 - Azure Cosmos DB
+title: 快速入门 - 将表 API 与 .NET 配合使用 - Azure Cosmos DB
 description: 本快速入门介绍如何在 Azure 门户和 .NET 中使用 Azure Cosmos DB 表 API 创建应用程序
 author: rockboyfor
 ms.service: cosmos-db
@@ -7,14 +7,14 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: quickstart
 origin.date: 05/21/2019
-ms.date: 09/09/2019
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: 393884aa5bff33b4870df91961e3a9fb1a18bf07
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 6c0a991494d4852c95d58ab5cc87ec72c12b7e39
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292931"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134950"
 ---
 <!--Verify sucessfully-->
 # <a name="quickstart-build-a-table-api-app-with-net-sdk-and-azure-cosmos-db"></a>快速入门：使用 .NET SDK 和 Azure Cosmos DB 生成表 API 应用 

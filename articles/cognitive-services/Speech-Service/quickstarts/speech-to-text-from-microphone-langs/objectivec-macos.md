@@ -11,12 +11,12 @@ ms.topic: quickstart
 origin.date: 12/23/2019
 ms.date: 01/13/2020
 ms.author: v-tawe
-ms.openlocfilehash: 4fca4cf0c51b8766d9db66c77d48af0833de777c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 4add78fff10f858432539d0ad69066ff32c033b8
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77428857"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134793"
 ---
 # <a name="quickstart-recognize-speech-in-objective-c-on-macos-by-using-the-speech-sdk"></a>快速入门：在 macOS 上使用语音 SDK 通过 Objective-C 识别语音
 
@@ -30,6 +30,7 @@ ms.locfileid: "77428857"
 
 * 语音服务的[订阅密钥](~/articles/cognitive-services/Speech-Service/get-started.md)。
 * 装有 [Xcode 9.4.1](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12) 或更高版本以及 macOS 10.13 或更高版本的 macOS 计算机。
+* 需要语音 SDK 版本 1.10.0 或更高版本。
 
 ## <a name="get-the-speech-sdk-for-macos"></a>获取适用于 macOS 的语音 SDK
 
@@ -110,7 +111,7 @@ ms.locfileid: "77428857"
     }
     
     - (void)buttonPressed:(NSButton *)button {
-        // Creates an instance of a speech config with specified host and subscription key.
+        // Creates an instance of a speech config with specified subscription key and service region.
         // Replace with your own subscription key // and service region (e.g., "chinaeast2").
         NSString *speechHost = @"wss://YourServiceRegion.stt.speech.azure.cn/";
         NSString *speechKey = @"YourSubscriptionKey";

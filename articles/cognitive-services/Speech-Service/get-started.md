@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-origin.date: 02/26/2020
-ms.date: 03/16/2020
+origin.date: 04/03/2020
+ms.date: 04/20/2020
 ms.author: v-tawe
 ms.custom: seodec18, seo-javascript-october2019
-ms.openlocfilehash: ba55a69a6d56f5f5ca6f38c8be449ec8fe0bf971
-ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
+ms.openlocfilehash: cb00d24aeb5a6e8c8742f8f693e281de7eb84e65
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80151708"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126981"
 ---
-# <a name="try-the-speech-service"></a>试用语音服务
+# <a name="try-the-speech-service-for-free"></a>免费试用语音服务
 
 在本文中，我们选择一个选项来轻松地免费测试语音服务，以便发现服务的功能：
 
@@ -88,4 +88,4 @@ ms.locfileid: "80151708"
 
 > [!div class="nextstepaction"]
 > [快速入门：在 C# 中识别语音](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)
-> [语音 SDK 示例](speech-sdk.md#get-the-samples)
+> [语音 SDK 示例](speech-sdk.md)

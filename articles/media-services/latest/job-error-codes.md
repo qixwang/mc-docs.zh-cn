@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 origin.date: 04/28/2019
-ms.date: 09/23/2019
+ms.date: 05/11/2020
 ms.author: v-jay
-ms.openlocfilehash: 71feb399563f9374d25859b22599c3b8708d4800
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: e6cd6f25933dc16daaaeb8aa9fddd5e4d357a0c5
+ms.sourcegitcommit: 95efd248f5ee3701f671dbd5cfe0aec9c9959a24
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "71125581"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82507702"
 ---
 # <a name="media-services-job-error-codes"></a>媒体服务作业错误代码
 

@@ -7,12 +7,12 @@ ms.service: mariadb
 ms.topic: conceptual
 origin.date: 01/16/2020
 ms.date: 02/17/2020
-ms.openlocfilehash: 4b4ea4c4acc578c38ee0a1354e57bb24f1119e52
-ms.sourcegitcommit: 3f9d780a22bb069402b107033f7de78b10f90dde
+ms.openlocfilehash: b0db54d9053809b0af7a6b01b4c8501d2e154151
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77192473"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126895"
 ---
 # <a name="read-replicas-in-azure-database-for-mariadb"></a>Azure Database for MariaDB 中的只读副本
 
@@ -31,7 +31,6 @@ ms.locfileid: "77192473"
 由于副本是只读的，它们不能直接缓解主服务器上的写入容量负担。 此功能并非面向写入密集型工作负荷。
 
 只读副本功能使用异步复制技术。 该功能不适用于同步复制方案。 主服务器与副本之间存在明显的延迟。 副本上的数据最终将与主服务器上的数据保持一致。 对于能够适应这种延迟的工作负荷，可以使用此功能。
-
 
 ## <a name="cross-region-replication"></a>跨区域复制
 可以在与主服务器不同的区域中创建只读副本。 跨区域复制对于灾难恢复规划或使数据更接近用户等方案非常有用。

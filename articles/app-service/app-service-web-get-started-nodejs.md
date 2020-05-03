@@ -9,12 +9,12 @@ ms.author: v-tawe
 ms.custom: mvc, devcenter, seodec18
 experimental: false
 experiment_id: a231f2b4-2625-4d
-ms.openlocfilehash: 49890b7ea8ea7b36a34aeb9b032e01ad78d8272f
-ms.sourcegitcommit: 44d3fe59952847e5394bbe6c05bd6f333bb56345
+ms.openlocfilehash: b247f48153cebbec80a6a84703ddc3d44791b33e
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80521967"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82127057"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>在 Azure 中创建 Node.js Web 应用 
 
@@ -65,6 +65,9 @@ ms.locfileid: "80521967"
     ```
 
 1. 在 VS Code 活动栏中，选择 Azure 徽标显示“AZURE 应用服务”资源管理器。  选择“登录到 Azure...”并遵照说明操作。  （如果遇到错误，请参阅下面的[排查 Azure 登录问题](#troubleshooting-azure-sign-in)。）登录后，资源管理器应会显示 Azure 订阅的名称。
+
+    > [!IMPORTANT]
+    > 请参阅[此文](/articles/azure-operations-guide/others/aog-others-howto-login-china-azure-by-vscode)以 Azure 中国帐户登录。
 
     ![登录 Azure](containers/media/quickstart-nodejs/sign-in.png)
 

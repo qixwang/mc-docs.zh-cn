@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/24/2020
+ms.date: 04/23/2020
 ms.subservice: hybrid
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 91a6de1135c8461fda3ce6dd53e467cbda6b154a
-ms.sourcegitcommit: 6568c59433d7e80ab06e9fe76d4791f761ed6775
+ms.openlocfilehash: e1a44f2f102bef7a098d02778fc16731be4daa87
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80243055"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126558"
 ---
 # <a name="azure-ad-connect-sync-service-features"></a>Azure AD Connect 同步服务功能
 
@@ -89,7 +89,9 @@ Set-MsolDirSyncFeature -Feature EnableSoftMatchOnUpn -Enable $true
 * 托管用户（非联合）。
 * 没有为用户分配许可证。
 
-有关详细信息，请参阅 [Office 365、Azure 或 Intune 中的用户名与本地 UPN 或备用登录 ID 不匹配](https://support.microsoft.com/kb/2523192)。
+> [!NOTE]
+> 从 2019 年 3 月起，允许同步联合用户帐户的 UPN 更改。
+> 
 
 如果 userPrincipalName 在本地发生更改并且你使用密码哈希同步，则启用此功能后，同步引擎可将其更新。
 
@@ -112,4 +114,3 @@ Set-MsolDirSyncFeature -Feature SynchronizeUpnForManagedUsers -Enable $true
 * [Azure AD Connect 同步](how-to-connect-sync-whatis.md)
 * [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)。
 
-<!-- Update_Description: wording update -->

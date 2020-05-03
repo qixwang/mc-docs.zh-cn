@@ -11,12 +11,12 @@ ms.topic: quickstart
 origin.date: 12/09/2019
 ms.date: 01/27/2020
 ms.author: v-tawe
-ms.openlocfilehash: db699591ea7b771808dcc644d17f3608a876206b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: dfe2a5746ba2dd8ad06a27988cbacfd187724b33
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77428851"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134816"
 ---
 # <a name="quickstart-synthesize-speech-in-swift-on-macos-using-the-speech-sdk"></a>快速入门：在 macOS 上使用语音 SDK 通过 Swift 合成语音
 
@@ -28,6 +28,7 @@ ms.locfileid: "77428851"
 
 * 语音服务的[订阅密钥](~/articles/cognitive-services/Speech-Service/get-started.md)。
 * 安装了 [Xcode 9.4.1](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12) 或更高版本以及 [CocoaPods](https://cocoapods.org/) 的 macOS 计算机。
+* 需要语音 SDK 版本 1.10.0 或更高版本。
 
 ## <a name="get-the-speech-sdk-for-macos"></a>获取适用于 macOS 的语音 SDK
 

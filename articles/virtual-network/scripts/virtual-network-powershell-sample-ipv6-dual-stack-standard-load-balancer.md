@@ -1,24 +1,23 @@
 ---
-title: Azure PowerShell 脚本示例 - 使用标准负载均衡器配置 IPv6 虚拟网络终结点
+title: Azure PowerShell 脚本示例 - 使用标准负载均衡器配置 IPv6 前端
 titlesuffix: Azure Virtual Network
 description: 使用 Powershell 在 Azure 虚拟网络中启用 IPv6 终结点
 services: virtual-network
 documentationcenter: na
 author: rockboyfor
-manager: digimobile
 ms.service: virtual-network
 ms.devlang: NA
 ms.topic: article
 ms.workload: infrastructure-services
 origin.date: 07/15/2019
-ms.date: 12/02/2019
+ms.date: 04/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: a121ad0d1f6533a781f2a6c3d5bbd7c76de66ce4
-ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
+ms.openlocfilehash: eeda33c0f07660ba744ddc35c408b29746937370
+ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599792"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82093422"
 ---
 # <a name="configure-ipv6-endpoints-in-virtual-network-script-sample-with-standard-load-balancer"></a>使用标准负载均衡器在虚拟网络中配置 IPv6 终结点的脚本示例
 

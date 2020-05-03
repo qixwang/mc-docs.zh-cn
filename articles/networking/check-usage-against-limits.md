@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 06/05/2018
 ms.date: 03/02/2020
-ms.openlocfilehash: 9e1f4e8a2f77db36e4b4e4c6476ca1a108d8ec76
-ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
+ms.openlocfilehash: 70f54e984948ac3ffe21c4e714ed5d59a3be1746
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80634379"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126667"
 ---
 # <a name="check-resource-usage-against-limits"></a>根据限制检查资源使用情况
 
@@ -37,7 +37,7 @@ ms.locfileid: "80634379"
    - **位置**：可以选择所有 Azure 位置，也可以选择特定位置。
    - 可以选择显示所有资源，也可只显示至少部署了一个资源的资源。
 
-     下图中的示例显示了在美国东部至少部署了一个资源的所有网络资源：
+     下图中的示例显示了在中国东部至少部署了一个资源的所有网络资源：
 
        ![查看使用情况数据](./media/check-usage-against-limits/view-usage.png)
 
@@ -74,7 +74,7 @@ Network Watchers                   1     1
 
 如果使用 Azure 命令行接口 (CLI) 命令来完成本文中的任务，请从计算机运行 CLI。 本文需要 Azure CLI 2.0.32 或更高版本。 运行 `az --version` 查找已安装的版本。 如需进行安装或升级，请参阅[安装 Azure CLI](/cli/install-azure-cli)。 在本地运行 Azure CLI 之前，还需要运行 `az cloud set -n AzureChinaCloud` 以将环境更改为 Azure 中国，然后运行 `az login` 以登录 Azure。
 
-使用 [az network list-usages](/cli/network?view=azure-cli-latest#az-network-list-usages) 根据限制查看使用情况。 以下示例获取“美国东部”位置的资源使用情况：
+使用 [az network list-usages](/cli/network?view=azure-cli-latest#az-network-list-usages) 根据限制查看使用情况。 以下示例获取“中国东部”位置的资源使用情况：
 
 ```azurecli
 az network list-usages \

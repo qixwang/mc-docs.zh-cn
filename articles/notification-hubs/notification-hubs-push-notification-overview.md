@@ -13,17 +13,17 @@ ms.tgt_pltfrm: multiple
 ms.devlang: multiple
 ms.topic: overview
 ms.custom: mvc
-origin.date: 02/20/2020
-ms.date: 03/16/2020
+origin.date: 03/23/2020
+ms.date: 04/20/2020
 ms.author: v-tawe
 ms.reviewer: thsomasu
 ms.lastreviewed: 04/30/2019
-ms.openlocfilehash: ce0053958d0e2464118fbb2c36241d6a36dd119a
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 63f6151c8065bd6875f27e5b4b0040efa9d53d6d
+ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80243743"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82588659"
 ---
 # <a name="what-is-azure-notification-hubs"></a>什么是 Azure 通知中心？
 
@@ -43,7 +43,7 @@ Azure 通知中心提供易于使用且横向扩展的推送引擎，可用于�
 推送通知对于提高消费型应用的应用参与度与使用量以及在企业应用中传达最新业务信息至关重要。 它是最佳的应用到用户通信形式，因为它对于移动设备而言能效较高，对于发送方而言具有弹性，即使相应的应用程序处于非活动状态时，也能使用推送通知。
 
 > [!NOTE]
-> Azure 通知中心不支持 IP 语音 (VOIP) 推送通知。
+> Azure 通知中心并不正式支持 IP 语音 (VoIP) 推送通知；但是，[此文介绍如何通过 Azure 通知中心使用 APNS VOIP 通知](voip-apns.md)。
 
 有关一些流行平台中的推送通知的详细信息，请参阅以下主题：
 

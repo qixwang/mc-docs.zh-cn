@@ -1,5 +1,5 @@
 ---
-title: 为 VM 配置专用 IP 地址 - Azure CLI | Azure
+title: 为 VM 配置专用 IP 地址 - Azure CLI
 description: 了解如何使用 Azure 命令行接口 (CLI) 为虚拟机配置专用 IP 地址。
 services: virtual-network
 documentationcenter: na
@@ -14,24 +14,18 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 02/16/2017
-ms.date: 06/10/2019
+ms.date: 04/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 72cf497b3002f6c87c2852608e8c952955b9d3f6
-ms.sourcegitcommit: df1b896faaa87af1d7b1f06f1c04d036d5259cc2
+ms.openlocfilehash: f8b513536b6e980f9aaea9631bea565b927be6e3
+ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66250433"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82093469"
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-cli"></a>使用 Azure CLI 为虚拟机配置专用 IP 地址
 
-[!INCLUDE [virtual-networks-static-private-ip-selectors-arm-include](../../includes/virtual-networks-static-private-ip-selectors-arm-include.md)]
-
 [!INCLUDE [virtual-networks-static-private-ip-intro-include](../../includes/virtual-networks-static-private-ip-intro-include.md)]
-
-[!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
-
-本文介绍 Resource Manager 部署模型。 还可以 [管理经典部署模型中的静态专用 IP 地址](virtual-networks-static-private-ip-classic-cli.md)。
 
 [!INCLUDE [virtual-networks-static-ip-scenario-include](../../includes/virtual-networks-static-ip-scenario-include.md)]
 
@@ -42,11 +36,11 @@ ms.locfileid: "66250433"
 
 若要在名为 *TestVNet* 的 VNet 的 *FrontEnd* 子网中使用静态专用 IP *192.168.1.101* 创建名为 *DNS01* 的 VM，请完成以下步骤：
 
-1. 如果尚未这样做，请安装并配置最新的 [Azure CLI](https://docs.azure.cn/zh-cn/cli/install-azure-cli?view=azure-cli-latest)，并使用 [az login](https://docs.azure.cn/zh-cn/cli/reference-index?view=azure-cli-latest#az-login) 登录 Azure 帐户。
+1. 如果尚未这样做，请安装并配置最新的 [Azure CLI](https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest)，并使用 [az login](https://docs.azure.cn/cli/reference-index?view=azure-cli-latest#az-login) 登录 Azure 帐户。
 
    [!INCLUDE [azure-cli-2-azurechinacloud-environment-parameter](../../includes/azure-cli-2-azurechinacloud-environment-parameter.md)]
 
-2. 通过 [azure network public-ip create](https://docs.azure.cn/zh-cn/cli/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) 命令为该 VM 创建公共 IP。 在输出后显示的列表说明了所使用的参数。
+2. 通过 [azure network public-ip create](https://docs.azure.cn/cli/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) 命令为该 VM 创建公共 IP。 在输出后显示的列表说明了所使用的参数。
 
     > [!NOTE]
     > 根据环境，可能需在该步骤及后续步骤中使用不同的参数值。
@@ -77,7 +71,7 @@ ms.locfileid: "66250433"
     * `--name`：公共 IP 的名称。
     * `--location`：要在其中创建公共 IP 的 Azure 区域。
 
-3. 运行 [az network nic create](https://docs.azure.cn/zh-cn/cli/network/nic?view=azure-cli-latest#az-network-nic-create) 命令，创建具有静态专用 IP 的 NIC。 在输出后显示的列表说明了所用的参数。 
+3. 运行 [az network nic create](https://docs.azure.cn/cli/network/nic?view=azure-cli-latest#az-network-nic-create) 命令，创建具有静态专用 IP 的 NIC。 在输出后显示的列表说明了所用的参数。 
 
     ```azurecli
     az network nic create \
@@ -129,7 +123,7 @@ ms.locfileid: "66250433"
     * `--vnet-name`：要在其中创建 NIC 的 VNet 的名称。
     * `--subnet`：要在其中创建 NIC 的子网的名称。
 
-4. 运行 [az vm create](https://docs.azure.cn/zh-cn/cli/vm/?view=azure-cli-latest#az-vm-create) 命令，以使用前面创建的公共 IP 和 NIC 创建 VM。 在输出后显示的列表说明了所使用的参数。
+4. 运行 [az vm create](https://docs.azure.cn/cli/vm/?view=azure-cli-latest#az-vm-create) 命令，以使用前面创建的公共 IP 和 NIC 创建 VM。 在输出后显示的列表说明了所使用的参数。
 
     ```azurecli
     az vm create \
@@ -157,7 +151,7 @@ ms.locfileid: "66250433"
     }
     ```
 
-    基本 [az vm create](https://docs.azure.cn/zh-cn/cli/vm?view=azure-cli-latest#az-vm-create) 参数之外的参数。
+    基本 [az vm create](https://docs.azure.cn/cli/vm?view=azure-cli-latest#az-vm-create) 参数之外的参数。
 
     * `--nics`：VM 附加到的 NIC 的名称。
 
@@ -254,7 +248,7 @@ rivateIpAllocationMethod,PublicAddress:publicIpAddress}'
 2. 运行 **azure vm set** 命令以更改 VM 使用的 NIC。
 
     ```azurecli
-    azure vm set -g TestRG -n DNS01 -N TestNIC2
+    az vm nic set --resource-group TestRG --vm-name DNS01 --nics TestNIC2
     ```
 
     预期输出：
@@ -276,4 +270,4 @@ rivateIpAllocationMethod,PublicAddress:publicIpAddress}'
 
 了解如何管理 [IP 地址设置](virtual-network-network-interface-addresses.md)。
 
-<!-- Update_Description: update meta properties, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

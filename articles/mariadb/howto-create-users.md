@@ -1,18 +1,18 @@
 ---
-title: 在 Azure Database for MariaDB 服务器中创建用户
+title: 创建用户 - Azure Database for MariaDB
 description: 本文介绍如何创建新的用户帐户，以与 Azure Database for MariaDB 服务器进行交互。
 author: WenJason
 ms.author: v-jay
 ms.service: mariadb
 ms.topic: conceptual
-origin.date: 09/24/2018
-ms.date: 05/27/2019
-ms.openlocfilehash: fc430a00d63761177b829ff5d0b23ca7ad313ada
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+origin.date: 4/2/2020
+ms.date: 04/27/2020
+ms.openlocfilehash: 8cb5d5c7133cb26e7bc34b929b87843e85f230e2
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79291198"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82127078"
 ---
 # <a name="create-users-in-azure-database-for-mariadb"></a>在 Azure Database for MariaDB 中创建用户 
 本文介绍如何在 Azure Database for MariaDB 中创建用户。
@@ -22,6 +22,9 @@ ms.locfileid: "79291198"
 服务器管理员用户可获得服务器的某些权限，如下所示：选择、插入、更新、删除、创建、放置、重载、处理、引用、索引、更改、显示数据库、创建临时表、锁定表、执行、复制从属、复制客户端、创建视图、显示视图、创建例程、更改例程、创建用户、事件、触发器
 
 创建 Azure Database for MariaDB 服务器后，可以使用第一个服务器管理员用户帐户来创建其他用户，并授予这些用户管理员访问权限。 此外，服务器管理员帐户还可以用于创建只能访问各个数据库架构的权限较低的用户。
+
+> [!NOTE]
+> 不支持 SUPER 权限和 DBA 角色。 请在“限制”一文中查看[权限](concepts-limits.md#privilege-support)，以了解服务中不支持的权限。
 
 ## <a name="create-additional-admin-users"></a>创建其他管理员用户
 1. 获取连接信息和管理员用户名。

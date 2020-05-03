@@ -11,12 +11,12 @@ ms.topic: include
 origin.date: 12/09/2019
 ms.date: 03/16/2020
 ms.author: v-tawe
-ms.openlocfilehash: 5ae295f62e817b914125e7e2f13ad59bade118bd
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 52b8e27a7db9c2f43bedb15dfc31f0cb36cf8f8d
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80151580"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82150721"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -25,6 +25,7 @@ ms.locfileid: "80151580"
 > [!div class="checklist"]
 > * [创建一个 Azure 搜索资源](../../../../get-started.md)
 > * [设置开发环境并创建空项目](../../../../quickstarts/setup-platform.md?tabs=jre)
+> * 需要语音 SDK 版本 1.10.0 或更高版本。
 
 ## <a name="add-sample-code"></a>添加示例代码
 
@@ -54,7 +55,7 @@ ms.locfileid: "80151580"
            // and region identifier from here: https://docs.azure.cn/cognitive-services/speech-service/regions
 
            int exitCode = 1;
-           SpeechTranslationConfig config = SpeechTranslationConfig.fromHost(new URI("wss://YourServiceRegion.stt.speech.azure.cn/"), "YourSubscriptionKey");
+           SpeechTranslationConfig config = SpeechTranslationConfig.fromSubscription("YourSubscriptionKey", "YourServiceRegion");
            assert(config != null);
 
            // Sets source and target languages.

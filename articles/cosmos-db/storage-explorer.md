@@ -5,15 +5,15 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 10/23/2019
-ms.date: 12/16/2019
+ms.date: 04/27/2020
 ms.author: v-yeche
 ms.custom: seodec18
-ms.openlocfilehash: 5be5b791fbffc5ec40b5cf283b7d7ef58ef14e54
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 8f06245ff45a3c4a1aa7a9935936f437cb749bea
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75335753"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134810"
 ---
 # <a name="work-with-data-using-azure-storage-explorer"></a>使用 Azure 存储资源管理器处理数据
 
@@ -216,7 +216,7 @@ ms.locfileid: "75335753"
 
 + 你位于“透明代理”之后，这意味着某人（例如 IT 部门）在拦截 HTTPS 流量，将其解密后又使用自签名证书对其加密  。
 
-+ 正在运行的软件（如防病毒软件）在向收到的 HTTPS 消息注入自签名 SSL 证书。
++ 你正在运行的软件（如防病毒软件）正在将自签名 TLS/SSL 证书注入收到的 HTTPS 消息中。
 
 存储资源管理器在遇到其中一个这样的“自签名证书”时，将再也无法判断收到的 HTTPS 消息是否已被篡改。 但若拥有一份自签名证书的副本，则可让存储资源管理器信任它。 若无法确定谁在注入证书，则可自行尝试通过以下步骤找到它：
 

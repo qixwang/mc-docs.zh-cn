@@ -1,19 +1,19 @@
 ---
-title: 关于用于将 Hyper-V VM 灾难恢复到 Azure 的 Azure Site Recovery 部署规划器 | Azure
+title: 使用 Azure Site Recovery 进行 Hyper-V 灾难恢复的部署规划器
 description: 了解用于将 Hyper-V 灾难恢复到 Azure 的 Azure Site Recovery 部署规划器。
 author: rockboyfor
 manager: digimobile
 ms.service: site-recovery
 ms.topic: conceptual
-origin.date: 07/29/2019
-ms.date: 08/26/2019
+origin.date: 03/13/2020
+ms.date: 04/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 93790fc93d34e672482dde7e4fd78c3ad1511957
-ms.sourcegitcommit: 18a0d2561c8b60819671ca8e4ea8147fe9d41feb
+ms.openlocfilehash: 6f8a398b0c0edb41d075053e433f404689b7700b
+ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70134471"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82093375"
 ---
 # <a name="about-the-azure-site-recovery-deployment-planner-for-hyper-v-disaster-recovery-to-azure"></a>关于用于将 Hyper-V 灾难恢复到 Azure 的 Azure Site Recovery 部署规划器
 
@@ -82,7 +82,7 @@ Azure Site Recovery 部署规划器是一个命令行工具，适用于 Hyper-V 
 
 | 服务器要求 | 说明 |
 |---|---|
-|获取 VM 列表、分析和吞吐量测量 |<ul><li>操作系统：Microsoft Windows Server 2016 或 Microsoft Windows Server 2012 R2 </li><li>计算机配置：8 个 vCPU、16 GB RAM、300 GB HDD</li><li>[Microsoft .NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[Microsoft Visual C++ Redistributable for Visual Studio 2012](https://aka.ms/vcplusplus-redistributable)</li><li>可在此服务器中通过 Internet 访问 Azure</li><li>Azure 存储帐户</li><li>服务器上的管理员访问权限</li><li>至少 100 GB 的可用磁盘空间（假定有 1000 个 VM，每个平均包含 3 个磁盘，分析时间为 30 天）</li><li>必须将从其运行 Azure Site Recovery 部署规划器工具的 VM 添加到包含所有 Hyper-V 服务器的 TrustedHosts 列表。</li><li>必须将要分析的所有 Hyper-V 服务器都添加到要运行该工具的客户端 VM 的 TrustedHosts 列表中。 [详细了解如何将服务器添加到 TrustedHosts 列表中](#steps-to-add-servers-into-trustedhosts-list)。 </li><li> 应从客户端上的 PowerShell 或命令行控制台使用管理特权运行此工具</ul></ul>|
+|获取 VM 列表、分析和吞吐量测量 |<ul><li>操作系统：Microsoft Windows Server 2016 或 Microsoft Windows Server 2012 R2 </li><li>计算机配置：8 个 vCPU、16 GB RAM、300 GB HDD</li><li>[Microsoft .NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[Microsoft Visual C++ Redistributable for Visual Studio 2012](https://aka.ms/vcplusplus-redistributable)</li><li>从此服务器的 443 端口通过 Internet 访问 Azure (*.blob.core.chinacloudapi.cn)<br />[这是可选的。 你可以选择在手动生成报告期间提供可用带宽。]</li><li>Azure 存储帐户</li><li>服务器上的管理员访问权限</li><li>至少 100 GB 的可用磁盘空间（假定有 1000 个 VM，每个平均包含 3 个磁盘，分析时间为 30 天）</li><li>必须将从其运行 Azure Site Recovery 部署规划器工具的 VM 添加到包含所有 Hyper-V 服务器的 TrustedHosts 列表。</li><li>必须将要分析的所有 Hyper-V 服务器都添加到要运行该工具的客户端 VM 的 TrustedHosts 列表中。 [详细了解如何将服务器添加到 TrustedHosts 列表中](#steps-to-add-servers-into-trustedhosts-list)。 </li><li> 应从客户端上的 PowerShell 或命令行控制台使用管理特权运行此工具</ul></ul>|
 | 报告生成 | 装有 Microsoft Excel 2013 或更高版本的 Windows 电脑或 Windows Server |
 | 用户权限 | 在“获取 VM 列表”和“分析”操作过程中用于访问 Hyper-V 群集/Hyper-V 主机的管理员帐户。<br />所有需要进行分析的主机都应有一个使用相同凭据（即用户名和密码）的域管理员帐户|
 
@@ -124,11 +124,11 @@ E:\ASR Deployment Planner_v2.3\ASRDeploymentPlanner.exe
 * 如果最新版不包含分析修补程序且分析已在当前版本的 Planner 上进行，请继续该分析。
 * 如果最新版本不包含分析修补程序，则建议停止在当前版本上进行分析，使用新版本重新开始分析。
 
-  >[!NOTE]
-  >
-  >开始使用新版本进行分析以后，请传递相同的输出目录路径，以便工具将配置文件数据追加到现有文件。 将使用完整的分析数据集来生成报告。 如果传递不同的输出目录，则会创建新文件，生成报告时不能使用旧的分析数据。
-  >
-  >每个新的 Deployment Planner 都是 .zip 文件的累积更新。 不需将最新文件复制到旧文件夹。 可以创建和使用新文件夹。
+    >[!NOTE]
+    >
+    >注意开始使用新版本进行分析以后，请传递相同的输出目录路径，以便工具将配置文件数据追加到现有文件。 将使用完整的分析数据集来生成报告。 如果传递不同的输出目录，则会创建新文件，生成报告时不能使用旧的分析数据。
+    >
+    >每个新的 Deployment Planner 都是 .zip 文件的累积更新。 不需将最新文件复制到旧文件夹。 可以创建和使用新文件夹。
 
 ## <a name="version-history"></a>版本历史记录
 最新的 Azure Site Recovery 部署规划器工具版本为 2.5。

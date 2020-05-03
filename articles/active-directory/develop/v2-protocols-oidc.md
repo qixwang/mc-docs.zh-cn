@@ -2,27 +2,22 @@
 title: OpenID Connect 协议 - Microsoft 标识平台 | Azure
 description: 使用 OpenID Connect 身份验证协议的 Microsoft 标识平台实现生成 Web 应用程序。
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
-ms.assetid: a4875997-3aac-4e4c-b7fe-2b4b829151ce
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/06/2020
+ms.date: 04/23/2020
 ms.author: v-junlch
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: d8844e82b8925229b24a0f01aa13ab224be1bc0e
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: af2788e697deb38b57696a60a68a1417351396a0
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79291022"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126392"
 ---
 # <a name="microsoft-identity-platform-and-openid-connect-protocol"></a>Microsoft 标识平台和 OpenID Connect 协议
 
@@ -31,7 +26,7 @@ OpenID Connect 是构建在 OAuth 2.0 基础之上的身份验证协议，可用
 > [!NOTE]
 > Microsoft 标识平台终结点并非支持所有 Azure Active Directory (Azure AD) 方案和功能。 若要确定是否应使用 Microsoft 标识平台终结点，请阅读 [Microsoft 标识平台限制](azure-ad-endpoint-comparison.md)。
 
-[OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) 扩展了 OAuth 2.0 *授权*协议，使其可用作*身份验证*协议，这样一来，用户可使用 OAuth 执行单一登录。 OpenID Connect 引入了 *ID 令牌*的概念，这是一种安全令牌，可让客户端验证用户的标识。 ID 令牌还可获取有关用户的基本配置文件信息。 由于 OpenID Connect 扩展了 OAuth 2.0，因此应用可安全获取访问令牌，访问令牌可用于访问[授权服务器](active-directory-v2-protocols.md#the-basics)保护的资源。  Microsoft 标识平台终结点还允许向 Azure AD 注册了的第三方应用为受保护资源（例如 Web API）颁发访问令牌。 有关如何设置应用程序以颁发访问令牌的详细信息，请参阅[如何向 Microsoft 标识平台终结点注册应用](quickstart-register-app.md)。 如果要构建在服务器上托管并通过浏览器访问的 [Web 应用程序](v2-app-types.md#web-apps)，建议使用 OpenID Connect。
+[OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) 扩展了 OAuth 2.0 *授权*协议，使其可用作*身份验证*协议，这样一来，用户可使用 OAuth 执行单一登录。 OpenID Connect 引入了 *ID 令牌*的概念，这是一种安全令牌，可让客户端验证用户的标识。 ID 令牌还可获取有关用户的基本配置文件信息。 由于 OpenID Connect 扩展了 OAuth 2.0，因此应用可安全获取访问令牌，访问令牌可用于访问[授权服务器](active-directory-v2-protocols.md#the-basics)保护的资源。  Microsoft 标识平台终结点还允许注册到 Azure AD 的第三方应用颁发受保护资源（例如 Web API）的访问令牌。 有关如何设置应用程序以颁发访问令牌的详细信息，请参阅[如何向 Microsoft 标识平台终结点注册应用](quickstart-register-app.md)。 如果要构建在服务器上托管并通过浏览器访问的 [Web 应用程序](v2-app-types.md#web-apps)，建议使用 OpenID Connect。
 
 ## <a name="protocol-diagram-sign-in"></a>协议图：登录
 
@@ -51,7 +46,7 @@ https://login.partner.microsoftonline.cn/{tenant}/v2.0/.well-known/openid-config
 
 `{tenant}` 可取以下四个值之一：
 
-| Value | 说明 |
+| 值 | 说明 |
 | --- | --- |
 | `common` |在 Azure AD 中具有工作或学校帐户的用户可以登录到应用程序。 |
 | `organizations` |只有在 Azure AD 中具有工作或学校帐户的用户才能登录到应用程序。 |
@@ -110,12 +105,12 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 | 参数 | 条件 | 说明 |
 | --- | --- | --- |
-| `tenant` | 必须 | 可以在请求路径中使用 `{tenant}` 值来控制谁可以登录到应用程序。 可以使用的值包括 `common`、`organizations`、`consumers` 和租户标识符。 有关详细信息，请参见[协议基础知识](active-directory-v2-protocols.md#endpoints)。 |
-| `client_id` | 必须 | [Azure 门户 - 应用注册](https://portal.azure.cn/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)体验分配给应用的**应用程序（客户端）ID**。 |
-| `response_type` | 必须 | 必须包含 OpenID Connect 登录的 `id_token` 。 还可能包含其他 `response_type` 值，例如 `code`。 |
+| `tenant` | 必需 | 可以在请求路径中使用 `{tenant}` 值来控制谁可以登录到应用程序。 可以使用的值包括 `common`、`organizations`、`consumers` 和租户标识符。 有关详细信息，请参见[协议基础知识](active-directory-v2-protocols.md#endpoints)。 |
+| `client_id` | 必需 | [Azure 门户 - 应用注册](https://portal.azure.cn/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)体验分配给应用的**应用程序（客户端）ID**。 |
+| `response_type` | 必需 | 必须包含 OpenID Connect 登录的 `id_token` 。 还可能包含其他 `response_type` 值，例如 `code`。 |
 | `redirect_uri` | 建议 | 应用的重定向 URI，应用可在其中发送和接收身份验证响应。 必须完全符合在门户中注册的重定向 URI 之一，否则必须是编码的 URL。 如果不存在该 URL，终结点将随机选取一个已注册的 redirect_uri，以将用户发回到其中。 |
-| `scope` | 必须 | 范围的空格分隔列表。 对于 OpenID Connect，它必须包含范围 `openid`，该范围在同意 UI 中会转换为“将你登录”权限。 也可以在此请求中包含其他范围来请求许可。 |
-| `nonce` | 必须 | 由应用程序生成且包含在请求中的值，以声明方式包含在生成的 id_token 值中。 应用可以验证此值，以缓解令牌重放攻击。 该值通常是随机化的唯一字符串，可用于标识请求的来源。 |
+| `scope` | 必需 | 范围的空格分隔列表。 对于 OpenID Connect，它必须包含范围 `openid`，该范围在同意 UI 中会转换为“将你登录”权限。 也可以在此请求中包含其他范围来请求许可。 |
+| `nonce` | 必需 | 由应用程序生成且包含在请求中的值，以声明方式包含在生成的 id_token 值中。 应用可以验证此值，以缓解令牌重放攻击。 该值通常是随机化的唯一字符串，可用于标识请求的来源。 |
 | `response_mode` | 建议 | 指定将生成的授权代码发回给应用时应该使用的方法。 可以是 `form_post` 或 `fragment`。 对于 Web 应用程序，建议使用 `response_mode=form_post`，确保以最安全的方式将令牌传输到应用程序。 |
 | `state` | 建议 | 同样随令牌响应返回的请求中所包含的值。 可以是所需的任何内容的字符串。 随机生成的唯一值通常用于 [防范跨站点请求伪造攻击](https://tools.ietf.org/html/rfc6749#section-10.12)。 该状态还用于在身份验证请求出现之前，在应用中编码用户的状态信息，例如用户过去所在的页面或视图。 |
 | `prompt` | 可选 | 表示需要的用户交互类型。 目前仅有的有效值为 `login`、`none` 和 `consent`。 `prompt=login` 声明强制用户在该请求上输入凭据，从而使单一登录无效。 而 `prompt=none` 声明完全相反。 此声明确保不会向用户显示任何交互提示。 如果请求无法通过单一登录以无提示方式完成，则 Microsoft 标识平台终结点将返回一个错误。 `prompt=consent` 声明将在用户登录后触发 OAuth 同意对话框。 该对话框要求用户向应用授予权限。 |
@@ -226,8 +221,8 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e        // Your registered Applica
 &response_type=id_token%20code
 &redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F       // Your registered redirect URI, URL encoded
 &response_mode=form_post                              // 'form_post' or 'fragment'
-&scope=openid%20                                      // Include both 'openid' and scopes that your app needs  
-offline_access%20                                         
+&scope=openid%20                                      // Include both 'openid' and scopes that your app needs
+offline_access%20
 https%3A%2F%2Fmicrosoftgraph.chinacloudapi.cn%2Fuser.read
 &state=12345                                          // Any value, provided by your app
 &nonce=678910                                         // Any value, provided by your app
@@ -278,4 +273,3 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 
 获取授权代码和 ID 令牌之后，可将用户登录，并代表用户获取访问令牌。 要将用户登录，必须 [完全根据说明](id-tokens.md#validating-an-id_token)验证 ID 令牌。 若要获取访问令牌，请遵循 [OAuth 代码流文档](v2-oauth2-auth-code-flow.md#request-an-access-token)中所述的步骤。
 
-<!-- Update_Description: wording update -->

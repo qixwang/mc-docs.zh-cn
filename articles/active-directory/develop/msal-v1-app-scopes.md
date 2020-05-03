@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 03/20/2020
+ms.date: 04/22/2020
 ms.author: v-junlch
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: e1a3b9b51d33b5451307f44c55ea1daf49f5f552
-ms.sourcegitcommit: 6568c59433d7e80ab06e9fe76d4791f761ed6775
+ms.openlocfilehash: 94a696e0d8c94b03772bde70b557f06a5396aa7e
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80243147"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126496"
 ---
 # <a name="scopes-for-a-web-api-accepting-v10-tokens"></a>接受 v1.0 令牌中的 Web API 的范围
 
@@ -85,4 +85,3 @@ var scopes = [ ResourceId + "/.default"];
 
 使用客户端凭据流时，要传递的范围也是 `/.default`。 这会让 Azure AD 知道管理员在应用程序注册中许可的所有应用级权限。
 
-<!-- Update_Description: wording update -->

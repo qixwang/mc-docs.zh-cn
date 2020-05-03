@@ -11,12 +11,12 @@ ms.topic: include
 origin.date: 10/10/2019
 ms.date: 03/16/2020
 ms.author: v-tawe
-ms.openlocfilehash: e90c7e90fc4986e28c6890711c853955487359d3
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: e1c907b32f7fa361bd8e207394c0270432788e5a
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80151661"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82151020"
 ---
 本指南介绍如何安装用于 C# 通用 Windows 平台 (UWP) 的[语音 SDK](~/articles/cognitive-services/speech-service/speech-sdk.md)。 如果只是需要包名称以便自行开始，请在 NuGet 控制台中运行 `Install-Package Microsoft.CognitiveServices.Speech`。
 
@@ -30,6 +30,7 @@ ms.locfileid: "80151661"
 本快速入门需要：
 
 * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)（版本不限）
+* 需要语音 SDK 版本 1.10.0 或更高版本。
 
 ## <a name="create-a-visual-studio-project-and-install-the-speech-sdk"></a>创建 Visual Studio 项目并安装语音 SDK
 

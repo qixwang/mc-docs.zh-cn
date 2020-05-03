@@ -1,34 +1,30 @@
 ---
-title: 快速入门：从麦克风中识别语音，C++ (macOS) - 语音服务
-titleSuffix: Azure Cognitive Services
-services: cognitive-services
-author: wolfma61
-manager: nitinme
+author: trevorbye
 ms.service: cognitive-services
-ms.subservice: speech-service
 ms.topic: include
-origin.date: 12/17/2019
-ms.date: 03/16/2020
+origin.date: 04/03/2019
+ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: 16c8081b7bc8748f7ed540fb9e7da9c1fad58ea6
-ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
+ms.openlocfilehash: 858a74c36083bdf01d2d34add49d79e83002e611
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80151635"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82150774"
 ---
 ## <a name="prerequisites"></a>先决条件
 
 准备工作：
 
 > [!div class="checklist"]
-> * [创建一个 Azure 搜索资源](../../../../get-started.md)
-> * [设置开发环境并创建空项目](../../../../quickstarts/setup-platform.md?tabs=macos)
+> * <a href="https://portal.azure.cn/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">创建 Azure 语音资源<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+> * [设置开发环境并创建空项目](../../../../quickstarts/setup-platform.md?tabs=macos&pivots=programming-language-cpp)
 > * 请确保你有权访问麦克风，以便进行音频捕获
+> * 需要语音 SDK 版本 1.10.0 或更高版本。
 
-## <a name="add-sample-code"></a>添加示例代码
+## <a name="source-code"></a>源代码
 
-1. 创建一个名为 `helloworld.cpp` 的 C++ 源文件，并将以下代码粘贴到其中。
+创建一个名为 *helloworld.cpp* 的 C++ 源文件，并将以下代码粘贴到其中。
 
    ```cpp
    #include <iostream> // cin, cout
@@ -38,9 +34,10 @@ ms.locfileid: "80151635"
     using namespace Microsoft::CognitiveServices::Speech;
     
     void recognizeSpeech() {
-        // Creates an instance of a speech config with specified host and subscription key.
+        // Creates an instance of a speech config with specified subscription key and service region.
         // Replace with your own subscription key and service region (e.g., "chinaeast2").
-        auto config = SpeechConfig::FromHost("wss://YourServiceRegion.stt.speech.azure.cn/", "YourSubscriptionKey");
+        auto config = SpeechConfig::FromSubscription("YourSubscriptionKey", "YourServiceRegion");
+
     
         // Creates a speech recognizer
         auto recognizer = SpeechRecognizer::FromConfig(config);
@@ -77,19 +74,18 @@ ms.locfileid: "80151635"
     }
     ```
 
-1. 在此新文件中，将字符串 `YourSubscriptionKey` 替换为你的语音服务订阅密钥。
+[!INCLUDE [replace key and region](../replace-key-and-region.md)]
 
-1. 将字符串 `YourServiceRegion` 替换为与订阅关联的[区域](~/articles/cognitive-services/Speech-Service/regions.md)的“区域标识符”（例如，对于试用版订阅，为 `chinaeast2`）。 
+## Code explanation
+
+[!INCLUDE [code explanation](../code-explanation.md)]
+
+## Build the app
 
 > [!NOTE]
-> 语音 SDK 将默认使用 en-us 作为语言进行识别。若要了解如何选择源语言，请参阅[指定语音转文本的源语言](../../../../how-to-specify-source-language.md)。
+> Make sure to enter the commands below as a _single command line_. The easiest way to do that is to copy the command by using the **Copy** button next to each command, and then paste it at your shell prompt.
 
-## <a name="build-the-app"></a>生成应用
-
-> [!NOTE]
-> 请确保将以下命令输入在单个命令行上。  执行该操作的最简单方法是使用每个命令旁边的“复制按钮”来复制命令，然后将其粘贴到 shell 提示符下。 
-
-* 运行以下命令以生成应用程序。
+* Run the following command to build the application.
 
   ```sh
   g++ helloworld.cpp -o helloworld --std=c++14 -F${SPEECHSDK_ROOT} -framework MicrosoftCognitiveServicesSpeech
@@ -118,4 +114,4 @@ ms.locfileid: "80151635"
 
 ## <a name="next-steps"></a>后续步骤
 
-[!INCLUDE [footer](./footer.md)]
+[!INCLUDE [Speech recognition basics](../../speech-to-text-next-steps.md)]

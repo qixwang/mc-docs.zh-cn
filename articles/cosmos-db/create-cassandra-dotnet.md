@@ -1,20 +1,20 @@
 ---
-title: 快速入门：将 Cassandra API 与 .NET 配合使用 - Azure Cosmos DB
+title: 快速入门 - 将 Cassandra API 与 .NET 配合使用 - Azure Cosmos DB
 description: 本快速入门介绍如何配合 Azure 门户 和 .NET 使用 Azure Cosmos DB Cassandra API 创建配置文件应用程序
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 author: rockboyfor
-ms.author: v-yeche
 ms.devlang: dotnet
 ms.topic: quickstart
 origin.date: 09/24/2018
-ms.date: 12/16/2019
-ms.openlocfilehash: 6fb89bfcf3551f614ed9cd5b0404193d212ae8a4
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 04/27/2020
+ms.author: v-yeche
+ms.openlocfilehash: 517b539eeb18c343f0178f56f88a238106e1e342
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292945"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134514"
 ---
 <!--Verify sucessfully-->
 # <a name="quickstart-build-a-cassandra-app-with-net-sdk-and-azure-cosmos-db"></a>快速入门：使用 .NET SDK 和 Azure Cosmos DB 构建 Cassandra 应用
@@ -182,3 +182,4 @@ Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服�
 > [将 Cassandra 数据导入 Azure Cosmos DB](cassandra-import-data.md)
 
 <!-- Update_Description: update meta properties, wording update, update link -->
+

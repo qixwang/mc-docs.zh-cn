@@ -1,30 +1,24 @@
 ---
-title: 适用于 Python 的 MSAL 中的自定义令牌缓存序列化 | Azure
+title: 自定义令牌缓存序列化 (MSAL Python) | Azure
 titleSuffix: Microsoft identity platform
 description: 了解如何序列化适用于 Python 的 MSAL 的令牌缓存
 services: active-directory
-documentationcenter: dev-center-name
 author: rayluo
-manager: henrikm
-editor: ''
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-origin.date: 11/13/2019
-ms.date: 11/25/2019
+ms.date: 04/22/2020
 ms.author: v-junlch
-ms.reviewer: navyasri.canumalla
+ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 62bde6158cb3294d664e1d6fcbf3731105c48883
-ms.sourcegitcommit: 9597d4da8af58009f9cef148a027ccb7b32ed8cf
+ms.openlocfilehash: 64379ae575b65733d111765e2dd0ced020435f1a
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74655470"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126497"
 ---
 # <a name="custom-token-cache-serialization-in-msal-for-python"></a>适用于 Python 的 MSAL 中的自定义令牌缓存序列化
 
@@ -32,7 +26,7 @@ ms.locfileid: "74655470"
 
 将令牌缓存序列化，使应用的不同会话都可以访问它的功能不是现成提供的。 这是因为，MSAL Python 可以在无法访问文件系统的应用类型（例如 Web 应用）中使用。 若要在 MSAL Python 应用中使用持久性的令牌缓存，必须提供自定义令牌缓存序列化。
 
-用于序列化令牌缓存的策略各不相同，具体取决于是针对公共客户端应用程序（桌面）还是机密客户端应用程序（Web 应用、Web API 或守护程序应用）编写序列化代码。
+用于序列化令牌缓存的策略各不相同，具体取决于是编写公共客户端应用程序（桌面）还是编写机密客户端应用程序（Web 应用、Web API 或守护程序应用）。
 
 ## <a name="token-cache-for-a-public-client-application"></a>公共客户端应用程序的令牌缓存
 

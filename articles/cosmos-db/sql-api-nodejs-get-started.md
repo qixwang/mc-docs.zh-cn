@@ -7,15 +7,15 @@ ms.subservice: cosmosdb-sql
 ms.devlang: nodejs
 ms.topic: tutorial
 origin.date: 08/06/2019
-ms.date: 10/28/2019
+ms.date: 04/27/2020
 ms.author: v-yeche
 Customer intent: As a developer, I want to build a Node.js console application to access and manage SQL API account resources in Azure Cosmos DB, so that customers can better use the service.
-ms.openlocfilehash: 7cf742f5e826c4c111c60cb1e1f1534713c78f26
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: f42606af59049e8389a4441e41ebd19cc1c1f888
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "72913214"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134691"
 ---
 # <a name="tutorial-build-a-nodejs-console-app-with-the-javascript-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>教程：使用 JavaScript SDK 生成 Node.js 控制台应用以管理 Azure Cosmos DB SQL API 数据
 
@@ -42,7 +42,7 @@ ms.locfileid: "72913214"
 
 请确保具有以下资源：
 
-* 有效的 Azure 帐户。 如果没有，可以注册 [Azure 免费试用版](https://www.azure.cn/pricing/1rmb-trial/)。 
+* 有效的 Azure 帐户。 如果没有，可以注册 [Azure 1 元人民币的试用订阅](https://www.azure.cn/pricing/1rmb-trial/)。 
 
   [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
@@ -99,95 +99,17 @@ ms.locfileid: "72913214"
 1. 复制 ```database```、```container``` 和 ```items``` 数据并将其粘贴到在其中设置了 ```config.endpoint``` 和 ```config.key``` 属性的 ```config``` 对象（见下）。 如果已有要在数据库中存储的数据，则可以使用 Azure Cosmos DB 中的数据迁移工具，而不是在此处定义数据。 config.js 文件应包含以下代码：
 
     ```javascript
-    var config = {}
+    // @ts-check
 
-    config.endpoint = '~your Azure Cosmos DB account endpoint uri here~'
-    config.key = '~your primary key here~'
+    const config = {
+      endpoint: "<Your Azure Cosmos account URI>",
+      key: "<Your Azure Cosmos account key>",
+      databaseId: "Tasks",
+      containerId: "Items",
+      partitionKey: { kind: "Hash", paths: ["/category"] }
+    };
 
-    config.database = {
-     id: 'FamilyDatabase'
-    }
-
-    config.container = {
-     id: 'FamilyContainer'
-    }
-
-    config.items = {
-     Andersen: {
-       id: 'Anderson.1',
-       Country: 'USA',
-       lastName: 'Andersen',
-       parents: [
-         {
-           firstName: 'Thomas'
-         },
-         {
-           firstName: 'Mary Kay'
-         }
-       ],
-       children: [
-         {
-           firstName: 'Henriette Thaulow',
-           gender: 'female',
-           grade: 5,
-           pets: [
-             {
-               givenName: 'Fluffy'
-             }
-           ]
-         }
-       ],
-       address: {
-         state: 'WA',
-         county: 'King',
-         city: 'Seattle'
-       }
-     },
-     Wakefield: {
-       id: 'Wakefield.7',
-       Country: 'Italy',
-       parents: [
-         {
-           familyName: 'Wakefield',
-           firstName: 'Robin'
-         },
-         {
-           familyName: 'Miller',
-           firstName: 'Ben'
-         }
-       ],
-       children: [
-         {
-           familyName: 'Merriam',
-           firstName: 'Jesse',
-           gender: 'female',
-           grade: 8,
-           pets: [
-             {
-               givenName: 'Goofy'
-             },
-             {
-               givenName: 'Shadow'
-             }
-           ]
-         },
-         {
-           familyName: 'Miller',
-           firstName: 'Lisa',
-           gender: 'female',
-           grade: 1
-         }
-       ],
-       address: {
-         state: 'NY',
-         county: 'Manhattan',
-         city: 'NY'
-       },
-       isRegistered: false
-     }
-    }
-
-    module.exports = config
+    module.exports = config;
 
     ```
 
@@ -220,7 +142,7 @@ ms.locfileid: "72913214"
     ```
 
 > [!Note]
-> 如果连接到 **Cosmos DB 模拟器**，请为节点进程禁用 SSL 验证：
+> 如果连接到 **Cosmos DB 模拟器**，请为节点进程禁用 TLS 验证：
 >   ```
 >   process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 >   const client = new CosmosClient({ endpoint, key });
@@ -535,7 +457,7 @@ Azure Cosmos DB 支持对存储在每个容器中的 JSON 文档进行各种查�
         ]
     };
 
-    const { resources } = await client.database(databaseId).container(containerId).items.query(querySpec, {enableCrossPartitionQuery:true}).fetchAll();
+    const { resources } = await client.database(databaseId).container(containerId).items.query(querySpec).fetchAll();
     for (var queryResult of resources) {
         let resultString = JSON.stringify(queryResult);
         console.log(`\tQuery returned ${resultString}\n`);
@@ -701,165 +623,82 @@ Azure Cosmos DB 支持删除 JSON 项。
 总起来看，代码应如下所示：
 
 ```javascript
-//@ts-check
-const CosmosClient = require('@azure/cosmos').CosmosClient
+// @ts-check
+const CosmosClient = require("@azure/cosmos").CosmosClient;
+const config = require("./config");
+const dbContext = require("./data/databaseContext");
 
-const config = require('./config')
-const url = require('url')
+const newItem = {
+  id: "3",
+  category: "fun",
+  name: "Cosmos DB",
+  description: "Complete Cosmos DB Node.js Quickstart ⚡",
+  isComplete: false
+};
 
-const endpoint = config.endpoint
-const key = config.key
+async function main() {
+  const { endpoint, key, databaseId, containerId } = config;
 
-const databaseId = config.database.id
-const containerId = config.container.id
-const partitionKey = { kind: 'Hash', paths: ['/Country'] }
+  const client = new CosmosClient({ endpoint, key });
 
-const client = new CosmosClient({ endpoint, key })
+  const database = client.database(databaseId);
+  const container = database.container(containerId);
 
-/**
- * Create the database if it does not exist
- */
-async function createDatabase() {
-  const { database } = await client.databases.createIfNotExists({
-    id: databaseId
-  })
-  console.log(`Created database:\n${database.id}\n`)
-}
+  // Make sure Tasks database is already setup. If not, create it.
+  await dbContext.create(client, databaseId, containerId);
 
-/**
- * Read the database definition
- */
-async function readDatabase() {
-  const { resource: databaseDefinition } = await client
-    .database(databaseId)
-    .read()
-  console.log(`Reading database:\n${databaseDefinition.id}\n`)
-}
+  try {
+    console.log(`Querying container: Items`);
 
-/**
- * Create the container if it does not exist
- */
-async function createContainer() {
-  const { container } = await client
-    .database(databaseId)
-    .containers.createIfNotExists(
-      { id: containerId, partitionKey },
-      { offerThroughput: 400 }
-    )
-  console.log(`Created container:\n${config.container.id}\n`)
-}
+    // query to return all items
+    const querySpec = {
+      query: "SELECT * from c"
+    };
 
-/**
- * Read the container definition
- */
-async function readContainer() {
-  const { resource: containerDefinition } = await client
-    .database(databaseId)
-    .container(containerId)
-    .read()
-  console.log(`Reading container:\n${containerDefinition.id}\n`)
-}
+    // read all items in the Items container
+    const { resources: items } = await container.items
+      .query(querySpec)
+      .fetchAll();
 
-/**
- * Create family item if it does not exist
- */
-async function createFamilyItem(itemBody) {
-  const { item } = await client
-    .database(databaseId)
-    .container(containerId)
-    .items.upsert(itemBody)
-  console.log(`Created family item with id:\n${itemBody.id}\n`)
-}
+    items.forEach(item => {
+      console.log(`${item.id} - ${item.description}`);
+    });
 
-/**
- * Query the container using SQL
- */
-async function queryContainer() {
-  console.log(`Querying container:\n${config.container.id}`)
+    /** Create new item
+     * newItem is defined at the top of this file
+     */
+    const { resource: createdItem } = await container.items.create(newItem);
 
-  // query to return all children in a family
-  const querySpec = {
-    query: 'SELECT VALUE r.children FROM root r WHERE r.lastName = @lastName',
-    parameters: [
-      {
-        name: '@lastName',
-        value: 'Andersen'
-      }
-    ]
-  }
+    console.log(`\r\nCreated new item: ${createdItem.id} - ${createdItem.description}\r\n`);
 
-  const { resources: results } = await client
-    .database(databaseId)
-    .container(containerId)
-    .items.query(querySpec)
-    .fetchAll()
-  for (var queryResult of results) {
-    let resultString = JSON.stringify(queryResult)
-    console.log(`\tQuery returned ${resultString}\n`)
+    /** Update item
+     * Pull the id and partition key value from the newly created item.
+     * Update the isComplete field to true.
+     */
+    const { id, category } = createdItem;
+
+    createdItem.isComplete = true;
+
+    const { resource: updatedItem } = await container
+      .item(id, category)
+      .replace(createdItem);
+
+    console.log(`Updated item: ${updatedItem.id} - ${updatedItem.description}`); 
+    console.log(`Updated isComplete to ${updatedItem.isComplete}\r\n`);
+
+    /**
+     * Delete item
+     * Pass the id and partition key value to delete the item
+     */
+    const { resource: result } = await container.item(id, category).delete();
+    console.log(`Deleted item with id: ${id}`);
+
+  } catch (err) {
+    console.log(err.message);
   }
 }
 
-/**
- * Replace the item by ID.
- */
-async function replaceFamilyItem(itemBody) {
-  console.log(`Replacing item:\n${itemBody.id}\n`)
-  // Change property 'grade'
-  itemBody.children[0].grade = 6
-  const { item } = await client
-    .database(databaseId)
-    .container(containerId)
-    .item(itemBody.id, itemBody.Country)
-    .replace(itemBody)
-}
-
-/**
- * Delete the item by ID.
- */
-async function deleteFamilyItem(itemBody) {
-  await client
-    .database(databaseId)
-    .container(containerId)
-    .item(itemBody.id, itemBody.Country)
-    .delete(itemBody)
-  console.log(`Deleted item:\n${itemBody.id}\n`)
-}
-
-/**
- * Cleanup the database and collection on completion
- */
-async function cleanup() {
-  await client.database(databaseId).delete()
-}
-
-/**
- * Exit the app with a prompt
- * @param {string} message - The message to display
- */
-function exit(message) {
-  console.log(message)
-  console.log('Press any key to exit')
-  process.stdin.setRawMode(true)
-  process.stdin.resume()
-  process.stdin.on('data', process.exit.bind(process, 0))
-}
-
-createDatabase()
-  .then(() => readDatabase())
-  .then(() => createContainer())
-  .then(() => readContainer())
-  .then(() => createFamilyItem(config.items.Andersen))
-  .then(() => createFamilyItem(config.items.Wakefield))
-  .then(() => queryContainer())
-  .then(() => replaceFamilyItem(config.items.Andersen))
-  .then(() => queryContainer())
-  .then(() => deleteFamilyItem(config.items.Andersen))
-  .then(() => {
-    exit(`Completed successfully`)
-  })
-  .catch(error => {
-    exit(`Completed with error ${JSON.stringify(error)}`)
-  })
+main();
 
 ```
 

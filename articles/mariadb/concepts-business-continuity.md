@@ -1,5 +1,5 @@
 ---
-title: 了解 Azure Database for MariaDB 中的业务连续性
+title: 业务连续性 - Azure Database for MariaDB
 description: 使用 Azure Database for MariaDB 服务时，了解业务连续性（时间点还原、数据中心服务中断、异地还原）。
 author: WenJason
 ms.author: v-jay
@@ -7,12 +7,12 @@ ms.service: mariadb
 ms.topic: conceptual
 origin.date: 09/24/2018
 ms.date: 11/04/2019
-ms.openlocfilehash: 6807ed3114e8c7562b19f47bd0c6d3539ce62b3d
-ms.sourcegitcommit: f643ddf75a3178c37428b75be147c9383384a816
+ms.openlocfilehash: 578c8f5c4fd82dafdedd9c37fcf44fce69ad8889
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73191576"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82127061"
 ---
 # <a name="understand-business-continuity-in-azure-database-for-mariadb"></a>了解 Azure Database for MariaDB 中的业务连续性
 

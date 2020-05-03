@@ -2,19 +2,19 @@
 title: Azure Cosmos DB 表 API .NET SDK 和资源
 description: 了解有关 Azure Cosmos DB 表 API 的全部信息。
 author: rockboyfor
-ms.author: v-yeche
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 origin.date: 08/17/2018
-ms.date: 02/10/2020
-ms.openlocfilehash: 86cd9d35686eb0e8dc50f2681401fa19cbc20295
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 04/27/2020
+ms.author: v-yeche
+ms.openlocfilehash: 7c6ce0dc29c00a3b49f2db3a50346bf017e45a43
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540082"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134899"
 ---
 <!--Verify sucessfully-->
 # <a name="azure-cosmos-db-table-net-api-download-and-release-notes"></a>Azure Cosmos DB 表 .NET API：下载和发行说明
@@ -28,8 +28,8 @@ ms.locfileid: "77540082"
 
 |   |   |
 |---|---|
-|**SDK 下载**|[NuGet](https://aka.ms/acdbtablenuget)|
-|**快速入门**|[Azure Cosmos DB: Build an app with .NET and the Table API](create-table-dotnet.md)（Azure Cosmos DB：使用 .NET 和表 API 生成应用）|
+|**SDK 下载**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table)|
+|**快速入门**|[Azure Cosmos DB：使用 .NET 和表 API 生成应用](create-table-dotnet.md)|
 |**教程**|[Azure Cosmos DB：在 .NET 中使用表 API 进行开发](tutorial-develop-table-dotnet.md)|
 |**当前受支持的框架**|[Microsoft .NET Framework 4.5.1](https://www.microsoft.com/download/details.aspx?id=40779)|
 
@@ -61,7 +61,7 @@ Unable to resolve dependency 'Microsoft.Azure.Storage.Common'. Source(s) used: '
 
 * 使用首选 NuGet 包管理工具先安装 Microsoft.Azure.Storage.Common NuGet 包，再安装 Microsoft.Azure.CosmosDB.Table。
 
-## <a name="faq"></a>常见问题解答
+## <a name="faq"></a>常见问题
 
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
@@ -69,4 +69,4 @@ Unable to resolve dependency 'Microsoft.Azure.Storage.Common'. Source(s) used: '
 
 若要了解有关 Azure Cosmos DB 表 API 的详细信息，请参阅 [Azure Cosmos DB 表 API 简介](table-introduction.md)。
 
-<!--Update_Description: wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

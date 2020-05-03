@@ -1,5 +1,5 @@
 ---
-title: 创建 Azure 虚拟网络对等互连 - 资源管理器 - 不同订阅
+title: 创建 VNet 对等互连 - 不同订阅
 titlesuffix: Azure Virtual Network
 description: 了解如何在通过不同 Azure 订阅中的资源管理器创建的虚拟网络间创建虚拟网络对等互连。
 services: virtual-network
@@ -11,20 +11,20 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 04/09/2019
-ms.date: 01/13/2020
+ms.date: 04/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 4b25d351599733e78d61e8477568c930b0a6a570
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: f57680d441a9c146b9cd850528b2b8d2b93f085f
+ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79293342"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82093350"
 ---
 # <a name="create-a-virtual-network-peering---resource-manager-different-subscriptions"></a>创建虚拟网络对等互连 - 资源管理器，不同的订阅
 
 本教程介绍如何在通过资源管理器创建的虚拟网络间创建虚拟网络对等互连。 虚拟网络位于不同订阅。 在两个虚拟网络之间建立对等互连可让不同虚拟网络中的资源以相同的带宽和延迟彼此通信，就像这些资源位于同一个虚拟网络中一样。 了解有关[虚拟网络对等互连](virtual-network-peering-overview.md)的详细信息。
 
-创建虚拟网络对等互连的步骤有所不同，具体取决于虚拟网络是否位于相同订阅，以及创建虚拟网络的 [ Azure 部署模型](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fvirtual-network%2ftoc.json)。 选择下表中的方案，了解如何采用其他方案创建虚拟网络对等互连：
+创建虚拟网络对等互连的步骤有所不同，具体取决于虚拟网络是否位于相同订阅，以及创建虚拟网络的 [ Azure 部署模型](../azure-resource-manager/management/deployment-models.md?toc=%2fvirtual-network%2ftoc.json)。 选择下表中的方案，了解如何采用其他方案创建虚拟网络对等互连：
 
 |Azure 部署模型  | Azure 订阅  |
 |--------- |---------|

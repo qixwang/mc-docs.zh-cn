@@ -1,5 +1,5 @@
 ---
-title: 教程：使用 Azure Cosmos DB JavaScript SDK 构建 Node.js Web 应用以管理 SQL API 数据
+title: 教程 - 使用 Azure Cosmos DB JavaScript SDK 构建 Node.js Web 应用以管理 SQL API 数据
 description: 此 Node.js 教程探讨了如何使用 Azure Cosmos DB 通过在 Azure 应用服务的 Web 应用功能中托管的 Node.js Express Web 应用程序存储和访问数据。
 author: rockboyfor
 ms.service: cosmos-db
@@ -7,15 +7,15 @@ ms.subservice: cosmosdb-sql
 ms.devlang: nodejs
 ms.topic: tutorial
 origin.date: 11/05/2019
-ms.date: 02/10/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
 Customer intent: As a developer, I want to build a Node.js web application to access and manage SQL API account resources in Azure Cosmos DB, so that customers can better use the service.
-ms.openlocfilehash: 9d5467bb4dbc7a480408973fc7033bd40adced14
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 8da90cf2b90a5aafa95d91bf932873aa6cdb3b6c
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77028738"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134694"
 ---
 # <a name="tutorial-build-a-nodejs-web-app-using-the-javascript-sdk-to-manage-a-sql-api-account-in-azure-cosmos-db"></a>教程：使用 JavaScript SDK 生成 Node.js Web 应用，以便在 Azure Cosmos DB 中管理 SQL API 帐户 
 
@@ -87,7 +87,7 @@ ms.locfileid: "77028738"
     npm start
     ```
 
-1. 在浏览器中导航到 [http://localhost:3000](http://localhost:3000) 即可查看新应用程序。
+1. 在浏览器中导航到 `http://localhost:3000` 即可查看新应用程序。
 
     ![了解 Node.js - 浏览器窗口中 Hello World 应用程序的屏幕截图](./media/sql-api-nodejs-application/cosmos-db-node-js-express.png)
 
@@ -374,9 +374,9 @@ ms.locfileid: "77028738"
     
 2. 打开 **views** 文件夹中的 **layout.jade** 文件，将内容替换为以下代码：
 
-    ```html
-    doctype html
-    html
+   ```html
+   doctype html
+   html
      head
        title= title
        link(rel='stylesheet', href='//ajax.aspnetcdn.com/ajax/bootstrap/3.3.2/css/bootstrap.min.css')
@@ -388,7 +388,7 @@ ms.locfileid: "77028738"
        block content
        script(src='//ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.2.min.js')
        script(src='//ajax.aspnetcdn.com/ajax/bootstrap/3.3.2/bootstrap.min.js')
-    ```
+   ```
 
     此代码会告知 **Jade** 引擎为应用程序呈现某些 HTML，并创建名为 **content** 的**块**，这样我们就可以在其中提供内容页面的布局。 保存并关闭 **layout.jade** 文件。
 
@@ -499,4 +499,4 @@ ms.locfileid: "77028738"
 [Git]: https://git-scm.com/
 [GitHub]: https://github.com/Azure-Samples/azure-cosmos-db-sql-api-nodejs-todo-app
 
-<!-- Update_Description: update meta properties, wording update  -->
+<!-- Update_Description: update meta properties, wording update, update link -->

@@ -5,15 +5,15 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 09/13/2019
-ms.date: 02/10/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
 ms.custom: query-reference
-ms.openlocfilehash: 9571584ac477eec1d09eac19fae6046128fa5b12
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: a27a5670a37f42ee46b3d37a8416fac99f89919d
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77028660"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134663"
 ---
 # <a name="floor-azure-cosmos-db"></a>FLOOR (Azure Cosmos DB)
  返回小于或等于指定数值表达式的最大整数。  
@@ -27,11 +27,11 @@ FLOOR (<numeric_expr>)
 ## <a name="arguments"></a>参数
 
 *numeric_expr*  
-  为数值表达式。  
+  是一个数值表达式。  
 
 ## <a name="return-types"></a>返回类型
 
-  返回数值表达式。  
+  返回一个数值表达式。  
 
 ## <a name="examples"></a>示例
 
@@ -41,11 +41,15 @@ FLOOR (<numeric_expr>)
 SELECT FLOOR(123.45) AS fl1, FLOOR(-123.45) AS fl2, FLOOR(0.0) AS fl3  
 ```  
 
- 下面是结果集：  
+ 下面是结果集。  
 
 ```json
 [{fl1: 123, fl2: -124, fl3: 0}]  
-```  
+```
+
+## <a name="remarks"></a>备注
+
+此系统函数将从[范围索引](index-policy.md#includeexclude-strategy)中获益。
 
 ## <a name="next-steps"></a>后续步骤
 

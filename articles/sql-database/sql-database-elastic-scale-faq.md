@@ -1,5 +1,5 @@
 ---
-title: Azure SQL 弹性缩放常见问题 | Microsoft Docs
+title: 弹性缩放常见问题解答
 description: 有关 Azure SQL 数据库弹性缩放的常见问题。
 services: sql-database
 ms.service: sql-database
@@ -10,15 +10,14 @@ ms.topic: conceptual
 author: WenJason
 ms.author: v-jay
 ms.reviewer: ''
-manager: digimobile
 origin.date: 01/25/2019
-ms.date: 02/25/2019
-ms.openlocfilehash: 04277d99a02958bc781c0415249a9c2365f7e6d2
-ms.sourcegitcommit: 5ea744a50dae041d862425d67548a288757e63d1
+ms.date: 04/27/2020
+ms.openlocfilehash: cb58be2b99d436ef3e92cf0fc78dcd6df30cdcba
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56663626"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126996"
 ---
 # <a name="elastic-database-tools-frequently-asked-questions-faq"></a>弹性数据库工具常见问题解答 (FAQ)
 
@@ -44,7 +43,7 @@ ms.locfileid: "56663626"
 
 ## <a name="i-have-questions-about-using-elastic-database-tools-how-do-i-get-them-answered"></a>我在使用弹性数据库工具方面存在疑问，如何才能获得解答
 
-请在 [Azure SQL 数据库论坛](https://social.msdn.microsoft.com/Forums/zh-cn/home?forum=ssdsgetstarted)上联系我们。
+请在 [SQL 数据库论坛](https://social.msdn.microsoft.com/Forums/zh-cn/home?forum=ssdsgetstarted)上联系我们。
 
 ## <a name="when-i-get-a-database-connection-using-a-sharding-key-i-can-still-query-data-for-other-sharding-keys-on-the-same-shard--is-this-by-design"></a>当使用分片键建立数据库连接的同时，仍然可以对同一分片上的其他分片键查询数据。  这是设计使然吗
 

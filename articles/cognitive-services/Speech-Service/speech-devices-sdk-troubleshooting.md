@@ -11,14 +11,17 @@ ms.topic: conceptual
 origin.date: 07/05/2019
 ms.date: 01/13/2020
 ms.author: v-tawe
-ms.openlocfilehash: a358c873786db542f51f7be59499e08533c67b5b
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: bfd9ab5af7978b8b44aa340bbd2ed819f116a957
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75630772"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82127009"
 ---
 # <a name="troubleshoot-the-speech-devices-sdk"></a>排查语音设备 SDK 问题
+
+> [!IMPORTANT]
+> 需要语音 SDK 版本 1.10.0 或更高版本。
 
 本文提供的信息可帮助你解决在使用语音设备 SDK 时可能遇到的问题。
 

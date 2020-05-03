@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell 脚本示例 - 配置 IPv6 虚拟网络终结点
+title: Azure PowerShell 脚本示例 - 配置 IPv6 终结点
 titlesuffix: Azure Virtual Network
 description: 使用 Powershell 在 Azure 虚拟网络中启用 IPv6 终结点
 services: virtual-network
@@ -11,14 +11,14 @@ ms.devlang: NA
 ms.topic: article
 ms.workload: infrastructure-services
 origin.date: 07/15/2019
-ms.date: 12/02/2019
+ms.date: 04/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: a5f73a6b0e2edce8df38329956c94ca4b02b6d0f
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+ms.openlocfilehash: c4a721c05ee9ddfa3ea08842502b147dff497b19
+ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
-ms.locfileid: "74658174"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82093415"
 ---
 # <a name="configure-ipv6-endpoints-in-virtual-network-script-sample"></a>在虚拟网络中配置 IPv6 终结点的脚本示例
 

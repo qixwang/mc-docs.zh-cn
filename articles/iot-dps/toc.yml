@@ -103,7 +103,9 @@
       href: concepts-tpm-attestation.md
     - name: 对称密钥证明
       href: concepts-symmetric-key-attestation.md
-- name: 操作方法指南
+    - name: 设备制造商的安全实践
+      href: concepts-device-oem-security-practices.md
+- name: 操作指南
   items:
     - name: 将 MXChip IoT DevKit 连接到 IoT 中心
       href: how-to-connect-mxchip-iot-devkit.md
@@ -159,7 +161,7 @@
   items:
     - name: REST API
       href: /rest/api/iot-dps
-    - name: 资源管理器模板
+    - name: Resource Manager 模板
       href: 'https://docs.microsoft.com/azure/templates/microsoft.devices/deviceprovisioning-allversions'
     - name: 适用于 C 的 Azure IoT SDK
       href: 'https://github.com/Azure/azure-iot-sdk-c'
@@ -219,7 +221,7 @@
       href: 'https://www.azure.cn/pricing/calculator/'
     - name: 服务更新
       href: 'https://updates.azure.cn'
-    - name: 堆栈溢出
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-iot-hub'
     - name: 技术案例研究
       href: 'https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured'

@@ -1,19 +1,19 @@
 ---
-title: 使用 Azure Cosmos DB 的 API for MongoDB 和 Golang SDK 的控制台应用
+title: 使用 Azure Cosmos DB API for MongoDB 和 Golang SDK 的控制台应用
 description: 演示一个 Golang 代码示例，可以参考该示例使用 Azure Cosmos DB 的用于 MongoDB 的 API 进行连接和查询。
 author: rockboyfor
-ms.author: v-yeche
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: quickstart
 origin.date: 12/26/2018
-ms.date: 02/10/2020
-ms.openlocfilehash: 774aaddf48402d976105538c23c4928b3c6920d5
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 04/27/2020
+ms.author: v-yeche
+ms.openlocfilehash: 004b5d3c06eb3e457b2ab7bac03aa41a9c75a5e9
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "76980552"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134960"
 ---
 # <a name="quickstart-build-a-console-app-using-azure-cosmos-dbs-api-for-mongodb-and-golang-sdk"></a>快速入门：使用 Azure Cosmos DB 的用于 MongoDB 的 API 和 Golang SDK 生成控制台应用
 
@@ -26,7 +26,7 @@ ms.locfileid: "76980552"
 > * [Golang](create-mongodb-golang.md)
 >  
 
-Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服务。 可快速创建和查询文档、键/值和图形数据库，所有这些都受益于 Cosmos DB 核心的多区域分布和水平缩放功能。
+Azure Cosmos DB 是 Azure 提供的多区域分布式多模型数据库服务。 可快速创建和查询文档、键/值和图形数据库，所有这些都受益于 Cosmos DB 核心的多区域分布和水平缩放功能。
 
 <!-- Notice: 全球分布 to 多个区域分布 -->
 <!-- Notice: global to multiple-region -->
@@ -97,7 +97,7 @@ Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服�
 
 ### <a name="connecting-the-go-app-to-cosmos-db"></a>将 Go 应用连接到 Cosmos DB
 
-Azure Cosmos DB 的用于 MongoDB 的 API 支持启用了 SSL 的连接。 若要进行连接，需在 [mgo.DialInfo](https://godoc.org/gopkg.in/mgo.v2#DialInfo) 中定义 **DialServer** 函数，然后使用 [tls.Dial  ](https://golang.org/pkg/crypto/tls#Dial) 函数进行连接。
+Azure Cosmos DB 的用于 MongoDB 的 API 支持启用了 TLS 的连接。 若要进行连接，需在 [mgo.DialInfo](https://godoc.org/gopkg.in/mgo.v2#DialInfo) 中定义 **DialServer** 函数，然后使用 [tls.Dial  ](https://golang.org/pkg/crypto/tls#Dial) 函数进行连接。
 
 以下 Golang 代码片段通过 Azure Cosmos DB 的用于 MongoDB 的 API 连接 Go 应用。 *DialInfo* 类包含用于建立会话的选项。
 
@@ -133,7 +133,7 @@ defer session.Close()
 session.SetSafe(&mgo.Safe{})
 ```
 
-没有 SSL 连接时，使用 **mgo.Dial()** 方法。 对于 SSL 连接，**mgo.DialWithInfo()** 方法是必需的。
+没有 TLS 连接时会使用 mgo.Dial()  方法。 对于 TLS 连接，mgo.DialWithInfo() 方法是必需的。 
 
 可以使用 **DialWIthInfo{}** 对象的实例来创建会话对象。 建立会话以后，即可使用以下代码片段访问集合：
 
@@ -256,4 +256,4 @@ if err != nil {
 > [!div class="nextstepaction"]
 > [将 MongoDB 数据导入 Azure Cosmos DB](mongodb-migrate.md)
 
-<!--Update_Description: update meta properties, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

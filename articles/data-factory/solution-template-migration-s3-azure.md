@@ -1,27 +1,27 @@
 ---
-title: 使用 Azure 数据工厂将数据从 Amazon S3 迁移到 Azure Data Lake Storage Gen2 | Microsoft Docs
+title: 将数据从 Amazon S3 迁移到 Azure Data Lake Storage Gen2
 description: 了解如何使用解决方案模板通过外部控制表从 Amazon S3 迁移数据，以使用 Azure 数据工厂在 AWS S3 上存储分区列表。
 services: data-factory
-documentationcenter: ''
 author: WenJason
 ms.author: v-jay
 ms.reviewer: ''
 manager: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 origin.date: 09/07/2019
-ms.date: 11/11/2019
-ms.openlocfilehash: 850fbe06a96a21aeabf31ea2f31a1c4fb83b0178
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/11/2020
+ms.openlocfilehash: b129720e25e133a4b1904bc8a435aff7a345dd1e
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "73649186"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82198001"
 ---
 # <a name="migrate-data-from-amazon-s3-to-azure-data-lake-storage-gen2"></a>将数据从 Amazon S3 迁移到 Azure Data Lake Storage Gen2
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 使用模板将数亿个文件构成的 PB 量级的数据从 Amazon S3 迁移到 Azure Data Lake Storage Gen2。 
 

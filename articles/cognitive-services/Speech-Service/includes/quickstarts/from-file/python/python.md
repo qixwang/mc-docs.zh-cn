@@ -1,16 +1,16 @@
 ---
-author: IEvangelist
+author: trevorbye
 ms.service: cognitive-services
 ms.topic: include
-origin.date: 03/10/2020
-ms.date: 03/16/2020
+origin.date: 03/20/2020
+ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: ed695c2b4a0a6beff39c4438f2fed2ea9201ce7f
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 37f1b935a3dfe602d9a21f665c46e4bf63a0e0c5
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80151602"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82150803"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -20,6 +20,7 @@ ms.locfileid: "80151602"
 > * [创建 Azure 语音资源](../../../../get-started.md)
 > * [创建 LUIS 应用程序并获取终结点密钥](../../../../quickstarts/create-luis.md)
 > * [设置开发环境并创建空项目](../../../../quickstarts/setup-platform.md?pivots=programming-language-python)
+> * 需要语音 SDK 版本 1.10.0 或更高版本。
 
 [!INCLUDE [Audio input format](~/articles/cognitive-services/speech-service/includes/audio-input-format-chart.md)]
 
@@ -37,13 +38,13 @@ ms.locfileid: "80151602"
 
 可将本快速入门中的[示例代码](#sample-code)复制到源文件 `quickstart.py`，然后在 IDE 或控制台中运行该代码
 
-```sh
+```Bash
 python quickstart.py
 ```
 
 或者，可以从[语音 SDK 示例存储库](https://github.com/Azure-Samples/cognitive-services-speech-sdk/)以 [Jupyter](https://jupyter.org) Notebook 的形式下载本快速入门教程，并将其作为 Notebook 运行。
 
-### <a name="sample-code"></a>示例代码
+### <a name="sample-code"></a>代码示例
 
 > [!NOTE]
 > 语音 SDK 将默认使用 en-us 作为语言进行识别。若要了解如何选择源语言，请参阅[指定语音转文本的源语言](../../../../how-to-specify-source-language.md)。
@@ -51,15 +52,15 @@ python quickstart.py
 ```python
 import azure.cognitiveservices.speech as speechsdk
 
-# Creates an instance of a speech config with specified host and subscription key.
+# Creates an instance of a speech config with specified subscription key and service region.
 # Replace with your own subscription key and region identifier from here: https://docs.azure.cn/cognitive-services/speech-service/regions
-speech_host, speech_key = "wss://YourServiceRegion.stt.speech.azure.cn/", "YourSubscriptionKey"
-speech_config = speechsdk.SpeechConfig(host=speech_host, subscription=speech_key)
+speech_key, service_region = "YourSubscriptionKey", "YourServiceRegion"
+speech_config = speechsdk.SpeechConfig(subscription=speech_key, region=service_region)
 
 # Creates an audio configuration that points to an audio file.
 # Replace with your own audio filename.
 audio_filename = "whatstheweatherlike.wav"
-audio_input = speechsdk.AudioConfig(filename=audio_filename)
+audio_input = speechsdk.audio.AudioConfig(filename=audio_filename)
 
 # Creates a recognizer with the given settings
 speech_recognizer = speechsdk.SpeechRecognizer(speech_config=speech_config, audio_config=audio_input)
@@ -122,4 +123,4 @@ elif result.reason == speechsdk.ResultReason.Canceled:
 
 ## <a name="next-steps"></a>后续步骤
 
-[!INCLUDE [footer](./footer.md)]
+[!INCLUDE [Speech recognition basics](../../speech-to-text-next-steps.md)]

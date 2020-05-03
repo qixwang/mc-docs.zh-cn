@@ -5,15 +5,15 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 09/01/2019
-ms.date: 02/10/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
 ms.custom: seodec18
-ms.openlocfilehash: 84ddbe0f9ec37d74c88ffa3ece5be0d3dd9f2d99
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 2a177212369d311316b2187c4c40d12639589b62
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292926"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134940"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>有关 Azure Cosmos DB 中不同 API 的常见问题
 
@@ -35,7 +35,7 @@ Azure Cosmos DB 有一个不受架构影响的索引编制引擎，能够自动�
 
 ### <a name="can-i-use-multiple-apis-to-access-my-data"></a>是否可以使用多个 API 来访问我的数据？
 
-Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服务。 其中多模型意味着 Azure Cosmos DB 支持多个 API 和多个数据模型，不同的 API 将不同的数据格式用于存储和线路协议。 例如，SQL 使用 JSON，MongoDB 使用 BSON，表使用 EDM，Cassandra 使用 CQL，Gremlin 使用 GraphSON。 因此，建议使用相同的 API 对给定帐户中的数据进行所有访问。
+Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服务。 其中多模型意味着 Azure Cosmos DB 支持多个 API 和多个数据模型，不同的 API 将不同的数据格式用于存储和线路协议。 例如，SQL 使用 JSON，MongoDB 使用 BSON，表使用 EDM，Cassandra 使用 CQL，Gremlin 使用 JSON 格式。 因此，建议使用相同的 API 对给定帐户中的数据进行所有访问。
 
 除了可互操作的 Gremlin 和 SQL API，每个 API 都独立运行。
 
@@ -63,7 +63,7 @@ Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服�
 
 <!-- Not Available [Try Azure Cosmos DB for free](https://www.azure.cn/try/cosmosdb/) -->
 
-如果不熟悉 Azure，可以注册 [Azure 试用帐户](https://www.azure.cn/pricing/1rmb-trial/)，这样可以得到 30 天试用期和信用额度，以便试用所有 Azure 服务。 如果你有 Visual Studio 订阅，则还有资格[免费获取 Azure 信用额度](https://www.azure.cn/support/legal/offer-rate-plans/)，可用于任何 Azure 服务。
+如果不熟悉 Azure，可以注册 [Azure 试用帐户](https://www.azure.cn/pricing/1rmb-trial/)，这样可以得到 30 天试用期和信用额度，以便试用所有 Azure 服务。 如果你有 Visual Studio 订阅，则还有资格[免费获取 Azure 信用额度](https://www.azure.cn/offers/ms-mc-arz-msdn/index.html)，可用于任何 Azure 服务。
 
 也可以使用 [Azure Cosmos DB 模拟器](local-emulator.md)在本地免费开发和测试应用程序，无需创建 Azure 订阅。 如果对应用程序在 Azure Cosmos DB 模拟器中的工作情况感到满意，则可以切换到在云中使用 Azure Cosmos DB 帐户。
 
@@ -73,13 +73,13 @@ Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服�
 
 * [Azure 支持](https://support.azure.cn/support/contact/)
 
-<!--Not Available on * [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-cosmosdb). Stack Overflow is best for programming questions. Make sure your question is [on-topic](https://stackoverflow.com/help/on-topic) and [provide as many details as possible, making the question clear and answerable](https://stackoverflow.com/help/how-to-ask)-->
+<!--Not Available on * [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-cosmosdb)-->
+<!--Not Available on [on-topic](https://stackoverflow.com/help/on-topic)-->
+<!--Not Available on [provide as many details as possible, making the question clear and answerable](https://stackoverflow.com/help/how-to-ask)-->
 
 若要请求新功能，请在 [Azure 支持站点](https://support.azure.cn/support/support-azure/)上提交新的请求。
 
 若要修复帐户问题，请在 Azure 门户中提交[支持请求](https://support.azure.cn/support/support-azure/)。
-
-<!--Not Available on however this isn't a technical support alias-->
 
 <a name="try-cosmos-db"></a>
 
@@ -212,7 +212,7 @@ Azure Cosmos DB 的 API for MongoDB 是一个线路协议兼容层，允许应�
 
 若要通过 Azure Cosmos DB 的用于 MongoDB 的 API 连接到 Cosmos 数据库，最快捷的方法是使用 [Azure 门户](https://portal.azure.cn)。 转到帐户，然后在左侧导航菜单上单击“快速启动”。  快速入门是获取连接到数据库的代码片段的最佳方式。
 
-Azure Cosmos DB 实施严格的安全要求和标准。 Azure Cosmos DB 帐户需要通过 SSL 进行身份验证和安全通信，因此务必使用 TLSv1.2。
+Azure Cosmos DB 实施严格的安全要求和标准。 Azure Cosmos DB 帐户需要通过 TLS 进行身份验证和安全通信，因此务必使用 TLSv1.2。
 
 有关详细信息，请参阅[通过 Azure Cosmos DB 的用于 MongoDB 的 API 连接到 Cosmos 数据库](connect-mongodb-account.md)。
 
@@ -289,7 +289,9 @@ Azure Cosmos DB 实施严格的安全要求和标准。 Azure Cosmos DB 帐户�
 * [Azure 支持](https://support.azure.cn/support/contact/)
 
 <!--Not Available on * [MSDN forum](https://www.azure.cn/support/contact/)-->
-<!--Not Available on * [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-cosmosdb). Stack Overflow is best for programming questions. Make sure your question is [on-topic](https://stackoverflow.com/help/on-topic) and [provide as many details as possible, making the question clear and answerable](https://stackoverflow.com/help/how-to-ask)-->
+<!--Not Available on * [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-cosmosdb)-->
+<!--Not Available on [on-topic](https://stackoverflow.com/help/on-topic)-->
+<!--Not Available on [provide as many details as possible, making the question clear and answerable](https://stackoverflow.com/help/how-to-ask)-->
 
 ### <a name="what-is-the-connection-string-that-i-need-to-use-to-connect-to-the-table-api"></a>连接到表 API 需要使用哪个连接字符串？
 
@@ -636,7 +638,7 @@ g.V('mary').out('knows').executionProfile()
 <a name="cassandra"></a>
 ## <a name="cassandra-api"></a>Cassandra API
 
-### <a name="what-is-the-protocol-version-supported-by-azure-cosmso-db-cassandra-api-is-there-a-plan-to-support-other-protocols"></a>Azure Cosmso DB Cassandra API 支持哪个协议版本？ 是否打算支持其他协议？
+### <a name="what-is-the-protocol-version-supported-by-azure-cosmos-db-cassandra-api-is-there-a-plan-to-support-other-protocols"></a>Azure Cosmos DB Cassandra API 支持哪个协议版本？ 是否打算支持其他协议？
 
 Azure Cosmos DB 的 Apache Cassandra API 目前支持 CQL 版本 4。 如果有与支持其他协议相关的反馈，请通过 [Azure 支持部门](https://support.azure.cn/support/contact/)告知我们。
 
@@ -747,6 +749,8 @@ Apache Cassandra SDK 的使用 CQLv3 的客户端驱动程序用于客户端程�
 ### <a name="is-composite-partition-key-supported"></a>是否支持复合分区键？
 
 是的，可以使用正则语法创建复合分区键。
+
+<!--CORRECT ON stableloader-->
 
 ### <a name="can-i-use-stableloader-for-data-loading"></a>是否可以使用 stableloader 加载数据？
 

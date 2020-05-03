@@ -1,20 +1,20 @@
 ---
-title: 使用 Azure Cosmos DB 的用于 MongoDB 的 API 和 .NET SDK 生成 Web 应用
+title: 使用 Azure Cosmos DB API for MongoDB 和 .NET SDK 生成 Web 应用
 description: 演示一个 .NET 代码示例，可以参考该示例使用 Azure Cosmos DB 的用于 MongoDB 的 API 进行连接和查询。
 author: rockboyfor
-ms.author: v-yeche
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: dotnet
 ms.topic: quickstart
 origin.date: 05/21/2019
-ms.date: 02/10/2020
-ms.openlocfilehash: a72ebafb359e156ffe69c21737d16e3d56c32e16
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 04/27/2020
+ms.author: v-yeche
+ms.openlocfilehash: f812e81a0665c714a64a796e51d76d76b59a559c
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292937"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134962"
 ---
 # <a name="quickstart-build-a-net-web-app-using-azure-cosmos-dbs-api-for-mongodb"></a>快速入门：使用 Azure Cosmos DB 的 API for MongoDB 构建 .NET Web 应用 
 
@@ -171,3 +171,4 @@ Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服�
 > [将 MongoDB 数据导入 Azure Cosmos DB](mongodb-migrate.md)
 
 <!-- Update_Description: update meta properties, wording update, update link -->
+

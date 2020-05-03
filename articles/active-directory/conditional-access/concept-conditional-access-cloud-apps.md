@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 02/25/2020
+ms.date: 04/24/2020
 ms.author: v-junlch
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b084b104ed6adeac25adc82cc0789e8ee58da3f3
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.openlocfilehash: 697fc15a0d593488d0736c0a3ffe3c6b7b60c479
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77653340"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126298"
 ---
 # <a name="conditional-access-cloud-apps-or-actions"></a>条件访问：云应用或操作
 
@@ -38,6 +38,7 @@ ms.locfileid: "77653340"
 - Azure DevOps
 - Azure SQL 数据库和数据仓库
 - Dynamics CRM Online
+- Microsoft Application Insights Analytics
 - [Azure 管理](#microsoft-azure-management)
 - Azure 订阅管理
 - Microsoft Cloud App Security
@@ -109,7 +110,7 @@ Azure 管理应用程序包括多个基础服务。
 
 ## <a name="user-actions"></a>用户操作
 
-用户操作是可由用户执行的任务。 目前唯一支持的操作是“注册安全信息(预览版)”  。当启用了组合注册功能的用户尝试注册其安全信息时，此操作允许条件访问策略来强制实施。 
+用户操作是可由用户执行的任务。 目前唯一支持的操作是“注册安全信息”  。当启用了组合注册功能的用户尝试注册其安全信息时，此操作允许条件访问策略来强制实施。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -118,4 +119,3 @@ Azure 管理应用程序包括多个基础服务。
 - [条件访问常见策略](concept-conditional-access-policy-common.md)
 - [客户端应用程序依赖项](service-dependencies.md)
 
-<!-- Update_Description: wording update -->

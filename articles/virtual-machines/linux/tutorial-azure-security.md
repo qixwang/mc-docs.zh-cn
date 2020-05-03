@@ -1,27 +1,25 @@
 ---
-title: 教程 - 使用 Azure 安全中心保护 Azure 中的 Linux VM
+title: 教程 - 使用 Azure 安全中心监视 Linux 虚拟机
 description: 本教程介绍如何使用 Azure 安全中心功能保护 Azure 中的 Linux 虚拟机。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: rockboyfor
-manager: digimobile
-editor: tysonn
+author: Johnnytechn
+manager: gwallace
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-origin.date: 06/11/2018
-ms.date: 12/16/2019
-ms.author: v-yeche
+ms.date: 04/20/2020
+ms.author: v-johya
 ms.custom: mvc
-ms.openlocfilehash: 007568c1c30ace2e79ea718f6387b9fa519ca8b9
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 99a18b0e6db324cce948e39f46c78128498d3a29
+ms.sourcegitcommit: ebedf9e489f5218d4dda7468b669a601b3c02ae5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75348511"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82159182"
 ---
 # <a name="tutorial-use-azure-security-center-to-monitor-linux-virtual-machines"></a>教程：使用 Azure 安全中心监视 Linux 虚拟机
 
@@ -120,6 +118,7 @@ Azure 安全中心可以帮助你深入了解 Azure 资源安全做法。 安全
 2. 选择“定价层”。 
 3. 选择“标准”  ，然后单击边栏选项卡顶部的“保存”  。
 
+
 更改定价层后，安全警报图表会在检测到安全威胁时开始填充。
 
 ![安全警报](./media/tutorial-azure-security/security-alerts.png)
@@ -129,7 +128,7 @@ Azure 安全中心可以帮助你深入了解 Azure 资源安全做法。 安全
 ![RDP 攻击](./media/tutorial-azure-security/rdp-attack.png)
 
 ## <a name="next-steps"></a>后续步骤
-在本教程中，用户设置了安全中心，并查看了安全中心内的 VM。 你已了解如何执行以下操作：
+在本教程中，用户设置了安全中心，并查看了安全中心内的 VM。 你已了解如何：
 
 > [!div class="checklist"]
 > * 设置数据收集

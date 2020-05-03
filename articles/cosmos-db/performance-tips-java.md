@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.devlang: java
 ms.topic: conceptual
 origin.date: 05/23/2019
-ms.date: 09/09/2019
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: cb37d2c4b70f1e0359da5e00e1827774fa471dd4
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: ef65e85de682a3f648c4db804cec0da360c9f686
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74203644"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134591"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-java"></a>适用于 Azure Cosmos DB 和 Java 的性能提示
 
@@ -41,7 +41,7 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
     
         网关模式受所有 SDK 平台的支持并已配置为默认设置。  如果应用程序在有严格防火墙限制的企业网络中运行，则网关是最佳选择，因为它使用标准 HTTPS 端口与单个终结点。 但是，对于性能的影响是每次在 Azure Cosmos DB 中读取或写入数据时，网关模式都涉及到额外的网络跃点。 因此，DirectHttps 模式因为网络跃点较少，可以提供更好的性能。 
 
-        Java SDK 使用 HTTPS 作为传输协议。 HTTPS 使用 SSL 进行初始身份验证和加密通信。 使用 Java SDK 时，只需打开 HTTPS 端口 443。 
+        Java SDK 使用 HTTPS 作为传输协议。 HTTPS 使用 TLS 进行初始身份验证和加密通信。 使用 Java SDK 时，只需打开 HTTPS 端口 443。 
 
         ConnectionMode 是在构造 DocumentClient 实例期间使用 ConnectionPolicy 参数配置的。 
 
@@ -60,9 +60,9 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
         ![Azure Cosmos DB 连接策略演示](./media/performance-tips-java/connection-policy.png)
 
    <a name="same-region"></a>
-2. **性能的（位于相同的 Azure 区域内）并置客户端**
+2. **将客户端并置在同一 Azure 区域中以提高性能**
 
-    如果可能，请将任何调用 Azure Cosmos DB 的应用程序放在与 Azure Cosmos 数据库所在的相同区域中。  根据请求采用的路由，各项请求从客户端传递到 Azure 数据中心边界时的此类延迟可能有所不同。 通过确保在与预配 Azure Cosmos DB 终结点所在的同一 Azure 区域中调用应用程序，可能会实现最低的延迟。 有关可用区域的列表，请参阅[ Azure Regions（Azure 区域）](https://status.azure.com/status/)。
+    如果可能，请将任何调用 Azure Cosmos DB 的应用程序放在与 Azure Cosmos 数据库所在的相同区域中。  根据请求采用的路由，各项请求从客户端传递到 Azure 数据中心边界时的此类延迟可能有所不同。 通过确保在与预配 Azure Cosmos DB 终结点所在的同一 Azure 区域中调用应用程序，可能会实现最低的延迟。 有关可用区域的列表，请参阅 [Azure Regions](https://status.azure.com/status/)（Azure 区域）。
 
     ![Azure Cosmos DB 连接策略演示](./media/performance-tips/same-region.png)
 
@@ -85,7 +85,7 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
 
     (a) ***优化 setMaxDegreeOfParallelism\:*** 并行查询的方式是并行查询多个分区。 但就查询本身而言，会按顺序提取单个已分区集合中的数据。 因此，通过使用 [setMaxDegreeOfParallelism](https://docs.azure.cn/java/api/com.microsoft.azure.documentdb.feedoptions.setmaxdegreeofparallelism) 设置分区数，最有可能实现查询的最高性能，但前提是所有其他系统条件仍保持不变。 如果不知道分区数，可使用 setMaxDegreeOfParallelism 设置一个较高的数值，系统会选择最小值（分区数、用户输入）作为最大并行度。 
 
-    请务必注意：如果数据能均匀地分散在与查询相关的所有分区上，并行查询就能带来最大的好处。 如果对分区集合进行分区，其中全部或大部分查询所返回的数据集中于几个分区（最坏的情况下为一个分区），则这些分区将遇到查询的性能瓶颈。
+    必须注意，如果查询时数据均衡分布在所有分区之间，则并行查询可提供最大的优势。 如果对分区集合进行分区，其中全部或大部分查询所返回的数据集中于几个分区（最坏的情况下为一个分区），则这些分区会遇到查询的性能瓶颈。
 
     (b) ***优化 setMaxBufferedItemCount\:*** 并行查询专用于在客户端处理当前一批结果时预提取结果。 预提取帮助改进查询中的的总体延迟。 setMaxBufferedItemCount 会限制预提取结果的数目。 通过将 [setMaxBufferedItemCount](https://docs.azure.cn/java/api/com.microsoft.azure.documentdb.feedoptions.setmaxbuffereditemcount) 设置为预期返回的结果数（或较高的数值），可使查询从预提取获得最大的好处。
 
@@ -101,7 +101,7 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
 
 7. **使用基于名称的寻址**
 
-    使用基于名称的寻址，其中的链接格式为 `dbs/MyDatabaseId/colls/MyCollectionId/docs/MyDocumentId`，而不是使用格式为 \_ 的 SelfLinks (`dbs/<database_rid>/colls/<collection_rid>/docs/<document_rid>`self)（旨在避免检索用于构造链接的所有资源的 ResourceId）。 此外，由于会重新创建这些资源（名称可能相同），因此，缓存这些资源的用处不大。
+    使用基于名称的寻址，其中的链接格式为 `dbs/MyDatabaseId/colls/MyCollectionId/docs/MyDocumentId`，而不是使用格式为 `dbs/<database_rid>/colls/<collection_rid>/docs/<document_rid>` 的 SelfLinks (\_self)（旨在避免检索用于构造链接的所有资源的 ResourceId）。 此外，由于会重新创建这些资源（名称可能相同），因此，缓存这些资源的用处不大。
 
    <a name="tune-page-size"></a>
 8. **调整查询/读取源的页面大小以获得更好的性能**
@@ -128,7 +128,7 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
     collectionDefinition.setIndexingPolicy(indexingPolicy);
     ```
 
-    有关详细信息，请参阅 [Azure Cosmos DB 索引策略](indexing-policies.md)。
+    有关索引的详细信息，请参阅 [Azure Cosmos DB 索引策略](indexing-policies.md)。
 
 ## <a name="throughput"></a>吞吐量
 <a name="measure-rus"></a>
@@ -153,7 +153,7 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
     <a name="429"></a>
 1. **处理速率限制/请求速率太大**
 
-    当客户端尝试超过帐户保留的吞吐量时，服务器的性能不会降低，并且不使用超过保留级别的吞吐量容量。 服务器将抢先结束 RequestRateTooLarge（HTTP 状态代码 429）的请求并返回 [x-ms-retry-after-ms](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) 标头，该标头指示重新尝试请求前用户必须等待的时间量（以毫秒为单位）。
+    客户端尝试超过帐户保留的吞吐量时，服务器的性能不会降低，并且不会使用超过保留级别的吞吐量容量。 服务器将抢先结束 RequestRateTooLarge（HTTP 状态代码 429）的请求并返回 [x-ms-retry-after-ms](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) 标头，该标头指示重新尝试请求前用户必须等待的时间量（以毫秒为单位）。
 
         HTTP Status 429,
         Status Line: RequestRateTooLarge
@@ -161,7 +161,7 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
 
     SDK 全部都会隐式捕获此响应，并遵循服务器指定的 retry-after 标头，并重试请求。 除非多个客户端同时访问帐户，否则下次重试就会成功。
 
-    如果多个客户端一直以高于请求速率的方式累积运行，则客户端当前在内部设置为 9 的默认重试计数可能无法满足需要；在此情况下，客户端就会向应用程序引发 [DocumentClientException](https://docs.azure.cn/java/api/com.microsoft.azure.documentdb.documentclientexception)，其状态代码为 429。 可以通过在 [ConnectionPolicy](https://docs.azure.cn/java/api/com.microsoft.azure.documentdb.connectionpolicy.setretryoptions) 实例上使用 [setRetryOptions](https://docs.azure.cn/java/api/com.microsoft.azure.documentdb.connectionpolicy) 来更改默认重试计数。 默认情况下，如果请求继续以高于请求速率的方式运行，则在 30 秒的累积等待时间后将返回 DocumentClientException 和状态代码 429。 即使当前的重试计数小于最大重试计数（默认值 9 或用户定义的值），也会发生这种情况。
+    如果多个客户端一直以高于请求速率的方式累积运行，则客户端当前在内部设置为 9 的默认重试计数可能无法满足需要；在此情况下，客户端就会向应用程序引发 [DocumentClientException](https://docs.azure.cn/java/api/com.microsoft.azure.documentdb.documentclientexception)，其状态代码为 429。 可以通过在 [ConnectionPolicy](https://docs.azure.cn/java/api/com.microsoft.azure.documentdb.connectionpolicy) 实例上使用 [setRetryOptions](https://docs.azure.cn/java/api/com.microsoft.azure.documentdb.connectionpolicy.setretryoptions) 来更改默认重试计数。 默认情况下，如果请求继续以高于请求速率的方式运行，则在 30 秒的累积等待时间后返回 DocumentClientException 和状态代码 429。 即使当前的重试计数小于最大重试计数（默认值 9 或用户定义的值），也会发生这种情况。
 
     尽管自动重试行为有助于改善大多数应用程序的复原能力和可用性，但是在执行性能基准测试时可能会造成冲突（尤其是在测量延迟时）。  如果实验达到服务器限制并导致客户端 SDK 静默重试，则客户端观测到的延迟会剧增。 若要避免性能实验期间出现延迟高峰，可以测量每个操作返回的费用，并确保请求以低于保留请求速率的方式运行。 有关详细信息，请参阅[请求单位](request-units.md)。
 3. **针对小型文档进行设计以提高吞吐量**

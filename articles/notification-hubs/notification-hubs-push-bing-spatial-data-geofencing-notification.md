@@ -15,18 +15,18 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.custom: mvc
 origin.date: 01/04/2019
-ms.date: 12/09/2018
+ms.date: 04/20/2020
 ms.author: v-tawe
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 16c11e20acccfbaa7bf401d659c26727ddeb1dbe
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 47279494866ea51e17a4f36a3512bca951ff1786
+ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74884990"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82588505"
 ---
-# <a name="tutorial-send-location-based-push-notifications-with-azure-notification-hubs-and-bing-spatial-data"></a>教程：使用 Azure 通知中心和必应空间数据发送基于位置的推送通知
+# <a name="tutorial-send-location-based-push-notifications-with-notification-hubs-and-bing-spatial-data"></a>教程：使用通知中心和必应空间数据发送基于位置的推送通知
 
 本教程介绍如何使用 Azure 通知中心和必应空间数据来传送基于位置的推送通知。
 
@@ -165,7 +165,7 @@ ms.locfileid: "74884990"
     }
     ```
 
-    若想详细了解如何在 UWP 应用中获取用户的位置，请参阅[获取用户的位置](https://msdn.microsoft.com/library/windows/apps/mt219698.aspx)。
+    若想详细了解如何在 UWP 应用中获取用户的位置，请参阅[获取用户的位置](https://docs.microsoft.com/windows/uwp/maps-and-location/get-location?redirectedfrom=MSDN)。
 5. 若要检查是否确实能够获取位置，请打开主页的代码端 (`MainPage.xaml.cs`)。 在 `MainPage` 构造函数中为 `Loaded` 事件创建新的事件处理程序。
 
     ```csharp
@@ -197,7 +197,7 @@ ms.locfileid: "74884990"
 
     ![](./media/notification-hubs-geofence/notification-hubs-location-output.png)
 
-    现在我们已经知道如何获取位置；如果不再需要使用 Loaded 事件处理程序，可将其删除。
+    现在你已知道能够获取位置，如果你愿意，可以删除 Loaded 事件处理程序，因为你将不再使用它。
 8. 下一步是捕获位置更改。 在 `LocationHelper` 类中，添加 `PositionChanged` 的事件处理程序：
 
     ```csharp
@@ -349,7 +349,7 @@ ms.locfileid: "74884990"
     ```
 
     > [!NOTE]
-    > 将 `POST_URL` 设置为已部署的 Web 应用程序的位置。 现在，可以在本地运行该应用，但是由于要着手部署公共版本，因此需要使用一个外部提供程序来托管该应用。
+    > 将 `POST_URL` 设置为已部署的 Web 应用程序的位置。 现在，可以在本地运行该应用，但是在部署公共版本时，需要使用外部提供程序托管它。
 2. 为推送通知注册 UWP 应用。 在 Visual Studio 中，选择“项目” > “应用商店” > “将应用与应用商店关联”。   
 
     ![](./media/notification-hubs-geofence/vs-associate-with-store.png)

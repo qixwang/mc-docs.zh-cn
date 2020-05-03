@@ -11,15 +11,15 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: article
 origin.date: 01/21/2020
-ms.date: 04/06/2020
+ms.date: 05/11/2020
 ms.author: v-jay
 ms.custom: seodec18
-ms.openlocfilehash: b482b6c50271ba7e779b27bc7f94fb75fae023ab
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 53e39578911827e68e966efa40bee1335030eec4
+ms.sourcegitcommit: 95efd248f5ee3701f671dbd5cfe0aec9c9959a24
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80625793"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82507708"
 ---
 # <a name="filtering-ordering-and-paging-of-media-services-entities"></a>媒体服务实体的筛选、排序和分页
 

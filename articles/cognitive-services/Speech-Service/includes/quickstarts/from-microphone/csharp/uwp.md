@@ -7,15 +7,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-origin.date: 12/17/2019
-ms.date: 03/16/2020
+origin.date: 04/02/2020
+ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: c99207bba7586d9bd97e8a1a88a66114612c6227
-ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
+ms.openlocfilehash: 01b74871cb48b606a909176f0f3e98026afa833a
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80151639"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82150844"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -23,8 +23,9 @@ ms.locfileid: "80151639"
 
 > [!div class="checklist"]
 > * [创建一个 Azure 搜索资源](../../../../get-started.md)
-> * [设置开发环境并创建空项目](../../../../quickstarts/setup-platform.md?tabs=uwp)
+> * [设置开发环境并创建空项目](../../../../quickstarts/setup-platform.md?tabs=uwp&pivots=programming-language-csharp)
 > * 请确保你有权访问麦克风，以便进行音频捕获
+> * 需要语音 SDK 版本 1.10.0 或更高版本。
 
 如果尚未执行此操作，很好！ 让我们继续。
 
@@ -177,12 +178,12 @@ ms.locfileid: "80151639"
 在初始化 `SpeechRecognizer` 对象之前，需要创建一个使用订阅密钥和订阅区域的配置。 将此代码插入 `RecognizeSpeechAsync()` 方法。
 
 > [!NOTE]
-> 此示例使用 `FromHost()` 方法来生成 `SpeechConfig`。 有关可用方法的完整列表，请参阅 [SpeechConfig 类](https://docs.microsoft.com/dotnet/api/)
+> 此示例使用 `FromSubscription()` 方法来生成 `SpeechConfig`。 有关可用方法的完整列表，请参阅 [SpeechConfig 类](https://docs.microsoft.com/dotnet/api/)
 
 ```csharp
-// Creates an instance of a speech config with specified host and subscription key.
+// Creates an instance of a speech config with specified subscription key and service region.
 // Replace with your own subscription key and service region (e.g., "chinaeast2").
-var config = SpeechConfig.FromHost(new Uri("wss://YourServiceRegion.stt.speech.azure.cn/"), "YourSubscriptionKey");
+var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
 ```
 
 ## <a name="initialize-a-speechrecognizer"></a>初始化 SpeechRecognizer
@@ -199,7 +200,7 @@ using (var recognizer = new SpeechRecognizer(config))
 
 在 `SpeechRecognizer` 对象中，我们将调用 `RecognizeOnceAsync()` 方法。 此方法是告知语音服务你要发送单个需识别的短语，在确定该短语后会停止识别语音。
 
-在 using 语句中，添加以下代码：
+在 using 语句中，添加以下代码。
 
 ```csharp
 var result = await recognizer.RecognizeOnceAsync().ConfigureAwait(false);
@@ -258,4 +259,5 @@ NotifyUser(sb.ToString(), NotifyType.StatusMessage);
 
 ## <a name="next-steps"></a>后续步骤
 
-[!INCLUDE [footer](./footer.md)]
+[!INCLUDE [Speech recognition basics](../../speech-to-text-next-steps.md)]
+

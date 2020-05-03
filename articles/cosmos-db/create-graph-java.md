@@ -7,18 +7,18 @@ ms.subservice: cosmosdb-graph
 ms.devlang: java
 ms.topic: quickstart
 origin.date: 03/26/2019
-ms.date: 10/28/2019
+ms.date: 04/27/2020
 ms.author: v-yeche
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 915a71fc5dc285d6a9b5ae84c5163aa2023ffdcd
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: ebdcd90aefd2f0fcdb84fd9ab12f79f0a83b0d47
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "72913329"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134993"
 ---
 <!--Verify sucessfully-->
-# <a name="quickstart-build-a-graph-database-with-the-java-sdk-and-the-azure-cosmos-db-table-api"></a>快速入门：使用 Java SDK 和Azure Cosmos DB 表 API 构建图形数据库
+# <a name="quickstart-build-a-graph-database-with-the-java-sdk-and-the-azure-cosmos-db-gremlin-api"></a>快速入门：使用 Java SDK 和 Azure Cosmos DB Gremlin API 构建图形数据库
 
 > [!div class="op_single_selector"]
 > * [Gremlin console](create-graph-gremlin-console.md)（Gremlin 控制台）
@@ -29,21 +29,13 @@ ms.locfileid: "72913329"
 > * [PHP](create-graph-php.md)
 >  
 
-Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服务。 使用 Azure Cosmos DB，可以快速创建和查询托管的文档、表和图形数据库。 
-
-本快速入门使用适用于 Azure Cosmos DB 的 Azure 门户工具，创建简单的图形数据库。 本快速入门还介绍了如何使用 [Gremlin API](graph-introduction.md) 数据库（该数据库使用 OSS [Apache TinkerPop](https://tinkerpop.apache.org/) 驱动程序）快速创建 Java 控制台应用。 本快速入门中的说明适用于任何能够运行 Java 的操作系统。 借助本快速入门，可以熟悉如何通过 UI 或编程方式（以首选方式为准）创建和修改图形。 
+在本快速入门中，你将通过 Azure 门户创建和管理 Azure Cosmos DB Gremlin（图形）API 帐户，并使用从 GitHub 克隆的 Java 应用来添加数据。 Azure Cosmos DB 是一种多模型数据库服务，可让你通过多区域分布和水平缩放功能快速创建和查询文档、表、键/值和图数据库。
 
 ## <a name="prerequisites"></a>先决条件
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-
-此外：
-
-* [Java 开发工具包 (JDK) 版本 8](https://docs.azure.cn/java/java-supported-jdk-runtime?view=azure-java-stable)
-    * 请确保设置 JAVA_HOME 环境变量，使之指向在其中安装了 JDK 的文件夹。
-* [下载](https://maven.apache.org/download.cgi)和[安装](https://maven.apache.org/install.html)[Maven](https://maven.apache.org/) 二进制存档
-    * 在 Ubuntu 上，可以通过运行 `apt-get install maven` 来安装 Maven。
-* [Git](https://www.git-scm.com/)
-    * 在 Ubuntu 上，可以通过运行 `sudo apt-get install git` 来安装 Git。
+- 具有活动订阅的 Azure 帐户。 [免费创建一个](https://www.azure.cn/pricing/1rmb-trial/)。 
+- [Java 开发工具包 (JDK) 8](https://www.azul.com/downloads/azure-only/zulu/?&version=java-8-lts&architecture=x86-64-bit&package=jdk)。 将 `JAVA_HOME` 环境变量指向其中安装了 JDK 的文件夹。
+- [Maven 二进制存档](https://maven.apache.org/download.cgi)。 
+- [Git](https://www.git-scm.com/downloads)。 
 
 ## <a name="create-a-database-account"></a>创建数据库帐户
 
@@ -81,9 +73,11 @@ Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服�
 
 此步骤是可选的。 如果有意了解如何使用代码创建数据库资源，可以查看以下代码片段。 否则，可以直接跳转到[更新连接字符串](#update-your-connection-information)。
 
-以代码片段全部摘自 C:\git-samples\azure-cosmos-db-graph-java-getting-started\src\GetStarted\Program.java 文件。
+以代码片段全部摘自 *C:\git-samples\azure-cosmos-db-graph-java-getting-started\src\GetStarted\Program.java* 文件。
 
-* Gremlin `Client` 已从 C:\git-samples\azure-cosmos-db-graph-java-getting-started\src\remote.yaml 文件中的配置初始化。
+此 Java 控制台应用使用 [Gremlin API](graph-introduction.md) 数据库和 OSS [Apache TinkerPop](https://tinkerpop.apache.org/) 驱动程序。 
+
+- Gremlin `Client` 是通过 *C:\git-samples\azure-cosmos-db-graph-java-getting-started\src\remote.yaml* 文件中的配置初始化的。
 
     ```java
     cluster = Cluster.build(new File("src/remote.yaml")).create();
@@ -91,7 +85,7 @@ Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服�
     client = cluster.connect();
     ```
 
-* 将使用 `client.submit` 方法执行一系列 Gremlin 步骤。
+- 将使用 `client.submit` 方法执行一系列 Gremlin 步骤。
 
     ```java
     ResultSet results = client.submit(gremlin);
@@ -108,14 +102,14 @@ Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服�
 
 现在，返回到 Azure 门户，获取连接信息，并将信息复制到应用程序中。 借助这些设置，应用程序可以与托管的数据库进行通信。
 
-1. 在 [Azure 门户](https://portal.azure.cn/)中，选择“密钥”  。 
+1. 在 [Azure 门户](https://portal.azure.cn/)中，在你的 Azure Cosmos DB 帐户中，选择“密钥”  。 
 
     复制 URI 值的第一部分。
 
     ![在 Azure 门户的“密钥”页中，查看并复制访问密钥](./media/create-graph-java/copy-access-key-azure-portal.png)
-2. 打开 src/remote.yaml 文件，并覆盖 `hosts: [$name$.graphs.azure.cn]` 中的 `$name$` 粘贴唯一 ID 值。
+2. 打开 *src/remote.yaml* 文件，粘贴唯一 ID 值并用其覆盖 `hosts: [$name$.graphs.azure.cn]` 中的 `$name$`。
 
-    remote.yaml 的第 1 行现应如下所示 
+    *remote.yaml* 的第 1 行现应如下所示 
 
     `hosts: [test-graph.graphs.azure.cn]`
 
@@ -127,11 +121,11 @@ Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服�
 
 4. 在 Azure 门户中，使用“复制”按钮复制主密钥，并将它粘贴到 `password: $masterKey$` 中的 `$masterKey$`。
 
-    remote.yaml 的第 4 行现应如下所示 
+    *remote.yaml* 的第 4 行现应如下所示 
 
     `password: 2Ggkr662ifxz2Mg==`
 
-5. 将 remote.yaml 的第 3 行从
+5. 将 *remote.yaml* 的第 3 行从
 
     `username: /dbs/$database$/colls/$collection$`
 
@@ -141,7 +135,7 @@ Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服�
 
     如果为示例数据库或图形使用了唯一名称，请相应地更新这些值。
 
-6. 保存 remote.yaml 文件。
+6. 保存 *remote.yaml* 文件。
 
 ## <a name="run-the-console-app"></a>运行控制台应用
 
@@ -174,7 +168,7 @@ Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服�
 
 现在可以回到数据资源管理器，查看添加到图形的顶点，并添加其他数据点。
 
-1. 选择“数据资源管理器”  ，展开“sample-graph”  ，再依次选择“图”  和“应用筛选器”  。 
+1. 在 Azure 门户中，在你的 Azure Cosmos DB 帐户中，选择“数据资源管理器”  ，展开“sample-graph”  ，再依次选择“图形”  和“应用筛选器”  。 
 
     ![在 Azure 门户的数据资源管理器中创建新文档](./media/create-graph-java/azure-cosmosdb-data-explorer-expanded.png)
 
@@ -190,11 +184,11 @@ Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服�
 
 5. 选择“添加属性”  ，以添加下列每个属性。 注意，可以在图形中为每个人创建唯一属性。 仅 id 键是必需的。
 
-    key|value|注释
+    键|值|注释
     ----|----|----
     id|ashley|顶点的唯一标识符。 如果未指定 id，将为你生成一个。
-    gender|女| 
-    技术 | Java | 
+    gender|female| 
+    tech | Java | 
 
     > [!NOTE]
     > 在本快速入门中，将创建未分区的集合。 但是，如果在创建集合过程中通过指定分区键创建了分区的集合，则需在每个新顶点中包括该分区键作为键。 
@@ -207,11 +201,11 @@ Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服�
 
 9. 选择“添加属性”  ，以添加下列每个属性：
 
-    key|value|注释
+    键|值|注释
     ----|----|----
     id|rakesh|顶点的唯一标识符。 如果未指定 id，将为你生成一个。
-    gender|男| 
-    学校|MIT| 
+    gender|male| 
+    school|MIT| 
 
 10. 选择“确定”  。 
 
@@ -231,7 +225,7 @@ Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服�
 
     ![在数据资源管理器中连接的两个顶点 - Azure CosmosDB](./media/create-graph-java/azure-cosmosdb-graph-explorer.png)
 
-    这就完成了本教程的资源创建部分。 可以继续向图形添加顶点、修改现有顶点，也可以更改查询。 现在，回顾一下 Azure Cosmos DB 提供的指标，然后清理资源。 
+这就完成了本教程的资源创建部分。 可以继续向图形添加顶点、修改现有顶点，也可以更改查询。 现在，回顾一下 Azure Cosmos DB 提供的指标，然后清理资源。 
 
 ## <a name="review-slas-in-the-azure-portal"></a>在 Azure 门户中查看 SLA
 
@@ -243,9 +237,9 @@ Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服�
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门教程中，已了解如何创建 Azure Cosmos DB 帐户、使用数据资源管理器创建图形和运行应用。 现可使用 Gremlin 构建更复杂的查询，实现功能强大的图形遍历逻辑。 
+在本快速入门中，你已了解了如何创建 Azure Cosmos DB 帐户，使用数据资源管理器创建图形，以及运行 Java 应用来向图形添加数据。 现可使用 Gremlin 构建更复杂的查询，实现功能强大的图形遍历逻辑。 
 
 > [!div class="nextstepaction"]
 > [使用 Gremlin 查询](tutorial-query-graph.md)
 
-<!--Update_Description: wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

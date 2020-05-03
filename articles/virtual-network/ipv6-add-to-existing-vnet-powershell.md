@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 10/21/2019
-ms.date: 11/25/2019
+ms.date: 04/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 733f20bbe2d9efba10212dd732d2c1433e15c935
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+ms.openlocfilehash: 1b72493dfb68c961c70b3ade4d2c04ceda8bad91
+ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
-ms.locfileid: "74658112"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82093353"
 ---
 # <a name="upgrade-an-ipv4-application-to-ipv6-in-azure-virtual-network---powershell"></a>在 Azure 虚拟网络中将 IPv4 应用程序升级到 IPv6 - PowerShell
 
@@ -29,7 +29,7 @@ ms.locfileid: "74658112"
 - 虚拟网络和子网的 IPv6 地址空间
 - 采用 IPv4 和 IPV6 前端配置的标准负载均衡器
 - 包含采用 IPv4 + IPv6 配置的 NIC 的 VM
-- IPv 公共 IP，使负载均衡器能够建立面向 Internet 的 IPv6 连接
+- IPv6 公共 IP，使负载均衡器能够建立面向 Internet 的 IPv6 连接
 
 <!--MOONCAKE: REMOVE preview tag of [!Important]-->
 

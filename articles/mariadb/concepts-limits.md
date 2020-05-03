@@ -5,14 +5,14 @@ author: WenJason
 ms.author: v-jay
 ms.service: mariadb
 ms.topic: conceptual
-origin.date: 3/9/2020
-ms.date: 03/30/2020
-ms.openlocfilehash: 74736c70f21d3d0354a0f9bfebb19cc38037e9a3
-ms.sourcegitcommit: 303a16c7117b6f3495ef0493b4ae8ccb67d7dbba
+origin.date: 4/1/2020
+ms.date: 04/27/2020
+ms.openlocfilehash: ae3b9a22ce388aab6a1dc1f7cdd962d1bb47cd2a
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80342335"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126897"
 ---
 # <a name="limitations-in-azure-database-for-mariadb"></a>Azure Database for MariaDB 中的限制
 以下各部分介绍了数据库服务中的容量、存储引擎支持、特权支持、数据操作语句支持和功能限制。
@@ -47,7 +47,7 @@ ms.locfileid: "80342335"
 
 创建与 MariaDB 的新客户端连接需要时间，一旦建立，这些连接就会占用数据库资源，即使在空闲时也是如此。 大多数应用程序都请求许多短期连接，这加剧了这种情况。 其结果是可用于实际工作负荷的资源减少，从而导致性能下降。 减少空闲连接并重用现有连接的连接池会有助于避免这种情况。 若要了解如何设置 ProxySQL，请访问我们的[博客文章](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/load-balance-read-replicas-using-proxysql-in-azure-database-for/ba-p/880042)。
 
-## <a name="query_cache_size"></a>query_cache_size
+### <a name="query_cache_size"></a>query_cache_size
 
 默认会禁用查询缓存。 若要启用查询缓存，请配置 `query_cache_type` 参数。 
 
@@ -56,7 +56,7 @@ ms.locfileid: "80342335"
 |**定价层**|**vCore(s)**|**默认值**|**最小值**|**最大值**|
 |---|---|---|---|---|
 |基本|1|在基本层中不可配置|不适用|不适用|
-|基本|2|在基本层中不可配置|空值|不适用|
+|基本|2|在基本层中不可配置|不适用|不适用|
 |常规用途|2|0|0|16777216|
 |常规用途|4|0|0|33554432|
 |常规用途|8|0|0|67108864|
@@ -69,14 +69,14 @@ ms.locfileid: "80342335"
 |内存优化|16|0|0|134217728|
 |内存优化|32|0|0|134217728|
 
-## <a name="sort_buffer_size"></a>sort_buffer_size
+### <a name="sort_buffer_size"></a>sort_buffer_size
 
 查看 [MariaDB 文档](https://mariadb.com/kb/en/server-system-variables/#sort_buffer_size)详细了解此参数。
 
 |**定价层**|**vCore(s)**|**默认值**|**最小值**|**最大值**|
 |---|---|---|---|---|
 |基本|1|在基本层中不可配置|不适用|不适用|
-|基本|2|在基本层中不可配置|不适用|空值|
+|基本|2|在基本层中不可配置|不适用|不适用|
 |常规用途|2|524288|32768|4194304|
 |常规用途|4|524288|32768|8388608|
 |常规用途|8|524288|32768|16777216|
@@ -89,14 +89,14 @@ ms.locfileid: "80342335"
 |内存优化|16|524288|32768|33554432|
 |内存优化|32|524288|32768|33554432|
 
-## <a name="join_buffer_size"></a>join_buffer_size
+### <a name="join_buffer_size"></a>join_buffer_size
 
 查看 [MariaDB 文档](https://mariadb.com/kb/en/server-system-variables/#join_buffer_size)详细了解此参数。
 
 |**定价层**|**vCore(s)**|**默认值**|**最小值**|**最大值**|
 |---|---|---|---|---|
 |基本|1|在基本层中不可配置|不适用|不适用|
-|基本|2|在基本层中不可配置|不适用|空值|
+|基本|2|在基本层中不可配置|不适用|不适用|
 |常规用途|2|262144|128|268435455|
 |常规用途|4|262144|128|536870912|
 |常规用途|8|262144|128|1073741824|
@@ -109,7 +109,7 @@ ms.locfileid: "80342335"
 |内存优化|16|262144|128|4294967295|
 |内存优化|32|262144|128|4294967295|
 
-## <a name="max_heap_table_size"></a>max_heap_table_size
+### <a name="max_heap_table_size"></a>max_heap_table_size
 
 查看 [MariaDB 文档](https://mariadb.com/kb/en/server-system-variables/#max_heap_table_size)详细了解此参数。
 
@@ -129,7 +129,7 @@ ms.locfileid: "80342335"
 |内存优化|16|16777216|16384|4294967295|
 |内存优化|32|16777216|16384|4294967295|
 
-## <a name="tmp_table_size"></a>tmp_table_size
+### <a name="tmp_table_size"></a>tmp_table_size
 
 查看 [MariaDB 文档](https://mariadb.com/kb/en/server-system-variables/#tmp_table_size)详细了解此参数。
 
@@ -148,6 +148,10 @@ ms.locfileid: "80342335"
 |内存优化|8|16777216|1024|536870912|
 |内存优化|16|16777216|1024|1073741824|
 |内存优化|32|16777216|1024|1073741824|
+
+### <a name="time_zone"></a>time_zone
+
+可以通过从 MySQL 命令行或 MySQL Workbench 等工具调用 `mysql.az_load_timezone` 存储过程来填充时区表。 若要了解如何调用存储过程并设置全局时区或会话级时区，请参阅 [Azure 门户](howto-server-parameters.md#working-with-the-time-zone-parameter)或 [Azure CLI](howto-configure-server-parameters-cli.md#working-with-the-time-zone-parameter) 一文。
 
 ## <a name="storage-engine-support"></a>存储引擎支持
 

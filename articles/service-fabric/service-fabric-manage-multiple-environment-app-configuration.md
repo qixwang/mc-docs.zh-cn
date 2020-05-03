@@ -4,14 +4,14 @@ description: Azure Service Fabric 应用程序可以在规模为一台计算机�
 author: rockboyfor
 ms.topic: conceptual
 origin.date: 02/23/2018
-ms.date: 02/24/2020
+ms.date: 04/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 315bad1b0bd426db7428241a4da704fb10c11157
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.openlocfilehash: 55f18fb687ccd24fb59a2699c91f280db011a168
+ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77540659"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82093440"
 ---
 # <a name="manage-applications-for-multiple-environments"></a>管理多个环境的应用程序
 
@@ -43,7 +43,7 @@ ms.locfileid: "77540659"
 
 - 在 PowerShell 中，[`New-ServiceFabricApplication`](https://docs.microsoft.com/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps) cmdlet 将应用程序参数作为哈希表。
 - 借助 sfctl，[`sfctl application create`](/service-fabric/service-fabric-sfctl-application#sfctl-application-create) 命令将参数作为 JSON 字符串。 Install.sh 脚本使用 sfctl。
-- Visual Studio 在应用程序项目的参数文件夹中提供一组参数文件。 使用 Azure DevOps Services 或 Team Foundation Server 从 Visual Studio 发布时会用到这些参数文件。 在 Visual Studio 中，参数文件会传递给 Deploy-FabricApplication.ps1 脚本。
+- Visual Studio 在应用程序项目的参数文件夹中提供一组参数文件。 使用 Azure DevOps Services 或 Azure DevOps Server 从 Visual Studio 发布时会使用这些参数文件。 在 Visual Studio 中，参数文件会传递给 Deploy-FabricApplication.ps1 脚本。
 
 ## <a name="next-steps"></a>后续步骤
 以下文章演示如何使用此处所述的某些概念：

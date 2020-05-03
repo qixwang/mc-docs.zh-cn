@@ -11,13 +11,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: ''
 origin.date: 12/04/2018
-ms.date: 12/16/2019
-ms.openlocfilehash: 81d8f54a5ef4bf4f3cd991a95e6465329f60284c
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 04/27/2020
+ms.openlocfilehash: d01a7b0afbc99aa6b51061140326e74f0df46af3
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336027"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126999"
 ---
 # <a name="deploy-a-split-merge-service-to-move-data-between-sharded-databases"></a>部署拆分/合并服务以在分片数据库之间移动数据
 
@@ -55,7 +55,7 @@ ms.locfileid: "75336027"
 
 1. 在文本编辑器（如 Visual Studio）中打开 *ServiceConfiguration.cscfg* ，它会验证输入内容（例如证书指纹的格式）。
 
-1. 创建新的数据库或选择现有的数据库，以将其用作拆分/合并操作的状态数据库并检索该数据库的连接字符串。
+1. 新建数据库或选择现有数据库，以将其用作拆分/合并操作的状态数据库并检索该数据库的连接字符串。
 
    > [!IMPORTANT]
    > 目前，状态数据库必须使用拉丁语排序规则 (SQL\_Latin1\_General\_CP1\_CI\_AS)。 有关详细信息，请参阅 [Windows 排序规则名称 (Transact-SQL)](https://msdn.microsoft.com/library/ms188046.aspx)。
@@ -72,7 +72,7 @@ ms.locfileid: "75336027"
 
 有关配置服务安全性的详细说明，请参阅[拆分/合并安全配置](sql-database-elastic-scale-split-merge-security-configuration.md)。
 
-为了针对本教程创建一个简单的测试部署，我们将执行少量的配置步骤来使服务正常运行。 仅一个计算机/帐户可以执行这些步骤，以便与服务进行通信。
+为了针对本教程创建一个简单的测试部署，我们会执行少量的配置步骤来使服务正常运行。 仅一个计算机/帐户可以执行这些步骤，以便与服务进行通信。
 
 ### <a name="create-a-self-signed-certificate"></a>创建自签名证书
 
@@ -151,7 +151,7 @@ ms.locfileid: "75336027"
 
 ## <a name="troubleshoot-the-deployment"></a>排查部署问题
 
-如果 Web 角色无法联机，可能是安全配置出现了问题。 检查 SSL 是否如上所述进行配置。
+如果 Web 角色无法联机，可能是安全配置出现了问题。 检查是否如上所述配置了 TLS/SSL。
 
 如果辅助角色无法联机，但是 Web 角色已成功，很可能是在连接到之前创建的状态数据库时出现了问题。
 
@@ -233,7 +233,7 @@ ms.locfileid: "75336027"
    > [!NOTE]
    > 在默认情况下，*SetupSampleSplitMergeEnvironment.ps1* 脚本将在同一服务器上创建所有这些数据库以简化脚本。 这并不表示拆分/合并服务本身存在限制。
 
-   拆分/合并服务将需要具有数据库读/写访问权限的 SQL 身份验证登录，才能移动数据并更新分片映射。 由于拆分/合并服务在云中运行，因此它当前不支持集成的身份验证。
+   拆分/合并服务需要具有数据库读/写访问权限的 SQL 身份验证登录，才能移动数据并更新分片映射。 由于拆分/合并服务在云中运行，因此它当前不支持集成的身份验证。
 
    确保 Azure SQL 服务器已配置为允许从运行这些脚本的计算机的 IP 地址进行访问。 可以在“Azure SQL 服务器”/“配置”/“允许的 IP 地址”下找到此设置。
 
@@ -255,7 +255,7 @@ ms.locfileid: "75336027"
     -UserName 'mysqluser' -Password 'MySqlPassw0rd' -ShardMapManagerServerName 'abcdefghij.database.chinacloudapi.cn'
    ```
 
-5. 执行 *ExecuteSampleSplitMerge.ps1* 脚本以执行拆分操作（将第一个分片上一半的数据移至第二个分片），然后执行合并操作（将数据移回第一个分片）。 如果已配置 SSL 并且已将 http 终结点保留为禁用，请确保改为使用 https:// 终结点。
+5. 执行 *ExecuteSampleSplitMerge.ps1* 脚本以执行拆分操作（将第一个分片上一半的数据移至第二个分片），然后执行合并操作（将数据移回第一个分片）。 如果已配置 TLS 并且已将 http 终结点保留为禁用，请确保改用 https:// 终结点。
 
    示例命令行：
 
@@ -334,7 +334,7 @@ ms.locfileid: "75336027"
 
    `Invoke-WebRequest : The underlying connection was closed: Could not establish trust relationship for the SSL/TLS secure channel.`
 
-此错误表示 SSL 证书未正确配置。 请按照“与 Web 浏览器连接”部分中的说明进行操作。
+此错误表示 TLS/SSL 证书未正确配置。 请按照“与 Web 浏览器连接”部分中的说明进行操作。
 
 如果无法提交请求，可能会看到：
 

@@ -4,16 +4,16 @@ description: 了解 Azure Cosmos DB 中的 SQL 系统函数 SQUARE。
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
-origin.date: 09/13/2019
-ms.date: 10/28/2019
+origin.date: 03/04/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
 ms.custom: query-reference
-ms.openlocfilehash: 3ca9573e1f25a464e5245ec27187568c371d5d5e
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 7407d42a84becbc4f5685ebcbab70c34a5f07575
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "72914660"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134533"
 ---
 # <a name="square-azure-cosmos-db"></a>SQUARE (Azure Cosmos DB)
  返回指定数字值的平方。  
@@ -27,25 +27,29 @@ SQUARE(<numeric_expr>)
 ## <a name="arguments"></a>参数
 
 *numeric_expr*  
-  为数值表达式。  
+  是一个数值表达式。  
 
 ## <a name="return-types"></a>返回类型
 
-  返回数值表达式。  
+  返回一个数值表达式。  
 
 ## <a name="examples"></a>示例
 
-  以下示例将返回数字 1-3 的平方。 
+  以下示例返回数字 1-3 的平方。 
 
 ```sql
 SELECT SQUARE(1) AS s1, SQUARE(2.0) AS s2, SQUARE(3) AS s3  
 ```  
 
- 下面是结果集：  
+ 下面是结果集。  
 
 ```json
 [{s1: 1, s2: 4, s3: 9}]  
 ```  
+
+## <a name="remarks"></a>备注
+
+此系统函数不会使用索引。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -53,5 +57,4 @@ SELECT SQUARE(1) AS s1, SQUARE(2.0) AS s2, SQUARE(3) AS s3
 - [系统函数 Azure Cosmos DB](sql-query-system-functions.md)
 - [Azure Cosmos DB 简介](introduction.md)
 
-<!--Update_Description: new articles on sql query square  -->
-<!--New.date: 10/28/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

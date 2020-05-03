@@ -39,9 +39,9 @@
       href: boot-error-troubleshoot-windows.md
 - name: 意外重启
   items:
-    - name: 附加 VHD 的 VM 意外重启
+    - name: 附加 VHD 的 VM 意外重新启动
       href: unexpected-reboots-attached-vhds.md
-    - name: 了解系统重启
+    - name: 了解系统重新启动
       href: understand-vm-reboot.md
 - name: 无法启动或停止 VM
   items:
@@ -67,18 +67,28 @@
           href: boot-diagnostics.md
         - name: BitLocker 错误
           href: troubleshoot-bitlocker-boot-error.md
-        - name: 检查文件系统错误
-          href: troubleshoot-check-disk-boot-error.md
         - name: 蓝屏错误
           href: troubleshoot-common-blue-screen-error.md
-        - name: VM 启动时出现停滞
-          href: troubleshoot-vm-boot-configure-update.md
+        - name: 检查文件系统错误
+          href: troubleshoot-check-disk-boot-error.md
+        - name: 关键进程已禁用
+          href: troubleshoot-guide-critical-process-died.md
         - name: 关键服务失败
           href: troubleshoot-critical-service-failed-boot-error.md
+        - name: 应用本地用户和组策略时，VM 无响应
+          href: troubleshoot-vm-unresponsive-group-policy-local-users.md
+        - name: 不是可启动磁盘
+          href: troubleshoot-guide-not-bootable-disk.md
         - name: 重启循环
           href: troubleshoot-reboot-loop.md
         - name: 在更新 Windows 时停滞
           href: troubleshoot-stuck-updating-boot-error.md
+        - name: VM 启动时出现停滞
+          href: troubleshoot-vm-boot-configure-update.md
+        - name: VM 因 Windows 启动管理器而无法启动
+          href: troubleshoot-guide-windows-boot-manager-menu.md
+        - name: 由于进行更新，VM 无响应
+          href: unresponsive-vm-apply-windows-update.md
 - name: 无法连接到 VM
   items:
     - name: RDP
@@ -148,7 +158,7 @@
       href: reset-local-password-without-agent.md
     - name: Linux
       href: reset-password.md
-    - name: VM 恢复方法
+    - name: VM 恢复访问
       items:
         - name: Windows
           items:
@@ -168,7 +178,7 @@
   items:
     - name: 概述
       href: ../windows/managed-disks-overview.md
-    - name: 常见问题解答
+    - name: 常见问题
       href: ../windows/faq-for-disks.md
     - name: 删除存储资源时出错
       href: storage-resource-deletion-errors.md
@@ -176,8 +186,6 @@
       href: storage-classic-cannot-delete-storage-account-container-vhd.md
     - name: 使用嵌套虚拟化
       href: troubleshoot-vm-by-use-nested-virtualization.md
-- name: 启动错误 Windows
-  href: boot-error-troubleshoot.md
 - name: VM 扩展问题
   items:
     - name: Azure 扩展概述
@@ -212,7 +220,7 @@
           href: ../windows/disk-encryption-overview.md
         - name: 故障排除
           href: ../windows/disk-encryption-troubleshooting.md
-        - name: 常见问题解答
+        - name: 常见问题
           href: ../windows/disk-encryption-faq.md
     - name: Linux
       items:
@@ -220,14 +228,16 @@
           href: ../linux/disk-encryption-overview.md
         - name: 故障排除
           href: ../linux/disk-encryption-troubleshooting.md
-        - name: 常见问题解答
+        - name: 常见问题
           href: ../linux/disk-encryption-faq.md
-    - name: 在更新 Windows 时停滞
-      href: troubleshoot-stuck-updating-boot-error.md
 - name: 迁移和移动问题
   items:
     - name: Azure 资源管理器迁移（ASM 到 ARM）常见问题解答
       href: ../windows/migration-classic-resource-manager-overview.md
+- name: 计划内维护
+  items:
+    - name: 概述
+      href: ../maintenance-notifications.md
 - name: 常见错误消息
   href: error-messages.md
   items:

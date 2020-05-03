@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/31/2020
+ms.date: 04/29/2020
 ms.author: v-junlch
 ms.reviewer: bagovind
-ms.openlocfilehash: d5fdf044aa807e7872bbccc1d13a236a388bda35
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: c808b47111c81dcd2e8083863815f30754ecea4a
+ms.sourcegitcommit: e3512c5c2bbe61704d5c8cbba74efd56bfe91927
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80581698"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82267682"
 ---
 # <a name="what-is-role-based-access-control-rbac-for-azure-resources"></a>什么是 Azure 资源的基于角色的访问控制 (RBAC)？
 
@@ -35,14 +35,6 @@ RBAC 是在 [Azure 资源管理器](../azure-resource-manager/management/overvie
 - 让 DBA 组管理订阅中的 SQL 数据库
 - 让某个用户管理资源组中的所有资源，例如虚拟机、网站和子网
 - 让某个应用程序访问资源组中的所有资源
-
-## <a name="best-practice-for-using-rbac"></a>使用 RBAC 的最佳做法
-
-使用 RBAC，可以在团队中对职责进行分配，仅向用户授予执行作业所需的访问权限。 请勿向每个人授予 Azure 订阅或资源的无限制权限，只能允许他们在特定的范围执行某些操作。
-
-规划访问控制策略时，最佳做法是授予用户完成工作所需的最低权限。 下图显示了与 RBAC 使用有关的建议模式。
-
-![RBAC 和最小特权](./media/overview/rbac-least-privilege.png)
 
 ## <a name="how-rbac-works"></a>RBAC 的工作原理
 

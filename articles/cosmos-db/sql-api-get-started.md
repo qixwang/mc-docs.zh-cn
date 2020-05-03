@@ -1,5 +1,5 @@
 ---
-title: 教程：生成一个用于在 Azure Cosmos DB SQL API 帐户中管理数据的 .NET 控制台应用
+title: 教程 - 生成用于管理 Azure Cosmos DB SQL API 帐户中数据的 .NET 控制台应用
 description: 教程：了解如何使用 C# 控制台应用程序创建 Azure Cosmos DB SQL API 资源。
 author: rockboyfor
 ms.service: cosmos-db
@@ -7,14 +7,14 @@ ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: tutorial
 origin.date: 11/05/2019
-ms.date: 12/16/2019
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: cfe1ffe7f2736933832ef51b88a7599274999a9b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 505c11b62c8423218121327f1e597f8b868ea28a
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75336396"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134697"
 ---
 # <a name="tutorial-build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account"></a>教程：生成一个用于在 Azure Cosmos DB SQL API 帐户中管理数据的 .NET 控制台应用
 
@@ -150,7 +150,6 @@ ms.locfileid: "75336396"
 1. 添加以下代码，从 **Main** 方法中运行 **GetStartedDemoAsync** 异步任务。 **Main** 方法将捕获异常并将它们写到控制台上。
 
     ```csharp
-
     public static async Task Main(string[] args)
     {
         try
@@ -191,7 +190,6 @@ ms.locfileid: "75336396"
 1. 复制 `CreateDatabaseAsync` 方法并将其粘贴到 `GetStartedDemoAsync` 方法下面。
 
     ```csharp
-
     /// <summary>
     /// Create the database if it does not exist
     /// </summary>
@@ -326,7 +324,6 @@ ms.locfileid: "75336396"
 1. 复制 `CreateContainerAsync` 方法并将其粘贴到 `CreateDatabaseAsync` 方法下面。 `CreateContainerAsync` 使用 `containerId` 字段中指定的 ID `FamilyContainer` 来创建按 `LastName` 属性分区的新容器（如果尚不存在该容器）。
 
     ```csharp
-
     /// <summary>
     /// Create the container if it does not exist. 
     /// Specifiy "/LastName" as the partition key since we're storing family information, to ensure good distribution of requests and storage.
@@ -419,13 +416,11 @@ ms.locfileid: "75336396"
             public string City { get; set; }
         }
     }
-
     ```
 
 1. 回到 *Program.cs* 中，将 `AddItemsToContainerAsync` 方法添加到 `CreateContainerAsync` 方法后面。
 
     ```csharp
-
     /// <summary>
     /// Add Family items to the container
     /// </summary>
@@ -556,7 +551,6 @@ Azure Cosmos DB 支持对存储在每个容器中的 JSON 文档进行各种查�
 1. 复制 `QueryItemsAsync` 方法，并将其粘贴到 `AddItemsToContainerAsync` 方法后面。
 
     ```csharp
-
     /// <summary>
     /// Run a query (using Azure Cosmos DB SQL syntax) against the container
     /// </summary>
@@ -612,7 +606,6 @@ Azure Cosmos DB 支持对存储在每个容器中的 JSON 文档进行各种查�
 1. 复制 `ReplaceFamilyItemAsync` 方法，并将其粘贴到 `QueryItemsAsync` 方法后面。
 
     ```csharp
-
     /// <summary>
     /// Replace an item in the container
     /// </summary>
@@ -662,7 +655,6 @@ Azure Cosmos DB 支持对存储在每个容器中的 JSON 文档进行各种查�
 1. 复制 `DeleteFamilyItemAsync` 方法，并将其粘贴到 `ReplaceFamilyItemAsync` 方法后面。
 
     ```csharp
-
     /// <summary>
     /// Delete an item in the container
     /// </summary>
@@ -708,7 +700,6 @@ Azure Cosmos DB 支持对存储在每个容器中的 JSON 文档进行各种查�
 1. 复制 `DeleteDatabaseAndCleanupAsync` 方法，并将其粘贴到 `DeleteFamilyItemAsync` 方法后面。
 
     ```csharp
-
     /// <summary>
     /// Delete the database and dispose of the Cosmos Client instance
     /// </summary>
@@ -728,7 +719,6 @@ Azure Cosmos DB 支持对存储在每个容器中的 JSON 文档进行各种查�
 1. 在 ``GetStartedDemoAsync`` 方法中添加对 ``DeleteDatabaseAndCleanupAsync`` 的调用。
 
     ```csharp
-
     /// <summary>
     /// Entry point to call methods that operate on Azure Cosmos DB resources in this sample
     /// </summary>

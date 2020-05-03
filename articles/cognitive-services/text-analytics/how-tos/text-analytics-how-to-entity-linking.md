@@ -11,12 +11,12 @@ ms.topic: article
 origin.date: 02/10/2020
 ms.date: 02/25/2020
 ms.author: v-lingwu
-ms.openlocfilehash: 8d9c5dfe198d801ba27f2523439af2782c509647
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 05d41d43cc68845fcfe5926b0cb36769a72b2ccb
+ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78155090"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82588738"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>如何在文本分析中使用命名实体识别
 
@@ -24,7 +24,7 @@ ms.locfileid: "78155090"
 
 ### <a name="entity-linking"></a>实体链接
 
-实体链接是一种对文本中找到的实体的身份进行识别和消歧的功能（例如，确定 `Mars` 一词是指行星还是指罗马战神）。 此过程要求知识库采用适当的语言，以便链接文本中识别的实体。 实体链接使用[维基百科](https://www.wikipedia.org/)作为此知识库。
+实体链接是一种对文本中找到的实体的身份进行识别和消歧的功能（例如，确定 `Mars` 一词是指行星还是指罗马战神）。 此过程要求知识库采用适当的语言，以便链接文本中识别的实体。
 
 
 ### <a name="named-entity-recognition-ner"></a>命名实体识别 (NER)

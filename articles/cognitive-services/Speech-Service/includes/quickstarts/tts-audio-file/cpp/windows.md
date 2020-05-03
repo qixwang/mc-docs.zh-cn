@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-origin.date: 08/19/2019
-ms.date: 03/16/2020
+origin.date: 04/04/2020
+ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: eac7730bb8b6c23679344b1dc95adc52a9e429c0
-ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
+ms.openlocfilehash: c588e26a3f9cb3bdd81e8a73e93ee505c1637681
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80151585"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82150854"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -24,7 +24,8 @@ ms.locfileid: "80151585"
 
 > [!div class="checklist"]
 > * [创建一个 Azure 搜索资源](../../../../get-started.md)
-> * [设置开发环境并创建空项目](../../../../quickstarts/setup-platform.md?tabs=windows)
+> * [设置开发环境并创建空项目](../../../../quickstarts/setup-platform.md?tabs=windows&pivots=programming-language-cpp)
+> * 需要语音 SDK 版本 1.10.0 或更高版本。
 
 ## <a name="add-sample-code"></a>添加示例代码
 
@@ -34,9 +35,9 @@ ms.locfileid: "80151585"
 
    ```C++
 
-    // Creates an instance of a speech config with specified host and subscription key.
+    // Creates an instance of a speech config with specified subscription key and service region.
     // Replace with your own subscription key and region identifier from here: https://docs.azure.cn/cognitive-services/speech-service/regions
-    auto config = SpeechConfig::FromHost("https://YourServiceRegion.tts.speech.azure.cn/", "YourSubscriptionKey");
+    auto config = SpeechConfig::FromSubscription("YourSubscriptionKey", "YourServiceRegion");
 
     // Creates a speech synthesizer using file as audio output.
     // Replace with your own audio file name.
@@ -91,7 +92,7 @@ ms.locfileid: "80151585"
 
 ## <a name="next-steps"></a>后续步骤
 
-[!INCLUDE [footer](./footer.md)]
+[!INCLUDE [Speech synthesis basics](../../text-to-speech-next-steps.md)]
 
 <!-- ## See also -->
 

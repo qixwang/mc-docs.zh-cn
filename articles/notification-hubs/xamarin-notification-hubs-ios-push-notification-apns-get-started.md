@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 通知中心向 Xamarin iOS 发送推送通知 | Microsoft Docs
+title: 使用 Azure 通知中心将推送通知发送到 Xamarin | Microsoft Docs
 description: 本教程介绍如何使用 Azure 通知中心将推送通知发送到 Xamarin.iOS 应用程序。
 services: notification-hubs
 keywords: ios 推送通知, 推送消息, 推送通知, 推送消息
@@ -15,16 +15,16 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.custom: mvc
 origin.date: 12/05/2019
-ms.date: 01/17/2020
+ms.date: 04/20/2020
 ms.author: v-tawe
 ms.reviewer: jowargo
 ms.lastreviewed: 05/23/2019
-ms.openlocfilehash: a94a739cdefd3640210b3f0907b72de113947344
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: b4e57ed3cc0fbf75c098b2ac13cf99e15ae2593d
+ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "76123156"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82588524"
 ---
 # <a name="tutorial-send-push-notifications-to-xamarinios-apps-using-azure-notification-hubs"></a>教程：使用 Azure 通知中心向 Xamarin.iOS 应用发送推送通知
 

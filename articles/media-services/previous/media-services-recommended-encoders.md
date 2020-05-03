@@ -7,15 +7,15 @@ author: WenJason
 manager: digimobile
 ms.author: v-jay
 origin.date: 03/20/2019
-ms.date: 02/24/2020
+ms.date: 05/11/2020
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 533719aefd9ddff6e5c5da66de4b8c51852150e0
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 9f6b14a85efe8fd8676180208963766939e5b4f1
+ms.sourcegitcommit: 95efd248f5ee3701f671dbd5cfe0aec9c9959a24
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77494260"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82507628"
 ---
 # <a name="recommended-on-premises-encoders"></a>推荐的本地编码器
 
@@ -32,12 +32,10 @@ Azure 媒体服务建议使用下列将 RTMP 作为输出的实时编码器之�
 - Adobe Flash 媒体实时编码器 3.2
 - Haivision Makito X HEVC
 - Haivision KB
-- Telestream Wirecast（根据 TLS 1.2 要求，版本为 13.0.2 或更高）
+- Telestream Wirecast（由于 TLS 1.2 要求，版本为 13.0.2 或更高）
 
   使用 RTMPS 协议时，编码器必须支持 TLS 1.2。
 - Teradek Slice 756
-- TriCaster 8000
-- Tricaster Mini HD-4
 - OBS Studio
 - VMIX
 - xStream
@@ -45,7 +43,7 @@ Azure 媒体服务建议使用下列将 RTMP 作为输出的实时编码器之�
 
 ## <a name="live-encoders-that-output-fragmented-mp4"></a>输出分片 MP4 的实时编码器 
 
-Azure 媒体服务建议使用下列将多比特率片段 MP4（平滑流式处理）作为输出的实时编码器之一：
+Azure 媒体服务建议使用下列将多比特率分段 MP4（平滑流式处理）作为输出的实时编码器之一：
 
 - Media Excel Hero Live 和 Hero 4K (UHD/HEVC)
 - Ateme TITAN Live
@@ -97,3 +95,4 @@ Azure 媒体服务建议使用下列将多比特率片段 MP4（平滑流式处�
 7. 停止直播活动
 8. 记录资产 ID、为实时存档发布的流式处理 URL，以及实时编码器所使用的设置和版本
 
+最后，通过电子邮件 amsstreaming@microsoft.com 将记录的设置和实时存档参数发送到媒体服务。 收到后，媒体服务会对实时编码器中的示例执行验证测试。 有关此过程的任何问题，请联系媒体服务。

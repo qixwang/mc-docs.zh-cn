@@ -11,12 +11,12 @@ ms.topic: include
 origin.date: 10/14/2019
 ms.date: 01/13/2020
 ms.author: v-tawe
-ms.openlocfilehash: 16bd2753b2bb357c950bbf492e8787b497e5b863
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 262907ca6d53e7c308709519547a51aedfb97b98
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75631048"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82150946"
 ---
 本指南介绍如何安装用于 macOS 10.13 及更高版本上的 C++ 的[语音 SDK](~/articles/cognitive-services/speech-service/speech-sdk.md)。
 
@@ -27,6 +27,9 @@ ms.locfileid: "75631048"
 macOS 10.13 及更高版本
 
 ## <a name="install-speech-sdk"></a>安装语音 SDK
+
+> [!IMPORTANT]
+> 需要语音 SDK 版本 1.10.0 或更高版本。
 
 1. 选择应将语音 SDK 文件提取到的目录，然后将 `SPEECHSDK_ROOT` 环境变量设置为指向该目录。 使用此变量，在将来的命令中可以轻松引用目录。 例如，如果要使用主目录中的 `speechsdk` 目录，请使用如下所示的命令：
 

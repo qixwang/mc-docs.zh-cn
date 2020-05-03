@@ -9,13 +9,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 origin.date: 11/04/2019
-ms.date: 03/16/2020
-ms.openlocfilehash: fa1cb0764169f8dc6f4228aa1b1290d50068033a
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/11/2020
+ms.openlocfilehash: 211751e78dab8e508ab5d09e752b76486823a1ea
+ms.sourcegitcommit: d210eb03ed6432aeefd3e9b1c77d2c92a6a8dbca
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78850193"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82591455"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-designer-preview"></a>教程：使用设计器部署机器学习模型（预览版）
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -40,7 +40,7 @@ ms.locfileid: "78850193"
 
 1. 在管道画布上方，选择“创建推理管道” > “实时推理管道”   。
 
-    ![显示“创建管道”按钮位置的屏幕截图](./media/tutorial-designer-automobile-price-deploy/create-inference-pipeline.png)
+    ![显示“创建管道”按钮位置的屏幕截图](./media/tutorial-designer-automobile-price-deploy/tutorial2-create-inference-pipeline.png)
 
     管道现在应如下所示： 
 
@@ -57,7 +57,9 @@ ms.locfileid: "78850193"
     > 默认情况下，“Web 服务输入”将需要与用于创建预测管道的训练数据相同的数据架构  。 在此方案中，价格包含在架构内。 但是，在预测过程中不会将价格用作因素。
     >
 
-1. 选择“运行”，并使用在第一部分使用过的相同计算目标和试验  。
+1. 选择“提交”，并使用在第一部分中使用的相同计算目标和试验  。
+
+    如果是第一次运行，则管道可能需要长达 20 分钟的时间才能完成运行。 默认计算设置中的最小节点大小为 0，这意味着设计器必须在空闲后分配资源。 由于计算资源已分配，因此，重复的管道运行花费的时间会更少。 此外，设计器还对每个模块使用缓存的结果，以便进一步提高效率。
 
 1. 选择“部署”。 
 
@@ -124,4 +126,4 @@ ms.locfileid: "78850193"
 本教程介绍了如何在设计器中创建、部署和使用机器学习模型的重要步骤。 若要详细了解如何使用设计器解决其他类型的问题，请查看其他示例管道。
 
 > [!div class="nextstepaction"]
-> [信用风险分类示例](how-to-designer-sample-classification-credit-risk-cost-sensitive.md)
+> [设计器示例](samples-designer.md)

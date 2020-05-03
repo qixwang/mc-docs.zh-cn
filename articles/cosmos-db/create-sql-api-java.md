@@ -7,15 +7,15 @@ ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: quickstart
 origin.date: 10/31/2019
-ms.date: 02/10/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
 ms.custom: seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 33c1cc2e79c36925acebe4b51c935c7c9ef4c938
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: bfe3dd7b1e0d8b3be13b3c489c0ad9d6d1160751
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292934"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134957"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-sql-api-data"></a>快速入门：生成 Java 应用以管理 Azure Cosmos DB SQL API 数据
 
@@ -27,21 +27,29 @@ ms.locfileid: "79292934"
 > * [Python](create-sql-api-python.md)
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
 
-本快速入门介绍如何使用 Java 应用程序创建和管理 Azure Cosmos DB SQL API 帐户的文档数据库。 首先，请使用 Azure 门户创建 Azure Cosmos DB SQL API 帐户，使用 SQL Java SDK 创建 Java 应用，然后使用 Java 应用程序将资源添加到 Cosmos DB 帐户。 本快速入门中的说明适用于任何能够运行 Java 的操作系统。 完成本快速入门以后，你就会熟悉如何通过 UI 或编程方式（以首选方式为准）创建和修改 Cosmos DB 数据库和容器。
+在本快速入门中，你将通过 Azure 门户并使用从 GitHub 克隆的 Java 应用来创建和管理 Azure Cosmos DB SQL API 帐户。 首先，请使用 Azure 门户创建 Azure Cosmos DB SQL API 帐户，使用 SQL Java SDK 创建 Java 应用，然后使用 Java 应用程序将资源添加到 Cosmos DB 帐户。 Azure Cosmos DB 是一种多模型数据库服务，可让你通过多区域分布和水平缩放功能快速创建和查询文档、表、键/值和图数据库。
 
 ## <a name="prerequisites"></a>先决条件
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] 
-[!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
+- 具有活动订阅的 Azure 帐户。 [免费创建一个](https://www.azure.cn/pricing/1rmb-trial/)。 你还可以使用 [Azure Cosmos DB 模拟器](https://aka.ms/cosmosdb-emulator)以及 URI `https://localhost:8081` 和密钥 `C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==`。
 
-此外： 
+    <!--Not Available on [try Azure Cosmos DB for free](https://www.azure.cn/try/cosmosdb/)-->
+    
+- [Java 开发工具包 (JDK) 8](https://www.azul.com/downloads/azure-only/zulu/?&version=java-8-lts&architecture=x86-64-bit&package=jdk)。 将 `JAVA_HOME` 环境变量指向其中安装了 JDK 的文件夹。
+- [Maven 二进制存档](https://maven.apache.org/download.cgi)。 在 Ubuntu 上运行 `apt-get install maven`，以安装 Maven。
+- [Git](https://www.git-scm.com/downloads)。 在 Ubuntu 上运行 `sudo apt-get install git`，以安装 Git。
 
-* [Java 开发工具包 (JDK) 版本 8](https://docs.azure.cn/java/java-supported-jdk-runtime?view=azure-java-stable)
-    * 请确保设置 JAVA_HOME 环境变量，使之指向在其中安装了 JDK 的文件夹。
-* [下载](https://maven.apache.org/download.cgi)和[安装](https://maven.apache.org/install.html)[Maven](https://maven.apache.org/) 二进制存档
-    * 在 Ubuntu 上，可以通过运行 `apt-get install maven` 来安装 Maven。
-* [Git](https://www.git-scm.com/)
-    * 在 Ubuntu 上，可以通过运行 `sudo apt-get install git` 来安装 Git。
+## <a name="introductory-notes"></a>介绍性说明
+
+Cosmos DB 帐户的结构。  不管使用 API 还是编程语言，都具有以下特点：一个 Cosmos DB 帐户  包含零个或零个以上的数据库  ，一个数据库  (DB) 包含零个或零个以上的容器  ，一个容器  包含零个或零个以上的项，如下图所示：
+
+![Azure Cosmos 帐户实体](./media/databases-containers-items/cosmos-entities.png)
+
+可在[此处](databases-containers-items.md)阅读有关数据库、容器和项的详细信息。 几个重要属性在容器级别定义，其中包括预配吞吐量  和分区键  。 
+
+预配吞吐量以具有货币价格的请求单位 (*RU*) 度量，是帐户运营成本中重要的确定性因素。 可以按单容器粒度或单数据库粒度选择预配吞吐量，但通常首选容器级别吞吐量规范。 可在[此处](set-throughput.md)阅读有关吞吐量预配的详细信息。
+
+将项插入 Cosmos DB 容器时，数据库会添加更多的存储和计算来处理请求，以水平方式增长。 存储和计算容量添加到称为分区  的离散单元中，你必须在文档中选择一个字段作为分区键，以便将每个文档映射到分区。 分区的管理方式是从分区键值的范围内为每个分区分配一个大致相等的切片；因此，建议选择相对随机或均匀分布的分区键。 否则，某些分区看到的请求数会多得多（热分区  ），而其他分区看到的请求数会少得多（冷分区  ），这是应该避免的。 可以在[此处](partitioning-overview.md)详细了解分区。
 
 ## <a name="create-a-database-account"></a>创建数据库帐户
 
@@ -66,15 +74,17 @@ ms.locfileid: "79292934"
 
 现在，让我们转到如何使用代码上来。 接下来，克隆 GitHub 中的一个 SQL API 应用，设置连接字符串，并运行该应用。 会看到以编程方式处理数据是多么容易。 
 
-1. 运行下列命令，克隆示例存储库。 此命令在计算机上创建示例应用程序的副本。
+运行下列命令，克隆示例存储库。 此命令在计算机上创建示例应用程序的副本。
 
-    ```bash
-    git clone https://github.com/Azure-Samples/azure-cosmos-java-getting-started.git
-    ```
+```bash
+git clone https://github.com/Azure-Samples/azure-cosmos-java-getting-started.git
+```
 
 ## <a name="review-the-code"></a>查看代码
 
 此步骤是可选的。 如果有意了解如何使用代码创建数据库资源，可以查看以下代码片段。 否则，可以跳到[运行应用](#run-the-app)。 
+
+### <a name="managing-database-resources-using-the-synchronous-sync-api"></a>使用同步 (sync) API 管理数据库资源
 
 * `CosmosClient` 初始化。 `CosmosClient` 为 Azure Cosmos 数据库服务提供客户端逻辑表示形式。 此客户端用于对服务配置和执行请求。
 
@@ -88,14 +98,14 @@ ms.locfileid: "79292934"
 
     ```
 
-* 创建 CosmosDatabase。
+* `CosmosDatabase` 的创建。
 
     ```java
     database = client.createDatabaseIfNotExists(databaseName).getDatabase();
 
     ```
 
-* 创建 CosmosContainer。
+* `CosmosContainer` 的创建。
 
     ```java
     CosmosContainerProperties containerProperties =
@@ -113,21 +123,20 @@ ms.locfileid: "79292934"
 
     //  Use lastName as partitionKey for cosmos item
     //  Using appropriate partition key improves the performance of database operations
-    CosmosItemRequestOptions cosmosItemRequestOptions = new CosmosItemRequestOptions(family.getLastName());
-    CosmosItemResponse item = container.createItem(family, cosmosItemRequestOptions);
+    CosmosItemRequestOptions cosmosItemRequestOptions = new CosmosItemRequestOptions();
+    CosmosItemResponse<Family> item = container.createItem(family, new PartitionKey(family.getLastName()), cosmosItemRequestOptions);
 
     ```
 
-* 使用 `getItem` 和 `read` 方法执行点读取
+* 使用 `readItem` 方法执行点读取。
 
     ```java
-    CosmosItem item = container.getItem(family.getId(), family.getLastName());
     try {
-        CosmosItemResponse read = item.read(new CosmosItemRequestOptions(family.getLastName()));
-        double requestCharge = read.getRequestCharge();
-        Duration requestLatency = read.getRequestLatency();
+        CosmosItemResponse<Family> item = container.readItem(family.getId(), new PartitionKey(family.getLastName()), Family.class);
+        double requestCharge = item.getRequestCharge();
+        Duration requestLatency = item.getRequestLatency();
         System.out.println(String.format("Item successfully read with id %s with a charge of %.2f and within duration %s",
-            read.getItem().getId(), requestCharge, requestLatency));
+            item.getResource().getId(), requestCharge, requestLatency));
     } catch (CosmosClientException e) {
         e.printStackTrace();
         System.err.println(String.format("Read Item failed with %s", e));
@@ -140,15 +149,14 @@ ms.locfileid: "79292934"
     ```java
     // Set some common query options
     FeedOptions queryOptions = new FeedOptions();
-    queryOptions.maxItemCount(10);
-    queryOptions.setEnableCrossPartitionQuery(true);
+    //queryOptions.setEnableCrossPartitionQuery(true); //No longer necessary in SDK v4
     //  Set populate query metrics to get metrics around query executions
-    queryOptions.populateQueryMetrics(true);
+    queryOptions.setPopulateQueryMetrics(true);
 
-    Iterator<FeedResponse<CosmosItemProperties>> feedResponseIterator = container.queryItems(
-        "SELECT * FROM Family WHERE Family.lastName IN ('Andersen', 'Wakefield', 'Johnson')", queryOptions);
+    CosmosPagedIterable<Family> familiesPagedIterable = container.queryItems(
+        "SELECT * FROM Family WHfERE Family.lastName IN ('Andersen', 'Wakefield', 'Johnson')", queryOptions, Family.class);
 
-    feedResponseIterator.forEachRemaining(cosmosItemPropertiesFeedResponse -> {
+    familiesPagedIterable.iterableByPage(10).forEach(cosmosItemPropertiesFeedResponse -> {
         System.out.println("Got a page of query result with " +
             cosmosItemPropertiesFeedResponse.getResults().size() + " items(s)"
             + " and request charge of " + cosmosItemPropertiesFeedResponse.getRequestCharge());
@@ -156,9 +164,183 @@ ms.locfileid: "79292934"
         System.out.println("Item Ids " + cosmosItemPropertiesFeedResponse
             .getResults()
             .stream()
-            .map(Resource::getId)
+            .map(Family::getId)
             .collect(Collectors.toList()));
     });
+
+    ```
+
+### <a name="managing-database-resources-using-the-asynchronous-async-api"></a>使用异步 (async) API 管理数据库资源
+
+* 异步 API 调用立即返回，而不等待服务器的响应。 对于这种情况，以下代码片段演示了通过异步 API 完成上述所有管理任务时可用的正确设计模式。
+
+* `CosmosAsyncClient` 初始化。 `CosmosAsyncClient` 为 Azure Cosmos 数据库服务提供客户端逻辑表示形式。 此客户端用于对服务配置和执行异步请求。
+
+    ```java
+    client = new CosmosClientBuilder()
+        .setEndpoint(AccountSettings.HOST)
+        .setKey(AccountSettings.MASTER_KEY)
+        .setConnectionPolicy(defaultPolicy)
+        .setConsistencyLevel(ConsistencyLevel.EVENTUAL)
+        .buildAsyncClient();
+
+    ```
+
+* `CosmosAsyncDatabase` 的创建。
+
+    ```java
+    database = client.createDatabaseIfNotExists(databaseName).getDatabase();
+
+    ```
+
+* `CosmosAsyncContainer` 的创建。
+
+    ```java
+    CosmosContainerProperties containerProperties =
+        new CosmosContainerProperties(containerName, "/lastName");
+
+    //  Create container with 400 RU/s
+    container = database.createContainerIfNotExists(containerProperties, 400).getContainer();
+
+    ```
+
+* 与同步 API 一样，项的创建是使用 `createItem` 方法完成的。 此示例演示如何通过订阅反应流（发出请求并输出通知）来有效地发出大量异步 `createItem` 请求。 由于此简单示例会一直运行到完成并终止，因此使用了 `CountDownLatch` 实例来确保程序在创建项期间不会终止。 **适当的异步编程做法是不要阻止异步调用 - 在真实用例中，请求是从一个无限期执行的 main() 循环生成的，因此无需闩锁异步调用。**
+
+    ```java
+
+    final CountDownLatch completionLatch = new CountDownLatch(1);
+
+    //  Combine multiple item inserts, associated success println's, and a final aggregate stats println into one Reactive stream.
+    families.flatMap(family -> {
+            return container.createItem(family);
+        }) //Flux of item request responses
+        .flatMap(itemResponse -> {
+            System.out.println(String.format("Created item with request charge of %.2f within" +
+                " duration %s",
+                itemResponse.getRequestCharge(), itemResponse.getRequestLatency()));
+            System.out.println(String.format("Item ID: %s\n", itemResponse.getItem().getId()));
+            return Mono.just(itemResponse.getRequestCharge());
+        }) //Flux of request charges
+        .reduce(0.0, 
+            (charge_n,charge_nplus1) -> charge_n + charge_nplus1
+        ) //Mono of total charge - there will be only one item in this stream            
+        .subscribe(charge -> { 
+            System.out.println(String.format("Created items with total request charge of %.2f\n",
+            charge));         
+        }, 
+            err -> {
+                if (err instanceof CosmosClientException) {
+                    //Client-specific errors
+                    CosmosClientException cerr = (CosmosClientException)err;
+                    cerr.printStackTrace();
+                    System.err.println(String.format("Read Item failed with %s\n", cerr));
+                } else {
+                    //General errors
+                    err.printStackTrace();
+                }
+
+                completionLatch.countDown();                    
+            }, 
+            () -> {completionLatch.countDown();}
+    ); //Preserve the total charge and print aggregate charge/item count stats.
+
+    try {
+        completionLatch.await();            
+    } catch (InterruptedException err) {
+        throw new AssertionError("Unexpected Interruption",err);
+    }
+
+    ```
+
+* 与同步 API 一样，点读取是使用 `readItem` 方法执行的。
+
+    ```java
+
+    final CountDownLatch completionLatch = new CountDownLatch(1);
+
+    familiesToCreate.flatMap(family -> {
+                        Mono<CosmosAsyncItemResponse<Family>> asyncItemResponseMono = container.readItem(family.getId(), new PartitionKey(family.getLastName()), Family.class);
+                        return asyncItemResponseMono;
+                    })
+                    .subscribe(
+                        itemResponse -> {
+                            double requestCharge = itemResponse.getRequestCharge();
+                            Duration requestLatency = itemResponse.getRequestLatency();
+                            System.out.println(String.format("Item successfully read with id %s with a charge of %.2f and within duration %s",
+                                itemResponse.getItem().getId(), requestCharge, requestLatency));
+                        },
+                        err -> {
+                            if (err instanceof CosmosClientException) {
+                                //Client-specific errors
+                                CosmosClientException cerr = (CosmosClientException)err;
+                                cerr.printStackTrace();
+                                System.err.println(String.format("Read Item failed with %s\n", cerr));
+                            } else {
+                                //General errors
+                                err.printStackTrace();
+                            }
+
+                            completionLatch.countDown();
+                        },
+                        () -> {completionLatch.countDown();}
+    );
+
+    try {
+        completionLatch.await();             
+    } catch (InterruptedException err) {
+        throw new AssertionError("Unexpected Interruption",err);
+    }
+
+    ```
+
+* 与同步 API 一样，对 JSON 的 SQL 查询是使用 `queryItems` 方法执行的。
+
+    ```java
+    // Set some common query options
+
+    FeedOptions queryOptions = new FeedOptions();
+    //queryOptions.setEnableCrossPartitionQuery(true); //No longer needed in SDK v4
+    //  Set populate query metrics to get metrics around query executions
+    queryOptions.setPopulateQueryMetrics(true);
+
+    CosmosPagedFlux<Family> pagedFluxResponse = container.queryItems(
+        "SELECT * FROM Family WHERE Family.lastName IN ('Andersen', 'Wakefield', 'Johnson')", queryOptions, Family.class);
+
+    final CountDownLatch completionLatch = new CountDownLatch(1);
+
+    pagedFluxResponse.byPage(10).subscribe(
+        fluxResponse -> {
+            System.out.println("Got a page of query result with " +
+                fluxResponse.getResults().size() + " items(s)"
+                + " and request charge of " + fluxResponse.getRequestCharge());
+
+            System.out.println("Item Ids " + fluxResponse
+                .getResults()
+                .stream()
+                .map(Family::getId)
+                .collect(Collectors.toList()));
+        },
+        err -> {
+            if (err instanceof CosmosClientException) {
+                //Client-specific errors
+                CosmosClientException cerr = (CosmosClientException)err;
+                cerr.printStackTrace();
+                System.err.println(String.format("Read Item failed with %s\n", cerr));
+            } else {
+                //General errors
+                err.printStackTrace();
+            }
+
+            completionLatch.countDown();
+        },
+        () -> {completionLatch.countDown();}
+    );
+
+    try {
+        completionLatch.await();             
+    } catch (InterruptedException err) {
+        throw new AssertionError("Unexpected Interruption",err);
+    }
 
     ```
 
@@ -178,10 +360,10 @@ ms.locfileid: "79292934"
     mvn package
     ```
 
-3. 在 git 终端窗口中，使用以下命令启动 Java 应用程序（将 YOUR_COSMOS_DB_HOSTNAME 替换为门户中带引号的 URI 值，将 YOUR_COSMOS_DB_MASTER_KEY 替换为门户中带引号的主键）
+3. 在 git 终端窗口中，使用以下命令启动 Java 应用程序（请将 SYNCASYNCMODE 替换为 `sync` 或 `async`，具体取决于要运行的示例代码；将 YOUR_COSMOS_DB_HOSTNAME 替换为门户中带引号的 URI 值，并将 YOUR_COSMOS_DB_MASTER_KEY 替换为门户中带引号的主密钥）
 
     ```bash
-    mvn exec:java -DACCOUNT_HOST=YOUR_COSMOS_DB_HOSTNAME -DACCOUNT_KEY=YOUR_COSMOS_DB_MASTER_KEY
+    mvn exec:java@SYNCASYNCMODE -DACCOUNT_HOST=YOUR_COSMOS_DB_HOSTNAME -DACCOUNT_KEY=YOUR_COSMOS_DB_MASTER_KEY
 
     ```
 
@@ -204,9 +386,10 @@ ms.locfileid: "79292934"
 
 ## <a name="next-steps"></a>后续步骤
 
-本快速入门介绍了如何使用数据资源管理器创建 Azure Cosmos 帐户、文档数据库和容器，以及如何通过运行应用以编程方式执行同一操作。 现在可以将其他数据导入 Azure Cosmos 容器。 
+在本快速入门中，你已了解了如何使用数据资源管理器创建 Azure Cosmos DB SQL API 帐户、文档数据库和容器，以及如何通过运行 Java 应用以编程方式执行同一操作。 现在可以将其他数据导入 Azure Cosmos DB 帐户了。 
 
 > [!div class="nextstepaction"]
 > [将数据导入 Azure Cosmos DB](import-data.md)
 
 <!-- Update_Description: update meta properties, wording update, update link -->
+

@@ -5,24 +5,21 @@ services: active-directory
 documentationcenter: .net
 author: navyasric
 manager: CelesteDG
-editor: ''
-ms.assetid: 09f6f318-e88b-4024-9ee1-e7f09fb19a82
 ms.service: active-directory
 ms.subservice: azuread-dev
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/23/2020
+ms.date: 04/23/2020
 ms.author: v-junlch
 ms.reviewer: hirsin, nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 351dbd6a653ae49c0138ec3e9c11f0884d2229a0
-ms.sourcegitcommit: 6568c59433d7e80ab06e9fe76d4791f761ed6775
+ROBOTS: NOINDEX
+ms.openlocfilehash: 39016788e0695b550c7606ff99ed29c0dd3a76af
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80243172"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126317"
 ---
 # <a name="service-to-service-calls-that-use-delegated-user-identity-in-the-on-behalf-of-flow"></a>代理流中使用委托用户标识的服务到服务调用
 
@@ -110,13 +107,13 @@ https://login.partner.microsoftonline.cn/<tenant>/oauth2/token
 
 | 参数 |  | 说明 |
 | --- | --- | --- |
-| grant_type |必填 | 令牌请求的类型。 OBO 请求使用 JSON Web 令牌 (JWT)，因此值必须是 urn:ietf:params:oauth:grant-type:jwt-bearer  。 |
-| assertion |必填 | 请求中使用的访问令牌值。 |
-| client_id |必填 | 在注册到 Azure AD 期间分配给调用服务的应用 ID。 要在 Azure 门户中查找应用 ID，请选择“Active Directory”，选择目录，然后选择应用程序名称  。 |
-| client_secret |必填 | 在 Azure AD 中为调用服务注册的密钥。 注册时应已记下此值。 |
-| resource |必填 | 接收服务（受保护资源）的应用 ID URI。 要在 Azure 门户中查找应用 ID URI，请选择“Active Directory”并选择目录  。 选择应用程序名称，选择“所有设置”，然后选择“属性”   。 |
-| requested_token_use |必填 | 指定应如何处理请求。 在代理流中，该值必须是 **on_behalf_of**。 |
-| scope |必填 | 空格分隔的令牌请求作用域的列表。 对于 OpenID Connect，必须指定范围 **openid**。|
+| grant_type |必需 | 令牌请求的类型。 OBO 请求使用 JSON Web 令牌 (JWT)，因此值必须是 urn:ietf:params:oauth:grant-type:jwt-bearer  。 |
+| assertion |必需 | 请求中使用的访问令牌值。 |
+| client_id |必需 | 在注册到 Azure AD 期间分配给调用服务的应用 ID。 要在 Azure 门户中查找应用 ID，请选择“Active Directory”，选择目录，然后选择应用程序名称  。 |
+| client_secret |必需 | 在 Azure AD 中为调用服务注册的密钥。 注册时应已记下此值。 |
+| resource |必需 | 接收服务（受保护资源）的应用 ID URI。 要在 Azure 门户中查找应用 ID URI，请选择“Active Directory”并选择目录  。 选择应用程序名称，选择“所有设置”，然后选择“属性”   。 |
+| requested_token_use |必需 | 指定应如何处理请求。 在代理流中，该值必须是 **on_behalf_of**。 |
+| scope |必需 | 空格分隔的令牌请求作用域的列表。 对于 OpenID Connect，必须指定范围 **openid**。|
 
 #### <a name="example"></a>示例
 
@@ -144,14 +141,14 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 
 | 参数 |  | 说明 |
 | --- | --- | --- |
-| grant_type |必填 | 令牌请求的类型。 OBO 请求使用 JWT 访问令牌，因此值必须是 urn:ietf:params:oauth:grant-type:jwt-bearer  。 |
-| assertion |必填 | 请求中使用的令牌值。 |
-| client_id |必填 | 在注册到 Azure AD 期间分配给调用服务的应用 ID。 要在 Azure 门户中查找应用 ID，请选择“Active Directory”，选择目录，然后选择应用程序名称  。 |
-| client_assertion_type |必填 |值必须是 `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` |
-| client_assertion |必填 | JSON Web 令牌使用作为凭据向应用程序注册的证书进行创建和签名。 请参阅[证书凭据](../develop/active-directory-certificate-credentials.md?toc=/active-directory/azuread-dev/toc.json&bc=/active-directory/azuread-dev/breadcrumb/toc.json)了解断言格式以及如何注册证书。|
-| resource |必填 | 接收服务（受保护资源）的应用 ID URI。 要在 Azure 门户中查找应用 ID URI，请选择“Active Directory”并选择目录  。 选择应用程序名称，选择“所有设置”，然后选择“属性”   。 |
-| requested_token_use |必填 | 指定应如何处理请求。 在代理流中，该值必须是 **on_behalf_of**。 |
-| scope |必填 | 空格分隔的令牌请求作用域的列表。 对于 OpenID Connect，必须指定范围 **openid**。|
+| grant_type |必需 | 令牌请求的类型。 OBO 请求使用 JWT 访问令牌，因此值必须是 urn:ietf:params:oauth:grant-type:jwt-bearer  。 |
+| assertion |必需 | 请求中使用的令牌值。 |
+| client_id |必需 | 在注册到 Azure AD 期间分配给调用服务的应用 ID。 要在 Azure 门户中查找应用 ID，请选择“Active Directory”，选择目录，然后选择应用程序名称  。 |
+| client_assertion_type |必需 |值必须是 `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` |
+| client_assertion |必需 | JSON Web 令牌使用作为凭据向应用程序注册的证书进行创建和签名。 请参阅[证书凭据](../develop/active-directory-certificate-credentials.md?toc=/active-directory/azuread-dev/toc.json&bc=/active-directory/azuread-dev/breadcrumb/toc.json)了解断言格式以及如何注册证书。|
+| resource |必需 | 接收服务（受保护资源）的应用 ID URI。 要在 Azure 门户中查找应用 ID URI，请选择“Active Directory”并选择目录  。 选择应用程序名称，选择“所有设置”，然后选择“属性”   。 |
+| requested_token_use |必需 | 指定应如何处理请求。 在代理流中，该值必须是 **on_behalf_of**。 |
+| scope |必需 | 空格分隔的令牌请求作用域的列表。 对于 OpenID Connect，必须指定范围 **openid**。|
 
 这些参数与共享密钥请求几乎相同，只是 `client_secret parameter` 被以下两个参数替换：`client_assertion_type` 和 `client_assertion`。
 
@@ -254,13 +251,13 @@ SAML 断言的服务到服务请求包含以下参数：
 
 | 参数 |  | 说明 |
 | --- | --- | --- |
-| grant_type |必填 | 令牌请求的类型。 对于使用 JWT 的请求，该值必须是 urn:ietf:params:oauth:grant-type:jwt-bearer  。 |
-| assertion |必填 | 请求中使用的访问令牌值。|
-| client_id |必填 | 在注册到 Azure AD 期间分配给调用服务的应用 ID。 要在 Azure 门户中查找应用 ID，请选择“Active Directory”，选择目录，然后选择应用程序名称  。 |
-| client_secret |必填 | 在 Azure AD 中为调用服务注册的密钥。 注册时应已记下此值。 |
-| resource |必填 | 接收服务（受保护资源）的应用 ID URI。 这是将成为 SAML 令牌受众的资源。 要在 Azure 门户中查找应用 ID URI，请选择“Active Directory”并选择目录  。 选择应用程序名称，选择“所有设置”，然后选择“属性”   。 |
-| requested_token_use |必填 | 指定应如何处理请求。 在代理流中，该值必须是 **on_behalf_of**。 |
-| requested_token_type | 必填 | 指定请求令牌的类型。 值可以是 urn:ietf:params:oauth:token-type:saml2 或 urn:ietf:params:oauth:token-type:saml1，具体取决于访问资源的要求   。 |
+| grant_type |必需 | 令牌请求的类型。 对于使用 JWT 的请求，该值必须是 urn:ietf:params:oauth:grant-type:jwt-bearer  。 |
+| assertion |必需 | 请求中使用的访问令牌值。|
+| client_id |必需 | 在注册到 Azure AD 期间分配给调用服务的应用 ID。 要在 Azure 门户中查找应用 ID，请选择“Active Directory”，选择目录，然后选择应用程序名称  。 |
+| client_secret |必需 | 在 Azure AD 中为调用服务注册的密钥。 注册时应已记下此值。 |
+| resource |必需 | 接收服务（受保护资源）的应用 ID URI。 这是将成为 SAML 令牌受众的资源。 要在 Azure 门户中查找应用 ID URI，请选择“Active Directory”并选择目录  。 选择应用程序名称，选择“所有设置”，然后选择“属性”   。 |
+| requested_token_use |必需 | 指定应如何处理请求。 在代理流中，该值必须是 **on_behalf_of**。 |
+| requested_token_type | 必需 | 指定请求令牌的类型。 值可以是 urn:ietf:params:oauth:token-type:saml2 或 urn:ietf:params:oauth:token-type:saml1，具体取决于访问资源的要求   。 |
 
 响应包含以 UTF8 和 Base64url 编码的 SAML 令牌。
 

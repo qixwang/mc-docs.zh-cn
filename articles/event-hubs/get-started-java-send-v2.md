@@ -7,14 +7,14 @@ ms.service: event-hubs
 ms.workload: core
 ms.topic: quickstart
 origin.date: 02/11/2020
-ms.date: 03/16/2020
+ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: c4b02eec66a55eaa77606444e38dcfe5d25bce54
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 8046b89624ea04e18b57d91b9e8c121bfe8f1cf0
+ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80243919"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82588722"
 ---
 # <a name="use-java-to-send-events-to-or-receive-events-from-azure-event-hubs-azure-messaging-eventhubs"></a>使用 Java 向/从 Azure 事件中心 (azure-messaging-eventhubs) 发送/接收事件
 本快速入门介绍如何使用 **azure-messaging-eventhubs** Java 包向事件中心发送事件以及从事件中心接收事件。
@@ -37,7 +37,7 @@ ms.locfileid: "80243919"
 
 ### <a name="add-reference-to-azure-event-hubs-library"></a>将引用添加到 Azure 事件中心库
 
-事件中心的 Java 客户端库可用于 [Maven 中央存储库](https://search.maven.org/search?q=a:azure-messaging-eventhubs)中的 Marven 项目。 可使用 Maven 项目文件中的以下依赖项声明引用此库：
+[Maven 中心存储库](https://search.maven.org/search?q=a:azure-messaging-eventhubs)中提供了事件中心的 Java 客户端库。 可使用 Maven 项目文件中的以下依赖项声明引用此库：
 
 ```xml
 <dependency>
@@ -49,7 +49,7 @@ ms.locfileid: "80243919"
 
 ### <a name="write-code-to-send-messages-to-the-event-hub"></a>编写代码以将消息发送到事件中心
 
-对于下面的示例，请首先在你最喜欢的 Java 开发环境中为控制台/shell 应用程序创建一个新的 Maven 项目。 添加一个名为 `SimpleSend` 的类，并向该类中添加以下代码：
+对于下面的示例，请首先在你最喜欢的 Java 开发环境中为控制台/shell 应用程序创建一个新的 Maven 项目。 添加一个名为 `Sender` 的类，并向该类中添加以下代码：
 
 ```java
 import com.azure.messaging.eventhubs.*;

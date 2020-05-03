@@ -2,24 +2,21 @@
 title: 在调用 Web API 的 Web 应用中获取令牌 - Microsoft 标识平台 | Azure
 description: 了解如何获取调用 Web API 的 Web 应用的令牌
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/06/2020
+ms.date: 04/22/2020
 ms.author: v-junlch
 ms.custom: aaddev
-ms.openlocfilehash: 1106aad1bd6223090d18a962c9224675b59eee77
-ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
+ms.openlocfilehash: ba1c7c52b2d429c99ca4bc25f99ae8256e82dbcc
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77067623"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126440"
 ---
 # <a name="a-web-app-that-calls-web-apis-acquire-a-token-for-the-app"></a>调用 Web API 的 Web 应用：获取应用的令牌
 
@@ -28,7 +25,7 @@ ms.locfileid: "77067623"
 - 使用令牌缓存获取 Web API 的令牌。 若要获取此令牌，请调用 `AcquireTokenSilent` 方法。
 - 调用受保护的 API，将访问令牌作为参数传递给它。
 
-# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+# <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
 控制器方法受 `[Authorize]` 属性的保护，该属性会强制经身份验证的用户使用 Web 应用。 下面是用于调用 Microsoft Graph 的代码：
 
@@ -66,7 +63,7 @@ public async Task<IActionResult> Profile()
 }
 ```
 
-若要更好地了解此方案所需的代码，请参阅 [ms-identity-aspnetcore-webapp-tutorial](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial) 教程的阶段 2 ([2-1-Web App Calls Microsoft Graph](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-1-Call-MSGraph)) 步骤。
+若要更好地了解此方案所需的代码，请参阅 [ms-identity-aspnetcore-webapp-tutorial](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial) 教程的阶段 2（[2-1-Web 应用调用 Microsoft Graph](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-1-Call-MSGraph)）步骤。
 
 还有其他复杂的变化形式，例如：
 
@@ -75,7 +72,7 @@ public async Task<IActionResult> Profile()
 
 [3-WebApp-multi-APIs](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/3-WebApp-multi-APIs) 教程的第 3 章中涵盖了这些高级步骤。
 
-# <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
+# <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
 适用于 ASP.NET 的代码类似于为 ASP.NET Core 显示的代码：
 
@@ -83,7 +80,7 @@ public async Task<IActionResult> Profile()
 - 然后，它会构建一个 MSAL.NET `IConfidentialClientApplication` 对象。
 - 最后，它调用机密客户端应用程序的 `AcquireTokenSilent` 方法。
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 在 Java 示例中，调用 API 的代码位于 [AuthPageController.java#L62](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/AuthPageController.java#L62) 中的 getUsersFromGraph 方法中。
 
@@ -145,7 +142,7 @@ public ModelAndView getUserFromGraph(HttpServletRequest httpRequest, HttpServlet
 // Code omitted here
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 在 Python 示例中，调用 Microsoft Graph 的代码位于 [app.py#L53-L62](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/48637475ed7d7733795ebeac55c5d58663714c60/app.py#L53-L62) 中。
 
@@ -169,4 +166,3 @@ def graphcall():
 > [!div class="nextstepaction"]
 > [调用 Web API](scenario-web-app-call-api-call-api.md)
 
-<!-- Update_Description: wording update -->

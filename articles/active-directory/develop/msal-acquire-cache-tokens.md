@@ -1,34 +1,28 @@
 ---
-title: 使用 MSAL 获取和缓存令牌
+title: 使用 MSAL 获取和缓存令牌 | Azure
 titleSuffix: Microsoft identity platform
 description: 了解如何使用 Microsoft 身份验证库 (MSAL) 获取和缓存令牌。
 services: active-directory
-documentationcenter: dev-center-name
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-origin.date: 11/07/2019
-ms.date: 11/26/2019
+ms.date: 04/22/2020
 ms.author: v-junlch
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 735393bf1a6ebc986a93048fccf5cc273d643891
-ms.sourcegitcommit: 9597d4da8af58009f9cef148a027ccb7b32ed8cf
+ms.openlocfilehash: c5939ffdaa244b535e98ace6e7600776123cd86b
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74655363"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126520"
 ---
 # <a name="acquire-and-cache-tokens-using-the-microsoft-authentication-library-msal"></a>使用 Microsoft 身份验证库 (MSAL) 获取和缓存令牌
 
-客户端可以使用[访问令牌](access-tokens.md)安全调用受 Azure 保护的 Web API。 可以使用 Microsoft 身份验证库 (MSAL) 通过多种方法获取令牌。 有些方法需要用户通过 Web 浏览器进行交互。 而有些方法则不需要任何用户交互。 一般情况下，获取令牌的方法取决于应用程序是公共客户端应用程序（桌面或移动应用）还是机密客户端应用程序（Web 应用、Web API，或类似于 Windows 服务的后台程序应用程序）。
+客户端可以使用[访问令牌](access-tokens.md)安全调用受 Azure 保护的 Web API。 可以使用 Microsoft 身份验证库 (MSAL) 通过多种方法获取令牌。 有些方法需要用户通过 Web 浏览器进行交互。 而有些方法则不需要任何用户交互。 一般情况下，获取令牌的方法取决于应用程序是公共客户端应用程序（桌面或移动应用）还是机密客户端应用程序（Web 应用、Web API，或类似于 Windows 服务的守护程序应用程序）。
 
 MSAL 在获取令牌后会缓存令牌。  在通过其他方式获取令牌之前，应用程序代码应该先尝试以无提示方式（从缓存中）获取令牌。
 
@@ -69,18 +63,18 @@ MSAL 维护一个令牌缓存（对机密客户端应用程序维护两个），
 
 ### <a name="recommended-call-pattern-for-public-client-applications"></a>公共客户端应用程序的建议调用模式
 
-应用程序代码应该先尝试以无提示方式（从缓存中）获取令牌。  如果方法调用返回“需要 UI”错误或异常，请尝试通过其他方式获取令牌。 
+应用程序代码应该先尝试以无提示方式（从缓存中）获取令牌。  如果方法调用返回“需要 UI”错误或异常，请尝试通过其他方式获取令牌。
 
 但是，在尝试以无提示方式获取令牌之前，应该**先**完成两个流：
 
 - [客户端凭据流](msal-authentication-flows.md#client-credentials)：不使用用户令牌缓存，而是使用应用程序令牌缓存。 在将请求发送到 STS 之前，此方法负责验证此应用程序令牌缓存。
-- Web 应用中的[授权代码流](msal-authentication-flows.md#authorization-code)：通过将用户登录并让他们许可更多范围，来兑换应用程序收到的代码。 由于代码是作为参数而不是帐户传递的，该方法在兑换代码之前无法查看缓存，这仍然需要调用服务。
+- Web 应用中的[授权代码流](msal-authentication-flows.md#authorization-code)：因为它兑换了应用程序通过将用户登录并让他们许可更多范围而获得的代码。 由于代码是作为参数而不是帐户传递的，该方法在兑换代码之前无法查看缓存，这仍然需要调用服务。
 
 ### <a name="recommended-call-pattern-in-web-apps-using-the-authorization-code-flow"></a>使用授权代码流的 Web 应用中的建议调用模式
 
 对于使用 [OpenID Connect 授权代码流](v2-protocols-oidc.md)的 Web 应用程序，控制器中的建议模式为：
 
-- 使用已经过自定义序列化的令牌缓存实例化某个机密客户端应用程序。 
+- 使用已经过自定义序列化的令牌缓存实例化某个机密客户端应用程序。
 - 使用授权代码流获取令牌
 
 ## <a name="acquiring-tokens"></a>获取令牌
@@ -97,8 +91,8 @@ MSAL 维护一个令牌缓存（对机密客户端应用程序维护两个），
 
 ### <a name="confidential-client-applications"></a>机密客户端应用程序
 
-对于机密客户端应用程序（Web 应用、Web API，或类似于 Windows 服务的后台程序应用程序）：
-- 使用[客户端凭据流](msal-authentication-flows.md#client-credentials)获取**应用程序本身**而不是用户的令牌。 此方法可用于同步工具，或者处理普通用户而不是特定用户的工具。 
+对于机密客户端应用程序（Web 应用、Web API，或类似于 Windows 服务的守护程序应用程序）：
+- 使用[客户端凭据流](msal-authentication-flows.md#client-credentials)获取**应用程序本身**而不是用户的令牌。 此方法可用于同步工具，或者处理普通用户而不是特定用户的工具。
 - 使用适用于 Web API 的[代表流](msal-authentication-flows.md#on-behalf-of)代表用户调用 API。 系统会使用客户端凭据标识应用程序，以根据用户断言（例如 SAML 或 JWT 令牌）获取令牌。 需要在服务到服务调用中访问特定用户的资源的应用程序使用此流。
 - 在用户通过授权请求 URL 登录后，在 Web 应用中使用[授权代码流](msal-authentication-flows.md#authorization-code)获取令牌。 OpenID Connect 应用程序通常使用此机制，可让用户使用 Open ID Connect 登录，然后代表用户访问 Web API。
 
@@ -119,4 +113,3 @@ MSAL 维护一个令牌缓存（对机密客户端应用程序维护两个），
 
 了解如何[处理错误和异常](msal-handling-exceptions.md)。
 
-<!-- Update_Description: wording update -->

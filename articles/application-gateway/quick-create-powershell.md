@@ -6,15 +6,15 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: quickstart
-ms.date: 03/16/2020
+ms.date: 04/26/2020
 ms.author: v-junlch
 ms.custom: mvc
-ms.openlocfilehash: f262a61fbde022089246a32adc436abfc7814816
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: e0e86966c59b1c7d15282a43c511e150d8f82290
+ms.sourcegitcommit: e3512c5c2bbe61704d5c8cbba74efd56bfe91927
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79497340"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82267691"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway-using-azure-powershell"></a>快速入门：通过 Azure PowerShell 使用 Azure 应用程序网关定向 Web 流量
 
@@ -28,7 +28,7 @@ ms.locfileid: "79497340"
 
 ## <a name="prerequisites"></a>先决条件
 
-- 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://www.azure.cn/pricing/1rmb-trial)。
+- 具有活动订阅的 Azure 帐户。 [创建帐户](https://www.azure.cn/pricing/1rmb-trial)。
 - [Azure PowerShell 1.0.0 或更高版本](https://docs.microsoft.com/powershell/azure/install-az-ps)（如果在本地运行 Azure PowerShell）。
 
 ## <a name="connect-to-azure"></a>连接到 Azure
@@ -42,7 +42,7 @@ ms.locfileid: "79497340"
 若要创建新的资源组，请使用 `New-AzResourceGroup` cmdlet： 
 
 ```azurepowershell
-New-AzResourceGroup -Name myResourceGroupAG -Location chinanorth
+New-AzResourceGroup -Name myResourceGroupAG -Location chinanorth2
 ```
 ## <a name="create-network-resources"></a>创建网络资源
 
@@ -61,13 +61,13 @@ $backendSubnetConfig = New-AzVirtualNetworkSubnetConfig `
   -AddressPrefix 10.0.2.0/24
 New-AzVirtualNetwork `
   -ResourceGroupName myResourceGroupAG `
-  -Location chinanorth `
+  -Location chinanorth2 `
   -Name myVNet `
   -AddressPrefix 10.0.0.0/16 `
   -Subnet $agSubnetConfig, $backendSubnetConfig
 New-AzPublicIpAddress `
   -ResourceGroupName myResourceGroupAG `
-  -Location chinanorth `
+  -Location chinanorth2 `
   -Name myAGPublicIPAddress `
   -AllocationMethod Static `
   -Sku Standard
@@ -97,12 +97,10 @@ $frontendport = New-AzApplicationGatewayFrontendPort `
 
 ### <a name="create-the-backend-pool"></a>创建后端池
 
-1. 使用 `New-AzApplicationGatewayBackendAddressPool` 创建应用程序网关的后端池。 后端池暂时将为空，在下一部分中创建后端服务器 NIC 时，会将它们添加到后端池。
+1. 使用 `New-AzApplicationGatewayBackendAddressPool` 创建应用程序网关的后端池。 后端池此时将为空。 在下一部分中创建后端服务器 NIC 时，会将它们添加到后端池中。
 2. 使用 `New-AzApplicationGatewayBackendHttpSetting` 配置后端池的设置。
 
 ```azurepowershell
-$address1 = Get-AzNetworkInterface -ResourceGroupName myResourceGroupAG -Name myNic1
-$address2 = Get-AzNetworkInterface -ResourceGroupName myResourceGroupAG -Name myNic2
 $backendPool = New-AzApplicationGatewayBackendAddressPool `
   -Name myAGBackendPool
 $poolSettings = New-AzApplicationGatewayBackendHttpSetting `
@@ -149,7 +147,7 @@ $sku = New-AzApplicationGatewaySku `
 New-AzApplicationGateway `
   -Name myAppGateway `
   -ResourceGroupName myResourceGroupAG `
-  -Location chinanorth `
+  -Location chinanorth2 `
   -BackendAddressPools $backendPool `
   -BackendHttpSettingsCollection $poolSettings `
   -FrontendIpConfigurations $fipconfig `
@@ -184,7 +182,7 @@ for ($i=1; $i -le 2; $i++)
   $nic = New-AzNetworkInterface `
     -Name myNic$i `
     -ResourceGroupName myResourceGroupAG `
-    -Location ChinaNorth `
+    -Location ChinaNorth2 `
     -Subnet $subnet `
     -ApplicationGatewayBackendAddressPool $backendpool
   $vm = New-AzVMConfig `
@@ -207,7 +205,7 @@ for ($i=1; $i -le 2; $i++)
   Set-AzVMBootDiagnostic `
     -VM $vm `
     -Disable
-  New-AzVM -ResourceGroupName myResourceGroupAG -Location ChinaNorth -VM $vm
+  New-AzVM -ResourceGroupName myResourceGroupAG -Location ChinaNorth2 -VM $vm
   Set-AzVMExtension `
     -ResourceGroupName myResourceGroupAG `
     -ExtensionName IIS `
@@ -216,7 +214,7 @@ for ($i=1; $i -le 2; $i++)
     -ExtensionType CustomScriptExtension `
     -TypeHandlerVersion 1.4 `
     -SettingString '{"commandToExecute":"powershell Add-WindowsFeature Web-Server; powershell Add-Content -Path \"C:\\inetpub\\wwwroot\\Default.htm\" -Value $($env:computername)"}' `
-    -Location ChinaNorth
+    -Location ChinaNorth2
 }
 ```
 
@@ -250,4 +248,3 @@ Remove-AzResourceGroup -Name myResourceGroupAG
 > [通过 Azure PowerShell 使用应用程序网关管理 Web 流量](./tutorial-manage-web-traffic-powershell.md)
 
 
-<!-- Update_Description: wording update -->

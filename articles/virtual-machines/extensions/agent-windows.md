@@ -5,7 +5,6 @@ services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: rockboyfor
 manager: digimobile
-editor: tysonn
 tags: azure-resource-manager
 ms.assetid: 0a1f212e-053e-4a39-9910-8d622959f594
 ms.service: virtual-machines-windows
@@ -13,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 origin.date: 07/20/2019
-ms.date: 02/10/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: 4039e499bbafff54dd20e3012585a9bf59042f5e
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 934d825deeffc268812fa8e8c24e5b1c3568edc7
+ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77428926"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82596391"
 ---
 # <a name="azure-virtual-machine-agent-overview"></a>Azure 虚拟机代理概述
 Azure 虚拟机代理（VM 代理）是受保护的轻型进程，用于管理虚拟机 (VM) 与 Azure 结构控制器的交互。 VM 代理有一个主要角色，目的是启用和执行 Azure 虚拟机扩展。 VM 扩展可用于对 VM 进行部署后配置，例如安装和配置软件。 VM 扩展还可启用恢复功能，例如重置 VM 的管理密码。 没有 Azure VM 代理，VM 扩展将无法运行。
@@ -70,7 +69,7 @@ $vm.OSProfile.AllowExtensionOperations = $true
 $vm | Update-AzVM
 ```
 
-### <a name="prerequisites"></a>必备条件
+### <a name="prerequisites"></a>先决条件
 - Windows VM 代理至少需要 Windows Server 2008 R2（64 位）才能与 .NET Framework 4.0 一起运行。 请参阅 [Azure 中的虚拟机代理的最低版本支持](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)
 
 - 确保 VM 可以访问 IP 地址 168.63.129.16。 有关详细信息，请参阅[什么是 IP 地址 168.63.129.16](/virtual-network/what-is-ip-address-168-63-129-16)。
@@ -85,7 +84,7 @@ $vm | Update-AzVM
 Get-AzVM
 ```
 
-以下精简示例输出展示了嵌套在 *OSProfile* 内的 *ProvisionVMAgent* 属性。 可以使用该属性来确定 VM 代理是否已部署到 VM：
+以下浓缩版示例输出演示了嵌套在 *OSProfile* 中的 *ProvisionVMAgent* 属性。 此属性可以用来确定 VM 代理是否已部署到 VM：
 
 ```powershell
 OSProfile                  :

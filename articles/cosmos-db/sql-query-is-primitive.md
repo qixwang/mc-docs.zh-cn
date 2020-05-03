@@ -5,15 +5,15 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 09/13/2019
-ms.date: 10/28/2019
+ms.date: 04/27/2020
 ms.author: v-yeche
 ms.custom: query-reference
-ms.openlocfilehash: 251af46ef2295301c8f808da7bdfddeb934c70d9
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: f6ff38a4742f32fa4c1c72375fc9d5d7a7d3ef8e
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "72914713"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134561"
 ---
 # <a name="is_primitive-azure-cosmos-db"></a>IS_PRIMITIVE (Azure Cosmos DB)
  返回一个布尔值，指示指定表达式的类型是否为一个（字符串、布尔、数值或 null）。  
@@ -48,11 +48,15 @@ SELECT
     IS_PRIMITIVE({prop: "value"}.prop2) AS isPrim7  
 ```  
 
- 下面是结果集：  
+ 下面是结果集。  
 
 ```json
 [{"isPrim1": true, "isPrim2": true, "isPrim3": true, "isPrim4": true, "isPrim5": false, "isPrim6": false, "isPrim7": false}]  
 ```  
+
+## <a name="remarks"></a>备注
+
+此系统函数将从[范围索引](index-policy.md#includeexclude-strategy)中获益。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -60,5 +64,4 @@ SELECT
 - [系统函数 Azure Cosmos DB](sql-query-system-functions.md)
 - [Azure Cosmos DB 简介](introduction.md)
 
-<!--Update_Description: new articles on sql query is primitive  -->
-<!--New.date: 10/28/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

@@ -11,12 +11,12 @@ ms.topic: include
 origin.date: 10/11/2019
 ms.date: 03/16/2020
 ms.author: v-tawe
-ms.openlocfilehash: d15ca5c8cd2a05f894a862f46fe888a57fbce8c1
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: d63944b5f4ea26493d3da755026978b887318fde
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80151668"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82150887"
 ---
 本指南介绍如何安装用于 64 位 Java 8 JRE 的[语音 SDK](~/articles/cognitive-services/speech-service/speech-sdk.md)。 如果只是需要包名称以便自行开始，那么请知悉在 Maven 中央存储库中未提供 Java SDK。 无论是使用 Gradle 还是 `pom.xml` 依赖项文件，都需要添加指向 `https://csspeechstorage.blob.core.windows.net/maven/` 的自定义存储库（请参阅下文了解包名称）。
 
@@ -28,7 +28,7 @@ ms.locfileid: "80151668"
 ## <a name="supported-operating-systems"></a>支持的操作系统
 
 - Java 语音 SDK 包适用于以下操作系统：
-  - Windows：仅 64 位
+  - Windows:仅 64 位
   - Mac：macOS X 10.13 或更高版本
   - Linux：仅 64 位的 Ubuntu 16.04、Ubuntu 18.04、Debian 9、RHEL 8、CentOS 8
 
@@ -37,6 +37,9 @@ ms.locfileid: "80151668"
 - [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) 或 [JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
 
 - [Eclipse Java IDE](https://www.eclipse.org/downloads/)（要求已安装 Java）
+
+- 需要语音 SDK 版本 1.10.0 或更高版本。
+
 - 支持的 Linux 平台会要求安装某些库（要求安装 `libssl` 以获取安全套接字层支持；要求安装 `libasound2` 以获取声音支持）。 请参阅下面的发行版，了解安装这些库的正确版本所需的命令。
 
   - 在 Ubuntu 上，请运行以下命令来安装所需的包：

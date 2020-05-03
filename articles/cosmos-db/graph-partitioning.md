@@ -2,26 +2,26 @@
 title: Azure Cosmos DB Gremlin API 中的数据分区
 description: 了解如何在 Azure Cosmos DB 中使用分区图形。 本文还介绍了分区图形的要求和最佳做法。
 author: rockboyfor
-ms.author: v-yeche
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: conceptual
 origin.date: 06/24/2019
-ms.date: 07/29/2019
+ms.date: 04/27/2020
+ms.author: v-yeche
 ms.custom: seodec18
-ms.openlocfilehash: 519b5324f41d9a7a1308a61bb2b0ca2961b82a85
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 323d3b0f9317a7e2e42a3a838663498f3040f956
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "68514277"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134936"
 ---
 <!--Verify sucessfully-->
 # <a name="using-a-partitioned-graph-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中使用分区图形
 
 Azure Cosmos DB 中 Gremlin API 的重要功能之一是通过横向缩放处理大规模图形。 容器可以在存储和吞吐量方面独立缩放。 可以在 Azure Cosmos DB 中创建自动缩放的容器以存储图形数据。 数据根据指定的分区键自动均衡  。
 
-如果预计容器的存储大小超过 10 GB，或者希望每秒分配超过 10,000 个请求单位 (RU)，则需要进行分区  。 [Azure Cosmos DB 分区机制](partition-data.md)中的相同常规原则也适用，下面介绍了一些特定于图形的优化。
+如果预计容器的存储大小超过 20 GB，或者希望每秒分配超过 10,000 个请求单位 (RU)，则需要进行分区  。 [Azure Cosmos DB 分区机制](partition-data.md)中的相同常规原则也适用，下面介绍了一些特定于图形的优化。
 
 ![图形分区。](./media/graph-partitioning/graph-partitioning.png)
 
@@ -91,4 +91,4 @@ Azure Cosmos DB 中 Gremlin API 的重要功能之一是通过横向缩放处理
 * 了解 [Gremlin API 中的 Gremlin 支持](gremlin-support.md)。
 * 了解 [Gremlin API 简介](graph-introduction.md)。
 
-<!--Update_Description: wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

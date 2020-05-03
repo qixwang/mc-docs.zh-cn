@@ -5,15 +5,15 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 09/13/2019
-ms.date: 10/28/2019
+ms.date: 04/27/2020
 ms.author: v-yeche
 ms.custom: query-reference
-ms.openlocfilehash: 4c7d4e6f23aa5b5550ed4a50ea24e31c33b352e5
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 602b6e370c740368647932c6f5224c7a1cb062b9
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "72914718"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134726"
 ---
 # <a name="is_array-azure-cosmos-db"></a>IS_ARRAY (Azure Cosmos DB)
  返回一个布尔值，指示指定表达式类型是否为数组。  
@@ -48,11 +48,15 @@ SELECT
  IS_ARRAY({prop: "value"}.prop2) AS isArray7  
 ```  
 
- 下面是结果集：  
+ 下面是结果集。  
 
 ```json
 [{"isArray1":false,"isArray2":false,"isArray3":false,"isArray4":false,"isArray5":false,"isArray6":true,"isArray7":false}]
 ```  
+
+## <a name="remarks"></a>备注
+
+此系统函数将从[范围索引](index-policy.md#includeexclude-strategy)中获益。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -60,5 +64,4 @@ SELECT
 - [系统函数 Azure Cosmos DB](sql-query-system-functions.md)
 - [Azure Cosmos DB 简介](introduction.md)
 
-<!--Update_Description: new articles on sql query is array  -->
-<!--New.date: 10/28/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

@@ -4,15 +4,15 @@ ms.service: sql-database
 ms.subservice: single-database
 ms.topic: include
 origin.date: 03/10/2020
-ms.date: 03/30/2020
+ms.date: 04/27/2020
 ms.author: v-jay
 ms.reviewer: vanto
-ms.openlocfilehash: 15dee28b989370144724f89d5945c238627947a5
-ms.sourcegitcommit: 90660563b5d65731a64c099b32fb9ec0ce2c51c6
+ms.openlocfilehash: 148ae66d851e519c1081ef1125604792e14b515e
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80341770"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126729"
 ---
 在此步骤中，你将创建一个 Azure SQL 数据库服务器和一个使用 AdventureWorksLT 示例数据的数据库。 可以通过使用 Azure 门户菜单和屏幕，或通过使用 Azure CLI 或 PowerShell 脚本来创建数据库。
 
@@ -52,7 +52,17 @@ ms.locfileid: "80341770"
    
    进行更改后，请选择“应用”  。
    
+1. 在完成时选择“下一步:  网络”。
+   
+   ![新建 SQL 数据库 -“基本信息”选项卡](../media/sql-database-single-database-get-started/new-sql-database-basics.png)
+   
+1. 在“网络”  选项卡上的“连接方法”  下，选择“公共终结点”  。 
+1. 在  “防火墙规则”下，将“添加当前客户端 IP 地址”  设置为“是”  。
 1. 在完成时选择“下一步:  其他设置”。
+   
+   ![“网络”选项卡](../media/sql-database-single-database-get-started/networking.png)
+   
+   有关防火墙设置的详细信息，请参阅[允许 Azure 服务和资源访问此服务器](../sql-database-networkaccess-overview.md)。
    
 1. 在“其他设置”  选项卡上的“数据源”  部分中，对于“使用现有数据”  ，请选择“示例”  。
 1. 在页面底部选择“查看 + 创建”  。
@@ -64,10 +74,6 @@ ms.locfileid: "80341770"
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 可以使用 Azure 命令行接口 (Azure CLI) 创建 Azure 资源组、SQL 服务器和单一数据库。 在计算机上[安装 Azure CLI](/cli/install-azure-cli)。
--（可选）还可以选择“更改配置”来更改硬件代系  。
-   - 选择“应用”。 
-
-5. 选择“网络”  选项卡，并决定是否要[允许 Azure 服务和资源访问此服务器  ](../sql-database-networkaccess-overview.md)。
 
 以下 Azure CLI 代码将创建用于访问服务器的 Azure 资源组、SQL 服务器、单一数据库和防火墙规则。 请确保记录生成的资源组和服务器名称，以便可以在以后管理这些资源。
 

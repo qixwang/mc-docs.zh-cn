@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-origin.date: 09/19/2019
-ms.date: 03/16/2020
+origin.date: 04/04/2020
+ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: a5c313c0f7895c3540a595f2d0bd0cec8a5a1c1a
-ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
+ms.openlocfilehash: 3de3e1b900191ac95cbf29fee3d83ae2e14fc10b
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80151625"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82150997"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -24,7 +24,8 @@ ms.locfileid: "80151625"
 
 > [!div class="checklist"]
 > * [创建一个 Azure 搜索资源](../../../../get-started.md)
-> * [设置开发环境并创建空项目](../../../../quickstarts/setup-platform.md?tabs=android)
+> * [设置开发环境并创建空项目](../../../../quickstarts/setup-platform.md?tabs=android&pivots=programming-language-java)
+> * 需要语音 SDK 版本 1.10.0 或更高版本。
 
 ## <a name="create-user-interface"></a>创建用户界面
 
@@ -138,7 +139,8 @@ ms.locfileid: "80151625"
     
             // Initialize speech synthesizer and its dependencies
             // Replace below with your own service region (e.g., "chinaeast2").
-            speechConfig = SpeechConfig.fromHost(new URI("https://YourServiceRegion.tts.speech.azure.cn/"), speechSubscriptionKey);
+            speechConfig = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
+            
             assert(speechConfig != null);
     
             synthesizer = new SpeechSynthesizer(speechConfig);
@@ -207,7 +209,7 @@ ms.locfileid: "80151625"
 
 ## <a name="next-steps"></a>后续步骤
 
-[!INCLUDE [footer](./footer.md)]
+[!INCLUDE [Speech synthesis basics](../../text-to-speech-next-steps.md)]
 
 <!-- ## See also -->
 

@@ -1,25 +1,26 @@
 ---
-title: Azure 数据工厂的模板概述
+title: 模板概述
 description: 了解如何使用预定义的模板来快速开始使用 Azure 数据工厂。
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-origin.date: 01/04/2019
-ms.date: 12/02/2019
-author: WenJason
 ms.author: v-jay
+author: WenJason
 manager: digimobile
-ms.openlocfilehash: 1a5ee514110574bb5e8083f333a25356efbd3faa
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.custom: seo-lt-2019
+origin.date: 01/04/2019
+ms.date: 05/11/2020
+ms.openlocfilehash: cda62608aca0b561c007a394b14e0101bee891f1
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74655464"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82197994"
 ---
 # <a name="templates"></a>模板
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 模板是预定义的 Azure 数据工厂管道，可让你快速开始使用数据工厂。 如果你是数据工厂的新手并想要快速入门，则模板很有帮助。 这些模板减少了生成数据集成项目所需的开发时间，从而提高了开发人员的工作效率。
 

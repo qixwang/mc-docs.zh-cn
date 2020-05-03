@@ -6,14 +6,14 @@ tags: azure-resource-manager
 ms.assetid: e229664e-ee4e-4f12-9d2e-a4f456989e5d
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
-ms.date: 03/31/2020
+ms.date: 04/28/2020
 ms.author: v-junlch
-ms.openlocfilehash: f486af15dae7a6450bb7316a3fa247fcc247a4d6
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: eef0d89bf8c4fa11228cd52af1e5f9f1ab6491ef
+ms.sourcegitcommit: e3512c5c2bbe61704d5c8cbba74efd56bfe91927
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80581816"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82267569"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>修改虚拟机规模集
 
@@ -341,7 +341,6 @@ $ az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet -
 
 - Image reference publisher
 - image reference offer
-- Image reference sku
 - 托管 OS 磁盘存储帐户类型
 
 ### <a name="properties-that-can-only-be-changed-based-on-the-current-value"></a>只能在当前值的基础上更改的属性
@@ -380,7 +379,7 @@ $ az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet -
 ### <a name="update-the-os-image-for-your-scale-set"></a>更新规模集的 OS 映像
 你可能具有运行旧版 Ubuntu LTS 16.04 的规模集。 你希望将其更新到新版 Ubuntu LTS 16.04，例如版本 *16.04.201801090*。 映像引用版本属性不是列表的一部分，因此可以使用下列命令之一直接修改这些属性：
 
-- 如下所示通过 Azure PowerShell 使用 [Update-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/update-azvmss)：
+- 如下所示，通过 Azure PowerShell 使用 [Update-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/update-azvmss)：
 
     ```powershell
     Update-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -ImageReferenceVersion 16.04.201801090
@@ -394,7 +393,7 @@ $ az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet -
 
 或者，你可能想要更改规模集使用的映像。 例如，你可能想要更新或更改规模集使用的自定义映像。 可以通过更新“映像引用 ID”属性来更改规模集使用的映像。 “映像引用 ID”属性不是列表的一部分，因此可以使用下列命令之一直接修改该属性：
 
-- 如下所示通过 Azure PowerShell 使用 [Update-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/update-azvmss)：
+- 如下所示，通过 Azure PowerShell 使用 [Update-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/update-azvmss)：
 
     ```powershell
     Update-AzVmss `
@@ -452,5 +451,3 @@ $ az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet -
 ## <a name="next-steps"></a>后续步骤
 还可以使用 [Azure CLI](virtual-machine-scale-sets-manage-cli.md) 或 [Azure PowerShell](virtual-machine-scale-sets-manage-powershell.md) 对规模集执行常见的管理任务。
 
-
-<!-- Update_Description: wording update -->

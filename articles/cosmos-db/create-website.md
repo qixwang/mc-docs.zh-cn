@@ -4,18 +4,18 @@ description: 了解如何使用 Azure Resource Manager 模板部署 Azure Cosmos
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
-origin.date: 05/28/2019
-ms.date: 02/10/2020
+origin.date: 03/11/2019
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: 9d72a9612a8539844ebee48cd1638872be852be5
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 78f52861d0b9a32770b577751bbd3bd8ffa78a8d
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "76980541"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134943"
 ---
 # <a name="deploy-azure-cosmos-db-and-azure-app-service-web-apps-using-an-azure-resource-manager-template"></a>使用 Azure Resource Manager 模板部署 Azure Cosmos DB 和 Azure 应用服务 Web 应用
-本教程说明如何使用 Azure Resource Manager 模板来部署和集成 [Azure Cosmos DB](https://www.azure.cn/home/features/cosmos-db/)、[Azure 应用服务](/app-service-web/app-service-changes-existing-services)、Web 应用以及示例 Web 应用程序。
+本教程说明如何使用 Azure 资源管理器模板来部署和集成 [Azure Cosmos DB](https://www.azure.cn/home/features/cosmos-db/)、[Azure 应用服务](/app-service-web/app-service-changes-existing-services)、Web 应用以及示例 Web 应用程序。
 
 使用 Azure Resource Manager 模板，可以轻松自动化 Azure 资源的部署和配置。  本教程演示如何部署 Web 应用程序，以及自动配置 Azure Cosmos DB 帐户的连接信息。
 
@@ -61,6 +61,7 @@ ms.locfileid: "76980541"
     将 Location 的 allowedValues 属性更改为 ["China East","China East 2","China North","China North 2"]。
     
     ![模板部署 UI 的屏幕截图](./media/create-website/TemplateDeployment3.png)
+
 4. 单击“编辑参数”  ，为每个必需参数提供值，并单击“确定”  。  参数如下：
 
     1. SITENAME：指定应用服务 Web 应用名称，并用来构造用于访问 Web 应用的 URL（例如，如果指定“mydemodocdbwebapp”，则用于访问 Web 应用的 URL 为 `mydemodocdbwebapp.chinacloudsites.cn`）。
@@ -69,16 +70,22 @@ ms.locfileid: "76980541"
     4. DATABASEACCOUNTNAME：指定要创建的 Azure Cosmos DB 帐户的名称。   
 
         ![模板部署 UI 的屏幕截图](./media/create-website/TemplateDeployment4.png)
+        
 5. 选择现有的资源组或提供名称以创建新的资源组，并选择资源组的位置。
 
     ![模板部署 UI 的屏幕截图](./media/create-website/TemplateDeployment5.png)
 6. 依次单击“查看法律条款”  、“购买”  和“创建”  以开始部署。   选择“固定到仪表板”，让生成的部署轻松显示在 Azure 门户的主页上。
+    
     ![模板部署 UI 的屏幕截图](./media/create-website/TemplateDeployment6.png)
+    
 7. 部署完成后，会打开“资源组”窗格。
-    ![“资源组”窗格的屏幕截图](./media/create-website/TemplateDeployment7.png)  
+    
+    ![“资源组”窗格的屏幕截图](./media/create-website/TemplateDeployment7.png)
+    
 8. 若要使用应用程序，请导航到 Web 应用 URL（上述示例中的 URL 是 `http://mydemodocdbwebapp.chinacloudsites.cn`）。  会看到下列 Web 应用程序：
 
     ![示例待办事项应用程序](./media/create-website/image2.png)
+    
 9. 继续在 Web 应用中创建几个任务，并返回到 Azure 门户中的“资源组”窗格。 单击“资源”列表中的“Azure Cosmos DB 帐户”资源，并单击“数据资源管理器”  。
 10. 运行默认查询“SELECT * FROM c”，并检查结果。  请注意，查询已检索在上面的步骤 7 中创建的待办事项的 JSON 表示形式。  任意尝试查询；例如，尝试运行 SELECT * FROM c WHERE c.isComplete = true，以返回所有标记为完成的待办事项。
 11. 随意浏览 Azure Cosmos DB 门户体验，或修改示例待办事项应用程序。  准备好时，让我们来部署另一个模板。
@@ -112,17 +119,27 @@ ms.locfileid: "76980541"
    4. DATABASEACCOUNTNAME：指定要创建的 Azure Cosmos DB 帐户的名称。   
 
         ![模板部署 UI 的屏幕截图](./media/create-website/TemplateDeployment4.png)
+        
 5. 选择现有的资源组或提供名称以创建新的资源组，并选择资源组的位置。
 
     ![模板部署 UI 的屏幕截图](./media/create-website/TemplateDeployment5.png)
+    
 6. 依次单击“查看法律条款”  、“购买”  和“创建”  以开始部署。   选择“固定到仪表板”，让生成的部署轻松显示在 Azure 门户的主页上。
+    
     ![模板部署 UI 的屏幕截图](./media/create-website/TemplateDeployment6.png)
+    
 7. 部署完成后，会打开“资源组”窗格。
-    ![“资源组”窗格的屏幕截图](./media/create-website/TemplateDeployment7.png)  
-8. 单击“资源”列表中的“Web 应用”资源，然后单击“应用程序设置”  ![资源组的屏幕截图](./media/create-website/TemplateDeployment9.png)  
+
+    ![“资源组”窗格的屏幕截图](./media/create-website/TemplateDeployment7.png)
+    
+8. 单击“资源”列表中的“Web 应用”资源，然后单击“应用程序设置” 
+
+    ![资源组的屏幕截图](./media/create-website/TemplateDeployment9.png)  
+    
 9. 注意出现的 Azure Cosmos DB 终结点和每个 Azure Cosmos DB 主密钥的应用程序设置。
 
     ![应用程序设置的屏幕截图](./media/create-website/TemplateDeployment10.png)  
+    
 10. 继续随意浏览 Azure 门户，或按照其中一个 Azure Cosmos DB [示例](/cosmos-db/sql-api-dotnet-samples)来创建自己的 Azure Cosmos DB 应用程序。
 
     <!--CORRECT ON [samples](/cosmos-db/sql-api-dotnet-samples)-->

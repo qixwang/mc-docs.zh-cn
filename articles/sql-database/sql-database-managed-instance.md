@@ -10,14 +10,14 @@ ms.topic: conceptual
 author: WenJason
 ms.author: v-jay
 ms.reviewer: sstein, carlrab, vanto
-origin.date: 01/21/2020
-ms.date: 02/17/2020
-ms.openlocfilehash: bdbb9eb3c7d82bbda29501d8fb61453a8a604942
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+origin.date: 04/02/2020
+ms.date: 04/27/2020
+ms.openlocfilehash: 5b5db985c0e0a211da758198fddd4b06f1434b2c
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79292830"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82127036"
 ---
 # <a name="what-is-azure-sql-database-managed-instance"></a>什么是 Azure SQL 数据库托管实例？
 
@@ -66,8 +66,9 @@ ms.locfileid: "79292830"
 | VNet - Azure 资源管理器部署 | 是 |
 | VNet - 经典部署模型 | 否 |
 | 门户支持 | 是|
+| 内置集成服务 (SSIS) | 否 - SSIS 属于 [Azure 数据工厂 PaaS](/data-factory/tutorial-deploy-ssis-packages-azure) |
 | 内置分析服务 (SSAS) | 否 - SSAS 是单独的 [PaaS](/analysis-services/analysis-services-overview) |
-| 内置报表服务 (SSRS) | 否 - 使用 Power BI 或 SSRS IaaS |
+| 内置报表服务 (SSRS) | 否 - 请改用 [Power BI 分页报表](https://docs.microsoft.com/power-bi/paginated-reports/paginated-reports-report-builder-power-bi)或在 Azure VM 上托管 SSRS。 虽然托管实例不能将 SSRS 作为服务运行，但它可以为使用 SQL Server 身份验证的外部报表服务器托管 SSRS 2019 目录数据库。 |
 |||
 
 ## <a name="vcore-based-purchasing-model"></a>基于 vCore 的购买模型
@@ -121,7 +122,7 @@ ms.locfileid: "79292830"
 
 Azure SQL 数据库提供管理操作，你可以使用这些操作来自动部署新的托管实例、更新实例属性，以及删除不再需要的实例。 本部分提供有关管理操作及其典型持续时间的信息。
 
-托管实例依赖使用[虚拟群集](sql-database-managed-instance-connectivity-architecture.md#high-level-connectivity-architecture)来支持 [Azure 虚拟网络 (VNet) 中的部署](../virtual-network/virtual-network-for-azure-services.md#deploy-azure-services-into-virtual-networks)以及为客户提供隔离和安全性。虚拟群集表示客户虚拟网络子网中部署的一组隔离的专用虚拟机。 实质上，每在一个空子网中部署一个托管实例，就会组建一个新的虚拟群集。
+托管实例依赖使用[虚拟群集](sql-database-managed-instance-connectivity-architecture.md#high-level-connectivity-architecture)来支持 [Azure 虚拟网络 (VNet) 中的部署](../virtual-network/virtual-network-for-azure-services.md)以及为客户提供隔离和安全性。虚拟群集表示客户虚拟网络子网中部署的一组隔离的专用虚拟机。 实质上，每在一个空子网中部署一个托管实例，就会组建一个新的虚拟群集。
 
 在已部署的托管实例上执行的后续操作还可能会影响其底层虚拟群集。 这会影响管理操作的持续时间，因为部署更多的虚拟机会附带某种开销，在规划新的部署或者更新现有托管实例时，需要考虑到这种开销。
 
@@ -144,7 +145,7 @@ Azure SQL 数据库提供管理操作，你可以使用这些操作来自动部�
 
 下表汇总了操作及其典型的总持续时间：
 
-|Category  |操作  |长时间运行的分段  |预计持续时间  |
+|类别  |操作  |长时间运行的分段  |预计持续时间  |
 |---------|---------|---------|---------|
 |**部署** |空子网中的第一个实例|虚拟群集的创建|90% 的操作可在 4 小时内完成|
 |部署 |非空子网中另一个硬件代系的第一个实例（例如，包含第 4 代实例的子网中的第一个 5 代实例）|虚拟群集的创建*|90% 的操作可在 4 小时内完成|
@@ -185,7 +186,7 @@ Azure SQL 数据库提供管理操作，你可以使用这些操作来自动部�
 
 下表汇总了取消特定管理操作的功能和典型的总持续时间：
 
-Category  |操作  |可取消  |估计取消持续时间  |
+类别  |操作  |可取消  |估计取消持续时间  |
 |---------|---------|---------|---------|
 |部署 |实例创建 |否 |  |
 |更新 |实例存储纵向缩放（“常规用途”服务层级） |否 |  |
@@ -193,8 +194,8 @@ Category  |操作  |可取消  |估计取消持续时间  |
 |更新 |实例计算 (vCore) 纵向缩放（“常规用途”） |是 |90% 的操作可在 5 分钟内完成 |
 |更新 |实例计算 (vCore) 纵向缩放（“业务关键”） |是 |90% 的操作可在 5 分钟内完成 |
 |更新 |实例服务层级更改（从“常规用途”更改为“业务关键”，或反之） |是 |90% 的操作可在 5 分钟内完成 |
-|Delete |实例删除 |否 |  |
-|Delete |虚拟群集的删除（用户启动的操作） |否 |  |
+|删除 |实例删除 |否 |  |
+|删除 |虚拟群集的删除（用户启动的操作） |否 |  |
 
 若要取消管理操作，请转到概述边栏选项卡，单击正在进行的操作的通知框。 右侧会显示包含正在进行的操作的屏幕，并提供用于取消操作的按钮。 第一次单击该按钮后，系统会要求再次单击并确认取消该操作。
 
@@ -307,6 +308,7 @@ Azure 数据库迁移服务是一项完全托管的服务，旨在实现从多�
 - 托管实例不允许指定完整的物理路径，因此必须以不同的方式为相应的方案提供支持：RESTORE DB 不支持 WITH MOVE，CREATE DB 不允许使用物理路径，BULK INSERT 仅适用于 Azure Blob，等等。
 - 托管实例支持使用 [Azure AD 身份验证](sql-database-aad-authentication.md)作为 Windows 身份验证的云替代方法。
 - 对于包含内存中 OLTP 对象的数据库，托管实例会自动管理 XTP 文件组和文件
+- 托管实例支持 SQL Server Integration Services (SSIS)，并且可以托管存储 SSIS 包的 SSIS 目录 (SSISDB)，但它们在 Azure 数据工厂 (ADF) 的托管 Azure-SSIS 集成运行时 (IR) 上执行，请参阅[在 ADF 中创建 Azure-SSIS IR](/data-factory/create-azure-ssis-integration-runtime)。 若要比较 SQL 数据库中的 SSIS 功能，请参阅[比较 Azure SQL 数据库单一数据库、弹性池和托管实例](../data-factory/create-azure-ssis-integration-runtime.md#comparison-of-a-sql-database-single-database-elastic-pool-and-managed-instance)。
 
 ### <a name="managed-instance-administration-features"></a>托管实例管理功能
 
@@ -319,7 +321,7 @@ Azure 数据库迁移服务是一项完全托管的服务，旨在实现从多�
 
 下表显示了可通过 Transact SQL 访问的几个属性。使用这些属性可以检测应用程序是否正在使用托管实例和检索重要属性。
 
-|属性|Value|注释|
+|属性|值|注释|
 |---|---|---|
 |`@@VERSION`|Microsoft SQL Azure (RTM) - 12.0.2000.8 2018-03-07 Copyright (C) 2018 Microsoft Corporation.|此值与 SQL 数据库中的值相同。 此值**并不**表示 SQL 引擎版本 12 (SQL Server 2014)。 托管实例始终运行最新稳定的 SQL 引擎版本，此版本与最新可用的 SQL Server RTM 版本相同或更高。  |
 |`SERVERPROPERTY ('Edition')`|SQL Azure|此值与 SQL 数据库中的值相同。|

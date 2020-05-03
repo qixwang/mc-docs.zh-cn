@@ -1,19 +1,18 @@
 ---
 title: 了解 Azure 流分析中的时间处理
 description: 了解 Azure 流分析中时间处理的工作原理，例如，如何选择最佳开始时间，如何处理晚期和早期事件，以及如何处理时间处理指标。
-author: lingliw
-ms.author: v-lingwu
-ms.reviewer: jasonh
+author: Johnnytechn
+ms.author: v-johya
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-origin.date: 03/05/2018
-ms.date: 08/20/2018
-ms.openlocfilehash: 3079952e5288b617c5008cfa76296837b6ee6e8f
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 04/23/2020
+ms.openlocfilehash: d5ab30601f69f93b46b26d62072936d4fc72811a
+ms.sourcegitcommit: ebedf9e489f5218d4dda7468b669a601b3c02ae5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78154593"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82159201"
 ---
 # <a name="understand-time-handling-in-azure-stream-analytics"></a>了解 Azure 流分析中的时间处理
 
@@ -88,6 +87,7 @@ ms.locfileid: "78154593"
 此处描述的启发式水印生成机制在大多数后述情况下都能正常发挥效用：时间在各种事件发送程序之间基本同步。 但在现实生活中，尤其是在许多 IoT 方案中，系统对事件发送方的时钟几乎无法控制。 事件发送方可以是领域中的各种设备，也可以是不同版本的硬件和软件。
 
 流分析没有对输入分区中的所有事件使用全局水印，而是使用另一种称为子流的机制来提供帮助。 可以通过编写使用 **TIMESTAMP BY** 子句和 **OVER** 关键字的作业查询，在作业中利用子流。 要指定子流，请在“OVER”关键字后面提供关键列名称（例如，`deviceid`），以便系统按该列应用时间策略  。 每个子流都有自己独立的水印。 在处理事件发送方之间的较大时钟偏差或网络延迟时，此机制有助于及时生成输出。
+<!-- Pending on /stream-analytics-query/timestamp-by-azure-stream-analytics -->
 
 子流是 Azure 流分析提供的独家解决方案，其他流式数据处理系统不提供子流。 在使用子流时，流分析将延迟到达容错时段应用于传入事件。 对于具有不同时间戳的设备来说，默认设置（5秒）可能太小。 建议开始时设为 5 分钟，然后根据设备时钟偏差模式进行调整。
 
@@ -97,7 +97,7 @@ ms.locfileid: "78154593"
 
 由于 Azure 流分析可保证其始终生成完整的结果，因此只能将“作业开始时间”指定为作业的第一个输出时间，而不能指定为输入时间  。 作业开始时间是必需的，以便处理完整时段，而不仅仅是从时段中间进行处理。
 
-然后，流分析通过查询规范得到开始时间。 但是，由于输入事件中转站仅按到达时间编制索引，因此系统必须将开始事件时间转换为到达时间。 系统可以从输入事件中转站中的这一时点开始处理事件。 可通过提前到达时段限制来简化转换过程。 它即为开始事件时间减去 5 分钟的提前到达时段。 此计算还意味着系统会删除事件时间比到达时间长 5 分钟的所有事件。
+然后，流分析通过查询规范得到开始时间。 但是，由于输入事件中转站仅按到达时间编制索引，因此系统必须将开始事件时间转换为到达时间。 系统可以从输入事件中转站中的这一时点开始处理事件。 可通过提前到达时段限制来简化转换过程。 它等于开始事件时间减去 5 分钟的提前到达时段。 此计算还意味着系统会删除事件时间比到达时间早 5 分钟的所有事件。
 
 此概念用于确保无论从何处开始输出，处理过程都可重复。 如果不借助这种机制，就不可能像许多其他流式处理系统声称的那样保证可重复性。
 
@@ -138,7 +138,7 @@ ms.locfileid: "78154593"
 
 ## <a name="watermark-delay-details"></a>水印延迟详细信息
 
-“水印延迟”指标的计算方式为处理节点的时钟时间减去其迄今观察到的最大水印时间  。 
+“水印延迟”指标的计算方式为处理节点的时钟时间减去其迄今观察到的最大水印时间  。 有关详细信息，请参阅[水印延迟博客文章](https://azure.microsoft.com/blog/new-metric-in-azure-stream-analytics-tracks-latency-of-your-streaming-pipeline/)。
 
 在正常操作下，此指标值大于 0 可能有多种原因：
 
@@ -177,15 +177,15 @@ Azure 流分析使用水印进度作为生成输出事件的唯一触发器。 �
 | 12:07 | 12:07 | device1
 | 12:08 | 12:08 | device2
 | 12:17 | 12:11 | device1
-| 12:08 | 12:13 | 设备3
+| 12:08 | 12:13 | device3
 | 12:19 | 12:16 | device1
-| 12:12 | 12:17 | 设备3
+| 12:12 | 12:17 | device3
 | 12:17 | 12:18 | device2
 | 12:20 | 12:19 | device2
-| 12:16 | 12:21 | 设备3
+| 12:16 | 12:21 | device3
 | 12:23 | 12:22 | device2
 | 12:22 | 12:24 | device2
-| 12:21 | 12:27 | 设备3
+| 12:21 | 12:27 | device3
 
 此图中使用了以下容错：
 
@@ -195,7 +195,7 @@ Azure 流分析使用水印进度作为生成输出事件的唯一触发器。 �
 
 1. 这些事件进展的水印图示：
 
-   ![Azure 流分析水印图示](media/stream-analytics-time-handling/WaterMark-graph-1.png)
+   ![Azure 流分析水印图示](./media/stream-analytics-time-handling/WaterMark-graph-1.png)
 
    上图中的显著进程：
 
@@ -213,15 +213,16 @@ Azure 流分析使用水印进度作为生成输出事件的唯一触发器。 �
 
 2. 未应用提前到达策略的水印计时第二图示：
 
-   ![未应用提前策略的 Azure 流分析水印图示](media/stream-analytics-time-handling/watermark-graph-2.png)
+   ![未应用提前策略的 Azure 流分析水印图示](./media/stream-analytics-time-handling/watermark-graph-2.png)
 
    在此示例中，未应用提前到达策略。 较早到达的异常事件会显着提高水印值。 请注意，在这种情况下不删除第三个事件（deviceId1 时间 12:11），且水印时间提升至 12:15。 因此，第四个事件时间向后调整了 7 分钟（从 12:08 到 12:15）。
 
 3. 在最后一图中，使用了子流（通过 DeviceId）。 跟踪了多个水印，每个流一个水印。 因此，调整时间的事件减少了。
 
-   ![Azure 流分析子流水印图示](media/stream-analytics-time-handling/watermark-graph-3.png)
+   ![Azure 流分析子流水印图示](./media/stream-analytics-time-handling/watermark-graph-3.png)
 
 ## <a name="next-steps"></a>后续步骤
 
 - [Azure 流分析事件顺序注意事项](stream-analytics-out-of-order-and-late-events.md)
 - [流分析作业指标](stream-analytics-monitoring.md)
+

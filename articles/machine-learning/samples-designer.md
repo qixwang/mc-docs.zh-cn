@@ -9,12 +9,12 @@ ms.topic: sample
 author: peterclu
 ms.author: peterlu
 ms.date: 03/10/2020
-ms.openlocfilehash: 6e2b9b3307461cd1eb9a4d12f7f3cfcd725e5d0d
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: c6da4dd72acaf9647a2ddfee0c9fe18180857d20
+ms.sourcegitcommit: d210eb03ed6432aeefd3e9b1c77d2c92a6a8dbca
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80343764"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82591448"
 ---
 # <a name="designer-sample-pipelines"></a>设计器示例管道
 
@@ -29,6 +29,8 @@ ms.locfileid: "80343764"
 ## <a name="how-to-use-sample-pipelines"></a>如何使用示例管道
 
 设计器会将示例管道的副本保存到工作室工作区。 你可以编辑管道，以根据自己的需求对其进行改编；还可以保存管道供自己使用。 可以使用这些示例作为起点来快速开始生成项目。
+
+### <a name="open-a-sample-pipeline"></a>打开示例管道
 
 1. 登录到 <a href="https://ml.azure.com?tabs=jre" target="_blank">ml.azure.com</a>，选择要使用的工作区。
 

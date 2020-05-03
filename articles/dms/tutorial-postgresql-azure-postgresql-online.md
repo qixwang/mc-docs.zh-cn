@@ -11,14 +11,14 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-origin.date: 02/17/2020
-ms.date: 03/30/2020
-ms.openlocfilehash: a40bbdc2864bf0f0fdc053c85b38260bddfd7032
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+origin.date: 04/11/2020
+ms.date: 04/27/2020
+ms.openlocfilehash: 955f20b07d79a8108d38baf9909bf78ad89764fc
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80341714"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134727"
 ---
 # <a name="tutorial-migrate-postgresql-to-azure-db-for-postgresql-online-using-dms-via-the-azure-cli"></a>教程：通过 Azure CLI 使用 DMS 将 PostgreSQL 联机迁移到 Azure DB for PostgreSQL
 
@@ -45,7 +45,7 @@ ms.locfileid: "80341714"
 
 * 下载并安装 [PostgreSQL 社区版](https://www.postgresql.org/download/) 9.5、9.6 或 10。 源 PostgreSQL 服务器版本必须是 9.5.11、9.6.7、10 或更高版本。 有关详细信息，请参阅[支持的 PostgreSQL 数据库版本](/postgresql/concepts-supported-versions)一文。
 
-    另外，本地 PostgreSQL 版本必须与 Azure Database for PostgreSQL 版本相符。 例如，PostgreSQL 9.5.11.5 只能迁移到 Azure Database for PostgreSQL 9.5.11，不能迁移到 9.6.7 版本。
+    另请注意，目标 Azure Database for PostgreSQL 版本必须等于或晚于本地 PostgreSQL 版本。 例如，PostgreSQL 9.6 只能迁移到 Azure Database for PostgreSQL 9.6、10 或 11，而不能迁移到 Azure Database for PostgreSQL 9.5。
 
 * [在 Azure Database for PostgreSQL 中创建实例](/postgresql/quickstart-create-server-database-portal)。  
 * 使用 Azure 资源管理器部署模型创建 Azure 数据库迁移服务的 Azure 虚拟网络，它将使用 [ExpressRoute](/expressroute/expressroute-introduction) 或 [VPN](/vpn-gateway/vpn-gateway-about-vpngateways) 为本地源服务器提供站点到站点连接。 有关创建虚拟网络的详细信息，请参阅[虚拟网络文档](/virtual-network/)，尤其是提供了分步详细信息的快速入门文章。
@@ -156,7 +156,7 @@ ms.locfileid: "80341714"
 
 1. 安装 dms 同步扩展：
    * 通过运行以下命令登录到 Azure：
-       ```
+       ```azurecli
        az cloud set --name AzureChinaCloud
        az login
        ```
@@ -165,24 +165,24 @@ ms.locfileid: "80341714"
    * 添加 dms 扩展：
        * 若要列出可用的扩展，请运行以下命令：
 
-           ```
+           ```azurecli
            az extension list-available –otable
            ```
 
        * 若要安装扩展，请运行以下命令：
 
-           ```
+           ```azurecli
            az extension add –n dms-preview
            ```
 
    * 若要验证是否已正确安装 dms 扩展，请运行以下命令：
 
-       ```
+       ```azurecli
        az extension list -otable
        ```
        应会看到以下输出：
 
-       ```
+       ```output
        ExtensionType    Name
        ---------------  ------
        whl              dms
@@ -193,19 +193,19 @@ ms.locfileid: "80341714"
 
    * 任何时候都可以通过运行以下命令来查看所有在 DMS 中受支持的命令：
 
-       ```
+       ```azurecli
        az dms -h
        ```
 
    * 如果有多个 Azure 订阅，请运行以下命令，以便设置需要用来预配 DMS 服务实例的订阅。
 
-        ```
+        ```azurecli
        az account set -s 97181df2-909d-420b-ab93-1bff15acb6b7
         ```
 
 2. 通过运行以下命令来预配 DMS 的实例：
 
-   ```
+   ```azurecli
    az dms create -l [location] -n <newServiceName> -g <yourResourceGroupName> --sku-name Premium_4vCores --subnet/subscriptions/{vnet subscription id}/resourceGroups/{vnet resource group}/providers/Microsoft.Network/virtualNetworks/{vnet name}/subnets/{subnet name} –tags tagName1=tagValue1 tagWithNoValue
    ```
 
@@ -216,7 +216,7 @@ ms.locfileid: "80341714"
    * 资源组名称：PostgresDemo
    * DMS 服务名称：PostgresCLI
 
-   ```
+   ```azurecli
    az dms create -l chinaeast2 -g PostgresDemo -n PostgresCLI --subnet /subscriptions/97181df2-909d-420b-ab93-1bff15acb6b7/resourceGroups/ERNetwork/providers/Microsoft.Network/virtualNetworks/AzureDMS-CORP-USC-VNET-5044/subnets/Subnet-1 --sku-name Premium_4vCores
    ```
 
@@ -224,19 +224,19 @@ ms.locfileid: "80341714"
 
 3. 若要确定 DMS 代理的 IP 地址，以便将其添加到 Postgres pg_hba.conf 文件，请运行以下命令：
 
-    ```
+    ```azurecli
     az network nic list -g <ResourceGroupName>--query '[].ipConfigurations | [].privateIpAddress'
     ```
 
     例如：
 
-    ```
+    ```azurecli
     az network nic list -g PostgresDemo --query '[].ipConfigurations | [].privateIpAddress'
     ```
 
     获得的结果应该类似于以下地址： 
 
-    ```
+    ```output
     [
       "172.16.136.18"
     ]
@@ -254,7 +254,7 @@ ms.locfileid: "80341714"
 
 5. 接下来请运行以下命令，创建 PostgreSQL 迁移项目：
     
-    ```
+    ```azurecli
     az dms project create -l <location> -g <ResourceGroupName> --service-name <yourServiceName> --source-platform PostgreSQL --target-platform AzureDbforPostgreSQL -n <newProjectName>
     ```
 
@@ -267,7 +267,7 @@ ms.locfileid: "80341714"
    * 源平台：PostgreSQL
    * 目标平台：AzureDbForPostgreSql
 
-     ```
+     ```azurecli
      az dms project create -l chinaeast2 -n PGMigration -g PostgresDemo --service-name PostgresCLI --source-platform PostgreSQL --target-platform AzureDbForPostgreSql
      ```
 
@@ -277,7 +277,7 @@ ms.locfileid: "80341714"
 
    * 若要查看选项的完整列表，请运行以下命令：
 
-       ```
+       ```azurecli
        az dms project task create -h
        ```
 
@@ -285,7 +285,7 @@ ms.locfileid: "80341714"
 
        适用于 PostgreSQL 连接的连接 JSON 对象的格式。
         
-       ```
+       ```json
        {
                    "userName": "user name",    // if this is missing or null, you will be prompted
                    "password": null,           // if this is missing or null (highly recommended) you will
@@ -299,7 +299,7 @@ ms.locfileid: "80341714"
 
    * 此外还有一个数据库选项 json 文件，该文件列出 json 对象。 对于 PostgreSQL，数据库选项 JSON 对象的格式如下所示：
 
-       ```
+       ```json
        [
            {
                "name": "source database",
@@ -311,7 +311,7 @@ ms.locfileid: "80341714"
 
    * 使用记事本创建一个 json 文件，复制以下命令并将其粘贴到文件中，然后将文件保存在 C:\DMS\source.json 中。
 
-        ```
+        ```json
        {
                    "userName": "postgres",    
                    "password": null,           
@@ -324,7 +324,7 @@ ms.locfileid: "80341714"
 
    * 创建另一个名为 target.json 的文件，将其另存为 C:\DMS\target.json。 包括以下命令：
 
-       ```
+       ```json
        {
                "userName": " dms@builddemotarget",    
                "password": null,           
@@ -336,7 +336,7 @@ ms.locfileid: "80341714"
 
    * 创建一个数据库选项 json 文件，该文件将要迁移的数据库的选项以清单形式列出：
 
-       ``` 
+       ```json
        [
            {
                "name": "dvdrental",
@@ -347,7 +347,7 @@ ms.locfileid: "80341714"
 
    * 运行以下命令，其中包含源、目标和 DB 选项 json 文件。
 
-       ``` 
+       ```azurecli
        az dms project task create -g PostgresDemo --project-name PGMigration --source-platform postgresql --target-platform azuredbforpostgresql --source-connection-json c:\DMS\source.json --database-options-json C:\DMS\option.json --service-name PostgresCLI --target-connection-json c:\DMS\target.json –task-type OnlineMigration -n runnowtask    
        ```
 
@@ -355,19 +355,19 @@ ms.locfileid: "80341714"
 
 7. 若要显示任务进度，请运行以下命令：
 
-   ```
+   ```azurecli
    az dms project task show --service-name PostgresCLI --project-name PGMigration --resource-group PostgresDemo --name Runnowtask
    ```
 
    OR
 
-    ```
+    ```azurecli
    az dms project task show --service-name PostgresCLI --project-name PGMigration --resource-group PostgresDemo --name Runnowtask --expand output
     ```
 
 8. 也可从 expand output 中查询 migrationState：
 
-    ```
+    ```azurecli
     az dms project task show --service-name PostgresCLI --project-name PGMigration --resource-group PostgresDemo --name Runnowtask --expand output --query 'properties.output[].migrationState | [0]' "READY_TO_COMPLETE"
     ```
 
@@ -375,7 +375,7 @@ ms.locfileid: "80341714"
 
 在输出文件中，有多个指示迁移进度的参数。 有关示例，请查看下面的输出文件：
 
-  ```
+  ```output
     "output": [                                 Database Level
           {
             "appliedChanges": 0,        //Total incremental sync applied after full load
@@ -470,19 +470,19 @@ ms.locfileid: "80341714"
 
 1. 使用以下命令执行直接转换数据库迁移任务：
 
-    ```
+    ```azurecli
     az dms project task cutover -h
     ```
 
     例如：
 
-    ```
+    ```azurecli
     az dms project task cutover --service-name PostgresCLI --project-name PGMigration --resource-group PostgresDemo --name Runnowtask  --object-name Inventory
     ```
 
 2. 若要监视直接转换进度，请运行以下命令：
 
-    ```
+    ```azurecli
     az dms project task show --service-name PostgresCLI --project-name PGMigration --resource-group PostgresDemo --name Runnowtask
     ```
 
@@ -497,28 +497,28 @@ ms.locfileid: "80341714"
 
 1. 若要取消正在运行的任务，请使用以下命令：
 
-    ```
+    ```azurecli
     az dms project task cancel --service-name PostgresCLI --project-name PGMigration --resource-group PostgresDemo --name Runnowtask
      ```
 
 2. 若要删除正在运行的任务，请使用以下命令：
-    ```
+    ```azurecli
     az dms project task delete --service-name PostgresCLI --project-name PGMigration --resource-group PostgresDemo --name Runnowtask
     ```
 
 3. 若要取消正在运行的项目，请使用以下命令：
-     ```
+     ```azurecli
     az dms project task cancel -n runnowtask --project-name PGMigration -g PostgresDemo --service-name PostgresCLI
      ```
 
 4. 若要删除正在运行的项目，请使用以下命令：
-    ```
+    ```azurecli
     az dms project task delete -n runnowtask --project-name PGMigration -g PostgresDemo --service-name PostgresCLI
     ```
 
 5. 若要删除 DMS 服务，请使用以下命令：
 
-     ```
+     ```azurecli
     az dms delete -g ProgresDemo -n PostgresCLI
      ```
 

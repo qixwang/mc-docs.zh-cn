@@ -13,18 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-origin.date: 07/18/2017
-ms.date: 10/09/2019
+ms.date: 04/23/2020
 ms.subservice: hybrid
 ms.author: v-junlch
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa8b166fae3d716b999ec982b7fb0f9a978825ec
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 61ba31aa06053af52ba56d919c6cf50784380d8d
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79291003"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126603"
 ---
 # <a name="manage-and-customize-active-directory-federation-services-by-using-azure-ad-connect"></a>使用 Azure AD Connect 管理和自定义 Active Directory 联合身份验证服务
 本文介绍如何使用 Azure Active Directory (Azure AD) Connect 管理和自定义 Active Directory 联合身份验证服务 (AD FS)。 另外，还介绍了可能需要针对完整的 AD FS 场配置执行的其他常见 AD FS 任务。
@@ -37,16 +36,16 @@ ms.locfileid: "79291003"
 | [添加 AD FS 服务器](#addadfsserver) |如何使用附加的 AD FS 服务器扩展 AD FS 场。 |
 | [添加 AD FS Web 应用程序代理服务器](#addwapserver) |如何使用附加的 Web 应用程序代理 (WAP) 服务器扩展 AD FS 场。 |
 | [添加联合域](#addfeddomain) |如何添加联合域。 |
-| [更新 SSL 证书](how-to-connect-fed-ssl-update.md)| 如何更新 AD FS 场的 SSL 证书。 |
+| [更新 TLS/SSL 证书](how-to-connect-fed-ssl-update.md)| 如何更新 AD FS 场的 TLS/SSL 证书。 |
 | **自定义 AD FS** | |
 | [添加自定义公司徽标或插图](#customlogo) |如何使用公司徽标和插图自定义 AD FS 登录页。 |
 | [添加登录说明](#addsignindescription) |如何添加登录页说明。 |
 | [修改 AD FS 声明规则](#modclaims) |如何修改各种联合方案的 AD FS 声明。 |
 
-## 管理 AD FS <a name="ad-fs-management"></a>
+## <a name="manage-ad-fs"></a>管理 AD FS <a name="ad-fs-management"></a>
 使用 Azure AD Connect 向导，可以在最少的用户干预的 Azure AD Connect 中执行各种 AD FS 相关任务。 在通过运行向导来完成安装 Azure AD Connect 后，可以再次运行向导，以执行其他任务。
 
-## <a name="repairthetrust"></a>修复信任 
+## <a name="repair-the-trust"></a><a name="repairthetrust"></a>修复信任 
 可以使用 Azure AD Connect 检查 AD FS 和 Azure AD 信任的当前运行状况并采取适当措施来修复信任。 请按照以下步骤修复 Azure AD 和 AD FS 信任。
 
 1. 从其他任务列表中选择“修复 AAD 和 ADFS 信任”  。
@@ -72,7 +71,7 @@ ms.locfileid: "79291003"
 > [!NOTE]
 > Azure AD Connect 只能对自签名的证书进行修复或采取措施。 Azure AD Connect 无法修复第三方证书。
 
-## <a name="alternateid"></a>使用 AlternateID 与 Azure AD 进行联合 
+## <a name="federate-with-azure-ad-using-alternateid"></a><a name="alternateid"></a>使用 AlternateID 与 Azure AD 进行联合 
 建议使本地用户主体名称 (UPN) 和云用户主体名称保持相同。 如果本地 UPN 使用不可路由的域（例如 Contoso.local），或由于本地应用程序依赖关系而无法更改，建议设置备用登录 ID。 备用登录 ID 允许配置登录体验，用户可以使用其 UPN 以外的属性（如邮件）登录。 用于 Azure AD Connect 中用户主体名称的属性默认为 Active Directory 中的 userPrincipalName 属性。 如果为用户主体名称选择任何其他属性，并使用 AD FS 进行联合，则 Azure AD Connect 为备用登录 ID 配置 AD FS。 以下是为用户主体名称选择其他属性的一个示例：
 
 ![备用 ID 属性选择](./media/how-to-connect-fed-management/attributeselection.png)
@@ -88,7 +87,7 @@ ms.locfileid: "79291003"
 > [!NOTE]
 > 有关 AlternateID 和手动配置步骤的详细信息，请阅读[配置备用登录 ID](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/operations/configuring-alternate-login-id)
 
-## <a name="addadfsserver"></a>添加 AD FS 服务器 
+## <a name="add-an-ad-fs-server"></a><a name="addadfsserver"></a>添加 AD FS 服务器 
 
 > [!NOTE]
 > 若要添加 AD FS 服务器，Azure AD Connect 需要 PFX 证书。 因此，只有使用 Azure AD Connect 配置了 AD FS 场，才能执行此操作。
@@ -109,7 +108,7 @@ ms.locfileid: "79291003"
 
    ![证书密码](./media/how-to-connect-fed-management/AddNewADFSServer4.PNG)
 
-    ![指定 SSL 证书](./media/how-to-connect-fed-management/AddNewADFSServer5.PNG)
+    ![指定 TLS/SSL 证书](./media/how-to-connect-fed-management/AddNewADFSServer5.PNG)
 
 5. 在“AD FS 服务器”  页上，输入要添加到 AD FS 场的服务器名称或 IP 地址。
 
@@ -121,7 +120,7 @@ ms.locfileid: "79291003"
 
     ![安装完成](./media/how-to-connect-fed-management/AddNewADFSServer8.PNG)
 
-## <a name="addwapserver"></a>添加 AD FS WAP 服务器 
+## <a name="add-an-ad-fs-wap-server"></a><a name="addwapserver"></a>添加 AD FS WAP 服务器 
 
 > [!NOTE]
 > 若要添加 WAP 服务器，Azure AD Connect 需要 PFX 证书。 因此，只有使用 Azure AD Connect 配置了 AD FS 场，才能执行此操作。
@@ -137,7 +136,7 @@ ms.locfileid: "79291003"
 3. 在“指定 SSL 证书”页上，为使用 Azure AD Connect 配置 AD FS 场时提供的 PFX 文件提供密码。 
    ![证书密码](./media/how-to-connect-fed-management/WapServer3.PNG)
 
-    ![指定 SSL 证书](./media/how-to-connect-fed-management/WapServer4.PNG)
+    ![指定 TLS/SSL 证书](./media/how-to-connect-fed-management/WapServer4.PNG)
 
 4. 添加要用作 WAP 服务器的服务器。 由于 WAP 服务器可能未加入域，因此向导会要求为要添加的服务器提供管理凭据。
 
@@ -155,7 +154,7 @@ ms.locfileid: "79291003"
 
    ![安装完成](./media/how-to-connect-fed-management/WapServer8.PNG)
 
-## <a name="addfeddomain"></a>添加联合域 
+## <a name="add-a-federated-domain"></a><a name="addfeddomain"></a>添加联合域 
 
 使用 Azure AD Connect 可以轻松添加要与 Azure AD 联合的域。 Azure AD Connect 会添加域用于联合身份验证，并修改声明规则，以便在你有多个域与 Azure AD 联合时，正确反映发布者。
 
@@ -187,7 +186,7 @@ ms.locfileid: "79291003"
 ## <a name="ad-fs-customization"></a>AD FS 自定义
 以下部分提供有关自定义 AD FS 登录页时可能必须执行的一些常见任务的详细信息。
 
-## <a name="customlogo"></a>添加自定义公司徽标或插图 
+## <a name="add-a-custom-company-logo-or-illustration"></a><a name="customlogo"></a>添加自定义公司徽标或插图 
 若要更改“登录”页上显示的公司徽标，请使用以下 Windows PowerShell cmdlet 和语法。 
 
 > [!NOTE]
@@ -196,14 +195,14 @@ ms.locfileid: "79291003"
     Set-AdfsWebTheme -TargetName default -Logo @{path="c:\Contoso\logo.PNG"}
 
 > [!NOTE]
-> *TargetName* 参数是必填参数。 随 AD FS 一起发布的默认主题名为“默认”。
+> *TargetName* 参数是必需参数。 随 AD FS 一起发布的默认主题名为“默认”。
 
-## <a name="addsignindescription"></a>添加登录说明 
+## <a name="add-a-sign-in-description"></a><a name="addsignindescription"></a>添加登录说明 
 若要将登录页说明添加到“登录”  页，请使用以下 Windows PowerShell cmdlet 和语法。
 
     Set-AdfsGlobalWebContent -SignInPageDescriptionText "<p>Sign-in to Contoso requires device registration. Click <A href='http://fs1.contoso.com/deviceregistration/'>here</A> for more information.</p>"
 
-## <a name="modclaims"></a>修改 AD FS 声明规则 
+## <a name="modify-ad-fs-claim-rules"></a><a name="modclaims"></a>修改 AD FS 声明规则 
 AD FS 支持丰富的声明语言，让你用来创建自定义声明规则。 有关详细信息，请参阅[声明规则语言的作用](https://technet.microsoft.com/library/dd807118.aspx)。
 
 以下部分详细介绍了如何针对与 Azure AD 和 AD FS 联合身份验证有关的某些情况编写自定义规则。
@@ -227,7 +226,7 @@ AD FS 支持丰富的声明语言，让你用来创建自定义声明规则。 �
     NOT EXISTS([Type == "http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid"])
     => add(Type = "urn:anandmsft:tmp/idflag", Value = "useguid");
 
-此规则定义名为 **idflag** 的临时标志，当没有为用户填充的 **ms-ds-consistencyguid** 时，该标志设置为 **useguid**。 这背后的逻辑在于 AD FS 不允许空的声明。 因此，在规则 1 中添加声明 http://contoso.com/ws/2016/02/identity/claims/objectguid 和 http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid 时，仅当填充了用户值时，才会获得 **msdsconsistencyguid** 声明。 如果未填充该值，在 AD FS 中它就会作为空值出现，并立即删除。 所有对象都具有 **objectGuid**，因此在执行规则 1 后声明始终存在。
+此规则定义名为 **idflag** 的临时标志，当没有为用户填充的 **ms-ds-consistencyguid** 时，该标志设置为 **useguid**。 这背后的逻辑在于 AD FS 不允许空的声明。 因此，在规则 1 中添加声明 `http://contoso.com/ws/2016/02/identity/claims/objectguid` 和 `http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid` 时，仅当填充了用户值时，才会获得 **msdsconsistencyguid** 声明。 如果未填充该值，在 AD FS 中它就会作为空值出现，并立即删除。 所有对象都具有 **objectGuid**，因此在执行规则 1 后声明始终存在。
 
 **规则 3：如果存在，将 ms-ds-consistencyguid 作为不可变 ID 发出**
 
@@ -251,4 +250,3 @@ AD FS 支持丰富的声明语言，让你用来创建自定义声明规则。 �
 ## <a name="next-steps"></a>后续步骤
 了解有关[用户登录选项](plan-connect-user-signin.md)的详细信息。
 
-<!-- Update_Description: code update -->

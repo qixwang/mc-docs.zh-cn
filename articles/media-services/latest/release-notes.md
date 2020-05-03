@@ -10,14 +10,14 @@ ms.service: media-services
 ms.workload: na
 ms.topic: article
 origin.date: 02/03/2020
-ms.date: 04/06/2020
+ms.date: 04/13/2020
 ms.author: v-jay
-ms.openlocfilehash: 2320c115a1124ba3bd88eb50f778bacf1d7fccec
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: a558c442ff865432c41baec2b2e678b148309cf9
+ms.sourcegitcommit: 95efd248f5ee3701f671dbd5cfe0aec9c9959a24
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80625767"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82507730"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure 媒体服务 v3 发行说明
 
@@ -88,7 +88,7 @@ ms.locfileid: "80625767"
 
 现在，在使用[作业](https://docs.microsoft.com/rest/api/media/jobs)对视频进行编码时，可以对其进行剪裁或子剪辑。 
 
-此功能适用于使用 [BuiltInStandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms) 预设或 [StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) 预设生成的任何[转换](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset)。 
+此功能适用于使用 [BuiltInStandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) 预设或 [StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset) 预设生成的任何[转换](https://docs.microsoft.com/rest/api/media/transforms)。 
 
 请参阅示例：
 
@@ -157,17 +157,17 @@ CLI 2.0 模块现在可用于 [Azure 媒体服务 v3 正式版](https://docs.mic
 
 ### <a name="new-commands"></a>新命令
 
-- [az ams account](/cli/ams/account?view=azure-cli-latest)
-- [az ams account-filter](/cli/ams/account-filter?view=azure-cli-latest)
-- [az ams asset](/cli/ams/asset?view=azure-cli-latest)
-- [az ams asset-filter](/cli/ams/asset-filter?view=azure-cli-latest)
-- [az ams content-key-policy](/cli/ams/content-key-policy?view=azure-cli-latest)
-- [az ams job](/cli/ams/job?view=azure-cli-latest)
-- [az ams live-event](/cli/ams/live-event?view=azure-cli-latest)
-- [az ams live-output](/cli/ams/live-output?view=azure-cli-latest)
-- [az ams streaming-endpoint](/cli/ams/streaming-endpoint?view=azure-cli-latest)
-- [az ams streaming-locator](/cli/ams/streaming-locator?view=azure-cli-latest)
-- [az ams account mru](/cli/ams/account/mru?view=azure-cli-latest) - 用于管理媒体预留单位。 有关详细信息，请参阅[缩放媒体预留单位](media-reserved-units-cli-how-to.md)。
+- [az ams account](https://docs.microsoft.com/cli/azure/ams/account?view=azure-cli-latest)
+- [az ams account-filter](https://docs.microsoft.com/cli/azure/ams/account-filter?view=azure-cli-latest)
+- [az ams asset](https://docs.microsoft.com/cli/azure/ams/asset?view=azure-cli-latest)
+- [az ams asset-filter](https://docs.microsoft.com/cli/azure/ams/asset-filter?view=azure-cli-latest)
+- [az ams content-key-policy](https://docs.microsoft.com/cli/azure/ams/content-key-policy?view=azure-cli-latest)
+- [az ams job](https://docs.microsoft.com/cli/azure/ams/job?view=azure-cli-latest)
+- [az ams live-event](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest)
+- [az ams live-output](https://docs.microsoft.com/cli/azure/ams/live-output?view=azure-cli-latest)
+- [az ams streaming-endpoint](https://docs.microsoft.com/cli/azure/ams/streaming-endpoint?view=azure-cli-latest)
+- [az ams streaming-locator](https://docs.microsoft.com/cli/azure/ams/streaming-locator?view=azure-cli-latest)
+- [az ams account mru](https://docs.microsoft.com/cli/azure/ams/account/mru?view=azure-cli-latest) - 用于管理媒体预留单位。 有关详细信息，请参阅[缩放媒体预留单位](media-reserved-units-cli-how-to.md)。
 
 ### <a name="new-features-and-breaking-changes"></a>新功能和重大更改
 
@@ -197,7 +197,7 @@ CLI 2.0 模块现在可用于 [Azure 媒体服务 v3 正式版](https://docs.mic
 
 - ```--preset-names``` 参数已替换为 ```--preset```。 现在只能一次设置 1 个输出/预设（若要添加更多，必须运行 ```az ams transform output add```）。 此外，还可以通过将路径传递到自定义 JSON 来设置自定义 StandardEncoderPreset。
 - 可以通过传递要删除的输出索引来执行 ```az ams transform output remove```。
-- 在 ```--relative-priority, --on-error, --audio-language and --insights-to-extract``` 和 ```az ams transform create``` 命令中添加了 ```az ams transform output add``` 参数。
+- 在 ```az ams transform create``` 和 ```az ams transform output add``` 命令中添加了 ```--relative-priority, --on-error, --audio-language and --insights-to-extract``` 参数。
 
 ## <a name="october-2018---ga"></a>October 2018 - GA
 

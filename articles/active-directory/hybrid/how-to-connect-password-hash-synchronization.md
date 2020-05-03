@@ -9,18 +9,18 @@ ms.assetid: 05f16c3e-9d23-45dc-afca-3d0fa9dbf501
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/24/2020
+ms.date: 04/23/2020
 ms.subservice: hybrid
 ms.author: v-junlch
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1566f403b65163de29f01233df8dc8d23a89afd
-ms.sourcegitcommit: 6568c59433d7e80ab06e9fe76d4791f761ed6775
+ms.openlocfilehash: e05ea71d3d4832768e7f4aead7f44f36722b4e5c
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80243062"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126565"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>使用 Azure AD Connect 同步实现密码哈希同步
 本文提供将用户密码从本地 Active Directory 实例同步到基于云的 Azure Active Directory (Azure AD) 实例时所需的信息。
@@ -57,7 +57,7 @@ Active Directory 域服务以实际用户密码的哈希值表示形式存储密
 4. 密码哈希同步代理通过先将哈希转换为 32 字节的十六进制字符串，然后使用 UTF-16 编码重新将此字符串转换为二进制，来将 16 字节的二进制密码哈希扩展为 64 字节。
 5. 密码哈希同步代理通过将每个用户的 salt（包含 10 字节长度的 salt）添加到 64 字节的二进制字符串，来进一步保护原始哈希。
 6. 然后，密码哈希同步代理将 MD4 哈希与每个用户的 salt 组合在一起，并将其输入到 [PBKDF2](https://www.ietf.org/rfc/rfc2898.txt) 函数。 使用 [HMAC-SHA256](https://msdn.microsoft.com/library/system.security.cryptography.hmacsha256.aspx) 键控哈希算法的 1000 次迭代。 
-7. 密码哈希同步代理获取生成的 32 字节哈希，将每个用户的 salt 和 SHA256 迭代次数连接到它（以供 Azure AD 使用），然后通过 SSL 将该字符串从 Azure AD Connect 传输到 Azure AD。</br> 
+7. 密码哈希同步代理获取生成的 32 字节哈希，将每个用户的 salt 和 SHA256 迭代次数与该哈希连接（以供 Azure AD 使用），然后通过 TLS 将该字符串从 Azure AD Connect 传输到 Azure AD。</br> 
 8. 当用户尝试登录到 Azure AD 并输入其密码时，会通过同一 MD4+salt+PBKDF2+HMAC-SHA256 过程运行密码。 如果生成的哈希与 Azure AD 中存储的哈希匹配，则用户输入的密码正确并进行身份验证。
 
 > [!NOTE]
@@ -196,7 +196,6 @@ Azure AD 支持为每个已注册的域单独设置密码过期策略。
     </configuration>
 ```
 
-有关安全性与 FIPS 的信息，请参阅 [Azure AD password hash sync, encryption, and FIPS compliance](https://blogs.technet.microsoft.com/enterprisemobility/2014/06/28/aad-password-sync-encryption-and-fips-compliance/)（Azure AD 密码哈希同步、加密和 FIPS 符合性）。
 
 ## <a name="troubleshoot-password-hash-synchronization"></a>排查密码哈希同步问题
 如果遇到密码哈希同步问题，请参阅[排查密码哈希同步问题](tshoot-connect-password-hash-synchronization.md)。
@@ -206,4 +205,3 @@ Azure AD 支持为每个已注册的域单独设置密码过期策略。
 * [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)
 * [获取有关从 ADFS 迁移到密码哈希同步的分步部署计划](https://aka.ms/authenticationDeploymentPlan)
 
-<!-- Update_Description: wording update -->

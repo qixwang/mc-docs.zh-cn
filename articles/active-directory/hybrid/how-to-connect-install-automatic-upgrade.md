@@ -13,19 +13,19 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 origin.date: 02/26/2019
-ms.date: 03/15/2019
+ms.date: 04/23/2019
 ms.subservice: hybrid
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 987ffd1d10ab822dba5a009a2ddcfab6fdf813a1
-ms.sourcegitcommit: 46a8da077726a15b5923e4e688fd92153ebe2bf0
+ms.openlocfilehash: f725cc78dd998bd8efcf2312d2eb0391bec3bdaa
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58186675"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126578"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect：自动升级
-此功能是随内部版本 [1.1.105.0（于 2016 年 2 月发布）](reference-connect-version-history.md#111050)一起推出的。  此功能已在[内部版本 1.1.561](reference-connect-version-history.md#115610) 中更新，现在支持以前不支持的其他方案。
+此功能是随内部版本 1.1.105.0（于 2016 年 2 月发布）一起推出的。  此功能已在内部版本 1.1.561 中更新，现在支持以前不支持的其他方案。
 
 ## <a name="overview"></a>概述
 使用 **自动升级** 功能是确保 Azure AD Connect 安装始终保持最新状态的最简单方法。 系统默认启用此功能，以便进行快速安装和 DirSync 升级。 发布新版本时，安装会自动升级。
@@ -44,7 +44,7 @@ ms.locfileid: "58186675"
 | 已挂起 |只能由系统设置。 系统**目前没有**资格接收自动升级。 |
 | 已禁用 |自动升级已禁用。 |
 
-可以使用 `Set-ADSyncAutoUpgrade` 在“已启用”与“已禁用”之间切换。 只有系统才能设置“暂停”状态。  在 1.1.750.0 之前，如果自动升级状态设置为“已暂停”，则 Set-ADSyncAutoUpgrade cmdlet 会阻止自动升级。 此功能现已更改，不阻止自动升级。
+可以使用 `Set-ADSyncAutoUpgrade` 在“已启用”与“已禁用”之间切换。   只有系统才能设置“暂停”状态。   在 1.1.750.0 之前，如果自动升级状态设置为“已暂停”，则 Set-ADSyncAutoUpgrade cmdlet 会阻止自动升级。 此功能现已更改，不阻止自动升级。
 
 如果服务器上正在运行 **同步服务管理器** UI，则会暂停升级，直到 UI 关闭为止。
 
@@ -57,7 +57,7 @@ ms.locfileid: "58186675"
 
 然后，确保已在防火墙中打开所需的 URL。
 
-确认与 Azure AD 建立连接后，可以深入了解事件日志。 启动事件查看器，并查看 **应用程序** 事件日志。 为源 Azure AD Connect 升级和事件 ID 范围 300-399 添加事件日志筛选器。  
+确认与 Azure AD 建立连接后，可以深入了解事件日志。 启动事件查看器，并查看 **应用程序** 事件日志。 为源 Azure AD Connect 升级和事件 ID 范围 300-399 添加事件日志筛选器。    
 ![用于自动升级的事件日志筛选器](./media/how-to-connect-install-automatic-upgrade/eventlogfilter.png)  
 
 此时可以看到与自动升级状态关联的事件日志。  
@@ -94,10 +94,10 @@ ms.locfileid: "58186675"
 | UpgradeNotSupportedMultiForestSetup |正在连接到多个林。 快速设置仅连接到一个林。 |
 | UpgradeNotSupportedNonLocalDbInstall |使用的不是 SQL Server Express LocalDB 数据库。 |
 | UpgradeNotSupportedNonMsolAccount |[AD DS 连接器帐户](reference-connect-accounts-permissions.md#ad-ds-connector-account)不再是默认的 MSOL_ 帐户。 |
-| UpgradeNotSupportedNotConfiguredSignInMethod | 在设置 AAD Connect 期间，请在选择登录方法时选择“不配置”。 | 
+| UpgradeNotSupportedNotConfiguredSignInMethod | 在设置 AAD Connect 期间，请在选择登录方法时选择“不配置”。  | 
 | UpgradeNotSupportedStagingModeEnabled |服务器已设置为[暂存模式](how-to-connect-sync-staging-server.md)。 |
 
 ## <a name="next-steps"></a>后续步骤
-了解有关 [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。
+了解有关[将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。
 
 <!-- Update_Description: wording update -->

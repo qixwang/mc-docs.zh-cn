@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-origin.date: 09/19/2019
-ms.date: 03/16/2020
+origin.date: 04/04/2020
+ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: 792bd6b84984f9e88516680cda904f6d046f409b
-ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
+ms.openlocfilehash: 39f313c4b29237201c4ba111040a02758b0d469c
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80151621"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82150823"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -24,7 +24,8 @@ ms.locfileid: "80151621"
 
 > [!div class="checklist"]
 > * [创建一个 Azure 搜索资源](../../../../get-started.md)
-> * [设置开发环境并创建空项目](../../../../quickstarts/setup-platform.md?tabs=jre)
+> * [设置开发环境并创建空项目](../../../../quickstarts/setup-platform.md?tabs=jre&pivots=programming-language-java)
+> * 需要语音 SDK 版本 1.10.0 或更高版本。
 
 ## <a name="add-sample-code"></a>添加示例代码
 
@@ -58,7 +59,7 @@ ms.locfileid: "80151621"
     
                 int exitCode = 1;
                 // Replace below with your own service region (e.g., "chinaeast2").
-                SpeechConfig config = SpeechConfig.fromHost(new URI("https://YourServiceRegion.tts.speech.azure.cn/"), speechSubscriptionKey);
+                SpeechConfig config = SpeechConfig.fromSubscription("YourSubscriptionKey", "YourServiceRegion");
                 assert(config != null);
     
                 SpeechSynthesizer synth = new SpeechSynthesizer(config);
@@ -116,7 +117,7 @@ ms.locfileid: "80151621"
 
 ## <a name="next-steps"></a>后续步骤
 
-[!INCLUDE [footer](./footer.md)]
+[!INCLUDE [Speech synthesis basics](../../text-to-speech-next-steps.md)]
 
 <!-- ## See also -->
 

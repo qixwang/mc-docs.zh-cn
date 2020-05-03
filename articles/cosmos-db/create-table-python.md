@@ -1,5 +1,5 @@
 ---
-title: 快速入门：将表 API 与 Python 配合使用 - Azure Cosmos DB
+title: 快速入门 - 将表 API 与 Python 配合使用 - Azure Cosmos DB
 description: 本快速入门介绍如何在 Azure 门户和 Python 中使用 Azure Cosmos DB 表 API 创建应用程序
 author: rockboyfor
 ms.service: cosmos-db
@@ -7,15 +7,15 @@ ms.subservice: cosmosdb-table
 ms.devlang: python
 ms.topic: quickstart
 origin.date: 04/10/2018
-ms.date: 10/28/2019
+ms.date: 04/27/2020
 ms.author: v-yeche
 ms.custom: seo-python-october2019
-ms.openlocfilehash: 9685a0355f972cec64071003334603a9d0fb1874
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: eba9644c4e97122b2e81988565984063f96501ac
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "72970272"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134946"
 ---
 <!--Verify sucessfully-->
 # <a name="quickstart-build-a-table-api-app-with-python-and-azure-cosmos-db"></a>快速入门：使用 Python 和 Azure Cosmos DB 生成表 API 应用
@@ -27,24 +27,21 @@ ms.locfileid: "72970272"
 > * [Python](create-table-python.md)
 > 
 
-本快速入门介绍如何使用 Python 和 Azure Cosmos DB [表 API](table-introduction.md)，通过克隆 GitHub 中的示例来生成应用。 此外，本快速入门还介绍了如何创建 Azure Cosmos DB 帐户，以及如何在基于 Web 的 Azure 门户中使用数据资源管理器创建表和实体。
+在本快速入门中，我们通过 Azure 门户创建和管理 Azure Cosmos DB 表 API 帐户，并通过 Visual Studio 使用从 GitHub 克隆的 Python 应用。 Azure Cosmos DB 是一种多模型数据库服务，可让你通过多区域分布和水平缩放功能快速创建和查询文档、表、键/值和图数据库。
 
-Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服务。 可快速创建和查询文档、键/值、宽列和图形数据库，所有这些都受益于 Azure Cosmos DB 核心的多区域分布和水平缩放功能。 
+## <a name="prerequisites"></a>先决条件
 
-## <a name="prerequisites"></a>必备条件
+- 具有活动订阅的 Azure 帐户。 [免费创建一个](https://www.azure.cn/pricing/1rmb-trial/)。 你还可以使用 [Azure Cosmos DB 模拟器](https://aka.ms/cosmosdb-emulator)以及 URI `https://localhost:8081` 和密钥 `C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==`。
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-[!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
+    <!--Not Available on [try Azure Cosmos DB for free](https://www.azure.cn/try/cosmosdb/)-->
 
-此外：
-
-* 如果尚未安装 Visual Studio 2019，可以下载并使用**免费**的 [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)。 在安装 Visual Studio 的过程中，请确保选择“Azure 开发”和“Python 开发”工作负荷。  
-* 另请在“Python 开发”工作负荷中选择“Python 2”选项，  或者从 [python.org](https://www.python.org/downloads/release/python-2712/) 下载 Python 2.7。
+- [Visual Studio 2019](https://www.visualstudio.com/downloads/)，在安装过程中选择了“Azure 开发”和“Python 开发”工作负载。   
+- [Git](https://git-scm.com/downloads)。
 
 ## <a name="create-a-database-account"></a>创建数据库帐户
 
 > [!IMPORTANT] 
-> 必须新建表 API 帐户，才能使用正式发布的表 API SDK。 正式发布的 SDK 不支持在预览期间创建的表 API 帐户。
+> 需创建新的适用于公开发表版表 API SDK 的表 API 帐户。 在预览期间创建的表 API 帐户不受公开发布版 SDK 的支持。
 >
 
 [!INCLUDE [cosmos-db-create-dbaccount-table](../../includes/cosmos-db-create-dbaccount-table.md)]
@@ -73,7 +70,7 @@ Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服�
     cd "C:\git-samples"
     ```
 
-3. 运行下列命令以克隆示例存储库。 此命令在计算机上创建示例应用程序的副本。 
+3. 运行下列命令，克隆示例存储库。 此命令在计算机上创建示例应用程序的副本。 
 
     ```bash
     git clone https://github.com/Azure-Samples/storage-python-getting-started.git
@@ -85,27 +82,29 @@ Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服�
 
 现在返回到 Azure 门户，获取连接字符串信息，并将其复制到应用。 这样，应用程序就可以与托管的数据库进行通信。 
 
-1. 在 [Azure 门户](https://portal.azure.cn/)中，选择“连接字符串”  。 
+1. 在 [Azure 门户](https://portal.azure.cn/)的 Azure Cosmos DB 帐户中，选择“连接字符串”  。 
 
     ![在“连接字符串”设置中查看并复制“连接字符串”](./media/create-table-python/view-and-copy-connection-string-in-connection-string-settings.png)
 
 2. 使用右侧的按钮复制帐户名称。
 
-3. 打开 config.py 文件，并将帐户名称从门户粘贴到第 19 行的 STORAGE_ACCOUNT_NAME 中。
+3. 打开 *config.py* 文件，将帐户名称从门户粘贴到第 19 行的 STORAGE_ACCOUNT_NAME 值中。
 
 4. 返回到门户，然后复制主键。
 
 5. 将主键从门户复制到第 20 行的 STORAGE_ACCOUNT_KEY 值中。
 
-6. 保存 config.py 文件。
+6. 保存 config.py  文件。
 
-## <a name="run-the-app"></a>运行应用
+## <a name="run-the-app"></a>运行应用程序
 
-1. 在 Visual Studio 中，右键单击**解决方案资源管理器**中的项目，选择当前 Python 环境，并右键单击。
+1. 在 Visual Studio 中右键单击“解决方案资源管理器”中的项目。 
 
-2. 选择“安装 Python 包”，并输入 **azure-storage-table**
+2. 选择当前 Python 环境，然后右键单击。
 
-3. 按 F5 运行应用程序。 应用会显示在浏览器中。 
+2. 选择“安装 Python 包”，然后输入“azure-storage-table”  。 
+
+3. 按 F5 运行应用程序。 你的应用会显示在浏览器中。 
 
 现可返回到数据资源管理器，查看查询、修改和处理此新数据。 
 
@@ -119,9 +118,9 @@ Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服�
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门教程中，已了解如何创建 Azure Cosmos DB 帐户、使用数据资源管理器创建表和运行应用。  现在可以使用表 API 进行数据查询了。  
+在本快速入门中，你了解了如何创建 Azure Cosmos DB 帐户、如何使用数据资源管理器创建表，以及如何在 Visual Studio 中运行 Python 应用来添加表数据。  现在可以使用表 API 进行数据查询了。  
 
 > [!div class="nextstepaction"]
 > [将表数据导入表 API](table-import.md)
 
-<!--Update_Description: wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

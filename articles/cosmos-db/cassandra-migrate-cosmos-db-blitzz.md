@@ -5,15 +5,15 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 08/21/2019
-ms.date: 09/30/2019
+ms.date: 04/27/2020
 ms.author: v-yeche
 ms.reviewer: sngun
-ms.openlocfilehash: 2015bc4709e606527e0b9432fcdecb42be3ea71b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 147f0dd158bfe739ca4f284a03c016890fb904ac
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "71306852"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134983"
 ---
 # <a name="migrate-data-from-cassandra-to-azure-cosmos-db-cassandra-api-account-using-blitzz"></a>使用 Blitzz 将数据从 Cassandra 迁移到 Azure Cosmos DB Cassandra API 帐户
 
@@ -37,13 +37,13 @@ Blitzz 的迁移解决方案按照分步方法迁移复杂的运营工作负荷�
 
 * 它具有容错功能，可以保证数据的准确传输，即使系统出现硬件或软件故障。
 
-* 它可以在传输过程中使用各种安全方法（例如 SSL、加密）对数据进行保护。
+* 它可以在传输过程中使用各种安全方法（例如 TLS、加密）对数据进行保护。
 
 ## <a name="steps-to-migrate-data"></a>迁移数据的步骤
 
 此部分介绍如何执行所需步骤，以便设置 Blitzz 并将数据从 Apache Cassandra 数据库迁移到 Azure Cosmos DB。
 
-1. 在打算安装 Blitzz 复制器的计算机中，添加安全证书。 该证书是 Blitzz 复制器与指定的 Azure Cosmos DB 帐户建立 SSL 连接所需的。 可以使用以下步骤来添加证书：
+1. 在打算安装 Blitzz 复制器的计算机中，添加安全证书。 该证书是 Blitzz 复制器与指定的 Azure Cosmos DB 帐户建立 TLS 连接所需的。 可以使用以下步骤来添加证书：
 
     ```bash
     wget https://cacert.omniroot.com/bc2025.crt
@@ -141,7 +141,7 @@ Blitzz 的迁移解决方案按照分步方法迁移复杂的运营工作负荷�
     ./bin/replicant full conf/conn/cassandra.yaml conf/conn/cosmosdb.yaml --filter filter/cassandra_filter.yaml --replace-existing --resume
     ```
 
-若要详细了解如何以实时迁移方式将数据迁移到目标，请观看 [Blitzz 复制器演示](https://www.youtube.com/watch?v=fsUhF9LUZmM)视频。
+    <!--Not Available on [Blitzz replicant demo](https://www.youtube.com/watch?v=fsUhF9LUZmM)-->
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -150,5 +150,5 @@ Blitzz 的迁移解决方案按照分步方法迁移复杂的运营工作负荷�
 
     <!--Not Available on * [Estimate RU/s using the Azure Cosmos DB capacity planner](estimate-ru-with-capacity-planner.md) articles-->
 
-<!-- Update_Description: new article about cassandra migrate cosmos db blitzz -->
-<!--ms.date: 09/30/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->
+

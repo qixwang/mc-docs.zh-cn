@@ -12,13 +12,13 @@ ms.author: v-jay
 ms.reviewer: sashan, carlrab
 manager: digimobile
 origin.date: 08/27/2019
-ms.date: 03/16/2020
-ms.openlocfilehash: 314c4c1e5ea3da6ae86b77dcc50e2fbf040e5854
-ms.sourcegitcommit: dc862610e2169c1fce6fb0ae9eb7dd7567f86a0a
+ms.date: 04/27/2020
+ms.openlocfilehash: 2075226b82fc7d09f6e1f6e87df82b104feaba37
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79293864"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126692"
 ---
 # <a name="tutorial-add-a-sql-database-managed-instance-to-a-failover-group"></a>教程：将 SQL 数据库托管实例添加到故障转移组
 
@@ -412,11 +412,11 @@ ms.locfileid: "79293864"
 
 1. 在 [Azure 门户](https://portal.azure.cn)中，选择“创建资源”并搜索“虚拟网络”。   
 1. 选择 Microsoft 发布的“虚拟网络”选项，然后在下一页选择“创建”。   
-1. 填写必填字段以配置辅助托管实例的虚拟网络，然后选择“创建”。  
+1. 填写必需字段以配置辅助托管实例的虚拟网络，然后选择“创建”。  
 
    下表显示了辅助虚拟网络所需的值：
 
-    | **字段** | Value |
+    | **字段** | 值 |
     | --- | --- |
     | **名称** |  辅助托管实例要使用的虚拟网络的名称，例如 `vnet-sql-mi-secondary`。 |
     | **地址空间** | 虚拟网络的地址空间，例如 `10.128.0.0/16`。 | 
@@ -447,11 +447,11 @@ ms.locfileid: "79293864"
 
 1. 在 [Azure 门户](http://portal.azure.cn)中选择“创建资源”，然后搜索“Azure SQL 托管实例”。   
 1. 选择 Microsoft 发布的“Azure SQL 托管实例”选项，然后在下一页选择“创建”。  
-1. 在“创建 Azure SQL 数据库托管实例”页的“基本信息”选项卡上，填写必填字段以配置辅助托管实例。   
+1. 在“创建 Azure SQL 数据库托管实例”页的“基本信息”选项卡上，填写必需字段以配置辅助托管实例。   
 
    下表显示了辅助托管实例所需的值：
  
-    | **字段** | Value |
+    | **字段** | 值 |
     | --- | --- |
     | **订阅** |  主托管实例所在的订阅。 |
     | **资源组**| 主托管实例所在的资源组。 |
@@ -739,15 +739,15 @@ ms.locfileid: "79293864"
 
    ![创建新的虚拟网络网关](media/sql-database-managed-instance-failover-group-tutorial/create-virtual-network-gateway.png)
 
-1. 填写必填字段，为主托管实例配置网关。 
+1. 填写必需字段，为主托管实例配置网关。 
 
    下表显示了主托管实例的网关所需的值：
  
-    | **字段** | Value |
+    | **字段** | 值 |
     | --- | --- |
     | **订阅** |  主托管实例所在的订阅。 |
     | **名称** | 虚拟网络网关的名称，例如 `primary-mi-gateway`。 | 
-    | **区域** | 辅助托管实例所在的区域。 |
+    | **区域** | 主托管实例所在的区域。 |
     | **网关类型** | 选择“VPN”。  |
     | **VPN 类型** | 选择“基于路由”  |
     | **SKU**| 保留默认值 `VpnGw1`。 |
@@ -821,11 +821,11 @@ ms.locfileid: "79293864"
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-使用 Azure 门户重复上一部分中的步骤，为辅助托管实例创建虚拟网络子网和网关。 填写必填字段，为辅助托管实例配置网关。 
+使用 Azure 门户重复上一部分中的步骤，为辅助托管实例创建虚拟网络子网和网关。 填写必需字段，为辅助托管实例配置网关。 
 
    下表显示了辅助托管实例的网关所需的值：
 
-   | **字段** | Value |
+   | **字段** | 值 |
    | --- | --- |
    | **订阅** |  辅助托管实例所在的订阅。 |
    | **名称** | 虚拟网络网关的名称，例如 `secondary-mi-gateway`。 | 

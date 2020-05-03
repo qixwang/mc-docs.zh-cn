@@ -3,7 +3,7 @@ title: 使用 SCP 将文件移入和移出 Linux VM | Azure
 description: 使用 SCP 和 SSH 密钥对安全地将文件移到 Azure Linux VM 和从 Azure Linux VM 移动文件。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: rockboyfor
+author: Johnnytechn
 manager: digimobile
 editor: ''
 tags: azure-resource-manager
@@ -13,15 +13,15 @@ ms.workload: infrastructure
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 origin.date: 07/12/2017
-ms.date: 11/11/2019
-ms.author: v-yeche
+ms.date: 04/13/2020
+ms.author: v-johya
 ms.subservice: disks
-ms.openlocfilehash: a78993d8ab12570e55135cf7154c7593a8f9b5b5
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 0041d98ecf988aa26d547f3517df9b708197d6c1
+ms.sourcegitcommit: ebedf9e489f5218d4dda7468b669a601b3c02ae5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "73831280"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82159103"
 ---
 # <a name="move-files-to-and-from-a-linux-vm-using-scp"></a>使用 SCP 将文件移到 Linux VM 和从 Linux VM 移动文件
 
@@ -49,7 +49,7 @@ scp azureuser@azurehost:directory/file targetfile
 
 ## <a name="ssh-key-pair-authentication"></a>SSH 密钥对身份验证
 
-SCP 将 SSH 用于传输层。 SSH 处理目标主机上的身份验证，同时还在 SSH 默认提供的加密隧道中移动文件。 对于 SSH 身份验证，可以使用用户名和密码。 但是，建议将 SSH 公钥和私钥身份验证作为安全性最佳做法。 SSH 对连接进行身份验证后，SCP 将开始复制文件。 借助正确配置的 `~/.ssh/config` 以及 SSH 公钥和私钥，仅使用服务器名称（或 IP 地址）即可建立 SCP 连接。 如果只有一个 SSH 密钥，SCP 会在 `~/.ssh/` 目录中查找它，并在默认情况下使用它登录到 VM。
+SCP 将 SSH 用于传输层。 SSH 处理目标主机上的身份验证，同时还在 SSH 默认提供的加密隧道中移动文件。 对于 SSH 身份验证，可以使用用户名和密码。 但是，建议将 SSH 公钥和私钥身份验证作为安全性最佳做法。 SSH 对连接进行身份验证后，SCP 会开始复制文件。 借助正确配置的 `~/.ssh/config` 以及 SSH 公钥和私钥，仅使用服务器名称（或 IP 地址）即可建立 SCP 连接。 如果只有一个 SSH 密钥，SCP 会在 `~/.ssh/` 目录中查找它，并在默认情况下使用它登录到 VM。
 
 有关配置 `~/.ssh/config` 以及 SSH 公钥和私钥的详细信息，请参阅[创建 SSH 密钥](mac-create-ssh-keys.md?toc=%2fvirtual-machines%2flinux%2ftoc.json)。
 
@@ -57,7 +57,7 @@ SCP 将 SSH 用于传输层。 SSH 处理目标主机上的身份验证，同时
 
 在第一个示例中，我们将 Azure 配置文件向上复制到用于部署自动化的 Linux VM。 由于此文件包含 Azure API 凭据，其中包括机密，因此安全性非常重要。 SSH 提供的加密隧道可保护文件的内容。
 
-以下命令通过 FQDN *myserver.chinaeast.cloudapp.chinacloudapi.cn* 将本地 *.azure/config* 文件复制到 Azure VM。 Azure VM 上的管理员用户名为 azureuser  。 该文件指向 /home/azureuser/directory  。 在此命令中替换自己的值。
+以下命令通过 FQDN *myserver.chinaeast.cloudapp.chinacloudapi.cn* 将本地 *.azure/config* 文件复制到 Azure VM。 Azure VM 上的管理员用户名为 *azureuser*。 该文件指向 */home/azureuser/* 目录。 在此命令中替换自己的值。
 
 ```bash
 scp ~/.azure/config azureuser@myserver.chinaeast.chinacloudapp.cn:/home/azureuser/config
@@ -67,13 +67,13 @@ scp ~/.azure/config azureuser@myserver.chinaeast.chinacloudapp.cn:/home/azureuse
 
 在此示例中，我们将日志文件的目录从 Linux VM 复制到工作站。 日志文件可能或可能不包含敏感或机密数据。 但是，使用 SCP 可确保加密日志文件内容。 使用 SCP 传输文件是将日志目录和文件获取到工作站上同时确保安全的最简单方法。
 
-以下命令可将 Azure VM 上位于 /home/azureuser/log/ 目录中的文件复制到本地 /tmp 目录中  ：
+以下命令可将 Azure VM 上位于 */home/azureuser/log/* 目录中的文件复制到本地 /tmp 目录中：
 
 ```bash
 scp -r azureuser@myserver.chinaeast.chinacloudapp.cn:/home/azureuser/logs/. /tmp/
 ```
 
-`-r` cli 标志指示 SCP 从命令中列出目录的时点起以递归方式复制文件和目录。  另请注意，命令行语法类似于 `cp` 复制命令。
+`-r` 标志指示 SCP 从命令中列出的目录位置以递归方式复制文件和目录。  另请注意，命令行语法类似于 `cp` 复制命令。
 
 ## <a name="next-steps"></a>后续步骤
 

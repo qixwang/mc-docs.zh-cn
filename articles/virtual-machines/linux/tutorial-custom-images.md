@@ -1,27 +1,25 @@
 ---
-title: 教程：使用 Azure CLI 创建 Azure VM 的自定义映像 | Azure
+title: 教程 - 使用 Azure CLI 创建 Azure VM 的自定义映像
 description: 本教程介绍如何使用 Azure CLI 在 Azure 中创建自定义虚拟机映像
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: rockboyfor
-manager: digimobile
-editor: tysonn
+author: Johnnytechn
+manager: gwallace
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-origin.date: 12/13/2017
-ms.date: 11/11/2019
-ms.author: v-yeche
+ms.date: 04/20/2020
+ms.author: v-johya
 ms.custom: mvc
-ms.openlocfilehash: 029f3da1870ff3f7352f34834fb36cc77ca150a2
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 5583e49423bfe7e81fe2a0bcb2c1ae5667490746
+ms.sourcegitcommit: ebedf9e489f5218d4dda7468b669a601b3c02ae5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "73831340"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82159178"
 ---
 # <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-the-azure-cli"></a>教程：使用 Azure CLI 创建 Azure VM 的自定义映像
 

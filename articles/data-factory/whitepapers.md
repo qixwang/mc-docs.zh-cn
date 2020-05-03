@@ -12,15 +12,17 @@ ms.workload: data-services
 ms.devlang: na
 ms.topic: conceptual
 origin.date: 09/04/2019
-ms.date: 03/02/2020
-ms.openlocfilehash: b75d3c98f6199e91e4d248d2254e630fc12dc0f2
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/11/2020
+ms.openlocfilehash: 08703a910f75ef3e94e568056dfea70f8076965d
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77653558"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82198091"
 ---
 # <a name="azure-data-factory-whitepapers"></a>Azure 数据工厂白皮书 
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 可以通过这些白皮书更深入地了解 Azure 数据工厂。 本文提供了 Azure 数据工厂的可用白皮书的列表。
 

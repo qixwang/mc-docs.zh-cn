@@ -4,16 +4,16 @@ description: 了解 Azure Cosmos DB 中的 ENDSWITH SQL 系统函数，该函数
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
-origin.date: 09/13/2019
-ms.date: 02/10/2020
+origin.date: 03/03/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
 ms.custom: query-reference
-ms.openlocfilehash: 4fda41c1ad57758409998b8ced48257205de861c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 322ce7cd563d7c1667da48920887350a08b8a0c4
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77028664"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134458"
 ---
 # <a name="endswith-azure-cosmos-db"></a>ENDSWITH (Azure Cosmos DB)
  返回一个布尔值，指示第一个字符串表达式是否以第二个字符串表达式结尾。  
@@ -38,17 +38,21 @@ ENDSWITH(<str_expr1>, <str_expr2>)
 
 ## <a name="examples"></a>示例
 
-  以下示例将返回以 "b" 和 "bc" 结尾的 "abc"。  
+  以下示例的返回结果指示“abc”是否以“b”和“bc”结尾。  
 
 ```sql
 SELECT ENDSWITH("abc", "b") AS e1, ENDSWITH("abc", "bc") AS e2 
 ```  
 
- 下面是结果集：  
+ 下面是结果集。  
 
 ```json
 [{"e1": false, "e2": true}]  
 ```  
+
+## <a name="remarks"></a>备注
+
+此系统函数不会使用索引。
 
 ## <a name="next-steps"></a>后续步骤
 

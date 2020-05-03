@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: article
-ms.date: 03/23/2020
+ms.date: 04/24/2020
 ms.author: v-junlch
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol, rosssmi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e8c8b258c25b67050f8f2c382a5fac821f2ae11e
-ms.sourcegitcommit: 6568c59433d7e80ab06e9fe76d4791f761ed6775
+ms.openlocfilehash: 9f7e21960a46c3d7f2764782ae950c6fcf36ca32
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80243171"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126299"
 ---
 # <a name="how-to-require-approved-client-apps-for-cloud-app-access-with-conditional-access"></a>如何：使用条件访问要求使用经批准的客户端应用进行云应用访问
 
@@ -28,6 +28,9 @@ ms.locfileid: "80243171"
 - [方案 2：Exchange Online 和 SharePoint Online 需要批准的客户端应用](#scenario-2-exchange-online-and-sharepoint-online-require-an-approved-client-app)
 
 在条件访问中，此功能称为“需要批准的客户端应用”。 有关核准客户端应用程序的列表，请参阅[核准客户端应用程序要求](concept-conditional-access-grant.md#require-approved-client-app)。
+
+> [!NOTE]
+> 为了要求 iOS 和 Android 设备使用经批准的客户端应用程序，必须首先在 Azure AD 中注册这些设备。
 
 ## <a name="scenario-1-office-365-apps-require-an-approved-client-app"></a>应用场景 1：Office 365 应用需要批准的客户端应用
 

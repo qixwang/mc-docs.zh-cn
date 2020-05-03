@@ -7,12 +7,12 @@ ms.service: mariadb
 ms.topic: conceptual
 origin.date: 09/20/2019
 ms.date: 11/04/2019
-ms.openlocfilehash: ff109537168e85d5286f02a0170fa6147e5c9591
-ms.sourcegitcommit: f643ddf75a3178c37428b75be147c9383384a816
+ms.openlocfilehash: bb907d77e41372ca51bbe94d4820251872e9388f
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73191603"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126928"
 ---
 # <a name="azure-database-for-mariadb-management-stored-procedures"></a>Azure Database for MariaDB 管理存储过程
 
@@ -26,7 +26,7 @@ Azure Database for MariaDB 服务器上提供了可帮助管理 MariaDB 服务�
 
 |**存储过程名称**|**输入参数**|**输出参数**|**用法说明**|
 |-----|-----|-----|-----|
-|*mysql.az_replication_change_master*|master_host<br/>master_user<br/>master_password<br/>master_port<br/>master_log_file<br/>master_log_pos<br/>master_ssl_ca|不适用|若要使用 SSL 模式传输数据，请将 CA 证书的上下文传递到 master_ssl_ca 参数中。 </br><br>若要不使用 SSL 模式传输数据，请将空字符串传递到 master_ssl_ca 参数中。|
+|*mysql.az_replication_change_master*|master_host<br/>master_user<br/>master_password<br/>master_port<br/>master_log_file<br/>master_log_pos<br/>master_ssl_ca|不适用|若要使用 SSL 模式传输数据，请将 CA 证书的上下文传入 master_ssl_ca 参数。 </br><br>若要不使用 SSL 模式传输数据，请将空字符串传递到 master_ssl_ca 参数中。|
 |mysql.az_replication _start |不适用|不适用|开始复制。|
 |mysql.az_replication _stop |不适用|不适用|停止复制。|
 |*mysql.az_replication _remove_master*|不适用|不适用|删除主体和副本之间的复制关系。|

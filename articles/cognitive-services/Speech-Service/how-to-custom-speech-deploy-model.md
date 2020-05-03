@@ -1,7 +1,7 @@
 ---
-title: 部署自定义语音模型 - 语音服务
+title: 部署自定义语音识别模型 - 语音服务
 titleSuffix: Azure Cognitive Services
-description: 本文档介绍如何使用自定义语音门户创建并部署终结点。
+description: 本文档介绍如何使用自定义语音识别门户创建并部署终结点。
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -9,22 +9,22 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 origin.date: 09/06/2019
-ms.date: 03/02/2020
+ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: 679bbc02b62671e8d3862906d502bb29500cb3aa
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.openlocfilehash: 7de1b9d1a5d78a00a79b0e319735e3eeb0daac23
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77541139"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82127056"
 ---
 # <a name="deploy-a-custom-model"></a>部署自定义模型
 
-上传并检查数据、评估准确度以及训练自定义模型以后，即可部署可以与应用、工具和产品配合使用的自定义终结点。 本文档介绍如何使用[自定义语音门户](https://speech.azure.cn/customspeech)创建并部署终结点。
+上传并检查数据、评估准确度以及训练自定义模型以后，即可部署可以与应用、工具和产品配合使用的自定义终结点。 本文档介绍如何使用[自定义语音识别门户](https://speech.azure.cn/customspeech)创建并部署终结点。
 
 ## <a name="create-a-custom-endpoint"></a>创建自定义终结点
 
-若要新建自定义终结点，请登录到[自定义语音门户](https://speech.azure.cn/customspeech)，选择页面顶部“自定义语音”菜单中的“部署”。  如果是第一次运行，你会注意到表中未列出任何终结点。 创建一个终结点后，即可使用此页面跟踪每个部署的终结点。
+若要新建自定义终结点，请登录到[自定义语音识别门户](https://speech.azure.cn/customspeech)，选择页面顶部“自定义语音识别”菜单中的“部署”。  如果是第一次运行，你会注意到表中未列出任何终结点。 创建一个终结点后，即可使用此页面跟踪每个部署的终结点。
 
 接下来，选择“添加终结点”，并输入自定义终结点的**名称**和**说明**。  然后选择要与此终结点关联的自定义模型。 也可以通过此页启用日志记录。 可以通过日志记录监视终结点流量。 在禁用的情况下，流量不存储。
 
@@ -43,7 +43,7 @@ ms.locfileid: "77541139"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 配合使用自定义终结点和[语音 SDK](speech-sdk.md)
+* 在[此处](how-to-specify-source-language.md)了解如何使用自定义模型。
 
 ## <a name="additional-resources"></a>其他资源
 

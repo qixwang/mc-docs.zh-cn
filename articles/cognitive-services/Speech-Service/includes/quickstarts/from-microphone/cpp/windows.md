@@ -1,37 +1,30 @@
 ---
-title: 快速入门：从麦克风中识别语音，C++ (Windows) - 语音服务
-titleSuffix: Azure Cognitive Services
-description: 了解如何在 Windows 桌面上使用语音 SDK 通过 C++ 识别语音
-services: cognitive-services
-author: wolfma61
-manager: nitinme
+author: trevorbye
 ms.service: cognitive-services
-ms.subservice: speech-service
 ms.topic: include
-origin.date: 12/17/2019
-ms.date: 03/16/2020
+origin.date: 04/03/2019
+ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: 065a2881772ec7707669e2cb75947d2b60a13f2d
-ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
+ms.openlocfilehash: 5cb0bbf74c6ba098819fce0e78e3fa85f63a36b8
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80151642"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82150858"
 ---
 ## <a name="prerequisites"></a>先决条件
 
 准备工作：
 
 > [!div class="checklist"]
-> * [创建一个 Azure 搜索资源](../../../../get-started.md)
-> * [设置开发环境并创建空项目](../../../../quickstarts/setup-platform.md?tabs=windows)
+> * <a href="https://portal.azure.cn/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">创建 Azure 语音资源<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+> * [设置开发环境并创建空项目](../../../../quickstarts/setup-platform.md?tabs=windows&pivots=programming-language-cpp)
 > * 请确保你有权访问麦克风，以便进行音频捕获
+> * 需要语音 SDK 版本 1.10.0 或更高版本。
 
-## <a name="add-sample-code"></a>添加示例代码
+## <a name="source-code"></a>源代码
 
-1. 打开源文件 **helloworld.cpp**。
-
-1. 将所有代码替换为以下片段：
+创建一个名为 *helloworld.cpp* 的 C++ 源文件，并将以下代码粘贴到其中。
 
     ```cpp
     #include <iostream>
@@ -42,9 +35,9 @@ ms.locfileid: "80151642"
     
     void recognizeSpeech()
     {
-        // Creates an instance of a speech config with specified host and subscription key.
+        // Creates an instance of a speech config with specified subscription key and service region.
         // Replace with your own subscription key and service region (e.g., "chinaeast2").
-        auto config = SpeechConfig::FromHost("wss://YourServiceRegion.stt.speech.azure.cn/", "YourSubscriptionKey");
+        auto config = SpeechConfig::FromSubscription("YourSubscriptionKey", "YourServiceRegion");
     
         // Creates a speech recognizer.
         auto recognizer = SpeechRecognizer::FromConfig(config);
@@ -90,20 +83,17 @@ ms.locfileid: "80151642"
     }
     ```
 
-1. 在同一文件中，将字符串 `YourSubscriptionKey` 替换为你的订阅密钥。
+[!INCLUDE [replace key and region](../replace-key-and-region.md)]
 
-1. 将字符串 `YourServiceRegion` 替换为与订阅关联的[区域](~/articles/cognitive-services/Speech-Service/regions.md)的“区域标识符”（例如，对于试用版订阅，为 `chinaeast2`）。 
+## <a name="code-explanation"></a>代码说明
 
-1. 在菜单栏中，选择“文件”   > “全部保存”  。
+[!INCLUDE [code explanation](../code-explanation.md)]
 
-> [!NOTE]
-> 语音 SDK 将默认使用 en-us 作为语言进行识别。若要了解如何选择源语言，请参阅[指定语音转文本的源语言](../../../../how-to-specify-source-language.md)。
-
-## <a name="build-and-run-the-application"></a>生成并运行应用程序
+## <a name="build-and-run-app"></a>生成并运行应用
 
 1. 从菜单栏中，选择“构建”   > “构建解决方案”  以构建应用程序。 现在，编译代码时应不会提示错误。
 
-1. 选择“调试”   > “开始调试”  （或按 F5  ）以启动 helloworld  应用程序。
+1. 选择“调试”   > “开始调试”  （或按 F5<kbd></kbd>）以启动 helloworld  应用程序。
 
 1. 说一个英语短语或句子。 应用程序将语音传输到语音服务，该服务转录文本并将其发送回应用程序以供显示。
 
@@ -111,4 +101,4 @@ ms.locfileid: "80151642"
 
 ## <a name="next-steps"></a>后续步骤
 
-[!INCLUDE [footer](./footer.md)]
+[!INCLUDE [Speech recognition basics](../../speech-to-text-next-steps.md)]

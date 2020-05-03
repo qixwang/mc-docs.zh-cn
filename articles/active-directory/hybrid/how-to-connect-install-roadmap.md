@@ -9,17 +9,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-origin.date: 09/18/2018
-ms.date: 03/15/2019
+ms.date: 04/23/2020
 ms.subservice: hybrid
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e1e6fcbec042ece172b08e9528ff3a124860d50d
-ms.sourcegitcommit: 46a8da077726a15b5923e4e688fd92153ebe2bf0
+ms.openlocfilehash: 2776f7b523a5b1bb5283b4bdd7cd715dd2690180
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58186654"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126566"
 ---
 # <a name="azure-ad-connect-installation-roadmap"></a>Azure AD Connect 安装路线图
 
@@ -102,7 +101,7 @@ Azure AD Connect 同步随附一个适用于大部分客户和拓扑的默认配
 
 Azure AD Connect 提供多项功能，简化了使用 AD FS 通过 Azure AD 进行联合身份验证以及管理联合身份验证信任的过程。 Azure AD Connect 支持 Windows Server 2012R2 或更高版本上的 AD FS。
 
-[更新 AD FS 场的 SSL 证书](how-to-connect-fed-ssl-update.md)，即使不使用 Azure AD Connect 来管理联合身份验证信任。
+[更新 AD FS 场的 TLS/SSL 证书](how-to-connect-fed-ssl-update.md)，即使你不使用 Azure AD Connect 管理联合身份验证信任。
 
 向场[添加 AD FS 服务器](how-to-connect-fed-management.md#addadfsserver)，以便根据需要扩展场。
 
@@ -130,4 +129,3 @@ Azure AD Connect 提供多项功能，简化了使用 AD FS 通过 Azure AD 进�
 - [Azure AD Connect 和联合身份验证](how-to-connect-fed-whatis.md)
 - [Azure AD Connect 同步](how-to-connect-sync-whatis.md)
 
-<!-- Update_Description: link update -->

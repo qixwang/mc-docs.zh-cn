@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-origin.date: 12/09/2019
-ms.date: 03/16/2020
+origin.date: 04/04/2020
+ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: 5dc72b39af9548ba2bf5c6aab9b72b64f28dc1a0
-ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
+ms.openlocfilehash: 30a1610854e15210a907ca33f9deb7dde4fad99f
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80151572"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82150824"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -24,7 +24,8 @@ ms.locfileid: "80151572"
 
 > [!div class="checklist"]
 > * [创建一个 Azure 搜索资源](../../../../get-started.md)
-> * [设置开发环境并创建空项目](../../../../quickstarts/setup-platform.md?tabs=jre)
+> * [设置开发环境并创建空项目](../../../../quickstarts/setup-platform.md?tabs=jre&pivots=programming-language-java)
+> * 需要语音 SDK 版本 1.10.0 或更高版本。
 
 ## <a name="add-sample-code"></a>添加示例代码
 
@@ -51,11 +52,11 @@ ms.locfileid: "80151572"
        public static void translationWithMicrophoneAsync() throws InterruptedException, ExecutionException, IOException
        {
            // Creates an instance of a speech translation config with specified
-           // host and subscription key. Replace with your own subscription key
+           // subscription key and service region. Replace with your own subscription key
            // and region identifier from here: https://docs.azure.cn/cognitive-services/speech-service/regions
 
            int exitCode = 1;
-           SpeechTranslationConfig config = SpeechTranslationConfig.fromHost(new URI("wss://YourServiceRegion.stt.speech.azure.cn/"), "YourSubscriptionKey");
+           SpeechTranslationConfig config = SpeechTranslationConfig.fromSubscription("YourSubscriptionKey",  "YourServiceRegion");
            assert(config != null);
 
            // Sets source and target languages.

@@ -1,18 +1,18 @@
 ---
-title: 在 Azure 门户中配置和访问 Azure Database for MariaDB 的审核日志
+title: 访问审核日志 - Azure 门户 - Azure Database for MariaDB
 description: 本文介绍如何从 Azure 门户配置和访问 Azure Database for MariaDB 中的审核日志。
 author: WenJason
 ms.author: v-jay
 ms.service: mariadb
 ms.topic: conceptual
-origin.date: 06/24/2019
-ms.date: 07/22/2019
-ms.openlocfilehash: fa0b97f3c7726d402296db1740b1b1b94449635f
-ms.sourcegitcommit: 1dac7ad3194357472b9c0d554bf1362c391d1544
+origin.date: 4/13/2020
+ms.date: 04/27/2020
+ms.openlocfilehash: 52e5b2692e97011d3202a39752bd6d29b841bf41
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68308934"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82127086"
 ---
 # <a name="configure-and-access-audit-logs-in-the-azure-portal"></a>在 Azure 门户中配置和访问审核日志
 
@@ -70,4 +70,5 @@ ms.locfileid: "68308934"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 详细了解 Azure Database for MariaDB 中的[审核日志](concepts-audit-logs.md)。
+- 详细了解 Azure Database for MariaDB 中的[审核日志](concepts-audit-logs.md)
+- 了解如何在 [Azure CLI](howto-configure-audit-logs-cli.md) 中配置审核日志

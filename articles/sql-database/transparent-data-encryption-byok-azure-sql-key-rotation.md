@@ -11,17 +11,17 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: vanto
 origin.date: 03/12/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: 9bef39b9634f0652419e5c0ee942906f9f3eaa41
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 04/27/2020
+ms.openlocfilehash: 67ed7d645a12841107144f66cf309d557282aa45
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335094"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126846"
 ---
 # <a name="rotate-the-transparent-data-encryption-tde-protector-using-powershell"></a>使用 PowerShell 轮换透明数据加密 (TDE) 保护器
 
-本文介绍使用 Azure Key Vault 中的 TDE 保护器针对 Azure SQL Server 进行的密钥轮换。 轮换 Azure SQL Server 的 TDE 保护器意味着切换到新的非对称密钥，后者可以对服务器上的数据库进行保护。 密钥轮换是一种联机操作，应该只需数秒即可完成，因为只需在解密数据库的数据加密密钥后重新将其加密即可，不需对整个数据库进行操作。
+本文介绍使用 Azure Key Vault 中的 TDE 保护器针对 Azure SQL Server 进行的密钥轮换。 轮换 Azure SQL Server 的 TDE 保护器意味着切换到新的非对称密钥，该密钥可以保护服务器上的数据库。 密钥轮换是一种联机操作，应该只需数秒即可完成，因为此操作只在解密数据库的数据加密密钥后重新将其加密，而不是对整个数据库进行操作。
 
 本指南介绍在服务器上轮换 TDE 保护器的两个选项。
 
@@ -36,14 +36,14 @@ ms.locfileid: "75335094"
 - 本操作方法指南假设已使用 Azure Key Vault 中的密钥作为 Azure SQL 数据库或数据仓库的 TDE 保护器。 请参阅[提供 BYOK 支持的透明数据加密](transparent-data-encryption-byok-azure-sql.md)。
 - 必须安装并运行 Azure PowerShell。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 有关 Az 模块安装说明，请参阅[安装 Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps)。 若要了解具体的 cmdlet，请参阅 [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。
 
 > [!IMPORTANT]
 > PowerShell Azure 资源管理器 (RM) 模块仍受 Azure SQL 数据库支持，但所有未来的开发都是针对 Az.Sql 模块的。 AzureRM 模块至少在 2020 年 12 月之前将继续接收 bug 修补程序。  Az 模块和 AzureRm 模块中的命令参数大体上是相同的。 若要详细了解其兼容性，请参阅[新 Azure PowerShell Az 模块简介](https://docs.microsoft.com/powershell/azure/new-azureps-module-az)。
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 有关安装的信息，请参阅[安装 Azure CLI](/cli/install-azure-cli)。
 
@@ -56,7 +56,7 @@ ms.locfileid: "75335094"
 > [!NOTE]
 > Key Vault 名称和密钥名称的总长度不能超过 94 个字符。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 使用 [Add-AzKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyvault/Add-AzKeyVaultKey)、[Add-AzSqlServerKeyVaultKey](https://docs.microsoft.com/powershell/module/az.sql/add-azsqlserverkeyvaultkey) 和 [Set-AzSqlServerTransparentDataEncryptionProtector](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlservertransparentdataencryptionprotector) cmdlet。
 
@@ -72,11 +72,11 @@ Set-AzSqlServerTransparentDataEncryptionProtector -Type AzureKeyVault -KeyId <ke
    -ServerName <logicalServerName> -ResourceGroup <SQLDatabaseResourceGroupName>
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 使用 [az keyvault key create](/cli/keyvault/key#az-keyvault-key-create)、[az sql server key create](/cli/sql/server/key#az-sql-server-key-create) 和 [az sql server tde-key set](/cli/sql/server/tde-key#az-sql-server-tde-key-set) 命令。
 
-```azure-cli
+```azurecli
 # add a new key to Key Vault
 az keyvault key create --name <keyVaultKeyName> --vault-name <keyVaultName> --protection <hsmOrSoftware>
 
@@ -91,7 +91,7 @@ az sql server tde-key set --server-key-type AzureKeyVault --kid <keyVaultKeyId> 
 
 ## <a name="useful-powershell-cmdlets"></a>有用的 PowerShell cmdlet
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 - 若要将 TDE 保护器从 Microsoft 托管模式切换到 BYOK 模式，请使用 [Set-AzSqlServerTransparentDataEncryptionProtector](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlservertransparentdataencryptionprotector) cmdlet。
 
@@ -107,19 +107,19 @@ az sql server tde-key set --server-key-type AzureKeyVault --kid <keyVaultKeyId> 
        -ServerName <logicalServerName> -ResourceGroup <SQLDatabaseResourceGroupName>
    ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 以下示例使用 [az sql server tde-key set](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlservertransparentdataencryptionprotector)。
 
 - 将 TDE 保护器从“Microsoft 托管”模式切换到“BYOK”模式；
 
-   ```azure-cli
+   ```azurecli
    az sql server tde-key set --server-key-type AzureKeyVault --kid <keyVaultKeyId> --resource-group <SQLDatabaseResourceGroupName> --server <logicalServerName>
    ```
 
 - 将 TDE 保护器从“BYOK”模式切换到“Microsoft 托管”模式；
 
-   ```azure-cli
+   ```azurecli
    az sql server tde-key set --server-key-type ServiceManaged --resource-group <SQLDatabaseResourceGroupName> --server <logicalServerName>
    ```
 

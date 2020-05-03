@@ -1,5 +1,5 @@
 ---
-title: Azure 数据工厂中的 Filter 活动 | Microsoft Docs
+title: Azure 数据工厂中的 Filter 活动
 description: Filter 活动将筛选输入。
 services: data-factory
 documentationcenter: ''
@@ -11,16 +11,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 origin.date: 05/04/2018
-ms.date: 10/14/2019
-ms.openlocfilehash: bc5da6c43670292d6ccc84dd771f1dc3311f971e
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/11/2020
+ms.openlocfilehash: a518b9f95bee583e63bbabe01310870fb9e44933
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "72275424"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82198257"
 ---
 # <a name="filter-activity-in-azure-data-factory"></a>Azure 数据工厂中的 Filter 活动
 可以在管道中使用 Filter 活动将筛选器表达式应用到输入数组。 
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 ## <a name="syntax"></a>语法
 
@@ -37,16 +38,16 @@ ms.locfileid: "72275424"
 
 ## <a name="type-properties"></a>Type 属性
 
-properties | 说明 | 允许的值 | 必选
+属性 | 说明 | 允许的值 | 必须
 -------- | ----------- | -------------- | --------
 name | `Filter` 活动的名称。 | String | 是
 type | 必须设置为  “filter”。 | String | 是
-条件 (condition) | 要用于筛选输入的条件。 | 表达式 | 是
+condition | 要用于筛选输入的条件。 | 表达式 | 是
 items | 应该应用筛选器的输入数组。 | 表达式 | 是
 
 ## <a name="example"></a>示例
 
-在此示例中，管道有两个活动：Filter  和 ForEach  。 Filter 活动配置为筛选输入数组中值大于 3 的项。 然后，ForEach 活动会循环访问筛选的值，并将变量 **test** 设置为当前值。
+在此示例中，管道包含两个活动：**Filter** 和 **ForEach**。 Filter 活动配置为筛选输入数组中值大于 3 的项。 然后，ForEach 活动会循环访问筛选的值，并将变量 **test** 设置为当前值。
 
 ```json
 {

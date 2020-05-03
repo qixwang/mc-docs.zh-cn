@@ -9,19 +9,19 @@ ms.topic: conceptual
 origin.date: 01/14/2019
 ms.author: v-yiso
 ms.custom: H1Hack27Feb2017
-ms.date: 02/17/2020
-ms.openlocfilehash: 24997ded13025887424fe797c18acd600ec7bf1c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/11/2020
+ms.openlocfilehash: 8172fe5d8e4fb615a54bb9e92e97a8a2f101e5ab
+ms.sourcegitcommit: 95efd248f5ee3701f671dbd5cfe0aec9c9959a24
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77068162"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82507738"
 ---
 # <a name="understand-and-use-azure-iot-hub-sdks"></a>了解和使用 Azure IoT 中心 SDK
 
 有两种类别的软件开发工具包 (SDK) 适用于 IoT 中心：
 
-* **IoT 中心设备 SDK**：可用于使用设备客户端或模块客户端构建在 IoT 设备上运行的应用。 这些应用将遥测发送到 IoT 中心，并可以选择从 IoT 中心接收消息、作业、方法或孪生更新。  还可以使用模块客户端，为 [Azure IoT Edge 运行时](../iot-edge/iot-edge-modules.md)创建[模块](../iot-edge/about-iot-edge.md)。
+* **IoT 中心设备 SDK**：可用于使用设备客户端或模块客户端构建在 IoT 设备上运行的应用。 这些应用将遥测发送到 IoT 中心，并可以选择从 IoT 中心接收消息、作业、方法或孪生更新。  还可以使用模块客户端为 [Azure IoT Edge 运行时](../iot-edge/about-iot-edge.md)创建[模块](../iot-edge/iot-edge-modules.md)。
 
 * **IoT 中心服务 SDK**：可用于构建后端应用程序来管理 IoT 中心，并视需要发送消息、计划作业、调用直接方法或向 IoT 设备或模块发送相应属性更新。
 
@@ -37,7 +37,7 @@ ms.locfileid: "77068162"
 
 ### <a name="os-platform-and-hardware-compatibility"></a>操作系统平台和硬件兼容性
 
-有关受支持的 SDK 平台，可访问 [Azure IoT SDK 平台支持](iot-hub-device-sdk-platform-support.md)。
+可以在 [Azure IoT SDK 平台支持](iot-hub-device-sdk-platform-support.md)中找到支持的 SDK 平台。
 
 
 ## <a name="azure-iot-hub-device-sdks"></a>Azure IoT 中心设备 SDK
@@ -78,9 +78,9 @@ Microsoft Azure IoT 设备 SDK 包含的代码可帮助构建连接到 Azure IoT
 
 适用于 Python 的 Azure IoT 中心设备 SDK： 
 
-* 通过 [pip](https://pypi.python.org/pypi/azure-iothub-device-client/) 安装
+* 通过 [pip](https://pypi.org/project/azure-iot-device/) 安装
 * [源代码](https://github.com/Azure/azure-iot-sdk-python)
-* API 参考：请参阅 [C API 参考](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/)
+* [API 参考](https://docs.microsoft.com/python/api/azure-iot-device)
 
 适用于 iOS 的 Azure IoT 中心设备 SDK： 
 
@@ -130,7 +130,7 @@ Azure IoT 服务 SDK 包含的代码可帮助生成直接与 IoT 中心进行交
 
 ## <a name="microsoft-azure-provisioning-sdks"></a>Microsoft Azure 预配 SDK
 
-**Microsoft Azure 预配 SDK** 使你可以使用设备预配服务将设备预配到 IoT 中心。
+**Microsoft Azure 预配 SDK** 使你可以使用[设备预配服务](../iot-dps/about-iot-dps.md)将设备预配到 IoT 中心。
 
 适用于 C# 的 Azure 预配设备和服务 SDK：
 
@@ -158,13 +158,13 @@ Azure IoT 服务 SDK 包含的代码可帮助生成直接与 IoT 中心进行交
 
 适用于 Python 的 Azure 预配设备和服务 SDK：
 
-* [源代码](https://github.com/Azure/azure-iot-device)
+* [源代码](https://github.com/Azure/azure-iot-sdk-python)
 * 通过 pip 下载[设备 SDK](https://pypi.org/project/azure-iot-device/) 和[服务 SDK](https://pypi.org/project/azure-iothub-provisioningserviceclient/)
 
 ## <a name="next-steps"></a>后续步骤
 
 Azure IoT SDK 还提供了一组工具来帮助开发：
-* [iothub-diagnostics](https://github.com/Azure/iothub-diagnostics)：一个跨平台的命令行工具，用于帮助诊断与 IoT Hub 连接相关的问题。
+* [iothub-diagnostics](https://github.com/Azure/iothub-diagnostics)：一种跨平台命令行工具，用于帮助诊断与 IoT 中心连接相关的问题。
 * [azure-iot-explorer](https://github.com/Azure/azure-iot-explorer)：一个跨平台的桌面应用程序，用于连接到 IoT 中心并添加/管理 IoT 设备及与其通信。
 
 与使用 Azure IoT SDK 进行开发相关的文档：

@@ -2,37 +2,34 @@
 title: 构建调用 Web API 的 Web 应用 - Microsoft 标识平台 | Azure
 description: 了解如何构建调用 Web API 的 Web 应用（概述）
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/06/2020
+ms.date: 04/22/2020
 ms.author: v-junlch
 ms.custom: aaddev
-ms.openlocfilehash: e84cedc9344ac9e869dff908d48e48658e3dbea0
-ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
+ms.openlocfilehash: 30e81e1c46094a5e5840d2de8b4d48c3c6247c6e
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77067627"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126434"
 ---
 # <a name="scenario-a-web-app-that-calls-web-apis"></a>方案：调用 Web API 的 Web 应用
 
 了解如何构建 Web 应用，使其可将用户在 Microsoft 标识平台上登录，然后代表已登录用户调用 Web API。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [Prerequisites](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
 
 此方案假设你已完成以下方案：
 
 > [!div class="nextstepaction"]
-> [用于将用户登录的 Web 应用](scenario-web-app-sign-user-overview.md)
+> [用于登录用户的 Web 应用](scenario-web-app-sign-user-overview.md)
 
 ## <a name="overview"></a>概述
 
@@ -48,7 +45,7 @@ ms.locfileid: "77067627"
 > [!NOTE]
 > 向 Web 应用添加登录信息是为了保护 Web 应用本身。 该保护是通过使用“中间件”  库来实现的，而不是使用 Microsoft 身份验证库 (MSAL)。 前面的方案[用于将用户登录的 Web 应用](scenario-web-app-sign-user-overview.md)中涵盖了该主题。
 >
-> 此方案涵盖了如何从 Web 应用调用 Web API。 你必须获取这些 Web API 的访问令牌。 若要获取那些令牌，请使用 MSAL 库。
+> 此方案涵盖了如何从 Web 应用调用 Web API。 你必须获取这些 Web API 的访问令牌。 使用 MSAL 库来获取这些令牌。
 
 此方案的开发涉及以下具体任务：
 
@@ -60,4 +57,3 @@ ms.locfileid: "77067627"
 > [!div class="nextstepaction"]
 > [调用 Web API 的 Web 应用：应用注册](scenario-web-app-call-api-app-registration.md)
 
-<!-- Update_Description: wording update -->

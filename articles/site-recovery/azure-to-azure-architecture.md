@@ -6,15 +6,15 @@ author: rockboyfor
 manager: digimobile
 ms.service: site-recovery
 ms.topic: conceptual
-origin.date: 01/23/2020
-ms.date: 02/24/2020
+origin.date: 03/13/2020
+ms.date: 04/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 1f01badc8b0f64e271265da1ec8a393028fcf25b
-ms.sourcegitcommit: 781f68d27903687f0aa9e1ed273eee25c6d129a1
+ms.openlocfilehash: 0d9bd660849ef72180fcec15f71e2b03954b1b76
+ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77611262"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82093387"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Azure 到 Azure 的灾难恢复体系结构
 
@@ -130,11 +130,13 @@ Site Recovery 按如下所述创建快照：
 | login.chinacloudapi.cn | 向 Site Recovery 服务 URL 提供授权和身份验证。 |
 | *.hypervrecoverymanager.windowsazure.cn | 允许 VM 与 Site Recovery 服务进行通信。 |
 | *.servicebus.chinacloudapi.cn | 允许 VM 写入 Site Recovery 监视和诊断数据。 |
+| *.vault.azure.cn | 允许访问，以便通过门户为支持 ADE 的虚拟机启用复制 |
+| *.automation.ext.azure.com | 允许通过门户为复制项启用移动代理自动升级 |
 
 ### <a name="outbound-connectivity-for-ip-address-ranges"></a>IP 地址范围的出站连接
 
 若要使用 IP 地址控制 VM 的出站连接，请允许这些地址。
-请注意，可以在[网络白皮书](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges)中找到网络连接要求的详细信息 
+请注意，可以在[网络白皮书](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags)中找到网络连接要求的详细信息 
 
 #### <a name="source-region-rules"></a>源区域规则
 
@@ -146,6 +148,7 @@ Site Recovery 按如下所述创建快照：
 允许 HTTPS 出站通信：端口 443 | 允许对应于 Azure Active Directory (Azure AD) 的范围 | AzureActiveDirectory
 允许 HTTPS 出站通信：端口 443 | 允许与目标区域中的事件中心对应的范围。 | EventsHub
 允许 HTTPS 出站通信：端口 443 | 允许访问对应于目标位置的 [Site Recovery 终结点](/site-recovery/azure-to-azure-about-networking#site-recovery-ip-in-china)。 
+允许 HTTPS 出站通信：端口 443 | 允许与 Azure Key Vault 对应的范围（仅在通过门户为支持 ADE 的虚拟机启用复制时才需要这样做） | AzureKeyVault
 
 <!--MOONCAKE: Not Available on .<region-name>-->
 <!--MOONCAKE: Not Avaialble on [Site Recovery endpoints](https://aka.ms/site-recovery-public-ips)-->
@@ -158,6 +161,7 @@ Site Recovery 按如下所述创建快照：
 允许 HTTPS 出站通信：端口 443 | 允许对应于 Azure AD 的范围| AzureActiveDirectory
 允许 HTTPS 出站通信：端口 443 | 允许与源区域中的事件中心对应的范围。 | EventsHub
 允许 HTTPS 出站通信：端口 443 | 允许访问对应于源位置的 [Site Recovery 终结点](/site-recovery/azure-to-azure-about-networking#site-recovery-ip-in-china)。 
+允许 HTTPS 出站通信：端口 443 | 允许与 Azure Key Vault 对应的范围（仅在通过门户为支持 ADE 的虚拟机启用复制时才需要这样做） | AzureKeyVault
 
 <!--MOONCAKE: Not Available on .<region-name>-->
 <!--MOONCAKE: Not Avaialble on [Site Recovery endpoints](https://aka.ms/site-recovery-public-ips)-->
@@ -172,7 +176,7 @@ Site Recovery 按如下所述创建快照：
     - 服务标记表示集合在一起的一组 IP 地址前缀，可以最大程度地降低安全规则创建过程的复杂性。
     - Azure 会不断地自动更新服务标记。 
 
-详细了解 Site Recovery 的[出站连接](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges)，以及如何[使用 NSG 控制连接](concepts-network-security-group-with-site-recovery.md)。
+详细了解 Site Recovery 的[出站连接](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags)，以及如何[使用 NSG 控制连接](concepts-network-security-group-with-site-recovery.md)。
 
 ### <a name="connectivity-for-multi-vm-consistency"></a>多 VM 一致性的连接
 

@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 origin.date: 01/08/2020
-ms.date: 02/17/2020
-ms.openlocfilehash: bbd7db9a104ebd669724e70b4360363410698aa8
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 04/27/2020
+ms.openlocfilehash: a360bb1fd15aa9a4243ab7eeff772041a95a6e47
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77192463"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134774"
 ---
 # <a name="tutorial-migrate-rds-sql-server-to-azure-sql-database-or-an-azure-sql-database-managed-instance-online-using-dms"></a>教程：使用 DMS 将 RDS SQL Server 联机迁移到 Azure SQL 数据库或 Azure SQL 数据库托管实例
 可以使用 Azure 数据库迁移服务将数据库从 RDS SQL Server 实例迁移到 [Azure SQL 数据库](/sql-database/)或 [Azure SQL 数据库托管实例](/sql-database/sql-database-managed-instance-index)，且几乎不用停机。 在本教程中，我们使用 Azure 数据库迁移服务，将还原到 SQL Server 2012（或更高版本） RDS SQL Server 实例的 Adventureworks2012 数据库迁移到 Azure SQL 数据库或 Azure SQL 数据库托管实例  。
@@ -224,7 +224,7 @@ ms.locfileid: "77192463"
     如果没有安装受信任的证书，SQL Server 会在实例启动时生成自签名证书。 此证书用于加密客户端连接的凭据。
 
     > [!CAUTION]
-    > 使用自签名证书加密的 SSL 连接不提供可靠的安全性。 它们易遭受中间人攻击。 不得在生产环境中或在连接到 Internet 的服务器上依赖使用自签名证书的 SSL。
+    > 使用自签名证书加密的 TLS 连接不提供强安全性。 它们易遭受中间人攻击。 在生产环境中或在连接到 Internet 的服务器上不应依赖使用自签名证书的 TLS。
 
    ![源详细信息](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-source-details3.png)
 

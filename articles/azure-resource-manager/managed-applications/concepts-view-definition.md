@@ -2,16 +2,16 @@
 title: 视图定义的概述
 description: 介绍为 Azure 托管应用程序创建视图定义的概念。
 ms.topic: conceptual
-ms.author: v-yeche
 author: rockboyfor
 origin.date: 06/12/2019
-ms.date: 01/20/2020
-ms.openlocfilehash: 3777984f62946cfa7d91d1cb35b6312134e93d55
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 04/30/2020
+ms.author: v-yeche
+ms.openlocfilehash: cc5e49f7eb4d0936eab421bb27ab955df12c62fd
+ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "76170810"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82596095"
 ---
 # <a name="view-definition-artifact-in-azure-managed-applications"></a>查看 Azure 托管应用程序中的定义项目
 
@@ -21,7 +21,7 @@ ms.locfileid: "76170810"
 
 ## <a name="view-definition-artifact"></a>视图定义项目
 
-视图定义项目必须命名为 **viewDefinition.json**，并放置在用于创建托管应用程序定义的 .zip 包中 **createUiDefinition.json** 和 **mainTemplate.json** 所在的同一级别。 若要了解如何创建 .zip 包和发布托管应用程序定义，请参阅[发布 Azure 托管应用程序定义](publish-managed-app-definition-quickstart.md)
+视图定义项目必须命名为 **viewDefinition.json**，并放置在用于创建托管应用程序定义的 .zip 包中 **createUiDefinition.json** 和 **mainTemplate.json** 所在的同一级别。 若要了解如何创建 .zip 包和发布托管应用程序定义，请参阅[发布 Azure 托管应用程序定义](publish-service-catalog-app.md)
 
 ## <a name="view-definition-schema"></a>视图定义架构
 
@@ -195,7 +195,9 @@ ms.locfileid: "76170810"
 
 `"kind": "CustomResources"`
 
-可以定义此类型的多个视图。 每个视图表示 **mainTemplate.json** 中定义的自定义提供程序中的**唯一**自定义资源类型。 有关自定义提供程序的简介，请参阅 [Azure 自定义提供程序预览版概述](../custom-providers/overview.md)。
+可以定义此类型的多个视图。 每个视图表示 **mainTemplate.json** 中定义的自定义提供程序中的**唯一**自定义资源类型。
+
+<!--Not Available on [Azure Custom Providers Preview overview](../custom-providers/overview.md)-->
 
 在此视图中，可对自定义资源类型执行 GET、PUT、DELETE 和 POST 操作。 POST 操作可以是全局自定义操作，或自定义资源类型上下文中的自定义操作。
 
@@ -239,7 +241,9 @@ ms.locfileid: "76170810"
 
 ## <a name="commands"></a>命令
 
-命令是显示在页面上的附加工具栏按钮数组。 每个命令表示 **mainTemplate.json** 中定义的 Azure 自定义提供程序中的一个 POST 操作。 有关自定义提供程序的简介，请参阅 [Azure 自定义提供程序概述](../custom-providers/overview.md)。
+命令是显示在页面上的附加工具栏按钮数组。 每个命令表示 **mainTemplate.json** 中定义的 Azure 自定义提供程序中的一个 POST 操作。
+
+<!--Not Available on [Azure Custom Providers Preview overview](../custom-providers/overview.md)-->
 
 ```json
 {
@@ -265,7 +269,9 @@ ms.locfileid: "76170810"
 
 `"kind": "Associations"`
 
-可以定义此类型的多个视图。 使用此视图可以通过 **mainTemplate.json** 中定义的自定义提供程序，将现有资源链接到托管应用程序。 有关自定义提供程序的简介，请参阅 [Azure 自定义提供程序预览版概述](../custom-providers/overview.md)。
+可以定义此类型的多个视图。 使用此视图可以通过 **mainTemplate.json** 中定义的自定义提供程序，将现有资源链接到托管应用程序。
+
+<!--Not Available on [Azure Custom Providers Preview overview](../custom-providers/overview.md)-->
 
 在此视图中，可以基于 `targetResourceType` 扩展现有的 Azure 资源。 选择某个资源时，它会向**公共**自定义提供程序创建加入请求，这会对资源应用副作用。 
 

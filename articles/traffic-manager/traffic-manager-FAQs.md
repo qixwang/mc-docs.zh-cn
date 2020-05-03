@@ -10,14 +10,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 02/26/2019
-ms.date: 02/24/2020
+ms.date: 04/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: ee9790c8c446960ae89128d434ff4a8bc1461be0
-ms.sourcegitcommit: 305361c96d1d5288d3dda7e81833820640e2afac
+ms.openlocfilehash: 5c11300c5dfb1d46424d1591518f5bcf5ed1a814
+ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2020
-ms.locfileid: "80109736"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82093275"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>流量管理器常见问题解答 (FAQ)
 
@@ -30,9 +30,7 @@ ms.locfileid: "80109736"
 因此，流量管理器不提供供客户端连接的终结点或 IP 地址。 如果想要为服务使用静态 IP 地址，必须在服务而不是流量管理器中配置该地址。
 
 ### <a name="what-types-of-traffic-can-be-routed-using-traffic-manager"></a>可以使用流量管理器路由什么类型的流量？
-如[流量管理器工作原理](../traffic-manager/traffic-manager-how-it-works.md)中所述，流量管理器终结点可以是任何面向 Internet 的 Azure 内部或外部托管的服务。 因此，流量管理器可以将源自公共 Internet 的流量路由到一组也面向 Internet 的终结点。 如果终结点位于专用网络内部（例如 [Azure 负载均衡器](../load-balancer/load-balancer-overview.md)的内部版本），或用户从此类内部网络发出 DNS 请求，则无法使用流量管理器来路由此流量。
-
-<!--Not Available on #internalloadbalancer-->
+如[流量管理器工作原理](../traffic-manager/traffic-manager-how-it-works.md)中所述，流量管理器终结点可以是任何面向 Internet 的 Azure 内部或外部托管的服务。 因此，流量管理器可以将源自公共 Internet 的流量路由到一组也面向 Internet 的终结点。 如果终结点位于专用网络内部（例如 [Azure 负载均衡器](../load-balancer/concepts-limitations.md#internalloadbalancer)的内部版本），或用户从此类内部网络发出 DNS 请求，则无法使用流量管理器来路由此流量。
 
 ### <a name="does-traffic-manager-support-sticky-sessions"></a>流量管理器是否支持“粘滞”会话？
 
@@ -46,7 +44,7 @@ ms.locfileid: "80109736"
 
 因此，进一步的调查应着重于应用程序。
 
-问题的最常见原因源自客户端浏览器发送的 HTTP 主机标头。 请确保将应用程序配置为接受所要使用的域名的正确主机标头。 对于使用 Azure 应用服务的终结点，请参阅[使用流量管理器为 Azure 应用服务中的 Web 应用配置自定义域名](../app-service/web-sites-traffic-manager-custom-domain-name.md)。
+问题的最常见原因源自客户端浏览器发送的 HTTP 主机标头。 请确保将应用程序配置为接受所要使用的域名的正确主机标头。 对于使用 Azure 应用服务的终结点，请参阅[使用流量管理器为 Azure 应用服务中的 Web 应用配置自定义域名](../app-service/configure-domain-traffic-manager.md)。
 
 ### <a name="what-is-the-performance-impact-of-using-traffic-manager"></a>使用流量管理器对性能有什么影响？
 
@@ -62,13 +60,7 @@ ms.locfileid: "80109736"
 
 ### <a name="can-i-use-traffic-manager-with-a-naked-domain-name"></a>是否可以对“裸”域名使用流量管理器？
 
-否。 DNS 标准不允许 CNAME 与其他同名的 DNS 记录共存。 DNS 区域的顶点（或根）始终包含两条预先存在的 DNS 记录：SOA 和权威 NS 记录。 这意味着在不违反 DNS 标准的情况下，无法在区域顶点位置创建 CNAME 记录。
-
-流量管理器需要使用一条 DNS CNAME 记录来映射虚构 DNS 名称。 例如，将 `www.contoso.com` 映射到流量管理器配置文件 DNS 名称 `contoso.trafficmanager.cn`。 此外，流量管理器配置文件还会返回另一条 DNS CNAME 来指示客户端应连接到的终结点。
-
-要解决此问题，我们建议使用 HTTP 重定向将流量从裸域名定向到不同的 URL，然后即可使用流量管理器。 例如，裸域“contoso.com”可将用户重定向到指向流量管理器 DNS 名称的 CNAME“www.contoso.com”。
-
-<!-- Not Available on Full support for naked domains in Traffic Manager is tracked in our feature backlog. You can register your support for this feature request by [voting for it on our community feedback site](https://support.azure.cn/zh-cn/support/support-azure/) -->
+是的。 若要了解如何为域名顶点创建别名记录以引用 Azure 流量管理器配置文件，请参阅[使用流量管理器配置支持顶点域名的别名记录](https://docs.azure.cn/dns/tutorial-alias-tm)。
 
 ### <a name="does-traffic-manager-consider-the-client-subnet-address-when-handling-dns-queries"></a>处理 DNS 查询时流量管理器是否会考虑客户端子网地址？ 
 
@@ -87,14 +79,9 @@ ms.locfileid: "80109736"
 
 在配置文件级别，DNS TTL 最低可设置为 0 秒，最高可设置为 2,147,483,647 秒（符合 [RFC-1035](https://www.ietf.org/rfc/rfc1035.txt ) 的最大范围）。 TTL 为 0 表示下游 DNS 解析程序不会缓存查询响应，所有查询预期会进入流量管理器 DNS 服务器供解析。
 
-<!-- Not Available on Traffice Manager metric-->
-<!-- Not Available 
-### How can I understand the volume of queries coming to my profile? 
-One of the metrics provided by Traffic Manager is the number of queries responded by a profile. You can get this information at a profile level aggregation or you can split it up further to see the volume of queries where specific endpoints were returned. In addition, you can set up alerts to notify you if the query response volume crosses the conditions you have set. For more details, Traffic Manager metrics and alerts.
--->
+### <a name="how-can-i-understand-the-volume-of-queries-coming-to-my-profile"></a>如何了解传入到我的配置文件的查询数量？ 
 
-<!--Not Available on [Traffic Manager metrics and alerts](traffic-manager-metrics-alerts.md)-->
-
+流量管理器提供的指标之一是由配置文件响应的查询数。 可以在配置文件聚合级别获取此信息，也可以进一步对其进行拆分来查看返回了特定终结点的查询数量。 此外，还可以设置警报，以便在查询响应数量越过了设置的条件时向你发出通知。 有关更多详细信息，请参阅[流量管理器指标和警报](traffic-manager-metrics-alerts.md)。
 
 ## <a name="traffic-manager-geographic-traffic-routing-method"></a>流量管理器的“地理”流量路由方法
 
@@ -282,6 +269,7 @@ Azure Resource Manager 要求所有资源组指定一个位置，这决定了部
 |AAAA | A | 无数据 |
 |CNAME |    CNAME | 目标终结点|
 |CNAME  |A/AAAA | 无数据 |
+|
 
 对于将路由方法设置为多值路由的配置文件：
 
@@ -343,11 +331,9 @@ Azure Resource Manager 要求所有资源组指定一个位置，这决定了部
 - 为监视间隔设置的值（间隔越小，则在任意给定时间进入终结点的请求就越多）。
 - 运行状况检查的来源位置数（前面的“常见问题解答”中列出了这些检查的预期来源 IP 地址）。
 
-<!-- Not Available on Traffice Manager metric-->
-<!-- Not Available 
-### How can I get notified if one of my endpoints goes down? 
-One of the metrics provided by Traffic Manager is the health status of endpoints in a profile. You can see this as an aggregate of all endpoints inside a profile (for example, 75% of your endpoints are healthy), or, at a per endpoint level. Traffic Manager metrics are exposed through Azure Monitor and you can use its [alerting capabilities](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md) to get notifications when there is a change in the health status of your endpoint. For more details, see [Traffic Manager metrics and alerts](traffic-manager-metrics-alerts.md).  
--->
+### <a name="how-can-i-get-notified-if-one-of-my-endpoints-goes-down"></a>如果我的终结点发生故障，我如何得到通知？
+
+流量管理器提供的指标之一是配置文件中的终结点的运行状况状态。 可以将此指标作为配置文件中所有终结点的聚合进行查看（例如，75% 的终结点正常运行），也可以在每终结点级别查看此指标。 流量管理器指标是通过 Azure Monitor 公开的，并且，当终结点的运行状况状态发生更改时，你可以使用其[警报功能](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md)获得通知。 有关更多详细信息，请参阅[流量管理器指标和警报](traffic-manager-metrics-alerts.md)。  
 
 ## <a name="traffic-manager-nested-profiles"></a>流量管理器嵌套式配置文件
 

@@ -1,19 +1,18 @@
 ---
-title: Azure 托管磁盘的服务器端加密 - Azure CLI
+title: Azure 托管磁盘的服务器端加密
 description: Azure 存储在将数据保存到存储群集之前会对其进行静态加密，以此保护数据。 可以依赖于 Azure 托管的密钥来加密托管磁盘，也可以使用客户管理的密钥通过自己的密钥来管理加密。
-author: rockboyfor
-origin.date: 01/13/2020
-ms.date: 02/10/2020
+author: Johnnytechn
+ms.date: 04/20/2020
 ms.topic: conceptual
-ms.author: v-yeche
+ms.author: v-johya
 ms.service: virtual-machines-linux
 ms.subservice: disks
-ms.openlocfilehash: 1c2593d738dd2c578a4b7db820efbc15d5c881fd
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: d7d08c5fe91b1767b16987a10cc19d0aaa16918e
+ms.sourcegitcommit: ebedf9e489f5218d4dda7468b669a601b3c02ae5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80108509"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82159037"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Azure 托管磁盘的服务器端加密
 
@@ -31,15 +30,13 @@ ms.locfileid: "80108509"
 
 ## <a name="platform-managed-keys"></a>平台托管的密钥
 
-默认情况下，托管磁盘使用平台托管的加密密钥。 自 2017 年 6 月 10 日起，所有写入现有托管磁盘的新托管磁盘、快照、映像和新数据都会自动使用平台托管密钥进行静态加密。 
+默认情况下，托管磁盘使用平台托管的加密密钥。 自 2017 年 6 月 10 日起，所有写入现有托管磁盘的新托管磁盘、快照、映像和新数据都会自动使用平台托管密钥进行静态加密。
 
 <!--Not Avaialble on ## Customer-managed keys-->
 
 ## <a name="server-side-encryption-versus-azure-disk-encryption"></a>服务器端加密与 Azure 磁盘加密
 
-针对虚拟机和虚拟机规模集的 Azure 磁盘加密利用 Windows 的 [BitLocker](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview) 功能和 Linux 的 [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) 功能，在来宾 VM 中使用客户托管密钥来加密托管磁盘。  使用客户托管密钥的服务器端加密通过加密存储服务中的数据，使你能够将任何 OS 类型和映像用于 VM，从而改进了 ADE。
-
-<!--Not Available on [Azure Disk Encryption for virtual machines and virtual machine scale sets](../../security/fundamentals/azure-disk-encryption-vms-vmss.md)-->
+[适用于虚拟机和虚拟机规模集的 Azure 磁盘加密](../../security/fundamentals/azure-disk-encryption-vms-vmss.md)利用 Windows 的 [BitLocker](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview) 功能和 Linux 的 [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) 功能，在来宾 VM 中使用客户托管密钥加密托管磁盘。  使用客户托管密钥的服务器端加密通过加密存储服务中的数据，使你能够将任何 OS 类型和映像用于 VM，从而改进了 ADE。
 
 ## <a name="next-steps"></a>后续步骤
 

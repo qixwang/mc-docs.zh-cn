@@ -1,4 +1,4 @@
-- name: Azure Synapse Analytics 文档
+- name: Azure Synapse Analytics（SQL 数据仓库）文档
   href: index.yml
 - name: 概述
   items:
@@ -6,29 +6,27 @@
       href: sql-data-warehouse-overview-what-is.md
     - name: Azure Synapse Analytics 体系结构
       href: massively-parallel-processing-mpp-architecture.md
-    - name: 数据仓库单位数
-      href: what-is-a-data-warehouse-unit-dwu-cdwu.md
     - name: 备忘单
-      href: cheat-sheet.md
-    - name: 最佳做法
-      href: sql-data-warehouse-best-practices.md
+      href: ../synapse-analytics/sql-data-warehouse/cheat-sheet.md?toc=/sql-data-warehouse/toc.json&bc=/sql-data-warehouse/breadcrumb/toc.json
     - name: 容量限制
       href: sql-data-warehouse-service-capacity-limits.md
-    - name: 常见问题解答
+    - name: 常见问题
       href: sql-data-warehouse-overview-faq.md
 - name: 发行说明
   items:
     - name: 最新版本
-      href: release-notes-10-0-10106-0.md
+      href: ../synapse-analytics/sql-data-warehouse/release-notes-10-0-10106-0.md?toc=/sql-data-warehouse/toc.json&bc=/sql-data-warehouse/breadcrumb/toc.json
+    - name: 第 2 代区域升级计划
+      href: gen2-migration-schedule.md
 - name: 快速入门
   expanded: true
   items:
     - name: 创建和连接
       items:
         - name: 门户
-          href: create-data-warehouse-portal.md
+          href: ../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md?toc=/sql-data-warehouse/toc.json&bc=/sql-data-warehouse/breadcrumb/toc.json
         - name: PowerShell
-          href: create-data-warehouse-powershell.md
+          href: ../synapse-analytics/sql-data-warehouse/create-data-warehouse-powershell.md?toc=/sql-data-warehouse/toc.json&bc=/sql-data-warehouse/breadcrumb/toc.json
     - name: 暂停和恢复
       items:
         - name: 门户
@@ -38,21 +36,21 @@
     - name: 缩放
       items:
         - name: 门户
-          href: quickstart-scale-compute-portal.md
+          href: ../synapse-analytics/sql-data-warehouse/quickstart-scale-compute-portal.md?toc=/sql-data-warehouse/toc.json&bc=/sql-data-warehouse/breadcrumb/toc.json
         - name: PowerShell
-          href: quickstart-scale-compute-powershell.md
+          href: ../synapse-analytics/sql-data-warehouse/quickstart-scale-compute-powershell.md?toc=/sql-data-warehouse/toc.json&bc=/sql-data-warehouse/breadcrumb/toc.json
         - name: T-SQL
-          href: quickstart-scale-compute-tsql.md
+          href: ../synapse-analytics/sql-data-warehouse/quickstart-scale-compute-tsql.md?toc=/sql-data-warehouse/toc.json&bc=/sql-data-warehouse/breadcrumb/toc.json
     - name: 工作负荷管理
       items:
         - name: 创建工作负荷分类器
           items:
             - name: T-SQL
-              href: quickstart-create-a-workload-classifier-tsql.md
+              href: ../synapse-analytics/sql-data-warehouse/quickstart-create-a-workload-classifier-tsql.md?toc=/sql-data-warehouse/toc.json&bc=/sql-data-warehouse/breadcrumb/toc.json
         - name: 创建工作负荷隔离
           items:
             - name: T-SQL
-              href: quickstart-configure-workload-isolation-tsql.md
+              href: ../synapse-analytics/sql-data-warehouse/quickstart-configure-workload-isolation-tsql.md?toc=/sql-data-warehouse/toc.json&bc=/sql-data-warehouse/breadcrumb/toc.json
 - name: 概念
   items:
     - name: 安全性
@@ -71,13 +69,13 @@
               href: ../sql-database/sql-database-threat-detection-overview.md?toc=/sql-data-warehouse/toc.json&bc=/sql-data-warehouse/breadcrumb/toc.json
         - name: 审核
           href: ../sql-database/sql-database-auditing.md?toc=/sql-data-warehouse/toc.json&bc=/sql-data-warehouse/breadcrumb/toc.json
-        - name: 网络安全
+        - name: 网络安全性
           items:
             - name: 防火墙规则
               href: ../sql-database/sql-database-firewall-configure.md?toc=/sql-data-warehouse/toc.json&bc=/sql-data-warehouse/breadcrumb/toc.json
             - name: 虚拟网络服务终结点
               href: ../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=/sql-data-warehouse/toc.json&bc=/sql-data-warehouse/breadcrumb/toc.json
-        - name: Authentication
+        - name: 身份验证
           items:
             - name: 概述
               href: sql-data-warehouse-authentication.md
@@ -90,33 +88,23 @@
         - name: 访问控制
           items:
             - name: 概述
-              href: ../sql-database/sql-database-control-access.md?toc=/sql-data-warehouse/toc.json&bc=/sql-data-warehouse/breadcrumb/toc.json
+              href: ../sql-database/sql-database-manage-logins.md?toc=/sql-data-warehouse/toc.json&bc=/sql-data-warehouse/breadcrumb/toc.json
             - name: 行级别安全性
-              href: column-level-security.md
-            - name: 行级安全性
-              href: 'https://docs.microsoft.com/sql/relational-databases/security/row-level-security?toc=/sql-data-warehouse/toc.json&bc=/sql-data-warehouse/breadcrumb/toc.json'
+              href: ../synapse-analytics/sql-data-warehouse/column-level-security.md?toc=/sql-data-warehouse/toc.json&bc=/sql-data-warehouse/breadcrumb/toc.json
+            - name: 行级别安全性
+              href: /sql/relational-databases/security/row-level-security?toc=/sql-data-warehouse/toc.json&bc=/sql-data-warehouse/breadcrumb/toc.json
         - name: 数据保护
           items:
-            - name: 动态数据掩码
+            - name: 动态数据屏蔽
               href: ../sql-database/sql-database-dynamic-data-masking-get-started.md?toc=/sql-data-warehouse/toc.json&bc=/sql-data-warehouse/breadcrumb/toc.json
             - name: 透明数据加密 (TDE) 概述
               href: ../sql-database/transparent-data-encryption-azure-sql.md?toc=/sql-data-warehouse/toc.json&bc=/sql-data-warehouse/breadcrumb/toc.json
             - name: 将 TDE 与自带密钥配合使用
               href: ../sql-database/transparent-data-encryption-byok-azure-sql.md?toc=/sql-data-warehouse/toc.json&bc=/sql-data-warehouse/breadcrumb/toc.json
     - name: 数据加载
-      items:
-        - name: 概述
-          href: design-elt-data-loading.md
-        - name: 最佳做法
-          href: guidance-for-loading-data.md
-        - name: 列存储压缩
-          href: sql-data-warehouse-memory-optimizations-for-columnstore-compression.md
+      items: null
     - name: 开发
       items:
-        - name: 概述
-          href: sql-data-warehouse-overview-develop.md
-        - name: 最佳做法
-          href: sql-data-warehouse-best-practices-development.md
         - name: JSON
           items:
             - name: JSON
@@ -133,8 +121,6 @@
               href: 'https://docs.microsoft.com/sql/t-sql/functions/openjson-transact-sql?toc=/sql-data-warehouse/toc.json&bc=/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest'
         - name: 具体化视图
           items:
-            - name: 性能优化指南
-              href: performance-tuning-materialized-views.md
             - name: 创建
               href: 'https://docs.microsoft.com/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/sql-data-warehouse/toc.json&bc=/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest'
             - name: 更改
@@ -154,7 +140,7 @@
         - name: 结果集缓存
           items:
             - name: 性能优化指南
-              href: performance-tuning-result-set-caching.md
+              href: ../synapse-analytics/sql-data-warehouse/performance-tuning-result-set-caching.md?toc=/sql-data-warehouse/toc.json&bc=/sql-data-warehouse/breadcrumb/toc.json
             - name: 为数据库设置
               href: 'https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?toc=/sql-data-warehouse/toc.json&bc=/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest'
             - name: 为会话设置
@@ -165,12 +151,8 @@
               href: 'https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-dropresultsetcache-transact-sql?toc=/sql-data-warehouse/toc.json&bc=/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest'
         - name: 表
           items:
-            - name: 概述
-              href: sql-data-warehouse-tables-overview.md
             - name: CTAS
-              href: sql-data-warehouse-develop-ctas.md
-            - name: 数据类型
-              href: sql-data-warehouse-tables-data-types.md
+              href: ../synapse-analytics/sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/sql-data-warehouse/toc.json&bc=/sql-data-warehouse/breadcrumb/toc.json
             - name: 分布式表
               href: sql-data-warehouse-tables-distribute.md
             - name: 表约束
@@ -179,38 +161,16 @@
               href: sql-data-warehouse-tables-index.md
             - name: 标识
               href: sql-data-warehouse-tables-identity.md
-            - name: “度量值组”
+            - name: 分区
               href: sql-data-warehouse-tables-partition.md
             - name: 复制表
               href: design-guidance-for-replicated-tables.md
-            - name: 统计信息
-              href: sql-data-warehouse-tables-statistics.md
-            - name: 临时
-              href: sql-data-warehouse-tables-temporary.md
         - name: T-SQL 语言元素
           items:
-            - name: 循环
-              href: sql-data-warehouse-develop-loops.md
-            - name: 存储过程
-              href: sql-data-warehouse-develop-stored-procedures.md
-            - name: 事务
-              href: sql-data-warehouse-develop-transactions.md
             - name: 事务最佳实践
-              href: sql-data-warehouse-develop-best-practices-transactions.md
-            - name: 用户定义的架构
-              href: sql-data-warehouse-develop-user-defined-schemas.md
-            - name: 变量赋值
-              href: sql-data-warehouse-develop-variable-assignment.md
-            - name: 视图
-              href: sql-data-warehouse-develop-views.md
+              href: ../synapse-analytics/sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?toc=/sql-data-warehouse/toc.json&bc=/sql-data-warehouse/breadcrumb/toc.json
     - name: 查询
-      items:
-        - name: 动态 SQL
-          href: sql-data-warehouse-develop-dynamic-sql.md
-        - name: Group By 选项
-          href: sql-data-warehouse-develop-group-by-options.md
-        - name: 标签
-          href: sql-data-warehouse-develop-label.md
+      items: null
     - name: 工作负荷管理
       items:
         - name: 概述
@@ -221,6 +181,8 @@
           href: sql-data-warehouse-workload-importance.md
         - name: 工作负荷隔离
           href: sql-data-warehouse-workload-isolation.md
+        - name: 工作负荷管理监视
+          href: sql-data-warehouse-workload-management-portal-monitor.md
         - name: 内存和并发限制
           href: memory-concurrency-limits.md
         - name: 资源类
@@ -230,13 +192,13 @@
         - name: 概述
           href: sql-data-warehouse-overview-manageability-monitoring.md
         - name: '缩放, 暂停, 恢复'
-          href: sql-data-warehouse-manage-compute-overview.md
+          href: ../synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md?toc=/sql-data-warehouse/toc.json&bc=/sql-data-warehouse/breadcrumb/toc.json
         - name: 资源利用率和查询活动
-          href: sql-data-warehouse-concept-resource-utilization-query-activity.md
+          href: ../synapse-analytics/sql-data-warehouse/sql-data-warehouse-concept-resource-utilization-query-activity.md?toc=/sql-data-warehouse/toc.json&bc=/sql-data-warehouse/breadcrumb/toc.json
         - name: 数据保护
-          href: backup-and-restore.md
+          href: ../synapse-analytics/sql-data-warehouse/backup-and-restore.md?toc=/sql-data-warehouse/toc.json&bc=/sql-data-warehouse/breadcrumb/toc.json
         - name: 建议
-          href: sql-data-warehouse-concept-recommendations.md
+          href: ../synapse-analytics/sql-data-warehouse/sql-data-warehouse-concept-recommendations.md?toc=/sql-data-warehouse/toc.json&bc=/sql-data-warehouse/breadcrumb/toc.json
         - name: 故障排除
           href: sql-data-warehouse-troubleshoot.md
     - name: 维护计划
@@ -245,7 +207,7 @@
       items:
         - name: 概述
           href: sql-data-warehouse-overview-integrate.md
-- name: 操作方法指南
+- name: 操作指南
   items:
     - name: 安全
       items:
@@ -254,11 +216,13 @@
         - name: 通过 PowerShell 配置虚拟网络规则
           href: ../sql-database/sql-database-vnet-service-endpoint-rule-powershell.md?toc=/sql-data-warehouse/toc.json&bc=/sql-data-warehouse/breadcrumb/toc.json
         - name: 启用加密 - 门户
-          href: sql-data-warehouse-encryption-tde.md
+          href: ../synapse-analytics/sql-data-warehouse/sql-data-warehouse-encryption-tde.md?toc=/sql-data-warehouse/toc.json&bc=/sql-data-warehouse/breadcrumb/toc.json
         - name: 启用加密 - T-SQL
-          href: sql-data-warehouse-encryption-tde-tsql.md
+          href: ../synapse-analytics/sql-data-warehouse/sql-data-warehouse-encryption-tde-tsql.md?toc=/sql-data-warehouse/toc.json&bc=/sql-data-warehouse/breadcrumb/toc.json
     - name: 加载数据
       items:
+        - name: 使用 Azure Databricks (ADB)
+          href: /azure-databricks/databricks-extract-load-sql-data-warehouse?toc=/sql-data-warehouse/toc.json&bc=/sql-data-warehouse/breadcrumb/toc.json
         - name: 使用 Azure 数据工厂 (ADF)
           href: /data-factory/load-azure-sql-data-warehouse?toc=/sql-data-warehouse/toc.json&bc=/sql-data-warehouse/breadcrumb/toc.json
         - name: 使用 SQL Server Integration Services (SSIS)
@@ -273,14 +237,10 @@
               href: load-data-wideworldimportersdw.md
     - name: 开发
       items:
-        - name: 概述
-          href: sql-data-warehouse-connect-overview.md
-        - name: 连接字符串
-          href: sql-data-warehouse-connection-strings.md
         - name: 更改管理和部署
           items:
             - name: 安装 Visual Studio SSDT
-              href: sql-data-warehouse-install-visual-studio.md
+              href: ../synapse-analytics/sql-data-warehouse/sql-data-warehouse-install-visual-studio.md?toc=/sql-data-warehouse/toc.json&bc=/sql-data-warehouse/breadcrumb/toc.json
             - name: 源代码管理集成
               href: sql-data-warehouse-source-control-integration.md
             - name: 持续集成和部署
@@ -291,20 +251,22 @@
               href: sql-data-warehouse-query-visual-studio.md
             - name: SSMS
               href: sql-data-warehouse-query-ssms.md
-            - name: sqlcmd
-              href: sql-data-warehouse-get-started-connect-sqlcmd.md
     - name: 工作负荷管理
       items:
         - name: 分析工作负荷
           href: analyze-your-workload.md
         - name: 管理和监视工作负荷重要性
-          href: sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md
+          href: ../synapse-analytics/sql-data-warehouse/sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md?toc=/sql-data-warehouse/toc.json&bc=/sql-data-warehouse/breadcrumb/toc.json
         - name: 配置工作负荷重要性
-          href: sql-data-warehouse-how-to-configure-workload-importance.md
+          href: ../synapse-analytics/sql-data-warehouse/sql-data-warehouse-how-to-configure-workload-importance.md?toc=/sql-data-warehouse/toc.json&bc=/sql-data-warehouse/breadcrumb/toc.json
         - name: 将资源类转换为工作负荷组
-          href: sql-data-warehouse-how-to-convert-resource-classes-workload-groups.md
+          href: ../synapse-analytics/sql-data-warehouse/sql-data-warehouse-how-to-convert-resource-classes-workload-groups.md?toc=/sql-data-warehouse/toc.json&bc=/sql-data-warehouse/breadcrumb/toc.json
     - name: 管理和监视
       items:
+        - name: 升级到第 2 代
+          href: upgrade-to-latest-generation.md
+        - name: 管理计算
+          href: manage-compute-with-azure-functions.md
         - name: 监视工作负荷 - 门户
           href: sql-data-warehouse-monitor-workload-portal.md
         - name: 监视工作负荷 - DMV
@@ -329,8 +291,6 @@
               href: fivetran-quickstart.md
             - name: 添加 Azure 流分析作业
               href: sql-data-warehouse-integrate-azure-stream-analytics.md
-        - name: 构建仪表板和报表
-          items: null
     - name: 故障排除
       items:
         - name: 连接
@@ -355,11 +315,9 @@
       href: sql-data-warehouse-manage-compute-rest-api.md
 - name: 资源
   items:
+    - name: 论坛
+      href: 'https://social.msdn.microsoft.com/Forums/zh-CN/home'
     - name: 定价
-      href: 'https://www.azure.cn/pricing/details/sql-data-warehouse/'
+      href: 'https://azure.cn/pricing/details/sql-data-warehouse/'
     - name: 定价计算器
-      href: 'https://www.azure.cn/pricing/calculator/'
-    - name: 功能请求
-      href: 'https://www.azure.cn/support/forums/'
-    - name: 服务更新
-      href: 'https://www.azure.cn/what-is-new/'
+      href: 'https://azure.cn/pricing/calculator/'

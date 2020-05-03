@@ -5,22 +5,22 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 12/02/2019
-ms.date: 02/10/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: a5048eee38ba9eea184c7dbd96da3d5dd6890f4a
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 04679d70bbec134556f48abbbfc4f32ff654dc28
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "76980494"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134907"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>管理 Azure Cosmos DB 中的索引策略
 
-在 Azure Cosmos DB 中，数据是按照为每个容器定义的[索引策略](index-policy.md)编制索引的。 新建容器的默认索引策略会对任何字符串或数字强制使用范围索引。 可使用自己的自定义索引策略来替代此策略。
+在 Azure Cosmos DB 中，数据是按照为每个容器定义的[索引策略](index-policy.md)编制索引的。 新建容器的默认索引策略会对任何字符串或数字强制使用范围索引。 可以使用你自己的自定义索引策略覆盖此策略。
 
 ## <a name="indexing-policy-examples"></a>索引策略示例
 
-下面是以 JSON 格式显示的一些索引策略示例，该格式是在 Azure 门户上公开索引策略的方式。 可以通过 Azure CLI 或任何 SDK 设置相同的参数。
+下面是以 [JSON 格式](index-policy.md#include-exclude-paths)显示的一些索引策略示例，该格式是在 Azure 门户上公开索引策略的方式。 可以通过 Azure CLI 或任何 SDK 设置相同的参数。
 
 ### <a name="opt-out-policy-to-selectively-exclude-some-property-paths"></a>用以有选择地排除某些属性路径的选择退出策略
 
@@ -154,7 +154,7 @@ ms.locfileid: "76980494"
     ],
     "excludedPaths": [
         {
-            "path": "/\"_etag\"/?"
+            "path": "/_etag/?"
         }
     ],
     "spatialIndexes": [
@@ -347,7 +347,7 @@ WHERE c.name = "Tim" AND c.age > 18
 
 Azure Cosmos 容器将其索引策略存储为 JSON 文档，可以在 Azure 门户中直接编辑这些文档。
 
-1. 登录 [Azure 门户](https://portal.azure.cn/)。
+1. 登录到 [Azure 门户](https://portal.azure.cn/)。
 
 1. 创建新的 Azure Cosmos 帐户或选择现有的帐户。
 
@@ -371,7 +371,7 @@ Azure Cosmos 容器将其索引策略存储为 JSON 文档，可以在 Azure 门
 
 ## <a name="use-the-net-sdk-v2"></a>使用 .NET SDK V2
 
-`DocumentCollection`.NET SDK v2[ 中的 ](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/) 对象公开了一个 `IndexingPolicy` 属性，可以通过该属性更改 `IndexingMode` 以及添加或删除 `IncludedPaths` 和 `ExcludedPaths`。
+[.NET SDK v2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/) 中的 `DocumentCollection` 对象公开了一个 `IndexingPolicy` 属性，可以通过该属性更改 `IndexingMode` 以及添加或删除 `IncludedPaths` 和 `ExcludedPaths`。
 
 ```csharp
 // Retrieve the container's details
@@ -401,7 +401,7 @@ long indexTransformationProgress = container.IndexTransformationProgress;
 
 ## <a name="use-the-net-sdk-v3"></a>使用 .NET SDK V3
 
-`ContainerProperties`.NET SDK v3[ 中的 ](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) 对象（请参阅有关其用法的[此快速入门](create-sql-api-dotnet.md)）公开了一个 `IndexingPolicy` 属性，可以通过该属性更改 `IndexingMode` 以及添加或删除 `IncludedPaths` 和 `ExcludedPaths`。
+[.NET SDK v3](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) 中的 `ContainerProperties` 对象（请参阅有关其用法的[此快速入门](create-sql-api-dotnet.md)）公开了一个 `IndexingPolicy` 属性，可以通过该属性更改 `IndexingMode` 以及添加或删除 `IncludedPaths` 和 `ExcludedPaths`。
 
 ```csharp
 // Retrieve the container's details
@@ -425,7 +425,7 @@ containerResponse.Resource.IndexingPolicy.CompositeIndexes.Add(new Collection<Co
 await client.GetContainer("database", "container").ReplaceContainerAsync(containerResponse.Resource);
 ```
 
-若要跟踪索引转换进度，请传递一个用以将 `RequestOptions` 属性设置为 `PopulateQuotaInfo` 的 `true` 对象，然后从 `x-ms-documentdb-collection-index-transformation-progress` 响应标头中检索该值。
+若要跟踪索引转换进度，请传递一个用以将 `PopulateQuotaInfo` 属性设置为 `true` 的 `RequestOptions` 对象，然后从 `x-ms-documentdb-collection-index-transformation-progress` 响应标头中检索该值。
 
 ```csharp
 // retrieve the container's details
@@ -458,7 +458,7 @@ await client.GetDatabase("database").DefineContainer(name: "container", partitio
 
 ## <a name="use-the-java-sdk"></a>使用 Java SDK
 
-`DocumentCollection`Java SDK[ 中的 ](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb) 对象（请参阅有关其用法的[此快速入门](create-sql-api-java.md)）公开了 `getIndexingPolicy()` 和 `setIndexingPolicy()` 方法。 通过它们操作的 `IndexingPolicy` 对象，你可以更改索引模式，以及添加或删除包括的和排除的路径。
+[Java SDK](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb) 中的 `DocumentCollection` 对象（请参阅有关其用法的[此快速入门](create-sql-api-java.md)）公开了 `getIndexingPolicy()` 和 `setIndexingPolicy()` 方法。 通过它们操作的 `IndexingPolicy` 对象，你可以更改索引模式，以及添加或删除包括的和排除的路径。
 
 ```java
 // Retrieve the container's details
@@ -473,7 +473,7 @@ indexingPolicy.setIndexingMode(IndexingMode.Consistent);
 // Add an included path
 
 Collection<IncludedPath> includedPaths = new ArrayList<>();
-ExcludedPath includedPath = new IncludedPath();
+IncludedPath includedPath = new IncludedPath();
 includedPath.setPath("/*");
 includedPaths.add(includedPath);
 indexingPolicy.setIncludedPaths(includedPaths);
@@ -540,7 +540,7 @@ containerResponse.subscribe(result -> {
 
 ## <a name="use-the-nodejs-sdk"></a>使用 Node.js SDK
 
-`ContainerDefinition`Node.js SDK[ 中的 ](https://www.npmjs.com/package/@azure/cosmos) 接口（请参阅有关其用法的[此快速入门](create-sql-api-nodejs.md)）公开了一个 `indexingPolicy` 属性，可以通过该属性更改 `indexingMode` 以及添加或删除 `includedPaths` 和 `excludedPaths`。
+[Node.js SDK](https://www.npmjs.com/package/@azure/cosmos) 中的 `ContainerDefinition` 接口（请参阅有关其用法的[此快速入门](create-sql-api-nodejs.md)）公开了一个 `indexingPolicy` 属性，可以通过该属性更改 `indexingMode` 以及添加或删除 `includedPaths` 和 `excludedPaths`。
 
 检索容器的详细信息
 
@@ -597,7 +597,7 @@ containerResponse.body.indexingPolicy.excludedPaths.push({ path: '/name/*' });
 const replaceResponse = await client.database('database').container('container').replace(containerResponse.body);
 ```
 
-若要在容器上跟踪索引转换进度，请传递一个用以将 `RequestOptions` 属性设置为 `populateQuotaInfo` 的 `true` 对象，然后从 `x-ms-documentdb-collection-index-transformation-progress` 响应标头中检索该值。
+若要在容器上跟踪索引转换进度，请传递一个用以将 `populateQuotaInfo` 属性设置为 `true` 的 `RequestOptions` 对象，然后从 `x-ms-documentdb-collection-index-transformation-progress` 响应标头中检索该值。
 
 ```javascript
 // retrieve the container's details

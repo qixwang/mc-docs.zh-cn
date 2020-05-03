@@ -72,8 +72,6 @@
       href: app-based-conditional-access.md
     - name: 要求对来自不受信任网络的访问尝试执行 MFA
       href: untrusted-networks.md
-    - name: 配置“仅报表”模式
-      href: howto-conditional-access-report-only.md
     - name: 迁移经典策略
       href: policy-migration-mfa.md
     - name: 故障排除

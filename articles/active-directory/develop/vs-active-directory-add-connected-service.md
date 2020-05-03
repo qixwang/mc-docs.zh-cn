@@ -3,24 +3,23 @@ title: 使用 Active Directory 连接服务 (Visual Studio)
 description: 使用 Visual Studio 中的“添加连接服务”对话框添加 Azure Active Directory
 author: ghogen
 manager: jillfra
-ms.assetid: f599de6b-e369-436f-9cdc-48a0165684cb
 ms.prod: visual-studio-windows
 ms.technology: vs-azure
 ms.custom: aaddev, vs-azure
 ms.workload: azure-vs
 ms.topic: conceptual
-ms.date: 02/25/2020
+ms.date: 04/23/2020
 ms.author: v-junlch
-ms.openlocfilehash: 58952fd1a7bee82ed7eb56bc4e81258cca8f5c8f
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.openlocfilehash: 9c9a55f81e977a5eb1adcda9a0090cb7227615f3
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77653122"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126376"
 ---
 # <a name="add-an-azure-active-directory-by-using-connected-services-in-visual-studio"></a>在 Visual Studio 中使用连接服务添加 Azure Active Directory
 
-通过使用 Azure Active Directory (Azure AD)，可以支持 ASP.NET MVC Web 应用程序或 Web API 服务中的 Active Directory 身份验证的单一登录 (SSO)。 通过 Azure AD 身份验证，用户可以使用其帐户从 Azure Active Directory 连接到 Web 应用程序。 通过 Web API 的 Azure AD 身份验证的优点包括，从 Web 应用程序公开 API 时提供增强的数据安全性。 通过 Azure AD，不需要使用其自己的帐户和用户管理来管理单独的身份验证系统。
+通过使用 Azure Active Directory (Azure AD)，可以支持 ASP.NET MVC Web 应用程序的单一登录 (SSO) 或 Web API 服务中的 Active Directory 身份验证。 通过 Azure AD 身份验证，用户可以使用其帐户从 Azure Active Directory 连接到 Web 应用程序。 使用 Web API 进行 Azure AD 身份验证的优点包括从 Web 应用程序公开 API 时提供增强的数据安全性。 通过 Azure AD，不需要使用其自己的帐户和用户管理来管理单独的身份验证系统。
 
 本文及其同类文章提供了对 Active Directory 使用 Visual Studio 连接服务功能的详细信息。 Visual Studio 2015 及更高版本提供了该功能。
 
@@ -76,4 +75,3 @@ ms.locfileid: "77653122"
 - [Azure Active Directory 的身份验证方案](authentication-scenarios.md)
 - [向 ASP.NET Web 应用添加 Microsoft 登录功能](quickstart-v2-aspnet-webapp.md)
 
-<!-- Update_Description: link update -->

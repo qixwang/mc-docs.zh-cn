@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/20/2020
+ms.date: 04/22/2020
 ms.author: v-junlch
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: bba87a17ccc04b3acdc1863e53608cbade632872
-ms.sourcegitcommit: 6568c59433d7e80ab06e9fe76d4791f761ed6775
+ms.openlocfilehash: 20149ca11411dd6fe328d7138d9a44b7ec7b76ae
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80243164"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126259"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Microsoft 标识平台访问令牌
 
@@ -154,7 +154,7 @@ JWT 拆分成三个部分：
 
 Microsoft 标识可以通过与应用程序相关的不同方式进行身份验证。 `amr` 声明是可以包含多个项（例如 `["mfa", "rsa", "pwd"]`）的数组，适用于使用密码和 Authenticator 应用的身份验证。
 
-| Value | 说明 |
+| 值 | 说明 |
 |-----|-------------|
 | `pwd` | 密码身份验证，用户的 Microsoft 密码或应用的客户端机密。 |
 | `rsa` | 身份验证基于 RSA 密钥的证明，例如，使用 Microsoft Authenticator 应用。 这包括，身份验证是否是使用服务拥有的 X509 证书通过自签名的 JWT 执行的。 |
@@ -223,7 +223,7 @@ https://login.partner.microsoftonline.cn/common/v2.0/.well-known/openid-configur
 * 使用 `appidacr` 验证调用方客户端的身份验证状态 - 如果不允许公共客户端调用你的 API，则值不应该是 0。
 * 根据以往的 `nonce` 声明列表进行检查，以验证令牌是否未重放。
 * 检查 `tid` 是否与允许调用该 API 的租户相匹配。
-* 使用 `acr` 声明验证已执行 MFA 的用户。 
+* 使用 `acr` 声明验证已执行 MFA 的用户。 应使用[条件访问](/active-directory/conditional-access/overview)强制实施此步骤。
 * 如果在访问令牌中请求了 `roles` 或 `groups` 声明，请验证用户是否在允许执行此操作的组中。
   * 对于使用隐式流检索的令牌，可能需要在 [Microsoft Graph](https://developer.microsoft.com/graph/) 中查询此数据，因为该数据通常很庞大，无法放到令牌中。
 
@@ -259,7 +259,7 @@ https://login.partner.microsoftonline.cn/common/v2.0/.well-known/openid-configur
 | 用户执行 SSPR | 已撤销 | 已撤销 | 一直有效 | 一直有效 | 一直有效 |
 | 管理员重置密码 | 已撤销 | 已撤销 | 一直有效 | 一直有效 | 一直有效 |
 | 用户[通过 PowerShell](https://docs.microsoft.com/powershell/module/azuread/revoke-azureadsignedinuserallrefreshtoken) 撤销刷新令牌 | 已撤销 | 已撤销 | 已撤销 | 已撤销 | 已撤销 |
-| 管理员[通过 PowerShell](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken) 撤销租户的所有刷新令牌 | 已撤销 | 已撤销 |已撤销 | 已撤销 | 已撤销 |
+| 管理员[通过 PowerShell](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken) 撤销用户的所有刷新令牌 | 已撤销 | 已撤销 |已撤销 | 已撤销 | 已撤销 |
 | Web 上的单一注销（[v1.0](../azuread-dev/v1-protocols-openid-connect-code.md#single-sign-out)、[v2.0](v2-protocols-oidc.md#single-sign-out)） | 已撤销 | 一直有效 | 已撤销 | 一直有效 | 一直有效 |
 
 > [!NOTE]

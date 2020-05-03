@@ -3,25 +3,21 @@ title: 受保护的 Web API 应用注册 | Azure
 titleSuffix: Microsoft identity platform
 description: 了解构建受保护 Web API 的方法以及注册应用所需的信息。
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/06/2020
+ms.date: 04/22/2020
 ms.author: v-junlch
 ms.custom: aaddev
-ms.openlocfilehash: 10075714c9e805279bc4c68c0924abc51dc5c7a4
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 1459617c942780c46b1db274ea74d75b464d89bd
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79291039"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126453"
 ---
 # <a name="protected-web-api-app-registration"></a>受保护的 Web API：应用注册
 
@@ -81,9 +77,9 @@ Web API 不需注册重定向 URI，因为没有任何用户以交互方式登�
     - 选择“范围名称”并输入 **access_as_user**。 
     - 选择“谁能许可”，并确保选择“管理员和用户”。  
     - 选择“管理员许可显示名称”，并输入“以用户身份访问 TodoListService”。  
-    - 选择“管理员许可说明”，并输入“以用户身份访问 TodoListService Web API”。  
+    - 选择“管理员同意说明”，并输入“以用户身份访问 TodoListService Web API”。  
     - 选择“用户许可显示名称”，并输入“以用户身份访问 TodoListService”。  
-    - 选择“用户许可说明”，并输入“以用户身份访问 TodoListService Web API”。  
+    - 选择“用户同意说明”，并输入“以用户身份访问 TodoListService Web API”。  
     - 将“状态”值保留设置为“已启用”。  
  1. 选择“添加作用域”。 
 
@@ -153,4 +149,3 @@ Web API 将检查应用角色。 此角色是软件开发人员公开应用程�
 > [!div class="nextstepaction"]
 > [应用代码配置](scenario-protected-web-api-app-configuration.md)
 
-<!-- Update_Description: wording update -->

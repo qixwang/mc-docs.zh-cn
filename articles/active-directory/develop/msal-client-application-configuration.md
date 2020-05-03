@@ -1,30 +1,24 @@
 ---
-title: 客户端应用程序配置（Microsoft 身份验证库）
+title: 客户端应用程序配置 (MSAL) | Azure
 titleSuffix: Microsoft identity platform
-description: 了解 Microsoft 身份验证库 (MSAL) 中公共客户端和机密客户端应用程序的配置选项。
+description: 了解使用 Microsoft 身份验证库 (MSAL) 的公共客户端和机密客户端应用程序的配置选项。
 services: active-directory
-documentationcenter: dev-center-name
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-origin.date: 09/27/2019
-ms.date: 11/05/2019
+ms.date: 04/22/2020
 ms.author: v-junlch
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 086a61c91705f655435d75574d45d16362b9972f
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 7ee5f24d5c5f8cc91623faf8b9e4f1bac89ff13f
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79291077"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126515"
 ---
 # <a name="application-configuration-options"></a>应用程序配置选项
 
@@ -106,11 +100,11 @@ Azure AD 云颁发机构有两个组成部分：
 ### <a name="redirect-uri-for-public-client-apps"></a>公共客户端应用的重定向 URI
 
 如果你是使用 MSAL 的公共客户端应用开发人员：
-- 可能需要在桌面或 UWP 应用程序 (MSAL.NET 4.1+) 中使用 `.WithDefaultRedirectUri()`。 此方法会将公共客户端应用程序的重定向 URI 属性设置为建议用于公共客户端应用程序的默认重定向 URI。 
+- 可能需要在桌面或 UWP 应用程序 (MSAL.NET 4.1+) 中使用 `.WithDefaultRedirectUri()`。 此方法会将公共客户端应用程序的重定向 URI 属性设置为建议用于公共客户端应用程序的默认重定向 URI。
 
-  平台  | 重定向 URI  
+  平台  | 重定向 URI
   ---------  | --------------
-  桌面应用 (.NET FW) | `https://login.partner.microsoftonline.cn/common/oauth2/nativeclient` 
+  桌面应用 (.NET FW) | `https://login.partner.microsoftonline.cn/common/oauth2/nativeclient`
   UWP | `WebAuthenticationBroker.GetCurrentApplicationCallbackUri()` 的值。 这可以通过浏览器启用 SSO，方法是：将值设置为需注册的 WebAuthenticationBroker.GetCurrentApplicationCallbackUri() 的结果
   .NET Core | `https://localhost`。 这样用户就可以将系统浏览器用于交互式身份验证，因为 .NET Core 目前没有 UI 用于嵌入式 Web 视图。
 
@@ -130,7 +124,7 @@ Azure AD 云颁发机构有两个组成部分：
 
 ### <a name="redirect-uri-for-confidential-client-apps"></a>机密客户端应用的重定向 URI
 
-对于 Web 应用，重定向 URI（或回复 URI）是 Azure AD 用来向应用程序发回令牌的 URI。 如果机密应用是 Web 应用/Web API，则此 URI 可以是该 Web 应用/Web API 的 URL。 重定向 URI 需在应用注册中注册。 部署一个最初已在本地测试的应用时，这种注册尤其重要。 然后，需要在门户中添加已部署的应用的回复 URL。
+对于 Web 应用，重定向 URI（或回复 URI）是 Azure AD 用来向应用程序发回令牌的 URI。 如果机密应用是 Web 应用/Web API，则此 URI 可以是其 URL。 重定向 URI 需在应用注册中注册。 部署一个最初已在本地测试的应用时，这种注册尤其重要。 然后，需要在门户中添加已部署的应用的回复 URL。
 
 对于守护程序应用，不需要指定重定向 URI。
 
@@ -147,4 +141,3 @@ Azure AD 云颁发机构有两个组成部分：
 了解如何[使用 MSAL.NET 实例化客户端应用程序](msal-net-initializing-client-applications.md)。
 了解如何[使用 MSAL.js 实例化客户端应用程序](msal-js-initializing-client-applications.md)。
 
-<!-- Update_Description: wording update -->

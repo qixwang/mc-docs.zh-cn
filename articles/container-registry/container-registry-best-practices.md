@@ -1,24 +1,22 @@
 ---
-title: Azure 容器注册表中的最佳做法
+title: 注册最佳做法
 description: 通过遵循这些最佳做法，了解如何有效使用 Azure 容器注册表。
-services: container-registry
-author: rockboyfor
-manager: digimobile
-ms.service: container-registry
 ms.topic: article
 origin.date: 09/27/2018
-ms.date: 08/26/2019
+ms.date: 04/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: fc7fc9a3c79a7ecf877334f3f3550a8f2cfa4e11
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: ebb22017a5754ad85f9bd156bd0a92b719c385c3
+ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79292887"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82093230"
 ---
 # <a name="best-practices-for-azure-container-registry"></a>Azure 容器注册表的最佳做法
 
 通过遵循这些最佳做法，可帮助最大化性能并在 Azure 中经济、高效地利用私有 Docker 注册表。
+
+另请参阅[有关对容器映像进行标记和版本控制的建议](container-registry-image-tag-version.md)，了解对注册表中的映像进行标记和版本控制的策略。 
 
 ## <a name="network-close-deployment"></a>临近网络部署
 
@@ -37,14 +35,12 @@ ms.locfileid: "79292887"
 
 通过利用存储库命名空间，可以在组织中的多个组之间共享单个注册表。 可在部署和团队之间共享注册表。 Azure 容器注册表支持嵌套的命名空间，可实现组隔离。
 
-例如，考虑以下容器映像标记。 在公司范围内使用的映像（如 `aspnetcore`）位于根命名空间中，而生产和营销组拥有的容器映像都使用其自己的命名空间。
+例如，考虑以下容器映像标记。 在公司范围内使用的映像（如 `aspnetcore`）位于根命名空间中，而产品组和营销组拥有的容器映像都使用其自己的命名空间。
 
-```
-contoso.azurecr.cn/aspnetcore:2.0
-contoso.azurecr.cn/products/widget/web:1
-contoso.azurecr.cn/products/bettermousetrap/refundapi:12.3
-contoso.azurecr.cn/marketing/2017-fall/concertpromotions/campaign:218.42
-```
+- contoso.azurecr.cn/aspnetcore:2.0 
+- contoso.azurecr.cn/products/widget/web:1 
+- contoso.azurecr.cn/products/bettermousetrap/refundapi:12.3 
+- contoso.azurecr.cn/marketing/2017-fall/concertpromotions/campaign:218.42 
 
 ## <a name="dedicated-resource-group"></a>专用资源组
 
@@ -69,8 +65,11 @@ Azure 容器注册表的身份验证有两种主要方案：单个身份验证�
 
 使用 Azure CLI 命令 [az acr show-usage][az-acr-show-usage] 显示注册表的当前大小：
 
-```console
-$ az acr show-usage --resource-group myResourceGroup --name myregistry --output table
+```azurecli
+az acr show-usage --resource-group myResourceGroup --name myregistry --output table
+```
+
+```output
 NAME      LIMIT         CURRENT VALUE    UNIT
 --------  ------------  ---------------  ------
 Size      536870912000  185444288        Bytes
@@ -105,4 +104,4 @@ Azure 容器注册表可用于多层（称为 SKU），每层提供不同功能�
 [container-registry-geo-replication]: container-registry-geo-replication.md
 [container-registry-skus]: container-registry-skus.md
 
-<!-- Update_Description: update meta properties, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

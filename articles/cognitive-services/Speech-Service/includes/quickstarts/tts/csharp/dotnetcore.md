@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-origin.date: 06/24/2019
-ms.date: 03/16/2020
+origin.date: 04/04/2020
+ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: 18c8dac026a6a1da2d1359730f5af4b73e6e3ea8
-ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
+ms.openlocfilehash: c4a3b50f6155ffeb77047eb6fa2180c0af927cee
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80151620"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82150975"
 ---
 > [!NOTE]
 > .NET Core 是一个实现了 [.NET Standard](https://docs.microsoft.com/dotnet/standard/net-standard) 规范的开源跨平台 .NET 平台。
@@ -27,7 +27,8 @@ ms.locfileid: "80151620"
 
 > [!div class="checklist"]
 > * [创建一个 Azure 搜索资源](../../../../get-started.md)
-> * [设置开发环境并创建空项目](../../../../quickstarts/setup-platform.md?tabs=dotnetcore)
+> * [设置开发环境并创建空项目](../../../../quickstarts/setup-platform.md?tabs=dotnetcore&pivots=programming-language-csharp)
+> * 需要语音 SDK 版本 1.10.0 或更高版本。
 
 ## <a name="add-sample-code"></a>添加示例代码
 
@@ -44,9 +45,10 @@ ms.locfileid: "80151620"
         {
             public static async Task SynthesisToSpeakerAsync()
             {
-                // Creates an instance of a speech config with specified host and subscription key.
+                // Creates an instance of a speech config with specified subscription key and service region.
                 // Replace with your own subscription key and service region (e.g., "chinaeast2").
-                var config = SpeechConfig.FromHost(new Uri("https://YourServiceRegion.tts.speech.azure.cn/"), "YourSubscriptionKey");
+                var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
+
     
                 // Creates a speech synthesizer using the default speaker as audio output.
                 using (var synthesizer = new SpeechSynthesizer(config))
@@ -110,7 +112,7 @@ ms.locfileid: "80151620"
 
 ## <a name="next-steps"></a>后续步骤
 
-[!INCLUDE [footer](./footer.md)]
+[!INCLUDE [Speech synthesis basics](../../text-to-speech-next-steps.md)]
 
 <!-- ## See also -->
 

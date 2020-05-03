@@ -1,30 +1,24 @@
 ---
-title: 了解 Microsoft 身份验证库 (MSAL)
+title: 了解 MSAL | Azure
 titleSuffix: Microsoft identity platform
 description: 借助 Microsoft 身份验证库 (MSAL)，应用程序开发人员可以获取令牌，以调用受保护的 Web API。 这些 Web API 可以是 Microsoft Graph、其他 Microsoft API、第三方 Web API 或你自己的 Web API。 MSAL 支持多个应用程序体系结构和平台。
 services: active-directory
-documentationcenter: dev-center-name
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-origin.date: 10/30/2019
-ms.date: 11/26/2019
+ms.date: 04/22/2020
 ms.author: v-junlch
 ms.reviewer: saeeda
 ms.custom: aaddev, identityplatformtop40
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10b8658b525d3655de93053ccf942e3b9fa8fb6c
-ms.sourcegitcommit: 9597d4da8af58009f9cef148a027ccb7b32ed8cf
+ms.openlocfilehash: d90561bc2509c45d54552226ec2676bd5b123aa7
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74655326"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126499"
 ---
 # <a name="overview-of-microsoft-authentication-library-msal"></a>Microsoft 身份验证库 (MSAL) 的概述
 借助 Microsoft 身份验证库 (MSAL)，开发人员能够从 Microsoft 标识平台终结点获取[令牌](developer-glossary.md#security-token)，以访问受保护的 Web API。 这些 Web API 可以是 Microsoft Graph、其他 Microsoft API、第三方 Web API 或你自己的 Web API。 MSAL 适用于 .NET、JavaScript、Android 和 iOS，支持许多不同的应用程序体系结构和平台。
@@ -49,7 +43,7 @@ MSAL 为你提供了许多获取令牌的方法，将一致的 API 用于许多�
 * [保护 Web API，因此仅通过身份验证的用户可以访问它](scenario-protected-web-api-overview.md)
 * [Web API 代表已登录用户调用其他下游 Web API](scenario-web-api-call-api-overview.md)
 * [桌面应用程序代表已登录用户调用 Web API](scenario-desktop-overview.md)
-* [移动应用程序代表以交互方式登录的用户调用 Web API](scenario-mobile-overview.md)。
+* [代表以交互方式登录的用户调用 Web API 的移动应用程序](scenario-mobile-overview.md)。
 * [桌面/服务守护程序应用程序代表自己调用 Web API](scenario-daemon-overview.md)
 
 ## <a name="languages-and-frameworks"></a>语言和框架
@@ -69,5 +63,3 @@ Active Directory 身份验证库 (ADAL) 与适用于开发人员的 Azure AD (v1
 
 有关更多具体信息，请参阅[从 ADAL.NET 迁移到 MSAL.NET](msal-net-migration.md) 和[从 ADAL.js 迁移到 MSAL.js](msal-compare-msal-js-and-adal-js.md)。
 
-            
-<!-- Update_Description: wording update -->

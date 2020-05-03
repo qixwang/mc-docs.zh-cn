@@ -5,14 +5,14 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 11/12/2019
-ms.date: 02/10/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: a868a4b6f23561e2b4c42a0345393fe7eb6ea7d5
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 949398596a41b800c61dbe584f88ab7263dba367
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292538"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134658"
 ---
 <!--Verify successfully-->
 # <a name="manage-azure-cosmos-db-mongodb-api-resources-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板管理 Azure Cosmos DB MongoDB API 资源
@@ -27,10 +27,12 @@ ms.locfileid: "79292538"
 > [!NOTE]
 > 帐户名称必须为小写且不超过 44 个字符。
 > 若要更新 RU/秒，请重新提交包含已更新吞吐量属性值的模板。
+>
+> 目前，使用 PowerShell 和 CLI 只能创建 3.2 版的 Azure Cosmos DB API for MongoDB 帐户（即，使用格式为 `*.documents.azure.cn` 的终结点的帐户）。 若要创建 3.6 版的帐户，请改用资源管理器模板（如下所示）或 Azure 门户。
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "accountName": {
@@ -65,6 +67,17 @@ ms.locfileid: "79292538"
             "allowedValues": [ "Eventual", "ConsistentPrefix", "Session", "BoundedStaleness", "Strong" ],
             "metadata": {
                 "description": "The default consistency level of the Cosmos DB account."
+            }
+        },
+        "serverVersion": {
+            "defaultValue": "3.6",
+            "allowedValues": [
+                "3.2",
+                "3.6"
+            ],
+            "type": "String",
+            "metadata": {
+                "description": "Specifies the MongoDB server version to use."
             }
         },
         "maxStalenessPrefix": {
@@ -168,6 +181,9 @@ ms.locfileid: "79292538"
                 "consistencyPolicy": "[variables('consistencyPolicy')[parameters('defaultConsistencyLevel')]]",
                 "locations": "[variables('locations')]",
                 "databaseAccountOfferType": "Standard",
+                "apiProperties": {
+                    "serverVersion": "[parameters('serverVersion')]"
+                },
                 "enableMultipleWriteLocations": "[parameters('multipleWriteLocations')]"
             }
         },

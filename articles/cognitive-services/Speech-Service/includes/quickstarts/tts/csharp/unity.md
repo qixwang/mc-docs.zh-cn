@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-origin.date: 09/19/2019
-ms.date: 03/16/2020
+origin.date: 04/04/2020
+ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: 2b6ba3f3e88e14cf6e5f684a2789c39e0fcdc519
-ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
+ms.openlocfilehash: 3f5cd7dd3cab6049625e9c75875bdd3173068ab3
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80151622"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82150963"
 ---
 > [!NOTE]
 > Unity 支持 Windows 桌面版（x86 和 x64）或通用 Windows 平台（x86、x64、ARM/ARM64）、Android（x86、ARM32/64）或 iOS（x64 模拟器、ARM32 和 ARM64）。
@@ -27,7 +27,8 @@ ms.locfileid: "80151622"
 
 > [!div class="checklist"]
 > * [创建一个 Azure 搜索资源](../../../../get-started.md)
-> * [设置开发环境并创建空项目](../../../../quickstarts/setup-platform.md?tabs=unity)
+> * [设置开发环境并创建空项目](../../../../quickstarts/setup-platform.md?tabs=unity&pivots=programming-language-csharp)
+> * 需要语音 SDK 版本 1.10.0 或更高版本。
 
 ## <a name="add-a-ui"></a>添加 UI
 
@@ -152,10 +153,10 @@ ms.locfileid: "80151622"
                 message = "Click button to synthesize speech";
                 speakButton.onClick.AddListener(ButtonClick);
     
-                // Creates an instance of a speech config with specified host and subscription key.
+                // Creates an instance of a speech config with specified subscription key and service region.
                 // Replace with your own subscription key and service region (e.g., "chinaeast2").
-                speechConfig = SpeechConfig.FromHost(new Uri("https://YourServiceRegion.tts.speech.azure.cn/"), "YourSubscriptionKey");
-    
+                speechConfig = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
+
                 // The default format is Riff16Khz16BitMonoPcm.
                 // We are playing the audio in memory as audio clip, which doesn't require riff header.
                 // So we need to set the format to Raw16Khz16BitMonoPcm.
@@ -222,7 +223,7 @@ ms.locfileid: "80151622"
 
 ## <a name="next-steps"></a>后续步骤
 
-[!INCLUDE [footer](./footer.md)]
+[!INCLUDE [Speech synthesis basics](../../text-to-speech-next-steps.md)]
 
 <!-- ## See also -->
 

@@ -1,5 +1,5 @@
 ---
-title: 将现有 Azure 订阅添加到租户 - Azure Active Directory | Microsoft Docs
+title: 将现有 Azure 订阅添加到租户 - Azure AD
 description: 有关将现有 Azure 订阅添加到 Azure Active Directory 租户的说明。
 services: active-directory
 author: msaburnley
@@ -8,18 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: conceptual
-origin.date: 10/25/2019
-ms.date: 11/28/2019
+ms.date: 04/23/2020
 ms.author: v-junlch
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4b21185e4e7a4eeb0ae3005cb3205493247c5df
-ms.sourcegitcommit: 9597d4da8af58009f9cef148a027ccb7b32ed8cf
+ms.openlocfilehash: 9922c91112b7e883e82f4d272ac6a49b74d787fa
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74655385"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126371"
 ---
 # <a name="associate-or-add-an-azure-subscription-to-your-azure-active-directory-tenant"></a>将 Azure 订阅关联或添加到 Azure Active Directory 租户
 
@@ -58,7 +57,7 @@ Azure 订阅与 Azure Active Directory (Azure AD) 之间存在信任关系。 �
 
 - 请确保未使用 Azure 云服务提供商 (CSP) 订阅（MS-AZR-0145P、MS-AZR-0146P、MS-AZR-159P）、Microsoft 内部订阅 (MS-AZR-0015P) 或 Microsoft Imagine 订阅 (MS-AZR-0144P)。
 
-## 将订阅关联到目录<a name="to-associate-an-existing-subscription-to-your-azure-ad-directory"></a>
+## <a name="associate-a-subscription-to-a-directory"></a>将订阅关联到目录<a name="to-associate-an-existing-subscription-to-your-azure-ad-directory"></a>
 
 将现有订阅关联到 Azure AD 目录
 
@@ -92,4 +91,3 @@ Azure 订阅与 Azure Active Directory (Azure AD) 之间存在信任关系。 �
 
 - 若要详细了解如何在 Azure AD 中分配角色，请参阅[为使用 Azure Active Directory 的用户分配管理员和非管理员角色](active-directory-users-assign-role-azure-portal.md)。
 
-<!-- Update_Description: wording update -->

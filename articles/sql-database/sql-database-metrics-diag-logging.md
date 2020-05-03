@@ -10,14 +10,14 @@ ms.topic: conceptual
 author: WenJason
 ms.author: v-jay
 ms.reviewer: jrasnik, carlrab
-origin.date: 03/10/2020
-ms.date: 03/30/2020
-ms.openlocfilehash: 7e4618b9be71ee1d068e5a8ff73a0635efd3a00d
-ms.sourcegitcommit: 90660563b5d65731a64c099b32fb9ec0ce2c51c6
+origin.date: 04/06/2020
+ms.date: 04/27/2020
+ms.openlocfilehash: ed48c6e2f899e1c52f34fc0c4af02c623669d309
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80341814"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82127043"
 ---
 # <a name="configure-streaming-export-of-azure-sql-database-diagnostic-telemetry"></a>配置 Azure SQL 数据库诊断遥测数据的流式导出
 
@@ -41,11 +41,11 @@ ms.locfileid: "80341814"
 | [实例和应用高级指标](#advanced-metrics)：包含所使用的 tempdb 系统数据库数据和日志文件大小以及 tempdb 百分比日志文件。 | 是 | 否 |
 | [QueryStoreRuntimeStatistics](#query-store-runtime-statistics)：包含有关查询运行时统计信息的信息，例如 CPU 使用率、查询持续时间统计信息。 | 是 | 是 |
 | [QueryStoreWaitStatistics](#query-store-wait-statistics)：包含有关查询等待统计信息的信息（查询正在等待什么），例如 CPU、日志和锁定。 | 是 | 是 |
-| [错误](#errors-dataset)：包含有关数据库发生的 SQL 错误的信息。 | 是 | 是 |
+| [Errors](#errors-dataset)：包含有关数据库发生的 SQL 错误的信息。 | 是 | 是 |
 | [DatabaseWaitStatistics](#database-wait-statistics-dataset)：包含有关数据库针对不同等待类型花费多少时间等待的信息。 | 是 | 否 |
 | [Timeouts](#time-outs-dataset)：包含有关数据库发生的超时的信息。 | 是 | 否 |
 | [Blocks](#blockings-dataset)：包含有关数据库发生的阻塞事件的信息。 | 是 | 否 |
-| [死锁数](#deadlocks-dataset)：包含有关数据库发生的死锁事件的信息。 | 是 | 否 |
+| [Deadlocks](#deadlocks-dataset)：包含有关数据库发生的死锁事件的信息。 | 是 | 否 |
 | [AutomaticTuning](#automatic-tuning-dataset)：包含有关数据库的自动优化建议的信息。 | 是 | 否 |
 | [SQLInsights](#intelligent-insights-dataset)：包含针对数据库性能的智能见解。 有关详细信息，请参阅[智能见解](sql-database-intelligent-insights.md)。 | 是 | 是 |
 
@@ -84,7 +84,7 @@ ms.locfileid: "80341814"
 - Azure Resource Manager 模板
 
 > [!NOTE]
-> 若要启用安全遥测的审核日志流式传输，请参阅[为数据库设置审核](sql-database-auditing.md#subheading-2)以及 [Azure Monitor 日志和 Azure 事件中心中的审核日志](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/SQL-Audit-logs-in-Azure-Log-Analytics-and-Azure-Event-Hubs/ba-p/386242)。
+> 若要启用安全遥测的审核日志流式传输，请参阅[为数据库设置审核](sql-database-auditing.md#setup-auditing)以及 [Azure Monitor 日志和 Azure 事件中心中的审核日志](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/SQL-Audit-logs-in-Azure-Log-Analytics-and-Azure-Event-Hubs/ba-p/386242)。
 
 ## <a name="configure-the-streaming-export-of-diagnostic-telemetry"></a>配置诊断遥测数据的流式导出
 
@@ -394,9 +394,15 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 |**指标**|**指标显示名称**|**说明**|
 |---|---|---|
-|tempdb_data_size| Tempdb 数据文件大小 (KB) |Tempdb 数据文件大小 (KB)。 不适用于数据仓库。 对于使用 vCore 购买模型的数据库，如果具有两个或更多 vCore ，则此指标可用；对于使用基于 DTU 的购买模型的数据库，如果具有 200 个 DTU 及更高的 DTU，则此指标可用。 此指标当前不适用于超大规模数据库。|
-|tempdb_log_size| Tempdb 日志文件大小 (KB) |Tempdb 日志文件大小 (KB)。 不适用于数据仓库。 对于使用 vCore 购买模型的数据库，如果具有两个或更多 vCore ，则此指标可用；对于使用基于 DTU 的购买模型的数据库，如果具有 200 个 DTU 及更高的 DTU，则此指标可用。 此指标当前不适用于超大规模数据库。|
-|tempdb_log_used_percent| Tempdb 日志已用百分比 |Tempdb 日志已用百分比。 不适用于数据仓库。 对于使用 vCore 购买模型的数据库，如果具有两个或更多 vCore ，则此指标可用；对于使用基于 DTU 的购买模型的数据库，如果具有 200 个 DTU 及更高的 DTU，则此指标可用。 此指标当前不适用于超大规模数据库。|
+|sqlserver_process_core_percent<sup>1</sup>|SQL Server 进程核心百分比|SQL Server 进程的 CPU 使用率百分比（由操作系统度量）。|
+|sqlserver_process_memory_percent<sup>1</sup> |SQL Server 进程内存百分比|SQL Server 进程的内存使用率百分比（由操作系统度量）。|
+|tempdb_data_size<sup>2</sup>| Tempdb 数据文件大小 (KB) |Tempdb 数据文件大小 (KB)。|
+|tempdb_log_size<sup>2</sup>| Tempdb 日志文件大小 (KB) |Tempdb 日志文件大小 (KB)。|
+|tempdb_log_used_percent<sup>2</sup>| Tempdb 日志已用百分比 |Tempdb 日志已用百分比。|
+
+<sup>1</sup> 此指标可用于这样的数据库：使用具有 2 vCore 或更多 vCore 的 vCore 购买模型，或使用具有 200 DTU 或更多 DTU 的基于 DTU 的购买模型。 
+
+<sup>2</sup> 此指标可用于这样的数据库：使用具有 2 vCore 或更多 vCore 的 vCore 购买模型，或使用具有 200 DTU 或更多 DTU 的基于 DTU 的购买模型。 此指标目前不可用于超大规模数据库或数据仓库。
 
 ### <a name="basic-logs"></a>基本日志
 
@@ -411,7 +417,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |TimeGenerated [UTC]|记录日志时的时间戳 |
 |类型|始终：AzureDiagnostics |
 |ResourceProvider|资源提供程序的名称。 始终：MICROSOFT.SQL |
-|Category|类别的名称。 始终：ResourceUsageStats |
+|类别|类别的名称。 始终：ResourceUsageStats |
 |资源|资源名称 |
 |ResourceType|资源类型的名称。 始终：MANAGEDINSTANCES |
 |SubscriptionId|数据库的订阅 GUID |
@@ -436,7 +442,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |TimeGenerated [UTC]|记录日志时的时间戳 |
 |类型|始终：AzureDiagnostics |
 |ResourceProvider|资源提供程序的名称。 始终：MICROSOFT.SQL |
-|Category|类别的名称。 始终：QueryStoreRuntimeStatistics |
+|类别|类别的名称。 始终：QueryStoreRuntimeStatistics |
 |OperationName|操作的名称。 始终：QueryStoreRuntimeStatisticsEvent |
 |资源|资源名称 |
 |ResourceType|资源类型的名称。 始终：SERVERS/DATABASES |
@@ -487,7 +493,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |TimeGenerated [UTC]|记录日志时的时间戳 |
 |类型|始终：AzureDiagnostics |
 |ResourceProvider|资源提供程序的名称。 始终：MICROSOFT.SQL |
-|Category|类别的名称。 始终：QueryStoreWaitStatistics |
+|类别|类别的名称。 始终：QueryStoreWaitStatistics |
 |OperationName|操作的名称。 始终：QueryStoreWaitStatisticsEvent |
 |资源|资源名称 |
 |ResourceType|资源类型的名称。 始终：SERVERS/DATABASES |
@@ -525,7 +531,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |TimeGenerated [UTC]|记录日志时的时间戳 |
 |类型|始终：AzureDiagnostics |
 |ResourceProvider|资源提供程序的名称。 始终：MICROSOFT.SQL |
-|Category|类别的名称。 始终：错误 |
+|类别|类别的名称。 始终：错误 |
 |OperationName|操作的名称。 始终：ErrorEvent |
 |资源|资源名称 |
 |ResourceType|资源类型的名称。 始终：SERVERS/DATABASES |
@@ -554,7 +560,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |TimeGenerated [UTC]|记录日志时的时间戳 |
 |类型|始终：AzureDiagnostics |
 |ResourceProvider|资源提供程序的名称。 始终：MICROSOFT.SQL |
-|Category|类别的名称。 始终：DatabaseWaitStatistics |
+|类别|类别的名称。 始终：DatabaseWaitStatistics |
 |OperationName|操作的名称。 始终：DatabaseWaitStatisticsEvent |
 |资源|资源名称 |
 |ResourceType|资源类型的名称。 始终：SERVERS/DATABASES |
@@ -583,7 +589,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |TimeGenerated [UTC]|记录日志时的时间戳 |
 |类型|始终：AzureDiagnostics |
 |ResourceProvider|资源提供程序的名称。 始终：MICROSOFT.SQL |
-|Category|类别的名称。 始终：超时 |
+|类别|类别的名称。 始终：超时 |
 |OperationName|操作的名称。 始终：TimeoutEvent |
 |资源|资源名称 |
 |ResourceType|资源类型的名称。 始终：SERVERS/DATABASES |
@@ -606,7 +612,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |TimeGenerated [UTC]|记录日志时的时间戳 |
 |类型|始终：AzureDiagnostics |
 |ResourceProvider|资源提供程序的名称。 始终：MICROSOFT.SQL |
-|Category|类别的名称。 始终：块 |
+|类别|类别的名称。 始终：块 |
 |OperationName|操作的名称。 始终：BlockEvent |
 |资源|资源名称 |
 |ResourceType|资源类型的名称。 始终：SERVERS/DATABASES |
@@ -630,7 +636,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |TimeGenerated [UTC] |记录日志时的时间戳 |
 |类型|始终：AzureDiagnostics |
 |ResourceProvider|资源提供程序的名称。 始终：MICROSOFT.SQL |
-|Category|类别的名称。 始终：死锁数 |
+|类别|类别的名称。 始终：死锁数 |
 |OperationName|操作的名称。 始终：DeadlockEvent |
 |资源|资源名称 |
 |ResourceType|资源类型的名称。 始终：SERVERS/DATABASES |
@@ -651,7 +657,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |TimeGenerated [UTC]|记录日志时的时间戳 |
 |类型|始终：AzureDiagnostics |
 |ResourceProvider|资源提供程序的名称。 始终：MICROSOFT.SQL |
-|Category|类别的名称。 始终：AutomaticTuning |
+|类别|类别的名称。 始终：AutomaticTuning |
 |资源|资源名称 |
 |ResourceType|资源类型的名称。 始终：SERVERS/DATABASES |
 |SubscriptionId|数据库的订阅 GUID |

@@ -3,20 +3,20 @@ title: 将文本转换为语音，Python - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 本文介绍如何使用 Python 和文本转语音 REST API 将文本转换为语音。 本指南中包含的示例文本以语音合成标记语言 (SSML) 的形式构造。 这样你就可以选择语音响应的语音和语言。
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: how-to
-origin.date: 02/10/2020
-ms.date: 03/16/2020
+origin.date: 04/13/2020
+ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: e945663f1c2b3ed2e8578e72b8fbfc76a8d822eb
-ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
+ms.openlocfilehash: a6974f4d2b083b62efd1f6bc21858cee0a9d8f83
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80151654"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126787"
 ---
 # <a name="convert-text-to-speech-using-python"></a>使用 Python 将文本转换为语音
 
@@ -27,8 +27,9 @@ ms.locfileid: "80151654"
 ## <a name="prerequisites"></a>先决条件
 
 * Python 2.7.x 或 3.x
-* [Visual Studio](https://visualstudio.microsoft.com/downloads/)、[Visual Studio Code](https://code.visualstudio.com/download) 或你喜欢用的文本编辑器
+* <a href="https://visualstudio.microsoft.com/downloads/" target="_blank">Visual Studio<span class="docon docon-navigate-external x-hidden-focus"></span></a>、<a href="https://code.visualstudio.com/download" target="_blank">Visual Studio Code<span class="docon docon-navigate-external x-hidden-focus"></span></a> 或你喜欢用的文本编辑器
 * 语音服务的 Azure 订阅密钥
+* 需要语音 SDK 版本 1.10.0 或更高版本。
 
 ## <a name="create-a-project-and-import-required-modules"></a>创建一个项目并导入必需的模块
 
@@ -100,7 +101,7 @@ def get_token(self):
 然后，使用语音合成标记语言 (SSML) 构造请求正文。 此示例将定义结构，并使用前面创建的 `tts` 输入。
 
 >[!NOTE]
-> 此示例使用 `Guy24KRUS` 语音字体。 如需 Microsoft 提供的语音/语言的完整列表，请参阅[语言支持](language-support.md)。
+> 此示例使用 `Guy24kRUS` 语音字体。 如需 Microsoft 提供的语音/语言的完整列表，请参阅[语言支持](language-support.md)。
 
 <!-- > If you're interested in creating a unique, recognizable voice for your brand, see [Creating custom voice fonts](how-to-customize-voice-font.md). -->
 
@@ -124,7 +125,7 @@ def save_audio(self):
     voice = ElementTree.SubElement(xml_body, 'voice')
     voice.set('{http://www.w3.org/XML/1998/namespace}lang', 'en-US')
     voice.set(
-        'name', 'Microsoft Server Speech Text to Speech Voice (en-US, Guy24KRUS)')
+        'name', 'Microsoft Server Speech Text to Speech Voice (en-US, Guy24kRUS)')
     voice.text = self.tts
     body = ElementTree.tostring(xml_body)
 

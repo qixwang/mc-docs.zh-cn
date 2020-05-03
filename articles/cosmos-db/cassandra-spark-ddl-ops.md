@@ -2,19 +2,19 @@
 title: Spark 上 Azure Cosmos DB Cassandra API 中的 DDL 操作
 description: 本文详细介绍了针对 Spark 上 Azure Cosmos DB Cassandra API 的密钥空间和表 DDL 操作。
 author: rockboyfor
-ms.author: v-yeche
 ms.reviewer: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 origin.date: 09/24/2018
-ms.date: 03/18/2019
-ms.openlocfilehash: 272903117c1f7055c5a9ce2b7f5dab13cf6c4736
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 04/27/2020
+ms.author: v-yeche
+ms.openlocfilehash: a559bab368e47d4d07770105a0007616e3fbc008
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "72842907"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134978"
 ---
 <!--Verify sucessfully-->
 # <a name="ddl-operations-in-azure-cosmos-db-cassandra-api-from-spark"></a>Spark 上 Azure Cosmos DB Cassandra API 中的 DDL 操作
@@ -34,7 +34,7 @@ import com.datastax.spark.connector.cql.CassandraConnector
 import com.microsoft.azure.cosmosdb.cassandra
 
 //Connection-related
-spark.conf.set("spark.cassandra.connection.host","YOUR_ACCOUNT_NAME.cassandra.cosmosdb.azure.cn")
+spark.conf.set("spark.cassandra.connection.host","YOUR_ACCOUNT_NAME.cassandra.cosmos.azure.cn")
 spark.conf.set("spark.cassandra.connection.port","10350")
 spark.conf.set("spark.cassandra.connection.ssl.enabled","true")
 spark.conf.set("spark.cassandra.auth.username","YOUR_ACCOUNT_NAME")
@@ -87,7 +87,7 @@ DESCRIBE keyspaces;
 **注意事项：**  
 
 - 可使用 create table 语句在表级别分配吞吐量。  
-- 一个分区键可存储 10 GB 的数据。  
+- 一个分区键可存储 20 GB 的数据。  
 - 一条记录最多可存储 2 MB 的数据。  
 - 一个分区键范围可存储多个分区键。
 
@@ -115,7 +115,7 @@ DESCRIBE books;
 
 * 预配的吞吐量 
 * 生存时间值
-<br>目前不支持更改列。
+<br />目前不支持更改列。
 
 ```scala
 val cdbConnector = CassandraConnector(sc)
@@ -149,5 +149,4 @@ DESCRIBE tables;
 * [聚合操作](cassandra-spark-aggregation-ops.md)  
 * [表复制操作](cassandra-spark-table-copy-ops.md)
 
-<!--Verify sucessfully-->
-<!--Update_Description: wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

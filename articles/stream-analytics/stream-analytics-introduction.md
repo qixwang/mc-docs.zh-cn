@@ -1,21 +1,19 @@
 ---
 title: Azure 流分析的概述
 description: 了解流分析，这是一种托管服务，可以帮助你分析物联网 (IoT) 实时提供的流式数据。
-services: stream-analytics
-author: lingliw
-ms.author: v-lingwu
-manager: digimobile
-ms.reviewer: jasonh
+author: Johnnytechn
+ms.author: v-johya
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: overview
-origin.date: 06/21/2019
-ms.date: 07/12/2019
-ms.openlocfilehash: d0fb8eea3a113edfdfe80a7b6fbb468429b42afe
-ms.sourcegitcommit: b80d236ce3c706abc25bbaa41b0ccddd896e48fc
+ms.custom: mvc
+ms.date: 04/23/2020
+ms.openlocfilehash: 5b8d9f89b74c0a5d5d2b5e4a12be6d322f110332
+ms.sourcegitcommit: ebedf9e489f5218d4dda7468b669a601b3c02ae5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81873121"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82159204"
 ---
 # <a name="what-is-azure-stream-analytics"></a>什么是 Azure 流分析？
 
@@ -41,7 +39,7 @@ Azure 流分析作业由输入、查询和输出构成。 流分析从 Azure 事
 
 下图说明了如何将数据发送到流分析，在进行分析后再发送到其他位置进行其他操作（例如存储或演示）：
 
-![流分析介绍管道](./media/stream-analytics-introduction/stream-analytics-intro-pipeline.png)
+![流分析介绍管道](./media/stream-analytics-introduction/stream-analytics-e2e-pipeline.png)
 
 ## <a name="key-capabilities-and-benefits"></a>主要功能和优点
 
@@ -51,9 +49,9 @@ Azure 流分析经过专门的设计，具有易用、灵活、可靠的特点�
 
 ## <a name="ease-of-getting-started"></a>易于入门
 
-Azure 流分析易于入门。 只需点击几下鼠标即可连接到多个源和接收器并创建端到端的管道。 流分析可连接到 [Azure 事件中心](/event-hubs/)和 [Azure IoT 中心](/iot-hub/)来引入流数据，并可连接到 [Azure Blob 存储](/storage/storage-introduction)来引入历史数据。 作业输入还可以包含 Azure Blob 存储或 [SQL 数据库](stream-analytics-use-reference-data.md#azure-sql-database)中的静态数据或缓慢更改的参考数据，可将这些数据与流数据相联接，以执行查找操作。
+Azure 流分析易于入门。 只需点击几下鼠标即可连接到多个源和接收器并创建端到端的管道。 流分析可连接到 [Azure 事件中心](/event-hubs/)和 [Azure IoT 中心](/iot-hub/)来引入流数据，并可连接到 [Azure Blob 存储](/storage/common/storage-introduction)来引入历史数据。 作业输入还可以包含 Azure Blob 存储或 [SQL 数据库](stream-analytics-use-reference-data.md#azure-sql-database)中的静态数据或缓慢更改的参考数据，可将这些数据与流数据相联接，以执行查找操作。
 
-流分析可以将作业输出路由到许多存储系统，例如 [Azure Blob](/storage/storage-introduction) 和 [Azure SQL 数据库](/sql-database/)。 进行存储以后，可以通过 Azure HDInsight 运行批处理分析，或者将输出发送到其他服务（例如事件中心）以供使用。
+流分析可以将作业输出路由到许多存储系统（例如 [Azure Blob 存储](/storage/common/storage-introduction)、[Azure SQL 数据库](/sql-database/)）。你可以使用 Azure HDInsight 对存储的输出运行批处理分析，也可以将输出发送到另一个服务（例如事件中心）供使用
 <!-- Not Available on [Azure Data Lake Stores](/data-lake-store/)-->
 <!-- Not Available on [Azure Cosmos DB](/cosmos-db/introduction)-->
 <!-- Not Available [Power BI](/power-bi/) -->
@@ -61,6 +59,7 @@ Azure 流分析易于入门。 只需点击几下鼠标即可连接到多个源�
 ## <a name="programmer-productivity"></a>程序员工作效率
 
 Azure 流分析使用简单的基于 SQL 的查询语言，该语言已使用强大的时态约束进行强化，可以分析动态数据。 这使你可以使用简单的 SQL 构造来编写复杂的临时查询和分析。 由于流分析查询语言与 SQL 语言相一致，因此，熟悉 SQL 就足以开始创建作业。 也可使用 Azure PowerShell、[流分析 Visual Studio 工具](stream-analytics-tools-for-visual-studio-install.md)、[流分析 Visual Studio Code 扩展](quick-create-vs-code.md)或 Azure 资源管理器模板等开发人员工具来创建作业。 可以使用开发人员工具来脱机开发转换查询，然后使用 [CI/CD 管道](stream-analytics-tools-for-visual-studio-cicd.md)将作业提交到 Azure。
+<!-- no file stream-analytics-query-language-reference -->
 
 流分析查询语言提供各种用于分析和处理流数据的功能。 此查询语言支持简单的数据操作、聚合函数和复杂的地理空间函数。 可以在门户中编辑查询，然后使用从实时流中提取的示例数据来测试它们。
 
@@ -88,7 +87,7 @@ Azure 流分析保证刚好进行一次事件处理，以及至少进行一次�
 
 Azure 流分析有内置的恢复功能，可以在事件传送失败时发挥作用。 流分析还提供内置的检查点来维护作业的状态，并提供可重复的结果。
 
-作为一项托管服务，流分析可保证事件处理在分钟级别粒度具备 99.9% 的可用性。 有关详细信息，请参阅[流分析 SLA](https://azure.microsoft.com/support/legal/sla/stream-analytics/v1_0/) 页。 
+作为一项托管服务，流分析可保证事件处理在分钟级别粒度具备 99.9% 的可用性。 有关详细信息，请参阅[流分析 SLA](https://www.azure.cn/support/sla/stream-analytics/index.html) 页。 
 
 ### <a name="security"></a>安全性
 
@@ -106,7 +105,8 @@ Azure 流分析遵循多个符合性认证，如 [Azure 符合性概述](https:/
 
 你现在已对 Azure 流分析有了一个大致的了解。 接下来，你可以进行深入了解并创建第一个流分析作业：
 
-<!-- Not Available on * [creating a Stream Analytics job by using Azure portal](stream-analytics-quick-create-portal.md)-->
+* [使用 Azure 门户创建流分析作业](stream-analytics-quick-create-portal.md)。
 * [使用 Azure PowerShell 创建流分析作业](stream-analytics-quick-create-powershell.md)。
-
+* [使用 Visual Studio 创建流分析作业](stream-analytics-quick-create-vs.md)。
+* [使用 Visual Studio Code 创建流分析作业](quick-create-vs-code.md)。
 <!--Update_Description: update meta properties, wording update, update link -->

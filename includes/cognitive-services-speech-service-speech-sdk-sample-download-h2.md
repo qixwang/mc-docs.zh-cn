@@ -1,18 +1,27 @@
 ---
-author: wolfma61
+author: IEvangelist
 ms.service: cognitive-services
 ms.topic: include
-origin.date: 07/16/2018
-ms.date: 09/24/2019
+origin.date: 03/27/2020
+ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: fd1c455629a4f21685b3f9fcb5a22195264d08a0
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.openlocfilehash: de24e8a2fc5442642537e1dc09e47049202a9999
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74389279"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126961"
 ---
-## <a name="get-the-samples"></a>获取示例
+## <a name="sample-source-code"></a>示例源代码
 
-有关最新的示例，请参阅 GitHub 上的[认知服务语音 SDK 示例代码存储库](https://github.com/Azure-Samples/cognitive-services-speech-sdk)。
-
+:::row:::
+    :::column span="3":::
+        语音 SDK 在一个开源存储库中积极维护大量的示例。 有关示例源代码存储库，请访问 GitHub 上的 <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk" target="_blank">Microsoft 认知服务语音 SDK<span class="docon docon-navigate-external x-hidden-focus"></span></a>。 其中有适用于 C#、C++、Java、Python、Objective-C、Swift、JavaScript、UWP、Unity 和 Xamarin 的示例。
+    :::column-end:::
+    :::column:::
+        <br>
+        <div class="icon is-large">
+            <img alt="GitHub" src="https://docs.microsoft.com/media/logos/logo_octokitty.svg" width="60px">
+        </div>
+    :::column-end:::
+:::row-end:::

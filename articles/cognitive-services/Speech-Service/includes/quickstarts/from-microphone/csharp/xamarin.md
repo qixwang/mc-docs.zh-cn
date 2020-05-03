@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-origin.date: 10/28/2019
-ms.date: 03/16/2020
+origin.date: 04/02/2020
+ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: dc13e4e1b03aee6681d15c2e9d79dc341bccce43
-ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
+ms.openlocfilehash: 2513cf51664223330ebee086e64da0bc34738097
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80151645"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82150894"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -24,8 +24,9 @@ ms.locfileid: "80151645"
 
 > [!div class="checklist"]
 > * [创建一个 Azure 搜索资源](../../../../get-started.md)
-> * [设置开发环境并创建空项目](../../../../quickstarts/setup-platform.md?tabs=xamarin)
+> * [设置开发环境并创建空项目](../../../../quickstarts/setup-platform.md?tabs=xamarin&pivots=programming-language-csharp)
 > * 请确保你有权访问麦克风，以便进行音频捕获
+> * 需要语音 SDK 版本 1.10.0 或更高版本。
 
 如果尚未执行此操作，很好！ 让我们继续。
 
@@ -94,9 +95,9 @@ ms.locfileid: "80151645"
             {
                 try
                 {
-                    // Creates an instance of a speech config with specified host and subscription key.
+                    // Creates an instance of a speech config with specified subscription key and service region.
                     // Replace with your own subscription key and service region (e.g., "chinaeast2").
-                    var config = SpeechConfig.FromHost(new Uri("wss://YourServiceRegion.stt.speech.azure.cn/"), "YourSubscriptionKey");
+                    var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
     
                     // Creates a speech recognizer using microphone as audio input.
                     using (var recognizer = new SpeechRecognizer(config))
@@ -554,4 +555,4 @@ ms.locfileid: "80151645"
 
 ## <a name="next-steps"></a>后续步骤
 
-[!INCLUDE [footer](./footer.md)]
+[!INCLUDE [Speech recognition basics](../../speech-to-text-next-steps.md)]

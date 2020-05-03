@@ -3,25 +3,21 @@ title: 向 Microsoft 标识平台 ASP.NET Web 应用添加登录功能
 titleSuffix: Microsoft identity platform
 description: 使用基于传统 Web 浏览器的应用程序和 OpenID Connect 标准，在 ASP.NET 解决方案中实现 Microsoft 登录
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/23/2020
+ms.date: 04/22/2020
 ms.author: v-junlch
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: f73e6d7439029d4f37217c2ec920cb9176829877
-ms.sourcegitcommit: 6568c59433d7e80ab06e9fe76d4791f761ed6775
+ms.openlocfilehash: bbbc0f463d5e6eb4bce09fab88d4701e8a309edc
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80243098"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126425"
 ---
 # <a name="add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>向 ASP.NET Web 应用添加 Microsoft 登录功能
 
@@ -121,7 +117,7 @@ ms.locfileid: "80243098"
         string authority = String.Format(System.Globalization.CultureInfo.InvariantCulture, System.Configuration.ConfigurationManager.AppSettings["Authority"], tenant);
 
         /// <summary>
-        /// Configure OWIN to use OpenIdConnect 
+        /// Configure OWIN to use OpenIdConnect
         /// </summary>
         /// <param name="app"></param>
         public void Configuration(IAppBuilder app)
@@ -212,7 +208,7 @@ ms.locfileid: "80243098"
                 OpenIdConnectAuthenticationDefaults.AuthenticationType);
         }
     }
-    
+
     /// <summary>
     /// Send an OpenID Connect sign-out request.
     /// </summary>
@@ -278,11 +274,11 @@ ms.locfileid: "80243098"
 ## <a name="add-a-controller-to-display-users-claims"></a>添加控制器来显示用户声明
 此控制器演示如何使用 `[Authorize]` 属性来保护控制器。 此属性只允许通过身份验证的用户，从而限制对控制器的访问。 以下代码使用该属性来显示作为登录的一部分被检索的用户声明：
 
-1. 右键单击“控制器”文件夹，并选择“添加” > “控制器”。   
-2. 选择“MVC {version} 控制器 - 空”  。
-3. 选择“添加”   。
-4. 将其命名为“ClaimsController”  。
-5. 将控制器类的代码替换为以下代码。 这会将 `[Authorize]` 属性添加到该类：
+1.  右键单击“控制器”文件夹，并选择“添加” > “控制器”。   
+2.  选择“MVC {version} 控制器 - 空”  。
+3.  选择“添加”   。
+4.  将其命名为“ClaimsController”  。
+5.  将控制器类的代码替换为以下代码。 这会将 `[Authorize]` 属性添加到该类：
 
     ```csharp
     [Authorize]
@@ -295,19 +291,19 @@ ms.locfileid: "80243098"
         public ActionResult Index()
         {
             var userClaims = User.Identity as System.Security.Claims.ClaimsIdentity;
-    
+
             //You get the user’s first and last name below:
             ViewBag.Name = userClaims?.FindFirst("name")?.Value;
-    
+
             // The 'preferred_username' claim can be used for showing the username
             ViewBag.Username = userClaims?.FindFirst("preferred_username")?.Value;
-    
+
             // The subject/ NameIdentifier claim can be used to uniquely identify the user across the web
             ViewBag.Subject = userClaims?.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
-    
+
             // TenantId is the unique Tenant Id - which represents an organization in Azure AD
             ViewBag.TenantId = userClaims?.FindFirst("http://schemas.microsoft.com/identity/claims/tenantid")?.Value;
-    
+
             return View();
         }
     }
@@ -315,16 +311,16 @@ ms.locfileid: "80243098"
 
 <!--start-collapse-->
 > ### <a name="more-information"></a>详细信息
-> 因为使用 `[Authorize]` 属性，仅当用户通过身份验证后，才执行此控制器的所有方法。 如果用户未通过身份验证，并尝试访问控制器，OWIN 将启动身份验证质询，并强制用户进行身份验证。 以上代码查看用户的 ID 令牌中包含的特定用户属性的声明列表。 这些属性包括用户的全名和用户名，以及全局用户标识符使用者。 它还包含*租户 ID*，表示用户的组织的 ID。 
+> 因为使用 `[Authorize]` 属性，仅当用户通过身份验证后，才执行此控制器的所有方法。 如果用户未通过身份验证，并尝试访问控制器，OWIN 将启动身份验证质询，并强制用户进行身份验证。 以上代码查看用户的 ID 令牌中包含的特定用户属性的声明列表。 这些属性包括用户的全名和用户名，以及全局用户标识符使用者。 它还包含*租户 ID*，表示用户的组织的 ID。
 <!--end-collapse-->
 
 ## <a name="create-a-view-to-display-the-users-claims"></a>创建视图来显示用户的声明
 
 在 Visual Studio 中创建新视图，以在网页上显示用户的声明：
 
-1. 右键单击“视图/声明”文件夹，然后选择“添加视图”   。
-2. 将新视图命名为 **Index**。
-3. 将以下 HTML 添加到文件：
+1.  右键单击“视图/声明”文件夹，然后选择“添加视图”   。
+2.  将新视图命名为 **Index**。
+3.  将以下 HTML 添加到文件：
 
     ```html
     <html>
@@ -428,7 +424,7 @@ ms.locfileid: "80243098"
 
 浏览到控制器视图后，应当会显示包含用户基本属性的表格：
 
-|属性 |Value |说明 |
+|属性 |值 |说明 |
 |---|---|---|
 |**名称** |用户全名 | 用户的名字和姓氏
 |**用户名** |user<span>@domain.com</span> | 用于标识用户的用户名|
@@ -461,7 +457,7 @@ GlobalFilters.Filters.Add(new AuthorizeAttribute());
 
 ### <a name="restrict-who-can-sign-in-to-your-application"></a>限制谁可以登录到应用程序
 
-默认情况下，当生成本指南创建的应用程序时，应用程序会接受使用与 Microsoft 标识平台集成的任何公司或组织的工作和学校帐户进行登录。 这是针对 SaaS 应用程序推荐使用的选项。
+默认情况下，当生成本指南创建的应用程序时，应用程序会接受使用与 Microsoft 标识平台集成的任何公司或组织的工作和学校帐户进行登录。 
 
 为了限制应用程序的用户登录访问权限，提供了以下多个选项。
 
@@ -499,6 +495,4 @@ GlobalFilters.Filters.Add(new AuthorizeAttribute());
 > [Microsoft Graph ASP.NET 教程](https://docs.microsoft.com/graph/tutorials/aspnet)
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
-
-<!-- Update_Description: wording update -->
 

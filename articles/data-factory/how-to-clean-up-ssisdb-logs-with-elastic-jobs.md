@@ -1,26 +1,26 @@
 ---
-title: 使用 Azure 弹性数据库作业清理 SSISDB 日志 | Microsoft Docs
+title: 使用 Azure 弹性数据库作业清理 SSISDB 日志
 description: 本文介绍如何使用 Azure 弹性数据库作业来触发现存的用于此目的的存储过程，以便清理 SSISDB 日志
 services: data-factory
-documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 origin.date: 08/13/2018
-ms.date: 07/08/2019
+ms.date: 05/11/2020
 author: WenJason
 ms.author: v-jay
-ms.reviewer: douglasl
 manager: digimobile
-ms.openlocfilehash: 3d829ce3c7b3c38043fdaf5d952976778cabc349
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.reviewer: douglasl
+ms.openlocfilehash: 22bf428e83c0f8e28fb5c174489b416ba8dc96f2
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "67570539"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82198221"
 ---
 # <a name="clean-up-ssisdb-logs-with-azure-elastic-database-jobs"></a>使用 Azure 弹性数据库作业清理 SSISDB 日志
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 本文介绍如何使用 Azure 弹性数据库作业来触发存储过程，以便清理 SQL Server Integration Services 目录数据库 `SSISDB` 的日志。
 

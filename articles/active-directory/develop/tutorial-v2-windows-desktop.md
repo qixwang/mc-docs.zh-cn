@@ -1,26 +1,22 @@
 ---
-title: Microsoft 标识平台 Windows 桌面入门 | Microsoft Docs
+title: Microsoft 标识平台 Windows 桌面入门
 description: 了解 Windows 桌面 .NET (XAML) 应用程序如何获取访问令牌并调用受 Microsoft 标识平台保护的 API。
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/23/2020
+ms.date: 04/22/2020
 ms.author: v-junlch
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 9f83082a39fee46c4caf3fa629419c7bfc5ba13c
-ms.sourcegitcommit: 6568c59433d7e80ab06e9fe76d4791f761ed6775
+ms.openlocfilehash: ac03228b9fc0e7fb554d6e7c83f0e2cebbe4c87a
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80243102"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126409"
 ---
 # <a name="call-the-microsoft-graph-api-from-a-windows-desktop-app"></a>从 Windows 桌面应用调用 Microsoft Graph API
 
@@ -36,7 +32,7 @@ ms.locfileid: "80243102"
 
 ![显示本教程生成的示例应用的工作原理](./media/active-directory-develop-guidedsetup-windesktop-intro/windesktophowitworks.svg)
 
-本指南创建的示例应用程序使 Windows 桌面应用程序能够查询接受 Microsoft 标识平台终结点令牌的 Microsoft Graph API 或 Web API。 对于此方案，通过 Authorization 标头将令牌添加到 HTTP 请求。 Microsoft 身份验证库 (MSAL) 处理令牌获取和续订。
+本指南中创建的示例应用程序是一个 Windows 桌面应用程序，它能够查询 Microsoft Graph API 或 Web API，而该 API 接受来自 Microsoft 标识平台终结点的令牌。 对于此方案，通过 Authorization 标头将令牌添加到 HTTP 请求。 Microsoft 身份验证库 (MSAL) 处理令牌获取和续订。
 
 ## <a name="handling-token-acquisition-for-accessing-protected-web-apis"></a>负责获得用于访问受保护 Web API 的令牌
 
@@ -56,7 +52,7 @@ MSAL 负责管理缓存和刷新访问令牌，因此应用程序无需执行这
 
 ## <a name="set-up-your-project"></a>设置项目
 
-本部分将创建新项目，用于演示如何将 Windows 桌面 .NET 应用程序 (XAML) 与“使用 Microsoft 登录”集成，使该应用程序能查询需要令牌的 Web API  。
+在本部分中，你将创建一个新项目，用于演示如何将 Windows 桌面 .NET 应用程序 (XAML) 与“使用 Microsoft 登录”集成，使该应用程序能够查询需要令牌的 Web API  。
 
 使用本指南创建的应用程序将显示一个用于调用图的按钮、一个用于在屏幕上显示结果的区域和一个注销按钮。
 
@@ -79,7 +75,7 @@ MSAL 负责管理缓存和刷新访问令牌，因此应用程序无需执行这
     Install-Package Microsoft.Identity.Client -Pre
     ```
 
-    > [!NOTE] 
+    > [!NOTE]
     > 此命令将安装 Microsoft 身份验证库。 MSAL 负责获取、缓存和刷新用于访问受 Azure Active Directory v2.0 保护的 API 的用户令牌
     >
 
@@ -138,7 +134,7 @@ MSAL 负责管理缓存和刷新访问令牌，因此应用程序无需执行这
                 .Build();
         }
 
-        // Below are the clientId (Application Id) of your app registration and the tenant information. 
+        // Below are the clientId (Application Id) of your app registration and the tenant information.
         // You have to replace:
         // - the content of ClientID with the Application Id for your app registration
         // - the content of Tenant by the information about the accounts allowed to sign-in in your application:
@@ -156,7 +152,7 @@ MSAL 负责管理缓存和刷新访问令牌，因此应用程序无需执行这
 
 ## <a name="create-the-application-ui"></a>创建应用程序 UI
 
-本部分说明应用程序如何查询受保护的后端服务器，例如 Microsoft Graph。 
+本部分说明应用程序如何查询受保护的后端服务器，例如 Microsoft Graph。
 
 项目模板中应自动创建了 *MainWindow.xaml* 文件。 打开此文件，然后将应用程序的 *\<Grid>* 节点替换为以下代码：
 
@@ -266,9 +262,9 @@ MSAL 负责管理缓存和刷新访问令牌，因此应用程序无需执行这
 
 最终，`AcquireTokenSilent` 方法会失败。 失败可能是因为用户已注销，或者在另一设备上更改了密码。 MSAL 检测到可以通过请求交互式操作解决问题时，它将引发 `MsalUiRequiredException` 异常。 应用程序可以通过两种方式处理此异常：
 
-* 它可以立即调用 `AcquireTokenInteractive`。 此调用会导致系统提示用户进行登录。 此模式通常用于联机应用程序，这类应用程序中没有可供用户使用的脱机内容。 此指导式设置生成的示例遵循此模式，第一次执行示例时可以看到其正在运行。 
+* 它可以立即调用 `AcquireTokenInteractive`。 此调用会导致系统提示用户进行登录。 此模式通常用于联机应用程序，这类应用程序中没有可供用户使用的脱机内容。 此指导式设置生成的示例遵循此模式，第一次执行示例时可以看到其正在运行。
 
-* 由于没有用户使用过该应用程序，因此 `PublicClientApp.Users.FirstOrDefault()` 包含一个 null 值，并且引发 `MsalUiRequiredException` 异常。 
+* 由于没有用户使用过该应用程序，因此 `PublicClientApp.Users.FirstOrDefault()` 包含一个 null 值，并且引发 `MsalUiRequiredException` 异常。
 
 * 此示例中的代码随后处理此异常，方法是通过调用 `AcquireTokenInteractive` 使其显示用户登录提示。
 
@@ -322,7 +318,7 @@ public async Task<string> GetHttpContentWithToken(string url, string token)
 /// </summary>
 private async void SignOutButton_Click(object sender, RoutedEventArgs e)
 {
-    var accounts = await App.PublicClientApp.GetAccountsAsync(); 
+    var accounts = await App.PublicClientApp.GetAccountsAsync();
 
     if (accounts.Any())
     {
@@ -375,6 +371,4 @@ private void DisplayBasicTokenInfo(AuthenticationResult authResult)
 <!--end-collapse-->
 
 [!INCLUDE [5. Test and Validate](../../../includes/active-directory-develop-guidedsetup-windesktop-test.md)]
-
-<!-- Update_Description: wording update -->
 

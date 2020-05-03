@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/09/2020
+ms.date: 04/24/2020
 ms.author: v-junlch
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 368d7cd184d4bfc620916d7360d1e6ee82927042
-ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
+ms.openlocfilehash: 0bf72e2ac45e22da1e0279881cfbb7fcc6d40ed0
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2020
-ms.locfileid: "79134182"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126696"
 ---
 # <a name="powershell-for-azure-ad-roles-in-privileged-identity-management"></a>适用于 Privileged Identity Management 中 Azure AD 角色的 PowerShell
 
@@ -96,6 +96,8 @@ roleDefinitionId 特定于 Azure AD 组织，不同于角色管理 API 返回的
     $schedule.Type = "Once"
     $schedule.StartDateTime = (Get-Date).ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
     $schedule.endDateTime = "2020-07-25T20:49:11.770Z"
+> [!Note]
+> 如果 endDateTime 的值设置为 null，则表示永久分配。
 
 ## <a name="activate-a-role-assignment"></a>激活角色分配
 

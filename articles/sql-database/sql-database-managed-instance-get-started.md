@@ -11,20 +11,20 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: sstein, carlrab
 origin.date: 09/26/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: f46b969ec29a8f712432354f0271a1f5a145f750
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 04/27/2020
+ms.openlocfilehash: 3bb4d3f04100d86b3d6db2b00a960074072f87fd
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336188"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126536"
 ---
 # <a name="quickstart-create-an-azure-sql-database-managed-instance"></a>快速入门：创建 Azure SQL 数据库托管实例
 
 本快速入门逐步说明如何在 Azure 门户中创建 Azure SQL 数据库[托管实例](sql-database-managed-instance.md)。
 
 > [!IMPORTANT]
-> 有关限制，请参阅[支持的区域](sql-database-managed-instance-resource-limits.md#supported-regions)和[支持的订阅类型](sql-database-managed-instance-resource-limits.md#supported-subscription-types)。
+> 有关限制，请参阅[支持的区域](sql-database-managed-instance-resource-limits.md#supported-regions)。
 
 ## <a name="sign-in-to-azure-portal"></a>登录到 Azure 门户
 
@@ -52,7 +52,7 @@ ms.locfileid: "75336188"
 
    参考下表来填写此选项卡中的所需信息。
 
-   | 设置| 建议的值 | Description |
+   | 设置| 建议的值 | 说明 |
    | ------ | --------------- | ----------- |
    | **订阅** | 你的订阅。 | 你有权在其中创建新资源的订阅。 |
    | **资源组** | 新的或现有的资源组。|有关有效的资源组名称，请参阅 [Naming rules and restrictions](https://docs.microsoft.com/azure/architecture/best-practices/resource-naming)（命名规则和限制）。|
@@ -123,6 +123,10 @@ ms.locfileid: "75336188"
 > 1. 在 Azure 门户中，打开要向其部署托管实例的资源组（位于“基本信息”选项卡上）。 
 > 2. 选择“部署”。 
 > 3. 选择正在进行的托管实例部署操作。
+
+> [!IMPORTANT]
+> 若要获取托管实例创建状态，需要有资源组的**读取权限**。 如果没有此权限，或者在托管实例创建过程中将其撤消，则可能会导致托管实例在资源组部署列表中不可见。
+>
 
 ## <a name="post-deployment-operations"></a>部署后的操作
 

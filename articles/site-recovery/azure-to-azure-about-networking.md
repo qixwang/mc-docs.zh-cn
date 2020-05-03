@@ -7,14 +7,14 @@ manager: digimobile
 ms.service: site-recovery
 ms.topic: article
 origin.date: 03/13/2020
-ms.date: 03/30/2020
+ms.date: 04/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 93c25bbde40155caaabfab3534e59e2471578a89
-ms.sourcegitcommit: 983b29ed50f8de3dddbcb1186947806354035cc4
+ms.openlocfilehash: e9411fd89922707c916638b04e9a200876862597
+ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
-ms.locfileid: "79543999"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82093392"
 ---
 # <a name="about-networking-in-azure-vm-disaster-recovery"></a>关于如何在 Azure VM 灾难恢复中联网
 
@@ -43,7 +43,7 @@ ms.locfileid: "79543999"
 
 如果使用基于 URL 的防火墙代理来控制出站连接，请允许以下 Site Recovery URL：
 
-**URL** | **详细信息**  
+**URL** | **详细信息**
 --- | ---
 *.blob.core.chinacloudapi.cn | 必需，以便从 VM 将数据写入到源区域中的缓存存储帐户。 如果知道 VM 的所有缓存存储帐户，则可允许访问特定的存储帐户 URL（例如：cache1.blob.core.chinacloudapi.cn 和 cache2.blob.core.chinacloudapi.cn）而不允许访问 *.blob.core.chinacloudapi.cn
 login.chinacloudapi.cn | 对于 Site Recovery 服务 URL 的授权和身份验证而言是必需的。
@@ -52,7 +52,7 @@ login.chinacloudapi.cn | 对于 Site Recovery 服务 URL 的授权和身份验�
 *.vault.azure.cn | 允许访问，以便通过门户为支持 ADE 的虚拟机启用复制
 *.automation.ext.azure.com | 允许通过门户为复制项启用移动代理自动升级
 
-<a name="outbound-connectivity-for-azure-site-recovery-ip-ranges"></a>
+<a name="outbound-connectivity-using-service-tags"></a>
 ## <a name="outbound-connectivity-for-ip-address-ranges"></a>IP 地址范围的出站连接
 
 如果使用 NSG 或基于 IP 的防火墙代理来控制出站连接，需要允许这些服务标记和 IP 范围。
@@ -63,6 +63,22 @@ login.chinacloudapi.cn | 对于 Site Recovery 服务 URL 的授权和身份验�
 - 创建一个基于 [Azure Active Directory (AAD) 服务标记](../virtual-network/security-overview.md#service-tags)的 NSG 规则以允许访问与 AAD 对应的所有 IP 地址
 - 为目标区域创建基于 EventsHub 服务标记的 NSG 规则，这样就可以访问 Site Recovery 监视功能。
 - 创建 Site Recovery 服务终结点 IP 地址，这样就可以访问任何区域中的 Site Recovery 服务。 - 在[中国的 Site Recovery 服务终结点](#site-recovery-ip-in-china)中提供，具体取决于目标位置。
+    
+    Site Recovery IP 地址范围如下：
+
+    <!--MOONCAKE: CUSTOMIZE, UPDATE CAREFULLY-->
+    
+    <a name="site-recovery-ip-in-china"></a>
+
+    **Target** | **Site Recovery IP** |  **Site Recovery 监视 IP**
+    --- | --- | ---
+    中国东部 | 42.159.205.45 | 42.159.132.40
+    中国北部 | 40.125.202.254 | 42.159.4.151
+    中国东部 2 | 40.73.118.52 | 40.73.100.125          
+    中国北部 2 | 40.73.35.193 | 40.73.33.230
+
+    <!--MOONCAKE: CUSTOMIZE, UPDATE CAREFULLY-->
+    
 - 创建基于 AzureKeyVault 服务标记的 NSG 规则。 仅在通过门户为支持 ADE 的虚拟机启用复制时才需要这样做。
 - 创建基于 GuestAndHybridManagement 服务终结点 IP 地址的 NSG 规则。 仅在通过门户为复制项启用移动代理自动升级时才需要这样做。
     
@@ -71,23 +87,8 @@ login.chinacloudapi.cn | 对于 Site Recovery 服务 URL 的授权和身份验�
 - 在生产 NSG 中创建所需的 NSG 规则之前，建议先在测试 NSG 中创建这些规则，并确保没有任何问题。
 
 > [!NOTE]
-> 对于在为 IP 地址范围创建出站连接时未显示在**目标服务标记**中的那些不受支持的服务标记。
+> 对于在 Azure 中国云上为 IP 地址范围创建出站连接时未显示在“目标服务标记”  中的那些不受支持的服务标记。
 > 可以在 [Azure IP 范围和服务标记 - 中国云](https://www.microsoft.com/download/confirmation.aspx?id=57062)中按服务标记找到有效的终结点 IP 地址。
-
-Site Recovery IP 地址范围如下：
-
-<!--MOONCAKE: CUSTOMIZE, UPDATE CAREFULLY-->
-    
-<a name="site-recovery-ip-in-china"></a>
-
-**Target** | **Site Recovery IP** |  **Site Recovery 监视 IP**
---- | --- | ---
-中国东部 | 42.159.205.45 | 42.159.132.40
-中国北部 | 40.125.202.254 | 42.159.4.151
-中国东部 2 | 40.73.118.52 | 40.73.100.125          
-中国北部 2 | 40.73.35.193 | 40.73.33.230
-
-<!--MOONCAKE: CUSTOMIZE, UPDATE CAREFULLY-->
 
 ## <a name="example-nsg-configuration"></a>NSG 配置示例
 

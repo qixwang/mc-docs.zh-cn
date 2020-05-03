@@ -5,16 +5,16 @@ author: WenJason
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-origin.date: 02/26/2020
-ms.date: 03/09/2020
+origin.date: 04/03/2020
+ms.date: 04/27/2020
 ms.author: v-jay
 ms.reviewer: stewu
-ms.openlocfilehash: 7524fe20e373dee398e380e0ff118aa11e2cb598
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 46327bfd9b27f241fd31a79f9dd9c86c289f4eb8
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78412543"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134987"
 ---
 # <a name="blob-storage-features-available-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 中可用的 Blob 存储功能
 
@@ -39,6 +39,7 @@ Blob 存储功能（例如[诊断日志记录](../common/storage-analytics-loggi
 |存档访问层|预览|[Azure Blob 存储：热、冷、存档访问层](storage-blob-storage-tiers.md)|
 |生命周期管理策略|预览|[管理 Azure Blob 存储生命周期](storage-lifecycle-management-concepts.md)|
 |诊断日志|预览|[Azure 存储分析日志记录](../common/storage-analytics-logging.md?toc=%2fstorage%2fblobs%2ftoc.json)|
+|更改源|尚不支持|[Azure Blob 存储中的更改源支持](storage-blob-change-feed.md)|
 |帐户故障转移|尚不支持|[灾难恢复和帐户故障转移](../common/storage-disaster-recovery-guidance.md?toc=%2fstorage%2fblobs%2ftoc.json)|
 |Blob 容器 ACL|尚不支持|[Set Container ACL](https://docs.microsoft.com/rest/api/storageservices/set-container-acl)|
 |自定义域|尚不支持|[将自定义域映射到 Azure Blob 存储终结点](storage-custom-domain-name.md)|

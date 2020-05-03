@@ -84,7 +84,7 @@
               href: authorize-access-azure-active-directory.md
             - name: 使用共享访问签名授予访问权限
               href: authorize-access-shared-access-signature.md
-        - name: Authentication
+        - name: 身份验证
           items:
             - name: 使用 Azure Active Directory 进行身份验证
               items:
@@ -99,7 +99,7 @@
     - name: AMQP 1.0 协议指南
       href: ../service-bus-messaging/service-bus-amqp-protocol-guide.md
       maintainContext: true
-- name: 操作方法指南
+- name: 操作指南
   items:
     - name: 开发
       items:
@@ -114,7 +114,7 @@
             - name: Python（azure-eventhub 版本 5）
               href: 'https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/README.md'
             - name: JavaScript（azure/event-hubs 版本 5）
-              href: 'https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/README.md'
+              href: 'https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/event-hubs/README.md'
             - name: .NET (Microsoft.Azure.EventHubs)
               href: event-hubs-programming-guide.md
     - name: 管理和监视
@@ -177,7 +177,7 @@
               href: 'https://docs.microsoft.com/python/api/azure-eventhub/?view=azure-python-previous'
         - name: 管理库
           href: 'https://docs.microsoft.com/python/api/overview/azure/event-hub?view=azure-python'
-    - name: JavaScript
+    - name: Javascript
       items:
         - name: 从 azure/eventhubs 版本 2 迁移到版本 5
           href: 'https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/event-hubs/migrationguide.md'
@@ -191,13 +191,13 @@
           href: 'https://docs.microsoft.com/javascript/api/@azure/arm-eventhub/?view=azure-node-latest'
     - name: REST
       href: 'https://docs.microsoft.com/rest/api/eventhub'
-    - name: 资源管理器模板
+    - name: Resource Manager 模板
       href: 'https://docs.microsoft.com//azure/templates/microsoft.eventhub/allversions'
     - name: 配额
       href: event-hubs-quotas.md
 - name: 资源
   items:
-    - name: 常见问题解答
+    - name: 常见问题
       href: event-hubs-faq.md
     - name: 定价
       href: 'https://www.azure.cn/pricing/details/event-hubs/'
@@ -205,5 +205,5 @@
       href: 'https://www.azure.cn/pricing/calculator/'
     - name: 服务更新
       href: 'https://www.azure.cn/what-is-new/'
-    - name: 堆栈溢出
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-eventhub'

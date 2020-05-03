@@ -1,5 +1,5 @@
 ---
-title: 用于 SQL 数据库的非 1433 端口 | Microsoft 文档
+title: 1433 以外的端口
 description: 从 ADO.NET 到 Azure SQL 数据库的客户端连接可以绕过代理直接通过 1433 以外的端口与数据库交互。
 services: sql-database
 ms.service: sql-database
@@ -13,12 +13,12 @@ ms.reviewer: sstein
 manager: digimobile
 origin.date: 04/03/2019
 ms.date: 04/15/2019
-ms.openlocfilehash: 4a3eef6acffb96bd35461108dabe2ba2f565e3c9
-ms.sourcegitcommit: 9f7a4bec190376815fa21167d90820b423da87e7
+ms.openlocfilehash: 927a71149d8153a800e71a7502a3c725739d0ab6
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59529302"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126676"
 ---
 # <a name="ports-beyond-1433-for-adonet-45"></a>用于 ADO.NET 4.5 的非 1433 端口
 
@@ -82,7 +82,7 @@ ms.locfileid: "59529302"
 
 * 通过重定向连接到 Azure SQL 数据库 V12 https://techcommunity.microsoft.com/t5/DataCAT/Connect-to-Azure-SQL-Database-V12-via-Redirection/ba-p/305362
 
-* [TDS 协议版本列表](http://www.freetds.org/userguide/tdshistory.htm)
+* [TDS 协议版本列表](https://www.freetds.org/userguide/tdshistory.htm)
 * [SQL 数据库开发概述](sql-database-develop-overview.md)
 * [Azure SQL 数据库防火墙](sql-database-firewall-configure.md)
 * [如何：在 SQL 数据库上配置防火墙设置](sql-database-configure-firewall-settings.md)

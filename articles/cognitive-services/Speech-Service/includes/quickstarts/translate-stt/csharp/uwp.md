@@ -7,16 +7,16 @@ author: lisaweixu
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-origin.date: 12/09/2019
-ms.date: 03/16/2020
+origin.date: 04/04/2020
+ms.date: 04/20/2020
 ms.author: v-tawe
 ms.topic: include
-ms.openlocfilehash: c71aefd5e444392a4fe4557ca0e562f9d43f29bc
-ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
+ms.openlocfilehash: 05d7cd0c1660351c0b745c4aa026561e6c5d6f7a
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80151559"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82150853"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -24,7 +24,8 @@ ms.locfileid: "80151559"
 
 > [!div class="checklist"]
 > * [创建一个 Azure 搜索资源](../../../../get-started.md)
-> * [设置开发环境并创建空项目](../../../../quickstarts/setup-platform.md?tabs=uwp)
+> * [设置开发环境并创建空项目](../../../../quickstarts/setup-platform.md?tabs=uwp&pivots=programming-language-csharp)
+> * 需要语音 SDK 版本 1.10.0 或更高版本。
 
 ## <a name="add-sample-code"></a>添加示例代码
 
@@ -102,9 +103,9 @@ ms.locfileid: "80151559"
     
             private async void SpeechTranslationFromMicrophone_ButtonClicked(object sender, RoutedEventArgs e)
             {
-                // Creates an instance of a speech config with specified host and subscription key.
+                // Creates an instance of a speech config with specified subscription key and service region.
                 // Replace with your own subscription key and service region (e.g., "chinaeast2").
-                var config = SpeechTranslationConfig.FromHost(new Uri("wss://YourServiceRegion.stt.speech.azure.cn/"), "YourSubscriptionKey");
+                var config = SpeechTranslationConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
     
                 // Sets source and target languages.
                 string fromLanguage = "en-US";

@@ -11,13 +11,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: vanto, genemi
 origin.date: 11/14/2019
-ms.date: 02/17/2020
-ms.openlocfilehash: fa1c432225cf4bea5655fa21b8e051070d3705c4
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.date: 04/27/2020
+ms.openlocfilehash: 91c1c3ab63f144d3e400084f71778eec1501d98a
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79291625"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126834"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-database-servers"></a>为数据库服务器使用虚拟网络服务终结点和规则
 
@@ -159,15 +159,15 @@ PolyBase 通常用于将数据从 Azure 存储帐户加载到 Azure SQL 数据�
        > - 使用 Azure 存储访问密钥时，不需指定 SECRET，因为此机制在后台使用[托管标识](/active-directory/managed-identities-azure-resources/overview)。
        > - 使用 Azure 存储帐户以安全方式连接到 VNet 时，IDENTITY 名称应该为 **'托管服务标识'** ，以便通过 PolyBase 进行连接。
 
-   1. 使用 abfss:// 方案创建外部数据源，以便通过 PolyBase 连接到常规用途 v2 存储帐户：
+   1. 使用 `abfss://` 方案创建外部数据源，以便通过 PolyBase 连接到常规用途 v2 存储帐户：
 
        ```SQL
        CREATE EXTERNAL DATA SOURCE ext_datasource_with_abfss WITH (TYPE = hadoop, LOCATION = 'abfss://myfile@mystorageaccount.dfs.core.chinacloudapi.cn', CREDENTIAL = msi_cred);
        ```
 
        > [!NOTE]
-       > - 如果已经有外部表关联到常规用途 v1 或 Blob 存储帐户，则应先删除这些外部表，然后删除相应的外部数据源。 然后，使用 abfss:// 方案按照上面的步骤创建连接到常规用途 v2 存储帐户的外部数据源，并使用该新建的外部数据源重新创建所有外部表。 可以通过[生成和发布脚本向导](https://docs.microsoft.com/sql/ssms/scripting/generate-and-publish-scripts-wizard)为所有外部表生成 create-script，以方便使用。
-       > - 有关 abfss:// 方案的详细信息，请参阅此[指南](/storage/data-lake-storage/introduction-abfs-uri)。
+       > - 如果已经有外部表关联到常规用途 v1 或 Blob 存储帐户，则应先删除这些外部表，然后删除相应的外部数据源。 然后，使用 `abfss://` 方案按照上面的步骤创建连接到常规用途 v2 存储帐户的外部数据源，并使用此新的外部数据源重新创建所有外部表。 可以通过[生成和发布脚本向导](https://docs.microsoft.com/sql/ssms/scripting/generate-and-publish-scripts-wizard)为所有外部表生成 create-script，以方便使用。
+       > - 有关 `abfss://` 方案的详细信息，请参阅此[指南](/storage/data-lake-storage/introduction-abfs-uri)。
        > - 有关 CREATE EXTERNAL DATA SOURCE 的详细信息，请参阅此[指南](https://docs.microsoft.com/sql/t-sql/statements/create-external-data-source-transact-sql)。
 
    1. 使用[外部表](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql)进行正常查询。

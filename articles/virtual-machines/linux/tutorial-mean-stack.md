@@ -1,9 +1,9 @@
 ---
-title: 教程 - 在 Azure 中的 Linux 虚拟机上创建 MongoDB、Express、AngularJS 和 Node.js (MEAN) 堆栈 | Azure
+title: 教程 - 在 Azure 中的 Linux 虚拟机上创建 MongoDB、Express、AngularJS 和 Node.js (MEAN) 堆栈
 description: 本教程介绍如何在 Azure 中的 Linux VM 上创建 MongoDB、Express、AngularJS 和 Node.js (MEAN) 堆栈。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: rockboyfor
+author: Johnnytechn
 manager: digimobile
 editor: ''
 tags: azure-resource-manager
@@ -13,19 +13,19 @@ ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 origin.date: 08/08/2017
-ms.date: 11/11/2019
-ms.author: v-yeche
+ms.date: 04/13/2020
+ms.author: v-johya
 ms.custom: mvc
-ms.openlocfilehash: 8dfbb1dc8c441a529325ae7cfe2e7b2008cfd264
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 07009a1b6e41efb0721d78125edc0973ea50d2fd
+ms.sourcegitcommit: ebedf9e489f5218d4dda7468b669a601b3c02ae5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "73831380"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82159173"
 ---
 # <a name="tutorial-create-a-mongodb-express-angularjs-and-nodejs-mean-stack-on-a-linux-virtual-machine-in-azure"></a>教程：在 Azure 中的 Linux 虚拟机上创建 MongoDB、Express、AngularJS 和 Node.js (MEAN) 堆栈
 
-本教程介绍如何在 Azure 中的 Linux 虚拟机 (VM) 上实现 MongoDB、Express、AngularJS 和 Node.js (MEAN) 堆栈。 通过创建的 MEAN 堆栈，可以在数据库中添加、删除和列出书籍。 学习如何：
+本教程介绍如何在 Azure 中的 Linux 虚拟机 (VM) 上实现 MongoDB、Express、AngularJS 和 Node.js (MEAN) 堆栈。 通过创建的 MEAN 堆栈，可以在数据库中添加、删除和列出书籍。 你将学习如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建 Linux VM
@@ -57,7 +57,7 @@ az vm create \
 az vm open-port --port 3300 --resource-group myResourceGroupMEAN --name myVM
 ```
 
-创建 VM 后，Azure CLI 会显示类似于以下示例的信息： 
+创建 VM 后，Azure CLI 显示类似于以下示例的信息。 
 
 ```azurecli
 {
@@ -319,7 +319,7 @@ sudo apt-get install -y nodejs
     </html>
     ```
 
-## <a name="run-the-application"></a>运行应用程序
+##  <a name="run-the-application"></a>运行应用程序
 
 1. 将目录切换回到 *Books* (`cd ..`)，并通过运行以下命令启动服务器：
 
@@ -343,7 +343,7 @@ sudo apt-get install -y nodejs
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程已创建一个可在 Linux VM 上使用 MEAN 堆栈跟踪书籍记录的 Web 应用程序。 你已了解如何执行以下操作：
+本教程已创建一个可在 Linux VM 上使用 MEAN 堆栈跟踪书籍记录的 Web 应用程序。 你已了解如何：
 
 > [!div class="checklist"]
 > * 创建 Linux VM
@@ -353,9 +353,7 @@ sudo apt-get install -y nodejs
 > * 使用 AngularJS 访问路由
 > * 运行应用程序
 
-转到下一教程，了解如何使用 SSL 证书保护 Web 服务器。
+转到下一教程，了解如何使用 TLS 证书保护 Web 服务器。
 
 > [!div class="nextstepaction"]
-> [使用 SSL 保护 Web 服务器](tutorial-secure-web-server.md)
-
-<!--Update_Description: update meta properties -->
+> [使用 TLS 保护 Web 服务器](tutorial-secure-web-server.md)

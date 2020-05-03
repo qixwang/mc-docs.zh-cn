@@ -5,15 +5,15 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 09/13/2019
-ms.date: 02/10/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
 ms.custom: query-reference
-ms.openlocfilehash: 0e6e202e68617cc64cd7dca25fe10338b3569810
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: a1fc979ffb969b80e76cd4c64141baed7faae8d7
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77028963"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134555"
 ---
 # <a name="lower-azure-cosmos-db"></a>LOWER (Azure Cosmos DB)
  返回在将大写字符数据转换为小写后的字符串表达式。  
@@ -33,7 +33,7 @@ LOWER(<str_expr>)
 
 ## <a name="return-types"></a>返回类型
 
-  返回字符串表达式。  
+  返回一个字符串表达式。  
 
 ## <a name="examples"></a>示例
 
@@ -43,12 +43,16 @@ LOWER(<str_expr>)
 SELECT LOWER("Abc") AS lower
 ```  
 
- 下面是结果集：  
+ 下面是结果集。  
 
 ```json
 [{"lower": "abc"}]  
 
 ```  
+
+## <a name="remarks"></a>备注
+
+此系统函数不会使用索引。
 
 ## <a name="next-steps"></a>后续步骤
 

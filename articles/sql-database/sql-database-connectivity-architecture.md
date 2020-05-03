@@ -12,13 +12,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: carlrab, vanto
 origin.date: 03/09/2020
-ms.date: 03/30/2020
-ms.openlocfilehash: 00304ab6437f7ac8a0b3cca91bbde4056ef81997
-ms.sourcegitcommit: 90660563b5d65731a64c099b32fb9ec0ce2c51c6
+ms.date: 04/27/2020
+ms.openlocfilehash: 3310b5eaece6de30de2d8b5311344f6297ae4c23
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80341835"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126686"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Azure SQL 连接体系结构
 > [!NOTE]
@@ -46,7 +46,7 @@ ms.locfileid: "80341835"
 Azure SQL 数据库支持 SQL 数据库服务器连接策略设置的以下三个选项：
 
 - **重定向（建议）：** 客户端直接与托管数据库的节点建立连接，从而降低延迟并改进吞吐量。 若要通过连接来使用此模式，客户端需要：
-   - 在范围为 11000 到 11999 的端口上允许从客户端到区域中所有 Azure IP 地址的出站通信。 使用 SQL 服务标记，使其更易于管理。  
+   - 在范围为 11000 到 11999 的端口上允许从客户端到区域中所有 Azure SQL IP 地址的出站通信。 使用 SQL 服务标记，使其更易于管理。  
    - 在端口 1433 上允许从客户端到 Azure SQL 数据库网关 IP 地址的出站通信。
 
 - **代理：** 在此模式下，所有连接都通过 Azure SQL 数据库网关来代理，导致延迟增大和吞吐量降低。 若要通过连接来使用此模式，客户端需满足以下条件：在端口 1433 上允许从客户端到 Azure SQL 数据库网关 IP 地址的出站通信。

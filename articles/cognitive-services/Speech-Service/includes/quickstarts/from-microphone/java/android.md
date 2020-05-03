@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
 origin.date: 11/05/2019
-ms.date: 03/16/2020
+ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: 9a0f0e2b4e93775d3eda42381700b0cdece46f33
-ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
+ms.openlocfilehash: 3f5baf5942bcdb9b938fe83ac2fc7ac0a638c958
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80151638"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82150909"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -24,8 +24,9 @@ ms.locfileid: "80151638"
 
 > [!div class="checklist"]
 > * [创建一个 Azure 搜索资源](../../../../get-started.md)
-> * [设置开发环境](../../../../quickstarts/setup-platform.md?tabs=android)
+> * [设置开发环境](../../../../quickstarts/setup-platform.md?tabs=android&pivots=programming-language-java)
 > * 请确保你有权访问麦克风，以便进行音频捕获
+> * 需要语音 SDK 版本 1.10.0 或更高版本。
 
 ## <a name="create-a-user-interface"></a>创建用户界面
 
@@ -119,7 +120,7 @@ ms.locfileid: "80151638"
             TextView txt = (TextView) this.findViewById(R.id.hello); // 'hello' is the ID of your text view
     
             try {
-                SpeechConfig config = SpeechConfig.fromHost(new URI("wss://YourServiceRegion.stt.speech.azure.cn/"), "YourSubscriptionKey");
+                SpeechConfig config = SpeechConfig.fromSubscription("YourSubscriptionKey", "YourServiceRegion");
                 assert(config != null);
     
                 SpeechRecognizer reco = new SpeechRecognizer(config);
@@ -175,5 +176,4 @@ ms.locfileid: "80151638"
 
 ## <a name="next-steps"></a>后续步骤
 
-[!INCLUDE [footer](./footer.md)]
-
+[!INCLUDE [Speech recognition basics](../../speech-to-text-next-steps.md)]

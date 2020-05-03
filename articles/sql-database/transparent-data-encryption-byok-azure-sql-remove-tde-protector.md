@@ -11,13 +11,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: vanto
 origin.date: 02/24/2020
-ms.date: 03/16/2020
-ms.openlocfilehash: a2bb7f71270fc3fbdebd651d2238c8cbb3973d15
-ms.sourcegitcommit: dc862610e2169c1fce6fb0ae9eb7dd7567f86a0a
+ms.date: 04/27/2020
+ms.openlocfilehash: b712360a5b53fdfaef03bb9354b43546c31cde73
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79293742"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126847"
 ---
 # <a name="remove-a-transparent-data-encryption-tde-protector-using-powershell"></a>使用 PowerShell 删除透明数据加密 (TDE) 保护器
 
@@ -135,7 +135,7 @@ PowerShell 命令 **az sql server key show** 提供查询中使用的 TDE 保�
 
 2. 将新密钥添加到服务器，并将其更新为服务器的新 TDE 保护器。
 
-   ```powershell
+   ```azurecli
    # add the key from Key Vault to the server  
    az sql server key create --kid <KeyVaultKeyId> --resource-group <SQLDatabaseResourceGroupName> --server <LogicalServerName>
 
@@ -148,26 +148,26 @@ PowerShell 命令 **az sql server key show** 提供查询中使用的 TDE 保�
    > [!NOTE]
    > 将新 TDE 保护器传播到服务器中的所有数据库和辅助数据库可能需要几分钟时间。
 
-   ```powershell
+   ```azurecli
    az sql server tde-key show --resource-group <SQLDatabaseResourceGroupName> --server <LogicalServerName>
    ```
 
 4. 在 Key Vault 中创建新密钥的备份。
 
-   ```powershell
+   ```azurecli
    # --file parameter is optional; if removed, a file name is automatically generated.
    az keyvault key backup --file <DesiredBackupFilePath> --name <KeyVaultKeyName> --vault-name <KeyVaultName>
    ```
 
 5. 从 Key Vault 中删除已泄露的密钥。
 
-   ```powershell
+   ```azurecli
    az keyvault key delete --name <KeyVaultKeyName> --vault-name <KeyVaultName>
    ```
 
 6. 将来将密钥还原到 Key Vault。
 
-   ```powershell
+   ```azurecli
    az keyvault key restore --file <BackupFilePath> --vault-name <KeyVaultName>
    ```
 

@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 03/24/2020
+ms.date: 04/23/2020
 ms.subservice: hybrid
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9a7c6c4e26a581a077c6f3a9851fbbad32a723eb
-ms.sourcegitcommit: 6568c59433d7e80ab06e9fe76d4791f761ed6775
+ms.openlocfilehash: 7bb368b9f14eb4012c2261fdab2dde622fbe1f64
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80243056"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126548"
 ---
 # <a name="hybrid-identity-required-ports-and-protocols"></a>混合标识所需的端口和协议
 以下文档是用于实现混合标识解决方案所需的端口和协议的技术参考。 使用下图并参考相应的表格。
@@ -38,7 +38,7 @@ ms.locfileid: "80243056"
 | MS-RPC |135 (TCP) |该端口绑定到 AD 林后，将在初始配置 Azure AD Connect 向导期间及密码同步期间使用。 |
 | LDAP |389 (TCP/UDP) |用于从 AD 导入数据。 数据将使用 Kerberos 签名和签章加密。 |
 | SMB | 445 (TCP) |由无缝 SSO 用于在 AD 林中创建计算机帐户。 |
-| LDAP/SSL |636 (TCP/UDP) |用于从 AD 导入数据。 数据传输经过签名和加密。 仅使用 SSL 时才使用该端口。 |
+| LDAP/SSL |636 (TCP/UDP) |用于从 AD 导入数据。 数据传输经过签名和加密。 仅在使用 TLS 时使用。 |
 | RPC |49152-65535（随机高 RPC 端口）(TCP) |该端口绑定到 AD 林后，将在初始配置 Azure AD Connect 期间及密码同步期间使用。 有关详细信息，请参阅 [KB929851](https://support.microsoft.com/kb/929851)、[KB832017](https://support.microsoft.com/kb/832017) 和 [KB224196](https://support.microsoft.com/kb/224196)。 |
 |WinRM  | 5985 (TCP) |仅在通过 Azure AD Connect 向导使用 gMSA 安装 AD FS 时使用|
 |AD DS Web 服务 | 9389 (TCP) |仅在通过 Azure AD Connect 向导使用 gMSA 安装 AD FS 时使用 |
@@ -48,7 +48,7 @@ ms.locfileid: "80243056"
 
 | 协议 | 端口 | 说明 |
 | --- | --- | --- |
-| HTTP |80 (TCP) |用于下载 CRL（证书吊销列表）以验证 SSL 证书。 |
+| HTTP |80 (TCP) |用于下载 CRL（证书吊销列表）以验证 TLS/SSL 证书。 |
 | HTTPS |443(TCP) |用来与 Azure AD 同步。 |
 
 有关需要在防火墙中打开的 URL 和 IP 地址的列表，请参阅 [Office 365 URL 和 IP 地址范围](https://docs.microsoft.com/en-us/office365/enterprise/urls-and-ip-address-ranges-21vianet)和 [Azure AD Connect 连接故障排除](tshoot-connect-connectivity.md#troubleshoot-connectivity-issues-in-the-installation-wizard)。
@@ -58,7 +58,7 @@ ms.locfileid: "80243056"
 
 | 协议 | 端口 | 说明 |
 | --- | --- | --- |
-| HTTP |80 (TCP) |用于下载 CRL（证书吊销列表）以验证 SSL 证书。 |
+| HTTP |80 (TCP) |用于下载 CRL（证书吊销列表）以验证 TLS/SSL 证书。 |
 | HTTPS |443(TCP) |用来与 Azure AD 同步。 |
 | WinRM |5985 |WinRM 侦听器 |
 

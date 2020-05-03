@@ -7,15 +7,15 @@ ms.subservice: cosmosdb-table
 ms.devlang: java
 ms.topic: quickstart
 origin.date: 04/10/2018
-ms.date: 10/28/2019
+ms.date: 04/27/2020
 ms.author: v-yeche
 ms.custom: seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 2c19df0bf9cef4b3532d13d6888f611cf662ca02
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 0777f6f111b7738dc12773be4fc2fb0ff4edaffe
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "72970274"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134949"
 ---
 <!--Verify sucessfully-->
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-table-api-data"></a>快速入门：生成 Java 应用以管理 Azure Cosmos DB 表 API 数据
@@ -27,23 +27,17 @@ ms.locfileid: "72970274"
 > * [Python](create-table-python.md)
 > 
 
-本快速入门介绍如何使用 Java 和 Azure Cosmos DB [表 API](table-introduction.md)，通过克隆 GitHub 中的示例来生成应用。 介绍如何创建 Azure Cosmos DB 帐户，以及如何在基于 Web 的 Azure 门户中使用数据资源管理器创建表和实体。
-
-Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服务。 可快速创建和查询文档、键/值和图形数据库，所有这些都受益于 Azure Cosmos DB 核心的多区域分布和水平缩放功能。 
+在本快速入门中，我们创建一个 Azure Cosmos DB 表 API 帐户，并使用从 GitHub 克隆的数据资源管理器和 Java 应用创建表和条目。 Azure Cosmos DB 是一种多模型数据库服务，可让你通过多区域分布和水平缩放功能快速创建和查询文档、表、键/值和图数据库。
 
 ## <a name="prerequisites"></a>先决条件
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-[!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
+- 具有活动订阅的 Azure 帐户。 [免费创建一个](https://www.azure.cn/pricing/1rmb-trial/)。 你也可以通过 URI `https://localhost:8081` 和密钥 `C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==` 使用 [Azure Cosmos DB 模拟器](https://aka.ms/cosmosdb-emulator)
 
-此外： 
+    <!--Not Available on [try Azure Cosmos DB for free](https://www.azure.cn/try/cosmosdb/)-->
 
-* [Java 开发工具包 (JDK) 8](https://docs.azure.cn/java/java-supported-jdk-runtime?view=azure-java-stable)
-    * 请确保设置 JAVA_HOME 环境变量，使之指向在其中安装了 JDK 的文件夹。
-* [下载](https://maven.apache.org/download.cgi)和[安装](https://maven.apache.org/install.html)[Maven](https://maven.apache.org/) 二进制存档
-    * 在 Ubuntu 上，可以通过运行 `apt-get install maven` 来安装 Maven。
-* [Git](https://www.git-scm.com/)
-    * 在 Ubuntu 上，可以通过运行 `sudo apt-get install git` 来安装 Git。
+- [Java 开发工具包 (JDK) 8](https://www.azul.com/downloads/azure-only/zulu/?&version=java-8-lts&architecture=x86-64-bit&package=jdk)。 将 `JAVA_HOME` 环境变量指向其中安装了 JDK 的文件夹。
+- [Maven 二进制存档](https://maven.apache.org/download.cgi)。 
+- [Git](https://www.git-scm.com/downloads)。 
 
 ## <a name="create-a-database-account"></a>创建数据库帐户
 
@@ -150,3 +144,5 @@ Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服�
 > [将表数据导入表 API](table-import.md)
 
 <!--Update_Description: wording update -->
+
+

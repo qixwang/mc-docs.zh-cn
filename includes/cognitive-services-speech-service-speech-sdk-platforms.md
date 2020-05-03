@@ -1,25 +1,33 @@
 ---
-author: wolfma61
+author: IEvangelist
 ms.service: cognitive-services
 ms.topic: include
-origin.date: 02/08/2019
-ms.date: 09/24/2019
+origin.date: 03/26/2020
+ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: b70a7b6153c245e497ba3a298377cffd0ca51579
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: d0931092bff1b9f4c9999519448132b8039f80d4
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74389282"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126955"
 ---
-| 编程语言 | 平台 | API 参考 |
-| -------------------- | -------- | ------------- |
-| C/C++ | Windows、Linux、macOS | [“浏览”](https://docs.microsoft.com/cpp/cognitive-services/speech/index) |
-| C# | Windows、UWP、.NET Framework (Windows)、.NET Core、Unity | [“浏览”](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech?view=azure-dotnet) |
-| Java | Android、Windows、Linux、macOS | [“浏览”](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech?view=azure-java-stable) |
-| Java\* | [语音设备 SDK](../articles/cognitive-services/speech-service/speech-devices-sdk.md) | [“浏览”](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech?view=azure-java-stable) |
-| JavaScript/Node.js | Browser、Windows、Linux、macOS | [“浏览”](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/?view=azure-node-latest) |
-| Objective-C | iOS、macOS | [“浏览”](https://docs.microsoft.com/objectivec/cognitive-services/speech/) |
-| Python | Windows、Linux、macOS | [“浏览”](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/?view=azure-python)  |
+| 编程语言 | 平台                                                                           | SDK 参考              |
+|----------------------|------------------------------------------------------------------------------------|----------------------------|
+| C# <sup>1</sup>      | Windows、Linux、macOS、Mono、Xamarin.iOS、Xamarin.Mac、Xamarin.Android、UWP、Unity | [.NET SDK][net-sdk]        |
+| C++                  | Windows、Linux、macOS                                                              | [C++ SDK][cpp-sdk]         |
+| Java <sup>2</sup>    | Android、Windows、Linux、macOS                                                     | [Java SDK][javasdk]        |
+| Javascript           | Browser、Node.js                                                                   | [JavaScript SDK][ecmasdk]  |
+| Objective-C/Swift  | iOS、macOS                                                                         | [Objective-C SDK][obj-sdk] |
+| Python               | Windows、Linux、macOS                                                              | [Python SDK][pyt-sdk]      |
 
-\* Java SDK 也可作为[语音设备 SDK](../articles/cognitive-services/speech-service/speech-devices-sdk.md) 的一部分提供。 
+<sup>1 .NET 语音 SDK 基于 .NET Standard 2.0，因此它支持很多平台。有关详细信息，请参阅 <a href="https://docs.microsoft.com/dotnet/standard/net-standard#net-implementation-support" target="_blank">.NET 实现支持<span class="docon docon-navigate-external x-hidden-focus"></span></a>。</sup>
+
+<sup>2 Java 语音 SDK 也作为[语音设备 SDK](../articles/cognitive-services/speech-service/speech-devices-sdk.md) 的一部分提供。</sup>
+
+[net-sdk]: https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech?view=azure-dotnet
+[cpp-sdk]: https://docs.microsoft.com/cpp/cognitive-services/speech/
+[javasdk]: https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech?view=azure-java-stable
+[ecmasdk]: https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/?view=azure-node-latest
+[obj-sdk]: https://docs.microsoft.com/objectivec/cognitive-services/speech/
+[pyt-sdk]: https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/?view=azure-python

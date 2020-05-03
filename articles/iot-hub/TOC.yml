@@ -7,6 +7,7 @@
     - name: Azure IoT 中心是什么？
       href: about-iot-hub.md
 - name: 快速入门
+  expanded: true
   items:
     - name: 发送遥测
       items:
@@ -38,18 +39,6 @@
           href: quickstart-control-device-python.md
         - name: Android
           href: quickstart-control-device-android.md
-    - name: 使用设备流进行通信（预览版）
-      items:
-        - name: Node.js
-          href: quickstart-device-streams-echo-nodejs.md
-        - name: C
-          href: quickstart-device-streams-echo-c.md
-    - name: 使用设备流发送 SSH/RDP 流量（预览版）
-      items:
-        - name: Node.js
-          href: quickstart-device-streams-proxy-nodejs.md
-        - name: C
-          href: quickstart-device-streams-proxy-c.md
 - name: 教程
   items:
     - name: 路由消息
@@ -113,7 +102,7 @@
               items:
                 - name: 创建和读取 IoT 中心消息
                   href: iot-hub-devguide-messages-construct.md
-                - name: 通过内置终结点读取设备到云的消息
+                - name: 从内置终结点读取设备到云的消息
                   href: iot-hub-devguide-messages-read-builtin.md
                 - name: 对设备到云的消息使用自定义终结点和路由规则
                   href: iot-hub-devguide-messages-read-custom.md
@@ -129,7 +118,7 @@
           href: iot-hub-devguide-file-upload.md
         - name: 管理设备标识
           href: iot-hub-devguide-identity-registry.md
-        - name: 控制对 IoT 中心的访问
+        - name: 控制 IoT 中心的访问权限
           href: iot-hub-devguide-security.md
         - name: 了解设备孪生
           href: iot-hub-devguide-device-twins.md
@@ -161,7 +150,7 @@
           href: iot-hub-x509ca-overview.md
         - name: X.509 CA 证书安全性概念
           href: iot-hub-x509ca-concept.md
-- name: 操作方法指南
+- name: 操作指南
   items:
     - name: 开发
       items:
@@ -268,6 +257,7 @@
             - name: 使用 REST API
               href: iot-hub-rm-rest.md
             - name: 通过 Azure PowerShell 使用模板
+              displayName: Azure Resource Manager
               href: iot-hub-rm-template-powershell.md
             - name: 通过 .NET 使用模板
               href: iot-hub-rm-template.md
@@ -332,66 +322,108 @@
               href: iot-hub-device-management-iot-extension-azure-cli-2-0.md
             - name: 使用逻辑应用执行远程监视和发送通知
               href: iot-hub-monitoring-notifications-with-azure-logic-apps.md
-    - name: 故障排除
+- name: 故障排除和问题解决方案
+  items:
+    - name: 设备断开连接
+      href: iot-hub-troubleshoot-connectivity.md
+    - name: 问题解决方法
       items:
-        - name: 设备断开连接
-          href: iot-hub-troubleshoot-connectivity.md
+        - name: 400027 ConnectionForcefullyClosedOnNewConnection
+          href: iot-hub-troubleshoot-error-400027-connectionforcefullyclosedonnewconnection.md
+        - name: 401003 IoTHubUnauthorized
+          href: iot-hub-troubleshoot-error-401003-iothubunauthorized.md
+        - name: 403002 IoTHubQuotaExceeded
+          href: iot-hub-troubleshoot-error-403002-iothubquotaexceeded.md
+        - name: 403004 DeviceMaximumQueueDepthExceeded
+          href: iot-hub-troubleshoot-error-403004-devicemaximumqueuedepthexceeded.md
+        - name: 403006 DeviceMaximumActiveFileUploadLimitExceeded
+          href: iot-hub-troubleshoot-error-403006-devicemaximumactivefileuploadlimitexceeded.md
+        - name: 404001 DeviceNotFound
+          href: iot-hub-troubleshoot-error-404001-devicenotfound.md
+        - name: 404103 DeviceNotOnline
+          href: iot-hub-troubleshoot-error-404103-devicenotonline.md
+        - name: 404104 DeviceConnectionClosedRemotely
+          href: iot-hub-troubleshoot-error-404104-deviceconnectionclosedremotely.md
+        - name: 409001 DeviceAlreadyExists
+          href: iot-hub-troubleshoot-error-409001-devicealreadyexists.md
+        - name: 409002 LinkCreationConflict
+          href: iot-hub-troubleshoot-error-409002-linkcreationconflict.md
+        - name: 412002 DeviceMessageLockLost
+          href: iot-hub-troubleshoot-error-412002-devicemessagelocklost.md
+        - name: 429001 ThrottlingException
+          href: iot-hub-troubleshoot-error-429001-throttlingexception.md
+        - name: 500xxx 内部错误
+          href: iot-hub-troubleshoot-error-500xxx-internal-errors.md
+        - name: 503003 PartitionNotFound
+          href: iot-hub-troubleshoot-error-503003-partitionnotfound.md
+        - name: 504101 GatewayTimeout
+          href: iot-hub-troubleshoot-error-504101-gatewaytimeout.md
 - name: 参考
   items:
     - name: Azure CLI
       href: /cli/iot
-    - name: .NET（服务）
-      href: /dotnet/api/microsoft.azure.devices
+    - name: Azure PowerShell
+      href: 'https://docs.microsoft.com/powershell/module/az.iothub#iot'
     - name: .NET（设备）
-      href: /dotnet/api/microsoft.azure.devices.client
-    - name: Java（服务）
-      href: /java/api/com.microsoft.azure.sdk.iot.service
+      href: 'https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client'
+    - name: .NET（服务）
+      href: 'https://docs.microsoft.com/dotnet/api/microsoft.azure.devices'
     - name: Java（设备）
-      href: /java/api/com.microsoft.azure.sdk.iot.device
+      href: 'https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device'
+    - name: Java（服务）
+      href: 'https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.service'
     - name: Node.js（设备）
       href: 'https://docs.microsoft.com/javascript/api/azure-iot-device/'
     - name: Node.js（服务）
       href: 'https://docs.microsoft.com/javascript/api/azure-iothub/'
     - name: C 设备 SDK
       href: 'https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/'
-    - name: Azure IoT Edge
-      href: 'http://azure.github.io/iot-edge/'
     - name: REST（设备）
       href: 'https://docs.microsoft.com/rest/api/iothub/device'
     - name: REST（服务）
-      href: 'https://docs.microsoft.com/rest/api/iothub/service'
+      href: 'https://docs.microsoft.com/rest/api/iothub/service/configuration'
     - name: REST（IoT 中心资源）
       href: 'https://docs.microsoft.com/rest/api/iothub/iothubresource'
     - name: REST（证书）
       href: 'https://docs.microsoft.com/rest/api/iothub/certificates'
-- name: 相关内容
+    - name: Resource Manager 模板
+      href: 'https://docs.microsoft.com/azure/templates/microsoft.devices/iothub-allversions'
+    - name: 功能和 API 停用
+      items:
+        - name: 操作监视
+          href: iot-hub-operations-monitoring.md
+        - name: 迁移到诊断设置
+          href: iot-hub-migrate-to-diagnostics-settings.md
+- name: 资源
   items:
-    - name: 解决方案
-      items: null
-    - name: 平台服务
+    - name: Azure IoT 服务
       items:
         - name: IoT 中心
           href: /iot-hub
-        - name: IoT 服务 SDK
-          href: '/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
-    - name: Microsoft Edge
-      items:
+        - name: IoT 中心设备预配服务
+          href: /iot-dps
         - name: IoT Edge
           href: /iot-edge
+        - name: 时序见解
+          href: /time-series-insights
+    - name: Azure IoT SDK
+      items:
+        - name: IoT 服务 SDK
+          href: '/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
         - name: IoT 设备 SDK
           href: '/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
-- name: 资源
-  items:
-    - name: '适用于 C# 的 Azure IoT 示例 (.NET)'
-      href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-csharp/'
-    - name: 适用于 Node.js 的 Azure IoT 示例
-      href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-node/'
-    - name: 适用于 Java 的 Azure IoT 示例
-      href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-java/'
-    - name: 适用于 Python 的 Azure IoT 示例
-      href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-python/'
-    - name: 适用于 iOS 平台的 Azure IoT 示例
-      href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-ios/'
+    - name: Azure IoT 示例
+      items:
+        - name: 'C# (.NET)'
+          href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-csharp/'
+        - name: Node.js
+          href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-node/'
+        - name: Java
+          href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-java/'
+        - name: Python
+          href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-python/'
+        - name: iOS 平台
+          href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-ios/'
     - name: Azure IoT 开发人员中心
       href: /develop/iot/
     - name: 客户数据请求
@@ -400,8 +432,8 @@
       href: 'https://azure.microsoft.com/roadmap/?category=iot'
     - name: Azure IoT Tools
       href: 'https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools'
-    - name: DeviceExplorer 工具
-      href: 'https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer'
+    - name: Azure IoT 资源管理器工具
+      href: 'https://github.com/Azure/azure-iot-explorer'
     - name: iothub-diagnostics 工具
       href: 'https://github.com/Azure/iothub-diagnostics'
     - name: MSDN 论坛

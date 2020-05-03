@@ -6,14 +6,14 @@ manager: digimobile
 ms.service: site-recovery
 ms.topic: conceptual
 origin.date: 03/25/2019
-ms.date: 02/24/2020
+ms.date: 04/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 7e3008d5dbf53533f77439f234c375aff7d119d3
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 40f944f0d0b0243b2aeb61591645174110aa91ac
+ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79292712"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82093239"
 ---
 # <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>关于适用于 VMware VM 和物理服务器的移动服务
 
@@ -22,6 +22,9 @@ ms.locfileid: "79292712"
 - [推送安装](#push-installation)：通过 Azure 门户启用保护时，Site Recovery 会在服务器上安装移动代理。
 - 手动安装：可以通过 [UI](#install-mobility-agent-through-ui) 或[命令提示符](#install-mobility-agent-through-command-prompt)在每台计算机上手动安装移动服务。
 - [自动部署](vmware-azure-mobility-install-configuration-mgr.md)：可以使用 Configuration Manager 等软件部署工具自动完成安装。
+
+> [!NOTE]
+> 移动代理使用 VMware VM 的源计算机上或使用物理计算机上大约 6%-10% 的内存。
 
 ## <a name="anti-virus-on-replicated-machines"></a>复制计算机上的防病毒
 
@@ -74,7 +77,7 @@ ms.locfileid: "79292712"
 
     ![“移动服务注册”页](./media/vmware-physical-mobility-service-install-manual/mobility3.png)
 
-5. 在“配置服务器详细信息”中，指定已配置的 IP 地址和通行短语。   
+5. 在“配置服务器详细信息”中，指定已配置的 IP 地址和通行短语。 
 
     ![“移动服务注册”页](./media/vmware-physical-mobility-service-install-manual/mobility4.png)
 

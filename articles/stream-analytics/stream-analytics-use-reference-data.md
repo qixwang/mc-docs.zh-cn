@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 origin.date: 10/8/2019
 ms.date: 11/19/2019
-ms.openlocfilehash: 84a9575970b81759e71b257afa8a445e4c004635
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: b73966a2f3d497d02edfd9b543d625f49b7f82a7
+ms.sourcegitcommit: b80d236ce3c706abc25bbaa41b0ccddd896e48fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79293312"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81873136"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>使用参考数据在流分析中查找
 
@@ -32,7 +32,7 @@ ms.locfileid: "79293312"
 |**属性名称**  |**说明**  |
 |---------|---------|
 |输入别名   | 一个友好名称会用于作业查询，以便引用此输入。   |
-|存储帐户   | 存储 Blob 所在的存储帐户的名称。 如果它在流分析作业所在的订阅中，则可以从下拉菜单中选择它。   |
+|存储帐户   | 存储 Blob 所在的存储帐户的名称。 如果其订阅与流分析作业相同，可以从下拉菜单中选择它。   |
 |存储帐户密钥   | 与存储帐户关联的密钥。 如果存储帐户的订阅与流分析作业相同，则自动填充此密钥。   |
 |存储容器   | 容器对存储在 Microsoft Azure Blob 服务中的 blob 进行逻辑分组。 将 blob 上传到 Blob 服务时，必须为该 blob 指定一个容器。   |
 |路径模式   | 用于对指定容器中的 Blob 进行定位的路径。 在路径中，可以选择指定一个或多个使用以下 2 个变量的实例：<BR>{date}、{time}<BR>示例 1：products/{date}/{time}/product-list.csv<BR>示例 2：products/{date}/product-list.csv<BR>示例 3：product-list.csv<BR><br> 如果指定路径中不存在 blob，流分析作业将无限期地等待 blob 变为可用状态。   |
@@ -70,7 +70,7 @@ Azure 流分析每间隔一分钟都会自动扫描刷新的参考数据 Blob。
     * 使用路径模式中的 {date}/{time}
     * 使用作业输入中定义的相同容器和路径模式来添加新 Blob
     * 使用大于序列中最后一个 Blob 指定的日期/时间  。
-3. 参考数据 blob **不** 按 blob 的“上次修改”时间排序，而是按 blob 名称中使用 {date} 和 {time} 替换项指定的日期和时间排序。
+3. 引用数据 Blob **不** 按 Blob 的“上次修改”时间排序，而是按 Blob 名称中使用 {date} 和 {time} 替换项指定的日期和时间排序。
 4. 为了避免必须列出大量 blob，请考虑删除不再对其进行处理的非常旧的 blob。 请注意，在某些情况下（如重新启动），ASA 可能需要重新处理一小部分 blob。
 
 ## <a name="azure-sql-database"></a>Azure SQL 数据库

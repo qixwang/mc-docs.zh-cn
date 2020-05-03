@@ -8,16 +8,16 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
-ms.date: 03/10/2020
+ms.date: 04/22/2020
 ms.author: v-junlch
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
-ms.openlocfilehash: 189729ffff827b21866480676ae0e63ecd9ca6be
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 58691559d4fc7974c5f48ab858cc938492c50e5a
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79291199"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126250"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>如何：使用门户创建可访问资源的 Azure AD 应用程序和服务主体
 
@@ -99,7 +99,7 @@ $cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocati
 
 1. 若要查看证书，请在左窗格中的“证书 - 当前用户”  下，展开“个人”  目录。
 1. 右键单击创建的证书，选择“所有任务”->“导出”。 
-1. 按证书导出向导的要求操作。  导出私钥，为证书文件指定密码，并将其导出到文件。
+1. 按证书导出向导的要求操作。  导出到一个 .CER 文件（不要导出私钥）。
 
 若要上传证书，请执行以下操作：
 
@@ -179,4 +179,3 @@ $cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocati
 * 若要了解如何指定安全策略，请参阅 [Azure 基于角色的访问控制](../../role-based-access-control/role-assignments-portal.md)。  
 * 有关可对用户授予或拒绝的可用操作的列表，请参阅 [Azure Resource Manager 资源提供程序操作](../../role-based-access-control/resource-provider-operations.md)。
 
-<!-- Update_Description: wording update -->

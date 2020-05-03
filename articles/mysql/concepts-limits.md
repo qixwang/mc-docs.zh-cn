@@ -5,14 +5,14 @@ author: WenJason
 ms.author: v-jay
 ms.service: mysql
 ms.topic: conceptual
-origin.date: 12/9/2019
-ms.date: 03/30/2020
-ms.openlocfilehash: dd131024832952cc6c3ba43ba138f6583219e7bf
-ms.sourcegitcommit: 303a16c7117b6f3495ef0493b4ae8ccb67d7dbba
+origin.date: 4/1/2020
+ms.date: 4/27/2020
+ms.openlocfilehash: 534a5599656948375ed901c8a9b8904228bb05b4
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80342419"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126691"
 ---
 # <a name="limitations-in-azure-database-for-mysql"></a>Azure Database for MySQL 中的限制
 
@@ -51,7 +51,7 @@ ms.locfileid: "80342419"
 
 创建与 MySQL 的新客户端连接需要时间，一旦建立，这些连接就会占用数据库资源，即使在空闲时也是如此。 大多数应用程序都请求许多短期连接，这加剧了这种情况。 其结果是可用于实际工作负荷的资源减少，从而导致性能下降。 减少空闲连接并重用现有连接的连接池会有助于避免这种情况。 若要了解如何设置 ProxySQL，请访问我们的[博客文章](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/load-balance-read-replicas-using-proxysql-in-azure-database-for/ba-p/880042)。
 
-## <a name="query_cache_size"></a>query_cache_size
+### <a name="query_cache_size"></a>query_cache_size
 
 默认会禁用查询缓存。 若要启用查询缓存，请配置 `query_cache_type` 参数。 
 
@@ -62,8 +62,8 @@ ms.locfileid: "80342419"
 
 |**定价层**|**vCore(s)**|**默认值**|**最小值**|**最大值**|
 |---|---|---|---|---|
-|基本|1|在基本层中不可配置|空值|不适用|
-|基本|2|在基本层中不可配置|空值|不适用|
+|基本|1|在基本层中不可配置|不适用|不适用|
+|基本|2|在基本层中不可配置|不适用|不适用|
 |常规用途|2|0|0|16777216|
 |常规用途|4|0|0|33554432|
 |常规用途|8|0|0|67108864|
@@ -76,13 +76,13 @@ ms.locfileid: "80342419"
 |内存优化|16|0|0|134217728|
 |内存优化|32|0|0|134217728|
 
-## <a name="sort_buffer_size"></a>sort_buffer_size
+### <a name="sort_buffer_size"></a>sort_buffer_size
 
 查看 [MySQL 文档](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_sort_buffer_size)详细了解此参数。
 
 |**定价层**|**vCore(s)**|**默认值**|**最小值**|**最大值**|
 |---|---|---|---|---|
-|基本|1|在基本层中不可配置|空值|不适用|
+|基本|1|在基本层中不可配置|不适用|不适用|
 |基本|2|在基本层中不可配置|不适用|不适用|
 |常规用途|2|524288|32768|4194304|
 |常规用途|4|524288|32768|8388608|
@@ -96,13 +96,13 @@ ms.locfileid: "80342419"
 |内存优化|16|524288|32768|33554432|
 |内存优化|32|524288|32768|33554432|
 
-## <a name="join_buffer_size"></a>join_buffer_size
+### <a name="join_buffer_size"></a>join_buffer_size
 
 查看 [MySQL 文档](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_join_buffer_size)详细了解此参数。
 
 |**定价层**|**vCore(s)**|**默认值**|**最小值**|**最大值**|
 |---|---|---|---|---|
-|基本|1|在基本层中不可配置|空值|空值|
+|基本|1|在基本层中不可配置|不适用|不适用|
 |基本|2|在基本层中不可配置|不适用|不适用|
 |常规用途|2|262144|128|268435455|
 |常规用途|4|262144|128|536870912|
@@ -116,14 +116,14 @@ ms.locfileid: "80342419"
 |内存优化|16|262144|128|4294967295|
 |内存优化|32|262144|128|4294967295|
 
-## <a name="max_heap_table_size"></a>max_heap_table_size
+### <a name="max_heap_table_size"></a>max_heap_table_size
 
 查看 [MySQL 文档](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_max_heap_table_size)详细了解此参数。
 
 |**定价层**|**vCore(s)**|**默认值**|**最小值**|**最大值**|
 |---|---|---|---|---|
-|基本|1|在基本层中不可配置|不适用|空值|
-|基本|2|在基本层中不可配置|空值|不适用|
+|基本|1|在基本层中不可配置|不适用|不适用|
+|基本|2|在基本层中不可配置|不适用|不适用|
 |常规用途|2|16777216|16384|268435455|
 |常规用途|4|16777216|16384|536870912|
 |常规用途|8|16777216|16384|1073741824|
@@ -136,14 +136,14 @@ ms.locfileid: "80342419"
 |内存优化|16|16777216|16384|4294967295|
 |内存优化|32|16777216|16384|4294967295|
 
-## <a name="tmp_table_size"></a>tmp_table_size
+### <a name="tmp_table_size"></a>tmp_table_size
 
 查看 [MySQL 文档](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_tmp_table_size)详细了解此参数。
 
 |**定价层**|**vCore(s)**|**默认值**|**最小值**|**最大值**|
 |---|---|---|---|---|
 |基本|1|在基本层中不可配置|不适用|不适用|
-|基本|2|在基本层中不可配置|空值|不适用|
+|基本|2|在基本层中不可配置|不适用|不适用|
 |常规用途|2|16777216|1024|67108864|
 |常规用途|4|16777216|1024|134217728|
 |常规用途|8|16777216|1024|268435456|
@@ -155,6 +155,10 @@ ms.locfileid: "80342419"
 |内存优化|8|16777216|1024|536870912|
 |内存优化|16|16777216|1024|1073741824|
 |内存优化|32|16777216|1024|1073741824|
+
+### <a name="time_zone"></a>time_zone
+
+可以通过从 MySQL 命令行或 MySQL Workbench 等工具调用 `mysql.az_load_timezone` 存储过程来填充时区表。 有关如何调用存储过程并设置全局时区或会话级时区，请参阅文章 [Azure 门户](howto-server-parameters.md#working-with-the-time-zone-parameter)或 [Azure CLI](howto-configure-server-parameters-using-cli.md#working-with-the-time-zone-parameter)。
 
 ## <a name="storage-engine-support"></a>存储引擎支持
 

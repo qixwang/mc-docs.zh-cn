@@ -2,15 +2,15 @@
 title: 扩展资源类型
 description: 列出用于扩展其他资源类型的功能的 Azure 资源类型。
 ms.topic: conceptual
-origin.date: 01/20/2020
-ms.date: 03/23/2020
+origin.date: 04/06/2020
+ms.date: 04/30/2020
 ms.author: v-yeche
-ms.openlocfilehash: 579e5e5c5ae6aece530b7d42f0206c5bf858ea83
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 9c5a8de30143f21ee0c117393fc0617d19f367a9
+ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79543899"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82596091"
 ---
 <!--Verified successfully/Redirect file-->
 # <a name="resource-types-that-extend-capabilities-of-other-resources"></a>用于扩展其他资源的功能的资源类型
@@ -52,7 +52,6 @@ ms.locfileid: "79543899"
 - Microsoft.GuestConfiguration/software
 - Microsoft.GuestConfiguration/softwareUpdateProfile
 - Microsoft.GuestConfiguration/softwareUpdates
-- microsoft.insights/automatedExportSettings
 - microsoft.insights/baseline
 - microsoft.insights/calculatebaseline
 - microsoft.insights/dataCollectionRuleAssociations
@@ -88,7 +87,7 @@ ms.locfileid: "79543899"
 - Microsoft.PolicyInsights/policyTrackedResources
 - Microsoft.PolicyInsights/remediations
 - Microsoft.RecoveryServices/backupProtectedItems
-- Microsoft.RecoveryServices/replicationEligibilityResults  
+- Microsoft.RecoveryServices/replicationEligibilityResults
 - Microsoft.ResourceHealth/availabilityStatuses
 - Microsoft.ResourceHealth/childAvailabilityStatuses
 - Microsoft.ResourceHealth/childResources
@@ -105,7 +104,6 @@ ms.locfileid: "79543899"
 - Microsoft.Security/assessments
 - Microsoft.Security/complianceResults
 - Microsoft.Security/dataCollectionAgents
-- Microsoft.Security/dataCollectionResults
 - Microsoft.Security/deviceSecurityGroups
 - Microsoft.Security/networkData
 - Microsoft.Security/serverVulnerabilityAssessments

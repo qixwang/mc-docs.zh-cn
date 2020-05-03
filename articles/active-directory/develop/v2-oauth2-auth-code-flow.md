@@ -2,27 +2,22 @@
 title: OAuth 授权代码流 - Microsoft 标识平台 | Azure
 description: 使用 OAuth 2.0 身份验证协议的 Microsoft 标识平台实现生成 Web 应用程序。
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
-ms.assetid: ae1d7d86-7098-468c-aa32-20df0a10ee3d
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/23/2020
+ms.date: 04/23/2020
 ms.author: v-junlch
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 1e6f3c920cf28c3a4e51d638c152790aef4ed03c
-ms.sourcegitcommit: 6568c59433d7e80ab06e9fe76d4791f761ed6775
+ms.openlocfilehash: 707dfb202a17db83aedb9b0f5d5865216b9e293c
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80243081"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126396"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Microsoft 标识平台和 OAuth 2.0 授权代码流
 
@@ -63,11 +58,11 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 | 参数    | 必需/可选 | 说明 |
 |--------------|-------------|--------------|
-| `tenant`    | 必填    | 请求路径中的 `{tenant}` 值可用于控制哪些用户可以登录应用程序。 可以使用的值包括 `common`、`organizations`、`consumers` 和租户标识符。 有关详细信息，请参阅[协议基础知识](active-directory-v2-protocols.md#endpoints)。  |
-| `client_id`   | 必填    | [Azure 门户 - 应用注册](https://portal.azure.cn/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)体验分配给应用的**应用程序（客户端）ID**。  |
-| `response_type` | 必填    | 必须包括授权代码流的 `code` 。       |
-| `redirect_uri`  | 必填 | 应用的 redirect_uri，应用可向其发送及从其接收身份验证响应。 它必须完全符合在门户中注册的其中一个 redirect_uris，否则必须是编码的 url。 对于本机和移动应用，应使用默认值 `https://login.partner.microsoftonline.cn/common/oauth2/nativeclient`。   |
-| `scope`  | 必填    | 希望用户同意的[范围](v2-permissions-and-consent.md)的空格分隔列表。  对于请求的 `/authorize` 段，这可以涵盖多个资源，从而允许应用获得你要调用的多个 Web API 的同意。 |
+| `tenant`    | 必需    | 请求路径中的 `{tenant}` 值可用于控制哪些用户可以登录应用程序。 可以使用的值包括 `common`、`organizations`、`consumers` 和租户标识符。 有关详细信息，请参阅[协议基础知识](active-directory-v2-protocols.md#endpoints)。  |
+| `client_id`   | 必需    | [Azure 门户 - 应用注册](https://portal.azure.cn/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)体验分配给应用的**应用程序（客户端）ID**。  |
+| `response_type` | 必需    | 必须包括授权代码流的 `code` 。       |
+| `redirect_uri`  | 必需 | 应用的 redirect_uri，应用可向其发送及从其接收身份验证响应。 它必须完全符合在门户中注册的其中一个 redirect_uris，否则必须是编码的 url。 对于本机和移动应用，应使用默认值 `https://login.partner.microsoftonline.cn/common/oauth2/nativeclient`。   |
+| `scope`  | 必需    | 希望用户同意的[范围](v2-permissions-and-consent.md)的空格分隔列表。  对于请求的 `/authorize` 段，这可以涵盖多个资源，从而允许应用获得你要调用的多个 Web API 的同意。 |
 | `response_mode`   | 建议 | 指定将生成的令牌送回到应用程序时应该使用的方法。 可以是以下值之一：<br/><br/>- `query`<br/>- `fragment`<br/>- `form_post`<br/><br/>`query` 在重定向 URI 上提供代码作为查询字符串参数。 如果要使用隐式流请求 ID 令牌，则不能使用 [OpenID 规范](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Combinations)中指定的 `query`。如果只是请求代码，则可以使用 `query`、`fragment` 或 `form_post`。 `form_post` 对重定向 URI 执行包含代码的 POST。 有关详细信息，请参阅 [OpenID Connect 协议](/active-directory/develop/active-directory-protocols-openid-connect-code)。  |
 | `state`                 | 建议 | 同样随令牌响应返回的请求中所包含的值。 可以是想要的任何内容的字符串。 随机生成的唯一值通常用于 [防止跨站点请求伪造攻击](https://tools.ietf.org/html/rfc6749#section-10.12)。 在发出身份验证请求出现之前，此值对有关用户在应用中的状态的信息（例如前面所在的页面或视图）进行编码。 |
 | `prompt`  | 可选    | 表示需要的用户交互类型。 目前仅有的有效值为 `login`、`none` 和 `consent`。<br/><br/>- `prompt=login` 将强制用户在该请求上输入其凭据，从而使单一登录无效。<br/>- `prompt=none` 则相反 - 它确保不对用户显示任何交互式提示。 如果请求无法通过单一登录静默完成，则 Microsoft 标识平台终结点将返回 `interaction_required` 错误。<br/>- `prompt=consent` 在用户登录后将触发 OAuth 同意对话框，要求用户向应用授予权限。<br/>- `prompt=select_account` 将中断单一登录，提供帐户选择体验（列出所有帐户（会话中的帐户或任何记住的帐户），或提供用于选择使用其他帐户的选项）。<br/> |
@@ -150,13 +145,13 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 | 参数  | 必需/可选 | 说明     |
 |------------|-------------------|----------------|
-| `tenant`   | 必填   | 请求路径中的 `{tenant}` 值可用于控制哪些用户可以登录应用程序。 可以使用的值包括 `common`、`organizations`、`consumers` 和租户标识符。 有关详细信息，请参阅[协议基础知识](active-directory-v2-protocols.md#endpoints)。  |
-| `client_id` | 必填  | [Azure 门户 - 应用注册](https://portal.azure.cn/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)页分配给应用的应用程序（客户端）ID。 |
-| `grant_type` | 必填   | 必须是授权代码流的 `authorization_code` 。   |
-| `scope`      | 必填   | 范围的空格分隔列表。 在此阶段请求的范围必须相当于或为第一个阶段中所请求的范围子集。 范围必须全部来自单个资源，以及 OIDC范围（`profile`、`openid`、`email`）。 有关范围更加详细的说明，请参阅[权限、许可和范围](v2-permissions-and-consent.md)。 |
-| `code`          | 必填  | 在流的第一个阶段中获取的 authorization_code。 |
-| `redirect_uri`  | 必填  | 用于获取 authorization_code 的相同 redirect_uri 值。 |
-| `client_secret` | 必填（对于 Web 应用） | 在应用注册门户中为应用创建的应用程序机密。 不应在本机应用中使用应用程序机密，因为 client_secrets 不能可靠地存储在设备上。 Web 应用和 Web API 都需要应用程序机密，能够将 client_secret 安全地存储在服务器端。  在发送客户端密码之前必须对其进行 URL 编码。 有关详细信息，请单击[此处](https://tools.ietf.org/html/rfc3986#page-12)。 |
+| `tenant`   | 必需   | 请求路径中的 `{tenant}` 值可用于控制哪些用户可以登录应用程序。 可以使用的值包括 `common`、`organizations`、`consumers` 和租户标识符。 有关详细信息，请参阅[协议基础知识](active-directory-v2-protocols.md#endpoints)。  |
+| `client_id` | 必需  | [Azure 门户 - 应用注册](https://portal.azure.cn/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)页分配给应用的应用程序（客户端）ID。 |
+| `grant_type` | 必需   | 必须是授权代码流的 `authorization_code` 。   |
+| `scope`      | 必需   | 范围的空格分隔列表。 在此阶段请求的范围必须相当于或为第一个阶段中所请求的范围子集。 范围必须全部来自单个资源，以及 OIDC范围（`profile`、`openid`、`email`）。 有关范围更加详细的说明，请参阅[权限、许可和范围](v2-permissions-and-consent.md)。 |
+| `code`          | 必需  | 在流的第一个阶段中获取的 authorization_code。 |
+| `redirect_uri`  | 必需  | 用于获取 authorization_code 的相同 redirect_uri 值。 |
+| `client_secret` | 必需（对于 Web 应用） | 在应用注册门户中为应用创建的应用程序机密。 不应在本机应用中使用应用程序机密，因为 client_secrets 不能可靠地存储在设备上。 Web 应用和 Web API 都需要应用程序机密，能够将 client_secret 安全地存储在服务器端。  在发送客户端密码之前必须对其进行 URL 编码。 有关详细信息，请单击[此处](https://tools.ietf.org/html/rfc3986#page-12)。 |
 | `code_verifier` | 可选  | 即用于获取 authorization_code 的 code_verifier。 如果在授权码授权请求中使用 PKCE，则需要。 有关详细信息，请参阅 [PKCE RFC](https://tools.ietf.org/html/rfc7636)。 |
 
 ### <a name="successful-response"></a>成功的响应
@@ -224,7 +219,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 ## <a name="use-the-access-token"></a>使用访问令牌
 
-已成功获取 `access_token`，现可通过在 `Authorization` 标头中包含令牌，在 Web API 的请求中使用令牌：
+现已成功获取 `access_token`，可以通过在 `Authorization` 标头中包含令牌，在 Web API 的请求中使用令牌：
 
 > [!TIP]
 > 在 Postman 中执行此请求！ （先替换 `Authorization` 标头）[![尝试在 Postman 中运行此请求](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
@@ -237,11 +232,11 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZn
 
 ## <a name="refresh-the-access-token"></a>刷新访问令牌
 
-Access_token 生存期很短，必须在其过期后刷新，才能继续访问资源。 为此，可以向 `/token` 终结点提交另一个 `POST` 请求，但这次要提供 `refresh_token` 而不是 `code`。  刷新令牌对客户端已获得同意的所有权限有效 - 因此，对 `scope=mail.read` 请求发出的刷新令牌可用于请求 `scope=api://contoso.com/api/UseResource` 的新访问令牌。  
+Access_token 生存期很短，必须在其过期后刷新，才能继续访问资源。 为此，可以向 `/token` 终结点提交另一个 `POST` 请求，但这次要提供 `refresh_token` 而不是 `code`。  刷新令牌对客户端已获得同意的所有权限有效 - 因此，对 `scope=mail.read` 请求发出的刷新令牌可用于请求 `scope=api://contoso.com/api/UseResource` 的新访问令牌。
 
-刷新令牌没有指定的生存期。 通常，刷新令牌的生存期相对较长。 但是，在某些情况下，刷新令牌会过期、被吊销，或缺少执行所需操作的足够权限。 应用程序需要正确预期和处理[令牌颁发终结点返回的错误](#error-codes-for-token-endpoint-errors)。 
+刷新令牌没有指定的生存期。 通常，刷新令牌的生存期相对较长。 但是，在某些情况下，刷新令牌会过期、被吊销，或缺少执行所需操作的足够权限。 应用程序需要正确预期和处理[令牌颁发终结点返回的错误](#error-codes-for-token-endpoint-errors)。
 
-尽管刷新令牌在用于获取新访问令牌时不会被吊销，但预期你会丢弃旧的刷新令牌。 [OAuth 2.0 规范](https://tools.ietf.org/html/rfc6749#section-6)指出：“授权服务器可能会发出新的刷新令牌，在这种情况下，客户端必须丢弃旧的刷新令牌，并将其替换为新的刷新令牌。 授权服务器在向客户端颁发新的刷新令牌后，可能会吊销旧的刷新令牌。”  
+尽管刷新令牌在用于获取新访问令牌时不会被吊销，但预期你会丢弃旧的刷新令牌。 [OAuth 2.0 规范](https://tools.ietf.org/html/rfc6749#section-6)指出：“授权服务器可能会发出新的刷新令牌，在这种情况下，客户端必须丢弃旧的刷新令牌，并将其替换为新的刷新令牌。 授权服务器在向客户端颁发新的刷新令牌后，可能会吊销旧的刷新令牌。”
 
 ```
 // Line breaks for legibility only
@@ -259,16 +254,16 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 > [!TIP]
 > 尝试在 Postman 中执行此请求！ （请不要忘记替换 `refresh_token`）[![尝试在 Postman 中运行此请求](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
-> 
+>
 
 | 参数     |                | 说明        |
 |---------------|----------------|--------------------|
-| `tenant`        | 必填     | 请求路径中的 `{tenant}` 值可用于控制哪些用户可以登录应用程序。 可以使用的值包括 `common`、`organizations`、`consumers` 和租户标识符。 有关详细信息，请参阅[协议基础知识](active-directory-v2-protocols.md#endpoints)。   |
-| `client_id`     | 必填    | [Azure 门户 - 应用注册](https://portal.azure.cn/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)体验分配给应用的**应用程序（客户端）ID**。 |
-| `grant_type`    | 必填    | 必须是授权代码流的此阶段的 `refresh_token` 。 |
-| `scope`         | 必填    | 范围的空格分隔列表。 在此阶段请求的范围必须等效于原始 authorization_code 请求阶段中所请求的范围，或者为该范围的子集。 如果这个请求中指定的范围遍及多个资源服务器，Microsoft 标识平台终结点将返回第一个范围内所指定资源的令牌。 有关范围更加详细的说明，请参阅[权限、许可和范围](v2-permissions-and-consent.md)。 |
-| `refresh_token` | 必填    | 在流的第二个阶段获取的 refresh_token。 |
-| `client_secret` | 必填（对于 Web 应用） | 在应用注册门户中为应用创建的应用程序机密。 它不应用于本机应用，因为设备无法可靠地存储 client_secrets。 Web 应用和 Web API 都需要应用程序机密，能够将 client_secret 安全地存储在服务器端。 此机密需要进行 URL 编码，有关详细信息，请单击[此处](https://tools.ietf.org/html/rfc3986#page-12)。 |
+| `tenant`        | 必需     | 请求路径中的 `{tenant}` 值可用于控制哪些用户可以登录应用程序。 可以使用的值包括 `common`、`organizations`、`consumers` 和租户标识符。 有关详细信息，请参阅[协议基础知识](active-directory-v2-protocols.md#endpoints)。   |
+| `client_id`     | 必需    | [Azure 门户 - 应用注册](https://portal.azure.cn/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)体验分配给应用的**应用程序（客户端）ID**。 |
+| `grant_type`    | 必需    | 必须是授权代码流的此阶段的 `refresh_token` 。 |
+| `scope`         | 必需    | 范围的空格分隔列表。 在此阶段请求的范围必须等效于原始 authorization_code 请求阶段中所请求的范围，或者为该范围的子集。 如果这个请求中指定的范围遍及多个资源服务器，Microsoft 标识平台终结点将返回第一个范围内所指定资源的令牌。 有关范围更加详细的说明，请参阅[权限、许可和范围](v2-permissions-and-consent.md)。 |
+| `refresh_token` | 必需    | 在流的第二个阶段获取的 refresh_token。 |
+| `client_secret` | 必需（对于 Web 应用） | 在应用注册门户中为应用创建的应用程序机密。 它不应用于本机应用，因为设备无法可靠地存储 client_secrets。 Web 应用和 Web API 都需要应用程序机密，能够将 client_secret 安全地存储在服务器端。 此机密需要进行 URL 编码，有关详细信息，请单击[此处](https://tools.ietf.org/html/rfc3986#page-12)。 |
 
 #### <a name="successful-response"></a>成功的响应
 
@@ -319,4 +314,3 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 有关错误代码的描述和建议的客户端操作，请参阅 [令牌终结点错误的错误代码](#error-codes-for-token-endpoint-errors)。
 
-<!-- Update_Description: wording update -->

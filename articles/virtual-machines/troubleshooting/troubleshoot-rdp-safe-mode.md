@@ -1,5 +1,5 @@
 ---
-title: 由于 VM 启动到安全模式，因此无法对 VM 进行 RDP
+title: 因 VM 启动到安全模式而无法通过 RDP 连接到该 VM
 description: 了解如何排查因 VM 启动到安全模式而无法通过 RDP 连接到该 VM 的问题 | Azure
 services: virtual-machines-windows
 documentationCenter: ''
@@ -11,21 +11,18 @@ ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 origin.date: 11/13/2018
-ms.date: 02/10/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: ace89caf11b8b550e3fa96298a548d96b8c4056d
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 4804d5592d6a29e3a4a0a4bbd957ac0725479026
+ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77428849"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82596357"
 ---
-# <a name="cannot-rdp-to-a-vm-because-the-vm-boots-into-safe-mode"></a>由于 VM 启动到安全模式，因此无法对 VM 进行 RDP
+# <a name="cannot-rdp-to-a-vm-because-the-vm-boots-into-safe-mode"></a>因 VM 启动到安全模式而无法通过 RDP 连接到该 VM
 
 本文展示了如何解决由于将 Azure Windows 虚拟机 (VM) 配置为启动到安全模式而导致无法连接到该 VM 的问题。
-
-> [!NOTE]
-> Azure 具有用于创建和处理资源的两个不同的部署模型： [Resource Manager 和经典](../../azure-resource-manager/management/deployment-models.md)。 本文介绍如何使用资源管理器部署模型。建议对新部署使用该模型，而不要使用经典部署模型。
 
 ## <a name="symptoms"></a>症状
 
@@ -96,7 +93,7 @@ RDP 服务在安全模式下不可用。 VM 启动到安全模式时，只会加
     
     记下具有 **\windows** 文件夹的分区的标识符名称。 默认情况下，该标识符名称为“Default”。
 
-    如果 VM 配置为启动到安全模式，则可在“Windows 启动加载程序”部分下看到一个名为“安全启动”的额外标志   。 如果未看到“安全启动”  标志，则本文不适用于你的方案。
+    如果 VM 配置为启动到安全模式，则可在“Windows 启动加载程序”部分下看到一个名为 **safeboot** 的额外标志  。 如果未看到“安全启动”  标志，则本文不适用于你的方案。
 
     ![有关启动标识符的图像](./media/troubleshoot-rdp-safe-mode/boot-id.png)
 

@@ -5,15 +5,15 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 09/13/2019
-ms.date: 10/28/2019
+ms.date: 04/27/2020
 ms.author: v-yeche
 ms.custom: query-reference
-ms.openlocfilehash: c55ddfc739635bf4ae6bb89e812fff95231ad8a0
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: da977d3d4bb4995a3e595159e2a0673bd39689cf
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "72914704"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134556"
 ---
 # <a name="left-azure-cosmos-db"></a>LEFT (Azure Cosmos DB)
  返回具有指定字符数的字符串的左侧部分。  
@@ -34,21 +34,25 @@ LEFT(<str_expr>, <num_expr>)
 
 ## <a name="return-types"></a>返回类型
 
-  返回字符串表达式。  
+  返回一个字符串表达式。  
 
 ## <a name="examples"></a>示例
 
-  以下示例将返回不同长度值的 "abc" 的左侧部分。  
+  以下示例根据不同的长度值返回“abc”的左侧部分。  
 
 ```sql
 SELECT LEFT("abc", 1) AS l1, LEFT("abc", 2) AS l2 
 ```  
 
- 下面是结果集：  
+ 下面是结果集。  
 
 ```json
 [{"l1": "a", "l2": "ab"}]  
 ```  
+
+## <a name="remarks"></a>备注
+
+此系统函数将从[范围索引](index-policy.md#includeexclude-strategy)中获益。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -56,5 +60,4 @@ SELECT LEFT("abc", 1) AS l1, LEFT("abc", 2) AS l2
 - [系统函数 Azure Cosmos DB](sql-query-system-functions.md)
 - [Azure Cosmos DB 简介](introduction.md)
 
-<!--Update_Description: new articles on sql query left  -->
-<!--New.date: 10/28/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

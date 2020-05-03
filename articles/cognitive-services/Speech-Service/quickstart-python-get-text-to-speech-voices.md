@@ -3,20 +3,20 @@ title: 列出“文本转语音”语音，Python - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 本文介绍如何使用 Python 获取某个区域/终结点的标准语音和神经语音的完整列表。 列表以 JSON 形式返回，语音可用性因区域而异。
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: how-to
-origin.date: 02/10/2020
-ms.date: 03/16/2020
+origin.date: 04/13/2020
+ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: cc3e7ee62df0f47d22b15bb48c62321ac8fcb5e4
-ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
+ms.openlocfilehash: 16fcb4b5071a2591b49c27504b782be5f1d92edb
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80151658"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126863"
 ---
 # <a name="get-the-list-of-text-to-speech-voices-using-python"></a>使用 Python 获取“文本转语音”语音的列表
 
@@ -27,8 +27,9 @@ ms.locfileid: "80151658"
 ## <a name="prerequisites"></a>先决条件
 
 * Python 2.7.x 或 3.x
-* [Visual Studio](https://visualstudio.microsoft.com/downloads/)、[Visual Studio Code](https://code.visualstudio.com/download) 或你喜欢用的文本编辑器
+* <a href="https://visualstudio.microsoft.com/downloads/" target="_blank">Visual Studio<span class="docon docon-navigate-external x-hidden-focus"></span></a>、<a href="https://code.visualstudio.com/download" target="_blank">Visual Studio Code<span class="docon docon-navigate-external x-hidden-focus"></span></a> 或你喜欢用的文本编辑器
 * 语音服务的 Azure 订阅密钥
+* 需要语音 SDK 版本 1.10.0 或更高版本。
 
 ## <a name="create-a-project-and-import-required-modules"></a>创建一个项目并导入必需的模块
 

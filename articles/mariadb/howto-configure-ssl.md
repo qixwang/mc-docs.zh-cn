@@ -1,18 +1,18 @@
 ---
-title: 配置 SSL 连接性以安全连接到 Azure Database for MariaDB
+title: 配置 SSL - Azure Database for MariaDB
 description: 介绍了如何正确配置 Azure Database for MariaDB 和关联的应用程序，以正确使用 SSL 连接
 author: WenJason
 ms.author: v-jay
 ms.service: mariadb
 ms.topic: conceptual
-origin.date: 07/02/2019
-ms.date: 07/26/2019
-ms.openlocfilehash: 10485cca555cfd16d188469ecd5527ce8214c978
-ms.sourcegitcommit: 021dbf0003a25310a4c8582a998c17729f78ce42
+origin.date: 3/18/2020
+ms.date: 04/27/2020
+ms.openlocfilehash: 37b2ef426952b4fd7751e558dce9f2b81af4117f
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68514289"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82127080"
 ---
 # <a name="configure-ssl-connectivity-in-your-application-to-securely-connect-to-azure-database-for-mariadb"></a>配置应用程序的 SSL 连接性以安全连接到 Azure Database for MariaDB
 Azure Database for MariaDB 支持使用安全套接字层 (SSL) 将 Azure Database for MariaDB 服务器连接到客户端应用程序。 通过在数据库服务器与客户端应用程序之间强制实施 SSL 连接，可以加密服务器与应用程序之间的数据流，有助于防止“中间人”攻击。
@@ -114,9 +114,21 @@ client = Mysql2::Client.new(
         :username => 'myadmin@mydemoserver',      
         :password => 'yourpassword',    
         :database => 'quickstartdb',
-        :ssl_ca => 'C:\OpenSSL-Win32\bin\DigiCertGlobalRootCA.pem'
+        :sslca => 'C:\OpenSSL-Win32\bin\DigiCertGlobalRootCA.pem'
+        :ssl_mode => 'required'
     )
 ```
+#### <a name="ruby-on-rails"></a>Ruby on Rails
+```ruby
+default: &default
+  adapter: mysql2
+  username: username@mydemoserver
+  password: yourpassword
+  host: mydemoserver.mariadb.database.chinacloudapi.cn
+  sslca: BaltimoreCyberTrustRoot.crt.pem
+  sslverify: true
+```
+
 ### <a name="golang"></a>Golang
 ```go
 rootCertPool := x509.NewCertPool()

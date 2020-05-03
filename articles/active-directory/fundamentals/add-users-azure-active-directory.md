@@ -14,12 +14,12 @@ ms.author: v-junlch
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cb9b45f51ab326132e85cf2bc60132192d634bb0
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 545834f4c893fa5e0cd9bbe67790b40183556fab
+ms.sourcegitcommit: 95efd248f5ee3701f671dbd5cfe0aec9c9959a24
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79291014"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82507634"
 ---
 # <a name="add-or-delete-users-using-azure-active-directory"></a>使用 Azure Active Directory 添加或删除用户
 
@@ -61,7 +61,7 @@ ms.locfileid: "79291014"
 
 ## <a name="add-a-consumer-user"></a>添加使用者用户
 
-某些情况下，可能需要在 Azure Active Directory B2C (Azure AD B2C) 目录中手动创建所有者帐户。 有关创建使用者帐户的详细信息，请参阅[在 Azure AD B2C 中创建和删除使用者用户](../../active-directory-b2c/manage-users-portal.md)。
+某些情况下，可能需要在 Azure Active Directory B2C (Azure AD B2C) 目录中手动创建所有者帐户。 
 
 ## <a name="add-a-new-user-within-a-hybrid-environment"></a>在混合环境内添加新用户
 

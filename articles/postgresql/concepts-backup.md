@@ -6,13 +6,13 @@ ms.author: v-jay
 ms.service: postgresql
 ms.topic: conceptual
 origin.date: 02/25/2020
-ms.date: 03/16/2020
-ms.openlocfilehash: 315022f5dc7e2db5b3149cf9deb15d5e26048bd6
-ms.sourcegitcommit: 32997a7d7585deaeb0ab7b8f928d397b18b343fa
+ms.date: 04/27/2020
+ms.openlocfilehash: a33425c2d17745d28358839f85ba746f486daca7
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79295939"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126708"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---single-server"></a>在 Azure Database for PostgreSQL - 单一服务器中进行备份和还原
 
@@ -26,7 +26,7 @@ Azure Database for PostgreSQL 对数据文件和事务日志进行备份。 我�
 
 ### <a name="backup-frequency"></a>备份频率
 
-通常情况下，完整备份每周进行一次，差异备份每天进行两次，事务日志备份每五分钟进行一次。 第一次完整备份在创建服务器后立即进行计划。 在大型还原服务器上，初始完整备份可能需要更长时间。 新服务器可以还原到的最早时间点是完成初始完整备份的时间。
+通常情况下，完整备份每周进行一次，差异备份每天进行两次，事务日志备份每五分钟进行一次。 创建服务器后，立即计划完整备份的第一个快照。 在大型还原服务器上，初始完整备份可能需要更长时间。 新服务器可以还原到的最早时间点是完成初始完整备份的时间。
 
 ### <a name="backup-redundancy-options"></a>备份冗余选项
 

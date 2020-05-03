@@ -4,19 +4,19 @@ description: 了解如何在环境中配置基于证书的身份验证
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: article
-ms.date: 01/09/2020
+ms.topic: how-to
+ms.date: 04/24/2020
 ms.author: v-junlch
 author: iainfoulds
 manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc1c7f572fcc1d0cac3d7e4efb02b4ec95076f90
-ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
+ms.openlocfilehash: ecf63e87539803e4f318cc91ba6a757b4287e71c
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75776893"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126230"
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>Azure Active Directory 中基于证书的身份验证入门
 
@@ -211,4 +211,3 @@ EAS 配置文件必须包含以下信息：
 
 [有关 iOS 设备上基于证书的身份验证的其他信息。](active-directory-certificate-based-authentication-ios.md)
 
-<!-- Update_Description: wording update -->

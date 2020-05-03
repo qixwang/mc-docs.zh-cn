@@ -1,26 +1,27 @@
 ---
-title: 使用 Azure 数据工厂（预览版）从 QuickBooks Online 复制数据 | Microsoft Docs
+title: 使用 Azure 数据工厂（预览版）从 QuickBooks Online 复制数据
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 QuickBooks Online 复制到受支持的接收器数据存储。
 services: data-factory
 documentationcenter: ''
 author: WenJason
+ms.author: v-jay
 manager: digimobile
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 origin.date: 08/01/2019
-ms.date: 11/11/2019
-ms.author: v-jay
-ms.openlocfilehash: 6868c28c6827b5942476cd4e753ac52e6754c929
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/11/2020
+ms.openlocfilehash: adb06a8950bd78f83afbb37fac59c7a945bc3e85
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "73648817"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82197930"
 ---
 # <a name="copy-data-from-quickbooks-online-using-azure-data-factory-preview"></a>使用 Azure 数据工厂（预览版）从 QuickBooks Online 复制数据
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从 QuickBooks Online 复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 

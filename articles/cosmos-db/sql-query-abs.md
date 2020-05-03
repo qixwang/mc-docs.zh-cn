@@ -4,16 +4,16 @@ description: 了解 Azure Cosmos DB 中的 Absolute(ABS) SQL 系统函数如何�
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
-origin.date: 12/02/2019
-ms.date: 02/10/2020
+origin.date: 03/04/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
 ms.custom: query-reference
-ms.openlocfilehash: ad3623988793ab897c0555e7042310468d6c9c4d
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: d7ac9fc7699e68cbdee49e5b6f8ba025264230d1
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77028719"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134671"
 ---
 # <a name="abs-azure-cosmos-db"></a>ABS (Azure Cosmos DB)
  返回指定数值表达式的绝对（正）值。  
@@ -27,11 +27,11 @@ ABS (<numeric_expr>)
 ## <a name="arguments"></a>参数
 
 *numeric_expr*  
-  为数值表达式。  
+  是一个数值表达式。  
 
 ## <a name="return-types"></a>返回类型
 
-  返回数值表达式。  
+  返回一个数值表达式。  
 
 ## <a name="examples"></a>示例
 
@@ -41,11 +41,15 @@ ABS (<numeric_expr>)
 SELECT ABS(-1) AS abs1, ABS(0) AS abs2, ABS(1) AS abs3 
 ```  
 
- 下面是结果集：  
+ 下面是结果集。  
 
 ```json
 [{abs1: 1, abs2: 0, abs3: 1}]  
-```  
+```
+
+## <a name="remarks"></a>备注
+
+此系统函数将从[范围索引](index-policy.md#includeexclude-strategy)中获益。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -53,4 +57,4 @@ SELECT ABS(-1) AS abs1, ABS(0) AS abs2, ABS(1) AS abs3
 - [系统函数 Azure Cosmos DB](sql-query-system-functions.md)
 - [Azure Cosmos DB 简介](introduction.md)
 
-<!-- Update_Description: update meta properties -->
+<!-- Update_Description: update meta properties, wording update, update link -->

@@ -6,14 +6,14 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 origin.date: 10/12/2018
-ms.date: 03/23/2020
+ms.date: 05/11/2020
 ms.author: v-yiso
-ms.openlocfilehash: 400b98f6ec6bb76de8f105c857ca036f7121d739
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: e61e18e8cd90f28b5614694c73a1230f5da99cdf
+ms.sourcegitcommit: 95efd248f5ee3701f671dbd5cfe0aec9c9959a24
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79295985"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82507734"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>使用 MQTT 协议与 IoT 中心通信
 
@@ -127,14 +127,9 @@ device_client = IoTHubDeviceClient.create_from_connection_string(deviceConnectio
   3. 设置“到期时间”  ，然后按 Enter。
   4. 将创建 SAS 令牌并将其复制到剪贴板。
 
-### <a name="for-device-explorer"></a>对于 Device Explorer
+   所生成的 SAS 令牌具有以下结构：
 
-  1. 转到“设备资源管理器”  中的“管理”  选项卡。
-  2. 单击“**SAS 令牌**”（右上角）。
-  3. 在 **SASTokenForm** 上，从 **DeviceID** 下拉列表中选择设备。 设置 **TTL**。
-  4. 单击“**生成**”创建令牌。
-
-     所生成的 SAS 令牌具有以下结构：`HostName={your hub name}.azure-devices.cn;DeviceId=javadevice;SharedAccessSignature=SharedAccessSignature sr={your hub name}.azure-devices.cn%2Fdevices%2FMyDevice01%2Fapi-version%3D2016-11-14&sig=vSgHBMUG.....Ntg%3d&se=1456481802`。
+   `HostName={your hub name}.azure-devices.net;DeviceId=javadevice;SharedAccessSignature=SharedAccessSignature sr={your hub name}.azure-devices.net%2Fdevices%2FMyDevice01%2Fapi-version%3D2016-11-14&sig=vSgHBMUG.....Ntg%3d&se=1456481802`
 
      此令牌中要用作“**密码**”字段以便使用 MQTT 进行连接的部分是：`SharedAccessSignature sr={your hub name}.azure-devices.cn%2Fdevices%2FMyDevice01%2Fapi-version%3D2016-11-14&sig=vSgHBMUG.....Ntg%3d&se=1456481802`。
 

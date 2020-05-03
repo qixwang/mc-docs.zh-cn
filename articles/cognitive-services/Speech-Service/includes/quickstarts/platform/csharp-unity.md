@@ -11,12 +11,12 @@ ms.topic: include
 origin.date: 10/10/2019
 ms.date: 01/13/2020
 ms.author: v-tawe
-ms.openlocfilehash: 0dec663c20664fc4ab0c052484b04950d9da03eb
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 37fff989ba58f492af04b9474e8d78441c7a61be
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75631028"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82150908"
 ---
 本指南介绍如何安装用于 [Unity](https://unity3d.com/) 的[语音 SDK](~/articles/cognitive-services/speech-service/speech-sdk.md)。
 
@@ -32,6 +32,7 @@ ms.locfileid: "75631028"
 - [Unity 2018.3 或更高版本](https://store.unity.com/)，以及[支持 UWP ARM64 的 Unity 2019.1](https://blogs.unity3d.com/2019/04/16/introducing-unity-2019-1/#universal)。
 - [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)。 也可以使用 Visual Studio 2017 版本 15.9 或更高版本。
 - 为了支持 Windows ARM64，请安装[适用于 ARM64 的可选版本工具，以及适用于 ARM64 的 Windows 10 SDK](https://blogs.windows.com/buildingapps/2018/11/15/official-support-for-windows-10-on-arm-development/)
+- 需要语音 SDK 版本 1.10.0 或更高版本。
 
 ## <a name="install-the-speech-sdk"></a>安装语音 SDK
 

@@ -3,14 +3,14 @@ title: 为客户端身份验证设置 Azure Active Directory
 description: 了解如何设置 Azure Active Directory (Azure AD) 来对 Service Fabric 群集的客户端进行身份验证。
 ms.topic: conceptual
 origin.date: 06/28/2019
-ms.date: 02/24/2020
+ms.date: 04/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: f3b76561608e6c8e8d59393c8a3315802168d8a2
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.openlocfilehash: 39e0b891c218ee9d91fe2acb64e608110f6e0f4f
+ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77540193"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82093394"
 ---
 # <a name="set-up-azure-active-directory-for-client-authentication"></a>为客户端身份验证设置 Azure Active Directory
 
@@ -26,7 +26,7 @@ Service Fabric 群集提供其管理功能的各种入口点，包括基于 Web 
 > [!NOTE]
 > [已知问题](https://github.com/microsoft/service-fabric/issues/399)是在 Azure 门户中无法查看已启用 Linux AAD 的群集上的应用程序和节点。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 本文假设已创建了一个租户。 如果未创建，请先阅读[如何获取 Azure Active Directory 租户][active-directory-howto-tenant]。
 
 为了简化涉及到配置 Azure AD 与 Service Fabric 群集的一些步骤，我们创建了一组 Windows PowerShell 脚本。
@@ -51,7 +51,7 @@ $Configobj = .\SetupApplications.ps1 -TenantId '0e3d2646-78b3-4711-b8be-74a381d9
 <!--MOONCAKE: Add -location china parameter in $Configobj-->
 
 > [!NOTE]
-> 对于 Azure 中国云，还应指定 `-Location` 参数。
+> 对于国家云（例如，Azure 中国云），还应指定 `-Location` 参数。
 
 执行 PowerShell 命令 `Get-AzureSubscription`，可找到 TenantId  。 执行此命令，为每个订阅显示 TenantId。
 
@@ -108,7 +108,7 @@ Azure AD 的设置和使用可能有一定难度，可以参考下面的一些�
 代表 Service Fabric Explorer 的群集 (web) 应用程序尝试针对 Azure AD 进行身份验证，在执行请求的过程中提供了重定向返回 URL。 但是，该 URL 并未列在 Azure AD 应用程序的“回复 URL”  列表中。
 
 #### <a name="solution"></a>解决方案
-在 Azure AD 页上依次选择“应用注册”、你的群集应用程序、“回复 URL”。   在“回复 URL”窗格中，将 Service Fabric Explorer URL 添加到列表，或者替换列表中的某个项。  保存所做更改。
+在群集的“Azure AD 应用注册”页上，选择“身份验证”  ，然后在“重定向 URI”  部分下，将 Service Fabric Explorer URL 添加到列表中。 保存所做更改。
 
 ![Web 应用程序回复 URL][web-application-reply-url]
 

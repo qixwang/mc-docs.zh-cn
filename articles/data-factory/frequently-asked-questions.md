@@ -9,15 +9,18 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 origin.date: 02/10/2020
-ms.date: 03/23/2020
-ms.openlocfilehash: 61f0513a5c02caf14ee625ffd9b9eff99c25c36f
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/11/2020
+ms.openlocfilehash: 5018b5959e25575c4f64d8061d411e424c2cba80
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79497349"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82197874"
 ---
 # <a name="azure-data-factory-faq"></a>Azure 数据工厂常见问题解答
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+
 本文提供有关 Azure 数据工厂的常见问题解答。  
 
 ## <a name="what-is-azure-data-factory"></a>什么是 Azure 数据工厂？ 
@@ -79,15 +82,15 @@ ms.locfileid: "79497349"
 ### <a name="new-features-for-ssis-in-data-factory"></a>数据工厂中的 SSIS 新功能
 从 2017 年首次发布公共预览版以来，数据工厂添加了以下 SSIS 功能：
 
-- 增加了对三种 Azure SQL 数据库配置/变体的支持，可托管项目/包的 SSIS 数据库 (SSISDB)：
-- 包含虚拟网络服务终结点的 SQL 数据库
-- 托管实例
-- 弹性池
-- 支持构建在经典虚拟网络（将来会弃用）基础之上的 Azure 资源管理器虚拟网络，可让你将 Azure-SSIS Integration Runtime 注入/联接到可以访问虚拟网络服务终结点/MI/本地数据的 Azure SQL 数据库。 有关详细信息，另请参阅[将 Azure-SSIS Integration Runtime 加入虚拟网络](join-azure-ssis-integration-runtime-virtual-network.md)。
-- 支持使用 Azure Active Directory (Azure AD) 身份验证和 SQL 身份验证连接到 SSISDB，以便可对 Azure 资源的数据工厂托管标识进行 Azure AD 身份验证
-- 支持自带本地 SQL Server 许可证，大量节约 Azure 混合权益选项的成本
-- 支持 Azure-SSIS Integration Runtime 企业版，可让你使用高级功能、用于安装附加组件/扩展的自定义安装界面，以及合作伙伴生态系统。 有关详细信息，另请参阅 [ADF 中的 SSIS 企业版、自定义安装和第三方可扩展性](https://blogs.msdn.microsoft.com/ssis/2018/04/27/enterprise-edition-custom-setup-and-3rd-party-extensibility-for-ssis-in-adf/)。 
-- 在数据工厂中更深入地与 SSIS 进行了集成，可让你在数据工厂管道中调用/触发一流的执行 SSIS 包活动并通过 SSMS 对它们进行计划。 有关详细信息，另请参阅[使用 ADF 管道中的 SSIS 活动来实现 ETL/ELT 工作流的现代化并对其进行扩展](https://blogs.msdn.microsoft.com/ssis/2018/05/23/modernize-and-extend-your-etlelt-workflows-with-ssis-activities-in-adf-pipelines/)。
+-    增加了对三种 Azure SQL 数据库配置/变体的支持，可托管项目/包的 SSIS 数据库 (SSISDB)：
+-    包含虚拟网络服务终结点的 SQL 数据库
+-    托管实例
+-    弹性池
+-    支持构建在经典虚拟网络（将来会弃用）基础之上的 Azure 资源管理器虚拟网络，可让你将 Azure-SSIS Integration Runtime 注入/联接到可以访问虚拟网络服务终结点/MI/本地数据的 Azure SQL 数据库。 有关详细信息，另请参阅[将 Azure-SSIS Integration Runtime 加入虚拟网络](join-azure-ssis-integration-runtime-virtual-network.md)。
+-    支持使用 Azure Active Directory (Azure AD) 身份验证和 SQL 身份验证连接到 SSISDB，以便可对 Azure 资源的数据工厂托管标识进行 Azure AD 身份验证
+-    支持自带本地 SQL Server 许可证，大量节约 Azure 混合权益选项的成本
+-    支持 Azure-SSIS Integration Runtime 企业版，可让你使用高级功能、用于安装附加组件/扩展的自定义安装界面，以及合作伙伴生态系统。 有关详细信息，另请参阅 [ADF 中的 SSIS 企业版、自定义安装和第三方可扩展性](https://blogs.msdn.microsoft.com/ssis/2018/04/27/enterprise-edition-custom-setup-and-3rd-party-extensibility-for-ssis-in-adf/)。 
+-    在数据工厂中更深入地与 SSIS 进行了集成，可让你在数据工厂管道中调用/触发一流的执行 SSIS 包活动并通过 SSMS 对它们进行计划。 有关详细信息，另请参阅[使用 ADF 管道中的 SSIS 活动来实现 ETL/ELT 工作流的现代化并对其进行扩展](https://blogs.msdn.microsoft.com/ssis/2018/05/23/modernize-and-extend-your-etlelt-workflows-with-ssis-activities-in-adf-pipelines/)。
 
 
 ## <a name="what-is-the-integration-runtime"></a>什么是 Integration Runtime？

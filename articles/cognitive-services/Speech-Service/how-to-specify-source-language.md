@@ -9,19 +9,22 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 origin.date: 01/07/2020
-ms.date: 02/17/2020
+ms.date: 04/20/2020
 ms.author: v-tawe
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 476a59c89cd5c82cfa6bf1324362deeb14245459
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.openlocfilehash: 446255a5db1a9fd8bc425be58d5017f4e0459dd3
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77428773"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134666"
 ---
 # <a name="specify-source-language-for-speech-to-text"></a>指定语音转文本的源语言
 
-本文介绍如何指定某个传递给语音 SDK 进行语音识别的音频输入的源语言。 另外还提供示例代码，用于指定自定义语音模型以改进识别。
+> [!IMPORTANT]
+> 需要语音 SDK 版本 1.10.0 或更高版本。
+
+本文介绍如何指定某个传递给语音 SDK 进行语音识别的音频输入的源语言。 另外还提供示例代码，用于指定自定义语音识别模型以改进识别。
 
 ::: zone pivot="programming-language-csharp"
 
@@ -30,7 +33,6 @@ ms.locfileid: "77428773"
 在此示例中，使用 `SpeechRecognizer` 构造将源语言显式作为参数提供。
 
 ```csharp
-var speechConfig = SpeechConfig.FromHost(new Uri("wss://YourServiceRegion.stt.speech.azure.cn/"), "YourSubscriptionKey");
 var recognizer = new SpeechRecognizer(speechConfig, "de-DE", audioConfig);
 ```
 
@@ -61,7 +63,6 @@ var recognizer = new SpeechRecognizer(speechConfig, sourceLanguageConfig, audioC
 在此示例中，源语言是使用 `FromConfig` 方法作为参数显式提供的。
 
 ```C++
-auto speechConfig = SpeechConfig::FromHost("wss://YourServiceRegion.stt.speech.azure.cn/", "YourSubscriptionKey");
 auto recognizer = SpeechRecognizer::FromConfig(speechConfig, "de-DE", audioConfig);
 ```
 
@@ -91,7 +92,6 @@ auto recognizer = SpeechRecognizer::FromConfig(speechConfig, sourceLanguageConfi
 在此示例中，源语言是在创建新的 `SpeechRecognizer` 时显式提供的。
 
 ```Java
-SpeechConfig speechConfig = SpeechConfig.fromHost(new URI("wss://YourServiceRegion.stt.speech.azure.cn/"), "YourSubscriptionKey");
 SpeechRecognizer recognizer = new SpeechRecognizer(speechConfig, "de-DE", audioConfig);
 ```
 
@@ -118,24 +118,31 @@ SpeechRecognizer recognizer = new SpeechRecognizer(speechConfig, sourceLanguageC
 
 ## <a name="how-to-specify-source-language-in-python"></a>如何在 Python 中指定源语言
 
-第一步是创建 `speech_config`：
+在此示例中，使用 `SpeechRecognizer` 构造将源语言显式作为参数提供。
 
 ```Python
-speech_host, speech_key = "wss://YourServiceRegion.stt.speech.azure.cn/", "YourSubscriptionKey"
-speech_config = speechsdk.SpeechConfig(host=speech_host, subscription=speech_key)
+speech_recognizer = speechsdk.SpeechRecognizer(
+        speech_config=speech_config, language="de-DE", audio_config=audio_config)
 ```
 
-接下来，使用 `speech_recognition_language` 指定音频的源语言：
+在此示例中，源语言是使用 `SourceLanguageConfig` 提供的。 然后，将 `SourceLanguageConfig` 作为参数传递给 `SpeechRecognizer` 构造。
 
 ```Python
-speech_config.speech_recognition_language="de-DE"
+source_language_config = speechsdk.languageconfig.SourceLanguageConfig("de-DE")
+speech_recognizer = speechsdk.SpeechRecognizer(
+        speech_config=speech_config, source_language_config=source_language_config, audio_config=audio_config)
 ```
 
-如果使用自定义模型进行识别，则可使用 `endpoint_id` 指定终结点：
+在此示例中，源语言和自定义终结点是使用 `SourceLanguageConfig` 提供的。 然后，将 `SourceLanguageConfig` 作为参数传递给 `SpeechRecognizer` 构造。
 
 ```Python
-speech_config.endpoint_id = "The Endpoint ID for your custom model."
+source_language_config = speechsdk.languageconfig.SourceLanguageConfig("de-DE", "The Endpoint ID for your custom model.")
+speech_recognizer = speechsdk.SpeechRecognizer(
+        speech_config=speech_config, source_language_config=source_language_config, audio_config=audio_config)
 ```
+
+>[!Note]
+> 在 Python 中，`SpeechConfig` 类中的 `speech_recognition_language` 和 `endpoint_id` 属性已弃用。 建议不要使用这些属性，在构造 `SpeechRecognizer` 时不应使用它们。
 
 ::: zone-end
 
@@ -146,7 +153,7 @@ speech_config.endpoint_id = "The Endpoint ID for your custom model."
 第一步是创建 `SpeechConfig`：
 
 ```Javascript
-var speechConfig = sdk.SpeechConfig.fromHost(new Uri("wss://YourServiceRegion.stt.speech.azure.cn/"), "YourSubscriptionKey");
+var speechConfig = sdk.SpeechConfig.fromSubscription("YourSubscriptionKey", "YourServiceRegion");
 ```
 
 接下来，使用 `speechRecognitionLanguage` 指定音频的源语言：

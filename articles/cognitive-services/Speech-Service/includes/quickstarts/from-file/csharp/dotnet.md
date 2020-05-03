@@ -1,16 +1,16 @@
 ---
-author: IEvangelist
+author: trevorbye
 ms.service: cognitive-services
 ms.topic: include
-origin.date: 03/10/2020
-ms.date: 03/16/2020
+origin.date: 04/04/2020
+ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: 508f8cbd83daa834d45e2e620e6580128e317dbd
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 2fe7866502cd1cf2c09c68e5ad64b8d03040b528
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80151606"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82150785"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -18,7 +18,8 @@ ms.locfileid: "80151606"
 
 > [!div class="checklist"]
 > * [创建 Azure 语音资源](../../../../get-started.md)
-> * [设置开发环境并创建空项目](../../../../quickstarts/setup-platform.md?tabs=dotnet)
+> * [设置开发环境并创建空项目](../../../../quickstarts/setup-platform.md?tabs=dotnet&pivots=programming-language-csharp)
+> * 需要语音 SDK 版本 1.10.0 或更高版本。
 
 [!INCLUDE [Audio input format](~/articles/cognitive-services/speech-service/includes/audio-input-format-chart.md)]
 
@@ -66,12 +67,12 @@ namespace HelloWorld
 在初始化 `SpeechRecognizer` 对象之前，需要创建一个使用订阅密钥和订阅区域的配置。 将此代码插入 `RecognizeSpeechAsync()` 方法。
 
 > [!NOTE]
-> 此示例使用 `FromHost()` 方法来生成 `SpeechConfig`。 有关可用方法的完整列表，请参阅 [SpeechConfig 类](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet)。
+> 此示例使用 `FromSubscription()` 方法来生成 `SpeechConfig`。 有关可用方法的完整列表，请参阅 [SpeechConfig 类](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet)。
 > 语音 SDK 将默认使用 en-us 作为语言进行识别。若要了解如何选择源语言，请参阅[指定语音转文本的源语言](../../../../how-to-specify-source-language.md)。
 
 ```csharp
 // Replace with your own subscription key and region identifier from here: https://docs.azure.cn/cognitive-services/speech-service/regions
-var config = SpeechConfig.FromHost(new Uri("wss://YourServiceRegion.stt.speech.azure.cn/"), "YourSubscriptionKey");
+var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
 ```
 
 ## <a name="create-an-audio-configuration"></a>创建音频配置
@@ -160,7 +161,7 @@ namespace HelloWorld
 
         static async Task RecognizeSpeechAsync()
         {
-            var config = SpeechConfig.FromHost(new Uri("wss://YourServiceRegion.stt.speech.azure.cn/"), "YourSubscriptionKey");
+            var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
 
             using (var audioInput = AudioConfig.FromWavFileInput("whatstheweatherlike.wav"))
             using (var recognizer = new SpeechRecognizer(config, audioInput))
@@ -209,4 +210,4 @@ namespace HelloWorld
 
 ## <a name="next-steps"></a>后续步骤
 
-[!INCLUDE [footer](./footer.md)]
+[!INCLUDE [Speech recognition basics](../../speech-to-text-next-steps.md)]

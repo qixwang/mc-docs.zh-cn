@@ -5,15 +5,15 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 09/16/2019
-ms.date: 10/28/2019
+ms.date: 04/27/2020
 ms.author: v-yeche
 ms.custom: query-reference
-ms.openlocfilehash: 1557652d2adee3f7c828e24692ceb282d4067810
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: edf55edf2dbe47fd1e6d26970bc37d1eefce6ebb
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "72914684"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134761"
 ---
 # <a name="rand-azure-cosmos-db"></a>RAND (Azure Cosmos DB)
  返回 [0,1) 中随机生成的数值。
@@ -26,11 +26,11 @@ RAND ()
 
 ## <a name="return-types"></a>返回类型
 
-  返回数值表达式。
+  返回一个数值表达式。
 
 ## <a name="remarks"></a>备注
 
-  `RAND` 是非确定性函数。 重复调用 `RAND` 不会返回相同的结果。
+  `RAND` 是非确定性的函数。 重复调用 `RAND` 不会返回相同的结果。
 
 ## <a name="examples"></a>示例
 
@@ -40,11 +40,15 @@ RAND ()
 SELECT RAND() AS rand 
 ```  
 
- 下面是结果集：  
+ 下面是结果集。  
 
 ```json
 [{"rand": 0.87860053195618093}]  
 ``` 
+
+## <a name="remarks"></a>备注
+
+此系统函数不会使用索引。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -52,5 +56,4 @@ SELECT RAND() AS rand
 - [系统函数 Azure Cosmos DB](sql-query-system-functions.md)
 - [Azure Cosmos DB 简介](introduction.md)
 
-<!--Update_Description: new articles on sql query rand  -->
-<!--New.date: 10/28/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

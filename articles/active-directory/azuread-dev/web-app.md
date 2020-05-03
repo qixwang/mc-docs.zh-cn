@@ -5,29 +5,27 @@ services: active-directory
 documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: azuread-dev
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/24/2020
+ms.date: 04/23/2020
 ms.author: v-junlch
-ms.reviewer: saeeda, jmprieur, andret
+ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 0c3dc4fae7dcb59a98b19478d2fea1793c47e630
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ROBOTS: NOINDEX
+ms.openlocfilehash: f7b43d0ff58f6240f78ad07f7a71be91b2da02c3
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77653600"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126313"
 ---
 # <a name="web-apps"></a>Web 应用
 
 [!INCLUDE [active-directory-azuread-dev](../../../includes/active-directory-azuread-dev.md)]
 
-Web 应用是在 Web 浏览器到 Web 应用方案中对用户进行身份验证的应用程序。 在此方案中，Web 应用程序指示用户的浏览器让用户登录到 Azure AD 中。 Azure AD 通过用户的浏览器返回一个登录响应，该响应在一个安全令牌中包含了关于用户的声明。 此方案支持使用 OpenID Connect、SAML 2.0 和 WS 联合身份验证协议进行登录。
+Web 应用是在 Web 浏览器到 Web 应用方案中对用户进行身份验证的应用程序。 在此方案中，Web 应用程序指示用户的浏览器将用户登录到 Azure AD 中。 Azure AD 通过用户的浏览器返回一个登录响应，该响应在一个安全令牌中包含了关于用户的声明。 此方案支持使用 OpenID Connect 和 WS 联合身份验证协议进行登录。
 
 ## <a name="diagram"></a>图示
 
@@ -48,8 +46,8 @@ Web 应用是在 Web 浏览器到 Web 应用方案中对用户进行身份验证
 
 若要注册 Web 应用，请参阅[注册应用](../develop/quickstart-register-app.md?toc=/active-directory/azuread-dev/toc.json&bc=/active-directory/azuread-dev/breadcrumb/toc.json)。
 
-* 单租户 - 如果在构建仅供组织使用的应用程序，则必须使用 Azure 门户在公司的目录中注册该应用程序。
-* 多租户 - 如果在构建可以由组织外部用户使用的应用程序，则必须在公司的目录中注册该应用程序，并且还必须在将使用该应用程序的每个组织的目录中注册该应用程序。 要使应用程序在客户的目录中可用，可以提供一个供客户使用的注册流程，让客户许可应用程序的要求。 当他们针对用户的应用程序进行注册时，系统会向他们显示一个对话框，其中显示了应用程序要求的权限，然后是要许可的选项。 可能会要求其他组织中的管理员许可，具体取决于所需的权限。 当用户或管理员许可后，该应用程序在其目录中注册。
+* 单租户 - 如果要构建仅供你组织使用的应用程序，则必须使用 Azure 门户在公司的目录中注册该应用程序。
+* 多租户 - 如果在构建可由组织外部用户使用的应用程序，则必须在公司的目录中注册该应用程序，并且还必须在要使用该应用程序的每个组织的目录中注册该应用程序。 要使应用程序在客户的目录中可用，可以提供一个供客户使用的注册流程，让客户许可应用程序的要求。 当他们针对用户的应用程序进行注册时，系统会向他们显示一个对话框，其中显示了应用程序要求的权限，然后是要许可的选项。 可能会要求其他组织中的管理员许可，具体取决于所需的权限。 当用户或管理员许可后，该应用程序在其目录中注册。
 
 ## <a name="token-expiration"></a>令牌过期
 

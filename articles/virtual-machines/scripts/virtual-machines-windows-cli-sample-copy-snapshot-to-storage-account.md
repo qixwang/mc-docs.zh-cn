@@ -5,7 +5,6 @@ services: virtual-machines-windows
 documentationcenter: storage
 author: rockboyfor
 manager: digimobile
-editor: tysonn
 tags: azure-service-management
 ms.assetid: ''
 ms.service: virtual-machines-windows
@@ -14,19 +13,19 @@ ms.topic: sample
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 origin.date: 05/19/2017
-ms.date: 02/10/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
 ms.custom: mvc,seodec18
-ms.openlocfilehash: 63b0861f5373166936c7fbb7773f965b7005c2c4
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: f34ec07e455584dc1e4d6188a461b6095b0bca17
+ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77428151"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82596368"
 ---
 # <a name="exportcopy-a-snapshot-to-a-storage-account-in-different-region-with-cli"></a>使用 CLI 将快照导出/复制到不同区域中的存储帐户
 
-此脚本将托管快照导出到不同区域中的存储帐户。 它首先生成快照的 SAS URI，然后使用该 SAS URI 将快照复制到不同区域中的存储帐户。 可以使用此脚本在不同区域中维护托管磁盘的副本以备用于灾难恢复。
+此脚本将托管快照导出到不同区域中的存储帐户。 它首先会生成快照的 SAS URI，然后使用它将快照复制到不同区域中的存储帐户。 使用此脚本将托管磁盘的备份保留在灾难恢复的不同区域。
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -36,7 +35,7 @@ ms.locfileid: "77428151"
 
 ```azurecli
 #Provide the subscription Id where snapshot is created
-subscriptionId=dd80b94e-0463-4a65-8d04-c94f403879dc
+subscriptionId=<mySubscriptionId>
 
 #Provide the name of your resource group where snapshot is created
 resourceGroupName=myResourceGroupName
@@ -70,16 +69,16 @@ az storage blob copy start --destination-blob $destinationVHDFileName --destinat
 
 ## <a name="script-explanation"></a>脚本说明
 
-此脚本使用以下命令生成托管快照的 SAS URI 并使用该 SAS URI 将快照复制到一个存储帐户。 表中的每条命令均链接到特定于命令的文档。
+此脚本使用以下命令为托管快照生成 SAS URI，并使用 SAS URI 将快照复制到存储帐户。 表中的每条命令均链接到特定于命令的文档。
 
-| Command | 说明 |
+| 命令 | 注释 |
 |---|---|
-| [az snapshot grant-access](https://docs.azure.cn/cli/snapshot?view=azure-cli-latest#az-snapshot-grant-access) | 生成只读 SAS，使用该 SAS 可以将基础 VHD 文件复制到存储帐户或将其下载到本地  |
-| [az storage blob copy start](https://docs.azure.cn/cli/storage/blob/copy?view=azure-cli-latest#az-storage-blob-copy-start) | 将 blob 从一个存储帐户异步复制到另一个存储帐户 |
+| [az snapshot grant-access](https://docs.azure.cn/cli/snapshot?view=azure-cli-latest#az-snapshot-grant-access) | 生成只读 SAS，用于将基础 VHD 文件复制到存储帐户或将其下载到本地  |
+| [az storage blob copy start](https://docs.azure.cn/cli/storage/blob/copy?view=azure-cli-latest#az-storage-blob-copy-start) | 以异步方式将 blob 从一个存储帐户复制到另一个存储帐户 |
 
 ## <a name="next-steps"></a>后续步骤
 
-[基于 VHD 创建托管磁盘](virtual-machines-windows-cli-sample-create-managed-disk-from-vhd.md?toc=%2fcli%2fmodule%2ftoc.json)
+[从 VHD 创建托管磁盘](virtual-machines-windows-cli-sample-create-managed-disk-from-vhd.md?toc=%2fcli%2fmodule%2ftoc.json)
 
 有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](https://docs.azure.cn/cli/index?view=azure-cli-latest)。
 

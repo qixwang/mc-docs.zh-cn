@@ -4,16 +4,16 @@ description: 了解 Azure Cosmos DB 中的 CONTAINS SQL 系统函数如何返回
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
-origin.date: 09/13/2019
-ms.date: 02/10/2020
+origin.date: 03/03/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
 ms.custom: query-reference
-ms.openlocfilehash: 2800ef4500d417caff12bcf7c9ba02f2e7530754
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 63a8773af9401022d094fff61496499298edbb85
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77028678"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134864"
 ---
 # <a name="contains-azure-cosmos-db"></a>CONTAINS (Azure Cosmos DB)
  返回一个布尔值，该值指示第一个字符串表达式是否包含第二个字符串表达式。  
@@ -44,11 +44,15 @@ CONTAINS(<str_expr1>, <str_expr2>)
 SELECT CONTAINS("abc", "ab") AS c1, CONTAINS("abc", "d") AS c2 
 ```  
 
- 下面是结果集：  
+ 下面是结果集。  
 
 ```json
 [{"c1": true, "c2": false}]  
 ```  
+
+## <a name="remarks"></a>备注
+
+此系统函数不会使用索引。
 
 ## <a name="next-steps"></a>后续步骤
 

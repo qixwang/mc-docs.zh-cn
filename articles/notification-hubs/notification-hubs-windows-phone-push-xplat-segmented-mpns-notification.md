@@ -13,19 +13,19 @@ ms.tgt_pltfrm: mobile-windows-phone
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.custom: mvc
-origin.date: 04/14/2018
-ms.date: 12/09/2019
+origin.date: 01/04/2019
+ms.date: 04/20/2020
 ms.author: v-tawe
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 51abf4369fe9cc47bf82432386c3b41168348de3
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 78e2b68521391be18716b9af83ab99ed167b873b
+ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74884964"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82588653"
 ---
-# <a name="tutorial-push-notifications-to-specific-windows-phone-devices-by-using-azure-notification-hubs"></a>教程：使用 Azure 通知中心向特定 Windows Phone 设备推送通知
+# <a name="tutorial-send-push-notifications-to-specific-windows-phones-using-azure-notification-hubs"></a>教程：使用 Azure 通知中心将推送通知发送到特定 Windows Phone
 
 [!INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
 
@@ -36,7 +36,7 @@ ms.locfileid: "74884964"
 > [!NOTE]
 > 通知中心 Windows Phone SDK 不支持将 Windows 推送通知服务 (WNS) 与 Windows Phone 8.1 Silverlight 应用配合使用。 若要将 WNS（而不是 MPNS）与 Windows Phone 8.1 Silverlight 应用配合使用，请遵循使用 REST API 的[通知中心 - Windows Phone Silverlight 教程]。
 
-在本教程中，你将了解如何执行以下操作：
+本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 向移动应用添加类别选择
@@ -44,15 +44,15 @@ ms.locfileid: "74884964"
 > * 发送带标记的通知
 > * 测试应用程序
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
-完成[教程：使用 Azure 通知中心向 Windows Phone 应用推送通知](notification-hubs-windows-mobile-push-notifications-mpns.md)。 在本教程中，请更新移动应用程序，以便注册感兴趣的突发新闻类别，只接收这些类别的推送通知。
+在开始本教程之前完成[教程：使用 Azure 通知中心向 Windows Phone 应用推送通知](notification-hubs-windows-mobile-push-notifications-mpns.md)。 在本教程中，请更新移动应用程序，以便注册感兴趣的突发新闻类别，只接收这些类别的推送通知。
 
 ## <a name="add-category-selection-to-the-mobile-app"></a>向移动应用添加类别选择
 
 第一步是向现有主页添加 UI 元素，这些元素允许用户选择要注册的类别。 用户选择的类别存储在设备上。 应用程序启动时，使用所选类别作为标签在通知中心创建设备注册。
 
-1. 打开 `MainPage.xaml` 文件，并使用以下代码替换名为 `Grid` 和 `TitlePanel` 的 `ContentPanel` 元素：
+1. 打开 `MainPage.xaml` 文件，并使用以下代码替换名为 `TitlePanel` 和 `ContentPanel` 的 `Grid` 元素：
 
     ```xml
     <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
@@ -208,7 +208,7 @@ ms.locfileid: "74884964"
     ```
 
     此类使用隔离存储区存储此设备要接收的新闻类别。 它还包含用于通过[模板](notification-hubs-templates-cross-platform-push-messages.md)通知注册来注册这些类别的方法。
-4. 在 `App.xaml.cs` 项目文件中，将以下属性添加到 `App` 类。 将 `<hub name>` 和 `<connection string with listen access>` 占位符替换为通知中心名称和前面获取的 *DefaultListenSharedAccessSignature* 的连接字符串。
+4. 在 `App.xaml.cs` 项目文件中，将以下属性添加到 `App` 类。 将 `<hub name>` 和 `<connection string with listen access>` 占位符替换为通知中心名称和前面获取的 DefaultListenSharedAccessSignature 的连接字符串  。
 
     ```csharp
     public Notifications notifications = new Notifications("<hub name>", "<connection string with listen access>");
@@ -251,7 +251,7 @@ ms.locfileid: "74884964"
 这些步骤用于在启动时会在本地存储区中存储的类别注册到通知中心。
 
 > [!NOTE]
-> 由于 Microsoft 推送通知服务 (MPNS) 分配的通道 URI 随时可能更改，因此，应该经常注册通知以避免通知失败。 此示例在每次应用程序启动时注册通知。 对于经常运行（一天一次以上）的应用程序，如果每次注册间隔时间不到一天，可以跳过注册来节省带宽。
+> 由于 Microsoft 推送通知服务 (MPNS) 分配的通道 URI 随时可能更改，因此你应该经常注册通知以避免通知失败。 此示例在每次应用程序启动时注册通知。 对于经常运行（一天一次以上）的应用程序，如果每次注册间隔时间不到一天，可以跳过注册来节省带宽。
 
 1. 打开 App.xaml.cs 文件，将 `async` 修饰符添加到 `Application_Launching` 方法，并将在[通知中心入门]中添加的通知中心注册代码替换为以下代码：
 
@@ -300,12 +300,12 @@ ms.locfileid: "74884964"
     ![包含类别的移动应用][1]
 
     应用 UI 提供了一组开关，可以使用它们选择要订阅的类别。
-2. 启用一个或多个类别开关，并单击“**订阅**”。
+2. 启用一个或多个类别开关，然后单击“订阅”  。
 
     应用程序将所选类别转换为标签并针对所选标签从通知中心请求注册新设备。 返回注册的类别并显示在对话框中。
 
     ![订阅的消息][2]
-3. 在接收类别已完成订阅的确认后，运行控制台应用以发送每个类别的通知。 验证是否仅接收已订阅类别的通知。
+3. 在接收类别已完成订阅的确认后，运行控制台应用以发送每个类别的通知。 确认你只会收到订阅的类别的通知。
 
     ![通知消息][3]
 

@@ -1,33 +1,29 @@
 ---
-title: 使用受保护的 Web API 验证作用域和应用角色 | Azure
+title: 验证受范围和应用角色保护的 Web API | Azure
 titleSuffix: Microsoft identity platform
 description: 了解如何生成受保护的 Web API 和配置应用程序的代码。
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/06/2020
+ms.date: 04/22/2020
 ms.author: v-junlch
 ms.custom: aaddev
-ms.openlocfilehash: a26dae42a948b239ec9e12ba32083eaca3160c4e
-ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
+ms.openlocfilehash: 6b6f1b4bb68b5e8ee6f4d70104336b36abdd451e
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77067641"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126452"
 ---
-# <a name="protected-web-api-verify-scopes-and-app-roles"></a>受保护的 Web API：验证作用域和应用角色
+# <a name="protected-web-api-verify-scopes-and-app-roles"></a>受保护的 Web API：验证范围和应用角色
 
 本文介绍如何将授权添加到 Web API。 这种保护可确保只有以下对象才能调用 API：
 
-- 代表具有适当作用域的用户的应用程序。
+- 代表具有适当范围的用户的应用程序。
 - 具有适当应用程序角色的守护程序应用。
 
 > [!NOTE]
@@ -93,7 +89,7 @@ public class TodoListController : Controller
     /// method throws an HTTP Unauthorized error with a message noting which scopes are expected in the token.
     /// </summary>
     /// <param name="acceptedScopes">Scopes accepted by this API</param>
-    /// <exception cref="HttpRequestException"/> with a <see cref="HttpResponse.StatusCode"/> set to 
+    /// <exception cref="HttpRequestException"/> with a <see cref="HttpResponse.StatusCode"/> set to
     /// <see cref="HttpStatusCode.Unauthorized"/>
     public static void VerifyUserHasAnyAcceptedScope(this HttpContext context,
                                                      params string[] acceptedScopes)
@@ -174,4 +170,3 @@ bool isAppOnlyToken = oid == sub;
 > [!div class="nextstepaction"]
 > [转移到生产环境](scenario-protected-web-api-production.md)
 
-<!-- Update_Description: wording update -->

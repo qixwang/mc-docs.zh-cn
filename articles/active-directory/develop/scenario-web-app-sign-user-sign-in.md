@@ -2,25 +2,21 @@
 title: 编写可使用户登录/注销用户的 Web 应用 - Microsoft 标识平台 | Azure
 description: 了解如何生成可使用户登录/注销用户的 Web 应用
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/06/2020
+ms.date: 04/22/2020
 ms.author: v-junlch
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1e955207b53e7e2d6f50567884be2829021c0c6f
-ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
+ms.openlocfilehash: 207c208af99aaf655e41d48c5e16007c977f4d0e
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75777030"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126430"
 ---
 # <a name="web-app-that-signs-in-users-sign-in-and-sign-out"></a>用于登录用户的 Web 应用：登录和注销
 
@@ -35,7 +31,7 @@ ms.locfileid: "75777030"
 
 ### <a name="sign-in-button"></a>登录按钮
 
-# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+# <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
 在 ASP.NET Core 中，登录按钮在 `Views\Shared\_LoginPartial.cshtml` 中公开。 仅当不存在任何已完成身份验证的帐户时，才会显示此按钮。 即，仅当用户尚未登录或者已注销时才显示。
 
@@ -53,7 +49,7 @@ else
 }
 ```
 
-# <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
+# <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
 在 ASP.NET MVC 中，注销按钮在 `Views\Shared\_LoginPartial.cshtml` 中公开。 仅当存在已完成身份验证的帐户时，才会显示此按钮。 即，仅当用户事先已登录时才显示。
 
@@ -70,9 +66,9 @@ else
 }
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
-在 Java 快速入门中，登录按钮位于 [main/resources/templates/index.html](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/master/src/main/resources/templates/index.html) 文件中。
+在我们的 Java 快速入门中，“登录”按钮位于 `main/resources/templates/index.html` 文件中。
 
 ```html
 <!DOCTYPE html>
@@ -92,7 +88,7 @@ else
 </html>
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 Python 快速入门中没有登录按钮。 进入 Web 应用的根目录时，code-behind 会自动提示用户登录。 请参阅 [app.py#L14-L18](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/0.1.0/app.py#L14-L18)。
 
@@ -108,13 +104,13 @@ def index():
 
 ### <a name="signin-action-of-the-controller"></a>控制器的 `SignIn` 操作
 
-# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+# <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
 在 ASP.NET 中，在 Web 应用中选择“登录”按钮会触发 `AccountController` 控制器上的 `SignIn` 操作。  在以前的 ASP.NET Core 模板版本中，`Account` 控制器嵌入在 Web 应用中。 但现在不再是这样，因为控制器现在是 ASP.NET Core 框架的一部分。
 
 可以在 ASP.NET Core 存储库的 [AccountController.cs](https://github.com/aspnet/AspNetCore/blob/master/src/Azure/AzureAD/Authentication.AzureAD.UI/src/Areas/AzureAD/Controllers/AccountController.cs) 中获取 `AccountController` 的代码。 帐户控件通过重定向到 Microsoft 标识平台终结点来对用户提出质询。 有关详细信息，请参阅 ASP.NET Core 随附的 [SignIn](https://github.com/aspnet/AspNetCore/blob/f3e6b74623d42d5164fd5f97a288792c8ad877b6/src/Azure/AzureAD/Authentication.AzureAD.UI/src/Areas/AzureAD/Controllers/AccountController.cs#L23-L31) 方法。
 
-# <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
+# <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
 在 ASP.NET 中，注销是从控制器（例如 [AccountController.cs#L16-L23](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/Controllers/AccountController.cs#L16-L23)）中的 `SignOut()` 方法触发的。 此方法不是 ASP.NET 框架的一部分（与 ASP.NET Core 中的情况相反）。 它在提议重定向 URI 后发送 OpenID 登录质询。
 
@@ -129,7 +125,7 @@ public void SignIn()
 }
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 在 Java 中，注销是通过直接调用 Microsoft 标识平台 `logout` 终结点并提供 `post_logout_redirect_uri` 值来处理的。 有关详细信息，请参阅 [AuthPageController.java#L30-L48](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/AuthPageController.java#L30-L48)。
 
@@ -157,7 +153,7 @@ public class AuthPageController {
     // More code omitted for simplicity
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 与其他平台不同，MSAL Python 将负责处理让用户从登录页登录的过程。 请参阅 [app.py#L20-L28](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/e03be352914bfbd58be0d4170eba1fb7a4951d84/app.py#L20-L28)。
 
@@ -209,7 +205,7 @@ def _get_token_from_cache(scope=None):
 ## <a name="sign-out"></a>注销
 
 从 Web 应用注销不仅仅涉及到从 Web 应用的状态中删除有关已登录帐户的信息。
-该 Web 应用还必须将用户重定向到 Microsoft 标识平台 `logout` 终结点才能注销。 
+该 Web 应用还必须将用户重定向到 Microsoft 标识平台 `logout` 终结点才能注销。
 
 当 Web 应用将用户重定向到 `logout` 终结点时，此终结点将从浏览器中清除用户的会话。 如果应用尚未进入 `logout` 终结点，则用户不需要再次输入凭据就能重新通过应用的身份验证。 原因是他们与 Microsoft 标识平台终结点之间建立了有效的单一登录会话。
 
@@ -217,19 +213,19 @@ def _get_token_from_cache(scope=None):
 
 ### <a name="application-registration"></a>应用程序注册
 
-# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+# <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
 在应用程序注册期间，需要注册一个注销后的 URI。 在本教程中，你已在“身份验证”页上“高级设置”部分的“注销 URL”字段中注册了 `https://localhost:44321/signout-oidc`。    有关详细信息，请参阅[注册 webApp 应用](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-1-MyOrg#register-the-webapp-app-webapp)。
 
-# <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
+# <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
 在应用程序注册期间，需要注册一个注销后的 URI。 在本教程中，你已在“身份验证”页上“高级设置”部分的“注销 URL”字段中注册了 `https://localhost:44308/Account/EndSession`。    有关详细信息，请参阅[注册 webApp 应用](https://github.com/Azure-Samples/active-directory-dotnet-web-single-sign-out#register-the-service-app-webapp-distributedsignout-dotnet)。
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 在应用程序注册期间，需要注册一个注销后的 URI。 在本教程中，你已在“身份验证”页上“高级设置”部分的“注销 URL”字段中注册了 `http://localhost:8080/msal4jsample/sign_out`。   
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 在应用程序注册过程中，无需注册额外的注销 URL。 将在应用的主 URL 上回调应用。
 
@@ -237,7 +233,7 @@ def _get_token_from_cache(scope=None):
 
 ### <a name="sign-out-button"></a>注销按钮
 
-# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+# <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
 在 ASP.NET Core 中，注销按钮在 `Views\Shared\_LoginPartial.cshtml` 中公开。 仅当存在已完成身份验证的帐户时，才会显示此按钮。 即，仅当用户事先已登录时才显示。
 
@@ -258,7 +254,7 @@ else
 }
 ```
 
-# <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
+# <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
 在 ASP.NET MVC 中，注销按钮在 `Views\Shared\_LoginPartial.cshtml` 中公开。 仅当存在已完成身份验证的帐户时，才会显示此按钮。 即，仅当用户事先已登录时才显示。
 
@@ -284,7 +280,7 @@ else
 }
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 在 Java 快速入门中，注销按钮位于 main/resources/templates/auth_page.html 文件中。
 
@@ -299,7 +295,7 @@ else
 ...
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 在 Python 快速入门中，注销按钮位于 [templates/index.html#L10](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/e03be352914bfbd58be0d4170eba1fb7a4951d84/templates/index.html#L10) 文件中。
 
@@ -310,7 +306,7 @@ else
     <meta charset="UTF-8">
 </head>
 <body>
-    <h1>Microsoft Identity Python Web App</h1>
+    <h1>Microsoft Identity Python web app</h1>
     Welcome {{ user.get("name") }}!
     <li><a href='/graphcall'>Call Microsoft Graph API</a></li>
     <li><a href="/logout">Logout</a></li>
@@ -322,7 +318,7 @@ else
 
 ### <a name="signout-action-of-the-controller"></a>控制器的 `SignOut` 操作
 
-# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+# <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
 在 ASP.NET 中，在 Web 应用中选择“注销”按钮会触发 `AccountController` 控制器上的 `SignOut` 操作。  在以前的 ASP.NET Core 模板版本中，`Account` 控制器嵌入在 Web 应用中。 但现在不再是这样，因为控制器现在是 ASP.NET Core 框架的一部分。
 
@@ -334,7 +330,7 @@ else
   - 从浏览器中清除会话 Cookie。
   - 回调注销 URL。 默认情况下，注销 URL 会显示已注销视图页 [SignedOut.html](https://github.com/aspnet/AspNetCore/blob/master/src/Azure/AzureAD/Authentication.AzureAD.UI/src/Areas/AzureAD/Pages/Account/SignedOut.cshtml)。 此页也作为 ASP.NET Core 的一部分提供。
 
-# <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
+# <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
 在 ASP.NET 中，注销是从控制器（例如 [AccountController.cs#L25-L31](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/Controllers/AccountController.cs#L25-L31)）中的 `SignOut()` 方法触发的。 与 ASP.NET Core 中的情况相反，此方法不是 ASP.NET 框架的一部分。 该方法：
 
@@ -355,7 +351,7 @@ public void SignOut()
 }
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 在 Java 中，注销是通过直接调用 Microsoft 标识平台 `logout` 终结点并提供 `post_logout_redirect_uri` 值来处理的。 有关详细信息，请参阅 [AuthPageController.java#L50-L60](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/AuthPageController.java#L50-L60)。
 
@@ -373,7 +369,7 @@ public void SignOut()
     }
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 将用户注销的代码位于 [app.py#L46-L52](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/48637475ed7d7733795ebeac55c5d58663714c60/app.py#L47-L48) 中。
 
@@ -392,7 +388,7 @@ def logout():
 
 注销后的 URI 使应用程序能够参与全局注销。
 
-# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+# <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
 ASP.NET Core OpenID Connect 中间件提供名为 `OnRedirectToIdentityProviderForSignOut` 的 OpenID Connect 事件，可让应用截获对 Microsoft 标识平台 `logout` 终结点的调用。 有关如何订阅此事件（以清除令牌缓存）的示例，请参阅 [Microsoft.Identity.Web/WebAppServiceCollectionExtensions.cs#L151-L156](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/faa94fd49c2da46b22d6694c4f5c5895795af26d/Microsoft.Identity.Web/WebAppServiceCollectionExtensions.cs#L151-L156)。
 
@@ -404,7 +400,7 @@ ASP.NET Core OpenID Connect 中间件提供名为 `OnRedirectToIdentityProviderF
     };
 ```
 
-# <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
+# <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
 在 ASP.NET 中，需委托中间件执行注销，并清除会话 Cookie：
 
@@ -421,11 +417,11 @@ public class AccountController : Controller
 }
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 在 Java 快速入门中，注销后的重定向 URI 只显示 index.html 页。
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 在 Python 快速入门中，注销后的重定向 URI 只显示 index.html 页。
 
@@ -440,4 +436,3 @@ public class AccountController : Controller
 > [!div class="nextstepaction"]
 > [转移到生产环境](scenario-web-app-sign-user-production.md)
 
-<!-- Update_Description: wording update -->

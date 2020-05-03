@@ -1,23 +1,21 @@
 ---
-title: 按受支持帐户类型列出的验证差异 (SignInAudience) - Microsoft 标识平台/Azure Active Directory
+title: 按受支持帐户类型列出的验证差异 - Microsoft 标识平台 | Azure
 description: 了解向 Microsoft 标识平台注册应用时，不同受支持帐户类型的各种属性的验证差异。
 author: SureshJa
 ms.author: v-junlch
 manager: CelesteDG
-origin.date: 10/12/2019
-ms.date: 11/01/2019
+ms.date: 04/22/2020
 ms.topic: conceptual
 ms.subservice: develop
 ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 181aa5e52db5845a632b9c0290b7d0499473abf1
-ms.sourcegitcommit: a88cc623ed0f37731cb7cd378febf3de57cf5b45
+ms.openlocfilehash: 938b2e0c6b7a2b35f79af2a9cdc06b460a9ceda7
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73831013"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126426"
 ---
 # <a name="validation-differences-by-supported-account-types-signinaudience"></a>按受支持帐户类型列出的验证差异 (signInAudience)
 

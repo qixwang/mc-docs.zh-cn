@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-origin.date: 12/09/2019
-ms.date: 01/27/2020
+origin.date: 04/13/2020
+ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: b19f5dc0f237015e8e77fdf9074f3a61e43cb6e2
-ms.sourcegitcommit: e99166b2db4b292a7044e5f26b3e3547fef22ee9
+ms.openlocfilehash: 8e223b83bd11313830e9b0f86c1e8191235c5726
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76269956"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126594"
 ---
 # <a name="quickstart-convert-text-to-speech-using-nodejs"></a>快速入门：使用 Node.js 将文本转换为语音
 
@@ -24,13 +24,14 @@ ms.locfileid: "76269956"
 
 此快速入门需要包含语音服务资源的 [Azure 认知服务帐户](https://docs.azure.cn/cognitive-services/cognitive-services-apis-create-account)。 如果没有帐户，可以使用[试用帐户](get-started.md)获取订阅密钥。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 本快速入门需要：
 
-* [Node 8.12.x 或更高版本](https://nodejs.org/)
-* [Visual Studio](https://visualstudio.microsoft.com/downloads/)、[Visual Studio Code](https://code.visualstudio.com/download) 或你喜欢用的文本编辑器
+* <a href="https://nodejs.org/en/" target="_blank">Node 8.12.x 或更高版本 <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+* <a href="https://visualstudio.microsoft.com/downloads/" target="_blank">Visual Studio<span class="docon docon-navigate-external x-hidden-focus"></span></a>、<a href="https://code.visualstudio.com/download" target="_blank">Visual Studio Code<span class="docon docon-navigate-external x-hidden-focus"></span></a> 或你喜欢用的文本编辑器
 * 语音服务的 Azure 订阅密钥。 [免费获得一个！](get-started.md)
+* 需要语音 SDK 版本 1.10.0 或更高版本。
 
 ## <a name="create-a-project-and-require-dependencies"></a>创建项目并声明需要的依赖项
 

@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 origin.date: 05/01/2019
-ms.date: 07/04/2019
+ms.date: 04/23/2019
 ms.subservice: hybrid
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: afb92bc060374bd7eb68c0bcdd672aa9c84efade
-ms.sourcegitcommit: 5f85d6fe825db38579684ee1b621d19b22eeff57
+ms.openlocfilehash: cf7c6f67037c17eac9362010fce7c1e81ce0c5e5
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67568573"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126567"
 ---
 # <a name="azure-ad-connect-sync-scheduler"></a>Azure AD Connect 同步：计划程序
 本主题介绍 Azure AD Connect 同步（同步引擎）中的内置计划程序。
@@ -79,10 +79,10 @@ d - 天，HH - 小时，mm - 分钟，ss - 秒
 将计划程序更改为每隔 3 小时运行一次。
 
 示例： `Set-ADSyncScheduler -CustomizedSyncCycleInterval 1.0:0:0`  
-这些更改将计划程序更改为每天运行一次。
+将计划程序更改为每天运行一次。
 
 ### <a name="disable-the-scheduler"></a>禁用计划程序  
-若需要对配置进行更改，则要禁用该计划程序。 例如，[配置筛选](how-to-connect-sync-configure-filtering.md)或[更改同步规则](how-to-connect-sync-change-the-configuration.md)时。
+如果需要对配置进行更改，则要禁用计划程序。 例如，[配置筛选](how-to-connect-sync-configure-filtering.md)或[更改同步规则](how-to-connect-sync-change-the-configuration.md)时。
 
 若要禁用计划程序，请运行 `Set-ADSyncScheduler -SyncCycleEnabled $false`。
 
@@ -90,7 +90,7 @@ d - 天，HH - 小时，mm - 分钟，ss - 秒
 
 在完成更改后，请不要忘记通过 `Set-ADSyncScheduler -SyncCycleEnabled $true`再次启用计划程序。
 
-## 启动计划程序 <a name="start-the-scheduler"></a>
+## <a name="start-the-scheduler"></a>启动计划程序 <a name="start-the-scheduler"></a>
 默认情况下，计划程序每 30 分钟运行一次。 在某些情况下，可能想要在已计划的周期之间运行同步周期，或者需要运行不同的类型。
 
 ### <a name="delta-sync-cycle"></a>增量同步周期
@@ -164,7 +164,7 @@ d - 天，HH - 小时，mm - 分钟，ss - 秒
 计划程序仍处于活动状态，并在下次有机会时重新启动。
 
 ## <a name="custom-scheduler"></a>自定义计划程序
-本部分所述的 cmdlet 仅在内部版本 [1.1.130.0](reference-connect-version-history.md#111300) 及更高版本中提供。
+本部分所述的 cmdlet 仅在内部版本 1.1.130.0 及更高版本中提供。
 
 如果内置的计划程序不符合要求，则可以使用 PowerShell 计划连接器。
 

@@ -12,12 +12,12 @@ ms.author: v-jay
 ms.reviewer: sstein, bonova, carlrab
 origin.date: 07/17/2019
 ms.date: 11/04/2019
-ms.openlocfilehash: 41fe19b89aa51200a3c3c87d175bab6d6a6abcf4
-ms.sourcegitcommit: 97fa37512f79417ff8cd86e76fe62bac5d24a1bd
+ms.openlocfilehash: 3d04ef1035e90e92e9783983bf2e32766dbce4ed
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73041076"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82127060"
 ---
 # <a name="configuring-a-custom-dns-for-azure-sql-database-managed-instance"></a>为 Azure SQL 数据库托管实例配置自定义 DNS
 

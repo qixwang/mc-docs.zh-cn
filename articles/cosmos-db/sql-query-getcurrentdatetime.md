@@ -5,15 +5,15 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 09/13/2019
-ms.date: 10/28/2019
+ms.date: 04/27/2020
 ms.author: v-yeche
 ms.custom: query-reference
-ms.openlocfilehash: 32fa92a04aa054e17fe47f2040d0ef721a3e355b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 99ad0c31a30e56c4caad6771b9019b5a3935eceb
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "72914733"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134740"
 ---
 # <a name="getcurrentdatetime-azure-cosmos-db"></a>GetCurrentDateTime (Azure Cosmos DB)
  以 ISO 8601 字符串形式返回当前 UTC（协调世界时）日期和时间。
@@ -26,7 +26,7 @@ GetCurrentDateTime ()
 
 ## <a name="return-types"></a>返回类型
 
-  以 `YYYY-MM-DDThh:mm:ss.sssZ` 格式返回当前 UTC 日期和时间 ISO 8601 字符串值，其中：
+  以 `YYYY-MM-DDThh:mm:ss.fffffffZ` 格式返回当前 UTC 日期和时间 ISO 8601 字符串值，其中：
 
   |||
   |-|-|
@@ -34,10 +34,10 @@ GetCurrentDateTime ()
   |MM|两位数的月份（01 = 1 月，依此类推。）|
   |DD|两位数的月份日期（01 到 31）|
   |T|时间元素开头的符号|
-  |hh|两位数小时（00 到 23）|
-  |mm|两位数分钟（00 到 59）|
-  |ss|两位数秒（00 到 59）|
-  |.sss|三位数的秒小数部分|
+  |hh|两位数的小时（00 到 23）|
+  |MM|两位数的分钟（00 到 59）|
+  |ss|两位数的秒（00 到 59）|
+  |.fffffff|七位数的小数秒|
   |Z|UTC（协调世界时）指示符||
 
   有关 ISO 8601 格式的详细信息，请参阅 [ISO_8601](https://en.wikipedia.org/wiki/ISO_8601)
@@ -47,6 +47,8 @@ GetCurrentDateTime ()
   GetCurrentDateTime() 是非确定性的函数。 
 
   返回的结果为 UTC。
+
+  精度为 7 位，准确度为 100 纳秒。
 
 ## <a name="examples"></a>示例
 
@@ -60,7 +62,7 @@ SELECT GetCurrentDateTime() AS currentUtcDateTime
 
 ```json
 [{
-  "currentUtcDateTime": "2019-05-03T20:36:17.784Z"
+  "currentUtcDateTime": "2019-05-03T20:36:17.1234567Z"
 }]  
 ```  
 
@@ -70,5 +72,4 @@ SELECT GetCurrentDateTime() AS currentUtcDateTime
 - [系统函数 Azure Cosmos DB](sql-query-system-functions.md)
 - [Azure Cosmos DB 简介](introduction.md)
 
-<!--Update_Description: new articles on sql query get current datetime  -->
-<!--New.date: 10/28/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

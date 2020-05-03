@@ -1,21 +1,21 @@
 ---
-title: 快速入门：使用 Azure Cosmos DB API for Mongo DB 和 Java SDK 构建 Web 应用
+title: 快速入门 - 使用 Azure Cosmos DB API for Mongo DB 和 Java SDK 构建 Web 应用
 description: 了解如何构建 Java 代码示例，可以参考该示例使用 Azure Cosmos DB 的 API for MongoDB 进行连接和查询。
 author: rockboyfor
-ms.author: v-yeche
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: java
 ms.topic: quickstart
 origin.date: 12/26/2018
-ms.date: 02/10/2020
+ms.date: 04/27/2020
+ms.author: v-yeche
 ms.custom: seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: dfb480c958ba1348f4c65f8a626499e0d05d5e8e
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 7ff28bb5a80ce9cc9f64ec1a44ba1eae08b01d11
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "76980551"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134959"
 ---
 # <a name="quickstart-create-a-console-app-with-java-and-the-mongodb-api-in-azure-cosmos-db"></a>快速入门：在 Azure Cosmos DB 中使用 Java 和 MongoDB API 创建控制台应用
 
@@ -28,18 +28,16 @@ ms.locfileid: "76980551"
 > * [Golang](create-mongodb-golang.md)
 >  
 
-在本快速入门中，将使用用于 Mongo DB 的 Azure Cosmos DB API 和 Java SDK 来创建控制台 Web 应用。 使用 Azure Cosmos DB 可快速创建和查询文档、键/值和图形数据库，所有这些都受益于以 Cosmos DB 为核心的多区域分布和水平缩放功能。
-
-本快速入门演示如何使用 [Azure Cosmos DB 的用于 MongoDB 的 API](mongodb-introduction.md) 创建 Cosmos 帐户。 然后生成并部署使用 [MongoDB Java 驱动程序](https://docs.mongodb.com/ecosystem/drivers/java/)构建的控制台应用。 
+在本快速入门中，你将通过 Azure 门户创建和管理 Azure Cosmos DB for MongoDB API 帐户，并使用从 GitHub 克隆的 Java SDK 应用来添加数据。 Azure Cosmos DB 是一种多模型数据库服务，可让你通过多区域分布和水平缩放功能快速创建和查询文档、表、键/值和图数据库。
 
 ## <a name="prerequisites"></a>先决条件
+- 具有活动订阅的 Azure 帐户。 [免费创建一个](https://www.azure.cn/pricing/1rmb-trial/)。 你还可以将 [Azure Cosmos DB 模拟器](https://aka.ms/cosmosdb-emulator)与连接字符串 `.mongodb://localhost:C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==@localhost:10255/admin?ssl=true` 配合使用。
 
-在运行此示例之前，必须具备以下先决条件：
-* [安装适用于 Azure 的 JDK 和 Azure Stack JDK 版本 8](https://docs.azure.cn/java/java-supported-jdk-runtime?view=azure-java-stable)
-* Maven（如果没有 Maven，请运行 `apt-get install maven`）
+    <!--Not Available on [try Azure Cosmos DB for free](https://www.azure.cn/try/cosmosdb/)-->
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-[!INCLUDE [cosmos-db-emulator-mongodb](../../includes/cosmos-db-emulator-mongodb.md)]
+- [Java 开发工具包 (JDK) 版本 8](https://www.azul.com/downloads/azure-only/zulu/?&version=java-8-lts&architecture=x86-64-bit&package=jdk)。 
+- [Maven](https://maven.apache.org/download.cgi)。 或者运行 `apt-get install maven` 来安装 Maven。
+- [Git](https://git-scm.com/downloads)。 
 
 ## <a name="create-a-database-account"></a>创建数据库帐户
 
@@ -47,7 +45,7 @@ ms.locfileid: "76980551"
 
 ## <a name="add-a-collection"></a>添加集合
 
-将新数据库命名为 **db**，将新集合命名为 **coll**。
+将新数据库命名为“db”  ，将新集合命名为“coll”  。
 
 [!INCLUDE [cosmos-db-create-collection](../../includes/cosmos-db-create-collection.md)] 
 
@@ -79,7 +77,9 @@ ms.locfileid: "76980551"
 
 此步骤是可选的。 如果有意了解如何使用代码创建数据库资源，可以查看以下代码片段。 否则，可以直接跳转到[更新连接字符串](#update-your-connection-string)。 
 
-以下代码片段全部摘自 Program.java 文件。
+以下代码片段全部摘自 *Program.java* 文件。
+
+此控制台应用使用 [MongoDB Java 驱动程序](https://docs.mongodb.com/ecosystem/drivers/java/)。 
 
 * 此时会对 DocumentClient 进行初始化。
 
@@ -115,9 +115,9 @@ ms.locfileid: "76980551"
 
 现在返回到 Azure 门户，获取连接字符串信息，并将其复制到应用。
 
-1. 从帐户中选择“快速启动”   ，选择 Java，然后将连接字符串复制到剪贴板。
+1. 从你的 Azure Cosmos DB 帐户中，选择“快速启动”，选择“Java”，然后将连接字符串复制到剪贴板。  
 
-2. 打开 `Program.java` 文件，将 MongoClientURI 构造函数的参数替换为该连接字符串。 现已使用与 Azure Cosmos DB 进行通信所需的所有信息更新应用。 
+2. 打开 *Program.java* 文件，将 MongoClientURI 构造函数的参数替换为该连接字符串。 现已使用与 Azure Cosmos DB 进行通信所需的所有信息更新应用。 
 
 ## <a name="run-the-console-app"></a>运行控制台应用
 
@@ -137,9 +137,9 @@ ms.locfileid: "76980551"
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你已了解如何创建 Cosmos 帐户、创建集合和运行控制台应用。 现在可以向你的 Cosmos 数据库导入更多数据。
+在本快速入门中，你已了解了如何创建 Azure Cosmos DB API for Mongo DB 帐户，使用数据资源管理器创建数据库和容器，以及使用 Java 控制台应用来添加数据。 现在可以向你的 Cosmos 数据库导入更多数据。 
 
 > [!div class="nextstepaction"]
 > [将 MongoDB 数据导入 Azure Cosmos DB](mongodb-migrate.md)
 
-<!--Update_Description: update meta properties, update link -->
+<!-- Update_Description: update meta properties, wording update, update link -->

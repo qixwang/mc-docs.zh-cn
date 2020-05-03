@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB：SQL Node.js API、SDK 和资源
+title: Azure Cosmos DB - SQL Node.js API、SDK 和资源
 description: 了解有关 SQL Node.js API 的信息。
 author: rockboyfor
 ms.service: cosmos-db
@@ -7,14 +7,14 @@ ms.subservice: cosmosdb-sql
 ms.devlang: nodejs
 ms.topic: reference
 origin.date: 09/24/2018
-ms.date: 09/30/2019
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: 0f70eb5cc42a3e08846dd76772dc67d9539bdaa2
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 1a30384168d858dd76db74aff1048bc2dde04311
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "71306770"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134675"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>适用于 SQL API 的 Azure Cosmos DB Node.js SDK：发行说明和资源
 > [!div class="op_single_selector"]

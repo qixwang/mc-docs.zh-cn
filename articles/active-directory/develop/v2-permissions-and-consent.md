@@ -1,28 +1,23 @@
 ---
-title: Microsoft 标识平台的范围、权限和许可 | Microsoft Docs
+title: Microsoft 标识平台的范围、权限和许可
 description: 介绍 Microsoft 标识平台终结点中的授权，包括范围、权限和许可。
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
-ms.assetid: 8f98cbf0-a71d-4e34-babf-e644ad9ff423
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/23/2020
+ms.date: 04/23/2020
 ms.author: v-junlch
 ms.reviewer: hirsin, jesakowi, jmprieur
-ms.custom: fasttrack-edit
-ms.openlocfilehash: fc144853ab0907b9a0f47fd0670e92d141197895
-ms.sourcegitcommit: 6568c59433d7e80ab06e9fe76d4791f761ed6775
+ms.custom: aaddev, fasttrack-edit
+ms.openlocfilehash: 6bcf2fb7b27d3458817ba32b8656c166176cd686
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80243066"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126391"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Microsoft 标识平台终结点中的权限和许可
 
@@ -199,13 +194,13 @@ https%3A%2F%2Fmicrosoftgraph.chinacloudapi.cn%2Fmail.send
 ```
 
 
-| 参数     | 条件     | 说明                                                                               |
+| 参数        | 条件        | 说明                                                                                |
 |:--------------|:--------------|:-----------------------------------------------------------------------------------------|
-| `tenant` | 必须 | 要向其请求权限的目录租户。 可以用 GUID 或友好名称格式提供，或以常规方式使用组织引用，如示例所示。 |
-| `client_id` | 必须 | [Azure 门户 - 应用注册](https://portal.azure.cn/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)体验分配给应用的**应用程序（客户端）ID**。 |
-| `redirect_uri` | 必须 |要向其发送响应，供应用处理的重定向 URI。 必须与在应用注册门户中注册的重定向 URI 之一完全匹配。 |
+| `tenant` | 必需 | 要向其请求权限的目录租户。 可以用 GUID 或友好名称格式提供，或以常规方式使用组织引用，如示例所示。 |
+| `client_id` | 必需 | [Azure 门户 - 应用注册](https://portal.azure.cn/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)体验分配给应用的**应用程序（客户端）ID**。 |
+| `redirect_uri` | 必需 |要向其发送响应，供应用处理的重定向 URI。 必须与在应用注册门户中注册的重定向 URI 之一完全匹配。 |
 | `state` | 建议 | 同样随令牌响应返回的请求中所包含的值。 可以是所需的任何内容的字符串。 使用该状态可在身份验证请求出现之前，在应用中编码用户的状态信息，例如用户过去所在的页面或视图。 |
-|`scope`        | 必须      | 定义应用程序请求的权限集。 这可以是静态范围（使用 [`/.default`](#the-default-scope)）或动态范围。  这可以包括 OIDC 范围（`openid`、`profile`、`email`）。 如果需要应用程序权限，必须使用 `/.default` 来请求静态配置的权限列表。  | 
+|`scope`        | 必需        | 定义应用程序请求的权限集。 这可以是静态范围（使用 [`/.default`](#the-default-scope)）或动态范围。  这可以包括 OIDC 范围（`openid`、`profile`、`email`）。 如果需要应用程序权限，必须使用 `/.default` 来请求静态配置的权限列表。  | 
 
 
 此时，Azure AD 要求租户管理员登录，以完成请求。 系统要求管理员批准你在 `scope` 参数中请求的所有权限。  如果你使用了静态 (`/.default`) 值，则其功能将类似于 v1.0 管理员许可终结点，并请求对应用所需权限中找到的所有范围的许可。
@@ -318,4 +313,3 @@ response_type=token            //code or a hybrid flow is also possible here
 
 如果你或应用程序的用户在许可过程中看到意外的错误，请参阅以下文章获取故障排除步骤：[对应用程序执行许可时发生意外错误](../manage-apps/application-sign-in-unexpected-user-consent-error.md)。
 
-<!-- Update_Description: wording update -->

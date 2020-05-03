@@ -1,18 +1,18 @@
 ---
-title: 从 Azure 门户配置和访问 Azure Database for MySQL 中的慢查询日志
+title: 访问慢查询日志 - Azure 门户 - Azure Database for MySQL
 description: 本文介绍如何从 Azure 门户配置和访问 Azure Database for MySQL 中的慢查询日志。
 author: WenJason
 ms.author: v-jay
 ms.service: mysql
 ms.topic: conceptual
-origin.date: 09/30/2019
-ms.date: 11/04/2019
-ms.openlocfilehash: ca6fb7764caac7ef4ee5bcfc2c0fb5e1cf5c2fc4
-ms.sourcegitcommit: cb2caa72ec0e0922a57f2fa1056c25e32c61b570
+origin.date: 4/13/2020
+ms.date: 04/27/2020
+ms.openlocfilehash: 485c9067fb7d4ee472e1f834b6125cba8974a58a
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73142159"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82127048"
 ---
 # <a name="configure-and-access-slow-query-logs-from-the-azure-portal"></a>从 Azure 门户配置和访问慢查询日志
 
@@ -36,11 +36,15 @@ ms.locfileid: "73142159"
 
 4. 若要查看服务器参数，请选择“单击此处以启用日志并配置日志参数”  。
 
-5. 更改需要调整的参数。 在此会话中所做的更改都突出显示为紫色。 
+5. 打开“slow_query_log”  的开关  。
 
-   更改参数之后，请选择“保存”。  也可以放弃所做的更改。
+6. 使用 log_output  选择要将日志输出到的位置。 若要将日志同时发送到本地存储和 Azure Monitor 诊断日志，请选择“File”  。 
 
-   ![“服务器参数”选项的屏幕截图](./media/howto-configure-server-logs-in-portal/3-save-discard.png)
+7. 更改所需的任何其他参数。 
+
+8. 选择“保存”  。 
+
+   :::image type="content" source="./media/howto-configure-server-logs-in-portal/3-save-discard.png" alt-text="显示慢查询日志参数和“保存”的屏幕截图。":::
 
 在“服务器参数”  页上，可以通过关闭该页来返回到日志列表。
 

@@ -2,17 +2,17 @@
 title: Azure Cosmos DB 中的分区
 description: 了解 Azure Cosmos DB 中的分区、选择分区键时的最佳做法，以及如何管理逻辑分区
 author: rockboyfor
-ms.author: v-yeche
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 12/02/2019
-ms.date: 02/10/2020
-ms.openlocfilehash: a1404e0cd213deea1180a9189e4f76c661056a1d
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 04/27/2020
+ms.author: v-yeche
+ms.openlocfilehash: 2cffc723ffd257f751a3f997388756f4c3e462ba
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79291888"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134597"
 ---
 # <a name="partitioning-in-azure-cosmos-db"></a>Azure Cosmos DB 中的分区
 
@@ -39,7 +39,7 @@ Azure Cosmos DB 使用基于哈希的分区在物理分区之间分散逻辑分�
 
 以下内容是选择分区键的很好的指南：
 
-* 单个逻辑分区的存储空间上限为 10 GB。  
+* 单个逻辑分区的存储空间上限为 20 GB。  
 
 * Azure Cosmos 容器的最小吞吐量为每秒 400 个请求单位 (RU/s)。 在数据库上预配吞吐量时，每个容器的最小 RU 数为每秒 100 个请求单位（RU/秒）。 对同一分区键的请求不能超过分配给某个分区的吞吐量。 如果请求超过分配的吞吐量，则请求将受到速率限制。 请务必选择不会导致应用程序中产生“热点”的分区键。
 
@@ -55,4 +55,4 @@ Azure Cosmos DB 使用基于哈希的分区在物理分区之间分散逻辑分�
 * 了解 [Azure Cosmos DB 中的预配吞吐量](request-units.md)。
 * 了解 [Azure Cosmos DB 中的多区域分发](distribute-data-globally.md)。
 
-<!-- Update_Description: update meta properties  -->
+<!-- Update_Description: update meta properties, wording update, update link -->

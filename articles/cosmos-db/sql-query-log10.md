@@ -5,18 +5,18 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 09/13/2019
-ms.date: 02/10/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
 ms.custom: query-reference
-ms.openlocfilehash: 072b5e145bda574d72cfebac6a81584568e53cea
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 2b5df7e0ddaf47666f11304faf9ffefbb0185590
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77028964"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134550"
 ---
 # <a name="log10-azure-cosmos-db"></a>LOG10 (Azure Cosmos DB)
- 返回指定数值表达式中以 10 为底数的对数。  
+ 返回指定数值表达式以 10 为底的对数。  
 
 ## <a name="syntax"></a>语法
 
@@ -27,29 +27,33 @@ LOG10 (<numeric_expr>)
 ## <a name="arguments"></a>参数
 
 *numeric_expression*  
-  为数值表达式。  
+  是一个数值表达式。  
 
 ## <a name="return-types"></a>返回类型
 
-  返回数值表达式。  
+  返回一个数值表达式。  
 
 ## <a name="remarks"></a>备注
 
-  LOG10 和 POWER 函数彼此反向相关。 例如，10 ^ LOG10(n) = n。  
+  LOG10 和 POWER 函数互为反函数。 例如，10 ^ LOG10(n) = n。  
 
 ## <a name="examples"></a>示例
 
-  以下示例声明一个变量并返回到指定变量 (100) 的 LOG10 值。  
+  以下示例声明一个变量并返回指定变量 (100) 的 LOG10 值。  
 
 ```sql
 SELECT LOG10(100) AS log10 
 ```  
 
- 下面是结果集：  
+ 下面是结果集。  
 
 ```json
 [{log10: 2}]  
 ```  
+
+## <a name="remarks"></a>备注
+
+此系统函数不会使用索引。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,5 +1,5 @@
 ---
-title: Azure CLI 脚本示例 - 配置 IPv6 虚拟网络终结点 - 标准负载均衡器
+title: Azure CLI 脚本示例 - 配置 IPv6 前端 - 标准负载均衡器
 titlesuffix: Azure Virtual Network
 description: 使用 Azure CLI 在 Azure 虚拟网络中启用 IPv6 终结点
 services: virtual-network
@@ -10,15 +10,14 @@ ms.service: virtual-network
 ms.devlang: NA
 ms.topic: article
 ms.workload: infrastructure-services
-origin.date: 07/15/2019
-ms.date: 12/02/2019
+ms.date: 04/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 272d0324d165b824acfc5bc8440fbcf4c09f59b2
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+ms.openlocfilehash: 252c59b5e185272a36af1b911a353c40432092a9
+ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
-ms.locfileid: "74658150"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82093272"
 ---
 # <a name="configure-ipv6-endpoints-in-virtual-network-script-sample-using-standard-load-balancer"></a>使用标准负载均衡器在虚拟网络中配置 IPv6 终结点的脚本示例
 

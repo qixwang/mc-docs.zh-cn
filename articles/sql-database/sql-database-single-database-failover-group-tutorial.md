@@ -12,20 +12,20 @@ ms.author: v-jay
 ms.reviewer: sstein, carlrab
 origin.date: 06/19/2019
 ms.date: 02/17/2020
-ms.openlocfilehash: 6143c53d1f8fe07d702461a9f1db2beb0b21dde2
-ms.sourcegitcommit: dc862610e2169c1fce6fb0ae9eb7dd7567f86a0a
+ms.openlocfilehash: 3c37306153d6c7a3eadab3c6337556def92c444c
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79293806"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126727"
 ---
 # <a name="tutorial-add-an-azure-sql-database-single-database-to-a-failover-group"></a>教程：将 Azure SQL 数据库单一数据库添加到故障转移组
 
-使用 Azure 门户、PowerShell 或 Azure CLI 为 Azure SQL 数据库单一数据库配置故障转移组并测试故障转移。  在本教程中，您将学习如何执行以下操作：
+[故障转移组](sql-database-auto-failover-group.md)是一种声明性抽象层，可用于对多个异地复制数据库进行分组。 了解如何使用 Azure 门户、PowerShell 或 Azure CLI 为 Azure SQL 数据库单一数据库配置故障转移组并测试故障转移。  在本教程中，您将学习如何执行以下操作：
 
 > [!div class="checklist"]
 > - 创建 Azure SQL 数据库单一数据库。
-> - 在两个逻辑 SQL 服务器之间创建单一数据库的[故障转移组](sql-database-auto-failover-group.md)。
+> - 为单一数据库创建两个逻辑 SQL 服务器之间的故障转移组。
 > - 测试故障转移。
 
 ## <a name="prerequisites"></a>先决条件

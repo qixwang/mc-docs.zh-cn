@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB：批量执行程序 Java API、SDK 和资源
+title: Azure Cosmos DB - 批量执行工具 Java API、SDK 和资源
 description: 了解有关批量执行程序 Java API 的所有信息。
 author: rockboyfor
 ms.service: cosmos-db
@@ -7,14 +7,14 @@ ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
 origin.date: 11/21/2018
-ms.date: 12/16/2019
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: 66dc0445908327079e9ed52b128bb4bbeb5aa77b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 313a501c47d70d94f657f77aa53a79e27a7ad459
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75335839"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134679"
 ---
 # <a name="java-bulk-executor-library-download-information"></a>Java 批量执行程序库：下载信息
 

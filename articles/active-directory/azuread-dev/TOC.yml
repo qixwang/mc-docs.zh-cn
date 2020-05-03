@@ -143,5 +143,3 @@
     - name: 获取帮助
       displayName: 'support, help options'
       href: ../develop/developer-support-help-options.md?toc=/active-directory/azuread-dev/toc.json&bc=/active-directory/azuread-dev/breadcrumb/toc.json
-    - name: Azure 资源的托管标识
-      href: /active-directory/managed-identities-azure-resources/overview

@@ -1,0 +1,59 @@
+### YamlMime:Landing
+title: 证书
+summary: Microsoft Azure 应用程序和用户可以通过 Azure Key Vault 来存储和使用证书（基于密钥和机密而构建），并添加自动续订功能。
+metadata:
+  title: Azure Key Vault 文档 - 证书
+  description: Microsoft Azure 应用程序和用户可以通过 Azure Key Vault 来存储和使用证书（基于密钥和机密而构建），并添加自动续订功能。
+  services: key-vault
+  ms.service: key-vault
+  ms.subservice: certificates
+  ms.topic: landing-page
+  author: msmbaldwin
+  ms.author: v-tawe
+  origin.date: 04/07/2020
+  ms.date: 04/20/2020
+  ms.openlocfilehash: 9daf6a41ca8c31f6d98bbcdd8f3be8c1ac3c2395
+  ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 04/30/2020
+  ms.locfileid: "82588885"
+landingContent:
+- title: 证书
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 Key Vault 证书？
+      url: about-certificates.md
+    - text: Key Vault 证书入门
+      url: certificate-scenarios.md
+    - text: 证书创建方法
+      url: create-certificate.md
+    - text: 监视和管理证书创建
+      url: create-certificate-scenarios.md
+- title: 入门
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Azure CLI
+      url: quick-create-cli.md
+    - text: Azure PowerShell
+      url: quick-create-powershell.md
+    - text: 门户
+      url: quick-create-portal.md
+    - text: Python
+      url: quick-create-python.md
+    - text: 在 Key Vault 中导入证书
+      url: tutorial-import-certificate.md
+- title: 有关 Key Vault 的详细信息
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Key Vault 概述
+      url: ../general/overview.md
+    - text: 基本概念
+      url: ../general/basic-concepts.md
+    - text: 软删除概述
+      url: ../general/overview-soft-delete.md
+    - text: 安全概述
+      url: ../general/overview-security.md

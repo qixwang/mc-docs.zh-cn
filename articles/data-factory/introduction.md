@@ -1,5 +1,5 @@
 ---
-title: Azure 数据工厂简介 | Microsoft Docs
+title: Azure 数据工厂简介
 description: 了解有关 Azure 数据工厂（协调和自动执行数据移动和转换的云数据集成服务）的详细信息。
 services: data-factory
 documentationcenter: ''
@@ -9,15 +9,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: overview
 origin.date: 09/30/2019
-ms.date: 11/11/2019
-ms.openlocfilehash: 16012b10c0a496e1537744421e45096a27aa35b5
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/11/2020
+ms.openlocfilehash: 078af7b99363ea2d94162dcde91c22fe5518367d
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "73648744"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82198240"
 ---
 # <a name="what-is-azure-data-factory"></a>什么是 Azure 数据工厂？
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 在大数据环境中，原始、散乱的数据通常存储在关系、非关系和其他存储系统中。 但是，就其本身而言，原始数据没有适当的上下文或含义来为分析师、数据科学家或业务决策人提供有意义的见解。 
 

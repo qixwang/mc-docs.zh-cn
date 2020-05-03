@@ -1,27 +1,29 @@
 ---
-title: Azure 数据工厂中的等待活动 | Microsoft Docs
+title: Azure 数据工厂中的等待活动
 description: 等待活动在一段指定的时间内暂停管道的执行。
 services: data-factory
 documentationcenter: ''
 author: WenJason
+ms.author: v-jay
 manager: digimobile
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 origin.date: 01/12/2018
-ms.date: 07/08/2019
-ms.author: v-jay
-ms.openlocfilehash: d54909a5e5a6b23092e26d9c253b3f5d839bccc6
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/11/2020
+ms.openlocfilehash: 6fe8342cc59316763005fa1e6253ae32962ea1e6
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "67570545"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82197780"
 ---
 # <a name="execute-wait-activity-in-azure-data-factory"></a>在 Azure 数据工厂中执行等待活动
 在管道中使用等待活动时，管道将等待一段指定的时间，然后继续执行后续活动。 
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 
 ## <a name="syntax"></a>语法
 
@@ -38,7 +40,7 @@ ms.locfileid: "67570545"
 
 ## <a name="type-properties"></a>Type 属性
 
-properties | 说明 | 允许的值 | 必选
+属性 | 说明 | 允许的值 | 必须
 -------- | ----------- | -------------- | --------
 name | `Wait` 活动的名称。 | String | 是
 type | 必须被设置为 **Wait**。 | String | 是
@@ -50,7 +52,7 @@ waitTimeInSeconds | 管道在继续进行处理前所等待的秒数。 | Intege
 > 本部分提供运行管道的 JSON 定义和示例 PowerShell 命令。 有关使用 Azure PowerShell 和 JSON 定义创建数据工厂管道的分步说明演练，请参阅[教程：使用 Azure PowerShell 创建数据工厂](quickstart-create-data-factory-powershell.md)。
 
 ### <a name="pipeline-with-wait-activity"></a>等待活动的管道
-在此示例中，管道具有两个活动：**Until** 和 **Wait**。 等待活动被配置为等待 1 秒。 管道循环运行 Web 活动，在每次运行之间等待 1 秒。 
+在此示例中，管道包含两个活动：**Until** 和 **Wait**。 等待活动被配置为等待 1 秒。 管道循环运行 Web 活动，在每次运行之间等待 1 秒。 
 
 ```json
 {

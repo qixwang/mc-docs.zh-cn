@@ -4,21 +4,21 @@ description: 了解 Azure Cosmos DB 中索引的工作原理，Azure Cosmos DB �
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
-origin.date: 10/11/2019
-ms.date: 02/10/2020
+origin.date: 04/13/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: 7947b208acedbba61c094d14fb1382a51c78a9c0
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 3e147c7095cddd61e724d2f0e4f19be80d39e750
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "76980467"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134635"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>Azure Cosmos DB 中的索引 - 概述
 
 Azure Cosmos DB 是一种架构不可知的数据库，使你能够迭代应用程序，而无需处理架构或索引管理。 默认情况下，Azure Cosmos DB 将自动为[容器](databases-containers-items.md#azure-cosmos-containers)中所有项的每个属性编制索引，而无需定义任何架构或配置辅助索引。
 
-本文的目的是说明 Azure Cosmos DB 如何为数据编制索引以及如何使用索引来提高查询性能。 在探索如何自定义[索引策略](index-policy.md)之前，建议先阅读本部分。
+本文旨在说明 Azure Cosmos DB 如何为数据编制索引，以及它如何使用索引来提高查询性能。 在探索如何自定义[索引策略](index-policy.md)之前，建议先阅读本部分。
 
 ## <a name="from-items-to-trees"></a>从项到树
 

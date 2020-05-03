@@ -1,23 +1,22 @@
 ---
-title: 身份验证方法的使用情况和见解报告（预览版）- Azure Active Directory
+title: 身份验证方法使用情况和见解 - Azure Active Directory
 description: Azure AD 自助式密码重置和多重身份验证方法使用情况的报告
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
-origin.date: 06/06/2019
-ms.date: 11/04/2019
+ms.topic: how-to
+ms.date: 04/24/2020
 ms.author: v-junlch
-author: MicrosoftGuyJFlo
+author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 970a7724aff11f9df0e7a523bb9d30ddc3534d0f
-ms.sourcegitcommit: a88cc623ed0f37731cb7cd378febf3de57cf5b45
+ms.openlocfilehash: ee497a97278660688996cd789d5928e199e4f4c5
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73831058"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126218"
 ---
 # <a name="authentication-methods-usage--insights-preview"></a>身份验证方法的使用情况和见解（预览版）
 
@@ -66,7 +65,7 @@ ms.locfileid: "73831058"
 
 注册详细信息报告显示每个用户的以下信息：
 
-- Name
+- 名称
 - 用户名
 - 注册状态（“全部”、“已注册”、“未注册”）
 - 启用状态（“全部”、“已启用”、“未启用”）
@@ -81,7 +80,7 @@ ms.locfileid: "73831058"
 
 重置详细信息报告显示过去 30 天的注册和重置事件，包括：
 
-- Name
+- 名称
 - 用户名
 - 功能（“全部”、“注册”、“重置”）
 - 身份验证方法（“应用通知”、“应用代码”、“电话呼叫”、“呼叫办公电话”、“短信”、“电子邮件”、“安全提问”）
@@ -91,7 +90,7 @@ ms.locfileid: "73831058"
 
 ## <a name="limitations"></a>限制
 
-这些报告中显示的数据最长会延迟 60 分钟。 Azure 门户中的“上次刷新时间”字段显示了数据的新旧程度。
+这些报告中显示的数据最长会延迟 60 分钟。 Azure 门户中存在一个“上次刷新时间”字段，用于标识数据的更新程度。
 
 使用情况和见解数据不能取代 Azure 多重身份验证活动报告，也不能取代 Azure AD 登录报告中包含的信息。
 

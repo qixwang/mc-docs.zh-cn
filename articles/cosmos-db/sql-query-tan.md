@@ -4,19 +4,19 @@ description: 了解 Azure Cosmos DB 中的 SQL 系统函数 TAN。
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
-origin.date: 09/13/2019
-ms.date: 10/28/2019
+origin.date: 03/04/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
 ms.custom: query-reference
-ms.openlocfilehash: 893ef014ff6c2e603d4c12ece4a5d5019924752d
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 6e92ce4bc887ac7d275ed26fa3b3bf51cca01cc8
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "72914635"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134788"
 ---
 # <a name="tan-azure-cosmos-db"></a>TAN (Azure Cosmos DB)
- 返回指定表达式中指定角度（弧度）的正切值。  
+ 返回在指定表达式中以弧度表示的指定角度的正切。  
 
 ## <a name="syntax"></a>语法
 
@@ -27,25 +27,29 @@ TAN (<numeric_expr>)
 ## <a name="arguments"></a>参数
 
 *numeric_expr*  
-  为数值表达式。  
+  是一个数值表达式。  
 
 ## <a name="return-types"></a>返回类型
 
-  返回数值表达式。  
+  返回一个数值表达式。  
 
 ## <a name="examples"></a>示例
 
-  以下示例可计算 PI()/2 的正切值。 
+  以下示例计算 PI()/2 的正切。 
 
 ```sql
 SELECT TAN(PI()/2) AS tan 
 ```  
 
- 下面是结果集：  
+ 下面是结果集。  
 
 ```json
 [{"tan": 16331239353195370 }]  
 ```  
+
+## <a name="remarks"></a>备注
+
+此系统函数不会使用索引。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -53,5 +57,4 @@ SELECT TAN(PI()/2) AS tan
 - [系统函数 Azure Cosmos DB](sql-query-system-functions.md)
 - [Azure Cosmos DB 简介](introduction.md)
 
-<!--Update_Description: new articles on sql query tan  -->
-<!--New.date: 10/28/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

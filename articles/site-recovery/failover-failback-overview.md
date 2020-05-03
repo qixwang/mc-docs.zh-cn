@@ -3,14 +3,14 @@ title: 关于 Azure Site Recovery 中的故障转移和故障回复
 description: 了解 Azure Site Recovery 中的故障转移和故障回复。
 ms.topic: conceptual
 origin.date: 12/24/2019
-ms.date: 01/13/2020
+ms.date: 04/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 9506ea14b52d27c77f6be0cc5a8666db53326379
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 4d45e914355e7b10859ebea327db82742a776eee
+ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79292851"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82093494"
 ---
 # <a name="about-on-premises-disaster-recovery-failoverfailback"></a>关于本地灾难恢复故障转移/故障回复
 
@@ -60,7 +60,7 @@ Site Recovery 提供不同的故障转移选项。
 **测试故障转移** | 用于运行演练，以在不丢失任何数据或造成停机的情况下验证 BCDR 策略。| 在 Azure 中创建 VM 的副本，这不会对进行中的复制或生产环境造成任何影响。 | 1.针对单个 VM 或恢复计划中的多个 VM 运行测试故障转移。<br/><br/> 2.选择用于测试故障转移的恢复点。<br/><br/> 3.选择一个 Azure 网络，故障转移后创建的 Azure VM 将放入该网络。 该网络仅用于测试故障转移。<br/><br/> 4.验证演练是否按预期方式进行。 Site Recovery 将自动清理演练期间在 Azure 中创建的 VM。
 **计划内故障转移 - Hyper-V** | 通常用于计划内停机。<br/><br/> 源 VM 已关闭。 在启动故障转移之前，将同步最新的数据。 | 计划的工作流不会发生任何数据丢失。 | 1.规划停机维护时段并通知用户。<br/><br/> 2.使面向用户的应用脱机。<br/><br/> 3.使用最新的恢复点启动计划内故障转移。 如果计算机未关闭或遇到错误，则故障转移不会运行。<br/><br/> 4.故障转移后，检查副本 Azure VM 是否在 Azure 中处于活动状态。<br/><br/> 5.提交故障转移以完成操作。 提交操作将删除所有恢复点。
 **故障转移 - Hyper-V** | 通常在出现计划外服务中断或主站点不可用的情况时运行。<br/><br/> （可选）关闭 VM，并在启动故障转移之前同步最终更改。  | 应用只会出现极少量的数据丢失。 | 1.启动 BCDR 计划。 <br/><br/> 2.启动故障转移。 指定在触发故障转移之前 Site Recovery 应关闭 VM 并同步/复制最新的更改。<br/><br/> 3.可以故障转移到许多恢复点选项，下表对此做了汇总。<br/><br/> 如果未启用关闭 VM 的选项，或者 Site Recovery 无法关闭 VM，则会使用最新的恢复点。<br/>即使无法关闭计算机，也会运行故障转移。<br/><br/> 4.故障转移后，检查副本 Azure VM 是否在 Azure 中处于活动状态。<br/> 如果需要，可以从 24 小时保留时段中选择不同的恢复点。<br/><br/> 5.提交故障转移以完成操作。 提交操作将删除所有可用的恢复点。
-**故障转移 - VMware** | 通常在出现计划外服务中断或主站点不可用的情况时运行。<br/><br/> （可选）指定在启动故障转移之前，Site Recovery 应尝试触发 VM 关闭，并同步和复制最终的更改。  | 应用只会出现极少量的数据丢失。 | 1.启动 BCDR 计划。 <br/><br/> 2.从 Site Recovery 启动故障转移。 指定在运行故障转移之前，Site Recovery 是否应尝试触发 VM 关闭并进行同步。<br/> 即使无法关闭计算机，也会运行故障转移。<br/><br/> 3.故障转移后，检查副本 Azure VM 是否在 Azure 中处于活动状态。 <br/>如果需要，可以从 72 小时保留时段中选择不同的恢复点。<br/><br/> 5.提交故障转移以完成操作。 提交操作将删除所有恢复点。<br/> 对于 Windows VM，Site Recovery 在故障转移期间会禁用 VMware 工具。 
+**故障转移 - VMware** | 通常在出现计划外服务中断或主站点不可用的情况时运行。<br/><br/> （可选）指定在启动故障转移之前，Site Recovery 应尝试触发 VM 关闭，并同步和复制最终的更改。  | 应用只会出现极少量的数据丢失。 | 1.启动 BCDR 计划。 <br/><br/> 2.从 Site Recovery 启动故障转移。 指定在运行故障转移之前，Site Recovery 是否应尝试触发 VM 关闭并进行同步。<br/> 即使无法关闭计算机，也会运行故障转移。<br/><br/> 3.故障转移后，检查副本 Azure VM 是否在 Azure 中处于活动状态。 <br/>如果需要，可以从 72 小时保留时段中选择不同的恢复点。<br/><br/> 5.提交故障转移以完成操作。 提交操作将删除所有恢复点。<br/> 对于 Windows VM，Site Recovery 在故障转移期间会禁用 VMware 工具。
 
 ## <a name="failover-processing"></a>故障转移处理
 
@@ -85,6 +85,9 @@ Site Recovery 提供不同的故障转移选项。
 **最新处理的多 VM** | 此选项适用于包含一个或多个已启用多 VM 一致性的 VM 的恢复计划。 已启用该设置的 VM 会故障转移到最新的常用多 VM 一致恢复点。 计划中的任何其他 VM 将故障转移到最新的已处理恢复点。
 **最新的多 VM 应用一致性** |  此选项适用于包含一个或多个已启用多 VM 一致性的 VM 的恢复计划。 属于复制组的 VM 会故障转移到最新的常用多 VM 应用程序一致恢复点。 其他 VM 故障转移到其最新的应用程序一致恢复点。
 **自定义** | 使用此选项可将特定的 VM 故障转移到特定的恢复时间点。 此选项不适用于恢复计划。
+
+> [!NOTE]
+> 恢复点无法迁移到另一个恢复服务保管库。
 
 ## <a name="reprotectionfailback"></a>重新保护/故障回复
 
@@ -143,18 +146,17 @@ Site Recovery 提供不同的故障转移选项。
 在本地重新保护 Azure VM 时，可以指定是要故障回复到原始位置还是备用位置。
 
 - **原始位置恢复**：这会从 Azure 故障回复到同一台源本地计算机（如果存在）。 在这种情况下，请选择上一过程中所述的同步选项之一。
-- **备用位置恢复**：如果本地计算机不存在，可以从 Azure 故障回复到备用位置。 在本地重新保护 Azure VM 时，将创建本地计算机。 如果使用此选项，我们建议选择在故障转移之前同步数据的选项 
+- **备用位置恢复**：如果本地计算机不存在，可以从 Azure 故障回复到备用位置。 在本地重新保护 Azure VM 时，将创建本地计算机。 如果使用此选项，我们建议选择在故障转移之前同步数据的选项
 - [查看](hyper-v-azure-failback.md)位置故障回复的要求和限制。
 
 故障回复到本地站点后，启用“反向复制”以开始将 VM 复制到 Azure，并完成复制周期。 
 
 ## <a name="next-steps"></a>后续步骤
-- 故障转移[特定的 VMware VM](vmware-azure-tutorial-failover-failback.md) 
+- 故障转移[特定的 VMware VM](vmware-azure-tutorial-failover-failback.md)
 - 故障转移[特定的 Hyper-V VM](hyper-v-azure-failover-failback-tutorial.md)
 - [创建](site-recovery-create-recovery-plans.md)恢复计划。
 - 故障转移[恢复计划的 VM](site-recovery-failover.md)。
 - [准备](vmware-azure-failback.md)进行 VMware 重新保护和故障回复。
 - 故障回复 [Hyper-V VM](hyper-v-azure-failback.md)。
 
-<!-- Update_Description: new article about failover failback overview -->
-<!--NEW.date: 01/13/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

@@ -4,16 +4,16 @@ description: 了解 Azure Cosmos DB 中的 SQL 系统函数 UPPER。
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
-origin.date: 09/13/2019
-ms.date: 02/10/2020
+origin.date: 03/04/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
 ms.custom: query-reference
-ms.openlocfilehash: 734ba399ca96aab317a6ecee05976211f4dd8f0c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: ff0e76e4920824208e7fd0ff277b630dd7c14550
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77068360"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134798"
 ---
 # <a name="upper-azure-cosmos-db"></a>UPPER (Azure Cosmos DB)
  返回在将小写字符数据转换为大写后的字符串表达式。  
@@ -33,7 +33,7 @@ UPPER(<str_expr>)
 
 ## <a name="return-types"></a>返回类型
 
-  返回字符串表达式。  
+  返回一个字符串表达式。  
 
 ## <a name="examples"></a>示例
 
@@ -43,11 +43,15 @@ UPPER(<str_expr>)
 SELECT UPPER("Abc") AS upper  
 ```  
 
- 下面是结果集：  
+ 下面是结果集。  
 
 ```json
 [{"upper": "ABC"}]  
 ```
+
+## <a name="remarks"></a>备注
+
+此系统函数不会使用索引。
 
 ## <a name="next-steps"></a>后续步骤
 

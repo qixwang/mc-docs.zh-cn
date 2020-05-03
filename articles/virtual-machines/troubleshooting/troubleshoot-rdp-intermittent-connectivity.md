@@ -11,21 +11,18 @@ ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 origin.date: 10/24/2018
-ms.date: 02/10/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: 2062f8759ccd95f4d20241fe146f5a2a50009257
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 94c3bf4f12ab5d497d84327869b4a1da686b38f1
+ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77428726"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82596360"
 ---
 # <a name="remote-desktop-disconnects-frequently-in-azure-vm"></a>Azure VM 中远程桌面频繁断开连接
 
 本文介绍如何解决通过远程桌面协议 (RDP) 连接到 Azure 虚拟机 (VM) 频繁断开的问题。
-
-> [!NOTE] 
-> Azure 具有用于创建和处理资源的两个不同的部署模型： [Resource Manager 和经典](../../azure-resource-manager/management/deployment-models.md)。 本文介绍如何使用 Resource Manager 部署模型。 建议为新部署使用此模型，而不是使用经典部署模型。
 
 ## <a name="symptom"></a>症状
 
@@ -107,7 +104,7 @@ ms.locfileid: "77428726"
         REG ADD "HKLM\BROKENSYSTEM\ControlSet001\control\Terminal Server\Winstations\RDP-Tcp" /v 'MaxConnectionTime' /t REG_DWORD /d 0 /f
 
         REG ADD "HKLM\BROKENSYSTEM\ControlSet002\control\Terminal Server\Winstations\RDP-Tcp" /v 'MaxConnectionTime' /t REG_DWORD /d 0 /f
-16. 设置“RDP 会话空闲时间”控制：     REG ADD "HKLM\BROKENSYSTEM\ControlSet001\control\Terminal Server\Winstations\RDP-Tcp" /v 'fInheritMaxIdleTime' /t REG_DWORD /d 1 /f 
+16. 设置“RDP 会话空闲时间”控制：   REG ADD "HKLM\BROKENSYSTEM\ControlSet001\control\Terminal Server\Winstations\RDP-Tcp" /v 'fInheritMaxIdleTime' /t REG_DWORD /d 1 /f 
 
         REG ADD "HKLM\BROKENSYSTEM\ControlSet001\control\Terminal Server\Winstations\RDP-Tcp" /v ' MaxIdleTime' /t REG_DWORD /d 0 /f
 
@@ -122,6 +119,6 @@ ms.locfileid: "77428726"
 18. 重启 VM，并再次尝试使用 RDP 连接到它。
 
 ## <a name="need-help"></a>需要帮助？ 
-联系支持人员。 如果仍需帮助，请[联系支持人员](https://support.azure.cn/support/support-azure/)以快速解决问题。
+请联系支持人员。 如果仍需要帮助，可 [联系支持人员](https://support.azure.cn/support/support-azure/) 来快速解决问题。
 
 <!-- Update_Description: wording update-->

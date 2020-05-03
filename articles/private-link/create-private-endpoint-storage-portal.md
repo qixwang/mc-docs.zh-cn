@@ -6,14 +6,14 @@ author: rockboyfor
 ms.service: private-link
 ms.topic: article
 origin.date: 09/16/2019
-ms.date: 02/24/2020
+ms.date: 04/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 6750f8f4a7312f75a52775a8d16bf63760992af5
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.openlocfilehash: 10860f2b9b48ad279744c8bea5e0beca8b547909
+ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77540075"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82093491"
 ---
 # <a name="connect-privately-to-a-storage-account-using-azure-private-endpoint"></a>使用 Azure 专用终结点以私密方式连接到存储帐户
 Azure 专用终结点是 Azure 中专用链接的构建基块。 它使 Azure 资源（例如虚拟机 (VM)）能够以私密方式来与专用链接资源通信。
@@ -30,39 +30,43 @@ Azure 专用终结点是 Azure 中专用链接的构建基块。 它使 Azure �
 ## <a name="create-a-vm"></a>创建 VM
 在本部分中，你将创建虚拟网络和子网来托管用于访问专用链接资源（在本例中为存储帐户）的 VM。
 
-### <a name="create-the-virtual-network"></a>创建虚拟网络
+## <a name="virtual-network-and-parameters"></a>虚拟网络和参数
 
 在本部分中，你将创建虚拟网络和子网来托管用于访问专用链接资源的 VM。
 
-1. 在屏幕的左上方，选择“创建资源” > “网络” > “虚拟网络”    。
-1. 在“创建虚拟网络”  中，输入或选择以下信息：
+在本部分中，你需要将步骤中的以下参数替换为以下信息：
 
-    | 设置 | Value |
-    | ------- | ----- |
-    | 名称 | 输入 *MyVirtualNetwork*。 |
-    | 地址空间 | 输入 10.1.0.0/16  。 |
-    | 订阅 | 选择订阅。|
-    | 资源组 | 选择“新建”，输入 myResourceGroup，然后选择“确定”    。 |
-    | 位置 | 选择“chinaeast2”  。|
-    | 子网 - 名称 | 输入 *mySubnet*。 |
-    | 子网 - 地址范围 | 输入 10.1.0.0/24  。 |
-    |||
-1. 将其余的设置保留默认值，然后选择“创建”  。
+| 参数                   | 值                |
+|-----------------------------|----------------------|
+| **\<resource-group-name>** | MyResourceGroup |
+| **\<virtual-network-name>** | myVirtualNetwork          |
+| **\<region-name>** | 中国东部 2|
+| **\<IPv4-address-space>** | 10.1.0.0\16          |
+| **\<subnet-name>** | mySubnet        |
+| **\<subnet-address-range>** | 10.1.0.0\24          |
+
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 ### <a name="create-virtual-machine"></a>创建虚拟机
 
-1. 在 Azure 门户屏幕的左上方，选择“创建资源” > “计算” > “虚拟机”。   
+<!-- MOONCAKE: CUSTOMIZATION-->
+
+1. 在 Azure 门户屏幕的左上角，选择“创建资源”  ，在“新建”  页的“搜索市场”  筛选框中键入“Windows Server 2019 Datacenter”  ，然后单击 Enter 键，并在搜索结果中选择“Windows Server 2019 Datacenter”  。
+
+1. 在“Windows Server 2019 Datacenter”页中选择“创建”  。
+
+    <!-- MOONCAKE: CUSTOMIZATION-->
 
 1. 在“创建虚拟机 - 基本信息”  中，输入或选择以下信息：
 
-    | 设置 | Value |
+    | 设置 | 值 |
     | ------- | ----- |
     | **项目详细信息** | |
     | 订阅 | 选择订阅。 |
     | 资源组 | 选择“myResourceGroup”。  已在上一部分创建此内容。  |
     | **实例详细信息** |  |
     | 虚拟机名称 | 输入 *myVm*。 |
-    | 区域 | 选择“chinaeast2”  。 |
+    | 区域 | 选择“中国东部 2”  。 |
     | 可用性选项 | 保留默认值“不需要基础结构冗余”  。 |
     | 映像 | 选择“Windows Server 2019 Datacenter”。  |
     | 大小 | 保留默认值“标准 DS1 v2”  。 |
@@ -82,7 +86,7 @@ Azure 专用终结点是 Azure 中专用链接的构建基块。 它使 Azure �
 
 1. 在“创建虚拟机 - 基本信息”  中，选择以下信息：
 
-    | 设置 | Value |
+    | 设置 | 值 |
     | ------- | ----- |
     | 虚拟网络 | 保留默认值“MyVirtualNetwork”  。  |
     | 地址空间 | 保留默认值“10.1.0.0/24”。 |
@@ -103,14 +107,14 @@ Azure 专用终结点是 Azure 中专用链接的构建基块。 它使 Azure �
 
 1. 在“创建存储帐户 - 基本信息”中，输入或选择以下信息  ：
 
-    | 设置 | Value |
+    | 设置 | 值 |
     | ------- | ----- |
     | **项目详细信息** | |
     | 订阅 | 选择订阅。 |
     | 资源组 | 选择“myResourceGroup”。  已在上一部分创建此内容。|
     | **实例详细信息** |  |
     | 存储帐户名称  | 输入 *mystorageaccount*。 如果此名称已被使用，请创建唯一的名称。 |
-    | 区域 | 选择“chinaeast2”  。 |
+    | 区域 | 选择“中国东部 2”  。 |
     | 性能| 保留默认值“标准”  。 |
     | 帐户类型 | 保留默认值“存储(常规用途 v2)”  。 |
     | 复制 | 选择“读取访问异地冗余存储 (RA-GRS)”  。 |
@@ -121,12 +125,12 @@ Azure 专用终结点是 Azure 中专用链接的构建基块。 它使 Azure �
 5. 在“创建存储帐户 - 网络”  中，选择“添加专用终结点”  。 
 6. 在“创建专用终结点”  中，输入或选择以下信息：
 
-    | 设置 | Value |
+    | 设置 | 值 |
     | ------- | ----- |
     | **项目详细信息** | |
     | 订阅 | 选择订阅。 |
     | 资源组 | 选择“myResourceGroup”。  已在上一部分创建此内容。|
-    |位置|选择“chinaeast2”  。|
+    |位置|选择“中国东部 2”  。|
     |名称|输入“myPrivateEndpoint”  。  |
     |存储子资源|保留默认值“Blob”  。 |
     | **网络** |  |
@@ -173,7 +177,9 @@ Azure 专用终结点是 Azure 中专用链接的构建基块。 它使 Azure �
 在本部分中，你将使用专用终结点私密地连接到存储帐户。
 
 1. 在 *myVM* 的远程桌面中，打开 PowerShell。
-2. 输入 `nslookup mystorageaccount.blob.core.chinacloudapi.cn`，你将收到类似于以下内容的消息：
+2. 输入 `nslookup mystorageaccount.blob.core.chinacloudapi.cn`
+    
+    将收到类似于下面的消息：
     ```azurepowershell
     Server:  UnKnown
     Address:  168.63.129.16
@@ -182,6 +188,7 @@ Azure 专用终结点是 Azure 中专用链接的构建基块。 它使 Azure �
     Address:  10.0.0.5
     Aliases:  mystorageaccount.blob.core.chinacloudapi.cn
     ```
+    
 3. 安装 [Azure 存储资源管理器](/vs-azure-tools-storage-manage-with-storage-explorer?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=windows)。
 4. 通过右键单击选择“存储帐户”。 
 5. 选择“连接到 Azure 存储”  。

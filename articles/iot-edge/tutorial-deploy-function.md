@@ -5,17 +5,17 @@ author: kgremban
 manager: philmea
 ms.author: v-tawe
 origin.date: 06/25/2019
-ms.date: 03/16/2020
+ms.date: 04/20/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: e60b99234ced028383d8058344aae1cff77aec8f
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 999b8739c8abeea841aa1fe719fb763f1e8cc837
+ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80243888"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82588756"
 ---
 # <a name="tutorial-deploy-azure-functions-as-iot-edge-modules"></a>教程：将 Azure Functions 作为 IoT Edge 模块进行部署
 
@@ -33,9 +33,6 @@ ms.locfileid: "80243888"
 ![ - 教程体系结构：暂存以及部署函数模块](./media/tutorial-deploy-function/functions-architecture.png)
 </center>
 
->[!NOTE]
->Azure IoT Edge 上的 Azure Function 模块为公共预览版。 
-
 在本教程中创建的 Azure 函数可以筛选由设备生成的温度数据。 该函数只在温度高于指定阈值的情况下，向 Azure IoT 中心上游发送消息。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
@@ -52,7 +49,7 @@ ms.locfileid: "80243888"
 
 若要通过 Azure Functions 开发 IoT Edge 模块，请在开发计算机上安装下述额外的必备组件：
 
-* [适用于 Visual Studio Code 的 C# 扩展（由 OmniSharp 提供支持）](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)。
+* [适用于 Visual Studio Code 的 C# 扩展（由 OmniSharp 提供支持）](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)。
 * [.NET Core 2.1 SDK](https://www.microsoft.com/net/download)。
 
 ## <a name="create-a-function-project"></a>创建函数项目

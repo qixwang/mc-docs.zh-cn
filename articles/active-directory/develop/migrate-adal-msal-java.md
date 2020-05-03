@@ -1,28 +1,25 @@
 ---
-title: 适用于 Java 的 ADAL 到 MSAL 迁移指南 | Azure
+title: ADAL 到 MSAL 的迁移指南 (MSAL4j) | Azure
 titleSuffix: Microsoft identity platform
 description: 了解如何将 Azure Active Directory 身份验证库 (ADAL) Java 应用迁移到 Microsoft 身份验证库 (MSAL)。
 services: active-directory
 author: sangonzal
-manager: henrikm
-editor: twhitney
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: Java
 ms.workload: identity
-ms.date: 12/09/2019
+ms.date: 04/22/2020
 ms.author: v-junlch
-ms.reviewer: navyari.canumalla
+ms.reviewer: nacanuma, twhitney
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b5268e08a571d3522fbf8e7780cba4659278b15
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 6bf322b77ee4a66c1a250b76cd5b9419b699596e
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335320"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126521"
 ---
 # <a name="adal-to-msal-migration-guide-for-java"></a>适用于 Java 的 ADAL 到 MSAL 迁移指南
 
@@ -34,7 +31,7 @@ MSAL 提供以下优势：
 
 - 由于它使用较新的 Microsoft 标识平台终结点，你可以通过 Azure AD 企业到消费者 (B2C) 方案对更广泛的一组 Microsoft 标识（例如 Azure AD 标识以及社交和本地帐户）进行身份验证。
 - 用户将获得最佳单一登录体验。
-- 应用程序可以启用增量许可。
+- 应用程序可以启用增量许可，更轻松地为条件访问提供支持。
 
 MSAL for Java 是我们建议用于 Microsoft 标识平台的身份验证库。 我们不会对 ADAL4J 实现任何新的功能。 今后我们的所有努力都重在改进 MSAL。
 
@@ -112,7 +109,8 @@ PublicClientApplication app = PublicClientApplication.builder(CLIENT_ID) // Clie
 IAuthenticationResult result = app.acquireToken(parameters);
 ```
 
-`IAuthenticationResult` 返回访问令牌和 ID 令牌，新的刷新令牌将存储在缓存中。 应用程序现在还包含一个 IAccount：
+`IAuthenticationResult` 返回访问令牌和 ID 令牌，新的刷新令牌将存储在缓存中。
+应用程序现在还包含一个 IAccount：
 
 ```java
 Set<IAccount> accounts =  app.getAccounts().join();
@@ -121,8 +119,7 @@ Set<IAccount> accounts =  app.getAccounts().join();
 若要使用现已进入缓存中的令牌，请调用：
 
 ```java
-SilentParameters parameters = SilentParameters.builder(scope, accounts.iterator().next()).build(); 
+SilentParameters parameters = SilentParameters.builder(scope, accounts.iterator().next()).build();
 IAuthenticationResult result = app.acquireToken(parameters);
 ```
 
-<!-- Update_Description: wording update -->

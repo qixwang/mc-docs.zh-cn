@@ -1,21 +1,21 @@
 ---
-title: 查找并删除未连接的 Azure 托管和非托管磁盘 | Azure
+title: 使用 Azure CLI 查找并删除未连接的 Azure 托管和非托管磁盘
 description: 如何使用 Azure CLI 查找并删除未附加的 Azure 托管和非托管（VHD/页 blob）磁盘。
-author: rockboyfor
+author: Johnnytechn
 ms.service: virtual-machines-linux
 ms.topic: article
 origin.date: 03/30/2018
-ms.date: 09/16/2019
-ms.author: v-yeche
+ms.date: 04/13/2020
+ms.author: v-johya
 ms.subservice: disks
-ms.openlocfilehash: 3ce4b13934e79b35fa3d85baad0cf48578c0338d
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: dc926529a8d29113a40eb4c2fa88013f16b73292
+ms.sourcegitcommit: ebedf9e489f5218d4dda7468b669a601b3c02ae5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "70921219"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82159158"
 ---
-# <a name="find-and-delete-unattached-azure-managed-and-unmanaged-disks"></a>查找并删除未连接的 Azure 托管和非托管磁盘
+# <a name="find-and-delete-unattached-azure-managed-and-unmanaged-disks-using-the-azure-cli"></a>使用 Azure CLI 查找并删除未连接的 Azure 托管和非托管磁盘
 删除 Azure 中的虚拟机 (VM) 时，默认不删除附加到 VM 的任何磁盘。 此功能可帮助防止意外删除 VM 而导致的数据丢失。 删除 VM 后，可继续支付未附加的磁盘。 本文演示了如何查找并删除任何未附加的磁盘，以及如何减少不必要的成本。 
 
 ## <a name="managed-disks-find-and-delete-unattached-disks"></a>托管磁盘：查找并删除未附加的磁盘 

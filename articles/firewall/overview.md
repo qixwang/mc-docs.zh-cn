@@ -6,18 +6,20 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc
-origin.date: 01/28/2020
-ms.date: 02/24/2020
+origin.date: 03/17/2020
+ms.date: 04/06/2020
 ms.author: v-yeche
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: ebd3fbaffe7746d0394089971ffac018027af805
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 3dddf89c3ae6561c339f920d6d2f9de9e676f045
+ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79292581"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82093254"
 ---
 # <a name="what-is-azure-firewall"></a>什么是 Azure 防火墙？
+
+![ICSA 认证](media/overview/icsa-cert-firewall-small.png)
 
 Azure 防火墙是托管的基于云的网络安全服务，可保护 Azure 虚拟网络资源。 它是一个服务形式的完全有状态防火墙，具有内置的高可用性和不受限制的云可伸缩性。
 
@@ -59,11 +61,15 @@ FQDN 标记使你可以轻松地允许已知的 Azure 服务网络流量通过�
 
 ## <a name="outbound-snat-support"></a>出站 SNAT 支持
 
-所有出站虚拟网络流量 IP 地址将转换为 Azure 防火墙公共 IP（源网络地址转换）。 可以识别源自你的虚拟网络的流量，并允许将其发往远程 Internet 目标。 如果目标 IP 是符合 [IANA RFC 1918](https://tools.ietf.org/html/rfc1918) 的专用 IP 范围，Azure 防火墙不会执行 SNAT。 如果组织对专用网络使用公共 IP 地址范围，Azure 防火墙会通过 SNAT 将流量发送到 AzureFirewallSubnet 中的某个防火墙专用 IP 地址。
+所有出站虚拟网络流量 IP 地址将转换为 Azure 防火墙公共 IP（源网络地址转换）。 可以识别源自你的虚拟网络的流量，并允许将其发往远程 Internet 目标。 如果目标 IP 是符合 [IANA RFC 1918](https://tools.ietf.org/html/rfc1918) 的专用 IP 范围，Azure 防火墙不会执行 SNAT。 
+
+如果组织对专用网络使用公共 IP 地址范围，Azure 防火墙会通过 SNAT 将流量发送到 AzureFirewallSubnet 中的某个防火墙专用 IP 地址。 可以将 Azure 防火墙配置为**不** SNAT 公共 IP 地址范围。
+
+<!--Not Avaialble on [Azure Firewall SNAT private IP address ranges](snat-private-range.md)-->
 
 ## <a name="inbound-dnat-support"></a>入站 DNAT 支持
 
-转换到防火墙公共 IP 地址的入站网络流量（目标网络地址转换）并将其筛选到虚拟网络上的专用 IP 地址。
+转换到防火墙公共 IP 地址的入站 Internet 网络流量（目标网络地址转换）并将其筛选到虚拟网络上的专用 IP 地址。
 
 ## <a name="multiple-public-ip-addresses"></a>多个公共 IP 地址
 
@@ -78,9 +84,9 @@ FQDN 标记使你可以轻松地允许已知的 Azure 服务网络流量通过�
 
 所有事件与 Azure Monitor 集成，使你能够在存储帐户中存档日志、将事件流式传输到事件中心，或者将其发送到 Azure Monitor 日志。
 
-## <a name="compliance-certifications"></a>符合性认证
+## <a name="certifications"></a>认证
 
-Azure 防火墙符合支付卡行业 (PCI)、服务组织控制 (SOC) 和国际标准化组织 (ISO) 标准。
+Azure 防火墙符合支付卡行业 (PCI)、服务组织控制 (SOC)、国际标准化组织 (ISO) 和 ICSA 实验室标准。
 
 <!--Not Available on [Azure Firewall compliance certifications](compliance-certifications.md)-->
 
@@ -98,10 +104,10 @@ Azure 防火墙存在以下已知问题：
 |Azure 防火墙只将 Azure DNS 用于名称解析|Azure 防火墙只使用 Azure DNS 来解析 FQDN。 不支持自定义 DNS 服务器。 对其他子网上的 DNS 解析没有影响。|我们正在努力放宽此限制。|
 |Azure 防火墙 SNAT/DNAT 不适用于专用 IP 目标|Azure 防火墙 SNAT/DNAT 支持仅限于 Internet 出口/入口。 SNAT/DNAT 目前不适用于专用 IP 目标。 例如，分支到分支。|这是当前的一项限制。|
 |无法删除第一个公共 IP 配置|每个 Azure 防火墙公共 IP 地址都分配给一个 IP 配置  。  第一个 IP 配置在防火墙部署过程中分配，通常还包含对防火墙子网的引用（除非通过模板部署以不同的方式进行了显式配置）。 无法删除此 IP 配置，因为它会取消分配防火墙。 如果防火墙至少包含另一个可用的公共 IP 地址，则你仍然可以更改或删除与此 IP 配置相关联的公共 IP 地址。|这是设计使然。|
-|对入站连接的 SNAT|除了 DNAT 以外，通过防火墙公共 IP 地址（入站）建立的连接将通过 SNAT 转换为某个防火墙专用 IP。 当前提出此项要求（也适用于主动/主动 NVA）的目的是确保对称路由。|若要保留 HTTP/S 的原始源，请考虑使用 [XFF](https://en.wikipedia.org/wiki/X-Forwarded-For) 标头。 
+|对入站连接的 SNAT|除了 DNAT 以外，通过防火墙公共 IP 地址（入站）建立的连接将通过 SNAT 转换为某个防火墙专用 IP。 当前提出此项要求（也适用于主动/主动 NVA）的目的是确保对称路由。|若要保留 HTTP/S 的原始源，请考虑使用 [XFF](https://en.wikipedia.org/wiki/X-Forwarded-For) 标头。 例如，在防火墙前面使用 [Azure 应用程序网关](../application-gateway/rewrite-http-headers.md)等服务。
 |仅在代理模式下支持 SQL FQDN 筛选（端口 1433）|对于 Azure SQL 数据库、Azure SQL 数据仓库和 Azure SQL 托管实例：<br /><br />在预览期间，仅在代理模式下支持 SQL FQDN 筛选（端口 1433）。<br /><br />对于 Azure SQL IaaS：<br /><br />如果使用的是非标准端口，则可以在应用程序规则中指定这些端口。|对于采用重定向模式的 SQL（这是从 Azure 内连接时采用的默认设置），可以通过将 SQL 服务标记用作 Azure 防火墙网络规则的一部分来改为对访问进行筛选。
 |不允许 TCP 端口 25 上的出站流量| 将阻止使用 TCP 端口 25 的出站 SMTP 连接。 端口 25 主要用于未经身份验证的电子邮件传递。 这是虚拟机的默认平台行为。 有关详细信息，请参阅[排查 Azure 中的出站 SMTP 连接问题](../virtual-network/troubleshoot-outbound-smtp-connectivity.md)。 但是，与虚拟机不同，目前无法在 Azure 防火墙上启用此功能。|按照“SMTP 故障排除”一文中所述的推荐方法发送电子邮件。 或者，从到防火墙的默认路由中排除需要出站 SMTP 访问的虚拟机，改为配置直接到 Internet 的出站访问。
-|不支持主动 FTP|在 Azure 防火墙上禁用主动 FTP，防范使用 FTP PORT 命令进行的 FTP 弹跳攻击。|可以改用被动 FTP。 仍需在防火墙上显式打开 TCP 端口 20 和 21。
+|主动 FTP 不受支持|在 Azure 防火墙上禁用主动 FTP，防范使用 FTP PORT 命令进行的 FTP 弹跳攻击。|可以改用被动 FTP。 仍需在防火墙上显式打开 TCP 端口 20 和 21。
 
 <!--Not Available on Line 93 on Availability Zones-->
 <!--Not Available on Line 94 SNAT on inbound connection [Azure Front Door](../frontdoor/front-door-http-headers-protocol.md#front-door-service-to-backend)-->

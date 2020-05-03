@@ -1,22 +1,23 @@
 ---
-author: IEvangelist
+author: trevorbye
 ms.service: cognitive-services
 ms.topic: include
-origin.date: 03/10/2020
-ms.date: 03/16/2020
+origin.date: 04/04/2020
+ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: 2b4da9b48a06c5c5c1ea68ed98e323f87df10e46
-ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
+ms.openlocfilehash: 6416dbf0836bb95de29671dd8de6925d46950b28
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80151605"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82150867"
 ---
 ## <a name="prerequisites"></a>先决条件
 
 > [!div class="checklist"]
 > * [创建 Azure 语音资源](../../../../get-started.md)
-> * [设置开发环境并创建空项目](../../../../quickstarts/setup-platform.md?tabs=jre)
+> * [设置开发环境并创建空项目](../../../../quickstarts/setup-platform.md?tabs=jre&pivots=programming-language-java)
+> * 需要语音 SDK 版本 1.10.0 或更高版本。
 
 [!INCLUDE [Audio input format](~/articles/cognitive-services/speech-service/includes/audio-input-format-chart.md)]
 
@@ -48,12 +49,15 @@ ms.locfileid: "80151605"
            try {
                // Replace below with your own subscription key
                String speechSubscriptionKey = "YourSubscriptionKey";
+
+               // Replace with your own subscription key and region identifier from here: https://docs.azure.cn/cognitive-services/speech-service/regions
+               String serviceRegion = "YourServiceRegion";
+
                // Replace below with your own filename.
                String audioFileName = "whatstheweatherlike.wav";
 
                int exitCode = 1;
-               // Replace with your own subscription key and region identifier from here: https://docs.azure.cn/cognitive-services/speech-service/regions
-               SpeechConfig config = SpeechConfig.fromHost(new URI("wss://YourServiceRegion.stt.speech.azure.cn/"), speechSubscriptionKey);
+               SpeechConfig config = SpeechConfig.fromSubscription(speechSubscriptionKey, serviceRegion);
                assert(config != null);
 
                AudioConfig audioInput = AudioConfig.fromWavFileInput(audioFileName);
@@ -128,4 +132,4 @@ ms.locfileid: "80151605"
 
 ## <a name="next-steps"></a>后续步骤
 
-[!INCLUDE [footer](./footer.md)]
+[!INCLUDE [Speech recognition basics](../../speech-to-text-next-steps.md)]

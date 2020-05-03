@@ -6,16 +6,16 @@ keywords: 编码;编码器;媒体
 author: WenJason
 manager: digimobile
 ms.author: v-jay
-origin.date: 02/10/2020
-ms.date: 04/06/2020
+origin.date: 04/16/2020
+ms.date: 05/11/2020
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 3eddcdabb868c6ad8b9aa6582abbb5b0fc17c50c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: dee4238d7a45d5cb4d05a20c6fee0d7225d1457d
+ms.sourcegitcommit: 95efd248f5ee3701f671dbd5cfe0aec9c9959a24
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80625769"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82507729"
 ---
 # <a name="tested-on-premises-live-streaming-encoders"></a>经过测试的本地实时传送视频流编码器
 
@@ -59,7 +59,6 @@ ms.locfileid: "80625769"
 - Telestream Wirecast S（仅支持 RTMP）
 - Teradek Slice 756
 - TriCaster 8000
-- Tricaster Mini HD-4
 - VMIX
 - xStream
 - [Ffmpeg](https://www.ffmpeg.org)

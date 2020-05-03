@@ -2,24 +2,21 @@
 title: 配置用于用户登录的 Web 应用 - Microsoft 标识平台 | Azure
 description: 了解如何构建用于登录用户的 Web 应用（代码配置）
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/10/2020
+ms.date: 04/22/2020
 ms.author: v-junlch
 ms.custom: aaddev
-ms.openlocfilehash: 962c5b24161222107f0eff1abf5be84403bc2636
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: bf8716575861ab5ad10d3bf9803e987f87293a0f
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79291037"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126433"
 ---
 # <a name="web-app-that-signs-in-users-code-configuration"></a>可将用户登录的 Web 应用：代码配置
 
@@ -27,7 +24,7 @@ ms.locfileid: "79291037"
 
 ## <a name="libraries-for-protecting-web-apps"></a>用于保护 Web 应用的库
 
-<!-- This section can be in an include for Web App and Web APIs -->
+<!-- This section can be in an include for web app and web APIs -->
 用于保护 Web 应用（和 Web API）的库为：
 
 | 平台 | 库 | 说明 |
@@ -99,7 +96,7 @@ ms.locfileid: "79291037"
 }
 ```
 
-在 ASP.NET Core 中，另一个文件 ([properties\launchSettings.json](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/bc564d68179c36546770bf4d6264ce72009bc65a/1-WebApp-OIDC/1-1-MyOrg/Properties/launchSettings.json#L6-L7)) 包含应用程序的 URL (`applicationUrl`) 和 SSL 端口 (`sslPort`)，以及各种配置文件。
+在 ASP.NET Core 中，另一个文件 ([properties\launchSettings.json](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/bc564d68179c36546770bf4d6264ce72009bc65a/1-WebApp-OIDC/1-1-MyOrg/Properties/launchSettings.json#L6-L7)) 包含应用程序的 URL (`applicationUrl`) 和 TLS/SSL 端口 (`sslPort`)，以及各种配置文件。
 
 ```Json
 {
@@ -308,7 +305,7 @@ public static IServiceCollection AddMicrosoftIdentityPlatformAuthentication(
   ...
 ```
 
-在许多情况下，可以使用 `AadIssuerValidator` 类验证令牌的颁发者。 此类适用于 v1.0 或 v2.0 令牌，以及 Azure 公有云或国家云中的单租户或多租户应用程序。 [Microsoft.Identity.Web/Resource/AadIssuerValidator.cs](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/master/Microsoft.Identity.Web/Resource/AadIssuerValidator.cs) 中提供了此类。
+在许多情况下，可以使用 `AadIssuerValidator` 类验证令牌的颁发者。 此类适用于 v1.0 或 v2.0 令牌，以及 Azure 公有云或国家云中的单租户或多租户应用程序。 可从 `Microsoft.Identity.Web/Resource/AadIssuerValidator.cs` 中找到此类。
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
@@ -344,7 +341,7 @@ public static IServiceCollection AddMicrosoftIdentityPlatformAuthentication(
 
 包含授权代码的响应抵达时，它将使用 MSAL Java 获取令牌。 当它最终从令牌终结点收到令牌时（在重定向 URI 上），用户已登录。
 
-有关详细信息，请参阅 [AuthFilter.java](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/master/src/main/java/com/microsoft/azure/msalwebsample/AuthFilter.java) 中的 `doFilter()` 方法。
+有关详细信息，请参阅 `AuthFilter.java` 中的 `doFilter()` 方法。
 
 > [!NOTE]
 > `doFilter()` 的代码以略微不同的顺序编写，但流与上述相同。

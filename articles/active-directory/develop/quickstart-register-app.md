@@ -8,22 +8,22 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 03/20/2020
+ms.date: 04/22/2020
 ms.author: v-junlch
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: c0c2b59aa1188443eba6a81883d1443230d7dce3
-ms.sourcegitcommit: 6568c59433d7e80ab06e9fe76d4791f761ed6775
+ms.openlocfilehash: 916d07c38c15f0c668a1a8113aa259dee33a567f
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80243140"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126492"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>快速入门：将应用程序注册到 Microsoft 标识平台
 
 在本快速入门中，我们使用 Azure 门户中的“应用注册”  体验注册应用程序。 
 
-将应用与 Microsoft 标识平台集成的方法是将其注册到 Azure Active Directory 租户。 企业开发人员和软件即服务 (SaaS) 提供商可以开发能够与 Microsoft 标识平台集成的商业云服务或业务线应用程序。 集成为此类服务提供安全的登录和授权。
+将应用与 Microsoft 标识平台集成的方法是将其注册到 Azure Active Directory 租户。 企业开发人员可以开发能够与 Microsoft 标识平台集成的商业云服务或业务线应用程序。 集成为此类服务提供安全的登录和授权。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -65,7 +65,7 @@ Azure AD 会向应用分配唯一的应用程序 ID 或客户端 ID。 门户会
 
 * 若要了解权限，请参阅 [Microsoft 标识平台终结点中的权限和许可](v2-permissions-and-consent.md)。
 
-* 若要公开 Web API，请参阅[快速入门：配置应用程序以公开 Web API](quickstart-configure-app-expose-web-apis.md)。
+* 若要公开 Web API，请参阅[快速入门：配置应用程序来公开 Web API](quickstart-configure-app-expose-web-apis.md)。
 
 * 若要管理支持的帐户，请参阅[快速入门：修改应用程序支持的帐户](quickstart-modify-supported-accounts.md)。
 

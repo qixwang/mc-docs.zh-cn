@@ -11,14 +11,14 @@ ms.topic: conceptual
 author: WenJason
 ms.author: v-jay
 ms.reviewer: carlrab
-origin.date: 03/12/2019
-ms.date: 02/17/2020
-ms.openlocfilehash: f4979fb3b240f823df3722a42ac82f59af1713fa
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+origin.date: 03/18/2019
+ms.date: 04/27/2020
+ms.openlocfilehash: 9ea7e4ea9f55c9707883ec9d944d2d8010213a43
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79291739"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126872"
 ---
 # <a name="azure-sql-database-and-azure-sql-data-warehouse-ip-firewall-rules"></a>Azure SQL 数据库和 Azure SQL 数据仓库 IP 防火墙规则
 
@@ -40,7 +40,7 @@ ms.locfileid: "79291739"
 
 ### <a name="server-level-ip-firewall-rules"></a>服务器级别 IP 防火墙规则
 
-  这些规则允许客户端访问整个 Azure SQL 服务器，即同一 SQL 数据库服务器内的所有数据库。 这些规则存储在 *master* 数据库中。 对于 Azure SQL Server，最多可以有 128 个服务器级别 IP 防火墙规则。
+  这些规则允许客户端访问整个 Azure SQL 服务器，即同一 SQL 数据库服务器内的所有数据库。 这些规则存储在 *master* 数据库中。 对于 Azure SQL Server，最多可以有 128 个服务器级别 IP 防火墙规则。 如果启用了“允许 Azure 服务和资源访问此服务器”  设置，则这将计为 Azure SQL Server 的单个防火墙规则。
   
   可以使用 Azure 门户、PowerShell 或 Transact-SQL 语句来配置服务器级 IP 防火墙规则。
   - 只有订阅所有者或订阅参与者才能使用门户或 PowerShell。
@@ -148,7 +148,7 @@ IP 地址用户是否需要访问所有数据库？
 
 ### <a name="use-transact-sql-to-manage-ip-firewall-rules"></a>使用 Transact-SQL 管理 IP 防火墙规则
 
-| 目录视图或存储过程 | Level | 说明 |
+| 目录视图或存储过程 | 级别 | 说明 |
 | --- | --- | --- |
 | [sys.firewall_rules](https://msdn.microsoft.com/library/dn269980.aspx) |服务器 |显示当前服务器级别 IP 防火墙规则 |
 | [sp_set_firewall_rule](https://msdn.microsoft.com/library/dn270017.aspx) |服务器 |创建或更新服务器级别 IP 防火墙规则 |
@@ -182,7 +182,7 @@ EXECUTE sp_delete_firewall_rule @name = N'ContosoFirewallRule'
 > [!IMPORTANT]
 > PowerShell Azure 资源管理器模块仍受 Azure SQL 数据库的支持，但所有开发现在都是针对 Az.Sql 模块。 若要了解这些 cmdlet，请参阅 [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 Az 和 AzureRm 模块中的命令参数大体上是相同的。
 
-| Cmdlet | Level | 说明 |
+| Cmdlet | 级别 | 说明 |
 | --- | --- | --- |
 | [Get-AzSqlServerFirewallRule](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlserverfirewallrule) |服务器 |返回当前的服务器级防火墙规则 |
 | [New-AzSqlServerFirewallRule](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlserverfirewallrule) |服务器 |新建服务器级防火墙规则 |
@@ -204,7 +204,7 @@ New-AzSqlServerFirewallRule -ResourceGroupName "myResourceGroup" `
 
 ### <a name="use-cli-to-manage-server-level-ip-firewall-rules"></a>使用 CLI 管理服务器级 IP 防火墙规则
 
-| Cmdlet | Level | 说明 |
+| Cmdlet | 级别 | 说明 |
 | --- | --- | --- |
 |[az sql server firewall-rule create](/cli/sql/server/firewall-rule#az-sql-server-firewall-rule-create)|服务器|创建服务器 IP 防火墙规则|
 |[az sql server firewall-rule list](/cli/sql/server/firewall-rule#az-sql-server-firewall-rule-list)|服务器|列出服务器上的 IP 防火墙规则|
@@ -226,7 +226,7 @@ az sql server firewall-rule create --resource-group myResourceGroup --server $se
 
 ### <a name="use-a-rest-api-to-manage-server-level-ip-firewall-rules"></a>使用 REST API 管理服务器级 IP 防火墙规则
 
-| API | Level | 说明 |
+| API | 级别 | 说明 |
 | --- | --- | --- |
 | [列出防火墙规则](https://docs.microsoft.com/rest/api/sql/firewallrules/listbyserver) |服务器 |显示当前服务器级别 IP 防火墙规则 |
 | [创建或更新防火墙规则](https://docs.microsoft.com/rest/api/sql/firewallrules/createorupdate) |服务器 |创建或更新服务器级别 IP 防火墙规则 |

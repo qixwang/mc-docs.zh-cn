@@ -4,26 +4,26 @@ description: 使用 SQL 数据库和 Azure Synapse 的 Azure Key Vault 为透明
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-ms.custom: azure-synapse
+ms.custom: seo-lt-2019, azure-synapse
 ms.devlang: ''
 ms.topic: conceptual
 author: WenJason
 ms.author: v-jay
 ms.reviewer: vanto
-origin.date: 02/12/2020
-ms.date: 03/16/2020
-ms.openlocfilehash: c92cab63557aa5937fec117e975e17dff17b6848
-ms.sourcegitcommit: dc862610e2169c1fce6fb0ae9eb7dd7567f86a0a
+origin.date: 03/18/2020
+ms.date: 04/27/2020
+ms.openlocfilehash: eddcc507cc3c59d8adbc9882c8a1e239e15aadd9
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79293743"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126849"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>使用客户管理的密钥进行 Azure SQL 透明数据加密
 
 Azure SQL [透明数据加密 (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption) 与客户管理的密钥共同实现了“创建自己的密钥”(BYOK) 方案，凭此可以实现静态数据保护，并使组织能够在密钥和数据管理方面实现职责分离。 使用客户管理的透明数据加密时，客户需要负责并可全面控制密钥生命周期管理（密钥创建、上传、轮换、删除）、密钥使用权限，以及密钥操作的审核。
 
-在此方案中，用于加密数据库加密密钥 (DEK) 的密钥（称作 TDE 保护器）是客户管理的非对称密钥，该密钥存储在客户自有的且由其管理的 [Azure Key Vault (AKV)](/key-vault/key-vault-secure-your-key-vault)（一个基于云的外部密钥管理系统）中。 Key Vault 是用于存储 RSA 加密密钥的高度可用且可缩放的安全存储。 它不允许直接访问存储的密钥，但会向已获授权的实体提供使用该密钥进行加密/解密的服务。 密钥可由 Key Vault 生成，并可以导入。
+在此方案中，用于加密数据库加密密钥 (DEK) 的密钥（称作 TDE 保护器）是客户管理的非对称密钥，该密钥存储在客户自有的且由其管理的 [Azure Key Vault (AKV)](/key-vault/key-vault-secure-your-key-vault)（一个基于云的外部密钥管理系统）中。 Key Vault 是用于存储 RSA 加密密钥的高度可用且可缩放的安全存储。 它不允许直接访问存储的密钥，但会向已获授权的实体提供使用该密钥进行加密/解密的服务。 密钥可由密钥保管库生成。
 
 对于 Azure SQL 数据库和 Azure Synapse，TDE 保护器在逻辑服务器级别设置，并由该服务器关联的所有已加密数据库继承。 对于 Azure SQL 托管实例，TDE 保护器是在实例级别设置的，并由该实例上所有加密的数据库继承。 除非另有说明，否则术语“服务器”在整个文档中指的是 SQL 数据库逻辑服务器和托管实例。 
 
@@ -74,7 +74,7 @@ Key Vault 管理员还可以[启用 Key Vault 审核事件的日志记录](/azur
 
 - Key Vault 和 SQL 数据库/托管实例必须属于同一个 Azure Active Directory 租户。 不支持 Key Vault 与服务器进行跨租户的交互。 以后若要移动资源，必须重新配置 TDE 和 AKV。 详细了解如何[移动资源](/azure-resource-manager/resource-group-move-resources)。
 
-- 必须对 Key Vault 启用[软删除](/key-vault/key-vault-ovw-soft-delete)功能，以防止意外删除密钥（或 Key Vault）时发生数据丢失。 软删除的资源将保留 90 天，除非客户在此期间恢复或清除这些资源。 “恢复”和“清除”操作在 Key Vault 访问策略中各自具有相关联的权限   。 软删除功能默认已禁用，可通过 [Powershell](/key-vault/key-vault-soft-delete-powershell#enabling-soft-delete) 或 [CLI](/key-vault/key-vault-soft-delete-cli#enabling-soft-delete) 将其启用。 无法通过 Azure 门户启用此功能。  
+- 必须对 Key Vault 启用[软删除](/key-vault/key-vault-ovw-soft-delete)功能，以防止意外删除密钥（或 Key Vault）时发生数据丢失。 软删除的资源将保留 90 天，除非客户在此期间恢复或清除这些资源。 “恢复”和“清除”操作在 Key Vault 访问策略中各自具有相关联的权限   。 软删除功能默认情况下处于禁用状态，可通过 [PowerShell](/key-vault/key-vault-soft-delete-powershell#enabling-soft-delete) 或 [CLI](/key-vault/key-vault-soft-delete-cli#enabling-soft-delete) 将其启用。 无法通过 Azure 门户启用此功能。  
 
 - 使用 SQL 数据库服务器或托管实例的 Azure Active Directory 标识向其授予对 Key Vault 的访问权限（get、wrapKey、unwrapKey）。 使用 Azure 门户时，会自动创建 Azure AD 标识。 使用 PowerShell 或 CLI 时，必须显式创建 Azure AD 标识，并且应验证创建是否完成。 有关使用 PowerShell 进行配置的详细分步说明，请参阅[配置支持 BYOK 的 TDE](transparent-data-encryption-byok-azure-sql-configure.md) 和[配置支持托管实例 BYOK 的 TDE](/sql-database/scripts/transparent-data-encryption-byok-sql-managed-instance-powershell)。
 
@@ -100,7 +100,7 @@ Key Vault 管理员还可以[启用 Key Vault 审核事件的日志记录](/azur
 
 - 对所有加密密钥启用审核和报告：Key Vault 提供可以轻松注入到其他安全信息和事件管理工具的日志。 Operations Management Suite [Log Analytics](/azure-monitor/insights/azure-key-vault) 是已集成的服务的一个示例。
 
-- 将每个服务器链接到位于不同区域中包含相同密钥材料的两个 Key Vault，以确保已加密数据库的高可用性。 仅将同一区域的 Key Vault 中的密钥标记为 TDE 保护器。 系统将使用
+- 将每个服务器链接到位于不同区域中包含相同密钥材料的两个 Key Vault，以确保已加密数据库的高可用性。 仅将同一区域的 Key Vault 中的密钥标记为 TDE 保护器。 如果同一区域中的密钥保管库受到服务中断影响，则系统将自动切换到远程区域中的密钥保管库。
 
 ### <a name="recommendations-when-configuring-tde-protector"></a>配置 TDE 保护器时的建议
 - 将 TDE 保护器的副本保存在安全位置，或将其托管到托管服务。

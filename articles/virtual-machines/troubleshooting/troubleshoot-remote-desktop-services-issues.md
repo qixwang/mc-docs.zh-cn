@@ -11,21 +11,18 @@ ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 origin.date: 10/23/2018
-ms.date: 02/10/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: 5acfdb428353f837646bca8c490e52b985738035
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 389c632015e02ea71961a7cb777c7316d034301e
+ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77428842"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82596186"
 ---
 # <a name="remote-desktop-services-isnt-starting-on-an-azure-vm"></a>远程桌面服务在 Azure VM 上不启动
 
 本文介绍如何排查连接到 Azure 虚拟机 (VM) 时远程桌面服务 (TermService) 不启动或无法启动的问题。
-
-> [!NOTE]  
-> Azure 提供两种不同的部署模型用于创建和处理资源：[Azure 资源管理器部署模型和经典部署模型](../../azure-resource-manager/management/deployment-models.md)。 本文介绍资源管理器部署模型的用法。 建议为新部署使用此模型，而不是使用经典部署模型。
 
 ## <a name="symptoms"></a>症状
 
@@ -44,7 +41,7 @@ ms.locfileid: "77428842"
     **任务类别**：无<br />
     **级别**：       错误<br />
     **关键字**：    经典<br />
-    **用户**：        不适用<br />
+    **用户**：        空值<br />
     **计算机**: vm.contoso.com<br />
     **说明**：远程桌面服务在启动时挂起。 
 

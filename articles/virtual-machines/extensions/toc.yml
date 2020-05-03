@@ -20,7 +20,7 @@
       href: features-linux.md
     - name: Windows
       href: features-windows.md
-- name: 操作方法指南
+- name: 操作指南
   items:
     - name: Azure 磁盘加密
       items:
@@ -30,6 +30,8 @@
           href: azure-disk-enc-windows.md
     - name: Azure Key Vault
       items:
+        - name: Linux
+          href: key-vault-linux.md
         - name: Windows
           href: key-vault-windows.md
     - name: 适用于 SQL Server 的 Azure 备份

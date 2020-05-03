@@ -3,20 +3,20 @@ title: 快速入门：合成语音，Python - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 了解如何在 Python 中使用语音 SDK 合成语音
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-origin.date: 09/14/2020
-ms.date: 03/16/2020
+origin.date: 04/04/2020
+ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: 5be1f89d99da7916dd09c77e0ebe0d80020da9aa
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 2d220761ff327150cded52726070b158d8d11e17
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80151626"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82150768"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -24,7 +24,8 @@ ms.locfileid: "80151626"
 
 > [!div class="checklist"]
 > * [创建一个 Azure 搜索资源](../../../../get-started.md)
-> * [设置开发环境并创建空项目](../../../../quickstarts/setup-platform.md)
+> * [设置开发环境并创建空项目](../../../../quickstarts/setup-platform.md?pivots=programming-language-python)
+> * 需要语音 SDK 版本 1.10.0 或更高版本。
 
 ## <a name="support-and-updates"></a>支持和更新
 
@@ -46,12 +47,12 @@ python quickstart.py
 
 或者，可以从[语音 SDK 示例存储库](https://github.com/Azure-Samples/cognitive-services-speech-sdk)以 [Jupyter](https://jupyter.org) Notebook 的形式下载本快速入门教程，并将其作为 Notebook 运行。
 
-### <a name="sample-code"></a>示例代码
+### <a name="sample-code"></a>代码示例
 
 ```python
 import azure.cognitiveservices.speech as speechsdk
 
-# Creates an instance of a speech config with specified host and subscription key.
+# Creates an instance of a speech config with specified subscription key and service region.
 # Replace with your own subscription key and service region (e.g., "chinaeast2").
 speech_host, speech_key = "https://YourServiceRegion.tts.speech.azure.cn/", "YourSubscriptionKey"
 speech_config = speechsdk.SpeechConfig(host=speech_host, subscription=speech_key)
@@ -112,7 +113,7 @@ elif result.reason == speechsdk.ResultReason.Canceled:
 
 ## <a name="next-steps"></a>后续步骤
 
-[!INCLUDE [footer](./footer.md)]
+[!INCLUDE [Speech synthesis basics](../../text-to-speech-next-steps.md)]
 
 <!-- ## See also -->
 

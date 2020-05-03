@@ -5,15 +5,15 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 09/13/2019
-ms.date: 10/28/2019
+ms.date: 04/27/2020
 ms.author: v-yeche
 ms.custom: query-reference
-ms.openlocfilehash: c5c16328850d109d844633ce024ae2e8013a847d
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 751d84292e6e7a24f7cdd5fc41261a5b1bc39736
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "72914645"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134789"
 ---
 # <a name="substring-azure-cosmos-db"></a>SUBSTRING (Azure Cosmos DB)
  返回字符串表达式的部分内容，该内容起于指定字符从零开始的位置，继续到指定长度或字符串结尾。  
@@ -37,21 +37,25 @@ SUBSTRING(<str_expr>, <num_expr1>, <num_expr2>)
 
 ## <a name="return-types"></a>返回类型
 
-  返回字符串表达式。  
+  返回一个字符串表达式。  
 
 ## <a name="examples"></a>示例
 
-  以下示例将返回 "abc" 中从位置 1 开始且长度为 1 个字符的子字符串。  
+  以下示例返回“abc”中从位置 1 开始且长度为 1 个字符的子字符串。  
 
 ```sql
 SELECT SUBSTRING("abc", 1, 1) AS substring  
 ```  
 
- 下面是结果集：  
+ 下面是结果集。  
 
 ```json
 [{"substring": "b"}]  
 ```  
+
+## <a name="remarks"></a>备注
+
+此系统函数将从[范围索引](index-policy.md#includeexclude-strategy)中获益（如果起始位置是 `0`）。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -59,5 +63,4 @@ SELECT SUBSTRING("abc", 1, 1) AS substring
 - [系统函数 Azure Cosmos DB](sql-query-system-functions.md)
 - [Azure Cosmos DB 简介](introduction.md)
 
-<!--Update_Description: new articles on sql query substring  -->
-<!--New.date: 10/28/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

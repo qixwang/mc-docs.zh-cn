@@ -3,22 +3,21 @@ title: 混合标识文档
 summary: Microsoft 的标识解决方案跨越本地和基于云的功能，创建单一用户标识对所有资源进行身份验证和授权，而不考虑其位置。 我们称此为混合标识。
 metadata:
   author: billmath
-  description: Azure AD Connect 会将本地目录与 Azure Active Directory 集成。 这样便可以为集成到 Azure AD 的 Office 365、Azure 和 SaaS 应用程序的用户提供一个通用标识。
+  description: Azure AD Connect 会将本地目录与 Azure Active Directory 集成。 这样便可以为集成到 Azure AD 的 Office 365 和 Azure 应用程序的用户提供一个通用标识。
   manager: daveba
   ms.author: v-junlch
   ms.collection: na
-  origin.date: 08/15/2019
-  ms.date: 10/10/2019
+  ms.date: 04/23/2020
   ms.service: active-directory
   ms.subservice: na
   ms.topic: landing-page
   services: active-directory
-  ms.openlocfilehash: 495adbea47f16749065be6e212213f9f812873c1
-  ms.sourcegitcommit: 74f50c9678e190e2dbb857be530175f25da8905e
+  ms.openlocfilehash: 04be16bb4f5c22d0d8e29b27a40e1f5e5a199eaa
+  ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/12/2019
-  ms.locfileid: "72292032"
+  ms.lasthandoff: 04/24/2020
+  ms.locfileid: "82126556"
 landingContent:
 - title: 关于混合标识
   linkLists:
@@ -32,7 +31,7 @@ landingContent:
     links:
     - text: 什么是密码哈希同步？
       url: whatis-phs.md
-    - text: 什么是联合？
+    - text: 什么是联合身份验证？
       url: whatis-fed.md
 - title: 混合标识入门
   linkLists:
@@ -54,5 +53,3 @@ landingContent:
       url: reference-connect-ports.md
     - text: 帐户和权限
       url: reference-connect-accounts-permissions.md
-    - text: Azure AD Connect 版本历史记录
-      url: reference-connect-version-history.md

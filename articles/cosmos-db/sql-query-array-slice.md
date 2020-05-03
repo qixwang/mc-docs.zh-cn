@@ -4,16 +4,16 @@ description: 了解 Azure Cosmos DB 中的 Array slice SQL 系统函数如何返
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
-origin.date: 09/13/2019
-ms.date: 02/10/2020
+origin.date: 03/03/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
 ms.custom: query-reference
-ms.openlocfilehash: 1480093d8be6a01948eb3e70fe769c068d7aaaab
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: abb9de6ad2f54b67d98dd84f9a171f5d40dd8746
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77028699"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134749"
 ---
 # <a name="array_slice-azure-cosmos-db"></a>ARRAY_SLICE (Azure Cosmos DB)
  返回部分数组表达式。
@@ -36,7 +36,7 @@ ARRAY_SLICE (<arr_expr>, <num_expr> [, <num_expr>])
 
 ## <a name="return-types"></a>返回类型
 
-  返回数组表达式。  
+  返回一个数组表达式。  
 
 ## <a name="examples"></a>示例
 
@@ -54,7 +54,7 @@ SELECT
 
 ```  
 
- 下面是结果集：  
+ 下面是结果集。  
 
 ```json
 [{  
@@ -67,6 +67,10 @@ SELECT
            "s7": [] 
 }]  
 ```  
+
+## <a name="remarks"></a>备注
+
+此系统函数不会使用索引。
 
 ## <a name="next-steps"></a>后续步骤
 

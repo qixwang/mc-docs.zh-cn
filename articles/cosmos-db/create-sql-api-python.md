@@ -1,24 +1,24 @@
 ---
-title: 快速入门：使用 Azure Cosmos DB SQL API 帐户生成 Python 应用
+title: 快速入门 - 使用 Azure Cosmos DB SQL API 帐户生成 Python 应用
 description: 演示了一个可以用来连接到 Azure Cosmos DB SQL API 并进行查询的 Python 代码示例
 author: rockboyfor
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: python
 ms.topic: quickstart
-origin.date: 11/03/2019
-ms.date: 02/10/2020
+origin.date: 03/09/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
 ms.custom:
 - seodec18
 - seo-javascript-september2019
 - seo-python-october2019
-ms.openlocfilehash: 913815f6f1fbd8b832b1a6e66f22b700fde23727
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: b0f80df19ab9bab96f6860763442358e924a643f
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "76980546"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134951"
 ---
 # <a name="quickstart-build-a-python-application-using-an-azure-cosmos-db-sql-api-account"></a>快速入门：使用 Azure Cosmos DB SQL API 帐户生成 Python 应用程序
 
@@ -30,21 +30,18 @@ ms.locfileid: "76980546"
 > * [Python](create-sql-api-python.md)
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
 
-本快速入门演示如何使用 Azure 门户创建 Azure Cosmos DB [SQL API](sql-api-introduction.md) 帐户、文档数据库和容器， 然后使用 [SQL API](sql-api-sdk-python.md) 的 Python SDK 构建并运行控制台应用。
-
-Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服务。 可以快速创建和查询文档、键/值、宽列和图形数据库。 所有这些操作受益于 Azure Cosmos DB 的分布和规模。
-
-本快速入门使用 [Python SDK](https://pypi.org/project/azure-cosmos/#history) 版本 4。
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-
-[!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
+在本快速入门中，你将通过 Azure 门户创建和管理 Azure Cosmos DB SQL API 帐户，并通过 Visual Studio Code 使用从 GitHub 克隆的 Python 应用来添加数据。 Azure Cosmos DB 是一种多模型数据库服务，可让你通过多区域分布和水平缩放功能快速创建和查询文档、表、键/值和图数据库。
 
 ## <a name="prerequisites"></a>先决条件
 
-* [Python 3.6+](https://www.python.org/downloads/)，以及在 `PATH` 中可用的 `python` 可执行文件。
-* [Visual Studio Code](https://code.visualstudio.com/)
-* [适用于 Visual Studio Code 的 Python 扩展](https://marketplace.visualstudio.com/items?itemName=ms-python.python#overview)
+- 具有活动订阅的 Azure 帐户。 [免费创建一个](https://www.azure.cn/pricing/1rmb-trial/)。 你还可以使用 [Azure Cosmos DB 模拟器](https://aka.ms/cosmosdb-emulator)以及 URI `https://localhost:8081` 和密钥 `C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==`。
+
+    <!--Not Available on [try Azure Cosmos DB for free](https://www.azure.cn/try/cosmosdb/)-->
+    
+- [Python 3.6+](https://www.python.org/downloads/)，以及 `PATH` 中的 `python` 可执行文件。
+- [Visual Studio Code](https://code.visualstudio.com/)。
+- [适用于 Visual Studio Code 的 Python 扩展](https://marketplace.visualstudio.com/items?itemName=ms-python.python#overview)。
+- [Git](https://www.git-scm.com/downloads)。 
 
 ## <a name="create-a-database-account"></a>创建数据库帐户
 
@@ -64,7 +61,7 @@ Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服�
 
     |设置|建议的值|说明
     |---|---|---|
-    |**数据库 ID**|任务|输入 ToDoList  作为新数据库的名称。 数据库名称必须包含 1 到 255 个字符，不能包含 `/, \\, #, ?` 或尾随空格。 选中“预配数据库吞吐量”选项，这样就可以在数据库中的所有容器之间共享预配给该数据库的吞吐量。  此选项还有助于节省成本。 |
+    |**数据库 ID**|任务|输入 *Tasks* 作为新数据库的名称。 数据库名称必须包含 1 到 255 个字符，不能包含 `/, \\, #, ?` 或尾随空格。 选中“预配数据库吞吐量”选项，这样就可以在数据库中的所有容器之间共享预配给该数据库的吞吐量。  此选项还有助于节省成本。 |
     |**吞吐量**|400|将吞吐量保留为每秒 400 个请求单位 (RU/s)。 如果想要减少延迟，以后可以增加吞吐量。| 
     |**容器 ID**|Items|输入 *Items* 作为新容器的名称。 容器 ID 与数据库名称的字符要求相同。|
     |**分区键**| /category| 本文中所述的示例使用 /category  作为分区键。|
@@ -83,7 +80,7 @@ Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服�
 
 ## <a name="clone-the-sample-application"></a>克隆示例应用程序
 
-现在，让我们从 GitHub 中克隆一个 SQL API 应用，设置连接字符串，然后运行该应用。
+现在，让我们从 GitHub 中克隆一个 SQL API 应用，设置连接字符串，然后运行该应用。 本快速入门使用 [Python SDK](https://pypi.org/project/azure-cosmos/#history) 版本 4。
 
 1. 打开命令提示符，新建一个名为“git-samples”的文件夹，然后关闭命令提示符。
 
@@ -112,27 +109,27 @@ Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服�
 
 现在返回到 Azure 门户，获取连接字符串信息，并将其复制到应用。
 
-1. 在 [Azure 门户](https://portal.azure.cn/)上你的 Azure Cosmos 帐户中，选择左侧导航栏中的“密钥”。  在下一步骤中你将使用屏幕右侧的复制按钮将 **URI** 和**主密钥**复制到 `cosmos_get_started.py` 文件中。
+1. 在 [Azure 门户](https://portal.azure.cn/)中，在你的 Azure Cosmos DB 帐户中，选择左侧导航栏中的“密钥”。  使用屏幕右侧的复制按钮将 **URI** 和**主密钥**复制到下一步的 *cosmos_get_started.py* 文件中。
 
     ![在 Azure 门户的“密钥”设置中获取访问密钥和 URI](./media/create-sql-api-dotnet/access-key-and-uri-in-keys-settings-in-the-azure-portal.png)
 
-2. 在 Visual Studio Code 中打开 \git-samples\azure-cosmos-db-python-getting-started 中的 `cosmos_get_started.py` 文件。
+2. 在 Visual Studio Code 中，打开 *\git-samples\azure-cosmos-db-python-getting-started* 中的 *cosmos_get_started.py* 文件。
 
-3. 从门户中复制“URI”值（使用复制按钮），并在 ``cosmos_get_started.py`` 中将其设为 **endpoint** 变量的值。  
+3. 从门户中复制你的 URI  值（使用复制按钮），并在 cosmos_get_started.py  中将其设为 endpoint  变量的值。 
 
     `endpoint = 'https://FILLME.documents.azure.cn',`
 
-4. 然后从门户复制“主密钥”值，并在 ``cosmos_get_started.py`` 中将其设为 **key** 的值。  现已使用与 Azure Cosmos DB 进行通信所需的所有信息更新应用。 
+4. 然后从门户复制“主密钥”值，并在 cosmos_get_started.py  中将其设为 key  的值。  现已使用与 Azure Cosmos DB 进行通信所需的所有信息更新应用。 
 
     `key = 'FILLME'`
 
-5. 保存 ``cosmos_get_started.py`` 文件。
+5. 保存 *cosmos_get_started.py* 文件。
 
 ## <a name="review-the-code"></a>查看代码
 
 此步骤是可选的。 了解在代码中创建的数据库资源，或者跳转到[更新连接字符串](#update-your-connection-string)。
 
-以下代码片段全部摘自 `cosmos_get_started.py` 文件。
+以下代码片段全部摘自 *cosmos_get_started.py* 文件。
 
 * 对 CosmosClient 进行初始化。 请务必根据[更新连接字符串](#update-your-connection-string)部分中所述更新“endpoint”和“key”值。 
 
@@ -166,6 +163,7 @@ Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服�
     ```
 
 * 使用 `read_item` 方法执行点读取（键值查找）。 我们将输出每个操作的 [RU 费用](request-units.md)。
+
     ```python
     for family in family_items_to_create:
         item_response = container.read_item(item=family['id'], partition_key=family['lastName'])
@@ -198,7 +196,7 @@ Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服�
 
 3. 选择“视图” > “集成终端”以打开 Visual Studio Code 集成终端。  
 
-4. 在集成的终端窗口中，确保位于 azure-cosmos-db-python-getting-started 文件夹中。 如果不是，请运行以下命令切换到该文件夹。 
+4. 在集成的终端窗口中，确保位于 *azure-cosmos-db-python-getting-started* 文件夹中。 如果不是，请运行以下命令切换到该文件夹。 
 
     ```cmd
     cd "\git-samples\azure-cosmos-db-python-getting-started"`
@@ -260,7 +258,7 @@ Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服�
 
 ## <a name="next-steps"></a>后续步骤
 
-本快速入门介绍了如何创建 Azure Cosmos 帐户、如何使用数据资源管理器创建容器，以及如何运行应用。 现在可以将其他数据导入 Cosmos DB 帐户。 
+在本快速入门中，你已了解了如何创建 Azure Cosmos DB 帐户，使用数据资源管理器创建容器，以及在 Visual Studio Code 中运行 Python 应用。 现在可以将其他数据导入 Azure Cosmos DB 帐户了。 
 
 > [!div class="nextstepaction"]
 > [将 SQL API 的数据导入 Azure Cosmos DB](import-data.md)

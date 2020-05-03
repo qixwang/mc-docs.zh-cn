@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 02/07/2020
+ms.date: 04/24/2020
 ms.author: v-junlch
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 72c13f345e83a5f0c243db6348dc038e1b0814cb
-ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
+ms.openlocfilehash: 0f6944d283c8f6ba6ceb2b2d5de95996f5a0853e
+ms.sourcegitcommit: d6db729fea7d491d876d491f19ff89ef52384329
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77067529"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82275346"
 ---
 # <a name="conditional-access-block-access-by-location"></a>条件访问：按位置阻止访问
 
@@ -50,6 +50,7 @@ ms.locfileid: "77067529"
    1. 在“包括”下，选择“选定位置”  
    1. 选择为组织创建的被阻止位置。
    1. 单击“选择”   >   “完成” >   “完成”。
+1. 在“条件”   >   “客户端应用(预览)”下，将“配置”设置为“是”，然后选择“完成”。   
 1. 在“访问控制”   >   “阻止”下，选择“选择”。 
 1. 确认设置，然后将“启用策略”设置为“打开”。  
 1. 选择“创建”  ，以便创建启用策略所需的项目。
@@ -60,4 +61,3 @@ ms.locfileid: "77067529"
 
 [使用条件访问 What If 工具模拟登录行为](troubleshoot-conditional-access-what-if.md)
 
-<!-- Update_Description: wording update -->

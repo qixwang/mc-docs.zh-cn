@@ -5,25 +5,23 @@ description: 介绍如何生成可让用户从任何 Azure Active Directory 租�
 services: active-directory
 author: rwike77
 manager: CelesteDG
-ms.assetid: 35af95cb-ced3-46ad-b01d-5d2f6fd064a3
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 03/20/2020
+ms.date: 04/22/2020
 ms.author: v-junlch
 ms.reviewer: jmprieur, lenalepa, sureshja, kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: e2dc71cde7054cfc48fa9705d0afe7346d082472
-ms.sourcegitcommit: 6568c59433d7e80ab06e9fe76d4791f761ed6775
+ms.openlocfilehash: 1f9e03b8ea132bf8248d47f74eaf6dc5ea20c5e9
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80243155"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126242"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>如何：使用多租户应用程序模式让任何 Azure Active Directory 用户登录
 
-如果你向许多组织提供软件即服务 (SaaS) 应用程序，则可以将应用程序配置为接受来自任何 Azure Active Directory (Azure AD) 租户的登录。 此配置称为使应用程序成为多租户应用程序  。 任何 Azure AD 租户中的用户在同意配合应用程序使用其帐户之后，便可登录到应用程序。
 
 如果现有应用程序具有自己的帐户系统，或者支持来自其他云提供程序的其他类型的登录，则从任何租户添加 Azure AD 登录都非常简单。 只需要注册应用，通过 OAuth2、OpenID Connect 或 SAML 添加登录代码，并按下应用程序中的[“使用 Microsoft 登录”按钮][AAD-App-Branding]。
 
@@ -56,7 +54,7 @@ Azure AD 中的 Web 应用/API 注册默认为单租户。 通过在 [Azure 门�
 
 使用多租户应用程序时，应用程序事先并不知道用户来自哪个租户，因此无法将请求发送到租户的终结点。 取而代之的是，请求将发送到在所有 Azure AD 租户之间多路复用的终结点：`https://login.partner.microsoftonline.cn/common`
 
-当 Microsoft 标识平台在 /common 终结点上收到请求时，会使用户登录，因而可以发现用户来自哪个租户。 /common 终结点可与 Azure AD 支持的所有身份验证协议配合使用：OpenID Connect、OAuth 2.0、SAML 2.0 和 WS 联合身份验证。
+当 Microsoft 标识平台在 /common 终结点上收到请求时，会使用户登录，因而可以发现用户来自哪个租户。 /common 终结点可与 Azure AD 支持的所有身份验证协议配合使用：OpenID Connect、OAuth 2.0 和 WS 联合身份验证。
 
 然后，对应用程序做出的登录响应会包含代表该用户的令牌。 令牌中的颁发者值告知应用程序该用户来自哪个租户。 从 /common 终结点返回响应时，令牌中的颁发者值将与用户的租户相对应。
 
@@ -161,6 +159,7 @@ Web 应用程序和 Web API 接收并验证 Microsoft 标识平台发送的令�
 
 用户和管理员可以随时吊销对应用程序的同意：
 
+* 用户可通过将单个应用程序从其[访问面板应用程序][AAD-Access-Panel]列表中删除，来吊销对该应用程序的访问权限。
 * 管理员可以通过使用 [Azure 门户][AZURE-portal]的[企业应用程序](https://portal.azure.cn/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps)部分删除应用程序，来撤销对这些应用程序的访问权限。
 
 如果是由管理员代表租户中的所有用户对应用程序行使同意权，用户就不能单独吊销访问权限。 只有管理员才能吊销访问权限，并且只能针对整个应用程序吊销。
@@ -175,7 +174,7 @@ Web 应用程序和 Web API 接收并验证 Microsoft 标识平台发送的令�
 
 ## <a name="related-content"></a>相关内容
 
-* [Multi-tenant application sample](https://github.com/mspnp/multitenant-saas-guidance)（多租户应用程序示例）
+* [Multi-tenant application sample](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/master/2-WebApp-graph-user/2-3-Multi-Tenant/README.md)（多租户应用程序示例）
 * [适用于应用程序的品牌准则][AAD-App-Branding]
 * [应用程序对象和服务主体对象][AAD-App-SP-Objects]
 * [将应用程序与 Azure Active Directory 集成][AAD-Integrating-Apps]
@@ -183,6 +182,7 @@ Web 应用程序和 Web API 接收并验证 Microsoft 标识平台发送的令�
 * [Microsoft Graph API 权限范围][MSFT-Graph-permission-scopes]
 
 <!--Reference style links IN USE -->
+[AAD-Access-Panel]:  https://account.activedirectory.windowsazure.cn/r#/applications
 [AAD-App-Branding]:howto-add-branding-in-azure-ad-apps.md
 [AAD-App-Manifest]:reference-azure-ad-app-manifest.md
 [AAD-App-SP-Objects]:app-objects-and-service-principals.md

@@ -7,15 +7,15 @@ ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
 origin.date: 07/03/2019
-ms.date: 04/06/2020
+ms.date: 05/11/2020
 ms.author: v-jay
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 2c8b7ec380ed85930095a0d558e005215f794c89
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 5cd2b25c60476084964825fbe9c28ed0e718d7cf
+ms.sourcegitcommit: 95efd248f5ee3701f671dbd5cfe0aec9c9959a24
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80634471"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82507741"
 ---
 # <a name="tutorial-order-an-azure-data-box-disk"></a>教程：订购 Azure Data Box Disk
 
@@ -34,12 +34,7 @@ Azure Data Box Disk 是一个混合云解决方案，可用于快速、方便、
 
 ### <a name="for-service"></a>对于服务
 
-在开始之前，请确保：
-- 具有 Azure 存储帐户和访问凭据。
-- 确保用于 Data Box 服务的订阅是下述类型之一：
-    - Microsoft 企业协议 (EA)。 详细了解 [EA 订阅](https://azure.microsoft.com/pricing/enterprise-agreement/)。
-    - 云解决方案提供商 (CSP)。 详细了解 [Azure CSP 计划](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview)。
-- 确保有订阅的所有者或参与者访问权限，以便创建 Data Box 订单。
+[!INCLUDE [Data Box service prerequisites](../../includes/data-box-supported-subscriptions.md)]
 
 ### <a name="for-device"></a>对于设备
 

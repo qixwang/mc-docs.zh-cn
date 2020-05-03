@@ -4,15 +4,15 @@ description: 了解 Azure Cosmos DB 的 GROUP BY 子句。
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
-origin.date: 10/11/2019
-ms.date: 12/16/2019
+origin.date: 04/10/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: 0908752d911d6235a9829b4766a97fb47362308e
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 4ae4b989276bfa194e776667a36ad6eab8d69110
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75335733"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134735"
 ---
 # <a name="group-by-clause-in-azure-cosmos-db"></a>Azure Cosmos DB 中的 GROUP BY 子句
 
@@ -53,6 +53,12 @@ GROUP BY 子句按照一个或多个指定属性的值来拆分查询的结果�
 - 别名属性或别名系统函数（在 SELECT 子句中，别名仍然是允许的）
 - 子查询
 - 聚合系统函数（在 SELECT 子句中，仍然允许这些函数）
+
+不支持使用带有 `GROUP BY` 的聚合系统函数和子查询的查询。 例如，不支持以下查询：
+
+```sql
+SELECT COUNT(UniqueLastNames) FROM (SELECT AVG(f.age) FROM f GROUP BY f.lastName) AS UniqueLastNames
+```
 
 ## <a name="examples"></a>示例
 

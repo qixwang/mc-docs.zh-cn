@@ -7,15 +7,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-origin.date: 12/17/2019
-ms.date: 03/16/2020
+origin.date: 04/02/2020
+ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: 731973bb5c5f6868064f5da3b6c2b740cbd96636
-ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
+ms.openlocfilehash: fef9d1735b96e66654cf6fb79830b5f899143907
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80151636"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82150901"
 ---
 > [!NOTE]
 > 适用于 Unity 的语音 SDK 支持 Windows 桌面版（x86 和 x64）或通用 Windows 平台（x86、x64、ARM/ARM64）、Android（x86、ARM32/64）或 iOS（x64 模拟器、ARM32 和 ARM64）
@@ -26,8 +26,9 @@ ms.locfileid: "80151636"
 
 > [!div class="checklist"]
 > * [创建一个 Azure 搜索资源](../../../../get-started.md)
-> * [设置开发环境并创建空项目](../../../../quickstarts/setup-platform.md?tabs=unity)
+> * [设置开发环境并创建空项目](../../../../quickstarts/setup-platform.md?tabs=unity&pivots=programming-language-csharp)
 > * 请确保你有权访问麦克风，以便进行音频捕获
+> * 需要语音 SDK 版本 1.10.0 或更高版本。
 
 如果尚未执行此操作，很好！ 让我们继续。
 
@@ -118,9 +119,9 @@ ms.locfileid: "80151636"
     
         public async void ButtonClick()
         {
-            // Creates an instance of a speech config with specified host and subscription key.
+            // Creates an instance of a speech config with specified subscription key and service region.
             // Replace with your own subscription key and service region (e.g., "chinaeast2").
-            var config = SpeechConfig.FromHost(new Uri("wss://YourServiceRegion.stt.speech.azure.cn/"), "YourSubscriptionKey");
+            var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
 
             // Make sure to dispose the recognizer after use!
             using (var recognizer = new SpeechRecognizer(config))
@@ -274,4 +275,5 @@ ms.locfileid: "80151636"
 
 ## <a name="next-steps"></a>后续步骤
 
-[!INCLUDE [footer](./footer.md)]
+[!INCLUDE [Speech recognition basics](../../speech-to-text-next-steps.md)]
+

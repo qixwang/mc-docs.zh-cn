@@ -4,16 +4,16 @@ description: 了解 Azure Cosmos DB 中的 Arcsine (ASIN) SQL 系统函数如何
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
-origin.date: 09/13/2019
-ms.date: 02/10/2020
+origin.date: 03/04/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
 ms.custom: query-reference
-ms.openlocfilehash: 5d513aaec41cb347c676289c3506d0d55ae2b37c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 494447ca343099b40c9423c0851b5f1db88ebd55
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77028694"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134748"
 ---
 # <a name="asin-azure-cosmos-db"></a>ASIN (Azure Cosmos DB)
  返回角度（弧度），其正弦是指定的数值表达式。 也被称为反正弦。  
@@ -27,11 +27,11 @@ ASIN(<numeric_expr>)
 ## <a name="arguments"></a>参数
 
 *numeric_expr*  
-  为数值表达式。  
+  是一个数值表达式。  
 
 ## <a name="return-types"></a>返回类型
 
-  返回数值表达式。  
+  返回一个数值表达式。  
 
 ## <a name="examples"></a>示例
 
@@ -41,11 +41,15 @@ ASIN(<numeric_expr>)
 SELECT ASIN(-1) AS asin  
 ```  
 
- 下面是结果集：  
+ 下面是结果集。  
 
 ```json
 [{"asin": -1.5707963267948966}]  
 ```  
+
+## <a name="remarks"></a>备注
+
+此系统函数不会使用索引。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -5,15 +5,15 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 08/23/2019
-ms.date: 09/30/2019
+ms.date: 04/27/2020
 ms.author: v-yeche
 ms.custom: seodec18
-ms.openlocfilehash: c6db35e569d0d5c2633c781a1473c7ed59ba9650
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: d9a4ec767601400ede47204a73becc0dc7fb9e70
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "71306785"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134622"
 ---
 # <a name="azure-cosmos-db-as-a-key-value-store---cost-overview"></a>作为键值存储的 Azure Cosmos DB - 费用概述
 
@@ -27,7 +27,7 @@ Azure Cosmos DB 性能基于以[请求单位](request-units.md)（RU/秒）表�
 
 作为一个多区域分布式数据库系统，Cosmos DB 是唯一个提供全面 SLA（涵盖延迟、吞吐量、一致性和高可用性）的 Azure 服务。 预配的吞吐量将应用到与 Cosmos 帐户关联的每个区域。 对于读取，Cosmos DB 提供多个妥善定义的[一致性级别](consistency-levels.md)供用户选择。 
 
-下表显示了基于大小为 1 KB 和 100 KB 的数据项执行读取和写入操作所需的 RU 数。
+下表显示了在默认自动索引关闭的情况下基于大小为 1 KB 和 100 KB 的数据项执行读取和写入操作所需的 RU 数。 
 
 |项大小|1 次读取|1 次写入|
 |-------------|------|-------|

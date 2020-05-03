@@ -1,16 +1,16 @@
 ---
-author: IEvangelist
+author: trevorbye
 ms.service: cognitive-services
 ms.topic: include
-origin.date: 03/10/2020
-ms.date: 03/16/2020
+origin.date: 04/04/2020
+ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: f744124a91b9196127d949ac3da3f868de77c6cb
-ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
+ms.openlocfilehash: 86bbc087201c6b3835453dd1634bd52bcc2a05be
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80151610"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82150807"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -18,7 +18,8 @@ ms.locfileid: "80151610"
 
 > [!div class="checklist"]
 > * [创建 Azure 语音资源](../../../../get-started.md)
-> * [设置开发环境并创建空项目](../../../../quickstarts/setup-platform.md?tabs=windows)
+> * [设置开发环境并创建空项目](../../../../quickstarts/setup-platform.md?tabs=windows&pivots=programming-language-cpp)
+> * 需要语音 SDK 版本 1.10.0 或更高版本。
 
 [!INCLUDE [Audio input format](~/articles/cognitive-services/speech-service/includes/audio-input-format-chart.md)]
 
@@ -30,9 +31,10 @@ ms.locfileid: "80151610"
 
    ````C++
 
-    // Creates an instance of a speech config with specified host and subscription key.
+    // Creates an instance of a speech config with specified subscription key and service region.
     // Replace with your own subscription key and service region (e.g., "chinaeast2").
-    auto config = SpeechConfig::FromHost("wss://YourServiceRegion.stt.speech.azure.cn/", "YourSubscriptionKey");
+    auto config = SpeechConfig::FromSubscription("YourSubscriptionKey", "YourServiceRegion");
+
 
     // Creates a speech recognizer using a WAV file. The default language is "en-us".
     // Replace with your own audio file name.
@@ -98,4 +100,4 @@ ms.locfileid: "80151610"
 
 ## <a name="next-steps"></a>后续步骤
 
-[!INCLUDE [footer](./footer.md)]
+[!INCLUDE [Speech recognition basics](../../speech-to-text-next-steps.md)]

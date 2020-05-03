@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-origin.date: 08/19/2019
-ms.date: 03/16/2020
+origin.date: 04/04/2020
+ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: 1c9a0385844b13b72a8a10547e437f6053602347
-ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
+ms.openlocfilehash: 40f8d8e44fbecce74e876c85351d8c13fb74d105
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80151624"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82150736"
 ---
 > [!NOTE]
 > 通用 Windows 平台允许开发在支持 Windows 10 的任何设备上运行的应用，包括电脑、Xbox、Surface Hub 和其他设备。
@@ -27,7 +27,8 @@ ms.locfileid: "80151624"
 
 > [!div class="checklist"]
 > * [创建一个 Azure 搜索资源](../../../../get-started.md)
-> * [设置开发环境并创建空项目](../../../../quickstarts/setup-platform.md?tabs=uwp)
+> * [设置开发环境并创建空项目](../../../../quickstarts/setup-platform.md?tabs=uwp&pivots=programming-language-csharp)
+> * 需要语音 SDK 版本 1.10.0 或更高版本。
 
 ## <a name="add-sample-code"></a>添加示例代码
 
@@ -87,10 +88,10 @@ ms.locfileid: "80151624"
     
             private async void Speak_ButtonClicked(object sender, RoutedEventArgs e)
             {
-                // Creates an instance of a speech config with specified host and subscription key.
+                // Creates an instance of a speech config with specified subscription key and service region.
                 // Replace with your own subscription key and service region (e.g., "chinaeast2").
-                var config = SpeechConfig.FromHost(new Uri("https://YourServiceRegion.tts.speech.azure.cn/"), "YourSubscriptionKey");
-    
+                var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
+
                 try
                 {
                     // Creates a speech synthesizer.
@@ -213,7 +214,7 @@ ms.locfileid: "80151624"
 
 ## <a name="next-steps"></a>后续步骤
 
-[!INCLUDE [footer](./footer.md)]
+[!INCLUDE [Speech synthesis basics](../../text-to-speech-next-steps.md)]
 
 <!-- ## See also -->
 
