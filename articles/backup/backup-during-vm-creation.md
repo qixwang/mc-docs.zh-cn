@@ -6,12 +6,12 @@ author: lingliw
 origin.date: 06/13/2019
 ms.date: 12/04/2019
 ms.author: v-lingwu
-ms.openlocfilehash: f3fbdd2874bac4cf48ef9d71fa78ff1ef38a5ead
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: affedafd23725409255b0e43eb9465bffb639541
+ms.sourcegitcommit: b80d236ce3c706abc25bbaa41b0ccddd896e48fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292103"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81873148"
 ---
 # <a name="enable-backup-when-you-create-an-azure-vm"></a>在创建 Azure VM 时启用备份
 

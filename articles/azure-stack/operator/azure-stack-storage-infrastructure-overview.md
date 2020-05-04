@@ -9,12 +9,12 @@ ms.date: 03/23/2020
 ms.author: v-jay
 ms.lastreviewed: 03/11/2019
 ms.reviewer: jiaha
-ms.openlocfilehash: 22b9980606621fc5f678dd87d19632ab4bc8c22f
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 175a7d13272bc8ec6824bd5e4be0901b41a04b77
+ms.sourcegitcommit: 4aeecfcc59cb42ba0b712a729d278d03bffc719a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80418030"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81791033"
 ---
 # <a name="manage-storage-infrastructure-for-azure-stack-hub"></a>管理 Azure Stack Hub 的存储基础结构
 
@@ -179,13 +179,13 @@ Get-AzsDrive -ScaleUnit $scaleunit_name -StorageSubSystem $subsystem_name | Sele
 | 介质故障 | 驱动器出现故障，不再可供存储空间使用。<br> <br>**操作：** 请尽快更换驱动器，以确保能够全面复原。 |
 | 设备硬件故障 | 此驱动器上出现硬件故障。 <br> <br>**操作：** 请尽快更换驱动器，以确保能够全面复原。 |
 | 正在更新固件 | Azure Stack Hub 正在更新驱动器上的固件。 此状态是暂时性的，其持续时间通常小于一分钟，在此期间，池中的其他驱动器会处理所有读取和写入操作。<br> <br>**操作：** 等待 Azure Stack Hub 完成更新，然后检查状态。 |
-| 正在启动 | 驱动器正在为操作做好准备。 此状态应该是暂时性的 - 完成后，驱动器应会过渡到另一种工作状态。<br> <br>**操作：** 等待 Azure Stack Hub 完成操作，然后检查状态。 |
+| 正在启动 | 驱动器正在为操作做好准备。 此状态应该是暂时性的 - 完成后，驱动器应会转换为另一种运行状态。<br> <br>**操作：** 等待 Azure Stack Hub 完成操作，然后检查状态。 |
 
 ## <a name="reasons-a-drive-cant-be-pooled"></a>驱动器无法入池的原因
 
 某些驱动器尚未做好加入 Azure Stack Hub 存储池的准备。 通过查看驱动器的 `CannotPoolReason` 属性，可以确定驱动器为何不符合入池条件的原因。 下表更具体地描述了每种原因。
 
-| Reason | 说明 |
+| 原因 | 说明 |
 |---|---|
 | 硬件不合规 | 使用运行状况服务指定的已批准存储模型列表中不包括该驱动程序。<br> <br>**操作：** 使用新磁盘替换该驱动器。 |
 | 固件不合规 | 使用运行状况服务指定的已批准固件修订版列表中不包括该物理驱动器上的固件。<br> <br>**操作：** 使用新磁盘替换该驱动器。 |
@@ -195,7 +195,7 @@ Get-AzsDrive -ScaleUnit $scaleunit_name -StorageSubSystem $subsystem_name | Sele
 | 容量不足 | 某些分区占用了驱动器上的可用空间。<br> <br>**操作：** 使用新磁盘替换该驱动器。 如果必须使用此磁盘，请从系统中删除该磁盘，确保该磁盘上没有任何有用的数据，擦除该磁盘，然后重新安装磁盘。 |
 | 正在验证 | 运行状况服务正在检查是否已批准使用驱动器上的固件。<br> <br>**操作：** 等待 Azure Stack Hub 完成该过程，然后检查状态。 |
 | 验证失败 | 运行状况服务无法检查是否已批准使用驱动器上的固件。<br> <br>**操作：** 请联系支持人员。 在此之前，请参考 https://docs.azure.cn/zh-cn/azure-stack/azure-stack-diagnostics#log-collection-tool 中的指导启动日志文件收集过程。 |
-| Offline | 驱动器已脱机。 <br> <br>**操作：** 请联系支持人员。 在此之前，请参考 https://docs.azure.cn/zh-cn/azure-stack/azure-stack-diagnostics#log-collection-tool 中的指导启动日志文件收集过程。 |
+| 脱机 | 驱动器已脱机。 <br> <br>**操作：** 请联系支持人员。 在此之前，请参考 https://docs.azure.cn/zh-cn/azure-stack/azure-stack-diagnostics#log-collection-tool 中的指导启动日志文件收集过程。 |
 
 ## <a name="next-step"></a>后续步骤
 

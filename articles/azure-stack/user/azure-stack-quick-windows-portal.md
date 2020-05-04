@@ -8,12 +8,12 @@ ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: kivenkat
 ms.lastreviewed: 1/10/2020
-ms.openlocfilehash: 565adf6423fc0e3500723c38db77ce2ca99ca3ba
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 2725585a4a5112d209d80e5f83076dea110247ec
+ms.sourcegitcommit: 4aeecfcc59cb42ba0b712a729d278d03bffc719a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77541020"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81791004"
 ---
 # <a name="quickstart-create-a-windows-server-vm-with-the-azure-stack-hub-portal"></a>快速入门：使用 Azure Stack Hub 门户创建 Windows 服务器 VM
 
@@ -34,7 +34,7 @@ ms.locfileid: "77541020"
 
 1. 选择“创建资源”   > “计算”  。 搜索 ` Windows Server 2016 Datacenter`。
 
-    ![Windows Server 2016 Datacenter 即用即付](./media/azure-stack-quick-windows-portal/image1.png)
+    ![Windows Server 2016 Datacenter - 即用即付](./media/azure-stack-quick-windows-portal/image1.png)
 
 1. 选择“创建”  。
 

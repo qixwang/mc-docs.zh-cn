@@ -1,19 +1,19 @@
 ---
-title: Azure Cosmos DB 的 API for MongoDB（3.2 版本）支持的功能和语法
+title: Azure Cosmos DB API for MongoDB（3.2 版本）支持的功能和语法
 description: 了解 Azure Cosmos DB 的 API for MongoDB（3.2 版本）支持的功能和语法。
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: overview
 origin.date: 10/16/2019
-ms.date: 10/28/2019
+ms.date: 04/27/2020
 author: rockboyfor
 ms.author: v-yeche
-ms.openlocfilehash: 92857f2c025bac0dd364289e8120e4340a1cae1d
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 93d70b1cd805205b32f71068518a89945559fd66
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "72914366"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134467"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-32-version-supported-features-and-syntax"></a>Azure Cosmos DB 的 API for MongoDB（3.2 版本）：支持的功能和语法
 
@@ -38,7 +38,7 @@ Azure Cosmos DB 的用于 MongoDB 的 API 支持以下数据库命令：
 
 ### <a name="query-and-write-operation-commands"></a>查询和写入操作命令
 
-- 删除
+- delete
 - find
 - findAndModify
 - getLastError
@@ -78,7 +78,7 @@ Azure Cosmos DB 的用于 MongoDB 的 API 支持以下数据库命令：
 
 ## <a name="aggregation-pipelinea"></a>聚合管道</a>
 
-在公共预览版中，Cosmos DB 支持 MongoDB 3.2 的聚合管道。 请参阅 [Azure 博客](https://aka.ms/mongodb-aggregation)，了解如何载入到公共预览版。
+在公共预览版中，Cosmos DB 支持 MongoDB 3.2 的聚合管道。 请参阅 [Azure 博客](https://azure.microsoft.com/blog/azure-cosmosdb-extends-support-for-mongodb-aggregation-pipeline-unique-indexes-and-more/)，了解如何载入到公共预览版。
 
 ### <a name="aggregation-commands"></a>聚合命令
 
@@ -363,6 +363,6 @@ Azure Cosmos DB 支持服务器端自动分片。 它自动管理分片的创建
 - 了解如何将 [Robo 3T](mongodb-robomongo.md) 与 Azure Cosmos DB 的用于 MongoDB 的 API 配合使用。
 - 通过 Azure Cosmos DB 的用于 MongoDB 的 API 来浏览 MongoDB [示例](mongodb-samples.md)。
 
-注意：<sup>本文介绍了可与 MongoDB 数据库实现线路协议兼容的 Azure Cosmos DB 功能。Azure 不会运行 MongoDB 数据库来提供此服务。Azure Cosmos DB 并不隶属于 MongoDB, inc.</sup>
+<sup>注意：本文介绍了可与 MongoDB 数据库实现线路协议兼容的 Azure Cosmos DB 功能。Azure 不会运行 MongoDB 数据库来提供此服务。Azure Cosmos DB 并不隶属于 MongoDB, inc.</sup>
 
-<!-- Update_Description: update meta properties, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

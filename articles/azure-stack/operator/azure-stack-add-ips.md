@@ -8,12 +8,12 @@ ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: scottnap
 ms.lastreviewed: 09/10/2019
-ms.openlocfilehash: bc88f6da085f38f3be2c7e4f87915a3a270c6f42
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 19f753b5523fb53c8fdacb05218fc68d30e8f6af
+ms.sourcegitcommit: 4aeecfcc59cb42ba0b712a729d278d03bffc719a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540924"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81791022"
 ---
 # <a name="add-public-ip-addresses"></a>添加公共 IP 地址
 

@@ -1,33 +1,31 @@
 ---
-title: 快速入门 - 使用 PowerShell 在 Azure 中创建 Linux 虚拟机 | Azure
+title: 快速入门 - 使用 PowerShell 在 Azure 中创建 Linux 虚拟机
 description: 本快速入门介绍如何使用 Azure PowerShell 创建 Linux 虚拟机
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: rockboyfor
-manager: digimobile
-editor: tysonn
+author: Johnnytechn
+manager: gwallace
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.topic: quickstart
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-origin.date: 10/17/2018
-ms.date: 11/11/2019
-ms.author: v-yeche
+ms.date: 04/20/2020
+ms.author: v-johya
 ms.custom: mvc
-ms.openlocfilehash: 5fc567c961aab55056241a35ad2e2e573607b185
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 9b165018a24292b72d3b8452c9e989a16dd5e724
+ms.sourcegitcommit: ebedf9e489f5218d4dda7468b669a601b3c02ae5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "73831412"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82159192"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-in-azure-with-powershell"></a>快速入门：使用 PowerShell 在 Azure 中创建 Linux 虚拟机
 
 Azure PowerShell 模块用于从 PowerShell 命令行或脚本创建和管理 Azure 资源。 本快速入门展示了如何使用 Azure PowerShell 模块在 Azure 中部署 Linux 虚拟机 (VM)。 本快速入门使用 Canonical 提供的 Ubuntu 16.04 LTS 市场映像。 若要查看运行中的 VM，也可以通过 SSH 登录到该 VM 并安装 NGINX Web 服务器。
 
-如果没有 Azure 订阅，可在开始前创建一个 [试用帐户](https://www.azure.cn/pricing/1rmb-trial) 。
+如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 
 <a name="launch-azure-cloud-shell"></a>
 ## <a name="launch-azure-local-shell"></a>启动 Azure 本地 Shell
@@ -42,7 +40,7 @@ Azure PowerShell 模块用于从 PowerShell 命令行或脚本创建和管理 Az
 
 <!-- Not Available on [Azure Cloud Shell](https://shell.azure.com/bash)--> 
 
-```powershell
+```azurepowershell
 ssh-keygen -t rsa -b 2048
 ```
 
@@ -55,7 +53,7 @@ ssh-keygen -t rsa -b 2048
 
 使用 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) 创建 Azure 资源组。 资源组是在其中部署和管理 Azure 资源的逻辑容器：
 
-```powershell
+```azurepowershell
 New-AzResourceGroup -Name "myResourceGroup" -Location "ChinaEast"
 ```
 
@@ -63,7 +61,7 @@ New-AzResourceGroup -Name "myResourceGroup" -Location "ChinaEast"
 
 创建虚拟网络、子网和公共 IP 地址。 这些资源用来与 VM 建立网络连接，以及将其连接到 Internet：
 
-```powershell
+```azurepowershell
 # Create a subnet configuration
 $subnetConfig = New-AzVirtualNetworkSubnetConfig `
   -Name "mySubnet" `
@@ -88,7 +86,7 @@ $pip = New-AzPublicIpAddress `
 
 创建 Azure 网络安全组和流量规则。 网络安全组使用入站和出站规则来保护 VM。 在下面的示例中，将为 TCP 端口 22 创建允许 SSH 连接的入站规则。 为允许传入的 Web 流量，还将为 TCP 端口 80 创建一个入站规则。
 
-```powershell
+```azurepowershell
 # Create an inbound network security group rule for port 22
 $nsgRuleSSH = New-AzNetworkSecurityRuleConfig `
   -Name "myNetworkSecurityGroupRuleSSH"  `
@@ -123,7 +121,7 @@ $nsg = New-AzNetworkSecurityGroup `
 
 使用 [New-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface) 创建虚拟网络接口卡 (NIC)。 虚拟 NIC 将 VM 连接到子网、网络安全组和公共 IP 地址。
 
-```powershell
+```azurepowershell
 # Create a virtual network card and associate with public IP address and NSG
 $nic = New-AzNetworkInterface `
   -Name "myNic" `
@@ -140,7 +138,7 @@ $nic = New-AzNetworkInterface `
 
 定义 SSH 凭据、OS 信息和 VM 大小。 在此示例中，SSH 密钥存储在 `~/.ssh/id_rsa.pub` 中。 
 
-```powershell
+```azurepowershell
 # Define a credential object
 $securePassword = ConvertTo-SecureString ' ' -AsPlainText -Force
 $cred = New-Object System.Management.Automation.PSCredential ("azureuser", $securePassword)
@@ -172,7 +170,7 @@ Add-AzVMSshPublicKey `
 
 现在，组合前面的配置定义来使用 [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) 创建虚拟机：
 
-```powershell
+```azurepowershell
 New-AzVM `
   -ResourceGroupName "myResourceGroup" `
   -Location chinaeast -VM $vmConfig
@@ -184,7 +182,7 @@ New-AzVM `
 
 使用公共 IP 地址创建与 VM 的 SSH 连接。 若要查看 VM 的公共 IP 地址，请使用 [Get-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress) cmdlet：
 
-```powershell
+```azurepowershell
 Get-AzPublicIpAddress -ResourceGroupName "myResourceGroup" | Select "IpAddress"
 ```
 
@@ -198,6 +196,7 @@ ssh azureuser@10.111.12.123
 
 出现提示时，请输入登录用户名 *azureuser*。 如果将通行短语与 SSH 密钥配合使用，则需要在出现提示时将其输入。
 
+
 ## <a name="install-nginx"></a>安装 NGINX
 
 若要查看运行中的 VM，请安装 NGINX Web 服务器。 在 SSH 会话中更新包源，然后安装最新的 NGINX 包。
@@ -209,6 +208,7 @@ sudo apt-get -y install nginx
 
 完成后，键入 `exit` 以离开 SSH 会话。
 
+
 ## <a name="view-the-web-server-in-action"></a>查看运行中的 Web 服务器
 
 使用所选的 Web 浏览器查看默认的 NGINX 欢迎页。 输入 VM 的公共 IP 地址作为 Web 地址。 可以在 VM 概览页上或此前使用过的 SSH 连接字符串中找到公共 IP 地址。
@@ -219,13 +219,13 @@ sudo apt-get -y install nginx
 
 不再需要时，可以使用 [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) cmdlet 删除资源组、VM 和所有相关资源：
 
-```powershell
+```azurepowershell
 Remove-AzResourceGroup -Name "myResourceGroup"
 ```
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你部署了一台简单的虚拟机、一条网络安全组规则组和规则，并安装了一台基本 Web 服务器。 若要详细了解 Azure 虚拟机，请继续学习 Linux VM 的教程。
+在本快速入门中，你部署了一台简单的虚拟机、创建了网络安全组及其规则，并安装了一台基本 Web 服务器。 若要详细了解 Azure 虚拟机，请继续学习 Linux VM 教程。
 
 > [!div class="nextstepaction"]
 > [Azure Linux 虚拟机教程](./tutorial-manage-vm.md)

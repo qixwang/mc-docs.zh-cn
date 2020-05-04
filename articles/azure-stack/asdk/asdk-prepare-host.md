@@ -17,12 +17,12 @@ ms.date: 10/21/2019
 ms.author: v-jay
 ms.reviewer: misainat
 ms.lastreviewed: 08/28/2019
-ms.openlocfilehash: 2612fbcb090a3adedba482599a80cf33e33760eb
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: e416558f64437b58e5a04ea6a97c25917eb8c4ec
+ms.sourcegitcommit: 4aeecfcc59cb42ba0b712a729d278d03bffc719a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "72578295"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81791028"
 ---
 # <a name="prepare-the-asdk-host-computer"></a>准备 ASDK 主机
 在主计算机上安装 Azure Stack 开发工具包 (ASDK) 之前，必须先准备好用于安装的 ASDK 主机。 准备好主机后，它将从 CloudBuilder.vhdx 虚拟机 (VM) 硬盘驱动器启动，以开始 ASDK 部署。
@@ -61,7 +61,7 @@ ms.locfileid: "72578295"
 
     如果在此步骤中未提供本地管理员凭据，则在设置 ASDK 过程中重启计算机后，需要直接访问或通过 KVM 访问主机。
 
-   ![ASDK 中的可选设置提供本地管理员帐户信息](media/asdk-prepare-host/3.PNG)
+   ![ASDK 中的可选设置 - 提供本地管理员帐户信息](media/asdk-prepare-host/3.PNG)
 
     还可以提供以下可选设置的值：
     - **计算机名**：此选项设置 ASDK 主机的名称。 名称必须符合 FQDN 要求，且长度不得超过 15 个字符。 默认值是由 Windows 生成的随机计算机名称。

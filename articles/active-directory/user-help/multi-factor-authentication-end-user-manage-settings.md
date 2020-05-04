@@ -14,12 +14,12 @@ ms.topic: conceptual
 origin.date: 05/23/2017
 ms.date: 08/27/2018
 ms.author: v-junlch
-ms.openlocfilehash: 5683cdc1f28038b1ebc1e486c081990bbcaf794d
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: ba776aef90009113448c23b5625f66054accdecf
+ms.sourcegitcommit: b80d236ce3c706abc25bbaa41b0ccddd896e48fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79291970"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81873130"
 ---
 # <a name="manage-your-settings-for-two-step-verification"></a>管理双重验证设置
 本文回答有关如何更新双重验证或多重身份验证的设置的问题。 如果在登录帐户时遇到问题，请参阅[使用双重验证时遇到问题](multi-factor-authentication-end-user-troubleshoot.md)获取疑难解答帮助。

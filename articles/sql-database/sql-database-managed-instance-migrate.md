@@ -12,12 +12,12 @@ ms.author: v-jay
 ms.reviewer: douglas, carlrab
 origin.date: 07/11/2019
 ms.date: 03/30/2020
-ms.openlocfilehash: 281082da5a555740227e4535b4b21fc9c8a5b6f8
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 273ff586bcdbbfd7e72b3c1070b3947eeca8ccfd
+ms.sourcegitcommit: 4aeecfcc59cb42ba0b712a729d278d03bffc719a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80341815"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81791032"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>将 SQL Server 实例迁移到 Azure SQL 数据库托管实例
 
@@ -79,7 +79,7 @@ ms.locfileid: "80341815"
 
 ## <a name="deploy-to-an-optimally-sized-managed-instance"></a>部署到大小最适合的托管实例
 
-托管实例是为要迁移到云中的本地工作负载量身定制。 它引入了一个[新的购买模型](sql-database-service-tiers-vcore.md)，这让你在为工作负荷选择适当的资源级别时更具灵活性。 在本地环境中，你可能习惯于使用物理核心和 IO 带宽来调整这些工作负荷的大小。 托管实例的购买模型以虚拟核心 (vCore) 为依据，同时单独提供更多存储和 IO 资源。 借助 vCore 模型可以更方便地根据当前在本地使用的计算资源，来了解云中的计算要求。 使用此新模型可以适当地调整云中目标环境的大小。 下面介绍了一些可帮助你选择适当服务层级和特征的常规指导：
+托管实例是为要迁移到云中的本地工作负载量身定制。 它引入了一个[新的购买模型](sql-database-service-tiers-vcore.md)，这让你在为工作负荷选择适当的资源级别时更具灵活性。 在本地环境中，你可能习惯于使用物理核心和 IO 带宽来调整这些工作负荷的大小。 托管实例的购买模型基于虚拟核心 (vCore)，而且可以单独提供更多存储和 IO 资源。 借助 vCore 模型可以更方便地根据当前在本地使用的计算资源，来了解云中的计算要求。 使用此新模型可以适当地调整云中目标环境的大小。 下面介绍了一些可帮助你选择适当服务层级和特征的常规指导：
 - 根据基线 CPU 使用率，可以预配一个与 SQL Server 上使用的核心数相匹配的托管实例，但请注意，可能需要缩放 CPU 特征才能匹配[安装了托管实例的 VM 的特征](sql-database-managed-instance-resource-limits.md#hardware-generation-characteristics)。
 - 根据基线内存使用率选择[具有匹配内存的服务层级](sql-database-managed-instance-resource-limits.md#hardware-generation-characteristics)。 无法直接选择内存量，因此，需要选择 vCore 数量与内存相匹配（例如，在 Gen5 中为 5.1 GB/vCore）的托管实例。 
 - 根据文件子系统的基线 IO 延迟，在“常规用途”（延迟大于 5 毫秒）与“业务关键”服务层级（延迟小于 3 毫秒）之间进行选择。

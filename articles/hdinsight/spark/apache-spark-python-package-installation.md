@@ -10,12 +10,12 @@ ms.topic: conceptual
 origin.date: 11/19/2019
 ms.date: 04/06/2020
 ms.author: v-yiso
-ms.openlocfilehash: 285695a8b393f97ba688d0d8f3783c945f3d4325
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 1b0826faedb0637a93dba2e52ba40ab9834db5d0
+ms.sourcegitcommit: 4aeecfcc59cb42ba0b712a729d278d03bffc719a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80634419"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81791029"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>使用脚本操作在 Azure HDInsight 上安全管理 Python 环境
 
@@ -60,7 +60,7 @@ HDInsight Spark 群集是通过 Anaconda 安装创建的。 群集中有两个 P
 
 HDInsight 群集依赖于内置的 Python 环境，即 Python 2.7 和 Python 3.5。 直接在这些默认内置环境中安装自定义包可能会导致意外的库版本更改，并进一步破坏群集。 若要为 Spark 应用程序安全安装自定义的外部 Python 包，请执行以下步骤。
 
-1. 使用 conda 创建 Python 虚拟环境。 虚拟环境为你的项目提供隔离的空间，且不会破坏其他项目。 创建 Python 虚拟环境时，可以指定要使用的 Python 版本。 请注意，即使使用 Python 2.7 和 3.5，也仍需要创建虚拟环境。 这是为了确保群集的默认环境不会破坏。 使用以下脚本针对群集上的所有节点运行脚本操作，以创建 Python 虚拟环境。 
+1. 使用 conda 创建 Python 虚拟环境。 虚拟环境为你的项目提供隔离的空间，且不会破坏其他项目。 创建 Python 虚拟环境时，可以指定要使用的 Python 版本。 请注意，即使使用 Python 2.7 和 3.5，也仍需要创建虚拟环境。 这是为了确保群集的默认环境不会受到破坏。 使用以下脚本针对群集上的所有节点运行脚本操作，以创建 Python 虚拟环境。 
 
     -   `--prefix` 指定 conda 虚拟环境所在的路径。 需要根据此处指定的路径进一步更改几项配置。 本示例使用 py35new，因为群集中已包含名为 py35 的现有虚拟环境。
     -   `python=` 指定虚拟环境的 Python 版本。 本示例使用版本 3.5，即群集的内置版本。 也可以使用其他 Python 版本来创建虚拟环境。

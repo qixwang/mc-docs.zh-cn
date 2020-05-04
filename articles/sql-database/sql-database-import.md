@@ -12,12 +12,12 @@ ms.author: v-jay
 ms.reviewer: ''
 origin.date: 06/20/2019
 ms.date: 03/16/2020
-ms.openlocfilehash: d312342beab4acbe0521e693a5bba24cd25a45a0
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: ca20b853bfb9b38d1134105340b19f772578fbb4
+ms.sourcegitcommit: 4aeecfcc59cb42ba0b712a729d278d03bffc719a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79293865"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81791007"
 ---
 # <a name="quickstart-import-a-bacpac-file-to-a-database-in-azure-sql-database"></a>快速入门：将 BACPAC 文件导入 Azure SQL 数据库中的数据库
 

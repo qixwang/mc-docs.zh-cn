@@ -9,12 +9,12 @@ ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: rtiberiu
 ms.lastreviewed: 06/10/2019
-ms.openlocfilehash: b57d735ee24a9c174774aed138e69f86ee984a43
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: cab72d2b91169e09a1358d5c04f7d1c8e45ff14d
+ms.sourcegitcommit: 4aeecfcc59cb42ba0b712a729d278d03bffc719a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540350"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81791005"
 ---
 # <a name="create-a-custom-role-for-azure-stack-hub-registration"></a>为 Azure Stack Hub 注册创建自定义角色
 

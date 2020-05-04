@@ -8,12 +8,12 @@ ms.topic: conceptual
 origin.date: 02/27/2020
 ms.date: 3/16/2020
 ms.author: v-yiso
-ms.openlocfilehash: a5a6e739a16684e89ed7afc94e68b16abe37a7ea
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 2e5dadec96b17bc0473056ed4ce7f5aa8d07c079
+ms.sourcegitcommit: b80d236ce3c706abc25bbaa41b0ccddd896e48fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79452586"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81873150"
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>事件网格消息传送和重试
 
@@ -57,7 +57,7 @@ az eventgrid event-subscription create \
 
 ## <a name="retry-schedule-and-duration"></a>重试计划和持续时间
 
-传送消息后，事件网格将等待 30 秒以接收响应。 如果终结点在 30 秒后未发出响应，消息将排入队列等待重试。 对于事件传送，事件网格使用指数性的回退重试策略。 事件网格会尽量按以下计划重试传送：
+传送消息后，事件网格将等待 30 秒以接收响应。 在 30 秒后，如果终结点没有响应，消息将排入队列等待重试。 对于事件传送，事件网格使用指数性的回退重试策略。 事件网格会尽量按以下计划重试传送：
 
 - 10 秒
 - 30 秒

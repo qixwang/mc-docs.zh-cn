@@ -9,16 +9,16 @@ ms.service: stream-analytics
 ms.topic: conceptual
 origin.date: 06/21/2019
 ms.date: 08/18/2019
-ms.openlocfilehash: d9e3e9a271bd0e6feca7aa7b741e501dbf9de9f9
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: fb20e8961e5f4721cab800782a0e3f8e83b9a429
+ms.sourcegitcommit: b80d236ce3c706abc25bbaa41b0ccddd896e48fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78155046"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81873091"
 ---
 # <a name="guarantee-stream-analytics-job-reliability-during-service-updates"></a>在服务更新期间保证流分析作业可靠性
 
-作为完全托管服务的一部分的是快速引入新服务功能和改进的能力。 因此，流分析可以每周（或更频繁地）进行服务更新部署。 无论进行多少次测试，由于引入了 bug，仍存在现有正在运行的作业可能会中断的风险。 如果运行的是任务关键型作业，则需要避免这些风险。 可以通过遵循 Azure 的 **[配对区域](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)** 模型来降低此风险。 
+作为完全托管服务的一部分的是快速引入新服务功能和改进的能力。 因此，流分析可以每周（或更频繁地）进行服务更新部署。 无论进行多少次测试，由于引入了 bug，仍存在现有正在运行的作业可能会中断的风险。 如果运行的是任务关键型作业，则需要避免这些风险。 可以遵循 Azure 的[配对区域](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)  模型来降低此风险。 
 
 ## <a name="how-do-azure-paired-regions-address-this-concern"></a>Azure 配对区域如何解决此问题？
 

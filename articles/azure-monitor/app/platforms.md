@@ -8,12 +8,12 @@ origin.date: 07/18/2019
 ms.date: 07/18/2019
 ms.reviewer: olegan
 ms.author: v-lingwu
-ms.openlocfilehash: dd932a454f16a649b4f24bfe38ce410fe08c7ec1
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 1f7333224a3dd0784dc80525fe8d2dd032bff951
+ms.sourcegitcommit: b80d236ce3c706abc25bbaa41b0ccddd896e48fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78850393"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81873135"
 ---
 # <a name="supported-languages"></a>支持的语言
 
@@ -50,4 +50,4 @@ ms.locfileid: "78850393"
 
 
 ## <a name="unsupported-sdks"></a>不受支持的 SDK
-我们知道还有其他几个社区支持的 SDK。 但是，Azure Monitor 仅在使用此页上列出的受支持 SDK 时提供支持。 我们一直在评估扩展对其他语言支持的机会，所以请关注我们的 [GitHub 公告](https://github.com/microsoft/ApplicationInsights-Announcements/issues)页，以获得最新的 SDK 消息。 
+我们知道还有其他几个社区支持的 SDK。 但是，Azure Monitor 仅在使用此页上列出的受支持 SDK 时提供支持。 我们一直在评估扩展对其他语言支持的机会，因此请关注我们的 [GitHub 公告](https://github.com/microsoft/ApplicationInsights-Announcements/issues)页，以获得最新的 SDK 消息。 

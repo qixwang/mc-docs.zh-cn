@@ -8,12 +8,12 @@ ms.date: 02/24/2020
 ms.author: Justinha
 ms.reviewer: scottnap
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: db6d063f53a64494ab3cc60b6c4e2a505ebdf4a9
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: f7323bc346f6cb3c80875571431f43b44c084227
+ms.sourcegitcommit: 4aeecfcc59cb42ba0b712a729d278d03bffc719a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77541010"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81791001"
 ---
 # <a name="use-idns-in-azure-stack-hub"></a>在 Azure Stack Hub 中使用 iDNS 
 
@@ -118,7 +118,7 @@ Address:        127.0.0.53#53
 ** server can't find VM-B1: SERVFAIL
 ```
 
-使用 VM-B1 的 FQDN 没有作用，因为此记录来自不同的区域。
+使用 VM-B1 的 FQDN 没有作用，因为此记录来自另一个区域。
 
 ```console 
 carlos@VM-A1:~$ nslookup VM-B1.e8a6e386-bc7a-43e1-a640-61591b5c76dd.internal.lnv1.azurestack.local

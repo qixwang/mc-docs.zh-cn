@@ -1,20 +1,18 @@
 ---
 title: 使用诊断日志对 Azure 流分析进行故障排除
 description: 本文介绍如何在 Azure 流分析中分析诊断日志。
-author: lingliw
-ms.author: v-lingwu
-manager: digimobile
+author: Johnnytechn
+ms.author: v-johya
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-origin.date: 12/19/2019
-ms.date: 1/6/2020
-ms.openlocfilehash: bca54b23765fbbe5c81b6031e67c778001fe38f6
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 04/23/2020
+ms.openlocfilehash: 7d6a8795e24e25fa7d2d7eeda4f59285e94afd48
+ms.sourcegitcommit: ebedf9e489f5218d4dda7468b669a601b3c02ae5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78155048"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82159203"
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-diagnostics-logs"></a>使用诊断日志对 Azure 流分析进行故障排除
 
@@ -25,8 +23,10 @@ ms.locfileid: "78155048"
 ## <a name="log-types"></a>日志类型
 
 流分析提供两种类型的日志：
-* [活动日志](/monitoring-and-diagnostics/monitoring-overview-activity-logs)（始终可用）。 通过活动日志可深入了解对作业执行的操作。
-* [诊断日志](/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)（可配置）。 通过诊断日志可详细了解作业发生的所有情况。 诊断日志在创建作业时开始，并在删除作业时结束。 日志中包含了作业更新和运行期间的事件。
+
+* [活动日志](/monitoring-and-diagnostics/monitoring-overview-activity-logs)（始终在线），可深入了解对作业执行的操作。
+
+* [诊断日志](/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)（可配置），可详细了解作业发生的所有情况。 诊断日志在创建作业时开始，并在删除作业时结束。 日志中包含了作业更新和运行期间的事件。
 
 > [!NOTE]
 > 可以使用 Azure 存储、Azure 事件中心和 Azure Monitor 日志等服务分析不一致的数据。 将根据这些服务的定价模式进行收费。
@@ -47,7 +47,7 @@ ms.locfileid: "78155048"
 
    ![流分析活动日志操作摘要](./media/stream-analytics-job-diagnostic-logs/operation-summary.png)
 
-4. 向下滚动到 JSON 的“属性”部分，其中提供导致失败操作的错误的详细信息  。 在本示例中，失败的原因在于超出范围的纬度值的运行时错误。
+4. 向下滚动到 JSON 的“属性”部分，其中提供导致失败操作的错误的详细信息  。 在本示例中，失败的原因在于超出范围的纬度值的运行时错误。 流分析作业处理的数据不一致会导致数据错误。 你可以了解不同的[输入和输出数据错误及其发生原因](https://docs.azure.cn/zh-cn/stream-analytics/data-errors)。
 
    ![JSON 错误详细信息](./media/stream-analytics-job-diagnostic-logs/error-details.png)
 
@@ -110,7 +110,7 @@ properties | 日志项目的具体详细信息；序列化为 JSON 字符串。 
 
 ### <a name="data-errors"></a>数据错误
 
-作业处理数据期间出现的任何错误都在此日志类别中。 这些日志通常创建于读取数据、序列化和写入操作期间。 这些日志不包括连接错误。 连接错误被视为泛型事件。
+作业处理数据期间出现的任何错误都在此日志类别中。 这些日志通常创建于读取数据、序列化和写入操作期间。 这些日志不包括连接错误。 连接错误被视为泛型事件。 你可以详细了解各种[输入和输出数据错误](https://docs.azure.cn/zh-cn/stream-analytics/data-errors)的原因。
 
 名称 | 说明
 ------- | -------
@@ -145,8 +145,8 @@ Message| 日志消息。
 * [流分析简介](stream-analytics-introduction.md)
 * [流分析入门](stream-analytics-real-time-fraud-detection.md)
 * [缩放流分析作业](stream-analytics-scale-jobs.md)
-* [流分析查询语言参考](https://msdn.microsoft.com/library/azure/dn834998.aspx)
-* [流分析管理 REST API 参考](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [流分析数据错误](https://docs.azure.cn/zh-cn/stream-analytics/data-errors)
+<!-- Pending on stream-analytics-query/stream-analytics-query-language-reference-->
 
 <!-- Update_Description: new articles on stream analytics job diagnostic logs-->
 <!--ms.date: 06/18/2018-->

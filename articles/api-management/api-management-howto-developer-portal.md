@@ -13,12 +13,12 @@ ms.topic: article
 origin.date: 11/22/2019
 ms.date: 02/24/2020
 ms.author: v-yiso
-ms.openlocfilehash: 5f72c89bc606d847ce32bbf6e1cbb0790bb7996d
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 20c2daf1e73bc41c111d9eb1f9b29950e22e2b47
+ms.sourcegitcommit: b80d236ce3c706abc25bbaa41b0ccddd896e48fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77428634"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81873118"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Azure API 管理开发人员门户概述
 

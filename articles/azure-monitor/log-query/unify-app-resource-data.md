@@ -10,12 +10,12 @@ ms.topic: conceptual
 origin.date: 02/02/2020
 ms.date: 2/18/2020
 ms.author: v-lingwu
-ms.openlocfilehash: 1ef622b880db7ea53807729a31b66385694f8588
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: f8ef98e499b08cca462de1213983a67d81a1b4b7
+ms.sourcegitcommit: b80d236ce3c706abc25bbaa41b0ccddd896e48fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77497643"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81873124"
 ---
 # <a name="unify-multiple-azure-monitor-application-insights-resources"></a>统一多个 Azure Monitor Application Insights 资源 
 本文介绍如何在一个位置查询和查看所有 Application Insights 日志数据（即使这些数据位于不同 Azure 订阅），可作为弃用 Application Insights 连接器的替换方式。 可以在单个查询中包含的 Application Insights 资源的数量限制为 100。
@@ -30,7 +30,7 @@ ms.locfileid: "77497643"
 可以通过导航到工作区中的查询资源管理器，然后选择要编辑的函数并保存，或使用 `SavedSearch` PowerShell cmdlet 来随时修改列出的应用程序。 
 
 >[!NOTE]
->此方法不能用于日志警报，因为警报规则资源（包括工作区和应用程序）的访问验证是在警报创建时执行的。 不支持在创建警报后将新资源添加到该函数。 如果更喜欢使用函数在日志警报中确定资源范围，则需要在门户中编辑警报规则或使用资源管理器模板来更新范围内的资源。 或者，可以在日志警报查询中包含资源列表。
+>此方法不能用于日志警报，因为警报规则资源（包括工作区和应用程序）的访问验证在创建警报时执行。 不支持在创建警报后将新资源添加到该函数。 如果更喜欢使用函数在日志警报中确定资源范围，则需要在门户中编辑警报规则或使用资源管理器模板来更新范围内的资源。 或者，可以在日志警报查询中包含资源列表。
 
 `withsource= SourceApp` 命令可向结果添加用于指定发送日志的应用程序的列。 本示例中的 parse 运算符为可选项，用于从 SourceApp 属性中提取应用程序名称。 
 
