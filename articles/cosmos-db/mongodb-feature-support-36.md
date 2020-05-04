@@ -1,25 +1,25 @@
 ---
-title: Azure Cosmos DB 的 API for MongoDB（3.6 版本）支持的功能和语法
+title: Azure Cosmos DB API for MongoDB（3.6 版本）支持的功能和语法
 description: 了解 Azure Cosmos DB 的 API for MongoDB（3.6 版本）支持的功能和语法。
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: overview
 origin.date: 01/15/2020
-ms.date: 02/10/2020
+ms.date: 04/27/2020
 author: rockboyfor
 ms.author: v-yeche
-ms.openlocfilehash: 3e1cd62ab14b03018724809f48d1bb9b02fe821c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 452faf078160def4d25b005d0b59266a134f6aca
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77028812"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134649"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-36-version-supported-features-and-syntax"></a>Azure Cosmos DB 的 API for MongoDB（3.6 版本）：支持的功能和语法
 
 Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服务。 可通过任何开源 MongoDB 客户端[驱动程序](https://docs.mongodb.org/ecosystem/drivers)与 Azure Cosmos DB's API for MongoDB 进行通信。 Azure Cosmos DB 的用于 MongoDB 的 API 允许按照 MongoDB [线路协议](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol)使用现有的客户端驱动程序。
 
-通过使用 Azure Cosmos DB 的用于 MongoDB 的 API，可以像以往一样从 MongoDB 中受益，并且可使用 Cosmos DB 提供的所有企业功能：[多区域分发](distribute-data-globally.md)、[自动分片](partition-data.md)、可用性和延迟保证、自动编制每个字段的索引、静态加密和备份等。
+通过使用 Azure Cosmos DB API for MongoDB，可以像以往一样从 MongoDB 中受益，并且可使用 Cosmos DB 提供的所有企业功能：[多区域分布](distribute-data-globally.md)、[自动分片](partition-data.md)、可用性和延迟保证、静态加密和备份等。
 
 ## <a name="protocol-support"></a>协议支持
 
@@ -37,7 +37,7 @@ Azure Cosmos DB 的用于 MongoDB 的 API 支持以下数据库命令：
 
 |命令  |支持 |
 |---------|---------|
-|删除 | 是 |
+|delete | 是 |
 |find | 是     |
 |findAndModify | 是  |
 |getLastError|   是 |
@@ -45,7 +45,7 @@ Azure Cosmos DB 的用于 MongoDB 的 API 支持以下数据库命令：
 |getPrevError | 否  |
 |insert  |   是  |
 |parallelCollectionScan  | 是   |
-|resetError |   否  |
+|resetError |    否  |
 |update  |   是  |
 |[更改流](mongodb-change-streams.md)  |  是  |
 |GridFS |   是  |
@@ -88,18 +88,18 @@ Azure Cosmos DB 的用于 MongoDB 的 API 支持以下数据库命令：
 
 |命令  |支持 |
 |---------|---------|
-|buildInfo       |   是      |
+|buildInfo         |   是      |
 |collStats    |  是       |
 |connPoolStats     |  否       |
 |connectionStatus     |  否       |
 |dataSize     |   否      |
 |dbHash    |    否     |
 |dbStats     |   是      |
-|explain     | 否        |
-|explain: executionStats     |     否    |
+|explain     |   是      |
+|explain: executionStats     |   是      |
 |features     |    否     |
 |hostInfo     |   否      |
-|listDatabases       |   是      |
+|listDatabases         |   是      |
 |listCommands     |  否       |
 |profiler     |  否       |
 |serverStatus     |  否       |
@@ -123,31 +123,31 @@ Azure Cosmos DB 的用于 MongoDB 的 API 支持以下数据库命令：
 
 |命令  |支持 |
 |---------|---------|
-|$collStats |否|
-|$project   |是|
-|$match |是|
-|$redact|   是|
-|$limit |是|
-|$skip  |是|
-|$unwind|   是|
-|$group |   是|
-|$sample|       是|
-|$sort  |是|
-|$geoNear|  否|
-|$lookup    |   是|
-|$out       |是|
-|$indexStats|       否|
-|$facet |否|
-|$bucket|   否|
-|$bucketAuto|   否|
-|$sortByCount|  是|
-|$addFields |是|
-|$replaceRoot|  是|
-|$count |是|
+|$collStats    |否|
+|$project    |是|
+|$match    |是|
+|$redact|    是|
+|$limit    |是|
+|$skip    |是|
+|$unwind|    是|
+|$group    |    是|
+|$sample|        是|
+|$sort    |是|
+|$geoNear|    否|
+|$lookup    |    是|
+|$out        |是|
+|$indexStats|        否|
+|$facet    |否|
+|$bucket|    否|
+|$bucketAuto|    否|
+|$sortByCount|    是|
+|$addFields    |是|
+|$replaceRoot|    是|
+|$count    |是|
 |$currentOp|    否|
-|$listLocalSessions |否|
-|$listSessions  |否|
-|$graphLookup   |否|
+|$listLocalSessions    |否|
+|$listSessions    |否|
+|$graphLookup    |否|
 
 ### <a name="boolean-expressions"></a>布尔表达式
 
@@ -174,14 +174,14 @@ Azure Cosmos DB 的用于 MongoDB 的 API 支持以下数据库命令：
 |命令  |支持 |
 |---------|---------|
 |$cmp     |  是       |
-|$eq|   是| 
-|$gt |  是| 
-|$gte|  是| 
+|$eq|    是| 
+|$gt |    是| 
+|$gte|    是| 
 |$lt    |是|
-|$lte|  是| 
-|$ne    |   是| 
-|$in    |   是| 
-|$nin   |   是| 
+|$lte|    是| 
+|$ne    |    是| 
+|$in    |    是| 
+|$nin    |    是| 
 
 ### <a name="arithmetic-expressions"></a>算术表达式
 
@@ -230,66 +230,66 @@ Azure Cosmos DB 的用于 MongoDB 的 API 支持以下数据库命令：
 
 |命令  |支持 |
 |---------|---------|
-|$arrayElemAt   |   是|
+|$arrayElemAt    |    是|
 |$arrayToObject|    是|
-|$concatArrays  |   是|
-|$filter    |   是|
-|$indexOfArray  |是|
-|$isArray   |   是|
-|$objectToArray |是|
-|$range |是|
-|$reverseArray  |   是|
-|$reduce|   是|
-|$size  |   是|
-|$slice |   是|
-|$zip   |   是|
-|$in    |   是|
+|$concatArrays    |    是|
+|$filter    |    是|
+|$indexOfArray    |是|
+|$isArray    |    是|
+|$objectToArray    |是|
+|$range    |是|
+|$reverseArray    |    是|
+|$reduce|    是|
+|$size    |    是|
+|$slice    |    是|
+|$zip    |    是|
+|$in    |    是|
 
 ### <a name="variable-operators"></a>变量运算符
 
 |命令  |支持 |
 |---------|---------|
-|$map   |否|
-|$let   |是|
+|$map    |否|
+|$let    |是|
 
 ### <a name="system-variables"></a>系统变量
 
 |命令  |支持 |
 |---------|---------|
-|$$CURRENT| 是|
-|$$DESCEND|     是|
-|$$KEEP     |是|
-|$$PRUNE    |   是|
-|$$REMOVE   |是|
-|$$ROOT     |是|
+|$$CURRENT|    是|
+|$$DESCEND|        是|
+|$$KEEP        |是|
+|$$PRUNE    |    是|
+|$$REMOVE    |是|
+|$$ROOT        |是|
 
 ### <a name="literal-operator"></a>文本运算符
 
 |命令  |支持 |
 |---------|---------|
-|$literal   |是|
+|$literal    |是|
 
 ### <a name="date-expressions"></a>日期表达式
 
 |命令  |支持 |
 |---------|---------|
-|$dayOfYear |是    |
-|$dayOfMonth|   是 |
-|$dayOfWeek |是    |
-|$year  |是    |
-|$month |是|   
-|$week  |是    |
-|$hour  |是    |
-|$minute|   是|    
+|$dayOfYear    |是    |
+|$dayOfMonth|    是    |
+|$dayOfWeek    |是    |
+|$year    |是    |
+|$month    |是|    
+|$week    |是    |
+|$hour    |是    |
+|$minute|    是|    
 |$second    |是    |
-|$millisecond|  是|    
-|$dateToString  |是    |
-|$isoDayOfWeek  |是    |
-|$isoWeek   |是    |
-|$dateFromParts|    否| 
-|$dateToParts   |否 |
-|$dateFromString|   否|
-|$isoWeekYear   |是    |
+|$millisecond|    是|    
+|$dateToString    |是    |
+|$isoDayOfWeek    |是    |
+|$isoWeek    |是    |
+|$dateFromParts|    否|    
+|$dateToParts    |否    |
+|$dateFromString|    否|
+|$isoWeekYear    |是    |
 
 ### <a name="conditional-expressions"></a>条件表达式
 
@@ -309,16 +309,16 @@ Azure Cosmos DB 的用于 MongoDB 的 API 支持以下数据库命令：
 
 |命令  |支持 |
 |---------|---------|
-|$sum   |是    |
-|$avg   |是    |
+|$sum    |是    |
+|$avg    |是    |
 |$first|    是|
-|$last  |是    |
-|$max   |是    |
-|$min   |是    |
-|$push| 是|
-|$addToSet| 是|
-|$stdDevPop|    否  |
-|$stdDevSamp|   否|
+|$last    |是    |
+|$max    |是    |
+|$min    |是    |
+|$push|    是|
+|$addToSet|    是|
+|$stdDevPop|    否    |
+|$stdDevSamp|    否|
 
 ### <a name="merge-operator"></a>合并运算符
 
@@ -330,25 +330,25 @@ Azure Cosmos DB 的用于 MongoDB 的 API 支持以下数据库命令：
 
 |命令  |支持 |
 |---------|---------|
-|Double |是    |
-|String |是    |
-|Object |是    |
-|Array  |是    |
-|二进制数据    |是|   
-|ObjectId   |是    |
+|Double    |是    |
+|String    |是    |
+|Object    |是    |
+|Array    |是    |
+|二进制数据    |是|    
+|ObjectId    |是    |
 |布尔    |是    |
-|Date   |是    |
-|Null   |是    |
-|32 位整数 (int)   |是    |
-|Timestamp  |是    |
-|64 位整数 (long)  |是    |
-|MinKey |是    |
-|MaxKey |是    |
-|Decimal128 |是|   
-|Regular Expression |是|
-|Javascript |是|
-|JavaScript（带范围）|   是 |
-|Undefined  |是    |
+|Date    |是    |
+|Null    |是    |
+|32 位整数 (int)    |是    |
+|Timestamp    |是    |
+|64 位整数 (long)    |是    |
+|MinKey    |是    |
+|MaxKey    |是    |
+|Decimal128    |是|    
+|Regular Expression    |是|
+|Javascript    |是|
+|JavaScript（带范围）|    是    |
+|Undefined    |是    |
 
 ## <a name="indexes-and-index-properties"></a>索引和索引属性
 
@@ -356,23 +356,23 @@ Azure Cosmos DB 的用于 MongoDB 的 API 支持以下数据库命令：
 
 |命令  |支持 |
 |---------|---------|
-|单字段索引 |是    |
-|复合索引 |是    |
-|多键索引 |是    |
-|文本索引 |否|
-|2dsphere   |是    |
-|2d 索引   |否 |
-|哈希索引   | 是|
+|单字段索引    |是    |
+|复合索引    |是    |
+|多键索引    |是    |
+|文本索引    |否|
+|2dsphere    |是    |
+|2d 索引    |否    |
+|哈希索引    | 是|
 
 ### <a name="index-properties"></a>索引属性
 
 |命令  |支持 |
 |---------|---------|
-|TTL|   是 |
-|唯一 |是|
-|部分|   否|
-|不区分大小写   |否|
-|稀疏 |否 |
+|TTL|    是    |
+|唯一    |是|
+|部分|    否|
+|不区分大小写    |否|
+|稀疏    |否 |
 |背景|    是 |
 
 ## <a name="operators"></a>运算符
@@ -381,28 +381,28 @@ Azure Cosmos DB 的用于 MongoDB 的 API 支持以下数据库命令：
 
 |命令  |支持 |
 |---------|---------|
-|$or    |   是|
-|$and   |   是|
-|$not   |   是|
-|$nor   |   是| 
+|$or    |    是|
+|$and    |    是|
+|$not    |    是|
+|$nor    |    是| 
 
 ### <a name="element-operators"></a>元素运算符
 
 |命令  |支持 |
 |---------|---------|
-|$exists|   是|
-|$type  |   是|
+|$exists|    是|
+|$type    |    是|
 
 ### <a name="evaluation-query-operators"></a>评估查询运算符
 
 |命令  |支持 |
 |---------|---------|
-|$expr  |   否|
-|$jsonSchema    |   否|
-|$mod   |   是|
-|$regex |   是|
-|$text  | 否（不支持。 请改用 $regex。）| 
-|$where |否| 
+|$expr    |    否|
+|$jsonSchema    |    否|
+|$mod    |    是|
+|$regex |    是|
+|$text    | 否（不支持。 请改用 $regex。）| 
+|$where    |否| 
 
 在 $regex 查询中，左定位表达式允许索引搜索。 但是，使用“i”修饰符（不区分大小写）和“m”修饰符（多行）会导致在所有表达式中进行集合扫描。
 
@@ -430,9 +430,9 @@ $comment |是|
 
 |命令  |支持 |
 |---------|---------|
-|$elemMatch |是|
-|$meta| 否|
-|$slice | 是|
+|$elemMatch    |是|
+|$meta|    否|
+|$slice    | 是|
 
 ### <a name="update-operators"></a>更新运算符
 
@@ -440,48 +440,48 @@ $comment |是|
 
 |命令  |支持 |
 |---------|---------|
-|$inc   |   是|
-|$mul   |   是|
-|$rename    |   是|
-|$setOnInsert|  是|
-|$set   |是|
+|$inc    |    是|
+|$mul    |    是|
+|$rename    |    是|
+|$setOnInsert|    是|
+|$set    |是|
 |$unset| 是|
-|$min   |是|
-|$max   |是|
-|$currentDate   | 是|
+|$min    |是|
+|$max    |是|
+|$currentDate    | 是|
 
 #### <a name="array-update-operators"></a>数组更新运算符
 
 |命令  |支持 |
 |---------|---------|
-|$  |是|
-|$[]|   是|
-|$[<identifier>]|   是|
-|$addToSet  |是|
-|$pop   |是|
-|$pullAll|  是|
-|$pull  |是|
-|$push  |是|
+|$    |是|
+|$[]|    是|
+|$[<identifier>]|    是|
+|$addToSet    |是|
+|$pop    |是|
+|$pullAll|    是|
+|$pull    |是|
+|$push    |是|
 |$pushAll| 是|
 
 #### <a name="update-modifiers"></a>更新修饰符
 
 |命令  |支持 |
 |---------|---------|
-|$each  |   是|
-|$slice |是|
-|$sort  |是|
-|$position  |是|
+|$each    |    是|
+|$slice    |是|
+|$sort    |是|
+|$position    |是|
 
 #### <a name="bitwise-update-operator"></a>位更新运算符
 
 |命令  |支持 |
 |---------|---------|
-| $bit  |   是|    
-|$bitsAllSet    |   否|
-|$bitsAnySet    |   否|
-|$bitsAllClear  |否|
-|$bitsAnyClear  |否|
+| $bit    |    是|    
+|$bitsAllSet    |    否|
+|$bitsAnySet    |    否|
+|$bitsAllClear    |否|
+|$bitsAnyClear    |否|
 
 ### <a name="geospatial-operators"></a>地理空间运算符
 
@@ -503,37 +503,37 @@ $polygon |  是 |
 
 |命令  |支持 |
 |---------|---------|
-|cursor.batchSize() |   是|
-|cursor.close() |是|
-|cursor.isClosed()|     是|
+|cursor.batchSize()    |    是|
+|cursor.close()    |是|
+|cursor.isClosed()|        是|
 |cursor.collation()|    否|
-|cursor.comment()   |是|
-|cursor.count() |是|
-|cursor.explain()|  否|
-|cursor.forEach()   |是|
-|cursor.hasNext()   |是|
-|cursor.hint()  |是|
-|cursor.isExhausted()|  是|
-|cursor.itcount()   |是|
-|cursor.limit() |是|
-|cursor.map()   |是|
-|cursor.maxScan()   |是|
+|cursor.comment()    |是|
+|cursor.count()    |是|
+|cursor.explain()|    否|
+|cursor.forEach()    |是|
+|cursor.hasNext()    |是|
+|cursor.hint()    |是|
+|cursor.isExhausted()|    是|
+|cursor.itcount()    |是|
+|cursor.limit()    |是|
+|cursor.map()    |是|
+|cursor.maxScan()    |是|
 |cursor.maxTimeMS()|    是|
-|cursor.max()   |是|
-|cursor.min()   |是|
-|cursor.next()| 是|
-|cursor.noCursorTimeout()   |否|
-|cursor.objsLeftInBatch()   |是|
-|cursor.pretty()|   是|
-|cursor.readConcern()|  是|
-|cursor.readPref()      |是|
-|cursor.returnKey() |否|
-|cursor.showRecordId()| 否|
-|cursor.size()  |Nes|
-|cursor.skip()  |是|
-|cursor.sort()  |   是|
-|cursor.tailable()| 否|
-|cursor.toArray()   |是|
+|cursor.max()    |是|
+|cursor.min()    |是|
+|cursor.next()|    是|
+|cursor.noCursorTimeout()    |否|
+|cursor.objsLeftInBatch()    |是|
+|cursor.pretty()|    是|
+|cursor.readConcern()|    是|
+|cursor.readPref()        |是|
+|cursor.returnKey()    |否|
+|cursor.showRecordId()|    否|
+|cursor.size()    |是|
+|cursor.skip()    |是|
+|cursor.sort()    |    是|
+|cursor.tailable()|    否|
+|cursor.toArray()    |是|
 
 ## <a name="sort-operations"></a>排序运算符
 
@@ -574,6 +574,6 @@ Azure Cosmos DB 尚不支持服务器端会话命令。
 - 了解如何将 [Robo 3T](mongodb-robomongo.md) 与 Azure Cosmos DB 的用于 MongoDB 的 API 配合使用。
 - 通过 Azure Cosmos DB 的用于 MongoDB 的 API 来浏览 MongoDB [示例](mongodb-samples.md)。
 
-注意：<sup>本文介绍了可与 MongoDB 数据库实现线路协议兼容的 Azure Cosmos DB 功能。Azure 不会运行 MongoDB 数据库来提供此服务。Azure Cosmos DB 并不隶属于 MongoDB, inc.</sup>
+<sup>注意：本文介绍了可与 MongoDB 数据库实现线路协议兼容的 Azure Cosmos DB 功能。Azure 不会运行 MongoDB 数据库来提供此服务。Azure Cosmos DB 并不隶属于 MongoDB, inc.</sup>
 
 <!-- Update_Description: update meta properties, wording update, update link -->

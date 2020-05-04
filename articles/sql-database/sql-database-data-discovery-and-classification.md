@@ -12,20 +12,20 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: vanto
 origin.date: 02/05/2020
-ms.date: 03/30/2020
+ms.date: 04/27/2020
 tags: azure-synapse
-ms.openlocfilehash: 84fc31c4e07f8083c94d82362c996d37272d2633
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 002e482f0f18be1bd7150269d3d0fb7b59d26f4f
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80341834"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126678"
 ---
 # <a name="data-discovery--classification-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL 数据库和 Azure Synapse Analytics 的数据发现和分类
 
 数据发现和分类提供了内置于 Azure SQL 数据库中的高级功能，用于发现、标记和报告数据库中的敏感数据以及对其进行分类。    
 
-发现最敏感的数据（业务、财务、医疗保健、个人身份数据 (PII)，等等）并进行分类可在组织的信息保护方面发挥关键作用。 它可以充当基础结构，用于：
+发现最敏感的数据（如商业、金融、医疗和个人身份数据等）并对其进行分类可在组织的信息保护方面起到关键作用。 它可以充当基础结构，用于：
 
 - 帮助满足数据隐私标准和法规符合性要求。
 - 各种安全方案，如监视（审核）并在敏感数据存在异常访问时发出警报。
@@ -36,7 +36,7 @@ ms.locfileid: "80341834"
 > [!NOTE]
 > 本文档与 Azure SQL 数据库和 Azure Synapse 相关。 为简单起见，在提到 SQL 数据库和 Azure Synapse 时，本文统称 SQL 数据库。 对于 SQL Server（本地），请参阅 [SQL 数据发现和分类](https://go.microsoft.com/fwlink/?linkid=866999)。
 
-## <a name="what-is-data-discovery--classification"></a><a id="subheading-1"></a>什么是数据发现和分类
+## <a name="what-is-data-discovery--classification"></a><a id="what-is-dc"></a>什么是数据发现和分类
 
 数据发现和分类引入了一套高级的服务和新的 SQL 功能，形成了新的 SQL 信息保护模式，旨在保护数据，而不仅仅是数据库：
 
@@ -56,14 +56,14 @@ ms.locfileid: "80341834"
 
   在门户中详细的仪表板中可以查看数据库分类状态。 此外，还可以下载用于符合性和审核目的以及其他需求的报表（Excel 格式）。
 
-## <a name="discover-classify--label-sensitive-columns"></a><a id="subheading-2"></a>发现、分类和标记敏感列
+## <a name="discover-classify--label-sensitive-columns"></a><a id="discover-classify-columns"></a>发现、分类和标记敏感列
 
 以下部分介绍如何在数据库中发现包含敏感数据的列并对其进行分类和标记、如何查看数据库的当前分类状态，以及如何导出报表。
 
 分类包含两种元数据属性：
 
-- 标签 - 主要分类属性，用于定义列中存储数据的敏感度级别。  
-- 信息类型 - 为列中存储数据的类型提供其他粒度。
+- **标签** - 主要分类属性，用于定义列中存储数据的敏感度级别。  
+- **信息类型** - 为列中存储的数据类型提供额外的粒度。
 
 ## <a name="define-and-customize-your-classification-taxonomy"></a>定义和自定义分类
 
@@ -71,7 +71,7 @@ ms.locfileid: "80341834"
 
 分类的定义和自定义是在一个中心位置针对你的整个 Azure 租户进行的。 该位置在 [Azure 安全中心](/security-center/)内，是你的安全策略的一部分。 只有对租户根管理组具有管理权限的人员可以执行此任务。
 
-作为信息保护策略管理的一部分，你可以定义自定义标签，对其进行分级，并将其与选定的一组信息类型相关联。 你还可以添加自己的自定义信息类型，并为其配置字符串模式，这些模式将添加到发现逻辑以用于识别数据库中此类型的数据。
+在 SQL 信息保护策略管理过程中，你可以定义自定义标签、对其进行分级，并将其与选定的一组信息类型相关联。 你还可以添加自己的自定义信息类型，并为其配置字符串模式，这些模式将添加到发现逻辑以用于识别数据库中此类型的数据。
 
 在定义租户级策略后，可以继续使用自定义的策略对各个数据库进行分类。
 
@@ -89,17 +89,11 @@ ms.locfileid: "80341834"
 
 4. 要下载 Excel 格式的报表，请单击窗口顶部菜单中的“导出”选项  。
 
-   ![导出到 Excel](./media/sql-data-discovery-and-classification/3_data_classification_export_report.png)
-
 5. <a id="step-5"></a>要开始对数据进行分类，请单击窗口顶部的“分类”选项卡  。
-
-    ![对数据进行分类](./media/sql-data-discovery-and-classification/4_data_classification_classification_tab_click.png)
 
 6. 分类引擎会扫描数据库，查找包含潜在敏感数据的列，并提供“建议列分类”列表  。 查看并应用分类建议：
 
-   - 要查看建议的列分类列表，请单击窗口底部的“建议”面板：
-
-      ![对数据进行分类](./media/sql-data-discovery-and-classification/5_data_classification_recommendations_panel.png)
+   - 若要查看建议的列分类列表，请单击窗口底部的“建议”面板
 
    - 查看建议列表 - 要接受特定列的建议，请选中相关行左侧列中的复选框。 还可以选中建议表标头中的复选框，将所有建议标记为“接受”  。
 
@@ -107,13 +101,9 @@ ms.locfileid: "80341834"
 
    - 要应用所选建议，请单击蓝色的“接受所选建议”按钮  。
 
-      ![应用建议](./media/sql-data-discovery-and-classification/7_data_classification_accept_selected_recommendations.png)
-
 7. 此外，还可以手动对列进行分类，或基于建议分类： 
 
    - 单击窗口顶部菜单中的“添加分类”  。
-
-      ![手动添加分类](./media/sql-data-discovery-and-classification/8_data_classification_add_classification_button.png)
 
    - 在打开的上下文窗口中，选择要分类的“架构”>“表”>“列”，并选择信息类型和敏感度标签。 然后单击上下文窗口底部的蓝色“添加分类”按钮  。
 
@@ -121,15 +111,13 @@ ms.locfileid: "80341834"
 
 8. 要完成分类，并永久地使用新分类元数据标记数据库列，请在窗口顶部菜单中单击“保存”  。
 
-   ![保存](./media/sql-data-discovery-and-classification/10_data_classification_save.png)
-
-## <a name="auditing-access-to-sensitive-data"></a><a id="subheading-3"></a>审核对敏感数据的访问
+## <a name="auditing-access-to-sensitive-data"></a><a id="audit-sensitive-data"></a>审核对敏感数据的访问
 
 信息保护范例的一个重要方面是能够监视对敏感数据的访问。 [Azure SQL 数据库审核](sql-database-auditing.md) 已经过增强，在审核日志中包含了名为 data_sensitivity_information 的新字段，该字段会记录查询返回的实际数据的敏感度分类（标签）  。
 
 ![审核日志](./media/sql-data-discovery-and-classification/11_data_classification_audit_log.png)
 
-## <a name="permissions"></a><a id="subheading-4"></a>权限
+## <a name="permissions"></a><a id="permissions"></a>权限
 
 以下内置角色可以读取 Azure SQL 数据库的数据分类：`Owner`、`Reader`、`Contributor`、`SQL Security Manager`、`User Access Administrator`。
 
@@ -137,9 +125,9 @@ ms.locfileid: "80341834"
 
 详细了解 [Azure 资源的 RBAC](/role-based-access-control/overview)
 
-## <a name="manage-classifications"></a><a id="subheading-5"></a>管理分类
+## <a name="manage-classifications"></a><a id="manage-classification"></a>管理分类
 
-# <a name="t-sql"></a>[T-SQL](#tab/azure-t-sql)
+### <a name="using-t-sql"></a>使用 T-SQL
 可以使用 T-SQL 添加/删除列分类，以及检索整个数据库的所有分类。
 
 > [!NOTE]
@@ -149,8 +137,8 @@ ms.locfileid: "80341834"
 - 删除一列或多列分类：[删除敏感度分类](https://docs.microsoft.com/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
 - 查看数据库上的所有分类：[sys.sensitivity_classifications](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-sensitivity-classifications-transact-sql)
 
-# <a name="rest-apis"></a>[Rest API](#tab/azure-rest-api)
-可以使用 REST API 通过编程方式管理分类和建议。 已发布的 REST API 支持以下操作：
+### <a name="using-rest-api"></a>使用 REST API
+可以使用 REST API 以编程方式管理分类和建议。 已发布的 REST API 支持以下操作：
 
 - [创建或更新](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/createorupdate) - 创建或更新给定列的敏感度标签
 - [删除](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/delete) - 删除给定列的敏感度标签
@@ -160,10 +148,10 @@ ms.locfileid: "80341834"
 - [按数据库列出当前项](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listcurrentbydatabase) - 获取给定数据库的当前敏感度标签
 - [按数据库列出建议项](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listrecommendedbydatabase) - 获取给定数据库的建议敏感度标签
 
-# <a name="powershell-cmdlet"></a>[PowerShell Cmdlet](#tab/azure-powelshell)
+### <a name="using-powershell-cmdlet"></a>使用 PowerShell Cmdlet
 可以使用 PowerShell 管理 Azure SQL 数据库和托管实例的分类和建议。
 
-### <a name="powershell-cmdlet-for-azure-sql-database"></a>适用于 Azure SQL 数据库的 PowerShell Cmdlet
+#### <a name="powershell-cmdlet-for-azure-sql-database"></a>适用于 Azure SQL 数据库的 PowerShell Cmdlet
 - [Get-AzSqlDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasesensitivityclassification)
 - [Set-AzSqlDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabasesensitivityclassification)
 - [Remove-AzSqlDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqldatabasesensitivityclassification)
@@ -171,7 +159,7 @@ ms.locfileid: "80341834"
 - [Enable-AzSqlDatabaSesensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/enable-azsqldatabasesensitivityrecommendation)
 - [Disable-AzSqlDatabaseSensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/disable-azsqldatabasesensitivityrecommendation)
 
-### <a name="powershell-cmdlets-for-managed-instance"></a>适用于托管实例的 PowerShell Cmdlet
+#### <a name="powershell-cmdlets-for-managed-instance"></a>适用于托管实例的 PowerShell Cmdlet
 - [Get-AzSqlInstanceDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstancedatabasesensitivityclassification)
 - [Set-AzSqlInstanceDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstancedatabasesensitivityclassification)
 - [Remove-AzSqlInstanceDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlinstancedatabasesensitivityclassification)
@@ -179,17 +167,8 @@ ms.locfileid: "80341834"
 - [Enable-AzSqlInstanceDatabaseSensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/enable-azsqlinstancedatabasesensitivityrecommendation)
 - [Disable-AzSqlInstanceDatabaseSensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/disable-azsqlinstancedatabasesensitivityrecommendation)
 
----
 
-## <a name="next-steps"></a><a id="subheading-6"></a>后续步骤
+## <a name="next-steps"></a><a id="next-steps"></a>后续步骤
 
-- 详细了解[高级数据安全](sql-database-advanced-data-security.md)。
+- 详细了解[高级数据安全性](sql-database-advanced-data-security.md)。
 - 请考虑配置 [Azure SQL 数据库审核](sql-database-auditing.md) 来监视和审核对已分类敏感数据的访问。
-
-<!--Anchors-->
-[What is data discovery & classification]: #subheading-1
-[Discovering, classifying & labeling sensitive columns]: #subheading-2
-[Auditing access to sensitive data]: #subheading-3
-[Permissions]: #subheading-4
-[Manage classifications]: #subheading-5
-[Next Steps]: #subheading-6

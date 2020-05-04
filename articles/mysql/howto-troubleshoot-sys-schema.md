@@ -1,18 +1,18 @@
 ---
-title: 使用 sys_schema 优化性能和维护 Azure Database for MySQL
+title: 利用 sys_schema - Azure Database for MySQL
 description: 了解如何在 Azure Database for MySQL 中使用 sys_schema 发现性能问题和维护数据库。
 author: WenJason
 ms.author: v-jay
 ms.service: mysql
 ms.topic: troubleshooting
-origin.date: 08/27/2018
-ms.date: 11/04/2019
-ms.openlocfilehash: df26b2f0adfd4e4a6ab071ba2874dc3ad5977244
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+origin.date: 3/30/2020
+ms.date: 04/27/2020
+ms.openlocfilehash: 19bcbef071305974b58c12551ab546bffd3c1dd4
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "73142151"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82126816"
 ---
 # <a name="how-to-use-sys_schema-for-performance-tuning-and-database-maintenance-in-azure-database-for-mysql"></a>如何在 Azure Database for MySQL 中使用 sys_schema 进行性能优化和数据库维护
 
@@ -64,6 +64,9 @@ IO 是数据库中开销最高的操作。 我们可以通过查询 *sys.user_su
 ## <a name="database-maintenance"></a>数据库维护
 
 ### <a name="sysinnodb_buffer_stats_by_table"></a>*sys.innodb_buffer_stats_by_table*
+
+[!IMPORTANT]
+> 查询此视图可能会影响性能。 建议在非高峰营业时间执行此故障排除。
 
 InnoDB 缓冲池驻留在内存中，是 DBMS 与存储之间的主要缓存机制。 InnoDB 缓冲池大小与性能层密切相关，除非选择不同的产品 SKU，否则不能更改。 与操作系统中的内存一样，旧页面将被换出，以便为较新数据留出空间。 若要了解哪些表占用了大部分 InnoDB 缓冲池内存，可以查询 *sys.innodb_buffer_stats_by_table* 视图。
 
