@@ -12,20 +12,22 @@ ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 origin.date: 02/18/2020
-ms.date: 03/23/2020
-ms.openlocfilehash: 2d026fa22a2e1cefcb25034a11ee86d5251f98bc
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/11/2020
+ms.openlocfilehash: 08a714bc0959a638a3ab999ed7e2545b3428f6ae
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79497270"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82197867"
 ---
 # <a name="copy-data-to-or-from-azure-data-explorer-by-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure 数据资源管理器复制数据
 
-本文介绍如何在 Azure 数据工厂中使用复制活动向/从 [Azure 数据资源管理器](../data-explorer/data-explorer-overview.md)复制数据。 本文是在总体概述复制活动的[复制活动概述](copy-activity-overview.md)一文的基础之上编写的。
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
+本文介绍如何在 Azure 数据工厂中使用复制活动向/从 [Azure 数据资源管理器](/data-explorer/data-explorer-overview)复制数据。 本文是在总体概述复制活动的[复制活动概述](copy-activity-overview.md)一文的基础之上编写的。
 
 >[!TIP]
->通常，对于 Azure 数据工厂和 Azure 数据资源管理器的集成，请从[将 Azure 数据资源管理器与 Azure 数据工厂集成](../data-explorer/data-factory-integration.md)了解更多信息。
+>通常，对于 Azure 数据工厂和 Azure 数据资源管理器的集成，请从[将 Azure 数据资源管理器与 Azure 数据工厂集成](/data-explorer/data-factory-integration)了解更多信息。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -48,7 +50,7 @@ ms.locfileid: "79497270"
 ## <a name="getting-started"></a>入门
 
 >[!TIP]
->有关 Azure 数据资源管理器连接器的演练，请参阅[使用 Azure 数据工厂向/从 Azure 数据资源管理器复制数据](../data-explorer/data-factory-load-data.md)和[从数据库大容量复制到 Azure 数据资源管理器](../data-explorer/data-factory-template.md)。
+>有关 Azure 数据资源管理器连接器的演练，请参阅[使用 Azure 数据工厂向/从 Azure 数据资源管理器复制数据](/data-explorer/data-factory-load-data)和[从数据库大容量复制到 Azure 数据资源管理器](/data-explorer/data-factory-template)。
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -64,13 +66,13 @@ Azure 数据资源管理器连接器使用服务主体身份验证。 遵循以�
     - 应用程序密钥
     - 租户 ID
 
-2. 在 Azure 数据资源管理器中为服务主体授予正确的权限。 有关角色和权限以及管理权限的详细信息，请参阅[管理 Azure 数据资源管理器数据库权限](../data-explorer/manage-database-permissions.md)。 一般情况下，必须授予以下权限：
+2. 在 Azure 数据资源管理器中为服务主体授予正确的权限。 有关角色和权限以及管理权限的详细信息，请参阅[管理 Azure 数据资源管理器数据库权限](/data-explorer/manage-database-permissions)。 一般情况下，必须授予以下权限：
 
     - **作为源**：至少向数据库授予“数据库查看者”角色 
     - **作为接收器**：至少向数据库授予“数据库引入者”角色 
 
 >[!NOTE]
->使用数据工厂 UI 创作时，登录用户帐户用于列出 Azure 数据资源管理器群集、数据库和表。 如果没有这些操作的权限，请手动输入名称。
+>使用数据工厂 UI 创作时，登录用户帐户用于列出 Azure 数据资源管理器群集、数据库和表。 如果你没有权限执行这些操作，请手动输入名称。
 
 Azure 数据资源管理器链接服务支持以下属性：
 
