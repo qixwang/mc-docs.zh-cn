@@ -5,17 +5,17 @@ keywords: ''
 author: kgremban
 manager: philmea
 ms.author: v-tawe
-origin.date: 02/07/2020
-ms.date: 03/02/2020
+origin.date: 04/08/2020
+ms.date: 04/20/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 0ac3fd1b7e2d649a5fc132ff36995ff3605c4254
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: e689428586c6ea35eb3506674b2b6d1aa7162613
+ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77494475"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82588552"
 ---
 # <a name="update-the-iot-edge-security-daemon-and-runtime"></a>更新 IoT Edge 安全守护程序和运行时
 
@@ -64,7 +64,7 @@ curl -L <iotedge link> -o iotedge.deb && sudo dpkg -i ./iotedge.deb
 ```
 
 >[!NOTE]
->`-OfflineInstallationPath` 参数将在提供的目录中查找名为 **Microsoft-Azure-IoTEdge.cab** 的文件。 从 IoT Edge 版本 1.0.9-rc4 开始，可以使用两个 .cab 文件，一个用于 AMD64 设备，另一个用于 ARM32。 下载适用于你的设备的正确文件，然后重命名该文件以删除体系结构后缀。
+>`-OfflineInstallationPath` 参数将在提供的目录中查找名为 **Microsoft-Azure-IoTEdge.cab** 的文件。 从 IoT Edge 版本 1.0.9-rc4 开始，可以使用两个 .cab 文件，一个用于 AMD64 设备，另一个用于 ARM32。 下载适用于设备的正确文件，然后重命名该文件以删除体系结构后缀。
 
 有关更新选项的详细信息，请使用命令 `Get-Help Update-IoTEdge -full`，或参考[所有安装参数](how-to-install-iot-edge-windows.md#all-installation-parameters)。
 
@@ -117,9 +117,38 @@ IoT Edge 服务将提取最新版本的运行时映像，并自动在设备上�
 
    ![更新 Edge 中心的代理版本](./media/how-to-update-iot-edge/runtime-settings-edgeagent.png)
 
-1. 选择“保存”。 
+1. 选择“保存”  。
 
 1. 选择“查看 + 创建”，检查部署，然后选择“创建”   。
+
+## <a name="update-offline-or-to-a-specific-version"></a>脱机更新或更新到特定版本
+
+若要脱机更新设备，或者更新到特定版本的 IoT Edge 而不是最新版本，则可使用 `-OfflineInstallationPath` 参数执行该操作。
+
+用于更新 IoT Edge 设备的两个组件：
+
+* 一个 PowerShell 脚本，其中包含安装说明
+* Microsoft Azure IoT Edge cab，其中包含 IoT Edge 安全守护程序 (iotedged)、Moby 容器引擎和 Moby CLI
+
+1. 有关最新的 IoT Edge 安装文件以及旧版本，请参阅 [Azure IoT Edge 版本](https://github.com/Azure/azure-iotedge/releases)。
+
+2. 找到要安装的版本，然后从发行说明的“资产”  部分将以下文件下载到 IoT 设备上：
+
+   * IoTEdgeSecurityDaemon.ps1
+   * 1\.0.9 或更高版本中的 Microsoft-Azure-IoTEdge-amd64.cab，或者 1.0.8 或更低版本中的 Microsoft-Azure-IoTEdge.cab。
+
+   从 1.0.9 开始，也可以使用 Microsoft-Azure-IotEdge-arm32.cab（仅用于测试目的）。 Windows ARM32 设备目前不支持 IoT Edge。
+
+   请务必使用与所使用的 .cab 文件的版本相同的 PowerShell 脚本，因为功能会进行更改以支持每个版本中的特性。
+
+3. 如果下载的 .cab 文件在其上有体系结构后缀，则只需将该文件重命名为“Microsoft-Azure-IoTEdge.cab”即可  。
+
+4. 若要使用脱机组件进行更新，请[使用点获取 PowerShell 脚本本地副本的来源](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_scripts?view=powershell-7#script-scope-and-dot-sourcing)。 然后，使用 `-OfflineInstallationPath` 参数作为 `Update-IoTEdge` 命令的一部分，并提供文件目录的绝对路径。 例如，
+
+   ```powershell
+   . <path>\IoTEdgeSecurityDaemon.ps1
+   Update-IoTEdge -OfflineInstallationPath <path>
+   ```
 
 ## <a name="update-to-a-release-candidate-version"></a>更新到候选发布版本
 
@@ -129,14 +158,7 @@ Azure IoT Edge 定期发布新版 IoT Edge 服务。 在发布每个稳定版本
 
 IoT Edge 代理和中心模块包含根据相同约定标记的 RC 版本。 例如 **mcr.microsoft.com/azureiotedge-hub:1.0.7-rc2**。
 
-充当预览版的候选发布版本不会包括在常规安装程序所针对的最新版本中。 需要手动将要测试的 RC 版资产设为目标。 大多数情况下，安装或更新到 RC 版本的过程与将目标设为任何其他特定版本的 IoT Edge 相同，但对于 Windows 设备，此过程有一项差异。 
-
-在候选发布版本中，用于在 Windows 设备上安装和管理 IoT Edge 安全守护程序的 PowerShell 脚本的功能可能不同于最新的正式版。 除了下载 RC 的 IoT Edge .cab 文件以外，另请下载 **IotEdgeSecurityDaemon.ps1** 脚本。 使用[点式寻源](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_scripts?view=powershell-7#script-scope-and-dot-sourcing)在当前源中运行下载的脚本。 例如： 
-
-```powershell
-. <path>\IoTEdgeSecurityDaemon.ps1
-Update-IoTEdge -OfflineInstallationPath <path>
-```
+充当预览版的候选发布版本不会包括在常规安装程序所针对的最新版本中。 需要手动将要测试的 RC 版资产设为目标。 大多数情况下，安装或更新到 RC 版本的过程与将目标设为任何其他特定版本的 IoT Edge 相同。
 
 使用本文中的部分了解如何将 IoT Edge 设备更新到特定版本的安全守护程序或运行时模块。
 

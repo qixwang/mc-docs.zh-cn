@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 03/17/2020
+ms.date: 04/28/2020
 ms.custom: seodec18
-ms.openlocfilehash: 0e4a4f60768b37ae8456e21ec67be6b8fcac0454
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 90574c99a8dd9802cd4ab6ce9b7bb6e958a63e8c
+ms.sourcegitcommit: e3512c5c2bbe61704d5c8cbba74efd56bfe91927
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79497364"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82267667"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Azure 时序见解预览版中的数据存储和入口
 
@@ -42,7 +42,7 @@ Azure 时序见解预览版支持以下事件源：
 - [Azure IoT 中心](../iot-hub/about-iot-hub.md)
 - [Azure 事件中心](../event-hubs/event-hubs-about.md)
 
-Azure 时序见解预览版对每个实例最多支持两个事件源。
+Azure 时序见解预览版对每个实例最多支持两个事件源。 连接事件源时，TSI 环境会从最早的事件开始，读取当前存储在 IoT 中心或事件中心的所有事件。 
 
 > [!IMPORTANT] 
 > * 将事件源附加到预览版环境时，可能会遇到较高的初始延迟。 
@@ -91,7 +91,7 @@ Azure 时序见解预览版的引入限制如下所述。
 
 *  **设备数** × **事件发出频率** × **每个事件的大小**。
 
-默认情况下，对于每个时序见解环境，时序见解预览版可按**每秒最多 1 兆字节 (MBps)** 的速率引入传入的数据。
+默认情况下，对于每个时序见解环境，时序见解预览版可按**每秒最多 1 兆字节 (MBps)** 的速率引入传入的数据。 存在针对[单个中心分区](/time-series-insights/time-series-insights-update-storage-ingress#hub-partitions-and-per-partition-limits)的其他限制。
 
 > [!TIP] 
 > * 我们可按请求提供最高 16 MBps 引入速度的环境支持。
@@ -99,7 +99,7 @@ Azure 时序见解预览版的引入限制如下所述。
  
 * **示例 1：**
 
-    Contoso Shipping 有 100,000 台设备，它们每分钟发出某个事件三次。 事件大小为 200 字节。 Contoso Shipping 使用包含 4 个分区的事件中心作为时序见解事件源。
+    Contoso Shipping 有 100,000 台设备，它们每分钟发出某个事件三次。 事件大小为 200 字节。 Contoso Shipping 使用包含 4 个分区的 IoT 中心作为时序见解事件源。
 
     * 其时序见解环境的引入速率为：**100,000 个设备 * 200 字节/事件 * (每秒 3 个事件/60) = 1 MBps**。
     * 每个分区的引入速率为 0.25 MBps。
@@ -107,11 +107,11 @@ Azure 时序见解预览版的引入限制如下所述。
 
 * **示例 2：**
 
-    Contoso Fleet Analytics 有 60,000 台设备，它们每秒发出某个事件。 Contoso Fleet Analytics 使用 IoT 中心（包含 24 个分区，4 个一组）作为时序见解事件源。 事件大小为 200 字节。
+    Contoso Fleet Analytics 有 60,000 台设备，它们每秒发出某个事件。 Contoso Fleet Analytics 使用分区计数为 4 的事件中心作为时序见解事件源。 事件大小为 200 字节。
 
-    * 环境引入速率为：**20,000 个设备 * 200 字节/事件 * (每秒 1 个事件) = 4 MBps**。
-    * 每个分区的速率为 1 MBps。
-    * Contoso Fleet Analytics 可以通过 Azure 门户向时序见解提交请求，以提高其环境的引入速率。
+    * 环境引入速率为：  60,000 设备 * 200 字节/事件 * 1 事件/秒 = 12 MBps。
+    * 每个分区的速率为 3 MBps。
+    * Contoso Fleet Analytics 的引入速率超出了环境和分区限制。 它们可以通过 Azure 门户向时序见解提交一个请求，要求提高其环境的引入速率，并创建一个事件中心，提高预览版限制中的分区数。
 
 #### <a name="hub-partitions-and-per-partition-limits"></a>中心分区和每个分区的限制
 

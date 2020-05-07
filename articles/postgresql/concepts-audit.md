@@ -70,7 +70,7 @@ Azure Database for PostgreSQL（单一服务器）中数据库活动的审核日
 > `pgaudit.log_level` 只有在 `pgaudit.log_client` 为 on 的情况下启用。
 
 > [!NOTE]
-> 在 Azure Database for PostgreSQL 中，根据 pgAudit 文档中的说明，不能使用 `pgaudit.log`（减号）快捷方式来设置 `-`。 所有必需的声明类（READ、WRITE 等）应该单独指定。
+> 在 Azure Database for PostgreSQL 中，根据 pgAudit 文档中的说明，不能使用 `-`（减号）快捷方式来设置 `pgaudit.log`。 所有必需的声明类（READ、WRITE 等）应该单独指定。
 
 ### <a name="audit-log-format"></a>审核日志格式
 每个审核条目通过靠近日志行开头的 `AUDIT:` 进行指示。 条目其余部分的格式详见 [pgAudit 文档](https://github.com/pgaudit/pgaudit/blob/master/README.md#format)。

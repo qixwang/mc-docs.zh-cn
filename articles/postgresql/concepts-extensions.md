@@ -216,7 +216,7 @@ PostgreSQL 支持使用扩展来扩展数据的功能。 扩展在单个包中�
 目前不支持从 Azure Database for PostgreSQL 进行出站连接，连接到其他 Azure Database for PostgreSQL 服务器的情况除外。
 
 ## <a name="uuid"></a>uuid
-如果计划使用 `uuid_generate_v4()`uuid-ossp 扩展[中的 ](https://www.postgresql.org/docs/current/uuid-ossp.html)，请考虑将其与 `gen_random_uuid()`pgcrypto 扩展[中的 ](https://www.postgresql.org/docs/current/pgcrypto.html) 进行比较，以了解性能优势。
+如果计划使用 [uuid-ossp 扩展](https://www.postgresql.org/docs/current/uuid-ossp.html)中的 `uuid_generate_v4()`，请考虑将其与 [pgcrypto 扩展](https://www.postgresql.org/docs/current/pgcrypto.html)中的 `gen_random_uuid()` 进行比较，以了解性能优势。
 
 ## <a name="pgaudit"></a>pgAudit
 [pgAudit 扩展](https://github.com/pgaudit/pgaudit/blob/master/README.md)提供会话和对象审核日志记录。 若要了解如何在 Azure Database for PostgreSQL 中使用此扩展，请访问[“审核概念”一文](concepts-audit.md)。 

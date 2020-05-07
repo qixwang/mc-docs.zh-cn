@@ -6,19 +6,22 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-origin.date: 10/10/2019
-ms.date: 03/23/2020
 author: WenJason
 ms.author: v-jay
 manager: digimobile
-ms.openlocfilehash: 3f705fdc90e49169c54da92aae90e2ab8f6ada47
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+origin.date: 10/10/2019
+ms.date: 05/11/2020
+ms.openlocfilehash: 0a5658d7dfd53b59d31cdc65222a8360874ebc0c
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79497344"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82197940"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Azure 数据工厂支持的计算环境
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 本文介绍可用于处理或转换数据的不同计算环境。 同时还详细介绍了配置将这些计算环境链接到 Azure 数据工厂的链接服务时，数据工厂所支持的不同配置（按需和自带）。
 
 下表提供了数据工厂所支持的计算环境以及可以在其上运行的活动的列表。 
@@ -29,11 +32,12 @@ ms.locfileid: "79497344"
 | [Azure Batch](#azure-batch-linked-service)                   | [自定义](transform-data-using-dotnet-custom-activity.md)     |
 | [Azure SQL](#azure-sql-database-linked-service)、[Azure SQL 数据仓库](#azure-sql-data-warehouse-linked-service)、[SQL Server](#sql-server-linked-service) | [存储过程](transform-data-using-stored-procedure.md) |
 
-
 ## <a name="on-demand-hdinsight-compute-environment"></a>按需 HDInsight 计算环境
+
 在此类型的配置中，计算环境由 Azure 数据工厂服务完全管理。 作业提交到进程数据前，数据工厂服务会自动创建计算环境，作业完成后则自动将其删除。 可以为按需计算环境创建并配置链接服务，以及控制作业执行、群集管理和引导操作的粒度设置。
 
 ## <a name="azure-hdinsight-on-demand-linked-service"></a>Azure HDInsight 按需链接服务
+
 Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据。 群集创建在与该群集相关联的存储帐户（JSON 中的 linkedServiceName 属性）所在的同一区域中。 存储帐户必须是通用的标准 Azure 存储帐户。 
 
 请注意以下关于按需 HDInsight 链接服务的**重要**事项：
@@ -47,6 +51,7 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 > 按需预配 Azure HDInsight 群集通常需要 **20 分钟**或更长时间。
 
 ### <a name="example"></a>示例
+
 以下 JSON 定义基于 Linux 的按需 HDInsight 链接服务。 数据工厂服务自动创建基于 Linux 的  HDInsight 群集来处理所需的活动。 
 
 ```json
@@ -85,25 +90,24 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 > HDInsight 群集在 JSON 中指定的 Blob 存储 (**linkedServiceName**).内创建**默认容器**。 HDInsight 不会在删除群集时删除此容器。 此行为是设计使然。 使用按需 HDInsight 链接服务时，除非有现有的实时群集 (**timeToLive**)，否则每当需要处理切片时会创建 HDInsight 群集；并在处理完成后删除该群集。 
 >
 > 随着运行的活动越来越多，Azure Blob 存储中会出现大量的容器。 如果不需要使用它们对作业进行故障排除，则可能需要删除它们以降低存储成本。 这些容器的名称遵循 `adf**yourdatafactoryname**-**linkedservicename**-datetimestamp`模式。 使用 [Microsoft 存储资源管理器](https://storageexplorer.com/) 等工具删除 Azure Blob 存储中的容器。
->
-> 
 
 ### <a name="properties"></a>属性
+
 | 属性                     | 说明                              | 必须 |
 | ---------------------------- | ---------------------------------------- | -------- |
 | type                         | 类型属性应设置为 **HDInsightOnDemand**。 | 是      |
 | clusterSize                  | 群集中辅助进程/数据节点的数量。 HDInsight 群集创建时具有 2 个头节点以及一定数量的辅助进程节点（此节点的数量是为此属性所指定的数量）。 这些节点的大小为拥有 4 个核心的 Standard_D3，因此一个具有 4 个辅助节点的群集拥有 24 个核心（辅助节点有 4\*4 = 16 个核心，头节点有 2\*4 = 8 个核心）。 请参阅[使用 Hadoop、Spark、Kafka 等在 HDInsight 中设置群集](../hdinsight/hdinsight-hadoop-provision-linux-clusters.md)，了解详细信息。 | 是      |
-| linkedServiceName            | 由按需群集用于存储和处理数据的 Azure 存储链接服务。 HDInsight 群集在创建时与此 Azure 存储帐户位于同一区域。 Azure HDInsight 会限制可在其支持的每个 Azure 区域中使用的核心总数。 确保在 Azure 区域中有足够的内核配额来满足所需的 clusterSize。 有关详细信息，请参阅[使用 Hadoop、Spark、Kafka 等在 HDInsight 中设置群集](../hdinsight/hdinsight-hadoop-provision-linux-clusters.md)| 是      |
+| linkedServiceName            | 由按需群集用于存储和处理数据的 Azure 存储链接服务。 HDInsight 群集在创建时与此 Azure 存储帐户位于同一区域。 Azure HDInsight 会限制可在其支持的每个 Azure 区域中使用的核心总数。 确保在 Azure 区域中有足够的内核配额来满足所需的 clusterSize。 有关详细信息，请参阅[使用 Hadoop、Spark、Kafka 等在 HDInsight 中设置群集](../hdinsight/hdinsight-hadoop-provision-linux-clusters.md)<p>目前，无法创建使用 Azure Data Lake Storage（第 2 代）作为存储的按需 HDInsight 群集。 若要将 HDInsight 处理的结果数据存储在 Azure Data Lake Storage（第 2 代）中，请使用“复制活动”将数据从 Azure Blob 存储复制到 Azure Data Lake Storage（第 2 代）中。 </p> | 是      |
 | clusterResourceGroup         | 在此资源组中创建 HDInsight 群集。 | 是      |
 | timetolive                   | 按需 HDInsight 群集允许的空闲时间。 指定当活动运行完成后，如果群集中没有其他的活动作业，按需 HDInsight 群集保持活动状态的时间。 允许的最小值为 5 分钟 (00: 05:00)。<br/><br/>例如，如果一个活动运行需要 6 分钟，而 timetolive 的设置是 5 分钟，则当 6 分钟的活动运行处理结束后，群集将保持 5 分钟的活动状态。 如果在这 6 分钟的时间内执行其他的活动运行，则由同一群集进行处理。<br/><br/>创建按需 HDInsight 群集是一项开销非常大的操作（可能会花费一定的时间），因此请根据需要使用此设置，以通过重复使用一个按需 HDInsight 群集来提高数据工厂的性能。<br/><br/>如果将 timetolive 值设置为 0，则将会在活动运行处理完后立即删除群集。 然而，如果设置了较高的值，则群集可能会保持空闲状态，以方便你登录进行某些故障排除工作，但这可能会导致成本高昂。 因此，根据具体需要设置适当的值非常重要。<br/><br/>如果 timetolive 属性值设置适当，多个管道则可共享按需 HDInsight 群集实例。 | 是      |
 | clusterType                  | 要创建的 HDInsight 群集的类型。 允许的值是“hadoop”和“spark”。 如果未指定，默认值为 hadoop。 无法按需创建启用企业安全性套餐的群集，请改用[现有群集/自带计算](#azure-hdinsight-linked-service)。 | 否       |
 | 版本                      | HDInsight 群集的版本。 如果未指定较高的值，则使用当前 HDInsight 定义的默认版本。 | 否       |
 | hostSubscriptionId           | 用于创建 HDInsight 群集的 Azure 订阅 ID。 如果未指定，则使用 Azure 登录上下文的订阅 ID。 | 否       |
-| clusterNamePrefix           | HDI 群集名称的前缀，将自动在群集名称末尾追加时间戳| 否       |
+| clusterNamePrefix           | HDI 群集名称的前缀，时间戳自动追加到群集名称的末尾| 否       |
 | sparkVersion                 | 群集类型为“Spark”时的 spark 版本 | 否       |
 | additionalLinkedServiceNames | 指定 HDInsight 链接服务的其他存储帐户，使数据工厂服务能够代为注册它们。 这些存储帐户必须与 HDInsight 群集位于同一区域中，该群集是在与 linkedServiceName 指定的存储帐户相同的区域中创建的。 | 否       |
 | osType                       | 操作系统的类型。 允许值包括：Linux 和 Windows（仅适用于 HDInsight 3.3）。 默认值为 Linux。 | 否       |
-| hcatalogLinkedServiceName    | 指向 HCatalog 数据库的 Azure SQL 链接服务的名称。 将 Azure SQL 数据库用作元存储以创建按需 HDInsight 群集。 | 否       |
+| hcatalogLinkedServiceName    | 指向 HCatalog 数据库的 Azure SQL 链接服务的名称。 将 Azure SQL 数据库用作元存储来创建按需 HDInsight 群集。 | 否       |
 | connectVia                   | 用于将活动分发到此 HDInsight 链接服务的集成运行时。 对于按需的 HDInsight 链接服务，它仅支持 Azure 集成运行时。 如果未指定，则使用默认 Azure Integration Runtime。 | 否       |
 | clusterUserName                   | 用于访问群集的用户名。 | 否       |
 | clusterPassword                   | 用于访问群集的安全字符串类型密码。 | 否       |
@@ -117,8 +121,6 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 >
 > [!IMPORTANT]
 > 目前，HDInsight 链接服务不支持 HBase、交互式查询 (Hive LLAP)、Storm。 
->
-> 
 
 #### <a name="additionallinkedservicenames-json-example"></a>additionalLinkedServiceNames JSON 示例
 
@@ -281,7 +283,7 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 | clusterUri        | HDInsight 群集的 URI。                            | 是      |
 | username          | 指定用于连接到现有 HDInsight 群集的用户的名称。 | 是      |
 | password          | 指定用户帐户的密码。                       | 是      |
-| linkedServiceName | Azure 存储链接服务（指 HDInsight 群集使用的 Azure Blob 存储）的名称。 <p>目前，不能为此属性指定 Azure Data Lake Store 链接服务。 </p> | 是      |
+| linkedServiceName | Azure 存储链接服务（指 HDInsight 群集使用的 Azure Blob 存储）的名称。 <p>目前，不能为此属性指定 Azure Data Lake Storage（第 2 代）链接服务。 如果 HDInsight 群集有权访问 Data Lake Store，则可从 Hive/Pig 脚本访问 Azure Data Lake Storage（第 2 代）中的数据。 </p> | 是      |
 | isEspEnabled      | 默认值为“false”  。 | 否       |
 | connectVia        | 用于将活动分发到此链接服务的集成运行时。 可以使用 Azure 集成运行时或自托管集成运行时。 如果未指定，则使用默认 Azure Integration Runtime。 <br />对于启用了企业安全性套餐 (ESP) 的 HDInsight 群集，请使用自承载集成运行时，该运行时具有群集的视线，或者应该与 ESP HDInsight 群集部署在同一虚拟网络内。 | 否       |
 
@@ -346,15 +348,19 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 | connectVia        | 用于将活动分发到此链接服务的集成运行时。 可以使用 Azure 集成运行时或自托管集成运行时。 如果未指定，则使用默认 Azure Integration Runtime。 | 否       |
 
 ## <a name="azure-sql-database-linked-service"></a>Azure SQL 数据库链接服务
+
 创建 Azure SQL 链接服务，并将其与[存储过程活动](transform-data-using-stored-procedure.md)配合使用，以从数据工厂管道调用存储过程。 请参阅 [Azure SQL 连接器](connector-azure-sql-database.md#linked-service-properties)一文，以了解此链接服务的详细信息。
 
 ## <a name="azure-sql-data-warehouse-linked-service"></a>Azure SQL 数据仓库链接服务
+
 创建 Azure SQL 数据仓库链接服务，并将其与[存储的过程活动](transform-data-using-stored-procedure.md)配合使用，以从数据工厂管道调用存储的过程。 请参阅[Azure SQL 数据仓库连接器](connector-azure-sql-data-warehouse.md#linked-service-properties)一文，以了解此链接服务的详细信息。
 
 ## <a name="sql-server-linked-service"></a>SQL Server 链接服务
+
 创建 SQL Server 链接服务，并将其与[存储的过程活动](transform-data-using-stored-procedure.md)配合使用，以从数据工厂管道调用存储的过程。 请参阅 [SQL Server 连接器](connector-sql-server.md#linked-service-properties)一文，以了解此链接服务的详细信息。
 
 ## <a name="azure-function-linked-service"></a>Azure 函数链接服务
+
 创建 Azure 函数链接服务，并将其与 [Azure 函数活动](control-flow-azure-function-activity.md)一起使用，以在数据工厂管道中运行 Azure Functions。 Azure 函数的返回类型必须是有效的 `JObject`。 （请记住：[JArray](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_Linq_JArray.htm) 不  是 `JObject`。）除了 `JObject` 之外的任何返回类型都将失败，并且会引发用户错误*响应内容不是有效的 JObject*。
 
 | **属性** | **说明** | **必需** |
@@ -365,4 +371,5 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 |   |   |   |
 
 ## <a name="next-steps"></a>后续步骤
+
 有关 Azure 数据工厂支持的数据转换活动的列表，请参阅[转换数据](transform-data.md)。

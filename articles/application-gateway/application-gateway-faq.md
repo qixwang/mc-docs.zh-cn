@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 03/30/2020
+ms.date: 04/26/2020
 ms.author: v-junlch
-ms.openlocfilehash: 41051dde4f6c8aa104958c54d2e7f41a354875d0
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: d4bf4821555e2359381e131f97e73d4daf1171e6
+ms.sourcegitcommit: e3512c5c2bbe61704d5c8cbba74efd56bfe91927
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80581712"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82267638"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>有关应用程序网关的常见问题解答
 
@@ -28,11 +28,11 @@ Azure 应用程序网关以服务形式提供应用程序传送控制器 (ADC)�
 
 ### <a name="what-features-does-application-gateway-support"></a>应用程序网关支持哪些功能？
 
-应用程序网关支持自动缩放、SSL 卸载、端到端 SSL、Web 应用程序防火墙 (WAF)、基于 Cookie 的会话相关性、基于 URL 路径的路由、多站点托管和其他功能。 有关支持的功能的完整列表，请参阅[应用程序网关简介](application-gateway-introduction.md)。
+应用程序网关支持自动缩放、TLS 卸载、端到端 TLS、Web 应用程序防火墙 (WAF)、基于 Cookie 的会话相关性、基于 URL 路径的路由、多站点托管和其他功能。 有关支持的功能的完整列表，请参阅[应用程序网关简介](application-gateway-introduction.md)。
 
 ### <a name="how-do-application-gateway-and-azure-load-balancer-differ"></a>应用程序网关与 Azure 负载均衡器有何不同？
 
-应用程序网关是第 7 层负载均衡器，这意味着，它只处理 Web 流量（HTTP、HTTPS、WebSocket 和 HTTP/2）。 它支持 SSL 终止、基于 Cookie 的会话相关性以及对流量进行负载均衡的轮循机制等功能。 负载均衡器在第 4 层对流量进行负载均衡（TCP 或 UDP）。
+应用程序网关是第 7 层负载均衡器，这意味着，它只处理 Web 流量（HTTP、HTTPS、WebSocket 和 HTTP/2）。 它支持 TLS 终止、基于 Cookie 的会话相关性以及对流量进行负载均衡的轮循机制等功能。 负载均衡器在第 4 层对流量进行负载均衡（TCP 或 UDP）。
 
 ### <a name="what-protocols-does-application-gateway-support"></a>应用程序网关支持哪些协议？
 
@@ -112,7 +112,15 @@ Keep-Alive 超时  控制应用程序网关在重新使用或关闭它之前将�
 
 ### <a name="can-i-use-exchange-server-as-a-backend-with-application-gateway"></a>使用应用程序网关时，能否将 Exchange 服务器用作后端？
 
-否。 应用程序网关不支持电子邮件协议，例如 SMTP、IMAP 和 POP3。 
+否。 应用程序网关不支持电子邮件协议，例如 SMTP、IMAP 和 POP3。
+
+### <a name="is-there-guidance-available-to-migrate-from-the-v1-sku-to-the-v2-sku"></a>是否有从 v1 SKU 迁移到 v2 SKU 的指导？
+
+是的。 有关详细信息，请参阅[将 Azure 应用程序网关和 Web 应用程序防火墙从 v1 迁移到 v2](migrate-v1-v2.md)。
+
+### <a name="will-the-application-gateway-v1-sku-continue-to-be-supported"></a>是否会继续支持应用程序网关 v1 SKU？
+
+是的。 我们会继续支持应用程序网关 v1 SKU。 不过，强烈建议你迁移到 v2 以利用该 SKU 中的功能更新。 有关详细信息，请参阅[自动缩放和区域冗余应用程序网关 v2](application-gateway-autoscaling-zone-redundant.md)。
 
 ## <a name="performance"></a>性能
 
@@ -204,15 +212,11 @@ v2 SKU 可以自动确保新实例分布到各个容错域和更新域中。 如
 
 否。
 
-### <a name="is-there-guidance-available-to-migrate-from-the-v1-sku-to-the-v2-sku"></a>是否有从 v1 SKU 迁移到 v2 SKU 的指导？
-
-是的。 有关详细信息，请参阅[将 Azure 应用程序网关和 Web 应用程序防火墙从 v1 迁移到 v2](migrate-v1-v2.md)。
-
 ### <a name="does-application-gateway-support-ipv6"></a>应用程序网关是否支持 IPv6？
 
 应用程序网关 v2 目前不支持 IPv6。 它只能使用 IPv4 在双堆栈 VNet 中运行，但网关子网仅限 IPv4。 应用程序网关 v1 不支持双堆栈 VNet。 
 
-## <a name="configuration---ssl"></a>配置 - SSL
+## <a name="configuration---tls"></a>配置 - TLS
 
 ### <a name="what-certificates-does-application-gateway-support"></a>应用程序网关支持哪些证书？
 
@@ -251,13 +255,13 @@ v2 SKU 可以自动确保新实例分布到各个容错域和更新域中。 如
 - TLS_RSA_WITH_3DES_EDE_CBC_SHA
 - TLS_DHE_DSS_WITH_3DES_EDE_CBC_SHA
 
-有关如何自定义 SSL 选项的信息，请参阅[在应用程序网关上配置 SSL 策略版本和加密套件](application-gateway-configure-ssl-policy-powershell.md)。
+有关如何自定义 TLS 选项的信息，请参阅[在应用程序网关上配置 TLS 策略版本和密码套件](application-gateway-configure-ssl-policy-powershell.md)。
 
 ### <a name="does-application-gateway-support-reencryption-of-traffic-to-the-backend"></a>应用程序网关是否支持重新加密发往后端的流量？
 
-是的。 应用程序网关支持 SSL 卸载和端到端 SSL，因此支持重新加密发往后端的流量。
+是的。 应用程序网关支持 TLS 卸载和端到端 TLS，因此支持重新加密发往后端的流量。
 
-### <a name="can-i-configure-ssl-policy-to-control-ssl-protocol-versions"></a>是否可以配置 SSL 策略来控制 SSL 协议版本？
+### <a name="can-i-configure-tls-policy-to-control-tls-protocol-versions"></a>能否通过配置 TLS 策略来控制 TLS 协议版本？
 
 是的。 可将应用程序网关配置为拒绝 TLS1.0、TLS1.1 和 TLS1.2。 默认情况下，SSL 2.0 和 3.0 已禁用且不可配置。
 
@@ -274,9 +278,9 @@ v2 SKU 可以自动确保新实例分布到各个容错域和更新域中。 如
 
 应用程序网关使用 SHA256 进行后端管理。
 
-### <a name="how-many-ssl-certificates-does-application-gateway-support"></a>应用程序网关支持多少个 SSL 证书？
+### <a name="how-many-tlsssl-certificates-does-application-gateway-support"></a>应用程序网关支持多少个 TLS/SSL 证书？
 
-应用程序网关最多支持 100 个 SSL 证书。
+应用程序网关最多支持 100 个 TLS/SSL 证书。
 
 ### <a name="how-many-authentication-certificates-for-backend-reencryption-does-application-gateway-support"></a>应用程序网关支持使用多少个身份验证证书进行后端重新加密？
 
@@ -284,7 +288,7 @@ v2 SKU 可以自动确保新实例分布到各个容错域和更新域中。 如
 
 ### <a name="does-application-gateway-natively-integrate-with-azure-key-vault"></a>应用程序网关是否原生与 Azure Key Vault 集成？
 
-是，应用程序网关 v2 SKU 支持 Key Vault。 有关详细信息，请参阅[使用密钥保管库证书实现 SSL 终止](key-vault-certs.md)。
+是，应用程序网关 v2 SKU 支持 Key Vault。 有关详细信息，请参阅[使用 Key Vault 证书实现 TLS 终止](key-vault-certs.md)。
 
 ### <a name="how-do-i-configure-https-listeners-for-com-and-net-sites"></a>如何配置 .com 和 .net 站点的 HTTPS 侦听器？ 
 
@@ -326,15 +330,12 @@ WAF 目前支持 CRS [2.2.9](../web-application-firewall/ag/application-gateway-
 
 有关详细信息，请参阅 [OWASP 10 大漏洞](https://www.owasp.org/index.php/Top10#OWASP_Top_10_for_2013)。
 
-### <a name="is-there-guidance-available-to-migrate-from-the-v1-sku-to-the-v2-sku"></a>是否有从 v1 SKU 迁移到 v2 SKU 的指导？
-
-是的。 有关详细信息，请参阅[将 Azure 应用程序网关和 Web 应用程序防火墙从 v1 迁移到 v2](migrate-v1-v2.md)。
 
 ## <a name="configuration---ingress-controller-for-aks"></a>配置 - AKS 的入口控制器
 
 ### <a name="what-is-an-ingress-controller"></a>什么是入口控制器？
 
-Kubernetes 允许创建 `deployment` 和 `service` 资源，以便在群集内部公开一组 Pod。 为了向外公开同一服务，定义了一个 [`Ingress`](https://kubernetes.io/docs/concepts/services-networking/ingress/) 资源，它提供了负载均衡、SSL 终止和基于名称的虚拟主机。
+Kubernetes 允许创建 `deployment` 和 `service` 资源，以便在群集内部公开一组 Pod。 为了向外公开同一服务，我们定义了一个 [`Ingress`](https://kubernetes.io/docs/concepts/services-networking/ingress/) 资源，它提供负载均衡、TLS 终止和基于名称的虚拟托管。
 为了满足此 `Ingress` 资源，需要一个入口控制器来侦听对 `Ingress` 资源进行的任何更改并配置负载均衡器策略。
 
 借助应用程序网关入口控制器，可将 [Azure 应用程序网关](https://www.azure.cn/home/features/application-gateway/)用作 [Azure Kubernetes 服务](https://www.azure.cn/home/features/kubernetes-service/)（也称为 AKS 群集）的入口。
@@ -349,11 +350,11 @@ Kubernetes 允许创建 `deployment` 和 `service` 资源，以便在群集内�
 
 应用程序网关提供三种日志： 
 
-* **ApplicationGatewayAccessLog**：访问日志包含提交到应用程序网关前端的每个请求。 数据包括调用方的 IP、请求的 URL、响应延迟、返回代码，以及传入和传出的字节数。每隔 300 秒收集一次访问日志。 此日志包含每个应用程序网关的一条记录。
+* **ApplicationGatewayAccessLog**：访问日志包含提交到应用程序网关前端的每个请求。 数据包括调用方的 IP、请求的 URL、响应延迟、返回代码，以及传入和传出的字节数。此日志包含每个应用程序网关的一条记录。
 * **ApplicationGatewayPerformanceLog**：性能日志捕获每个应用程序网关的性能信息。 信息包括吞吐量（以字节为单位）、服务的请求总数、失败的请求计数，以及正常和不正常的后端实例计数。
 * **ApplicationGatewayFirewallLog**：对于使用 WAF 配置的应用程序网关，防火墙日志包含通过检测模式或防护模式记录的请求。
 
-有关详细信息，请参阅[应用程序网关的后端运行状况、诊断日志和指标](application-gateway-diagnostics.md)。
+所有日志每 60 秒收集一次。 有关详细信息，请参阅[应用程序网关的后端运行状况、诊断日志和指标](application-gateway-diagnostics.md)。
 
 ### <a name="how-do-i-know-if-my-backend-pool-members-are-healthy"></a>如何知道后端池成员是否正常？
 
@@ -418,4 +419,3 @@ Kubernetes 允许创建 `deployment` 和 `service` 资源，以便在群集内�
 
 若要详细了解应用程序网关，请参阅[什么是 Azure 应用程序网关？](overview.md)。
 
-<!--Update_Description: wording update-->

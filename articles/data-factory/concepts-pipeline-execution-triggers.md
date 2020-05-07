@@ -11,21 +11,24 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 origin.date: 07/05/2018
-ms.date: 03/02/2020
-ms.openlocfilehash: ab18cfed50528ccc416ab99021432d602d9418a6
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/11/2020
+ms.openlocfilehash: 767fc377491577cd9d46e44a0d501d3e47ddee74
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292340"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82198277"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Azure 数据工厂中的管道执行和触发器
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
  Azure 数据工厂中的“管道运行”用于定义管道执行实例。 例如，假设你有一个管道，分别在上午 8:00、9:00 和 10:00 点执行。 在这种情况下，将分三次单独运行管道，也即有三次管道运行。 每次管道运行都有唯一的管道运行 ID。 运行 ID 是一个 GUID，用于对该特定的管道运行进行唯一定义。
 
 管道运行通常通过将自变量传递给管道中定义的参数进行实例化。 执行管道时，可以手动，也可以  使用触发器。 本文提供了有关执行管道的两种方式的详细信息。
 
 ## <a name="manual-execution-on-demand"></a>手动执行（按需）
+
 管道的手动执行也称为按需执行。 
 
 例如，假设有一个需要执行的名为 **copyPipeline** 的基本管道。 该管道有一项活动，可以将数据从 Azure Blob 存储源文件夹复制到同一存储中的目标文件夹。 下面的 JSON 定义显示此示例管道：
@@ -81,7 +84,8 @@ ms.locfileid: "79292340"
 - Python SDK
 
 ### <a name="rest-api"></a>REST API
-以下示例命令演示了如何使用 REST API 手动运行管道：
+
+以下示例命令演示了如何通过手动方式使用 REST API 来运行管道：
 
 ```
 POST
@@ -120,7 +124,8 @@ Invoke-AzDataFactoryV2Pipeline -DataFactory $df -PipelineName "Adfv2QuickStartPi
 有关完整示例，请参阅[快速入门：使用 Azure PowerShell 创建数据工厂](quickstart-create-data-factory-powershell.md)。
 
 ### <a name="net-sdk"></a>.NET SDK
-以下示例调用演示了如何使用 .NET SDK 手动运行管道：
+
+以下示例调用演示了如何通过手动方式使用 .NET SDK 来运行管道：
 
 ```csharp
 client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, pipelineName, parameters)
@@ -129,9 +134,10 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 有关完整示例，请参阅[快速入门：使用 .NET SDK 创建数据工厂](quickstart-create-data-factory-dot-net.md)。
 
 > [!NOTE]
-> 可以使用 .NET SDK 从 Azure Functions、自己的 Web 服务等位置调用数据工厂管道。
+> 可以使用 .NET SDK 从 Azure Functions、你的 Web 服务等位置调用数据工厂管道。
 
-<h2 id="triggers">触发器执行</h2>
+## <a name="trigger-execution"></a>触发器执行
+
 触发器是可以执行管道运行的另一种方法。 触发器表示一个处理单元，用于确定何时需要启动管道执行。 目前，数据工厂支持三种类型的触发器：
 
 - 计划触发器：按时钟计划调用管道的触发器。
@@ -141,7 +147,6 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 - 基于事件的触发器：响应某个事件的触发器。
 
 管道和触发器具有多对多关系（翻转窗口触发器除外）。多个触发器可以启动单个管道，或者单个触发器可以启动多个管道。 在以下触发器定义中，pipelines  属性是指一系列由特定的触发器触发的管道。 属性定义包括管道参数的值。
-
 ### <a name="basic-trigger-definition"></a>基本的触发器定义
 
 ```json
@@ -242,33 +247,33 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 
 ```json
 {
-    "properties": {
-        "name": "MyTrigger",
-        "type": "ScheduleTrigger",
-        "typeProperties": {
-            "recurrence": {
-                "frequency": "Hour",
-                "interval": 1,
-                "startTime": "2017-11-01T09:00:00-08:00",
-                "endTime": "2017-11-02T22:00:00-08:00"
-            }
+  "properties": {
+    "name": "MyTrigger",
+    "type": "ScheduleTrigger",
+    "typeProperties": {
+      "recurrence": {
+        "frequency": "Hour",
+        "interval": 1,
+        "startTime": "2017-11-01T09:00:00-08:00",
+        "endTime": "2017-11-02T22:00:00-08:00"
+      }
+    },
+    "pipelines": [{
+        "pipelineReference": {
+          "type": "PipelineReference",
+          "referenceName": "SQLServerToBlobPipeline"
         },
-        "pipelines": [{
-                "pipelineReference": {
-                    "type": "PipelineReference",
-                    "referenceName": "SQLServerToBlobPipeline"
-                },
-                "parameters": {}
-            },
-            {
-                "pipelineReference": {
-                    "type": "PipelineReference",
-                    "referenceName": "SQLServerToAzureSQLPipeline"
-                },
-                "parameters": {}
-            }
-        ]
-    }
+        "parameters": {}
+      },
+      {
+        "pipelineReference": {
+          "type": "PipelineReference",
+          "referenceName": "SQLServerToAzureSQLPipeline"
+        },
+        "parameters": {}
+      }
+    ]
+  }
 }
 ```
 
@@ -303,7 +308,7 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 
 还可以使用 **schedule** 来扩展触发器执行的次数。  例如，如果触发器的频率为按月，根据计划在每月的第 1 天和第 2 天运行，则该触发器会在当月的第 1 天和第 2 天运行，而不是每月运行一次。
 
-如果指定了多个 **schedule** 元素，则求值顺序为从大到小的计划设置：周次、月份日期、星期、小时、分钟。
+如果指定了多个 schedule  元素，则求值顺序为从大到小的计划设置：周次、月份日期、星期、小时、分钟。
 
 下表详细描述了 **schedule** 元素：
 
@@ -329,7 +334,7 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 ## <a name="examples-of-trigger-recurrence-schedules"></a>触发器定期触发计划示例
 此部分提供定期触发计划的示例， 重点介绍 **schedule** 对象及其元素。
 
-这些示例假定 **interval** 值为 1，且根据计划定义，**frequency** 值是正确的。 例如，不能在 **frequency** 值为 "day" 的同时，在 **schedule** 对象中有一个 **monthDays** 修改项。 这些类型的限制在上一部分的表中已说明过。
+这些示例假定 interval  值为 1，且根据计划定义，frequency  值是正确的。 例如，不能在 **frequency** 值为 "day" 的同时，在 **schedule** 对象中有一个 **monthDays** 修改项。 这些类型的限制在上一部分的表中已说明过。
 
 | 示例 | 说明 |
 |:--- |:--- |
@@ -369,7 +374,7 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 |:--- |:--- |:--- |
 | **回填方案** | 。 可以针对过去的窗口来计划管道运行。 | 不支持。 只能在从现在的时间到未来的时间这个时段内执行管道运行。 |
 | **可靠性** | 100% 的可靠性。 可以针对所有窗口（从指定的开始日期算起，没有间隔）来计划管道运行。 | 可靠性较低。 |
-| **重试功能** | 。 失败的管道运行的重试策略默认设置为 0，也可由用户在触发器定义中指定。 在管道运行因并发/服务器/数量限制（即状态代码 400：用户错误；429：请求过多；500：内部服务器错误）而失败时自动重试。 | 不支持。 |
+| **重试功能** | 。 失败的管道运行的重试策略默认设置为 0，也可由用户在触发器定义中指定。 在管道运行因并发/服务器/限制值（即状态代码 400：用户错误；429：请求过多；500：内部服务器错误）而失败时自动重试。 | 不支持。 |
 | **并发** | 。 用户可以为触发器显式设置并发限制。 允许 1 到 50 个并发的触发管道运行。 | 不支持。 |
 | **系统变量** | 支持使用 **WindowStart** 和 **WindowEnd** 系统变量。 用户可以访问在触发器定义中充当触发器系统变量的 `triggerOutputs().windowStartTime` 和 `triggerOutputs().windowEndTime`。 这两个值分别用作窗口开始时间和窗口结束时间。 例如，如果翻转窗口触发器每小时运行一次，则对于凌晨 1:00 到凌晨 2:00 这个窗口，相应的定义为 `triggerOutputs().WindowStartTime = 2017-09-01T01:00:00Z` 和 `triggerOutputs().WindowEndTime = 2017-09-01T02:00:00Z`。 | 不支持。 |
 | **管道-触发器关系** | 支持一对一关系。 只能触发一个管道。 | 支持多对多关系。 多个触发器可以启动单个管道。 单个触发器可以启动多个管道。 |

@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 02/17/2020
+ms.date: 04/26/2020
 ms.author: v-junlch
-ms.openlocfilehash: af35a882cca272ec60d1d116c8625e106dc1560c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 616f2741216ebee307614a946eeb0ca0bd1bdf1e
+ms.sourcegitcommit: e3512c5c2bbe61704d5c8cbba74efd56bfe91927
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77494469"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82267648"
 ---
 # <a name="migrate-azure-application-gateway-and-web-application-firewall-from-v1-to-v2"></a>将 Azure 应用程序网关和 Web 应用程序防火墙从 v1 迁移到 v2
 
@@ -36,10 +36,11 @@ ms.locfileid: "77494469"
 
 * 新的 v2 网关使用新的公共和专用 IP 地址。 无法将与现有 v1 网关关联的 IP 地址无缝移动到 v2。 但是，可将现有的（未分配的）公共或专用 IP 地址分配到新的 v2 网关。
 * 必须为 v1 网关所在的虚拟网络中的另一个子网提供 IP 地址空间。 该脚本无法在已有 v1 网关的任何现有子网中创建 v2 网关。 但是，如果现有子网已包含 v2 网关，只要该子网具有足够的 IP 地址空间，它就仍可正常运行。
-* 若要迁移 SSL 配置，必须指定 v1 网关中使用的所有 SSL 证书。
+* 若要迁移 TLS/SSL 配置，必须指定 v1 网关中使用的所有 TLS/SSL 证书。
 * 如果为 v1 网关启用了 FIPS 模式，该网关不会迁移到新的 v2 网关。 v2 不支持 FIPS 模式。
 * v2 不支持 IPv6，因此不会迁移启用了 IPv6 的 v1 网关。 如果运行该脚本，它可能不会完成。
 * 如果 v1 网关只有专用 IP 地址，该脚本将为新的 v2 网关创建一个公共 IP 地址和一个专用 IP 地址。 v2 网关目前不支持仅指定专用 IP 地址。
+* 名称中包含除字母、数字、连字符和下划线以外的任何内容的标头不会传递给你的应用程序。 这仅适用于标头名称而不是标头值。 与 v1 相比，这是一个中断性变更。
 
 ## <a name="download-the-script"></a>下载脚本
 
@@ -100,9 +101,9 @@ ms.locfileid: "77494469"
 
    * **subnetAddressRange: [String]:Required** - 这是为包含新 v2 网关的新子网分配（或想要分配）的 IP 地址空间。 必须以 CIDR 表示法指定此参数。 例如：10.0.0.0/24。 无需提前创建此子网。 如果此子网不存在，脚本将会创建它。
    * **appgwName: [String]:Optional**。 这是指定用作新 Standard_v2 或 WAF_v2 网关的名称的字符串。 如果未提供此参数，则会使用现有 v1 网关的名称并在其后追加后缀 *_v2*。
-   * **sslCertificates: [PSApplicationGatewaySslCertificate]:Optional**。  创建的 PSApplicationGatewaySslCertificate 对象的逗号分隔列表，表示 v1 网关中必须上传到新 v2 网关的 SSL 证书。 对于为 Standard v1 或 WAF v1 网关配置的每个 SSL 证书，可按如下所示通过 `New-AzApplicationGatewaySslCertificate` 命令创建新的 PSApplicationGatewaySslCertificate 对象。 需要 SSL 证书文件的路径和密码。
+   * **sslCertificates: [PSApplicationGatewaySslCertificate]:Optional**。  创建的 PSApplicationGatewaySslCertificate 对象的逗号分隔列表，这些对象表示 v1 网关中必须上传到新 v2 网关的 TLS/SSL 证书。 对于为 Standard v1 或 WAF v1 网关配置的每个 TLS/SSL 证书，可按如下所示通过 `New-AzApplicationGatewaySslCertificate` 命令创建新的 PSApplicationGatewaySslCertificate 对象。 需要 TLS/SSL 证书文件的路径和密码。
 
-     仅当没有为 v1 网关或 WAF 配置 HTTPS 侦听器时，此参数才是可选的。 如果至少安装了一个 HTTPS 侦听器，则必须指定此参数。
+     仅当没有为 v1 网关或 WAF 配置 HTTPS 侦听器时，此参数才是可选项。 如果至少安装了一个 HTTPS 侦听器，则必须指定此参数。
 
       ```azurepowershell  
       $password = ConvertTo-SecureString <cert-password> -AsPlainText -Force
@@ -124,7 +125,7 @@ ms.locfileid: "77494469"
 
       若要创建 PSApplicationGatewayTrustedRootCertificate 对象列表，请参阅 [AzApplicationGatewayTrustedRootCertificate](https://docs.microsoft.com/powershell/module/Az.Network/New-AzApplicationGatewayTrustedRootCertificate?view=azps-2.1.0&viewFallbackFrom=azps-2.0.0)。
    * **privateIpAddress: [String]:Optional**。 要关联到新 v2 网关的特定专用 IP 地址。  此地址必须来自为新 v2 网关分配的同一 VNet。 如果未指定，该脚本将为 v2 网关分配一个专用 IP 地址。
-   * **publicIpResourceId: [String]:Optional**。 订阅中要分配给新 v2 网关的现有公共 IP 地址（标准 SKU）资源的 resourceId。 如果未指定参数，该脚本将在同一资源组中分配一个新的公共 IP。 名称是追加了 *-IP* 的 v2 网关名称。
+   * **publicIpResourceId: [String]:Optional**。 订阅中要分配给新 v2 网关的现有公共 IP 地址（标准 SKU）资源的 resourceId。 如果未指定参数，该脚本将在同一资源组中分配一个新的公共 IP。 名称是追加了“-IP”  的 v2 网关名称。
    * **validateMigration: [switch]:Optional**。 如果你希望在创建 v2 网关并复制配置后让脚本执行一些基本的配置比较验证，请使用此参数。 默认不会执行任何验证。
    * **enableAutoScale: [switch]:Optional**。 如果你希望在创建新的 v2 网关后让脚本启用自动缩放，请使用此参数。 默认会禁用自动缩放。 以后，始终可以在创建新的 v2 网关后手动启用自动缩放。
 
@@ -155,7 +156,7 @@ ms.locfileid: "77494469"
 * **自定义 DNS 区域（例如 contoso.com）指向与 Standard v1 或 WAF v1 网关关联的前端 IP 地址（使用 A 记录）** 。
 
     可以更新 DNS 记录，使其指向与 Standard_v2 应用程序网关关联的前端 IP 或 DNS 标签。 根据 DNS 记录中配置的 TTL，可能需要一段时间才能将所有客户端流量迁移到新的 v2 网关。
-* **自定义 DNS 区域（例如 contoso.com）指向与 v1 网关关联的 DNS 标签（例如：使用 CNAME 记录指向 *myappgw.chinanorth.chinacloudapp.cn*）** 。
+* 指向与 v1 网关关联的 DNS 标签（例如：使用 CNAME 记录指向 myappgw.chinanorth2.chinacloudapp.cn  ）的自定义 DNS 区域（例如 contoso.com）  。
 
    有两种选择：
 
@@ -165,7 +166,7 @@ ms.locfileid: "77494469"
   * 或者，可以更新自定义域的 DNS 记录，使其指向新 v2 应用程序网关的 DNS 标签。 根据 DNS 记录中配置的 TTL，可能需要一段时间才能将所有客户端流量迁移到新的 v2 网关。
 * **客户端连接到应用程序网关的前端 IP 地址**。
 
-   更新客户端，以使用与新建的 v2 应用程序网关关联的 IP 地址。 我们建议不要直接使用 IP 地址。 考虑使用与应用程序网关关联的、可通过 CNAME 指向自己的自定义 DNS 区域（例如 contoso.com）的 DNS 名称标签（例如 yourgateway.chinanorth.chinacloudapp.cn）。
+   更新客户端，以使用与新建的 v2 应用程序网关关联的 IP 地址。 我们建议不要直接使用 IP 地址。 请考虑使用与应用程序网关（可通过 CNAME 指向自己的自定义 DNS 区域（例如 contoso.com））关联的 DNS 名称标签（例如 yourgateway.chinanorth2.chinacloudapp.cn）。
 
 ## <a name="common-questions"></a>常见问题
 
@@ -201,4 +202,3 @@ ms.locfileid: "77494469"
 
 [了解应用程序网关 v2](application-gateway-autoscaling-zone-redundant.md)
 
-<!-- Update_Description: code update -->

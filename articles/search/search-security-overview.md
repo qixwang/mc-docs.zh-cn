@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
-origin.date: 11/04/2019
-ms.date: 03/02/2020
-ms.openlocfilehash: 574b342272f9eaee0e70bf532c8ff2adafc7a5ba
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+origin.date: 04/15/2020
+ms.date: 04/20/2020
+ms.openlocfilehash: 625647ea14b181d4a5bdd56c268d810034893959
+ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80522087"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82588707"
 ---
 # <a name="security-and-data-privacy-in-azure-cognitive-search"></a>Azure 认知搜索中的安全性和数据隐私
 
@@ -32,9 +32,8 @@ Azure 认知搜索针对以下标准进行了认证，如 [2018 年 6 月发布�
 + [GxP（CFR 第 21 篇第·11 部分）](https://en.wikipedia.org/wiki/Title_21_CFR_Part_11)
 + [HITRUST](https://en.wikipedia.org/wiki/HITRUST)
 + [PCI DSS 1 级](https://en.wikipedia.org/wiki/Payment_Card_Industry_Data_Security_Standard)
-+ [澳大利亚 IRAP 未分类 DLM](https://asd.gov.au/infosec/irap/certified_clouds.htm)
 
-标准符合性应用于正式版功能。 预览版功能在转变为正式版时进行认证，不能用于具有严格标准要求的解决方案中。 符合性认证记录在 [Microsoft Azure 符合性概述](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)和[信任中心](https://www.microsoft.com/trustcenter)中。 
+标准符合性应用于正式版功能。 预览版功能在转变为正式版时进行认证，不能用于具有严格标准要求的解决方案中。 符合性认证记录在 [Microsoft Azure 符合性概述](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)和[信任中心](https://www.trustcenter.cn/default.html)中。 
 
 ## <a name="encrypted-transmission-and-storage"></a>加密的传输和存储
 
@@ -54,13 +53,15 @@ Azure 认知搜索针对以下标准进行了认证，如 [2018 年 6 月发布�
 + [订阅或资源级别的锁可防止删除](../azure-resource-manager/management/lock-resources.md)
 + [基于角色的访问控制 (RBAC) 可以控制对信息和管理操作的访问](../role-based-access-control/overview.md)
 
-所有 Azure 服务支持使用基于角色的访问控制 (RBAC) 在不同的服务之间以一致的方式设置访问级别。 例如，仅限“所有者”和“参与者”角色查看敏感数据（如管理密钥），而任何角色的成员都可以查看服务状态。 RBAC 提供“所有者”、“参与者”和“读取者”角色。 默认情况下，所有服务管理员是“所有者”角色的成员。
+所有 Azure 服务支持使用基于角色的访问控制 (RBAC) 在不同的服务之间以一致的方式设置访问级别。 例如，仅限“所有者”和“参与者”角色可查看敏感数据（如管理密钥）。 但是，任何角色的成员都可以查看服务状态。 RBAC 提供“所有者”、“参与者”和“读取者”角色。 默认情况下，所有服务管理员是“所有者”角色的成员。
 
 <a name="service-access-and-authentication"></a>
 
-## <a name="service-access-and-authentication"></a>服务访问和身份验证
+## <a name="endpoint-access"></a>终结点访问
 
-虽然 Azure 认知搜索继承了 Azure 平台的安全保护措施，但它也提供其自己的基于密钥的身份验证。 API 密钥是随机生成的数字和字母所组成的字符串。 密钥的类型（管理员或查询）确定访问的级别。 提交有效密钥被视为请求源自受信任实体的证明。 
+### <a name="public-access"></a>公共访问权限
+
+Azure 认知搜索继承了 Azure 平台的安全保护措施，并提供了自己的基于密钥的身份验证。 API 密钥是随机生成的数字和字母所组成的字符串。 密钥的类型（管理员或查询）确定访问的级别。 提交有效密钥被视为请求源自受信任实体的证明。 
 
 有两个搜索服务访问级别，可通过两种类型的密钥启用它们：
 
@@ -73,55 +74,62 @@ Azure 认知搜索针对以下标准进行了认证，如 [2018 年 6 月发布�
 
 需要对每个请求进行身份验证，而每个请求由必需密钥、操作和对象组成。 链接在一起后，两个权限级别（完全或只读）加上上下文（例如，索引上的查询操作）便足以针对服务操作提供全面的安全性。 有关密钥的详细信息，请参阅[创建和管理 API 密钥](search-security-api-keys.md)。
 
-## <a name="index-access"></a>索引访问
+### <a name="restricted-access"></a>受限访问
 
-在 Azure 认知搜索中，单个索引不是安全对象。 对索引的访问权限是根据服务层（读取或写入访问）以及操作上下文确定的。
+如果你有公共服务，但想要限制该服务的使用，则可使用管理 REST API 版本中的 IP 限制规则：2020-03-13 [IpRule](https://docs.microsoft.com/rest/api/searchmanagement/2019-10-01-preview/createorupdate-service#IpRule)。 IpRule 允许你标识希望向其授予搜索服务访问权限的 IP 地址（单个或在某个范围内），通过这种方式限制对该服务的访问。 
 
-对于最终用户访问，可以使用查询密钥构建要连接的查询请求，这会将任何请求设置为只读，并包含应用使用的特定索引。 在查询请求中，没有联接索引或同时访问多个索引的概念，所有请求都会根据定义以单个索引为目标。 因此，查询请求本身的结构（密钥加上单个目标索引）定义了安全边界。
+<!-- ### Private access ->
 
-管理员和开发人员对索引的访问权限没有区别：两者都需要写访问权限才能创建、删除和更新服务管理的对象。 拥有服务管理密钥的任何人都可以读取、修改或删除同一服务中的任何索引。 为了防止意外删除或恶意删除索引，代码资产的内部源代码管理作为一种补救机制，可以还原意外的索引删除或修改。 Azure 认知搜索在群集中提供故障转移功能来确保可用性，但它不会存储或执行用于创建或加载索引的专属代码。
+## Index access
 
-需要索引级安全边界的多租户解决方案通常包含一个中间层，客户可以使用它来处理索引隔离。 有关多租户用例的详细信息，请参阅[多租户 SaaS 应用程序与 Azure 认知搜索的设计模式](search-modeling-multitenant-saas-applications.md)。
+In Azure Cognitive Search, an individual index is not a securable object. Instead, access to an index is determined at the service layer (read or write access), along with the context of an operation.
 
-## <a name="admin-access"></a>管理访问权限
+For end-user access, you can structure query requests to connect using a query key, which makes any request read-only, and include the specific index used by your app. In a query request, there is no concept of joining indexes or accessing multiple indexes simultaneously so all requests target a single index by definition. As such, construction of the query request itself (a key plus a single target index) defines the security boundary.
 
-[基于角色的访问 (RBAC)](https://docs.azure.cn/role-based-access-control/overview) 确定你是否对服务及其内容拥有控制访问权限。 Azure 认知搜索服务中的“所有者”或“参与者”可以使用门户或 PowerShell **Az.Search** 模块在服务中创建、更新或删除对象。 也可以使用 [Azure 认知搜索管理 REST API](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api)。
+Administrator and developer access to indexes is undifferentiated: both need write access to create, delete, and update objects managed by the service. Anyone with an admin key to your service can read, modify, or delete any index in the same service. For protection against accidental or malicious deletion of indexes, your in-house source control for code assets is the remedy for reversing an unwanted index deletion or modification. Azure Cognitive Search has failover within the cluster to ensure availability, but it does not store or execute your proprietary code used to create or load indexes.
 
-## <a name="user-access"></a>用户访问权限
+For multitenancy solutions requiring security boundaries at the index level, such solutions typically include a middle tier, which customers use to handle index isolation. For more information about the multitenant use case, see [Design patterns for multitenant SaaS applications and Azure Cognitive Search](search-modeling-multitenant-saas-applications.md).
 
-默认情况下，由查询请求中的访问密钥确定用户对索引的访问权限。 大部分开发人员会针对客户端搜索请求创建并分配[*查询密钥*](search-security-api-keys.md)。 查询密钥授予对索引内的所有内容的读取访问权限。
+## Authentication
 
-如果需要对内容进行精细的基于每个用户的控制，可以在查询中生成安全筛选器，返回与给定安全标识关联的文档。 基于标识的访问控制不是预定义的角色和角色分配，它作为*筛选器*实现，该筛选器可以根据标识修整文档和内容的搜索结果。 下表描述了修整未经授权内容的搜索结果的两种方法。
+### Admin access
 
-| 方法 | 说明 |
+[Role-based access (RBAC)](https://docs.azure.cn/role-based-access-control/overview) determines whether you have access to controls over the service and its content. If you are an Owner or Contributor on an Azure Cognitive Search service, you can use the portal or the PowerShell **Az.Search** module to create, update, or delete objects on the service. You can also use the [Azure Cognitive Search Management REST API](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api).
+
+### User access
+
+By default, user access to an index is determined by the access key on the query request. Most developers create and assign [*query keys*](search-security-api-keys.md) for client-side search requests. A query key grants read access to all content within the index.
+
+If you require granular, per-user control over content, you can build security filters on your queries, returning documents associated with a given security identity. Instead of predefined roles and role assignments, identity-based access control is implemented as a *filter* that trims search results of documents and content based on identities. The following table describes two approaches for trimming search results of unauthorized content.
+
+| Approach | Description |
 |----------|-------------|
-|[基于标识筛选器的安全修整](search-security-trimming-for-azure-search.md)  | 阐述实现用户标识访问控制的基本工作流。 该工作流包括将安全标识符添加到索引，然后解释如何针对该字段进行筛选，以修整受禁内容的结果。 |
-|[Azure Active Directory 标识的安全修整](search-security-trimming-for-azure-search-with-aad.md)  | 此文延伸了前一篇文章的内容，提供了有关从 Azure Active Directory (AAD)（Azure 云平台中的一个[免费服务](https://www.azure.cn/pricing/1rmb-trial/)）检索标识的步骤。 |
+|[Security trimming based on identity filters](search-security-trimming-for-azure-search.md)  | Documents the basic workflow for implementing user identity access control. It covers adding security identifiers to an index, and then explains filtering against that field to trim results of prohibited content. |
+|[Security trimming based on Azure Active Directory identities](search-security-trimming-for-azure-search-with-aad.md)  | This article expands on the previous article, providing steps for retrieving identities from Azure Active Directory (AAD), one of the [free services](https://www.azure.cn/pricing/1rmb-trial/) in the Azure cloud platform. |
 
-## <a name="table-permissioned-operations"></a>表：权限操作
+## Table: Permissioned operations
 
-下表概述了 Azure 认知搜索中允许的操作，以及哪个密钥可以解锁特定操作的访问。
+The following table summarizes the operations allowed in Azure Cognitive Search and which key unlocks access a particular operation.
 
-| Operation | 权限 |
+| Operation | Permissions |
 |-----------|-------------------------|
-| 创建服务 | Azure 订阅持有者|
-| 缩放服务 | 管理密钥，资源中的 RBAC 所有者或参与者  |
-| 删除服务 | 管理密钥，资源中的 RBAC 所有者或参与者 |
-| 创建、修改、删除服务中的对象： <br>索引和组件部分（包括分析器定义、评分配置文件、CORS 选项）、索引器、数据源、同义词、建议器。 | 管理密钥，资源中的 RBAC 所有者或参与者  |
-| 查询索引 | 管理密钥或查询密钥（RBAC 不适用） |
-| 查询系统信息，例如返回统计信息、计数和对象列表。 | 管理密钥，资源的 RBAC（所有者、参与者、读取者） |
-| 管理管理密钥 | 管理密钥，资源中的 RBAC 所有者或参与者。 |
-| 管理查询密钥 |  管理密钥，资源中的 RBAC 所有者或参与者。  |
+| Create a service | Azure subscription holder|
+| Scale a service | Admin key, RBAC Owner, or Contributor on the resource  |
+| Delete a service | Admin key, RBAC Owner, or Contributor on the resource |
+| Create, modify, delete objects on the service: <br>Indexes and component parts (including analyzer definitions, scoring profiles, CORS options), indexers, data sources, synonyms, suggesters. | Admin key, RBAC Owner, or Contributor on the resource  |
+| Query an index | Admin or query key (RBAC not applicable) |
+| Query system information, such as returning statistics, counts, and lists of objects. | Admin key, RBAC on the resource (Owner, Contributor, Reader) |
+| Manage admin keys | Admin key, RBAC Owner or Contributor on the resource. |
+| Manage query keys |  Admin key, RBAC Owner or Contributor on the resource.  |
 
-## <a name="physical-security"></a>物理安全性
+## Physical security
 
-Microsoft 数据中心提供行业领先的物理安全性，符合广泛的标准和法规要求。
+Azure data centers provide industry-leading physical security and are compliant with an extensive portfolio of standards and regulations.
 
+## See also
 
-## <a name="see-also"></a>另请参阅
-
-+ [.NET 入门（演示如何使用管理密钥创建索引）](search-create-index-dotnet.md)
-+ [REST 入门（演示如何使用管理密钥创建索引）](search-create-index-rest-api.md)
-+ [使用 Azure 认知搜索筛选器进行基于标识的访问控制](search-security-trimming-for-azure-search.md)
-+ [使用 Azure 认知搜索筛选器进行基于 Active Directory 标识的访问控制](search-security-trimming-for-azure-search-with-aad.md)
-+ [Azure 认知搜索中的筛选器](search-filters.md)
++ [Get started .NET (demonstrates using an admin key to create an index)](search-create-index-dotnet.md)
++ [Get started REST (demonstrates using an admin key to create an index)](search-create-index-rest-api.md)
++ [Identity-based access control using Azure Cognitive Search filters](search-security-trimming-for-azure-search.md)
++ [Active Directory identity-based access control using Azure Cognitive Search filters](search-security-trimming-for-azure-search-with-aad.md)
++ [Filters in Azure Cognitive Search](search-filters.md)

@@ -6,19 +6,21 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-origin.date: 01/15/2018
-ms.date: 01/06/2020
+origin.date: 03/13/2020
+ms.date: 05/11/2020
 author: WenJason
 ms.author: v-jay
 manager: digimobile
-ms.openlocfilehash: c307013f5961c58b6d566af070ad46f62eb0db57
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 42217ac30366404346d9b1a4cb28a7a56acfc647
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79293183"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82198261"
 ---
 # <a name="how-to-create-and-configure-azure-integration-runtime"></a>如何创建和配置 Azure 集成运行时
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 集成运行时 (IR) 是 Azure 数据工厂用于在不同的网络环境之间提供数据集成功能的计算基础结构。 有关 IR 的更多信息，请参阅[集成运行时](concepts-integration-runtime.md)。
 
 Azure IR 提供完全托管的计算，以本机执行数据移动和调度数据转换活动来计算 HDInsight 这样的服务。 它在 Azure 环境中托管，并支持连接到具有公共可访问端点的公共网络环境中的资源。
@@ -31,6 +33,10 @@ Azure IR 提供完全托管的计算，以本机执行数据移动和调度数�
 默认情况下，每个数据工厂在后端都有 Azure IR，支持云数据存储上的操作和公共网络中的计算服务。 该 Azure IR 的位置自动解析。 如果链接服务定义中未指定 **connectVia** 属性，则会使用默认的 Azure IR。 如果想要显式定义 IR 的位置，或对不同 IR 上的活动执行进行虚拟分组以进行管理，只需显式创建 Azure IR。 
 
 ## <a name="create-azure-ir"></a>创建 Azure IR
+
+若要创建并设置 Azure IR，可以使用以下过程。
+
+### <a name="create-an-azure-ir-via-azure-powershell"></a>通过 Azure PowerShell 创建 Azure IR
 可以使用 **Set-AzDataFactoryV2IntegrationRuntime** PowerShell cmdlet 创建集成运行时。 若要创建 Azure IR，请指定命令的名称、位置和类型。 下面的示例命令创建了位置设为“中国东部 2”的 Azure IR：
 
 ```powershell
@@ -40,9 +46,30 @@ Azure IR 的类型必须设置为**托管**。 无需指定计算详细信息，
 
 可以使用 Set-AzDataFactoryV2IntegrationRuntime PowerShell cmdlet 来配置现有 Azure IR 以更改其位置。 有关 Azure IR 的位置的详细信息，请参阅[集成运行时简介](concepts-integration-runtime.md)。
 
+### <a name="create-an-azure-ir-via-azure-data-factory-ui"></a>通过 Azure 数据工厂 UI 创建 Azure IR
+使用以下步骤通过 Azure 数据工厂 UI 创建 Azure IR。
+
+1. 在 Azure 数据工厂 UI 的“让我们开始吧”页上，选择左侧窗格中的“创作”选项卡。  
+
+   ![主页上的“创作”按钮](media/doc-common-process/get-started-page-author-button.png)
+
+1. 选择左侧窗格底部的“连接”，然后选择“连接”窗口中的“集成运行时”。    选择“+新建”。 
+
+   ![创建集成运行时](media/create-azure-integration-runtime/new-integration-runtime.png)
+
+1. 在“集成运行时安装”页中选择“Azure，自承载”，然后选择“继续”  。   
+
+1. 在下一页上选择“Azure”  以创建 Azure IR，然后选择“继续”  。
+   ![创建集成运行时](media/create-azure-integration-runtime/new-azure-ir.png)
+
+1. 输入 Azure IR 的名称，然后选择“创建”  。
+   ![创建 Azure IR](media/create-azure-integration-runtime/create-azure-ir.png)
+
+1. 创建完成后，会显示一个弹出通知。 在“集成运行时”  页上，确保在列表中看到新建的 IR。
+
 ## <a name="use-azure-ir"></a>使用 Azure IR
 
-创建 Azure IR 后，您可以在链接的服务定义中引用它。 以下示例说明如何从 Azure 存储链接服务引用上面创建的 Azure 集成运行时：  
+创建 Azure IR 后，您可以在链接的服务定义中引用它。 以下示例说明如何从 Azure 存储链接服务引用上面创建的 Azure 集成运行时：
 
 ```json
 {

@@ -8,12 +8,12 @@ origin.date: 08/13/2019
 ms.date: 03/23/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 2fe992fec3f012481cbf27be2f3edfcfc5cee1f1
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 82e2fb3499fed9c0848a043b27e35dd2a7c73416
+ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79291214"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82588577"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>在 Azure 门户中配置应用服务应用
 
@@ -160,7 +160,7 @@ ms.locfileid: "79291214"
       > [!NOTE]
       > 使用 Always On 功能，你无法控制终结点。 它始终向应用程序根发送请求。
     - **托管管道版本**：IIS [管道模式]。 如果某个旧式应用需要旧版 IIS，请将此选项设置为“经典”。 
-    - **HTTP 版本**：设置为 **2.0**，以启用对 [HTTPS/2](https://wikipedia.org/wiki/HTTP/2) 协议的支持。
+    - **HTTP 版本**：设置为 **2.0**，以启用对 HTTPS/2 协议的支持。
     > [!NOTE]
     > 大多数新型浏览器仅支持通过 TLS 的 HTTP/2 协议，而非加密流量继续使用 HTTP/1.1。 为确保客户端浏览器通过 HTTP/2 连接到应用，请[在 Azure 应用服务中使用 SSL 绑定保护自定义 DNS 名称](configure-ssl-bindings.md)。
     - **ARR 相关性**：在多实例部署中，请确保在会话的整个生存期内，将客户端路由到同一实例。 对于无状态应用程序，请将此选项设置为“关闭”。 

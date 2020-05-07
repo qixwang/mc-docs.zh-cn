@@ -2,30 +2,30 @@
 title: 模板概述
 description: 介绍使用 Azure 资源管理器模板部署资源的好处。
 ms.topic: conceptual
-origin.date: 01/02/2020
-ms.date: 01/20/2020
+origin.date: 04/06/2020
+ms.date: 04/30/2020
 ms.author: v-yeche
-ms.openlocfilehash: 6c3fec7f3fafbd8dd6470837fdc31f2123449817
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 4b4b6035d78ca5715d79a7121b54724e92e220e8
+ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "76165474"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82596092"
 ---
 <!--Verify successfully-->
-# <a name="azure-resource-manager-templates-overview"></a>Azure 资源管理器模板概述
+# <a name="what-are-arm-templates"></a>什么是 ARM 模板？
 
 在迁移到云的过程中，许多团队都采用了敏捷开发方法。 这些团队的工作快速迭代。 他们需要反复将其解决方案部署到云，并需要知道其基础结构处于一种可靠的状态。 随着基础结构成为迭代过程的一部分，运营与开发之间的划分已经消失。 团队需要通过统一的过程来管理基础结构和应用程序代码。
 
 为了解决这些难题，可将部署自动化，并运用基础结构即代码。 在代码中定义需要部署的基础结构。 基础结构代码将成为项目的一部分。 与应用程序代码一样，可将基础结构代码存储在源存储库中，并控制其版本。 团队中的任何人都可以运行该代码并部署类似的环境。
 
-若要对 Azure 解决方案实现基础结构即代码，请使用 Azure 资源管理器模板。 该模板是一个定义项目基础结构和配置的 JavaScript 对象表示法 (JSON) 文件。 该模板使用声明性语法，使你可以指明要部署的内容，而不需要编写一系列编程命令来创建内容。 在该模板中，指定要部署的资源以及这些资源的属性。
+若要针对 Azure 解决方案实现基础结构即代码，请使用 Azure 资源管理器 (ARM) 模板。 该模板是一个定义项目基础结构和配置的 JavaScript 对象表示法 (JSON) 文件。 该模板使用声明性语法，使你可以指明要部署的内容，而不需要编写一系列编程命令来创建内容。 在该模板中，指定要部署的资源以及这些资源的属性。
 
-## <a name="why-choose-resource-manager-templates"></a>为何选择资源管理器模板？
+## <a name="why-choose-arm-templates"></a>为什么选择 ARM 模板？
 
-在资源管理器模板与其他某个基础结构即代码服务之间做出选择时，请考虑模板的以下优势：
+如果要尝试在使用 ARM 模板和其他基础结构即代码服务之间做出选择，请考虑使用模板的以下优点：
 
-* **声明性语法**：资源管理器模板允许以声明方式创建和部署整个 Azure 基础结构。 例如，不仅可以部署虚拟机，还可以部署网络基础结构、存储系统和可能需要的任何其他资源。
+* **声明性语法**：ARM 模板允许以声明方式创建和部署整个 Azure 基础结构。 例如，不仅可以部署虚拟机，还可以部署网络基础结构、存储系统和可能需要的任何其他资源。
 
 * **可反复效果**：在整个开发生命周期内反复部署基础结构，并确保以一致的方式部署资源。 模板是幂等的，这意味着，可以多次部署同一模板，并获得处于相同状态的相同资源类型。 可以开发一个模板来表示所需的状态，而无需开发大量的独立模板来表示更新。
 
@@ -33,11 +33,15 @@ ms.locfileid: "76165474"
 
     ![模板部署的比较](./media/overview/template-processing.png)
 
-* **内置验证**：只有在通过验证后才会部署模板。 资源管理器在开始部署之前会检查模板，以确保部署成功。 部署不太可能会在半完成状态时停止。
 
 * **模块化文件**：可将模板分解为较小的可重用组件，并在部署时将其链接到一起。 还可以在一个模板中嵌套另一个模板。
 
 * **创建任何 Azure 资源**：可以立即在模板中使用新的 Azure 服务和功能。 一旦资源提供程序引入了新资源，你就可以通过模板立即部署这些资源。 在使用新服务之前，无需等待工具或模块完成更新。
+
+    <!--Not Available on  [deployment scripts](deployment-script-template.md)-->
+* **测试**：可以使用 ARM 模板工具包 (arm-ttk) 对模板进行测试，确保模板符合建议的准则。 此测试工具包是一个 PowerShell 脚本，可从 [GitHub](https://github.com/Azure/arm-ttk) 下载。 使用此工具包，可以更轻松地使用模板语言开发专门技术。
+    <!--Not Available on [what-if operation](template-deploy-what-if.md)-->
+* **内置验证**：只有在通过验证后才会部署模板。 资源管理器在开始部署之前会检查模板，以确保部署成功。 部署不太可能会在半完成状态时停止。
 
 * **受跟踪的部署**：在 Azure 门户中，可以查看部署历史记录并获取有关模板部署的信息。 可以查看已部署的模板、已传入的参数值，以及任何输出值。 其他基础结构即代码服务不是通过门户跟踪的。
 
@@ -47,7 +51,7 @@ ms.locfileid: "76165474"
 
     <!--MOONCAKE: Not Available on * **Deployment Blueprints**: You can take advantage of [Blueprints](../governance/blueprints/overview.md)-->
     
-* **CI/CD 集成**：可以将模板集成到持续集成和持续部署 (CI/CD) 工具中，这些工具可以自动执行发布管道，以实现快速可靠的应用程序和基础结构更新。 通过 Azure DevOps 和资源管理器模板任务，可以使用 Azure Pipelines 持续构建和部署 Azure 资源管理器模板项目。 若要了解详细信息，请参阅[使用管道的 VS 项目](add-template-to-azure-pipelines.md)和[使用 Azure Pipelines 进行持续集成](template-tutorial-use-azure-pipelines.md)。
+* **CI/CD 集成**：可以将模板集成到持续集成和持续部署 (CI/CD) 工具中，这些工具可以自动执行发布管道，以实现快速可靠的应用程序和基础结构更新。 通过 Azure DevOps 和资源管理器模板任务，可以使用 Azure Pipelines 持续生成和部署 ARM 模板项目。 若要了解详细信息，请参阅[使用管道的 VS 项目](add-template-to-azure-pipelines.md)和[使用 Azure Pipelines 进行持续集成](template-tutorial-use-azure-pipelines.md)。
 
 * **可导出的代码**：可以通过导出资源组的当前状态或查看特定部署所用的模板，来获取现有资源组的模板。 查看[导出的模板](export-template-portal.md)是了解模板语法的有用方法。
 
@@ -123,8 +127,8 @@ REQUEST BODY
 
 ## <a name="next-steps"></a>后续步骤
 
-* 如果需要通过分步教程来了解创建模板的过程，请参阅[教程：创建和部署第一个 Azure 资源管理器模板](template-tutorial-create-first-template.md)。
-* 有关模板文件中的属性的详细信息，请参阅[了解 Azure 资源管理器模板的结构和语法](template-syntax.md)。
-* 若要了解如何导出模板，请参阅[快速入门：使用 Azure 门户创建和部署 Azure 资源管理器模板](quickstart-create-templates-use-the-portal.md)。
+* 如果需要通过分步教程来了解创建模板的过程，请参阅[教程：创建和部署第一个 ARM 模板](template-tutorial-create-first-template.md)。
+* 有关模板文件中的属性的信息，请参阅[了解 ARM 模板的结构和语法](template-syntax.md)。
+* 若要了解如何导出模板，请参阅[快速入门：使用 Azure 门户创建和部署 ARM 模板](quickstart-create-templates-use-the-portal.md)。
 
 <!-- Update_Description: update meta properties, wording update, update link -->

@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 origin.date: 11/15/2018
-ms.date: 02/10/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: 44c5684162ff983a261f67bc072b1016996a48aa
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: c0a51711dafa6f1ef670ad7d5081c745d4a02a2e
+ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77428284"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82596361"
 ---
 # <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>排查 Azure Windows 虚拟机激活问题
 
@@ -53,9 +53,9 @@ Azure 使用不同的终结点进行 KMS（密钥管理服务）激活，具体�
 ## <a name="solution"></a>解决方案
 
 >[!NOTE]
->如果使用的是站点到站点 VPN 和强制隧道，请参阅 [Use Azure custom routes to enable KMS activation with forced tunneling](https://blogs.msdn.com/b/mast/archive/2015/05/20/use-azure-custom-routes-to-enable-kms-activation-with-forced-tunneling.aspx)（使用 Azure 自定义路由通过强制隧道启用 KMS 激活）。 
+>如果使用的是站点到站点 VPN 和强制隧道，请参阅 [Use Azure custom routes to enable KMS activation with forced tunneling](/vpn-gateway/vpn-gateway-about-forced-tunneling)（使用 Azure 自定义路由通过强制隧道启用 KMS 激活）。 
 >
->如果使用的是 ExpressRoute 且已发布默认路由，请参阅 [Azure VM 可能无法通过 ExpressRoute 激活](https://blogs.msdn.com/b/mast/archive/2015/12/01/azure-vm-may-fail-to-activate-over-expressroute.aspx)。
+>如果使用的是 ExpressRoute 且已发布默认路由，请参阅[能否阻止与连接到 ExpressRoute 线路的虚拟网络建立 Internet 连接？](/expressroute/expressroute-faqs)。
 
 ### <a name="step-1-configure-the-appropriate-kms-client-setup-key"></a>步骤 1 配置相应的 KMS 客户端安装密钥
 
@@ -83,9 +83,7 @@ Azure 使用不同的终结点进行 KMS（密钥管理服务）激活，具体�
 
 ### <a name="step-2-verify-the-connectivity-between-the-vm-and-azure-kms-service"></a>第 2 步：验证 VM 与 Azure KMS 服务的连接
 
-1. 将 [PSping](http://technet.microsoft.com/sysinternals/jj729731.aspx) 工具下载并提取到未激活的 VM 中的本地文件夹。 
-    
-    <!-- URL is [PSping](http://technet.microsoft.com/sysinternals/jj729731.aspx)-->
+1. 将 [PSping](https://docs.microsoft.com/sysinternals/downloads/psping) 工具下载并提取到未激活的 VM 中的本地文件夹。 
 
 2. 转到“开始”，搜索 Windows PowerShell，右键单击 Windows PowerShell，再选择“以管理员身份运行”。
 
@@ -111,7 +109,9 @@ Azure 使用不同的终结点进行 KMS（密钥管理服务）激活，具体�
 
     另外，请确保到具有 1688 端口的 KMS 终结点的出站网络流量未被 VM 上的防火墙阻止。
 
-5. 验证成功连接到 kms.core.chinacloudapi.cn 后，在提升的 Windows PowerShell 提示符处运行以下命令。 此命令可多次尝试激活。
+5. 使用[网络观察程序下一跃点](/network-watcher/network-watcher-next-hop-overview)验证从相关 VM 到目标 IP 42.159.7.249（适用于kms.core.chinacloudapi.cn）或适用于你区域的相应 KMS 终结点的 IP 的下一跃点类型是否为“Internet”  。  如果结果为“VirtualAppliance”或“VirtualNetworkGateway”，则可能存在默认路由。  请与网络管理员联系并协作，以便确定正确的操作过程。  如果该解决方案与你组织的策略一致，则这可能是[自定义路由](/virtual-machines/troubleshooting/custom-routes-enable-kms-activation)。
+
+6. 验证成功连接到 kms.core.chinacloudapi.cn 后，在提升的 Windows PowerShell 提示符处运行以下命令。 此命令可多次尝试激活。
 
     ```powershell
     1..12 | ForEach-Object { Invoke-Expression "$env:windir\system32\cscript.exe $env:windir\system32\slmgr.vbs /ato" ; start-sleep 5 }

@@ -36,7 +36,7 @@ Pg_stat_statements 是 PostgreSQL 扩展，默认情况下在 Azure Database for
 Azure Database for PostgreSQL 中的[查询存储](concepts-query-store.md)功能提供了用于跟踪查询统计信息的更高效的方法。 建议使用此功能作为使用 pg_stats_statements 的替代方法  。 
 
 ## <a name="next-steps"></a>后续步骤
-请考虑在 `pg_stat_statements.track = NONE`Azure 门户[中或通过 ](howto-configure-server-parameters-using-portal.md)Azure CLI[ 来设置 ](howto-configure-server-parameters-using-cli.md)。
+请考虑在 [Azure 门户](howto-configure-server-parameters-using-portal.md)中或通过 [Azure CLI](howto-configure-server-parameters-using-cli.md) 来设置 `pg_stat_statements.track = NONE`。
 
 有关详细信息，请参阅： 
 - [Query Store 使用方案](concepts-query-store-scenarios.md) 

@@ -5,16 +5,16 @@ services: app-service\mobile
 author: conceptdev
 ms.service: app-service-mobile
 ms.topic: include
-origin.date: 05/06/2019
-ms.date: 12/16/2019
+origin.date: 04/15/2020
+ms.date: 04/20/2020
 ms.author: v-tawe
 ms.custom: include file
-ms.openlocfilehash: 20826fa969fb8b560543251a11bb83cfb97a33b6
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: f52fa57cc1693d70d431a9c4793f855368c5d656
+ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75334638"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82595250"
 ---
 1. 下载以下平台的客户端 SDK 快速入门：
     
@@ -70,23 +70,13 @@ ms.locfileid: "75334638"
    - **Node.js backend**
     
      若要使用 Node.js 快速入门应用，请按以下说明操作。
-
-     1. 在 Azure 门户中转到“简易表”即可看到以下屏幕。 
-      
-        ![Node 简易表](./media/app-service-mobile-configure-new-backend/node-easy-tables.png)
-
-     2. 确保已在“配置”选项卡中添加 SQL 连接字符串。  然后勾选“我已了解此操作会覆盖所有站点内容”框，并单击“创建 TodoItem 表”按钮   。
      
-        ![Node 简易表的“配置”](./media/app-service-mobile-configure-new-backend/node-easy-tables-configuration.png)
-
-     3. 在“简易表”中单击“+ 添加”按钮。  
-    
-        ![Node 简易表的“添加”按钮](./media/app-service-mobile-configure-new-backend/node-easy-tables-add.png)
-
-     4. 创建允许匿名访问的 `TodoItem` 表。
-      
-        ![Node 简易表的“添加表”](./media/app-service-mobile-configure-new-backend/node-easy-tables-table-add.png)
-
+        1. 创建新 API - 可以直接在 Azure 门户中进行更改，也可以在开发环境中以本地方式修改代码，然后将其发布到 Azure。 单击“`Development Tools`”菜单下的“`App Service Editor (Preview)`”即可获得应用代码的浏览器内编辑体验。
+        
+        2. 单击“`Go`”，待应用服务编辑器打开后，就可以完全控制源代码了。 假设已使用 npm install 命令安装了 express 和 azure-mobile-apps 包，请单击 WWWROOT 下的 api 文件夹以创建或编辑自定义 API。 对代码文件进行更改，所做的更改会自动保存。
+        
+        3. 可以完全控制用于存储应用程序数据的 Azure SQL 数据库。 可以轻松地在数据库中创建新表。
+ 
    - **.NET 后端**
     
         若要使用 .NET 快速入门应用，请按以下说明操作。
@@ -95,7 +85,7 @@ ms.locfileid: "75334638"
 
         2. 在 Visual Studio 中以本地方式生成 .NET 服务器项目。
 
-        3. 在 Visual Studio 中打开解决方案资源管理器，右键单击 `ZUMOAPPNAMEService` 项目，单击“发布”，  此时会出现“`Publish to App Service`”窗口。 如果在 Mac 上工作，请单击[此处](/app-service/deploy-local-git)了解部署应用的其他方式。
+        3. 在 Visual Studio 中打开解决方案资源管理器，右键单击 `ZUMOAPPNAMEService` 项目，单击“发布”，  此时会出现“`Publish to App Service`”窗口。 如果在 Mac 上工作，请单击[此处](https://docs.azure.cn/app-service/deploy-local-git)了解部署应用的其他方式。
         
            ![Visual Studio 发布](./media/app-service-mobile-configure-new-backend/visual-studio-publish.png)
 

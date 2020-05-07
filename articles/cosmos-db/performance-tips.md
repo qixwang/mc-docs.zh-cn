@@ -1,18 +1,18 @@
 ---
 title: 适用于 .NET 的 Azure Cosmos DB 性能提示
-description: 了解用于提高 Azure Cosmos 数据库性能的客户端配置选项
+description: 了解用于提高 Azure Cosmos DB 性能的客户端配置选项。
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 01/15/2020
-ms.date: 02/10/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: 0a31c9b503358983f7faaa951c1e60294054d6a0
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 40cd399310bf44573863d827502e8a3b71dab88c
+ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79291944"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82134588"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>适用于 Azure Cosmos DB 和 .NET 的性能提示
 
@@ -24,243 +24,279 @@ ms.locfileid: "79291944"
 
 Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供延迟与吞吐量保证的情况下无缝缩放。 凭借 Azure Cosmos DB，无需对体系结构进行重大更改或编写复杂的代码即可缩放数据库。 扩展和缩减操作就像执行单个 API 调用一样简单。 若要了解详细信息，请参阅[如何预配容器吞吐量](how-to-provision-container-throughput.md)或[如何预配数据库吞吐量](how-to-provision-database-throughput.md)。 但是，由于 Azure Cosmos DB 是通过网络调用访问的，因此，使用 [SQL .NET SDK](sql-api-sdk-dotnet-standard.md) 时可以通过进行客户端优化来获得最高性能。
 
-如果有“如何改善数据库性能？”的疑问， 请考虑以下选项：
+因此，如果你尝试改善数据库性能，请考虑以下选项：
+
+## <a name="hosting-recommendations"></a>托管方面的建议
+
+对于查询密集型工作负载，请使用 Windows 64 位主机处理，而不要使用 Linux 或 Windows 32 位主机处理 
+
+我们建议使用 Windows 64 位主机处理来改善性能。 SQL SDK 包含一个本机 ServiceInterop.dll，用于在本地分析和优化查询。 ServiceInterop.dll 仅在 Windows x64 平台上受支持。 对于不支持 ServiceInterop.dll 的 Linux 和其他平台，将对网关发出附加的网络调用以获取优化的查询。 以下类型的应用程序默认使用 32 位主机处理。 若要将主机处理更改为 64 位处理，请根据应用程序的类型执行以下步骤：
+
+- 对于可执行应用程序，可以在“项目属性”窗口中的“版本”选项卡上，通过将[平台目标](https://docs.microsoft.com/visualstudio/ide/how-to-configure-projects-to-target-platforms?view=vs-2019)设置为“x64”来更改主机处理。   
+
+- 对于基于 VSTest 的测试项目，可以通过在 Visual Studio“测试”菜单中选择“测试” > “测试设置” > “默认处理器体系结构为 X64”，来更改主机处理。    
+
+- 对于本地部署的 ASP.NET Web 应用程序，可以通过在“工具” > “选项” > “项目和解决方案” > “Web 项目”下选择“对网站和项目使用 IIS Express 的 64 位版”，来更改主机处理。     
+
+- 对于部署在 Azure 上的 ASP.NET Web 应用程序，可以通过在 Azure 门户上的“应用程序设置”中选择“64 位”平台，来更改主机处理。  
+
+> [!NOTE] 
+> 新的 Visual Studio 项目默认设置为“任何 CPU”。  我们建议将项目设置为“x64”，使其不会切换到“x86”。   如果添加了仅限 x86 的依赖项，则设置为“任何 CPU”的项目可以轻松切换到“x86”。  <br/>
+> ServiceInterop.dll 所处的文件夹必须是在其中执行 SDK DLL 的文件夹。 仅当你手动复制 DLL 或使用自定义的生成/部署系统时，此位置才是一个考虑因素。
+
+**启用服务器端垃圾回收 (GC)**
+
+在某些情况下，降低垃圾回收的频率可能会有帮助。 在 .NET 中，将 [gcServer](https://msdn.microsoft.com/library/ms229357.aspx) 设置为 `true`。
+
+**横向扩展客户端工作负载**
+
+如果以高吞吐量级别（大于 50,000 RU/秒）进行测试，客户端应用程序可能成为瓶颈，因为计算机的 CPU 或网络利用率将达到上限。 如果达到此上限，可以跨多个服务器横向扩展客户端应用程序以继续进一步推送 Azure Cosmos DB 帐户。
+
+> [!NOTE] 
+> CPU 使用率高可能会导致延迟增大和请求超时异常。
 
 ## <a name="networking"></a>网络
 <a name="direct-connection"></a>
 <a name="connection-protocol"></a>
 
-1. **连接策略：使用直接连接模式**
+**连接策略：使用直接连接模式**
 
-    客户端连接到 Azure Cosmos DB 的方式对性能有重大影响（尤其在观察到的客户端延迟方面）。 有两个重要配置设置可用于配置客户端连接策略 - 连接模式  和连接协议  。  两种可用模式：
+客户端连接到 Azure Cosmos DB 的方式对性能有重大影响，尤其是在观察到的客户端延迟方面。 可以使用这两个重要配置设置来配置客户端连接策略：连接模式  和连接协议  。  两种可用模式：
 
     * 网关模式
 
-        网关模式受所有 SDK 平台支持并已配置为 [Microsoft.Azure.DocumentDB SDK](sql-api-sdk-dotnet.md) 的默认设置。 如果应用程序在有严格防火墙限制的企业网络中运行，则网关模式是最佳选择，因为它使用标准 HTTPS 端口与单个终结点。 但是，对于性能的影响是每次在 Azure Cosmos DB 中读取或写入数据时，网关模式都涉及到额外的网络跃点。 因此，直接模式因为网络跃点较少，可以提供更好的性能。 在套接字连接数量有限的环境中运行应用程序时，也建议使用网关连接模式。 
+        网关模式受所有 SDK 平台支持并已配置为 [Microsoft.Azure.DocumentDB SDK](sql-api-sdk-dotnet.md) 的默认设置。 如果应用程序在有严格防火墙限制的企业网络中运行，则网关模式是最佳选择，因为它使用标准 HTTPS 端口与单个终结点。 但是，对于性能的影响是：每次在 Azure Cosmos DB 中读取或写入数据时，网关模式都涉及到额外的网络跃点。 因此，直接模式因为网络跃点较少，可以提供更好的性能。 在套接字连接数量有限的环境中运行应用程序时，我们也建议使用网关连接模式。
 
-        在 Azure Functions 中使用 SDK 时，尤其是在[消耗计划](../azure-functions/functions-scale.md#consumption-plan)中使用时，请注意当前的[连接限制](../azure-functions/manage-connections.md)。 这种情况下，如果还在 Azure Functions 应用程序中使用其他基于 HTTP 的客户端，则建议使用网关模式。
+        在 Azure Functions 中使用 SDK 时，尤其是在[消耗计划](../azure-functions/functions-scale.md#consumption-plan)中使用时，请注意当前的[连接限制](../azure-functions/manage-connections.md)。 这种情况下，如果还在 Azure Functions 应用程序中使用其他基于 HTTP 的客户端，则使用网关模式可能更好。
 
     * 直接模式
 
-        直接模式支持通过 TCP 协议进行连接，并且在使用 [Microsoft.Azure.Cosmos/.Net V3 SDK](sql-api-sdk-dotnet-standard.md) 的情况下是默认的连接模式。
+        直接模式支持通过 TCP 协议进行连接，在使用 [Microsoft.Azure.Cosmos/.NET V3 SDK](sql-api-sdk-dotnet-standard.md) 的情况下是默认的连接模式。
 
-        如果使用网关模式，Cosmos DB 在使用 Azure Cosmos DB 的 API for MongoDB 时使用端口 443 和端口 10250、10255 和 10256。 10250 端口映射到没有异地复制功能的默认 MongoDB 实例，10255/10256 端口映射到具有异地复制功能的 MongoDB 实例。 在直接模式下使用时 TCP 时，除了网关端口外，还需确保端口 10000 到 20000 范围之间的端口处于打开状态，因为 Azure Cosmos DB 使用动态 TCP 端口。 如果这些端口未处于打开状态，在尝试使用 TCP 时会收到“503 服务不可用”错误。 下表显示可用于不同 API 的连接模式以及每个 API 的服务端口用户：
+在网关模式下，当你使用 Azure Cosmos DB API for MongoDB 时，Azure Cosmos DB 会使用端口 443 以及端口 10250、10255 和 10256。 端口 10250 映射到没有异地复制功能的默认 MongoDB 实例。 端口 10255 和 10256 映射到具有异地复制功能的 MongoDB 实例。
 
-        |连接模式  |支持的协议  |支持的 SDK  |API/服务端口  |
-        |---------|---------|---------|---------|
-        |网关  |   HTTPS    |  所有 SDK    |   SQL(443)、Mongo(10250, 10255, 10256)、Table(443)、Cassandra(10350)、Graph(443)    |
-        |直接    |     TCP    |  .NET SDK    | 10,000-20,000 范围内的端口 |
+在直接模式下使用时 TCP 时，除了网关端口外，还需确保 10000 到 20000 这个范围的端口处于打开状态，因为 Azure Cosmos DB 使用动态 TCP 端口。 如果这些端口未处于打开状态，你会在尝试使用 TCP 时收到“503 服务不可用”错误。 下表显示了可用于各种 API 的连接模式，以及用于每个 API 的服务端口：
 
-         Azure Cosmos DB 提供基于 HTTPS 的简单开放 RESTful 编程模型。 此外，它提供高效的 TCP 协议，该协议在其通信模型中也是 RESTful，可通过 .NET 客户端 SDK 获得。 TCP 协议使用 SSL 进行初始身份验证以及加密通信。 为了获得最佳性能，请尽可能使用 TCP 协议。
+|连接模式  |支持的协议  |支持的 SDK  |API/服务端口  |
+|---------|---------|---------|---------|
+|网关  |   HTTPS    |  所有 SDK    |   SQL (443)、MongoDB（10250、10255、10256）、表 (443)、Cassandra (10350)、Graph (443)    |
+|直接    |     TCP    |  .NET SDK    | 10000 到 20000 范围内的端口 |
 
-         在 SDK V3 中，连接模式是在创建 CosmosClient 实例时配置的，作为 CosmosClientOptions 的一部分，请记住直接模式是默认模式。
+Azure Cosmos DB 提供基于 HTTPS 的简单开放 RESTful 编程模型。 此外，它提供高效的 TCP 协议，该协议在其通信模型中也是 RESTful，可通过 .NET 客户端 SDK 获得。 TCP 协议使用 TLS 来进行初始身份验证和加密通信。 为了获得最佳性能，请尽可能使用 TCP 协议。
+
+对于 SDK V3，可以在创建 `CosmosClient` 实例时在 `CosmosClientOptions` 中配置连接模式。 请记住，直接模式是默认设置。
         
-        <!--MOONCAKE: CORRECT ON "https://contoso.documents.azure.cn"-->
+<!--MOONCAKE: CORRECT ON "https://contoso.documents.azure.cn"-->
         
-        ```csharp
-        var serviceEndpoint = new Uri("https://contoso.documents.azure.cn");
-        var authKey = "your authKey from the Azure portal";
-        CosmosClient client = new CosmosClient(serviceEndpoint, authKey,
-        new CosmosClientOptions
-        {
-            ConnectionMode = ConnectionMode.Gateway // ConnectionMode.Direct is the default
-        });
-        ```
+```csharp
+var serviceEndpoint = new Uri("https://contoso.documents.azure.cn");
+var authKey = "your authKey from the Azure portal";
+CosmosClient client = new CosmosClient(serviceEndpoint, authKey,
+new CosmosClientOptions
+{
+    ConnectionMode = ConnectionMode.Gateway // ConnectionMode.Direct is the default
+});
+```
 
-        对于 Microsoft.Azure.DocumentDB SDK，连接模式在构造 DocumentClient 实例期间使用 ConnectionPolicy 参数配置。 如果使用直接模式，则也可以在 ConnectionPolicy 参数中设置协议。
+对于 Microsoft.Azure.DocumentDB SDK，可以在构造 `DocumentClient` 实例期间使用 `ConnectionPolicy` 参数配置连接模式。 如果使用直接模式，则也可以使用 `ConnectionPolicy` 参数设置 `Protocol`。
 
-        ```csharp
-        var serviceEndpoint = new Uri("https://contoso.documents.azure.cn");
-        var authKey = "your authKey from the Azure portal";
-        DocumentClient client = new DocumentClient(serviceEndpoint, authKey,
-        new ConnectionPolicy
-        {
-            ConnectionMode = ConnectionMode.Direct, //ConnectionMode.Gateway is the default
-            ConnectionProtocol = Protocol.Tcp
-        });
-        ```
+```csharp
+var serviceEndpoint = new Uri("https://contoso.documents.azure.cn");
+var authKey = "your authKey from the Azure portal";
+DocumentClient client = new DocumentClient(serviceEndpoint, authKey,
+new ConnectionPolicy
+{
+    ConnectionMode = ConnectionMode.Direct, //ConnectionMode.Gateway is the default
+    ConnectionProtocol = Protocol.Tcp
+});
+```
         
-        <!--MOONCAKE: CORRECT ON "https://contoso.documents.azure.cn"-->
+<!--MOONCAKE: CORRECT ON "https://contoso.documents.azure.cn"-->
         
-        由于只有直接模式支持 TCP，因此如果使用网关模式，HTTPS 协议始终用来与网关通信，并忽略 ConnectionPolicy 中的 Protocol 值。
+由于仅在直接模式下才支持 TCP，因此如果使用网关模式，则 HTTPS 协议始终用来与网关通信，并忽略 `ConnectionPolicy` 中的 `Protocol` 值。
 
-        ![Azure Cosmos DB 连接策略演示](./media/performance-tips/connection-policy.png)
+![Azure Cosmos DB 连接策略](./media/performance-tips/connection-policy.png)
 
-2. **调用 OpenAsync，以避免首次请求的启动延迟**
+**调用 OpenAsync 以避免首次请求时启动延迟**
 
-    默认情况下，第一个请求因为必须提取地址路由表而有较高的延迟。 使用 [SDK V2](sql-api-sdk-dotnet.md) 时，为了避免首次请求时的这种启动延迟，应该在初始化期间调用 OpenAsync() 一次，如下所示。
+默认情况下，第一个请求因为需要提取地址路由表而有较高的延迟。 使用 [SDK V2](sql-api-sdk-dotnet.md) 时，请在初始化期间调用 `OpenAsync()` 一次，以避免在首次请求时出现这种启动延迟：
 
-        await client.OpenAsync();
+    await client.OpenAsync();
 
-    > [!NOTE] 
-    > OpenAsync 方法会生成多个请求，这些请求用于获取帐户中所有容器的地址路由表。 如果帐户有多个容器，但其应用程序访问的是其中的一部分，则会产生不必要的流量，导致初始化速度慢。 因此，在这种情况下使用 OpenAsync 方法可能没有用，因为它会降低应用程序启动速度。
+> [!NOTE] 
+> `OpenAsync` 会生成多个请求，这些请求用于获取帐户中所有容器的地址路由表。 如果帐户有多个容器，但其应用程序访问的是其中的一部分，则 `OpenAsync` 会生成不必要数量的流量，导致初始化速度缓慢。 因此，在这种情况下使用 `OpenAsync` 可能不起作用，因为它会降低应用程序启动速度。
 
    <a name="same-region"></a>
-3. **性能的（位于相同的 Azure 区域内）并置客户端**
+**出于性能考虑，请将客户端并置在同一 Azure 区域中**
 
-    如果可能，请将任何调用 Azure Cosmos DB 的应用程序放在与 Azure Cosmos 数据库所在的相同区域中。  根据请求采用的路由，各项请求从客户端传递到 Azure 数据中心边界时的此类延迟可能有所不同。 通过确保在与预配 Azure Cosmos DB 终结点所在的同一 Azure 区域中调用应用程序，可能会实现最低的延迟。 有关可用区域的列表，请参阅[ Azure Regions（Azure 区域）](https://status.azure.com/status/)。
+<!--MOONCAKE: UPDATE but the latency between the East and North region of the China is more than dozens of ms.-->
+
+如果可能，请将任何调用 Azure Cosmos DB 的应用程序放在 Azure Cosmos DB 数据库所在的区域。 下面是大致的比较：在同一区域中对 Azure Cosmos DB 的调用可在 1 到 2 毫秒内完成，而中国东部和中国北部区域之间的延迟则超过了几十毫秒。 根据请求采用的路由，各项请求从客户端传递到 Azure 数据中心边界时的此类延迟可能有所不同。 确保调用应用程序位于预配的 Azure Cosmos DB 终结点所在的 Azure 区域即可尽可能降低延迟。 有关可用区域的列表，请参阅 [Azure 区域](https://status.azure.com/status/)。
     
-    <!--Not Available on time span between East to West coast-->
+<!--MOONCAKE: UPDATE but the latency between the East and North region of the China is more than dozens of ms.-->
     
-    ![Azure Cosmos DB 连接策略演示](./media/performance-tips/same-region.png)
-    
-    <a name="increase-threads"></a>
-4. **增加线程/任务数目**
+![Azure Cosmos DB 连接策略](./media/performance-tips/same-region.png)
 
-    由于对 Azure Cosmos DB 的调用是通过网络执行的，因此，可能需要改变请求的并行度，以便最大程度地减少客户端应用程序等待请求的时间。 例如，如果使用的是 .NET 的[任务并行库](https://msdn.microsoft.com//library/dd460717.aspx)，请创建大约数百个读取或写入 Azure Cosmos DB 的任务。
+<a name="increase-threads"></a>
 
-5. **启用加速网络**
+**增加线程/任务数目**
 
-    为了降低延迟和 CPU 抖动情况，建议为客户端虚拟机启用加速网络。 请参阅[创建具有加速网络的 Windows 虚拟机](../virtual-network/create-vm-accelerated-networking-powershell.md)或[创建具有加速网络的 Linux 虚拟机](../virtual-network/create-vm-accelerated-networking-cli.md)一文，了解如何启用加速网络。
+由于对 Azure Cosmos DB 的调用是通过网络执行的，因此可能需要改变请求的并行度，以便最大程度地减少客户端应用程序等待请求的时间。 例如，如果使用 .NET [任务并行库](https://msdn.microsoft.com//library/dd460717.aspx)，请创建大约数百个在 Azure Cosmos DB 中进行读取或写入操作的任务。
+
+**启用加速网络**
+
+ 为了降低延迟和 CPU 抖动情况，我们建议在客户端虚拟机上启用加速网络。 请参阅[创建具有加速网络的 Windows 虚拟机](../virtual-network/create-vm-accelerated-networking-powershell.md)或[创建具有加速网络的 Linux 虚拟机](../virtual-network/create-vm-accelerated-networking-cli.md)。
 
 ## <a name="sdk-usage"></a>SDK 用法
-1. **安装最新的 SDK**
+**安装最新的 SDK**
 
-    Azure Cosmos DB SDK 正在不断改进以提供最佳性能。 请参阅 [Azure Cosmos DB SDK](sql-api-sdk-dotnet-standard.md) 页以了解最新的 SDK 并查看改进内容。
+Azure Cosmos DB SDK 正在不断改进以提供最佳性能。 请参阅 [Azure Cosmos DB SDK](sql-api-sdk-dotnet-standard.md) 页以了解最新的 SDK 并查看改进内容。
 
-2. **使用流 API**
+**使用流 API**
 
-    [.Net SDK V3](sql-api-sdk-dotnet-standard.md) 包含的流 API 可以在不序列化的情况下接收和返回数据。 
+[.NET SDK V3](sql-api-sdk-dotnet-standard.md) 包含的流 API 可以在不序列化的情况下接收和返回数据。 
 
-    如果中层应用程序不直接使用 SDK 的响应，而是将其中继到其他应用程序层，则此类应用程序可以受益于流 API。 请参阅[项管理](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ItemManagement)示例，了解有关流处理的示例。
+如果中间层应用程序不直接使用 SDK 的响应，而是将其中继到其他应用程序层，则此类应用程序可以受益于流 API。 请参阅[项管理](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ItemManagement)示例，了解有关流处理的示例。
 
-3. **在应用程序生存期内使用单一实例 Azure Cosmos DB 客户端**
+**在应用程序生存期内使用单一实例 Azure Cosmos DB 客户端**
 
-    每个 DocumentClient 和 CosmosClient 实例都是线程安全的，在直接模式下运行时可执行高效的连接管理和地址缓存。 若要通过 SDK 客户端获得高效的连接管理和更好的性能，建议在应用程序生存期内对每个 AppDomain 使用单个实例。
+每个 `DocumentClient` 和 `CosmosClient` 实例都是线程安全的，在直接模式下运行时可执行高效的连接管理和地址缓存。 若要实现有效的连接管理和提高 SDK 客户端性能，建议在应用程序的生存期内对每个 `AppDomain` 使用单个实例。
 
-   <a name="max-connection"></a>
-4. **在使用“网关”模式时增加每台主机的 System.Net MaxConnections**
+<a name="max-connection"></a>
 
-    使用“网关”模式时，Azure Cosmos DB 请求是通过 HTTPS/REST 发出的，并且受制于每个主机名或 IP 地址的默认连接限制。 可能需要将 MaxConnections 设置为较大的值 (100-1000)，以便客户端库能够同时利用多个连接来访问 Azure Cosmos DB。 在 .NET SDK 1.8.0 和更高版本中，[ServicePointManager.DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit.aspx) 的默认值为 50，要更改此值，可将 [Documents.Client.ConnectionPolicy.MaxConnectionLimit](https://docs.azure.cn/dotnet/api/microsoft.azure.documents.client.connectionpolicy.maxconnectionlimit) 设置为更大的值。   
-5. **优化分区集合的并行查询。**
+**在使用网关模式时增加每台主机的 System.Net MaxConnections**
 
-    SQL .NET SDK 版本 1.9.0 和更高版本支持并行查询，使你能够并行查询分区集合。 有关详细信息，请参阅与使用这些 SDK 相关的[代码示例](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Queries/Program.cs)。 并行查询旨改善查询延迟和串行配对物上的吞吐量。 并行查询提供两个参数，用户可以调整来适应自身的需求 (a) MaxDegreeOfParallelism：控制并行中运行的最大分区数 (b) MaxBufferedItemCount：控制预提取结果的数量。
+使用网关模式时，Azure Cosmos DB 请求是通过 HTTPS/REST 发出的。 这些请求受制于每个主机名或 IP 地址的默认连接限制。 可能需要将 `MaxConnections` 设置为较大的值（100 到 1,000），以便客户端库能够同时使用多个连接来访问 Azure Cosmos DB。 在 .NET SDK 1.8.0 及更高版本中，[ServicePointManager.DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit.aspx) 的默认值为 50。 若要更改此值，可将 [Documents.Client.ConnectionPolicy.MaxConnectionLimit](https://docs.azure.cn/dotnet/api/microsoft.azure.documents.client.connectionpolicy.maxconnectionlimit) 设置为更大的值。
 
-    (a) ***优化并行度\:*** 并行查询通过查询并行中的多个分区来运行。 但就查询本身而言，会按顺序提取单个分区中的数据。 将 `MaxDegreeOfParallelism`SDK V2[ 中的 ](sql-api-sdk-dotnet.md) 或 `MaxConcurrency`SDK V3[ 中的 ](sql-api-sdk-dotnet-standard.md) 设置为分区数最有可能实现最高性能的查询，前提是其他所有系统条件保持不变。 如果不知道分区数，可以将并行度设置为较大的数字，让系统选择最小值（分区数、用户提供的输入值）作为并行度。
+**优化已分区集合的并行查询**
 
-    请务必注意：如果数据能均匀地分散在与查询相关的所有分区上，并行查询就能带来最大的好处。 如果对分区集合进行分区，其中全部或大部分查询所返回的数据集中于几个分区（最坏的情况下为一个分区），则这些分区将遇到查询的性能瓶颈。
+SQL .NET SDK 1.9.0 及更高版本支持并行查询，使你能够并行查询分区的集合。 有关详细信息，请参阅与使用这些 SDK 相关的[代码示例](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Queries/Program.cs)。 并行查询旨在提供更低的查询延迟，以及优于其对应的串行查询的吞吐量。 并行查询提供两个参数，你可以根据要求优化这些参数： 
+- `MaxDegreeOfParallelism` 控制可以并行查询的最大分区数。 
+- `MaxBufferedItemCount` 控制预提取的结果数。
 
-    (b) 优化MaxBufferedItemCount ***并行查询专用于在客户端处理结果的当前批处理时预提取结果。\:*** 预提取帮助改进查询中的的总体延迟。 MaxBufferedItemCount 是限制预提取结果数目的参数。 将 MaxBufferedItemCount 设置为预期返回的结果数（或较大的数字）使查询从预提取获得最大的好处。
+优化并行度
 
-    预提取的工作方式不因并行度而异，并且有一个单独的缓冲区用来存储所有分区的数据。  
-6. **打开服务器端 GC**
+并行查询的工作原理是并行查询多个分区。 但就查询本身而言，会按顺序提取单个分区中的数据。 将 [SDK V2](sql-api-sdk-dotnet.md) 中的 `MaxDegreeOfParallelism` 或 [SDK V3](sql-api-sdk-dotnet-standard.md) 中的 `MaxConcurrency` 设置为分区数最有可能实现最高性能的查询，前提是所有其他的系统条件保持不变。 如果不知道分区数，可将并行度设置为较大的数字。 系统会选择最小值（分区数、用户提供的输入）作为并行度。
 
-    在某些情况下，降低垃圾收集的频率可能会有帮助。 在 .NET 中，应将 [gcServer](https://msdn.microsoft.com/library/ms229357.aspx) 设置为 true。
-7. **按 RetryAfter 间隔实现退让**
+请注意，如果查询时数据均衡分布在所有分区之间，则并行查询的优势最大。 如果对已分区的集合进行分区，使查询返回的全部或大部分数据集中于几个分区（最坏的情况为一个分区），则这些分区会使查询性能出现瓶颈。
 
-    在性能测试期间，应该增加负载，直到系统对小部分请求进行限制为止。 如果受到限制，客户端应用程序应按照服务器指定的重试间隔在限制时退让。 遵循退让可确保最大程度地减少等待重试的时间。 重试策略支持包含在 SQL [.NET](sql-api-sdk-dotnet.md) 和 [Java](sql-api-sdk-java.md) 的 1.8.0 和更高版本、[Node.js](sql-api-sdk-node.md) 和 [Python](sql-api-sdk-python.md) 的 1.9.0 和更高版本以及所有受支持的 [.NET Core](sql-api-sdk-dotnet-core.md) SDK 版本中。 有关详细信息，请参阅 [RetryAfter](https://docs.azure.cn/dotnet/api/microsoft.azure.documents.documentclientexception.retryafter)。
+优化 MaxBufferedItemCount
 
-    使用 .NET SDK 1.19 版和更高版本时，存在一种机制来记录附加诊断信息和排查延迟问题，如以下示例所示。 可以记录具有较高读取延迟的请求的诊断字符串。 捕获的诊断字符串将帮助你了解观察到给定请求延迟 429 秒的次数。
-    ```csharp
-    ResourceResponse<Document> readDocument = await this.readClient.ReadDocumentAsync(oldDocuments[i].SelfLink);
-    readDocument.RequestDiagnosticsString 
-    ```
+并行查询设计为当客户端正在处理当前结果批时预提取结果。 这种预提取可帮助改善查询的总体延迟。 `MaxBufferedItemCount` 参数限制预提取的结果数。 将 `MaxBufferedItemCount` 设置为预期返回的结果数（或更大的数字）可让查询通过预提取获得最大优势。
 
-8. **增大客户端工作负荷**
+预提取的工作方式与并行度无关，使用一个单独的缓冲区来存储所有分区的数据。  
 
-    如果以高吞吐量级别（> 50,000 RU/秒）进行测试，客户端应用程序可能成为瓶颈，因为计算机的 CPU 或网络利用率将达到上限。 如果达到此上限，可以跨多个服务器横向扩展客户端应用程序以继续进一步推送 Azure Cosmos DB 帐户。
-9. **缓存较低读取延迟的文档 URI**
+**按 RetryAfter 间隔实现退让**
 
-    尽可能缓存文档 URI 以获得最佳读取性能。 创建资源时，必须定义逻辑才能缓存 resourceid。 基于 resourceid 的查找比基于名称的查找更快，因此缓存这些值可提高性能。 
+在性能测试期间，应该增加负载，直到系统对小部分请求进行限制为止。 如果请求受到限制，客户端应用程序应按照服务器指定的重试间隔在限制时退让。 允许退让可确保最大程度地减少等待重试的时间。 
+
+以下 SDK 提供重试策略支持：
+- [.NET SDK for SQL](sql-api-sdk-dotnet.md) 和 [Java SDK for SQL](sql-api-sdk-java.md) 的 1.8.0 版本及更高版本
+- [Node.js SDK for SQL](sql-api-sdk-node.md) 和 [Python SDK for SQL](sql-api-sdk-python.md) 的 1.9.0 版本及更高版本
+- [.NET Core](sql-api-sdk-dotnet-core.md) SDK 的所有受支持版本 
+
+有关详细信息，请参阅 [RetryAfter](https://docs.azure.cn/dotnet/api/microsoft.azure.documents.documentclientexception.retryafter)。
+
+在 .NET SDK 1.19 及更高版本中，有一个机制可以记录附加诊断信息和排查延迟问题，如以下示例中所示。 可以记录具有较高读取延迟的请求的诊断字符串。 捕获的诊断字符串可帮助你了解收到给定请求的 429 错误的次数。
+
+```csharp
+ResourceResponse<Document> readDocument = await this.readClient.ReadDocumentAsync(oldDocuments[i].SelfLink);
+readDocument.RequestDiagnosticsString 
+```
+
+**缓存较低读取延迟的文档 URI**
+
+尽可能缓存文档 URI 以获得最佳读取性能。 创建资源时，需要定义用于缓存资源 ID 的逻辑。 基于资源 ID 的查找比基于名称的查找更快，因此缓存这些值可提高性能。
 
    <a name="tune-page-size"></a>
-10. **调整查询/读取源的页面大小以获得更好的性能**
+**优化查询/读取源的页面大小以提高性能**
 
-    使用读取源功能（例如 ReadDocumentFeedAsync）执行批量文档读取，或发出 SQL 查询时，如果结果集太大，则会以分段方式返回结果。 默认情况下，以包括 100 个项的块或 1 MB 大小的块返回结果（以先达到的限制为准）。
+使用读取源功能（例如 `ReadDocumentFeedAsync`）对文档进行批量读取时，或发出 SQL 查询时，如果结果集太大，则会以分段方式返回结果。 默认情况下，以包括 100 个项的块或 1 MB 大小的块返回结果（以先达到的限制为准）。
 
-    若要减少检索所有适用结果所需的网络往返次数，可以使用 [x-ms-max-item-count](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) 请求标头将页面大小最大增加到 1000。 在只需要显示几个结果的情况下（例如，用户界面或应用程序 API 一次只返回 10 个结果），也可以将页面大小缩小为 10，以降低读取和查询所耗用的吞吐量。
+若要减少检索所有适用结果所需的网络往返次数，可以使用 [x-ms-max-item-count](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) 请求最多 1,000 个标头，以增加页面大小。 如果只需要显示几个结果（例如，用户界面或应用程序 API 一次只返回 10 个结果），也可以将页面大小减小到 10，以降低读取和查询所耗用的吞吐量。
 
-    > [!NOTE] 
-    > maxItemCount 属性不应仅用于分页目的。 它的主要用途是通过减少单个页面中返回的最大项数来提高查询性能。  
+> [!NOTE] 
+> `maxItemCount` 属性不应仅用于分页目的。 它的主要用途是通过减少单个页面中返回的最大项数来提高查询性能。  
 
-    也可以使用可用的 Azure Cosmos DB SDK 设置页面大小。 FeedOptions 中的 [MaxItemCount](https://docs.azure.cn/dotnet/api/microsoft.azure.documents.client.feedoptions.maxitemcount?view=azure-dotnet) 属性允许你设置要在枚举操作中返回的最大项数。 当 `maxItemCount` 设置为 -1 时，SDK 会根据文档大小自动查找最佳值。 例如：
+也可以使用提供的 Azure Cosmos DB SDK 设置页面大小。 `FeedOptions` 中的 [MaxItemCount](https://docs.azure.cn/dotnet/api/microsoft.azure.documents.client.feedoptions.maxitemcount?view=azure-dotnet) 属性允许你设置要在枚举操作中返回的最大项数。 当 `maxItemCount` 设置为 -1 时，SDK 会根据文档大小自动查找最佳值。 例如：
 
-    ```csharp
-    IQueryable<dynamic> authorResults = client.CreateDocumentQuery(documentCollection.SelfLink, "SELECT p.Author FROM Pages p WHERE p.Title = 'About Seattle'", new FeedOptions { MaxItemCount = 1000 });
-    ```
+```csharp
+IQueryable<dynamic> authorResults = client.CreateDocumentQuery(documentCollection.SelfLink, "SELECT p.Author FROM Pages p WHERE p.Title = 'About Seattle'", new FeedOptions { MaxItemCount = 1000 });
+```
 
-    执行查询时，结果数据在 TCP 数据包中发送。 如果为 `maxItemCount` 指定的值太低，则在 TCP 数据包中发送数据所需的往返次数很高，这会影响性能。 因此，如果你不确定要为 `maxItemCount` 属性设置什么值，最好将其设置为 -1，然后让 SDK 选择默认值。 
+执行查询时，结果数据在 TCP 数据包中发送。 如果为 `maxItemCount` 指定的值太低，则在 TCP 数据包中发送数据所需的往返次数很高，这会影响性能。 因此，如果你不确定要为 `maxItemCount` 属性设置什么值，最好将其设置为 -1，让 SDK 选择默认值。
 
-11. **增加线程/任务数目**
+**增加线程/任务数目**
 
-    请参阅“网络”部分中的[增加线程/任务数目](#increase-threads)。
-
-12. **使用 64 位主机进程**
-
-    在使用 SQL .NET SDK 1.11.4 及更高版本时，SQL SDK 可以在 32 位的主机进程中运行。 但是，如果使用跨分区查询，建议使用 64 位主机进程来提高性能。 以下类型的应用程序默认为 32 位主机进程，为了将其更改为 64 位，请根据应用程序类型执行以下步骤：
-
-    - 对于可执行应用程序，在“生成”  选项卡的“项目属性”  窗口中，通过取消“首选 32 位”  选项可实现以上目的。
-
-    - 对于基于 VSTest 的测试项目，可通过从“Visual Studio 测试”  菜单选项中选择“测试”->  “测试设置”->  “默认处理器体系结构为 X64”  来完成。
-
-    - 对于本地部署的 ASP.NET Web 应用程序，可以通过在“工具” **“选项”** “项目和解决方案” **“Web 项目”下勾选“对网站和项目使用 IIS Express 的 64 位版”来完成。** ->  ->  -> 
-
-    - 对于部署在 Azure 上的 ASP.NET Web 应用程序，可以通过在 Azure 门户上的“应用程序设置”  中选择“64 位平台”  来完成。
+请参阅本文“网络”部分中的[增加线程/任务数目](#increase-threads)。
 
 ## <a name="indexing-policy"></a>索引策略
 
-1. **从索引中排除未使用的路径以加快写入速度**
+**从索引中排除未使用的路径以加快写入速度**
 
-    Cosmos DB 的索引策略还允许使用索引路径（IndexingPolicy.IncludedPaths 和 IndexingPolicy.ExcludedPaths）指定要在索引中包括或排除的文档路径。 在事先知道查询模式的方案中，使用索引路径可改善写入性能并降低索引存储空间，因为索引成本与索引的唯一路径数目直接相关。  例如，以下代码演示如何使用“*”通配符从索引中排除整个文档部分（子树）。
+Azure Cosmos DB 的索引策略还允许使用索引路径（IndexingPolicy.IncludedPaths 和 IndexingPolicy.ExcludedPaths）指定要在索引中包括或排除的文档路径。 在事先已知查询模式的情况下，索引路径可以提高写入性能并减少索引存储。 这是因为，索引成本与已编制索引的唯一路径数目直接相关。 例如，以下代码演示如何使用“*”通配符从索引中排除文档的一整个部分（子树）：
 
-    ```csharp
-    var collection = new DocumentCollection { Id = "excludedPathCollection" };
-    collection.IndexingPolicy.IncludedPaths.Add(new IncludedPath { Path = "/*" });
-    collection.IndexingPolicy.ExcludedPaths.Add(new ExcludedPath { Path = "/nonIndexedContent/*");
-    collection = await client.CreateDocumentCollectionAsync(UriFactory.CreateDatabaseUri("db"), excluded);
-    ```
+```csharp
+var collection = new DocumentCollection { Id = "excludedPathCollection" };
+collection.IndexingPolicy.IncludedPaths.Add(new IncludedPath { Path = "/*" });
+collection.IndexingPolicy.ExcludedPaths.Add(new ExcludedPath { Path = "/nonIndexedContent/*");
+collection = await client.CreateDocumentCollectionAsync(UriFactory.CreateDatabaseUri("db"), excluded);
+```
 
-    有关详细信息，请参阅 [Azure Cosmos DB 索引策略](index-policy.md)。
+有关索引的详细信息，请参阅 [Azure Cosmos DB 索引策略](index-policy.md)。
 
 ## <a name="throughput"></a>吞吐量
 <a name="measure-rus"></a>
 
-1. **测量和优化较低的每秒请求单位使用量**
+**度量并优化较低的每秒请求单位使用量**
 
-    Azure Cosmos DB 提供一组丰富的数据库操作，包括 UDF 的关系和层次查询，存储过程和触发器 - 所有这些都是对数据库集合内的文档进行的操作。 与这些操作关联的成本取决于完成操作所需的 CPU、IO 和内存。 与考虑和管理硬件资源不同的是，可以考虑将请求单位 (RU) 作为所需资源的单个措施，以执行各种数据库操作和服务应用程序请求。
+Azure Cosmos DB 提供一组丰富的数据库操作。 这些操作包括 UDF 的关系和分层查询、存储过程和触发器，全都在数据库集合中的文档上进行。 与其中每个操作关联的成本取决于完成该操作所需的 CPU、IO 和内存。 可以将请求单位 (RU) 视为执行各种数据库操作和处理应用程序请求所需的资源的单一度量，无需考虑和管理硬件资源。
 
-    吞吐量是基于为每个容器设置的[请求单位](request-units.md)数量预配的。 请求单位消耗以每秒速率评估。 如果应用程序的速率超过了为其容器预配的请求单位速率，则会受到限制，直到该速率降到容器的预配级别以下。 如果应用程序需要较高级别的吞吐量，可以通过预配更多请求单位来增加吞吐量。 
+吞吐量的预配取决于为每个容器设置的[请求单位](request-units.md)数。 请求单位消耗以每秒速率进行评估。 如果应用程序的速率超过了为其容器预配的请求单位速率，则会受到限制，直到该速率降到容器的预配级别以下。 如果应用程序需要较高级别的吞吐量，可以通过预配更多请求单位来增加吞吐量。
 
-    查询的复杂性会影响操作使用的请求单位数量。 谓词数、谓词性质、UDF 数目和源数据集的大小都会影响查询操作的成本。
+查询的复杂性会影响操作消耗的请求单位数量。 谓词数、谓词性质、UDF 数目和源数据集的大小都会影响查询操作的成本。
 
-    若要度量任何操作（创建、更新或删除）的开销，请检查 [x-ms-request-charge](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) 标头（或 .NET SDK 中 ResourceResponse\<T> 或 FeedResponse\<T> 中等效的 RequestCharge 属性）来度量这些操作占用的请求单位数。
+若要度量任一操作（创建、更新或删除）的开销，请检查 [x-ms-request-charge](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) 标头（或者 .NET SDK 的 `ResourceResponse\<T>` 或 `FeedResponse\<T>` 中的等效 `RequestCharge` 属性），以度量这些操作消耗的请求单位数：
 
-    ```csharp
-    // Measure the performance (request units) of writes
-    ResourceResponse<Document> response = await client.CreateDocumentAsync(collectionSelfLink, myDocument);
-    Console.WriteLine("Insert of document consumed {0} request units", response.RequestCharge);
-    // Measure the performance (request units) of queries
-    IDocumentQuery<dynamic> queryable = client.CreateDocumentQuery(collectionSelfLink, queryString).AsDocumentQuery();
-    while (queryable.HasMoreResults)
-         {
-              FeedResponse<dynamic> queryResponse = await queryable.ExecuteNextAsync<dynamic>();
-              Console.WriteLine("Query batch consumed {0} request units", queryResponse.RequestCharge);
-         }
-    ```             
+```csharp
+// Measure the performance (Request Units) of writes
+ResourceResponse<Document> response = await client.CreateDocumentAsync(collectionSelfLink, myDocument);
+Console.WriteLine("Insert of document consumed {0} request units", response.RequestCharge);
+// Measure the performance (Request Units) of queries
+IDocumentQuery<dynamic> queryable = client.CreateDocumentQuery(collectionSelfLink, queryString).AsDocumentQuery();
+while (queryable.HasMoreResults)
+    {
+        FeedResponse<dynamic> queryResponse = await queryable.ExecuteNextAsync<dynamic>();
+        Console.WriteLine("Query batch consumed {0} request units", queryResponse.RequestCharge);
+    }
+```             
 
-    在此标头中返回的请求费用是预配吞吐量的一小部分（即 2000 RU/秒）。 例如，如果上述查询返回 1000 个 1KB 文档，则操作开销为 1000。 因此在一秒内，服务器在对后续请求进行速率限制之前，只接受两个此类请求。 有关详细信息，请参阅[请求单位](request-units.md)和[请求单位计算器](https://www.documentdb.com/capacityplanner)。
-    
+在此标头中返回的请求费用是已预配吞吐量（即 2,000 RU/秒）的一小部分。 例如，如果上述查询返回 1,000 个 1-KB 的文档，则操作成本是 1,000。 因此，在一秒内，服务器在对后续请求进行速率限制之前只接受两个此类请求。 有关详细信息，请参阅[请求单位](request-units.md)和[请求单位计算器](https://www.documentdb.com/capacityplanner)。
 <a name="429"></a>
-2. **处理速率限制/请求速率太大**
 
-    当客户端尝试超过帐户保留的吞吐量时，服务器的性能不会降低，并且不使用超过保留级别的吞吐量容量。 服务器将抢先结束 RequestRateTooLarge（HTTP 状态代码 429）的请求并返回 [x-ms-retry-after-ms](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) 标头，该标头指示重新尝试请求前用户必须等待的时间量（以毫秒为单位）。
+**处理速率限制/请求速率太大**
 
-        HTTP Status 429,
-        Status Line: RequestRateTooLarge
-        x-ms-retry-after-ms :100
+客户端尝试超过为帐户保留的吞吐量时，服务器的性能不会降低，并且不会使用超过保留级别的吞吐量容量。 服务器会提前结束请求并返回 RequestRateTooLarge（HTTP 状态代码 429）错误。 它会返回 [x-ms-retry-after-ms](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) 标头，指示重试该请求之前用户必须等待的时间（以毫秒为单位）。
 
-    SDK 全部都会隐式捕获此响应，并遵循服务器指定的 retry-after 标头，并重试请求。 除非多个客户端同时访问帐户，否则下次重试就会成功。
+    HTTP Status 429,
+    Status Line: RequestRateTooLarge
+    x-ms-retry-after-ms :100
 
-    如果存在多个高于请求速率的请求操作，则客户端当前在内部设置为 9 的默认重试计数可能无法满足需要；在此情况下，客户端就会向应用程序引发 DocumentClientException，其状态代码为 429。 可以通过在 ConnectionPolicy 实例上设置 RetryOptions 来更改默认重试计数。 默认情况下，如果请求继续以高于请求速率的方式运行，则在 30 秒的累积等待时间后将返回 DocumentClientException 和状态代码 429。 即使当前的重试计数小于最大重试计数（默认值 9 或用户定义的值），也会发生这种情况。
+SDK 全部都会隐式捕获此响应，并遵循服务器指定的 retry-after 标头，并重试请求。 除非多个客户端同时访问帐户，否则下次重试就会成功。
 
-    尽管自动重试行为有助于改善大多数应用程序的复原能力和可用性，但是在执行性能基准测试时可能会造成冲突（尤其是在测量延迟时）。  如果实验达到服务器限制并导致客户端 SDK 静默重试，则客户端观测到的延迟会剧增。 若要避免性能实验期间出现延迟高峰，可以测量每个操作返回的费用，并确保请求以低于保留请求速率的方式运行。 有关详细信息，请参阅[请求单位](request-units.md)。
-3. **针对小型文档进行设计以提高吞吐量**
+如果累计有多个客户端持续在超过请求速率的情况下运行，则当前由客户端在内部设置为 9 的默认重试计数可能并不足够。 在此情况下，客户端会向应用程序引发 DocumentClientException，其状态代码为 429。 
 
-    给定操作的请求费用（即请求处理成本）与文档大小直接相关。 大型文档的操作成本高于小型文档的操作成本。
+可以通过在 `ConnectionPolicy` 实例上设置 `RetryOptions` 来更改默认重试计数。 默认情况下，如果请求继续以高于请求速率的方式运行，则在 30 秒的累积等待时间后返回 DocumentClientException 和状态代码 429。 即使当前的重试计数小于最大重试计数（无论当前值是默认值 9 还是用户定义的值），也会返回此错误。
+
+自动重试行为有助于改善大多数应用程序的复原能力和可用性。 但是，在执行性能基准测试时（尤其是在度量延迟时），自动重试可能不是最佳行为。 如果实验达到服务器限制并导致客户端 SDK 静默重试，则客户端观测到的延迟会剧增。 若要避免性能实验期间出现延迟高峰，可以测量每个操作返回的费用，并确保请求以低于保留请求速率的方式运行。 有关详细信息，请参阅[请求单位](request-units.md)。
+
+**针对较小文档进行设计以提高吞吐量**
+
+给定操作的请求费用（即请求处理成本）与文档大小直接相关。 大型文档的操作成本高于小型文档的操作成本。
 
 ## <a name="next-steps"></a>后续步骤
-有关用于评估 Azure Cosmos DB 以在少量客户端计算机上实现高性能的示例应用程序，请参阅[执行 Azure Cosmos DB 缩放和性能测试](performance-testing.md)。
+如果需要使用一个示例应用程序来评估 Azure Cosmos DB，以便在数个客户端计算机上实现高性能方案，请参阅[使用 Azure Cosmos DB 进行性能和缩放测试](performance-testing.md)。
 
-此外，若要了解如何设计应用程序以实现缩放和高性能的详细信息，请参阅 [Azure Cosmos DB 中的分区和缩放](partition-data.md)。
+若要深入了解如何设计应用程序以实现缩放和高性能，请参阅 [Azure Cosmos DB 中的分区和缩放](partition-data.md)。
 
-<!--Update_Description: update meta properties, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

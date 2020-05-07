@@ -1,21 +1,20 @@
 ---
-title: 使用 PowerShell 进行 SSL 卸载 - Azure 应用程序网关
-description: 本文提供有关使用 Azure 经典部署模型创建支持 SSL 卸载的应用程序网关的说明
+title: 使用 PowerShell 进行 TLS 卸载 - Azure 应用程序网关
+description: 本文说明了如何使用 Azure 经典部署模型创建支持 TLS 卸载的应用程序网关
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-origin.date: 11/13/2019
-ms.date: 11/21/2019
+ms.date: 04/26/2020
 ms.author: v-junlch
-ms.openlocfilehash: e3f3403f3864dee9233c6133cdbada36a0f645c3
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 4672c5508af99f7f37962eaa5cc702395aa216d2
+ms.sourcegitcommit: e3512c5c2bbe61704d5c8cbba74efd56bfe91927
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74327138"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82267635"
 ---
-# <a name="configure-an-application-gateway-for-ssl-offload-by-using-the-classic-deployment-model"></a>使用经典部署模型配置应用程序网关以进行 SSL 卸载
+# <a name="configure-an-application-gateway-for-tls-offload-by-using-the-classic-deployment-model"></a>使用经典部署模型配置应用程序网关以进行 TLS 卸载
 
 > [!div class="op_single_selector"]
 > * [Azure 门户](application-gateway-ssl-portal.md)
@@ -23,7 +22,7 @@ ms.locfileid: "74327138"
 > * [Azure 经典 PowerShell](application-gateway-ssl.md)
 > * [Azure CLI](application-gateway-ssl-cli.md)
 
-可将 Azure 应用程序网关配置为在网关上终止安全套接字层 (SSL) 会话，以避免 Web 场中出现开销较高的 SSL 解密任务。 SSL 卸载还简化了 Web 应用程序的前端服务器设置与管理。
+可以将 Azure 应用程序网关配置为终止网关上的传输层安全性（TLS，以前称为安全套接字层 (SSL)）会话，避免在 Web 场上执行代价高昂的 TLS 解密任务。 TLS 卸载还简化了 Web 应用程序的前端服务器设置与管理。
 
 ## <a name="before-you-begin"></a>准备阶段
 
@@ -31,10 +30,10 @@ ms.locfileid: "74327138"
 2. 请确认已创建包含有效子网、可正常运行的虚拟网络。 请确保没有虚拟机或云部署正在使用子网。 应用程序网关必须单独位于虚拟网络子网中。
 3. 必须存在配置为使用应用程序网关的服务器，或者必须在虚拟网络中为其创建终结点，或者必须为其分配公共 IP 地址或虚拟 IP 地址 (VIP)。
 
-若要在应用程序网关上配置 SSL 卸载，请按所列顺序完成以下步骤：
+若要在应用程序网关上配置 TLS 卸载，请按所列顺序完成以下步骤：
 
 1. [创建应用程序网关](#create-an-application-gateway)
-2. [上传 SSL 证书](#upload-ssl-certificates)
+2. [上传 TLS/SSL 证书](#upload-tlsssl-certificates)
 3. [配置网关](#configure-the-gateway)
 4. [设置网关配置](#set-the-gateway-configuration)
 5. [启动网关](#start-the-gateway)
@@ -56,7 +55,7 @@ New-AzureApplicationGateway -Name AppGwTest -VnetName testvnet1 -Subnets @("Subn
 Get-AzureApplicationGateway AppGwTest
 ```
 
-## <a name="upload-ssl-certificates"></a>上传 SSL 证书
+## <a name="upload-tlsssl-certificates"></a>上传 TLS/SSL 证书
 
 输入 `Add-AzureApplicationGatewaySslCertificate` 将 PFX 格式的服务器证书上传到应用程序网关。 证书名称是用户选择的名称，在应用程序网关中必须唯一。 在应用程序网关上执行所有证书管理操作时，按此名称引用此证书。
 
@@ -96,12 +95,12 @@ State..........: Provisioned
 * **后端服务器池**：后端服务器的 IP 地址列表。 列出的 IP 地址应属于虚拟网络子网，或者是公共 IP 或 VIP 地址。
 * **后端服务器池设置**：每个池具有端口、协议和基于 Cookie 的相关性等设置。 这些设置绑定到池，并会应用到池中的所有服务器。
 * **前端端口**：此端口是应用程序网关上打开的公共端口。 流量将抵达此端口，并重定向到后端服务器之一。
-* **侦听器**：侦听器具有前端端口、协议（Http 或 Https；这些值区分大小写）和 SSL 证书名称（如果要配置 SSL 卸载）。
+* **侦听器**：侦听器具有前端端口、协议（Http 或 Https；这些值区分大小写）和 TLS/SSL 证书名称（如果配置 TLS 卸载）。
 * **规则**：规则会绑定侦听器和后端服务器池，并定义当流量抵达特定侦听器时要将流量定向到的后端服务器池。 目前仅支持 *基本* 规则。 *基本* 规则是一种轮循负载分发模式。
 
 **其他配置说明**
 
-对于 SSL 证书配置，HttpListener 中的协议应更改为 Https（区分大小写）   。 需要将“SslCert”  元素添加到“HttpListener”  ，其值设置为[上传 SSL 证书](#upload-ssl-certificates)部分中使用的名称。 前端端口应更新为 443  。
+对于 TLS/SSL 证书配置，HttpListener 中的协议应更改为“Https”（区分大小写）   。 需要将“SslCert”  元素添加到“HttpListener”  ，其值设置为[上传 TLS/SSL 证书](#upload-tlsssl-certificates)部分中使用的名称。 前端端口应更新为 443  。
 
 **启用基于 Cookie 的相关性**：可以配置应用程序网关，以确保来自客户端会话的请求始终被定向到 Web 场中的同一 VM。 这种情况可通过插入允许网关适当定向流量的会话 Cookie 实现。 若要启用基于 Cookie 的相关性，请在 BackendHttpSettings 元素中将 CookieBasedAffinity 设置为 Enabled    。
 
@@ -206,4 +205,3 @@ DnsName       : appgw-4c960426-d1e6-4aae-8670-81fd7a519a43.chinacloudapp.cn
 * [Azure 负载均衡器](https://www.azure.cn/home/features/load-balancer/)
 * [Azure 流量管理器](https://www.azure.cn/home/features/traffic-manager/)
 
-<!-- Update_Description: wording update -->

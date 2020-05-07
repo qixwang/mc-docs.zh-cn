@@ -13,15 +13,15 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 origin.date: 03/23/2018
-ms.date: 10/14/2019
+ms.date: 04/27/2020
 ms.author: v-yeche
 ms.reviewer: jroth
-ms.openlocfilehash: 447e91bfaa396b8f13c9bd4d2184814dc34d7ebd
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 7e0102ad4ce85d54017efd4d1d230e6497730c91
+ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "72272812"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82596393"
 ---
 # <a name="security-considerations-for-sql-server-in-azure-virtual-machines"></a>Azure 虚拟机中 SQL Server 的安全注意事项
 
@@ -61,6 +61,10 @@ Azure 遵守多个行业法规和标准，使用户能够使用虚拟机中运�
 
 最后，考虑为 Azure 虚拟机中的 SQL Server 数据库引擎实例启用加密连接。 使用签名证书配置 SQL Server 实例。 有关详细信息，请参阅[启用到数据库引擎的加密连接](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine)和[连接字符串语法](https://msdn.microsoft.com/library/ms254500.aspx)。
 
+## <a name="encryption"></a>Encryption
+
+托管磁盘提供服务器端加密和 Azure 磁盘加密。 [服务器端加密](/virtual-machines/windows/disk-encryption)提供静态加密并保护数据，让你的组织能够信守安全性与合规性方面所做的承诺。 [Azure 磁盘加密](/security/fundamentals/azure-disk-encryption-vms-vmss)使用 Bitlocker 或 DM-Crypt 技术，并与 Azure Key Vault 集成，以便对 OS 和数据磁盘进行加密。 
+
 ## <a name="use-a-non-default-port"></a>使用非默认端口
 
 默认情况下，SQL Server 侦听已知端口 1433。 为了提高安全性，请将 SQL Server 配置为侦听 1401 等非默认端口。 如果在 Azure 门户中配置 SQL Server 库映像，则可在“SQL Server 设置”  边栏选项卡中指定此端口。
@@ -90,7 +94,7 @@ SQL Server 侦听非默认端口时，必须在连接时指定该端口。 例�
 
 希望攻击者难以猜测帐户名或密码。 使用以下技巧会有所帮助：
 
-- 创建一个唯一的本地管理员帐户，不要命名为 **Administrator**。
+- 创建一个唯一的本地管理员帐户，不要将其命名为“Administrator”  。
 
 - 对所有帐户使用复杂的强密码。 若要深入了解如何创建强密码，请参阅[创建强密码](https://support.microsoft.com/instantanswers/9bd5223b-efbe-aa95-b15a-2fb37bef637d/create-a-strong-password)一文。
 
@@ -103,9 +107,13 @@ SQL Server 侦听非默认端口时，必须在连接时指定该端口。 例�
 
     - 如果必须使用 SA  登录名，请在预配后启用该登录名，并分配新的强密码。
 
-## <a name="follow-on-premises-best-practices"></a>遵循本地最佳做法进行操作
+## <a name="additional-best-practices"></a>其他最佳做法
 
-除了本主题中描述的做法之外，建议在适用的情况下查看和实施传统的本地安全操作。 有关详细信息，请参阅[安装 SQL Server 的安全注意事项](https://docs.microsoft.com/sql/sql-server/install/security-considerations-for-a-sql-server-installation)
+除了本主题所述做法外，建议你在借鉴传统本地安全做法和虚拟机安全最佳做法的基础上回顾并实施安全最佳做法。 
+
+有关本地安全做法的详细信息，请参阅 [SQL Server 安装的安全注意事项](https://docs.microsoft.com/sql/sql-server/install/security-considerations-for-a-sql-server-installation)和[安全中心](https://docs.microsoft.com/sql/relational-databases/security/security-center-for-sql-server-database-engine-and-azure-sql-database)。 
+
+有关虚拟机安全性的详细信息，请参阅[虚拟机安全性概述](/security/fundamentals/virtual-machines-overview)。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -113,4 +121,4 @@ SQL Server 侦听非默认端口时，必须在连接时指定该端口。 例�
 
 若要了解与在 Azure VM 中运行 SQL Server 相关的其他主题，请参阅 [Azure 虚拟机上的 SQL Server 概述](virtual-machines-windows-sql-server-iaas-overview.md)。 如果对 SQL Server 虚拟机有任何疑问，请参阅[常见问题解答](virtual-machines-windows-sql-server-iaas-faq.md)。
 
-<!-- Update_Description: wording update, update meta properties -->
+<!-- Update_Description: update meta properties, wording update, update link -->

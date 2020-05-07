@@ -4,17 +4,17 @@ description: 将 Azure IoT Edge 用作可处理来自下游设备的消息的透
 author: kgremban
 manager: philmea
 ms.author: v-tawe
-origin.date: 11/30/2019
-ms.date: 03/30/2020
+origin.date: 04/03/2019
+ms.date: 04/20/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 37f42ef2e9d1de16225274c45f554239bd9fb9e5
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 9563a92d9e0936e7130af8e934d9b922e5ed37a2
+ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80586754"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82588782"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>将 IoT Edge 设备配置为充当透明网关
 
@@ -43,11 +43,11 @@ ms.locfileid: "80586754"
 >[!NOTE]
 >在整篇文章中使用的术语“根 CA”是指 PKI 证书链最顶层的颁发机构公共证书，而不一定是联合证书颁发机构的证书根。 在许多情况下，它实际上是中间 CA 公共证书。
 
-网关在连接启动期间向下游设备出示其 IoT Edge 设备 CA 证书。 下游设备检查以确保 IoT Edge 设备 CA 证书由根 CA 证书签名。 此过程允许下游设备确认网关是否来自受信任的源。
+IoT Edge 安全守护程序使用 IoT Edge 设备 CA 证书为工作负载 CA 证书签名，而工作负载 CA 证书又为 IoT Edge 中心的服务器证书签名。 在连接启动期间，网关将其服务器证书提供给下游设备。 下游设备将进行检查，确保服务器证书是汇总到根 CA 证书的证书链的一部分。 此过程允许下游设备确认网关是否来自受信任的源。 有关详细信息，请参阅[了解 Azure IoT Edge 如何使用证书](iot-edge-certs.md)。
 
 以下步骤将演示创建证书并将它们安装在网关上的正确位置的过程。 可以使用任一计算机生成证书，然后将其复制到 IoT Edge 设备。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 配置了[生产证书](how-to-manage-device-certificates.md)的 Azure IoT Edge 设备。
 
@@ -67,7 +67,7 @@ IoT Edge 中心负责接收来自下游设备的传入消息，并将它们路�
 
 3. 选择“设置模块”  。
 
-4. 选择“**下一页**”。
+4. 选择“**下一步**”。
 
 5. 在“指定路由”页中，应有一个默认路由可将来自所有模块的所有消息发送到 IoT 中心。  如果没有，请添加以下代码，然后选择“下一步”。 
 
@@ -116,7 +116,7 @@ IoT Edge 运行时可以像模块发送的消息一样路由从下游设备发�
 
 从 IoT Edge 运行时 [v1.0.4 版本](https://github.com/Azure/azure-iotedge/releases/tag/1.0.4)开始，可配置网关设备和与之连接的下游设备，以处理扩展脱机操作。
 
-借助此功能，本地模块或下游设备可根据需要向 IoT Edge 设备重新进行身份验证，即使从 IoT 中心断开连接也可使用消息和方法相互进行通信。 有关详细信息，请参阅[了解 IoT Edge 设备、模块和子设备的扩展脱机功能](offline-capabilities.md)。
+借助此功能，本地模块或下游设备可根据需要向 IoT Edge 设备重新进行身份验证，即使与 IoT 中心断开连接也可使用消息和方法相互进行通信。 有关详细信息，请参阅[了解 IoT Edge 设备、模块和子设备的扩展脱机功能](offline-capabilities.md)。
 
 若要启用扩展脱机功能，请在 IoT Edge 网关设备和要与之连接的下游设备之间建立父子关系。 [在 Azure IoT 中心对下游设备进行身份验证](how-to-authenticate-downstream-device.md)中更详细地介绍了这些步骤。
 

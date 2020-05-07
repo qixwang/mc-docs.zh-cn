@@ -44,9 +44,9 @@ az account set --subscription 00000000-0000-0000-0000-000000000000
 ```
 
 ## <a name="create-a-resource-group"></a>创建资源组
-使用 [az group create](/azure-resource-manager/resource-group-overview) 命令创建 [Azure 资源组](/cli/group#az-group-create)。 资源组是在其中以组的形式部署和管理 Azure 资源的逻辑容器。
+使用 [az group create](/cli/group#az-group-create) 命令创建 [Azure 资源组](/azure-resource-manager/resource-group-overview)。 资源组是在其中以组的形式部署和管理 Azure 资源的逻辑容器。
 
-以下示例在 `myresourcegroup` 位置创建名为 `chinaeast` 的资源组。
+以下示例在 `chinaeast` 位置创建名为 `myresourcegroup` 的资源组。
 
 ```cli
 az group create --name myresourcegroup --location chinaeast
@@ -55,7 +55,7 @@ az group create --name myresourcegroup --location chinaeast
 ## <a name="create-an-azure-database-for-mysql-server"></a>创建 Azure Database for MySQL 服务器
 使用 az mysql server create 命令创建 Azure Database for MySQL 服务器。 一个服务器可以管理多个数据库。 通常，每个项目或每个用户使用一个单独的数据库。
 
-以下示例在资源组 `chinaeast` 中的 `myresourcegroup` 处创建名为 `mydemoserver` 的 Azure Database for MySQL 服务器。 该服务器的管理员用户名为 `myadmin`。 它是第 4 代常规用途服务器，带有 2 个 2 vCore。 用自己的值替换 `<server_admin_password>`。
+以下示例在资源组 `myresourcegroup` 中的 `chinaeast` 处创建名为 `mydemoserver` 的 Azure Database for MySQL 服务器。 该服务器的管理员用户名为 `myadmin`。 它是第 4 代常规用途服务器，带有 2 个 2 vCore。 用自己的值替换 `<server_admin_password>`。
 
 ```cli
 az mysql server create --resource-group myresourcegroup --name mydemoserver --location chinaeast --admin-user myadmin --admin-password <server_admin_password> --sku-name GP_Gen4_2 --version 5.7
@@ -172,13 +172,13 @@ SELECT * FROM inventory;
 ```
 
 ## <a name="restore-a-database-to-a-previous-point-in-time"></a>将数据库还原到以前的时间点
-假设意外删除了此表。 这是你不能轻易还原的内容。 借助 Azure Database for MySQL，可返回到最近 35 天内的任意时间点并将此时间点还原到新的服务器。 可以使用此新服务器恢复已删除的数据。 以下步骤将示例服务器还原到添加此表之前的时间点。
+假设意外删除了此表。 这是不能轻易还原的内容。 借助 Azure Database for MySQL，可返回到最近 35 天内的任意时间点并将此时间点还原到新的服务器。 可以使用此新服务器恢复已删除的数据。 以下步骤将示例服务器还原到添加此表之前的时间点。
 
 执行还原需要以下信息：
 
 - 还原点：选择更改服务器前的时间点。 必须大于或等于源数据库的最早备份值。
 - 目标服务器：提供一个要还原到的新服务器名称
-- 源服务器：提供想从其还原的服务器的名称
+- 源服务器:提供想从中进行还原的服务器的名称
 - 位置：不能选择区域，此区域默认与源服务器相同
 
 ```cli
@@ -199,7 +199,7 @@ az mysql server restore --resource-group myresourcegroup --name mydemoserver-res
 该命令是同步的，且会在服务器还原后返回。 还原完成后，找到创建的新服务器。 验证数据是否按预期还原。
 
 ## <a name="next-steps"></a>后续步骤
-本教程介绍：
+本教程介绍了：
 > [!div class="checklist"]
 > * 创建 Azure Database for MySQL 服务器
 > * 配置服务器防火墙

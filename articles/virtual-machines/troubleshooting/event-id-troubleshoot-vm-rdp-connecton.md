@@ -1,6 +1,6 @@
 ---
 title: 按事件 ID 排查 Azure VM RDP 连接问题 | Azure
-description: ''
+description: 使用事件 ID 排查阻止远程桌面协议 (RDP) 连接到 Azure 虚拟机 (VM) 的各种问题。
 services: virtual-machines-windows
 documentationcenter: ''
 author: rockboyfor
@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 origin.date: 11/01/2018
-ms.date: 11/11/2019
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: 6b98d24743f687af4132ee40dc865c3aa1f3c193
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 42a76325976620e00588c59fd1dceda396957b40
+ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74116901"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82596287"
 ---
 <!--Verify part successfully-->
 # <a name="troubleshoot-azure-vm-rdp-connection-issues-by-event-id"></a>按事件 ID 排查 Azure VM RDP 连接问题 
@@ -56,38 +56,38 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Microsoft-Windo
 wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Microsoft-Windows-TerminalServices-RemoteConnectionManager'] and EventID=1057 and TimeCreated[timediff(@SystemTime) <= 86400000]]]" | more
 ```
 
-**日志名称：**    系统 <br />
-**源：**      Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
-**日期：**          时间  <br />
-**事件 ID：**    1058 <br />
+**日志名称：** 系统 <br />
+**源：** Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
+**日期：** time  <br />
+**事件 ID：** 1058 <br />
 **任务类别：** 无 <br />
-**级别：**       错误 <br />
-**关键字：**    经典 <br />
-**用户：**        空值 <br />
-**计算机：**      计算机  <br />
-**说明：** RD 会话主机服务器无法替换 RD 会话主机服务器在 SSL 连接上进行身份验证使用的过期自签名证书。 相关的状态代码为“访问被拒”。
+**级别：** 错误 <br />
+**关键字：** 经典 <br />
+**用户：** 空值 <br />
+**计算机：** computer  <br />
+**说明：** RD 会话主机服务器无法替换 RD 会话主机服务器通过 TLS 连接进行身份验证时使用的过期自签名证书。 相关的状态代码为“访问被拒”。
 
-**日志名称：**    系统 <br />
-**源：**      Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
-**日期：**          时间  <br />
-**事件 ID：**    1058 <br />
+**日志名称：** 系统 <br />
+**源：** Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
+**日期：** time  <br />
+**事件 ID：** 1058 <br />
 **任务类别：** 无 <br />
-**级别：**       错误 <br />
-**关键字：**    经典 <br />
-**用户：**        不适用 <br />
-**计算机：**      计算机  <br />
-**说明：** RD 会话主机服务器无法创建 RD 会话主机服务器在 SSL 连接上进行身份验证使用的新自签名证书，相关状态代码为“对象已存在”。
+**级别：** 错误 <br />
+**关键字：** 经典 <br />
+**用户：** 空值 <br />
+**计算机：** computer  <br />
+**说明：** RD 会话主机服务器无法创建要在 RD 会话主机服务器通过 TLS 连接进行身份验证时使用的新自签名证书，相关状态代码为“对象已存在”。
 
-**日志名称：**    系统 <br />
-**源：**      Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
-**日期：**          时间  <br />
-**事件 ID：**    1057 <br />
+**日志名称：** 系统 <br />
+**源：** Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
+**日期：** time  <br />
+**事件 ID：** 1057 <br />
 **任务类别：** 无 <br />
-**级别：**       错误 <br />
-**关键字：**    经典 <br />
-**用户：**        不适用 <br />
-**计算机：**      计算机  <br />
-**说明：** RD 会话主机服务器无法创建 RD 会话主机服务器在 SSL 连接上进行身份验证使用的新自签名证书。 相关状态代码为“不存在 Keyset”
+**级别：** 错误 <br />
+**关键字：** 经典 <br />
+**用户：** 空值 <br />
+**计算机：** computer  <br />
+**说明：** RD 会话主机服务器无法创建要在 RD 会话主机服务器通过 TLS 连接进行身份验证时使用的新自签名证书。 相关状态代码为“不存在 Keyset”
 
 此外可通过运行以下命令检查 SCHANNEL 错误事件 36872 和 36870：
 
@@ -96,16 +96,16 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Schannel'] and 
 wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Schannel'] and EventID=36872 and TimeCreated[timediff(@SystemTime) <= 86400000]]]" | more
 ```
 
-**日志名称：**    系统 <br />
-**源：**      SChannel <br />
-**日期：**          — <br />
-**事件 ID：**    36870 <br />
+**日志名称：** 系统 <br />
+**源：** SChannel <br />
+**日期：** - <br />
+**事件 ID：** 36870 <br />
 **任务类别：** 无 <br />
-**级别：**       错误 <br />
-**关键字：**       <br />
-**用户：**        SYSTEM <br />
-**计算机：**      计算机  <br />
-**说明：** 尝试访问 SSL 服务器凭据私钥时发生灾难性错误。 加密模块返回的错误代码是 0x8009030D。  <br />
+**级别：** 错误 <br />
+**关键字：** <br />
+**用户：** SYSTEM <br />
+**计算机：** computer  <br />
+**说明：** 尝试访问 TLS 服务器凭据私钥时发生灾难性错误。 加密模块返回的错误代码是 0x8009030D。  <br />
 内部错误状态为 10001。
 
 ### <a name="cause"></a>原因
@@ -123,16 +123,16 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Schannel'] and 
 
 1. 使用以下内容创建脚本：
 
-   ```powershell
-   remove-module psreadline 
-   icacls C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c > c:\temp\BeforeScript_permissions.txt
-   takeown /f "C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys" /a /r
-   icacls C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c /grant "NT AUTHORITY\System:(F)"
-   icacls C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c /grant "NT AUTHORITY\NETWORK SERVICE:(R)"
-   icacls C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c /grant "BUILTIN\Administrators:(F)"
-   icacls C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c > c:\temp\AfterScript_permissions.txt
-   Restart-Service TermService -Force
-   ```
+    ```powershell
+    remove-module psreadline 
+    icacls C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c > c:\temp\BeforeScript_permissions.txt
+    takeown /f "C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys" /a /r
+    icacls C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c /grant "NT AUTHORITY\System:(F)"
+    icacls C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c /grant "NT AUTHORITY\NETWORK SERVICE:(R)"
+    icacls C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c /grant "BUILTIN\Administrators:(F)"
+    icacls C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c > c:\temp\AfterScript_permissions.txt
+    Restart-Service TermService -Force
+    ```
 
 2. 运行此脚本以重置 MachineKey 文件夹的权限并将 RSA 文件重置为默认值。
 
@@ -188,9 +188,9 @@ Start-Service -Name "SessionEnv"
 
 请尝试再次使用 RDP 访问 VM。
 
-#### <a name="update-secure-sockets-layer-ssl-certificate"></a>更新安全套接字层 (SSL) 证书
+#### <a name="update-tlsssl-certificate"></a>更新 TLS/SSL 证书
 
-如果将 VM 设置为使用 SSL 证书，请运行以下命令以获取指纹。 然后检查它是否与证书的指纹相同：
+如果将 VM 设置为使用 TLS/SSL 证书，请运行以下命令获取指纹。 然后检查它是否与证书的指纹相同：
 
 ```cmd
 reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v SSLCertificateSHA1Hash
@@ -218,15 +218,15 @@ reg delete "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RD
 wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Schannel'] and EventID=36871 and TimeCreated[timediff(@SystemTime) <= 86400000]]]" | more
 ```
 
-**日志名称：**    系统 <br />
-**源：**      SChannel <br />
-**日期：**          — <br />
-**事件 ID：**    36871 <br />
+**日志名称：** 系统 <br />
+**源：** SChannel <br />
+**日期：** - <br />
+**事件 ID：** 36871 <br />
 **任务类别：** 无 <br />
-**级别：**       错误 <br />
-**关键字：**       <br />
-**用户：**        SYSTEM <br />
-**计算机：**      计算机  <br />
+**级别：** 错误 <br />
+**关键字：** <br />
+**用户：** SYSTEM <br />
+**计算机：** computer  <br />
 **说明：** 创建 TLS 服务器凭据时发生灾难性错误。 内部错误状态为 10013。
 
 ### <a name="cause"></a>原因
@@ -248,15 +248,15 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name=' Microsoft-Wind
 wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name=' Microsoft-Windows-TerminalServices-SessionBroker-Client '] and EventID=1296 and TimeCreated[timediff(@SystemTime) <= 86400000]]]" | more
 ```
 
-**日志名称：**    Microsoft-Windows-TerminalServices-SessionBroker/Operational <br />
-**源：**      Microsoft-Windows-TerminalServices-SessionBroker <br />
-**日期：**          时间  <br />
-**事件 ID：**    2056 <br />
+**日志名称：** Microsoft-Windows-TerminalServices-SessionBroker/Operational <br />
+**源：** Microsoft-Windows-TerminalServices-SessionBroker <br />
+**日期：** time  <br />
+**事件 ID：** 2056 <br />
 **任务类别：** (109) <br />
-**级别：**       错误 <br />
-**关键字：**       <br />
-**用户：**        网络服务 <br />
-**计算机：**      计算机 fqdn  <br />
+**级别：** 错误 <br />
+**关键字：** <br />
+**用户：** 网络服务 <br />
+**计算机：** computer fqdn  <br />
 **说明：** 无法找到源 Microsoft-Windows-TerminalServices-SessionBroker 的事件 ID 2056 的说明。 未在本地计算机上安装引发此事件的组件，或者安装已损坏。 可在本地计算机上安装或修复该组件。 <br />
 如果另一台计算机上生成该事件，则必须保存该事件的显示信息。 <br />
 事件中包含以下信息： <br />
@@ -264,15 +264,15 @@ Null <br />
 Null <br />
 登录数据库失败。
 
-**日志名称：**    Microsoft-Windows-TerminalServices-SessionBroker-Client/Operational <br />
-**源：**      Microsoft-Windows-TerminalServices-SessionBroker-Client <br />
-**日期：**          时间  <br />
-**事件 ID：**    1296 <br />
+**日志名称：** Microsoft-Windows-TerminalServices-SessionBroker-Client/Operational <br />
+**源：** Microsoft-Windows-TerminalServices-SessionBroker-Client <br />
+**日期：** time  <br />
+**事件 ID：** 1296 <br />
 **任务类别：** (104) <br />
-**级别：**       错误 <br />
-**关键字：**       <br />
-**用户：**        网络服务 <br />
-**计算机：**      计算机 fqdn  <br />
+**级别：** 错误 <br />
+**关键字：** <br />
+**用户：** 网络服务 <br />
+**计算机：** computer fqdn  <br />
 **说明：** 无法找到源 Microsoft-Windows-TerminalServices-SessionBroker-Client 的事件 ID 1296 的说明。 未在本地计算机上安装引发此事件的组件，或者安装已损坏。 可在本地计算机上安装或修复该组件。
 如果另一台计算机上生成该事件，则必须保存该事件的显示信息。
 事件中包含以下信息：  <br />

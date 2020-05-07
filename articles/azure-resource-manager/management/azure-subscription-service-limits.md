@@ -2,15 +2,15 @@
 title: Azure 订阅限制和配额
 description: 提供常见的 Azure 订阅和服务限制、配额和约束的列表。 本文包括有关如何增加限制以及最大值的信息。
 ms.topic: conceptual
-origin.date: 02/24/2020
-ms.date: 04/20/2020
+origin.date: 04/03/2020
+ms.date: 04/30/2020
 ms.author: v-yeche
-ms.openlocfilehash: 796718e5e6255d02324429caf8edb7b6011bbffd
-ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
+ms.openlocfilehash: 1df9727bd2ab0add49b09ab788a83451fe87ffda
+ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82093515"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82596208"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure 订阅和服务限制、配额和约束
 
@@ -22,7 +22,14 @@ ms.locfileid: "82093515"
 
 ## <a name="managing-limits"></a>管理限制
 
-如果想要提高限制或配额，使其超出默认限制，可以[免费建立联机客户支持请求](../templates/error-resource-quota.md)。 无法将限制提高到超过下表中显示的最大限制值。 如果没有最大限制列，则资源没有可调整的限制。
+> [!NOTE]
+> 某些服务的限制可调整。
+>
+> 当某个服务的限制不可调整时，下面的表会使用表头“限制”  。 在这些情况下，默认值和最大限制相同。
+>
+> 如果可以调整限制，则表中包含“默认限制”  和“最大限制”  表头。 可以将限制提高到默认限制以上，但不能超过最大限制。
+>
+> 如果想要提高限制或配额，使其超出默认限制，可以[免费建立联机客户支持请求](../templates/error-resource-quota.md)。
 
 [试用订阅](https://www.azure.cn/pricing/1rmb-trial-full)。
 
@@ -37,6 +44,12 @@ ms.locfileid: "82093515"
 有关资源名称的限制，请参阅 [Azure 资源的命名规则和限制](resource-name-rules.md)。
 
 有关资源管理器 API 读写限制的信息，请参阅[限制资源管理器请求](request-limits-and-throttling.md)。
+
+### <a name="management-group-limits"></a>管理组限制
+
+以下限制适用于[管理组](../../governance/management-groups/overview.md)。
+
+[!INCLUDE [management-group-limits](../../../includes/management-group-limits.md)]
 
 ### <a name="subscription-limits"></a>订阅限制
 
@@ -70,14 +83,6 @@ ms.locfileid: "82093515"
 
 [!INCLUDE [redis-cache-service-limits](../../../includes/redis-cache-service-limits.md)]
 
-### <a name="scheduler-limits"></a>计划程序限制
-
-[!INCLUDE [scheduler-limits-table](../../../includes/scheduler-limits-table.md)]
-
-
-
-
-
 ## <a name="azure-cloud-services-limits"></a>Azure 云服务限制
 
 [!INCLUDE [azure-cloud-services-limits](../../../includes/azure-cloud-services-limits.md)]
@@ -108,7 +113,9 @@ ms.locfileid: "82093515"
 
 有关 Azure Cosmos DB 的限制，请参阅 [Azure Cosmos DB 中的限制](../../cosmos-db/concepts-limits.md)。
 
-<!--Pending on ## Azure Data Explorer limits-->
+## <a name="azure-data-explorer-limits"></a>Azure 数据资源管理器限制
+
+[!INCLUDE [azure-data-explorer-limits](../../../includes/data-explorer-limits.md)]
 
 ## <a name="azure-database-for-mysql"></a>Azure Database for MySQL
 
@@ -159,15 +166,15 @@ ms.locfileid: "82093515"
 
 [!INCLUDE [policy-limits](../../../includes/azure-policy-limits.md)]
 
-<!--Not Available on ### Azure SignalR Service limits-->
+## <a name="azure-signalr-service-limits"></a>Azure SignalR 服务限制
 
-
+[!INCLUDE [signalr-service-limits](../../../includes/signalr-service-limits.md)]
 
 ## <a name="backup-limits"></a>备份限制
 
 [!INCLUDE [azure-backup-limits](../../../includes/azure-backup-limits.md)]
 
-## <a name="batch-limits"></a>Batch 限制
+## <a name="batch-limits"></a>批处理限制
 
 [!INCLUDE [azure-batch-limits](../../../includes/azure-batch-limits.md)]
 
@@ -197,6 +204,7 @@ ms.locfileid: "82093515"
 
 <!--Not Available on ## Data Lake Analytics limits-->
 <!--Not Available on ## Data Lake Store limits-->
+<!--Not Available on ## Data Share limits-->
 
 ## <a name="database-migration-service-limits"></a>数据库迁移服务限制
 
@@ -214,7 +222,8 @@ ms.locfileid: "82093515"
 
 [!INCLUDE [automation-limits](~/includes/managed-identity-limits.md)]
 
-<!--Not Available on ## IoT Central limits-->
+## <a name="iot-central-limits"></a>IoT Central 限制
+[!INCLUDE [iot-central-limits](../../../includes/iot-central-limits.md)]
 
 ## <a name="iot-hub-limits"></a>IoT 中心限制
 
@@ -230,7 +239,11 @@ ms.locfileid: "82093515"
 
 ## <a name="media-services-limits"></a>媒体服务限制
 
-[!INCLUDE [azure-mediaservices-limits](../../../includes/azure-mediaservices-limits.md)]
+[!INCLUDE [azure-mediaservices-limits](../../../includes/media-servieces-limits-quotas-constraints.md)]
+
+### <a name="media-services-v2-legacy"></a>媒体服务 v2（旧版）
+
+若要了解特定于媒体服务 v2（旧版）的限制，请参阅[媒体服务 v2（旧版）](/media-services/previous/media-services-quotas-and-limitations)
 
 ## <a name="mobile-services-limits"></a>移动服务限制
 
@@ -262,8 +275,9 @@ ms.locfileid: "82093515"
 [!INCLUDE [network-watcher-limits](../../../includes/network-watcher-limits.md)]
 
 <a name="private-link-limits"></a>
+### <a name="private-link-limits"></a>专用链接限制
 
-<!--Not Available on ### Private Link limits-->
+[!INCLUDE [private-link-limits](../../../includes/private-link-limits.md)]
 
 ### <a name="traffic-manager-limits"></a>流量管理器限制
 
@@ -303,7 +317,7 @@ ms.locfileid: "82093515"
 
 ## <a name="sql-data-warehouse-limits"></a>SQL 数据仓库限制
 
-有关 SQL 数据仓库限制，请参阅 [SQL 数据仓库资源限制](../../sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md)。
+有关 SQL 数据仓库限制，请参阅 [SQL 数据仓库资源限制](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md)。
 
 ## <a name="storage-limits"></a>存储限制
 
@@ -368,7 +382,7 @@ ms.locfileid: "82093515"
 [!INCLUDE [azure-virtual-machines-limits](../../../includes/azure-virtual-machines-limits.md)]
 
 <a name="limits-and-the-azure-resource-manager"></a>
-### <a name="virtual-machines-limits---azure-resource-manager"></a>虚拟机限制 - Azure 资源管理器
+### <a name="virtual-machines-limits---azure-resource-manager"></a>虚拟机限制 - Azure Resource Manager
 
 使用 Azure 资源管理器和 Azure 资源组时，以下限制适用。
 

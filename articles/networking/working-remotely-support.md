@@ -6,14 +6,14 @@ author: rambk
 ms.service: virtual-network
 ms.topic: article
 origin.date: 03/26/2020
-ms.date: 03/30/2020
+ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: 1b4343ed050603a2c871a0ea2e4226b0a36548f7
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: c53aa2d1bc340ae86611bab9aef6ceb74ffe58c9
+ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80634688"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82588486"
 ---
 # <a name="working-remotely-using-azure-networking-services"></a>使用 Azure 网络服务远程进行工作
 
@@ -30,8 +30,6 @@ ms.locfileid: "80634688"
 
 网络规划人员可以通过记住不同的流量类型需要不同的网络处理优先级，以及通过使用某种智能负载重定向/分配方法，来帮助缓解瓶颈并减轻网络拥塞问题。 例如，医生与患者之间的实时远程医疗交互流量的重要性就很高，对网络延迟/波动的敏感性也很高。 而如果相同的流量用于存储之间的复制，则它对延迟就不敏感。 对于前一种流量，必须通过服务质量较高的最佳网络路径进行路由；而对于后一种流量，可以接受通过次优路径进行路由。
 
->[!NOTE] 
->本文的最后部分列出了几篇文章的链接，其中介绍了如何利用不同的 Azure 网络功能和生态系统来为远程工作用户提供支持。
 
 
 ## <a name="sharing-our-best-practices---azure-network-is-designed-for-elasticity-and-high-availability"></a>分享我们的最佳做法 - Azure 网络旨在提供弹性和高可用性
@@ -50,7 +48,6 @@ Azure VPN 网关支持点到站点 (P2S) 和站点到站点 (S2S) VPN 连接。 
 
 如果使用安全套接字隧道协议 (SSTP)，并发连接数将限制为 128。 若要获得更多的连接，我们建议转换到 OpenVPN 或 IKEv2。 有关详细信息，请参阅[从 SSTP 转换到 OpenVPN 协议或 IKEv2](../vpn-gateway/ikev2-openvpn-from-sstp.md)。
 
-<!-- To access your resources deployed in Azure, remote developers could use Azure Bastion solution, instead of VPN connection to get secure shell access (RDP or SSH) without requiring public IPs on the VMs being accessed. For more information, see [Work remotely using Azure Bastion](https://go.microsoft.com/fwlink/?linkid=2123939). -->
 
 若要聚合大规模 VPN 连接，以支持不同本地全局位置和不同区域性中心辐射型虚拟网络中的资源之间的任意点到任意点连接，并优化多个家庭宽带网络的利用率，可以使用 Azure 虚拟 WAN。 有关详细信息，请参阅[正在奋力满足在家工作的需求？Azure 虚拟 WAN 可以提供帮助](../virtual-wan/work-remotely-support.md)。
 
@@ -82,15 +79,15 @@ Azure 还有众多的生态系统合作伙伴。 Azure 上的合作伙伴网络�
 
 以下文章介绍了如何使用不同的 Azure 网络功能来缩放用户的连接，以使用户能够远程工作：
 
-| **文章** | **上次更新时间** |
+| **文章** | **说明** |
 | --- | --- |
-| [如何使用户能够远程工作](../vpn-gateway/work-remotely-support.md) | 2020 年 3 月 23 日 |
-| [正在奋力满足在家工作的需求？Azure 虚拟 WAN 可以提供帮助](../virtual-wan/work-remotely-support.md) | 2020 年 3 月 23 日 |
-| [应用程序网关高流量支持](../application-gateway/high-traffic-support.md) | 2020 年 3 月 23 日 |
-| [用于远程工作的网络虚拟设备 (NVA) 的注意事项](../vpn-gateway/nva-work-remotely-support.md)| 2020 年 3 月 23 日 |
-| [从 SSTP 转换到 OpenVPN 协议或 IKEv2](../vpn-gateway/ikev2-openvpn-from-sstp.md) | 2020 年 3 月 23 日 |
-| [使用 Azure ExpressRoute 创建混合连接以支持远程用户](../expressroute/work-remotely-support.md) | 2020 年 3 月 23 日 |
-| [Azure 防火墙远程工作支持](../firewall/remote-work-support.md)|2020 年 3 月 25 日|
+| [如何使用户能够远程工作](../vpn-gateway/work-remotely-support.md) | 查看可用选项，以便为用户设置远程访问权限，或使用组织的额外容量对其现有解决方案进行补充。|
+| [正在奋力满足在家工作的需求？Azure 虚拟 WAN 可以提供帮助](../virtual-wan/work-remotely-support.md) | 使用 Azure 虚拟 WAN 满足组织的远程连接需求。|
+| [应用程序网关高流量支持](../application-gateway/high-traffic-support.md) | 使用启用了 Web 应用程序防火墙 (WAF) 的应用程序网关，以一种可缩放且安全的方式管理到 Web 应用程序的流量。 |
+| [用于远程工作的网络虚拟设备 (NVA) 的注意事项](../vpn-gateway/nva-work-remotely-support.md)|查看相关指南，了解如何利用 Azure 中的 NVA 提供远程访问解决方案。 |
+| [从 SSTP 转换到 OpenVPN 协议或 IKEv2](https://docs.azure.cn/vpn-gateway/ikev2-openvpn-from-sstp) | 通过转换为 OpenVPN 协议或 IKEv2，克服 SSTP 的 128 个并发连接的限制。|
+| [使用 Azure ExpressRoute 创建混合连接以支持远程用户](../expressroute/work-remotely-support.md) | 使用 ExpressRoute 进行混合连接，使组织中的用户能够远程工作。|
+| [Azure 防火墙远程工作支持](../firewall/remote-work-support.md)|使用 Azure 防火墙保护 Azure 虚拟网络资源。 |
 
 <!--Link References-->
 [VNet-peer]: https://docs.azure.cn/virtual-network/virtual-network-peering-overview
