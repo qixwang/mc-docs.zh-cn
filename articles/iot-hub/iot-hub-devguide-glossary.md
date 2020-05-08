@@ -1,20 +1,20 @@
 ---
-title: Azure IoT 中心术语表 | Azure
-description: 开发人员指南 - 与 Azure IoT 中心相关的常用术语的术语表。
-author: dominicbetts
-manager: timlt
+title: Azure IoT 中心术语词汇表 | Microsoft Docs
+description: 开发人员指南 - 一个词汇表，对 Azure IoT 中心文章中使用的一些常用术语进行了说明。
+author: robinsh
+manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 origin.date: 01/15/2019
 ms.author: v-yiso
-ms.date: 04/01/2019
-ms.openlocfilehash: 3643f4bb54a4940a14941e676994953087af632a
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/11/2020
+ms.openlocfilehash: 49b9b699387795829db73cc8448b8f3bb2f41cb0
+ms.sourcegitcommit: 95efd248f5ee3701f671dbd5cfe0aec9c9959a24
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "67135986"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82507728"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>IoT 中心术语表
 本文列出了一些在 IoT 中心文章中使用的常用术语。
@@ -37,6 +37,10 @@ Azure IoT 中心内的自动设备管理功能可将许多复杂且重复性的�
 
 ## <a name="azure-iot-device-sdks"></a>Azure IoT 设备 SDK
 提供了多种语言的 _设备 SDK_ ，以便于用户创建与 IoT 中心交互的 [设备应用](#device-app) 。 IoT 中心教程介绍了如何使用这些设备 SDK。 可以在此 GitHub [存储库](https://github.com/Azure/azure-iot-sdks)中找到有关设备 SDK 的源代码和进一步信息。
+
+## <a name="azure-iot-explorer"></a>Azure IoT 资源管理器
+
+[Azure IoT 资源管理器](https://github.com/Azure/azure-iot-explorer)用于查看设备正在发送的遥测、使用设备属性和调用命令。 还可以使用资源管理器与设备进行交互并对设备进行测试，管理即插即用设备。
 
 ## <a name="azure-iot-service-sdks"></a>Azure IoT 服务 SDK
 提供了多种语言的 _服务 SDK_ ，以便于用户创建与 IoT 中心交互的 [后端应用](#back-end-app) 。 IoT 中心教程介绍了如何使用这些服务 SDK。 可以在此 GitHub [存储库](https://github.com/Azure/azure-iot-sdks)中找到有关服务 SDK 的源代码和进一步信息。
@@ -110,7 +114,8 @@ Azure IoT 中心内的自动设备管理功能可将许多复杂且重复性的�
 设备数据是指存储在 IoT 中心 [标识注册表](#identity-registry)中的每个设备数据。 可以导入和导出此数据。
 
 ## <a name="device-explorer"></a>设备资源管理器
-[设备资源管理器](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer)是在 Windows 上运行的工具，使你可以管理[标识注册表](#identity-registry)中的设备。该工具还可以发送和接收设备的消息。
+
+设备资源管理器已被 [Azure IoT 资源管理器](https://github.com/Azure/azure-iot-explorer)取代，后者用于查看设备正在发送的遥测、使用设备属性和调用命令。 还可以使用资源管理器与设备进行交互并对设备进行测试，管理即插即用设备。
 
 ## <a name="device-identity"></a>设备标识
 设备标识是分配给在 [标识注册表](#identity-registry)中注册的每个设备的唯一标识符。
@@ -228,7 +233,8 @@ Azure IoT 解决方案加速器将多个 Azure 服务一起打包到解决方案
 SASL PLAIN 是一种协议，AMQP 协议使用它来传输安全令牌。
 
 ## <a name="service-rest-api"></a>服务 REST API
-可以从解决方案后端使用[服务 REST API](https://docs.microsoft.com/rest/api/iothub/service) 来管理设备。 使用 API，不仅可以检索和更新[设备孪生](#device-twin)属性，还能调用[直接方法](#direct-method)并安排[作业](#job)。 通常情况下，使用 IoT 中心教程中演示的一种较高级别的 [服务 SDK](#azure-iot-service-sdks) 。
+
+可以从解决方案后端使用[服务 REST API](https://docs.microsoft.com/rest/api/iothub/service/configuration) 来管理设备。 使用 API，不仅可以检索和更新[设备孪生](#device-twin)属性，还能调用[直接方法](#direct-method)并安排[作业](#job)。 通常情况下，使用 IoT 中心教程中演示的一种较高级别的 [服务 SDK](#azure-iot-service-sdks) 。
 
 ## <a name="shared-access-signature"></a>共享访问签名
 共享访问签名 (SAS) 是基于 SHA–256 安全哈希或 URI 的身份验证机制。 SAS 身份验证有两个组件：_共享访问策略_和_共享访问签名_（通常称为令牌）。 设备使用 SAS 在 IoT 中心进行身份验证。 [后端应用](#back-end-app) 也使用 SAS 在 IoT 中心的面向服务的终结点上进行身份验证。 通常，在 [连接字符串](#connection-string) 中包含 SAS 令牌，应用使用此令牌建立与 IoT 中心的连接。
