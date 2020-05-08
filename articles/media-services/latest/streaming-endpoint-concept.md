@@ -11,14 +11,14 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: article
 origin.date: 02/13/2020
-ms.date: 04/06/2020
+ms.date: 05/11/2020
 ms.author: v-jay
-ms.openlocfilehash: a3311c7e9dc006700157616a211259e0815a5c25
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 965dc08af15b44e2cf0ec47a0bf4c467425d928a
+ms.sourcegitcommit: 95efd248f5ee3701f671dbd5cfe0aec9c9959a24
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80625761"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82507609"
 ---
 # <a name="streaming-endpoints-origin-in-azure-media-services"></a>Azure 媒体服务中的流式处理终结点（来源）
 
@@ -94,7 +94,7 @@ IP 筛选/G20/自定义主机 |是|是
     > [!NOTE]
     > 位于同一数据中心的流式处理终结点不能共享相同的自定义主机名。
 
-    媒体服务当前对自定义域不支持 SSL。
+    当前，对于自定义域，媒体服务不支持 TLS。
 
 - `maxCacheAge` - 替代媒体片段和按需清单上的流式处理终结点设置的默认 max-age HTTP 缓存控制标头。 该值以秒为单位进行设置。
 - `resourceState` -
@@ -107,6 +107,22 @@ IP 筛选/G20/自定义主机 |是|是
     - Deleting：正在删除
 
 - `scaleUnits`：提供专用的出口容量，可以按照 200 Mbps 的增量购买。 如果需要转到高级  类型，请调整 `scaleUnits`。
+
+## <a name="why-use-multiple-streaming-endpoints"></a>为何要使用多个流式处理终结点？
+
+单个流式处理终结点可以同时流式传输直播视频和点播视频，大多数客户只使用一个流式处理终结点。 本部分提供了一些示例，说明了为什么可能需要使用多个流式处理终结点。
+
+* 每个预留单位都允许 200 Mbps 的带宽。 如果需要的带宽超过 2,000 Mbps (2 Gbps)，则可使用第二个流式处理终结点和负载均衡来提供额外的带宽。
+
+* 流式传输混合内容：直播视频和点播视频。 
+
+    直播内容和点播内容的访问模式有很大差别。 直播内容往往会同时收到对同一内容的大量需求。 视频点播内容（例如，长尾存档内容）对同一内容的使用率较低。 因此，缓存非常适合直播内容，但不适合长尾内容。
+
+    假设你的客户主要观看直播内容，但只是偶尔观看点播内容，而且是从同一个流式处理终结点接受服务。 低使用率的点播内容会占用缓存空间，这些空间本来可以更好地节省给直播内容使用。 在这种情况下，建议你从一个流式处理终结点提供直播内容，从另一个流式处理终结点提供长尾内容。 这将提高直播活动内容的性能。
+    
+## <a name="see-also"></a>另请参阅
+
+[动态打包](dynamic-packaging-overview.md)
 
 ## <a name="next-steps"></a>后续步骤
 
