@@ -11,20 +11,22 @@ ms.author: v-jay
 manager: digimobile
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
-origin.date: 02/14/2020
-ms.date: 03/02/2020
-ms.openlocfilehash: 647386ddd14a563ac9b23fa462492f1f575ec938
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+origin.date: 04/15/2020
+ms.date: 05/11/2020
+ms.openlocfilehash: a0f0f73c8a2435d3cf895a5c9339a906ebaa0c42
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77653506"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82198094"
 ---
 # <a name="customize-the-setup-for-an-azure-ssis-integration-runtime"></a>自定义 Azure-SSIS Integration Runtime 的安装
 
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+
 Azure-SQL Server Integration Services Integration Runtime (Azure-SSIS IR) 的自定义安装程序提供了一个界面，用于在安装或重新配置 Azure-SSIS IR 期间添加自己的步骤。 
 
-使用自定义安装程序可以更改默认的操作配置或环境，例如，启动其他 Windows 服务，或保存访问凭据以便进行文件共享。 或者，可以在 Azure-SSIS IR 的每个节点上安装其他组件，例如程序集、驱动程序或扩展。
+使用自定义安装程序可以更改默认的操作配置或环境，例如，启动其他 Windows 服务、保存访问凭据以便进行文件共享，或者使用强加密/更安全的网络协议 (TLS 1.2)。 或者，可以在 Azure-SSIS IR 的每个节点上安装其他组件，例如程序集、驱动程序或扩展。
 
 可以通过两种方式在 Azure-SSIS IR 上执行自定义安装： 
 * **无需脚本的快速自定义安装**：运行一些常见的系统配置和 Windows 命令，或安装一些流行的或推荐的其他组件，而无需使用任何脚本。
@@ -33,7 +35,7 @@ Azure-SQL Server Integration Services Integration Runtime (Azure-SSIS IR) 的自
 无论使用快速还是标准自定义安装，都可安装免费（无许可证）和付费（带许可证）的组件。 如果你是独立软件供应商 (ISV)，请参阅[为 Azure-SSIS IR 开发付费或带许可证的组件](how-to-develop-azure-ssis-ir-licensed-components.md)。
 
 > [!IMPORTANT]
-> 由于 Azure-SSIS IR 的 v2 系列节点不适合自定义安装，因此请改用 v3 系列节点。 如果已使用 v2 系列节点，请尽快改用 v3 系列节点。
+> 为了利用将来的增强功能，建议对采用自定义设置的 Azure-SSIS IR 使用 v3 或更高版本的节点系列。
 
 ## <a name="current-limitations"></a>当前限制
 
@@ -128,6 +130,8 @@ Azure-SQL Server Integration Services Integration Runtime (Azure-SSIS IR) 的自
 
      * 如果选择“KingswaySoft 的 SSIS Productivity Pack”组件，可以通过在“许可密钥”框中输入从 KingswaySoft 购买的产品许可密钥，在 Azure-SSIS IR 上安装 KingswaySoft 所提供的组件的 [SSIS Productivity Pack](https://www.kingswaysoft.com/products/ssis-productivity-pack) 套件。   当前的集成版本是 **10.0**。
 
+     * 如果选择“Theobald Software 的 Xtract IS”  组件，可以通过将从 Theobald Software 购买的产品许可证文件拖放/上传到“许可证文件”  框中，在 Azure-SSIS IR 上安装 Theobald Software 所提供的 SAP 系统（ERP、S/4HANA、BW）的 [Xtract IS](https://theobald-software.com/en/xtract-is/) 连接器套件。 当前的集成版本是 6.1.1.3  。
+
    添加的快速自定义安装将显示在“高级设置”部分。  若要删除它们，请选中其复选框，然后选择“删除”。 
 
    ![包含自定义安装的高级设置](./media/tutorial-create-azure-ssis-runtime-portal/advanced-settings-custom.png)
@@ -140,7 +144,7 @@ Azure-SQL Server Integration Services Integration Runtime (Azure-SSIS IR) 的自
    $AzureSSISName = "[your Azure-SSIS IR name]"
    # Custom setup info: Standard/express custom setups
    $SetupScriptContainerSasUri = "" # OPTIONAL to provide a SAS URI of blob container for standard custom setup where your script and its associated files are stored
-   $ExpressCustomSetup = "[RunCmdkey|SetEnvironmentVariable|SentryOne.TaskFactory|oh22is.SQLPhonetics.NET|oh22is.HEDDA.IO or leave it empty]" # OPTIONAL to configure an express custom setup without script
+   $ExpressCustomSetup = "[RunCmdkey|SetEnvironmentVariable|SentryOne.TaskFactory|oh22is.SQLPhonetics.NET|oh22is.HEDDA.IO|KingswaySoft.IntegrationToolkit|KingswaySoft.ProductivityPack|Theobald.XtractIS or leave it empty]" # OPTIONAL to configure an express custom setup without script
 
    # Add custom setup parameters if you use standard/express custom setups
    if(![string]::IsNullOrEmpty($SetupScriptContainerSasUri))
@@ -179,6 +183,24 @@ Azure-SQL Server Integration Services Integration Runtime (Azure-SSIS IR) 的自
        {
            $setup = New-Object Microsoft.Azure.Management.DataFactory.Models.ComponentSetup($ExpressCustomSetup)
        }
+       if($ExpressCustomSetup -eq "KingswaySoft.IntegrationToolkit")
+       {
+           $licenseKey = New-Object Microsoft.Azure.Management.DataFactory.Models.SecureString("YourLicenseKey")
+           $setup = New-Object Microsoft.Azure.Management.DataFactory.Models.ComponentSetup($ExpressCustomSetup, $licenseKey)
+       }
+       if($ExpressCustomSetup -eq "KingswaySoft.ProductivityPack")
+       {
+           $licenseKey = New-Object Microsoft.Azure.Management.DataFactory.Models.SecureString("YourLicenseKey")
+           $setup = New-Object Microsoft.Azure.Management.DataFactory.Models.ComponentSetup($ExpressCustomSetup, $licenseKey)
+       }    
+       if($ExpressCustomSetup -eq "Theobald.XtractIS")
+       {
+           $jsonData = Get-Content -Raw -Path YourLicenseFile.json
+           $jsonData = $jsonData -replace '\s',''
+           $jsonData = $jsonData.replace('"','\"')
+           $licenseKey = New-Object Microsoft.Azure.Management.DataFactory.Models.SecureString($jsonData)
+           $setup = New-Object Microsoft.Azure.Management.DataFactory.Models.ComponentSetup($ExpressCustomSetup, $licenseKey)
+       }
        # Create an array of one or more express custom setups
        $setups = New-Object System.Collections.ArrayList
        $setups.Add($setup)
@@ -204,7 +226,7 @@ Azure-SQL Server Integration Services Integration Runtime (Azure-SSIS IR) 的自
 
    b. 选择“使用 SAS URI”，然后在“URI”框中输入以下 SAS URI：  
 
-      `https://ssisazurefileshare.blob.core.chinacloudapi.cn/publicpreview?sp=rl&st=2018-04-08T14%3A10%3A00Z&se=2020-04-10T14%3A10%3A00Z&sv=2017-04-17&sig=mFxBSnaYoIlMmWfxu9iMlgKIvydn85moOnOch6%2F%2BheE%3D&sr=c`
+      `https://ssisazurefileshare.blob.core.chinacloudapi.cn/publicpreview?sp=rl&st=2020-03-25T04:00:00Z&se=2025-03-25T04:00:00Z&sv=2019-02-02&sr=c&sig=WAD3DATezJjhBCO3ezrQ7TUZ8syEUxZZtGIhhP6Pt4I%3D`
 
       ![提供容器的共享访问签名](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image10.png)
 
@@ -220,9 +242,9 @@ Azure-SQL Server Integration Services Integration Runtime (Azure-SSIS IR) 的自
 
    e. 双击“UserScenarios”文件夹以查找以下项： 
 
-      * 一个 *.NET FRAMEWORK 3.5* 文件夹，其中包含用于在 Azure-SSIS IR 的每个节点上安装自定义组件可能需要的 .NET Framework 早期版本的自定义安装程序。
+      * 一个 .NET FRAMEWORK 3.5  文件夹，其中包含用于在 Azure-SSIS IR 的每个节点上安装自定义组件可能需要的 .NET Framework 早期版本的自定义安装程序脚本 (main.cmd  )。
 
-      * 一个 *BCP* 文件夹，其中包含用于在 Azure-SSIS IR 的每个节点上安装 SQL Server 命令行实用工具 (*MsSqlCmdLnUtils.msi*)（包括批量复制程序 (*bcp*)）的自定义安装程序。
+      * 一个 BCP  文件夹，其中包含用于在 Azure-SSIS IR 的每个节点上安装 SQL Server 命令行实用程序 (MsSqlCmdLnUtils.msi  )（包括批量复制程序 (bcp  )）的自定义安装程序脚本 (main.cmd  )。
 
       * 一个 *EXCEL* 文件夹，其中包含用于安装 C# 程序集和库的自定义安装脚本 (*main.cmd*)，安装后可在脚本任务中使用该脚本来动态读取和写入 Azure-SSIS IR 每个节点上的 Excel 文件。 
       
@@ -258,13 +280,15 @@ Azure-SQL Server Integration Services Integration Runtime (Azure-SSIS IR) 的自
       
         首先，将 64 位或 32 位版本的 *librfc32.dll* 连同 *main.cmd* 一起从 SAP 安装文件夹上传到容器中。 然后，该脚本会在安装期间将 SAP 程序集复制到 *%windir%\SysWow64* 或 *%windir%\System32* 文件夹中。
 
-      * 一个 *STORAGE* 文件夹，其中包含用于在 Azure-SSIS IR 的每个节点上安装 Azure PowerShell 的自定义安装程序。 通过此安装程序可以部署并运行 SSIS 包，以便[运行 PowerShell 脚本来操作 Azure 存储帐户](/storage/blobs/storage-how-to-use-blobs-powershell)。 
+      * 一个 STORAGE  文件夹，其中包含用于在 Azure-SSIS IR 的每个节点上安装 Azure PowerShell 的自定义安装程序脚本 (main.cmd  )。 通过此安装程序可以部署并运行 SSIS 包，以便[运行 PowerShell 脚本来操作 Azure 存储帐户](/storage/blobs/storage-how-to-use-blobs-powershell)。 
       
         将 *main.cmd*、示例 *AzurePowerShell.msi*（或使用最新版本）和 *storage.ps1* 复制到容器。 使用 *PowerShell.dtsx* 作为包的模板。 包模板中合并了 [Azure Blob 下载任务](https://docs.microsoft.com/sql/integration-services/control-flow/azure-blob-download-task)（用于下载可修改的 PowerShell 脚本形式的 *storage.ps1*）和[执行进程任务](https://blogs.msdn.microsoft.com/ssis/2017/01/26/run-powershell-scripts-in-ssis/)（用于在每个节点上执行脚本）。
 
       * 一个 *TERADATA* 文件夹，其中包含自定义安装脚本 (*main.cmd*)、其关联的文件 (*install.cmd*) 和安装程序包 ( *.msi*)。 这些文件将在 Azure-SSIS IR 企业版的每个节点上安装 Teradata 连接器、Teradata 并行传输程序 (TPT) API 和 ODBC 驱动程序。 通过此安装程序，可使用 Teradata 连接管理器、源和目标连接到 Teradata 服务器。 
       
         首先，下载 [Teradata 工具和实用工具 15.x zip 文件](http://partnerintelligence.teradata.com)（例如 *TeradataToolsAndUtilitiesBase__windows_indep.15.10.22.00.zip*），然后将其连同上述 *.cmd* 和 *.msi* 文件一起上传到容器中。
+
+      * 一个 TLS 1.2  文件夹，其中包含一个自定义安装程序脚本 (main.cmd  )，用于在 Azure-SSIS IR 的每个节点上使用强加密/更安全的网络协议 (TLS 1.2) 并禁用较旧 SSL/TLS 版本。
 
       * 一个 *ZULU OPENJDK* 文件夹，其中包含用于在 Azure-SSIS IR 的每个节点上安装 Zulu OpenJDK 的自定义安装脚本 (*main.cmd*) 和 PowerShell 文件 (*install_openjdk.ps1*)。 借助此安装程序，可使用 Azure Data Lake Store 和 Flexible File 连接器来处理 ORC 和 Parquet 文件。 有关详细信息，请参阅 [Azure Feature Pack for Integration Services](https://docs.microsoft.com/sql/integration-services/azure-feature-pack-for-integration-services-ssis?view=sql-server-ver15#dependency-on-java)。 
       

@@ -1,5 +1,5 @@
 ---
-title: 使用指标进行的诊断 - Azure 标准负载均衡器
+title: 使用指标和警报进行诊断 - Azure 标准负载均衡器
 description: 使用可用的指标、警报和资源运行状况信息对 Azure 标准负载均衡器进行诊断。
 services: load-balancer
 documentationcenter: na
@@ -11,14 +11,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 08/14/2019
-ms.date: 04/06/2020
+ms.date: 05/11/2020
 ms.author: v-jay
-ms.openlocfilehash: 41c412102616bcbde8a58a9d0c2ddb7c3b8bf1ec
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 26564829d6060e146004ffd07bb8f1152655a07e
+ms.sourcegitcommit: 95efd248f5ee3701f671dbd5cfe0aec9c9959a24
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80625650"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82507697"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-and-alerts"></a>使用指标和指标进行标准负载均衡器诊断
 
@@ -68,14 +68,26 @@ Azure 门户通过“指标”页公开负载均衡器指标，可在特定资�
 
 有关如何检索多维指标定义和值的 API 指导，请参阅 [Azure 监视 REST API 演练](/monitoring-and-diagnostics/monitoring-rest-api-walkthrough#retrieve-metric-definitions-multi-dimensional-api)。 这些指标只能通过“所有指标”选项写入存储帐户。 
 
+### <a name="configure-alerts-for-multi-dimensional-metrics"></a>配置针对多维指标的警报 ###
+
+Azure 标准负载均衡器支持易于配置的针对多维指标的警报。 为特定指标配置自定义阈值，用以触发具有不同严重性级别的警报，从而提供无接触的资源监视体验。
+
+配置警报：
+1. 转到负载均衡器的“警报”子边栏选项卡
+1. 创建新的警报规则
+    1.  配置警报条件
+    1.  （可选）添加用于自动修复的操作组
+    1.  分配警报严重性、名称和说明，以实现直观的反应
+
 ### <a name="common-diagnostic-scenarios-and-recommended-views"></a><a name = "DiagnosticScenarios"></a>常见诊断场景和建议的视图
 
-#### <a name="is-the-data-path-up-and-available-for-my-load-balancer-vip"></a>数据路径是否已启动并适用于我的负载均衡器 VIP？
+#### <a name="is-the-data-path-up-and-available-for-my-load-balancer-frontend"></a>数据路径是否正常可用并适用于我的负载均衡器前端？
+<details><summary>展开</summary>
 
-VIP 可用性指标描述区域中用于计算 VM 所在主机的数据路径的运行状况。 此指标反映了 Azure 基础结构的运行状况。 使用此指标可以：
+数据路径可用性指标描述区域中用于 VM 所在计算主机的数据路径的运行状况。 此指标反映了 Azure 基础结构的运行状况。 使用此指标可以：
 - 监视服务的外部可用性
 - 深入分析和了解部署服务的平台是否正常，或者来宾 OS 或应用程序实例是否正常。
-- 查明某个事件是与服务还是底层数据平面相关。 请不要将此指标与运行状况探测状态（“DIP 可用性”）相混淆。
+- 查明某个事件是与服务还是底层数据平面相关。 请不要将此指标与运行状况探测状态（“后端实例可用性”）相混淆。
 
 若要获取标准负载均衡器资源的“数据路径可用性”，请执行以下操作：
 1. 确保选择正确的负载均衡器资源。 
@@ -91,16 +103,18 @@ VIP 可用性指标描述区域中用于计算 VM 所在主机的数据路径的
 
 会定期生成与部署前端和规则匹配的数据包。 该服务在区域中从源遍历到后端池中 VM 所在的主机。 负载均衡器基础结构执行的负载均衡和转换运算与针对其他所有流量执行的操作一样。 此探测在负载均衡终结点上的带内执行。 探测抵达后端池中正常 VM 所在的计算主机后，计算主机会针对探测服务生成响应。 VM 看不到此流量。
 
-VIP 可用性探测会出于原因而失败：
+数据路径可用性探测会出于以下原因而失败：
 - 后端池中没有剩余的可用于部署的正常 VM。 
 - 发生基础结构服务中断。
 
 可以[结合使用“数据路径可用性”指标和运行状况探测状态](#vipavailabilityandhealthprobes)进行诊断。
 
 在大多数情况下，可以使用“平均值”作为聚合。 
+</details>
 
-#### <a name="are-the-back-end-instances-for-my-vip-responding-to-probes"></a>VIP 的后端实例是否正在响应探测？
-
+#### <a name="are-the-backend-instances-for-my-load-balancer-responding-to-probes"></a>我的负载均衡器的后端实例是否正在响应探测？
+<details>
+  <summary>展开</summary>
 运行状况探测状态指标描述在配置负载均衡器的运行状况探测时，由你配置的应用程序部署的运行状况。 负载均衡器使用运行状况探测的状态来确定要将新流量发送到何处。 运行状况探测源自某个 Azure 基础结构地址，并会显示在 VM 的来宾 OS 中。
 
 若要获取标准负载均衡器资源的运行状况探测状态，请执行以下操作：
@@ -112,9 +126,11 @@ VIP 可用性探测会出于原因而失败：
 - 网络安全组、VM 的来宾 OS 防火墙或应用层筛选器不允许你的探测。
 
 在大多数情况下，可以使用“平均值”作为聚合。 
+</details>
 
 #### <a name="how-do-i-check-my-outbound-connection-statistics"></a>如何检查出站连接统计信息？ 
-
+<details>
+  <summary>展开</summary>
 “SNAT 连接”指标描述适用于[出站流](/load-balancer/load-balancer-outbound-connections)的成功和失败连接的数量。
 
 如果失败连接数量大于零，则表示 SNAT 端口已耗尽。 必须进一步调查，确定失败的可能原因。 SNAT 端口耗尽的表现形式是无法建立[出站流](/load-balancer/load-balancer-outbound-connections)。 请查看有关出站连接的文章，以了解相关的场景和运行机制，并了解如何缓解并尽量避免 SNAT 端口耗尽的情况。 
@@ -125,11 +141,13 @@ VIP 可用性探测会出于原因而失败：
 
 ![SNAT 连接](./media/load-balancer-standard-diagnostics/LBMetrics-SNATConnection.png)
 
-*图：负载均衡器 SNAT 连接计数*
+图：  负载均衡器 SNAT 连接计数
+</details>
 
 
 #### <a name="how-do-i-check-my-snat-port-usage-and-allocation"></a>如何检查 SNAT 端口用量和分配？
-
+<details>
+  <summary>展开</summary>
 “SNAT 用量”指标指示在 Internet 源与负载均衡器后面的且没有公共 IP 地址的后端 VM 或虚拟机规模集之间建立了多少个唯一流。 将此指标与“SNAT 分配”指标进行比较，可以确定服务是否遇到了 SNAT 耗尽问题或者面临着这种风险，并导致出站流失败。 
 
 如果指标指出了[出站流](/load-balancer/load-balancer-outbound-connections)失败的风险，请参考相应的文章并采取缓解措施，以确保服务正常运行。
@@ -150,21 +168,25 @@ VIP 可用性探测会出于原因而失败：
 
 ![按后端实例列出的 SNAT 用量](./media/load-balancer-standard-diagnostics/snat-usage-split.png)
 
-*图：每个后端实例的 TCP SNAT 端口用量*
+图：  每个后端实例的 TCP SNAT 端口用量
+</details>
 
 #### <a name="how-do-i-check-inboundoutbound-connection-attempts-for-my-service"></a>如何检查服务的入站/出站连接尝试？
-
+<details>
+  <summary>展开</summary>
 “SYN 数据包”指标描述收到或发送的、与特定前端关联的 TCP SYN 数据包数量（适用于[出站流](/load-balancer/load-balancer-outbound-connections)）。 可以使用此指标了解对服务发起的 TCP 连接尝试。
 
 在大多数情况下，可以使用“总计”作为聚合。 
 
 ![SYN 连接](./media/load-balancer-standard-diagnostics/LBMetrics-SYNCount.png)
 
-*图：负载均衡器 SYN 计数*
+图：  负载均衡器 SYN 计数
+</details>
 
 
 #### <a name="how-do-i-check-my-network-bandwidth-consumption"></a>如何检查网络带宽消耗？ 
-
+<details>
+  <summary>展开</summary>
 字节和数据包计数器指标描述服务发送或收到的字节和数据包数量，根据前端显示信息。
 
 在大多数情况下，可以使用“总计”作为聚合。 
@@ -177,25 +199,28 @@ VIP 可用性探测会出于原因而失败：
 
 ![字节计数](./media/load-balancer-standard-diagnostics/LBMetrics-ByteCount.png)
 
-*图：负载均衡器字节计数*
+图：  负载均衡器字节计数
+</details>
 
 #### <a name="how-do-i-diagnose-my-load-balancer-deployment"></a><a name = "vipavailabilityandhealthprobes"></a>如何诊断负载均衡器部署？
-
-在单个图表中结合使用 VIP 可用性和运行状况探测指标可以识别查找和解决问题的位置。 可以确定 Azure 是否正常工作，并据此最终确定配置或应用程序是否为问题的根本原因。
+<details>
+  <summary>展开</summary>
+在单个图表中结合使用数据路径可用性和运行状况探测状态指标可以识别查找和解决问题的位置。 可以确定 Azure 是否正常工作，并据此最终确定配置或应用程序是否为问题的根本原因。
 
 可以使用运行状况探测指标来了解 Azure 如何根据提供的配置查看部署的运行状况。 在监视或确定原因时，查看运行状况探测始终是合理的第一个动作。
 
-然后可以采取进一步的措施，并使用 VIP 可用性指标来深入了解 Azure 如何查看负责特定部署的底层数据平面的运行状况。 结合使用两个指标，可以查明错误的所在位置，如以下示例所示：
+然后可以采取进一步的措施，并使用数据路径可用性指标来深入了解 Azure 如何查看负责特定部署的底层数据平面的运行状况。 结合使用两个指标，可以查明错误的所在位置，如以下示例所示：
 
 ![组合使用“数据路径可用性”和“运行状况探测状态”指标](./media/load-balancer-standard-diagnostics/lbmetrics-dipnvipavailability-2bnew.png)
 
 *图：* 组合使用“数据路径可用性”和“运行状况探测状态”指标
 
 此图表显示以下信息：
-- 承载 VM 的基础结构在过去不可用，在图表开始处显示为 0%。 稍后，基础结构正常，VM 可访问，多个 VM 置于后端。 数据路径可用性（VIP 可用性）的蓝色轨迹（稍后显示为 100%）指示了此信息。 
-- 图表开头紫色轨迹所示的运行状况探测状态（DIP 可用性）为 0%。 绿色圆圈突出显示了运行状况探测状态（DIP 可用性）变为正常的位置，以及客户部署可以接受新流量的位置。
+- 承载 VM 的基础结构在过去不可用，在图表开始处显示为 0%。 稍后，基础结构正常，VM 可访问，多个 VM 置于后端。 数据路径可用性的蓝色轨迹（稍后显示为 100%）指示了此信息。 
+- 图表开头紫色轨迹所示的运行状况探测状态为 0%。 绿色圆圈突出显示了运行状况探测状态变为正常的位置，以及客户部署可以接受新流量的位置。
 
 客户可以使用该图表来自行排查部署问题，而无需猜测或询问支持部门是否发生了其他问题。 此服务之所以不可用，是因为配置不当或应用程序故障导致运行状况探测失败。
+</details>
 
 ## <a name="next-steps"></a>后续步骤
 

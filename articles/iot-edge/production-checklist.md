@@ -4,17 +4,17 @@ description: 了解如何将 Azure IoT Edge 解决方案从开发环境转移到
 author: kgremban
 manager: philmea
 ms.author: v-tawe
-origin.date: 08/09/2019
-ms.date: 03/30/2020
+origin.date: 04/02/2020
+ms.date: 04/20/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 02ad510c8cfcdb0f6fc9ba955fe4cd9339619de2
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: a9ca4fe30e8023bd5a134051612a7842418d60b3
+ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80586650"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82588511"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>准备在生产环境中部署 IoT Edge 解决方案
 
@@ -139,7 +139,24 @@ timeToLiveSecs 参数的默认值为 7200 秒，即 2 小时。
 
 在将模块部署到生产 IoT Edge 设备之前，请务必控制对容器注册表的访问，使外部用户无法访问容器映像或对其进行更改。 使用专用（而不是公共）容器注册表来管理容器映像。
 
-教程和其他文档会指导你在 IoT Edge 设备上使用开发计算机上所用的相同容器注册表凭据。 这些说明旨在帮助你更轻松地设置测试和开发环境，在生产方案中请勿遵照这些说明。 与 IoT Edge 设备一样，当应用程序或服务以自动方式或无人参与的方式提取容器映像时，Azure 容器注册表建议[使用服务主体进行身份验证](../container-registry/container-registry-auth-service-principal.md)。 创建一个对容器注册表拥有只读访问权限的服务主体，并在部署清单中提供该用户名和密码。
+教程和其他文档会指导你在 IoT Edge 设备上使用开发计算机上所用的相同容器注册表凭据。 这些说明旨在帮助你更轻松地设置测试和开发环境，在生产方案中请勿遵照这些说明。
+
+为了更安全地访问注册表，可以使用[身份验证选项](../container-registry/container-registry-authentication.md)。 一种建议使用的常用身份验证方法是使用 Active Directory 服务主体，该方法非常适用于应用程序或服务，它以自动或无人值守（无头）方式拉取容器映像，就像 IoT Edge 设备所做的那样。
+
+若要创建服务主体，请按[创建服务主体](../container-registry/container-registry-auth-service-principal.md#create-a-service-principal)中所述运行两个脚本。 这些脚本执行以下任务：
+
+* 第一个脚本创建服务主体。 它输出服务主体 ID 和服务主体密码。 将这些值安全地存储在记录中。
+
+* 第二个脚本创建要向服务主体授予的角色分配，以后可以根据需要运行这些角色分配。 对于 `role` 参数，建议应用 acrPull  用户角色。 有关角色列表，请参阅 [Azure 容器注册表角色和权限](../container-registry/container-registry-roles.md)。
+
+若要使用服务主体进行身份验证，请提供你通过第一个脚本获取的服务主体 ID 和密码。 在部署清单中指定这些凭据。
+
+* 对于用户名或客户端 ID，请指定服务主体 ID。
+
+* 对于密码或客户端机密，请指定服务主体密码。
+
+> [!NOTE]
+> 实现增强的安全身份验证后，请禁用“管理员用户”  设置，以便不再提供默认的用户名/密码访问权限。 在 Azure 门户的容器注册表中，从左窗格菜单的“设置”  下选择“访问密钥”  。
 
 ### <a name="use-tags-to-manage-versions"></a>使用标记管理版本
 
