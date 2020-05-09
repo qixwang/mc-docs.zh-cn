@@ -3,32 +3,127 @@ title: 模板部署 what-if（预览版）
 description: 在部署 Azure 资源管理器模板之前确定资源将会发生的更改。
 author: rockboyfor
 ms.topic: conceptual
-origin.date: 11/20/2019
-ms.date: 01/06/2020
+ms.date: 04/30/2020
 ms.author: v-yeche
-ms.openlocfilehash: 6b8dc82d6c8dd53205913283bf06fa089261ccf7
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 404984828963ae1755a66e27b2dce4037a155969
+ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75631334"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82596084"
 ---
 <!--PRIVATE VIEW NOT SUIT FOR OUTSIDE OF MICROSOFT-->
 <!--RELEASE BEFORE CONFIRM-->
 <!--MOONCAKE: We submit the private preview request on https://aka.ms/armtemplatepreviews-->
 <!--Wait for reply-->
-# <a name="resource-manager-template-deployment-what-if-operation-preview"></a>资源管理器模板部署 what-if 操作（预览版）
+# <a name="arm-template-deployment-what-if-operation-preview"></a>ARM 模板部署 what-if 操作（预览版）
 
-在部署模板之前，你可能想要预览将会发生的更改。 Azure 资源管理器提供 what-if（假设）操作，让你在部署模板时了解资源发生的更改。 what-if 操作不会对现有资源进行任何更改， 而是预测在部署指定的模板时发生的更改。
+在部署 Azure 资源管理器 (ARM) 模板之前，可能需要预览将要进行的更改。 Azure 资源管理器提供 what-if（假设）操作，让你在部署模板时了解资源发生的更改。 what-if 操作不会对现有资源进行任何更改， 而是预测在部署指定的模板时发生的更改。
 
 > [!NOTE]
-> what-if 操作目前以预览版提供。 若要使用此操作，必须[注册预览版](https://aka.ms/armtemplatepreviews)。 在预览版中，结果有时可能会显示资源将发生更改，但实际上并不会发生更改。 我们正在努力减少这些问题，但需要大家的帮助。 请在 [https://aka.ms/armwhatifissues](https://aka.ms/armwhatifissues) 上报告这些问题。
+> what-if 操作目前以预览版提供。 在预览版中，结果有时可能会显示资源将发生更改，但实际上并不会发生更改。 我们正在努力减少这些问题，但需要大家的帮助。 请在 [https://aka.ms/whatifissues](https://aka.ms/whatifissues) 上报告这些问题。
 
-可以通过 `New-AzDeploymentWhatIf` PowerShell 命令或[部署 - What If](https://docs.microsoft.com/rest/api/resources/deployments/whatif) REST 操作来使用 what-if 操作。
+可将 what-if 操作与 PowerShell 命令或 REST API 操作配合使用。
 
-在 PowerShell 中，输出如下所示：
+## <a name="install-powershell-module"></a>安装 PowerShell 模块
+
+若要在 PowerShell 中使用 what-if，请从 PowerShell 库安装 Az.Resources 模块预览版。
+
+### <a name="install-preview-version"></a>安装预览版
+
+若要安装预览版模块，请使用以下命令：
+
+```powershell
+Install-Module Az.Resources -RequiredVersion 1.12.1-preview -AllowPrerelease
+```
+
+### <a name="uninstall-alpha-version"></a>卸载 alpha 版本
+
+如果以前安装了 alpha 版本的 what-if 模块，请卸载该模块。 alpha 版本仅适用于注册了抢鲜预览版的用户。 如果未安装该预览版，则可跳过此部分。
+
+1. 以管理员身份运行 PowerShell
+1. 检查安装的 Az.Resources 模块版本。
+
+   ```powershell
+   Get-InstalledModule -Name Az.Resources -AllVersions | select Name,Version
+   ```
+
+1. 如果已安装版本的版本号格式为 2.x.x-alpha，请卸载该版本  。
+
+   ```powershell
+   Uninstall-Module Az.Resources -RequiredVersion 2.0.1-alpha5 -AllowPrerelease
+   ```
+
+1. 取消注册用于安装预览版的 what-if 存储库。
+
+   ```powershell
+   Unregister-PSRepository -Name WhatIfRepository
+   ```
+
+现在可以使用 what-if 了。
+
+## <a name="see-results"></a>查看结果
+
+在 PowerShell 中，输出的结果进行了颜色编码，方便你查看不同类型的更改。
 
 ![资源管理器模板部署 what-if 操作 fullresourcepayloads 和更改类型](./media/template-deploy-what-if/resource-manager-deployment-whatif-change-types.png)
+
+文本输出如下：
+
+```powershell
+Resource and property changes are indicated with these symbols:
+  - Delete
+  + Create
+  ~ Modify
+
+The deployment will update the following scope:
+
+Scope: /subscriptions/./resourceGroups/ExampleGroup
+
+  ~ Microsoft.Network/virtualNetworks/vnet-001 [2018-10-01]
+    - tags.Owner: "Team A"
+    ~ properties.addressSpace.addressPrefixes: [
+      - 0: "10.0.0.0/16"
+      + 0: "10.0.0.0/15"
+      ]
+    ~ properties.subnets: [
+      - 0:
+
+          name:                     "subnet001"
+          properties.addressPrefix: "10.0.0.0/24"
+
+      ]
+
+Resource changes: 1 to modify.
+```
+
+## <a name="what-if-commands"></a>what-if 命令
+
+可以使用 Azure PowerShell 或 Azure REST API 执行 what-if 操作。
+
+### <a name="azure-powershell"></a>Azure PowerShell
+
+若要在部署模板之前预览一下所做的更改，请将 `-Whatif` 开关参数添加到部署命令。
+
+* 对于资源组部署，请使用 `New-AzResourceGroupDeployment -Whatif`
+* 对于订阅级别的部署，请使用 `New-AzSubscriptionDeployment -Whatif` 和 `New-AzDeployment -Whatif`
+
+也可使用 `-Confirm` 开关参数来预览所做的更改，让系统显示是否继续部署的提示。
+
+* 对于资源组部署，请使用 `New-AzResourceGroupDeployment -Confirm`
+* 对于订阅级别的部署，请使用 `New-AzSubscriptionDeployment -Confirm` 和 `New-AzDeployment -Confirm`
+
+上述命令返回适用于手动检查的文本摘要。 若要获取一个适用于以编程方式在其中检查更改的对象，请使用以下命令：
+
+* 对于资源组部署，请使用 `$results = Get-AzResourceGroupDeploymentWhatIfResult`
+* 对于订阅级别的部署，请使用 `$results = Get-AzSubscriptionDeploymentWhatIfResult` 或 `$results = Get-AzDeploymentWhatIfResult`
+
+### <a name="azure-rest-api"></a>Azure REST API
+
+对于 REST API，请使用：
+
+* 对于资源组部署，请使用[部署 - What If](https://docs.microsoft.com/rest/api/resources/deployments/whatif)
+* 对于订阅级别的部署，请使用[部署 - 订阅范围的 What If](https://docs.microsoft.com/rest/api/resources/deployments/whatifatsubscriptionscope)
 
 ## <a name="change-types"></a>更改类型
 
@@ -46,87 +141,194 @@ what-if 操作列出六种不同的更改类型：
 
 - **部署**：资源存在，且已在模板中定义。 将重新部署资源。 资源的属性可能会更改，也可能不会更改。 当没有足够的信息来确定是否有任何属性发生更改时，操作将返回此更改类型。 仅当 [ResultFormat](#result-format) 设置为 `ResourceIdOnly` 时，才会看到此状况。
 
-## <a name="deployment-scope"></a>部署范围
-
-可将 what-if 操作用于订阅或资源组级别的部署。 可以使用 `-ScopeType` 参数设置部署范围。 接受的值为 `Subscription` 和 `ResourceGroup`。 本文演示资源组部署。
-
-若要了解订阅级部署，请参阅[在订阅级别创建资源组和资源](deploy-to-subscription.md#)。
-
 ## <a name="result-format"></a>结果格式
 
-可以控制返回的有关所预测更改的详细级别。 将 `ResultFormat` 参数设置为 `FullResourcePayloads` 可获取会发生更改的资源列表，以及会发生更改的属性的详细信息。 将 `ResultFormat` 参数设置为 `ResourceIdOnly` 可获取会发生更改的资源列表。 默认值为 `FullResourcePayloads`。  
+可以控制返回的有关所预测更改的详细级别。 在部署命令 (`New-Az*Deployment`) 中，请使用 -WhatIfResultFormat 参数  。 在编程对象命令 (`Get-Az*DeploymentWhatIf`) 中，请使用 ResultFormat 参数  。
 
-以下屏幕截图显示了两种不同的输出格式：
+将 format 参数设置为 FullResourcePayloads 可获取将会更改的资源的列表，以及将会更改的属性的详细信息  。 将 format 参数设置为 ResourceIdOnly 可获取将会更改的资源的列表  。 默认值为 FullResourcePayloads  。  
+
+以下结果显示了两种不同的输出格式：
 
 - 完整资源有效负载
 
-    ![资源管理器模板部署 what-if 操作 fullresourcepayloads 输出](./media/template-deploy-what-if/resource-manager-deployment-whatif-output-fullresourcepayload.png)
+  ```powershell
+  Resource and property changes are indicated with these symbols:
+    - Delete
+    + Create
+    ~ Modify
+
+  The deployment will update the following scope:
+
+  Scope: /subscriptions/./resourceGroups/ExampleGroup
+
+    ~ Microsoft.Network/virtualNetworks/vnet-001 [2018-10-01]
+      - tags.Owner: "Team A"
+      ~ properties.addressSpace.addressPrefixes: [
+        - 0: "10.0.0.0/16"
+        + 0: "10.0.0.0/15"
+        ]
+      ~ properties.subnets: [
+        - 0:
+
+          name:                     "subnet001"
+          properties.addressPrefix: "10.0.0.0/24"
+
+        ]
+
+  Resource changes: 1 to modify.
+  ```
 
 - 仅限资源 ID
 
-    ![资源管理器模板部署 what-if 操作 resourceidonly 输出](./media/template-deploy-what-if/resource-manager-deployment-whatif-output-resourceidonly.png)
+  ```powershell
+  Resource and property changes are indicated with this symbol:
+    ! Deploy
+
+  The deployment will update the following scope:
+
+  Scope: /subscriptions/./resourceGroups/ExampleGroup
+
+    ! Microsoft.Network/virtualNetworks/vnet-001
+
+  Resource changes: 1 to deploy.
+  ```
 
 ## <a name="run-what-if-operation"></a>运行 what-if 操作
 
 ### <a name="set-up-environment"></a>设置环境
 
-为了了解 what-if 的工作原理，让我们运行一些测试。 首先，通过[用于创建存储帐户的 Azure 快速入门模板](https://github.com/Azure/azure-quickstart-templates/blob/master/101-storage-account-create/azuredeploy.json)部署一个模板。 默认存储帐户类型为 `Standard_LRS`。 将使用此存储帐户来测试 what-if 如何报告更改。
+为了了解 what-if 的工作原理，让我们运行一些测试。 首先，部署一个[用于创建虚拟网络的模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/what-if/what-if-before.json)。 将使用此虚拟网络来测试 what-if 如何报告更改。
 
-```powershell
+```azurepowershell
 New-AzResourceGroup `
   -Name ExampleGroup `
-  -Location chinaeast
+  -Location centralus
 New-AzResourceGroupDeployment `
   -ResourceGroupName ExampleGroup `
-  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json"
+  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/what-if/what-if-before.json"
 ```
 
 ### <a name="test-modification"></a>测试修改
 
-部署完成后，即可测试 what-if 操作。 运行 what-if 命令，但同时将存储帐户类型更改为 `Standard_GRS`。
+部署完成后，即可测试 what-if 操作。 这一次，请部署一个[用于更改虚拟网络的模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/what-if/what-if-after.json)。 该模板中缺少一个原始标记，已删除了一个子网，并且已更改了地址前缀。
 
-```powershell
-New-AzDeploymentWhatIf `
-  -ScopeType ResourceGroup `
+```azurepowershell
+New-AzResourceGroupDeployment `
+  -Whatif `
   -ResourceGroupName ExampleGroup `
-  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json" `
-  -storageAccountType Standard_GRS
+  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/what-if/what-if-after.json"
 ```
 
 what-if 输出类似于：
 
-![资源管理器模板部署 what-if 操作输出](./media/template-deploy-what-if/resource-manager-deployment-whatif-output.png)
+![资源管理器模板部署 what-if 操作输出](./media/template-deploy-what-if/resource-manager-deployment-whatif-change-types.png)
+
+文本输出如下：
+
+```powershell
+Resource and property changes are indicated with these symbols:
+  - Delete
+  + Create
+  ~ Modify
+
+The deployment will update the following scope:
+
+Scope: /subscriptions/./resourceGroups/ExampleGroup
+
+  ~ Microsoft.Network/virtualNetworks/vnet-001 [2018-10-01]
+    - tags.Owner: "Team A"
+    ~ properties.addressSpace.addressPrefixes: [
+      - 0: "10.0.0.0/16"
+      + 0: "10.0.0.0/15"
+      ]
+    ~ properties.subnets: [
+      - 0:
+
+        name:                     "subnet001"
+        properties.addressPrefix: "10.0.0.0/24"
+
+      ]
+
+Resource changes: 1 to modify.
+```
 
 请注意，输出顶部的颜色用于指示更改类型。
 
-输出的底部显示 SKU 名称（存储帐户类型）将从 **Standard_LRS** 更改为 **Standard_GRS**。
+输出的底部显示了“已删除所有者”标记。 地址前缀已从 10.0.0.0/16 更改为 10.0.0.0/15。 已删除名为 subnet001 的子网。 请记住，并未实际部署这些更改。 如果部署该模板，则可预览会发生的更改。
 
-列出为已删除的某些属性实际上不会更改。 在上图中，这些属性是 accessTier、encryption.keySource 和该节中的其他属性。 当属性不在模板中时，它们可能被错误地报告为已删除，但在部署过程中会自动设置为默认值。 此结果在 what-if 响应中被视为“干扰信息”。 最终部署的资源将具有为属性设置的值。 当 what-if 操作成熟时，将从结果中筛选出这些属性。
+列出为已删除的某些属性实际上不会更改。 当属性不在模板中时，它们可能被错误地报告为已删除，但在部署过程中会自动设置为默认值。 此结果在 what-if 响应中被视为“干扰信息”。 最终部署的资源将具有为属性设置的值。 当 what-if 操作成熟时，将从结果中筛选出这些属性。
 
-### <a name="test-deletion"></a>测试删除
+## <a name="programmatically-evaluate-what-if-results"></a>以编程方式评估 what-if 结果
+
+现在，让我们将命令设置为变量，以编程方式评估 what-if 结果。
+
+```azurepowershell
+$results = Get-AzResourceGroupDeploymentWhatIfResult `
+  -ResourceGroupName ExampleGroup `
+  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/what-if/what-if-after.json"
+```
+
+可以看到每项更改的摘要。
+
+```azurepowershell
+foreach ($change in $results.Changes)
+{
+  $change.Delta
+}
+```
+
+## <a name="confirm-deletion"></a>确认删除
 
 what-if 操作支持使用[部署模式](deployment-modes.md)。 设置为完整模式时，将删除不在模板中的资源。 以下示例部署一个处于完整模式的[未定义任何资源的模板](https://github.com/Azure/azure-docs-json-samples/blob/master/empty-template/azuredeploy.json)。
 
-```powershell
-New-AzDeploymentWhatIf `
-  -ScopeType ResourceGroup `
+若要在部署模板之前预览所做的更改，请在部署命令中使用 `-Confirm` 开关参数。 如果更改符合预期，请确认你想要完成此部署。
+
+```azurepowershell
+New-AzResourceGroupDeployment `
+  -Confirm `
   -ResourceGroupName ExampleGroup `
   -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/empty-template/azuredeploy.json" `
   -Mode Complete
 ```
 
-由于该模板中未定义任何资源，且部署模式设置为“完整”，因此将删除存储帐户。
+由于该模板中未定义任何资源，且部署模式设置为完成，因此会删除虚拟网络。
 
 ![资源管理器模板部署 what-if 操作输出 - 完整部署模式](./media/template-deploy-what-if/resource-manager-deployment-whatif-output-mode-complete.png)
 
-请务必记住，what-if 不会进行任何实际的更改。 存储帐户仍在资源组中。
+文本输出如下：
+
+```powershell
+Resource and property changes are indicated with this symbol:
+  - Delete
+
+The deployment will update the following scope:
+
+Scope: /subscriptions/./resourceGroups/ExampleGroup
+
+  - Microsoft.Network/virtualNetworks/vnet-001
+
+      id:
+"/subscriptions/./resourceGroups/ExampleGroup/providers/Microsoft.Network/virtualNet
+works/vnet-001"
+      location:        "centralus"
+      name:            "vnet-001"
+      tags.CostCenter: "12345"
+      tags.Owner:      "Team A"
+      type:            "Microsoft.Network/virtualNetworks"
+
+Resource changes: 1 to delete.
+
+Are you sure you want to execute the deployment?
+[Y] Yes  [A] Yes to All  [N] No  [L] No to All  [S] Suspend  [?] Help (default is "Y"):
+```
+
+你会看到预期的更改，并且可以确认你想要运行此部署。
 
 ## <a name="next-steps"></a>后续步骤
 
 - 如果发现 what-if 预览版提供了错误的结果，请在 [https://aka.ms/whatifissues](https://aka.ms/whatifissues) 上报告问题。
-- 若要使用 Azure PowerShell 部署模板，请参阅[使用资源管理器模板和 Azure PowerShell 部署资源](deploy-powershell.md)。
-- 若要使用 REST 部署模板，请参阅[使用资源管理器模板和资源管理器 REST API 部署资源](deploy-rest.md)。
-- 若要在出错时回滚到成功的部署，请参阅[出错时回滚到成功的部署](rollback-on-error.md)。
+- 若要使用 Azure PowerShell 来部署模板，请参阅[使用 ARM 模板和 Azure PowerShell 来部署资源](deploy-powershell.md)。
+- 若要使用 REST 来部署模板，请参阅[使用 ARM 模板和资源管理器 REST API 来部署资源](deploy-rest.md)。
+
 
 <!-- Update_Description: update meta properties, wording update, update link -->
-<!--NEW.date: 11/25/2019-->

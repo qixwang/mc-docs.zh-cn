@@ -1,6 +1,6 @@
 ---
 title: Azure 媒体服务 v3 常见问题 | Microsoft Docs
-description: 本文将解答 Azure 媒体服务 v3 常见问题。
+description: 本文解答有关 Azure 媒体服务 v3 的常见问题。
 services: media-services
 documentationcenter: ''
 author: WenJason
@@ -9,22 +9,22 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-origin.date: 03/18/2020
-ms.date: 04/06/2020
+origin.date: 04/07/2020
+ms.date: 05/11/2020
 ms.author: v-jay
-ms.openlocfilehash: 3de8546c9726676b18edf278b90974660bdd5cad
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 239526edb66dc35393550f73be98f0f9632d2af5
+ms.sourcegitcommit: 95efd248f5ee3701f671dbd5cfe0aec9c9959a24
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80625792"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82507704"
 ---
 # <a name="media-services-v3-frequently-asked-questions"></a>媒体服务 v3 常见问题解答
 
 > [!NOTE]
 > Google Widevine 内容保护服务目前在 Azure 中国区域不可用。
 
-本文将解答 Azure 媒体服务 (AMS) v3 常见问题。
+本文解答有关 Azure 媒体服务 v3 的常见问题。
 
 ## <a name="general"></a>常规
 
@@ -32,23 +32,23 @@ ms.locfileid: "80625792"
 
 请参阅[媒体服务帐户的基于角色的访问控制 (RBAC)](rbac-overview.md)。
 
-### <a name="how-do-you-stream-to-apple-ios-devices"></a>如何流式传输到 Apple iOS 设备？
+### <a name="how-do-i-stream-to-apple-ios-devices"></a>如何流式传输到 Apple iOS 设备？
 
-确保在路径的末尾（在 URL 的“/manifest”部分之后）有“(format=m3u8-aapl)”，以告知流式处理源服务器返回 HLS 内容以供在 Apple iOS 本机设备上使用（有关详细信息，请参阅[传送内容](dynamic-packaging-overview.md)）。
+确保在路径的末尾（在 URL 的“/manifest”部分之后）有“(format=m3u8-aapl)”，目的是告知流式处理源服务器返回 HTTP Live Streaming (HLS) 内容，以便在 Apple iOS 本机设备上使用   。 有关详细信息，请参阅[传送内容](dynamic-packaging-overview.md)。
 
 ### <a name="how-do-i-configure-media-reserved-units"></a>如何配置媒体预留单位？
 
-对于由媒体服务 v3 或视频索引器触发的音频分析和视频分析作业，强烈建议为你的帐户预配 10 S3 MRU。 如果需要超过 10 S3 MRU 的数量，请使用 [Azure 门户](https://portal.azure.cn/)打开一个支持票证。
+对于由媒体服务 v3 或视频索引器触发的音频分析和视频分析作业，建议为你的帐户预配 10 个 S3 媒体预留单位 (MRU)。 如果需要超过 10 S3 MRU 的数量，请使用 [Azure 门户](https://portal.azure.cn/)创建支持票证。
 
-有关详细信息，请参阅[使用 CLI 调整媒体处理的规模](media-reserved-units-cli-how-to.md)。
+有关详细信息，请参阅[调整媒体处理的规模](media-reserved-units-cli-how-to.md)。
 
 ### <a name="what-is-the-recommended-method-to-process-videos"></a>什么是处理视频的建议方法？
 
-[转换](https://docs.microsoft.com/rest/api/media/transforms)可用来配置对视频进行编码或分析的常见任务。 每个**转换**描述了用于处理视频或音频文件的脚本或任务工作流。 [作业](https://docs.microsoft.com/rest/api/media/jobs)是针对媒体服务的实际请求，目的是将**转换**应用到给定的输入视频或音频内容。 创建转换后，可以使用媒体服务 API 或任何已发布的 SDK 来提交作业。 有关详细信息，请参阅[转换和作业](transforms-jobs-concept.md)。
+[转换](https://docs.microsoft.com/rest/api/media/transforms)可用来配置对视频进行编码或分析的常见任务。 每个转换描述了用于处理视频或音频文件的脚本或任务工作流。 [作业](https://docs.microsoft.com/rest/api/media/jobs)是针对媒体服务的实际请求，目的是将转换应用到输入视频或音频内容。 创建转换后，可以使用媒体服务 API 或任何已发布的 SDK 来提交作业。 有关详细信息，请参阅[转换和作业](transforms-jobs-concept.md)。
 
-### <a name="i-uploaded-encoded-and-published-a-video-what-would-be-the-reason-the-video-does-not-play-when-i-try-to-stream-it"></a>我已经上传、编码并发布了视频。 为什么在我尝试对视频进行流式处理时，它不播放？
+### <a name="i-uploaded-encoded-and-published-a-video-why-wont-the-video-play-when-i-try-to-stream-it"></a>我已经上传、编码并发布了视频。 为什么在我尝试对视频进行流式处理时，它不播放？
 
-最常见的原因之一是，你没有在“正在运行”状态下从其播放的流式处理终结点。
+最常见的原因之一是，你播放时使用的流式处理终结点未处于“正在运行”状态。
 
 ### <a name="how-does-pagination-work"></a>分页是如何工作的？
 
@@ -64,41 +64,39 @@ ms.locfileid: "80625792"
 
 ## <a name="live-streaming"></a>实时传送视频流 
 
-###  <a name="how-to-insert-breaksvideos-and-image-slates-during-live-stream"></a>如何在实时流过程中插入中断/视频和图像盖板？
+###  <a name="how-do-i-insert-breaksvideos-and-image-slates-during-a-live-stream"></a>如何在实时传送流过程中插入中断/视频和图像盖板？
 
 媒体服务 v3 实时编码尚不支持在实时流过程中插入视频或图像盖板。 
 
-可以使用[实时本地编码器](recommended-on-premises-live-encoders.md)切换源视频。 许多应用提供切换源（包括 Telestream Wirecast、Switcher Studio（在 iOS 上）、OBS Studio（免费应用）等）的功能。
+可以使用[实时本地编码器](recommended-on-premises-live-encoders.md)切换源视频。 许多应用提供切换源（包括 Telestream Wirecast、Switcher Studio（在 iOS 上）和 OBS Studio（免费应用））的功能。
 
 ## <a name="content-protection"></a>内容保护
 
-### <a name="should-i-use-an-aes-128-clear-key-encryption-or-a-drm-system"></a>应使用 AES-128 明文密钥加密还是 DRM 系统？
+### <a name="should-i-use-aes-128-clear-key-encryption-or-a-drm-system"></a>应使用 AES-128 明文密钥加密还是 DRM 系统？
 
 客户通常希望知道他们应该使用 AES 加密还是 DRM 系统。 这两个系统之间的主要差别在于，使用 AES 加密时，内容密钥将通过 TLS 传输到客户端，这样，密钥将经过传输中加密，但不会经过任何进一步的加密（“明文加密”）。 因此，用于解密内容的密钥可由客户端播放器访问，并且可以在客户端上的网络跟踪中以纯文本形式显示。 AES-128 明文密钥加密适合查看者是受信任方的用例（例如，加密员工观看的在公司内部分发的公司视频）。
 
-相比 AES-128 明文密钥，DRM 系统（例如 PlayReady 和 FairPlay）可对用于解密内容的密钥提供额外的加密级别。 内容密钥将会加密成受 DRM 运行时保护的密钥，此外，还会受到 TLS 提供的任何传输级加密。 此外，解密是操作系统级别在安全的环境中处理的，在这样的环境中，恶意用户更难进行攻击。 在查看者可能不是受信任方且需要更高等级的安全性的用例中，建议使用 DRM。
+相比 AES-128 明文密钥，DRM 系统（例如 PlayReady 和 FairPlay）可对用于解密内容的密钥提供额外的加密级别。 内容密钥将会加密成受 DRM 运行时保护的密钥，此外还会进行 TLS 提供的任何传输级加密。 此外，解密是在安全的环境中在操作系统级别处理的，在这样的环境中，恶意用户更难进行攻击。 在观看者可能不是受信任方且需要更高等级的安全性的用例中，建议使用 DRM。
 
-### <a name="how-to-show-a-video-only-to-users-who-have-a-specific-permission-without-using-azure-ad"></a>如何在不使用 Azure AD 的情况下仅向具有特定权限的用户显示视频？
+### <a name="how-do-i-show-a-video-to-only-users-who-have-a-specific-permission-without-using-azure-ad"></a>如何在不使用 Azure AD 的情况下仅向具有特定权限的用户显示视频？
 
-无需使用任何特定的令牌提供程序（例如 Azure AD）。 可以使用非对称密钥加密创建自己的 [JWT](https://jwt.io/) 提供程序（所谓 STS，安全令牌服务）。 在自定义 STS 中，可以根据业务逻辑添加声明。
+无需使用任何特定的令牌提供程序，例如 Azure Active Directory (Azure AD)。 可以使用非对称密钥加密创建自己的 [JWT](https://jwt.io/) 提供程序（所谓的“安全令牌服务”，简称 STS）。 在自定义 STS 中，可以根据业务逻辑添加声明。
 
-确保颁发者、受众和声明在 JWT 中的内容和 ContentKeyPolicy 中使用的 ContentKeyPolicyRestriction 之间完全匹配。
+确保颁发者、受众和声明在 JWT 中的内容和 `ContentKeyPolicy` 中使用的 `ContentKeyPolicyRestriction` 值之间完全匹配。
 
 有关详细信息，请参阅[使用媒体服务动态加密保护内容](content-protection-overview.md)。
 
-### <a name="how-and-where-to-get-jwt-token-before-using-it-to-request-license-or-key"></a>在使用 JWT 令牌请求许可证或密钥之前，如何以及在何处获取 JWT 令牌？
+### <a name="how-and-where-did-i-get-a-jwt-token-before-using-it-to-request-a-license-or-key"></a>在使用 JWT 令牌请求许可证或密钥之前，如何以及在何处获取 JWT 令牌？
 
-1. 在生产环境中，需要获取安全令牌服务 (STS)（Web 服务），以便根据 HTTPS 请求颁发 JWT 令牌。 对于测试，可以使用 **Program.cs** 定义的 [GetTokenAsync](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs) 方法中所示的代码。
-2. 对用户进行身份验证后，播放器需要向 STS 发出请求以获取此类令牌，并将其分配为令牌的值。 可以使用 [Azure Media Player API](https://amp.azure.net/libs/amp/latest/docs/)。
+在生产环境中，需要获取安全令牌服务（一个 Web 服务），以便根据 HTTPS 请求颁发 JWT 令牌。 对于测试，可以使用 [Program.cs](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs) 定义的 `GetTokenAsync` 方法中所示的代码。
 
-* 有关使用对称和非对称密钥运行 STS 的示例，请参阅 [https://aka.ms/jwt](https://aka.ms/jwt)。 
-* 有关使用此类 JWT 令牌的、基于 Azure Media Player 的播放器示例，请参阅 [https://aka.ms/amtest](https://aka.ms/amtest)（展开“player_settings”链接可查看令牌输入）。
+对用户进行身份验证后，播放器会向 STS 发出请求以获取此类令牌，并将其分配为令牌的值。 可以使用 [Azure Media Player API](https://amp.azure.net/libs/amp/latest/docs/)。
 
-### <a name="how-do-you-authorize-requests-to-stream-videos-with-aes-encryption"></a>如何授权使用 AES 加密流式传输视频的请求？
+有关使用对称密钥或非对称密钥运行 STS 的示例，请参阅 [JWT 工具](https://aka.ms/jwt)。 有关使用此类 JWT 令牌的基于 Azure Media Player 的播放器示例，请参阅 [Azure 媒体测试工具](https://aka.ms/amtest)。 （展开“player_settings”链接可查看令牌输入。） 
 
-正确的方法是利用 STS（安全令牌服务）：
+### <a name="how-do-i-authorize-requests-to-stream-videos-with-aes-encryption"></a>如何授权使用 AES 加密流式传输视频的请求？
 
-在 STS 中，根据用户配置文件添加不同的声明（例如“高级用户”、“基本用户”、“免费试用版用户”）。 在 JWT 中添加不同的声明后，用户可以查看不同的内容。 当然，对于不同的内容/资产，ContentKeyPolicyRestriction 包含相应的 RequiredClaims。
+正确的方法是使用安全令牌服务。 在 STS 中，根据用户配置文件添加不同的声明（例如“高级用户”、“基本用户”、“免费试用版用户”）。 在 JWT 中添加不同的声明后，用户可以查看不同的内容。 对于不同的内容或资产，`ContentKeyPolicyRestriction` 会包含相应的 `RequiredClaims` 值。
 
 使用 Azure 媒体服务 API 来配置许可证/传送密钥以及加密资产（如[此示例](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES/Program.cs)中所示）。
 
@@ -107,29 +105,29 @@ ms.locfileid: "80625792"
 - [内容保护概述](content-protection-overview.md)
 - [设计带访问控制的多 DRM 内容保护系统](design-multi-drm-system-with-access-control.md)
 
-### <a name="http-or-https"></a>使用 HTTP 还是 HTTPS？
+### <a name="should-i-use-http-or-https"></a>应该使用 HTTP 还是 HTTPS？
 构建的 ASP.NET MVC 播放器应用程序必须支持以下功能：
 
 * 通过 Azure AD 进行用户身份验证（使用 HTTPS）。
 * 客户端与 Azure AD 之间的 JWT 交换（使用 HTTPS）。
 * 客户端的 DRM 许可证获取，如果许可证传送由媒体服务提供（必须使用 HTTPS）。 PlayReady 产品套件不会针对许可证传送强制要求使用 HTTPS。 如果 PlayReady 许可证服务器位于媒体服务以外的地方，则可以使用 HTTP 或 HTTPS。
 
-最佳做法是让 ASP.NET 播放器应用程序使用 HTTPS，使媒体播放器位于使用 HTTPS 的页面上。 不过，最好是使用 HTTP 进行流式传输，因此需要考虑混合内容问题。
+最佳做法是让 ASP.NET 播放器应用程序使用 HTTPS，使媒体播放器位于使用 HTTPS 的页面上。 不过，最好是使用 HTTP 进行流式传输，因此需要考虑这些混合内容问题：
 
-* 浏览器不允许混合内容。 但是 Silverlight 等插件和适用于平滑流与 DASH 的 OSMF 插件允许混合内容。 混合内容存在安全隐患 - 因为能够插入恶意 JavaScript 威胁，从而使客户数据处于风险之中。 默认情况下，浏览器会阻止此类内容。 唯一的解决方法是在服务器（来源）端允许所有域（不管是 HTTPS 还是 HTTP）。 这可能也不是个好主意。
-* 避免混合内容。 播放器应用程序和媒体播放器应使用 HTTP 或 HTTPS。 播放混合内容时，silverlightSS 技术需要清除混合内容警告。 flashSS 技术在没有混合内容警告的情况下处理混合内容。
+* 浏览器不允许混合内容。 但是 Silverlight 等插件和适用于平滑流与 DASH 的 OSMF 插件允许混合内容。 混合内容是一个安全隐患，因为存在插入恶意 JavaScript 的威胁，使客户数据处于风险之中。 默认情况下，浏览器会阻止此类内容。 唯一的解决方法是在服务器（来源）端允许所有域（不管是 HTTPS 还是 HTTP）。 这可能也不是个好主意。
+* 避免混合内容。 播放器应用程序和媒体播放器应使用 HTTP 或 HTTPS。 播放混合内容时，SilverlightSS 技术需要清除混合内容警告。 FlashSS 技术在没有混合内容警告的情况下处理混合内容。
 * 如果流式处理终结点是在 2014 年 8 月之前创建的，则它不支持 HTTPS。 在此情况下，请针对 HTTPS 创建并使用新的流式处理终结点。
 
 ### <a name="what-about-live-streaming"></a>如何使用实时流？
 
-可以使用完全相同的设计和实现来保护媒体服务中的实时传送视频流，方法是将与节目关联的资产视为 VOD 资产。 若要为实时内容提供多重 DRM 保护，请在将资产关联到实时输出之前，将相同的设置/处理应用到资产，就如同它是 VOD 资产一样。
+可以使用完全相同的设计和实现来帮助保护媒体服务中的实时传送视频流，方法是将与节目关联的资产视为 VOD 资产。 若要为实时内容提供多重 DRM 保护，请在将资产关联到实时输出之前，将相同的设置/处理应用到资产，就如同它是 VOD 资产一样。
 
 ### <a name="what-about-license-servers-outside-media-services"></a>如何使用媒体服务外部的许可证服务器？
 
-通常，客户可能已在他们自己的数据中心或由 DRM 服务提供商托管的位置投资了许可证服务器场。 使用媒体服务内容保护，可以在混合模式下操作。 可以在媒体服务中托管和动态保护内容，而 DRM 许可证由 Azure 媒体服务外部的服务器传送。 在此情况下，请注意以下变更：
+通常，客户可能已在自己的数据中心或由 DRM 服务提供商托管的位置投资了许可证服务器场。 使用媒体服务内容保护，可以在混合模式下操作。 可以在媒体服务中托管和动态保护内容，而 DRM 许可证由 Azure 媒体服务外部的服务器传送。 在此情况下，请注意以下变更：
 
 * STS 需要颁发被许可证服务器场认可和验证的令牌。
-* 不再需要在媒体服务中配置许可证传送服务。 配置 ContentKeyPolicies 时，需要提供许可证获取 URL（针对 PlayReady 和 FairPlay）。
+* 不再需要在媒体服务中配置许可证传送服务。 配置 `ContentKeyPolicy` 时，需要提供许可证获取 URL（针对 PlayReady 和 FairPlay）。
 
 ## <a name="media-services-v2-vs-v3"></a>媒体服务 v2 与 v3 
 
@@ -137,21 +135,81 @@ ms.locfileid: "80625792"
 
 目前，可以使用 [Azure 门户](https://portal.azure.cn/)执行以下操作：
 
-* 管理媒体服务 v3 [直播活动](live-events-outputs-concept.md)、 
-* 查看（而不是管理）v3 [资产](assets-concept.md)、 
+* 在媒体服务 v3 中管理[实时事件](live-events-outputs-concept.md)。 
+* 查看（而不是管理）v3 [资产](assets-concept.md)。 
 * [获取有关访问 API 的信息](access-api-portal.md)。 
 
-对于其他所有管理任务（例如，[转换和作业](transforms-jobs-concept.md)和[内容保护](content-protection-overview.md)），请使用 [REST API](https://docs.microsoft.com/rest/api/media/)、[CLI](https://aka.ms/ams-v3-cli-ref) 或某个受支持的 [SDK](media-services-apis-overview.md#sdks)。
+对于其他所有管理任务（例如，[转换和作业](transforms-jobs-concept.md)和[内容保护](content-protection-overview.md)），请使用 [REST API](https://docs.microsoft.com/rest/api/media/)、[Azure CLI](https://aka.ms/ams-v3-cli-ref) 或某个受支持的 [SDK](media-services-apis-overview.md#sdks)。
 
 ### <a name="is-there-an-assetfile-concept-in-v3"></a>v3 中是否有 AssetFile 概念？
 
-已从 AMS API 中删除 AssetFile，以便将媒体服务与存储 SDK 依赖项分开。 现在由存储而非媒体服务来保存属于存储的信息。 
+已从媒体服务 API 中删除了 `AssetFile` 概念，以便将媒体服务与存储 SDK 依赖项分开。 现在由 Azure 存储而非媒体服务来保存属于存储 SDK 的信息。 
 
 有关详细信息，请参阅[迁移到媒体服务 v3](media-services-v2-vs-v3.md)。
 
 ### <a name="where-did-client-side-storage-encryption-go"></a>客户端存储加密在哪里进行？
 
 现在建议使用服务器端存储加密（在默认情况下为打开状态）。 有关详细信息，请参阅[静态数据的 Azure 存储服务加密](/storage/common/storage-service-encryption)。
+
+## <a name="offline-streaming"></a>脱机流式处理
+
+### <a name="fairplay-streaming-for-ios"></a>适用于 iOS 的 FairPlay 流式处理
+
+以下常见问题解答可帮助你排查适用于 iOS 的脱机 FairPlay 流式处理的问题。
+
+#### <a name="why-does-only-audio-play-but-not-video-during-offline-mode"></a>为什么在脱机模式期间只播放音频而不播放视频？
+
+此行为似乎是示例应用专门设计的。 存在备用音频曲目时（这适用于 HLS），在脱机模式期间，iOS 10 和 iOS 11 都默认播放备用音频曲目。为了补偿 FPS 脱机模式的此行为，需要从流删除备用音频曲目。 若要在媒体服务中完成此操作，请添加动态清单筛选器 audio-only=false  。 换言之，HLS URL 将以 .ism/manifest(format=m3u8-aapl,audio-only=false) 结尾  。 
+
+#### <a name="why-does-it-still-play-audio-only-without-video-during-offline-mode-after-i-add-audio-onlyfalse"></a>为什么添加 audio-only=false 之后，在脱机模式期间仍只播放音频而不播放视频？
+
+根据内容分发网络的缓存键设计，可能会缓存该内容。 请清除缓存。
+
+#### <a name="is-fps-offline-mode-supported-on-ios-11-in-addition-to-ios-10"></a>除 iOS 10 之外，iOS 11 是否也支持 FPS 脱机模式？
+
+是的。 iOS 10 和 iOS 11 支持 FPS 脱机模式。
+
+#### <a name="why-cant-i-find-the-document-offline-playback-with-fairplay-streaming-and-http-live-streaming-in-the-fps-server-sdk"></a>为什么在 FPS Server SDK 中，无法使用 FairPlay Streaming 和 HTTP Live Streaming 找到文档“脱机播放”？
+
+从 FPS Server SDK 版本 4 开始，此文档已合并到“FairPlay Streaming 编程指南”。
+
+#### <a name="what-is-the-downloadedoffline-file-structure-on-ios-devices"></a>iOS 设备上的已下载/脱机文件结构是什么？
+
+iOS 设备上的已下载文件结构如下屏幕截图所示。 `_keys` 文件夹存储已下载的 FPS 许可证，每个许可证服务主机一个存储文件。 `.movpkg` 文件夹存储音频和视频内容。 
+
+第一个文件夹（文件名以破折号加数字结尾）包含视频内容。 数值是峰值带宽视频呈现形式。 第二个文件夹（文件名以破折号加 0 结尾）包含音频内容。 第三个文件夹（文件名为 `Data`）包含 FPS 内容的主播放列表。 最后，boot.xml 提供 `.movpkg` 文件夹内容的完整说明。 
+
+![FairPlay iOS 示例应用的脱机文件结构](media/offline-fairplay-for-ios/offline-fairplay-file-structure.png)
+
+下面是一个示例 boot.xml 文件：
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<HLSMoviePackage xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://apple.com/IMG/Schemas/HLSMoviePackage" xsi:schemaLocation="http://apple.com/IMG/Schemas/HLSMoviePackage/System/Library/Schemas/HLSMoviePackage.xsd">
+  <Version>1.0</Version>
+  <HLSMoviePackageType>PersistedStore</HLSMoviePackageType>
+  <Streams>
+    <Stream ID="1-4DTFY3A3VDRCNZ53YZ3RJ2NPG2AJHNBD-0" Path="1-4DTFY3A3VDRCNZ53YZ3RJ2NPG2AJHNBD-0" NetworkURL="https://willzhanmswest.streaming.mediaservices.windows.net/e7c76dbb-8e38-44b3-be8c-5c78890c4bb4/MicrosoftElite01.ism/QualityLevels(127000)/Manifest(aac_eng_2_127,format=m3u8-aapl)">
+      <Complete>YES</Complete>
+    </Stream>
+    <Stream ID="0-HC6H5GWC5IU62P4VHE7NWNGO2SZGPKUJ-310656" Path="0-HC6H5GWC5IU62P4VHE7NWNGO2SZGPKUJ-310656" NetworkURL="https://willzhanmswest.streaming.mediaservices.windows.net/e7c76dbb-8e38-44b3-be8c-5c78890c4bb4/MicrosoftElite01.ism/QualityLevels(161000)/Manifest(video,format=m3u8-aapl)">
+      <Complete>YES</Complete>
+    </Stream>
+  </Streams>
+  <MasterPlaylist>
+    <NetworkURL>https://willzhanmswest.streaming.mediaservices.windows.net/e7c76dbb-8e38-44b3-be8c-5c78890c4bb4/MicrosoftElite01.ism/manifest(format=m3u8-aapl,audio-only=false)</NetworkURL>
+  </MasterPlaylist>
+  <DataItems Directory="Data">
+    <DataItem>
+      <ID>CB50F631-8227-477A-BCEC-365BBF12BCC0</ID>
+      <Category>Playlist</Category>
+      <Name>master.m3u8</Name>
+      <DataPath>Playlist-master.m3u8-CB50F631-8227-477A-BCEC-365BBF12BCC0.data</DataPath>
+      <Role>Master</Role>
+    </DataItem>
+  </DataItems>
+</HLSMoviePackage>
+```
 
 ## <a name="next-steps"></a>后续步骤
 
