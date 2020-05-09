@@ -10,16 +10,18 @@ author: WenJason
 ms.author: v-jay
 manager: digimobile
 ms.custom: seo-lt-2019
-origin.date: 06/18/2019
-ms.date: 01/06/2020
-ms.openlocfilehash: 18e9ceb5a481789bfb36307d2a18ec78beb9943b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+origin.date: 03/10/2020
+ms.date: 05/11/2020
+ms.openlocfilehash: 15b6aea0a5526b4c1e6e709cc8cc74d922692ec9
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79293207"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82197776"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>创建和配置自承载集成运行时
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 集成运行时 (IR) 是 Azure 数据工厂用于在不同的网络环境之间提供数据集成功能的计算基础结构。 有关 IR 的详细信息，请参阅[集成运行时概述](concepts-integration-runtime.md)。
 
@@ -63,11 +65,14 @@ ms.locfileid: "79293207"
 
    ![创建集成运行时](media/create-self-hosted-integration-runtime/new-integration-runtime.png)
 
-1. 在“集成运行时安装”窗口中，选择“执行数据移动并将活动分发到外部计算”，然后选择“继续”。   
+1. 在“集成运行时安装”页面上，选择“Azure，自承载”，然后选择“继续”  。   
+
+1. 在下一页上选择“自承载”  以创建自承载 IR，然后选择“继续”  。
+   ![创建自承载 IR](media/create-self-hosted-integration-runtime/new-selfhosted-ir.png)
 
 1. 输入 IR 的名称，然后选择“创建”  。
 
-1. 选择“选项 1”下的链接，在计算机上打开快速安装。  或者遵循“选项 2”下的步骤进行手动安装。  以下说明基于手动安装：
+1. 在“集成运行时安装”页面上，选择“选项 1”下的链接，在计算机上打开快速安装。   或者遵循“选项 2”下的步骤进行手动安装。  以下说明基于手动安装：
 
    ![集成运行时安装](media/create-self-hosted-integration-runtime/integration-runtime-setting-up.png)
 
@@ -103,7 +108,7 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 
 下面是应用程序参数和属性的详细信息： 
 
-| 属性                                                    | 说明                                                  | 必须 |
+| 属性                                                    | 说明                                                  | 必需 |
 | ----------------------------------------------------------- | ------------------------------------------------------------ | -------- |
 | **RegisterNewNode** "`<AuthenticationKey>`"                     | 使用指定的身份验证密钥注册自承载集成运行时节点。 | 否       |
 | **RegisterNewNode** "`<AuthenticationKey>`" "`<NodeName>`"      | 使用指定的身份验证密钥和节点名称注册自承载集成运行时节点。 | 否       |
@@ -113,9 +118,9 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 | **Key** "`<AuthenticationKey>`"                                 | 覆盖或更新以前的身份验证密钥。 请谨慎执行此操作。 如果密钥属于新的集成运行时，以前的自承载 IR 节点可能会脱机。 | 否       |
 | **GenerateBackupFile** "`<filePath>`" "`<password>`"            | 为当前节点生成备份文件。 备份文件包含节点密钥和数据存储凭据。 | 否       |
 | **ImportBackupFile** "`<filePath>`" "`<password>`"              | 从备份文件还原节点。                          | 否       |
-| **重启**                                                     | 重启自承载集成运行时主机服务。   | 否       |
-| **启动**                                                       | 启动自承载集成运行时主机服务。     | 否       |
-| **停止**                                                        | 停止自承载集成运行时主机服务。        | 否       |
+| **Restart**                                                     | 重启自承载集成运行时主机服务。   | 否       |
+| **Start**                                                       | 启动自承载集成运行时主机服务。     | 否       |
+| **Stop**                                                        | 停止自承载集成运行时主机服务。        | 否       |
 | **StartUpgradeService**                                         | 启动自承载集成运行时升级服务。       | 否       |
 | **StopUpgradeService**                                          | 停止自承载集成运行时升级服务。        | 否       |
 | **TurnOnAutoUpdate**                                            | 启用自承载集成运行时自动更新。        | 否       |
@@ -163,7 +168,7 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
    
    不支持在域控制器上安装自承载集成运行时。
 - 需要 .NET Framework 4.6.1 或更高版本。 如果在 Windows 7 计算机上安装自承载集成运行时，请安装 .NET Framework 4.6.1 或更高版本。 有关详细信息，请参阅 [.NET Framework 系统需求](https://docs.microsoft.com/dotnet/framework/get-started/system-requirements)。
-- 对于自承载集成运行时计算机，建议的最低配置为 4 核 2 GHz 处理器，8 GB RAM，80 GB 磁盘可用硬盘空间。
+- 对于自承载集成运行时计算机，建议的最低配置为 4 核 2 GHz 处理器，8 GB RAM，80 GB 可用硬盘空间。
 - 如果主机计算机进入休眠状态，则自承载集成运行时不会响应数据请求。 安装自承载集成运行时之前，请在计算机上配置相应的电源计划。 如果计算机配置为休眠，则自承载集成运行时安装程序会通过消息发出提示。
 - 只有计算机管理员才能成功安装和配置自承载集成运行时。
 - 复制活动按特定的频率运行。 计算机上的处理器和 RAM 使用率遵循相同的高峰期和空闲期模式。 此外，资源使用率在很大程度上取决于移动的数据量。 进行多个复制作业时，会看到资源使用率在高峰期上升。
@@ -173,7 +178,7 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 
 ## <a name="installation-best-practices"></a>安装最佳做法
 
-可以通过从 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=39717)下载 MSI 安装程序包来安装自承载集成运行时。 有关分步说明，请参阅[在本地与云之间移动数据](tutorial-hybrid-copy-powershell.md)一文。
+可以通过从 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=39717)下载托管标识安装包来安装自承载集成运行时。 有关分步说明，请参阅[在本地与云之间移动数据](tutorial-hybrid-copy-powershell.md)一文。
 
 - 在主机上为自承载集成运行时配置电源计划，使计算机不会休眠。 如果主机进入休眠状态，则自承载集成运行时将会脱机。
 - 定期备份与自承载集成运行时相关的凭据。
@@ -183,7 +188,7 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 
 1. 转到 [Microsoft 集成运行时下载页](https://www.microsoft.com/download/details.aspx?id=39717)。
 1. 选择“下载”，选择 64 位版本，然后选择“下一步”。   不支持 32 位版本。
-1. 直接运行 MSI 文件，或将其保存到硬盘再运行。
+1. 直接运行托管标识文件，或将它保存到硬盘再运行它。
 1. 在“欢迎”窗口中选择语言，然后选择“下一步”   。
 1. 接受 Microsoft 软件许可条款，然后选择“下一步”。 
 1. 选择用于安装自承载集成运行时的**文件夹**，然后选择“下一步”  。
@@ -237,7 +242,7 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 - 证书必须是公共可信的 X509 v3 证书。 建议使用公共合作伙伴证书颁发机构 (CA) 颁发的证书。
 - 每个集成运行时节点必须信任此证书。
 - 不建议使用使用者可选名称 (SAN) 证书，因为只会使用最后一个 SAN 项。 其他所有 SAN 项将被忽略。 例如，如果某个 SAN 证书的 SAN 为 **node1.domain.contoso.com** 和 **node2.domain.contoso.com**，则只能在完全限定的域名 (FQDN) 为 **node2.domain.contoso.com** 的计算机上使用此证书。
-- 该证书可以使用 Windows Server 2012 R2 所支持的任何 SSL 证书密钥大小。
+- 此证书可以使用 Windows Server 2012 R2 支持的任何 TLS/SSL 证书密钥大小。
 - 不支持使用 CNG 密钥的证书。  
 
 > [!NOTE]
@@ -284,7 +289,7 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 
 ### <a name="known-limitations-of-self-hosted-ir-sharing"></a>自承载 IR 共享的已知限制
 
-* 要在其中创建链接 IR 的数据工厂必须包含一个 [MSI](/active-directory/managed-identities-azure-resources/overview)。 默认情况下，在 Azure 门户或 PowerShell cmdlet 中创建的数据工厂已隐式创建 MSI。 但是，如果数据工厂是通过 Azure 资源管理器模板或 SDK 创建的，则必须显式设置 **Identity** 属性。 此设置确保 Azure 资源管理器创建包含 MSI 的数据工厂。
+* 要在其中创建链接 IR 的数据工厂必须有一个[托管标识](/active-directory/managed-identities-azure-resources/overview)。 默认情况下，在 Azure 门户或 PowerShell cmdlet 中创建的数据工厂已隐式创建了托管标识。 但是，如果数据工厂是通过 Azure 资源管理器模板或 SDK 创建的，则必须显式设置 **Identity** 属性。 此设置确保资源管理器创建包含托管标识的数据工厂。
 
 * 支持此功能的数据工厂 .NET SDK 必须是 1.1.0 或更高版本。
 
@@ -328,7 +333,7 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 例如，若要从本地数据存储复制到 SQL 数据库接收器或 Azure SQL 数据仓库接收器，请执行以下步骤：
 
 1. 对于 Windows 防火墙和企业防火墙，允许 1433 端口上的出站 TCP 通信。
-1. 配置 SQL 数据库的防火墙设置，以将自承载集成运行时计算机的 IP 地址添加到允许的 IP 地址列表。
+1. 配置 SQL 数据库的防火墙设置，将自承载集成运行时计算机的 IP 地址添加到允许的 IP 地址列表。
 
 > [!NOTE]
 > 如果防火墙不允许出站端口 1433，则自承载集成运行时无法直接访问 SQL 数据库。 在这种情况下，可对 SQL 数据库和 SQL 数据仓库使用[分阶段复制](copy-activity-performance.md)。 对于此方案，只需将 HTTPS（端口 443）用于数据移动。
@@ -403,7 +408,7 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 > [!IMPORTANT]
 > 不要忘记同时更新 diahost.exe.config 和 diawp.exe.config。
 
-你还需要确保 Azure 在你公司的允许列表中。 可以从 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=42064)下载有效的 Azure IP 地址列表。
+还需要确保 Azure 在你公司的允许列表中。 可以从 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=42064)下载有效的 Azure IP 地址列表。
 
 ### <a name="possible-symptoms-for-issues-related-to-the-firewall-and-proxy-server"></a>防火墙和代理服务器相关问题的可能症状
 

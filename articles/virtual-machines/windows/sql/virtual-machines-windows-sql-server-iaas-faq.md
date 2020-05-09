@@ -13,14 +13,14 @@ ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 origin.date: 08/05/2019
-ms.date: 02/10/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: fd12d56e3ddb5ed77047fc6b72f2f4e9e3760676
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: a748486fd60714ebc58e08931f05d4cac5ce79c6
+ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80109803"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82596228"
 ---
 # <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Azure 的 Windows 虚拟机上运行的 SQL Server 常见问题解答
 
@@ -56,12 +56,17 @@ ms.locfileid: "80109803"
 
     是的，使用 PowerShell。 有关使用 PowerShell 部署 SQL Server VM 的详细信息，请参阅[如何使用 Azure PowerShell 预配 SQL Server 虚拟机](virtual-machines-windows-ps-sql-create.md)。
 
-1. **是否可以创建 SQL Server VM 的通用化 Azure SQL Server 市场映像，并使用它来部署 VM？**
+1. **如何将 Azure VM 上的 SQL Server 通用化，并使用它来部署新的 VM？**
 
-    可以，但必须在“设置”边栏中选择 SQL Server 配置以在门户中管理 SQL Server VM，并使用自动修补和自动备份等功能。
+    你可以使用 SQL Server 安装介质来部署 Windows Server VM（不在其上安装任何 SQL Server），并通过 [SQL sysprep](https://docs.microsoft.com/sql/database-engine/install-windows/install-sql-server-using-sysprep?view=sql-server-ver15) 过程将 Azure VM (Windows) 上的 SQL Server 通用化。 有[软件保障](https://www.microsoft.com/en-us/licensing/licensing-programs/software-assurance-default?rtc=1&activetab=software-assurance-default-pivot%3aprimaryr3)的客户可以从[批量许可中心](https://www.microsoft.com/en-us/Licensing/servicecenter/default.aspx)获取安装介质。 没有软件保障的客户可以使用具有所需版本的市场 SQL Server VM 映像中的安装介质。
 
-    <!--Not Available on [register each SQL Server VM with the SQL Server VM resource provider](virtual-machines-windows-sql-register-with-resource-provider.md)-->
-    <!--Not Available on When registering with the resource provider, you will also need to specify the license type for each SQL Server VM. -->
+    另外，也可使用 Azure 市场中的 SQL Server 映像之一来将 Azure VM 上的 SQL Server 通用化。 请注意，在创建你自己的映像之前，必须在源映像中删除以下注册表项。 如果不这样做，可能会导致 SQL Server 安装程序的启动文件夹扩展以及/或者 SQL IaaS 扩展处于故障状态。
+   注册表项路径：  
+    `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Setup\SysPrepExternal\Specialize`
+    
+    <!--Not Available on [registered with a SQL VM recourse provider](/virtual-machines/windows/sql/virtual-machines-windows-sql-register-with-resource-provider?tabs=azure-cli%2Cbash)-->
+    <!--Not Available on [registered with a SQL VM recourse provider](/virtual-machines/windows/sql/virtual-machines-windows-sql-register-with-resource-provider?tabs=azure-cli%2Cbash)-->
+
     
 1. **是否可以使用我自己的 VHD 来部署 SQL Server VM？**
 
@@ -94,10 +99,12 @@ ms.locfileid: "80109803"
 
    可通过两种方式来执行此操作。 企业协议 (EA) 客户可以预配[支持许可证的虚拟机映像](virtual-machines-windows-sql-server-iaas-overview.md#BYOL)之一，也称为自带许可 (BYOL)。 或者，可将 SQL Server 安装媒体复制到 Windows Server VM，然后在 VM 上安装 SQL Server。 请务必更新 Azure 门户中“设置”边栏的 SQL Server 配置，以便能够使用门户管理、自动备份和自动修补等功能。 
 
+<!--CORRECT ON two way to do this-->
 <!--Not Available on 1. **Can I change a VM to use my own SQL Server license if it was created from one of the Standard Pay-in-Advance Offer gallery images?**-->
 <!--NOTICE: this facility is available only for Public Cloud customers.-->
 <!--Not Available on 1. **Will switching licensing models require any downtime for SQL Server?**-->
 <!--Not Available on [Changing the licensing model](virtual-machines-windows-sql-ahb.md)-->
+
 1. **是否可以在使用经典模型部署的 SQL Server VM 上切换许可模型？**
 
     否。 不支持在经典 VM 上更改许可模型。 可将 VM 迁移到 Azure 资源管理器模型，并将其注册到 SQL Server VM 资源提供程序。 将 VM 注册到 SQL Server VM 资源提供程序后，即可在 VM 上更改许可模型。 
@@ -114,10 +121,11 @@ ms.locfileid: "80109803"
     1. 已通过[软件保障](https://www.microsoft.com/en-us/licensing/licensing-programs/software-assurance-default?activetab=software-assurance-default-pivot%3aprimaryr3)获得[许可移动性](https://www.microsoft.com/en-us/licensing/licensing-programs/software-assurance-license-mobility?activetab=software-assurance-license-mobility-pivot:primaryr2)。 
     1. 被动 SQL Server 实例不会为客户端提供 SQL Server 数据，也不会运行活动的 SQL Server 工作负荷。 它只用于与主服务器同步，或者使被动数据库保持热备用状态。 如果它正在提供数据（例如，向运行活动 SQL Server 工作负载的客户端报告，或执行未在产品条款中指定的任何工作），则它必须是付费许可的 SQL Server 实例。 允许对辅助实例执行以下活动：数据库一致性检查或 CheckDB、完整备份、事务日志备份，以及资源使用情况数据监视。 还可以在每隔 90 天运行一次灾难恢复测试的短暂时段内，同时运行主实例和相应的灾难恢复实例。 
     1. 活动的 SQL Server 许可证已涵盖在软件保障中，仅允许**一个**被动辅助 SQL Server 实例，允许的计算量不能超过已许可的活动服务器。 
-    1. 辅助 SQL Server VM 利用自带许可 (BYOL)。 
     
-        <!--Not Available on  Azure Hybrid Benefit (AHB) [license model](virtual-machines-windows-sql-ahb.md)-->
+    <!--Not Available on [Disaster Recovery](virtual-machines-windows-sql-high-availability-dr.md#free-dr-replica-in-azure)-->
 
+<!--Not Avaialble on 1. **What is considered a passive instance?**-->
+<!--Not Avaialble on 1. **What scenarios can utilize the Disaster Recovery (DR) benefit?**-->
 <!--Not Avaialble on 1. **What scenarios can utilize the Distaster Recovery (DR) benefit?**-->
 <!--Not Avaialble on 1. **Which subscriptions support the Disaster Recovery (DR) benefit?**-->
 

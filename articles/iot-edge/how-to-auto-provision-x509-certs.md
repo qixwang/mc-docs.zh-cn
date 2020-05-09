@@ -5,17 +5,17 @@ author: kgremban
 manager: philmea
 ms.author: v-tawe
 ms.reviewer: kevindaw
-origin.date: 03/06/2020
-ms.date: 03/30/2020
+origin.date: 04/09/2020
+ms.date: 04/20/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: f9608390f6d540367944bfa3239ba388ab867e48
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: f26912ac2a1c13c8ef3d5add09c6c7212ce671ea
+ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80586835"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82588786"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-x509-certificates"></a>使用 X.509 证书创建和预配 IoT Edge 设备
 
@@ -46,6 +46,12 @@ ms.locfileid: "80586835"
 
 创建设备标识证书后，应会获得两个文件：一个包含证书公共部分的 .cer 或 .pem 文件，一个包含证书私钥的 .cer 或 .pem 文件。 如果你打算在 DPS 中使用组注册，则还需要提供同一证书信任链中某个中间证书或根 CA 证书的公共部分。
 
+若要使用 X.509 设置自动预配，需要以下文件：
+
+* 设备标识证书及其私钥证书。 如果创建单个注册，则设备标识证书会上传到 DPS。 私钥会传递到 IoT Edge 运行时。
+* 完整链证书，其中应至少包含设备标识和中间证书。 完整链证书会传递到 IoT Edge 运行时。
+* 证书信任链中的中间或根 CA 证书。 如果创建组注册，则此证书会上传到 DPS。
+
 ### <a name="use-test-certificates"></a>使用测试证书
 
 如果你没有可用于创建新标识证书的证书颁发机构，但想要尝试此方案，可以使用 Azure IoT Edge Git 存储库中包含的脚本来生成测试证书。 这些证书仅用于开发测试，不得在生产环境中使用。
@@ -74,6 +80,9 @@ Windows:
 
 有关设备预配服务中的注册的详细信息，请参阅[如何管理设备注册](../iot-dps/how-to-manage-enrollments.md)。
 
+   > [!TIP]
+   > 在 Azure CLI 中，可以创建[注册](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment)或[注册组](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment-group)，并使用“支持 Edge”  标志来指定某个设备或设备组是 IoT Edge 设备。
+
 1. 在 [Azure 门户](https://portal.azure.cn)中，导航到 IoT 中心设备预配服务的实例。
 
 1. 在“设置”下，选择“管理注册”。  
@@ -84,7 +93,7 @@ Windows:
 
    * **主要证书 .pem 或 .cer 文件**：上传设备标识证书中的公共文件。 如果使用脚本生成了测试证书，请选择以下文件：
 
-      `<WRKDIR>/certs/iot-edge-device-identity-<name>-full-chain.cert.pem`
+      `<WRKDIR>/certs/iot-edge-device-identity-<name>.cert.pem`
 
    * **IoT 中心设备 ID**：根据需要，为设备提供一个 ID。 可以使用设备 ID 将单个设备指定为模块部署的目标。 如果未提供设备 ID，将使用 X.509 证书中的公用名 (CN)。
 
@@ -203,7 +212,7 @@ IoT Edge 运行时部署在所有 IoT Edge 设备上。 该运行时的组件在
 预配设备时需要以下信息：
 
 * DPS 的“ID 范围”值。  可以从 Azure 门户中 DPS 实例的概述页检索此值。
-* 设备上的设备标识证书文件。
+* 设备上的设备标识证书链文件。
 * 设备上的设备标识密钥文件。
 * 一个可选的注册 ID（如果未提供，将从设备标识证书中的公用名提取）。
 
@@ -215,7 +224,7 @@ IoT Edge 运行时部署在所有 IoT Edge 设备上。 该运行时的组件在
 
 将 X.509 证书和密钥信息添加到 config.yaml 文件时，应以文件 URI 的形式提供路径。 例如：
 
-* `file:///<path>/identity_certificate.pem`
+* `file:///<path>/identity_certificate_chain.pem`
 * `file:///<path>/identity_key.pem`
 
 配置文件中用于 X.509 自动预配的节如下所示：
@@ -233,7 +242,7 @@ provisioning:
     identity_pk: "<REQUIRED URI TO DEVICE IDENTITY PRIVATE KEY>"
 ```
 
-请将 `scope_id`、`identity_cert`、`identity_pk` 的占位符值替换为 DPS 实例中的范围 ID，以及证书和密钥文件在设备上的位置的 URI。 如果需要，请提供设备的 `registration_id`，或者保持注释掉此行，以使用标识证书的 CN 名称注册设备。
+请将 `scope_id`、`identity_cert`、`identity_pk` 的占位符值替换为你的 DPS 实例中的范围 ID，以及证书链和密钥文件在设备上的位置的 URI。 如果需要，请提供设备的 `registration_id`，或者保持注释掉此行，以使用标识证书的 CN 名称注册设备。
 
 更新 config.yaml 文件后，请始终重启安全守护程序。
 
@@ -243,7 +252,7 @@ sudo systemctl restart iotedge
 
 ### <a name="windows-device"></a>Windows 设备
 
-将 IoT Edge 运行时安装在为其生成了标识证书和标识密钥的设备上。 将 IoT Edge 运行时配置为自动预配而不是手动预配。
+将 IoT Edge 运行时安装在你为其生成了标识证书链和标识密钥的设备上。 将 IoT Edge 运行时配置为自动预配而不是手动预配。
 
 有关在 Windows 上安装 IoT Edge 的更多详细信息，包括管理容器和更新 IoT Edge 等任务的先决条件和说明，请参阅[在 Windows 上安装 Azure IoT Edge 运行时](how-to-install-iot-edge-windows.md)。
 
@@ -260,11 +269,11 @@ sudo systemctl restart iotedge
 
 1. Initialize-IoTEdge 命令在计算机上配置 IoT Edge 运行时  。 除非通过 `-Dps` 标志使用自动预配，否则该命令默认为使用手动预配。
 
-   请将 `{scope_id}`、`{identity cert path}` 和 `{identity key path}` 的占位符值替换为 DPS 实例中的相应值，以及设备上的文件路径。 若要指定注册 ID，请同时包含 `-RegistrationId {registration_id}`，并根据需要替换占位符。
+   请将 `{scope_id}`、`{identity cert chain path}` 和 `{identity key path}` 的占位符值替换为 DPS 实例中的相应值，以及设备上的文件路径。 若要指定注册 ID，请同时包含 `-RegistrationId {registration_id}`，并根据需要替换占位符。
 
    ```powershell
    . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
-   Initialize-IoTEdge -Dps -ScopeId {scope ID} -X509IdentityCertificate {identity cert path} -X509IdentityPrivateKey {identity key path}
+   Initialize-IoTEdge -Dps -ScopeId {scope ID} -X509IdentityCertificate {identity cert chain path} -X509IdentityPrivateKey {identity key path}
    ```
 
    >[!TIP]

@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 origin.date: 06/25/2019
 ms.author: v-yiso
-ms.date: 09/30/2019
-ms.openlocfilehash: 864acada810c429fd7c973982da9ada4fb74f32b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/11/2020
+ms.openlocfilehash: e79fcb9dd6a338600b6545f879dee3da215a94a1
+ms.sourcegitcommit: 95efd248f5ee3701f671dbd5cfe0aec9c9959a24
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74389220"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82507683"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>将 IoT DevKit AZ3166 连接到 Azure IoT 中心
 
@@ -157,12 +157,10 @@ DevKit 将连接到 IoT 中心内特定于设备的终结点，并发送温度�
 4. 在扩展市场中找到 [Azure IoT Tools](https://aka.ms/azure-iot-tools) 并安装它。
     ![安装 Azure IoT Tools](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/install-azure-iot-tools.png)
 
-    或者使用以下直接链接：
-    > [!div class="nextstepaction"]
-    > [安装 Azure IoT Tools 扩展包](vscode:extension/vsciot-vscode.azure-iot-tools)
+    或者使用此直接 URL：`vscode:extension/vsciot-vscode.azure-iot-tools`
 
     > [!NOTE]
-    > Azure IoT Tools 扩展包包含用于在各种 IoT devkit 设备上进行开发和调试的 [Azure IoT Device Workbench](https://aka.ms/iot-workbench)。 同样随附在 Azure IoT Tools 扩展包中的 [Azure IoT 中心工具包](https://aka.ms/iot-toolkit)用于管理 Azure IoT 中心以及与之交互。
+    > Azure IoT Tools 扩展包包含用于在各种 IoT devkit 设备上进行开发和调试的 [Azure IoT Device Workbench](https://aka.ms/iot-workbench)。 同样随附在 Azure IoT Tools 扩展包中的 [Azure IoT 中心扩展](https://aka.ms/iot-toolkit)用于管理 Azure IoT 中心并与之交互。
 
 5. 为 VS Code 配置 Arduino 设置。
 
@@ -350,6 +348,17 @@ DevKit 将重新启动并开始运行代码。
 * MXChip IoT DevKit 上的 LED 灯闪烁。
 
 ![串行监视器输出](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/result-serial-output.png)
+
+> [!NOTE]
+> 在测试期间可能会遇到错误，表现为：LED 不闪烁，Azure 门户不显示来自设备的传入数据，而设备 OLED 屏幕则显示为“正在运行...”  。若要解决此问题，请在 Azure 门户中转到 IoT 中心的设备，向设备发送一条消息。 如果在 VS Code 的串行监视器中看到以下响应，则表明可能在路由器级别阻止了与设备的直接通信。 请检查为正在连接的设备配置的防火墙和路由器规则。 另请确保出站端口 1833 处于打开状态。
+> 
+> 错误: mqtt_client.c (第 454 行):错误: 无法打开到终结点的连接  
+> 信息: >>>连接状态: 已断开连接  
+> 错误: tlsio_mbedtls.c (第 604 行):基础 IO 打开失败  
+> 错误: mqtt_client.c (第 1042 行):错误: io_open 失败  
+> 错误: iothubtransport_mqtt_common.c (第 2283 行): 无法连接到以下地址: atcsliothub.azure-devices.net。  
+> 信息: >>>请重新连接。  
+> 信息:IoT 中心版本:1.3.6  
 
 ### <a name="view-the-telemetry-received-by-azure-iot-hub"></a>查看 Azure IoT 中心收到的遥测数据
 

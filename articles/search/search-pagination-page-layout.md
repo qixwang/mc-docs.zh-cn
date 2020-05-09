@@ -7,133 +7,130 @@ author: HeidiSteen
 ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
-origin.date: 01/24/2020
-ms.date: 03/02/2020
-ms.openlocfilehash: f2474fcd55a59eb9065ce82053286290369a1508
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+origin.date: 04/01/2020
+ms.date: 04/20/2020
+ms.openlocfilehash: 53e060fb9f07c1ff775461ef45da65d7e67d8863
+ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77501341"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82588697"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>如何在 Azure 认知搜索中使用搜索结果
-本文提供有关如何实现搜索结果页面的标准元素（例如总计数、记录检索、排序顺序和导航）的指南。 通过发送给 Azure 认知搜索服务的[搜索记录](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)请求来指定与页面相关的选项，以使用这些选项将数据或信息提供到搜索结果。 
 
-在 REST API 中，请求包括 GET 命令、路径和查询参数，用于通知服务正在请求的内容以及如何明确表述响应。 在 .NET SDK 中，等效的 API 是 [DocumentSearchResult 类](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.documentsearchresult-1)。
+本文介绍如何获取返回的查询响应，其中包含匹配文档的总数、已分页的结果、已排序的结果和突出显示的字词。
 
-若要快速为客户端生成搜索页面，请浏览以下选项：
+响应的结构由查询中的参数决定：REST API 中的[搜索文档](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)，或 .NET SDK 中的 [DocumentSearchResult 类](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.documentsearchresult-1)。
 
-+ 使用门户中的[应用程序生成器](search-create-app-portal.md)，通过搜索栏、分面导航和结果区域创建 HTML 页面。
-+ 按照[在 C# 中创建你的第一个应用程序](tutorial-csharp-create-first-app.md)教程操作，创建正常运行的客户端。
+## <a name="result-composition"></a>结果的构成
 
-多个代码示例包含一个 Web 前端接口，相关内容可参阅：[纽约市工作岗位演示应用](https://azjobsdemo.azurewebsites.net/)、[使用实时演示站点的 JavaScript 示例代码](https://github.com/liamca/azure-search-javascript-samples)和 [CognitiveSearchFrontEnd](https://github.com/LuisCabrer/CognitiveSearchFrontEnd)
+尽管搜索文档可能由大量的字段组成，但通常只需少量的几个字段就能表示结果集中的每个文档。 在查询请求中，追加 `$select=<field list>` 可以指定要在响应中显示的字段。 必须在索引中通过某个属性将字段指定为“可检索的”，才能在结果中包含该字段  。 
 
-> [!NOTE]
-> 有效的请求包括大量元素，例如服务 URL 和路径、HTTP 谓词、`api-version` 等。 为简洁起见，我们剪裁了示例，以便仅突出显示与分页相关的语法。 有关请求语法的详细信息，请参阅 [Azure 认知搜索 REST API](https://docs.microsoft.com/rest/api/searchservice)。
->
-
-## <a name="total-hits-and-page-counts"></a>总匹配记录和页面计数
-
-几乎所有搜索页面都以显示从查询返回的结果总数，并以较小的区块返回这些结果为基础。
-
-![][1]
-
-在 Azure 认知搜索中，使用 `$count`、`$top` 和 `$skip` 参数返回这些值。 以下示例显示了对名为“online-catalog”的索引的总命中数的示例请求，以 `@odata.count` 的形式返回：
-
-    GET /indexes/online-catalog/docs?$count=true
-
-检索 15 个组中的记录，同时显示总匹配记录，从第一页开始：
-
-    GET /indexes/online-catalog/docs?search=*&$top=15&$skip=0&$count=true
-
-分页结果需要 `$top` 和 `$skip`，其中 `$top` 指定批量返回的项数，`$skip` 指定要跳过的项数。 在以下示例中，每个页面显示接下来的 15 个项，由 `$skip` 中的增量跳转指示。
-
-    GET /indexes/online-catalog/docs?search=*&$top=15&$skip=0&$count=true
-
-    GET /indexes/online-catalog/docs?search=*&$top=15&$skip=15&$count=true
-
-    GET /indexes/online-catalog/docs?search=*&$top=15&$skip=30&$count=true
-
-## <a name="layout"></a>布局
-
-在搜索结果页中，你可能想要显示缩略图、字段子集和完整产品页面的链接。
-
- ![][2]
-
-在 Azure 认知搜索中，将使用 `$select` 和[搜索 API 请求](https://docs.microsoft.com/rest/api/searchservice/search-documents)来实现此体验。
-
-若要返回平铺布局的字段的子集：
-
-    GET /indexes/online-catalog/docs?search=*&$select=productName,imageFile,description,price,rating
-
-图像和媒体文件不可直接搜索，它们应存储在其他存储平台（Azure Blob 存储）中以减少成本。 在索引和记录中，定义存储外部内容的 URL 地址的字段。 然后，可以将该字段用作图像引用。 图像的 URL 应在记录中。
-
-若要检索 **onClick** 事件的产品说明页，请使用 [查找记录](https://docs.microsoft.com/rest/api/searchservice/Lookup-Document) 传递要检索的记录的密钥。 密钥的数据类型为 `Edm.String`。 在此示例中，它是 *246810*。
-
-    GET /indexes/online-catalog/docs/246810
-
-## <a name="sort-by-relevance-rating-or-price"></a>按相关性、分级或价格排序
-
-默认情况下通常按相关性排序顺序，但通常也可以使用现成的备用排序顺序，以便客户可以将现有结果重组到其他排序顺序中。
-
- ![][3]
-
-在 Azure 认知搜索中，对于所有编制索引为 `"Sortable": true.` 的字段，根据 `$orderby` 表达式进行排序。`$orderby` 子句是 OData 表达式。 有关语法的信息，请参阅[筛选器和 order-by 子句的 OData 表达式语法](query-odata-filter-orderby-syntax.md)。
-
-相关性与计分配置文件密切关联。 可以使用依赖于文本分析和统计信息对所有结果排序顺序的默认计分，针对某个搜索词，分数越高，相应记录的匹配项就越多且越相关。
-
-备用排序顺序通常与 **onClick** 事件关联，这些事件可回调生成排序顺序的方法。 例如，以此页面元素为例：
-
- ![][4]
-
-将创建一个接受选定排序选项作为输入并返回与该选项关联的条件的排序列表的方法。
-
- ![][5]
-
-> [!NOTE]
-> 虽然默认计分足以处理许多方案，但我们建议使用基于相关性的自定义计分配置文件。 通过自定义计分配置文件，可以增强对业务更有益的项。 有关详细信息，请参阅[添加计分配置文件](index-add-scoring-profiles.md)。
->
-
-## <a name="hit-highlighting"></a>突出显示
-
-可以在搜索结果中将格式设置应用于匹配的字词，这样就可以轻松找到匹配项。 [查询请求](https://docs.microsoft.com/rest/api/searchservice/search-documents)上提供了命中词突出显示说明。 
-
-格式设置应用于整个字词查询。 对于在引擎中导致查询扩展的部分字词（如模糊搜索或通配符搜索）的查询，不能使用命中词突出显示。
+最合适的字段包括能够对比和区分文档，并提供足够的信息来邀请用户一端做出点击响应的字段。 在电子商务网站上，这些字段可能是产品名称、说明、品牌、颜色、尺寸、价格和评级。 对于 hotels-sample-index 内置示例，它们可能是以下示例中的字段：
 
 ```http
-POST /indexes/hotels/docs/search?api-version=2019-05-06 
+POST /indexes/hotels-sample-index/docs/search?api-version=2019-05-06 
     {  
-      "search": "something",  
-      "highlight": "Description"  
+      "search": "sandy beaches",
+      "select": "HotelId, HotelName, Description, Rating, Address/City"
+      "count": true
     }
 ```
 
+> [!NOTE]
+> 若要在结果中包括图像文件（例如产品照片或徽标），请将其存储在 Azure 认知搜索外部，但在索引中包含一个字段，以引用搜索文档中的图像 URL。 支持在结果中包含图像的示例索引包括此[快速入门](search-create-app-portal.md)中专门介绍的 realestate-sample-us 演示，以及[纽约市工作岗位演示应用](https://aka.ms/azjobsdemo)  。
 
+## <a name="paging-results"></a>将结果分页
 
-## <a name="faceted-navigation"></a>多面导航
+默认情况下，搜索引擎最多返回前 50 个匹配项。如果查询为全文搜索，将按搜索评分确定返回的结果；对于完全匹配查询，则按任意顺序返回结果。
 
-搜索导航是搜索页面上的常见功能，通常位于页面侧边或顶部。 在 Azure 认知搜索中，分面导航基于预定义筛选器提供自定向搜索。 有关详细信息，请参阅 [Azure 认知搜索中的分面导航](search-faceted-navigation.md)。
+若要返回不同数量的匹配文档，请将 `$top` 和 `$skip` 参数添加到查询请求。 以下列表解释了相关逻辑。
 
-## <a name="filters-at-the-page-level"></a>页面级别的筛选器
++ 添加 `$count=true` 可获取索引中匹配文档的总计数。
 
-如果解决方案设计包含特定类型内容的专用搜索页（例如，页面顶部列有各个部门的在线零售应用程序），则可以在“onClick”事件旁插入[筛选器表达式](search-filters.md)以预筛选状态的方式打开页面  。
++ 返回第一组 15 个匹配文档，以及匹配项总计数：`GET /indexes/<INDEX-NAME>/docs?search=<QUERY STRING>&$top=15&$skip=0&$count=true`
 
-可以发送带有或不带有搜索表达式的筛选器。 例如，将按品牌名称筛选以下请求，以便仅返回与之匹配的记录。
++ 跳过前 15 个匹配文档，返回第二组 15 个文档：`$top=15&$skip=15`。 跳过前两组匹配文档，返回第三组 15 个匹配文档：`$top=15&$skip=30`
 
-    GET /indexes/online-catalog/docs?$filter=brandname eq 'Microsoft' and category eq 'Games'
+如果基础索引会发生变化，则无法保证分页查询的结果稳定。 分页会更改每页的 `$skip` 值，但每个查询是独立的，并针对查询时存在于索引中的当前数据视图运行（换言之，对于在常规用途数据库等位置中发现的结果，不存在结果缓存或快照）。
+ 
+以下示例展示了如何获取重复项。 假设某个索引包含四个文档：
 
-有关 `$filter` 表达式的详细信息，请参阅[搜索记录（Azure 认知搜索 API）](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)。
+    { "id": "1", "rating": 5 }
+    { "id": "2", "rating": 3 }
+    { "id": "3", "rating": 2 }
+    { "id": "4", "rating": 1 }
+ 
+现在假设你希望每次返回按评级排序的两个结果。 你将执行此查询来获取第一页结果：`$top=2&$skip=0&$orderby=rating desc`，将生成以下结果：
 
-## <a name="see-also"></a>另请参阅
+    { "id": "1", "rating": 5 }
+    { "id": "2", "rating": 3 }
+ 
+在服务上，假设在两次查询调用之间将第五个文档添加到索引中：`{ "id": "5", "rating": 4 }`。  片刻之后，你执行查询来提取第二页：`$top=2&$skip=2&$orderby=rating desc`，将获得以下结果：
 
-- [Azure 认知搜索 REST API](https://docs.microsoft.com/rest/api/searchservice)
-- [索引操作](https://docs.microsoft.com/rest/api/searchservice/Index-operations)
-- [文档操作](https://docs.microsoft.com/rest/api/searchservice/Document-operations)
-- [Azure 认知搜索中的分面导航](search-faceted-navigation.md)
+    { "id": "2", "rating": 3 }
+    { "id": "3", "rating": 2 }
+ 
+请注意，文档 2 提取了两次。 这是因为，新文档 5 的评级值较大，因此它排在文档 2 的前面，并出现在第一页中。 尽管这种行为可能让人意外，但它却是搜索引擎的典型行为。
 
-<!--Image references-->
-[1]: ./media/search-pagination-page-layout/Pages-1-Viewing1ofNResults.PNG
-[2]: ./media/search-pagination-page-layout/Pages-2-Tiled.PNG
-[3]: ./media/search-pagination-page-layout/Pages-3-SortBy.png
-[4]: ./media/search-pagination-page-layout/Pages-4-SortbyRelevance.png
-[5]: ./media/search-pagination-page-layout/Pages-5-BuildSort.png
+## <a name="ordering-results"></a>将结果排序
+
+对于全文搜索查询，结果将按照搜索评分自动排名，搜索评分是根据文档中的字词频率和邻近性计算的，根据搜索字词，匹配项越多或者匹配程度越高的文档，其评分越高。 
+
+搜索评分表达了对相关性的总体认知，反映了相对于同一结果集中其他文档的匹配强度。 评分在不同的查询之间并非始终一致，因此，在处理查询时，你可能会注意到搜索文档的排序方式存在细微差别。 下面对发生这种情况的可能原因给出了几条解释。
+
+| 原因 | 说明 |
+|-----------|-------------|
+| 数据易变性 | 添加、修改或删除文档时，索引内容会发生变化。 在处理索引更新的过程中，字词频率会发生变化，从而影响了匹配文档的搜索评分。 |
+| 多个副本 | 对于使用多个副本的服务，将并行针对每个副本发出查询。 用于计算搜索评分的索引统计信息是根据每个副本计算的，结果将在查询响应中合并和排序。 副本基本上是彼此的镜像，但由于状态存在细微差别，因此统计信息可能有所不同。 例如，一个副本可能删除了对统计信息有影响的文档，这些统计信息由其他副本合并而来。 通常，按副本的统计信息的差异在较小索引中更明显。 |
+| 相同的评分 | 如果多个文档具有相同的评分，其中的任何一个文档都可能会首先出现。  |
+
+### <a name="consistent-ordering"></a>一致的排序
+
+假设结果的排序是灵活的，如果一致性是应用程序的一项要求，你可能需要使用其他选项。 最简单的方法是按字段值（例如评级或日期）排序。 若要按特定的字段（例如评级或日期）排序，可以显式定义一个 [`$orderby` 表达式](query-odata-filter-orderby-syntax.md)，该表达式可应用于在索引中设置为“可排序”的任何字段  。
+
+另一个选项是使用[自定义评分配置文件](index-add-scoring-profiles.md)。 使用评分配置文件可以提高在特定字段中有匹配项的项的分数，从而可以让你更好地控制搜索结果中各个项的排名。 这一附加的评分逻辑有助于覆盖副本之间的细微差异，因为每个文档的搜索评分会在更大程度上拉开差距。 我们建议对此方法使用[排名算法](index-ranking-similarity.md)。
+
+## <a name="hit-highlighting"></a>突出显示
+
+命中项突出显示是指对结果中的匹配字词应用文本格式设置（例如粗体或黄色突出显示），以便轻松找到匹配项。 [查询请求](https://docs.microsoft.com/rest/api/searchservice/search-documents)上提供了命中词突出显示说明。 搜索引擎将匹配字词括在标记 `highlightPreTag` 和 `highlightPostTag` 中，代码将处理响应（例如，应用粗体字体）。
+
+格式设置应用于整个字词查询。 在以下示例中，在 Description 字段中找到的字词“sandy”、“sand”、“beaches”和“beach”已标记为将突出显示。 在引擎中触发查询扩展的查询（例如模糊搜索和通配符搜索）对命中项突出显示的支持有限。
+
+```http
+GET /indexes/hotels-sample-index/docs/search=sandy beaches&highlight=Description?api-version=2019-05-06 
+```
+
+```http
+POST /indexes/hotels-sample-index/docs/search?api-version=2019-05-06 
+    {  
+      "search": "sandy beaches",  
+      "highlight": "Description"
+    }
+```
+
+### <a name="new-behavior-starting-july-15"></a>新行为（从 7 月 15 日开始）
+
+在 2020 年 7 月 15 日之后创建的服务将提供不同的突出显示体验。 在该日期之前创建的服务的突出显示行为不会有变化。 
+
+新行为：
+
+* 仅返回与完整短语查询匹配的短语。 查询“super bowl”将返回如下所示的突出显示结果：
+
+    ```html
+    '<em>super bowl</em> is super awesome with a bowl of chips'
+    ```
+  请注意，字词“bowl of chips”没有任何突出显示效果，因为它不与完整短语匹配  。
+  
+* 可以指定返回的要突出显示的片段大小。 片段大小以字符数指定（最大 1000 个字符）。
+
+编写实现命中项突出显示的客户端代码时，请注意此项更改。 请注意，除非创建全新的搜索服务，否则你不会受到影响。
+
+## <a name="next-steps"></a>后续步骤
+
+若要快速为客户端生成搜索页面，请考虑以下选项：
+
++ 门户中的[应用程序生成器](search-create-app-portal.md)可以创建带有搜索栏、分面导航和包含图像的结果区域的 HTML 页面。
++ [使用 C# 创建你的第一个应用](tutorial-csharp-create-first-app.md)教程介绍了如何构建正常运行的客户端。 示例代码演示了分页查询、命中项突出显示和排序。
+
+多个代码示例包含一个 Web 前端接口，相关内容可参阅：[实现了实时演示站点的 JavaScript 示例代码](https://github.com/liamca/azure-search-javascript-samples)和 [CognitiveSearchFrontEnd](https://github.com/LuisCabrer/CognitiveSearchFrontEnd)。
