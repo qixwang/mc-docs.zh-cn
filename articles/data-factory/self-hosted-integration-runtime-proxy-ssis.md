@@ -11,22 +11,24 @@ ms.author: v-jay
 ms.reviewer: douglasl
 manager: digimobile
 ms.custom: seo-lt-2019
-origin.date: 02/28/2020
-ms.date: 03/23/2020
-ms.openlocfilehash: 2b52a091b285317c9fb38e085123442b98ea5388
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+origin.date: 04/15/2020
+ms.date: 05/11/2020
+ms.openlocfilehash: ab7f1d64e2786cc29d4c2b9051f59aff607d2316
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79543307"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82198021"
 ---
 # <a name="configure-a-self-hosted-ir-as-a-proxy-for-an-azure-ssis-ir-in-azure-data-factory"></a>自承载 IR 配置为 Azure 数据工厂中 Azure-SSIS IR 的代理
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 本文介绍如何在将某个自承载集成运行时（自承载 IR）配置为代理的情况下，在 Azure 数据工厂中的 Azure-SSIS Integration Runtime (Azure-SSIS IR) 上运行 SQL Server Integration Services (SSIS) 包。 
 
 使用此功能可在本地访问数据，而无需[将 Azure-SSIS IR 加入虚拟网络](/data-factory/join-azure-ssis-integration-runtime-virtual-network)。 当企业网络的配置过于复杂，或者采用过于严格的策略，以致你很难在此网络中注入 Azure-SSIS IR 时，此功能将很有用。
 
-此功能将包含数据流任务和本地数据源的包拆分为两个暂存任务： 
+此功能会将具有本地数据源的任何 SSIS 数据流任务拆分为两个暂存任务： 
 * 第一个任务在自承载 IR 中运行，它首先将数据从本地数据源移入 Azure Blob 存储中的暂存区域。
 * 第二个任务在 Azure-SSIS IR 中运行，它随后将数据从暂存区域移入预期的数据目标。
 
@@ -53,11 +55,11 @@ ms.locfileid: "79543307"
 
 如果尚未这样做，请在设置了 Azure-SSIS IR 的同一数据工厂中创建一个 Azure Blob 存储链接服务。 为此，请参阅[创建 Azure 数据工厂链接服务](/data-factory/quickstart-create-data-factory-portal#create-a-linked-service)。 确保执行以下操作：
 - 对于“数据存储”，请选择“Azure Blob 存储”。    
-- 对于“通过集成运行时连接”，请选择“AutoResolveIntegrationRuntime”。    
+- 对于“通过集成运行时连接”  ，请选择“AutoResolveIntegrationRuntime”  （而非你的 Azure-SSIS IR 或自承载 IR），因为我们使用默认的 Azure IR 来获取 Azure Blob 存储的访问凭据。
 - 对于“身份验证方法”，请选择“帐户密钥”、“SAS URI”或“服务主体”。      
 
     >[!TIP]
-    >如果选择“服务主体”，请至少授予“存储 Blob 数据参与者”角色。 ****  **   有关详细信息，请参阅  [Azure Blob 存储连接器](connector-azure-blob-storage.md#linked-service-properties)。
+    >如果选择“服务主体”  方法，请至少为你的服务主体授予“存储 Blob 数据参与者” ** 角色。 有关详细信息，请参阅  [Azure Blob 存储连接器](connector-azure-blob-storage.md#linked-service-properties)。
 
 ![准备用于暂存的 Azure Blob 存储链接服务](media/self-hosted-integration-runtime-proxy-ssis/shir-azure-blob-storage-linked-service.png)
 
@@ -154,21 +156,27 @@ Start-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
 
 将使用自承载 IR 服务帐户（默认为 *NT SERVICE\DIAHostService*）调用暂存任务，将使用 Windows 身份验证帐户访问数据存储。 需要向这两个帐户分配特定的安全策略。 在自承载 IR 计算机上，转到“本地安全策略” > “本地策略” > “用户权限分配”，然后执行以下操作：   
 
-1. 向自承载 IR 服务帐户分配“调整进程的内存配额”和“替换进程级令牌”策略。   使用默认服务帐户安装自承载 IR 时，系统应会自动进行此分配。 如果使用其他服务帐户，则为其分配相同的策略。
+1. 向自承载 IR 服务帐户分配“调整进程的内存配额”和“替换进程级令牌”策略。   使用默认服务帐户安装自承载 IR 时，系统应会自动进行此分配。 如果系统没有自动分配，请手动分配这些策略。 如果使用其他服务帐户，则为其分配相同的策略。
 
 1. 向 Windows 身份验证帐户分配“作为服务登录”策略。 
 
 ## <a name="billing-for-the-first-and-second-staging-tasks"></a>第一和第二个暂存任务的计费
 
-在自承载 IR 上运行的第一个暂存任务将单独计费，就像自承载 IR 上运行的任何数据移动活动的计费方式一样。 请参阅 [Azure 数据工厂数据管道定价](https://azure.cn/pricing/details/data-factory/)一文。
+在自承载 IR 上运行的第一个暂存任务将单独计费，就像自承载 IR 上运行的任何数据移动活动的计费方式一样。 这是在 [Azure 数据工厂数据管道定价](https://azure.cn/pricing/details/data-factory/)一文中指定的。
 
-Azure-SSIS IR 上运行的第二个暂存任务不是单独计费，具体请参阅 [Azure-SSIS IR 定价](https://azure.cn/pricing/details/data-factory/ssis/)一文。
+Azure-SSIS IR 上运行的第二个暂存任务不单独计费，但是运行中的 Azure-SSIS IR 会计费，如 [Azure-SSIS IR 定价](https://azure.cn/pricing/details/data-factory/ssis/)一文中所述。
+
+## <a name="enabling-tls-12"></a>启用 TLS 1.2
+
+如果需要在自承载 IR 上使用强加密/更安全的网络协议 (TLS 1.2) 并禁用较旧的 SSL/TLS 版本，则可下载并运行 main.cmd  脚本，该脚本可以在公共预览版容器的 CustomSetupScript/UserScenarios/TLS 1.2  文件夹中找到。  使用 [Azure 存储资源管理器](https://storageexplorer.com/)，可以通过输入以下 SAS URI 连接到公共预览版容器：
+
+`https://ssisazurefileshare.blob.core.chinacloudapi.cn/publicpreview?sp=rl&st=2020-03-25T04:00:00Z&se=2025-03-25T04:00:00Z&sv=2019-02-02&sr=c&sig=WAD3DATezJjhBCO3ezrQ7TUZ8syEUxZZtGIhhP6Pt4I%3D`
 
 ## <a name="current-limitations"></a>当前限制
 
-- 目前仅支持使用开放式数据库连接 (ODBC)、OLEDB 或平面文件连接管理器以及 ODBC、OLEDB 或平面文件源的数据流任务。 
+- 目前仅支持具有开放式数据库连接 (ODBC)/OLEDB/平面文件源或 OLEDB 目标的数据流任务。 
 - 目前仅支持使用“帐户密钥”、“共享访问签名 (SAS) URI”或“服务主体”身份验证配置的 Azure Blob 存储链接服务。   
-- 尚不支持 OLEDB 源中的 *ParameterMapping*。 作为变通方法，请使用“变量中的 SQL 命令”作为“访问模式”，并使用“表达式”在 SQL 命令中插入变量/参数。    在 [Azure 存储资源管理器](https://storageexplorer.com/)中输入以下 SAS URI，可以在公共预览版容器的 *SelfhostedIrProxy/Limitations* 文件夹中找到示例包 *(ParameterMappingSample.dtsx)* ，其中演示了此操作： *https://ssisazurefileshare.blob.core.chinacloudapi.cn/publicpreview?sp=rl&st=2018-04-08T14%3A10%3A00Z&se=2020-04-10T14%3A10%3A00Z&sv=2017-04-17&sig=mFxBSnaYoIlMmWfxu9iMlgKIvydn85moOnOch6%2F%2BheE%3D&sr=c*
+- 尚不支持 OLEDB 源中的 *ParameterMapping*。 作为变通方法，请使用“变量中的 SQL 命令”作为“访问模式”，并使用“表达式”在 SQL 命令中插入变量/参数。    有关说明，请参阅 ParameterMappingSample.dtsx  包，它位于公共预览版容器的 SelfHostedIRProxy/Limitations  文件夹中。 使用 Azure 存储资源管理器，可以通过输入以上 SAS URI 连接到公共预览版容器。
 
 ## <a name="next-steps"></a>后续步骤
 
