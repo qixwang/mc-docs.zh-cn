@@ -10,17 +10,18 @@ ms.assetid: 1c46ed69-4049-44ec-9b46-e90e964a4a8e
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-origin.date: 03/02/2020
-ms.date: 03/23/2020
+origin.date: 04/15/2020
+ms.date: 05/11/2020
 ms.author: v-jay
-ms.openlocfilehash: b04ddb19bd231e57d879ea97e402016612a4df37
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 12401dcf4787e31253bec05fcf7eb2f573745e23
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79497239"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82198254"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Azure 数据工厂中的“获取元数据”活动
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 可以使用“获取元数据”活动来检索 Azure 数据工厂中任何数据的元数据。 可在以下方案中使用此活动：
 
@@ -54,6 +55,7 @@ ms.locfileid: "79497239"
 | [SFTP](connector-sftp.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 | [FTP](connector-ftp.md) | √/√ | √/√ | √ | x/x | x/x | √ | x | √ | √ | √/√ |
 
+- 对文件夹使用“获取元数据”活动时，请确保对给定文件夹具有“列出/执行”权限。
 - 对于 Amazon S3 和 Google 云存储，`lastModified` 适用于桶和键，但不适用于虚拟文件夹；而 `exists` 适用于桶和键，但不适用于前缀或虚拟文件夹。
 - 对于 Azure Blob 存储，`lastModified` 适用于容器和 Blob，但不适用于虚拟文件夹。
 - `lastModified` 筛选器当前适用于筛选子项，但不适用于筛选指定的文件夹/文件本身。
@@ -135,7 +137,7 @@ ms.locfileid: "79497239"
 
 目前，“获取元数据”活动可以返回以下类型的元数据信息：
 
-properties | 说明 | 必选
+属性 | 说明 | 必须
 -------- | ----------- | --------
 fieldList | 所需元数据信息的类型。 有关支持的元数据的详细信息，请参阅本文的[元数据选项](#metadata-options)部分。 | 是 
 dataset | 引用数据集，其元数据将由“获取元数据”活动检索。 有关支持的连接器的信息，请参阅[功能](#capabilities)部分。 有关数据集语法详细信息，请参阅特定的连接器主题。 | 是

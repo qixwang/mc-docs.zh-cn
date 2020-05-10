@@ -8,12 +8,12 @@ ms.date: 03/30/2020
 ms.author: v-tawe
 ms.reviewer: mahender
 ms.custom: seodec18
-ms.openlocfilehash: fcb6dc6fdcdd6ad94709098356765971675193dd
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 4a9aaeb820fcf2ac29ab5b31bde4644e0e9be6f9
+ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80987383"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82588549"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service"></a>Azure 应用服务中的身份验证和授权
 
@@ -23,7 +23,7 @@ ms.locfileid: "80987383"
 
 Azure 应用服务提供内置的身份验证和授权支持。只需在 Web 应用、RESTful API、移动后端和 [Azure Functions](../azure-functions/functions-overview.md) 中编写少量的代码或根本无需编写代码，就能让用户登录和访问数据。 本文介绍应用服务如何帮助简化应用的身份验证和授权。
 
-安全身份验证和授权需要对联合身份验证、加密、[JSON Web 令牌 (JWT)](https://wikipedia.org/wiki/JSON_Web_Token) 管理、[授权类型](https://oauth.net/2/grant-types/)等安全性方面有深度的了解。 应用服务提供这些实用工具，让你将更多的时间和精力花费在为客户提供业务价值上。
+安全身份验证和授权需要对安全性（包括联合身份验证、加密、JSON Web 令牌 (JWT) 管理、[授权类型](https://oauth.net/2/grant-types/)等）有深度的了解。 应用服务提供这些实用工具，让你将更多的时间和精力花费在为客户提供业务价值上。
 
 > [!IMPORTANT]
 > 对于 AuthN/AuthO，无需使用应用服务。 可以在所选的 Web 框架中使用捆绑的安全功能，也可以编写自己的实用程序。 但请记住，[Chrome 80 针对 Cookie 对其实现 SameSite 的方式进行了中断性变更](https://www.chromestatus.com/feature/5088147346030592)（发布日期在 2020 年 3 月左右）；自定义远程身份验证或依赖于跨站点 Cookie 发布的其他方案可能会在客户端 Chrome 浏览器更新时中断。 解决方法很复杂，因为需要针对不同的浏览器支持不同的 SameSite 行为。 
@@ -75,7 +75,7 @@ Azure 应用服务提供内置的身份验证和授权支持。只需在 Web 应
 
 ## <a name="identity-providers"></a>标识提供者
 
-应用服务使用[联合标识](https://wikipedia.org/wiki/Federated_identity)，在其中，第三方标识提供者会自动管理用户标识和身份验证流。 默认提供两个标识提供者： 
+应用服务使用联合标识，在其中，第三方标识提供者会为你管理用户标识和身份验证流。 默认提供两个标识提供者： 
 
 | 提供程序 | 登录终结点 |
 | - | - |

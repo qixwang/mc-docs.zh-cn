@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 origin.date: 01/08/2019
-ms.date: 03/04/2020
+ms.date: 05/11/2020
 ms.author: v-jay
-ms.openlocfilehash: c0332edbb7fc1493272df5c9078a7a65d8737537
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: f7d46015e748da770222b8665f7f357cc719fdf4
+ms.sourcegitcommit: 95efd248f5ee3701f671dbd5cfe0aec9c9959a24
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78412513"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82507709"
 ---
 # <a name="offline-fairplay-streaming-for-ios-with-media-services-v3"></a>适用于 iOS 的脱机 FairPlay 流式处理与媒体服务 v3
 
@@ -204,44 +204,7 @@ func requestApplicationCertificate() throws -> Data {
 
 ## <a name="faq"></a>常见问题
 
-以下常见问题解答提供故障排除帮助：
-
-- **为什么在脱机模式期间只播放音频而不播放视频？** 此行为似乎是示例应用专门设计的。 存在备用音频曲目时（这适用于 HLS），在脱机模式期间，iOS 10 和 iOS 11 都默认播放备用音频曲目。为了补偿 FPS 脱机模式的此行为，需要从流删除备用音频曲目。 若要在媒体服务中完成此操作，请添加动态清单筛选器“audio-only=false”。 换言之，HLS URL 将以 .ism/manifest(format=m3u8-aapl,audio-only=false) 结尾。 
-- **除 iOS 10 之外，iOS 11 是否也支持 FPS 脱机模式？** 是的。 iOS 10 和 iOS 11 支持 FPS 脱机模式。
-- **为什么在 FPS Server SDK 中，无法使用 FairPlay Streaming 和 HTTP Live Streaming 找到文档“脱机播放”？** 从 FPS Server SDK 版本 4 开始，此文档已合并到“FairPlay Streaming 编程指南”。
-- **iOS 设备上的已下载/脱机文件结构是什么？** iOS 设备上的已下载文件结构如下屏幕截图所示。 `_keys` 文件夹存储已下载的 FPS 许可证，每个许可证服务主机一个存储文件。 `.movpkg` 文件夹存储音频和视频内容。 第一个文件夹（文件名以破折号加数字结尾）包含视频内容。 数值是“PeakBandwidth”视频呈现形式。 第二个文件夹（文件名以破折号加 0 结尾）包含音频内容。 第三个文件夹（文件名为“Data”）包含 FPS 内容的主播放列表。 最后，boot.xml 提供 `.movpkg` 文件夹内容的完整说明。 
-
-![脱机 FairPlay iOS 示例应用文件结构](media/offline-fairplay-for-ios/offline-fairplay-file-structure.png)
-
-示例 boot.xml 文件：
-
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<HLSMoviePackage xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://apple.com/IMG/Schemas/HLSMoviePackage" xsi:schemaLocation="http://apple.com/IMG/Schemas/HLSMoviePackage /System/Library/Schemas/HLSMoviePackage.xsd">
-  <Version>1.0</Version>
-  <HLSMoviePackageType>PersistedStore</HLSMoviePackageType>
-  <Streams>
-    <Stream ID="1-4DTFY3A3VDRCNZ53YZ3RJ2NPG2AJHNBD-0" Path="1-4DTFY3A3VDRCNZ53YZ3RJ2NPG2AJHNBD-0" NetworkURL="https://willzhanmswest.streaming.mediaservices.windows.net/e7c76dbb-8e38-44b3-be8c-5c78890c4bb4/MicrosoftElite01.ism/QualityLevels(127000)/Manifest(aac_eng_2_127,format=m3u8-aapl)">
-      <Complete>YES</Complete>
-    </Stream>
-    <Stream ID="0-HC6H5GWC5IU62P4VHE7NWNGO2SZGPKUJ-310656" Path="0-HC6H5GWC5IU62P4VHE7NWNGO2SZGPKUJ-310656" NetworkURL="https://willzhanmswest.streaming.mediaservices.windows.net/e7c76dbb-8e38-44b3-be8c-5c78890c4bb4/MicrosoftElite01.ism/QualityLevels(161000)/Manifest(video,format=m3u8-aapl)">
-      <Complete>YES</Complete>
-    </Stream>
-  </Streams>
-  <MasterPlaylist>
-    <NetworkURL>https://willzhanmswest.streaming.mediaservices.windows.net/e7c76dbb-8e38-44b3-be8c-5c78890c4bb4/MicrosoftElite01.ism/manifest(format=m3u8-aapl,audio-only=false)</NetworkURL>
-  </MasterPlaylist>
-  <DataItems Directory="Data">
-    <DataItem>
-      <ID>CB50F631-8227-477A-BCEC-365BBF12BCC0</ID>
-      <Category>Playlist</Category>
-      <Name>master.m3u8</Name>
-      <DataPath>Playlist-master.m3u8-CB50F631-8227-477A-BCEC-365BBF12BCC0.data</DataPath>
-      <Role>Master</Role>
-    </DataItem>
-  </DataItems>
-</HLSMoviePackage>
-```
+请参阅[常见问题解答提供故障排除帮助](frequently-asked-questions.md#why-does-only-audio-play-but-not-video-during-offline-mode)。
 
 ## <a name="next-steps"></a>后续步骤
 

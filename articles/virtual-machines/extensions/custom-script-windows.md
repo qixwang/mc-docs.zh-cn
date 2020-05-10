@@ -1,5 +1,5 @@
 ---
-title: 适用于 Windows 的 Azure 自定义脚本扩展
+title: 适用于 Windows 的自定义脚本扩展
 description: 使用自定义脚本扩展自动化 Windows VM 配置任务
 services: virtual-machines-windows
 manager: digimobile
@@ -9,14 +9,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 origin.date: 05/02/2019
-ms.date: 02/10/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: 2d08e02cae18c5fd4d80993cf09db8d58681e941
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 14603df8f70b40ffa97c39bade54f6685f24f7fa
+ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77428923"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82596374"
 ---
 # <a name="custom-script-extension-for-windows"></a>适用于 Windows 的自定义脚本扩展
 
@@ -108,7 +108,7 @@ ms.locfileid: "77428923"
 > 在某个时间点，只能在 VM 上安装一个扩展版本，在同一资源管理器模板中为同一 VM 指定两次自定义脚本将会失败。
 
 > [!NOTE]
-> 我们可以在 VirtualMachine 资源内部使用此架构，也可以将其用作独立资源。 如果此扩展用作 ARM 模板中的独立资源，则资源的名称必须采用“virtualMachineName/extensionName”格式。 
+> 我们可以在 VirtualMachine 资源内部使用此架构，也可以将其用作独立资源。 如果此扩展用作 ARM 模板中的独立资源，则资源的名称必须采用“virtualMachineName/extensionName”格式。
 
 ### <a name="property-values"></a>属性值
 
@@ -148,10 +148,12 @@ ms.locfileid: "77428923"
 公共设置会以明文形式发送到将执行脚本的 VM。  受保护设置使用只有 Azure 和 VM 知道的密钥进行加密。 这些设置会在发送时保存到 VM 中，也就是说，如果设置已加密，则会在 VM 上加密保存。 用于对已加密值解密的证书存储在 VM 上，该证书用于在运行时对设置解密（如必要）。
 
 #### <a name="property-managedidentity"></a>属性：managedIdentity
+> [!NOTE]
+>  只应在受保护的设置中指定此属性。
 
 CustomScript（1.10 版及更高版本）支持使用[托管标识](/active-directory/managed-identities-azure-resources/overview)从“fileUris”设置中提供的 URL 下载文件。 它允许 CustomScript 访问 Azure 存储专用 Blob 或容器，而无需用户传递 SAS 令牌或存储帐户密钥等机密。
 
-若要使用此功能，用户必须将[系统分配的](/app-service/overview-managed-identity?tabs=dotnet#adding-a-system-assigned-identity)或[用户分配的](/app-service/overview-managed-identity?tabs=dotnet#adding-a-user-assigned-identity)标识添加到需要运行 CustomScript 的 VM 或 VMSS，并[授予托管标识访问 Azure 存储容器或 Blob 的权限](/active-directory/managed-identities-azure-resources/tutorial-vm-windows-access-storage#grant-access)。
+若要使用此功能，用户必须将[系统分配的](/app-service/overview-managed-identity?tabs=dotnet#add-a-system-assigned-identity)或[用户分配的](/app-service/overview-managed-identity?tabs=dotnet#add-a-user-assigned-identity)标识添加到需要运行 CustomScript 的 VM 或 VMSS，并[授予托管标识访问 Azure 存储容器或 Blob 的权限](/active-directory/managed-identities-azure-resources/tutorial-vm-windows-access-storage#grant-access)。
 
 若要在目标 VM/VMSS 上使用系统分配的标识，请将“managedidentity”字段设置为空的 json 对象。 
 
@@ -275,6 +277,8 @@ The response content cannot be parsed because the Internet Explorer engine is no
 若要在规模集上部署自定义脚本扩展，请参阅 [Add-AzVmssExtension](https://docs.microsoft.com/powershell/module/az.compute/add-azvmssextension?view=azps-3.3.0)
 
 ## <a name="classic-vms"></a>经典 VM
+
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 
 若要在经典 VM 上部署自定义脚本扩展，可以使用 Azure 门户或经典 Azure PowerShell cmdlet。
 

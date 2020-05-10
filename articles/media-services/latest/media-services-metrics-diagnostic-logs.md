@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 origin.date: 07/08/2019
-ms.date: 02/24/2020
+ms.date: 05/11/2020
 ms.author: v-jay
-ms.openlocfilehash: c1c7f63d1e82b5eda56e26deb5d54bfd0d3a10a6
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 01f3be2991127c91f07e836c1bfefc0502af5780
+ms.sourcegitcommit: 95efd248f5ee3701f671dbd5cfe0aec9c9959a24
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77494610"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82507699"
 ---
 # <a name="monitor-media-services-metrics-and-diagnostic-logs-via-azure-monitor"></a>通过 Azure Monitor 监视媒体服务指标和诊断日志
 
@@ -43,7 +43,7 @@ ms.locfileid: "77494610"
 
 可监视以下帐户指标。
 
-|指标名称|显示名称|说明|
+|指标名称|Display name|说明|
 |---|---|---|
 |AssetCount|资产计数|帐户中的资产。|
 |AssetQuota|资产配额|帐户中的资产配额。|
@@ -61,9 +61,9 @@ ms.locfileid: "77494610"
 
 支持以下媒体服务[流式处理终结点](https://docs.microsoft.com/rest/api/media/streamingendpoints)指标：
 
-|指标名称|显示名称|说明|
+|指标名称|Display name|说明|
 |---|---|---|
-|Requests|Requests|提供由流式处理终结点提供服务的 HTTP 请求总数。|
+|请求|请求|提供由流式处理终结点提供服务的 HTTP 请求总数。|
 |流出量|流出量|出口字节总数。 例如，流式处理终结点流式处理的字节数。|
 |SuccessE2ELatency|成功端到端延迟|从流式处理终结点收到请求，到发送最后一个响应字节的持续时间。|
 

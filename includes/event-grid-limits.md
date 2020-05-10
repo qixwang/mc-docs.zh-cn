@@ -5,15 +5,15 @@ services: event-grid
 author: tfitzmac
 ms.service: event-grid
 ms.topic: include
-ms.date: 04/30/2018
-ms.author: tomfitz
+ms.date: 04/29/2020
+ms.author: v-junlch
 ms.custom: include file
-ms.openlocfilehash: 2c8db84a2012708e61e63f6a919c1b7ca67e1c63
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 380dac8d665b37cc4b3f3424571197c80162a27a
+ms.sourcegitcommit: 95efd248f5ee3701f671dbd5cfe0aec9c9959a24
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "71151854"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82516003"
 ---
 以下限制适用于 Azure 事件网格系统主题和自定义主题，不适用于  事件域。
 
@@ -23,14 +23,16 @@ ms.locfileid: "71151854"
 | 每个主题的事件订阅数 | 500 |
 | 自定义主题的发布速率（入口） | 每个主题每秒 5,000 个事件 |
 | 发布请求数 | 每秒 250 个 |
-| 事件大小 | 正式发布版 (GA) 支持 64 KB。 目前预览版支持 1 MB。 |
+| 事件大小 | 1 MB（以多个 64 KB 事件的形式收费） |
 
 以下限制仅适用于事件域。
 
 | 资源 | 限制 |
 | --- | --- |
-| 每个事件域的主题数 | 公开预览期间为 1,000 个 |
-| 域中每个主题的事件订阅数 | 公开预览期间为 50 个 |
-| 域范围事件订阅数 | 公开预览期间为 50 个 |
-| 事件域（入口）的发布速率 | 公开预览期间为每秒 5,000 个事件 |
+| 每个事件域的主题数 | 100,000 |
+| 域中每个主题的事件订阅数 | 500 |
+| 域范围事件订阅数 | 50 |
+| 事件域（入口）的发布速率 | 每秒 5,000 个事件 |
 | 发布请求数 | 每秒 250 个 |
+| 每个 Azure 订阅的事件域数 | 100 |
+

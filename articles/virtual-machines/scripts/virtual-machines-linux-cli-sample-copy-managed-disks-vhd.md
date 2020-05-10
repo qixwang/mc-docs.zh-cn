@@ -1,11 +1,10 @@
 ---
-title: 使用 Azure CLI 将托管磁盘导出/复制到存储帐户
+title: Azure CLI 脚本示例 - 使用 Azure CLI 将托管磁盘导出/复制到存储帐户
 description: Azure CLI 示例 - 将托管磁盘导出或复制到存储帐户。
 services: virtual-machines-linux
 documentationcenter: storage
 author: rockboyfor
 manager: digimobile
-editor: tysonn
 tags: azure-service-management
 ms.assetid: ''
 ms.service: virtual-machines-linux
@@ -14,15 +13,15 @@ ms.topic: sample
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 origin.date: 05/09/2019
-ms.date: 02/10/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
 ms.custom: mvc,seodec18
-ms.openlocfilehash: 9c6940c84fe05475be29e0705ea1c4ace3e17da4
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: c4553fb125e420845aa0692033fdcbd55345dfc9
+ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77428570"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82596107"
 ---
 # <a name="exportcopy-a-managed-disk-to-a-storage-account-using-the-azure-cli"></a>使用 Azure CLI 将托管磁盘导出/复制到存储帐户
 
@@ -72,16 +71,16 @@ az storage blob copy start --destination-blob $destinationVHDFileName --destinat
 
 此脚本使用以下命令生成托管磁盘的 SAS URI，然后使用该 SAS URI 将基础 VHD 复制到存储帐户。 表中的每条命令均链接到特定于命令的文档。
 
-| Command | 说明 |
+| 命令 | 注释 |
 |---|---|
 | [az disk grant-access](https://docs.azure.cn/cli/disk?view=azure-cli-latest#az-disk-grant-access) | 生成只读 SAS，使用该 SAS 可以将基础 VHD 文件复制到存储帐户或将其下载到本地  |
-| [az storage blob copy start](https://docs.azure.cn/cli/storage/blob/copy?view=azure-cli-latest#az-storage-blob-copy-start) | 将 blob 从一个存储帐户异步复制到另一个存储帐户 |
+| [az storage blob copy start](https://docs.azure.cn/cli/storage/blob/copy?view=azure-cli-latest#az-storage-blob-copy-start) | 以异步方式将 blob 从一个存储帐户复制到另一个存储帐户 |
 
 ## <a name="next-steps"></a>后续步骤
 
-[基于 VHD 创建托管磁盘](virtual-machines-linux-cli-sample-create-managed-disk-from-vhd.md?toc=%2fcli%2fmodule%2ftoc.json)
+[从 VHD 创建托管磁盘](virtual-machines-linux-cli-sample-create-managed-disk-from-vhd.md?toc=%2fcli%2fmodule%2ftoc.json)
 
-[基于托管磁盘创建虚拟机](./virtual-machines-linux-cli-sample-create-vm-from-managed-os-disks.md?toc=%2fcli%2fmodule%2ftoc.json)
+[从托管磁盘创建虚拟机](./virtual-machines-linux-cli-sample-create-vm-from-managed-os-disks.md?toc=%2fcli%2fmodule%2ftoc.json)
 
 有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](https://docs.azure.cn/cli/index?view=azure-cli-latest)。
 

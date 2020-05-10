@@ -8,14 +8,14 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-origin.date: 01/08/2019
-ms.date: 03/16/2020
-ms.openlocfilehash: 39946d6304abd99e343b3804e2d6b810e3e05bd1
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+origin.date: 03/26/2020
+ms.date: 05/11/2020
+ms.openlocfilehash: b5fe759ed0deab3469a0617d43b3bd758e670314
+ms.sourcegitcommit: d210eb03ed6432aeefd3e9b1c77d2c92a6a8dbca
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78850589"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82591447"
 ---
 # <a name="tutorial-train-and-deploy-a-model-from-the-cli"></a>教程：通过 CLI 训练和部署模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -67,7 +67,7 @@ git clone https://github.com/microsoft/MLOps.git
 存储库包含以下文件，在将训练的模型部署为 Web 服务时要使用这些文件：
 
 * `aciDeploymentConfig.yml`：一个部署配置文件。  此文件定义模型所需的托管环境。
-* `inferenceConfig.yml`：一个推理配置文件  。 此文件定义软件环境，服务使用该环境通过模型为数据评分。
+* `inferenceConfig.json`：一个推理配置文件  。 此文件定义软件环境，服务使用该环境通过模型为数据评分。
 * `score.py`：一个 Python 脚本，用于接受传入的数据，使用模型为数据评分，然后返回响应。
 * `scoring-env.yml`：运行模型和 `score.py` 脚本所需的 conda 依赖项。
 * `testdata.json`：可用于测试已部署的 Web 服务的数据文件。
@@ -81,6 +81,8 @@ az login
 ```
 
 如果 CLI 可以打开默认的浏览器，则它会打开该浏览器并加载登录页。 否则，需要打开浏览器并按照命令行中的说明操作。 按说明操作时，需要浏览到 [https://aka.ms/devicelogin](https://aka.ms/devicelogin) 并输入授权代码。
+
+[!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)] 
 
 ## <a name="install-the-machine-learning-extension"></a>安装机器学习扩展
 
@@ -200,10 +202,10 @@ az ml computetarget create amlcompute -n cpu-cluster --max-nodes 4 --vm-size Sta
 }
 ```
 
-此命令创建名为 `cpu` 的新计算目标，其中最多包含四个节点。 所选的 VM 大小为 VM 提供 GPU 资源。 有关 VM 大小的信息，请参阅 [VM 类型和大小]。
+此命令创建名为 `cpu-cluster` 的新计算目标，其中最多包含四个节点。 所选的 VM 大小为 VM 提供 GPU 资源。 有关 VM 大小的信息，请参阅 [VM 类型和大小]。
 
 > [!IMPORTANT]
-> 计算目标的名称（在本例中为 `cpu`）非常重要；在下一部分中使用的 `.azureml/mnist.runconfig` 文件将引用此名称。
+> 计算目标的名称（在本例中为 `cpu-cluster`）非常重要；在下一部分中使用的 `.azureml/mnist.runconfig` 文件将引用此名称。
 
 ## <a name="define-the-dataset"></a>定义数据集
 
@@ -300,7 +302,7 @@ runconfig 文件还包含用于配置训练运行所用环境的信息。 检查
 
 ## <a name="submit-the-training-run"></a>提交训练运行
 
-若要在 `cpu-compute` 计算目标上启动训练运行，请使用以下命令：
+若要在 `cpu-cluster` 计算目标上启动训练运行，请使用以下命令：
 
 ```azurecli
 az ml run submit-script -c mnist -e myexperiment --source-directory scripts -t runoutput.json
@@ -314,7 +316,7 @@ az ml run submit-script -c mnist -e myexperiment --source-directory scripts -t r
 
 在执行训练运行过程中，它会在远程计算资源上流式传输训练会话中的信息。 部分信息类似于以下文本：
 
-```text
+```output
 Predict the test set
 Accuracy is 0.9185
 ```
@@ -369,11 +371,11 @@ az ml model register -n mymodel -p "sklearn_mnist_model.pkl"
 若要部署模型，请使用以下命令：
 
 ```azurecli
-az ml model deploy -n myservice -m "mymodel:1" --ic inferenceConfig.yml --dc aciDeploymentConfig.yml
+az ml model deploy -n myservice -m "mymodel:1" --ic inferenceConfig.json --dc aciDeploymentConfig.yml
 ```
 
 > [!NOTE]
-> 你可能会收到有关“无法检查 LocalWebservice 是否存在”的警告。 你可以放心地忽略此警告，因为你没有部署本地 Web 服务。
+> 你可能会收到有关“无法检查 LocalWebservice 是否存在”或“无法创建 Docker 客户端”的警告。 你可以放心地忽略此警告，因为你没有部署本地 Web 服务。
 
 此命令使用前面注册的模型版本 1 部署名为 `myservice` 的新服务。
 
@@ -449,10 +451,10 @@ az ml service delete -n myservice
 
 ### <a name="delete-the-training-compute"></a>删除训练计算
 
-如果你打算继续使用 Azure 机器学习工作区，但想要删除为训练创建的 `cpu-compute` 计算目标，请使用以下命令：
+如果你打算继续使用 Azure 机器学习工作区，但想要删除为训练创建的 `cpu-cluster` 计算目标，请使用以下命令：
 
 ```azurecli
-az ml computetarget delete -n cpu
+az ml computetarget delete -n cpu-cluster
 ```
 
 此命令返回一个 JSON 文档，其中包含已删除的计算目标的 ID。 删除计算目标可能需要几分钟时间。

@@ -10,14 +10,14 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: article
 origin.date: 05/28/2019
-ms.date: 09/23/2019
+ms.date: 05/11/2019
 ms.author: v-jay
-ms.openlocfilehash: 166fbd8ad1a145aaa81ae53f8b8f8fab2bebe605
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: b921d449d2e9f22aba9dc9fa02449770783a33c8
+ms.sourcegitcommit: 95efd248f5ee3701f671dbd5cfe0aec9c9959a24
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "71125521"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82507604"
 ---
 # <a name="streaming-policies"></a>流式处理策略
 
@@ -39,7 +39,7 @@ ms.locfileid: "71125521"
 
 ## <a name="decision-tree"></a>决策树
 
-单击图像可查看其完整大小。  
+单击图像查看其完整大小。  
 
 <a href="./media/streaming-policy/large.png" target="_blank"><img src="./media/streaming-policy/large.png"></a> 
 

@@ -7,12 +7,12 @@ ms.topic: overview
 origin.date: 11/13/2019
 ms.date: 12/16/2019
 ms.author: v-tawe
-ms.openlocfilehash: 9638adc1c213b30b34eef08d05a49686b535f1b9
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 3c7756e677b5c5d76d802673e6f0462cdf8352da
+ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75335723"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82588748"
 ---
 # <a name="what-is-azure-signalr-service"></a>什么是 Azure SignalR 服务？
 
@@ -44,7 +44,7 @@ Azure SignalR 服务已在各种行业中使用，适用于需要实时内容更
 
 **基于标准：**
 
-SignalR 提供用于生成实时 Web 应用程序的多种技术的抽象概念。 [Websocket](https://wikipedia.org/wiki/WebSocket) 是最佳传输，但在其他选项不可用时，则使用[服务器发送事件 (SSE)](https://wikipedia.org/wiki/Server-sent_events) 和长轮询等其他技术。 基于服务器和客户端上受支持的功能，SignalR 自动检测并初始化合适的传输。
+SignalR 提供用于生成实时 Web 应用程序的多种技术的抽象概念。 WebSocket 是最佳传输，但在其他选项不可用时，则使用“服务器发送事件(SSE)”和“长轮询”等其他技术。 基于服务器和客户端上受支持的功能，SignalR 自动检测并初始化合适的传输。
 
 **本机 ASP.NET Core 支持：**
 
@@ -73,6 +73,6 @@ SignalR 服务允许服务器将消息发送到特定的连接、所有连接或
 
 可通过多种不同的方式对 Azure SignalR 服务编程，下面列出了一些示例：
 
-- **扩展 ASP.NET Core SignalR 应用[ - 将 Azure SignalR Service 与ASP.NET Core SignalR 应用程序集成，以扩展到成千上万的连接](signalr-concept-scale-aspnet-core.md)** 。
-- **生成无服务器的实时应用[ - 使用 Azure Functions 与 Azure SignalR Service 的集成，以 JavaScript、C# 和 Java 等语言生成无服务器的实时应用](signalr-concept-azure-functions.md)** 。
-- **通过 REST API 将消息从服务器发送到客户端[ - Azure SignalR Service 提供的 REST API 使应用程序能够以任何支持 REST 的编程语言向使用 SignalR Service 连接的客户端发送消息](https://github.com/Azure/azure-signalr/blob/dev/docs/rest-api.md)** 。
+- [扩展 ASP.NET Core SignalR 应用](signalr-concept-scale-aspnet-core.md) - 将 Azure SignalR Service 与ASP.NET Core SignalR 应用程序集成，以扩展到成千上万的连接  。
+- [生成无服务器的实时应用](signalr-concept-azure-functions.md) - 使用 Azure Functions 与 Azure SignalR Service 的集成，以 JavaScript、C# 和 Java 等语言生成无服务器的实时应用  。
+- [通过 REST API 将消息从服务器发送到客户端](https://github.com/Azure/azure-signalr/blob/dev/docs/rest-api.md) - Azure SignalR Service 提供的 REST API 使应用程序能够以任何支持 REST 的编程语言向使用 SignalR Service 连接的客户端发送消息  。

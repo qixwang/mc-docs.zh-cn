@@ -1,5 +1,5 @@
 ---
-title: 通过示例了解 Azure 数据工厂定价 | Microsoft Docs
+title: 通过示例了解 Azure 数据工厂定价
 description: 本文使用详细的示例介绍并演示 Azure 数据工厂定价模型
 documentationcenter: ''
 author: WenJason
@@ -9,16 +9,18 @@ ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-origin.date: 09/25/2018
-ms.date: 11/11/2019
-ms.openlocfilehash: b456fc37b11fa7cf8e2b3665cc20ef9ee8440049
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+origin.date: 12/27/2019
+ms.date: 05/11/2020
+ms.openlocfilehash: 0b76ce607f17a1c2c7aa72728f474f8e10b109b4
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "73648824"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82198033"
 ---
 # <a name="understanding-data-factory-pricing-through-examples"></a>通过示例了解数据工厂定价
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 本文使用详细的示例介绍并演示 Azure 数据工厂定价模型。
 

@@ -20,12 +20,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 847d46cb45496d349a7969bdacac81cc11004ac7
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: b3cfba7de917430c273de6df80825c3d33be51e8
+ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292309"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82588796"
 ---
 # <a name="add-scoring-profiles-to-an-azure-cognitive-search-index"></a>将计分概要文件添加到 Azure 认知搜索索引
 
@@ -77,7 +77,7 @@ GET /indexes/hotels/docs?search=inn&scoringProfile=geo&scoringParameter=currentL
 ## <a name="what-is-default-scoring"></a>什么是默认计分？  
  计分对排序结果集中的每项计算搜索分数。 搜索结果集中的每项都分配到一个搜索分数，并从高到低排名。 分数较高的项返回应用程序。 默认返回前 50 个，但可以使用 `$top` 参数返回较少或较多的项（单个响应中最多 1000 个）。  
 
-根据数据和查询的统计属性计算搜索分数。 Azure 认知搜索查找包含了查询字符串中搜索词的文档（部分或全部包含，具体取决于 `searchMode`），优先列出包含该搜索词多个实例的文档。 如果搜索词在数据索引中很少见，但在文档中很常见，搜索分数仍升至更高。 这种相关性计算方法的基础称为 [TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf) 或词频-逆文档频率。  
+根据数据和查询的统计属性计算搜索分数。 Azure 认知搜索查找包含了查询字符串中搜索词的文档（部分或全部包含，具体取决于 `searchMode`），优先列出包含该搜索词多个实例的文档。 如果搜索词在数据索引中很少见，但在文档中很常见，搜索分数仍升至更高。 这种相关性计算方法的基础称为“TF-IDF”（词频-逆文档频率）。  
 
  假设没有自定义排序，结果在返回调用应用程序之前按搜索分数排名。 如果 $top 未指定，则返回具有最高搜索分数的 50 项。  
 

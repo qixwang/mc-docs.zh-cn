@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 11/04/2019
 ms.date: 12/16/2019
-ms.openlocfilehash: 2a21a1ee3ad619a6b85adb4284ccd3ebdfb325da
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: f7621f0c25fb42c117dc38ed8fd6665592610f10
+ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79291226"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82588550"
 ---
 # <a name="query-types-and-composition-in-azure-cognitive-search"></a>Azure 认知搜索中的查询类型和组成部分
 
@@ -92,9 +92,9 @@ ms.locfileid: "79291226"
 
 Azure 认知搜索基于 Apache Lucene ，提供两种查询分析器选择，分别用于处理典型查询和专用查询。 使用简单分析器的请求是通过[简单查询语法](query-simple-syntax.md)构建的。由于在自由格式文本查询中具有速度和效率优势，这种语法已选作默认语法。 此语法支持多种常用的搜索运算符，包括 AND、OR、NOT、短语、后缀和优先运算符。
 
-在将 [ 添加到请求时所启用的](query-Lucene-syntax.md#bkmk_syntax)完整 Lucene 查询语法`queryType=full`公开作为 [Apache Lucene](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) 的一部分开发的、已被广泛采用的且富有表达能力的查询语言。 完整语法扩展了简单语法。 为简单语法编写的任何查询在完整 Lucene 分析器下运行。 
+在将 `queryType=full` 添加到请求时所启用的[完整 Lucene 查询语法](query-Lucene-syntax.md#bkmk_syntax)公开作为 [Apache Lucene](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) 的一部分开发的、已被广泛采用的且富有表达能力的查询语言。 完整语法扩展了简单语法。 为简单语法编写的任何查询在完整 Lucene 分析器下运行。 
 
-以下示例演示了一个要点：采用不同 queryType 设置的同一个查询会产生不同的结果。 在第一个查询中，`^3` 后面的 `historic` 被视为搜索字词的一部分。 此查询的最高排名结果是“Marquis Plaza & Suites”，其说明中包含 *ocean*
+以下示例演示了一个要点：采用不同 queryType 设置的同一个查询会产生不同的结果。 在第一个查询中，`historic` 后面的 `^3` 被视为搜索字词的一部分。 此查询的最高排名结果是“Marquis Plaza & Suites”，其说明中包含 *ocean*
 
 ```
 queryType=simple&search=ocean historic^3&searchFields=Description, Tags&$select=HotelId, HotelName, Tags, Description&$count=true
@@ -150,7 +150,7 @@ Azure 认知搜索可轻松对搜索结果进行分页。 使用 **`top`** 和 *
 有关对搜索结果分页的详细信息，请参阅 [如何在 Azure 认知搜索中对搜索结果分页](search-pagination-page-layout.md)一文。
 
 ### <a name="ordering-results"></a>对结果排序
-接收搜索查询结果时，可请求 Azure 认知搜索按特定字段中的值对结果排序。 默认情况下，Azure 认知搜索根据每个文档的搜索评分（源自 [TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf)）排名对结果排序。
+接收搜索查询结果时，可请求 Azure 认知搜索按特定字段中的值对结果排序。 默认情况下，Azure 认知搜索根据每个文档的搜索评分（源自 TF-IDF）排名对结果排序。
 
 如果希望 Azure 认知搜索返回按搜索评分以外的某个值排序的结果，可以使用 **`orderby`** 搜索参数。 对于地理空间值，可以指定 **`orderby`** 参数的值，使其包含字段名称及对 [ **`geo.distance()` 函数**](query-odata-filter-orderby-syntax.md)的调用。 每个表达式可后接 `asc` 来指示按升序请求结果，或后接 **`desc`** 来指示按降序请求结果。 默认为升序。
 

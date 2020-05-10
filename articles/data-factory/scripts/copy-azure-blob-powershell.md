@@ -1,23 +1,22 @@
 ---
-title: PowerShell 脚本：使用 Azure 数据工厂复制云端数据 | Microsoft Docs
+title: 使用 PowerShell 复制云端数据
 description: 此 PowerShell 脚本将数据从 Azure Blob 存储中的一个位置复制到同一 Blob 存储中的另一个位置。
 services: data-factory
+ms.author: jingwang
 author: WenJason
 manager: digimobile
-editor: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: article
-origin.date: 09/12/2017
-ms.date: 07/08/2019
-ms.author: v-jay
-ms.openlocfilehash: 9459ede5e3adef30035c1a5b0e2145b076d10be8
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.custom: seo-lt-2019
+origin.date: 03/12/2020
+ms.date: 04/20/2020
+ms.openlocfilehash: 6faf530b621719f007dd5c43c59fcba0b72fe8d0
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "67569910"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82198090"
 ---
 # <a name="use-powershell-to-create-a-data-factory-pipeline-to-copy-data-in-the-cloud"></a>使用 PowerShell 创建用于复制云端数据的数据工厂管道
 
@@ -27,8 +26,8 @@ ms.locfileid: "67569910"
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh-az.md)]
 
-## <a name="prerequisites"></a>必备条件
-* **Azure 存储帐户**。 可以将 blob 存储同时用作**源**和**接收器**数据存储。 如果没有 Azure 存储帐户，请参阅[创建存储帐户](../../storage/common/storage-quickstart-create-account.md)创建一个。 
+## <a name="prerequisites"></a>先决条件
+* **Azure 存储帐户**。 可以将 blob 存储同时用作**源**和**接收器**数据存储。 如果没有 Azure 存储帐户，请参阅[创建存储帐户](../../storage/common/storage-account-create.md)创建一个。 
 * 在 Blob 存储中创建一个 **blob 容器**，在该容器中创建一个输入**文件夹**，并向该文件夹上传一些文件。 可以使用 [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)等工具连接到 Azure Blob 存储、创建 Blob 容器、上传输入文件，以及验证输出文件。
 
 ## <a name="sample-script"></a>示例脚本
@@ -51,7 +50,7 @@ $pipelineName = "CopyPipeline"
 New-AzResourceGroup -Name $resourceGroupName -Location $dataFactoryRegion
 
 # Create a data factory
-$df = Set-AzDataFactory -ResourceGroupName $resourceGroupName -Location $dataFactoryRegion -Name $dataFactoryName 
+$df = Set-AzDataFactoryV2 -ResourceGroupName $resourceGroupName -Location $dataFactoryRegion -Name $dataFactoryName 
 
 # Create an Az.Storage linked service in the data factory
 
@@ -71,11 +70,11 @@ $storageLinkedServiceDefinition = @"
 }
 "@
 
-## IMPORTANT: stores the JSON definition in a file that will be used by the Set-AzDataFactoryLinkedService command. 
-$storageLinkedServiceDefinition | Out-File c:\StorageLinkedService.json
+## IMPORTANT: stores the JSON definition in a file that will be used by the Set-AzDataFactoryV2LinkedService command. 
+$storageLinkedServiceDefinition | Out-File ./StorageLinkedService.json
 
 ## Creates a linked service in the data factory
-Set-AzDataFactoryLinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureStorageLinkedService" -File c:\StorageLinkedService.json
+Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureStorageLinkedService" -File ./StorageLinkedService.json
 
 # Create an Azure Blob dataset in the data factory
 
@@ -104,11 +103,11 @@ $datasetDefiniton = @"
 }
 "@
 
-## IMPORTANT: store the JSON definition in a file that will be used by the Set-AzDataFactoryDataset command. 
-$datasetDefiniton | Out-File c:\BlobDataset.json
+## IMPORTANT: store the JSON definition in a file that will be used by the Set-AzDataFactoryV2Dataset command. 
+$datasetDefiniton | Out-File ./BlobDataset.json
 
 ## Create a dataset in the data factory
-Set-AzDataFactoryDataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "BlobDataset" -File "c:\BlobDataset.json"
+Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "BlobDataset" -File "./BlobDataset.json"
 
 # Create a pipeline in the data factory
 
@@ -161,11 +160,11 @@ $pipelineDefinition = @"
 }
 "@
 
-## IMPORTANT: store the JSON definition in a file that will be used by the Set-AzDataFactoryPipeline command. 
-$pipelineDefinition | Out-File c:\CopyPipeline.json
+## IMPORTANT: store the JSON definition in a file that will be used by the Set-AzDataFactoryV2Pipeline command. 
+$pipelineDefinition | Out-File ./CopyPipeline.json
 
 ## Create a pipeline in the data factory
-Set-AzDataFactoryPipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name $pipelineName -File "c:\CopyPipeline.json"
+Set-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name $pipelineName -File "./CopyPipeline.json"
 
 # Create a pipeline run 
 
@@ -177,15 +176,15 @@ $pipelineParameters = @"
 }
 "@
 
-## IMPORTANT: store the JSON definition in a file that will be used by the Invoke-AzDataFactoryPipeline command. 
-$pipelineParameters | Out-File c:\PipelineParameters.json
+## IMPORTANT: store the JSON definition in a file that will be used by the Invoke-AzDataFactoryV2Pipeline command. 
+$pipelineParameters | Out-File ./PipelineParameters.json
 
 # Create a pipeline run by using parameters
-$runId = Invoke-AzDataFactoryPipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineName $pipelineName -ParameterFile c:\PipelineParameters.json
+$runId = Invoke-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineName $pipelineName -ParameterFile ./PipelineParameters.json
 
 # Check the pipeline run status until it finishes the copy operation
 while ($True) {
-    $result = Get-AzDataFactoryActivityRun -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineRunId $runId -RunStartedAfter (Get-Date).AddMinutes(-30) -RunStartedBefore (Get-Date).AddMinutes(30)
+    $result = Get-AzDataFactoryV2ActivityRun -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineRunId $runId -RunStartedAfter (Get-Date).AddMinutes(-30) -RunStartedBefore (Get-Date).AddMinutes(30)
 
     if (($result | Where-Object { $_.Status -eq "InProgress" } | Measure-Object).count -ne 0) {
         Write-Host "Pipeline run status: In Progress" -foregroundcolor "Yellow"
@@ -199,7 +198,7 @@ while ($True) {
 }
 
 # Get the activity run details 
-    $result = Get-AzDataFactoryActivityRun -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName `
+    $result = Get-AzDataFactoryV2ActivityRun -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName `
         -PipelineRunId $runId `
         -RunStartedAfter (Get-Date).AddMinutes(-10) `
         -RunStartedBefore (Get-Date).AddMinutes(10) `
@@ -215,7 +214,7 @@ while ($True) {
     }
 
 # To remove the data factory from the resource gorup
-# Remove-AzDataFactory -Name $dataFactoryName -ResourceGroupName $resourceGroupName
+# Remove-AzDataFactoryV2 -Name $dataFactoryName -ResourceGroupName $resourceGroupName
 # 
 # To remove the whole resource group
 # Remove-AzResourceGroup  -Name $resourceGroupName
@@ -229,7 +228,7 @@ while ($True) {
 ```powershell
 Remove-AzResourceGroup -ResourceGroupName $resourceGroupName
 ```
-若要从资源组中删除数据工厂，请运行以下命令： 
+若要从资源组中删除数据工厂，请运行以下命令：
 
 ```powershell
 Remove-AzDataFactoryV2 -Name $dataFactoryName -ResourceGroupName $resourceGroupName
@@ -237,9 +236,9 @@ Remove-AzDataFactoryV2 -Name $dataFactoryName -ResourceGroupName $resourceGroupN
 
 ## <a name="script-explanation"></a>脚本说明
 
-此脚本使用以下命令： 
+此脚本使用以下命令：
 
-| Command | 说明 |
+| 命令 | 注释 |
 |---|---|
 | [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) | 创建用于存储所有资源的资源组。 |
 | [Set-AzDataFactoryV2](https://docs.microsoft.com/powershell/module/az.datafactory/set-Azdatafactoryv2) | 创建数据工厂。 |

@@ -8,16 +8,16 @@ origin.date: 02/11/2019
 ms.date: 03/30/2020
 ms.author: v-tawe
 ms.custom: mvc, devcenter, seo-javascript-september2019, seo-javascript-october2019, seodec18
-ms.openlocfilehash: 13a8235248fc2dbdcea92ba0f2cef1743d744fdd
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: c5a1706d602da4e3dc9da69d156ba7f31bf7cf6c
+ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80522125"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82588581"
 ---
 # <a name="tutorial-host-a-restful-api-with-cors-in-azure-app-service"></a>教程：在 Azure 应用服务中托管启用了 CORS 的 RESTful API
 
-[Azure 应用服务](overview.md)提供高度可缩放、自修复的 Web 托管服务。 另外，应用服务还为 RESTful API 提供对[跨域资源共享 (CORS)](https://wikipedia.org/wiki/Cross-Origin_Resource_Sharing) 的内置支持。 本教程介绍如何将 ASP.NET Core API 应用部署到提供 CORS 支持的应用服务。 请使用命令行工具来配置应用，使用 Git 来部署应用。 
+[Azure 应用服务](overview.md)提供高度可缩放、自修复的 Web 托管服务。 另外，应用服务还为 RESTful API 提供对跨域资源共享 (CORS) 的内置支持。 本教程介绍如何将 ASP.NET Core API 应用部署到提供 CORS 支持的应用服务。 请使用命令行工具来配置应用，使用 Git 来部署应用。 
 
 本教程介绍如何执行下列操作：
 

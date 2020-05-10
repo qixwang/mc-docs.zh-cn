@@ -10,14 +10,14 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 02/19/2020
+ms.date: 04/28/2020
 ms.custom: seodec18
-ms.openlocfilehash: 83e538c312045ef280c65c7c30c44c915a0a676b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 68c7008e45adf375864c21c1cb9969c94f6de88c
+ms.sourcegitcommit: e3512c5c2bbe61704d5c8cbba74efd56bfe91927
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77494542"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82267701"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Azure 时序见解 API 的身份验证和授权
 
@@ -38,7 +38,7 @@ Azure Active Directory 应用注册流程涉及三个主要步骤。
 
 1. 在 Azure Active Directory 中[注册应用程序](#azure-active-directory-app-registration)。
 1. 授权应用程序[对时序见解环境进行数据访问](#granting-data-access)。
-1. 使用**应用程序 ID** 和**客户端机密**从`https://api.timeseries.azure.cn/`客户端应用[中的 ](#client-app-initialization) 获取令牌。 然后可使用该令牌调用时序见解 API。
+1. 使用**应用程序 ID** 和**客户端机密**从[客户端应用](#client-app-initialization)中的 `https://api.timeseries.azure.cn/` 获取令牌。 然后可使用该令牌调用时序见解 API。
 
 根据**步骤 3**，将应用程序凭据和用户凭据隔离可以：
 
@@ -89,26 +89,40 @@ Azure Active Directory 应用注册流程涉及三个主要步骤。
 
    1. 在 C# 中，以下代码可以代表应用程序获取令牌。 有关完整示例，请阅读[使用 C# 查询数据](time-series-insights-query-data-csharp.md)。
 
-    ```csharp
-    // Enter your Active Directory tenant domain name
-    var tenant = "YOUR_AD_TENANT.onmicrosoft.com";
-    var authenticationContext = new AuthenticationContext(
-        $"https://login.microsoftonline.com/{tenant}",
-        TokenCache.DefaultShared);
+        ```csharp
+        private static async Task<string> AcquireAccessTokenAsync()
+        {
+            if (ApplicationClientId == "#DUMMY#" || ApplicationClientSecret == "#DUMMY#" || Tenant.StartsWith("#DUMMY#"))
+            {
+                throw new Exception(
+                    $"Use the link {"https://docs.azure.cn/time-series-insights/time-series-insights-authentication-and-authorization"} to update the values of 'ApplicationClientId', 'ApplicationClientSecret' and 'Tenant'.");
+            }
 
-    AuthenticationResult token = await authenticationContext.AcquireTokenAsync(
-        // Set the resource URI to the Azure Time Series Insights API
-        resource: "https://api.timeseries.azure.com/",
-        clientCredential: new ClientCredential(
-            // Application ID of application registered in Azure Active Directory
-            clientId: "YOUR_APPLICATION_ID",
-            // Application key of the application that's registered in Azure Active Directory
-            clientSecret: "YOUR_CLIENT_APPLICATION_KEY"));
+            var authenticationContext = new AuthenticationContext(
+                $"https://login.chinacloudapi.cn/{Tenant}",
+                TokenCache.DefaultShared);
 
-    string accessToken = token.AccessToken;
-    ```
+            AuthenticationResult token = await authenticationContext.AcquireTokenAsync(
+                resource: "https://api.timeseries.azure.cn/",
+                clientCredential: new ClientCredential(
+                    clientId: ApplicationClientId,
+                    clientSecret: ApplicationClientSecret));
 
-1. 随后可在应用程序调用时序见解 API 时，将令牌传入 `Authorization` 标头。
+            // Show interactive logon dialog to acquire token on behalf of the user.
+            // Suitable for native apps, and not on server-side of a web application.
+            //AuthenticationResult token = await authenticationContext.AcquireTokenAsync(
+            //    resource: "https://api.timeseries.azure.cn/",
+            //    clientId: {your clientId generated from the steps above},
+            //    
+            //    // Set redirect URI for Azure PowerShell
+            //    redirectUri: new Uri("urn:ietf:wg:oauth:2.0:oob"),
+            //    parameters: new PlatformParameters(PromptBehavior.Auto));
+            
+            return token.AccessToken;
+        }
+        ```
+
+   1. 随后可在应用程序调用时序见解 API 时，将令牌传入 `Authorization` 标头。
 
 * 开发人员也可以选择使用 MSAL 进行身份验证。 阅读[迁移到 MSAL](/active-directory/develop/msal-net-migration)，并查看我们的[使用 C# 管理 Azure 时序见解环境的正式版参考数据](time-series-insights-manage-reference-data-csharp.md)以了解更多信息。 
 
@@ -119,12 +133,12 @@ Azure Active Directory 应用注册流程涉及三个主要步骤。
 > [!TIP]
 > 请阅读 [Azure REST API 参考](https://docs.microsoft.com/rest/api/azure/)，了解有关如何使用 REST API、发出 HTTP 请求和处理 HTTP 响应的详细信息。
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>身份验证
 
-若要对[时序见解 REST API](https://docs.microsoft.com/rest/api/time-series-insights/) 执行经过身份验证的查询，必须使用所选的 REST 客户端（Postman、JavaScript、C#）在[授权标头](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/authorizationserver/createorupdate)中传递有效的 OAuth 2.0 持有者令牌。 
+若要对[时序见解 REST API](https://docs.microsoft.com/rest/api/time-series-insights/) 执行经过身份验证的查询，必须使用所选的 REST 客户端（Postman、JavaScript、C#）在[授权标头](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/authorizationserver/createorupdate)中传递有效的 OAuth 2.0 持有者令牌。 
 
 > [!TIP]
-> 请参阅托管的 Azure 时序见解[客户端 SDK 示例可视化](https://tsiclientsample.azurewebsites.net/)，以了解如何使用 [JavaScript 客户端 SDK](https://github.com/microsoft/tsiclient/blob/master/docs/API.md) 以及图表和图形以编程方式使用时序见解 API 进行身份验证。
+> 阅读托管的 Azure 时序见解[客户端 SDK 示例可视化](https://tsiclientsample.azurewebsites.net/)，了解如何使用 [JavaScript 客户端 SDK](https://github.com/microsoft/tsiclient/blob/master/docs/API.md) 以及图表和图以编程方式使用时序见解 API 进行身份验证。
 
 ### <a name="http-headers"></a>HTTP 标头
 
@@ -135,9 +149,9 @@ Azure Active Directory 应用注册流程涉及三个主要步骤。
 | 授权 | 若要使用时序见解进行身份验证，必须在“授权”标头中传递有效的 OAuth 2.0 持有者令牌  。 | 
 
 > [!IMPORTANT]
-> 令牌必须严格颁发给 `https://api.timeseries.azure.com/` 资源（也称为令牌的“受众”）。
-> * 因此，[Postman](https://www.getpostman.com/) AuthURL 将为：  `https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/authorize?resource=https://api.timeseries.azure.com/`
-> * `https://api.timeseries.azure.com/` 有效，而 `https://api.timeseries.azure.com` 无效。
+> 令牌必须严格颁发给 `https://api.timeseries.azure.cn/` 资源（也称为令牌的“受众”）。
+> * 因此，[Postman](https://www.getpostman.com/) AuthURL 将为：`https://login.partner.microsoftonline.cn/microsoft.partner.onmschina.cn/oauth2/authorize?resource=https://api.timeseries.azure.cn/`
+> * `https://api.timeseries.azure.cn/` 有效，而 `https://api.timeseries.azure.cn` 无效。
 
 可选请求标头如下所述。
 
@@ -174,7 +188,7 @@ Azure Active Directory 应用注册流程涉及三个主要步骤。
 | 可选查询参数 | 说明 | 版本 |
 | --- |  --- | --- |
 | `timeout=<timeout>` | 用于执行 HTTP 请求的服务器端超时。 仅适用于[获取环境事件](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-events-api)和[获取环境聚合](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-aggregates-api) API。 超时值应采用 ISO 8601 持续时间格式（例如 `"PT20S"`），并且应在 `1-30 s` 范围内。 默认值为 `30 s`。 | GA |
-| `storeType=<storeType>` | 对于启用 Warm 存储的预览版环境，可以在 `WarmStore` 或 `ColdStore` 上执行查询。 查询中的此参数定义应在哪个存储中执行查询。 如果未定义，将对 Cold 存储执行查询。 若要查询 Warm 存储，需要将 storeType 设置为  `WarmStore`。 如果未定义，将针对 Cold 存储执行查询。 | 预览 |
+| `storeType=<storeType>` | 对于启用 Warm 存储的预览版环境，可以在 `WarmStore` 或 `ColdStore` 上执行查询。 查询中的此参数定义应在哪个存储中执行查询。 如果未定义，将对 Cold 存储执行查询。 若要查询 Warm 存储，需要将 storeType 设置为 `WarmStore` 。 如果未定义，将针对 Cold 存储执行查询。 | 预览 |
 
 ## <a name="next-steps"></a>后续步骤
 

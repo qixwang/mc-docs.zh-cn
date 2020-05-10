@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 中的 Linux VM 上运行自定义脚本
+title: 在 Linux 虚拟机上使用 Azure 自定义脚本扩展版本 2
 description: 使用自定义脚本扩展 v2 自动化 Linux VM 配置任务
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 origin.date: 04/25/2018
-ms.date: 02/10/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: 8d24a3e76817d1ac933a38d9b4dcdd7058246ced
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: afad286d945ebfbedb4fd44176ef0be04335f0b1
+ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77428925"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82596108"
 ---
 <!--Verify successfully-->
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>在 Linux 虚拟机上使用 Azure 自定义脚本扩展版本 2
@@ -131,7 +131,7 @@ ms.locfileid: "77428925"
     
 * `skipDos2Unix`：（可选，布尔值）跳过对基于脚本的文件 URL 或脚本进行的 dos2unix 转换。
 * `timestamp`（可选，32 位整数）仅当需要更改此字段的值来触发脚本的重新运行时，才使用此字段。  任何整数值都是可以接受的，前提是必须不同于以前的值。
-    * `commandToExecute`：（在脚本未设置的情况下为**必需**，字符串）要执行的入口点脚本。 如果命令包含机密（例如密码），请改用此字段。
+* `commandToExecute`：（在脚本未设置的情况下为**必需**，字符串）要执行的入口点脚本。 如果命令包含机密（例如密码），请改用此字段。
 * `script`：（在 commandToExecute 未设置的情况下为**必需**，字符串）base64 编码（可以选择执行 gzip 操作）的脚本，通过 /bin/sh 来执行。
 * `fileUris`：（可选，字符串数组）要下载的文件的 URL。
 * `storageAccountName`：（可选，字符串）存储帐户的名称。 如果指定存储凭据，所有 `fileUris` 都必须是 Azure Blob 的 URL。
@@ -210,10 +210,12 @@ CustomScript 使用以下算法来执行脚本。
  1. 使用 _/bin/sh -c /var/lib/waagent/custom-script/#/script.sh 执行脚本。
 
 #### <a name="property-managedidentity"></a>属性：managedIdentity
+> [!NOTE]
+>  只应在受保护的设置中指定此属性。
 
 CustomScript（2.1 版及更高版本）支持使用[托管标识](/active-directory/managed-identities-azure-resources/overview)从“fileUris”设置中提供的 URL 下载文件。 它允许 CustomScript 访问 Azure 存储专用 Blob 或容器，而无需用户传递 SAS 令牌或存储帐户密钥等机密。
 
-若要使用此功能，用户必须将[系统分配的](/app-service/overview-managed-identity?tabs=dotnet#adding-a-system-assigned-identity)或[用户分配的](/app-service/overview-managed-identity?tabs=dotnet#adding-a-user-assigned-identity)标识添加到需要运行 CustomScript 的 VM 或 VMSS，并[授予托管标识访问 Azure 存储容器或 Blob 的权限](/active-directory/managed-identities-azure-resources/tutorial-vm-windows-access-storage#grant-access)。
+若要使用此功能，用户必须将[系统分配的](/app-service/overview-managed-identity?tabs=dotnet#add-a-system-assigned-identity)或[用户分配的](/app-service/overview-managed-identity?tabs=dotnet#add-a-user-assigned-identity)标识添加到需要运行 CustomScript 的 VM 或 VMSS，并[授予托管标识访问 Azure 存储容器或 Blob 的权限](/active-directory/managed-identities-azure-resources/tutorial-vm-windows-access-storage#grant-access)。
 
 若要在目标 VM/VMSS 上使用系统分配的标识，请将“managedidentity”字段设置为空的 json 对象。 
 
@@ -253,6 +255,7 @@ CustomScript（2.1 版及更高版本）支持使用[托管标识](/active-direc
 可使用 Azure Resource Manager 模板部署 Azure VM 扩展。 可以将上一部分详述的 JSON 架构用在 Azure Resource Manager 模板中，以便在 Azure Resource Manager 模板部署期间运行自定义脚本扩展。 若需包含自定义脚本扩展的示例模板，可访问 [GitHub](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-linux)。
 
 <!--MOONCAKE: IMPORTANT:  Setting contain "fileUris" and protectedSettings contain "commandToExecute"-->
+<!--Review Last on 04/26/2020-->
 
 ```json
 {
@@ -399,7 +402,7 @@ az vm extension set \
 
 应该查找如下所示的扩展执行：
 
-```text
+```output
 2018/04/26 17:47:22.110231 INFO [Microsoft.Azure.Extensions.customScript-2.0.6] [Enable] current handler state is: notinstalled
 2018/04/26 17:47:22.306407 INFO Event: name=Microsoft.Azure.Extensions.customScript, op=Download, message=Download succeeded, duration=167
 2018/04/26 17:47:22.339958 INFO [Microsoft.Azure.Extensions.customScript-2.0.6] Initialize extension directory
@@ -421,7 +424,8 @@ Azure 脚本扩展生成一个日志，位置如下：
 ```
 
 应该查找如下所示的个别执行：
-```text
+
+```output
 time=2018-04-26T17:47:23Z version=v2.0.6/git@1008306-clean operation=enable seq=0 event=start
 time=2018-04-26T17:47:23Z version=v2.0.6/git@1008306-clean operation=enable seq=0 event=pre-check
 time=2018-04-26T17:47:23Z version=v2.0.6/git@1008306-clean operation=enable seq=0 event="comparing seqnum" path=mrseq
@@ -445,13 +449,14 @@ time=2018-04-26T17:47:23Z version=v2.0.6/git@1008306-clean operation=enable seq=
 time=2018-04-26T17:47:23Z version=v2.0.6/git@1008306-clean operation=enable seq=0 event=enabled
 time=2018-04-26T17:47:23Z version=v2.0.6/git@1008306-clean operation=enable seq=0 event=end
 ```
+
 可在此处看到：
 * 此日志表示 Enable 命令开始执行
 * 设置已传递到扩展
 * 扩展下载文件及其结果。
 * 正在运行的命令及结果。
 
-也可使用 Azure CLI 来检索自定义脚本扩展的执行状态：
+还可以使用 Azure CLI 检索自定义脚本扩展的执行状态，包括作为 `commandToExecute` 传递的实际参数：
 
 ```azurecli
 az vm extension list -g myResourceGroup --vm-name myVM
@@ -459,14 +464,45 @@ az vm extension list -g myResourceGroup --vm-name myVM
 
 输出类似于以下文本：
 
-```azurecli
-info:    Executing command vm extension get
-+ Looking up the VM "scripttst001"
-data:    Publisher                   Name                                      Version  State
-data:    --------------------------  ----------------------------------------  -------  ---------
-data:    Microsoft.Azure.Extensions  CustomScript                              2.0      Succeeded
-data:    Microsoft.OSTCExtensions    Microsoft.Insights.VMDiagnosticsSettings  2.3      Succeeded
-info:    vm extension get command OK
+```output
+[
+  {
+    "autoUpgradeMinorVersion": true,
+    "forceUpdateTag": null,
+    "id": "/subscriptions/subscriptionid/resourceGroups/rgname/providers/Microsoft.Compute/virtualMachines/vmname/extensions/customscript",
+    "resourceGroup": "rgname",
+    "settings": {
+      "commandToExecute": "sh script.sh > ",
+      "fileUris": [
+        "https://catalogartifact.azureedge.net/publicartifacts/scripts/script.sh",
+        "https://catalogartifact.azureedge.net/publicartifacts/scripts/script.sh"
+      ]
+    },
+    "tags": null,
+    "type": "Microsoft.Compute/virtualMachines/extensions",
+    "typeHandlerVersion": "2.0",
+    "virtualMachineExtensionType": "CustomScript"
+  },
+  {
+    "autoUpgradeMinorVersion": true,
+    "forceUpdateTag": null,
+    "id": "/subscriptions/subscriptionid/resourceGroups/rgname/providers/Microsoft.Compute/virtualMachines/vmname/extensions/OmsAgentForLinux",
+    "instanceView": null,
+    "location": "chinaeast",
+    "name": "OmsAgentForLinux",
+    "protectedSettings": null,
+    "provisioningState": "Succeeded",
+    "publisher": "Microsoft.EnterpriseCloud.Monitoring",
+    "resourceGroup": "rgname",
+    "settings": {
+      "workspaceId": "workspaceid"
+    },
+    "tags": null,
+    "type": "Microsoft.Compute/virtualMachines/extensions",
+    "typeHandlerVersion": "1.0",
+    "virtualMachineExtensionType": "OmsAgentForLinux"
+  }
+]
 ```
 
 ## <a name="next-steps"></a>后续步骤

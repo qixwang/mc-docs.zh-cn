@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 通知中心向特定 iOS 设备推送通知 | Microsoft Docs
+title: 使用 Azure 通知中心向特定 iOS 设备发送推送通知 | Azure
 description: 在本教程中，将了解如何使用 Azure 通知中心向特定 iOS 设备推送通知。
 services: notification-hubs
 documentationcenter: ios
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: article
 origin.date: 11/07/2019
-ms.date: 03/02/2020
+ms.date: 04/20/2020
 ms.author: v-tawe
 ms.reviewer: jowargo
 ms.lastreviewed: 11/07/2019
-ms.openlocfilehash: c4524bf41b1a2ab33e6aae943394688e862db1b2
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 3af9f5e882bcbb3e4d5414ec3edd78208a6bcc1d
+ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77501349"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82588500"
 ---
-# <a name="tutorial-push-notifications-to-specific-ios-devices-using-azure-notification-hubs"></a>教程：使用 Azure 通知中心向特定 iOS 设备推送通知
+# <a name="tutorial-send-push-notifications-to-specific-ios-devices-using-azure-notification-hubs"></a>教程：使用 Azure 通知中心向特定 iOS 设备发送推送通知
 
 [!INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
 

@@ -3,20 +3,20 @@ title: 在模板中使用条件
 description: 了解如何根据条件部署 Azure 资源。 演示如何部署新资源或使用现有资源。
 author: rockboyfor
 origin.date: 05/21/2019
-ms.date: 03/23/2020
+ms.date: 04/30/2020
 ms.topic: tutorial
 ms.author: v-yeche
-ms.openlocfilehash: 94224c3c6ceef78aa6db34bb5b3afe8e67a003c7
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 3c8d748d0f1d9b84c3459c7cbb9efe224c13d802
+ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79543845"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82596112"
 ---
 <!--Verify sucessfully-->
-# <a name="tutorial-use-condition-in-azure-resource-manager-templates"></a>教程：在 Azure 资源管理器模板中使用条件
+# <a name="tutorial-use-condition-in-arm-templates"></a>教程：在 ARM 模板中使用条件
 
-了解如何根据条件部署 Azure 资源。
+了解如何根据 Azure 资源管理器 (ARM) 模板中的条件部署 Azure 资源。
 
 [设置资源部署顺序](./template-tutorial-create-templates-with-dependent-resources.md)教程介绍如何创建虚拟机、虚拟网络以及其他一些依赖资源（包括存储帐户）。 无需每次都创建新的存储帐户，可让用户选择是创建新的存储帐户还是使用现有的存储帐户。 为实现此目的，需定义附加的参数。 如果参数值为“new”，则创建新存储帐户。 否则，将使用具有所提供名称的现有存储帐户。
 
@@ -33,11 +33,12 @@ ms.locfileid: "79543845"
 本教程仅介绍使用条件的基本方案。 有关详细信息，请参阅：
 
 * [模板文件结构：条件](conditional-resource-deployment.md)。
-    
+* 在 Azure 资源管理器模板中有条件地部署资源。
+
     <!--Not Available on * [Conditionally deploy a resource in an Azure Resource Manager template](https://docs.microsoft.com/azure/architecture/building-blocks/extending-templates/conditional-deploy)-->
 
 * [模板函数：If](./template-functions-logical.md#if)。
-* [用于 Azure 资源管理器模板的比较函数](./template-functions-comparison.md)
+* [ARM 模板的比较函数](./template-functions-comparison.md)
 
 如果没有 Azure 订阅，请在开始前[创建一个试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。
 
@@ -45,31 +46,32 @@ ms.locfileid: "79543845"
 
 若要完成本文，需要做好以下准备：
 
-* 包含资源管理器工具扩展的 Visual Studio Code。 请参阅[使用 Visual Studio Code 创建 Azure 资源管理器模板](use-vs-code-to-create-template.md)。
+* 包含资源管理器工具扩展的 Visual Studio Code。 请参阅[使用 Visual Studio Code 创建 ARM 模板](use-vs-code-to-create-template.md)。
 * 若要提高安全性，请使用为虚拟机管理员帐户生成的密码。 以下是密码生成示例：
 
     ```console
     openssl rand -base64 32
     ```
 
-    Azure Key Vault 旨在保护加密密钥和其他机密。 有关详细信息，请参阅[教程：在资源管理器模板部署中集成 Azure Key Vault](./template-tutorial-use-key-vault.md)。 我们还建议你每三个月更新一次密码。
+    Azure Key Vault 旨在保护加密密钥和其他机密。 有关详细信息，请参阅[教程：在 ARM 模板部署中集成 Azure Key Vault](./template-tutorial-use-key-vault.md)。 我们还建议你每三个月更新一次密码。
 
 ## <a name="open-a-quickstart-template"></a>打开快速入门模板
 
-Azure 快速入门模板是资源管理器模板的存储库。 无需从头开始创建模板，只需找到一个示例模板并对其自定义即可。 本教程中使用的模板称为[部署简单的 Windows VM](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows/)。
+Azure 快速入门模板是 ARM 模板的存储库。 无需从头开始创建模板，只需找到一个示例模板并对其自定义即可。 本教程中使用的模板称为[部署简单的 Windows VM](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows/)。
 
 1. 在 Visual Studio Code 中，选择“文件”>“打开文件”。  
-2. 在“文件名”中粘贴以下 URL： 
+1. 在“文件名”中粘贴以下 URL： 
 
     ```url
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json
     ```
 
-3. 选择“打开”以打开该文件。 
-4. 有五个通过此模板定义的资源：
+1. 选择“打开”以打开该文件。 
+1. 有六个通过此模板定义的资源：
 
     * `Microsoft.Storage/storageAccounts`。
     * `Microsoft.Network/publicIPAddresses`。
+    * `Microsoft.Network/networkSecurityGroups`。
     * `Microsoft.Network/virtualNetworks`。
     * `Microsoft.Network/networkInterfaces`。
     * `Microsoft.Compute/virtualMachines`。
@@ -80,9 +82,9 @@ Azure 快速入门模板是资源管理器模板的存储库。 无需从头开�
         <!-- Not Available on  [template reference](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces)-->
         <!-- Not Available on  [template reference](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines)-->
     
-        在自定义模板之前，不妨对其进行一些基本的了解。
-    
-5. 选择“文件”>“另存为”，将该文件的副本保存到名为 **azuredeploy.json** 的本地计算机。  
+    在自定义模板之前查看模板参考会很有帮助。
+
+1. 选择“文件”>“另存为”，将该文件的副本保存到名为 **azuredeploy.json** 的本地计算机。  
 
 ## <a name="modify-the-template"></a>修改模板
 
@@ -94,12 +96,12 @@ Azure 快速入门模板是资源管理器模板的存储库。 无需从头开�
 下面是进行更改的过程：
 
 1. 在 Visual Studio Code 中打开 **azuredeploy.json**。
-2. 在整个模板中，将三个 **variables('storageAccountName')** 替换为 **parameters('storageAccountName')** 。
-3. 删除以下变量定义：
+1. 在整个模板中，将三个 **variables('storageAccountName')** 替换为 **parameters('storageAccountName')** 。
+1. 删除以下变量定义：
 
     ![资源管理器模板使用条件关系图](./media/template-tutorial-use-conditions/resource-manager-tutorial-use-condition-template-remove-storageaccountname.png)
 
-4. 将以下两个参数添加到模板：
+1. 将以下两个参数添加到 parameters 节的开头：
 
     ```json
     "storageAccountName": {
@@ -114,11 +116,13 @@ Azure 快速入门模板是资源管理器模板的存储库。 无需从头开�
     },
     ```
 
+    在 Visual Studio Code 中按“[ALT]+[SHIFT]+F”  ，设置模板格式。
+
     更新的参数定义如下所示：
 
     ![在资源管理器中使用条件](./media/template-tutorial-use-conditions/resource-manager-tutorial-use-condition-template-parameters.png)
 
-5. 将以下行添加到存储帐户定义的开头。
+1. 将以下行添加到存储帐户定义的开头。
 
     ```json
     "condition": "[equals(parameters('newOrExisting'),'new')]",
@@ -129,7 +133,7 @@ Azure 快速入门模板是资源管理器模板的存储库。 无需从头开�
     更新的存储帐户定义如下所示：
 
     ![在资源管理器中使用条件](./media/template-tutorial-use-conditions/resource-manager-tutorial-use-condition-template.png)
-6. 使用以下值更新虚拟机资源定义的 **storageUri** 属性：
+1. 使用以下值更新虚拟机资源定义的 **storageUri** 属性：
 
     ```json
     "storageUri": "[concat('https://', parameters('storageAccountName'), '.blob.core.chinacloudapi.cn')]"
@@ -137,20 +141,25 @@ Azure 快速入门模板是资源管理器模板的存储库。 无需从头开�
 
     如果使用另一资源组中的现有存储帐户，则此更改是必需的。
 
-7. 保存更改。
+1. 保存更改。
 
 ## <a name="deploy-the-template"></a>部署模板
 
 按照[部署模板](./template-tutorial-create-templates-with-dependent-resources.md#deploy-the-template)中的说明打开本地 Shell 并上传修改后的模板，然后运行以下 PowerShell 脚本来部署模板。
 
+> [!IMPORTANT]
+> 存储帐户名称在 Azure 中必须是唯一的。 该名称只能包含小写字母或数字。 其长度不能超过 24 个字符。 存储帐户名称是追加了“store”的项目名称。 请确保项目名称和生成的存储帐户名称符合存储帐户名称要求。
+
 ```azurepowershell
-$resourceGroupName = Read-Host -Prompt "Enter the resource group name"
-$storageAccountName = Read-Host -Prompt "Enter the storage account name"
+$projectName = Read-Host -Prompt "Enter a project name that is used to generate resource group name and resource names"
 $newOrExisting = Read-Host -Prompt "Create new or use existing (Enter new or existing)"
 $location = Read-Host -Prompt "Enter the Azure location (i.e. chinaeast)"
 $vmAdmin = Read-Host -Prompt "Enter the admin username"
 $vmPassword = Read-Host -Prompt "Enter the admin password" -AsSecureString
 $dnsLabelPrefix = Read-Host -Prompt "Enter the DNS Label prefix"
+
+$resourceGroupName = "${projectName}rg"
+$storageAccountName = "${projectName}store"
 
 New-AzResourceGroup -Name $resourceGroupName -Location $location
 New-AzResourceGroupDeployment `
@@ -161,6 +170,8 @@ New-AzResourceGroupDeployment `
     -storageAccountName $storageAccountName `
     -newOrExisting $newOrExisting `
     -TemplateFile "$HOME/azuredeploy.json"
+
+Write-Host "Press [ENTER] to continue ..."
 ```
 
 > [!NOTE]
@@ -176,8 +187,12 @@ New-AzResourceGroupDeployment `
 <!--Not Available on To delete the resource group, select **Try it** to open the local Shell. To paste the PowerShell script, right-click the shell pane, and then select **Paste**.-->
 
 ```powershell
-$resourceGroupName = Read-Host -Prompt "Enter the same resource group name you used in the last procedure"
+$projectName = Read-Host -Prompt "Enter the same project name you used in the last procedure"
+$resourceGroupName = "${projectName}rg"
+
 Remove-AzResourceGroup -Name $resourceGroupName
+
+Write-Host "Press [ENTER] to continue ..."
 ```
 
 ## <a name="next-steps"></a>后续步骤

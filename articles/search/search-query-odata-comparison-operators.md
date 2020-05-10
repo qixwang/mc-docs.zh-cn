@@ -20,12 +20,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: e962d571515a192e23b7feca22849ae209355d3c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 22957329e01a260ab382a23cd7313dbe057f6497
+ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75336504"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82588713"
 ---
 # <a name="odata-comparison-operators-in-azure-cognitive-search---eq-ne-gt-lt-ge-and-le"></a>Azure 认知搜索中的 OData 比较运算符 - `eq`、`ne`、`gt`、`lt`、`ge` 和 `le`
 
@@ -50,7 +50,7 @@ ms.locfileid: "75336504"
 
 ## <a name="syntax"></a>语法
 
-以下 EBNF（[扩展巴科斯-瑙尔范式](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)）定义一个使用比较运算符的 OData 表达式的语法。
+以下 EBNF（扩展巴科斯-瑙尔范式）定义了一个使用比较运算符的 OData 表达式的语法。
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 

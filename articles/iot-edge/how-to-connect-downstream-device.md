@@ -5,16 +5,16 @@ author: kgremban
 manager: philmea
 ms.author: v-tawe
 origin.date: 12/08/2019
-ms.date: 03/02/2020
+ms.date: 04/20/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: f73cd8b97f49f76902e0b63dabfba5f4b8b3aeb2
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 46ab9624168194853336f50c2fb228bb678b2b5e
+ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80151756"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82588785"
 ---
 # <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>将下游设备连接到 Azure IoT Edge 网关
 
@@ -58,7 +58,7 @@ ms.locfileid: "80151756"
 
 ## <a name="tls-and-certificate-fundamentals"></a>TLS 和证书基础知识
 
-将下游设备安全连接到 IoT Edge 所存在的难题就如同通过 Internet 进行其他任何客户端/服务器安全通信。 客户端和服务器使用[传输层安全性 (TLS)](https://wikipedia.org/wiki/Transport_Layer_Security) 通过 Internet 安全通信。 TLS 是使用称作“证书”的标准[公钥基础结构 (PKI)](https://wikipedia.org/wiki/Public_key_infrastructure) 构造生成的。 TLS 是一种相当复杂的规范，阐述了与保护两个终结点相关的各种主题。 本部分汇总了将设备安全连接到 IoT Edge 网关的相关概念。
+将下游设备安全连接到 IoT Edge 所存在的难题就如同通过 Internet 进行其他任何客户端/服务器安全通信。 客户端和服务器使用传输层安全性 (TLS) 通过 Internet 安全地进行通信。 TLS 是使用称作“证书”的标准公钥基础结构 (PKI) 构造生成的。 TLS 是一种相当复杂的规范，阐述了与保护两个终结点相关的各种主题。 本部分汇总了将设备安全连接到 IoT Edge 网关的相关概念。
 
 当客户端连接到某个服务器时，该服务器将出示称作“服务器证书链”的证书链。  证书链通常包含根证书颁发机构 (CA) 证书、一个或多个中间 CA 证书，以及服务器证书本身。 客户端通过以加密方式验证整个服务器证书链来与服务器建立信任。 客户端对服务器证书链进行的这种验证称作“服务器链验证”。  客户端将在一个称作“所有权证明”的过程中在加密方面对服务提出质询，以证明与服务器证书关联的私钥的所有权。  服务器链验证和所有权证明的组合称作“服务器身份验证”。  若要验证服务器证书链，客户端需要使用创建（或发出）服务器证书时所用的根 CA 证书的副本。 一般情况下，在连接到网站时，浏览器中会预配置常用的 CA 证书，使客户端能够顺利完成验证过程。
 
@@ -183,7 +183,7 @@ var options = {
 
 本部分介绍用于将 Azure IoT Python 设备客户端连接到 IoT Edge 网关的示例应用程序。
 
-1. 从[适用于 Python 的 Azure IoT 设备 SDK 示例](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/advanced-edge-scenarios)获取 **send_message** 的示例。
+1. 从[适用于 Python 的 Azure IoT 设备 SDK 示例](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/async-edge-scenarios)获取 **send_message** 的示例。
 2. 确保你正在 IoT Edge 容器中运行，或在调试方案中运行，并设置了 `EdgeHubConnectionString` 和 `EdgeModuleCACertificateFile` 环境变量。
 3. 参阅 SDK 文档，获取有关如何在设备上运行该示例的说明。
 

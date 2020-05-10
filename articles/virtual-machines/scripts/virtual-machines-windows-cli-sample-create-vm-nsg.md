@@ -1,11 +1,10 @@
 ---
-title: Azure CLI 脚本示例 - 使用内部和外部 NSG 创建两个 VM | Azure
+title: Azure CLI 脚本示例 - 保护虚拟机之间的网络流量
 description: Azure CLI 脚本示例 - 使用内部和外部 NSG 创建两个 VM
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: rockboyfor
 manager: digimobile
-editor: tysonn
 tags: ''
 ms.assetid: ''
 ms.service: virtual-machines-windows
@@ -14,15 +13,15 @@ ms.topic: sample
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 origin.date: 02/23/2017
-ms.date: 08/12/2019
+ms.date: 04/27/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 01534e3d4c2713b281920e54d02f696aa8f8be0a
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: fd6f4ea7c6c5b202f2c1bded503ec9103f67868a
+ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "69539092"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82596403"
 ---
 # <a name="secure-network-traffic-between-virtual-machines"></a>保护虚拟机之间的网络流量
 
@@ -98,7 +97,7 @@ az group delete --name myResourceGroup --yes
 
 此脚本使用以下命令创建资源组、虚拟机和所有相关资源。 表中的每条命令均链接到特定于命令的文档。
 
-| Command | 说明 |
+| 命令 | 注释 |
 |---|---|
 | [az group create](https://docs.azure.cn/cli/group?view=azure-cli-latest#az-group-create) | 创建用于存储所有资源的资源组。 |
 | [az network vnet create](https://docs.azure.cn/cli/network/vnet?view=azure-cli-latest#az-network-vnet-create) | 创建 Azure 虚拟网络和子网。 |
@@ -106,7 +105,9 @@ az group delete --name myResourceGroup --yes
 | [az vm create](https://docs.azure.cn/cli/vm?view=azure-cli-latest#az-vm-create) | 创建虚拟机并将其连接到网卡、虚拟网络、子网和 NSG。 此命令还指定要使用的虚拟机映像和管理凭据。  |
 | [az network nsg rule update](https://docs.azure.cn/cli/network/nsg/rule?view=azure-cli-latest#az-network-nsg-rule-update) | 更新 NSG 规则。 在本例中，将更新后端规则，仅从前端子网传递流量。 |
 | [az network nsg rule list](https://docs.azure.cn/cli/network/nsg/rule?view=azure-cli-latest#az-network-nsg-rule-list) | 返回有关网络安全组规则的信息。 在此示例中，规则名称存储在变量中，以便以后在脚本中使用。 |
-| [az group delete](https://docs.azure.cn/cli/group?view=azure-cli-latest#az-group-delete)  | 删除资源组，包括所有嵌套的资源。 |
+| [az group delete](https://docs.azure.cn/cli/group?view=azure-cli-latest#az-group-delete)| 删除资源组，包括所有嵌套的资源。 |
+
+<!--CORRECT ON [az group delete](https://docs.azure.cn/cli/group?view=azure-cli-latest#az-group-delete-->
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -114,4 +115,4 @@ az group delete --name myResourceGroup --yes
 
 可以在 [Azure Windows VM 文档](../windows/cli-samples.md?toc=%2fvirtual-machines%2fwindows%2ftoc.json)中找到其他虚拟机 CLI 脚本示例。
 
-<!--Update_Description: update link -->
+<!-- Update_Description: update meta properties, wording update, update link -->

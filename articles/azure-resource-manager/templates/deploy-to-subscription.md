@@ -2,15 +2,15 @@
 title: 将资源部署到订阅
 description: 介绍了如何在 Azure 资源管理器模板中创建资源组。 它还展示了如何在 Azure 订阅范围内部署资源。
 ms.topic: conceptual
-origin.date: 03/09/2020
-ms.date: 03/23/2020
+origin.date: 03/23/2020
+ms.date: 04/30/2020
 ms.author: v-yeche
-ms.openlocfilehash: b16e3849ca249e36cb0fd6580200a01ce4c7f7cd
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: ed95a40387e322faa0181d927b3ce44d035307bf
+ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79543808"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82596238"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>在订阅级别创建资源组和资源
 
@@ -24,23 +24,33 @@ ms.locfileid: "79543808"
 
 * 预算
 * 部署 - 适用于部署到资源组的嵌套模板。
-* peerAsns
+* eventSubscriptions
+    
+    <!--Not Available on peerAsns-->
+    
 * policyAssignments
 * policyDefinitions
 * policySetDefinitions
+* remediations
 * resourceGroups
 * roleAssignments
 * roleDefinitions
-
+    
+    <!--Not Available on scopeAssignments-->
+    <!--Not Available on supportPlanTypes-->
+* tags
+   
 <!--Noy Available on * [budgets](https://docs.microsoft.com/azure/templates/microsoft.consumption/budgets)-->
 <!--Noy Available on * [deployments](https://docs.microsoft.com/azure/templates/microsoft.resources/deployments)-->
-<!--Noy Available on * [peerAsns](https://docs.microsoft.com/azure/templates/microsoft.peering/peerasns)-->
+<!--Noy Available on * [eventSubscriptions](https://docs.microsoft.com/azure/templates/microsoft.eventgrid/eventsubscriptions)-->
 <!--Noy Available on * [policyAssignments](https://docs.microsoft.com/azure/templates/microsoft.authorization/policyassignments)-->
 <!--Noy Available on * [policyDefinitions](https://docs.microsoft.com/azure/templates/microsoft.authorization/policydefinitions)-->
 <!--Noy Available on * [policySetDefinitions](https://docs.microsoft.com/azure/templates/microsoft.authorization/policysetdefinitions)-->
+<!--Noy Available on * [remediations](https://docs.microsoft.com/azure/templates/microsoft.policyinsights/2019-07-01/remediations)-->
 <!--Noy Available on * [resourceGroups](https://docs.microsoft.com/azure/templates/microsoft.resources/resourcegroups)-->
 <!--Noy Available on * [roleAssignments](https://docs.microsoft.com/azure/templates/microsoft.authorization/roleassignments)-->
 <!--Noy Available on * [roleDefinitions](https://docs.microsoft.com/azure/templates/microsoft.authorization/roledefinitions)-->
+<!--Noy Available on * [tags](https://docs.microsoft.com/azure/templates/microsoft.resources/tags)-->
 
 ### <a name="schema"></a>架构
 
@@ -62,13 +72,15 @@ https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json
 
 用于订阅级别部署的命令不同于资源组部署的命令。
 
-对于 Azure CLI，请使用 [az deployment create](https://docs.azure.cn/cli/deployment?view=azure-cli-latest#az-deployment-create)。 以下示例通过部署模板来创建资源组：
+对于 Azure CLI，请使用 [az deployment sub create](https://docs.microsoft.com/cli/azure/deployment/sub?view=azure-cli-latest)。 以下示例通过部署模板来创建资源组：
+
+<!--CORRECT ON https://docs.microsoft.com/cli/azure/deployment/sub?view=azure-cli-latest-->
 
 ```azurecli
-az deployment create \
-  --name demoDeployment \
+az deployment sub create \
+  --name demoSubDeployment \
   --location chinaeast \
-  --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/emptyRG.json \
+  --template-uri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/emptyRG.json" \
   --parameters rgName=demoResourceGroup rgLocation=chinaeast
 ```
 
@@ -76,9 +88,9 @@ az deployment create \
 
 ```powershell
 New-AzSubscriptionDeployment `
-  -Name demoDeployment `
+  -Name demoSubDeployment `
   -Location chinaeast `
-  -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/emptyRG.json `
+  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/emptyRG.json" `
   -rgName demoResourceGroup `
   -rgLocation chinaeast
 ```
@@ -240,8 +252,8 @@ New-AzSubscriptionDeployment `
               "location": "[parameters('rgLocation')]",
               "sku": {
                 "name": "Standard_LRS"
-              }
-              "kind": "StorageV2",
+              },
+              "kind": "StorageV2"
             }
           ],
           "outputs": {}
@@ -297,10 +309,10 @@ New-AzSubscriptionDeployment `
 # Built-in policy that accepts parameters
 definition=$(az policy definition list --query "[?displayName=='Allowed locations'].id" --output tsv)
 
-az deployment create \
+az deployment sub create \
   --name demoDeployment \
   --location chinaeast \
-  --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/policyassign.json \
+  --template-uri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/policyassign.json" \
   --parameters policyDefinitionID=$definition policyName=setLocation policyParameters="{'listOfAllowedLocations': {'value': ['chinanorth']} }"
 ```
 
@@ -315,7 +327,7 @@ $policyParams =@{listOfAllowedLocations = @{ value = $locations}}
 New-AzSubscriptionDeployment `
   -Name policyassign `
   -Location chinaeast `
-  -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/policyassign.json `
+  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/policyassign.json" `
   -policyDefinitionID $definition.PolicyDefinitionId `
   -policyName setLocation `
   -policyParameters $policyParams
@@ -369,10 +381,10 @@ New-AzSubscriptionDeployment `
 若要在订阅中创建策略定义，然后将其应用到订阅，请使用以下 CLI 命令：
 
 ```azurecli
-az deployment create \
+az deployment sub create \
   --name demoDeployment \
   --location chinaeast \
-  --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/policydefineandassign.json
+  --template-uri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/policydefineandassign.json"
 ```
 
 若要使用 PowerShell 部署此模板，请使用：
@@ -381,7 +393,7 @@ az deployment create \
 New-AzSubscriptionDeployment `
   -Name definePolicy `
   -Location chinaeast `
-  -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/policydefineandassign.json
+  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/policydefineandassign.json"
 ```
 
 ## <a name="template-samples"></a>模板示例

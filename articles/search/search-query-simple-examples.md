@@ -8,21 +8,21 @@ ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 11/04/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: f80dd105be77b533b4b2eedc8228aad6f4fbbef7
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 04/20/2020
+ms.openlocfilehash: fd4bc756b08954c01eea2adbeb642b9c0b8d0293
+ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78850246"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82588778"
 ---
 # <a name="create-a-simple-query-in-azure-cognitive-search"></a>在 Azure 认知搜索中创建简单的查询
 
-在 Azure 认知搜索中，[简单查询语法](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)调用默认查询分析器，用于对索引执行全文搜索查询。 此分析程序速度快，处理对象是全文搜索、筛选及分面搜索和地理搜索等常见方案。 
+在 Azure 认知搜索中，[简单查询语法](query-simple-syntax.md)调用默认查询分析器，用于对索引执行全文搜索查询。 此分析程序速度快，处理对象是全文搜索、筛选及分面搜索和地理搜索等常见方案。 
 
-在本文中，我们使用示例来演示简单语法。
+在本文中，我们将使用示例来阐释简单语法，并填写[搜索文档](https://docs.microsoft.com/rest/api/searchservice/search-documents)操作的 `search=` 参数。
 
-备选的查询语法是[完整的 Lucene](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)，它支持模糊搜索和通配符搜索等更复杂的查询结构，而这可能需要额外的处理时间。 要获取完整语法的详细信息和演示示例，请参阅[使用完整的 Lucene 语法](search-query-lucene-examples.md)。
+备选的查询语法是[完整的 Lucene](query-lucene-syntax.md)，它支持模糊搜索和通配符搜索等更复杂的查询结构，而这可能需要额外的处理时间。 要获取完整语法的详细信息和演示示例，请参阅[使用完整的 Lucene 语法](search-query-lucene-examples.md)。
 
 ## <a name="formulate-requests-in-postman"></a>在 Postman 中创建请求
 

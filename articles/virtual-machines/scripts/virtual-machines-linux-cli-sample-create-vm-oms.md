@@ -1,11 +1,10 @@
 ---
-title: 使用 Azure Monitor 监视 VM | Azure
+title: Azure CLI 脚本示例 - 使用 Azure Monitor 监视 VM
 description: Azure CLI 脚本示例 - 使用 Azure Monitor 创建 Linux VM
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: rockboyfor
 manager: digimobile
-editor: tysonn
 tags: azure-service-management
 ms.assetid: ''
 ms.service: virtual-machines-linux
@@ -14,15 +13,15 @@ ms.topic: sample
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 origin.date: 02/27/2017
-ms.date: 09/14/2019
+ms.date: 04/27/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: fbe1158192f0765377a50b67e941a87e8cf2730a
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: a6c39b8b58e955b3fad1dafd9ad1fa301f47bb99
+ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "72272872"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82596024"
 ---
 <!--Verify successfully-->
 # <a name="monitor-a-vm-with-azure-monitor"></a>使用 Azure Monitor 监视 VM
@@ -78,12 +77,15 @@ az group delete --name myResourceGroup
 
 此脚本使用以下命令创建资源组、虚拟机和所有相关资源。 表中的每条命令均链接到特定于命令的文档。
 
-| Command | 说明 |
+| 命令 | 注释 |
 |---|---|
 | [az group create](https://docs.azure.cn/cli/group?view=azure-cli-latest#az-group-create) | 创建用于存储所有资源的资源组。 |
 | [az vm create](https://docs.azure.cn/cli/vm?view=azure-cli-latest#az-vm-create) | 创建虚拟机并将其连接到网卡、虚拟网络、子网和 NSG。 此命令还指定要使用的虚拟机映像和管理凭据。  |
-| [azure vm extension set](https://docs.azure.cn/cli/vm/extension?view=azure-cli-latest) | 针对虚拟机运行 VM 扩展。 在此示例中，使用 Azure Monitor 代理扩展安装 Log Analytics 代理，并在 Log Analytics 工作区中注册 VM。 |
-| [az group delete](https://docs.azure.cn/cli/vm/extension?view=azure-cli-latest#az-group-delete) | 删除资源组，包括所有嵌套的资源。 |
+| [az vm extension set](https://docs.azure.cn/cli/vm/extension?view=azure-cli-latest#az-vm-extension-set) | 针对虚拟机运行 VM 扩展。 在此示例中，使用 Azure Monitor 代理扩展安装 Log Analytics 代理，并在 Log Analytics 工作区中注册 VM。 |
+| [az group delete](https://docs.azure.cn/cli/group?view=azure-cli-latest#az-group-delete) | 删除资源组，包括所有嵌套的资源。 |
+
+<!--CORRECT ON [az group delete](https://docs.azure.cn/cli/group?view=azure-cli-latest#az-group-delete)-->
+<!--CORRECT ON [az vm extension set](https://docs.azure.cn/cli/vm/extension?view=azure-cli-latest#az-vm-extension-set)-->
 
 ## <a name="next-steps"></a>后续步骤
 

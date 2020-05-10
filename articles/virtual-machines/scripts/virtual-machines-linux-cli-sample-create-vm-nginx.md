@@ -1,11 +1,10 @@
 ---
-title: Azure CLI 脚本示例 - 使用 NGINX 创建 Linux VM | Azure
+title: Azure CLI 脚本示例 - 使用 NGINX 创建 VM
 description: Azure CLI 脚本示例 - 使用 NGINX 创建 Linux VM
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: rockboyfor
 manager: digimobile
-editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
@@ -14,15 +13,15 @@ ms.topic: sample
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 origin.date: 02/27/2017
-ms.date: 08/12/2019
+ms.date: 04/27/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 69a99e3a35884d96344f5cded86d662019b9fc03
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: e90766f16aeb6d854dc90e6c48683d9d0e373ae0
+ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "69539047"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82596326"
 ---
 # <a name="create-a-vm-with-nginx"></a>使用 NGINX 创建 VM
 
@@ -86,13 +85,16 @@ az group delete --name myResourceGroup
 
 此脚本使用以下命令创建资源组、虚拟机和所有相关资源。 表中的每条命令均链接到特定于命令的文档。
 
-| Command | 说明 |
+| 命令 | 注释 |
 |---|---|
 | [az group create](https://docs.azure.cn/cli/group?view=azure-cli-latest#az-group-create) | 创建用于存储所有资源的资源组。 |
 | [az vm create](https://docs.azure.cn/cli/vm?view=azure-cli-latest#az-vm-create) | 创建虚拟机。 此命令还指定要使用的虚拟机映像和管理凭据。  |
-| [az vm open-port](https://docs.azure.cn/cli/network/nsg/rule?view=azure-cli-latest) | 创建网络安全组规则，以允许入站流量。 在此示例中，将为 HTTP 流量打开端口 80。 |
+| [az vm open-port](https://docs.azure.cn/zh-cn/cli/vm?view=azure-cli-latest#az-vm-open-port) | 创建网络安全组规则，以允许入站流量。 在此示例中，为 HTTP 流量打开端口 80。 |
 | [azure vm extension set](https://docs.azure.cn/cli/vm/extension?view=azure-cli-latest) | 将虚拟机扩展添加到 VM 并运行该扩展。 在此示例中，使用自定义脚本扩展来安装 NGINX。|
 | [az group delete](https://docs.azure.cn/cli/group?view=azure-cli-latest#az-group-delete)| 删除资源组，包括所有嵌套的资源。 |
+
+<!--CORRECT ON [az vm open-port](https://docs.azure.cn/zh-cn/cli/vm?view=azure-cli-latest#az-vm-open-port)-->
+<!--CORRECT ON [az group delete](https://docs.azure.cn/cli/group?view=azure-cli-latest#az-group-delete)-->
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -100,4 +102,4 @@ az group delete --name myResourceGroup
 
 可以在 [Azure Linux VM 文档](../linux/cli-samples.md?toc=%2fvirtual-machines%2flinux%2ftoc.json)中找到其他虚拟机 CLI 脚本示例。
 
-<!--Update_Description: update meta properties, update cmdlet -->
+<!-- Update_Description: update meta properties, wording update, update link -->

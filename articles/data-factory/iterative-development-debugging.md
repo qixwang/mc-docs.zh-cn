@@ -1,25 +1,25 @@
 ---
-title: 在 Azure 数据工厂中进行迭代开发和调试 | Microsoft Docs
+title: 在 Azure 数据工厂中进行迭代开发和调试
 description: 了解如何在 Azure 门户中以迭代方式开发和调试数据工厂管道。
 origin.date: 09/26/2018
-ms.date: 07/08/2019
+ms.date: 05/11/2020
 ms.topic: conceptual
 ms.service: data-factory
 services: data-factory
 documentationcenter: ''
 ms.workload: data-services
-ms.tgt_pltfrm: na
 author: WenJason
 ms.author: v-jay
 manager: digimobile
-ms.openlocfilehash: d7baa9051c4803174b5d0d747206d347b6dd74a1
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: f556851c9d96dc489b3988b8d5a32193ee9ba982
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "67570316"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82198077"
 ---
 # <a name="iterative-development-and-debugging-with-azure-data-factory"></a>使用 Azure 数据工厂进行迭代开发和调试
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Azure 数据工厂允许以迭代方式开发和调试数据工厂管道。
 

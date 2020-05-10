@@ -10,16 +10,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 origin.date: 01/08/2020
-ms.date: 03/02/2020
+ms.date: 05/11/2020
 ms.author: v-jay
-ms.openlocfilehash: dee3bc7ab73da6a35c1790252e0ad7ee695ac10c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: d5a3755f8242fba4cf753bb53b91bccfbf7e564e
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77653527"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82198073"
 ---
 # <a name="copy-data-from-hubspot-using-azure-data-factory-preview"></a>使用 Azure 数据工厂（预览版）从 HubSpot 复制数据
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从 HubSpot 复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
@@ -56,8 +57,8 @@ HubSpot 链接服务支持以下属性：
 | accessToken | 最初进行 OAuth 集成身份验证时获得的访问令牌。 从[此处](https://developers.hubspot.com/docs/methods/oauth2/get-access-and-refresh-tokens)了解如何使用客户端 ID 和机密获取访问令牌。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
 | refreshToken | 最初进行 OAuth 集成身份验证时获得的刷新令牌。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
 | useEncryptedEndpoints | 指定是否使用 HTTPS 加密数据源终结点。 默认值为 true。  | 否 |
-| useHostVerification | 指定通过 SSL 连接时是否需要服务器证书中的主机名匹配服务器的主机名。 默认值为 true。  | 否 |
-| usePeerVerification | 指定通过 SSL 连接时是否要验证服务器的标识。 默认值为 true。  | 否 |
+| useHostVerification | 指定通过 TLS 进行连接时是否要求服务器证书中的主机名与服务器的主机名匹配。 默认值为 true。  | 否 |
+| usePeerVerification | 指定通过 TLS 进行连接时是否要验证服务器的标识。 默认值为 true。  | 否 |
 
 **示例：**
 

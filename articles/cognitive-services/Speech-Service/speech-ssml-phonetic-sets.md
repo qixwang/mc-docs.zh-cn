@@ -11,16 +11,16 @@ ms.topic: conceptual
 origin.date: 03/04/2020
 ms.date: 03/16/2020
 ms.author: v-tawe
-ms.openlocfilehash: 5fc8515d85078eac3a640593eb341df82721e243
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 6e2543a1e8a97cd27ffb73fc366d0c376e75ff1d
+ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80151763"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82588776"
 ---
 # <a name="speech-service-phonetic-sets"></a>语音服务音标集
 
-语音服务定义了包括六种语言（`en-US`、`fr-FR`、`de-DE`、`es-ES`、`zh-CN` 和 `zh-TW`）的音标符号表（简称为“音标集”）。 语音服务音标集通常映射到<a href="https://wikipedia.org/wiki/International_Phonetic_Alphabet" target="_blank">国际注音 (IPA)<span class="docon docon-navigate-external x-hidden-focus"></span></a>。 语音服务音标集与文本转语音服务产品中的[语音合成标记语言 (SSML)](speech-synthesis-markup.md) 结合使用。 本文介绍这些音标集的映射方式，以及何时使用哪个音标集。
+语音服务定义了包括六种语言（`en-US`、`fr-FR`、`de-DE`、`es-ES`、`zh-CN` 和 `zh-TW`）的音标符号表（简称为“音标集”）。 语音服务音标集通常会映射到国际音标 (IPA)。 语音服务音标集与文本转语音服务产品中的[语音合成标记语言 (SSML)](speech-synthesis-markup.md) 结合使用。 本文介绍这些音标集的映射方式，以及何时使用哪个音标集。
 
 # <a name="en-us"></a>[en-US](#tab/en-US)
 
@@ -293,7 +293,7 @@ ms.locfileid: "80151763"
 | ^      | `ʔ`   | beachtlich     /b ax - ^ a 1 x t - l ih c/ |
 
 > [!NOTE]
-> 需要在两个不同的元音之间添加 [gs\] 音标，但这两个元音是真正复元音除外。 此口腔辅音为喉塞音，有关详细信息，请参阅<a href="http://wikipedia.org/wiki/Glottal_stop" target="_blank">喉塞音<span class="docon docon-navigate-external x-hidden-focus"></a></a>。
+> 需要在两个不同的元音之间添加 [gs\] 音标，但这两个元音是真正复元音除外。 此口腔辅音为喉塞音。
 
 # <a name="es-es"></a>[es-ES](#tab/es-ES)
 
@@ -341,7 +341,7 @@ ms.locfileid: "80151763"
 
 # <a name="zh-cn"></a>[zh-CN](#tab/zh-CN)
 
-`zh-CN` 的语音服务音标集基于当地<a href="https://wikipedia.org/wiki/Pinyin" target="_blank">拼音<span class="docon docon-navigate-external x-hidden-focus"></span></a>音标集。
+`zh-CN` 的语音服务音标集基于当地拼音音标集。
 
 ### <a name="tone"></a>声调
 
@@ -363,7 +363,7 @@ ms.locfileid: "80151763"
 
 # <a name="zh-tw"></a>[zh-TW](#tab/zh-TW)
 
-`zh-TW` 的语音服务音标集基于当地 <a href="https://wikipedia.org/wiki/Bopomofo" target="_blank">Bopomofo<span class="docon docon-navigate-external x-hidden-focus"></span></a> 音标集。
+`zh-TW` 的语音服务音标集基于当地 Bopomofo 音标集。
 
 ### <a name="tone"></a>声调
 
@@ -386,7 +386,7 @@ ms.locfileid: "80151763"
 <!--
 # [ja-JP](#tab/ja-JP)
 
-The Speech service phone set for `ja-JP` is based on the native phone <a href="https://wikipedia.org/wiki/Kana" target="_blank">Kana <span class="docon docon-navigate-external x-hidden-focus"></span></a> set.
+The Speech service phone set for `ja-JP` is based on the native phone Kana set.
 
 ### Stress
 

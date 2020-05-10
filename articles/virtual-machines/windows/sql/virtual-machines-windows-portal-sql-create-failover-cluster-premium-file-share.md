@@ -13,15 +13,17 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 origin.date: 10/09/2019
-ms.date: 02/10/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: fa8d7694f1fe53636692cb701db2ecab6dc51b34
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 355541e6013c386e1e27e58bbdbde2990a95810e
+ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77428908"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82596432"
 ---
+<!--NOT AVAILABLE ON AZURE CHINA CLOUD-->
+<!--**FILESTORAGE** ON AVAILABLE ON AZURE PREMINUM STORAGE ON 20200428-->
 # <a name="configure-a-sql-server-failover-cluster-instance-with-premium-file-share-on-azure-virtual-machines"></a>在 Azure 虚拟机上配置使用高级文件共享的 SQL Server 故障转移群集实例
 
 本文介绍如何在 Azure 虚拟机上创建使用[高级文件共享](../../../storage/files/storage-how-to-create-premium-fileshare.md)的 SQL Server 故障转移群集实例 (FCI)。
@@ -178,7 +180,7 @@ ms.locfileid: "77428908"
 1. 选择“连接”显示文件共享的连接字符串。 
 1. 从下拉列表中选择要使用的驱动器号，然后将这两个代码块复制到记事本中。
 
-    <img type="content" source="media/virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-share/premium-file-storage-commands.png" alt-text="Copy both PowerShell commands from the file share connect portal"></img>
+    :::image type="content" source="media/virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-share/premium-file-storage-commands.png" alt-text="从文件共享连接门户复制两个 PowerShell 命令":::
 
 1. 使用由 SQL Server FCI 用作服务帐户的帐户通过 RDP 连接到 SQL Server VM。
 1. 打开 PowerShell 命令管理控制台。
@@ -233,7 +235,7 @@ ms.locfileid: "77428908"
 1. 在“测试选项”下，选择“仅运行选择的测试”。   选择“**下一步**”。
 1. 在“测试选择”下，选择除“存储”和“存储空间直通”以外的其他所有测试，如下所示：   
 
-   <img type="content" source="media/virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-share/cluster-validation.png" alt-text="Select cluster validation tests"></img>
+    :::image type="content" source="media/virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-share/cluster-validation.png" alt-text="选择群集验证测试":::
 
 1. 选择“**下一步**”。
 1. 在“确认”下，选择“下一步”。  
@@ -309,7 +311,7 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") -StaticAddr
 
     FCI 数据目录需位于高级文件共享中。 输入共享的完整路径，格式为：`\\storageaccountname.file.core.chinacloudapi.cn\filesharename\foldername`。 此时会出现一条警告，指出已指定某个文件服务器作为数据目录。 预期会出现此警告。 请确保在保存文件共享时通过 RDP 连接到 VM 所用的用户帐户，是 SQL Server 服务用来避免可能故障的同一帐户。
 
-    <img type="content" source="media/virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-share/use-file-share-as-data-directories.png" alt-text="Use file share as SQL data directories"></img>
+    :::image type="content" source="media/virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-share/use-file-share-as-data-directories.png" alt-text="使用文件共享作为 SQL 数据目录":::
 
 1. 完成向导中的步骤后，安装程序将在第一个节点上安装 SQL Server FCI。
 
@@ -372,7 +374,7 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") -StaticAddr
 
 1. 选择“添加”   。
 
-1. 在“添加运行状况探测”边栏选项卡中，<a name="probe"></a>设置以下运行状况探测参数。 
+1. 在“添加运行状况探测”边栏选项卡中，<span id="probe"></span>设置以下运行状况探测参数。 
 
     - **名称**：运行状况探测的名称。
     - **协议**：TCP。

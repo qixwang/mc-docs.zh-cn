@@ -88,7 +88,7 @@ POST /indexes/hotels/docs/search?api-version=2019-05-06
 `+ - & | ! ( ) { } [ ] ^ " ~ * ? : \ /`  
 
 > [!NOTE]  
-> 尽管转义将标记保留在一起，但在编制索引期间，[词法分析](search-lucene-query-architecture.md#stage-2-lexical-analysis)可能会将它们去除。例如，标准 Lucene 分析器会在连字符、空格和其他字符处拆分单词。 如果需要在查询字符串中使用特殊字符，则可能需要使用会将它们保留在索引中的分析器。 可供选择的一些项包括 Microsoft 自然[语言分析器](index-add-language-analyzers.md)（它会保留带连字符的单词）和自定义分析器（用于更复杂的模式）。 有关详细信息，请参阅[部分词语、模式和特殊字符](search-query-partial-matching.md)。
+> 尽管转义将标记保留在一起，但在编制索引期间，[词法分析](search-lucene-query-architecture.md#stage-2-lexical-analysis)可能会将它们去除。例如，标准 Lucene 分析器会在连字符、空格和其他字符处断开单词。 如果需要在查询字符串中使用特殊字符，则可能需要使用会将它们保留在索引中的分析器。 可供选择的一些项包括 Microsoft 自然[语言分析器](index-add-language-analyzers.md)（它会保留带连字符的单词）和自定义分析器（用于更复杂的模式）。 有关详细信息，请参阅[部分词语、模式和特殊字符](search-query-partial-matching.md)。
 
 ### <a name="encoding-unsafe-and-reserved-characters-in-urls"></a>对 URL 中的不安全及保留字符进行编码
 
@@ -147,7 +147,7 @@ NOT 运算符是一个减号。 例如：`wifi –luxury` 将搜索包含 `wifi`
 
 ##  <a name="fuzzy-search"></a><a name="bkmk_fuzzy"></a> 模糊搜索
 
-模糊搜索查找字词中具有类似构造的匹配项，并将某个字词最多扩展为符合两个或更少距离条件的 50 个字词。 有关详细信息，请参阅[模糊搜索](search-query-fuzzy.md)。
+模糊搜索查找字词中具有类似构造的匹配项，将一个字词最多扩展为符合距离条件（2 或更低）的 50 个字词。 有关详细信息，请参阅[模糊搜索](search-query-fuzzy.md)。
 
  若要进行模糊搜索，请在单个词末尾使用“~”波形符，另附带指定编辑距离的可选参数（0 到 2 [默认] 之间的值）。 例如“blue~”或“blue~1”会返回“blue”、“blues”和“glue”。
 
@@ -179,14 +179,14 @@ NOT 运算符是一个减号。 例如：`wifi –luxury` 将搜索包含 `wifi`
 
 前缀搜索还使用星号 (`*`) 字符。 例如，`search=note*` 查询表达式返回“notebook”或“notepad”。 前缀搜索不需要完整 Lucene 语法。 简单语法支持此方案。
 
-字符串前面带有 `*` 或 `?` 的后缀搜索需要完整 Lucene 语法和正则表达式（不能使用 * 或 ? 符号作为搜索的第一个字符）。 在给定字词“alphanumeric”的情况下，查询表达式 (`search=/.*numeric.*/`) 将查找匹配项。
+后缀搜索（字符串前面有 `*` 或 `?`）需要完整 Lucene 语法和正则表达式（不能使用 * 或 ? 符号作为搜索的第一个字符）。 在给定字词“alphanumeric”的情况下，查询表达式 (`search=/.*numeric.*/`) 将查找匹配项。
 
 > [!NOTE]  
-> 在查询分析期间，以前缀、后缀、通配符或正则表达式形式构建的查询将按原样传递到查询树，并绕过[词法分析](search-lucene-query-architecture.md#stage-2-lexical-analysis)。 仅当索引包含查询所指定的格式的字符串时，才会查找匹配项。 在大多数情况下，在编制索引期间需要使用一个可以保留字符串完整性的替代分析器，使部分字词和模式匹配能够成功。 有关详细信息，请参阅 [Azure 认知搜索查询中的部分字词搜索](search-query-partial-matching.md)。
+> 在查询分析期间，以前缀、后缀、通配符或正则表达式形式构建的查询将绕过[词法分析](search-lucene-query-architecture.md#stage-2-lexical-analysis)，按原样传递到查询树。 仅当索引包含查询所指定的格式的字符串时，才会查找匹配项。 在大多数情况下，在编制索引期间需要使用一个可以保留字符串完整性的替代分析器，使部分字词和模式匹配能够成功。 有关详细信息，请参阅 [Azure 认知搜索查询中的部分字词搜索](search-query-partial-matching.md)。
 
 ##  <a name="scoring-wildcard-and-regex-queries"></a><a name="bkmk_searchscoreforwildcardandregexqueries"></a> 对通配符和正则表达式查询评分
 
-Azure 认知搜索使用基于频率评分 (TF-IDF) 进行文本查询。 但是，对于术语范围可能很广的通配符和正则表达式查询，则忽略频率因子，以防止排名偏向于比较少见的术语匹配。 通配符和正则表达式搜索对所有匹配项和正则表达式搜索进行相同处理。
+Azure 认知搜索使用基于频率的评分 (TF-IDF) 进行文本查询。 但是，对于术语范围可能很广的通配符和正则表达式查询，则忽略频率因子，以防止排名偏向于比较少见的术语匹配。 通配符和正则表达式搜索对所有匹配项和正则表达式搜索进行相同处理。
 
 ## <a name="see-also"></a>另请参阅
 

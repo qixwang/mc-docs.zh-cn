@@ -21,7 +21,7 @@ ms.locfileid: "82515679"
 ---
 # <a name="the-elements-of-the-b2b-collaboration-invitation-email---azure-active-directory"></a>B2B 协作邀请电子邮件的元素 - Azure Active Directory
 
-邀请电子邮件是将合作伙伴登记为 Azure AD 中的 B2B 协作用户的关键组件。 虽然[不一定要使用 B2B 协作通过电子邮件来邀请某人](add-user-without-invite.md)，但这样做可为用户提供所需的全部信息，让他们决定是否要接受你的邀请。 邀请电子邮件中还会包含链接，将来当用户需要返回到你的资源时，始终可以参考该链接。
+邀请电子邮件是将合作伙伴登记为 Azure AD 中的 B2B 协作用户的关键组件。 虽然[不一定要使用 B2B 协作通过电子邮件来邀请某人](add-user-without-invite.md)，但这样做可为用户提供所需的全部信息，让他们决定是否接受你的邀请。 邀请电子邮件中还会包含链接，将来当用户需要返回到你的资源时，始终可以使用该链接。
 
 ![显示企业间邀请电子邮件的屏幕截图](./media/invitation-email-elements/invitation-email.png)
 
@@ -40,7 +40,7 @@ ms.locfileid: "82515679"
 
 ### <a name="from-address"></a>发件人地址
 
-对“发件人地址”使用类似于 LinkedIn 的模式。 此模式应该明确指出，尽管电子邮件来自 invites@microsoft.com，但邀请却是另一家组织发出的。 格式为：Microsoft Invitations <invites@microsoft.com>，或 Microsoft 代表 &lt;租户名称&gt; <invites@microsoft.com> 发出的邀请。 
+对“发件人地址”使用类似于 LinkedIn 的模式。 此模式应该明确指出，尽管电子邮件来自 invites@microsoft.com，但邀请却是另一组织发出的。 格式为：Microsoft Invitations <invites@microsoft.com>，或 Microsoft 代表 &lt;租户名称&gt; <invites@microsoft.com> 发出的邀请。 
 
 ### <a name="reply-to"></a>回复
 
@@ -48,19 +48,19 @@ ms.locfileid: "82515679"
 
 ### <a name="phishing-warning"></a>网络钓鱼警告
 
-电子邮件首先会向用户发出有关网络钓鱼的简短警告，提醒他们只应接受意料之中的邀请。 良好的做法是提前通知你所邀请的合作伙伴，确保他们不会因你的邀请而感到吃惊。
+电子邮件首先会向用户发出有关网络钓鱼的简短警告，提醒他们只应接受意料之中的邀请。 好的做法是提前通知你所邀请的合作伙伴，确保他们不会因你的邀请而感到吃惊。
 
 ![电子邮件中网络钓鱼警告的图像](./media/invitation-email-elements/phishing-warning.png)
 
 ### <a name="inviters-information"></a>邀请方的信息
 
-电子邮件包含有关邀请方以及发送邀请的组织的信息。 这些信息包括发件人的姓名和电子邮件地址，以及与组织关联的名称和主域。 所有这些信息应有助于受邀方在是否接受邀请方面做出明智的决策。
+电子邮件包含有关邀请方以及发送邀请的组织的信息。 这些信息包括发件人的姓名和电子邮件地址，以及与组织关联的名称和主域。 所有这些信息应有助于受邀方在是否接受邀请方面做出明智决策。
 
 ![电子邮件中邀请方信息的图像](./media/invitation-email-elements/inviters-information.png)
 
 ### <a name="invitation-message"></a>邀请消息
 
-如果邀请方在[邀请来宾用户访问目录、组或应用](add-users-administrator.md)时或者[使用邀请 API](customize-invitation-api.md) 时在其邀请中包含了一条消息，该消息将在电子邮件的主要部分中突出显示。 另外，还会邀请方的姓名和个人资料图像（如果邀请方已设置）。 消息本身是一个文本区域，因此出于安全原因，它不会处理 HTML 标记。
+如果邀请方在[邀请来宾用户访问目录、组或应用](add-users-administrator.md)时或者[使用邀请 API](customize-invitation-api.md) 时在其邀请中包含了一条消息，该消息会在电子邮件的主要部分突出显示。 另外，还会包括邀请方的姓名和个人资料图像（如果邀请方已进行此方面的设置）。 消息本身是一个文本区域，因此出于安全原因，它不会处理 HTML 标记。
 
 ![电子邮件中邀请消息的图像](./media/invitation-email-elements/invitation-message.png)
 
@@ -72,7 +72,7 @@ ms.locfileid: "82515679"
 
 ### <a name="footer-section"></a>页脚部分
 
-页脚包含有关所发送的邀请的详细信息。 受邀方始终可以通过一个选项来阻止将来的邀请。 如果组织已[设置隐私声明](/active-directory/fundamentals/active-directory-properties-area)，则此处会显示该声明的链接。  否则，会有一条注释指出该组织尚未设置隐私声明。
+页脚包含有关所发送邀请的详细信息。 受邀方始终可以通过一个选项来阻止将来的邀请。 如果组织已[设置隐私声明](/active-directory/fundamentals/active-directory-properties-area)，则此处会显示该声明的链接。  否则会有一条注释，指出该组织尚未设置隐私声明。
 
 ![电子邮件中页脚部分的图像](./media/invitation-email-elements/footer-section.png)
  

@@ -1,11 +1,10 @@
 ---
 title: Azure CLI 示例 - 创建运行 Azure Monitor 的 Azure VM | Azure
-description: Azure CLI 示例 - 创建运行 Windows Server 2016 VM 和 Azure Monitor 的 Azure VM。
+description: Azure CLI 示例 - 创建运行 Windows Server 2016 Datacenter 和 Azure Monitor 的 Azure VM。
 services: virtual-machines-Windows
 documentationcenter: virtual-machines
 author: rockboyfor
 manager: digimobile
-editor: tysonn
 tags: ''
 ms.assetid: ''
 ms.service: virtual-machines-windows
@@ -14,15 +13,15 @@ ms.topic: sample
 ms.tgt_pltfrm: vm-Windows
 ms.workload: infrastructure
 origin.date: 02/23/2017
-ms.date: 08/12/2019
+ms.date: 04/27/2020
 ms.author: v-yeche
 ms.custom: mvc,seodec18
-ms.openlocfilehash: 7aa5e612323c1c4ba1706838602af2a2fd8a5e49
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: ebe6fff70636e947b0648a5653b2d034a0c9b76d
+ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "69539190"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82596404"
 ---
 # <a name="monitor-a-vm-with-azure-monitor-logs"></a>使用 Azure Monitor 日志监视 VM
 
@@ -80,12 +79,16 @@ az group delete --name myResourceGroup --yes
 
 此脚本使用以下命令创建资源组、虚拟机和所有相关资源。 表中的每条命令均链接到特定于命令的文档。
 
-| Command | 说明 |
+| 命令 | 注释 |
 |---|---|
 | [az group create](https://docs.azure.cn/cli/group?view=azure-cli-latest#az-group-create) | 创建用于存储所有资源的资源组。 |
 | [az vm create](https://docs.azure.cn/cli/vm?view=azure-cli-latest#az-vm-create) | 创建虚拟机并将其连接到网卡、虚拟网络、子网和 NSG。 此命令还指定要使用的虚拟机映像和管理凭据。  |
 | [az vm extension set](https://docs.azure.cn/cli/vm/extension?view=azure-cli-latest#az-vm-extension-set) | 针对虚拟机运行 VM 扩展。 |
 | [az group delete](https://docs.azure.cn/cli/group/extension?view=azure-cli-latest#az-group-delete) | 删除资源组，包括所有嵌套的资源。 |
+
+<!--CORRECT ON [az group delete](https://docs.azure.cn/cli/group?view=azure-cli-latest#az-group-delete-->
+<!--CORRECT ON [az vm extension set](https://docs.azure.cn/cli/vm/extension?view=azure-cli-latest#az-vm-extension-set)-->
+
 
 ## <a name="next-steps"></a>后续步骤
 

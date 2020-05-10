@@ -2,24 +2,24 @@
 title: 具有依赖资源的模板
 description: 了解如何使用多个资源创建 Azure 资源管理器模板，以及如何使用 Azure 门户部署该模板
 author: rockboyfor
-origin.date: 03/04/2019
-ms.date: 03/23/2020
+origin.date: 04/10/2020
+ms.date: 04/30/2020
 ms.topic: tutorial
 ms.author: v-yeche
-ms.openlocfilehash: 27e50ea383a406d8885d5f1ef82a5aecb22daf54
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 05bba3705acd0ad6d6cfa1e4d4cddcd6b49cfd91
+ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79543883"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82596127"
 ---
-# <a name="tutorial-create-azure-resource-manager-templates-with-dependent-resources"></a>教程：使用依赖的资源创建 Azure 资源管理器模板
+# <a name="tutorial-create-arm-templates-with-dependent-resources"></a>教程：创建包含所依赖资源的 ARM 模板
 
-了解如何创建 Azure 资源管理器模板以部署多个资源和配置部署顺序。  创建模板后，使用本地电脑中的 Azure PowerShell 部署模板。
+了解如何创建 Azure 资源管理器 (ARM) 模板以部署多个资源并配置部署顺序。 创建模板后，从 Azure 门户使用本地 Shell 部署该模板。
 
 <!--Not Available on Cloud Shell-->
 
-本教程介绍如何创建存储帐户、虚拟机、虚拟网络以及一些其他的依赖资源。 某些资源的部署依赖于另一资源的存在。 例如，创建虚拟机的前提是其存储帐户和网络接口存在。 可通过将一个资源标记为依赖于其他资源来定义此关系。 Resource Manager 将评估资源之间的依赖关系，并根据其依赖顺序进行部署。 如果资源互不依赖，资源管理器将以并行方式部署资源。 有关详细信息，请参阅[定义 Azure 资源管理器模板中部署资源的顺序](./define-resource-dependency.md)。
+本教程介绍如何创建存储帐户、虚拟机、虚拟网络以及一些其他的依赖资源。 某些资源的部署依赖于另一资源的存在。 例如，创建虚拟机的前提是其存储帐户和网络接口存在。 可通过将一个资源标记为依赖于其他资源来定义此关系。 Resource Manager 将评估资源之间的依赖关系，并根据其依赖顺序进行部署。 如果资源互不依赖，资源管理器将以并行方式部署资源。 有关详细信息，请参阅[在 ARM 模板中定义部署资源的顺序](./define-resource-dependency.md)。
 
 ![资源管理器模板依赖资源部署顺序图](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-dependent-resources-diagram.png)
 
@@ -32,30 +32,32 @@ ms.locfileid: "79543883"
 
 如果没有 Azure 订阅，请在开始前[创建一个试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要完成本文，需要做好以下准备：
 
-* 包含资源管理器工具扩展的 Visual Studio Code。 请参阅[使用 Visual Studio Code 创建 Azure 资源管理器模板](use-vs-code-to-create-template.md)。
+* 包含资源管理器工具扩展的 Visual Studio Code。 请参阅[使用 Visual Studio Code 创建 ARM 模板](use-vs-code-to-create-template.md)。
 * 若要提高安全性，请使用为虚拟机管理员帐户生成的密码。 以下是密码生成示例：
 
     ```console
     openssl rand -base64 32
     ```
-    Azure Key Vault 旨在保护加密密钥和其他机密。 有关详细信息，请参阅[教程：在资源管理器模板部署中集成 Azure Key Vault](./template-tutorial-use-key-vault.md)。 我们还建议你每三个月更新一次密码。
+
+    Azure Key Vault 旨在保护加密密钥和其他机密。 有关详细信息，请参阅[教程：在 ARM 模板部署中集成 Azure Key Vault](./template-tutorial-use-key-vault.md)。 我们还建议你每三个月更新一次密码。
 
 ## <a name="open-a-quickstart-template"></a>打开快速入门模板
 
-Azure 快速入门模板是资源管理器模板的存储库。 无需从头开始创建模板，只需找到一个示例模板并对其自定义即可。 本教程中使用的模板称为[部署简单的 Windows VM](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows/)。
+Azure 快速入门模板是 ARM 模板的存储库。 无需从头开始创建模板，只需找到一个示例模板并对其自定义即可。 本教程中使用的模板称为[部署简单的 Windows VM](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows/)。
 
-1. 在 Visual Studio Code 中，选择“文件” **“打开文件”。** > 
+1. 在 Visual Studio Code 中，选择“文件”>“打开文件”。  
 2. 在“文件名”中粘贴以下 URL： 
 
     ```url
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json
     ```
+
 3. 选择“打开”以打开该文件。 
-4. 选择“文件” **“另存为”，将该文件的副本保存到名为** azuredeploy.json> 的本地计算机。  
+4. 选择“文件”>“另存为”，将该文件的副本保存到名为 **azuredeploy.json** 的本地计算机。  
 
 ## <a name="explore-the-template"></a>浏览模板
 
@@ -70,40 +72,51 @@ Azure 快速入门模板是资源管理器模板的存储库。 无需从头开�
 
     ![Visual Studio Code Azure 资源管理器模板](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-visual-studio-code.png)
 
-    有五个通过此模板定义的资源：
+    有六个通过此模板定义的资源：
 
-    * `Microsoft.Storage/storageAccounts` 列中的一个值匹配。
-    * `Microsoft.Network/publicIPAddresses` 列中的一个值匹配。
-    * `Microsoft.Network/virtualNetworks` 列中的一个值匹配。
-    * `Microsoft.Network/networkInterfaces` 列中的一个值匹配。
-    * `Microsoft.Compute/virtualMachines` 列中的一个值匹配。
+    * `Microsoft.Storage/storageAccounts`。
+    * `Microsoft.Network/publicIPAddresses`。
+    * `Microsoft.Network/networkSecurityGroups`。
+    * `Microsoft.Network/virtualNetworks`。
+    * `Microsoft.Network/networkInterfaces`。
+    * `Microsoft.Compute/virtualMachines`。
     
      <!-- Not Available on template -->
      
      在自定义模板之前，不妨对其进行一些基本的了解。
 
-2. 展开第一个资源。 它是一个存储帐户。 
+1. 展开第一个资源。 它是一个存储帐户。 
     
     <!-- Not Available on [template reference](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts)-->
 
     ![Visual Studio Code Azure 资源管理器模板存储帐户定义](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-storage-account-definition.png)
 
-3. 展开第二个资源。 资源类型为 `Microsoft.Network/publicIPAddresses`。
+1. 展开第二个资源。 资源类型为 `Microsoft.Network/publicIPAddresses`。
     
     <!-- Not Available on [template reference](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses)-->
 
     ![Visual Studio Code Azure 资源管理器模板公共 IP 地址定义](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-public-ip-address-definition.png)
 
-4. 展开第四个资源。 资源类型为 `Microsoft.Network/networkInterfaces`：
+1. 展开第三个资源。 资源类型为 `Microsoft.Network/networkSecurityGroups`。
 
-    ![Visual Studio Code Azure 资源管理器模板 dependsOn](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-visual-studio-code-dependson.png)
+    <!--Not Avaiable on [template reference](https://docs.microsoft.com/azure/templates/microsoft.network/networksecuritygroups)-->
 
-    使用 dependsOn 元素可将一个资源定义为与一个或多个资源相依赖。 此资源依赖于两个其他的资源：
+    ![Visual Studio Code Azure 资源管理器模板网络安全组定义](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-network-security-group-definition.png)
+
+1. 展开第四个资源。 资源类型为 `Microsoft.Network/virtualNetworks`：
+    
+    ![Visual Studio Code Azure 资源管理器模板虚拟网络 dependsOn](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-virtual-network-definition.png)
+
+    使用 dependsOn 元素可将一个资源定义为与一个或多个资源相依赖。 使用 dependsOn 元素可将一个资源定义为与一个或多个资源相依赖。  此资源依赖于另一个资源：
+
+    * `Microsoft.Network/networkSecurityGroups`
+
+1. 展开第五个资源。 资源类型为 `Microsoft.Network/networkInterfaces`。 此资源依赖于两个其他的资源：
 
     * `Microsoft.Network/publicIPAddresses`
     * `Microsoft.Network/virtualNetworks`
 
-5. 展开第五个资源。 此资源为虚拟机。 它依赖于两个其他的资源：
+1. 展开第六个资源。 此资源为虚拟机。 它依赖于两个其他的资源：
 
     * `Microsoft.Storage/storageAccounts`
     * `Microsoft.Network/networkInterfaces`
@@ -116,24 +129,19 @@ Azure 快速入门模板是资源管理器模板的存储库。 无需从头开�
 
 ## <a name="deploy-the-template"></a>部署模板
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
-
-可通过多种方法来部署模板。 本教程从本地电脑使用 Azure PowerShell。
-
 <!--Not Available on Cloud Shell-->
 
 1. 选择前面在本教程中保存的模板。 默认名称为 **azuredeploy.json**。  如果某个文件的文件名相同，则会覆盖旧文件，没有任何通知。
 
-    可以选择使用 ls $HOME  命令和 cat $HOME/azuredeploy.json  命令来验证文件是否已成功上传。
-
-1. 在本地 Shell 中运行以下 PowerShell 命令。 若要提高安全性，请使用为虚拟机管理员帐户生成的密码。 请参阅[先决条件](#prerequisites)。
+1. 运行以下 PowerShell 脚本以部署该模板。
 
     ```azurepowershell
-    $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
+    $projectName = Read-Host -Prompt "Enter a project name that is used to generate resource group name"
     $location = Read-Host -Prompt "Enter the location (i.e. chinaeast)"
     $adminUsername = Read-Host -Prompt "Enter the virtual machine admin username"
     $adminPassword = Read-Host -Prompt "Enter the admin password" -AsSecureString
     $dnsLabelPrefix = Read-Host -Prompt "Enter the DNS label prefix"
+    $resourceGroupName = "${projectName}rg"
 
     New-AzResourceGroup -Name $resourceGroupName -Location "$location"
     New-AzResourceGroupDeployment `
@@ -142,14 +150,19 @@ Azure 快速入门模板是资源管理器模板的存储库。 无需从头开�
         -adminPassword $adminPassword `
         -dnsLabelPrefix $dnsLabelPrefix `
         -TemplateFile "$HOME/azuredeploy.json"
+
     Write-Host "Press [ENTER] to continue ..."
     ```
 
 1. 运行以下 PowerShell 命令，列出新建的虚拟机：
 
     ```azurepowershell
-    $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
-    Get-AzVM -Name SimpleWinVM -ResourceGroupName $resourceGroupName
+    $projectName = Read-Host -Prompt "Enter a project name that is used to generate resource group name"
+    $resourceGroupName = "${projectName}rg"
+    $vmName = "SimpleWinVM"
+
+    Get-AzVM -Name $vmName -ResourceGroupName $resourceGroupName
+
     Write-Host "Press [ENTER] to continue ..."
     ```
 

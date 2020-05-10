@@ -10,14 +10,14 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: article
 origin.date: 03/04/2020
-ms.date: 04/06/2020
+ms.date: 05/11/2020
 ms.author: v-jay
-ms.openlocfilehash: c44e93bab75c95a962b91152eefaa3786de69752
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 80c2d56b5c71481f009af45db821808686d0f6c2
+ms.sourcegitcommit: 95efd248f5ee3701f671dbd5cfe0aec9c9959a24
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80625760"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82507602"
 ---
 # <a name="streaming-locators"></a>流式处理定位符
 

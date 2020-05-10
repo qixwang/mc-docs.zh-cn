@@ -1,26 +1,26 @@
 ---
-title: 使用 Azure 数据工厂从 ServiceNow 复制数据 | Microsoft Docs
+title: 从 ServiceNow 复制数据
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 ServiceNow 复制到支持的接收器数据存储。
 services: data-factory
-documentationcenter: ''
+ms.author: v-jay
 author: WenJason
 manager: digimobile
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 origin.date: 08/01/2019
-ms.date: 11/11/2019
-ms.author: v-jay
-ms.openlocfilehash: 4189d8d848f898d4f2454acd5417ff2e96317c79
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/11/2020
+ms.openlocfilehash: cdfb1fccb7306563e34577e8dd5b746dcad23761
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "73648650"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82197745"
 ---
 # <a name="copy-data-from-servicenow-using-azure-data-factory"></a>使用 Azure 数据工厂从 ServiceNow 复制数据
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从 ServiceNow 复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
@@ -55,8 +55,8 @@ ServiceNow 链接服务支持以下属性：
 | clientId | OAuth2 身份验证的客户端 ID。  | 否 |
 | clientSecret | OAuth2 身份验证的客户端密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 否 |
 | useEncryptedEndpoints | 指定是否使用 HTTPS 加密数据源终结点。 默认值为 true。  | 否 |
-| useHostVerification | 指定通过 SSL 连接时是否需要服务器证书中的主机名匹配服务器的主机名。 默认值为 true。  | 否 |
-| usePeerVerification | 指定通过 SSL 连接时是否要验证服务器的标识。 默认值为 true。  | 否 |
+| useHostVerification | 指定通过 TLS 进行连接时是否要求服务器证书中的主机名与服务器的主机名匹配。 默认值为 true。  | 否 |
+| usePeerVerification | 指定通过 TLS 进行连接时是否要验证服务器的标识。 默认值为 true。  | 否 |
 
 **示例：**
 

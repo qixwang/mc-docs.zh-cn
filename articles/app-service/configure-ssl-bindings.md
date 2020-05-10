@@ -8,16 +8,16 @@ ms.date: 03/16/2020
 ms.author: v-tawe
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 806b1d48caee6fe6f3e19d2af7420932638d8baf
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 47d0255cec53ab7a624858c682e996bf8622e13d
+ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79546990"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82588576"
 ---
 # <a name="secure-a-custom-dns-name-with-an-ssl-binding-in-azure-app-service"></a>在 Azure 应用服务中使用 SSL 绑定保护自定义 DNS 名称
 
-本文介绍如何通过创建证书绑定来确保[应用服务应用](app-service-web-tutorial-custom-domain.md)或[函数应用](https://docs.azure.cn/app-service/)中[自定义域](https://docs.azure.cn/azure-functions/)的安全。 完成后，可访问自定义 DNS 名称（例如，`https://`）的 `https://www.contoso.com` 终结点处的应用服务应用。 
+本文介绍如何通过创建证书绑定来确保[应用服务应用](https://docs.azure.cn/app-service/)或[函数应用](https://docs.azure.cn/azure-functions/)中[自定义域](app-service-web-tutorial-custom-domain.md)的安全。 完成后，可访问自定义 DNS 名称（例如，`https://www.contoso.com`）的 `https://` 终结点处的应用服务应用。 
 
 ![包含自定义 SSL 证书的 Web 应用](./media/configure-ssl-bindings/app-with-custom-ssl.png)
 
@@ -26,7 +26,7 @@ ms.locfileid: "79546990"
 - [将专用证书添加到应用服务](configure-ssl-certificate.md)，以满足所有 [SSL 绑定要求](configure-ssl-certificate.md#private-certificate-requirements)。
 -  创建相应自定义域的 SSL 绑定。 本文介绍第二步。
 
-在本教程中，你将了解如何执行以下操作：
+本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 升级应用的定价层
@@ -35,7 +35,7 @@ ms.locfileid: "79546990"
 > * 强制实施 TLS 1.1/1.2
 > * 使用脚本自动完成 TLS 管理
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 按照本操作方法指南操作：
 
@@ -52,14 +52,14 @@ ms.locfileid: "79546990"
 
 ## <a name="secure-a-custom-domain"></a>确保自定义域的安全
 
-请执行以下步骤：
+执行以下步骤：
 
-在 <a href="https://portal.azure.cn" target="_blank">Azure 门户</a>的左侧菜单中，选择“应用程序服务” **“** app-name>” >  **\<** 。
+在 <a href="https://portal.azure.cn" target="_blank">Azure 门户</a>的左侧菜单中，选择“应用程序服务” > “\<app-name>”   。
 
 在应用的左侧导航窗格中，通过以下方式启动“TLS/SSL 绑定”对话框  ：
 
-- 选择“自定义域” **“添加绑定”**  >  
-- 选择“TLS/SSL 设置” **“添加 TLS/SSL 绑定”**  >  
+- 选择“自定义域” > “添加绑定”  
+- 选择“TLS/SSL 设置” > “添加 TLS/SSL 绑定”  
 
 ![为域添加绑定](./media/configure-ssl-bindings/secure-domain-launch.png)
 
@@ -86,7 +86,7 @@ ms.locfileid: "79546990"
 |-|-|
 | 自定义域 | 要添加 SSL 绑定的域名。 |
 | 私有证书指纹 | 要绑定的证书。 |
-| TLS/SSL 类型 | <ul><li>**SNI SSL[ - 可添加多个 SNI SSL 绑定](https://wikipedia.org/wiki/Server_Name_Indication)** 。 选择此选项可以使用多个 SSL 证书来保护同一 IP 地址上的多个域。 大多数新式浏览器（包括 Internet Explorer、Chrome、Firefox 和 Opera）都支持 SNI（有关详细信息，请参阅[服务器名称指示](https://wikipedia.org/wiki/Server_Name_Indication)）。</li><li>**IP SSL** - 只能添加一个 IP SSL 绑定。 选择此选项只能使用一个 SSL 证书来保护专用公共 IP 地址。 配置绑定后，请按照[重新映射 IP SSL 的 A 记录](#remap-a-record-for-ip-ssl)中的步骤进行操作。<br/>仅生产或隔离层中支持 IP SSL。 </li></ul> |
+| TLS/SSL 类型 | <ul><li> SNI SSL - 可添加多个 SNI SSL 绑定。 选择此选项可以使用多个 SSL 证书来保护同一 IP 地址上的多个域。 大多数新式浏览器（包括 Internet Explorer、Chrome、Firefox 和 Opera）都支持 SNI。</li><li>**IP SSL** - 只能添加一个 IP SSL 绑定。 选择此选项只能使用一个 SSL 证书来保护专用公共 IP 地址。 配置绑定后，请按照[重新映射 IP SSL 的 A 记录](#remap-a-record-for-ip-ssl)中的步骤进行操作。<br/>仅生产或隔离层中支持 IP SSL。 </li></ul> |
 
 操作完成之后，自定义域的 SSL 状态将更改为“安全”  。
 
@@ -142,7 +142,7 @@ ms.locfileid: "79546990"
 
 ## <a name="enforce-tls-versions"></a>强制实施 TLS 版本
 
-应用默认情况下允许 [TLS](https://wikipedia.org/wiki/Transport_Layer_Security) 1.2，这是行业标准（例如 [PCI DSS](https://wikipedia.org/wiki/Payment_Card_Industry_Data_Security_Standard)）建议的 TLS 级别。 若要强制实施不同的 TLS 版本，请按照下列步骤操作：
+应用默认情况下允许 TLS 1.2，这是行业标准（例如 PCI DSS）建议的 TLS 级别。 若要强制实施不同的 TLS 版本，请按照下列步骤操作：
 
 在应用页的左侧导航窗格中，选择“SSL 设置”  。 然后，在“TLS 版本”  中，选择所需的最低 TLS 版本。 此设置仅控制入站调用。 
 
@@ -152,9 +152,9 @@ ms.locfileid: "79546990"
 
 ## <a name="handle-ssl-termination"></a>处理 SSL 终止
 
-在应用服务中，[SSL 终止](https://wikipedia.org/wiki/TLS_termination_proxy)在网络负载均衡器上发生，因此，所有 HTTPS 请求将以未加密的 HTTP 请求形式访问你的应用。 如果应用逻辑需要检查用户请求是否已加密，可以检查 `X-Forwarded-Proto` 标头。
+在应用服务中，SSL 终止在网络负载均衡器上发生，因此，所有 HTTPS 请求将以未加密的 HTTP 请求形式访问你的应用。 如果应用逻辑需要检查用户请求是否已加密，可以检查 `X-Forwarded-Proto` 标头。
 
-## <a name="automate-with-scripts"></a>使用脚本自动化
+## <a name="automate-with-scripts"></a>使用脚本自动执行
 
 ### <a name="azure-cli"></a>Azure CLI
 

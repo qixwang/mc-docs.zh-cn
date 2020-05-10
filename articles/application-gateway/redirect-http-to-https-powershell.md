@@ -5,18 +5,18 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 02/17/2020
+ms.date: 04/26/2020
 ms.author: v-junlch
-ms.openlocfilehash: 6e1d6661e754d5465d8d5894a681157d95c06c34
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: bcfde6543dcd90fabb21ab484725f1042e229428
+ms.sourcegitcommit: e3512c5c2bbe61704d5c8cbba74efd56bfe91927
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77494040"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82267688"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-azure-powershell"></a>使用 Azure PowerShell 创建支持 HTTP 到 HTTPS 重定向的应用程序网关
 
-可以通过 Azure PowerShell 使用 SSL 终端的证书创建[应用程序网关](overview.md)。 路由规则用于将 HTTP 流量重定向到应用程序网关中的 HTTPS 端口。 在此示例中，还会为包含两个虚拟机实例的应用程序网关的后端池创建一个[虚拟机规模集](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)。 
+可以通过 Azure PowerShell 使用 TLS/SSL 终端的证书创建[应用程序网关](overview.md)。 路由规则用于将 HTTP 流量重定向到应用程序网关中的 HTTPS 端口。 在此示例中，还会为包含两个虚拟机实例的应用程序网关的后端池创建一个[虚拟机规模集](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)。 
 
 在本文中，学习如何：
 
@@ -27,7 +27,7 @@ ms.locfileid: "77494040"
 > * 添加侦听器和重定向规则
 > * 使用默认后端池创建虚拟机规模集
 
-如果没有 Azure 订阅，请在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。
+如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -68,7 +68,7 @@ Export-PfxCertificate `
 资源组是在其中部署和管理 Azure 资源的逻辑容器。 使用 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) 创建名为 *myResourceGroupAG* 的 Azure 资源组。 
 
 ```powershell
-New-AzResourceGroup -Name myResourceGroupAG -Location chinanorth
+New-AzResourceGroup -Name myResourceGroupAG -Location chinanorth2
 ```
 
 ## <a name="create-network-resources"></a>创建网络资源
@@ -84,13 +84,13 @@ $agSubnetConfig = New-AzVirtualNetworkSubnetConfig `
   -AddressPrefix 10.0.2.0/24
 $vnet = New-AzVirtualNetwork `
   -ResourceGroupName myResourceGroupAG `
-  -Location chinanorth `
+  -Location chinanorth2 `
   -Name myVNet `
   -AddressPrefix 10.0.0.0/16 `
   -Subnet $backendSubnetConfig, $agSubnetConfig
 $pip = New-AzPublicIpAddress `
   -ResourceGroupName myResourceGroupAG `
-  -Location chinanorth `
+  -Location chinanorth2 `
   -Name myAGPublicIPAddress `
   -AllocationMethod Dynamic
 ```
@@ -173,7 +173,7 @@ $sku = New-AzApplicationGatewaySku `
 $appgw = New-AzApplicationGateway `
   -Name myAppGateway `
   -ResourceGroupName myResourceGroupAG `
-  -Location chinanorth `
+  -Location chinanorth2 `
   -BackendAddressPools $defaultPool `
   -BackendHttpSettingsCollection $poolSettings `
   -FrontendIpConfigurations $fipconfig `
@@ -275,7 +275,7 @@ $ipConfig = New-AzVmssIpConfig `
   -SubnetId $vnet.Subnets[1].Id `
   -ApplicationGatewayBackendAddressPoolsId $backendPool.Id
 $vmssConfig = New-AzVmssConfig `
-  -Location chinanorth `
+  -Location chinanorth2 `
   -SkuCapacity 2 `
   -SkuName Standard_DS2 `
   -UpgradePolicyMode Automatic

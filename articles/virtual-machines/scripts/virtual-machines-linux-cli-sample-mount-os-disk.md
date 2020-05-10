@@ -1,11 +1,10 @@
 ---
-title: Azure CLI 脚本示例 - 装载操作系统磁盘 | Azure
+title: Azure CLI 脚本示例 - 对 VM 操作系统磁盘进行故障排除
 description: Azure CLI 脚本示例 - 装载操作系统磁盘
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: rockboyfor
 manager: digimobile
-editor: tysonn
 tags: azure-service-management
 ms.assetid: ''
 ms.service: virtual-machines-linux
@@ -14,19 +13,19 @@ ms.topic: sample
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 origin.date: 02/27/2017
-ms.date: 08/12/2019
+ms.date: 04/27/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 6012ba0f1a2cbb721ea1ad9bae93be2acb7389d6
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: c77e7ca9e0984e20d3597d26f1c04aff3e794d45
+ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "69539027"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82596103"
 ---
 # <a name="troubleshoot-a-vms-operating-system-disk"></a>对 VM 操作系统磁盘进行故障排除
 
-此脚本会失败或有问题的虚拟机的操作系统磁盘作为数据磁盘装载到第二个虚拟机。 排查磁盘问题或恢复数据时，此脚本会很有用。
+此脚本将失败或有问题的虚拟机的操作系统磁盘作为数据磁盘装载到第二个虚拟机。 排查磁盘问题或恢复数据时，此脚本会很有用。
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -68,7 +67,7 @@ ssh $ip 'sudo mount -t ext4 /dev/sdc1 /mnt/remountedOsDisk'
 
 此脚本使用以下命令创建资源组、虚拟机和所有相关资源。 表中的每条命令均链接到特定于命令的文档。
 
-| Command | 说明 |
+| 命令 | 注释 |
 |---|---|
 | [az vm show](https://docs.azure.cn/cli/vm?view=azure-cli-latest#az-vm-show) | 返回虚拟机列表。 在此示例中，查询选项用于返回虚拟机操作系统磁盘。 然后，将此值添加到名为“uri”的变量。 |
 | [az vm delete](https://docs.azure.cn/cli/vm?view=azure-cli-latest#az-vm-delete) | 删除虚拟机。 |

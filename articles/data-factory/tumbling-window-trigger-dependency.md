@@ -1,27 +1,26 @@
 ---
-title: 在 Azure 数据工厂中创建翻转窗口触发器依赖项 | Microsoft Docs
+title: 创建翻转窗口触发器依赖项
 description: 了解如何在 Azure 数据工厂中创建翻转窗口触发器上的依赖项。
 services: data-factory
-documentationcenter: ''
+ms.author: v-jay
 author: WenJason
 manager: digimobile
-editor: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 origin.date: 07/29/2019
-ms.date: 11/11/2019
-ms.author: v-jay
-ms.openlocfilehash: dbb6f8e01acbc677812680d2c8efdb3d5f00cc7b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/11/2020
+ms.openlocfilehash: 4b731c0176f36940fdd51812d39b7e8c405da1d8
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74556025"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82198197"
 ---
 # <a name="create-a-tumbling-window-trigger-dependency"></a>创建翻转窗口触发器依赖项
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文提供创建翻转窗口触发器上的依赖项的步骤。 有关翻转窗口触发器的一般信息，请参阅[如何创建翻转窗口触发器](how-to-create-tumbling-window-trigger.md)。
 

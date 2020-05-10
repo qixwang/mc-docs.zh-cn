@@ -7,12 +7,12 @@ ms.topic: conceptual
 origin.date: 11/13/2019
 ms.date: 12/16/2019
 ms.author: v-tawe
-ms.openlocfilehash: 8bd7e868c7a94ffbd098bb844e45dce8bae6fa95
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 13c671ceed4c8c8bc52c9ff0058501b80c2dbbdd
+ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75334888"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82588724"
 ---
 # <a name="performance-guide-for-azure-signalr-service"></a>Azure SignalR 服务性能指南
 
@@ -69,7 +69,7 @@ Azure SignalR 服务为不同的性能容量定义了七个标准层。 本文�
 
 理论上，Azure SignalR 服务容量受计算资源的限制：CPU、内存和网络。 例如，与 Azure SignalR 服务建立更多连接会导致服务使用更多的内存。 对于较大的消息流量（例如，每条消息大于 2,048 字节），Azure SignalR 服务需要消耗更多的 CPU 周期来处理流量。 同时，Azure 网络带宽也对最大流量施加限制。
 
-传输类型是影响性能的另一个因素。 三种类型为 [WebSocket](https://wikipedia.org/wiki/WebSocket)、[Server-Sent-Event](https://wikipedia.org/wiki/Server-sent_events) 和 [Long-Polling](https://wikipedia.org/wiki/Push_technology)。 
+传输类型是影响性能的另一个因素。 三种类型为 WebSocket、Server-Sent-Event 和 Long-Polling。 
 
 WebSocket 是基于单个 TCP 连接的双向全双工通信协议。 Server-Sent-Event 是将消息从服务器推送到客户端的单向协议。 Long-Polling 要求客户端定期通过 HTTP 请求来从服务器轮询信息。 对于相同条件下的同一 API，WebSocket 的性能最佳，Server-Sent-Event 的速度较慢，而 Long-Polling 是最慢的。 默认情况下，Azure SignalR 服务建议使用 WebSocket。
 

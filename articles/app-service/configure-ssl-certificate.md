@@ -8,12 +8,12 @@ ms.date: 03/16/2020
 ms.author: v-tawe
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: b799358c521a0b81d54a5f9b9f263fd10fec0481
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 93c35bc3f68b4c569b4e2dca87e4164b84442cfa
+ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80634347"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82588574"
 ---
 # <a name="add-an-ssl-certificate-in-azure-app-service"></a>在 Azure 应用服务中添加 SSL 证书
 
@@ -27,16 +27,16 @@ ms.locfileid: "80634347"
 |-|-|
 | 创建免费应用服务托管证书（预览版） | 如果只需保护 `www` [自定义域](app-service-web-tutorial-custom-domain.md)或应用服务中的任何非裸域，则可以轻松使用私有证书。 |
 | 购买应用服务证书 | 由 Azure 管理的私有证书。 它结合了自动化证书管理的简单性以及续订和导出选项的灵活性。 |
-| 导入来自 Key Vault 的证书 | 这在使用 [Azure Key Vault](https://docs.azure.cn/key-vault/) 管理 [PKCS12 证书](https://wikipedia.org/wiki/PKCS_12)时很有用。 请参阅[私有证书要求](#private-certificate-requirements)。 |
+| 导入来自 Key Vault 的证书 | 这在使用 [Azure Key Vault](https://docs.azure.cn/key-vault/) 管理 PKCS12 证书时很有用。 请参阅[私有证书要求](#private-certificate-requirements)。 |
 | 上传私有证书 | 如果你已有第三方提供商提供的私有证书，则可以上传它。 请参阅[私有证书要求](#private-certificate-requirements)。 |
 | 上传公用证书 | 公用证书不用于保护自定义域，但可以将其加载到代码中（如果需要它们来访问远程资源）。 |
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 按照本操作方法指南操作：
 
 - [创建应用服务应用](/app-service/)。
-- 仅限免费证书：使用 `www.contoso.com`CNAME 记录[将子域（例如 ](app-service-web-tutorial-custom-domain.md#map-a-cname-record)）映射到应用服务。
+- 仅限免费证书：使用 [CNAME 记录](app-service-web-tutorial-custom-domain.md#map-a-cname-record)将子域（例如 `www.contoso.com`）映射到应用服务。
 
 ## <a name="private-certificate-requirements"></a>私有证书要求
 
@@ -45,17 +45,17 @@ ms.locfileid: "80634347"
 
 <!-- The [free App Service Managed Certificate](#create-a-free-certificate-preview) or the [App Service certificate](#import-an-app-service-certificate) already satisfy the requirements of App Service. If you choose to upload or import a private certificate to App Service, your certificate must meet the following requirements: -->
 
-* 已导出为[受密码保护的 PFX 文件](https://wikipedia.org/w/index.php?title=X.509&section=4#Certificate_filename_extensions)
+* 已导出为受密码保护的 PFX 文件
 * 包含长度至少为 2048 位的私钥
 * 包含证书链中的所有中间证书
 
 若要保护 SSL 绑定中的自定义域，证书还有其他要求：
 
-* 包含用于服务器身份验证的[扩展密钥用法](https://wikipedia.org/w/index.php?title=X.509&section=4#Extensions_informing_a_specific_usage_of_a_certificate) (OID = 1.3.6.1.5.5.7.3.1)
+* 包含用于服务器身份验证的扩展密钥用法 (OID = 1.3.6.1.5.5.7.3.1)
 * 已由受信任的证书颁发机构签名
 
 > [!NOTE]
-> 椭圆曲线加密 (ECC) 证书  可用于应用服务，但本文不予讨论。 请咨询证书颁发机构，了解有关创建 ECC 证书的确切步骤。
+> **椭圆曲线加密 (ECC) 证书**可用于应用服务，但本文不予讨论。 请咨询证书颁发机构，了解有关创建 ECC 证书的确切步骤。
 
 [!INCLUDE [Prepare your web app](../../includes/app-service-ssl-prepare-app.md)]
 
@@ -95,7 +95,7 @@ Use the following table to help you configure the certificate. When finished, cl
 | Naked Domain Host Name | Specify the root domain here. The issued certificate secures *both* the root domain and the `www` subdomain. In the issued certificate, the Common Name field contains the root domain, and the Subject Alternative Name field contains the `www` domain. To secure any subdomain only, specify the fully qualified domain name of the subdomain here (for example, `mysubdomain.contoso.com`).|
 | Subscription | The subscription that will contain the certificate. |
 | Resource group | The resource group that will contain the certificate. You can use a new resource group or select the same resource group as your App Service app, for example. |
-| Certificate SKU | Determines the type of certificate to create, whether a standard certificate or a [wildcard certificate](https://wikipedia.org/wiki/Wildcard_certificate). |
+| Certificate SKU | Determines the type of certificate to create, whether a standard certificate or a wildcard certificate. |
 | Legal Terms | Click to confirm that you agree with the legal terms. The certificates are obtained from GoDaddy. |
 
 ### Store in Azure Key Vault
@@ -140,9 +140,9 @@ Select **App Service Verification**. Since you already mapped the domain to your
 
 ### <a name="import-certificate-into-app-service"></a>将证书导入到应用服务中
 
-在 <a href="https://portal.azure.cn" target="_blank">Azure 门户</a>的左侧菜单中，选择“应用程序服务” **“** app-name>” >  **\<** 。
+在 <a href="https://portal.azure.cn" target="_blank">Azure 门户</a>的左侧菜单中，选择“应用程序服务” > “\<app-name>”   。
 
-在应用的左侧导航窗格中，选择“TLS/SSL 设置” **“私钥证书(.pfx)”** “导入应用服务证书” >    >   。
+在应用的左侧导航窗格中，选择“TLS/SSL 设置” > “私钥证书(.pfx)” > “导入应用服务证书”    。
 
 ![将应用服务证书导入到应用服务中](./media/configure-ssl-certificate/import-app-service-cert.png)
 
@@ -160,9 +160,9 @@ Select **App Service Verification**. Since you already mapped the domain to your
 
 如果使用 Azure Key Vault 管理证书，则可以将 PKCS12 证书从 Key Vault 导入到应用服务中，前提是该证书[满足要求](#private-certificate-requirements)。
 
-在 <a href="https://portal.azure.cn" target="_blank">Azure 门户</a>的左侧菜单中，选择“应用程序服务” **“** app-name>” >  **\<** 。
+在 <a href="https://portal.azure.cn" target="_blank">Azure 门户</a>的左侧菜单中，选择“应用程序服务” > “\<app-name>”   。
 
-在应用的左侧导航窗格中，选择“TLS/SSL 设置” **“私钥证书(.pfx)”** “导入 Key Vault 证书” >    >   。
+在应用的左侧导航窗格中，选择“TLS/SSL 设置” > “私钥证书(.pfx)” > “导入 Key Vault 证书”    。
 
 ![将 Key Vault 证书导入到应用服务中](./media/configure-ssl-certificate/import-key-vault-cert.png)
 
@@ -171,7 +171,7 @@ Select **App Service Verification**. Since you already mapped the domain to your
 | 设置 | 说明 |
 |-|-|
 | 订阅 | Key Vault 所属的订阅。 |
-| Key Vault | 包含要导入的证书的保管库。 |
+| 密钥保管库 | 包含要导入的证书的保管库。 |
 | 证书 | 从保管库中的 PKCS12 证书列表中进行选择。 保管库中的所有 PKCS12 证书都已通过其指纹列出，但在应用服务中并非支持所有证书。 |
 
 操作完成后，会在“私钥证书”列表中看到该证书  。 如果导入失败并出现错误，则证书不满足[应用服务的要求](#private-certificate-requirements)。
@@ -190,7 +190,7 @@ Select **App Service Verification**. Since you already mapped the domain to your
 
 如果证书颁发机构在证书链中提供了多个证书，则需按顺序合并证书。
 
-若要执行此操作，请在文本编辑器中打开收到的所有证书。
+若要执行此操作，请在文本编辑器中打开收到的每个证书。
 
 创建名为 mergedcertificate.crt  的合并证书文件。 在文本编辑器中，将每个证书的内容复制到此文件。 证书的顺序应遵循证书链中的顺序，以你的证书开头，以根证书结尾， 如以下示例所示：
 
@@ -224,19 +224,19 @@ openssl pkcs12 -export -out myserver.pfx -inkey <private-key-file> -in <merged-c
 
 出现提示时，定义导出密码。 稍后将 SSL 证书上传到应用服务时需使用此密码。
 
-如果使用 IIS 或 Certreq.exe  生成证书请求，请将证书安装到本地计算机，然后[将证书导出为 PFX](https://technet.microsoft.com/library/cc754329(v=ws.11).aspx)。
+如果使用了 IIS 或 _Certreq.exe_ 来生成证书请求，请将证书安装到你的本地计算机，然后[将证书导出为 PFX](https://technet.microsoft.com/library/cc754329(v=ws.11).aspx)。
 
 ### <a name="upload-certificate-to-app-service"></a>将证书上传到应用服务
 
 现在可以将证书上传到应用服务了。
 
-在 <a href="https://portal.azure.cn" target="_blank">Azure 门户</a>的左侧菜单中，选择“应用程序服务” **“** app-name>” >  **\<** 。
+在 <a href="https://portal.azure.cn" target="_blank">Azure 门户</a>的左侧菜单中，选择“应用程序服务” > “\<app-name>”   。
 
-在应用的左侧导航窗格中，选择“TLS/SSL 设置” **“私钥证书(.pfx)”** “上载证书” >    >   。
+在应用的左侧导航窗格中，选择“TLS/SSL 设置” > “私钥证书(.pfx)” > “上载证书”    。
 
 ![将私有证书上传到应用服务中](./media/configure-ssl-certificate/upload-private-cert.png)
 
-在“PFX 证书文件”  中选择 PFX 文件。 在“证书密码”  中，键入导出 PFX 文件时创建的密码。 完成后，单击“上传”  。 
+在“PFX 证书文件”中，选择你的 PFX 文件。  在“证书密码”中，键入导出 PFX 文件时创建的密码。  完成后，单击“上传”  。 
 
 操作完成后，会在“私钥证书”列表中看到该证书  。
 
@@ -248,23 +248,23 @@ openssl pkcs12 -export -out myserver.pfx -inkey <private-key-file> -in <merged-c
 
 ## <a name="upload-a-public-certificate"></a>上传公用证书
 
-支持使用 .cer 格式的公用证书  。 
+公共证书可以使用 *.cer* 格式。 
 
-在 <a href="https://portal.azure.cn" target="_blank">Azure 门户</a>的左侧菜单中，选择“应用程序服务” **“** app-name>” >  **\<** 。
+在 <a href="https://portal.azure.cn" target="_blank">Azure 门户</a>的左侧菜单中，选择“应用程序服务” > “\<app-name>”   。
 
-在应用的左侧导航窗格中，单击“TLS/SSL 设置” **“公用证书(.cer)”** “上传公钥证书” >    >   。
+在应用的左侧导航窗格中，单击“TLS/SSL 设置” > “公用证书(.cer)” > “上传公钥证书”    。
 
-在“名称”  中，键入证书的名称。 在“CER 证书文件”  中，选择 CER 文件。
+在“名称”  中，键入证书的名称。 在“CER 证书文件”中  ，选择你的 CER 文件。
 
-单击“上载” 。 
+单击“上传”。 
 
 ![将公用证书上传到应用服务中](./media/configure-ssl-certificate/upload-public-cert.png)
 
-上传证书后，复制证书指纹并检查是否[使证书可访问](configure-ssl-certificate-in-code.md#make-the-certificate-accessible)。
+上传证书以后，请复制证书指纹并参阅[使证书可供访问](configure-ssl-certificate-in-code.md#make-the-certificate-accessible)。
 
 <!-- ## Manage App Service certificates -->
 
-## <a name="automate-with-scripts"></a>使用脚本自动化
+## <a name="automate-with-scripts"></a>使用脚本自动执行
 
 ### <a name="azure-cli"></a>Azure CLI
 

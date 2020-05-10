@@ -9,21 +9,21 @@ origin.date: 12/12/2017
 ms.date: 03/30/2020
 ms.author: v-tawe
 ms.custom: mvc, seodec18
-ms.openlocfilehash: f24e3e0c89df4176752d48a84d6a5a836873b1d3
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 24072281ad8f4ab7c4f2e3fadb0b94c8a819aed4
+ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80522108"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82588542"
 ---
 # <a name="create-an-app-service-app-and-deploy-files-with-ftp-using-azure-cli"></a>使用 Azure CLI 创建应用服务应用并通过 FTP 部署文件
 
-本示例脚本使用其相关资源，在应用服务中创建应用，然后使用 FTP 部署静态 HTML 页。 要进行 FTP 上传，该脚本使用 [cURL](https://wikipedia.org/wiki/CURL) 作为示例。 可以使用任何 FTP 工具上传文件。
+本示例脚本使用其相关资源，在应用服务中创建应用，然后使用 FTP 部署静态 HTML 页。 对于 FTP 上传，该脚本使用 cURL 作为示例。 可以使用任意 FTP 工具来上传文件。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 
-如果选择在本地安装并使用 CLI，需要 Azure CLI 2.0 版或更高版本。 要查找版本，请运行 `az --version`。 如需进行安装或升级，请参阅[安装 Azure CLI](/cli/install-azure-cli?view=azure-cli-lastest)。
+如果选择在本地安装并使用 CLI，则需使用 Azure CLI 2.0 或更高版本。 若要查找版本，请运行 `az --version`。 如需进行安装或升级，请参阅[安装 Azure CLI](/cli/install-azure-cli?view=azure-cli-lastest)。
 
 ## <a name="sample-script"></a>示例脚本
 
@@ -63,7 +63,7 @@ echo http://$webappname.chinacloudsites.cn
 
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| Command | 说明 |
+| 命令 | 注释 |
 |---|---|
 | [`az group create`](/cli/group?view=azure-cli-latest#az-group-create) | 创建用于存储所有资源的资源组。 |
 | [`az appservice plan create`](/cli/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | 创建应用服务计划。 |

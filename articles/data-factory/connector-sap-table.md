@@ -1,26 +1,26 @@
 ---
-title: 使用 Azure 数据工厂从 SAP 表复制数据 | Microsoft Docs
+title: 从 SAP 表复制数据
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 SAP 表复制到支持的接收器数据存储。
 services: data-factory
-documentationcenter: ''
+ms.author: v-jay
 author: WenJason
 manager: digimobile
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 origin.date: 09/02/2019
-ms.date: 11/11/2019
-ms.author: v-jay
-ms.openlocfilehash: 2cc718abc34cfcb1fa910d6bef0cc451f2c4fb4c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/11/2020
+ms.openlocfilehash: 83d1b3b408585a550d42d5ec4d4ef68f2dc05373
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79293502"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82197830"
 ---
 # <a name="copy-data-from-an-sap-table-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 SAP 表复制数据
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文概述如何使用 Azure 数据工厂中的复制活动从 SAP 表复制数据。 有关详细信息，请参阅[复制活动概述](copy-activity-overview.md)。
 
@@ -224,7 +224,7 @@ SAP BW Open Hub 链接服务支持以下属性：
 | `partitionOption`                  | 要从 SAP 表中读取的分区机制。 支持的选项包括： <ul><li>`None`</li><li>`PartitionOnInt`（在左侧用零填充正常整数或整数值，例如 `0000012345`）</li><li>`PartitionOnCalendarYear`（采用“YYYY”格式的 4 位数）</li><li>`PartitionOnCalendarMonth`（采用“YYYYMM”格式的 6 位数）</li><li>`PartitionOnCalendarDate`（采用“YYYYMMDD”格式的 8 位数）</li></ul> | 否       |
 | `partitionColumnName`              | 用于将数据分区的列的名称。                | 否       |
 | `partitionUpperBound`              | `partitionColumnName` 中指定的用于继续分区的列的最大值。 | 否       |
-| `partitionLowerBound`              | `partitionColumnName` 中指定的用于继续分区的列的最小值。 | 否       |
+| `partitionLowerBound`              | `partitionColumnName` 中指定的用于继续分区的列的最小值。 （注意：当分区选项为 `PartitionOnInt` 时，`partitionLowerBound` 不能为“0”） | 否       |
 | `maxPartitionsNumber`              | 要将数据拆分成的最大分区数。     | 否       |
 
 >[!TIP]
@@ -232,7 +232,7 @@ SAP BW Open Hub 链接服务支持以下属性：
 <br/>
 >以 `partitionOption` 和 `partitionOnInt` 为例，每个分区中的行数的计算公式为：(处于 `partitionUpperBound` 与 `partitionLowerBound` 之间的总行数)/`maxPartitionsNumber`。<br/>
 <br/>
->若要并行加载数据分区以加快复制速度，并行程度由复制活动的 [`parallelCopies`](copy-activity-performance.md#parallel-copy) 设置控制。 例如，如果将 `parallelCopies` 设置为 4，则数据工厂会根据指定的分区选项和设置并行生成并运行 4 个查询，每个查询从 SAP 表检索一部分数据。 强烈建议将 `maxPartitionsNumber` 设为 `parallelCopies` 属性值的倍数。 将数据复制到基于文件的数据存储中时，还建议将数据作为多个文件写入文件夹（仅指定文件夹名称），在这种情况下，性能优于写入单个文件。
+>若要并行加载数据分区以加快复制速度，并行程度由复制活动的 [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) 设置控制。 例如，如果将 `parallelCopies` 设置为 4，则数据工厂会根据指定的分区选项和设置并行生成并运行 4 个查询，每个查询从 SAP 表检索一部分数据。 强烈建议将 `maxPartitionsNumber` 设为 `parallelCopies` 属性值的倍数。 将数据复制到基于文件的数据存储中时，还建议将数据作为多个文件写入文件夹（仅指定文件夹名称），在这种情况下，性能优于写入单个文件。
 
 在 `rfcTableOptions` 中，可以使用以下常用 SAP 查询运算符来筛选行：
 
@@ -244,6 +244,7 @@ SAP BW Open Hub 链接服务支持以下属性：
 | `LE` | 小于或等于 |
 | `GT` | 大于 |
 | `GE` | 大于或等于 |
+| `IN` | 例如 `TABCLASS IN ('TRANSP', 'INTTAB')` |
 | `LIKE` | 例如 `LIKE 'Emma%'` |
 
 ### <a name="example"></a>示例

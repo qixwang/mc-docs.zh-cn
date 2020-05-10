@@ -2,22 +2,22 @@
 title: Azure 托管磁盘的服务器端加密
 description: Azure 存储在将数据保存到存储群集之前会对其进行静态加密，以此保护数据。 可以依赖于 Azure 托管的密钥来加密托管磁盘，也可以使用客户管理的密钥通过自己的密钥来管理加密。
 author: rockboyfor
-origin.date: 01/10/2020
-ms.date: 02/10/2020
+origin.date: 04/02/2020
+ms.date: 04/27/2020
 ms.topic: conceptual
 ms.author: v-yeche
 ms.service: virtual-machines-windows
 ms.subservice: disks
-ms.openlocfilehash: 6c85b3554e4d377504e464b9d6795e93d1b91b31
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: d8768d512e1a72b7a586f27b99a2dfffd31fbac5
+ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80109739"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82596328"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Azure 托管磁盘的服务器端加密
 
-默认情况下，在将数据保存到云时，Azure 托管磁盘会自动加密数据。 服务器端加密可保护数据，并帮助组织履行在安全性与合规性方面做出的承诺。 Azure 托管磁盘中的数据将使用 256 位 [AES 加密法](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)（可用的最强大块加密法之一）以透明方式进行加密，并符合 FIPS 140-2 规范。   
+默认情况下，在将数据保存到云时，Azure 托管磁盘会自动加密数据。 服务器端加密可保护数据，并帮助组织履行在安全性与合规性方面做出的承诺。 Azure 托管磁盘中的数据将使用 256 位 [AES 加密法](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)（可用的最强大块加密法之一）以透明方式进行加密，并符合 FIPS 140-2 规范。
 
 加密不会影响托管磁盘的性能。 加密不会产生额外的费用。
 
@@ -31,8 +31,12 @@ ms.locfileid: "80109739"
 
 ## <a name="platform-managed-keys"></a>平台托管的密钥
 
-默认情况下，托管磁盘使用平台托管的加密密钥。 自 2017 年 6 月 10 日起，所有写入现有托管磁盘的新托管磁盘、快照、映像和新数据都会自动使用平台托管密钥进行静态加密。 
-[!INCLUDE [disk-storage-encryption](../../../includes/disk-storage-encryption.md)]
+默认情况下，托管磁盘使用平台托管的加密密钥。 自 2017 年 6 月 10 日起，所有写入现有托管磁盘的新托管磁盘、快照、映像和新数据都会自动使用平台托管密钥进行静态加密。
+
+<!--Not Available on ## Customer-managed keys-->
+<!--Not Available on ### Supported regions-->
+<!--Not Available on [!INCLUDE [virtual-machines-disks-encryption-regions](../../../includes/virtual-machines-disks-encryption-regions.md)]-->
+<!--ONLY SUPPORT ON PUBLIC AND US GOVERMENT AZURE-->
 
 ## <a name="server-side-encryption-versus-azure-disk-encryption"></a>服务器端加密与 Azure 磁盘加密
 

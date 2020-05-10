@@ -1,6 +1,6 @@
 ---
 title: 有关 Azure Synapse Analytics 中的 Synapse SQL 池（前称为 SQL DW）的最佳做法
-description: 有关针对 Azure Synapse Analytics 中的 SQL 池（前称为 SQL DW）开发解决方案的建议和最佳做法。
+description: 本文的建议和最佳做法适用于针对 Azure Synapse Analytics 中的 SQL 池（前称为 SQL DW）开发解决方案。
 services: synapse-analytics
 author: WenJason
 manager: digimobile
@@ -30,7 +30,7 @@ ms.locfileid: "82198520"
 
 可将 SQL 池配置为自动检测和创建有关列的统计信息。  优化工具创建的查询计划质量以可用的统计信息为限。  
 
-建议为数据库启用 AUTO_CREATE_STATISTICS，并使统计信息每日更新或者在每次加载后更新，以确保查询中使用的有关列的统计信息始终保持最新。
+建议为数据库启用 AUTO_CREATE_STATISTICS，并使统计信息每日更新或者在每次加载后更新，确保查询中使用的有关列的统计信息始终保持最新。
 
 如果你发现更新所有统计信息需要太长的时间，可以尝试更精心地选择哪些列的统计信息需要频繁更新。 例如，可能想要更新每天都要添加新值的日期列。
 
@@ -41,11 +41,11 @@ ms.locfileid: "82198520"
 
 ## <a name="use-dmvs-to-monitor-and-optimize-your-queries"></a>使用 DMV 来监视和优化查询
 
-SQL 池有多个 DMV 可用于监视查询执行。  “使用 DMV 监视工作负荷”一文详细说明了如何查看正在执行的查询的详细信息。  
+SQL 池有多个可用于监视查询执行情况的 DMV。  “使用 DMV 监视工作负载”一文详细说明了如何查看正在执行的查询的详细信息。  
 
 若要在这些 DMV 中快速找到查询，可在查询中使用 LABEL 选项。
 
-另请参阅[使用 DMV 监视工作负荷](sql-data-warehouse-manage-monitor.md)、[LABEL](sql-data-warehouse-develop-label.md)、[OPTION](https://docs.microsoft.com/sql/t-sql/queries/option-clause-transact-sql?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)、[sys.dm_exec_sessions](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-sessions-transact-sql?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)、[sys.dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)、[sys.dm_pdw_request_steps](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)、[sys.dm_pdw_sql_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-sql-requests-transact-sql?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)、[sys.dm_pdw_dms_workers](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-dms-workers-transact-sql?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)、[DBCC PDW_SHOWEXECUTIONPLAN](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-pdw-showexecutionplan-transact-sql?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 和 [sys.dm_pdw_waits](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。
+另请参阅[使用 DMV 监视工作负载](sql-data-warehouse-manage-monitor.md)、[LABEL](sql-data-warehouse-develop-label.md)、[OPTION](https://docs.microsoft.com/sql/t-sql/queries/option-clause-transact-sql?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)、[sys.dm_exec_sessions](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-sessions-transact-sql?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)、[sys.dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)、[sys.dm_pdw_request_steps](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)、[sys.dm_pdw_sql_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-sql-requests-transact-sql?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)、[sys.dm_pdw_dms_workers](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-dms-workers-transact-sql?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)、[DBCC PDW_SHOWEXECUTIONPLAN](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-pdw-showexecutionplan-transact-sql?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 和 [sys.dm_pdw_waits](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。
 
 ## <a name="tune-query-performance-with-new-product-enhancements"></a>使用新的产品增强功能优化查询性能
 
@@ -55,7 +55,7 @@ SQL 池有多个 DMV 可用于监视查询执行。  “使用 DMV 监视工作�
 
 ## <a name="group-insert-statements-into-batches"></a>将 INSERT 语句分组为批
 
-使用 INSERT 语句一次性载入小型表、甚至定期重新加载查找，可能与使用类似于 `INSERT INTO MyLookup VALUES (1, 'Type 1')` 的语句一样正常执行。  
+可以根据需要使用 INSERT 语句（例如 `INSERT INTO MyLookup VALUES (1, 'Type 1')`）将数据一次性加载到小型表中，甚至可以定期重新加载某个查找。  
 
 但是，如果一整天都要加载数千或数百万个行，可能发现单个 INSERT 跟不上要求。  请开发自己的可写入文件的进程，并开发另一个进程定期处理并加载此文件。
 
@@ -73,7 +73,7 @@ PolyBase 使用 MPP（大规模并行处理）体系结构，因此加载和导�
 Azure 数据工厂还支持 PolyBase 加载，并且可以实现与 CTAS 类似的性能。  PolyBase 支持各种不同的文件格式，包括 Gzip 文件。  
   
 > [!NOTE]
-> 要在使用 gzip 文本文件时获得最大的吞吐量，请将文件分成 60 个以上的文件让加载有最大化的并行度。  若要更快的总吞吐量，请考虑并行加载数据。
+> 若要在使用 gzip 文本文件时获得最大的吞吐量，请将文件分成至少 60 个，让加载有最大化的并行度。  若要更快的总吞吐量，请考虑并行加载数据。
 
 另请参阅[加载数据](design-elt-data-loading.md)、[PolyBase 使用指南](guidance-for-loading-data.md)、[SQL 池加载模式和策略](https://blogs.msdn.microsoft.com/sqlcat/20../../)、[使用 Azure 数据工厂加载数据](../../data-factory/load-azure-sql-data-warehouse.md)、[CREATE EXTERNAL FILE FORMAT](https://docs.microsoft.com/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 和 [Create table as select (CTAS)](sql-data-warehouse-develop-ctas.md)。
 
@@ -81,7 +81,7 @@ Azure 数据工厂还支持 PolyBase 加载，并且可以实现与 CTAS 类似�
 
 虽然 Polybase（也称外部表）可以最快速地加载数据，但并不特别适合查询。 Polybase 表目前仅支持 Azure Blob 文件。 这些文件并没有任何计算资源的支持。  
 
-因此，SQL 池无法卸载此工作，因此必须读取整个文件，方法是将其加载到 tempdb 来读取数据。  因此，如果有多个查询需要查询此数据，则最好是先加载一次此数据，然后让查询使用本地表。
+因此，SQL 池无法卸载此工作，必须读取整个文件，方法是将其加载到 tempdb 来读取数据。  因此，如果有多个查询需要查询此数据，则最好是先加载一次此数据，然后让查询使用本地表。
 
 另请参阅 [PolyBase 使用指南](guidance-for-loading-data.md)。
 
@@ -96,15 +96,15 @@ Azure 数据工厂还支持 PolyBase 加载，并且可以实现与 CTAS 类似�
 > [!TIP]
 > 加载分布的表时，请确保传入数据的分布键没有排序，因为这会拖慢加载速度。  
 
-有关选择分布列如何能提升性能，以及如何在 CREATE TABLE 语句的 WITH 子句中定义分布表的详细信息，请参阅以下链接。
+若要详细了解选择分布列会如何提升性能，以及如何在 CREATE TABLE 语句的 WITH 子句中定义分布表，请参阅以下链接。
 
 另请参阅[表概述](sql-data-warehouse-tables-overview.md)、[表分布](sql-data-warehouse-tables-distribute.md)、[选择表分布](https://blogs.msdn.microsoft.com/sqlcat/20../../choosing-hash-distributed-table-vs-round-robin-distributed-table-in-azure-sql-dw-service/)、[CREATE TABLE](https://docs.microsoft.com/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)、[CREATE TABLE AS SELECT](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。
 
 ## <a name="do-not-over-partition"></a>不要过度分区
 
-尽管数据分区可以让数据维护变得有效率（通过分区切换或优化扫描将分区消除），太多的分区将让查询变慢。  通常在 SQL Server 上运行良好的高数据粒度分区策略可能无法在 SQL 池中正常工作。  
+尽管数据分区可以让数据维护变得有效率（通过分区切换或优化扫描将分区消除），太多的分区将让查询变慢。  通常在 SQL Server 上运行良好的高数据粒度分区策略可能无法在 SQL 池中正常使用。  
 
-如果每个分区的行数少于 1 百万，太多分区还会降低聚集列存储索引的效率。  请记住，SQL 池在幕后将数据分区成 60 个数据库，因此如果创建包含 100 个分区的表，实际上会导致 6000 个分区。  
+如果每个分区的行数少于 1 百万，太多分区还会降低聚集列存储索引的效率。  请记住，SQL 池在幕后将数据分区成 60 个数据库，因此如果创建包含 100 个分区的表，实际上会生成 6000 个分区。  
 
 每个工作负荷都不同，因此最佳建议是尝试不同的分区，找出最适合工作负荷的分区。  请考虑比 SQL Server 上运行良好的数据粒度更低的粒度。  例如，考虑使用每周或每月分区，而不是每日分区。
 
@@ -152,9 +152,9 @@ Azure 数据工厂还支持 PolyBase 加载，并且可以实现与 CTAS 类似�
 
 由于高质量列存储段很重要，因此可以考虑使用用来加载数据的中型或大型资源类中的用户 ID。 使用较低的[数据仓库单位](what-is-a-data-warehouse-unit-dwu-cdwu.md)值意味着需要向加载用户分配较大的资源类。
 
-由于列存储表通常要等到每个表有超过 1 百万个行之后才会数据推送到压缩的列存储区段，并且每个 SQL 池表分区成 60 个表，根据经验法则，列存储表对于查询没有好处，除非表有超过 6 千万行。  小于 6 千万列的表使用列存储索引似乎不太合理，  但也无伤大雅。  
+列存储表通常要等到每个表有超过 1 百万个行之后才会将数据推送到压缩的列存储区段，并且每个 SQL 池表会分区成 60 个表。因此，根据经验法则，列存储表对于查询没有好处，除非表有超过 6 千万行。  小于 6 千万列的表使用列存储索引似乎不太合理，  但也无伤大雅。  
 
-此外，如果要进行数据分区，则要考虑的是每个分区必须有 1 百万个行，使用聚集列存储索引才有益。  如果表有 100 个分区，则它至少必须拥有 60 亿个行才将受益于聚集列存储（60 个分布区 *100 个分区* 1 百万行）。  
+此外，如果要进行数据分区，则要考虑的是每个分区必须有 1 百万个行，使用聚集列存储索引才有益。  如果表有 100 个分区，则它至少必须拥有 60 亿个行才会受益于聚集列存储（60 个分布区 *100 个分区* 1 百万行）。  
 
 如果表在本示例中并没有 60 亿个行，请减少分区数目，或考虑改用堆表。  使用辅助索引配合堆表而不是列存储表，也可能是值得进行的实验，看看是否可以获得较佳的性能。
 
@@ -167,15 +167,15 @@ Azure 数据工厂还支持 PolyBase 加载，并且可以实现与 CTAS 类似�
 
 SQL 池使用资源组作为将内存分配给查询的一种方式。  默认情况下，所有用户都分配有小型资源类，此类授予每个分布区 100 MB 内存。  因为永远将有 60 个分布区，每个分布区有至少 100 MB，整个系统的总内存分配为 6000 MB 或者刚好接近6 GB。  
 
-有些查询，例如大型联接或载入聚集列存储表，将受益于较大的内存分配。  某些查询，例如纯扫描，则不会获得任何好处。  但是，使用较大的资源类会降低并行度，因此将所有的用户移到大型资源类之前，要先将此影响纳入考虑。
+有些查询，例如大型联接或载入聚集列存储表，将受益于较大的内存分配。  某些查询（例如纯扫描）不会带来任何好处。  但是，使用较大的资源类会降低并行度。因此，在将所有用户移到大型资源类之前，要先考虑此影响。
 
-另请参阅[用于工作负荷管理的资源类](resource-classes-for-workload-management.md)。
+另请参阅[用于工作负载管理的资源类](resource-classes-for-workload-management.md)。
 
 ## <a name="use-smaller-resource-class-to-increase-concurrency"></a>使用较小的资源类来增加并发性
 
-如果注意到用户查询似乎长时间延迟，可能是用户在较大资源类中运行，占用大量的并发性位置，而导致其他查询排入队列。  若要确认用户的查询是否被排入队列，请运行 `SELECT * FROM sys.dm_pdw_waits` 来看是否返回了任何行。
+如果注意到用户查询似乎长时间延迟，原因可能是用户在较大资源类中运行，占用大量的并发性位置，而导致其他查询排入队列。  若要确认用户的查询是否被排入队列，请运行 `SELECT * FROM sys.dm_pdw_waits` 来看是否返回了任何行。
 
-另请参阅[用于工作负荷管理的资源类](resource-classes-for-workload-management.md)、[sys.dm_pdw_waits](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。
+另请参阅[用于工作负载管理的资源类](resource-classes-for-workload-management.md)和 [sys.dm_pdw_waits](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。
 
 ## <a name="other-resources"></a>其他资源
 

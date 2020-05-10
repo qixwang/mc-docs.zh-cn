@@ -7,18 +7,18 @@ ms.topic: conceptual
 origin.date: 12/11/2019
 ms.date: 01/13/2020
 ms.author: v-tawe
-ms.openlocfilehash: 10993286506312a76aa55ece835fedd33ddbab87
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 06a3bbb6ca4d46e92f9523c60e721f1f3feb6a92
+ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77179331"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82588750"
 ---
 # <a name="how-to-scale-an-azure-signalr-service-instance"></a>如何缩放 Azure SignalR 服务实例？
 本文介绍如何缩放 Azure SignalR 服务的实例。 有两种方案可用于缩放、纵向扩展和横向扩展。
 
-* [纵向扩展](https://wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling)：获取更多单位、连接、消息等。 可以通过将定价层从“免费”更改为“标准”进行纵向扩展。
-* [横向扩展](https://wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling)：增加 SignalR 单位数。 最多可以横向扩展到 100 个单位。
+* 纵向扩展：获取更多单位、连接、消息等。 可以通过将定价层从“免费”更改为“标准”进行纵向扩展。
+* 横向扩展：增加 SignalR 单位数。 最多可以横向扩展到 100 个单位。
 
 应用缩放设置需要花费几分钟时间。 在极少数情况下，应用可能需要大约 30 分钟。 这些设置不需要更改代码或重新部署服务器应用程序。
 

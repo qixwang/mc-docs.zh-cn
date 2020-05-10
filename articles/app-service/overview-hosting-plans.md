@@ -8,16 +8,16 @@ origin.date: 11/09/2017
 ms.date: 02/16/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 5abdc8bd3c4292558ee9e23934651db3f55cd7eb
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 255fe032d03678bfdd5c4e52cdba76fbc711a58c
+ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79546936"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82588547"
 ---
 # <a name="azure-app-service-plan-overview"></a>Azure 应用服务计划概述
 
-在应用服务中，应用在_应用服务计划_中运行。 应用服务计划为要运行的 Web 应用定义一组计算资源。 这些计算资源类似于传统 Web 托管方案中的[_服务器场_](https://wikipedia.org/wiki/Server_farm)。 可将一个或多个应用配置为在相同的计算资源中（或相同的应用服务计划中）运行。
+在应用服务中，应用在_应用服务计划_中运行。 应用服务计划为要运行的 Web 应用定义一组计算资源。 这些计算资源类似于传统 Web 托管方案中的_服务器场_。 可将一个或多个应用配置为在相同的计算资源中（或相同的应用服务计划中）运行。
 
 在特定的区域（例如“中国东部”）中创建应用服务计划时，将为该区域中的该计划创建一组计算资源。 放入此应用服务计划的任何应用都在应用服务计划定义的这些计算资源中运行。 每个应用服务计划定义：
 

@@ -4,20 +4,18 @@ description: 了解如何创建参数化 URL，以便在 Azure 时序见解中�
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
-ms.author: v-yiso
+ms.author: v-junlch
 manager: cshankar
-ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.topic: conceptual
 ms.workload: big-data
-origin.date: 12/12/2019
-ms.date: 01/20/2020
+ms.date: 04/28/2020
 ms.custom: seodec18
-ms.openlocfilehash: 80092aef7e52885c0e3b9659952548f62555cd2b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: f68194b340223756c624b301b26115a9fad2f110
+ms.sourcegitcommit: e3512c5c2bbe61704d5c8cbba74efd56bfe91927
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75859697"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82267672"
 ---
 # <a name="share-a-custom-view-using-a-parameterized-url"></a>通过参数化 URL 共享自定义视图
 
@@ -41,11 +39,10 @@ ms.locfileid: "75859697"
 
 ### <a name="absolute-time-values"></a>绝对时间值
 
-对于绝对时间值，请使用 `from=<integer>` 和 `to=<integer>` 参数。 
+对于绝对时间值，请使用 `from=<integer>` 和 `to=<integer>` 参数。
 
-`from=<integer>` 是以 JavaScript 毫秒为单位的一个值，代表搜索时间跨度的开始时间。
-
-`to=<integer>` 是以 JavaScript 毫秒为单位的一个值，代表搜索时间跨度的结束时间。 
+* `from=<integer>` 是以 JavaScript 毫秒为单位的一个值，代表搜索时间跨度的开始时间。
+* `to=<integer>` 是以 JavaScript 毫秒为单位的一个值，代表搜索时间跨度的结束时间。
 
 > [!TIP]
 > 若要轻松地将日期转换为 JavaScript 毫秒，请尝试 [Epoch 与 Unix 时间戳转换器](https://www.freeformatter.com/epoch-timestamp-to-date-converter.html)。
@@ -73,7 +70,7 @@ ms.locfileid: "75859697"
 
 | 参数 | URL 项 | 说明 |
 | --- | --- | --- |
-| name  | `\<string>` | 术语的名称。  |
+| **name** | `\<string>` | 术语的名称。  |
 | **splitBy** | `\<string>` | 要按其进行拆分的列名。  |
 | **measureName** | `\<string>` | 度量值的列名。  |
 | **predicate** | `\<string>` | 用于服务器端筛选的  where 子句。 |
@@ -120,7 +117,7 @@ ms.locfileid: "75859697"
 https://insights.timeseries.azure.com/samples?environmentId=10000000-0000-0000-0000-100000000108&relativeMillis=3600000&timeSeriesDefinitions=[{"name":"F1PressureId","splitBy":"Id","measureName":"Pressure","predicate":"'Factory1'"},{"name":"F2TempStation","splitBy":"Station","measureName":"Temperature","predicate":"'Factory2'"},{"name":"F3VibrationPL","splitBy":"ProductionLine","measureName":"Vibration","predicate":"'Factory3'"}]
 ```
 
-[![时序见解资源管理器参数化 URL](media/parameterized-url/share-parameterized-url.png)](media/parameterized-url/share-parameterized-url.png#lightbox)
+[![时序见解资源管理器参数化 URL](./media/parameterized-url/share-parameterized-url.png)](./media/parameterized-url/share-parameterized-url.png#lightbox)
 
 > [!TIP]
 > [使用 URL](https://insights.timeseries.azure.com/samples?environmentId=10000000-0000-0000-0000-100000000108&relativeMillis=3600000&timeSeriesDefinitions=[{"name":"F1PressureId","splitBy":"Id","measureName":"Pressure","predicate":"'Factory1'"},{"name":"F2TempStation","splitBy":"Station","measureName":"Temperature","predicate":"'Factory2'"},{"name":"F3VibrationPL","splitBy":"ProductionLine","measureName":"Vibration","predicate":"'Factory3'"}]) 上方示例查看实时资源管理器。
@@ -129,14 +126,15 @@ https://insights.timeseries.azure.com/samples?environmentId=10000000-0000-0000-0
 
 * 参数化谓词。
 
-  [![时序见解资源管理器参数化谓词。](media/parameterized-url/share-parameterized-url-predicates.png)](media/parameterized-url/share-parameterized-url-predicates.png#lightbox)
+  [![时序见解资源管理器参数化谓词。](./media/parameterized-url/share-parameterized-url-predicates.png)](./media/parameterized-url/share-parameterized-url-predicates.png#lightbox)
 
 * 共享的完整图表视图。
 
-  [![共享的完整图表视图。](media/parameterized-url/share-parameterized-url-full-chart.png)](media/parameterized-url/share-parameterized-url-full-chart.png#lightbox)
+  [![共享的完整图表视图。](./media/parameterized-url/share-parameterized-url-full-chart.png)](./media/parameterized-url/share-parameterized-url-full-chart.png#lightbox)
 
 ## <a name="next-steps"></a>后续步骤
 
 * 了解如何[使用 C# 查询数据](time-series-insights-query-data-csharp.md)。
 
 * 了解[时序见解资源管理器](./time-series-insights-explorer.md)。
+

@@ -3,29 +3,31 @@ title: 配置授予数据访问权限所需的安全性 - Azure 时序见解预�
 description: 了解如何在 Azure 时序见解预览版环境中配置安全性和权限并管理数据访问策略。
 ms.service: time-series-insights
 services: time-series-insights
-author: ashannon7
-ms.author: anshan
+author: deepakpalled
+ms.author: v-junlch
 manager: cshankar
-ms.reviewer: v-mamcge, jasonh, kfile, anshan
+ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-origin.date: 01/10/2020
-ms.date: 01/27/2020
+ms.date: 04/28/2020
 ms.custom: seodec18
-ms.openlocfilehash: f320e5bb4bf040c9a658b1911620c16da9a0ca28
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: e287fbc0ea7c2f48998067d28f52dcc59b766171
+ms.sourcegitcommit: e3512c5c2bbe61704d5c8cbba74efd56bfe91927
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77068122"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82267680"
 ---
 # <a name="grant-data-access-to-an-environment"></a>授予对环境的数据访问权限
 
 本文讨论了两种类型的 Azure 时序见解预览版访问策略。
 
+> [!TIP]
+> 阅读[身份验证和授权](time-series-insights-authentication-and-authorization.md)以获取 Azure Active Directory 应用注册步骤。
+
 ## <a name="sign-in-to-time-series-insights"></a>登录到 Azure 时序见解
 
-1. 登录 [Azure 门户](https://portal.azure.cn/)。
+1. 登录到 [Azure 门户](https://portal.azure.cn/)。
 1. 查找时序见解环境。 在“搜索”框中输入 `Time Series`。  在搜索结果中选择“时序环境”  。
 1. 从列表中选择时序见解环境。
 
@@ -35,11 +37,11 @@ ms.locfileid: "77068122"
 
 1. 选择“数据访问策略”，然后选择“+ 添加”   。
 
-    [![选择并添加数据访问策略](media/data-access/data-access-select-add-button.png)](media/data-access/data-access-select-add-button.png#lightbox)
+    [![选择并添加数据访问策略](./media/data-access/data-access-select-add-button.png)](./media/data-access/data-access-select-add-button.png#lightbox)
 
 1. 选择“选择用户”。  搜索用户名称或电子邮件地址，查找要添加的用户。 选择“选择”以确认选择  。
 
-    [![选择要添加的用户](media/data-access/data-access-select-user-to-confirm.png)](media/data-access/data-access-select-user-to-confirm.png#lightbox)
+    [![选择要添加的用户](./media/data-access/data-access-select-user-to-confirm.png)](./media/data-access/data-access-select-user-to-confirm.png#lightbox)
 
 1. 选择“选择角色”。  为用户选择相应的访问角色：
 
@@ -49,37 +51,37 @@ ms.locfileid: "77068122"
 
    选择“确定”，确认角色选择  。
 
-    [![确认所选角色](media/data-access/data-access-select-a-role.png)](media/data-access/data-access-select-a-role.png#lightbox)
+    [![确认所选角色](./media/data-access/data-access-select-a-role.png)](./media/data-access/data-access-select-a-role.png#lightbox)
 
 1. 在“选择用户角色”页中，选择“确定”   。
 
-    [![在“选择用户角色”页中，选择“确定”](media/data-access/data-access-confirm-user-and-role.png)](media/data-access/data-access-confirm-user-and-role.png#lightbox)
+    [![在“选择用户角色”页中，选择“确定”](./media/data-access/data-access-confirm-user-and-role.png)](./media/data-access/data-access-confirm-user-and-role.png#lightbox)
 
 1. 确认“数据访问策略”页列出了用户和每个用户的角色  。
 
-    [![验证用户和角色是否正确](media/data-access/data-access-verify-and-confirm-assignments.png)](media/data-access/data-access-verify-and-confirm-assignments.png#lightbox)
+    [![验证用户和角色是否正确](./media/data-access/data-access-verify-and-confirm-assignments.png)](./media/data-access/data-access-verify-and-confirm-assignments.png#lightbox)
 
 ## <a name="provide-guest-access-from-another-azure-ad-tenant"></a>提供从另一个 Azure AD 租户进行来宾访问的权限
 
-`Guest` 角色不是管理角色。 它是一个术语，是指从一个租户被邀请到另一个租户的帐户。 在将来宾帐户邀请到租户目录后，它就可以像任何其他帐户一样拥有相同的访问控制。 可以使用“访问控制(IAM)”边栏选项卡授予对时序见解环境的管理访问权限。 也可以通过“数据访问策略”边栏选项卡授予对环境中数据的访问权限。 若要详细了解 Azure Active Directory (Azure AD) 租户来宾访问权限，请阅读[在 Azure 门户中添加 Azure Active Directory B2B 协作用户](https://docs.microsoft.com/azure/active-directory/b2b/add-users-administrator)。
+`Guest` 角色不是管理角色。 它是一个术语，是指从一个租户被邀请到另一个租户的帐户。 在将来宾帐户邀请到租户目录后，它就可以像任何其他帐户一样拥有相同的访问控制。 可以使用“访问控制(IAM)”边栏选项卡授予对时序见解环境的管理访问权限。 也可以通过“数据访问策略”边栏选项卡授予对环境中数据的访问权限。 
 
 请按照以下步骤将来宾对时序见解环境的访问权限授予另一个租户的 Azure AD 用户。
 
 1. 选择“数据访问策略”，然后选择“+ 邀请”   。
 
-    [![选择“数据访问策略”，然后选择“+ 邀请”](media/data-access/data-access-invite-another-aad-tenant.png)](media/data-access/data-access-invite-another-aad-tenant.png#lightbox)
+    [![选择“数据访问策略”，然后选择“+ 邀请”](./media/data-access/data-access-invite-another-aad-tenant.png)](./media/data-access/data-access-invite-another-aad-tenant.png#lightbox)
 
 1. 输入要邀请的用户的电子邮件地址。 此电子邮件地址必须与 Azure AD 关联。 你可以根据情况在邀请中包括个人消息。
 
-    [![输入查找所选用户所需的电子邮件地址](media/data-access/data-access-invite-guest-by-email.png)](media/data-access/data-access-invite-guest-by-email.png#lightbox)
+    [![输入查找所选用户所需的电子邮件地址](./media/data-access/data-access-invite-guest-by-email.png)](./media/data-access/data-access-invite-guest-by-email.png#lightbox)
 
 1. 查找屏幕上显示的确认气泡。
 
-    [![查找要显示的确认气泡](media/data-access/data-access-confirmation-bubble.png)](media/data-access/data-access-confirmation-bubble.png#lightbox)
+    [![查找要显示的确认气泡](./media/data-access/data-access-confirmation-bubble.png)](./media/data-access/data-access-confirmation-bubble.png#lightbox)
 
 1. 选择“选择用户”。  搜索已邀请的来宾用户的电子邮件地址，找到要添加的用户。 然后单击“选择”以确认选择  。
 
-    [![选择用户并确认所做的选择](media/data-access/data-access-select-invited-person-confirmation.png)](media/data-access/data-access-select-invited-person-confirmation.png#lightbox)
+    [![选择用户并确认所做的选择](./media/data-access/data-access-select-invited-person-confirmation.png)](./media/data-access/data-access-select-invited-person-confirmation.png#lightbox)
 
 1. 选择“选择角色”。  为来宾用户选择相应的访问角色：
 
@@ -89,21 +91,21 @@ ms.locfileid: "77068122"
 
    选择“确定”，确认角色选择  。
 
-    [![确认角色选择](media/data-access/data-access-select-ok-and-confirm.png)](media/data-access/data-access-select-ok-and-confirm.png#lightbox)
+    [![确认角色选择](./media/data-access/data-access-select-ok-and-confirm.png)](./media/data-access/data-access-select-ok-and-confirm.png#lightbox)
 
 1. 在“选择用户角色”页中，选择“确定”   。
 
 1. 确认“数据访问策略”  页列出了来宾用户和每个来宾用户的角色。
 
-    [![验证是否正确分配了用户和角色](media/data-access/data-access-confirm-invited-users-and-roles.png)](media/data-access/data-access-confirm-invited-users-and-roles.png#lightbox)
+    [![验证是否正确分配了用户和角色](./media/data-access/data-access-confirm-invited-users-and-roles.png)](./media/data-access/data-access-confirm-invited-users-and-roles.png#lightbox)
 
 1. 现在，来宾用户会在上面指定的电子邮件地址收到邀请电子邮件。 来宾用户会选择“开始”来确认接受邀请并连接到 Azure Cloud。 
 
-    [![来宾选择“开始”即可接受邀请](media/data-access/data-access-email-invitation.png)](media/data-access/data-access-email-invitation.png#lightbox)
+    [![来宾选择“开始”即可接受邀请](./media/data-access/data-access-email-invitation.png)](./media/data-access/data-access-email-invitation.png#lightbox)
 
 1. 选择“开始”后，来宾用户会看到一个与管理员的组织关联的权限框。  通过选择“接受”授予权限后，来宾用户就会登录。 
 
-    [![来宾查看权限并接受](media/data-access/data-access-grant-permission-sign-in.png)](media/data-access/data-access-grant-permission-sign-in.png#lightbox)
+    [![来宾查看权限并接受](./media/data-access/data-access-grant-permission-sign-in.png)](./media/data-access/data-access-grant-permission-sign-in.png#lightbox)
 
 1. 管理员与其来宾[共享环境 URL](time-series-insights-parameterized-urls.md)。
 
@@ -113,32 +115,16 @@ ms.locfileid: "77068122"
 
 1. 在时序资源管理器的右上角选择其配置文件图标后，将向来宾用户显示管理员的租户。
 
-    [![在 insights.azure.com 上选择头像](media/data-access/data-access-select-tenant-and-instance.png)](media/data-access/data-access-select-tenant-and-instance.png#lightbox)
+    [![在 insights.azure.com 上选择头像](./media/data-access/data-access-select-tenant-and-instance.png)](./media/data-access/data-access-select-tenant-and-instance.png#lightbox)
 
 
     来宾用户在选择管理员的租户以后，即可选择共享的时序见解环境。 
     
     现在，他们拥有了与你在**步骤 5** 中提供的角色相关联的所有功能。
 
-    [![来宾用户从下拉列表中选择你的 Azure 租户](media/data-access/data-access-all-capabilities.png)](media/data-access/data-access-all-capabilities.png#lightbox)
+    [![来宾用户从下拉列表中选择你的 Azure 租户](./media/data-access/data-access-all-capabilities.png)](./media/data-access/data-access-all-capabilities.png#lightbox)
 
 ## <a name="next-steps"></a>后续步骤
 
 * 发送[事件到事件源](./time-series-insights-send-events.md)。
 
-<!-- Images -->
-[1]: media/data-access/data-access-one.png
-[2]: media/data-access/data-access-two.png
-[3]: media/data-access/data-access-three.png
-[4]: media/data-access/data-access-four.png
-[5]: media/data-access/data-access-five.png
-[6]: media/data-access/data-access-six.png
-[7]: media/data-access/data-access-seven.png
-[8]: media/data-access/data-access-eight.png
-[9]: media/data-access/data-access-nine.png
-[10]: media/data-access/data-access-ten.png
-[11]: media/data-access/data-access-eleven.png
-[12]: media/data-access/data-access-twelve.png
-[13]: media/data-access/data-access-thirteen.png
-[14]: media/data-access/data-access-fourteen.png
-[15]: media/data-access/data-access-fifteen.png

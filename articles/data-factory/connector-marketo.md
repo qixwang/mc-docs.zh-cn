@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 数据工厂（预览版）从 Marketo 复制数据| Microsoft Docs
+title: 使用 Azure 数据工厂（预览版）从 Marketo 复制数据
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 Marketo 复制到支持的接收器数据存储。
 services: data-factory
 documentationcenter: ''
@@ -8,19 +8,19 @@ manager: digimobile
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 origin.date: 08/01/2019
-ms.date: 11/11/2019
+ms.date: 05/11/2020
 ms.author: v-jay
-ms.openlocfilehash: d46b867fe7ece9d5cdbcd15f6908461ad3dfacfd
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 68cbc70eefa50e8724d9c6d187e1b9e704f3b211
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "73648668"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82198058"
 ---
 # <a name="copy-data-from-marketo-using-azure-data-factory-preview"></a>使用 Azure 数据工厂（预览版）从 Marketo 复制数据
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从 Marketo 复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
@@ -58,8 +58,8 @@ Marketo 链接服务支持以下属性：
 | clientId | Marketo 服务的客户端 ID。  | 是 |
 | clientSecret | Marketo 服务的客户端密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
 | useEncryptedEndpoints | 指定是否使用 HTTPS 加密数据源终结点。 默认值为 true。  | 否 |
-| useHostVerification | 指定通过 SSL 连接时是否需要服务器证书中的主机名匹配服务器的主机名。 默认值为 true。  | 否 |
-| usePeerVerification | 指定通过 SSL 连接时是否要验证服务器的标识。 默认值为 true。  | 否 |
+| useHostVerification | 指定通过 TLS 进行连接时是否要求服务器证书中的主机名与服务器的主机名匹配。 默认值为 true。  | 否 |
+| usePeerVerification | 指定通过 TLS 进行连接时是否要验证服务器的标识。 默认值为 true。  | 否 |
 
 **示例：**
 

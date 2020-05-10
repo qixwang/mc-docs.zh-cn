@@ -10,12 +10,12 @@ ms.topic: conceptual
 origin.date: 03/13/2020
 ms.date: 03/16/2020
 ms.author: v-tawe
-ms.openlocfilehash: 4282653c00b894bd0e300340f5e15a111955c70f
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: d0f5eb09e24afe2b2bb00f241c53471377aae287
+ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80151761"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82588620"
 ---
 # <a name="speech-service-encryption-of-data-at-rest"></a>语音识别服务静态数据的加密
 
@@ -23,11 +23,11 @@ ms.locfileid: "80151761"
 
 ## <a name="about-cognitive-services-encryption"></a>关于认知服务加密
 
-数据是使用符合 [FIPS 140-2](https://wikipedia.org/wiki/FIPS_140-2) 的 [256 位 AES](https://wikipedia.org/wiki/Advanced_Encryption_Standard) 加密法加密和解密的。 加密和解密都是透明的，这意味着将替你管理加密和访问。 你的数据默认情况下就是安全的，你无需修改代码或应用程序，即可利用加密。
+数据将使用符合 FIPS 140-2 的 256 位 AES 加密法进行加密和解密。 加密和解密都是透明的，这意味着将替你管理加密和访问。 你的数据默认情况下就是安全的，你无需修改代码或应用程序，即可利用加密。
 
 ## <a name="about-encryption-key-management"></a>关于加密密钥管理
 
-使用自定义语音识别和自定义语音时，语音识别服务可能会将以下数据存储在云中：  
+使用自定义语音识别和语音识别服务可能会将以下数据存储在云中：  
 
 * 语音识别跟踪数据 - 仅当你为自定义终结点启用了跟踪时才存储
 * 已上传的训练和测试数据

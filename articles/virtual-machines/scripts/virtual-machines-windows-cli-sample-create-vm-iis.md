@@ -1,11 +1,10 @@
 ---
-title: Azure CLI 脚本示例 - 安装 IIS | Azure
+title: Azure CLI 脚本示例 - 使用 Azure CLI 快速创建虚拟机
 description: Azure CLI 脚本示例 - 安装 IIS
 services: virtual-machines-Windows
 documentationcenter: virtual-machines
 author: rockboyfor
 manager: digimobile
-editor: tysonn
 tags: ''
 ms.assetid: ''
 ms.service: virtual-machines-windows
@@ -14,14 +13,14 @@ ms.topic: sample
 ms.tgt_pltfrm: vm-Windows
 ms.workload: infrastructure
 origin.date: 02/28/2017
-ms.date: 08/12/2019
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: b2c7afdc38f437fec1b66e2e4cbae0042b6bdc5c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: d9266557aa08c1cf0873c8eae9058c272e546675
+ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "69539191"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82596402"
 ---
 # <a name="quick-create-a-virtual-machine-with-the-azure-cli"></a>使用 Azure CLI 快速创建虚拟机
 
@@ -79,15 +78,19 @@ az group delete --name myResourceGroup --yes
 
 此脚本使用以下命令创建资源组、虚拟机和所有相关资源。 表中的每条命令均链接到特定于命令的文档。
 
-| Command | 说明 |
+| 命令 | 注释 |
 |---|---|
 | [az group create](https://docs.azure.cn/cli/group?view=azure-cli-latest#az-group-create) | 创建用于存储所有资源的资源组。 |
 | [az vm create](https://docs.azure.cn/cli/vm?view=azure-cli-latest#az-vm-create) | 创建虚拟机并将其连接到网卡、虚拟网络、子网和网络安全组。 此命令还指定要使用的虚拟机映像和管理凭据。  |
-| [az vm open-port](https://docs.azure.cn/cli/vm?view=azure-cli-latest#az-vm-open-port) | 创建网络安全组规则，以允许入站流量。 在此示例中，将为 HTTP 流量打开端口 80。 |
-| [az vm extension set](https://docs.azure.cn/cli/vm/extension?view=azure-cli-latest#az-vm-extension-set) | 将虚拟机扩展添加到 VM 并运行该扩展。 在此示例中，使用自定义脚本扩展来安装 IIS。|
+| [az vm open-port](https://docs.azure.cn/cli/vm?view=azure-cli-latest#az-vm-open-port) | 创建网络安全组规则，以允许入站流量。 在此示例中，为 HTTP 流量打开端口 80。 |
+| [az vm extension set](https://docs.azure.cn/cli/vm/extension?view=azure-cli-latest#az-vm-extension-set) | 将虚拟机扩展添加到 VM 并运行该扩展。 在此示例中，使用了自定义脚本扩展来安装 IIS |
 | [az group delete](https://docs.azure.cn/cli/group?view=azure-cli-latest#az-group-delete) | 删除资源组，包括所有嵌套的资源。 |
 
 <!--MOONCAKE: URL CORRECT ON THE LAST THREE ROWS-->
+
+<!--CORRECT ON [az vm open-port](https://docs.azure.cn/cli/vm?view=azure-cli-latest#az-vm-open-port)-->
+<!--CORRECT ON [az vm extension set](https://docs.azure.cn/cli/vm/extension?view=azure-cli-latest#az-vm-extension-set)-->
+<!--CORRECT ON [az group delete](https://docs.azure.cn/cli/group?view=azure-cli-latest#az-group-delete)-->
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -95,4 +98,4 @@ az group delete --name myResourceGroup --yes
 
 可以在 [Azure Windows VM 文档](../windows/cli-samples.md?toc=%2fvirtual-machines%2fwindows%2ftoc.json)中找到其他虚拟机 CLI 脚本示例。
 
-<!--Update_Description: update meta properties, update cmdlet -->
+<!-- Update_Description: update meta properties, wording update, update link -->

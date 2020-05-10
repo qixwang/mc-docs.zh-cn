@@ -10,20 +10,25 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-origin.date: 02/17/2020
-ms.date: 03/23/2020
-ms.openlocfilehash: 3f2548400175846145ac113246e6a0c42030c2a8
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+origin.date: 04/08/2020
+ms.date: 05/11/2020
+ms.openlocfilehash: 8400e9ace87a23974cee2fdcd13767df5f0d5bb4
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79497265"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82197863"
 ---
 # <a name="copy-and-transform-data-in-azure-data-lake-storage-gen2-using-azure-data-factory"></a>使用 Azure 数据工厂在 Azure Data Lake Storage Gen2 中复制和转换数据
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Azure Data Lake Storage Gen2 (ADLS Gen2) 是一组专用于大数据分析的功能，内置于 [Azure Blob 存储](../storage/blobs/storage-blobs-introduction.md)中。 它可使用文件系统和对象存储范例与数据进行交互。
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从/向 Azure Data Lake Storage Gen2 复制数据。 若要了解 Azure 数据工厂，请阅读[介绍性文章](introduction.md)。
+
+>[!TIP]
+>对于数据湖或数据仓库迁移方案，请从[使用 Azure 数据工厂将数据从数据湖或数据仓库迁移到 Azure](data-migration-guidance-overview.md) 了解更多信息。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -43,8 +48,6 @@ Azure Data Lake Storage Gen2 (ADLS Gen2) 是一组专用于大数据分析的功
 >[!IMPORTANT]
 >如果在 Azure 存储防火墙设置上启用了“允许信任的 Microsoft 服务访问此存储帐户”  选项，并且要使用 Azure 集成运行时连接到 Data Lake Storage Gen2，则必须对 ADLS Gen2 使用[托管标识身份验证](#managed-identity)。
 
->[!TIP]
->如果启用分层命名空间，则当前 Blob 和 Data Lake Storage Gen2 API 之间没有操作的互操作性。 如果遇到“ErrorCode=FilesystemNotFound”错误，详细消息为“指定的文件系统不存在”，这是由于指定的接收器文件系统是通过 Blob API 而非其他地方的 Data Lake Storage Gen2 API 创建的。 若要解决此问题，请指定其名称不同于已存在的 Blob 容器名称的一个新文件系统。 然后，数据工厂在复制数据期间将自动创建该文件系统。
 
 ## <a name="get-started"></a>入门
 

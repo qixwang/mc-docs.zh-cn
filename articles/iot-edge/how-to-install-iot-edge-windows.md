@@ -140,15 +140,15 @@ Azure IoT Edge 依赖于 [OCI 兼容的](https://www.opencontainers.org/)容器�
 
 ## <a name="offline-or-specific-version-installation"></a>脱机或特定版本安装
 
-在安装过程中，将下载三个文件：
+在安装过程中，会下载三个文件：
 
 * 一个 PowerShell 脚本，其中包含安装说明
 * Microsoft Azure IoT Edge cab，其中包含 IoT Edge 安全守护程序 (iotedged)、Moby 容器引擎和 Moby CLI
 * Visual C++ Redistributable Package（VC 运行时）安装程序
 
-如果在安装过程中设备将脱机，或者要安装 IoT Edge 的特定版本，则可以提前将这些文件下载到设备。 当安装时，请将安装脚本指向包含已下载文件的目录。 安装程序首先会检查该目录，然后仅下载未找到的组件。 如果所有文件都可脱机使用，则无需连接到 Internet 连接即可安装。
+如果在安装过程中设备会脱机，或者要安装 IoT Edge 的特定版本，则可提前将这些文件下载到设备。 当安装时，请将安装脚本指向包含已下载文件的目录。 安装程序首先会检查该目录，然后仅下载未找到的组件。 如果所有文件都可脱机使用，则无需连接到 Internet 连接即可安装。
 
-还可以使用脱机安装路径参数来更新 IoT Edge。 有关详细信息，请参阅[更新 IoT Edge 安全守护程序和运行时](how-to-update-iot-edge.md)。
+还可使用脱机安装路径参数来更新 IoT Edge。 有关详细信息，请参阅[更新 IoT Edge 安全守护程序和运行时](how-to-update-iot-edge.md)。
 
 1. 有关最新的 IoT Edge 安装文件以及旧版本，请参阅 [Azure IoT Edge 版本](https://github.com/Azure/azure-iotedge/releases)。
 
@@ -159,11 +159,11 @@ Azure IoT Edge 依赖于 [OCI 兼容的](https://www.opencontainers.org/)容器�
 
    从 1.0.9 开始，也可以使用 Microsoft-Azure-IotEdge-arm32.cab（仅用于测试目的）。 Windows ARM32 设备目前不支持 IoT Edge。
 
-   请务必使用与所使用的 .cab 文件的版本相同的 PowerShell 脚本，因为功能会进行更改以支持每个版本中的特性。
+   请务必使用与所用 .cab 文件版本相同的 PowerShell 脚本，因为功能会进行更改以支持每个版本中的特性。
 
 3. 如果下载的 .cab 文件在其上有体系结构后缀，则只需将该文件重命名为“Microsoft-Azure-IoTEdge.cab”即可  。
 
-4. （可选）下载 Visual C++ Redistributable 的安装程序。 例如，PowerShell 脚本使用此版本：[vc_redist.x64.exe](https://download.microsoft.com/download/0/6/4/064F84EA-D1DB-4EAA-9A5C-CC2F0FF6A638/vc_redist.x64.exe)。 将安装程序保存到 IoT 设备上的、IoT Edge 文件所在的同一文件夹中。
+4. （可选）下载 Visual C++ Redistributable 的安装程序。 例如，PowerShell 脚本使用此版本：[vc_redist.x64.exe](https://download.microsoft.com/download/0/6/4/064F84EA-D1DB-4EAA-9A5C-CC2F0FF6A638/vc_redist.x64.exe)。 将安装程序保存到 IoT 设备上 IoT Edge 文件所在的文件夹中。
 
 5. 若要使用脱机组件进行安装，请[使用点获取 PowerShell 脚本本地副本的来源](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_scripts?view=powershell-7#script-scope-and-dot-sourcing)。 然后，使用 `-OfflineInstallationPath` 参数作为 `Deploy-IoTEdge` 命令的一部分，并提供文件目录的绝对路径。 例如，
 
@@ -172,11 +172,11 @@ Azure IoT Edge 依赖于 [OCI 兼容的](https://www.opencontainers.org/)容器�
    Deploy-IoTEdge -OfflineInstallationPath <path>
    ```
 
-   部署命令将使用所提供的本地文件目录中的任何组件。 如果缺少 .cab 文件或 Visual C++ 安装程序，部署命令会尝试下载该文件或安装程序。
+   部署命令会使用已提供的本地文件目录中的任何组件。 如果缺少 .cab 文件或 Visual C++ 安装程序，部署命令会尝试下载该文件或安装程序。
 
-6. 运行 `Initialize-IoTEdge` 命令，以使用 IoT 中心内的标识预配设备。 提供设备连接字符串进行手动预配，或选择上一部分[自动预配](#option-2-install-and-automatically-provision)中所述的方法之一。
+6. 运行 `Initialize-IoTEdge` 命令，使用 IoT 中心的标识来预配设备。 提供设备连接字符串进行手动预配，或选择前面的[自动预配](#option-2-install-and-automatically-provision)部分所述的方法之一。
 
-   如果在运行 `Deploy-IoTEdge` 后设备重启，请在运行 `Initialize-IoTEdge` 之前，再次使用点获取 PowerShell 脚本的来源。
+   如果设备在运行 `Deploy-IoTEdge` 后重启，请在运行 `Initialize-IoTEdge` 之前再次使用点来获取 PowerShell 脚本的来源。
 
 有关脱机安装选项的详细信息，请直接跳到[所有安装参数](#all-installation-parameters)。
 

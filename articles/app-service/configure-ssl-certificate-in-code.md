@@ -7,12 +7,12 @@ ms.date: 01/13/2020
 ms.author: v-tawe
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: d79090d9845d7f2ea2545a7546ad7d87c72a6804
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: d1322a41995909a878897d5afb6b9e85e9aba6f4
+ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75600496"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82588571"
 ---
 # <a name="use-an-ssl-certificate-in-your-code-in-azure-app-service"></a>在 Azure 应用服务的代码中使用 SSL 证书
 
@@ -82,7 +82,7 @@ certStore.Close();
 ...
 ```
 
-在 Java 代码中，可以使用“使用者公用名”字段从“Windows-MY”存储访问证书（请参阅[公钥证书](https://wikipedia.org/wiki/Public_key_certificate)）。 以下代码演示如何加载私钥证书：
+在 Java 代码中，可以使用“使用者公用名”字段从“Windows-MY”存储访问证书。 以下代码演示如何加载私钥证书：
 
 ```java
 import org.springframework.web.bind.annotation.RestController;

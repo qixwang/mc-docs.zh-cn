@@ -1,28 +1,27 @@
 ---
-title: Azure 虚拟机启动错误
+title: Linux VM 启动到 Grub 救援
 description: 虚拟机因进入救援控制台而无法启动
 services: virtual-machines-windows
 documentationcenter: ''
 author: rockboyfor
 manager: digimobile
 editor: ''
-tags: azure-resource-manager
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 origin.date: 08/28/2019
-ms.date: 10/14/2019
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: a1a5c7f209110d918b2005fbef335f9eaf120b58
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 1a4d5392d25ef0e0e93996f12e5e8f68106bd1f4
+ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "72170846"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82596352"
 ---
-# <a name="vm-boot-error"></a>VM 启动错误
+# <a name="linux-vm-boots-to-grub-rescue"></a>Linux VM 启动到 Grub 救援
 
 我们确定你的虚拟机 (VM) 已进入救援控制台。 如果你的 Linux VM 最近应用了内核更改（例如内核升级），在启动过程中因内核错误而无法正常启动，则会发生此问题。 在启动过程中，当启动加载程序尝试查找 Linux 内核并将启动控制移交给它时，如果移交失败，则 VM 会进入救援控制台。
 
@@ -72,5 +71,4 @@ ms.locfileid: "72170846"
 * [Azure 虚拟机代理概述](../extensions/agent-windows.md)
 * [适用于 Windows 的虚拟机扩展和功能](../extensions/features-windows.md)
 
-<!-- Update_Description: new article about troubleshoot vm boot error -->
-<!--ms.date: 10/14/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

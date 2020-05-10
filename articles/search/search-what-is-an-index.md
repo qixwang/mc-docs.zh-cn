@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 12/17/2019
 ms.date: 01/17/2020
-ms.openlocfilehash: 1825e87d30b2a5d760c76a7b083bfdb0e19de537
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 954c2d5ebc61e797d92250a8434dcb0f389d439c
+ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79293306"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82588704"
 ---
 # <a name="create-a-basic-index-in-azure-cognitive-search"></a>在 Azure 认知搜索中创建基本索引
 
@@ -212,7 +212,7 @@ ms.locfileid: "79293306"
 
 可为 CORS 设置以下选项：
 
-+ **allowedOrigins**（必需）：这是会被授予索引访问权限的来源的列表。 这意味着，将允许从这些来源提供的任何 JavaScript 代码查询索引（假设它提供正确的 api-key）。 每个来源通常采用 `protocol://<fully-qualified-domain-name>:<port>` 格式，不过往往会省略 `<port>`。 有关更多详细信息，请参阅[跨域资源共享 (Wikipedia)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)。
++ **allowedOrigins**（必需）：这是会被授予索引访问权限的来源的列表。 这意味着，将允许从这些来源提供的任何 JavaScript 代码查询索引（假设它提供正确的 api-key）。 每个来源通常采用 `protocol://<fully-qualified-domain-name>:<port>` 格式，不过往往会省略 `<port>`。 有关更多详细信息，请参阅“跨域资源共享 (Wikipedia)”。
 
   若要允许访问所有来源，请将 `*` 作为单个项目包含在 **allowedOrigins** 数组中。 不建议对生产搜索服务采用这种做法，但它在开发和调试中却很有用。 
 

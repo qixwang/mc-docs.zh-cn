@@ -2,15 +2,15 @@
 title: 如何创建适用于 Linux 的 Guest Configuration 策略
 description: 了解如何创建适用于 Linux 的 Azure Policy Guest Configuration 策略。
 origin.date: 03/20/2020
-ms.date: 03/30/2020
+ms.date: 04/20/2020
 ms.author: v-tawe
 ms.topic: how-to
-ms.openlocfilehash: 4fa99b126214671831654213afcf442bc99e382b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: abaf65288de87796d96e079af1009257cce4b371
+ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80586827"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82588768"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>如何创建适用于 Linux 的 Guest Configuration 策略
 
@@ -91,7 +91,7 @@ supports:
     - os-family: unix
 ```
 
-将此文件保存到项目目录中名为 `linux-path` 的文件夹内。
+使用名称 `inspec.yml` 将此文件保存到项目目录中名为 `linux-path` 的文件夹中。
 
 接下来，使用 InSpec 语言抽象创建 Ruby 文件用于审核计算机。
 
@@ -101,7 +101,7 @@ describe file('/tmp') do
 end
 ```
 
-将此文件保存到 `linux-path` 目录中名为 `controls` 的新文件夹内。
+使用名称 `linux-path.rb` 将此文件保存到 `linux-path` 目录内名为 `controls` 的新文件夹中。
 
 最后，创建配置，导入 GuestConfiguration 资源模块，并使用 `ChefInSpecResource` 资源设置 InSpec 配置文件的名称。 
 

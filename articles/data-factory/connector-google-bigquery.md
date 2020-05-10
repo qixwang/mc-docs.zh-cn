@@ -1,26 +1,27 @@
 ---
-title: 使用 Azure 数据工厂从 Google BigQuery 复制数据 | Microsoft Docs
+title: 使用 Azure 数据工厂从 Google BigQuery 复制数据
 description: 了解如何使用数据工厂管道中的复制活动，将数据从 Google BigQuery 复制到支持的接收器数据存储。
 services: data-factory
 documentationcenter: ''
+ms.author: v-jay
 author: WenJason
 manager: digimobile
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 origin.date: 09/04/2019
-ms.date: 11/11/2019
-ms.author: v-jay
-ms.openlocfilehash: 502e49151e41a703a9e8bffe989b37d5b60f83dc
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/11/2020
+ms.openlocfilehash: 356075dd7aa97c1acf6437aefe13ea89a5fc3514
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75623633"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82197845"
 ---
 # <a name="copy-data-from-google-bigquery-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 Google BigQuery 复制数据
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从 Google BigQuery 复制数据。 本文基于总体概述复制活动的[复制活动概述](copy-activity-overview.md)一文。
 
@@ -36,7 +37,7 @@ ms.locfileid: "75623633"
 数据工厂提供内置驱动程序以启用连接。 因此，无需要手动安装驱动程序即可使用此连接器。
 
 >[!NOTE]
->此 Google BigQuery 连接器在 BigQuery API 的基础上构建。 请注意，BigQuery 会限制传入请求的最大速率并按项目强制实施适当的配额。 请确保不会触发过多的帐户并发请求。
+>此 Google BigQuery 连接器在 BigQuery API 的基础上构建。 请注意，BigQuery 会限制传入请求的最大速率并按项目强制实施适当的配额，请参阅[配额和限制 - API 请求](https://cloud.google.com/bigquery/quotas#api_requests)。 请确保不会触发过多的帐户并发请求。
 
 ## <a name="get-started"></a>入门
 
@@ -100,7 +101,7 @@ Google BigQuery 链接服务支持以下属性。
 |:--- |:--- |:--- |
 | 电子邮件 | 用于 ServiceAuthentication 的服务帐户电子邮件 ID。 它只能在自承载集成运行时上使用。  | 否 |
 | keyFilePath | .p12 密钥文件的完整路径，该文件用于对服务帐户电子邮件地址进行身份验证。 | 否 |
-| trustedCertPath | 包含受信任 CA 证书（通过 SSL 进行连接时用于验证服务器）的 .pem 文件的完整路径。 仅当在自承载集成运行时上使用 SSL 时，才能设置此属性。 默认值是随集成运行时一起安装的 cacerts.pem 文件。  | 否 |
+| trustedCertPath | 包含受信任 CA 证书（通过 TLS 进行连接时用来验证服务器）的 .pem 文件的完整路径。 仅当在自承载集成运行时上使用 TLS 时，才能设置此属性。 默认值是随集成运行时一起安装的 cacerts.pem 文件。  | 否 |
 | useSystemTrustStore | 指定是使用系统信任存储中的 CA 证书还是使用指定 .pem 文件中的 CA 证书。 默认值是 **false**秒。  | 否 |
 
 **示例：**

@@ -1,26 +1,17 @@
 ---
-title: 使用 Azure 经典 CLI 管理 Azure Redis 缓存 | Microsoft Docs
+title: 使用 Azure 经典 CLI 管理 Azure Cache for Redis
 description: 了解如何在任何平台上安装 Azure 经典 CLI、如何使用它连接到 Azure 帐户，以及如何从经典 CLI 创建和管理 Azure Redis 缓存。
-services: cache
-documentationcenter: ''
 author: yegu-ms
-manager: jhubbard
-editor: ''
-ms.assetid: 964ff245-859d-4bc1-bccf-62e4b3c1169f
 ms.service: cache
-ms.workload: tbd
-ms.tgt_pltfrm: cache
-ms.devlang: na
-ms.topic: article
-origin.date: 01/23/2017
-ms.date: 11/12/2019
+ms.topic: conceptual
+ms.date: 04/26/2020
 ms.author: v-junlch
-ms.openlocfilehash: 78629a163463aa1b4b39247c500b9138cfb55138
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 054033a014fa170a6b74df63e61f83330c211ca5
+ms.sourcegitcommit: e3512c5c2bbe61704d5c8cbba74efd56bfe91927
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79291931"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82267592"
 ---
 # <a name="how-to-create-and-manage-azure-cache-for-redis-using-the-azure-classic-cli"></a>如何使用 Azure 经典 CLI 创建和管理 Azure Redis 缓存
 > [!div class="op_single_selector"]
@@ -34,7 +25,7 @@ Azure 经典 CLI 是从任何平台管理 Azure 基础结构的好办法。 本�
 > [!NOTE]
 > 有关最新的 Azure CLI 示例脚本，请参阅 [Azure Redis 缓存示例](cli-samples.md)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 要使用 Azure 经典 CLI 创建和管理 Azure Redis 缓存实例，必须完成以下步骤。
 
 * 必须具有 Azure 帐户。 如果没有帐户，只需几分钟就能创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。
@@ -45,20 +36,20 @@ Azure 经典 CLI 是从任何平台管理 Azure 基础结构的好办法。 本�
 ## <a name="azure-cache-for-redis-properties"></a>Azure Redis 缓存属性
 在创建和更新 Azure Redis 缓存实例时使用以下属性。
 
-| properties | 开关 | 说明 |
+| 属性 | 开关 | 说明 |
 | --- | --- | --- |
 | name |-n, --name |Azure Redis 缓存的名称。 |
-| 资源组 |-g, --resource-group |资源的名称。 |
-| location |-l, --location |要创建缓存的位置。 |
-| 大小 |-z, --size |Azure Redis 缓存的大小。 有效的值: [C0、C1、C2、C3、C4、C5、C6、P1、P2、P3、P4] |
+| 资源组 |-g, --resource-group |资源组的名称。 |
+| 位置 |-l, --location |要创建缓存的位置。 |
+| 大小 |-z, --size |Azure Redis 缓存的大小。 有效的值：[C0、C1、C2、C3、C4、C5、C6、P1、P2、P3、P4] |
 | sku |-x, --sku |Redis SKU。 应为以下值之一：[Basic、Standard、Premium] |
-| EnableNonSslPort |-e, --enable-non-ssl-port |Azure Redis 缓存的 EnableNonSslPort 属性。 如果要为缓存启用非 SSL 端口，请添加此标志 |
+| EnableNonSslPort |-e, --enable-non-ssl-port |Azure Redis 缓存的 EnableNonSslPort 属性。 如果要为缓存启用非 TLS/SSL 端口，请添加此标志 |
 | Redis 配置 |-c, --redis-configuration |Redis 配置。 在此处输入配置键和值的 JSON 格式字符串。 格式："{"":"","":""}" |
 | Redis 配置 |-f, --redis-configuration-file |Redis 配置。 在此处输入包含配置键和值的文件的路径。 文件输入项的格式：{"":"","":""} |
 | 分片计数 |-r, --shard-count |要在启用群集的高级群集缓存上创建的分片数。 |
 | 虚拟网络 |-v, --virtual-network |在 VNet 中托管缓存时，指定要在其中部署 Azure Redis 缓存的虚拟网络的确切 ARM 资源 ID。 格式示例：/subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
-| key type |-t, --key-type |要续订的密钥类型。 有效值：[Primary, Secondary] |
-| StaticIP |-p, --static-ip \<static-ip\> |在 VNET 中托管缓存时，指定缓存在子网中的唯一 IP 地址。 如果未提供此值，系统将从子网中选择一个。 |
+| 密钥类型 |-t, --key-type |要续订的密钥类型。 有效值：[Primary、Secondary] |
+| StaticIP |-p, --static-ip \<static-ip\> |在 VNET 中托管缓存时，指定缓存在子网中的唯一 IP 地址。 如果未提供此值，系统将从子网中为你选择一个。 |
 | 子网 |t, --subnet \<subnet\> |在 VNET 中托管缓存时，指定要在其中部署缓存的子网。 |
 | VirtualNetwork |-v, --virtual-network \<virtual-network\> |在 VNet 中托管缓存时，指定要在其中部署 Azure Redis 缓存的虚拟网络的确切 ARM 资源 ID。 格式示例：/subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
 | 订阅 |-s, --subscription |订阅标识符。 |
@@ -117,7 +108,7 @@ Azure 经典 CLI 是从任何平台管理 Azure 基础结构的好办法。 本�
     help:      -l, --location <location>                                Location to create cache.
     help:      -z, --size <size>                                        Size of the Azure Cache for Redis. Valid values: [C0, C1, C2, C3, C4, C5, C6, P1, P2, P3, P4]
     help:      -x, --sku <sku>                                          Redis SKU. Should be one of : [Basic, Standard, Premium]
-    help:      -e, --enable-non-ssl-port                                EnableNonSslPort property of the Azure Cache for Redis. Add this flag if you want to enable the Non SSL Port for your cache
+    help:      -e, --enable-non-ssl-port                                EnableNonSslPort property of the Azure Cache for Redis. Add this flag if you want to enable the non-TLS/SSL Port for your cache
     help:      -c, --redis-configuration <redis-configuration>          Redis Configuration. Enter a JSON formatted string of configuration keys and values here. Format:"{"<key1>":"<value1>","<key2>":"<value2>"}"
     help:      -f, --redis-configuration-file <redisConfigurationFile>  Redis Configuration. Enter the path of a file containing configuration keys and values here. Format for the file entry: {"<key1>":"<value1>","<key2>":"<value2>"}
     help:      -r, --shard-count <shard-count>                          Number of Shards to create on a Premium Cluster Cache
@@ -228,7 +219,7 @@ Azure 经典 CLI 是从任何平台管理 Azure 基础结构的好办法。 本�
 
     azure rediscache renew-key [--name <name> --resource-group <resource-group> --key-type <key-type>]
 
-为 `Primary` 指定 `Secondary` 或 `key-type`。
+为 `key-type` 指定 `Primary` 或 `Secondary`。
 
 有关此命令的详细信息，请运行 `azure rediscache renew-key -h` 命令。
 
@@ -272,4 +263,3 @@ Azure 经典 CLI 是从任何平台管理 Azure 基础结构的好办法。 本�
     help:
     help:    Current Mode: arm (Azure Resource Management)
 
-<!-- Update_Description: link update -->

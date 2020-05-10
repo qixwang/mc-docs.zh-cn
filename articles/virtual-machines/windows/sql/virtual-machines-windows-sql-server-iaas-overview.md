@@ -1,5 +1,5 @@
 ---
-title: Azure 虚拟机上的 SQL Server 是什么？ (Windows)
+title: Azure 虚拟机 (Windows) 上的 SQL Server 是什么？
 description: 了解如何在 Azure 虚拟机上运行完整版本的 SQL Server。
 services: virtual-machines-windows
 documentationcenter: ''
@@ -12,15 +12,15 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 origin.date: 11/27/2019
-ms.date: 02/10/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
 ms.reviewer: jroth
-ms.openlocfilehash: 7d17b9523e38587566cbb126faf8c292cc7c7c00
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 27aa3da89fef53bb860a7309a7b49850affbb3ba
+ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77428071"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82596223"
 ---
 # <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Azure 虚拟机上的 SQL Server 是什么？ (Windows)
 
@@ -40,7 +40,9 @@ SQL Server Azure VM 可以使用[自动修补](virtual-machines-windows-sql-auto
 
 ## <a name="automated-backups"></a>自动备份
 
-SQL Server Azure VM 可以利用[自动备份](virtual-machines-windows-sql-automated-backup-v2.md)，定期创建数据库到 Blob 存储的备份。 也可以手动使用此技术。 有关详细信息，请参阅 [使用 Azure 存储进行 SQL Server 备份和还原](virtual-machines-windows-use-storage-sql-server-backup-restore.md)。
+SQL Server Azure VM 可以利用[自动备份](virtual-machines-windows-sql-automated-backup-v2.md)，定期创建数据库到 Blob 存储的备份。 也可以手动使用此技术。 有关详细信息，请参阅[使用 Azure 存储进行 SQL Server 备份和还原](virtual-machines-windows-use-storage-sql-server-backup-restore.md)。
+
+Azure 还为 Azure VM 中运行的 SQL Server 提供企业级备份解决方案。 作为完全托管的备份解决方案，它支持 AlwaysOn 可用性组、长期保留、时点恢复以及集中管理和监视。 有关详细信息，请参阅 [Azure VM 中 SQL Server 的 Azure 备份](/backup/backup-azure-sql-database)。
 
 ## <a name="high-availability"></a>高可用性
 
@@ -52,7 +54,7 @@ Azure 虚拟机提供的虚拟机大小取决于工作负荷需求。 SQL VM 还
 
 ## <a name="get-started-with-sql-vms"></a>SQL VM 入门
 
-若要开始，请选择一个 SQL Server 虚拟机映像，其中包含所需的版本和操作系统。 以下部分提供了有关 SQL Server 虚拟机库映像到 Azure 门户的直接链接。
+若要开始，请选择一个 SQL Server 虚拟机映像，其中包含所需的版本和操作系统。 下面的各部分针对相关 SQL Server 虚拟机库映像提供了指向 Azure 门户的直接链接。
 
 > [!TIP]
 > 有关如何了解 SQL 映像定价的详细信息，请参阅 [SQL Server Azure VM 定价指南](virtual-machines-windows-sql-server-pricing-guidance.md)。 
@@ -78,19 +80,19 @@ Azure 虚拟机提供的虚拟机大小取决于工作负荷需求。 SQL VM 还
 <a name="BYOL"></a>
 <a name="byol"></a>
 ### <a name="bring-your-own-license"></a>自带许可
-也可以自带许可 (BYOL)。 在此方案中，只需支付 VM 费用，SQL Server 许可不需要任何额外的费用。  自带许可证长时间会节省资金，因为可以持续使用生产型工作负荷。 有关使用此选项的要求，请参阅 [SQL Server Azure VM 定价指南](virtual-machines-windows-sql-server-pricing-guidance.md#byol)。
+你也可以自带许可 (BYOL)。 在此方案中，你只需支付 VM 费用，SQL Server 许可不需要任何额外的费用。  自带许可证长时间会节省资金，因为可以持续使用生产型工作负荷。 有关使用此选项的要求，请参阅 [SQL Server Azure VM 定价指南](virtual-machines-windows-sql-server-pricing-guidance.md#byol)。
 
-若要自带许可证，可以转换现有的预付费的 SQL VM，也可以部署前缀为 **{BYOL}** 的映像。 。
+若要自带许可证，可以转换现有的预付费的 SQL VM，也可以部署前缀为 **{BYOL}** 的映像。 上获取。
 
 <!-- Not Available on [How to change the licensing model for a SQL VM](virtual-machines-windows-sql-ahb.md)-->
 
 | 版本 | 操作系统 | 版本 |
 | --- | --- | --- |
-| **SQL Server 2019** | Windows Server 2019 | [Enterprise BYOL](https://portal.azure.cn/#create/microsoftsqlserver.sql2019-ws2019-byolenterprise)、[Standard  BYOL](https://portal.azure.cn/#create/microsoftsqlserver.sql2019-ws2019-byolstandard)| 
+| **SQL Server 2019** | Windows Server 2019 | [Enterprise BYOL](https://portal.azure.cn/#create/microsoftsqlserver.sql2019-ws2019-byolenterprise)、[Standard BYOL](https://portal.azure.cn/#create/microsoftsqlserver.sql2019-ws2019-byolstandard)| 
 | **SQL Server 2017** |Windows Server 2016 |[Enterprise BYOL](https://portal.azure.cn/#create/Microsoft.BYOLSQLServer2017EnterpriseWindowsServer2016)、[Standard BYOL](https://portal.azure.cn/#create/Microsoft.BYOLSQLServer2017StandardonWindowsServer2016) |
 | **SQL Server 2016 SP2** |Windows Server 2016 |[Enterprise BYOL](https://portal.azure.cn/#create/Microsoft.BYOLSQLServer2016SP2EnterpriseWindowsServer2016)、[Standard BYOL](https://portal.azure.cn/#create/Microsoft.BYOLSQLServer2016SP2StandardWindowsServer2016) |
 | **SQL Server 2014 SP2** |Windows Server 2012 R2 |[Enterprise BYOL](https://portal.azure.cn/#create/Microsoft.BYOLSQLServer2014SP2EnterpriseWindowsServer2012R2)、[Standard BYOL](https://portal.azure.cn/#create/Microsoft.BYOLSQLServer2014SP2StandardWindowsServer2012R2) |
-| **SQL Server 2012 SP4** |Windows Server 2012 R2 |[Enterprise BYOL](https://portal.azure.cn/#create/Microsoft.BYOLSQLServer2012SP4EnterpriseWindowsServer2012R2)、[Standard  BYOL](https://portal.azure.cn/#create/Microsoft.BYOLSQLServer2012SP4StandardWindowsServer2012R2) |
+| **SQL Server 2012 SP4** |Windows Server 2012 R2 |[Enterprise BYOL](https://portal.azure.cn/#create/Microsoft.BYOLSQLServer2012SP4EnterpriseWindowsServer2012R2)、[Standard BYOL](https://portal.azure.cn/#create/Microsoft.BYOLSQLServer2012SP4StandardWindowsServer2012R2) |
 
 可以使用 PowerShell 部署 Azure 门户中不可用的较旧的 SQL Server 映像。 若要使用 Powershell 查看所有可用映像，请使用以下命令：
 
@@ -114,7 +116,7 @@ Azure 虚拟机提供的虚拟机大小取决于工作负荷需求。 SQL VM 还
 对于每种支持的操作系统和版本的组合，Azure 只保留一个虚拟机映像。 这意味着，随着时间的推移，映像会进行刷新，旧映像会被删除。 有关详细信息，请参阅  [SQL Server VM 常见问题解答](virtual-machines-windows-sql-server-iaas-faq.md#images)的“映像”部分。
 
 ## <a name="customer-experience-improvement-program-ceip"></a>客户体验改善计划 (CEIP)
-客户体验改善计划 (CEIP) 默认情况下已启用。 它定期将报告发送给 Azure，以帮助改进 SQL Server。 CEIP 不需要执行管理任务，除非用户想要在预配后将其禁用。 可以通过远程桌面连接到 VM，以自定义或禁用 CEIP。 然后运行“SQL Server 错误和使用情况报告”  实用工具。 请按照说明禁用报告功能。 有关数据收集的详细信息，请参阅 [SQL Server 隐私声明](https://docs.microsoft.com/sql/getting-started/microsoft-sql-server-privacy-statement)。
+客户体验改善计划 (CEIP) 默认情况下已启用。 它定期将报告发送给 Azure，以帮助改进 SQL Server。 CEIP 不要求管理任务，除非想在预配后禁用它。 可以通过远程桌面连接到 VM，以自定义或禁用 CEIP。 然后运行 **SQL Server 错误和使用情况报告**实用工具。 请按照说明禁用报告功能。 有关数据收集的详细信息，请参阅 [SQL Server 隐私声明](https://docs.microsoft.com/sql/getting-started/microsoft-sql-server-privacy-statement)。
 
 ## <a name="related-products-and-services"></a>相关产品和服务
 ### <a name="windows-virtual-machines"></a>Windows 虚拟机

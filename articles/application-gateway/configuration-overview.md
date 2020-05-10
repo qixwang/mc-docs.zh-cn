@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 03/30/2020
+ms.date: 04/26/2020
 ms.author: v-junlch
-ms.openlocfilehash: 560853dace6ad86693c2cefdec649c5d37e2b3ea
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 1f08c73c6844c32965dbea6f9a45b93c02502edc
+ms.sourcegitcommit: e3512c5c2bbe61704d5c8cbba74efd56bfe91927
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80581827"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82267656"
 ---
 # <a name="application-gateway-configuration-overview"></a>应用程序网关配置概述
 
@@ -118,7 +118,7 @@ Azure 应用程序网关由多个组件构成，可根据不同的方案以不�
 
   **场景 1**：对虚拟设备使用 UDR
 
-  v2 公共预览版不支持需要通过任何虚拟设备、中心辐射型虚拟网络或者在本地（强制隧道）重定向 0.0.0.0/0 的任何方案。 
+  V2 不支持需要通过任何虚拟设备、中心辐射型虚拟网络或者在本地（强制隧道）重定向 0.0.0.0/0 的任何方案。
 
 ## <a name="front-end-ip"></a>前端 IP
 
@@ -167,8 +167,6 @@ Azure 应用程序网关由多个组件构成，可根据不同的方案以不�
 选择 HTTP 或 HTTPS：
 
 - 如果选择 HTTP，则客户端与应用程序网关之间的流量将不会加密。
-
-- 如果想要实现 [TLS 终止](/application-gateway/overview#secure-sockets-layer-ssltls-termination)或[端到端 TLS 加密](/application-gateway/ssl-overview)，请选择 HTTPS。 客户端与应用程序网关之间的流量将会加密。 TLS 连接将在应用程序网关上终止。 若要实现端到端的 TLS 加密，必须选择 HTTPS，并配置“后端 HTTP”设置。  这可以确保流量在从应用程序网关传输到后端时重新得到加密。
 
 - 如果想要实现 [TLS 终止](features.md#secure-sockets-layer-ssltls-termination)或[端到端 TLS 加密](/application-gateway/ssl-overview)，请选择 HTTPS。 客户端与应用程序网关之间的流量将会加密。 TLS 连接将在应用程序网关上终止。 若要实现端到端的 TLS 加密，必须选择 HTTPS，并配置“后端 HTTP”设置。  这可以确保流量在从应用程序网关传输到后端时重新得到加密。
 
@@ -380,7 +378,7 @@ Azure 应用程序网关使用网关托管 Cookie 来维护用户会话。 当�
 
 此功能可将应用程序网关上的传入请求中的 *host* 标头替换为指定的主机名。
 
-例如，如果将 *www.contoso.com* 指定为“主机名”设置，则将请求转发到后端服务器时，原始请求 *`https://appgw.chinanorth.chinacloudapp.cn/path1` 会更改为 *`https://www.contoso.com/path1`。 
+例如，如果将 *www.contoso.com* 指定为“主机名”设置，则将请求转发到后端服务器时，原始请求 *`https://appgw.chinanorth2.chinacloudapp.cn/path1` 会更改为 *`https://www.contoso.com/path1`。 
 
 ## <a name="back-end-pool"></a>后端池
 
@@ -403,4 +401,3 @@ Azure 应用程序网关使用网关托管 Cookie 来维护用户会话。 当�
 - [使用 PowerShell 创建应用程序网关](quick-create-powershell.md)
 - [使用 Azure CLI 创建应用程序网关](quick-create-cli.md)
 
-<!-- Update_Description: wording update -->

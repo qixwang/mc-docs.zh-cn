@@ -8,12 +8,12 @@ origin.date: 05/04/2017
 ms.date: 03/30/2020
 ms.author: v-tawe
 ms.custom: mvc, cli-validate, seodec18
-ms.openlocfilehash: 80ba9cafcf6faff36d33dd3b0595da09f4d35333
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 3659fe130d61f463687d565db75b6cdab8026fb4
+ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80522086"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82588583"
 ---
 # <a name="tutorial-build-a-nodejs-and-mongodb-app-in-azure"></a>教程：在 Azure 中生成 Node.js 和 MongoDB 应用
 

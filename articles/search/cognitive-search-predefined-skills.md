@@ -8,13 +8,13 @@ ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 11/04/2019
-ms.date: 03/16/2020
-ms.openlocfilehash: d88770d5b302b76736157927d06de47dbb52bcff
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 04/20/2020
+ms.openlocfilehash: c96e91cc9f5d706ca777992c4c6f7d1f492e0198
+ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79497197"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82588762"
 ---
 # <a name="built-in-cognitive-skills-for-text-and-image-processing-during-indexing-azure-cognitive-search"></a>在编制索引期间用于文本和图像处理的内置认知技能（Azure 认知搜索）
 
@@ -24,6 +24,8 @@ ms.locfileid: "79497197"
 > 通过增大处理频率、添加更多文档或添加更多 AI 算法来扩大范围时，需要[附加可计费的认知服务资源](cognitive-search-attach-cognitive-services.md)。 调用认知服务中的 API 以及在 Azure 认知搜索中的文档破解阶段提取图像时，会产生费用。 提取文档中的文本不会产生费用。
 >
 > 当你行使内置技能时，我们会按现有的[认知服务预付费价格](https://www.azure.cn/pricing/details/cognitive-services/)收费。 图像提取定价如 [Azure 认知搜索定价页](https://www.azure.cn/pricing/details/search)所述。
+>
+> 可以利用[增量扩充（预览版）](cognitive-search-incremental-indexing-conceptual.md)功能来提供缓存，使得在未来修改技能组后只需运行必要的认知技能，从而使索引器更高效，为你节省时间和金钱。
 
 
 ## <a name="built-in-skills"></a>内置技能

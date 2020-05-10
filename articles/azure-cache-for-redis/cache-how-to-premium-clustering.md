@@ -5,13 +5,13 @@ author: yegu-ms
 ms.author: v-junlch
 ms.service: cache
 ms.topic: conceptual
-ms.date: 02/05/2020
-ms.openlocfilehash: d1839ed98cd5912e31a3fadf2292e700c25292d0
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 04/26/2020
+ms.openlocfilehash: 281b3eb24336f46b541467c181541bdf791e0a4f
+ms.sourcegitcommit: e3512c5c2bbe61704d5c8cbba74efd56bfe91927
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79291937"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82267609"
 ---
 # <a name="how-to-configure-redis-clustering-for-a-premium-azure-cache-for-redis"></a>如何为高级 Azure Redis 缓存配置 Redis 群集功能
 Azure Redis 缓存具有不同的缓存产品/服务，从而在缓存大小和功能（包括群集、暂留和虚拟网络支持等高级层功能）的选择上具有灵活性。 本文介绍如何配置高级 Azure Redis 缓存实例中的群集功能。
@@ -125,7 +125,7 @@ Redis 群集协议要求每个客户端以群集模式直接连接到每个分�
 ### <a name="can-i-directly-connect-to-the-individual-shards-of-my-cache"></a>可以直接连接到缓存的各个分片吗？
 群集协议要求客户端建立正确的分片连接。 因此客户端应正确执行此操作。 话虽如此，但每个分片都是由主/副缓存对组成的，该缓存对统称为缓存实例。 可以在 GitHub 上通过 Redis 存储库的 [不稳定](https://redis.io/download) 分支使用 redis-cli 实用程序连接到这些缓存实例。 使用 `-c` 开关启动后，此版本可实现基本的支持。 有关详细信息，请参阅 [https://redis.io](https://redis.io) 上 [Redis cluster tutorial](https://redis.io/topics/cluster-tutorial)（Redis 群集教程）中的[操作群集](https://redis.io/topics/cluster-tutorial#playing-with-the-cluster)。
 
-对于非 ssl，请使用以下命令。
+对于非 TLS，请使用以下命令。
 
     Redis-cli.exe -h <<cachename>> -p 13000 (to connect to instance 0)
     Redis-cli.exe -h <<cachename>> -p 13001 (to connect to instance 1)
@@ -133,7 +133,7 @@ Redis 群集协议要求每个客户端以群集模式直接连接到每个分�
     ...
     Redis-cli.exe -h <<cachename>> -p 1300N (to connect to instance N)
 
-对于 ssl，请将 `1300N` 替换为 `1500N`。
+对于 TLS，请将 `1300N` 替换为 `1500N`。
 
 ### <a name="can-i-configure-clustering-for-a-previously-created-cache"></a>可以为以前创建的缓存配置群集功能吗？
 是的。 首先，请确保缓存为高级缓存，如果不是，则进行缩放。 接下来，应该能够看到群集配置选项，包括用于启用群集的选项。 可以在创建缓存或首次启用群集功能后更改群集大小。
@@ -165,7 +165,4 @@ Redis 群集协议要求每个客户端以群集模式直接连接到每个分�
 [redis-cache-clustering-selected]: ./media/cache-how-to-premium-clustering/redis-cache-clustering-selected.png
 
 [redis-cache-redis-cluster-size]: ./media/cache-how-to-premium-clustering/redis-cache-redis-cluster-size.png
-
-
-<!-- Update_Description: wording update -->
 

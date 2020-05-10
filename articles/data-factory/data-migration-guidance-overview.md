@@ -1,26 +1,27 @@
 ---
-title: 使用 Azure 数据工厂将数据从 Data Lake 和数据仓库迁移到 Azure | Microsoft Docs
+title: 将数据从数据湖和数据仓库迁移到 Azure
 description: 使用 Azure 数据工厂将数据从 Data Lake 和数据仓库迁移到 Azure。
 services: data-factory
-documentationcenter: ''
 author: WenJason
 ms.author: v-jay
 ms.reviewer: ''
 manager: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 origin.date: 7/30/2019
-ms.date: 10/14/2019
-ms.openlocfilehash: 343138301a2cbeb2cfb6dce5daea21446a49cb23
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/11/2020
+ms.openlocfilehash: 83b3ed776c628b1be4eb7d3929814c3856fc6cc3
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "72275897"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82198273"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-your-data-lake-or-data-warehouse-to-azure"></a>使用 Azure 数据工厂将数据从 Data Lake 或数据仓库迁移到 Azure
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 若要将 Data Lake 或企业数据仓库 (EDW) 迁移到 Azure，请考虑使用 Azure 数据工厂。 Azure 数据工厂非常适合以下场景：
 

@@ -1,5 +1,5 @@
 ---
-title: Azure 后端连接功能中的互操作性：控制平面分析 | Azure
+title: Azure 中的互操作性：控制平面分析
 description: 本文提供了可用于分析 Azure 中 ExpressRoute、站点到站点 VPN 和虚拟网络对等互连之间互操作性的测试设置的控制平面分析。
 documentationcenter: na
 services: networking
@@ -9,16 +9,16 @@ ms.service: virtual-network
 ms.topic: article
 ms.workload: infrastructure-services
 origin.date: 10/18/2018
-ms.date: 01/17/2020
+ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: ed50861727ac4969e650dc463e66ec9e497e84c8
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: a2591fb3b51f816cbbb925b042bbbeeb8f61c237
+ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "76123354"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82588781"
 ---
-# <a name="interoperability-in-azure-back-end-connectivity-features-control-plane-analysis"></a>Azure 后端连接功能中的互操作性：控制平面分析
+# <a name="interoperability-in-azure--control-plane-analysis"></a>Azure 中的互操作性：控制平面分析
 
 本文介绍了[测试设置][Setup]的控制平面分析。 你也可以查看测试设置的[测试设置配置][Configuration]和[数据平面分析][Data-Analysis]。
 

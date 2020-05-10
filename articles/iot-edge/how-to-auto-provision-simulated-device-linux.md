@@ -4,17 +4,17 @@ description: 使用 Linux VM 上的模拟 TPM 来测试 Azure IoT Edge 的 Azure
 author: kgremban
 manager: philmea
 ms.author: v-tawe
-origin.date: 03/01/2019
-ms.date: 03/02/2020
+origin.date: 03/02/2019
+ms.date: 04/20/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 52ecbc0d557a2a6eda631a86ac14fd518a986282
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: bdec4d9f5bf4c1bcb455be44f2650a196923228f
+ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77494347"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82588797"
 ---
 # <a name="create-and-provision-an-iot-edge-device-with-a-virtual-tpm-on-a-linux-virtual-machine"></a>使用 Linux 虚拟机上的虚拟 TPM 创建和预配 IoT Edge 设备
 
@@ -32,11 +32,11 @@ ms.locfileid: "77494347"
 >
 > 如果使用的是物理设备，则可以跳至本文的[从物理设备中检索预配信息](#retrieve-provisioning-information-from-a-physical-device)部分。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * [已启用 Hyper-V](https://docs.microsoft.com/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v) 的 Windows 开发计算机。 本文使用运行 Ubuntu Server VM 的 Windows 10。
 * 活动的 IoT 中心。
-* 如果使用模拟 TPM，则需要启用了[“使用 C++ 的桌面开发”](https://visualstudio.microsoft.com/vs/)工作负荷的 [Visual Studio](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) 2015 或更高版本。
+* 如果使用模拟 TPM，则需要启用了[“使用 C++ 的桌面开发”](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/)工作负荷的 [Visual Studio](https://visualstudio.microsoft.com/vs/) 2015 或更高版本。
 
 > [!NOTE]
 > 将 TPM 证明与 DPS 一起使用时，TPM 2.0 是必需的，并且只能用于创建个人（而非组）注册。
@@ -65,13 +65,13 @@ ms.locfileid: "77494347"
 
 1. 下载虚拟机使用的磁盘映像文件，并将其保存在本地。 例如 [Ubuntu 服务器](https://www.ubuntu.com/download/server)。
 
-2. 返回 Hyper-V 管理器，在“操作”菜单中选择“新建” **“虚拟机”。**  >   
+2. 返回 Hyper-V 管理器，在“操作”菜单中选择“新建” > “虚拟机”。   
 
 3. 使用以下特定配置完成“新建虚拟机向导”： 
 
-   1. **指定代次**：选择“第 2 代”。  第 2 代虚拟机已启用嵌套虚拟化，在虚拟机上运行 IoT Edge 必须启用此功能。
-   2. **配置网络**：设置“连接”的值设置为在上一部分创建的虚拟交换机。 
-   3. **安装选项**：选择“从可启动映像文件安装操作系统”，并浏览到本地保存的磁盘映像文件。 
+   1. **指定代系**：选择“第 2 代”  。 第 2 代虚拟机已启用嵌套虚拟化，在虚拟机上运行 IoT Edge 必须启用此功能。
+   2. **配置网络**：设置“连接”的值设置为在上一部分创建的虚拟交换机  。
+   3. **安装选项**：选择“从可启动映像文件安装操作系统”，并浏览到本地保存的磁盘映像文件  。
 
 4. 在向导中选择“完成”以创建虚拟机。 
 
@@ -89,7 +89,7 @@ ms.locfileid: "77494347"
 
 4. 选中“启用受信任的平台模块”。 
 
-5. 单击“确定”。   
+5. 单击 **“确定”** 。  
 
 ### <a name="start-the-virtual-machine-and-collect-tpm-data"></a>启动虚拟机并收集 TPM 数据
 
@@ -158,6 +158,9 @@ ms.locfileid: "77494347"
 
 在 DPS 中创建注册时，可以声明“初始设备孪生状态”。  在设备孪生中可以设置标记，以便按解决方案中所需的任何指标（例如区域、环境、位置或设备类型）将设备分组。 这些标记用于创建[自动部署](how-to-deploy-monitor.md)。
 
+> [!TIP]
+> 在 Azure CLI 中，可以创建[注册](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment)或[注册组](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment-group)，并使用“支持 Edge”  标志来指定某个设备或设备组是 IoT Edge 设备。
+
 1. 在 [Azure 门户](https://portal.azure.cn)中，导航到 IoT 中心设备预配服务的实例。
 
 2. 在“设置”下，选择“管理注册”。  
@@ -190,7 +193,7 @@ ms.locfileid: "77494347"
       }
       ```
 
-   7. 选择“保存”。 
+   7. 选择“保存”  。
 
 既然此设备已存在注册，IoT Edge 运行时在安装期间可以自动预配设备。
 

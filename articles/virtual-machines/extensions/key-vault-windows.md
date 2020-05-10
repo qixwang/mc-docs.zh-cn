@@ -7,14 +7,14 @@ tags: keyvault
 ms.service: virtual-machines-windows
 ms.topic: article
 origin.date: 12/02/2019
-ms.date: 02/10/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: da27e68f5619f76c914480081e27c6edaea99fb7
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: e5381a61b067df66578691e89acd7a155e7694cd
+ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77428657"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82596337"
 ---
 <!--Verify the extension name exists-->
 # <a name="key-vault-virtual-machine-extension-for-windows"></a>适用于 Windows 的 Key Vault 虚拟机扩展
@@ -28,6 +28,11 @@ ms.locfileid: "77428657"
 - Windows Server 2019
 - Windows Server 2016
 - Windows Server 2012
+
+### <a name="supported-certificate-content-types"></a>支持的证书内容类型
+
+- PKCS #12
+- PEM
 
 ## <a name="extension-schema"></a>扩展架构
 
@@ -71,7 +76,7 @@ ms.locfileid: "77428657"
 | 名称 | 值/示例 | 数据类型 |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | date |
-| publisher | Microsoft.Azure.KeyVault| string |
+| publisher | Microsoft.Azure.KeyVault | string |
 | type | KeyVaultForWindows | string |
 | typeHandlerVersion | 1.0 | int |
 | pollingIntervalInS | 3600 | string |
@@ -102,13 +107,14 @@ ms.locfileid: "77428657"
         "typeHandlerVersion": "1.0",
         "autoUpgradeMinorVersion": true,
         "settings": {
+            "secretsManagementSettings": {
                 "pollingIntervalInS": <polling interval in seconds, e.g: "3600">,
                 "certificateStoreName": <certificate store name, e.g.: "MY">,
                 "certificateStoreLocation": <certificate store location, currently it works locally only e.g.: "LocalMachine">,
                 "observedCertificates": <list of KeyVault URIs representing monitored certificates, e.g.: "https://myvault.vault.azure.cn/secrets/mycertificate"
             }         
         }
-  }
+    }
 }
 ```
 
@@ -163,12 +169,14 @@ ms.locfileid: "77428657"
 
 * 在 VM 上部署该扩展：
     
+    <!--CORRECT ON \ WHEN CONCATENATE WITH CLI CMDLET-->
+    
     ```azurecli
        # Start the deployment
-         az vm extension set -n "KeyVaultForWindows" `
-         --publisher Microsoft.Azure.KeyVault `
-         -g "<resourcegroup>" `
-         --vmss-name "<vmName>" `
+         az vm extension set -n "KeyVaultForWindows" \
+         --publisher Microsoft.Azure.KeyVault \
+         -g "<resourcegroup>" \
+         --vm-name "<vmName>" \
          --settings '{\"secretsManagementSettings\": { \"pollingIntervalInS\": \"<pollingInterval>\", \"certificateStoreName\": \"<certStoreName>\", \"certificateStoreLocation\": \"<certStoreLoc>\", \"observedCertificates\": [\ <observedCerts>\"] }}'
     ```
 
@@ -176,10 +184,10 @@ ms.locfileid: "77428657"
 
    ```azurecli
         # Start the deployment
-        az vmss extension set -n "KeyVaultForWindows" `
-         --publisher Microsoft.Azure.KeyVault `
-         -g "<resourcegroup>" `
-         --vmss-name "<vmName>" `
+        az vmss extension set -n "KeyVaultForWindows" \
+         --publisher Microsoft.Azure.KeyVault \
+         -g "<resourcegroup>" \
+         --vmss-name "<vmName>" \
          --settings '{\"secretsManagementSettings\": { \"pollingIntervalInS\": \"<pollingInterval>\", \"certificateStoreName\": \"<certStoreName>\", \"certificateStoreLocation\": \"<certStoreLoc>\", \"observedCertificates\": [\ <observedCerts>\"] }}'
     ```
 

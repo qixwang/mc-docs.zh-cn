@@ -20,16 +20,16 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 7dce460e53c3abf5ac3b066dde10ad600fd281e8
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: e8c17f6b184c6693cc89b4138fb6367f09fc4520
+ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75336500"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82588730"
 ---
 # <a name="odata-logical-operators-in-azure-cognitive-search---and-or-not"></a>Azure 认知搜索中的 OData 逻辑运算符 - `and`、`or`、`not`
 
-Azure 认知搜索中的 [OData 筛选器表达式](query-odata-filter-orderby-syntax.md)是求值结果为 `true` 或 `false` 的布尔表达式。 你可以编写复杂的筛选器，只需先编写一系列[较简单的筛选器](search-query-odata-comparison-operators.md)，然后使用[布尔代数](https://en.wikipedia.org/wiki/Boolean_algebra)中的逻辑运算符将其组合在一起即可：
+Azure 认知搜索中的 [OData 筛选器表达式](query-odata-filter-orderby-syntax.md)是求值结果为 `true` 或 `false` 的布尔表达式。 你可以编写复杂的筛选器，只需先编写一系列[较简单的筛选器](search-query-odata-comparison-operators.md)，然后使用布尔代数中的逻辑运算符将其组合在一起即可：
 
 - `and`：一个二元运算符，在左侧和右侧的子表达式的求值结果均为 `true` 的情况下，其求值结果为 `true`。
 - `or`：一个二元运算符，在左侧或右侧的子表达式的求值结果为 `true` 的情况下，其求值结果为 `true`。

@@ -10,15 +10,17 @@ manager: digimobile
 ms.topic: tutorial
 ms.custom: seo-dt-2019
 origin.date: 01/22/2018
-ms.date: 01/06/2020
-ms.openlocfilehash: ca03d6b00fd4eb89ad2b081633740f416c4a2e65
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/11/2020
+ms.openlocfilehash: 5a4eab861f6bcb31c2b7c420381ae7f829009824
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75623852"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82198097"
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用 Hive 活动转换 Azure 虚拟网络中的数据
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 本教程使用 Azure PowerShell 创建一个数据工厂管道，该管道可以使用 HDInsight 群集上的 Hive 活动转换 Azure 虚拟网络 (VNet) 中的数据。 在本教程中执行以下步骤：
 
@@ -33,7 +35,7 @@ ms.locfileid: "75623852"
 
 如果没有 Azure 订阅，可在开始前创建一个 [1 元人民币试用](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth)帐户。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -41,7 +43,7 @@ ms.locfileid: "75623852"
 - **Azure 虚拟网络**。 如果没有 Azure 虚拟网络，请遵照[这些说明](../virtual-network/quick-create-portal.md)创建虚拟网络。 在本示例中，HDInsight 位于 Azure 虚拟网络中。 下面是 Azure 虚拟网络的示例配置。 
 
     ![创建虚拟网络](media/tutorial-transform-data-using-hive-in-vnet/create-virtual-network.png)
-- **HDInsight 群集**。 创建一个 HDInsight 群集，并遵循[使用 Azure 虚拟网络扩展 Azure HDInsight](../hdinsight/hdinsight-extend-hadoop-virtual-network.md) 一文中所述，将该群集加入到在前一步骤中创建的虚拟网络。 下面是虚拟网络中 HDInsight 的示例配置。 
+- **HDInsight 群集**。 创建一个 HDInsight 群集，并按照以下文章中所述，将该群集加入到在前一步骤中创建的虚拟网络：[使用 Azure 虚拟网络扩展 Azure HDInsight](../hdinsight/hdinsight-extend-hadoop-virtual-network.md)。 下面是虚拟网络中 HDInsight 的示例配置。 
 
     ![虚拟网络中的 HDInsight](media/tutorial-transform-data-using-hive-in-vnet/hdinsight-in-vnet-configuration.png)
 - **Azure PowerShell**。 遵循[如何安装和配置 Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps) 中的说明。
@@ -92,7 +94,7 @@ ms.locfileid: "75623852"
     ```powershell
     $selfHostedIntegrationRuntimeName = "MySelfHostedIR09142017" 
     ```
-2. 启动 **PowerShell**。 在完成本快速入门之前，请将 Azure PowerShell 保持打开状态。 如果将它关闭再重新打开，则需要再次运行下述命令。 若要查看目前提供数据工厂的 Azure 区域的列表，请在以下页面上选择感兴趣的区域，然后展开“分析”  以找到“数据工厂”  ：[可用产品（按区域）](https://azure.microsoft.com/global-infrastructure/services/?regions=china-non-regional,china-east,china-east-2,china-north,china-north-2&products=all)。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
+2. 启动 **PowerShell**。 在完成本快速入门之前，请将 Azure PowerShell 保持打开状态。 如果将它关闭再重新打开，则需要再次运行下述命令。 若要查看目前提供数据工厂的 Azure 区域的列表，请在以下页面上选择感兴趣的区域，然后展开“分析”  以找到“数据工厂”  ：[可用产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/?regions=china-non-regional,china-east,china-east-2,china-north,china-north-2&products=all)。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
 
     运行以下命令并输入用于登录 Azure 门户的用户名和密码：
         
@@ -109,7 +111,7 @@ ms.locfileid: "75623852"
     ```powershell
     Select-AzSubscription -SubscriptionId "<SubscriptionId>"    
     ```  
-3. 创建资源组 ADFTutorialResourceGroup（如果在订阅中尚不存在）。 
+3. 创建资源组：ADFTutorialResourceGroup（如果在订阅中尚不存在）。 
 
     ```powershell
     New-AzResourceGroup -Name $resourceGroupName -Location "China East 2" 
@@ -155,9 +157,9 @@ ms.locfileid: "75623852"
 
    ![注册集成运行时](media/tutorial-transform-data-using-hive-in-vnet/register-integration-runtime.png)
 
-   成功注册自我托管的集成运行时后，会看到以下消息：“已成功注册”![](media/tutorial-transform-data-using-hive-in-vnet/registered-successfully.png)
+   成功注册自我托管的集成运行时后，会看到以下消息：![已成功注册](media/tutorial-transform-data-using-hive-in-vnet/registered-successfully.png)
 
-   将节点连接到云服务后，会看到以下页：“节点已连接”![](media/tutorial-transform-data-using-hive-in-vnet/node-is-connected.png)
+   将节点连接到云服务后，会看到以下页：![节点已连接](media/tutorial-transform-data-using-hive-in-vnet/node-is-connected.png)
 
 ## <a name="author-linked-services"></a>创作链接服务
 
@@ -223,7 +225,7 @@ ms.locfileid: "75623852"
 - **clusterUri**。 使用以下格式指定 HDInsight 群集的 URL：`https://<clustername>.azurehdinsight.cn`。  本文假设你有权通过 Internet 访问该群集。 例如，可以通过 `https://clustername.azurehdinsight.cn` 连接到该群集。 此地址使用公共网关。如果已使用网络安全组 (NSG) 或用户定义的路由 (UDR) 限制了从 Internet 的访问，则该网关不可用。 要使数据工厂能够将作业提交到 Azure 虚拟网络中的 HDInsight 群集，需要相应地配置 Azure 虚拟网络，使 URL 可解析成 HDInsight 所用的网关的专用 IP 地址。
 
   1. 在 Azure 门户中，打开 HDInsight 所在的虚拟网络。 打开名称以 `nic-gateway-0` 开头的网络接口。 记下其专用 IP 地址。 例如 10.6.0.15。 
-  2. 如果 Azure 虚拟网络包含 DNS 服务器，请更新 DNS 记录，使 HDInsight 群集 URL `https://<clustername>.azurehdinsight.cn` 可解析成 `10.6.0.15`。 这是建议的做法。 如果 Azure 虚拟网络中没有 DNS 服务器，可以通过编辑已注册为自承载 Integration Runtime 节点的所有 VM 的 hosts 文件 (C:\Windows\System32\drivers\etc) 并添加如下所示的条目，来暂时解决此问题： 
+  2. 如果 Azure 虚拟网络包含 DNS 服务器，请更新 DNS 记录，使 HDInsight 群集 URL `https://<clustername>.azurehdinsight.cn` 可解析成 `10.6.0.15`。 这是建议的做法。 如果 Azure 虚拟网络中没有 DNS 服务器，可以通过编辑已注册为自承载集成运行时节点的所有 VM 的 hosts 文件 (C:\Windows\System32\drivers\etc) 并添加如下所示的条目，来暂时解决此问题： 
   
         `10.6.0.15 myHDIClusterName.azurehdinsight.cn`
 

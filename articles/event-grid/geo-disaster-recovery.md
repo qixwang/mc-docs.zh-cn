@@ -8,20 +8,20 @@ ms.topic: conceptual
 origin.date: 05/24/2019
 ms.date: 07/29/2019
 ms.author: v-yiso
-ms.openlocfilehash: ff55cae4128d2aa037881cb478deea06ce0140d2
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: ae1fef75e1b69e33b20cb5e7d56563404905efa8
+ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "68337592"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82588747"
 ---
 # <a name="server-side-geo-disaster-recovery-in-azure-event-grid"></a>Azure 事件网格中的服务器端异地灾难恢复
 现在，事件网格不仅可以针对新的，而且还能针对现有的所有域、主题和事件订阅提供元数据的自动异地灾难恢复 (GeoDR)。 在整个 Azure 区域出现故障时，事件网格已将所有与事件相关的基础结构元数据同步到配对的区域。 无需你的干预，新事件就能再次开始流动。 
 
 根据两项指标衡量灾难恢复：
 
-- [恢复点目标 (RPO)](https://en.wikipedia.org/wiki/Disaster_recovery#Recovery_Point_Objective)：可以丢失数据的分钟数或小时数。
-- [恢复时间目标 (RTO)](https://en.wikipedia.org/wiki/Disaster_recovery#Recovery_time_objective)：可以关闭服务的分钟数。
+- 恢复点目标 (RPO)：可以丢失数据的分钟数或小时数。
+- 恢复时间目标 (RTO)：服务可以关闭的分钟数或小时数。
 
 事件网格的自动故障转移针对元数据（事件订阅等）和数据（事件）提供不同的 RPO 和 RTO。 如果所需的规范不同于下述规范，仍可以[使用主题运行状况 API 实现你自己的客户端故障转移](custom-disaster-recovery.md)。
 

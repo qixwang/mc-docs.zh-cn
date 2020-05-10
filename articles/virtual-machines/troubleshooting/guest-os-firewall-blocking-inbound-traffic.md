@@ -1,6 +1,6 @@
 ---
 title: Azure VM 来宾 OS 防火墙阻止入站流量 | Azure
-description: ''
+description: 了解如何修复来宾操作系统防火墙阻止入站流量的远程桌面门户 (RDP) 连接问题。
 services: virtual-machines-windows
 documentationcenter: ''
 author: rockboyfor
@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 origin.date: 11/22/2018
-ms.date: 11/11/2019
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: 6b122ebb2e86ff7760b5544c7de27e92e444cdca
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 22063cb7546ad4b4bd212cb0914f540baf094662
+ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74116950"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82596344"
 ---
 # <a name="azure-vm-guest-os-firewall-is-blocking-inbound-traffic"></a>Azure VM 来宾 OS 防火墙阻止入站流量
 
@@ -49,7 +49,7 @@ ms.locfileid: "74116950"
 要解决此问题，请使用[如何使用远程工具解决 Azure VM 问题](remote-tools-troubleshoot-azure-vm-issues.md)中介绍的方法远程连接到 VM，然后将来宾操作系统防火墙规则编辑为“允许”RDP 流量  。
 
 <!-- Not Available on ### Online troubleshooting -->
-<!-- Not Available on serial control-->
+<!-- Not Available on Serial Control-->
 
 ### <a name="offline-mitigations"></a>脱机缓解措施
 

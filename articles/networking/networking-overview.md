@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: article
 ms.workload: infrastructure-services
 origin.date: 03/12/2020
-ms.date: 03/30/2020
+ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: c669ba4716f8bb00d3f293bee44d35fe1f503d16
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: a61ad4286c667aed5ed560e19a340e68193b2b33
+ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80634592"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82588512"
 ---
 # <a name="azure-networking-services-overview"></a>Azure 网络服务概述
 
@@ -42,7 +42,7 @@ Azure 中的网络服务提供可以搭配使用或单独使用的各种网络�
 ||||
 
 <!--
-|[Azure Bastion](#bastion)|Configure secure and seamless RDP/SSH connectivity to your virtual machines directly in the Azure portal over SSL. When you connect via Azure Bastion, your virtual machines do not need a public IP address|<p>[Create an Azure Bastion host](../bastion/bastion-create-host-portal.md)</p><p>[Connect using SSH to a Linux VM](../bastion/bastion-connect-vm-ssh.md)</p><p>[Connect using RDP to a Windows VM](../bastion/bastion-connect-vm-rdp.md)</p>|
+|[Azure Bastion](#bastion)|Configure secure and seamless RDP/SSH connectivity to your virtual machines directly in the Azure portal over TLS. When you connect via Azure Bastion, your virtual machines do not need a public IP address|<p>[Create an Azure Bastion host](../bastion/bastion-create-host-portal.md)</p><p>[Connect using SSH to a Linux VM](../bastion/bastion-connect-vm-ssh.md)</p><p>[Connect using RDP to a Windows VM](../bastion/bastion-connect-vm-rdp.md)</p>|
 |[Virtual network NAT Gateway](#nat)|Create a NAT gateway to provide outbound connectivity for a virtual machine.|<p>[Create a NAT Gateway](../virtual-network/quickstart-create-nat-gateway-portal.md)</p>|
 |[Azure Peering Service (Preview)](#azurepeeringservice)|Collaborate with service providers for optimal and reliable routing to the Microsoft cloud over the public network.|<p>[Register Azure Peering Service](../peering-service/azure-portal.md)</p>|
 -->
@@ -81,7 +81,7 @@ Azure DNS 是 DNS 域的托管服务，它使用 Azure 基础结构提供名称�
 
 <!--
 ### <a name="bastion"></a>Azure Bastion
-The Azure Bastion service is a new fully platform-managed PaaS service that you provision inside your virtual network. It provides secure and seamless RDP/SSH connectivity to your virtual machines directly in the Azure portal over SSL. When you connect via Azure Bastion, your virtual machines do not need a public IP address. For more information, see [What is Azure Bastion?](../bastion/bastion-overview.md).
+The Azure Bastion service is a new fully platform-managed PaaS service that you provision inside your virtual network. It provides secure and seamless RDP/SSH connectivity to your virtual machines directly in the Azure portal over TLS. When you connect via Azure Bastion, your virtual machines do not need a public IP address. For more information, see [What is Azure Bastion?](../bastion/bastion-overview.md).
 
 ![Azure Bastion architecture](./media/networking-overview/architecture.png)
 
@@ -159,7 +159,7 @@ Traffic between your virtual network and the service travels the Microsoft backb
 |[内容分发网络](#cdn)|向用户传送高带宽内容。 CDN 将缓存的内容存储在接入点 (POP) 位置（靠近最终用户的边缘服务器），以最大程度地降低延迟。|<p>[向 Web 应用添加 CDN](/cdn/cdn-how-to-create-web-cdn-endpoint)</p> <p>[- 通过 HTTPS 使用 Azure CDN 自定义域访问存储 Blob](/cdn/cdn-https-customer-supplied-cert)</p>|
 |[流量管理器](#trafficmanager)|基于 DNS 将流量分发到全球 Azure 区域中的服务，同时提供高可用性和响应度。|<p> [路由流量以降低延迟](../traffic-manager/tutorial-traffic-manager-improve-website-response.md)</p><p>[将流量路由到优先终结点](../traffic-manager/traffic-manager-configure-priority-routing-method.md)</p><p> [使用加权的终结点控制流量](../traffic-manager/tutorial-traffic-manager-weighted-endpoint-routing.md)</p><p>[基于终结点的地理位置路由流量](../traffic-manager/traffic-manager-configure-geographic-routing-method.md)</p> <p> [根据用户的子网路由流量](../traffic-manager/tutorial-traffic-manager-subnet-routing.md)</p>|
 |[负载均衡器](#loadbalancer)|通过将流量路由到不同的可用性区域和你的 VNet 来提供区域负载均衡。 通过在资源中和资源之间路由流量来提供内部负载均衡，以构建区域性应用程序。|<p> [对传入 VM 的 Internet 流量进行负载均衡](../load-balancer/tutorial-load-balancer-standard-manage-portal.md)</p> <p>[对虚拟网络中 VM 之间的流量进行负载均衡](../load-balancer/tutorial-load-balancer-basic-internal-portal.md)<p>[通过端口转发将流量发送到特定 VM 上的特定端口](../load-balancer/tutorial-load-balancer-port-forwarding-portal.md)</p><p> [配置负载均衡和出站规则](../load-balancer/configure-load-balancer-outbound-cli.md)</p>|
-|[应用程序网关](#applicationgateway)|Azure 应用程序网关是一种 Web 流量负载均衡器，可用于管理 Web 应用程序的流量。|<p>[使用 Azure 应用程序网关定向 Web 流量](../application-gateway/quick-create-portal.md)</p><p>[配置带有 SSL 终端的应用程序网关](../application-gateway/create-ssl-portal.md)</p><p>[创建支持基于 URL 路径进行重定向的应用程序网关](../application-gateway/create-url-route-portal.md) </p>|
+|[应用程序网关](#applicationgateway)|Azure 应用程序网关是一种 Web 流量负载均衡器，可用于管理 Web 应用程序的流量。|<p>[使用 Azure 应用程序网关定向 Web 流量](../application-gateway/quick-create-portal.md)</p><p>[教程：通过 Azure 门户使用 TLS 终端配置应用程序网关](../application-gateway/create-ssl-portal.md)</p><p>[创建支持基于 URL 路径进行重定向的应用程序网关](../application-gateway/create-url-route-portal.md) </p>|
 |
 
 ### <a name="content-delivery-network"></a><a name="cdn"></a>内容分发网络

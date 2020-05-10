@@ -1,6 +1,6 @@
 ---
 title: 创建和更新统计信息
-description: 用于创建和更新 Synapse SQL 池中表的查询优化统计信息的建议和示例。
+description: 本文提供的建议和示例适用于创建和更新 Synapse SQL 池中有关表的查询优化统计信息。
 services: synapse-analytics
 author: WenJason
 manager: digimobile
@@ -21,7 +21,7 @@ ms.locfileid: "82198677"
 ---
 # <a name="table-statistics-in-synapse-sql-pool"></a>Synapse SQL 池中的表统计信息
 
-本文提供有关创建和更新 SQL 池中表的查询优化统计信息的建议和示例。
+本文提供的建议和示例适用于创建和更新 SQL 池中有关表的查询优化统计信息。
 
 ## <a name="why-use-statistics"></a>为何使用统计信息
 
@@ -33,21 +33,21 @@ SQL 池查询优化器是基于成本的优化器。 此优化器会对各种查
 
 ## <a name="automatic-creation-of-statistic"></a>自动创建统计信息
 
-启用数据库的 AUTO_CREATE_STATISTICS 选项时，SQL 池将会分析传入的用户查询中是否缺少统计信息。
+启用数据库的 AUTO_CREATE_STATISTICS 选项时，SQL 池会分析传入的用户查询中是否缺少统计信息。
 
 如果缺少统计信息，查询优化器将在查询谓词或联接条件中各个列上创建统计信息，以改进查询计划的基数估计。
 
 > [!NOTE]
 > 默认情况下，自动创建统计信息目前处于开启状态。
 
-可以运行以下命令来检查是否为 SQL 池配置了 AUTO_CREATE_STATISTICS：
+可运行以下命令来检查是否为 SQL 池配置了 AUTO_CREATE_STATISTICS：
 
 ```sql
 SELECT name, is_auto_create_stats_on
 FROM sys.databases
 ```
 
-如果 SQL 池未配置 AUTO_CREATE_STATISTICS，我们建议通过运行以下命令来启用此属性：
+如果 SQL 池未配置 AUTO_CREATE_STATISTICS，建议通过运行以下命令来启用此属性：
 
 ```sql
 ALTER DATABASE <yourdatawarehousename>
@@ -68,7 +68,7 @@ SET AUTO_CREATE_STATISTICS ON
 
 自动创建统计信息的过程是以同步方式完成的，因此，如果列中缺少统计信息，查询性能可能会轻微下降。 为单个列创建统计信息所需的时间取决于表的大小。
 
-为了避免性能大幅下降，应确保在分析系统之前先通过执行基准检验工作负荷来创建统计信息。
+为了避免性能大幅下降，应确保在分析系统之前先通过执行基准检验工作负载来创建统计信息。
 
 > [!NOTE]
 > 统计信息的创建将记录在其他用户上下文中的 [sys.dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 中。
@@ -87,7 +87,7 @@ table_name 是包含要显示的统计信息的表的名称。 此表不能为�
 
 有关客户表中的国家/地区列的统计信息可能永远不需要更新，因为值的分布通常不会变化。 假设客户间的分布固定不变，将新行添加到表变化并不会改变数据分布情况。
 
-但是，如果 SQL 池只包含一个国家/地区，并且引入了来自新国家/地区的数据，从而导致存储了多个国家/地区的数据，那么，就需要更新有关国家/地区列的统计信息。
+但是，如果 SQL 池只包含一个国家/地区，并且引入了来自新国家/地区的数据，导致存储了多个国家/地区的数据，那么，就需要更新有关国家/地区列的统计信息。
 
 下面是关于更新统计信息的建议：
 
@@ -98,7 +98,7 @@ table_name 是包含要显示的统计信息的表的名称。 此表不能为�
 
 在排查查询问题时，首先要询问的问题之一就是 **“统计信息是最新的吗？”**
 
-此问题不可以根据数据期限提供答案。 如果对基础数据未做重大更改，则最新的统计信息对象有可能非常陈旧。
+此问题不能根据数据期限提供答案。 如果对基础数据未做重大更改，则最新的统计信息对象有可能非常陈旧。
 
 > [!TIP]
 > 如果行数有明显变化或给定列的值分布有重大变化，则  需要更新统计信息。
@@ -141,15 +141,15 @@ WHERE
 
 相反地，客户表上性别列的统计信息可能永远不需要更新。 假设客户间的分布固定不变，将新行添加到表变化并不会改变数据分布情况。
 
-如果 SQL 池只包含一种性别，而新的要求导致多种性别，则需要更新性别列的统计信息。
+如果 SQL 池只包含一种性别，而新的要求会导致出现多种性别，则需更新性别列的统计信息。
 
 有关详细信息，请参阅[统计信息](https://docs.microsoft.com/sql/relational-databases/statistics/statistics?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)的通用指南。
 
 ## <a name="implementing-statistics-management"></a>实施统计信息管理
 
-扩展数据加载过程通常是个不错的想法，可确保在加载结束时更新统计信息，以避免/最大程度地减少并发查询之间发生阻塞或资源争用。  
+通常可以扩展数据加载过程，确保在加载结束时更新统计信息，避免/最大程度地减少并发查询之间出现阻塞或资源争用的情况。  
 
-当表更改其大小和/或其值分布时，数据加载最为频繁。 因此，数据加载是实施某些管理过程的合理位置。
+当表更改其大小和/或其值分布时，数据加载最为频繁。 可以通过数据加载实施某些管理过程。
 
 下面提供了有关更新统计信息的一些指导原则：
 
@@ -417,7 +417,7 @@ UPDATE STATISTICS dbo.table1;
 UPDATE STATISTICS 语句很容易使用。 只要记住，这会更新表中的所有统计信息，因此执行的工作可能会超过所需的数量。  如果性能不是一个考虑因素，这是保证拥有最新统计信息的最简单、最全面的操作方式。
 
 > [!NOTE]
-> 更新表中的所有统计信息时，SQL 池将执行扫描，以针对每个统计信息对象进行表采样。 如果表很大、包含许多列和许多统计信息，则根据需要更新各项统计信息可能比较有效率。
+> 更新表中的所有统计信息时，SQL 池会执行扫描，以便针对每个统计信息对象进行表采样。 如果表很大、包含许多列和许多统计信息，则根据需要更新各项统计信息可能比较有效率。
 
 有关 `UPDATE STATISTICS` 过程的实现，请参阅[临时表](sql-data-warehouse-tables-temporary.md)。 实现方法与上述 `CREATE STATISTICS` 过程略有不同，但最终结果相同。
 

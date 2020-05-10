@@ -1,6 +1,6 @@
 ---
 title: 使用 RDP 连接到 Azure VM 时排查身份验证错误 | Azure
-description: ''
+description: 了解如何排查使用远程桌面协议 (RDP) 连接到 Azure 虚拟机 (VM) 时出现的身份验证错误。
 services: virtual-machines-windows
 documentationcenter: ''
 author: rockboyfor
@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 origin.date: 11/01/2018
-ms.date: 11/11/2019
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: 31437bc5d30eceee54f69d383514f3355713b7c2
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 08bd1694ceffa649bdcbb1de06a7fcd31b7f8fef
+ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79291947"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82596333"
 ---
 # <a name="troubleshoot-authentication-errors-when-you-use-rdp-to-connect-to-azure-vm"></a>使用 RDP 连接到 Azure VM 时排查身份验证错误
 
@@ -286,4 +286,4 @@ reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP
 
 [Win32_TSGeneralSetting 类](https://docs.microsoft.com/windows/desktop/TermServ/win32-tsgeneralsetting)
 
-<!-- Update_Description: wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

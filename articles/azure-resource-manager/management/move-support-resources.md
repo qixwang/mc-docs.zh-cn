@@ -2,15 +2,15 @@
 title: 资源类型支持的移动操作
 description: 列出可移到新资源组或订阅的 Azure 资源类型。
 ms.topic: conceptual
-origin.date: 02/26/2020
-ms.date: 03/23/2020
+origin.date: 04/06/2020
+ms.date: 04/30/2020
 ms.author: v-yeche
-ms.openlocfilehash: 3a397e7ebbf2f3ddd8a448c99a45e12f0fc02253
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 28d0b64e3c2d0f03e81dba6210b1b79f984658a7
+ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79543794"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82596254"
 ---
 # <a name="move-operation-support-for-resources"></a>支持移动操作的资源
 本文列出某个 Azure 资源类型是否支持移动操作。 它还提供了有关移动资源时要考虑的特殊条件的信息。
@@ -58,12 +58,14 @@ ms.locfileid: "79543794"
 > - [Microsoft.Kusto](#microsoftkusto)
 > - [Microsoft.Logic](#microsoftlogic)
 > - [Microsoft.MachineLearningServices](#microsoftmachinelearningservices)
+> - [Microsoft.Maintenance](#microsoftmaintenance)
 > - [Microsoft.ManagedIdentity](#microsoftmanagedidentity)
 > - [Microsoft.Media](#microsoftmedia)
 > - [Microsoft.Network](#microsoftnetwork)
 > - [Microsoft.NotificationHubs](#microsoftnotificationhubs)
 > - [Microsoft.OperationalInsights](#microsoftoperationalinsights)
 > - [Microsoft.OperationsManagement](#microsoftoperationsmanagement)
+> - [Microsoft.PolicyInsights](#microsoftpolicyinsights)
 > - [Microsoft.Portal](#microsoftportal)
 > - [Microsoft.PowerBI](#microsoftpowerbi)
 > - [Microsoft.PowerBIDedicated](#microsoftpowerbidedicated)
@@ -130,6 +132,9 @@ ms.locfileid: "79543794"
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
 > | 服务 | 是 | 是 |
+
+> [!IMPORTANT]
+> 无法移动设置为消耗 SKU 的 API 管理服务。
 
 <!--Not Available on ## Microsoft.AppConfiguration-->
 
@@ -198,8 +203,10 @@ ms.locfileid: "79543794"
 > | batchaccounts | 是 | 是 |
 
 <!-- Not Available on ## ## Microsoft.BatchAI-->
+<!-- Not Available on ## Microsoft.Billing-->
 <!-- Not Available on ## Microsoft.BingMaps-->
 <!-- Not Available on ## Microsoft.BizTalkServices-->
+<!-- Not Available on ## Microsoft.Blockchain-->
 <!-- Not Available on ## Microsoft.Blockchain-->
 
 ## <a name="microsoftblueprint"></a>Microsoft.Blueprint
@@ -277,6 +284,8 @@ ms.locfileid: "79543794"
 > [!IMPORTANT]
 > 请参阅[经典部署移动指南](./move-limitations/classic-model-move-limitations.md)。 可以使用特定于该方案的操作跨订阅移动经典部署资源。
 
+<!-- Not Available on ## Microsoft.Cognition-->
+
 ## <a name="microsoftcognitiveservices"></a>Microsoft.CognitiveServices
 
 > [!div class="mx-tableFixed"]
@@ -298,11 +307,13 @@ ms.locfileid: "79543794"
 > | hostgroups | 否 | 否 |
 > | hostgroups/hosts | 否 | 否 |
 > | images | 是 | 是 |
-> | proximityplacementgroups | 否 | 否 |
+> | proximityplacementgroups | 是 | 是 |
 > | restorepointcollections | 否 | 否 |
+> | sharedvmextensions | 否 | 否 |
 > | sharedvmimages | 否 | 否 |
 > | sharedvmimages/versions | 否 | 否 |
 > | snapshots | 是 | 是 |
+> | sshpublickeys | 否 | 否 |
 > | virtualmachines | 是 | 是 |
 > | virtualmachines/extensions | 是 | 是 |
 > | virtualmachinescalesets | 是 | 是 |
@@ -310,6 +321,7 @@ ms.locfileid: "79543794"
 > [!IMPORTANT]
 > 请参阅[虚拟机移动指南](./move-limitations/virtual-machines-move-limitations.md)。
 
+<!-- Not Available on ## Microsoft.Consumption-->
 <!-- Not Available on ## Microsoft.Container-->
 
 ## <a name="microsoftcontainerinstance"></a>Microsoft.ContainerInstance
@@ -326,6 +338,7 @@ ms.locfileid: "79543794"
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
 > | registries | 是 | 是 |
+> | registries/agentpools | 否 | 否 |
 > | registries/buildtasks | 是 | 是 |
 > | registries/replications | 是 | 是 |
 > | registries/taskruns | 是 | 是 |
@@ -345,6 +358,7 @@ ms.locfileid: "79543794"
 <!-- Not Available on ## Microsoft.CortanaAnalytics-->
 <!-- Not Available on ## Microsoft.CostManagement-->
 <!-- Not Available on ## Microsoft.CustomerInsights-->
+<!-- Not Available on ## Microsoft.CustomProviders-->
 <!-- Not Available on ## Microsoft.DataBox-->
 <!-- Not Available on ## Microsoft.DataBoxEdge-->
 <!-- Not Available on ## Microsoft.Databricks-->
@@ -375,6 +389,10 @@ ms.locfileid: "79543794"
 > | services/projects | 否 | 否 |
 > | slots | 否 | 否 |
 
+
+<!-- Not Available on ## Microsoft.DataProtection-->
+<!-- Not Available on ## Microsoft.DataShare-->
+
 <a name="microsoftdbformariadb"></a>
 ## <a name="microsoftdbformariadb"></a>Microsoft.DBforMariaDB
 
@@ -398,8 +416,10 @@ ms.locfileid: "79543794"
 > | servergroups | 否 | 否 |
 > | servers | 是 | 是 |
 > | serversv2 | 是 | 是 |
+> | singleservers | 是 | 是 |
 
 <!--Not Available on ## Microsoft.DeploymentManager-->
+<!--Not Available on ## Microsoft.DesktopVirtualization-->
 
 ## <a name="microsoftdevices"></a>Microsoft.Devices
 
@@ -411,9 +431,11 @@ ms.locfileid: "79543794"
 > | iothubs | 是 | 是 |
 > | provisioningservices | 是 | 是 |
 
+<!--Not Available on ## Microsoft.DevOps-->
 <!-- Not Available on ## Microsoft.DevSpaces-->
 <!-- Not Available on ## Microsoft.DevTestLab-->
 
+<!--Not Available on ## Microsoft.DigitalTwins-->
 ## <a name="microsoftdocumentdb"></a>Microsoft.DocumentDB
 
 > [!div class="mx-tableFixed"]
@@ -433,6 +455,10 @@ ms.locfileid: "79543794"
 > | eventSubscriptions | 否 - 无法独立移动，但会自动随已订阅的资源移动。 | 否 - 无法独立移动，但会自动随已订阅的资源移动。 |
 > | eventsubscriptions | 否 - 无法独立移动，但会自动随已订阅的资源移动。 | 否 - 无法独立移动，但会自动随已订阅的资源移动。 |
 > | extensiontopics | 否 | 否 |
+> | partnernamespaces | 是 | 是 |
+> | partnerregistrations | 否 | 否 |
+> | partnertopics | 是 | 是 |
+> | systemtopics | 是 | 是 |
 > | topics | 是 | 是 |
 
 ## <a name="microsofteventhub"></a>Microsoft.EventHub
@@ -443,6 +469,8 @@ ms.locfileid: "79543794"
 > | clusters | 是 | 是 |
 > | namespaces | 是 | 是 |
 
+<!-- Not Available on ## Microsoft.Experimentation-->
+<!-- Not Available on ## Microsoft.Falcon-->
 <!-- Not Available on ## Microsoft.Genomics-->
 
 ## <a name="microsoftguestconfiguration"></a>Microsoft.GuestConfiguration
@@ -450,6 +478,8 @@ ms.locfileid: "79543794"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
+> | automanagedaccounts | 否 | 否 |
+> | automanagedvmconfigurationprofiles | 否 | 否 |
 > | guestconfigurationassignments | 否 | 否 |
 > | software | 否 | 否 |
 > | softwareupdateprofile | 否 | 否 |
@@ -472,6 +502,7 @@ ms.locfileid: "79543794"
 <!-- Not Available on ## Microsoft.HealthcareApis-->
 <!-- Not Available on ## Microsoft.HybridCompute-->
 <!-- Not Available on ## Microsoft.HybridData-->
+<!-- Not Available on ## Microsoft.Hydra-->
 
 ## <a name="microsoftimportexport"></a>Microsoft.ImportExport
 
@@ -492,10 +523,12 @@ ms.locfileid: "79543794"
 > | baseline | 否 | 否 |
 > | calculatebaseline | 否 | 否 |
 > | components | 是 | 是 |
+> | datacollectionrules | 否 | 否 |
 > | diagnosticsettings | 否 | 否 |
 > | diagnosticsettingscategories | 否 | 否 |
 > | eventtypes | 否 | 否 |
 > | extendeddiagnosticsettings | 否 | 否 |
+> | guestdiagnosticsettings | 否 | 否 |
 > | logdefinitions | 否 | 否 |
 > | 日志 | 否 | 否 |
 > | metricalerts | 否 | 否 |
@@ -504,6 +537,7 @@ ms.locfileid: "79543794"
 > | metricnamespaces | 否 | 否 |
 > | 指标 | 否 | 否 |
 > | myworkbooks | 否 | 否 |
+> | notificationgroups | 否 | 否 |
 > | privatelinkscopes | 是 | 是 |
 > | scheduledqueryrules | 是 | 是 |
 > | 拓扑 | 否 | 否 |
@@ -536,6 +570,8 @@ ms.locfileid: "79543794"
 
 > [!IMPORTANT]
 > 用于磁盘加密的 Key Vault 不能移到同一订阅中的资源组，也不能跨订阅移动。
+
+<!-- Not Available on ## Microsoft.Kubernetes-->
 
 ## <a name="microsoftkusto"></a>Microsoft.Kusto
 
@@ -574,6 +610,16 @@ ms.locfileid: "79543794"
 > | workspaces | 否 | 否 |
 > | workspaces / computes | 否 | 否 |
 
+## <a name="microsoftmaintenance"></a>Microsoft.Maintenance
+
+> [!div class="mx-tableFixed"]
+> | 资源类型 | 资源组 | 订阅 |
+> | ------------- | ----------- | ---------- |
+> | applyupdates | 否 | 否 |
+> | configurationassignments | 否 | 否 |
+> | maintenanceconfigurations | 是 | 是 |
+> | 更新 | 否 | 否 |
+
 ## <a name="microsoftmanagedidentity"></a>Microsoft.ManagedIdentity
 
 > [!div class="mx-tableFixed"]
@@ -582,6 +628,9 @@ ms.locfileid: "79543794"
 > | identities | 否 | 否 |
 > | userassignedidentities | 否 | 否 |
 
+
+<!-- Not Available on ## Microsoft.ManagedNetwork-->
+<!-- Not Available on ## Microsoft.ManagedServices-->
 <!-- Not Available on ## Microsoft.Maps-->
 <!-- Not Available on ## Microsoft.MarketplaceApps-->
 
@@ -594,6 +643,7 @@ ms.locfileid: "79543794"
 > | mediaservices/liveevents | 是 | 是 |
 > | mediaservices/streamingendpoints | 是 | 是 |
 
+<!-- Not Available on ## Microsoft.Microservices4Spring-->
 <!-- Not Available on ## Microsoft.Migrate-->
 <!-- Not Available on ## Microsoft.NetApp-->
 
@@ -627,13 +677,12 @@ ms.locfileid: "79543794"
 > | networkwatchers | 是 | 否 |
 > | networkwatchers/connectionmonitors | 是 | 否 |
 > | networkwatchers/flowlogs | 是 | 否 |
-> | networkwatchers/lenses | 是 | 否 |
 > | networkwatchers/pingmeshes | 是 | 否 |
 > | p2svpngateways | 否 | 否 |
 > | privatednszones | 是 | 是 |
 > | privatednszones/virtualnetworklinks | 是 | 是 |
 > | privateendpointredirectmaps | 否 | 否 |
-> | privateendpoints | 否 | 否 |
+> | privateendpoints | 是 | 是 |
 > | privatelinkservices | 否 | 否 |
 > | publicipaddresses | 是 - 基本 SKU<br />否 - 标准 SKU | 是 - 基本 SKU<br />否 - 标准 SKU |
 > | publicipprefixes | 是 | 是 |
@@ -663,11 +712,13 @@ ms.locfileid: "79543794"
 > | namespaces | 是 | 是 |
 > | namespaces/notificationhubs | 是 | 是 |
 
+<!-- Not Available on ## Microsoft.ObjectStore-->
 ## <a name="microsoftoperationalinsights"></a>Microsoft.OperationalInsights
 
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
+> | clusters | 否 | 否 |
 > | storageinsightconfigs | 否 | 否 |
 > | workspaces | 是 | 是 |
 
@@ -685,6 +736,16 @@ ms.locfileid: "79543794"
 > | 视图 | 是 | 是 |
 
 <!--Not Available on ## Microsoft.Peering-->
+
+## <a name="microsoftpolicyinsights"></a>Microsoft.PolicyInsights
+
+> [!div class="mx-tableFixed"]
+> | 资源类型 | 资源组 | 订阅 |
+> | ------------- | ----------- | ---------- |
+> | policyevents | 否 | 否 |
+> | policystates | 否 | 否 |
+> | policytrackedresources | 否 | 否 |
+> | remediations | 否 | 否 |
 
 ## <a name="microsoftportal"></a>Microsoft.Portal
 
@@ -711,7 +772,10 @@ ms.locfileid: "79543794"
 > | ------------- | ----------- | ---------- |
 > | capacities | 是 | 是 |
 
+<!--Not Available on ## Microsoft.ProjectBabylon-->
 <!--Not Available on ## Microsoft.ProjectOxford-->
+<!--Not Available on ## Microsoft.ProviderHub-->
+<!--Not Available on ## Microsoft.Quantum-->
 
 ## <a name="microsoftrecoveryservices"></a>Microsoft.RecoveryServices
 
@@ -724,6 +788,9 @@ ms.locfileid: "79543794"
 
 > [!IMPORTANT]
 > 请参阅[恢复服务移动指南](../../backup/backup-azure-move-recovery-services-vault.md?toc=/azure-resource-manager/toc.json)。
+
+<!--Not Available on ## Microsoft.RedHatOpenShift-->
+
 
 ## <a name="microsoftrelay"></a>Microsoft.Relay
 
@@ -789,6 +856,8 @@ ms.locfileid: "79543794"
 > | iotsecuritysolutions | 是 | 是 |
 > | servervulnerabilityassessments | 否 | 否 |
 
+<!-- Not Available on ## Microsoft.SecurityInsights-->
+
 <!-- Not Available on ## Microsoft.ServerManagement-->
 
 ## <a name="microsoftservicebus"></a>Microsoft.ServiceBus
@@ -816,6 +885,7 @@ ms.locfileid: "79543794"
 
 <!-- Not Available on ## Microsoft.ServiceFabricMesh-->
 <!-- Not Available on ## Microsoft.SignalRService-->
+<!-- Not Available on ## Microsoft.Services-->
 
 ## <a name="microsoftsignalrservice"></a>Microsoft.SignalRService
 
@@ -823,6 +893,8 @@ ms.locfileid: "79543794"
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
 > | signalr | 是 | 是 |
+
+<!-- Not Available on ## Microsoft.SoftwarePlan-->
 
 ## <a name="microsoftsolutions"></a>Microsoft.Solutions
 
@@ -878,6 +950,8 @@ ms.locfileid: "79543794"
 > 当流分析作业处于运行状态时，则无法进行移动。
 
 <!-- Not Available on ## Microsoft.StreamAnalyticsExplorer-->
+<!-- Not Available on ## Microsoft.Subscription-->
+<!-- Not Available on ## microsoft.support-->
 <!-- Not Available on ## Microsoft.TerraformOSS-->
 
 <a name="microsofttimeseriesinsights"></a>
@@ -894,6 +968,8 @@ ms.locfileid: "79543794"
 <!-- Not Available on ## Microsoft.VirtualMachineImages-->
 <!-- Not Available on ## microsoft.visualstudio-->
 <!-- Not Available on ## Microsoft.VMwareCloudSimple-->
+<!-- Not Available on ## Microsoft.VnfManager-->
+<!-- Not Available on ## Microsoft.VSOnline-->
 
 ## <a name="microsoftweb"></a>Microsoft.Web
 
@@ -905,6 +981,7 @@ ms.locfileid: "79543794"
 > | connections | 是 | 是 |
 > | customapis | 是 | 是 |
 > | hostingenvironments | 否 | 否 |
+> | kubeenvironments | 是 | 是 |
 > | serverfarms | 是 | 是 |
 > | sites | 是 | 是 |
 > | sites/premieraddons | 是 | 是 |
@@ -914,8 +991,9 @@ ms.locfileid: "79543794"
 > [!IMPORTANT]
 > 请参阅[应用服务移动指南](./move-limitations/app-service-move-limitations.md)。
 
+<!-- Not Available on ## Microsoft.WindowsESU-->
 <!-- Not Available on ## Microsoft.WindowsIoT-->
-<!-- Not Available on ## Microsoft.WindowsVirtualDesktop-->
+<!-- Not Available on ## Microsoft.WorkloadMonitor-->
 
 ## <a name="third-party-services"></a>第三方服务
 

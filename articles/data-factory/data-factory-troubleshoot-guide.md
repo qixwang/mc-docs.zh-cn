@@ -6,17 +6,18 @@ author: WenJason
 ms.service: data-factory
 ms.topic: troubleshooting
 origin.date: 8/26/2019
-ms.date: 01/06/2020
+ms.date: 05/11/2020
 ms.author: v-jay
 ms.reviewer: craigg
-ms.openlocfilehash: f3fdd5cf34ba61371a99dc47138d2fc1cf5ee46b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 653e57ce712454ef8bb0c883b3ebd408c64a881b
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75624072"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82197762"
 ---
 # <a name="troubleshoot-azure-data-factory"></a>排查 Azure 数据工厂问题
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文探讨 Azure 数据工厂中的外部控制活动的常用故障排除方法。
 
@@ -730,7 +731,7 @@ ms.locfileid: "75624072"
 
    ![Fiddler 选项](media/data-factory-troubleshoot-guide/fiddler-options.png)
 
-1. 如果应用程序使用 SSL 证书，请将 Fiddler 证书添加到设备。 转到“工具” > “Fiddler 选项” > “HTTPS” > “操作” > “将根证书导出到桌面”。     
+1. 如果应用程序使用 TLS/SSL 证书，请将 Fiddler 证书添加到设备。 转到“工具” > “Fiddler 选项” > “HTTPS” > “操作” > “将根证书导出到桌面”。     
 
 1. 转到“文件” > “捕获流量”来关闭捕获。   或者按 **F12**。
 

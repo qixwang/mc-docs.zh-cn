@@ -1,26 +1,27 @@
 ---
-title: 使用 Azure 数据工厂从/向 Salesforce 复制数据 | Microsoft Docs
+title: 从/向 Salesforce 复制数据
 description: 了解如何通过在数据工厂管道中使用复制活动，将数据从 Salesforce 复制到支持的接收器数据存储，或者从支持的源数据存储复制到 Salesforce。
 services: data-factory
-documentationcenter: ''
+ms.author: v-jay
 author: WenJason
 manager: digimobile
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-origin.date: 08/01/2019
-ms.date: 10/14/2019
-ms.author: v-jay
-ms.openlocfilehash: 97a33f1529be09f47f4f9e12ab68495e5a7e7290
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.custom: seo-lt-2019
+origin.date: 03/24/2020
+ms.date: 05/11/2020
+ms.openlocfilehash: f5da3528c513c48dcc4053a7b6b253f7fa91cc4d
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "72275465"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82197980"
 ---
 # <a name="copy-data-from-and-to-salesforce-by-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 Salesforce 复制数据
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文概述如何使用 Azure 数据工厂中的复制活动从/向 Salesforce 复制数据。 本文基于总体概述复制活动的[复制活动概述](copy-activity-overview.md)一文。
 
@@ -31,7 +32,6 @@ ms.locfileid: "72275465"
 - 带有[支持的源或接收器矩阵](copy-activity-overview.md)的[复制活动](copy-activity-overview.md)
 - [Lookup 活动](control-flow-lookup-activity.md)
 
-
 可以将数据从 Salesforce 复制到任何支持的接收器数据存储。 还可以将数据从任何支持的源数据存储复制到 Salesforce。 有关复制活动支持作为源或接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
 
 具体而言，Salesforce 连接器支持：
@@ -39,7 +39,7 @@ ms.locfileid: "72275465"
 - Salesforce 开发人员版、专业版、企业版或不受限制版。
 - 从/向 Salesforce 生产、沙盒和自定义域复制数据。
 
-Salesforce 连接器构建于 Salesforce REST/Bulk API 之上，其中 [v45](https://developer.salesforce.com/docs/atlas.en-us.218.0.api_rest.meta/api_rest/dome_versions.htm) 用于从中复制数据，而 [v40](https://developer.salesforce.com/docs/atlas.en-us.208.0.api_asynch.meta/api_asynch/asynch_api_intro.htm) 用于接收复制数据。
+Salesforce 连接器在 Salesforce REST/Bulk API 之上构建。 默认情况下，连接器使用 [v45](https://developer.salesforce.com/docs/atlas.en-us.218.0.api_rest.meta/api_rest/dome_versions.htm) 从 Salesforce 复制数据，使用 [v40](https://developer.salesforce.com/docs/atlas.en-us.208.0.api_asynch.meta/api_asynch/asynch_api_intro.htm) 将数据复制到 Salesforce。 还可通过链接服务中的 [`apiVersion` 属性](#linked-service-properties)显式设置用于读取/写入数据的 API 版本。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -70,7 +70,8 @@ Salesforce 链接服务支持以下属性。
 | environmentUrl | 指定 Salesforce 实例的 URL。 <br> - 默认为 `"https://login.salesforce.com"`。 <br> - 要从沙盒复制数据，请指定 `"https://test.salesforce.com"`。 <br> - 要从自定义域复制数据，请指定 `"https://[domain].my.salesforce.com"`（以此为例）。 |否 |
 | username |为用户帐户指定用户名。 |是 |
 | password |指定用户帐户的密码。<br/><br/>将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 |是 |
-| securityToken |为用户帐户指定安全令牌。 有关如何重置和获取安全令牌的说明，请参阅[获取安全令牌](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm)。 若要了解有关安全令牌的一般信息，请参阅 [Security and the API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm)（安全性和 API）。<br/><br/>将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 |是 |
+| securityToken |为用户帐户指定安全令牌。 <br/><br/>若要了解有关安全令牌的一般信息，请参阅 [Security and the API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm)（安全性和 API）。 仅当将 Integration Runtime 的 IP 添加到 Salesforce 上的[受信任 IP 地址列表](https://developer.salesforce.com/docs/atlas.en-us.securityImplGuide.meta/securityImplGuide/security_networkaccess.htm)时，才能跳过安全令牌。 使用 Azure IR 时，请参阅 [Azure Integration Runtime IP 地址](azure-integration-runtime-ip-addresses.md)。<br/><br/>有关如何获取和重置安全令牌的说明，请参阅[获取安全令牌](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm)。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 |否 |
+| apiVersion | 指定要使用的 Salesforce REST/Bulk API 版本，例如 `48.0`。 默认情况下，连接器使用 [v45](https://developer.salesforce.com/docs/atlas.en-us.218.0.api_rest.meta/api_rest/dome_versions.htm) 从 Salesforce 复制数据，使用 [v40](https://developer.salesforce.com/docs/atlas.en-us.208.0.api_asynch.meta/api_asynch/asynch_api_intro.htm) 将数据复制到 Salesforce。 | 否 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果未指定，则使用默认 Azure Integration Runtime。 | 对于源为“否”，对于接收器为“是”（如果源链接服务没有集成运行时） |
 
 >[!IMPORTANT]

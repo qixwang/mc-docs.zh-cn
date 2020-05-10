@@ -12,14 +12,14 @@ ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 10/31/2018
-ms.date: 02/10/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: e37ae49a76ccea53a6073f7389f5ede250748944
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 359abfdc52ca8cf621dd00ca0e65358c847d1e0b
+ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77428837"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82596353"
 ---
 # <a name="understand-a-system-reboot-for-azure-vm"></a>了解 Azure VM 的系统重启
 
@@ -31,10 +31,7 @@ Azure 虚拟机 (VM) 有时可能会在没有明显原因（没有证据表明�
 
 若要为应用程序提供此级别的冗余，建议两个或更多 VM 组合到一个可用性集中。 这种配置可确保发生计划内或计划外维护事件时，至少有一个 VM 可用，并满足 99.95% 的 [Azure SLA](https://www.azure.cn/support/sla/virtual-machines/) 要求。
 
-有关可用性集的详细信息，请参阅以下文章：
-
-- [管理 VM 的可用性](../windows/manage-availability.md)
-- [配置 VM 的可用性](../windows/classic/configure-availability.md)
+有关可用性集的详细信息，请参阅[管理 VM 的可用性](../windows/manage-availability.md)
 
 ## <a name="resource-health-information"></a>资源运行状况信息
 
@@ -76,7 +73,13 @@ Azure 在中国范围内定期执行更新，以提高 VM 所基于主机基础�
 
 通常导致 VM 重启的其他方案包括多个配置更改操作。 通常会看到一条指示执行特定操作将导致 VM 重启的警告消息。 示例包括任意 VM 大小调整操作、更改管理帐户密码和设置静态 IP 地址。
 
-<!-- Not Available on ### Azure Security Center and Windows Update-->
+### <a name="azure-security-center-and-windows-update"></a>Azure 安全中心和 Windows 更新
+
+Azure 安全中心每天对 Windows 和 Linux VM 进行监控，以找出缺少的操作系统更新。 安全中心从 Windows Update 或 Windows Server Update Services (WSUS) 检索可用的安全更新和关键更新的列表，具体取决于 Windows VM 上配置的服务。 安全中心还可检查 Linux 系统的最新更新。 如果 VM 缺少系统更新，安全中心会建议你应用系统更新。 通过 Azure 门户中的安全中心控制这些系统更新的应用情况。 应用某些更新后，可能需要重启 VM。 有关详细信息，请参阅[在 Azure 安全中心应用系统更新](../../security-center/security-center-virtual-machine-protection.md)。
+
+<!--CORRECT ON ../security-center/security-center-virtual-machine-protection.md-->
+
+与本地服务器一样，Azure 不会向 Windows VM 推送 Windows 更新提供的更新，因为这些虚拟机应由用户进行管理。 但是，我们依然建议启用 Windows 自动更新设置。 自动安装 Windows 更新提供的更新也会导致应用更新后发生重启。 有关详细信息，请参阅 [Windows 更新常见问题解答](https://support.microsoft.com/help/12373/windows-update-faq)。
 
 ### <a name="other-situations-affecting-the-availability-of-your-vm"></a>影响 VM 可用性的其他情况
 
@@ -123,4 +126,4 @@ VM 可能因自身问题重启。 在 VM 上运行的工作负荷或角色可能
 
 在极少数情况下，普遍的问题可能影响 Azure 数据中心内的多台服务器。 如果出现这种问题，Azure 团队会向受影响订阅者发送电子邮件通知。 可查看 [Azure 服务运行状况仪表板](https://status.azure.com/status/)和 Azure 门户，了解正在进行的服务中断和过去事件的状态。
 
-<!-- Update_Description: update meta properties, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

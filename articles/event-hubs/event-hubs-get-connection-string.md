@@ -10,16 +10,16 @@ ms.topic: article
 origin.date: 02/19/2019
 ms.date: 03/16/2020
 ms.author: v-tawe
-ms.openlocfilehash: 3c57a94b74ed68fcc84788f99c2a91138d9b221a
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 19fc3c0e5bc8b335dae3f07441e5f8f58ae43ed9
+ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80243928"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82588792"
 ---
 # <a name="get-an-event-hubs-connection-string"></a>获取事件中心连接字符串
 
-若要使用事件中心，需要创建一个事件中心命名空间。 命名空间是多个事件中心主题的范围容器。 此命名空间提供唯一的 [FQDN](https://wikipedia.org/wiki/Fully_qualified_domain_name)。 创建命名空间后，可以获取与事件中心通信所需的连接字符串。
+若要使用事件中心，需要创建一个事件中心命名空间。 命名空间是多个事件中心主题的范围容器。 此命名空间提供唯一的 FQDN。 创建命名空间后，可以获取与事件中心通信所需的连接字符串。
 
 Azure 事件中心的连接字符串中嵌入了以下组成部分：
 

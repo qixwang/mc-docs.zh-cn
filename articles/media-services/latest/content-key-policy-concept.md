@@ -10,15 +10,15 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: article
 origin.date: 07/26/2019
-ms.date: 03/04/2020
+ms.date: 05/11/2020
 ms.author: v-jay
 ms.custom: seodec18
-ms.openlocfilehash: 6d4bea10359bdeaa14d3c6eb712a1e2d10d39798
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: d3764d7f9ad49930f3cb78235686bae3af3ce4ae
+ms.sourcegitcommit: 95efd248f5ee3701f671dbd5cfe0aec9c9959a24
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78411997"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82507653"
 ---
 # <a name="content-key-policies"></a>内容密钥策略
 

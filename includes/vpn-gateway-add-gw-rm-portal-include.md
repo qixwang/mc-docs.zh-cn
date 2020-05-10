@@ -9,12 +9,12 @@ origin.date: 03/04/2020
 ms.date: 04/06/2020
 ms.author: v-jay
 ms.custom: include file
-ms.openlocfilehash: 67b1ebb0f994db8e94e4bd7ddd66528fe4bb9221
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 1ae47b1b55197fe17964a78225bd7ad978fb43ef
+ms.sourcegitcommit: 95efd248f5ee3701f671dbd5cfe0aec9c9959a24
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80634536"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82507692"
 ---
 1. 在 [Azure 门户](https://portal.azure.cn)菜单中，选择“创建资源”  。 
 
@@ -26,21 +26,11 @@ ms.locfileid: "80634536"
 
    ![“创建虚拟网关”页字段](./media/vpn-gateway-add-gw-rm-portal-include/gateway2.png "“创建虚拟网关”页字段")
 
-   **项目详细信息**
-
-   - **订阅**：从下拉列表中选择要使用的订阅。
-   - **资源组**：在此页上选择虚拟网络时，会自动填充此设置。
-
-   **实例详细信息**
-
    - **名称**：为网关命名。 为网关命名与为网关子网命名不同。 它是要创建的网关对象的名称。
-   - **区域**：选择要在其中创建此资源的区域。 网关的区域必须与虚拟网络相同。
    - **网关类型**：选择“VPN”。  VPN 网关使用虚拟网络网关类型“VPN”  。
    - **VPN 类型**：选择为你的配置指定的 VPN 类型。 大多数配置需要''基于路由'' VPN 类型。
    - **SKU**：从下拉列表中选择网关 SKU。 下拉列表中列出的 SKU 取决于选择的 VPN 类型。 有关网关 SKU 的详细信息，请参阅[网关 SKU](../articles/vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md#gwsku)。
-   - **代系**：有关 VPN 网关代系的信息，请参阅[网关 SKU](../articles/vpn-gateway/vpn-gateway-about-vpngateways.md#gwsku)。
-   - **虚拟网络**：从下拉列表中选择要将此网关添加到其中的虚拟网络。
-   - **网关子网地址范围**：仅当 VNet 没有网关子网时，才会显示此字段。 如果可能，请将范围设为“/27”或更大（/26、/25 等）。 建议不要创建小于 /28 的范围。 如果已有网关子网，则可通过导航到虚拟网络来查看 GatewaySubnet 详细信息。 单击“子网”  查看范围。 若要更改范围，可以删除并重新创建 GatewaySubnet。
+   - **虚拟网络**：选择要将此网关添加到的虚拟网络。
 
    **公共 IP 地址**：此设置指定与 VPN 网关关联的公共 IP 地址对象。 创建 VPN 网关后，会将公共 IP 地址动态分配给此对象。 公共 IP 地址只在删除或重新创建网关时更改。 该地址不会因为 VPN 网关大小调整、重置或其他内部维护/升级而更改。
 

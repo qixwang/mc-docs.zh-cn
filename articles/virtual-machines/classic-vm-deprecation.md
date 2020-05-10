@@ -9,14 +9,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
 origin.date: 02/10/2020
-ms.date: 03/16/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: b01db736ee0babd51b1cebf0c74da48801fcd77e
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 67dc152c7af7bda0e015af75cd91da259f37e2b1
+ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78412529"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82596387"
 ---
 # <a name="migrate-your-iaas-resources-to-azure-resource-manager-by-march-1-2023"></a>请于 2023 年 3 月 1 日之前将 IaaS 资源迁移到 Azure 资源管理器 
 
@@ -26,7 +26,7 @@ ms.locfileid: "78412529"
 
 目前，大约有 90% 的 IaaS VM 在使用 Azure 资源管理器。 如果你通过 Azure Service Manager (ASM) 使用 IaaS 资源，现在请开始规划迁移，并在 2023 年 3 月 1 日之前完成迁移，以利用 [Azure 资源管理器](/azure-resource-manager/management/)。
 
-经典 VM 将遵循[新式生命周期策略](https://support.microsoft.com/help/30881/modern-lifecycle-policy)进行弃用。
+经典 VM 将按照[新式生命周期策略](https://support.microsoft.com/help/30881/modern-lifecycle-policy)进行停用。
 
 ## <a name="how-does-this-affect-me"></a>这对我有何影响？ 
 
@@ -48,9 +48,8 @@ ms.locfileid: "78412529"
 
 - 有关详细信息，请参阅[有关从经典部署模型迁移到 Azure 资源管理器部署模型的常见问题](/virtual-machines/windows/migration-classic-resource-manager-faq)
 
-- 有关技术问题，请[联系客户支持](https://portal.azure.cn/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
+- 有关技术问题、问题和订阅允许列表，请[与支持人员联系](https://support.azure.cn/support/support-azure/)。
 
 <!--Not Available on - For other questions not part of FAQ and feedback, comment below-->
 
-<!-- Update_Description: new article about classic vm deprecation -->
-<!--NEW.date: 03/16/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

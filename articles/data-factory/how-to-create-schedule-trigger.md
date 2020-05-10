@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 数据工厂中创建计划触发器 | Microsoft Docs
+title: 在 Azure 数据工厂中创建计划触发器
 description: 了解如何在 Azure 数据工厂中创建按计划运行管道的触发器。
 services: data-factory
 documentationcenter: ''
@@ -11,15 +11,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 origin.date: 01/23/2018
-ms.date: 10/14/2019
-ms.openlocfilehash: 44cad371e37441cf123546ca1ef00ed27295f043
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/11/2020
+ms.openlocfilehash: c494d8c97d05f8fcf85758400384163466298d38
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "72275366"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82198252"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-schedule"></a>创建按计划运行管道的触发器
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 本文提供有关计划触发器和创建、启动和监视计划触发器的步骤的信息。 有关其他类型的触发器，请参阅[管道执行和触发器](concepts-pipeline-execution-triggers.md)。
 
 创建计划触发器时，请指定该触发器的计划（开始日期、重复周期、结束日期等），并将其与管道相关联。 管道和触发器具有“多对多”关系。 多个触发器可以启动单个管道。 单个触发器可以启动多个管道。
@@ -402,4 +404,4 @@ Azure 数据工厂版本 1 支持使用以下系统变量读取或写入分区�
 
 
 ## <a name="next-steps"></a>后续步骤
-有关触发器的详细信息，请参阅[管道执行和触发器](concepts-pipeline-execution-triggers.md#triggers)。
+有关触发器的详细信息，请参阅[管道执行和触发器](concepts-pipeline-execution-triggers.md#trigger-execution)。

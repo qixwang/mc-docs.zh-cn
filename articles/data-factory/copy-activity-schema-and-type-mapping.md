@@ -10,16 +10,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 origin.date: 02/13/2020
-ms.date: 03/23/2020
+ms.date: 05/11/2020
 ms.author: v-jay
-ms.openlocfilehash: 1bc7d1ef6b5a474bef81d8acaba0fe9e01af5945
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 91a2adbc96ca7793728afb453a5c650da8810104
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79497360"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82198265"
 ---
 # <a name="schema-mapping-in-copy-activity"></a>复制活动中的架构映射
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文介绍在执行数据复制操作时，Azure 数据工厂复制活动如何将架构和数据类型从源数据映射到接收器数据。
 
@@ -279,11 +280,7 @@ ms.locfileid: "79497360"
 1. 从本机源类型转换为 Azure 数据工厂临时数据类型
 2. 从 Azure 数据工厂临时数据类型转换为本机接收器类型
 
-在每个连接器主题中的“数据类型映射”部分，可以找到本机类型和临时类型之间的映射。
-
-### <a name="supported-data-types"></a>支持的数据类型
-
-数据工厂支持以下临时数据类型：在[数据集结构](concepts-datasets-linked-services.md#dataset-structure)配置中配置类型信息时，可以指定以下值：
+复制活动支持以下临时数据类型： 
 
 * Byte[]
 * 布尔

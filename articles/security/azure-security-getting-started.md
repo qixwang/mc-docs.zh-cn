@@ -15,12 +15,12 @@ ms.workload: na
 origin.date: 11/21/2017
 ms.date: 11/26/2018
 ms.author: v-lingwu
-ms.openlocfilehash: 998631d7e2ee62b912a59ef626a4a3c4fdea7eb7
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: b7e1e1e99056d447c991df9a7b904c17bfa3cede
+ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75600138"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82588412"
 ---
 # <a name="getting-started-with-microsoft-azure-security"></a>Microsoft Azure 安全入门
 
@@ -28,7 +28,7 @@ ms.locfileid: "75600138"
 
 Azure 的基础结构（从设备到应用程序）经过设计，可同时托管数百万的客户，并为企业提供可靠的基础，使之能够满足其安全需求。 此外，Azure 还提供广泛的可配置安全选项以及对这些选项进行控制的功能，方便你自定义安全措施来满足部署的独特要求。
 
-在这篇有关 Azure 安全性的概述性文章中，我们将了解：
+在这篇有关 Azure 安全性的概述性文章中，我们会了解：
 
 -   可以用来确保 Azure 中服务和数据安全性的 Azure 服务和功能
 
@@ -36,7 +36,7 @@ Azure 的基础结构（从设备到应用程序）经过设计，可同时托�
 
 ## <a name="data-access-control-and-encryption"></a>数据访问控制和加密
 
-21Vianet 所采用的“职责分离”和 [最小特权](https://en.wikipedia.org/wiki/Principle_of_least_privilege) 原则贯穿整个 Azure 操作。 用户必须“实时”明确授予经过记录和审核的许可，并在参与完成后撤销许可，这样 Azure 支持人员才能访问相关数据。
+世纪互联所采用的“职责分离”和“最小特权”原则贯穿整个 Azure 操作。 Azure 支持人员访问相关数据需要你根据“实时”原则进行明确许可，并且会进行记录和审核，在完成相关任务后就会取消访问权限。
 
 此外，Azure 还提供多种功能来保护正在传输的数据和静态数据，包括针对数据、文件、应用程序、服务、通信和驱动器进行加密。 在将信息放置在 Azure 中以及将密钥存储在本地数据中心之前，可以选择对其进行加密。
 
@@ -60,7 +60,7 @@ Azure 中其他用于确保数据安全的功能包括：
 
 ## <a name="virtualization"></a>虚拟化
 
-Azure 平台使用虚拟化环境。 用户实例以单独的虚拟机方式运行，这些虚拟机无法访问物理主机服务器。进行这样的隔离是通过物理[处理器（0 环/3 环）权限级别](https://en.wikipedia.org/wiki/Protection_ring)强制实施的。
+Azure 平台使用虚拟化的环境。 用户实例以独立虚拟机的方式运行，这些虚拟机无法访问物理主机服务器。这种隔离是通过物理处理器（0 环/3 环）权限级别强制实施的。
 
 0 环表示最高权限，3 环表示最低权限。 来宾 OS 在权限较低的 1 环运行，应用程序在权限最低的 3 环运行。 对物理资源进行这样的虚拟化会在来宾 OS 和虚拟机监控程序之间形成清晰的隔离，从而在这二者之间实现进一步的安全隔离。
 
@@ -70,7 +70,7 @@ Azure 的虚拟机监控程序相当于微内核，可将所有硬件访问请�
 
 ### <a name="how-azure-implements-virtualization"></a>Azure 如何实现虚拟化
 
-Azure 使用虚拟机监控程序防火墙（数据包筛选器），该防火墙是在虚拟机监控程序中实施的，可以通过结构控制器代理进行配置。 这有助于防止租户进行未经授权的访问。 默认情况下，在创建 VM 时，会阻止所有流量，并通过结构控制器代理来配置数据包筛选器，添加*规则和例外*以允许经授权的流量。
+Azure 使用虚拟机监控程序防火墙（数据包筛选器），该防火墙是在虚拟机监控程序中实施的，可以通过结构控制器代理进行配置。 这有助于防止租户进行未经授权的访问。 默认情况下，在创建 VM 时，会阻止所有流量，并通过结构控制器代理来配置数据包筛选器，添加 *规则和例外* 以允许经授权的流量。
 
 此处对两类规则进行了编程：
 
@@ -82,13 +82,13 @@ Azure 使用虚拟机监控程序防火墙（数据包筛选器），该防火�
 
 另一项重要的云安全要求是始终进行隔离，防止在共享型多租户体系结构的部署之间对信息进行未经授权的传输和无意的传输。
 
-Azure 通过 VLAN 隔离、ACL、负载均衡器和 IP 筛选器来实施[网络访问控制](https://azure.microsoft.com/blog/network-isolation-options-for-machines-in-windows-azure-virtual-networks/)和隔离。 目标为虚拟机的外部入站通信仅限于所定义的端口和协议。 实施网络筛选是为了防止欺骗通信，将传入和传出通信限制到可信平台组件。 在边界保护设备上会实施流量策略，这些设备默认情况下会拒绝通信。
+Azure 通过 VLAN 隔离、ACL、负载均衡器和 IP 筛选器来实施 [网络访问控制](https://azure.microsoft.com/blog/network-isolation-options-for-machines-in-windows-azure-virtual-networks/) 和隔离。 指向你的虚拟机的外部入站通信流仅限于你所定义的端口和协议。 实施网络筛选是为了防止欺骗通信，将传入和传出通信限制到可信平台组件。 在边界保护设备上会实施流量策略，这些设备默认情况下会拒绝通信。
 
 ![Azure 中的 Microsoft Antimalware](./media/azure-security-getting-started/sec-azgsfig3.PNG)
 
-网络地址转换 (NAT) 用于将内部网络流量与外部流量分开。 内部流量不可通过外部进行路由。 可以通过外部进行路由的[虚拟 IP 地址](https://blogs.msdn.com/b/cloud_solution_architect/archive/2014/11/08/vips-dips-and-pips-in-microsoft-azure.aspx)将转换成[内部动态 IP](https://blogs.msdn.com/b/cloud_solution_architect/archive/2014/11/08/vips-dips-and-pips-in-microsoft-azure.aspx) 地址，后者只能在 Azure 内部进行路由。
+网络地址转换 (NAT) 用于将内部网络流量与外部流量分开。 内部流量不可通过外部进行路由。 [虚拟 IP 地址](https://blogs.msdn.com/b/cloud_solution_architect/archive/2014/11/08/vips-dips-and-pips-in-microsoft-azure.aspx) 通过外部路由转换成 [内部动态 IP](https://blogs.msdn.com/b/cloud_solution_architect/archive/2014/11/08/vips-dips-and-pips-in-microsoft-azure.aspx) 地址，后者只能在 Azure 内部进行路由。
 
-流向 Azure 虚拟机的外部流量会通过访问控制列表 (ACL) 在路由器、负载均衡器以及第 3 层交换机上进行防火墙处理。 仅允许特定的已知协议。 使用 ACL 是为了限制从来宾 VM 流向其他管理用 VLAN 的流量。 此外还会通过 IP 筛选器在主机 OS 上对流量进行筛选，进一步限制数据链接和网络层的流量。
+流向 Azure 虚拟机的外部流量会通过访问控制列表 (ACL) 在路由器、负载均衡以及第 3 层交换机上进行防火墙处理。 仅允许特定的已知协议。 使用 ACL 是为了限制从来宾 VM 流向其他管理用 VLAN 的流量。 此外还会通过 IP 筛选器在主机 OS 上对流量进行筛选，进一步限制数据链接和网络层的流量。
 
 ### <a name="how-azure-implements-isolation"></a>Azure 如何实现隔离
 
@@ -96,7 +96,7 @@ Azure 结构控制器负责将基础结构资源分配到租户工作负荷，�
 
 -   每个 Azure AD 租户都通过安全边界进行逻辑隔离。
 
--   Azure 存储帐户对于每个订阅是唯一的，必须使用存储帐户密钥对访问进行身份验证。
+-   Azure 存储帐户对于每个订阅都是唯一的，访问必须通过存储帐户密钥进行身份验证。
 
 -   通过将唯一的专用 IP 地址、防火墙和 IP ACL 组合起来，可以对虚拟网络进行逻辑隔离。 负载均衡器根据终结点定义将流量路由到相应的租户。
 
@@ -152,21 +152,21 @@ IP 筛选器可以防止来宾 VM 执行以下操作：
 
 -   **存储防火墙 (FW)** ：存储前端的防火墙会对通信进行筛选，只允许在端口 80/443 以及其他必需的实用程序端口上进行通信。 存储后端的防火墙会将通信限制为只能来自存储前端服务器。
 
--   **虚拟网络网关**：[Azure 虚拟网络网关](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)充当跨界网关，会在 Azure 虚拟网络中的工作负荷连接到本地站点。 它需要通过 [IPsec 站点到站点 VPN 隧道](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)或 [ExpressRoute](../expressroute/expressroute-introduction.md) 线路连接到本地站点。 对于 IPsec/IKE VPN 隧道，这些网关会执行 IKE 握手，并在虚拟网络和本地站点之间建立 IPsec S2S VPN 隧道。 虚拟网络网关还会终止[点到站点 VPN](../vpn-gateway/vpn-gateway-point-to-site-create.md)。
+-   **虚拟网络网关**：[Azure 虚拟网关](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)充当跨界网关，会在 Azure 虚拟网络中的工作负荷连接到本地站点。 它需要通过 [IPsec 站点到站点 VPN 隧道](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md) 或 [ExpressRoute](../expressroute/expressroute-introduction.md) 线路连接到本地站点。 对于 IPsec/IKE VPN 隧道，这些网关会执行 IKE 握手，并在虚拟网络和本地站点之间建立 IPsec S2S VPN 隧道。 虚拟网络网关还会终止 [点到站点 VPN](../vpn-gateway/vpn-gateway-point-to-site-create.md)。
 
 ## <a name="secure-remote-access"></a>安全远程访问
 
 存储在云中的数据必须具有足够的安全措施来防止遭到攻击，并且需要在传输过程中保持机密性和完整性。 这其中包括网络控制，同时结合使用组织的基于策略的、可审核的身份和访问管理机制。
 
-借助内置加密技术，可以对部署内部和之间、Azure 区域之间以及从 Azure 到本地数据中心的通信进行加密。 管理员通过[远程桌面会话](../virtual-machines/virtual-machines-windows-classic-connect-logon.md)、[远程 Windows PowerShell](https://blogs.technet.com/b/heyscriptingguy/archive/2013/09/07/weekend-scripter-remoting-the-cloud-with-windows-azure-and-powershell.aspx) 和 Azure 管理门户对虚拟机进行的访问始终加密。
+内置加密技术使你能够在部署内部和部署之间、Azure 区域之间以及从 Azure 到本地数据中心之间对通信进行加密。 管理员通过[远程登录会话](../virtual-machines/virtual-machines-windows-classic-connect-logon.md)、[远程 Windows PowerShell](https://blogs.technet.com/b/heyscriptingguy/archive/2013/09/07/weekend-scripter-remoting-the-cloud-with-windows-azure-and-powershell.aspx) 和 Azure 管理门户对虚拟机进行的访问始终加密。
 
-为了安全地将本地数据中心扩展到云，Azure 提供了[站点到站点 VPN](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md) 和[点到站点 VPN](../vpn-gateway/vpn-gateway-point-to-site-create.md) 以及通过 [ExpressRoute](../expressroute/expressroute-introduction.md) 进行的专用链接（通过 VPN 到 Azure 虚拟网络的连接会进行加密）。
+为了安全地将本地数据中心扩展到云，Azure 提供了[站点到站点 VPN](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md) 和[点到站点 VPN](../vpn-gateway/vpn-gateway-point-to-site-create.md) 以及通过 [ExpressRoute](../expressroute/expressroute-introduction.md) 实现的专用链接（通过 VPN 连接到 Azure 虚拟网络时，将对连接加密）。
 
 ### <a name="how-azure-implements-secure-remote-access"></a>Azure 如何实现安全的远程访问
 
-连接到 Azure 门户时，必须始终进行身份验证，并且需要 SSL/TLS。 可以配置管理证书，以便进行安全管理。 完全支持各种行业标准安全协议，例如 [SSTP](https://technet.microsoft.com/magazine/2007.06.cableguy.aspx) 和 [IPsec](https://en.wikipedia.org/wiki/IPsec)。
+连接到 Azure 门户时，必须始终进行身份验证，并且需要 SSL/TLS。 可以配置管理证书，以便进行安全管理。 全面支持各种行业标准安全协议，例如 [SSTP](https://technet.microsoft.com/magazine/2007.06.cableguy.aspx) 和 IPsec。
 
-使用 [Azure ExpressRoute](../expressroute/expressroute-introduction.md)，可在 Azure 数据中心与本地环境或共同租用环境中的基础结构之间创建专用连接。 ExpressRoute 连接不通过公共 Internet 。 与常用的基于 Internet 的链接相比，这些链接更可靠，速度更快，延迟更低，安全性更高。 在某些情况下，使用 ExpressRoute 连接在本地和 Azure 之间传输数据还可以产生显著的成本效益。
+[Azure ExpressRoute](../expressroute/expressroute-introduction.md)，可在 Azure 数据中心与本地环境或共同租用环境中的基础结构之间创建专用连接。 ExpressRoute 连接不通过公共 Internet 。 与常用的基于 Internet 的链接相比，这些链接更可靠，速度更快，延迟更低，安全性更高。 在某些情况下，使用 ExpressRoute 连接在本地和 Azure 之间传输数据还可以产生显著的成本效益。
 
 ## <a name="logging-and-monitoring"></a>日志记录和监视
 
@@ -178,13 +178,13 @@ Azure 会对生成审计线索的安全相关事件进行经过身份验证的�
 
 ### <a name="how-azure-implements-logging-and-monitoring"></a>Azure 如何实施日志记录和监视
 
-Azure 将管理代理 (MA) 和 Azure 安全监视器 (ASM) 代理部署到每个受管的计算节点、存储节点或结构节点，不管它们是本机的还是虚拟的。 每个管理代理都经过配置，可以使用从 Azure 证书存储获得的证书通过服务团队存储帐户进行身份验证，并将预先配置的诊断和事件数据转发到存储帐户。 这些代理不会部署到客户的虚拟机中。
+Azure 将管理代理 (MA) 和 Azure 安全监视器 (ASM) 代理部署到管理中的每个计算节点、存储节点或结构节点，不管是本机的还是虚拟的节点。 每个管理代理都经过配置，可以使用从 Azure 证书存储获得的证书通过服务团队存储帐户进行身份验证，并将预先配置的诊断和事件数据转发到存储帐户。 这些代理不会部署到客户的虚拟机中。
 
 Azure 管理员通过 Web 门户访问日志，对日志进行的访问必须经过身份验证，并且是可控的。 管理员可以对日志进行解析、筛选、关联和分析。 与日志对应的 Azure 服务团队存储帐户不允许管理员直接访问，这样是为了防止日志篡改。
 
 21Vianet 使用 Syslog 协议从网络设备收集日志，以及从主机服务器收集日志。 这些日志放置在日志数据库中，发生可疑事件时，就会生成直接发送给 21Vianet 管理员的警报。 管理员可以访问并分析这些日志。
 
-[Azure 诊断](../cloud-services/cloud-services-dotnet-diagnostics.md)是 Azure 的一项功能，可以通过它从运行在 Azure 中的应用程序收集诊断数据。 可以将这些诊断数据用于调试和故障排除、度量性能、监视资源使用状况、进行流量分析和容量规划以及进行审核。 收集诊断数据后，可以将其传输到 Azure 存储帐户进行永久保存。 可以按计划传输，也可以按需传输。
+[Azure 诊断](../cloud-services/cloud-services-dotnet-diagnostics.md) 是 Azure 的一项功能，可以通过它从运行在 Azure 中的应用程序收集诊断数据。 可以将这些诊断数据用于调试和故障排除、度量性能、监视资源使用状况、进行流量分析和容量规划以及进行审核。 收集诊断数据后，可以将其传输到 Azure 存储帐户进行永久保存。 可以按计划传输，也可以按需传输。
 
 ## <a name="threat-mitigation"></a>威胁缓解措施
 
@@ -196,13 +196,13 @@ Azure 管理员通过 Web 门户访问日志，对日志进行的访问必须经
 
 Azure 建立安全控制的目的是实施威胁缓解措施，同时协助客户减轻其环境中的可能威胁。 以下列表总结了 Azure 提供的威胁缓解功能：
 
--   [Azure 反恶意软件](../security/azure-security-antimalware.md)在所有基础结构服务器上默认启用。 可以在自己的 VM 中选择性地启用它。
+-   [Azure 反恶意软件](../security/azure-security-antimalware.md) 在所有基础结构服务器上默认启用。 可以在自己的 VM 中选择性地启用它。
 
 -   21Vianet 会持续监视服务器、网络和应用程序以检测各种威胁，防止遭到攻击。 自动警报会将异常行为通知给管理员，因此管理员可以针对内部和外部威胁采取纠正性措施。
 
 -   可以选择在订阅中部署第三方安全解决方案，例如 [Azure 映像市场](https://market.azure.cn/List/Index?sort=Featured&filters=tag:security)提供的 Web 应用程序防火墙。
 
--   Microsoft 采取的渗透测试方法包括“[红队测试](https://download.microsoft.com/download/C/1/9/C1990DBA-502F-4C2A-848D-392B93D9B9C3/Microsoft_Enterprise_Cloud_Red_Teaming.pdf)”，是指 Microsoft 安全专家（非客户）攻击 Azure 中的实时生产系统，以便测试系统对现实世界的高级持久性威胁的防御能力。
+-   Microsoft 采取的渗透测试方法包括“[红队测试](https://download.microsoft.com/download/C/1/9/C1990DBA-502F-4C2A-848D-392B93D9B9C3/Microsoft_Enterprise_Cloud_Red_Teaming.pdf)”，其中涉及 Azure 中的 Microsoft 安全专家（非客户）攻击实时生产系统，用于测试系统对现实世界的高级持久性威胁的防御能力。
 
 -   使用集成的部署系统来管理安全修补程序在 Azure 平台的分发和安装。
 

@@ -1,19 +1,19 @@
 ---
 title: Azure 虚拟机规模集常见问题解答
 description: 获取有关 Azure 虚拟机规模集最常见问题的解答。
-author: mayanknayar
+author: mimckitt
 tags: azure-resource-manager
 ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
-ms.date: 03/31/2020
+ms.date: 04/28/2020
 ms.author: v-junlch
-ms.openlocfilehash: 2bb5615694a5e493b82e21654f4e1934f5968ddc
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: c3041485156a9b8a8e9c8985cff32d382a8ad229
+ms.sourcegitcommit: e3512c5c2bbe61704d5c8cbba74efd56bfe91927
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80581821"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82267575"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure 虚拟机规模集常见问题解答
 
@@ -423,7 +423,7 @@ Update-AzVmss -ResourceGroupName $rgname -Name $vmssname -VirtualMachineScaleSet
 
 ### <a name="how-do-i-execute-a-custom-script-thats-hosted-in-a-private-storage-account"></a>如何执行一个在专用存储帐户中托管的自定义脚本？
 
-若要执行在私有存储帐户中托管的自定义脚本，请通过存储帐户密钥和名称来设置受保护的设置。
+若要执行在私有存储帐户中托管的自定义脚本，请通过存储帐户密钥和名称来设置受保护的设置。 有关详细信息，请参阅[自定义脚本扩展](/virtual-machines/virtual-machines-windows-extensions-customscript/#template-example-for-a-windows-vm-with-protected-settings)。
 
 ## <a name="passwords"></a>密码
 
@@ -502,7 +502,7 @@ Update-AzVmss -ResourceGroupName $rgname -Name $vmssname -VirtualMachineScaleSet
 
 IP 地址是从指定的子网中选择的。
 
-虚拟机规模集 IP 地址的分配方法始终为“动态”，但这并不意味着可以更改这些 IP 地址。 在这种情况下，“动态”仅意味不在 PUT 请求中指定 IP 地址。 通过使用子网设置静态集。 
+虚拟机规模集 IP 地址的分配方法始终为“动态”，但这并不意味着可以更改这些 IP 地址。 在这种情况下，“动态”仅意味不在 PUT 请求中指定 IP 地址。 通过使用子网设置静态集。
 
 ### <a name="how-do-i-deploy-a-virtual-machine-scale-set-to-an-existing-azure-virtual-network"></a>如何将虚拟机规模集部署到现有的 Azure 虚拟网络？
 
@@ -711,7 +711,7 @@ New-AzSnapshot -ResourceGroupName $rgname -SnapshotName 'mySnapshot' -Snapshot $
 从快照创建托管磁盘。
 
 ```azurepowershell
-$snapshotName = "myShapshot"
+$snapshotName = "mySnapshot"
 $snapshot = Get-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotName  
 $diskConfig = New-AzDiskConfig -AccountType Premium_LRS -Location $location -CreateOption Copy -SourceResourceId $snapshot.Id
 $osDisk = New-AzDisk -Disk $diskConfig -ResourceGroupName $rgname -DiskName ($snapshotName + '_Disk')

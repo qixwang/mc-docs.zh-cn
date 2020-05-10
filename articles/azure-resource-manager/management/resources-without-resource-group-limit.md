@@ -2,15 +2,15 @@
 title: 没有 800 计数限制的资源
 description: 列出可以在一个资源组中有 800 多个实例的 Azure 资源类型。
 ms.topic: conceptual
-origin.date: 01/30/2020
-ms.date: 03/23/2020
+origin.date: 04/06/2020
+ms.date: 04/30/2020
 ms.author: v-yeche
-ms.openlocfilehash: 188e638df3d797b02dcc0365af16f079f19de141
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 68f3089ac7ae76a400814082d3e840d6ead74684
+ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79543884"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82596248"
 ---
 # <a name="resources-not-limited-to-800-instances-per-resource-group"></a>没有每个资源组 800 个实例限制的资源
 
@@ -27,13 +27,15 @@ ms.locfileid: "79543884"
 * registrations
 * registrations/customerSubscriptions
 * registrations/products
-* verificationKeys
 
 <!--Not Available on ## Microsoft.BotService-->
 
 ## <a name="microsoftcompute"></a>Microsoft.Compute
 
 * disks
+* galleries
+* galleries/images
+* galleries/images/versions
 * images
 * snapshots
 * virtualMachines
@@ -66,7 +68,9 @@ ms.locfileid: "79543884"
 * serverGroups
 * servers
 * serversv2
+* singleServers
 
+<!--Not Available on ## Microsoft.DevTestLab-->
 <!--Not Available on ## Microsoft.EnterpriseKnowledgeGraph-->
 
 ## <a name="microsofteventhub"></a>Microsoft.EventHub
@@ -84,6 +88,10 @@ ms.locfileid: "79543884"
 * software
 * softwareUpdateProfile
 * softwareUpdates
+
+## <a name="microsoftinsights"></a>microsoft.insights
+
+* metricalerts
 
 ## <a name="microsoftlogic"></a>Microsoft.Logic
 

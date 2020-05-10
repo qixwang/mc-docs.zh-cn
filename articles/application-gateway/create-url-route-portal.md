@@ -1,19 +1,18 @@
 ---
-title: 教程 - 使用基于 URL 路径的路由规则创建应用程序网关 - Azure 门户
+title: 教程：使用门户实现基于 URL 路径的路由规则 - Azure 应用程序网关
 description: 在本教程中，你将了解如何使用 Azure 门户为应用程序网关和虚拟机规模集创建基于 URL 路径的路由规则。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
-origin.date: 09/10/2019
-ms.date: 09/18/2019
+ms.date: 04/26/2020
 ms.author: v-junlch
-ms.openlocfilehash: 9409a6d7e61ad4fe6a960b3e70f80ea39fd002ad
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: a16a713f5571e4a46f284babeab54977a55a440c
+ms.sourcegitcommit: e3512c5c2bbe61704d5c8cbba74efd56bfe91927
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "71083264"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82267653"
 ---
 # <a name="tutorial-create-an-application-gateway-with-path-based-routing-rules-using-the-azure-portal"></a>教程：通过 Azure 门户使用基于路径的路由规则创建应用程序网关
 
@@ -48,7 +47,7 @@ ms.locfileid: "71083264"
 
     - **资源组**，选择“新建”  ，然后键入“myResourceGroupAG”。 
     - **虚拟机名称**：*myVM1*
-    - **区域**：*中国北部*
+    - **区域**：*中国北部 2*
     - **用户名**：*azureuser*
     - **密码**：*Azure123456!* -
 
@@ -84,7 +83,7 @@ ms.locfileid: "71083264"
     $publicSettings = @{ "fileUris" = (,"https://raw.githubusercontent.com/Azure/azure-docs-powershell-samples/master/application-gateway/iis/appgatewayurl.ps1");  "commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File appgatewayurl.ps1" }
     Set-AzVMExtension `
       -ResourceGroupName myResourceGroupAG `
-      -Location chinanorth `
+      -Location chinanorth2 `
       -ExtensionName IIS `
       -VMName myVM1 `
       -Publisher Microsoft.Compute `
@@ -107,7 +106,7 @@ ms.locfileid: "71083264"
 
    - **资源组**：选择 **myResourceGroupAG** 作为资源组。
    - **应用程序网关名称**：输入 *myAppGateway* 作为应用程序网关的名称。
-   - **区域** - 选择“中国北部”  。
+   - **区域** - 选择“中国北部 2”  。
 
         ![新建应用程序网关：基础知识](./media/application-gateway-create-gateway-portal/application-gateway-create-basics.png)
 
@@ -209,6 +208,5 @@ ms.locfileid: "71083264"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [在 Azure 应用程序网关上启用端到端 SSL](application-gateway-backend-ssl.md)
+- [在 Azure 应用程序网关上启用端到端 TLS](application-gateway-backend-ssl.md)
 
-<!-- Update_Description: wording update -->

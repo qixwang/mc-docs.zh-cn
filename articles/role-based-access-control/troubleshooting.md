@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/31/2020
+ms.date: 04/29/2020
 ms.author: v-junlch
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: fd7ed1b2500cd6bd1e2453940d78013b3653e8fe
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 31afcd3392c01fc066f05896b0d67cda6c02be2d
+ms.sourcegitcommit: e3512c5c2bbe61704d5c8cbba74efd56bfe91927
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80581725"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82267697"
 ---
 # <a name="troubleshoot-azure-rbac"></a>排查 Azure RBAC 的问题
 
@@ -179,7 +179,7 @@ Azure 资源管理器有时会缓存配置和数据以提高性能。 添加或�
 
 这些项需要对包含网站的整个资源组具有写入权限：    
 
-* SSL 证书和绑定（SSL 证书可以在同一资源组和地理位置中的站点之间共享）  
+* TLS/SSL 证书和绑定（TLS/SSL 证书可以在同一资源组和地理位置中的站点之间共享）  
 * 警报规则  
 * 自动缩放设置  
 * Web 测试  

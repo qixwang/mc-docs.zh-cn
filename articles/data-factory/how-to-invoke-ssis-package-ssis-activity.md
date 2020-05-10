@@ -1,5 +1,5 @@
 ---
-title: 使用“执行 SSIS 包”活动运行 SSIS 包 - Azure
+title: 使用“执行 SSIS 包”活动运行 SSIS 包
 description: 本文介绍如何使用“执行 SSIS 包”活动在 Azure 数据工厂管道中运行 SQL Server Integration Services (SSIS) 包。
 services: data-factory
 documentationcenter: ''
@@ -8,20 +8,24 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: conceptual
-origin.date: 11/14/2019
-ms.date: 01/06/2020
-author: WenJason
 ms.author: v-jay
+author: WenJason
 ms.reviewer: douglasl
 manager: digimobile
-ms.openlocfilehash: 816bf290727c76d040115cbb9bf652394ce6d884
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.custom: seo-lt-2019
+origin.date: 11/14/2019
+ms.date: 05/11/2020
+ms.openlocfilehash: 2bc7e2a74deb8ef194b102ce25baf0fa6061a9ac
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292717"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82198067"
 ---
 # <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用“执行 SSIS 包”活动运行 SSIS 包
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+
 本文介绍如何使用“执行 SSIS 包”活动在 Azure 数据工厂管道中运行 SQL Server Integration Services (SSIS) 包。 
 
 ## <a name="prerequisites"></a>先决条件

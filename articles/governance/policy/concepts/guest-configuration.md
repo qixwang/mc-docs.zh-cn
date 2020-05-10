@@ -20,7 +20,7 @@ ms.locfileid: "82588769"
 - 应用程序配置或存在性
 - 环境设置
 
-目前，大部分 Azure Policy Guest Configuration 策略只会审核计算机内部的设置。 它们不会应用配置。 但是，[下面提到](#applying-configurations-using-guest-configuration)的一个内置策略除外。
+目前，大部分 Azure Policy Guest Configuration 策略只会审核计算机内部的设置。 它们不会应用配置。 但是，[下面提到的](#applying-configurations-using-guest-configuration)一个内置策略除外。
 
 ## <a name="extension-and-client"></a>扩展和客户端
 
@@ -28,7 +28,7 @@ ms.locfileid: "82588769"
 
 ### <a name="limits-set-on-the-extension"></a>在扩展中设置的限制
 
-为了限制该扩展对计算机内部运行的应用程序造成影响，将不允许 Guest Configuration 的 CPU 利用率超过 5%。 内置定义和自定义定义都存在此限制。
+为了限制该扩展对计算机内部运行的应用程序造成影响，将不允许 Guest Configuration 的 CPU 使用率超过 5%。 内置定义和自定义定义都存在此限制。
 
 ## <a name="register-guest-configuration-resource-provider"></a>注册来宾配置资源提供程序
 
@@ -47,7 +47,7 @@ ms.locfileid: "82588769"
 
 ### <a name="validation-frequency"></a>验证频率
 
-来宾配置客户端每 5 分钟检查一次新内容。 收到来宾分配后，将按 15 分钟间隔重新检查该配置的设置。
+来宾配置客户端每 5 分钟检查一次新内容。 收到来宾分配后，会按 15 分钟间隔重新检查该配置的设置。
 在审核完成后，结果会发送到 Guest Configuration 资源提供程序。 当策略[评估触发器](../how-to/get-compliance-data.md#evaluation-triggers)执行时，会将计算机状态写入到来宾配置资源提供程序。 此项更新会导致 Azure Policy 评估 Azure 资源管理器属性。 按需 Azure Policy 评估从 Guest Configuration 资源提供程序检索最新值。 但是，它不会触发对计算机中的配置执行新的审核。
 
 ## <a name="supported-client-types"></a>支持的客户端类型
@@ -70,15 +70,15 @@ ms.locfileid: "82588769"
 
 ## <a name="guest-configuration-extension-network-requirements"></a>Guest Configuration 扩展网络要求
 
-若要与 Azure 中的 Guest Configuration 资源提供程序通信，计算机需要对端口 **443** 上的 Azure 数据中心拥有出站访问权限。 如果 Azure 中的网络不允许出站流量，请使用[网络安全组](../../../virtual-network/manage-network-security-group.md#create-a-security-rule)规则配置例外。
+若要与 Azure 中的 Guest Configuration 资源提供程序通信，计算机需要对端口 **443** 上的 Azure 数据中心拥有出站访问权限。 如果 Azure 中的网络不允许出站流量，请使用[网络安全组](../../../virtual-network/manage-network-security-group.md#create-a-security-rule)规则来配置例外。
 [服务标记](../../../virtual-network/service-tags-overview.md)“GuestAndHybridManagement”可用于引用来宾配置服务。
 
 ## <a name="azure-managed-identity-requirements"></a>Azure 托管标识要求
 
-将扩展添加到虚拟机的 DeployIfNotExists 策略还会启用系统分配的托管标识（如果不存在）  。
+DeployIfNotExists 策略可以将扩展添加到虚拟机，并且还会启用系统分配的托管标识（如果该标识不存在）  。
 
 > [!WARNING]
-> 在启用系统分配的托管标识的策略范围内，避免为虚拟机启用用户分配的托管标识。 用户分配的标识将被替换，并且计算机可能无响应。
+> 在那些可启用系统分配的托管标识的策略的范围内，避免为虚拟机启用用户分配的托管标识。 用户分配的标识会被替换，并且计算机可能变得无响应。
 
 ## <a name="guest-configuration-definition-requirements"></a>来宾配置定义要求
 
@@ -106,11 +106,11 @@ Azure Policy 使用来宾配置资源提供程序 complianceStatus  属性在“
 
 Azure Policy 中的某个计划提供根据“基线”审核操作系统设置的功能。 定义“\[预览\]:  审核不匹配 Azure 安全基线设置的 Windows VM”包含一组基于 Active Directory 组策略的规则。
 
-大多数设置以参数的形式提供。 使用参数可以自定义要审核的内容。 使策略与要求相符，或者将策略映射为行业法规标准等第三方信息。
+大多数设置以参数的形式提供。 使用参数可以自定义要审核的内容。 使策略与要求相符，或者将策略映射到行业法规标准等第三方信息。
 
-某些参数支持整数值范围。 例如，“最长密码期限”设置可以审核有效的组策略设置。 范围“1,70”确认用户每隔最多 70 天，但至少在一天之后必须更改其密码。
+某些参数支持整数值范围。 例如，“最长密码期限”设置可以审核有效的组策略设置。 如果范围为“1,70”，则表明用户必须在 1 天后 70 天内更改密码。
 
-如果使用 Azure 资源管理器部署模板分配策略，请使用参数文件来管理例外。 将文件签入到 Git 等版本控制系统。 有关文件更改的注释可以证明某个分配为何是预期值的例外。
+如果使用 Azure 资源管理器部署模板来分配策略，请使用参数文件来管理例外。 将文件签入到 Git 等版本控制系统。 有关文件更改的注释可以证明某个分配为何是预期值的例外。
 
 #### <a name="applying-configurations-using-guest-configuration"></a>使用 Guest Configuration 应用配置
 
@@ -142,7 +142,7 @@ Linux：`/var/lib/GuestConfig/gc_agent_logs/gc_agent.log`
 
 #### <a name="windows"></a>Windows
 
-使用 [Azure VM Run 命令](../../../virtual-machines/windows/run-command.md)从日志文件中捕获信息。以下示例 PowerShell 脚本可能很有帮助。
+使用 [Azure VM Run 命令](../../../virtual-machines/windows/run-command.md)从日志文件中捕获信息。可以参阅以下 PowerShell 脚本示例。
 
 ```powershell
 $linesToIncludeBeforeMatch = 0
@@ -153,7 +153,7 @@ Select-String -Path $logPath -pattern 'DSCEngine','DSCManagedEngine' -CaseSensit
 
 #### <a name="linux"></a>Linux
 
-使用 [Azure VM Run 命令](../../../virtual-machines/linux/run-command.md)从日志文件中捕获信息。以下示例 Bash 脚本可能很有帮助。
+使用 [Azure VM Run 命令](../../../virtual-machines/linux/run-command.md)从日志文件中捕获信息。可以参阅以下 Bash 脚本示例。
 
 ```Bash
 linesToIncludeBeforeMatch=0

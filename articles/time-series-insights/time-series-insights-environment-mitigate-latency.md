@@ -4,21 +4,20 @@ description: 了解如何监视、诊断并减少在 Azure 时序见解中导致
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
-ms.author: dpalled
+ms.author: v-junlch
 manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: troubleshooting
-origin.date: 01/21/2020
-ms.date: 02/17/2020
+ms.date: 04/28/2020
 ms.custom: seodec18
-ms.openlocfilehash: 62b729fb0768e749db7334f414c20ff7891d70cb
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: d19c4a26a4f15d957f6d74d3e79ac94ab309f321
+ms.sourcegitcommit: e3512c5c2bbe61704d5c8cbba74efd56bfe91927
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77068104"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82267677"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>监视并缩减限制，以减少 Azure 时序见解中的延迟
 
@@ -31,8 +30,7 @@ ms.locfileid: "77068104"
 - 添加包含超出所分配入口速率（时序见解需要追赶）的旧数据的事件源。
 - 将较多事件源添加到一个环境中，导致其他事件出现激增（可能超过环境容量）。
 - 将大量历史事件推送到一个事件源，导致延迟（时序见解需要追赶）。
-- 将引用数据和遥测结合，导致事件大小较大。  从限制的角度看，数据包大小为 32 KB 的入口数据包视为 32 个事件，每个事件大小为 1 KB。 允许的最大事件大小为 32 KB；大于 32 KB 的数据包会被截断。
-
+- 将引用数据和遥测结合，导致事件大小较大。 允许的最大数据包大小为 32 KB；大于 32 KB 的数据包会被截断。
 
 ## <a name="monitor-latency-and-throttling-with-alerts"></a>使用警报监视延迟和限制
 
@@ -40,33 +38,33 @@ ms.locfileid: "77068104"
 
 1. 在 Azure 门户中，选择时序见解环境。 然后选择“警报”  。
 
-   [![向时序见解环境添加警报](media/environment-mitigate-latency/mitigate-latency-add-alert.png)](media/environment-mitigate-latency/mitigate-latency-add-alert.png#lightbox)
+   [![向时序见解环境添加警报](./media/environment-mitigate-latency/mitigate-latency-add-alert.png)](./media/environment-mitigate-latency/mitigate-latency-add-alert.png#lightbox)
 
 1. 选择“+ 新建警报规则”。  然后将显示“创建规则”  面板。 在“条件”  下选择“添加”  。
 
-   [![添加警报窗格](media/environment-mitigate-latency/mitigate-latency-add-pane.png)](media/environment-mitigate-latency/mitigate-latency-add-pane.png#lightbox)
+   [![添加警报窗格](./media/environment-mitigate-latency/mitigate-latency-add-pane.png)](./media/environment-mitigate-latency/mitigate-latency-add-pane.png#lightbox)
 
 1. 接下来，配置信号逻辑的确切条件。
 
-   [![配置信号逻辑](media/environment-mitigate-latency/configure-alert-rule.png)](media/environment-mitigate-latency/configure-alert-rule.png#lightbox)
+   [![配置信号逻辑](./media/environment-mitigate-latency/configure-alert-rule.png)](./media/environment-mitigate-latency/configure-alert-rule.png#lightbox)
 
    在此处，可以使用以下一些条件配置警报：
 
-|指标  |说明  |
-|---------|---------|
-|入口收到的字节数      | 从事件源读取的原始字节数。 原始计数通常包括属性名称和值。  |  
-|入口收到的无效消息数      | 从所有 Azure 事件中心或 Azure IoT 中心事件源读取的无效消息的计数。      |
-|入口收到的消息数    | 从所有事件中心或 IoT 中心事件源读取的消息的计数。        |
-|入口存储的字节数      | 已存储且可用于查询的事件的总大小。 仅根据属性值计算大小。        |
-|**入口存储的事件数**     |   已存储并可供查询的平展事件计数。      |
-|**入口收到消息时间延迟**    |  消息在事件源中排队的时间与消息在入口中处理之间的时间差（以秒为单位）。      |
-|**入口收到消息计数延迟**    |  上次排队的消息在事件源分区中的序列号与在入口中进行处理的消息的序列号之间的差异。      |
+   |指标  |说明  |
+   |---------|---------|
+   |入口收到的字节数      | 从事件源读取的原始字节数。 原始计数通常包括属性名称和值。  |  
+   |入口收到的无效消息数      | 从所有 Azure 事件中心或 Azure IoT 中心事件源读取的无效消息的计数。      |
+   |入口收到的消息数    | 从所有事件中心或 IoT 中心事件源读取的消息的计数。        |
+   |入口存储的字节数      | 已存储且可用于查询的事件的总大小。 仅根据属性值计算大小。        |
+   |**入口存储的事件数**     |   已存储并可供查询的平展事件计数。      |
+   |**入口收到消息时间延迟**    |  消息在事件源中排队的时间与消息在入口中处理之间的时间差（以秒为单位）。      |
+   |**入口收到消息计数延迟**    |  上次排队的消息在事件源分区中的序列号与在入口中进行处理的消息的序列号之间的差异。      |
 
    选择“完成”  。
 
 1. 配置所需的信号逻辑后，直观地查看所选的警报规则。
 
-   [![延迟视图和图表](media/environment-mitigate-latency/mitigate-latency-view-and-charting.png)](media/environment-mitigate-latency/mitigate-latency-view-and-charting.png#lightbox)
+   [![延迟视图和图表](./media/environment-mitigate-latency/mitigate-latency-view-and-charting.png)](./media/environment-mitigate-latency/mitigate-latency-view-and-charting.png#lightbox)
 
 ## <a name="throttling-and-ingress-management"></a>限制和入口管理
 
@@ -93,3 +91,4 @@ ms.locfileid: "77068104"
 - 阅读[在时序见解环境中诊断并解决问题](time-series-insights-diagnose-and-solve-problems.md)。
 
 - 了解[如何缩放时序见解环境](time-series-insights-how-to-scale-your-environment.md)。
+

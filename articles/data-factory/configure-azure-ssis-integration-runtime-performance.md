@@ -1,9 +1,9 @@
 ---
-title: 为 Azure-SSIS 集成运行时配置性能 | Microsoft Docs
+title: 配置 Azure-SSIS 集成运行时的性能
 description: 了解如何配置高性能 Azure-SSIS Integration Runtime 的属性
 services: data-factory
 origin.date: 01/10/2018
-ms.date: 07/08/2019
+ms.date: 05/11/2020
 ms.topic: conceptual
 ms.service: data-factory
 ms.workload: data-services
@@ -11,14 +11,17 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: ''
 manager: digimobile
-ms.openlocfilehash: ff99c46844157744ff7e07c22b29b4bbe34f31d3
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: fc37477103a96e311a30dcec0c3cf03a85169757
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "67569873"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82198250"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-for-high-performance"></a>配置高性能 Azure-SSIS Integration Runtime
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+
 
 本文介绍如何配置高性能 Azure-SSIS Integration Runtime (IR)。 通过 Azure-SSIS IR 可以在 Azure 中部署和运行 SQL Server Integration Services (SSIS) 包。 有关 Azure-SSIS IR 的详细信息，请参阅 [Integration Runtime](concepts-integration-runtime.md#azure-ssis-integration-runtime) 一文。 有关在 Azure 上部署和运行 SSIS 包的详细信息，请参阅[将 SQL Server Integration Services 工作负荷直接迁移到云](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-lift-shift-ssis-packages-overview)。
 
@@ -119,7 +122,7 @@ AzureSSISNodeNumber 调整 Integration Runtime 的可伸缩性  。 Integration 
 已经在使用强大的辅助角色节点运行包时，增加 AzureSSISMaxParallelExecutionsPerNode 可能增加 Integration Runtime 的整体吞吐量  。 对于 Standard_D1_v2 节点，支持每个节点 1-4 个并行执行。 对于所有其他类型的节点，支持每个节点 1-max(2 x 核心数, 8) 个并行执行。 如果你希望 **AzureSSISMaxParallelExecutionsPerNode** 超出我们支持的最大值，你可以开具支持票证，我们可以为你增加最大值，然后你需要使用 Azure Powershell 更新 **AzureSSISMaxParallelExecutionsPerNode**。
 可以基于包的成本和辅助角色节点的以下配置估计合适的值。 有关详细信息，请参阅[常规用途虚拟机大小](../virtual-machines/windows/sizes-general.md)。
 
-| 大小             | vCPU | 内存：GiB | 临时存储 (SSD) GiB | 临时存储的最大吞吐量：IOPS/读取 MBps/写入 MBps | 最大的数据磁盘/吞吐量：IOPS | 最大 NIC 数/预期网络性能 (Mbps) |
+| 大小             | vCPU | 内存:GiB | 临时存储 (SSD) GiB | 最大临时存储吞吐量：IOPS/读取 MBps/写入 MBps | 最大的数据磁盘/吞吐量：IOPS | 最大 NIC 数/预期网络性能 (Mbps) |
 |------------------|------|-------------|------------------------|------------------------------------------------------------|-----------------------------------|------------------------------------------------|
 | Standard\_D1\_v2 | 1    | 3.5         | 50                     | 3000/46/23                                             | 2/2x500                         | 2 / 750                                        |
 | Standard\_D2\_v2 | 2    | 7           | 100                    | 6000/93/46                                             | 4/4x500                         | 2 / 1500                                       |

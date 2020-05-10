@@ -7,12 +7,12 @@ wacn.date: 03/05/2020
 ms.date: 03/16/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 3e7f1605e36586b334b17692ea8c8bf3b2b48fdc
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 2e1a6ab08649916e327d82cef5b2ab44f296e4fd
+ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79547093"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82588575"
 ---
 # <a name="configure-a-custom-domain-name-in-azure-app-service-with-traffic-manager-integration"></a>使用流量管理器集成在 Azure 应用服务中配置自定义域名
 
@@ -26,7 +26,7 @@ ms.locfileid: "79547093"
 本文介绍如何使用与[流量管理器](../traffic-manager/traffic-manager-overview.md)集成的应用服务应用配置自定义域名。
 
 > [!NOTE]
-> 使用流量管理器终结点配置域名时，仅支持 [CNAME](https://wikipedia.org/wiki/CNAME_record) 记录。 由于不支持 A 记录，因此也不支持根域映射，例如 contoso.com。
+> 使用流量管理器终结点配置域名时，仅支持 CNAME 记录。 由于不支持 A 记录，因此也不支持根域映射，例如 contoso.com。
 > 
 
 ## <a name="prepare-the-app"></a>准备应用
@@ -45,11 +45,11 @@ ms.locfileid: "79547093"
 
 ![扩展菜单](./media/app-service-web-tutorial-custom-domain/scale-up-menu.png)
 
-蓝色边框突出显示了应用的当前层。 进行检查，确保应用处于“标准”  层或更高层（“生产”  或“隔离”类别中的任何层  ）。 如果是，请关闭“纵向扩展”  页，跳到[创建 CNAME 映射](#create-the-cname-mapping)。
+蓝色的框突出显示了应用的当前层。 进行检查，确保应用处于“标准”  层或更高层（“生产”  或“隔离”类别中的任何层  ）。 如果是，请关闭“纵向扩展”  页，跳到[创建 CNAME 映射](#create-the-cname-mapping)。
 
 ![检查定价层](./media/app-service-web-tutorial-custom-domain/check-pricing-tier.png)
 
-### <a name="scale-up-the-app-service-plan"></a>增加应用服务计划
+### <a name="scale-up-the-app-service-plan"></a>扩展应用服务计划
 
 如果需要纵向扩展应用，请选择“生产”  类别中的任何定价层。 有关其他选项，请单击“查看其他选项”  。
 
@@ -71,7 +71,7 @@ ms.locfileid: "79547093"
 虽然各个域提供商的具体情况不同，但你都需从  自定义域名（例如 **contoso.cn**）映射到  与应用集成的流量管理器域名 (**contoso.trafficmanager.cn**)。
 
 > [!NOTE]
-> 如果某条记录已被使用并且你需要先将你的应用绑定到该记录，可以创建一条额外的 CNAME 记录。 例如，若要提前将 **www\.contoso.cn** 绑定到应用，请创建从 **awverify.www** 到 **contoso.trafficmanager.cn** 的 CNAME 记录。 然后可以将“www\.contoso.cn”添加到应用，而无需更改“www”CNAME 记录。 有关详细信息，请参阅[将活动 DNS 名称迁移到 Azure 应用服务](manage-custom-dns-migrate-domain.md)。
+> 如果某条记录已被使用并且需要提前将应用绑定到该记录，可以创建其他 CNAME 记录。 例如，若要提前将 **www\.contoso.cn** 绑定到应用，请创建从 **awverify.www** 到 **contoso.trafficmanager.cn** 的 CNAME 记录。 然后可以将“www\.contoso.cn”添加到应用，而无需更改“www”CNAME 记录。 有关详细信息，请参阅[将活动 DNS 名称迁移到 Azure 应用服务](manage-custom-dns-migrate-domain.md)。
 
 在域提供商处添加或修改完 DNS 记录后，请保存这些更改。
 
@@ -84,9 +84,9 @@ ms.locfileid: "79547093"
 > 
 
 1. 域解析成功后，返回到 [Azure 门户](https://portal.azure.cn)中的应用页面
-2. 在左侧导航栏中选择“自定义域” **“添加主机名”。**  >  
+2. 在左侧导航栏中选择“自定义域” > “添加主机名”。  
 4. 键入之前映射的自定义域名，然后选择“验证”  。
-5. 确保“主机名记录类型”  设置为“CNAME (www**example.cn 或任何子域)”\.** 。
+5. 确保“主机名记录类型”  设置为“CNAME (www\.example.cn 或任何子域)”  。
 
 6. 由于应用服务应用现已与流量管理器终结点集成，因此会在“CNAME 配置”  下看到流量管理器域名。 选择它，然后单击“添加自定义域”  。
 

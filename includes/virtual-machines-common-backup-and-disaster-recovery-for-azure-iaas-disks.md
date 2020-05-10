@@ -6,21 +6,21 @@ author: rockboyfor
 ms.service: storage
 ms.topic: include
 origin.date: 06/05/2018
-ms.date: 02/10/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: 9ddb37e53e9663da4f2ec22d569cbaafd48a7a63
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 111b02148fc706c6c54715ff6ee4dc7647965a04
+ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77428810"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82596018"
 ---
 本文介绍如何规划 Azure 中的 IaaS 虚拟机 (VM) 和磁盘的备份与灾难恢复 (DR)。 本文档涉及托管磁盘和非托管磁盘。
 
 首先介绍 Azure 平台内置的容错功能，此功能有助于预防本地故障的发生。 然后介绍内置功能未全面涵盖的灾难恢复方案。 此外，本文档演示了几个工作负荷方案示例，它们的备份和 DR 注意事项各不相同。 最后，介绍适用于 IaaS 磁盘 DR 的可行解决方案。
 
-## <a name="introduction"></a>介绍
+## <a name="introduction"></a>简介
 
 Azure 平台使用各种方法实现冗余和容错，以帮助客户避免本地硬件故障。 本地故障可能包括存储部分虚拟磁盘数据的 Azure 存储服务器计算机出现问题，或此服务器上的 SSD 或 HDD 发生故障。 此类隔离的硬件组件故障可能会在正常操作期间发生。
 
@@ -62,7 +62,7 @@ Azure 平台旨在从这些故障中复原。 重大灾难可能会导致大量�
 
 DR 注意事项可能包括以下方面：
 
-- 高可用性：应用程序能够以正常状态继续运行，而没有显著增加故障时间。 “正常状态”是指，应用程序有响应，用户可以连接到应用程序，并与之交互。  某些任务关键型应用程序和数据库可能需要始终可用，即使平台上有故障，也不例外。 对于这些工作负荷，可能需要为应用程序和数据计划冗余。
+- 高可用性：应用程序能够以正常状态继续运行，而没有显著增加停机时间。 所谓的“正常状态”是指，应用程序有响应，用户可以连接到应用程序，并与之交互。  某些任务关键型应用程序和数据库可能需要始终可用，即使平台上有故障，也不例外。 对于这些工作负荷，可能需要为应用程序和数据计划冗余。
 
 - 数据持续性：在某些情况下，主要注意事项是确保在灾难发生时保留数据。 因此，可能需要在不同站点中备份数据。 对于此类工作负荷，可能不需要为应用程序计划完全冗余，只需定期备份磁盘即可。
 
@@ -70,7 +70,7 @@ DR 注意事项可能包括以下方面：
 
 让我们来看几个典型的应用程序工作负荷方案示例，以及规划灾难恢复时的注意事项。
 
-### <a name="scenario-1-major-database-solutions"></a>方案 1：主要数据库解决方案
+### <a name="scenario-1-major-database-solutions"></a>应用场景 1：主要数据库解决方案
 
 假设为 SQL Server 或 Oracle 等生产数据库服务器，可以支持高可用性。 关键生产应用程序和用户依赖此类数据库。 此系统的灾难恢复计划可能需要满足以下要求：
 
@@ -81,13 +81,13 @@ DR 注意事项可能包括以下方面：
 
 为了实现冗余，MongoDB 等 NoSQL 数据库也支持[副本](https://docs.mongodb.com/manual/replication/)。 可以使用实现高可用性的副本。
 
-### <a name="scenario-2-a-cluster-of-redundant-vms"></a>方案 2：冗余 VM 群集
+### <a name="scenario-2-a-cluster-of-redundant-vms"></a>应用场景 2：冗余 VM 群集
 
-假设由提供冗余和负载均衡的 VM 群集处理工作负载。 例如，在区域中部署的 Cassandra 群集。 此类体系结构已在相应区域提供了高水平冗余。 不过，为了保护工作负荷免受区域级故障影响，应考虑在两个区域分布群集，或定期备份到另一个区域。
+假设由提供冗余和负载均衡的 VM 群集处理工作负荷。 例如，在区域中部署的 Cassandra 群集。 此类体系结构已在相应区域提供了高水平冗余。 不过，为了保护工作负荷免受区域级故障影响，应考虑在两个区域分布群集，或定期备份到另一个区域。
 
-### <a name="scenario-3-iaas-application-workload"></a>方案 3：IaaS 应用程序工作负荷
+### <a name="scenario-3-iaas-application-workload"></a>应用场景 3：IaaS 应用程序工作负荷
 
-让我们探讨一下 IaaS 应用程序工作负荷。 例如，该应用程序可能是 Azure VM 上运行的典型生产工作负荷。 它可能是保存内容和其他站点资源的 Web 服务器或文件服务器。 也可能是在 VM 上运行的专门定制的商业应用程序，将数据、资源和应用程序状态存储到 VM 磁盘上。 在这种情况下，请务必定期进行备份。 应根据 VM 工作负载的性质确定备份频率。 例如，如果应用程序每天都运行，并且修改数据，那么应每小时备份一次。
+让我们探讨一下 IaaS 应用程序工作负荷。 例如，该应用程序可能是 Azure VM 上运行的典型生产工作负荷。 它可能是保存内容和其他站点资源的 Web 服务器或文件服务器。 也可能是在 VM 上运行的专门定制的商业应用程序，将数据、资源和应用程序状态存储到 VM 磁盘上。 在这种情况下，请务必定期进行备份。 应根据 VM 工作负荷的性质确定备份频率。 例如，如果应用程序每天都运行，并且修改数据，那么应每小时备份一次。
 
 再例如，报表服务器从其他数据源拉取数据，并生成聚合报表。 如果丢失此 VM 或磁盘，可能导致报表丢失。 不过，可以重新运行报表进程，并重新生成输出。 在这种情况下，即使报表服务器遭遇灾难，也不会真正丢失数据。 因此，可以有高水平的容错，允许报表服务器上丢失部分数据。 在这种情况下，不太频繁地进行备份可以降低成本。
 
@@ -104,23 +104,23 @@ IaaS 应用程序数据问题是另一种可能的情况。 假设有一个应�
 对于非托管磁盘，可将本地冗余存储类型用于 IaaS 磁盘，但要确保为 Azure 备份恢复服务保管库启用异地冗余存储选项。
 
 > [!NOTE]
-> 如果将[异地冗余存储](../articles/storage/common/storage-redundancy-grs.md)或[读取访问权限异地冗余存储](../articles/storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)选项用于非托管磁盘，仍需要为备份和 DR 生成一致性快照。 使用 [Azure 备份](https://www.azure.cn/home/features/backup/)或[一致性快照](#alternative-solution-consistent-snapshots)。
+> 如果将[异地冗余存储](../articles/storage/common/storage-redundancy-grs.md)或[读取访问权限异地冗余存储](../articles/storage/common/storage-redundancy.md)选项用于非托管磁盘，仍需要为备份和 DR 生成一致性快照。 使用 [Azure 备份](https://www.azure.cn/home/features/backup/)或[一致性快照](#alternative-solution-consistent-snapshots)。
 
  下表汇总了可用于 DR 的解决方案。
 
-| 场景 | 自动复制 | DR 解决方案 |
+| 方案 | 自动复制 | DR 解决方案 |
 | --- | --- | --- |
 | 高级·SSD 磁盘 | 本地（[本地冗余存储](../articles/storage/common/storage-redundancy-lrs.md)） | [Azure 备份](https://www.azure.cn/home/features/backup/) |
 | 托管磁盘 | 本地（[本地冗余存储](../articles/storage/common/storage-redundancy-lrs.md)） | [Azure 备份](https://www.azure.cn/home/features/backup/) |
 | 非托管本地冗余存储磁盘 | 本地（[本地冗余存储](../articles/storage/common/storage-redundancy-lrs.md)） | [Azure 备份](https://www.azure.cn/home/features/backup/) |
 | 非托管异地冗余存储磁盘 | 跨区域（[异地冗余存储](../articles/storage/common/storage-redundancy-grs.md)） | [Azure 备份](https://www.azure.cn/home/features/backup/)<br/>[一致性快照](#alternative-solution-consistent-snapshots) |
-| 非托管读取访问权限异地冗余存储磁盘 | 跨区域（[读取访问权限异地冗余存储](../articles/storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)） | [Azure 备份](https://www.azure.cn/home/features/backup/)<br/>[一致性快照](#alternative-solution-consistent-snapshots) |
+| 非托管读取访问权限异地冗余存储磁盘 | 跨区域（[读取访问权限异地冗余存储](../articles/storage/common/storage-redundancy.md)） | [Azure 备份](https://www.azure.cn/home/features/backup/)<br/>[一致性快照](#alternative-solution-consistent-snapshots) |
 
 在可用性集和 Azure 备份中使用托管磁盘是实现高可用性的最佳方式。 如果使用非托管磁盘，仍可以使用 Azure 备份进行 DR。 如果无法使用 Azure 备份，请采用后面部分所述的[一致性快照](#alternative-solution-consistent-snapshots)，作为备用的备份和 DR 解决方案。
 
 下面展示了在应用程序或基础结构一级可选择的高可用性、备份和 DR 选项：
 
-| 级别 |   高可用性   | 备份或 DR |
+| Level |   高可用性   | 备份或 DR |
 | --- | --- | --- |
 | 应用程序 | SQL Server AlwaysOn | Azure 备份 |
 | 基础结构    | 可用性集  | 具有一致快照的异地冗余存储 |
@@ -147,7 +147,7 @@ IaaS 应用程序数据问题是另一种可能的情况。 假设有一个应�
 
     b. 在“恢复服务保管库”菜单上，单击“添加”，并按相关步骤操作，在 VM 所在区域中新建一个保管库。   例如，如果 VM 位于“中国北部”区域，则选取“中国北部”作为保管库。
 
-1. 验证新建保管库的存储复制功能。 访问“恢复服务保管库”下的保管库，并转到“属性” **“备份配置”** “更新”。   >    >   确保“异地冗余存储”选项默认处于选中状态。  该选项可确保保管库自动复制到辅助数据中心。 例如，位于中国北部的保管库会自动复制到中国东部。
+1. 验证新建保管库的存储复制功能。 访问“恢复服务保管库”下的保管库，并转到“属性” > “备份配置” > “更新”。     确保“异地冗余存储”选项默认处于选中状态。  该选项可确保保管库自动复制到辅助数据中心。 例如，位于中国北部的保管库会自动复制到中国东部。
 
 1. 配置备份策略，再从同一 UI 中选择 VM。
 
@@ -159,7 +159,7 @@ IaaS 应用程序数据问题是另一种可能的情况。 假设有一个应�
 
 ### <a name="steps-for-recovery"></a>恢复步骤
 
-如果需要修复或重新生成 VM，可以从保存库中的任意备份恢复点还原 VM。 可以通过下列两种不同方式来执行恢复：
+如果需要修复或重新生成 VM，可以从保管库中的任意备份恢复点还原 VM。 可以通过下列两种不同方式来执行恢复：
 
 - 可以新建 VM，表示处于特定时间点的已备份 VM。
 
@@ -169,13 +169,13 @@ IaaS 应用程序数据问题是另一种可能的情况。 假设有一个应�
 
 也可以使用 PowerShell [从还原磁盘中创建新 VM](../articles/backup/backup-azure-vms-automation.md#create-a-vm-from-restored-disks)。
 
-## <a name="alternative-solution-consistent-snapshots"></a>备用解决方案：一致性快照
+## <a name="alternative-solution-consistent-snapshots"></a>替代解决方案：一致性快照
 
 如果无法使用 Azure 备份，可以使用快照实现自己的备份机制。 为 VM 使用的所有磁盘创建一致性快照，再将这些快照复制到另一个区域的过程比较复杂。 因此，Azure 认为相对于生成自定义解决方案，使用备份服务是更好的选择。
 
 如果将读取访问权限异地冗余存储/异地冗余存储用于磁盘，快照会自动复制到辅助数据中心。 如果将本地冗余存储用于磁盘，需要自行复制数据。 有关详细信息，请参阅[使用增量快照备份 Azure 非托管 VM 磁盘](../articles/virtual-machines/windows/incremental-snapshots.md)。
 
-快照表示处于特定时间点的对象。 快照因保留数据的大小递增而产生费用。 有关详细信息，请参阅[创建 blob 快照](../articles/storage/blobs/storage-blob-snapshots.md)。
+快照表示处于特定时间点的对象。 快照因保留数据的大小递增而产生费用。 有关详细信息，请参阅[创建 Blob 快照](../articles/storage/blobs/storage-blob-snapshots.md)。
 
 ### <a name="create-snapshots-while-the-vm-is-running"></a>当 VM 正在运行时创建快照
 
@@ -220,11 +220,11 @@ IaaS 应用程序数据问题是另一种可能的情况。 假设有一个应�
 
 若要有效复制 DR 增量快照，请参阅[使用增量快照备份 Azure 非托管 VM 磁盘](../articles/virtual-machines/windows/incremental-snapshots.md)中的说明。
 
-![使用递增快照备份 Azure 非托管 VM 磁盘][2]
+![通过递增快照备份 Azure 非托管 VM 磁盘][2]
 
 ### <a name="recovery-from-snapshots"></a>通过快照恢复
 
-若要检索快照，请进行复制，以新建 blob。 若要从主帐户复制快照，可将快照复制到快照的基 Blob。 此过程会将磁盘还原到快照。 此过程称为“提升快照”。 若要从辅助帐户复制快照备份（使用读取访问权限异地冗余存储帐户时），必须将快照复制到主帐户。 可以[使用 PowerShell](../articles/storage/common/storage-powershell-guide-full.md) 或 AzCopy 实用工具复制快照。 有关详细信息，请参阅[使用 AzCopy 命令行实用工具传输数据](/storage/common/storage-use-azcopy)。
+若要检索快照，请进行复制，以新建 Blob。 若要从主帐户复制快照，可将快照复制到快照的基 Blob。 此过程会将磁盘还原到快照。 此过程称为“提升快照”。 若要从辅助帐户复制快照备份（使用读取访问权限异地冗余存储帐户时），必须将快照复制到主帐户。 可以[使用 PowerShell](../articles/storage/common/storage-powershell-guide-full.md) 或 AzCopy 实用工具复制快照。 有关详细信息，请参阅[使用 AzCopy 命令行实用工具传输数据](/storage/common/storage-use-azcopy)。
 
 对于包含多个磁盘的 VM，必须复制属于同一协调还原点的所有快照。 将快照复制到可写 VHD Blob 后，可以通过 Blob 使用 VM 模板重新创建 VM。
 

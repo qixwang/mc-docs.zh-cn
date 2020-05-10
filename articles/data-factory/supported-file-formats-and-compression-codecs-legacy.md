@@ -8,16 +8,18 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 origin.date: 12/10/2019
-ms.date: 01/06/2020
+ms.date: 05/11/2020
 ms.author: v-jay
-ms.openlocfilehash: 728a1c0d3476ff8cb586e0d5b3ad5f1110b2a932
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: c3565e1dfee83dd8b6496e2d92eac42281445557
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292324"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82197983"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory-legacy"></a>Azure 数据工厂（旧版）中支持的文件格式和压缩编解码器
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文适用于以下连接器：  [Amazon S3](connector-amazon-simple-storage-service.md)、[Azure Blob](connector-azure-blob-storage.md)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、[Azure 文件存储](connector-azure-file-storage.md)、[文件系统](connector-file-system.md)、[FTP](connector-ftp.md)、[Google 云存储](connector-google-cloud-storage.md)、[HDFS](connector-hdfs.md)、[HTTP](connector-http.md) 和 [SFTP](connector-sftp.md)。
 
@@ -35,7 +37,7 @@ ms.locfileid: "79292324"
 | --- | --- | --- | --- |
 | columnDelimiter |用于分隔文件中的列的字符。 可以考虑使用数据中可能不存在的极少见的不可打印字符。 例如，指定“\u0001”表示标题开头 (SOH)。 |只能使用一个字符。 **默认**值为**逗号（“,”）** 。 <br/><br/>若要使用 Unicode 字符，请参阅 [Unicode 字符](https://en.wikipedia.org/wiki/List_of_Unicode_characters)获取相应的代码。 |否 |
 | rowDelimiter |用于分隔文件中的行的字符。 |只能使用一个字符。 **默认**值为以下任何一项： **[“\r\n”、“\r”、“\n”]** （读取时）和 **“\r\n”** （写入时）。 |否 |
-| escapeChar |用于转义输入文件内容中的列分隔符的特殊字符。 <br/><br/>不能同时指定表的 escapeChar 和 quoteChar。 |只能使用一个字符。 没有默认值。 <br/><br/>示例：如果使用逗号 (',') 作为列分隔符，但希望在文本中包含逗号字符（例如："Hello, world"），可以将“$”定义为转义字符，并在源代码中使用字符串 "Hello$, world"。 |否 |
+| escapeChar |用于转义输入文件内容中的列分隔符的特殊字符。 <br/><br/>不能同时指定表的 escapeChar 和 quoteChar。 |只能使用一个字符。 没有默认值。 <br/><br/>示例：如果使用逗号 (',') 作为列分隔符，但希望在文本中包含逗号字符（例如：“Hello, world”），可以将“$”定义为转义字符，并在源代码中使用字符串“Hello$, world”。 |否 |
 | quoteChar |将字符串值用引号括起来的字符。 引号字符内的列和行分隔符将被视为字符串值的一部分。 此属性适用于输入和输出数据集。<br/><br/>不能同时指定表的 escapeChar 和 quoteChar。 |只能使用一个字符。 没有默认值。 <br/><br/>例如，如果以逗号（“,”）作为列分隔符，但想要在文本中使用逗号字符（例如：<Hello, world>），可以将 "（双引号）定义为引号字符，在源中使用字符串“Hello, world”。 |否 |
 | nullValue |用于表示 null 值的一个或多个字符。 |一个或多个字符。 **默认**值为 **“\N”和“NULL”** （读取时）及 **“\N”** （写入时）。 |否 |
 | encodingName |指定编码名称。 |有效的编码名称。 请参阅 [Encoding.EncodingName 属性](https://msdn.microsoft.com/library/system.text.encoding.aspx)。 例如：windows-1250 或 shift_jis。 **默认**值为 **UTF-8**。 |否 |
@@ -444,7 +446,7 @@ ms.locfileid: "79292324"
 
 | 数据工厂临时数据类型 | Parquet 基元类型 | Parquet 原始类型（反序列化） | Parquet 原始类型（串行化） |
 |:--- |:--- |:--- |:--- |
-| 布尔 | 布尔 | 不适用 | 空值 |
+| 布尔 | 布尔 | 空值 | 空值 |
 | SByte | Int32 | Int8 | Int8 |
 | Byte | Int32 | UInt8 | Int16 |
 | Int16 | Int32 | Int16 | Int16 |
@@ -453,17 +455,17 @@ ms.locfileid: "79292324"
 | UInt32 | Int64 | UInt32 | Int64 |
 | Int64 | Int64 | Int64 | Int64 |
 | UInt64 | Int64/二进制 | UInt64 | 小数 |
-| Single | Float | 不适用 | 空值 |
-| Double | Double | 不适用 | 不适用 |
+| Single | Float | 空值 | 空值 |
+| Double | Double | 空值 | 空值 |
 | 小数 | 二进制 | 小数 | 小数 |
 | String | 二进制 | Utf8 | Utf8 |
-| DateTime | Int96 | 不适用 | 不适用 |
-| TimeSpan | Int96 | 空值 | 不适用 |
-| DateTimeOffset | Int96 | 不适用 | 不适用 |
-| ByteArray | 二进制 | 不适用 | 空值 |
+| DateTime | Int96 | 空值 | 空值 |
+| TimeSpan | Int96 | 空值 | 空值 |
+| DateTimeOffset | Int96 | 空值 | 空值 |
+| ByteArray | 二进制 | 空值 | 空值 |
 | Guid | 二进制 | Utf8 | Utf8 |
 | Char | 二进制 | Utf8 | Utf8 |
-| CharArray | 不支持 | 空值 | 不适用 |
+| CharArray | 不支持 | 空值 | 空值 |
 
 ## <a name="orc-format-legacy"></a><a name="orc-format"></a> ORC 格式（旧版）
 

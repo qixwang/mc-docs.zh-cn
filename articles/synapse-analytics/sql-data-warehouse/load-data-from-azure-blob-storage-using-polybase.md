@@ -104,11 +104,11 @@ SQL 池是使用定义的一组[计算资源](memory-concurrency-limits.md)创�
 
 1. 部署完成后，在左侧菜单中选择“SQL 数据库”  ，然后在“SQL 数据库”  页上选择“mySampleDatabase”  。 此时会打开数据库的概述页，显示完全限定的服务器名称（例如 **mynewserver-20181129.database.chinacloudapi.cn**），并且会提供进行进一步配置所需的选项。
 
-2. 在后续的快速入门中，请复制此完全限定的服务器名称，将其用于连接到服务器及其数据库。 然后选择服务器名称打开服务器设置。
+2. 在后续的快速入门中，请复制此完全限定的服务器名称，将其用于连接到服务器及其数据库。 然后选择服务器名称，打开服务器设置。
 
     ![查找服务器名称](./media/load-data-from-azure-blob-storage-using-polybase/find-server-name.png)
 
-3. 选择服务器名称打开服务器设置。
+3. 选择服务器名称，打开服务器设置。
 
     ![服务器设置](./media/load-data-from-azure-blob-storage-using-polybase/server-settings.png)
 
@@ -163,13 +163,13 @@ SQL 池是使用定义的一组[计算资源](memory-concurrency-limits.md)创�
 
 ## <a name="create-a-user-for-loading-data"></a>创建用于加载数据的用户
 
-服务器管理员帐户用于执行管理操作，不适合对用户数据运行查询。 加载数据是一种内存密集型操作。 内存最大值是根据配置的[数据仓库单位](what-is-a-data-warehouse-unit-dwu-cdwu.md)和[资源类](resource-classes-for-workload-management.md)定义的。
+服务器管理员帐户用于执行管理操作，不适合对用户数据运行查询。 加载数据是一种内存密集型操作。 内存最大值根据配置的[数据仓库单位](what-is-a-data-warehouse-unit-dwu-cdwu.md)和[资源类](resource-classes-for-workload-management.md)定义。
 
 最好创建专用于加载数据的登录名和用户。 然后，将加载用户添加到启用相应最大内存分配的[资源类](resource-classes-for-workload-management.md)。
 
 由于当前是以服务器管理员的身份连接的，因此可以创建登录名和用户。 使用以下步骤创建名为 LoaderRC20  的登录名和用户。 然后将该用户分配到 staticrc20  资源类。
 
-1. 在 SSMS 中，右键单击“master”  ，然后在显示的下拉菜单中选择“新建查询”  。 此时将打开一个新的查询窗口。
+1. 在 SSMS 中右键单击“master”  ，然后在显示的下拉菜单中选择“新建查询”  。 此时将打开一个新的查询窗口。
 
     ![在 Master 中新建查询](./media/load-data-from-azure-blob-storage-using-polybase/create-loader-login.png)
 
@@ -200,7 +200,7 @@ SQL 池是使用定义的一组[计算资源](memory-concurrency-limits.md)创�
 
 加载数据的第一步是以 LoaderRC20 的身份登录。  
 
-1. 在对象资源管理器中，选择“连接”  下拉菜单，然后选择“数据库引擎”  。 此时会显示“连接到服务器”  对话框。
+1. 在对象资源管理器中选择“连接”  下拉菜单，然后选择“数据库引擎”  。 此时会显示“连接到服务器”  对话框。
 
     ![使用新登录名连接](./media/load-data-from-azure-blob-storage-using-polybase/connect-as-loading-user.png)
 
@@ -214,9 +214,9 @@ SQL 池是使用定义的一组[计算资源](memory-concurrency-limits.md)创�
 
 ## <a name="create-external-tables-for-the-sample-data"></a>为示例数据创建外部表
 
-已准备好开始将数据加载到新的数据仓库。 本教程说明如何使用外部表从 Azure 存储 Blob 加载纽约市出租车数据。 要了解如何将数据置于 Azure Blob 存储或如何从源直接加载数据以供将来参考，请参阅[加载概述](design-elt-data-loading.md)。
+已准备好开始将数据加载到新的数据仓库。 本教程说明如何使用外部表从 Azure 存储 Blob 加载纽约市出租车数据。 若要了解如何将数据置于 Azure Blob 存储或直接从源加载数据以供将来参考，请参阅[加载概述](design-elt-data-loading.md)。
 
-运行以下 SQL 脚本，并指定有关想要加载的数据的信息。 此信息包括数据所在的位置、数据内容的格式以及数据的表定义。
+运行以下 SQL 脚本，并指定要加载的数据的相关信息。 此信息包括数据所在的位置、数据内容的格式以及数据的表定义。
 
 1. 在前一节中，已经以 LoaderRC20 的身份登录数据仓库。 在 SSMS 中，右键单击 LoaderRC20 连接，然后选择“新建查询”  。  此时会显示一个新的查询窗口。
 
@@ -230,7 +230,7 @@ SQL 池是使用定义的一组[计算资源](memory-concurrency-limits.md)创�
     CREATE MASTER KEY;
     ```
 
-4. 运行以下 [CREATE EXTERNAL DATA SOURCE](https://docs.microsoft.com/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 语句，定义 Azure Blob 的位置。 这是外部出租车数据的位置。  要运行追加到查询窗口的命令，请突出显示要运行的命令，然后选择“执行”  。
+4. 运行以下 [CREATE EXTERNAL DATA SOURCE](https://docs.microsoft.com/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 语句，定义 Azure Blob 的位置。 这是外部出租车数据的位置。  若要运行已追加到查询窗口的命令，请突出显示要运行的命令，然后选择“执行”  。
 
     ```sql
     CREATE EXTERNAL DATA SOURCE NYTPublic
@@ -448,7 +448,7 @@ SQL 池是使用定义的一组[计算资源](memory-concurrency-limits.md)创�
 > [!NOTE]
 > 本教程直接将数据加载到最终表。 在生产环境中，通常使用 CREATE TABLE AS SELECT 将数据加载到临时表。 数据在临时表中时，可以执行任何必要的转换。 要将临时表中的数据追加到生产表，可以使用 INSERT...SELECT 语句。 有关详细信息，请参阅[将数据插入到生产表](guidance-for-loading-data.md#inserting-data-into-a-production-table)。
 
-下面的脚本使用 [CREATE TABLE AS SELECT (CTAS)](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL 语句将数据从 Azure 存储 Blob 加载到数据仓库中的新表。 CTAS 基于 select 语句的结果创建新表。 新表包含与 select 语句结果相同的列和数据类型。 当 select 语句从外部表进行选择时，数据将导入到数据仓库的关系表中。 
+下面的脚本使用 [CREATE TABLE AS SELECT (CTAS)](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL 语句将数据从 Azure 存储 Blob 加载到数据仓库中的新表。 CTAS 基于 select 语句的结果创建新表。 新表包含与 select 语句结果相同的列和数据类型。 当 select 语句从外部表进行选择时，数据会导入到数据仓库的关系表中。 
 
 1. 运行以下脚本，将数据加载到数据仓库中的新表。
 
@@ -584,7 +584,7 @@ SQL 池是使用定义的一组[计算资源](memory-concurrency-limits.md)创�
    > [!NOTE]
    > 如果有常规用途 v1 或 Blob 存储帐户，则必须先按照此[指南](../../storage/common/storage-account-upgrade.md?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)将该帐户**升级到 v2** 帐户。
 
-3. 在存储帐户下导航到“访问控制(IAM)”，然后选择“添加角色分配”。   向 SQL 数据库服务器分配“存储 Blob 数据参与者”  RBAC 角色。
+3. 在存储帐户下导航到“访问控制(标识和访问管理)”，然后选择“添加角色分配”。   向 SQL 数据库服务器分配“存储 Blob 数据参与者”  RBAC 角色。
 
    > [!NOTE]
    > 只有具有“所有者”特权的成员能够执行此步骤。 若要了解 Azure 资源的各种内置角色，请参阅此[指南](../../role-based-access-control/built-in-roles.md?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。

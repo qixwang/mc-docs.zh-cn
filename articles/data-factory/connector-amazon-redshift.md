@@ -1,26 +1,27 @@
 ---
-title: 使用 Azure 数据工厂从 Amazon Redshift 复制数据 |Microsoft Docs
+title: 从 Amazon Redshift 复制数据
 description: 了解如何使用 Azure 数据工厂将数据从 Amazon Redshift 复制到受支持的接收器数据存储。
 services: data-factory
 documentationcenter: ''
+ms.author: v-jay
 author: WenJason
 manager: digimobile
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 origin.date: 09/04/2018
-ms.date: 11/11/2019
-ms.author: v-jay
-ms.openlocfilehash: 278bef892bbf1c89b77252419b1340fd6a287bc8
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/11/2020
+ms.openlocfilehash: cca9b1ea4008c639c0223947d46b2e6c6fa3fcbc
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292338"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82198245"
 ---
 # <a name="copy-data-from-amazon-redshift-using-azure-data-factory"></a>使用 Azure 数据工厂从 Amazon Redshift 复制数据
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从 Amazon Redshift 复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 

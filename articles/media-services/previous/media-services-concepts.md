@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 origin.date: 03/14/2019
-ms.date: 03/04/2020
+ms.date: 05/11/2020
 ms.author: v-jay
-ms.openlocfilehash: 59bdb6447389d0ba5fb34577048f4b3506db6008
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: b27293c325445ccd84df6bdc1163dfb413af07c2
+ms.sourcegitcommit: 95efd248f5ee3701f671dbd5cfe0aec9c9959a24
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78412455"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82507695"
 ---
 # <a name="azure-media-services-concepts"></a>Azure 媒体服务概念 
 
@@ -201,10 +201,10 @@ http://amstest1.streaming.mediaservices.chinacloudapi.cn/3c5fe676-199c-4620-9b03
 ### <a name="streaming-urls"></a>流式处理 URL
 将内容流式传输到客户端。 若要为用户提供流式处理 URL，必须先创建一个 OnDemandOrigin 定位符。 创建定位符可提供包含要流式传输的内容的资产的基本路径。 但是，为了能够流式传输此内容，需要进一步修改此路径。 要构造流清单文件的完整 URL，必须将定位符的 Path 值与清单 (filename.ism) 文件名连接起来。 然后，向定位符路径追加 /Manifest 和相应的格式（如果需要）。
 
-也可通过 SSL 连接流式传输内容。 为此，请确保流 URL 以 HTTPS 开头。 目前，AMS 对自定义域不支持 SSL。  
+也可通过 TLS 连接流式传输内容。 为此，请确保流 URL 以 HTTPS 开头。 目前，AMS 对自定义域不支持 TLS。  
 
 >[!NOTE]
->仅当要从中传送内容的流式处理终结点是在 2014 年 9 月 10 日之后创建的情况下，才可以通过 SSL 流式传输内容。 如果流式处理 URL 基于 9 月 10 日之后创建的流式处理终结点，则 URL 会包含“streaming.mediaservices.chinacloudapi.cn”（新格式）。 包含“origin.mediaservices.chinacloudapi.cn”（旧格式）的流式处理 URL 不支持 SSL。 如果 URL 采用旧格式，并且希望能够通过 SSL 流式传输内容，请创建新的流式处理终结点。 使用基于新流式处理终结点创建的 URL 通过 SSL 流式传输内容。
+>如果要从中传送内容的流式处理终结点是在 2014 年 9 月 10 日之后创建的，则只能通过 TLS 流式传输内容。 如果流式处理 URL 基于 9 月 10 日之后创建的流式处理终结点，则 URL 会包含“streaming.mediaservices.chinacloudapi.cn”（新格式）。 包含“origin.mediaservices.chinacloudapi.cn”（旧格式）的流式处理 URL 不支持 TLS。 如果 URL 采用旧格式，并且你希望能够通过 TLS 流式传输内容，请创建新的流式处理终结点。 使用基于新流式处理终结点创建的 URL 通过 TLS 流式传输内容。
 
 以下列表描述了不同的流格式并提供了示例：
 

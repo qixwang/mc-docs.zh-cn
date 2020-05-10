@@ -7,12 +7,12 @@ ms.date: 02/17/2020
 ms.author: v-tawe
 ms.reviewer: sisirap
 ms.custom: seodec18
-ms.openlocfilehash: 33c19efbf27c388d89d153ac3bd9f5c35621ad00
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: fd13e742d97d7153e8bcb6ddf5c0350ad1101ca6
+ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "76979348"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82588673"
 ---
 # <a name="deploy-your-app-to-azure-app-service-with-a-zip-or-war-file"></a>使用 ZIP 或 WAR 文件将应用部署到 Azure 应用服务
 
@@ -28,9 +28,9 @@ ms.locfileid: "76979348"
 
 有关详细信息，请参阅 [Kudu 文档](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file)。
 
-WAR 文件部署将 [WAR](https://wikipedia.org/wiki/WAR_(file_format)) 文件部署到应用服务，以运行 Java Web 应用。 请参阅[部署 WAR 文件](#deploy-war-file)。
+WAR 文件部署将 WAR 文件部署到应用服务，以运行 Java Web 应用。 请参阅[部署 WAR 文件](#deploy-war-file)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要完成本文中的步骤，请[创建一个应用服务应用](/app-service/)，或者使用为其他教程创建的应用。
 
@@ -91,9 +91,9 @@ Publish-AzWebapp -ResourceGroupName <group-name> -Name <app-name> -ArchivePath <
 
 ## <a name="next-steps"></a>后续步骤
 
-有关更高级的部署方案，请参阅[使用 Git 部署到 Azure](deploy-local-git.md)。 使用 Git 部署到 Azure 支持版本控制、包还原、MSBuild 等。
+有关更高级的部署方案，请参阅[使用 Git 部署到 Azure](deploy-local-git.md)。 通过基于 Git 的 Azure 部署可实现版本控制、包还原、MSBuild 等功能。
 
 ## <a name="more-resources"></a>更多资源
 
 * [Kudu：从 zip 文件部署](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file)
-* [Azure 应用服务部署凭据](deploy-ftp.md)
+* [ 部署凭据](deploy-ftp.md)

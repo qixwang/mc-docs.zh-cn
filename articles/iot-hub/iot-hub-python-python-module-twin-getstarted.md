@@ -21,10 +21,10 @@ ms.locfileid: "82507714"
 [!INCLUDE [iot-hub-selector-module-twin-getstarted](../../includes/iot-hub-selector-module-twin-getstarted.md)]
 
 > [!NOTE]
-> [模块标识和模块孪生](iot-hub-devguide-module-twins.md)类似于 Azure IoT 中心设备标识和设备孪生，但提供更精细的粒度。 Azure IoT 中心设备标识和设备孪生允许后端应用程序配置设备并提供设备条件的可见性，而模块标识和模块孪生为设备的各个组件提供这些功能。 在支持多个组件的设备上（例如基于操作系统的设备或固件设备），它们允许每个部件拥有独立的配置和条件。
+> [模块标识和模块孪生](iot-hub-devguide-module-twins.md)类似于 Azure IoT 中心设备标识和设备孪生，但提供更精细的粒度。 Azure IoT 中心设备标识和设备孪生允许后端应用程序配置设备并提供对设备状况的可见性，而模块标识和模块孪生为设备的各个组件提供这些功能。 在支持这些功能的多组件设备上（例如基于操作系统的设备或固件设备），它们允许每个部件拥有独立的配置和状况。
 >
 
-在本教程结束时，会创建三个 Python 应用：
+在本教程结束时，你会有三个 Python 应用：
 
 * CreateModule，用于创建设备标识、模块标识和相关的安全密钥，以连接设备和模块客户端  。
 
@@ -44,7 +44,7 @@ ms.locfileid: "82507714"
 
 ## <a name="get-the-iot-hub-connection-string"></a>获取 IoT 中心连接字符串
 
-在本文中，将创建一个后端服务，该服务在标识注册表中添加一个设备，然后向该设备添加一个模块。 此服务需要“注册表写入”权限（也包括“注册表读取”权限）   。 你还要创建一个服务，用于将所需属性添加到新建的模块的模块孪生中。 此服务需要“服务连接”权限  。 尽管默认的共享访问策略会单独授予这些权限，但在本部分，你将创建一个包含这两个权限的自定义共享访问策略。
+在本文中，将创建一个后端服务，该服务在标识注册表中添加一个设备，然后向该设备添加一个模块。 此服务需要“注册表写入”权限（也包括“注册表读取”权限）   。 你还要创建一个服务，用于将所需属性添加到新建的模块的模块孪生中。 此服务需要“服务连接”权限  。 尽管有默认的共享访问策略可分别授予这些权限，但在本部分，你将创建一个包含这两个权限的自定义共享访问策略。
 
 [!INCLUDE [iot-hub-include-find-service-regrw-connection-string](../../includes/iot-hub-include-find-service-regrw-connection-string.md)]
 
@@ -129,7 +129,7 @@ ms.locfileid: "82507714"
     python CreateModule.py
     ```
 
-此应用在设备“myFirstDevice”下创建 ID 为“myFirstDevice”的设备标识，以及 ID 为“myFirstModule”的模块标识    。 （如果该设备或模块 ID 已在标识注册表中，代码就只检索现有的设备或模块信息。）应用将显示每个标识的 ID 和主密钥。
+此应用在设备“myFirstDevice”下创建 ID 为“myFirstDevice”的设备标识，以及 ID 为“myFirstModule”的模块标识    。 （如果该设备或模块 ID 已存在于标识注册表中，代码就只检索现有的设备或模块信息。）应用将显示每个标识的 ID 和主密钥。
 
 > [!NOTE]
 > IoT 中心标识注册表只存储设备和模块标识，以启用对 IoT 中心的安全访问。 标识注册表存储用作安全凭据的设备 ID 和密钥。 标识注册表还为每个设备存储启用/禁用标志，该标志可以用于禁用对该设备的访问。 如果应用程序需要存储其他特定于设备的元数据，则应使用特定于应用程序的存储。 没有针对模块标识的“已启用/已禁用”标记。 有关详细信息，请参阅[了解 IoT 中心的标识注册表](iot-hub-devguide-identity-registry.md)。

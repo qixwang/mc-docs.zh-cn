@@ -4,14 +4,14 @@ description: 遵循这些最佳做法了解如何有效使用 Azure Redis 缓存
 author: joncole
 ms.service: cache
 ms.topic: conceptual
-ms.date: 02/05/2020
+ms.date: 04/26/2020
 ms.author: v-junlch
-ms.openlocfilehash: caef336a9b9ba8f415591c514ad2afdae488056c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 2be57cd2e48f88f1255a68c8ea0f399d30f40f25
+ms.sourcegitcommit: e3512c5c2bbe61704d5c8cbba74efd56bfe91927
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77028023"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82267534"
 ---
 # <a name="best-practices-for-azure-cache-for-redis"></a>Azure Redis 缓存的最佳做法 
 遵循这些最佳做法可帮助最大化性能并在 Azure 中经济、高效地利用 Azure Redis 缓存实例。
@@ -46,6 +46,14 @@ ms.locfileid: "77028023"
 
  * **为键设置过期值。**  过期时会主动删除键，而不会等到出现内存压力的时候。  如果由于内存压力而激发逐出，可能会导致服务器上的负载增大。  有关详细信息，请参阅 [EXPIRE](https://redis.io/commands/expire) 和 [EXPIREAT](https://redis.io/commands/expireat) 命令的文档。
  
+## <a name="client-library-specific-guidance"></a>特定于客户端库的指南
+ * [StackExchange.Redis (.NET)](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-stackexchange-redis-md)
+ * [Java - 应使用哪种客户端？](https://gist.github.com/warrenzhu25/1beb02a09b6afd41dff2c27c53918ce7#file-azure-redis-java-best-practices-md)
+ * [Lettuce (Java)](https://gist.github.com/warrenzhu25/181ccac7fa70411f7eb72aff23aa8a6a#file-azure-redis-lettuce-best-practices-md)
+ * [Jedis (Java)](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-java-jedis-md)
+ * [Node.js](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-node-js-md)
+ * [PHP](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-php-md)
+ * [Asp.Net 会话状态提供程序](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-session-state-provider-md)
 
 
 ## <a name="when-is-it-safe-to-retry"></a>何时可以安全重试？
@@ -59,7 +67,7 @@ ms.locfileid: "77028023"
 若要测试代码在出错的情况下的运行情况，请考虑使用[重启功能](cache-administration.md#reboot)。 重启即可了解连接故障对应用程序的影响。
 
 ## <a name="performance-testing"></a>性能测试
- * **首先使用 `redis-benchmark.exe`** 以在编写自己的性能测试之前感受可能的吞吐量/延迟。  [可在此处找到](https://redis.io/topics/benchmarks) Redis 基准文档。  请注意，该 Redis 基准不支持 SSL，因此在运行测试之前必须[通过门户启用非 SSL 端口](cache-configure.md#access-ports)。  [可在此处找到 Windows 兼容版本的 redis-benchmark.exe](https://github.com/MSOpenTech/redis/releases)
+ * **首先使用 `redis-benchmark.exe`** 以在编写自己的性能测试之前感受可能的吞吐量/延迟。  [可在此处找到](https://redis.io/topics/benchmarks) Redis 基准文档。  请注意，该 Redis 基准不支持 TLS，因此在运行测试之前必须[通过门户启用非 TLS 端口](cache-configure.md#access-ports)。  [可在此处找到 Windows 兼容版本的 redis-benchmark.exe](https://github.com/MSOpenTech/redis/releases)
  * 用于测试的客户端 VM 应与 Redis 缓存实例位于**同一区域**。
  * **建议为客户端使用 Dv2 VM 系列**，因为它们具有更好的硬件，会提供最佳的结果。
  * 确保所用客户端 VM 的计算和带宽资源 *至少与要测试的缓存相同。  

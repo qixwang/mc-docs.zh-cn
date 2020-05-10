@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: conceptual
-ms.date: 03/16/2020
+ms.date: 04/26/2020
 ms.author: v-junlch
-ms.openlocfilehash: d4ed8d5c2dd138eb2bcc3dd77a35e3d5208064e9
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: d45cdafb9f66882c247bca982ad3e7fbfb1efae1
+ms.sourcegitcommit: e3512c5c2bbe61704d5c8cbba74efd56bfe91927
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79497388"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82267651"
 ---
 # <a name="azure-application-gateway-features"></a>Azure 应用程序网关功能
 
@@ -158,6 +158,10 @@ HTTP 标头可让客户端和服务器连同请求或响应一起传递附加的
 
 > [!NOTE]
 > 这些值是应用程序网关吞吐量的大约值。 实际吞吐量取决于平均页面大小、后端实例的位置、提供页面所需的处理时间等各种环境详细信息。 如需确切的性能数字，则应运行自己的测试。 提供的这些值仅适用于容量规划指南。
+
+## <a name="version-feature-comparison"></a>版本功能比较
+
+有关应用程序网关 v1-v2 功能比较，请参阅[自动缩放和区域冗余应用程序网关 v2](application-gateway-autoscaling-zone-redundant.md#feature-comparison-between-v1-sku-and-v2-sku)
 
 ## <a name="next-steps"></a>后续步骤
 

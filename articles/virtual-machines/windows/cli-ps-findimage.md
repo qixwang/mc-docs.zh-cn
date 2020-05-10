@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure PowerShell 在 Azure 市场中查找 Windows VM 映像 | Azure
+title: 使用 Azure PowerShell 在 Azure 市场中查找 Windows VM 映像
 description: 使用 Azure PowerSHell 来确定市场 VM 映像的发布者、产品/服务、SKU 和版本。
 services: virtual-machines-windows
 documentationcenter: ''
@@ -13,24 +13,21 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 origin.date: 01/25/2019
-ms.date: 10/14/2019
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: 28121c251505b962fadbd5e42da7946a0e971eb9
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 537a2c537b935080a707292ba30a00f621d38a93
+ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79293085"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82596382"
 ---
 # <a name="find-windows-vm-images-in-the-azure-marketplace-with-azure-powershell"></a>使用 Azure PowerShell 在 Azure 市场中查找 Windows VM 映像
 
 本文介绍如何使用 Azure PowerShell 在 Azure 市场中查找 VM 映像。 然后，使用 PowerShell、资源管理器模板或其他工具以编程方式创建 VM 时，你可以指定市场映像。
 
-你还可以使用 [Azure 市场](https://market.azure.cn/zh-cn/marketplace/)店面、[Azure 门户](https://portal.azure.cn)或 [Azure CLI](../linux/cli-ps-findimage.md) 浏览可用的映像和产品/服务。 
+你还可以使用 [Azure 市场](https://market.azure.cn/marketplace/)店面、[Azure 门户](https://portal.azure.cn)或 [Azure CLI](../linux/cli-ps-findimage.md) 浏览可用的映像和产品/服务。 
 
-<!--MOONCAKE: CORRECT ON [Azure Marketplace](https://market.azure.cn/zh-cn/marketplace/)-->
-
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 [!INCLUDE [virtual-machines-common-image-terms](../../../includes/virtual-machines-common-image-terms.md)]
 
@@ -48,8 +45,7 @@ ms.locfileid: "79293085"
 | MicrosoftWindowsServer |WindowsServer |2016-Datacenter-with-Containers |
 | MicrosoftWindowsServer |WindowsServer |2012-R2-Datacenter |
 | MicrosoftWindowsServer |WindowsServer |2012-Datacenter |
-| MicrosoftDynamicsNAV |DynamicsNAV |2017 |
-| MicrosoftSharePoint |MicrosoftSharePointServer |2019 |
+| MicrosoftSharePoint |MicrosoftSharePointServer |sp2019 |
 | MicrosoftSQLServer |SQL2019-WS2016 |Enterprise |
 | MicrosoftRServer |RServer-WS2016 |Enterprise |
 
@@ -201,11 +197,11 @@ $skuName="2019-Datacenter"
 Get-AzVMImage -Location $locName -PublisherName $pubName -Offer $offerName -Sku $skuName | Select Version
 ```
 
-现在可以将所选发布者、产品/服务、SKU 和版本合并到 URN 中（由“:”分隔的值）。 使用 `--image`New-AzVM[ cmdlet 创建 VM 时，使用 ](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) 参数传递此 URN。 还可以将 URN 中的版本号替换为 "latest" 以获取映像的最新版本。
+现在可以将所选发布者、产品/服务、SKU 和版本合并到 URN 中（由“:”分隔的值）。 使用 [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) cmdlet 创建 VM 时，使用 `--image` 参数传递此 URN。 还可以将 URN 中的版本号替换为 "latest" 以获取映像的最新版本。
 
 如果使用资源管理器模板部署 VM，请在 `imageReference` 属性中单独设置映像参数。
 
-<!--Not Available on [template reference](https://docs.microsoft.com/zh-cn/azure/templates/microsoft.compute/virtualmachines)-->
+<!--Not Available on [template reference](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines)-->
 
 [!INCLUDE [virtual-machines-common-marketplace-plan](../../../includes/virtual-machines-common-marketplace-plan.md)]
 

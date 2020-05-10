@@ -7,12 +7,12 @@ origin.date: 08/24/2018
 ms.date: 03/30/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: b5abb28d8b000745e54daf7db92c3d1c57d80e74
-ms.sourcegitcommit: 9b0a89269a7e422570b7bc0ca983f60d2f317d48
+ms.openlocfilehash: c2086cb6bae17d6feea65e65b474beb06f587b76
+ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81675784"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82588541"
 ---
 # <a name="security-in-azure-app-service"></a>Azure 应用服务中的安全性
 
@@ -33,7 +33,7 @@ ms.locfileid: "81675784"
 
 ## <a name="https-and-certificates"></a>HTTPS 和证书
 
-应用服务允许通过 [HTTPS](https://wikipedia.org/wiki/HTTPS) 保护应用。 创建应用后，便可使用 HTTPS 访问其默认域名 (\<app_name>.chinacloudsites.cn)。 如果[为应用配置自定义域](app-service-web-tutorial-custom-domain.md)，则还应该[使用自定义证书对其进行保护](app-service-web-tutorial-custom-ssl.md)，以便客户端浏览器与自定义域建立安全的 HTTPS 连接。 可通过两种方式来执行此操作：
+应用服务允许通过 HTTPS 保护应用。 创建应用后，便可使用 HTTPS 访问其默认域名 (\<app_name>.chinacloudsites.cn)。 如果[为应用配置自定义域](app-service-web-tutorial-custom-domain.md)，则还应该[使用自定义证书对其进行保护](app-service-web-tutorial-custom-ssl.md)，以便客户端浏览器与自定义域建立安全的 HTTPS 连接。 可通过两种方式来执行此操作：
 
 - 免费应用服务托管证书
 - 应用服务证书
@@ -46,7 +46,7 @@ ms.locfileid: "81675784"
 
 为了保护应用免受所有未加密 (HTTP) 连接的攻击，应用服务提供一键式配置以实施 HTTPS。 不安全的请求在到达你的应用程序代码之前就会被拒绝。 有关详细信息，请参阅[实施 HTTPS](configure-ssl-bindings.md#enforce-https)。
 
-[PCI DSS](https://wikipedia.org/wiki/Payment_Card_Industry_Data_Security_Standard) 等行业标准已不再将 [TLS](https://wikipedia.org/wiki/Transport_Layer_Security) 1.0 视为安全协议。 应用服务允许通过[实施 TLS 1.1/1.2](configure-ssl-bindings.md#enforce-tls-versions) 来禁用过时的协议。
+PCI DSS 等行业标准已不再将 TLS 1.0 视为安全协议。 应用服务允许通过[实施 TLS 1.1/1.2](configure-ssl-bindings.md#enforce-tls-versions) 来禁用过时的协议。
 
 应用服务支持使用 FTP 和 FTPS 来部署文件。 但是，如果可能的话，应使用 FTPS 而不是 FTP。 如果未使用这两种协议或其中一种协议，则应[将其禁用](deploy-ftp.md#enforce-ftps)。
 
@@ -103,7 +103,7 @@ Azure 应用服务提供用户或客户端应用的统包身份验证和授权�
 
 ## <a name="application-secrets"></a>应用程序密钥
 
-请勿将应用程序密钥（例如数据库凭据、API 令牌和私钥）存储在代码或配置文件中。 广为接受的方法是使用所选语言的标准模式将它们作为[环境变量](https://wikipedia.org/wiki/Environment_variable)进行访问。 在应用服务中，环境变量通过[应用设置](configure-common.md#configure-app-settings)（对于 .NET 应用程序则为[连接字符串](configure-common.md#configure-connection-strings)）进行定义。 应用设置和连接字符串以加密方式存储在 Azure 中，只有在应用启动并将其注入应用的进程内存之前才会对其进行解密。 加密密钥会定期轮换。
+请勿将应用程序密钥（例如数据库凭据、API 令牌和私钥）存储在代码或配置文件中。 广为接受的方法是使用所选语言的标准模式将这些机密作为环境变量进行访问。 在应用服务中，环境变量通过[应用设置](configure-common.md#configure-app-settings)（对于 .NET 应用程序则为[连接字符串](configure-common.md#configure-connection-strings)）进行定义。 应用设置和连接字符串以加密方式存储在 Azure 中，只有在应用启动并将其注入应用的进程内存之前才会对其进行解密。 加密密钥会定期轮换。
 
 或者，可以将应用服务应用与 [Azure Key Vault](/key-vault/) 集成，以实现高级密钥管理。 通过[使用托管标识访问 Key Vault](../key-vault/tutorial-web-application-keyvault.md)，应用服务应用可以安全地访问所需的机密。
 

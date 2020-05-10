@@ -4,14 +4,14 @@ description: 了解在与 Azure Cache for Redis 通信时如何从应用程序�
 author: yegu-ms
 ms.service: cache
 ms.topic: conceptual
-ms.date: 03/30/2020
+ms.date: 04/26/2020
 ms.author: v-junlch
-ms.openlocfilehash: 9a829a032843b04c69923287c0cdf1c7d97c6dec
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: e7abc51742262257fca47e761e0a017c95da1e58
+ms.sourcegitcommit: e3512c5c2bbe61704d5c8cbba74efd56bfe91927
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80581814"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82267582"
 ---
 # <a name="remove-tls-10-and-11-from-use-with-azure-cache-for-redis"></a>删除与 Azure Cache for Redis 配合使用的 TLS 1.0 和 1.1
 
@@ -34,7 +34,7 @@ ms.locfileid: "80581814"
 | 云               | 阶段 1 开始日期 | 阶段 2 开始日期      |
 |---------------------|--------------------|-------------------------|
 | Azure（公有云）      |  2020 年 1 月 13 日  | 2020 年 5 月 11 日（已延长） |
-| Azure Government    |  2020 年 3 月 13 日    | 2020 年 5 月 11 日            |
+| Azure Government     |  2020 年 3 月 13 日    | 2020 年 5 月 11 日            |
 | Azure 德国       |  2020 年 3 月 13 日    | 2020 年 5 月 11 日            |
 | Azure 中国         |  2020 年 3 月 13 日    | 2020 年 5 月 11 日            |
 
@@ -51,7 +51,7 @@ ms.locfileid: "80581814"
 在 .NET Framework 4.5.2 或更低版本上，Redis .NET 客户端默认使用最低的 TLS 版本；在 .NET Framework 4.6 或更高版本上，则使用最新的 TLS 版本。 如果使用较低版本的 .NET Framework，可以手动启用 TLS 1.2：
 
 * **StackExchange.Redis：** 在连接字符串中设置 `ssl=true` 和 `sslprotocols=tls12`。
-* **ServiceStack.Redis：** 按照 [ServiceStack.Redis 说明](https://github.com/ServiceStack/ServiceStack.Redis/pull/247)操作。
+* **ServiceStack.Redis：** 请按照 [ServiceStack.Redis](https://github.com/ServiceStack/ServiceStack.Redis#servicestackredis-ssl-support) 说明操作，并至少需要 ServiceStack.Redis v5.6。
 
 ### <a name="net-core"></a>.NET Core
 
@@ -123,4 +123,3 @@ Redigo 默认使用 TLS 1.2。
 
 - [如何配置 Azure Cache for Redis](cache-configure.md)
 
-<!-- Update_Description: wording update -->

@@ -1,11 +1,10 @@
 ---
-title: Azure CLI 脚本示例 - 加密 Linux VM | Azure
-description: Azure CLI Script 示例 - 加密 Linux VM
+title: Azure CLI 脚本示例 - 加密 Azure 中的 Linux 虚拟机
+description: Azure CLI 脚本示例 - 加密 Linux VM
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: rockboyfor
 manager: digimobile
-editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
@@ -14,19 +13,19 @@ ms.topic: sample
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 origin.date: 12/15/2017
-ms.date: 08/12/2019
+ms.date: 04/27/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: add19c39795d1c66006577be48370f5c8f4a492c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 4ca34a4b8c888a8156559de4bb9307375217b49f
+ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "69539029"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82595992"
 ---
-# <a name="encrypt-a-linux-virtual-machine-in-azure"></a>加密 Azure 中的 Linux 虚拟机
+# <a name="encrypt-a-linux-virtual-machine-in-azure"></a>在 Azure 中加密 Linux 虚拟机
 
-此脚本创建安全的 Azure Key Vault、加密密钥、Azure Active Directory 服务主体和 Linux 虚拟机 (VM)。 然后使用来自 Key Vault 和服务主体凭据的加密密钥对 VM 进行加密。
+此脚本创建安全的 Azure 密钥保管库、加密密钥、Azure Active Directory 服务主体和 Linux 虚拟机 (VM)。 然后使用 Key Vault 和服务主体凭据中的加密密钥对 VM 进行加密。
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -88,6 +87,7 @@ echo "The encryption process can take some time. View status with:
 When encryption status shows \`VMRestartPending\`, restart the VM with:
 
     az vm restart --resource-group myResourceGroup --name myVM"
+
 ```
 
 ## <a name="clean-up-deployment"></a>清理部署 
@@ -100,19 +100,21 @@ az group delete --name myResourceGroup
 
 ## <a name="script-explanation"></a>脚本说明
 
-此脚本使用以下命令创建资源组、Azure Key Vault、服务主体、虚拟机和所有相关资源。 表中的每条命令均链接到特定于命令的文档。
+此脚本使用以下命令创建资源组、Azure 密钥保管库、服务主体、虚拟机和所有相关资源。 表中的每条命令均链接到特定于命令的文档。
 
-| Command | 说明 |
+| 命令 | 注释 |
 |---|---|
 | [az group create](https://docs.azure.cn/cli/group?view=azure-cli-latest#az-group-create) | 创建用于存储所有资源的资源组。 |
-| [az keyvault create](https://docs.azure.cn/cli/keyvault?view=azure-cli-latest#az-keyvault-create) | 创建 Azure Key Vault 来存储安全的数据，例如加密密钥。 |
+| [az keyvault create](https://docs.azure.cn/cli/keyvault?view=azure-cli-latest#az-keyvault-create) | 创建 Azure Key Vault，存储加密密钥等安全数据。 |
 | [az keyvault key create](https://docs.azure.cn/cli/keyvault/key?view=azure-cli-latest#az-keyvault-key-create) | 在 Key Vault 中创建加密密钥。 |
-| [az ad sp create-for-rbac](https://docs.azure.cn/cli/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) | 创建 Azure Active Directory 服务主体来安全地进行身份验证并控制对加密密钥的访问。 |
-| [az keyvault set-policy](https://docs.azure.cn/cli/keyvault?view=azure-cli-latest#az-keyvault-set-policy) | 设置对 Key Vault 的权限来向服务主体授予对加密密钥的访问权限。 |
+| [az ad sp create-for-rbac](https://docs.azure.cn/cli/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) | 创建 Azure Active Directory 服务主体，安全地进行身份验证并控制对加密密钥的访问。 |
+| [az keyvault set-policy](https://docs.azure.cn/cli/keyvault?view=azure-cli-latest#az-keyvault-set-policy) | 设置对 Key Vault 的权限，授予服务主体访问加密密钥的权限。 |
 | [az vm create](https://docs.azure.cn/cli/vm?view=azure-cli-latest#az-vm-create) | 创建虚拟机并将其连接到网卡、虚拟网络、子网和 NSG。 此命令还指定要使用的虚拟机映像和管理凭据。  |
-| [az vm encryption enable](https://docs.azure.cn/cli/vm/encryption?view=azure-cli-latest#az-vm-encryption-enable) | 使用服务主体凭据和加密密钥在 VM 上启用加密。 |
+| [az vm encryption enable](https://docs.azure.cn/cli/vm/encryption?view=azure-cli-latest#az-vm-encryption-enable) | 使用服务主体凭据和加密密钥对 VM 进行加密。 |
 | [az vm encryption show](https://docs.azure.cn/cli/vm/encryption?view=azure-cli-latest#az-vm-encryption-show) | 显示 VM 加密过程的状态。 |
-| [az group delete](https://docs.azure.cn/cli/group?view=azure-cli-latest#az-group-delete)  | 删除资源组，包括所有嵌套的资源。 |
+| [az group delete](https://docs.azure.cn/cli/group?view=azure-cli-latest#az-group-delete) | 删除资源组，包括所有嵌套的资源。 |
+
+<!--CORRECT ON [az group delete](https://docs.azure.cn/cli/group?view=azure-cli-latest#az-group-delete)-->
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -9,18 +9,19 @@ ms.service: notification-hubs
 ms.workload: mobile
 ms.topic: article
 origin.date: 03/25/2019
-ms.date: 12/09/2019
+ms.date: 04/20/2019
 ms.author: v-tawe
 ms.reviewer: jowargo
 ms.lastreviewed: 03/25/2019
-ms.openlocfilehash: d2268fd64a9c9e3468d31f6a49bde351576f22fa
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 8f6b1573f71e2d88f40f749e9dfe805a8ca01067
+ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74885008"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82588484"
 ---
-# <a name="configure-apple-push-notification-service-apns-settings-for-a-notification-hub-in-the-azure-portal"></a>在 Azure 门户中为通知中心配置 Apple Push Notification 服务 (APNS) 设置
+# <a name="configure-apple-push-notification-service-settings-for-a-notification-hub-in-the-azure-portal"></a>在 Azure 门户中为通知中心配置 Apple Push Notification 服务设置
+
 本文介绍如何使用 Azure 门户为 Azure 通知中心配置 Apple Push Notification 服务 (APNS) 设置。 
 
 ## <a name="prerequisites"></a>先决条件

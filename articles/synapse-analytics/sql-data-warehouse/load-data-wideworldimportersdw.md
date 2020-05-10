@@ -82,7 +82,7 @@ SQL 池是使用定义的一组[计算资源](memory-concurrency-limits.md)创�
 
 1. 在“其他设置”页上，将“使用现有数据”设置为“无”，并将“排序规则”保留为默认设置“SQL_Latin1_General_CP1_CI_AS”     。
 
-1. 选择“查看 + 创建”以检查设置，然后选择“创建”以创建数据仓库   。 可以通过从“通知”菜单打开“部署正在进行”页来监视进度   。
+1. 选择“查看 + 创建”以查看设置，然后选择“创建”以创建数据仓库   。 可以通过从“通知”菜单打开“部署正在进行”页来监视进度   。
 
      ![通知](./media/load-data-wideworldimportersdw/notification.png)
 
@@ -105,7 +105,7 @@ Azure Synapse Analytics 服务在服务器级别创建一个防火墙，阻止�
 
     ![服务器设置](./media/load-data-wideworldimportersdw/server-settings.png)
 
-1. 在“防火墙和虚拟网络”页上，选择“添加客户端 IP”将当前 IP 地址添加到新的防火墙规则   。 防火墙规则可以针对单个 IP 地址或一系列 IP 地址打开端口 1433。
+1. 在“防火墙和虚拟网络”页上选择“添加客户端 IP”，将当前 IP 地址添加到新的防火墙规则   。 防火墙规则可以针对单个 IP 地址或一系列 IP 地址打开端口 1433。
 
     ![服务器防火墙规则](./media/load-data-wideworldimportersdw/server-firewall-rule.png)
 
@@ -199,7 +199,7 @@ Azure Synapse Analytics 服务在服务器级别创建一个防火墙，阻止�
 
 ## <a name="create-external-tables-and-objects"></a>创建外部表和对象
 
-已准备好开始将数据加载到新的数据仓库。 要了解如何将数据置于 Azure Blob 存储或如何将其直接从源加载到 SQL 池以供将来参考，请参阅[加载概述](design-elt-data-loading.md)。
+已准备好开始将数据加载到新的数据仓库。 若要了解如何将数据置于 Azure Blob 存储或将其直接从源加载到 SQL 池以供将来参考，请参阅[加载概述](design-elt-data-loading.md)。
 
 运行以下 SQL 脚本，指定有关想要加载的数据的信息。 此信息包括数据所在的位置、数据内容的格式以及数据的表定义。 数据位于全局 Azure Blob 中。
 
@@ -686,7 +686,7 @@ Azure Synapse Analytics 服务在服务器级别创建一个防火墙，阻止�
     ;
     ```
 
-2. 在加载数据的同时查看数据。 假设要加载几个 GB 的数据，并将其压缩成高性能群集列存储索引。 在 SampleDW 中打开新查询窗口，并运行以下查询显示负载状态。 开始查询后，在 SQL 池执行繁重任务的同时，可享用咖啡和小吃。
+2. 在加载数据的同时查看数据。 假设要加载几个 GB 的数据，并将其压缩成高性能群集列存储索引。 在 SampleDW 中打开新查询窗口，并运行以下查询显示负载状态。 开始查询后，在 SQL 池执行繁重任务的同时，你可以享用咖啡和小吃。
 
     ```sql
     SELECT
@@ -1099,9 +1099,9 @@ SELECT TOP 1 * FROM [wwi].[dimension_TransactionType];
 完成了以下操作：
 > [!div class="checklist"]
 >
-> * 在 Azure 门户中使用 SQL 池创建了数据仓库
+> * 在 Azure 门户中使用 SQL 池创建数据仓库
 > * 在 Azure 门户中设置服务器级防火墙规则
-> * 使用 SSMS 连接到了 SQL 池
+> * 使用 SSMS 连接到 SQL 池
 > * 创建了专用于加载数据的用户
 > * 在 Azure 存储 Blob 中为数据创建了外部表
 > * 使用 CTAS T-SQL 语句将数据加载到数据仓库

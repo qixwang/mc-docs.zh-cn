@@ -6,12 +6,12 @@ origin.date: 10/24/2019
 ms.date: 01/13/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: e379c1637a5f907a9239589733dd707b3c9a4606
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: b906cabedc9d814e9bc7e284ba46f0a19227f1fd
+ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80586822"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82588676"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Azure 应用服务中的身份验证和授权的高级用法
 
@@ -25,8 +25,8 @@ ms.locfileid: "80586822"
 <!--* [How to configure your app to use Google login](configure-authentication-provider-google.md)-->
 <!--* [How to configure your app to use Twitter login](configure-authentication-provider-twitter.md)-->
 
-* [如何将应用配置为使用 Azure Active Directory 登录](configure-authentication-provider-aad.md)
-* [如何将应用配置为使用 Microsoft 帐户登录](configure-authentication-provider-microsoft.md)
+* [How to configure your app to use Azure Active Directory login](configure-authentication-provider-aad.md)
+* [How to configure your app to use Microsoft Account login](configure-authentication-provider-microsoft.md)
 
 ## <a name="use-multiple-sign-in-providers"></a>使用多个登录提供程序
 
@@ -92,7 +92,7 @@ X-ZUMO-AUTH: <authenticationToken_value>
 
 ## <a name="sign-out-of-a-session"></a>注销会话
 
-用户可通过向应用的 `GET` 终结点发送 `/.auth/logout` 请求来启动注销。 `GET` 请求可执行以下操作：
+用户可通过向应用的 `/.auth/logout` 终结点发送 `GET` 请求来启动注销。 `GET` 请求可执行以下操作：
 
 - 清除当前会话中的身份验证 Cookie。
 - 从令牌存储中删除当前用户的令牌。
@@ -110,7 +110,7 @@ X-ZUMO-AUTH: <authenticationToken_value>
 GET /.auth/logout?post_logout_redirect_uri=/index.html
 ```
 
-建议对 [ 的值进行](https://wikipedia.org/wiki/Percent-encoding)编码`post_logout_redirect_uri`。
+建议对 `post_logout_redirect_uri` 的值进行编码。
 
 使用完全限定的 URL 时，URL 必须托管在同一域中，或配置为允许应用访问的外部重定向 URL。 在以下示例中，若要重定向到未托管在同一域中的 `https://myexternalurl.com`：
 
@@ -126,7 +126,7 @@ az webapp auth update --name <app_name> --resource-group <group_name> --allowed-
 
 ## <a name="preserve-url-fragments"></a>保留 URL 片段
 
-用户登录应用后，通常希望会重定向到同一页面的同一部分，例如 `/wiki/Main_Page#SectionZ`。 然而，由于从未向服务器发送 [URL 片段](https://wikipedia.org/wiki/Fragment_identifier)（例如，`#SectionZ`），因此默认情况下，OAuth 登录完成并重定向回应用后，会保留这些片段。 然后，当用户需再次导航到所需定位点时，他们无法获得最佳体验。 此限制存在于所有服务器端身份验证解决方案中。
+用户登录应用后，通常希望会重定向到同一页面的同一部分，例如 `/wiki/Main_Page#SectionZ`。 但是，由于从不向服务器发送 URL 片段（例如，`#SectionZ`），因此默认情况下，OAuth 登录完成并重定向回应用后，会保留这些片段。 然后，当用户需再次导航到所需定位点时，他们无法获得最佳体验。 此限制存在于所有服务器端身份验证解决方案中。
 
 在应用服务身份验证中，可跨 OAuth 登录保留 URL 片段。 为此，请将名为 `WEBSITE_AUTH_PRESERVE_URL_FRAGMENT` 的应用设置设为 `true`。 可在 [Azure 门户](https://portal.azure.cn) 中执行此操作，或只需在 Azure CLI 中运行以下命令：
 
@@ -141,9 +141,9 @@ az webapp config appsettings set --name <app_name> --resource-group <group_name>
 * X-MS-CLIENT-PRINCIPAL-NAME
 * X-MS-CLIENT-PRINCIPAL-ID
 
-使用任何语言或框架编写的代码均可从这些标头获取所需信息。 对于 ASP.NET 4.6 应用，**ClaimsPrincipal** 会自动设置为相应的值。 但是，ASP.NET Core 不提供与应用服务用户声明集成的身份验证中间件。 有关解决方法，请参阅 [MaximeRouiller.Azure.AppService.EasyAuth](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth)。
+使用任何语言或框架编写的代码均可从这些标头获取所需信息。 对于 ASP.NET 4.6 应用， **ClaimsPrincipal** 会自动设置为相应的值。 但是，ASP.NET Core 不提供与应用服务用户声明集成的身份验证中间件。 有关解决方法，请参阅 [MaximeRouiller.Azure.AppService.EasyAuth](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth)。
 
-应用程序也可以通过调用 `/.auth/me` 来获取有关经过身份验证的用户的其他详细信息。 移动应用服务器 SDK 提供处理该数据的帮助器方法。 有关详细信息，请参阅[如何使用 Azure 移动应用 Node.js SDK](../app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#howto-tables-getidentity)和[使用适用于 Azure 移动应用的 .NET 后端服务器 SDK](../app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#user-info)。
+应用程序也可以通过调用 `/.auth/me` 来获取有关经过身份验证的用户的其他详细信息。 移动应用服务器 SDK 提供处理该数据的帮助器方法。 有关详细信息，请参阅[如何使用 Azure 移动应用 Node.js SDK](../app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#howto-tables-getidentity) 和[使用适用于 Azure 移动应用的 .NET 后端服务器 SDK](../app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#user-info)。
 
 ## <a name="retrieve-tokens-in-app-code"></a>检索应用代码中的令牌
 
@@ -162,13 +162,13 @@ az webapp config appsettings set --name <app_name> --resource-group <group_name>
 
 ## <a name="refresh-identity-provider-tokens"></a>刷新标识提供程序令牌
 
-当提供程序的访问令牌（而不是[会话令牌](#extend-session-token-expiration-grace-period)）到期时，需要在再次使用该令牌之前重新验证用户。 向应用程序的 `GET` 终结点发出 `/.auth/refresh` 调用可以避免令牌过期。 调用应用服务时，应用服务会自动刷新已身份验证用户的令牌存储中的访问令牌。 应用代码发出的后续令牌请求将获取刷新的令牌。 但是，若要正常刷新令牌，令牌存储必须包含提供程序的[刷新令牌](https://auth0.com/learn/refresh-tokens/)。 每个提供程序会阐述获取刷新令牌的方式。以下列表提供了简短摘要：
+当提供程序的访问令牌（而不是[会话令牌](#extend-session-token-expiration-grace-period)）到期时，需要在再次使用该令牌之前重新验证用户。 向应用程序的 `/.auth/refresh` 终结点发出 `GET` 调用可以避免令牌过期。 调用应用服务时，应用服务会自动刷新已身份验证用户的令牌存储中的访问令牌。 应用代码发出的后续令牌请求将获取刷新的令牌。 但是，若要正常刷新令牌，令牌存储必须包含提供程序的[刷新令牌](https://auth0.com/learn/refresh-tokens/)。 每个提供程序会阐述获取刷新令牌的方式。以下列表提供了简短摘要：
 
 - **Microsoft 帐户**：[配置 Microsoft 帐户身份验证设置](configure-authentication-provider-microsoft.md)时，请选择 `wl.offline_access` 范围。
 
 <!-- Azure Resource Manager not available-->
 
-配置提供程序后，可以在令牌存储区[查找刷新令牌和访问令牌的过期时间](#retrieve-tokens-in-app-code)。 
+配置提供程序以后，即可在令牌存储中[找到访问令牌的刷新令牌和过期时间](#retrieve-tokens-in-app-code)。 
 
 若要随时刷新访问令牌，只需以任何语言调用 `/.auth/refresh`。 以下代码片段从 JavaScript 客户端使用 jQuery 刷新访问令牌。
 
@@ -218,7 +218,7 @@ az webapp auth update --resource-group <group_name> --name <app_name> --token-re
 
 1. 导航到 `https://<app-name>.scm.chinacloudsites.cn/DebugConsole`
 
-1. 在打开应用服务文件的浏览器资源管理器中，导航到“site/wwwroot”。  如果 *Web.config* 不存在，请选择“ **”+“新建文件”来创建该文件。**  >   
+1. 在打开应用服务文件的浏览器资源管理器中，导航到“site/wwwroot”。  如果 *Web.config* 不存在，请选择“+” > “新建文件”来创建该文件。   
 
 1. 选择“Web.config”旁边的铅笔图标对其进行编辑。  添加以下配置代码，然后单击“保存”。  如果 *Web.config* 已存在，则只需在其中添加包含任何内容的 `<authorization>` 元素即可。 在 `<allow>` 元素中添加要允许的帐户。
 

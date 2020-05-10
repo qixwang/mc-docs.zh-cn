@@ -1,20 +1,20 @@
 ---
 title: 支持的资源管理器资源类型
 description: 提供 Azure Resource Graph 和更改历史记录支持的资源管理器资源类型的列表。
-origin.date: 03/23/2020
-ms.date: 03/30/2020
+origin.date: 04/15/2020
+ms.date: 04/20/2020
 ms.topic: reference
 ms.author: v-tawe
-ms.openlocfilehash: 686a2ada382b66d82eb9d0c450f68a81fbf2b38b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 57318b5e67b6686642e96d1f2040aaa2e6dc1460
+ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80586775"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82588617"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Azure Resource Graph 表和资源类型引用
 
-Azure Resource Graph 支持 **Azure 资源管理器**的下列[资源类型](../../../azure-resource-manager/management/overview.md)。 每个**资源类型**都是 Resource Graph 中的**表**的一部分。
+Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-manager/management/overview.md)的下列**资源类型**。 每个**资源类型**都是 Resource Graph 中的**表**的一部分。
 
 ## <a name="advisorresources"></a>advisorresources
 
@@ -36,7 +36,7 @@ Azure Resource Graph 支持 **Azure 资源管理器**的下列[资源类型](../
 - microsoft.resources/subscriptions
 - microsoft.resources/subscriptions/resourcegroups
 
-## <a name="resources"></a>资源
+## <a name="resources"></a>resources
 
 - 84codes.cloudamqp/servers
 - citrix.services/xenappessentials
@@ -190,6 +190,7 @@ Azure Resource Graph 支持 **Azure 资源管理器**的下列[资源类型](../
 - microsoft.eventhub/clusters
 - microsoft.eventhub/namespaces
 - microsoft.experimentation/experimentworkspaces
+- microsoft.falcon/namespaces
 - microsoft.gaming/titles
 - microsoft.genomics/accounts
 - microsoft.guestconfiguration/automanagedaccounts
@@ -292,6 +293,7 @@ Azure Resource Graph 支持 **Azure 资源管理器**的下列[资源类型](../
 - microsoft.network/networkexperimentprofiles
 - microsoft.network/networkintentpolicies
 - microsoft.network/networkinterfaces
+- microsoft.network/networkmanagers
 - microsoft.network/networkprofiles
 - microsoft.network/networksecuritygroups
 - microsoft.network/networkvirtualappliances
@@ -392,7 +394,6 @@ Azure Resource Graph 支持 **Azure 资源管理器**的下列[资源类型](../
 - microsoft.storagesyncint/storagesyncservices
 - microsoft.storsimple/managers
 - microsoft.streamanalytics/streamingjobs
-- microsoft.support/supporttickets
 - microsoft.synapse/workspaces
 - microsoft.synapse/workspaces/bigdatapools
 - microsoft.synapse/workspaces/sqlpools
@@ -448,6 +449,7 @@ Azure Resource Graph 支持 **Azure 资源管理器**的下列[资源类型](../
 - wandisco.fusion/fusiongroups
 - wandisco.fusion/fusiongroups/azurezones
 - wandisco.fusion/fusiongroups/azurezones/plugins
+- wandisco.fusion/fusiongroups/hivereplicationrules
 - wandisco.fusion/fusiongroups/managedonpremzones
 - wandisco.fusion/fusiongroups/onpremzones
 - wandisco.fusion/fusiongroups/replicationrules

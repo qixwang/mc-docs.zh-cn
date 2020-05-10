@@ -20,12 +20,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: f957ff5cb384d0f5dad4959ac9ef2602ee549ca1
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 00140e546f7ef9ef61590f328440e7c8031de682
+ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75336505"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82588714"
 ---
 # <a name="odata-collection-operators-in-azure-cognitive-search---any-and-all"></a>Azure 认知搜索中的 OData 集合运算符 - `any` 和 `all`
 
@@ -33,7 +33,7 @@ ms.locfileid: "75336505"
 
 ## <a name="syntax"></a>语法
 
-以下 EBNF（[扩展巴科斯-瑙尔范式](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)）定义了使用 `any` 或 `all` 的 OData 表达式的语法。
+以下 EBNF（扩展巴科斯-瑙尔范式）定义了使用 `any` 或 `all` 的 OData 表达式的语法。
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -46,7 +46,7 @@ collection_filter_expression ::=
 lambda_expression ::= identifier ':' boolean_expression
 ```
 
-交互式语法图也可用：
+下面还提供了交互式语法图：
 
 > [!div class="nextstepaction"]
 > [Azure 认知搜索的 OData 语法图](https://azuresearch.github.io/odata-syntax-diagram/#collection_filter_expression)

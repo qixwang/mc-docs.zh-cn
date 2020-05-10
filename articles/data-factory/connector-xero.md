@@ -8,19 +8,20 @@ manager: digimobile
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 origin.date: 10/25/2019
-ms.date: 01/06/2020
+ms.date: 05/11/2020
 ms.author: v-jay
-ms.openlocfilehash: 43efec957e4fbeeef83fde048e685f0c5ad4c679
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: bd86aa48479643898f614a7ad689e4e5c1ae6cf4
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75623714"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82197798"
 ---
 # <a name="copy-data-from-xero-using-azure-data-factory"></a>使用 Azure 数据工厂从 Xero 复制数据
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从 Xero 复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
@@ -57,8 +58,8 @@ Xero 链接服务支持以下属性：
 | consumerKey | 与 Xero 应用程序关联的使用者密钥。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
 | privateKey | 为 Xero 专用应用程序生成的 .pem 文件中的私钥，请参阅[创建公钥/私钥对](https://developer.xero.com/documentation/api-guides/create-publicprivate-key)。 注意：使用 `openssl genrsa -out privatekey.pem 512` 可生成数位为 512 的 privatekey.pem，不支持生成 1024 数位  。 包括 .pem 文件中的所有文本，包括 Unix 行尾(\n)，请参见下面的示例。<br/><br/>将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
 | useEncryptedEndpoints | 指定是否使用 HTTPS 加密数据源终结点。 默认值为 true。  | 否 |
-| useHostVerification | 指定通过 SSL 连接时是否需要服务器证书中的主机名匹配服务器的主机名。 默认值为 true。  | 否 |
-| usePeerVerification | 指定通过 SSL 连接时是否要验证服务器的标识。 默认值为 true。  | 否 |
+| useHostVerification | 指定通过 TLS 进行连接时是否要求服务器证书中的主机名与服务器的主机名匹配。 默认值为 true。  | 否 |
+| usePeerVerification | 指定通过 TLS 进行连接时是否要验证服务器的标识。 默认值为 true。  | 否 |
 
 **示例：**
 

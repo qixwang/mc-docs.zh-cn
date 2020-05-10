@@ -2,13 +2,13 @@
 title: 通过 Azure 资源运行状况支持的资源类型 | Microsoft Docs
 description: 通过 Azure 资源运行状况支持的资源类型
 ms.topic: conceptual
-ms.date: 03/17/2020
-ms.openlocfilehash: 359572b3507abbf8927cdafbaf83bcc5894e07e5
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 04/28/2020
+ms.openlocfilehash: 682170236468194d1138dc6b09a3088124b1bea4
+ms.sourcegitcommit: e3512c5c2bbe61704d5c8cbba74efd56bfe91927
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79497090"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82267700"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Azure 资源运行状况中的资源类型和运行状况检查
 下面是通过资源运行状况执行的所有检查（按资源类型）的完整列表。
@@ -47,6 +47,11 @@ ms.locfileid: "79497090"
 |执行的检查|
 |---|
 |<ul><li>是否可从数据中心内访问帐户？</li><li>认知服务资源提供程序是否可用？</li><li>认知服务在相应区域中是否可用？</li><li>是否可以在保存资源元数据的存储帐户上执行读取操作？</li><li>是否已达到 API 调用配额？</li><li>是否已达到 API 调用读取限制？</li></ul>|
+
+## <a name="microsoftcomputehostgroupshosts"></a>Microsoft.compute/hostgroups/hosts
+|执行的检查|
+|---|
+|<ul><li>主机是否已启动且正在运行？</li><li>主机硬件是否已降级？</li><li>主机是否已解除分配？</li><li>主机硬件服务是否已修复到不同的硬件？</li></ul>|
 
 ## <a name="microsoftcomputevirtualmachines"></a>Microsoft.compute/virtualmachines
 |执行的检查|

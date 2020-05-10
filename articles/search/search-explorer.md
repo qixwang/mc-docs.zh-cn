@@ -18,7 +18,7 @@ ms.locfileid: "82588761"
 ---
 # <a name="quickstart-use-search-explorer-to-run-queries-in-the-portal"></a>快速入门：在门户中使用“搜索浏览器”来运行查询
 
-“搜索浏览器”  是一种内置查询工具，用于针对 Azure 认知搜索中的搜索索引运行查询。 利用此工具，可以轻松学习查询语法，测试查询或筛选器表达式，或者通过验证是否存在较新的内容来确认索引刷新结果。
+“搜索浏览器”  是一种内置查询工具，用于对 Azure 认知搜索中的搜索索引运行查询。 利用此工具，可以轻松学习查询语法、测试查询或筛选器表达式，或者通过验证是否存在较新的内容来确认索引刷新结果。
 
 本快速入门使用 realestate-us-sample-index  来演示搜索浏览器。 请求是使用[搜索 REST API](https://docs.microsoft.com/rest/api/searchservice/) 表述的，响应以 JSON 文档的形式返回。
 
@@ -26,7 +26,7 @@ ms.locfileid: "82588761"
 
 + [创建 Azure 认知搜索服务](search-create-service-portal.md)或在当前订阅下[查找现有服务](https://portal.azure.cn/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 可以使用本快速入门的免费服务。
 
-+ 本快速入门使用了 realestate-us-sample-index  。 分步完成[导入数据  ](search-import-data-portal.md)向导，以便基于内置的示例数据源生成索引。
++ 本快速入门使用 realestate-us-sample-index  。 分步完成[导入数据  ](search-import-data-portal.md)向导，以便基于内置的示例数据源生成索引。
 
 ## <a name="start-search-explorer"></a>启动搜索资源管理器
 
@@ -36,7 +36,7 @@ ms.locfileid: "82588761"
 
    ![门户中的搜索浏览器命令](./media/search-explorer/search-explorer-cmd2.png "门户中的搜索浏览器命令")
 
-    或在打开的索引上使用嵌入的“搜索浏览器”  选项卡：
+    或者，在打开的索引上使用嵌入的“搜索浏览器”  选项卡：
 
    ![“搜索浏览器”选项卡](./media/search-explorer/search-explorer-tab.png "“搜索浏览器”选项卡")
 

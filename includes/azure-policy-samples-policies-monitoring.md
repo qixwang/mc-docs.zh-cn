@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-origin.date: 03/12/2020
-ms.date: 03/16/2020
+origin.date: 04/03/2020
+ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: f14cd2a265c6f1db895c423ea456ed9b4ff622f1
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 9f2296bba6c922a3d6ee359f420dbf170abd0308
+ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80989245"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82595275"
 ---
 |名称 |说明 |效果 |版本 |GitHub |
 |---|---|---|---|---|
@@ -56,6 +56,6 @@ ms.locfileid: "80989245"
 |[为 Windows VM 部署 Log Analytics 代理](https://portal.azure.cn/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0868462e-646c-4fe3-9ced-a733534b6a2c) |如果 VM 映像 (OS) 位于定义的列表中且未安装代理，请为 Windows VM 部署 Log Analytics 代理。 OS 映像列表将随着支持的更新而不断更新。 |deployIfNotExists |1.0.1 |[链接](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/LogAnalyticsExtension_Windows_VM_Deploy.json)。
 |[应在 Linux 虚拟机上安装网络流量数据收集代理](https://portal.azure.cn/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F04c4380f-3fae-46e8-96c9-30193528f602) |安全中心使用 Microsoft Monitoring Dependency Agent 从 Azure 虚拟机收集网络流量数据，以启用高级网络保护功能，例如网络映射上的流量可视化效果、网络强化建议和特定网络威胁。 |AuditIfNotExists、Disabled |1.0.0-preview |[链接](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/ASC_Dependency_Agent_Audit_Linux.json)。
 |[应在 Windows 虚拟机上安装网络流量数据收集代理](https://portal.azure.cn/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2f2ee1de-44aa-4762-b6bd-0893fc3f306d) |安全中心使用 Microsoft Monitoring Dependency Agent 从 Azure 虚拟机收集网络流量数据，以启用高级网络保护功能，例如网络映射上的流量可视化效果、网络强化建议和特定网络威胁。 |AuditIfNotExists、Disabled |1.0.0-preview |[链接](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/ASC_Dependency_Agent_Audit_Windows.json)。
-|[必须使用 BYOK 对包含具有活动日志的容器的存储帐户进行加密](https://portal.azure.cn/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffbb99e8e-e444-4da0-9ff1-75c92f5a85b2) |此策略审核是否已使用 BYOK 对包含具有活动日志的容器的存储帐户进行加密。 仅当存储帐户在设计上依赖于与活动日志相同的订阅时，此策略才起作用。 有关 Azure 存储静态加密的详细信息，请参阅 https://aka.ms/azurestoragebyok 。  |AuditIfNotExists、Disabled |1.0.0 |[链接](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/ActivityLog_StorageAccountBYOK_Audit.json)。
+|[必须使用 BYOK 对包含具有活动日志的容器的存储帐户进行加密](https://portal.azure.cn/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffbb99e8e-e444-4da0-9ff1-75c92f5a85b2) |此策略审核是否已使用 BYOK 对包含具有活动日志的容器的存储帐户进行加密。 仅当存储帐户在设计上依赖于与活动日志相同的订阅时，此策略才起作用。 有关 Azure 存储静态加密的详细信息，请参阅[存储加密密钥门户](https://docs.azure.cn/storage/common/storage-encryption-keys-portal)。  |AuditIfNotExists、Disabled |1.0.0 |[链接](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/ActivityLog_StorageAccountBYOK_Audit.json)。
 |[应在虚拟机规模集上安装 Log Analytics 代理](https://portal.azure.cn/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fefbde977-ba53-4479-b8e9-10b957924fbf) |此策略审核是否有任何 Windows/Linux 虚拟机规模集未安装 Log Analytics 代理。 |AuditIfNotExists、Disabled |1.0.0 |[链接](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/VMSS_LogAnalyticsAgent_AuditIfNotExists.json)。
 |[应在虚拟机上安装 Log Analytics 代理](https://portal.azure.cn/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa70ca396-0a34-413a-88e1-b956c1e683be) |此策略审核是否有任何 Windows/Linux 虚拟机未安装 Log Analytics 代理。 |AuditIfNotExists、Disabled |1.0.0 |[链接](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/VirtualMachines_LogAnalyticsAgent_AuditIfNotExists.json)。

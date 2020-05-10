@@ -19,7 +19,7 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "82198522"
 ---
-# <a name="development-best-practices-for-synapse-sql-pool"></a>Synapse SQL 池的开发最佳做法
+# <a name="development-best-practices-for-synapse-sql-pool"></a>Synapse SQL 池开发最佳做法
 
 本文介绍在开发 SQL 池解决方案时的指导和最佳做法。
 
@@ -37,12 +37,12 @@ ms.locfileid: "82198522"
 
 可将 SQL 池配置为自动检测和创建有关列的统计信息。  优化工具创建的查询计划质量以可用的统计信息为限。  
 
-建议为数据库启用 AUTO_CREATE_STATISTICS，并使统计信息每日更新或者在每次加载后更新，以确保查询中使用的有关列的统计信息始终保持最新。
+建议为数据库启用 AUTO_CREATE_STATISTICS，并使统计信息每日更新或者在每次加载后更新，确保查询中使用的有关列的统计信息始终保持最新。
 
 如果你发现更新所有统计信息需要太长的时间，可以尝试更精心地选择哪些列的统计信息需要频繁更新。 例如，可能想要更新每天都要添加新值的日期列。
 
 > [!TIP]
-> 对涉及联接的列、WHERE 子句中使用的列、在 GROUP BY 中找到的列更新统计信息，可以获得最大效益。
+> 对于涉及联接的列、WHERE 子句中使用的列、在 GROUP BY 中找到的列，更新其统计信息可以获得最大效益。
 
 另请参阅[管理表统计信息](sql-data-warehouse-tables-statistics.md)、[CREATE STATISTICS](sql-data-warehouse-tables-statistics.md) 和 [UPDATE STATISTICS](sql-data-warehouse-tables-statistics.md#update-statistics)。
 
@@ -54,7 +54,7 @@ ms.locfileid: "82198522"
 
 例如，如果有一个依 order_id 分布的订单表，以及一个也是依 order_id 分布的事务表，如果将订单数据联接到事务表上的 order_id，此查询将变成传递查询，也就是数据移动操作将被消除。  减少步骤意味着加快查询速度。  更少的数据移动也会让查询更快。  
 
-加载分布的表时，请确保传入数据的分布键没有排序，因为这会拖慢加载速度。  下面的文章提供了有关如何选择分布列来提升性能，以及如何在 CREATE TABLES 语句的 WITH 子句中定义分布式表的更多详细信息。
+加载分布的表时，请确保传入数据的分布键没有排序，因为这会拖慢加载速度。  以下文章进一步详述了如何选择分布列来提升性能，以及如何在 CREATE TABLES 语句的 WITH 子句中定义分布式表。
 
 另请参阅[表概述](sql-data-warehouse-tables-overview.md)、[表分布](sql-data-warehouse-tables-distribute.md)、[选择表分布](https://blogs.msdn.microsoft.com/sqlcat/20../../choosing-hash-distributed-table-vs-round-robin-distributed-table-in-azure-sql-dw-service/)、[CREATE TABLE](sql-data-warehouse-tables-overview.md) 和 [CREATE TABLE AS SELECT](sql-data-warehouse-develop-ctas.md)
 
@@ -62,12 +62,12 @@ ms.locfileid: "82198522"
 
 尽管数据分区可以让数据维护变得有效率（通过分区切换或优化扫描将分区消除），太多的分区将让查询变慢。  
 
-在 SQL Server 上运行良好的高数据粒度分区策略经常无法在 SQL 池上正常工作。  如果每个分区的行数少于 1 百万，太多分区还会降低聚集列存储索引的效率。  
+在 SQL Server 上运行良好的高数据粒度分区策略经常无法在 SQL 池中正常使用。  如果每个分区的行数少于 1 百万，太多分区还会降低聚集列存储索引的效率。  
 
-请记住，SQL 池在幕后将数据分区成 60 个数据库，因此如果创建包含 100 个分区的表，实际上会导致 6000 个分区。  每个工作负荷都不同，因此最佳建议是尝试不同的分区，找出最适合工作负荷的分区。  
+请记住，SQL 池在幕后将数据分区成 60 个数据库，因此如果创建包含 100 个分区的表，实际上会生成 6000 个分区。  每个工作负荷都不同，因此最佳建议是尝试不同的分区，找出最适合工作负荷的分区。  
 
 > [!TIP]
-> 请考虑使用比 SQL Server 上运行良好的数据粒度更低的粒度。  例如，考虑使用每周或每月分区，而不是每日分区。
+> 请考虑使用比在 SQL Server 上运行良好的数据粒度更低的粒度。  例如，考虑使用每周或每月分区，而不是每日分区。
 
 另请参阅[表分区](sql-data-warehouse-tables-partition.md)。
 
@@ -104,11 +104,11 @@ ms.locfileid: "82198522"
 
 由于高质量列存储段很重要，因此可以考虑使用用来加载数据的中型或大型资源类中的用户 ID。 使用较低的[数据仓库单位](what-is-a-data-warehouse-unit-dwu-cdwu.md)值意味着需要向加载用户分配较大的资源类。
 
-由于列存储表通常要等到每个表有超过 1 百万个行之后才会数据推送到压缩的列存储区段，并且每个 SQL 池表分区成 60 个表，一般情况下，列存储表对于查询没有好处，除非表有超过 6 千万行。  
+列存储表通常要等到每个表有超过 1 百万个行之后才会数据推送到压缩的列存储区段，并且每个 SQL 池表会分区成 60 个表。因此，一般情况下，列存储表对于查询没有好处，除非表有超过 6 千万行。  
 
 小于 6 千万列的表使用列存储索引似乎不太合理，  但也无伤大雅。  
 
-此外，如果要进行数据分区，则要考虑的是每个分区必须有 1 百万个行，使用聚集列存储索引才有益。  如果表有 100 个分区，则它至少必须拥有 60 亿个行才将受益于聚集列存储（60 个分布区 *100 个分区* 1 百万行）。  
+此外，如果要进行数据分区，则要考虑的是每个分区必须有 1 百万个行，使用聚集列存储索引才有益。  如果表有 100 个分区，则它至少必须拥有 60 亿个行才会受益于聚集列存储（60 个分布区 *100 个分区* 1 百万行）。  
 
 如果表在本示例中并没有 60 亿个行，请减少分区数目，或考虑改用堆表。  使用辅助索引配合堆表而不是列存储表，也可能是值得进行的实验，看看是否可以获得较佳的性能。
 
@@ -119,7 +119,7 @@ ms.locfileid: "82198522"
 
 ## <a name="next-steps"></a>后续步骤
 
-如果在本文中没有找到所需内容，可尝试使用本页面左侧的“搜索文档”来搜索所有 Azure Synapse 文档。  
+如果在本文中没有找到所需内容，可尝试使用本页左侧的“搜索文档”来搜索所有 Azure Synapse 文档。  
 
 在 [Azure Synapse 论坛](https://social.msdn.microsoft.com/Forums/zh-CN/home)中，可以向其他用户和 Azure Synapse 产品小组提问。  我们会主动观察此论坛，确保用户的问题获得其他用户或我们的回答。  
 

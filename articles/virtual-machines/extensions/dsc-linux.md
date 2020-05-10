@@ -1,5 +1,5 @@
 ---
-title: 适用于 Linux 的 Azure DSC 扩展
+title: 适用于 Linux 的 DSC 扩展
 description: 安装 OMI 和 DSC 包，以便能够使用 Desired State Configuration 来配置 Azure Linux VM。
 services: virtual-machines-linux
 documentationcenter: ''
@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 origin.date: 06/12/2018
-ms.date: 02/10/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: b20aeb783223f2dfabdc08df1cbf22d3f4edd85d
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: d56683adbcce15cd1a4ee5e562c7cf68678d5bf6
+ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292819"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82596370"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>适用于 Linux 的 DSC 扩展 (Microsoft.OSTCExtensions.DSCForLinux)
 
@@ -37,8 +37,6 @@ DSCForLinux 扩展由 Azure 发布并提供支持。 该扩展在 Azure 虚拟�
 - 将元 MOF 配置应用到 Linux VM，以配置提取服务器来提取节点配置 (Pull ExtensionAction)。
 - 将自定义的 DSC 模块安装到 Linux VM (Install ExtensionAction)。
 - 从 Linux VM 中删除自定义的 DSC 模块 (Remove ExtensionAction)。
-
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -139,7 +137,7 @@ public.json
 }
 ```
 
-powershell 格式
+PowerShell 格式
 ```powershell
 $privateConfig = '{
   "storageAccountEndPoint": "https://core.chinacloudapi.cn/",
@@ -295,6 +293,9 @@ $publicConfig = '{
 在部署 DSCForLinux 扩展之前，请根据第 3 部分中所述的不同方案配置 `public.json` 和 `protected.json`。
 
 #### <a name="classic"></a>经典
+
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
+
 经典部署模式也称为 Azure 服务管理模式。 可运行以下命令切换到该模式：
 ```
 $ azure config mode asm
@@ -433,11 +434,11 @@ az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 
 ### <a name="support"></a>支持
 
-如果对本文中的任何观点存在疑问，可以联系 [Azure 支持](https://support.azure.cn/support/contact/)上的 Azure 专家。 或者，也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://support.azure.cn/support/support-azure/)提交请求。 有关使用 Azure 支持的信息，请阅读 [Azure 支持常见问题](https://www.azure.cn/support/faq/)。
+如果对本文中的任何观点存在疑问，请通过 [Azure 支持](https://support.azure.cn/support/contact/)联系 Azure 专家。 或者，也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://support.azure.cn/support/support-azure/)提交请求。 有关使用 Azure 支持的信息，请阅读 [Azure 支持常见问题](https://www.azure.cn/support/faq/)。
 
 <!--CORRECT ON LINK REFERENECE ABOVE-->
 
 ## <a name="next-steps"></a>后续步骤
 有关扩展的详细信息，请参阅[适用于 Linux 的虚拟机扩展和功能](features-linux.md)。
 
-<!-- Update_Description: update meta properties, wording update  -->
+<!-- Update_Description: update meta properties, wording update, update link -->

@@ -380,44 +380,44 @@ Facebook 图形 API 返回采用以下结构的响应，在此情况下，下一
 ### <a name="about-the-solution-template"></a>关于解决方案模板
 
 该模板包含两个活动：
-- “Web”活动检索持有者令牌，然后将其作为 Authorization 传递到后续的“复制”活动  。
+- “Web”活动检索持有者令牌，然后将其作为 Authorization 标头传递到后续的“复制”活动  。
 - “复制”活动将数据从 REST 复制到 Azure Data Lake Storage  。
 
 该模板定义两个参数：
-- SinkContainer 是 Azure Data Lake Storage 中的、要将数据复制到的根文件夹路径  。 
-- SinkDirectory 是 Azure Data Lake Storage 中的、要将数据复制到的根目录下的目录路径  。 
+- SinkContainer 是 Azure Data Lake Storage 中的根文件夹路径，可以将数据复制到其中  。 
+- SinkDirectory 是 Azure Data Lake Storage 中的根目录下的目录路径，可以将数据复制到其中  。 
 
 ### <a name="how-to-use-this-solution-template"></a>如何使用此解决方案模板
 
-1. 转到“使用 OAuth 模板从 REST 或 HTTP 复制”模板  。 为源连接创建新连接。 
+1. 转到“使用 OAuth 模板从 REST 或 HTTP 复制”模板  。 对于“源连接”，请创建新连接。 
     ![创建新连接](media/solution-template-copy-from-rest-or-http-using-oauth/source-connection.png)
 
     下面是新链接服务 (REST) 设置的关键步骤：
     
-     1. 在“基 URL”下，为你自己的源 REST 服务指定 URL 参数  。 
+     1. 在“基 URL”下，为自己的源 REST 服务指定 URL 参数  。 
      2. 对于“身份验证类型”，请选择“匿名”   。
         ![新建 REST 连接](media/solution-template-copy-from-rest-or-http-using-oauth/new-rest-connection.png)
 
-2. 为目标连接创建新连接。  
+2. 对于“目标连接”，请创建新连接。  
     ![新建 Gen2 连接](media/solution-template-copy-from-rest-or-http-using-oauth/destination-connection.png)
 
 3. 选择“使用此模板”  。
     ![使用此模板](media/solution-template-copy-from-rest-or-http-using-oauth/use-this-template.png)
 
-4. 你会看到所创建的管道，如以下示例中所示：![管道](media/solution-template-copy-from-rest-or-http-using-oauth/pipeline.png)
+4. 此时会看到创建的管道，如以下示例所示：![管道](media/solution-template-copy-from-rest-or-http-using-oauth/pipeline.png)
 
-5. 选择“Web”活动  。 在“设置”中，指定相应的“URL”、“方法”、“标头”和“正文”，以从要从中复制数据的服务的登录 API 检索 OAuth 持有者令牌      。 模板中的占位符展示了 Azure Active Directory (AAD) OAuth 的示例。 请注意，REST 连接器原生支持 AAD 身份验证，这里只是 OAuth 流的一个示例。 
+5. 选择“Web”活动  。 在“设置”中，指定相应的“URL”、“方法”、“标头”和“正文”，以便从要从其中复制数据的服务的登录 API 检索 OAuth 持有者令牌      。 模板中的占位符展示了 Azure Active Directory (AAD) OAuth 的示例。 请注意，REST 连接器原生支持 AAD 身份验证，这里只是 OAuth 流的一个示例。 
 
     | 属性 | 说明 |
     |:--- |:--- |:--- |
-    | URL |指定要从中检索 OAuth 持有者令牌的 URL。 例如，在本示例中，它是 https://login.partner.microsoftonline.cn/microsoft.partner.onmschina.cn/oauth2/token |上获取。 
+    | URL |指定要从其中检索 OAuth 持有者令牌的 URL。 例如，在本示例中，它是 https://login.partner.microsoftonline.cn/microsoft.partner.onmschina.cn/oauth2/token |上获取。 
     | 方法 | HTTP 方法。 允许的值为“Post”和“Get”   。 | 
     | 头文件 | 标头由用户定义，引用 HTTP 请求中的一个标头名称。 | 
     | 正文 | HTTP 请求的正文。 | 
 
     ![管道](media/solution-template-copy-from-rest-or-http-using-oauth/web-settings.png)
 
-6. 在“复制数据”活动中选择“源”选项卡，可以看到，从上一步骤检索的持有者令牌 (access_token) 将作为“其他标头”下的 Authorization 传递到“复制数据”活动    。 在启动管道运行之前，请确认以下属性的设置。
+6. 在“复制数据”活动中选择“源”选项卡。可以看到，从上一步骤检索的持有者令牌 (access_token) 将作为“其他标头”下的 Authorization 标头传递到“复制数据”活动    。 在启动管道运行之前，请确认以下属性的设置。
 
     | 属性 | 说明 |
     |:--- |:--- |:--- | 
@@ -429,7 +429,7 @@ Facebook 图形 API 返回采用以下结构的响应，在此情况下，下一
 7. 选择“调试”，输入**参数**，然后选择“完成”。  
    ![管道运行](media/solution-template-copy-from-rest-or-http-using-oauth/pipeline-run.png) 
 
-8. 管道运行成功完成后，你会看到类似于以下示例的结果：![管道运行结果](media/solution-template-copy-from-rest-or-http-using-oauth/run-result.png) 
+8. 管道运行成功完成后，会看到类似于以下示例的结果：![管道运行结果](media/solution-template-copy-from-rest-or-http-using-oauth/run-result.png) 
 
 9. 在“操作”列中单击 WebActivity 的“输出”图标，会看到服务返回的 access_token  。
 

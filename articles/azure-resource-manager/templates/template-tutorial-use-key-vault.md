@@ -2,22 +2,22 @@
 title: 在模板中使用 Azure Key Vault
 description: 了解如何在资源管理器模板部署期间使用 Azure Key Vault 来传递安全参数值
 author: rockboyfor
-origin.date: 05/23/2019
-ms.date: 03/23/2020
+origin.date: 04/16/2020
+ms.date: 04/30/2020
 ms.topic: tutorial
 ms.author: v-yeche
 ms.custom: seodec18
-ms.openlocfilehash: b04de819c68ac152ffe6cde854c4fd74881a9b20
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: bd2ffa21f7d32527f9f906682b7192bcba725d14
+ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79543920"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82596056"
 ---
 <!-- Verify successfully-->
-# <a name="tutorial-integrate-azure-key-vault-in-your-resource-manager-template-deployment"></a>教程：在你的资源管理器模板部署中集成 Azure 密钥保管库
+# <a name="tutorial-integrate-azure-key-vault-in-your-arm-template-deployment"></a>教程：在 ARM 模板部署中集成 Azure Key Vault
 
-了解部署 Azure 资源管理器时如何从 Azure 密钥保管库检索密钥并将密钥作为参数传递。 该参数值永远不会公开，因为只会引用其密钥保管库 ID。 有关详细信息，请参阅[在部署过程中使用 Azure Key Vault 传递安全参数值](./key-vault-parameter.md)。
+了解部署 Azure 资源管理器 (ARM) 模版时如何从 Azure 密钥保管库检索机密并将机密作为参数传递。 该参数值永远不会公开，因为只会引用其密钥保管库 ID。 可以使用静态 ID 或动态 ID 来引用密钥保管库机密。 本教程使用的是静态 ID。 使用静态 ID 方法，可以在模板参数文件（而不是模板文件）中引用密钥保管库。 有关这两种方法的详细信息，请参阅[在部署过程中使用 Azure Key Vault 传递安全参数值](./key-vault-parameter.md)。
 
 在[设置资源部署顺序](./template-tutorial-create-templates-with-dependent-resources.md)教程中，你需要创建虚拟机 (VM)。 需提供 VM 管理员用户名和密码。 可以不提供密码，而是将密码预先存储在 Azure 密钥保管库中，然后自定义模板，以便在部署过程中从密钥保管库检索密码。
 
@@ -35,13 +35,11 @@ ms.locfileid: "79543920"
 
 如果没有 Azure 订阅，请在开始前[创建一个试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
-
 ## <a name="prerequisites"></a>先决条件
 
 若要完成本文，需要做好以下准备：
 
-* 包含资源管理器工具扩展的 Visual Studio Code。 请参阅[使用 Visual Studio Code 创建 Azure 资源管理器模板](use-vs-code-to-create-template.md)。
+* 包含资源管理器工具扩展的 Visual Studio Code。 请参阅[使用 Visual Studio Code 创建 ARM 模板](use-vs-code-to-create-template.md)。
 * 若要增强安全性，请使用为 VM 管理员帐户生成的密码。 以下是密码生成示例：
 
     ```console
@@ -51,7 +49,7 @@ ms.locfileid: "79543920"
 
 ## <a name="prepare-a-key-vault"></a>准备 Key Vault
 
-在此部分，创建一个密钥保管库，然后向该密钥保管库添加密钥，这样就可以在部署模板时检索该密钥。 可以通过许多方法来创建密钥保管库。 在本教程中，我们使用 Azure PowerShell 来部署[资源管理器模板](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorials-use-key-vault/CreateKeyVault.json)。 此模板执行以下操作：
+在此部分，创建一个密钥保管库，然后向该密钥保管库添加密钥，这样就可以在部署模板时检索该密钥。 可以通过许多方法来创建密钥保管库。 在本教程中，我们使用 Azure PowerShell 部署 [ARM 模板](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorials-use-key-vault/CreateKeyVault.json)。 此模板执行两项操作：
 
 * 创建启用了 `enabledForTemplateDeployment` 属性的密钥保管库。 此属性必须为 true，这样模板部署过程才能访问此密钥保管库中定义的机密  。
 * 将密钥添加到密钥保管库。 该密钥存储 VM 管理员密码。
@@ -59,7 +57,7 @@ ms.locfileid: "79543920"
 > [!NOTE]
 > 如果你（作为要部署虚拟机模板的用户）不是密钥保管库的所有者或参与者，则密钥保管库的所有者或参与者必须向你授予对密钥保管库的 Microsoft.KeyVault/vaults/deploy/action 的访问权限  。 有关详细信息，请参阅[在部署过程中使用 Azure 密钥保管库传递安全参数值](./key-vault-parameter.md)。
 
-在本地电脑上运行以下 Azure PowerShell 脚本。
+在本地计算机上运行以下 Azure PowerShell 脚本。
 
 <!--Not Available on Cloud Shell-->
 
@@ -79,14 +77,16 @@ $templateUri = "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/
 
 New-AzResourceGroup -Name $resourceGroupName -Location $location
 New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri $templateUri -keyVaultName $keyVaultName -adUserId $adUserId -secretValue $secretValue
+
+Write-Host "Press [ENTER] to continue ..."
 ```
 
 > [!IMPORTANT]
 > * 资源组名称是追加了“rg”的项目名称  。 为了方便[清理本教程创建的资源](#clean-up-resources)，请在[部署下一模板](#deploy-the-template)时使用相同的项目名称和资源组名称。
 > * 密钥的默认名称为 vmAdminPassword  。 该名称已在模板中硬编码。
-> * 必须为密钥保管库启用名为“启用对 Azure 资源管理器的访问以部署模板”的访问策略，然后模板才能检索机密。 在模板中启用此策略。 有关此访问策略的详细信息，请参阅[部署密钥保管库和机密](./key-vault-parameter.md#deploy-key-vaults-and-secrets)。
+> * 要使模板能够检索机密，必须为密钥保管库启用名为“启用对 Azure 资源管理器的访问以部署模板”  的访问策略。 在模板中启用此策略。 有关此访问策略的详细信息，请参阅[部署密钥保管库和机密](./key-vault-parameter.md#deploy-key-vaults-and-secrets)。
 
-模板有一个名为 keyVaultId 的输出值  。 在部署虚拟机时，请记下 ID 值以供将来使用。 资源 ID 格式为：
+模板有一个名为 keyVaultId 的输出值  。 在本教程中稍后将使用此 ID 和机密名称来检索机密值。 资源 ID 格式为：
 
 ```json
 /subscriptions/<SubscriptionID>/resourceGroups/mykeyvaultdeploymentrg/providers/Microsoft.KeyVault/vaults/<KeyVaultName>
@@ -104,7 +104,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri
 
 ## <a name="open-a-quickstart-template"></a>打开快速入门模板
 
-Azure 快速入门模板是资源管理器模板的存储库。 无需从头开始创建模板，只需找到一个示例模板并对其自定义即可。 本教程中使用的模板称为[部署简单的 Windows VM](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows/)。
+Azure 快速入门模板是 ARM 模板的存储库。 无需从头开始创建模板，只需找到一个示例模板并对其自定义即可。 本教程中使用的模板称为[部署简单的 Windows VM](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows/)。
 
 1. 在 Visual Studio Code 中，选择“文件” > “打开文件”。  
 
@@ -114,11 +114,12 @@ Azure 快速入门模板是资源管理器模板的存储库。 无需从头开�
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json
     ```
 
-1. 选择“打开”以打开该文件。  方案与以下教程中使用的方案相同[：使用依赖的资源创建 Azure 资源管理器模板](./template-tutorial-create-templates-with-dependent-resources.md)中使用的。
-    该模板定义五个资源：
+1. 选择“打开”以打开该文件。  方案与以下教程中使用的方案相同[：创建包含依赖资源的 ARM 模板](./template-tutorial-create-templates-with-dependent-resources.md)。
+    该模板定义了六个资源：
 
     * `Microsoft.Storage/storageAccounts`。
     * `Microsoft.Network/publicIPAddresses`。
+    * `Microsoft.Network/networkSecurityGroups`。
     * `Microsoft.Network/virtualNetworks`。
     * `Microsoft.Network/networkInterfaces`。
     * `Microsoft.Compute/virtualMachines`。
@@ -129,7 +130,7 @@ Azure 快速入门模板是资源管理器模板的存储库。 无需从头开�
         <!-- Not Available on  [template reference](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces)-->
         <!-- Not Available on  [template reference](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines)-->
 
-        在自定义模板之前，不妨对其进行一些基本的了解。
+    在自定义模板之前，不妨对其进行一些基本的了解。
 
 1. 选择“文件” > “另存为”，将该文件的副本保存到名为 azuredeploy.json 的本地计算机。   
 
@@ -141,7 +142,7 @@ Azure 快速入门模板是资源管理器模板的存储库。 无需从头开�
 
 ## <a name="edit-the-parameters-file"></a>编辑参数文件
 
-无需对模板文件进行任何更改。
+通过使用静态 ID 方法，无需对模板文件进行任何更改。 通过配置模板参数文件来检索机密值。
 
 1. 在 Visual Studio Code 中打开 azuredeploy.parameters.json（如果尚未打开）  。
 1. 将 `adminPassword` 参数更新为：
@@ -158,7 +159,7 @@ Azure 快速入门模板是资源管理器模板的存储库。 无需从头开�
     ```
 
     > [!IMPORTANT]
-    > 将“id”值替换为你在上一过程中创建的密钥保管库的资源 ID  。
+    > 将“id”值替换为你在上一过程中创建的密钥保管库的资源 ID  。 secretName 将硬编码为“vmAdminPassword”  。  请参阅[准备密钥保管库](#prepare-a-key-vault)。
 
     ![集成密钥保管库和资源管理器模板虚拟机部署参数文件](./media/template-tutorial-use-key-vault/resource-manager-tutorial-create-vm-parameters-file.png)
 
@@ -186,6 +187,8 @@ New-AzResourceGroupDeployment `
     -ResourceGroupName $resourceGroupName `
     -TemplateFile azuredeploy.json `
     -TemplateParameterFile azuredeploy.parameters.json
+
+Write-Host "Press [ENTER] to continue ..."
 ```
 
 部署模板时，请使用密钥保管库中使用的同一资源组。 此方法使你更轻松地清理资源，因为你需要仅删除一个资源组，而不是两个资源组。
@@ -209,13 +212,15 @@ $projectName = Read-Host -Prompt "Enter the same project name that is used for c
 $resourceGroupName = "${projectName}rg"
 
 Remove-AzResourceGroup -Name $resourceGroupName
+
+Write-Host "Press [ENTER] to continue ..."
 ```
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你已从 Azure 密钥保管库检索了一个密钥。 你然后使用模板部署中的密钥。 若要了解如何创建链接模板，请参阅：
+在本教程中，你已从 Azure 密钥保管库检索了一个密钥。 你然后使用模板部署中的密钥。 若要了解如何使用虚拟机扩展执行部署后任务，请参阅：
 
 > [!div class="nextstepaction"]
-> [创建链接模板](./template-tutorial-create-linked-templates.md)
+> [部署虚拟机扩展](./template-tutorial-deploy-vm-extensions.md)
 
 <!-- Update_Description: update meta properties, wording update, update link -->

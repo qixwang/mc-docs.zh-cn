@@ -1,25 +1,26 @@
 ---
-title: 在 Azure 数据工厂管道中使用自定义活动
+title: 在管道中使用自定义活动
 description: 了解如何创建自定义活动并在 Azure 数据工厂管道中使用。
 services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.topic: conceptual
-origin.date: 11/26/2018
-ms.date: 07/08/2019
 author: WenJason
 ms.author: v-jay
 manager: digimobile
-ms.openlocfilehash: 4460a3065d4b85a07dc5c55be3d198104297c963
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.workload: data-services
+ms.topic: conceptual
+ms.custom: seo-lt-2019
+origin.date: 11/26/2018
+ms.date: 05/11/2020
+ms.openlocfilehash: a28bd16737f1f67d943f8bb80880d4bf0fd4ad78
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "67570614"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82198212"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>在 Azure 数据工厂管道中使用自定义活动
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 在 Azure 数据工厂管道中可使用两类活动。
 
@@ -172,7 +173,7 @@ ms.locfileid: "67570614"
             "type": "LinkedServiceReference"
           }]
         },
-        "extendedProperties": {
+        "extendedProperties": {          
           "connectionString": {
             "type": "SecureString",
             "value": "aSampleSecureString"

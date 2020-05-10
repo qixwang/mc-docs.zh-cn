@@ -5,14 +5,14 @@ services: application-gateway
 author: caya
 ms.service: application-gateway
 ms.topic: article
-ms.date: 03/30/2020
+ms.date: 04/26/2020
 ms.author: v-junlch
-ms.openlocfilehash: bddc1ad479742368da5b0f4d5898b3e3849ef3d7
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 5b003550b116cbe83e488f00a512b1614b641bb5
+ms.sourcegitcommit: e3512c5c2bbe61704d5c8cbba74efd56bfe91927
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80581662"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82267559"
 ---
 # <a name="how-to-install-an-application-gateway-ingress-controller-agic-using-a-new-application-gateway"></a>如何安装使用新应用程序网关的应用程序网关入口控制器 (AGIC)
 
@@ -255,7 +255,7 @@ az aks get-credentials --resource-group $resourceGroupName --name $aksClusterNam
 
 
    > [!NOTE]
-   > `identityResourceID` 和 `identityClientID` 是在执行[创建标识](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/072626cb4e37f7b7a1b0c4578c38d1eadc3e8701/docs/setup/install-new.md#create-an-identity)步骤期间创建的值，可使用以下命令再次获取这些值：
+   > `identityResourceID` 和 `identityClientID` 是在执行[部署组件](ingress-controller-install-new.md#deploy-components)步骤期间创建的值，可使用以下命令再次获取这些值：
    > ```azurecli
    > az identity show -g <resource-group> -n <identity-name>
    > ```

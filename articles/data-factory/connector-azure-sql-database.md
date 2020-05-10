@@ -11,15 +11,18 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 origin.date: 03/12/2020
-ms.date: 03/23/2020
-ms.openlocfilehash: a1005158db65ae133e713523dcb670855f5c1485
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/11/2020
+ms.openlocfilehash: 1a9124aa6d694fd144b1da737132cda042e15b57
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79497254"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82197825"
 ---
 # <a name="copy-and-transform-data-in-azure-sql-database-by-using-azure-data-factory"></a>使用 Azure 数据工厂在 Azure SQL 数据库中复制和转换数据
+
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从/向 Azure SQL 数据库复制数据。 若要了解 Azure 数据工厂，请阅读[介绍性文章](introduction.md)。
 
@@ -41,7 +44,7 @@ ms.locfileid: "79497254"
 >目前此连接器不支持 Azure SQL 数据库 [Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=azuresqldb-current)。 为了解决此问题，可以通过自承载 Integration Runtime 使用[泛型 ODBC 连接器](connector-odbc.md)和 SQL Server ODBC 驱动程序。 按照[此指南](https://docs.microsoft.com/sql/connect/odbc/using-always-encrypted-with-the-odbc-driver?view=azuresqldb-current)完成 ODBC 驱动程序下载和连接字符串配置。
 
 > [!IMPORTANT]
-> 如果使用 Azure 数据工厂 Integration Runtime 复制数据，请将 [Azure SQL Server 防火墙](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure)配置为允许 Azure 服务访问服务器。
+> 如果使用 Azure 数据工厂 Integration Runtime 复制数据，请将 [Azure SQL Server 防火墙](/sql-database/sql-database-firewall-configure)配置为允许 Azure 服务访问服务器。
 > 如果使用自承载集成运行时复制数据，请将 Azure SQL Server 防火墙配置为允许合适的 IP 范围。 此范围包括用于连接 Azure SQL 数据库的计算机的 IP。
 
 ## <a name="get-started"></a>入门
@@ -139,7 +142,7 @@ Azure SQL 数据库链接服务支持以下属性：
 4. 像通常对 SQL 用户或其他用户所做的那样向服务主体授予所需的权限。 运行以下代码。 有关更多选项，请参阅[此文档](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=sql-server-2017)。
 
     ```sql
-    EXEC sp_addrolemember [role name], [your application name];
+    ALTER ROLE [role name] ADD MEMBER [your application name];
     ```
 
 5. 在 Azure 数据工厂中配置 Azure SQL 数据库链接服务。
@@ -186,7 +189,7 @@ Azure SQL 数据库链接服务支持以下属性：
 3. 像通常对 SQL 用户和其他用户所做的那样向数据工厂托管标识授予所需的权限。 运行以下代码。 有关更多选项，请参阅[此文档](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=sql-server-2017)。
 
     ```sql
-    EXEC sp_addrolemember [role name], [your Data Factory name];
+    ALTER ROLE [role name] ADD MEMBER [your Data Factory name];
     ```
 
 4. 在 Azure 数据工厂中配置 Azure SQL 数据库链接服务。
@@ -504,10 +507,7 @@ END
 
 ## <a name="invoke-a-stored-procedure-from-a-sql-sink"></a><a name="invoke-a-stored-procedure-from-a-sql-sink"></a> 调用 SQL 接收器的存储过程
 
-将数据复制到 Azure SQL 数据库时，还可通过其他参数配置并调用某个用户指定的存储过程。 存储过程功能利用[表值参数](https://msdn.microsoft.com/library/bb675163.aspx)。
-
-> [!TIP]
-> 调用存储过程时，会逐行处理数据，而不使用批量操作，我们不建议将批量操作用于大规模复制。 在[有关将数据载入 Azure SQL 数据库的最佳做法](#best-practice-for-loading-data-into-azure-sql-database)中了解详细信息。
+将数据复制到 Azure SQL 数据库中时，还可以通过对每批源表使用附加参数来配置和调用用户指定的存储过程。 存储过程功能利用[表值参数](https://msdn.microsoft.com/library/bb675163.aspx)。
 
 当内置复制机制无法使用时，还可使用存储过程。 例如，在将源数据最终插入目标表之前应用额外的处理。 额外处理的示例包括合并列、查找其他值以及将数据插入多个表。
 
@@ -518,7 +518,7 @@ END
     ```sql
     CREATE TYPE [dbo].[MarketingType] AS TABLE(
         [ProfileID] [varchar](256) NOT NULL,
-        [State] [varchar](256) NOT NULL，
+        [State] [varchar](256) NOT NULL,
         [Category] [varchar](256) NOT NULL
     )
     ```

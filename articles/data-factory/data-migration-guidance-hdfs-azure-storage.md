@@ -1,26 +1,27 @@
 ---
-title: 使用 Azure 数据工厂将数据从本地 Hadoop 群集迁移到 Azure 存储
+title: 将数据从本地 Hadoop 群集迁移到 Azure 存储
 description: 了解如何使用 Azure 数据工厂将数据从本地 Hadoop 群集迁移到 Azure 存储。
 services: data-factory
-documentationcenter: ''
-author: WenJason
 ms.author: v-jay
+author: WenJason
 ms.reviewer: ''
-manager: ''
+manager: digimobile
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 origin.date: 8/30/2019
-ms.date: 12/02/2019
-ms.openlocfilehash: 3caad68ec5bc451fb4ccf985c1cd38fa43f036e4
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/11/2020
+ms.openlocfilehash: 9a1a9df55ea67e8c160630e7d609802ac34add76
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74655415"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82197765"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-an-on-premises-hadoop-cluster-to-azure-storage"></a>使用 Azure 数据工厂将数据从本地 Hadoop 群集迁移到 Azure 存储 
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Azure 数据工厂提供高性能、稳健且经济高效的机制用于将数据从本地 HDFS 大规模迁移到 Azure Blob 存储或 Azure Data Lake Storage Gen2。 
 

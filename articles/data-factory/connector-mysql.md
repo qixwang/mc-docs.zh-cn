@@ -10,16 +10,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 origin.date: 02/19/2020
-ms.date: 03/23/2020
+ms.date: 05/11/2020
 ms.author: v-jay
-ms.openlocfilehash: b56e1335265b5c62b833a08e9cb4d2ca4f8aacc4
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 0747a405a7c5d7c112f1390e193167201b08cc68
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79497336"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82198226"
 ---
 # <a name="copy-data-from-mysql-using-azure-data-factory"></a>使用 Azure 数据工厂从 MySQL 复制数据
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从 MySQL 数据库复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
@@ -63,7 +64,7 @@ MySQL 链接的服务支持以下属性：
 
 | 属性 | 说明 | 选项 | 必须 |
 |:--- |:--- |:--- |:--- |
-| SSLMode | 此选项指定驱动程序在连接到 MySQL 时是否使用 SSL 加密和验证。 例如，`SSLMode=<0/1/2/3/4>`| DISABLED (0) / PREFERRED (1) **(Default)** / REQUIRED (2) / VERIFY_CA (3) / VERIFY_IDENTITY (4) | 否 |
+| SSLMode | 此选项指定驱动程序在连接到 MySQL 时是否使用 TLS 加密和验证。 例如，`SSLMode=<0/1/2/3/4>`| DISABLED (0) / PREFERRED (1) **(Default)** / REQUIRED (2) / VERIFY_CA (3) / VERIFY_IDENTITY (4) | 否 |
 | UseSystemTrustStore | 此选项指定是使用系统信任存储中的 CA 证书还是使用指定 PEM 文件中的 CA 证书。 例如 `UseSystemTrustStore=<0/1>;`| Enabled (1) / Disabled (0) **(Default)** | 否 |
 
 **示例：**

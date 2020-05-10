@@ -1,26 +1,14 @@
 ---
 title: Azure 资源运行状况常见问题解答
 description: Azure 资源运行状况概述
-services: Resource health
-documentationcenter: dev-center-name
-author: BernardoAMunoz
-manager: ''
-editor: ''
-ms.assetid: 85cc88a4-80fd-4b9b-a30a-34ff3782855f
-ms.service: service-health
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: Supportability
-origin.date: 01/29/2019
-ms.author: v-yiso
-ms.date: 04/29/2019
-ms.openlocfilehash: 182e9d8f3038813fa36b8292af5eff536d23b34f
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.topic: conceptual
+ms.date: 04/28/2020
+ms.openlocfilehash: c4bc0b77ded55d2ab6dc3517a222e4bb6bc5ffba
+ms.sourcegitcommit: e3512c5c2bbe61704d5c8cbba74efd56bfe91927
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74179017"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82267620"
 ---
 # <a name="azure-resource-health-faq"></a>Azure 资源运行状况常见问题解答
 获取 Azure 资源运行状况常见问题的解答。
@@ -49,7 +37,7 @@ ms.locfileid: "74179017"
 ## <a name="how-can-i-get-help-for-a-resource-that-is-unavailable"></a>如果资源不可用，如何获取帮助？
 可以从资源运行状况边栏选项卡提交支持请求。 当资源因平台事件而不可用时，提交请求不需与 Microsoft 达成的支持协议。
 
-## <a name="does-resource-health-differentiate-between-unavailability-cased-by-platform-problems-versus-something-i-did"></a>资源运行状况是否会对平台问题导致的不可用与我的操作导致的不可用进行区分？
+## <a name="does-resource-health-differentiate-between-unavailability-caused-by-platform-problems-versus-something-i-did"></a>资源运行状况是否会对平台问题导致的不可用与我的操作导致的不可用进行区分？
 是的，当资源不可用时，资源运行状况会将根本原因归为以下类别之一： 
 -   用户启动的操作
 -   计划内事件 
@@ -80,7 +68,7 @@ ms.locfileid: "74179017"
 ## <a name="how-is-resource-health-different-from-azure-status-or-the-service-health-dashboard"></a>资源运行状况与 Azure 状态或服务运行状况仪表板有何不同？
 资源运行状况提供的信息比 Azure 状态或服务运行状况仪表板提供的更具体。
 
-[Azure 状态](https://status.azure.com/status)和服务运行状况仪表板会告知影响大量客户（例如某个 Azure 区域的客户）的服务问题，而资源运行状况则会公开更细致的事件，这些事件仅与特定的资源相关。 例如，如果某个主机意外重启，资源运行状况仅提醒其虚拟机在该主机上运行的那些客户。
+[Azure 状态](https://status.azure.com)和服务运行状况仪表板会告知影响大量客户（例如某个 Azure 区域的客户）的服务问题，而资源运行状况则会公开更细致的事件，这些事件仅与特定的资源相关。 例如，如果某个主机意外重启，资源运行状况仅提醒其虚拟机在该主机上运行的那些客户。
 
 必须注意的是，为了让你全面了解影响资源的事件，资源运行状况还会呈现在服务运行状况仪表板中发布的事件。
 
@@ -88,7 +76,7 @@ ms.locfileid: "74179017"
 否。运行状况信息适用于可以通过资源运行状况获取的所有资源类型。 
 
 ## <a name="do-we-need-to-enable-resource-health-for-my-organization"></a>是否需要为组织启用资源运行状况？
-不是。  Azure 资源运行状况可以在 Azure 门户中访问，没有任何设置要求。
+否。  Azure 资源运行状况可以在 Azure 门户中访问，没有任何设置要求。
 
 ## <a name="is-resource-health-available-free-of-charge"></a>是否免费提供资源运行状况？
 是的。  Azure 资源运行状况免费提供。
@@ -101,3 +89,4 @@ ms.locfileid: "74179017"
 了解有关资源运行状况的详细信息：
 -  [Azure 资源运行状况概述](Resource-health-overview.md)
 -  [可通过 Azure 资源运行状况使用的资源类型和运行状况检查](resource-health-checks-resource-types.md)
+

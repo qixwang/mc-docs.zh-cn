@@ -1,5 +1,5 @@
 ---
-title: Azure 数据工厂中的 Delete 活动 | Microsoft Docs
+title: Azure 数据工厂中的 Delete 活动
 description: 了解如何使用 Azure 数据工厂中的 Delete 活动删除各种文件存储中的文件。
 services: data-factory
 documentationcenter: ''
@@ -9,24 +9,25 @@ ms.reviewer: douglasl
 manager: digimobile
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 origin.date: 08/20/2019
-ms.date: 10/14/2019
-ms.openlocfilehash: dad1ce1f9a4110782287402fd83ec2456b513701
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/11/2020
+ms.openlocfilehash: 7569321aa370b4496a34f0ff0c11f52b70a42c42
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "72275375"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82197882"
 ---
 # <a name="delete-activity-in-azure-data-factory"></a>Azure 数据工厂中的 Delete 活动
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 
 可以使用 Azure 数据工厂中的 Delete 活动从“本地存储”库或“云存储”库中删除文件或文件夹。 不再需要文件时，使用此活动来清理或存档文件。
 
 > [!WARNING]
-> 无法还原已删除的文件或文件夹。 使用 Delete 活动删除文件或文件夹时务必谨慎。
+> 无法还原已删除的文件或文件夹（除非存储已启用软删除）。 使用 Delete 活动删除文件或文件夹时务必谨慎。
 
 ## <a name="best-practices"></a>最佳实践
 

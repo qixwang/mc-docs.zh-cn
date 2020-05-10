@@ -1,5 +1,5 @@
 ---
-title: Azure 数据工厂中的系统变量 | Microsoft Docs
+title: Azure 数据工厂中的系统变量
 description: 本文介绍了 Azure 数据工厂支持的系统变量。 定义数据工厂实体时，可以在表达式中使用这些变量。
 services: data-factory
 documentationcenter: ''
@@ -11,15 +11,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 origin.date: 06/12/2018
-ms.date: 10/14/2019
-ms.openlocfilehash: 8082a0070df6acfccb999f61b2909341b3f9c26d
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/11/2020
+ms.openlocfilehash: 9ac6727e56ff4a879188292be043356238e84b3b
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "72275418"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82197783"
 ---
 # <a name="system-variables-supported-by-azure-data-factory"></a>Azure 数据工厂支持的系统变量
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 本文介绍了 Azure 数据工厂支持的系统变量。 定义数据工厂实体时，可以在表达式中使用这些变量。
 
 ## <a name="pipeline-scope"></a>管道范围

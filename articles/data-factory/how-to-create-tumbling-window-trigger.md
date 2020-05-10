@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 数据工厂中创建翻转窗口触发器 | Microsoft Docs
+title: 在 Azure 数据工厂中创建翻转窗口触发器
 description: 了解如何在 Azure 数据工厂中创建按翻转窗口运行管道的触发器。
 services: data-factory
 documentationcenter: ''
@@ -11,15 +11,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 origin.date: 09/11/2019
-ms.date: 11/11/2019
-ms.openlocfilehash: 2ba20fe01a40f10b155e8b3f2e9da2a537a59b68
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/11/2020
+ms.openlocfilehash: 15a13123c4077053c7381ee42f94dbfdf2b4faf8
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "73648763"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82198249"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-tumbling-window"></a>创建按翻转窗口运行管道的触发器
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 本文提供了创建、启动和监视翻转窗口触发器的步骤。 有关触发器和支持的类型的一般信息，请参阅[管道执行和触发器](concepts-pipeline-execution-triggers.md)。
 
 翻转窗口触发器是一类可以在保留状态的同时按周期性的时间间隔（从指定的开始时间算起）触发的触发器。 翻转窗口是一系列固定大小、非重叠且连续的时间间隔。 翻转窗口触发器与管道存在一对一关系，一个这样的触发器只能引用一个管道。
@@ -98,7 +100,7 @@ ms.locfileid: "73648763"
 | **type** | 触发器的类型。 类型为固定值“TumblingWindowTrigger”。 | String | "TumblingWindowTrigger" | 是 |
 | **runtimeState** | 触发器运行时的当前状态。<br/>**注意**：此元素是 \<readOnly>。 | String | “Started”、“Stopped”、“Disabled” | 是 |
 | **frequency** | 一个字符串，表示触发器重复出现的频率单位（分钟或小时）。 如果 **startTime** 日期值粒度比 **frequency** 值更细，则会在计算窗口边界时考虑 **startTime** 日期。 例如：如果 **frequency** 值为每小时，**startTime** 值为 2017-09-01T10:10:10Z，则第一个窗口为 (2017-09-01T10:10:10Z, 2017-09-01T11:10:10Z)。 | String | “minute”、“hour”  | 是 |
-| **interval** | 一个正整数，表示 **frequency** 值对应的时间间隔，决定了触发器的运行频率。 例如，如果 **interval** 为 3，**frequency** 为“hour”，则触发器每 3 小时重复触发一次。 <br/>**注意**：最小窗口间隔为 15 分钟。 | Integer | 正整数。 | 是 |
+| **interval** | 一个正整数，表示 **frequency** 值对应的时间间隔，决定了触发器的运行频率。 例如，如果 **interval** 为 3，**frequency** 为“hour”，则触发器每 3 小时重复触发一次。 <br/>**注意**：最小窗口间隔为 5 分钟。 | Integer | 正整数。 | 是 |
 | **startTime**| 第一个匹配项，可以是过去的时间。 第一个触发器间隔是 (**startTime**, **startTime** + **interval**)。 | DateTime | 一个日期时间值。 | 是 |
 | **endTime**| 最后一个匹配项，可以是过去的时间。 | DateTime | 一个日期时间值。 | 是 |
 | **delay** | 延迟窗口数据处理开始的时间量。 管道运行在预期的执行时间加上 **delay** 的量之后启动。 **delay** 的定义是：在预期的执行时间过后，触发器在触发新的运行之前等待的时间。 **delay** 不改变窗口 **startTime**。 例如，值为 00:10:00 的 **delay** 意味着 10 分钟的延迟。 | Timespan<br/>(hh:mm:ss)  | 一个时间跨度值，默认值为 00:00:00。 | 否 |
@@ -230,5 +232,5 @@ ms.locfileid: "73648763"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关触发器的详细信息，请参阅[管道执行和触发器](concepts-pipeline-execution-triggers.md#triggers)。
+* 有关触发器的详细信息，请参阅[管道执行和触发器](concepts-pipeline-execution-triggers.md#trigger-execution)。
 * [创建翻转窗口触发器依赖项](tumbling-window-trigger-dependency.md)

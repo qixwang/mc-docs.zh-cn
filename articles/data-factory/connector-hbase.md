@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 数据工厂从 HBase 复制数据 | Microsoft Docs
+title: 使用 Azure 数据工厂从 HBase 复制数据
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 HBase 复制到支持的接收器数据存储。
 services: data-factory
 documentationcenter: ''
@@ -8,19 +8,19 @@ manager: digimobile
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 origin.date: 08/12/2019
-ms.date: 11/11/2019
+ms.date: 05/11/2020
 ms.author: v-jay
-ms.openlocfilehash: a039a92f0d1e8a4e8b582331989e0c3c3e26fac5
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 50bd9d7f93f207a5690ab22fc28ebefacdc38891
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "73648801"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82197840"
 ---
 # <a name="copy-data-from-hbase-using-azure-data-factory"></a>使用 Azure 数据工厂从 HBase 复制数据 
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从 HBase 复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
@@ -58,9 +58,9 @@ HBase 链接服务支持以下属性：
 | authenticationType | 用于连接到 HBase 服务器的身份验证机制。 <br/>允许值包括：匿名，基本   | 是 |
 | username | 用于连接到 HBase 实例的用户名。  | 否 |
 | password | 用户名所对应的密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 否 |
-| enableSsl | 指定是否使用 SSL 加密到服务器的连接。 默认值为 false。  | 否 |
-| trustedCertPath | 包含受信任 CA 证书（通过 SSL 进行连接时用于验证服务器）的 .pem 文件的完整路径。 只有在自托管 IR 上使用 SSL 时才能设置此属性。 默认值是随 IR 一起安装的 cacerts.pem 文件。  | 否 |
-| allowHostNameCNMismatch | 指定通过 SSL 进行连接时是否要求 CA 颁发的 SSL 证书的名称与服务器的主机名相匹配。 默认值为 false。  | 否 |
+| enableSsl | 指定是否使用 TLS 加密到服务器的连接。 默认值为 false。  | 否 |
+| trustedCertPath | 包含受信任 CA 证书（通过 TLS 进行连接时用来验证服务器）的 .pem 文件的完整路径。 只有在自承载 IR 上使用 TLS 时才能设置此属性。 默认值是随 IR 一起安装的 cacerts.pem 文件。  | 否 |
+| allowHostNameCNMismatch | 指定通过 TLS 进行连接时是否要求 CA 颁发的 TLS/SSL 证书名称与服务器的主机名相匹配。 默认值为 false。  | 否 |
 | allowSelfSignedServerCert | 指定是否允许来自服务器的自签名证书。 默认值为 false。  | 否 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 在[先决条件](#prerequisites)部分了解更多信息。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
 

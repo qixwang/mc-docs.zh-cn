@@ -3,19 +3,19 @@ title: 模板中的子资源
 description: 介绍如何在 Azure 资源管理器模板中设置子资源的名称和类型。
 ms.topic: conceptual
 origin.date: 08/26/2019
-ms.date: 03/23/2020
+ms.date: 04/30/2020
 ms.author: v-yeche
-ms.openlocfilehash: 906634e2cc84ccdd12e83e7d2778428aa70e367c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 1e8b750a2a44315c598b62b37696d1baaeda10e8
+ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79543734"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82596169"
 ---
 <!--Verify Successfully-->
 # <a name="set-name-and-type-for-child-resources"></a>设置子资源的名称和类型
 
-子资源是只存在于另一资源的上下文内的资源。 例如，如果没有[虚拟机](https://docs.microsoft.com/azure/templates/microsoft.compute/2019-03-01/virtualmachines/extensions)，则[虚拟机扩展](https://docs.microsoft.com/azure/templates/microsoft.compute/2019-03-01/virtualmachines)不能存在。 扩展资源是虚拟机的子项。
+子资源是只存在于另一资源的上下文内的资源。 例如，如果没有[虚拟机](https://docs.microsoft.com/azure/templates/microsoft.compute/2019-03-01/virtualmachines)，则[虚拟机扩展](https://docs.microsoft.com/azure/templates/microsoft.compute/2019-03-01/virtualmachines/extensions)不能存在。 扩展资源是虚拟机的子项。
 
 在资源管理器模板中，可以在父资源内部或外部指定子资源。 以下示例显示子资源包括在父资源的资源属性中。
 
@@ -135,7 +135,7 @@ ms.locfileid: "79543734"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要了解有关创建 Azure 资源管理器模板的信息，请参阅[创作模板](template-syntax.md)。
+* 若要了解有关创建 Azure Resource Manager模板的信息，请参阅[创作模板](template-syntax.md)。
 
 * 若要了解引用资源时的资源名称格式，请参阅[引用函数](template-functions-resource.md#reference)。
 

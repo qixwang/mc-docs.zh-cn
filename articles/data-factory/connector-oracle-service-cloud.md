@@ -1,26 +1,26 @@
 ---
-title: 使用 Azure 数据工厂（预览版）从 Oracle 服务云复制数据 | Microsoft Docs
+title: 从 Oracle 服务云复制数据（预览版）
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 Oracle 服务云复制到支持的接收器数据存储。
 services: data-factory
-documentationcenter: ''
+ms.author: v-jay
 author: WenJason
 manager: digimobile
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 origin.date: 08/01/2019
-ms.date: 11/11/2019
-ms.author: v-jay
-ms.openlocfilehash: d919e9f608e7c1b338d7d0b15de8e81706d8fe69
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/11/2020
+ms.openlocfilehash: 5767be549d8b5b3bf67ef5bb1863c9582f8e1ed8
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "73648711"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82198286"
 ---
-# <a name="copy-data-from-oracle-service-cloud-using-azure-data-factory-preview"></a>使用 Azure 数据工厂（预览版）从 Oracle 服务云复制数据
+# <a name="copy-data-from-oracle-service-cloud-using-azure-data-factory-preview"></a>使用 Azure 数据工厂从 Oracle 服务云复制数据（预览版）
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从 Oracle 服务云复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
@@ -55,8 +55,8 @@ Oracle 服务云链接服务支持以下属性：
 | username | 用于访问 Oracle 服务云服务器的用户名。  | 是 |
 | password | 在用户名键中提供的用户名所对应的密码。 可选择将此字段标记为 SecureString，将其安全地存储在 ADF 中，或在 Azure Key Vault 中存储密码，并允许 ADF 复制活动在执行数据复制时从此处拉取（请参阅[在 Key Vault 中存储凭据](store-credentials-in-key-vault.md)了解详细信息）。 | 是 |
 | useEncryptedEndpoints | 指定是否使用 HTTPS 加密数据源终结点。 默认值为 true。  | 否 |
-| useHostVerification | 指定通过 SSL 连接时是否需要服务器证书中的主机名匹配服务器的主机名。 默认值为 true。  | 否 |
-| usePeerVerification | 指定通过 SSL 连接时是否要验证服务器的标识。 默认值为 true。  | 否 |
+| useHostVerification | 指定通过 TLS 进行连接时是否要求服务器证书中的主机名与服务器的主机名匹配。 默认值为 true。  | 否 |
+| usePeerVerification | 指定通过 TLS 进行连接时是否要验证服务器的标识。 默认值为 true。  | 否 |
 
 **示例：**
 

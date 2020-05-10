@@ -1,6 +1,6 @@
 ---
 title: 使用 PowerShell 对 Azure 虚拟机进行维护控制
-description: 了解如何使用维护控制和 PowerShell 来控制何时向 Azure VM 应用维护。
+description: 了解如何使用维护控制和 PowerShell 来控制对 Azure VM 应用维护的时间。
 author: rockboyfor
 ms.service: virtual-machines
 ms.topic: article
@@ -21,7 +21,7 @@ ms.locfileid: "82596512"
 
 ## <a name="enable-the-powershell-module"></a>启用 PowerShell 模块
 
-确保 `PowerShellGet` 是最新的。
+确保 `PowerShellGet` 为最新版本。
 
 ```powershell
 Install-Module -Name PowerShellGet -Repository PSGallery -Force
@@ -33,7 +33,7 @@ Install-Module -Name PowerShellGet -Repository PSGallery -Force
 
 ## <a name="create-a-maintenance-configuration"></a>创建维护配置
 
-创建一个资源组作为配置的容器。 此示例在 chinaeast 中创建名为 myMaintenanceRG 的资源组   。 如果你已有一个可供使用的资源组，则可以跳过本部分，并在其余示例中将资源组名称替换为你自己的名称。
+创建一个资源组作为适用于配置的容器。 此示例在 chinaeast 中创建名为 myMaintenanceRG 的资源组   。 如果已有一个可供使用的资源组，则可跳过此部分，并在其余示例中将资源组名称替换为你自己的名称。
 
 ```powershell
 New-AzResourceGroup `
@@ -53,21 +53,21 @@ $config = New-AzMaintenanceConfiguration `
 
 使用 `-MaintenanceScope host` 确保将维护配置用于控制对主机的更新。
 
-如果尝试创建同名的但位于不同位置的配置，将会收到错误。 配置名称在订阅中必须唯一。
+如果尝试创建同名的但位于不同位置的配置，则会收到错误。 配置名称必须是你的订阅特有的。
 
-可以使用 [Get-AzMaintenanceConfiguration](https://docs.microsoft.com/powershell/module/az.maintenance/get-azmaintenanceconfiguration) 查询可用的维护配置。
+可以使用 [Get-AzMaintenanceConfiguration](https://docs.microsoft.com/powershell/module/az.maintenance/get-azmaintenanceconfiguration) 来查询可用的维护配置。
 
 ```powershell
 Get-AzMaintenanceConfiguration | Format-Table -Property Name,Id
 ```
 
-## <a name="assign-the-configuration"></a>分配配置
+## <a name="assign-the-configuration"></a>分配此配置
 
 使用 [New-AzConfigurationAssignment](https://docs.microsoft.com/powershell/module/az.maintenance/new-azconfigurationassignment) 将配置分配到隔离的 VM 或 Azure 专用主机。
 
 ### <a name="isolated-vm"></a>隔离的 VM
 
-使用配置的 ID 将配置应用到 VM。 指定 `-ResourceType VirtualMachines`，为 `-ResourceName` 提供 VM 的名称，并为 `-ResourceGroupName` 提供 VM 的资源组。 
+使用此配置的 ID 将配置应用到 VM。 指定 `-ResourceType VirtualMachines`，为 `-ResourceName` 提供 VM 的名称，为 `-ResourceGroupName` 提供 VM 的资源组。 
 
 ```powershell
 New-AzConfigurationAssignment `
@@ -82,7 +82,7 @@ New-AzConfigurationAssignment `
 
 ### <a name="dedicated-host"></a>专用主机
 
-若要将配置应用到专用主机，还需要包含 `-ResourceType hosts`、使用主机组名称的 `-ResourceParentName`，以及 `-ResourceParentType hostGroups`。 
+若要将配置应用到专用主机，还需要包含 `-ResourceType hosts`、带主机组名称的 `-ResourceParentName`，以及 `-ResourceParentType hostGroups`。 
 
 ```powershell
 New-AzConfigurationAssignment `
@@ -97,7 +97,7 @@ New-AzConfigurationAssignment `
    -MaintenanceConfigurationId $config.Id
 ```
 
-## <a name="check-for-pending-updates"></a>检查挂起的更新
+## <a name="check-for-pending-updates"></a>检查是否有挂起的更新
 
 使用 [Get-AzMaintenanceUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/get-azmaintenanceupdate) 查看是否存在挂起的更新。 使用 `-subscription` 指定 VM 的 Azure 订阅（如果其订阅不同于你登录到的订阅）。
 
@@ -117,7 +117,7 @@ New-AzConfigurationAssignment `
 
 ### <a name="isolated-vm"></a>隔离的 VM
 
-检查隔离的 VM 的挂起更新。 在此示例中，输出的格式为表格以便于阅读。
+检查隔离的 VM 的挂起更新。 在此示例中，输出的格式为表格，方便你阅读。
 
 ```powershell
 Get-AzMaintenanceUpdate `
@@ -129,7 +129,7 @@ Get-AzMaintenanceUpdate `
 
 ### <a name="dedicated-host"></a>专用主机
 
-检查专用主机的挂起更新。 在此示例中，输出的格式为表格以便于阅读。 将资源的值替换为自己的值。
+检查专用主机的挂起更新。 在此示例中，输出的格式为表格，方便你阅读。 将资源的值替换为你自己的值。
 
 ```powershell
 Get-AzMaintenanceUpdate `
@@ -157,7 +157,7 @@ New-AzApplyUpdate `
    -ProviderName Microsoft.Compute
 ```
 
-成功时，此命令将返回一个 `PSApplyUpdate` 对象。 可以在 `Get-AzApplyUpdate` 命令中使用 Name 特性来检查更新状态。 请参阅[检查更新状态](#check-update-status)。
+成功时，此命令会返回一个 `PSApplyUpdate` 对象。 可以在 `Get-AzApplyUpdate` 命令中使用 Name 特性来检查更新状态。 请参阅[检查更新状态](#check-update-status)。
 
 ### <a name="dedicated-host"></a>专用主机
 
@@ -174,7 +174,7 @@ New-AzApplyUpdate `
 ```
 
 ## <a name="check-update-status"></a>检查更新状态
-使用 [Get-AzApplyUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/get-azapplyupdate) 检查更新状态。 以下命令显示使用 `-ApplyUpdateName` 参数的 `default` 来显示最新更新的状态。 可以使用更新的名称（由 [New-AzApplyUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/new-azapplyupdate) 命令返回）来获取特定更新的状态。
+使用 [Get-AzApplyUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/get-azapplyupdate) 检查更新状态。 对 `-ApplyUpdateName` 参数使用 `default` 时，以下命令会显示最新更新的状态。 可以使用更新的名称（由 [New-AzApplyUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/new-azapplyupdate) 命令返回）来获取特定更新的状态。
 
 ```text
 Status         : Completed
@@ -186,7 +186,7 @@ ute/virtualMachines/DXT-test-04-iso/providers/Microsoft.Maintenance/applyUpdates
 Name           : default
 Type           : Microsoft.Maintenance/applyUpdates
 ```
-LastUpdateTime 是完成更新的时间，此更新是未使用自行维护时段时由你或平台发起的。 如果从未通过维护控制应用更新，则会显示默认值。
+LastUpdateTime 是完成更新的时间，此更新是你发起的，或由平台在你未使用自行维护时段时发起的。 如果从未通过维护控制来应用更新，则会显示默认值。
 
 ### <a name="isolated-vm"></a>隔离的 VM
 

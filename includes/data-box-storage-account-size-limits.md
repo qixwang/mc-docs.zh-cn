@@ -4,16 +4,16 @@ ms.service: databox
 ms.subservice: heavy
 ms.topic: include
 origin.date: 06/18/2019
-ms.date: 09/09/2019
+ms.date: 05/11/2019
 ms.author: v-jay
-ms.openlocfilehash: b7561f862364714ec1ca0da992f0e352c1c22cd7
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 041554108b2cd01b889554c955c73c5f896f57ad
+ms.sourcegitcommit: 95efd248f5ee3701f671dbd5cfe0aec9c9959a24
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "70737485"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82516006"
 ---
-下面是对复制到存储帐户的数据的大小限制。 请确保上传的数据符合这些限制。 有关这些限制的最新信息，请转到 [Azure blob 存储规模目标](/storage/common/storage-scalability-targets#azure-blob-storage-scale-targets)和 [Azure 文件规模目标](/storage/common/storage-scalability-targets#azure-files-scale-targets)。
+下面是对复制到存储帐户的数据的大小限制。 请确保上传的数据符合这些限制。 有关这些限制的最新信息，请参阅 [Blob 存储的可伸缩性和性能目标](../articles/storage/blobs/scalability-targets.md)和 [Azure 文件存储的可伸缩性和性能目标](../articles/storage/files/storage-files-scale-targets.md)。
 
 | 复制到 Azure 存储帐户的数据的大小                      | 默认限制          |
 |---------------------------------------------------------------------|------------------------|

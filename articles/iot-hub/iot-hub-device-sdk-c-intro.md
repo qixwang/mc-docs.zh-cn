@@ -1,20 +1,20 @@
 ---
 title: 适用于 C 语言的 Azure IoT 设备 SDK | Azure
 description: 开始使用适用于 C 语言的 Azure IoT 设备 SDK，并了解如何创建与 IoT 中心通信的设备应用。
-author: yzhong94
+author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: c
 ms.topic: conceptual
 origin.date: 05/17/2019
 ms.author: v-yiso
-ms.date: 09/30/2019
-ms.openlocfilehash: 37d9f7732409f62c75fdea95a8aad2917c96eb3e
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/11/2020
+ms.openlocfilehash: 9bd489e7c4e0068b425ef20d09a1344b849cb452
+ms.sourcegitcommit: 95efd248f5ee3701f671dbd5cfe0aec9c9959a24
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "71155994"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82507742"
 ---
 # <a name="azure-iot-device-sdk-for-c"></a>适用于 C 的 Azure IoT 设备 SDK
 
@@ -63,23 +63,23 @@ SDK 已在许多平台上进行了测试（有关详细信息，请参阅 [Azure
 
 获取示例源代码后，下一步是获取一组设备凭据。 要使设备能够访问 IoT 中心，必须先将该设备添加到 IoT 中心标识注册表。 添加设备时，需要获取一组所需的设备凭据，以便设备能够连接到 IoT 中心。 下一部分所述示例应用程序的预期凭据格式为**设备连接字符串**。
 
-有几个开源工具可帮助管理 IoT 中心。
+有几个开源工具可帮助你管理 IoT 中心。
 
-* 一个是称为[设备资源管理器](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer)的 Windows 应用程序。
+* 一个是称为 [Azure IoT 资源管理器](https://github.com/Azure/azure-iot-explorer)的 Windows 应用程序。
 
 * 一个称为 [Azure IoT 工具](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)的跨平台 Visual Studio Code 扩展。
 
 * 一个称为[适用于 Azure CLI 的 IoT 扩展](https://github.com/Azure/azure-iot-cli-extension)的跨平台 Python CLI。
 
-本教程使用图形*设备资源管理器*工具。 如果在 VS Code 中进行开发，可以使用适用于 VS Code 的 Azure IoT 工具  。 如果偏好 CLI 工具，也可以使用适用于 Azure CLI 2.0 的 IoT 扩展  工具。
+本教程使用图形*设备资源管理器*工具。 如果在 VS Code 中进行开发，可以使用适用于 VS Code 的 Azure IoT 工具  。 如果喜欢使用 CLI 工具，也可以使用适用于 Azure CLI 2.0 的 IoT 扩展  工具。
 
 设备资源管理器工具使用 Azure IoT 服务库在 IoT 中心执行各种功能（包括添加设备）。 若使用设备资源管理器工具添加设备，会获得设备的连接字符串。 需要此连接字符串才能运行示例应用程序。
 
 如果不熟悉设备资源管理器工具，请参阅以下过程，了解如何使用该工具来添加设备和获取设备连接字符串。
 
-若要安装设备资源管理器工具，请参阅[如何对 IoT 中心设备使用设备资源管理器](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer)。
+1. 若要安装设备资源管理器工具，请参阅[如何对 IoT 中心设备使用设备资源管理器](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer)。
 
-运行该程序时，可以看到以下界面：
+1. 运行该程序时，可以看到以下界面：
 
   ![Device Explorer 孪生屏幕截图](./media/iot-hub-device-sdk-c-intro/DeviceExplorerTwinConfigTab.png)
 
@@ -93,15 +93,15 @@ SDK 已在许多平台上进行了测试（有关详细信息，请参阅 [Azure
 
 可在此选项卡中管理已注册到 IoT 中心的设备。
 
-单击“创建”按钮创建设备。  会显示一个已预先填充一组密钥（主密钥和辅助密钥）的对话框。 输入“设备 ID”，并单击“创建”。  
+1. 单击“创建”按钮创建设备。  会显示一个已预先填充一组密钥（主密钥和辅助密钥）的对话框。 输入“设备 ID”，并单击“创建”。  
 
-  ![“创建设备”屏幕截图](./media/iot-hub-device-sdk-c-intro/CreateDevice.png)
+   ![“创建设备”屏幕截图](./media/iot-hub-device-sdk-c-intro/CreateDevice.png)
 
-创建设备后，“设备”列表会更新，其中包含所有已注册的设备（包括刚刚创建的设备）。 如果在新设备上单击右键，会看到此菜单：
+1. 创建设备后，“设备”列表会更新，其中包含所有已注册的设备（包括刚刚创建的设备）。 如果在新设备上单击右键，会看到此菜单：
 
-  ![Device Explorer 孪生右键单击结果](./media/iot-hub-device-sdk-c-intro/DeviceExplorerTwinManagementTab_RightClick.png)
+   ![Device Explorer 孪生右键单击结果](./media/iot-hub-device-sdk-c-intro/DeviceExplorerTwinManagementTab_RightClick.png)
 
-如果选择“复制所选设备的连接字符串”，会将设备连接字符串复制到剪贴板。  请保留设备连接字符串的副本。 在运行后续部分中所述的示例应用程序时，将要用到它。
+1. 如果选择“复制所选设备的连接字符串”，会将设备连接字符串复制到剪贴板。  请保留设备连接字符串的副本。 在运行后续部分中所述的示例应用程序时，将要用到它。
 
 完成上述步骤后，可以开始运行一些代码。 大多数示例的主源文件顶部都有一个常量，可让你输入连接字符串。 例如，**iothub_client\_samples\_iothub_convenience_sample** 应用程序中的相应行如下所示。
 

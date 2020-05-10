@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 流分析
-description: 有关将 Azure 流分析与 Azure Synapse 中的数据仓库配合使用以开发实时解决方案的提示。
+description: 本文的提示涉及如何将 Azure 流分析与 Azure Synapse 中的数据仓库配合使用以开发实时解决方案。
 services: synapse-analytics
 author: WenJason
 manager: digimobile
@@ -27,7 +27,7 @@ Azure 流分析是一种完全托管的服务，可以在云中通过流式数�
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 流分析作业 - 若要创建 Azure 流分析作业，请按照[开始使用 Azure 流分析](../../stream-analytics/stream-analytics-real-time-fraud-detection.md?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)教程中的步骤执行以下操作：  
+* Azure 流分析作业 - 若要创建 Azure 流分析作业，请按照 [Azure 流分析入门](../../stream-analytics/stream-analytics-real-time-fraud-detection.md?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)教程中的步骤执行以下操作：  
 
     1. 创建事件中心输入
     2. 配置并启动事件生成器应用程序
@@ -39,7 +39,7 @@ Azure 流分析是一种完全托管的服务，可以在云中通过流式数�
 
 ### <a name="step-1"></a>步骤 1
 
-在 Azure 门户中转到你的流分析作业，并单击“作业拓扑”菜单下的“输出”   。
+在 Azure 门户中转到流分析作业，单击“作业拓扑”菜单下的“输出”   。
 
 ### <a name="step-2"></a>步骤 2
 
@@ -53,8 +53,8 @@ Azure 流分析是一种完全托管的服务，可以在云中通过流式数�
 
 *  输出别名：输入此作业输出的友好名称。
 * *订阅*：
-  * 如果你的数据仓库与流分析作业位于同一订阅中，请单击“从订阅中选择 SQL 数据库”。
-  * 如果你的数据库位于不同的订阅中，请单击“手动提供 SQL 数据库设置”。
+  * 如果数据仓库与流分析作业位于同一订阅中，请单击“从订阅中选择 SQL 数据库”。
+  * 如果数据库位于不同的订阅中，请单击“手动提供 SQL 数据库设置”。
 * *数据库*：从下拉列表中选择目标数据库。
 * *用户名*：指定具有数据库写入访问权限的帐户的用户名。
 * *密码*：提供指定的用户帐户的密码。
@@ -103,17 +103,17 @@ WITH (DISTRIBUTION = ROUND_ROBIN)
 
 在流分析作业的 Azure 门户上，单击作业名称。  单击“输出详细信息”窗格中的“测试”按钮。
 
-![“输出详细信息”中的“测试”按钮](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asatest.png)成功连接到数据库后，门户中会显示通知。
+![“输出详细信息”中的“测试”按钮](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asatest.png) 成功连接到数据库后，门户中会显示通知。
 
 ### <a name="step-6"></a>步骤 6
 
-单击“作业拓扑”下的“查询”菜单，并更改查询以将数据插入到所创建的流输出。  单击“测试选定的查询”按钮以测试查询。  如果查询测试成功，请单击“保存查询”按钮。
+单击“作业拓扑”下的“查询”菜单并更改查询，以便将数据插入已创建的流输出中。  单击“测试选定的查询”按钮以测试查询。  如果查询测试成功，请单击“保存查询”按钮。
 
 ![保存查询](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asaquery.png)
 
 ### <a name="step-7"></a>步骤 7
 
-启动 Azure 流分析作业。  单击“概述”菜单中的“启动”按钮。
+启动 Azure 流分析作业。  单击“概览”菜单上的“启动”按钮。
 
 ![启动流分析作业](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asastart.png)
 

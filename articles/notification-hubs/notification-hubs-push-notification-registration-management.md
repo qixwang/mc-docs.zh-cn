@@ -12,17 +12,17 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
-origin.date: 12/17/2019
-ms.date: 01/17/2020
+origin.date: 03/17/2020
+ms.date: 04/20/2020
 ms.author: v-tawe
 ms.reviewer: jowargo
 ms.lastreviewed: 04/08/2019
-ms.openlocfilehash: f2fe59647f889b6c27e0ed58a4bc0fae17dbf0ce
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 76f9c6ffb2ae9a6b9484148d72a0b7c9f2f0184f
+ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292670"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82588655"
 ---
 # <a name="registration-management"></a>注册管理
 
@@ -120,7 +120,7 @@ SecondaryTiles 字典使用的 TileId 与在 Windows 应用商店应用中创建
 从设备注册是最简单的方法，但存在一些缺点：
 
 - 客户端应用只能在它处于活动状态时更新其标记。 例如，如果用户有两台设备要注册与体育团队相关的标记，则当第一台设备注册附加标记（例如，Seahawks）时，第二台设备将不会收到有关 Seahawks 的通知，直到第二次在第二台设备上执行应用程序为止。 更概括地说，如果标记受多个设备的影响，则从后端管理标记是理想的选择。
-- 由于应用可能会受到攻击，因此保护特定标记的注册需要格外小心，如“标记级安全性”部分中所述。
+- 由于应用可能会受到黑客攻击，因此保护特定标记的注册需要格外小心，如[安全性](notification-hubs-push-notification-security.md)一文中所述。
 
 ### <a name="example-code-to-register-with-a-notification-hub-from-a-device-using-an-installation"></a>使用安装从设备向通知中心注册的示例代码
 
@@ -171,7 +171,7 @@ var channel = await PushNotificationChannelManager.CreatePushNotificationChannel
 string installationId = null;
 var settings = ApplicationData.Current.LocalSettings.Values;
 
-// If we have not stored an installation id in application data, create and store as application data.
+// If we have not stored an installation ID in application data, create and store as application data.
 if (!settings.ContainsKey("__NHInstallationId"))
 {
     installationId = Guid.NewGuid().ToString();
@@ -213,15 +213,15 @@ else
 // Initialize the Notification Hub
 NotificationHubClient hub = NotificationHubClient.CreateClientFromConnectionString(listenConnString, hubName);
 
-// The Device id from the PNS
+// The Device ID from the PNS
 var pushChannel = await PushNotificationChannelManager.CreatePushNotificationChannelForApplicationAsync();
 
-// If you are registering from the client itself, then store this registration id in device
-// storage. Then when the app starts, you can check if a registration id already exists or not before
+// If you are registering from the client itself, then store this registration ID in device
+// storage. Then when the app starts, you can check if a registration ID already exists or not before
 // creating.
 var settings = ApplicationData.Current.LocalSettings.Values;
 
-// If we have not stored a registration id in application data, store in application data.
+// If we have not stored a registration ID in application data, store in application data.
 if (!settings.ContainsKey("__NHRegistrationId"))
 {
     // make sure there are no existing registrations for this push handle (used for iOS and Android)    
@@ -326,7 +326,7 @@ var reg = new WindowsRegistrationDescription(channelUri, tags);
 // Create
 await hub.CreateRegistrationAsync(reg);
 
-// Get by id
+// Get by ID
 var r = await hub.GetRegistrationAsync<RegistrationDescription>("id");
 
 // update
