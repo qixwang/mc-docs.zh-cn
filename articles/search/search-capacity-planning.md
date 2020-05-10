@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
-origin.date: 02/14/2020
-ms.date: 03/16/2020
-ms.openlocfilehash: 3b6c2ad51432f06038217731f1e09c3eeca084eb
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+origin.date: 03/30/2020
+ms.date: 04/20/2020
+ms.openlocfilehash: bd900fb8527b5f772b4ef4b419e27d31e1e09bdc
+ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80243713"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82588719"
 ---
 # <a name="adjust-capacity-in-azure-cognitive-search"></a>在 Azure 认知搜索中调整容量
 
@@ -39,7 +39,8 @@ ms.locfileid: "80243713"
 
 根据惯例，搜索应用程序所需的副本数往往多过分区数，尤其是在服务操作偏向于查询工作负荷的情况下。 [高可用性](#HA)部分将解释原因。
 
-添加更多的副本或分区会增加运行服务的成本。 请务必查看[定价计算器](https://www.azure.cn/pricing/calculator/)来了解添加更多节点对计费造成的影响。 [以下图表](#chart)可帮助你交叉参考特定配置所需的搜索单位数。
+> [!NOTE]
+添加更多的副本或分区会增加运行服务的成本，并可能在结果的排序方式上引入细微变化。 请务必查看[定价计算器](https://www.azure.cn/pricing/calculator/)来了解添加更多节点对计费造成的影响。 [以下图表](#chart)可帮助你交叉参考特定配置所需的搜索单位数。 有关其他副本如何影响查询处理的详细信息，请参阅[排序结果](search-pagination-page-layout.md#ordering-results)。
 
 ## <a name="how-to-allocate-replicas-and-partitions"></a>如何分配副本和分区
 
@@ -86,10 +87,10 @@ ms.locfileid: "80243713"
 | **1 个副本** |1 个 SU |2 SU |3 SU |4 SU |6 SU |12 SU |
 | **2 个副本** |2 SU |4 SU |6 SU |8 SU |12 SU |24 SU |
 | **3 个副本** |3 SU |6 SU |9 SU |12 SU |18 SU |36 个 SU |
-| **4 个副本** |4 SU |8 SU |12 SU |16 SU |24 SU |空值 |
-| **5 副本** |5 SU |10 SU |15 SU |20 SU |30 SU |空值 |
-| **6 个副本** |6 SU |12 SU |18 SU |24 SU |36 个 SU |空值 |
-| **12 副本** |12 SU |24 SU |36 个 SU |空值 |空值 |空值 |
+| **4 个副本** |4 SU |8 SU |12 SU |16 SU |24 SU |不适用 |
+| **5 副本** |5 SU |10 SU |15 SU |20 SU |30 SU |不适用 |
+| **6 个副本** |6 SU |12 SU |18 SU |24 SU |36 个 SU |不适用 |
+| **12 副本** |12 SU |24 SU |36 个 SU |不适用 |不适用 |不适用 |
 
 Azure 网站上详细说明了 SU、定价和容量。 有关详细信息，请参阅 [Pricing Details](https://www.azure.cn/pricing/details/search/)（定价详细信息）。
 

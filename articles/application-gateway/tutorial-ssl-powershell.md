@@ -1,24 +1,24 @@
 ---
-title: 使用 SSL 终端创建应用程序网关 - Azure PowerShell
-description: 了解如何使用 Azure PowerShell 创建应用程序网关并为 SSL 终端添加证书。
+title: 使用 PowerShell 实现 TLS 终止
+titleSuffix: Azure Application Gateway
+description: 了解如何使用 Azure PowerShell 创建应用程序网关并为 TLS 终端添加证书。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-origin.date: 07/31/2019
-ms.date: 09/10/2019
+ms.date: 04/26/2020
 ms.author: v-junlch
 ms.custom: mvc
-ms.openlocfilehash: c41542a3d2ad0339f321d11feb7faee984777813
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: fd389cca27614b9fea9859cff2d5995002ce72bc
+ms.sourcegitcommit: e3512c5c2bbe61704d5c8cbba74efd56bfe91927
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "70857210"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82267686"
 ---
-# <a name="create-an-application-gateway-with-ssl-termination-using-azure-powershell"></a>通过 Azure PowerShell 使用 SSL 终端创建应用程序网关
+# <a name="create-an-application-gateway-with-tls-termination-using-azure-powershell"></a>通过 Azure PowerShell 使用 TLS 终端创建应用程序网关
 
-可通过 Azure PowerShell 使用 [SSL 终端](ssl-overview.md)的证书创建使用[虚拟机规模集](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)作为后端服务器的[应用程序网关](overview.md)。 在此示例中，规模集包含两个添加到应用程序网关的默认后端池的虚拟机实例。 
+可通过 Azure PowerShell 使用 [TLS/SSL 终端](ssl-overview.md)的证书创建使用[虚拟机规模集](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)作为后端服务器的[应用程序网关](overview.md)。 在此示例中，规模集包含两个添加到应用程序网关的默认后端池的虚拟机实例。 
 
 在本文中，学习如何：
 
@@ -28,7 +28,7 @@ ms.locfileid: "70857210"
 > * 使用证书创建应用程序网关
 > * 使用默认后端池创建虚拟机规模集
 
-如果没有 Azure 订阅，请在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
+如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -70,7 +70,7 @@ Export-PfxCertificate `
 资源组是在其中部署和管理 Azure 资源的逻辑容器。 使用 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) 创建名为 *myResourceGroupAG* 的 Azure 资源组。 
 
 ```powershell
-New-AzResourceGroup -Name myResourceGroupAG -Location chinanorth
+New-AzResourceGroup -Name myResourceGroupAG -Location chinanorth2
 ```
 
 ## <a name="create-network-resources"></a>创建网络资源
@@ -88,14 +88,14 @@ $agSubnetConfig = New-AzVirtualNetworkSubnetConfig `
 
 $vnet = New-AzVirtualNetwork `
   -ResourceGroupName myResourceGroupAG `
-  -Location chinanorth `
+  -Location chinanorth2 `
   -Name myVNet `
   -AddressPrefix 10.0.0.0/16 `
   -Subnet $backendSubnetConfig, $agSubnetConfig
 
 $pip = New-AzPublicIpAddress `
   -ResourceGroupName myResourceGroupAG `
-  -Location chinanorth `
+  -Location chinanorth2 `
   -Name myAGPublicIPAddress `
   -AllocationMethod Static `
   -Sku Standard
@@ -190,7 +190,7 @@ $sku = New-AzApplicationGatewaySku `
 $appgw = New-AzApplicationGateway `
   -Name myAppGateway `
   -ResourceGroupName myResourceGroupAG `
-  -Location chinanorth `
+  -Location chinanorth2 `
   -BackendAddressPools $defaultPool `
   -BackendHttpSettingsCollection $poolSettings `
   -FrontendIpConfigurations $fipconfig `
@@ -225,7 +225,7 @@ $ipConfig = New-AzVmssIpConfig `
   -ApplicationGatewayBackendAddressPoolsId $backendPool.Id
 
 $vmssConfig = New-AzVmssConfig `
-  -Location chinanorth `
+  -Location chinanorth2 `
   -SkuCapacity 2 `
   -SkuName Standard_DS2 `
   -UpgradePolicyMode Automatic
@@ -301,4 +301,3 @@ Remove-AzResourceGroup -Name myResourceGroupAG
 
 [创建托管多个网站的应用程序网关](./tutorial-multiple-sites-powershell.md)
 
-<!-- Update_Description: code update -->

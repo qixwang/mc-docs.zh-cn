@@ -3,19 +3,19 @@ title: 索引器中的字段映射
 titleSuffix: Azure Cognitive Search
 description: 针对字段名称和数据表示的差异配置帐户索引器中的字段映射。
 manager: nitinme
-author: mgottein
+author: mattmsft
 ms.author: v-tawe
 ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 11/04/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: c8857bad41fe75998b1c09ff6745feff5793bea1
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 04/20/2020
+ms.openlocfilehash: efedd22e7b0b85142b749ae06b6a5b4921c83454
+ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78850564"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82588699"
 ---
 # <a name="field-mappings-and-transformations-using-azure-cognitive-search-indexers"></a>使用 Azure 认知搜索索引器进行字段映射和转换
 
@@ -124,7 +124,7 @@ api-key: [admin key]
 
 #### <a name="example---document-key-lookup"></a>示例 - 文档键查找
 
-Azure 认知搜索文档键中只能使用 URL 安全字符（因为客户必须能够使用[查找 API](https://docs.microsoft.com/rest/api/searchservice/lookup-document) 来寻址文档）。 如果键的源字段包含 URL 不安全的字符，在编制索引时，你可以使用 `base64Encode` 函数来转换该字段。
+Azure 认知搜索文档键中只能使用 URL 安全字符（因为客户必须能够使用[查找 API](https://docs.microsoft.com/rest/api/searchservice/lookup-document) 来寻址文档）。 如果键的源字段包含 URL 不安全的字符，在编制索引时，你可以使用 `base64Encode` 函数来转换该字段。 但是，文档键（转换前后）的长度不能超过 1,024 个字符。
 
 在搜索时检索编码的键时，可以使用 `base64Decode` 函数获取原始键值，然后使用该值来检索源文档。
 
@@ -170,7 +170,7 @@ Azure 认知搜索支持两种不同的 Base64 编码： 在编码和解码同�
 
 如果未包含 parameters 属性，该属性的默认值为 `{"useHttpServerUtilityUrlTokenEncode" : true}`。
 
-Azure 认知搜索支持两种不同的 Base64 编码： 在编码和解码同一字段时，应使用相同的参数。 在决定要使用哪些参数时，请参阅 [base64 编码选项](#base64details)了解更多详细信息。
+Azure 认知搜索支持两种不同的 Base64 编码。 在编码和解码同一字段时，应使用相同的参数。 在决定要使用哪些参数时，请参阅 [base64 编码选项](#base64details)了解更多详细信息。
 
 <a name="base64details"></a>
 
@@ -293,6 +293,28 @@ Azure SQL 数据库不具有能自然映射到 Azure 认知搜索中 `Collection
     "targetFieldName" : "SearchableMetadata",
     "mappingFunction" : {
       "name" : "urlDecode"
+    }
+  }]
+ ```
+ 
+ <a name="fixedLengthEncodeFunction"></a>
+ 
+ ### <a name="fixedlengthencode-function"></a>fixedLengthEncode 函数
+ 
+ 此函数将任意长度的字符串转换为固定长度的字符串。
+ 
+ ### <a name="example---map-document-keys-that-are-too-long"></a>示例 - 映射过长的文档键
+ 
+当遇到文档键长度超过 1024 个字符的错误时，可以应用此函数来减少文档键的长度。
+
+ ```JSON
+
+"fieldMappings" : [
+  {
+    "sourceFieldName" : "metadata_storage_path",
+    "targetFieldName" : "your key field",
+    "mappingFunction" : {
+      "name" : "fixedLengthEncode"
     }
   }]
  ```

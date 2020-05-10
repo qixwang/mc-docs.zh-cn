@@ -8,15 +8,15 @@ ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 11/04/2019
-ms.date: 03/16/2020
-ms.openlocfilehash: e64fdad982f32c4657ef72bb85652fae25c90168
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 04/20/2020
+ms.openlocfilehash: 06801742aa2d03fbecebac60dd5d9d625b304a4f
+ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78934810"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82588764"
 ---
-#   <a name="entity-recognition-cognitive-skill"></a>实体识别认知技能
+#    <a name="entity-recognition-cognitive-skill"></a>实体识别认知技能
 
 **实体识别**技能从文本中提取各种类型的实体。 此技能使用认知服务中的[文本分析](https://docs.azure.cn/cognitive-services/text-analytics/overview)提供的机器学习模型。
 
@@ -38,8 +38,8 @@ Microsoft.Skills.Text.EntityRecognitionSkill
 
 | 参数名称     | 说明 |
 |--------------------|-------------|
-| categories    | 应提取的类别的数组。  可能的类别类型有：`"Person"`、`"Location"`、`"Organization"`、`"Quantity"`、`"Datetime"`、`"URL"`、`"Email"`。 如果不提供类别，则返回所有类型。|
-|defaultLanguageCode |  输入文本的语言代码。 支持以下语言：`ar, cs, da, de, en, es, fi, fr, hu, it, ja, ko, nl, no, pl, pt-BR, pt-PT, ru, sv, tr, zh-hans`。 并非所有实体类别都支持所有语言；请参阅下文中的说明。|
+| Categories    | 应提取的类别的数组。  可能的类别类型有：`"Person"`、`"Location"`、`"Organization"`、`"Quantity"`、`"Datetime"`、`"URL"`、`"Email"`。 如果不提供类别，则返回所有类型。|
+|defaultLanguageCode |    输入文本的语言代码。 支持以下语言：`ar, cs, da, de, en, es, fi, fr, hu, it, ja, ko, nl, no, pl, pt-BR, pt-PT, ru, sv, tr, zh-hans`。 并非所有实体类别都支持所有语言；请参阅下文中的说明。|
 |minimumPrecision | 一个介于 0 和 1 之间的值。 如果置信度分数（在 `namedEntities` 输出中）低于此值，则不会返回该实体。 默认值为 0。 |
 |includeTypelessEntities | 如果要识别不符合当前类别的已知实体，请设置为 `true`。 识别出的实体将在 `entities` 复杂输出字段中返回。 例如，“Windows 10”是一个众所周知的实体（产品），但由于“产品”不是受支持的类别，因此，此实体将包含在实体输出字段中。 默认为 `false` |
 
@@ -48,7 +48,7 @@ Microsoft.Skills.Text.EntityRecognitionSkill
 
 | 输入名称      | 说明                   |
 |---------------|-------------------------------|
-| languageCode  | 可选。 默认为 `"en"`。  |
+| languageCode    | 可选。 默认值为 `"en"`。  |
 | text          | 要分析的文本。          |
 
 ## <a name="skill-outputs"></a>技能输出
@@ -56,19 +56,19 @@ Microsoft.Skills.Text.EntityRecognitionSkill
 > [!NOTE]
 > 并非所有实体类别都支持所有语言。 `"Person"`、`"Location"` 和 `"Organization"` 实体类别支持上面的完整语言列表。 只有 _de_、_en_、_es_、_fr_ 和 _zh-hans_ 支持 `"Quantity"`、`"Datetime"`、`"URL"` 和 `"Email"` 类型的提取。 有关详细信息，请参阅[文本分析 API 的语言和区域支持](https://docs.azure.cn/cognitive-services/text-analytics/language-support)。  
 
-| 输出名称     | 说明                   |
+| 输出名称      | 说明                   |
 |---------------|-------------------------------|
-| 人员      | 一个字符串数组，其中，一个字符串表示一个人员名称。 |
-| 位置  | 一个字符串数组，其中，一个字符串表示一个位置。 |
+| 人员       | 一个字符串数组，其中，一个字符串表示一个人员名称。 |
+| locations  | 一个字符串数组，其中，一个字符串表示一个位置。 |
 | 组织  | 一个字符串数组，其中，一个字符串表示一个组织。 |
 | quantities  | 一个字符串数组，其中，每个字符串都表示一个数量。 |
 | dateTimes  | 一个字符串数组，其中，每个字符串都表示一个日期时间（因为它以文本形式显示）值。 |
 | urls | 一个字符串数组，其中，每个字符串都表示一个 URL |
 | emails | 一个字符串数组，其中，每个字符串都表示一个电子邮件地址 |
-| namedEntities | 复杂类型的数组，包含以下字段： <ul><li>category</li> <li>value（实际实体名称）</li><li>偏移（在文本中找到它的位置）</li><li>置信度（值越高意味着它越有可能是一个真实的实体）</li></ul> |
+| namedEntities | 复杂类型的数组，包含以下字段： <ul><li>category</li> <li>值（实际实体名称）</li><li>偏移（在文本中找到它的位置）</li><li>置信度（值越高意味着它越有可能是一个真实的实体）</li></ul> |
 | 实体 | 一个复杂类型数组，包含有关从文本提取的实体的丰富信息，具有以下字段 <ul><li> name（实际实体名称。 这表示一个“规范化”窗体）</li><li> wikipediaId</li><li>wikipediaLanguage</li><li>wikipediaUrl（实体的 Wikipedia 页面的链接）</li><li>bingId</li><li>type（识别的实体的类别）</li><li>subType（仅适用于某些类别，这提供实体类型的更精细视图）</li><li> matches（包含的复杂集合）<ul><li>text（实体的原始文本）</li><li>offset（找到它的位置）</li><li>length（原始实体文本的长度）</li></ul></li></ul> |
 
-##  <a name="sample-definition"></a>示例定义
+##    <a name="sample-definition"></a>示例定义
 
 ```json
   {
@@ -98,7 +98,7 @@ Microsoft.Skills.Text.EntityRecognitionSkill
     ]
   }
 ```
-##  <a name="sample-input"></a>示例输入
+##    <a name="sample-input"></a>示例输入
 
 ```json
 {
@@ -115,7 +115,7 @@ Microsoft.Skills.Text.EntityRecognitionSkill
 }
 ```
 
-##  <a name="sample-output"></a>示例输出
+##    <a name="sample-output"></a>示例输出
 
 ```json
 {
@@ -188,6 +188,7 @@ Microsoft.Skills.Text.EntityRecognitionSkill
 }
 ```
 
+请注意，在此技能的输出中，针对实体返回的偏移量是直接从[文本分析 API](https://docs.azure.cn/cognitive-services/text-analytics/overview) 返回的，这意味着如果使用这些偏移量为原始字符串编制索引，则应使用 .NET 中的 [StringInfo](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo?view=netframework-4.8) 类来提取正确的内容。
 
 ## <a name="error-cases"></a>错误案例
 如果文档的语言代码不受支持，则返回错误，并且不提取任何实体。

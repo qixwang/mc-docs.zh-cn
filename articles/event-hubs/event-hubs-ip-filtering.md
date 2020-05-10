@@ -10,19 +10,36 @@ ms.devlang: na
 ms.custom: seodec18
 ms.topic: article
 origin.date: 12/20/2019
-ms.date: 03/30/2020
+ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: 3495d13e41a0d471e49cbc0ba1fc5646c1e5f362
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 6a3417e0a6a463a61838435a8712d2ac8a54e2a5
+ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80586819"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82588791"
 ---
 # <a name="configure-ip-firewall-rules-for-an-azure-event-hubs-namespace"></a>为 Azure 事件中心命名空间配置 IP 防火墙规则
-默认情况下，只要请求附带了有效的身份验证和授权，就可以从 Internet 访问事件中心命名空间。 使用 IP 防火墙，可以将其进一步限制为采用 [CIDR（无类域间路由）](https://wikipedia.org/wiki/Classless_Inter-Domain_Routing)表示法的一组 IPv4 地址或 IPv4 地址范围。
+默认情况下，只要请求附带了有效的身份验证和授权，就可以从 Internet 访问事件中心命名空间。 使用 IP 防火墙，可以将其进一步限制为采用 CIDR（无类域间路由）表示法的一组 IPv4 地址或一个 IPv4 地址。
 
 在只应从某些已知站点访问 Azure 事件中心的情况下，此功能很有用。 可使用防火墙规则配置相关规则，以接受源自特定 IPv4 地址的流量。 例如，如果将事件中心与 [Azure Express Route][express-route] 配合使用，则可创建防火墙规则  ，只允许流量来自本地基础结构 IP 地址。 
+
+>[!WARNING]
+> 启用 IP 筛选可防止其他 Azure 服务与事件中心进行交互。
+>
+> 实现虚拟网络时，受信任的 Microsoft 服务不受支持。
+>
+> 不适用于虚拟网络常见 Azure 方案（请注意，该列表内容并不详尽）  -
+> - Azure Monitor（诊断设置）
+> - Azure 流分析
+> - 与 Azure 事件网格的集成
+> - Azure IoT 中心路由
+> - Azure IoT Device Explorer
+>
+> 以下 Microsoft 服务必须在虚拟网络中
+> - Azure Web 应用
+> - Azure Functions
+
 
 ## <a name="ip-firewall-rules"></a>IP 防火墙规则
 IP 防火墙规则应用于事件中心命名空间级别。 因此，这些规则适用于通过任何受支持协议从客户端发出的所有连接。 如果某 IP 地址与事件中心命名空间上的允许 IP 规则不匹配，则将拒绝来自该地址的任何连接尝试并将其标记为“未经授权”。 响应不会提及 IP 规则。 IP 筛选器规则将按顺序应用，与 IP 地址匹配的第一个规则决定了将执行接受操作还是执行拒绝操作。

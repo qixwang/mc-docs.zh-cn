@@ -8,13 +8,13 @@ ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 11/04/2019
-ms.date: 03/02/2020
-ms.openlocfilehash: 28229335f5cfb7c0d3d2a62d80f2e709d557400c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 04/20/2020
+ms.openlocfilehash: 85b5cd01b205b0eb22e1092927c827aa9f66c286
+ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78850230"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82588529"
 ---
 # <a name="configure-a-connection-from-an-azure-cognitive-search-indexer-to-sql-server-on-an-azure-vm"></a>配置从 Azure 认知搜索索引器到 Azure VM 上 SQL Server 的连接
 
@@ -22,7 +22,7 @@ ms.locfileid: "78850230"
 
 从 Azure 认知搜索到 VM 上的 SQL Server 的连接是公共 Internet 连接。 对于这些连接通常会遵循的所有安全措施在此处也适用：
 
-+ 对于 Azure VM 上 SQL Server 实例的完全限定的域名，从[证书颁发机构提供程序](https://en.wikipedia.org/wiki/Certificate_authority#Providers)获取证书。
++ 对于 Azure VM 上 SQL Server 实例的完全限定域名，从证书颁发机构提供程序获取其证书。
 + 将该证书安装在 VM 上，然后使用本文中的说明在 VM 上启用并配置加密连接。
 
 ## <a name="enable-encrypted-connections"></a>启用加密连接
@@ -40,13 +40,13 @@ ms.locfileid: "78850230"
    * 在 regedit 中，浏览到此注册表项：`HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SQL Server\[MSSQL13.MSSQLSERVER]\MSSQLServer\SuperSocketNetLib\Certificate`。
      
      `[MSSQL13.MSSQLSERVER]` 部分因版本和实例名称而异。 
-   * 将**证书**密钥的值设置为已导入到 VM 的 SSL 证书的**指纹**。
+   * 将证书  密钥的值设置为已导入到 VM 的 TLS/SSL 证书的指纹  。
      
      可通过多种方式获取指纹，有些方式十分有效。 如果从 MMC 的**证书**管理单元中复制指纹，可能会[如此支持文章中所述](https://support.microsoft.com/kb/2023869/)选取不可见的前导字符，这会导致在尝试连接时出错。 提供了几种更正此问题的解决方法。 最简单的方法是按 Backspace 键退格，并重新键入指纹的第一个字符，以在 regedit 中删除密钥值字段中的前导字符。 此外，也可以使用其他工具复制指纹。
 
 3. 向服务帐户授予权限。 
    
-    请确保向 SQL Server 服务帐户授予 SSL 证书私钥的相应权限。 如果忽略此步骤，SQL Server 将不会启动。 可使用**证书**管理单元或 **CertUtils** 执行此任务。
+    请确保向 SQL Server 服务帐户授予 TLS/SSL 证书私钥的相应权限。 如果忽略此步骤，SQL Server 将不会启动。 可使用**证书**管理单元或 **CertUtils** 执行此任务。
     
 4. 重新启动 SQL Server 服务。
 

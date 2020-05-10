@@ -1,23 +1,23 @@
 ---
 title: 使用 CLI 进行 HTTP 到 HTTPS 重定向
 titleSuffix: Azure Application Gateway
-description: 了解如何使用 Azure CLI 创建应用程序网关并为 SSL 终端添加证书。
+description: 了解如何使用 Azure CLI 创建应用程序网关并为 TLS 终端添加证书。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 03/16/2020
+ms.date: 04/26/2020
 ms.author: v-junlch
-ms.openlocfilehash: b6d2bed3c34e406f9958c20064c9f01988a4c71b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 65e4923fb9efb316a3c0589ecaf16e2fdf0f075b
+ms.sourcegitcommit: e3512c5c2bbe61704d5c8cbba74efd56bfe91927
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79497338"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82267689"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-cli"></a>使用 Azure CLI 创建支持 HTTP 到 HTTPS 重定向的应用程序网关
 
-可以通过 Azure CLI 使用 SSL 终端的证书创建[应用程序网关](overview.md)。 路由规则用于将 HTTP 流量重定向到应用程序网关中的 HTTPS 端口。 在此示例中，还会为包含两个虚拟机实例的应用程序网关的后端池创建一个[虚拟机规模集](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)。
+可以通过 Azure CLI 使用 TLS/SSL 终端的证书创建[应用程序网关](overview.md)。 路由规则用于将 HTTP 流量重定向到应用程序网关中的 HTTPS 端口。 在此示例中，还会为包含两个虚拟机实例的应用程序网关的后端池创建一个[虚拟机规模集](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)。
 
 在本文中，学习如何：
 
@@ -30,7 +30,7 @@ ms.locfileid: "79497338"
 
 如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 
-如果选择在本地安装并使用 CLI，此快速入门教程要求运行 Azure CLI 2.0.4 版或更高版本。 要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/install-azure-cli)。
+如果选择在本地安装并使用 CLI，此快速入门教程要求运行 Azure CLI 2.0.4 版或更高版本。 若要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/install-azure-cli)。
 
 ## <a name="create-a-self-signed-certificate"></a>创建自签名证书
 
@@ -52,21 +52,21 @@ openssl pkcs12 -export -out appgwcert.pfx -inkey privateKey.key -in appgwcert.cr
 
 资源组是在其中部署和管理 Azure 资源的逻辑容器。 使用 [az group create](/cli/group) 创建资源组。
 
-以下示例在“chinanorth”  位置创建名为“myResourceGroupAG”  的资源组。
+以下示例在“chinanorth2”  位置创建名为“myResourceGroupAG”  的资源组。
 
 ```azurecli 
-az group create --name myResourceGroupAG --location chinanorth
+az group create --name myResourceGroupAG --location chinanorth2
 ```
 
 ## <a name="create-network-resources"></a>创建网络资源
 
-使用 *az network vnet create* 创建名为 *myVNet* 的虚拟网络和名为 [myAGSubnet](/cli/network/vnet) 的子网。 然后，可以使用 *az network vnet subnet create* 添加后端服务器所需的名为 [myBackendSubnet](/cli/network/vnet/subnet) 的子网。 使用 *az network public-ip create* 创建名为 [myAGPublicIPAddress](https://docs.azure.cn/zh-cn/cli/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) 的公共 IP 地址。
+使用 [az network vnet create](/cli/network/vnet) 创建名为 *myVNet* 的虚拟网络和名为 *myAGSubnet* 的子网。 然后，可以使用 [az network vnet subnet create](/cli/network/vnet/subnet) 添加后端服务器所需的名为 *myBackendSubnet* 的子网。 使用 [az network public-ip create](https://docs.azure.cn/zh-cn/cli/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) 创建名为 *myAGPublicIPAddress* 的公共 IP 地址。
 
 ```azurecli
 az network vnet create `
   --name myVNet `
   --resource-group myResourceGroupAG `
-  --location chinanorth `
+  --location chinanorth2 `
   --address-prefix 10.0.0.0/16 `
   --subnet-name myAGSubnet `
   --subnet-prefix 10.0.1.0/24
@@ -89,7 +89,7 @@ az network public-ip create `
 ```azurecli
 az network application-gateway create `
   --name myAppGateway `
-  --location chinanorth `
+  --location chinanorth2 `
   --resource-group myResourceGroupAG `
   --vnet-name myVNet `
   --subnet myAGsubnet `
@@ -157,7 +157,7 @@ az network application-gateway redirect-config create `
 
 ### <a name="add-the-routing-rule"></a>添加路由规则
 
-使用 *az network application-gateway rule create* 将具有重定向配置的名为 [rule2](/cli/network/application-gateway/rule#az-network-application-gateway-rule-create) 的路由规则添加到应用程序网关。
+使用 [az network application-gateway rule create](/cli/network/application-gateway/rule#az-network-application-gateway-rule-create) 将具有重定向配置的名为 *rule2* 的路由规则添加到应用程序网关。
 
 ```azurecli
 az network application-gateway rule create `
@@ -222,7 +222,7 @@ az network public-ip show `
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你了解了如何执行以下操作：
+在本教程中，你已学习了如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建自签名证书

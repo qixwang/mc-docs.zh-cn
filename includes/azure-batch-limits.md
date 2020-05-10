@@ -1,28 +1,29 @@
 ---
-ms.openlocfilehash: 44a0c25f6c789c75738bf53df11c47a5f6def7ed
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+title: include 文件
+description: include 文件
+services: batch
+author: laurenhughes
+ms.service: batch
+ms.topic: include
+ms.date: 04/20/2020
+ms.author: v-tawe
+ms.custom: include file
+ms.openlocfilehash: 7afc41fb84d7f9e6f59134929c33684092805b2e
+ms.sourcegitcommit: d6db729fea7d491d876d491f19ff89ef52384329
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "63843350"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82516011"
 ---
 | **资源** | **默认限制** | **最大限制** |
 | --- | --- | --- |
-| 每个区域每个订阅的 Batch 帐户数 | 1 - 3 |50 |
-| 每个批处理帐户的专用核心数 | 10 - 100 | N/A<sup>1</sup> |
-| 每个批处理帐户的低优先级核心数 | 10 - 100 | N/A<sup>2</sup> |
-| 每个批处理帐户的活动作业和作业计划数<sup>3</sup> | 100 - 300 | 2500<sup>4</sup> |
-| 每个 Batch 帐户的池数 | 20 - 100 | 500 |
+| 每订阅每区域的 Azure Batch 帐户数 | 1-3 |50 |
+| 每个批处理帐户的专用核心数 | 90-900 | 联系支持人员 |
+| 每个批处理帐户的低优先级核心数 | 10-100 | 联系支持人员 |
+| 每个批处理帐户的[活动](https://docs.microsoft.com/rest/api/batchservice/job/get#jobstate)  作业和作业计划（已完成  作业无限制） | 100-300 | 1,000<sup>1</sup> |
+| 每个批处理帐户的池数 | 20-100 | 500<sup>1</sup> |
 
 > [!NOTE]
-> 默认限制因用于创建 Batch 帐户的订阅类型而异。 显示的核心配额适用于 Batch 服务模式下的 Batch 帐户。 [查看 Batch 帐户中的配额](../articles/batch/batch-quota-limit.md#view-batch-quotas)。 
+> 默认限制因用于创建 Batch 帐户的订阅类型而异。 显示的核心配额适用于 Batch 服务模式下的 Batch 帐户。 [查看 Batch 帐户中的配额](../articles/batch/batch-quota-limit.md#view-batch-quotas)。
 
-<sup>1</sup> 可以增加每个批处理帐户的专用核心数，但不指定其最大数目。 请联系 Azure 支持以讨论增加选项。
-
-<sup>2</sup> 可以增加每个批处理帐户的低优先级核心数，但不指定其最大数目。 请联系 Azure 支持以讨论增加选项。
-
-<sup>3</sup> 已完成的作业和作业计划不受限制。
-
-<sup>4</sup> 如果请求增加的配额超出此限制，请与 Azure 支持部门联系。
-
-<!-- ms.date: 09/10/2018 -->
+<sup>1</sup>若要请求超过此限制的增加，请与 Azure 支持联系。

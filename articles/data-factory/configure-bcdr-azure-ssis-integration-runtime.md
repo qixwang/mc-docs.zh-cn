@@ -1,27 +1,28 @@
 ---
-title: 为 SQL 数据库故障转移配置 Azure-SSIS Integration Runtime | Microsoft Docs
+title: 为 SQL 数据库故障转移配置 Azure-SSIS Integration Runtime
 description: 本文介绍了如何针对 Azure SQL 数据库异地复制和 SSISDB 数据库的故障转移配置 Azure-SSIS Integration Runtime。
 services: data-factory
-documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: ''
 ms.devlang: powershell
-ms.topic: conceptual
-origin.date: 08/14/2018
-ms.date: 07/22/2019
 author: WenJason
 ms.author: v-jay
-ms.reviewer: douglasl
 manager: digimobile
-ms.openlocfilehash: 0cfe6a17eb31f592c893442fefe6caa322e6d92e
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.reviewer: douglasl
+ms.topic: conceptual
+ms.custom: seo-lt-2019
+origin.date: 04/09/2020
+ms.date: 05/11/2020
+ms.openlocfilehash: 1092e5ca85f1ae5a41bd005c4b6c42830d033e03
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "68308932"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82198248"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-with-azure-sql-database-geo-replication-and-failover"></a>针对 Azure SQL 数据库异地复制和故障转移配置 Azure-SSIS Integration Runtime
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 本文介绍了如何针对 Azure SQL 数据库异地复制和 SSISDB 数据库配置 Azure-SSIS Integration Runtime。 发生故障转移时，你可以确保 Azure-SSIS IR 使用辅助数据库保持工作。
 
@@ -37,7 +38,7 @@ ms.locfileid: "68308932"
 
 - Azure-SSIS IR 指向故障转移组的读写侦听器终结点。
 
-  和
+  并且
 
 - SQL 数据库服务器“未”  配置虚拟网络服务终结点规则。
 
@@ -53,11 +54,11 @@ ms.locfileid: "68308932"
 
 - Azure-SSIS IR 指向故障转移组的主服务器终结点。 发生故障转移时，此终结点更改。
 
-  或
+  或者
 
 - Azure SQL 数据库服务器配置了虚拟网络服务终结点规则。
 
-  或
+  或者
 
 - 数据库服务器是配置有虚拟网络的 SQL 数据库托管实例。
 
@@ -73,7 +74,7 @@ ms.locfileid: "68308932"
 
 以下各部分更详细地说明了这些步骤。
 
-### <a name="prerequisites"></a>必备条件
+### <a name="prerequisites"></a>先决条件
 
 - 确保为 Azure SQL 数据库服务器启用灾难恢复，以防该服务器同时发生服务中断。 有关详细信息，请参阅[使用 Azure SQL 数据库确保业务连续性的相关概述](../sql-database/sql-database-business-continuity.md)。
 
@@ -106,7 +107,7 @@ ms.locfileid: "68308932"
 
 在当前区域中发生 ADF 或 Azure-SSIS IR 灾难时，可以使 SSISDB 在新区域中继续使用新的 Azure-SSIS IR。
 
-### <a name="prerequisites"></a>必备条件
+### <a name="prerequisites"></a>先决条件
 
 - 如果在当前区域中使用虚拟网络，则需要在新区域中使用另一个虚拟网络连接到 Azure-SSIS 集成运行时。 有关详细信息，请参阅[将 Azure-SSIS 集成运行时加入虚拟网络](join-azure-ssis-integration-runtime-virtual-network.md)。
 
@@ -114,9 +115,11 @@ ms.locfileid: "68308932"
 
 ### <a name="steps"></a>步骤
 
-遵循以下步骤停止 Azure-SSIS IR，切换到新区域，然后再次启动该 IR。
+按照以下步骤将 Azure-SSIS IR 移动到新区域。
+> [!NOTE]
+> 步骤 3（创建 IR）需要通过 PowerShell 来完成。 Azure 门户将报告一条错误，指出“SSISDB 已存在”。
 
-1. 执行存储过程以使 SSISDB 附加到 **\<new_data_factory_name\>** 或 **\<new_integration_runtime_name\>** 。
+1. 执行存储过程来更新 SSISDB 中的元数据，以接受来自 \<new_data_factory_name\>  和 \<new_integration_runtime_name\>  的连接。
    
   ```SQL
     EXEC [catalog].[failover_integration_runtime] @data_factory_name='<new_data_factory_name>', @integration_runtime_name='<new_integration_runtime_name>'

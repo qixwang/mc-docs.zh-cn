@@ -11,24 +11,24 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/31/2020
+ms.date: 04/29/2020
 ms.author: v-junlch
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 2509cc946a1eb55b09bef4e3c8f9ebb9794da496
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 8d7397d1017280e0bf00f90d26a1bf6044acbcb4
+ms.sourcegitcommit: e3512c5c2bbe61704d5c8cbba74efd56bfe91927
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80581722"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82267695"
 ---
 # <a name="understand-role-definitions-for-azure-resources"></a>了解 Azure 资源的角色定义
 
 如果想要了解角色的工作原理，或者要创建自己的 [Azure 资源自定义角色](custom-roles.md)，那么了解角色的定义方法会很有帮助。 本文介绍角色定义的详细信息，并提供了一些示例。
 
-## <a name="role-definition-structure"></a>角色定义结构
+## <a name="role-definition"></a>角色定义
 
-角色定义是权限的集合。  它有时简称为“角色”  。 角色定义列出可以执行的操作，例如读取、写入和删除。 它还可以列出不能执行的操作，或者与基础数据相关的操作。 角色定义具有以下结构：
+角色定义是权限的集合。  它有时简称为“角色”  。 角色定义列出可以执行的操作，例如读取、写入和删除。 它还可以列出不能执行的操作，或者与基础数据相关的操作。 角色定义具有以下属性：
 
 ```
 Name
@@ -41,6 +41,20 @@ DataActions []
 NotDataActions []
 AssignableScopes []
 ```
+
+| 属性 | 说明 |
+| --- | --- |
+| `Name` | 角色的显示名称。 |
+| `Id` | 角色的唯一 ID。 |
+| `IsCustom` | 指示此角色是否为自定义角色。 设置为 `true` 表示是自定义角色。 |
+| `Description` | 角色的说明。 |
+| `Actions` | 一个字符串数组，指定该角色允许执行的管理操作。 |
+| `NotActions` | 一个字符串数组，指定要从允许的 `Actions` 中排除的管理操作。 |
+| `DataActions` | 一个字符串数组，指定该角色允许对该对象中的数据执行的数据操作。 |
+| `NotDataActions` | 一个字符串数组，指定要从允许的 `DataActions` 中排除的数据操作。 |
+| `AssignableScopes` | 一个字符串数组，指定角色可用于分配的范围。 |
+
+### <a name="operations-format"></a>操作格式
 
 使用以下格式的字符串指定操作：
 
@@ -56,7 +70,9 @@ AssignableScopes []
 | `action` | 允许自定义操作，如重启虚拟机 (POST)。 |
 | `delete` | 允许删除操作 (DELETE)。 |
 
-下面是 JSON 格式的[参与者](built-in-roles.md#contributor)角色定义。 `*` 下的通配符 (`Actions`) 操作表示分配给此角色的主体可以执行所有操作，换句话说，它可以管理所有内容。 这包括将来定义的操作，因为 Azure 会添加新的资源类型。 `NotActions` 下的操作会从 `Actions` 中减去。 就[参与者](built-in-roles.md#contributor)角色而言，`NotActions` 去除了此角色管理资源访问权限以及分配资源访问权限的能力。
+### <a name="role-definition-example"></a>角色定义示例
+
+下面是 JSON 格式的[参与者](built-in-roles.md#contributor)角色定义。 `Actions` 下的通配符 (`*`) 操作表示分配给此角色的主体可以执行所有操作，换句话说，它可以管理所有内容。 这包括将来定义的操作，因为 Azure 会添加新的资源类型。 `NotActions` 下的操作会从 `Actions` 中减去。 就[参与者](built-in-roles.md#contributor)角色而言，`NotActions` 去除了此角色管理资源访问权限以及分配资源访问权限的能力。
 
 ```json
 {
@@ -92,7 +108,7 @@ AssignableScopes []
 
 以前，基于角色的访问控制不用于数据操作。 数据操作的授权根据资源提供程序的不同而异。 用于管理操作的同一基于角色的访问控制授权模型已扩展到数据操作。
 
-为了支持数据操作，已将新的数据属性添加到角色定义结构。 数据操作在 `DataActions` 和 `NotDataActions` 属性中指定。 通过添加这些数据属性，可在管理与数据之间保持隔离。 这可以防止包含通配符 (`*`) 的当前角色分配突然访问数据。 下面是可在 `DataActions` 和 `NotDataActions` 中指定的一些数据操作：
+为了支持数据操作，已将新的数据属性添加到角色定义。 数据操作在 `DataActions` 和 `NotDataActions` 属性中指定。 通过添加这些数据属性，可在管理与数据之间保持隔离。 这可以防止包含通配符 (`*`) 的当前角色分配突然访问数据。 下面是可在 `DataActions` 和 `NotDataActions` 中指定的一些数据操作：
 
 - 读取容器中的 Blob 列表
 - 在容器中写入存储 Blob
@@ -132,7 +148,7 @@ AssignableScopes []
 
 Alice 的[所有者](built-in-roles.md#owner)角色和 Bob 的[存储 Blob 数据参与者](built-in-roles.md#storage-blob-data-contributor)角色具有以下操作：
 
-“所有者”
+所有者
 
 &nbsp;&nbsp;&nbsp;&nbsp;操作<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`*`
@@ -150,7 +166,7 @@ Alice 的[所有者](built-in-roles.md#owner)角色和 Bob 的[存储 Blob 数�
 
 由于 Alice 具有订阅范围的通配符 (`*`) 操作，其权限将向下继承，使其可以执行所有管理操作。 Alice 可以读取、写入和删除容器。 但是，Alice 在不采取其他步骤的情况下无法执行数据操作。 例如，默认情况下，Alice 无法读取容器内的 blob。 若要读取 blob，Alice 必须检索存储访问密钥并使用它们来访问 blob。
 
-Bob 的权限限制为`Actions`存储 Blob 数据参与者`DataActions`角色中指定的 [ 和 ](built-in-roles.md#storage-blob-data-contributor)。 Bob 可以基于角色执行管理和数据操作。 例如，Bob 可以读取、写入和删除指定存储帐户中的容器，并可以读取、写入和删除 Blob。
+Bob 的权限限制为[存储 Blob 数据参与者](built-in-roles.md#storage-blob-data-contributor)角色中指定的 `Actions` 和 `DataActions`。 Bob 可以基于角色执行管理和数据操作。 例如，Bob 可以读取、写入和删除指定存储帐户中的容器，并可以读取、写入和删除 Blob。
 
 有关存储的管理和数据平面安全性的详细信息，请参阅 [Azure 存储安全指南](../storage/blobs/security-recommendations.md)。
 
@@ -187,7 +203,7 @@ Bob 的权限限制为`Actions`存储 Blob 数据参与者`DataActions`角色中
 
 ## <a name="notactions"></a>NotActions
 
-`NotActions` 权限指定从允许的 `Actions` 中排除的管理操作。 如果排除受限制的操作可以更方便地定义希望允许的操作集，则使用 `NotActions` 权限。 通过从 `NotActions` 操作中减去 `Actions` 操作可以计算出角色授予的访问权限（有效权限）。
+`NotActions` 权限指定从允许的 `Actions` 中排除的管理操作。 如果排除受限制的操作可以更方便地定义希望允许的操作集，则使用 `NotActions` 权限。 通过从 `Actions` 操作中减去 `NotActions` 操作可以计算出角色授予的访问权限（有效权限）。
 
 > [!NOTE]
 > 如果用户分配到的一个角色排除了 `NotActions` 中的一个操作，而分配到的第二个角色向同一操作授予访问权限，则用户可以执行该操作。 `NotActions` 不是拒绝规则 - 它只是一个简便方法，可在需要排除特定操作时创建一组允许的操作。
@@ -195,7 +211,7 @@ Bob 的权限限制为`Actions`存储 Blob 数据参与者`DataActions`角色中
 
 ## <a name="dataactions"></a>DataActions
 
-`DataActions` 权限指定此角色允许对该对象中的数据执行的数据操作。 例如，如果某个用户对某个存储帐户拥有读取 Blob 数据的访问权限，则该用户可以读取该存储帐户中的 Blob。 下面是可在 `DataActions` 中使用的一些数据操作的示例。
+`DataActions` 权限指定该角色允许对该对象中的数据执行的数据操作。 例如，如果某个用户对某个存储帐户拥有读取 Blob 数据的访问权限，则该用户可以读取该存储帐户中的 Blob。 下面是可在 `DataActions` 中使用的一些数据操作的示例。
 
 > [!div class="mx-tableFixed"]
 > | 操作字符串    | 说明         |
@@ -207,7 +223,7 @@ Bob 的权限限制为`Actions`存储 Blob 数据参与者`DataActions`角色中
 
 ## <a name="notdataactions"></a>NotDataActions
 
-`NotDataActions` 权限指定从允许的 `DataActions` 中排除的数据操作。 通过从 `NotDataActions` 操作中减去 `DataActions` 操作可以计算出角色授予的访问权限（有效权限）。 每个资源提供程序提供相应的一组 API 用于实现数据操作。
+`NotDataActions` 权限指定从允许的 `DataActions` 中排除的数据操作。 通过从 `DataActions` 操作中减去 `NotDataActions` 操作可以计算出角色授予的访问权限（有效权限）。 每个资源提供程序提供相应的一组 API 用于实现数据操作。
 
 > [!NOTE]
 > 如果用户分配到的一个角色排除了 `NotDataActions` 中的某个数据操作，而分配到的第二个角色向同一数据操作授予访问权限，则该用户可以执行该数据操作。 `NotDataActions` 不是拒绝规则 - 它只是一个简便方法，可在需要排除特定数据操作时创建一组允许的数据操作。

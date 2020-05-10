@@ -6,14 +6,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 02/10/2020
+ms.date: 04/26/2020
 ms.author: v-junlch
-ms.openlocfilehash: 6538cccf712047e09ccbd29eb26eaf960be7c233
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: df4b45eae033416fe5cbf088b418970081567c54
+ms.sourcegitcommit: e3512c5c2bbe61704d5c8cbba74efd56bfe91927
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292481"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82267639"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>应用程序网关的后端运行状况和诊断日志
 
@@ -78,11 +78,11 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
     },
     "Servers": [
         {
-        "Address": "hostname.chinanorth.chinacloudapp.cn",
+        "Address": "hostname.chinanorth2.chinacloudapp.cn",
         "Health": "Healthy"
         },
         {
-        "Address": "hostname.chinanorth.chinacloudapp.cn",
+        "Address": "hostname.chinanorth2.chinacloudapp.cn",
         "Health": "Healthy"
         }
     ]
@@ -96,9 +96,9 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 可在 Azure 中使用不同类型的日志来对应用程序网关进行管理和故障排除。 可通过门户访问其中部分日志。 可从 Azure Blob 存储提取所有日志并在 [Azure Monitor 日志](../azure-monitor/insights/azure-networking-analytics.md)、Excel 和 Power BI 等各种工具中查看。 可从以下列表了解有关不同类型日志的详细信息：
 
 * **活动日志**：可使用 [Azure 活动日志](../azure-resource-manager/resource-group-audit.md)（以前称为操作日志和审核日志）查看提交到 Azure 订阅的所有操作及其状态。 默认情况下会收集活动日志条目，可在 Azure 门户中查看这些条目。
-* **访问日志**：可以使用此日志查看应用程序网关访问模式并分析重要信息。 此日志包括调用方的 IP、请求的 URL、响应延迟、返回代码，以及传入和传出的字节数。每隔 300 秒会收集一次访问日志。 此日志包含每个应用程序网关实例的一条记录。 应用程序网关实例由 instanceId 属性标识。
+* **访问日志**：可以使用此日志查看应用程序网关访问模式并分析重要信息。 此日志包括调用方的 IP、请求的 URL、响应延迟、返回代码，以及传入和传出的字节数。访问日志每 60 秒收集一次。 此日志包含每个应用程序网关实例的一条记录。 应用程序网关实例由 instanceId 属性标识。
 * **性能日志**：可使用此日志查看应用程序网关实例的执行情况。 此日志会捕获每个实例的性能信息，包括服务的总请求数、吞吐量（以字节为单位）、失败请求计数、正常和不正常的后端实例计数。 每隔 60 秒会收集一次性能日志。 性能日志仅适用于 v1 SKU。 对于 v2 SKU，请对性能数据使用[指标](application-gateway-metrics.md)。
-* **防火墙日志**：可使用此日志查看通过应用程序网关（配置有 Web 应用程序防火墙）的检测模式或阻止模式记录的请求。
+* **防火墙日志**：可使用此日志查看通过应用程序网关（配置有 Web 应用程序防火墙）的检测模式或阻止模式记录的请求。 防火墙日志每 60 秒收集一次。 
 
 > [!NOTE]
 > 日志仅适用于在 Azure 资源管理器部署模型中部署的 Azure 资源。 不能将日志用于经典部署模型中的资源。 若要更好地了解两种模型，请参阅[了解 Resource Manager 部署和经典部署](../azure-resource-manager/management/deployment-models.md)一文。
@@ -158,7 +158,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 
 只有按照上述步骤在每个应用程序网关实例上启用了访问日志，才会生成该日志。 数据存储在启用日志记录时指定的存储帐户中。 应用程序网关的每次访问均以 JSON 格式记录下来，如下面 v1 示例所示：
 
-|Value  |说明  |
+|值  |说明  |
 |---------|---------|
 |instanceId     | 处理请求的应用程序网关实例。        |
 |clientIP     | 请求的起始 IP。        |
@@ -172,7 +172,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 |receivedBytes     | 接收的数据包的大小（以字节为单位）。        |
 |sentBytes| 发送的数据包的大小（以字节为单位）。|
 |timeTaken| 处理请求并发送响应所需的时长（以毫秒为单位）。 此时长按特定的时间间隔（从应用程序网关接收第一个 HTTP 请求字节到完成响应发送操作所需的时间）来计算。 必须注意，“所用时间”字段通常包括请求和响应数据包在网络上传输的时间。 |
-|sslEnabled| 与后端池的通信是否使用 SSL。 有效值为 on 和 off。|
+|sslEnabled| 与后端池的通信是否使用了 TLS/SSL。 有效值为 on 和 off。|
 |host| 向后端服务器发送请求时所用的主机名。 如果正在重写后端主机名，则此名称将反映该主机名。|
 |originalHost| 应用程序网关从客户端接收请求时所用的主机名。|
 ```json
@@ -202,7 +202,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 ```
 对于应用程序网关和 WAF v2，日志显示了一些详细信息：
 
-|Value  |说明  |
+|值  |说明  |
 |---------|---------|
 |instanceId     | 处理请求的应用程序网关实例。        |
 |clientIP     | 请求的起始 IP。        |
@@ -215,9 +215,9 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 |receivedBytes     | 接收的数据包的大小（以字节为单位）。        |
 |sentBytes| 发送的数据包的大小（以字节为单位）。|
 |timeTaken| 处理请求并发送其响应所需的时长（以**秒**为单位）。 此时长按特定的时间间隔（从应用程序网关接收第一个 HTTP 请求字节到完成响应发送操作所需的时间）来计算。 必须注意，“所用时间”字段通常包括请求和响应数据包在网络上传输的时间。 |
-|sslEnabled| 与后端池的通信是否使用 SSL。 有效值为 on 和 off。|
-|sslCipher| 用于 SSL 通信的密码套件（如果已启用 SSL）。|
-|sslProtocol| 使用的 SSL/TLS 协议（如果已启用 SSL）。|
+|sslEnabled| 与后端池的通信是否使用了 TLS。 有效值为 on 和 off。|
+|sslCipher| 用于 TLS 通信的密码套件（如果已启用 TLS）。|
+|sslProtocol| 使用的 SSL/TLS 协议（如果已启用 TLS）。|
 |serverRouted| 应用程序网关将请求路由到的后端服务器。|
 |serverStatus| 后端服务器的 HTTP 状态代码。|
 |serverResponseLatency| 后端服务器的响应延迟。|
@@ -256,7 +256,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 只有在每个应用程序网关实例上启用了性能日志，才会生成此日志，如上述步骤所示。 数据存储在启用日志记录时指定的存储帐户中。 每隔 1 分钟生成性能日志数据。 性能日志数据仅适用于 v1 SKU。 对于 v2 SKU，请对性能数据使用[指标](application-gateway-metrics.md)。 将记录以下数据：
 
 
-|Value  |说明  |
+|值  |说明  |
 |---------|---------|
 |instanceId     |  正在为其生成性能数据的应用程序网关实例。 对于多实例应用程序网关，一个实例对应于一行。        |
 |healthyHostCount     | 后端池中运行正常的主机数。        |
@@ -293,7 +293,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 只有按照上述步骤为每个应用程序网关启用了防火墙日志，才会生成该日志。 此日志还需要在应用程序网关上配置 Web 应用程序防火墙。 数据存储在启用日志记录时指定的存储帐户中。 将记录以下数据：
 
 
-|Value  |说明  |
+|值  |说明  |
 |---------|---------|
 |instanceId     | 为其生成了防火墙数据的应用程序网关实例。 对于多实例应用程序网关，一个实例对应于一行。         |
 |clientIp     |   请求的起始 IP。      |
@@ -368,7 +368,6 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 ## <a name="next-steps"></a>后续步骤
 
 * 使用 [Azure Monitor 日志](../azure-monitor/insights/azure-networking-analytics.md)可视化计数器和事件日志。
-* [Visualize your Azure Activity Log with Power BI](https://blogs.msdn.com/b/powerbi/archive/2015/09/30/monitor-azure-audit-logs-with-power-bi.aspx)（使用 Power BI 直观显示 Azure 活动日志）博客文章。
 * [View and analyze Azure activity logs in Power BI and more](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/)（在 Power BI 和其他组件中查看和分析 Azure 活动日志）博客文章。
 
 [1]: ./media/application-gateway-diagnostics/figure1.png
@@ -382,4 +381,3 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 [9]: ./media/application-gateway-diagnostics/figure9.png
 [10]: ./media/application-gateway-diagnostics/figure10.png
 
-<!-- Update_Description: link update -->

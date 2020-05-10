@@ -1,26 +1,27 @@
 ---
-title: 使用 Azure 数据工厂通过 Open Hub 从 SAP Business Warehouse 复制数据 | Microsoft Docs
+title: 通过 Open Hub 从 SAP Business Warehouse 中复制数据
 description: 了解如何在 Azure 数据工厂管道中使用复制活动，通过 Open Hub 将数据从 SAP Business Warehouse (BW) 复制到支持的接收器数据存储。
 services: data-factory
 documentationcenter: ''
+ms.author: v-jay
 author: WenJason
 manager: digimobile
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-origin.date: 09/04/2019
-ms.date: 11/11/2019
-ms.author: v-jay
-ms.openlocfilehash: bd773c5a2c572c4a35337dc3685492ad5a8499d3
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.custom: seo-lt-2019
+origin.date: 03/24/2020
+ms.date: 05/11/2020
+ms.openlocfilehash: b471aa2a33cddbd4163a1c187a8fa8acbf1541d0
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292178"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82197978"
 ---
 # <a name="copy-data-from-sap-business-warehouse-via-open-hub-using-azure-data-factory"></a>使用 Azure 数据工厂通过 Open Hub 从 SAP Business Warehouse 复制数据
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文概述了如何使用 Azure 数据工厂中的复制活动，通过 Open Hub 从 SAP Business Warehouse (BW) 复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
@@ -105,7 +106,7 @@ ADF SAP BW Open Hub 连接器提供两种可选属性：`excludeLastRequest` 和
 
 SAP Business Warehouse Open Hub 链接服务支持以下属性：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**SapOpenHub** | 是 |
 | server | SAP BW 实例所驻留的服务器的名称。 | 是 |
@@ -147,7 +148,7 @@ SAP Business Warehouse Open Hub 链接服务支持以下属性：
 
 若要从/向 SAP BW Open Hub 复制数据，请将数据集的 type 属性设置为 **SapOpenHubTable**。 支持以下属性。
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为 **SapOpenHubTable**。  | 是 |
 | openHubDestinationName | 要从其复制数据的 Open Hub Destination 的名称。 | 是 |
@@ -181,7 +182,7 @@ SAP Business Warehouse Open Hub 链接服务支持以下属性：
 
 若要从 SAP BW Open Hub 复制数据，复制活动的 **source** 节支持以下属性：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 **type** 属性必须设置为 **SapOpenHubSource**。 | 是 |
 | excludeLastRequest | 是否排除最后一个请求的记录。 | 否（默认为 **true**） |
@@ -190,7 +191,7 @@ SAP Business Warehouse Open Hub 链接服务支持以下属性：
 >[!TIP]
 >如果 Open Hub 表只包含通过单个请求 ID 生成的数据（例如，始终进行完全加载并覆盖表中的现有数据，或者只在测试时运行 DTP 一次），则请记住取消选中“excludeLastRequest”选项，以便复制数据。
 
-若要加快数据加载速度，可以在复制活动上设置 [`parallelCopies`](copy-activity-performance.md#parallel-copy)，以并行方式从 SAP BW Open Hub 加载数据。 例如，如果将 `parallelCopies` 设置为 4，则数据工厂会并发执行 4 个 RFC 调用，每个 RFC 调用都会从按 DTP 请求 ID 和包 ID 分区的 SAP BW Open Hub 表检索一部分数据。 这适用于唯一 DTP 请求 ID + 包 ID 的数目大于 `parallelCopies` 值的情况。 将数据复制到基于文件的数据存储中时，还建议将数据作为多个文件写入文件夹（仅指定文件夹名称），在这种情况下，性能优于写入单个文件。
+若要加快数据加载速度，可以在复制活动上设置 [`parallelCopies`](copy-activity-performance-features.md#parallel-copy)，以并行方式从 SAP BW Open Hub 加载数据。 例如，如果将 `parallelCopies` 设置为 4，则数据工厂会并发执行 4 个 RFC 调用，每个 RFC 调用都会从按 DTP 请求 ID 和包 ID 分区的 SAP BW Open Hub 表检索一部分数据。 这适用于唯一 DTP 请求 ID + 包 ID 的数目大于 `parallelCopies` 值的情况。 将数据复制到基于文件的数据存储中时，还建议将数据作为多个文件写入文件夹（仅指定文件夹名称），在这种情况下，性能优于写入单个文件。
 
 **示例：**
 
@@ -231,12 +232,12 @@ SAP Business Warehouse Open Hub 链接服务支持以下属性：
 
 | SAP ABAP 类型 | 数据工厂临时数据类型 |
 |:--- |:--- |
-| C（字符串） | String |
-| I（整数） | Int32 |
-| F（浮点数） | Double |
-| D（日期） | String |
-| T（时间） | String |
-| P（BCD 打包，货币，小数，Qty） | 小数 |
+| C (String) | String |
+| I (integer) | Int32 |
+| F (Float) | Double |
+| D (Date) | String |
+| T (Time) | String |
+| P（BCD 打包，货币，小数，Qty） | Decimal |
 | N (Numc) | String |
 | X（二进制，原始） | String |
 
@@ -244,6 +245,11 @@ SAP Business Warehouse Open Hub 链接服务支持以下属性：
 
 若要了解有关属性的详细信息，请查看 [Lookup 活动](control-flow-lookup-activity.md)。
 
+## <a name="troubleshooting-tips"></a>故障排除提示
+
+**症状**：如果你在 HANA 上运行 SAP BW 并观察到仅使用 ADF 复制活动复制了部分数据（1000000 行），则可能是因为在 DTP 中启用了“SAP HANA 执行”选项，在这种情况下，ADF 只能检索第一批数据。
+
+**解决方法：** 请在 DTP 中禁用“SAP HANA 执行”选项，重新处理数据，然后再次尝试执行复制活动。
 
 ## <a name="next-steps"></a>后续步骤
 有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。

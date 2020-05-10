@@ -1,5 +1,5 @@
 ---
-title: Azure Windows VM 的计算基准测试分数 | Azure
+title: Windows VM 的计算基准测试分数
 description: 比较运行 Windows Server 的 Azure VM 的 SPECint 计算基准测试分数。
 services: virtual-machines-windows
 documentationcenter: ''
@@ -13,15 +13,15 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 origin.date: 04/09/2018
-ms.date: 10/14/2019
+ms.date: 04/27/2020
 ms.author: v-yeche
 ms.reviewer: davberg
-ms.openlocfilehash: 4e1682a41829454fe050ea579ee6cf334ecd9946
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: d07acdb3c0b89ab071ff0561255eeb71bded6c62
+ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "72272666"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82596377"
 ---
 # <a name="compute-benchmark-scores-for-windows-vms"></a>Windows VM 的计算基准测试分数
 以下 SPECInt 基准测试分数显示运行 Windows Server 的特定 Azure VM 的计算性能。 此外，还提供了 [Linux VM](../linux/compute-benchmark-scores.md?toc=%2fvirtual-machines%2flinux%2ftoc.json) 的计算基准测试分数。
@@ -31,9 +31,9 @@ ms.locfileid: "72272666"
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_A1_v2 | 1 | 1 | Intel(R) Xeon(R) CPU E5-2660 0 @ 2.20GHz | 12 | 14.2 | 0.3 | 
 | Standard_A1_v2 | 1 | 1 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 9 | 13.2 | 0.6 | 
-| Standard_A1_v2 | 1 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 10 | 14.1 | 0.7 | 
+| Standard_A1_v2 | 1 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 10 个 | 14.1 | 0.7 | 
 | Standard_A2_v2 | 2 | 1 | Intel(R) Xeon(R) CPU E5-2660 0 @ 2.20GHz | 14 | 28.9 | 0.6 | 
-| Standard_A2_v2 | 2 | 1 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 10 | 27.4 | 1.6 | 
+| Standard_A2_v2 | 2 | 1 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 10 个 | 27.4 | 1.6 | 
 | Standard_A2_v2 | 2 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 17 | 28.9 | 1.8 | 
 | Standard_A2m_v2 | 2 | 1 | Intel(R) Xeon(R) CPU E5-2660 0 @ 2.20GHz | 14 | 29.0 | 0.5 | 
 | Standard_A2m_v2 | 2 | 1 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 11 | 26.3 | 0.8 | 
@@ -48,8 +48,10 @@ ms.locfileid: "72272666"
 | Standard_A8_v2 | 8 | 1 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 6 | 101.5 | 2.8 | 
 | Standard_A8_v2 | 8 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 11 | 101.9 | 2.7 | 
 | Standard_A8m_v2 | 8 | 1 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 11 | 101.4 | 1.2 | 
-| Standard_A8m_v2 | 8 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 10 | 104.5 | 5.1 | 
+| Standard_A8m_v2 | 8 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 10 个 | 104.5 | 5.1 | 
 | Standard_A8m_v2 | 8 | 2 | Intel(R) Xeon(R) CPU E5-2660 0 @ 2.20GHz | 13 | 111.6 | 2.3 | 
+
+注意：Av2 系列 VM 可以部署在各种不同的硬件类型和处理器上（如上所示）。 Av2 系列 VM 的 CPU 性能和内存配置非常适合部署和测试等入门级工作负荷。 其大小受到限制，以便为正在运行的实例提供相对一致的处理器性能，而不管它部署在什么硬件上；但是，利用特定的较新处理器优化的软件可能会在不同的处理器类型之间看到更显著差异。
 
 ## <a name="b---burstable"></a>B - 可迸发
 | 大小 | vCPU | NUMA 节点 | CPU | 运行次数 | 平均基本速率 | 标准偏差 | 
@@ -64,10 +66,14 @@ ms.locfileid: "72272666"
 | Standard_B8ms | 8 | 1 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 3 | 42.0 | 0.0 | 
 | Standard_B8ms | 8 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 25 | 41.4 | 0.9 | 
 
+注意：B 系列 VM 适用于具有可突发性能要求的工作负载。 当使用量小于其基线时，VM 实例会累积额度。 在累积了额度的情况下，VM 可以突发到基线之上，全力满足短暂的 CPU 突发需求。 突发时间取决于可用额度，这些额度是 VM 大小和时间的函数。  
+
+SPEC Int 是一个相当长时间运行的测试，通常会耗尽可用的突发额度。  因此，上面的数字更接近于 VM 的基线性能（尽管它们可能反映了两次运行之间累积的一些突发时间）。  对于短时间突发的工作负荷（通常在 B 系列上），性能通常会更接近 Ds v3 系列的性能。
+
 ## <a name="dsv3---general-compute--premium-storage"></a>DSv3 - 通用计算 + 高级存储
 | 大小 | vCPU | NUMA 节点 | CPU | 运行次数 | 平均基本速率 | 标准偏差 | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
-| Standard_D2s_v3 | 2 | 1 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 10 | 40.8 | 2.3 | 
+| Standard_D2s_v3 | 2 | 1 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 10 个 | 40.8 | 2.3 | 
 | Standard_D2s_v3 | 2 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 52 | 43.3 | 2.1 | 
 | Standard_D4s_v3 | 4 | 1 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 21 | 77.9 | 2.6 | 
 | Standard_D4s_v3 | 4 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 29 | 82.3 | 2.5 | 
@@ -82,13 +88,13 @@ ms.locfileid: "72272666"
 ## <a name="dv3---general-compute"></a>Dv3 - 通用计算
 | 大小 | vCPU | NUMA 节点 | CPU | 运行次数 | 平均基本速率 | 标准偏差 | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
-| Standard_D2_v3 | 2 | 1 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 10 | 38.6 | 1.8 | 
+| Standard_D2_v3 | 2 | 1 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 10 个 | 38.6 | 1.8 | 
 | Standard_D2_v3 | 2 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 24 | 41.8 | 3.3 | 
 | Standard_D4_v3 | 4 | 1 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 17 | 77.8 | 1.3 | 
 | Standard_D4_v3 | 4 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 45 | 82.7 | 4.5 | 
 | Standard_D8_v3 | 8 | 1 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 9 | 146.7 | 10.4 | 
 | Standard_D8_v3 | 8 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 27 | 159.9 | 8.3 | 
-| Standard_D16_v3 | 16 | 1 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 10 | 274.1 | 3.8 | 
+| Standard_D16_v3 | 16 | 1 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 10 个 | 274.1 | 3.8 | 
 | Standard_D16_v3 | 16 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 32 | 300.7 | 8.8 | 
 | Standard_D32_v3 | 32 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 24 | 549.3 | 11.1 | 
 | Standard_D32_v3 | 32 | 2 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 7 | 538.6 | 9.4 | 
@@ -111,13 +117,13 @@ ms.locfileid: "72272666"
 | Standard_DS11_v2 | 2 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 34 | 64.8 | 2.8 | 
 | Standard_DS11-1_v2 | 1 | 1 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 17 | 33.6 | 1.8 | 
 | Standard_DS11-1_v2 | 1 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 41 | 36.0 | 1.7 | 
-| Standard_DS12_v2 | 4 | 1 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 10 | 126.8 | 2.7 | 
+| Standard_DS12_v2 | 4 | 1 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 10 个 | 126.8 | 2.7 | 
 | Standard_DS12_v2 | 4 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 30 | 127.5 | 3.3 | 
-| Standard_DS12-1_v2 | 1 | 1 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 20 | 33.5 | 1.4 | 
+| Standard_DS12-1_v2 | 1 | 1 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 20 个 | 33.5 | 1.4 | 
 | Standard_DS12-1_v2 | 1 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 30 | 34.8 | 2.4 | 
 | Standard_DS12-2_v2 | 2 | 1 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 17 | 65.5 | 2.3 | 
 | Standard_DS12-2_v2 | 2 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 33 | 67.7 | 5.1 | 
-| Standard_DS13_v2 | 8 | 1 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 20 | 234.1 | 7.1 | 
+| Standard_DS13_v2 | 8 | 1 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 20 个 | 234.1 | 7.1 | 
 | Standard_DS13_v2 | 8 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 23 | 248.0 | 2.2 | 
 | Standard_DS13-2_v2 | 2 | 1 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 17 | 65.2 | 3.1 | 
 | Standard_DS13-2_v2 | 2 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 15 | 72.8 | 3.8 | 
@@ -129,7 +135,7 @@ ms.locfileid: "72272666"
 | Standard_DS14-4_v2 | 4 | 2 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 16 | 125.1 | 4.8 | 
 | Standard_DS14-8_v2 | 8 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 27 | 251.3 | 2.4 | 
 | Standard_DS14-8_v2 | 8 | 2 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 14 | 247.4 | 10.2 | 
-| Standard_DS15_v2 | 20 | 2 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 45 | 546.1 | 10.5 | 
+| Standard_DS15_v2 | 20 个 | 2 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 45 | 546.1 | 10.5 | 
 
 ## <a name="dv2---general-compute"></a>Dv2 - 常规计算
 | 大小 | vCPU | NUMA 节点 | CPU | 运行次数 | 平均基本速率 | 标准偏差 | 
@@ -148,12 +154,12 @@ ms.locfileid: "72272666"
 | Standard_D11_v2 | 2 | 1 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 22 | 66.4 | 2.9 | 
 | Standard_D11_v2 | 2 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 27 | 69.0 | 6.7 | 
 | Standard_D12_v2 | 4 | 1 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 24 | 127.7 | 4.6 | 
-| Standard_D12_v2 | 4 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 20 | 135.9 | 9.3 | 
+| Standard_D12_v2 | 4 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 20 个 | 135.9 | 9.3 | 
 | Standard_D13_v2 | 8 | 1 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 16 | 237.4 | 6.6 | 
 | Standard_D13_v2 | 8 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 28 | 250.2 | 3.8 | 
 | Standard_D14_v2 | 16 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 23 | 473.0 | 9.4 | 
 | Standard_D14_v2 | 16 | 2 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 17 | 443.9 | 18.8 | 
-| Standard_D15_v2 | 20 | 2 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 37 | 558.8 | 8.4 | 
+| Standard_D15_v2 | 20 个 | 2 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 37 | 558.8 | 8.4 | 
 
 ## <a name="esv3---memory-optimized--premium-storage"></a>Esv3 - 内存优化 + 高级存储
 | 大小 | vCPU | NUMA 节点 | CPU | 运行次数 | 平均基本速率 | 标准偏差 | 
@@ -166,7 +172,7 @@ ms.locfileid: "72272666"
 | Standard_E16s_v3 | 16 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 31 | 295.7 | 4.5 | 
 | Standard_E16-4s_v3 | 4 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 45 | 82.7 | 3.8 | 
 | Standard_E16-8s_v3 | 8 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 39 | 158.3 | 4.5 | 
-| Standard_E20s_v3 | 20 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 27 | 369.7 | 3.2 | 
+| Standard_E20s_v3 | 20 个 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 27 | 369.7 | 3.2 | 
 | Standard_E32s_v3 | 32 | 2 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 31 | 577.9 | 9.4 | 
 | Standard_E32-8s_v3 | 8 | 2 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 31 | 163.4 | 6.8 | 
 | Standard_E32-16s_v3 | 16 | 2 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 41 | 307.1 | 8.7 | 
@@ -189,7 +195,7 @@ ms.locfileid: "72272666"
 | Standard_E4_v3 | 4 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 43 | 81.4 | 5.3 | 
 | Standard_E8_v3 | 8 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 39 | 157.4 | 8.1 | 
 | Standard_E16_v3 | 16 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 49 | 301.6 | 8.9 | 
-| Standard_E20_v3 | 20 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 35 | 371.0 | 6.9 | 
+| Standard_E20_v3 | 20 个 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 35 | 371.0 | 6.9 | 
 | Standard_E32_v3 | 32 | 2 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 35 | 579.9 | 16.1 | 
 | Standard_E64_v3 | 64 | 2 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 31 | 1080.0 | 11.3 | 
 
@@ -251,7 +257,7 @@ ms.locfileid: "72272666"
 | Standard_M8-2ms | 2 | 1 | Intel(R) Xeon(R) CPU E7-8890 v3 @ 2.50GHz | 15 | 42.1 | 2.1 | 
 | Standard_M8-4ms | 4 | 1 | Intel(R) Xeon(R) CPU E7-8890 v3 @ 2.50GHz | 13 | 81.6 | 2.9 | 
 | Standard_M16-4ms | 4 | 1 | Intel(R) Xeon(R) CPU E7-8890 v3 @ 2.50GHz | 14 | 82.5 | 2.5 | 
-| Standard_M16-8ms | 8 | 1 | Intel(R) Xeon(R) CPU E7-8890 v3 @ 2.50GHz | 20 | 157.2 | 6.0 | 
+| Standard_M16-8ms | 8 | 1 | Intel(R) Xeon(R) CPU E7-8890 v3 @ 2.50GHz | 20 个 | 157.2 | 6.0 | 
 | Standard_M32-8ms | 8 | 1 | Intel(R) Xeon(R) CPU E7-8890 v3 @ 2.50GHz | 18 | 162.5 | 2.1 | 
 | Standard_M32-16ms | 16 | 1 | Intel(R) Xeon(R) CPU E7-8890 v3 @ 2.50GHz | 12 | 306.5 | 0.5 | 
 | Standard_M64 | 64 | 2 | Intel(R) Xeon(R) CPU E7-8890 v3 @ 2.50GHz | 11 | 1010.9 | 5.4 | 
@@ -266,7 +272,7 @@ ms.locfileid: "72272666"
 | Standard_M128m | 128 | 4 | Intel(R) Xeon(R) CPU E7-8890 v3 @ 2.50GHz | 12 | 1778.3 | 10.3 | 
 | Standard_M128ms | 128 | 4 | Intel(R) Xeon(R) CPU E7-8890 v3 @ 2.50GHz | 15 | 1780.7 | 18.3 | 
 | Standard_M128s | 128 | 4 | Intel(R) Xeon(R) CPU E7-8890 v3 @ 2.50GHz | 12 | 1775.8 | 11.6 | 
-| Standard_M16ms | 16 | 1 | Intel(R) Xeon(R) CPU E7-8890 v3 @ 2.50GHz | 20 | 293.1 | 11.8 | 
+| Standard_M16ms | 16 | 1 | Intel(R) Xeon(R) CPU E7-8890 v3 @ 2.50GHz | 20 个 | 293.1 | 11.8 | 
 | Standard_M32ls | 32 | 1 | Intel(R) Xeon(R) CPU E7-8890 v3 @ 2.50GHz | 13 | 535.2 | 4.8 | 
 | Standard_M32ms | 32 | 1 | Intel(R) Xeon(R) CPU E7-8890 v3 @ 2.50GHz | 11 | 534.1 | 4.6 | 
 | Standard_M32ms | 32 | 2 | Intel(R) Xeon(R) CPU E7-8890 v3 @ 2.50GHz | 1 | 589.0 | 0.0 | 
@@ -291,6 +297,6 @@ ms.locfileid: "72272666"
 Windows 分数是通过在 Windows Server 上运行 [SPECint 2006](https://www.spec.org/cpu2006/results/rint2006.html) 计算得出的。 SPECint 是使用基本速率选项 (SPECint_rate2006) 运行的，每个 vCPU 一个副本。 SPECint 包括 12 项单独的测试，每项测试运行三次，取每次测试的中间值并为值加权，形成综合分数。 然后跨多个 VM 运行这些测试，提供所示的平均分。
 
 ## <a name="next-steps"></a>后续步骤
-* 有关存储容量、磁盘详细信息以及选择 VM 大小的注意事项，请参阅[虚拟机的大小](sizes.md?toc=%2fvirtual-machines%2fwindows%2ftoc.json)。
+* 有关存储容量、磁盘详细信息以及选择 VM 大小的注意事项，请参阅 [Sizes for virtual machines](sizes.md?toc=%2fvirtual-machines%2fwindows%2ftoc.json)（虚拟机的大小）。
 
-<!-- Update_Description: wording update, update meta properties -->
+<!-- Update_Description: update meta properties, wording update, update link -->

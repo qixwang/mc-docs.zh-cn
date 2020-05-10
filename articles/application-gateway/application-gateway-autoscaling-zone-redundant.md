@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 03/30/2020
+ms.date: 04/26/2020
 ms.author: v-junlch
-ms.openlocfilehash: 0f2260e65baee368bf89e2ad726efa2dab3631e2
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 1937d0f968a2f1bd4562ef424858d3592fa1fa61
+ms.sourcegitcommit: e3512c5c2bbe61704d5c8cbba74efd56bfe91927
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80581792"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82267683"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>自动缩放和区域冗余应用程序网关 v2 
 
@@ -26,9 +26,9 @@ ms.locfileid: "80581792"
   仅当 Azure 区域可用时，区域冗余才可用。 在其他区域中，支持所有其他功能。 
 - **静态 VIP**：目前只有应用程序网关 v2 SKU 支持静态 VIP 类型。 这可以确保与应用程序网关关联的 VIP 在部署的整个生命周期内不会更改，即使发生重启。  v1 中没有静态 VIP，因此必须使用应用程序网关 URL（而不是 IP 地址）通过应用程序网关将域名路由到应用服务。
 - **标头重写**：应用程序网关允许使用 v2 SKU 添加、删除或更新 HTTP 请求和响应标头。 有关详细信息，请参阅[重写应用程序网关的 HTTP 标头](rewrite-http-headers.md)。
-- **Key Vault 集成**：应用程序网关 v2 支持与 Key Vault 集成，以获取要附加到支持 HTTPS 的侦听器的服务器证书。 有关详细信息，请参阅[使用 Key Vault 证书实现 SSL 终止](key-vault-certs.md)。
+- **Key Vault 集成**：应用程序网关 v2 支持与 Key Vault 集成，以获取要附加到支持 HTTPS 的侦听器的服务器证书。 有关详细信息，请参阅[使用 Key Vault 证书实现 TLS 终止](key-vault-certs.md)。
 - **Azure Kubernetes 服务入口控制器**：借助应用程序网关 v2 入口控制器，可将 Azure 应用程序网关用作 Azure Kubernetes 服务 (AKS)（称为 AKS 群集）的入口。 有关详细信息，请参阅[什么是应用程序网关入口控制器？](ingress-controller-overview.md)。
-- **性能增强**：v2 SKU 提供的 SSL 卸载性能比 Standard/WAF SKU 高达 5 倍。
+- **性能增强**：v2 SKU 提供的 TLS 卸载性能比 Standard/WAF SKU 高达 5 倍。
 - **更快的部署和更新速度** v2 SKU 的部署和更新速度比 Standard/WAF SKU 更快。 这还包括了 WAF 配置更改。
 
 ![](./media/application-gateway-autoscaling-zone-redundant/application-gateway-autoscaling-zone-redundant.png)
@@ -78,8 +78,8 @@ ms.locfileid: "80581792"
 | 流量重定向                               | &#x2713; | &#x2713; |
 | Web 应用程序防火墙 (WAF)                    | &#x2713; | &#x2713; |
 | WAF 自定义规则                                  |          | &#x2713; |
-| 安全套接字层 (SSL) 终止            | &#x2713; | &#x2713; |
-| 端到端 SSL 加密                         | &#x2713; | &#x2713; |
+| 传输层安全性 (TLS)/安全套接字层 (SSL) 终止            | &#x2713; | &#x2713; |
+| 端到端 TLS 加密                         | &#x2713; | &#x2713; |
 | 会话相关性                                  | &#x2713; | &#x2713; |
 | 自定义错误页                                | &#x2713; | &#x2713; |
 | WebSocket 支持                                 | &#x2713; | &#x2713; |
@@ -93,7 +93,7 @@ ms.locfileid: "80581792"
 
 |差异|详细信息|
 |--|--|
-|身份验证证书|不支持。<br>有关详细信息，请参阅[应用程序网关的端到端 SSL 概述](ssl-overview.md#end-to-end-ssl-with-the-v2-sku)。|
+|身份验证证书|不支持。<br>有关详细信息，请参阅[应用程序网关的端到端 TLS 概述](ssl-overview.md#end-to-end-tls-with-the-v2-sku)。|
 |在同一子网上混合使用 Standard_v2 和标准应用程序网关|不支持|
 |应用程序网关子网上的用户定义路由 (UDR)|支持（特定方案）。 处于预览状态。<br> 有关支持的方案的详细信息，请参阅[应用程序网关配置概述](configuration-overview.md#user-defined-routes-supported-on-the-application-gateway-subnet)。|
 |入站端口范围的 NSG| 对于 Standard_v2 SKU，为 - 65200 到 65535<br>对于标准 SKU，为 - 65503 到 65534<br>有关详细信息，请参阅[常见问题解答](application-gateway-faq.md#are-network-security-groups-supported-on-the-application-gateway-subnet)。|

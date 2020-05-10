@@ -1,25 +1,27 @@
 ---
-title: 为 Azure-SSIS Integration Runtime 启用 Azure Active Directory
+title: 为 Azure-SSIS Integration Runtime 启用 AAD
 description: 本文介绍如何使用 Azure 数据工厂的托管标识启用 Azure Active Directory 身份验证，以创建 Azure-SSIS 集成运行时。
 services: data-factory
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: conceptual
 author: WenJason
 ms.author: v-jay
 manager: digimobile
+ms.custom: seo-lt-2019
 origin.date: 5/14/2019
-ms.date: 01/06/2020
-ms.openlocfilehash: ea73d34aacab331145b947a35e54cced1c0ef9f6
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/11/2020
+ms.openlocfilehash: 1d27ab8c36b909d692b896df3ce18d6e1804871b
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75624070"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82197801"
 ---
 # <a name="enable-azure-active-directory-authentication-for-azure-ssis-integration-runtime"></a>为 Azure-SSIS 集成运行时启用 Azure Active Directory 身份验证
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 本文介绍如何使用 Azure 数据工厂 (ADF) 的托管标识启用 Azure Active Directory (Azure AD) 身份验证，并使用它代替常规身份验证方法（如 SQL 身份验证）执行以下操作：
 
@@ -64,7 +66,7 @@ Azure SQL 数据库服务器支持使用 Azure AD 用户创建数据库。 首�
     6de75f3c-8b2f-4bf4-b9f8-78cc60a18050 SSISIrGroup
     ```
 
-3.  将 ADF 的托管标识添加到该组。 可以按照文章[数据工厂的托管标识](/data-factory/data-factory-service-identity)获取主体托管标识对象 ID（例如，765ad4ab-XXXX-XXXX-XXXX-51ed985819dc，但不要将托管标识应用程序 ID 用于此目的）。
+3.  将 ADF 的托管标识添加到该组。 可以按照[数据工厂的托管标识](/data-factory/data-factory-service-identity)一文获取主体托管标识对象 ID（例如，765ad4ab-XXXX-XXXX-XXXX-51ed985819dc，但不要将托管标识应用程序 ID 用于此目的）。
 
     ```powershell
     Add-AzureAdGroupMember -ObjectId $Group.ObjectId -RefObjectId 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc

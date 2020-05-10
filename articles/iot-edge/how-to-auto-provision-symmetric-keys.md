@@ -5,17 +5,17 @@ author: kgremban
 manager: philmea
 ms.author: v-tawe
 ms.reviewer: mrohera
-origin.date: 10/04/2019
-ms.date: 03/30/2020
+origin.date: 04/03/2019
+ms.date: 04/20/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 6d9e054e7b59ff3183a47ddf993cdc8df18ee2d9
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: a938ec2a435b95f019a909a0ecb7602e15f99b0e
+ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80586770"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82588411"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-symmetric-key-attestation"></a>使用对称密钥证明创建和预配 IoT Edge 设备
 
@@ -29,7 +29,7 @@ ms.locfileid: "80586770"
 
 对称密钥证明是一种通过设备预配服务实例对设备进行身份验证的简单方法。 此证明方法表示不熟悉设备预配或不具备严格安全要求的开发人员的“Hello world”体验。 使用 [TPM](../iot-dps/concepts-tpm-attestation.md) 或 [X.509 证书](../iot-dps/concepts-security.md#x509-certificates)的设备证明更加安全，且应该用于更严格的安全要求。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 一个有效的 IoT 中心
 * 一个物理设备或虚拟设备
@@ -73,6 +73,9 @@ ms.locfileid: "80586770"
 
    1. 选择“True”，声明该注册适用于 IoT Edge 设备。  对于组注册，所有设备必须是 IoT Edge 设备，或者都不是 IoT Edge 设备。
 
+   > [!TIP]
+   > 在 Azure CLI 中，可以创建[注册](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment)或[注册组](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment-group)，并使用“支持 Edge”  标志来指定某个设备或设备组是 IoT Edge 设备。
+
    1. 接受设备预配服务分配策略中有关**如何将设备分配到中心**的默认值，或选择特定于此注册的其他值。
 
    1. 选择要将设备连接到的链接“IoT 中心”。  可以选择多个中心，设备将根据所选的分配策略分配到其中的一个中心。
@@ -94,7 +97,7 @@ ms.locfileid: "80586770"
 
    1. 确保“启用项”设置为“启用”。  
 
-   1. 选择“保存”。 
+   1. 选择“保存”  。
 
 既然此设备已存在注册，IoT Edge 运行时在安装期间可以自动预配设备。 在安装 IoT Edge 运行时，或者要创建用于组注册的设备密钥时，请确保复制注册的**主密钥**值以供使用。
 
@@ -103,7 +106,7 @@ ms.locfileid: "80586770"
 > [!NOTE]
 > 仅当使用组注册时，才需要此部分。
 
-每个设备将使用其派生的设备密钥和唯一注册 ID，于预配期间在注册中执行对称密钥证明。 若要生成设备密钥，请使用从 DPS 注册复制的密钥计算设备的唯一注册 ID 的 [HMAC-SHA256](https://wikipedia.org/wiki/HMAC)，并将结果转换为 Base64 格式。
+每个设备将使用其派生的设备密钥和唯一注册 ID，于预配期间在注册中执行对称密钥证明。 若要生成设备密钥，请使用从 DPS 注册复制的密钥计算设备的唯一注册 ID 的 HMAC-SHA256，并将结果转换为 Base64 格式。
 
 不要在设备代码中包含注册的主密钥或辅助密钥。
 

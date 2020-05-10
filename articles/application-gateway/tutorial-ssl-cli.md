@@ -1,23 +1,23 @@
 ---
-title: 通过 CLI 使用 SSL 终端 - Azure 应用程序网关
-description: 了解如何使用 Azure CLI 创建应用程序网关并为 SSL 终端添加证书。
+title: 通过 CLI 使用 TLS 终端 - Azure 应用程序网关
+description: 了解如何使用 Azure CLI 创建应用程序网关并为 TLS 终端添加证书。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 03/16/2020
+ms.date: 04/26/2020
 ms.author: v-junlch
 ms.custom: mvc
-ms.openlocfilehash: 2bb84598e37e9a7dcd999f8c47e3cdf08202326f
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 9c205630b0f2ce0913da078d0cfeafbde8fac25b
+ms.sourcegitcommit: e3512c5c2bbe61704d5c8cbba74efd56bfe91927
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79497346"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82267687"
 ---
-# <a name="create-an-application-gateway-with-ssl-termination-using-the-azure-cli"></a>通过 Azure CLI 使用 SSL 终端创建应用程序网关
+# <a name="create-an-application-gateway-with-tls-termination-using-the-azure-cli"></a>通过 Azure CLI 使用 TLS 终端创建应用程序网关
 
-可以通过 Azure CLI 使用 [SSL 终端](overview.md)的证书创建[应用程序网关](ssl-overview.md)。 对于后端服务器，可以使用[虚拟机规模集](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)。 在此示例中，规模集包含两个添加到应用程序网关的默认后端池的虚拟机实例。
+可以通过 Azure CLI 使用 [TLS 终端](ssl-overview.md)的证书创建[应用程序网关](overview.md)。 对于后端服务器，可以使用[虚拟机规模集](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)。 在此示例中，规模集包含两个添加到应用程序网关的默认后端池的虚拟机实例。
 
 在本文中，学习如何：
 
@@ -31,7 +31,7 @@ ms.locfileid: "79497346"
 
 如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 
-根据本文的要求，如果选择在本地安装并使用 CLI，则需要运行 Azure CLI 2.0.4 或更高版本。 要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/install-azure-cli)。
+根据本文的要求，如果选择在本地安装并使用 CLI，则需要运行 Azure CLI 2.0.4 或更高版本。 若要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/install-azure-cli)。
 
 ## <a name="create-a-self-signed-certificate"></a>创建自签名证书
 
@@ -53,21 +53,21 @@ openssl pkcs12 -export -out appgwcert.pfx -inkey privateKey.key -in appgwcert.cr
 
 资源组是在其中部署和管理 Azure 资源的逻辑容器。 使用 [az group create](/cli/group) 创建资源组。
 
-以下示例在“chinanorth”  位置创建名为“myResourceGroupAG”  的资源组。
+以下示例在“chinanorth2”  位置创建名为“myResourceGroupAG”  的资源组。
 
 ```azurecli 
-az group create --name myResourceGroupAG --location chinanorth
+az group create --name myResourceGroupAG --location chinanorth2
 ```
 
 ## <a name="create-network-resources"></a>创建网络资源
 
-使用 *az network vnet create* 创建名为 *myVNet* 的虚拟网络和名为 [myAGSubnet](/cli/network/vnet) 的子网。 然后，可以使用 *az network vnet subnet create* 添加后端服务器所需的名为 [myBackendSubnet](/cli/network/vnet/subnet) 的子网。 使用 *az network public-ip create* 创建名为 [myAGPublicIPAddress](https://docs.azure.cn/zh-cn/cli/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) 的公共 IP 地址。
+使用 [az network vnet create](/cli/network/vnet) 创建名为 *myVNet* 的虚拟网络和名为 *myAGSubnet* 的子网。 然后，可以使用 [az network vnet subnet create](/cli/network/vnet/subnet) 添加后端服务器所需的名为 *myBackendSubnet* 的子网。 使用 [az network public-ip create](https://docs.azure.cn/zh-cn/cli/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) 创建名为 *myAGPublicIPAddress* 的公共 IP 地址。
 
 ```azurecli
 az network vnet create `
   --name myVNet `
   --resource-group myResourceGroupAG `
-  --location chinanorth `
+  --location chinanorth2 `
   --address-prefix 10.0.0.0/16 `
   --subnet-name myAGSubnet `
   --subnet-prefix 10.0.1.0/24
@@ -94,7 +94,7 @@ az network public-ip create `
 ```azurecli
 az network application-gateway create `
   --name myAppGateway `
-  --location chinanorth `
+  --location chinanorth2 `
   --resource-group myResourceGroupAG `
   --vnet-name myVNet `
   --subnet myAGsubnet `
@@ -176,7 +176,7 @@ az network public-ip show `
 当不再需要资源组、应用程序网关以及所有相关资源时，请将其删除。
 
 ```azurecli
-az group delete --name myResourceGroupAG --location chinanorth
+az group delete --name myResourceGroupAG --location chinanorth2
 ```
 
 ## <a name="next-steps"></a>后续步骤

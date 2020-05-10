@@ -9,17 +9,19 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-origin.date: 02/13/2020
-ms.date: 03/23/2020
+origin.date: 04/09/2020
+ms.date: 05/11/2020
 ms.author: v-jay
-ms.openlocfilehash: 6d12822093a5e3f68807a37aae354de0b0da932e
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 95384a695b562270b839cbf821eac23925afad7c
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79497266"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82198285"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 Oracle 复制数据
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文概述如何在 Azure 数据工厂中使用复制活动从/向 Oracle 数据库复制数据。 本文是在[复制活动概述](copy-activity-overview.md)的基础上编写的。
 
@@ -35,6 +37,7 @@ ms.locfileid: "79497266"
 具体而言，此 Oracle 连接器支持：
 
 - 以下版本的 Oracle 数据库：
+    - Oracle 19c R1 (19.1) 和更高版本
     - Oracle 18c R1 (18.1) 和更高版本
     - Oracle 12c R1 (12.1) 和更高版本
     - Oracle 11g R1 (11.1) 和更高版本
@@ -63,7 +66,7 @@ ms.locfileid: "79497266"
 
 Oracle 链接服务支持以下属性：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为 **Oracle**。 | 是 |
 | connectionString | 指定连接到 Oracle 数据库实例所需的信息。 <br/>还可以将密码放在 Azure Key Vault 中，并从连接字符串中拉取 `password` 配置。 有关更多详细信息，请参阅以下示例和[在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)。 <br><br>**支持的连接类型**：可以使用 **Oracle SID** 或 **Oracle 服务名称**来标识数据库：<br>- 如果使用 SID：`Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;`<br>- 如果使用服务名称：`Host=<host>;Port=<port>;ServiceName=<servicename>;User Id=<username>;Password=<password>;`<br>对于“高级 Oracle 本机连接”选项，可以选择在 Oracle 服务器上的 [TNSNAMES.ORA](http://www.orafaq.com/wiki/Tnsnames.ora) 文件中添加一个条目，在“ADF Oracle 链接服务”中，选择使用“Oracle 服务名称”连接类型并配置相应的服务名称。 | 是 |
@@ -82,9 +85,9 @@ Oracle 链接服务支持以下属性：
 
 - 若要使用**三重 DES 加密 (3DES) 和高级加密标准 (AES)** ，请在 Oracle 服务器端，转到“Oracle 高级安全性 (OAS)”并配置加密设置。 有关详细信息，请参阅 [Oracle 文档](https://docs.oracle.com/cd/E11882_01/network.112/e40393/asointro.htm#i1008759)。 Oracle 应用程序开发框架 (ADF) 连接器会自动协商加密方法，以便在建立与 Oracle 的连接时使用在 OAS 中配置的加密方法。
 
-- 若要使用 **SSL**：
+- 若要使用 TLS  ，请执行以下操作：
 
-    1.  获取 SSL 证书信息。 获取 SSL 证书的可辨别编码规则 (DER) 编码证书信息，并将输出 (----- Begin Certificate … End Certificate -----) 另存为文本文件。
+    1. 获取 TLS/SSL 证书信息。 获取 TLS/SSL 证书的可辨别编码规则 (DER) 编码证书信息，并将输出 (----- Begin Certificate … End Certificate -----) 另存为文本文件。
 
         ```
         openssl x509 -inform DER -in [Full Path to the DER Certificate including the name of the DER Certificate] -text
@@ -168,12 +171,12 @@ Oracle 链接服务支持以下属性：
 
 若要从/向 Oracle 复制数据，请将数据集的 type 属性设置为 `OracleTable`。 支持以下属性。
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为 `OracleTable`。 | 是 |
-| 架构 | 架构的名称。 |对于源为“No”，对于接收器为“Yes”  |
-| 表 | 表/视图的名称。 |对于源为“No”，对于接收器为“Yes”  |
-| tableName | 具有架构的表/视图的名称。 此属性支持后向兼容性。 对于新的工作负荷，请使用 `schema` 和 `table`。 | 对于源为“No”，对于接收器为“Yes” |
+| schema | 架构的名称。 |对于源为“否”，对于接收器为“是”  |
+| table | 表/视图的名称。 |对于源为“否”，对于接收器为“是”  |
+| tableName | 具有架构的表/视图的名称。 此属性支持后向兼容性。 对于新的工作负荷，请使用 `schema` 和 `table`。 | 对于源为“否”，对于接收器为“是” |
 
 **示例：**
 
@@ -207,11 +210,11 @@ Oracle 链接服务支持以下属性：
 
 要从 Oracle 复制数据，请将复制活动中的源类型设置为 `OracleSource`。 复制活动的 **source** 节支持以下属性。
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动 source 的 type 属性必须设置为 `OracleSource`。 | 是 |
 | oracleReaderQuery | 使用自定义 SQL 查询读取数据。 例如 `"SELECT * FROM MyTable"`。<br>启用分区加载时，需要在查询中挂接任何相应的内置分区参数。 有关示例，请参阅[从 Oracle 进行并行复制](#parallel-copy-from-oracle)部分。 | 否 |
-| partitionOptions | 指定用于从 Oracle 加载数据的数据分区选项。 <br>允许值包括：**None**（默认值）、**PhysicalPartitionsOfTable** 和 **DynamicRange**。<br>启用分区选项（即，该选项不为 `None`）时，用于从 Oracle 数据库并行加载数据的并行度由复制活动上的 [`parallelCopies`](copy-activity-performance.md#parallel-copy) 设置控制。 | 否 |
+| partitionOptions | 指定用于从 Oracle 加载数据的数据分区选项。 <br>允许值包括：**None**（默认值）、**PhysicalPartitionsOfTable** 和 **DynamicRange**。<br>启用分区选项（即，该选项不为 `None`）时，用于从 Oracle 数据库并行加载数据的并行度由复制活动上的 [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) 设置控制。 | 否 |
 | partitionSettings | 指定数据分区的设置组。 <br>当分区选项不是 `None` 时适用。 | 否 |
 | partitionNames | 需要复制的物理分区的列表。 <br>当分区选项是 `PhysicalPartitionsOfTable` 时适用。 如果使用查询来检索源数据，请在 WHERE 子句中挂接 `?AdfTabularPartitionName`。 有关示例，请参阅[从 Oracle 进行并行复制](#parallel-copy-from-oracle)部分。 | 否 |
 | partitionColumnName | 指定并行复制范围分区使用的源列（**整数类型**）的名称。 如果未指定，系统会自动检测表的主键并将其用作分区列。 <br>当分区选项是 `DynamicRange` 时适用。 如果使用查询来检索源数据，请在 WHERE 子句中挂接 `?AdfRangePartitionColumnName`。 有关示例，请参阅[从 Oracle 进行并行复制](#parallel-copy-from-oracle)部分。 | 否 |
@@ -254,7 +257,7 @@ Oracle 链接服务支持以下属性：
 
 若要向 Oracle 复制数据，请将复制活动中的接收器类型设置为 `OracleSink`。 复制活动 **sink** 节支持以下属性。
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动接收器的 type 属性必须设置为 `OracleSink`。 | 是 |
 | writeBatchSize | 缓冲区大小达到 `writeBatchSize` 时将数据插入 SQL 表。<br/>允许的值为 Integer（行数）。 |否（默认值为 10,000） |
@@ -298,7 +301,7 @@ Oracle 链接服务支持以下属性：
 
 ![分区选项的屏幕截图](./media/connector-oracle/connector-oracle-partition-options.png)
 
-启用分区复制时，数据工厂将对 Oracle 源运行并行查询，以按分区加载数据。 可通过复制活动中的 [`parallelCopies`](copy-activity-performance.md#parallel-copy) 设置控制并行度。 例如，如果将 `parallelCopies` 设置为 4，则数据工厂会根据指定的分区选项和设置并行生成并运行 4 个查询，每个查询从 Oracle 数据库检索一部分数据。
+启用分区复制时，数据工厂将对 Oracle 源运行并行查询，以按分区加载数据。 可通过复制活动中的 [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) 设置控制并行度。 例如，如果将 `parallelCopies` 设置为 4，则数据工厂会根据指定的分区选项和设置并行生成并运行 4 个查询，每个查询从 Oracle 数据库检索一部分数据。
 
 建议同时启用并行复制和数据分区，尤其是从 Oracle 数据库加载大量数据时。 下面是适用于不同方案的建议配置。 将数据复制到基于文件的数据存储中时，建议将数据作为多个文件写入文件夹（仅指定文件夹名称），在这种情况下，性能优于写入单个文件。
 
@@ -351,13 +354,13 @@ Oracle 链接服务支持以下属性：
 | CHAR |String |
 | CLOB |String |
 | DATE |DateTime |
-| FLOAT |十进制、字符串（如果精度 > 28） |
-| INTEGER |十进制、字符串（如果精度 > 28） |
+| FLOAT |Decimal、String（如果精度 > 28） |
+| INTEGER |Decimal、String（如果精度 > 28） |
 | LONG |String |
 | LONG RAW |Byte[] |
 | NCHAR |String |
 | NCLOB |String |
-| NUMBER |十进制、字符串（如果精度 > 28） |
+| NUMBER |Decimal、String（如果精度 > 28） |
 | NVARCHAR2 |String |
 | RAW |Byte[] |
 | ROWID |String |

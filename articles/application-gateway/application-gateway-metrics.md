@@ -5,14 +5,14 @@ services: application-gateway
 author: abshamsft
 ms.service: application-gateway
 ms.topic: article
-ms.date: 03/30/2020
+ms.date: 04/26/2020
 ms.author: v-junlch
-ms.openlocfilehash: 4b0767ae1cc08861668d0ae7cdff5f031048a039
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 3c78f2304fe9cf9b683635c2410c06537bc5a3e7
+ms.sourcegitcommit: e3512c5c2bbe61704d5c8cbba74efd56bfe91927
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80581711"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82267636"
 ---
 # <a name="metrics-for-application-gateway"></a>应用程序网关的指标
 
@@ -102,7 +102,7 @@ ms.locfileid: "80581711"
 
 - **失败的请求数**
 
-  应用程序网关已提供服务的失败请求计数。 可以进一步筛选请求计数，以显示每个/特定后端池 http 设置组合的计数。
+  应用程序网关已处理 5xx 服务器错误代码的请求数。 这包括从应用程序网关生成的 5xx 代码，以及从后端生成的 5xx 代码。 可以进一步筛选请求计数，以显示每个/特定后端池 http 设置组合的计数。
    
 - **固定计费容量单位数**
 
@@ -162,7 +162,7 @@ ms.locfileid: "80581711"
 
 - **失败的请求数**
 
-  应用程序网关已提供服务的失败请求计数。 可以进一步筛选请求计数，以显示每个/特定后端池 http 设置组合的计数。
+  应用程序网关已处理但显示了 5xx 服务器错误代码的请求数。 这包括从应用程序网关生成的 5xx 代码，以及从后端生成的 5xx 代码。 可以进一步筛选请求计数，以显示每个/特定后端池 http 设置组合的计数。
 
 - **响应状态**
 
@@ -206,7 +206,6 @@ ms.locfileid: "80581711"
 ## <a name="next-steps"></a>后续步骤
 
 * 使用 [Azure Monitor 日志](../azure-monitor/insights/azure-networking-analytics.md)可视化计数器和事件日志。
-* [Visualize your Azure Activity Log with Power BI](https://blogs.msdn.com/b/powerbi/archive/2015/09/30/monitor-azure-audit-logs-with-power-bi.aspx)（使用 Power BI 直观显示 Azure 活动日志）博客文章。
 * [View and analyze Azure activity logs in Power BI and more](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/)（在 Power BI 和其他组件中查看和分析 Azure 活动日志）博客文章。
 
 [1]: ./media/application-gateway-diagnostics/figure1.png
@@ -220,4 +219,3 @@ ms.locfileid: "80581711"
 [9]: ./media/application-gateway-diagnostics/figure9.png
 [10]: ./media/application-gateway-diagnostics/figure10.png
 
-<!-- Update_Description: wording update -->

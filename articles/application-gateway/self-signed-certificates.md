@@ -6,20 +6,20 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 03/30/2020
+ms.date: 04/26/2020
 ms.author: v-junlch
-ms.openlocfilehash: a4174130f3560234f4e6f2ce0a89f6559e239ab2
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: b8b4ad80094ecab5597248957cfc1ec9bfc603c8
+ms.sourcegitcommit: e3512c5c2bbe61704d5c8cbba74efd56bfe91927
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80581806"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82267649"
 ---
 # <a name="generate-an-azure-application-gateway-self-signed-certificate-with-a-custom-root-ca"></a>使用自定义根 CA 生成 Azure 应用程序网关自签名证书
 
-应用程序网关 v2 SKU 引入了允许后端服务器的受信任根证书。 这样，就无需像在 v1 SKU 中那样使用身份验证证书。 该根证书是来自后端证书服务器的 Base-64 编码的 X.509(.CER) 格式根证书。  它可以识别颁发服务器证书的根证书颁发机构 (CA)，然后，服务器证书可用于 SSL 通信。
+应用程序网关 v2 SKU 引入了允许后端服务器的受信任根证书。 这样，就无需像在 v1 SKU 中那样使用身份验证证书。 该根证书是来自后端证书服务器的 Base-64 编码的 X.509(.CER) 格式根证书。  它可以识别颁发服务器证书的根证书颁发机构 (CA)，然后，服务器证书可用于 TLS/SSL 通信。
 
-如果网站的证书由众所周知的 CA（例如 GoDaddy 或 DigiCert）签名，则默认情况下应用程序网关会信任该证书。 在这种情况下，无需显式上传根证书。 有关详细信息，请参阅 [SSL 终止和应用程序网关的端到端 SSL 概述](ssl-overview.md)。 但是，如果你有一个开发/测试环境，但不想要购买由已验证的 CA 签名的证书，可以创建自己的自定义 CA，然后使用该 CA 创建自签名证书。 
+如果网站的证书由众所周知的 CA（例如 GoDaddy 或 DigiCert）签名，则默认情况下应用程序网关会信任该证书。 在这种情况下，无需显式上传根证书。 有关详细信息，请参阅[应用程序网关的 TLS 终止和端到端 TLS 概述](ssl-overview.md)。 但是，如果你有一个开发/测试环境，但不想要购买由已验证的 CA 签名的证书，可以创建自己的自定义 CA，然后使用该 CA 创建自签名证书。 
 
 > [!NOTE]
 > 自签名证书默认不受信任，并且可能难以维护。 另外，它们可能使用过时的哈希，以及不够可靠的加密套件。 为了提高安全性，请购买由知名证书颁发机构签名的证书。
@@ -125,15 +125,15 @@ CSR 是请求证书时向 CA 提供的公钥。 CA 将针对此特定请求颁�
    - fabrikam.crt
    - fabrikam.key
 
-## <a name="configure-the-certificate-in-your-web-servers-ssl-settings"></a>在 Web 服务器的 SSL 设置中配置证书
+## <a name="configure-the-certificate-in-your-web-servers-tls-settings"></a>在 Web 服务器的 TLS 设置中配置证书
 
-在 Web 服务器中，使用 fabrikam.crt 和 fabrikam.key 文件配置 SSL。 如果 Web 服务器无法接收两个文件，你可以使用 OpenSSL 命令将其合并成单个 .pem 或 .pfx 文件。
+在 Web 服务器中，使用 fabrikam.crt 和 fabrikam.key 文件配置 TLS。 如果 Web 服务器无法接收两个文件，你可以使用 OpenSSL 命令将其合并成单个 .pem 或 .pfx 文件。
 
 ### <a name="iis"></a>IIS
 
 有关如何导入证书并将其上传为 IIS 上的服务器证书的说明，请参阅[如何：在 Windows Server 2003 中的 Web 服务器上安装导入的证书](https://support.microsoft.com/help/816794/how-to-install-imported-certificates-on-a-web-server-in-windows-server)。
 
-有关 SSL 绑定说明，请参阅[如何在 IIS 7 上设置 SSL](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis#create-an-ssl-binding-1)。
+有关 TLS 绑定的说明，请参阅[如何在 IIS 7 上设置 SSL](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis#create-an-ssl-binding-1)。
 
 ### <a name="apache"></a>Apache
 
@@ -151,9 +151,9 @@ CSR 是请求证书时向 CA 提供的公钥。 CA 将针对此特定请求颁�
 
 ### <a name="nginx"></a>NGINX
 
-以下配置是使用 SSL 配置的 [NGINX 服务器块](https://nginx.org/docs/http/configuring_https_servers.html)示例：
+以下配置是包含 TLS 配置的 [NGINX 服务器块](https://nginx.org/docs/http/configuring_https_servers.html)示例：
 
-![使用 SSL 的 NGINX](./media/self-signed-certificates/nginx-ssl.png)
+![具有 TLS 的 NGINX](./media/self-signed-certificates/nginx-ssl.png)
 
 ## <a name="access-the-server-to-verify-the-configuration"></a>访问服务器以验证配置
 
@@ -232,7 +232,7 @@ $probe = Get-AzApplicationGatewayProbeConfig `
 
 ## Add the configuration to the HTTP Setting and don't forget to set the "hostname" field
 ## to the domain name of the server certificate as this will be set as the SNI header and
-## will be used to verify the backend server's certificate. Note that SSL handshake will
+## will be used to verify the backend server's certificate. Note that TLS handshake will
 ## fail otherwise and might lead to backend servers being deemed as Unhealthy by the probes
 
 Add-AzApplicationGatewayBackendHttpSettings `
@@ -262,15 +262,16 @@ Add-AzApplicationGatewayRequestRoutingRule `
 
 Set-AzApplicationGateway -ApplicationGateway $gw 
 ```
+
 ### <a name="verify-the-application-gateway-backend-health"></a>验证应用程序网关后端运行状况
 
 1. 单击应用程序网关的“后端运行状况”视图，检查探测是否正常。 
-1.    应会看到，HTTPS 探测的状态为“正常”。 
+1. 应会看到，HTTPS 探测的状态为“正常”。 
 
-    ![HTTPS 探测](./media/self-signed-certificates/https-probe.png)
+![HTTPS 探测](./media/self-signed-certificates/https-probe.png)
 
 ## <a name="next-steps"></a>后续步骤
 
-若要详细了解应用程序网关中的 SSL\TLS，请参阅[应用程序网关的 SSL 终止和端到端 SSL 概述](ssl-overview.md)。
+若要详细了解应用程序网关中的 SSL\TLS，请参阅[应用程序网关的 TLS 终止和端到端 TLS 概述](ssl-overview.md)。
 
 

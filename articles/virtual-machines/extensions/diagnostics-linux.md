@@ -1,5 +1,5 @@
 ---
-title: Azure 计算 - Linux 诊断扩展
+title: 使用 Linux 诊断扩展监视指标和日志
 description: 如何配置 Azure Linux 诊断扩展 (LAD)，以收集 Azure 中运行的 Linux VM 的指标和日志事件。
 services: virtual-machines-linux
 author: rockboyfor
@@ -8,14 +8,14 @@ ms.service: virtual-machines-linux
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 origin.date: 12/13/2018
-ms.date: 02/10/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: b0fedf659231727a7499b745e35293444fa28a19
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 647eaa441f54ce9beaca938014be11837a44b014
+ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292821"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82596373"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>使用 Linux 诊断扩展监视指标和日志
 
@@ -64,7 +64,7 @@ Linux 诊断扩展可帮助用户监视 Azure 上运行的 Linux VM 的运行状
 
 <!--MOONCAKE: CORRECT TO ADD my_diagnostic_storage_endpoint=https://core.chinacloudapi.cn/-->
 
-```bash
+```azurecli
 # Set your Azure VM diagnostic variables correctly below
 my_resource_group=<your_azure_resource_group_name_containing_your_azure_linux_vm>
 my_linux_vm=<your_azure_linux_vm_name>
@@ -96,86 +96,40 @@ az vm extension set --publisher Microsoft.Azure.Diagnostics --name LinuxDiagnost
 
 <!--MOONCAKE: CORRECT ON 'storageAccountEndPoint': '$my_diagnostic_storage_endpoint',-->
 
-示例配置的 URL 及其内容可能会有所更改。 下载门户设置 JSON 文件的副本，并根据需要进行自定义。 构造的任何模板或自动化应使用自己的副本，而不是每次下载该 URL。
+在这些示例中下载的示例配置将收集一组标准数据，并将其发送到表存储。 示例配置的 URL 及其内容可能会有所更改。 在大多数情况下，你应该下载门户设置 JSON 文件的副本并根据需要对其进行自定义，然后让你构造的任何模板或自动化都使用你自己版本的配置文件，而不是每次都下载该 URL。
 
 #### <a name="powershell-sample"></a>PowerShell 示例
 
-```Powershell
-// Set your Azure VM diagnostics variables correctly below - don't forget to replace the VMResourceID
+<!--MOONCAKE: CORRECT TO ADD $storageAccountEndPoint=https://core.chinacloudapi.cn/-->
 
-$SASKey = '<SASKeyForDiagStorageAccount>'
+```powershell
+$storageAccountName = "yourStorageAccountName"
+$storageAccountResourceGroup = "yourStorageAccountResourceGroupName"
+$storageAccountEndPoint="https://core.chinacloudapi.cn/"
+$vmName = "yourVMName"
+$VMresourceGroup = "yourVMResourceGroupName"
 
-$ladCfg = "{
-'diagnosticMonitorConfiguration': {
-'performanceCounters': {
-'sinks': 'WADMetricEventHub,WADMetricJsonBlob',
-'performanceCounterConfiguration': [
-{
-'unit': 'Percent',
-'type': 'builtin',
-'counter': 'PercentProcessorTime',
-'counterSpecifier': '/builtin/Processor/PercentProcessorTime',
-'annotation': [
-{
-'locale': 'en-us',
-'displayName': 'Aggregate CPU %utilization'
-}
-],
-'condition': 'IsAggregate=TRUE',
-'class': 'Processor'
-},
-{
-'unit': 'Bytes',
-'type': 'builtin',
-'counter': 'UsedSpace',
-'counterSpecifier': '/builtin/FileSystem/UsedSpace',
-'annotation': [
-{
-'locale': 'en-us',
-'displayName': 'Used disk space on /'
-}
-],
-'condition': 'Name='/'',
-'class': 'Filesystem'
-}
-]
-},
-'metrics': {
-'metricAggregation': [
-{
-'scheduledTransferPeriod': 'PT1H'
-},
-{
-'scheduledTransferPeriod': 'PT1M'
-}
-],
-'resourceId': '<VMResourceID>'
-},
-'eventVolume': 'Large',
-'syslogEvents': {
-'sinks': 'SyslogJsonBlob,LoggingEventHub',
-'syslogEventConfiguration': {
-'LOG_USER': 'LOG_INFO'
-}
-}
-}
-}"
-$ladCfg = [System.Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes($ladCfg))
-$perfCfg = "[
-{
-'query': 'SELECT PercentProcessorTime, PercentIdleTime FROM SCX_ProcessorStatisticalInformation WHERE Name='_TOTAL'',
-'table': 'LinuxCpu',
-'frequency': 60,
-'sinks': 'LinuxCpuJsonBlob'
-}
-]"
+# Get the VM object
+$vm = Get-AzVM -Name $vmName -ResourceGroupName $VMresourceGroup
 
-// Get the VM Resource
-Get-AzureRmVM -ResourceGroupName <RGName> -VMName <VMName>
+# Get the public settings template from GitHub and update the templated values for storage account and resource ID
+$publicSettings = (Invoke-WebRequest -Uri https://raw.githubusercontent.com/Azure/azure-linux-extensions/master/Diagnostic/tests/lad_2_3_compatible_portal_pub_settings.json).Content
+$publicSettings = $publicSettings.Replace('__DIAGNOSTIC_STORAGE_ACCOUNT__', $storageAccountName)
+$publicSettings = $publicSettings.Replace('__VM_RESOURCE_ID__', $vm.Id)
 
-// Finally tell Azure to install and enable the extension
-Set-AzureRmVMExtension -ExtensionType LinuxDiagnostic -Publisher Microsoft.Azure.Diagnostics -ResourceGroupName <RGName> -VMName <VMName> -Location <Location> -Name LinuxDiagnostic -Settings @{'StorageAccount'='<DiagStorageAccount>'; 'sampleRateInSeconds' = '15' ; 'ladCfg'=$ladCfg; 'perfCfg' = $perfCfg} -ProtectedSettings @{'storageAccountName' = '<DiagStorageAccount>'; 'storageAccountSasToken' = $SASKey } -TypeHandlerVersion 3.0
+# If you have your own customized public settings, you can inline those rather than using the template above: $publicSettings = '{"ladCfg":  { ... },}'
+
+# Generate a SAS token for the agent to use to authenticate with the storage account
+$sasToken = New-AzStorageAccountSASToken -Service Blob,Table -ResourceType Service,Container,Object -Permission "racwdlup" -Context (Get-AzStorageAccount -ResourceGroupName $storageAccountResourceGroup -AccountName $storageAccountName).Context
+
+# Build the protected settings (storage account SAS token)
+$protectedSettings="{'storageAccountName': '$storageAccountName', 'storageAccountEndPoint': '$storageAccountEndPoint', 'storageAccountSasToken': '$sasToken'}"
+
+# Finally install the extension with the settings built above
+Set-AzVMExtension -ResourceGroupName $VMresourceGroup -VMName $vmName -Location $vm.Location -ExtensionType LinuxDiagnostic -Publisher Microsoft.Azure.Diagnostics -Name LinuxDiagnostic -SettingString $publicSettings -ProtectedSettingString $protectedSettings -TypeHandlerVersion 3.0 
 ```
+
+<!--MOONCAKE: CORRECT TO ADD $storageAccountEndPoint=https://core.chinacloudapi.cn/-->
 
 ### <a name="updating-the-extension-settings"></a>更新扩展设置
 
@@ -213,7 +167,7 @@ Set-AzureRmVMExtension -ExtensionType LinuxDiagnostic -Publisher Microsoft.Azure
 }
 ```
 
-名称 | Value
+名称 | 值
 ---- | -----
 storageAccountName | 扩展写入数据的存储帐户的名称。
 storageAccountEndPoint | （可选）标识存储帐户所在云的终结点。 如果缺少此设置，则 LAD 默认为 Azure 公有云 `https://core.windows.net`。 若要使用 Azure 中国中的存储帐户，请使用 `https://core.chinacloudapi.cn` 相应地设置此值。
@@ -224,7 +178,7 @@ sinksConfig | （可选）可将指标和事件传递到的替换目标的详细
 <!-- Not Available on Line 131 Azure Germany, Azure US Government-->
 <!-- Notice: storageAccountEndPoint contains https://core.windows.net and https://core.chinacloudapi.cn-->
 
-若要在资源管理器模板中获取 SAS 令牌，请使用 **listAccountSas** 函数。 有关示例模板，请参阅 [List 函数示例](../../azure-resource-manager/resource-group-template-functions-resource.md#list-example)。
+若要在资源管理器模板中获取 SAS 令牌，请使用 **listAccountSas** 函数。 有关示例模板，请参阅 [List 函数示例](../../azure-resource-manager/templates/template-functions-resource.md#list-example)。
 
 可通过 Azure 门户轻松构造所需的 SAS 令牌。
 
@@ -254,7 +208,7 @@ sinksConfig | （可选）可将指标和事件传递到的替换目标的详细
 
 此可选部分所定义的附加目标是扩展将所收集信息发送到其中的目标。 “sink”数组包含每个附加数据接收器的对象。 “type”属性确定对象中的其他属性。
 
-元素 | Value
+元素 | 值
 ------- | -----
 name | 在扩展配置中其他位置用于引用此接收器的字符串。
 type | 要定义的接收器的类型。 确定此类型实例中的其他值（如果有）。
@@ -282,7 +236,7 @@ Linux 诊断扩展 3.0 版支持两种接收器类型：EventHub 和 JsonBlob。
 
 如果创建在 UTC 2018 年 1 月 1 日午夜之前有效的 SAS，sasURL 值可能为：
 
-```url
+```https
 https://contosohub.servicebus.chinacloudapi.cn/syslogmsgs?sr=contosohub.servicebus.chinacloudapi.cn%2fsyslogmsgs&sig=xxxxxxxxxxxxxxxxxxxxxxxxx&se=1514764800&skn=writer
 ```
 
@@ -316,7 +270,7 @@ https://contosohub.servicebus.chinacloudapi.cn/syslogmsgs?sr=contosohub.serviceb
 }
 ```
 
-元素 | Value
+元素 | 值
 ------- | -----
 StorageAccount | 扩展写入数据的存储帐户的名称。 必须与[受保护的设置](#protected-settings)中指定的名称相同。
 mdsdHttpProxy | （可选）与[受保护的设置](#protected-settings)中的相同。 如果设置，则专用值将重写公用值。 将包含机密（如密码）的代理设置放在[受保护的设置](#protected-settings)中。
@@ -339,7 +293,7 @@ mdsdHttpProxy | （可选）与[受保护的设置](#protected-settings)中的�
 
 此可选结构控制指标和日志的收集，以传递到 Azure Metrics 服务和其他数据接收器。 必须指定 `performanceCounters` 和/或 `syslogEvents`。 必须指定 `metrics` 结构。
 
-元素 | Value
+元素 | 值
 ------- | -----
 eventVolume | （可选）控制在存储表中创建的分区数。 必须是 `"Large"`、`"Medium"` 或 `"Small"`。 如果未指定，默认值为 `"Medium"`。
 sampleRateInSeconds | （可选）两次收集原始（未聚合）指标之间的默认时间间隔。 支持的最小采样率为 15 秒。 如果未指定，默认值为 `15`。
@@ -356,7 +310,7 @@ sampleRateInSeconds | （可选）两次收集原始（未聚合）指标之间�
 }
 ```
 
-元素 | Value
+元素 | 值
 ------- | -----
 ResourceId | VM 或 VM 所属虚拟机规模集的 Azure 资源管理器资源 ID。 如果配置中使用了任何 JsonBlob 接收器，也必须指定此设置。
 scheduledTransferPeriod | 计算聚合指标并将转移到 Azure Metrics 的频率，以 IS 8601 时间间隔形式表示。 最小传输周期为 60 秒，即 PT1M。 必须指定至少一个 scheduledTransferPeriod。
@@ -396,7 +350,7 @@ performanceCounters 节中指定的指标样本每 15 秒收集一次，或者�
 * 上一次收集的值
 * 用于计算聚合的原始样本数
 
-元素 | Value
+元素 | 值
 ------- | -----
 sinks | （可选）LAD 将聚合指标结果发送到的接收器的名称的逗号分隔列表。 所有聚合指标都将发布到列出的每个接收器。 请参阅 [sinksConfig](#sinksconfig)。 示例：`"EHsink1, myjsonsink"`。
 type | 标识指标的实际提供程序。
@@ -442,7 +396,7 @@ LAD 和 Azure 门户都不需要 counterSpecifier 值匹配任何模式。 请�
 
 syslogEventConfiguration 收集会为相关的每个 syslog 辅助参数创建一个条目。 如果特定辅助参数的 minSeverity 为“NONE”，或者该辅助参数并未出现在元素中，则不会捕获该辅助参数下的任何事件。
 
-元素 | Value
+元素 | 值
 ------- | -----
 sinks | 一个逗号分隔列表，包含要将单个日志事件发布到其中的接收器的名称。 与 syslogEventConfiguration 中的限制匹配的所有日志事件都会发布到列出的每个接收器。 示例：“EHforsyslog”
 facilityName | Syslog 辅助参数名称（例如“LOG\_USER”或“LOG\_LOCAL0”）。 有关完整列表，请参阅 [syslog 手册页](http://man7.org/linux/man-pages/man3/syslog.3.html)的“facility”部分。
@@ -471,7 +425,7 @@ minSeverity | Syslog 严重性级别（例如“LOG\_ERR”或“LOG\_INFO”）
 ]
 ```
 
-元素 | Value
+元素 | 值
 ------- | -----
 命名空间 | （可选）应在其中执行查询的 OMI 命名空间。 如果未指定，则默认值为“root/scx”，由 [ System Center 跨平台提供程序](https://github.com/Microsoft/SCXcore)实现。
 查询 | 要执行的 OMI 查询。
@@ -495,7 +449,7 @@ sinks | （可选）一个逗号分隔列表，包含应将原始样本指标结
 ]
 ```
 
-元素 | Value
+元素 | 值
 ------- | -----
 file | 要监视和捕获的日志文件的完整路径名。 路径名必须命名单个文件；它不能命名目录，也不能包含通配符。
 表 | （可选）指定的存储帐户（在受保护的配置中指定）中的 Azure 存储表，文件“结尾”处的新行将写入此表。
@@ -588,7 +542,7 @@ ReadsPerSecond | 每秒读取操作数
 WritesPerSecond | 每秒写入操作数
 TransfersPerSecond | 每秒读取或写入操作数
 
-可通过设置 `"condition": "IsAggregate=True"`，获取跨所有文件系统的聚合值。 可通过设置 `"condition": 'Name="/mnt"'`，获取已装入的特定文件系统（如“/mnt”）的值。
+可通过设置 `"condition": "IsAggregate=True"`，获取跨所有文件系统的聚合值。 可通过设置 `"condition": 'Name="/mnt"'`，获取已装入的特定文件系统（如“/mnt”）的值。 
 
 **注意**：如果使用 Azure 门户而不是 JSON，则正确的条件字段形式为 Name='/mnt'
 

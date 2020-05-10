@@ -1,5 +1,5 @@
 ---
-title: 提升访问权限以管理所有 Azure 订阅和管理组 | Microsoft Docs
+title: 提升访问权限以管理所有 Azure 订阅和管理组
 description: 介绍如何使用 Azure 门户或 REST API 提升全局管理员的访问权限，以管理 Azure Active Directory 中的所有订阅和管理组。
 services: active-directory
 documentationcenter: ''
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/16/2020
+ms.date: 04/29/2020
 ms.author: v-junlch
 ms.reviewer: bagovind
-ms.openlocfilehash: 22ca1013826ed4dfea32c2a852af3a9e7e6bfa1c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: e441871f3ed6c9264734b28380dcf3a618fdca87
+ms.sourcegitcommit: e3512c5c2bbe61704d5c8cbba74efd56bfe91927
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "76116940"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82267632"
 ---
 # <a name="elevate-access-to-manage-all-azure-subscriptions-and-management-groups"></a>提升访问权限以管理所有 Azure 订阅和管理组
 
@@ -55,9 +55,7 @@ Azure AD 和 Azure 资源彼此独立保护。 也就是说，Azure AD 角色分
 
 1. 以全局管理员的身份登录到 [Azure 门户](https://portal.azure.cn)。
 
-1. 搜索并选择“Azure Active Directory”  。
-
-   ![选择 Azure Active Directory - 屏幕截图](./media/elevate-access-global-admin/search-for-azure-active-directory.png)
+1. 打开“Azure Active Directory”。 
 
 1. 在“管理”下，选择“属性”   。
 
@@ -98,7 +96,7 @@ Azure AD 和 Azure 资源彼此独立保护。 也就是说，Azure AD 角色分
 
 1. 将“Azure 资源的访问管理”切换回“否”   。 由于此设置特定于用户，因此，必须以提升访问权限时所用的同一用户登录。
 
-    如果尝试删除“访问控制(IAM)”窗格上的“用户访问管理员”角色分配，将看到以下消息。 若要删除角色分配，必须切换回“否”，或使用 Azure PowerShell、Azure CLI 或 REST API  。
+    如果尝试删除“访问控制(IAM)”窗格上的“用户访问管理员”角色分配，将看到以下消息。 若要删除角色分配，必须切换回“否”，或者使用 Azure PowerShell、Azure CLI 或 REST API  。
 
     ![删除根范围的角色分配](./media/elevate-access-global-admin/iam-root-remove.png)
 
@@ -233,7 +231,7 @@ az role assignment list --role "User Access Administrator" --scope "/"
 
 ### <a name="remove-elevated-access"></a>撤消提升的访问权限
 
-调用 `elevateAccess` 即为自己创建角色分配，因此若要撤销这些特权，需要删除自己在根范围内的“用户访问管理员”角色分配 (`/`)
+调用 `elevateAccess` 即为自己创建角色分配，因此若要撤销这些特权，需要删除自己在根范围 (`/`) 内的“用户访问管理员”角色分配。
 
 1. 调用 [GET roleDefinitions](https://docs.microsoft.com/rest/api/authorization/roledefinitions/get)，其中 `roleName` = 用户访问管理员，由此确定用户访问管理员角色的名称 ID。
 
@@ -326,4 +324,3 @@ az role assignment list --role "User Access Administrator" --scope "/"
 - [了解 Azure 中的不同角色](rbac-and-directory-admin-roles.md)
 - [使用 RBAC 和 REST API 管理对 Azure 资源的访问权限](role-assignments-rest.md)
 
-<!-- Update_Description: wording update -->

@@ -1,6 +1,6 @@
 ---
 title: 在 Azure VM 来宾 OS 中启用或禁用防火墙规则 | Azure
-description: ''
+description: 了解如何使用联机或脱机远程工具或注册表设置在远程 Azure VM 上启用或禁用来宾 OS 防火墙规则。
 services: virtual-machines-windows
 documentationcenter: ''
 author: rockboyfor
@@ -13,23 +13,23 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 origin.date: 11/22/2018
-ms.date: 11/11/2019
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: ca5cb5fe54368458ca48d793d4c981c8c3517eaa
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: bac2faa560f9b575862ccc62f9a085a4df110fdc
+ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74116905"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82596363"
 ---
 <!-- Verify part successfully-->
 # <a name="enable-or-disable-a-firewall-rule-on-an-azure-vm-guest-os"></a>在 Azure VM 来宾 OS 中启用或禁用防火墙规则
 
 本文为排查以下问题提供参考：你怀疑来宾操作系统防火墙正在筛选虚拟机 (VM) 上的部分流量。 使用这些参考信息的原因如下：
 
-*   如果有意对防火墙所做的更改导致 RDP 连接失败，使用“自定义脚本扩展”功能可以解决问题。
+* 如果有意对防火墙所做的更改导致 RDP 连接失败，使用“自定义脚本扩展”功能可以解决问题。
 
-*   与设置特定于 RDP 的防火墙规则相比，禁用所有防火墙配置文件是更安全可靠的故障排除方法。
+* 与设置特定于 RDP 的防火墙规则相比，禁用所有防火墙配置文件是更安全可靠的故障排除方法。
 
 ## <a name="solution"></a>解决方案
 
@@ -69,7 +69,7 @@ ms.locfileid: "74116905"
         netsh advfirewall firewall set rule dir=in name="Remote Desktop - User Mode (TCP-In)" new enable=yes
         ```
 
-    *   禁用规则：
+    * 禁用规则：
         ```cmd
         psexec \\<DIP> -u <username> cmd
         netsh advfirewall firewall set rule dir=in name="Remote Desktop - User Mode (TCP-In)" new enable=no
@@ -152,4 +152,4 @@ ms.locfileid: "74116905"
 
 11. 检查是否解决了问题。
 
-<!-- Update_Description: wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

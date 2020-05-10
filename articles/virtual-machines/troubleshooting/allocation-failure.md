@@ -11,26 +11,26 @@ ms.assetid: 1ef41144-6dd6-4a56-b180-9d8b3d05eae7
 ms.service: virtual-machines
 ms.topic: troubleshooting
 origin.date: 04/13/2018
-ms.date: 04/01/2019
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: dafb175db218b5bbe35b35713e1c9477bb052fb8
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 02a3200e6872c201c60e41a7b67925dfea6a4025
+ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "67277524"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82596290"
 ---
 # <a name="troubleshoot-allocation-failures-when-you-create-restart-or-resize-vms-in-azure"></a>在 Azure 中创建、重启 VM 或重设其大小时排查分配失败
 
 创建虚拟机 (VM)、重启已停止（已解除分配）的 VM 或重设 VM 大小时，Azure 会为订阅分配计算资源。 我们会不断投入其他基础结构和功能，确保始终提供可用于支持客户需求的所有 VM 类型。 但是，偶尔可能因特定区域中前所未有的 Azure 服务需求增长而遇到资源分配失败的情况。 当尝试在区域中创建或启动 VM，同时 VM 显示以下错误代码和消息时，会出现此问题：
 
-错误代码：AllocationFailed 或 ZonalAllocationFailed 
+**错误代码**：AllocationFailed 或 ZonalAllocationFailed
 
-错误消息：“分配失败  。 对于此区域中请求的 VM 大小，我们的容量不够。 在 https:\//aka.ms/allocation-guidance 阅读有关提高分配成功可能性的详细信息”
+**错误消息**：“分配失败。 对于此区域中请求的 VM 大小，我们的容量不够。 在 https:\//aka.ms/allocation-guidance 阅读有关提高分配成功可能性的详细信息”
 
 本文说明一些常见分配故障的原因，并建议可能的补救方法。
 
-如果本文未解决你的 Azure 问题，请访问 [Azure 支持](https://support.azure.cn/zh-cn/support/contact)。 此外，还可以在 [Azure 支持](https://support.windowsazure.cn/support/support-azure)站点上发出 Azure 支持请求。
+如果本文未解决你的 Azure 问题，请访问 [Azure 支持](https://support.azure.cn/support/contact/)。 此外，还可以在 [Azure 支持站点](https://support.azure.cn/support/support-azure/)上提交 Azure 支持请求。
 
 <!--Not Available on You can post your issue on these forums or to @AzureSupport on Twitter.-->
 
@@ -48,12 +48,12 @@ ms.locfileid: "67277524"
 
 如果 VM 可以属于不同的可用性集，请在不同的可用性集（位于相同区域）中创建 VM。 然后，可以将这个新的 VM 添加到相同的虚拟网络中。
 
-停止（解除分配）同一可用性集中的所有 VM，并重新启动每个 VM。
-要停止：单击“资源组”> [资源组] >“资源”> [可用性集] >“虚拟机”> [虚拟机] >“停止”。
+停止（解除分配）同一可用性集中的所有 VM，然后重启每个 VM。
+若要停止：单击“资源组”> [资源组] >“资源”> [可用性集] >“虚拟机”> [虚拟机] >“停止”。
 所有 VM 都停止后，选中第一个 VM 并单击“启动”。
 此步骤可确保运行新的分配尝试，而且可以选择有足够容量的新群集。
 
-## <a name="restart-partially-stopped-deallocated-vms"></a>重新启动部分停止（已解除分配）的 VM
+## <a name="restart-partially-stopped-deallocated-vms"></a>重启部分停止（已解除分配）的 VM
 
 ### <a name="cause"></a>原因
 
@@ -61,12 +61,12 @@ ms.locfileid: "67277524"
 
 ### <a name="workaround"></a>解决方法
 
-停止（解除分配）同一可用性集中的所有 VM，并重新启动每个 VM。
-要停止：单击“资源组”> [资源组] >“资源”> [可用性集] >“虚拟机”> [虚拟机] >“停止”。
+停止（解除分配）同一可用性集中的所有 VM，然后重启每个 VM。
+若要停止：单击“资源组”> [资源组] >“资源”> [可用性集] >“虚拟机”> [虚拟机] >“停止”。
 所有 VM 都停止后，选中第一个 VM 并单击“启动”。
 这可确保运行新的分配尝试，而且可以选择有足够容量的新群集。
 
-## <a name="restart-fully-stopped-deallocated-vms"></a>重新启动完全停止（已解除分配）的 VM
+## <a name="restart-fully-stopped-deallocated-vms"></a>重启完全停止（已解除分配）的 VM
 
 ### <a name="cause"></a>原因
 
@@ -75,23 +75,24 @@ ms.locfileid: "67277524"
 ### <a name="workaround"></a>解决方法
 
 如果使用 Dv1、DSv1、Av1、D15v2 或 DS15v2 之类的较旧 VM 系列或大小，请考虑移到较新版本。 对特定的 VM 大小参阅以下建议。
-如果没有使用其他 VM 大小的选项，请尝试部署到同一地域中的其他区域。 有关每个区域中可用的 VM 大小的详细信息，请访问 https://www.azure.cn/zh-cn/home/features/products-by-region
+如果没有使用其他 VM 大小的选项，请尝试部署到同一地域中的其他区域。 有关每个区域中可用的 VM 大小的详细信息，请访问 https://status.azure.com/status
 
 <!-- Not Available on https://aka.ms/azure-regions -->
 <!-- Not Available on availability zones -->
 
 如果分配请求较大（超过 500 个内核），请参阅下节中的指南，将请求分解为较小的部署。
 
+尝试[重新部署 VM](/virtual-machines/troubleshooting/redeploy-to-new-node-windows)。 重新部署 VM 会将 VM 分配到该区域中的新群集。
+
 ## <a name="allocation-failures-for-older-vm-sizes-av1-dv1-dsv1-d15v2-ds15v2-etc"></a>针对较旧 VM 大小（Av1、Dv1、DSv1、D15v2、DS15v2 等）的分配失败
 
-在扩展 Azure 基础结构的同时，我们会部署旨在支持最新虚拟机类型的更新一代硬件。 某些较旧 VM 系列不在我们最新的基础结构上运行。 为此，客户偶尔可能遇到这些旧版 SKU 的分配失败。 若要避免此问题，鼓励使用旧版虚拟机系列的客户考虑根据以下建议移动到等效的新版 VM：这些 VM 针对最新硬件进行了优化，让你感受更高的性价比。 
-
+在扩展 Azure 基础结构的同时，我们会部署旨在支持最新虚拟机类型的更新一代硬件。 某些较旧 VM 系列不在我们最新的基础结构上运行。 为此，客户偶尔可能遇到这些旧版 SKU 的分配失败。 为避免此问题，建议使用旧版虚拟机系列的客户考虑按以下建议迁移至等效的新版 VM：这些 VM 已针对最新的硬件进行优化，具有更高的性价比。 
 
 |旧版 VM 系列/大小|建议使用新版 VM 系列/大小|详细信息|
 |----------------------|----------------------------|--------------------|
-|Av1 系列|[Av2 系列](../windows/sizes-general.md#av2-series)|https://azure.microsoft.com/blog/new-av2-series-vm-sizes/
-|Dv1 或 DSv1 系列（D1 到 D5）|[Dv3 或 DSv3 系列](../windows/sizes-general.md#dsv3-series-1)|https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/
-|Dv1 或 DSv1 系列（D11 到 D14）|[Ev3 或 ESv3 系列](../windows/sizes-memory.md#ev3-series)|
+|Av1 系列|[Av2 系列](../av2-series.md)|https://azure.microsoft.com/blog/new-av2-series-vm-sizes/
+|Dv1 或 DSv1 系列（D1 到 D5）|[Dv3 或 DSv3 系列](../dv3-dsv3-series.md)|https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/
+|Dv1 或 DSv1 系列（D11 到 D14）|[Ev3 或 ESv3 系列](../ev3-esv3-series.md)|
 |D15v2 或 DS15v2|如果你使用资源管理器部署模型以便充分利用更大的 VM 大小，请考虑移动到 D16v3/DS16v3 或 D32v3/DS32v3。 这些为在最新硬件上运行而设计。 如果使用资源管理器部署模型以确保你的 VM 实例独立于单个客户专用的硬件，请考虑移动到新的独立 VM 大小 E64i_v3 或 E64is_v3，它们为在最新硬件上运行而设计。 |https://azure.microsoft.com/blog/new-isolated-vm-sizes-now-available/
 
 ## <a name="allocation-failures-for-large-deployments-more-than-500-cores"></a>大型部署（超过 500 个内核）的分配失败
@@ -108,4 +109,4 @@ Azure 数据中心的服务器分区成群集。 通常会尝试向多个群集�
 
 ![固定分配故障](./media/virtual-machines-common-allocation-failure/Allocation2.png)
 
-<!-- Update_Description: wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

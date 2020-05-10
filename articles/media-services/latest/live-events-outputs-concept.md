@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-origin.date: 03/18/2020
-ms.date: 04/06/2020
+origin.date: 04/08/2020
+ms.date: 05/11/2020
 ms.author: v-jay
-ms.openlocfilehash: 78a3a765004c3b16723d1e5601cbdb35632976ec
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 6537244b2ade7ff5535d8931cb84dee0f3ea7ac8
+ms.sourcegitcommit: 95efd248f5ee3701f671dbd5cfe0aec9c9959a24
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80625666"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82507703"
 ---
 # <a name="live-events-and-live-outputs-in-media-services"></a>媒体服务中的实时事件和实时输出
 
@@ -110,9 +110,12 @@ ms.locfileid: "80625666"
 
 * 虚 URL
 
-    对于使用硬件广播编码器且不希望在启动实时事件时重新配置其编码器的大型媒体广播者来说，虚模式是首选。 他们需要不随时间而改变的预测性引入 URL。
+    对于使用硬件广播编码器且不希望在启动实时事件时重新配置其编码器的大型媒体广播者来说，虚模式是首选。 这些广播公司需要一个不随时间变化的预测性引入 URL。
+    
+    > [!NOTE]
+    > 在 Azure 门户中，虚 URL 名为“持久性输入 URL”  。
 
-    若要指定此模式，请在创建时将 `vanityUrl` 设置为 `true`（默认值为 `false`）。 还需要在创建时传递自己的访问令牌 (`LiveEventInput.accessToken`)。 指定令牌值可避免 URL 中出现随机令牌。 访问令牌必须是有效的 GUID 字符串（带或不带连字符）。 一旦设置模式，就无法将其更新。
+    若要在 API 中指定此模式，请在创建时将 `vanityUrl` 设为 `true`（默认值为 `false`）。 还需要在创建时传递自己的访问令牌 (`LiveEventInput.accessToken`)。 指定令牌值可避免 URL 中出现随机令牌。 访问令牌必须是有效的 GUID 字符串（带或不带连字符）。 一旦设置模式，就无法将其更新。
 
     访问令牌在数据中心内必须是唯一的。 如果应用需要使用虚 URL，我们建议始终为访问令牌创建新的 GUID 实例（而不要重复使用任何现有的 GUID）。
 
@@ -121,7 +124,7 @@ ms.locfileid: "80625666"
     |语言|启用虚 URL|设置访问令牌|
     |---|---|---|
     |REST|[properties.vanityUrl](https://docs.microsoft.com/rest/api/media/liveevents/create#liveevent)|[LiveEventInput.accessToken](https://docs.microsoft.com/rest/api/media/liveevents/create#liveeventinput)|
-    |CLI|[--vanity-url](/cli/ams/live-event?view=azure-cli-latest#az-ams-live-event-create)|[--access-token](/cli/ams/live-event?view=azure-cli-latest#optional-parameters)|
+    |CLI|[--vanity-url](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest#az-ams-live-event-create)|[--access-token](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest#optional-parameters)|
     |.NET|[LiveEvent.VanityUrl](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveevent.vanityurl?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_LiveEvent_VanityUrl)|[LiveEventInput.AccessToken](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveeventinput.accesstoken?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_LiveEventInput_AccessToken)|
     
 ### <a name="live-ingest-url-naming-rules"></a>实时引入 URL 命名规则

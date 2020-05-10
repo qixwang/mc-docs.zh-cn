@@ -8,13 +8,13 @@ services: iot-hub
 ms.topic: conceptual
 origin.date: 10/29/2018
 ms.author: v-yiso
-ms.date: 07/15/2019
-ms.openlocfilehash: 8662b4f98336e34e89a3257498f19dfe0bf037b7
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/11/2019
+ms.openlocfilehash: 3b576fc939bd42ae7b0e0da3d8d09e14673988aa
+ms.sourcegitcommit: 95efd248f5ee3701f671dbd5cfe0aec9c9959a24
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79293434"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82507743"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>用于设备和模块孪生、作业和消息路由的 IoT 中心查询语言
 
@@ -357,7 +357,7 @@ SELECT 子句的语法如下：
         | max(<projection_element>)
 ```
 
-**Attribute_name** 引用 FROM 集合中 JSON 文档的任一属性。 在[设备孪生查询入门](iot-hub-devguide-query-language.md#device-twin-queries)部分可以找到 SELECT 子句的一些示例。
+**Attribute_name** 引用 FROM 集合中 JSON 文档的任一属性。 在“设备孪生查询入门”部分可以找到 SELECT 子句的一些示例。
 
 目前，仅支持在针对设备孪生执行的聚合查询中使用除 **SELECT*** 以外的选择子句。
 
@@ -474,7 +474,7 @@ GROUP BY 的正式语法为：
 | AS_NUMBER | 将输入字符串转换为数字。 如果输入数字，则为 `noop`；如果字符串不表示数字，则为 `Undefined`。|
 | IS_ARRAY | 返回一个布尔值，指示指定表达式类型是否为数组。 |
 | IS_BOOL | 返回一个布尔值，指示指定表达式的类型是否为布尔表达式。 |
-| IS_DEFINED | 返回一个布尔，它指示属性是否已经分配了值。 |
+| IS_DEFINED | 返回一个布尔，它指示属性是否已经分配了值。 仅当该值为基元类型时才支持此功能。 基元类型包括字符串、布尔值、数字或 `null`。 不支持日期/时间、对象类型和数组。 |
 | IS_NULL | 返回一个布尔值，指示指定表达式的类型是否为 null。 |
 | IS_NUMBER | 返回一个布尔值，指示指定表达式的类型是否为数字。 |
 | IS_OBJECT | 返回一个布尔值，指示指定表达式的类型是否为 JSON 对象。 |

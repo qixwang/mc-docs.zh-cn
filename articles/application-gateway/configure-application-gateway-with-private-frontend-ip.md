@@ -6,20 +6,20 @@ services: application-gateway
 author: abshamsft
 ms.service: application-gateway
 ms.topic: article
-ms.date: 02/10/2020
+ms.date: 04/26/2020
 ms.author: v-junlch
-ms.openlocfilehash: 40e3c44b641fe5952a61e7a2899509faff6de256
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: b16da26ad456707d439606df76e83d15aebdfc00
+ms.sourcegitcommit: e3512c5c2bbe61704d5c8cbba74efd56bfe91927
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77155549"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82267657"
 ---
 # <a name="configure-an-application-gateway-with-an-internal-load-balancer-ilb-endpoint"></a>使用内部负载均衡器 (ILB) 终结点配置应用程序网关
 
 可以在 Azure 应用程序网关上配置面向 Internet 的 VIP 或不向 Internet 公开的内部终结点。 内部终结点使用前端（也称为内部负载均衡器 (ILB) 终结点）的专用 IP 地址。 
 
-对于不向 Internet 公开的内部业务线应用程序，使用前端专用 IP 地址配置网关的做法非常有效。 对于位于不向 Internet 公开的安全边界内的多层应用程序中的服务和层也很有用，但仍需要执行循环负载分散、会话粘性或安全套接字层 (SSL) 终止。
+对于不向 Internet 公开的内部业务线应用程序，使用前端专用 IP 地址配置网关的做法非常有效。 它还适用于多层应用程序中的某些服务和层，这些服务和层位于不向 Internet 公开的安全边界内，但仍需要循环负载分配、会话粘性或传输层安全性 (TLS)（以前称为“安全套接字层 (SSL)”）终止。
 
 本文引导你完成在 Azure 门户中使用前端专用 IP 地址配置应用程序网关的步骤。
 
@@ -95,8 +95,8 @@ Azure 需要一个虚拟网络才能在创建的资源之间通信。 可以创�
    - 对于“资源组”，请选择“myResourceGroupAG”。  
    - *myVM* - 作为**虚拟机名称**。
    - 对于“映像”，请选择“Windows Server 2019 Datacenter”。  
-   - *azureadmin* - 作为**用户名**。
-   - *Azure123456!* - 作为**密码**。
+   - 有效的用户名  。
+   - 有效的密码  。
 5. 接受剩余的默认值，然后选择“下一步:**磁盘”** 。
 6. 接受默认值，然后选择“下一步:  网络”。
 7. 请确保选择 **myVNet** 作为虚拟网络，子网是 **myBackendSubnet**。
@@ -132,7 +132,7 @@ Azure 需要一个虚拟网络才能在创建的资源之间通信。 可以创�
    
      -TypeHandlerVersion 1.4 `
    
-     -SettingString '{"commandToExecute":"powershell Add-WindowsFeature Web-Server; powershell Add-Content -Path \"C:\\inetpub\\wwwroot\\Default.htm\" -Value $($env:computername)"}' -Location ChinaNorth  
+     -SettingString '{"commandToExecute":"powershell Add-WindowsFeature Web-Server; powershell Add-Content -Path \"C:\\inetpub\\wwwroot\\Default.htm\" -Value $($env:computername)"}' -Location ChinaNorth2  
    ```
 
 
@@ -158,4 +158,3 @@ Azure 需要一个虚拟网络才能在创建的资源之间通信。 可以创�
 
 若要监视后端的运行状况，请参阅[应用程序网关的后端运行状况和诊断日志](application-gateway-diagnostics.md)。
 
-<!-- Update_Description: wording update -->

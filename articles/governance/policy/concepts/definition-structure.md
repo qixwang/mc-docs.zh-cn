@@ -2,15 +2,15 @@
 title: 策略定义结构的详细信息
 description: 描述如何使用策略定义为组织中的 Azure 资源建立约定。
 ms.author: v-tawe
-origin.date: 02/26/2020
-ms.date: 03/30/2020
+origin.date: 04/03/2020
+ms.date: 04/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 38f5278597ef7b48804819096b96a25379168d35
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: a59a272c46796441acfc96f92bfc92baa36ae23c
+ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80586788"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82588772"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy 定义结构
 
@@ -86,7 +86,7 @@ Azure Policy 为资源建立约定。 策略定义描述资源符合性[条件](
 
 <!-- ### <a name="resource-provider-modes" />Resource Provider modes (preview) -->
 
-## <a name="parameters"></a>parameters
+## <a name="parameters"></a>参数
 
 参数可减少策略定义的数量，有助于简化策略管理。 使用类似窗体中字段的参数 - `name`、`address`、`city`、`state`。 这些参数始终不变，但其值会基于窗体中的各填写内容变化。
 构建策略时，参数同样适用。 如果在策略定义中包括参数，就可以通过使用不同的值重新使用策略以执行不同方案。
@@ -244,11 +244,13 @@ Azure Policy 为资源建立约定。 策略定义描述资源符合性[条件](
 - `"notIn": ["stringValue1","stringValue2"]`
 - `"containsKey": "keyName"`
 - `"notContainsKey": "keyName"`
-- `"less": "value"`
-- `"lessOrEquals": "value"`
-- `"greater": "value"`
-- `"greaterOrEquals": "value"`
+- `"less": "dateValue"` | `"less": "stringValue"` | `"less": intValue`
+- `"lessOrEquals": "dateValue"` | `"lessOrEquals": "stringValue"` | `"lessOrEquals": intValue`
+- `"greater": "dateValue"` | `"greater": "stringValue"` | `"greater": intValue`
+- `"greaterOrEquals": "dateValue"` | `"greaterOrEquals": "stringValue"` | `"greaterOrEquals": intValue`
 - `"exists": "bool"`
+
+对于“less”  、“lessOrEquals”  、“greater”  和“greaterOrEquals”  ，如果属性类型与条件类型不匹配，则会引发错误。 使用 `InvariantCultureIgnoreCase` 进行字符串比较。
 
 使用 like  和 notLike  条件时，请在值中指定通配符 `*`。
 值不应包含多个通配符 `*`。
@@ -353,7 +355,7 @@ Azure Policy 为资源建立约定。 策略定义描述资源符合性[条件](
     "policyRule": {
         "if": {
             "value": "[less(length(field('tags')), 3)]",
-            "equals": true
+            "equals": "true"
         },
         "then": {
             "effect": "deny"
@@ -573,6 +575,9 @@ Azure Policy 支持以下类型的效果：
 - resourceId()
 - variables()
 
+> [!NOTE]
+> 在“deployIfNotExists”  策略定义的模板部署的 `details.deployment.properties.template` 部分中，这些函数仍可用。
+
 以下函数可在策略规则中使用，但与在 Azure 资源管理器模板中使用不同：
 
 - `utcNow()` - 与资源管理器模板不同，它可以在 defaultValue 之外使用。
@@ -588,10 +593,9 @@ Azure Policy 支持以下类型的效果：
   - 从 If 条件正在评估的资源返回该字段的值
   - `field` 主要用于 **AuditIfNotExists** 和 **DeployIfNotExists**，以引用所评估资源上的字段。 可以在 [DeployIfNotExists 示例](effects.md#deployifnotexists-example)中看到这种用法的示例。
 - `requestContext().apiVersion`
-  - 返回触发了策略评估的请求的 API 版本（示例：`2019-09-01`）。 这将是 PUT/PATCH 请求中用于对资源创建/更新进行评估的 API 版本。 在对现有资源进行符合性评估时，将始终使用最新的 API 版本。
+  - 返回触发了策略评估的请求的 API 版本（示例：`2019-09-01`）。
+    这将是 PUT/PATCH 请求中用于对资源创建/更新进行评估的 API 版本。 在对现有资源进行符合性评估时，将始终使用最新的 API 版本。
   
-
-
 #### <a name="policy-function-example"></a>策略函数示例
 
 此策略规则示例使用 `resourceGroup` 资源函数获取 **name** 属性，并将该属性与 `concat` 数组和对象函数结合使用以构建 `like` 条件，该条件强制资源名称以资源组名称开头。
@@ -704,8 +708,6 @@ Azure Policy 支持以下类型的效果：
     }
 }
 ```
-
-
 
 有关详细信息，请参阅[评估 [\*] 别名](../how-to/author-policies-for-arrays.md#evaluating-the--alias)。
 

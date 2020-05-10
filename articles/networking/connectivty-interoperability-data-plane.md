@@ -1,5 +1,5 @@
 ---
-title: Azure 后端连接功能中的互操作性：数据平面分析 | Azure
+title: Azure 中的互操作性：数据平面分析
 description: 本文提供测试设置的数据平面分析，可用于分析 Azure 中 ExpressRoute、站点到站点 VPN 和虚拟网络对等互连之间互操作性。
 documentationcenter: na
 services: networking
@@ -9,16 +9,16 @@ ms.service: virtual-network
 ms.topic: article
 ms.workload: infrastructure-services
 origin.date: 10/18/2018
-ms.date: 03/16/2020
+ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: 68f3527e8005c11922435780d452c653de3df1d1
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: ce8c1391b0c71772d13935e7aef0627b48a2dc9b
+ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80243747"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82588415"
 ---
-# <a name="interoperability-in-azure-back-end-connectivity-features-data-plane-analysis"></a>Azure 后端连接功能中的互操作性：数据平面分析
+# <a name="interoperability-in-azure--data-plane-analysis"></a>Azure 中的互操作性：数据平面分析
 
 本文介绍了[测试设置][Setup]的数据平面分析。 你也可以查看测试设置的[测试设置配置][Configuration]和[控制平面分析][Control-Analysis]。
 
@@ -165,7 +165,7 @@ ms.locfileid: "80243747"
 
     Trace complete.
 
-在此跟踪路由中，第一跃点是 MSEE 的 中心 VNet ExpressRoute 网关隧道终结点。 第二个和第三个跃点为 CE 路由器和本地位置 1 LAN IP。 这些 IP 地址不会在中心/辐射 VNet 中播发。 第四个跃点是本地位置 1 中的 VM。
+在此跟踪路由中，第一跃点是 MSEE 的中心 VNet ExpressRoute 网关隧道终结点。 第二个和第三个跃点为 CE 路由器和本地位置 1 LAN IP。 这些 IP 地址不会在中心/辐射 VNet 中播发。 第四个跃点是本地位置 1 中的 VM。
 
 ### <a name="path-to-on-premises-location-2"></a>本地位置 2 的路径
 
@@ -183,7 +183,7 @@ ms.locfileid: "80243747"
 
     Trace complete.
 
-在此跟踪路由中，第一跃点是 MSEE 的 中心 VNet ExpressRoute 网关隧道终结点。 第二个和第三个跃点为 CE 路由器和本地位置 2 LAN IP。 这些 IP 地址不会在中心/辐射 VNet 中播发。 第四个跃点是在本地位置 2 中的 VM。
+在此跟踪路由中，第一跃点是 MSEE 的中心 VNet ExpressRoute 网关隧道终结点。 第二个和第三个跃点为 CE 路由器和本地位置 2 LAN IP。 这些 IP 地址不会在中心/辐射 VNet 中播发。 第四个跃点是在本地位置 2 中的 VM。
 
 ### <a name="path-to-the-remote-vnet"></a>远程 VNet 的路径
 
@@ -199,7 +199,7 @@ ms.locfileid: "80243747"
 
     Trace complete.
 
-在此跟踪路由中，第一跃点是 MSEE 的 中心 VNet ExpressRoute 网关隧道终结点。 第二个跃点是远程 VNet 的网关 IP。 第二个跃点的 IP 范围不会在中心/辐射 VNet 中播发。 第三个跃点是远程 VNet 中的 VM。
+在此跟踪路由中，第一跃点是 MSEE 的中心 VNet ExpressRoute 网关隧道终结点。 第二个跃点是远程 VNet 的网关 IP。 第二个跃点的 IP 范围不会在中心/辐射 VNet 中播发。 第三个跃点是远程 VNet 中的 VM。
 
 ## <a name="data-path-from-the-branch-vnet"></a>分支 VNet 中的数据路径
 

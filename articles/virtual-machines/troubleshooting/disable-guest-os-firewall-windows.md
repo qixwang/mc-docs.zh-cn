@@ -1,6 +1,6 @@
 ---
 title: 在 Azure VM 中禁用来宾 OS 防火墙 | Azure
-description: ''
+description: 了解用于对以下情况进行故障排除时的解决方法，即来宾操作系统防火墙正在筛选发往 VM 的部分或全部流量。
 services: virtual-machines-windows
 documentationcenter: ''
 author: rockboyfor
@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 origin.date: 11/22/2018
-ms.date: 02/10/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: 97963c76169c8661f315a22d0f4851ccf62e7501
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 369a7b2286a936e11e6f55dafb1e5993e142c00a
+ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77428776"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82596365"
 ---
 <!-- Verify part successfully-->
 # <a name="disable-the-guest-os-firewall-in-azure-vm"></a>在 Azure VM 中禁用来宾 OS 防火墙
@@ -86,7 +86,7 @@ ms.locfileid: "77428776"
     <TARGET MACHINE>\SYSTEM\CurrentControlSet\services\SharedAccess\Parameters\FirewallPolicy\StandardProfile\EnableFirewall         -->        0
     ```
 
-3. 重启服务。 由于无法使用远程注册表执行此操作，因此必须使用“删除服务控制台”。
+3. 重启服务。 由于无法使用远程注册表执行此操作，因此必须使用“远程服务控制台”。
 
 4. 打开 **Services.msc** 的实例。
 
@@ -150,4 +150,4 @@ ms.locfileid: "77428776"
 
 11. 检查是否解决了问题。
 
-<!-- Update_Description: wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

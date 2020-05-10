@@ -1,5 +1,5 @@
 ---
-title: Azure 虚拟机重启时停滞在“正在重启”、“正在关闭”或“正在停止服务”状态 | Azure
+title: Azure 虚拟机关闭时停滞在“正在重启”、“正在关闭”或“正在停止服务”状态
 description: 本文帮助你排查 Azure Windows 虚拟机中的服务错误。
 services: virtual-machines-windows
 documentationCenter: ''
@@ -11,18 +11,18 @@ ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 origin.date: 12/19/2019
-ms.date: 02/10/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: 0e369d806083cf0e1da8748de7dfb6a486a9f2eb
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 4b71bc153315dfbd5b0c2f32b9b5c0797aa56aa8
+ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77429953"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82596292"
 ---
-# <a name="azure-windows-vm-restart-is-stuck-on-restarting-shutting-down-or-stopping-services"></a>Azure Windows VM 重启时停滞在“正在重启”、“正在关闭”或“正在停止服务”的状态
+# <a name="azure-windows-vm-shutdown-is-stuck-on-restarting-shutting-down-or-stopping-services"></a>Azure Windows VM 关闭时停滞在“正在重启”、“正在关闭”或“正在停止服务”状态
 
-本文提供的步骤可以解决在重新启动 Azure 中的 Windows 虚拟机 (VM) 时，可能遇到的“正在重启”、“正在关闭”或“正在停止服务”消息的问题。
+本文提供的步骤可解决在重新启动 Azure 中的 Windows 虚拟机 (VM) 时，可能遇到的“正在重启”、“正在关闭”或“正在停止服务”消息的问题。
 
 ## <a name="symptoms"></a>症状
 
@@ -37,7 +37,8 @@ Windows 使用关闭进程来执行系统维护操作，并处理更新、角色
 ## <a name="solution"></a>解决方案
 
 <!--Not Avaialable on ### Collect a Process memory dump-->
-
+<!--We can not access the VM and run the following command to check the process-->
+<!--While the Serial Console can be access on Azure global site-->
 ### <a name="collect-an-os-memory-dump"></a>收集 OS 内存转储
 
 <!--Not Available on If the issue does not resolve after waiting for the changes to process-->
@@ -70,42 +71,42 @@ Windows 使用关闭进程来执行系统维护操作，并处理更新、角色
 
 2. 运行以下脚本：
 
-   在此脚本中，假定分配给附加 OS 磁盘的驱动器号为 F。将其替换为 VM 中的相应值。
+    在此脚本中，假定分配给附加 OS 磁盘的驱动器号为 F。将其替换为 VM 中的相应值。
 
-   ```
-   reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv
+    ```
+    reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv
 
-   REM Enable Serial Console
-   bcdedit /store F:\boot\bcd /set {bootmgr} displaybootmenu yes
-   bcdedit /store F:\boot\bcd /set {bootmgr} timeout 5
-   bcdedit /store F:\boot\bcd /set {bootmgr} bootems yes
-   bcdedit /store F:\boot\bcd /ems {<BOOT LOADER IDENTIFIER>} ON
-   bcdedit /store F:\boot\bcd /emssettings EMSPORT:1 EMSBAUDRATE:115200
+    REM Enable Serial Console
+    bcdedit /store F:\boot\bcd /set {bootmgr} displaybootmenu yes
+    bcdedit /store F:\boot\bcd /set {bootmgr} timeout 5
+    bcdedit /store F:\boot\bcd /set {bootmgr} bootems yes
+    bcdedit /store F:\boot\bcd /ems {<BOOT LOADER IDENTIFIER>} ON
+    bcdedit /store F:\boot\bcd /emssettings EMSPORT:1 EMSBAUDRATE:115200
 
-   REM Suggested configuration to enable OS Dump
-   REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v CrashDumpEnabled /t REG_DWORD /d 1 /f
-   REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v DumpFile /t REG_EXPAND_SZ /d "%SystemRoot%\MEMORY.DMP" /f
-   REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f
+    REM Suggested configuration to enable OS Dump
+    REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v CrashDumpEnabled /t REG_DWORD /d 1 /f
+    REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v DumpFile /t REG_EXPAND_SZ /d "%SystemRoot%\MEMORY.DMP" /f
+    REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f
 
-   REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v CrashDumpEnabled /t REG_DWORD /d 1 /f
-   REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v DumpFile /t REG_EXPAND_SZ /d "%SystemRoot%\MEMORY.DMP" /f
-   REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v NMICrashDump / t REG_DWORD /d 1 /f
+    REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v CrashDumpEnabled /t REG_DWORD /d 1 /f
+    REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v DumpFile /t REG_EXPAND_SZ /d "%SystemRoot%\MEMORY.DMP" /f
+    REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v NMICrashDump / t REG_DWORD /d 1 /f
 
-   reg unload HKLM\BROKENSYSTEM
-   ```
+    reg unload HKLM\BROKENSYSTEM
+    ```
 
 3. 确认磁盘上有足够的空间来分配与 RAM 一样多的内存，具体取决于为此 VM 选择的大小。
 
 4. 如果没有足够的空间或者 VM 较大（G、GS 或 E 系列），则可随后更改创建此文件时所在的位置，将该位置指向任何其他附加到 VM 的数据磁盘。 若要更改位置，必须更改以下注册表项：
 
-   ```
-   reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv
+    ```
+    reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv
 
-   REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v DumpFile /t REG_EXPAND_SZ /d "<DRIVE LETTER OF YOUR DATA DISK>:\MEMORY.DMP" /f
-   REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v DumpFile /t REG_EXPAND_SZ /d "<DRIVE LETTER OF YOUR DATA DISK>:\MEMORY.DMP" /f
+    REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v DumpFile /t REG_EXPAND_SZ /d "<DRIVE LETTER OF YOUR DATA DISK>:\MEMORY.DMP" /f
+    REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v DumpFile /t REG_EXPAND_SZ /d "<DRIVE LETTER OF YOUR DATA DISK>:\MEMORY.DMP" /f
 
-   reg unload HKLM\BROKENSYSTEM
-   ```
+    reg unload HKLM\BROKENSYSTEM
+    ```
 
 5. [分离 OS 磁盘，然后将 OS 磁盘重新附加到受影响的 VM](/virtual-machines/windows/troubleshoot-recovery-disks-portal)。
 
@@ -113,7 +114,7 @@ Windows 使用关闭进程来执行系统维护操作，并处理更新、角色
 
 7. 选择“发送不可屏蔽中断(NMI)”以触发内存转储。
 
-   ![发送不可屏蔽的中断](./media/boot-error-troubleshooting-windows/send-nonmaskable-interrupt.png)
+    ![发送不可屏蔽的中断](./media/boot-error-troubleshooting-windows/send-nonmaskable-interrupt.png)
 
 8. 再次将 OS 磁盘附加到恢复 VM，收集转储文件。
 
@@ -121,5 +122,4 @@ Windows 使用关闭进程来执行系统维护操作，并处理更新、角色
 
 收集转储文件后，请联系 Azure 支持人员来确定根本原因。
 
-<!-- Update_Description: new article about boot error troubleshoot windows -->
-<!--NEW.date: 02/10/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

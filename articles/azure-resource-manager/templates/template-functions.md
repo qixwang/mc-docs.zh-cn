@@ -2,19 +2,19 @@
 title: 模板函数
 description: 介绍在 Azure Resource Manager 模板中检索值、处理字符串和数字以及检索部署信息时所用的函数。
 ms.topic: conceptual
-origin.date: 02/13/2020
-ms.date: 03/23/2020
+origin.date: 04/06/2020
+ms.date: 04/30/2020
 ms.author: v-yeche
-ms.openlocfilehash: b0c974265ab8f3a779b64351106152c62ac0718c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 17e6b5378e9dce4e0d90c6c850454bcd416f5f40
+ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79543730"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82596072"
 ---
-# <a name="azure-resource-manager-template-functions"></a>Azure Resource Manager 模板函数
+# <a name="arm-template-functions"></a>ARM 模板函数
 
-本文介绍可以在 Azure 资源管理器模板中使用的所有函数。 若要了解如何在模板中使用函数，请参阅[模板语法](template-expressions.md)。
+本文介绍可以在 Azure 资源管理器 (ARM) 模板中使用的所有函数。 若要了解如何在模板中使用函数，请参阅[模板语法](template-expressions.md)。
 
 若要创建自己的函数，请参阅[用户定义函数](template-syntax.md#functions)。
 
@@ -80,12 +80,19 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
 <a name="parameters" aria-hidden="true" />
 <a name="variables" aria-hidden="true" />
 
+## <a name="date-functions"></a>日期函数
+
+资源管理器提供了以下用于处理日期的函数。
+
+* [dateTimeAdd](template-functions-date.md#datetimeadd)
+* [utcNow](template-functions-date.md#utcnow)
+
 ## <a name="deployment-value-functions"></a>部署值函数
 
 Resource Manager 提供以下函数，用于从与部署相关的模板和值部分获取值：
 
-* [部署](template-functions-deployment.md#deployment)
-* [环境](template-functions-deployment.md#environment)
+* [deployment](template-functions-deployment.md#deployment)
+* [environment](template-functions-deployment.md#environment)
 * [parameters](template-functions-deployment.md#parameters)
 * [variables](template-functions-deployment.md#variables)
 
@@ -226,13 +233,12 @@ Resource Manager 提供以下用于处理字符串的函数：
 * [uri](template-functions-string.md#uri)
 * [uriComponent](template-functions-string.md#uricomponent)
 * [uriComponentToString](template-functions-string.md#uricomponenttostring)
-* [utcNow](template-functions-string.md#utcnow)
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关 Azure Resource Manager 模板中各部分的说明，请参阅 [Authoring Azure Resource Manager templates](template-syntax.md)（创作 Azure Resource Manager 模板）
+* 有关 ARM 模板中各节的说明，请参阅[创作 ARM 模板](template-syntax.md)
 * 若要合并多个模板，请参阅 [Using linked templates with Azure Resource Manager](linked-templates.md)（将链接模板与 Azure 资源管理器配合使用）
 * 若要在创建资源类型时迭代指定的次数，请参阅[在 Azure 资源管理器中创建多个资源实例](copy-resources.md)。
-* 若要查看如何部署已创建的模板，请参阅[使用 Azure 资源管理器模板部署应用程序](deploy-powershell.md)
+* 若要了解如何部署已创建的模板，请参阅[使用 ARM 模板部署应用程序](deploy-powershell.md)
 
 <!-- Update_Description: update meta properties, wording update, update link -->

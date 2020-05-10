@@ -13,14 +13,14 @@ ms.service: cloud-services
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 03/04/2020
+ms.date: 04/26/2020
 ms.author: v-junlch
-ms.openlocfilehash: 89de0286624a1541bc1ce7b12040d2ad84ee7c2d
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: fe0199acc2d3cd99b6b85689b62f77657e16a98f
+ms.sourcegitcommit: e3512c5c2bbe61704d5c8cbba74efd56bfe91927
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78266097"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82267679"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure 云服务配置和管理问题：常见问题 (FAQ)
 
@@ -30,11 +30,11 @@ ms.locfileid: "78266097"
 
 **Certificates**
 
-- [为什么云服务 SSL 证书的证书链不完整？](#why-is-the-certificate-chain-of-my-cloud-service-ssl-certificate-incomplete)
+- [云服务 TLS/SSL 证书的证书链为何不完整？](#why-is-the-certificate-chain-of-my-cloud-service-tlsssl-certificate-incomplete)
 - [“用于扩展的 Azure 工具加密证书”有何用途？](#what-is-the-purpose-of-the-windows-azure-tools-encryption-certificate-for-extensions)
 - [如何在未“通过 RDP 连接”到实例的情况下生成证书签名请求 (CSR)？](#how-can-i-generate-a-certificate-signing-request-csr-without-rdp-ing-in-to-the-instance)
 - [我的云服务管理证书即将到期。如何续订？](#my-cloud-service-management-certificate-is-expiring-how-to-renew-it)
-- [如何自动安装主要 SSL 证书 (.pfx) 和中间证书 (.p7b)？](#how-to-automate-the-installation-of-main-ssl-certificatepfx-and-intermediate-certificatep7b)
+- [如何自动安装主要 TLS/SSL 证书 (.pfx) 和中间证书 (.p7b)？](#how-to-automate-the-installation-of-main-tlsssl-certificatepfx-and-intermediate-certificatep7b)
 - [“用于 MachineKey 的 Azure 服务管理”证书有何用途？](#what-is-the-purpose-of-the-microsoft-azure-service-management-for-machinekey-certificate)
 
 **监视和日志记录**
@@ -75,7 +75,7 @@ ms.locfileid: "78266097"
 
 ## <a name="certificates"></a>证书
 
-### <a name="why-is-the-certificate-chain-of-my-cloud-service-ssl-certificate-incomplete"></a>为什么云服务 SSL 证书的证书链不完整？
+### <a name="why-is-the-certificate-chain-of-my-cloud-service-tlsssl-certificate-incomplete"></a>云服务 TLS/SSL 证书的证书链为何不完整？
     
 我们建议客户安装完整的证书链（叶证书、中间证书和根证书），而不要只安装叶证书。 如果只是安装叶证书，则要依赖 Windows 通过遍历 CTL 来构建证书链。 当 Windows 尝试验证证书时，如果 Azure 或 Windows 更新中发生间歇性网络问题或 DNS 问题，可能会将该证书视为无效。 如果安装完整的证书链，则可避免此问题。 博客 [How to install a chained SSL certificate](https://blogs.msdn.microsoft.com/azuredevsupport/2010/02/24/how-to-install-a-chained-ssl-certificate/)（如何安装链接的 SSL 证书）中介绍了操作方法。
 
@@ -103,7 +103,7 @@ CSR 只是一个文本文件。 无需从最终使用此证书的计算机中创
 
 **AzurePublishSettingsFile** 将在 Azure 门户上的“订阅” > “管理证书”中创建新的管理证书。   新证书的名称类似于“[订阅名称]-[当前日期]-credentials”。
 
-### <a name="how-to-automate-the-installation-of-main-ssl-certificatepfx-and-intermediate-certificatep7b"></a>如何自动安装主要 SSL 证书 (.pfx) 和中间证书 (.p7b)？
+### <a name="how-to-automate-the-installation-of-main-tlsssl-certificatepfx-and-intermediate-certificatep7b"></a>如何自动安装主要 TLS/SSL 证书 (.pfx) 和中间证书 (.p7b)？
 
 可以使用启动脚本 (batch/cmd/PowerShell) 自动完成此任务，并将该启动脚本注册到服务定义文件中。 将启动脚本和证书（.p7b 文件）添加到启动脚本所在的同一目录中的项目文件夹。
 
@@ -239,8 +239,7 @@ Azure 订阅对可以使用的内核数存在限制。 如果已使用所有可�
 若要解决此问题，可以使用 Application Insights。 自动缩放支持将 Application Insights 作为指标源，可以基于“内存”等来宾指标缩放角色实例计数。  必须在云服务项目包文件 (*.cspkg) 中配置 Application Insights 并对该服务启用 Azure 诊断扩展，才能实现此功能。
 
 
-
-
+有关如何针对云服务将 Azure 诊断与 Application Insights 集成的详细信息，请参阅[将云服务、虚拟机或 Service Fabric 诊断数据发送到 Application Insights](../azure-monitor/platform/diagnostics-extension-to-application-insights.md)
 
 有关如何为云服务启用 Azure 诊断日志记录的详细信息，请参阅[为 Azure 云服务和虚拟机设置诊断](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#turn-on-diagnostics-in-cloud-service-projects-before-you-deploy-them)
 
@@ -291,7 +290,7 @@ Azure 不会将任何数据写入 %approot% 驱动器。 从 .cspkg 创建 VHD �
 - [创建 PowerShell 启动任务](cloud-services-startup-tasks-common.md#create-a-powershell-startup-task)
 - [Set-AzureServiceAntimalwareExtension](https://docs.microsoft.com/powershell/module/servicemanagement/azure/Set-AzureServiceAntimalwareExtension?view=azuresmps-4.0.0 )
 
-有关反恶意软件部署方案以及如何在门户中启用此类方案的详细信息，请参阅[反恶意软件部署方案](../security/azure-security-antimalware.md#antimalware-deployment-scenarios)。
+有关反恶意软件部署方案以及如何在门户中启用此类方案的详细信息，请参阅[反恶意软件部署方案](../security/fundamentals/antimalware.md#antimalware-deployment-scenarios)。
 
 ### <a name="how-to-enable-server-name-indication-sni-for-cloud-services"></a>如何为云服务启用服务器名称指示 (SNI)？
 
@@ -305,7 +304,7 @@ Azure 不会将任何数据写入 %approot% 驱动器。 从 .cspkg 创建 VHD �
     
 如[此文](https://technet.microsoft.com/library/ee790567.aspx)所述，$sslFlags 可为以下值之一：
 
-|Value|含义|
+|值|含义|
 ------|------
 |0|没有 SNI|
 |1|已启用 SNI|

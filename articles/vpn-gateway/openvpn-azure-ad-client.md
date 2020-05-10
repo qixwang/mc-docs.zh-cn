@@ -6,14 +6,14 @@ author: WenJason
 ms.service: vpn-gateway
 ms.topic: conceptual
 origin.date: 12/18/2019
-ms.date: 04/06/2020
+ms.date: 05/11/2020
 ms.author: v-jay
-ms.openlocfilehash: 652aaac07934c19d85f74d87d1eb6727aca84ac4
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 98e5c1f90392ce1033307e5c33853a7b72a7e48a
+ms.sourcegitcommit: 95efd248f5ee3701f671dbd5cfe0aec9c9959a24
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80634587"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82507726"
 ---
 # <a name="configure-a-vpn-client-for-p2s-openvpn-protocol-connections-azure-ad-authentication"></a>配置用于 P2S OpenVPN 协议连接的 VPN 客户端：Azure AD 身份验证
 
@@ -231,6 +231,16 @@ ms.locfileid: "80634587"
 </clientconfig>
 </azvpnprofile>
 ```
+
+### <a name="can-i-import-the-profile-from-a-command-line-prompt"></a>是否可以从命令行提示符导入配置文件？
+
+可以从命令行提示符导入配置文件，方法是将下载的 azurevpnconfig.xml  文件放在“%userprofile%\AppData\Local\Packages\Microsoft.AzureVpn_8wekyb3d8bbwe\LocalState”  文件夹中，并运行以下命令：
+
+```
+azurevpn -i azurevpnconfig.xml 
+```
+若要强制导入，还应使用“-f”  开关
+
 
 ## <a name="next-steps"></a>后续步骤
 

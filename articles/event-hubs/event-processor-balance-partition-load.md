@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 origin.date: 01/16/2020
-ms.date: 02/17/2020
+ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: d1ddd89c117c60c7dcfa9395a530121fd6b2219a
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: bdde8af8fdac5dc2f358e4ce099ca583fea66d1a
+ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77067794"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82588745"
 ---
 # <a name="balance-partition-load-across-multiple-instances-of-your-application"></a>跨应用程序的多个实例均衡分区负载
 若要缩放事件处理应用程序，可以运行应用程序的多个实例，并让这些实例自行进行负载均衡。 在旧版本中，[EventProcessorHost](event-hubs-event-processor-host.md) 允许在接收检查点事件时，在程序的多个实例与这些事件之间进行负载均衡。 在新版本（5.0 或以上）中，**EventProcessorClient**（.NET 和 Java）或 **EventHubConsumerClient**（Python 和 JavaScript）允许执行相同的操作。 使用事件使开发模型变得更简单。 通过注册事件处理程序来订阅你感兴趣的事件。
@@ -83,6 +83,13 @@ ms.locfileid: "77067794"
 如果事件处理器从分区断开连接，另一个实例可以在检查点位置继续处理该分区，该检查点是以前由该使用者组中该分区的最后一个处理器提交的。 当处理器建立连接时，它会将此偏移量传递给事件中心，以指定要从其开始读取数据的位置。 这样，你便可以使用检查点将事件标记为已由下游应用程序“完成”，并在事件处理器出现故障时提供复原能力。 若要返回到较旧的数据，可以在此检查点过程中指定较低的偏移量。 
 
 执行检查点将事件标记为已处理时，将会根据事件偏移量和序列号在检查点存储中添加或更新某个条目。 用户应确定检查点的更新频率。 每次成功处理事件之后进行更新可能会影响性能和成本，因为这会对底层检查点存储触发写入操作。 另外，为每个事件设置检查点意味着对排队消息传递模式使用服务总线队列可能比使用事件中心更好。 事件中心背后的理念是大规模实现“至少一次”传递。 将下游系统指定为幂等，即可方便地在发生故障或重启（导致多次收到相同的事件）后恢复。
+
+> [!NOTE]
+> 如果你在一个环境中使用 Azure Blob 存储作为检查点存储，该环境支持与 Azure 上通常可用的存储 Blob SDK 版本不同的版本，那么你需要使用代码将存储服务 API 版本更改为该环境支持的特定版本。 如需通过示例来了解如何以特定的存储 API 版本为目标，请参阅“GitHub 上的这些示例”： 
+> - [.NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/Sample10_RunningWithDifferentStorageVersion.cs) 
+> - [Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs-checkpointstore-blob/src/samples/java/com/azure/messaging/eventhubs/checkpointstore/blob/EventProcessorWithOlderStorageVersion.java)
+> - [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/receiveEventsWithDownleveledStorage.js) 或 [TypeScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/receiveEventsWithDownleveledStorage.ts)
+> - [Python](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob-aio/samples/event_processor_blob_storage_example_with_storage_api_version.py)
 
 ## <a name="thread-safety-and-processor-instances"></a>线程安全性和处理程序实例
 

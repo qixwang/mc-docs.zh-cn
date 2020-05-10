@@ -4,17 +4,17 @@ description: include 文件
 services: digital-twins
 ms.service: digital-twins
 ms.topic: include
-ms.date: 10/16/2019
+ms.date: 04/29/2020
 author: deepakpalled
-ms.author: dpalled
+ms.author: v-junlch
 manager: cshankar
 ms.custom: include file
-ms.openlocfilehash: 61a9cf53d8a34999bfff8ed4c2aeae73f3182613
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 91a0306d96d85ef7a9c336efd78c306b714fb44d
+ms.sourcegitcommit: 95efd248f5ee3701f671dbd5cfe0aec9c9959a24
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74389600"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82516024"
 ---
 ### <a name="general-availability-and-preview-comparison"></a>正式版和预览版比较
 
@@ -45,11 +45,10 @@ ms.locfileid: "74389600"
 
 ### <a name="event-sources"></a>事件源
 
-每个实例最多支持两个事件源。 
 
-* 了解如何[添加事件中心源](/time-series-insights/time-series-insights-how-to-add-an-event-source-eventhub)。
-* 配置 [IoT 中心源](/time-series-insights/time-series-insights-how-to-add-an-event-source-iothub)。
+默认情况下，[预览版环境支持的入口速率](/time-series-insights/time-series-insights-update-storage-ingress#ingress-scale-and-preview-limitations)最大为每环境每秒 1 兆字节（MB/秒）  。 如果需要，客户可以将其预览版环境扩展到 16 MB/秒  吞吐量。 还存在每个分区 0.5 MB/秒  的限制。 
 
 ### <a name="api-limits"></a>API 限制
 
 [REST API 参考文档](https://docs.microsoft.com/rest/api/time-series-insights/preview-query#limits)中指定了时序见解预览版的 REST API 限制。
+

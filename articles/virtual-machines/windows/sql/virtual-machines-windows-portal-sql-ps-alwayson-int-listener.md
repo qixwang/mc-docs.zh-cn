@@ -1,5 +1,5 @@
 ---
-title: 配置 Always On 可用性组侦听器 - Azure | Azure
+title: 配置一个或多个 Always On 可用性组侦听器 - Resource Manager
 description: 使用具有一个或多个 IP 地址的内部负载均衡器在 Azure Resource Manager 模型中配置可用性组侦听器。
 services: virtual-machines
 documentationcenter: na
@@ -11,15 +11,15 @@ ms.service: virtual-machines-sql
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-origin.date: 02/06/2019
-ms.date: 10/14/2019
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: 75e6925e30e6ac614fea4229ac083374ebe22ab4
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 815c5745f076a1622dd6305884717f13238424de
+ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "72272748"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82596427"
 ---
 # <a name="configure-one-or-more-always-on-availability-group-listeners---resource-manager"></a>配置一个或多个 Always On 可用性组侦听器 - Resource Manager
 本主题说明如何执行以下操作：
@@ -142,7 +142,7 @@ foreach($VMName in $VMNames)
 > [!NOTE]
 > 对于 SQL Server 可用性组，每个 IP 地址需要一个特定的探测端口。 例如，如果负载均衡器上有一个 IP 地址使用探测端口 59999，该负载均衡器上的其他任何 IP 地址就不能使用探测端口 59999。
 
-* 有关负载均衡器限制的信息，请参阅[网络限制 - Azure Resource Manager](../../../azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits) 下面的**每个负载均衡器的专用前端 IP**。
+* 有关负载均衡器限制的信息，请参阅[网络限制 - Azure Resource Manager](../../../azure-resource-manager/management/azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits) 下面的**每个负载均衡器的专用前端 IP**。
 * 有关可用性组限制的信息，请参阅[限制（可用性组）](https://msdn.microsoft.com/library/ff878487.aspx#RestrictionsAG)。
 
 以下脚本将新的 IP 地址添加到现有负载均衡器。 ILB 使用侦听器端口作为负载均衡前端端口。 此端口可以是 SQL Server 正在侦听的端口。 对于 SQL Server 的默认实例，此端口为 1433。 可用性组的负载均衡规则需要浮动 IP（直接服务器返回），因此后端端口与前端端口相同。 请更新环境的变量。 
@@ -198,7 +198,7 @@ $ILB | Add-AzLoadBalancerRuleConfig -Name $LBConfigRuleName -FrontendIpConfigura
 
 1. 现在应看到在故障转移群集管理器中创建的侦听器名称。 右键单击侦听器名称，并单击“属性”。 
 
-1. 在“端口”框中，通过使用先前使用过的 $EndpointPort 为可用性组侦听器指定端口号（默认值为 1433），然后单击“确定”。  
+1. 在“端口”  框中，通过使用先前使用的 $EndpointPort 为可用性组侦听器指定端口号（默认值为 1433），并单击“确定”  。
 
 ## <a name="test-the-connection-to-the-listener"></a>测试与侦听器的连接
 
@@ -231,6 +231,8 @@ SQLCMD 连接自动连接到托管主副本的 SQL Server 实例。
 * 使用内部负载均衡器只能从同一个虚拟网络中访问侦听器。
 
 * 如果要限制 Azure 网络安全组的访问权限，请确保“允许”规则包含后端 SQL Server VM IP 地址、可用性组侦听器的负载均衡器浮动 IP 地址、群集核心 IP 地址（如适用）。
+
+* 将标准负载均衡器与 Azure 存储一起用作云见证时，请创建服务终结点。 有关详细信息，请参阅[从虚拟网络授予访问权限](https://docs.azure.cn/storage/common/storage-network-security?toc=%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network)。
 
 ## <a name="for-more-information"></a>更多信息
 有关详细信息，请参阅[在 Azure VM 中手动配置 Always On 可用性组](virtual-machines-windows-portal-sql-availability-group-tutorial.md)。

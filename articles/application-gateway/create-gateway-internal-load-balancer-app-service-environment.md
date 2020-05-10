@@ -4,7 +4,7 @@ description: 了解如何在 Azure 中使用内部负载均衡器和应用服务
 services: vpn-gateway
 documentationCenter: na
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: ''
 ms.service: vpn-gateway
@@ -12,19 +12,18 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-origin.date: 11/06/2018
-ms.date: 02/26/2019
+ms.date: 04/26/2020
 ms.author: v-junlch
-ms.openlocfilehash: bf539acb704a8322cd6ea3ba3c2f62d0d3b01310
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: b1ba0b645d724770ef021ed4617f18d3e68267de
+ms.sourcegitcommit: e3512c5c2bbe61704d5c8cbba74efd56bfe91927
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "63828972"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82267652"
 ---
 # <a name="back-end-server-certificate-is-not-whitelisted-for-an-application-gateway-using-an-internal-load-balancer-with-an-app-service-environment"></a>未使用内部负载均衡器和应用服务环境将应用程序网关的后端服务器证书加入允许列表。
 
-本文排查以下问题：在 Azure 中使用端到端 SSL 期间，在后端结合使用内部负载均衡器 (ILB) 和应用服务环境 (ASE) 创建应用程序网关时，证书未加入允许列表。
+本文排查以下问题：在 Azure 中使用端到端 TLS 期间，在后端结合使用内部负载均衡器 (ILB) 和应用服务环境 (ASE) 创建应用程序网关时，证书未加入允许列表。
 
 ## <a name="symptoms"></a>症状
 
@@ -69,10 +68,9 @@ ms.locfileid: "63828972"
 
 - 如果使用的是 ILB 的 IP 地址，请清除应用程序网关的“用于应用服务”选项  。
 
-若要降低开销，可在 HTTP 设置中上传 ILB 证书，使探测路径正常工作。 （此步骤仅适用于允许列表操作， 不可用于 SSL 通信。）可通过如下方式检索 ILB 证书：在浏览器中使用 ILB 的 HTTPS IP 地址访问 ILB，然后以 Base-64 编码的 CER 格式导出 SSL 证书，并在相应 HTTP 设置中上传该证书。
+若要降低开销，可在 HTTP 设置中上传 ILB 证书，使探测路径正常工作。 （此步骤仅适用于允许列表操作， 不可用于 TLS 通信。）可通过如下方式检索 ILB 证书：在浏览器中使用 ILB 的 HTTPS IP 地址访问 ILB，然后以 Base-64 编码的 CER 格式导出 TLS/SSL 证书，并在相应 HTTP 设置中上传该证书。
 
 ## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员
 
 如果仍需要帮助，可 [联系支持人员](https://portal.azure.cn/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) 来快速解决问题。
 
-<!-- Update_Description: wording update -->

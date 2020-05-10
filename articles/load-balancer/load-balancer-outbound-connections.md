@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 08/07/2019
-ms.date: 04/06/2020
+ms.date: 05/11/2020
 ms.author: v-jay
-ms.openlocfilehash: ead7a3a302f1c2cccaa410447f82badb238701d8
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 057d9f79e6d6d2c2b456e6ea7639879a0ab0c07c
+ms.sourcegitcommit: 95efd248f5ee3701f671dbd5cfe0aec9c9959a24
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80625799"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82507696"
 ---
 # <a name="outbound-connections-in-azure"></a>Azure 中的出站连接
 
@@ -163,7 +163,7 @@ Azure 向每个 VM 的 NIC IP 配置预先分配 SNAT 端口。 将 IP 配置添
 | 801-1,000 | 32 |
 
 >[!NOTE]
-> 结合[多个前端](load-balancer-multivip-overview.md)使用标准负载均衡器时，上表中每个前端 IP 地址的可用 SNAT 端口数目将会倍增。 例如，如果某个后端池包含 50 个 VM 和 2 个负载均衡规则，并且每个 VM 使用独立的前端 IP 地址，则该后端池将为每个 IP 配置使用 2048 个 (2 x 1024) SNAT 端口。 参阅有关[多个前端](#multife)的详细信息。
+> 结合[多个前端](load-balancer-multivip-overview.md)使用标准负载均衡器时，上表中每个前端 IP 地址的可用 SNAT 端口数目将会倍增。 例如，如果某个后端池包含 50 个 VM 和 2 个负载均衡规则，并且每个 VM 具有不同的前端 IP 地址，则该后端池将根据规则使用 2048 (2 x 1024) 个 SNAT 端口。 参阅有关[多个前端](#multife)的详细信息。
 
 请记住，可用的 SNAT 端口数不会直接转换为流数。 可以针对多个唯一目标重用单个 SNAT 端口。 仅当需要使流保持唯一时，才使用端口。 有关设计和缓解指导，请参阅[如何管理这项可耗尽的资源](#snatexhaust)；另请参阅介绍 [PAT](#pat) 的部分。
 
@@ -188,11 +188,11 @@ SNAT 端口分配特定于 IP 传输协议（TCP 和 UDP 是分别维护的）�
 本部分旨在帮助解决 SNAT 耗尽的问题，以及 Azure 中的出站连接可能出现的其他情况。
 
 ### <a name="managing-snat-pat-port-exhaustion"></a><a name="snatexhaust"></a>应对 SNAT (PAT) 端口耗尽问题
-用于 [PAT](#pat) 的[临时端口](#preallocatedports)是可用尽的资源，如[无公共 IP 地址的独立 VM](#defaultsnat) 和[无公共 IP 地址的负载均衡 VM](#lb) 中所述。
+用于 [PAT](#pat) 的[临时端口](#preallocatedports)是一种可耗尽资源，如[没有公共 IP 地址的独立 VM](#defaultsnat) 和 [没有公共 IP 地址的负载均衡 VM](#lb) 中所述。你可以参照[此](/load-balancer/load-balancer-standard-diagnostics#how-do-i-check-my-snat-port-usage-and-allocation)指南监视临时端口使用情况，并与当前分配进行比较，以确定 SNAT 耗尽的风险或确认 SNAT 耗尽。
 
 如果知道正在启动与同一目标 IP 地址和端口的多个出站 TCP 或 UDP 连接，观察失败的出站连接，或者支持人员通知已耗尽 SNAT 端口（[PAT](#pat) 使用的预先分配[临时端口](#preallocatedports)），则有几个常见缓解选项可供选择。 查看这些选项，确定可用且最适合自己的方案的选项。 一个或多个选项可能有助于管理此方案。
 
-如果难以理解出站连接行为，可以使用 IP 堆栈统计 (netstat)。 或者使用数据包捕获来观察连接行为。 可以在实例的来宾 OS 中执行这些数据包捕获，或使用[网络观察程序来捕获数据包](../network-watcher/network-watcher-packet-capture-manage-portal.md)。
+如果难以理解出站连接行为，可以使用 IP 堆栈统计 (netstat)。 或者使用数据包捕获来观察连接行为。 可以在实例的来宾 OS 中执行这些数据包捕获，或使用[网络观察程序来捕获数据包](../network-watcher/network-watcher-packet-capture-manage-portal.md)。 
 
 #### <a name="modify-the-application-to-reuse-connections"></a><a name="connectionreuse"></a>修改应用程序以重复使用连接 
 在应用程序中重复使用连接，可以降低对用于 SNAT 的临时端口的需求。 这尤其适用于 HTTP/1.1 这样的协议，在这些协议中，默认重复使用连接。 其他使用 HTTP 作为其传输（如 REST）的协议也可以因此受益。 
