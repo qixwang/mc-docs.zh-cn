@@ -2,18 +2,17 @@
 title: 通过门户创建 Azure 事件网格订阅
 description: 本文介绍如何使用 Azure 门户为支持的源（如 Azure Blob 存储）创建事件网格订阅。
 services: event-grid
-author: spelluru
+author: Johnnytechn
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 01/23/2020
-origin.date: 3/16/2020
-ms.author: v-lingwu
-ms.openlocfilehash: b46b70d9434e039b1d02d03f738eee359d53f767
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/06/2020
+ms.author: v-johya
+ms.openlocfilehash: 2091d585051f7f7ba45e315d6348c7d209ec4fba
+ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79452593"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "83002095"
 ---
 # <a name="subscribe-to-events-through-portal"></a>通过门户订阅事件
 
@@ -21,7 +20,7 @@ ms.locfileid: "79452593"
 
 ## <a name="create-event-subscriptions"></a>创建事件订阅
 
-若要针对任何受支持的[事件源](event-sources.md)创建事件网格订阅，请使用以下步骤。 本文展示了如何为 Azure 订阅创建事件网格订阅。
+若要针对任何受支持的[事件源](overview.md#event-sources)创建事件网格订阅，请使用以下步骤。 本文展示了如何为 Azure 订阅创建事件网格订阅。
 
 1. 选择“所有服务”  。
 
@@ -70,3 +69,4 @@ ms.locfileid: "79452593"
 * 有关事件传送和重试的信息，请参阅[事件网格消息传送和重试](delivery-and-retry.md)。
 * 有关事件网格的介绍，请参阅[关于事件网格](overview.md)。
 * 若要快速开始使用事件网格，请参阅[使用 Azure 事件网格创建和路由自定义事件](custom-event-quickstart.md)。
+

@@ -5,14 +5,14 @@ ms.service: cosmos-db
 ms.topic: conceptual
 author: rockboyfor
 origin.date: 04/09/2020
-ms.date: 04/27/2020
+ms.date: 05/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: e44cedcb66ee91183c4189b6dba32799d85dd09d
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.openlocfilehash: 5f5a8abba23a3ce181e56aeebd81b75b990d96b8
+ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82135133"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "83002079"
 ---
 <!--Verified successfully BEFORE Filters for request unit usage-->
 # <a name="how-to-monitor-throughput-or-request-unit-usage-of-an-operation-in-azure-cosmos-db"></a>如何监视 Azure Cosmos DB 中的操作的吞吐量或请求单位用量

@@ -5,14 +5,14 @@ keywords: runbook, runbook 模板, runbook 自动化, azure runbook
 services: automation
 ms.subservice: process-automation
 origin.date: 04/13/2018
-ms.date: 03/30/2020
+ms.date: 05/11/2020
 ms.topic: conceptual
-ms.openlocfilehash: 14c3fb45acbc9ce62a4b217501f9e8b89b019a32
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: c27e8576374ecd3636e0e4af11b7aef204bbaeb9
+ms.sourcegitcommit: 7443ff038ea8afe511f7419d9c550d27fb642246
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80290355"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "83001636"
 ---
 # <a name="my-first-graphical-runbook"></a>我的第一个图形 Runbook
 
@@ -76,7 +76,9 @@ ms.locfileid: "80290355"
 
    作业状态最初为 `Queued`，表示该作业正在等待云中的 Runbook 辅助角色变为可用状态。 在某个辅助角色认领该作业后，状态将更改为 `Starting`。 最后，在 Runbook 实际开始运行时，状态将变为 `Running`。
 
-1. Runbook 作业完成后，“测试”窗格会显示其输出。 在本例中，你会看到 `Hello World`。<br> ![Hello World](media/automation-first-runbook-graphical/runbook-test-results.png)
+1. Runbook 作业完成后，“测试”窗格会显示其输出。 在本例中，你会看到 `Hello World`。
+
+    ![Hello World](media/automation-first-runbook-graphical/runbook-test-results.png)
 1. 关闭测试窗格以返回到画布。
 
 ## <a name="step-4---publish-and-start-the-runbook"></a>步骤 4 - 发布和启动 Runbook
@@ -96,7 +98,7 @@ ms.locfileid: "80290355"
 1. 单击“所有日志”打开 Runbook 作业的“流”窗格  。 在输出流中应该只会看到 `Hello World`。 
 
     请注意，“流”窗格可能会显示 Runbook 作业的其他流，例如，详细和错误流（如果 Runbook 向其写入数据）。
-1. 关闭“流”窗格和“作业”窗格，返回到“MyFirstRunbook-Graphical”页。 
+1. 关闭“流”窗格和“作业”窗格以返回到“MyFirstRunbook-Graphical”页。
 1. 若要查看 Runbook 的所有作业，请在“资源”下选择“作业”。   “作业”页将列出该 Runbook 创建的所有作业。 由于只运行了作业一次，因此只会列出一个作业。
 1. 单击作业名称，打开在启动 Runbook 时出现过的同一个“作业”窗格。 使用此窗格查看为 Runbook 创建的任何作业的详细信息。
 
@@ -122,32 +124,33 @@ ms.locfileid: "80290355"
 >[!NOTE]
 > **Add-AzureRmAccount** 现在是 **Connect-AzureRmAccount** 的别名。 搜索库项时，如果未看到 **Connect-AzureRmAccount**，则可以使用 **Add-AzureRmAccount**。
 
-1. 导航到 Runbook，在“MyFirstRunbook-Graphical”页上选择“编辑”。  
+1. 导航到 Runbook，在“MyFirstRunbook-Graphical”页上选择“编辑”  。
 1. 不再需要 `Write Hello World to output` 条目。 只需单击省略号图标，然后选择“删除”即可。 
 1. 在“库”控件中，依次展开“资产”、“连接”。   选择“添加到画布”，将 `AzureRunAsConnection` 添加到画布。 
 1. 在“库”控件中的搜索字段内，键入 `Add-AzureRmAccount`。
 1. 将 `Add-AzureRmAccount` 添加到画布。
-1. 将鼠标悬停在“获取运行方式连接”上方，直到在该形状的底部显示一个圆圈  。 单击该圆圈并将箭头拖至 `Add-AzureRmAccount`，以构成一个链接。 Runbook 从 `Get Run As Connection` 开始运行，然后运行 `Add-AzureRmAccount`。<br> ![创建活动之间的链接](media/automation-first-runbook-graphical/runbook-link-auth-activities.png)
-1. 在画布上选择 `Add-AzureRmAccount`。 在“配置”控件窗格中的“标签”字段内键入“登录到 Azure”。  
+1. 将鼠标悬停在 `Get Run As Connection` 上方，直到在该形状的底部显示一个圆圈。 单击该圆圈并将箭头拖至 `Add-AzureRmAccount`，以构成一个链接。 Runbook 从 `Get Run As Connection` 开始运行，然后运行 `Add-AzureRmAccount`。<br> ![创建活动之间的链接](media/automation-first-runbook-graphical/runbook-link-auth-activities.png)
+1. 在画布上选择 `Add-AzureRmAccount`。 在“配置”控件窗格的“标签”字段中键入“登录到 Azure”。  
 1. 单击“参数”，此时会显示“活动参数配置”页。 
 1. `Add-AzureRmAccount` cmdlet 有多个参数集。在提供参数值之前，需要选择其中的一个参数集。 单击“参数集”，然后选择“ServicePrincipalCertificate”   。
 1. 此参数集的参数将显示在“活动参数配置”页上。 单击“APPLICATIONID”  。<br> ![添加 Azure 帐户参数](media/automation-first-runbook-graphical/Add-AzureRmAccount-params.png)
 1. 在“参数值”页中完成以下设置，然后单击“确定”。 
 
    * **数据源** -- 选择“活动输出”。 
-   * 数据源列表 -- 选择“获取运行方式连接”。 
-   * **字段路径** -- 键入 `ApplicationId`。 需指定字段路径属性的名称，因为活动会输出包含多个属性的对象。
+   * 数据源列表 -- 选择“获取自动化连接”。 
+   * **字段路径** -- 键入 `ApplicationId`。 需要指定字段路径的属性的名称，因为活动所输出的对象包含多个属性。
+
 1. 单击“CERTIFICATETHUMBPRINT”，在“参数值”页上完成以下设置并单击“确定”。  
 
     * **数据源** -- 选择“活动输出”。 
-    * 数据源列表 -- 选择“获取运行方式连接”。 
+    * 数据源列表 -- 选择“获取自动化连接”。 
     * **字段路径** -- 键入 `CertificateThumbprint`。
 1. 单击“SERVICEPRINCIPAL”，在“参数值”页上为“数据源”字段选择“ConstantValue”，单击选项“True”，然后单击“确定”。     
 1. 单击“ENVIRONMENTNAME”，在“参数值”页中，选择“ConstantValue”作为“数据源”，在文本框中输入“AzureChinaCloud”，然后单击“确定”     。
 1. 单击“TENANTID”，在“参数值”页上完成以下设置。  完成后，单击“确定”两次。 
 
     * **数据源** -- 选择“活动输出”。  
-    * 数据源列表 -- 选择“获取运行方式连接”。 
+    * 数据源列表 -- 选择“获取自动化连接”。 
     * **字段路径** -- 键入 `TenantId`。 
 1. 在“库”控件中的搜索字段内，键入 `Set-AzureRmContext`。
 1. 将 `Set-AzureRmContext` 添加到画布。
@@ -156,9 +159,9 @@ ms.locfileid: "80290355"
 1. `Set-AzureRmContext` cmdlet 有多个参数集。在提供参数值之前，需要选择其中的一个参数集。 单击“参数集”，然后选择“SubscriptionId”。  
 1. 此参数集的参数将显示在“活动参数配置”页上。 单击“SubscriptionID”。 
 1. 在“参数值”页上，为“数据源”选择“ConstantValue”，将 SubscriptionId 写入文本框，然后单击“确定”两次。   
-1. 将鼠标悬停在 `Login to Azure` 上方，直到在该形状的底部显示一个圆圈。 单击该圆圈并将箭头拖至 `Specify Subscription Id`。 
+1. 将鼠标悬停在 `Login to Azure` 上方，直到在该形状的底部显示一个圆圈。 单击该圆圈并将箭头拖至 `Specify Subscription Id`。 此时，Runbook 看起来应该如下所示。
 
-此时，Runbook 看起来将如下所示： <br>![Runbook 身份验证配置](media/automation-first-runbook-graphical/runbook-auth-config.png)
+    ![Runbook 身份验证配置](media/automation-first-runbook-graphical/runbook-auth-config.png)
 
 ## <a name="step-7---add-activity-to-start-a-virtual-machine"></a>步骤 7 - 添加用于启动虚拟机的活动
 
@@ -172,15 +175,15 @@ ms.locfileid: "80290355"
 1. 选择“名称”  。 为“数据源”字段选择“PowerShell 表达式”。   对于用于启动此 Runbook 的 VM，请键入带双引号的虚拟机名称。 单击“确定”。 
 1. 选择“ResourceGroupName”  。 为“数据源”字段使用“PowerShell 表达式”值，并键入带双引号的资源组名称。   单击“确定”。 
 1. 单击“测试”  窗格，以便测试 Runbook。
-1. 单击“启动”开始测试。  完成后，请确保 VM 已启动。 
+1. 单击“启动”开始测试。  完成后，请确保 VM 已启动。 此时，Runbook 看起来应该如下所示。
 
-此时，Runbook 看起来将如下所示： <br>![Runbook 身份验证配置](media/automation-first-runbook-graphical/runbook-startvm.png)
+    ![Runbook 身份验证配置](media/automation-first-runbook-graphical/runbook-startvm.png)
 
 ## <a name="step-8---add-additional-input-parameters"></a>步骤 8 - 添加其他输入参数
 
 Runbook 当前会启动资源组中的、为 `Start-AzureRmVM` cmdlet 指定的 VM。 如果在启动 Runbook 时同时指定了 VM 名称和资源组，该 Runbook 会更有用。 将输入参数添加到 Runbook，以提供该功能。
 
-1. 在“MyFirstRunbook-Graphical”窗格上单击“编辑”，打开图形编辑器   。
+1. 在“MyFirstRunbook-Graphical”页上单击“编辑”，打开图形编辑器  。
 1. 依次选择“输入和输出”和“添加输入”，打开“Runbook 输入参数”窗格   。
 1. 在提供的字段中完成以下设置，然后单击“确定”。 
    * **名称** -- 指定 `VMName`。
@@ -228,7 +231,9 @@ Runbook 当前会启动资源组中的、为 `Start-AzureRmVM` cmdlet 指定的 
      $StatusOut
      ```
 
-1. 创建从 `Get Status` 到 `Start-AzureRmVM` 的链接。<br> ![使用代码模块的 Runbook](media/automation-first-runbook-graphical/runbook-startvm-get-status.png)  
+1. 创建从 `Get Status` 到 `Start-AzureRmVM` 的链接。
+
+    ![使用代码模块的 Runbook](media/automation-first-runbook-graphical/runbook-startvm-get-status.png)  
 1. 选择该链接，然后在“配置”窗格中，将“应用条件”更改为“是”。   请注意，该链接变为虚线，指示仅在条件解析为 True 时才会运行目标活动。  
 1. 对于“条件表达式”，请键入 **。** `$ActivityOutput['Get Status'] -eq "Stopped"` 现在，仅当 VM 已停止时，`Start-AzureRmVM` 才会运行。
 1. 在库控件中，展开 **Cmdlet** 节点，并展开 **Microsoft.PowerShell.Utility**。
@@ -236,12 +241,14 @@ Runbook 当前会启动资源组中的、为 `Start-AzureRmVM` cmdlet 指定的 
 1. 对于第一个 `Write-Output` 控件，请单击“参数”并将“标签”值更改为“通知 VM 已启动”。   
 1. 对于“InputObject”，请将“数据源”更改为“PowerShell 表达式”，并键入表达式 **。**   `$VMName successfully started.`
 1. 在第二个 `Write-Output` 控件中，单击“参数”并将“标签”值更改为“通知 VM 启动失败”。   
-1. 对于“InputObject”，请将“数据源”更改为“PowerShell 表达式”，并键入表达式 **。**   `$VMName could not start.`
+1. 对于“InputObject”，请将“数据源”更改为“PowerShell 表达式”，并键入表达式 **。**   `$VMName could not start`
 1. 创建从 `Start-AzureRmVM` 到 `Notify VM Started` 和 `Notify VM Start Failed` 的链接。
 1. 选择与 `Notify VM Started` 建立的链接，将“应用条件”设置为 true。 
-1. 对于“条件表达式”，请键入 **。** `$ActivityOutput['Start-AzureRmVM'].IsSuccessStatusCode -eq $true` 现在，仅当 VM 成功启动时，此“Write-Output”控件才会运行。 
+1. 对于“条件表达式”，请键入 **。** `$ActivityOutput['Start-AzureRmVM'].IsSuccessStatusCode -eq $true` 现在，只有在 VM 已成功启动的情况下，此 `Write-Output` 控件才会运行。
 1. 选择与 `Notify VM Start Failed` 建立的链接，将“应用条件”设置为 true。 
-1. 对于“条件表达式”字段，请键入 **。** `$ActivityOutput['Start-AzureRmVM'].IsSuccessStatusCode -ne $true` 现在，仅当 VM 未成功启动时，此 `Write-Output` 控件才会运行。 Runbook 应看起来如下图所示： <br> ![使用 Write-Output 的 Runbook](media/automation-first-runbook-graphical/runbook-startazurermvm-complete.png)
+1. 对于“条件表达式”字段，请键入 **。** `$ActivityOutput['Start-AzureRmVM'].IsSuccessStatusCode -ne $true` 现在，仅当 VM 未成功启动时，此 `Write-Output` 控件才会运行。 Runbook 看起来应如下图所示。
+
+    ![使用 Write-Output 的 Runbook](media/automation-first-runbook-graphical/runbook-startazurermvm-complete.png)
 1. 保存 Runbook 并打开“测试”窗格。
 1. 在 VM 停止的情况下启动 Runbook，然后虚拟机应会启动。
 

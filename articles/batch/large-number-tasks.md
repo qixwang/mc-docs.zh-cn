@@ -15,12 +15,12 @@ origin.date: 08/24/2018
 ms.date: 01/21/2019
 ms.author: v-lingwu
 ms.custom: ''
-ms.openlocfilehash: 9020a151df1fb7e82521cdaa1025548ef9b639bc
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 62960d4fc12a959778381cdadd4f1bca684a9644
+ms.sourcegitcommit: 1fbdefdace8a1d3412900c6c3f89678d8a9b29bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74838613"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82886855"
 ---
 # <a name="submit-a-large-number-of-tasks-to-a-batch-job"></a>将大量的任务提交到 Batch 作业
 
@@ -44,7 +44,7 @@ Batch API 提供所需的方法用于高效地将任务作为集合添加到作�
 
 * 以下 API 支持的任务集合要大得多 - 仅受提交方客户端上的 RAM 可用性的限制。 这些 API 以透明方式将任务集合分割为较低级别 API 的“区块”，并在添加任务失败时重试。
 
-    - [.NET API](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudjob.addtaskasync?view=azure-dotnet)
+    - [.NET API](https://docs.azure.cn/dotnet/api/microsoft.azure.batch.cloudjob.addtaskasync?view=azure-dotnet)
     - [Java API](https://docs.microsoft.com/java/api/com.microsoft.azure.batch.protocol._tasks.addcollectionasync?view=azure-java-stable)
     - 包含 Batch CLI 模板的 [Azure Batch CLI 扩展](batch-cli-templates.md)
     - [Python SDK 扩展](https://pypi.org/project/azure-batch-extensions/)

@@ -14,12 +14,12 @@ ms.topic: article
 origin.date: 01/24/2020
 ms.date: 2/6/2020
 ms.author: v-lingwu
-ms.openlocfilehash: 0e8218bfc7e90df224f6bc86548aec464f6edfad
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: d0ae6a12042964dd2d0b34f3a1bef85ec4b40c5a
+ms.sourcegitcommit: 1fbdefdace8a1d3412900c6c3f89678d8a9b29bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77067996"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82886921"
 ---
 # <a name="duplicate-detection"></a>重复检测
 
@@ -55,7 +55,7 @@ ms.locfileid: "77067996"
 
 ![][2]
 
-通过编程方式，可以结合使用 [QueueDescription.DuplicateDetectionHistoryTimeWindow](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.queuedescription.duplicatedetectionhistorytimewindow#Microsoft_ServiceBus_Messaging_QueueDescription_DuplicateDetectionHistoryTimeWindow) 和整个 .NET Framework API，配置重复检测窗口大小，即消息 ID 的保留时长。 借助 Azure 资源管理器 API，可以使用 [queueProperties.duplicateDetectionHistoryTimeWindow](https://docs.microsoft.com/azure/templates/microsoft.servicebus/namespaces/queues#property-values) 属性设置此值。
+通过编程方式，可以结合使用 [QueueDescription.DuplicateDetectionHistoryTimeWindow](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.queuedescription.duplicatedetectionhistorytimewindow#Microsoft_ServiceBus_Messaging_QueueDescription_DuplicateDetectionHistoryTimeWindow) 和整个 .NET Framework API，配置重复检测窗口大小，即消息 ID 的保留时长。 借助 Azure 资源管理器 API，可以使用 [queueProperties.duplicateDetectionHistoryTimeWindow](https://docs.microsoft.com/azure/templates/microsoft.servicebus/namespaces/queues#property-values) 属性设置此值。
 
 启用重复检测和窗口大小直接影响队列（和主题）的吞吐量，因为必须将记录的所有消息 ID 都与新提交的消息标识符进行匹配。
 

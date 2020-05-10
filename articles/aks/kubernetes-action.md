@@ -5,14 +5,14 @@ services: container-service
 author: rockboyfor
 ms.topic: article
 origin.date: 11/04/2019
-ms.date: 04/30/2020
+ms.date: 05/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 8a6bf35d73d8c93a4159e7f6f96df2b9a0dc52c6
-ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
+ms.openlocfilehash: 439551ab227252722a7c40360029829e49f27e20
+ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82596184"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "83001934"
 ---
 <!--CONFIRME WITH DONG LIU SUCCESSFULLY-->
 <!--NEW FEATURES HAS BEEN RELEASED ON AZURE CHINA CLOUD-->
@@ -152,5 +152,4 @@ jobs:
 
 - [actions-workflow-samples](https://github.com/Azure/actions-workflow-samples)
 
-<!-- Update_Description: new article about kubernetes action -->
-<!--NEW.date: 01/19/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

@@ -15,12 +15,12 @@ ms.topic: article
 origin.date: 01/24/2020
 ms.date: 2/6/2020
 ms.author: v-lingwu
-ms.openlocfilehash: 0f8a23d8733c4560045791f3cf4c3329da44ab5a
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 28652773cdaf7f3a4dd3a1fe39763ff27860fafb
+ms.sourcegitcommit: 1fbdefdace8a1d3412900c6c3f89678d8a9b29bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77068013"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82886822"
 ---
 # <a name="service-bus-management-libraries"></a>服务总线管理库
 
@@ -137,10 +137,10 @@ namespace SBusADApp
                 var clientId = "<APPLICATION/CLIENT ID>";
                 var clientSecret = "<CLIENT SECRET>";
 
-                var context = new AuthenticationContext($"https://login.microsoftonline.com/{tenantId}");
+                var context = new AuthenticationContext($"https://login.chinacloudapi.cn/{tenantId}");
 
                 var result = await context.AcquireTokenAsync(
-                    "https://management.azure.com/",
+                    "https://management.chinacloudapi.cn/",
                     new ClientCredential(clientId, clientSecret)
                 );
 
@@ -168,4 +168,4 @@ namespace SBusADApp
 > 有关完整示例，请参阅 [GitHub 上的 .NET 管理示例](https://github.com/Azure-Samples/service-bus-dotnet-management/)。 
 
 ## <a name="next-steps"></a>后续步骤
-* [Microsoft.Azure.Management.ServiceBus API 参考](https://docs.azure.cn/zh-cn/dotnet/api/Microsoft.Azure.Management.ServiceBus?view=azure-dotnet)
+* [Microsoft.Azure.Management.ServiceBus API 参考](https://docs.azure.cn/dotnet/api/Microsoft.Azure.Management.ServiceBus?view=azure-dotnet)

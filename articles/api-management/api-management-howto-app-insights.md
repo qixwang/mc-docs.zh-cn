@@ -4,22 +4,21 @@ titleSuffix: Azure API Management
 description: 了解如何在 Azure Application Insights 中记录和查看来自 Azure API 管理的事件。
 services: api-management
 documentationcenter: ''
-author: mikebudzynski
+author: Johnnytechn
 manager: erikre
 editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-origin.date: 06/20/2018
-ms.date: 01/20/2020
-ms.author: v-yiso
-ms.openlocfilehash: 555c37491a4683b51c4503c3ed2e53690c84532d
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/09/2020
+ms.author: v-johya
+ms.openlocfilehash: 2caeba8c5ff83e38319b16fb9259651baa857b46
+ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75859764"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "83002069"
 ---
 # <a name="how-to-integrate-azure-api-management-with-azure-application-insights"></a>如何将 Azure API 管理与 Azure Application Insights 集成
 
@@ -34,9 +33,9 @@ Azure API 管理可以轻松地与 Azure Application Insights 集成（一个可
 在使用 Azure Application Insights 之前，需要先创建一个服务实例。
 
 1. 打开 **Azure 门户**，导航到“Application Insights”。   
-    ![App Insights 创建](media/api-management-howto-app-insights/apim-app-insights-instance-1.png)  
+    ![App Insights 创建](./media/api-management-howto-app-insights/apim-app-insights-instance-1.png)  
 2. 单击“+ 添加”。   
-    ![App Insights 创建](media/api-management-howto-app-insights/apim-app-insights-instance-2.png)  
+    ![App Insights 创建](./media/api-management-howto-app-insights/apim-app-insights-instance-2.png)  
 3. 填写窗体。 选择“常规”作为“应用程序类型”。  
 4. 单击**创建**。
 
@@ -45,14 +44,14 @@ Azure API 管理可以轻松地与 Azure Application Insights 集成（一个可
 1. 在 **Azure 门户**中导航到自己的 **Azure API 管理服务实例**。
 2. 在左侧菜单中选择“Application Insights”。 
 3. 单击“+ 添加”。   
-    ![App Insights 记录器](media/api-management-howto-app-insights/apim-app-insights-logger-1.png)  
+    ![App Insights 记录器](./media/api-management-howto-app-insights/apim-app-insights-logger-1.png)  
 4. 选择前面创建的 **Application Insights** 实例并提供简短说明。
 5. 单击**创建**。
 6. 你刚刚创建了一个具有检测密钥的 Azure Application Insights 记录器。 该记录器现在应已显示在列表中。  
-    ![App Insights 记录器](media/api-management-howto-app-insights/apim-app-insights-logger-2.png)  
+    ![App Insights 记录器](./media/api-management-howto-app-insights/apim-app-insights-logger-2.png)  
 
 > [!NOTE]
-> 在后台，将在 API 管理实例中创建了一个 [Logger](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/logger/createorupdate) 实体，其中包含 Application Insights 实例的检测密钥。
+> 在后台，将在 API 管理实例中创建了一个 [Logger](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/logger/createorupdate) 实体，其中包含 Application Insights 实例的检测密钥。
 
 ## <a name="enable-application-insights-logging-for-your-api"></a>为 API 启用 Application Insights 日志记录
 
@@ -61,7 +60,7 @@ Azure API 管理可以轻松地与 Azure Application Insights 集成（一个可
 3. 单击你的 API（在本例中为“演示会议 API”）。 
 4. 从顶部栏转到“设置”选项卡。 
 5. 向下滚动到“诊断日志”部分。   
-    ![App Insights 记录器](media/api-management-howto-app-insights/apim-app-insights-api-1.png)  
+    ![App Insights 记录器](./media/api-management-howto-app-insights/apim-app-insights-api-1.png)  
 6. 选中“启用”框。 
 7. 在“目标”下拉列表中选择附加的记录器。 
 8. 输入 **100** 作为“采样率”，并勾选“始终记录错误”复选框。  
@@ -71,7 +70,7 @@ Azure API 管理可以轻松地与 Azure Application Insights 集成（一个可
 > 重写“正文的第一个字节”字段中的默认值“0”可能会显著降低 API 的性能   。
 
 > [!NOTE]
-> 在后台，将在 API 级别创建一个名为“applicationinsights”的 [Diagnostic](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/diagnostic/createorupdate) 实体。
+> 在后台，将在 API 级别创建一个名为“applicationinsights”的 [Diagnostic](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/diagnostic/createorupdate) 实体。
 
 | 设置名称                        | 值类型                        | 说明                                                                                                                                                                                                                                                                                                                                      |
 |-------------------------------------|-----------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -119,8 +118,10 @@ Azure Application Insights 接收：
 
 跳过请求和响应的标头与正文的日志记录也有利于缓解性能问题。
 
-
+<!-- Not suitable in China, so removed -->
 ## <a name="next-steps"></a>后续步骤
 
-+ 详细了解 [Azure Application Insights](https://docs.microsoft.com/azure/application-insights/)。
++ 详细了解 [Azure Application Insights](https://docs.azure.cn/azure-monitor/app/app-insights-overview)。
 + 考虑[使用 Azure 事件中心进行日志记录](api-management-howto-log-event-hubs.md)。
+<!-- Correct in China: https://docs.azure.cn/azure-monitor/app/app-insights-overview-->
+

@@ -12,12 +12,12 @@ ms.workload: na
 origin.date: 04/05/2018
 ms.date: 12/04/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 5c06b97dcf13fad6306a2a5e71b436e42763dd84
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: b1137d78b952317b2af53fdac73a8eac35bf67c6
+ms.sourcegitcommit: 1fbdefdace8a1d3412900c6c3f89678d8a9b29bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74838815"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82886858"
 ---
 # <a name="monitor-and-debug-an-azure-batch-net-application-with-application-insights"></a>使用 Application Insights 监视和调试 Azure Batch .NET 应用程序
 
@@ -235,7 +235,7 @@ for (int i = 1; i <= topNWordsConfiguration.NumberOfTasks; i++)
 {
     CloudTask task = new CloudTask("task_no_" + i, String.Format("{0} --Task {1} {2} {3} {4}",
         TopNWordsExeName,
-        string.Format("https://{0}.blob.core.windows.net/{1}",
+        string.Format("https://{0}.blob.chinacloudapi.cn/{1}",
             accountSettings.StorageAccountName,
             documents[i]),
         topNWordsConfiguration.TopWordCount,

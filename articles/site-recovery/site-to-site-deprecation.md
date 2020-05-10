@@ -9,13 +9,14 @@ ms.topic: article
 origin.date: 02/25/2020
 ms.date: 04/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 78d9ae40e415398d8c312c2c8baf1588bcc63b74
-ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
+ms.openlocfilehash: 017fdecced0bbd49b5bcd686ff81253287fa2263
+ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82093426"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "83002090"
 ---
+<!--Characters Content only-->
 # <a name="deprecation-of-disaster-recovery-between-customer-managed-sites-with-vmm-using-azure-site-recovery"></a>使用 Azure Site Recovery 在客户管理的站点（包含 VMM）之间进行灾难恢复功能的弃用
 
 本文介绍了即将推出的弃用计划、相应的影响以及以下方案中可供客户使用的替代选项：

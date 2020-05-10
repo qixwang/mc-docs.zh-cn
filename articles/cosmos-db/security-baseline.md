@@ -5,15 +5,15 @@ author: rockboyfor
 ms.service: security
 ms.topic: conceptual
 origin.date: 03/16/2020
-ms.date: 04/30/2020
+ms.date: 05/06/2020
 ms.author: v-yeche
 ms.custom: security-benchmark
-ms.openlocfilehash: e12b301f6e025c805ee5bb784c43868f4adee0b2
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.openlocfilehash: 5ebecfbe87f9e9acd9b965de8b9aa9a6e313f489
+ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82135155"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "83002102"
 ---
 # <a name="azure-security-baseline-for-cosmos-db"></a>Cosmos DB 的 Azure 安全基线
 

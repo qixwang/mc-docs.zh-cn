@@ -6,16 +6,17 @@ ms.suite: integration
 ms.reviewer: deli, klam, logicappspm
 ms.topic: conceptual
 origin.date: 05/25/2019
-ms.date: 03/09/2020
+ms.date: 05/08/2020
 ms.author: v-yeche
 tags: connectors
-ms.openlocfilehash: 31f0be1469f71e15f1a1c37336586eb54bf27a9e
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 5870f5a1a9addb2ba816da9526da90239b02e00b
+ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78304663"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "83001909"
 ---
+<!--Verified successfully on 05/08/2020-->
 # <a name="delay-running-the-next-action-in-azure-logic-apps"></a>在 Azure 逻辑应用中延迟运行下一操作
 
 若要在运行下一操作之前让逻辑应用等待一定的时间，可以在逻辑应用的工作流中的某个操作之前添加内置的“延迟 - 计划”  操作。 也可添加内置的“延迟截止时间 - 计划”操作，等到特定的日期和时间过后再运行下一操作。  有关内置“计划”操作和触发器的详细信息，请参阅[使用 Azure 逻辑应用计划和运行定期自动执行的任务和工作流](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md)。

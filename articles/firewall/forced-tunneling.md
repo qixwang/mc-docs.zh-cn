@@ -6,15 +6,16 @@ author: rockboyfor
 ms.service: firewall
 ms.topic: article
 origin.date: 02/24/2020
-ms.date: 04/06/2020
+ms.date: 05/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 00f93df4f5ea5b51b9f1a6264b9a8dc21195b11e
-ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
+ms.openlocfilehash: 78e3b7526f4ab7f7d7fdbeba8312892c695b0bbf
+ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82093518"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "83001936"
 ---
+<!--Verified successfully-->
 # <a name="azure-firewall-forced-tunneling-preview"></a>Azure 防火墙强制隧道（预览版）
 
 你可以对 Azure 防火墙进行配置，使其将所有 Internet 绑定的流量路由到指定的下一跃点，而不是直接前往 Internet。 例如，你可能有本地边缘防火墙或其他网络虚拟设备 (NVA) 用来在将网络流量传递到 Internet 之前对其进行处理。

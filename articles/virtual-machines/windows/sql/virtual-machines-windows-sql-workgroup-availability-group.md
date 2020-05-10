@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 origin.date: 01/29/2020
-ms.date: 04/27/2020
+ms.date: 05/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 899c5eb99a117bc4e04e33bc0659bf37c478a483
-ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
+ms.openlocfilehash: 207025ab7f43bc0ea8f615bc2f1789818a0a2838
+ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82596215"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "83001984"
 ---
 # <a name="configure-a-workgroup-availability-group"></a>配置工作组可用性组 
 

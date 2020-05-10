@@ -11,15 +11,17 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 11/20/2019
-ms.date: 01/13/2020
+ms.date: 05/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 66b092e7429313eaa27f5d005a68c1c2f1ab4093
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: fc624c6909e0c8e4d2d7fb0320c85d0d2ef99d2d
+ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75859469"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "83001993"
 ---
+<!--Verified successfully-->
+<!--Correct on Powershell cmdlet-->
 # <a name="what-is-subnet-delegation"></a>什么是子网委托？
 
 使用子网委托可为需要注入到虚拟网络的所选 Azure PaaS 服务指定特定的子网。 子网委托为客户提供完全控制权，使他们能够管理 Azure 服务与虚拟网络的集成。
@@ -28,7 +30,7 @@ ms.locfileid: "75859469"
 - 在共享子网或专用子网中部署服务。
 - 在部署后将一组网络意向策略添加到服务，使服务能够正常运行。
 
-##  <a name="advantages-of-subnet-delegation"></a>子网委托的优势
+## <a name="advantages-of-subnet-delegation"></a>子网委托的优势
 
 将子网委托给特定的服务可提供以下优势：
 

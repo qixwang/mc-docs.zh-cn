@@ -15,12 +15,12 @@ ms.workload: na
 origin.date: 06/21/2019
 ms.date: 09/21/2019
 ms.author: v-lingwu
-ms.openlocfilehash: bd55eb0542c07ba6742e147cc792fe413b7651c7
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 1af2f5a50e786e9e232fdb786436b3be47a38a0e
+ms.sourcegitcommit: 1fbdefdace8a1d3412900c6c3f89678d8a9b29bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78154990"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82886818"
 ---
 # <a name="create-a-service-bus-namespace-by-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建服务总线命名空间
 
@@ -35,7 +35,7 @@ ms.locfileid: "78154990"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-如果没有 Azure 订阅，请在开始前[创建一个试用帐户](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth)。
+如果没有 Azure 订阅，请在开始前[创建一个试用帐户](https://www.azure.cn/pricing/1rmb-trial-full/?form-type=identityauth)。
 
 ## <a name="create-a-service-bus-namespace"></a>创建服务总线命名空间
 
@@ -43,7 +43,7 @@ ms.locfileid: "78154990"
 
 ```
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.chinacloudapi.cn/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "serviceBusNamespaceName": {

@@ -10,12 +10,12 @@ ms.topic: article
 origin.date: 02/06/2020
 ms.date: 03/20/2020
 ms.author: v-lingwu
-ms.openlocfilehash: a539d62b24ea0e972cfe32fcf734887c49aeb81a
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 16109c9baf1c7f1744c9cd1e788e4f7279fdd82a
+ms.sourcegitcommit: 1fbdefdace8a1d3412900c6c3f89678d8a9b29bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80109735"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82886823"
 ---
 # <a name="partitioned-queues-and-topics"></a>分区队列和主题
 
@@ -151,7 +151,7 @@ committableTransaction.Commit();
 在 [AMQP 1.0 协议指南](service-bus-amqp-protocol-guide.md)中了解 AMQP 1.0 消息传送规范的核心概念。
 
 [Azure portal]: https://portal.azure.cn
-[QueueDescription.EnablePartitioning]: https://docs.azure.cn/zh-cn/dotnet/api/microsoft.servicebus.messaging.queuedescription.enablepartitioning
-[TopicDescription.EnablePartitioning]: https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.topicdescription.enablepartitioning
-[QueueDescription.ForwardTo]: https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.queuedescription.forwardto
+[QueueDescription.EnablePartitioning]: https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.queuedescription.enablepartitioning
+[TopicDescription.EnablePartitioning]: https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.topicdescription.enablepartitioning
+[QueueDescription.ForwardTo]: https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.queuedescription.forwardto
 [AMQP 1.0 support for Service Bus partitioned queues and topics]:?view=azure-dotnet service-bus-partitioned-queues-and-topics-amqp-overview.md

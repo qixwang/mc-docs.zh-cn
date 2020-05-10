@@ -3,14 +3,14 @@ title: 模板函数 - 日期
 description: 介绍了可在 Azure 资源管理器模板中用来处理日期的函数。
 ms.topic: conceptual
 origin.date: 04/06/2020
-ms.date: 04/30/2020
+ms.date: 05/08/2020
 ms.author: v-yeche
-ms.openlocfilehash: 8e48bbf671a0547e35658d086ee7caa4d39008f8
-ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
+ms.openlocfilehash: 98f753432021b9a78c48b058cbcbd01ce9a813dc
+ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82596480"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "83001935"
 ---
 # <a name="date-functions-for-arm-templates"></a>ARM 模板的日期函数
 

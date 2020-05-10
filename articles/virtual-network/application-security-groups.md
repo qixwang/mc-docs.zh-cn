@@ -11,16 +11,17 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 02/27/2020
-ms.date: 04/13/2020
+ms.date: 05/06/2020
 ms.author: v-yeche
 ms.reviewer: kumud
-ms.openlocfilehash: a7cc5b7087a50b159fb2c058c82db9626c95db98
-ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
+ms.openlocfilehash: 1fed11d28b9c0dac78d492666665316924251034
+ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82093544"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "83002074"
 ---
+<!--Verified successfully-->
 # <a name="application-security-groups"></a>应用程序安全组
 
 使用应用程序安全组可将网络安全性配置为应用程序结构的固有扩展，从而可以基于这些组将虚拟机分组以及定义网络安全策略。 可以大量重复使用安全策略，而无需手动维护显式 IP 地址。 平台会处理显式 IP 地址和多个规则集存在的复杂性，让你专注于业务逻辑。 若要更好地理解应用程序安全组，请考虑以下示例：

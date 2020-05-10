@@ -12,12 +12,12 @@ ms.topic: article
 origin.date: 08/13/2019
 ms.date: 09/13/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 0ba20711a6dd904f41359b8213ebe2f3331b3a3f
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 69132634076f0674f40b1a8dddd00026e9922b29
+ms.sourcegitcommit: 1fbdefdace8a1d3412900c6c3f89678d8a9b29bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78850199"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82886834"
 ---
 # <a name="mount-a-virtual-file-system-on-a-batch-pool"></a>在 Batch 池中装载虚拟文件系统
 
@@ -28,7 +28,7 @@ Azure Batch 现在支持在 Batch 池中的 Windows 或 Linux 计算节点上装
 > [!NOTE]
 > 支持在 2019 年 8 月 19 日或之后创建的 Batch 池中装载虚拟文件系统。 在 2019 年 8 月 19 日之前创建的 Batch 池不支持此功能。
 > 
-> 用于在计算节点上装载文件系统的 API 是 [Batch .NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch?view=azure-dotnet) 库的一部分。
+> 用于在计算节点上装载文件系统的 API 是 [Batch .NET](https://docs.azure.cn/dotnet/api/microsoft.azure.batch?view=azure-dotnet) 库的一部分。
 
 ## <a name="benefits-of-mounting-on-a-pool"></a>在池中装载可获得的优势
 

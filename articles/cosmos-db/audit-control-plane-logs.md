@@ -5,14 +5,14 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 03/16/2020
-ms.date: 04/27/2020
+ms.date: 05/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 1051ee5234bb0cf2ba3117c93e5b8f0688b44c0c
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.openlocfilehash: cec9fb931826664e783d69b627ae180d1221cd52
+ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82135178"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "83002100"
 ---
 # <a name="how-to-audit-azure-cosmos-db-control-plane-operations"></a>如何审核 Azure Cosmos DB 控制平面操作
 

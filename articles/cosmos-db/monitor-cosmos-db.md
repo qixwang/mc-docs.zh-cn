@@ -5,15 +5,15 @@ author: rockboyfor
 services: cosmos-db
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/27/2020
+ms.date: 05/06/2020
 ms.author: v-yeche
 ms.custom: subject-monitoring
-ms.openlocfilehash: cb1652038a6b719ab9e512b8de4e13993276abb0
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.openlocfilehash: 2dcdea9198721cf46dc4a0e79a7c89873df7be2b
+ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82135138"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "83002080"
 ---
 # <a name="monitoring-azure-cosmos-db"></a>监视 Azure Cosmos DB
 当你的关键应用程序和业务流程依赖于 Azure 资源时，你需要监视这些资源的可用性、性能和操作。 本文介绍 Azure Cosmos 数据库生成的监视数据，以及如何使用 Azure Monitor 的功能在此数据的基础上进行分析和发出警报。
@@ -94,6 +94,8 @@ Azure Monitor 日志中的数据以表形式存储，每个表包含自己独有
 ### <a name="azure-cosmos-db-log-analytics-queries-in-azure-monitor"></a>Azure Monitor 中的 Azure Cosmos DB Log Analytics 查询
 
 可在“日志搜索”搜索栏中输入下面这些查询，以帮助监视 Azure Cosmos 容器。  这些查询使用[新语言](../azure-monitor/log-query/log-query-overview.md)。
+
+<!--CORRECT ON [new language](../azure-monitor/log-query/log-query-overview.md)-->
 
 下面是一些可用于帮助监视 Azure Cosmos 数据库的查询。
 

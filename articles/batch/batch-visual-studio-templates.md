@@ -3,24 +3,24 @@ title: 使用 Visual Studio 模板生成解决方案 - Azure Batch | Docs
 description: 了解 Visual Studio 项目模板如何帮助在 Azure Batch 上实现和运行计算密集型工作负荷。
 services: batch
 documentationcenter: .net
-author: lingliw
-manager: digimobile
+author: LauraBrenner
+manager: evansma
 editor: ''
 ms.assetid: 5e041ae2-25af-4882-a79e-3aa63c4bfb20
 ms.service: batch
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
-origin.date: 02/27/2018
-ms.date: 09/07/2018
-ms.author: v-lingwu
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 15c86ab7ffb0de835466c4a66c89cd08e9ae3ec7
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+origin.date: 02/27/2017
+ms.date: 04/27/2020
+ms.author: v-tawe
+ms.custom: seodec18
+ms.openlocfilehash: cf76cf06bc9a915cb9e9b34f594d1fc889ba5596
+ms.sourcegitcommit: 1fbdefdace8a1d3412900c6c3f89678d8a9b29bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74838628"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82886863"
 ---
 # <a name="use-visual-studio-project-templates-to-jump-start-batch-solutions"></a>使用 Visual Studio 项目模板快速启动 Batch 解决方案
 
@@ -445,7 +445,7 @@ parameters.json 的资源文件，如果找到，则将它加载为参数字典�
 [nuget_package]: https://www.nuget.org/packages/Microsoft.Azure.Batch.Conventions.Files
 [process_exitcode]: https://msdn.microsoft.com/library/system.diagnostics.process.exitcode.aspx
 [vs_gallery]: https://visualstudiogallery.msdn.microsoft.com/
-[vs_gallery_templates]: https://go.microsoft.com/fwlink/?linkid=820714
+[vs_gallery_templates]: https://github.com/Azure/batch-extension-templates
 [vs_find_use_ext]: https://msdn.microsoft.com/library/dd293638.aspx
 
 [diagram01]: ./media/batch-visual-studio-templates/diagram01.png

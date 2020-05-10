@@ -4,15 +4,16 @@ description: 了解如何设置 Log Analytics 代理以监视 Azure Service Fabr
 author: rockboyfor
 ms.topic: conceptual
 origin.date: 04/16/2018
-ms.date: 04/13/2020
+ms.date: 05/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 48f633d5c261214a3bbd6bc90f4c52e99bcdc256
-ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
+ms.openlocfilehash: 0a2ecefe269b35789b589bf5cbe38b1363a7e0a2
+ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82093430"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "83002013"
 ---
+<!--VM extension exists on Azure China Cloud-->
 # <a name="performance-monitoring-with-azure-monitor-logs"></a>使用 Azure Monitor 日志进行性能监视
 
 本文介绍如何逐步将 Log Analytics 代理作为虚拟机规模集扩展添加到群集并将其连接到现有的 Azure Log Analytics 工作区。 这可收集关于容器、应用程序和性能监视的诊断数据。 通过将其作为扩展添加到虚拟机规模集资源，Azure 资源管理器可确保它安装在每个节点上，即使在缩放群集时也是如此。

@@ -6,14 +6,14 @@ author: rockboyfor
 ms.service: firewall
 ms.topic: conceptual
 origin.date: 03/25/2020
-ms.date: 04/06/2020
+ms.date: 05/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 28e511b16f588a3da2f51484feed34f9fcf2974b
-ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
+ms.openlocfilehash: c6f62dd9fc7cd4624240d606768820cf1f685b19
+ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82093542"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "83002064"
 ---
 # <a name="azure-firewall-remote-work-support"></a>Azure 防火墙远程工作支持
 

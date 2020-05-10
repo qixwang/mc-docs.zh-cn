@@ -8,15 +8,15 @@ ms.subservice: dsc
 author: WenJason
 ms.author: v-jay
 origin.date: 08/08/2019
-ms.date: 12/09/2019
+ms.date: 05/11/2020
 ms.topic: conceptual
 manager: digimobile
-ms.openlocfilehash: 59e18fe0b7792882b066fcd0ca26fa8fd46624c2
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: f756a7daf9e570888616a3693a0e5620c16d3238
+ms.sourcegitcommit: 7443ff038ea8afe511f7419d9c550d27fb642246
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74884000"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "83001645"
 ---
 # <a name="create-configurations-from-existing-servers"></a>从现有服务器创建配置
 
@@ -40,7 +40,7 @@ ms.locfileid: "74884000"
 使用此解决方案的结果是生成与 SharePointDSC 配置脚本配合使用的[配置数据](https://github.com/Microsoft/sharepointDSC.reverse#configuration-data)。
 
 生成数据文件后，可以在 [DSC 配置脚本](https://docs.microsoft.com/powershell/scripting/dsc/overview/overview)中使用这些文件生成 MOF 文件，并[将 MOF 文件上传到 Azure 自动化](/automation/tutorial-configure-servers-desired-state#create-and-upload-a-configuration-to-azure-automation)。
-然后从[本地](/automation/automation-dsc-onboarding#physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azure)或[在 Azure 中](/automation/automation-dsc-onboarding#azure-virtual-machines)注册服务器以拉取配置。
+然后从[本地](/automation/automation-dsc-onboarding#onboarding-physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azure)或[在 Azure 中](/automation/automation-dsc-onboarding#onboarding-azure-vms)注册服务器以拉取配置。
 
 若要试用 ReverseDSC，请访问 [PowerShell 库](https://www.powershellgallery.com/packages/ReverseDSC/)并下载解决方案，或单击“项目站点”以查看[文档](https://github.com/Microsoft/sharepointDSC.reverse)。
 

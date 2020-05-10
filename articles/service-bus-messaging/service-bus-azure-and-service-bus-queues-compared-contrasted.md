@@ -15,12 +15,12 @@ ms.workload: tbd
 origin.date: 01/23/2019
 ms.date: 09/23/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 08cb6d34c2ce43ba88c542c2074c6b914d9ae0b2
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 6b2524404bdbef562f1579428179f480c48751f4
+ms.sourcegitcommit: 1fbdefdace8a1d3412900c6c3f89678d8a9b29bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77028932"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82886934"
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>存储队列和服务总线队列 - 比较与对照
 本文分析 Azure 目前提供的以下两种队列类型之间的差异和相似性：存储队列和服务总线队列。 使用该信息可以比较和对照这两种技术，并可以明智地决定哪种解决方案最符合需要。
@@ -50,7 +50,7 @@ Azure 支持两种队列机制：“存储队列”和“服务总线队列”  
 * 解决方案必须能够在无需轮询队列的情况下接收消息。 有了服务总线，就可以使用服务总线支持的基于 TCP 的协议，通过长轮询接收操作实现这一点。
 * 解决方案要求队列必须遵循先入先出 (FIFO) 的传递顺序。
 * 解决方案必须能够支持自动重复检测。
-* 希望应用程序将消息作为长时间运行的并行流进行处理（使用消息的 [SessionId](https://docs.azure.cn/zh-cn/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sessionid?view=azure-dotnet) 属性，将消息与流相关联）。 在这种模式下，消费应用程序中的每个节点会竞争流而不是消息。 当流被提供给某个消费节点时，该节点可以使用事务检查应用程序流的状态。
+* 希望应用程序将消息作为长时间运行的并行流进行处理（使用消息的 [SessionId](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sessionid?view=azure-dotnet) 属性，将消息与流相关联）。 在这种模式下，消费应用程序中的每个节点会竞争流而不是消息。 当流被提供给某个消费节点时，该节点可以使用事务检查应用程序流的状态。
 * 解决方案在发送或接收来自队列的多个消息时，需要事务行为和原子性。
 * 应用程序处理的消息介于 64 KB 和 256 KB 之间。
 * 需要向队列提供基于角色的访问模型，为发送方和接收方提供不同权限。
@@ -89,7 +89,7 @@ Azure 支持两种队列机制：“存储队列”和“服务总线队列”  
 * 服务总线队列为单个队列的上下文中的本地事务提供支持。
 * 服务总线支持的“接收与删除”  模式提供了减少消息传送操作计数（和相关成本）以换取降低安全传递保证的能力。
 * 存储队列提供租赁且可延长消息租赁时间。 这使工作进程能够对消息保持短的租赁时间。 因此，如果某个工作进程崩溃，则其他工作进程可以再次快速处理该消息。 此外，如果工作进程处理消息所需的时间比当前租赁时间长，则工作进程可以延长该消息的租赁时间。
-* 存储队列提供了可见性超时，可针对消息入队或出队进行设置。 此外，可以在运行时使用不同租赁值更新消息，并且可以跨同一队列的消息更新不同值。 服务总线锁定超时值在队列元数据中定义，但是可以通过调用 [RenewLock](https://docs.azure.cn/zh-cn/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.renewlock?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_RenewLock) 方法续订该锁。
+* 存储队列提供了可见性超时，可针对消息入队或出队进行设置。 此外，可以在运行时使用不同租赁值更新消息，并且可以跨同一队列的消息更新不同值。 服务总线锁定超时值在队列元数据中定义，但是可以通过调用 [RenewLock](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.renewlock?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_RenewLock) 方法续订该锁。
 * 服务总线队列中阻塞接收操作的最大超时值为 24 天。 但是，基于 REST 的最大超时值为 55 秒。
 * 服务总线提供的客户端批处理允许队列客户端将多个消息纳入一个发送操作中进行批处理。 批处理仅适用于异步发送操作。
 * 有些特性，例如存储队列的 200 TB 上限（虚拟化帐户时更多）和无限制队列，使得它成为 SaaS 提供商的理想平台。

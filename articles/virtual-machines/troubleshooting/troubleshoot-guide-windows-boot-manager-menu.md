@@ -13,15 +13,16 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 origin.date: 03/26/2020
-ms.date: 04/30/2020
+ms.date: 05/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 5ad30a407201f49a50499a2b63f36d9bdf5f42d2
-ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
+ms.openlocfilehash: 9157ab0e5431776918be1740f62e086fae1768d5
+ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82596501"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "83002088"
 ---
+<!--Verified successfully-->
 # <a name="windows-vm-cannot-boot-due-to-windows-boot-manager"></a>Windows VM 因 Windows 启动管理器而无法启动
 
 本文提供了相关步骤，用于解决 Windows 启动管理器阻止 Azure 虚拟机 (VM) 启动的问题。

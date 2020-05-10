@@ -5,14 +5,14 @@ keywords: azure powershell, powershell 脚本教程, powershell 自动化
 services: automation
 ms.subservice: process-automation
 origin.date: 11/27/2018
-ms.date: 03/30/2020
+ms.date: 05/11/2020
 ms.topic: conceptual
-ms.openlocfilehash: 56294316349dc834a0b1723daf49b499a7d052e7
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: fafc5ad23f228f23363210863734611da1bc399b
+ms.sourcegitcommit: 7443ff038ea8afe511f7419d9c550d27fb642246
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80290354"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "83001635"
 ---
 # <a name="my-first-powershell-runbook"></a>我的第一个 PowerShell Runbook
 
@@ -88,7 +88,7 @@ PowerShell Runbook 与 PowerShell 工作流 Runbook 具有相同的生命周期�
 
 1. 单击“发布”以发布该 Runbook，并在出现提示时单击“是”   。
 1. 向左滚动以在“Runbook”页上查看该 Runbook，请注意“创作状态”值设置为“已发布”。  
-1. 向右滚动查看 **MyFirstRunbook-PowerShell**的窗格。
+1. 向右滚动查看“MyFirstRunbook-PowerShell”的页。 
    
    使用顶部的选项可以立即启动 Runbook、计划将来的启动时间，或创建一个 [Webhook](automation-webhooks.md)，以便可以通过 HTTP 调用启动 Runbook。
 1. 选择“启动”，并在出现提示时选择“是”   启动 runbook。 
@@ -96,7 +96,7 @@ PowerShell Runbook 与 PowerShell 工作流 Runbook 具有相同的生命周期�
 
    ![作业摘要](media/automation-first-runbook-textual-powershell/job-pane-status-blade-jobsummary.png)
 
-1. Runbook 状态显示为 `Completed` 后，单击“输出”打开“输出”页，在其中可以看到显示了 `Hello World`。 
+1. Runbook 状态显示为“已完成”后，单击“输出”打开“输出”页，可以看到其中显示了 `Hello World`。 
 
    ![作业输出](media/automation-first-runbook-textual-powershell/job-pane-status-blade-outputtile.png)
 
@@ -107,7 +107,7 @@ PowerShell Runbook 与 PowerShell 工作流 Runbook 具有相同的生命周期�
 
    ![所有日志](media/automation-first-runbook-textual-powershell/job-pane-status-blade-alllogstile.png)
 
-1. 关闭“流”窗格和“作业”窗格以返回到“MyFirstRunbook-PowerShell”页。 
+1. 关闭“流”窗格和“作业”窗格，返回到“MyFirstRunbook-PowerShell”页。
 1. 在“详细信息”下，单击“作业”打开此 Runbook 的“作业”页   。 此页面将列出你的 Runbook 创建的所有作业。 由于只运行了一次作业，因此你应当只会看到一个作业。
 
    ![作业列表](media/automation-first-runbook-textual-powershell/runbook-control-job-tile.png)
@@ -146,7 +146,7 @@ PowerShell Runbook 与 PowerShell 工作流 Runbook 具有相同的生命周期�
 
    Get-AzureRmVM -ResourceGroupName myResourceGroup -AzureRmContext $AzureContext
    ```
-1. 在“MyFirstRunbook-PowerShell”页上单击“编辑”打开文本编辑器。  
+1. 通过单击 MyFirstRunbook-PowerShell 页上的“编辑”  打开文本编辑器。
 1. 不再需要 `Write-Output` 行。 请直接删除它。
 1. 键入（或者复制并粘贴）以下代码，对自动化运行方式帐户的身份验证进行处理。
 
@@ -212,7 +212,7 @@ PowerShell Runbook 与 PowerShell 工作流 Runbook 具有相同的生命周期�
 
 ## <a name="step-7---add-an-input-parameter"></a>步骤 7 - 添加输入参数
 
-Runbook 当前会启动已在 Runbook 中硬编码的虚拟机。 如果在启动 Runbook 时指定虚拟机，该 Runbook 将更有用。 将输入参数添加到 Runbook，以提供该功能。
+Runbook 当前会启动已在 Runbook 中硬编码的虚拟机。 如果在启动 Runbook 时指定虚拟机，该 Runbook 会更有用。 将输入参数添加到 Runbook，以提供该功能。
 
 1. 在文本编辑器中，修改 `Start-AzureRmVM` cmdlet 以便对参数 `VMName` 和 `ResourceGroupName` 使用变量。 
 

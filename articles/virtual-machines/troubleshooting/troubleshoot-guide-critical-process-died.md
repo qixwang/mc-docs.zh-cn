@@ -13,15 +13,16 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 origin.date: 03/26/2020
-ms.date: 04/30/2020
+ms.date: 05/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: fb880997b49e372951558e397d00313f4e97289b
-ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
+ms.openlocfilehash: 43498f97b8961d839c912a596e4fd95a87c18371
+ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82596506"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "83002089"
 ---
+<!--Verified successfully (Not Azure enable serial console-->
 # <a name="windows-stop-error---0x000000ef-critical-process-died"></a>Windows 停止错误 - #0x000000EF“关键进程已终止”
 
 本文提供用于解决在 Azure VM 中启动期间关键进程终止的问题的步骤。

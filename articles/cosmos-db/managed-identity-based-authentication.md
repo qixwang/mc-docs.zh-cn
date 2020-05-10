@@ -5,15 +5,15 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 03/20/2020
-ms.date: 04/27/2020
+ms.date: 05/06/2020
 ms.author: v-yeche
 ms.reviewer: sngun
-ms.openlocfilehash: 46f6f3396aeab04a4beb8c19aac6462ccff224e2
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.openlocfilehash: 7ba86ca757a9501e694180446e673f3483a679e2
+ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82135160"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "83002103"
 ---
 <!--Verified successfully on Portal section-->
 # <a name="use-system-assigned-managed-identities-to-access-azure-cosmos-db-data"></a>使用系统分配的托管标识访问 Azure Cosmos DB 数据

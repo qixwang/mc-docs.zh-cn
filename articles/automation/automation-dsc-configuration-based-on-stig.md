@@ -8,15 +8,15 @@ ms.subservice: dsc
 author: WenJason
 ms.author: v-jay
 origin.date: 08/08/2019
-ms.date: 12/09/2019
+ms.date: 05/11/2020
 ms.topic: conceptual
 manager: digimobile
-ms.openlocfilehash: e41e6e936e1c8c9bada01537929a618e36abd0aa
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: e4bba0bbdb8241816b349f18f37175ba4da581ad
+ms.sourcegitcommit: 7443ff038ea8afe511f7419d9c550d27fb642246
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74883999"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "83001643"
 ---
 # <a name="configuration-based-on-stig"></a>基于 STIG 的配置
 
@@ -38,9 +38,9 @@ ms.locfileid: "74883999"
 PowerSTIG 通过提供[复合资源](https://github.com/microsoft/powerstig#powerstigdsc)来处理配置的每个区域，而不是尝试在一个大文件中处理整个设置范围，从而解决了此问题。
 
 生成配置后，可以使用 [DSC 配置脚本](https://docs.microsoft.com/powershell/scripting/dsc/configurations/configurations)生成 MOF 文件，并[将 MOF 文件上传到 Azure 自动化](/automation/tutorial-configure-servers-desired-state#create-and-upload-a-configuration-to-azure-automation)。
-然后从[本地](/automation/automation-dsc-onboarding#physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azure)或[在 Azure 中](/automation/automation-dsc-onboarding#azure-virtual-machines)注册服务器以拉取配置。
+然后从[本地](/automation/automation-dsc-onboarding#onboarding-physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azure)或[在 Azure 中](/automation/automation-dsc-onboarding#onboarding-azure-vms)注册服务器以拉取配置。
 
-若要试用 PowerSTIG，请访问 [PowerShell 库](http://www.powershellgallery.com)并下载解决方案，或单击“项目站点”以查看[文档](https://github.com/microsoft/powerstig)。
+若要试用 PowerSTIG，请访问 [PowerShell 库](https://www.powershellgallery.com)并下载解决方案，或单击“项目站点”以查看[文档](https://github.com/microsoft/powerstig)。
 
 ## <a name="next-steps"></a>后续步骤
 

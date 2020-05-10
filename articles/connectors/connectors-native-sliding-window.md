@@ -8,13 +8,14 @@ ms.topic: conceptual
 origin.date: 05/25/2019
 ms.date: 03/09/2020
 ms.author: v-yeche
-ms.openlocfilehash: f308d41e1df7f58941d56c734b1761d8a2357798
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 2cf0b3bf9861c89e77dbbdfb9801b40204cd9468
+ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78304646"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "83002036"
 ---
+<!--Verified successfully on 05/08/2020-->
 # <a name="schedule-and-run-tasks-for-contiguous-data-by-using-the-sliding-window-trigger-in-azure-logic-apps"></a>在 Azure 逻辑应用中使用“滑动窗口”触发器来计划和运行处理连续数据的任务
 
 若要定期运行那些必须以连续区块的形式处理数据的任务、进程或作业，可以使用**滑动窗口**触发器来启动逻辑应用工作流。 可以设置启动工作流的日期、时间和时区，以及设置设置重复该工作流的定期计划。 如果定期计划因某种原因而缺失，此触发器会处理这些缺失的定期计划。 例如，在数据库和备份存储之间同步数据时，请使用“滑动窗口”触发器，使数据在同步时没有产生间隔。 有关内置计划触发器和操作的详细信息，请参阅[使用 Azure 逻辑应用计划和运行定期自动执行的任务和工作流](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md)。

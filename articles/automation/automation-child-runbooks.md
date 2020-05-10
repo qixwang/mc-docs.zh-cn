@@ -6,12 +6,12 @@ ms.subservice: process-automation
 origin.date: 01/17/2019
 ms.date: 03/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: a3fda3cd7d8c6a5463e4a4f799364d151975c65d
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 8d6ed1043fa2bb6f9ea23e340e9a99e639c1234b
+ms.sourcegitcommit: 7443ff038ea8afe511f7419d9c550d27fb642246
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80290357"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "83001654"
 ---
 # <a name="child-runbooks-in-azure-automation"></a>Azure 自动化中的子 Runbook
 
@@ -53,7 +53,7 @@ $output = PSWF-ChildRunbook -VM $vm -RepeatCount 2 -Restart $true
 下面是使用 PowerShell Runbook 作为子级的同一示例。
 
 ```azurepowershell
-$vm = Get-AzureRmVM –ResourceGroupName "LabRG" -Name "MyVM"
+$vm = Get-AzureRmVM -ResourceGroupName "LabRG" -Name "MyVM"
 $output = .\PS-ChildRunbook.ps1 -VM $vm -RepeatCount 2 -Restart $true
 ```
 

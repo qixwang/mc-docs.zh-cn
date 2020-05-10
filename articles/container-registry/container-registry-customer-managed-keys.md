@@ -6,13 +6,14 @@ origin.date: 03/10/2020
 ms.date: 04/06/2020
 ms.author: v-yeche
 ms.custom: ''
-ms.openlocfilehash: aa250dc6a87d96cae43cd01822a5e259835e99ff
-ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
+ms.openlocfilehash: a789b94bfa2b28cc53532ae4f4f7534cb4668c45
+ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82093538"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "83002082"
 ---
+<!--Verified successfully on 05/08/2020-->
 # <a name="encryption-using-customer-managed-keys"></a>使用客户管理的密钥进行加密
 
 当你在 Azure 容器注册表中存储映像和其他项目时，Azure 会自动使用服务托管的密钥对注册表内容进行静态加密。 可以使用在 Azure Key Vault 中创建和管理的密钥，通过一个附加的加密层来补充默认加密。 本文将引导你使用 Azure CLI 和 Azure 门户完成这些步骤。

@@ -15,12 +15,12 @@ ms.workload: na
 origin.date: 09/11/2018
 ms.date: 09/23/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 97f18c236697af86c6f3722f0162f6cc0f4ccb55
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: caf8b04d94538c2d193993fcae9436688ce8c299
+ms.sourcegitcommit: 1fbdefdace8a1d3412900c6c3f89678d8a9b29bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77068285"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82886930"
 ---
 # <a name="create-service-bus-resources-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板创建服务总线资源
 
@@ -67,7 +67,7 @@ Azure 资源管理器模板可帮助你定义要为解决方案部署的资源�
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
+  "$schema": "https://schema.management.chinacloudapi.cn/schemas/2014-04-01-preview/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "serviceBusNamespaceName": {
@@ -142,7 +142,7 @@ Azure 资源管理器模板可帮助你定义要为解决方案部署的资源�
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "$schema": "https://schema.management.chinacloudapi.cn/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "serviceBusNamespaceName": {

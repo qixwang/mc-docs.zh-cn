@@ -2,15 +2,15 @@
 title: 教程 - 部署链接模板
 description: 了解如何部署链接模板
 origin.date: 03/13/2020
-ms.date: 04/30/2020
+ms.date: 05/08/2020
 ms.topic: tutorial
 ms.author: v-yeche
-ms.openlocfilehash: 89615a8dfac40433481aea32728327dbca8d84da
-ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
+ms.openlocfilehash: e6e579d72488f89a94b03f59cda662050abd7835
+ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82596502"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "83002051"
 ---
 # <a name="tutorial-deploy-a-linked-template"></a>教程：部署链接模板
 

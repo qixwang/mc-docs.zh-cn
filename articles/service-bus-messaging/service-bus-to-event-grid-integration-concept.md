@@ -15,12 +15,12 @@ ms.topic: conceptual
 origin.date: 01/27/2020
 ms.date: 2/6/2020
 ms.author: aschhab
-ms.openlocfilehash: f1799a75b93323235e9e4319ce42ce32074be3e3
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 81d582c4d061c75e4eabbd7f243a0b78246c4477
+ms.sourcegitcommit: 1fbdefdace8a1d3412900c6c3f89678d8a9b29bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77068282"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82886931"
 ---
 # <a name="azure-service-bus-to-event-grid-integration-overview"></a>Azure 服务总线到事件网格的集成概述
 
@@ -64,7 +64,7 @@ Azure 服务总线已推出与 Azure 事件网格集成的新功能。 此功能
   "id": "dede87b0-3656-419c-acaf-70c95ddc60f5",
   "data": {
     "namespaceName": "YOUR SERVICE BUS NAMESPACE WILL SHOW HERE",
-    "requestUri": "https://YOUR-SERVICE-BUS-NAMESPACE-WILL-SHOW-HERE.servicebus.windows.net/TOPIC-NAME/subscriptions/SUBSCRIPTIONNAME/messages/head",
+    "requestUri": "https://YOUR-SERVICE-BUS-NAMESPACE-WILL-SHOW-HERE.servicebus.chinacloudapi.cn/TOPIC-NAME/subscriptions/SUBSCRIPTIONNAME/messages/head",
     "entityType": "subscriber",
     "queueName": "QUEUE NAME IF QUEUE",
     "topicName": "TOPIC NAME IF TOPIC",
@@ -90,7 +90,7 @@ Azure 服务总线已推出与 Azure 事件网格集成的新功能。 此功能
   "id": "dede87b0-3656-419c-acaf-70c95ddc60f5",
   "data": {
     "namespaceName": "YOUR SERVICE BUS NAMESPACE WILL SHOW HERE",
-    "requestUri": "https://YOUR-SERVICE-BUS-NAMESPACE-WILL-SHOW-HERE.servicebus.windows.net/TOPIC-NAME/subscriptions/SUBSCRIPTIONNAME/$deadletterqueue/messages/head",
+    "requestUri": "https://YOUR-SERVICE-BUS-NAMESPACE-WILL-SHOW-HERE.servicebus.chinacloudapi.cn/TOPIC-NAME/subscriptions/SUBSCRIPTIONNAME/$deadletterqueue/messages/head",
     "entityType": "subscriber",
     "queueName": "QUEUE NAME IF QUEUE",
     "topicName": "TOPIC NAME IF TOPIC",

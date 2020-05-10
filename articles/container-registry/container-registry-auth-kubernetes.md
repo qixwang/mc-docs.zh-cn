@@ -5,21 +5,21 @@ ms.topic: article
 author: rockboyfor
 ms.reviewer: danlep
 origin.date: 02/10/2020
-ms.date: 03/09/2020
+ms.date: 05/08/2020
 ms.author: v-yeche
-ms.openlocfilehash: 2dd6beccf1fde1f59796f7233d1a25679c06c15b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 274ac8f78eb955b8259838988edd9fcf8d4da417
+ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78850480"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "83002085"
 ---
 # <a name="pull-images-from-an-azure-container-registry-to-a-kubernetes-cluster"></a>将映像从 Azure 容器注册表拉取到 Kubernetes 群集
 
 你可以将 Azure 容器注册表用作容器映像的来源，并将其用于任何 Kubernetes 群集，包括“本地”Kubernetes 群集，例如 [minikube](https://minikube.sigs.k8s.io/) 和 [kind](https://kind.sigs.k8s.io/)。 本文展示了如何基于 Azure Active Directory 服务主体创建 Kubernetes 拉取机密。 然后，在 Kubernetes 部署中使用该机密从 Azure 容器注册表中拉取映像。
 
 > [!TIP]
-> 如果你使用托管 [Azure Kubernetes 服务](../aks/intro-kubernetes.md)，则还可以[将群集与目标 Azure 容器注册表集成](../aks/cluster-container-registry-integration.md?toc=/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json)以用于映像拉取。 
+> 如果你使用托管 [Azure Kubernetes 服务](../aks/intro-kubernetes.md)，则还可以[将群集与目标 Azure 容器注册表集成](../aks/cluster-container-registry-integration.md?toc=/container-registry/toc.json&bc=/container-registry/breadcrumb/toc.json)以用于映像拉取。 
 
 本文假设你已创建了一个专用 Azure 容器注册表。 你还需要确保 Kubernetes 群集正在运行并可通过 `kubectl` 命令行工具访问。
 

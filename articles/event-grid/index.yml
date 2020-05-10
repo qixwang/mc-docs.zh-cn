@@ -9,15 +9,15 @@ metadata:
   ms.subservice: 
   ms.topic: landing-page
   ms.collection: collection
-  author: spelluru
-  ms.author: spelluru
-  ms.date: 09/06/2019
-  ms.openlocfilehash: a55e3c278e6880cbff3338a1095de1bf5331bc11
-  ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+  author: Johnnytechn
+  ms.author: v-johya
+  ms.date: 05/06/2020
+  ms.openlocfilehash: 27e08af421b566f72db129bd76e40b2548a104b2
+  ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 04/17/2020
-  ms.locfileid: "80417387"
+  ms.lasthandoff: 05/09/2020
+  ms.locfileid: "83001958"
 landingContent:
 - title: 关于事件网格
   linkLists:
@@ -30,7 +30,7 @@ landingContent:
     - text: 事件网格概念
       url: concepts.md
     - text: 事件源
-      url: event-sources.md
+      url: overview.md#event-sources
     - text: 事件处理程序
       url: event-handlers.md
     - text: 事件筛选器
@@ -41,6 +41,8 @@ landingContent:
     links:
     - text: 将 Blob 存储事件路由到 Web 终结点
       url: blob-event-quickstart-portal.md
+    - text: 作为事件处理程序的 Azure Functions
+      url: custom-event-to-function.md
     - text: 充当事件处理程序的队列存储
       url: custom-event-to-queue-storage.md
     - text: 充当事件处理程序的事件中心

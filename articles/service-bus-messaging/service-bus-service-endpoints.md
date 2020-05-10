@@ -12,12 +12,12 @@ ms.topic: article
 origin.date: 12/20/2019
 ms.date: 1/20/2020
 ms.author: v-lingwu
-ms.openlocfilehash: 096e6f9594e1bd25e48f71c17eea7a17f53895db
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 7a357d4cce0695c4b66111bfc9602662716a4298
+ms.sourcegitcommit: 1fbdefdace8a1d3412900c6c3f89678d8a9b29bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80109749"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82886811"
 ---
 # <a name="use-virtual-network-service-endpoints-with-azure-service-bus"></a>使用具有 Azure 服务总线的虚拟网络服务终结点
 
@@ -92,7 +92,7 @@ ms.locfileid: "80109749"
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.chinacloudapi.cn/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
       "servicebusNamespaceName": {

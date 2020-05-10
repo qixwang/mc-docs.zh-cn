@@ -13,15 +13,16 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 origin.date: 03/31/2020
-ms.date: 04/27/2020
+ms.date: 05/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 186b02184db3032cdef8c7e87ae457432c7d9260
-ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
+ms.openlocfilehash: 722006e67ddadee71f5d558d2229f3b1b1f70528
+ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82596515"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "83001980"
 ---
+<!--Verified successfully-->
 # <a name="vm-is-unresponsive-with-c01a001d-error-when-applying-windows-update"></a>应用 Windows 更新时 VM 无响应并出现“C01A001D”错误
 
 本文提供的步骤可以解决 Windows 更新 (KB) 产生错误并且 Azure VM 无响应的问题。

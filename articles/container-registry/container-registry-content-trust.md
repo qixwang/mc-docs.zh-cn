@@ -3,15 +3,16 @@ title: 管理签名映像
 description: 了解如何为 Azure 容器注册表启用内容信任，以及如何推送和拉取签名映像。
 ms.topic: article
 origin.date: 09/06/2019
-ms.date: 04/06/2020
+ms.date: 05/08/2020
 ms.author: v-yeche
-ms.openlocfilehash: 2bf67d11c7f469660233d729929a6ef3828894ca
-ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
+ms.openlocfilehash: c003129c98ccac61bb5a3a2dced7f12c94582b0b
+ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82093533"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "83002084"
 ---
+<!--Verified successfully on 05/08/2020-->
 # <a name="content-trust-in-azure-container-registry"></a>Azure 容器注册表中的内容信任
 
 Azure 容器注册表实现了 Docker 的[内容信任][docker-content-trust]模型，支持推送和拉取已签名的映像。 本文可帮助你开始在容器注册表中启用内容信任。

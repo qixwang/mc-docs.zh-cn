@@ -7,14 +7,14 @@ ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
 origin.date: 04/23/2019
-ms.date: 12/02/2019
+ms.date: 05/11/2020
 ms.author: v-jay
-ms.openlocfilehash: afa6ffef3db7466c53414fb1567b756ca8875988
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: fa35e575d235c844e0d512a9801f26416b387e37
+ms.sourcegitcommit: 7443ff038ea8afe511f7419d9c550d27fb642246
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74655416"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "83001658"
 ---
 # <a name="tutorial-order-azure-data-box"></a>教程：订购 Azure Data Box
 
@@ -34,20 +34,13 @@ Azure Data Box 是一个混合解决方案，可用于快速、方便、可靠�
 
 ### <a name="for-service"></a>对于服务
 
-在开始之前，请确保：
-- 具有 Azure 存储帐户和访问凭据。
-- 确保用于 Data Box 服务的订阅是下述类型之一：
-    - Microsoft 企业协议 (EA)。 详细了解 [EA 订阅](https://azure.cn/pricing/enterprise-agreement/)。
-    - Microsoft Azure 赞助。 详细了解 [Azure 赞助计划](https://azure.microsoft.com/offers/ms-azr-0036p/)。
-
-- 确保有订阅的所有者或参与者访问权限，以便创建 Data Box 订单。
+[!INCLUDE [Data Box service prerequisites](../../includes/data-box-supported-subscriptions.md)]
 
 ### <a name="for-device"></a>对于设备
 
 在开始之前，请确保：
 - 应该将一个主机连接到数据中心网络。 Data Box 会从此计算机复制数据。 主机必须按照 [Azure Data Box 系统要求](data-box-system-requirements.md)中的说明运行支持的操作系统。
 - 数据中心需要有高速网络。 强烈建议你至少建立一个 10 GbE 连接。 如果 10 GbE 连接不可用，则可使用 1 GbE 数据链路，但复制速度会受影响。
-
 
 ## <a name="order-data-box"></a>订购 Data Box
 

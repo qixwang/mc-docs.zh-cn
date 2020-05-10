@@ -9,14 +9,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 06/11/2018
-ms.date: 04/06/2020
+ms.date: 05/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 5ae1d5b1468ea6144ee6d9c121c9f897a81136b2
-ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
+ms.openlocfilehash: e8cf203bb7317a72b5243a9a322198fee5193672
+ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82093547"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "83001957"
 ---
 <!--Verified successfully-->
 # <a name="traffic-manager-metrics-and-alerts"></a>流量管理器指标和警报

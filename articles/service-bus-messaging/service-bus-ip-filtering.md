@@ -11,12 +11,12 @@ ms.topic: article
 origin.date: 12/20/2019
 ms.date: 2/6/2020
 ms.author: v-lingwu
-ms.openlocfilehash: e0214b9d0877c73dcb96746ab90567ae5b6665b8
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 45fc675aae6067c6610c291ff68e7b09e9710bee
+ms.sourcegitcommit: 1fbdefdace8a1d3412900c6c3f89678d8a9b29bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77068027"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82886926"
 ---
 # <a name="azure-service-bus---use-firewall-rules"></a>Azure 服务总线 - 使用防火墙规则
 
@@ -82,7 +82,7 @@ IP 筛选器规则将按顺序应用，与 IP 地址匹配的第一个规则决�
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.chinacloudapi.cn/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
       "servicebusNamespaceName": {

@@ -14,12 +14,12 @@ ms.topic: article
 origin.date: 01/24/2020
 ms.date: 2/6/2020
 ms.author: v-lingwu
-ms.openlocfilehash: 36c5d218f04b3b17f731fdeeb82833f4dc670f3d
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: f176d2d9c758a2771decb96007db05c2ce2ee294
+ms.sourcegitcommit: 1fbdefdace8a1d3412900c6c3f89678d8a9b29bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77068039"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82886922"
 ---
 # <a name="suspend-and-reactivate-messaging-entities-disable"></a>暂停（禁用）和重新激活消息实体
 
@@ -33,7 +33,7 @@ ms.locfileid: "77068039"
 
 ![][1]
 
-门户只容许完全禁用队列。 也可以单独禁用发送和接收操作，方法是在 .NET Framework SDK 中使用服务总线 [NamespaceManager](https://docs.azure.cn/zh-cn/dotnet/api/microsoft.servicebus.namespacemanager?view=azure-dotnet) API，或通过 Azure CLI 或 Azure PowerShell 使用 Azure 资源管理器模板。
+门户只容许完全禁用队列。 也可以单独禁用发送和接收操作，方法是在 .NET Framework SDK 中使用服务总线 [NamespaceManager](https://docs.azure.cn/dotnet/api/microsoft.servicebus.namespacemanager?view=azure-dotnet) API，或通过 Azure CLI 或 Azure PowerShell 使用 Azure 资源管理器模板。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -48,7 +48,7 @@ ms.locfileid: "77068039"
 
 对于订阅和主题，只能设置“Active”  和“Disabled”  。
 
-[EntityStatus](https://docs.azure.cn/zh-cn/dotnet/api/microsoft.servicebus.messaging.entitystatus?view=azure-dotnet) 枚举还定义了一组只能由系统设置的过渡状态。 下面的示例展示了用于禁用队列的 PowerShell 命令。 重新激活命令等同于以下示例，只需将 `Status` 设置为“Active”  即可。
+[EntityStatus](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.entitystatus?view=azure-dotnet) 枚举还定义了一组只能由系统设置的过渡状态。 下面的示例展示了用于禁用队列的 PowerShell 命令。 重新激活命令等同于以下示例，只需将 `Status` 设置为“Active”  即可。
 
 ```powershell
 $q = Get-AzServiceBusQueue -ResourceGroup mygrp -NamespaceName myns -QueueName myqueue

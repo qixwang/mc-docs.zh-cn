@@ -5,15 +5,15 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 04/04/2020
-ms.date: 04/27/2020
+ms.date: 05/06/2020
 ms.author: v-yeche
 ms.reviewer: sngun
-ms.openlocfilehash: 9f3b9b1472110f23982f992d6f7bf8f578022d74
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.openlocfilehash: 8d3e83a0288d3c799f94e2f841586e9dd6688d06
+ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82135174"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "83002094"
 ---
 # <a name="secondary-indexing-in-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API 中的辅助索引编制
 

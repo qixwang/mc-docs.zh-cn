@@ -11,15 +11,16 @@ ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 origin.date: 10/31/2019
-ms.date: 02/10/2020
+ms.date: 05/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: a2e2f7ce8c5e0b3b24f47f79697ef604d890fa5f
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 276c5333b4f96ba0f12b3c2a008a072c845de134
+ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77429955"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "83002057"
 ---
+<!--Verified successfully-->
 # <a name="troubleshoot-virtual-machine-deployment-due-to-detached-disks"></a>对由于磁盘分离导致的虚拟机部署错误进行故障排除
 
 ## <a name="symptom"></a>症状

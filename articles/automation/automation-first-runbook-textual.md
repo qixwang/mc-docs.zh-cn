@@ -5,14 +5,14 @@ keywords: powershell 工作流, powershell 工作流示例, 工作流 powershell
 services: automation
 ms.subservice: process-automation
 origin.date: 09/24/2018
-ms.date: 03/30/2020
+ms.date: 05/11/2020
 ms.topic: conceptual
-ms.openlocfilehash: d66b25ca4a02bb7bb8e057e170f0c82d85189a18
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 29298ec3372f8374362401955101be2d5f0789e7
+ms.sourcegitcommit: 7443ff038ea8afe511f7419d9c550d27fb642246
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80290380"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "83001634"
 ---
 # <a name="my-first-powershell-workflow-runbook"></a>我的第一个 PowerShell 工作流 Runbook
 
@@ -77,7 +77,7 @@ ms.locfileid: "80290380"
 1. 单击“启动”  以启动测试，并测试唯一启用的选项。
 1. 请注意已创建一个 [Runbook 作业](automation-runbook-execution.md)，其状态显示在窗格中。
 
-   作业状态最初为 `Queued`，表示该作业正在等待云中的 Runbook 辅助角色变为可用状态。 在某个辅助角色认领该作业后，状态将更改为 `Starting`。 最后，在 Runbook 实际开始运行时，状态将变为 `Running`。
+   作业状态一开始为“排队”，表明作业正在等待云中的 Runbook 辅助角色变为可用状态。 在某个辅助角色认领该作业后，其状态会变为“正在启动”。 最后，当 Runbook 开始实际运行时，其状态会变为“正在运行”。
 
 1. Runbook 作业完成后，“测试”窗格会显示其输出。 在本例中，你会看到 `Hello World`。
 
@@ -105,7 +105,7 @@ ms.locfileid: "80290380"
 
    ![作业摘要](media/automation-first-runbook-textual/job-pane-status-blade-jobsummary.png)
 
-1. 在此 Runbook 状态显示为 `Completed` 后，单击“输出”  。 “输出”页面将打开，可以在其中看到 `Hello World` 消息。
+1. 在 Runbook 状态显示为“已完成”后，单击“输出”  。 “输出”页面将打开，可以在其中看到 `Hello World` 消息。
 
    ![作业摘要](media/automation-first-runbook-textual/job-pane-status-blade-outputtile.png)
 
@@ -115,7 +115,7 @@ ms.locfileid: "80290380"
 
    ![作业摘要](media/automation-first-runbook-textual/job-pane-status-blade-alllogstile.png)
 
-1. 关闭“流”窗格和“作业”窗格以返回到 **MyFirstRunbook** 页面。
+1. 关闭“流”窗格和“作业”窗格以返回到 MyFirstRunbook 页。
 1. 在“资源”下单击“作业”以打开此 Runbook 的“作业”页面。   此页面将列出你的 Runbook 创建的所有作业。 由于只运行了一次作业，因此你应当只会看到一个作业。
 
    ![作业](media/automation-first-runbook-textual/runbook-control-job-tile.png)
@@ -129,7 +129,7 @@ ms.locfileid: "80290380"
 >[!NOTE]
 >对于 PowerShell Runbook，**Add-AzureRMAccount** 和 **login-AzureRMAccount** 是 **Connect-AzureRmAccount** 的别名。
 
-1. 导航到“MyFirstRunbook-Workflow”  页面，并通过单击“编辑”打开文本编辑器。 
+1. 导航到 MyFirstRunbook-Workflow 页，通过单击“编辑”打开文本编辑器  。
 2. 删除 `Write-Output` 行。
 3. 将光标放在大括号之间的空白行上。
 4. 键入（或者复制并粘贴）以下代码，对自动化运行方式帐户的身份验证进行处理。

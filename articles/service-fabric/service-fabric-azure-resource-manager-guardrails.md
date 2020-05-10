@@ -6,15 +6,16 @@ documentationcenter: .net
 author: rockboyfor
 ms.topic: conceptual
 origin.date: 02/13/2020
-ms.date: 02/24/2020
+ms.date: 05/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 217ca72e9e3914504b071c328ed7d88925c5a097
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 695a3d669a2442f4193b73d245e79b510966fd20
+ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540216"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "83002014"
 ---
+<!--Verified successfully-->
 # <a name="service-fabric-guardrails"></a>Service Fabric 准则 
 部署 Service Fabric 群集时，需遵循相应准则，使用有效的群集配置通过 Azure 资源管理器进行部署，否则就会失败。 以下部分概述了常见的群集配置问题，以及解决这些问题所需的步骤。 
 

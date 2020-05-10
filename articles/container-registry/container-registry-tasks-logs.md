@@ -3,14 +3,14 @@ title: 查看任务运行日志 - 任务
 description: 如何查看和管理 ACR 任务生成的运行日志。
 ms.topic: article
 origin.date: 03/09/2020
-ms.date: 04/06/2020
+ms.date: 05/08/2020
 ms.author: v-yeche
-ms.openlocfilehash: 2ba5af87baeeaae19c08cef503dea40e4cb29d57
-ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
+ms.openlocfilehash: 14d7bfaa67888cb5d117f2463e8755bbec5a8506
+ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82093546"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "83002101"
 ---
 <!--Verified successfully-->
 # <a name="view-and-manage-task-run-logs"></a>查看和管理任务运行日志

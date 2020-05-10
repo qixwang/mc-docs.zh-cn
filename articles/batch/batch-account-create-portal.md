@@ -15,12 +15,12 @@ origin.date: 02/26/2019
 ms.date: 12/04/2019
 ms.author: v-lingwu
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bc8d72f1cf418c25ebdf370019b3375b20af995d
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 1f5b5a4c6a7fec82d6f7e952765e8e16da6fde36
+ms.sourcegitcommit: 1fbdefdace8a1d3412900c6c3f89678d8a9b29bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77497545"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82886914"
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>使用 Azure 门户创建 Batch 帐户
 
@@ -106,7 +106,7 @@ ms.locfileid: "77497545"
     ![添加批处理权限][add_permission]
 
 ### <a name="create-a-key-vault"></a>创建密钥保管库
-在“用户订阅”模式下，需要的 Azure 密钥保管库与要创建的批处理帐户属于同一资源组。 请确保资源组所在的区域是[提供](https://www.azure.cn/zh-cn/home/features/products-by-region)批处理的区域，也是订阅所支持的区域。
+在“用户订阅”模式下，需要的 Azure 密钥保管库与要创建的批处理帐户属于同一资源组。 请确保资源组所在的区域是[提供](https://www.azure.cn/home/features/products-by-region)批处理的区域，也是订阅所支持的区域。
 
 1. 在 [Azure 门户][azure_portal]中，选择“新建”   >   “安全性” > “密钥保管库”  。
 

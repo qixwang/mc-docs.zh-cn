@@ -7,15 +7,16 @@ ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: tutorial
 origin.date: 04/01/2020
-ms.date: 04/27/2020
+ms.date: 05/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 2827b4a7ce9a859d562bcdc06c20073f8f7bfffc
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.openlocfilehash: 3eaed5cdb2c95268e730490d2b4483d4337202e6
+ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82135167"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "83002033"
 ---
+<!--Verified on Prerequisites-->
 # <a name="tutorial---an-end-to-end-async-java-sql-api-application-sample-with-change-feed"></a>教程 - 使用更改源的端到端 Async Java SQL API 应用程序示例
 
 本指南教程演练一个简单的 Java SQL API 应用程序，它可将文档插入到 Azure Cosmos DB 容器，同时使用更改源维护该容器的具体化视图。

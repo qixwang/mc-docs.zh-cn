@@ -10,16 +10,16 @@ ms.topic: article
 origin.date: 01/23/2019
 ms.date: 09/23/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 35315261c303f739f78b13ddf350253305ae42d8
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 74bfd17a9838ae6a67d138ae0a3a7ce06fbd6777
+ms.sourcegitcommit: 1fbdefdace8a1d3412900c6c3f89678d8a9b29bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "71330311"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82886927"
 ---
 # <a name="azure-service-bus-geo-disaster-recovery"></a>Azure 服务总线异地灾难恢复
 
-当整个 Azure 区域或数据中心（如果未使用[可用性区域](https://www.azure.cn/zh-cn/home/features/products-by-region )）遭遇停机时，在不同区域或数据中心中继续进行数据处理就显得至关重要。 因此，“异地灾难恢复”对于任何企业而言都是非常重要的功能。  Azure 服务总线支持命名空间级别的异地灾难恢复。
+当整个 Azure 区域或数据中心（如果未使用[可用性区域](https://www.azure.cn/home/features/products-by-region )）遭遇停机时，在不同区域或数据中心中继续进行数据处理就显得至关重要。 因此，“异地灾难恢复”对于任何企业而言都是非常重要的功能。  Azure 服务总线支持命名空间级别的异地灾难恢复。
 
 异地灾难恢复功能在全球范围内可用于服务总线高级 SKU。 
 
@@ -127,10 +127,10 @@ Azure 服务总线的异地灾难恢复功能是一项面向灾难恢复的解�
 
 ## <a name="availability-zones"></a>可用性区域
 
-服务总线高级 SKU 还支持[可用性区域](https://www.azure.cn/zh-cn/home/features/products-by-region)，在 Azure 区域内提供故障隔离位置。
+服务总线高级 SKU 还支持[可用性区域](https://www.azure.cn/home/features/products-by-region)，在 Azure 区域内提供故障隔离位置。
 
 > [!NOTE]
-> Azure 服务总线高级版的可用性区域支持仅适用于存在可用性区域的 [Azure 区域](https://www.azure.cn/zh-cn/home/features/products-by-region)。
+> Azure 服务总线高级版的可用性区域支持仅适用于存在可用性区域的 [Azure 区域](https://www.azure.cn/home/features/products-by-region)。
 
 可以使用 Azure 门户仅在新的命名空间上启用可用性区域。 服务总线不支持迁移现有命名空间。 在命名空间上启用区域冗余之后，不能将其禁用。
 

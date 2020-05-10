@@ -8,13 +8,14 @@ ms.topic: conceptual
 origin.date: 11/27/2018
 ms.date: 01/21/2019
 ms.author: v-yeche
-ms.openlocfilehash: ccda10a9c378bc33efe67c5623297f564f6ae0b1
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: f87dc23bbdd39e342b656aeca0d1c40350179aa3
+ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "63826944"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "83002092"
 ---
+<!--NOT SUITABLE FOR AZURE CHINA CLOUD DUE TO LIMIT DESCRIPTION-->
 # <a name="set-up-vmware-disaster-recovery-in-a-multi-tenancy-environment-with-the-cloud-solution-provider-csp-program"></a>使用云解决方案提供商 (CSP) 计划在多租户环境中设置 VMware 灾难恢复
 
 [CSP 计划](https://www.21vbluecloud.com/partner-china/welcome/)倡导的合作共赢适用于 Azure 云服务，包括 Office 365、企业移动性套件、Azure。 有了 CSP，合作伙伴就可以与客户建立端到端关系，并在建立关系的过程中充当主要联络点。 合作伙伴可以为客户部署 Azure 订阅，并将这些订阅与自己的增值型自定义产品/服务相结合。

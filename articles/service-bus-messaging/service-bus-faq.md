@@ -10,12 +10,12 @@ ms.topic: article
 origin.date: 01/24/2020
 ms.date: 2/6/2020
 ms.author: v-lingwu
-ms.openlocfilehash: 568ba2951e09701737937fb5cd91a6ed630dcc87
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 2362dc91881a38ae3dd8e4a0870cde11e02b6ae7
+ms.sourcegitcommit: 1fbdefdace8a1d3412900c6c3f89678d8a9b29bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77068025"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82886929"
 ---
 # <a name="azure-service-bus---frequently-asked-questions-faq"></a>Azure 服务总线 - 常见问题解答 (FAQ)
 
@@ -102,7 +102,7 @@ ms.locfileid: "77068025"
 
 “服务总线定价和计费”一文介绍了服务总线中的计费计量。有关服务总线定价选项的具体信息，请参阅[服务总线定价详细信息](https://www.azure.cn/pricing/details/messaging/)。
 
-还可以访问 [Azure 支持常见问题解答](https://support.azure.cn/zh-cn/support/contact/)了解常规的 Azure 定价信息。 
+还可以访问 [Azure 支持常见问题解答](https://support.azure.cn/support/contact/)了解常规的 Azure 定价信息。 
 
 ### <a name="how-do-you-charge-for-service-bus"></a>服务总线如何收取费用？
 有关服务总线定价的完整信息，请参阅[服务总线定价][Pricing overview]。 除标示的价格外，还需为在其中部署应用程序的数据中心之外的相关数据输出支付费用。
