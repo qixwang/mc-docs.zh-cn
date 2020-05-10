@@ -65,3 +65,10 @@
         - name: Cosmos DB
           tocHref: 'https://docs.azure.cn/java/spring-framework/?view=azure-java-stable'
           topicHref: /cosmos-db/index
+- name: Azure
+  tocHref: /
+  topicHref: /index
+  items:
+    - name: Cosmos DB
+      tocHref: /azure-monitor/insights
+      topicHref: /cosmos-db/index

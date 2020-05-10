@@ -11,12 +11,12 @@ ms.custom: mvc
 origin.date: 12/20/2019
 ms.date: 09/15/2019
 ms.author: v-lingwu
-ms.openlocfilehash: dc7e1c910e1cdc907837e2c462f7715492561551
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 957d537316f8b728bfd376e4a6b6d871bafb6510
+ms.sourcegitcommit: 1fbdefdace8a1d3412900c6c3f89678d8a9b29bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77068291"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82886928"
 ---
 # <a name="quickstart-use-azure-powershell-to-create-a-service-bus-queue"></a>快速入门：使用 Azure PowerShell 创建服务总线队列
 本快速入门介绍如何使用 PowerShell 创建消息命名空间并在该命名空间中创建队列，以及如何获取该命名空间上的授权凭据，以便将消息发送到服务总线队列及从中接收消息。 然后该过程展示了如何使用 [.NET Standard 库](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus)从此队列发送和接收消息。
@@ -264,4 +264,4 @@ static async Task ProcessMessagesAsync(Message message, CancellationToken token)
 > [发送和接收消息](service-bus-dotnet-get-started-with-queues.md)
 
 [trial account]: https://www.azure.cn/pricing/1rmb-trial
-[安装和配置 Azure PowerShell]: https://docs.azure.cn/zh-cn/powershell-install-configure
+[安装和配置 Azure PowerShell]: https://docs.azure.cn/powershell-install-configure

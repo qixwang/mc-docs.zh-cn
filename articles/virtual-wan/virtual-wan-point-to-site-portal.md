@@ -8,12 +8,12 @@ ms.topic: tutorial
 origin.date: 11/04/2019
 ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: 860894cd42dfb6bbd9e1ce32d8b5aecb377c64f0
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 0b3bc7e45e7bfc4423d8546218cfc7adc0c1d815
+ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78209207"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "83002004"
 ---
 # <a name="tutorial-create-a-user-vpn-connection-using-azure-virtual-wan"></a>教程：使用 Azure 虚拟 WAN 创建用户 VPN 连接
 
@@ -84,6 +84,7 @@ ms.locfileid: "78209207"
 4. 在“验证已通过”  页上，单击“创建” 
 
 <a name="site"></a>
+<a name="p2sconfig"></a>
 ## <a name="create-a-p2s-configuration"></a>创建 P2S 配置
 
 P2S 配置定义连接远程客户端的参数。
@@ -107,6 +108,7 @@ P2S 配置定义连接远程客户端的参数。
 5. 单击“创建”  以创建配置。
 
 <a name="hub"></a>
+<a name="edit"></a>
 ## <a name="edit-hub-assignment"></a>编辑中心分配
 
 1. 导航到虚拟 WAN 下的“中心”  边栏选项卡

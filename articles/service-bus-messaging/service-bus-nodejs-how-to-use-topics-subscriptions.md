@@ -15,18 +15,18 @@ ms.topic: quickstart
 origin.date: 01/16/2020
 ms.date: 02/26/2020
 ms.author: v-lingwu
-ms.openlocfilehash: 2a6aa02875566af79503d15350e9ff46540f6b79
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: de777492201be2b91b0ccc8a5e8973917b77638c
+ms.sourcegitcommit: 1fbdefdace8a1d3412900c6c3f89678d8a9b29bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80108523"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82886824"
 ---
 # <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azure-sb-package"></a>快速入门：如何将服务总线主题和订阅与 Node.js 和 azure-sb 包配合使用
 本教程介绍如何创建 Node.js 应用程序，以便使用 [azure-sb](https://www.npmjs.com/package/azure-sb) 包向服务总线主题发送消息并从服务总线订阅接收消息。 示例使用 JavaScript 编写，并使用在内部使用 `azure-sb` 包的 Node.js [Azure 模块](https://www.npmjs.com/package/azure)。
 
 > [!IMPORTANT]
-> [azure-sb](https://www.npmjs.com/package/azure-sb) 包使用[服务总线 REST 运行时 API](/rest/api/servicebus/service-bus-runtime-rest)。 使用新的 [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) 包可以获得更快的体验，该包使用更快的 [AMQP 1.0 协议](service-bus-amqp-overview.md)。 
+> [azure-sb](https://www.npmjs.com/package/azure-sb) 包使用[服务总线 REST 运行时 API](https://docs.microsoft.com/rest/api/servicebus/service-bus-runtime-rest)。 使用新的 [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) 包可以获得更快的体验，该包使用更快的 [AMQP 1.0 协议](service-bus-amqp-overview.md)。 
 > 
 > 若要详细了解新包，请参阅[如何通过 Node.js 和 @azure/service-bus 包使用服务总线主题和订阅](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-nodejs-how-to-use-topics-subscriptions-new-package)，否则请继续阅读以了解如何使用 [azure](https://www.npmjs.com/package/azure) 包。
 
@@ -41,7 +41,7 @@ ms.locfileid: "80108523"
 有关主题和订阅的详细信息，请参阅[后续步骤](#next-steps)一节。
 
 ## <a name="prerequisites"></a>先决条件
-1. Azure 订阅。 若要完成本教程，需要一个 Azure 帐户。 可以激活 [Visual Studio 或 MSDN 订阅者权益](https://www.azure.cn/zh-cn/support/legal/offer-rate-plans/)或者注册[试用帐户](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth)。
+1. Azure 订阅。 若要完成本教程，需要一个 Azure 帐户。 可以激活 [Visual Studio 或 MSDN 订阅者权益](https://www.azure.cn/support/legal/offer-rate-plans/)或者注册[试用帐户](https://www.azure.cn/pricing/1rmb-trial-full/?form-type=identityauth)。
 2. 按照[快速入门：使用 Azure 门户创建一个服务总线主题和对此主题的订阅](service-bus-quickstart-topics-subscriptions-portal.md)来创建服务总线**命名空间**并获取**连接字符串**。
 
     > [!NOTE]

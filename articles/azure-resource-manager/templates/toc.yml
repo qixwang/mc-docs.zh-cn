@@ -204,6 +204,8 @@
           href: deploy-to-subscription.md
         - name: 管理组
           href: deploy-to-management-group.md
+        - name: 租户
+          href: deploy-to-tenant.md
         - name: 多个资源组或订阅
           href: cross-resource-group-deployment.md
     - name: 提供参数

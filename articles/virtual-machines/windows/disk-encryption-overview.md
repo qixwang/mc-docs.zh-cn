@@ -4,16 +4,16 @@ description: 本文提供有关如何为 Windows VM 启用 Azure 磁盘加密的
 author: rockboyfor
 ms.service: security
 ms.topic: article
-ms.author: v-yeche
 origin.date: 10/05/2019
-ms.date: 11/11/2019
+ms.date: 04/27/2020
+ms.author: v-yeche
 ms.custom: seodec18
-ms.openlocfilehash: dce1ee7b2bd84350ac4d15df6c216cfef19ff7da
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 10d5f22459b11d3314c185785e42153b9cfb112a
+ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292449"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "83001897"
 ---
 # <a name="azure-disk-encryption-for-windows-vms"></a>适用于 Windows VM 的 Azure 磁盘加密 
 
@@ -31,13 +31,18 @@ Azure 磁盘加密有助于保护数据，使组织能够信守在安全性与�
 
 ## <a name="supported-vms-and-operating-systems"></a>支持的 VM 和操作系统
 
-### <a name="supported-vm-sizes"></a>支持的 VM 大小
+<a name="supported-vms"></a>
+### <a name="supported-vms"></a>支持的 VM
 
 Windows VM 的大小有[多种](sizes-general.md)。 Azure 磁盘加密在 [A 系列基本 VM](https://www.azure.cn/pricing/details/virtual-machines/) 或内存小于 2 GB 的虚拟机上不可用。
 
 <!--MOONCAKE: CORRECT ON https://www.azure.cn/pricing/details/virtual-machines/-->
 
 Azure 磁盘加密还可用于使用高级存储的 VM。
+
+Azure 磁盘加密在[第 2 代 VM](generation-2.md#generation-1-vs-generation-2-capabilities) 上不可用。 有关更多例外，请参阅 [Azure 磁盘加密：不支持的方案](disk-encryption-windows.md#unsupported-scenarios)。
+
+<!--Not Available on  and [Lsv2-series VMs](../lsv2-series.md)-->
 
 ### <a name="supported-operating-systems"></a>支持的操作系统
 
@@ -50,6 +55,7 @@ Azure 磁盘加密还可用于使用高级存储的 VM。
 > Windows Server 2012 R2 Core 和 Windows Server 2016 Core 要求在 VM 安装 bdehdcfg 组件以支持加密。
 
 <!--MOONCAKE: CORRECT ON Microsoft .NET Framework-->
+
 <a name="networking-requirements"></a>
 ## <a name="networking-requirements"></a>网络要求
 若要启用 Azure 磁盘加密，VM 必须符合以下网络终结点配置要求：
@@ -96,5 +102,4 @@ Azure 磁盘加密需要 Azure Key Vault 来控制和管理磁盘加密密钥和
 - [Azure 磁盘加密先决条件 PowerShell 脚本](https://github.com/Azure/azure-powershell/tree/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts)
 - [创建和配置用于 Azure 磁盘加密的密钥保管库](disk-encryption-key-vault.md)
 
-<!--Update_Description: new articles on disk encryption overview -->
-<!--New.date: 11/04/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

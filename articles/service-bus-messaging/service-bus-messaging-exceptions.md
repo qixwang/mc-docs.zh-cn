@@ -15,12 +15,12 @@ ms.workload: na
 origin.date: 01/24/2020
 ms.date: 2/6/2020
 ms.author: v-lingwu
-ms.openlocfilehash: f890dcbbfdb760d7608e504b038902ffb0976f54
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: fb4bd109fd19ef093cc6ef9c7c18dc6fc20f23d8
+ms.sourcegitcommit: 1fbdefdace8a1d3412900c6c3f89678d8a9b29bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77068012"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82886832"
 ---
 # <a name="troubleshooting-guide-for-azure-service-bus"></a>Azure 服务总线故障排除指南
 本文提供了服务总线 .NET Framework API 生成的部分 .NET 异常，以及其他故障排除技巧。 
@@ -108,7 +108,7 @@ ConnectionsQuotaExceeded for namespace xxx.
 对于队列和主题，超时在 [MessagingFactorySettings.OperationTimeout](/dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings) 属性中作为连接字符串的一部分指定，或通过 [ServiceBusConnectionStringBuilder](/dotnet/api/microsoft.azure.servicebus.servicebusconnectionstringbuilder) 指定。 错误消息本身可能会有所不同，但它始终包含当前操作的指定超时值。 
 
 ## <a name="connectivity-certificate-or-timeout-issues"></a>连接性、证书或超时问题
-以下步骤可帮助排除 *.servicebus.windows.net 下所有服务的连接性/证书/超时问题。 
+以下步骤可帮助排查 *.servicebus.chinacloudapi.cn 下所有服务的连接性/证书/超时问题。 
 
 - 浏览至 `https://<yournamespace>.servicebus.chinacloudapi.cn/` 或使用 [wget](https://www.gnu.org/software/wget/)。 这可帮助检查是否存在 IP 筛选或虚拟网络或证书链问题（使用 java SDK 时最常见）。
 

@@ -4,16 +4,16 @@ description: 本文提供了对 IaaS VM 使用 Azure 磁盘加密所要满足的
 author: rockboyfor
 ms.service: security
 ms.topic: article
-ms.author: v-yeche
 origin.date: 03/15/2019
-ms.date: 11/11/2019
+ms.date: 04/27/2020
+ms.author: v-yeche
 ms.custom: seodec18
-ms.openlocfilehash: 5926e54619339049ad0b576efcf78d7aa08a96b8
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 7b526586f87fa18daefed461acc2ab0db02ff523
+ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292447"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "83001904"
 ---
 # <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption-with-azure-ad-previous-release"></a>使用 Azure AD 创建和配置用于 Azure 磁盘加密的密钥保管库（以前版本）
 
@@ -28,7 +28,7 @@ Azure 磁盘加密使用 Azure 密钥保管库来控制和管理磁盘加密密�
 3. 为 Azure AD 应用设置 Key Vault 访问策略。
 4. 设置 Key Vault 高级访问策略。
 
-    还可以根据需要生成或导入密钥加密密钥 (KEK)。
+还可以根据需要生成或导入密钥加密密钥 (KEK)。
 
 有关如何[安装工具并连接到 Azure](disk-encryption-key-vault.md#install-tools-and-connect-to-azure) 的步骤，请参阅主要的[创建和配置用于 Azure 磁盘加密的密钥保管库](disk-encryption-key-vault.md)一文。
 
@@ -449,5 +449,4 @@ Azure 平台需要访问 Key Vault 中的加密密钥或机密，才能使这些
 
 [在 Windows VM 上使用 Azure AD 启用 Azure 磁盘加密（以前版本）](disk-encryption-windows-aad.md)
 
-<!--Update_Description: new articles on disk envryption key vault aad -->
-<!--New.date: 11/04/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

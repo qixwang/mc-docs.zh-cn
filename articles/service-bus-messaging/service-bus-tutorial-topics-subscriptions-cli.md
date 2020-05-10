@@ -10,12 +10,12 @@ ms.date: 09/26/2019
 ms.topic: tutorial
 ms.service: service-bus-messaging
 ms.custom: mvc
-ms.openlocfilehash: 95184c3416383ec6162e263623c2f8e3654d8724
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 10f6c0c0389f1a8dffba689f07b2e92bdec29e27
+ms.sourcegitcommit: 1fbdefdace8a1d3412900c6c3f89678d8a9b29bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77067958"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82886924"
 ---
 # <a name="tutorial-update-inventory-using-cli-and-topicssubscriptions"></a>教程：使用 CLI 和主题/订阅更新库存
 
@@ -40,12 +40,12 @@ ms.locfileid: "77067958"
 若要使用 Java 开发服务总线应用，必须安装以下项：
 
 - [Java 开发工具包](https://aka.ms/azure-jdks)最新版本。
-- [Azure CLI](https://docs.azure.cn/zh-cn/cli/index?view=azure-cli-latest)
+- [Azure CLI](https://docs.azure.cn/cli/index?view=azure-cli-latest)
 - [Apache Maven](https://maven.apache.org) 3.0 或更高版本。
 
 [!INCLUDE [azure-cli-2-azurechinacloud-environment-parameter](../../includes/azure-cli-2-azurechinacloud-environment-parameter.md)]
 
-如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.0.4 或更高版本。 运行 `az --version` 即可查找版本。 如需进行安装或升级，请参阅[安装 Azure CLI](https://docs.azure.cn/zh-cn/cli/install-azure-cli?view=azure-cli-latest)。
+如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.0.4 或更高版本。 运行 `az --version` 即可查找版本。 如需进行安装或升级，请参阅[安装 Azure CLI](https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest)。
 
 ## <a name="service-bus-topics-and-subscriptions"></a>服务总线主题和订阅
 
@@ -347,5 +347,5 @@ public CompletableFuture<Void> receiveAllMessageFromSubscription(String subscrip
 
 [试用帐户]: https://www.azure.cn/pricing/1rmb-trial
 [fully qualified domain name]: https://wikipedia.org/wiki/Fully_qualified_domain_name
-[Install the Azure CLI]: https://docs.azure.cn/zh-cn/cli/install-azure-cli?view=azure-cli-latest
-[az group create]: https://docs.azure.cn/zh-cn/cli/group?view=azure-cli-latest#az_group_create
+[Install the Azure CLI]: https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest
+[az group create]: https://docs.azure.cn/cli/group?view=azure-cli-latest#az_group_create

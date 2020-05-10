@@ -37,7 +37,7 @@
   items:
     - name: 代码示例
       href: 'https://azure.microsoft.com/resources/samples/?sort=0&term=aci'
-    - name: 资源管理器模板
+    - name: Resource Manager 模板
       href: container-instances-samples-rm.md
 - name: 概念
   items:
@@ -51,7 +51,7 @@
       href: container-instances-orchestrator-relationship.md
     - name: 安全注意事项
       href: container-instances-image-security.md
-- name: 操作方法指南
+- name: 操作指南
   items:
     - name: 部署
       items:
@@ -79,13 +79,15 @@
           href: container-instances-managed-identity.md
         - name: 使用 GPU 资源（预览版）
           href: container-instances-gpu.md
-        - name: 启用 SSL 终结点
+        - name: 在挎斗中启用 SSL 终结点
           href: container-instances-container-group-ssl.md
+        - name: 公开静态 IP 地址
+          href: container-instances-application-gateway.md
     - name: 装载数据卷
       items:
         - name: Azure 文件共享
           href: container-instances-volume-azure-files.md
-        - name: 机密
+        - name: Secret
           href: container-instances-volume-secret.md
         - name: 空目录
           href: container-instances-volume-emptydir.md
@@ -143,5 +145,5 @@
       href: 'https://support.azure.cn/support/contact/'
     - name: 视频
       href: 'https://www.azure.cn/video-center/'
-    - name: 常见问题解答
+    - name: 常见问题
       href: container-instances-faq.md

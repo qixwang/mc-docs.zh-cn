@@ -2,20 +2,20 @@
 title: Azure 快速入门 - 运行 Batch 作业 - 门户
 description: 了解如何使用 Azure 门户创建 Batch 帐户、计算节点池以及在池中运行基本任务的作业。
 services: batch
-author: lingliw
-manager: digimobile
+author: LauraBrenner
+manager: evansma
 ms.service: batch
 ms.topic: quickstart
 origin.date: 07/03/2018
-ms.date: 09/23/2019
-ms.author: v-lingwu
+ms.date: 04/29/2020
+ms.author: v-tawe
 ms.custom: mvc
-ms.openlocfilehash: e9f9ec828e8c9e2edcc8f1bd104d8000fb45de4c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 6d07fa1c95368a03b501c1587cbad6c063822a44
+ms.sourcegitcommit: 1fbdefdace8a1d3412900c6c3f89678d8a9b29bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79291402"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82886859"
 ---
 # <a name="quickstart-run-your-first-batch-job-in-the-azure-portal"></a>快速入门：在 Azure 门户中运行第一个 Batch 作业
 
@@ -25,7 +25,7 @@ ms.locfileid: "79291402"
 
 ## <a name="sign-in-to-azure"></a>登录 Azure 
 
-通过 https://portal.azure.cn 登录到 Azure 门户。
+在 [https://portal.azure.cn](https://portal.azure.cn) 中登录 Azure 门户。
 
 ## <a name="create-a-batch-account"></a>创建批处理帐户
 
@@ -57,7 +57,7 @@ ms.locfileid: "79291402"
 
 3. 在“操作系统”中选择以下设置（可以浏览其他选项）。 
   
-   |设置  |值  |
+   |设置  |Value  |
    |---------|---------|
    |**映像类型**|市场 (Linux/Windows)|
    |**发布者**     |MicrosoftWindowsServer|
@@ -68,7 +68,7 @@ ms.locfileid: "79291402"
 
 4. 向下滚动，以便输入“节点大小”和“规模”设置。   就此快速示例来说，建议的节点大小在性能和成本之间达成了很好的平衡。
   
-   |设置  |值  |
+   |设置  |Value  |
    |---------|---------|
    |**节点定价层**     |Standard_A1|
    |**目标专用节点**     |2|
@@ -103,11 +103,11 @@ Batch 会立即创建池，但分配和启动计算节点则需要数分钟。 �
 
 若要创建第一个任务，请执行以下操作：
 
-1. 选择 **添加** 。
+1. 选择“添加”   。
 
 2. 输入名为“mytask”的**任务 ID**。  
 
-3. 在“命令行”中输入 **。** `cmd /c "set AZ_BATCH & timeout /t 90 > NUL"` 其余设置保留默认值，然后选择“确定”  。
+3. 在“命令行”中输入 `cmd /c "set AZ_BATCH & timeout /t 90 > NUL"`。  其余设置保留默认值，然后选择“确定”  。
 
    ![创建任务][task_create]
 

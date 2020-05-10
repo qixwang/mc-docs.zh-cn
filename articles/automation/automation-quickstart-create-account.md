@@ -2,45 +2,49 @@
 title: Azure 快速入门 - 创建 Azure 自动化帐户 | Microsoft Docs
 description: 了解如何创建 Azure 自动化帐户和运行 Runbook
 services: automation
-author: WenJason
-ms.author: v-jay
 origin.date: 04/04/2019
-ms.date: 04/15/2019
+ms.date: 05/11/2020
 ms.topic: quickstart
-ms.service: automation
 ms.subservice: process-automation
 ms.custom: mvc
-ms.openlocfilehash: 1b5eb631e26a98d5d976b2efc8b57294b3fa6990
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: d74cde3065697256fd6d935559906aa1b9cdc1a5
+ms.sourcegitcommit: 7443ff038ea8afe511f7419d9c550d27fb642246
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "63854998"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "83001611"
 ---
 # <a name="create-an-azure-automation-account"></a>创建 Azure 自动化帐户
 
-Azure 自动化帐户可以通过 Azure 创建。 此方法提供一个基于浏览器的用户界面，用于创建和配置自动化帐户和相关的资源。 本入门介绍了如何创建自动化帐户并在帐户中运行 Runbook。
+可以使用 Azure 门户通过 Azure 创建 Azure 自动化帐户。Azure 门户是一个基于浏览器的用户界面，在其中可以访问许多资源。 一个自动化帐户可以跨所有区域和订阅管理给定租户的资源。 
 
-如果没有 Azure 订阅，请在开始前创建一个[试用 Azure 帐户](https://www.azure.cn/pricing/1rmb-trial/?WT.mc_id=A261C142F)。
+本快速入门将引导你创建一个自动化帐户，并在该帐户中运行 Runbook。 如果没有 Azure 订阅，请在开始前创建一个[试用 Azure 帐户](https://www.azure.cn/pricing/1rmb-trial/?WT.mc_id=A261C142F)。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-登录 Azure (https://portal.azure.cn )
+[登录 Azure](https://portal.azure.cn)。
 
 ## <a name="create-automation-account"></a>创建自动化帐户
 
-1. 单击 Azure 左上角的“创建资源”按钮。 
+1. 为你的 Azure 帐户选择一个名称。 自动化帐户名称在每个区域和资源组中是唯一的。 已删除的自动化帐户的名称可能无法立即可用。
 
-1. 搜索“自动化”  ，然后选择“自动化”  。
+    > [!NOTE]
+    > 在用户界面中输入帐户名称后，无法对其进行更改。 
 
-1. 输入帐户信息。 对于“创建 Azure 运行方式帐户”，请选择“是”，以便自动启用可简化向 Azure 进行的身份验证的项目。   需要注意的是，在创建自动化帐户时，选择它后将无法更改名称。 *每个区域和资源组的自动化帐户名称都是唯一的。已删除的自动化帐户的名称可能无法立即可用。* 一个自动化帐户可以跨所有区域和订阅管理给定租户的资源。 完成后，请单击**创建**，启动自动化帐户部署。
+2. 单击 Azure 门户左上角的“创建资源”按钮。 
+
+3. 搜索“自动化”  ，然后选择“自动化”  。
+
+4. 输入帐户信息，包括所选的帐户名称。 对于“创建 Azure 运行方式帐户”，请选择“是”，以便自动启用可简化向 Azure 进行的身份验证的项目。   填写信息后，单击“创建”以启动自动化帐户部署。 
 
     ![在页面中输入有关自动化帐户的信息](./media/automation-quickstart-create-account/create-automation-account-portal-blade.png)  
 
     > [!NOTE]
-    > 若需可以向其部署自动化帐户的位置的已更新列表，请参阅[可用产品（按区域）](https://azure.microsoft.com/zh-cn/global-infrastructure/services/?regions=china-non-regional,china-east,china-east-2,china-north,china-north-2&products=automation)。
+    > 有关可将自动化帐户部署到的位置的更新列表，请参阅[各区域的产品可用性](https://azure.microsoft.com/global-infrastructure/services/?regions=china-non-regional,china-east,china-east-2,china-north,china-north-2&products=automation)。
 
-1. 部署完成后，单击“所有服务”  ，选择“自动化帐户”  并选择所创建的自动化帐户。
+5. 部署完成后，单击“所有服务”。 
+
+6. 选择“自动化帐户”，然后选择你创建的自动化帐户。 
 
     ![自动化帐户概览](./media/automation-quickstart-create-account/automation-account-overview.png)
 
@@ -48,7 +52,7 @@ Azure 自动化帐户可以通过 Azure 创建。 此方法提供一个基于浏
 
 运行一个教程 Runbook。
 
-1. 单击“流程自动化”下的“Runbook”。   此时会显示 Runbook 列表。 默认情况下，帐户中启用多个教程 Runbook。
+1. 单击“流程自动化”下的“Runbook”。   此时会显示 Runbook 列表。 默认情况下，帐户中已启用多个教程 Runbook。
 
     ![自动化帐户 Runbook 列表](./media/automation-quickstart-create-account/automation-runbooks-overview.png)
 
@@ -56,11 +60,11 @@ Azure 自动化帐户可以通过 Azure 创建。 此方法提供一个基于浏
 
     ![Runbook 概览](./media/automation-quickstart-create-account/automation-tutorial-script-runbook-overview.png)
 
-1. 单击“启动”，然后在“启动 Runbook”页中单击“确定”以启动 Runbook。   
+1. 单击“启动”，然后在“启动 Runbook”页上，单击“确定”以启动 Runbook。  
 
     ![Runbook 作业页](./media/automation-quickstart-create-account/automation-tutorial-script-job.png)
 
-1. 在“作业状态”变为“正在运行”后，单击“输出”或“所有日志”查看 Runbook 作业输出。     对于此教程 Runbook，输出是 Azure 资源的列表。
+1. 在作业状态变为 `Running` 后，单击“输出”或“所有日志”以查看 Runbook 作业输出。   对于此教程 Runbook，输出是 Azure 资源的列表。
 
 ## <a name="next-steps"></a>后续步骤
 

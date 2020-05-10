@@ -11,12 +11,12 @@ ms.custom: mvc
 origin.date: 10/20/2019
 ms.author: v-yiso
 ms.date: 12/23/2019
-ms.openlocfilehash: f07fcf6f613402027c4b1ee2986135b2d30da901
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 0417b0388a78c1c1f43ba143f821a67ce3ea1ba1
+ms.sourcegitcommit: 30de8a4b2d57b31a8c9d8b568f3b49b42f1dd583
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80109802"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82886562"
 ---
 # <a name="quickstart-create-your-first-workflow-by-using-azure-logic-apps---azure-portal"></a>快速入门：使用 Azure 逻辑应用创建第一个工作流 - Azure 门户
 
@@ -190,9 +190,7 @@ ms.locfileid: "80109802"
 > [!NOTE]
 > 删除逻辑应用后，任何新运行都不会实例化。 所有正在进行和挂起的运行都将取消。 如果有成千上万个运行，取消操作可能需要很长时间才能完成。
 
-## <a name="next-steps"></a>后续步骤
+<!--Not Available on ## Next steps-->
 
-本快速入门介绍了如何创建第一个逻辑应用，以便按指定计划检查 RSS 更新（每分钟检查一次），当存在更新时执行操作（发送电子邮件）。 若要了解详细信息，请继续学习本教程，了解如何创建更高级的基于计划的工作流：
 
-> [!div class="nextstepaction"]
-> [使用基于计划的逻辑应用检查流量](../logic-apps/tutorial-build-schedule-recurring-logic-app-workflow.md)
+<!--Not Available on [Check traffic with a scheduled-based logic app](../logic-apps/tutorial-build-schedule-recurring-logic-app-workflow.md)-->

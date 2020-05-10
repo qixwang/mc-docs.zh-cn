@@ -15,12 +15,12 @@ ms.workload: na
 origin.date: 01/21/2020
 ms.date: 2/6/2020
 ms.author: v-lingwu
-ms.openlocfilehash: 6e3abec7f1829fe82fb53fb2d981e33339eba580
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 2c6ba3fb7193012ffcf85c1b86e77e83742c2b84
+ms.sourcegitcommit: 1fbdefdace8a1d3412900c6c3f89678d8a9b29bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79291470"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82886835"
 ---
 # <a name="tutorial-expose-an-on-premises-wcf-rest-service-to-external-client-by-using-azure-wcf-relay"></a>教程：使用 Azure WCF 中继向外部客户端公开本地 WCF REST 服务
 
@@ -276,7 +276,7 @@ namespace Microsoft.ServiceBus.Samples
     ```
 
     随后将使用 SAS 密钥来访问你的项目。 命名空间作为参数传递给 `CreateServiceUri` 以创建服务 URI。
-2. 使用 [TransportClientEndpointBehavior](https://docs.azure.cn/zh-cn/dotnet/api/microsoft.servicebus.transportclientendpointbehavior?view=azure-dotnet) 对象声明将使用 SAS 密钥作为凭据类型。 在最后一步中添加的代码后直接添加以下代码。
+2. 使用 [TransportClientEndpointBehavior](https://docs.azure.cn/dotnet/api/microsoft.servicebus.transportclientendpointbehavior?view=azure-dotnet) 对象声明将使用 SAS 密钥作为凭据类型。 在最后一步中添加的代码后直接添加以下代码。
 
     ```csharp
     TransportClientEndpointBehavior sasCredential = new TransportClientEndpointBehavior();

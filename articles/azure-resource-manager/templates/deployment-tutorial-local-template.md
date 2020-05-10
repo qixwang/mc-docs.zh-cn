@@ -5,12 +5,12 @@ origin.date: 03/13/2020
 ms.date: 04/30/2020
 ms.topic: tutorial
 ms.author: v-yeche
-ms.openlocfilehash: d9d873be1ecaedd6c68d10c93e81ecf39ac59a23
-ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
+ms.openlocfilehash: 4fab1068e369aa9e26ec17b7e67b1484cd5d8afb
+ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82596503"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "83002052"
 ---
 # <a name="tutorial-deploy-a-local-azure-resource-manager-template"></a>教程：部署本地 Azure 资源管理器模板
 
@@ -151,7 +151,7 @@ ms.locfileid: "82596503"
 ```
 
 > [!IMPORTANT]
-> 存储帐户名称长度必须为 3 到 24 个字符，并且只能使用数字和小写字母。 该名称必须是唯一的。 在模板中，存储帐户名称是追加了“store”的项目名称，项目名称的长度必须介于 3 到 11 个字符之间。 因此，项目名称必须符合存储帐户名称要求，且短于 11 个字符。
+> 存储帐户名称必须为 3 到 24 个字符，只能使用数字和小写字母。 此名称必须唯一。 在模板中，存储帐户名称是追加了“store”的项目名称，项目名称的长度必须介于 3 到 11 个字符之间。 因此，项目名称必须符合存储帐户名称要求，且短于 11 个字符。
 
 以 .json 为扩展名将模板的副本保存到本地计算机，例如 azuredeploy.json。 稍后在本教程中将部署此模板。
 
@@ -168,6 +168,7 @@ Connect-AzAccount -Environment AzureChinaCloud
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
+az cloud set -n AzureChinaCloud
 az login
 ```
 

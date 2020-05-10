@@ -4,16 +4,16 @@ description: 本文介绍如何创建和配置用于 Azure 磁盘加密的 Key V
 ms.service: virtual-machines
 ms.topic: article
 author: rockboyfor
-ms.author: v-yeche
 origin.date: 08/06/2019
-ms.date: 11/11/2019
+ms.date: 04/27/2020
+ms.author: v-yeche
 ms.custom: seodec18
-ms.openlocfilehash: bce166ce9fd8faa9ddeee0720a52486499de6552
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 3402e9ba521021bf5c01d649f3703d4a6f678475
+ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "73730678"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "83001903"
 ---
 # <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption"></a>创建和配置用于 Azure 磁盘加密的 Key Vault
 
@@ -67,5 +67,4 @@ Connect-AzAccount -Environment AzureChinaCloud
 - 了解如何[对 Azure 磁盘加密进行故障排除](disk-encryption-troubleshooting.md)
 - 阅读 [Azure 磁盘加密示例脚本](disk-encryption-sample-scripts.md)
 
-<!--Update_Description: new articles on disk encryption key vault -->
-<!--New.date: 11/11/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

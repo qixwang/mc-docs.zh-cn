@@ -3,19 +3,18 @@ title: 将 Blob 存储事件发送到 Web 终结点 - 模板
 description: 使用 Azure 事件网格和 Azure 资源管理器模板创建 Blob 存储帐户并订阅其事件。 将事件发送到 Webhook。
 services: event-grid
 keywords: ''
-author: spelluru
-ms.author: v-lingwu
-origin.date: 02/27/2020
-ms.date: 3/16/2020
+author: Johnnytechn
+ms.author: v-johya
+ms.date: 05/06/2020
 ms.topic: quickstart
 ms.service: event-grid
 ms.custom: subject-armqs
-ms.openlocfilehash: 14e996ee3430d7bb5d1091277ceb4c6e0fa35cef
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.openlocfilehash: e7d4d3d558d83e95166919e82433e9c4c97affdf
+ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82126833"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "83002000"
 ---
 # <a name="route-blob-storage-events-to-web-endpoint-by-using-azure-resource-manager-template"></a>使用 Azure 资源管理器模板将 Blob 存储事件路由到 Web 终结点
 
@@ -23,9 +22,9 @@ Azure 事件网格是针对云的事件处理服务。 在本文中，你将使�
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-如果没有 Azure 订阅，可在开始前创建一个 [试用帐户](https://www.azure.cn/pricing/1rmb-trial) 。
+如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 ### <a name="create-a-message-endpoint"></a>创建消息终结点
 
@@ -48,7 +47,7 @@ Azure 事件网格是针对云的事件处理服务。 在本文中，你将使�
 
 ```JSON
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "storageName": {
@@ -124,7 +123,7 @@ Azure 事件网格是针对云的事件处理服务。 在本文中，你将使�
 
 该模板中定义了两个 Azure 资源：
 
-* [**Microsoft.Storage/storageAccounts**](https://docs.microsoft.com/azure/templates/Microsoft.Storage/2019-06-01/storageAccounts)：创建 Azure 存储帐户。
+* [**Microsoft.Storage/storageAccounts**](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts)：创建 Azure 存储帐户。
 * [**Microsoft.Storage/storageAccounts/providers/eventSubscriptions**](https://docs.microsoft.com/azure/templates/microsoft.eventgrid/eventsubscriptions)：为存储帐户创建 Azure 事件网格订阅。
 
 ### <a name="deploy-the-template"></a>部署模板
@@ -132,8 +131,9 @@ Azure 事件网格是针对云的事件处理服务。 在本文中，你将使�
 1. 选择以下链接登录到 Azure 并打开一个模板。 该模板将创建 Key Vault 和机密。
 
     [部署到 Azure](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-event-grid-subscription-and-storage%2Fazuredeploy.json)
+
 2. 指定“终结点”  ：提供你的 Web 应用的 URL 并将 `api/updates` 添加到主页 URL。
-3. 选择“购买”以部署模板。  
+3. 选择“购买”以部署模板。 
 
   此处使用 Azure 门户来部署模板。 还可以使用 Azure PowerShell、Azure CLI 和 REST API。 若要了解其他部署方法，请参阅[部署模板](../azure-resource-manager/templates/deploy-powershell.md)。
 
@@ -141,6 +141,7 @@ Azure 事件网格是针对云的事件处理服务。 在本文中，你将使�
 > 可在[此处](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Eventgrid)找到更多 Azure 事件网格模板示例。
 
 ## <a name="validate-the-deployment"></a>验证部署
+
 再次查看 Web 应用，并注意现已向该应用发送了订阅验证事件。 选择眼睛图标以展开事件数据。 事件网格发送验证事件，以便终结点可以验证它是否想要接收事件数据。 Web 应用包含用于验证订阅的代码。
 
 ![查看订阅事件](./media/blob-event-quickstart-portal/view-subscription-event.png)
@@ -149,7 +150,7 @@ Azure 事件网格是针对云的事件处理服务。 在本文中，你将使�
 
 通过上传一个文件来为 Blob 存储触发一个事件。 该文件不需要有任何特定内容。 本文假定你有一个名为 testfile.txt 的文件，但是可以使用任何文件。
 
-将文件上传到 Azure Blob 存储时，事件网格会向你在订阅时配置的终结点发送一条消息。 消息采用 JSON 格式，它包含一个或多个事件的数组。 在以下示例中，JSON 消息包含一个事件的数组。 查看你的 Web 应用，将会看到已收到了一个 blob 已创建事件。 
+将文件上传到 Azure Blob 存储时，事件网格会向你在订阅时配置的终结点发送一条消息。 消息采用 JSON 格式，它包含一个或多个事件的数组。 在以下示例中，JSON 消息包含一个事件的数组。 查看你的 Web 应用，将会看到已收到了一个 blob 已创建事件。
 
 ![查看结果](./media/blob-event-quickstart-portal/view-results.png)
 
@@ -164,5 +165,5 @@ Azure 事件网格是针对云的事件处理服务。 在本文中，你将使�
 
 - [Azure 资源管理器文档](/azure-resource-manager)
 - [在 Azure 资源管理器模板中定义资源](https://docs.microsoft.com/azure/templates/)
-- [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/)
+- [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/)
 - [Azure 事件网格概述](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Eventgrid)。

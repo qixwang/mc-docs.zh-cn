@@ -58,8 +58,10 @@
               href: ../../storage/common/storage-account-move.md?toc=/azure-resource-manager/toc.json
             - name: Azure SQL
               href: ../../sql-database/sql-database-move-resources-across-regions.md?toc=/azure-resource-manager/toc.json
-            - name: 虚拟网络
-              href: ../../virtual-network/move-across-regions-nsg-portal.md?toc=/azure-resource-manager/toc.json
+            - name: 逻辑应用
+              href: ../../logic-apps/move-logic-app-resources.md?toc=/azure-resource-manager/toc.json
+            - name: 维护控制配置
+              href: ../../virtual-machines/move-region-maintenance-configuration.md?toc=/azure-resource-manager/toc.json
             - name: 网络安全组 (NSG)
               href: ../../virtual-network/move-across-regions-nsg-portal.md?toc=/azure-resource-manager/toc.json
             - name: 公共 IP 地址

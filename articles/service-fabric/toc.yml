@@ -121,6 +121,8 @@
           href: service-fabric-cluster-security.md
         - name: 内置安全控件
           href: service-fabric-security-controls.md
+        - name: Service Fabric 中基于证书的身份验证
+          href: cluster-security-certificates.md
     - name: 术语
       href: service-fabric-technical-overview.md
     - name: 构建应用程序
@@ -131,8 +133,10 @@
           items:
             - name: 容器概述
               href: service-fabric-containers-overview.md
-            - name: 资源调控
-              href: service-fabric-resource-governance.md
+            - name: Docker Compose（预览）
+              href: service-fabric-docker-compose.md
+            - name: 探测
+              href: probes-codepackage.md
         - name: Reliable Services
           items:
             - name: Reliable Services 概述
@@ -179,6 +183,8 @@
               href: service-fabric-reliable-actors-notes-on-actor-type-serialization.md
         - name: 来宾可执行文件
           href: service-fabric-guest-executables-introduction.md
+        - name: 资源调控
+          href: service-fabric-resource-governance.md
     - name: 应用程序和服务
       items:
         - name: 应用程序模型
@@ -250,6 +256,10 @@
               href: service-fabric-backup-restore-service-trigger-restore.md
             - name: 按需备份分区
               href: service-fabric-backup-restore-service-ondemand-backup.md
+        - name: Initializer CodePackage
+          href: initializer-codepackages.md
+        - name: RunToCompletion
+          href: run-to-completion.md
     - name: 群集
       items:
         - name: 群集概述
@@ -302,6 +312,8 @@
               href: service-fabric-cluster-resource-manager-defragmentation-metrics.md
             - name: 均衡群集
               href: service-fabric-cluster-resource-manager-balancing.md
+            - name: 子群集
+              href: cluster-resource-manager-subclustering.md
             - name: 限制
               href: service-fabric-cluster-resource-manager-advanced-throttling.md
             - name: 服务移动
@@ -340,7 +352,7 @@
       href: service-fabric-api-management-overview.md
     - name: 应用资源模型
       href: service-fabric-concept-resource-model.md
-    - name: 托管标识（预览版）
+    - name: 托管标识
       href: concepts-managed-identity.md
 - name: 操作指南
   items:
@@ -350,7 +362,7 @@
           href: service-fabric-get-started.md
         - name: Linux
           href: service-fabric-get-started-linux.md
-        - name: Mac OS
+        - name: macOS
           href: service-fabric-get-started-mac.md
         - name: 设置 Service Fabric CLI
           href: service-fabric-cli.md
@@ -392,8 +404,8 @@
               href: service-fabric-deploy-multiple-apps.md
         - name: 生成容器服务
           items:
-            - name: 容器和服务的资源调控
-              href: service-fabric-resource-governance.md
+            - name: Docker Compose（预览）
+              href: service-fabric-docker-compose.md
             - name: 卷和日志记录驱动程序
               href: service-fabric-containers-volume-logging-drivers.md
             - name: 查看容器日志
@@ -464,11 +476,15 @@
               href: service-fabric-tutorial-deploy-api-management.md
             - name: 管理应用程序机密
               href: service-fabric-application-secret-management.md
+            - name: 使用 Service Fabric 机密存储
+              href: service-fabric-application-secret-store.md
               items:
                 - name: 在 Windows 上设置加密证书并加密机密
                   href: service-fabric-application-secret-management-windows.md
                 - name: 在 Linux 上设置加密证书并加密机密
                   href: service-fabric-application-secret-management-linux.md
+                - name: 通过 KeyVaultReference 安全地存储机密（预览版）
+                  href: service-fabric-keyvault-references.md
             - name: 配置反向代理以进行安全通信
               href: service-fabric-reverseproxy-configure-secure-communication.md
             - name: 以本地用户或系统帐户身份运行服务启动脚本
@@ -641,6 +657,8 @@
                   href: service-fabric-cluster-security-update-certs-azure.md
                 - name: 远程连接到群集节点 VM
                   href: service-fabric-cluster-remote-connect-to-azure-cluster-node.md
+                - name: 将群集节点升级为使用托管磁盘
+                  href: upgrade-managed-disks.md
         - name: 独立群集
           items:
             - name: 创建
@@ -703,7 +721,7 @@
           href: service-fabric-reverse-proxy-diagnostics.md
         - name: 对本地群集进行故障排除
           href: service-fabric-troubleshoot-local-cluster-setup.md
-    - name: 将托管标识用于 Service Fabric 应用（预览版）
+    - name: 将托管标识用于 Service Fabric 应用
       items:
         - name: 群集设置
           items:

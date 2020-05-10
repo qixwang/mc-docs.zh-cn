@@ -11,14 +11,14 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 origin.date: 10/23/2018
-ms.date: 02/24/2020
+ms.date: 05/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: e9daff36ccf95dc835fd5a8b187ce1ae5a776ba9
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 463c7744b4e17422f5672ad6491acbc888da6ced
+ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77653596"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "83001954"
 ---
 # <a name="azure-cli-samples-for-traffic-manager"></a>适用于流量管理器的 Azure CLI 示例
 

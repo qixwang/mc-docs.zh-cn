@@ -10,12 +10,12 @@ ms.date: 11/26/2018
 ms.topic: tutorial
 ms.service: service-bus-messaging
 ms.custom: mvc
-ms.openlocfilehash: 9d07bfed86fe4362333e7ba239d10a1334c074da
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: f16726ef4ed7eb9fd0937ed9ec9716b0c159b876
+ms.sourcegitcommit: 1fbdefdace8a1d3412900c6c3f89678d8a9b29bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78154986"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82886923"
 ---
 # <a name="tutorial-update-inventory-using-powershell-and-topicssubscriptions"></a>教程：使用 PowerShell 和主题/订阅更新库存
 
@@ -23,7 +23,7 @@ Azure 服务总线是一种多租户云消息传送服务，可以在应用程�
 
 本教程展示了如何使用 PowerShell 创建消息命名空间并在该命名空间中创建队列，以及如何获取该命名空间上的授权凭据，以便将消息发送到服务总线队列及从中接收消息。 然后该过程展示了如何使用 [.NET Standard 库](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus)从此队列发送和接收消息。
 
-在本教程中，你将了解如何执行以下操作：
+本教程介绍如何执行下列操作：
 > [!div class="checklist"]
 > * 使用 Azure PowerShell 创建一个服务总线主题和一个或多个对该主题的订阅
 > * 使用 PowerShell 添加主题筛选器
@@ -40,7 +40,7 @@ Azure 服务总线是一种多租户云消息传送服务，可以在应用程�
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要完成本教程，请确保已安装：
 
@@ -272,7 +272,7 @@ static async Task ProcessMessagesAsync(Message message, CancellationToken token)
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你已使用 Azure PowerShell 预配了资源，然后从服务总线主题及其订阅发送并接收了消息。 你已了解如何执行以下操作：
+在本教程中，你已使用 Azure PowerShell 预配了资源，然后从服务总线主题及其订阅发送并接收了消息。 你已了解如何：
 
 > [!div class="checklist"]
 > * 使用 Azure 门户创建一个服务总线主题和一个或多个对该主题的订阅
@@ -289,4 +289,4 @@ static async Task ProcessMessagesAsync(Message message, CancellationToken token)
 > [使用 PowerShell 和主题/订阅更新库存](service-bus-tutorial-topics-subscriptions-cli.md)
 
 [试用帐户]: https://www.azure.cn/pricing/1rmb-trial/
-[安装和配置 Azure PowerShell]: https://docs.azure.cn/zh-cn/powershell-install-configure
+[安装和配置 Azure PowerShell]: https://docs.azure.cn/powershell-install-configure

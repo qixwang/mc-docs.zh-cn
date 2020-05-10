@@ -5,7 +5,6 @@
     - name: 什么是 Azure 防火墙？
       href: overview.md
 - name: 教程
-  expanded: true
   items:
     - name: 部署和配置
       href: tutorial-firewall-deploy-portal.md
@@ -15,6 +14,12 @@
       href: tutorial-firewall-dnat.md
     - name: 监视诊断日志
       href: tutorial-diagnostics.md
+- name: 快速入门
+  expanded: true
+  items:
+    - name: 使用多个地址进行部署
+      displayName: Resource Manager
+      href: quick-create-multiple-ip-template.md
 - name: 示例
   items:
     - name: Azure PowerShell
@@ -35,7 +40,11 @@
       href: rule-processing.md
     - name: 服务标记
       href: service-tags.md
-- name: 操作方法指南
+    - name: 强制隧道
+      href: forced-tunneling.md
+    - name: 远程工作支持
+      href: remote-work-support.md
+- name: 操作指南
   items:
     - name: 使用 Azure PowerShell 进行部署
       href: deploy-ps.md
@@ -65,11 +74,11 @@
       href: 'https://docs.azure.cn/develop/python/'
     - name: REST
       href: 'https://docs.microsoft.com/rest/api/firewall'
-    - name: Azure 资源管理器
+    - name: Azure Resource Manager
       href: ../azure-resource-manager/management/overview.md
 - name: 资源
   items:
-    - name: 常见问题解答
+    - name: 常见问题
       href: firewall-faq.md
     - name: 创作模板
       href: ../azure-resource-manager/templates/template-syntax.md

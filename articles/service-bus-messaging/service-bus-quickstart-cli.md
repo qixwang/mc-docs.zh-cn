@@ -10,12 +10,12 @@ ms.topic: quickstart
 origin.date: 04/10/2019
 ms.date: 2/6/2020
 ms.author: v-lingwu
-ms.openlocfilehash: 9743fd7be7496aaf081ec6d1035258464253d7e8
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 41db4dc0418c7e95df4a75e246eed1c3e41f278a
+ms.sourcegitcommit: 1fbdefdace8a1d3412900c6c3f89678d8a9b29bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77068266"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82886844"
 ---
 # <a name="quickstart-use-the-azure-cli-to-create-a-service-bus-queue"></a>快速入门：使用 Azure CLI 创建服务总线队列
 本快速入门介绍了如何使用 Azure CLI 和服务总线 Java 库通过服务总线来发送和接收消息。 最后，如果对更多的技术细节感兴趣，可以[阅读说明](#understand-the-sample-code)，了解示例代码的重要元素。
@@ -380,5 +380,5 @@ void registerReceiver(QueueClient queueClient, ExecutorService executorService) 
 
 [trial account]: https://www.azure.cn/pricing/1rmb-trial/
 [fully qualified domain name]: https://wikipedia.org/wiki/Fully_qualified_domain_name
-[Install the Azure CLI]: https://docs.azure.cn/zh-cn/cli/install-azure-cli
+[Install the Azure CLI]: https://docs.azure.cn/cli/install-azure-cli
 [az group create]: /cli/group#az_group_create

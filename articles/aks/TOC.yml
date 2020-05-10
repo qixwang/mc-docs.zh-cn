@@ -53,7 +53,9 @@
       href: concepts-storage.md
     - name: 缩放
       href: concepts-scale.md
-    - name: 最佳做法
+    - name: 节点自动修复
+      href: node-auto-repair.md
+    - name: 最佳实践
       items:
         - name: 概述
           href: best-practices.md
@@ -91,7 +93,7 @@
       href: supported-kubernetes-versions.md
     - name: 主机 OS 中的安全强化
       href: security-hardened-vm-host-image.md
-- name: 操作方法指南
+- name: 操作指南
   items:
     - name: 群集操作
       items:
@@ -101,13 +103,14 @@
           href: upgrade-cluster.md
         - name: 处理节点 OS 更新
           href: node-updates-kured.md
-        - name: 删除 AKS 群集
-          href: 'https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest#az-aks-delete'
-          maintainContext: true
         - name: 将 ACR 与 AKS 群集集成
           href: cluster-container-registry-integration.md
-        - name: 使用多个节点池
-          href: use-multiple-node-pools.md
+        - name: 使用节点池
+          items:
+            - name: 使用多个节点池
+              href: use-multiple-node-pools.md
+            - name: 使用系统节点池
+              href: use-system-pools.md
         - name: 使用 Kubernetes 仪表板
           href: kubernetes-dashboard.md
     - name: 配置数据卷
@@ -134,6 +137,8 @@
           href: internal-lb.md
         - name: 使用标准负载均衡器
           href: load-balancer-standard.md
+        - name: 将用户定义的路由用于入口
+          href: egress-outboundtype.md
         - name: 使用静态 IP 地址
           href: static-ip.md
         - name: 流入量
@@ -226,6 +231,8 @@
       items:
         - name: Jenkins 持续部署
           href: jenkins-continuous-deployment.md
+        - name: 适用于 Kubernetes 的 GitHub 操作
+          href: ../aks/kubernetes-action.md
     - name: 故障排除
       items:
         - name: 常见问题
@@ -262,5 +269,5 @@
       href: 'https://support.azure.cn/support/contact/'
     - name: 视频
       href: 'https://www.azure.cn/video-center/'
-    - name: 常见问题解答
+    - name: 常见问题
       href: faq.md

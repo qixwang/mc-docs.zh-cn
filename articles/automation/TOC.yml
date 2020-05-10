@@ -13,16 +13,22 @@
     - name: 管理自动化运行方式帐户
       href: manage-runas-account.md
       displayName: certificate renewal
-    - name: 加密 Azure 自动化中的安全资产
-      href: automation-secure-asset-encryption.md
     - name: 管理基于角色的访问控制
       href: automation-role-based-access-control.md
       displayName: RBAC
     - name: 管理 Azure 自动化数据
       href: automation-managing-data.md
       displayName: backup
+    - name: 故障排除
+      items:
+        - name: 自动化帐户故障排除
+          href: troubleshoot/automation-account.md
+          displayName: troubleshoot
 - name: 过程自动化
   items:
+    - name: 在 Azure 自动化中执行 Runbook
+      href: automation-runbook-execution.md
+      displayName: 'fair share, activity log'
     - name: 混合 Runbook 辅助角色概述
       href: automation-hybrid-runbook-worker.md
     - name: 概念
@@ -78,9 +84,6 @@
             - name: Runbook 输出
               href: automation-runbook-output-and-messages.md
               displayName: 'message streams, progress records, preference'
-            - name: 跟踪 Runbook 作业
-              href: automation-runbook-execution.md
-              displayName: 'fair share, activity log'
             - name: 图形 Runbook 中的错误处理
               href: automation-runbook-graphical-error-handling.md
         - name: 混合 Runbook 辅助角色
@@ -132,9 +135,6 @@
         - name: 使用状态配置将服务器配置为所需状态并管理偏移
           href: tutorial-configure-servers-desired-state.md
           displayName: 'DSC, compliance'
-        - name: 载入用于管理的计算机
-          href: automation-dsc-onboarding.md
-          displayName: 'DSC, state configuration'
         - name: 编译 DSC 配置
           href: automation-dsc-compile.md
           displayName: 'state configuration, composite resources, configurationData'
@@ -143,7 +143,7 @@
           displayName: 'state configuration, DSC, remediate'
         - name: 使用复合资源编写 DSC 配置
           href: compose-configurationwithcompositeresources.md
-        - name: 使用 Chocolatey 进行连续部署
+        - name: 使用 Chocolatey 提供连续部署
           href: automation-dsc-cd-chocolatey.md
           displayName: 'dsc, state configuration'
         - name: 将状态配置报告数据转发到 Azure Monitor 日志
@@ -153,7 +153,7 @@
       items:
         - name: 排查 State Configuration (DSC) 问题
           href: troubleshoot/desired-state-configuration.md
-          displayName: 'Desired State Configuration, troubleshoot'
+          displayName: 'state configuration, DSC, troubleshoot'
     - name: 参考
       items:
         - name: 社区解决方案
@@ -190,11 +190,9 @@
       href: automation-alert-metric.md
     - name: 从 Azure 警报启动 Runbook
       href: automation-create-alert-triggered-runbook.md
-      displayName: 'VSTS, CI, runbooks'
+      displayName: 'Monitor, Azure Monitor'
     - name: 在 Azure 自动化 PowerShell Runbook 中部署 Azure 资源管理器模板
       href: automation-deploy-template-runbook.md
-    - name: 将 Azure 自动化与事件网格和 Microsoft Teams 相集成
-      href: ../event-grid/ensure-tags-exists-on-new-virtual-machines.md?toc=%2fautomation%2ftoc.json
 - name: 监视
   items:
     - name: 将 Azure 自动化作业数据转发到 Log Analytics

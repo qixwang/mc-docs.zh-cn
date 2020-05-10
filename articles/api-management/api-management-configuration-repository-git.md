@@ -1,25 +1,23 @@
 ---
-title: 使用 Git 配置 API 管理服务
+title: 使用 Git 配置 Azure API 管理服务 | Microsoft 文档
 description: 了解如何使用 Git 保存和配置 API 管理服务。
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: Johnnytechn
 manager: erikre
 editor: mattfarm
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-origin.date: 03/12/2019
-ms.author: v-yiso
-ms.date: 04/22/2019
-ms.openlocfilehash: 70346bb12ec53a2c447451f6cab74d5e89882453
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/09/2020
+ms.author: v-johya
+ms.openlocfilehash: cf2fe9b3c2fc8bdc14e93342e489d3ee50c23d72
+ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78213722"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "83002073"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>如何使用 Git 保存和配置 API 管理服务
 
@@ -34,8 +32,9 @@ ms.locfileid: "78213722"
 ![Git 配置][api-management-git-configure]
 
 使用 Azure 门户、PowerShell cmdlet 或 REST API 对服务进行更改时，即表示正在使用 `https://{name}.management.azure-api.cn` 终结点管理服务配置数据库，如图右侧所示。 图左侧说明了如何针对位于 `https://{name}.scm.azure-api.cn` 的服务使用 Git 和 Git 存储库管理服务配置。
+<!-- Correct in MC : https://{name}.management.azure-api.cn and https://{name}.scm.azure-api.cn -->
 
-以下步骤提供了使用 Git 管理 API 管理服务实例的概述。
+以下步骤概述了如何使用 Git 管理 API 管理服务实例。
 
 1. 访问服务中的 Git 配置
 2. 将服务配置数据库保存到 Git 存储库
@@ -58,7 +57,7 @@ ms.locfileid: "78213722"
 >
 >
 
-有关使用 REST API 启用或禁用 Git 访问的信息，请参阅[使用 REST API 启用或禁用 Git 访问](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/tenantaccess?EnableGit)。
+有关使用 REST API 启用或禁用 Git 访问的信息，请参阅[使用 REST API 启用或禁用 Git 访问](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/tenantaccess?EnableGit)。
 
 ## <a name="to-save-the-service-configuration-to-the-git-repository"></a>将服务配置保存到 Git 存储库
 
@@ -70,19 +69,19 @@ ms.locfileid: "78213722"
 
 将配置保存到存储库后，可以克隆它。
 
-有关使用 REST API 执行此操作的信息，请参阅[使用 REST API 提交配置快照](https://msdn.microsoft.com/library/dn781420.aspx#CommitSnapshot)。
+有关使用 REST API 执行此操作的信息，请参阅[使用 REST API 提交配置快照](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/tenantaccess?CommitSnapshot)。
 
 ## <a name="to-clone-the-repository-to-your-local-machine"></a>将存储库克隆到本地计算机
 
-若要克隆存储库，需要存储库的 URL、用户名和密码。 若要获取用户名和其他凭据，请单击页面顶部附近的“访问凭据”  。  
- 
+若要克隆存储库，需要存储库的 URL、用户名和密码。 若要获取用户名和其他凭据，请单击页面顶部附近的“访问凭据”  。
+
 若要生成密码，先确保“到期”  设置为所需的到期日期和时间，然后单击“生成”  。
 
 > [!IMPORTANT]
 > 记下此密码。 离开此页面后，不会再次显示该密码。
-> 
+>
 
-以下示例使用 [Git for Windows](https://www.git-scm.com/downloads) 中的 Git Bash 工具，但可以使用熟悉的任何 Git 工具。
+以下示例使用 [Windows 版 Git](https://www.git-scm.com/downloads) 中的 Git Bash 工具，但你可以使用熟悉的任何 Git 工具。
 
 使用 Azure 门户提供的命令，在所需文件夹中打开 Git 工具并运行以下命令以将 Git 存储库克隆到本地计算机。
 
@@ -98,10 +97,10 @@ git clone https://{name}.scm.azure-api.net/
 git clone https://username:password@{name}.scm.azure-api.net/
 ```
 
-如果这提供了一个错误，请尝试对命令的密码部分进行 URL 编码。 执行此操作的一个快速方法是打开 Visual Studio，并在“即时窗口”  中发出以下命令。 要打开“即使窗口”  ，请在 Visual Studio 中打开任意解决方案或项目（或创建新的空白控制台应用程序），并从“调试”  菜单中依次选择“Windows”  、“即时”  。
+如果这样会产生错误，请尝试对命令的密码部分进行 URL 编码。 执行此操作的一个快速方法是打开 Visual Studio，并在“即时窗口”  中发出以下命令。 若要打开“即时窗口”  ，请在 Visual Studio 中打开任意解决方案或项目（或创建新的空白控制台应用程序），并从“调试”  菜单中依次选择“Windows”  、“即时”  。
 
 ```
-?System.NetWebUtility.UrlEncode("password from the Azure portal")
+?System.Net.WebUtility.UrlEncode("password from the Azure portal")
 ```
 
 将编码密码与用户名和存储库位置一起用于构造 Git 命令。
@@ -126,29 +125,31 @@ git pull
 cd {name}.scm.azure-api.net/
 ```
 
-## <a name="to-push-changes-from-your-local-repo-to-the-server-repo"></a>将更改从本地存储库推送到服务器存储器
-要将更改从本地存储库推送到服务器存储库，必须提交更改，然后将它们推送到服务器存储库。 要提交更改，请打开 Git 命令工具、切换到本地存储库的目录，并发出以下命令。
+## <a name="to-push-changes-from-your-local-repo-to-the-server-repo"></a>将更改从本地存储库推送到服务器存储库
+若要将更改从本地存储库推送到服务器存储库，必须提交更改，然后将它们推送到服务器存储库。 若要提交更改，请打开 Git 命令工具，切换到本地存储库的目录，然后发出以下命令。
 
 ```
 git add --all
 git commit -m "Description of your changes"
 ```
 
-要将所有提交推送到服务器，请运行以下命令。
+若要将所有提交推送到服务器，请运行以下命令。
 
 ```
 git push
 ```
 
 ## <a name="to-deploy-any-service-configuration-changes-to-the-api-management-service-instance"></a>将任何服务配置更改部署到 API 管理服务实例
+
 将本地更改提交并推送到服务器存储库后，可将它们部署到 API 管理服务实例。
 
-有关使用 REST API 执行此操作的信息，请参阅[使用 REST API 将 Git 更改部署到配置数据库](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/tenantconfiguration)。
+有关使用 REST API 执行此操作的信息，请参阅[使用 REST API 将 Git 更改部署到配置数据库](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/tenantconfiguration)。
 
 ## <a name="file-and-folder-structure-reference-of-local-git-repository"></a>本地 Git 存储库的文件和文件夹结构参考
+
 本地 Git 存储库中的文件和文件夹包含有关服务实例的配置信息。
 
-| Item | 说明 |
+| 项目 | 说明 |
 | --- | --- |
 | 根 api-management 文件夹 |包含服务实例的顶级配置 |
 | apis 文件夹 |包含服务实例中的 API 的配置 |
@@ -172,11 +173,10 @@ git push
 > [!NOTE]
 > 以下实体不包含在 Git 存储库中，并且无法使用 Git 进行配置。
 >
-> * [用户](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/user)
-> * [订阅](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/subscription)
-> * [命名值](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/property)
+> * [用户](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/user)
+> * [订阅](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/subscription)
 > * 样式以外的开发人员门户实体
-> 
+>
 
 ### <a name="root-api-management-folder"></a>根 api-management 文件夹
 根 `api-management` 文件夹包含 `configuration.json` 文件，该文件包含采用以下格式的关于服务器实例的顶级信息。
@@ -203,8 +203,8 @@ git push
 | 标识设置 | 映射到 |
 | --- | --- |
 | RegistrationEnabled |是否存在**用户名和密码**标识提供者 |
-| UserRegistrationTerms |“用户登录时的使用条款”  文本框 |
-| UserRegistrationTermsEnabled |“显示用户登录时的使用条款”  复选框 |
+| UserRegistrationTerms |“用户注册使用条款”  文本框 |
+| UserRegistrationTermsEnabled |“在注册页上显示使用条款”  复选框 |
 | UserRegistrationTermsConsentRequired |“需要同意”  复选框 |
 | RequireUserSigninEnabled |“将匿名用户重定向到登录页”  复选框 |
 
@@ -220,17 +220,17 @@ git push
 最后的设置 `$ref-policy` 映射到服务实例的全局策略声明文件。
 
 ### <a name="apis-folder"></a>apis 文件夹
-`apis` 文件夹针对服务实例中的每个 API 都包含一个文件夹，该文件夹包含以下项目。
+`apis` 文件夹针对服务实例中每个 API 都包括了一个文件夹，其中包含以下项。
 
-* `apis\<api name>\configuration.json` - 这是 API 的配置，包含关于后端服务 URL 和操作的信息。 这是使用 [ 以 ](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/apis/get) 格式调用`export=true`获取特定 API`application/json` 时会返回的相同信息。
-* `apis\<api name>\api.description.html` - 这是 API 的说明，对应于 `description`API 实体[的 ](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.table._entity_property) 属性。
-* `apis\<api name>\operations\` - 此文件夹包含映射到 API 中的操作的 `<operation name>.description.html` 文件。 每个文件包含 API 中单个操作的说明，该说明映射到 REST API 中`description`操作实体[的 ](https://docs.microsoft.com/rest/api/visualstudio/operations/list#operationproperties) 属性。
+* `apis\<api name>\configuration.json` - 这是 API 的配置，包含关于后端服务 URL 和操作的信息。 这是使用 `export=true` 以 `application/json` 格式调用[获取特定 API](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/apis/get) 时会返回的相同信息。
+* `apis\<api name>\api.description.html` - 这是 API 的说明，对应于 [API 实体](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.table.entityproperty)的 `description` 属性。
+* `apis\<api name>\operations\` - 此文件夹包含映射到 API 中的操作的 `<operation name>.description.html` 文件。 每个文件包含 API 中单个操作的说明，该说明映射到 REST API 中[操作实体](https://docs.microsoft.com/rest/api/visualstudio/operations/list#operationproperties)的 `description` 属性。
 
 ### <a name="groups-folder"></a>groups 文件夹
-`groups` 文件夹针对服务实例中定义的每个组都包含一个文件夹。
+`groups` 文件夹包含适用于服务实例中定义的每个组的文件夹。
 
-* `groups\<group name>\configuration.json` - 这是组的配置。 这是调用[获取特定组](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/group/get)操作时会返回的相同信息。
-* `groups\<group name>\description.html` - 这是组的说明，对应于`description`组实体[的 ](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-group-entity) 属性。
+* `groups\<group name>\configuration.json` - 这是组的配置。 这是调用[获取特定组](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/group/get)操作时会返回的相同信息。
+* `groups\<group name>\description.html` - 这是组的说明，对应于[组实体](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-group-entity)的 `description` 属性。
 
 ### <a name="policies-folder"></a>policies 文件夹
 `policies` 文件夹包含服务实例的策略声明。
@@ -247,10 +247,10 @@ git push
 * `portalStyles\<style name>.css` - 每个 `<style name>.css` 文件都包含开发人员门户的样式（默认为 `Preview.css` 和 `Production.css`）。
 
 ### <a name="products-folder"></a>products 文件夹
-`products` 文件夹针对服务实例中定义的每个产品都包含一个文件夹。
+`products` 文件夹包含适用于服务实例中定义的每个产品的文件夹。
 
-* `products\<product name>\configuration.json` - 这是产品的配置。 这是调用[获取特定产品](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/product/get)操作时会返回的相同信息。
-* `products\<product name>\product.description.html` - 这是产品的说明，对应于 REST API 中`description`产品实体[的 ](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-product-entity) 属性。
+* `products\<product name>\configuration.json` - 这是产品的配置。 这是调用[获取特定产品](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/product/get)操作时会返回的相同信息。
+* `products\<product name>\product.description.html` - 这是产品的说明，对应于 REST API 中[产品实体](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-product-entity)的 `description` 属性。
 
 ### <a name="templates"></a>模板
 `templates` 文件夹包含服务实例的[电子邮件模板](api-management-howto-configure-notifications.md)配置。
@@ -265,7 +265,7 @@ git push
   * [服务部署 PowerShell cmdlet 参考](https://docs.microsoft.com/powershell/module/wds)
   * [服务管理 PowerShell cmdlet 参考](https://docs.microsoft.com/powershell/azure/servicemanagement/overview)
 * 使用 REST API 管理服务实例
-  * [API 管理 REST API 参考](https://docs.microsoft.com//rest/api/apimanagement/)
+  * [API 管理 REST API 参考](https://docs.microsoft.com/rest/api/apimanagement/)
 
 
 [api-management-enable-git]: ./media/api-management-configuration-repository-git/api-management-enable-git.png
@@ -281,6 +281,7 @@ git push
 [api-management-identity-settings]: ./media/api-management-configuration-repository-git/api-management-identity-settings.png
 [api-management-delegation-settings]: ./media/api-management-configuration-repository-git/api-management-delegation-settings.png
 [api-management-git-icon-enable]: ./media/api-management-configuration-repository-git/api-management-git-icon-enable.png
+
 
 
 

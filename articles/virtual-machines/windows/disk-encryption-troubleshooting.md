@@ -4,16 +4,16 @@ description: 本文提供适用于 Windows VM 的 Azure 磁盘加密的故障排
 author: rockboyfor
 ms.service: security
 ms.topic: article
-ms.author: v-yeche
 origin.date: 08/06/2019
-ms.date: 11/11/2019
+ms.date: 04/27/2020
+ms.author: v-yeche
 ms.custom: seodec18
-ms.openlocfilehash: 373eb3eb0bac0418106fdce7c0343e091d5671c1
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: e205cc9ecb0554e33db877add47b1e5fb877c4fd
+ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "73730670"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "83002075"
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Azure 磁盘加密故障排除指南
 
@@ -24,8 +24,6 @@ ms.locfileid: "73730670"
 - [网络要求](disk-encryption-overview.md#networking-requirements)
 - [组策略要求](disk-encryption-overview.md#group-policy-requirements)
 - [加密密钥存储要求](disk-encryption-overview.md#encryption-key-storage-requirements)
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="troubleshooting-azure-disk-encryption-behind-a-firewall"></a>防火墙保护下的 Azure 磁盘加密故障排除
 
@@ -84,9 +82,11 @@ DISKPART> list vol
 
 若要使用 CLI 禁用 Azure 磁盘加密，请使用 [az vm encryption disable](https://docs.azure.cn/cli/vm/encryption?view=azure-cli-latest#az-vm-encryption-disable)。 
 
-<!--Not Available on ## Next steps-->
-<!--Not Available on - [Apply disk encryption in Azure Security Center](../../security-center/security-center-apply-disk-encryption.md)-->
+<!--Not Available on -## Next steps-->
+<!--Not Available on - [Apply disk encryption in Azure Security Center](../../security-center-virtual-machine-protection.md)-->
+
+<!--CORRECT ON security-center-virtual-machine-protection.md-->
+
 <!--Not Available on - [Azure data encryption at rest](../../security/fundamentals/encryption-atrest.md)-->
 
-<!--Update_Description: new articles on disk encryption troubleshooting -->
-<!--New.date: 11/04/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

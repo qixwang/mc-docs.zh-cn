@@ -2,20 +2,19 @@
 title: 什么是 Azure 事件网格？
 description: 使用 Azure 事件网格将事件数据从源发送到处理程序。 生成基于事件的应用程序，并与 Azure 服务集成。
 services: event-grid
-author: banisadr
+author: Johnnytechn
 manager: timlt
 ms.service: event-grid
 ms.topic: overview
-origin.date: 02/20/2020
-ms.date: 3/16/2020
-ms.author: v-lingwu
+ms.date: 05/06/2020
+ms.author: v-johya
 ms.custom: seodec18
-ms.openlocfilehash: 98a2268967ebe0c6ea3e8bd68f80f078da3c58c3
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 13b694b8eaf00afbd6e7a623f02cf2df6f39f8f7
+ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80417390"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "83001888"
 ---
 # <a name="what-is-azure-event-grid"></a>什么是 Azure 事件网格？
 
@@ -23,7 +22,7 @@ ms.locfileid: "80417390"
 
 可以使用筛选器将特定事件路由到不同的终结点，多播到多个终结点，并确保事件可靠传送。
 
-部署 Azure 事件网格是为了通过本机分布在每个区域中的多个容错域和可用性区域（在支持它们的区域中）来最大限度地提高可用性。 
+部署 Azure 事件网格是为了通过本机分布在每个区域中的多个容错域和可用性区域（在支持它们的区域中）来最大限度地提高可用性。 有关事件网格支持的区域列表，请参阅[可用产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/?products=event-grid&regions=all)。
 
 本文将对 Azure 事件网格进行简要概述。 若要开始使用事件网格，请参阅[使用 Azure 事件网格创建和路由自定义事件](custom-event-quickstart.md)。 
 
@@ -33,18 +32,20 @@ ms.locfileid: "80417390"
 
 ## <a name="event-sources"></a>事件源
 
-有关每个源的功能的完整详细信息及相关文章，请参阅[事件源](event-sources.md)。 当前，以下 Azure 服务支持将事件发送到事件网格：
+当前，以下 Azure 服务支持将事件发送到事件网格：
 
-* [Azure 订阅（管理操作）](event-sources.md#azure-subscriptions)
-* [容器注册表](event-sources.md#container-registry)
-* [自定义主题](event-sources.md#custom-topics)
-* [事件中心](event-sources.md#event-hubs)
-* [IoT 中心](event-sources.md#iot-hub)
-* [媒体服务](event-sources.md)
-* [资源组（管理操作）](event-sources.md#resource-groups)
-* [服务总线](event-sources.md#service-bus)
-* [存储 Blob](event-sources.md#storage)
-
+<!-- Not abailable in china: event-schema-app-configuration.md event-schema-azure-maps.md -->
+- [Azure Blob 存储](event-schema-blob-storage.md)
+- [Azure 容器注册表](event-schema-container-registry.md)
+- [Azure 事件中心](event-schema-event-hubs.md)
+- [Azure IoT 中心](event-schema-iot-hub.md)
+- [Azure 密钥保管库](event-schema-key-vault.md)
+- [Azure 机器学习](event-schema-machine-learning.md)
+- [Azure 媒体服务](event-schema-media-services.md)
+- [Azure 资源组](event-schema-resource-groups.md)
+- [Azure 服务总线](event-schema-service-bus.md)
+- [Azure SignalR](event-schema-azure-signalr.md)
+- [Azure 订阅](event-schema-subscriptions.md)
 
 ## <a name="event-handlers"></a>事件处理程序
 
@@ -55,7 +56,8 @@ ms.locfileid: "80417390"
 * [事件中心](event-handlers.md#event-hubs)
 * [混合连接](event-handlers.md#hybrid-connections)
 * [逻辑应用](event-handlers.md#logic-apps)
-* [Microsoft Flow](https://preview.flow.microsoft.com/connectors/shared_azureeventgrid/azure-event-grid/)
+* [Power Automate（之前称为 Microsoft Flow）](https://preview.flow.microsoft.com/connectors/shared_azureeventgrid/azure-event-grid/)
+* [服务总线](event-handlers.md#service-bus)
 * [队列存储](event-handlers.md#queue-storage)
 * [WebHook](event-handlers.md#webhooks)
 
@@ -82,7 +84,7 @@ ms.locfileid: "80417390"
 *  按事件支付 - 仅支付事件网格的使用量。
 *  高吞吐量 - 通过对每秒数以百万计事件的支持，在事件网格上生成大量工作负荷。
 *  内置事件 - 使用资源定义的内置事件快速启动和运行。
-*  自定义事件 - 在应用中使用事件网格路由、筛选并可靠地传送自定义事件。
+* **自定义事件** - 在应用中使用事件网格路由、筛选并可靠地传送自定义事件。
 
 有关事件网格、事件中心和服务总线之间的比较，请参阅[在传送消息的 Azure 服务之间进行选择](compare-messaging-services.md)。
 
@@ -122,5 +124,6 @@ Azure 事件网格使用按事件支付的定价模型，因此，你只需为�
   本教程介绍如何使用逻辑应用生成应用，并对事件网格推送的事件作出响应。
 * [将大数据流式传输到数据仓库](event-grid-event-hubs-integration.md)  
   本教程介绍如何使用 Azure Functions 将数据从事件中心流式传输到 SQL 数据仓库。
-* [事件网格 REST API 参考](/rest/api/eventgrid)  
+* [事件网格 REST API 参考](https://docs.microsoft.com/rest/api/eventgrid)  
   提供用于管理事件订阅、路由和筛选的参考内容。
+

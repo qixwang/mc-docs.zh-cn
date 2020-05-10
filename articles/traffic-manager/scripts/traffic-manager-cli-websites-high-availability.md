@@ -14,14 +14,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: traffic-manager
 origin.date: 04/26/2018
-ms.date: 02/24/2020
+ms.date: 05/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 17a77b8fb66289434167ab630ec2b79b7c1e891b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: d0c8ae444e3e79c2c9037e17a14b375adb8f7908
+ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77653598"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "83001887"
 ---
 # <a name="route-traffic-for-high-availability-of-applications-using-azure-cli"></a>使用 Azure CLI 为实现应用程序的高可用性路由流量
 
@@ -123,7 +123,6 @@ az network traffic-manager endpoint create \
   --type azureEndpoints \
   --priority 2 \
   --target-resource-id $L2Id
-
 ```
 
 ## <a name="clean-up-deployment"></a>清理部署 
@@ -139,7 +138,7 @@ az group delete --name myResourceGroup2 --yes
 
 此脚本使用以下命令创建资源组、Web 应用、流量管理器配置文件和所有相关资源。 表中的每条命令均链接到特定于命令的文档。
 
-| Command | 说明 |
+| 命令 | 注释 |
 |---|---|
 | [az group create](https://docs.azure.cn/cli/group?view=azure-cli-latest#az-group-create) | 创建用于存储所有资源的资源组。 |
 | [az appservice plan create](https://docs.azure.cn/cli/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | 创建应用服务计划。 这与 Azure Web 应用的服务器场类似。 |

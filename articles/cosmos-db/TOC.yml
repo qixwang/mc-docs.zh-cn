@@ -39,6 +39,8 @@
               href: sql-api-java-get-started.md
             - name: 异步 Java
               href: sql-api-async-java-get-started.md
+            - name: 异步 Java 端到端示例应用
+              href: create-sql-api-java-changefeed.md
             - name: Node.js
               href: sql-api-nodejs-get-started.md
         - name: 生成 Web 应用
@@ -535,7 +537,7 @@
           displayName: service endpoint
           href: vnet-service-endpoint.md
         - name: 服务标记
-          href: ../virtual-network/service-tags-overview.md?toc=/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+          href: ../virtual-network/service-tags-overview.md?toc=/cosmos-db/toc.json&bc=/cosmos-db/breadcrumb/toc.json
         - name: 基于角色的访问控制
           displayName: rbac
           href: role-based-access-control.md
@@ -592,7 +594,7 @@
             - name: 更改源
               href: cassandra-change-feed.md
             - name: 存储和管理 Spring Data
-              href: 'https://docs.azure.cn/java/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db?context=/cosmos-db/context/context'
+              href: 'https://docs.microsoft.com/azure/java/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db?context=/cosmos-db/context/context'
             - name: Cassandra 和 Spark
               items:
                 - name: 简介
@@ -758,7 +760,7 @@
             - name: 将图数据可视化
               href: graph-visualization.md
             - name: 存储和管理 Spring Data
-              href: 'https://docs.microsoft.com/java/azure/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db'
+              href: 'https://docs.microsoft.com/azure/java/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db?context=/cosmos-db/context/context'
             - name: 使用资源管理器模板进行管理
               href: manage-gremlin-with-resource-manager.md
               displayName: ARM
@@ -818,7 +820,7 @@
             - name: Ruby
               href: table-storage-how-to-use-ruby.md
             - name: 'F#'
-              href: 'https://docs.azure.cn/dotnet/articles/fsharp/using-fsharp-on-azure/table-storage'
+              href: 'https://docs.microsoft.com/en-us/dotnet/fsharp/using-fsharp-on-azure/table-storage'
               maintainContext: true
         - name: 操作指南
           items:
@@ -955,7 +957,7 @@
         - name: Azure Databricks Spark 连接器
           href: spark-connector.md
         - name: 使用 Apache Kafka 和 Cosmos DB 进行流式处理
-          href: ../hdinsight/apache-kafka-spark-structured-streaming-cosmosdb.md?view=azure-dotnet?toc=/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+          href: ../hdinsight/apache-kafka-spark-structured-streaming-cosmosdb.md?toc=/cosmos-db/toc.json&bc=/cosmos-db/breadcrumb/toc.json
     - name: 服务器端编程
       items:
         - name: 编写存储过程、触发器和 UDF
@@ -1012,6 +1014,8 @@
           href: local-emulator-export-ssl-certificates.md
         - name: Visual Studio Code 扩展
           href: 'https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb'
+    - name: 设置 Azure DevOps CI/CD 管道
+      href: tutorial-setup-ci-cd.md
     - name: 将 Cosmos DB 数据可视化
       items:
         - name: 使用 Power BI
@@ -1039,7 +1043,9 @@
         - name: Azure 事件中心和 Azure 存储
           href: 'https://github.com/hdinsight/hdinsight-storm-examples/blob/master/IotExample/README.md'
         - name: 使用 Spring Boot Starter
-          href: 'https://docs.azure.cn/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db'
+          href: 'https://docs.azure.cn/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db?context=/azure/cosmos-db/context/context'
+        - name: Spring Data 开发人员指南
+          href: 'https://docs.microsoft.com/azure/java/spring-framework/how-to-guides-spring-data-cosmosdb?context=/azure/cosmos-db/context/context'
         - name: ODBC 驱动程序
           href: odbc-driver.md
     - name: 将数据迁移到 Cosmos DB
@@ -1062,6 +1068,8 @@
           href: bulk-executor-overview.md
         - name: 批量执行程序 - .NET 库
           href: bulk-executor-dot-net.md
+        - name: 从批量执行程序迁移到 .NET SDK
+          href: how-to-migrate-from-bulk-executor-library.md
         - name: 批量执行程序 - Java 库
           href: bulk-executor-java.md
 - name: 参考
