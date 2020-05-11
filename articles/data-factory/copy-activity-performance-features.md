@@ -12,15 +12,17 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 origin.date: 03/09/2020
-ms.date: 03/23/2020
-ms.openlocfilehash: 82ce5a6cb2f633858a52710340ce62760bbc0bdb
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/11/2020
+ms.openlocfilehash: 162bbb297c24898eabeced082fd52d79f57c31e3
+ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79497410"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82198270"
 ---
 # <a name="copy-activity-performance-optimization-features"></a>复制活动性能优化功能
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文概述可在 Azure 数据工厂中利用的复制活动性能优化功能。
 
@@ -93,7 +95,7 @@ ms.locfileid: "79497410"
 | 文件存储之间 | `parallelCopies` 确定文件级别的并行度。  每个文件内的区块化会自动透明地在该级别下进行。 它旨在对给定数据存储类型使用最佳区块大小，以并行加载数据。 <br/><br/>复制活动在运行时使用的实际并行副本数不超过现有的文件数。 如果复制行为是在文件接收器中执行 **mergeFile**，则复制活动无法利用文件级并行度。 |
 | 从文件存储到非文件存储 | - 在将数据复制到 Azure SQL 数据库或 Azure Cosmos DB 时，默认的并行副本数还取决于接收器层（DTU/RU 数目）。<br>- 在将数据复制到 Azure 表时，默认的并行副本数为 4 个。 |
 | 从非文件存储到文件存储 | - 从启用分区选项的数据存储（包括 [Oracle](connector-oracle.md#oracle-as-source)、[Netezza](connector-netezza.md#netezza-as-source)、[Teradata](connector-teradata.md#teradata-as-source)、[SAP HANA](connector-sap-hana.md#sap-hana-as-source)、[SAP Table](connector-sap-table.md#sap-table-as-source) 和 [SAP Open Hub](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source)）复制数据时，默认的并行副本数为 4 个。 复制活动在运行时使用的实际并行副本数不超过现有的数据分区数。 使用自承载集成运行时并复制到 Azure Blob/ADLS Gen2 时请注意，每个 IR 节点的最大有效并行副本数为 4 或 5 个。<br>- 对于其他方案，并行复制不起作用。 即使指定了并行度，也不会应用并行复制。 |
-| 非文件存储之间 | - 在将数据复制到 Azure SQL 数据库或 Azure Cosmos DB 时，默认的并行副本数还取决于接收器层（DTU/RU 数目）。<br/>- 在将数据复制到 Azure 表时，默认的并行副本数为 4 个。 |
+| 非文件存储之间 | - 在将数据复制到 Azure SQL 数据库或 Azure Cosmos DB 时，默认的并行副本数还取决于接收器层（DTU/RU 数目）。<br/>- 从启用分区选项的数据存储（包括 [Oracle](connector-oracle.md#oracle-as-source)、[Netezza](connector-netezza.md#netezza-as-source)、[Teradata](connector-teradata.md#teradata-as-source)、[SAP HANA](connector-sap-hana.md#sap-hana-as-source)、[SAP Table](connector-sap-table.md#sap-table-as-source) 和 [SAP Open Hub](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source)）复制数据时，默认的并行副本数为 4 个。<br>- 在将数据复制到 Azure 表时，默认的并行副本数为 4 个。 |
 
 若要控制托管数据存储的计算机上的负载或优化复制性能，可以替代默认值并为 `parallelCopies` 属性指定值。 该值必须是大于或等于 1 的整数。 在运行时，为了获得最佳性能，复制活动使用小于或等于所设置的值。
 

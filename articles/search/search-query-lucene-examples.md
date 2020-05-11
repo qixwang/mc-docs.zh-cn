@@ -9,22 +9,22 @@ tags: Lucene query analyzer syntax
 ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 11/04/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: 16d698eb8d72b4f40e82a50c00ace067c00bd065
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 04/20/2020
+ms.openlocfilehash: b852b9ac85b3272f7a2e7d160c91e21cc156bdb6
+ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78850625"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82588716"
 ---
 # <a name="use-the-full-lucene-search-syntax-advanced-queries-in-azure-cognitive-search"></a>使用“完整的”Lucene 搜索语法（Azure 认知搜索中的高级查询）
 
 在构造 Azure 认知搜索的查询时，可以将默认的[简单查询分析器](query-simple-syntax.md)替换为更全面的 [Azure 认知搜索中的 Lucene 查询分析器](query-lucene-syntax.md)，以便制定专用的高级查询定义。 
 
-Lucene 分析器支持复杂的查询构造，比如字段范围查询、模糊和前缀通配符搜索、邻近搜索、术语提升以及正则表达式搜索。 额外的功能需遵守额外的处理要求，因此执行时间应该会更长一些。 本文展示了使用完整语法时的查询操作示例，可以按照这些示例逐步操作。
+Lucene 分析器支持复杂的查询构造，比如字段范围查询、模糊搜索、中缀和后缀通配符搜索、邻近搜索、术语提升以及正则表达式搜索。 额外的功能需遵守额外的处理要求，因此执行时间应该会更长一些。 本文展示了使用完整语法时的查询操作示例，可以按照这些示例逐步操作。
 
 > [!Note]
-> 通过完整的 Lucene 查询语法实现的专用查询构造很多都不是[按文本分析的](search-lucene-query-architecture.md#stage-2-lexical-analysis)，所以并不涉及词干分解和词形还原，这一点有些出人意料。 只会对完整字词（字词查询或短语查询）进行词法分析。 字词不完整的查询类型（前缀查询、通配符查询、正则表达式查询、模糊查询）会被直接添加到查询树中，绕过分析阶段。 对不完整查询字词执行的唯一转换操作是转换为小写。 
+> 通过完整的 Lucene 查询语法实现的专用查询构造很多都不是[按文本分析的](search-lucene-query-architecture.md#stage-2-lexical-analysis)，所以并不涉及词干分解和词形还原，这一点有些出人意料。 只会对完整字词（字词查询或短语查询）进行词法分析。 字词不完整的查询类型（前缀查询、通配符查询、正则表达式查询、模糊查询）会被直接添加到查询树中，绕过分析阶段。 对部分查询字词执行的唯一转换操作是转换为小写。 
 >
 
 ## <a name="formulate-requests-in-postman"></a>在 Postman 中创建请求
@@ -87,7 +87,7 @@ https://azs-playground.search.azure.cn/indexes/nycjobs/docs?api-version=2019-05-
 
 出于简洁目的，该查询仅针对 business_title 字段并指定仅返回职位  。 **searchFields** 参数将查询执行限制为 business_title 字段，**select** 指定响应中包含的字段。
 
-### <a name="partial-query-string"></a>部分查询字符串
+### <a name="search-expression"></a>搜索表达式
 
 ```http
 &search=*&searchFields=business_title&$select=business_title
@@ -120,7 +120,7 @@ https://azs-playground.search.azure.cn/indexes/nycjobs/docs?api-version=2019-05-
 
 完整 Lucene 语法支持将单个搜索表达式的范围限定为特定的字段。 此示例搜索其中带有字词 senior 而非 junior 的 business title（职务）。
 
-### <a name="partial-query-string"></a>部分查询字符串
+### <a name="search-expression"></a>搜索表达式
 
 ```http
 $select=business_title&search=business_title:(senior NOT junior)
@@ -157,7 +157,7 @@ https://azs-playground.search.azure.cn/indexes/nycjobs/docs?api-version=2019-05-
 
 完整 Lucene 语法还支持模糊搜索，能对构造相似的术语进行匹配。 若要执行模糊搜索，请在单个字词的末尾追加“`~`”波形符，后跟指定编辑距离的可选参数（介于 0 到 2 之间的值）。 例如，`blue~` 或 `blue~1` 会返回 blue、blues 和 glue。
 
-### <a name="partial-query-string"></a>部分查询字符串
+### <a name="search-expression"></a>搜索表达式
 
 ```http
 searchFields=business_title&$select=business_title&search=business_title:asosiate~
@@ -187,7 +187,7 @@ https://azs-playground.search.azure.cn/indexes/nycjobs/docs?api-version=2019-05-
 ## <a name="example-4-proximity-search"></a>示例 4：邻近搜索
 邻近搜索用于搜索文档中彼此邻近的术语。 在短语末尾插入波形符“~”，后跟创建邻近边界的词数。 例如“酒店机场”~5 将查找文档中彼此之间 5 个字以内的术语“酒店”和“机场”。
 
-### <a name="partial-query-string"></a>部分查询字符串
+### <a name="search-expression"></a>搜索表达式
 
 ```http
 searchFields=business_title&$select=business_title&search=business_title:%22senior%20analyst%22~1
@@ -240,7 +240,7 @@ https://azs-playground.search.azure.cn/indexes/nycjobs/docs?api-version=2019-05-
 
 正则表达式搜索基于正斜杠“/”之间的内容查找匹配项，如在 [RegExp 类](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/util/automaton/RegExp.html)中所记录的那样。
 
-### <a name="partial-query-string"></a>部分查询字符串
+### <a name="search-expression"></a>搜索表达式
 
 ```http
 searchFields=business_title&$select=business_title&search=business_title:/(Sen|Jun)ior/
@@ -263,7 +263,7 @@ https://azs-playground.search.azure.cn/indexes/nycjobs/docs?api-version=2019-05-
 ## <a name="example-7-wildcard-search"></a>示例 7：通配符搜索
 可将通常可识别的语法用于多个 (\*) 或单个 (?) 字符通配符搜索。 请注意，Lucene 查询分析器支持将这些符号与单个术语一起使用，但不能与短语一起使用。
 
-### <a name="partial-query-string"></a>部分查询字符串
+### <a name="search-expression"></a>搜索表达式
 
 ```http
 searchFields=business_title&$select=business_title&search=business_title:prog*
@@ -271,7 +271,7 @@ searchFields=business_title&$select=business_title&search=business_title:prog*
 
 ### <a name="full-url"></a>完整 URL
 
-在此查询中，搜索包含前缀“prog”的作业，这会包含带有术语“编程”和“程序员”的职位。 不得将 * 或 ? 符号用作搜索的第一个字符。
+在此查询中，搜索包含前缀“prog”的作业，这会包含带有术语“编程”和“程序员”的职位。 不得将 * 或 ?  符号用作搜索的第一个字符。
 
 ```GET
 https://azs-playground.search.azure.cn/indexes/nycjobs/docs?api-version=2019-05-06&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:prog*
