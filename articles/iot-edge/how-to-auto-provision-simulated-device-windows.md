@@ -4,17 +4,17 @@ description: 使用 Windows 计算机上的模拟设备通过设备预配服务�
 author: kgremban
 manager: philmea
 ms.author: v-tawe
-origin.date: 01/09/2019
-ms.date: 03/02/2020
+origin.date: 04/03/2019
+ms.date: 04/20/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: f85a19c52a658d455294d9e072e474d20eaecb9c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 82b71d058b893d49cfcb5b36f7b5abc24e7fd36a
+ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77494348"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82588596"
 ---
 # <a name="create-and-provision-a-simulated-iot-edge-device-with-a-virtual-tpm-on-windows"></a>在 Windows 上使用虚拟 TPM 创建和预配模拟 IoT Edge 设备
 
@@ -32,7 +32,7 @@ DPS 在个人注册和组注册中都支持 IoT Edge 设备的对称密钥证明
 > [!TIP]
 > 本文介绍了如何通过在虚拟设备上使用 TPM 证明来测试自动预配，但是在使用物理 TPM 硬件时，它大部分也同样适用。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 一台 Windows 开发计算机。 本文使用 Windows 10。
 * 活动的 IoT 中心。
@@ -60,6 +60,9 @@ DPS 在个人注册和组注册中都支持 IoT Edge 设备的对称密钥证明
 选择要用来创建模拟设备的 SDK 语言，并遵循本文中的步骤，直到创建了个人注册为止。
 
 创建个人注册时，请选择“True”  ，将 Windows 开发计算机上的模拟 TPM 设备声明为“IoT Edge设备”  。
+
+> [!TIP]
+> 在 Azure CLI 中，可以创建[注册](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment)或[注册组](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment-group)，并使用“支持 Edge”  标志来指定某个设备或设备组是 IoT Edge 设备。
 
 模拟设备和个人注册指南：
 

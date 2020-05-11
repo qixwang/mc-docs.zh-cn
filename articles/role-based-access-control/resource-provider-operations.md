@@ -10,15 +10,15 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/31/2020
+ms.date: 04/29/2020
 ms.author: v-junlch
 ms.reviewer: bagovind
-ms.openlocfilehash: e504b7f93eb3a41c2f1ccbc1b2b5a058e22ca97a
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 112636141c1a19de69033927eaa13c37990a29d3
+ms.sourcegitcommit: e3512c5c2bbe61704d5c8cbba74efd56bfe91927
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80581765"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82267696"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Azure 资源管理器资源提供程序操作
 
@@ -328,7 +328,7 @@ Azure 服务：[API 管理](../api-management/index.yml)
 > | 操作 | Microsoft.ApiManagement/service/read | 读取 API 管理服务实例的元数据 |
 > | 操作 | Microsoft.ApiManagement/service/delete | 删除 API 管理服务实例 |
 > | 操作 | Microsoft.ApiManagement/service/updatehostname/action | 设置、更新或删除 API 管理服务的自定义域名 |
-> | 操作 | Microsoft.ApiManagement/service/updatecertificate/action | 上传 API 管理服务的 SSL 证书 |
+> | 操作 | Microsoft.ApiManagement/service/updatecertificate/action | 上传 API 管理服务的 TLS/SSL 证书 |
 > | 操作 | Microsoft.ApiManagement/service/backup/action | 将 API 管理服务备份到用户提供的存储帐户中的指定容器 |
 > | 操作 | Microsoft.ApiManagement/service/restore/action | 从用户提供的存储帐户中的指定容器还原 API 管理服务 |
 > | 操作 | Microsoft.ApiManagement/service/managedeployments/action | 更改 API 管理服务的 SKU/单位，以及添加/删除其区域部署 |
@@ -2184,6 +2184,10 @@ Azure 服务：[虚拟机](../virtual-machines/index.yml)、[虚拟机规模集]
 > | 操作 | Microsoft.Compute/locations/logAnalytics/getThrottledRequests/action | 创建日志以显示按 ResourceName、OperationName 或应用的限制策略分组的限制请求数聚合。 |
 > |  | **locations/operations** |  |
 > | 操作 | Microsoft.Compute/locations/operations/read | 获取异步操作的状态 |
+> |  | **locations/privateEndpointConnectionProxyAzureAsyncOperation** |  |
+> | 操作 | Microsoft.Compute/locations/privateEndpointConnectionProxyAzureAsyncOperation/read | 获取专用终结点连接代理异步操作的状态 |
+> |  | **locations/privateEndpointConnectionProxyOperationResults** |  |
+> | 操作 | Microsoft.Compute/locations/privateEndpointConnectionProxyOperationResults/read | 获取专用终结点连接代理操作的结果 |
 > |  | **locations/publishers** |  |
 > | 操作 | Microsoft.Compute/locations/publishers/read | 获取发布服务器的属性 |
 > |  | **locations/publishers/artifacttypes/offers** |  |
@@ -2219,6 +2223,14 @@ Azure 服务：[虚拟机](../virtual-machines/index.yml)、[虚拟机规模集]
 > | 操作 | Microsoft.Compute/restorePointCollections/restorePoints/write | 创建新的还原点 |
 > | 操作 | Microsoft.Compute/restorePointCollections/restorePoints/delete | 删除还原点 |
 > | 操作 | Microsoft.Compute/restorePointCollections/restorePoints/retrieveSasUris/action | 获取还原点的属性以及 Blob SAS URI |
+> |  | **sharedVMExtensions** |  |
+> | 操作 | Microsoft.Compute/sharedVMExtensions/read | 获取共享 VM 扩展的属性 |
+> | 操作 | Microsoft.Compute/sharedVMExtensions/write | 创建新的共享 VM 扩展或更新现有扩展 |
+> | 操作 | Microsoft.Compute/sharedVMExtensions/delete | 删除共享 VM 扩展 |
+> |  | **sharedVMExtensions/versions** |  |
+> | 操作 | Microsoft.Compute/sharedVMExtensions/versions/read | 获取共享 VM 扩展版本的属性 |
+> | 操作 | Microsoft.Compute/sharedVMExtensions/versions/write | 创建新的共享 VM 扩展版本或更新现有版本 |
+> | 操作 | Microsoft.Compute/sharedVMExtensions/versions/delete | 删除共享 VM 扩展版本 |
 > |  | **sharedVMImages** |  |
 > | 操作 | Microsoft.Compute/sharedVMImages/read | 获取 SharedVMImage 的属性 |
 > | 操作 | Microsoft.Compute/sharedVMImages/write | 创建新的 SharedVMImage 或更新现有的 SharedVMImage |
@@ -2236,6 +2248,10 @@ Azure 服务：[虚拟机](../virtual-machines/index.yml)、[虚拟机规模集]
 > | 操作 | Microsoft.Compute/snapshots/delete | 删除快照 |
 > | 操作 | Microsoft.Compute/snapshots/beginGetAccess/action | 获取用于 blob 访问的快照 SAS URI |
 > | 操作 | Microsoft.Compute/snapshots/endGetAccess/action | 撤销快照的 SAS URI |
+> |  | **sshPublicKeys** |  |
+> | 操作 | Microsoft.Compute/sshPublicKeys/read | 获取 SSH 公钥的属性 |
+> | 操作 | Microsoft.Compute/sshPublicKeys/write | 创建新的 SSH 公钥，或更新现有的 SSH 公钥 |
+> | 操作 | Microsoft.Compute/sshPublicKeys/delete | 删除 SSH 公钥 |
 > |  | **virtualMachines** |  |
 > | 操作 | Microsoft.Compute/virtualMachines/read | 获取虚拟机的属性 |
 > | 操作 | Microsoft.Compute/virtualMachines/write | 创建新的虚拟机，或更新现有的虚拟机 |
@@ -3902,6 +3918,83 @@ Azure 服务：[Azure Cosmos DB](../cosmos-db/index.yml)
 > | 操作 | Microsoft.DocumentDB/databaseAccounts/getBackupPolicy/action | 获取数据库帐户的备份策略 |
 > | 操作 | Microsoft.DocumentDB/databaseAccounts/restore/action | 提交还原请求 |
 > | 操作 | Microsoft.DocumentDB/databaseAccounts/backup/action | 提交配置备份的请求 |
+> |  | **databaseAccounts/apis/databases** |  |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/databases/write | （已弃用。 请使用不带“/apis/”段的资源路径）创建数据库。 仅适用于 API 类型：“sql”、“mongodb”、“gremlin”。 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/databases/read | （已弃用。 请使用不带“/apis/”段的资源路径）读取数据库或列出所有数据库。 仅适用于 API 类型：“sql”、“mongodb”、“gremlin”。 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/databases/delete | （已弃用。 请使用不带“/apis/”段的资源路径）删除数据库。 仅适用于 API 类型：“sql”、“mongodb”、“gremlin”。 |
+> |  | **databaseAccounts/apis/databases/collections** |  |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/databases/collections/write | （已弃用。 请使用不带“/apis/”段的资源路径）创建或更新集合。 仅适用于 API 类型：“mongodb”。 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/databases/collections/read | （已弃用。 请使用不带“/apis/”段的资源路径）读取集合或列出所有集合。 仅适用于 API 类型：“mongodb”。 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/databases/collections/delete | （已弃用。 请使用不带“/apis/”段的资源路径）删除集合。 仅适用于 API 类型：“mongodb”。 |
+> |  | **databaseAccounts/apis/databases/collections/operationResults** |  |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/databases/collections/operationResults/read | （已弃用。 请使用不带“/apis/”段的资源路径）读取异步操作的状态。 仅适用于 API 类型：“mongodb”。 |
+> |  | **databaseAccounts/apis/databases/collections/settings** |  |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/databases/collections/settings/write | （已弃用。 请使用不带“/apis/”段的资源路径）更新集合吞吐量。 仅适用于 API 类型：“mongodb”。 仅适用于设置类型：“throughput”。 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/databases/collections/settings/read | （已弃用。 请使用不带“/apis/”段的资源路径）读取集合吞吐量。 仅适用于 API 类型：“mongodb”。 仅适用于设置类型：“throughput”。 |
+> |  | **databaseAccounts/apis/databases/collections/settings/operationResults** |  |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/databases/collections/settings/operationResults/read | （已弃用。 请使用不带“/apis/”段的资源路径）读取异步操作的状态。 仅适用于 API 类型：“mongodb”。 仅适用于设置类型：“throughput”。 |
+> |  | **databaseAccounts/apis/databases/containers** |  |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/databases/containers/write | （已弃用。 请使用不带“/apis/”段的资源路径）创建或更新容器。 仅适用于 API 类型：“sql”。 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/databases/containers/read | （已弃用。 请使用不带“/apis/”段的资源路径）读取容器或列出所有容器。 仅适用于 API 类型：“sql”。 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/databases/containers/delete | （已弃用。 请使用不带“/apis/”段的资源路径）删除容器。 仅适用于 API 类型：“sql”。 |
+> |  | **databaseAccounts/apis/databases/containers/operationResults** |  |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/databases/containers/operationResults/read | （已弃用。 请使用不带“/apis/”段的资源路径）读取异步操作的状态。 仅适用于 API 类型：“sql”。 |
+> |  | **databaseAccounts/apis/databases/containers/settings** |  |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/databases/containers/settings/write | （已弃用。 请使用不带“/apis/”段的资源路径）更新容器吞吐量。 仅适用于 API 类型：“sql”。 仅适用于设置类型：“throughput”。 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/databases/containers/settings/read | （已弃用。 请使用不带“/apis/”段的资源路径）读取容器吞吐量。 仅适用于 API 类型：“sql”。 仅适用于设置类型：“throughput”。 |
+> |  | **databaseAccounts/apis/databases/containers/settings/operationResults** |  |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/databases/containers/settings/operationResults/read | （已弃用。 请使用不带“/apis/”段的资源路径）读取异步操作的状态。 仅适用于 API 类型：“sql”。 仅适用于设置类型：“throughput”。 |
+> |  | **databaseAccounts/apis/databases/graphs** |  |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/databases/graphs/write | （已弃用。 请使用不带“/apis/”段的资源路径）创建或更新图形。 仅适用于 API 类型：“gremlin”。 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/databases/graphs/read | （已弃用。 请使用不带“/apis/”段的资源路径）读取图形或列出所有图形。 仅适用于 API 类型：“gremlin”。 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/databases/graphs/delete | （已弃用。 请使用不带“/apis/”段的资源路径）删除图形。 仅适用于 API 类型：“gremlin”。 |
+> |  | **databaseAccounts/apis/databases/graphs/operationResults** |  |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/databases/graphs/operationResults/read | （已弃用。 请使用不带“/apis/”段的资源路径）读取异步操作的状态。 仅适用于 API 类型：“gremlin”。 |
+> |  | **databaseAccounts/apis/databases/graphs/settings** |  |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/databases/graphs/settings/write | （已弃用。 请使用不带“/apis/”段的资源路径）更新图形吞吐量。 仅适用于 API 类型：“gremlin”。 仅适用于设置类型：“throughput”。 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/databases/graphs/settings/read | （已弃用。 请使用不带“/apis/”段的资源路径）读取图形吞吐量。 仅适用于 API 类型：“gremlin”。 仅适用于设置类型：“throughput”。 |
+> |  | **databaseAccounts/apis/databases/graphs/settings/operationResults** |  |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/databases/graphs/settings/operationResults/read | （已弃用。 请使用不带“/apis/”段的资源路径）读取异步操作的状态。 仅适用于 API 类型：“gremlin”。 仅适用于设置类型：“throughput”。 |
+> |  | **databaseAccounts/apis/databases/operationResults** |  |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/databases/operationResults/read | （已弃用。 请使用不带“/apis/”段的资源路径）读取异步操作的状态。 仅适用于 API 类型：“sql”、“mongodb”、“gremlin”。 |
+> |  | **databaseAccounts/apis/databases/settings** |  |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/databases/settings/write | （已弃用。 请使用不带“/apis/”段的资源路径）更新数据库吞吐量。 仅适用于 API 类型：“sql”、“mongodb”、“gremlin”。 仅适用于设置类型：“throughput”。 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/databases/settings/read | （已弃用。 请使用不带“/apis/”段的资源路径）读取数据库吞吐量。 仅适用于 API 类型：“sql”、“mongodb”、“gremlin”。 仅适用于设置类型：“throughput”。 |
+> |  | **databaseAccounts/apis/databases/settings/operationResults** |  |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/databases/settings/operationResults/read | （已弃用。 请使用不带“/apis/”段的资源路径）读取异步操作的状态。 仅适用于 API 类型：“sql”、“mongodb”、“gremlin”。 仅适用于设置类型：“throughput”。 |
+> |  | **databaseAccounts/apis/keyspaces** |  |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/keyspaces/write | （已弃用。 请使用不带“/apis/”段的资源路径）创建密钥空间。 仅适用于 API 类型：“cassandra”。 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/keyspaces/read | （已弃用。 请使用不带“/apis/”段的资源路径）读取密钥空间或列出所有密钥空间。 仅适用于 API 类型：“cassandra”。 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/keyspaces/delete | （已弃用。 请使用不带“/apis/”段的资源路径）删除密钥空间。 仅适用于 API 类型：“cassandra”。 |
+> |  | **databaseAccounts/apis/keyspaces/operationResults** |  |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/keyspaces/operationResults/read | （已弃用。 请使用不带“/apis/”段的资源路径）读取异步操作的状态。 仅适用于 API 类型：“cassandra”。 |
+> |  | **databaseAccounts/apis/keyspaces/settings** |  |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/keyspaces/settings/write | （已弃用。 请使用不带“/apis/”段的资源路径）更新密钥空间吞吐量。 仅适用于 API 类型：“cassandra”。 仅适用于设置类型：“throughput”。 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/keyspaces/settings/read | （已弃用。 请使用不带“/apis/”段的资源路径）读取密钥空间吞吐量。 仅适用于 API 类型：“cassandra”。 仅适用于设置类型：“throughput”。 |
+> |  | **databaseAccounts/apis/keyspaces/settings/operationResults** |  |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/keyspaces/settings/operationResults/read | （已弃用。 请使用不带“/apis/”段的资源路径）读取异步操作的状态。 仅适用于 API 类型：“cassandra”。 仅适用于设置类型：“throughput”。 |
+> |  | **databaseAccounts/apis/keyspaces/tables** |  |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/keyspaces/tables/write | （已弃用。 请使用不带“/apis/”段的资源路径）创建或更新表。 仅适用于 API 类型：“cassandra”。 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/keyspaces/tables/read | （已弃用。 请使用不带“/apis/”段的资源路径）读取表或列出所有表。 仅适用于 API 类型：“cassandra”。 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/keyspaces/tables/delete | （已弃用。 请使用不带“/apis/”段的资源路径）删除表。 仅适用于 API 类型：“cassandra”。 |
+> |  | **databaseAccounts/apis/keyspaces/tables/operationResults** |  |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/keyspaces/tables/operationResults/read | （已弃用。 请使用不带“/apis/”段的资源路径）读取异步操作的状态。 仅适用于 API 类型：“cassandra”。 |
+> |  | **databaseAccounts/apis/keyspaces/tables/settings** |  |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/keyspaces/tables/settings/write | （已弃用。 请使用不带“/apis/”段的资源路径）更新表吞吐量。 仅适用于 API 类型：“cassandra”。 仅适用于设置类型：“throughput”。 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/keyspaces/tables/settings/read | （已弃用。 请使用不带“/apis/”段的资源路径）读取表吞吐量。 仅适用于 API 类型：“cassandra”。 仅适用于设置类型：“throughput”。 |
+> |  | **databaseAccounts/apis/keyspaces/tables/settings/operationResults** |  |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/keyspaces/tables/settings/operationResults/read | （已弃用。 请使用不带“/apis/”段的资源路径）读取异步操作的状态。 仅适用于 API 类型：“cassandra”。 仅适用于设置类型：“throughput”。 |
+> |  | **databaseAccounts/apis/tables** |  |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/tables/write | （已弃用。 请使用不带“/apis/”段的资源路径）创建或更新表。 仅适用于 API 类型：“table”。 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/tables/read | （已弃用。 请使用不带“/apis/”段的资源路径）读取表或列出所有表。 仅适用于 API 类型：“table”。 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/tables/delete | （已弃用。 请使用不带“/apis/”段的资源路径）删除表。 仅适用于 API 类型：“table”。 |
+> |  | **databaseAccounts/apis/tables/operationResults** |  |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/tables/operationResults/read | （已弃用。 请使用不带“/apis/”段的资源路径）读取异步操作的状态。 仅适用于 API 类型：“table”。 |
+> |  | **databaseAccounts/apis/tables/settings** |  |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/tables/settings/write | （已弃用。 请使用不带“/apis/”段的资源路径）更新表吞吐量。 仅适用于 API 类型：“table”。 仅适用于设置类型：“throughput”。 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/tables/settings/read | （已弃用。 请使用不带“/apis/”段的资源路径）读取表吞吐量。 仅适用于 API 类型：“table”。 仅适用于设置类型：“throughput”。 |
+> |  | **databaseAccounts/apis/tables/settings/operationResults** |  |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/tables/settings/operationResults/read | （已弃用。 请使用不带“/apis/”段的资源路径）读取异步操作的状态。 仅适用于 API 类型：“table”。 仅适用于设置类型：“throughput”。 |
 > |  | **databaseAccounts/cassandraKeyspaces** |  |
 > | 操作 | Microsoft.DocumentDB/databaseAccounts/cassandraKeyspaces/write | 创建assandra 密钥空间。 |
 > | 操作 | Microsoft.DocumentDB/databaseAccounts/cassandraKeyspaces/read | 读取 Cassandra 密钥空间或列出所有 Cassandra 密钥空间 |
@@ -5139,7 +5232,7 @@ Azure 服务：[密钥保管库](../key-vault/index.yml)
 
 ## <a name="microsoftkusto"></a>Microsoft.Kusto
 
-Azure 服务：[Azure 数据资源管理器](../data-explorer/index.yml)
+Azure 服务：[Azure 数据资源管理器](/data-explorer/)
 
 > [!div class="mx-tdCol2BreakAll"]
 > | 操作类型 | 操作 | 说明 |
@@ -5489,7 +5582,7 @@ Azure 服务：[机器学习服务](../machine-learning/index.yml)
 > | 操作 | Microsoft.MachineLearningServices/workspaces/write | 创建或更新机器学习服务工作区 |
 > | 操作 | Microsoft.MachineLearningServices/workspaces/delete | 删除机器学习服务工作区 |
 > | 操作 | Microsoft.MachineLearningServices/workspaces/listKeys/action | 列出机器学习服务工作区的机密 |
-> | 操作 | Microsoft.MachineLearningServices/workspaces/PrivateEndpointConnectionsApproval/action | 批准或拒绝到 Microsoft.Network 提供程序的专用终结点资源的连接 |
+> | 操作 | Microsoft.MachineLearningServices/workspaces/privateEndpointConnectionsApproval/action | 批准或拒绝到 Microsoft.Network 提供程序的专用终结点资源的连接 |
 > |  | **workspaces/computes** |  |
 > | 操作 | Microsoft.MachineLearningServices/workspaces/computes/read | 获取机器学习服务工作区中的计算资源 |
 > | 操作 | Microsoft.MachineLearningServices/workspaces/computes/write | 在机器学习服务工作区中创建或更新计算资源 |
@@ -5499,10 +5592,90 @@ Azure 服务：[机器学习服务](../machine-learning/index.yml)
 > | 操作 | Microsoft.MachineLearningServices/workspaces/computes/start/action | 启动机器学习服务工作区中的计算资源 |
 > | 操作 | Microsoft.MachineLearningServices/workspaces/computes/stop/action | 停止机器学习服务工作区中的计算资源 |
 > | 操作 | Microsoft.MachineLearningServices/workspaces/computes/restart/action | 重启机器学习服务工作区中的计算资源 |
+> |  | **workspaces/datadriftdetectors** |  |
+> | 操作 | Microsoft.MachineLearningServices/workspaces/datadriftdetectors/read | 获取机器学习服务工作区中的数据偏移检测器 |
+> | 操作 | Microsoft.MachineLearningServices/workspaces/datadriftdetectors/write | 创建或更新机器学习服务工作区中的数据偏移检测器 |
+> | 操作 | Microsoft.MachineLearningServices/workspaces/datadriftdetectors/delete | 删除机器学习服务工作区中的数据偏移检测器 |
+> |  | **workspaces/datasets/registered** |  |
+> | 操作 | Microsoft.MachineLearningServices/workspaces/datasets/registered/read | 获取机器学习服务工作区中已注册的数据集 |
+> | 操作 | Microsoft.MachineLearningServices/workspaces/datasets/registered/write | 在机器学习服务工作区中创建或更新注册的数据集 |
+> | 操作 | Microsoft.MachineLearningServices/workspaces/datasets/registered/delete | 删除机器学习服务工作区中已注册的数据集 |
+> |  | **workspaces/datasets/registered/preview** |  |
+> | 操作 | Microsoft.MachineLearningServices/workspaces/datasets/registered/preview/read | 获取机器学习服务工作区中已注册数据集的数据集预览 |
+> |  | **workspaces/datasets/registered/profile** |  |
+> | 操作 | Microsoft.MachineLearningServices/workspaces/datasets/registered/profile/read | 获取机器学习服务工作区中已注册数据集的数据集配置文件 |
+> | 操作 | Microsoft.MachineLearningServices/workspaces/datasets/registered/profile/write | 创建或更新机器学习服务工作区中已注册数据集的数据集配置文件 |
+> |  | **workspaces/datasets/registered/schema** |  |
+> | 操作 | Microsoft.MachineLearningServices/workspaces/datasets/registered/schema/read | 获取机器学习服务工作区中已注册数据集的数据集架构 |
+> |  | **workspaces/datasets/unregistered** |  |
+> | 操作 | Microsoft.MachineLearningServices/workspaces/datasets/unregistered/read | 获取机器学习服务工作区中已取消注册的数据集 |
+> | 操作 | Microsoft.MachineLearningServices/workspaces/datasets/unregistered/write | 在机器学习服务工作区中创建或更新取消注册的数据集 |
+> | 操作 | Microsoft.MachineLearningServices/workspaces/datasets/unregistered/delete | 删除机器学习服务工作区中已取消注册的数据集 |
+> |  | **workspaces/datasets/unregistered/preview** |  |
+> | 操作 | Microsoft.MachineLearningServices/workspaces/datasets/unregistered/preview/read | 获取机器学习服务工作区中已取消注册数据集的数据集预览 |
+> |  | **workspaces/datasets/unregistered/profile** |  |
+> | 操作 | Microsoft.MachineLearningServices/workspaces/datasets/unregistered/profile/read | 获取机器学习服务工作区中已取消注册数据集的数据集配置文件 |
+> | 操作 | Microsoft.MachineLearningServices/workspaces/datasets/unregistered/profile/write | 创建或更新机器学习服务工作区中已取消注册数据集的数据集配置文件 |
+> |  | **workspaces/datasets/unregistered/schema** |  |
+> | 操作 | Microsoft.MachineLearningServices/workspaces/datasets/unregistered/schema/read | 获取机器学习服务工作区中已取消注册数据集的数据集架构 |
+> |  | **workspaces/datastores** |  |
+> | 操作 | Microsoft.MachineLearningServices/workspaces/datastores/read | 获取机器学习服务工作区中的数据存储 |
+> | 操作 | Microsoft.MachineLearningServices/workspaces/datastores/write | 在机器学习服务工作区中创建或更新数据存储 |
+> | 操作 | Microsoft.MachineLearningServices/workspaces/datastores/delete | 删除机器学习服务工作区中的数据存储 |
+> |  | **workspaces/endpoints/pipelines** |  |
+> | 操作 | Microsoft.MachineLearningServices/workspaces/endpoints/pipelines/read | 获取机器学习服务工作区中已发布的管道和管道终结点 |
+> | 操作 | Microsoft.MachineLearningServices/workspaces/endpoints/pipelines/write | 在机器学习服务工作区中创建或更新发布的管道和管道终结点 |
+> |  | **workspaces/environments** |  |
+> | 操作 | Microsoft.MachineLearningServices/workspaces/environments/read | 获取机器学习服务工作区中的环境 |
+> | 操作 | Microsoft.MachineLearningServices/workspaces/environments/readSecrets/action | 获取机器学习服务工作区中的环境和机密 |
+> | 操作 | Microsoft.MachineLearningServices/workspaces/environments/write | 在机器学习服务工作区中创建或更新环境 |
+> | 操作 | Microsoft.MachineLearningServices/workspaces/environments/build/action | 在机器学习服务工作区中生成环境 |
 > |  | **workspaces/eventGridFilters** |  |
 > | 操作 | Microsoft.MachineLearningServices/workspaces/eventGridFilters/read | 获取特定工作区的事件网格筛选器 |
-> |  | **workspaces/features** |  |
-> | 操作 | Microsoft.MachineLearningServices/workspaces/features/read | 获取机器学习服务工作区的所有已启用功能 |
+> |  | **workspaces/experiments** |  |
+> | 操作 | Microsoft.MachineLearningServices/workspaces/experiments/read | 获取机器学习服务工作区中的试验 |
+> | 操作 | Microsoft.MachineLearningServices/workspaces/experiments/write | 在机器学习服务工作区中创建或更新试验 |
+> | 操作 | Microsoft.MachineLearningServices/workspaces/experiments/delete | 删除机器学习服务工作区中的试验 |
+> |  | **workspaces/experiments/runs** |  |
+> | 操作 | Microsoft.MachineLearningServices/workspaces/experiments/runs/submit/action | 在机器学习服务工作区中创建或更新脚本运行 |
+> | 操作 | Microsoft.MachineLearningServices/workspaces/experiments/runs/read | 获取机器学习服务工作区中的运行 |
+> | 操作 | Microsoft.MachineLearningServices/workspaces/experiments/runs/write | 在机器学习服务工作区中创建或更新运行 |
+> |  | **workspaces/labeling** |  |
+> | 操作 | Microsoft.MachineLearningServices/workspaces/labeling/export/action | 导出机器学习服务工作区中标记项目的标签 |
+> |  | **workspaces/labeling/labels** |  |
+> | 操作 | Microsoft.MachineLearningServices/workspaces/labeling/labels/read | 获取机器学习服务工作区中标记项目的标签 |
+> | 操作 | Microsoft.MachineLearningServices/workspaces/labeling/labels/write | 创建机器学习服务工作区中标记项目的标签 |
+> | 操作 | Microsoft.MachineLearningServices/workspaces/labeling/labels/reject/action | 拒绝机器学习服务工作区中标记项目的标签 |
+> |  | **workspaces/labeling/projects** |  |
+> | 操作 | Microsoft.MachineLearningServices/workspaces/labeling/projects/read | 获取机器学习服务工作区中的标记项目 |
+> | 操作 | Microsoft.MachineLearningServices/workspaces/labeling/projects/write | 创建或更新机器学习服务工作区中的标记项目 |
+> | 操作 | Microsoft.MachineLearningServices/workspaces/labeling/projects/delete | 删除机器学习服务工作区中的标记项目 |
+> |  | **workspaces/labeling/projects/summary** |  |
+> | 操作 | Microsoft.MachineLearningServices/workspaces/labeling/projects/summary/read | 获取机器学习服务工作区中的标记项目摘要 |
+> |  | **workspaces/metadata/artifacts** |  |
+> | 操作 | Microsoft.MachineLearningServices/workspaces/metadata/artifacts/read | 获取机器学习服务工作区中的项目 |
+> | 操作 | Microsoft.MachineLearningServices/workspaces/metadata/artifacts/write | 在机器学习服务工作区中创建或更新项目 |
+> | 操作 | Microsoft.MachineLearningServices/workspaces/metadata/artifacts/delete | 删除机器学习服务工作区中的项目 |
+> |  | **workspaces/metadata/secrets** |  |
+> | 操作 | Microsoft.MachineLearningServices/workspaces/metadata/secrets/read | 获取机器学习服务工作区中的机密 |
+> | 操作 | Microsoft.MachineLearningServices/workspaces/metadata/secrets/write | 在机器学习服务工作区中创建或更新机密 |
+> | 操作 | Microsoft.MachineLearningServices/workspaces/metadata/secrets/delete | 删除机器学习服务工作区中的机密 |
+> |  | **workspaces/metadata/snapshots** |  |
+> | 操作 | Microsoft.MachineLearningServices/workspaces/metadata/snapshots/read | 获取机器学习服务工作区中的快照 |
+> | 操作 | Microsoft.MachineLearningServices/workspaces/metadata/snapshots/write | 在机器学习服务工作区中创建或更新快照 |
+> | 操作 | Microsoft.MachineLearningServices/workspaces/metadata/snapshots/delete | 删除机器学习服务工作区中的快照 |
+> |  | **workspaces/models** |  |
+> | 操作 | Microsoft.MachineLearningServices/workspaces/models/read | 获取机器学习服务工作区中的模型 |
+> | 操作 | Microsoft.MachineLearningServices/workspaces/models/write | 在机器学习服务工作区中创建或更新模型 |
+> | 操作 | Microsoft.MachineLearningServices/workspaces/models/delete | 删除机器学习服务工作区中的模型 |
+> | 操作 | Microsoft.MachineLearningServices/workspaces/models/package/action | 打包机器学习服务工作区中的模型 |
+> |  | **workspaces/modules** |  |
+> | 操作 | Microsoft.MachineLearningServices/workspaces/modules/read | 获取机器学习服务工作区中的模块 |
+> | 操作 | Microsoft.MachineLearningServices/workspaces/modules/write | 在机器学习服务工作区中创建或更新模块 |
+> |  | **workspaces/pipelinedrafts** |  |
+> | 操作 | Microsoft.MachineLearningServices/workspaces/pipelinedrafts/read | 获取机器学习服务工作区中的管道草稿 |
+> | 操作 | Microsoft.MachineLearningServices/workspaces/pipelinedrafts/write | 在机器学习服务工作区中创建或更新管道草稿 |
+> | 操作 | Microsoft.MachineLearningServices/workspaces/pipelinedrafts/delete | 删除机器学习服务工作区中的管道草稿 |
 > |  | **workspaces/privateEndpointConnectionProxies** |  |
 > | 操作 | Microsoft.MachineLearningServices/workspaces/privateEndpointConnectionProxies/read | 查看到 Microsoft.Network 提供程序的专用终结点资源的连接代理状态 |
 > | 操作 | Microsoft.MachineLearningServices/workspaces/privateEndpointConnectionProxies/write | 更改到 Microsoft.Network 提供程序的专用终结点资源的连接代理状态 |
@@ -5514,104 +5687,17 @@ Azure 服务：[机器学习服务](../machine-learning/index.yml)
 > | 操作 | Microsoft.MachineLearningServices/workspaces/privateEndpointConnections/delete | 删除到 Microsoft.Network 提供程序的专用终结点资源的连接 |
 > |  | **workspaces/privateLinkResources** |  |
 > | 操作 | Microsoft.MachineLearningServices/workspaces/privateLinkResources/read | 获取机器学习服务工作区的指定实例的可用专用链接资源 |
-> |  | **workspaces/datadriftdetectors** |  |
-> | DataAction | Microsoft.MachineLearningServices/workspaces/datadriftdetectors/read | 获取机器学习服务工作区中的数据偏移检测器 |
-> | DataAction | Microsoft.MachineLearningServices/workspaces/datadriftdetectors/write | 创建或更新机器学习服务工作区中的数据偏移检测器 |
-> |  | **workspaces/datasets/registered** |  |
-> | DataAction | Microsoft.MachineLearningServices/workspaces/datasets/registered/read | 获取机器学习服务工作区中已注册的数据集 |
-> | DataAction | Microsoft.MachineLearningServices/workspaces/datasets/registered/write | 在机器学习服务工作区中创建或更新注册的数据集 |
-> | DataAction | Microsoft.MachineLearningServices/workspaces/datasets/registered/delete | 删除机器学习服务工作区中已注册的数据集 |
-> |  | **workspaces/datasets/registered/preview** |  |
-> | DataAction | Microsoft.MachineLearningServices/workspaces/datasets/registered/preview/read | 获取机器学习服务工作区中已注册数据集的数据集预览 |
-> |  | **workspaces/datasets/registered/profile** |  |
-> | DataAction | Microsoft.MachineLearningServices/workspaces/datasets/registered/profile/read | 获取机器学习服务工作区中已注册数据集的数据集配置文件 |
-> | DataAction | Microsoft.MachineLearningServices/workspaces/datasets/registered/profile/write | 创建或更新机器学习服务工作区中已注册数据集的数据集配置文件 |
-> |  | **workspaces/datasets/registered/schema** |  |
-> | DataAction | Microsoft.MachineLearningServices/workspaces/datasets/registered/schema/read | 获取机器学习服务工作区中已注册数据集的数据集架构 |
-> |  | **workspaces/datasets/unregistered** |  |
-> | DataAction | Microsoft.MachineLearningServices/workspaces/datasets/unregistered/read | 获取机器学习服务工作区中已取消注册的数据集 |
-> | DataAction | Microsoft.MachineLearningServices/workspaces/datasets/unregistered/write | 在机器学习服务工作区中创建或更新取消注册的数据集 |
-> | DataAction | Microsoft.MachineLearningServices/workspaces/datasets/unregistered/delete | 删除机器学习服务工作区中已取消注册的数据集 |
-> |  | **workspaces/datasets/unregistered/preview** |  |
-> | DataAction | Microsoft.MachineLearningServices/workspaces/datasets/unregistered/preview/read | 获取机器学习服务工作区中已取消注册数据集的数据集预览 |
-> |  | **workspaces/datasets/unregistered/profile** |  |
-> | DataAction | Microsoft.MachineLearningServices/workspaces/datasets/unregistered/profile/read | 获取机器学习服务工作区中已取消注册数据集的数据集配置文件 |
-> | DataAction | Microsoft.MachineLearningServices/workspaces/datasets/unregistered/profile/write | 创建或更新机器学习服务工作区中已取消注册数据集的数据集配置文件 |
-> |  | **workspaces/datasets/unregistered/schema** |  |
-> | DataAction | Microsoft.MachineLearningServices/workspaces/datasets/unregistered/schema/read | 获取机器学习服务工作区中已取消注册数据集的数据集架构 |
-> |  | **workspaces/datastores** |  |
-> | DataAction | Microsoft.MachineLearningServices/workspaces/datastores/read | 获取机器学习服务工作区中的数据存储 |
-> | DataAction | Microsoft.MachineLearningServices/workspaces/datastores/write | 在机器学习服务工作区中创建或更新数据存储 |
-> | DataAction | Microsoft.MachineLearningServices/workspaces/datastores/delete | 删除机器学习服务工作区中的数据存储 |
-> |  | **workspaces/endpoints/pipelines** |  |
-> | DataAction | Microsoft.MachineLearningServices/workspaces/endpoints/pipelines/read | 获取机器学习服务工作区中已发布的管道和管道终结点 |
-> | DataAction | Microsoft.MachineLearningServices/workspaces/endpoints/pipelines/write | 在机器学习服务工作区中创建或更新发布的管道和管道终结点 |
-> |  | **workspaces/environments** |  |
-> | DataAction | Microsoft.MachineLearningServices/workspaces/environments/read | 获取机器学习服务工作区中的环境 |
-> | DataAction | Microsoft.MachineLearningServices/workspaces/environments/readSecrets/action | 获取机器学习服务工作区中的环境和机密 |
-> | DataAction | Microsoft.MachineLearningServices/workspaces/environments/write | 在机器学习服务工作区中创建或更新环境 |
-> | DataAction | Microsoft.MachineLearningServices/workspaces/environments/build/action | 在机器学习服务工作区中生成环境 |
-> |  | **workspaces/experiments** |  |
-> | DataAction | Microsoft.MachineLearningServices/workspaces/experiments/read | 获取机器学习服务工作区中的试验 |
-> | DataAction | Microsoft.MachineLearningServices/workspaces/experiments/write | 在机器学习服务工作区中创建或更新试验 |
-> | DataAction | Microsoft.MachineLearningServices/workspaces/experiments/delete | 删除机器学习服务工作区中的试验 |
-> |  | **workspaces/experiments/runs** |  |
-> | DataAction | Microsoft.MachineLearningServices/workspaces/experiments/runs/read | 获取机器学习服务工作区中的运行 |
-> | DataAction | Microsoft.MachineLearningServices/workspaces/experiments/runs/write | 在机器学习服务工作区中创建或更新运行 |
-> |  | **workspaces/experiments/runs/scriptRun** |  |
-> | DataAction | Microsoft.MachineLearningServices/workspaces/experiments/runs/scriptRun/submit/action | 在机器学习服务工作区中创建或更新脚本运行 |
-> |  | **workspaces/labeling** |  |
-> | DataAction | Microsoft.MachineLearningServices/workspaces/labeling/export/action | 导出机器学习服务工作区中标记项目的标签 |
-> |  | **workspaces/labeling/labels** |  |
-> | DataAction | Microsoft.MachineLearningServices/workspaces/labeling/labels/read | 获取机器学习服务工作区中标记项目的标签 |
-> | DataAction | Microsoft.MachineLearningServices/workspaces/labeling/labels/write | 创建机器学习服务工作区中标记项目的标签 |
-> | DataAction | Microsoft.MachineLearningServices/workspaces/labeling/labels/reject/action | 拒绝机器学习服务工作区中标记项目的标签 |
-> |  | **workspaces/labeling/projects** |  |
-> | DataAction | Microsoft.MachineLearningServices/workspaces/labeling/projects/read | 获取机器学习服务工作区中的标记项目 |
-> | DataAction | Microsoft.MachineLearningServices/workspaces/labeling/projects/write | 创建或更新机器学习服务工作区中的标记项目 |
-> | DataAction | Microsoft.MachineLearningServices/workspaces/labeling/projects/delete | 删除机器学习服务工作区中的标记项目 |
-> |  | **workspaces/labeling/projects/summary** |  |
-> | DataAction | Microsoft.MachineLearningServices/workspaces/labeling/projects/summary/read | 获取机器学习服务工作区中的标记项目摘要 |
-> |  | **workspaces/metadata/artifacts** |  |
-> | DataAction | Microsoft.MachineLearningServices/workspaces/metadata/artifacts/read | 获取机器学习服务工作区中的项目 |
-> | DataAction | Microsoft.MachineLearningServices/workspaces/metadata/artifacts/write | 在机器学习服务工作区中创建或更新项目 |
-> | DataAction | Microsoft.MachineLearningServices/workspaces/metadata/artifacts/delete | 删除机器学习服务工作区中的项目 |
-> |  | **workspaces/metadata/secrets** |  |
-> | DataAction | Microsoft.MachineLearningServices/workspaces/metadata/secrets/read | 获取机器学习服务工作区中的机密 |
-> | DataAction | Microsoft.MachineLearningServices/workspaces/metadata/secrets/write | 在机器学习服务工作区中创建或更新机密 |
-> | DataAction | Microsoft.MachineLearningServices/workspaces/metadata/secrets/delete | 删除机器学习服务工作区中的机密 |
-> |  | **workspaces/metadata/snapshots** |  |
-> | DataAction | Microsoft.MachineLearningServices/workspaces/metadata/snapshots/read | 获取机器学习服务工作区中的快照 |
-> | DataAction | Microsoft.MachineLearningServices/workspaces/metadata/snapshots/write | 在机器学习服务工作区中创建或更新快照 |
-> | DataAction | Microsoft.MachineLearningServices/workspaces/metadata/snapshots/delete | 删除机器学习服务工作区中的快照 |
-> |  | **workspaces/models** |  |
-> | DataAction | Microsoft.MachineLearningServices/workspaces/models/read | 获取机器学习服务工作区中的模型 |
-> | DataAction | Microsoft.MachineLearningServices/workspaces/models/write | 在机器学习服务工作区中创建或更新模型 |
-> | DataAction | Microsoft.MachineLearningServices/workspaces/models/delete | 删除机器学习服务工作区中的模型 |
-> | DataAction | Microsoft.MachineLearningServices/workspaces/models/package/action | 打包机器学习服务工作区中的模型 |
-> |  | **workspaces/modules** |  |
-> | DataAction | Microsoft.MachineLearningServices/workspaces/modules/read | 获取机器学习服务工作区中的模块 |
-> | DataAction | Microsoft.MachineLearningServices/workspaces/modules/write | 在机器学习服务工作区中创建或更新模块 |
-> |  | **workspaces/pipelinedrafts** |  |
-> | DataAction | Microsoft.MachineLearningServices/workspaces/pipelinedrafts/read | 获取机器学习服务工作区中的管道草稿 |
-> | DataAction | Microsoft.MachineLearningServices/workspaces/pipelinedrafts/write | 在机器学习服务工作区中创建或更新管道草稿 |
-> | DataAction | Microsoft.MachineLearningServices/workspaces/pipelinedrafts/delete | 删除机器学习服务工作区中的管道草稿 |
 > |  | **workspaces/services** |  |
-> | DataAction | Microsoft.MachineLearningServices/workspaces/services/read | 获取机器学习服务工作区中的服务 |
+> | 操作 | Microsoft.MachineLearningServices/workspaces/services/read | 获取机器学习服务工作区中的服务 |
 > |  | **workspaces/services/aci** |  |
-> | DataAction | Microsoft.MachineLearningServices/workspaces/services/aci/write | 在机器学习服务工作区中创建或更新 ACI 服务 |
-> | DataAction | Microsoft.MachineLearningServices/workspaces/services/aci/listkeys/action | 列出机器学习服务工作区中 ACI 服务的密钥 |
-> | DataAction | Microsoft.MachineLearningServices/workspaces/services/aci/delete | 删除机器学习服务工作区中的 ACI 服务 |
-> |  | **workspaces/services/aks/devtest** |  |
-> | DataAction | Microsoft.MachineLearningServices/workspaces/services/aks/devtest/write | 在机器学习服务工作区中创建或更新 devtest AKS 服务 |
-> | DataAction | Microsoft.MachineLearningServices/workspaces/services/aks/devtest/listkeys/action | 列出机器学习服务工作区中 devtest AKS 服务的密钥 |
-> | DataAction | Microsoft.MachineLearningServices/workspaces/services/aks/devtest/delete | 删除机器学习服务工作区中的 devtest AKS 服务 |
-> | DataAction | Microsoft.MachineLearningServices/workspaces/services/aks/devtest/score/action | 为机器学习服务工作区中的 devtest AKS 服务评分 |
-> |  | **workspaces/services/aks/prod** |  |
-> | DataAction | Microsoft.MachineLearningServices/workspaces/services/aks/prod/write | 在机器学习服务工作区中创建或更新 prod AKS 服务 |
-> | DataAction | Microsoft.MachineLearningServices/workspaces/services/aks/prod/listkeys/action | 列出机器学习服务工作区中 prod AKS 服务的密钥 |
-> | DataAction | Microsoft.MachineLearningServices/workspaces/services/aks/prod/delete | 删除机器学习服务工作区中的 prod AKS 服务 |
-> | DataAction | Microsoft.MachineLearningServices/workspaces/services/aks/prod/score/action | 为机器学习服务工作区中的 prod AKS 服务评分 |
+> | 操作 | Microsoft.MachineLearningServices/workspaces/services/aci/write | 在机器学习服务工作区中创建或更新 ACI 服务 |
+> | 操作 | Microsoft.MachineLearningServices/workspaces/services/aci/listkeys/action | 列出机器学习服务工作区中 ACI 服务的密钥 |
+> | 操作 | Microsoft.MachineLearningServices/workspaces/services/aci/delete | 删除机器学习服务工作区中的 ACI 服务 |
+> |  | **workspaces/services/aks** |  |
+> | 操作 | Microsoft.MachineLearningServices/workspaces/services/aks/write | 在机器学习服务工作区中创建或更新 AKS 服务 |
+> | 操作 | Microsoft.MachineLearningServices/workspaces/services/aks/listkeys/action | 列出机器学习服务工作区中 AKS 服务的密钥 |
+> | 操作 | Microsoft.MachineLearningServices/workspaces/services/aks/delete | 删除机器学习服务工作区中的 AKS 服务 |
+> | 操作 | Microsoft.MachineLearningServices/workspaces/services/aks/score/action | 为机器学习服务工作区中的 AKS 服务评分 |
 
 ## <a name="microsoftmanagedidentity"></a>Microsoft.ManagedIdentity
 
@@ -5693,6 +5779,10 @@ Azure 服务：[管理组](../governance/management-groups/index.yml)
 > | 操作 | Microsoft.Maps/accounts/eventGridFilters/delete | 删除事件网格筛选器 |
 > | 操作 | Microsoft.Maps/accounts/eventGridFilters/read | 获取事件网格筛选器 |
 > | 操作 | Microsoft.Maps/accounts/eventGridFilters/write | 创建或更新事件网格筛选器 |
+> |  | **accounts/privateAtlases** |  |
+> | 操作 | Microsoft.Maps/accounts/privateAtlases/delete | 删除 Private Atlas |
+> | 操作 | Microsoft.Maps/accounts/privateAtlases/read | 获取 Private Atlas |
+> | 操作 | Microsoft.Maps/accounts/privateAtlases/write | 创建或更新 Private Atlas |
 > |  | **operations** |  |
 > | 操作 | Microsoft.Maps/operations/read | 读取提供程序操作 |
 > |  | **accounts/data** |  |
@@ -5947,6 +6037,10 @@ Azure 服务：[媒体服务](../media-services/index.yml)
 > | 操作 | Microsoft.MixedReality/spatialAnchorsAccounts/providers/Microsoft.Insights/diagnosticSettings/write | 创建或更新 Microsoft.MixedReality/spatialAnchorsAccounts 的诊断设置 |
 > |  | **spatialAnchorsAccounts/providers/Microsoft.Insights/metricDefinitions** |  |
 > | 操作 | Microsoft.MixedReality/spatialAnchorsAccounts/providers/Microsoft.Insights/metricDefinitions/read | 获取 Microsoft.MixedReality/spatialAnchorsAccounts 的可用指标 |
+> |  | **ObjectUnderstandingAccounts** |  |
+> | DataAction | Microsoft.MixedReality/ObjectUnderstandingAccounts/ingest/action | 创建模型引入作业 |
+> |  | **ObjectUnderstandingAccounts/ingest** |  |
+> | DataAction | Microsoft.MixedReality/ObjectUnderstandingAccounts/ingest/read | 获取模型引入作业状态 |
 > |  | **RemoteRenderingAccounts** |  |
 > | DataAction | Microsoft.MixedReality/RemoteRenderingAccounts/convert/action | 启动资产转换 |
 > | DataAction | Microsoft.MixedReality/RemoteRenderingAccounts/managesessions/action | 启动会话 |
@@ -6016,6 +6110,10 @@ Azure 服务：[媒体服务](../media-services/index.yml)
 > | 操作 | Microsoft.NetApp/netAppAccounts/capacityPools/volumes/backups/read | 读取备份资源。 |
 > | 操作 | Microsoft.NetApp/netAppAccounts/capacityPools/volumes/backups/write | 写入备份资源。 |
 > | 操作 | Microsoft.NetApp/netAppAccounts/capacityPools/volumes/backups/delete | 删除备份资源。 |
+> |  | **netAppAccounts/capacityPools/volumes/MountTargets** |  |
+> | 操作 | Microsoft.NetApp/netAppAccounts/capacityPools/volumes/MountTargets/read | 读取装入目标资源。 |
+> |  | **netAppAccounts/capacityPools/volumes/ReplicationStatus** |  |
+> | 操作 | Microsoft.NetApp/netAppAccounts/capacityPools/volumes/ReplicationStatus/read | 读取卷复制的状态。 |
 > |  | **netAppAccounts/capacityPools/volumes/snapshots** |  |
 > | 操作 | Microsoft.NetApp/netAppAccounts/capacityPools/volumes/snapshots/read | 读取快照资源。 |
 > | 操作 | Microsoft.NetApp/netAppAccounts/capacityPools/volumes/snapshots/write | 写入快照资源。 |
@@ -6288,6 +6386,8 @@ Azure 服务：[虚拟网络](../virtual-network/index.yml)、[负载平衡器](
 > | 操作 | Microsoft.Network/loadBalancers/delete | 删除负载均衡器 |
 > |  | **loadBalancers/backendAddressPools** |  |
 > | 操作 | Microsoft.Network/loadBalancers/backendAddressPools/read | 获取负载均衡器的后端地址池定义 |
+> | 操作 | Microsoft.Network/loadBalancers/backendAddressPools/write | 创建负载均衡器后端地址池，或更新现有的负载均衡器后端地址池 |
+> | 操作 | Microsoft.Network/loadBalancers/backendAddressPools/delete | 删除负载均衡器后端地址池 |
 > | 操作 | Microsoft.Network/loadBalancers/backendAddressPools/join/action | 加入负载均衡器后端地址池。 不可发出警报。 |
 > |  | **loadBalancers/frontendIPConfigurations** |  |
 > | 操作 | Microsoft.Network/loadBalancers/frontendIPConfigurations/read | 获取负载均衡器的前端 IP 配置定义 |
@@ -6512,6 +6612,7 @@ Azure 服务：[虚拟网络](../virtual-network/index.yml)、[负载平衡器](
 > | 操作 | Microsoft.Network/privateEndpointRedirectMaps/read | 获取专用终结点 RedirectMap |
 > | 操作 | Microsoft.Network/privateEndpointRedirectMaps/write | 创建专用终结点 RedirectMap，或更新现有的专用终结点 RedirectMap |
 > |  | **privateEndpoints** |  |
+> | 操作 | Microsoft.Network/privateEndpoints/pushPropertiesToResource/action | 从 NRP 客户端推送专用终结点属性更新的操作 |
 > | 操作 | Microsoft.Network/privateEndpoints/read | 获取专用终结点资源。 |
 > | 操作 | Microsoft.Network/privateEndpoints/write | 创建新的专用终结点，或更新现有的专用终结点。 |
 > | 操作 | Microsoft.Network/privateEndpoints/delete | 删除专用终结点资源。 |
@@ -6553,6 +6654,13 @@ Azure 服务：[虚拟网络](../virtual-network/index.yml)、[负载平衡器](
 > | 操作 | Microsoft.Network/routeTables/routes/read | 获取路由定义 |
 > | 操作 | Microsoft.Network/routeTables/routes/write | 创建路由，或更新现有的路由 |
 > | 操作 | Microsoft.Network/routeTables/routes/delete | 删除路由定义 |
+> |  | **securityPartnerProviders** |  |
+> | 操作 | Microsoft.Network/securityPartnerProviders/read | 获取 SecurityPartnerProvider |
+> | 操作 | Microsoft.Network/securityPartnerProviders/write | 创建 SecurityPartnerProvider，或更新现有的 SecurityPartnerProvider |
+> | 操作 | Microsoft.Network/securityPartnerProviders/validate/action | 验证 SecurityPartnerProvider |
+> | 操作 | Microsoft.Network/securityPartnerProviders/updateReferences/action | 更新 SecurityPartnerProvider 中的引用 |
+> | 操作 | Microsoft.Network/securityPartnerProviders/join/action | 加入 SecurityPartnerProvider。 不可发出警报。 |
+> | 操作 | Microsoft.Network/securityPartnerProviders/delete | 删除 SecurityPartnerProvider |
 > |  | **serviceEndpointPolicies** |  |
 > | 操作 | Microsoft.Network/serviceEndpointPolicies/read | 获取服务终结点策略说明 |
 > | 操作 | Microsoft.Network/serviceEndpointPolicies/write | 创建服务终结点策略或更新现有服务终结点策略 |
@@ -6625,6 +6733,7 @@ Azure 服务：[虚拟网络](../virtual-network/index.yml)、[负载平衡器](
 > | 操作 | Microsoft.Network/virtualNetworks/read | 获取虚拟网络定义 |
 > | 操作 | Microsoft.Network/virtualNetworks/write | 创建虚拟网络，或更新现有的虚拟网络 |
 > | 操作 | Microsoft.Network/virtualNetworks/delete | 删除虚拟网络 |
+> | 操作 | Microsoft.Network/virtualNetworks/joinLoadBalancer/action | 将负载均衡器加入虚拟网络 |
 > | 操作 | Microsoft.Network/virtualNetworks/peer/action | 在两个不同的虚拟网络之间建立对等互连 |
 > | 操作 | Microsoft.Network/virtualNetworks/join/action | 加入虚拟网络。 不可发出警报。 |
 > | 操作 | Microsoft.Network/virtualNetworks/BastionHosts/action | 获取虚拟网络中的守护主机引用。 |
@@ -7170,6 +7279,8 @@ Azure 服务：[Azure Monitor](../azure-monitor/index.yml)
 > | 操作 | Microsoft.OperationalInsights/workspaces/query/AppDependencies/read | 从 AppDependencies 表读取数据 |
 > |  | **workspaces/query/AppEvents** |  |
 > | 操作 | Microsoft.OperationalInsights/workspaces/query/AppEvents/read | 从 AppEvents 表读取数据 |
+> |  | **workspaces/query/AppExceptions** |  |
+> | 操作 | Microsoft.OperationalInsights/workspaces/query/AppExceptions/read | 从 AppExceptions 表读取数据 |
 > |  | **workspaces/query/ApplicationInsights** |  |
 > | 操作 | Microsoft.OperationalInsights/workspaces/query/ApplicationInsights/read | 从 ApplicationInsights 表读取数据 |
 > |  | **workspaces/query/AppMetrics** |  |
@@ -7638,6 +7749,18 @@ Azure 服务：[Azure Monitor](../azure-monitor/index.yml)
 > | 操作 | Microsoft.OperationalInsights/workspaces/query/WUDOAggregatedStatus/read | 从 WUDOAggregatedStatus 表读取数据 |
 > |  | **workspaces/query/WUDOStatus** |  |
 > | 操作 | Microsoft.OperationalInsights/workspaces/query/WUDOStatus/read | 从 WUDOStatus 表读取数据 |
+> |  | **workspaces/query/WVDCheckpoints** |  |
+> | 操作 | Microsoft.OperationalInsights/workspaces/query/WVDCheckpoints/read | 从 WVDCheckpoints 表读取数据 |
+> |  | **workspaces/query/WVDConnections** |  |
+> | 操作 | Microsoft.OperationalInsights/workspaces/query/WVDConnections/read | 从 WVDConnections 表读取数据 |
+> |  | **workspaces/query/WVDErrors** |  |
+> | 操作 | Microsoft.OperationalInsights/workspaces/query/WVDErrors/read | 从 WVDErrors 表读取数据 |
+> |  | **workspaces/query/WVDFeeds** |  |
+> | 操作 | Microsoft.OperationalInsights/workspaces/query/WVDFeeds/read | 从 WVDFeeds 表读取数据 |
+> |  | **workspaces/query/WVDHostRegistrations** |  |
+> | 操作 | Microsoft.OperationalInsights/workspaces/query/WVDHostRegistrations/read | 从 WVDHostRegistrations 表读取数据 |
+> |  | **workspaces/query/WVDManagement** |  |
+> | 操作 | Microsoft.OperationalInsights/workspaces/query/WVDManagement/read | 从 WVDManagement 表读取数据 |
 > |  | **workspaces/rules** |  |
 > | 操作 | microsoft.operationalinsights/workspaces/rules/read | 获取所有警报规则。 |
 > |  | **workspaces/savedSearches** |  |
@@ -8278,7 +8401,6 @@ Azure 服务：[Azure Resource Manager](../azure-resource-manager/index.yml)
 
 ## <a name="microsoftscheduler"></a>Microsoft.Scheduler
 
-Azure 服务：[计划程序](../scheduler/index.md)
 
 > [!div class="mx-tdCol2BreakAll"]
 > | 操作类型 | 操作 | 说明 |
@@ -8435,6 +8557,7 @@ Microsoft Monitoring Insights
 > | --- | --- | --- |
 > | 操作 | Microsoft.SecurityInsights/register/action | 将订阅注册到 Azure Sentinel |
 > | 操作 | Microsoft.SecurityInsights/unregister/action | 从 Azure Sentinel 取消注册订阅 |
+> | 操作 | Microsoft.SecurityInsights/dataConnectorsCheckRequirements/action | 检查用户授权和许可证 |
 > |  | **聚合** |  |
 > | 操作 | Microsoft.SecurityInsights/Aggregations/read | 获取聚合信息 |
 > |  | **alertRules** |  |
@@ -8728,7 +8851,7 @@ Azure 服务：[Azure 托管应用程序](../azure-resource-manager/managed-appl
 
 ## <a name="microsoftsql"></a>Microsoft.Sql
 
-Azure 服务：[Azure SQL 数据库](../sql-database/index.yml)、SQL 数据仓库
+Azure 服务：[Azure SQL 数据库](../sql-database/index.yml)、[SQL 数据仓库](../sql-data-warehouse/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
 > | 操作类型 | 操作 | 说明 |
@@ -9921,21 +10044,21 @@ Azure 服务：核心
 > | 操作 | Microsoft.Support/register/action | 注册 Support 资源提供程序 |
 > | 操作 | Microsoft.Support/checkNameAvailability/action | 检查该名称是否有效且未用于资源类型 |
 > |  | **operationresults** |  |
-> | 操作 | Microsoft.Support/operationresults/read | 获取操作结果 |
+> | 操作 | Microsoft.Support/operationresults/read | 获取异步操作的结果 |
 > |  | **operations** |  |
-> | 操作 | Microsoft.Support/operations/read | 列出可对 Microsoft.Support 资源提供程序执行的操作 |
+> | 操作 | Microsoft.Support/operations/read | 列出可对 Microsoft.Support 资源提供程序执行的所有操作 |
 > |  | **operationsstatus** |  |
-> | 操作 | Microsoft.Support/operationsstatus/read | 获取操作状态 |
+> | 操作 | Microsoft.Support/operationsstatus/read | 获取异步操作的状态 |
 > |  | **services** |  |
-> | 操作 | Microsoft.Support/services/read | 获取可用于支持的 Azure 服务列表 |
+> | 操作 | Microsoft.Support/services/read | 列出可用于支持的一个或所有 Azure 服务 |
 > |  | **services/problemClassifications** |  |
-> | 操作 | Microsoft.Support/services/problemClassifications/read | 获取可用于 Azure 服务的问题分类列表 |
+> | 操作 | Microsoft.Support/services/problemClassifications/read | 列出 Azure 服务的一个或所有问题分类 |
 > |  | **supportTickets** |  |
-> | 操作 | Microsoft.Support/supportTickets/read | 获取支持票证的列表。 |
-> | 操作 | Microsoft.Support/supportTickets/write | 异步创建支持票证或更新支持票证。 可以针对技术、计费、配额或订阅管理相关问题创建支持票证。 可以更新现有支持票证的严重性和联系详细信息。 |
+> | 操作 | Microsoft.Support/supportTickets/read | 列出一个或所有支持票证 |
+> | 操作 | Microsoft.Support/supportTickets/write | 允许创建和更新支持票证 |
 > |  | **supportTickets/communications** |  |
-> | 操作 | Microsoft.Support/supportTickets/communications/read | 获取支持票证通信的列表 |
-> | 操作 | Microsoft.Support/supportTickets/communications/write | 创建支持票证通信 |
+> | 操作 | Microsoft.Support/supportTickets/communications/read | 列出一个或所有支持票证通信 |
+> | 操作 | Microsoft.Support/supportTickets/communications/write | 向支持票证添加新通信 |
 
 ## <a name="microsofttimeseriesinsights"></a>Microsoft.TimeSeriesInsights
 
@@ -10674,6 +10797,5 @@ Azure 服务：[Azure Monitor](../azure-monitor/index.yml)
 ## <a name="next-steps"></a>后续步骤
 
 - [将资源提供程序与服务匹配](../azure-resource-manager/management/azure-services-resource-providers.md)
-- [Azure 自定义角色](custom-roles.md)
 - [Azure 内置角色](built-in-roles.md)
 
