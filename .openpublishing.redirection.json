@@ -23509,7 +23509,7 @@
     },
     {
       "source_path": "articles/cognitive-services/speech-service/how-to-migrate-from-custom-speech-service.md",
-      "redirect_url": "/cognitive-services/speech-service",
+      "redirect_url": "/cognitive-services/speech-service"
     },
     {
       "source_path": "articles/sql-database/sql-database-features-index.yml",
@@ -24086,7 +24086,128 @@
       "source_path": "articles/sql-data-warehouse/what-is-a-data-warehouse-unit-dwu-cdwu.md",
       "redirect_url": "/synapse-analytics/sql-data-warehouse/what-is-a-data-warehouse-unit-dwu-cdwu",
       "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/security-center/security-center-policies.md",
+      "redirect_url": "/security-center/tutorial-security-policy",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/log-analytics/log-analytics-windows-agents.md",
+      "redirect_url": "/log-analytics/log-analytics-agent-windows",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/log-analytics/log-analytics-agent-windows.md",
+      "redirect_url": "/azure-monitor/platform/agent-windows",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "articles/log-analytics/log-analytics-linux-agents.md",
+      "redirect_url": "/log-analytics/log-analytics-quick-collect-linux-computer",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/log-analytics/log-analytics-quick-collect-linux-computer.md",
+      "redirect_url": "/azure-monitor/learn/quick-collect-linux-computer",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "articles/security-center/security-center-platform-migration.md",
+      "redirect_url": "/security-center/security-center-enable-data-collection",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/security-center/security-center-partner-solutions.md",
+      "redirect_url": "/security-center/security-center-partner-integration",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/operations-management-suite/operations-management-suite-solution-targeting.md",
+      "redirect_url": "/monitoring/monitoring-solution-targeting",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/monitoring/monitoring-solution-targeting.md",
+      "redirect_url": "/azure-monitor/insights/solution-targeting",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/automation/automation-change-tracking.md",
+      "redirect_url": "/automation/change-tracking",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/security-center/security-center-alerts-iaas.md",
+      "redirect_url": "/security-center/threat-protection",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/security-center/security-center-alerts-type.md",
+      "redirect_url": "/security-center/security-center-alerts-overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/log-analytics/log-analytics-manage-access.md",
+      "redirect_url": "/azure-monitor/platform/manage-access",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "articles/security-center/security-center-custom-alert.md",
+      "redirect_url": "/security-center/security-center-features-retirement-july2019#custom-alert-rules-preview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/security-center/security-center-customize-os-security-config.md",
+      "redirect_url": "/security-center/security-center-features-retirement-july2019#menu_securityconfigurations",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/security-center/security-center-incident-response.md",
+      "redirect_url": "/security-center/tutorial-security-incident",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/security-center/security-center-search.md",
+      "redirect_url": "/security-center/security-center-features-retirement-july2019#menu_search",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/security-center/security-center-detection-capabilities.md",
+      "redirect_url": "/security-center/security-center-alerts-overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/azure-stack/operator/azure-stack-help-and-support-overview.md",
+      "redirect_url": "/azure-stack/operator/azure-stack-help-and-support-overview-tzl",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/azure-stack/operator/azure-stack-best-practices-automatic-diagnostic-log-collection.md",
+      "redirect_url": "/azure-stack/operator/azure-stack-help-and-support-overview-tzl",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "articles/azure-stack/operator/azure-stack-diagnostic-log-collection-overview.md",
+      "redirect_url": "/azure-stack/operator/azure-stack-diagnostic-log-collection-overview-tzl",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/azure-stack/operator/azure-stack-configure-on-demand-diagnostic-log-collection.md",
+      "redirect_url": "/azure-stack/operator/azure-stack-configure-on-demand-diagnostic-log-collection-portal-tzl",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/azure-stack/operator/azure-stack-configure-automatic-diagnostic-log-collection.md",
+      "redirect_url": "/azure-stack/operator/azure-stack-configure-automatic-diagnostic-log-collection-tzl",
+      "redirect_document_id": false
+    },
+    { 
+      "source_path": "articles/azure-stack/operator/azure-stack-hci-overview.md", 
+      "redirect_url": "/azure-stack/hci/overview", 
+      "redirect_document_id": true 
     }
+
 
 
   ]
