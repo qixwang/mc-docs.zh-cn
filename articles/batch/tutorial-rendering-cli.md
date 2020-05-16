@@ -2,20 +2,20 @@
 title: 在云中渲染场景 - Azure Batch
 description: 教程 - 如何使用 Batch 渲染服务和 Azure 命令行界面通过 Arnold 来渲染 Autodesk 3ds Max 场景
 services: batch
-author: lingliw
-manager: digimobile
+author: LauraBrenner
+manager: evansma
 ms.service: batch
 ms.topic: tutorial
-origin.date: 12/11/2018
-ms.date: 10/26/2019
-ms.author: v-lingwu
+origin.date: 03/05/2020
+ms.date: 04/29/2020
+ms.author: v-tawe
 ms.custom: mvc
-ms.openlocfilehash: 1d1b8e52cfb73aefa8f0c808aaf01fb2a65c4e4a
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 41014d30755c965d997baa9391bf7175818dff82
+ms.sourcegitcommit: 1fbdefdace8a1d3412900c6c3f89678d8a9b29bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74838723"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82886839"
 ---
 # <a name="tutorial-render-a-scene-with-azure-batch"></a>教程：使用 Azure Batch 渲染场景 
 
@@ -32,7 +32,9 @@ Azure Batch 提供云规模的渲染功能，按使用付费。 Azure Batch 支�
 
 ## <a name="prerequisites"></a>先决条件
 
-[GitHub](https://github.com/Azure/azure-docs-cli-python-samples/tree/master/batch/render-scene) 上提供了本教程的示例 3ds Max 场景，以及示例 Bash 脚本和 JSON 配置文件。 3ds Max 场景来自 [Autodesk 3ds Max 示例文件](http://download.autodesk.com/us/support/files/3dsmax_sample_files/2017/Autodesk_3ds_Max_2017_English_Win_Samples_Files.exe)。 （提供的 Autodesk 3ds Max 示例文件已获得 Creative Commons Attribution-NonCommercial-Share Alike 许可。 版权所有 © Autodesk, Inc.）
+若要以“按使用付费”模式使用 Batch 中的渲染应用程序，需要有一个预付费订阅或其他 Azure 购买选项。 **如果使用的是提供货币额度的免费 Azure 套餐，则不支持按使用付费的许可。**
+
+[GitHub](https://github.com/Azure/azure-docs-cli-python-samples/tree/master/batch/render-scene) 上提供了本教程的示例 3ds Max 场景，以及示例 Bash 脚本和 JSON 配置文件。 3ds Max 场景来自 [Autodesk 3ds Max 示例文件](https://download.autodesk.com/us/support/files/3dsmax_sample_files/2017/Autodesk_3ds_Max_2017_English_Win_Samples_Files.exe)。 （提供的 Autodesk 3ds Max 示例文件已获得 Creative Commons Attribution-NonCommercial-Share Alike 许可。 版权所有 &copy; Autodesk, Inc.）
 
 如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.0.20 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/install-azure-cli)。
 
@@ -135,7 +137,7 @@ az storage blob upload-batch \
   "enableInterNodeCommunication": false 
 }
 ```
-Batch 支持专用节点和低优先级节点。可以在池中使用这其中的一种，或者两种都使用。 专用节点为池保留。 低优先级节点在 Azure 有剩余 VM 容量时以优惠价提供。 如果 Azure 没有足够的容量，低优先级节点会变得不可用。 
+Batch 支持专用节点和[低优先级](batch-low-pri-vms.md)节点。可以在池中使用这其中的一种，或者两种都使用。 专用节点为池保留。 低优先级节点在 Azure 有剩余 VM 容量时以优惠价提供。 如果 Azure 没有足够的容量，低优先级节点会变得不可用。 
 
 指定的池包含单个运行 Windows Server 映像的低优先级节点，所装软件适用于 Batch 渲染服务。 该池已获得使用 3ds Max 和 Arnold 进行渲染的许可。 在后面的步骤中，请扩展该池，增加节点数。
 

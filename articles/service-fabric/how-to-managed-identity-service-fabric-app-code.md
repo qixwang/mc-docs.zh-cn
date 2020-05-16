@@ -1,18 +1,17 @@
 ---
-title: 将托管标识用于 Service Fabric 应用程序
-description: 如何使用 Azure Service Fabric 应用程序代码中的托管标识访问 Azure 服务。 此功能目前以公共预览版提供。
+title: 在应用程序中使用托管标识
+description: 如何使用 Azure Service Fabric 应用程序代码中的托管标识访问 Azure 服务。
 ms.topic: article
-origin.date: 07/25/2019
+ms.date: 05/06/2020
 ms.author: v-yeche
-ms.date: 01/06/2020
-ms.openlocfilehash: d963ddcea3a09b782defff2cd354032197e47892
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: e6686d8a0531cb687b59819b39f1bb736fc6be33
+ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75742352"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "83001982"
 ---
-# <a name="how-to-leverage-a-service-fabric-applications-managed-identity-to-access-azure-services-preview"></a>如何利用 Service Fabric 应用程序的托管标识访问 Azure 服务（预览版）
+# <a name="how-to-leverage-a-service-fabric-applications-managed-identity-to-access-azure-services"></a>如何利用 Service Fabric 应用程序的托管标识访问 Azure 服务
 
 Service Fabric 应用程序可以利用托管标识来访问支持基于 Azure Active Directory 的身份验证的其他 Azure 资源。 应用程序可以获取代表其标识（由系统分配或用户分配）的[访问令牌](../active-directory/develop/developer-glossary.md#access-token)，并使用该令牌作为“持有者”令牌在其他服务（也称为[受保护的资源服务器](../active-directory/develop/developer-glossary.md#resource-server)）中验证自己的身份。 令牌表示分配给 Service Fabric 应用程序的标识，只会颁发给共享该标识的 Azure 资源（包括 SF 应用程序）。 有关托管标识的详细介绍以及系统分配的标识和用户分配的标识之间的区别，请参阅[托管标识概述](../active-directory/managed-identities-azure-resources/overview.md)文档。 在整篇文章中，我们将支持托管标识的 Service Fabric 应用程序称作[客户端应用程序](../active-directory/develop/developer-glossary.md#client-application)。
 
@@ -26,19 +25,18 @@ Service Fabric 应用程序可以利用托管标识来访问支持基于 Azure A
 在支持托管标识的群集中，Service Fabric 运行时将公开一个 localhost 终结点，应用程序可使用该终结点获取访问令牌。 该终结点将在群集的每个节点上提供，可供该节点上的所有实体访问。 已获授权的调用方可以通过调用此终结点并提供身份验证代码来获取访问令牌；每次激活不同的服务代码包时，此代码将由 Service Fabric 运行时生成，并且此代码与托管该服务代码包的进程的生存期紧密相关。
 
 具体而言，支持托管标识的 Service Fabric 服务的环境中植入了以下变量：
-- “MSI_ENDPOINT”：localhost 终结点，包含对应于该服务的托管标识的路径、API 版本和参数
-- “MSI_SECRET”：身份验证代码，它是一个不透明字符串，用于唯一表示当前节点上的服务
-
-> [!NOTE]
-> 名称“MSI_ENDPOINT”和“MSI_SECRET”是指以前的托管标识名称（“托管服务标识”），现已弃用。 这些名称也与其他支持托管标识的 Azure 服务使用的等效环境变量名称相一致。
+- 'IDENTITY_ENDPOINT'：与服务的托管标识对应的 localhost 终结点
+- 'IDENTITY_HEADER'：表示当前节点上的服务的唯一验证码
+- 'IDENTITY_SERVER_THUMBPRINT'：Service fabric 托管标识服务器的指纹
 
 > [!IMPORTANT]
-> 应用程序代码应将“MSI_SECRET”环境变量的值视为敏感数据 - 不应记录或散播该值。 身份验证代码没有本地节点外部的值，在托管服务的进程终止后，它也不会保留任何值，但它确实代表 Service Fabric 服务的标识，因此，应该像对待访问令牌本身一样对其采取预防措施。
+> 应用程序代码应将 'IDENTITY_HEADER' 环境变量的值视为敏感数据 - 它不应被记录或以其他方式传播。 身份验证代码没有本地节点外部的值，在托管服务的进程终止后，它也不会保留任何值，但它确实代表 Service Fabric 服务的标识，因此，应该像对待访问令牌本身一样对其采取预防措施。
 
 若要获取令牌，客户端将执行以下步骤：
-- 通过将托管标识终结点（MSI_ENDPOINT 值）与令牌所需的 API 版本和资源（受众）串联到一起来构成 URI
-- 为指定的 URI 创建 GET HTTP 请求
-- 将身份验证代码（MSI_SECRET 值）添加为请求的标头
+- 通过将托管标识终结点（IDENTITY_ENDPOINT 值）与令牌所需的 API 版本和资源（受众）进行连接来构成 URI
+- 为指定的 URI 创建 GET http(s) 请求
+- 添加适当的服务器证书验证逻辑
+- 将验证码（IDENTITY_HEADER 值）添加为请求的标头
 - 提交请求
 
 成功的响应将包含一个 JSON 有效负载，该有效负载表示生成的访问令牌，以及用于描述该令牌的元数据。 失败的响应还包含有关失败的说明。 有关错误处理的更多详细信息，请参阅下文。
@@ -47,17 +45,17 @@ Service Fabric 将在不同的级别（节点、群集、资源提供程序服�
 
 示例请求：
 ```http
-GET 'http://localhost:2377/metadata/identity/oauth2/token?api-version=2019-07-01-preview&resource=https://keyvault.azure.com/' HTTP/1.1 Secret: 912e4af7-77ba-4fa5-a737-56c8e3ace132
+GET 'https://localhost:2377/metadata/identity/oauth2/token?api-version=2019-07-01-preview&resource=https://vault.azure.cn/' HTTP/1.1 Secret: 912e4af7-77ba-4fa5-a737-56c8e3ace132
 ```
 其中：
 
 | 元素 | 说明 |
 | ------- | ----------- |
 | `GET` | HTTP 谓词，指示想要从终结点检索数据。 在本例中，该数据为 OAuth 访问令牌。 | 
-| `http://localhost:2377/metadata/identity/oauth2/token` | Service Fabric 应用程序的托管标识终结点，通过 MSI_ENDPOINT 环境变量提供。 |
+| `https://localhost:2377/metadata/identity/oauth2/token` | Service Fabric 应用程序的托管标识终结点，通过 IDENTITY_ENDPOINT 环境变量提供。 |
 | `api-version` | 一个查询字符串参数，指定托管标识令牌服务的 API 版本；目前唯一接受的值为 `2019-07-01-preview`，将来可能会有更改。 |
-| `resource` | 一个查询字符串参数，表示目标资源的应用 ID URI。 此元素以已颁发令牌的 `aud`（受众）声明形式反映。 此示例请求一个用于访问 Azure Key Vault（其应用 ID URI 为 https://keyvault.azure.cn/ ）的令牌。 |
-| `Secret` | 一个 HTTP 请求标头字段，Service Fabric 服务的 Service Fabric 托管标识令牌服务需使用该字段对调用方进行身份验证。 此值由 SF 运行时通过 MSI_SECRET 环境变量提供。 |
+| `resource` | 一个查询字符串参数，表示目标资源的应用 ID URI。 此元素以已颁发令牌的 `aud`（受众）声明形式反映。 此示例请求一个用于访问 Azure Key Vault（其应用 ID URI 为“https:\//vault.azure.cn/”）的令牌。 |
+| `Secret` | 一个 HTTP 请求标头字段，Service Fabric 服务的 Service Fabric 托管标识令牌服务需使用该字段对调用方进行身份验证。 此值由 SF 运行时通过 IDENTITY_HEADER 环境变量提供。 |
 
 示例响应：
 ```json
@@ -67,7 +65,7 @@ Content-Type: application/json
     "token_type":  "Bearer",
     "access_token":  "eyJ0eXAiO...",
     "expires_on":  1565244611,
-    "resource":  "https://keyvault.azure.com/"
+    "resource":  "https://vault.azure.cn/"
 }
 ```
 其中：
@@ -123,20 +121,33 @@ namespace Azure.ServiceFabric.ManagedIdentity.Samples
         /// <returns>Access token</returns>
         public static async Task<string> AcquireAccessTokenAsync()
         {
-            var managedIdentityEndpoint = Environment.GetEnvironmentVariable("MSI_ENDPOINT");
-            var managedIdentityAuthenticationCode = Environment.GetEnvironmentVariable("MSI_SECRET");
+            var managedIdentityEndpoint = Environment.GetEnvironmentVariable("IDENTITY_ENDPOINT");
+            var managedIdentityAuthenticationCode = Environment.GetEnvironmentVariable("IDENTITY_HEADER");
+            var managedIdentityServerThumbprint = Environment.GetEnvironmentVariable("IDENTITY_SERVER_THUMBPRINT");
+            // Latest api version, 2019-07-01-preview is still supported.
+            var managedIdentityApiVersion = Environment.GetEnvironmentVariable("IDENTITY_API_VERSION");
             var managedIdentityAuthenticationHeader = "secret";
-            var managedIdentityApiVersion = "2019-07-01-preview";
             var resource = "https://management.chinacloudapi.cn/";
 
             var requestUri = $"{managedIdentityEndpoint}?api-version={managedIdentityApiVersion}&resource={HttpUtility.UrlEncode(resource)}";
 
             var requestMessage = new HttpRequestMessage(HttpMethod.Get, requestUri);
             requestMessage.Headers.Add(managedIdentityAuthenticationHeader, managedIdentityAuthenticationCode);
+            
+            var handler = new HttpClientHandler();
+            handler.ServerCertificateCustomValidationCallback = (httpRequestMessage, cert, certChain, policyErrors) =>
+            {
+                // Do any additional validation here
+                if (policyErrors == SslPolicyErrors.None)
+                {
+                    return true;
+                }
+                return 0 == string.Compare(cert.GetCertHashString(), managedIdentityServerThumbprint, StringComparison.OrdinalIgnoreCase);
+            };
 
             try
             {
-                var response = await new HttpClient().SendAsync(requestMessage)
+                var response = await new HttpClient(handler).SendAsync(requestMessage)
                     .ConfigureAwait(false);
 
                 response.EnsureSuccessStatusCode();
@@ -367,5 +378,5 @@ HTTP 响应标头的“状态代码”字段指示请求的成功状态；“200
 * [使用用户分配的托管标识部署 Azure Service Fabric 应用程序](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)
 * [为 Azure Service Fabric 应用程序授予对其他 Azure 资源的访问权限](./how-to-grant-access-other-resources.md)
 
-<!--Update_Description: new articles on service fabric how to managed identity service fabric app code -->
-<!--new.date: 09/02/2019-->
+
+<!-- Update_Description: update meta properties, wording update, update link -->

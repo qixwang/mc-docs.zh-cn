@@ -8,12 +8,12 @@ ms.author: v-lingwu
 origin.date: 08/02/2018
 ms.date: 09/07/2018
 ms.topic: conceptual
-ms.openlocfilehash: 660169adb8347fa4f9f5d1b39af1fb84225e3516
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: a4094d4dc7804324ba1af9d7168f3d4311f07ffd
+ms.sourcegitcommit: 1fbdefdace8a1d3412900c6c3f89678d8a9b29bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75854467"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82886884"
 ---
 # <a name="using-azure-batch-rendering"></a>使用 Azure Batch 渲染
 
@@ -49,7 +49,7 @@ ms.locfileid: "75854467"
 
 提供的模板可以配合市场渲染 VM 映像中所有应用程序。  每个应用程序有多个模板，包括用于配合 CPU 和 GPU 池、Windows 和 Linux 池的池模板；作业模板包括完整的框架或平铺式 Blender 渲染，以及 V-Ray 分布式渲染。 提供的模板集将不断扩展，以配合其他 Batch 功能，例如池自动缩放。
 
-此外，可以从头开始或者通过修改提供的模板，来生成自定义模板。 在 Batch Explorer 的“库”部分选择“本地模板”项可以使用自定义模板。
+此外，可以从头开始或者通过修改提供的模板，来生成自定义模板。 在 Batch Explorer 的“库”部分中选择“本地模板”项即可使用自定义模板。
 
 ### <a name="file-system-and-data-movement"></a>文件系统和数据移动
 
@@ -59,7 +59,8 @@ ms.locfileid: "75854467"
 
 我们为某些客户端应用程序提供了插件。  使用插件可以直接从应用程序创建池和作业，或调用 Batch Explorer。
 
-* [Blender](https://github.com/Azure/azure-batch-rendering/tree/master/plugins/blender)
+* [Blender 2.79](https://github.com/Azure/azure-batch-rendering/tree/master/plugins/blender)
+* [Blender 2.8+](https://github.com/Azure/azure-batch-rendering/tree/master/plugins/blender28)
 * [Autodesk 3ds Max](https://github.com/Azure/azure-batch-rendering/tree/master/plugins/3ds-max)
 * [Autodesk Maya](https://github.com/Azure/azure-batch-maya)
 

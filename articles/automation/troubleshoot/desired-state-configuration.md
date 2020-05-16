@@ -7,15 +7,15 @@ ms.subservice: ''
 author: WenJason
 ms.author: v-jay
 origin.date: 04/16/2019
-ms.date: 03/16/2020
+ms.date: 05/11/2020
 ms.topic: conceptual
 manager: digimobile
-ms.openlocfilehash: d61725efd3166db9f310bed84ece79c34427d54d
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: a437c0c5318d41acd61d218e17efac1d223f1f67
+ms.sourcegitcommit: 7443ff038ea8afe511f7419d9c550d27fb642246
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79293719"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "83001575"
 ---
 # <a name="troubleshoot-issues-with-azure-automation-desired-state-configuration-dsc"></a>排查 Azure 自动化 Desired State Configuration (DSC) 问题
 
@@ -110,7 +110,9 @@ VM has reported a failure when processing extension 'Microsoft.Powershell.DSC / 
 
 ### <a name="cause"></a>原因
 
-此问题由错误或过期的证书引起。  有关详细信息，请参阅[证书过期和重新注册](../automation-dsc-onboarding.md#certificate-expiration-and-re-registration)。
+此问题由错误或过期的证书引起。  有关详细信息，请参阅[证书过期和重新注册](../automation-dsc-onboarding.md#re-registering-a-node)。
+
+此问题也可能是由于代理配置不允许访问“*.azure-automation.cn”  而导致的。 有关详细信息，请参阅[配置专用网络](../automation-dsc-overview.md#network-planning)。 
 
 ### <a name="resolution"></a>解决方法
 
@@ -130,7 +132,7 @@ VM has reported a failure when processing extension 'Microsoft.Powershell.DSC / 
 
 然后，从节点中删除所有错误的或过期的证书。
 
-在故障节点上，从权限提升的 Powershell 提示符处运行以下命令：
+在故障节点上，从权限提升的 PowerShell 提示符处运行以下命令：
 
 ```powershell
 $certs = @()
@@ -229,7 +231,7 @@ System.InvalidOperationException error processing property 'Credential' of type 
 
 #### <a name="cause"></a>原因
 
-已在配置中使用凭据，但未提供正确的 **ConfigurationData**，从而无法将每个节点配置的 **PSDscAllowPlainTextPassword** 设置为 true。
+已在配置中使用凭据，但未提供正确的 ConfigurationData  ，因此无法将每个节点配置的“PSDscAllowPlainTextPassword”  设置为 true。
 
 #### <a name="resolution"></a>解决方法
 
@@ -288,9 +290,23 @@ This event indicates that failure happens when LCM is processing the configurati
 
 最佳解决方法将是在本地或 CI/CD 管道中进行编译，然后将 MOF 文件直接上传到服务。  如果必须在服务中进行编译，则较佳解决方法将是拆分编译作业，这样就不会发生名称重叠现象。
 
+### <a name="scenario-gateway-timeout-error-on-dsc-configuration-upload"></a><a name="gateway-timeout"></a>场景：上传 DSC 配置时出现网关超时错误
+
+#### <a name="issue"></a>问题
+
+上传 DSC 配置时收到 `GatewayTimeout` 错误。 
+
+#### <a name="cause"></a>原因
+
+需要很长时间编译的 DSC 配置可能会导致此错误。
+
+#### <a name="resolution"></a>解决方法
+
+通过在所有 `Import-DscResource` 调用中显式包含 `ModuleName` 参数，可以更快地解析 DSC 配置。 有关详细信息，请参阅[使用 Import-DSCResource](https://docs.microsoft.com/powershell/scripting/dsc/configurations/import-dscresource?view=powershell-5.1)。
+
 ## <a name="next-steps"></a>后续步骤
 
 如果你的问题未在本文中列出，或者无法解决问题，请访问以下渠道之一获取更多支持：
 
 * 通过 [Azure 论坛](https://social.msdn.microsoft.com/Forums/zh-cn/home)获取 Azure 专家的解答
-* 如需更多帮助，可以提交 Azure 支持事件。 转到 [Azure 支持站点](https://www.azure.cn/support/)。
+* 如需更多帮助，可以提交 Azure 支持事件。 请转到 [Azure 支持站点](https://support.azure.cn/zh-cn/support/contact/)以获取支持。

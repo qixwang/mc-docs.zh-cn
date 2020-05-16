@@ -1,27 +1,26 @@
 ---
-title: Azure 事件网格资源组事件架构
+title: 充当事件网格源的 Azure 资源组
 description: 介绍针对 Azure 事件网格中的资源组事件提供的属性
 services: event-grid
-author: spelluru
+author: Johnnytechn
 ms.service: event-grid
-ms.topic: reference
-origin.date: 01/12/2019
-ms.date: 06/03/2019
-ms.author: v-yiso
-ms.openlocfilehash: f5279dd012c0f4b0ccb15981ecb08a288ec4c59a
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.topic: conceptual
+ms.date: 05/06/2020
+ms.author: v-johya
+ms.openlocfilehash: 9e46f458295bccac465e6ac3c8339c7e6c689440
+ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "66195215"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "83001963"
 ---
-# <a name="azure-event-grid-event-schema-for-resource-groups"></a>资源组的 Azure 事件网格事件架构
+# <a name="azure-resource-group-as-an-event-grid-source"></a>充当事件网格源的 Azure 资源组
 
 本文提供资源组事件的属性和架构。 有关事件架构的简介，请参阅 [Azure 事件网格事件架构](event-schema.md)。
 
 Azure 订阅和资源组发出相同的事件类型。 这些事件类型与资源更改或操作相关。 主要区别是资源组针对资源组中的资源发出事件，Azure 订阅针对跨订阅的资源发出事件。
 
-已为发送到 `management.azure.com` 的 PUT、PATCH、POST 和 DELETE 操作创建资源事件。 GET 操作不创建事件。 发送到数据平面的操作（如 `myaccount.blob.core.windows.net`）不会创建事件。 操作事件为操作（例如列出资源的键）提供事件数据。
+已为发送到 `management.chinacloudapi.cn` 的 PUT、PATCH、POST 和 DELETE 操作创建资源事件。 GET 操作不创建事件。 发送到数据平面的操作（如 `myaccount.blob.core.chinacloudapi.cn`）不会创建事件。 操作事件为操作（例如列出资源的键）提供事件数据。
 
 当订阅资源组的事件时，终结点接收该资源组的所有事件。 事件可能包括要查看的事件（例如更新虚拟机），以及可能不重要的事件（例如在部署历史记录中编写新条目）。 可以在终结点接收所有事件，并编写代码用于处理需要处理的事件。 或可以在创建事件订阅时设置一个筛选器。
 
@@ -29,9 +28,10 @@ Azure 订阅和资源组发出相同的事件类型。 这些事件类型与资�
 
 事件主题是作为操作目标的资源的资源 ID。 若要筛选资源的事件，请在创建事件订阅时提供该资源 ID。  若要按资源类型筛选，请使用以下格式的值：`/subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.Compute/virtualMachines`
 
-有关示例脚本和教程的列表，请参阅[资源组事件源](event-sources.md#resource-groups)。
 
-## <a name="available-event-types"></a>可用事件类型
+## <a name="event-grid-event-schema"></a>事件网格事件架构
+
+### <a name="available-event-types"></a>可用事件类型
 
 资源组可从 Azure 资源管理器发出管理事件，例如，在创建 VM 或删除存储帐户时。
 
@@ -47,7 +47,7 @@ Azure 订阅和资源组发出相同的事件类型。 这些事件类型与资�
 | Microsoft.Resources.ResourceWriteFailure | 在创建或更新操作失败时引发。 |
 | Microsoft.Resources.ResourceWriteSuccess | 在创建或更新操作成功时引发。 |
 
-## <a name="example-event"></a>示例事件
+### <a name="example-event"></a>示例事件
 
 以下示例展示了 ResourceWriteSuccess 事件的架构  。 具有不同 `eventType` 值的 ResourceWriteFailure 和 ResourceWriteCancel 事件会使用相同的模式   。
 
@@ -160,7 +160,7 @@ Azure 订阅和资源组发出相同的事件类型。 这些事件类型与资�
       "clientRequestId": "{ID}",
       "clientIpAddress": "{IP-address}",
       "method": "DELETE",
-      "url": "https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.Storage/storageAccounts/{storage-name}?api-version=2018-02-01"
+      "url": "https://management.chinacloudapi.cn/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.Storage/storageAccounts/{storage-name}?api-version=2018-02-01"
     },
     "resourceProvider": "Microsoft.Storage",
     "resourceUri": "/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.Storage/storageAccounts/{storage-name}",
@@ -216,7 +216,7 @@ Azure 订阅和资源组发出相同的事件类型。 这些事件类型与资�
       "clientRequestId": "{ID}",
       "clientIpAddress": "{IP-address}",
       "method": "POST",
-      "url": "https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.EventHub/namespaces/{namespace}/AuthorizationRules/RootManageSharedAccessKey/listKeys?api-version=2017-04-01"
+      "url": "https://management.chinacloudapi.cn/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.EventHub/namespaces/{namespace}/AuthorizationRules/RootManageSharedAccessKey/listKeys?api-version=2017-04-01"
     },
     "resourceProvider": "Microsoft.EventHub",
     "resourceUri": "/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.EventHub/namespaces/{namespace}/AuthorizationRules/RootManageSharedAccessKey",
@@ -231,7 +231,7 @@ Azure 订阅和资源组发出相同的事件类型。 这些事件类型与资�
 }]
 ```
 
-## <a name="event-properties"></a>事件属性
+### <a name="event-properties"></a>事件属性
 
 事件具有以下顶级数据：
 
@@ -261,7 +261,18 @@ Azure 订阅和资源组发出相同的事件类型。 这些事件类型与资�
 | subscriptionId | string | 资源的订阅 ID。 |
 | tenantId | string | 资源的租户 ID。 |
 
+## <a name="tutorials-and-how-tos"></a>教程和操作指南
+|标题  |说明  |
+|---------|---------|
+| [教程：通过 Azure 事件网格和逻辑应用监视虚拟机更改](monitor-virtual-machine-changes-event-grid-logic-app.md) | 逻辑应用可监视对虚拟机的更改并就这些更改发送电子邮件。 |
+| [Azure CLI：订阅资源组的事件](./scripts/event-grid-cli-resource-group.md)| 用于订阅资源组的事件的示例脚本。 它将事件发送到 WebHook。 |
+| [Azure CLI：订阅资源组的事件并筛选资源](./scripts/event-grid-cli-resource-group-filter.md) | 用于订阅资源组的事件并筛选一个资源的事件的示例脚本。 |
+| [PowerShell：订阅资源组的事件](./scripts/event-grid-powershell-resource-group.md) | 用于订阅资源组的事件的示例脚本。 它将事件发送到 WebHook。 |
+| [PowerShell：订阅资源组的事件并筛选资源](./scripts/event-grid-powershell-resource-group-filter.md) | 用于订阅资源组的事件并筛选一个资源的事件的示例脚本。 |
+| [资源管理器模板：资源订阅](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-resource-events-to-webhook) | 订阅 Azure 订阅的事件或资源组。 它将事件发送到 WebHook。 |
+
 ## <a name="next-steps"></a>后续步骤
 
 * 有关 Azure 事件网格的简介，请参阅[什么是事件网格？](overview.md)
 * 有关创建 Azure 事件网格订阅的详细信息，请参阅[事件网格订阅架构](subscription-creation-schema.md)。
+

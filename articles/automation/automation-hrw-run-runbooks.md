@@ -4,14 +4,14 @@ description: 本文介绍如何使用混合 Runbook 辅助角色在本地数据�
 services: automation
 ms.subservice: process-automation
 origin.date: 01/29/2019
-ms.date: 03/30/2020
+ms.date: 05/11/2020
 ms.topic: conceptual
-ms.openlocfilehash: 3a4b7a5fea43d4ca31cd1ebcaeb84d554b34a7c2
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: af650fcbc1c2b22325ee889135bb082decb72253
+ms.sourcegitcommit: 7443ff038ea8afe511f7419d9c550d27fb642246
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80290352"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "83001625"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>在混合 Runbook 辅助角色上运行 runbook
 
@@ -28,7 +28,7 @@ ms.locfileid: "80290352"
 
 ### <a name="runbook-authentication"></a>Runbook 身份验证
 
-Runbook 默认在本地计算机上运行。 对于 Windows，它们在本地系统帐户的上下文中运行。 对于 Linux，它们在特殊用户帐户 **nxautomation** 的上下文中运行。 对于任一情况，Runbook 都必须对它们要访问的资源提供自身的身份验证。
+Runbook 默认在本地计算机上运行。 对于 Windows，它们在本地系统  帐户的上下文中运行。 对于 Linux，它们在特殊用户帐户 **nxautomation** 的上下文中运行。 对于任一情况，Runbook 都必须对它们要访问的资源提供自身的身份验证。
 
 可以通过 cmdlet 在 Runbook 中使用[凭据](automation-credentials.md)和[证书](automation-certificates.md)资产，这些 cmdlet 允许指定凭据，使 Runbook 可对不同的资源进行身份验证。 下面的示例显示了用于重新启动计算机的 Runbook 的一部分。 它从凭据资产检索凭据，从变量资产检索计算机的名称，并将这些值用于 `Restart-Computer` cmdlet。
 
@@ -53,7 +53,7 @@ Restart-Computer -ComputerName $Computer -Credential $Cred
 
 使用以下过程为混合 Runbook 辅助角色组指定运行方式帐户。
 
-1. 创建具有本地资源访问权限的[凭据资产](automation-credentials.md)。
+1. 创建具有本地资源访问权限的 [凭据资产](automation-credentials.md) 。
 2. 在 Azure 门户中打开自动化帐户。
 3. 选择“混合辅助角色组”  磁贴，并选择组。
 4. 依次选择“所有设置”、“混合辅助角色组设置”。  
@@ -85,7 +85,7 @@ Azure 虚拟机上的混合 Runbook 辅助角色可以使用 Azure 资源的托�
 ```
 
 > [!NOTE]
-> `Connect-AzureRmAccount -Identity` 适用于使用系统分配标识和单个用户分配标识的混合 Runbook 辅助角色。 如果在混合 Runbook 辅助角色上使用多个用户分配标识，则 Runbook 必须为 *指定*AccountId`Connect-AzureRmAccount` 参数，以选择特定的用户分配标识。
+> `Connect-AzureRmAccount -Identity` 适用于使用系统分配标识和单个用户分配标识的混合 Runbook 辅助角色。 如果在混合 Runbook 辅助角色上使用多个用户分配标识，则 Runbook 必须为 `Connect-AzureRmAccount` 指定 `AccountId` 参数，以选择特定的用户分配标识。
 
 ### <a name="automation-run-as-account"></a><a name="runas-script"></a>自动化运行方式帐户
 
@@ -194,7 +194,7 @@ Start-AzureAutomationRunbook –AutomationAccountName "MyAutomationAccount" –N
 ```
 
 > [!NOTE]
-> 在 Azure PowerShell 版本 0.9.1 中，`RunOn` 中已添加了 `Start-AzureAutomationRunbook` 参数。 如果安装的是旧版，则应[下载最新版本](https://azure.microsoft.com/downloads/)。 只需在要在其中通过 PowerShell 启动 Runbook 的工作站上安装此版本。 不需要在混合 Runbook 辅助角色计算机上安装它，除非要从该计算机启动 Runbook。
+> 如果安装的是旧版，则应[下载最新 PowerShell 版本](https://azure.microsoft.com/downloads/)。 只需在要在其中通过 PowerShell 启动 Runbook 的工作站上安装此版本。 不需要在混合 Runbook 辅助角色计算机上安装它，除非要从该计算机启动 Runbook。
 
 ## <a name="working-with-signed-runbooks-on-a-windows-hybrid-runbook-worker"></a>使用 Windows 混合 Runbook 辅助角色上已签名的 Runbook
 
@@ -254,7 +254,7 @@ $SigningCert = ( Get-ChildItem -Path cert:\LocalMachine\My\<CertificateThumbprin
 Set-AuthenticodeSignature .\TestRunbook.ps1 -Certificate $SigningCert
 ```
 
-为 Runbook 签名后，必须将其导入自动化帐户，并使用签名块将其发布。 若要了解如何导入 Runbook，请参阅[将 Runbook 从文件导入 Azure 自动化](manage-runbooks.md#import-a-runbook)。
+为 Runbook 签名后，必须将其导入自动化帐户，并使用签名块将其发布。 若要了解如何导入 Runbook，请参阅[将 Runbook 从文件导入 Azure 自动化](manage-runbooks.md#importing-a-runbook)。
 
 ## <a name="working-with-signed-runbooks-on-a-linux-hybrid-runbook-worker"></a>使用 Linux 混合 Runbook 辅助角色上已签名的 Runbook
 
@@ -309,7 +309,7 @@ sudo python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/
 gpg –-clear-sign <runbook name>
 ```
 
-已签名的 Runbook 名为 `<runbook name>.asc`。
+已签名的 Runbook 名为“<runbook name>.asc”  。
 
 现在，可将已签名的 Runbook 上传到 Azure 自动化，并像执行普通的 Runbook 一样执行它。
 

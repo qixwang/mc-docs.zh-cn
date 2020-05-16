@@ -5,15 +5,16 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 04/06/2020
-ms.date: 04/27/2020
+ms.date: 05/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 647b825c318e3fe8b4985775ad3309212be9ee83
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.openlocfilehash: af04eac8820dc3286f1a7ab995f7089e64cfb0f4
+ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82135149"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "83001975"
 ---
+<!--Verified with cosmos db SDK V3-->
 # <a name="migrate-from-the-bulk-executor-library-to-the-bulk-support-in-azure-cosmos-db-net-v3-sdk"></a>从批量执行工具库迁移到 Azure Cosmos DB .NET V3 SDK 中的批量操作支持
 
 本文介绍需要执行哪些步骤，才能将使用 [.NET 批量执行工具库](bulk-executor-dot-net.md)的现有应用程序的代码迁移到使用最新版 .NET SDK 中的[批量操作支持](tutorial-sql-api-dotnet-bulk-import.md)功能。
@@ -50,10 +51,10 @@ ms.locfileid: "82135149"
 若要执行批量导入（类似于使用 BulkExecutor.BulkImportAsync），需要使用每个项值对 `CreateItemAsync` 发出并发调用。 例如：
 
    ```csharp
-   List<Task<OperationResponse<MyItem>>> operations = new List<Task<OperationResponse<MyItem>>>(documentsToWorkWith.Count);
+   BulkOperations<MyItem> bulkOperations = new BulkOperations<MyItem>(documentsToWorkWith.Count);
    foreach (MyItem document in documentsToWorkWith)
    {
-       operations.Add(container.CreateItemAsync(document, new PartitionKey(document.pk)).CaptureOperationResponse(document));
+       bulkOperations.Tasks.Add(container.CreateItemAsync(document, new PartitionKey(document.pk)).CaptureOperationResponse(document));
    }
 
    ```
@@ -61,11 +62,11 @@ ms.locfileid: "82135149"
 若要执行批量更新（类似于使用 [BulkExecutor.BulkUpdateAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkexecutor.bulkupdateasync?view=azure-dotnet)），则在更新项值后，需要对 `ReplaceItemAsync` 方法发出并发调用。  例如：
 
    ```csharp
-   List<Task<OperationResponse<MyItem>>> operations = new List<Task<OperationResponse<MyItem>>>(documentsToWorkWith.Count);
+   BulkOperations<MyItem> bulkOperations = new BulkOperations<MyItem>(documentsToWorkWith.Count);
    foreach (MyItem document in documentsToWorkWith)
    {
        document.operationCounter++;
-       operations.Add(container.ReplaceItemAsync(document, document.id, new PartitionKey(document.pk)).CaptureOperationResponse(document));
+       bulkOperations.Tasks.Add(container.ReplaceItemAsync(document, document.id, new PartitionKey(document.pk)).CaptureOperationResponse(document));
    }
 
    ```
@@ -73,11 +74,11 @@ ms.locfileid: "82135149"
 若要执行批量删除（类似于使用 [BulkExecutor.BulkDeleteAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkexecutor.bulkdeleteasync?view=azure-dotnet)），需要使用每个项的 `id` 和分区键对 `DeleteItemAsync` 发出并发调用。  例如：
 
    ```csharp
-   List<Task<OperationResponse<MyItem>>> operations = new List<Task<OperationResponse<MyItem>>>(documentsToWorkWith.Count);
+   BulkOperations<MyItem> bulkOperations = new BulkOperations<MyItem>(documentsToWorkWith.Count);
    foreach (MyItem document in documentsToWorkWith)
    {
        document.operationCounter++;
-       operations.Add(container.DeleteItemAsync<MyItem>(document.id, new PartitionKey(document.pk)).CaptureOperationResponse(document));
+       bulkOperations.Tasks.Add(container.DeleteItemAsync<MyItem>(document.id, new PartitionKey(document.pk)).CaptureOperationResponse(document));
    }
 
    ```
@@ -140,21 +141,38 @@ ms.locfileid: "82135149"
 
 ## <a name="execute-operations-concurrently"></a>并发执行操作
 
-定义任务列表后，请等到这些任务全部完成。 可按以下代码片段中所示，通过定义批量操作的范围来跟踪任务的完成状态：
+为了跟踪整个 Tasks 列表的作用域，我们使用以下帮助程序类：
 
    ```csharp
-   Stopwatch stopwatch = Stopwatch.StartNew();
-   await Task.WhenAll(tasks);
-   stopwatch.Stop();
+    public class BulkOperations<T>
+    {
+        public readonly List<Task<OperationResponse<T>>> Tasks;
 
-   return new BulkOperationResponse<T>()
-   {
-       TotalTimeTaken = stopwatch.Elapsed,
-       TotalRequestUnitsConsumed = tasks.Sum(task => task.Result.RequestUnitsConsumed),
-       SuccessfulDocuments = tasks.Count(task => task.Result.IsSuccessful),
-       Failures = tasks.Where(task => !task.Result.IsSuccessful).Select(task => (task.Result.Item, task.Result.CosmosException)).ToList()
-   };
+        private readonly Stopwatch stopwatch = Stopwatch.StartNew();
 
+        public BulkOperations(int operationCount)
+        {
+            this.Tasks = new List<Task<OperationResponse<T>>>(operationCount);
+        }
+
+        public async Task<BulkOperationResponse<T>> ExecuteAsync()
+        {
+            await Task.WhenAll(this.Tasks);
+            this.stopwatch.Stop();
+            return new BulkOperationResponse<T>()
+            {
+                TotalTimeTaken = this.stopwatch.Elapsed,
+                TotalRequestUnitsConsumed = this.Tasks.Sum(task => task.Result.RequestUnitsConsumed),
+                SuccessfulDocuments = this.Tasks.Count(task => task.Result.IsSuccessful),
+                Failures = this.Tasks.Where(task => !task.Result.IsSuccessful).Select(task => (task.Result.Item, task.Result.CosmosException)).ToList()
+            };
+        }
+    }
+   ```
+`ExecuteAsync` 方法会等待所有操作完成，你可以像这样使用它：
+
+   ```csharp
+   BulkOperationResponse<MyItem> bulkOperationResponse = await bulkOperations.ExecuteAsync();
    ```
 
 ## <a name="capture-statistics"></a>捕获统计信息

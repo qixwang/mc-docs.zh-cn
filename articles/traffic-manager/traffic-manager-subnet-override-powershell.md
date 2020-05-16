@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure PowerShell 的 Azure 流量管理器子网替代 | Azure
+title: 使用 Azure PowerShell 的 Azure 流量管理器子网替代 | Azure Docs
 description: 本文帮助你了解如何使用流量管理器子网替代来替代流量管理器配置文件的路由方法，以便使用 Azure PowerShell 通过预定义的 IP 范围到终结点的映射，基于最终用户 IP 地址将流量定向到某个终结点。
 services: traffic-manager
 documentationcenter: ''
@@ -8,14 +8,14 @@ manager: digimobile
 ms.topic: article
 ms.service: traffic-manager
 origin.date: 09/18/2019
-ms.date: 02/24/2020
+ms.date: 05/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: e48dba7a0df1b0038ef1772bae26071207449dcb
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 3c0f39cee106fa4da92603359de0b04342b75ab5
+ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77653197"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "83001885"
 ---
 # <a name="traffic-manager-subnet-override-using-azure-powershell"></a>使用 Azure PowerShell 的流量管理器子网替代
 

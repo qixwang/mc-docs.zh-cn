@@ -1,25 +1,26 @@
 ---
-title: Azure 事件网格 Azure SignalR 事件架构
+title: 充当事件网格源的 Azure SingnalR
 description: 介绍为 Azure 事件网格中的 Azure SignalR 事件提供的属性
 services: event-grid
-author: chenyl
+author: Johnnytechn
 ms.service: event-grid
-ms.topic: reference
-ms.date: 12/02/2019
-ms.author: v-yiso
-ms.openlocfilehash: bad3e6ece0d4c06d3a53c479da25c178b9d175e5
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.topic: conceptual
+ms.date: 05/06/2020
+ms.author: v-johya
+ms.openlocfilehash: 81533102bce3f99e33552a7493d5fd396b4db15f
+ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74389945"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "83001973"
 ---
 # <a name="azure-event-grid-event-schema-for-signalr-service"></a>SignalR 服务的 Azure 事件网格事件架构
 
-本文提供了 SignalR 服务事件的属性和架构。 有关事件架构的简介，请参阅 [Azure 事件网格事件架构](event-schema.md)。
+本文提供了 SignalR 服务事件的属性和架构。 有关事件架构的简介，请参阅 [Azure 事件网格事件架构](event-schema.md)。 它还提供了一个快速入门和教程的列表，这些快速入门和教程介绍如何使用 Azure SignalR 作为事件源。
 
+## <a name="event-grid-event-schema"></a>事件网格事件架构
 
-## <a name="available-event-types"></a>可用事件类型
+### <a name="available-event-types"></a>可用事件类型
 
 SignalR 服务发出以下事件类型：
 
@@ -28,7 +29,7 @@ SignalR 服务发出以下事件类型：
 | Microsoft.SignalRService.ClientConnectionConnected | 当连接客户端连接时引发。 |
 | Microsoft.SignalRService.ClientConnectionDisconnected | 当客户端连接断开连接时引发。 |
 
-## <a name="example-event"></a>示例事件
+### <a name="example-event"></a>示例事件
 
 以下示例显示了客户端连接已连接事件的架构： 
 
@@ -71,7 +72,7 @@ SignalR 服务发出以下事件类型：
 }]
 ```
 
-## <a name="event-properties"></a>事件属性
+### <a name="event-properties"></a>事件属性
 
 事件具有以下顶级数据：
 
@@ -96,7 +97,14 @@ SignalR 服务发出以下事件类型：
 | userId | string | 声明中定义的用户标识符。 |
 | errorMessage | string | 导致连接断开连接的错误。 |
 
+## <a name="tutorials-and-how-tos"></a>教程和操作指南
+|标题 | 说明 |
+|---------|---------|
+| [使用事件网格响应 Azure SignalR 服务事件](../azure-signalr/signalr-concept-event-grid-integration.md) | 概述 Azure SignalR 服务与事件网格的集成。 |
+| [如何将 Azure SignalR 服务事件发送到事件网格](../azure-signalr/signalr-howto-event-grid-integration.md) | 演示如何通过事件网格将 Azure SignalR 服务事件发送到应用程序。 |
+
 ## <a name="next-steps"></a>后续步骤
 
 * 有关 Azure 事件网格的简介，请参阅[什么是事件网格？](overview.md)
 * 有关创建 Azure 事件网格订阅的详细信息，请参阅[事件网格订阅架构](subscription-creation-schema.md)。
+

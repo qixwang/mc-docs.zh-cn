@@ -1,27 +1,26 @@
 ---
-title: Azure 事件网格机器学习事件架构
+title: 作为事件网格源的 Azure 机器学习
 description: 介绍为 Azure 事件网格中的机器学习工作区事件提供的属性
 services: event-grid
-author: jenns
+author: Johnnytechn
 ms.service: event-grid
-ms.topic: reference
-origin.date: 10/18/2019
-ms.date: 01/20/2020
-ms.author: v-yiso
-ms.openlocfilehash: 688e587e9121aeff436b52602c188b53c9e5ba4a
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.topic: conceptual
+ms.date: 05/06/2020
+ms.author: v-johya
+ms.openlocfilehash: d64a4bff02b5344d7075450327918c1325777af7
+ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79452301"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "83001964"
 ---
-# <a name="azure-event-grid-event-schema-for-azure-machine-learning"></a>Azure 机器学习的 Azure 事件网格事件架构
+# <a name="azure-machine-learning-as-an-event-grid-source"></a>作为事件网格源的 Azure 机器学习
 
 本文提供了机器学习工作区事件的属性和架构。 有关事件架构的简介，请参阅 [Azure 事件网格事件架构](event-schema.md)。
 
-有关示例脚本和教程的列表，请参阅 [AzureML 事件源](event-sources.md#azure-machine-learning)。
+## <a name="event-grid-event-schema"></a>事件网格事件架构
 
-## <a name="available-event-types"></a>可用事件类型
+### <a name="available-event-types"></a>可用事件类型
 
 Azure 机器学习发出以下事件类型：
 
@@ -31,8 +30,9 @@ Azure 机器学习发出以下事件类型：
 | Microsoft.MachineLearningServices.ModelDeployed | 将模型成功部署到终结点时引发。 |
 | Microsoft.MachineLearningServices.RunCompleted | 在成功完成运行时引发。 |
 | Microsoft.MachineLearningServices.DatasetDriftDetected | 当数据集偏移监视器检测到偏移时引发。 |
+| Microsoft.MachineLearningServices.RunStatusChanged | 当运行状态更改为“failed”时引发。 |
 
-## <a name="the-contents-of-an-event-response"></a>事件响应的内容
+### <a name="the-contents-of-an-event-response"></a>事件响应的内容
 
 触发某个事件后，事件网格服务会将有关该事件的数据发送到订阅终结点。
 
@@ -186,80 +186,82 @@ Azure 机器学习发出以下事件类型：
 }]
 ```
 
-
-
-
-## <a name="event-properties"></a>事件属性
+### <a name="event-properties"></a>事件属性
 
 事件具有以下顶级数据：
 
-| properties | 类型 | 说明 |
+| 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
-| 主题 | 字符串 | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
-| subject | 字符串 | 事件主题的发布者定义路径。 |
-| eventType | 字符串 | 此事件源的一个注册事件类型。 |
-| EventTime | 字符串 | 基于提供程序 UTC 时间的事件生成时间。 |
-| id | 字符串 | 事件的唯一标识符。 |
-| data | 对象 (object) | Blob 存储事件数据。 |
-| dataVersion | 字符串 | 数据对象的架构版本。 发布者定义架构版本。 |
-| metadataVersion | 字符串 | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
+| 主题 | string | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
+| subject | string | 事件主题的发布者定义路径。 |
+| eventType | string | 此事件源的一个注册事件类型。 |
+| EventTime | string | 基于提供程序 UTC 时间的事件生成时间。 |
+| id | string | 事件的唯一标识符。 |
+| 数据 | object | Blob 存储事件数据。 |
+| dataVersion | string | 数据对象的架构版本。 发布者定义架构版本。 |
+| metadataVersion | string | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
 
 对于每个事件类型，数据对象具有以下属性：
 
 ### <a name="microsoftmachinelearningservicesmodelregistered"></a>Microsoft.MachineLearningServices.ModelRegistered
 
-| properties | 类型 | 说明 |
+| 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
-| ModelName | 字符串 | 已注册模型的名称。 |
-| ModelVersion | 字符串 | 已注册模型的版本。 |
-| ModelTags | 对象 (object) | 已注册模型的标记。 |
-| ModelProperties | 对象 (object) | 已注册模型的属性。 |
+| ModelName | string | 已注册模型的名称。 |
+| ModelVersion | string | 已注册模型的版本。 |
+| ModelTags | object | 已注册模型的标记。 |
+| ModelProperties | object | 已注册模型的属性。 |
 
 ### <a name="microsoftmachinelearningservicesmodeldeployed"></a>Microsoft.MachineLearningServices.ModelDeployed
 
-| properties | 类型 | 说明 |
+| 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
-| ServiceName | 字符串 | 已部署服务的名称。 |
-| ServiceComputeType | 字符串 | 已部署服务的计算类型（例如 ACI、AKS）。 |
-  | ModelIds | 字符串 | 模型 ID 的逗号分隔列表。 服务中部署的模型的 ID。 |
-| ServiceTags | 对象 (object) | 已部署服务的标记。 |
-| ServiceProperties | 对象 (object) | 已部署服务的属性。 |
+| ServiceName | string | 已部署服务的名称。 |
+| ServiceComputeType | string | 已部署服务的计算类型（例如 ACI、AKS）。 |
+  | ModelIds | string | 模型 ID 的逗号分隔列表。 服务中部署的模型的 ID。 |
+| ServiceTags | object | 已部署服务的标记。 |
+| ServiceProperties | object | 已部署服务的属性。 |
 
 ### <a name="microsoftmachinelearningservicesruncompleted"></a>Microsoft.MachineLearningServices.RunCompleted
 
-| properties | 类型 | 说明 |
+| 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
-| ExperimentId | 字符串 | 此运行所属的试验的 ID。 |
-| ExperimentName | 字符串 | 此运行所属的试验的名称。 |
-| RunId | 字符串 | 已完成的运行的 ID。 |
-| RunType | 字符串 | 已完成的运行的运行类型。 |
-| RunTags | 对象 (object) | 已完成的运行的标记。 |
-| RunProperties | 对象 (object) | 已完成的运行的属性。 |
+| ExperimentId | string | 此运行所属的试验的 ID。 |
+| ExperimentName | string | 此运行所属的试验的名称。 |
+| RunId | string | 已完成的运行的 ID。 |
+| RunType | string | 已完成的运行的运行类型。 |
+| RunTags | object | 已完成的运行的标记。 |
+| RunProperties | object | 已完成的运行的属性。 |
 
 ### <a name="microsoftmachinelearningservicesdatasetdriftdetected"></a>Microsoft.MachineLearningServices.DatasetDriftDetected
 
-| properties | 类型 | 说明 |
+| 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
-| DataDriftId | 字符串 | 触发了事件的数据偏移监视器的 ID。 |
-| DataDriftName | 字符串 | 触发了事件的数据偏移监视器的名称。 |
-| RunId | 字符串 | 检测到数据偏移的运行的 ID。 |
-| BaseDatasetId | 字符串 | 用于检测偏移的基础数据集的 ID。 |
-| TargetDatasetId | 字符串 | 用于检测偏移的目标数据集的 ID。 |
-| DriftCoefficient | double | 触发了事件的系数结果。 |
+| DataDriftId | string | 触发了事件的数据偏移监视器的 ID。 |
+| DataDriftName | string | 触发了事件的数据偏移监视器的名称。 |
+| RunId | string | 检测到数据偏移的运行的 ID。 |
+| BaseDatasetId | string | 用于检测偏移的基础数据集的 ID。 |
+| TargetDatasetId | string | 用于检测偏移的目标数据集的 ID。 |
+| DriftCoefficient | Double | 触发了事件的系数结果。 |
 | StartTime | datetime | 导致了偏移检测的目标数据集时序的开始时间。  |
 | EndTime | datetime | 导致了偏移检测的目标数据集时序的结束时间。 |
 
 ### <a name="microsoftmachinelearningservicesrunstatuschanged"></a>Microsoft.MachineLearningServices.RunStatusChanged
 
-| properties | 类型 | 说明 |
+| 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
-| ExperimentId | 字符串 | 此运行所属的试验的 ID。 |
-| ExperimentName | 字符串 | 此运行所属的试验的名称。 |
-| RunId | 字符串 | 已完成的运行的 ID。 |
-| RunType | 字符串 | 已完成的运行的运行类型。 |
-| RunTags | 对象 (object) | 已完成的运行的标记。 |
-| RunProperties | 对象 (object) | 已完成的运行的属性。 |
-| RunStatus | 字符串 | 运行的状态。 |
+| ExperimentId | string | 此运行所属的试验的 ID。 |
+| ExperimentName | string | 此运行所属的试验的名称。 |
+| RunId | string | 已完成的运行的 ID。 |
+| RunType | string | 已完成的运行的运行类型。 |
+| RunTags | object | 已完成的运行的标记。 |
+| RunProperties | object | 已完成的运行的属性。 |
+| RunStatus | string | 运行的状态。 |
+
+## <a name="tutorials-and-how-tos"></a>教程和操作指南
+| 标题 | 说明 |
+| ----- | ----- |
+| [使用 Azure 机器学习事件](../machine-learning/concept-event-grid-integration.md) | 概述 Azure 机器学习与事件网格的集成。 |
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -267,3 +269,4 @@ Azure 机器学习发出以下事件类型：
 * 有关创建 Azure 事件网格订阅的详细信息，请参阅[事件网格订阅架构](subscription-creation-schema.md)
 * 有关如何将 Azure 事件网格与 Azure 机器学习配合使用的简介，请参阅[使用 Azure 机器学习事件](/machine-learning/service/concept-event-grid-integration)
 * 若要通过示例来了解如何将 Azure 事件网格与 Azure 机器学习配合使用，请参阅[创建事件驱动的机器学习工作流](/machine-learning/service/how-to-use-event-grid)
+

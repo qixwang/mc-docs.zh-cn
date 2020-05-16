@@ -3,24 +3,24 @@ title: 在计算节点上安装应用程序包 - Azure Batch | Microsoft Docs
 description: 使用 Azure Batch 的应用程序包功能轻松管理要安装在 Batch 计算节点上的多个应用程序和版本。
 services: batch
 documentationcenter: .net
-author: lingliw
-manager: digimobile
+author: LauraBrenner
+manager: evansma
 editor: ''
 ms.assetid: 3b6044b7-5f65-4a27-9d43-71e1863d16cf
 ms.service: batch
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
-origin.date: 04/26/2019
-ms.date: 09/23/2019
-ms.author: v-lingwu
+origin.date: 09/23/2019
+ms.date: 04/29/2020
+ms.author: v-tawe
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 472d46c607f9767eddf525bc0f72a76a2d4924e3
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 9b34ade221b73f2a4f7213aac8e5db796b986478
+ms.sourcegitcommit: 1fbdefdace8a1d3412900c6c3f89678d8a9b29bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "71330291"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82886912"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>使用 Batch 应用程序包将应用程序部署到计算节点
 
@@ -91,13 +91,11 @@ Batch 服务使用关联的存储帐户存储应用程序包。 链接两个帐�
 
 建议专门创建一个存储帐户用作 Batch 帐户，并在此处选择该帐户。  创建存储帐户后，可以使用“存储帐户”  窗口将其链接到 Batch 帐户。
 
-> [!NOTE] 
-> 目前无法将应用程序包用于配置有[防火墙规则](../storage/common/storage-network-security.md)的 Azure 存储帐户。
-> 
+> [!IMPORTANT] 
+> - 目前无法将应用程序包用于配置有[防火墙规则](../storage/common/storage-network-security.md)的 Azure 存储帐户。
+> - “分层命名空间”  设为“已启用”  的 Azure 存储帐户不能用于应用程序包。
 
-Batch 服务使用 Azure 存储将应用程序包存储为块 blob。 对于块 blob 数据，将[按标准收费][storage_pricing]，但每个包的大小不能超过[最大块 blob 大小](../storage/common/storage-scalability-targets.md#azure-blob-storage-scale-targets)。 请务必考虑应用程序包的大小和数目，并定期删除过时的包以降低成本。
-> 
-> 
+Batch 服务使用 Azure 存储将应用程序包存储为块 blob。 对于块 blob 数据，将[按标准收费][storage_pricing]，且每个包的大小不能超过最大块 blob 大小。 有关详细信息，请参阅[存储帐户的 Azure 存储可伸缩性和性能目标](../storage/blobs/scalability-targets.md)。 请务必考虑应用程序包的大小和数目，并定期删除过时的包以降低成本。
 
 ### <a name="view-current-applications"></a>查看当前应用程序
 若要查看 Batch 帐户中的应用程序，请在查看“Batch 帐户”  时，单击左侧菜单中的“应用程序”  菜单项。
@@ -349,8 +347,8 @@ foreach (ApplicationSummary app in applications)
 * [Batch REST API][api_rest] 还提供应用程序包的使用支持。 有关示例，请参阅[将池添加到帐户][rest_add_pool]中的 [applicationPackageReferences][rest_add_pool_with_packages] 元素，了解如何使用 REST API 指定要安装的包。 若要深入了解如何使用 Batch REST API 获取应用程序信息，请参阅[应用程序][rest_applications]。
 * 了解如何以编程方式[使用 Batch Management .NET 管理 Azure Batch 帐户和配额](batch-management-dotnet.md)。 [Batch 管理 .NET][api_net_mgmt] 库可以为 Batch 应用程序或服务启用帐户创建和删除功能。
 
-[api_net]: https://docs.azure.cn/zh-cn/dotnet/api/overview/batch/client?view=azure-dotnet
-[api_net_mgmt]: https://docs.azure.cn/zh-cn/dotnet/api/overview/batch/management?view=azure-dotnet
+[api_net]: https://docs.azure.cn/dotnet/api/overview/batch/client?view=azure-dotnet
+[api_net_mgmt]: https://docs.azure.cn/dotnet/api/overview/batch/management?view=azure-dotnet
 [api_rest]: https://docs.microsoft.com/rest/api/batchservice/
 [batch_mgmt_nuget]: https://www.nuget.org/packages/Microsoft.Azure.Management.Batch/
 [github_samples]: https://github.com/Azure/azure-batch-samples
@@ -379,5 +377,5 @@ foreach (ApplicationSummary app in applications)
 [10]: ./media/batch-application-packages/app_pkg_10.png "在 Azure 门户中选择存储帐户边栏选项卡"
 [11]: ./media/batch-application-packages/app_pkg_11.png "Azure 门户中的更新包边栏选项卡"
 [12]: ./media/batch-application-packages/app_pkg_12.png "Azure 门户中的删除包确认对话框"
-
-<!-- Update_Description: wording update -->
+[13]: ./media/batch-application-packages/package-file-structure.png "Azure 门户中的计算节点信息"
+[14]: ./media/batch-application-packages/package-file-structure-node.png "Azure 门户中显示的计算节点上的文件"

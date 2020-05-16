@@ -2,19 +2,19 @@
 title: 使用共享映像库创建自定义池 - Azure Batch | Microsoft Docs
 description: 使用共享映像库创建 Batch 池，以便将自定义映像预配到计算节点，这些节点包含应用程序所需的软件和数据。 自定义映像是配置计算节点以运行 Batch 工作负载的高效方法。
 services: batch
-author: lingliw
-manager: digimobile
+author: LauraBrenner
+manager: evansma
 ms.service: batch
 ms.topic: article
 origin.date: 08/28/2019
-ms.date: 10/28/2019
-ms.author: v-lingwu
-ms.openlocfilehash: 5957c912476161ca7cd19f136214bf69e0f126cd
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 04/27/2020
+ms.author: v-tawe
+ms.openlocfilehash: 119601efe7f25e0d2249b43921e40cc8c7f4c96e
+ms.sourcegitcommit: 1fbdefdace8a1d3412900c6c3f89678d8a9b29bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74528262"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82886881"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-custom-pool"></a>使用共享映像库创建自定义池
 
@@ -38,7 +38,10 @@ ms.locfileid: "74528262"
 * **性能优于自定义映像。** 使用共享映像时，池达到稳定状态所需的时间最多可以缩短 25%，VM 空闲延迟最多可以缩短 30%。
 * **进行映像版本控制和分组，以便于管理。** 映像分组定义包含的信息涉及创建映像的原因、它适用于哪个 OS，以及映像的用法。 对映像分组可以方便映像的管理。 有关详细信息，请参阅[映像定义](../virtual-machines/windows/shared-image-galleries.md#image-definitions)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
+
+> [!NOTE]
+> 需要使用 Azure AD 进行身份验证。 如果使用共享密钥身份验证，则会出现身份验证错误。  
 
 *  一个 Azure Batch 帐户。 若要创建 Batch 帐户，请参阅 Batch 快速入门（使用 [Azure 门户](quick-create-portal.md)或 [Azure CLI](quick-create-cli.md)）。
 
@@ -55,7 +58,7 @@ ms.locfileid: "74528262"
 * 带托管磁盘的通用 Azure VM
 * 已上传到云的通用本地 VHD
 
-若要使用自定义映像可靠缩放 Batch 池，我们建议仅使用第一种方法创建托管映像：使用 VM 磁盘的快照。  参阅以下步骤来准备 VM、创建快照，然后基于该快照创建映像。
+若要使用自定义映像来可靠地缩放 Batch 池，建议仅使用第一种方法创建托管映像，即使用 VM 磁盘的快照。  请参阅以下步骤来准备 VM、创建快照，然后基于该快照创建映像。
 
 ### <a name="prepare-a-vm"></a>准备 VM
 
@@ -82,11 +85,14 @@ ms.locfileid: "74528262"
 
 ### <a name="create-a-shared-image-gallery"></a>创建共享映像库
 
-成功创建托管映像后，需要创建一个共享映像库，使自定义映像可用。 若要了解如何为映像创建共享映像库，请参阅[使用 Azure CLI 创建共享映像库](../virtual-machines/linux/shared-images.md)。
+成功创建托管映像后，需要创建一个共享映像库，使自定义映像可用。 若要了解如何为映像创建共享映像库，请参阅[使用 Azure CLI 创建共享映像库](../virtual-machines/linux/shared-images.md)或[使用 Azure 门户创建共享映像库](../virtual-machines/linux/shared-images-portal.md)。
 
 ## <a name="create-a-pool-from-a-shared-image-using-the-azure-cli"></a>使用 Azure CLI 从共享映像创建池
 
 若要使用 Azure CLI 从共享映像创建池，请使用 `az batch pool create` 命令。 在 `--image` 字段中指定共享映像 ID。 确保 OS 类型和 SKU 与通过 `--node-agent-sku-id` 指定的版本匹配
+
+> [!NOTE]
+> 需要使用 Azure AD 进行身份验证。 如果使用共享密钥身份验证，则会出现身份验证错误。  
 
 ```azurecli
 az batch pool create \

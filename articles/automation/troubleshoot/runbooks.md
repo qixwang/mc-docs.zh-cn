@@ -5,16 +5,16 @@ services: automation
 author: WenJason
 ms.author: v-jay
 origin.date: 01/24/2019
-ms.date: 03/30/2020
+ms.date: 04/20/2020
 ms.topic: conceptual
 ms.service: automation
 manager: digimobile
-ms.openlocfilehash: 4bd87a859dd9453cac69224da2ef547c82775788
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 78f49d29f951c7326d429e1987bbdd44c8b90492
+ms.sourcegitcommit: 7443ff038ea8afe511f7419d9c550d27fb642246
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80290409"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "83001576"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Runbook 错误故障排除
 
@@ -409,9 +409,9 @@ Runbook 运行时间超出了 Azure 沙盒中公平份额允许的 3 小时限�
 
 启用子 runbook 方案的 PowerShell cmdlet 是：
 
-* [Start-AzureRMAutomationRunbook](https://docs.microsoft.com/powershell/module/AzureRM.Automation/Start-AzureRmAutomationRunbook) - 此 cmdlet 用于启动 runbook 并向其传递参数
+* [Start-AzureRMAutomationRunbook](https://docs.microsoft.com/powershell/module/AzureRM.Automation/Start-AzureRmAutomationRunbook)。 此 cmdlet 用于启动 Runbook 并将参数传递给该 Runbook
 
-* [Get-AzureRmAutomationJob](https://docs.microsoft.com/powershell/module/azurerm.automation/get-azurermautomationjob) - 在子 runbook 完成后，如果需要执行操作，可使用此 cmdlet 检查每个子 runbook 的作业状态。
+* [Get-AzureRmAutomationJob](https://docs.microsoft.com/powershell/module/azurerm.automation/get-azurermautomationjob)。 如果在子 runbook 完成后需要执行操作，可使用此 cmdlet 检查每个子 runbook 的作业状态。
 
 ## <a name="scenario-status-400-bad-request-when-calling-a-webhook"></a><a name="expired webhook"></a>场景：状态：调用 Webhook 时显示 400 错误请求
 
@@ -553,6 +553,10 @@ if ($SomeVariable.someproperty -eq ....
 ### <a name="using-self-signed-certificates"></a>使用自签名证书
 
 若要使用自签名证书，请参阅[创建新证书](/automation/shared-resources/certificates#creating-a-new-certificate)。
+
+### <a name="access-denied-when-using-azure-sandbox-for-a-runbook"></a>将 Azure 沙盒用于 runbook 时访问被拒绝
+
+Azure 沙盒会阻止对所有进程外 COM 服务器的访问。 例如，沙盒应用程序或 runbook 无法调用 Windows Management Instrumentation (WMI) 或 Windows Installer 服务 (msiserver.exe)。 有关如何使用沙盒的详细信息，请参阅[在 Azure 自动化中执行 Runbook](/automation/automation-runbook-execution)。
 
 ## <a name="recommended-documents"></a>建议的文档
 

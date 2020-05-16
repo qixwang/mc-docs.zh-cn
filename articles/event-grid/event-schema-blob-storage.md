@@ -1,30 +1,31 @@
 ---
-title: Azure 事件网格 Blob 存储事件架构
+title: 充当事件网格源的 Azure Blob 存储
 description: 介绍为 Azure 事件网格 Blob 存储事件提供的属性
 services: event-grid
-author: spelluru
+author: Johnnytechn
 ms.service: event-grid
-ms.topic: reference
-origin.date: 01/17/2019
-ms.date: 02/17/2020
-ms.author: v-yiso
-ms.openlocfilehash: d883d51894831811a728a0b094444653cf70fa67
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.topic: conceptual
+ms.date: 05/06/2020
+ms.author: v-johya
+ms.openlocfilehash: e2ee4862428cc1ca2402a165cb06309939b03d44
+ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292268"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "83001969"
 ---
-# <a name="azure-event-grid-event-schema-for-blob-storage"></a>Blob 存储的 Azure 事件网格事件架构
+# <a name="azure-blob-storage-as-an-event-grid-source"></a>充当事件网格源的 Azure Blob 存储
 
-本文提供 Blob 存储事件的属性和架构。 有关事件架构的简介，请参阅 [Azure 事件网格事件架构](event-schema.md)。
+本文提供 Blob 存储事件的属性和架构。 有关事件架构的简介，请参阅 [Azure 事件网格事件架构](event-schema.md)。 它还提供了一个快速入门和教程的列表，这些快速入门和教程介绍如何使用 Azure Blob 存储作为事件源。
 
-有关示例脚本和教程的列表，请参阅[存储事件源](event-sources.md#storage)。
 
 >[!NOTE]
 > 只有种类为“StorageV2 (常规用途 v2)”和“BlobStorage”的存储帐户支持事件集成。   “存储(常规用途 v1)”  不  支持与事件网格集成。
+<!-- Not available in china about BlockBlobStorage -->
 
-## <a name="list-of-events-for-blob-rest-apis"></a>Blob REST API 的事件列表
+## <a name="event-grid-event-schema"></a>事件网格事件架构
+
+### <a name="list-of-events-for-blob-rest-apis"></a>Blob REST API 的事件列表
 
 当客户端通过调用 Blob REST API 创建、替换或删除 Blob 时，将触发这些事件。
 
@@ -35,9 +36,10 @@ ms.locfileid: "79292268"
 
 > [!NOTE]
 > 若要确保 **Microsoft.Storage.BlobCreated** 事件仅在块 Blob 完全提交后触发，请针对 `CopyBlob`、`PutBlob` 和 `PutBlockList` REST API 调用筛选此事件。 这些 API 调用仅在数据已完全提交到块 Blob 后才触发 **Microsoft.Storage.BlobCreated** 事件。 若要了解如何创建筛选器，请参阅[筛选事件网格的事件](/event-grid/how-to-filter-events)。
-## <a name="list-of-the-events-for-azure-data-lake-storage-gen-2-rest-apis"></a>Azure Data Lake Storage Gen 2 REST API 的事件列表
 
-如果在存储帐户上启用分层命名空间，并且客户端调用 Azure Data Lake Storage Gen2 REST API，则会触发这些事件。
+### <a name="list-of-the-events-for-azure-data-lake-storage-gen-2-rest-apis"></a>Azure Data Lake Storage Gen 2 REST API 的事件列表
+
+如果在存储帐户上启用分层命名空间，并且客户端调用 Azure Data Lake Storage Gen2 REST API，则会触发这些事件。 有关 Azure Data Lake Storage Gen2 的详细信息，请参阅 [Azure Data Lake Storage Gen2 简介](../storage/blobs/data-lake-storage-introduction.md)。
 
 |事件名称|说明|
 |----------|-----------|
@@ -53,7 +55,7 @@ ms.locfileid: "79292268"
 
 <a id="example-event" />
 
-## <a name="the-contents-of-an-event-response"></a>事件响应的内容
+### <a name="the-contents-of-an-event-response"></a>事件响应的内容
 
 触发某个事件后，事件网格服务会将有关该事件的数据发送到订阅终结点。
 
@@ -89,7 +91,7 @@ ms.locfileid: "79292268"
 
 ### <a name="microsoftstorageblobcreated-event-data-lake-storage-gen2"></a>Microsoft.Storage.BlobCreated 事件 (Data Lake Storage Gen2)
 
-如果 Blob 存储帐户具有分层命名空间，则数据类似于前一示例，不过存在以下差异：
+如果 Blob 存储帐户具有分层命名空间，则数据看起来与上一个示例类似，但以下更改除外：
 
 * `dataVersion` 键设置为值 `2`。
 
@@ -116,7 +118,7 @@ ms.locfileid: "79292268"
     "contentLength": 0,
     "contentOffset": 0,
     "blobType": "BlockBlob",
-    "url": "https://my-storage-account.dfs.core.windows.net/my-file-system/new-file.txt",
+    "url": "https://my-storage-account.dfs.core.chinacloudapi.cn/my-file-system/new-file.txt",
     "sequencer": "00000000000004420000000000028963",  
     "storageDiagnostics": {
     "batchId": "b68529f3-68cd-4744-baa4-3c0498ec19f0"
@@ -154,13 +156,13 @@ ms.locfileid: "79292268"
 
 ### <a name="microsoftstorageblobdeleted-event-data-lake-storage-gen2"></a>Microsoft.Storage.BlobDeleted 事件 (Data Lake Storage Gen2)
 
-如果 Blob 存储帐户具有分层命名空间，则数据类似于前一示例，不过存在以下差异：
+如果 Blob 存储帐户具有分层命名空间，则数据看起来与上一个示例类似，但以下更改除外：
 
 * `dataVersion` 键设置为值 `2`。
 
 * `data.api` 键设置为字符串 `DeleteFile`。
 
-* `url` 键包含路径 `dfs.core.windows.net`。
+* `url` 键包含路径 `dfs.core.chinacloudapi.cn`。
 
 > [!NOTE]
 > 如果应用程序使用 `DeleteBlob` 操作从帐户中删除 Blob，则数据不会包含这些更改。
@@ -178,7 +180,7 @@ ms.locfileid: "79292268"
     "requestId": "831e1650-001e-001b-66ab-eeb76e000000",
     "contentType": "text/plain",
     "blobType": "BlockBlob",
-    "url": "https://my-storage-account.dfs.core.windows.net/my-file-system/file-to-delete.txt",
+    "url": "https://my-storage-account.dfs.core.chinacloudapi.cn/my-file-system/file-to-delete.txt",
     "sequencer": "00000000000004420000000000028963",  
     "storageDiagnostics": {
     "batchId": "b68529f3-68cd-4744-baa4-3c0498ec19f0"
@@ -202,8 +204,8 @@ ms.locfileid: "79292268"
     "api": "RenameFile",
     "clientRequestId": "6d79dbfb-0e37-4fc4-981f-442c9ca65760",
     "requestId": "831e1650-001e-001b-66ab-eeb76e000000",
-    "destinationUrl": "https://my-storage-account.dfs.core.windows.net/my-file-system/my-renamed-file.txt",
-    "sourceUrl": "https://my-storage-account.dfs.core.windows.net/my-file-system/my-original-file.txt",
+    "destinationUrl": "https://my-storage-account.dfs.core.chinacloudapi.cn/my-file-system/my-renamed-file.txt",
+    "sourceUrl": "https://my-storage-account.dfs.core.chinacloudapi.cn/my-file-system/my-original-file.txt",
     "sequencer": "00000000000004420000000000028963",  
     "storageDiagnostics": {
     "batchId": "b68529f3-68cd-4744-baa4-3c0498ec19f0"
@@ -227,7 +229,7 @@ ms.locfileid: "79292268"
     "api": "CreateDirectory",
     "clientRequestId": "6d79dbfb-0e37-4fc4-981f-442c9ca65760",
     "requestId": "831e1650-001e-001b-66ab-eeb76e000000",
-    "url": "https://my-storage-account.dfs.core.windows.net/my-file-system/my-new-directory",
+    "url": "https://my-storage-account.dfs.core.chinacloudapi.cn/my-file-system/my-new-directory",
     "sequencer": "00000000000004420000000000028963",  
     "storageDiagnostics": {
     "batchId": "b68529f3-68cd-4744-baa4-3c0498ec19f0"
@@ -251,8 +253,8 @@ ms.locfileid: "79292268"
     "api": "RenameDirectory",
     "clientRequestId": "6d79dbfb-0e37-4fc4-981f-442c9ca65760",
     "requestId": "831e1650-001e-001b-66ab-eeb76e000000",
-    "destinationUrl": "https://my-storage-account.dfs.core.windows.net/my-file-system/my-renamed-directory",
-    "sourceUrl": "https://my-storage-account.dfs.core.windows.net/my-file-system/my-original-directory",
+    "destinationUrl": "https://my-storage-account.dfs.core.chinacloudapi.cn/my-file-system/my-renamed-directory",
+    "sourceUrl": "https://my-storage-account.dfs.core.chinacloudapi.cn/my-file-system/my-original-directory",
     "sequencer": "00000000000004420000000000028963",  
     "storageDiagnostics": {
     "batchId": "b68529f3-68cd-4744-baa4-3c0498ec19f0"
@@ -276,7 +278,7 @@ ms.locfileid: "79292268"
     "api": "DeleteDirectory",
     "clientRequestId": "6d79dbfb-0e37-4fc4-981f-442c9ca65760",
     "requestId": "831e1650-001e-001b-66ab-eeb76e000000",
-    "url": "https://my-storage-account.dfs.core.windows.net/my-file-system/directory-to-delete",
+    "url": "https://my-storage-account.dfs.core.chinacloudapi.cn/my-file-system/directory-to-delete",
     "recursive": "true", 
     "sequencer": "00000000000004420000000000028963",  
     "storageDiagnostics": {
@@ -288,7 +290,7 @@ ms.locfileid: "79292268"
 }]
 ```
 
-## <a name="event-properties"></a>事件属性
+### <a name="event-properties"></a>事件属性
 
 事件具有以下顶级数据：
 
@@ -317,10 +319,21 @@ ms.locfileid: "79292268"
 | contentOffset | number | 在事件触发应用程序完成写入文件时执行的写入操作的偏移量（以字节为单位）。 <br>只有对具有分层命名空间的 Blob 存储帐户触发的事件才显示此值。|
 | destinationUrl |string | 操作完成后存在的文件的 URL。 例如，如果重命名了某个文件，则 `destinationUrl` 属性将包含新文件名的 URL。 <br>只有对具有分层命名空间的 Blob 存储帐户触发的事件才显示此值。|
 | sourceUrl |string | 执行操作之前存在的文件的 URL。 例如，如果重命名了某个文件，则 `sourceUrl` 将包含执行重命名操作之前的原始文件名的 URL。 <br>只有对具有分层命名空间的 Blob 存储帐户触发的事件才显示此值。 |
-| url | string | Blob 的路径。 <br>如果客户端使用 Blob REST API，则 URL 采用以下结构：\<存储帐户名\>.blob.core.windows.net/\<容器名\>/\<文件名\>。  <br>如果客户端使用 Data Lake Storage REST API，则 URL 采用以下结构：\<存储帐户名\>.dfs.core.windows.net/\<文件系统名\>/\<文件名\>。  |
+| url | string | Blob 的路径。 <br>如果客户端使用 Blob REST API，则 URL 采用以下结构：\<存储帐户名\>.blob.core.chinacloudapi.cn/\<容器名\>/\<文件名\>。  <br>如果客户端使用 Data Lake Storage REST API，则 URL 采用以下结构：\<存储帐户名\>.dfs.core.chinacloudapi.cn/\<文件系统名\>/\<文件名\>。  |
 | recursive | string | 若要对所有子目录执行该操作，则为 `True`；否则为 `False`。 <br>只有对具有分层命名空间的 Blob 存储帐户触发的事件才显示此值。 |
 | sequencer | string | 一个不透明的字符串值，表示任何特定 blob 名称的事件的逻辑顺序。  用户可以使用标准字符串比较，了解同一个 blob 名称上两个事件的相对序列。 |
 | storageDiagnostics | object | Azure 存储服务中偶尔附带的诊断数据。 如果存在，事件使用者应忽略它。 |
+
+## <a name="tutorials-and-how-tos"></a>教程和操作指南
+|标题  |说明  |
+|---------|---------|
+| [快速入门：使用 Azure CLI 将 Blob 存储事件路由到自定义 Web 终结点](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json) | 介绍如何使用 Azure CLI 将 Blob 存储事件发送到 WebHook。 |
+| [快速入门：使用 PowerShell 将 Blob 存储事件路由到自定义 Web 终结点](../storage/blobs/storage-blob-event-quickstart-powershell.md?toc=%2fazure%2fevent-grid%2ftoc.json) | 介绍如何使用 Azure PowerShell 将 Blob 存储事件发送到 WebHook。 |
+| [快速入门：使用 Azure 门户创建和路由 Blob 存储事件](blob-event-quickstart-portal.md) | 介绍如何使用门户将 Blob 存储事件发送到 WebHook。 |
+| [Azure CLI：订阅 Blob 存储帐户的事件](./scripts/event-grid-cli-blob.md) | 用于订阅 Blob 存储帐户的事件的示例脚本。 它将事件发送到 WebHook。 |
+| [PowerShell：订阅 Blob 存储帐户的事件](./scripts/event-grid-powershell-blob.md) | 用于订阅 Blob 存储帐户的事件的示例脚本。 它将事件发送到 WebHook。 |
+| [资源管理器模板：创建 Blob 存储和订阅](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-subscription-and-storage) | 部署 Azure Blob 存储帐户并订阅该存储帐户的事件。 它将事件发送到 WebHook。 |
+| [概述：响应 Blob 存储事件](../storage/blobs/storage-blob-event-overview.md) | 概述 Blob 存储与事件网格的集成。 |
 
 ## <a name="next-steps"></a>后续步骤
 

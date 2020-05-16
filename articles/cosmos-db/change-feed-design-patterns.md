@@ -7,12 +7,12 @@ ms.topic: conceptual
 origin.date: 04/08/2020
 ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: 54eaf4179478778b46c8443028753078e006ecba
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.openlocfilehash: c475eb8477a75c1c8068f831b50bc59929b0addc
+ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82135164"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "83001989"
 ---
 # <a name="change-feed-design-patterns-in-azure-cosmos-db"></a>Azure Cosmos DB 中的更改源设计模式
 
@@ -74,7 +74,9 @@ Azure Cosmos DB 提供高达 99.999% 的读取和写入可用性。 与许多消
 
 ## <a name="event-sourcing"></a>事件溯源
 
-[事件溯源模式](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing)涉及使用仅限追加的存储来记录对该数据执行的整个操作系列。 在所有数据引入都建模为写入（无更新或删除）的事件溯源体系结构中，Azure Cosmos DB 的更改源非常适合用作中心数据存储。 在这种情况下，对 Azure Cosmos DB 的每次写入都是一个“事件”，并且你将可以在更改源中获得以往事件的完整记录。 中心事件存储发布的事件的典型用途是维护具体化视图或者与外部系统集成。 由于更改源中不存在保留时间限制，因此可以通过从 Cosmos 容器更改源的开头部分进行读取，来重放所有以往的事件。
+事件溯源模式涉及使用仅限追加的存储来记录对该数据执行的整个操作系列。 在所有数据引入都建模为写入（无更新或删除）的事件溯源体系结构中，Azure Cosmos DB 的更改源非常适合用作中心数据存储。 在这种情况下，对 Azure Cosmos DB 的每次写入都是一个“事件”，并且你将可以在更改源中获得以往事件的完整记录。 中心事件存储发布的事件的典型用途是维护具体化视图或者与外部系统集成。 由于更改源中不存在保留时间限制，因此可以通过从 Cosmos 容器更改源的开头部分进行读取，来重放所有以往的事件。
+
+<!--Not Available on [event sourcing pattern](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing)-->
 
 可以让[多个更改源使用者订阅同一个容器更改源](how-to-create-multiple-cosmos-db-triggers.md#optimizing-containers-for-multiple-triggers)。 若要使用更改源，只需支付[租用容器](change-feed-processor.md#components-of-the-change-feed-processor)的预配吞吐量费用即可，此外不会有其他费用。 不管更改源是否会被使用，每个容器中均会提供更改源。
 

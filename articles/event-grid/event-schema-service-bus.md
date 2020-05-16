@@ -1,28 +1,26 @@
 ---
-title: Azure 事件网格服务总线事件架构
+title: 充当事件网格源的 Azure 服务总线
 description: 介绍了针对 Azure 事件网格中的服务总线事件提供的属性
 services: event-grid
-author: banisadr
-manager: darosa
+author: Johnnytechn
 ms.service: event-grid
-ms.topic: reference
-origin.date: 01/17/2019
-ms.date: 06/03/2019
-ms.author: v-yiso
-ms.openlocfilehash: 64f2c8e421a9596b3a399e4cd45f2d144f0b74a1
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.topic: conceptual
+ms.date: 05/06/2020
+ms.author: v-johya
+ms.openlocfilehash: 9c0279142d3160862453b120ab7706493b12798e
+ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "66195214"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "83001960"
 ---
-# <a name="azure-event-grid-event-schema-for-service-bus"></a>服务总线的 Azure 事件网格事件架构
+# <a name="azure-service-bus-as-an-event-grid-source"></a>充当事件网格源的 Azure 服务总线
 
 本文提供了服务总线事件的属性和架构。 有关事件架构的简介，请参阅 [Azure 事件网格事件架构](event-schema.md)。
 
-有关示例脚本和教程的列表，请参阅[服务总线事件源](event-sources.md#service-bus)。
+## <a name="event-grid-event-schema"></a>事件网格事件架构
 
-## <a name="available-event-types"></a>可用事件类型
+### <a name="available-event-types"></a>可用事件类型
 
 服务总线发出以下事件类型：
 
@@ -31,7 +29,7 @@ ms.locfileid: "66195214"
 | Microsoft.ServiceBus.ActiveMessagesAvailableWithNoListeners | 当队列或订阅中存在活动消息，但却没有接收器在侦听时会引发此事件。 |
 | Microsoft.ServiceBus.DeadletterMessagesAvailableWithNoListener | 当死信队列中存在活动消息，但却没有活动接收器时会引发此事件。 |
 
-## <a name="example-event"></a>示例事件
+### <a name="example-event"></a>示例事件
 
 以下示例显示了没有侦听器事件的活动消息的架构：
 
@@ -77,7 +75,7 @@ ms.locfileid: "66195214"
 }]
 ```
 
-## <a name="event-properties"></a>事件属性
+### <a name="event-properties"></a>事件属性
 
 事件具有以下顶级数据：
 

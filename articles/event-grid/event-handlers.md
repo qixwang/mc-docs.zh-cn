@@ -2,18 +2,17 @@
 title: Azure 事件网格事件处理程序
 description: 介绍 Azure 事件网格支持的事件处理程序。 Azure 自动化、Functions、事件中心、混合连接、逻辑应用、服务总线、队列存储、Webhook。
 services: event-grid
-author: lingliw
+author: Johnnytechn
 ms.service: event-grid
 ms.topic: conceptual
-origin.date: 01/21/2020
-ms.date: 3/16/2020
-ms.author: v-lingwu
-ms.openlocfilehash: 9aaa9e8e898c99beb9c4f3a703ecd40fb6832b13
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/06/2020
+ms.author: v-johya
+ms.openlocfilehash: a477cfaad66fb7ac7c76f4583f4ea849b95b93c5
+ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80417384"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "83001974"
 ---
 # <a name="event-handlers-in-azure-event-grid"></a>Azure 事件网格中的事件处理程序
 
@@ -45,8 +44,6 @@ ms.locfileid: "80417384"
 |---------|---------|
 | [快速入门：使用 Azure CLI 和事件网格将自定义事件路由到 Azure 事件中心](custom-event-to-eventhub.md) | 将自定义事件发送到事件中心以供应用程序处理。 |
 | [资源管理器模板：自定义主题和事件中心终结点](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-event-hubs-handler)| 用于创建自定义主题的订阅的资源管理器模板。 它将事件发送到 Azure 事件中心。 |
-
-有关事件中心用作源的示例，请参阅[事件中心源](event-sources.md#event-hubs)。
 
 ## <a name="hybrid-connections"></a>混合连接
 
@@ -128,9 +125,11 @@ az eventgrid event-subscription create \
 |---------|---------|
 | 快速入门：使用 [Azure CLI](custom-event-quickstart.md)、[PowerShell](custom-event-quickstart-powershell.md) 和[门户](custom-event-quickstart-portal.md)创建和路由自定义事件。 | 展示了如何将自定义事件发送到 WebHook。 |
 | 快速入门：使用 [Azure CLI](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fevent-grid%2ftoc.json)、[PowerShell](../storage/blobs/storage-blob-event-quickstart-powershell.md?toc=%2fevent-grid%2ftoc.json) 和[门户](blob-event-quickstart-portal.md)将 Blob 存储事件路由到自定义 Web 终结点。 | 展示了如何将 Blob 存储事件发送到 WebHook。 |
-| [概述：将事件接收到 HTTP 终结点](receive-events.md) | 介绍如何验证 HTTP 终结点以接收来自事件订阅的事件，然后接收和反序列化事件。 |
+<!--no container-registry-event-grid-quickstart.md -->
+| [概述：接收到 HTTP 终结点的事件](receive-events.md) | 介绍如何验证 HTTP 终结点以接收来自事件订阅的事件，然后接收和反序列化事件。 |
 
 ## <a name="next-steps"></a>后续步骤
 
 * 有关事件网格的介绍，请参阅[关于事件网格](overview.md)。
 * 若要快速开始使用事件网格，请参阅[使用 Azure 事件网格创建和路由自定义事件](custom-event-quickstart.md)。
+

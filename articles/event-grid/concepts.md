@@ -2,18 +2,17 @@
 title: Azure 事件网格概念
 description: 介绍 Azure 事件网格及其概念。 定义事件网格的几个关键组件。
 services: event-grid
-author: spelluru
+author: Johnnytechn
 ms.service: event-grid
 ms.topic: conceptual
-origin.date: 08/03/2018
-ms.date: 06/03/2019
-ms.author: v-yiso
-ms.openlocfilehash: 0ce6ab0c7c9b369d2870da1e556306f2b9d80ff7
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/06/2020
+ms.author: v-johya
+ms.openlocfilehash: 5a67ea7c1ba6f54b1622e0a7530775e72724d942
+ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79452525"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "83002076"
 ---
 # <a name="concepts-in-azure-event-grid"></a>Azure 事件网格中的概念
 
@@ -23,11 +22,12 @@ ms.locfileid: "79452525"
 
 事件是完全描述系统中所发生情况的最小信息量。 每个事件都具有通用信息，如事件源、事件发生的时间和唯一标识符。 此外，每个事件还具有仅与特定事件类型相关的特定信息。 例如，与在 Azure 存储中创建的有关新文件的事件将包含有关该文件的详细信息，如 `lastTimeModified` 值。 再如，事件中心事件具有 Capture 文件的 URL。 
 
-每个事件被限制为 64 KB 的数据。
+正式版服务级别协议 (GA) 涵盖了大小高达 64 KB 的事件。 预览版中目前支持最大为 1 MB 的事件。 超过 64 KB 的事件以 64 KB 为增量计费。 
+
 
 至于在事件中发送的属性，请参阅 [Azure 事件网格事件架构](event-schema.md)。
 
-## <a name="publishers"></a>发布者
+## <a name="publishers"></a>发布服务器
 
 发布服务器是决定将事件发送到事件网格的用户或组织。 Microsoft 发布了几个 Azure 服务的事件。 可以从自己的应用程序发布事件。 在 Azure 外部托管服务的组织可以通过事件网格发布事件。
 
@@ -35,7 +35,7 @@ ms.locfileid: "79452525"
 
 事件源即事件发生的位置。 每个事件源都与一个或多个事件类型相关。 例如，Azure 存储是 blob 创建事件的事件源。 IoT 中心是设备创建的事件的事件源。 你的应用程序是你定义的自定义事件的事件源。 事件源负责将事件发送到事件网格。
 
-有关实现任何受支持的事件网格源的信息，请参阅 [Azure 事件网格中的事件源](event-sources.md)。
+有关实现任何受支持的事件网格源的信息，请参阅 [Azure 事件网格中的事件源](overview.md#event-sources)。
 
 ## <a name="topics"></a>主题
 
@@ -66,7 +66,7 @@ ms.locfileid: "79452525"
 
 ## <a name="event-handlers"></a>事件处理程序
 
-从事件网格的角度看，事件处理程序是发送事件的位置。 处理程序将执行一些进一步的操作来处理事件。 事件网格支持多个处理程序类型。 可以使用受支持的 Azure 服务或你自己的 webhook 作为处理程序。 根据处理程序的类型，事件网格遵循不同机制，以保证事件的传递。 对于 HTTP webhook 事件处理程序，在处理程序返回状态代码 `200 – OK` 之前，将重试事件。 对于 Azure 存储队列，将重试事件，直到队列服务成功处理推送到队列的消息。
+从事件网格的角度看，事件处理程序是发送事件的位置。 处理程序将执行一些进一步的操作来处理事件。 事件网格支持多个处理程序类型。 可以使用受支持的 Azure 服务或你自己的 webhook 作为处理程序。 根据处理程序的类型，事件网格遵循不同机制，以保证事件的传递。 对于 HTTP webhook 事件处理程序，在处理程序返回状态代码 `200 - OK` 之前，将重试事件。 对于 Azure 存储队列，将重试事件，直到队列服务成功处理推送到队列的消息。
 
 有关实现任何受支持的事件网格处理程序的信息，请参阅 [Azure 事件网格中的事件处理程序](event-handlers.md)。
 
@@ -80,9 +80,13 @@ ms.locfileid: "79452525"
 
 ## <a name="batching"></a>批处理
 
-使用自定义主题时，必须始终在数组中发布事件。 对于低吞吐量方案，可采用单批；但对于大容量用例，建议在每次发布时对多个事件进行批处理，以实现更高的效率。 批的大小最大可达 1 MB。 每个事件还不应当超过 64 KB。
+使用自定义主题时，必须始终在数组中发布事件。 对于低吞吐量方案，可采用单批；但对于大容量用例，建议在每次发布时对多个事件进行批处理，以实现更高的效率。 批的大小最大可达 1 MB。 每个事件仍不应大于 64 KB（正式版）或 1 MB（预览版）。
+
+> [!NOTE]
+> 正式版服务级别协议 (GA) 涵盖了大小高达 64 KB 的事件。 预览版中目前支持最大为 1 MB 的事件。 超过 64 KB 的事件以 64 KB 为增量收费。 
 
 ## <a name="next-steps"></a>后续步骤
 
 * 有关事件网格的介绍，请参阅[关于事件网格](overview.md)。
 * 若要快速开始使用事件网格，请参阅[使用 Azure 事件网格创建和路由自定义事件](custom-event-quickstart.md)。
+

@@ -2,20 +2,16 @@
 title: 了解 Azure 自动化的 PowerShell 工作流
 description: 本文旨在作为熟悉 PowerShell 的创作人员的一个速成教程，以便其了解 PowerShell 和 PowerShell 工作流以及适用于自动化 Runbook 的概念之间的具体差异。
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: WenJason
-ms.author: v-jay
 origin.date: 12/14/2018
-ms.date: 04/01/2019
+ms.date: 05/11/2020
 ms.topic: conceptual
-manager: digimobile
-ms.openlocfilehash: 6770948f020687c7612dffaf1f60aa3c885abfa1
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 007fbd5f6985e2d3dfce2b4ca2d6e17516ac37c9
+ms.sourcegitcommit: 7443ff038ea8afe511f7419d9c550d27fb642246
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79291895"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "83001604"
 ---
 # <a name="learning-key-windows-powershell-workflow-concepts-for-automation-runbooks"></a>了解重要的适用于自动化 Runbook 的 Windows PowerShell 工作流概念
 
@@ -27,7 +23,7 @@ Azure 自动化中的 Runbook 作为 Windows PowerShell 工作流实现。  Wind
 
 ## <a name="basic-structure-of-a-workflow"></a>工作流的基本结构
 
-将 PowerShell 脚本转换为 PowerShell 工作流的第一步是使用 **Workflow** 关键字将其括起来。  工作流以 **Workflow** 关键字开头，后接括在大括号中的脚本正文。 工作流名称跟在 **Workflow** 关键字之后，如以下语法中所示：
+将 PowerShell 脚本转换为 PowerShell 工作流的第一步是使用 `Workflow` 关键字将其括起来。  工作流以 `Workflow` 关键字开头，后接括在大括号中的脚本正文。 工作流名称跟在 `Workflow` 关键字之后，如以下语法所示：
 
 ```powershell
 Workflow Test-Workflow
@@ -38,7 +34,7 @@ Workflow Test-Workflow
 
 工作流名称与自动化 Runbook 的名称匹配。 如果正在导入某个 Runbook，其文件名必须与工作流名称匹配，并且必须以 *.ps1* 结尾。
 
-要将参数添加到工作流，请使用 **Param** 关键字，与使用脚本时相同。
+若要将参数添加到工作流，请使用 `Param` 关键字，就像在脚本中使用一样。
 
 ## <a name="code-changes"></a>代码更改
 
@@ -104,7 +100,7 @@ Workflow Stop-MyService
 
 ## <a name="inlinescript"></a>InlineScript
 
-需要将一个或多个命令作为传统的 PowerShell 脚本而不是 PowerShell 工作流运行时，**InlineScript** 活动非常有用。  尽管工作流中的命令将发送到 Windows Workflow Foundation 进行处理，但 InlineScript 块中的命令由 Windows PowerShell 处理。
+需要将一个或多个命令作为传统的 PowerShell 脚本而不是 PowerShell 工作流来运行时，`InlineScript` 活动很有用。  尽管工作流中的命令将发送到 Windows Workflow Foundation 进行处理，但 InlineScript 块中的命令由 Windows PowerShell 处理。
 
 InlineScript 使用如下所示的语法。
 
@@ -159,7 +155,7 @@ Workflow Stop-MyService
 
 Windows PowerShell 工作流的一个优点是能够与典型脚本一样并行而不是按顺序执行一组命令。
 
-可以使用 **Parallel** 关键字创建包含将同时运行的多个命令的脚本块。 此脚本块使用如下所示的语法。 在此示例中，Activity1 和 Activity2 将同时启动。 只有在 Activity1 和 Activity2 完成后，Activity3 才会启动。
+可以使用 `Parallel` 关键字创建一个包含多个并发运行的命令的脚本块。 此脚本块使用如下所示的语法。 在此示例中，Activity1 和 Activity2 将同时启动。 只有在 Activity1 和 Activity2 完成后，Activity3 才会启动。
 
 ```powershell
 Parallel
@@ -194,7 +190,7 @@ Workflow Copy-Files
 }
 ```
 
-可以使用 **ForEach-Parallel** 构造同时处理集合中的每个项的处理命令。 尽管脚本块中的命令按顺序运行，但集合中的项是并行处理的。 此脚本块使用如下所示的语法。 在此示例中，将同时对集合中的所有项启动 Activity1。 对于每个项，Activity2 会在 Activity1 完成后启动。 只有在对所有项完成 Activity1 和 Activity2 后，Activity3 才会启动。 我们使用 `ThrottleLimit` 参数来限制并行度。 `ThrottleLimit` 太高会导致问题。 `ThrottleLimit` 参数的理想值取决于环境中的许多因素。 你应该尝试从较低的值开始并尝试不同的增加值，直到找到适合你的特定环境的值。
+可以使用 `ForEach -Parallel` 构造来同时处理集合中每个项的命令。 尽管脚本块中的命令按顺序运行，但集合中的项是并行处理的。 此脚本块使用如下所示的语法。 在此示例中，将同时对集合中的所有项启动 Activity1。 对于每个项，Activity2 会在 Activity1 完成后启动。 只有在对所有项完成 Activity1 和 Activity2 后，Activity3 才会启动。 我们使用 `ThrottleLimit` 参数来限制并行度。 `ThrottleLimit` 太高会导致问题。 `ThrottleLimit` 参数的理想值取决于环境中的许多因素。 你应该尝试从较低的值开始并尝试不同的增加值，直到找到适合你的特定环境的值。
 
 ```powershell
 ForEach -Parallel -ThrottleLimit 10 ($<item> in $<collection>)
@@ -227,7 +223,7 @@ Workflow Copy-Files
 
 ## <a name="checkpoints"></a>检查点
 
-“检查点”  是工作流当前状态的快照，其中包括变量的当前值以及到该点为止生成的任何输出。 如果工作流以错误结束或暂停，则其下次运行时会从其上一个检查点开始，而不是从工作流的起点开始。  可以使用 **Checkpoint-Workflow** 活动在工作流中设置一个检查点。 Azure 自动化有一项名叫[公平共享](automation-runbook-execution.md#fair-share)的功能，即系统会卸载任何已运行 3 小时的 runbook，让其他 runbook 有机会运行。 最终，卸载的 runbook 会重新加载，并从上一个检查点处继续执行原来的操作。 为了确保 runbook 最终能够完成，必须按时间间隔（不到 3 小时）添加检查点。 如果在每次运行过程中添加了新的检查点，则当 runbook 在 3 小时后因错误而被系统逐出时，系统会恢复该 runbook，没有限期。
+“检查点”  是工作流当前状态的快照，其中包括变量的当前值以及到该点为止生成的任何输出。 如果工作流以错误结束或暂停，则其下次运行时会从其上一个检查点开始，而不是从工作流的起点开始。  可以使用 `Checkpoint-Workflow` 活动在工作流中设置一个检查点。 Azure 自动化有一项名叫[公平共享](automation-runbook-execution.md#fair-share)的功能，即系统会卸载任何已运行 3 小时的 runbook，让其他 runbook 有机会运行。 最终，卸载的 runbook 会重新加载，并从上一个检查点处继续执行原来的操作。 为了确保 runbook 最终能够完成，必须按时间间隔（不到 3 小时）添加检查点。 如果在每次运行过程中添加了新的检查点，则当 runbook 在 3 小时后因错误而被系统逐出时，系统会恢复该 runbook，没有限期。
 
 在以下示例代码中，Activity2 后发生的异常导致工作流结束。 当工作流再次运行时，它会通过运行 Activity2 来启动，因为此活动刚好在设置的上一个检查点之后。
 
@@ -259,7 +255,7 @@ Workflow Copy-Files
 }
 ```
 
-由于调用 [Suspend-Workflow](https://technet.microsoft.com/library/jj733586.aspx) 活动后或在最后一个检查点之后，将不保留用户名凭据，所以需要在调用 **Suspend-Workflow** 或检查点后将凭据设置为 null，然后再从资产存储重新检索凭据。  否则，可能会收到以下错误消息：*无法继续执行工作流作业，因为无法完整保存持久性数据或保存的持久性数据已损坏。必须重启工作流。*
+如果你已经调用 [Suspend-Workflow](https://technet.microsoft.com/library/jj733586.aspx) 活动，或者你位于最后一个检查点之后，则不会保留用户名凭据，因此需要在调用 `Suspend-Workflow` 或检查点后将凭据设置为 null，然后再从资产存储重新检索凭据。  否则，可能会收到以下错误消息：`The workflow job cannot be resumed, either because persistence data could not be saved completely, or saved persistence data has been corrupted. You must restart the workflow.`
 
 下面的相同代码演示如何在 PowerShell 工作流 Runbook 中处理此问题。
 

@@ -1,24 +1,24 @@
 ---
-title: Azure Cosmos DB 监视数据参考 | Azure
+title: Azure Cosmos DB 监视数据参考 | Azure Docs
 description: 来自 Azure Cosmos DB 的监视数据的日志和指标参考。
 author: rockboyfor
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: reference
 origin.date: 11/11/2019
-ms.date: 04/27/2020
+ms.date: 05/06/2020
 ms.author: v-yeche
 ms.custom: subject-monitoring
 ms.subservice: logs
-ms.openlocfilehash: 8b9c7e02cc8d17f489e6b6c0b98ee3e313bf7b62
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.openlocfilehash: 358b39ffaa336c0999352f122177d88e5a4410fd
+ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82135142"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "83002078"
 ---
 # <a name="azure-cosmos-db-monitoring-data-reference"></a>Azure Cosmos DB 监视数据参考
-本文提供了收集的用于分析 Azure Cosmos DB 性能和可用性的日志和指标数据的参考。 请参阅[监视 Cosmos DB](monitor-cosmos-db.md)，详细了解如何收集和分析 Azure Cosmos DB 的监视数据。
+本文提供了对所收集日志和指标数据的引用，用于分析 Azure Cosmos DB 的性能和可用性。 请参阅[监视 Cosmos DB](monitor-cosmos-db.md)，详细了解如何收集和分析 Azure Cosmos DB 的监视数据。
 
 ## <a name="resource-logs"></a>资源日志
 下表列出了在 Azure Monitor 日志或 Azure 存储中收集 Azure Cosmos DB 资源日志时这些资源日志的属性。 在 Azure Monitor 日志中，它们收集在 AzureDiagnostics  表中，且 ResourceProvider  值为 MICROSOFT.DOCUMENTDB  。 

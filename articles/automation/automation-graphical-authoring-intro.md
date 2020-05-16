@@ -4,18 +4,18 @@ description: 图形创作可以让你在不使用代码的情况下，为 Azure 
 services: automation
 ms.subservice: process-automation
 origin.date: 03/16/2018
-ms.date: 03/30/2020
+ms.date: 05/11/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9270469c2ec5477a28d6df119b48004e67b4cec1
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 49c6969163a35c6c8528a6ca1401387d540022e1
+ms.sourcegitcommit: 7443ff038ea8afe511f7419d9c550d27fb642246
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80290358"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "83001638"
 ---
 # <a name="graphical-authoring-in-azure-automation"></a>Azure 自动化中的图形创作
 
-图形创作可以用来为 Azure 自动化创建 Runbook，不需要编写复杂的基础性的 Windows PowerShell 或 PowerShell 工作流代码。 可将活动从 cmdlet 和 Runbook 的库添加到画布，将它们链接到一起，然后对其进行配置以形成工作流。 如果你曾经使用过 System Center Orchestrator 或 Service Management Automation (SMA)，则应该很熟悉图形创作。 本文介绍在开始创建图形 Runbook 之前需要了解的概念。
+图形创作可以用来为 Azure 自动化创建 Runbook，无需编写复杂的底层 Windows PowerShell 或 PowerShell 工作流代码。 可将活动从 cmdlet 和 Runbook 的库添加到画布，将它们链接到一起，然后对其进行配置以形成工作流。 如果你曾经使用过 System Center Orchestrator 或 Service Management Automation (SMA)，则应该很熟悉图形创作。 本文介绍在开始创建图形 Runbook 之前需要了解的概念。
 
 ## <a name="graphical-runbooks"></a>图形 Runbook
 
@@ -56,7 +56,7 @@ Azure 自动化中的所有 Runbook 都是 Windows PowerShell 工作流。 图�
 
 活动是 Runbook 的构建基块。 活动可以是 PowerShell cmdlet、子 Runbook 或工作流。 可以右键单击“库”控件中的活动并选择“添加到画布”，将此活动添加到 Runbook。  然后，可以通过单击拖放的方式将活动置于画布上你喜欢的任何位置。 活动在画布上的位置不会影响 Runbook 的运行。 可以对 Runbook 进行任何形式的布局，只要觉得该布局最适合实现 Runbook 操作的可视化即可。
 
-![添加到画布](media/automation-graphical-authoring-intro/add-to-canvas-revised20165.png)
+![添加到画布](media/automation-graphical-authoring-intro/add-to-canvas-cmdlet.png)
 
 在画布上选择需要在“配置”边栏选项卡中配置其属性和参数的活动。 可将活动的标签更改为更具描述性的名称。 Runbook 仍会运行原始 cmdlet。 只需更改图形编辑器使用的显示名称。 请注意，该标签在 Runbook 中必须唯一。
 
@@ -150,7 +150,7 @@ $DateTimeStart
 
 可以在两个活动之间创建链接，方法是选择源活动，然后单击形状底部的圆圈。 将箭头拖到目标活动，然后放开。
 
-![创建链接](media/automation-graphical-authoring-intro/create-link-revised20165.png)
+![创建链接](media/automation-graphical-authoring-intro/create-link-options.png)
 
 选择可在“配置”边栏选项卡中配置其属性的链接。 属性包括下表中描述的链接类型。
 
@@ -411,7 +411,7 @@ Runbook 在启动时以及在设置每个检查点之后都必须进行身份验
 
 添加 Runbook 时，可以选择“导入”选项来导入图形 Runbook 或图形 PowerShell 工作流 Runbook 文件。  选择要导入的文件时，可以保留同一个名称，或提供一个新名称。 “Runbook 类型”字段会在评估所选文件后显示 Runbook 的类型。  如果你尝试选择其他不正确的类型，图形编辑器会显示一条消息，指出可能会发生冲突，并且可能会在转换过程中出现语法错误。
 
-![导入 Runbook](media/automation-graphical-authoring-intro/runbook-import-revised20165.png)
+![导入 Runbook](media/automation-graphical-authoring-intro/runbook-import.png)
 
 ## <a name="testing-a-graphical-runbook"></a>测试图形 Runbook
 

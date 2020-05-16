@@ -4,22 +4,21 @@ titleSuffix: Azure API Management
 description: 了解如何在 Azure API 管理中使用备份和还原执行灾难恢复。
 services: api-management
 documentationcenter: ''
-author: mikebudzynski
+author: Johnnytechn
 manager: erikre
 editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-origin.date: 02/03/2020
-ms.author: v-lingwu
-ms.date: 2/25/2020
-ms.openlocfilehash: eb896ecfb2f716c2b2112c814a5382fc1ad2afbb
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/09/2020
+ms.author: v-johya
+ms.openlocfilehash: 6188f67b42b7753f4bc4860fbdd76b78ce37ade1
+ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80290089"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "83001956"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>如何使用 Azure API 管理中的服务备份和还原实现灾难恢复
 
@@ -46,9 +45,7 @@ ms.locfileid: "80290089"
 ## <a name="authenticating-azure-resource-manager-requests"></a>对 Azure 资源管理器请求进行身份验证
 
 > [!IMPORTANT]
-> 用于还原和备份的 REST API 使用 Azure 资源管理器，并且具有与用于管理 API 管理实体的 REST API 不同的身份验证机制。 本部分中的步骤介绍如何对 Azure 资源管理器请求进行身份验证。 有关详细信息，请参阅[对 Azure 资源管理器请求进行身份验证](https://msdn.microsoft.com/library/azure/dn790557.aspx)。
->
->
+> 用于还原和备份的 REST API 使用 Azure 资源管理器，并且具有与用于管理 API 管理实体的 REST API 不同的身份验证机制。 本部分中的步骤介绍如何对 Azure 资源管理器请求进行身份验证。 有关详细信息，请参阅[对 Azure 资源管理器请求进行身份验证](https://docs.microsoft.com/rest/api/index)。
 
 使用 Azure 资源管理器对资源所进行的所有任务都必须使用以下步骤通过 Azure Active Directory 进行身份验证：
 
@@ -58,7 +55,7 @@ ms.locfileid: "80290089"
 
 ### <a name="create-an-azure-active-directory-application"></a>创建 Azure Active Directory 应用程序
 
-1. 登录 [Azure 门户](https://portal.azure.cn)。 
+1. 登录到 [Azure 门户](https://portal.azure.cn)。
 2. 使用包含 API 管理服务实例的订阅导航到 Azure Active Directory 中的“应用注册”选项卡（Azure Active Directory > 管理/应用注册）。  
 
     > [!NOTE]
@@ -70,8 +67,8 @@ ms.locfileid: "80290089"
 
 4. 输入应用程序的名称。
 5. 对于应用程序类型，选择“本机”。 
-6. 输入占位符 URL，例如，为“重定向 URI”`http://resources`**输入** ，因为它是必填字段，但以后不使用该值。 单击此复选框保存应用程序。
-7. 单击“创建”。 
+6. 输入占位符 URL，例如，为“重定向 URI”  输入 `http://resources`，因为它是必填字段，但以后不使用该值。 单击此复选框以保存应用程序。
+7. 单击**创建**。
 
 ### <a name="add-an-application"></a>添加应用程序
 
@@ -118,7 +115,7 @@ namespace GetTokenResourceManagerRequests
 
 根据以下说明替换 `{tenant id}`、`{application id}` 和 `{redirect uri}`。
 
-1. 将 `{tenant id}` 替换为已创建的 Azure Active Directory 应用程序的租户 ID。 可通过单击“应用注册” **“终结点”访问此 ID。**  ->  
+1. 将 `{tenant id}` 替换为已创建的 Azure Active Directory 应用程序的租户 ID。 可通过单击“应用注册” -> “终结点”访问此 ID。  
 
     ![终结点][api-management-endpoint]
 
@@ -127,14 +124,14 @@ namespace GetTokenResourceManagerRequests
 
     指定这些值后，代码示例应返回类似于以下示例的令牌：
 
-    ![标记][api-management-arm-token]
+    ![令牌][api-management-arm-token]
 
     > [!NOTE]
     > 该令牌可能在一段时间后过期。 再次执行示例代码以生成新令牌。
 
 ## <a name="calling-the-backup-and-restore-operations"></a>调用备份和还原操作
 
-REST API 为 [Api 管理服务 - 备份](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/apimanagementservice/backup)和 [Api 管理服务 - 还原](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/apimanagementservice/restore)。
+REST API 为 [Api 管理服务 - 备份](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/apimanagementservice/backup)和 [Api 管理服务 - 还原](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/apimanagementservice/restore)。
 
 在调用以下部分中所述的“备份和还原”操作之前，为 REST 调用设置授权请求标头。
 
@@ -143,10 +140,11 @@ request.Headers.Add(HttpRequestHeader.Authorization, "Bearer " + token);
 ```
 
 ### <a name="back-up-an-api-management-service"></a><a name="step1"> </a>备份 API 管理服务
+
 若要备份 API 管理服务问题，请发送以下 HTTP 请求：
 
 ```http
-POST https://management.azure.cn/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/backup?api-version={api-version}
+POST https://management.chinacloudapi.cn/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/backup?api-version={api-version}
 ```
 
 其中：
@@ -169,7 +167,7 @@ POST https://management.azure.cn/subscriptions/{subscriptionId}/resourceGroups/{
 
 将 `Content-Type` 请求标头的值设置为 `application/json`。
 
-备份是长时间运行的操作，可能需要数分钟才能完成。 如果请求已成功且备份过程已开始，则会收到带有 `202 Accepted` 标头的 `Location` 响应状态代码。 向 `Location` 标头中的 URL 发出“GET”请求以查明操作状态。 当备份正在进行时，将继续收到“202 已接受”状态代码。 响应代码 `200 OK` 指示备份操作成功完成。
+备份是长时间运行的操作，可能需要数分钟才能完成。 如果请求已成功且备份过程已开始，则会收到带有 `Location` 标头的 `202 Accepted` 响应状态代码。 向 `Location` 标头中的 URL 发出“GET”请求以查明操作状态。 当备份正在进行时，将继续收到“202 已接受”状态代码。 响应代码 `200 OK` 指示备份操作成功完成。
 
 发出备份或还原请求时请注意以下限制：
 
@@ -177,20 +175,20 @@ POST https://management.azure.cn/subscriptions/{subscriptionId}/resourceGroups/{
 -   当备份正在进行时，请**避免在服务中进行管理更改**，例如 SKU 升级或降级、域名更改等。
 -   从创建时开始，**备份还原仅保证 30 天**。
 -   用于创建分析报表的**用法数据** **不包括**在备份中。 使用 [Azure API 管理 REST API][azure api management rest api] 定期检索分析报表以保证安全。
--   此外，以下项不是备份数据的一部分：自定义域 SSL 证书、客户上传的任何中间或根证书、开发人员门户内容和虚拟网络集成设置。
+-   此外，以下项不是备份数据的一部分：自定义域 TLS/SSL 证书、客户上传的任何中间证书或根证书、开发人员门户内容和虚拟网络集成设置。
 -   执行服务备份的频率将影响恢复点目标。 为了最大程度减少它，建议实施定期备份，以及在对 API 管理服务进行更改后执行按需备份。
 -   备份操作正在进行时对服务配置（例如 API、策略、开发人员门户外观）所做的**更改** **可能不包含在备份中，会丢失**。
--   **允许**从控制平面访问 Azure 存储帐户，前提是已启用[防火墙][azure-storage-ip-firewall]。 客户应在其存储帐户上打开 [Azure API 管理控制平面 IP 地址][control-plane-ip-address]组，以便备份到其中或从其中进行还原。 
+-   允许  从控制平面访问 Azure 存储帐户，前提是它已启用[防火墙][azure-storage-ip-firewall]。 客户应在其存储帐户上打开一组 [Azure API 管理控制平面 IP 地址][control-plane-ip-address]，以便将数据备份到其中或从其中还原数据。 
 
 > [!NOTE]
-> 如果尝试使用启用了[防火墙][azure-storage-ip-firewall]的存储帐户执行通过 API 管理服务进行的备份/还原，则在同一 Azure 区域中，这将不起作用。 这是因为对 Azure 存储的请求不会通过“计算”>（Azure API 管理控制平面）以 SNAT 方式转换成公共 IP。 跨区域存储请求将进行 SNAT 转换。
+> 如果尝试在同一个 Azure 区域中使用启用了[防火墙][azure-storage-ip-firewall]的存储帐户从/向 API 管理服务进行备份/还原，那么这样做会无效。 这是因为对 Azure 存储的请求不会通过“计算”>（Azure API 管理控制平面）以 SNAT 方式转换成公共 IP。 跨区域存储请求将进行 SNAT 转换。
 
 ### <a name="restore-an-api-management-service"></a><a name="step2"> </a>还原 API 管理服务
 
 若要从之前创建的备份还原 API 管理服务，请发出以下 HTTP 请求：
 
 ```http
-POST https://management.azure.cnsubscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/restore?api-version={api-version}
+POST https://management.chinacloudapi.cn/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/restore?api-version={api-version}
 ```
 
 其中：
@@ -213,12 +211,14 @@ POST https://management.azure.cnsubscriptions/{subscriptionId}/resourceGroups/{r
 
 将 `Content-Type` 请求标头的值设置为 `application/json`。
 
-还原是长时间运行的操作，可能需要长达 30 分钟或更长时间才能完成。 如果请求已成功且还原过程已开始，则会收到带有 `202 Accepted` 标头的 `Location` 响应状态代码。 向 `Location` 标头中的 URL 发出“GET”请求以查明操作状态。 当还原正在进行时，将继续收到“202 已接受”状态代码。 响应代码 `200 OK` 指示还原操作成功完成。
+还原是长时间运行的操作，可能需要长达 30 分钟或更长时间才能完成。 如果请求已成功且还原过程已开始，则会收到带有 `Location` 标头的 `202 Accepted` 响应状态代码。 向 `Location` 标头中的 URL 发出“GET”请求以查明操作状态。 当还原正在进行时，将继续收到“202 已接受”状态代码。 响应代码 `200 OK` 指示还原操作成功完成。
 
 > [!IMPORTANT]
 > 要还原到的服务的 **SKU** 必须与正在还原的已备份服务的 SKU **匹配**。
 >
 > 还原操作正在进行时对服务配置（例如 API、策略、开发人员门户外观）所做的**更改** **可能会被覆盖**。
+
+<!-- Dummy comment added to suppress markdown lint warning -->
 
 > [!NOTE]
 > 也可分别使用 PowerShell [_Backup-AzApiManagement_](https://docs.microsoft.com/powershell/module/az.apimanagement/backup-azapimanagement) 和 [_Restore-AzApiManagement_](https://docs.microsoft.com/powershell/module/az.apimanagement/restore-azapimanagement) 命令，执行备份和还原操作。
@@ -236,7 +236,6 @@ POST https://management.azure.cnsubscriptions/{subscriptionId}/resourceGroups/{r
 [restore an api management service]: #step2
 [azure api management rest api]: https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/api-management-rest
 [api-management-add-aad-application]: ./media/api-management-howto-disaster-recovery-backup-restore/api-management-add-aad-application.png
-
 [api-management-aad-permissions]: ./media/api-management-howto-disaster-recovery-backup-restore/api-management-aad-permissions.png
 [api-management-aad-permissions-add]: ./media/api-management-howto-disaster-recovery-backup-restore/api-management-aad-permissions-add.png
 [api-management-aad-delegated-permissions]: ./media/api-management-howto-disaster-recovery-backup-restore/api-management-aad-delegated-permissions.png
@@ -244,3 +243,6 @@ POST https://management.azure.cnsubscriptions/{subscriptionId}/resourceGroups/{r
 [api-management-aad-resources]: ./media/api-management-howto-disaster-recovery-backup-restore/api-management-aad-resources.png
 [api-management-arm-token]: ./media/api-management-howto-disaster-recovery-backup-restore/api-management-arm-token.png
 [api-management-endpoint]: ./media/api-management-howto-disaster-recovery-backup-restore/api-management-endpoint.png
+[control-plane-ip-address]: api-management-using-with-vnet.md#control-plane-ips
+[azure-storage-ip-firewall]: ../storage/common/storage-network-security.md#grant-access-from-an-internet-ip-range
+

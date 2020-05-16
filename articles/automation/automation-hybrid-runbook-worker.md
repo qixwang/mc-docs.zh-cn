@@ -4,14 +4,14 @@ description: 本文介绍如何安装和使用混合 Runbook 辅助角色，该�
 services: automation
 ms.subservice: process-automation
 origin.date: 04/05/2019
-ms.date: 03/03/2020
+ms.date: 05/11/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4062435497625589e9907f81c56d19fdb23dde05
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 014c548819d5b3326fe231ced46c761b0b778d81
+ms.sourcegitcommit: 7443ff038ea8afe511f7419d9c550d27fb642246
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292618"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "83001628"
 ---
 # <a name="automate-resources-in-your-datacenter-or-cloud-by-using-hybrid-runbook-worker"></a>使用混合 Runbook 辅助角色使数据中心或云端的资源实现自动化
 
@@ -23,65 +23,59 @@ Azure 自动化中的 Runbook 可能无权访问其他云或本地环境中的�
 
 每个混合 Runbook 辅助角色都是你在安装代理时指定的混合 Runbook 辅助角色组的成员。 一个组可以包含一个代理，但是可以在一个组中安装多个代理，以实现高可用性。 每台计算机可以托管一个向一个自动化帐户报告的混合辅助角色。
 
-在混合 Runbook 辅助角色中启动 Runbook 时，可以指定该辅助角色会在其中运行的组。 组中的每个辅助角色都会轮询 Azure 自动化以查看是否有可用作业。 如果作业可用，获取作业的第一个辅助角色将执行该作业。 作业队列的处理时间取决于混合辅助角色硬件配置文件和负载。 不能指定特定的辅助角色。 混合 Runbook 辅助角色不受 Azure 沙盒所具有的诸多限制。 它们没有磁盘空间、内存或网络套接字方面的相同限制。 混合 Runbook 辅助角色仅受混合 Runbook 辅助角色本身所拥有的资源的限制。 此外，混合 Runbook 辅助角色不受 Azure 沙盒所具有的 180 分钟[公平共享](automation-runbook-execution.md#fair-share)时间限制。 若要了解有关 Azure 沙盒和混合 Runbook 辅助角色的服务限制的详细信息，请参阅作业[限制](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits)页。
+在混合 Runbook 辅助角色中启动 Runbook 时，可以指定该辅助角色会在其中运行的组。 组中的每个辅助角色都会轮询 Azure 自动化以查看是否有可用作业。 如果作业可用，获取作业的第一个辅助角色将执行该作业。 作业队列的处理时间取决于混合辅助角色硬件配置文件和负载。 不能指定特定的辅助角色。 混合 Runbook 辅助角色不受 Azure 沙盒所具有的诸多限制。 它们没有磁盘空间、内存或网络套接字方面的相同限制。 混合 Runbook 辅助角色仅受混合 Runbook 辅助角色本身所拥有的资源的限制。 此外，混合 Runbook 辅助角色不共享 Azure 沙盒的 180 分钟[公平共享](automation-runbook-execution.md#fair-share)时间限制。 若要详细了解 Azure 沙盒和混合 Runbook 辅助角色的服务限制，请参阅作业[限制](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits)。
 
 ## <a name="install-a-hybrid-runbook-worker"></a>安装混合 Runbook 辅助角色
 
-安装混合 Runbook 辅助角色的过程取决于 OS。 下表包含指向可用于安装的方法的链接。
+安装混合 Runbook 辅助角色的过程取决于操作系统。 下表定义了部署类型。
 
-若要安装和配置 Windows 混合 Runbook 辅助角色，可使用两种方法。 建议的方法是使用自动化 Runbook 来彻底实现配置 Windows 计算机过程的自动化。 第二种方法使用分步过程来手动安装和配置角色。 对于 Linux 计算机，运行 Python 脚本，在计算机上安装代理。
-
-|OS  |部署类型  |
+|操作系统  |部署类型  |
 |---------|---------|
 |Windows     | [PowerShell](automation-windows-hrw-install.md#automated-deployment)<br>[手动](automation-windows-hrw-install.md#manual-deployment)        |
 |Linux     | [Python](automation-linux-hrw-install.md#installing-a-linux-hybrid-runbook-worker)        |
 
+建议的安装方法是使用自动化 runbook 来完全自动执行 Windows 计算机的配置过程。 第二种方法是执行分步过程来手动安装和配置角色。 对于 Linux 计算机，运行 Python 脚本，在计算机上安装代理。
+
 > [!NOTE]
-> 为了使用所需状态配置 (DSC) 管理支持混合 Runbook 辅助角色的服务器配置，需将其添加为 DSC 节点。 若要进一步了解如何载入它们以供 DSC 管理，请参阅[载入由 Azure 自动化 DSC 管理的计算机](automation-dsc-onboarding.md)。
+> 为了使用 Desired State Configuration (DSC) 管理支持混合 Runbook 辅助角色的服务器配置，需将这些服务器添加为 DSC 节点。 若要进一步了解如何载入它们以供 DSC 管理，请参阅[载入由 Azure 自动化 DSC 管理的计算机](automation-dsc-onboarding.md)。
 >
 
 开始部署混合 Runbook 辅助角色之前，请查看[有关规划网络的信息](#network-planning)。 成功部署辅助角色后，请查看[在混合 Runbook 辅助角色上运行 Runbook](automation-hrw-run-runbooks.md)，了解如何配置 Runbook，使本地数据中心或其他云环境中的过程实现自动化。
 
 只要将同一个帐户同时用于解决方案和混合 Runbook 辅助角色组成员身份，即可将该计算机添加到自动化帐户的混合 Runbook 辅助角色组，以支持自动化 Runbook。 此功能已添加到 7.2.12024.0 版本的混合 Runbook 辅助角色。
 
-## <a name="remove-a-hybrid-runbook-worker"></a>删除混合 Runbook 辅助角色
+## <a name="a-nameremove-a-hybrid-runbook-workerremove-a-hybrid-runbook-worker-from-an-on-premises-computer"></a><a name="remove-a-hybrid-runbook-worker">从本地计算机中删除混合 Runbook 辅助角色
 
-可以从组中删除一个或多个混合 Runbook 辅助角色，或者根据要求删除该组。 若要从本地计算机中删除混合 Runbook 辅助角色，请使用以下步骤：
+可以按照本部分所述，从本地的 Windows 和 Linux 计算机中删除混合 Runbook 辅助角色。
+
+### <a name="remove-the-worker-on-windows"></a>删除 Windows 上的辅助角色
 
 1. 在 Azure 门户中，转到自动化帐户。
-2. 在“帐户设置”下，选择“密钥”并记下“URL”和“主访问密钥”的值     。 下一步需要用到此信息。
+2. 在“帐户设置”下，选择“密钥”并记下“URL”和“主访问密钥”的值     。
 
-### <a name="windows"></a>Windows
-
-在管理员模式下打开 PowerShell 会话，并运行以下命令。 可使用 **-Verbose** 开关获取删除过程的详细日志。
-
-```powershell
-Remove-HybridRunbookWorker -url <URL> -key <PrimaryAccessKey>
-```
-
-若要从混合辅助角色组中删除过时的计算机，请使用可选的 `machineName` 参数。
+3. 在管理员模式下打开 PowerShell 会话，并使用“URL”和“主访问密钥”值运行以下命令。 使用 `Verbose` 参数以获取删除过程的详细日志。 若要从混合辅助角色组中删除过时的计算机，请使用可选的 `machineName` 参数。
 
 ```powershell
 Remove-HybridRunbookWorker -url <URL> -key <PrimaryAccessKey> -machineName <ComputerName>
 ```
 
-### <a name="linux"></a>Linux
+### <a name="remove-the-worker-on-linux"></a>删除 Linux 上的辅助角色
 
-可在混合 Runbook 辅助角色上使用命令 `ls /var/opt/microsoft/omsagent` 获取工作区 ID。 目录中有一个名为工作区 ID 的文件夹。
+可在混合 Runbook 辅助角色上使用命令 `ls /var/opt/microsoft/omsagent` 获取工作区 ID。 将创建一个使用此工作区 ID 命名的文件夹。
 
 ```bash
 sudo python onboarding.py --deregister --endpoint="<URL>" --key="<PrimaryAccessKey>" --groupname="Example" --workspaceid="<workspaceId>"
 ```
 
 > [!NOTE]
-> 此代码不会从计算机中删除 Microsoft Monitoring Agent，而只会删除混合 Runbook 辅助角色的功能和配置。
+> 此代码不会从计算机中删除适用于 Linux 的 Log Analytics 代理。 它仅删除混合 Runbook 辅助角色的功能和配置。
 
 ## <a name="remove-a-hybrid-worker-group"></a>删除混合辅助角色组
 
-要删除某个组，首先需要使用前面所示的过程，从每台计算机中删除属于该组的混合 Runbook 辅助角色。 然后，使用以下步骤删除该组：
+若要删除混合 Runbook 辅助角色组，首先需要从每台计算机上删除属于该组的混合 Runbook 辅助角色。 然后，使用以下步骤删除该组：
 
 1. 在 Azure 门户中打开自动化帐户。
-2. 在“流程自动化”  下选择“混合辅助角色组”  。 选择要删除的组。 将显示该组的属性页。
+2. 在“流程自动化”   下选择“混合辅助角色组”。 选择要删除的组。 将显示该组的属性页。
 
    ![“属性”页](media/automation-hybrid-runbook-worker/automation-hybrid-runbook-worker-group-properties.png)
 
@@ -95,7 +89,7 @@ sudo python onboarding.py --deregister --endpoint="<URL>" --key="<PrimaryAccessK
 
 ### <a name="hybrid-worker-role"></a>混合辅助角色
 
-要使混合 Runbook 辅助角色连接并注册到 Azure 自动化，必须让其有权访问此部分所述的端口号和 URL。 除了这些端口和 URL 以外，还需要有权访问 [Microsoft Monitoring Agent 连接到 Azure Monitor 日志时要使用的端口和 URL](../azure-monitor/platform/agent-windows.md)。
+要使混合 Runbook 辅助角色连接并注册到 Azure 自动化，必须让其有权访问此部分所述的端口号和 URL。 此访问通过 [Log Analytics 代理连接到 Azure Monitor 日志所需的端口和 URL](../azure-monitor/platform/agent-windows.md) 进行。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -103,11 +97,11 @@ sudo python onboarding.py --deregister --endpoint="<URL>" --key="<PrimaryAccessK
 
 混合 Runbook 辅助角色与自动化通信时需要以下端口和 URL：
 
-* 端口：只需使用 TCP 443 进行出站 Internet 访问。
+* 端口：只需使用 TCP 443 即可进行出站 Internet 访问。
 * 全局 URL：*.azure-automation.cn
 * 代理服务： https://\<workspaceId\>.agentsvc.azure-automation.cn
 
-建议在定义例外时使用列出的地址。 对于 IP 地址，可以下载 [Azure 中国数据中心 IP 范围](https://www.microsoft.com/en-us/download/details.aspx?id=42064)。 此文件每周更新，包含当前部署的范围以及即将对 IP 范围进行的更新。
+建议在定义异常时使用列出的地址。 对于 IP 地址，可以下载 [Azure 中国数据中心 IP 范围](https://www.microsoft.com/en-us/download/details.aspx?id=42064)。 此文件每周更新，包含当前部署的范围以及即将对 IP 范围进行的更新。
 
 > [!NOTE]
 > Azure 数据中心 IP 地址 XML 文件列出了 Azure 数据中心使用的 IP 地址范围。 文件中包含计算、SQL 和存储范围。
@@ -119,5 +113,4 @@ sudo python onboarding.py --deregister --endpoint="<URL>" --key="<PrimaryAccessK
 ## <a name="next-steps"></a>后续步骤
 
 * 若要了解如何配置 Runbook，使本地数据中心或其他云环境中的过程自动化，请参阅[在混合 Runbook 辅助角色上运行 Runbook](automation-hrw-run-runbooks.md)。
-* 若要了解如何对混合 Runbook 辅助角色进行故障排除，请参阅[混合 Runbook 辅助角色的故障排除](troubleshoot/hybrid-runbook-worker.md#general)
-
+* 若要了解如何对混合 Runbook 辅助角色进行故障排除，请参阅[混合 Runbook 辅助角色的故障排除](troubleshoot/hybrid-runbook-worker.md#general)。

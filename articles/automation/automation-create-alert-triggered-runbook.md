@@ -2,20 +2,16 @@
 title: 使用警报触发 Azure 自动化 Runbook
 description: 了解如何在引发 Azure 警报时触发 Runbook 运行。
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: WenJason
-ms.author: v-jay
 origin.date: 04/29/2019
-ms.date: 10/21/2019
+ms.date: 05/11/2020
 ms.topic: conceptual
-manager: digimobile
-ms.openlocfilehash: 7a41d86faa1806a4af0e656b0fc23a1b0bbc2ff8
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 346298293f75092b296c330d2a7a63e5f8bd84a4
+ms.sourcegitcommit: 7443ff038ea8afe511f7419d9c550d27fb642246
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "73142095"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "83001651"
 ---
 # <a name="use-an-alert-to-trigger-an-azure-automation-runbook"></a>使用警报触发 Azure 自动化 Runbook
 
@@ -46,11 +42,11 @@ ms.locfileid: "73142095"
 
 若要对警报使用自动化，需要有一个 Runbook，其中包含用于管理传递到 Runbook 的警报 JSON 有效负载的逻辑。 下面的示例 Runbook 必须从 Azure 警报调用。
 
-如前面部分所述，每种警报类型都有不同的架构。 该脚本采用警报中 `WebhookData` Runbook 输入参数的 Webhook 数据。 然后，该脚本对 JSON 有效负载进行评估，确定所用的警报类型。
+如前面部分所述，每种警报类型都有不同的架构。 此脚本在 `WebhookData` runbook 输入参数中获取警报的 Webhook 数据。 然后，此脚本对 JSON 有效负载进行评估，以确定所用的警报类型。
 
-此示例使用来自 VM 的警报。 它从有效负载中检索 VM 数据，然后使用该信息停止运行 VM。 必须在运行该 Runbook 的自动化帐户中建立连接。 使用警报触发 Runbook 时，检查触发的 Runbook 中的警报状态非常重要。 每次警报更改状态时，都会触发 Runbook。 警报具有多个状态，最常见的两个状态是 `Activated` 和 `Resolved`。 在 Runbook 逻辑中检查此状态，以确保 Runbook 不会运行多次。 本文中的示例仅演示了如何查找 `Activated` 警报。
+此示例使用来自 VM 的警报。 它从有效负载中检索 VM 数据，然后使用该信息停止运行 VM。 必须在运行该 Runbook 的自动化帐户中建立连接。 使用警报触发 runbook 时，检查触发的 runbook 中的警报状态非常重要。 每次警报更改状态时，都会触发 Runbook。 警报有多个状态，其中两个最常见的状态为“已激活”和“已解决”。 检查 runbook 逻辑中的状态，以确保 runbook 不会运行多次。 本文中的示例演示如何仅查找“已激活”状态的警报。
 
-该 Runbook 使用 AzureRunAsConnection [运行方式帐户](automation-create-runas-account.md)在 Azure 中进行身份验证，以便对 VM 执行管理操作  。
+该 Runbook 使用连接资产 `AzureRunAsConnection` [运行方式帐户](automation-create-runas-account.md)在 Azure 中进行身份验证，以便对 VM 执行管理操作。
 
 使用此示例可以创建名为 **Stop-AzureVmInResponsetoVMAlert** 的 Runbook。 可以修改此 PowerShell 脚本，并将其用于许多不同的资源。
 
@@ -175,7 +171,7 @@ ms.locfileid: "73142095"
 
 警报使用操作组，后者是警报触发的操作的集合。 Runbook 只是操作组包含的诸多操作之一。
 
-1. 在自动化帐户的“监视”下选择“警报”。  
+1. 在自动化帐户中，选择“监视”下的“警报”。  
 1. 选择“+ 新建警报规则”。 
 1. 在“资源”下单击“选择”   。 在“选择资源”  页上选择要对其发出警报的 VM，然后单击“完成”。 
 1. 在“条件”下单击“添加条件”。   选择要使用的信号（例如“CPU 百分比”），然后单击“完成”。  

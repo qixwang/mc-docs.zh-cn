@@ -1,28 +1,27 @@
 ---
-title: 如何在包含应用程序网关的虚拟网络中使用 Azure API 管理
+title: 如何在包含应用程序网关的虚拟网络中使用 API 管理
+titleSuffix: Azure API Management
 description: 了解如何在使用应用程序网关 (WAF) 作为前端的内部虚拟网络中设置和配置 Azure API 管理
 services: api-management
 documentationcenter: ''
-author: solankisamir
+author: Johnnytechn
 manager: kjoshi
 editor: vlvinogr
 ms.assetid: a8c982b2-bca5-4312-9367-4a0bbc1082b1
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-origin.date: 11/04/2019
-ms.author: sasolank
-ms.date: 11/18/2019
-ms.openlocfilehash: 8f6476ecab5175f8821877d2ff6305fb8acf527f
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/09/2020
+ms.author: v-johya
+ms.openlocfilehash: e61b72182a2dbdd27874ee7ae5cc7fbb4185cc9a
+ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78213724"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "83001949"
 ---
-# <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>在包含应用程序网关的内部 VNET 中集成 API 管理 
+# <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>在包含应用程序网关的内部 VNET 中集成 API 管理
 
 ## <a name="overview"></a><a name="overview"></a>概述
 
@@ -36,7 +35,7 @@ ms.locfileid: "78213724"
 
 [!INCLUDE [premium-dev.md](../../includes/api-management-availability-premium-dev.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -44,7 +43,7 @@ ms.locfileid: "78213724"
 
 * 一个有效的 Azure 订阅。
 
-    [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+    如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 
 * 证书 - pfx 和 cer 用于 API 主机名，pfx 用于开发人员门户主机名。
 
@@ -62,15 +61,15 @@ ms.locfileid: "78213724"
 
 ## <a name="what-is-required-to-create-an-integration-between-api-management-and-application-gateway"></a>在 API 管理与应用程序网关之间创建集成需要做好哪些准备？
 
-* **后端服务器池：** API 管理服务的内部虚拟 IP 地址。
-* **后端服务器池设置：** 每个池都有一些设置，例如端口、协议和基于 Cookie 的关联性。 这些设置将应用到池中的所有服务器。
+* **后端服务器池：** 这是 API 管理服务的内部虚拟 IP 地址。
+* **后端服务器池设置：** 每个池具有端口、协议和基于 Cookie 的相关性等设置。 这些设置将应用到池中的所有服务器。
 * **前端端口：** 此端口是应用程序网关上打开的公共端口。 抵达此端口的流量将重定向到后端服务器之一。
-* **侦听器：** 侦听器具有前端端口、协议（Http 或 Https，这些值区分大小写）和 SSL 证书名称（如果要配置 SSL 卸载）。
+* **侦听器：** 侦听器具有前端端口、协议（Http 或 Https，这些值区分大小写）和 TLS/SSL 证书名称（如果配置 TLS 卸载）。
 * **规则：** 规则将侦听器绑定到后端服务器池。
 * **自定义运行状况探测：** 默认情况下，应用程序网关使用基于 IP 地址的探测来判断 BackendAddressPool 中的哪些服务器处于活动状态。 API 管理服务只响应包含正确主机标头的请求，因此默认的探测会失败。 需要定义一个自定义运行状况探测，帮助应用程序网关确定服务处于活动状态，应该转发该请求。
-* **自定义域证书**：要从 Internet 访问 API 管理，需要创建从服务主机名到应用程序网关前端 DNS 名称的 CNAME 映射。 这可以确保发送到应用程序网关，并转发到 API 管理的主机名标头和证书是 APIM 可以识别为有效的对象。 在此示例中，我们将使用两个证书 - 用于后端和开发人员门户。  
+* **自定义域证书：** 若要从 Internet 访问 API 管理，需要创建从服务主机名到应用程序网关前端 DNS 名称的 CNAME 映射。 这可以确保发送到应用程序网关，并转发到 API 管理的主机名标头和证书是 APIM 可以识别为有效的对象。 在此示例中，我们将使用两个证书 - 用于后端和开发人员门户。  
 
-## <a name="steps-required-for-integrating-api-management-and-application-gateway"></a><a name="overview-steps"></a>集成 API 管理和应用程序网关所需执行的步骤 
+## <a name="steps-required-for-integrating-api-management-and-application-gateway"></a><a name="overview-steps"></a>集成 API 管理和应用程序网关所需执行的步骤
 
 1. 创建 Resource Manager 的资源组。
 2. 创建应用程序网关的虚拟网络、子网和公共 IP。 为 API 管理创建另一个子网。
@@ -78,19 +77,19 @@ ms.locfileid: "78213724"
 4. 在 API 管理服务中设置自定义域名。
 5. 创建应用程序网关配置对象。
 6. 创建应用程序网关资源。
-7. 创建从应用程序网关公共 DNS 名称到 API 管理代理主机名的 CNAME 映射
+7. 创建从应用程序网关公共 DNS 名称到 API 管理代理主机名的 CNAME 映射。
 
 ## <a name="exposing-the-developer-portal-externally-through-application-gateway"></a>通过公开应用程序网关向外部公开开发人员门户
 
 在本指南中，我们还将通过应用程序网关向外部用户公开开发人员门户  。 创建开发人员门户的侦听器、探测、设置和规则需要其他步骤。 相应步骤中提供了所有详细信息。
 
 > [!WARNING]
-> 如果使用 Azure AD 或第三方身份验证，请在应用程序网关中启用[基于 cookie 的会话相关性](/application-gateway/overview#session-affinity)功能。
+> 如果使用 Azure AD 或第三方身份验证，请在应用程序网关中启用[基于 cookie 的会话相关性](../application-gateway/features.md#session-affinity)功能。
 
 > [!WARNING]
 > 为了防止应用程序网关 WAF 中断在开发人员门户中 OpenAPI 规范的下载，需要禁用防火墙规则 `942200 - "Detects MySQL comment-/space-obfuscated injections and backtick termination"`。
 
-## <a name="create-a-resource-group-for-resource-manager"></a>创建资源管理器的资源组
+## <a name="create-a-resource-group-for-resource-manager"></a>创建 Resource Manager 的资源组
 
 ### <a name="step-1"></a>步骤 1
 
@@ -117,10 +116,11 @@ Get-AzSubscription -Subscriptionid $subscriptionId | Select-AzSubscription
 
 ```powershell
 $resGroupName = "apim-appGw-RG" # resource group name
-$location = "China East"           # Azure region
+$location = "China North"           # Azure region
 New-AzResourceGroup -Name $resGroupName -Location $location
 ```
-Azure 资源管理器要求所有资源组指定一个位置。 此位置将用作该资源组中的资源的默认位置。 请确保用于创建应用程序网关的所有命令都使用相同的资源组。
+
+Azure Resource Manager 要求所有资源组指定一个位置。 此位置用作该资源组中的资源的默认位置。 请确保用于创建应用程序网关的所有命令都使用相同的资源组。
 
 ## <a name="create-a-virtual-network-and-a-subnet-for-the-application-gateway"></a>为应用程序网关创建虚拟网络和子网
 
@@ -144,7 +144,7 @@ $apimsubnet = New-AzVirtualNetworkSubnetConfig -Name "apim02" -AddressPrefix "10
 
 ### <a name="step-3"></a>步骤 3
 
-在美国西部地区的资源组“apim-appGw-RG”中创建名为“appgwvnet”的虚拟网络   。 使用前缀 10.0.0.0/16 以及子网 10.0.0.0/24 和 10.0.1.0/24。
+在“中国北部”区域的资源组“apim-appGw-RG”中创建名为“appgwvnet”的虚拟网络   。 使用前缀 10.0.0.0/16 以及子网 10.0.0.0/24 和 10.0.1.0/24。
 
 ```powershell
 $vnet = New-AzVirtualNetwork -Name "appgwvnet" -ResourceGroupName $resGroupName -Location $location -AddressPrefix "10.0.0.0/16" -Subnet $appgatewaysubnet,$apimsubnet
@@ -155,20 +155,24 @@ $vnet = New-AzVirtualNetwork -Name "appgwvnet" -ResourceGroupName $resGroupName 
 分配一个子网变量供后续步骤使用
 
 ```powershell
-$appgatewaysubnetdata=$vnet.Subnets[0]
-$apimsubnetdata=$vnet.Subnets[1]
+$appgatewaysubnetdata = $vnet.Subnets[0]
+$apimsubnetdata = $vnet.Subnets[1]
 ```
-## <a name="create-an-api-management-service-inside-a-vnet-configured-in-internal-mode"></a>在 VNET 中创建一个配置为内部模式的 API 管理服务
 
-以下示例演示如何在 VNET 中创建一个配置为仅供内部访问的 API 管理服务。
+## <a name="create-an-api-management-service-inside-a-vnet-configured-in-internal-mode"></a>在以内部模式配置的 VNET 中创建 API 管理服务
+
+以下示例演示如何在配置为仅供内部访问的 VNET 中创建 API 管理服务。
 
 ### <a name="step-1"></a>步骤 1
+
 使用前面创建的子网 $apimsubnetdata 创建一个 API 管理虚拟网络对象。
 
 ```powershell
 $apimVirtualNetwork = New-AzApiManagementVirtualNetwork -SubnetResourceId $apimsubnetdata.Id
 ```
+
 ### <a name="step-2"></a>步骤 2
+
 在虚拟网络中创建一个 API 管理服务。
 
 ```powershell
@@ -178,9 +182,12 @@ $apimAdminEmail = "admin@contoso.com" # administrator's email address
 $apimService = New-AzApiManagement -ResourceGroupName $resGroupName -Location $location -Name $apimServiceName -Organization $apimOrganization -AdminEmail $apimAdminEmail -VirtualNetwork $apimVirtualNetwork -VpnType "Internal" -Sku "Developer"
 ```
 
-上述命令成功后，请参阅 [DNS Configuration required to access internal VNET API Management service](api-management-using-with-internal-vnet.md#apim-dns-configuration)（访问内部 VNET API 管理服务所要完成的 DNS 配置）访问该服务。 此步骤可能需要半个多小时。
+上述命令成功后，请参阅[访问内部 VNET API 管理服务所需完成的 DNS 配置](api-management-using-with-internal-vnet.md#apim-dns-configuration)访问该服务。 此步骤可能需要半个多小时。
 
 ## <a name="set-up-a-custom-domain-name-in-api-management"></a>在 API 管理中设置自定义域名
+
+> [!IMPORTANT]
+> 除了以下步骤之外，[新开发人员门户](api-management-howto-developer-portal.md)还需要能够连接到 API 管理的管理终结点。
 
 ### <a name="step-1"></a>步骤 1
 
@@ -223,15 +230,15 @@ Set-AzApiManagement -InputObject $apimService
 $publicip = New-AzPublicIpAddress -ResourceGroupName $resGroupName -name "publicIP01" -location $location -AllocationMethod Dynamic
 ```
 
-服务启动时，一个 IP 地址会分配到应用程序网关。
+服务启动时，会将一个 IP 地址分配到应用程序网关。
 
 ## <a name="create-application-gateway-configuration"></a>创建应用程序网关配置
 
-在创建应用程序网关之前，必须设置所有配置项。 以下步骤将创建应用程序网关资源所需的配置项。
+在创建应用程序网关之前，必须设置所有配置项目。 以下步骤会创建应用程序网关资源所需的配置项目。
 
 ### <a name="step-1"></a>步骤 1
 
-创建名为 **gatewayIP01** 的应用程序网关 IP 配置。 当应用程序网关启动时，它会从配置的子网获取 IP 地址，再将网络流量路由到后端 IP 池中的 IP 地址。 请记住，每个实例需要一个 IP 地址。
+创建名为“gatewayIP01”  的应用程序网关 IP 配置。 当应用程序网关启动时，它会从配置的子网获取 IP 地址，再将网络流量路由到后端 IP 池中的 IP 地址。 请记住，每个实例需要一个 IP 地址。
 
 ```powershell
 $gipconfig = New-AzApplicationGatewayIPConfiguration -Name "gatewayIP01" -Subnet $appgatewaysubnetdata
@@ -244,6 +251,7 @@ $gipconfig = New-AzApplicationGatewayIPConfiguration -Name "gatewayIP01" -Subnet
 ```powershell
 $fp01 = New-AzApplicationGatewayFrontendPort -Name "port01"  -Port 443
 ```
+
 ### <a name="step-3"></a>步骤 3
 
 使用公共 IP 终结点配置前端 IP。
@@ -263,7 +271,7 @@ $certPortal = New-AzApplicationGatewaySslCertificate -Name "cert02" -Certificate
 
 ### <a name="step-5"></a>步骤 5
 
-为应用程序网关创建 HTTP 侦听器。 为其分配要使用的前端 IP 配置、端口和 SSL 证书。
+为应用程序网关创建 HTTP 侦听器。 为其分配前端 IP 配置、端口和 TLS/SSL 证书。
 
 ```powershell
 $listener = New-AzApplicationGatewayHttpListener -Name "listener01" -Protocol "Https" -FrontendIPConfiguration $fipconfig01 -FrontendPort $fp01 -SslCertificate $cert -HostName $gatewayHostname -RequireServerNameIndication true
@@ -272,11 +280,11 @@ $portalListener = New-AzApplicationGatewayHttpListener -Name "listener02" -Proto
 
 ### <a name="step-6"></a>步骤 6
 
-为 API 管理服务的 `ContosoApi` 代理域断点创建自定义探测。 路径 `/status-0123456789abcdef` 是所有 API 管理服务中托管的默认运行状况终结点。 将 `api.contoso.net` 设置为自定义探测主机名，以便使用 SSL 证书保护它。
+为 API 管理服务的 `ContosoApi` 代理域断点创建自定义探测。 路径 `/status-0123456789abcdef` 是所有 API 管理服务中托管的默认运行状况终结点。 将 `api.contoso.net` 设置为自定义探测主机名，以便使用 TLS/SSL 证书保护它。
 
 > [!NOTE]
-> 主机名 `contosoapi.azure-api.net` 是在公共 Azure 中创建名为 `contosoapi` 的服务时配置的默认代理主机名。 
-> 
+> 主机名 `contosoapi.azure-api.net` 是在公共 Azure 中创建名为 `contosoapi` 的服务时配置的默认代理主机名。
+>
 
 ```powershell
 $apimprobe = New-AzApplicationGatewayProbeConfig -Name "apimproxyprobe" -Protocol "Https" -HostName $gatewayHostname -Path "/status-0123456789abcdef" -Interval 30 -Timeout 120 -UnhealthyThreshold 8
@@ -285,7 +293,7 @@ $apimPortalProbe = New-AzApplicationGatewayProbeConfig -Name "apimportalprobe" -
 
 ### <a name="step-7"></a>步骤 7
 
-上传要在已启用 SSL 的后端池资源上使用的证书。 该证书与你在上述步骤 4 中所提供的证书相同。
+上传要在已启用 TLS 的后端池资源上使用的证书。 该证书与上述步骤 4 中所提供的证书相同。
 
 ```powershell
 $authcert = New-AzApplicationGatewayAuthenticationCertificate -Name "whitelistcert1" -CertificateFile $gatewayCertCerPath
@@ -347,7 +355,7 @@ $appgw = New-AzApplicationGateway -Name $appgwName -ResourceGroupName $resGroupN
 
 ## <a name="cname-the-api-management-proxy-hostname-to-the-public-dns-name-of-the-application-gateway-resource"></a>创建从 API 管理代理主机名到应用程序网关资源公共 DNS 名称的 CNAME 映射
 
-创建网关后，下一步是配置前端以进行通信。 使用公共 IP 时，应用程序网关需要动态分配的 DNS 名称，因此可能不容易使用。 
+创建网关后，下一步是配置用于通信的前端。 使用公共 IP 时，应用程序网关需要动态分配的 DNS 名称，因此可能不易于使用。
 
 应使用应用程序网关的 DNS 名称来创建 CNAME 记录，使 APIM 代理主机名（例如，上面示例中的 `api.contoso.net`）指向此 DNS 名称。 若要配置前端 IP CNAME 记录，可使用 PublicIPAddress 元素检索应用程序网关及其关联的 IP/DNS 名称的详细信息。 不建议使用 A 记录，因为重新启动网关后 VIP 可能会变化。
 
@@ -356,13 +364,14 @@ Get-AzPublicIpAddress -ResourceGroupName $resGroupName -Name "publicIP01"
 ```
 
 ## <a name="summary"></a><a name="summary"> </a> 摘要
-VNET 中配置的 Azure API 管理为配置的所有 API 提供单个网关接口，无论这些 API 是托管在本地还是云中。 将应用程序网关与 API 管理集成可以灵活地、有选择性地定义允许在 Internet 上访问哪些特定的 API，以及向 API 管理实例提供 Web 应用程序防火墙作为前端。
+VNET 中配置的 Azure API 管理为配置的所有 API 提供单个网关接口，无论这些 API 是托管在本地还是云中。 将应用程序网关与 API 管理集成可以灵活地、有选择性地允许从 Internet 上访问特定 API，以及向 API 管理实例提供 Web 应用程序防火墙作为前端。
 
 ## <a name="next-steps"></a><a name="next-steps"></a>后续步骤
 * 详细了解 Azure 应用程序网关
   * [应用程序网关概述](../application-gateway/application-gateway-introduction.md)
   * [应用程序网关 Web 应用程序防火墙](../application-gateway/application-gateway-webapplicationfirewall-overview.md)
-  * [使用基于路径路由的应用程序网关](../application-gateway/application-gateway-create-url-route-arm-ps.md)
+  * [使用基于路径的路由的应用程序网关](../application-gateway/application-gateway-create-url-route-arm-ps.md)
 * 详细了解 API 管理和 VNET
-  * [只能在 VNET 内使用 API 管理](./api-management-using-with-internal-vnet.md)
-  * [在 VNET 中使用 API 管理](./api-management-using-with-vnet.md)
+  * [使用只能在 VNET 内使用的 API 管理](api-management-using-with-internal-vnet.md)
+  * [在 VNET 中使用 API 管理](api-management-using-with-vnet.md)
+

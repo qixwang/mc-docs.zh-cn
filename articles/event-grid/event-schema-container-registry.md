@@ -1,25 +1,27 @@
 ---
-title: Azure 事件网格容器注册表事件架构
+title: 充当事件网格源的 Azure 容器注册表
 description: 介绍为 Azure 事件网格中的容器注册表事件提供的属性
 services: event-grid
-author: spelluru
+author: Johnnytechn
 manager: timlt
 ms.service: event-grid
-ms.topic: reference
-ms.date: 03/12/2019
-ms.author: v-yiso
-ms.openlocfilehash: 75803d7f9e3d35cc21d6c17cfc3a80af6e8ffa3a
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.topic: conceptual
+ms.date: 05/06/2020
+ms.author: v-johya
+ms.openlocfilehash: baddc8bb9963f50bc3c4b6e2cb3cb91dd3ef882d
+ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "66195218"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "83001968"
 ---
-# <a name="azure-event-grid-event-schema-for-container-registry"></a>容器注册表的 Azure 事件网格事件架构
+# <a name="azure-container-registry-as-an-event-grid-source"></a>充当事件网格源的 Azure 容器注册表
 
 本文提供了容器注册表事件的属性和架构。 有关事件架构的简介，请参阅 [Azure 事件网格事件架构](event-schema.md)。
 
-## <a name="available-event-types"></a>可用事件类型
+## <a name="event-grid-event-schema"></a>事件网格事件架构
+
+### <a name="available-event-types"></a>可用事件类型
 
 Azure 容器注册表发出以下事件类型：
 
@@ -30,7 +32,7 @@ Azure 容器注册表发出以下事件类型：
 | Microsoft.ContainerRegistry.ChartPushed | 推送 Helm 图表时引发。 |
 | Microsoft.ContainerRegistry.ChartDeleted | 删除 Helm 图表时引发。 |
 
-## <a name="example-event"></a>示例事件
+### <a name="example-event"></a>示例事件
 
 以下示例显示了映像推送事件的架构： 
 
@@ -151,7 +153,7 @@ Azure 容器注册表发出以下事件类型：
 }]
 ```
 
-## <a name="event-properties"></a>事件属性
+### <a name="event-properties"></a>事件属性
 
 事件具有以下顶级数据：
 

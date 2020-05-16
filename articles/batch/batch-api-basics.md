@@ -15,12 +15,12 @@ origin.date: 08/29/2019
 ms.date: 09/20/2019
 ms.author: v-lingwu
 ms.custom: seodec18
-ms.openlocfilehash: 79575f400b204005ffd6608806553abde59c5327
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: e5691a2b3764294e423bf375b85aa546e3b18a45
+ms.sourcegitcommit: 1fbdefdace8a1d3412900c6c3f89678d8a9b29bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79293058"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82886913"
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>使用 Batch 开发大规模并行计算解决方案
 
@@ -29,7 +29,7 @@ ms.locfileid: "79293058"
 不管是在开发可发出直接 [REST API][batch_rest_api] 调用的分布式计算应用程序或服务，还是使用某个 [Batch SDK](batch-apis-tools.md#azure-accounts-for-batch-development)，都可以使用本文中介绍的多种资源和功能。
 
 > [!TIP]
-> 有关 Batch 服务的更全面介绍，请参阅 [Basics of Azure Batch](batch-technical-overview.md)（Azure Batch 基础知识）。
+> 有关 Batch 服务的更全面介绍，请参阅 [Basics of Azure Batch](batch-technical-overview.md)（Azure Batch 基础知识）。 另请参阅最新的 [Batch 服务更新](https://updates.azure.cn/?product=batch)。
 >
 >
 
@@ -90,7 +90,7 @@ Batch 支持以下类型的 Azure 存储帐户：
 
 有关存储帐户的详细信息，请参阅 [Azure 存储帐户概述](../storage/common/storage-account-overview.md)。
 
-创建 Batch 帐户时可以将存储帐户与 Batch 帐户关联，也可以稍后关联。 选择存储帐户时，请考虑成本和性能要求。 例如，与 GPv1 相比，GPv2 和 blob 存储帐户选项支持更大的[容量和可伸缩性限制](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/)。 （请联系 Azure 支持以请求提高存储上限。）对于包含大量读取或写入存储帐户的并行任务的 Batch 解决方案，这些帐户选项可以提高其性能。
+创建 Batch 帐户时可以将存储帐户与 Batch 帐户关联，也可以稍后关联。 选择存储帐户时，请考虑成本和性能要求。 例如，与 GPv1 相比，GPv2 和 Blob 存储帐户选项支持更大的[容量和可伸缩性限制]<!--404-->。 （请联系 Azure 支持以请求提高存储上限。）对于包含大量读取或写入存储帐户的并行任务的 Batch 解决方案，这些帐户选项可以提高其性能。
 
 ## <a name="compute-node"></a>计算节点
 计算节点是专门用于处理一部分应用程序工作负荷的 Azure 虚拟机 (VM) 或云服务 VM。 节点大小确定了 CPU 核心数目、内存容量，以及分配给节点的本地文件系统大小。 可以使用 [Azure 虚拟机市场][vm_marketplace]提供的 Azure 云服务映像或自己准备的自定义映像创建 Windows 或 Linux 节点池。 有关这些选项的详细信息，请参阅下面的 [池](#pool) 部分。
@@ -525,7 +525,7 @@ Batch 可以处理使用 Azure 存储将应用程序包存储及部署到计算�
 [1]: ./media/batch-api-basics/node-folder-structure.png
 
 [azure_storage]: https://www.azure.cn/home/features/storage/
-[batch_forum]: https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurebatch
+[batch_forum]: https://social.msdn.microsoft.com/Forums/home?forum=azurebatch
 [cloud_service_sizes]: ../cloud-services/cloud-services-sizes-specs.md
 [msmpi]: https://msdn.microsoft.com/library/bb524831.aspx
 [github_samples]: https://github.com/Azure/azure-batch-samples

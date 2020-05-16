@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure CLI 的 Azure 流量管理器子网替代 | Azure
+title: 使用 Azure CLI 的 Azure 流量管理器子网替代 | Azure Docs
 description: 本文帮助你了解如何使用流量管理器子网替代来替代流量管理器配置文件的路由方法，以便通过预定义的 IP 范围到终结点的映射，基于最终用户 IP 地址将流量定向到某个终结点。
 services: traffic-manager
 documentationcenter: ''
@@ -8,15 +8,16 @@ manager: digimobile
 ms.topic: article
 ms.service: traffic-manager
 origin.date: 09/18/2019
-ms.date: 02/24/2020
+ms.date: 05/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: ab7bb4f516297401181d4a95ff26bf70c27355f0
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 8ac2b3b151bb6feff03e60c9303807114263f472
+ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77653201"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "83001884"
 ---
+<!--Verified successfully-->
 # <a name="traffic-manager-subnet-override-using-azure-cli"></a>使用 Azure CLI 的流量管理器子网替代
 
 使用流量管理器子网替代可以更改配置文件的路由方法。  添加替代后，会使用预定义的 IP 范围到终结点的映射，基于最终用户的 IP 地址来定向流量。 
@@ -40,7 +41,7 @@ ms.locfileid: "77653201"
 
 [!INCLUDE [azure-cli-2-azurechinacloud-environment-parameter](../../includes/azure-cli-2-azurechinacloud-environment-parameter.md)]
 
-如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.0.28 版或更高版本。 要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI](https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest)。
+如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.0.28 版或更高版本。 若要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI](https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest)。
 
 ## <a name="update-the-traffic-manager-endpoint-with-subnet-override"></a>使用子网替代更新流量管理器终结点。
 使用 Azure CLI 通过 [az network traffic-manager endpoint update](https://docs.azure.cn/cli/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-update) 更新终结点。

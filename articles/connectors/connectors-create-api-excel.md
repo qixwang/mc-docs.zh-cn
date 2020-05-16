@@ -6,19 +6,21 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 origin.date: 08/23/2018
-ms.date: 03/09/2020
+ms.date: 05/08/2020
 ms.author: v-yeche
 tags: connectors
-ms.openlocfilehash: 44b6d860b7191ff979d694d787077a2d38047fce
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: a7a6fdbf3f2bd709131d1056096157953440e506
+ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78304692"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "83001988"
 ---
 # <a name="manage-excel-online-data-with-azure-logic-apps"></a>使用 Azure 逻辑应用管理 Excel Online 数据
 
-使用 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)和 [Excel Online for Business](https://docs.microsoft.com/connectors/excelonlinebusiness/) 连接器或 [Excel Online for OneDrive](https://docs.microsoft.com/connectors/excelonline/) 连接器，可以基于 Excel Online for Business 或 OneDrive 中的数据创建自动化任务和工作流。 此连接器提供了可以帮助你处理数据以及管理电子表格的操作，例如：
+使用 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)和 [Excel Online for OneDrive](https://docs.microsoft.com/connectors/excelonline/) 连接器，可以基于 Excel Online for Business 或 Excel Online for OneDrive 中的数据创建自动化任务和工作流。 此连接器提供了可以帮助你处理数据以及管理电子表格的操作，例如：
+
+<!--Not Available on [Excel Online for Business](https://docs.microsoft.com/connectors/excelonlinebusiness/)-->
 
 * 创建新的工作表和表。
 * 获取和管理工作表、表和行。
@@ -29,9 +31,11 @@ ms.locfileid: "78304692"
 如果你不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
 
 > [!NOTE]
-> [Excel Online for Business](https://docs.microsoft.com/connectors/excelonlinebusiness/) 和 [Excel Online for OneDrive](https://docs.microsoft.com/connectors/excelonline/) 连接器可以与 Azure 逻辑应用一起工作，不同于[适用于 PowerApps 的 Excel 连接器](https://docs.microsoft.com/connectors/excel/)。
+> [Excel Online for OneDrive](https://docs.microsoft.com/connectors/excelonline/) 连接器可用于 Azure 逻辑应用，不同于[适用于 PowerApps 的 Excel 连接器](https://docs.microsoft.com/connectors/excel/)。
 
-## <a name="prerequisites"></a>必备条件
+<!--Not Available on [Excel Online for Business](https://docs.microsoft.com/connectors/excelonlinebusiness/)-->
+
+## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅。 如果没有 Azure 订阅，请[注册一个 Azure 试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。
 
@@ -67,7 +71,8 @@ ms.locfileid: "78304692"
 
 如需技术详细信息（例如触发器、操作和限制，如连接器的 OpenAPI（以前为 Swagger）文件所述），请参阅以下连接器参考页：
 
-* [Excel Online for Business](https://docs.microsoft.com/connectors/excelonlinebusiness/)
+<!--Not Available on * [Excel Online for Business](https://docs.microsoft.com/connectors/excelonlinebusiness/)-->
+
 * [Excel Online for OneDrive](https://docs.microsoft.com/connectors/excelonline/)
 
 ## <a name="next-steps"></a>后续步骤

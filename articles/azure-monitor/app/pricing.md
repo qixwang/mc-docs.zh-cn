@@ -2,17 +2,17 @@
 title: 管理 Azure Application Insights 的使用情况和成本 | Azure Docs
 description: 在 Application Insights 中管理遥测量并监视成本。
 ms.topic: conceptual
-author: lingliw
+author: Johnnytechn
 ms.reviewer: mbullwin
 origin.date: 11/27/2019
-ms.date: 12/04/2019
-ms.author: v-lingwu
-ms.openlocfilehash: e29b8444bf2af5596de891ebf208dbb1ddac3a12
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/08/2020
+ms.author: v-johya
+ms.openlocfilehash: d3a582e940132846fd4244c9dfbd7f1decbcf96b
+ms.sourcegitcommit: 6bb9e8c0029b507ebad2533d94825723c868b32f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80290090"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82975034"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>管理 Application Insights 的使用情况和成本
 
@@ -31,7 +31,8 @@ ms.locfileid: "80290090"
 
 ## <a name="estimating-the-costs-to-manage-your-application"></a>估算应用程序的管理成本 
 
-如果你尚未使用 Application Insights，可以使用 [Azure Monitor 定价计算器](/pricing/calculator/?service=monitor)来估算 Application Insights 的使用成本。 首先在搜索框中输入“Azure Monitor”，然后单击生成的“Azure Monitor”磁贴。 在页面中向下滚动到“Azure Monitor”，然后从“类型”下拉列表中选择“Application Insights”。  在此处可以输入每月预期要收集的数据量 (GB)，因此，问题是 Application Insights 在监视应用程序时要收集多少数据。 
+如果你尚未使用 Application Insights，可以使用 [Azure Monitor 定价计算器](/pricing/calculator/?service=monitor)来估算 Application Insights 的使用成本。 首先，从“选择要包含在估算中的产品”下拉列表中选择“Azure Monitor”，然后从“类型”下拉列表中选择“Application Insights”。  在此处可以输入每月预期要收集的数据量 (GB)，因此，问题是 Application Insights 在监视应用程序时要收集多少数据。 
+<!-- Correct of Start by selecting "Azure Monitor" from the "Select a product to include it in your estimate" dropdown, and select Application Insights from the Type dropdown. -->
 
 可通过两种方法找到此问题的解答：使用 ASP.NET SDK 中提供的默认监视和自适应采样，或根据其他类似客户遇到的情况估算可能的数据引入量。
 

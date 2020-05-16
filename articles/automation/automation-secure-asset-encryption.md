@@ -1,5 +1,5 @@
 ---
-title: 加密自动化中的安全资产
+title: 加密 Azure 自动化中的安全资产
 description: Azure 自动化使用多个加密级别来保护安全资产。 默认情况下，加密是使用 Microsoft 托管密钥实现的。 客户可将其自动化帐户配置为使用客户管理的密钥进行加密。 本文将详细介绍这两种加密模式，以及如何在两者之间进行切换。
 services: automation
 ms.service: automation
@@ -7,17 +7,17 @@ ms.subservice: process-automation
 author: WenJason
 ms.author: v-jay
 origin.date: 01/11/2020
-ms.date: 03/30/2020
+ms.date: 05/11/2020
 ms.topic: conceptual
 manager: digimobile
-ms.openlocfilehash: ca6f97c26715a77d44b955451980fb37214fff38
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: d966c9550562fd1f3103d8cc3c5d095cdf2922b3
+ms.sourcegitcommit: 7443ff038ea8afe511f7419d9c550d27fb642246
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80290492"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "83001591"
 ---
-# <a name="secure-assets-in-azure-automation"></a>Azure 自动化中的安全资产
+# <a name="encrypt-secure-assets-in-azure-automation"></a>加密 Azure 自动化中的安全资产
 
 Azure 自动化中的安全资产包括凭据、证书、连接和加密的变量。 这些资产在 Azure 自动化中通过多个加密级别受到保护。 根据用于加密的顶级密钥，可通过两种加密模型实现加密：
 - 使用 Microsoft 托管密钥
@@ -128,6 +128,9 @@ PUT https://management.chinacloudapi.cn/subscriptions/00000000-0000-0000-0000-00
   }
 }
 ```
+
+> [!NOTE]
+> 必须在自动化帐户的托管标识的响应中分别为“tenantId”  和“objectId”  字段提供 identity.tenantId  和 identity.principalId  的值。
 
 ### <a name="change-the-configuration-of-automation-account-to-use-customer-managed-key"></a>将自动化帐户的配置更改为使用客户管理的密钥
 

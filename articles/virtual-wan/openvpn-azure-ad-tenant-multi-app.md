@@ -1,28 +1,28 @@
 ---
-title: 虚拟 WAN：不同用户组的 Azure AD 租户：Azure AD 身份验证
+title: 虚拟 WAN - 适用于不同用户组的 Azure AD 租户 - Azure AD 身份验证
 description: 可以使用 P2S VPN 通过 Azure AD 身份验证连接到 VNet
 services: virtual-wan
 author: rockboyfor
 ms.service: virtual-wan
 ms.topic: conceptual
 origin.date: 02/19/2020
-ms.date: 04/03/2020
+ms.date: 05/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 0e1d2a50f124ca23f69071408f28b0eca5b34458
-ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
+ms.openlocfilehash: cda82c1c86cbc73e1b281efe3791acf8a6b6bb6d
+ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82093524"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "83001882"
 ---
 # <a name="create-an-azure-active-directory-tenant-for-p2s-openvpn-protocol-connections"></a>为 P2S OpenVPN 协议连接创建 Azure Active Directory 租户
 
-连接到 VNet 时，可以使用基于证书的身份验证或 RADIUS 身份验证。 但是，在使用开放 VPN 协议时，还可以使用 Azure Active Directory 身份验证。 如果你希望一组不同的用户能够连接到不同的 VPN 网关，可以在 AD 中注册多个应用，并将这些应用链接到不同的 VPN 网关。
+连接到 VNet 时，可以使用基于证书的身份验证或 RADIUS 身份验证。 但是，在使用开放 VPN 协议时，还可以使用 Azure Active Directory 身份验证。 如果希望不同的用户集能够连接到不同的网关，则可在 AD 中注册多个应用并将其链接到不同的网关。
 
 本文帮助你设置用于 P2S OpenVPN 身份验证的 Azure AD 租户，并在 Azure AD 中创建和注册多个应用，使不同的用户和组能够以不同的方式进行访问。
 
 > [!NOTE]
-> Azure AD 身份验证仅支持用于 OpenVPN®协议连接。
+> 仅 OpenVPN&reg; 协议连接支持 Azure AD 身份验证。
 >
 
 [!INCLUDE [create](../../includes/openvpn-azure-ad-tenant-multi-app.md)]
@@ -37,7 +37,7 @@ P2S 配置定义连接远程客户端的参数。
     ```powershell
     $aadAudience = "00000000-abcd-abcd-abcd-999999999999"
     $aadIssuer = "https://sts.chinacloudapi.cn/00000000-abcd-abcd-abcd-999999999999/"
-    $aadTenant = "https://login.chinacloudapi.cn/00000000-abcd-abcd-abcd-999999999999"    
+    $aadTenant = "https://login.partner.microsoftonline.cn/00000000-abcd-abcd-abcd-999999999999"    
     ```
 
 2. 运行以下命令创建配置：
@@ -47,7 +47,7 @@ P2S 配置定义连接远程客户端的参数。
     ```
 
     > [!NOTE]
-    > 请不要在上述命令中使用 Azure VPN 客户端的应用程序 ID：它会向所有用户授予对 VPN 网关的访问权限。 使用注册的应用程序的 ID。
+    > 请不要在上述命令中使用 Azure VPN 客户端的应用程序 ID：它会向所有用户授予对网关的访问权限。 使用注册的应用程序的 ID。
 
 <a name="hub"></a>
 ## <a name="7-edit-hub-assignment"></a>7.编辑中心分配
@@ -94,7 +94,7 @@ P2S 配置定义连接远程客户端的参数。
 若要进行连接，需要下载 Azure VPN 客户端，并在要连接到 VNet 的每台计算机上导入在前面步骤中下载的 VPN 客户端配置文件。
 
 > [!NOTE]
-> Azure AD 身份验证仅支持用于 OpenVPN®协议连接。
+> 仅 OpenVPN&reg; 协议连接支持 Azure AD 身份验证。
 >
 
 #### <a name="to-download-the-azure-vpn-client"></a>下载 Azure VPN 客户端
@@ -159,16 +159,9 @@ P2S 配置定义连接远程客户端的参数。
 
 1. 导航到虚拟 WAN。
 
-2. 在“概述”页上，地图中的每个点表示一个中心。 将鼠标悬停在任一点上可以查看中心运行状况的摘要。
+2. 在“概述”页上，地图中的每个点表示一个中心。
 
 3. 在“中心和连接”部分，可以查看中心状态、站点、区域、VPN 连接状态和传入与传出字节数。
-
-<a name="viewhealth"></a>
-## <a name="11-view-your-resource-health"></a>11.查看资源运行状况
-
-1. 导航到 WAN。
-
-2. 在“WAN”页上的“支持 + 故障排除”部分，单击“运行状况”并查看资源。  
 
 <a name="cleanup"></a>
 ## <a name="clean-up-resources"></a>清理资源

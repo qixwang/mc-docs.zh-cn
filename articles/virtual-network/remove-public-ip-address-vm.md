@@ -11,15 +11,16 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 12/04/2019
-ms.date: 01/13/2020
+ms.date: 05/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: c4849309f4809143329f3ab3881df5a59d8f1bb0
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: e015e1ef5381f9a9ebb3a4cf7e5125f75df001dd
+ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75859465"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "83002023"
 ---
+<!--Verified successfully on portal-->
 # <a name="dissociate-a-public-ip-address-from-an-azure-vm"></a>将公共 IP 地址与 Azure VM 取消关联 
 
 本文介绍如何将公共 IP 地址与 Azure 虚拟机 (VM) 取消关联。
@@ -28,7 +29,7 @@ ms.locfileid: "75859465"
 
 ## <a name="azure-portal"></a>Azure 门户
 
-1. 登录 [Azure 门户](https://portal.azure.cn)。
+1. 登录到 [Azure 门户](https://portal.azure.cn)。
 2. 浏览或搜索要将公共 IP 地址与之取消关联的虚拟机，然后将其选中。
 3. 在“VM”页中选择“概览”  ，然后选择公共 IP 地址，如下图所示：
 
@@ -49,7 +50,10 @@ ms.locfileid: "75859465"
 
 [!INCLUDE [azure-cli-2-azurechinacloud-environment-parameter](../../includes/azure-cli-2-azurechinacloud-environment-parameter.md)]
 
-1. 如果在 Bash 本地使用 CLI，请使用 `az login` 登录到 Azure。
+1. 如果在本地使用 CLI，请使用 `az login` 登录到 Azure。
+
+    <!--Not Available on in Bash-->
+    
 2. 公共 IP 地址将关联到 VM 上附加的网络接口的 IP 配置。 使用 [az network nic-ip-config update](https://docs.azure.cn/cli/network/nic/ip-config?view=azure-cli-latest#az-network-nic-ip-config-update) 命令将公共 IP 地址与 IP 配置取消关联。 以下示例将公共 IP 地址 *myVMPublicIP* 与资源组 *myResourceGroup* 中现有网络接口 *myVMVMNic*（已附加到名为 *myVM* 的 VM）的 IP 配置 *ipconfigmyVM* 取消关联。
 
     ```azurecli

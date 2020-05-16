@@ -8,22 +8,22 @@ origin.date: 06/06/2019
 ms.date: 03/30/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 94a04836b145816eed8142068c6a5a20f300c97e
-ms.sourcegitcommit: 9b0a89269a7e422570b7bc0ca983f60d2f317d48
+ms.openlocfilehash: 5989a29280f6f311ade7db5d4183728644bec1d7
+ms.sourcegitcommit: 6bb9e8c0029b507ebad2533d94825723c868b32f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81675786"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82975032"
 ---
 # <a name="azure-app-service-access-restrictions"></a>Azure 应用服务访问限制 #
 
-使用访问限制可以定义一个按优先级排序的允许/拒绝列表，用于控制在网络中对应用的访问。 该列表可以包含 IP 地址或 Azure 虚拟网络子网。 如果存在一个或多个条目，则在列表末尾会存在一个隐式的“拒绝所有”。
+使用访问限制可以定义一个按优先级排序的允许/拒绝列表，用于控制在网络中对应用的访问。 此列表包含 IP 地址。 如果存在一个或多个条目，则在列表末尾会存在一个隐式的“拒绝所有”。
 
 访问限制功能适用于所有应用服务托管的工作负载，包括 Web 应用、API 应用和 Functions。
 
  <!-- If the FROM address is in a subnet that is configured with service endpoints to Microsoft.Web, then the source subnet is compared against the virtual network rules in your access restrictions list.  -->
 
-向应用发出请求时，将会根据访问限制列表中的 IP 地址规则评估 FROM IP 地址。 如果列表中的规则不允许访问该地址，则服务会以 [HTTP 403](https://wikipedia.org/wiki/HTTP_403) 状态代码进行答复。
+向应用发出请求时，将会根据访问限制列表中的 IP 地址规则评估 FROM IP 地址。 如果列表中的规则不允许访问该地址，则服务会以“HTTP 403”状态代码进行答复。
 
 访问限制功能是在应用服务前端角色（即代码运行所在的辅助角色主机中的上游）中实现的。 因此，访问限制是有效的网络 ACL。
 
@@ -33,7 +33,7 @@ ms.locfileid: "81675786"
 
 ## <a name="adding-and-editing-access-restriction-rules-in-the-portal"></a>在门户中添加并编辑访问限制规则 ##
 
-若要向应用添加访问限制规则，请使用菜单打开“网络”>“访问限制”，然后单击“配置访问限制”   
+若要向应用添加访问限制规则，请通过菜单打开“网络”>“访问限制”，然后单击“配置访问限制”   
 
 ![应用服务网络选项](media/app-service-ip-restrictions/access-restrictions.png)  
 
@@ -53,7 +53,7 @@ ms.locfileid: "81675786"
 
 ![添加 IP 访问限制规则](media/app-service-ip-restrictions/access-restrictions-ip-add.png)
 
-若要设置基于 IP 地址的规则，请选择 IPv4 或 IPv6 类型。 对于 IPv4 和 IPv6 地址，必须在 CIDR 表示法中指定 IP 地址表示法。 若要指定确切的地址，可以使用类似 1.2.3.4/32 的格式，其中前四个八位字节代表自己的 IP 地址，/32 为掩码。 所有地址的 IPv4 CIDR 表示法都为 0.0.0.0/0。 要详细了解 CIDR 表示法，请阅读[无类别域际路由选择](https://wikipedia.org/wiki/Classless_Inter-Domain_Routing)。 
+若要设置基于 IP 地址的规则，请选择 IPv4 或 IPv6 类型。 对于 IPv4 和 IPv6 地址，必须在 CIDR 表示法中指定 IP 地址表示法。 若要指定确切的地址，可以使用类似 1.2.3.4/32 的格式，其中前四个八位字节代表自己的 IP 地址，/32 为掩码。 所有地址的 IPv4 CIDR 表示法都为 0.0.0.0/0。 要详细了解 CIDR 表示法，请阅读“无类别域间路由”。 
 
 <!-- ## Service endpoints -->
 
@@ -63,9 +63,11 @@ ms.locfileid: "81675786"
 
 ![编辑访问限制规则](media/app-service-ip-restrictions/access-restrictions-ip-edit.png)
 
-编辑规则时，无法更改 IP 地址规则与虚拟网络规则这两种类型。 
+<!--
+When you edit a rule, you cannot change the type between an IP address rule and a Virtual Network rule. 
 
-![编辑访问限制规则](media/app-service-ip-restrictions/access-restrictions-vnet-edit.png)
+![edit an access restriction rule](media/app-service-ip-restrictions/access-restrictions-vnet-edit.png)
+-->
 
 若要删除某个规则，请单击规则上的“...”然后单击“删除”   。
 

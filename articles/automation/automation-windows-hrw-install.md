@@ -4,14 +4,14 @@ description: 本文介绍如何安装 Azure 自动化混合 Runbook 辅助角色
 services: automation
 ms.subservice: process-automation
 origin.date: 12/10/2019
-ms.date: 03/30/2020
+ms.date: 04/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0cc3139cc568ed32a1544e0c56fb024f9fd49995
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: c297041971b3af4f70ac33f7cabb8abeaa40a769
+ms.sourcegitcommit: 7443ff038ea8afe511f7419d9c550d27fb642246
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80290405"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "83001590"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>部署 Windows 混合 Runbook 辅助角色
 
@@ -25,7 +25,7 @@ ms.locfileid: "80290405"
 
 若要安装和配置 Windows 混合 Runbook 辅助角色，可使用下述方法中的一种。
 
-* 对于 Azure VM，请通过[适用于 Windows 的虚拟机扩展](../virtual-machines/extensions/oms-windows.md)安装适用于 Windows 的 Log Analytics 代理。 该扩展通过 Azure 资源管理器模板或 PowerShell 在 Azure 虚拟机上安装 Log Analytics 代理，并将虚拟机注册到现有的 Log Analytics 工作区中。 安装代理后，可将 VM 添加到自动化帐户中的混合 Runbook 辅助角色组，只需执行下面的[手动部署](#manual-deployment)部分中的步骤 4 即可。
+* 对于 Azure VM，请通过[适用于 Windows 的虚拟机扩展](../virtual-machines/extensions/oms-windows.md)安装适用于 Windows 的 Log Analytics 代理。 该扩展通过 Azure 资源管理器模板或 PowerShell 在 Azure 虚拟机上安装 Log Analytics 代理，并将虚拟机注册到现有的 Log Analytics 工作区中。 安装代理后，可将 VM 添加到自动化帐户中的混合 Runbook 辅助角色组。 请参阅[手动部署](#manual-deployment)部分中的步骤 3 和步骤 4。
 
 * 使用自动化 Runbook 来彻底实现配置 Windows 计算机过程的自动化。 对于数据中心或其他云环境中的计算机，建议使用此方法。
 
@@ -106,7 +106,7 @@ Windows 混合 Runbook 辅助角色的最低要求如下：
 
 ### <a name="step-1---create-a-log-analytics-workspace"></a>步骤 1 - 创建 Log Analytics 工作区
 
-如果尚无 Log Analytics 工作区，请按照[管理工作区](../azure-monitor/platform/manage-access.md)中的说明创建工作区。 如果已经有一个工作区，则可以使用现有的。 
+如果还没有 Log Analytics 工作区，请在创建工作区前查看 [Azure Monitor 日志设计指南](../azure-monitor/platform/design-logs-deployment.md)。
 
 ### <a name="step-2---add-the-automation-solution-to-the-log-analytics-workspace"></a>步骤 2 - 将自动化解决方案添加到 Log Analytics 工作区
 
