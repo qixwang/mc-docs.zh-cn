@@ -3,16 +3,16 @@ title: 使用 Azure Stack Hub 中的监视数据
 description: 了解有关使用 Azure Stack Hub 中的监视数据的选项。
 author: WenJason
 ms.topic: article
-origin.date: 11/11/2019
-ms.date: 02/24/2020
+origin.date: 04/20/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.lastreviewed: 11/11/2019
-ms.openlocfilehash: a621687d71864f9189cb4df786857a64af4ff8de
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 59598bc066179d34aab500f9462087f667166888
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540752"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422646"
 ---
 # <a name="consume-monitoring-data-from-azure-stack-hub"></a>使用 Azure Stack Hub 中的监视数据
 

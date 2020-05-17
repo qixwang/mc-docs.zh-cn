@@ -4,16 +4,16 @@ description: 本文介绍如何从 Azure Analysis Services 数据库备份和还
 author: rockboyfor
 ms.service: azure-analysis-services
 ms.topic: conceptual
-origin.date: 10/30/2019
-ms.date: 11/25/2019
+origin.date: 03/30/2020
+ms.date: 04/30/2020
 ms.author: v-yeche
 ms.reviewer: minewiskan
-ms.openlocfilehash: e676faadb5f3df69f1980d8325a6e4d15e776268
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 2c6fa16af5301ce83347430dff06e3e77ed381d4
+ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74203639"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83392402"
 ---
 # <a name="backup-and-restore"></a>备份和还原
 

@@ -3,17 +3,17 @@ title: 修改 Azure Stack Hub 交换机配置上的特定设置
 description: 了解可以在 Azure Stack Hub 交换机配置上进行哪些自定义。 在原始设备制造商 (OEM) 创建配置以后，请勿在没有获得 OEM 或 Microsoft Azure Stack Hub 工程团队同意的情况下更改它。
 author: WenJason
 ms.topic: article
-origin.date: 11/11/2019
-ms.date: 02/24/2020
+origin.date: 03/04/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: wamota
 ms.lastreviewed: 11/11/2019
-ms.openlocfilehash: b32158f38ad11c5a80a105e6e53e2e71663d8694
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: b3804f665104c2e986cc3049a8d1e435d004a4e6
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292433"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422387"
 ---
 #  <a name="modify-specific-settings-on-your-azure-stack-hub-switch-configuration"></a>修改 Azure Stack Hub 交换机配置上的特定设置
 

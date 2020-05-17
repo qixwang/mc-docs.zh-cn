@@ -7,12 +7,12 @@ origin.date: 03/10/2020
 ms.date: 04/27/2020
 ms.author: v-jay
 ms.reviewer: vanto
-ms.openlocfilehash: 148ae66d851e519c1081ef1125604792e14b515e
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.openlocfilehash: 909921efe40cb29a58c1f4dd850d2acaed156133
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82126729"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83435444"
 ---
 在此步骤中，你将创建一个 Azure SQL 数据库服务器和一个使用 AdventureWorksLT 示例数据的数据库。 可以通过使用 Azure 门户菜单和屏幕，或通过使用 Azure CLI 或 PowerShell 脚本来创建数据库。
 
@@ -145,7 +145,7 @@ az sql db create \
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-可以使用 Windows PowerShell 创建 Azure 资源组、SQL 服务器和单一数据库。 如果不想使用 Azure Cloud Shell，请[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)。
+可以使用 Windows PowerShell 创建 Azure 资源组、SQL 服务器和单一数据库。 [安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 

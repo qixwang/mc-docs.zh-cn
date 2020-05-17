@@ -3,17 +3,17 @@ title: Azure Stack Hub 市场概述
 description: Azure Stack Hub 市场和市场项概述。
 author: WenJason
 ms.topic: article
-origin.date: 08/12/2019
-ms.date: 02/24/2020
+origin.date: 04/20/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: ihcherie
 ms.lastreviewed: 05/07/2019
-ms.openlocfilehash: 9743b9c601962ed782f2905463a57b5142b9021c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 567539d30a34563aac99a0d81ca0b4db407956d6
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540871"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422555"
 ---
 # <a name="azure-stack-hub-marketplace-overview"></a>Azure Stack Hub 市场概述
 

@@ -4,16 +4,16 @@ description: 了解如何使用 PowerShell 启用基础结构备份服务，以�
 author: WenJason
 ms.topic: article
 origin.date: 04/25/2019
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: hectorl
 ms.lastreviewed: 03/14/2019
-ms.openlocfilehash: f273746b257cad61457373b54cde0d48e0bd8f6c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 8f82afe008814107bd210c042dfa50c74e04e2a8
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540887"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422407"
 ---
 # <a name="enable-backup-for-azure-stack-hub-with-powershell"></a>使用 PowerShell 为 Azure Stack Hub 启用备份
 

@@ -4,16 +4,16 @@ description: 了解如何在 Azure Active Directory 中创建用户帐户，以�
 author: WenJason
 ms.topic: article
 origin.date: 05/20/2019
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: thoroet
-ms.lastreviewed: 09/17/2018
-ms.openlocfilehash: 3f440a523bb712665aa4c8c4d26dedc25325b0fc
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.lastreviewed: 09/17/2019
+ms.openlocfilehash: 70e5bff2bcb65ac812e418f7b7d89b460cb19a85
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540902"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422560"
 ---
 # <a name="add-a-new-azure-stack-hub-user-account-in-azure-active-directory-azure-ad"></a>在 Azure Active Directory (Azure AD) 中添加新的 Azure Stack Hub 用户帐户
 

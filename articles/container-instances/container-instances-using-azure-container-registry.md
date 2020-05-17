@@ -4,15 +4,15 @@ description: 了解如何通过从 Azure 容器注册表拉取容器映像在 Az
 services: container-instances
 ms.topic: article
 origin.date: 02/18/2020
-ms.date: 04/06/2020
+ms.date: 04/30/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 1295b07b8af64f49f81071a6b4a371c35c36a858
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: eb09abc21dbf0be20763359230aac56bbe47c37c
+ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80516974"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83392251"
 ---
 <!--Verified successfully-->
 # <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>从 Azure 容器注册表部署到 Azure 容器实例
@@ -119,7 +119,7 @@ az container create \
 `--dns-name-label` 值必须在 Azure 中唯一，因此，上述命令会将一个随机数字追加到容器的 DNS 名称标签。 该命令的输出显示容器的完全限定域名 (FQDN)，例如：
 
 ```output
-"aci-demo-25007.chinaeast 2.azurecontainer.console.azure.cn"
+"aci-demo-25007.chinaeast2.azurecontainer.console.azure.cn"
 ```
 
 成功启动容器后，可在浏览器导航到容器的 FQDN，以验证应用程序是否成功运行。

@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 origin.date: 02/22/2017
 ms.date: 3/20/2020
 ms.author: v-lingwu
-ms.openlocfilehash: ed5e044d9f71fa511e0eefd6e9e3248e61385d86
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 6b9747fbf5a01311b54b74c0719cc67915039f4a
+ms.sourcegitcommit: b81ea2ab9eafa986986fa3eb1e784cfe9bbf9ec1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80109782"
+ms.lasthandoff: 05/13/2020
+ms.locfileid: "83367871"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>针对网络安全组进行流日志记录简介
 
@@ -90,11 +90,11 @@ https://{storageAccountName}.blob.core.chinacloudapi.cn/insights-logs-networksec
 
 **在附加到资源的所有 NSG 上启用 NSG 流日志记录**：Azure 中的流日志记录是在 NSG 资源上配置的。 一个流只与一个 NSG 规则相关联。 如果利用多个 NSG，则我们建议在应用资源子网或网络接口的所有 NSG 上启用 NSG 流日志记录，以确保记录所有流量。 有关详细信息，请参阅网络安全组中的[流量评估方式](../virtual-network/security-overview.md#how-traffic-is-evaluated)。
 
-**流日志记录成本**：NSG 流日志记录按生成的日志量计费。 流量较高时，流日志的量和相关成本可能会增大。 NSG 流日志定价不包括基本的存储成本。 将保留策略功能与 NSG 流日志记录配合使用意味着在较长时间内会产生单独的存储成本。 如果不需要使用保留策略功能，我们建议将此值设置为 0。 有关详细信息，请参阅[网络观察程序定价](https://azure.microsoft.com/pricing/details/network-watcher/)和 [Azure 存储定价](https://azure.microsoft.com/pricing/details/storage/)。
+**流日志记录成本**：NSG 流日志记录按生成的日志量计费。 流量较高时，流日志的量和相关成本可能会增大。 NSG 流日志定价不包括基本的存储成本。 将保留策略功能与 NSG 流日志记录配合使用意味着在较长时间内会产生单独的存储成本。 如果不需要使用保留策略功能，我们建议将此值设置为 0。 有关详细信息，请参阅[网络观察程序定价](https://www.azure.cn/pricing/details/network-watcher/)和 [Azure 存储定价](https://www.azure.cn/pricing/details/storage/)。
 
 **入站流被从 Internet IP 记录到了没有公共 IP 的虚拟机**：对于没有通过与 NIC 关联的公共 IP 地址分配公共 IP 地址作为实例级公共 IP 的虚拟机，或者是属于基本负载均衡器后端池的一部分的虚拟机，请使用[默认SNAT](../load-balancer/load-balancer-outbound-connections.md#defaultsnat)，并使用由 Azure 分配的 IP 地址以便于进行出站连接。 因此，如果流的目的地是分配给 SNAT 的端口范围内的端口，你可能会看到来自 Internet IP 地址的流的流日志条目。 虽然 Azure 不允许将这些流传输到 VM，但是按照设计，该尝试会被记录并显示在网络观察程序的 NSG 流日志中。 我们建议使用 NSG 来显式阻止不需要的入站 Internet 流量。
 
-**无状态流的字节和数据包计数不正确**：[网络安全组 (NSG)](https://docs.microsoft.com/azure/virtual-network/security-overview) 是作为[有状态防火墙](https://en.wikipedia.org/wiki/Stateful_firewall?oldformat=true)实现的。 但是，许多用于控制流量流的默认/内部规则是以无状态方式实现的。 由于平台限制，不会为无状态流（即通过无状态规则的流量）记录字节和数据包计数，只会为有状态流记录它们。 因此，NSG 流日志（和流量分析）中报告的字节数和数据包数可能与实际流不同。 计划在 2020 年 6 月之前修复此限制。
+**无状态流的字节和数据包计数不正确**：[网络安全组 (NSG)](https://docs.azure.cn/virtual-network/security-overview) 是作为[有状态防火墙](https://en.wikipedia.org/wiki/Stateful_firewall?oldformat=true)实现的。 但是，许多用于控制流量流的默认/内部规则是以无状态方式实现的。 由于平台限制，不会为无状态流（即通过无状态规则的流量）记录字节和数据包计数，只会为有状态流记录它们。 因此，NSG 流日志（和流量分析）中报告的字节数和数据包数可能与实际流不同。 计划在 2020 年 6 月之前修复此限制。
 
 ## <a name="sample-log-records"></a>示例日志记录
 

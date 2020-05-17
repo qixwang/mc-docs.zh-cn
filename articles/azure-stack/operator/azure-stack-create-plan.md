@@ -4,16 +4,16 @@ description: 了解如何在 Azure Stack Hub 中创建可让订阅者预配虚�
 author: WenJason
 ms.topic: conceptual
 origin.date: 06/11/2019
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: efemmano
 ms.lastreviewed: 06/11/2019
-ms.openlocfilehash: 92bd6f04bd1b64bca22474c14b987d99ec1e8e03
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 97d7f3c175970e81b31fc70b16197118426767c0
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540945"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422398"
 ---
 # <a name="create-a-plan-in-azure-stack-hub"></a>在 Azure Stack Hub 中创建计划
 

@@ -7,16 +7,16 @@ author: WenJason
 ms.service: storage
 ms.topic: tutorial
 origin.date: 12/04/2019
-ms.date: 01/06/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: c718e61dde358dcc3a87f91173d481c2acd99386
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 17668a9ba6511c881dd72510c28436fe309bede1
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75624348"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422630"
 ---
 # <a name="tutorial---encrypt-and-decrypt-blobs-using-azure-key-vault"></a>教程 - 使用 Azure 密钥保管库加密和解密 blob
 
@@ -130,8 +130,9 @@ private async static Task<string> GetToken(string authority, string resource, st
 // This is standard code to interact with Blob storage.
 StorageCredentials creds = new StorageCredentials(
     CloudConfigurationManager.GetSetting("accountName"),
-    CloudConfigurationManager.GetSetting("accountKey");
-CloudStorageAccount account = new CloudStorageAccount(creds, useHttps: true);
+    CloudConfigurationManager.GetSetting("accountKey")
+);
+CloudStorageAccount account = new CloudStorageAccount(creds, endpointSuffix: core.chinacloudapi.cn, useHttps: true);
 CloudBlobClient client = account.CreateCloudBlobClient();
 CloudBlobContainer contain = client.GetContainerReference(CloudConfigurationManager.GetSetting("container"));
 contain.CreateIfNotExists();

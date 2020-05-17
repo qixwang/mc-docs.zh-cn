@@ -3,17 +3,17 @@ title: 在 Azure Stack Hub 中设置开发环境
 description: 开始开发适用于 Azure Stack Hub 的应用程序。
 author: WenJason
 ms.topic: overview
-origin.date: 11/11/2019
-ms.date: 02/24/2020
+origin.date: 04/20/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: sijuman
 ms.lastreviewed: 11/11/2019
-ms.openlocfilehash: 21b6e7645eb6f7b4b6875c48a33e9a9ecd6b6c63
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 8b0b6abc754a0c3aa6643425c4518ca3da249867
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540814"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422068"
 ---
 # <a name="set-up-a-development-environment-in-azure-stack-hub"></a>在 Azure Stack Hub 中设置开发环境 
 

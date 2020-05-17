@@ -7,13 +7,13 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 02/03/2020
-ms.date: 02/17/2020
-ms.openlocfilehash: 2e3e4e6d5385c2b46d0760bd305dff9957bec05b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/09/2020
+ms.openlocfilehash: 05c8f846b68ded85b423c88778642de769585564
+ms.sourcegitcommit: bfbd6694da33f703481386f2a3f16850c4e94bfa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77067802"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83417633"
 ---
 # <a name="add-database-principals-for-azure-data-explorer-by-using-c"></a>使用 C# 添加 Azure 数据资源管理器的数据库主体
 
@@ -35,7 +35,7 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
 * 安装 [Microsoft.Azure.Management.kusto](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/)。
 * 安装 [Microsoft.Rest.ClientRuntime.Azure.Authentication](https://www.nuget.org/packages/Microsoft.Rest.ClientRuntime.Azure.Authentication) 以进行身份验证。
 
-[!INCLUDE [data-explorer-authentication](../../includes/data-explorer-authentication.md)]
+[!INCLUDE [data-explorer-authentication](includes/data-explorer-authentication.md)]
 
 ## <a name="add-a-database-principal"></a>添加数据库主体
 

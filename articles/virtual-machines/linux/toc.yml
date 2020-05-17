@@ -57,7 +57,7 @@
       href: powershell-samples.md
 - name: 概念
   items:
-    - name: Azure 资源管理器
+    - name: Azure Resource Manager
       href: ../../azure-resource-manager/management/overview.md?toc=/virtual-machines/linux/toc.json&bc=/virtual-machines/linux/breadcrumb/toc.json
     - name: 区域
       href: regions.md
@@ -65,6 +65,8 @@
       items:
         - name: 可用性
           href: availability.md
+        - name: 归置
+          href: co-location.md
         - name: 网络性能
           href: ../../virtual-network/virtual-network-optimize-network-bandwidth.md?toc=/virtual-machines/linux/toc.json&bc=/virtual-machines/linux/breadcrumb/toc.json
     - name: VM 类型和大小
@@ -124,6 +126,8 @@
           href: compute-benchmark-scores.md
     - name: 认可的发行版
       href: endorsed-distros.md
+    - name: 专用主机
+      href: dedicated-hosts.md
     - name: 维护和更新
       href: ../maintenance-and-updates.md?toc=/virtual-machines/linux/toc.json&bc=/virtual-machines/linux/breadcrumb/toc.json
     - name: 磁盘存储
@@ -132,10 +136,12 @@
           href: managed-disks-overview.md
         - name: 选择适用于 IaaS VM 的磁盘类型
           href: disks-types.md
-        - name: 加密
+        - name: Encryption
           href: disk-encryption.md
         - name: 为实现高性能而设计
           href: premium-storage-performance.md
+        - name: 磁盘突发
+          href: disk-bursting.md
         - name: 磁盘的可伸缩性目标
           href: disk-scalability-targets.md
         - name: 磁盘的备份和灾难恢复
@@ -164,7 +170,7 @@
       href: backup-recovery.md
     - name: 基础结构指南
       href: infrastructure-example.md
-- name: 操作方法指南
+- name: 操作指南
   items:
     - name: 创建 VM
       items:
@@ -177,7 +183,11 @@
           href: create-vm-rest-api.md
         - name: 复制或克隆 VM
           href: copy-vm.md
-    - name: 从经典部署迁移到 Azure 资源管理器部署
+        - name: 使用专用主机
+          items:
+            - name: CLI
+              href: dedicated-hosts-cli.md
+    - name: 从经典部署迁移到 Azure Resource Manager 部署
       items:
         - name: 从 2023 年 3 月 1 日开始停用
           href: ../classic-vm-deprecation.md?toc=/virtual-machines/linux/toc.json&bc=/virtual-machines/linux/breadcrumb/toc.json
@@ -187,13 +197,13 @@
           href: migration-classic-resource-manager-deep-dive.md
         - name: 规划迁移
           href: migration-classic-resource-manager-plan.md
-        - name: 使用 CLI 迁移
+        - name: 使用 CLI 进行迁移
           href: migration-classic-resource-manager-cli.md
         - name: 常见的迁移错误
           href: migration-classic-resource-manager-errors.md
         - name: 用于迁移的社区工具
           href: ../windows/migration-classic-resource-manager-community-tools.md?toc=/virtual-machines/linux/toc.json&bc=/virtual-machines/linux/breadcrumb/toc.json
-        - name: 常见问题解答
+        - name: 常见问题
           href: migration-classic-resource-manager-faq.md
     - name: 保护 VM
       items:
@@ -306,6 +316,12 @@
               href: ../maintenance-notifications-portal.md?toc=/virtual-machines/linux/toc.json&bc=/virtual-machines/linux/breadcrumb/toc.json
             - name: PowerShell
               href: ../maintenance-notifications-powershell.md?toc=/virtual-machines/linux/toc.json&bc=/virtual-machines/linux/breadcrumb/toc.json
+        - name: 维护控制
+          items:
+            - name: CLI
+              href: ../maintenance-control-cli.md?toc=/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: PowerShell
+              href: ../maintenance-control-powershell.md?toc=/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: 计划事件
           href: scheduled-events.md
     - name: 监视 VM
@@ -364,6 +380,12 @@
           href: manage-availability.md
         - name: 更改可用性集
           href: ../windows/change-availability-set.md?toc=/virtual-machines/linux/toc.json&bc=/virtual-machines/linux/breadcrumb/toc.json
+        - name: 创建邻近放置组
+          items:
+            - name: CLI
+              href: proximity-placement-groups.md
+            - name: 门户
+              href: ../windows/proximity-placement-groups-portal.md?toc=/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: 使用自动化工具
       items:
         - name: Ansible
@@ -500,7 +522,7 @@
           href: /active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm?context=virtual-machines/linux/context/linux-vm-context
         - name: PowerShell
           href: /active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm?context=virtual-machines/linux/context/linux-vm-context
-        - name: Azure 资源管理器模板
+        - name: Azure Resource Manager 模板
           displayName: ARM
           href: /active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm?context=virtual-machines/linux/context/linux-vm-context
         - name: REST
@@ -515,6 +537,10 @@
           href: move-vm.md
         - name: 将 VM 移到另一个区域
           href: ../../site-recovery/azure-to-azure-tutorial-migrate.md?toc=/virtual-machines/linux/toc.json&bc=/virtual-machines/linux/breadcrumb/toc.json
+        - name: 将维护控制配置移动到另一个区域
+          href: ../move-region-maintenance-configuration.md?toc=/virtual-machines/linux/toc.json&bc=/virtual-machines/linux/breadcrumb/toc.json
+        - name: 将维护控制配置资源移动到另一个区域
+          href: ../move-region-maintenance-configuration-resources.md?toc=/virtual-machines/linux/toc.json&bc=/virtual-machines/linux/breadcrumb/toc.json
         - name: 迁移 AWS 和本地 VM
           href: ../windows/on-prem-to-azure.md?toc=/virtual-machines/linux/toc.json&bc=/virtual-machines/linux/breadcrumb/toc.json
           items:
@@ -554,7 +580,7 @@
       href: 'https://status.azure.com/status/'
     - name: 视频
       href: 'https://www.azure.cn/video-center/'
-    - name: 常见问题解答
+    - name: 常见问题
       href: faq.md
 - name: 故障排除
   href: ../troubleshooting/index.yml

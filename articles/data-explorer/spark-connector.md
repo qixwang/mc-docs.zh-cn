@@ -7,13 +7,13 @@ ms.reviewer: michazag
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 01/14/2020
-ms.date: 03/16/2020
-ms.openlocfilehash: 6a457bdcb91f64341fc97e9b2420a1411b978590
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/09/2020
+ms.openlocfilehash: c386500fc7494a5ccd05129f899530251912bbb4
+ms.sourcegitcommit: bfbd6694da33f703481386f2a3f16850c4e94bfa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80243950"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83417562"
 ---
 # <a name="azure-data-explorer-connector-for-apache-spark"></a>适用于 Apache Spark 的 Azure 数据资源管理器连接器
 
@@ -47,7 +47,7 @@ ms.locfileid: "80243950"
 
 ### <a name="build-prerequisites"></a>生成先决条件
 
-1. 安装[依赖项](https://github.com/Azure/azure-kusto-spark#dependencies)中列出的库，包括以下 [Kusto Java SDK](https://docs.microsoft.com/azure/kusto/api/java/kusto-java-client-library) 库：
+1. 安装[依赖项](https://github.com/Azure/azure-kusto-spark#dependencies)中列出的库，包括以下 [Kusto Java SDK](https://docs.microsoft.com/azure/data-explorer/kusto/api/java/kusto-java-client-library) 库：
     * [Kusto 数据客户端](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/kusto-data)
     * [Kusto 引入客户端](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/kusto-ingest)
 
@@ -104,9 +104,9 @@ mvn clean install
 
 使用 Azure 数据资源管理器 Spark 连接器，可以使用下列方法之一通过 Azure Active Directory (Azure AD) 进行身份验证：
 * [Azure AD 应用程序](#azure-ad-application-authentication)
-* [Azure AD 访问令牌](https://github.com/Azure/azure-kusto-spark/blob/dev/docs/Authentication.md#direct-authentication-with-access-token)
-* [设备身份验证](https://github.com/Azure/azure-kusto-spark/blob/dev/docs/Authentication.md#device-authentication)（适用于非生产方案）
-* [Azure Key Vault](https://github.com/Azure/azure-kusto-spark/blob/dev/docs/Authentication.md#key-vault) 若要访问 Key Vault 资源，请安装 azure-keyvault 包并提供应用程序凭据。
+* [Azure AD 访问令牌](https://github.com/Azure/azure-kusto-spark/blob/master/docs/Authentication.md#direct-authentication-with-access-token)
+* [设备身份验证](https://github.com/Azure/azure-kusto-spark/blob/master/docs/Authentication.md#device-authentication)（适用于非生产方案）
+* [Azure Key Vault](https://github.com/Azure/azure-kusto-spark/blob/master/docs/Authentication.md#key-vault) 若要访问 Key Vault 资源，请安装 azure-keyvault 包并提供应用程序凭据。
 
 ### <a name="azure-ad-application-authentication"></a>Azure AD 应用程序身份验证
 
@@ -125,7 +125,7 @@ Azure AD 应用程序身份验证是最简单且最常用的身份验证方法�
 * 对于读取操作（数据源），Azure AD 标识必须对目标数据库拥有“查看者”特权，或者对目标表拥有“管理员”特权。  
 * 对于写入操作（数据接收器），Azure AD 标识必须对目标数据库拥有“引入者”特权。  此外，它必须对目标数据库拥有“用户”特权，这样才能创建新表。  如果目标表已存在，则必须配置对目标表的“管理员”权限。 
  
-有关 Azure 数据资源管理器主体角色的详细信息，请参阅[基于角色的授权](https://docs.microsoft.com/azure/kusto/management/access-control/role-based-authorization)。 有关如何管理安全角色，请参阅[安全角色管理](https://docs.microsoft.com/azure/kusto/management/security-roles)。
+有关 Azure 数据资源管理器主体角色的详细信息，请参阅[基于角色的授权](https://docs.microsoft.com/azure/data-explorer/kusto/management/access-control/role-based-authorization)。 有关如何管理安全角色，请参阅[安全角色管理](https://docs.microsoft.com/azure/data-explorer/kusto/management/security-roles)。
 
 ## <a name="spark-sink-writing-to-azure-data-explorer"></a>Spark 接收器：写入 Azure 数据资源管理器
 
@@ -195,7 +195,7 @@ Azure AD 应用程序身份验证是最简单且最常用的身份验证方法�
 
 ## <a name="spark-source-reading-from-azure-data-explorer"></a>Spark 源：从 Azure 数据资源管理器读取数据
 
-1. 读取[少量数据](https://docs.microsoft.com/azure/kusto/concepts/querylimits)时，可以定义数据查询：
+1. 读取[少量数据](https://docs.microsoft.com/azure/data-explorer/kusto/concepts/querylimits)时，可以定义数据查询：
 
     ```scala
     import com.microsoft.kusto.spark.datasource.KustoSourceOptions

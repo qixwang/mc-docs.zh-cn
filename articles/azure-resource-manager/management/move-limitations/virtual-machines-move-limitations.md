@@ -5,12 +5,12 @@ ms.topic: conceptual
 origin.date: 03/31/2020
 ms.date: 04/30/2020
 ms.author: v-yeche
-ms.openlocfilehash: c4b0fa2b28107170b48e49437fca2050a68c6a64
-ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
+ms.openlocfilehash: a7abbda82917d44de728c0292a2d778eadf24fa4
+ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82596260"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83392222"
 ---
 # <a name="move-guidance-for-virtual-machines"></a>针对虚拟机的移动指南
 
@@ -68,6 +68,6 @@ ms.locfileid: "82596260"
 
 * 有关用于移动资源的命令，请参阅[将资源移到新资源组或订阅](../move-resource-group-and-subscription.md)。
 
-* 若要了解如何移动恢复服务保管库以完成备份，请参阅[恢复服务限制](../../../backup/backup-azure-move-recovery-services-vault.md?toc=/azure-resource-manager/toc.json)。
+<!--Not Available on  [Recovery Services limitations](../../../backup/backup-azure-move-recovery-services-vault.md?toc=/azure-resource-manager/toc.json)-->
 
 <!-- Update_Description: update meta properties, wording update, update link -->

@@ -12,14 +12,17 @@ origin.date: 02/10/2020
 ms.date: 04/20/2020
 ms.author: v-tawe
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 99ad78eb7260b4cefb5331301055dfa63c0de75b
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.openlocfilehash: 42532f544f2699e02fee85fecb165e0fb3fbbd5e
+ms.sourcegitcommit: bfbd6694da33f703481386f2a3f16850c4e94bfa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82126622"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83417732"
 ---
 # <a name="quickstart-synthesize-speech-into-an-audio-file"></a>快速入门：将语音合成到音频文件
+
+> [!IMPORTANT]
+> 需要语音 SDK 版本 1.10.0 或更高版本。
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [Header](../includes/quickstarts/tts-audio-file/header.md)]

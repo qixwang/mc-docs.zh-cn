@@ -4,16 +4,16 @@ description: 了解如何使用 Azure Stack Hub Capacity Planner 电子表格进
 author: WenJason
 ms.topic: article
 origin.date: 05/31/2019
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: prchint
 ms.lastreviewed: 05/31/2019
-ms.openlocfilehash: 3a37f29342c7aacdada020c3f2567fe2e11ff05d
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 6396b0aee1e9827590d9f79e8e154a016313380c
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540882"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422395"
 ---
 # <a name="azure-stack-hub-capacity-planner"></a>Azure Stack Hub Capacity Planner
 

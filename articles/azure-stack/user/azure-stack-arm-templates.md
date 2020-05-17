@@ -4,16 +4,16 @@ description: 了解如何在 Azure Stack Hub 中使用 Azure 资源管理器模�
 author: WenJason
 ms.topic: article
 origin.date: 1/22/2020
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: justini
-ms.lastreviewed: 11/14/2018
-ms.openlocfilehash: 90754f6214c35c658a447f0d6aa93ff453a6bd7c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.lastreviewed: 11/14/2019
+ms.openlocfilehash: 2df31609f0d3752000e0a6e2792f30bd06bae1cd
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540859"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422370"
 ---
 # <a name="use-azure-resource-manager-templates-in-azure-stack-hub"></a>在 Azure Stack Hub 中使用 Azure 资源管理器模板
 

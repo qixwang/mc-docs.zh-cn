@@ -12,12 +12,12 @@ ms.author: v-jay
 ms.reviewer: carlrab
 origin.date: 06/28/2019
 ms.date: 02/17/2020
-ms.openlocfilehash: 5168c453017154f089e7466270fcb28bb9889a23
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.openlocfilehash: aea2d133eb2f4c2b22c42cf9135b97cf5647a868
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82126717"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422354"
 ---
 # <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-resource-manager-template"></a>快速入门：使用 Azure 资源管理器模板在 Azure SQL 数据库中创建单一数据库
 
@@ -218,8 +218,6 @@ ms.locfileid: "82126717"
 可以在 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Sql&pageNumber=1&sort=Popular)中找到更多 Azure SQL 数据库模板示例。
 
 ### <a name="deploy-the-template"></a>部署模板
-
-从以下 PowerShell 代码块中选择“试用”  以打开 Azure Cloud Shell。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

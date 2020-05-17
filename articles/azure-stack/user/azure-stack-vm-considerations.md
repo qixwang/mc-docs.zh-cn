@@ -4,16 +4,16 @@ description: 了解使用 Azure Stack Hub 中的 VM 时的不同功能和注意�
 author: WenJason
 ms.topic: article
 origin.date: 2/3/2020
-ms.date: 04/01/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: kivenkat
 ms.lastreviewed: 10/09/2019
-ms.openlocfilehash: 8473ca75a64999ee6ae91cbe6d1005b80f59d94e
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 92552c86024c944a71255c89d12949407c9be65f
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80625727"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422583"
 ---
 # <a name="azure-stack-hub-vm-features"></a>Azure Stack Hub VM 功能
 
@@ -109,6 +109,17 @@ Get-AzureRmResourceProvider | `
 - 运行 Windows Server 2012 或更早版本的 VM 不会自动激活，必须使用 [MAK 激活](https://technet.microsoft.com/library/ff793438.aspx)进行激活。 若要使用 MAK 激活，必须提供自己的产品密钥。
 
 Azure 使用 KMS 激活来激活 Windows VM。 如果将 VM 从 Azure Stack Hub 移到 Azure 并且遇到了激活问题，请参阅[排查 Azure Windows VM 激活问题](/virtual-machines/windows/troubleshoot-activation-problems)。 可以在 Azure 支持团队博客文章 [Troubleshooting Windows activation failures on Azure VMs](https://blogs.msdn.microsoft.com/mast/2017/06/14/troubleshooting-windows-activation-failures-on-azure-vms/)（排查 Azure VM 上的 Windows 激活故障）中找到其他信息。
+
+## <a name="high-availability"></a>高可用性
+
+由于 Azure Stack Hub 操作员计划的计划内维护，你的VM 可能需要重新启动。 为了在 Azure 中实现多 VM 生产系统的高可用性，可以将 VM 置于横跨多个容错域和更新域的[可用性集](/virtual-machines/windows/manage-availability#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy)中。 在较小规模的 Azure Stack Hub 中，可用性集中的容错域定义为缩放单元中的单个节点。  
+
+在发生硬件故障时，虽然 Azure Stack Hub 的基础结构已具备故障还原能力，但基础技术（故障转移群集功能）的局限仍会导致受影响物理服务器上的 VM 出现停机。 为了与 Azure 保持一致，Azure Stack Hub 支持的可用性集最多有三个容错域。
+
+|                   |             |
+|-------------------|-------------|
+| **容错域** | 置于可用性集中的 VM 在物理上是彼此隔离的，换句话说，会尽可能均衡地让其分散到多个容错域（Azure Stack Hub 节点）中。 如果发生硬件故障，出现故障的容错域中的 VM 将在其他容错域中重启。 它们保留在与其他 VM 不同的容错域中，但如果可能，则保留在相同的可用性集中。 当硬件重新联机时，会对 VM 重新进行均衡操作，以维持高可用性。 |
+| **更新域**| 更新域是 Azure 在可用性集中提供高可用性的另一种方法。 更新域是可以同时维护的基础硬件逻辑组。 同一个更新域中的 VM 会在计划内维护期间一起重启。 当租户在可用性集内创建 VM 时，Azure 平台会自动将 VM 分布到这些更新域。 <br>在 Azure Stack Hub 中，VM 会先跨群集中的其他联机主机进行实时迁移，然后其基础主机才会进行更新。 由于在主机更新期间不会造成租户停机，因此 Azure Stack Hub 上存在更新域功能只是为了确保与 Azure 实现模板兼容。 可用性集中的 VM 将显示 0 作为其在门户上的更新域编号。 |
 
 ## <a name="next-steps"></a>后续步骤
 

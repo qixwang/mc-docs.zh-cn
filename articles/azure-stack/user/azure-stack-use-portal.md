@@ -4,16 +4,16 @@ description: 了解如何访问和使用 Azure Stack Hub 中的用户门户。
 author: WenJason
 ms.topic: article
 origin.date: 1/22/2020
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: efemmano
 ms.lastreviewed: 01/25/2019
-ms.openlocfilehash: 3e71ac63d4ae2314af7814933c1adc6bc8102519
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 6b0f49bb0f75558c1906c4748abebb9f9aca10fa
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77541009"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422636"
 ---
 # <a name="use-the-azure-stack-hub-user-portal"></a>使用 Azure Stack Hub 用户门户
 
@@ -71,5 +71,3 @@ Azure Stack Hub 操作员（服务提供商或组织中的管理员）将会告�
 ## <a name="next-steps"></a>后续步骤
 
 [重要注意事项：使用 Azure Stack 的服务或构建适用于 Azure Stack Hub 的应用](azure-stack-considerations.md)
-
-<!-- Update_Description: wording update -->

@@ -4,16 +4,16 @@ description: 了解如何使用 Azure 门户或 SQL Server Management Studio 配
 author: rockboyfor
 ms.service: azure-analysis-services
 ms.topic: tutorial
-origin.date: 10/30/2019
-ms.date: 03/23/2020
+origin.date: 04/15/2020
+ms.date: 04/30/2020
 ms.author: v-yeche
 ms.reviewer: owend
-ms.openlocfilehash: c31b54b870c70854682668ac35988527359c1327
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 262a606540436eb17ca3659b5e5f8b2189d4e054
+ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79543739"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83392404"
 ---
 <!--Notice: Verify successfully-->
 # <a name="tutorial-configure-server-administrator-and-user-roles"></a>教程：配置服务器管理员和用户角色
@@ -73,7 +73,7 @@ ms.locfileid: "79543739"
 
 ## <a name="add-a-user-account-to-the-server-administrator-role"></a>将用户帐户添加到服务器管理员角色
 
-在此任务中，请将用户或组帐户从 Azure AD 添加到服务器管理员角色。 如果要添加安全组，必须将 `MailEnabled` 属性设置为 `True`。
+在此任务中，请将用户或组帐户从 Azure AD 添加到服务器管理员角色。 如果指定安全组，请使用 `obj:groupid@tenantid`。
 
 1. 在“对象资源管理器”中，右键单击服务器名称，然后单击“属性”。   
 2. 在“Analysis Server 属性”  窗口中，单击“安全性”   >   “添加”。

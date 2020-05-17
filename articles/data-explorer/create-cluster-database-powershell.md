@@ -7,13 +7,13 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 06/03/2019
-ms.date: 03/16/2020
-ms.openlocfilehash: 4f58b3a453fa0221708bcf116d22f3997d6109d5
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/09/2020
+ms.openlocfilehash: c8ac1dc12ab60ae19d839d209f994da0225c396d
+ms.sourcegitcommit: bfbd6694da33f703481386f2a3f16850c4e94bfa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80243975"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83417667"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-powershell"></a>使用 PowerShell 创建 Azure 数据资源管理器群集和数据库
 
@@ -29,10 +29,11 @@ Azure 数据资源管理器是一项快速、完全托管的数据分析服务�
 
 ## <a name="prerequisites"></a>必备条件
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+[!INCLUDE [updated-for-az](includes/updated-for-az.md)]
 
 如果没有 Azure 订阅，请在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 
+<!-- [!INCLUDE [cloud-shell-try-it.md](includes/cloud-shell-try-it.md)] -->
 
 如果选择在本地安装并使用 Azure CLI，本文需要 Azure CLI 2.0.4 或更高版本。 请运行 `az --version` 检查版本。 如需进行安装或升级，请参阅[安装 Azure CLI](/cli/install-azure-cli)。
 
@@ -53,7 +54,7 @@ Azure 数据资源管理器是一项快速、完全托管的数据分析服务�
     ```
 1. 在本地或 Azure Powershell 中运行 Azure CLI 时，需要在设备上安装 Az.Kusto 模块：
 
-    ```azurepowershell-interactive
+    ```azurepowershell
      Install-Module -Name Az.Kusto
     ```
 

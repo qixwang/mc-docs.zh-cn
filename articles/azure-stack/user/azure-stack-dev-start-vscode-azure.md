@@ -3,17 +3,17 @@ title: 使用 Visual Studio Code 中的 Azure 帐户扩展连接到 Azure Stack 
 description: 以开发人员的身份使用 Visual Studio Code 中的 Azure 帐户扩展连接到 Azure Stack Hub
 author: WenJason
 ms.topic: conceptual
-origin.date: 11/11/2019
-ms.date: 02/24/2020
+origin.date: 04/20/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: sijuman
 ms.lastreviewed: 11/11/2019
-ms.openlocfilehash: 738e770b8a04cbba6c14376e548041f044972664
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 65a4dd5b1ad12c26184dccf8936fff9498384315
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540816"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422077"
 ---
 # <a name="connect-to-azure-stack-hub-using-azure-account-extension-in-visual-studio-code"></a>使用 Visual Studio Code 中的 Azure 帐户扩展连接到 Azure Stack Hub
 

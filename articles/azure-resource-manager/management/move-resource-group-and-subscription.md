@@ -5,12 +5,12 @@ ms.topic: conceptual
 origin.date: 03/02/2020
 ms.date: 04/30/2020
 ms.author: v-yeche
-ms.openlocfilehash: 42077074959082bb25f8a976ed33aeabfe120377
-ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
+ms.openlocfilehash: eee31686dfa3be2f5909b3b55b20cc857392a4fb
+ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82596261"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83392425"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>将资源移到新的资源组或订阅
 
@@ -34,7 +34,9 @@ ms.locfileid: "82596261"
     
     * [经典部署模型移动指南](./move-limitations/classic-model-move-limitations.md) - 经典计算、经典存储、经典虚拟网络和云服务
     * [网络移动指南](./move-limitations/networking-move-limitations.md)
-    * [恢复服务移动指南](../../backup/backup-azure-move-recovery-services-vault.md?toc=/azure-resource-manager/toc.json)
+        
+        <!-- Not Available on * [Recovery Services move guidance](../../backup/backup-azure-move-recovery-services-vault.md?toc=/azure-resource-manager/toc.json)-->
+
     * [虚拟机移动指南](./move-limitations/virtual-machines-move-limitations.md)
 
 1. 源订阅和目标订阅必须处于活动状态。 如果在启用已禁用的帐户时遇到问题，请[创建 Azure 支持请求](https://support.azure.cn/support/support-azure/)。 在**支持类型**中选择“订阅管理”  作为问题类型。

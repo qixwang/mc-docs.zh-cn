@@ -12,14 +12,17 @@ origin.date: 02/10/2020
 ms.date: 04/20/2020
 ms.author: v-tawe
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 8c1cec0ff200e6cb758ca26a0492b443727831ab
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.openlocfilehash: f138c322c6ebf90502a76a6e805a2f3d10244180
+ms.sourcegitcommit: bfbd6694da33f703481386f2a3f16850c4e94bfa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82126744"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83417726"
 ---
 # <a name="quickstart-translate-speech-to-multiple-languages"></a>快速入门：将语音翻译成多种语言
+
+> [!IMPORTANT]
+> 需要语音 SDK 版本 1.10.0 或更高版本。
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [Header](../includes/quickstarts/translate-stt-multiple-languages/header.md)]

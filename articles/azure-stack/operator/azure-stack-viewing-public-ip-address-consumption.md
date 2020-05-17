@@ -5,16 +5,16 @@ description: 了解如何管理网络资源，包括 MAC 地址池和区域中�
 author: WenJason
 ms.topic: conceptual
 origin.date: 1/22/2020
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: scottnap
 ms.lastreviewed: 09/17/2019
-ms.openlocfilehash: 06e7c45f22be7f395f0d24b11a7ab2e973375e95
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 183fac69aa1fc5f68c5ac8086f396fce6c4f6944
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540609"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422432"
 ---
 # <a name="manage-network-resources-in-azure-stack-hub"></a>在 Azure Stack Hub 中管理网络资源
 

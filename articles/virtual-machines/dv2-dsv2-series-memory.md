@@ -6,14 +6,14 @@ author: rockboyfor
 ms.service: virtual-machines
 ms.topic: article
 origin.date: 02/03/2020
-ms.date: 03/09/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: cae1acf8ad6c9e6296f99c57ccbfbd5a9ce70c86
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: bd7af9a8f5255881a59e5adf9eaccd341c65c2e9
+ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79084503"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83392481"
 ---
 <!--Verified successfully-->
 <!--Partical Content from verified-->
@@ -88,5 +88,4 @@ ACU：210 - 250 <sup>1</sup>
 
 了解有关 [Azure 计算单元 (ACU)](acu.md) 如何帮助跨 Azure SKU 比较计算性能的详细信息。
 
-<!-- Update_Description: new article about dv2 dsv2 series memory -->
-<!--NEW.date: 03/09/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

@@ -6,21 +6,23 @@ author: WenJason
 ms.service: storage
 ms.topic: article
 origin.date: 09/06/2018
-ms.date: 10/28/2019
+ms.date: 05/18/2019
 ms.author: v-jay
 ms.subservice: blobs
-ms.openlocfilehash: f3a1a599dd864bdfbf34ac3d5864b9a297e90d38
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 86383e698685e47d836ac2451d43fc8b9f5f9cfc
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "72914390"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422345"
 ---
 # <a name="create-and-manage-a-blob-snapshot-in-net"></a>在 .NET 中创建和管理 blob 快照
 
 快照是在某一时间点拍摄的只读版本的 Blob。 快照可用于备份 Blob。 本文介绍如何使用[适用于 .NET 的 Azure 存储客户端库](/dotnet/api/overview/storage/client)创建和管理 blob 快照。
 
 ## <a name="about-blob-snapshots"></a>关于 Blob 快照
+
+[!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
 
 Blob 的快照与其基本 Blob 相同，不过，Blob URI 的后面追加了一个 **DateTime** 值，用于指示快照的生成时间。 例如，如果页 Blob URI 为 `http://storagesample.core.blob.chinacloudapi.cn/mydrives/myvhd`，则快照 URI 将类似于 `http://storagesample.core.blob.chinacloudapi.cn/mydrives/myvhd?snapshot=2011-03-09T01:42:34.9360000Z`。
 

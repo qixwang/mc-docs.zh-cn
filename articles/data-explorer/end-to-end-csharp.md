@@ -7,13 +7,13 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 02/03/2020
-ms.date: 02/17/2020
-ms.openlocfilehash: fcb7a490970cae0d09b3f00c80e3cd3ad2f78f53
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/09/2020
+ms.openlocfilehash: 5a3870b84bd228f08f26a995912adff147406277
+ms.sourcegitcommit: bfbd6694da33f703481386f2a3f16850c4e94bfa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77037925"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83417751"
 ---
 # <a name="end-to-end-blob-ingestion-into-azure-data-explorer-through-c"></a>通过 C# 以端到端方式将 blob 引入到 Azure 数据资源管理器中
 
@@ -38,9 +38,9 @@ Azure 数据资源管理器是一项快速且可缩放的数据探索服务，�
 * 安装 [Microsoft.Azure.Storage.Blob](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/)。
 * 安装 [Microsoft.Rest.ClientRuntime.Azure.Authentication](https://www.nuget.org/packages/Microsoft.Rest.ClientRuntime.Azure.Authentication) 以进行身份验证。
 
-[!INCLUDE [data-explorer-authentication](../../includes/data-explorer-authentication.md)]
+[!INCLUDE [data-explorer-authentication](includes/data-explorer-authentication.md)]
 
-[!INCLUDE [data-explorer-e2e-event-grid-resource-template](../../includes/data-explorer-e2e-event-grid-resource-template.md)]
+[!INCLUDE [data-explorer-e2e-event-grid-resource-template](includes/data-explorer-e2e-event-grid-resource-template.md)]
 
 ## <a name="code-example"></a>代码示例 
 
@@ -53,8 +53,8 @@ var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
 var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
 var clientSecret = "xxxxxxxxxxxxxx";//Client secret
 var subscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
-string location = "China East";
-string locationSmallCase = "chinaeast";
+string location = "China East 2";
+string locationSmallCase = "chinaeast2";
 string azureResourceTemplatePath = @"xxxxxxxxx\template.json";//Path to the Azure Resource Manager template JSON from the previous section
 
 string deploymentName = "e2eexample";

@@ -5,16 +5,16 @@ description: 了解如何添加宿主服务器以通过 SQL 资源提供程序�
 author: WenJason
 ms.topic: article
 origin.date: 10/02/2019
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: xiaofmao
-ms.lastreviewed: 10/16/2018
-ms.openlocfilehash: e4de942f04fc6abdf2b9c2cdb4a776e11fd37374
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.lastreviewed: 10/16/2019
+ms.openlocfilehash: a4b16720e51c3e3c7876ecebfd86220644f13d8c
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540304"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422549"
 ---
 # <a name="add-hosting-servers-for-the-sql-resource-provider"></a>为 SQL 资源提供程序添加托管服务器
 

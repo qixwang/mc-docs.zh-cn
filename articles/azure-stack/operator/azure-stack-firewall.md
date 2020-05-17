@@ -3,17 +3,17 @@ title: Azure Stack Hub 集成系统的 Azure Stack Hub 防火墙集成
 description: 了解 Azure Stack Hub 集成系统的 Azure Stack Hub 防火墙集成。
 author: WenJason
 ms.topic: article
-origin.date: 11/15/2019
-ms.date: 02/24/2020
+origin.date: 04/10/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: thoroet
 ms.lastreviewed: 11/15/2019
-ms.openlocfilehash: 9d5dc985c0a822bd2fa40167b8ad03a11adf63ed
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 489371d099f46f281e9ef68afc5b2ecbbbbe251f
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79291449"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422521"
 ---
 # <a name="azure-stack-hub-firewall-integration"></a>Azure Stack Hub 防火墙集成
 建议使用防火墙设备来帮助保护 Azure Stack Hub。 防火墙有助于防止分布式拒绝服务 (DDOS) 攻击之类的攻击，以及执行入侵检测和内容检查。 但是，它们也可能成为 Azure 存储服务（例如 Blob、表和队列）的吞吐量瓶颈。
@@ -42,7 +42,7 @@ Azure 资源管理器（管理员）、管理员门户和 Key Vault（管理员�
 
 在部署时会为外部网络中的公共 VIP 池指定公共的可路由 IP 地址。 在边缘方案中，出于安全考虑，建议不要在任何其他网络上使用公共的可路由 IP。 与在 Azure 之类的公有云中一样，此方案使得用户能够获得完全的自控云体验。  
 
-![Azure Stack Hub 边缘防火墙示例](./media/azure-stack-firewall/firewallScenarios.png)
+![Azure Stack Hub 边缘防火墙示例](./media/azure-stack-firewall/firewallScenarios.svg)
 
 ## <a name="enterprise-intranet-or-perimeter-network-firewall-scenario"></a>企业 Intranet 或外围网络防火墙方案
 在企业 Intranet 或外围部署中，Azure Stack Hub 部署在多区域防火墙上，或者部署在边缘防火墙与内部的公司网络防火墙之间。 然后，其流量将分布在安全的外围网络（或 DMZ）与不安全的区域之间，如下所述：
@@ -51,7 +51,7 @@ Azure 资源管理器（管理员）、管理员门户和 Key Vault（管理员�
 - **外围区域**。 外围网络通常是部署外部或面向 Internet 的应用（例如 Web 服务器）的地方。 通常由防火墙对其进行监视，以避免诸如 DDoS 和入侵（黑客进攻）之类的攻击，同时仍允许来自 Internet 的指定入站流量。 只有 Azure Stack Hub 的外部网络公共 VIP 池应当位于 DMZ 区域中。
 - **不安全区域**。 这是指外部网络，即 Internet。 建议**不要**将 Azure Stack Hub 部署在不安全区域中。
 
-![Azure Stack Hub 外围网络示例](./media/azure-stack-firewall/perimeter-network-scenario.png)
+![Azure Stack Hub 外围网络示例](./media/azure-stack-firewall/perimeter-network-scenario.svg)
 
 ## <a name="learn-more"></a>了解详细信息
 详细了解 [Azure Stack Hub 终结点使用的端口和协议](azure-stack-integrate-endpoints.md)。

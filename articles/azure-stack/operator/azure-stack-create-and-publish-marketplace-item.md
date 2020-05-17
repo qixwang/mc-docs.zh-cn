@@ -3,17 +3,17 @@ title: 在 Azure Stack Hub 中创建和发布市场项
 description: 了解如何创建并发布 Azure Stack Hub 市场项。
 author: WenJason
 ms.topic: article
-origin.date: 01/03/2020
-ms.date: 02/24/2020
+origin.date: 04/20/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: avishwan
 ms.lastreviewed: 05/07/2019
-ms.openlocfilehash: a21e0b004a8d70e13c5d859f57c21f5e3462775a
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 4ab3f9eb58cef3ad110e6445bdc6eab645904a0d
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540942"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422396"
 ---
 # <a name="create-and-publish-a-custom-azure-stack-hub-marketplace-item"></a>创建并发布自定义 Azure Stack Hub 市场项
 

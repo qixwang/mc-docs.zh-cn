@@ -4,16 +4,16 @@ description: 了解云操作员如何向 Azure Stack Hub 市场中添加虚拟�
 author: WenJason
 ms.topic: article
 origin.date: 01/22/2020
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: kivenkat
-ms.lastreviewed: 10/22/2018
-ms.openlocfilehash: 9fd541a7cd8dcab0b3569c620262012b565db26a
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.lastreviewed: 10/22/2019
+ms.openlocfilehash: 77cefae2372547f2c657157f8587116a746b6a18
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540878"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422624"
 ---
 # <a name="make-virtual-machine-scale-sets-available-in-azure-stack-hub"></a>在 Azure Stack Hub 中提供虚拟机规模集
 

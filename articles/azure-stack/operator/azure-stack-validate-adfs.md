@@ -6,17 +6,17 @@ services: azure-stack
 documentationcenter: ''
 author: WenJason
 ms.topic: article
-origin.date: 06/10/2019
-ms.date: 02/24/2020
+origin.date: 03/04/2020
+ms.date: 05/18/2020
 ms.author: inhenkel
 ms.reviewer: jerskine
 ms.lastreviewed: 06/10/2019
-ms.openlocfilehash: 7188f50d312a245454cbf6e5f562e2baa1f792a2
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 60faf9fdaae3ee02f3e3d74e2a9a0c9c77ea8a6e
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540614"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422593"
 ---
 # <a name="validate-ad-fs-integration-for-azure-stack-hub"></a>验证 Azure Stack Hub 的 AD FS 集成
 

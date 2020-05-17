@@ -4,16 +4,16 @@ description: 了解最新的 Azure Stack Hub SQL 资源提供程序更新中的�
 author: WenJason
 ms.topic: article
 origin.date: 11/26/2019
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: xiaofmao
 ms.lastreviewed: 11/26/2019
-ms.openlocfilehash: 2ce8ffe8799c6e2bc8e14e073ca7947f1dbf9578
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 1bd5b1e1218b87957bdc4d0d5ae40b5f49e32137
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540302"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422513"
 ---
 # <a name="sql-resource-provider-11470-release-notes"></a>SQL 资源提供程序 1.1.47.0 发行说明
 

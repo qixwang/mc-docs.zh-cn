@@ -4,16 +4,16 @@ description: Azure Stack Hub 中基础结构备份服务的参考资料。
 author: WenJason
 ms.topic: article
 origin.date: 02/12/2019
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: hectorl
-ms.lastreviewed: 10/25/2018
-ms.openlocfilehash: 774d38be9df16696efdbd133717305abb2077807
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.lastreviewed: 10/25/2019
+ms.openlocfilehash: 6bced0c3a808e6691b833de19209e26c22947869
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292529"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422405"
 ---
 # <a name="infrastructure-backup-service-reference"></a>基础结构备份服务参考
 

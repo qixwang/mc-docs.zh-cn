@@ -3,17 +3,17 @@ title: 将外部监视解决方案与 Azure Stack Hub 集成
 description: 了解如何将 Azure Stack Hub 与数据中心内的外部监视解决方案集成。
 author: WenJason
 ms.topic: article
-origin.date: 06/05/2019
-ms.date: 02/24/2020
+origin.date: 04/10/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: thoroet
 ms.lastreviewed: 06/05/2019
-ms.openlocfilehash: 98a007f65296d00d5c0f9203dcaa3011eb35da71
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 5798c0a67d1e750db14b8d82e14a0882bc52fdd7
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540932"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422610"
 ---
 # <a name="integrate-external-monitoring-solution-with-azure-stack-hub"></a>将外部监视解决方案与 Azure Stack Hub 集成
 
@@ -30,7 +30,7 @@ ms.locfileid: "77540932"
 
 下图演示 Azure Stack Hub 集成系统、硬件生命周期主机、外部监视解决方案与外部票证/数据收集系统之间的流量流。
 
-![显示 Azure Stack Hub、监视与票证解决方案之间的流量的示意图。](media/azure-stack-integrate-monitor/MonitoringIntegration.png)  
+![显示 Azure Stack Hub、监视与票证解决方案之间的流量的示意图。](media/azure-stack-integrate-monitor/monitoringintegration.svg)  
 
 > [!NOTE]
 > 不允许直接与物理服务器进行外部监视集成，访问控制列表 (ACL) 会主动阻止这种集成。 支持直接与物理网络设备进行外部监视集成。 请咨询 OEM 提供商，了解如何启用此功能。
@@ -58,7 +58,7 @@ ms.locfileid: "77540932"
 
 下图演示了 Azure Stack Hub 与现有 System Center 部署的集成。 可以进一步使用 System Center Orchestrator 或 Service Management Automation (SMA) 将 Service Manager 自动化，以便在 Azure Stack Hub 中运行操作。
 
-![演示与 OM、Service Manager 和 SMA 集成的示意图。](media/azure-stack-integrate-monitor/SystemCenterIntegration.png)
+![演示与 OM、Service Manager 和 SMA 集成的示意图。](media/azure-stack-integrate-monitor/systemcenterintegration.svg)
 
 ## <a name="integrate-with-nagios"></a>与 Nagios 集成
 

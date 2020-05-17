@@ -1,28 +1,19 @@
 ---
-title: 准备 ASDK 主计算机 | Microsoft Docs
+title: 准备 ASDK 主机
 description: 了解如何准备用于 ASDK 安装的 Azure Stack 开发工具包 (ASDK) 主计算机。
-services: azure-stack
-documentationcenter: ''
 author: WenJason
-manager: digimobile
-editor: ''
-ms.assetid: ''
-ms.service: azure-stack
-ms.workload: na
-pms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 origin.date: 08/28/2019
-ms.date: 10/21/2019
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: misainat
 ms.lastreviewed: 08/28/2019
-ms.openlocfilehash: e416558f64437b58e5a04ea6a97c25917eb8c4ec
-ms.sourcegitcommit: 4aeecfcc59cb42ba0b712a729d278d03bffc719a
+ms.openlocfilehash: 0fc1fec9d779c97b4c6e782e8d7f729108bfed8e
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81791028"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422418"
 ---
 # <a name="prepare-the-asdk-host-computer"></a>准备 ASDK 主机
 在主计算机上安装 Azure Stack 开发工具包 (ASDK) 之前，必须先准备好用于安装的 ASDK 主机。 准备好主机后，它将从 CloudBuilder.vhdx 虚拟机 (VM) 硬盘驱动器启动，以开始 ASDK 部署。

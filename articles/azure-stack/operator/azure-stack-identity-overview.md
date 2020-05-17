@@ -3,17 +3,17 @@ title: Azure Stack Hub 的标识提供者概述
 description: 了解可与 Azure Stack Hub 配合使用的标识提供者。
 author: WenJason
 ms.topic: conceptual
-origin.date: 06/03/2019
-ms.date: 02/24/2020
+origin.date: 04/10/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: fiseraci
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: f8366790732fe32cb9fbccca095710241bbaa67d
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: c8ec59df590149bc22829707d3da4a9c3066c131
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540935"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422620"
 ---
 # <a name="overview-of-identity-providers-for-azure-stack-hub"></a>Azure Stack Hub 的标识提供者概述
 
@@ -33,7 +33,7 @@ Azure Stack Hub 要求使用 Active Directory 所支持的 Azure Active Director
 
 后续部分介绍标识提供者的一般概念及其在 Azure Stack Hub 中的用法。
 
-![标识提供者的术语](media/azure-stack-identity-overview/terminology.png)
+![标识提供者的术语](media/azure-stack-identity-overview/terminology.svg)
 
 ### <a name="directory-tenants-and-organizations"></a>目录租户和组织
 
@@ -129,7 +129,7 @@ Azure Stack Hub 的标识包括用户帐户、组和服务主体。
 
 ### <a name="authentication-by-apps-and-users"></a>按应用和用户进行身份验证
 
-![Azure Stack Hub 层之间的标识](media/azure-stack-identity-overview/identity-layers.png)
+![Azure Stack Hub 层之间的标识](media/azure-stack-identity-overview/identity-layers.svg)
 
 对应用和用户而言，Azure Stack Hub 的体系结构可以用四个层来描述。 各层之间的交互可以使用不同类型的身份验证。
 
@@ -140,7 +140,7 @@ Azure Stack Hub 的标识包括用户帐户、组和服务主体。
 |资源提供程序     |传递给资源提供程序的调用通过基于证书的身份验证进行保护。 <br>随后，Azure 资源管理器和资源提供程序持续通过 API 通信。 对于从 Azure 资源管理器 收到的每个调用，资源提供程序使用该证书来验证调用。|
 |基础结构和业务逻辑     |资源提供程序使用所选的身份验证模式与业务逻辑和基础结构通信。 Azure Stack Hub 随附的默认资源提供程序使用 Windows 身份验证来保护此通信。|
 
-![身份验证所需的信息](media/azure-stack-identity-overview/authentication.png)
+![身份验证所需的信息](media/azure-stack-identity-overview/authentication.svg)
 
 ### <a name="authenticate-to-azure-resource-manager"></a>对 Azure 资源管理器进行身份验证
 
@@ -167,7 +167,7 @@ Azure Stack Hub 的标识包括用户帐户、组和服务主体。
 
 完成所有验证后，Azure 资源管理器使用对象 ID (oid) 和 *groups* 声明来生成主体可以访问的资源列表。 
 
-![令牌交换协议示意图](media/azure-stack-identity-overview/token-exchange.png)
+![令牌交换协议示意图](media/azure-stack-identity-overview/token-exchange.svg)
 
 > [!NOTE]
 > 部署后，不需要 Azure Active Directory 全局管理员权限。 但是，某些操作可能需要全局管理员凭据（例如，资源提供程序安装程序脚本或需要授予权限的新功能）。 可以临时复原帐户的全局管理员权限，也可以使用单独的全局管理员帐户（该帐户应是默认提供程序订阅的所有者）。 

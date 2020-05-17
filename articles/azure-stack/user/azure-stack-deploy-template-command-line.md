@@ -4,16 +4,16 @@ description: 了解如何使用 Azure 跨平台命令行接口 (CLI) 将模板�
 author: WenJason
 ms.topic: article
 origin.date: 1/22/2020
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: unknown
 ms.lastreviewed: 05/09/2019
-ms.openlocfilehash: 585b0d6e1b99cca25254f61fdf9fda16d14e72ca
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 915f447311167d5c9e237dd6a21643c58551872d
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540843"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422452"
 ---
 # <a name="deploy-a-template-with-the-command-line-in-azure-stack-hub"></a>在 Azure Stack Hub 中使用命令行部署模板
 

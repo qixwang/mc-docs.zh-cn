@@ -4,16 +4,16 @@ description: 了解如何对 Azure Stack Hub 上的应用服务进行灾难恢�
 author: WenJason
 ms.topic: article
 origin.date: 03/21/2019
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: anwestg
 ms.lastreviewed: 03/21/2019
-ms.openlocfilehash: 3094d26c4781566246566bef9ce0f5233aea1647
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 4f8cab4451a57a6122256ed63a56d5ab5c625f17
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540627"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422562"
 ---
 # <a name="app-service-recovery-on-azure-stack-hub"></a>Azure Stack Hub 上的应用服务恢复
 

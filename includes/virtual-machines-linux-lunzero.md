@@ -3,16 +3,16 @@ author: rockboyfor
 ms.service: virtual-machines-linux
 ms.topic: include
 origin.date: 10/26/2018
-ms.date: 12/24/2018
+ms.date: 05/18/2020
 ms.author: v-yeche
-ms.openlocfilehash: e23b09152b22b4df78f1856f8c0ad796e6777f83
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 7ac202576866fe5c4470f17888a6f164ed2fa313
+ms.sourcegitcommit: 8d56bc6baeb42d675695ecef1909d76f5c4a6ae3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "63847374"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83406221"
 ---
-将数据磁盘添加到 Linux VM 时，如果 LUN 0 位置没有磁盘，则你可能会遇到错误。 如果使用 `azure vm disk attach-new` 命令并指定 LUN (`--lun`) 来手动添加磁盘，而不是让 Azure 平台确定适当的 LUN，则请注意，LUN 0 已经有磁盘或者将有磁盘。 
+将数据磁盘添加到 Linux VM 时，如果 LUN 0 位置没有磁盘，则你可能会遇到错误。 如果使用 `az vm disk attach -new` 命令并指定 LUN (`--lun`) 来手动添加磁盘，而不是让 Azure 平台确定适当的 LUN，则请注意，LUN 0 已经有磁盘或者将有磁盘。 
 
 请考虑以下示例，其中显示了 `lsscsi` 输出的代码片段：
 
@@ -33,4 +33,4 @@ ms.locfileid: "63847374"
 * 在添加数据磁盘之后，请查看 `lsscsi` 的输出，验证 LUN 0 位置是否有磁盘。
 * 如果磁盘未在 VM 内正确显示，请验证 LUN 0 位置是否有磁盘。
 
-<!-- Update_Description: update meta properties, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

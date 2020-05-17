@@ -4,16 +4,16 @@ description: 了解如何使用 Azure CLI 通过直接上传将 VHD 上传到 Az
 services: virtual-machines,storage
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 04/20/2020
+ms.date: 05/18/2020
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: 4a788a50b91cc39847473afa91ff03165e94c62b
-ms.sourcegitcommit: ebedf9e489f5218d4dda7468b669a601b3c02ae5
+ms.openlocfilehash: a5127f3566f1609ac72d26a21e0850b66403d46e
+ms.sourcegitcommit: 436a5dd9a446fe7b6d3c4d5bc76b652f7848c1ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82159036"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83393121"
 ---
 # <a name="upload-a-vhd-to-azure-or-copy-a-managed-disk-to-another-region---azure-cli"></a>将 VHD 上传到 Azure，或将托管磁盘复制到其他区域 - Azure CLI
 
@@ -40,7 +40,8 @@ ms.locfileid: "82159036"
 - ActiveUpload，表示磁盘已做好上传准备，并且已生成 SAS。
 
 > [!NOTE]
-在任一状态下，无论实际磁盘类型是什么，都会按[标准 HDD 定价](https://www.azure.cn/pricing/details/storage/managed-disks/)对托管磁盘计费。 例如，P10 将按 S10 计费。 在对托管磁盘调用 `revoke-access` 之前（将磁盘附加到 VM 需要执行此调用），都是如此。
+> 在任一状态下，无论实际磁盘类型是什么，都会按[标准 HDD 定价](https://www.azure.cn/pricing/details/storage/managed-disks/)对托管磁盘计费。 例如，P10 将按 S10 计费。 在对托管磁盘调用 `revoke-access` 之前（将磁盘附加到 VM 需要执行此调用），都是如此。
+
 <!-- Correct on https://www.azure.cn/pricing/details/storage/managed-disks/ in China -->
 
 ## <a name="create-an-empty-managed-disk"></a>创建空托管磁盘
@@ -132,5 +133,4 @@ az disk revoke-access -n $targetDiskName -g $targetRG
 
 成功将 VHD 上传到托管磁盘后，可[将该磁盘作为数据磁盘附加到现有的 VM](add-disk.md)，或者[将该磁盘作为 OS 磁盘附加到 VM](upload-vhd.md#create-the-vm)，以创建新的 VM。 
 
-<!-- Update_Description: new article about disks upload vhd to managed disk cli -->
-<!--NEW.date: 11/11/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

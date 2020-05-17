@@ -3,17 +3,17 @@ title: 使用 Azure Stack Hub 中的特权终结点
 description: 了解如何以操作员身份使用 Azure Stack Hub 中的特权终结点 (PEP)。
 author: WenJason
 ms.topic: article
-origin.date: 1/8/2020
-ms.date: 02/24/2020
+origin.date: 04/20/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: fiseraci
 ms.lastreviewed: 1/8/2020
-ms.openlocfilehash: e4df274c41227cfd9b281719ca8aaa861ad94407
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: fed65c914927061d4a110de65b39c1c2d1335b78
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540360"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422478"
 ---
 # <a name="use-the-privileged-endpoint-in-azure-stack-hub"></a>使用 Azure Stack Hub 中的特权终结点
 
@@ -21,7 +21,7 @@ Azure Stack Hub 操作员应使用管理员门户、PowerShell 或 Azure 资源�
 
 可以使用 PEP 执行以下任务：
 
-- 低级任务，例如[收集诊断日志](azure-stack-configure-on-demand-diagnostic-log-collection.md#use-the-privileged-endpoint-pep-to-collect-diagnostic-logs)。
+- 低级任务，例如[收集诊断日志](azure-stack-get-azurestacklog.md)。
 - 针对集成系统的许多部署后数据中心集成任务，例如在部署后添加域名系统 (DNS) 转发器、设置 Microsoft Graph 集成、Active Directory 联合身份验证服务 (AD FS) 集成、证书轮换，等等。
 - 与支持人员合作，获取临时性的高级访问权限，以便对集成系统进行深入的故障排除。
 
@@ -198,4 +198,4 @@ PEP 记录你在 PowerShell 会话中执行的每项操作（及其相应的输�
 
 ## <a name="next-steps"></a>后续步骤
 
-[Azure Stack Hub 诊断工具](azure-stack-configure-on-demand-diagnostic-log-collection.md#use-the-privileged-endpoint-pep-to-collect-diagnostic-logs)
+[Azure Stack Hub 诊断工具](azure-stack-diagnostic-log-collection-overview-tzl.md)

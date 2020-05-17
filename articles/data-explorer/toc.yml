@@ -48,7 +48,7 @@
       items:
         - name: 安全概述
           href: security.md
-- name: 操作方法指南
+- name: 操作指南
   items:
     - name: 创建群集和数据库
       items:
@@ -60,12 +60,10 @@
           href: create-cluster-database-csharp.md
         - name: Python
           href: create-cluster-database-python.md
-        - name: Azure 资源管理器模板
+        - name: Azure Resource Manager 模板
           href: create-cluster-database-resource-manager.md
     - name: 引入数据
       items:
-        - name: 一键式引入
-          href: ingest-data-one-click.md
         - name: 流式引入
           href: ingest-data-streaming.md
         - name: 使用 LightIngest
@@ -78,7 +76,7 @@
               href: data-connection-event-hub-csharp.md
             - name: Python
               href: data-connection-event-hub-python.md
-            - name: Azure 资源管理器模板
+            - name: Azure Resource Manager 模板
               href: data-connection-event-hub-resource-manager.md
         - name: IoT 中心
           items:
@@ -88,7 +86,7 @@
               href: data-connection-iot-hub-csharp.md
             - name: Python
               href: data-connection-iot-hub-python.md
-            - name: Azure 资源管理器模板
+            - name: Azure Resource Manager 模板
               href: data-connection-iot-hub-resource-manager.md
         - name: 使用 SDK
           items:
@@ -126,13 +124,13 @@
       items:
         - name: Power BI
           items:
-            - name: 最佳做法
+            - name: 最佳实践
               href: power-bi-best-practices.md
             - name: 连接器
               href: power-bi-connector.md
             - name: 导入的查询
               href: power-bi-imported-query.md
-            - name: SQL 查询 (SQL query)
+            - name: SQL 查询
               href: power-bi-sql-query.md
         - name: Excel
           items:
@@ -170,8 +168,10 @@
                   href: cluster-principal-csharp.md
                 - name: Python
                   href: cluster-principal-python.md
-                - name: Azure 资源管理器模板
+                - name: Azure Resource Manager 模板
                   href: cluster-principal-resource-manager.md
+            - name: 管理群集语言扩展
+              href: language-extensions.md
         - name: 数据库
           items:
             - name: 后继数据库
@@ -184,7 +184,7 @@
                   href: database-principal-csharp.md
                 - name: Python
                   href: database-principal-python.md
-                - name: Azure 资源管理器模板
+                - name: Azure Resource Manager 模板
                   href: database-principal-resource-manager.md
             - name: 策略
               items:
@@ -192,7 +192,7 @@
                   href: database-table-policies-csharp.md
                 - name: Python
                   href: database-table-policies-python.md
-        - name: data
+        - name: 数据
           items:
             - name: 删除数据
               href: delete-data.md
@@ -220,6 +220,8 @@
           href: spark-connector.md
         - name: 在 Jupyter Notebook 和 Kqlmagic 中分析数据
           href: kqlmagic.md
+        - name: 分析 Azure Notebooks 中的数据
+          href: azure-notebooks.md
     - name: 故障排除
       items:
         - name: 创建群集
@@ -231,29 +233,29 @@
 - name: 参考
   items:
     - name: 查询语言
-      href: 'https://docs.microsoft.com/azure/kusto/query/'
+      href: 'https://docs.microsoft.com/azure/data-explorer/kusto/query/index'
     - name: 管理命令
-      href: 'https://docs.microsoft.com/azure/kusto/management/'
+      href: 'https://docs.microsoft.com/azure/data-explorer/kusto/management/index'
     - name: API
-      href: 'https://docs.microsoft.com/azure/kusto/api/'
+      href: 'https://docs.microsoft.com/azure/data-explorer/kusto/api/index'
     - name: 工具
-      href: 'https://docs.microsoft.com/azure/kusto/tools/'
+      href: 'https://docs.microsoft.com/azure/data-explorer/kusto/tools/index'
     - name: 概念
-      href: 'https://docs.microsoft.com/azure/kusto/concepts/'
+      href: 'https://docs.microsoft.com/azure/data-explorer/kusto/concepts/index'
 - name: 资源
   items:
     - name: 博客
       href: 'https://azure.microsoft.com/blog/tag/azure-data-explorer/'
     - name: 论坛
       items:
-        - name: 堆栈溢出
+        - name: Stack Overflow
           href: 'https://stackoverflow.com/questions/tagged/azure-data-explorer'
         - name: Microsoft 技术社区
           href: 'https://techcommunity.microsoft.com/t5/Azure-Data-Explorer/bd-p/Kusto'
         - name: MSDN 论坛
           href: 'https://social.msdn.microsoft.com/Forums/zh-CN/home?forum=windowsazurezhchs'
     - name: 产品反馈
-      href: 'https://aka.ms/adefeedback'
+      href: 'https://feedback.azure.com/forums/915733-azure-data-explorer'
     - name: 定价和计费
       items:
         - name: 定价页面

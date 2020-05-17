@@ -4,16 +4,16 @@ description: 了解如何开发 Azure 资源管理器模板来实现 Azure 与 A
 author: WenJason
 ms.topic: article
 origin.date: 1/22/2020
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: unknown
 ms.lastreviewed: 05/21/2019
-ms.openlocfilehash: 2cea44667b3edc12f536791f8558f79b9386fe78
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 658c28c2c008e524179cc9cbabbeb3f415b9cccc
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540806"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422066"
 ---
 # <a name="develop-templates-for-azure-stack-hub-with-azure-resource-manager"></a>使用 Azure 资源管理器开发 Azure Stack Hub 的模板
 

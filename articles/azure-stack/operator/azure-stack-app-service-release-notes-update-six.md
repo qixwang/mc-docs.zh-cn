@@ -5,15 +5,16 @@ author: WenJason
 manager: digimobile
 ms.topic: article
 origin.date: 06/24/2019
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.author: v-jay
-ms.reviewer: ''
-ms.openlocfilehash: 98474b3d053b592ea22335c9d46d91e2f7e5121b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.reviewer: anwestg
+ms.lastreviewed: 08/20/2019
+ms.openlocfilehash: 7cc8ab2f9d86beca89ccadbe92d63bb25022c97e
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540955"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422506"
 ---
 # <a name="app-service-on-azure-stack-hub-update-6-release-notes"></a>Azure Stack Hub 上的应用服务 Update 6 发行说明
 

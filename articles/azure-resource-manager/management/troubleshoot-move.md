@@ -1,16 +1,16 @@
 ---
 title: 排查迁移错误
-description: 使用 Azure 资源管理器将资源移到新的资源组或订阅。
+description: 使用 Azure Resource Manager 将资源移到新的资源组或订阅。
 ms.topic: conceptual
 origin.date: 08/27/2019
 ms.date: 01/20/2020
 ms.author: v-yeche
-ms.openlocfilehash: 32e8465ae80acc36b0fdcdecff993fa7d4a11e4a
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: dd168d76ed08952553f0bfac2b5b3f2d9391cbba
+ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "76165405"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83392343"
 ---
 <!--Verified successfully-->
 # <a name="troubleshoot-moving-azure-resources-to-new-resource-group-or-subscription"></a>排查将 Azure 资源移到新的资源组或订阅时遇到的问题
@@ -39,8 +39,10 @@ ms.locfileid: "76165405"
     <!--Not Available on * [Azure DevOps Services](https://docs.microsoft.com/azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json)-->
 
 * [经典部署模型](./move-limitations/classic-model-move-limitations.md)
-* [网络](./move-limitations/networking-move-limitations.md)
-* [恢复服务](../../backup/backup-azure-move-recovery-services-vault.md?toc=/azure-resource-manager/toc.json)
+* [联网](./move-limitations/networking-move-limitations.md)
+
+    <!--Not Available on * [Recovery Services](../../backup/backup-azure-move-recovery-services-vault.md?toc=/azure-resource-manager/toc.json)-->
+
 * [虚拟机](./move-limitations/virtual-machines-move-limitations.md)
 
 ## <a name="large-requests"></a>大型请求
@@ -57,6 +59,6 @@ ms.locfileid: "76165405"
 
 ## <a name="next-steps"></a>后续步骤
 
-有关移动资源的命令，请参阅[将资源移动至新资源组或订阅](move-resource-group-and-subscription.md)。
+有关用于移动资源的命令，请参阅[将资源移到新资源组或订阅](move-resource-group-and-subscription.md)。
 
 <!-- Update_Description: update meta properties, wording update, update link -->

@@ -7,13 +7,13 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 10/07/2019
-ms.date: 03/16/2020
-ms.openlocfilehash: 620a7ca8e02110a25d43363a79efcfeb72c51f7d
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/09/2020
+ms.openlocfilehash: 6a4ff4c9cb3429ad0ab17834d1e4ee6821037935
+ms.sourcegitcommit: bfbd6694da33f703481386f2a3f16850c4e94bfa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80243972"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83417770"
 ---
 # <a name="create-an-iot-hub-data-connection-for-azure-data-explorer-by-using-python-preview"></a>使用 Python 为 Azure 数据资源管理器创建 IoT 中心数据连接（预览版）
 
@@ -39,9 +39,9 @@ ms.locfileid: "80243972"
 
 * [配置了共享访问策略的 IoT 中心](ingest-data-iot-hub.md#create-an-iot-hub)。
 
-[!INCLUDE [data-explorer-data-connection-install-package-python](../../includes/data-explorer-data-connection-install-package-python.md)]
+[!INCLUDE [data-explorer-data-connection-install-package-python](includes/data-explorer-data-connection-install-package-python.md)]
 
-[!INCLUDE [data-explorer-authentication](../../includes/data-explorer-authentication.md)]
+[!INCLUDE [data-explorer-authentication](includes/data-explorer-authentication.md)]
 
 ## <a name="add-an-iot-hub-data-connection"></a>添加 IoT 中心数据连接 
 
@@ -105,4 +105,4 @@ poller = kusto_management_client.data_connections.create_or_update(resource_grou
 | consumer_group | *$Default* | 事件中心的使用者组。|
 | location | *中国东部 2* | 数据连接资源的位置。|
 
-[!INCLUDE [data-explorer-data-connection-clean-resources-python](../../includes/data-explorer-data-connection-clean-resources-python.md)]
+[!INCLUDE [data-explorer-data-connection-clean-resources-python](includes/data-explorer-data-connection-clean-resources-python.md)]

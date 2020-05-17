@@ -7,13 +7,13 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 01/19/2020
-ms.date: 03/16/2020
-ms.openlocfilehash: 0a56de909bcd9d8afda4d0b4c8d1fa29ea40645b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/09/2020
+ms.openlocfilehash: ecac427ab939931bc846e7c27b137b78b0fd7829
+ms.sourcegitcommit: bfbd6694da33f703481386f2a3f16850c4e94bfa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80243946"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83417552"
 ---
 # <a name="monitor-azure-data-explorer-performance-health-and-usage-with-metrics"></a>使用指标监视 Azure 数据资源管理器的性能、运行状况和使用情况
 
@@ -36,7 +36,7 @@ Azure 数据资源管理器是一项快速、完全托管的数据分析服务�
     1. 使用时间选取器更改时间范围（默认：过去 24 小时）。
     1. 对包含维度的指标使用[**添加筛选器**和**应用拆分**](/azure-monitor/platform/metrics-getting-started#apply-dimension-filters-and-splitting)。
     1. 选择“固定到仪表板”可将图表配置添加到仪表板，以便可以再次查看它。 
-    1. 设置**新的警报规则**可以使用设置的条件将指标可视化。 新的警报规则将包括图表的目标资源、指标、拆分和筛选器维度。 在[警报规则创建窗格](/azure/azure-monitor/platform/metrics-charts#create-alert-rules)中修改这些设置。
+    1. 设置**新的警报规则**可以使用设置的条件将指标可视化。 新的警报规则将包括图表的目标资源、指标、拆分和筛选器维度。 在[警报规则创建窗格](/azure-monitor/platform/metrics-charts#create-alert-rules)中修改这些设置。
 
 有关使用[指标资源管理器](/azure-monitor/platform/metrics-getting-started)的更多信息。
 

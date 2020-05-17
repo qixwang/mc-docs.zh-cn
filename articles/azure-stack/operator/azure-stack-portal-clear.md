@@ -4,17 +4,16 @@ description: 为 Azure Stack Hub 操作员介绍如何按 Azure Stack Hub 用户
 author: WenJason
 ms.topic: conceptual
 origin.date: 01/27/2020
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: troettinger
 ms.lastreviewed: 09/10/2019
-monikerRange: azs-1802
-ms.openlocfilehash: d3314329c50655c18fecbf668fedbd2fc93f04cc
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 4a12e54b045d6e3b00c04e5315319e2d2776f3eb
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540370"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422482"
 ---
 # <a name="clear-portal-user-data-from-azure-stack-hub"></a>从 Azure Stack Hub 中清除门户用户数据
 

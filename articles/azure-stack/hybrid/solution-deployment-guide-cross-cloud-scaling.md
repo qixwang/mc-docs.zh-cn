@@ -4,16 +4,16 @@ description: 了解如何使用 Azure 和 Azure Stack Hub 部署可跨云缩放�
 author: WenJason
 ms.topic: article
 origin.date: 11/05/2019
-ms.date: 03/23/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: anajod
 ms.lastreviewed: 11/05/2019
-ms.openlocfilehash: 5e9de6ad0ad47e483ba562a52f0ce05c8ccee03a
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 031e221e9a8e96bf06aa631ade61b62b7bc20a16
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79547065"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422468"
 ---
 # <a name="deploy-an-app-that-scales-cross-cloud-using-azure-and-azure-stack-hub"></a>使用 Azure 和 Azure Stack Hub 部署可跨云缩放的应用
 

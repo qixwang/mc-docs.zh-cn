@@ -5,7 +5,6 @@ services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: rockboyfor
 manager: digimobile
-editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-windows
@@ -13,16 +12,16 @@ ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 origin.date: 11/29/2018
-ms.date: 02/10/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
 ms.custom: mvc
 ms.subservice: disks
-ms.openlocfilehash: 655c87fcc67169af2ac3a3b403f049c37042bb2a
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: efd3ffee3438c2ee6f50fe601f0e4fa62601a514
+ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77428665"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83392393"
 ---
 # <a name="tutorial---manage-azure-disks-with-azure-powershell"></a>教程 - 使用 Azure PowerShell 管理 Azure 磁盘
 
@@ -38,8 +37,6 @@ Azure 虚拟机使用磁盘来存储 VM 操作系统、应用程序和数据。 
 ## <a name="launch-azure-powershell"></a>启动 Azure PowerShell
 
 打开 Azure Powershell 控制台，并以管理员权限运行以下脚本。
-
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 ## <a name="default-azure-disks"></a>默认 Azure 磁盘
 
@@ -179,5 +176,4 @@ VirtualHardDisk :
 > [!div class="nextstepaction"]
 > [自动配置 VM](./tutorial-automate-vm-deployment.md)
 
-<!--Update_Description: update meta properties, wording update, update link -->
-
+<!-- Update_Description: update meta properties, wording update, update link -->

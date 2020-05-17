@@ -8,12 +8,12 @@ ms.topic: quickstart
 origin.date: 05/06/2020
 ms.date: 05/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: faaa6e7e4b1453ece364203c338512c84c4b31d3
-ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
+ms.openlocfilehash: 595cdb94f283f2124aa6ebca7a238ace6f4fbe28
+ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "83002269"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83392453"
 ---
 <!--Verified with PM-->
 <!--Validation Failed: Unable to download deployment content from 'https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/fw-docs-qs/azuredeploy.json'.-->
@@ -29,7 +29,7 @@ ms.locfileid: "83002269"
 
 ## <a name="prerequisites"></a>先决条件
 
-- 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://www.azure.cn/free/?WT.mc_id=A261C142F)。
+- 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://www.azure.cn/pricing/1rmb-trial)。
 
 ## <a name="create-an-azure-firewall"></a>创建 Azure 防火墙
 

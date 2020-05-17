@@ -6,15 +6,15 @@ author: rockboyfor
 ms.service: virtual-machines
 ms.topic: include
 origin.date: 09/18/2019
-ms.date: 03/30/2020
+ms.date: 05/18/2020
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: c2ddfa9912175a5284a2ebbff69f515a5f30ddcc
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 0962a945b00d4e52c8ada3091f32432f244bff81
+ms.sourcegitcommit: 8d56bc6baeb42d675695ecef1909d76f5c4a6ae3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79546241"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83406213"
 ---
 Azure 计算提供独立于特定硬件类型并专用于单个客户的虚拟机大小。  这些虚拟机大小非常适合于与其他客户的工作负载（涉及符合性和法规要求等元素）高度隔离的工作负载。  客户还可以选择利用[对嵌套虚拟机的 Azure 支持](https://azure.microsoft.com/blog/nested-virtualization-in-azure/)，对这些独立的虚拟机资源进一步细分。
 
@@ -85,5 +85,4 @@ Azure 计算提供独立于特定硬件类型并专用于单个客户的虚拟�
 ### <a name="q-im-an-azure-service-fabric-customer-relying-on-the-silver-or-gold-durability-tiers-does-this-change-impact-me"></a>问：我是依赖于白银或黄金耐久性层级的 Azure Service Fabric 客户。 此更改是否会影响我？
 **答**：否。 Service Fabric 的[耐久性层级](https://docs.azure.cn/service-fabric/service-fabric-cluster-capacity#the-durability-characteristics-of-the-cluster)提供的保证即使在此更改发生后也将继续履行。 如果你出于其他原因而需要物理硬件隔离，可能仍需采取上述措施之一。 
 
-<!-- Update_Description: new article about virtual machines common isolation -->
-<!--NEW.date: 03/02/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

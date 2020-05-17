@@ -7,13 +7,13 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 08/30/2019
-ms.date: 01/13/2020
-ms.openlocfilehash: 28b60f6f10a6be418da1f4c84e67d4c9a6b85b78
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/09/2020
+ms.openlocfilehash: bdfb78da74c21cd2591b3aa1c53cb35d13e558b4
+ms.sourcegitcommit: bfbd6694da33f703481386f2a3f16850c4e94bfa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75630907"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83417637"
 ---
 # <a name="visualize-data-using-the-azure-data-explorer-connector-for-excel"></a>使用 Excel 的 Azure 数据资源管理器连接器进行数据可视化
 

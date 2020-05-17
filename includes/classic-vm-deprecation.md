@@ -3,14 +3,14 @@ author: rockboyfor
 ms.service: virtual-machines
 ms.topic: include
 origin.date: 02/19/2020
-ms.date: 04/27/2020
+ms.date: 05/18/2020
 ms.author: v-yeche
-ms.openlocfilehash: 53684f3e84493f1f5558f6a6ca34b6d50b7a662a
-ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
+ms.openlocfilehash: 963132b7e98f4aba8a9b292b8fcc8acff5d89d0f
+ms.sourcegitcommit: 8d56bc6baeb42d675695ecef1909d76f5c4a6ae3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82595966"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83406185"
 ---
 > [!IMPORTANT]
 > 经典 VM 将于 2023 年 3 月 1 日停用。

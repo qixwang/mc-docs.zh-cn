@@ -4,16 +4,16 @@ description: 如何使用 SSH 公钥
 author: WenJason
 ms.topic: overview
 origin.date: 1/22/2020
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: sijuman
 ms.lastreviewed: 10/02/2019
-ms.openlocfilehash: 716264530b9b2ac584c7b7c6d61081d679f8887b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: c1662897509d536e9781cc7e6e1f689c1e29412a
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292399"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422090"
 ---
 # <a name="use-an-ssh-public-key"></a>使用 SSH 公钥
 

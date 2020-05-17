@@ -7,13 +7,13 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 10/07/2019
-ms.date: 01/13/2020
-ms.openlocfilehash: e3cb43a9f751170b0328fb161e76cd094582d58e
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/09/2020
+ms.openlocfilehash: 9e2a718552879a8e4b418f66f7f5fa84595fefed
+ms.sourcegitcommit: bfbd6694da33f703481386f2a3f16850c4e94bfa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75631110"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83417774"
 ---
 # <a name="create-an-event-hub-data-connection-for-azure-data-explorer-by-using-c"></a>使用 C# 为 Azure 数据资源管理器创建事件中心数据连接
 
@@ -34,9 +34,9 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
 * 设置[数据库和表策略](database-table-policies-csharp.md)（可选）
 * 创建[包含要引入的数据的事件中心](ingest-data-event-hub.md#create-an-event-hub)。 
 
-[!INCLUDE [data-explorer-data-connection-install-nuget-csharp](../../includes/data-explorer-data-connection-install-nuget-csharp.md)]
+[!INCLUDE [data-explorer-data-connection-install-nuget-csharp](includes/data-explorer-data-connection-install-nuget-csharp.md)]
 
-[!INCLUDE [data-explorer-authentication](../../includes/data-explorer-authentication.md)]
+[!INCLUDE [data-explorer-authentication](includes/data-explorer-authentication.md)]
 
 ## <a name="add-an-event-hub-data-connection"></a>添加事件中心数据连接
 
@@ -92,4 +92,4 @@ await kustoManagementClient.DataConnections.CreateOrUpdateAsync(resourceGroupNam
 | consumerGroup | *$Default* | 事件中心的使用者组。|
 | location | *中国东部 2* | 数据连接资源的位置。|
 
-[!INCLUDE [data-explorer-data-connection-clean-resources-csharp](../../includes/data-explorer-data-connection-clean-resources-csharp.md)]
+[!INCLUDE [data-explorer-data-connection-clean-resources-csharp](includes/data-explorer-data-connection-clean-resources-csharp.md)]

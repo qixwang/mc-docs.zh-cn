@@ -8,14 +8,15 @@ ms.workload: infrastructure-services
 origin.date: 04/20/2020
 ms.date: 04/30/2020
 ms.author: v-yeche
-ms.openlocfilehash: 3620fb1d6ebccc805a5629278da55494088babda
-ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
+ms.openlocfilehash: afe8cbfe2af0c953b0701cfe5f45651e03bd9dac
+ms.sourcegitcommit: bfbd6694da33f703481386f2a3f16850c4e94bfa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82596511"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83417710"
 ---
 <!--WAITING FOR STEVE NOTIFICATION-->
+<!--Verified successfully-->
 # <a name="control-updates-with-maintenance-control-and-the-azure-cli"></a>使用维护控制和 Azure CLI 来控制更新
 
 维护控制允许你决定何时向隔离的 VM 和 Azure 专用主机应用更新。 本主题介绍维护控制的 Azure CLI 选项。 有关使用维护控制的好处、其限制和其他管理选项的详细信息，请参阅[使用维护控制管理平台更新](maintenance-control.md)。
@@ -26,13 +27,13 @@ ms.locfileid: "82596511"
 
 ```azurecli
 az group create \
-   --location chinaeast \
+   --location chinaeast2 \
    --name myMaintenanceRG
 az maintenance configuration create \
    -g myMaintenanceRG \
    --name myConfig \
    --maintenanceScope host\
-   --location chinaeast
+   --location chinaeast2
 ```
 
 复制输出中的配置 ID 供以后使用。
@@ -58,7 +59,7 @@ az maintenance configuration list --query "[].{Name:name, ID:id}" -o table
 ```azurecli
 az maintenance assignment create \
    --resource-group myMaintenanceRG \
-   --location chinaeast \
+   --location chinaeast2 \
    --resource-name myVM \
    --resource-type virtualMachines \
    --provider-name Microsoft.Compute \
@@ -80,7 +81,7 @@ az maintenance assignment create \
    --provider-name Microsoft.Compute \
    --configuration-assignment-name myConfig \
    --maintenance-configuration-id "/subscriptions/1111abcd-1a11-1a2b-1a12-123456789abc/resourcegroups/myDhResourceGroup/providers/Microsoft.Maintenance/maintenanceConfigurations/myConfig" \
-   -l chinaeast \
+   -l chinaeast2 \
    --resource-parent-name myHostGroup \
    --resource-parent-type hostGroups 
 ```

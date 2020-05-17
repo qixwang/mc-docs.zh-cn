@@ -1,28 +1,19 @@
 ---
-title: 连接到 ASDK | Microsoft Docs
+title: 连接到 ASDK
 description: 了解如何连接到 Azure Stack 开发工具包 (ASDK)。
-services: azure-stack
-documentationcenter: ''
 author: WenJason
-manager: digimobile
-editor: ''
-ms.assetid: 3cebbfa6-819a-41e3-9f1b-14ca0a2aaba3
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 origin.date: 05/06/2019
-ms.date: 10/21/2019
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: knithinc
-ms.lastreviewed: 10/25/2018
-ms.openlocfilehash: 211daeeaec40394892e8e1658ed497ab4a7b2c13
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.lastreviewed: 10/25/2019
+ms.openlocfilehash: ad5eee5b1c7ab8f7f7c7679cd5782a39a6fa6952
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292607"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422422"
 ---
 # <a name="connect-to-the-asdk"></a>连接到 ASDK
 

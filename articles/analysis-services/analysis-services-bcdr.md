@@ -4,16 +4,16 @@ description: 本文介绍 Azure Analysis Services 如何在服务中断期间提
 author: rockboyfor
 ms.service: azure-analysis-services
 ms.topic: conceptual
-origin.date: 10/30/2019
-ms.date: 11/25/2019
+origin.date: 03/30/2020
+ms.date: 04/30/2020
 ms.author: v-yeche
 ms.reviewer: minewiskan
-ms.openlocfilehash: 432a94fe3b7300ffc9dcae937d35730fad16ac5d
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 6fb772f09831c2099c6c3d7ac3ae37e89c6f3536
+ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74203638"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83392399"
 ---
 # <a name="analysis-services-high-availability"></a>Analysis Services 高可用性
 
@@ -37,4 +37,4 @@ ms.locfileid: "74203638"
 [管理 Azure Analysis Services](analysis-services-manage.md)   
 [别名服务器名称](analysis-services-server-alias.md)
 
-<!-- Update_Description: update meta properties, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

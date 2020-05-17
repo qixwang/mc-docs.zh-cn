@@ -7,13 +7,13 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 11/04/2019
-ms.date: 02/17/2019
-ms.openlocfilehash: d611da97acf78d9ab49765a95810ea6be318672c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/09/2020
+ms.openlocfilehash: fc81d00c1f2c96da01070c82ea10a4e04cb8e6a1
+ms.sourcegitcommit: bfbd6694da33f703481386f2a3f16850c4e94bfa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77037946"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83417587"
 ---
 # <a name="visualize-data-from-azure-data-explorer-in-redash"></a>在 Redash 中可视化 Azure 数据资源管理器的数据
 
@@ -24,7 +24,7 @@ ms.locfileid: "77037946"
 1. [创建群集和数据库](create-cluster-database-portal.md)。
 1. 根据[将示例数据引入 Azure 数据资源管理器](ingest-sample-data.md)中所述引入数据。 有关更多引入选项，请参阅[引入概述](ingest-data-overview.md)。
 
-[!INCLUDE [data-explorer-configure-data-source](../../includes/data-explorer-configure-data-source.md)]
+[!INCLUDE [data-explorer-configure-data-source](includes/data-explorer-configure-data-source.md)]
 
 ## <a name="create-azure-data-explorer-connector-in-redash"></a>在 Redash 中创建 Azure 数据资源管理器连接器 
 
@@ -74,7 +74,7 @@ ms.locfileid: "77037946"
     ![基于查询的下拉列表](media/redash/query-based-dropdown-list.png)
 
     > [!NOTE]
-    > 该查询使用多个值，因此必须包含以下语法：`| where Type in ((split('{{Type}}', ',')))`。 有关详细信息，请参阅 [in 运算符](https://docs.microsoft.com/azure/kusto/query/inoperator)。 这会导致 [Redash 应用中出现多个查询参数选项](https://redash.io/help/user-guide/querying/query-parameters#Serialized-Multi-Select-Query-Parametersredash.io)
+    > 该查询使用多个值，因此必须包含以下语法：`| where Type in ((split('{{Type}}', ',')))`。 有关详细信息，请参阅 [in 运算符](https://docs.microsoft.com/azure/data-explorer/kusto/query/inoperator)。 这会导致 [Redash 应用中出现多个查询参数选项](https://redash.io/help/user-guide/querying/query-parameters#Serialized-Multi-Select-Query-Parametersredash.io)
 
 ## <a name="create-a-dashboard-in-redash"></a>在 Redash 中创建仪表板
 

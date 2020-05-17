@@ -7,12 +7,12 @@ ms.topic: article
 origin.date: 01/09/2020
 ms.date: 05/01/2020
 ms.author: v-yeche
-ms.openlocfilehash: 77a77c8c2a362478392b0410059a5a91cf9fcb0c
-ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
+ms.openlocfilehash: 751cba45c0d83cb824781c74613463f840dae6a1
+ms.sourcegitcommit: bfbd6694da33f703481386f2a3f16850c4e94bfa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82596026"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83417778"
 ---
 <!--Verified successfully-->
 # <a name="deploy-vms-to-dedicated-hosts-using-the-azure-cli"></a>使用 Azure CLI 将 VM 部署到专用主机
@@ -83,7 +83,10 @@ az vm host create \
 ```
 
 ## <a name="create-a-virtual-machine"></a>创建虚拟机 
-使用 [az vm create](https://docs.azure.cn/cli/vm?view=azure-cli-latest#az-vm-create) 在专用主机中创建虚拟机。 如果在创建主机组时指定了可用性区域，则在创建虚拟机时需要使用同一区域。
+使用 [az vm create](https://docs.azure.cn/cli/vm?view=azure-cli-latest#az-vm-create) 在专用主机中创建虚拟机。 
+
+<!--Not Available on ailability zone-->
+<!--Not Available on If you specified an availability zone when creating your host group, you are required to use the same zone when creating the virtual machine.-->
 
 ```bash
 az vm create \

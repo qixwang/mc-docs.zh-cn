@@ -4,15 +4,15 @@ description: 了解如何使用 Azure Stack Hub 门户管理 Azure Stack Hub 中
 author: WenJason
 ms.topic: article
 origin.date: 01/10/2020
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.lastreviewed: 1/10/2020
-ms.openlocfilehash: 928e0de3ecf44554b0320fa2165ed531e0d414bb
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 11887fa7803a1a350bde743023eca29b98b8d7d3
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540792"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422368"
 ---
 # <a name="manage-key-vault-in-azure-stack-hub-using-the-portal"></a>使用门户管理 Azure Stack Hub 中的 Key Vault
 

@@ -7,13 +7,13 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 07/10/2019
-ms.date: 03/16/2019
-ms.openlocfilehash: bf14a0c8c27d7c970ec43cf3f115a7484db5e8bf
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/09/2020
+ms.openlocfilehash: f2f0563228b0ae222359d023ddce9cf3c8c14226
+ms.sourcegitcommit: bfbd6694da33f703481386f2a3f16850c4e94bfa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80243962"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83417611"
 ---
 # <a name="visualize-data-using-the-azure-data-explorer-connector-for-power-bi"></a>使用 Power BI 的 Azure 数据资源管理器连接器直观显示数据
 
@@ -29,7 +29,7 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
 
 ## <a name="get-data-from-azure-data-explorer"></a>从 Azure 数据资源管理器获取数据
 
-首先连接到 Azure 数据资源管理器帮助群集，然后从 *StormEvents* 表引入一部分数据。 [!INCLUDE [data-explorer-storm-events](../../includes/data-explorer-storm-events.md)]
+首先连接到 Azure 数据资源管理器帮助群集，然后从 *StormEvents* 表引入一部分数据。 [!INCLUDE [data-explorer-storm-events](includes/data-explorer-storm-events.md)]
 
 1. 在 Power BI Desktop 的“主页”选项卡上选择“获取数据”，然后选择“更多”    。
 
@@ -58,7 +58,7 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
     > 在以下情况下使用**导入**模式：
     > * 数据集很小。
     > * 不需要接近实时的数据。 
-    > * 数据已聚合，或在 Kusto 中执行[聚合](https://docs.microsoft.com/azure/kusto/query/summarizeoperator#list-of-aggregation-functions)    
+    > * 数据已聚合，或在 Kusto 中执行[聚合](https://docs.microsoft.com/azure/data-explorer/kusto/query/summarizeoperator#list-of-aggregation-functions)    
     >
     > 在以下情况下使用 **DirectQuery** 模式：
     > * 数据集非常大。 
@@ -88,7 +88,7 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
 
 ## <a name="visualize-data-in-a-report"></a>在报表中将数据可视化
 
-[!INCLUDE [data-explorer-power-bi-visualize-basic](../../includes/data-explorer-power-bi-visualize-basic.md)]
+[!INCLUDE [data-explorer-power-bi-visualize-basic](includes/data-explorer-power-bi-visualize-basic.md)]
 
 ## <a name="clean-up-resources"></a>清理资源
 

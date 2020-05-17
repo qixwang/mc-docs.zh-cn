@@ -4,15 +4,15 @@ description: 了解如何启用跨平台命令行接口 (CLI) 来管理和部署
 author: WenJason
 ms.topic: article
 origin.date: 1/22/2020
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.lastreviewed: 05/16/2019
-ms.openlocfilehash: 95f0a6432f016d474fd8464bb19668c36a511be2
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 7b02b99c47c72e268f4678815b9c9eefe12c9581
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540876"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422625"
 ---
 # <a name="enable-azure-cli-for-azure-stack-hub-users"></a>为 Azure Stack Hub 用户启用 Azure CLI
 

@@ -4,16 +4,16 @@ description: 了解如何为 Azure 和 Azure Stack Hub 应用配置混合云标�
 author: WenJason
 ms.topic: article
 origin.date: 11/05/2019
-ms.date: 03/23/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: anajod
 ms.lastreviewed: 11/05/2019
-ms.openlocfilehash: cfb3fea44f045c36a0512a89b72fa55410a59810
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 501a7e43e0997d6d0d58db835a6fe8215be92719
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79547055"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422628"
 ---
 # <a name="configure-hybrid-cloud-identity-for-azure-and-azure-stack-hub-applications"></a>为 Azure 和 Azure Stack Hub 应用程序配置混合云标识
 

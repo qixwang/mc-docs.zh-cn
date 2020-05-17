@@ -9,16 +9,16 @@ origin.date: 12/17/2019
 ms.date: 01/06/2020
 ms.author: v-jay
 ms.subservice: blobs
-ms.openlocfilehash: 55693218e6547adae4ec71e20e609108c5f10be8
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: d3a3f576c312fa76ceca4eca2edf238db787196b
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75624141"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422353"
 ---
 # <a name="create-or-delete-a-container-in-azure-storage-with-net"></a>使用 .NET 在 Azure 存储中创建或删除容器
 
-Azure 存储中的 Blob 已组织成容器。 必须先创建容器，才能上传 Blob。 本文介绍如何使用[适用于 .NET 的 Azure 存储客户端库](https://docs.azure.cn/zh-cn/dotnet/api/overview/storage/client?view=azure-dotnet)创建和删除容器。
+Azure 存储中的 Blob 已组织成容器。 必须先创建容器，才能上传 Blob。 本文介绍如何使用[适用于 .NET 的 Azure 存储客户端库](https://docs.azure.cn/dotnet/api/overview/storage/client?view=azure-dotnet)创建和删除容器。
 
 ## <a name="name-a-container"></a>为容器命名
 
@@ -36,7 +36,7 @@ Azure 存储中的 Blob 已组织成容器。 必须先创建容器，才能上�
 
 若要创建容器，请调用以下方法之一：
 
-- [创建](https://docs.azure.cn/zh-cn/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer.create?view=azure-dotnet)
+- [创建](https://docs.azure.cn/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer.create?view=azure-dotnet)
 - [CreateAsync](https://docs.azure.cn/zh-cn/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer.createasync?view=azure-dotnet)
 - [CreateIfNotExists](https://docs.azure.cn/zh-cn/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer.createifnotexists?view=azure-dotnet)
 - [CreateIfNotExistsAsync](https://docs.azure.cn/zh-cn/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer.createifnotexistsasync?view=azure-dotnet)

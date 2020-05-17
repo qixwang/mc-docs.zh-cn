@@ -4,16 +4,16 @@ description: 了解如何为 Active Directory 联合身份验证服务 (AD FS) �
 author: WenJason
 ms.topic: article
 origin.date: 06/03/2019
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: unknown
 ms.lastreviewed: 06/03/2019
-ms.openlocfilehash: 73ef3a5e681e77b4d0cd302b01cb7f250fc75bf5
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 76c06fd0daab2ebf7cab962a93ed1b4a7a4cbfbc
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540894"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422462"
 ---
 # <a name="add-a-new-azure-stack-hub-user-account-in-active-directory-federation-services-ad-fs"></a>在 Active Directory 联合身份验证服务 (AD FS) 中添加新的 Azure Stack Hub 用户帐户
 

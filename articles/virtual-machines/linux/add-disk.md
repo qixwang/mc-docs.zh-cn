@@ -1,28 +1,21 @@
 ---
 title: 将磁盘添加到 Linux VM | Azure
 description: 了解如何使用 Azure CLI 将持久性数据磁盘添加到 Linux VM
-services: virtual-machines-linux
-documentationcenter: ''
-author: rockboyfor
+author: Johnnytechn
 manager: digimobile
-editor: tysonn
-tags: azure-resource-manager
 ms.service: virtual-machines-linux
 ms.topic: article
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.devlang: azurecli
 origin.date: 06/13/2018
-ms.date: 08/12/2019
-ms.author: v-yeche
+ms.date: 05/18/2020
+ms.author: v-johya
 ms.custom: H1Hack27Feb2017
 ms.subservice: disks
-ms.openlocfilehash: 6b9e4f2c48eb267f12b11cf0d67d6cd71e0a7596
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 1da06d3562c11e2bc68983087f7f8e6c3c125c22
+ms.sourcegitcommit: 436a5dd9a446fe7b6d3c4d5bc76b652f7848c1ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79291312"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83393122"
 ---
 # <a name="add-a-disk-to-a-linux-vm"></a>将磁盘添加到 Linux VM
 本文介绍了如何将持久性磁盘附加到 VM 以便持久保存数据 - 即使 VM 由于维护或调整大小而重新预配。
@@ -130,9 +123,7 @@ The partition table has been altered!
 Calling ioctl() to re-read partition table.
 Syncing disks.
 ```
-
 使用以下命令更新内核：
-
 ```
 partprobe 
 ```

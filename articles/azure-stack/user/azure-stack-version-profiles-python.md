@@ -4,16 +4,16 @@ description: 了解如何在 Azure Stack Hub 中将 API 版本配置文件与 Py
 author: WenJason
 ms.topic: article
 origin.date: 01/23/2020
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: sijuman
 ms.lastreviewed: 05/16/2019
-ms.openlocfilehash: 97f4094c90a554a26a454c0e8208cfcafa31f3cf
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 924e6ee00cda2bfa6426d13d725b8832ea4aace6
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77541005"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422586"
 ---
 # <a name="use-api-version-profiles-with-python-in-azure-stack-hub"></a>在 Azure Stack Hub 中将 API 版本配置文件与 Python 配合使用
 
@@ -189,4 +189,4 @@ Python SDK 支持以下 API 配置文件：
 ## <a name="next-steps"></a>后续步骤
 
 - [Azure Python 开发中心](/develop/python/)
-- [Azure 虚拟机文档](https://www.azure.cn/home/features/virtual-machines/)
+- [Azure 虚拟机文档](/virtual-machines/)

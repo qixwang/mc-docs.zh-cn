@@ -6,15 +6,15 @@ author: rockboyfor
 ms.service: virtual-network
 ms.topic: include
 origin.date: 03/01/2020
-ms.date: 04/13/2020
+ms.date: 05/18/2020
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: 84d7f23b59bd092a73dce273130ce9fed3a26953
-ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
+ms.openlocfilehash: 1d377eab0f142f4705884ce7c5495921ac4f3cb9
+ms.sourcegitcommit: 8d56bc6baeb42d675695ecef1909d76f5c4a6ae3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82093383"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83406199"
 ---
 ## <a name="create-the-virtual-network"></a>创建虚拟网络
 

@@ -4,16 +4,16 @@ description: 了解如何通过管理员门户启用基础结构备份服务，�
 author: WenJason
 ms.topic: article
 origin.date: 08/21/2019
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: hectorl
 ms.lastreviewed: 08/21/2019
-ms.openlocfilehash: 579dfe64572a936892155ce430b000ff64432ec3
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: c9426df272c36e5f9a3259623111a610ea0bd68b
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540954"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422147"
 ---
 # <a name="enable-backup-for-azure-stack-hub-from-the-administrator-portal"></a>从管理员门户为 Azure Stack Hub 启用备份
 

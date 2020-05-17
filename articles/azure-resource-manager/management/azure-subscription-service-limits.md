@@ -3,14 +3,14 @@ title: Azure 订阅限制和配额
 description: 提供常见的 Azure 订阅和服务限制、配额和约束的列表。 本文包括有关如何增加限制以及最大值的信息。
 ms.topic: conceptual
 origin.date: 04/03/2020
-ms.date: 04/30/2020
+ms.date: 05/18/2020
 ms.author: v-yeche
-ms.openlocfilehash: 1df9727bd2ab0add49b09ab788a83451fe87ffda
-ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
+ms.openlocfilehash: fec1196464f10beab769aceadfe1cfcc9c0b7d1d
+ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82596208"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83392375"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure 订阅和服务限制、配额和约束
 

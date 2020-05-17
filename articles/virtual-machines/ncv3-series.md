@@ -6,14 +6,14 @@ author: rockboyfor
 ms.service: virtual-machines
 ms.topic: article
 origin.date: 02/03/2020
-ms.date: 03/09/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: bab485818559d58c62b7b43e40f53987b3c035da
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 525c724b35aef010bcad30ed67c72341f39a0655
+ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79084519"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83392433"
 ---
 # <a name="ncv3-series"></a>NCv3 系列
 
@@ -51,7 +51,7 @@ NCv3 系列 VM 采用 [NVIDIA Tesla V100](https://www.nvidia.com/data-center/tes
 
 若要利用 Azure N 系列 VM 的 GPU 功能，必须安装 NVIDIA GPU 驱动程序。
 
-[NVIDIA GPU 驱动程序扩展](./extensions/hpccompute-gpu-windows.md)可在 N 系列 VM 上安装适当的 NVIDIA CUDA 或 GRID 驱动程序。 请使用 Azure 门户或工具（例如 Azure PowerShell 或 Azure 资源管理器模板）安装或管理该扩展。 有关受支持的操作系统和部署步骤，请参阅 [NVIDIA GPU 驱动程序扩展文档](./extensions/hpccompute-gpu-windows.md)。 有关 VM 扩展的常规信息，请参阅 [Azure 虚拟机扩展和功能](/.extensions/overview.md)。
+[NVIDIA GPU 驱动程序扩展](./extensions/hpccompute-gpu-windows.md)可在 N 系列 VM 上安装适当的 NVIDIA CUDA 或 GRID 驱动程序。 请使用 Azure 门户或工具（例如 Azure PowerShell 或 Azure 资源管理器模板）安装或管理该扩展。 有关受支持的操作系统和部署步骤，请参阅 [NVIDIA GPU 驱动程序扩展文档](./extensions/hpccompute-gpu-windows.md)。 有关 VM 扩展的常规信息，请参阅 [Azure 虚拟机扩展和功能](./extensions/overview.md)。
 
 如果选择手动安装 NVIDIA GPU 驱动程序，请参阅[适用于 Windows 的 N 系列 GPU 驱动程序安装](./windows/n-series-driver-setup.md)或[适用于 Linux 的 N 系列 GPU 驱动程序安装](./linux/n-series-driver-setup.md)，了解受支持的操作系统、驱动程序以及安装和验证步骤。
 
@@ -72,5 +72,4 @@ NCv3 系列 VM 采用 [NVIDIA Tesla V100](https://www.nvidia.com/data-center/tes
 
 了解有关 [Azure 计算单元 (ACU)](acu.md) 如何帮助跨 Azure SKU 比较计算性能的详细信息。
 
-<!-- Update_Description: new article about ncv3 series -->
-<!--NEW.date: 03/09/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

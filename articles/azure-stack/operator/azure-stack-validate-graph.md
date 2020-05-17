@@ -4,17 +4,17 @@ titleSuffix: Azure Stack Hub
 description: 使用 Azure Stack Hub 就绪性检查器来验证 Azure Stack Hub 的图形集成。
 author: WenJason
 ms.topic: article
-origin.date: 06/10/2019
-ms.date: 02/24/2020
+origin.date: 03/04/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: jerskine
 ms.lastreviewed: 06/10/2019
-ms.openlocfilehash: b3ef18f4099bf659bd58c54f68a30001c852fc3c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 8821539787dc9ef53d0f5e775ba6ffb2af8f225c
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540249"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422377"
 ---
 # <a name="validate-graph-integration-for-azure-stack-hub"></a>验证 Azure Stack Hub 的图形集成
 

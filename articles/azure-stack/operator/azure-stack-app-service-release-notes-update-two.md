@@ -5,16 +5,16 @@ author: WenJason
 manager: stefsch
 ms.topic: article
 origin.date: 03/25/2019
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.author: v-jay
-ms.reviewer: sethm
-ms.lastreviewed: 05/18/2018
-ms.openlocfilehash: 36044da278863ab7bb11d68ef793f19ec522910b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.reviewer: anwestg
+ms.lastreviewed: 05/18/2019
+ms.openlocfilehash: 5e3e13060b44e1cecb695548d61556b937d5017a
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540890"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422501"
 ---
 # <a name="app-service-on-azure-stack-hub-update-2-release-notes"></a>Azure Stack Hub 上的应用服务 Update 2 发行说明
 

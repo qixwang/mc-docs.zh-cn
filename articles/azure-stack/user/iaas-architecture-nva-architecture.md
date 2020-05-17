@@ -3,17 +3,17 @@ title: 在 Azure Stack Hub 上部署高度可用的网络虚拟设备
 description: 了解如何在 Azure Stack Hub 上部署高度可用的网络虚拟设备。
 author: WenJason
 ms.topic: how-to
-origin.date: 11/01/2019
-ms.date: 02/24/2020
+origin.date: 04/20/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: kivenkat
 ms.lastreviewed: 11/01/2019
-ms.openlocfilehash: b3b00f2dcd30da4589abf299ee1a56a079c7a756
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 3e223cb188674e08d1c9fb1eca7488556dc9652e
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540027"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422575"
 ---
 # <a name="deploy-highly-available-network-virtual-appliances-on-azure-stack-hub"></a>在 Azure Stack Hub 上部署高度可用的网络虚拟设备
 

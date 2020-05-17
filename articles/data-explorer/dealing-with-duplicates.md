@@ -7,13 +7,13 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 12/19/2018
-ms.date: 11/18/2019
-ms.openlocfilehash: 10593fcfc61e98ab69584d336c2d1305cb85f106
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/09/2020
+ms.openlocfilehash: d088623d3c13003e8820e5eaadac0f03b2b7a7dc
+ms.sourcegitcommit: bfbd6694da33f703481386f2a3f16850c4e94bfa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74020823"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83417752"
 ---
 # <a name="handle-duplicate-data-in-azure-data-explorer"></a>在 Azure 数据资源管理器中处理重复数据
 
@@ -48,7 +48,7 @@ _data
 
 ### <a name="solution-2-handle-duplicate-rows-during-query"></a>解决方法 #2：在查询过程中处理重复行
 
-另一种做法是在查询过程中筛选出数据中的重复行。 使用 [`arg_max()`](https://docs.microsoft.com/azure/kusto/query/arg-max-aggfunction) 聚合函数可以筛选出重复记录，并基于时间戳（或另一列）返回最后一条记录。 使用此方法的优点是引入速度更快，因为重复数据删除是在查询期间发生的。 此外，所有记录（包括重复项）都可用于审核和故障排除。 使用 `arg_max` 函数的缺点是，每次查询数据都会增大查询时间和 CPU 负载。 根据查询的数据量，此解决方法可能不起作用或者消耗过多的内存，因此需要改用其他做法。
+另一种做法是在查询过程中筛选出数据中的重复行。 使用 [`arg_max()`](https://docs.microsoft.com/azure/data-explorer/kusto/query/arg-max-aggfunction) 聚合函数可以筛选出重复记录，并基于时间戳（或另一列）返回最后一条记录。 使用此方法的优点是引入速度更快，因为重复数据删除是在查询期间发生的。 此外，所有记录（包括重复项）都可用于审核和故障排除。 使用 `arg_max` 函数的缺点是，每次查询数据都会增大查询时间和 CPU 负载。 根据查询的数据量，此解决方法可能不起作用或者消耗过多的内存，因此需要改用其他做法。
 
 在以下示例中，我们将查询针对一组列引入的最后一条记录来确定唯一的记录：
 
@@ -100,7 +100,7 @@ DeviceEventsAll
     > [!NOTE]
     > 联接是 CPU 密集型操作，会在系统中施加一个额外的负载。
 
-1. 针对 `DeviceEventsUnique` 表设置[更新策略](https://docs.microsoft.com/azure/kusto/management/update-policy)。 新数据进入 `DeviceEventsAll` 表时会激活更新策略。 创建新的[范围](https://docs.microsoft.com/azure/kusto/management/extents-overview)时，Kusto 引擎会自动执行该函数。 处理范围限定为新建的数据。 以下命令将源表 (`DeviceEventsAll`)、目标表 (`DeviceEventsUnique`) 和函数 `RemoveDuplicatesDeviceEvents` 拼接在一起，以创建更新策略。
+1. 针对 `DeviceEventsUnique` 表设置[更新策略](https://docs.microsoft.com/azure/data-explorer/kusto/management/update-policy)。 新数据进入 `DeviceEventsAll` 表时会激活更新策略。 创建新的[范围](https://docs.microsoft.com/azure/data-explorer/kusto/management/extents-overview)时，Kusto 引擎会自动执行该函数。 处理范围限定为新建的数据。 以下命令将源表 (`DeviceEventsAll`)、目标表 (`DeviceEventsUnique`) 和函数 `RemoveDuplicatesDeviceEvents` 拼接在一起，以创建更新策略。
 
     ```kusto
     .alter table DeviceEventsUnique policy update

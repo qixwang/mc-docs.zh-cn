@@ -8,12 +8,12 @@ ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 09/24/2018
 ms.date: 02/17/2020
-ms.openlocfilehash: 2e57317dea26c3d86bef075f250113a8c5cb92b5
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 05ad4a2ada31c1263dc34f0550b23caa73dac43e
+ms.sourcegitcommit: bfbd6694da33f703481386f2a3f16850c4e94bfa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77037920"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83417720"
 ---
 # <a name="manage-azure-data-explorer-database-permissions"></a>管理 Azure 数据资源管理器数据库权限
 
@@ -75,7 +75,7 @@ Azure 数据资源管理器具有以下角色：
 
     该命令的输出显示现有用户的列表以及他们在数据库中分配的角色。
     
-    有关 Azure Active Directory 和 Kusto 授权模型的示例，请参阅[原则和标识提供者](https://docs.microsoft.com/azure/kusto/management/access-control/principals-and-identity-providers)
+    有关 Azure Active Directory 和 Kusto 授权模型的示例，请参阅[原则和标识提供者](https://docs.microsoft.com/azure/data-explorer/kusto/management/access-control/principals-and-identity-providers)
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -7,13 +7,13 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 05/29/2019
-ms.date: 07/22/2019
-ms.openlocfilehash: 9e7d3597c5706ccb496c46fe5665030b9d9fdbfb
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/09/2020
+ms.openlocfilehash: 1ae939cf1592439d708afa443cdb41a3355c851b
+ms.sourcegitcommit: bfbd6694da33f703481386f2a3f16850c4e94bfa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74020859"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83417574"
 ---
 # <a name="visualize-data-from-azure-data-explorer-in-sisense"></a>在 Sisense 中可视化 Azure 数据资源管理器中的数据
 
@@ -23,15 +23,15 @@ Sisense 是一个分析业务智能平台，用于构建可提供交互性极强
 
 若要完成本文，需要满足以下条件：
 
-* [下载并安装 Sisense 应用](https://documentation.sisense.com/latest/getting-started/download-install.htm) 
+* [下载并安装 Sisense 应用](https://documentation.sisense.com/latest/getting-started/download-install.htm)
 
 * 创建包含 StormEvents 示例数据的群集和数据库。 有关详细信息，请参阅[快速入门：创建 Azure 数据资源管理器群集和数据库](create-cluster-database-portal.md)和[将示例数据引入到 Azure 数据资源管理器](ingest-sample-data.md)。
 
-    [!INCLUDE [data-explorer-storm-events](../../includes/data-explorer-storm-events.md)]
+    [!INCLUDE [data-explorer-storm-events](includes/data-explorer-storm-events.md)]
 
 ## <a name="connect-to-sisense-dashboards-using-azure-data-explorer-jdbc-connector"></a>使用 Azure 数据资源管理器 JDBC 连接器连接到 Sisense 仪表板
 
-1. 下载以下 jar 文件的最新版并将其复制到 *..\Sisense\DataConnectors\jdbcdrivers\adx* 
+1. 下载以下 jar 文件的最新版并将其复制到 *..\Sisense\DataConnectors\jdbcdrivers\adx*
 
     * activation-1.1.jar
     * adal4j-1.6.0.jar
@@ -47,14 +47,14 @@ Sisense 是一个分析业务智能平台，用于构建可提供交互性极强
     * nimbus-jose-jwt-7.0.1.jar
     * oauth2-oidc-sdk-5.24.1.jar
     * slf4j-api-1.7.21.jar
-    
+
 1. 打开 **Sisense** 应用。
 1. 选择“数据”选项卡，然后选择“+ElastiCube”，创建新的 ElastiCube 模型。  
-    
+
     ![选择 ElastiCube](media/sisense/data-select-elasticube.png)
 
 1. 在“添加新的 ElastiCube 模型”中为 ElastiCube 模型命名，然后单击“保存”。  
-   
+
     ![添加新的 ElastiCube 模型](media/sisense/add-new-elasticube-model.png)
 
 1. 选择“+ 数据”。 
@@ -83,12 +83,12 @@ Sisense 是一个分析业务智能平台，用于构建可提供交互性极强
 
 1. 在“test”（数据库名称）窗格中执行以下操作： 
     1. 选择表名，以便预览该表并查看表的列名。 可以删除不需要的列。
-    1. 选择相关表的复选框，将该表选中。 
+    1. 选择相关表的复选框，将该表选中。
     1. 选择“完成”  。
 
-    ![选择表](media/sisense/select-table-see-columns.png)    
+    ![选择表](media/sisense/select-table-see-columns.png)
 
-1. 选择“生成”，以便生成数据集。  
+1. 选择“生成”，以便生成数据集。 
 
     * 在“生成”  窗口中，选择“生成”  。
 
@@ -104,15 +104,15 @@ Sisense 是一个分析业务智能平台，用于构建可提供交互性极强
 
     ![新建仪表板](media/sisense/new-dashboard.png)
 
-1. 选取一个仪表板，然后选择“创建”。  
+1. 选取一个仪表板，然后选择“创建”。 
 
     ![创建仪表板](media/sisense/create-dashboard.png)
 
-1. 在“新建小组件”  下选择“+ 选择数据”  ，以便创建新的小组件。 
+1. 在“新建小组件”  下选择“+ 选择数据”  ，以便创建新的小组件。
 
-    ![向 StormEvents 仪表板添加字段](media/sisense/storm-dashboard-add-field.png)  
+    ![向 StormEvents 仪表板添加字段](media/sisense/storm-dashboard-add-field.png)
 
-1. 选择“+ 添加更多数据”，向图形添加更多列。  
+1. 选择“+ 添加更多数据”，向图形添加更多列。 
 
     ![向图添加更多数据](media/sisense/add-more-data.png)
 
@@ -125,4 +125,3 @@ Sisense 是一个分析业务智能平台，用于构建可提供交互性极强
 ## <a name="next-steps"></a>后续步骤
 
 * [Azure 数据资源管理器的编写查询](write-queries.md)
-

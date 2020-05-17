@@ -5,14 +5,14 @@ author: WenJason
 ms.author: v-jay
 ms.topic: how-to
 origin.date: 11/11/2019
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.lastreviewed: 11/11/2019
-ms.openlocfilehash: 5cabb054866d91ae5694869a816b0c2d2c883e4e
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 0b43de916946b199a0269fd17ebb26c5e0c35dab
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79293405"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422392"
 ---
 # <a name="use-an-app-identity-to-access-azure-stack-hub-resources"></a>使用应用标识访问 Azure Stack Hub 资源
 

@@ -7,13 +7,13 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 07/10/2019
-ms.date: 03/16/2020
-ms.openlocfilehash: 8ac7e752f95794bd8c394a4ee2e7ee0e7245dba4
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/09/2020
+ms.openlocfilehash: 5416b8e3a2963642ff9bcdcc02b65a6c80fdeb3d
+ms.sourcegitcommit: bfbd6694da33f703481386f2a3f16850c4e94bfa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80243960"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83417610"
 ---
 # <a name="visualize-data-using-a-query-imported-into-power-bi"></a>使用已导入到 Power BI 中的查询来可视化数据
 
@@ -31,11 +31,11 @@ Azure 数据资源管理器提供三个可以在 Power BI 中连接到数据的�
 
 * [Power BI Desktop](https://powerbi.microsoft.com/get-started/)（选择“免费下载”  ）
 
-* [Azure 数据资源管理器桌面应用](https://docs.microsoft.com/azure/kusto/tools/kusto-explorer)
+* [Azure 数据资源管理器桌面应用](https://docs.microsoft.com/azure/data-explorer/kusto/tools/kusto-explorer)
 
 ## <a name="get-data-from-azure-data-explorer"></a>从 Azure 数据资源管理器获取数据
 
-首先，在 Azure 数据资源管理器桌面应用中创建一个查询并将其导出，以便在 Power BI 中使用。 然后，连接到 Azure 数据资源管理器帮助群集，并从 *StormEvents* 表引入一部分数据。 [!INCLUDE [data-explorer-storm-events](../../includes/data-explorer-storm-events.md)]
+首先，在 Azure 数据资源管理器桌面应用中创建一个查询并将其导出，以便在 Power BI 中使用。 然后，连接到 Azure 数据资源管理器帮助群集，并从 *StormEvents* 表引入一部分数据。 [!INCLUDE [data-explorer-storm-events](includes/data-explorer-storm-events.md)]
 
 1. 在浏览器中转到 [https://help.kusto.chinacloudapi.cn/](https://help.kusto.chinacloudapi.cn/)，以便启动 Azure 数据资源管理器桌面应用。
 
@@ -75,7 +75,7 @@ Azure 数据资源管理器提供三个可以在 Power BI 中连接到数据的�
 
 ## <a name="visualize-data-in-a-report"></a>在报表中将数据可视化
 
-[!INCLUDE [data-explorer-power-bi-visualize-basic](../../includes/data-explorer-power-bi-visualize-basic.md)]
+[!INCLUDE [data-explorer-power-bi-visualize-basic](includes/data-explorer-power-bi-visualize-basic.md)]
 
 ## <a name="clean-up-resources"></a>清理资源
 

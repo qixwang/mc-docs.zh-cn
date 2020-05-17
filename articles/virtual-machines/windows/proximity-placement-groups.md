@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 origin.date: 01/27/2020
 ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: f9f0e84f23b21e3089ea145b3bd4e9d461374da0
-ms.sourcegitcommit: 275203d0f144aa809792f2c570fd64797f405c80
+ms.openlocfilehash: 695b01886b9e5f36abf3fa5c26da4c32dda63898
+ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82125797"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83392224"
 ---
 <!--Verified successfully-->
 # <a name="deploy-vms-to-proximity-placement-groups-using-powershell"></a>使用 PowerShell 将 VM 部署到邻近放置组
@@ -28,7 +28,7 @@ ms.locfileid: "82125797"
 
 ```powershell
 $resourceGroup = "myPPGResourceGroup"
-$location = "China East 2"
+$location = "China East"
 $ppgName = "myPPG"
 New-AzResourceGroup -Name $resourceGroup -Location $location
 $ppg = New-AzProximityPlacementGroup `

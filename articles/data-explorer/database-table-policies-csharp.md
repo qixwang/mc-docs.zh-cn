@@ -7,13 +7,13 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 09/24/2019
-ms.date: 01/13/2020
-ms.openlocfilehash: 6e4eb6801d553a5cfd70adac2b1c92118cea7a7f
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/09/2020
+ms.openlocfilehash: ab300ca3b2dcb2e43de18f6026e8f7575e184200
+ms.sourcegitcommit: bfbd6694da33f703481386f2a3f16850c4e94bfa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75630830"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83417765"
 ---
 # <a name="create-database-and-table-policies-for-azure-data-explorer-by-using-c"></a>使用 C# 为 Azure 数据资源管理器创建数据库和表策略
 
@@ -159,4 +159,4 @@ await kustoManagementClient.Databases.AddPrincipalsAsync(resourceGroupName, clus
 ```
 ## <a name="next-steps"></a>后续步骤
 
-* [阅读有关数据库和表策略的更多信息](https://docs.microsoft.com/azure/kusto/management/policies)
+* [阅读有关数据库和表策略的更多信息](https://docs.microsoft.com/azure/data-explorer/kusto/management/policies)

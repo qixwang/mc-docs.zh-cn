@@ -5,15 +5,16 @@ services: vpn-gateway
 author: rockboyfor
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 04/03/2020
+origin.date: 02/18/2020
+ms.date: 05/18/2020
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: d62f86670d05fd8e1acee13b331b09110aa22d59
-ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
+ms.openlocfilehash: 9abf7a13beccbcfcc1571281931a4f703f675112
+ms.sourcegitcommit: 8d56bc6baeb42d675695ecef1909d76f5c4a6ae3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82093523"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83406215"
 ---
 <a name="tenant"></a>
 ## <a name="1-create-the-azure-ad-tenant"></a>1.创建 Azure AD 租户
@@ -73,7 +74,7 @@ ms.locfileid: "82093523"
     Azure 中国世纪互联
 
     ```
-    https://https://login.chinacloudapi.cn/common/oauth2/authorize?client_id=49f817b6-84ae-4cc0-928c-73f27289b3aa&response_type=code&redirect_uri=https://portal.azure.cn&nonce=1234&prompt=admin_consent
+    https://login.chinacloudapi.cn/common/oauth2/authorize?client_id=49f817b6-84ae-4cc0-928c-73f27289b3aa&response_type=code&redirect_uri=https://portal.azure.cn&nonce=1234&prompt=admin_consent
     ```
     
     <!--UPDATE CAREFULLY-->

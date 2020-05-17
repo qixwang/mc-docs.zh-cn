@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.workload: infrastructure-services
 origin.date: 02/03/2020
-ms.date: 03/09/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: 819d0f7d0284cc35b7d8e49d16cb7e3f40cc6163
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: bae5dd19f6b80d52ac50757028ac146bc71f92a8
+ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79084514"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83392451"
 ---
 # <a name="gpu-optimized-virtual-machine-sizes"></a>GPU 优化虚拟机大小
 

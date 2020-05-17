@@ -4,16 +4,16 @@ description: 了解如何将 Linux 映像添加到 Azure Stack Hub 市场。
 author: WenJason
 ms.topic: article
 origin.date: 01/23/2020
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: unknown
-ms.lastreviewed: 11/16/2018
-ms.openlocfilehash: 1fb1b23b7b4a9f38e627f8e5cb0e7457fef8bef7
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.lastreviewed: 11/16/2019
+ms.openlocfilehash: 873cc1424bd69e35a8c2bc2d0b5f407b93dd2ddf
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292197"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422607"
 ---
 # <a name="add-linux-images-to-the-azure-stack-hub-marketplace"></a>将 Linux 映像添加到 Azure Stack Hub 市场
 

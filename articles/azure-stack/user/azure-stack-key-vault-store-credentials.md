@@ -4,15 +4,15 @@ description: 了解 Key Vault 如何存储 Azure Stack Hub 上的服务主体凭
 author: WenJason
 ms.topic: article
 origin.date: 01/24/2020
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.author: v-jay
-ms.lastreviewed: 01/16/2019
-ms.openlocfilehash: 63260fb9468bea3a797bb51b7cc304f6fcc6325c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.lastreviewed: 01/16/2020
+ms.openlocfilehash: 7193cec5c615893629e3ddcd5ea6d37b1e034224
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540778"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422449"
 ---
 # <a name="store-service-principal-credentials-in-azure-stack-hub-key-vault"></a>在 Azure Stack Hub Key Vault 中存储服务主体凭据
 

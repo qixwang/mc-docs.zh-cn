@@ -4,16 +4,16 @@ description: 了解针对 Azure Stack Hub 中的应用服务服务器角色的�
 author: WenJason
 ms.topic: article
 origin.date: 03/13/2019
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: anwestg
-ms.lastreviewed: 03/13/2019
-ms.openlocfilehash: bfc044c7cda2420a9ff7c61c0f31dfafe269fac7
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.lastreviewed: 03/13/20192
+ms.openlocfilehash: 2cc7fb9ca93105e28a2e07da31093c18362a90e8
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540961"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422459"
 ---
 # <a name="capacity-planning-for-app-service-server-roles-in-azure-stack-hub"></a>针对 Azure Stack Hub 中的应用服务服务器角色的容量计划
 

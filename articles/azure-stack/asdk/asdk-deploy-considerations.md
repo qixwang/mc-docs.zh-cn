@@ -1,28 +1,19 @@
 ---
-title: ASDK 要求和注意事项 | Microsoft Docs
+title: ASDK 要求和注意事项
 description: 了解 Azure Stack 开发工具包 (ASDK) 的硬件、软件和环境要求。
-services: azure-stack
-documentationcenter: ''
 author: WenJason
-manager: digimobile
-editor: ''
-ms.assetid: ''
-ms.service: azure-stack
-ms.workload: na
-pms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 origin.date: 05/13/2019
-ms.date: 10/21/2019
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: misainat
 ms.lastreviewed: 05/13/2019
-ms.openlocfilehash: 4964cd601771777b0cb3d01f71aa5ab6c02c1bbd
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: e88190ad612fc79465b5a933d77e481005adfc3a
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292604"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422421"
 ---
 # <a name="asdk-requirements-and-considerations"></a>ASDK 要求和注意事项
 

@@ -3,17 +3,17 @@ title: 使用 Azure Stack Hub 创建 Linux VM
 description: 使用 Azure Stack Hub 创建 Linux 服务器 VM。
 author: WenJason
 ms.topic: quickstart
-origin.date: 1/10/2020
-ms.date: 02/24/2020
+origin.date: 04/20/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: kivenkat
 ms.lastreviewed: 1/10/2020
-ms.openlocfilehash: 13e6023e7fd3ac5ae5bb8dac92a54f1ba2f932ab
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 5967224b8e07b91e9cd8d592016b3a56161ecf05
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77541031"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422539"
 ---
 # <a name="quickstart-create-a-linux-server-vm-by-using-the-azure-stack-hub-portal"></a>快速入门：使用 Azure Stack Hub 门户创建 Linux 服务器 VM
 

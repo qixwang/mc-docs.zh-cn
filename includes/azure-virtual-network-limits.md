@@ -6,15 +6,15 @@ author: rockboyfor
 ms.service: networking
 ms.topic: include
 origin.date: 01/14/2020
-ms.date: 04/30/2020
+ms.date: 05/18/2020
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: 9439c6d112d6dac046b3cda04175f9db2a9a749c
-ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
+ms.openlocfilehash: 32ba469d444de9ebc7f94b3f02fd1e23307149d8
+ms.sourcegitcommit: 8d56bc6baeb42d675695ecef1909d76f5c4a6ae3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82596207"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83406217"
 ---
 <a name="azure-resource-manager-virtual-networking-limits"></a>
 ### <a name="networking-limits---azure-resource-manager"></a>网络限制 - Azure 资源管理器
@@ -48,8 +48,9 @@ ms.locfileid: "82596207"
 | 用户定义路由表数 |200 |
 | 每个路由表的用户定义的路由数 |400 |
 | 每个 Azure VPN 网关的点到站点根证书数 |20 个 |
-| 虚拟网络 TAP |100 |
-| 每个虚拟网络 TAP 的网络接口 TAP 配置 |100 |
+
+<!--Not Available on | Virtual network TAPs |100 |-->
+<!--Not Available on | Network interface TAP configurations per virtual network TAP |100 |-->
 
 <a name="publicip-address"></a>
 #### <a name="public-ip-address-limits"></a>公共 IP 地址限制
@@ -112,3 +113,5 @@ ms.locfileid: "82596207"
 | 每个部署的公共 VIP |5 |联系支持人员 |
 | 每个部署的专用 VIP（内部负载均衡） |1 |1 |
 | 终结点访问控制列表 (ACL) |50 |50 |
+
+<!-- Update_Description: update meta properties, wording update, update link -->

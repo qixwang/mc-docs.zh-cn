@@ -1,5 +1,5 @@
 ---
-title: 为 Azure VM 设置 WinRM 访问权限 | Azure
+title: 为 Azure Resource Manager 中的虚拟机设置 WinRM 访问权限
 description: 设置 WinRM 访问，与 Resource Manager 部署模型中创建的 Azure 虚拟机一起使用。
 services: virtual-machines-windows
 documentationcenter: ''
@@ -13,26 +13,24 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
 origin.date: 06/16/2016
-ms.date: 10/14/2019
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: ff06c9ce948166a92264bbf71c749867d6958491
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: eb374ce433311074b27074522a4f3ebec7cfed72
+ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "72272026"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83392445"
 ---
-# <a name="setting-up-winrm-access-for-virtual-machines-in-azure-resource-manager"></a>为 Azure 资源管理器中的虚拟机设置 WinRM 访问权限
+# <a name="setting-up-winrm-access-for-virtual-machines-in-azure-resource-manager"></a>为 Azure Resource Manager 中的虚拟机设置 WinRM 访问权限
 
 为 VM 设置 WinRM 连接需执行以下步骤
 
 1. 创建密钥保管库
 2. 创建自签名证书
-3. 获将自签名证书上传到密钥保管库
+3. 将自签名证书上传到密钥保管库
 4. 获取密钥保管库中自签名证书的 URL
-5. 创建 VM 时引用自签名的证书 URL
-
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+5. 创建 VM 时引用自签名证书 URL
 
 ## <a name="step-1-create-a-key-vault"></a>步骤 1：创建密钥保管库
 可使用以下命令来创建密钥保管库
@@ -57,7 +55,7 @@ $password = Read-Host -Prompt "Please enter the certificate password." -AsSecure
 Export-PfxCertificate -Cert $cert -FilePath ".\$certificateName.pfx" -Password $password
 ```
 
-## <a name="step-3-upload-your-self-signed-certificate-to-the-key-vault"></a>步骤 3：获将自签名证书上传到密钥保管库
+## <a name="step-3-upload-your-self-signed-certificate-to-the-key-vault"></a>步骤 3：将自签名证书上传到密钥保管库
 将证书上传到在步骤 1 中创建的密钥保管库之前，需将其转换为 Microsoft.Compute 资源提供程序可识别的格式。 以下 PowerShell 脚本将允许执行该操作
 
 ```
@@ -96,8 +94,8 @@ Set-AzKeyVaultSecret -VaultName "<vault name>" -Name "<secret name>" -SecretValu
 
     $secretURL = (Get-AzKeyVaultSecret -VaultName "<vault name>" -Name "<secret name>").Id
 
-## <a name="step-5-reference-your-self-signed-certificates-url-while-creating-a-vm"></a>步骤 5：创建 VM 时引用自签名的证书 URL
-#### <a name="azure-resource-manager-templates"></a>Azure 资源管理器模板
+## <a name="step-5-reference-your-self-signed-certificates-url-while-creating-a-vm"></a>步骤 5：创建 VM 时引用自签名证书 URL
+#### <a name="azure-resource-manager-templates"></a>Azure Resource Manager 模板
 通过模板创建 VM 时，在密钥部分和 winRM 部分中引用该证书，如下所示：
 
     "osProfile": {
@@ -144,23 +142,23 @@ Set-AzKeyVaultSecret -VaultName "<vault name>" -Name "<secret name>" -SecretValu
     $vm = New-AzVMConfig -VMName "<VM name>" -VMSize "<VM Size>"
     $credential = Get-Credential
     $secretURL = (Get-AzKeyVaultSecret -VaultName "<vault name>" -Name "<secret name>").Id
-    $vm = Set-AzVMOperatingSystem -VM $vm -Windows -ComputerName "<Computer Name>" -Credential $credential -WinRMHttp -WinRMHttps -WinRMCertificateUrl $secretURL
+    $vm = Set-AzVMOperatingSystem -VM $vm -Windows -ComputerName "<Computer Name>" -Credential $credential -WinRMHttp -WinRMHttps -ProvisionVMAgent -WinRMCertificateUrl $secretURL
     $sourceVaultId = (Get-AzKeyVault -ResourceGroupName "<Resource Group name>" -VaultName "<Vault Name>").ResourceId
     $CertificateStore = "My"
     $vm = Add-AzVMSecret -VM $vm -SourceVaultId $sourceVaultId -CertificateStore $CertificateStore -CertificateUrl $secretURL
 
 ## <a name="step-6-connecting-to-the-vm"></a>步骤 6：连接到 VM
-需要先确保你的计算机针对 WinRM 远程管理进行了配置，才能连接到 VM。 以管理员身份启动 PowerShell 并执行以下命令以确保已完成设置。
+需要先确保用户的计算机针对 WinRM 远程管理进行了配置，才能连接到 VM。 以管理员身份启动 PowerShell 并执行以下命令以确保已完成设置。
 
     Enable-PSRemoting -Force
 
 > [!NOTE]
-> 如果以上命令无效，可能需要确保 WinRM 服务正在运行。 可使用 `Get-Service WinRM` 完成此操作
+> 如果以上命令无效，可能需要确保 WinRM 服务正在运行。 可使用 `Get-Service WinRM`
 > 
 > 
 
-安装完成后，即可使用以下命令连接到 VM
+设置完成后，即可使用以下命令连接到 VM
 
     Enter-PSSession -ConnectionUri https://<public-ip-dns-of-the-vm>:5986 -Credential $cred -SessionOption (New-PSSessionOption -SkipCACheck -SkipCNCheck -SkipRevocationCheck) -Authentication Negotiate
 
-<!-- Update_Description: update meta properties, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

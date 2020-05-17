@@ -4,16 +4,16 @@ description: 作为用户，我希望在 Visual Studio Code 中创建 Azure 资�
 author: WenJason
 ms.topic: article
 origin.date: 1/22/2020
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: sijuman
 ms.lastreviewed: 09/30/2019
-ms.openlocfilehash: be09a4db962e7617dcdc5d9bdd9337f543bf933d
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: b351be900016d2d5986322066f49fb50ba374738
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77541017"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422348"
 ---
 # <a name="deploy-with-visual-studio-code-to-azure-stack-hub"></a>使用 Visual Studio Code 部署到 Azure Stack Hub
 

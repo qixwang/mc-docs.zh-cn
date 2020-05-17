@@ -5,13 +5,13 @@ author: WenJason
 ms.author: v-jay
 ms.topic: article
 origin.date: 03/06/2020
-ms.date: 03/23/2020
-ms.openlocfilehash: fb053dbce9848b3b6a533085fd7c769b5ec1c0ee
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/18/2020
+ms.openlocfilehash: d57fc0540994762bc57b3ba559a2b798e0c0fcb3
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79547114"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422417"
 ---
 # <a name="choosing-drives-for-azure-stack-hci"></a>为 Azure Stack HCI 选择驱动器
 
@@ -47,7 +47,7 @@ ms.locfileid: "79547114"
 
 2. **NVMe + SSD。** 将 NVMe 与 SSD 配合使用时，NVMe 将自动为 SSD 中的写入内容提供缓存。 这样，就可以在缓存中合并写入内容，并仅在需要时才解除暂存写入内容，以减轻 SSD 的磨损。 这种方式提供类似于 NVMe 的写入特征，而读取内容将直接从同样快速的 SSD 提供。
 
-3. **全使用 SSD。** 与全使用 NVMe 一样，如果所有驱动器的型号相同，则不会配置缓存。 如果混用高持久性和低持久性的型号，可将前者配置为针对后者中的写入内容提供缓存（[需要进行设置](https://docs.microsoft.com/windows-server/storage/storage-spaces/understand-the-cache.md#manual-configuration)）。
+3. **全使用 SSD。** 与全使用 NVMe 一样，如果所有驱动器的型号相同，则不会配置缓存。 如果混用高持久性和低持久性的型号，可将前者配置为针对后者中的写入内容提供缓存（[需要进行设置](https://docs.microsoft.com/windows-server/storage/storage-spaces/understand-the-cache#manual-configuration)）。
 
    >[!NOTE]
    > 全使用 NVMe 或全使用 SSD 且不配置缓存的优势是，可以从每个驱动器获取可用的存储容量。 不会有任何容量“耗费”在缓存上，如果部署规模较小，这可能颇具吸引力。

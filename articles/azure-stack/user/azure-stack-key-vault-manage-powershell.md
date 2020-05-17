@@ -4,15 +4,15 @@ description: 了解如何使用 PowerShell 管理 Azure Stack Hub 中的 Key Vau
 author: WenJason
 ms.topic: article
 origin.date: 01/07/2020
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.lastreviewed: 05/09/2019
-ms.openlocfilehash: 9ab84c98aa92fcb6de696a232defb3805f979705
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: e8c936c6977d85a6b5de00d5c056a730bf867d59
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540791"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422453"
 ---
 # <a name="manage-key-vault-in-azure-stack-hub-using-powershell"></a>使用 PowerShell 管理 Azure Stack Hub 中的 Key Vault
 

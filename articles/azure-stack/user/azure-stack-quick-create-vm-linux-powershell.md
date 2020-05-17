@@ -3,16 +3,16 @@ title: 在 Azure Stack Hub 中使用 PowerShell 创建 Linux VM
 description: 在 Azure Stack Hub 中使用 PowerShell 创建 Linux VM。
 author: WenJason
 ms.topic: quickstart
-origin.date: 11/11/2019
-ms.date: 02/24/2020
+origin.date: 04/20/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.lastreviewed: 11/11/2019
-ms.openlocfilehash: 46cf3beb65b89c85757cfc1dd87995a8bca49259
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: e8e44403f8bd7a1d3e8fdce7c76785b075c72a69
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77541041"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422542"
 ---
 # <a name="quickstart-create-a-linux-server-vm-by-using-powershell-in-azure-stack-hub"></a>快速入门：在 Azure Stack Hub 中使用 PowerShell 创建 Linux 服务器 VM
 

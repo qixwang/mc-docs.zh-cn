@@ -4,16 +4,16 @@ description: 了解如何在 Azure Stack Hub 中创建包含套餐的新订阅�
 author: WenJason
 ms.topic: tutorial
 origin.date: 06/04/2019
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: efemmano
-ms.lastreviewed: 11/13/2018
-ms.openlocfilehash: 7e732773bda53682d87d30cc007cf907889756dc
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.lastreviewed: 11/13/2019
+ms.openlocfilehash: 07704990967010f3bd0ec97af5f886a693b095e4
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77541014"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422640"
 ---
 # <a name="tutorial-create-and-test-a-subscription-in-azure-stack-hub"></a>教程：在 Azure Stack Hub 中创建和测试订阅
 

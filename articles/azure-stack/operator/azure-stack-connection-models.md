@@ -3,17 +3,17 @@ title: Azure Stack Hub 集成系统连接模型
 description: 确定 Azure Stack Hub 集成系统的连接模型和其他部署规划决策。
 author: WenJason
 ms.topic: article
-origin.date: 1/22/2020
-ms.date: 02/24/2020
+origin.date: 03/04/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: wfayed
 ms.lastreviewed: 02/21/2019
-ms.openlocfilehash: aa1b05460d0ef3445ddb23c2479078c61f2cebc0
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 25e10126d861f181eaa5566cede7d652928b688d
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540939"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422435"
 ---
 # <a name="azure-stack-hub-integrated-systems-connection-models"></a>Azure Stack Hub 集成系统连接模型
 如果你有兴趣购买 Azure Stack Hub 集成系统，则需要了解[几个数据中心集成注意事项](azure-stack-datacenter-integration.md)，以便 Azure Stack Hub 部署确定系统将如何适应数据中心。 此外，还需要确定如何将 Azure Stack Hub 集成到混合云环境。 本文概述了这些主要决策，包括 Azure 连接模型、标识存储选项和计费模型选项。

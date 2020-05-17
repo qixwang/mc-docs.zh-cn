@@ -4,17 +4,17 @@ titleSuffix: Azure Stack Hub
 description: 了解如何使用 Azure Stack Hub 就绪性检查器工具来验证 Azure 注册。
 author: WenJason
 ms.topic: conceptual
-origin.date: 10/03/2019
-ms.date: 02/24/2020
+origin.date: 03/04/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: unknown
 ms.lastreviewed: 03/23/2019
-ms.openlocfilehash: 91f9533e8393b41cfaae81211627a7d2a91a624d
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 994addaf1e6f913b22dfafce4d387dc6cdbb45dd
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540611"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422433"
 ---
 # <a name="validate-azure-registration"></a>验证 Azure 注册
 

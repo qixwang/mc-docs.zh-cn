@@ -6,20 +6,19 @@ author: rockboyfor
 manager: digimobile
 ms.service: virtual-machines
 ms.topic: article
-origin.date: 09/19/2019
-ms.date: 11/11/2019
+origin.date: 11/13/2019
+ms.date: 04/27/2020
 ms.author: v-yeche
 ms.custom: security-recommendations
-ms.openlocfilehash: 1e079cbbda6f9c68834d9ed3fc83eda7b30acf51
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: c0b1f2fc3e2bfa0bb32a9057dd18550e0a8c1319
+ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "73730704"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83392257"
 ---
 # <a name="security-recommendations-for-windows-virtual-machines-in-azure"></a>针对 Azure 中 Windows 虚拟机的安全建议
 
 [!INCLUDE [virtual-machines-common-move-vm](../../../includes/virtual-machines-security-recommendations.md)]
 
-<!-- Update_Description: new article about security recommendations -->
-<!--NEW.date: 11/11/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

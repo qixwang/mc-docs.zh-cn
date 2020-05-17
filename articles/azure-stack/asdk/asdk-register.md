@@ -4,16 +4,16 @@ description: 了解如何将 Azure Stack 开发工具包 (ASDK) 注册到 Azure�
 author: WenJason
 ms.topic: article
 origin.date: 06/14/2019
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: misainat
 ms.lastreviewed: 06/14/2019
-ms.openlocfilehash: 811208875720a2a8e951b3c8fed3b6c88c4833e2
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 57366d840dadaf65de61a758a4b3a51338b6c25a
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540968"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422568"
 ---
 # <a name="register-the-asdk-with-azure"></a>将 ASDK 注册到 Azure
 

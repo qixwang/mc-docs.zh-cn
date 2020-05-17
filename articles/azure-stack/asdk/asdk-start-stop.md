@@ -1,28 +1,19 @@
 ---
-title: 启动和停止 ASDK | Microsoft Docs
+title: 启动和停止 ASDK
 description: 了解如何启动和停止 Azure Stack 开发工具包 (ASDK)。
-services: azure-stack
-documentationcenter: ''
 author: WenJason
-manager: digimobile
-editor: ''
-ms.assetid: ''
-ms.service: azure-stack
-ms.workload: na
-pms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 origin.date: 07/18/2019
-ms.date: 01/13/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: misainat
 ms.lastreviewed: 07/18/2019
-ms.openlocfilehash: 620727c5a4d050e69f82dadce8008b2b77c3b068
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: da57c162a88857b59c712feca3aa941b4a382367
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75737812"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422533"
 ---
 # <a name="start-and-stop-the-asdk"></a>启动和停止 ASDK
 建议不要仅仅重启 ASDK 主计算机。 而是应该遵循本文中的过程正确关闭再重启 ASDK 服务。
@@ -91,4 +82,4 @@ ms.locfileid: "75737812"
 如果运行 **Start-AzureStack** 导致失败，请访问 [Azure Stack 支持论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurestack)获取 ASDK 故障排除支持。 
 
 ## <a name="next-steps"></a>后续步骤 
-若要详细了解 Azure Stack 诊断工具和问题日志记录，请参阅 [Azure Stack 诊断工具](../operator/azure-stack-configure-on-demand-diagnostic-log-collection.md#use-the-privileged-endpoint-pep-to-collect-diagnostic-logs)。
+若要详细了解 Azure Stack 诊断工具和问题日志记录，请参阅 [Azure Stack 诊断工具](../operator/azure-stack-get-azurestacklog.md)。

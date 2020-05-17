@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.workload: infrastructure-services
 origin.date: 02/03/2020
-ms.date: 03/09/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: 47b18e709ba04273ae531d175c1c7de45ae8ae9c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: b543b20a943738e86464b5ad23884ce84b497d20
+ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79084516"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83392384"
 ---
 <!--Verified successfully-->
 <!--Partical Content from verified-->
@@ -49,5 +49,4 @@ ms.locfileid: "79084516"
 
 了解有关 [Azure 计算单元 (ACU)](acu.md) 如何帮助你跨 Azure SKU 比较计算性能的详细信息。
 
-<!-- Update_Description: new article about sizes compute -->
-<!--NEW.date: 03/09/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

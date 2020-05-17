@@ -5,7 +5,6 @@ services: traffic-manager
 documentationcenter: traffic-manager
 author: rockboyfor
 manager: digimobile
-editor: tysonn
 tags: azure-infrastructure
 ms.assetid: ''
 ms.service: traffic-manager
@@ -14,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: traffic-manager
 origin.date: 04/26/2018
-ms.date: 05/06/2020
+ms.date: 04/30/2020
 ms.author: v-yeche
-ms.openlocfilehash: d0c8ae444e3e79c2c9037e17a14b375adb8f7908
-ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
+ms.openlocfilehash: 5f5d65b8c6c0215a25ece370cd51f5cf00ed3678
+ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "83001887"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83392377"
 ---
 # <a name="route-traffic-for-high-availability-of-applications-using-azure-cli"></a>使用 Azure CLI 为实现应用程序的高可用性路由流量
 
@@ -152,5 +151,4 @@ az group delete --name myResourceGroup2 --yes
 
 可在 [Azure 网络文档](../cli-samples.md)中找到其他应用服务 CLI 脚本示例。
 
-<!-- Update_Description: new article about traffic manager cli websites high availability -->
-<!--NEW.date: 02/24/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

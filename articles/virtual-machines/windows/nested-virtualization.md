@@ -1,23 +1,23 @@
 ---
-title: 如何在 Azure VM 中启用嵌套虚拟化 | Azure
+title: 如何在 Azure VM 中启用嵌套虚拟化
 description: 如何在 Azure 虚拟机中启用嵌套虚拟化
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: rockboyfor
 manager: digimobile
-ms.author: v-yeche
 origin.date: 10/09/2017
-ms.date: 08/12/2019
+ms.date: 04/27/2020
+ms.author: v-yeche
 ms.topic: conceptual
 ms.service: virtual-machines-windows
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.openlocfilehash: 945151772cc830ec6b32fa27a04338d53627fa13
-ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
+ms.openlocfilehash: f84dd6a37187e5f66d5618b088c898eb5a6b32c3
+ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82596236"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83392391"
 ---
 # <a name="how-to-enable-nested-virtualization-in-an-azure-vm"></a>如何在 Azure VM 中启用嵌套虚拟化
 
@@ -27,13 +27,11 @@ ms.locfileid: "82596236"
 
 ## <a name="create-a-nesting-capable-azure-vm"></a>创建支持嵌套的 Azure VM
 
-创建新的 Windows Server 2016 Azure VM。  为了快速参考，所有 v3 虚拟机都支持嵌套虚拟化。 有关支持嵌套的虚拟机大小的完整列表，请查看 [Azure 计算单位](acu.md)一文。
+创建新的 Windows Server 2016 Azure VM。 有关支持嵌套的虚拟机大小的完整列表，请查看 [Azure 计算单位](acu.md)一文。
 
 请记住选择足够大的 VM 大小来支持来宾虚拟机的需求。 在此示例中，我们将使用 D3_v3 大小的 Azure VM。 
 
 可以在[此处](https://status.azure.com/status/)查看 Dv3 或 Ev3 系列虚拟机的区域可用性。
-
-<!--Notice: URL is correct on [here](https://status.azure.com/status/)-->
 
 >[!NOTE]
 >
@@ -45,7 +43,7 @@ ms.locfileid: "82596236"
 
 1. 单击虚拟机属性上的“连接”  按钮。 此时会创建和下载远程桌面协议文件（.rdp 文件）。
 
-2. 若要连接到 VM，请打开下载的 RDP 文件。 出现提示时，请单击“连接”。  在 Mac 上，需要一个 RDP 客户端，例如 Mac 应用商店提供的这个[远程桌面客户端](https://itunes.apple.com/us/app/microsoft-remote-desktop/id715768417?mt=12)。
+2. 若要连接到 VM，请打开下载的 RDP 文件。 出现提示时，请单击“连接”。  在 Mac 上，需要一个 RDP 客户端，例如 Mac 应用商店提供的这个[远程桌面客户端](https://apps.apple.com/app/microsoft-remote-desktop/id1295203466?mt=12)。
 
 3. 输入在创建虚拟机时指定的用户名和密码，并单击“确定”。 
 
@@ -101,9 +99,9 @@ ms.locfileid: "82596236"
 4. 为 NAT 网关创建 IP 地址。
 
 若要配置网关，需要一些有关你网络的信息：    
-* IPAddress - NAT 网关 IP 指定要用作虚拟网络子网的默认网关地址的 IPv4 或 IPv6 地址。 常规形式为 a.b.c.1（例如，“192.168.0.1”）。 尽管最后一个位置不一定是 .1，但通常是 1（基于前缀长度）。 通常情况下，应使用 RFC 1918 专用网络地址空间。 
-* PrefixLength - 子网前缀长度定义本地子网大小（子网掩码）。 子网前缀长度将介于 0 到 32 之间的一个整数值。 0 将映射整个 Internet，32 则只允许一个映射的 IP。 常用值范围从 24 到 12，具体要取决于多少 IP 需要附加到 NAT。 常用 PrefixLength 为 24 -- 这是子网掩码 255.255.255.0。
-* InterfaceIndex - ifIndex  是上一步中创建的虚拟交换机的接口索引。 
+  * IPAddress - NAT 网关 IP 指定要用作虚拟网络子网的默认网关地址的 IPv4 或 IPv6 地址。 常规形式为 a.b.c.1（例如，“192.168.0.1”）。 尽管最后一个位置不一定是 .1，但通常是 1（基于前缀长度）。 通常情况下，应使用 RFC 1918 专用网络地址空间。 
+  * PrefixLength - 子网前缀长度定义本地子网大小（子网掩码）。 子网前缀长度将介于 0 到 32 之间的一个整数值。 0 将映射整个 Internet，32 则只允许一个映射的 IP。 常用值范围从 24 到 12，具体要取决于多少 IP 需要附加到 NAT。 常用 PrefixLength 为 24 -- 这是子网掩码 255.255.255.0。
+  * InterfaceIndex - ifIndex  是上一步中创建的虚拟交换机的接口索引。 
 
     ```powershell
     New-NetIPAddress -IPAddress 192.168.0.1 -PrefixLength 24 -InterfaceIndex 13
@@ -112,8 +110,8 @@ ms.locfileid: "82596236"
 ### <a name="create-the-nat-network"></a>创建 NAT 网络
 
 若要配置网关，将需要提供有关网络和 NAT 网关的信息：
-* Name - 这是 NAT 网络的名称。 
-* InternalIPInterfaceAddressPrefix - NAT 子网前缀描述了上述 NAT 网关 IP 前缀，以及上述 NAT 子网前缀长度。 常规形式将为 a.b.c.0/NAT 子网前缀长度。 
+  * Name - 这是 NAT 网络的名称。 
+  * InternalIPInterfaceAddressPrefix - NAT 子网前缀描述了上述 NAT 网关 IP 前缀，以及上述 NAT 子网前缀长度。 常规形式将为 a.b.c.0/NAT 子网前缀长度。 
 
 在 PowerShell 中，创建一个新的 NAT 网络。
 ```powershell
@@ -192,4 +190,4 @@ New-NetNat -Name "InternalNat" -InternalIPInterfaceAddressPrefix 192.168.0.0/24
 
 有关如何在来宾 VM 和 Azure VM 之间启用透明连接的说明，请参阅[此文档](https://docs.microsoft.com/virtualization/hyper-v-on-windows/user-guide/nested-virtualization-azure-virtual-network)。
 
-<!-- Update_Description: Update meta properties, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

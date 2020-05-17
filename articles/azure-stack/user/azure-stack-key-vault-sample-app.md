@@ -4,15 +4,15 @@ description: 了解如何运行从 Azure Stack Hub 中的密钥保管库检索�
 author: WenJason
 ms.topic: conceptual
 origin.date: 02/19/2020
-ms.date: 03/23/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.lastreviewed: 04/08/2019
-ms.openlocfilehash: 8905575ae1d245089de73191496aabc09c000a58
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: ecbd04881564427867525b01cd5d4febd88975ad
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79547083"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422062"
 ---
 # <a name="allow-apps-to-access-azure-stack-hub-key-vault-secrets"></a>允许应用访问 Azure Stack Hub Key Vault 机密
 

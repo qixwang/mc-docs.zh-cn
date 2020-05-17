@@ -4,16 +4,16 @@ description: 了解 Azure Stack Hub VM。
 author: WenJason
 ms.topic: conceptual
 origin.date: 02/03/2020
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: kivenkat
-ms.lastreviewed: 01/05/2019
-ms.openlocfilehash: 706f038096a0b4628315a60d93dbb60a11352e9f
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.lastreviewed: 01/05/2020
+ms.openlocfilehash: 3bb682d897c6f9709f7736c383e562b7917e5009
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292661"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422369"
 ---
 # <a name="introduction-to-azure-stack-hub-vms"></a>Azure Stack Hub VM 简介
 

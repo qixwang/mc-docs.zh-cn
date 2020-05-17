@@ -4,15 +4,15 @@ description: 在 Azure Stack Hub 中使用 Azure CLI 创建 Linux 虚拟机。
 author: WenJason
 ms.topic: quickstart
 origin.date: 1/22/2020
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.author: mabrigg
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: d6341faae162f39631eae53271fa91b6bb7a1496
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 638521b5de646e921c1ecdc03b9e30c422964f0d
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77541042"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422543"
 ---
 # <a name="quickstart-create-a-linux-server-vm-by-using-the-azure-cli-in-azure-stack-hub"></a>快速入门：在 Azure Stack Hub 中使用 Azure CLI 创建 Linux 服务器 VM
 

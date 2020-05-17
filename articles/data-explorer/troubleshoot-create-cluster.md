@@ -7,13 +7,13 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 09/24/2018
-ms.date: 03/16/2020
-ms.openlocfilehash: ca0872255f971c8462a4f21903c6c99150fd4853
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/09/2020
+ms.openlocfilehash: bf435a9056e1ab85d527e34a1758a163c9993039
+ms.sourcegitcommit: bfbd6694da33f703481386f2a3f16850c4e94bfa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80243947"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83417545"
 ---
 # <a name="troubleshoot-failed-cluster-creation-of-azure-data-explorer"></a>疑难解答：无法完成 Azure 数据资源管理器的群集创建
 

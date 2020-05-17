@@ -6,21 +6,19 @@ author: rockboyfor
 ms.service: virtual-machines
 ms.topic: include
 origin.date: 09/25/2019
-ms.date: 11/11/2019
+ms.date: 05/18/2020
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: 5959e6357398e1a3d1db50c1c8b0bb013db4d7c5
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: ec9a0eaf6163336d14281a0efb4a14479dc45572
+ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "73730692"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83392385"
 ---
-# <a name="use-azure-storage-explorer-to-manage-azure-managed-disks"></a>使用 Azure 存储资源管理器管理 Azure 托管磁盘
-
 存储资源管理器 1.10.0 可让用户上传、下载和复制托管磁盘，以及创建快照。 由于具有这些附加功能，存储资源管理器使你能够将数据从本地迁移到 Azure，并可以跨 Azure 区域迁移数据。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要完成本文，需要做好以下准备：
 - Azure 订阅
@@ -133,5 +131,4 @@ ms.locfileid: "73730692"
 
 ## <a name="next-steps"></a>后续步骤
 
-<!-- Update_Description: new article about disks upload vhd to managed disk storage explorer -->
-<!--NEW.date: 11/11/2019-->
+<!-- Update_Description: wording update -->

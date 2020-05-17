@@ -38,8 +38,6 @@
               href: ./move-limitations/classic-model-move-limitations.md
             - name: 网络
               href: ./move-limitations/networking-move-limitations.md
-            - name: 恢复服务
-              href: ../../backup/backup-azure-move-recovery-services-vault.md?toc=/azure-resource-manager/toc.json
             - name: 虚拟机
               href: ./move-limitations/virtual-machines-move-limitations.md
     - name: 移动 - 区域

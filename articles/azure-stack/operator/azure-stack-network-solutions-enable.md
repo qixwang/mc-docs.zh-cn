@@ -4,16 +4,16 @@ description: 了解如何使用 Fortinet FortiGate 在 Azure Stack Hub 中启用
 author: WenJason
 ms.topic: how-to
 origin.date: 1/22/2020
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: sijuman
 ms.lastreviewed: 09/30/2019
-ms.openlocfilehash: 6f6da08968f6b87c9706097fe6752d3eee8a7e0a
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: b99067fa0b4e43fe69f8076259d957d7fc0c492b
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540388"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422491"
 ---
 # <a name="offer-a-network-solution-in-azure-stack-hub-with-fortinet-fortigate"></a>使用 Fortinet FortiGate 在 Azure Stack Hub 中提供网络解决方案
 

@@ -4,16 +4,16 @@ description: 了解如何在 Azure Stack Hub 中使用 IPSEC 创建 VPN 隧道�
 author: WenJason
 ms.topic: how-to
 origin.date: 1/22/2020
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: sijuman
 ms.lastreviewed: 09/19/2019
-ms.openlocfilehash: 4016d85ba90093a58a2eb0e396b80cda187f49ad
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: b1fd5f72db73b05726eddf1d5b9e890ecdeb2406
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540055"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422360"
 ---
 # <a name="how-to-create-a-vpn-tunnel-using-ipsec--in-azure-stack-hub"></a>如何在 Azure Stack Hub 中使用 IPSEC 创建 VPN 隧道
 

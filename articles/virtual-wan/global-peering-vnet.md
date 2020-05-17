@@ -8,14 +8,15 @@ ms.topic: conceptual
 origin.date: 11/04/2019
 ms.date: 03/02/2020
 ms.author: v-yeche
-ms.openlocfilehash: 1b524494ef89131f5ba993c1f75b15865fe4bfd8
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 1ac50b12a47b04927347ac84f29d9752bf09b416
+ms.sourcegitcommit: bfbd6694da33f703481386f2a3f16850c4e94bfa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80342423"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83417669"
 ---
-<!--Release before CONFIRM-->
+<!--NOT SUITABLE FOR AZURE CHINA CLOUD-->
+<!--The feature 'AllowCortexGlobalVnetPeering' could not be found ON POWERSHELL CMDLET-->
 # <a name="configure-global-vnet-peering-cross-region-vnet-for-virtual-wan"></a>为虚拟 WAN 配置全局 VNet 对等互连（跨区域 VNet）
 
 可以将不同区域中的 VNet 连接到虚拟 WAN 中心。

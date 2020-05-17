@@ -3,17 +3,17 @@ title: Azure Stack Hub 中的客户计费和退款
 description: 了解如何根据资源使用情况对 Azure Stack Hub 用户进行计费，以及如何访问计费信息以进行分析和退款。
 author: WenJason
 ms.topic: article
-origin.date: 01/22/2020
-ms.date: 02/24/2020
+origin.date: 04/20/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: alfredop
 ms.lastreviewed: 03/21/2019
-ms.openlocfilehash: 84b274d0b49e410e70ab3faa3fe0c673c82809b4
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 378d12cd02e4784ffbd2f86aad9f8b5b1883fc07
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540884"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422403"
 ---
 # <a name="usage-and-billing-in-azure-stack-hub"></a>Azure Stack Hub 中的使用情况和计费
 
@@ -31,7 +31,7 @@ Azure Stack Hub 中的每个资源提供程序会根据资源使用情况发布�
 
 下图显示了使用情况管道中的关键组件：
 
-![使用情况管道](media/azure-stack-billing-and-chargeback/usagepipeline.png)
+![使用情况管道](media/azure-stack-billing-and-chargeback/usagepipeline.svg)
 
 ## <a name="what-usage-information-can-i-find-and-how"></a>可以找到哪些使用情况信息，如何查找？
 

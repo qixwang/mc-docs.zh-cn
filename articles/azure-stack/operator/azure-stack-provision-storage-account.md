@@ -3,17 +3,17 @@ title: 在 Azure Stack Hub 中创建存储帐户
 titleSuffix: Azure Stack Hub
 description: 了解如何在 Azure Stack Hub 中创建存储帐户。
 author: WenJason
-ms.topic: conceptual
+ms.topic: how-to
 origin.date: 1/22/2020
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.lastreviewed: 01/18/2019
-ms.openlocfilehash: 2328eff7e51cc6acfa3e55d7cb38c3fb9ac31ce8
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: fe6220dda3a6eced319e134fdbd3e70f62924e7c
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540365"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422476"
 ---
 # <a name="create-storage-accounts-in-azure-stack-hub"></a>在 Azure Stack Hub 中创建存储帐户
 

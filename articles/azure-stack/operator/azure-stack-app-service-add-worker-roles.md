@@ -4,16 +4,16 @@ description: 有关缩放 Azure Stack Hub 上的 Azure 应用服务的详细指�
 author: WenJason
 ms.topic: article
 origin.date: 01/13/2020
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: anwestg
-ms.lastreviewed: 01/13/2020
-ms.openlocfilehash: 5aab76df135b71a593d3df1fff9a387cf4d56b8e
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.lastreviewed: 01/13/2019
+ms.openlocfilehash: c49527b7c21ba72a1b067a25c6087a70f0769a60
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540966"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422461"
 ---
 # <a name="add-workers-and-infrastructure-in-azure-app-service-on-azure-stack-hub"></a>在 Azure Stack Hub 上的 Azure 应用服务中添加辅助角色和基础结构
 

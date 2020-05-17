@@ -6,14 +6,14 @@ author: rockboyfor
 ms.service: virtual-machines
 ms.topic: article
 origin.date: 02/03/2020
-ms.date: 03/09/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: 1c6cb324af7e3a9bc854bfb7f05f78a2fc5bf7f6
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 27bac8a1bc203eb5fd0ecfa170ff866aa7bb8c4c
+ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79084506"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83392478"
 ---
 <!--Verified successfully-->
 <!--Partical Content from verified-->
@@ -106,5 +106,4 @@ ACU：160-190
 
 了解有关 [Azure 计算单元 (ACU)](acu.md) 如何帮助跨 Azure SKU 比较计算性能的详细信息。
 
-<!-- Update_Description: new article about ev3 esv3 series -->
-<!--NEW.date: 03/09/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

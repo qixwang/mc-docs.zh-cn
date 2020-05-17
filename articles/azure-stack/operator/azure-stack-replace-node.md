@@ -3,18 +3,18 @@ title: 更换 Azure Stack Hub 集成系统上的缩放单元节点
 titleSuffix: Azure Stack Hub
 description: 了解如何更换 Azure Stack Hub 集成系统上的物理缩放单元节点。
 author: WenJason
-ms.topic: article
-origin.date: 11/11/2019
-ms.date: 02/24/2020
+ms.topic: how-to
+origin.date: 03/04/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: thoroet
 ms.lastreviewed: 11/11/2019
-ms.openlocfilehash: dbfb3cf973dba3dec4492feec2d2add116b913fc
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 379b624530817fde93efad563dc1233e348de8a7
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540341"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422107"
 ---
 # <a name="replace-a-scale-unit-node-on-an-azure-stack-hub-integrated-system"></a>更换 Azure Stack Hub 集成系统上的缩放单元节点
 

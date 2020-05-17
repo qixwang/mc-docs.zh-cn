@@ -6,15 +6,15 @@ author: rockboyfor
 ms.service: virtual-machines
 ms.topic: include
 origin.date: 07/08/2019
-ms.date: 10/14/2019
+ms.date: 05/18/2020
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: a9db56371d4dc208d3670fc7f662beaf561667cc
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: ab8c5c1158f99feec62b9023dea8f7f4b13d2497
+ms.sourcegitcommit: 8d56bc6baeb42d675695ecef1909d76f5c4a6ae3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "72272728"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83406197"
 ---
 <!--Verify successfully-->
 
@@ -48,7 +48,7 @@ ms.locfileid: "72272728"
 
 ## <a name="size-requirements"></a>大小要求
 
-部署 VM 和实例的映像时，其大小上限取决于 VM 缓存的大小。 例如，市场中的标准 Windows Server 映像大约为 127 GiB，这意味着所需 VM 大小的缓存大于 127 GiB。 在此示例中，[Standard_DS2_v2](/virtual-machines/windows/sizes-general#dsv2-series) 的缓存大小为 86 GiB，不够大。 Standard_DS3_v2 的缓存大小为 172 GiB，足够大。 在此示例中，Standard_DS3_v2 是 DSv2 系列中能够用于此映像的最小大小。 市场中的基本 Linux 映像以及 `[smallsize]` 所表示的 Windows Server 映像通常为大约 30 GiB，可以使用大多数可用的 VM 大小。
+部署 VM 和实例的映像时，其大小上限取决于 VM 缓存的大小。 例如，市场中的标准 Windows Server 映像大约为 127 GiB，这意味着所需 VM 大小的缓存大于 127 GiB。 在此示例中，[Standard_DS2_v2](../articles/virtual-machines/dv2-dsv2-series.md) 的缓存大小为 86 GiB，不够大。 Standard_DS3_v2 的缓存大小为 172 GiB，足够大。 在此示例中，Standard_DS3_v2 是 DSv2 系列中能够用于此映像的最小大小。 市场中的基本 Linux 映像以及 `[smallsize]` 所表示的 Windows Server 映像通常为大约 30 GiB，可以使用大多数可用的 VM 大小。
 
 临时磁盘还要求 VM 大小支持高级存储。 大小通常（但并非总是）在名称中包含 `s`，例如 DSv2 和 EsV3。 有关详细信息，请参阅 [Azure VM 大小](../articles/virtual-machines/linux/sizes.md)，其中详述了哪些大小支持高级存储。
 

@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 origin.date: 05/09/2018
 ms.date: 10/22/2018
 ms.author: v-lingwu
-ms.openlocfilehash: b1d0d92593d4bae5101f2efefe0de14b9df44fb8
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: ea7832e687b517f15fe4740c688e881950363e14
+ms.sourcegitcommit: b81ea2ab9eafa986986fa3eb1e784cfe9bbf9ec1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77028978"
+ms.lasthandoff: 05/13/2020
+ms.locfileid: "83367870"
 ---
 # <a name="view-the-topology-of-an-azure-virtual-network"></a>查看 Azure 虚拟网络的拓扑
 
@@ -53,17 +53,17 @@ ms.locfileid: "77028978"
 
 可以运行后续步骤中的命令：
 <!-- Not Available on - In the Azure Cloud Shell-->
-- 通过在计算机中运行 CLI。 如果在计算机中运行 CLI，则本文中的步骤要求使用 Azure CLI 2.0.31 或更高版本。 运行 `az --version` 查找已安装的版本。 如需进行安装或升级，请参阅[安装 Azure CLI](https://docs.azure.cn/zh-cn/cli/install-azure-cli?view=azure-cli-latest)。 如果在本地运行 Azure CLI，则还需运行 `az login` 以创建与 Azure 的连接。
+- 通过在计算机中运行 CLI。 如果在计算机中运行 CLI，则本文中的步骤要求使用 Azure CLI 2.0.31 或更高版本。 运行 `az --version` 查找已安装的版本。 如需进行安装或升级，请参阅[安装 Azure CLI](https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest)。 如果在本地运行 Azure CLI，则还需运行 `az login` 以创建与 Azure 的连接。
 
 所用帐户必须拥有所需的[权限](required-rbac-permissions.md)。
 
-1. 如果你已在要为其创建拓扑的虚拟网络所在的区域中有一个网络观察程序，请跳至步骤 3。 使用 [az group create](https://docs.azure.cn/zh-cn/cli/group?view=azure-cli-latest#az-group-create) 创建一个包含网络观察程序的资源组。 以下示例在“chinaeast”区域中创建资源组： 
+1. 如果你已在要为其创建拓扑的虚拟网络所在的区域中有一个网络观察程序，请跳至步骤 3。 使用 [az group create](https://docs.azure.cn/cli/group?view=azure-cli-latest#az-group-create) 创建一个包含网络观察程序的资源组。 以下示例在“chinaeast”区域中创建资源组： 
 
     ```azurecli
     az group create --name NetworkWatcherRG --location 'China East 2'
     ```
 
-2. 使用 [az network watcher configure](https://docs.azure.cn/zh-cn/cli/network/watcher?view=azure-cli-latest#az-network-watcher-configure) 创建网络观察程序。 以下示例在“中国东部 2”区域中创建网络观察程序： 
+2. 使用 [az network watcher configure](https://docs.azure.cn/cli/network/watcher?view=azure-cli-latest#az-network-watcher-configure) 创建网络观察程序。 以下示例在“中国东部 2”区域中创建网络观察程序： 
 
     ```azurecli
     az network watcher configure \
@@ -72,7 +72,7 @@ ms.locfileid: "77028978"
       --enabled true
     ```
 
-3. 使用 [az network watcher show-topology](https://docs.azure.cn/zh-cn/cli/network/watcher?view=azure-cli-latest#az-network-watcher-show-topology) 查看拓扑。 以下示例查看名为 *MyResourceGroup* 的资源组的拓扑：
+3. 使用 [az network watcher show-topology](https://docs.azure.cn/cli/network/watcher?view=azure-cli-latest#az-network-watcher-show-topology) 查看拓扑。 以下示例查看名为 *MyResourceGroup* 的资源组的拓扑：
 
     ```azurecli
     az network watcher show-topology --resource-group MyResourceGroup

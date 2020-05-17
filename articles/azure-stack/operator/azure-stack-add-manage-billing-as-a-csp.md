@@ -3,17 +3,17 @@ title: 管理充当云解决方案提供商的 Azure Stack Hub 的使用情况�
 description: 了解如何将 Azure Stack Hub 注册为云解决方案提供商 (CSP) 并添加客户以便计费。
 author: WenJason
 ms.topic: article
-origin.date: 01/22/2020
-ms.date: 02/24/2020
+origin.date: 04/20/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: alfredop
-ms.lastreviewed: 10/15/2018
-ms.openlocfilehash: 31c209b39b31670b8c10d181b9d3df60d9bf46b8
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.lastreviewed: 10/15/2019
+ms.openlocfilehash: c103cae6c03ce1566b5ee9336464467af7a40591
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79291997"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422558"
 ---
 # <a name="manage-usage-and-billing-for-azure-stack-hub-as-a-cloud-solution-provider"></a>管理充当云解决方案提供商的 Azure Stack Hub 的使用情况和计费
 
@@ -23,7 +23,7 @@ ms.locfileid: "79291997"
 
 下图展示了必须执行哪些步骤，以便选择共享服务帐户并将 Azure 帐户注册到 Azure Stack Hub 帐户。 注册后，即可载入最终客户：
 
-[![以云解决方案提供商身份启用使用情况跟踪和管理功能的过程](media/azure-stack-add-manage-billing-as-a-csp/process-add-useage-as-a-csp.png "以云解决方案提供商身份启用使用情况跟踪和管理功能的过程")](media/azure-stack-add-manage-billing-as-a-csp/process-add-useage-as-a-csp.png#lightbox)
+[![以云解决方案提供商身份启用使用情况跟踪和管理功能的过程](media/azure-stack-add-manage-billing-as-a-csp/process-add-useage-as-a-csp.svg "以云解决方案提供商身份启用使用情况跟踪和管理功能的过程")](media/azure-stack-add-manage-billing-as-a-csp/process-add-useage-as-a-csp.svg)
 
 ## <a name="create-a-csp-or-apss-subscription"></a>创建 CSP 或 APSS 订阅
 

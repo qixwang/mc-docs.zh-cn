@@ -1,28 +1,19 @@
 ---
-title: 排查 ASDK 问题 | Microsoft Docs
+title: 排查 ASDK 问题
 description: 了解如何排查 Azure Stack 开发工具包 (ASDK) 问题。
-services: azure-stack
-documentationcenter: ''
 author: WenJason
-manager: digimobile
-editor: ''
-ms.assetid: ''
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 origin.date: 11/05/2019
-ms.date: 01/13/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: misainat
 ms.lastreviewed: 11/05/2019
-ms.openlocfilehash: ce9b11bb4741b55ffd9c8166024d80da437f62c2
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 20fc23070589f635b50099e8f3ee528e6e26f889
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75737882"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422444"
 ---
 # <a name="troubleshoot-the-asdk"></a>排查 ASDK 问题
 本文提供了 Azure Stack 开发工具包 (ASDK) 的常见故障排除信息。 有关 Azure Stack 集成系统的帮助，请参阅 [Azure Stack 故障排除](../operator/azure-stack-troubleshooting.md)。 
@@ -47,7 +38,7 @@ ms.locfileid: "75737882"
 如果在模板验证期间遇到错误消息，该消息指出系统不允许参数 'osProfile'，请确保对以下组件使用正确的 API 版本：
 
 - [计算](/azure-stack/user/azure-stack-profiles-azure-resource-manager-versions#microsoftcompute)
-- [Network](/azure-stack/user/azure-stack-profiles-azure-resource-manager-versions#microsoftnetwork)
+- [网络](/azure-stack/user/azure-stack-profiles-azure-resource-manager-versions#microsoftnetwork)
 
 若要将 VHD 从 Azure 复制到 Azure Stack，请使用 [AzCopy 7.3.0](/azure-stack/user/azure-stack-storage-transfer#download-and-install-azcopy)。 请联系供应商以解决映像本身的问题。 若要详细了解 Azure Stack 的 WALinuxAgent 要求，请参阅 [Azure LinuX 代理](../operator/azure-stack-linux.md#azure-linux-agent)。
 

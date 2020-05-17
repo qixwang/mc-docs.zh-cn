@@ -1,11 +1,10 @@
 ---
-title: Azure 虚拟机 PowerShell 示例 | Azure
+title: Azure 虚拟机 PowerShell 示例
 description: Azure 虚拟机 PowerShell 示例
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: rockboyfor
 manager: digimobile
-editor: tysonn
 tags: azure-service-management
 ms.assetid: ''
 ms.service: virtual-machines-windows
@@ -13,15 +12,15 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 origin.date: 03/01/2019
-ms.date: 10/14/2019
+ms.date: 04/27/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 831c145056549e6212261d7534d041a5984fdf94
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: bf9a57cce6ee9897423914683c9817a47825841c
+ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "72272542"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83392363"
 ---
 # <a name="azure-virtual-machine-powershell-samples"></a>Azure 虚拟机 PowerShell 示例
 
@@ -46,7 +45,7 @@ ms.locfileid: "72272542"
 | [将托管磁盘的 VHD 导出到存储帐户](../scripts/virtual-machines-windows-powershell-sample-copy-managed-disks-vhd.md?toc=%2fvirtual-machines%2fwindows%2ftoc.json) | 将托管磁盘的基础 VHD 导出到不同区域的存储帐户。 |
 | [从 VHD 创建快照](../scripts/virtual-machines-windows-powershell-sample-create-snapshot-from-vhd.md?toc=%2fvirtual-machines%2fwindows%2ftoc.json) | 从 VHD 创建快照，然后使用该快照快速创建多个相同的托管磁盘。  |
 | [将快照复制到相同或不同的订阅](../scripts/virtual-machines-windows-powershell-sample-copy-snapshot-to-same-or-different-subscription.md?toc=%2fvirtual-machines%2fwindows%2ftoc.json) | 将快照复制到父快照所在区域中的相同或不同订阅。 |
-|**保护虚拟机**||
+|**保护虚拟机安全**||
 | [加密 VM 及其数据磁盘](./../scripts/virtual-machines-windows-powershell-sample-encrypt-vm.md?toc=%2fpowershell%2fazure%2ftoc.json) | 创建 Azure Key Vault、加密密钥和服务主体，然后对 VM 进行加密。 |
 |**监视虚拟机**||
 | [使用 Azure Monitor 监视 VM](./../scripts/virtual-machines-windows-powershell-sample-create-vm-oms.md?toc=%2fvirtual-machines%2fwindows%2ftoc.json) | 创建一个虚拟机，安装 Azure Log Analytics 代理，然后在 Log Analytics 工作区中注册该 VM。  |

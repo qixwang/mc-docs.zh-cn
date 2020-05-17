@@ -4,16 +4,16 @@ description: 了解如何将租户添加到 Azure Stack Hub 以获取用量和�
 author: WenJason
 ms.topic: article
 origin.date: 01/24/2020
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: alfredop
 ms.lastreviewed: 09/17/2019
-ms.openlocfilehash: de032ed83bd5c8fdb5fcb686041f0b94c0af37de
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: b549fd1b08e4a4b787aa1d4f202de0403b5a5bd6
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540875"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422391"
 ---
 # <a name="add-tenant-for-usage-and-billing-to-azure-stack-hub"></a>将租户添加到 Azure Stack Hub 以获取用量和计费信息
 

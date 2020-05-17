@@ -8,13 +8,13 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 01/30/2020
-ms.date: 03/16/2020
-ms.openlocfilehash: e032013ad8922f8f88972a99e1a4c5d38d873eab
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/09/2020
+ms.openlocfilehash: 81f3e21bac2a3e70263541304a08908f32f31c6c
+ms.sourcegitcommit: bfbd6694da33f703481386f2a3f16850c4e94bfa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80243944"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83417548"
 ---
 # <a name="data-visualization-with-azure-data-explorer"></a>使用 Azure 数据资源管理器进行数据可视化 
 
@@ -24,7 +24,7 @@ Azure 数据资源管理器是一项适用于日志和遥测数据的快速且�
 
 ## <a name="kusto-query-language-visualizations"></a>Kusto 查询语言可视化
 
-Kusto 查询语言 [`render operator`](https://docs.microsoft.com/azure/kusto/query/renderoperator) 提供各种可视化效果（如表格、饼图和条形图）来描述查询结果。 查询可视化用于异常情况检测和预测、机器学习等。
+Kusto 查询语言 [`render operator`](https://docs.microsoft.com/azure/data-explorer/kusto/query/renderoperator) 提供各种可视化效果（如表格、饼图和条形图）来描述查询结果。 查询可视化用于异常情况检测和预测、机器学习等。
 
 ## <a name="power-bi"></a>Power BI
 

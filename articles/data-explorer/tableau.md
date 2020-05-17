@@ -7,13 +7,13 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 06/03/2019
-ms.date: 03/16/2020
-ms.openlocfilehash: 7c6368fa6e624640b903df56080ac2823cca0129
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/09/2020
+ms.openlocfilehash: 9076430974312b18cd8955bce95869c2943ae23d
+ms.sourcegitcommit: bfbd6694da33f703481386f2a3f16850c4e94bfa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80243949"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83417564"
 ---
 # <a name="visualize-data-from-azure-data-explorer-in-tableau"></a>在 Tableau 中直观显示来自 Azure 数据资源管理器的数据
 
@@ -29,7 +29,7 @@ ms.locfileid: "80243949"
 
 * 包括 StormEvents 示例数据的群集。 有关详细信息，请参阅[创建 Azure 数据资源管理器群集和数据库](create-cluster-database-portal.md)和[将示例数据引入 Azure 数据资源管理器](ingest-sample-data.md)。
 
-    [!INCLUDE [data-explorer-storm-events](../../includes/data-explorer-storm-events.md)]
+    [!INCLUDE [data-explorer-storm-events](includes/data-explorer-storm-events.md)]
 
 ## <a name="visualize-data-in-tableau"></a>在 Tableau 中直观显示数据 
 

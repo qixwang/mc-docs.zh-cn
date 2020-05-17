@@ -3,17 +3,17 @@ title: 使用基于角色的访问控制设置访问权限
 description: 了解如何在 Azure Stack Hub 中使用基于角色的访问控制 (RBAC) 设置访问权限。
 author: WenJason
 ms.topic: article
-origin.date: 12/23/2020
-ms.date: 02/24/2020
+origin.date: 12/23/2019
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: thoroet
 ms.lastreviewed: 12/23/2019
-ms.openlocfilehash: d27ec0465d9d56afe6f5ef5f0b4fc83931397b0b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: cda4323054a2cd2c7cea1c388ac78e678195b6b0
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540926"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422605"
 ---
 # <a name="set-access-permissions-using-role-based-access-control"></a>使用基于角色的访问控制设置访问权限
 

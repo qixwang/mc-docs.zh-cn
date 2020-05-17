@@ -4,16 +4,16 @@ description: 了解 Azure Stack 开发工具包以及如何使用它来评估 Az
 author: WenJason
 ms.topic: overview
 origin.date: 11/27/2019
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: misainat
 ms.lastreviewed: 11/27/2019
-ms.openlocfilehash: ea63f5011d349ec40fcdcc9ec88bef86689aa5c6
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 84eaf0305bbe66b9cfb69c54a256ed3835d697f2
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79293739"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422441"
 ---
 # <a name="what-is-the-azure-stack-development-kit-asdk"></a>什么是 Azure Stack 开发工具包 (ASDK)？
 [Azure Stack Hub 集成系统](../operator/azure-stack-overview.md)的大小范围为 4 到 16 个节点，由硬件合作伙伴和 Azure 共同提供支持。 使用 Azure Stack Hub 集成系统可为生产工作负荷启用新方案。 如果你是 Azure Stack Hub 操作员，想要管理集成系统基础结构并提供服务，请参阅我们的[操作员文档](/azure-stack/operator)。

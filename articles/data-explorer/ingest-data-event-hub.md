@@ -7,13 +7,13 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 01/08/2020
-ms.date: 03/16/2020
-ms.openlocfilehash: 05adbe8876707f20eb3b56adf2606228601f4c58
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/09/2020
+ms.openlocfilehash: de5989efbc723fafc90d835f1b5d53fe3affd77c
+ms.sourcegitcommit: bfbd6694da33f703481386f2a3f16850c4e94bfa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80243970"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83417631"
 ---
 # <a name="ingest-data-from-event-hub-into-azure-data-explorer"></a>将数据从事件中心引入到 Azure 数据资源管理器
 
@@ -93,7 +93,7 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
 1. 将以下命令复制到窗口中，然后选择“运行”  将传入的 JSON 数据映射到表 (TestTable) 的列名和数据类型。
 
     ```Kusto
-    .create table TestTable ingestion json mapping 'TestMapping' '[{"column":"TimeStamp","path":"$.timeStamp","datatype":"datetime"},{"column":"Name","path":"$.name","datatype":"string"},{"column":"Metric","path":"$.metric","datatype":"int"},{"column":"Source","path":"$.source","datatype":"string"}]'
+    .create table TestTable ingestion json mapping 'TestMapping' '[{"column":"TimeStamp", "Properties": {"Path": "$.timeStamp"}},{"column":"Name", "Properties": {"Path":"$.name"}} ,{"column":"Metric", "Properties": {"Path":"$.metric"}}, {"column":"Source", "Properties": {"Path":"$.source"}}]'
     ```
 
 ## <a name="connect-to-the-event-hub"></a>连接到事件中心
@@ -118,7 +118,7 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
     | 事件中心命名空间 | 唯一的命名空间名称 | 先前选择的用于标识命名空间的名称。 |
     | 事件中心 | test-hub  | 你创建的事件中心。 |
     | 使用者组 | test-group  | 在创建的事件中心定义的使用者组。 |
-    | 事件系统属性 | 选择相关属性 | [事件中心系统属性](/service-bus-messaging/service-bus-amqp-protocol-guide#message-annotations)。 如果每个事件消息有多个记录，则系统属性将添加到第一个记录中。 添加系统属性时，[创建](https://docs.microsoft.com/azure/kusto/management/create-table-command)或[更新](https://docs.microsoft.com/azure/kusto/management/alter-table-command)表架构和[映射](https://docs.microsoft.com/azure/kusto/management/mappings)以包括所选属性。 |
+    | 事件系统属性 | 选择相关属性 | [事件中心系统属性](/service-bus-messaging/service-bus-amqp-protocol-guide#message-annotations)。 如果每个事件消息有多个记录，则系统属性将添加到第一个记录中。 添加系统属性时，[创建](https://docs.microsoft.com/azure/data-explorer/kusto/management/create-table-command)或[更新](https://docs.microsoft.com/azure/data-explorer/kusto/management/alter-table-command)表架构和[映射](https://docs.microsoft.com/azure/data-explorer/kusto/management/mappings)以包括所选属性。 |
     | 压缩 | *无* | 事件中心消息有效负载的压缩类型。 支持的压缩类型：None、GZip  。|
     | | |
 
@@ -131,7 +131,7 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
     |---|---|---|
     | 表 | TestTable  | 在“TestDatabase”  中创建的表。 |
     | 数据格式 | *JSON* | 支持的格式为 Avro、CSV、JSON、多行 JSON、PSV、SOHSV、SCSV、TSV、TSVE、TXT、ORC 和 PARQUET。 |
-    | 列映射 | TestMapping  | 在 **TestDatabase** 中创建的[映射](https://docs.microsoft.com/azure/kusto/management/mappings)，它将传入的 JSON 数据映射到 **TestTable** 的列名称和数据类型。 对于 JSON 或多行 JSON 是必需的，对于其他格式是可选的。|
+    | 列映射 | TestMapping  | 在 **TestDatabase** 中创建的[映射](https://docs.microsoft.com/azure/data-explorer/kusto/management/mappings)，它将传入的 JSON 数据映射到 **TestTable** 的列名称和数据类型。 对于 JSON 或多行 JSON 是必需的，对于其他格式是可选的。|
     | | |
 
     > [!NOTE]
@@ -140,7 +140,7 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
     > * 还可以通过动态属性设置压缩类型，如[示例应用](https://github.com/Azure-Samples/event-hubs-dotnet-ingest)中所示。
     > * GZip 压缩有效负载不支持 Avro、ORC 和 PARQUET 格式以及事件系统属性。
 
-[!INCLUDE [data-explorer-container-system-properties](../../includes/data-explorer-container-system-properties.md)]
+[!INCLUDE [data-explorer-container-system-properties](includes/data-explorer-container-system-properties.md)]
 
 ## <a name="copy-the-connection-string"></a>复制连接字符串
 
@@ -198,9 +198,9 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
     ![消息结果集](media/ingest-data-event-hub/message-result-set.png)
 
     > [!NOTE]
-    > * Azure 数据资源管理器具有用于数据引入的聚合（批处理）策略，旨在优化引入过程。 默认情况下，该策略配置为 5 分钟或 500 MB 数据，因此你可能会遇到延迟。 有关聚合选项，请参阅[批处理策略](https://docs.microsoft.com/azure/kusto/concepts/batchingpolicy)。 
+    > * Azure 数据资源管理器具有用于数据引入的聚合（批处理）策略，旨在优化引入过程。 默认情况下，该策略配置为 5 分钟或 500 MB 数据，因此你可能会遇到延迟。 有关聚合选项，请参阅[批处理策略](https://docs.microsoft.com/azure/data-explorer/kusto/management/batchingpolicy)。 
     > * 事件中心引入包括 10 秒或 1 MB 的事件中心响应时间。 
-    > * 配置表以支持流式处理并消除响应时间延迟。 请参阅[流式处理策略](https://docs.microsoft.com/azure/kusto/concepts/streamingingestionpolicy)。 
+    > * 配置表以支持流式处理并消除响应时间延迟。 请参阅[流式处理策略](https://docs.microsoft.com/azure/data-explorer/kusto/management/streamingingestionpolicy)。 
 
 ## <a name="clean-up-resources"></a>清理资源
 

@@ -2,18 +2,18 @@
 title: 管理 Azure Stack Hub 中的物理内存容量
 description: 了解如何监视和管理 Azure Stack Hub 中的物理内存和容量。
 author: WenJason
-ms.topic: conceptual
-origin.date: 1/22/2020
-ms.date: 02/24/2020
+ms.topic: how-to
+origin.date: 03/04/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: thoroet
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 09d2c3bafb462d2d49ac47df5682e0a79ce1dd61
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 68e05deb77001b97b83ebc22cd77ab2ac5fc77a5
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540912"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422116"
 ---
 # <a name="manage-physical-memory-capacity-in-azure-stack-hub"></a>管理 Azure Stack Hub 中的物理内存容量
 

@@ -5,12 +5,12 @@ ms.topic: article
 origin.date: 03/09/2020
 ms.date: 05/08/2020
 ms.author: v-yeche
-ms.openlocfilehash: 14d7bfaa67888cb5d117f2463e8755bbec5a8506
-ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
+ms.openlocfilehash: 7c1ca6a9b88d812fe7fbd8357f7785b830ce2a9b
+ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "83002101"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83392437"
 ---
 <!--Verified successfully-->
 # <a name="view-and-manage-task-run-logs"></a>查看和管理任务运行日志
@@ -114,7 +114,7 @@ az acr task logs --registry mycontainerregistry1220 \
 
 [azure-cli]: https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest
 [az-acr-build]: https://docs.azure.cn/cli/acr?view=azure-cli-latest#az-acr-build
-[az-acr-pack-build]: https://docs.azure.cn/cli/acr/pack?view=azure-cli-latest#az-acr-pack-build
+[az-acr-pack-build]: https://docs.microsoft.com/cli/azure/acr/pack?view=azure-cli-latest#az-acr-pack-build
 [az-acr-task]: https://docs.azure.cn/cli/acr/task?view=azure-cli-latest
 [az-acr-task-create]: https://docs.azure.cn/cli/acr/task?view=azure-cli-latest#az-acr-task-create
 [az-acr-task-run]: https://docs.azure.cn/cli/acr/task?view=azure-cli-latest#az-acr-task-run

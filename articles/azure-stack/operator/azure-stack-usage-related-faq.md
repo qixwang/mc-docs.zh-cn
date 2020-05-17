@@ -7,16 +7,16 @@ documentationcenter: ''
 author: WenJason
 ms.topic: article
 origin.date: 01/27/2020
-ms.date: 03/23/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: alfredop
 ms.lastreviewed: 02/26/2019
-ms.openlocfilehash: adcb0d49c06515fe55265ade419dc419ac46a512
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 49f5f2b4621c03c1781f7fee8eede0f149418e44
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79547068"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422594"
 ---
 # <a name="frequently-asked-questions-about-azure-stack-hub-usage"></a>有关 Azure Stack Hub 用量的常见问题解答
 

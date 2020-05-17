@@ -4,16 +4,16 @@ description: 了解如何通过 VNET 对等互连连接两个 Azure Stack Hub。
 author: WenJason
 ms.topic: how-to
 origin.date: 1/22/2020
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: sijuman
 ms.lastreviewed: 10/03/2019
-ms.openlocfilehash: dce690aa743773d8474faad266533f9d97265355
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 8f543b3eff33300b28fe95202185a385e72354b6
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540039"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422031"
 ---
 # <a name="connect-two-vnets-through-peering"></a>通过对等互连连接两个 VNET
 

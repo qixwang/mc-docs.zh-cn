@@ -12,14 +12,17 @@ origin.date: 02/10/2020
 ms.date: 04/20/2020
 ms.author: v-tawe
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: ae1355b39190873f33d6a8ab64dbe7fdc679de4f
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.openlocfilehash: 558f2aec62463da3895629681c89e031d6e113b3
+ms.sourcegitcommit: bfbd6694da33f703481386f2a3f16850c4e94bfa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82126387"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83417716"
 ---
 # <a name="quickstart-recognize-speech-stored-in-blob-storage"></a>快速入门：识别存储在 Blob 存储中的语音
+
+> [!IMPORTANT]
+> 需要语音 SDK 版本 1.10.0 或更高版本。
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [Header](../includes/quickstarts/from-blob/header.md)]
@@ -48,5 +51,4 @@ ms.locfileid: "82126387"
 ::: zone pivot="programming-language-more"
 [!INCLUDE [Header](../includes/quickstarts/from-file/more/header.md)]
 [!INCLUDE [More samples](../includes/quickstarts/from-blob/more/more.md)]
-
 ::: zone-end

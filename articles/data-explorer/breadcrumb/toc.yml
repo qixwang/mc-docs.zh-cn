@@ -1,0 +1,11 @@
+- name: Azure
+  tocHref: /
+  topicHref: /index
+  items:
+    - name: Azure 数据资源管理器
+      tocHref: /data-explorer/
+      topicHref: /data-explorer/
+      items:
+        - name: Kusto
+          tocHref: /data-explorer/kusto/
+          topicHref: /data-explorer/kusto/

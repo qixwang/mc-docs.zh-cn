@@ -4,16 +4,16 @@ description: 了解如何在 Azure Stack Hub 中使用 iDNS 的特性和功能�
 author: WenJason
 ms.topic: conceptual
 origin.date: 09/16/2019
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.author: Justinha
 ms.reviewer: scottnap
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: f7323bc346f6cb3c80875571431f43b44c084227
-ms.sourcegitcommit: 4aeecfcc59cb42ba0b712a729d278d03bffc719a
+ms.openlocfilehash: b79dcfd66f05013d4d044b24bebc7c5f4ee1839a
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81791001"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422637"
 ---
 # <a name="use-idns-in-azure-stack-hub"></a>在 Azure Stack Hub 中使用 iDNS 
 

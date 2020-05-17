@@ -9,15 +9,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-origin.date: 10/30/2019
-ms.date: 04/30/2020
+ms.date: 05/18/2020
 ms.author: v-yeche
-ms.openlocfilehash: 56c7a20a03d758293ca19c066048b5c7c9e24093
-ms.sourcegitcommit: 275203d0f144aa809792f2c570fd64797f405c80
+ms.openlocfilehash: 07aae67763414597d04755385982dea09a817916
+ms.sourcegitcommit: 436a5dd9a446fe7b6d3c4d5bc76b652f7848c1ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82125800"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83393125"
 ---
 <!--Verified successfully-->
 # <a name="co-locate-resource-for-improved-latency"></a>并置资源以改善延迟
@@ -38,5 +37,4 @@ ms.locfileid: "82125800"
 
 <!--Not Available on [use proximity placement groups with SAP applications](/virtual-machines/workloads/sap/sap-proximity-placement-scenarios?toc=%2fvirtual-machines%2fwindows%2ftoc.json)-->
 
-<!-- Update_Description: new article about co location -->
-<!--NEW.date: 04/30/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

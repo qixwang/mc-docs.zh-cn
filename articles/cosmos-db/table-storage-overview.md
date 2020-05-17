@@ -6,16 +6,16 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: overview
 origin.date: 05/20/2019
-ms.date: 04/27/2020
+ms.date: 05/18/2020
 author: rockboyfor
 ms.author: v-yeche
 ms.reviewer: sngun
-ms.openlocfilehash: 7dabd365617c683ab6fc2e288e565dbcbf09bb9b
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.openlocfilehash: 3e95db890543d0021e0ce8ed2bbdb54b43a0ce42
+ms.sourcegitcommit: 436a5dd9a446fe7b6d3c4d5bc76b652f7848c1ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82134890"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83393128"
 ---
 # <a name="azure-table-storage-overview"></a>Azure 表存储概述
 

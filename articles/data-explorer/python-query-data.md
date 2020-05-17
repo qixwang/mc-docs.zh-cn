@@ -7,13 +7,13 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 08/05/2019
-ms.date: 03/23/2020
-ms.openlocfilehash: 8da032b4ef25f95a06bb93053f2de76d533d0acf
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/09/2020
+ms.openlocfilehash: cb11c3aedfa1b12fb004553d0e3d799a05fb1c51
+ms.sourcegitcommit: bfbd6694da33f703481386f2a3f16850c4e94bfa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79543302"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83417570"
 ---
 # <a name="query-data-using-the-azure-data-explorer-python-library"></a>使用 Azure 数据资源管理器 Python 库查询数据
 

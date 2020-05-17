@@ -3,17 +3,17 @@ title: 在 Azure Stack Hub 中将 API 版本配置文件与 Node.js 配合使用
 description: 了解如何在 Azure Stack Hub 中将 API 版本配置文件与 Node.js 配合使用。
 author: WenJason
 ms.topic: article
-origin.date: 11/11/2019
-ms.date: 02/24/2020
+origin.date: 04/20/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: sijuman
 ms.lastreviewed: 11/11/2019
-ms.openlocfilehash: 5aedd0c485c3b6e4966aa23b6d08105514f5a559
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: df0ec61eec74526380cb52a402c38b3dd3d5e779
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77541053"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422589"
 ---
 # <a name="use-api-version-profiles-with-nodejs-software-development-kit-sdk-in-azure-stack-hub"></a>在 Azure Stack Hub 中将 API 版本配置文件与 Node.js 软件开发工具包 (SDK) 配合使用
 
@@ -89,7 +89,7 @@ API 配置文件是资源提供程序和 API 版本的组合。 可以使用 API
 | 客户端 ID | CLIENT\_ID | 在本文档上一部分创建服务主体时保存的服务主体应用程序 ID。  |
 | 订阅 ID | AZURE\_SUBSCRIPTION\_ID：[订阅 ID](/azure-stack/operator/service-plan-offer-subscription-overview#subscriptions) 用于访问 Azure Stack Hub 中的套餐。  |
 | 客户端机密 | APPLICATION\_SECRET | 创建服务主体时保存的服务主体应用程序机密。 |
-| 资源管理器终结点 | ARM\_ENDPOINT | 参阅 [Azure Stack Hub 资源管理器终结点](/azure-stack/user/azure-stack-version-profiles-ruby#the-azure-stack-resource-manager-endpoint)。 |
+| 资源管理器终结点 | ARM\_ENDPOINT | 参阅 [Azure Stack Hub 资源管理器终结点](/azure-stack/user/azure-stack-version-profiles-ruby#the-azure-stack-hub-resource-manager-endpoint)。 |
 
 #### <a name="set-your-environmental-variables-for-nodejs"></a>设置 Node.js 的环境变量
 

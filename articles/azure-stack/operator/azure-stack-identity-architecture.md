@@ -3,17 +3,17 @@ title: Azure Stack Hub 的标识体系结构
 description: 了解 Azure Stack Hub 的标识体系结构，以及 Azure AD 和 AD FS 之间的差异。
 author: WenJason
 ms.topic: conceptual
-origin.date: 05/09/2019
-ms.date: 02/24/2020
+origin.date: 04/10/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: fiseraci
 ms.lastreviewed: 05/09/2019
-ms.openlocfilehash: 7fa06cd76f06f211334a24f8f28c7d4aaa474fc2
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 1c04faf249af3ae29baa2b8b8daf10051154afb2
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540991"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422496"
 ---
 # <a name="identity-architecture-for-azure-stack-hub"></a>Azure Stack Hub 的标识体系结构
 
@@ -48,7 +48,7 @@ ms.locfileid: "77540991"
 - 所有用户都属于同一租户。
 - 服务提供程序托管着组织的 Azure Stack Hub 实例。
 
-![结合 Azure AD 的 Azure Stack Hub 单租户拓扑](media/azure-stack-identity-architecture/single-tenant.png)
+![结合 Azure AD 的 Azure Stack Hub 单租户拓扑](media/azure-stack-identity-architecture/single-tenant.svg)
 
 此拓扑具有以下特征：
 
@@ -65,7 +65,7 @@ ms.locfileid: "77540991"
 
 - 服务提供商希望允许多个组织中的用户访问 Azure Stack Hub。
 
-![使用了 Azure AD 的 Azure Stack Hub 多租户拓扑](media/azure-stack-identity-architecture/multi-tenant.png)
+![使用了 Azure AD 的 Azure Stack Hub 多租户拓扑](media/azure-stack-identity-architecture/multi-tenant.svg)
 
 此拓扑具有以下特征：
 
@@ -80,7 +80,7 @@ ms.locfileid: "77540991"
 - Azure Stack Hub 不会连接到 Internet。
 - Azure Stack Hub 可以连接到 Internet，但你选择为标识提供者使用 AD FS。
   
-![使用 AD FS 的 Azure Stack Hub 拓扑](media/azure-stack-identity-architecture/adfs.png)
+![使用 AD FS 的 Azure Stack Hub 拓扑](media/azure-stack-identity-architecture/adfs.svg)
 
 此拓扑具有以下特征：
 

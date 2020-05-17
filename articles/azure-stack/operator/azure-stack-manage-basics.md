@@ -4,17 +4,17 @@ titleSuffix: Azure Stack Hub
 description: 了解 Azure Stack Hub 管理基础知识。
 author: WenJason
 ms.topic: article
-origin.date: 03/02/2020
-ms.date: 03/23/2020
+origin.date: 04/03/2020
+ms.date: 05/18/2020
 ms.author: v-jay
-ms.reviewer: ''
-ms.lastreviewed: ''
-ms.openlocfilehash: 97b526727e376424c65566b47ee5d3bf052ab9b9
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.reviewer: thoroet
+ms.lastreviewed: 04/03/2020
+ms.openlocfilehash: d8f7cd2a48829327e246d13830b001a0c9ce7cf0
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80418027"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422606"
 ---
 # <a name="azure-stack-hub-administration-basics"></a>Azure Stack Hub 管理基础知识
 
@@ -86,13 +86,13 @@ Azure Stack Hub 使用 Azure 资源管理器作为其基础的部署、管理和
 - [使用基于角色的访问控制设置访问权限](/azure-stack/operator/azure-stack-manage-permissions)。 （此任务并不限于管理员。）
 - [监视基础结构运行状况](/azure-stack/operator/azure-stack-monitor-health)。
 - 管理[网络](/azure-stack/operator/azure-stack-viewing-public-ip-address-consumption)和[存储](/azure-stack/operator/azure-stack-manage-storage-accounts)资源。
-- [启动和停止 Azure Stack Hub](/azure-stack/operator/azure-stack-start-and-stop)。
-- [运行扩展的存储](/azure-stack/tdc/extended-storage-operator-guide)。
-- [管理 IoT 中心](/azure-stack/operator/iot-hub-rp-overview)。
-- [管理事件中心](/azure-stack/operator/event-hubs-rp-overview)。
-- [管理应用服务](/azure-stack/operator/azure-stack-app-service-overview)。
-- 更换损坏的硬件。 下面是[可替换部件](/azure-stack/tdc/cru-replaceable-parts)的列表。
-- [获取支持](/azure-stack/operator/azure-stack-help-and-support-overview)。
+- [启动和停止 Azure Stack Hub](/azure-stack/operator/azure-stack-start-and-stop&branch=release-tzl)。
+- [运行扩展的存储](/azure-stack/tdc/extended-storage-operator-guide&branch=release-tzl)。
+- [管理 IoT 中心](/azure-stack/operator/iot-hub-rp-overview?toc=%2Fazure-stack%2Ftdc%2Ftoc.json&.bc=%2Fazure-stack%2Fbreadcrumb%2Ftoc.json&view=azs-2002&branch=release-tzl)。
+- [管理事件中心](/azure-stack/operator/event-hubs-rp-overview?toc=%2Fazure-stack%2Ftdc%2Ftoc.json&bc=%2Fazure-stack%2Fbreadcrumb%2Ftoc.json&view=azs-2002&branch=release-tzl)。
+- [管理应用服务](/azure-stack/operator/azure-stack-app-service-overview?toc=%2Fazure-stack%2Ftdc%2Ftoc.json&bc=%2Fazure-stack%2Fbreadcrumb%2Ftoc.json&view=azs-2002&branch=release-tzl)。
+- 更换损坏的硬件。 下面是[可替换部件](/azure-stack/tdc/cru-replaceable-parts&branch=release-tzl)的列表。
+- [获取支持](/azure-stack/operator/azure-stack-help-and-support-overview?toc=%2Fazure-stack%2Ftdc%2Ftoc.json&bc=%2Fazure-stack%2Fbreadcrumb%2Ftoc.json&view=azs-2002&branch=release-tzl)。
 
 ## <a name="operator-tasks"></a>操作员任务
 

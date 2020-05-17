@@ -2,18 +2,18 @@
 title: Azure Stack Hub 中的缩放单元节点操作
 description: 了解缩放单元节点操作，包括开机、关机、禁用、恢复以及如何在 Azure Stack Hub 集成系统中查看节点状态。
 author: WenJason
-ms.topic: article
-origin.date: 11/11/2019
-ms.date: 02/24/2020
+ms.topic: how-to
+origin.date: 03/04/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: thoroet
 ms.lastreviewed: 11/11/2019
-ms.openlocfilehash: b7e723e1d07399b4bcad414e6976b2744b415727
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: e0101856ad16086b5dd36fb5246e71688969db23
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79291156"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422487"
 ---
 # <a name="scale-unit-node-actions-in-azure-stack-hub"></a>Azure Stack Hub 中的缩放单元节点操作
 

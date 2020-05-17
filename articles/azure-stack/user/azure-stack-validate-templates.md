@@ -4,16 +4,16 @@ description: 使用模板验证工具检查部署到 Azure Stack Hub 的模板�
 author: WenJason
 ms.topic: article
 origin.date: 01/24/2020
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: unknown
-ms.lastreviewed: 12/27/2018
-ms.openlocfilehash: 7844b613c05b955dc566d491d94b5cc670b0aa81
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.lastreviewed: 12/27/2019
+ms.openlocfilehash: f43184f2cd4e6ccad775afdcb316f88254a622b6
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77541008"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422591"
 ---
 # <a name="use-the-template-validation-tool-in-azure-stack-hub"></a>在 Azure Stack Hub 中使用模板验证工具
 
@@ -99,5 +99,3 @@ test-AzureRMTemplate -TemplatePath C:\AzureStack-Quickstart-Templates `
 
 - [将模板部署到 Azure Stack Hub](azure-stack-arm-templates.md)
 - [为 Azure Stack Hub 开发模板](azure-stack-develop-templates.md)
-
-<!-- Update_Description: wording update -->

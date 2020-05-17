@@ -4,16 +4,16 @@ description: 了解如何使用 Azure 和 Azure Stack Hub 创建异地分布式�
 author: WenJason
 ms.topic: article
 origin.date: 11/05/2019
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: anajod
 ms.lastreviewed: 11/05/2019
-ms.openlocfilehash: 6928c5bcf744803362f8979a5a5e4352a6e55a0f
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 8e82ad91e74347d78ff4caa0c079276f30cb9e3d
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540692"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422631"
 ---
 # <a name="create-a-geo-distributed-app-solution-to-direct-traffic-with-azure-and-azure-stack-hub"></a>使用 Azure 和 Azure Stack Hub 创建异地分布式应用解决方案用于定向流量
 
@@ -114,7 +114,7 @@ ms.locfileid: "77540692"
 
 ### <a name="create-web-app-deployment-in-both-clouds"></a>在这两个云中创建 Web 应用部署
 
-1.  编辑 **WebApplication.csproj** 文件：选择 `Runtimeidentifier` 并添加 `win10-x64`。 （请参阅[独立部署](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd)文档。）
+1.  编辑 **WebApplication.csproj** 文件：选择 `Runtimeidentifier` 并添加 `win10-x64`。 （请参阅[独立部署](https://docs.microsoft.com/dotnet/core/deploying/deploy-with-vs#simpleSelf)文档。）
 
     ![在 Visual Studio 中编辑 Web 应用程序项目文件](media/solution-deployment-guide-geo-distributed/image3.png)
 
@@ -130,7 +130,7 @@ ms.locfileid: "77540692"
 
     ![将代码添加到生成定义](media/solution-deployment-guide-geo-distributed/image4.png)
 
-3. **运行生成**。 [独立部署生成](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd)过程将发布可在 Azure 和 Azure Stack Hub 上运行的项目。
+3. **运行生成**。 [独立部署生成](https://docs.microsoft.com/dotnet/core/deploying/deploy-with-vs#simpleSelf)过程将发布可在 Azure 和 Azure Stack Hub 上运行的项目。
 
 **使用 Azure 托管代理**
 
@@ -539,7 +539,7 @@ openssl pkcs12 -export -out myserver.pfx -inkey <private-key-file> -in <merged-c
 该操作完成后，将导航到指向应用的任一 HTTP URL。 例如：
 
 -   https://<app_name>.chinacloudsites.cn
--   https://northwindcloud.com
+-   `https://northwindcloud.com`
 -   <https://www.northwindcloud.com>
 
 #### <a name="enforce-tls-1112"></a>强制实施 TLS 1.1/1.2

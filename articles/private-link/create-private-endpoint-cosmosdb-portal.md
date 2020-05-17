@@ -5,14 +5,14 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 11/04/2019
-ms.date: 04/13/2020
+ms.date: 05/18/2020
 ms.author: v-yeche
-ms.openlocfilehash: e025e7f8ed4034308e3683df9811882638dfb377
-ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
+ms.openlocfilehash: 48c972c6c81828a84bb00a7e759602d816b34656
+ms.sourcegitcommit: 436a5dd9a446fe7b6d3c4d5bc76b652f7848c1ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82093492"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83393118"
 ---
 # <a name="connect-privately-to-an-azure-cosmos-account-using-azure-private-link"></a>使用 Azure 专用链接以私密方式连接到 Azure Cosmos 帐户
 

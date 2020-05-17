@@ -8,16 +8,16 @@ ms.topic: article
 origin.date: 07/10/2019
 ms.date: 09/09/2019
 ms.author: v-jay
-ms.openlocfilehash: 650e93c27265a6bd08b318555bc88710c1a1b4ba
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 538558622bf848bc23acc4776fc8f9b9099da2ac
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "70209443"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422351"
 ---
 # <a name="manage-container-properties-and-metadata-with-net"></a>使用 .NET 管理容器属性和元数据
 
-除 Blob 容器包含的数据外，它们还支持系统属性和用户定义的元数据。 本文介绍如何使用[用于 .NET 的 Azure 存储客户端库](https://docs.azure.cn/zh-cn/dotnet/api/overview/storage/client?view=azure-dotnet)管理系统属性和用户定义元数据。
+除 Blob 容器包含的数据外，它们还支持系统属性和用户定义的元数据。 本文介绍如何使用[用于 .NET 的 Azure 存储客户端库](https://docs.azure.cn/dotnet/api/overview/storage/client?view=azure-dotnet)管理系统属性和用户定义元数据。
 
 ## <a name="about-properties-and-metadata"></a>关于属性和元数据
 
@@ -37,7 +37,7 @@ ms.locfileid: "70209443"
 若要检索容器属性，请调用以下方法之一：
 
 - [FetchAttributes](https://docs.azure.cn/zh-cn/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer.fetchattributes?view=azure-dotnet)
-- [FetchAttributesAsync](https://docs.azure.cn/zh-cn/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer.fetchattributesasync?view=azure-dotnet)
+- [FetchAttributesAsync](https://docs.azure.cn/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer.fetchattributesasync?view=azure-dotnet)
 
 以下代码示例提取容器的系统属性并将一些属性值写入到控制台窗口：
 

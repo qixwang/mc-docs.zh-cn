@@ -5,16 +5,16 @@ description: 了解如何排查 Azure Stack Hub 的问题，包括 VM、存储�
 author: WenJason
 ms.topic: article
 origin.date: 11/05/2019
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: prchint
 ms.lastreviewed: 11/05/2019
-ms.openlocfilehash: 5fec0e4da9026354b0178a87415ebfcca67f9afb
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 4fcc4c4c8e2f97278a7cbbd3d72faacb52dd9967
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540619"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422602"
 ---
 # <a name="troubleshoot-issues-in-azure-stack-hub"></a>排查 Azure Stack Hub 中的问题
 
@@ -87,7 +87,7 @@ Azure Stack Hub 中的用户可以是订阅、资源组或服务的每个实例�
 4. 使用 invoke-command 调用运行 `get-azurestacklog -filterbyrole seedring`。
 5. 提取 seedring .zip。 可以从运行 `test-azurestack` 的 ERCS 文件夹获取验证报告。
 
-有关详细信息，请参阅 [Azure Stack Hub 诊断](azure-stack-configure-on-demand-diagnostic-log-collection.md#use-the-privileged-endpoint-pep-to-collect-diagnostic-logs)。
+有关详细信息，请参阅 [Azure Stack Hub 诊断](azure-stack-get-azurestacklog.md)。
 
 ## <a name="troubleshoot-virtual-machines-vms"></a>排查虚拟机 (VM) 的问题
 

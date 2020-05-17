@@ -6,15 +6,15 @@ author: WenJason
 ms.author: v-jay
 ms.topic: tutorial
 origin.date: 10/16/2019
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.reviewer: shriramnat
 ms.lastreviewed: 10/16/2019
-ms.openlocfilehash: 0766ef718dc0add1fae762a9c9072b0840b2f5c9
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 656146fe9c3a332427646c982b89a80b57d56ee3
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540872"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422381"
 ---
 # <a name="create-a-service-offering-for-users-in-azure-stack-hub"></a>在 Azure Stack Hub 中为用户创建服务产品
 
@@ -66,6 +66,7 @@ Azure Stack Hub 中有两个常规资源提供程序类别：一个将资源部�
 | Microsoft.Web | 应用服务函数应用、Web 应用、API 应用 | 
 | Microsoft.MySqlAdapter | MySQL 托管服务器、MySQL 数据库 | 
 | Microsoft.SqlAdapter | SQL Server 托管服务器、SQL Server 数据库 |
+| Microsoft.EventHub | 事件中心 |
 
 ::: moniker range=">=azs-1902"
 

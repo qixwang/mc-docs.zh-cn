@@ -3,17 +3,17 @@ title: 将 C# ASP.NET Web 应用部署到 Azure Stack Hub 中的虚拟机
 description: 将 C# ASP.NET Web 应用部署到 Azure Stack Hub 中的 VM。
 author: WenJason
 ms.topic: overview
-origin.date: 11/11/2019
-ms.date: 02/24/2020
+origin.date: 04/20/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: sijuman
 ms.lastreviewed: 11/11/2019
-ms.openlocfilehash: b0c975e16265af448eaa3400739610b9fdae3983
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 6151d3186d31f16dad9ba7686c7c1e2a058f3a77
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540829"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422511"
 ---
 # <a name="deploy-a-c-aspnet-web-app-to-a-vm-in-azure-stack-hub"></a>将 C# ASP.NET Web 应用部署到 Azure Stack Hub 中的 VM
 

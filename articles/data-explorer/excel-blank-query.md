@@ -7,13 +7,13 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 08/30/2019
-ms.date: 01/13/2020
-ms.openlocfilehash: 030adf9a5f213545b121d855c7d989c40341e3a4
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/09/2020
+ms.openlocfilehash: 4bf299d69fdfa0477ca4f91a01ec0585d78ae354
+ms.sourcegitcommit: bfbd6694da33f703481386f2a3f16850c4e94bfa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75630908"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83417753"
 ---
 # <a name="visualize-data-using-an-azure-data-explorer-kusto-query-imported-into-microsoft-excel"></a>使用导入到 Microsoft Excel 中的 Azure 数据资源管理器 Kusto 查询进行数据可视化
 

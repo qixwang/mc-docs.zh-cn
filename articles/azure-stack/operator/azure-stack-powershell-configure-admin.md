@@ -4,16 +4,16 @@ description: 了解如何使用 PowerShell 连接到 Azure Stack Hub。
 author: WenJason
 ms.topic: article
 origin.date: 1/22/2020
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: thoroet
 ms.lastreviewed: 09/19/2019
-ms.openlocfilehash: f8ae06bad5f4bbaa3dc21ca3851f62c04c1b0427
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: bb69fa238b89f95298ff0de027885471f081fe86
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540371"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422483"
 ---
 # <a name="connect-to-azure-stack-hub-with-powershell"></a>使用 PowerShell 连接到 Azure Stack Hub
 

@@ -4,15 +4,15 @@ description: 了解 Azure Stack Hub 存储服务。
 author: WenJason
 ms.topic: conceptual
 origin.date: 1/22/2020
-ms.date: 02/24/2020
+ms.date: 05/08/2020
 ms.author: v-jay
-ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 3825de0ab41ae5eb3c1f31593065385af327f778
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.lastreviewed: 01/14/2020
+ms.openlocfilehash: 17efcf4892f585a56f3fd44953d48512ce5434a0
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77541013"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422358"
 ---
 # <a name="introduction-to-azure-stack-hub-storage"></a>Azure Stack Hub 存储简介
 

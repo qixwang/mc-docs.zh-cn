@@ -7,13 +7,13 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 02/03/2020
-ms.date: 02/17/2020
-ms.openlocfilehash: 1bda4943b1825699f966b314ec7b2c8d5226bf52
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/09/2020
+ms.openlocfilehash: d0aa6f4f608ae6efaf87fafd3aff04b0f94b77ad
+ms.sourcegitcommit: bfbd6694da33f703481386f2a3f16850c4e94bfa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77067801"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83417767"
 ---
 # <a name="add-database-principals-for-azure-data-explorer-by-using-python"></a>使用 Python 向 Azure 数据资源管理器添加数据库主体
 
@@ -38,7 +38,7 @@ pip install azure-common
 pip install azure-mgmt-kusto
 ```
 
-[!INCLUDE [data-explorer-authentication](../../includes/data-explorer-authentication.md)]
+[!INCLUDE [data-explorer-authentication](includes/data-explorer-authentication.md)]
 
 ## <a name="add-a-database-principal"></a>添加数据库主体
 

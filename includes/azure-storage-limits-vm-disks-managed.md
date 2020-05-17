@@ -6,15 +6,15 @@ author: rockboyfor
 ms.service: virtual-machines
 ms.topic: include
 origin.date: 12/12/2018
-ms.date: 02/17/2020
+ms.date: 05/18/2020
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: b30121a4b46d74e82e16393b72cb7a6a80a9b6d8
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 813c152570af57ad71dc2460e77f7eff2b14bfa7
+ms.sourcegitcommit: 8d56bc6baeb42d675695ecef1909d76f5c4a6ae3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77428144"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83406200"
 ---
 **标准 HDD 托管磁盘**  
 

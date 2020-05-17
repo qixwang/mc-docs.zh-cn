@@ -4,16 +4,16 @@ description: 了解如何在 Azure Stack Hub 集成系统中为 Azure Stack Hub 
 author: WenJason
 ms.topic: article
 origin.date: 09/10/2019
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: ppacent
 ms.lastreviewed: 09/10/2019
-ms.openlocfilehash: 2bd2372fd15cfac7781574f6aaf03a1b26205dc6
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 04b6cda5a31bdec63cab792a8a6560ffc2f760a3
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540994"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422431"
 ---
 # <a name="generate-certificate-signing-requests-for-azure-stack-hub"></a>为 Azure Stack Hub 生成证书签名请求
 
@@ -130,7 +130,7 @@ ms.locfileid: "77540994"
     New-AzsCertificateSigningRequest Completed
     ```
 
-9. 将生成的 **.REQ** 文件提交到 CA（内部或公共 CA）。 **New-AzsCertificateSigningRequest** 的输出目录包含提交到证书颁发机构时所需的 CSR。 此目录还包含一个子目录，其中包含生成证书请求期间使用的 INF 文件，供你参考。 请确保 CA 使用符合 [Azure Stack Hub PKI 要求](azure-stack-pki-certs.md)的生成请求来生成证书。
+9.  将生成的 **.REQ** 文件提交到 CA（内部或公共 CA）。 **New-AzsCertificateSigningRequest** 的输出目录包含提交到证书颁发机构时所需的 CSR。 此目录还包含一个子目录，其中包含生成证书请求期间使用的 INF 文件，供你参考。 请确保 CA 使用符合 [Azure Stack Hub PKI 要求](azure-stack-pki-certs.md)的生成请求来生成证书。
 
 ## <a name="next-steps"></a>后续步骤
 

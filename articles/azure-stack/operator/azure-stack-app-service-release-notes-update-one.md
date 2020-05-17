@@ -5,16 +5,16 @@ author: WenJason
 manager: digimobile
 ms.topic: article
 origin.date: 03/25/2019
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: anwestg
-ms.lastreviewed: 03/20/2018
-ms.openlocfilehash: 5254115fc518f1068e49b2ee16167728ae42f528
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.lastreviewed: 08/20/2019
+ms.openlocfilehash: a66304300356e460b4f9f15124e00d0d43aa1990
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540957"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422408"
 ---
 # <a name="app-service-on-azure-stack-hub-update-1-release-notes"></a>Azure Stack Hub 上的应用服务 Update 1 发行说明
 

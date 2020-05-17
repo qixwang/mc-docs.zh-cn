@@ -3,17 +3,17 @@ title: Azure Stack Hub 数据中心 DNS 集成
 description: 了解如何将 Azure Stack Hub DNS 与数据中心 DNS 集成。
 author: WenJason
 ms.topic: article
-origin.date: 1/22/2020
-ms.date: 02/24/2020
+origin.date: 04/10/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: wfayed
 ms.lastreviewed: 08/21/2019
-ms.openlocfilehash: 97f16899fee70971d39eb0fa22750a96d4bf3906
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: c3faca77c45f8fe8f68216904480b0204b7157c8
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540989"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422617"
 ---
 # <a name="azure-stack-hub-datacenter-dns-integration"></a>Azure Stack Hub 数据中心 DNS 集成
 
@@ -73,13 +73,11 @@ Azure Stack Hub 支持向公共 IP 地址添加 DNS 名称标签，以允许对�
 
 Azure Stack Hub 包括权威 DNS 服务器和递归 DNS 服务器。 递归服务器用于解析所有项的名称，该 Azure Stack Hub 部署的内部专用区域和外部公用 DNS 区域除外。
 
-![Azure Stack Hub DNS 体系结构](media/azure-stack-integrate-dns/Integrate-DNS-01.png)
+![Azure Stack Hub DNS 体系结构](media/azure-stack-integrate-dns/Integrate-DNS-01.svg)
 
 ## <a name="resolving-external-dns-names-from-azure-stack-hub"></a>通过 Azure Stack Hub 解析外部 DNS 名称
 
 若要解析 Azure Stack Hub 外部终结点的 DNS 名称（例如：www\.bing.com），需提供可供 Azure Stack Hub 用来转发 DNS 请求的 DNS 服务器（Azure Stack Hub 对这些请求来说并不权威）。 进行部署时，DNS 服务器（Azure Stack Hub 向其转发请求）在部署工作表（位于“DNS 转发器”字段中）中是必需的。 请在此字段中提供至少两个服务器，目的是容错。 没有这些值，Azure Stack Hub 部署会失败。 部署后，可以使用 [**Set-AzSDnsForwarder** cmdlet](#editing-dns-forwarder-ips) 编辑 DNS 转发器值。 
-
-
 
 ### <a name="configure-conditional-dns-forwarding"></a>配置条件性 DNS 转发
 
@@ -94,14 +92,14 @@ Azure Stack Hub 包括权威 DNS 服务器和递归 DNS 服务器。 递归服�
 
 1. 打开提升了权限的 Windows PowerShell 会话（以管理员身份运行），连接到特权终结点的 IP 地址。 使用进行 CloudAdmin 身份验证的凭据。
 
-   ```
+   ```PowerShell
    $cred=Get-Credential 
    Enter-PSSession -ComputerName <IP Address of ERCS> -ConfigurationName PrivilegedEndpoint -Credential $cred
    ```
 
 2. 连接到特权终结点后，运行以下 PowerShell 命令。 将提供的示例值替换为要使用的 DNS 服务器的域名和 IP 地址。
 
-   ```
+   ```PowerShell
    Register-CustomDnsServer -CustomDomainName "contoso.com" -CustomDnsIPAddresses "192.168.1.1","192.168.1.2"
    ```
 

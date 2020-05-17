@@ -3,17 +3,17 @@ title: Azure Stack Hub 概述
 description: Azure Stack Hub 的概述，以及如何使用它在数据中心运行 Azure 服务。
 author: WenJason
 ms.topic: overview
-origin.date: 11/18/2019
-ms.date: 02/24/2020
+origin.date: 04/20/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: unknown
 ms.lastreviewed: 11/08/2019
-ms.openlocfilehash: bb69a22280996651c42d17a6cdd8c83eae1eeaf4
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 40d1eb97019249c562de83bb027efa31ef5567ab
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540381"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422485"
 ---
 # <a name="azure-stack-hub-overview"></a>Azure Stack Hub 概述
 
@@ -45,7 +45,7 @@ Azure Stack Hub 集成系统通过 Azure 与硬件合作伙伴的合作关系提
 
 Azure Stack Hub 集成系统的大小范围为 4-16 台服务器（称为“缩放单元”）  。 集成系统由硬件合作伙伴和 Azure 共同提供支持。 下图显示了缩放单元示例。 
 
-![显示 Azure Stack Hub 集成系统的关系图](./media/azure-stack-overview/azure-stack-integrated-system.png)上获取。 
+![显示 Azure Stack Hub 集成系统的关系图](./media/azure-stack-overview/azure-stack-integrated-system.svg)上获取。 
 
 <!---add info and image on regions, etc--->
 

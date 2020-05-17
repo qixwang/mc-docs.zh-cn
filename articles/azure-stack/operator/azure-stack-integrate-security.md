@@ -4,16 +4,16 @@ description: 了解如何通过 Syslog 转发将 Azure Stack Hub 与监视解决
 author: WenJason
 ms.topic: article
 origin.date: 01/10/2020
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: fiseraci
-ms.lastreviewed: 01/10/2020
-ms.openlocfilehash: 4e9b43f13b21af69ab2bb9266a09822edc371561
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.lastreviewed: 01/10/2019
+ms.openlocfilehash: 1f94fa8b1296e24b94a1aa1533f083bb6a9d9a8c
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540930"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422609"
 ---
 # <a name="integrate-azure-stack-hub-with-monitoring-solutions-using-syslog-forwarding"></a>通过 Syslog 转发将 Azure Stack Hub 与监视解决方案集成
 

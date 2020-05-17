@@ -4,16 +4,16 @@ description: 了解如何部署使用本地数据的应用程序，并使用 Azu
 author: WenJason
 ms.topic: article
 origin.date: 11/05/2019
-ms.date: 03/23/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: anajod
 ms.lastreviewed: 11/05/2019
-ms.openlocfilehash: 03f182bafbf3532a89664813bdce082456c4193b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 45eae5640ca1c0ba6ce5556e77a49679cf2a87a2
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79547067"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422532"
 ---
 # <a name="deploy-an-app-that-uses-on-premises-data-and-scales-cross-cloud-using-azure-and-azure-stack-hub"></a>部署使用本地数据的应用程序，并使用 Azure 和 Azure Stack Hub 进行跨云缩放
 

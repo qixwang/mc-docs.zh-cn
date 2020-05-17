@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 资源管理器向 Windows VM 应用策略 | Azure
-description: 如何将策略应用到 Azure 资源管理器 Windows 虚拟机
+description: 如何向 Azure Resource Manager Windows 虚拟机应用策略
 services: virtual-machines-windows
 documentationcenter: ''
 author: rockboyfor
@@ -13,17 +13,17 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
 origin.date: 08/02/2017
-ms.date: 10/14/2019
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: 37406d11d98ee1e268bb6d58935366b28f664cb1
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 52c061346737a638309e4cfbedfb4ad1480172c8
+ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "72272547"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83392473"
 ---
 # <a name="apply-policies-to-windows-vms-with-azure-resource-manager"></a>使用 Azure 资源管理器向 Windows VM 应用策略
-通过使用策略，组织可以在整个企业中强制实施各种约定和规则。 强制实施所需行为有助于消除风险，同时为组织的成功做出贡献。 本文将介绍如何使用 Azure 资源管理器策略，为组织中的虚拟机定义相应行为。
+通过使用策略，组织可以在整个企业中强制实施各种约定和规则。 强制实施所需行为有助于消除风险，同时为组织的成功做出贡献。 本文介绍如何使用 Azure 资源管理器策略，为组织中的虚拟机定义所需的行为。
 
 有关策略的简介，请参阅[什么是 Azure Policy？](../../governance/policy/overview.md)。
 
@@ -106,7 +106,7 @@ ms.locfileid: "72272547"
 }
 ```
 
-若要了解策略字段，请参阅[策略别名](../../governance/policy/concepts/definition-structure.md#aliases)。
+有关策略字段的信息，请参阅[策略别名](../../governance/policy/concepts/definition-structure.md#aliases)。
 
 ## <a name="managed-disks"></a>托管磁盘
 
@@ -158,7 +158,7 @@ ms.locfileid: "72272547"
 
 ## <a name="images-for-virtual-machines"></a>虚拟机映像
 
-出于安全考虑，可要求在环境中部署仅已批准的自定义映像。 可以指定包含已批准映像的资源组，或特定已批准映像。
+出于安全考虑，可要求仅在环境中部署已批准的自定义映像。 可以指定包含已批准映像的资源组，或特定已批准映像。
 
 下例需要来自已批准资源组的映像：
 
@@ -198,7 +198,7 @@ ms.locfileid: "72272547"
 
 ## <a name="virtual-machine-extensions"></a>虚拟机扩展
 
-建议禁止某些扩展类型的使用情况。 例如，扩展名可能与某些自定义虚拟机映像不兼容。 下例演示如何阻止特定扩展。 该示例使用发布者和类型来确定要阻止的扩展。
+可能想要禁止使用某些类型的扩展。 例如，扩展名可能与某些自定义虚拟机映像不兼容。 下例演示如何阻止特定扩展。 该示例使用发布者和类型来确定要阻止的扩展。
 
 ```json
 {

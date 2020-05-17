@@ -1,28 +1,19 @@
 ---
-title: 安装 ASDK | Microsoft Docs
+title: 安装 ASDK
 description: 了解如何安装 Azure Stack 开发工具包 (ASDK)。
-services: azure-stack
-documentationcenter: ''
 author: WenJason
-manager: digimobile
-editor: ''
-ms.assetid: ''
-ms.service: azure-stack
-ms.workload: na
-pms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 origin.date: 05/06/2019
-ms.date: 11/18/2019
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: misainat
 ms.lastreviewed: 02/08/2019
-ms.openlocfilehash: 0a827a3db4e5f768968b3521b4accda393c66643
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: c1a48270531623bb07d69fbfb42652842ccf2c88
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74020078"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422420"
 ---
 # <a name="install-the-asdk"></a>安装 ASDK
 [准备 Azure Stack 开发工具包 (ASDK) 主机](asdk-prepare-host.md)后，可以使用本文中的以下步骤将 ASDK 部署到 CloudBuilder.vhdx 映像中。
@@ -78,7 +69,7 @@ ms.locfileid: "74020078"
 
 8. 如果执行 Azure AD 部署，系统会在安装开始后数分钟提示输入 Azure AD 全局管理员帐户凭据。
 
-9. 部署程序需要花费数小时，在此期间，主机会自动重新启动一次。 若要监视部署进度，请在 ASDK 主机重启后，以 azurestack\AzureStackAdmin 身份登录。 如果部署成功，PowerShell 控制台会显示“COMPLETE: Action 'Deployment'”。  
+9. 部署程序需要花费数小时，在此期间，主机会自动重新启动一次。 若要监视部署进度，请在 ASDK 主机重启后，以 azurestack\AzureStackAdmin 身份登录。 如果部署成功，PowerShell 控制台会显示“COMPLETE:  Action 'Deployment'”。 
     > [!IMPORTANT]
     > 如果在计算机加入 azurestack 域后以本地管理员身份登录，则看不到部署进度。 请勿重新运行部署，而应以 azurestack\AzureStackAdmin 身份登录，验证其是否正在运行。
 

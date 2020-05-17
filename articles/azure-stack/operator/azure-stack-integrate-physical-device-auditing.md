@@ -2,18 +2,18 @@
 title: 将物理设备审核与 Azure Stack Hub 数据中心集成
 description: 了解如何将物理设备访问审核与 Azure Stack Hub 数据中心集成。
 author: WenJason
-ms.topic: article
-origin.date: 06/10/2019
-ms.date: 02/24/2020
+ms.topic: conceptual
+origin.date: 03/04/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: thoroet
 ms.lastreviewed: 06/10/2019
-ms.openlocfilehash: 93446d4398b49ffa09f3739c14db0facf144a217
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 773f066ceac80d847501cf3fdb73197281e1c77b
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540915"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422608"
 ---
 # <a name="integrate-physical-device-auditing-with-your-azure-stack-hub-datacenter"></a>将物理设备审核与 Azure Stack Hub 数据中心集成
 

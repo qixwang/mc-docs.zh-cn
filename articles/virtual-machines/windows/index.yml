@@ -8,21 +8,23 @@ metadata:
   ms.service: virtual-machines-windows
   ms.topic: landing-page
   author: rockboyfor
+  ms.date: 04/27/2020
   ms.author: v-yeche
-  ms.date: 11/11/2019
-  ms.openlocfilehash: ab9d84635caaf74f30580aac65ae7e9d75e04fc5
-  ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+  ms.openlocfilehash: 5ebd48e62968bf3ca00aff48c313171a36f8e4c6
+  ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 04/17/2020
-  ms.locfileid: "74116756"
+  ms.lasthandoff: 05/14/2020
+  ms.locfileid: "83392380"
 landingContent:
 - title: 最新功能
   linkLists:
   - linkListType: whats-new
     links:
-    - text: 临时磁盘
-      url: ephemeral-os-disks.md
+    - text: 专用主机
+      url: dedicated-hosts.md
+    - text: 邻近放置组
+      url: proximity-placement-groups.md
 - title: 入门
   linkLists:
   - linkListType: quickstart
@@ -41,7 +43,7 @@ landingContent:
       url: /virtual-machines/windows/tutorial-manage-vm
     - text: VM 磁盘
       url: /virtual-machines/windows/tutorial-manage-data-disk
-    - text: 自动配置 VM
+    - text: 自动执行 VM 配置
       url: /virtual-machines/windows/tutorial-automate-vm-deployment
     - text: 创建自定义 VM 映像
       url: /virtual-machines/windows/tutorial-custom-images

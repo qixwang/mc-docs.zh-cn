@@ -3,17 +3,17 @@ title: Azure Stack Hub 市场中的新增内容
 description: Azure Stack Hub 市场中的更改和更新。
 author: WenJason
 ms.topic: article
-origin.date: 01/22/2020
-ms.date: 03/23/2020
+origin.date: 04/23/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: ihcherie
 ms.lastreviewed: 10/01/2019
-ms.openlocfilehash: b924dec36b6f119db0dbfd208ecec3cb0eca929e
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: bd7e8d10f438216a2da52fcc8d11ce20402d32ed
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79547047"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422554"
 ---
 # <a name="azure-stack-hub-marketplace-changes"></a>Azure Stack Hub 市场更改
 

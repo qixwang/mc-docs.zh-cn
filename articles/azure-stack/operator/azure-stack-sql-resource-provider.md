@@ -5,16 +5,16 @@ description: 了解如何使用 SQL Server 资源提供程序将 SQL 数据库�
 author: WenJason
 ms.topic: article
 origin.date: 10/02/2019
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: xiaofmao
-ms.lastreviewed: 10/25/2018
-ms.openlocfilehash: 773cba747f347908a63f04909d6ae80cf378cbd5
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.lastreviewed: 10/25/2019
+ms.openlocfilehash: f971aa26b3fbc4b5ccdafcb9f50ecdeaa3919ee2
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540283"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422545"
 ---
 # <a name="use-sql-databases-on-azure-stack-hub"></a>在 Azure Stack Hub 中使用 SQL 数据库
 

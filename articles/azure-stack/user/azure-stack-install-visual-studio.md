@@ -4,16 +4,16 @@ description: 了解如何安装 Visual Studio 并连接到 Azure Stack Hub。
 author: WenJason
 ms.topic: article
 origin.date: 01/07/2020
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: unknown
-ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 323ebe159296b2a184021bbae4e0c0b58fe33efa
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.lastreviewed: 01/04/2020
+ms.openlocfilehash: c45168b82a640b1b852eed6e292db929ff9245f6
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540804"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422067"
 ---
 # <a name="install-visual-studio-and-connect-to-azure-stack-hub"></a>安装 Visual Studio 并连接到 Azure Stack Hub
 

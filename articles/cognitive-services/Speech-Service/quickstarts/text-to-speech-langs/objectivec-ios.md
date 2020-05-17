@@ -11,12 +11,12 @@ ms.topic: quickstart
 origin.date: 12/09/2019
 ms.date: 01/27/2020
 ms.author: v-tawe
-ms.openlocfilehash: edfa64ee12a3950c962d1beabe2dcc6517832071
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.openlocfilehash: 07e6352033cbb6a0422c17d5049736b2464756d6
+ms.sourcegitcommit: bfbd6694da33f703481386f2a3f16850c4e94bfa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82134736"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83417730"
 ---
 # <a name="quickstart-synthesize-speech-in-objective-c-on-ios-using-the-speech-sdk"></a>快速入门：在 iOS 上使用语音 SDK 通过 Objective-C 合成语音
 
@@ -29,13 +29,13 @@ ms.locfileid: "82134736"
 * 语音服务的[订阅密钥](~/articles/cognitive-services/Speech-Service/get-started.md)。
 * [Xcode 9.4.1](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12) 或更高版本的 macOS 计算机
 * 目标设置为 iOS 9.3 版或更高版本
-* 需要语音 SDK 版本 1.10.0 或更高版本。
 
 ## <a name="get-the-speech-sdk-for-ios"></a>获取用于 iOS 的语音 SDK
 
 [!INCLUDE [License Notice](~/includes/cognitive-services-speech-service-license-notice.md)]
 
-请注意，本教程不适用于 1.7.0 之前的 SDK 版本。
+> [!IMPORTANT]
+> 需要语音 SDK 版本 1.10.0 或更高版本。
 
 用于 iOS 的认知服务语音 SDK 目前以 Cocoa Framework 形式分发。
 可在 Xcode 项目将它作为 [CocoaPod](https://cocoapods.org/) 使用，或者从 https://aka.ms/csspeech/iosbinary 下载，然后手动与它建立链接。 本指南使用 CocoaPod。

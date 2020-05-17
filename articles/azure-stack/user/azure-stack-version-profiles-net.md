@@ -4,16 +4,16 @@ description: 了解如何在 Azure Stack Hub 中将 API 版本配置文件与 .N
 author: WenJason
 ms.topic: article
 origin.date: 01/27/2020
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: sijuman
 ms.lastreviewed: 05/16/2019
-ms.openlocfilehash: 05f6ba4d6857432317728563bc624a7e36b634d8
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 830329ab2e981a690aad1be80be73c9bad79f8da
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77541006"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422587"
 ---
 # <a name="use-api-version-profiles-with-net-in-azure-stack-hub"></a>在 Azure Stack Hub 中将 API 版本配置文件与 .NET 配合使用
 

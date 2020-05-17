@@ -1,5 +1,5 @@
 ---
-title: 我们将于 2023 年 3 月 1 日停用 Azure 经典 VM
+title: 请于 2023 年 3 月 1 日之前将 IaaS 资源迁移到 Azure 资源管理器
 description: 本文概述了经典 VM 停用
 services: virtual-machines
 author: rockboyfor
@@ -11,12 +11,12 @@ ms.topic: article
 origin.date: 02/10/2020
 ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: 67dc152c7af7bda0e015af75cd91da259f37e2b1
-ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
+ms.openlocfilehash: b0175424a2a7832286cb1e91b9f99583997facb2
+ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82596387"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83392383"
 ---
 # <a name="migrate-your-iaas-resources-to-azure-resource-manager-by-march-1-2023"></a>请于 2023 年 3 月 1 日之前将 IaaS 资源迁移到 Azure 资源管理器 
 

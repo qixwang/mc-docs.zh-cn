@@ -4,17 +4,17 @@ titleSuffix: Azure Stack Hub
 description: 了解在部署 Azure Stack Hub 期间的网络流量流。
 author: WenJason
 ms.topic: article
-origin.date: 12/05/2019
-ms.date: 02/24/2020
+origin.date: 04/10/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: wamota
 ms.lastreviewed: 12/05/2019
-ms.openlocfilehash: 8fc1e99cf8ac04323a802919a3978f7f4f651ecb
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: ed300321cfb4763ed3bcf83f7827d9649eab3297
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540602"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422102"
 ---
 # <a name="deployment-network-traffic"></a>部署网络流量
 
@@ -22,7 +22,7 @@ ms.locfileid: "77540602"
 
 下图描绘了部署过程中涉及的所有组件和连接：
 
-![Azure Stack Hub 部署网络拓扑](media/deployment-networking/figure1.png)
+![Azure Stack Hub 部署网络拓扑](media/deployment-networking/figure1.svg)
 
 > [!NOTE]
 > 本文介绍了联网部署的要求。 若要了解其他部署方法，请参阅 [Azure Stack Hub 部署连接模型](azure-stack-connection-models.md)。

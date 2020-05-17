@@ -3,17 +3,17 @@ title: 在 Azure Stack Hub 中添加缩放单元节点
 description: 了解如何将缩放单元节点添加到 Azure Stack Hub 中的缩放单元。
 author: WenJason
 ms.topic: article
-origin.date: 1/16/2020
-ms.date: 02/24/2020
+origin.date: 04/20/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: thoroet
-ms.lastreviewed: 09/17/2018
-ms.openlocfilehash: 1f162ad13717101ab27093e867c1e9346442e4ad
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.lastreviewed: 09/17/2019
+ms.openlocfilehash: 25664d7b535ea0b5829c168d466d2829bbd45b86
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540967"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422464"
 ---
 # <a name="add-additional-scale-unit-nodes-in-azure-stack-hub"></a>在 Azure Stack Hub 中添加更多的缩放单元节点
 
@@ -23,7 +23,7 @@ Azure Stack Hub 操作员可以通过添加更多的物理计算机来提高现�
 
 以下流程图显示添加缩放单元节点的一般过程：
 
-![添加缩放单元流](media/azure-stack-add-scale-node/add-node-flow.png)
+![添加缩放单元流](media/azure-stack-add-scale-node/add-node-flow.svg)
 <br> *OEM 硬件供应商是否制定物理服务器机架放置规则和更新固件因支持合同而异。*
 
 添加新节点的操作可能需要数小时或数天才能完成。 添加其他缩放单元节点时，对系统上运行的工作负载没有影响。

@@ -8,12 +8,12 @@ ms.topic: article
 origin.date: 03/26/2020
 ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: c53aa2d1bc340ae86611bab9aef6ceb74ffe58c9
-ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
+ms.openlocfilehash: 076ed6e75dca49e696c8c30badd5878b84725de4
+ms.sourcegitcommit: bfbd6694da33f703481386f2a3f16850c4e94bfa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82588486"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83417711"
 ---
 # <a name="working-remotely-using-azure-networking-services"></a>使用 Azure 网络服务远程进行工作
 
@@ -53,7 +53,7 @@ Azure VPN 网关支持点到站点 (P2S) 和站点到站点 (S2S) VPN 连接。 
 
 支持远程工作的另一种方式是部署 Azure 虚拟网络中托管的、通过 Azure 防火墙保护的虚拟桌面基础结构 (VDI)。 例如，Windows 虚拟桌面 (WVD) 是在 Azure 中运行的桌面和应用虚拟化服务。 使用 Windows 虚拟桌面，可以在 Azure 订阅中设置可缩放的灵活环境，而无需运行任何额外的网关服务器。 你只负责虚拟网络中的 WVD 虚拟机。 有关详细信息，请参阅 [Azure 防火墙远程工作支持](../firewall/remote-work-support.md)。 
 
-Azure 还有众多的生态系统合作伙伴。 Azure 上的合作伙伴网络虚拟设备也能够帮助缩放 VPN 连接。 有关详细信息，请参阅[用于远程工作的网络虚拟设备 (NVA) 的注意事项](../vpn-gateway/nva-work-remotely-support.md)。
+<!-- Azure also has a rich set of eco system partners. Our partners Network Virtual Appliances on Azure can also help scale VPN connectivity. For more information, see [Network Virtual Appliance (NVA) considerations for remote work](../vpn-gateway/nva-work-remotely-support.md). -->
 
 ## <a name="extend-employees-connection-to-access-globally-distributed-resources"></a>扩展员工的连接以访问全球分布的资源
 
@@ -84,7 +84,6 @@ Azure 还有众多的生态系统合作伙伴。 Azure 上的合作伙伴网络�
 | [如何使用户能够远程工作](../vpn-gateway/work-remotely-support.md) | 查看可用选项，以便为用户设置远程访问权限，或使用组织的额外容量对其现有解决方案进行补充。|
 | [正在奋力满足在家工作的需求？Azure 虚拟 WAN 可以提供帮助](../virtual-wan/work-remotely-support.md) | 使用 Azure 虚拟 WAN 满足组织的远程连接需求。|
 | [应用程序网关高流量支持](../application-gateway/high-traffic-support.md) | 使用启用了 Web 应用程序防火墙 (WAF) 的应用程序网关，以一种可缩放且安全的方式管理到 Web 应用程序的流量。 |
-| [用于远程工作的网络虚拟设备 (NVA) 的注意事项](../vpn-gateway/nva-work-remotely-support.md)|查看相关指南，了解如何利用 Azure 中的 NVA 提供远程访问解决方案。 |
 | [从 SSTP 转换到 OpenVPN 协议或 IKEv2](https://docs.azure.cn/vpn-gateway/ikev2-openvpn-from-sstp) | 通过转换为 OpenVPN 协议或 IKEv2，克服 SSTP 的 128 个并发连接的限制。|
 | [使用 Azure ExpressRoute 创建混合连接以支持远程用户](../expressroute/work-remotely-support.md) | 使用 ExpressRoute 进行混合连接，使组织中的用户能够远程工作。|
 | [Azure 防火墙远程工作支持](../firewall/remote-work-support.md)|使用 Azure 防火墙保护 Azure 虚拟网络资源。 |

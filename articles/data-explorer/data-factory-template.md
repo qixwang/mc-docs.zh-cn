@@ -8,13 +8,13 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 09/08/2019
-ms.date: 02/17/2019
-ms.openlocfilehash: 84169b9b0d75c9658e95c898bb09045768b10dc0
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/09/2020
+ms.openlocfilehash: 6659802100aeea68cde8494c9c561942240c4f13
+ms.sourcegitcommit: bfbd6694da33f703481386f2a3f16850c4e94bfa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77037927"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83417640"
 ---
 # <a name="copy-in-bulk-from-a-database-to-azure-data-explorer-by-using-the-azure-data-factory-template"></a>使用 Azure 数据工厂模板从数据库批量复制到 Azure 数据资源管理器 
 

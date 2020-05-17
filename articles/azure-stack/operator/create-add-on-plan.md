@@ -5,16 +5,16 @@ description: 了解如何在 Azure Stack Hub 中创建附加计划。
 author: WenJason
 ms.topic: conceptual
 origin.date: 10/05/2019
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: efemmano
 ms.lastreviewed: 06/11/2019
-ms.openlocfilehash: ee9f96331dd8e9f7e22cf12c4b919ceafe10f74f
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 20e6ac74d3e785e24f9a1ba38f2607dccab1b5fd
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540253"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422429"
 ---
 # <a name="create-add-on-plans-in-azure-stack-hub"></a>在 Azure Stack Hub 中创建附加计划
 

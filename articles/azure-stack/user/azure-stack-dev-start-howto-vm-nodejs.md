@@ -4,16 +4,16 @@ description: 将 Node.js 应用部署到 Azure Stack Hub。
 author: WenJason
 ms.topic: overview
 origin.date: 1/22/2020
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 10/02/2019
-ms.openlocfilehash: 0bbcfde7c39dfd7488f2c63e68ede46d1637f648
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.lastreviewed: 10/02/20
+ms.openlocfilehash: 582b10fdfee102254dac1435036fc9d126e09d27
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540821"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422633"
 ---
 # <a name="deploy-a-nodejs-web-app-to-a-vm-in-azure-stack-hub"></a>将 Node.js Web 应用部署到 Azure Stack Hub 中的 VM
 

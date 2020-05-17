@@ -7,17 +7,17 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 12/09/2019
-ms.date: 03/16/2020
-ms.openlocfilehash: 259cd6d43ddf4f62a833c904b52217a91900f5d9
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/09/2020
+ms.openlocfilehash: 56dba5a6665864bd1b5d4243b7273c5d82f77b4d
+ms.sourcegitcommit: bfbd6694da33f703481386f2a3f16850c4e94bfa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80243959"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83417737"
 ---
 # <a name="manage-cluster-horizontal-scaling-scale-out-in-azure-data-explorer-to-accommodate-changing-demand"></a>在 Azure 数据资源管理器中管理水平缩放（横向扩展）群集以适应不断变化的需求
 
-调整好群集的大小对于 Azure 数据资源管理器的性能至关重要。 静态群集大小可能导致利用不充分或利用过度，二者都不理想。 由于无法绝对准确地预测群集的需求，更好的方法是对群集进行缩放  ，根据不断变化的需求添加或删除容量和 CPU 资源。 
+调整好群集的大小对于 Azure 数据资源管理器的性能至关重要。 静态群集大小可能导致利用不充分或利用过度，二者都不理想。 由于无法绝对准确地预测群集的需求，更好的方法是对群集进行*缩放*，根据不断变化的需求添加或删除容量和 CPU 资源。 
 
 有两个工作流可用于缩放 Azure 数据资源管理器群集： 
 * 水平缩放，也称为横向缩放。

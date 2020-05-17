@@ -74,6 +74,8 @@
           items:
             - name: 提高逻辑应用的安全性
               href: logic-apps-securing-a-logic-app.md
+            - name: 使用托管标识进行身份验证
+              href: create-managed-service-identity.md
         - name: 开发自定义连接器
           href: custom-connector-overview.md
         - name: 开发自定义 API

@@ -3,18 +3,18 @@ title: 静态数据加密
 titleSuffix: Azure Stack Hub
 description: 了解 Azure Stack Hub 如何使用静态加密来保护数据。
 author: WenJason
-ms.topic: article
-origin.date: 06/17/2019
-ms.date: 02/24/2020
-ms.author: inhenkel
+ms.topic: how-to
+origin.date: 03/04/2020
+ms.date: 05/18/2020
+ms.author: v-jay
 ms.reviewer: fiseraci
 ms.lastreviewed: 03/11/2019
-ms.openlocfilehash: 464a0782c0e538c57ce397479ac80785df1247b7
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: f9dd40c176c28b484bfcc8b66d5682b4a92e318b
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540330"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422519"
 ---
 # <a name="data-at-rest-encryption-in-azure-stack-hub"></a>Azure Stack Hub 中的静态数据加密
 

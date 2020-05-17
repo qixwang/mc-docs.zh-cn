@@ -8,14 +8,14 @@ author: rockboyfor
 manager: digimobile
 ms.topic: conceptual
 origin.date: 09/05/2019
-ms.date: 11/11/2019
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: 3ab7e20f57ecab03b8d92cb0c9aeb5d467559c12
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: ef802ee6f9b435f9b2372f142cc1cb5fa87d30a9
+ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74116802"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83392446"
 ---
 # <a name="security-controls-for-windows-virtual-machines"></a>Windows 虚拟机的安全控制
 
@@ -51,11 +51,11 @@ ms.locfileid: "74116802"
 
 | 安全控制 | Yes/No | 注释 |
 |---|---|--|
-| 服务器端静态加密：Azure 托管的密钥 | 是 | 请参阅[加密 Windows VM 上的虚拟磁盘](/virtual-machines/windows/encrypt-disks)。 |
+| 服务器端静态加密：Azure 托管的密钥 | 是 | 请参阅[加密 Windows VM 上的虚拟磁盘](/virtual-machines/windows/disk-encryption-overview)。 |
 | 传输中加密（例如 ExpressRoute 加密、VNet 中加密，以及 VNet-VNet 加密）| 是 | Azure 虚拟机支持 [ExpressRoute](/expressroute) 和 VNet 加密。 请参阅 [VM 中的传输中加密](/security/security-azure-encryption-overview#in-transit-encryption-in-vms)。 |
 | 服务器端静态加密：客户管理的密钥 (BYOK) | 是 | 客户托管密钥是受支持的 Azure 加密方案；请参阅 [Azure 加密概述](/security/security-azure-encryption-overview#in-transit-encryption-in-vms)。|
 | 列级加密（Azure 数据服务）| 不适用 | |
-| 加密的 API 调用| 是 | 通过 HTTPS 和 SSL。 |
+| 加密的 API 调用| 是 | 通过 HTTPS 和 TLS。 |
 
 ## <a name="configuration-management"></a>配置管理
 

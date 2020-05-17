@@ -3,17 +3,17 @@ title: Azure Stack Hub 存储容量规划
 description: 了解适用于 Azure Stack Hub 部署的存储容量规划。
 author: WenJason
 ms.topic: article
-origin.date: 05/31/2019
-ms.date: 02/24/2020
+origin.date: 03/04/2019
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: prchint
 ms.lastreviewed: 05/31/2019
-ms.openlocfilehash: 3aca2958afec64dec20b579c9918eb1382679e12
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 401345a202e9012f10e5f4c2c6c8bf74dc50f788
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540883"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422627"
 ---
 # <a name="azure-stack-hub-storage-capacity-planning"></a>Azure Stack Hub 存储容量规划
 

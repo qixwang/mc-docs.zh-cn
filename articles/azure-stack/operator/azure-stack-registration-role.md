@@ -4,22 +4,22 @@ titleSuffix: Azure Stack Hub
 description: 了解如何创建自定义角色，以避免使用全局管理员身份注册 Azure Stack Hub。
 author: WenJason
 ms.topic: article
-origin.date: 06/10/2019
-ms.date: 02/24/2020
+origin.date: 03/27/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: rtiberiu
 ms.lastreviewed: 06/10/2019
-ms.openlocfilehash: cab72d2b91169e09a1358d5c04f7d1c8e45ff14d
-ms.sourcegitcommit: 4aeecfcc59cb42ba0b712a729d278d03bffc719a
+ms.openlocfilehash: de5a2dfccb642d83cd7372d20d12975009e3a0c9
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81791005"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422382"
 ---
 # <a name="create-a-custom-role-for-azure-stack-hub-registration"></a>为 Azure Stack Hub 注册创建自定义角色
 
 > [!WARNING]
-> 这不是一种安全状况功能。 如果你想要实施约束来防止意外更改 Azure 订阅，可以使用此功能。 向某个用户委托此自定义角色的权限时，该用户有权编辑权限和提升权限。 请只将受信任的用户分配到自定义角色。
+> 这不是一种安全态势功能。 如果你想要实施约束来防止意外更改 Azure 订阅，可以使用此功能。 向某个用户委托此自定义角色的权限时，该用户有权编辑权限和提升权限。 请只将受信任的用户分配到自定义角色。
 
 在 Azure Stack Hub 注册期间，必须使用 Azure Active Directory (Azure AD) 帐户登录。 该帐户需要以下 Azure AD 权限和 Azure 订阅权限：
 

@@ -3,17 +3,17 @@ title: Azure Stack Hub 提供程序资源使用情况 API
 description: 资源使用情况 API（用于检索 Azure Stack Hub 使用情况信息）的参考。
 author: WenJason
 ms.topic: article
-origin.date: 01/07/2020
-ms.date: 02/24/2020
+origin.date: 04/20/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: alfredop
-ms.lastreviewed: 01/25/2018
-ms.openlocfilehash: 3393bd36848a00eac39b955e06c113deee47ebc4
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.lastreviewed: 01/25/2019
+ms.openlocfilehash: b5dc59bdf20a2581c00d1f52a62fc7ee100683c9
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540362"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422477"
 ---
 # <a name="provider-resource-usage-api"></a>提供商资源使用情况 API
 

@@ -8,12 +8,12 @@ ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 01/06/2020
 ms.date: 03/16/2020
-ms.openlocfilehash: d44199e0a14918c16d3c5d06deea39a1b5cce205
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 0f7e4275328aade90a3a79a41e5de225419ae5bc
+ms.sourcegitcommit: bfbd6694da33f703481386f2a3f16850c4e94bfa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80522055"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83417566"
 ---
 # <a name="secure-azure-data-explorer-clusters-in-azure"></a>在 Azure 中保护 Azure 数据资源管理器群集
 
@@ -40,31 +40,32 @@ Use Azure Key Vault to store your customer-managed keys. You can create your own
 
 > [!Note]
 > Customer-managed keys rely on managed identities for Azure resources, a feature of Azure Active Directory (Azure AD). To configure customer-managed keys in the Azure portal, you need to configure a **SystemAssigned** managed identity to your cluster.
--->
 
-#### <a name="store-customer-managed-keys-in-azure-key-vault"></a>将客户管理的密钥存储在 Azure 密钥保管库
+#### Store customer-managed keys in Azure Key Vault
 
-若要在群集中启用客户管理的密钥，请使用 Azure Key Vault 来存储密钥。 必须同时启用密钥保管库上的“软删除”和“不清除”属性   。 Key Vault 必须与群集位于同一订阅中。 Azure 数据资源管理器使用 Azure 资源的托管标识向 Key Vault 进行身份验证，以执行加密和解密操作。 托管标识不支持跨目录方案。
+To enable customer-managed keys on a cluster, use an Azure Key Vault to store your keys. You must enable both the **Soft Delete** and **Do Not Purge** properties on the key vault. The key vault must be located in the same subscription as the cluster. Azure Data Explorer uses managed identities for Azure resources to authenticate to the key vault for encryption and decryption operations. Managed identities don't support cross-directory scenarios.
 
-#### <a name="rotate-customer-managed-keys"></a>轮换客户管理的密钥
+#### Rotate customer-managed keys
 
-可以根据自己的合规性策略，在 Azure 密钥保管库中轮换客户管理的密钥。 轮换密钥后，必须更新群集才能使用新的密钥 URI。 轮换密钥不会触发群集中数据的重新加密。 
+You can rotate a customer-managed key in Azure Key Vault according to your compliance policies. When the key is rotated, you must update the cluster to use the new key URI. Rotating the key doesn't trigger re-encryption of data in the cluster. 
 
-#### <a name="revoke-access-to-customer-managed-keys"></a>撤消对客户管理的密钥的访问权限
+#### Revoke access to customer-managed keys
 
-若要撤消对客户管理的密钥的访问权限，请使用 PowerShell 或 Azure CLI。 有关详细信息，请参阅 [Azure Key Vault PowerShell](https://docs.microsoft.com/powershell/module/az.keyvault/) 或 [Azure 密钥保管库 CLI](/cli/keyvault)。 撤消访问权限会阻止访问群集的存储级别中的所有数据，因为在这种情况下，Azure 数据资源管理器无法访问加密密钥。
+To revoke access to customer-managed keys, use PowerShell or Azure CLI. For more information, see [Azure Key Vault PowerShell](https://docs.microsoft.com/powershell/module/az.keyvault/) or [Azure Key Vault CLI](/cli/keyvault). Revoking access blocks access to all data in the cluster's storage level, since the encryption key is consequently inaccessible by Azure Data Explorer.
 
 > [!Note]
-> 当 Azure 数据资源管理器识别到对客户管理的密钥的访问权限被撤消时，它会自动挂起群集，以删除所有缓存的数据。 重新授予对密钥的访问权限后，需要手动恢复群集。
+> When Azure Data Explorer identifies that access to a customer-managed key is revoked, it will automatically suspend the cluster to delete any cached data. Once access to the key is returned, the cluster needs to be resumed manually.
+-->
 
 ## <a name="role-based-access-control"></a>基于角色的访问控制
 
-使用[基于角色的访问控制 (RBAC)](/role-based-access-control/overview) 可以在团队中分离职责，并只向群集用户授予所需的访问权限。 可以仅允许某些操作，而不是向群集上的每个人授予不受限制的权限。 可以使用 [Azure 门户](/data-explorer/manage-database-permissions)、[Azure CLI](/role-based-access-control/role-assignments-portal) 或 [Azure PowerShell](/role-based-access-control/role-assignments-cli) [针对数据库配置访问控制](/role-based-access-control/role-assignments-powershell)。
+使用[基于角色的访问控制 (RBAC)](/role-based-access-control/overview) 可以在团队中分离职责，并只向群集用户授予所需的访问权限。 可以仅允许某些操作，而不是向群集上的每个人授予不受限制的权限。 可以使用 [Azure 门户](/role-based-access-control/role-assignments-portal)、[Azure CLI](/role-based-access-control/role-assignments-cli) 或 [Azure PowerShell](/role-based-access-control/role-assignments-powershell) [针对数据库配置访问控制](/data-explorer/manage-database-permissions)。
 
 ## <a name="next-steps"></a>后续步骤
 
 * 通过启用静态加密[保护 Azure 数据资源管理器中的群集 - 门户](manage-cluster-security.md)。
-* [配置 Azure 数据资源管理器群集的托管标识](managed-identities.md)
 
 <!-- * [Configure customer-managed-keys using the Azure Resource Manager template](customer-managed-keys-resource-manager.md) -->
 <!-- * [Configure customer-managed-keys using C#](customer-managed-keys-csharp.md) -->
+
+<!-- * [Configure managed identities for your Azure Data Explorer cluster](managed-identities.md) -->

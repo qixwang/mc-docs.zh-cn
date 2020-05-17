@@ -5,16 +5,16 @@ description: 了解应用于 Azure Stack Hub 的安全态势和控制。
 author: WenJason
 ms.topic: article
 origin.date: 06/10/2019
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: fiseraci
-ms.lastreviewed: 1/16/2020
-ms.openlocfilehash: 8db0f81491e34c9c2d2f7b40d0aa7541e6f62343
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.lastreviewed: 04/07/2020
+ms.openlocfilehash: 20ed860c1a502d5878de80f765877dc7ee75b10b
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540322"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422517"
 ---
 # <a name="azure-stack-hub-infrastructure-security-controls"></a>Azure Stack Hub 基础结构安全控制
 

@@ -3,17 +3,17 @@ title: 如何使用 Commvault 在 Azure Stack Hub 上备份 VM
 description: 了解如何使用 Commvault 在 Azure Stack Hub 上备份 VM。
 author: WenJason
 ms.topic: how-to
-origin.date: 10/30/2019
-ms.date: 02/24/2020
+origin.date: 04/20/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: sijuman
 ms.lastreviewed: 10/30/2019
-ms.openlocfilehash: 16fe55064ef96cc078f5161078acd60cadb370a8
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: e2979086ac66cfab0601f23a98b42abf6462d8b9
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540768"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422052"
 ---
 # <a name="back-up-your-vm-on-azure-stack-hub-with-commvault"></a>使用 Commvault 在 Azure Stack Hub 上备份 VM
 

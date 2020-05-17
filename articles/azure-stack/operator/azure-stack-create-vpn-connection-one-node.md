@@ -4,17 +4,16 @@ description: 向云操作员介绍如何在两个单节点 Azure Stack 开发工
 author: WenJason
 ms.topic: conceptual
 origin.date: 01/22/2020
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: misainat
 ms.lastreviewed: 01/22/2020
-ROBOTS: NOINDEX
-ms.openlocfilehash: d74d2b8681a7629c913b72cbac549cd57db24014
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 647629257d5de2cc575d9be621aabbf17379934d
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292434"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422393"
 ---
 # <a name="create-a-site-to-site-vpn-connection-between-two-virtual-networks-in-different-asdk-environments"></a>在不同 ASDK 环境中的两个虚拟网络之间创建站点到站点 VPN 连接
 

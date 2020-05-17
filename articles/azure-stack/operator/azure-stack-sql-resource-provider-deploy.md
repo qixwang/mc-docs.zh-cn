@@ -5,16 +5,16 @@ description: 了解如何在 Azure Stack Hub 上部署 SQL Server 资源提供�
 author: WenJason
 ms.topic: article
 origin.date: 10/02/2019
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.lastreviewed: 03/18/2019
 ms.author: v-jay
-ms.reviewer: xiaofmao
-ms.openlocfilehash: 78f23e5b88cf6e7ff6406c1153d362f9b4bde1ee
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.reviewer: xiao
+ms.openlocfilehash: 6da2f9736420a6ee85cb5f97c52794122b53f9d8
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79290911"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422548"
 ---
 # <a name="deploy-the-sql-server-resource-provider-on-azure-stack-hub"></a>在 Azure Stack Hub 上部署 SQL Server 资源提供程序
 
@@ -23,7 +23,7 @@ ms.locfileid: "79290911"
 > [!IMPORTANT]
 > 只有资源提供程序才能在托管 SQL 或 MySQL 的服务器上创建项目。 如果在不是由资源提供程序创建的主机服务器上创建项目，则此类项目可能导致状态不匹配。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 需要先实施几个先决条件，然后才能部署 Azure Stack Hub SQL 资源提供程序。 若要满足这些要求，请在可访问特权终结点 VM 的计算机上完成以下步骤：
 
@@ -119,7 +119,7 @@ _仅适用于集成系统安装_。 必须提供 [Azure Stack Hub 部署 PKI 要
 | 参数名称 | 说明 | 注释或默认值 |
 | --- | --- | --- |
 | **CloudAdminCredential** | 访问特权终结点时所需的云管理员凭据。 | _必需_ |
-| **AzCredential** | Azure Stack Hub 服务管理员帐户的凭据。 使用部署 Azure Stack Hub 时所用的相同凭据。 | _必需_ |
+| **AzCredential** | Azure Stack Hub 服务管理员帐户的凭据。 使用部署 Azure Stack Hub 时所用的相同凭据。 如果用于 AzCredential 的帐户需要多重身份验证 (MFA)，则脚本将失败。| _必需_ |
 | **VMLocalCredential** | SQL 资源提供程序 VM 的本地管理员帐户的凭据。 | _必需_ |
 | **PrivilegedEndpoint** | 特权终结点的 IP 地址或 DNS 名称。 |  _必需_ |
 | **AzureEnvironment** | 用于部署 Azure Stack Hub 的服务管理员帐户的 Azure 环境。 仅对于 Azure AD 部署是必需的。 受支持的环境名称是 **AzureChinaCloud**。 | AzureChinaCloud |
@@ -201,7 +201,7 @@ $env:PSModulePath = $env:PSModulePath + ";" + $rpModulePath
 
 1. 以服务管理员身份登录到管理员门户。
 2. 选择“资源组”  。
-3. 选择“system.**位置\<.sqladapter”资源组。\>**
+3. 选择“system.\<位置\>.sqladapter”资源组。 
 4. 在资源组概述摘要页上，应当没有失败的部署。
 
     ![在 Azure Stack Hub 管理员门户中验证 SQL 资源提供程序的部署](./media/azure-stack-sql-rp-deploy/sqlrp-verify.png)

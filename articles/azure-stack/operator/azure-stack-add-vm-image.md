@@ -4,16 +4,16 @@ description: 了解如何在 Azure Stack Hub 中添加或删除自定义 VM 映�
 author: WenJason
 ms.topic: conceptual
 origin.date: 02/07/2020
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: kivenkat
-ms.lastreviewed: 06/08/2018
-ms.openlocfilehash: 5ad99d4a91eb0ed4986a5c9589d626cc4fe6a0af
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.lastreviewed: 06/08/2019
+ms.openlocfilehash: 63b7cabb77314c5a953dcaf63c19e98f1ec45994
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79084505"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422463"
 ---
 # <a name="add-a-custom-vm-image-to-azure-stack-hub"></a>将自定义 VM 映像添加到 Azure Stack Hub
 

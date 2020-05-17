@@ -3,17 +3,17 @@ title: 在 Azure Stack Hub 中使用 PowerShell 创建 Windows Server VM
 description: 在 Azure Stack Hub 中使用 PowerShell 创建 Windows Server VM。
 author: WenJason
 ms.topic: quickstart
-origin.date: 11/11/2019
-ms.date: 02/24/2020
+origin.date: 04/20/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: kivenkat
 ms.lastreviewed: 11/11/2019
-ms.openlocfilehash: ef84670c67b890ff4aad06805449c3d47dfa53d5
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 34de6498440f54e4ce6879734348f3fcf8bbf605
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77541028"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422538"
 ---
 # <a name="quickstart-create-a-windows-server-vm-by-using-powershell-in-azure-stack-hub"></a>快速入门：在 Azure Stack Hub 中使用 PowerShell 创建 Windows Server VM
 

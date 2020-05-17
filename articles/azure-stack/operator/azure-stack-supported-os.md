@@ -4,17 +4,17 @@ titleSuffix: Azure Stack
 description: 了解在 Azure Stack Hub 上可以使用哪些来宾操作系统。
 author: WenJason
 ms.topic: article
-origin.date: 01/07/2020
-ms.date: 02/24/2020
+origin.date: 04/20/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: kivenkat
 ms.lastreviewed: 06/06/2019
-ms.openlocfilehash: af9c87e740dafb0bc3475348db1b10f114de8309
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 1a9dad835ed80b831f109c9e66e79e35aa9c973d
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540274"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422380"
 ---
 # <a name="guest-operating-systems-supported-on-azure-stack-hub"></a>Azure Stack Hub 支持的来宾操作系统
 

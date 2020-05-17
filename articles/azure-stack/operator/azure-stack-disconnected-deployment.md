@@ -3,17 +3,17 @@ title: Azure Stack Hub 集成系统的 Azure 非联网部署决策
 description: 了解如何对 Azure Stack Hub 集成系统进行 Azure 非联网部署，并了解要考虑的规划决策。
 author: WenJason
 ms.topic: article
-origin.date: 11/01/2019
-ms.date: 02/24/2020
+origin.date: 03/04/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: wfayed
 ms.lastreviewed: 11/01/2019
-ms.openlocfilehash: f3b2aca6c67f84ecbf04fe2410edd49c2f3b941b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: c70b10145ac9935a5032a171fa3bc0a3e83406cc
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540916"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422556"
 ---
 # <a name="azure-disconnected-deployment-planning-decisions-for-azure-stack-hub-integrated-systems"></a>Azure Stack Hub 集成系统的 Azure 非联网部署计划决策
 在决定[如何将 Azure Stack Hub 集成到混合云环境](azure-stack-connection-models.md)后，即可完成 Azure Stack Hub 部署决策。

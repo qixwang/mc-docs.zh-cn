@@ -12,29 +12,27 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 origin.date: 04/22/2018
-ms.date: 02/10/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: 1402a71c1908ae74744a28807329167a834890eb
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 3461d007ef05674d5d2311389fc8c45a68bddf3c
+ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78237485"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83392148"
 ---
 # <a name="azure-hybrid-benefit-for-windows-server"></a>Windows Server 的 Azure 混合权益
 对于有软件保障的客户，Windows Server 的 Azure 混合权益可让你使用本地 Windows Server 许可证，并以较低成本在 Azure 中运行 Windows 虚拟机。 可以使用 Windows Server 的 Azure 混合权益部署 Windows OS 的新虚拟机。 本文介绍如何使用 Windows Server 的 Azure 混合权益部署新的 VM 的步骤，以及如何更新现有正在运行的 VM 的步骤。 有关 Windows Server 的 Azure 混合权益许可和成本节约方面的更多信息，请参阅[“Windows Server 的 Azure 混合权益许可”页](https://www.azure.cn/pricing/hybrid-benefit/)。
 
-> [!Important]
-> 每个双处理器许可证或每组 16 核心许可证均可授权用于多达 8 核心的两个实例，或用于多达 16 核心的一个实例。 Standard Edition 许可证的 Azure 混合权益仅可在本地或 Azure 中使用一次。 Datacenter Edition 权益允许同时在本地和 Azure 中使用。
->
+每个双处理器许可证或每组 16 核心许可证均可授权用于多达 8 核心的两个实例，或用于多达 16 核心的一个实例。 Standard Edition 许可证的 Azure 混合权益仅可在本地或 Azure 中使用一次。 Datacenter Edition 权益允许同时在本地和 Azure 中使用。
 
-> [!Important]
-> 所有区域现在都支持将 Windows Server 的 Azure 混合权益用于运行 Windows Server OS 的任何 VM，其中包括具有其他软件（如 SQL Server 或第三方市场软件）的 VM。 
->
+所有区域现在都支持将 Windows Server 的 Azure 混合权益用于运行 Windows Server OS 的任何 VM，其中包括具有其他软件（如 SQL Server 或第三方市场软件）的 VM。 
 
-> [!NOTE]
-> 对于经典 VM，仅支持从本地自定义映像部署新的 VM。 若要使用本文支持的功能，必须首先将经典 VM 迁移到资源管理器模型。
->
+## <a name="classic-vms"></a>经典 VM
+
+对于经典 VM，仅支持从本地自定义映像部署新的 VM。 若要使用本文支持的功能，必须首先将经典 VM 迁移到资源管理器模型。
+
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 
 ## <a name="ways-to-use-azure-hybrid-benefit-for-windows-server"></a>使用 Windows Server 的 Azure 混合权益的方式
 可以通过以下几种方式将 Windows 虚拟机与 Azure 混合权限配合使用：
@@ -56,7 +54,7 @@ Windows Server 的 Azure 混合权益支持所有基于 Windows Server OS 的映
 New-AzVm `
     -ResourceGroupName "myResourceGroup" `
     -Name "myVM" `
-    -Location "China North" `
+    -Location "China East" `
     -ImageName "Win2016Datacenter" `
     -LicenseType "Windows_Server"
 ```
@@ -66,7 +64,7 @@ New-AzVm `
 az vm create \
     --resource-group myResourceGroup \
     --name myVM \
-    --location chinanorth \
+    --location chinaeast \
     --image Win2016Datacenter \
     --license-type Windows_Server
 ```
@@ -226,4 +224,4 @@ az vm list --query "[?licenseType=='Windows_Server']" -o table
     
 - 详细了解如何[使用资源管理器模板](../../azure-resource-manager/management/overview.md)
 
-<!-- Update_Description: update meta properties, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

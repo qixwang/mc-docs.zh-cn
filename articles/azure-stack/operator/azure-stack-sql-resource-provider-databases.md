@@ -5,16 +5,16 @@ description: 了解如何创建和管理使用 SQL 资源提供程序适配器�
 author: WenJason
 ms.topic: article
 origin.date: 1/22/2020
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: xiaofmao
-ms.lastreviewed: 10/16/2018
-ms.openlocfilehash: e7f3f358b818e2269f55b51b787ccd30a22beef0
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.lastreviewed: 10/16/2019
+ms.openlocfilehash: 504839d6a8454057a17fe8139a511c0485aad9f2
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540312"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422512"
 ---
 # <a name="create-sql-databases"></a>创建 SQL 数据库
 

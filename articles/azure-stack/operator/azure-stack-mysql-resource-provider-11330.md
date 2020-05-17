@@ -4,16 +4,16 @@ description: 查看发行说明以了解 Azure Stack Hub MySQL 资源提供程�
 author: WenJason
 ms.topic: article
 origin.date: 1/22/2020
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: jiahan
 ms.lastreviewed: 01/09/2019
-ms.openlocfilehash: 82570db09819774526cbd96993064304a6dddb09
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 1401a77eb01d7d05959d72866c03908172ea3e52
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540904"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422550"
 ---
 # <a name="mysql-resource-provider-11330--release-notes"></a>MySQL 资源提供程序 1.1.33.0 发行说明
 

@@ -3,17 +3,17 @@ title: 为 Azure Stack Hub 设置 VPN 网关
 description: 了解如何为 Azure Stack Hub 设置 VPN 网关。
 author: WenJason
 ms.topic: how-to
-origin.date: 10/03/2019
-ms.date: 02/24/2020
+origin.date: 04/20/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: sijuman
 ms.lastreviewed: 10/03/2019
-ms.openlocfilehash: ec43048b45177a5d1bc3d15888fe59dd51363d3c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 3d6d61f03e980a23803756874c603be5191d33fb
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540759"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422038"
 ---
 # <a name="set-up-vpn-gateway-for-azure-stack-hub-using-fortigate-nva"></a>使用 FortiGate NVA 为 Azure Stack Hub 设置 VPN 网关
 

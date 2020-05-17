@@ -6,15 +6,15 @@ author: rockboyfor
 ms.service: virtual-machines
 ms.topic: include
 origin.date: 03/10/2020
-ms.date: 04/27/2020
+ms.date: 05/18/2020
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: 613a4714c14606e042db1f07d41f0cba73811f21
-ms.sourcegitcommit: 275203d0f144aa809792f2c570fd64797f405c80
+ms.openlocfilehash: 16ce878467ed6fa385b89adb56d28a8138742046
+ms.sourcegitcommit: 8d56bc6baeb42d675695ecef1909d76f5c4a6ae3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82125806"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83406216"
 ---
 <!--Verified successfully-->
 ## <a name="limitations"></a>限制

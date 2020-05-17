@@ -3,14 +3,14 @@ title: 通过 ACR 任务进行外部身份验证
 description: 配置 Azure 容器注册表任务（ACR 任务）以使用 Azure 资源的托管标识读取 Azure 密钥保管库中存储的 Docker Hub 凭据。
 ms.topic: article
 origin.date: 01/14/2020
-ms.date: 04/06/2020
+ms.date: 05/18/2020
 ms.author: v-yeche
-ms.openlocfilehash: 89c55b1aefd04c489a4c5da2c4ffdce589f5eead
-ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
+ms.openlocfilehash: 927cc2573c03cd46404c38b7973cf2e4df4484c5
+ms.sourcegitcommit: 436a5dd9a446fe7b6d3c4d5bc76b652f7848c1ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82093503"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83393124"
 ---
 <!--Verify successfully-->
 # <a name="external-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>ACR 任务中使用 Azure 托管标识的外部身份验证 

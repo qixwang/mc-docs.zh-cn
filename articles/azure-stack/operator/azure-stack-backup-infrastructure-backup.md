@@ -4,16 +4,16 @@ description: 了解如何使用基础结构备份服务在 Azure Stack Hub 中�
 author: WenJason
 ms.topic: article
 origin.date: 05/16/2019
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: hectorl
 ms.lastreviewed: 05/16/2019
-ms.openlocfilehash: 91a16a4d529aa9241fc020088ccc8df14946611a
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 1cf0927be88622056bf02d5a920d5fa6355e161f
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540948"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422139"
 ---
 # <a name="recover-data-in-azure-stack-hub-with-the-infrastructure-backup-service"></a>使用基础结构备份服务恢复 Azure Stack Hub 中的数据
 

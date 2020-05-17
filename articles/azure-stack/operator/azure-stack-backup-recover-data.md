@@ -4,16 +4,16 @@ description: 了解如何在发生灾难性数据丢失后恢复和还原 Azure 
 author: WenJason
 ms.topic: article
 origin.date: 02/12/2019
-ms.date: 03/23/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: hectorl
 ms.lastreviewed: 11/05/2019
-ms.openlocfilehash: b9d29c2f0a54e3f6dc7ba7f640876bf08c2eaf02
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: a19a25598444a1e8759f0b0da2c2dc77c439695c
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79546848"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422406"
 ---
 # <a name="recover-from-catastrophic-data-loss"></a>在发生灾难性数据丢失后进行恢复
 

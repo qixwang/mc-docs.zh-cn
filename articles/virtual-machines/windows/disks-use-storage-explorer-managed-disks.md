@@ -4,23 +4,23 @@ description: 了解如何使用 Azure 存储资源管理器跨区域上传、下
 author: rockboyfor
 ms.author: v-yeche
 origin.date: 09/25/2019
-ms.date: 11/11/2019
+ms.date: 05/20/2020
 ms.topic: article
 ms.service: virtual-machines-windows
 ms.tgt_pltfrm: windows
 ms.subservice: disks
-ms.openlocfilehash: 70a0a67643f0954d233a85b7a88b694b4769fa46
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 89ed992f338537f7e2a82622d3954abb6cec3c38
+ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "73730693"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83392386"
 ---
+# <a name="use-azure-storage-explorer-to-manage-azure-managed-disks"></a>使用 Azure 存储资源管理器管理 Azure 托管磁盘
 [!INCLUDE [disks-upload-vhd-to-managed-disk-storage-explorer](../../../includes/disks-upload-vhd-to-managed-disk-storage-explorer.md)]
 
 了解如何[使用 Azure 门户基于 VHD 创建 VM](create-vm-specialized-portal.md)。
 
 了解如何[使用 Azure 门户将托管数据磁盘附加到 Windows VM](attach-managed-disk-portal.md)。
 
-<!-- Update_Description: new article about disks use storage explorer managed disks -->
-<!--NEW.date: 11/11/2019-->
+<!-- Update_Description: wording update -->

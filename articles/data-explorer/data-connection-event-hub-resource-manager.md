@@ -7,13 +7,13 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 11/28/2019
-ms.date: 01/27/2020
-ms.openlocfilehash: 204a5070b9e5bc21942c22b6cc27e3c5bac839c9
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/09/2020
+ms.openlocfilehash: 423ad9717acf4db12f25719408a45963133e7952
+ms.sourcegitcommit: bfbd6694da33f703481386f2a3f16850c4e94bfa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "76123203"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83417768"
 ---
 # <a name="create-an-event-hub-data-connection-for-azure-data-explorer-by-using-azure-resource-manager-template"></a>使用 Azure 资源管理器模板为 Azure 数据资源管理器创建事件中心数据连接
 
@@ -146,4 +146,4 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
 }
 ```
 
-[!INCLUDE [data-explorer-clean-resources](../../includes/data-explorer-clean-resources.md)]
+[!INCLUDE [data-explorer-clean-resources](includes/data-explorer-clean-resources.md)]

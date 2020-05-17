@@ -1,71 +1,107 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Hub
 title: 虚拟机文档
+summary: 了解如何在 Azure 中创建、部署和管理 Windows 或 Linux 虚拟机。
+brand: azure
 metadata:
-  title: Azure 虚拟机文档 - 教程和 API 参考
-  meta.description: 'Learn how to create, deploy, and manage Windows or Linux virtual machines. Tutorials, API references, and other documentation.'
+  title: Azure 虚拟机
+  description: 了解如何在 Azure 中创建、部署和管理 Windows 或 Linux 虚拟机。
   services: virtual-machines
-  author: rockboyfor
-  manager: digimobile
   ms.service: virtual-machines
-  ms.tgt_pltfrm: na
-  ms.topic: landing-page
-  origin.date: 01/23/2017
-  ms.date: 02/10/2020
+  ms.topic: hub-page
+  author: rockboyfor
+  origin.date: 02/14/2020
+  ms.date: 04/27/2020
   ms.author: v-yeche
-  description: 了解如何在 Azure 中创建与部署 Windows 和 Linux 虚拟机。
-sections:
-  - title: null
+  ms.openlocfilehash: d2db8356b9991a92b000bf12c51e5ada1c3eccdb
+  ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 05/14/2020
+  ms.locfileid: "83392434"
+highlightedContent:
+  items:
+  - title: 使用 Azure CLI 创建 Linux 虚拟机
+    itemType: quickstart
+    url: https://docs.azure.cn/virtual-machines/linux/quick-create-cli
+  - title: 使用 PowerShell 创建 Windows 虚拟机
+    itemType: quickstart
+    url: https://docs.azure.cn/virtual-machines/windows/quick-create-powershell
+  - title: 在门户中创建虚拟机规模集
+    itemType: quickstart
+    url: https://docs.azure.cn/virtual-machine-scale-sets/quick-create-portal
+  - title: 专用主机 - 用于承载一个或多个虚拟机的物理服务器。
+    itemType: concept
+    url: https://docs.azure.cn/virtual-machines/linux/dedicated-hosts
+  - title: 邻近放置组 - 使 VM 尽可能相近，以便降低延迟。
+    itemType: how-to-guide
+    url: https://docs.azure.cn/virtual-machines/linux/proximity-placement-groups
+conceptualContent:
+  items:
+  - title: Linux 虚拟机
+    links:
+    - url: https://docs.azure.cn/virtual-machines/linux/endorsed-distros
+      itemType: concept
+      text: 认可的发行版
+    - url: https://docs.azure.cn/virtual-machines/linux/tutorial-manage-disks
+      itemType: tutorial
+      text: 创建和管理磁盘
+    - url: https://docs.azure.cn/virtual-machines/troubleshooting/linux-index
+      itemType: how-to-guide
+      text: 排查 Linux 虚拟机问题
+    footerLink:
+      url: https://docs.azure.cn/virtual-machines/linux/
+      text: 查看更多
+  - title: Windows 虚拟机
+    links:
+    - url: https://docs.azure.cn/virtual-machines/windows/quick-create-powershell
+      itemType: how-to-guide
+      text: 使用 PowerShell 创建 VM
+    - url: https://docs.azure.cn/virtual-machines/windows/tutorial-manage-data-disk
+      itemType: tutorial
+      text: 创建和管理磁盘
+    - url: https://docs.azure.cn/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm?context=azure/virtual-machines/windows/context/windows-vm-context
+      itemType: how-to-guide
+      text: 配置托管标识
+    - url: https://docs.azure.cn/virtual-machines/troubleshooting/index
+      itemType: how-to-guide
+      text: 排查 Windows 虚拟机问题
+    footerLink:
+      url: https://docs.azure.cn/virtual-machines/windows/
+      text: 查看更多
+  - title: 虚拟机规模集
+    links:
+    - url: https://docs.azure.cn/virtual-machine-scale-sets/quick-create-powershell
+      itemType: how-to-guide
+      text: 使用 PowerShell 创建规模集
+    - url: https://docs.azure.cn/virtual-machine-scale-sets/orchestration-modes
+      itemType: concept
+      text: 业务流程模式
+    footerLink:
+      url: https://docs.azure.cn/virtual-machine-scale-sets/
+      text: 查看更多
+tools:
+  title: 工具
+  summary: 用于使用 Azure 虚拟机的工具。
+  items:
+  - title: Azure CLI
+    imageSrc: https://docs.azure.cn/virtual-machines/linux/media/index/cli.svg
+    url: https://docs.azure.cn/cli/vm?view=azure-cli-latest
+  - title: Azure PowerShell
+    imageSrc: https://docs.azure.cn/virtual-machines/linux/media/index/logo_powershell.svg
+    url: https://docs.microsoft.com/powershell/module/az.compute#virtual_machines
+  - title: REST API
+    imageSrc: https://docs.azure.cn/media/index/azure_dev-6.svg
+    url: https://docs.microsoft.com/rest/api/compute/virtualmachines
+additionalContent:
+  sections:
+  - title: 其他资源
+    summary: 用于使用 Azure 虚拟机的其他资源。
     items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Windows 虚拟机入门
-            href: /virtual-machines/windows
-            image:
-              src: media/index/virtual-machines.svg
-              href: /virtual-machines/windows
-          - title: Linux 虚拟机入门
-            href: /virtual-machines/linux
-            image:
-              src: media/index/get-started.svg
-              href: /virtual-machines/linux
-  - title: 5 分钟 Linux 快速入门
-    items:
-      - type: paragraph
-        text: 了解如何在运行 Ubuntu 的虚拟机中部署 NGINX Web 服务器：
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.azure.cn/virtual-machines/linux/media/index/cli.svg'
-            text: Azure CLI
-            href: 'https://docs.azure.cn/virtual-machines/virtual-machines-linux-quick-create-cli?toc=%2fvirtual-machines%2flinux%2ftoc.json'
-          - image:
-              src: 'https://docs.azure.cn/virtual-machines/linux/media/index/portal.svg'
-            text: Azure 门户
-            href: 'https://docs.azure.cn/virtual-machines/virtual-machines-linux-quick-create-portal?toc=%2fvirtual-machines%2flinux%2ftoc.json'
-          - image:
-              src: 'https://docs.azure.cn/virtual-machines/linux/media/index/logo_powershell.svg'
-            text: Azure PowerShell
-            href: 'https://docs.azure.cn/virtual-machines/virtual-machines-linux-quick-create-powershell?toc=%2fvirtual-machines%2flinux%2ftoc.json'
-  - title: 5 分钟 Windows 快速入门
-    items:
-      - type: paragraph
-        text: 了解如何在运行 Windows Server 2016 的虚拟机中部署 IIS Web 服务器：
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.azure.cn/virtual-machines/windows/media/index/logo_powershell.svg'
-            text: Azure PowerShell
-            href: 'https://docs.azure.cn/virtual-machines/virtual-machines-windows-quick-create-powershell?toc=/virtual-machines/windows/toc.json'
-          - image:
-              src: 'https://docs.azure.cn/virtual-machines/windows/media/index/portal.svg'
-            text: Azure 门户
-            href: 'https://docs.azure.cn/virtual-machines/virtual-machines-windows-quick-create-portal?toc=/virtual-machines/windows/toc.json'
-          - image:
-              src: 'https://docs.azure.cn/virtual-machines/windows/media/index/cli.svg'
-            text: Azure CLI
-            href: 'https://docs.azure.cn/virtual-machines/virtual-machines-windows-quick-create-cli?toc=/virtual-machines/windows/toc.json'
+    - title: 模板库
+      links:
+      - text: 浏览快速入门模板库
+        url: https://github.com/Azure/azure-quickstart-templates/?resourceType=Microsoft.Compute&pageNumber=1&sort=Popular
+    - title: 故障排除
+      links:
+      - text: 有关排查错误的信息
+        url: https://docs.azure.cn/virtual-machines/troubleshooting/

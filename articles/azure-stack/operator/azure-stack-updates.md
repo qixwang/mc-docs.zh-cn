@@ -2,18 +2,18 @@
 title: 管理更新
 description: 了解如何在 Azure Stack Hub 中管理更新
 author: WenJason
-ms.topic: article
+ms.topic: how-to
 origin.date: 03/04/2020
-ms.date: 03/23/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.lastreviewed: 09/10/2019
 ms.reviewer: ppacent
-ms.openlocfilehash: a250248e6949a31561f6977b3e6cb50cbed9e2a4
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 9c0d6a5a1ae1c74684fd0aa850b4636ab00fbabd
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79546847"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422596"
 ---
 # <a name="manage-updates-in-azure-stack-hub"></a>在 Azure Stack Hub 中管理更新
 
@@ -68,7 +68,7 @@ ms.locfileid: "79546847"
 
 知道有可用的更新后，使用以下步骤应用更新。
 
-![Azure Stack Hub 更新过程](./media/azure-stack-updates/azure-stack-update-process.png)
+![Azure Stack Hub 更新过程](./media/azure-stack-updates/azure-stack-update-process.svg)
 
 1. **规划更新**。
 

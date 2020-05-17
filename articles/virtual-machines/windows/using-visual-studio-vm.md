@@ -5,7 +5,6 @@ services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: rockboyfor
 manager: digimobile
-editor: tysonn
 tags: azure-resource-manager
 ms.service: virtual-machines-windows
 ms.custom: vs-azure
@@ -13,15 +12,15 @@ ms.workload: azure-vs
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 origin.date: 12/04/2019
-ms.date: 02/10/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
 keywords: visualstudio
-ms.openlocfilehash: 86d8d34826cd32865cd6c6a9b6ea4de9cd8ebe2c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 89e7310c0777daf77959b4b8519f9ccdbb1aa4b1
+ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77428660"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83392447"
 ---
 <a name="top"></a>
 # <a name="visual-studio-images-on-azure"></a>Azure 上的 Visual Studio 映像

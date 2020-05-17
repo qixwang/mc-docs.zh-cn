@@ -7,13 +7,13 @@ ms.reviewer: lugoldbe
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 09/26/2019
-ms.date: 02/17/2020
-ms.openlocfilehash: 43a1ff29c30f4253448ea26d59c1304d98eed2af
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/09/2020
+ms.openlocfilehash: a93b76e7c83ae2680cc3e5dd1899709c0dada3a2
+ms.sourcegitcommit: bfbd6694da33f703481386f2a3f16850c4e94bfa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77037936"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83417776"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建 Azure 数据资源管理器群集和数据库
 
@@ -27,7 +27,7 @@ ms.locfileid: "77037936"
 
 Azure 数据资源管理器是一项快速且高度可缩放的数据探索服务，适用于日志和遥测数据。 若要使用 Azure 数据资源管理器，请先创建群集，再在该群集中创建一个或多个数据库。 然后将数据引入（加载）到数据库，以便对其运行查询。 
 
-在本文中，我们使用 [Azure 资源管理器模板](../azure-resource-manager/resource-group-overview.md)创建 Azure 数据资源管理器群集和数据库。 本文介绍如何定义要部署的资源以及如何定义执行部署时指定的参数。 可将此模板用于自己的部署，或自定义此模板以满足要求。 有关创建模板的信息，请参阅[创作 Azure 资源管理器模板](/azure-resource-manager/resource-group-authoring-templates)。 有关要在模板中使用的 JSON 语法和属性，请参阅 [Microsoft.Kusto 资源类型](https://docs.microsoft.com/azure/templates/microsoft.kusto/allversions)。
+在本文中，我们使用 [Azure 资源管理器模板](/azure-resource-manager/management/overview)创建 Azure 数据资源管理器群集和数据库。 本文介绍如何定义要部署的资源以及如何定义执行部署时指定的参数。 可将此模板用于自己的部署，或自定义此模板以满足要求。 有关创建模板的信息，请参阅[创作 Azure 资源管理器模板](/azure-resource-manager/resource-group-authoring-templates)。 有关要在模板中使用的 JSON 语法和属性，请参阅 [Microsoft.Kusto 资源类型](https://docs.microsoft.com/azure/templates/microsoft.kusto/allversions)。
 
 如果没有 Azure 订阅，请在开始前[创建一个试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。
 

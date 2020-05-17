@@ -5,16 +5,16 @@ services: virtual-wan
 author: rockboyfor
 ms.service: virtual-wan
 ms.topic: include
-origin.date: 10/10/2019
-ms.date: 03/30/2020
+origin.date: 03/19/2020
+ms.date: 05/18/2020
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: 56b4a7a0d2fd7fe500070759d3a42c3d77068a2c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 579cae197d0539c73d04ca776b9147eb24da1294
+ms.sourcegitcommit: 8d56bc6baeb42d675695ecef1909d76f5c4a6ae3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80291275"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83406204"
 ---
 <!--Not Available on ### Azure regions within a geopolitical region-->
 

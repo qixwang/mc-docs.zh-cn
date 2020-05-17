@@ -7,13 +7,13 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 09/24/2018
-ms.date: 03/16/2020
-ms.openlocfilehash: 6d91e6a2b15ec7d7b14397c6a4d12fbe4cf4e030
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/09/2020
+ms.openlocfilehash: 44fd08b61247b1828b63e7486f4a20214ad486a4
+ms.sourcegitcommit: bfbd6694da33f703481386f2a3f16850c4e94bfa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80243945"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83417546"
 ---
 # <a name="troubleshoot-failure-to-create-or-delete-a-database-or-table-in-azure-data-explorer"></a>故障排除：无法在 Azure 数据资源管理器中创建或删除数据库或表
 
@@ -53,7 +53,7 @@ ms.locfileid: "80243945"
 
 ## <a name="general-guidance"></a>一般指南
 
-1. 查看 [Azure 服务健康状况仪表板](https://www.azure.cn/home/features/products-by-region)。 在尝试使用数据库或表的区域查找 Azure 数据资源管理器的状态。
+1. 查看 [Azure 服务健康状况仪表板](https://azure.microsoft.com/status/)。 在尝试使用数据库或表的区域查找 Azure 数据资源管理器的状态。
 
     如果状态不佳  （绿色复选标记），请在状态改善后重试。
 

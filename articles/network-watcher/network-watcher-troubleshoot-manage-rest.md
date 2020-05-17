@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 origin.date: 06/19/2017
 ms.date: 08/13/2018
 ms.author: v-lingwu
-ms.openlocfilehash: f5c1acb01dd834bd22cf60cb7ae5014d92e4043e
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: c8ca8a2bf9a8598a45d90a8b6ee66bd6f6c04792
+ms.sourcegitcommit: b81ea2ab9eafa986986fa3eb1e784cfe9bbf9ec1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77028981"
+ms.lasthandoff: 05/13/2020
+ms.locfileid: "83367836"
 ---
 # <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher"></a>使用 Azure 网络观察程序排查虚拟网络网关和连接问题
 
@@ -159,7 +159,7 @@ armclient get "https://management.chinacloudapi.cn/subscriptions/00000000-0000-0
         },
         {
           "actionText": "If your VPN gateway isn't up and running by the expected resolution time, contact support",
-          "actionUri": "https://support.azure.cn/zh-cn/support/contact/",
+          "actionUri": "https://support.azure.cn/support/contact/",
           "actionUriText": "contact support"
         }
       ]
@@ -176,7 +176,7 @@ armclient get "https://management.chinacloudapi.cn/subscriptions/00000000-0000-0
         },
         {
           "actionText": "If you are experiencing problems you believe are caused by Azure, contact support",
-          "actionUri": "https://support.azure.cn/zh-cn/support/contact/",
+          "actionUri": "https://support.azure.cn/support/contact/",
           "actionUriText": "contact support"
         }
       ]
@@ -292,7 +292,7 @@ is a transient state while the Azure platform is being updated.",
         },
         {
           "actionText": "If your VPN Connection isn't up and running by the expected resolution time, contact support",
-          "actionUri": "https://support.azure.cn/zh-cn/support/contact/",
+          "actionUri": "https://support.azure.cn/support/contact/",
           "actionUriText": "contact support"
         }
       ]
@@ -309,7 +309,7 @@ is a transient state while the Azure platform is being updated.",
         },
         {
           "actionText": "If you are experiencing problems you believe are caused by Azure, contact support",
-          "actionUri": "https://support.azure.cn/zh-cn/support/contact/",
+          "actionUri": "https://support.azure.cn/support/contact/",
           "actionUriText": "contact support"
         }
       ]

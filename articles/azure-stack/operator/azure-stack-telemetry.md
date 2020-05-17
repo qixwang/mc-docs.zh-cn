@@ -5,16 +5,16 @@ description: 了解 Azure Stack Hub 遥测，以及如何使用 PowerShell 配�
 author: WenJason
 ms.topic: conceptual
 origin.date: 1/16/2020
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: comartin
-ms.lastreviewed: 10/15/2018
-ms.openlocfilehash: 6692325749cd2ff6445457b2eb50bec8f4cba6f0
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.lastreviewed: 10/15/2019
+ms.openlocfilehash: 5d3b42f68f1704f6a2aea461d7084a80707dc10e
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540622"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422379"
 ---
 # <a name="configure-azure-stack-hub-telemetry"></a>配置 Azure Stack Hub 遥测
 

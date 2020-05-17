@@ -3,18 +3,18 @@ title: 更换物理磁盘
 titleSuffix: Azure Stack Hub
 description: 了解如何更换 Azure Stack Hub 中的物理磁盘。
 author: WenJason
-ms.topic: article
-origin.date: 12/02/2019
-ms.date: 02/24/2020
+ms.topic: how-to
+origin.date: 03/04/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: thoroet
 ms.lastreviewed: 12/02/2019
-ms.openlocfilehash: a197041185cc9188545652241ccc5cfed7b84b63
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: b784871ea52feb7a4f747f0fbd39fda0ab1b05b3
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540349"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422112"
 ---
 # <a name="replace-a-physical-disk-in-azure-stack-hub"></a>更换 Azure Stack Hub 中的物理磁盘
 

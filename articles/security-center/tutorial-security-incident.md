@@ -15,12 +15,12 @@ ms.workload: na
 origin.date: 08/30/2018
 ms.date: 09/22/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 7b9eb37a2415de54beb2c752999d7e7c152095cc
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 7c0dbe2dfc4867c4c23db0334a8223c59c078c22
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75857313"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422571"
 ---
 # <a name="tutorial-respond-to-security-incidents"></a>教程：响应安全事件
 安全中心使用高级分析和威胁智能来持续分析混合云工作负荷，在存在恶意活动时发出警报。 另外，你可以将其他安全产品和服务中的警报集成到安全中心，并根据自己的指示器或智能源创建自定义警报。 生成警报后，需采取快速行动进行调查和修正。 在本教程中，您将学习如何执行以下操作：
@@ -30,9 +30,9 @@ ms.locfileid: "75857313"
 > * 通过深入调查确定安全事件的根本原因和范围
 > * 搜索有助于调查的安全数据
 
-如果没有 Azure 订阅，请在开始前创建一个[试用帐户](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth)。
+如果没有 Azure 订阅，请在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial-full/?form-type=identityauth)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 若要逐步执行本教程中介绍的功能，你必须位于安全中心的“标准”定价层。 可以免费试用安全中心标准版。 若要了解详细信息，请参阅[定价页](https://www.azure.cn/pricing/details/security-center/)。 快速入门教程“[将 Azure 订阅载入到安全中心标准版](security-center-get-started.md)”详细介绍了如何升级到标准版。
 
 ## <a name="triage-security-alerts"></a>会审安全警报
@@ -83,14 +83,14 @@ ms.locfileid: "75857313"
 2. 选择要返回到“免费”层的订阅或策略。 此时会打开“安全策略”。 
 3. 在“策略组件”  下选择“定价层”  。
 4. 选择“免费”，将订阅从“标准”层更改为“免费”层。 
-5. 选择“保存”。 
+5. 选择“保存”  。
 
 如果希望禁用自动预配，请执行以下操作：
 
 1. 返回到安全中心主菜单，选择“安全策略”。 
 2. 选择希望禁用自动设置的订阅。
 3. 在“安全策略 - 数据收集”  下的“载入”  下选择“关闭”  ，禁用自动预配。
-4. 选择“保存”。 
+4. 选择“保存”  。
 
 >[!NOTE]
 > 禁用自动设置不会从已预配代理的 Azure VM 中删除 Microsoft Monitoring Agent。 禁用自动设置会限制对资源的安全监视。

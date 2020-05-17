@@ -4,16 +4,16 @@ description: 了解如何在 Azure Stack Hub 上部署 MySQL 资源提供程序�
 author: WenJason
 ms.topic: article
 origin.date: 1/22/2020
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: xiaofmao
-ms.lastreviewed: 10/25/2018
-ms.openlocfilehash: 216f343d7d2ea0852196f761deb875f3dfe9d363
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.lastreviewed: 10/25/2019
+ms.openlocfilehash: 08d55cd8f586e8c4ef0d509694a511bd43d54979
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540624"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422493"
 ---
 # <a name="use-mysql-databases-on-azure-stack-hub"></a>在 Azure Stack Hub 上使用 MySQL 数据库
 

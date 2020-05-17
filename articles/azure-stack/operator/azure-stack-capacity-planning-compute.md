@@ -3,17 +3,17 @@ title: Azure Stack Hub 计算容量
 description: 了解适用于 Azure Stack Hub 部署的计算容量规划。
 author: WenJason
 ms.topic: article
-origin.date: 07/16/2019
-ms.date: 02/24/2020
+origin.date: 03/04/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: prchint
 ms.lastreviewed: 06/13/2019
-ms.openlocfilehash: 86a5f3060c2a9edae1db76db5558987e22ccf9e7
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 3301f607eb53be7a8cf9a40127b5079d30711bf9
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540947"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422394"
 ---
 # <a name="azure-stack-hub-compute-capacity"></a>Azure Stack Hub 计算容量
 
@@ -77,10 +77,10 @@ VM 放置的可用内存 = 主机总内存 - 复原保留 - 运行租户 VM 所�
 复原保留 = H + R * ((N-1) * H) + V * (N-2)
 
 > 其中：
-> - H = 单服务器内存的大小
+> -    H = 单服务器内存的大小
 > - N = 缩放单元的大小（服务器数）
-> - R = 用于 OS 开销的操作系统预留量，在此公式中为 .15<sup>2</sup>
-> - V = 缩放单元中的最大 VM
+> -    R = 用于 OS 开销的操作系统预留量，在此公式中为 .15<sup>2</sup>
+> -    V = 缩放单元中的最大 VM
 
 <sup>1</sup> Azure Stack Hub 基础结构开销 = 242 GB + (4 GB x 节点数)。 大约使用 31 个 VM 来托管 Azure Stack Hub 基础结构，总共消耗约 242 GB + (4 GB x 节点数) 的内存和 146 个虚拟核心。 使用这个数目的 VM 是为了进行必要的服务隔离，使之符合安全性、可伸缩性、服务和修补方面的要求。 这种内部服务结构允许在将来引入新开发的基础结构服务。
 

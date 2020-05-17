@@ -3,17 +3,17 @@ title: 管理 Azure Stack Hub 存储帐户
 description: 了解如何查找、管理、恢复和回收 Azure Stack Hub 存储帐户。
 author: WenJason
 ms.topic: conceptual
-origin.date: 1/22/2020
-ms.date: 02/24/2020
+origin.date: 03/04/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: xiaofmao
 ms.lastreviewed: 03/19/2019
-ms.openlocfilehash: f10b7cd186adc029b4f6dfc41e55175971881dfa
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: af40834c6242d719a91b609089c992f6b29428c6
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292195"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422124"
 ---
 # <a name="manage-azure-stack-hub-storage-accounts"></a>管理 Azure Stack Hub 存储帐户
 

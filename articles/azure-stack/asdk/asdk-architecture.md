@@ -1,28 +1,19 @@
 ---
-title: ASDK 体系结构 | Microsoft Docs
+title: ASDK 体系结构
 description: 了解 Azure Stack 开发工具包 (ASDK) 的体系结构。
-services: azure-stack
-documentationcenter: ''
 author: WenJason
-manager: digimbile
-editor: ''
-ms.assetid: ''
-ms.service: azure-stack
-ms.workload: na
-pms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 origin.date: 06/28/2019
-ms.date: 10/21/2019
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: misainat
 ms.lastreviewed: 06/28/2019
-ms.openlocfilehash: 58f4698ecd09f9a6ca7eab236e3dbbb07490c803
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 883e9cb97a28fa024088745f97e368cb413758ec
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292605"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422423"
 ---
 # <a name="asdk-architecture"></a>ASDK 体系结构
 Azure Stack 开发工具包 (ASDK) 是在单个主计算机上运行的 Azure Stack 的单节点部署。 边缘路由组件安装在主计算机上，为 Azure Stack 提供 NAT 和 VPN 功能。 Azure Stack 基础结构角色在物理主计算机的 Hyper-V 层中运行。

@@ -6,17 +6,16 @@ author: rockboyfor
 ms.service: storage
 ms.topic: include
 origin.date: 09/15/2018
-ms.date: 11/26/2018
+ms.date: 05/18/2020
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: 68dd416f83076bf22c785ad5fd8e6791deb467e6
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 88136e95b34679901b11a16fb0d6782f522792ab
+ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "63824167"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83392381"
 ---
-# <a name="back-up-azure-unmanaged-vm-disks-with-incremental-snapshots"></a>通过递增快照备份 Azure 非托管 VM 磁盘
 ## <a name="overview"></a>概述
 Azure 存储提供创建 Blob 快照的功能。 快照将捕获该时间点的 Blob 状态。 本文介绍有关如何使用快照维护虚拟机磁盘备份的方案。 如果选择不使用 Azure 备份和恢复服务，但想要为虚拟机磁盘创建自定义备份策略，则可以使用此方法。
 

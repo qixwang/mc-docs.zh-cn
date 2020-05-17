@@ -4,16 +4,16 @@ description: 了解如何使用高可用性配置在 Azure Stack Hub 中部署�
 author: WenJason
 ms.topic: article
 origin.date: 01/02/2020
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: anwestg
-ms.lastreviewed: 01/02/2020
-ms.openlocfilehash: 04401faead636c13f994821c006241a8613d285d
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.lastreviewed: 01/02/2019
+ms.openlocfilehash: 47b7a4968a6f2d490bd392fb4ebd44e93232f0ea
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540658"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422569"
 ---
 # <a name="deploy-app-service-in-a-highly-available-configuration"></a>在高可用性配置中部署应用服务
 

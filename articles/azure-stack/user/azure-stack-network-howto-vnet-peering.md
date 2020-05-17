@@ -4,16 +4,16 @@ description: 了解如何通过 VNET 对等互连连接两个 Azure Stack Hub。
 author: WenJason
 ms.topic: how-to
 origin.date: 1/22/2020
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: sijuman
 ms.lastreviewed: 10/03/2019
-ms.openlocfilehash: 3f95155bb9ce51fbf31137e060fddff71a644943
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: d3599b441611b0240011d832b389a1ec65720440
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540749"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422033"
 ---
 # <a name="vnet-peering-in-azure-stack-hub-with-vms"></a>VM 所在的 Azure Stack Hub 中的 VNET 对等互连
 

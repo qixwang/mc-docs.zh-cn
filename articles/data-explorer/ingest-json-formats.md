@@ -7,13 +7,13 @@ ms.reviewer: kerend
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 01/27/2020
-ms.date: 02/17/2020
-ms.openlocfilehash: 191a1d1ec7d9a31220dbef4bedd3eed66671b104
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/09/2020
+ms.openlocfilehash: d98810f9843d6cb8523549dd775debd68395dfd7
+ms.sourcegitcommit: bfbd6694da33f703481386f2a3f16850c4e94bfa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77067780"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83417746"
 ---
 # <a name="ingest-json-formatted-sample-data-into-azure-data-explorer"></a>将 JSON 格式的示例数据引入 Azure 数据资源管理器
 
@@ -31,7 +31,7 @@ Azure 数据资源管理器支持两种 JSON 文件格式：
 
 ### <a name="ingest-and-map-json-formatted-data"></a>引入和映射 JSON 格式的数据
 
-引入 JSON 格式的数据需要使用[引入属性](https://docs.microsoft.com/azure/kusto/management/data-ingestion/index#ingestion-properties)指定格式。  引入 JSON 数据需要执行[映射](https://docs.microsoft.com/azure/kusto/management/mappings)，以将 JSON 源条目映射到其目标列。 引入数据时，请使用预定义的 `jsonMappingReference` 引入属性，或指定 `jsonMapping` 引入属性。 本文将使用 `jsonMappingReference` 引入属性，该属性是在用于引入的表中预定义的。 以下示例首先将 JSON 记录作为原始数据引入到包含单个列的表中。 接下来，使用映射将每个属性引入到其映射列中。 
+引入 JSON 格式的数据需要使用[引入属性](ingestion-properties.md)指定格式。  引入 JSON 数据需要执行[映射](https://docs.microsoft.com/azure/data-explorer/kusto/management/mappings)，以将 JSON 源条目映射到其目标列。 引入数据时，请使用预定义的 `jsonMappingReference` 引入属性，或指定 `jsonMapping` 引入属性。 本文将使用 `jsonMappingReference` 引入属性，该属性是在用于引入的表中预定义的。 以下示例首先将 JSON 记录作为原始数据引入到包含单个列的表中。 接下来，使用映射将每个属性引入到其映射列中。 
 
 ### <a name="simple-json-example"></a>简单 JSON 示例
 
@@ -63,15 +63,15 @@ Azure 数据资源管理器支持两种 JSON 文件格式：
 
 1. 粘贴以下命令，然后选择“运行”以创建表。 
 
-    ```Kusto
+    ```kusto
     .create table RawEvents (Event: dynamic)
     ```
 
-    此查询将创建一个表，其中包含单个[动态](https://docs.microsoft.com/azure/kusto/query/scalar-data-types/dynamic)数据类型的 `Event` 列。
+    此查询将创建一个表，其中包含单个[动态](https://docs.microsoft.com/azure/data-explorer/kusto/query/scalar-data-types/dynamic)数据类型的 `Event` 列。
 
 1. 创建 JSON 映射。
 
-    ```Kusto
+    ```kusto
     .create table RawEvents ingestion json mapping 'RawEventMapping' '[{"column":"Event","path":"$"}]'
     ```
 
@@ -79,7 +79,7 @@ Azure 数据资源管理器支持两种 JSON 文件格式：
 
 1. 将数据引入 `RawEvents` 表中。
 
-    ```Kusto
+    ```kusto
     .ingest into table RawEvents h'https://kustosamplefiles.blob.core.chinacloudapi.cn/jsonsamplefiles/simple.json?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D' with (format=json, jsonMappingReference=RawEventMapping)
     ```
 
@@ -89,7 +89,7 @@ Azure 数据资源管理器支持两种 JSON 文件格式：
 
 1. 创建 `RawEvents` 表。
 
-    ```C#
+    ```csharp
     var kustoUri = "https://<ClusterName>.<Region>.kusto.chinacloudapi.cn:443/";
     var kustoConnectionStringBuilder =
         new KustoConnectionStringBuilder(ingestUri)
@@ -116,7 +116,7 @@ Azure 数据资源管理器支持两种 JSON 文件格式：
 
 1. 创建 JSON 映射。
     
-    ```C#
+    ```csharp
     var tableMapping = "RawEventMapping";
     var command =
         CslCommandGenerator.GenerateTableJsonMappingCreateCommand(
@@ -133,7 +133,7 @@ Azure 数据资源管理器支持两种 JSON 文件格式：
 
 1. 将数据引入 `RawEvents` 表中。
 
-    ```C#
+    ```csharp
     var ingestUri = "https://ingest-<ClusterName>.<Region>.kusto.chinacloudapi.cn:443/";
     var blobPath = "https://kustosamplefiles.blob.core.chinaclouapi.cn/jsonsamplefiles/simple.json?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D";
     var ingestConnectionStringBuilder =
@@ -158,7 +158,7 @@ Azure 数据资源管理器支持两种 JSON 文件格式：
     ```
 
 > [!NOTE]
-> 数据是根据[批处理策略](https://docs.microsoft.com/azure/kusto/concepts/batchingpolicy)聚合的，因此会出现几分钟的延迟。
+> 数据是根据[批处理策略](https://docs.microsoft.com/azure/data-explorer/kusto/management/batchingpolicy)聚合的，因此会出现几分钟的延迟。
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -166,7 +166,7 @@ Azure 数据资源管理器支持两种 JSON 文件格式：
 
 1. 创建 `RawEvents` 表。
 
-    ```Python
+    ```python
     KUSTO_URI = "https://<ClusterName>.<Region>.kusto.chinacloudapi.cn:443/"
     KCSB_DATA = KustoConnectionStringBuilder.with_aad_device_authentication(KUSTO_URI, AAD_TENANT_ID)
     KUSTO_CLIENT = KustoClient(KCSB_DATA)
@@ -179,7 +179,7 @@ Azure 数据资源管理器支持两种 JSON 文件格式：
 
 1. 创建 JSON 映射。
 
-    ```Python
+    ```python
     MAPPING = "RawEventMapping"
     CREATE_MAPPING_COMMAND = ".create table " + TABLE + " ingestion json mapping '" + MAPPING + """' '[{"column":"Event","path":"$"}]'"""
     RESPONSE = KUSTO_CLIENT.execute_mgmt(DATABASE, CREATE_MAPPING_COMMAND)
@@ -188,7 +188,7 @@ Azure 数据资源管理器支持两种 JSON 文件格式：
 
 1. 将数据引入 `RawEvents` 表中。
 
-    ```Python
+    ```python
     INGEST_URI = "https://ingest-<ClusterName>.<Region>.kusto.chinacloudapi.cn:443/"
     KCSB_INGEST = KustoConnectionStringBuilder.with_aad_device_authentication(INGEST_URI, AAD_TENANT_ID)
     INGESTION_CLIENT = KustoIngestClient(KCSB_INGEST)
@@ -201,7 +201,7 @@ Azure 数据资源管理器支持两种 JSON 文件格式：
     ```
 
     > [!NOTE]
-    > 数据是根据[批处理策略](https://docs.microsoft.com/azure/kusto/concepts/batchingpolicy)聚合的，因此会出现几分钟的延迟。
+    > 数据是根据[批处理策略](https://docs.microsoft.com/azure/data-explorer/kusto/management/batchingpolicy)聚合的，因此会出现几分钟的延迟。
 
 ---
 
@@ -213,13 +213,13 @@ Azure 数据资源管理器支持两种 JSON 文件格式：
 
 1. 创建一个新表，该表采用类似于 JSON 输入数据的架构。 我们将对下面的所有示例和引入命令使用此表。 
 
-    ```Kusto
+    ```kusto
     .create table Events (Time: datetime, Device: string, MessageId: string, Temperature: double, Humidity: double)
     ```
 
 1. 创建 JSON 映射。
 
-    ```Kusto
+    ```kusto
     .create table Events ingestion json mapping 'FlatEventMapping' '[{"column":"Time","path":"$.timestamp"},{"column":"Device","path":"$.deviceId"},{"column":"MessageId","path":"$.messageId"},{"column":"Temperature","path":"$.temperature"},{"column":"Humidity","path":"$.humidity"}]'
     ```
 
@@ -227,7 +227,7 @@ Azure 数据资源管理器支持两种 JSON 文件格式：
 
 1. 将数据引入 `Events` 表中。
 
-    ```Kusto
+    ```kusto
     .ingest into table Events h'https://kustosamplefiles.blob.core.chinaclouapi.cn/jsonsamplefiles/simple.json?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D' with (format=json, jsonMappingReference=FlatEventMapping)
     ```
 
@@ -237,7 +237,7 @@ Azure 数据资源管理器支持两种 JSON 文件格式：
 
 1. 创建一个新表，该表采用类似于 JSON 输入数据的架构。 我们将对下面的所有示例和引入命令使用此表。 
 
-    ```C#
+    ```csharp
     var table = "Events";
     var command =
         CslCommandGenerator.GenerateTableCreateCommand(
@@ -256,7 +256,7 @@ Azure 数据资源管理器支持两种 JSON 文件格式：
 
 1. 创建 JSON 映射。
 
-    ```C#
+    ```csharp
     var tableMapping = "FlatEventMapping";
     var command =
         CslCommandGenerator.GenerateTableJsonMappingCreateCommand(
@@ -278,7 +278,7 @@ Azure 数据资源管理器支持两种 JSON 文件格式：
 
 1. 将数据引入 `Events` 表中。
 
-    ```C#
+    ```csharp
     var blobPath = "https://kustosamplefiles.blob.core.chinaclouapi.cn/jsonsamplefiles/simple.json?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D";
     var properties =
         new KustoQueuedIngestionProperties(database, table)
@@ -296,7 +296,7 @@ Azure 数据资源管理器支持两种 JSON 文件格式：
 
 1. 创建一个新表，该表采用类似于 JSON 输入数据的架构。 我们将对下面的所有示例和引入命令使用此表。 
 
-    ```Python
+    ```python
     TABLE = "RawEvents"
     CREATE_TABLE_COMMAND = ".create table " + TABLE + " (Time: datetime, Device: string, MessageId: string, Temperature: double, Humidity: double)"
     RESPONSE = KUSTO_CLIENT.execute_mgmt(DATABASE, CREATE_TABLE_COMMAND)
@@ -305,7 +305,7 @@ Azure 数据资源管理器支持两种 JSON 文件格式：
 
 1. 创建 JSON 映射。
 
-    ```Python
+    ```python
     MAPPING = "FlatEventMapping"
     CREATE_MAPPING_COMMAND = ".create table Events ingestion json mapping '" + MAPPING + """' '[{"column":"Time","path":"$.timestamp"},{"column":"Device","path":"$.deviceId"},{"column":"MessageId","path":"$.messageId"},{"column":"Temperature","path":"$.temperature"},{"column":"Humidity","path":"$.humidity"}]'""" 
     RESPONSE = KUSTO_CLIENT.execute_mgmt(DATABASE, CREATE_MAPPING_COMMAND)
@@ -314,7 +314,7 @@ Azure 数据资源管理器支持两种 JSON 文件格式：
 
 1. 将数据引入 `Events` 表中。
 
-    ```Python
+    ```python
     BLOB_PATH = 'https://kustosamplefiles.blob.core.chinaclouapi.cn/jsonsamplefiles/simple.json?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D'
     
     INGESTION_PROPERTIES = IngestionProperties(database=DATABASE, table=TABLE, dataFormat=DataFormat.json, mappingReference=MAPPING)
@@ -334,7 +334,7 @@ Azure 数据资源管理器支持两种 JSON 文件格式：
 
 将数据引入 `Events` 表中。
 
-```Kusto
+```kusto
 .ingest into table Events h'https://kustosamplefiles.blob.core.chinaclouapi.cn/jsonsamplefiles/multilined.json?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D' with (format=multijson, jsonMappingReference=FlatEventMapping)
 ```
 
@@ -342,7 +342,7 @@ Azure 数据资源管理器支持两种 JSON 文件格式：
 
 将数据引入 `Events` 表中。
 
-```C#
+```csharp
 var tableMapping = "FlatEventMapping";
 var blobPath = "https://kustosamplefiles.blob.core.chinaclouapi.cn/jsonsamplefiles/multilined.json?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D";
 var properties =
@@ -359,7 +359,7 @@ ingestClient.IngestFromSingleBlob(blobPath, deleteSourceOnSuccess: false, ingest
 
 将数据引入 `Events` 表中。
 
-```Python
+```python
 MAPPING = "FlatEventMapping"
 BLOB_PATH = 'https://kustosamplefiles.blob.core.chinaclouapi.cn/jsonsamplefiles/multilined.JSON?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D'
 INGESTION_PROPERTIES = IngestionProperties(database=DATABASE, table=TABLE, dataFormat=DataFormat.multijson, mappingReference=MAPPING)
@@ -372,7 +372,7 @@ INGESTION_CLIENT.ingest_from_blob(
 
 ## <a name="ingest-json-records-containing-arrays"></a>引入包含数组的 JSON 记录
 
-数组数据类型是按顺序排列的值集合。 JSON 数组的引入由[更新策略](https://docs.microsoft.com/azure/kusto/management/update-policy)来完成。 JSON 将按原样引入到中间表。 更新策略针对 `RawEvents` 表运行某个预定义的函数，并将结果重新引入到目标表。 我们将引入采用以下结构的数据：
+数组数据类型是按顺序排列的值集合。 JSON 数组的引入由[更新策略](https://docs.microsoft.com/azure/data-explorer/kusto/management/update-policy)来完成。 JSON 将按原样引入到中间表。 更新策略针对 `RawEvents` 表运行某个预定义的函数，并将结果重新引入到目标表。 我们将引入采用以下结构的数据：
 
 ```json
 {
@@ -400,7 +400,7 @@ INGESTION_CLIENT.ingest_from_blob(
 
 1. 使用 `mv-expand` 运算符创建一个 `update policy` 函数用于扩展 `records` 的集合，使集合中的每个值收到一个单独的行。 我们将使用表 `RawEvents` 作为源表，使用 `Events` 作为目标表。
 
-    ```Kusto
+    ```kusto
     .create function EventRecordsExpand() {
         RawEvents
         | mv-expand records = Event
@@ -415,25 +415,25 @@ INGESTION_CLIENT.ingest_from_blob(
 
 1. 该函数收到的架构必须与目标表的架构相匹配。 使用 `getschema` 运算符检查架构。
 
-    ```Kusto
+    ```kusto
     EventRecordsExpand() | getschema
     ```
 
 1. 将更新策略添加到目标表。 此策略将自动对 `RawEvents` 中间表中的任何新引入数据运行查询，并将结果引入到 `Events` 表中。 定义零保留期策略，以避免持久保存中间表。
 
-    ```Kusto
+    ```kusto
     .alter table Events policy update @'[{"Source": "RawEvents", "Query": "EventRecordsExpand()", "IsEnabled": "True"}]'
     ```
 
 1. 将数据引入 `RawEvents` 表中。
 
-    ```Kusto
+    ```kusto
     .ingest into table Events h'https://kustosamplefiles.blob.core.chinaclouapi.cn/jsonsamplefiles/array.json?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D' with (format=multijson, jsonMappingReference=RawEventMapping)
     ```
 
 1. 检查 `Events` 表中的数据。
 
-    ```Kusto
+    ```kusto
     Events
     ```
 
@@ -441,7 +441,7 @@ INGESTION_CLIENT.ingest_from_blob(
 
 1. 使用 `mv-expand` 运算符创建一个 update 函数用于扩展 `records` 的集合，使集合中的每个值收到一个单独的行。 我们将使用表 `RawEvents` 作为源表，使用 `Events` 作为目标表。   
 
-    ```C#
+    ```csharp
     var command =
         CslCommandGenerator.GenerateCreateFunctionCommand(
             "EventRecordsExpand",
@@ -466,7 +466,7 @@ INGESTION_CLIENT.ingest_from_blob(
 
 1. 将更新策略添加到目标表。 此策略将针对 `RawEvents` 中间表中任何新引入数据自动运行查询，并将查询结果引入到 `Events` 表中。 定义零保留期策略，以避免持久保存中间表。
 
-    ```C#
+    ```csharp
     var command =
         ".alter table Events policy update @'[{'Source': 'RawEvents', 'Query': 'EventRecordsExpand()', 'IsEnabled': 'True'}]";
 
@@ -475,7 +475,7 @@ INGESTION_CLIENT.ingest_from_blob(
 
 1. 将数据引入 `RawEvents` 表中。
 
-    ```C#
+    ```csharp
     var table = "RawEvents";
     var tableMapping = "RawEventMapping";
     var blobPath = "https://kustosamplefiles.blob.core.chinaclouapi.cn/jsonsamplefiles/array.json?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D";
@@ -495,7 +495,7 @@ INGESTION_CLIENT.ingest_from_blob(
 
 1. 使用 `mv-expand` 运算符创建一个 update 函数用于扩展 `records` 的集合，使集合中的每个值收到一个单独的行。 我们将使用表 `RawEvents` 作为源表，使用 `Events` 作为目标表。   
 
-    ```Python
+    ```python
     CREATE_FUNCTION_COMMAND = 
         '''.create function EventRecordsExpand() { 
             RawEvents
@@ -516,7 +516,7 @@ INGESTION_CLIENT.ingest_from_blob(
 
 1. 将更新策略添加到目标表。 此策略将针对 `RawEvents` 中间表中任何新引入数据自动运行查询，并将查询结果引入到 `Events` 表中。 定义零保留期策略，以避免持久保存中间表。
 
-    ```Python
+    ```python
     CREATE_UPDATE_POLICY_COMMAND = 
         """.alter table Events policy update @'[{'Source': 'RawEvents', 'Query': 'EventRecordsExpand()', 'IsEnabled': 'True'}]"""
     RESPONSE = KUSTO_CLIENT.execute_mgmt(DATABASE, CREATE_UPDATE_POLICY_COMMAND)
@@ -525,7 +525,7 @@ INGESTION_CLIENT.ingest_from_blob(
 
 1. 将数据引入 `RawEvents` 表中。
 
-    ```Python
+    ```python
     TABLE = "RawEvents"
     MAPPING = "RawEventMapping"
     BLOB_PATH = 'https://kustosamplefiles.blob.core.chinaclouapi.cn/jsonsamplefiles/array.json?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D'
@@ -575,13 +575,13 @@ INGESTION_CLIENT.ingest_from_blob(
 
 1. 创建 JSON 映射。
 
-    ```Kusto
+    ```kusto
     .create table Events ingestion json mapping 'KeyValueEventMapping' '[{"column":"Time","path":"$.event[?(@.Key == 'timestamp')]"},{"column":"Device","path":"$.event[?(@.Key == 'deviceId')]"},{"column":"MessageId","path":"$.event[?(@.Key == 'messageId')]"},{"column":"Temperature","path":"$.event[?(@.Key == 'temperature')]"},{"column":"Humidity","path":"$.event[?(@.Key == 'humidity')]"}]'
     ```
 
 1. 将数据引入 `Events` 表中。
 
-    ```Kusto
+    ```kusto
     .ingest into table Events h'https://kustosamplefiles.blob.core.chinaclouapi.cn/jsonsamplefiles/dictionary.json?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D' with (format=multijson, jsonMappingReference=KeyValueEventMapping)
     ```
 
@@ -589,7 +589,7 @@ INGESTION_CLIENT.ingest_from_blob(
 
 1. 创建 JSON 映射。
 
-    ```C#
+    ```csharp
     var tableName = "Events";
     var tableMapping = "KeyValueEventMapping";
     var command =
@@ -610,7 +610,7 @@ INGESTION_CLIENT.ingest_from_blob(
 
 1. 将数据引入 `Events` 表中。
 
-    ```C#
+    ```csharp
     var blobPath = "https://kustosamplefiles.blob.core.chinaclouapi.cn/jsonsamplefiles/dictionary.json?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D";
     var properties =
         new KustoQueuedIngestionProperties(database, table)
@@ -626,7 +626,7 @@ INGESTION_CLIENT.ingest_from_blob(
 
 1. 创建 JSON 映射。
 
-    ```Python
+    ```python
     MAPPING = "KeyValueEventMapping"
     CREATE_MAPPING_COMMAND = ".create table Events ingestion json mapping '" + MAPPING + """' '[{"column":"Time","path":"$.event[?(@.Key == 'timestamp')]"},{"column":"Device","path":"$.event[?(@.Key == 'deviceId')]"},{"column":"MessageId","path":"$.event[?(@.Key == 'messageId')]"},{"column":"Temperature","path":"$.event[?(@.Key == 'temperature')]"},{"column":"Humidity","path":"$.event[?(@.Key == 'humidity')]"}]'""" 
     RESPONSE = KUSTO_CLIENT.execute_mgmt(DATABASE, CREATE_MAPPING_COMMAND)
@@ -635,7 +635,7 @@ INGESTION_CLIENT.ingest_from_blob(
 
 1. 将数据引入 `Events` 表中。
 
-     ```Python
+     ```python
     MAPPING = "KeyValueEventMapping"
     BLOB_PATH = 'https://kustosamplefiles.blob.core.chinaclouapi.cn/jsonsamplefiles/dictionary.json?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D'
     INGESTION_PROPERTIES = IngestionProperties(database=DATABASE, table=TABLE, dataFormat=DataFormat.multijson, mappingReference=MAPPING)u

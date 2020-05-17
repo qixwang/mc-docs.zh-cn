@@ -2,18 +2,18 @@
 title: 使用 Powershell 在 Azure Stack Hub 中监视更新
 description: 了解如何使用 Powershell 在 Azure Stack Hub 中监视更新
 author: WenJason
-ms.topic: article
-origin.date: 1/22/2020
-ms.date: 02/24/2020
+ms.topic: how-to
+origin.date: 03/04/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.lastreviewed: 08/23/2019
 ms.reviewer: ppacent
-ms.openlocfilehash: e26eda62054e1b90565200d01d314c1bae1ccb9e
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 8748804ebf07a9d0a556f4f868d61fd65192344c
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540269"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422601"
 ---
 # <a name="monitor-updates-in-azure-stack-hub-using-powershell"></a>使用 Powershell 在 Azure Stack Hub 中监视更新
 

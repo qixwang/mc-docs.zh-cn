@@ -4,16 +4,16 @@ description: 了解如何使用 Power BI 连接到 Azure Analysis Services 服�
 author: rockboyfor
 ms.service: azure-analysis-services
 ms.topic: conceptual
-origin.date: 10/30/2019
-ms.date: 11/25/2019
+origin.date: 03/30/2020
+ms.date: 04/30/2020
 ms.author: v-yeche
 ms.reviewer: minewiskan
-ms.openlocfilehash: 22f99a397e296c423a5943feb6f69a46ac6a4d02
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: f0a32a38d7bf92cfd7fd2e9ee630392f95e34f65
+ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74203637"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83392291"
 ---
 # <a name="connect-with-power-bi"></a>使用 Power BI 进行连接
 

@@ -6,14 +6,14 @@ author: rockboyfor
 ms.service: virtual-machines
 ms.topic: article
 origin.date: 02/03/2020
-ms.date: 03/09/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: 4c055d43ec62cb7136753ca4c49b41f7749a03bb
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 68a51b312af41376d3ba0e15b929ce25025bae50
+ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79084451"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83392435"
 ---
 <!--Verified successfully-->
 <!--Partical contents from verified content. -->
@@ -79,5 +79,4 @@ ACU：195 - 210
 
 了解有关 [Azure 计算单元 (ACU)](acu.md) 如何帮助跨 Azure SKU 比较计算性能的详细信息。
 
-<!-- Update_Description: new article about fsv2 series -->
-<!--NEW.date: 03/09/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

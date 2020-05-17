@@ -2,18 +2,18 @@
 title: 对 Azure Stack Hub 应用原始设备制造商 (OEM) 更新
 description: 了解如何对 Azure Stack Hub 应用原始设备制造商 (OEM) 更新。
 author: WenJason
-ms.topic: article
+ms.topic: how-to
 origin.date: 10/15/2019
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.author: v-jay
-ms.lastreviewed: 08/15/2019
+ms.lastreviewed: 03/04/2020
 ms.reviewer: ppacent
-ms.openlocfilehash: 313ba6e9c69fd86b3f57d725cac653554d83549e
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: e40e348a3b40f91438c8a239352af30ee0f2fb21
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540268"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422600"
 ---
 # <a name="apply-azure-stack-hub-original-equipment-manufacturer-oem-updates"></a>应用 Azure Stack Hub 原始设备制造商 (OEM) 更新
 

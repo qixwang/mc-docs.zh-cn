@@ -6,14 +6,14 @@ author: rockboyfor
 ms.service: virtual-machines
 ms.topic: article
 origin.date: 02/03/2020
-ms.date: 03/09/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: 34dd2106e45ba96d14494cd56628cd4e91646a66
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 531ae72536dafbb0f9dd703f0798eae0bb1eceba
+ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79084469"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83392229"
 ---
 <!--Verified successfully-->
 <!--Partical Content from verified articles-->
@@ -60,5 +60,4 @@ ACU：100
 
 了解有关 [Azure 计算单元 (ACU)](acu.md) 如何帮助跨 Azure SKU 比较计算性能的详细信息。
 
-<!-- Update_Description: new article about av2 series -->
-<!--NEW.date: 03/09/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

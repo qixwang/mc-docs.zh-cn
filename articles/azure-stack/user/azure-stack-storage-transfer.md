@@ -3,17 +3,17 @@ title: 在 Azure Stack Hub 存储中使用数据传输工具
 description: 了解 Azure Stack Hub 存储数据传输工具。
 author: WenJason
 ms.topic: conceptual
-origin.date: 11/06/2019
-ms.date: 02/24/2020
+origin.date: 04/20/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: xiaofmao
 ms.lastreviewed: 11/06/2019
-ms.openlocfilehash: b8d762e6315f2c3c59d8c3f6bac0a4c52a851856
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 910d3929c2131004c2c867bfd39bb08af62eed39
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77541011"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422638"
 ---
 # <a name="use-data-transfer-tools-in-azure-stack-hub-storage"></a>在 Azure Stack Hub 存储中使用数据传输工具
 

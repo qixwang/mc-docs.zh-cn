@@ -3,17 +3,17 @@ title: Start-AzsReadinessChecker cmdlet 参考
 description: Azure Stack Hub 就绪性检查器模块的 PowerShell cmdlet 帮助。
 author: WenJason
 ms.topic: conceptual
-origin.date: 01/07/2020
-ms.date: 02/24/2020
+origin.date: 03/04/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: unknown
 ms.lastreviewed: 05/09/2019
-ms.openlocfilehash: d950bdee271608d4d38c19e32187f1e39ad351f3
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: d2d973bc39992d3a8ad6633dc081fe96dbe03593
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540888"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422149"
 ---
 # <a name="start-azsreadinesschecker-cmdlet-reference"></a>Start-AzsReadinessChecker cmdlet 参考
 

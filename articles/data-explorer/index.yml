@@ -9,13 +9,13 @@ metadata:
   author: orspod
   ms.author: v-tawe
   origin.date: 03/19/2020
-  ms.date: 03/30/2020
-  ms.openlocfilehash: 257ef25be15e054f06f4128a82c060328bee630a
-  ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+  ms.date: 05/09/2020
+  ms.openlocfilehash: 391806b859b6576c2ee8d8fa2a49584b54cd6f63
+  ms.sourcegitcommit: bfbd6694da33f703481386f2a3f16850c4e94bfa
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 04/17/2020
-  ms.locfileid: "80522062"
+  ms.lasthandoff: 05/15/2020
+  ms.locfileid: "83417621"
 landingContent:
 - title: 关于 Azure 数据资源管理器
   linkLists:
@@ -33,7 +33,7 @@ landingContent:
     links:
     - text: Python
       url: create-cluster-database-python.md
-    - text: Azure 资源管理器模板
+    - text: Azure Resource Manager 模板
       url: create-cluster-database-resource-manager.md
     - text: C#
       url: create-cluster-database-csharp.md
@@ -53,8 +53,6 @@ landingContent:
       url: ingest-sample-data.md
   - linkListType: how-to-guide
     links:
-    - text: 一键式引入
-      url: ingest-data-one-click.md
     - text: 流式引入
       url: ingest-data-streaming.md
     - text: Python
@@ -84,7 +82,7 @@ landingContent:
     - text: KQL 快速参考
       url: kql-quick-reference.md
     - text: Kusto 查询语言
-      url: https://docs.microsoft.com/azure/kusto/query/
+      url: https://docs.microsoft.com/azure/data-explorer/kusto/query/index
 - title: 可视化数据
   linkLists:
   - linkListType: concept
@@ -132,6 +130,6 @@ landingContent:
   - linkListType: reference
     links:
     - text: 管理命令
-      url: https://docs.microsoft.com/azure/kusto/management/
+      url: https://docs.microsoft.com/azure/data-explorer/kusto/management/index
     - text: Azure 数据资源管理器 API
-      url: https://docs.microsoft.com/azure/kusto/api/
+      url: https://docs.microsoft.com/azure/data-explorer/kusto/api/index

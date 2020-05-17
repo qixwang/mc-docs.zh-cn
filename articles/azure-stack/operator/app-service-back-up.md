@@ -4,16 +4,16 @@ description: 了解如何备份 Azure Stack Hub 上的应用服务。
 author: WenJason
 ms.topic: article
 origin.date: 04/23/2019
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: anwestg
 ms.lastreviewed: 03/21/2019
-ms.openlocfilehash: 94889c4df188a2275c06b6a6084f2329ddc50c49
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 0b77881a4937f9354b328c8ad87d5f452bf863b0
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540636"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422158"
 ---
 # <a name="back-up-app-service-on-azure-stack-hub"></a>备份 Azure Stack Hub 上的应用服务
 

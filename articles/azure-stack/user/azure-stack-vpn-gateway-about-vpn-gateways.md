@@ -4,15 +4,15 @@ description: 为 Azure Stack Hub 创建和配置 VPN 网关。
 author: WenJason
 ms.topic: conceptual
 origin.date: 01/24/2020
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.lastreviewed: 05/21/2019
-ms.openlocfilehash: 1226b7a80759df1dd777bb4372df63943512b237
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 1ef4fbdd43cf3468df694e934cc949ff5ea7a894
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79291165"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422582"
 ---
 # <a name="create-vpn-gateways-for-azure-stack-hub"></a>为 Azure Stack Hub 创建 VPN 网关
 

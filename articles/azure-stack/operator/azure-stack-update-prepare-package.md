@@ -2,18 +2,18 @@
 title: 准备 Azure Stack Hub 更新包
 description: 了解如何准备 Azure Stack Hub 更新包。
 author: WenJason
-ms.topic: article
-origin.date: 1/22/2020
-ms.date: 02/24/2020
+ms.topic: how-to
+origin.date: 03/04/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.lastreviewed: 09/10/2019
 ms.reviewer: ppacent
-ms.openlocfilehash: b6d0d7a13d40b3d8fbe78026f819f50730c7679a
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 496648a9ec6d96ab9dc7ebe6f271cc787b9d93f6
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540267"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422603"
 ---
 # <a name="prepare-an-azure-stack-hub-update-package"></a>准备 Azure Stack Hub 更新包
 

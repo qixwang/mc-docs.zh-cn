@@ -4,16 +4,16 @@ description: 了解如何让云解决方案提供商 (CSP) 为你管理 Azure St
 author: WenJason
 ms.topic: article
 origin.date: 01/22/2020
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: alfredop
 ms.lastreviewed: 05/20/2019
-ms.openlocfilehash: 76dcfcf949f2977dcf7db956b60884077e9f1376
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: db8fd1323fdf6a7d40b45f1b93d8565c2b1d8695
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540844"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422454"
 ---
 # <a name="let-your-cloud-solution-provider-manage-your-azure-stack-hub-subscription"></a>让云解决方案提供商管理 Azure Stack Hub 订阅
 

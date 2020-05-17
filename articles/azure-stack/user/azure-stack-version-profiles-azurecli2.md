@@ -3,17 +3,17 @@ title: 使用 Azure CLI 管理 Azure Stack Hub
 description: 了解如何使用跨平台命令行接口 (CLI) 管理和部署 Azure Stack Hub 上的资源。
 author: WenJason
 ms.topic: article
-origin.date: 12/10/2019
-ms.date: 02/24/2020
+origin.date: 04/20/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: sijuman
 ms.lastreviewed: 12/10/2019
-ms.openlocfilehash: d6d0518f3ba9789c28b0236cfb88dad6be2b4771
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 154d15581cb7211c67f7343fb4ffdf68a538c408
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540743"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422590"
 ---
 # <a name="manage-and-deploy-resources-to-azure-stack-hub-with-azure-cli"></a>使用 Azure CLI 管理资源以及将资源部署到 Azure Stack Hub
 

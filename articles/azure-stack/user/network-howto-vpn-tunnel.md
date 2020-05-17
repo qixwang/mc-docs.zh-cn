@@ -3,17 +3,17 @@ title: 如何在 Azure Stack Hub 中设置多个站点到站点 VPN 隧道
 description: 了解如何在 Azure Stack Hub 中设置多个站点到站点 VPN 隧道。
 author: WenJason
 ms.topic: how-to
-origin.date: 09/19/2019
-ms.date: 02/24/2020
+origin.date: 04/20/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: sijuman
 ms.lastreviewed: 09/19/2019
-ms.openlocfilehash: d2ebd93312473e39c98bd17492daa87ada8c77a8
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 76651f4cde61fad0ff895ff468f49881e0d3573c
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540037"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422648"
 ---
 # <a name="how-to-set-up-a-multiple-site-to-site-vpn-tunnel-in-azure-stack-hub"></a>如何在 Azure Stack Hub 中设置多个站点到站点 VPN 隧道
 

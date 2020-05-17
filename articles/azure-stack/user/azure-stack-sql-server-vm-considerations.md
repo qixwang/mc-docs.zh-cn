@@ -4,16 +4,16 @@ description: 本文提供的 SQL Server 最佳做法有助于提高 Azure Stack 
 author: WenJason
 ms.topic: article
 origin.date: 04/02/2019
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: anajod
-ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 27952342068b5c4c49db6a416c4546c4d1f9c859
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.lastreviewed: 01/14/2020
+ms.openlocfilehash: dd811f5f0f1b2144e59267418dd06b389e1639b0
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77541015"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422359"
 ---
 # <a name="sql-server-best-practices-to-optimize-performance-in-azure-stack-hub"></a>有关优化 Azure Stack Hub 性能的 SQL Server 最佳做法
 

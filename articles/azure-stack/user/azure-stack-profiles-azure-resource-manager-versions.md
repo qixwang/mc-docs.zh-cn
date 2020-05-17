@@ -4,16 +4,16 @@ description: 了解 Azure Stack Hub 中的配置文件支持的 Azure 资源管�
 author: WenJason
 ms.topic: article
 origin.date: 01/07/2020
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: sijuman
 ms.lastreviewed: 05/08/2019
-ms.openlocfilehash: 94c59242d084e9184bdf52e8d793d4546749493a
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 9f229d7fc80ca6324433b1048ee1e1d69be47c41
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77541043"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422541"
 ---
 # <a name="resource-provider-api-versions-supported-by-profiles-in-azure-stack-hub"></a>Azure Stack Hub 中的配置文件支持的资源提供程序 API 版本
 
@@ -116,7 +116,7 @@ API 配置文件使用三个命名约定：
 | 事件类型 | 2015-04-01 |
 | 事件类别 | 2015-04-01 |
 | 指标定义 | 2018-01-01 |
-| 度量值 | 2018-01-01 |
+| 指标 | 2018-01-01 |
 | 诊断设置 | 2017-05-01-preview |
 | 诊断设置类别 | 2017-05-01-preview |
 
@@ -166,8 +166,8 @@ API 配置文件使用三个命名约定：
 | 操作 | 2018-05-01 |
 | 提供程序 | 2018-05-01 |
 | ResourceGroups| 2018-05-01 |
-| 资源 | 2018-05-01/ |
-| Subscriptions | 2018-05-01 |
+| 资源 | 2018-05-01 |
+| 订阅 | 2018-05-01 |
 | 订阅/位置 | 2016-06-01 |
 | 订阅/操作结果 | 2018-05-01 |
 | 订阅/提供程序 | 2018-05-01 |

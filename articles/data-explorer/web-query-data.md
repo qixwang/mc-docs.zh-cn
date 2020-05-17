@@ -7,13 +7,13 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 origin.date: 09/24/2018
-ms.date: 08/05/2019
-ms.openlocfilehash: a09e2864c8798867ef79878da023cbcffe593c75
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/09/2020
+ms.openlocfilehash: bd20d7557a629a96f08d3bb22854df902761b6a0
+ms.sourcegitcommit: bfbd6694da33f703481386f2a3f16850c4e94bfa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74020851"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83417560"
 ---
 # <a name="quickstart-query-data-in-azure-data-explorer-web-ui"></a>快速入门：在 Azure 数据资源管理器 Web UI 中查询数据
 
@@ -41,7 +41,7 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
 
 1. 在“添加群集”对话框中，输入 URI，然后选择“添加”   。
 
-   可使用 help 群集 URI `https://help.kusto.chinacloudapi.cn`。 如果你有自己的群集，请提供自己的群集 URI。 例如，`https://mydataexplorercluster.chinanorth.kusto.chinacloudapi.cn`，如下图所示：
+   可使用 help 群集 URI `https://help.kusto.chinacloudapi.cn`。 如果你有自己的群集，请提供自己的群集 URI。 例如，`https://mydataexplorercluster.chinanorth2.kusto.chinacloudapi.cn`，如下图所示：
 
     ![门户中的服务器 URI](media/web-query-data/server-uri.png)
 
@@ -57,7 +57,7 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
 
 1. 在“添加群集”对话框中，以 `https://<ClusterName>.<Region>.kusto.chinacloudapi.cn/` 格式输入测试群集 URL，然后选择“添加”   。
 
-    在以下示例中，会看到 help 群集和一个新群集 docscluster.chinaeast2（完整 URL 为 `https://docscluster.chinanorth.kusto.chinacloudapi.cn/`）   。
+    在以下示例中，会看到 help 群集和一个新群集 docscluster.chinaeast2（完整 URL 为 `https://docscluster.chinanorth2.kusto.chinacloudapi.cn/`）   。
 
     ![测试群集](media/web-query-data/test-cluster.png)
 

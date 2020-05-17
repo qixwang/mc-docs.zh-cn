@@ -4,16 +4,16 @@ description: 了解如何在 Azure Stack Hub 中准备扩展主机，扩展主�
 author: WenJason
 ms.author: v-jay
 origin.date: 1/22/2020
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.topic: article
 ms.reviewer: thoroet
 ms.lastreviewed: 03/07/2019
-ms.openlocfilehash: ce950e37205a2160a56026085812baf744b179c0
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 181930337905f3d94697f9a27b6f38aa58a47347
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540995"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422524"
 ---
 # <a name="prepare-for-extension-host-in-azure-stack-hub"></a>在 Azure Stack Hub 中准备扩展主机
 

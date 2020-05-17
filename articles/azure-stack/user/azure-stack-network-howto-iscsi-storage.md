@@ -3,17 +3,17 @@ title: 如何使用 Azure Stack Hub 连接到 iSCSI 存储
 description: 了解如何使用 Azure Stack Hub 连接到 iSCSI 存储。
 author: WenJason
 ms.topic: how-to
-origin.date: 10/28/2019
-ms.date: 02/24/2020
+origin.date: 04/20/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: sijuman
 ms.lastreviewed: 10/28/2019
-ms.openlocfilehash: 07823a434c71d88d5414be8e14933d858080591b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 1f01b278444df398356b5b46c9b324be288b9737
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540032"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422035"
 ---
 # <a name="connect-to-iscsi-storage-with-azure-stack-hub"></a>使用 Azure Stack Hub 连接到 iSCSI 存储
 

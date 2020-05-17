@@ -19,12 +19,12 @@ origin.date: 04/20/2018
 ms.date: 10/19/2018
 ms.author: v-lingli
 ms.custom: mvc
-ms.openlocfilehash: a314249faa2601ae48a05fe2e2dfac45dc30559f
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: edc7b058d421cddc9c846d0dfa6b68b104db330e
+ms.sourcegitcommit: b81ea2ab9eafa986986fa3eb1e784cfe9bbf9ec1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79290723"
+ms.lasthandoff: 05/13/2020
+ms.locfileid: "83367835"
 ---
 # <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem---azure-cli"></a>快速入门：诊断虚拟机网络流量筛选器问题 - Azure CLI
 
@@ -33,17 +33,17 @@ ms.locfileid: "79290723"
 如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 
 
-如果选择在本地安装并使用 CLI，本快速入门要求运行 Azure CLI 2.0.28 或更高版本。 要查找已安装的版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0](https://docs.azure.cn/zh-cn/cli/install-azure-cli?view=azure-cli-latest)。 验证 CLI 版本以后，请运行 `az login`，以便创建与 Azure 的连接。 本快速入门中的 CLI 命令已格式化，适合在 Bash Shell 中运行。
+如果选择在本地安装并使用 CLI，本快速入门要求运行 Azure CLI 2.0.28 或更高版本。 要查找已安装的版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0](https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest)。 验证 CLI 版本以后，请运行 `az login`，以便创建与 Azure 的连接。 本快速入门中的 CLI 命令已格式化，适合在 Bash Shell 中运行。
 
 ## <a name="create-a-vm"></a>创建 VM
 
-在创建 VM 之前，必须创建该 VM 所属的资源组。 使用 [az group create](https://docs.azure.cn/zh-cn/cli/group?view=azure-cli-latest#az-group-create) 创建资源组。 以下示例在“chinaeast”  位置创建名为“myResourceGroup”  的资源组：
+在创建 VM 之前，必须创建该 VM 所属的资源组。 使用 [az group create](https://docs.azure.cn/cli/group?view=azure-cli-latest#az-group-create) 创建资源组。 以下示例在“chinaeast”  位置创建名为“myResourceGroup”  的资源组：
 
 ```azurecli
 az group create --name myResourceGroup --location chinaeast
 ```
 
-使用 [az vm create](https://docs.azure.cn/zh-cn/cli/vm?view=azure-cli-latest#az-vm-create) 创建 VM。 如果默认密钥位置中尚不存在 SSH 密钥，该命令会创建它们。 若要使用特定的一组密钥，请使用 `--ssh-key-value` 选项。 以下示例创建名为 myVm 的 VM  ：
+使用 [az vm create](https://docs.azure.cn/cli/vm?view=azure-cli-latest#az-vm-create) 创建 VM。 如果默认密钥位置中尚不存在 SSH 密钥，该命令会创建它们。 若要使用特定的一组密钥，请使用 `--ssh-key-value` 选项。 以下示例创建名为 myVm 的 VM  ：
 
 ```azurecli
 az vm create \
@@ -61,7 +61,7 @@ az vm create \
 
 ### <a name="enable-network-watcher"></a>启用网络观察程序
 
-如果已在“中国东部 2”区域启用网络观察程序，请跳到[使用 IP 流验证](#use-ip-flow-verify)。 使用 [az network watcher configure](https://docs.azure.cn/zh-cn/cli/network/watcher?view=azure-cli-latest#az-network-watcher-configure) 命令在“中国东部 2”区域中创建网络观察程序：
+如果已在“中国东部 2”区域启用网络观察程序，请跳到[使用 IP 流验证](#use-ip-flow-verify)。 使用 [az network watcher configure](https://docs.azure.cn/cli/network/watcher?view=azure-cli-latest#az-network-watcher-configure) 命令在“中国东部 2”区域中创建网络观察程序：
 
 ```azurecli
 az network watcher configure \
@@ -72,7 +72,7 @@ az network watcher configure \
 
 ### <a name="use-ip-flow-verify"></a>使用 IP 流验证
 
-创建 VM 时，Azure 在默认情况下会允许或拒绝出入 VM 的网络流量。 可以在以后覆盖 Azure 的默认设置，允许或拒绝其他类型的流量。 若要测试来自一个源 IP 地址但发往不同目标的流量是获得允许还是被拒绝，请使用 [az network watcher test-ip-flow](https://docs.azure.cn/zh-cn/cli/network/watcher?view=azure-cli-latest#az-network-watcher-test-ip-flow) 命令。
+创建 VM 时，Azure 在默认情况下会允许或拒绝出入 VM 的网络流量。 可以在以后覆盖 Azure 的默认设置，允许或拒绝其他类型的流量。 若要测试来自一个源 IP 地址但发往不同目标的流量是获得允许还是被拒绝，请使用 [az network watcher test-ip-flow](https://docs.azure.cn/cli/network/watcher?view=azure-cli-latest#az-network-watcher-test-ip-flow) 命令。
 
 测试从 VM 发往 www.bing.com 的某个 IP 地址的出站通信：
 
@@ -124,7 +124,7 @@ az network watcher test-ip-flow \
 
 ## <a name="view-details-of-a-security-rule"></a>查看安全规则的详细信息
 
-若要确定[使用 IP 流验证](#use-ip-flow-verify)中的规则允许或阻止通信的原因，请使用 [az network nic list-effective-nsg](https://docs.azure.cn/zh-cn/cli/network/nic?view=azure-cli-latest#az-network-nic-list-effective-nsg) 命令查看网络接口的有效安全规则：
+若要确定[使用 IP 流验证](#use-ip-flow-verify)中的规则允许或阻止通信的原因，请使用 [az network nic list-effective-nsg](https://docs.azure.cn/cli/network/nic?view=azure-cli-latest#az-network-nic-list-effective-nsg) 命令查看网络接口的有效安全规则：
 
 ```azurecli
 az network nic list-effective-nsg \
@@ -243,7 +243,7 @@ az network nic list-effective-nsg \
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不再需要资源组及其包含的所有资源，可以使用 [az group delete](https://docs.azure.cn/zh-cn/cli/group?view=azure-cli-latest#az-group-delete) 将其删除：
+如果不再需要资源组及其包含的所有资源，可以使用 [az group delete](https://docs.azure.cn/cli/group?view=azure-cli-latest#az-group-delete) 将其删除：
 
 ```azurecli
 az group delete --name myResourceGroup --yes
@@ -251,7 +251,7 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你已创建 VM 并对入站和出站网络流量筛选器进行诊断。 你已了解了如何通过网络安全组规则来允许或拒绝出入 VM 的流量。 请详细了解[安全规则](../virtual-network/security-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)以及如何[创建安全规则](../virtual-network/manage-network-security-group.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#create-a-security-rule)。
+在本快速入门中，你已创建 VM 并对入站和出站网络流量筛选器进行诊断。 你已了解了如何通过网络安全组规则来允许或拒绝出入 VM 的流量。 请详细了解[安全规则](https://docs.azure.cn/virtual-network/security-overview?toc=/azure/network-watcher/toc.json)以及如何[创建安全规则](https://docs.azure.cn/virtual-network/manage-network-security-group?toc=/azure/network-watcher/toc.json#create-a-security-rule)。
 
 即使相应的网络流量筛选器已就位，与 VM 的通信仍可能因路由配置问题而失败。 若要了解如何诊断 VM 网络路由问题，请参阅[诊断 VM 路由问题](diagnose-vm-network-routing-problem-cli.md)；若要使用某个工具诊断出站路由、延迟和流量筛选问题，请参阅[排查连接问题](network-watcher-connectivity-cli.md)。
 

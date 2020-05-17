@@ -4,16 +4,16 @@ description: 了解如何在 Azure Stack Hub 中注册租户以及如何跟踪�
 author: WenJason
 ms.topic: article
 origin.date: 01/22/2020
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: alfredop
 ms.lastreviewed: 10/14/2019
-ms.openlocfilehash: 67b8ed7bb087e84dda67a2d5c80c2b0f173752d0
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 670a95a3c00b86af79d8a13139b1cc92c3a2a78f
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292435"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422389"
 ---
 # <a name="register-tenants-for-usage-tracking-in-azure-stack-hub"></a>在 Azure Stack Hub 中注册租户以跟踪使用情况
 

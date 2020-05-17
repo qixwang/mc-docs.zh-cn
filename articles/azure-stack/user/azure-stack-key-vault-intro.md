@@ -4,15 +4,15 @@ description: 了解 Key Vault 如何管理 Azure Stack Hub 中的密钥和机密
 author: WenJason
 ms.topic: conceptual
 origin.date: 01/24/2020
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.lastreviewed: 05/21/2019
-ms.openlocfilehash: 231e2d900c348f319a82576a1ee975d162800f98
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 68bb8eb55f8c1e3ad017791b16401bc8a9c9a373
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540797"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422365"
 ---
 # <a name="introduction-to-key-vault-in-azure-stack-hub"></a>Azure Stack Hub 中的 Key Vault 简介
 

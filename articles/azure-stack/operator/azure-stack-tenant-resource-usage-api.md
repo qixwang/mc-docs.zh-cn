@@ -5,16 +5,16 @@ description: 资源使用情况 API（用于检索 Azure Stack Hub 使用情况�
 author: WenJason
 ms.topic: article
 origin.date: 01/24/2020
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: alfredop
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 78abdd64bf9fd803d520d06fc0d722dab8f450a5
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 94a89924eab2dccb88aa7bcac1ba939b08c630bb
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540272"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422378"
 ---
 # <a name="tenant-resource-usage-api-reference"></a>租户资源使用情况 API 参考
 

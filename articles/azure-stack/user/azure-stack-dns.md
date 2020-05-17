@@ -4,15 +4,15 @@ description: 了解 Azure Stack Hub 中的 DNS 以及如何创建和管理 DNS �
 author: WenJason
 ms.topic: article
 origin.date: 01/24/2020
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.author: v-jay
-ms.lastreviewed: 01/05/2019
-ms.openlocfilehash: 9bd8612398cc05c73a075049fa232ccf8823c8d3
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.lastreviewed: 01/05/2020
+ms.openlocfilehash: ebc4ddeabba1a407afc3929b81c4ac0dfd62c9ee
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540805"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422367"
 ---
 # <a name="use-dns-in-azure-stack-hub"></a>使用 Azure Stack Hub 中的 DNS
 

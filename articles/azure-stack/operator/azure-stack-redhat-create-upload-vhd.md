@@ -5,16 +5,16 @@ description: 了解如何创建和上传包含 Red Hat Linux 操作系统的 Azu
 author: WenJason
 ms.topic: article
 origin.date: 12/11/2019
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: kivenkat
 ms.lastreviewed: 12/11/2019
-ms.openlocfilehash: 41e647914d7fda9ee4cbe84c4ed33e7553f95c8d
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 280c084917de9f7b27d2dc2b3264180602133b22
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540352"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422474"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure-stack-hub"></a>为 Azure Stack Hub 准备基于 Red Hat 的虚拟机
 

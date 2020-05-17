@@ -7,13 +7,13 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 02/03/2020
-ms.date: 02/17/2020
-ms.openlocfilehash: f9df2c50b6ac9f42723a78133b3965123cfda764
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/09/2020
+ms.openlocfilehash: 078a04fca215ea4a165cfd727522cf5d3f3ab285
+ms.sourcegitcommit: bfbd6694da33f703481386f2a3f16850c4e94bfa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77037933"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83417636"
 ---
 # <a name="end-to-end-blob-ingestion-into-azure-data-explorer-through-python"></a>通过 Python 以端到端方式将 blob 引入到 Azure 数据资源管理器中
 
@@ -42,9 +42,15 @@ pip install azure-mgmt-eventgrid
 pip install azure-kusto-data
 pip install azure-storage-blob
 ```
-[!INCLUDE [data-explorer-authentication](../../includes/data-explorer-authentication.md)]
 
-[!INCLUDE [data-explorer-e2e-event-grid-resource-template](../../includes/data-explorer-e2e-event-grid-resource-template.md)]
+> [!NOTE]
+> 请将终结点从  
+> `CLOUD_LOGIN_URL = "https://login.microsoftonline.com/"` 到 `CLOUD_LOGIN_URL = "https://login.partner.microsoftonline.cn"`  
+> （在下载的库文件 `<YourPythonInstallPath>\Lib\site-packages\azure\kusto\data\security.py` 中），使其可在 Azure 中国内运行。
+
+[!INCLUDE [data-explorer-authentication](includes/data-explorer-authentication.md)]
+
+[!INCLUDE [data-explorer-e2e-event-grid-resource-template](includes/data-explorer-e2e-event-grid-resource-template.md)]
 
 ## <a name="code-example"></a>代码示例 
 
@@ -70,8 +76,8 @@ client_id = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx"
 #Client secret
 client_secret = "xxxxxxxxxxxxxx"
 subscription_id = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx"
-location = "China East"
-location_small_case = "chinaeast"
+location = "China East 2"
+location_small_case = "chinaeast2"
 #Path to the Azure Resource Manager template JSON from the previous section
 azure_resource_template_path = "xxxxxxxxx/template.json";
 

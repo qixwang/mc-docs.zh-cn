@@ -4,17 +4,17 @@ titleSuffix: Azure Stack Hub
 description: 使用 Azure Stack Hub 就绪性检查器解决 Azure Stack Hub PKI 证书的常见问题。
 author: WenJason
 ms.topic: conceptual
-origin.date: 10/03/2019
-ms.date: 02/24/2020
+origin.date: 03/04/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: unknown
-ms.lastreviewed: 11/19/2018
-ms.openlocfilehash: 20cb014eaa94b35afa7bb8dbb972dd26f135e5de
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.lastreviewed: 11/19/2019
+ms.openlocfilehash: 5034d7db590d259312c6b936dbfe74e8daf5506a
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540338"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422113"
 ---
 # <a name="fix-common-issues-with-azure-stack-hub-pki-certificates"></a>解决 Azure Stack Hub PKI 证书的常见问题
 

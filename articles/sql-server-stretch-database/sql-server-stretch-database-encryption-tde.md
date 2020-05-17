@@ -9,18 +9,18 @@ ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.topic: article
 origin.date: 06/14/2016
-ms.date: 01/19/2020
+ms.date: 05/18/2020
 author: rockboyfor
 ms.author: v-yeche
 ms.reviewer: jroth
 manager: digimobile
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 9ea61566c491467d95467aacbef9e61344dcec51
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 04461e957094e8a4b49884efbfc94b2f95bc24d0
+ms.sourcegitcommit: bfbd6694da33f703481386f2a3f16850c4e94bfa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "76270075"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83417784"
 ---
 # <a name="enable-transparent-data-encryption-tde-for-stretch-database-on-azure"></a>为 Azure 上的 Stretch Database 启用透明数据加密 (TDE)
 > [!div class="op_single_selector"]

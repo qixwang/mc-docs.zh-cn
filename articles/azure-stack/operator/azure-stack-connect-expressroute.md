@@ -3,17 +3,17 @@ title: 使用 ExpressRoute 将 Azure Stack Hub 连接到 Azure
 description: 了解如何使用 ExpressRoute 将 Azure Stack Hub 中的虚拟网络连接到 Azure 中的虚拟网络。
 author: WenJason
 ms.topic: conceptual
-origin.date: 01/23/2020
-ms.date: 03/23/2020
+origin.date: 04/20/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: unknown
 ms.lastreviewed: 10/22/2019
-ms.openlocfilehash: 350f34a29b93e926d68b8d93cfafbda812e2e4c1
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: cd89312ec7c01803faca8d98b420511ef6d95fb3
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79547074"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422437"
 ---
 # <a name="connect-azure-stack-hub-to-azure-using-azure-expressroute"></a>使用 Azure ExpressRoute 将 Azure Stack Hub 连接到 Azure
 
@@ -52,7 +52,7 @@ ms.locfileid: "79547074"
 
 下图显示了使用本文中的示例完成设置 ExpressRoute 后的 Azure Stack Hub 和 Azure 环境：
 
-![ExpressRoute 网络](media/azure-stack-connect-expressroute/Conceptual.png)
+![ExpressRoute 网络](media/azure-stack-connect-expressroute/conceptual.svg)
 
 下图显示多个租户如何从 Azure Stack Hub 基础结构通过 ExpressRoute 路由器连接到 Azure：
 
@@ -69,7 +69,7 @@ ms.locfileid: "79547074"
 >[!NOTE]
 >以下步骤说明如何使用 Azure Stack Hub 门户创建资源，但也可以使用 PowerShell。
 
-![Azure Stack Hub 网络设置](media/azure-stack-connect-expressroute/image2.png)
+![Azure Stack Hub 网络设置](media/azure-stack-connect-expressroute/azure-stack-connect-expressrouteimage-image2.svg)
 
 ### <a name="before-you-begin"></a>准备阶段
 
@@ -268,7 +268,7 @@ ASDK 是自主性的，与部署物理主机的网络相隔离。 网关连接�
 
 完成 Azure Stack Hub 的配置后，可以部署 Azure 资源。 下图显示了 Azure 中的租户虚拟网络示例。 对于 Azure 中的 VNet，可以使用任何名称和地址方案。 但是，在 Azure 和 Azure Stack Hub 中，VNet 的地址范围必须唯一，不得重叠：
 
-![Azure VNet](media/azure-stack-connect-expressroute/AzureArchitecture.png)
+![Azure VNet](media/azure-stack-connect-expressroute/azurearchitecture.svg)
 
 在 Azure 中部署的资源类似于在 Azure Stack Hub 中部署的资源。 部署以下组件：
 

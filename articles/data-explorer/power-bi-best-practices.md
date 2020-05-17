@@ -3,17 +3,17 @@ title: 有关使用 Power BI 查询和可视化 Azure 数据资源管理器数�
 description: 本文提供有关使用 Power BI 查询和可视化 Azure 数据资源管理器数据的最佳做法。
 author: orspod
 ms.author: v-tawe
-ms.reviewer: mblythe
+ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 09/26/2019
-ms.date: 11/18/2019
-ms.openlocfilehash: bf103181b1e722ca8947ab36d3f99f09376fb835
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/09/2020
+ms.openlocfilehash: 3e4582b1904ed2e10ea4fb3acdc6bfdd383a6495
+ms.sourcegitcommit: bfbd6694da33f703481386f2a3f16850c4e94bfa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292704"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83417599"
 ---
 # <a name="best-practices-for-using-power-bi-to-query-and-visualize-azure-data-explorer-data"></a>有关使用 Power BI 查询和可视化 Azure 数据资源管理器数据的最佳做法
 
@@ -33,7 +33,7 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
 
    * 增加 [Power BI 中 DirectQuery 的并发连接](https://docs.microsoft.com/power-bi/desktop-directquery-about#maximum-number-of-connections-option-for-directquery)数目。
 
-   * 使用[弱一致性提高并行度](https://docs.microsoft.com/azure/kusto/concepts/queryconsistency)。 这可能会影响数据的新鲜度。
+   * 使用[弱一致性提高并行度](https://docs.microsoft.com/azure/data-explorer/kusto/concepts/queryconsistency)。 这可能会影响数据的新鲜度。
 
 * **有效切片器** – 使用[同步切片器](https://docs.microsoft.com/power-bi/visuals/power-bi-visualization-slicers#sync-and-use-slicers-on-other-pages)来防止报表在你准备就绪之前加载数据。 构建数据集、放置所有视觉对象并标记所有切片器之后，可以选择同步切片器，以便仅加载所需的数据。
 
@@ -47,7 +47,7 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
 
 ### <a name="complex-queries-in-power-bi"></a>Power BI 中的复杂查询
 
-与 Power Query 相比，在 Kusto 中可以更轻松地表达复杂查询。 这些查询应作为 [Kusto 函数](https://docs.microsoft.com/azure/kusto/query/functions)实现，并在 Power BI 中调用。 在 Kusto 查询中结合 `let` 语句使用 **DirectQuery** 时，必须采用此方法。 由于 Power BI 联接两个查询，而 `let` 语句不能与 `join` 运算符结合使用，因此可能会出现语法错误。 请将每个联接部分保存为 Kusto 函数，并允许 Power BI 将这两个函数联接在一起。
+与 Power Query 相比，在 Kusto 中可以更轻松地表达复杂查询。 这些查询应作为 [Kusto 函数](https://docs.microsoft.com/azure/data-explorer/kusto/query/functions/index)实现，并在 Power BI 中调用。 在 Kusto 查询中结合 `let` 语句使用 **DirectQuery** 时，必须采用此方法。 由于 Power BI 联接两个查询，而 `let` 语句不能与 `join` 运算符结合使用，因此可能会出现语法错误。 请将每个联接部分保存为 Kusto 函数，并允许 Power BI 将这两个函数联接在一起。
 
 ### <a name="how-to-simulate-a-relative-date-time-operator"></a>如何模拟相对日期时间运算符
 
@@ -73,11 +73,11 @@ in
 
 ### <a name="reaching-kusto-query-limits"></a>达到 Kusto 查询限制 
 
-默认情况下，如[查询限制](https://docs.microsoft.com/azure/kusto/concepts/querylimits)中所述，Kusto 查询最多返回 500,000 行或 64 MB 的结果。 可以使用“Azure 数据资源管理器(Kusto)”连接窗口中的“高级选项”来替代这些默认值：  
+默认情况下，如[查询限制](https://docs.microsoft.com/azure/data-explorer/kusto/concepts/querylimits)中所述，Kusto 查询最多返回 500,000 行或 64 MB 的结果。 可以使用“Azure 数据资源管理器(Kusto)”连接窗口中的“高级选项”来替代这些默认值：  
 
 ![高级选项](media/power-bi-best-practices/advanced-options.png)
 
-这些选项会连同查询一起发出 [set 语句](https://docs.microsoft.com/azure/kusto/query/setstatement)，以更改默认查询限制：
+这些选项会连同查询一起发出 [set 语句](https://docs.microsoft.com/azure/data-explorer/kusto/query/setstatement)，以更改默认查询限制：
 
   * “限制查询结果记录数”生成 `set truncationmaxrecords`
   * “限制查询结果数据大小(字节)”生成 `set truncationmaxsize`
@@ -85,7 +85,7 @@ in
 
 ### <a name="using-query-parameters"></a>使用查询参数
 
-可以使用[查询参数](https://docs.microsoft.com/azure/kusto/query/queryparametersstatement)来动态修改查询。 
+可以使用[查询参数](https://docs.microsoft.com/azure/data-explorer/kusto/query/queryparametersstatement)来动态修改查询。 
 
 #### <a name="using-a-query-parameter-in-the-connection-details"></a>在连接详细信息中使用查询参数
 
@@ -143,7 +143,7 @@ Power BI 包含可以定期对数据源发出查询的数据刷新计划程序�
 
 ### <a name="power-bi-can-send-only-short-lt2000-characters-queries-to-kusto"></a>Power BI 只能向 Kusto 发送短查询（&lt; 2000 字符）
 
-如果在 Power BI 中运行查询导致以下错误：“DataSource.Error:  Web.Contents 无法从 ... 获取内容”，原因是查询长度可能超过了 2000 个字符。 Power BI 使用 **PowerQuery** 并通过发出 HTTP GET 请求来查询 Kusto，而该请求会将查询编码为正在检索的 URI 的一部分。 因此，Power BI 发出的 Kusto 查询不能超过请求 URI 的最大长度（2000 字符减去小偏移量）。 解决方法之一是在 Kusto 中定义一个[存储函数](https://docs.microsoft.com/azure/kusto/query/schema-entities/stored-functions)，并让 Power BI 在查询中使用该函数。
+如果在 Power BI 中运行查询导致以下错误：“DataSource.Error:  Web.Contents 无法从 ... 获取内容”，原因是查询长度可能超过了 2000 个字符。 Power BI 使用 **PowerQuery** 并通过发出 HTTP GET 请求来查询 Kusto，而该请求会将查询编码为正在检索的 URI 的一部分。 因此，Power BI 发出的 Kusto 查询不能超过请求 URI 的最大长度（2000 字符减去小偏移量）。 解决方法之一是在 Kusto 中定义一个[存储函数](https://docs.microsoft.com/azure/data-explorer/kusto/query/schema-entities/stored-functions)，并让 Power BI 在查询中使用该函数。
 
 ## <a name="next-steps"></a>后续步骤
 

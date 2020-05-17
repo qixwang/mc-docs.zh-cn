@@ -5,16 +5,16 @@ description: 了解如何在 Azure Stack Hub 上更新 Windows Defender 防病�
 author: WenJason
 ms.topic: article
 origin.date: 12/04/2019
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: fiseraci
 ms.lastreviewed: 12/04/2019
-ms.openlocfilehash: 077fe78c6cdda5e7dcac133f33fe8e1bc37c94db
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 9817bb0e68f55567413d8c1aa869dda327d23e06
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540342"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422523"
 ---
 # <a name="update-windows-defender-antivirus-on-azure-stack-hub"></a>在 Azure Stack Hub 上更新 Windows Defender 防病毒
 

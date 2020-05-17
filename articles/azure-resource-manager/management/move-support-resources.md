@@ -5,12 +5,12 @@ ms.topic: conceptual
 origin.date: 04/06/2020
 ms.date: 04/30/2020
 ms.author: v-yeche
-ms.openlocfilehash: 28d0b64e3c2d0f03e81dba6210b1b79f984658a7
-ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
+ms.openlocfilehash: 58194291022d785ae5df69db86a94c8ffcb252d1
+ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82596254"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83392171"
 ---
 # <a name="move-operation-support-for-resources"></a>支持移动操作的资源
 本文列出某个 Azure 资源类型是否支持移动操作。 它还提供了有关移动资源时要考虑的特殊条件的信息。
@@ -618,7 +618,7 @@ ms.locfileid: "82596254"
 > | applyupdates | 否 | 否 |
 > | configurationassignments | 否 | 否 |
 > | maintenanceconfigurations | 是 | 是 |
-> | 更新 | 否 | 否 |
+> | updates | 否 | 否 |
 
 ## <a name="microsoftmanagedidentity"></a>Microsoft.ManagedIdentity
 
@@ -786,8 +786,7 @@ ms.locfileid: "82596254"
 > | replicationeligibilityresults | 否 | 否 |
 > | vaults | 是 | 是 |
 
-> [!IMPORTANT]
-> 请参阅[恢复服务移动指南](../../backup/backup-azure-move-recovery-services-vault.md?toc=/azure-resource-manager/toc.json)。
+<!--Not Available on [Recovery Services move guidance](../../backup/backup-azure-move-recovery-services-vault.md?toc=/azure-resource-manager/toc.json)-->
 
 <!--Not Available on ## Microsoft.RedHatOpenShift-->
 

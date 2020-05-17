@@ -4,16 +4,16 @@ description: Azure Stack Hub 使用情况和注册错误代码。
 author: WenJason
 ms.topic: article
 origin.date: 01/22/2020
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: avishwan
 ms.lastreviewed: 06/27/2019
-ms.openlocfilehash: e8c267337d34e15130bd974cd1905fc6cdfc1974
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: df7c891444655788751fb771d5d4c6beb066f808
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540351"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422384"
 ---
 # <a name="usage-and-billing-registration-error-codes"></a>使用情况和计费注册错误代码
 

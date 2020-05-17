@@ -1,28 +1,19 @@
 ---
-title: Azure Stack 遥测 | Microsoft Docs
+title: Azure Stack 遥测
 description: 了解如何使用 PowerShell 配置 Azure Stack 遥测设置。
-services: azure-stack
-documentationcenter: ''
 author: WenJason
-manager: digimobile
-editor: ''
-ms.assetid: ''
-ms.service: azure-stack
-ms.workload: na
-pms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 origin.date: 02/12/2019
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: misainat
-ms.lastreviewed: 10/15/2018
-ms.openlocfilehash: e483101c1367d4ab3cb4a9fe7ed82f7f2e4f3830
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.lastreviewed: 10/15/2019
+ms.openlocfilehash: f74336035bddce6d9f5760303664180adb92d39f
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292603"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422442"
 ---
 # <a name="azure-stack-telemetry"></a>Azure Stack 遥测
 
@@ -33,7 +24,7 @@ Azure Stack 系统数据或遥测数据通过互连用户体验自动上传到 A
 Azure Stack 遥测基于 Windows Server 2016 互连用户体验与遥测组件，该组件使用 [Windows 事件跟踪 (ETW)](https://msdn.microsoft.com/library/dn904632(v=vs.85).aspx) 跟踪日志记录技术来收集和存储遥测事件与数据。  Azure Stack 组件使用相同的日志记录技术，发布使用公共操作系统事件日志记录和跟踪 API 收集的事件与数据。 Azure Stack 组件的示例包括网络资源提供程序、存储资源提供程序、监视资源提供程序和更新资源提供程序。 互连用户体验与遥测组件使用 SSL 加密数据，并使用证书关联通过 HTTPS 将遥测数据传输到 Microsoft 数据管理服务。
 
 > [!NOTE]
-> 若要支持遥测数据流，必须在网络中开放端口 443 (HTTPS)。 互连用户体验与遥测组件连接到 Microsoft 数据管理服务 (https://v10.vortex-win.data.microsoft.com ) 和 https://settings-win.data.microsoft.com 来下载配置信息。
+> 若要支持遥测数据流，必须在网络中开放端口 443 (HTTPS)。 互连用户体验与遥测组件连接到 Microsoft 数据管理服务 (`https://v10.vortex-win.data.microsoft.com`) 和`https://settings-win.data.microsoft.com` 来下载配置信息。
 
 ## <a name="privacy-considerations"></a>隐私注意事项
 ETW 服务将遥测数据发回到受保护的云存储。 最小特权原则支配遥测数据的访问。 只有具有有效业务需求的 Azure 人员才能访问遥测数据。 除非客户自行要求，或者符合 [Azure Stack 隐私声明](https://privacy.microsoft.com/PrivacyStatement)中所述的受限目的，否则 Azure 不会与第三方共享客户的个人数据。 我们与 OEM 和合作伙伴共享业务报告，其中包含匿名的聚合遥测信息。 数据共享决策由 Azure 内部团队（包括隐私、法律和数据管理利益干系人）做出。

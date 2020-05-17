@@ -4,16 +4,16 @@ description: 了解有关使用情况报告基础结构的信息，该基础结�
 author: WenJason
 ms.topic: article
 origin.date: 01/22/2020
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: alfredop
 ms.lastreviewed: 05/09/2019
-ms.openlocfilehash: 60e65106025aba46f04c0608a47fa486b9452cc2
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 787298e6fc776660f6047f1a7f3e1aa75dfa64ea
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540936"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422390"
 ---
 # <a name="usage-reporting-infrastructure-for-cloud-solution-providers"></a>适用于云解决方案提供商的使用情况报告基础结构
 

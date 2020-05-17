@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 02/11/2020
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 1ab69a061928de74fc755a2d0a387e2872b94692
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: b6151e89b35321a8b5cffa05d018ac3096598ad2
+ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80343182"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83392367"
 ---
 # <a name="manage-iot-central-from-azure-cli"></a>从 Azure CLI 管理 IoT Central
 
@@ -25,7 +25,6 @@ ms.locfileid: "80343182"
 
 如果没有 Azure 订阅，可在开始前创建一个 [试用帐户](https://www.azure.cn/pricing/1rmb-trial) 。
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 如果你偏好于在本地计算机上运行 Azure CLI，请参阅[安装 Azure CLI](/cli/install-azure-cli)。 在本地运行 Azure CLI 时，请在尝试运行本文所述的命令之前，使用 **az login** 命令登录到 Azure。
 

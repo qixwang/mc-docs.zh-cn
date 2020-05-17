@@ -4,16 +4,16 @@ description: 教程：使用自定义解决方案模板在 Azure Stack Hub 上�
 author: WenJason
 ms.author: v-jay
 origin.date: 06/03/2019
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.topic: tutorial
 ms.reviewer: seyadava
 ms.lastreviewed: 06/03/2019
-ms.openlocfilehash: 9dee601401c4a20fd4b4fbc8039cdee45821fce5
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: eb1d14014aae31c164f36cc95651355d554427ae
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540809"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422078"
 ---
 # <a name="deploy-an-ethereum-blockchain-network-on-azure-stack-hub"></a>在 Azure Stack Hub 上部署 Ethereum 区块链网络
 

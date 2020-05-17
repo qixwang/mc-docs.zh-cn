@@ -4,16 +4,16 @@ description: 了解 Azure Stack Hub 网络
 author: WenJason
 ms.topic: conceptual
 origin.date: 1/22/2020
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: scottnap
-ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 15c278acdffec897f00b867363f10a18c6605a41
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.lastreviewed: 01/14/2020
+ms.openlocfilehash: 0c2129cdfd1463c55a6d319442826bfcb2999616
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77541047"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422022"
 ---
 # <a name="introduction-to-azure-stack-hub-networking"></a>Azure Stack Hub 网络简介
 

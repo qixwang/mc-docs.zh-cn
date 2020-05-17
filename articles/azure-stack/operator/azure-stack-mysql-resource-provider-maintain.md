@@ -4,16 +4,16 @@ description: 了解如何在 Azure Stack Hub 中维护 MySQL 资源提供程序�
 author: WenJason
 ms.topic: article
 origin.date: 1/22/2020
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: jiahan
-ms.lastreviewed: 01/11/2019
-ms.openlocfilehash: a8c6543753fbf1697097cd2c8f29a5dcce579586
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.lastreviewed: 01/11/2020
+ms.openlocfilehash: 6cbea7b446dabdf5efcf4e6588a179d75a54738e
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540398"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422495"
 ---
 # <a name="mysql-resource-provider-maintenance-operations-in-azure-stack-hub"></a>Azure Stack Hub 中的 MySQL 资源提供程序维护操作
 

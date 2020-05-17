@@ -5,16 +5,16 @@ description: 查看 Azure Stack Hub SQL 资源提供程序 1.1.30.0 更新的发
 author: WenJason
 ms.topic: article
 origin.date: 1/22/2020
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: jiahan
 ms.lastreviewed: 01/09/2019
-ms.openlocfilehash: 4f9c8391a0d6e17fefa2e3d5073f3a6628501445
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 21c152776bf6d91b674ccc79926c4cdde144cc08
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540318"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422515"
 ---
 # <a name="sql-resource-provider-11300-release-notes"></a>SQL 资源提供程序 1.1.30.0 发行说明
 

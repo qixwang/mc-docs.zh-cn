@@ -7,13 +7,13 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 10/07/2019
-ms.date: 01/13/2020
-ms.openlocfilehash: b1474f8b3b8d5375ff32f672935e95c8cb33b855
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/09/2020
+ms.openlocfilehash: a67da001c530e3cdf3125a078294f6760f8a5ba4
+ms.sourcegitcommit: bfbd6694da33f703481386f2a3f16850c4e94bfa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75630982"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83417666"
 ---
 # <a name="create-an-iot-hub-data-connection-for-azure-data-explorer-by-using-c-preview"></a>使用 C#（预览版）为 Azure 数据资源管理器创建 IoT 中心数据连接
 
@@ -34,9 +34,9 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
 * 设置[数据库和表策略](database-table-policies-csharp.md)（可选）
 * 创建[配置了共享访问策略的 IoT 中心](ingest-data-iot-hub.md#create-an-iot-hub)。
 
-[!INCLUDE [data-explorer-data-connection-install-nuget-csharp](../../includes/data-explorer-data-connection-install-nuget-csharp.md)]
+[!INCLUDE [data-explorer-data-connection-install-nuget-csharp](includes/data-explorer-data-connection-install-nuget-csharp.md)]
 
-[!INCLUDE [data-explorer-authentication](../../includes/data-explorer-authentication.md)]
+[!INCLUDE [data-explorer-authentication](includes/data-explorer-authentication.md)]
 
 ## <a name="add-an-iot-hub-data-connection"></a>添加 IoT 中心数据连接 
 
@@ -95,4 +95,4 @@ await kustoManagementClient.DataConnections.CreateOrUpdate(resourceGroupName, cl
 | consumerGroup | *$Default* | 事件中心的使用者组。|
 | location | *中国东部 2* | 数据连接资源的位置。|
 
-[!INCLUDE [data-explorer-data-connection-clean-resources-csharp](../../includes/data-explorer-data-connection-clean-resources-csharp.md)]
+[!INCLUDE [data-explorer-data-connection-clean-resources-csharp](includes/data-explorer-data-connection-clean-resources-csharp.md)]

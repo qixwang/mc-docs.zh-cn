@@ -4,16 +4,16 @@ description: 了解如何在 Azure Stack Hub 上备份存储帐户。
 author: WenJason
 ms.topic: how-to
 origin.date: 1/22/2020
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: sijuman
 ms.lastreviewed: 10/19/2019
-ms.openlocfilehash: 6fd412c60742d51edc277b27e97e1354b1be3d19
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 6adf06461bc38d8495dbe36e589699eb9fd087e7
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540753"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422037"
 ---
 # <a name="back-up-your-storage-accounts-on-azure-stack-hub"></a>在 Azure Stack Hub 上备份存储帐户
 

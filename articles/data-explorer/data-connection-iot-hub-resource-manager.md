@@ -7,13 +7,13 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 11/28/2019
-ms.date: 01/17/2020
-ms.openlocfilehash: c9299333adeb54904cd61d6865f7e4b7864c9226
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/09/2020
+ms.openlocfilehash: 964a27c9aa12bc727db014e10fc590c096dc1fb5
+ms.sourcegitcommit: bfbd6694da33f703481386f2a3f16850c4e94bfa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "76123143"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83417652"
 ---
 # <a name="create-an-iot-hub-data-connection-for-azure-data-explorer-by-using-azure-resource-manager-template"></a>使用 Azure 资源管理器模板为 Azure 数据资源管理器创建 IoT 中心数据连接
 
@@ -147,4 +147,4 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
 }
 ```
 
-[!INCLUDE [data-explorer-clean-resources](../../includes/data-explorer-clean-resources.md)]
+[!INCLUDE [data-explorer-clean-resources](includes/data-explorer-clean-resources.md)]

@@ -7,13 +7,13 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 02/03/2020
-ms.date: 02/17/2020
-ms.openlocfilehash: 5c234b9d7d780771104e240bbd893a2aab4f1847
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/09/2020
+ms.openlocfilehash: 9fb81b5d70e7a54f12b67342a2b7e893682a76d7
+ms.sourcegitcommit: bfbd6694da33f703481386f2a3f16850c4e94bfa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77067774"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83417777"
 ---
 # <a name="add-cluster-principals-for-azure-data-explorer-by-using-c"></a>使用 C# 向 Azure 数据资源管理器添加群集主体
 
@@ -35,7 +35,7 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
 * 安装 [Microsoft.Azure.Management.kusto](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/)。
 * 安装 [Microsoft.Rest.ClientRuntime.Azure.Authentication](https://www.nuget.org/packages/Microsoft.Rest.ClientRuntime.Azure.Authentication) 以进行身份验证。
 
-[!INCLUDE [data-explorer-authentication](../../includes/data-explorer-authentication.md)]
+[!INCLUDE [data-explorer-authentication](includes/data-explorer-authentication.md)]
 
 ## <a name="add-a-cluster-principal"></a>添加群集主体
 

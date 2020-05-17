@@ -5,16 +5,16 @@ services: virtual-machines
 author: rockboyfor
 ms.service: virtual-machines
 ms.topic: include
-origin.date: 04/27/2020
-ms.date: 04/30/2020
+origin.date: 10/30/2019
+ms.date: 05/18/2020
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: 4a4bbc83892c879509c73e201349ddf0ae276e89
-ms.sourcegitcommit: 275203d0f144aa809792f2c570fd64797f405c80
+ms.openlocfilehash: 2f1c8ca1884bed44856c44488e77ff48fcbf0ec3
+ms.sourcegitcommit: 8d56bc6baeb42d675695ecef1909d76f5c4a6ae3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82125805"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83406191"
 ---
 <!--Verified successfully-->
 将 VM 置于单个区域可以减少实例之间的物理距离。 将它们置于单一可用性区域中也会减少它们的物理距离。 但是，随着 Azure 占用空间的增加，单个可用性区域可能会跨多个物理数据中心，这可能导致网络延迟，对应用程序造成影响。 

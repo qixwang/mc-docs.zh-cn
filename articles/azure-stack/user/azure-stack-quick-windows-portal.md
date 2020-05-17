@@ -3,17 +3,17 @@ title: 使用 Azure Stack Hub 门户创建 Windows VM
 description: 了解如何使用 Azure Stack Hub 门户创建 Windows Server 2016 虚拟机 (VM)。
 author: WenJason
 ms.topic: quickstart
-.date: 1/10/2020
-ms.date: 02/24/2020
+origin.date: 04/20/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: kivenkat
 ms.lastreviewed: 1/10/2020
-ms.openlocfilehash: 2725585a4a5112d209d80e5f83076dea110247ec
-ms.sourcegitcommit: 4aeecfcc59cb42ba0b712a729d278d03bffc719a
+ms.openlocfilehash: cd69dcafb7324e5460d2f10c96f5cf0e8c4f203f
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81791004"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422647"
 ---
 # <a name="quickstart-create-a-windows-server-vm-with-the-azure-stack-hub-portal"></a>快速入门：使用 Azure Stack Hub 门户创建 Windows 服务器 VM
 

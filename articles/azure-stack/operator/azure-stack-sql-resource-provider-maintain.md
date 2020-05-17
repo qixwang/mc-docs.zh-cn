@@ -5,16 +5,16 @@ description: 了解 Azure Stack Hub 上的 SQL 资源提供程序维护操作。
 author: WenJason
 ms.topic: article
 origin.date: 10/02/2019
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: jiahan
-ms.lastreviewed: 01/11/2019
-ms.openlocfilehash: ac7cdfe188aa740d0dbc4b7a71baa0b8568265d3
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.lastreviewed: 01/11/2020
+ms.openlocfilehash: e0188fbbac696526961546fb7364b92d40d3a9d2
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540297"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422546"
 ---
 # <a name="sql-resource-provider-maintenance-operations"></a>SQL 资源提供程序维护操作
 

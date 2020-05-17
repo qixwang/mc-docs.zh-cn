@@ -13,15 +13,15 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 origin.date: 07/05/2018
-ms.date: 11/11/2019
+ms.date: 04/27/2020
 ms.author: v-yeche
 ms.subservice: disks
-ms.openlocfilehash: f9d6eb0fa79c4a1168ae935a3d264fdaa9ecadfd
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 5fb55cde3cfc37328eb28dfe21e86180b79a3a9b
+ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74116766"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83392457"
 ---
 # <a name="how-to-expand-the-os-drive-of-a-virtual-machine"></a>如何扩展虚拟机的 OS 驱动器
 
@@ -35,8 +35,6 @@ ms.locfileid: "74116766"
 >
 > 扩展磁盘后，需要[扩展 OS 中的卷](#expand-the-volume-within-the-os)才能使用更大的磁盘。
 > 
-
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 ## <a name="resize-a-managed-disk"></a>调整托管磁盘的大小
 

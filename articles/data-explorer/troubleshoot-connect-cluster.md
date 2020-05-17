@@ -7,13 +7,13 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 09/24/2018
-ms.date: 05/01/2019
-ms.openlocfilehash: f7703d2c7ab521ecf2daa89bebdf57522be06023
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/09/2020
+ms.openlocfilehash: 7d6cc2cd1391e3b2243fac28f63ba698d192828b
+ms.sourcegitcommit: bfbd6694da33f703481386f2a3f16850c4e94bfa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74020852"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83417544"
 ---
 # <a name="troubleshoot-failure-to-connect-to-a-cluster-in-azure-data-explorer"></a>故障排除：无法在 Azure 数据资源管理器中连接到群集
 
@@ -27,7 +27,7 @@ ms.locfileid: "74020852"
 
 1. 验证是否已删除群集：查看订阅中的活动日志。
 
-1. 查看 [Azure 服务健康状况仪表板](https://www.azure.cn/home/features/products-by-region)。 在你尝试连接到群集的区域查找 Azure 数据资源管理器的状态。
+1. 查看 [Azure 服务健康状况仪表板](https://azure.microsoft.com/status/)。 在你尝试连接到群集的区域查找 Azure 数据资源管理器的状态。
 
     如果状态不佳  （绿色复选标记），请在状态改善后尝试连接到群集。
 

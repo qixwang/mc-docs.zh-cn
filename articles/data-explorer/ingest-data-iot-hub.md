@@ -7,13 +7,13 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 01/08/2020
-ms.date: 03/16/2020
-ms.openlocfilehash: 81215259965a6044ffec66272bb48cf623385ec2
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/09/2020
+ms.openlocfilehash: a376e9d45f004d256560dacae3aa1e6046571c9b
+ms.sourcegitcommit: bfbd6694da33f703481386f2a3f16850c4e94bfa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80243971"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83417758"
 ---
 # <a name="ingest-data-from-iot-hub-into-azure-data-explorer"></a>将数据从 IoT 中心引入到 Azure 数据资源管理器 
 
@@ -34,11 +34,11 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
 
 ## <a name="create-an-iot-hub"></a>创建 IoT 中心
 
-[!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
+[!INCLUDE [iot-hub-include-create-hub](includes/iot-hub-include-create-hub.md)]
 
 ## <a name="register-a-device-to-the-iot-hub"></a>将设备注册到 IoT 中心
 
-[!INCLUDE [iot-hub-get-started-create-device-identity](../../includes/iot-hub-get-started-create-device-identity.md)]
+[!INCLUDE [iot-hub-get-started-create-device-identity](includes/iot-hub-get-started-create-device-identity.md)]
 
 ## <a name="create-a-target-table-in-azure-data-explorer"></a>在 Azure 数据资源管理器中创建目标表
 
@@ -84,7 +84,7 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
     | IoT 中心 | IoT 中心名称 |
     | 共享访问策略 | 共享访问策略的名称。 必须有读取权限 |
     | 使用者组 |  在 IoT 中心的内置终结点中定义的使用者组 |
-    | 事件系统属性 | [IoT 中心事件系统属性](/iot-hub/iot-hub-devguide-messages-construct#system-properties-of-d2c-iot-hub-messages)。 添加系统属性时，[创建](https://docs.microsoft.com/kusto/management/tables#create-table)或[更新](https://docs.microsoft.com/kusto/management/tables#alter-table-and-alter-merge-table)表架构和[映射](https://docs.microsoft.com/kusto/management/mappings)以包括所选属性。 | | | 
+    | 事件系统属性 | [IoT 中心事件系统属性](/iot-hub/iot-hub-devguide-messages-construct#system-properties-of-d2c-iot-hub-messages)。 添加系统属性时，[创建](https://docs.microsoft.com/azure/data-explorer/kusto/management/create-table-command)或[更新](https://docs.microsoft.com/azure/data-explorer/kusto/management/alter-table-command)表架构和[映射](https://docs.microsoft.com/azure/data-explorer/kusto/management/mappings)以包括所选属性。 | | | 
 
     > [!NOTE]
     > 如果进行[手动故障转移](/iot-hub/iot-hub-ha-dr#manual-failover)，必须重新创建数据连接。
@@ -98,14 +98,14 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
     |---|---|---|
     | 表 | TestTable  | 在“testdb”  中创建的表。 |
     | 数据格式 | *JSON* | 支持的格式为 Avro、CSV、JSON、多行 JSON、PSV、SOHSV、SCSV、TSV、TSVE 和 TXT。 |
-    | 列映射 | TestMapping  | 在 [testdb](https://docs.microsoft.com/azure/kusto/management/mappings) 中创建的**映射**将传入的 JSON 数据映射到 **testdb** 的列名称和数据类型。 对于 JSON、多行 JSON 和 AVRO 是必需的，对于其他格式是可选的。|
+    | 列映射 | TestMapping  | 在 [testdb](https://docs.microsoft.com/azure/data-explorer/kusto/management/mappings) 中创建的**映射**将传入的 JSON 数据映射到 **testdb** 的列名称和数据类型。 对于 JSON、多行 JSON 和 AVRO 是必需的，对于其他格式是可选的。|
     | | |
 
     > [!NOTE]
     > * 选择“我的数据包含路由信息”  以使用动态路由，其中你的数据包含必要的路由信息，如[示例应用](https://github.com/Azure-Samples/event-hubs-dotnet-ingest)注释中所示。 如果同时设置了静态和动态属性，则动态属性将覆盖静态属性。 
     > * 只有创建数据连接后进入队列的事件才会被引入。
 
-[!INCLUDE [data-explorer-container-system-properties](../../includes/data-explorer-container-system-properties.md)]
+[!INCLUDE [data-explorer-container-system-properties](includes/data-explorer-container-system-properties.md)]
 
 ## <a name="generate-sample-data-for-testing"></a>生成用于测试的示例数据
 
@@ -161,8 +161,8 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
     ![显示引入数据结果](media/ingest-data-iot-hub/show-ingested-data.png)
 
     > [!NOTE]
-    > * Azure 数据资源管理器具有用于数据引入的聚合（批处理）策略，旨在优化引入过程。 默认情况下，该策略配置为 5 分钟或 500 MB 数据，因此你可能会遇到延迟。 有关聚合选项，请参阅[批处理策略](https://docs.microsoft.com/azure/kusto/concepts/batchingpolicy)。 
-    > * 配置表以支持流式处理并消除响应时间延迟。 请参阅[流式处理策略](https://docs.microsoft.com/azure/kusto/concepts/streamingingestionpolicy)。 
+    > * Azure 数据资源管理器具有用于数据引入的聚合（批处理）策略，旨在优化引入过程。 默认情况下，该策略配置为 5 分钟或 500 MB 数据，因此你可能会遇到延迟。 有关聚合选项，请参阅[批处理策略](https://docs.microsoft.com/azure/data-explorer/kusto/management/batchingpolicy)。 
+    > * 配置表以支持流式处理并消除响应时间延迟。 请参阅[流式处理策略](https://docs.microsoft.com/azure/data-explorer/kusto/management/streamingingestionpolicy)。 
 
 ## <a name="clean-up-resources"></a>清理资源
 

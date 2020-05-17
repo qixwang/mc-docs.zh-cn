@@ -3,15 +3,15 @@ title: 常见问题
 description: 有关 Azure 容器实例服务的常见问题解答
 author: rockboyfor
 ms.topic: article
-origin.date: 01/07/2020
-ms.date: 01/15/2020
+origin.date: 04/10/2020
+ms.date: 04/30/2020
 ms.author: v-yeche
-ms.openlocfilehash: cf9ba563ce1277f8540f5a3d24b46b80f86cb0aa
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 5d7d4043b8ea1d276453f94e835e72857a3178ef
+ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78213741"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83392230"
 ---
 # <a name="frequently-asked-questions-about-azure-container-instances"></a>有关 Azure 容器实例的常见问题解答
 
@@ -94,5 +94,4 @@ Azure 容器实例旨在用作无服务器按需容器服务，因此，我们�
 * [详细了解](container-instances-overview.md) Azure 容器实例。
 * [排查 Azure 容器实例中的常见问题](container-instances-troubleshooting.md)
 
-<!-- Update_Description: new article about container instances faq -->
-<!--NEW.date: 01/15/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

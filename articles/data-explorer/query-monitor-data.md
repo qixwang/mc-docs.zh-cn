@@ -8,13 +8,13 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 01/28/2020
-ms.date: 03/16/2020
-ms.openlocfilehash: 35791612c131bb5386381c777314c2977f5f37d1
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/09/2020
+ms.openlocfilehash: 51927860f26faaebb44ccf2a9eda41803418c425
+ms.sourcegitcommit: bfbd6694da33f703481386f2a3f16850c4e94bfa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80243952"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83417572"
 ---
 # <a name="query-data-in-azure-monitor-using-azure-data-explorer-preview"></a>使用 Azure 数据资源管理器（预览版）查询 Azure Monitor 中的数据
 
@@ -60,7 +60,7 @@ Azure 数据资源管理器代理流：
 > * 数据库名称应与代理群集中指定的资源名称相同。 名称区分大小写。
 > * 在跨群集查询中，请确保 Application Insights 应用和 Log Analytics 工作区的命名正确。
 >     * 如果名称包含特殊字符，将按代理群集名称中的 URL 编码替换这些字符。 
->     * 如果名称包含的字符不符合 [KQL 标识符命名规则](https://docs.microsoft.com/azure/kusto/query/schema-entities/entity-names)，这些字符将由短划线 **-** 字符替换。
+>     * 如果名称包含的字符不符合 [KQL 标识符命名规则](https://docs.microsoft.com/azure/data-explorer/kusto/query/schema-entities/entity-names)，这些字符将由短划线 **-** 字符替换。
 
 ### <a name="direct-query-from-your-la-or-ai-adx-proxy-cluster"></a>从 LA 或 AI ADX 代理群集直接查询
 
@@ -88,7 +88,7 @@ union <ADX table>, cluster(CL1).database(<workspace-name>).<table name>
 
    [ ![从 Azure 数据资源管理器代理运行交叉查询](media/adx-proxy/cross-query-adx-proxy.png)](media/adx-proxy/cross-query-adx-proxy.png#lightbox)
 
-使用 [`join` 运算符](https://docs.microsoft.com/azure/kusto/query/joinoperator)（而不是 union）可能需要指定 [`hint`](https://docs.microsoft.com/azure/kusto/query/joinoperator#join-hints) 才能针对 Azure 数据资源管理器本机群集（而不是针对代理）运行查询。 
+使用 [`join` 运算符](https://docs.microsoft.com/azure/data-explorer/kusto/query/joinoperator)（而不是 union）可能需要指定 [`hint`](https://docs.microsoft.com/azure/data-explorer/kusto/query/joinoperator#join-hints) 才能针对 Azure 数据资源管理器本机群集（而不是针对代理）运行查询。 
 
 ## <a name="additional-syntax-examples"></a>其他语法示例
 

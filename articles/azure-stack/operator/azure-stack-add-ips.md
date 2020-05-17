@@ -3,17 +3,17 @@ title: 在 Azure Stack Hub 中添加公共 IP 地址
 description: 了解如何向 Azure Stack Hub 添加公共 IP 地址。
 author: WenJason
 ms.topic: article
-origin.date: 09/10/2019
-ms.date: 02/24/2020
+origin.date: 04/20/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: scottnap
 ms.lastreviewed: 09/10/2019
-ms.openlocfilehash: 19f753b5523fb53c8fdacb05218fc68d30e8f6af
-ms.sourcegitcommit: 4aeecfcc59cb42ba0b712a729d278d03bffc719a
+ms.openlocfilehash: b6c7fcb0edb0200c66bf4a5edebaab539b2f5ec8
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81791022"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422508"
 ---
 # <a name="add-public-ip-addresses"></a>添加公共 IP 地址
 
@@ -27,7 +27,7 @@ ms.locfileid: "81791022"
 
 概括说来，向 Azure Stack Hub 添加新公共 IP 地址块的过程如下所示：
 
- ![添加 IP 流](media/azure-stack-add-ips/flow.PNG)
+ ![添加 IP 流](media/azure-stack-add-ips/flow.svg)
 
 ## <a name="obtain-the-address-block-from-your-provider"></a>从提供程序处获取地址块
 首先需要做的事是获取需要添加到 Azure Stack Hub 的地址块。 根据你从何处获取地址块，考虑提前期是多少，并在对其进行管理时考虑到在 Azure Stack Hub 中使用公共 IP 地址的速率。
