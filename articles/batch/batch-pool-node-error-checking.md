@@ -2,19 +2,18 @@
 title: 检查池和节点错误 - Azure Batch
 description: 本文介绍在创建池和节点时可能发生的后台操作、要检查的错误以及如何避免这些错误。
 services: batch
-author: lingliw
-manager: digimobile
 ms.service: batch
-ms.author: v-lingwu
+author: mscurrell
+ms.author: v-tawe
 origin.date: 08/23/2019
-ms.date: 09/23/2019
+ms.date: 04/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: 16402b05c6d99d23af187b1f532d93c393f1d6b9
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 905950972a7baf485097366ad1c49ce0a37ffd39
+ms.sourcegitcommit: 1fbdefdace8a1d3412900c6c3f89678d8a9b29bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78850621"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82886891"
 ---
 # <a name="check-for-pool-and-node-errors"></a>检查池和节点错误
 
@@ -39,16 +38,16 @@ ms.locfileid: "78850621"
   - 若要分配大量的节点，我们建议将大小调整超时设置为 30 分钟。 例如，要在 Azure 市场映像中将大小调整为 1,000 个以上的节点，或者在自定义 VM 映像中将大小调整为 300 个以上的节点时。
 - 核心配额不足
   - Batch 帐户在所有池中可分配的核心数有限制。 一旦达到该配额，Batch 就会停止分配节点。 [可以提高](/batch/batch-quota-limit)核心配额，使 Batch 能够分配更多的节点。
-- 当[池处于虚拟网络](/batch/batch-virtual-network)，子网 IP 不足
+- 当[池处于虚拟网络](https://docs.azure.cn/batch/batch-virtual-network)，子网 IP 不足
   - 虚拟网络子网必须能够提供可分配到每个请求的池节点的、尚未分配的足够 IP 地址。 否则无法创建节点。
-- 当[池处于虚拟网络](/batch/batch-virtual-network)，资源不足
+- 当[池处于虚拟网络](https://docs.azure.cn/batch/batch-virtual-network)，资源不足
   - 你可能会在 Batch 帐户所在的同一订阅中创建负载均衡器、公共 IP 和网络安全组等资源。 请检查这些资源的订阅配额是否足够。
 - 使用自定义 VM 映像的大型池
-  - 使用自定义 VM 映像的大型池可能需要更长的时间进行分配，并且可能发生大小调整超时。  有关限制和配置的建议，请参阅[使用自定义映像创建虚拟机池](/batch/batch-custom-images)。
+  - 使用自定义 VM 映像的大型池可能需要更长的时间进行分配，并且可能发生大小调整超时。  有关限制和配置的建议，请参阅[使用共享映像库创建池](batch-sig-images.md)。
 
 ### <a name="automatic-scaling-failures"></a>自动缩放功能
 
-也可以将 Azure Batch 设置为自动缩放池中的节点数。 定义[池自动缩放公式](/batch/batch-automatic-scaling)的参数。 Batch 服务使用该公式定期评估池中的节点数，并设置新的目标数。 可能会发生以下类型问题：
+也可以将 Azure Batch 设置为自动缩放池中的节点数。 定义[池自动缩放公式](https://docs.azure.cn/batch/batch-automatic-scaling)的参数。 Batch 服务使用该公式定期评估池中的节点数，并设置新的目标数。 可能会发生以下类型问题：
 
 - 自动缩放评估失败。
 - 生成的大小调整操作失败和超时。
@@ -56,7 +55,7 @@ ms.locfileid: "78850621"
 
 可以使用 [autoScaleRun](https://docs.microsoft.com/rest/api/batchservice/pool/get#autoscalerun) 属性获取有关上次自动缩放评估的信息。 此属性将报告评估时间、值和结果，以及任何性能错误。
 
-[池大小调整完成事件](/batch/batch-pool-resize-complete-event)捕获有关所有评估的信息。
+[池大小调整完成事件](https://docs.azure.cn/batch/batch-pool-resize-complete-event)捕获有关所有评估的信息。
 
 ### <a name="delete"></a>Delete
 
@@ -66,7 +65,7 @@ ms.locfileid: "78850621"
 
 ## <a name="pool-compute-node-errors"></a>池计算节点错误
 
-即使 Batch 在池中成功分配了节点，各种问题仍可能会导致某些节点不正常，无法运行任务。 这些节点仍会产生费用，因此务必要检测问题，避免不能使用的节点产生费用。
+即使 Batch 在池中成功分配了节点，各种问题仍可能会导致某些节点不正常，无法运行任务。 这些节点仍会产生费用，因此务必要检测问题，避免不能使用的节点产生费用。 除了常见的节点错误以外，了解当前的[作业状态](https://docs.microsoft.com/rest/api/batchservice/job/get#jobstate)对于故障排除也很有帮助。
 
 ### <a name="start-task-failures"></a>启动任务失败
 
@@ -106,7 +105,7 @@ Azure Batch 可能出于多种原因将[节点状态](https://docs.microsoft.com
 
 - 由于基础结构故障或低级别升级而移动了 VM。 Batch 将恢复节点。
 
-- VM 映像已部署在不支持它的硬件上。 
+- VM 映像部署在不支持它的硬件上。 例如，尝试在 [Standard_D1_v2](../virtual-machines/dv2-dsv2-series.md) VM 上运行 CentOS HPC 映像。
 
 - VM 位于 [Azure 虚拟网络](batch-virtual-network.md)中，并且流量已被阻止，无法发送到关键端口。
 
@@ -118,6 +117,29 @@ Azure Batch 可能出于多种原因将[节点状态](https://docs.microsoft.com
 
 每个池节点上运行的 Batch 代理进程可以提供日志文件。如果你需要就池节点问题联系支持人员，这些日志文件可能很有帮助。 可以通过 Azure 门户、Batch Explorer 或 [API](https://docs.microsoft.com/rest/api/batchservice/computenode/uploadbatchservicelogs) 上传节点的日志文件。 最好是上传并保存日志文件。 以后，可以删除节点或池，以节省运行中节点的成本。
 
+### <a name="node-disk-full"></a>节点磁盘已满
+
+Batch 使用池节点 VM 的临时驱动器来存储作业文件、任务文件和共享文件。
+
+- 应用程序包文件
+- 任务资源文件
+- 下载到某个 Batch 文件夹的特定于应用程序的文件
+- 每次用于执行任务应用程序的 stdout 和 stderr 文件
+- 特定于应用程序的输出文件。其中某些文件（例如，池应用程序包或池启动任务资源文件）仅在创建池节点时写入一次。 即使是仅在创建节点时写入一次，但如果这些文件太大，它们也可能会填满临时驱动器。
+
+将为在节点上运行的每个任务写出其他文件，例如 stdout 和 stderr。 如果在同一节点上运行大量任务并且/或者任务文件太大，这些文件可能会填满临时驱动器。
+
+临时驱动器的大小取决于 VM 大小。 选择 VM 大小时，一个注意事项是确保临时驱动器具有足够的空间。
+- 在 Azure 门户中添加池时，可以显示 VM 大小的完整列表，其中包含一个“资源磁盘大小”列。
+- 介绍所有 VM 大小的文章（例如[计算优化的 VM 大小](/virtual-machines/windows/sizes-compute)）中提供了包含“临时存储”列的表格。对于确定任务文件在被系统自动清理之前要保留多长时间的每个任务，可以指定保留时间。 可以缩短保留时间以降低存储需求。
+如果临时磁盘的空间耗尽（或者快要耗尽），节点将转换为[不可用](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodestate)状态，并且会报告节点错误，指出磁盘已满。
+### <a name="what-to-do-when-a-disk-is-full"></a>磁盘已满时怎么办
+确定磁盘已满的原因：如果不确定哪些内容占用了节点上的空间，建议通过远程方式连接到节点，并手动调查空间耗尽的原因。 还可以利用 [Batch 列出文件 API](https://docs.microsoft.com/rest/api/batchservice/file/listfromcomputenode) 来检查 Batch 托管文件夹中的文件（例如任务输出）。 请注意，此 API 只会列出 Batch 托管目录中的文件。如果任务在其他位置创建了文件，则你看不到这些文件。
+确保已从节点中检索到所需的数据或已将其上传到持久存储。 磁盘填满问题的所有缓解措施都涉及到通过删除数据来释放空间。
+### <a name="recovering-the-node"></a>恢复节点
+1. 如果你的池是 [C.loudServiceConfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#cloudserviceconfiguration) 池，可以通过 [Batch 重置映像 API](https://docs.microsoft.com/rest/api/batchservice/computenode/reimage) 来重置节点的映像。这会清理整个磁盘。 [VirtualMachineConfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#virtualmachineconfiguration) 池目前不支持重置映像。
+2. 如果你的池是 [VirtualMachineConfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#virtualmachineconfiguration)，可以使用[删除节点 API](https://docs.microsoft.com/rest/api/batchservice/pool/removenodes) 从池中删除节点。 然后，可以再次增大池，以将不良的节点替换为全新的节点。
+3.  删除其任务数据仍保留在节点上的旧的已完成作业或旧的已完成任务。 若要了解哪些作业/任务数据会保留在节点上，可以查看节点上的 [RecentTasks 集合](https://docs.microsoft.com/rest/api/batchservice/computenode/get#taskinformation)或[节点上的文件](https://docs.microsoft.com//rest/api/batchservice/file/listfromcomputenode)。 删除作业会删除该作业中的所有任务，而删除作业中的任务会触发所要删除节点上的任务目录中的数据，从而释放空间。 释放足够的空间后，重新启动该节点，然后，该节点会摆脱“不可用”状态，再次进入“空闲”状态。
 ## <a name="next-steps"></a>后续步骤
 
 检查是否已将应用程序设置为实施全面的错误检查，尤其是对于异步操作。 及时检测和诊断问题有时是很关键的。
