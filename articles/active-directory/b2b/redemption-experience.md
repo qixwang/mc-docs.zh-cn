@@ -38,9 +38,9 @@ ms.locfileid: "82515647"
 
 > [!IMPORTANT]
 > 直接链接必须特定于租户。 换言之，它必须包含租户 ID 或已验证的域，以便能够在共享应用所在的租户中对来宾进行身份验证。 常见的 URL（如 https://account.activedirectory.windowsazure.cn/r#/applications ）对来宾不起作用，因为它会重定向到来宾的主租户进行身份验证。 下面是使用租户上下文的直接链接的一些示例：
- > - 应用访问面板： https://account.activedirectory.windowsazure.cn/r#/applications/?tenantid=&lt ;租户 ID&gt; 
- > - 验证的域的应用访问面板： https://account.activedirectory.windowsazure.cn/r#/applications/&lt ;验证的域&gt;
- > - Azure 门户： https://portal.azure.cn/&lt ;租户 ID&gt;
+ > - 应用访问面板： https://account.activedirectory.windowsazure.cn/r#/applications/?tenantid=&lt;租户 ID&gt; 
+ > - 验证的域的应用访问面板： https://account.activedirectory.windowsazure.cn/r#/applications/&lt;验证的域&gt;
+ > - Azure 门户： https://portal.azure.cn/&lt;租户 ID&gt;
 
 在某些情况下，建议使用邀请电子邮件而不要使用直接链接。 如果这些特殊情况对贵组织而言很重要，建议使用仍会发送邀请电子邮件的方法来邀请用户：
  - 有时，由于与联系人对象（例如，Outlook 联系人对象）存在冲突，受邀用户对象可能会没有电子邮件地址。 在这种情况下，用户必须单击邀请电子邮件中的兑换 URL。
