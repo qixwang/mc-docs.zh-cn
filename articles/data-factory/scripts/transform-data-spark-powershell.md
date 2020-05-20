@@ -65,7 +65,7 @@ ms.locfileid: "67570233"
 
 ### <a name="upload-the-input-file"></a>上传输入文件
 1. 创建包含一些文本的名为 **minecraftstory.txt** 的文件。 Spark 程序会统计此文本中的单词数量。 
-2. 在 blob 容器的 `inputfiles` 文件夹中创建一个名为 `spark` 的子文件夹。 
+2. 在 blob 容器的 `spark` 文件夹中创建一个名为 `inputfiles` 的子文件夹。 
 3. 将 `minecraftstory.txt` 上传到 `inputfiles` 子文件夹。 
 
 ## <a name="sample-script"></a>示例脚本

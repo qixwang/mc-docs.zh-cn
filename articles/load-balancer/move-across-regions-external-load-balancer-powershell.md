@@ -117,7 +117,7 @@ ms.locfileid: "77540984"
     ```
 8. 也可选择更改模板中的其他参数，这些参数是可选的，具体取决于你的要求：
 
-    * **Sku** - 可以在配置中将公共 IP 的 sku 从“标准”更改为“基本”或从“基本”更改为“标准”，只需在  resource-group-name>.json >  文件中更改 **sku** **\<name** 属性即可：
+    * **Sku** - 可以在配置中将公共 IP 的 sku 从“标准”更改为“基本”或从“基本”更改为“标准”，只需在 **\<resource-group-name>.json** 文件中更改 **sku** > **name** 属性即可：
 
          ```json
             "resources": [
@@ -169,7 +169,7 @@ ms.locfileid: "77540984"
     ```azurepowershell
     New-AzResourceGroup -Name <target-resource-group-name> -location <target-region>
     ```
-11. 使用 **New-AzResourceGroupDeployment\< 将编辑的** [resource-group-name>.json](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0) 文件部署到在上一步创建的资源组：
+11. 使用 [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0) 将编辑的 **\<resource-group-name>.json** 文件部署到在上一步创建的资源组：
 
     ```azurepowershell
 
@@ -283,7 +283,7 @@ ms.locfileid: "77540984"
         },
     ```
 
-10. 若要编辑外部负载均衡器配置将要移到的目标区域，请更改  resource-group-name>.json**文件中**resources **下的 \<location** 属性：
+10. 若要编辑外部负载均衡器配置将要移到的目标区域，请更改 **\<resource-group-name>.json** 文件中 **resources** 下的 **location** 属性：
 
     ```json
         "resources": [
@@ -307,7 +307,7 @@ ms.locfileid: "77540984"
     ```
 12. 也可选择更改模板中的其他参数，这些参数是可选的，具体取决于你的要求：
     
-    * **SKU** - 可以在配置中将外部负载均衡器的 SKU 从 standard 更改为 basic 或者从 basic 更改为 standard，只需在  resource-group-name>.json >  文件中更改 **sku** **\<name** 属性即可：
+    * **SKU** - 可以在配置中将外部负载均衡器的 SKU 从 standard 更改为 basic 或者从 basic 更改为 standard，只需在 **\<resource-group-name>.json** 文件中更改 **sku** > **name** 属性即可：
 
         ```json
         "resources": [
@@ -323,7 +323,7 @@ ms.locfileid: "77540984"
         ```
       若要详细了解基本和标准 sku 负载均衡器之间的区别，请参阅 [Azure 标准负载均衡器概述](/load-balancer/load-balancer-standard-overview)
 
-    * **负载均衡规则** - 可以通过在  resource-group-name>.json **文件的 \<loadBalancingRules** 节中添加或删除条目，在配置中添加或删除负载均衡规则：
+    * **负载均衡规则** - 可以通过在 **\<resource-group-name>.json** 文件的 **loadBalancingRules** 节中添加或删除条目，在配置中添加或删除负载均衡规则：
 
         ```json
         "loadBalancingRules": [
@@ -355,7 +355,7 @@ ms.locfileid: "77540984"
         ```
        有关负载均衡规则的详细信息，请参阅[什么是 Azure 负载均衡器？](/load-balancer/load-balancer-overview)。
 
-    * **探测** - 可以通过在  resource-group-name>.json **文件的 \<probes** 节中添加或删除条目，在配置中添加或删除负载均衡器的探测：
+    * **探测** - 可以通过在 **\<resource-group-name>.json** 文件的 **probes** 节中添加或删除条目，在配置中添加或删除负载均衡器的探测：
 
         ```json
         "probes": [
@@ -375,7 +375,7 @@ ms.locfileid: "77540984"
         ```
        有关 Azure 负载均衡器运行状况探测的详细信息，请参阅[负载均衡器运行状况探测](/load-balancer/load-balancer-custom-probe-overview)
 
-    * **入站 NAT 规则** - 可以通过在  resource-group-name>.json **文件的 \<inboundNatRules** 节中添加或删除条目，来添加或删除负载均衡器的入站 NAT 规则：
+    * **入站 NAT 规则** - 可以通过在 **\<resource-group-name>.json** 文件的 **inboundNatRules** 节中添加或删除条目，来添加或删除负载均衡器的入站 NAT 规则：
 
         ```json
         "inboundNatRules": [
@@ -423,7 +423,7 @@ ms.locfileid: "77540984"
         ```
         有关入站 NAT 规则的详细信息，请参阅[什么是 Azure 负载均衡器？](/load-balancer/load-balancer-overview)。
 
-    * **出站规则** - 可以通过编辑  resource-group-name>.json **文件中的 \<outboundRules** 属性，在配置中添加或删除出站规则：
+    * **出站规则** - 可以通过编辑 **\<resource-group-name>.json** 文件中的 **outboundRules** 属性，在配置中添加或删除出站规则：
 
         ```json
         "outboundRules": [
@@ -458,7 +458,7 @@ ms.locfileid: "77540984"
     ```azurepowershell
     New-AzResourceGroup -Name <target-resource-group-name> -location <target-region>
     ```
-11. 使用 **New-AzResourceGroupDeployment\< 将编辑的** [resource-group-name>.json](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0) 文件部署到在上一步创建的资源组：
+11. 使用 [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0) 将编辑的 **\<resource-group-name>.json** 文件部署到在上一步创建的资源组：
 
     ```azurepowershell
 

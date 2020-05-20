@@ -129,7 +129,7 @@ X-Powered-By: ASP.NET
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}/restore?api-version=2019-05-13
 ```
 
-`{containerName}` 和 `{protectedItemName}` 是按[此处](backup-azure-arm-userestapi-backupazurevms.md#example-responses-1)所述构造的。 `{fabricName}` 是“Azure”，`{recoveryPointId}` 是`{name}`上述[恢复点的 ](#example-response) 字段。
+`{containerName}` 和 `{protectedItemName}` 是按[此处](backup-azure-arm-userestapi-backupazurevms.md#example-responses-1)所述构造的。 `{fabricName}` 是“Azure”，`{recoveryPointId}` 是[上述](#example-response)恢复点的 `{name}` 字段。
 
 ### <a name="create-request-body"></a>创建请求正文
 

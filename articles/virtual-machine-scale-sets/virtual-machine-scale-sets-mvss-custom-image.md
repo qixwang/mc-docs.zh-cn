@@ -96,7 +96,7 @@ ms.locfileid: "70310853"
 
 ### <a name="changing-scale-set-properties-to-use-the-managed-disk-image"></a>更改规模集属性以使用托管磁盘映像
 
-在规模集 `imageReference` 的 `storageProfile` 中，请勿指定平台映像的发布者、产品/服务、SKU 和版本，而是指定 `id` 资源的 `Microsoft.Compute/images`：
+在规模集 `storageProfile` 的 `imageReference` 中，请勿指定平台映像的发布者、产品/服务、SKU 和版本，而是指定 `Microsoft.Compute/images` 资源的 `id`：
 
 ```json
          "virtualMachineProfile": {

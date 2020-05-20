@@ -54,7 +54,7 @@ ms.locfileid: "75336053"
 
 1. 打开 web 浏览器，导航到 `https://github.com` 并登录帐户。
 
-2. 对于帐户，导航到“设置” **“开发人员设置”，然后单击“注册新应用程序”或“OAuth 应用”下的“新建 OAuth 应用”**  >      。
+2. 对于帐户，导航到“设置” > “开发人员设置”，然后单击“注册新应用程序”或“OAuth 应用”下的“新建 OAuth 应用”。
 
 3. 为新 OAuth 应用使用以下设置，然后单击“注册应用程序”  ：
 
@@ -80,7 +80,7 @@ ms.locfileid: "75336053"
         dotnet add package AspNet.Security.OAuth.GitHub -v 2.0.0-rc2-final
         dotnet restore
 
-1. 打开 Startup.cs，并为以下命名空间添加  *语句*`using`：
+1. 打开 Startup.cs，并为以下命名空间添加 `using` 语句：
 
     ```csharp
     using System.Net.Http;
@@ -318,7 +318,7 @@ ms.locfileid: "75336053"
     }
     ```
 
-4. 在 index.html 底部，更新  *的错误处理程序（如下所示），提示用户进行登录*`connection.start()`。
+4. 在 index.html 底部，更新 `connection.start()` 的错误处理程序（如下所示），提示用户进行登录。
 
     ```javascript
     connection.start()
@@ -538,7 +538,7 @@ az webapp deployment source config-local-git --name $WebAppName \
 
 需要执行的最后一步是更新 GitHub OAuth 应用的“主页 URL”和“授权回调 URL”，指向新的托管应用   。
 
-1. 在浏览器中打开 [https://github.com](https://github.com) 并导航到帐户的“设置” **“开发人员设置”** “Oauth 应用” >    >   。
+1. 在浏览器中打开 [https://github.com](https://github.com) 并导航到帐户的“设置” > “开发人员设置” > “Oauth 应用”。
 
 2. 单击身份验证应用并更新“主页 URL”和“授权回调 URL”，如下所示   ：
 

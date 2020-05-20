@@ -21,7 +21,7 @@ ms.locfileid: "75742344"
 
     通常，群集中定义的每种节点类型有自己的虚拟 IP 地址和专用的负载均衡器。 默认情况下，节点类型的负载均衡器以以下格式命名：LB-{节点名称}-{节点类型}；例如，LB-mycluster-FrontEnd   。 
 
-    在 Azure 门户中的负载均衡器页上，选择“设置” **“入站 NAT 规则”**  >   ： 
+    在 Azure 门户中的负载均衡器页上，选择“设置” > “入站 NAT 规则”： 
 
     ![负载均衡器入站 NAT 规则](./media/service-fabric-cluster-remote-connect-to-azure-cluster-node/lb-window.png)
 

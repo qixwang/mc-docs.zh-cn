@@ -33,7 +33,7 @@ ms.locfileid: "75776836"
 
 iOS 上的 MSAL 默认使用 `com.microsoft.adalcache` 访问组。 它是 MSAL 和 Azure AD 身份验证库 (ADAL) SDK 使用的共享访问组，可确保在同一家发行商的多个应用之间提供最佳单一登录 (SSO) 体验。
 
-在 iOS 上，请在 XCode 中的“Project settings”（项目设置）`com.microsoft.adalcache`“Capabilities”（功能） **“Keychain sharing”（密钥链共享）下，将**  密钥链组添加到应用的权利中 >    >  
+在 iOS 上，请在 XCode 中的“Project settings”（项目设置） > “Capabilities”（功能） > “Keychain sharing”（密钥链共享）下，将 `com.microsoft.adalcache` 密钥链组添加到应用的权利中
 
 ### <a name="macos"></a>macOS
 

@@ -61,7 +61,7 @@ scope=https://microsoftgraph.chinacloudapi.cn/user.read%20openid%20profile
 | 参数 | 条件 | 说明 |
 | --- | --- | --- |
 | `tenant` | 必选 | 可以是 /common 或 /organizations。  它也可以是要以 GUID 或友好名称格式向其请求权限的目录租户。  |
-| `client_id` | 必选 | **Azure 门户 - 应用注册**体验分配给应用的[应用程序（客户端）ID](https://portal.azure.cn/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)。 |
+| `client_id` | 必选 | [Azure 门户 - 应用注册](https://portal.azure.cn/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)体验分配给应用的**应用程序（客户端）ID**。 |
 | `scope` | 建议 | 希望用户同意的[范围](v2-permissions-and-consent.md)的空格分隔列表。  |
 
 ### <a name="device-authorization-response"></a>设备授权响应
@@ -75,7 +75,7 @@ scope=https://microsoftgraph.chinacloudapi.cn/user.read%20openid%20profile
 |`verification_uri`| URI | 用户在登录时应使用 `user_code` 转到的 URI。 |
 |`expires_in`      | int | `device_code` 和 `user_code` 过期之前的秒数。 |
 |`interval`        | int | 在发出下一个轮询请求之前客户端应等待的秒数。 |
-| `message`        | String | 用户可读的字符串，包含面向用户的说明。 可以通过在请求中包含  **格式的**查询参数`?mkt=xx-XX`并填充相应的语言区域性代码，将此字符串本地化。 |
+| `message`        | String | 用户可读的字符串，包含面向用户的说明。 可以通过在请求中包含 `?mkt=xx-XX` 格式的**查询参数**并填充相应的语言区域性代码，将此字符串本地化。 |
 
 > [!NOTE]
 > 此时不包括或不支持 `verification_uri_complete` 响应字段。  我们提到这一点是因为如果你阅读[标准](https://tools.ietf.org/html/rfc8628)，你会看到 `verification_uri_complete` 作为设备代码流标准的可选部分列出。
@@ -84,7 +84,7 @@ scope=https://microsoftgraph.chinacloudapi.cn/user.read%20openid%20profile
 
 收到 `user_code` 和 `verification_uri` 后，客户端会向用户显示这些信息，指示他们使用移动电话或电脑浏览器登录。
 
-尽管用户是在 `verification_uri` 中进行身份验证，但客户端应使用 `/token` 来轮询所请求令牌的 `device_code` 终结点。
+尽管用户是在 `verification_uri` 中进行身份验证，但客户端应使用 `device_code` 来轮询所请求令牌的 `/token` 终结点。
 
 ``` 
 POST https://login.partner.microsoftonline.cn/{tenant}/oauth2/v2.0/token
@@ -110,7 +110,7 @@ device_code: GMMhmHCXhWEzkobqIHGG_EnNYYsAkukHspeYUk9E8...
 | ------ | ----------- | -------------|
 | `authorization_pending` | 用户尚未完成身份验证，但未取消流。 | 在至少 `interval` 秒之后重复请求。 |
 | `authorization_declined` | 最终用户拒绝了授权请求。| 停止轮询，并恢复到未经过身份验证状态。  |
-| `bad_verification_code`| 未识别已发送到 `device_code` 终结点的 `/token`。 | 验证客户端是否在请求中发送了正确的 `device_code`。 |
+| `bad_verification_code`| 未识别已发送到 `/token` 终结点的 `device_code`。 | 验证客户端是否在请求中发送了正确的 `device_code`。 |
 | `expired_token` | 至少已经过去了 `expires_in` 秒，不再可以使用此 `device_code` 进行身份验证。 | 停止轮询，并恢复到未经过身份验证状态。 |   
 
 ### <a name="successful-authentication-response"></a>成功的身份验证响应

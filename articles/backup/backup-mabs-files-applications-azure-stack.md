@@ -44,7 +44,7 @@ ms.locfileid: "74838896"
 
     ![“新建保护组”向导打开](./media/backup-mabs-files-applications-azure-stack/4-opening-screen-choose-servers.png)
 
-3. 在“选择组成员”屏幕中，单击  **展开子项列表。+** 选中想要保护的所有项对应的复选框。 选择所有项后，单击“下一步”。 
+3. 在“选择组成员”屏幕中，单击 **+** 展开子项列表。 选中想要保护的所有项对应的复选框。 选择所有项后，单击“下一步”。 
 
     ![“新建保护组”向导打开](./media/backup-mabs-files-applications-azure-stack/5-select-group-members.png)
 

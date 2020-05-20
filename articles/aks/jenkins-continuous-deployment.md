@@ -86,7 +86,7 @@ redis                        latest     a1b99da73d05        7 days ago          
 tiangolo/uwsgi-nginx-flask   flask      788ca94b2313        9 months ago        694MB
 ```
 
-必须先运行 [az acr list][az-acr-list] 命令来获取 ACR 登录服务器，然后才能将 azure-vote-front  容器映像推送到 ACR。 下面的示例为 myResourceGroup  资源组中的注册表获取 ACR 登录服务器地址：
+必须先运行 [az acr list][az-acr-list] 命令来获取 ACR 登录服务器，然后才能将 azure-vote-front 容器映像推送到 ACR。 下面的示例为 myResourceGroup  资源组中的注册表获取 ACR 登录服务器地址：
 
 ```azurecli
 az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
@@ -106,7 +106,7 @@ docker push <acrLoginServer>/azure-vote-front:v1
 
 ## <a name="deploy-the-sample-application-to-aks"></a>将示例应用程序部署到 AKS
 
-若要将示例应用程序部署到 AKS 群集，可使用 Azure 投票存储库根目录中的 Kubernetes 清单文件。 使用 `vi` 等编辑器打开 azure-vote-all-in-one-redis.yaml  清单文件。 将 `microsoft` 替换为 ACR 登录服务器名称。 此值位于清单文件的第 47  行：
+若要将示例应用程序部署到 AKS 群集，可使用 Azure 投票存储库根目录中的 Kubernetes 清单文件。 使用 `vi` 等编辑器打开 azure-vote-all-in-one-redis.yaml 清单文件。 将 `microsoft` 替换为 ACR 登录服务器名称。 此值位于清单文件的第 47  行：
 
 ```yaml
 containers:
@@ -233,17 +233,17 @@ az role assignment create --assignee 626dd8ea-042d-4043-a8df-4ef56273670f --role
 在 Jenkins 门户主页的左侧，选择“新建项”  ：
 
 1. 输入“azure-vote”  作为作业名称。 依次选择“自由风格项目”  和“确定” 
-1. 在“常规”部分下面，选择“GitHub 项目”并输入分叉的存储库的 URL，例如 *https:\//github.com/\<your-github-account\>/azure-voting-app-redis*  
-1. 在“源代码管理”部分下面，选择“Git”并输入分叉的存储库 *.git* 的 URL，例如 *https:\//github.com/\<your-github-account\>/azure-voting-app-redis.git*  
+1. 在“常规”部分下面，选择“GitHub 项目”并输入分叉的存储库的 URL，例如 *https:\//github.com/\<your-github-account\>/azure-voting-app-redis*
+1. 在“源代码管理”部分下面，选择“Git”并输入分叉的存储库 *.git* 的 URL，例如 *https:\//github.com/\<your-github-account\>/azure-voting-app-redis.git*
 
 1. 在“生成触发器”  部分下面，选择“用于 GITscm 轮询的 GitHub 挂钩触发器” 
 1. 在“生成环境”  下，选择“使用机密文本或文件” 
 1. 在“绑定”  下，依次选择“添加”   > “用户名和密码(已分隔)” 
-   - 在“用户名变量”  中输入 `ACR_ID`，并在“密码变量”  中输入 `ACR_PASSWORD`
+   - 在“用户名变量”中输入 `ACR_ID`，并在“密码变量”中输入 `ACR_PASSWORD`
 
      ![Jenkins 绑定](media/aks-jenkins/bindings.png)
 
-1. 选择添加类型为“执行 shell”  的“生成步骤”  ，并使用以下文本。 此脚本将生成新的容器映像，并将其推送到 ACR 注册表。
+1. 选择添加类型为“执行 shell”的“生成步骤”，并使用以下文本。 此脚本将生成新的容器映像，并将其推送到 ACR 注册表。
 
     ```bash
     # Build new image and push to ACR.

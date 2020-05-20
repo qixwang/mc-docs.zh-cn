@@ -67,7 +67,7 @@ Azure AD Connect 要求使用 SQL Server 数据库来存储标识数据。 可�
 * 用作 Azure AD Connect Synchronization Service 操作上下文的 Sync Service 帐户。
 * 安装期间创建的本地组 ADSyncAdmins。
 
-1. 备份数据库，方法是将 **下的**ADSync.mdf**和**ADSync_log.ldf`%ProgramFiles%\Azure AD Sync\Data` 文件复制到安全位置。
+1. 备份数据库，方法是将 `%ProgramFiles%\Azure AD Sync\Data` 下的 **ADSync.mdf** 和 **ADSync_log.ldf** 文件复制到安全位置。
 
 2. 启动新的 PowerShell 会话。
 
@@ -88,7 +88,7 @@ Azure AD Connect 要求使用 SQL Server 数据库来存储标识数据。 可�
 
 3. 在“操作”下面，选择“清除运行…”  
 
-4. 可以选择“清除所有运行”或“清除 **date> 之前的运行…”选项。** **\<** 建议一开始清除超过两天的运行历史记录数据。 如果仍遇到 DB 大小问题，则选择“清除所有运行”选项。 
+4. 可以选择“清除所有运行”或“清除 \<date> 之前的运行…”选项。 建议一开始清除超过两天的运行历史记录数据。 如果仍遇到 DB 大小问题，则选择“清除所有运行”选项。 
 
 ### <a name="shorten-retention-period-for-run-history-data"></a>缩短运行历史记录数据的保留期 <a name="shorten-retention-period-for-run-history-data"></a>
 此步骤是为了在多次同步周期后降低遇到 10 GB 限制问题的可能性。

@@ -25,7 +25,7 @@ ms.locfileid: "79452573"
 
 可以通过以下任意一种方式转到“警报”页：
 
-   + 在 [Azure 门户](https://portal.azure.cn/)中，选择“监视” **“警报”。**  >    
+   + 在 [Azure 门户](https://portal.azure.cn/)中，选择“监视” > “警报”。  
      ![监视警报的屏幕截图](media/alerts-managing-alert-instances/monitoring-alerts-managing-alert-instances-toc.jpg)
   
 - 使用特定资源的上下文。 打开资源，转到“监视”  部分，然后选择“警报”  。 登陆页已经过预先筛选，以显示有关特定资源的警报。

@@ -72,8 +72,8 @@ database,
 |.Net     |    1.18     |
 |Java 同步     |   2.4.0      |
 |Java 异步   |  2.5.0        |
-| REST API | 使用 `2017-05-03` 请求标头时版本高于 `x-ms-version`。|
-| 资源管理器模板 | 版本 2（通过使用 `"version":2` 对象中的 `partitionKey` 属性）。 |
+| REST API | 使用 `x-ms-version` 请求标头时版本高于 `2017-05-03`。|
+| 资源管理器模板 | 版本 2（通过使用 `partitionKey` 对象中的 `"version":2` 属性）。 |
 
 目前不能在 Power BI 和 Azure Logic Apps 中将容器与大分区键配合使用。 在这些应用程序中，可以在没有大分区键的情况下使用容器。
 

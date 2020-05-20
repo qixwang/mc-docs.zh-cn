@@ -22,7 +22,7 @@ ms.locfileid: "80343374"
 # <a name="train-models-with-azure-machine-learning-using-estimator"></a>通过估算器使用 Azure 机器学习训练模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-凭借 Azure 机器学习，可以使用 [RunConfiguration 对象](how-to-set-up-training-targets.md#compute-targets-for-training)和 [ScriptRunConfig 对象](how-to-set-up-training-targets.md#whats-a-run-configuration)轻松将训练脚本提交给[各种计算目标](how-to-set-up-training-targets.md#submit)。 该模式提供了很强的灵活性和最大程度的控制度。
+凭借 Azure 机器学习，可以使用 [RunConfiguration 对象](how-to-set-up-training-targets.md#whats-a-run-configuration)和 [ScriptRunConfig 对象](how-to-set-up-training-targets.md#submit)轻松将训练脚本提交给[各种计算目标](how-to-set-up-training-targets.md#compute-targets-for-training)。 该模式提供了很强的灵活性和最大程度的控制度。
 
 为了便于深度学习模型训练，Azure 机器学习 Python SDK 提供了另一种可选择的高级抽象（即估算器类），其支持用户轻松构造运行配置。 在所选的任何计算目标上，可以创建并使用泛型[估算器](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py)提交使用了任何所选学习框架（如 scikit-learn）的训练脚本，无论它是你的本地计算机、Azure 中的单个 VM 还是 Azure 中的 GPU 群集。 对于 PyTorch、TensorFlow 和 Chainer 任务，Azure 机器学习还提供了相应的 [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py)、[TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py) 和 [Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) 估算器，以便使用这些框架进行简化。
 
@@ -69,7 +69,7 @@ sk_est = Estimator(source_directory='./my-sklearn-proj',
 
 构造函数具有名为 `pip_packages` 的另一个参数，可以将其用于任何所需的 pip 包。
 
-创建了 `Estimator` 对象后，请提交要在远程计算上通过调用`submit`实验[对象 ](concept-azure-machine-learning-architecture.md#experiments) 上的 `experiment` 函数来运行的训练作业。 
+创建了 `Estimator` 对象后，请提交要在远程计算上通过调用[实验](concept-azure-machine-learning-architecture.md#experiments)对象 `experiment` 上的 `submit` 函数来运行的训练作业。 
 
 ```Python
 run = experiment.submit(sk_est)
@@ -77,7 +77,7 @@ print(run.get_portal_url())
 ```
 
 > [!IMPORTANT]
-> **特殊文件夹**两个文件夹 *outputs* 和 *logs* 接收 Azure 机器学习的特殊处理。 在训练期间，如果将文件写入相对于根目录（分别为 *和*）的名为 outputs 和 logs 的文件夹，则会将这些文件自动上传到运行历史记录，以便在完成运行后对其具有访问权限  `./outputs``./logs`。
+> **特殊文件夹**两个文件夹 *outputs* 和 *logs* 接收 Azure 机器学习的特殊处理。 在训练期间，如果将文件写入相对于根目录（分别为 `./outputs` 和 `./logs`）的名为 outputs 和 logs 的文件夹，则会将这些文件自动上传到运行历史记录，以便在完成运行后对其具有访问权限。
 >
 > 要在训练期间创建项目（如模型文件、检查点、数据文件或绘制的图像），请将其写入 `./outputs` 文件夹。
 >

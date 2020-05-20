@@ -32,7 +32,7 @@ ms.locfileid: "77531306"
 
 ## <a name="prerequisites"></a>必备条件
 
- 在[自断言技术配置文件](self-asserted-technical-profile.md#metadata)的[元数据](self-asserted-technical-profile.md)部分中，引用的 [ContentDefinition](contentdefinitions.md) 需要将 `DataUri` 设置为页面协定版本2.0.0 或更高版本。 例如：
+ 在[自断言技术配置文件](self-asserted-technical-profile.md)的[元数据](self-asserted-technical-profile.md#metadata)部分中，引用的 [ContentDefinition](contentdefinitions.md) 需要将 `DataUri` 设置为页面协定版本2.0.0 或更高版本。 例如：
 
 ```XML
 <ContentDefinition Id="api.selfasserted">
@@ -78,7 +78,7 @@ ms.locfileid: "77531306"
 
 每种类型的显示控件都需要一组不同的显示声明、[输出声明](#output-claims)，以及要执行的[操作](#display-control-actions)。
 
-与在**自断言技术配置文件**中定义的[显示声明](self-asserted-technical-profile.md#display-claims)类似，显示声明表示在显示控件中要从用户那里收集的声明。 引用的 **ClaimType** 元素需要指定 Azure AD B2C 支持的某个用户输入类型的 **UserInputType** 元素，例如 `TextBox` 或 `DropdownSingleSelect`。 如果显示声明值是某个**操作**所必需的，请将 **Required** 属性设置为 `true` 来强制用户为该特定的显示声明提供一个值。
+与在[自断言技术配置文件](self-asserted-technical-profile.md#display-claims)中定义的**显示声明**类似，显示声明表示在显示控件中要从用户那里收集的声明。 引用的 **ClaimType** 元素需要指定 Azure AD B2C 支持的某个用户输入类型的 **UserInputType** 元素，例如 `TextBox` 或 `DropdownSingleSelect`。 如果显示声明值是某个**操作**所必需的，请将 **Required** 属性设置为 `true` 来强制用户为该特定的显示声明提供一个值。
 
 某些显示声明是某些类型的显示控件所必需的。 例如，**VerificationCode** 是 **VerificationControl** 类型的显示控件所必需的。 请使用 **ControlClaimType** 属性指定为该必需声明指定了哪个 DisplayClaim。 例如：
 
@@ -127,7 +127,7 @@ ms.locfileid: "77531306"
 
 ## <a name="referencing-display-controls"></a>引用显示控件
 
-显示控件在[自断言技术配置文件](self-asserted-technical-profile.md#display-claims)的[显示声明](self-asserted-technical-profile.md)中引用。
+显示控件在[自断言技术配置文件](self-asserted-technical-profile.md)的[显示声明](self-asserted-technical-profile.md#display-claims)中引用。
 
 例如：
 

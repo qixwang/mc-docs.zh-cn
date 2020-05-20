@@ -22,7 +22,7 @@ ms.locfileid: "79543839"
 
 在本部分，我们将使用“Web 应用”模板创建 Azure 资源组项目  。
 
-1. 在 Visual Studio 中，选择“文件” **“新建”** “项目”>  >  。
+1. 在 Visual Studio 中，选择“文件”>“新建”>“项目”。
 1. 选择“Azure 资源组”项目模板和“下一步”   。
 
     ![创建项目](./media/create-visual-studio-deployment-project/create-project.png)

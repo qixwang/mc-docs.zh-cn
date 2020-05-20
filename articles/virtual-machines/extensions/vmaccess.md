@@ -58,7 +58,7 @@ VM 访问扩展可以针对这些 Linux 分发运行：
 下面的示例使用 [az vm user](https://docs.azure.cn/cli/vm/user?view=azure-cli-latest#az-vm-user) 命令。 若要执行这些步骤，需要安装最新的 [Azure CLI](https://docs.azure.cn/cli/install-az-cli2?view=azure-cli-latest)，并使用 [az login](https://docs.azure.cn/cli/reference-index?view=azure-cli-latest#az-login) 登录到 Azure 帐户。
 
 ## <a name="update-ssh-key"></a>更新 SSH 密钥
-以下示例更新名为 `azureuser` 的 VM 上用户 `myVM` 的 SSH 密钥：
+以下示例更新名为 `myVM` 的 VM 上用户 `azureuser` 的 SSH 密钥：
 
 ```azurecli
 az vm user update \
@@ -68,10 +68,10 @@ az vm user update \
   --ssh-key-value ~/.ssh/id_rsa.pub
 ```
 
-> 注意：**命令将新公钥文本附加到 VM 上管理员用户的** 文件`az vm user update``~/.ssh/authorized_keys`。 此操作不会替换或删除任何现有的 SSH 密钥。 这不会删除在部署时设置的先前密钥或通过 VMAccess 扩展进行的后续更新。
+> 注意：`az vm user update` 命令将新公钥文本附加到 VM 上管理员用户的 `~/.ssh/authorized_keys` 文件。 此操作不会替换或删除任何现有的 SSH 密钥。 这不会删除在部署时设置的先前密钥或通过 VMAccess 扩展进行的后续更新。
 
 ## <a name="reset-password"></a>重置密码
-以下示例重置名为 `azureuser` 的 VM 上用户 `myVM` 的密码：
+以下示例重置名为 `myVM` 的 VM 上用户 `azureuser` 的密码：
 
 ```azurecli
 az vm user update \
@@ -102,7 +102,7 @@ az vm user update \
 ```
 
 ## <a name="delete-a-user"></a>删除用户
-以下示例将删除名为 `myNewUser` 的 VM 上名为 `myVM` 的用户：
+以下示例将删除名为 `myVM` 的 VM 上名为 `myNewUser` 的用户：
 
 ```azurecli
 az vm user delete \
@@ -182,7 +182,7 @@ az vm extension set \
 
 ### <a name="manage-administrative-users"></a>管理管理用户
 
-若要创建具有 sudo 权限且使用 SSH 密钥进行身份验证的用户，请创建名为  **的文件并添加以下格式的设置**`create_new_user.json`。 用你自己的值替换 `username` 和 `ssh_key` 参数的值。 丢失或忘记当前凭据时，此方法有助于重新获取对 VM 的访问权限。 作为最佳做法，应限制具有 sudo 权限的帐户  。
+若要创建具有 sudo 权限且使用 SSH 密钥进行身份验证的用户，请创建名为 `create_new_user.json` 的文件并添加以下格式的设置。 用你自己的值替换 `username` 和 `ssh_key` 参数的值。 丢失或忘记当前凭据时，此方法有助于重新获取对 VM 的访问权限。 作为最佳做法，应限制具有 sudo 权限的帐户  。
 
 ```json
 {

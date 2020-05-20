@@ -32,7 +32,7 @@ ms.locfileid: "79290892"
 
 启用监视后，可能需要约 15 分钟才能查看群集的更新后运行状况指标。 若要验证代理是否成功升级，请运行以下命令：`kubectl logs omsagent-484hw --namespace=kube-system`
 
-状态应类似于以下示例，其中 omi 和 omsagent 的值应与[代理发布历史记录](https://github.com/microsoft/docker-provider/tree/ci_feature_prod)中指定的最新版本相匹配   。  
+状态应类似于以下示例，其中 omi 和 omsagent 的值应与[代理发布历史记录](https://github.com/microsoft/docker-provider/tree/ci_feature_prod)中指定的最新版本相匹配。  
 
     User@aksuser:~$ kubectl logs omsagent-484hw --namespace=kube-system
     :
@@ -67,7 +67,7 @@ ms.locfileid: "79290892"
 
 要验证配置更改是否生效，请在用于容器的 Azure Monitor 中的“容器”视图中选择容器，并在属性面板中展开“环境变量”   。  此部分应只显示前面创建的变量 - AZMON_COLLECT_ENV=FALSE  。 对于所有其他容器，环境变量部分应列出发现的所有环境变量。   
 
-要重新启用环境变量的发现，请应用与前面相同的过程，将值从“False”更改为“True”，然后重新运行 `kubectl` 命令来更新容器   。  
+要重新启用环境变量的发现，请应用与前面相同的过程，将值从“False”更改为“True”，然后重新运行 `kubectl` 命令来更新容器。  
 
 ```  
 - name: AZMON_COLLECT_ENV  

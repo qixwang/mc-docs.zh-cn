@@ -46,7 +46,7 @@ ms.locfileid: "73425718"
 
 1. 启动 Power BI Desktop。
 
-1. 在顶部菜单中，导航到“主页” **“获取数据”** “更多...”。 >    >  
+1. 在顶部菜单中，导航到“主页” > “获取数据” > “更多...”。
 
     ![HDInsight Excel Power BI 开放数据](./media/apache-hadoop-connect-hive-power-bi/hdinsight-power-bi-open-odbc.png)
 
@@ -54,7 +54,7 @@ ms.locfileid: "73425718"
 
 1. 在“从 ODBC”  对话框中，从下拉列表中选择在上一部分中创建的数据源名称， 然后选择“确定”。 
 
-1. 第一次使用时，将打开“ODBC 驱动程序”  对话框。 从左侧菜单中选择“默认值或自定义”  。 然后选择“连接”以打开**导航器**  。
+1. 第一次使用时，将打开“ODBC 驱动程序”  对话框。 从左侧菜单中选择“默认值或自定义”  。 然后选择“连接”以打开**导航器**。
 
 1. 在“导航器”  对话框中，依次展开“ODBC”>“HIVE”>“默认”  ，选择 **hivesampletable**，然后选择“加载”  。
 

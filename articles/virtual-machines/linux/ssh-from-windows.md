@@ -57,7 +57,7 @@ Windows 计算机并不总是装有类似的 SSH 命令。 最新版本的 Windo
 ssh-keygen -t rsa -b 2048
 ```
 
-有关详细背景和信息，请参阅使用 [ 创建 SSH 密钥的](mac-create-ssh-keys.md)快速[或](create-ssh-keys-detailed.md)详细`ssh-keygen`步骤。
+有关详细背景和信息，请参阅使用 `ssh-keygen` 创建 SSH 密钥的[快速](mac-create-ssh-keys.md)或[详细](create-ssh-keys-detailed.md)步骤。
 
 ### <a name="create-ssh-keys-with-puttygen"></a>使用 PuTTYgen 创建 SSH 密钥
 
@@ -81,7 +81,7 @@ ssh-keygen -t rsa -b 2048
 
     ![保存 PuTTY 私钥文件](./media/ssh-from-windows/save-ppk-file.png)
 
-    如果要将私钥以 OpenSSH 格式（许多 SSH 客户端使用的私钥格式）保存，请选择“转换” **“导出 OpenSSH 密钥”**  >   。
+    如果要将私钥以 OpenSSH 格式（许多 SSH 客户端使用的私钥格式）保存，请选择“转换” > “导出 OpenSSH 密钥”。
 
 ## <a name="provide-an-ssh-public-key-when-deploying-a-vm"></a>在部署 VM 时提供 SSH 公钥
 
@@ -120,7 +120,7 @@ ssh azureuser@myvm.chinanorth.cloudapp.chinacloudapi.cn
 
     ![打开新的 PuTTY 连接](./media/ssh-from-windows/putty-new-connection.png)
 
-3. 选择“连接” **“SSH”** “身份验证”类别。 >    >   浏览并选择 PuTTY 私钥（.ppk 文件）：
+3. 选择“连接” > “SSH” > “身份验证”类别。 浏览并选择 PuTTY 私钥（.ppk 文件）：
 
     ![选择用于身份验证的 PuTTY 私钥](./media/ssh-from-windows/putty-auth-dialog.png)
 

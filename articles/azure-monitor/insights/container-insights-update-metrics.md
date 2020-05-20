@@ -71,7 +71,7 @@ ms.locfileid: "74838965"
 ## <a name="upgrade-per-cluster-using-azure-cli"></a>使用 Azure CLI 升级每个群集
 执行以下步骤，使用 Azure CLI 更新订阅中的特定群集。
 
-1. 使用 Azure CLI 运行以下命令。 使用 AKS 群集的“AKS 概述”页中的值编辑 **subscriptionId**、**resourceGroupName** 和 **clusterName** 的值。   运行命令 **后会返回**clientIdOfSPN`az aks show` 的值，如以下示例所示。
+1. 使用 Azure CLI 运行以下命令。 使用 AKS 群集的“AKS 概述”页中的值编辑 **subscriptionId**、**resourceGroupName** 和 **clusterName** 的值。   运行命令 `az aks show` 后会返回 **clientIdOfSPN** 的值，如以下示例所示。
 
     ```azurecli
     az login

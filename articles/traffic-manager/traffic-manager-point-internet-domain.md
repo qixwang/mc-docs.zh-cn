@@ -26,7 +26,7 @@ ms.locfileid: "77653205"
 
     www.contoso.com IN CNAME contoso.trafficmanager.cn
 
-对 www*contoso.com\.* 发出的所有流量请求都会定向到 contoso.trafficmanager.cn  。
+对 www\.contoso.com 发出的所有流量请求都会定向到 contoso.trafficmanager.cn。
 
 > [!IMPORTANT]
 > 无法将第二级域（例如 *contoso.com*）指向流量管理器域。 DNS 协议标准不允许对二级域名使用 CNAME 记录。

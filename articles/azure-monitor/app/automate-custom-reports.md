@@ -71,7 +71,7 @@ availabilityResults
 
 ## <a name="application-insights-scheduled-digest-report"></a>Application Insights 计划的摘要报表
 
-1. 在 Azure 门户中，选择“创建资源” **“计算”** “Function App”。 >    >  
+1. 在 Azure 门户中，选择“创建资源” > “计算” > “Function App”。
 
    ![“创建 Azure 资源函数应用”屏幕截图](./media/automate-custom-reports/function-app-01.png)
 
@@ -98,7 +98,7 @@ availabilityResults
 
    ![“函数设置”屏幕截图](./media/automate-custom-reports/function-app-05.png)
 
-7. 选择你的**函数应用** > “平台功能” **“应用程序设置”。**  >  
+7. 选择你的**函数应用** > “平台功能” > “应用程序设置”。
 
     ![“Azure 函数应用程序设置”屏幕截图](./media/automate-custom-reports/function-app-07.png)
 
@@ -143,7 +143,7 @@ availabilityResults
 
      ![“设置 > API 密钥”屏幕截图](./media/automate-custom-reports/function-app-14.png)
 
-3. 这将启动 SendGrid 的站点。 选择“设置” **“API 密钥”。**  >  
+3. 这将启动 SendGrid 的站点。 选择“设置” > “API 密钥”。
 
      ![“创建并查看 API 密钥应用”屏幕截图](./media/automate-custom-reports/function-app-15.png)
 

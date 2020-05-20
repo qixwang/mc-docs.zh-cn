@@ -125,7 +125,7 @@ ms.locfileid: "74884871"
     这为请求设置设备标记。
 
    > [!NOTE]
-   > 此时，此方法中不应有任何其他代码。 如果已调用在完成`registerNativeWithDeviceToken`通知中心入门[教程的学习时添加的 ](notification-hubs-ios-apple-push-notification-apns-get-started.md) 方法，必须注释掉或删除该调用。
+   > 此时，此方法中不应有任何其他代码。 如果已调用在完成[通知中心入门](notification-hubs-ios-apple-push-notification-apns-get-started.md)教程的学习时添加的 `registerNativeWithDeviceToken` 方法，必须注释掉或删除该调用。
 
 8. 在 `PushToUserAppDelegate.m` 文件中，添加以下处理程序方法：
 
@@ -152,7 +152,7 @@ ms.locfileid: "74884871"
     }
     ```
 
-10. 在 `viewDidLoad` 文件中的 `PushToUserViewController.m` 方法中，如下所示初始化 `installationId` 标签：
+10. 在 `PushToUserViewController.m` 文件中的 `viewDidLoad` 方法中，如下所示初始化 `installationId` 标签：
 
     ```objc
     DeviceInfo* deviceInfo = [(PushToUserAppDelegate*)[[UIApplication sharedApplication]delegate] deviceInfo];

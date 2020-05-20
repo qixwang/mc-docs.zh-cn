@@ -128,7 +128,7 @@ CopyTable 实用工具还支持使用参数来指定要复制的行的时间范�
 CopyTable 将会扫描要复制到目标表的整个源表内容。 因此，在 CopyTable 执行时，这可能会降低 HBase 群集的性能。
 
 > [!NOTE]
-> 若要在表之间自动复制数据，请参阅 GitHub 上 `hdi_copy_table.sh`Azure HBase 实用工具[存储库中的 ](https://github.com/Azure/hbase-utils/tree/master/replication) 脚本。
+> 若要在表之间自动复制数据，请参阅 GitHub 上 [Azure HBase 实用工具](https://github.com/Azure/hbase-utils/tree/master/replication)存储库中的 `hdi_copy_table.sh` 脚本。
 
 ### <a name="manually-collect-the-apache-zookeeper-quorum-list"></a>手动收集 Apache ZooKeeper 仲裁列表
 

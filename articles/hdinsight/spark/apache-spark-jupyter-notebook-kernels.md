@@ -88,7 +88,7 @@ HDInsight Spark 群集提供可在 [Apache Spark](./apache-spark-overview.md) �
    | info |`%%info` |输出当前 Livy 终结点的会话信息 |
    | 配置 |`%%configure -f`<br>`{"executorMemory": "1000M"`、<br>`"executorCores": 4`} |配置用于创建会话的参数。 如果已创建会话，则必须指定 force 标志 (-f)，确保删除再重新创建该会话。 有关有效参数的列表，请查看 [Livy 的 POST /sessions 请求正文](https://github.com/cloudera/livy#request-body)。 参数必须以 JSON 字符串传入，并且必须位于 magic 后面的下一行，如示例列中所示。 |
    | sql |`%%sql -o <variable name>`<br> `SHOW TABLES` |针对 sqlContext 执行 Hive 查询。 如果传递了 `-o` 参数，则查询的结果以 [Pandas](https://pandas.pydata.org/) 数据帧的形式保存在 %%local Python 上下文中。 |
-   | local |`%%local`<br>`a=1` |后续行中的所有代码在本地执行。 不管使用哪种内核，代码都必须是有效的 Python2 代码。 因此，即使在创建 Notebook 时选择了“PySpark3”或“Spark”，但如果在单元中使用  **magic，该单元也只能包含有效的 Python2 代码。**  `%%local` |
+   | local |`%%local`<br>`a=1` |后续行中的所有代码在本地执行。 不管使用哪种内核，代码都必须是有效的 Python2 代码。 因此，即使在创建 Notebook 时选择了“PySpark3”或“Spark”，但如果在单元中使用 `%%local` magic，该单元也只能包含有效的 Python2 代码。 |
    | 日志 |`%%logs` |输出当前 Livy 会话的日志。 |
    | delete |`%%delete -f -s <session number>` |删除当前 Livy 终结点的特定会话。 无法删除针对内核本身启动的会话。 |
    | cleanup |`%%cleanup -f` |删除当前 Livy 终结点的所有会话，包括此笔记本的会话。 force 标志 -f 是必需的。 |
@@ -106,7 +106,7 @@ HDInsight Spark 群集提供可在 [Apache Spark](./apache-spark-overview.md) �
 | 参数 | 示例 | 说明 |
 | --- | --- | --- |
 | -o |`-o <VARIABLE NAME>` |使用此参数将查询结果以 [Pandas](https://pandas.pydata.org/) 数据帧的形式保存在 %%local Python 上下文中。 数据帧变量的名称是指定的变量名称。 |
-| -S |`-q` |使用此参数可关闭单元可视化。 如果不想自动将单元内容可视化，而只想将它作为数据帧捕获，可以使用 `-q -o <VARIABLE>`。 如果想要关闭可视化而不捕获结果（例如，运行诸如 `CREATE TABLE` 语句的 SQL 查询），请使用不带 `-q` 参数的 `-o`。 |
+| -S |`-q` |使用此参数可关闭单元可视化。 如果不想自动将单元内容可视化，而只想将它作为数据帧捕获，可以使用 `-q -o <VARIABLE>`。 如果想要关闭可视化而不捕获结果（例如，运行诸如 `CREATE TABLE` 语句的 SQL 查询），请使用不带 `-o` 参数的 `-q`。 |
 | -M |`-m <METHOD>` |其中，**METHOD** 是 **take** 或 **sample**（默认为 **take**）。 如果方法为 **take**，内核将从 MAXROWS 指定的结果数据集顶部选择元素（如此表中稍后所述）。 如果方法为 **sample**，内核会根据 `-r` 参数进行数据集的元素随机采样，如此表中稍后所述。 |
 | -r |`-r <FRACTION>` |此处的 **FRACTION** 是介于 0.0 与 1.0 之间的浮点数。 如果 SQL 查询的采样方法为 `sample`，则内核将针对结果集元素的指定分数随机采样。 例如，如果使用参数 `-m sample -r 0.01` 运行 SQL 查询，则会随机采样 1% 的结果行。 |
 | -n |`-n <MAXROWS>` |**MAXROWS** 是整数值。 内核将输出行的数目限制为 **MAXROWS**。 如果 **MAXROWS** 是负数（例如 **-1**），结果集中的行数不受限制。 |

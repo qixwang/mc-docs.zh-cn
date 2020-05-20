@@ -34,7 +34,7 @@ Azure 流分析作业可以通过自定义的 .NET 反序列化程序来读取�
 
 以下代码片段是流数据的反序列化。 
 
-可跳过的错误应使用通过 `IStreamingDiagnostics` 的 Initialize 方法传递的 `UserDefinedOperator` 来发出。 将所有异常视为错误，并重新创建反序列化程序。 出现特定数量的错误后，该作业将进入失败状态。
+可跳过的错误应使用通过 `UserDefinedOperator` 的 Initialize 方法传递的 `IStreamingDiagnostics` 来发出。 将所有异常视为错误，并重新创建反序列化程序。 出现特定数量的错误后，该作业将进入失败状态。
 
 `StreamDeserializer<T>` 将流反序列化为 `T` 类型的对象。 必须满足以下条件：
 
@@ -113,7 +113,7 @@ message MessageBodyProto {
 }
 ```
 
-从 `protoc.exe`Google.Protobuf.Tools**NuGet 运行** 会生成一个包含定义的 .cs 文件。 此处未显示生成的文件。
+从 **Google.Protobuf.Tools** NuGet 运行 `protoc.exe` 会生成一个包含定义的 .cs 文件。 此处未显示生成的文件。
 
 以下代码片段是反序列化程序的实现，它假设生成的文件已包含在项目中。 此实现只是基于生成的文件的精简包装器。
 

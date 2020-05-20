@@ -39,7 +39,7 @@ ms.locfileid: "74884930"
 | ```buy two dozen eggs```    | ```"two dozen"``` | ```"24"``` |
 
 
-LUIS 在它返回的 JSON 响应的  **字段中包括 `builtin.number`** `resolution` 实体的已识别值。
+LUIS 在它返回的 JSON 响应的 `resolution` 字段中包括 **`builtin.number`** 实体的已识别值。
 
 ## <a name="resolution-for-prebuilt-number"></a>预构建数字解析
 

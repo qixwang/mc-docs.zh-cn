@@ -278,7 +278,7 @@ ms.locfileid: "79291978"
 <a name="scale"></a>
 
 ## <a name="to-scale-an-azure-cache-for-redis"></a>缩放 Azure Redis 缓存
-修改 `Set-AzRedisCache`、`Size` 或 `Sku` 属性时，可以使用 `ShardCount` 来缩放 Azure Redis 缓存实例。 
+修改 `Size`、`Sku` 或 `ShardCount` 属性时，可以使用 `Set-AzRedisCache` 来缩放 Azure Redis 缓存实例。 
 
 > [!NOTE]
 > 使用 PowerShell 缩放缓存受到的限制和要遵循的准则与在 Azure 门户中缩放缓存相同。 可以扩展到不同定价层，但有以下限制。
@@ -377,7 +377,7 @@ ms.locfileid: "79291978"
 
     Get-AzRedisCache
 
-若要返回特定资源组中所有缓存的相关信息，请结合 `Get-AzRedisCache` 参数运行 `ResourceGroupName`。
+若要返回特定资源组中所有缓存的相关信息，请结合 `ResourceGroupName` 参数运行 `Get-AzRedisCache`。
 
     Get-AzRedisCache -ResourceGroupName myGroup
 
@@ -485,7 +485,7 @@ ms.locfileid: "79291978"
             OutBuffer, PipelineVariable, and OutVariable. For more information, see
             about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
-若要重新生成缓存的主要或辅助密钥，请调用 `New-AzRedisCacheKey` cmdlet，传入名称和资源组，并为 `Primary` 参数指定 `Secondary` 或 `KeyType`。 以下示例将重新生成缓存的辅助访问密钥。
+若要重新生成缓存的主要或辅助密钥，请调用 `New-AzRedisCacheKey` cmdlet，传入名称和资源组，并为 `KeyType` 参数指定 `Primary` 或 `Secondary`。 以下示例将重新生成缓存的辅助访问密钥。
 
     PS C:\> New-AzRedisCacheKey -Name myCache -ResourceGroupName myGroup -KeyType Secondary
 

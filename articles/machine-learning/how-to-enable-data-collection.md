@@ -106,7 +106,7 @@ Blob 中输出数据的路径遵循以下语法：
     prediction_dc.collect(result) #this call is saving our input data into Azure Blob
     ```
 
-1. 在 AKS 中部署服务时，数据收集不会自动设置为 *true*。  如以下示例所示更新配置文件：
+1. 在 AKS 中部署服务时，数据收集不会自动设置为 **true**。 如以下示例所示更新配置文件：
 
     ```python
     aks_config = AksWebservice.deploy_configuration(collect_model_data=True)
@@ -192,11 +192,11 @@ Blob 中输出数据的路径遵循以下语法：
 
 1. 下载并打开 [Power BI Desktop](https://www.powerbi.com)。
 
-1. 选择“获取数据”，然后选择“**Azure Blob 存储**”。[  ](https://docs.microsoft.com/power-bi/desktop-data-sources)
+1. 选择“获取数据”，然后选择“[Azure Blob 存储](https://docs.microsoft.com/power-bi/desktop-data-sources)”。
 
     [![Power BI Blob 设置](./media/how-to-enable-data-collection/PBIBlob.png)](././media/how-to-enable-data-collection/PBIBlob.png#lightbox)
 
-1. 添加存储帐户名称并输入存储密钥。 可以通过在 Blob 中选择“设置” **“访问密钥”找到此信息。**  >  
+1. 添加存储帐户名称并输入存储密钥。 可以通过在 Blob 中选择“设置” > “访问密钥”找到此信息。
 
 1. 选择“模型数据”容器，然后选择“编辑”。  
 

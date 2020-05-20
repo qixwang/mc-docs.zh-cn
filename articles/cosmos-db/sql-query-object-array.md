@@ -92,7 +92,7 @@ SQL API 支持循环访问 JSON 数组，它可以通过 FROM 源中的 [IN 关�
     ]
 ```
 
-下一个查询循环访问 `children` 容器中的 `Families`。 输出的数组与前面的查询不同。 此示例拆分 `children` 并将结果平展为单个数组：  
+下一个查询循环访问 `Families` 容器中的 `children`。 输出的数组与前面的查询不同。 此示例拆分 `children` 并将结果平展为单个数组：  
 
 ```sql
     SELECT *

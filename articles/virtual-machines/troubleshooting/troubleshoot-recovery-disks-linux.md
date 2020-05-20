@@ -47,7 +47,7 @@ ms.locfileid: "74116929"
 ## <a name="determine-boot-issues"></a>确定启动问题
 检查串行输出以确定 VM 不能正常启动的原因。 一个常见示例是 `/etc/fstab` 中存在无效条目，或底层虚拟硬盘已删除或移动。
 
-使用 [az vm boot-diagnostics get-boot-log](https://docs.azure.cn/cli/vm/boot-diagnostics?view=azure-cli-latest#az-vm-boot-diagnostics-get-boot-log) 获取启动日志。 以下示例从名为 `myVM` 的资源组中名为 `myResourceGroup` 的 VM 获取串行输出：
+使用 [az vm boot-diagnostics get-boot-log](https://docs.azure.cn/cli/vm/boot-diagnostics?view=azure-cli-latest#az-vm-boot-diagnostics-get-boot-log) 获取启动日志。 以下示例从名为 `myResourceGroup` 的资源组中名为 `myVM` 的 VM 获取串行输出：
 
 ```azurecli
 az vm boot-diagnostics get-boot-log --resource-group myResourceGroup --name myVM
@@ -57,7 +57,7 @@ az vm boot-diagnostics get-boot-log --resource-group myResourceGroup --name myVM
 
 ## <a name="stop-the-vm"></a>停止 VM
 
-以下示例在名为 `myVM` 的资源组中停止名为 `myResourceGroup` 的 VM：
+以下示例在名为 `myResourceGroup` 的资源组中停止名为 `myVM` 的 VM：
 
 ```azurecli
 az vm stop --resource-group MyResourceGroup --name MyVm
@@ -75,7 +75,7 @@ az snapshot create --resource-group myResourceGroupDisk --source "$osdiskid" --n
 ```
 ## <a name="create-a-disk-from-the-snapshot"></a>从快照创建磁盘
 
-此脚本从名为 `myOSDisk` 的快照创建名为 `mySnapshot` 的托管磁盘。  
+此脚本从名为 `mySnapshot` 的快照创建名为 `myOSDisk` 的托管磁盘。  
 
 ```azurecli
 #Provide the name of your resource group

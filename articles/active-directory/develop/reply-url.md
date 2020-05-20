@@ -24,7 +24,7 @@ ms.locfileid: "79133815"
  以下限制适用于回复 URL：
 
     * 回复 URL 必须以方案 `https` 开头。
-    * 回复 URL 区分大小写。 其大小写必须与正在运行的应用程序的 URL 路径的大小写匹配。 例如，如果应用程序在其路径中包括 `.../abc/response-oidc`，请不要在回复 URL 中指定 `.../ABC/response-oidc`。 由于 Web 浏览器将路径视为区分大小写，因此如果重定向到大小写不匹配的 `.../abc/response-oidc` URL，则可能会排除与 `.../ABC/response-oidc` 关联的 Cookie。
+    * 回复 URL 区分大小写。 其大小写必须与正在运行的应用程序的 URL 路径的大小写匹配。 例如，如果应用程序在其路径中包括 `.../abc/response-oidc`，请不要在回复 URL 中指定 `.../ABC/response-oidc`。 由于 Web 浏览器将路径视为区分大小写，因此如果重定向到大小写不匹配的 `.../ABC/response-oidc` URL，则可能会排除与 `.../abc/response-oidc` 关联的 Cookie。
     
 ## <a name="maximum-number-of-redirect-uris"></a>最大重定向 URI 数
 

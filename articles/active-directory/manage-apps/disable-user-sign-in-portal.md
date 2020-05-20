@@ -35,7 +35,7 @@ ms.locfileid: "74655403"
 1. 在“Azure Active Directory   -  目录名”窗格（即，正在管理的目录的 Azure AD 窗格）中，选择“企业应用程序”  。
 1. 在“企业应用程序 - 所有应用程序”  窗格上，你会看到你可以管理的应用的列表。 选择一个应用。
 1. 在 ***appname*** 窗格（即标题中包含所选应用的名称的窗格）中，选择“属性”  。
-1. 在“appname - 属性”  窗格中，对“启用以让用户登录?”  设置选择“否”  。
+1. 在“appname - 属性”窗格中，对“启用以让用户登录?”设置选择“否”。
 1. 选择“保存”  命令。
 
 ## <a name="use-azure-ad-powershell-to-disable-an-unlisted-app"></a>使用 Azure AD PowerShell 禁用未列出的应用

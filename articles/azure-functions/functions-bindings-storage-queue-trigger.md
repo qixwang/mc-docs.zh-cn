@@ -44,7 +44,7 @@ public static class QueueFunctions
 
 # <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
-以下示例演示 function.json 文件中的一个队列触发器绑定以及使用该绑定的 [C# 脚本 (.csx)](functions-reference-csharp.md) 代码  。 每次处理某个队列项之后，该函数会轮询 `myqueue-items` 队列并写入日志。
+以下示例演示 function.json 文件中的一个队列触发器绑定以及使用该绑定的 [C# 脚本 (.csx)](functions-reference-csharp.md) 代码。 每次处理某个队列项之后，该函数会轮询 `myqueue-items` 队列并写入日志。
 
 function.json  文件如下所示：
 

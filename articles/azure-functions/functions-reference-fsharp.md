@@ -63,7 +63,7 @@ let Run(blob: string, output: byref<Item>) =
 
 F # Azure 函数采用一个或多个参数。 所谓 Azure 函数参数时，指的是 *输入* 参数和 *输出* 参数。 顾名思义，输入参数就是输入到 F # Azure 函数的参数。 *输出* 参数是可变的数据或 `byref<>` 参数就是*从*返回数据的参数。
 
-在以上示例中，`blob` 是输入参数，`output` 是输出参数。 注意，针对 `byref<>`，请使用 `output` （无需添加 `[<Out>]` 批注）。 使用 `byref<>` 类型允许函数更改参数所引用的记录或对象。
+在以上示例中，`blob` 是输入参数，`output` 是输出参数。 注意，针对 `output`，请使用 `byref<>` （无需添加 `[<Out>]` 批注）。 使用 `byref<>` 类型允许函数更改参数所引用的记录或对象。
 
 作为输入类型使用 F # 记录时，必须使用 `[<CLIMutable>]`标记的记录定义，以便在记录传递给函数之前让 Azure 功能框架设置相应字段。 实质上， `[<CLIMutable>]` 生成记录属性的 setter。 例如：
 
@@ -258,7 +258,7 @@ let Run(timer: TimerInfo, log: ILogger) =
 ```
 
 ## <a name="reusing-fsx-code"></a>重用.fsx 代码
-可以通过 `.fsx` 指令使用其他 `#load` 文件中的代码。 例如：
+可以通过 `#load` 指令使用其他 `.fsx` 文件中的代码。 例如：
 
 `run.fsx`
 
@@ -280,7 +280,7 @@ let mylog(log: ILogger, text: string) =
 
 * `#load "logger.fsx"` 加载函数文件夹中的文件。
 * `#load "package\logger.fsx"` 加载文件 `package` 函数文件夹中的文件夹。
-* `#load "..\shared\mylogger.fsx"` 在同一级别（即 `shared` 的正下方）加载 `wwwroot` 文件夹中的文件，使其成为函数文件夹。
+* `#load "..\shared\mylogger.fsx"` 在同一级别（即 `wwwroot` 的正下方）加载 `shared` 文件夹中的文件，使其成为函数文件夹。
 
 `#load` 指令只适用于 `.fsx`（F # 脚本）文件，而不适用于 `.fs` 文件。
 

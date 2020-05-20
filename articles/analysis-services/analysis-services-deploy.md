@@ -40,7 +40,7 @@ ms.locfileid: "74203597"
 
 ## <a name="to-deploy-from-visual-studio"></a>从 Visual Studio 部署
 
-1. 在 Visual Studio >“解决方案资源管理器”  中，右键单击项目，并选择“属性”  。 然后在“部署”   > “服务器”  中粘贴服务器名称。   
+1. 在 Visual Studio >“解决方案资源管理器”  中，右键单击项目，并选择“属性”  。 在“部署” > “服务器”中，粘贴服务器名称。   
 
     ![将服务器名称粘贴到部署服务器属性](./media/analysis-services-deploy/aas-deploy-deployment-server-property.png)
 

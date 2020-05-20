@@ -82,7 +82,7 @@ ms.locfileid: "79291500"
 
 `{"age":35,"fullName":"Owens,Sophie"}`
 
-若要尝试示例，请在逻辑应用设计器中遵循以下步骤。 或者，如果你偏好使用代码视图编辑器，可将本文中的示例“撰写”和“初始化变量”操作复制到自己的逻辑应用基础工作流定义：   [数据操作代码示例 - 撰写](../logic-apps/logic-apps-data-operations-code-samples.md#compose-action-example) 
+若要尝试示例，请在逻辑应用设计器中遵循以下步骤。 或者，如果你偏好使用代码视图编辑器，可将本文中的示例“撰写”和“初始化变量”操作复制到自己的逻辑应用基础工作流定义：[数据操作代码示例 - 撰写](../logic-apps/logic-apps-data-operations-code-samples.md#compose-action-example) 
 
 1. 在 <a href="https://portal.azure.cn" target="_blank">Azure 门户</a>或 Visual Studio 的逻辑应用设计器中打开逻辑应用。 
 
@@ -142,7 +142,7 @@ ms.locfileid: "79291500"
 
 若要创建包含来自数组中 JavaScript 对象表示法 (JSON) 对象的属性和值的逗号分隔值 (CSV) 表，请使用“数据操作 - 创建 CSV 表”操作。  然后，可以在“创建 CSV 表”操作后面的操作中使用生成的表。  
 
-如果你偏好使用代码视图编辑器，可将本文中的示例“创建 CSV 表”和“初始化变量”操作复制到自己的逻辑应用基础工作流定义：   [数据操作代码示例 - 创建 CSV 表](../logic-apps/logic-apps-data-operations-code-samples.md#create-csv-table-action-example) 
+如果你偏好使用代码视图编辑器，可将本文中的示例“创建 CSV 表”和“初始化变量”操作复制到自己的逻辑应用基础工作流定义：[数据操作代码示例 - 创建 CSV 表](../logic-apps/logic-apps-data-operations-code-samples.md#create-csv-table-action-example) 
 
 1. 在 <a href="https://portal.azure.cn" target="_blank">Azure 门户</a>或 Visual Studio 的逻辑应用设计器中打开逻辑应用。 
 
@@ -296,7 +296,7 @@ Oranges,2
 
 若要创建包含来自数组中 JavaScript 对象表示法 (JSON) 对象的属性和值的 HTML 表，请使用“创建 HTML 表”操作。  然后，可以在“创建 HTML 表”操作后面的操作中使用生成的表。 
 
-如果你偏好使用代码视图编辑器，可将本文中的示例“创建 HTML 表”和“初始化变量”操作复制到自己的逻辑应用基础工作流定义：   [数据操作代码示例 - 创建 HTML 表](../logic-apps/logic-apps-data-operations-code-samples.md#create-html-table-action-example) 
+如果你偏好使用代码视图编辑器，可将本文中的示例“创建 HTML 表”和“初始化变量”操作复制到自己的逻辑应用基础工作流定义：[数据操作代码示例 - 创建 HTML 表](../logic-apps/logic-apps-data-operations-code-samples.md#create-html-table-action-example) 
 
 1. 在 [Azure 门户](https://portal.azure.cn)或 Visual Studio 的逻辑应用设计器中打开逻辑应用。
 
@@ -455,7 +455,7 @@ Oranges,2
 > 
 > 要使操作使用“筛选数组”操作的数组输出，这些操作必须接受数组作为输入，或者必须将输出数组转换为另一种兼容格式。 
 
-如果你偏好使用代码视图编辑器，可将本文中的示例“筛选数组”和“初始化变量”操作复制到自己的逻辑应用基础工作流定义：   [数据操作代码示例 - 筛选数组](../logic-apps/logic-apps-data-operations-code-samples.md#filter-array-action-example)
+如果你偏好使用代码视图编辑器，可将本文中的示例“筛选数组”和“初始化变量”操作复制到自己的逻辑应用基础工作流定义：[数据操作代码示例 - 筛选数组](../logic-apps/logic-apps-data-operations-code-samples.md#filter-array-action-example)
 
 1. 在 [Azure 门户](https://portal.azure.cn)或 Visual Studio 的逻辑应用设计器中打开逻辑应用。
 
@@ -504,7 +504,7 @@ Oranges,2
 
    `@actionBody('Filter_array')`
 
-   本示例使用 Office 365 Outlook“发送电子邮件”操作，并在电子邮件正文中包含 **actionBody('Filter_array')** 表达式的输出： 
+   本示例使用 Office 365 Outlook“发送电子邮件”操作，并在电子邮件正文中包含 **actionBody('Filter_array')** 表达式的输出：
 
    ![“发送电子邮件”操作中的操作输出](./media/logic-apps-perform-data-operations/send-email-filter-array-action.png)
 
@@ -520,7 +520,7 @@ Oranges,2
 
 若要创建包含数组中所有项的字符串，并使用特定的分隔符分隔这些项，请使用“联接”操作。  然后，可以在“联接”操作后面的操作中使用该字符串。 
 
-如果你偏好使用代码视图编辑器，可将本文中的示例“联接”和“初始化变量”操作复制到自己的逻辑应用基础工作流定义：   [数据操作代码示例 - 联接](../logic-apps/logic-apps-data-operations-code-samples.md#join-action-example)
+如果你偏好使用代码视图编辑器，可将本文中的示例“联接”和“初始化变量”操作复制到自己的逻辑应用基础工作流定义：[数据操作代码示例 - 联接](../logic-apps/logic-apps-data-operations-code-samples.md#join-action-example)
 
 1. 在 [Azure 门户](https://portal.azure.cn)或 Visual Studio 的逻辑应用设计器中打开逻辑应用。
 
@@ -580,7 +580,7 @@ Oranges,2
 
 若要引用或访问 JavaScript 对象表示法 (JSON) 内容中的属性，可以使用“分析 JSON”操作为这些属性创建用户友好的字段或令牌。  这样，在为逻辑应用指定输入时，便可以从动态内容列表中选择这些属性。 对于此操作，可以提供 JSON 架构，或者从示例 JSON 内容或有效负载生成 JSON 架构。
 
-如果你偏好使用代码视图编辑器，可将本文中的示例“分析 JSON”和“初始化变量”操作复制到自己的逻辑应用基础工作流定义：   [数据操作代码示例 - 分析 JSON](../logic-apps/logic-apps-data-operations-code-samples.md#parse-json-action-example)
+如果你偏好使用代码视图编辑器，可将本文中的示例“分析 JSON”和“初始化变量”操作复制到自己的逻辑应用基础工作流定义：[数据操作代码示例 - 分析 JSON](../logic-apps/logic-apps-data-operations-code-samples.md#parse-json-action-example)
 
 1. 在 [Azure 门户](https://portal.azure.cn)或 Visual Studio 的逻辑应用设计器中打开逻辑应用。
 
@@ -632,7 +632,7 @@ Oranges,2
 
 1. 在该操作中，单击希望显示结果的任意位置。 当动态内容列表打开时，可在“分析 JSON”操作下面选择已分析的 JSON 内容中的属性。 
 
-   本示例使用Office 365 Outlook“发送电子邮件”操作，并在电子邮件的正文和主题中包含 **FirstName**、**LastName** 和 **Email** 字段： 
+   本示例使用Office 365 Outlook“发送电子邮件”操作，并在电子邮件的正文和主题中包含 **FirstName**、**LastName** 和 **Email** 字段：
 
    ![“发送电子邮件”操作中的 JSON 属性](./media/logic-apps-perform-data-operations/send-email-parse-json-action.png)
 
@@ -655,7 +655,7 @@ Oranges,2
 > [!NOTE]
 > 要使操作使用“选择”操作的数组输出，这些操作必须接受数组作为输入，或者必须将输出数组转换为另一种兼容格式。  
 
-如果你偏好使用代码视图编辑器，可将本文中的示例“选择”和“初始化变量”操作复制到自己的逻辑应用基础工作流定义：   [数据操作代码示例 - 选择](../logic-apps/logic-apps-data-operations-code-samples.md#select-action-example) 
+如果你偏好使用代码视图编辑器，可将本文中的示例“选择”和“初始化变量”操作复制到自己的逻辑应用基础工作流定义：[数据操作代码示例 - 选择](../logic-apps/logic-apps-data-operations-code-samples.md#select-action-example) 
 
 1. 在 [Azure 门户](https://portal.azure.cn)或 Visual Studio 的逻辑应用设计器中打开逻辑应用。
 
@@ -705,7 +705,7 @@ Oranges,2
 
    `@actionBody('Select')`
 
-   本示例使用 Office 365 Outlook“发送电子邮件”操作，并在电子邮件正文中包含 `@actionBody('Select')` 表达式的输出： 
+   本示例使用 Office 365 Outlook“发送电子邮件”操作，并在电子邮件正文中包含 `@actionBody('Select')` 表达式的输出：
 
    ![“发送电子邮件”操作中的操作输出](./media/logic-apps-perform-data-operations/send-email-select-action.png)
 

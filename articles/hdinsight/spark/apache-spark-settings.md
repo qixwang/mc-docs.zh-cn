@@ -68,7 +68,7 @@ Apache Spark 有三个系统配置位置：
 
 此时会显示 Apache Ambari Web UI，其中的仪表板视图显示了重要的群集资源利用率指标。  Ambari 仪表板显示 Apache Spark 配置，以及安装的其他服务。 仪表板包含“配置历史记录”选项卡，可在其中查看所有已安装服务（包括 Spark）的配置信息。 
 
-若要查看 Apache Spark 的配置值，请依次选择“配置历史记录”、“Spark2”。    选择“配置”选项卡，然后在服务列表中选择 **或**（取决于版本）链接。`Spark``Spark2`  此时会显示群集的配置值列表：
+若要查看 Apache Spark 的配置值，请依次选择“配置历史记录”、“Spark2”。    选择“配置”选项卡，然后在服务列表中选择 `Spark` 或 `Spark2`（取决于版本）链接。  此时会显示群集的配置值列表：
 
 ![Spark 配置](./media/apache-spark-settings/spark-config.png)
 

@@ -31,7 +31,7 @@ ms.locfileid: "80343871"
 ![FHIR 授权](media/azure-ad-hcapi/fhir-authorization.png)
 
 1. 客户端向 Azure AD 的 `/authorize` 终结点发送请求。 Azure AD 将客户端重定向到登录页，在此页中，用户将使用适当的凭据进行身份验证（例如，进行用户名和密码身份验证或双重身份验证）。 请参阅有关[获取授权代码](https://docs.azure.cn/active-directory/develop/v1-protocols-oauth-code#request-an-authorization-code)的详细信息。 成功完成身份验证后，会将一个授权代码返回给客户端。  Azure AD 只允许将此授权代码返回给客户端应用程序注册中配置的已注册回复 URL（请参阅下文）。
-1. 客户端应用程序在 Azure AD 的  *终结点上，使用该授权代码来交换访问令牌。* `/token` 请求令牌时，客户端应用程序可能需要提供客户端机密（应用程序密码）。 请参阅有关[获取访问令牌](https://docs.azure.cn/active-directory/develop/v1-protocols-oauth-code#use-the-authorization-code-to-request-an-access-token)的详细信息。
+1. 客户端应用程序在 Azure AD 的 `/token` 终结点上，使用该授权代码来交换访问令牌。 请求令牌时，客户端应用程序可能需要提供客户端机密（应用程序密码）。 请参阅有关[获取访问令牌](https://docs.azure.cn/active-directory/develop/v1-protocols-oauth-code#use-the-authorization-code-to-request-an-access-token)的详细信息。
 1. 客户端向 Azure API for FHIR 发出请求，例如，发出 `GET /Patient` 来搜索所有患者。 发出请求时，客户端会在 HTTP 请求标头中包含该访问令牌，例如 `Authorization: Bearer eyJ0e...`，其中 `eyJ0e...` 表示 Base64 编码的访问令牌。
 1. Azure API for FHIR 验证该令牌是否包含适当的声明（令牌中的属性）。 如果所有内容符合要求，则 Azure API for FHIR 将完成请求，并将包含结果的 FHIR 捆绑包返回给客户端。
 

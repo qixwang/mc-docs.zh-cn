@@ -131,6 +131,6 @@ Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
 > [!NOTE]
 > 必须通过使用证书的哈希将 X5T 标头转换为 base 64 字符串来对其进行计算。 在 C# 中执行此操作的代码是 `System.Convert.ToBase64String(cert.GetCertHash());`。
 
-代码示例[使用 Microsoft 标识平台的 .NET Core 守护程序控制台应用程序](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2)展示了应用程序如何使用自己的凭据进行身份验证。 它还演示了如何使用 [ Powershell命令](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/tree/master/1-Call-MSGraph#optional-use-the-automation-script)创建自签名证书`New-SelfSignedCertificate`。 还可以利用和使用[应用创建脚本](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/master/1-Call-MSGraph/AppCreationScripts-withCert/AppCreationScripts.md)执行创建证书、计算指纹等操作。
+代码示例[使用 Microsoft 标识平台的 .NET Core 守护程序控制台应用程序](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2)展示了应用程序如何使用自己的凭据进行身份验证。 它还演示了如何使用 `New-SelfSignedCertificate` Powershell命令[创建自签名证书](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/tree/master/1-Call-MSGraph#optional-use-the-automation-script)。 还可以利用和使用[应用创建脚本](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/master/1-Call-MSGraph/AppCreationScripts-withCert/AppCreationScripts.md)执行创建证书、计算指纹等操作。
 
 <!-- Update_Description: wording update -->

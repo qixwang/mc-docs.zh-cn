@@ -41,7 +41,7 @@ ms.locfileid: "79291929"
 
 流量激增时，如果 `ThreadPool` 设置不佳，则可能导致对 Redis 服务器已发送但尚未在客户端上使用的数据的处理出现延迟。
 
-使用`ThreadPool`示例 [`ThreadPoolLogger` 监视 ](https://github.com/JonCole/SampleCode/blob/master/ThreadPoolMonitor/ThreadPoolLogger.cs) 统计信息在不同时间的变化。 可以使用 StackExchange.Redis 发出的 `TimeoutException` 消息（如下所示）做进一步的调查：
+使用[示例 `ThreadPoolLogger`](https://github.com/JonCole/SampleCode/blob/master/ThreadPoolMonitor/ThreadPoolLogger.cs) 监视 `ThreadPool` 统计信息在不同时间的变化。 可以使用 StackExchange.Redis 发出的 `TimeoutException` 消息（如下所示）做进一步的调查：
 
     System.TimeoutException: Timeout performing EVAL, inst: 8, mgr: Inactive, queue: 0, qu: 0, qs: 0, qc: 0, wr: 0, wq: 0, in: 64221, ar: 0,
     IOCP: (Busy=6,Free=999,Min=2,Max=1000), WORKER: (Busy=7,Free=8184,Min=2,Max=8191)
@@ -57,10 +57,10 @@ ms.locfileid: "79291929"
 
 客户端 CPU 使用率偏高表示系统跟不上所要求执行的工作的进度。 即使缓存发送响应的速度很快，客户端也可能无法及时处理该响应。
 
-使用 Azure 门户中提供的指标或者通过计算机上的性能计数器监视客户端的系统范围的 CPU 使用率。 请注意不要监视进程 CPU，因为即使单个进程的 CPU 使用率较低，但系统范围的 CPU 使用率也可能很高。  注意与超时相对应的 CPU 使用率峰值。 CPU 使用率较高可能还会导致 `in: XXX` 错误消息中出现较大的 `TimeoutException` 值，如[流量突增](#traffic-burst)部分所述。
+使用 Azure 门户中提供的指标或者通过计算机上的性能计数器监视客户端的系统范围的 CPU 使用率。 请注意不要监视进程 CPU，因为即使单个进程的 CPU 使用率较低，但系统范围的 CPU 使用率也可能很高。  注意与超时相对应的 CPU 使用率峰值。 CPU 使用率较高可能还会导致 `TimeoutException` 错误消息中出现较大的 `in: XXX` 值，如[流量突增](#traffic-burst)部分所述。
 
 > [!NOTE]
-> StackExchange.Redis 1.1.603 及更高版本在 `local-cpu` 错误消息中包括了 `TimeoutException` 指标。 确保使用最新版本的 [StackExchange.Redis NuGet 包](https://www.nuget.org/packages/StackExchange.Redis/)。 我们会不断对代码中的 Bug 进行修正，以便更好地应对超时情况。因此，请务必使用最新的版本。
+> StackExchange.Redis 1.1.603 及更高版本在 `TimeoutException` 错误消息中包括了 `local-cpu` 指标。 确保使用最新版本的 [StackExchange.Redis NuGet 包](https://www.nuget.org/packages/StackExchange.Redis/)。 我们会不断对代码中的 Bug 进行修正，以便更好地应对超时情况。因此，请务必使用最新的版本。
 >
 
 缓解客户端 CPU 使用率较高的问题：

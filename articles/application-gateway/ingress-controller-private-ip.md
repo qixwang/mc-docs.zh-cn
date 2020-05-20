@@ -52,7 +52,7 @@ appgw.ingress.kubernetes.io/use-private-ip: "true"
 
 
 ## <a name="assign-globally"></a>全局分配
-如果要求是限制所有入口通过专用 IP 进行公开，请在 `appgw.usePrivateIP: true` 配置中使用 `helm`。
+如果要求是限制所有入口通过专用 IP 进行公开，请在 `helm` 配置中使用 `appgw.usePrivateIP: true`。
 
 ### <a name="usage"></a>使用情况
 ```yaml

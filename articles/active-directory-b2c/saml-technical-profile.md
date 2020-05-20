@@ -66,7 +66,7 @@ https://your-tenant-name.b2clogin.cn/your-tenant-name/your-policy/samlp/metadata
 若要加密 SAML 响应断言：
 
 1. 将带私钥的有效 X509 证书（.pfx 文件）上传到 Azure AD B2C 策略密钥存储库。
-2. 将标识符为  **的 CryptographicKey**`SamlAssertionDecryption` 元素添加到技术配置文件 CryptographicKeys  集合。 将 StorageReferenceId  设为在步骤 1 中创建的策略密钥的名称。
+2. 将标识符为 `SamlAssertionDecryption` 的 CryptographicKey 元素添加到技术配置文件 CryptographicKeys 集合。 将 StorageReferenceId  设为在步骤 1 中创建的策略密钥的名称。
 3. 将技术配置文件元数据 WantsEncryptedAssertions  设为 `true`。
 4. 使用新的 Azure AD B2C 技术配置文件元数据更新身份提供程序。 你应该会看到 KeyDescriptor  ，其中的“使用”  属性设置为包含你的证书的公钥的 `encryption`。
 
@@ -123,7 +123,7 @@ https://your-tenant-name.b2clogin.cn/your-tenant-name/your-policy/samlp/metadata
 | WantsEncryptedAssertions | 否 | 指示技术配置文件是否要求对所有传入断言进行加密。 可能的值：`true` 或 `false`。 默认值是 `false`。 如果该值设置为 `true`，则身份提供程序发送到 Azure AD B2C 的断言必须进行签名，并且需要指定 SamlAssertionDecryption  加密密钥。 如果该值设置为 `true`，则 Azure AD B2C 技术配置文件的元数据要包括“加密”  部分。 身份提供程序读取元数据并使用 Azure AD B2C 技术配置文件的元数据中提供的公钥加密 SAML 响应断言。 如果启用断言加密，则还可能需要禁用响应签名验证（有关详细信息，请参阅 ResponsesSigned  ）。 |
 | IdpInitiatedProfileEnabled | 否 | 指示是否启用由 SAML 身份提供程序配置文件启动的单一登录会话配置文件。 可能的值：`true` 或 `false`。 默认为 `false`。 在由身份提供程序启动的流程中，用户在外部进行身份验证，并向 Azure AD B2C 发送未经请求的响应，然后 Azure AD B2C 使用令牌，执行业务流程步骤，然后向信赖方应用发送响应。 |
 | NameIdPolicyFormat | 否 | 指定要使用的名称标识符上的约束，使之代表请求的主题。 如果省略此项，则可使用请求的主题对应的标识提供者支持的任何类型的标识符。 例如，`urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`。 **NameIdPolicyFormat** 可以与 **NameIdPolicyAllowCreate** 配合使用。 查看标识提供者的文档，了解哪些名称 ID 策略受支持。 |
-| NameIdPolicyAllowCreate | 否 | 使用 **NameIdPolicyFormat** 时，也可指定 `AllowCreate`NameIDPolicy**的** 属性。 此元数据的值为 `true` 或 `false`，表示是否允许标识提供者在登录流程中创建新帐户。 请查看你的身份提供程序的文档，以获取有关如何执行此操作的指导。 |
+| NameIdPolicyAllowCreate | 否 | 使用 **NameIdPolicyFormat** 时，也可指定 **NameIDPolicy** 的 `AllowCreate` 属性。 此元数据的值为 `true` 或 `false`，表示是否允许标识提供者在登录流程中创建新帐户。 请查看你的身份提供程序的文档，以获取有关如何执行此操作的指导。 |
 | AuthenticationRequestExtensions | 否 | Azure AD BC 和标识提供者认可的可选协议消息扩展元素。 此扩展以 XML 格式呈现。 将 XML 数据添加到 CDATA 元素 `<![CDATA[Your IDP metadata]]>` 中。 检查标识提供者的文档，看扩展元素是否受支持。 |
 | IncludeAuthnContextClassReferences | 否 | 指定一个或多个可标识身份验证上下文类的 URI 引用。 例如，如果只允许用户使用用户名和密码登录，请将值设置为 `urn:oasis:names:tc:SAML:2.0:ac:classes:Password`。 若要允许用户在受保护会话 (SSL/TLS) 期间通过用户名和密码登录，请指定 `PasswordProtectedTransport`。 查看标识提供者的文档，了解受支持的 **AuthnContextClassRef** URI。 以逗号分隔列表的形式指定多个 URI。 |
 | IncludeKeyInfo | 否 | 指定在将绑定设置为 `HTTP-POST` 时，SAML 身份验证请求是否包含证书的公钥。 可能的值：`true` 或 `false`。 |

@@ -24,7 +24,7 @@ ms.locfileid: "80343379"
 
 本文介绍如何在 Azure 机器学习中启用自动机器学习 (ML) 的可解释性功能。 自动化 ML 可帮助你了解工程特征重要性。 
 
-默认情况下，1.0.85 之后的所有 SDK 版本设置 `model_explainability=True`。 在 SDK 版本 1.0.85 及更早版本中，用户需要在 `model_explainability=True` 对象中设置 `AutoMLConfig`，才能使用模型可解释性。 
+默认情况下，1.0.85 之后的所有 SDK 版本设置 `model_explainability=True`。 在 SDK 版本 1.0.85 及更早版本中，用户需要在 `AutoMLConfig` 对象中设置 `model_explainability=True`，才能使用模型可解释性。 
 
 在本文中，学习如何：
 

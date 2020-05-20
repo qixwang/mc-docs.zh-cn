@@ -54,13 +54,13 @@ MSAL.NET 通过 `IAccount` 接口定义了帐户的概念。 此中断性变更�
 
 | properties | 说明 |
 |----------|-------------|
-| `Username` | 一个字符串，包含 UserPrincipalName (UPN) 格式的可显示值，例如 john.doe@contoso.com。 此字符串可以为 null，这不同于 HomeAccountId 和 HomeAccountId.Identifier，后两者不会为 null。 此属性替换 MSAL.NET 旧版本中 `DisplayableId` 的 `IUser` 属性。 |
-| `Environment` | 一个字符串，包含此帐户的标识提供者，例如 `login.partner.microsoftonline.cn`。 此属性替换 `IdentityProvider` 的 `IUser` 属性，不同之处是 `IdentityProvider` 还包含除云环境以外的租户信息。 而此处的该值仅仅是主机。 |
+| `Username` | 一个字符串，包含 UserPrincipalName (UPN) 格式的可显示值，例如 john.doe@contoso.com。 此字符串可以为 null，这不同于 HomeAccountId 和 HomeAccountId.Identifier，后两者不会为 null。 此属性替换 MSAL.NET 旧版本中 `IUser` 的 `DisplayableId` 属性。 |
+| `Environment` | 一个字符串，包含此帐户的标识提供者，例如 `login.partner.microsoftonline.cn`。 此属性替换 `IUser` 的 `IdentityProvider` 属性，不同之处是 `IdentityProvider` 还包含除云环境以外的租户信息。 而此处的该值仅仅是主机。 |
 | `HomeAccountId` | 用户的主帐户的帐户 ID。 此属性唯一标识 Azure AD 租户的用户。 |
 
 ### <a name="use-the-token-to-call-a-protected-api"></a>使用令牌调用受保护的 API
 
-在 MSAL 在 `AuthenticationResult` 中返回 `result` 后，将它添加到 HTTP 授权标头，然后再调用该令牌以访问受保护的 Web API。
+在 MSAL 在 `result` 中返回 `AuthenticationResult` 后，将它添加到 HTTP 授权标头，然后再调用该令牌以访问受保护的 Web API。
 
 ```csharp
 httpClient = new HttpClient();

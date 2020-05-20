@@ -95,7 +95,7 @@ az extension remove -n azure-cli-ml
     ```
 
     > [!TIP]
-    > 此命令创建一个基本版工作区。 若要创建企业版工作区，请在 `--sku enterprise` 命令中使用 `az ml workspace create` 开关。 有关 Azure 机器学习版本的详细信息，请参阅[什么是 Azure 机器学习](overview-what-is-azure-ml.md#sku)。
+    > 此命令创建一个基本版工作区。 若要创建企业版工作区，请在 `az ml workspace create` 命令中使用 `--sku enterprise` 开关。 有关 Azure 机器学习版本的详细信息，请参阅[什么是 Azure 机器学习](overview-what-is-azure-ml.md#sku)。
 
     有关详细信息，请参阅 [az ml workspace create](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-create)。
 
@@ -310,7 +310,7 @@ az extension remove -n azure-cli-ml
 }
 ```
 
-下表详细介绍了 JSON 文件中的每个顶层字段、其类型和说明。 如果某个对象类型已链接到 Python SDK 中的类，则在每个 JSON 字段与 Python 类中的公共变量名称之间存在松散的 1:1 匹配。 在某些情况下，字段可能会映射到构造函数参数，而不是类变量。 例如，`environmentVariables` 字段映射到 `environment_variables`[`Environment` 类中的 ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py) 变量。
+下表详细介绍了 JSON 文件中的每个顶层字段、其类型和说明。 如果某个对象类型已链接到 Python SDK 中的类，则在每个 JSON 字段与 Python 类中的公共变量名称之间存在松散的 1:1 匹配。 在某些情况下，字段可能会映射到构造函数参数，而不是类变量。 例如，`environmentVariables` 字段映射到 [`Environment`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py) 类中的 `environment_variables` 变量。
 
 | JSON 字段 | 类型 | 说明 |
 |---|---|---|

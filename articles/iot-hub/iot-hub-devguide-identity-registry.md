@@ -203,7 +203,7 @@ iothub-message-schema | moduleLifecycleNotification |
 > 连接状态只能表示连接状态的 IoT 中心视图。 根据网络状态和配置，可能会延迟此状态的更新。
 
 > [!NOTE]
-> 目前，设备 SDK 不支持在 `+`deviceId`#` 中使用 **和** 字符。
+> 目前，设备 SDK 不支持在 **deviceId** 中使用 `+` 和 `#` 字符。
 
 ## <a name="module-identity-properties"></a>模块标识属性
 
@@ -225,7 +225,7 @@ iothub-message-schema | moduleLifecycleNotification |
 | lastActivityTime |只读 |临时指示器，显示设备上次连接、接收或发送消息的日期和时间。 |
 
 > [!NOTE]
-> 目前，设备 SDK 不支持在 `+`deviceId`#` 和 **moduleId** 中使用 **和** 字符。
+> 目前，设备 SDK 不支持在 **deviceId** 和 **moduleId** 中使用 `+` 和 `#` 字符。
 
 ## <a name="additional-reference-material"></a>其他参考资料
 IoT 中心开发人员指南中的其他参考主题包括：

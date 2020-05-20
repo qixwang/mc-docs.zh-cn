@@ -203,7 +203,7 @@ module.exports = function (context, input) {
 
 # <a name="java"></a>[Java](#tab/java)
 
-以下示例使用 `@SendGridOutput`Java 函数运行时库[中的 ](https://docs.microsoft.com/java/api/overview/azure/functions/runtime) 注释来发送使用 SendGrid 输出绑定的电子邮件。
+以下示例使用 [Java 函数运行时库](https://docs.microsoft.com/java/api/overview/azure/functions/runtime)中的 `@SendGridOutput` 注释来发送使用 SendGrid 输出绑定的电子邮件。
 
 ```java
 package com.function;
@@ -291,7 +291,7 @@ JavaScript 不支持特性。
 
 ## <a name="configuration"></a>配置
 
-下表列出了在 function.json 文件和  *特性/注释中可用的绑定配置属性*`SendGrid`。
+下表列出了在 function.json 文件和 `SendGrid` 特性/注释中可用的绑定配置属性。
 
 | function.json 属性  | 特性/注释属性 | 说明 | 可选 |
 |--------------------------|-------------------------------|-------------|----------|

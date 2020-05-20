@@ -142,7 +142,7 @@ public void badCodeWithReadTimeoutException() throws Exception {
 ExecutorService ex  = Executors.newFixedThreadPool(30);
 Scheduler customScheduler = rx.schedulers.Schedulers.from(ex);
    ```
-   你可能会需要完成需耗费一定时间的工作，例如，计算工作量繁重的工作或阻塞性 IO。 在这种情况下，使用 `customScheduler` API 将线程切换为 `.observeOn(customScheduler)` 提供的辅助角色。
+   你可能会需要完成需耗费一定时间的工作，例如，计算工作量繁重的工作或阻塞性 IO。 在这种情况下，使用 `.observeOn(customScheduler)` API 将线程切换为 `customScheduler` 提供的辅助角色。
 ```java
 Observable<ResourceResponse<Document>> createObservable = client
         .createDocument(getCollectionLink(), docDefinition, null, false);

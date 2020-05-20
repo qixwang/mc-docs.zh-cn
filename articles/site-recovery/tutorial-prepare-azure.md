@@ -52,7 +52,7 @@ ms.locfileid: "79291124"
 
 ## <a name="create-a-recovery-services-vault"></a>创建恢复服务保管库
 
-1. 在 Azure 门户中，选择“+ 创建资源” **“监视 + 管理”** “备份和站点恢复 (OMS)”。 >    >  
+1. 在 Azure 门户中，选择“+ 创建资源” > “监视 + 管理” > “备份和站点恢复 (OMS)”。
     
     <!--Submenu is correct on **Monitoring + Management**-->
     

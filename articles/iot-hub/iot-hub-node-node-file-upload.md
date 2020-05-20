@@ -70,9 +70,9 @@ ms.locfileid: "78154496"
     npm install azure-iot-device azure-iot-device-mqtt --save
     ```
 
-1. 在 **文件夹中，利用文本编辑器创建**`simulateddevice`SimulatedDevice.js 文件。
+1. 在 `simulateddevice` 文件夹中，利用文本编辑器创建 SimulatedDevice.js 文件。
 
-1. 在 `require`SimulatedDevice.js**文件的开头添加以下** 语句：
+1. 在 **SimulatedDevice.js** 文件的开头添加以下 `require` 语句：
 
     ```javascript
     'use strict';
@@ -143,9 +143,9 @@ ms.locfileid: "78154496"
     npm install azure-iothub --save
     ```
 
-1. 使用文本编辑器在 **文件夹中创建**FileUploadNotification.js`fileuploadnotification` 文件。
+1. 使用文本编辑器在 `fileuploadnotification` 文件夹中创建 **FileUploadNotification.js** 文件。
 
-1. 在 `require`FileUploadNotification.js**文件的开头添加以下** 语句：
+1. 在 **FileUploadNotification.js** 文件的开头添加以下 `require` 语句：
 
     ```javascript
     'use strict';

@@ -32,12 +32,12 @@ ms.locfileid: "67845407"
 在自己的计算机上安装 [Go](https://golang.org/doc/install) 和[适用于 MySQL 的 go-sql-driver](https://github.com/go-sql-driver/mysql#installation)。 根据自己的平台执行相应部分中的步骤：
 
 ### <a name="windows"></a>Windows
-1. 根据[安装说明](https://golang.org/dl/)[下载](https://golang.org/doc/install)和安装用于 Microsoft Windows 的 Go。
+1. 根据[安装说明](https://golang.org/doc/install)[下载](https://golang.org/dl/)和安装用于 Microsoft Windows 的 Go。
 2. 从开始菜单启动命令提示符。
 3. 为项目创建一个文件夹，例如 `mkdir  %USERPROFILE%\go\src\mysqlgo` 列中的一个值匹配。
 4. 将目录转到项目文件夹，例如 `cd %USERPROFILE%\go\src\mysqlgo`。
 5. 设置 GOPATH 的环境变量，使之指向源代码目录。 `set GOPATH=%USERPROFILE%\go` 列中的一个值匹配。
-6. 通过运行 [ 命令安装](https://github.com/go-sql-driver/mysql#installation)用于 MySQL 的 go-sql-driver`go get github.com/go-sql-driver/mysql`。
+6. 通过运行 `go get github.com/go-sql-driver/mysql` 命令安装[用于 MySQL 的 go-sql-driver](https://github.com/go-sql-driver/mysql#installation)。
 
    总起来说就是，安装 Go，然后在命令提示符处运行以下命令：
    ```cmd
@@ -53,7 +53,7 @@ ms.locfileid: "67845407"
 3. 在主目录中为项目创建一个文件夹，例如 `mkdir -p ~/go/src/mysqlgo/`。
 4. 将目录转到该文件夹，例如 `cd ~/go/src/mysqlgo/`。
 5. 设置 GOPATH 环境变量，使之指向有效的源目录，例如当前主目录的 Go 文件夹。 在 Bash shell 中运行 `export GOPATH=~/go`，将 Go 目录添加为当前 Shell 会话的 GOPATH。
-6. 通过运行 [ 命令安装](https://github.com/go-sql-driver/mysql#installation)用于 MySQL 的 go-sql-driver`go get github.com/go-sql-driver/mysql`。
+6. 通过运行 `go get github.com/go-sql-driver/mysql` 命令安装[用于 MySQL 的 go-sql-driver](https://github.com/go-sql-driver/mysql#installation)。
 
    总起来说就是，运行以下 bash 命令：
    ```bash
@@ -70,7 +70,7 @@ ms.locfileid: "67845407"
 3. 在主目录中为项目创建一个文件夹，例如 `mkdir -p ~/go/src/mysqlgo/`。
 4. 将目录转到该文件夹，例如 `cd ~/go/src/mysqlgo/`。
 5. 设置 GOPATH 环境变量，使之指向有效的源目录，例如当前主目录的 Go 文件夹。 在 Bash shell 中运行 `export GOPATH=~/go`，将 Go 目录添加为当前 Shell 会话的 GOPATH。
-6. 通过运行 [ 命令安装](https://github.com/go-sql-driver/mysql#installation)用于 MySQL 的 go-sql-driver`go get github.com/go-sql-driver/mysql`。
+6. 通过运行 `go get github.com/go-sql-driver/mysql` 命令安装[用于 MySQL 的 go-sql-driver](https://github.com/go-sql-driver/mysql#installation)。
 
    总起来说就是，安装 Go，然后运行以下 bash 命令：
    ```bash

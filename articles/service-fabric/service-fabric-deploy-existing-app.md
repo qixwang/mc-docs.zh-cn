@@ -148,7 +148,7 @@ SetupEntryPoint 元素用于指定在启动服务代码之前应执行的任何�
 
 由于只有一个 SetupEntryPoint，因此，如果应用程序的设置需要多个脚本，必须将设置脚本归入一个批处理文件中。 SetupEntryPoint 可以执行任意类型的文件：可执行文件、批处理文件和 PowerShell cmdlet。 有关详细信息，请参阅[配置 SetupEntryPoint](service-fabric-application-runas-security.md)。
 
-在上面的示例中，SetupEntryPoint 会运行位于 code 目录的 `LaunchConfig.cmd` 子目录中的 `scripts` 批处理文件（假定 WorkingFolder 元素设置为 CodeBase）。
+在上面的示例中，SetupEntryPoint 会运行位于 code 目录的 `scripts` 子目录中的 `LaunchConfig.cmd` 批处理文件（假定 WorkingFolder 元素设置为 CodeBase）。
 
 #### <a name="update-entrypoint"></a>更新 EntryPoint
 ```xml
@@ -218,7 +218,7 @@ WorkingFolder 用于设置正确的工作目录，以便应用程序或初始化
 
 ## <a name="set-up-logging"></a>设置日志记录
 对于来宾可执行文件，最好能够查看控制台日志，以查明应用程序和配置脚本是否显示了任何错误。
-可以使用 `ServiceManifest.xml` 元素在 `ConsoleRedirection` 文件中配置控制台重定向。
+可以使用 `ConsoleRedirection` 元素在 `ServiceManifest.xml` 文件中配置控制台重定向。
 
 > [!WARNING]
 > 永远不要在生产中部署的应用程序中使用控制台重定向策略，因为这可能会影响应用程序故障转移。 *仅*将其用于本地开发和调试目的。  
@@ -269,7 +269,7 @@ New-ServiceFabricService -ApplicationName 'fabric:/nodeapp' -ServiceName 'fabric
 
 Service Fabric 服务可以采用各种“配置”进行部署。 例如，可以部署为单个或多个实例，也可以部署为在 Service Fabric 群集的每个节点上都有一个服务实例。
 
-`InstanceCount` cmdlet 的 `New-ServiceFabricService` 参数用于指定应在 Service Fabric 群集中启动的服务实例的数量。 可以根据要部署的应用程序的类型来设置 `InstanceCount` 值。 最常见的两种方案是：
+`New-ServiceFabricService` cmdlet 的 `InstanceCount` 参数用于指定应在 Service Fabric 群集中启动的服务实例的数量。 可以根据要部署的应用程序的类型来设置 `InstanceCount` 值。 最常见的两种方案是：
 
 * `InstanceCount = "1"` 列中的一个值匹配。 在此用例中，群集上只部署一个服务实例。 Service Fabric 的计划程序确定会在哪一个节点上部署服务。
 * `InstanceCount ="-1"` 列中的一个值匹配。 在此用例中，会在 Service Fabric 群集中的每个节点上部署一个服务实例。 结果是，群集中的每个节点都拥有一个（且只有一个）服务实例。

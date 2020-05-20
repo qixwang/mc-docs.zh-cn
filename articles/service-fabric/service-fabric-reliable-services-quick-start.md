@@ -105,7 +105,7 @@ protected override async Task RunAsync(CancellationToken cancellationToken)
 
 系统将管理此业务流程，以便保持服务的高度可用和适当平衡。
 
-`RunAsync()` 不应阻止同步。 RunAsync 实现应返回 Task，或等待任意长时间运行或阻止的操作以允许运行时继续。 请注意，上一示例中的 `while(true)` 循环中使用了返回 Task 的 `await Task.Delay()`。 如果必须同步阻止工作负荷，应使用 `Task.Run()` 实现中的 `RunAsync` 安排新的 Task。
+`RunAsync()` 不应阻止同步。 RunAsync 实现应返回 Task，或等待任意长时间运行或阻止的操作以允许运行时继续。 请注意，上一示例中的 `while(true)` 循环中使用了返回 Task 的 `await Task.Delay()`。 如果必须同步阻止工作负荷，应使用 `RunAsync` 实现中的 `Task.Run()` 安排新的 Task。
 
 取消工作负荷是一项由所提供的取消标记协调的协同操作。 系统会等任务结束后（成功完成、取消或出现故障）再执行下一步操作。 当系统请求取消时，请务必接受取消标记，完成所有任务，并尽快退出 `RunAsync()`。
 
@@ -129,7 +129,7 @@ Service Fabric 引入了一种新的有状态服务。 有状态服务能够可�
 
 有状态服务具有与无状态服务相同的入口点。 主要区别是是否有能够可靠地存储状态的*状态提供程序*。 Service Fabric 附带名为[可靠集合](service-fabric-reliable-services-reliable-collections.md)的状态提供程序实现，可让你通过可靠状态管理器创建复制的数据结构。 有状态可靠服务默认使用此状态提供程序。
 
-打开 **HelloWorldStateful** 中的 *HelloWorldStateful.cs*，该文件包含以下 RunAsync 方法：
+打开 *HelloWorldStateful* 中的 **HelloWorldStateful.cs**，该文件包含以下 RunAsync 方法：
 
 ```csharp
 protected override async Task RunAsync(CancellationToken cancellationToken)

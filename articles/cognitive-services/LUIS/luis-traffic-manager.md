@@ -45,11 +45,11 @@ New-AzResourceGroup -Name luis-traffic-manager -Location "China East"
 ```
 
 ## <a name="create-luis-keys-to-increase-total-endpoint-quota"></a>创建 LUIS 密钥以增加总终结点配额
-1. 在 Azure 门户中，创建两个语言理解密钥，一个位于 **，一个位于** `China East``China North`。 使用上一节中创建的名为 `luis-traffic-manager` 现有资源组。 
+1. 在 Azure 门户中，创建两个语言理解密钥，一个位于 `China East`，一个位于 `China North`。 使用上一节中创建的名为 `luis-traffic-manager` 现有资源组。 
 
     ![luis-traffic-manager 资源组中带有两个 LUIS 密钥的 Azure 门户的屏幕截图](./media/traffic-manager/luis-keys.png)
 
-2. 在 [LUIS][LUIS] 网站的“Azure 资源”  页上的“管理”  部分中，为应用分配密钥，然后通过选择右上方菜单中的“发布”  按钮重新发布应用。 
+2. 在 [LUIS][LUIS] 网站的“Azure 资源”页上的“管理”部分中，为应用分配密钥，然后通过选择右上方菜单中的“发布”按钮重新发布应用。 
 
     “终结点”列中的示例 URL 使用具有终结点密钥的 GET 请求作为查询参数  。 复制这两个新密钥的终结点 URL。 本文后面的流量管理器配置中会用到它们。
 
@@ -59,7 +59,7 @@ New-AzResourceGroup -Name luis-traffic-manager -Location "China East"
 ### <a name="polling-uses-luis-endpoint"></a>轮询会使用 LUIS 终结点
 流量管理器定期轮询终结点，以确保终结点仍然可用。 轮询的流量管理器 URL 需要能够通过 GET 请求访问，并返回 200。 “发布”页上的终结点 URL 可执行此操作  。 由于每个终结点密钥具有不同的路由和查询字符串参数，因此每个终结点密钥需要不同的轮询路径。 流量管理器每次轮询时都会使用一次配额请求。 LUIS 终结点的查询字符串参数“q”是发送给 LUIS 的陈述  。 此参数不用于发送陈述，而是用于将流量管理器轮询添加到 LUIS 终结点日志，以用作调试技术并同时对流量管理器进行配置。
 
-由于每个 LUIS 终结点需要自己的路径，因此也需要其自己的流量管理器配置文件。 若要跨配置文件进行管理，请创建[嵌套流量管理器_体系结构_](https://docs.azure.cn/zh-cn/traffic-manager/traffic-manager-nested-profiles)。 一个父配置文件指向子配置文件，并管理它们之间的流量。
+由于每个 LUIS 终结点需要自己的路径，因此也需要其自己的流量管理器配置文件。 若要跨配置文件进行管理，请创建[嵌套流量管理器](https://docs.azure.cn/zh-cn/traffic-manager/traffic-manager-nested-profiles)体系结构。 一个父配置文件指向子配置文件，并管理它们之间的流量。
 
 配置流量管理器后，请记得更改路径以使用 logging = false 查询字符串参数，使日志不会被轮询填满。
 

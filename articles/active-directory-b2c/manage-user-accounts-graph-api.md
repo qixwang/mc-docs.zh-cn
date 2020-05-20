@@ -57,7 +57,7 @@ Microsoft Graph 允许通过在 Microsoft Graph API 中提供创建、读取、�
 
 具有客户帐户的用户可以使用多个标识进行登录。 例如，使用用户名、电子邮件、员工 ID、政府 ID 等。 一个帐户可以有多个密码相同的本地和社交标识。
 
-在 Microsoft Graph API 中，本地标识和联合标识都存储在 `identities`objectIdentity[ 类型的用户 ][graph-objectIdentity] 特性中。 `identities` 集合表示用于登录到用户帐户的一组标识。 此集合使用户能够使用其关联的任何标识登录到用户帐户。
+在 Microsoft Graph API 中，本地标识和联合标识都存储在 [objectIdentity][graph-objectIdentity] 类型的用户 `identities` 特性中。 `identities` 集合表示用于登录到用户帐户的一组标识。 此集合使用户能够使用其关联的任何标识登录到用户帐户。
 
 | properties   | 类型 |说明|
 |:---------------|:--------|:----------|
@@ -133,7 +133,7 @@ git clone https://github.com/Azure-Samples/ms-identity-dotnetcore-b2c-account-ma
 
 对 Microsoft Graph API 发出的任何请求都需要使用访问令牌进行身份验证。 该解决方案利用 [Microsoft.Graph.Auth](https://www.nuget.org/packages/Microsoft.Graph.Auth/) NuGet 包，该包提供 Microsoft 身份验证库 (MSAL) 的基于身份验证方案的包装器，以便与 Microsoft Graph SDK 配合使用。
 
-`RunAsync`Program.cs_文件中的_ 方法：
+_Program.cs_ 文件中的 `RunAsync` 方法：
 
 1. 从 _appsettings.json_ 文件读取应用程序设置
 1. 使用 [OAuth 2.0 客户端凭据授予](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md)流初始化身份验证提供程序。 应用可以使用客户端凭据授予流获取用于调用 Microsoft Graph API 的访问令牌。
@@ -155,7 +155,7 @@ git clone https://github.com/Azure-Samples/ms-identity-dotnetcore-b2c-account-ma
     GraphServiceClient graphClient = new GraphServiceClient(authProvider);
     ```
 
-然后，在 *UserService.cs* 中使用初始化的 _GraphServiceClient_ 来执行用户管理操作。 例如，获取租户中的用户帐户列表：
+然后，在 _UserService.cs_ 中使用初始化的 *GraphServiceClient* 来执行用户管理操作。 例如，获取租户中的用户帐户列表：
 
 ```csharp
 public static async Task ListUsers(GraphServiceClient graphClient)

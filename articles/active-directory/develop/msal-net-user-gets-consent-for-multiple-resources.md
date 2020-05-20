@@ -36,7 +36,7 @@ Microsoft 标识平台终结点不允许你一次获取多个资源的令牌。 
 - https:\//mytenant.partner.onmschina.cn/customerapi（具有 2 个范围 `customer.read` 和 `customer.write`）
 - https:\//mytenant.partner.onmschina.cn/vendorapi（具有 2 个范围 `vendor.read` 和 `vendor.write`）
 
-应该使用具有 `.WithExtraScopeToConsent`extraScopesToConsent*参数的* 修饰符，如以下示例所示：
+应该使用具有 *extraScopesToConsent* 参数的 `.WithExtraScopeToConsent` 修饰符，如以下示例所示：
 
 ```csharp
 string[] scopesForCustomerApi = new string[]

@@ -57,7 +57,7 @@ provider "azurerm" {
 
 <!--MOONCAKE CUSTOMIZE  environment     = "china" -->
 
-以下部分在 `myResourceGroup` 位置创建名为 `chinaeast` 的资源组：
+以下部分在 `chinaeast` 位置创建名为 `myResourceGroup` 的资源组：
 
 ```hcl
 resource "azurerm_resource_group" "myterraformgroup" {
@@ -73,7 +73,7 @@ resource "azurerm_resource_group" "myterraformgroup" {
 在其他部分中，可以使用 ${azurerm_resource_group.myterraformgroup.name}  引用该资源组。
 
 ## <a name="create-virtual-network"></a>创建虚拟网络
-以下部分在 10.0.0.0/16  地址空间中创建名为 myVnet  的虚拟网络：
+以下部分在 10.0.0.0/16 地址空间中创建名为 myVnet 的虚拟网络：
 
 ```hcl
 resource "azurerm_virtual_network" "myterraformnetwork" {
@@ -88,7 +88,7 @@ resource "azurerm_virtual_network" "myterraformnetwork" {
 }
 ```
 
-以下部分在 myVnet  虚拟网络中创建名为 mySubnet  的子网：
+以下部分在 myVnet 虚拟网络中创建名为 mySubnet 的子网：
 
 ```hcl
 resource "azurerm_subnet" "myterraformsubnet" {

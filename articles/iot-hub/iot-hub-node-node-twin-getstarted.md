@@ -160,7 +160,7 @@ ms.locfileid: "78154874"
     ```
 3. 使用文本编辑器，在 **reportconnectivity** 文件夹中创建一个新的 **ReportConnectivity.js** 文件。
 
-4. 将以下代码添加到 **ReportConnectivity.js** 文件。 将 `{device connection string}` 替换为在**在 IoT 中心注册新设备**中创建 [myDeviceId](#register-a-new-device-in-the-iot-hub) 设备标识时复制的设备连接字符串。
+4. 将以下代码添加到 **ReportConnectivity.js** 文件。 将 `{device connection string}` 替换为在[在 IoT 中心注册新设备](#register-a-new-device-in-the-iot-hub)中创建 **myDeviceId** 设备标识时复制的设备连接字符串。
 
     ```javascript
         'use strict';

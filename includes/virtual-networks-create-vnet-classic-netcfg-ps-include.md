@@ -36,8 +36,8 @@ Azure 使用 xml 文件定义适用于订阅的所有虚拟网络。 可以下�
     <?xml version="1.0" encoding="utf-8"?>...
     ```
 
-3. 使用任何 XML 或文本编辑器应用程序打开步骤 2 中保存的文件，并查找 **VirtualNetworkSites>\<** 元素。 如果已创建网络，每个网络会显示为其自身的 **VirtualNetworkSite>\<** 元素。
-4. 若要创建此方案中所述的虚拟网络，请在 **VirtualNetworkSites>\<** 元素的正下方添加以下 XML：
+3. 使用任何 XML 或文本编辑器应用程序打开步骤 2 中保存的文件，并查找 \<VirtualNetworkSites> 元素。 如果已创建网络，每个网络会显示为其自身的 \<VirtualNetworkSite> 元素。
+4. 若要创建此方案中所述的虚拟网络，请在 \<VirtualNetworkSites> 元素的正下方添加以下 XML：
 
     ```xml
      <?xml version="1.0" encoding="utf-8"?>

@@ -39,7 +39,7 @@ ms.locfileid: "77563492"
 
 ## <a name="instantiate-new-phoenixclient-object"></a>实例化新的 PhoenixClient 对象
 
-若要开始使用库，请实例化新的 `PhoenixClient` 对象，将包含 `ClusterCredentials` 的 `Uri` 传入到群集，并传入群集的 Apache Hadoop 用户名和密码。
+若要开始使用库，请实例化新的 `PhoenixClient` 对象，将包含 `Uri` 的 `ClusterCredentials` 传入到群集，并传入群集的 Apache Hadoop 用户名和密码。
 
 ```csharp
 var credentials = new ClusterCredentials(new Uri("https://CLUSTERNAME.azurehdinsight.cn/"), "USERNAME", "PASSWORD");
@@ -102,7 +102,7 @@ await client.ConnectionSyncRequestAsync(connId, connProperties, options);
 
 HBase 与任何其他 RDBMS 一样，在表中存储数据。 Phoenix 使用标准的 SQL 查询来创建新表，同时定义主键和列类型。
 
-此示例和所有后续示例都按照`PhoenixClient`实例化新的 PhoenixClient 对象[中的定义使用实例化的 ](#instantiate-new-phoenixclient-object) 对象。
+此示例和所有后续示例都按照[实例化新的 PhoenixClient 对象](#instantiate-new-phoenixclient-object)中的定义使用实例化的 `PhoenixClient` 对象。
 
 ```csharp
 string connId = Guid.NewGuid().ToString();
@@ -168,7 +168,7 @@ finally
 }
 ```
 
-前一示例使用 `Customers` 选项创建名为 `IF NOT EXISTS` 的新表。 `CreateStatementRequestAsync` 调用在 Avitica (PQS) 服务器中创建新的语句。 `finally` 块关闭返回的 `CreateStatementResponse` 和 `OpenConnectionResponse` 对象。
+前一示例使用 `IF NOT EXISTS` 选项创建名为 `Customers` 的新表。 `CreateStatementRequestAsync` 调用在 Avitica (PQS) 服务器中创建新的语句。 `finally` 块关闭返回的 `CreateStatementResponse` 和 `OpenConnectionResponse` 对象。
 
 ## <a name="insert-data-individually"></a>逐个插入数据
 
@@ -289,7 +289,7 @@ finally
 
 ## <a name="batch-insert-data"></a>批插入数据
 
-以下代码几乎与逐个插入数据的代码相同。 此示例在调用 `UpdateBatch` 的过程中使用 `ExecuteBatchRequestAsync` 对象，而不是使用准备好的语句重复调用 `ExecuteRequestAsync`。
+以下代码几乎与逐个插入数据的代码相同。 此示例在调用 `ExecuteBatchRequestAsync` 的过程中使用 `UpdateBatch` 对象，而不是使用准备好的语句重复调用 `ExecuteRequestAsync`。
 
 ```csharp
 string connId = Guid.NewGuid().ToString();

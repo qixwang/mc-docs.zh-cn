@@ -43,7 +43,7 @@ ms.locfileid: "79291641"
 
     ![Azure 备份的屏幕截图，其中突出显示了“恢复数据”](./media/backup-azure-restore-windows-server/recover.png)
 
-3. 若要将数据还原到同一台服务器或计算机，请在“开始”页上选择“此服务器( **)”** “下一步”。 **`<server name>`**  >  
+3. 若要将数据还原到同一台服务器或计算机，请在“开始”页上选择“此服务器(`<server name>`)” > “下一步”。
 
     ![恢复数据向导“开始”页的屏幕截图](./media/backup-azure-restore-windows-server/samemachine_gettingstarted_instantrestore.png)
 
@@ -117,7 +117,7 @@ ms.locfileid: "79291641"
 
     ![恢复数据向导“选择备份服务器”页的屏幕截图](./media/backup-azure-restore-windows-server/alternatemachine_selectmachine_instantrestore.png)
 
-7. 在“选择恢复模式”页上，选择“单个文件和文件夹” **“下一步”。**   >  
+7. 在“选择恢复模式”页上，选择“单个文件和文件夹” > “下一步”。
 
     ![恢复数据向导“选择恢复模式”页的屏幕截图](./media/backup-azure-restore-windows-server/alternatemachine_selectrecoverymode_instantrestore.png)
 

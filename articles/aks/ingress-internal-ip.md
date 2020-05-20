@@ -161,7 +161,7 @@ ingress.extensions/hello-world-ingress created
 kubectl run -it --rm aks-ingress-test --image=debian --namespace ingress-basic
 ```
 
-使用 `curl` 在 Pod 中安装 `apt-get`：
+使用 `apt-get` 在 Pod 中安装 `curl`：
 
 ```console
 apt-get update && apt-get install -y curl

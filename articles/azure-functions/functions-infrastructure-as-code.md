@@ -56,7 +56,7 @@ Azure Functions 部署通常包括以下资源：
 
 Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内部队列。 运行时使用 `AzureWebJobsDashboard` 连接字符串登录到 Azure 表存储并为为门户中的“监视器”  选项卡提供支持。
 
-这些属性在 `appSettings` 对象中的 `siteConfig` 集合中指定：
+这些属性在 `siteConfig` 对象中的 `appSettings` 集合中指定：
 
 ```json
 "appSettings": [
@@ -107,7 +107,7 @@ Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内�
 | FUNCTIONS_WORKER_RUNTIME     | 要为此应用中的函数使用的语言堆栈                                   | `dotnet`、`node`、`java`              |
 | WEBSITE_NODE_DEFAULT_VERSION | 只有当使用 `node` 语言堆栈时必需，指定要使用的版本              | `10.14.1`                             |
 
-这些属性是在 `appSettings` 属性中的 `siteConfig` 集合中指定的：
+这些属性是在 `siteConfig` 属性中的 `appSettings` 集合中指定的：
 
 ```json
 "properties": {
@@ -146,7 +146,7 @@ Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内�
 
 不需要定义消耗计划。 创建函数应用资源本身时，不会基于区域自动创建或选择消耗计划。
 
-消耗计划是一种特殊的“serverfarm”资源。 对于 Windows，可以通过为 `Dynamic` 和 `computeMode` 属性使用 `sku` 值来指定它：
+消耗计划是一种特殊的“serverfarm”资源。 对于 Windows，可以通过为 `computeMode` 和 `sku` 属性使用 `Dynamic` 值来指定它：
 
 ```json
 {  
@@ -374,7 +374,7 @@ Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内�
 
 ### <a name="deploy-to-azure-button"></a>“部署到 Azure”按钮
 
-将 ```<url-encoded-path-to-azuredeploy-json>``` 替换为 GitHub 中 [ 文件的原始路径的 ](https://www.bing.com/search?q=url+encode)URL 编码`azuredeploy.json`版本。
+将 ```<url-encoded-path-to-azuredeploy-json>``` 替换为 GitHub 中 `azuredeploy.json` 文件的原始路径的 [URL 编码](https://www.bing.com/search?q=url+encode)版本。
 
 以下示例使用 Markdown：
 

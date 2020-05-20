@@ -196,7 +196,7 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
 此代码和后续代码段使用 SQL magic 查询样本，使用本地 magic 绘制数据。
 
 * **SQL magic (`%%sql`)** HDInsight PySpark 内核支持针对 sqlContext 的轻松内联 HiveQL 查询。 (-o VARIABLE_NAME) 参数在 Jupyter 服务器上将 SQL 查询的输出保留为 Pandas 数据帧。 这意味着它在本地模式下可用。
-* **`%%local` magic** 用于在 Jupyter 服务器上本地运行代码，该服务器是 HDInsight 群集的头节点。 通常，在将 `%%local` magic 用于运行查询后，使用 `%%sql -o` magic。 -o 参数会在本地保留 SQL 查询的输出。 然后，`%%local` magic 触发下一组代码片段，以在本地针对已保留在本地的 SQL 查询输出运行。 该输出在运行代码后自动可视化。
+* **`%%local` magic** 用于在 Jupyter 服务器上本地运行代码，该服务器是 HDInsight 群集的头节点。 通常，在将 `%%sql -o` magic 用于运行查询后，使用 `%%local` magic。 -o 参数会在本地保留 SQL 查询的输出。 然后，`%%local` magic 触发下一组代码片段，以在本地针对已保留在本地的 SQL 查询输出运行。 该输出在运行代码后自动可视化。
 
 此查询通过乘客数检索行程。 
 

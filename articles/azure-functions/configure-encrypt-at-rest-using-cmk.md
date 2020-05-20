@@ -71,7 +71,7 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 最佳做法是定期轮换存储帐户的 SAS 密钥。 为了确保函数应用不会无意中失去访问权限，还必须更新 Key Vault 中的 SAS URL。
 
-1. 若要轮换 SAS 密钥，请在 Azure 门户中导航到你的存储帐户。 在“设置” > “访问密钥”下，单击相应的图标来轮换 SAS 密钥。  
+1. 若要轮换 SAS 密钥，请在 Azure 门户中导航到你的存储帐户。 在“设置” > “访问密钥”下，单击相应的图标来轮换 SAS 密钥。
 
 1. 复制新的 SAS URL，并使用以下命令在 Key Vault 中设置更新的 SAS URL：
 

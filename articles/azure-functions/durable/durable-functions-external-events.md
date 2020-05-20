@@ -20,7 +20,7 @@ ms.locfileid: "77428026"
 
 ## <a name="wait-for-events"></a>等待事件
 
-业务流程协调程序函数使用`WaitForExternalEvent`业务流程触发器绑定`waitForExternalEvent`的 [ (.NET) 和 ](durable-functions-bindings.md#orchestration-trigger) (JavaScript) 方法可异步等待和侦听外部事件。 侦听业务流程协调程序函数声明了事件的“名称”和它期望收到的“数据形态”。  
+业务流程协调程序函数使用[业务流程触发器绑定](durable-functions-bindings.md#orchestration-trigger)的 `WaitForExternalEvent` (.NET) 和 `waitForExternalEvent` (JavaScript) 方法可异步等待和侦听外部事件。 侦听业务流程协调程序函数声明了事件的“名称”和它期望收到的“数据形态”。  
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -173,7 +173,7 @@ module.exports = df.orchestrator(function*(context) {
 
 ## <a name="send-events"></a>发送事件
 
-`RaiseEventAsync`业务流程客户端绑定`raiseEvent`的 [ (.NET) 或 ](durable-functions-bindings.md#orchestration-client) (JavaScript) 方法发送 `WaitForExternalEvent` (.NET) 或 `waitForExternalEvent` (JavaScript) 等待的事件。  `RaiseEventAsync` 方法采用 *eventName* 和 *eventData* 作为参数。 事件数据必须是 JSON 可序列化的。
+[业务流程客户端绑定](durable-functions-bindings.md#orchestration-client)的 `RaiseEventAsync` (.NET) 或 `raiseEvent` (JavaScript) 方法发送 `WaitForExternalEvent` (.NET) 或 `waitForExternalEvent` (JavaScript) 等待的事件。  `RaiseEventAsync` 方法采用 *eventName* 和 *eventData* 作为参数。 事件数据必须是 JSON 可序列化的。
 
 下面是一个示例队列触发的函数，它将“Approval”事件发送到一个业务流程协调程序函数实例。 业务流程实例 ID 来自队列消息的正文。
 

@@ -194,7 +194,7 @@ ms.locfileid: "75335916"
 
 - IoT Central 中设备的 `@id`
 - 设备的 `name`
-- `deviceId`设备预配服务[中的 ](../core/howto-connect-nodejs.md?toc=/iot-central/preview/toc.json&bc=/iot-central/preview/breadcrumb/toc.json)
+- [设备预配服务](../core/howto-connect-nodejs.md?toc=/iot-central/preview/toc.json&bc=/iot-central/preview/breadcrumb/toc.json)中的 `deviceId`
 - 设备模板信息
 - 属性值
 

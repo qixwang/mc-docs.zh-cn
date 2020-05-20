@@ -159,7 +159,7 @@ LVM 可用于将多个物理磁盘合并成单个存储卷。 默认情况下，
 
 在 Linux VM 中有两种方法可以启用 TRIM 支持。 与往常一样，有关建议的方法，请参阅分发：
 
-- 在 `discard` 中使用 `/etc/fstab` 装载选项，例如：
+- 在 `/etc/fstab` 中使用 `discard` 装载选项，例如：
 
     ```bash 
     /dev/data-vg01/data-lv01  /data  ext4  defaults,discard  0  2

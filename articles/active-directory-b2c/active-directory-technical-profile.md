@@ -26,7 +26,7 @@ Azure Active Directory B2C (Azure AD B2C) 为 Azure Active Directory 用户管�
 
 ## <a name="protocol"></a>协议
 
-“Protocol”  元素的“Name”  属性必须设置为 `Proprietary`。 **handler** 属性必须包含协议处理程序程序集 `Web.TPEngine.Providers.AzureActiveDirectoryProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null` 的完全限定名称。
+“Protocol”元素的“Name”属性必须设置为 `Proprietary`。 **handler** 属性必须包含协议处理程序程序集 `Web.TPEngine.Providers.AzureActiveDirectoryProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null` 的完全限定名称。
 
 以下自定义策略初学者包 Azure AD 技术配置文件包含 **AAD-Common** 技术配置文件。 Azure AD 技术配置文件不会指定协议，因为协议在 **AAD-Common** 技术配置文件中进行配置：
  

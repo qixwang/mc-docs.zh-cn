@@ -36,7 +36,7 @@ ms.locfileid: "75623608"
 
 * 将标识提供者应用程序中的重定向 URL 更改为引用 *b2clogin.cn*。
 * 将 Azure AD B2C 应用程序更新为在其用户流和令牌终结点引用中使用 *b2clogin.cn*。
-* 更新在  **的 CORS 设置中定义的任何“允许的来源”。** `user interface customization`
+* 更新在 `user interface customization` 的 CORS 设置中定义的任何“允许的来源”。
 
 ## <a name="change-identity-provider-redirect-urls"></a>更改标识提供者重定向 URL
 
@@ -73,7 +73,7 @@ https://{your-tenant-name}.b2clogin.cn/{your-tenant-name}.partner.onmschina.cn/o
 https://contosob2c.b2clogin.cn/00000000-0000-0000-0000-000000000000/B2C_1_signupsignin1
 ```
 
-如需了解如何迁移受 Azure AD B2C 保护的 Azure API 管理 API，请参阅[使用 Azure AD B2C 保护 Azure API 管理 API](secure-api-management.md#migrate-to-b2clogincom) 的[迁移到 b2clogin.cn](secure-api-management.md) 部分。
+如需了解如何迁移受 Azure AD B2C 保护的 Azure API 管理 API，请参阅[使用 Azure AD B2C 保护 Azure API 管理 API](secure-api-management.md) 的[迁移到 b2clogin.cn](secure-api-management.md#migrate-to-b2clogincom) 部分。
 
 ## <a name="microsoft-authentication-library-msal"></a>Microsoft 身份验证库 (MSAL)
 
@@ -101,7 +101,7 @@ this.clientApplication = new UserAgentApplication(
 
 ## <a name="next-steps"></a>后续步骤
 
-如需了解如何迁移受 Azure AD B2C 保护的 Azure API 管理 API，请参阅[使用 Azure AD B2C 保护 Azure API 管理 API](secure-api-management.md#migrate-to-b2clogincom) 的[迁移到 b2clogin.cn](secure-api-management.md) 部分。
+如需了解如何迁移受 Azure AD B2C 保护的 Azure API 管理 API，请参阅[使用 Azure AD B2C 保护 Azure API 管理 API](secure-api-management.md) 的[迁移到 b2clogin.cn](secure-api-management.md#migrate-to-b2clogincom) 部分。
 
 <!-- LINKS - External -->
 [msal-dotnet]: https://github.com/AzureAD/microsoft-authentication-library-for-dotnet

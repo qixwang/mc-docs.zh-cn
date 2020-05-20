@@ -29,7 +29,7 @@ ms.locfileid: "77540113"
 * 执行组件在停用之后或发生故障后将重新激活。
 * 状态提供程序将状态分页到磁盘。 此行为取决于状态提供程序实现。 `Persisted` 设置的默认状态提供程序具有此行为。
 
-如果键的条目不存在，可以使用引发 *(C#) 或*(Java) 的标准 `KeyNotFoundException`Get`NoSuchElementException` 操作来检索状态：
+如果键的条目不存在，可以使用引发 `KeyNotFoundException` (C#) 或 `NoSuchElementException`(Java) 的标准 *Get* 操作来检索状态：
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]

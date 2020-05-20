@@ -335,7 +335,7 @@ SDK 使用三个 Azure Monitor 导出程序将不同类型的遥测数据发送�
 > [!NOTE]
 > 此上下文中的 `traces` 不同于 `Tracing`。 `traces` 是指使用 `AzureLogHandler` 时 Azure Monitor 中会出现的遥测类型。 `Tracing` 是指 OpenCensus 中的一种概念，与[分布式跟踪](https://docs.microsoft.com/azure/azure-monitor/app/distributed-tracing)相关。
 
-5. 若要设置日志消息的格式，可以使用内置 Python `formatters`日志记录 API[ 中的 ](https://docs.python.org/3/library/logging.html#formatter-objects)。
+5. 若要设置日志消息的格式，可以使用内置 Python [日志记录 API](https://docs.python.org/3/library/logging.html#formatter-objects) 中的 `formatters`。
 
     ```python
     import logging

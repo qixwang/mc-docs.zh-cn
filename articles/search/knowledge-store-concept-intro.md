@@ -49,7 +49,7 @@ ms.locfileid: "80243725"
 
 ## <a name="physical-storage"></a>物理存储
 
-知识存储的物理表达形式是通过技能集中 `projections` 定义的 `knowledgeStore` 元素阐释的。 投影定义输出的结构，使之与预期用途相符。
+知识存储的物理表达形式是通过技能集中 `knowledgeStore` 定义的 `projections` 元素阐释的。 投影定义输出的结构，使之与预期用途相符。
 
 可将投影阐释为表、对象或文件。
 

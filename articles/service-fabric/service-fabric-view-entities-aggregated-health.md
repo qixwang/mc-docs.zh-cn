@@ -87,7 +87,7 @@ Service Fabric 为每个支持的[实体类型](service-fabric-health-introducti
 * [可选] 用于在运行状况统计信息中包括 fabric:/System 运行状况统计信息的筛选器。 仅当未排除运行状况统计信息时才适用。 默认情况下，运行状况统计信息只包括用户应用程序的统计信息，而不包括系统应用程序的统计信息。
 
 ### <a name="api"></a>API
-若要获取群集运行状况，请创建 `FabricClient` 并在其 [HealthManager](https://docs.azure.cn/dotnet/api/system.fabric.fabricclient.healthclient.getclusterhealthasync?view=azure-dotnet) 上调用 **GetClusterHealthAsync** 方法。
+若要获取群集运行状况，请创建 `FabricClient` 并在其 **HealthManager** 上调用 [GetClusterHealthAsync](https://docs.azure.cn/dotnet/api/system.fabric.fabricclient.healthclient.getclusterhealthasync?view=azure-dotnet) 方法。
 
 以下调用将获取群集运行状况：
 
@@ -799,7 +799,7 @@ HealthEvents               :
 区块查询目前不会返回不正常的评估或实体事件。 可以使用现有的群集运行状况查询获取这些附加信息。
 
 ### <a name="api"></a>API
-若要获取群集运行状况，请创建 `FabricClient` 并在其 [HealthManager](https://docs.azure.cn/dotnet/api/system.fabric.fabricclient.healthclient.getclusterhealthchunkasync?view=azure-dotnet) 上调用 **GetClusterHealthChunkAsync** 方法。 可以传入 [ClusterHealthQueryDescription](https://docs.azure.cn/dotnet/api/system.fabric.description.clusterhealthchunkquerydescription?view=azure-dotnet) 来描述运行状况策略和高级筛选器。
+若要获取群集运行状况，请创建 `FabricClient` 并在其 **HealthManager** 上调用 [GetClusterHealthChunkAsync](https://docs.azure.cn/dotnet/api/system.fabric.fabricclient.healthclient.getclusterhealthchunkasync?view=azure-dotnet) 方法。 可以传入 [ClusterHealthQueryDescription](https://docs.azure.cn/dotnet/api/system.fabric.description.clusterhealthchunkquerydescription?view=azure-dotnet) 来描述运行状况策略和高级筛选器。
 
 以下代码使用高级筛选器获取群集运行状况区块。
 

@@ -26,14 +26,14 @@ ms.locfileid: "80108525"
 本文假设已完成以下操作：
 
 - 借助 [Azure Site Recovery 部署规划器](site-recovery-deployment-planner.md)规划了你的部署。 这可以帮助你根据每日数据更改率分配足够的带宽以满足你需要的恢复点目标 (RPO)。
-- 在 [Azure 门户](tutorial-prepare-azure.md)中[设置资源](https://portal.azure.cn)。
+- 在 [Azure 门户](https://portal.azure.cn)中[设置资源](tutorial-prepare-azure.md)。
 - [设置本地 VMware](vmware-azure-tutorial-prepare-on-premises.md)，包括用于自动发现的专用帐户。
 
 ## <a name="choose-your-protection-goals"></a>选择保护目标
 
 1. 在“恢复服务保管库”  中，选择保管库名称。 我们在此方案中使用 **ContosoVMVault**。
 2. 在“入门”中，选择“Site Recovery”  ， 然后选择“准备基础结构”  。
-3. 在“保护目标” **“计算机所在位置”中，选择“本地”**  >    。
+3. 在“保护目标” > “计算机所在位置”中，选择“本地”。
 4. 在“要将计算机复制到何处?”中，选择“复制到 Azure”   。
 5. 在“你的计算机是否已虚拟化”中，选择“是，带有 VMware vSphere 虚拟机监控程序”   。 然后选择“确定”。 
 

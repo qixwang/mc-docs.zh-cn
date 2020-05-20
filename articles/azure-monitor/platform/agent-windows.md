@@ -78,7 +78,7 @@ ms.locfileid: "79452506"
 4. 在“目标文件夹”页面上更改或保留默认安装文件夹，然后单击“下一步”   。
 5. 在“代理安装选项”页上，选择将代理连接到 Azure Log Analytics，单击“下一步”。     
 6. 在“Azure Log Analytics”页上执行以下操作： 
-   1. 粘贴前面复制的“工作区 ID”和“工作区密钥(主密钥)”。    如果计算机应向 Azure 政府云中的 Log Analytics 工作区报告，请从“Azure 云”  下拉列表中选择“Azure 中国政府”  。  
+   1. 粘贴前面复制的“工作区 ID”和“工作区密钥(主密钥)”。    如果计算机应向 Azure 政府云中的 Log Analytics 工作区报告，请从“Azure 云”下拉列表中选择“Azure 中国政府”。  
    2. 如果计算机需要通过代理服务器来与 Log Analytics 通信，请单击“高级”并提供代理服务器的 URL 和端口号。   如果代理服务器要求身份验证，请键入用于在代理服务器上进行身份验证的用户名和密码，并单击“下一步”。   
 7. 提供所需的配置设置后，单击“下一步”。 <br><br> ![粘贴工作区 ID 和主键](media/agent-windows/log-analytics-mma-setup-laworkspace.png)<br><br>
 8. 在“准备安装”页上检查所做的选择，并单击“安装”。  
@@ -133,7 +133,7 @@ ms.locfileid: "79452506"
 >[!NOTE]
 >此过程和脚本示例不支持升级已部署到 Windows 计算机的代理。
 
-32 位和 64 位版本的代理包具有不同的产品代码，新发布的版本也具有唯一的产品代码。  产品代码是一个 GUID，它是应用程序或产品的主体标志，由 Windows Installer 的“ProductCode”属性表示  。  `ProductId`MMAgent.ps1**脚本中的** 值必须与 32 位或 64 位代理安装程序包的产品代码匹配。
+32 位和 64 位版本的代理包具有不同的产品代码，新发布的版本也具有唯一的产品代码。  产品代码是一个 GUID，它是应用程序或产品的主体标志，由 Windows Installer 的“ProductCode”属性表示  。  **MMAgent.ps1** 脚本中的 `ProductId` 值必须与 32 位或 64 位代理安装程序包的产品代码匹配。
 
 若要直接从代理安装包检索产品代码，可使用[适用于 Windows Installer 开发者的 Windows SDK 组件](https://msdn.microsoft.com/library/windows/desktop/aa370834%28v=vs.85%29.aspx)中的 Orca.exe，该组件是 Windows 软件开发工具包的一个组件，或按照 Azure 最有价值专家 (MVP) 编写的[示例脚本](https://www.scconfigmgr.com/2014/08/22/how-to-get-msi-file-information-with-powershell/)来使用 PowerShell。  对于上述任一种方法，都需要先从 MMASetup 安装包中提取 **MOMagent.msi** 文件。  在前面[使用命令行安装代理](#install-the-agent-using-the-command-line)部分下的第一个步骤中演示了此操作。  
 

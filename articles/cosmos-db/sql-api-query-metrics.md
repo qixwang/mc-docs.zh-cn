@@ -94,7 +94,7 @@ Expect: 100-continue
 {"query":"SELECT * FROM c WHERE c.city = 'Seattle'"}
 ```
 
-每个查询执行页面对应于一个标头为 `POST` 的 REST API `Accept: application/query+json`，SQL 查询在正文中。 每个查询都使用为了继续执行而在客户端与服务器之间回应的 `x-ms-continuation` 标记进行到服务器的一次或多次往返。 FeedOptions 中的配置选项将以请求标头的形式传递给服务器。 例如，`MaxItemCount` 对应于 `x-ms-max-item-count`。 
+每个查询执行页面对应于一个标头为 `Accept: application/query+json` 的 REST API `POST`，SQL 查询在正文中。 每个查询都使用为了继续执行而在客户端与服务器之间回应的 `x-ms-continuation` 标记进行到服务器的一次或多次往返。 FeedOptions 中的配置选项将以请求标头的形式传递给服务器。 例如，`MaxItemCount` 对应于 `x-ms-max-item-count`。 
 
 该请求返回以下响应（为便于阅读已将其截断）：
 

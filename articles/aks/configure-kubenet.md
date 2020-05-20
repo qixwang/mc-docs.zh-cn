@@ -96,7 +96,7 @@ Azure 在一个 UDR 中最多支持 400 个路由，因此，AKS 群集中的节
 
 ## <a name="create-a-virtual-network-and-subnet"></a>创建虚拟网络和子网
 
-若要开始使用 *kubenet* 和自己的虚拟网络子网，请先使用 [az group create][az-group-create] 命令创建一个资源组。 以下示例在“chinaeast2”  位置创建名为“myResourceGroup”  的资源组：
+若要开始使用 *kubenet* 和自己的虚拟网络子网，请先使用 [az group create][az-group-create] 命令创建一个资源组。 以下示例在“chinaeast2”位置创建名为“myResourceGroup”的资源组：
 
 ```azurecli
 az group create --name myResourceGroup --location chinaeast2
@@ -144,7 +144,7 @@ VNET_ID=$(az network vnet show --resource-group myResourceGroup --name myAKSVnet
 SUBNET_ID=$(az network vnet subnet show --resource-group myResourceGroup --vnet-name myAKSVnet --name myAKSSubnet --query id -o tsv)
 ```
 
-现在，使用 [az role assignment create][az-role-assignment-create] 命令为 AKS 群集的服务主体分配虚拟网络中的“参与者”权限。  根据上一命令的输出所示，提供自己的 \<appId>  来创建服务主体：
+现在，使用 [az role assignment create][az-role-assignment-create] 命令为 AKS 群集的服务主体分配虚拟网络中的“参与者”权限。 根据上一命令的输出所示，提供自己的 \<appId> 来创建服务主体：
 
 ```azurecli
 az role assignment create --assignee <appId> --scope $VNET_ID --role Contributor
@@ -152,7 +152,7 @@ az role assignment create --assignee <appId> --scope $VNET_ID --role Contributor
 
 ## <a name="create-an-aks-cluster-in-the-virtual-network"></a>在虚拟网络中创建 AKS 群集
 
-现已创建虚拟网络和子网、已创建服务主体并为其分配了这些网络资源的使用权限。 现在，请使用 [az aks create][az-aks-create] 命令在虚拟网络和子网中创建 AKS 群集。 根据上一命令的输出所示，定义自己的服务主体 \<appId>  和 \<password>  来创建服务主体。
+现已创建虚拟网络和子网、已创建服务主体并为其分配了这些网络资源的使用权限。 现在，请使用 [az aks create][az-aks-create] 命令在虚拟网络和子网中创建 AKS 群集。 根据上一命令的输出所示，定义自己的服务主体 \<appId> 和 \<password> 来创建服务主体。
 
 在创建群集的过程中还定义了以下 IP 地址范围：
 

@@ -24,7 +24,7 @@ ms.locfileid: "77653652"
 
 [!INCLUDE [active-directory-azuread-dev](../../../includes/active-directory-azuread-dev.md)]
 
-对于配置为接受 Azure Active Directory 颁发的安全令牌的服务，Azure Active Directory (Azure AD) 发布了一个联合元数据文档。 在扩展了 [OASIS 安全断言标记语言 (SAML) v2.0 元数据](https://docs.oasis-open.org/wsfed/federation/v1.2/os/ws-federation-1.2-spec-os.html)的 [Web 服务联合语言（WS 联合身份验证）版本 1.2](https://docs.oasis-open.org/security/saml/v2.0/saml-metadata-2.0-os.pdf) 中描述了联合元数据文档格式。
+对于配置为接受 Azure Active Directory 颁发的安全令牌的服务，Azure Active Directory (Azure AD) 发布了一个联合元数据文档。 在扩展了 [OASIS 安全断言标记语言 (SAML) v2.0 元数据](https://docs.oasis-open.org/security/saml/v2.0/saml-metadata-2.0-os.pdf)的 [Web 服务联合语言（WS 联合身份验证）版本 1.2](https://docs.oasis-open.org/wsfed/federation/v1.2/os/ws-federation-1.2-spec-os.html) 中描述了联合元数据文档格式。
 
 ## <a name="tenant-specific-and-tenant-independent-metadata-endpoints"></a>特定于租户和独立于租户的元数据终结点
 Azure AD 发布了特定于租户和独立于租户的终结点。
@@ -36,12 +36,12 @@ Azure AD 发布了特定于租户和独立于租户的终结点。
 ## <a name="federation-metadata-endpoints"></a>联合元数据终结点
 Azure AD 会在 `https://login.partner.microsoftonline.cn/<TenantDomainName>/FederationMetadata/2007-06/FederationMetadata.xml` 上发布联合元数据。
 
-对于**特定于租户的终结点**，`TenantDomainName` 可以是以下类型之一：
+对于特定于租户的终结点，`TenantDomainName` 可以是以下类型之一：
 
 * Azure AD 租户的已注册域名，例如：`contoso.partner.onmschina.cn`。
 * 域的不可变租户 ID，例如 `72f988bf-86f1-41af-91ab-2d7cd011db45`。
 
-对于**独立于租户的终结点**，`TenantDomainName` 为 `common`。 此文档仅列出了托管在 login.partner.microsoftonline.cn 上的所有 Azure AD 租户通用的联合元数据元素。
+对于独立于租户的终结点，`TenantDomainName` 为 `common`。 此文档仅列出了托管在 login.partner.microsoftonline.cn 上的所有 Azure AD 租户通用的联合元数据元素。
 
 例如，特定于租户的终结点可以是 `https://login.partner.microsoftonline.cn/contoso.partner.onmschina.cn/FederationMetadata/2007-06/FederationMetadata.xml`。 独立于租户的终结点为 [https://login.partner.microsoftonline.cn/common/FederationMetadata/2007-06/FederationMetadata.xml](https://login.partner.microsoftonline.cn/common/FederationMetadata/2007-06/FederationMetadata.xml)。 可以在浏览器中键入此 URL 以查看联合元数据文档。
 
@@ -51,7 +51,7 @@ Azure AD 会在 `https://login.partner.microsoftonline.cn/<TenantDomainName>/Fed
 ### <a name="entity-id"></a>实体 ID
 `EntityDescriptor` 元素包含 `EntityID` 属性。 `EntityID` 属性的值表示颁发者，即，颁发令牌的安全令牌服务 (STS)。 请务必在收到令牌时验证颁发者。
 
-以下元数据显示了包含 `EntityDescriptor` 元素的特定于租户的 `EntityID` 元素示例。
+以下元数据显示了包含 `EntityID` 元素的特定于租户的 `EntityDescriptor` 元素示例。
 
 ```
 <EntityDescriptor
@@ -91,7 +91,7 @@ MIIDPjCCAiqgAwIBAgIQVWmXY/+9RqFA/OG9kFulHDAJBgUrDgMCHQUAMC0xKzApBgNVBAMTImFjY291
 
 `KeyDescriptor` 元素出现在联合元数据文档中的两个位置：特定于 WS 联合身份验证的部分中，以及特定于 SAML 的部分中。 在这两个部分中发布的证书将是相同的。
 
-在特定于 WS 联合身份验证的部分中，WS 联合身份验证元数据读取器将读取 `RoleDescriptor` 类型的 `SecurityTokenServiceType` 元素中的证书。
+在特定于 WS 联合身份验证的部分中，WS 联合身份验证元数据读取器将读取 `SecurityTokenServiceType` 类型的 `RoleDescriptor` 元素中的证书。
 
 以下元数据显示了一个 `RoleDescriptor` 元素示例。
 

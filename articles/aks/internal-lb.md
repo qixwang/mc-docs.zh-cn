@@ -55,7 +55,7 @@ kubectl apply -f internal-lb.yaml
 
 Azure 负载均衡器在节点资源组中创建，并连接到 AKS 群集所在的虚拟网络。
 
-查看服务详细信息时，内部负载均衡器的 IP 地址显示在“EXTERNAL-IP”列中  。 在此上下文中，*External* 是指负载均衡器的外部接口，不是指收到公共的外部 IP 地址。 可能需要一两分钟，IP 地址才会从 *pending\< 更改为实际的内部 IP 地址，如以下示例所示\>* ：
+查看服务详细信息时，内部负载均衡器的 IP 地址显示在“EXTERNAL-IP”列中  。 在此上下文中，*External* 是指负载均衡器的外部接口，不是指收到公共的外部 IP 地址。 可能需要一两分钟，IP 地址才会从 \<pending\> 更改为实际的内部 IP 地址，如以下示例所示：
 
 ```
 $ kubectl get service internal-app

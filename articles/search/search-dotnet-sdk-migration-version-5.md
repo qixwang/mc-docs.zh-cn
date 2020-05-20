@@ -36,7 +36,7 @@ Azure 搜索 .NET SDK 的版本 5 包含了某些针对早期版本进行的更�
 Azure 搜索 .NET SDK 的版本 5 针对 Azure 搜索 REST API 的最新正式发布版本，具体来说就是 2017-11-11。 这使得可在 .NET 应用程序中使用 Azure 搜索的新功能，如下所示：
 
 * [同义词](search-synonyms.md)
-* 现可以编程方式访问索引器执行历史记录中的警告（有关更多详细信息，请参阅 `Warning`.NET 引用`IndexerExecutionResult`中 [ 的 ](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexerexecutionresult?view=azure-dotnet) 属性）。
+* 现可以编程方式访问索引器执行历史记录中的警告（有关更多详细信息，请参阅 [.NET 引用](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexerexecutionresult?view=azure-dotnet)中 `IndexerExecutionResult` 的 `Warning` 属性）。
 * 支持 .NET Core 2。
 * 新的包结构支持使用仅需要的 SDK 的部件（有关详细信息，请参阅[版本 5 中的重大更改](#ListOfChanges)）。
 
@@ -78,7 +78,7 @@ Azure 搜索 .NET SDK 的版本 5 针对 Azure 搜索 REST API 的最新正式�
 
 ### <a name="change-to-suggesters"></a>对建议器的更改 
 
-`Suggester` 构造函数不再为 `enum` 提供 `SuggesterSearchMode` 参数。 此枚举只有一个值，因此是多余的。 如果因此看到生成错误，只需删除对 `SuggesterSearchMode` 参数的引用即可。
+`Suggester` 构造函数不再为 `SuggesterSearchMode` 提供 `enum` 参数。 此枚举只有一个值，因此是多余的。 如果因此看到生成错误，只需删除对 `SuggesterSearchMode` 参数的引用即可。
 
 ### <a name="removed-obsolete-members"></a>删除了过时成员
 

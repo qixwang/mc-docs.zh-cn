@@ -79,7 +79,7 @@ ms.locfileid: "75742027"
 
 1. 首先，如果没有可用于在 GitHub 上托管投票项目的存储库，请创建一个存储库。 在本教程的余下内容中，此存储库名为 **dev_test**。
 
-1. 在  **的 Jenkins 仪表板上创建一个**新项``http://<HOST-IP>:8080``。
+1. 在 ``http://<HOST-IP>:8080`` 的 Jenkins 仪表板上创建一个**新项**。
 
 1. 输入项名称（例如 **MyJob**）。 选择“自由格式的项目”，并单击“确定”。  
 
@@ -93,7 +93,7 @@ ms.locfileid: "75742027"
 
     a. 转到 GitHub 存储库页。 转到“设置”   >   “集成和服务”。
 
-    b. 选择“添加服务”，键入 **Jenkins**，并选择“Jenkins-GitHub 插件”。  
+    b. 选择“添加服务”，键入 **Jenkins**，并选择“Jenkins-GitHub 插件”。
 
     c. 输入 Jenkins Webhook URL（默认为 ``http://<PublicIPorFQDN>:8081/github-webhook/``）。 单击“添加/更新服务”。 
 
@@ -121,7 +121,7 @@ ms.locfileid: "75742027"
 
 ## <a name="update-your-existing-application"></a>更新现有应用程序
 
-1. 使用 *Service Fabric 投票示例 V2* 更新 **VotingApplication/VotingWebPkg/Code/wwwroot/index.html** 文件中 HTML 的标题。
+1. 使用 **Service Fabric 投票示例 V2** 更新 *VotingApplication/VotingWebPkg/Code/wwwroot/index.html* 文件中 HTML 的标题。
 
     ```html
     <div ng-app="VotingApp" ng-controller="VotingAppController" ng-init="refresh()">
@@ -135,7 +135,7 @@ ms.locfileid: "75742027"
     </div>
     ```
 
-1. 在 **Voting/VotingApplication/ApplicationManifest.xml** 文件中，将 **ApplicationTypeVersion** 和 **ServiceManifestVersion** 版本更新为 *2.0.0*。
+1. 在 *Voting/VotingApplication/ApplicationManifest.xml* 文件中，将 **ApplicationTypeVersion** 和 **ServiceManifestVersion** 版本更新为 **2.0.0**。
 
     ```xml
     <?xml version="1.0" encoding="utf-8" standalone="no"?>
@@ -162,7 +162,7 @@ ms.locfileid: "75742027"
     </ApplicationManifest>
     ```
 
-1. 在 **Voting/VotingApplication/VotingWebPkg/ServiceManifest.xml** 文件中，将 **ServiceManifest** 中的 **Version** 字段以及 **CodePackage** 标记中的 *Version* 字段更新为 **2.0.0**。
+1. 在 *Voting/VotingApplication/VotingWebPkg/ServiceManifest.xml* 文件中，将 **ServiceManifest** 中的 **Version** 字段以及 **CodePackage** 标记中的 **Version** 字段更新为 **2.0.0**。
 
     ```xml
     <CodePackage Name="Code" Version="2.0.0">

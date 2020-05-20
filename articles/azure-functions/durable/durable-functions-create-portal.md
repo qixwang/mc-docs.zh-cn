@@ -58,7 +58,7 @@ Azure Functions 的 [Durable Functions](durable-functions-overview.md) 扩展是
 
 ## <a name="create-an-orchestrator-function"></a>创建一个业务流程协调程序函数
 
-1. 展开 Function App，单击“Functions”旁边的  **按钮+**  。 如果这是函数应用中的第一个函数，请依次选择“门户中”  、“继续”  。 否则，请转到第三步。
+1. 展开 Function App，单击“Functions”旁边的 + 按钮。 如果这是函数应用中的第一个函数，请依次选择“门户中”  、“继续”  。 否则，请转到第三步。
 
    ![Azure 门户中的 Functions 快速入门页](./media/durable-functions-create-portal/function-app-quickstart-choose-portal.png)
 
@@ -76,7 +76,7 @@ Azure Functions 的 [Durable Functions](durable-functions-overview.md) 扩展是
 
 1. 在函数应用中创建另一函数，这次使用 **Durable Functions 业务流程协调程序**模板。 将新的业务流程函数命名为 `HelloSequence`。
 
-1. 使用 `Hello`Durable Functions 活动**模板创建第三个函数，该函数名为** 。
+1. 使用 **Durable Functions 活动**模板创建第三个函数，该函数名为 `Hello`。
 
 ## <a name="test-the-durable-function-orchestration"></a>测试持久函数业务流程
 

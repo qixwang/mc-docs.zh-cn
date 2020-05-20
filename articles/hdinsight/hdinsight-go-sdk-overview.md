@@ -345,7 +345,7 @@ extClient.Authorizer, _ = credentials.Authorizer()
 ```
 
 > [!NOTE]
-> 下面的监视示例假定你已如上所示初始化了一个名为 `ExtensionClient` 的 `extClient` 并设置了其 `Authorizer`。
+> 下面的监视示例假定你已如上所示初始化了一个名为 `extClient` 的 `ExtensionClient` 并设置了其 `Authorizer`。
 
 ### <a name="enable-oms-monitoring"></a>启用 OMS 监视
 
@@ -397,7 +397,7 @@ scriptActionsClient.Authorizer, _ = credentials.Authorizer()
 ```
 
 > [!NOTE]
-> 下面的脚本操作示例假定你已如上所示初始化了一个名为 `ScriptActionsClient` 的 `scriptActionsClient` 并设置了其 `Authorizer`。
+> 下面的脚本操作示例假定你已如上所示初始化了一个名为 `scriptActionsClient` 的 `ScriptActionsClient` 并设置了其 `Authorizer`。
 
 ### <a name="delete-script-action"></a>删除脚本操作
 
@@ -445,7 +445,7 @@ scriptExecutionHistoryClient.Authorizer, _ = credentials.Authorizer()
 ```
 
 > [!NOTE]
-> 以下示例假定你已如上所示初始化了一个名为 `ScriptExecutionHistoryClient` 的 `scriptExecutionHistoryClient` 并设置了其 `Authorizer`。
+> 以下示例假定你已如上所示初始化了一个名为 `scriptExecutionHistoryClient` 的 `ScriptExecutionHistoryClient` 并设置了其 `Authorizer`。
 
 列出指定群集的所有脚本的执行历史记录：
 

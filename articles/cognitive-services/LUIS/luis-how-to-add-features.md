@@ -33,7 +33,7 @@ ms.locfileid: "74884617"
 
 1. 在“描述符”页上，单击“+ 添加描述符”   。 
  
-1. 在“创建新短语列表描述符”  对话框中，输入描述符的名称（例如 `Cities`）。 在“值”框中，键入描述符的值，例如 **。** `Seattle` 可以一次键入一个值或者用逗号分隔的一组值，然后按 Enter  。
+1. 在“创建新短语列表描述符”  对话框中，输入描述符的名称（例如 `Cities`）。 在“值”框中，键入描述符的值，例如 `Seattle`。 可以一次键入一个值或者用逗号分隔的一组值，然后按 Enter  。
 
     > [!div class="mx-imgBorder"]
     > ![添加描述符“Cities”](./media/luis-add-features/add-phrase-list-cities.png)

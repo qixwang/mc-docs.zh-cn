@@ -22,7 +22,7 @@ ms.locfileid: "78850435"
 
 ## <a name="name"></a>名称
 
-请求的名称表示用于处理该请求的代码路径。 较小的基数值对请求分组更有利。 对于 HTTP 请求，该名称表示 HTTP 方法和 URL 路径模板，例如，不带实际 `GET /values/{id}` 值的 `id`。
+请求的名称表示用于处理该请求的代码路径。 较小的基数值对请求分组更有利。 对于 HTTP 请求，该名称表示 HTTP 方法和 URL 路径模板，例如，不带实际 `id` 值的 `GET /values/{id}`。
 
 在字母大小写方面，Application Insights Web SDK 会“按原样”发送请求名称。 UI 上的分组区分大小写，因此 `GET /Home/Index` 被视为不同于 `GET /home/INDEX`，即使两者通常生成相同的控制器和操作执行。 原因在于，URL 往往[区分大小写](https://www.w3.org/TR/WD-html40-970708/htmlweb.html)。 可能想要确定所有 `404` 是否发生在以大写形式键入的 URL 上。 可在该[博客文章](https://apmtips.com/blog/2015/02/23/request-name-and-url/)中详细了解 ASP.NET Web SDK 如何处理请求名称集合。
 

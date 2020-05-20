@@ -92,7 +92,7 @@ NAME                       STATUS                     ROLES     AGE       VERSIO
 aks-nodepool1-28993262-0   Ready,SchedulingDisabled   agent     1h        v1.11.7
 ```
 
-更新过程完成后，可使用带有 [ 参数的 ][kubectl-get-nodes]kubectl get nodes`--output wide` 命令查看节点的状态。 通过此附加输出，可发现基础节点的 KERNEL-VERSION 会有所差异，如以下示例输出所示  。 在上一步中已更新 *aks-nodepool1-28993262-0*，并显示内核版本为 *4.15.0-1039-azure*。 尚未更新的 *aks-nodepool1-28993262-1* 节点显示的内核版本为 *4.15.0-1037-azure*。
+更新过程完成后，可使用带有 `--output wide` 参数的 [kubectl get nodes][kubectl-get-nodes] 命令查看节点的状态。 通过此附加输出，可发现基础节点的 KERNEL-VERSION 会有所差异，如以下示例输出所示  。 在上一步中已更新 *aks-nodepool1-28993262-0*，并显示内核版本为 *4.15.0-1039-azure*。 尚未更新的 *aks-nodepool1-28993262-1* 节点显示的内核版本为 *4.15.0-1037-azure*。
 
 ```
 NAME                       STATUS    ROLES     AGE       VERSION   INTERNAL-IP   EXTERNAL-IP   OS-IMAGE             KERNEL-VERSION      CONTAINER-RUNTIME

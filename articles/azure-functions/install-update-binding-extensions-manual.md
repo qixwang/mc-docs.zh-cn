@@ -24,13 +24,13 @@ ms.locfileid: "76116819"
 
 1. 选择“平台功能”  选项卡，然后在“开发工具”  下选择“高级工具(Kudu)”  。 Kudu 终结点 (`https://<APP_NAME>.scm.chinacloudsites.cn/`) 将在一个新窗口中打开。
 
-1. 在 Kudu 窗口中，选择“调试控制台”   > “CMD”  。  
+1. 在 Kudu 窗口中，选择“调试控制台” > “CMD”。  
 
 1. 在命令窗口中，导航到 `D:\home\site\wwwroot`，然后选择 `bin` 旁边的删除图标，以删除该文件夹。 选择“确定”  以确认删除。
 
 1. 选择 `extensions.csproj` 文件旁边的编辑图标，该文件定义函数应用的绑定扩展。 项目文件将在在线编辑器中打开。
 
-1. 在“ItemGroup”  中对“PackageReference”  项进行必要的添加和更新，然后选择“保存”  。 可以在[我需要哪些软件包？](https://github.com/Azure/azure-functions-host/wiki/Updating-your-function-app-extensions#what-nuget-packages-do-i-need) wiki 文章中找到支持软件包版本的当前列表。 所有三个 Azure 存储绑定都需要 Microsoft.Azure.WebJobs.Extensions.Storage 包。
+1. 在“ItemGroup”中对“PackageReference”项进行必要的添加和更新，然后选择“保存”。 可以在[我需要哪些软件包？](https://github.com/Azure/azure-functions-host/wiki/Updating-your-function-app-extensions#what-nuget-packages-do-i-need) wiki 文章中找到支持软件包版本的当前列表。 所有三个 Azure 存储绑定都需要 Microsoft.Azure.WebJobs.Extensions.Storage 包。
 
 1. 从 `wwwroot` 文件夹，运行以下命令以重新生成 `bin` 文件夹中引用的程序集。
 

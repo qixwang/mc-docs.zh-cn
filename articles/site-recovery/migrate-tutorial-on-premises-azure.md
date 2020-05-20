@@ -62,7 +62,7 @@ Hyper-V | 设置[源环境](hyper-v-azure-tutorial.md#set-up-the-source-environm
 
 选择并验证目标资源。
 
-1. 单击“准备基础结构”   > “目标”  ，并选择要使用的 Azure 订阅。
+1. 单击“准备基础结构” > “目标”，然后选择要使用的 Azure 订阅。
 2. 指定资源管理器部署模型。
 3. Site Recovery 将检查 Azure 资源。
     - 如果迁移的是 VMware VM 或物理服务器，则 Site Recovery 将会验证是否提供了一个 Azure 网络，在故障转移后创建 Azure VM 时，会将该 VM 放入该网络。

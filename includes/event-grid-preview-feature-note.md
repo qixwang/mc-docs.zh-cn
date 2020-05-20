@@ -30,7 +30,7 @@ ms.locfileid: "70014689"
 
 1. [安装 Azure CLI](/cli/install-azure-cli)。 通过使用 `az --version` 检查，确保已安装最新版本。
 1. 卸载早期版本的扩展 `az extension remove -n eventgrid`
-1. 使用 `eventgrid` 安装 `az extension add -n eventgrid` 扩展
+1. 使用 `az extension add -n eventgrid` 安装 `eventgrid` 扩展
 
 ### <a name="install-module-for-powershell"></a>安装适用于 PowerShell 的模块
 

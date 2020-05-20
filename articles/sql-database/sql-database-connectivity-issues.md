@@ -132,7 +132,7 @@ ms.locfileid: "79291441"
 2015-11-30, FwLink 393996 points to dn632678.aspx, which links to a downloadable .docx related to SqlClient and SQL Server 2014.
 -->
 
-为 [SqlConnection](https://msdn.microsoft.com/library/System.Data.SqlClient.SqlConnection.connectionstring.aspx) 对象生成**连接字符串**时，请在以下参数之间协调值：
+为 **SqlConnection** 对象生成[连接字符串](https://msdn.microsoft.com/library/System.Data.SqlClient.SqlConnection.connectionstring.aspx)时，请在以下参数之间协调值：
 
 - **ConnectRetryCount**：&nbsp;&nbsp;默认值为 1。 范围为 0 到 255。
 - **ConnectRetryInterval**：&nbsp;&nbsp;默认值为 10 秒。 范围为 1 到 60。
@@ -189,7 +189,7 @@ ms.locfileid: "79291441"
 例如，当客户端程序托管在 Windows 计算机上时，则可以使用主机上的 Windows 防火墙打开端口 1433。
 
 1. 打开控制面板。
-2. 选择“所有控制面板项” **“Windows 防火墙”** “高级设置” > “出站规则” **“操作”** “新建规则”。 >    >    >    >  
+2. 选择“所有控制面板项” > “Windows 防火墙” > “高级设置” > “出站规则” > “操作” > “新建规则”。
 
 如果客户端程序托管在 Azure 虚拟机 (VM) 上，请阅读[用于 ADO.NET 4.5 和 SQL 数据库的非 1433 端口](sql-database-develop-direct-route-ports-adonet-v12.md)。
 

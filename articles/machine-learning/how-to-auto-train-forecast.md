@@ -213,7 +213,7 @@ actual_labels = test_labels.flatten()
 
 或者，可以使用 `forecast()` 函数而不使用 `predict()`，这将允许指定预测开始时间。 在下面的示例中，首先将 `y_pred` 中的所有值替换为 `NaN`。 在本例中，预测原点将位于训练数据的末尾，这是使用 `predict()` 时的常态。 但是，如果只将 `y_pred` 的后半部分替换为 `NaN`，则函数不会修改前半部分的数值，而会在后半部分预测 `NaN` 值。 函数将返回预测值和对齐的特征。
 
-还可以在 `forecast_destination` 函数中使用 `forecast()` 参数，预测到指定日期为止的值。
+还可以在 `forecast()` 函数中使用 `forecast_destination` 参数，预测到指定日期为止的值。
 
 ```python
 label_query = test_labels.copy().astype(np.float)

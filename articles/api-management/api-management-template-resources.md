@@ -337,7 +337,7 @@ Azure API 管理提供以下类型的资源，适用于开发人员门户模板�
 |WebIssuesNotSignin|没有登录。 请{0}，以便报告问题或发表评论。|  
 |WebIssuesReportIssueButton|报告问题|  
 |WebIssuesSignIn|登录|  
-|WebIssuesStatusReportedBy|{0} 报告了状态: {1} &#124;|  
+|WebIssuesStatusReportedBy|{1} 报告了状态: {0} &#124;|  
   
 ###  <a name="notfoundstrings"></a><a name="NotFoundStrings"></a> NotFoundStrings  
   

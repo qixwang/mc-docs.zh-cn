@@ -74,13 +74,13 @@ var azure = require('azure-sb');
 
 ### <a name="set-up-an-azure-notification-hub-connection"></a>设置 Azure 通知中心连接
 
-可以通过 `NotificationHubService` 对象使用通知中心。 以下代码为名为 `NotificationHubService` 的通知中心创建 `hubname` 对象。 将它添加到靠近 `server.js` 文件顶部、用于导入 Azure 模块的语句之后的位置：
+可以通过 `NotificationHubService` 对象使用通知中心。 以下代码为名为 `hubname` 的通知中心创建 `NotificationHubService` 对象。 将它添加到靠近 `server.js` 文件顶部、用于导入 Azure 模块的语句之后的位置：
 
 ```javascript
 var notificationHubService = azure.createNotificationHubService('hubname','connectionstring');
 ```
 
-通过执行以下步骤从 `connectionstring`Azure 门户[Azure 门户] 值：
+通过执行以下步骤从 [Azure 门户] 获取连接 `connectionstring` 值：
 
 1. 在左侧导航窗格中，单击“浏览”。 
 2. 选择“通知中心”，并找到要用于示例的中心。  如果在创建新通知中心时需要帮助，可以参阅 [Windows 应用商店入门教程](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)。
@@ -90,15 +90,15 @@ var notificationHubService = azure.createNotificationHubService('hubname','conne
 ![Azure 门户 — 通知中心](./media/notification-hubs-nodejs-how-to-use-notification-hubs/notification-hubs-portal.png)
 
 > [!NOTE]
-> 还可以使用 **Azure PowerShell** 提供的 [Get-AzureSbNamespace](https://docs.microsoft.com/powershell/azureps-cmdlets-docs) cmdlet 或者在 **Azure 命令行接口 (Azure CLI)** 中使用 [azure sb namespace show](/cli-install-nodejs) 命令检索连接字符串。
+> 还可以使用 [Azure PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs) 提供的 **Get-AzureSbNamespace** cmdlet 或者在 [Azure 命令行接口 (Azure CLI)](/cli-install-nodejs) 中使用 **azure sb namespace show** 命令检索连接字符串。
 
 ## <a name="general-architecture"></a>一般体系结构
 
 `NotificationHubService` 对象公开以下对象实例，以便向特定设备和应用程序发送推送通知：
 
-- **iOS** - 使用可在 `ApnsService` 访问的 `notificationHubService.apns` 对象
-- **Windows Phone** - 使用可在 `MpnsService` 获得的 `notificationHubService.mpns` 对象
-- **通用 Windows 平台** - 使用可在 `WnsService` 获得的 `notificationHubService.wns` 对象
+- **iOS** - 使用可在 `notificationHubService.apns` 访问的 `ApnsService` 对象
+- **Windows Phone** - 使用可在 `notificationHubService.mpns` 获得的 `MpnsService` 对象
+- **通用 Windows 平台** - 使用可在 `notificationHubService.wns` 获得的 `WnsService` 对象
 
 ### <a name="how-to-send-push-notifications-to-ios-applications"></a>如何：向 iOS 应用程序发送推送通知
 
@@ -108,9 +108,9 @@ var notificationHubService = azure.createNotificationHubService('hubname','conne
 - **Payload** — 消息的 JSON 或字符串的有效负载。
 - **Callback** — 回调函数。
 
-有关有效负载格式的详细信息，请参阅 **Local and Push Notification Programming Guide**（本地通知和推送通知编程指南）文档中的 [Notification Payload](https://developer.apple.com/library/ios/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/ApplePushService/ApplePushService.html)（通知有效负载）部分。
+有关有效负载格式的详细信息，请参阅 [Local and Push Notification Programming Guide](https://developer.apple.com/library/ios/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/ApplePushService/ApplePushService.html)（本地通知和推送通知编程指南）文档中的 **Notification Payload**（通知有效负载）部分。
 
-以下代码使用由 `ApnsService` 公开的 `NotificationHubService` 实例将警报消息发送给所有客户端：
+以下代码使用由 `NotificationHubService` 公开的 `ApnsService` 实例将警报消息发送给所有客户端：
 
 ```javascript
 var payload={
@@ -129,14 +129,14 @@ notificationHubService.apns.send(null, payload, function(error){
 
 - **Tags** — 标记标识符。 如果没有提供任何标记，通知会发送给所有客户端。
 - **Payload** — 消息的 XML 有效负载。
-- **TargetName** - `toast` 用于 toast 通知。 `token` 用于磁贴通知。
-- **NotificationClass** — 通知的优先级。 有关该参数的有效值，请参阅 **从服务器推送通知**文档中的 [HTTP Header Elements](https://msdn.microsoft.com/library/hh221551.aspx)（HTTP 标头元素）部分。
+- TargetName - `toast` 用于 toast 通知。 `token` 用于磁贴通知。
+- **NotificationClass** — 通知的优先级。 有关该参数的有效值，请参阅 [从服务器推送通知](https://msdn.microsoft.com/library/hh221551.aspx)文档中的 **HTTP Header Elements**（HTTP 标头元素）部分。
 - **Options** — 可选的请求标头。
 - **Callback** — 回调函数。
 
 有关有效的 `TargetName`、`NotificationClass` 和标头选项的列表，请查看[从服务器推送通知](https://msdn.microsoft.com/library/hh221551.aspx)页面。
 
-以下示例代码使用由 `MpnsService` 公开的 `NotificationHubService` 实例发送 toast 推送通知：
+以下示例代码使用由 `NotificationHubService` 公开的 `MpnsService` 实例发送 toast 推送通知：
 
 ```javascript
 var payload = '<?xml version="1.0" encoding="utf-8"?><wp:Notification xmlns:wp="WPNotification"><wp:Toast><wp:Text1>string</wp:Text1><wp:Text2>string</wp:Text2></wp:Toast></wp:Notification>';
@@ -159,7 +159,7 @@ notificationHubService.mpns.send(null, payload, 'toast', 22, function(error){
 
 有关有效的类型和请求标头的列表，请参阅[推送通知服务请求和响应标头](https://msdn.microsoft.com/library/windows/apps/hh465435.aspx)。
 
-以下示例代码使用由 `WnsService` 公开的 `NotificationHubService` 实例将 toast 推送通知发送给 UWP 应用：
+以下示例代码使用由 `NotificationHubService` 公开的 `WnsService` 实例将 toast 推送通知发送给 UWP 应用：
 
 ```javascript
 var payload = '<toast><visual><binding template="ToastText01"><text id="1">Hello!</text></binding></visual></toast>';

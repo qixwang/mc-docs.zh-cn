@@ -57,7 +57,7 @@ Application Insights 是 Azure 的应用程序性能管理平台，也是 Servic
 
 若要创建 Application Insights 资源，请导航到 [Azure 门户](https://portal.azure.cn)。 单击左侧导航菜单中的“创建资源”，打开 Azure 市场。  
 
-在“新建”  页的筛选器中键入 **Application Insights**，然后在搜索结果中选择 **Application Insights** 项。
+在“新建”页的筛选器中键入 **Application Insights**，然后在搜索结果中选择 **Application Insights** 项。
 
 <!--MOONCAKE: CUSTOMIZATION-->
 
@@ -114,14 +114,14 @@ Application Insights 有两个特定于 Service Fabric 的 NuGet，可以根据�
     
 5. 在显示的“审阅更改”对话框中单击“确定”，接受“接受许可证”中的条款。    这样即可将 NuGet 添加到服务。
 6. 现在需在两个服务中设置遥测初始值设定项。 为此，请打开“VotingWeb.cs”和“VotingData.cs”。   对这两个文件执行下述两项步骤：
-    1. 在每个  *ServiceName>.cs 顶部的现有 \<using* 语句之后添加下面这两个 using  语句：
+    1. 在每个 \<ServiceName>.cs 顶部的现有 *using* 语句之后添加下面这两个 using 语句：
 
         ```csharp
         using Microsoft.ApplicationInsights.Extensibility;
         using Microsoft.ApplicationInsights.ServiceFabric;
         ```
 
-    2. 在两个文件的  CreateServiceInstanceListeners() 或  CreateServiceReplicaListeners() 的嵌套式  return 语句中，在已声明其他单一实例服务的  ConfigureServices >   services 下添加：
+    2. 在两个文件的 CreateServiceInstanceListeners() 或 CreateServiceReplicaListeners() 的嵌套式 return 语句中，在已声明其他单一实例服务的 ConfigureServices > services 下添加：
         ```csharp
         .AddSingleton<ITelemetryInitializer>((serviceProvider) => FabricTelemetryInitializerExtension.CreateFabricTelemetryInitializer(serviceContext))
         ```
@@ -162,7 +162,7 @@ Application Insights 有两个特定于 Service Fabric 的 NuGet，可以根据�
             .Build();
         ```
 
-仔细进行检查，确保在 `UseApplicationInsights()`VotingWeb.cs*和*VotingData.cs*中调用* 方法，如上所示。
+仔细进行检查，确保在 *VotingWeb.cs* 和 *VotingData.cs* 中调用 `UseApplicationInsights()` 方法，如上所示。
 
 >[!NOTE]
 >此示例应用使用 http 供服务通信。 如果使用 Service Remoting V2 来开发应用，则需在以前添加代码的位置添加以下代码行

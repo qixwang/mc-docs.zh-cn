@@ -93,7 +93,7 @@ Azure Active Directory B2C (Azure AD B2C) 产生的使用费将从 Azure 订阅�
 
 1. 登录 [Azure 门户](https://portal.azure.cn)。
 1. 在顶部菜单中选择“目录 + 订阅”筛选器，然后选择包含要使用的 Azure 订阅的目录（不是包含 Azure AD B2C 租户的目录）。  
-1. 选择“创建资源”，在“搜索市场”字段中输入 **，然后选择“Azure Active Directory B2C”。** `Active Directory B2C` 
+1. 选择“创建资源”，在“搜索市场”字段中输入 `Active Directory B2C`，然后选择“Azure Active Directory B2C”。
 1. 选择“创建” 
 1. 选择“将现有 Azure AD B2C 租户链接到我的 Azure 订阅”。 
 1. 从下拉列表中选择一个 **Azure AD B2C 租户**。 下拉列表中只显示你是其全局管理员且尚未链接到订阅的租户。 “Azure AD B2C 资源名称”字段中已预先填充所选 Azure AD B2C 租户的域名。 

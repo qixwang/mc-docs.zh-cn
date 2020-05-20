@@ -271,7 +271,7 @@ print("scoring URI: " + service.scoring_uri)
 
 有关详细信息，请参阅 [Model.deploy()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) 参考。
 
-若要从 CLI 部署模型，请使用以下命令。 此命令使用存储在 `sentiment:1` 和 `inferenceConfig.json` 文件中的推理配置和部署配置来部署已注册模型 (`deploymentConfig.json`) 的版本 1：
+若要从 CLI 部署模型，请使用以下命令。 此命令使用存储在 `inferenceConfig.json` 和 `deploymentConfig.json` 文件中的推理配置和部署配置来部署已注册模型 (`sentiment:1`) 的版本 1：
 
 ```azurecli
 az ml model deploy -n myservice -m sentiment:1 --ic inferenceConfig.json --dc deploymentConfig.json

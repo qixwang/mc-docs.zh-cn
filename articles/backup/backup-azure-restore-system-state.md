@@ -35,7 +35,7 @@ ms.locfileid: "78850258"
 
     ![恢复数据](./media/backup-azure-restore-windows-server/recover.png)
 
-3. 要将数据还原到同一台服务器或计算机，请在“开始”窗格中选择“此服务器( **)”，然后单击“下一步”。** **`<server name>`** 
+3. 要将数据还原到同一台服务器或计算机，请在“开始”窗格中选择“此服务器(`<server name>`)”，然后单击“下一步”。
 
     ![选择“此服务器”选项将数据还原到同一台计算机](./media/backup-azure-restore-system-state/samemachine.png)
 
@@ -109,7 +109,7 @@ ms.locfileid: "78850258"
 
     ![单击“恢复”按钮确认恢复过程](./media/backup-azure-restore-system-state/confirm-recovery.png)
 
-12. 将 WindowsImageBackup 目录复制到服务器的非关键卷（如 D: *）* \)。 通常，Windows OS 卷是关键卷。
+12. 将 WindowsImageBackup 目录复制到服务器的非关键卷（如 D:\)）。 通常，Windows OS 卷是关键卷。
 
 13. 若要完成恢复过程，请使用下面的[对 Windows 服务器应用已恢复的系统状态文件](#apply-restored-system-state-on-a-windows-server)部分。
 

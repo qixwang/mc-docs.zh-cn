@@ -114,7 +114,7 @@ ms.locfileid: "79497187"
 | 值 | 是 | 与此选项关联的字符串声明值。 |
 | SelectByDefault | 否 | 指示默认情况下是否应在 UI 中选择此选项。 可能的值：True 或 False。 |
 
-以下示例演示了 **LocalizedCollections** 元素的用法。 其中包含两个 **LocalizedCollection** 元素，一个元素适用于英语区域设置，另一个元素适用于西班牙语区域设置。 这两个元素都设置了声明 **的**Restriction`Gender` 集合，以及适用于英语和西班牙语的项列表。
+以下示例演示了 **LocalizedCollections** 元素的用法。 其中包含两个 **LocalizedCollection** 元素，一个元素适用于英语区域设置，另一个元素适用于西班牙语区域设置。 这两个元素都设置了声明 `Gender` 的 **Restriction** 集合，以及适用于英语和西班牙语的项列表。
 
 ```XML
 <LocalizedResources Id="api.selfasserted.en">
@@ -148,7 +148,7 @@ ms.locfileid: "79497187"
 | --------- | -------- | ----------- |
 | ElementType | 是 | 对策略中声明类型元素或用户界面元素的引用。 可能的值：`ClaimType`、`UxElement`、`ErrorMessage`、`Predicate` 或 `GetLocalizedStringsTransformationClaimType`。 `ClaimType` 值用于本地化 StringId 中指定的某个声明属性。 `UxElement` 值用于本地化 StringId 中指定的某个用户界面元素。 `ErrorMessage` 值用于本地化 StringId 中指定的某个系统错误消息。 `Predicate` 值用于本地化 StringId 中指定的某个 [Predicate](predicates.md) 错误消息。 `InputValidation` 值用于本地化 StringId 中指定的某个 [PredicateValidation](predicates.md) 组错误消息。 `GetLocalizedStringsTransformationClaimType` 值用于将本地化字符串复制到声明。 有关详细信息，请参阅 [GetLocalizedStringsTransformation 声明转换](string-transformations.md#getlocalizedstringstransformation)  | 
 | ElementId | 是 | 如果 **ElementType** 设置为 `ClaimType`、`Predicate` 或 `InputValidation`，此元素包含对 ClaimsSchema 节中已定义的声明类型的引用。 |
-| StringId | 是 | 如果 **ElementType** 设置为 `ClaimType`，此元素包含对声明类型的属性的引用。 可能的值：`DisplayName`、`AdminHelpText` 或 `PatternHelpText`。 `DisplayName` 值用于设置声明显示名称。 `AdminHelpText` 值用于设置声明用户的帮助文本名称。 `PatternHelpText` 值用于设置声明模式帮助文本。 如果 **ElementType** 设置为 `UxElement`，此元素包含对用户界面元素的属性的引用。 如果 **ElementType** 设置为 `ErrorMessage`，此元素指定错误消息的标识符。 有关 [ 标识符的完整列表，请参阅](localization-string-ids.md)本地化字符串 ID`UxElement`。|
+| StringId | 是 | 如果 **ElementType** 设置为 `ClaimType`，此元素包含对声明类型的属性的引用。 可能的值：`DisplayName`、`AdminHelpText` 或 `PatternHelpText`。 `DisplayName` 值用于设置声明显示名称。 `AdminHelpText` 值用于设置声明用户的帮助文本名称。 `PatternHelpText` 值用于设置声明模式帮助文本。 如果 **ElementType** 设置为 `UxElement`，此元素包含对用户界面元素的属性的引用。 如果 **ElementType** 设置为 `ErrorMessage`，此元素指定错误消息的标识符。 有关 `UxElement` 标识符的完整列表，请参阅[本地化字符串 ID](localization-string-ids.md)。|
 
 
 以下示例演示了一个本地化的注册页。 前三个 **LocalizedString** 值设置声明属性。 第三个值更改继续按钮的值。 最后一个值更改错误消息。
@@ -165,7 +165,7 @@ ms.locfileid: "79497187"
 </LocalizedResources>
 ```
 
-以下示例演示了 ID 为 **的**Predicate**的本地化**UserHelpText`IsLengthBetween8And64`。 另外还演示了 ID 为 **的**PredicateGroup **，以及 ID 为**  的 `CharacterClasses`PredicateValidation**的本地化**UserHelpText`StrongPassword`。
+以下示例演示了 ID 为 `IsLengthBetween8And64` 的 **Predicate** 的本地化 **UserHelpText**。 另外还演示了 ID 为 `CharacterClasses` 的 **PredicateGroup**，以及 ID 为 `StrongPassword` 的 **PredicateValidation** 的本地化 **UserHelpText**。
 
 ```XML
 <PredicateValidation Id="StrongPassword">

@@ -265,7 +265,7 @@ ms.locfileid: "77611277"
 > 1. 通过更新 VM 属性启用到托管磁盘的故障转移
 > 1. 使用 `Get-AzRecoveryServicesAsrReplicationProtectedItem` cmdlet 获取受保护项的每个磁盘的磁盘 ID
 > 1. 使用 `New-Object "System.Collections.Generic.Dictionary``2[System.String,System.String]"` cmdlet 创建包含磁盘 ID 到磁盘加密集映射的字典对象。 这些磁盘加密集将由你在目标区域中预先创建。
-> 1. 通过在 `Set-AzRecoveryServicesAsrReplicationProtectedItem`DiskIdToDiskEncryptionSetMap**参数中传递字典对象，使用** cmdlet 更新 VM 属性。
+> 1. 通过在 **DiskIdToDiskEncryptionSetMap** 参数中传递字典对象，使用 `Set-AzRecoveryServicesAsrReplicationProtectedItem` cmdlet 更新 VM 属性。
 
 ## <a name="run-a-test-failover"></a>运行测试故障转移
 

@@ -236,7 +236,7 @@ $healthServiceSettings.SetProxyInfo($ProxyDomainName, $ProxyUserName, $cred.GetN
 3. 在“程序和功能”中依次单击“Microsoft Monitoring Agent”、“卸载”、“是”     。
 
 >[!NOTE]
->还可以通过双击“MMASetup-**platform\<.exe”运行代理安装向导，该程序可从 Azure 门户中的工作区下载\>** 。
+>还可以通过双击“MMASetup-\<platform\>.exe”运行代理安装向导，该程序可从 Azure 门户中的工作区下载。
 
 #### <a name="uninstall-from-the-command-line"></a>从命令行卸载
 下载的代理文件是使用 IExpress 创建的独立安装包。 代理和支持文件的安装程序包含在该包中，需要提取才能使用以下示例中所示的命令行正确卸载。

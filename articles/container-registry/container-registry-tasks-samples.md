@@ -13,7 +13,7 @@ ms.locfileid: "74885123"
 ---
 # <a name="acr-tasks-samples"></a>ACR 任务示例
 
-本文链接到几个 `task.yaml`Azure 容器注册表任务[（ACR 任务）方案的示例 ](container-registry-tasks-overview.md) 文件和关联的 Dockerfile。 
+本文链接到几个 [Azure 容器注册表任务](container-registry-tasks-overview.md)（ACR 任务）方案的示例 `task.yaml` 文件和关联的 Dockerfile。 
 
 有关其他示例，请参阅 [Azure 示例][task-examples]存储库。
 

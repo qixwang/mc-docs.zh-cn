@@ -188,7 +188,7 @@ ms.locfileid: "80151744"
 
     此方法获取推送通知通道，并注册模板以从通知中心接收模板通知。 支持 *messageParam* 的模板通知将传送到此客户端。
 
-3. 在 App.xaml.cs 中，通过添加 **修饰符更新**OnLaunched`async` 事件处理程序方法定义。 然后，在方法的末尾添加以下代码行：
+3. 在 App.xaml.cs 中，通过添加 `async` 修饰符更新 **OnLaunched** 事件处理程序方法定义。 然后，在方法的末尾添加以下代码行：
 
     ```csharp
     await InitNotificationsAsync();
@@ -196,7 +196,7 @@ ms.locfileid: "80151744"
 
     这可确保每次启动应用时，创建或刷新推送通知注册。 请务必执行此操作，以保证 WNS 推送通道始终处于活动状态。  
 
-4. 在 Visual Studio 的解决方案资源管理器中，打开 **Package.appxmanifest** 文件，并在“通知”  下将“支持 Toast 通知”  设置为“是”  。
+4. 在 Visual Studio 的解决方案资源管理器中，打开 **Package.appxmanifest** 文件，并在“通知”下将“支持 Toast 通知”设置为“是”。
 5. 生成该应用并确认没有错误。 客户端应用现在应从移动应用后端注册模板通知。 对于解决方案中的每个 Windows 项目，重复此部分的操作。
 
 #### <a name="test-push-notifications-in-your-windows-app"></a>在 Windows 应用中测试推送通知

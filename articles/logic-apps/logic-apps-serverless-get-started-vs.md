@@ -70,7 +70,7 @@ ms.locfileid: "77428250"
 
 1. 启动 Visual Studio，然后使用 Azure 帐户登录。
 
-1. 在“文件”  菜单中，选择“新建” **“项目”**  > 。  
+1. 在“文件”菜单中，选择“新建” > “项目”。 
 
    ![在 Visual Studio 中创建新项目](./media/logic-apps-serverless-get-started-vs/create-new-project-visual-studio.png)
 
@@ -110,7 +110,7 @@ ms.locfileid: "77428250"
 
 在 Visual Studio 的逻辑应用设计器中打开逻辑应用之前，必须已在 Azure 中部署了一个 Azure 资源组。 然后，设计器可与逻辑应用中的资源和服务建立连接。 对于此任务，请执行以下步骤，将解决方案从 Visual Studio 部署到 Azure 门户：
 
-1. 在解决方案资源管理器中，从资源项目的快捷菜单中选择“部署” **“新建”。**  >  
+1. 在解决方案资源管理器中，从资源项目的快捷菜单中选择“部署” > “新建”。
 
    ![创建资源组的新部署](./media/logic-apps-serverless-get-started-vs/deploy.png)
 

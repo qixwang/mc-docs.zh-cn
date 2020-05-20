@@ -168,7 +168,7 @@ ms.locfileid: "80243530"
 
         ![选择“批接收方”逻辑应用](./media/logic-apps-scenario-EDI-send-batch-messages/batch-sender-select-batch-receiver.png)
 
-    4. 选择此操作：“Batch_messages - <批接收方 **”  >**
+    4. 选择此操作：“Batch_messages - <批接收方>”
 
         ![选择“Batch_messages”操作](./media/logic-apps-scenario-EDI-send-batch-messages/batch-sender-select-batch-messages-action.png)
 

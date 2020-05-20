@@ -220,7 +220,7 @@ EDI EDIFACT 文档的业务连续性基于控制编号。
 
     ![MIC 添加或更新](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid5.png)
 
-7. 要将操作连接到次要区域集成帐户，请选择“更改连接” **“添加新连接”，显示可用集成帐户的列表。**  >   输入连接名称，从列表中选择“次要区域集成帐户”，并选择“创建”   。
+7. 要将操作连接到次要区域集成帐户，请选择“更改连接” > “添加新连接”，显示可用集成帐户的列表。 输入连接名称，从列表中选择“次要区域集成帐户”，并选择“创建”   。
 
     ![次要区域集成帐户名称](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid6.png)
 

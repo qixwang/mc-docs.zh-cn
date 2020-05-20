@@ -41,7 +41,7 @@ ms.locfileid: "78850618"
 
 文档必须包含一个指定哪些组拥有访问权限的字段。 此信息将成为筛选条件，在返回给请求发出者的结果集中选择或拒绝文档时，将以此条件为依据。
 我们假设为受保护的文件创建了一个索引，每个文件可由一组不同的用户访问。
-1. 将字段 `group_ids`（此处可选择任意名称）为 `Collection(Edm.String)`。 确保该字段的 `filterable` 属性设置为 `true`，以便根据用户拥有的访问权限筛选搜索结果。 例如，如果针对 `group_ids` 为“secured_file_b”的文档将 `["group_id1, group_id2"]` 字段设置为 `file_name`，则只有属于组 ID“group_id1”或“group_id2”的用户才对该文件拥有读访问权限。
+1. 将字段 `group_ids`（此处可选择任意名称）为 `Collection(Edm.String)`。 确保该字段的 `filterable` 属性设置为 `true`，以便根据用户拥有的访问权限筛选搜索结果。 例如，如果针对 `file_name` 为“secured_file_b”的文档将 `group_ids` 字段设置为 `["group_id1, group_id2"]`，则只有属于组 ID“group_id1”或“group_id2”的用户才对该文件拥有读访问权限。
    确保字段的 `retrievable` 属性设置为 `false`，以便不会将其返回为搜索请求的一部分。
 2. 此外，针对此示例添加 `file_id` 和 `file_name` 字段。  
 

@@ -92,7 +92,7 @@ public static Task Run([OrchestrationTrigger] IDurableOrchestrationContext conte
 > [!NOTE]
 > 前面的 C# 示例以 Durable Functions 2.x 为目标。 对于 Durable Functions 1.x，必须使用 `DurableOrchestrationContext` 而不是 `IDurableOrchestrationContext`。 有关版本之间差异的详细信息，请参阅 [Durable Functions 版本](durable-functions-versions.md)一文。
 
-此更改会向“Foo”  和“Bar”  之间的“SendNotification”  添加新的函数调用。 不存在签名更改。 在从对“Bar”  的调用中恢复现有实例时，将出现问题。 在重播过程中，如果对“Foo”  的原始调用返回 `true`，则业务流程协调程序重播将调用不在其执行历史记录中的“SendNotification”  。 因此，Durable Task Framework 将失败，并且出现 `NonDeterministicOrchestrationException`，因为在它希望出现对“Bar”  的调用时出现了对“SendNotification”  的调用。 添加对“durable”API 的任何调用（包括 `CreateTimer`、`WaitForExternalEvent` 等）时可能会出现相同类型的问题。
+此更改会向“Foo”和“Bar”之间的“SendNotification”添加新的函数调用。 不存在签名更改。 在从对“Bar”  的调用中恢复现有实例时，将出现问题。 在重播过程中，如果对“Foo”  的原始调用返回 `true`，则业务流程协调程序重播将调用不在其执行历史记录中的“SendNotification”  。 因此，Durable Task Framework 将失败，并且出现 `NonDeterministicOrchestrationException`，因为在它希望出现对“Bar”的调用时出现了对“SendNotification”的调用。 添加对“durable”API 的任何调用（包括 `CreateTimer`、`WaitForExternalEvent` 等）时可能会出现相同类型的问题。
 
 ## <a name="mitigation-strategies"></a>缓解策略
 

@@ -89,7 +89,7 @@ ms.locfileid: "79291297"
 
    将 _ContosoRG_ 替换为所需资源组的名称。
 
-   **的**scope`New-AzPolicyAssignment` 参数适用于管理组、订阅、资源组或单个资源。 该参数使用完整资源路径，它将返回 **的**ResourceId`Get-AzResourceGroup` 属性。 每个容器的**范围**模式如下所示。 将 `{rName}`、`{rgName}`、`{subId}` 和 `{mgName}` 分别替换为你的资源名称、资源组名称、订阅 ID 和管理组名称。
+   `New-AzPolicyAssignment` 的 **scope** 参数适用于管理组、订阅、资源组或单个资源。 该参数使用完整资源路径，它将返回 `Get-AzResourceGroup` 的 **ResourceId** 属性。 每个容器的**范围**模式如下所示。 将 `{rName}`、`{rgName}`、`{subId}` 和 `{mgName}` 分别替换为你的资源名称、资源组名称、订阅 ID 和管理组名称。
    `{rType}` 将替换为资源的**资源类型**，例如 VM 的 `Microsoft.Compute/virtualMachines`。
 
    - 资源 - `/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
@@ -218,7 +218,7 @@ ms.locfileid: "79291297"
    az policy assignment create --name '<name>' --scope '<scope>' --policy '<policy definition ID>'
    ```
 
-   **的**--scope`az policy assignment create` 参数适用于管理组、订阅、资源组或单个资源。 该参数使用完整资源路径。 每个容器的 **--scope** 模式如下所示。 将 `{rName}`、`{rgName}`、`{subId}` 和 `{mgName}` 分别替换为你的资源名称、资源组名称、订阅 ID 和管理组名称。 `{rType}` 将替换为资源的**资源类型**，例如 VM 的 `Microsoft.Compute/virtualMachines`。
+   `az policy assignment create` 的 **--scope** 参数适用于管理组、订阅、资源组或单个资源。 该参数使用完整资源路径。 每个容器的 **--scope** 模式如下所示。 将 `{rName}`、`{rgName}`、`{subId}` 和 `{mgName}` 分别替换为你的资源名称、资源组名称、订阅 ID 和管理组名称。 `{rType}` 将替换为资源的**资源类型**，例如 VM 的 `Microsoft.Compute/virtualMachines`。
 
    - 资源 - `/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
    - 资源组 - `/subscriptions/{subID}/resourceGroups/{rgName}`

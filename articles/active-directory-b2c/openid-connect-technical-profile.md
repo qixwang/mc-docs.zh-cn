@@ -26,11 +26,11 @@ Azure Active Directory B2C (Azure AD B2C) 为 [OpenID Connect](https://openid.ne
 
 ## <a name="protocol"></a>协议
 
-“Protocol”  元素的“Name”  属性必须设置为 `OpenIdConnect`。 
+“Protocol”元素的“Name”属性必须设置为 `OpenIdConnect`。 
 
 ## <a name="input-claims"></a>输入声明
 
-**InputClaims** 和 **InputClaimsTransformations** 元素不是必需的。 但是，你可能需要向标识提供者发送更多参数。 以下示例将值为 **的**domain_hint`contoso.com` 查询字符串参数添加到授权请求。
+**InputClaims** 和 **InputClaimsTransformations** 元素不是必需的。 但是，你可能需要向标识提供者发送更多参数。 以下示例将值为 `contoso.com` 的 **domain_hint** 查询字符串参数添加到授权请求。
 
 ```XML
 <InputClaims>

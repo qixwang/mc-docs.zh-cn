@@ -146,7 +146,7 @@ Azure 认知搜索原生支持复杂类型和集合。 使用这些类型几乎�
 
     $filter=Address/Country eq 'Canada'
 
-若要根据复杂集合字段进行筛选，可以结合  和 [ 运算符`any`使用 `all`Lambda 表达式](search-query-odata-collection-operators.md)。 在这种情况下，Lambda 表达式的**范围变量**是包含子字段的对象。 可以使用标准 OData 路径语法来引用这些子字段。 例如，以下筛选器将返回至少提供一间豪华客房，且所有客房都禁止吸烟的所有酒店：
+若要根据复杂集合字段进行筛选，可以结合 [`any` 和 `all` 运算符](search-query-odata-collection-operators.md)使用 **Lambda 表达式**。 在这种情况下，Lambda 表达式的**范围变量**是包含子字段的对象。 可以使用标准 OData 路径语法来引用这些子字段。 例如，以下筛选器将返回至少提供一间豪华客房，且所有客房都禁止吸烟的所有酒店：
 
     $filter=Rooms/any(room: room/Type eq 'Deluxe Room') and Rooms/all(room: not room/SmokingAllowed)
 

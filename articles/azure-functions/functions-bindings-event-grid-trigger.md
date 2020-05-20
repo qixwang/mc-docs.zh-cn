@@ -27,7 +27,7 @@ ms.locfileid: "77494602"
 
 ### <a name="c-2x-and-higher"></a>C#（2.x 及更高版本）
 
-以下示例演示绑定到 [ 的 ](functions-dotnet-class-library.md)C# 函数`EventGridEvent`：
+以下示例演示绑定到 `EventGridEvent` 的 [C# 函数](functions-dotnet-class-library.md)：
 
 ```cs
 using Microsoft.Azure.EventGrid.Models;
@@ -53,7 +53,7 @@ namespace Company.Function
 
 ### <a name="version-1x"></a>版本 1.x
 
-以下示例演示绑定到 [ 的 Functions 1.x ](functions-dotnet-class-library.md)C# 函数`JObject`：
+以下示例演示绑定到 `JObject` 的 Functions 1.x [C# 函数](functions-dotnet-class-library.md)：
 
 ```cs
 using Microsoft.Azure.WebJobs;
@@ -304,7 +304,7 @@ JavaScript 不支持特性。
 
 # <a name="java"></a>[Java](#tab/java)
 
-事件网格事件实例可通过与类型为 `EventGridTrigger` 的 `EventSchema` 属性关联的参数提供。 请参阅[示例](#example)来了解更多详细信息。
+事件网格事件实例可通过与类型为 `EventSchema` 的 `EventGridTrigger` 属性关联的参数提供。 请参阅[示例](#example)来了解更多详细信息。
 
 ---
 

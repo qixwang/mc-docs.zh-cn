@@ -36,7 +36,7 @@ ms.locfileid: "77028967"
 
     若 `input_alias1 = A,`，表示集 {1, 2}  
 
-    若 {3}，表示集 `input_alias1 = B,`  
+    若 `input_alias1 = B,`，表示集 {3}  
 
     若 `input_alias1 = C,`，表示集 {4, 5}  
 
@@ -54,7 +54,7 @@ ms.locfileid: "77028967"
 
     若 `input_alias1 = A,`，表示集 {1, 2}  
 
-    若 {3}，表示集 `input_alias1 = B,`  
+    若 `input_alias1 = B,`，表示集 {3}  
 
     若 `input_alias1 = C,`，表示集 {4, 5}  
 
@@ -62,7 +62,7 @@ ms.locfileid: "77028967"
 
     若 `input_alias2 = 1,`，表示集 {100, 200}  
 
-    若 {300}，表示集 `input_alias2 = 3,`  
+    若 `input_alias2 = 3,`，表示集 {300}  
 
 - FROM 子句 `<from_source1> JOIN <from_source2> JOIN <from_source3>` 将产生以下元组：  
 
@@ -83,7 +83,7 @@ ms.locfileid: "77028967"
 
     若 `input_alias1 = A,`，表示集 {1, 2}  
 
-    若 {3}，表示集 `input_alias1 = B,`  
+    若 `input_alias1 = B,`，表示集 {3}  
 
     若 `input_alias1 = C,`，表示集 {4, 5}  
 
@@ -91,7 +91,7 @@ ms.locfileid: "77028967"
 
     若 `input_alias2 = A,`，表示集 {100, 200}  
 
-    若 {300}，表示集 `input_alias2 = C,`  
+    若 `input_alias2 = C,`，表示集 {300}  
 
 - FROM 子句 `<from_source1> JOIN <from_source2> JOIN <from_source3>` 将产生以下元组：  
 

@@ -107,7 +107,7 @@ ms.locfileid: "79291354"
     ```
 
     >[!NOTE] 
-    >若要从配置服务器**拉取最新的证书**来横向扩展进程服务器，请执行命令 "*安装驱动器\Azure Site Recovery\agent\cdpcli.exe>" --registermt\<*
+    >若要从配置服务器**拉取最新的证书**来横向扩展进程服务器，请执行命令 "\<安装驱动器\Azure Site Recovery\agent\cdpcli.exe>" --registermt
 
 8. 最后，通过执行以下命令重启 obengine。
     ```
@@ -221,7 +221,7 @@ ProxyPassword="Password"
 1. 对配置服务器下的所有 VM [禁用保护](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure)。
 2. 从配置服务器中[取消关联](vmware-azure-set-up-replication.md#disassociate-or-delete-a-replication-policy)和[删除](vmware-azure-set-up-replication.md#disassociate-or-delete-a-replication-policy)所有复制策略。
 3. [删除](vmware-azure-manage-vcenter.md#delete-a-vcenter-server)与配置服务器关联的所有 vCenters 服务器/vSphere 主机。
-4. 在保管库中，打开“Site Recovery 基础结构” **“配置服务器”。**  >  
+4. 在保管库中，打开“Site Recovery 基础结构” > “配置服务器”。
 5. 选择要删除的配置服务器。 然后，在“详细信息”  页上，选择“删除”  。
 
     ![删除配置服务器](./media/vmware-azure-manage-configuration-server/delete-configuration-server.png)
@@ -274,16 +274,16 @@ ProxyPassword="Password"
 
 ### <a name="renew-the-certificate"></a>续订证书
 
-1. 在保管库中，打开“Site Recovery 基础结构” **“配置服务器”。**  >   选择所需的配置服务器。
+1. 在保管库中，打开“Site Recovery 基础结构” > “配置服务器”。 选择所需的配置服务器。
 2. 到期日期显示在“配置服务器运行状况”  下。
 3. 选择“续订证书”  。
 
 ## <a name="refresh-configuration-server"></a>刷新配置服务器
 
-1. 在 Azure 门户中，导航至“恢复服务保管库” **“管理”** “站点恢复基础结构” > “对于 VMware 和物理机” **“配置服务器”**  >    >    >  
+1. 在 Azure 门户中，导航至“恢复服务保管库” > “管理” > “站点恢复基础结构” > “对于 VMware 和物理机” > “配置服务器”
 2. 单击要刷新的配置服务器。
-3. 在包含所选配置服务器详细信息的边栏选项卡上，单击“更多” **“刷新服务器”**  >   。
-4. 在“恢复服务保管库” **“监控”** “站点恢复作业”下监控作业进度 >    >   。
+3. 在包含所选配置服务器详细信息的边栏选项卡上，单击“更多” > “刷新服务器”。
+4. 在“恢复服务保管库” > “监控” > “站点恢复作业”下监控作业进度。
 
 ## <a name="update-windows-license"></a>更新 Windows 许可证
 

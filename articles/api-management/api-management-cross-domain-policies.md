@@ -133,10 +133,10 @@ ms.locfileid: "79292916"
 |allowed-origins|包含的 `origin` 元素说明了跨域请求的允许来源。 `allowed-origins` 可能包含单个 `origin` 元素，该元素指定允许任何源的 `*`，或者包含一个或多个内含 URI 的 `origin` 元素。|是|空值|  
 |origin|值可以是允许所有源的 `*`，或者是用于指定单个源的 URI。 URI 必须包括方案、主机和端口。|是|如果 URI 中省略了端口，则端口 80 用于 HTTP，端口 443 用于 HTTPS。|  
 |allowed-methods|如果允许 GET 或 POST 之外的方法，则此元素是必需的。 包含 `method` 元素，用于指定支持的 HTTP 谓词。|否|如果此部分不存在，则支持 GET 和 POST。|  
-|method|指定 HTTP 谓词。|如果 `method` 部分存在，则至少一个 `allowed-methods` 元素是必需。|空值|  
+|method|指定 HTTP 谓词。|如果 `allowed-methods` 部分存在，则至少一个 `method` 元素是必需。|空值|  
 |allowed-headers|此元素包含 `header` 元素，用于指定可以包括在请求中的标头的名称。|否|空值|  
 |expose-headers|此元素包含 `header` 元素，用于指定可以通过客户端访问的标头的名称。|否|空值|  
-|标头的值开始缓存响应|指定标头名称。|如果节存在，则 `header` 或 `allowed-headers` 中至少一个 `expose-headers` 元素是必需。|空值|  
+|标头的值开始缓存响应|指定标头名称。|如果节存在，则 `allowed-headers` 或 `expose-headers` 中至少一个 `header` 元素是必需。|空值|  
   
 ### <a name="attributes"></a>属性  
   

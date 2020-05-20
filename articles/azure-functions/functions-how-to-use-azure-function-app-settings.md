@@ -112,7 +112,7 @@ Function App 运行于 Azure 应用服务平台，并由该平台维护。 在�
 
 ![配置 Kudu](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-kudu.png)
 
-应用服务的高级工具（也称为 Kudu）提供对 Function App 高级管理功能的访问。 从 Kudu 中，可以管理系统信息、应用设置、环境变量、站点扩展、HTTP 头和服务器变量。 也可以通过浏览到 Function App 的 SCM 终结点（如 **），启动 Kudu**`https://<myfunctionapp>.scm.chinacloudsites.cn/` 
+应用服务的高级工具（也称为 Kudu）提供对 Function App 高级管理功能的访问。 从 Kudu 中，可以管理系统信息、应用设置、环境变量、站点扩展、HTTP 头和服务器变量。 也可以通过浏览到 Function App 的 SCM 终结点（如 `https://<myfunctionapp>.scm.chinacloudsites.cn/`），启动 Kudu 
 
 
 ### <a name="deployment-center"></a><a name="deployment"></a>部署中心

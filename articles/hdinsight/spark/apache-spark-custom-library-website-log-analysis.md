@@ -77,7 +77,7 @@ HDInsight 上的 Apache Spark 群集。 有关说明，请参阅[在 Azure HDIns
     sc.addPyFile('wasbs:///HdiSamples/HdiSamples/WebsiteLogSampleData/iislogparser.py')
     ```
 
-1. 如果日志行是标题行，并且在遇到日志行时返回 `iislogparser` 类的实例，则 `parse_log_line` 提供返回 `None` 的函数 `LogLine`。 使用 `LogLine` 类从 RDD 中仅提取日志行：
+1. 如果日志行是标题行，并且在遇到日志行时返回 `LogLine` 类的实例，则 `iislogparser` 提供返回 `None` 的函数 `parse_log_line`。 使用 `LogLine` 类从 RDD 中仅提取日志行：
 
     ```pyspark
     def parse_line(l):
@@ -171,7 +171,7 @@ HDInsight 上的 Apache Spark 群集。 有关说明，请参阅[在 Azure HDIns
     SELECT * FROM AverageTime
     ```
 
-   后接 `%%sql` 的 `-o averagetime` magic 可确保查询输出本地保存在 Jupyter 服务器上（通常在群集的头结点）。 输出将作为 [Pandas](https://pandas.pydata.org/) 数据帧进行保存，指定名称为“averagetime”  。
+   后接 `-o averagetime` 的 `%%sql` magic 可确保查询输出本地保存在 Jupyter 服务器上（通常在群集的头结点）。 输出将作为 [Pandas](https://pandas.pydata.org/) 数据帧进行保存，指定名称为“averagetime”  。
 
    应该看到输出类似于下图：
 

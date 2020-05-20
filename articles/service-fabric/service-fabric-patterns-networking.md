@@ -101,7 +101,7 @@ DnsSettings              : {
         },*/
     ```
 
-2. 注释掉 `nicPrefixOverride` 的 `Microsoft.Compute/virtualMachineScaleSets` 属性，因为你使用的是现有子网，并且已在步骤 1 中禁用了此变量。
+2. 注释掉 `Microsoft.Compute/virtualMachineScaleSets` 的 `nicPrefixOverride` 属性，因为你使用的是现有子网，并且已在步骤 1 中禁用了此变量。
 
     ```json
     /*"nicPrefixOverride": "[parameters('subnet0Prefix')]",*/
@@ -144,7 +144,7 @@ DnsSettings              : {
     },*/
     ```
 
-5. 从 `dependsOn` 的 `Microsoft.Compute/virtualMachineScaleSets` 属性中注释掉虚拟网络，避免非得要创建新的虚拟网络：
+5. 从 `Microsoft.Compute/virtualMachineScaleSets` 的 `dependsOn` 属性中注释掉虚拟网络，避免非得要创建新的虚拟网络：
 
     ```json
     "apiVersion": "[variables('vmssApiVersion')]",
@@ -229,7 +229,7 @@ DnsSettings              : {
     }, */
     ```
 
-5. 从 `dependsOn` 的 `Microsoft.Network/loadBalancers` 属性中注释掉 IP 地址，避免非得要创建新的 IP 地址：
+5. 从 `Microsoft.Network/loadBalancers` 的 `dependsOn` 属性中注释掉 IP 地址，避免非得要创建新的 IP 地址：
 
     ```json
     "apiVersion": "[variables('lbIPApiVersion')]",
@@ -243,7 +243,7 @@ DnsSettings              : {
     "properties": {
     ```
 
-6. 在 `Microsoft.Network/loadBalancers` 资源中，将 `publicIPAddress` 的 `frontendIPConfigurations` 元素更改为引用现有的静态 IP 地址而不是新建的 IP 地址：
+6. 在 `Microsoft.Network/loadBalancers` 资源中，将 `frontendIPConfigurations` 的 `publicIPAddress` 元素更改为引用现有的静态 IP 地址而不是新建的 IP 地址：
 
     ```json
     "frontendIPConfigurations": [
@@ -327,7 +327,7 @@ DnsSettings              : {
     }, */
     ```
 
-4. 删除 `dependsOn` 的 IP 地址 `Microsoft.Network/loadBalancers` 属性，避免非得要创建新的 IP 地址。 添加虚拟网络 `dependsOn` 属性，因为负载均衡器现在依赖于虚拟网络中的子网：
+4. 删除 `Microsoft.Network/loadBalancers` 的 IP 地址 `dependsOn` 属性，避免非得要创建新的 IP 地址。 添加虚拟网络 `dependsOn` 属性，因为负载均衡器现在依赖于虚拟网络中的子网：
 
     ```json
     "apiVersion": "[variables('lbApiVersion')]",
@@ -572,7 +572,7 @@ DnsSettings              : {
     },
     ```
 
-6. 在 `networkProfile` 资源的 `Microsoft.Compute/virtualMachineScaleSets` 中，添加内部后端地址池：
+6. 在 `Microsoft.Compute/virtualMachineScaleSets` 资源的 `networkProfile` 中，添加内部后端地址池：
 
     ```json
     "loadBalancerBackendAddressPools": [

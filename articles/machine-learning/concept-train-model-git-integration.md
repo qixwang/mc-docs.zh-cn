@@ -74,7 +74,7 @@ Git 信息存储在训练运行的属性中。 可以使用 Azure 门户、Pytho
 1. 在 [Azure 门户](https://portal.azure.cn)中，选择工作区。
 1. 选择“试验”，然后选择一个试验  。
 1. 从“运行号”列中选择一个运行  。
-1. 选择“日志”，然后展开“日志”和“azureml”条目    。 选择以“ __###azure”开头的链接\___ 。
+1. 选择“日志”，然后展开“日志”和“azureml”条目    。 选择以“###\_azure”开头的链接。
 
     ![门户中的 ###_azure 条目](./media/concept-train-model-git-integration/azure-machine-learning-logs.png)
 

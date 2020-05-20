@@ -54,7 +54,7 @@ ms.locfileid: "74116886"
 
 5. 在安全的 VM 中，启动注册表编辑器 (regedit.exe)。
 
-6. 选择 HKEY_LOCAL_MACHINE 键，然后选择菜单中的“文件” **“加载配置单元”**   >   。
+6. 选择 HKEY_LOCAL_MACHINE 键，然后选择菜单中的“文件” > “加载配置单元”。
 
 7. 查找 \Windows\System32\config 文件夹中的系统文件  。
 

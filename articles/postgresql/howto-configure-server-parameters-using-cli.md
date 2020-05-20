@@ -26,21 +26,21 @@ ms.locfileid: "68732282"
 ## <a name="list-server-configuration-parameters-for-azure-database-for-postgresql-server"></a>列出 Azure Database for PostgreSQL 服务器的服务器配置参数
 若要列出服务器中的所有可修改参数及其值，请运行 [az postgres server configuration list](/cli/postgres/server/configuration) 命令。
 
-可以列出资源组“myresourcegroup”  下服务器 **mydemoserver.postgres.database.chinacloudapi.cn** 的服务器配置参数。
+可以列出资源组“myresourcegroup”下服务器 **mydemoserver.postgres.database.chinacloudapi.cn** 的服务器配置参数。
 ```azurecli
 az postgres server configuration list --resource-group myresourcegroup --server mydemoserver
 ```
 ## <a name="show-server-configuration-parameter-details"></a>显示服务器配置参数详细信息
 若要显示服务器的某个特定配置参数的详细信息，请运行 [az postgres server configuration show](/cli/postgres/server/configuration) 命令。
 
-本示例显示了资源组“myresourcegroup” **\_下服务器 \_mydemoserver.postgres.database.chinacloudapi.cn** 的服务器配置参数 **log**min**messages** 的详细信息。
+本示例显示了资源组“myresourcegroup”下服务器 **mydemoserver.postgres.database.chinacloudapi.cn** 的服务器配置参数 **log\_min\_messages** 的详细信息。
 ```azurecli
 az postgres server configuration show --name log_min_messages --resource-group myresourcegroup --server mydemoserver
 ```
 ## <a name="modify-server-configuration-parameter-value"></a>修改服务器配置参数值
 还可以修改某个服务器配置参数的值，这会更新 PostgreSQL 服务器引擎的基础配置值。 若要更新配置，请使用 [az postgres server configuration set](/cli/postgres/server/configuration) 命令。 
 
-更新资源组“myresourcegroup” **\_下服务器 \_mydemoserver.postgres.database.chinacloudapi.cn** 的服务器配置参数 **log**min**messages**。
+更新资源组“myresourcegroup”下服务器 **mydemoserver.postgres.database.chinacloudapi.cn** 的服务器配置参数 **log\_min\_messages**。
 ```azurecli
 az postgres server configuration set --name log_min_messages --resource-group myresourcegroup --server mydemoserver --value INFO
 ```

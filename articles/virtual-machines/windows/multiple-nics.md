@@ -29,7 +29,7 @@ Azure 中的虚拟机 (VM) 可附有多个虚拟网络接口卡 (NIC)。 一种�
 在以下示例中，请将示例参数名称替换为自己的值。 示例参数名称包括 *myResourceGroup*、*myVnet* 和 *myVM*。
 
 ## <a name="create-a-vm-with-multiple-nics"></a>创建具有多个 NIC 的 VM
-首先创建一个资源组。 以下示例在“chinaeast”  位置创建名为“myResourceGroup”  的资源组：
+首先创建一个资源组。 以下示例在“chinaeast”位置创建名为“myResourceGroup”的资源组：
 
 ```powershell
 New-AzResourceGroup -Name "myResourceGroup" -Location "chinaeast"
@@ -125,19 +125,19 @@ $myNic2 = New-AzNetworkInterface -ResourceGroupName "myResourceGroup" `
 ## <a name="add-a-nic-to-an-existing-vm"></a>向现有 VM 添加 NIC
 若要向现有 VM 添加虚拟 NIC，解除分配 VM，添加虚拟 NIC，然后启动 VM。 不同的 [VM 大小](sizes.md)支持不同数目的 NIC，因此请相应地调整 VM 的大小。 如果需要，可[调整 VM 的大小](resize-vm.md)。
 
-1. 通过 [Stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm) 解除分配 VM。 以下示例解除分配“myResourceGroup”中名为“myVM”的 VM   ：
+1. 通过 [Stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm) 解除分配 VM。 以下示例解除分配 *myResourceGroup* 中名为 *myVM* 的 VM：
 
     ```powershell
     Stop-AzVM -Name "myVM" -ResourceGroupName "myResourceGroup"
     ```
 
-2. 通过 [Get-AzVm](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) 获取 VM 的现有配置。 以下示例从“myResourceGroup”中获取名为“myVM”的信息   ：
+2. 通过 [Get-AzVm](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) 获取 VM 的现有配置。 以下示例从 *myResourceGroup* 中获取名为 *myVM* 的 VM 的信息：
 
     ```powershell
     $vm = Get-AzVm -Name "myVM" -ResourceGroupName "myResourceGroup"
     ```
 
-3. 以下示例通过 [New-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface) 创建附加到 *mySubnetBackEnd* 的名为 *myNic3* 的虚拟 NIC。 然后，通过 *Add-AzVMNetworkInterface* 将该虚拟 NIC 附加到 *myResourceGroup* 中名为 [myVM](https://docs.microsoft.com/powershell/module/az.compute/add-azvmnetworkinterface) 的 VM：
+3. 以下示例通过 [New-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface) 创建附加到 *mySubnetBackEnd* 的名为 *myNic3* 的虚拟 NIC。 然后，通过 [Add-AzVMNetworkInterface](https://docs.microsoft.com/powershell/module/az.compute/add-azvmnetworkinterface) 将该虚拟 NIC 附加到 *myResourceGroup* 中名为 *myVM* 的 VM：
 
     ```powershell
     # Get info for the back end subnet
@@ -181,13 +181,13 @@ $myNic2 = New-AzNetworkInterface -ResourceGroupName "myResourceGroup" `
 ## <a name="remove-a-nic-from-an-existing-vm"></a>从现有 VM 中删除 NIC
 若要从现有 VM 中删除虚拟 NIC，解除分配 VM，删除虚拟 NIC，然后启动 VM。
 
-1. 通过 [Stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm) 解除分配 VM。 以下示例解除分配“myResourceGroup”中名为“myVM”的 VM   ：
+1. 通过 [Stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm) 解除分配 VM。 以下示例解除分配 *myResourceGroup* 中名为 *myVM* 的 VM：
 
     ```powershell
     Stop-AzVM -Name "myVM" -ResourceGroupName "myResourceGroup"
     ```
 
-2. 通过 [Get-AzVm](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) 获取 VM 的现有配置。 以下示例从“myResourceGroup”中获取名为“myVM”的信息   ：
+2. 通过 [Get-AzVm](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) 获取 VM 的现有配置。 以下示例从 *myResourceGroup* 中获取名为 *myVM* 的 VM 的信息：
 
     ```powershell
     $vm = Get-AzVm -Name "myVM" -ResourceGroupName "myResourceGroup"
@@ -202,7 +202,7 @@ $myNic2 = New-AzNetworkInterface -ResourceGroupName "myResourceGroup" `
     $nicId = (Get-AzNetworkInterface -ResourceGroupName "myResourceGroup" -Name "myNic3").Id   
     ```
 
-4. 通过 [Remove-AzVMNetworkInterface](https://docs.microsoft.com/powershell/module/az.compute/remove-azvmnetworkinterface) 删除 NIC，然后通过 [Update-AzVm](https://docs.microsoft.com/powershell/module/az.compute/update-azvm) 更新 VM。 以下示例删除上一步中由  *获得的“myNic3”* `$nicId`：
+4. 通过 [Remove-AzVMNetworkInterface](https://docs.microsoft.com/powershell/module/az.compute/remove-azvmnetworkinterface) 删除 NIC，然后通过 [Update-AzVm](https://docs.microsoft.com/powershell/module/az.compute/update-azvm) 更新 VM。 以下示例删除上一步中由 `$nicId` 获得的“myNic3”：
 
     ```powershell
     Remove-AzVMNetworkInterface -VM $vm -NetworkInterfaceIDs $nicId | `
@@ -225,7 +225,7 @@ Azure 资源管理器模板可让你在部署期间创建资源的多个实例�
 }
 ```
 
-有关详细信息，请参阅[使用“copy”创建多个实例  ](../../resource-group-create-multiple.md)。 
+有关详细信息，请参阅[使用“copy”创建多个实例](../../resource-group-create-multiple.md)。 
 
 也可使用 `copyIndex()` 向资源名追加数字。 然后可创建“myNic1”、“MyNic2”等   。 以下代码显示了追加索引值的示例：
 

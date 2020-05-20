@@ -21,7 +21,7 @@ ms.locfileid: "78154813"
 # <a name="quickstart-using-nodejs-to-call-the-text-analytics-cognitive-service"></a>快速入门：使用 Node.js 调用文本分析认知服务  
 <a name="HOLTop"></a>
 
-本文展示了如何将[文本分析 API](#Detect)[与 Node.JS 配合使用来](#SentimentAnalysis)检测语言[、](#KeyPhraseExtraction)分析情绪[、](#Entities)提取关键短语 [以及](https://www.azure.cn/zh-cn/home/features/cognitive-services/text-analytics/)识别链接的实体 。
+本文展示了如何将 [文本分析 API](https://www.azure.cn/zh-cn/home/features/cognitive-services/text-analytics/) 与 Node.JS 配合使用来[检测语言](#Detect)、[分析情绪](#SentimentAnalysis)、[提取关键短语](#KeyPhraseExtraction)以及[识别链接的实体](#Entities)。
 
 有关 API 的技术文档，请参阅 [API 定义](https://dev.cognitive.azure.cn/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7)。
 

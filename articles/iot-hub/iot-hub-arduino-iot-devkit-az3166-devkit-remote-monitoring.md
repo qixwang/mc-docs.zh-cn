@@ -85,7 +85,7 @@ ms.locfileid: "63825714"
 
 ## <a name="provision-required-azure-services"></a>预配所需的 Azure 服务
 
-在解决方案窗口中，通过在提供的文本框中输入 `Ctrl+P` 并按 `Cmd+P` (macOS: `task cloud-provision`) 来运行任务：
+在解决方案窗口中，通过在提供的文本框中输入 `task cloud-provision` 并按 `Ctrl+P` (macOS: `Cmd+P`) 来运行任务：
 
 在 VS Code 终端中，交互式命令行指导你预配所需的 Azure 服务：
 

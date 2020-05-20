@@ -29,7 +29,7 @@ ms.locfileid: "77028341"
 1. 使用 GitHub 凭据登录 [GitHub 开发人员](https://github.com/settings/developers)网站。
 1. 选择  “OAuth 应用”，然后选择  “新建 OAuth 应用”。
 1. 输入**应用程序名称**和**主页 URL**。
-1. 在“授权回调 URL”`https://your-tenant-name.b2clogin.cn/your-tenant-name.partner.onmschina.cn/oauth2/authresp`**中输入** 。 将 `your-tenant-name` 替换为 Azure AD B2C 租户的名称。 输入租户名称时，全部使用小写字母，即使租户是使用大写字母在 Azure AD B2C 中定义的，也是如此。
+1. 在“授权回调 URL”中输入 `https://your-tenant-name.b2clogin.cn/your-tenant-name.partner.onmschina.cn/oauth2/authresp`。 将 `your-tenant-name` 替换为 Azure AD B2C 租户的名称。 输入租户名称时，全部使用小写字母，即使租户是使用大写字母在 Azure AD B2C 中定义的，也是如此。
 1. 单击“注册应用程序”。 
 1. 复制“客户端 ID”  和“客户端密钥”  的值。 将标识提供者添加到租户时需要这两个值。
 

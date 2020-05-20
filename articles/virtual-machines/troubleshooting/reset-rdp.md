@@ -78,7 +78,7 @@ ms.locfileid: "74116942"
 
 ### <a name="reset-the-remote-desktop-services-configuration"></a>**重置远程桌面服务配置**
 
-1. 使用 [Set-AzVMAccessExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmaccessextension) PowerShell cmdlet 重置对 VM 的远程访问。 以下示例在名为 `myVMAccess` 的资源组中名为 `myVM` 的 VM 上重置名为 `myResourceGroup` 的访问扩展：
+1. 使用 [Set-AzVMAccessExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmaccessextension) PowerShell cmdlet 重置对 VM 的远程访问。 以下示例在名为 `myResourceGroup` 的资源组中名为 `myVM` 的 VM 上重置名为 `myVMAccess` 的访问扩展：
 
     ```powershell
     Set-AzVMAccessExtension -ResourceGroupName "myResoureGroup" -VMName "myVM" -Name "myVMAccess" -Location ChinaNorth -typeHandlerVersion "2.0" -ForceRerun

@@ -94,7 +94,7 @@ az container logs --resource-group myResourceGroup --name mycontainer2
 
 在 PowerShell 中设置环境变量类似于在 CLI 中进行的相应操作，但需使用 `-EnvironmentVariable` 命令行参数。
 
-首先，使用此 [New-AzContainerGroup][aci-wordcount] 命令在默认配置中启动 [aci-wordcount][new-Azcontainergroup] 容器：
+首先，使用此 [New-AzContainerGroup][new-Azcontainergroup] 命令在默认配置中启动 [aci-wordcount][aci-wordcount] 容器：
 
 ```powershell
 New-AzContainerGroup `
@@ -103,7 +103,7 @@ New-AzContainerGroup `
     -Image mcr.microsoft.com/azuredocs/aci-wordcount:latest
 ```
 
-现在请运行以下 [New-AzContainerGroup][new-Azcontainergroup] 命令。 此命令在填充数组变量 *后指定*NumWords*和*MinLength`envVars` 环境变量：
+现在请运行以下 [New-AzContainerGroup][new-Azcontainergroup] 命令。 此命令在填充数组变量 `envVars` 后指定 *NumWords* 和 *MinLength* 环境变量：
 
 ```powershell
 $envVars = @{'NumWords'='5';'MinLength'='8'}
@@ -153,7 +153,7 @@ Azure:\
 在 Azure 门户中启动容器时，若要设置环境变量，请在创建容器时所在的“高级”页中指定它们。 
 
 1. 在“高级”页上将“重启策略”设置为“在故障时”   
-2. 在“环境变量”下，为第一个变量输入值为 **的**，并为第二个变量输入值为 `NumWords` 的 `5`。`MinLength``8` 
+2. 在“环境变量”下，为第一个变量输入值为 `5` 的 `NumWords`，并为第二个变量输入值为 `8` 的 `MinLength`。 
 1. 选择“查看 + 创建”进行验证，然后部署容器。 
 
 ![门户页，显示环境变量“启用”按钮和文本框][portal-env-vars-01]

@@ -16,7 +16,7 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 04/17/2020
 ms.locfileid: "70805748"
 ---
-1. 选择 Azure 门户左上角的“新建资源”按钮，然后选择“计算” > “Function App”。   
+1. 选择 Azure 门户左上角的“创建资源”按钮，然后选择“计算” > “函数应用”。
 
     ![在 Azure 门户中创建函数应用](./media/functions-create-function-app-portal/function-app-create-flow.png)
 

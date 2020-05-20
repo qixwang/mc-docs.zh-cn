@@ -63,7 +63,7 @@ az network lb create --resource-group myResourceGroup --name myILB --sku standar
 
 ### <a name="create-a-load-balancer-rule"></a>创建负载均衡器规则
 
-负载均衡器规则定义传入流量的前端 IP 配置和用于接收流量的后端 IP 池，以及所需源和目标端口。 使用 *az network lb rule create* 创建负载均衡器规则 [myHTTPRule](https://docs.azure.cn/cli/network/lb/rule?view=azure-cli-latest#az-network-lb-rule-create)，以便侦听前端池 *myFrontEnd* 中的端口 80，并且将经过负载均衡的网络流量发送到也使用端口 80 的后端地址池 *myBackEndPool*。 
+负载均衡器规则定义传入流量的前端 IP 配置和用于接收流量的后端 IP 池，以及所需源和目标端口。 使用 [az network lb rule create](https://docs.azure.cn/cli/network/lb/rule?view=azure-cli-latest#az-network-lb-rule-create) 创建负载均衡器规则 *myHTTPRule*，以便侦听前端池 *myFrontEnd* 中的端口 80，并且将经过负载均衡的网络流量发送到也使用端口 80 的后端地址池 *myBackEndPool*。 
 
 ```azurecli
   az network lb rule create \
@@ -111,7 +111,7 @@ az network private-link-service create \
 ## <a name="private-endpoints"></a>专用终结点
 
 ### <a name="create-the-virtual-network"></a>创建虚拟网络 
-使用  [az network vnet create](https://docs.azure.cn/cli/network/vnet?view=azure-cli-latest#az-network-vnet-create) 创建虚拟网络。 此示例在名为  *myResourcegroup* 的资源组中创建名为  myPEVNet  的虚拟网络： 
+使用  [az network vnet create](https://docs.azure.cn/cli/network/vnet?view=azure-cli-latest#az-network-vnet-create) 创建虚拟网络。 此示例在名为 *myResourcegroup* 的资源组中创建名为  *myPEVNet*  的虚拟网络： 
 ```azurecli
 az network vnet create \
 --resource-group myResourceGroup \
@@ -119,7 +119,7 @@ az network vnet create \
 --address-prefix 10.0.0.0/16  
 ```
 ### <a name="create-the-subnet"></a>创建子网 
-使用  [az network vnet subnet create](https://docs.azure.cn/cli/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-create) 在虚拟网络中创建子网。 此示例在资源组  *myResourcegroup* 中的虚拟网络  myPEVnet*中创建名为*mySubnet  的子网： 
+使用  [az network vnet subnet create](https://docs.azure.cn/cli/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-create) 在虚拟网络中创建子网。 此示例在资源组 *myResourcegroup* 中的虚拟网络 *myPEVnet* 中创建名为  *mySubnet*  的子网： 
 
 ```azurecli 
 az network vnet subnet create \
@@ -151,7 +151,7 @@ az network private-endpoint create \
 --connection-name myPEConnectingPLS \
 --location chinaeast2 
 ```
-可以在专用链接服务上使用  *获取 private-connection-resource-id*`az network private-link-service show`。 ID 将如下所示：   
+可以在专用链接服务上使用 `az network private-link-service show` 获取 private-connection-resource-id。 ID 将如下所示：   
 /subscriptions/subID/resourceGroups/*resourcegroupname*/providers/Microsoft.Network/privateLinkServices/**privatelinkservicename** 
 
 ## <a name="show-private-link-service-connections"></a>显示专用链接服务连接 

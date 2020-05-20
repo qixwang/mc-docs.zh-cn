@@ -119,7 +119,7 @@ az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientis
 
 ### <a name="q-what-are-the-permissions-needed-to-perform-various-actions-in-the-azure-machine-learning-service"></a>Q. 在 Azure 机器学习服务中执行各种操作需要哪些权限？
 
-下表汇总了 Azure 机器学习活动以及在最小作用域内执行它们所需的权限。 例如，如果可以使用工作区作用域（第 4 列）执行某个活动，则具有该权限的所有更高作用域也将自动工作。 此表中的所有路径都是相对于  **的**相对路径`Microsoft.MachineLearningServices/`。
+下表汇总了 Azure 机器学习活动以及在最小作用域内执行它们所需的权限。 例如，如果可以使用工作区作用域（第 4 列）执行某个活动，则具有该权限的所有更高作用域也将自动工作。 此表中的所有路径都是相对于 `Microsoft.MachineLearningServices/` 的**相对路径**。
 
 | 活动 | 订阅级作用域 | 资源组级作用域 | 工作区级作用域 |
 |---|---|---|---|

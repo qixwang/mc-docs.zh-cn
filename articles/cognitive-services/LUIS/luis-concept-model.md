@@ -50,7 +50,7 @@ LUIS 支持使用 V2 创作 API 的复合实体。 此功能提供类似的模�
 
 假设某个应用需要确定用户的预订意向，另一个应用需要客户的交货地址。 此应用具有两个意向：`OrderBook` 和 `ShippingLocation`。
 
-以下言语是  **意向的**积极示例`OrderBook`，以及 **和** 意向的`ShippingLocation`消极示例`None`： 
+以下言语是 `OrderBook` 意向的**积极示例**，以及 `ShippingLocation` 和 `None` 意向的**消极示例**： 
 
 `Buy the top-rated book on bot architecture.`
 

@@ -21,7 +21,7 @@ ms.locfileid: "75334628"
     #import "QSTodoService.h"
     ```
 
-2. 在 `didFinishLaunchingWithOptions`QSAppDelegate.m**中的** 内，紧靠在 `return YES;` 的前面插入以下行：
+2. 在 **QSAppDelegate.m** 中的 `didFinishLaunchingWithOptions` 内，紧靠在 `return YES;` 的前面插入以下行：
 
     ```objc
     UIUserNotificationSettings* notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
@@ -108,13 +108,13 @@ ms.locfileid: "75334628"
     }
     ```
 
-2. 在 **ToDoTableViewController.swift** 中，用以下行替换用于初始化 `let client` 的 `MSClient` 行：
+2. 在 **ToDoTableViewController.swift** 中，用以下行替换用于初始化 `MSClient` 的 `let client` 行：
 
     ```swift
     let client = ClientManager.sharedClient
     ```
 
-3. 在 **AppDelegate.swift** 中，如下所示替换 `func application` 的正文：
+3. 在 AppDelegate.swift 中，如下所示替换 `func application` 的正文：
 
     ```swift
     func application(application: UIApplication,

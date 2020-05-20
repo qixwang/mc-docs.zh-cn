@@ -37,7 +37,7 @@ ms.locfileid: "63856958"
 
 通过以下步骤从 Cassandra API 帐户查询数据：
 
-1. 打开 `UserRepository.java` 文件夹下的 `src\main\java\com\azure\cosmosdb\cassandra` 文件。 追加以下代码块。 此代码提供三种方法： 
+1. 打开 `src\main\java\com\azure\cosmosdb\cassandra` 文件夹下的 `UserRepository.java` 文件。 追加以下代码块。 此代码提供三种方法： 
 
    * 查询数据库中的所有用户
    * 查询按用户 ID 筛选的特定用户
@@ -78,7 +78,7 @@ ms.locfileid: "63856958"
    }
    ```
 
-2. 打开 `UserProfile.java` 文件夹下的 `src\main\java\com\azure\cosmosdb\cassandra` 文件。 此类包含调用你以前定义的插入数据方法 createKeyspace 和 createTable 的主方法。 现在追加查询所有用户或特定用户的以下代码：
+2. 打开 `src\main\java\com\azure\cosmosdb\cassandra` 文件夹下的 `UserProfile.java` 文件。 此类包含调用你以前定义的插入数据方法 createKeyspace 和 createTable 的主方法。 现在追加查询所有用户或特定用户的以下代码：
 
    ```java
    LOGGER.info("Select all users");

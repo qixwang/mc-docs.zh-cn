@@ -43,11 +43,11 @@ Function App 在 Azure 中托管函数的执行。 这是在函数应用设置�
 
 但前提是必须已将应用发布到 Azure。 若尚未执行此操作，[请将函数应用发布到 Azure ](functions-develop-vs.md#publish-to-azure)。
 
-1. 在解决方案资源管理器中，右键单击函数应用项目，选择“发布” **“编辑 Azure 应用服务设置”**  >   。 选择“添加设置”，在“新建应用设置名称”中键入 **然后选择“确认”**  `sqldb_connection` 。
+1. 在解决方案资源管理器中，右键单击函数应用项目，选择“发布” > “编辑 Azure 应用服务设置”。 选择“添加设置”，在“新建应用设置名称”中键入 **然后选择“确认”**  `sqldb_connection` 。
 
     ![函数应用的应用程序设置。](./media/functions-scenario-database-table-cleanup/functions-app-service-add-setting.png)
 
-1. 在新的“sqldb_connection”设置中，将上一部分复制的连接字符串粘贴到“本地”，并将 **和** 占位符替换为实际值  `{your_username}``{your_password}`。 选择“从本地插入值”以将更新值复制到“远程”字段，然后选择“确认”    。
+1. 在新的“sqldb_connection”设置中，将上一部分复制的连接字符串粘贴到“本地”，并将 `{your_username}` 和 `{your_password}` 占位符替换为实际值。 选择“从本地插入值”以将更新值复制到“远程”字段，然后选择“确认”    。
 
     ![添加 SQL 连接字符串设置。](./media/functions-scenario-database-table-cleanup/functions-app-service-settings-connection-string.png)
 
@@ -63,7 +63,7 @@ Function App 在 Azure 中托管函数的执行。 这是在函数应用设置�
 
 1. 转到“浏览”  选项卡，搜索 ```System.Data.SqlClient```，找到后将其选中。
 
-1. 在“System.Data.SqlClient”页面，选择版本 **，然后单击“安装”** `4.5.1` 。
+1. 在“System.Data.SqlClient”页面，选择版本 `4.5.1`，然后单击“安装”。
 
 1. 安装完成后，查看所做的更改，然后单击“确定”以关闭“预览”窗口。  
 
@@ -73,9 +73,9 @@ Function App 在 Azure 中托管函数的执行。 这是在函数应用设置�
 
 ## <a name="add-a-timer-triggered-function"></a>添加计时器触发的函数
 
-1. 在“解决方案资源管理器”中，右键单击函数应用项目，并选择“添加” **“新 Azure 函数”**  >   。
+1. 在“解决方案资源管理器”中，右键单击函数应用项目，并选择“添加” > “新 Azure 函数”。
 
-1. 选择“Azure Functions”模板后，请按照类似  **的格式命名新项目并选择“添加”** `DatabaseCleanup.cs` 。
+1. 选择“Azure Functions”模板后，请按照类似 `DatabaseCleanup.cs` 的格式命名新项目并选择“添加”。
 
 1. 在“新 Azure 函数”对话框中选择“计时器触发器”，然后选择“确认”    。 此对话框为定时器触发器函数创建代码文件。
 

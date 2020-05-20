@@ -127,13 +127,13 @@ Kafka SSL 代理设置按以下方式使用四个 HDInsight 群集 VM：
 若要完成配置修改，请按照以下步骤操作：
 
 1. 登录到 Azure 门户，并选择你的 Azure HDInsight Apache Kafka 群集。
-1. 单击**群集仪表板**下面的“Ambari 主页”转到 Ambari UI。 
-1. 在“Kafka 代理”下，将 **listeners** 属性设置为  `PLAINTEXT://localhost:9092,SSL://localhost:9093`
-1. 在“高级 kafka-broker”下，将 **security.inter.broker.protocol** 属性设置为  `SSL`
+1. 单击**群集仪表板**下面的“Ambari 主页”转到 Ambari UI。
+1. 在“Kafka 代理”下，将 **listeners** 属性设置为 `PLAINTEXT://localhost:9092,SSL://localhost:9093`
+1. 在“高级 kafka-broker”下，将 **security.inter.broker.protocol** 属性设置为 `SSL`
 
     ![在 Ambari 中编辑 Kafka ssl 配置属性](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-ambari.png)
 
-1. 在“自定义 kafka-broker”下，将 **ssl.client.auth** 属性设置为 **。** `required` 仅当同时设置了身份验证和加密时，才需要执行此步骤。
+1. 在“自定义 kafka-broker”下，将 **ssl.client.auth** 属性设置为 `required`。 仅当同时设置了身份验证和加密时，才需要执行此步骤。
 
     ![在 Ambari 中编辑 kafka ssl 配置属性](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-ambari2.png)
 

@@ -61,7 +61,7 @@ ms.locfileid: "74838616"
 
 - 确保使用最新版本的 Azure 备份代理。
 - 确保在 Data Protection Manager 服务器与受保护服务器之间建立连接（网络/防火墙/代理）。
-- 若要保护 SQL 服务器，请确保“登录属性” **“NT AUTHORITY\SYSTEM”属性显示已启用“sysadmin”设置。**  >   
+- 若要保护 SQL 服务器，请确保“登录属性” > “NT AUTHORITY\SYSTEM”属性显示已启用“sysadmin”设置。
 
 ## <a name="error-server-not-registered-as-specified-in-vault-credential-file"></a>错误：未根据保管库凭据文件中的指定注册服务器
 

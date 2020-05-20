@@ -112,7 +112,7 @@ FROM AnomalyDetectionStep
 * **历史记录大小** - 这些模型的性能与**历史记录大小**呈线性关系。 历史记录越长，模型为新事件评分所需的时间就越长。 这是因为，这些模型会将新事件与历史缓冲区中的每个以往事件进行比较。
 * **窗口持续时间** - **窗口持续时间**应反映接收历史记录大小指定的事件数所花费的时间。 如果窗口中没有这么多事件，Azure 流分析会插补缺失值。 因此，CPU 消耗量取决于历史记录大小。
 * **事件负载** - **事件负载**越大，模型执行的工作就越多，因而会影响 CPU 消耗量。 假设易并行有利于业务逻辑利用更多的输入分区，则可以通过易并行来横向扩展作业。
-* **函数级分区**  -  可以通过在异常情况检测函数调用中使用 ```PARTITION BY``` 来执行**函数级分区**。 此类分区会增大开销，因为需要同时保留多个模型的状态。 函数级分区在设备级分区等方案中使用。
+* **函数级分区** -  可以通过在异常情况检测函数调用中使用 ```PARTITION BY``` 来执行**函数级分区**。 此类分区会增大开销，因为需要同时保留多个模型的状态。 函数级分区在设备级分区等方案中使用。
 
 ### <a name="relationship"></a>关系
 历史记录大小、窗口持续时间和总事件负载之间的关系如下：
@@ -147,7 +147,7 @@ Azure 示例[大规模流式处理存储库](https://github.com/Azure-Samples/st
 > 若要获得更准确的估算值，请根据具体的方案自定义示例。
 
 ### <a name="identifying-bottlenecks"></a>识别瓶颈
-使用 Azure 流分析作业中的“指标”窗格可识别管道中的瓶颈。 查看针对吞吐量的“输入/输出事件”，以及[“水印延迟”](https://azure.microsoft.com/blog/new-metric-in-azure-stream-analytics-tracks-latency-of-your-streaming-pipeline/)或“积压事件”，可以确定作业是否跟得上输入速率。   对于事件中心指标，请查看“受限制的请求数”并相应地调整阈值单位。  对于 Cosmos DB 指标，请查看“吞吐量”下的“每个分区键范围的最大 RU/秒消耗量”，以确保均匀消耗分区键范围。  对于 Azure SQL 数据库，请监视“日志 IO”和“CPU”。  
+使用 Azure 流分析作业中的“指标”窗格可识别管道中的瓶颈。 查看针对吞吐量的“输入/输出事件”，以及[“水印延迟”](https://azure.microsoft.com/blog/new-metric-in-azure-stream-analytics-tracks-latency-of-your-streaming-pipeline/)或“积压事件”，可以确定作业是否跟得上输入速率。 对于事件中心指标，请查看“受限制的请求数”并相应地调整阈值单位。  对于 Cosmos DB 指标，请查看“吞吐量”下的“每个分区键范围的最大 RU/秒消耗量”，以确保均匀消耗分区键范围。  对于 Azure SQL 数据库，请监视“日志 IO”和“CPU”。  
 
 ## <a name="anomaly-detection-using-machine-learning-in-azure-stream-analytics"></a>使用 Azure 流分析中的机器学习进行异常情况检测
 

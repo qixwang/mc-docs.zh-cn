@@ -83,7 +83,7 @@ IoT Edge 设备将发送 HTTPS 请求以与 IoT 中心进行通信。 如果设�
    . {Invoke-WebRequest -proxy <proxy URL> -useb aka.ms/iotedge-win} | Invoke-Expression; Initialize-IoTEdge
    ```
 
-如果拥有不能包含在 URL 中的复杂代理服务器凭据，请使用 `-ProxyCredential` 中的 `-InvokeWebRequestParameters` 参数。 例如，
+如果拥有不能包含在 URL 中的复杂代理服务器凭据，请使用 `-InvokeWebRequestParameters` 中的 `-ProxyCredential` 参数。 例如，
 
 ```powershell
 $proxyCredential = (Get-Credential).GetNetworkCredential()

@@ -90,7 +90,7 @@ provisioningState       : Succeeded
 
 ## <a name="enable-using-terraform"></a>使用 Terraform
 
-1. 将 oms_agent 附加配置文件添加到现有 [azurerm_kubernetes_cluster](https://www.terraform.io/docs/providers/azurerm/d/kubernetes_cluster.html#addon_profile) 资源 
+1. 将 oms_agent 附加配置文件添加到现有 [azurerm_kubernetes_cluster](https://www.terraform.io/docs/providers/azurerm/d/kubernetes_cluster.html#addon_profile) 资源
 
    ```
    addon_profile {

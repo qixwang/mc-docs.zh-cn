@@ -41,7 +41,7 @@ ms.locfileid: "76165433"
 
     ![资源管理器模板 - 右键单击以创建部署](./media/create-templates-use-intellij/resource-manager-create-deployment-right-click.png)
 
-1. 配置“部署名称”、“订阅”、“资源组”和“区域”。     此处，我们要将模板部署到新资源组 `testRG`。 然后，选择  **作为**资源模板`azuredeploy.json`的路径，并选择下载的  **作为**资源参数`azuredeploy.parameters.json`。
+1. 配置“部署名称”、“订阅”、“资源组”和“区域”。     此处，我们要将模板部署到新资源组 `testRG`。 然后，选择 `azuredeploy.json` 作为**资源模板**的路径，并选择下载的 `azuredeploy.parameters.json` 作为**资源参数**。
 
     ![资源管理器模板 - 选择用于创建部署的文件](./media/create-templates-use-intellij/resource-manager-create-deployment-select-files.png)
 

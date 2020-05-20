@@ -135,7 +135,7 @@ Microsoft 的 TDSP 团队发布了两篇端到端演练，介绍如何在 SQL Se
 
 1. 复制整个 SSH 密钥，包括 *ssh-rsa*。 
 1. 登录到 Azure DevOps Services。 
-1. 单击页面右上角的“<你的姓名 **”，再单击“安全性”。\>**  
+1. 单击页面右上角的“<你的姓名\>”，再单击“安全性”。 
     
    ![单击你的姓名，再单击“安全性”](./media/platforms-and-tools/resources-2-user-setting.png)
 

@@ -67,7 +67,7 @@ REST API 版本 2019-05-06 包含某些针对早期版本进行的更改。 这�
 
 * 当 API 响应中返回无法识别的属性时，代码失效。 默认情况下，应用程序应忽略无法理解的属性。
 
-* 代码仍坚持 API 请求，并尝试将其重新发送到新 API 版本。 例如，如果应用程序仍存留从搜索 API 返回的延续标记（有关详细信息，请查找`@search.nextPageParameters`搜索 API 参考[中的 ](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)）。
+* 代码仍坚持 API 请求，并尝试将其重新发送到新 API 版本。 例如，如果应用程序仍存留从搜索 API 返回的延续标记（有关详细信息，请查找[搜索 API 参考](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)中的 `@search.nextPageParameters`）。
 
 如果任一种情况适用，都可能需要更改相应代码。 否则，如果不是要开始使用版本 2019-05-06 的[新功能](#WhatsNew)，便无需进行任何更改。
 

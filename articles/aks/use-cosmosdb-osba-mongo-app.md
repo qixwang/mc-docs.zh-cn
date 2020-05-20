@@ -33,7 +33,7 @@ Azure Cosmos DB 是一种全球分布式多模型数据库服务。 它还提供
 
 * 创建 [Azure Kubernetes 服务群集](kubernetes-walkthrough.md)。
 * [在 AKS 群集上安装并配置 Open Service Broker for Azure](integrate-azure.md)。 
-* 安装并配置运行 [ 命令所需的](https://svc-cat.io/docs/install/)服务目录 CLI`svcat`。
+* 安装并配置运行 `svcat` 命令所需的[服务目录 CLI](https://svc-cat.io/docs/install/)。
 * 有一个现有的 [MongoDB](https://www.mongodb.com/) 数据库。 例如，可以让 MongoDB 在[开发计算机](https://docs.mongodb.com/manual/administration/install-community/)上或 [Azure VM](../virtual-machines/linux/install-mongodb.md) 中运行。
 * 通过某种方式（例如 [mongo shell](https://docs.mongodb.com/manual/mongo/)）连接到 MongoDB 数据库并对其进行查询。
 

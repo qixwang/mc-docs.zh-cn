@@ -85,7 +85,7 @@ Site Recovery 门户中提供了配置服务器安装文件的最新版本。 �
 
 11. 在“摘要”中复查信息，并单击“安装”。   安装完成后，将生成通行短语。 启用复制时需要用到它，因此请复制并将它保存在安全的位置。
 
-注册完成后，服务器会显示在保管库的“设置”   > “服务器”  边栏选项卡中。
+注册完成后，服务器将显示在保管库的“设置” > “服务器”边栏选项卡中。
 
 ## <a name="install-from-the-command-line"></a>从命令行安装
 
@@ -234,7 +234,7 @@ ProxyPassword="Password"
 > 3. [删除](vmware-azure-manage-vcenter.md#delete-a-vcenter-server)所有与配置服务器关联的 vCenters 服务器/vSphere 主机。
 
 ### <a name="delete-the-configuration-server-from-azure-portal"></a>从 Azure 门户中删除配置服务器
-1. 在 Azure 门户中，从“保管库”菜单浏览到“Site Recovery 基础结构” **“配置服务器”。**  >  
+1. 在 Azure 门户中，从“保管库”菜单浏览到“Site Recovery 基础结构” > “配置服务器”。
 2. 单击想要解除的配置服务器。
 3. 在配置服务器的详细信息页中，单击“删除”按钮。 
 4. 单击“是”确认删除该服务器。 

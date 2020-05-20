@@ -331,7 +331,7 @@ Node.js 应用程序将读取 `SQLCONNSTR_MS_TableConnectionString` 环境变量
 
 ### <a name="configure-your-project-for-local-development"></a><a name="howto-config-localdev"></a>配置项目以进行本地开发
 
-移动应用从本地文件系统读取名为 *azureMobile.js* 的 JavaScript 文件。 不要使用此文件在生产环境中配置移动应用 SDK。 请改用 [Azure 门户]中的“应用设置”  。
+移动应用从本地文件系统读取名为 *azureMobile.js* 的 JavaScript 文件。 不要使用此文件在生产环境中配置移动应用 SDK。 请改用 [Azure 门户]中的“应用设置”。
 
 azureMobile.js 文件应导出配置对象。 最常见的设置如下：
 
@@ -359,7 +359,7 @@ module.exports = {
 };
 ```
 
-建议将 azureMobile.js 添加到 .gitignore 文件（或其他源代码管理 ignore 文件），防止将密码存储在云中   。 始终在 [Azure 门户]中的“应用设置”内配置生产设置  。
+建议将 azureMobile.js 添加到 .gitignore 文件（或其他源代码管理 ignore 文件），防止将密码存储在云中   。 始终在 [Azure 门户]中的“应用设置”内配置生产设置。
 
 ### <a name="configure-app-settings-for-your-mobile-app"></a><a name="howto-appsettings"></a>配置移动应用的应用设置
 

@@ -204,7 +204,7 @@ Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSett
 Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSetting $setting -StagingAreaPath "C:\StagingArea"
 ```
 
-在上述示例中，过渡区域会在 PowerShell 对象 *中设置为*C:\StagingArea```$setting```。 请确保指定的文件夹已存在，否则订阅设置的最终提交会失败。
+在上述示例中，过渡区域会在 PowerShell 对象 ```$setting``` 中设置为 *C:\StagingArea*。 请确保指定的文件夹已存在，否则订阅设置的最终提交会失败。
 
 ### <a name="encryption-settings"></a>加密设置
 发送到 Azure 备份的备份数据会加密，以保护数据的机密性。 加密通行短语是在还原时用于解密数据的“密码”。 必须妥善保管设置好的通行短语，并保证其安全。
@@ -243,7 +243,7 @@ Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSett
 $PG = New-DPMProtectionGroup -DPMServerName " TestingServer " -Name "ProtectGroup01"
 ```
 
-上述 cmdlet 将创建名为 *ProtectGroup01* 的保护组。 也可以稍后修改现有的保护组，以将备份添加到 Azure 云中。 不过，若要对保护组（新的或现有的）进行任何更改，我们需要使用 *Get-DPMModifiableProtectionGroup* cmdlet 来获取 [modifiable](https://technet.microsoft.com/library/hh881713) 对象上的句柄。
+上述 cmdlet 将创建名为 *ProtectGroup01* 的保护组。 也可以稍后修改现有的保护组，以将备份添加到 Azure 云中。 不过，若要对保护组（新的或现有的）进行任何更改，我们需要使用 [Get-DPMModifiableProtectionGroup](https://technet.microsoft.com/library/hh881713) cmdlet 来获取 *modifiable* 对象上的句柄。
 
 ```powershell
 $MPG = Get-ModifiableProtectionGroup $PG
@@ -264,7 +264,7 @@ $MPG = Get-ModifiableProtectionGroup $PG
 $server = Get-ProductionServer -DPMServerName "TestingServer" | Where-Object {($_.servername) –contains "productionserver01"}
 ```
 
-现在使用 ```$server```Get-DPMDatasource[ cmdlet 获取 ](https://technet.microsoft.com/library/hh881605) 上的数据源列表。 在本示例中，我们筛选要为备份配置的卷 *D:\\* 。 然后，使用 [Add-DPMChildDatasource](https://technet.microsoft.com/library/hh881732) cmdlet 将此数据源添加到保护组。 请记得使用可修改的  保护组对象 ```$MPG``` 来完成添加。
+现在使用 [Get-DPMDatasource](https://technet.microsoft.com/library/hh881605) cmdlet 获取 ```$server``` 上的数据源列表。 在本示例中，我们筛选要为备份配置的卷 *D:\\* 。 然后，使用 [Add-DPMChildDatasource](https://technet.microsoft.com/library/hh881732) cmdlet 将此数据源添加到保护组。 请记得使用可修改的  保护组对象 ```$MPG``` 来完成添加。
 
 ```powershell
 $DS = Get-Datasource -ProductionServer $server -Inquire | Where-Object { $_.Name -contains "D:\" }

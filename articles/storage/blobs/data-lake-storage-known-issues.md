@@ -99,7 +99,7 @@ Azure 存储资源管理器 1.10.x 不能用于查看诊断日志。 若要查�
 
 ## <a name="azure-storage-explorer"></a>Azure 存储资源管理器
 
-只使用 `1.6.0` 或更高版本。当前存在影响版本 `1.11.0` 的存储 Bug，在某些情况下可能会导致身份验证错误。 即将推出存储 bug 的修补程序，但我们建议你使用可供`1.10.x`免费下载[的版本 ](/vs-azure-tools-storage-explorer-relnotes) 作为一种解决方法。 `1.10.x` 不受存储 Bug 的影响。
+只使用 `1.6.0` 或更高版本。当前存在影响版本 `1.11.0` 的存储 Bug，在某些情况下可能会导致身份验证错误。 即将推出存储 bug 的修补程序，但我们建议你使用可供[免费下载](/vs-azure-tools-storage-explorer-relnotes)的版本 `1.10.x` 作为一种解决方法。 `1.10.x` 不受存储 Bug 的影响。
 
 <a id="third-party-apps" />
 

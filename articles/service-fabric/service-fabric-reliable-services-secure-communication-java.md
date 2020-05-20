@@ -24,7 +24,7 @@ ms.locfileid: "77541057"
 
 若要在 Java 服务中使用服务远程处理时帮助保护服务，请遵循以下步骤：
 
-1. 创建接口 `HelloWorldStateless`，用于定义可供服务的远程过程调用使用的方法。 服务将使用 `FabricTransportServiceRemotingListener` 包中声明的 `microsoft.serviceFabric.services.remoting.fabricTransport.runtime`。 这是可以提供远程处理功能的 `CommunicationListener` 实现。
+1. 创建接口 `HelloWorldStateless`，用于定义可供服务的远程过程调用使用的方法。 服务将使用 `microsoft.serviceFabric.services.remoting.fabricTransport.runtime` 包中声明的 `FabricTransportServiceRemotingListener`。 这是可以提供远程处理功能的 `CommunicationListener` 实现。
 
     ```java
     public interface HelloWorldStateless extends Service {

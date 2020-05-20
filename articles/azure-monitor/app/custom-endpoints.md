@@ -57,7 +57,7 @@ ms.locfileid: "78850440"
   }
 ```
 
-实时指标和配置文件查询终结点的值只能通过代码设置。 若要通过代码替代所有终结点值的默认值，请在 `ConfigureServices` 文件的 `Startup.cs` 方法中进行以下更改：
+实时指标和配置文件查询终结点的值只能通过代码设置。 若要通过代码替代所有终结点值的默认值，请在 `Startup.cs` 文件的 `ConfigureServices` 方法中进行以下更改：
 
 ```csharp
 using Microsoft.ApplicationInsights.Extensibility.Implementation.ApplicationId;

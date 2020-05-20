@@ -99,7 +99,7 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制 Blob 
 
 #### <a name="specify-multiple-complete-file-names"></a>指定多个完整文件名
 
-结合 [ 选项使用 ](storage-ref-azcopy-copy.md)azcopy copy`--include-path` 命令。 使用分号 (`;`) 分隔各个文件名。
+结合 `--include-path` 选项使用 [azcopy copy](storage-ref-azcopy-copy.md) 命令。 使用分号 (`;`) 分隔各个文件名。
 
 |    |     |
 |--------|-----------|
@@ -112,7 +112,7 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制 Blob 
 
 #### <a name="use-wildcard-characters"></a>使用通配符
 
-结合 [ 选项使用 ](storage-ref-azcopy-copy.md)azcopy copy`--include-pattern` 命令。 指定包含通配符的部分名称。 使用分号 (`;`) 分隔名称。
+结合 `--include-pattern` 选项使用 [azcopy copy](storage-ref-azcopy-copy.md) 命令。 指定包含通配符的部分名称。 使用分号 (`;`) 分隔名称。
 
 |    |     |
 |--------|-----------|
@@ -177,7 +177,7 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制 Blob 
 
 #### <a name="specify-multiple-complete-file-names"></a>指定多个完整文件名
 
-结合 [ 选项使用 ](storage-ref-azcopy-copy.md)azcopy copy`--include-path` 命令。 使用分号 (`;`) 分隔各个文件名。
+结合 `--include-path` 选项使用 [azcopy copy](storage-ref-azcopy-copy.md) 命令。 使用分号 (`;`) 分隔各个文件名。
 
 |    |     |
 |--------|-----------|
@@ -190,7 +190,7 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制 Blob 
 
 #### <a name="use-wildcard-characters"></a>使用通配符
 
-结合 [ 选项使用 ](storage-ref-azcopy-copy.md)azcopy copy`--include-pattern` 命令。 指定包含通配符的部分名称。 使用分号 (`;`) 分隔名称。
+结合 `--include-pattern` 选项使用 [azcopy copy](storage-ref-azcopy-copy.md) 命令。 指定包含通配符的部分名称。 使用分号 (`;`) 分隔名称。
 
 |    |     |
 |--------|-----------|

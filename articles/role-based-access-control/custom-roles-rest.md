@@ -128,7 +128,7 @@ ms.locfileid: "80581678"
 
 ## <a name="create-a-custom-role"></a>创建自定义角色
 
-若要创建自定义角色，请使用[角色定义 - 创建或更新](https://docs.microsoft.com/rest/api/authorization/roledefinitions/createorupdate) REST API。 若要调用此 API，登录时使用的用户必须分配有一个角色，该角色在所有 `Microsoft.Authorization/roleDefinitions/write` 上具有 `assignableScopes` 权限。 在内置角色中，只有[所有者](built-in-roles.md#owner)和[用户访问管理员](built-in-roles.md#user-access-administrator)包含此权限。
+若要创建自定义角色，请使用[角色定义 - 创建或更新](https://docs.microsoft.com/rest/api/authorization/roledefinitions/createorupdate) REST API。 若要调用此 API，登录时使用的用户必须分配有一个角色，该角色在所有 `assignableScopes` 上具有 `Microsoft.Authorization/roleDefinitions/write` 权限。 在内置角色中，只有[所有者](built-in-roles.md#owner)和[用户访问管理员](built-in-roles.md#user-access-administrator)包含此权限。
 
 1. 查看可用来为自定义角色创建权限的[资源提供程序操作](resource-provider-operations.md)列表。
 
@@ -227,7 +227,7 @@ ms.locfileid: "80581678"
 
 ## <a name="update-a-custom-role"></a>更新自定义角色
 
-若要更新自定义角色，请使用[角色定义 - 创建或更新](https://docs.microsoft.com/rest/api/authorization/roledefinitions/createorupdate) REST API。 若要调用此 API，登录时使用的用户必须分配有一个角色，该角色在所有 `Microsoft.Authorization/roleDefinitions/write` 上具有 `assignableScopes` 权限。 在内置角色中，只有[所有者](built-in-roles.md#owner)和[用户访问管理员](built-in-roles.md#user-access-administrator)包含此权限。
+若要更新自定义角色，请使用[角色定义 - 创建或更新](https://docs.microsoft.com/rest/api/authorization/roledefinitions/createorupdate) REST API。 若要调用此 API，登录时使用的用户必须分配有一个角色，该角色在所有 `assignableScopes` 上具有 `Microsoft.Authorization/roleDefinitions/write` 权限。 在内置角色中，只有[所有者](built-in-roles.md#owner)和[用户访问管理员](built-in-roles.md#user-access-administrator)包含此权限。
 
 1. 使用[角色定义 - 列出](https://docs.microsoft.com/rest/api/authorization/roledefinitions/list)或[角色定义 - 获取](https://docs.microsoft.com/rest/api/authorization/roledefinitions/get) REST API 获取有关自定义角色的信息。 有关详细信息，请参阅前面的[列出自定义角色](#list-custom-roles)部分。
 
@@ -317,7 +317,7 @@ ms.locfileid: "80581678"
 
 ## <a name="delete-a-custom-role"></a>删除自定义角色
 
-若要删除自定义角色，请使用[角色定义 - 删除](https://docs.microsoft.com/rest/api/authorization/roledefinitions/delete) REST API。 若要调用此 API，登录时使用的用户必须分配有一个角色，该角色在所有 `Microsoft.Authorization/roleDefinitions/delete` 上具有 `assignableScopes` 权限。 在内置角色中，只有[所有者](built-in-roles.md#owner)和[用户访问管理员](built-in-roles.md#user-access-administrator)包含此权限。
+若要删除自定义角色，请使用[角色定义 - 删除](https://docs.microsoft.com/rest/api/authorization/roledefinitions/delete) REST API。 若要调用此 API，登录时使用的用户必须分配有一个角色，该角色在所有 `assignableScopes` 上具有 `Microsoft.Authorization/roleDefinitions/delete` 权限。 在内置角色中，只有[所有者](built-in-roles.md#owner)和[用户访问管理员](built-in-roles.md#user-access-administrator)包含此权限。
 
 1. 使用[角色定义 - 列出](https://docs.microsoft.com/rest/api/authorization/roledefinitions/list)或[角色定义 - 获取](https://docs.microsoft.com/rest/api/authorization/roledefinitions/get) REST API 获取自定义角色的 GUID 标识符。 有关详细信息，请参阅前面的[列出自定义角色](#list-custom-roles)部分。
 

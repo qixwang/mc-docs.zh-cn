@@ -40,7 +40,7 @@ java.util.logging.FileHandler.count = 10
 java.util.logging.FileHandler.pattern = /tmp/servicefabric/logs/mysfapp%u.%g.log
 ```
 
-`app.properties` 文件指向的文件夹必须存在。 创建 `app.properties` 文件后，还需要修改 `entrypoint.sh` 文件夹中的入口点脚本 `<applicationfolder>/<servicePkg>/Code/`，将属性 `java.util.logging.config.file` 设置为 `app.properties` 文件。 该入口点应如以下代码片段中所示：
+`app.properties` 文件指向的文件夹必须存在。 创建 `app.properties` 文件后，还需要修改 `<applicationfolder>/<servicePkg>/Code/` 文件夹中的入口点脚本 `entrypoint.sh`，将属性 `java.util.logging.config.file` 设置为 `app.properties` 文件。 该入口点应如以下代码片段中所示：
 
 ```sh
 java -Djava.library.path=$LD_LIBRARY_PATH -Djava.util.logging.config.file=<path to app.properties> -jar <service name>.jar

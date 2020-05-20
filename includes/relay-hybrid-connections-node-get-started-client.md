@@ -15,7 +15,7 @@ ms.locfileid: "63860535"
 从项目文件夹中的 Node 命令提示符运行 `npm install hyco-ws`。
 
 ### <a name="write-some-code-to-send-messages"></a>编写一些代码来发送消息
-1. 在 `constants` 文件的顶部，添加以下`sender.js`。
+1. 在 `sender.js` 文件的顶部，添加以下`constants`。
    
     ```js
     const WebSocket = require('hyco-ws');

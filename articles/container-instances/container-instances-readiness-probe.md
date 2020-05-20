@@ -63,7 +63,7 @@ type: Microsoft.ContainerInstance/containerGroups
 
 ### <a name="start-command"></a>启动命令
 
-YAML 文件包括了在容器启动时要运行的启动命令（由接受字符串数组的 `command` 属性定义）。 此命令模拟当 Web 应用运行但容器未准备就绪时的时间。 首先，它启动一个 shell 会话并运行 `node` 命令来启动 Web 应用。 它还启动一个命令来休眠 240 秒，经过此时间后，它将在 `ready` 目录中创建一个名为 `/tmp` 的文件：
+YAML 文件包括了在容器启动时要运行的启动命令（由接受字符串数组的 `command` 属性定义）。 此命令模拟当 Web 应用运行但容器未准备就绪时的时间。 首先，它启动一个 shell 会话并运行 `node` 命令来启动 Web 应用。 它还启动一个命令来休眠 240 秒，经过此时间后，它将在 `/tmp` 目录中创建一个名为 `ready` 的文件：
 
 ```console
 node /usr/src/app/index.js & (sleep 240; touch /tmp/ready); wait
@@ -71,7 +71,7 @@ node /usr/src/app/index.js & (sleep 240; touch /tmp/ready); wait
 
 ### <a name="readiness-command"></a>就绪情况命令
 
-此 YAML 文件定义了一个 `readinessProbe`，它支持执行就绪情况检查的 `exec` 就绪情况命令。 此示例就绪情况命令测试 `ready` 目录中是否存在 `/tmp` 文件。
+此 YAML 文件定义了一个 `readinessProbe`，它支持执行就绪情况检查的 `exec` 就绪情况命令。 此示例就绪情况命令测试 `/tmp` 目录中是否存在 `ready` 文件。
 
 如果 `ready` 文件不存在，则就绪情况命令将以非零值退出；容器将继续运行，但无法访问。 当命令成功退出且退出代码为 0 时，容器就绪可供访问。 
 

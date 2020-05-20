@@ -138,7 +138,7 @@ Sqoop 是一种为在 Hadoop 和关系数据库之间传输数据而设计的工
 
 **原因**：写入 Azure 存储时，HDInsight 群集上的 HBase 的块大小将默认为 256KB。 尽管这对 HBase API 或 REST API 来说可良好运行，但使用 `hadoop` 或 `hdfs dfs` 命令行实用工具时则会导致错误。
 
-**解决方法**：使用 `fs.azure.write.request.size` 指定更大的块大小。 可以通过 `-D` 参数在每次使用时执行此操作。 以下命令是将此参数用于 `hadoop` 命令的示例：
+解决方法：使用 `fs.azure.write.request.size` 指定更大的块大小。 可以通过 `-D` 参数在每次使用时执行此操作。 以下命令是将此参数用于 `hadoop` 命令的示例：
 
 ```bash
 hadoop -fs -D fs.azure.write.request.size=4194304 -copyFromLocal test_large_file.bin /example/data
@@ -150,7 +150,7 @@ hadoop -fs -D fs.azure.write.request.size=4194304 -copyFromLocal test_large_file
 
     出现提示时，输入群集的管理员名称和密码。
 2. 在屏幕左侧选择“HDFS”  ，并选择“配置”  选项卡。
-3. 在“筛选...”  字段中输入 `fs.azure.write.request.size`。 这会在页面中间显示字段和当前值。
+3. 在“筛选...”字段中输入 `fs.azure.write.request.size`。 这会在页面中间显示字段和当前值。
 4. 将值从 262144 (256KB) 更改为新的值。 例如，4194304 (4MB)。
 
 ![通过 Ambari Web UI 更改值的图像](./media/hdinsight-upload-data/hbase-change-block-write-size.png)

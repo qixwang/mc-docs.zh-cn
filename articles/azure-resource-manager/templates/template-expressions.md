@@ -75,7 +75,7 @@ Azure 资源管理器提供了可在模板中使用的[函数](template-function
 
 ## <a name="null-values"></a>Null 值
 
-若要将属性设置为 null，可以使用 **null** 或 **[json('null')]** 。 将 [ 作为参数提供时，](template-functions-array.md#json)json 函数`null`返回空对象。 在这两种情况下，资源管理器模板都会按照属性不存在的情况进行处理。
+若要将属性设置为 null，可以使用 **null** 或 **[json('null')]** 。 将 `null` 作为参数提供时，[json 函数](template-functions-array.md#json)返回空对象。 在这两种情况下，资源管理器模板都会按照属性不存在的情况进行处理。
 
 ```json
 "stringValue": null,

@@ -23,9 +23,9 @@ ms.locfileid: "79293835"
 
 本文通过许多示例方案说明了如何使用 T-SQL 来完成弹性作业的入门。
 
-这些示例使用[  作业数据库](sql-database-job-automation-overview.md#job-database)中提供的[存储过程](#job-stored-procedures)和[视图](#job-views)。
+这些示例使用[作业数据库](sql-database-job-automation-overview.md#job-database)中提供的[存储过程](#job-stored-procedures)和[视图](#job-views)。
 
-Transact-SQL (T-SQL) 用于创建、配置、执行和管理作业。 T-SQL 不支持创建弹性作业代理，因此必须先使用门户或 [PowerShell](elastic-jobs-powershell.md#create-the-elastic-job-agent) 创建弹性作业代理  。
+Transact-SQL (T-SQL) 用于创建、配置、执行和管理作业。 T-SQL 不支持创建弹性作业代理，因此必须先使用门户或 [PowerShell](elastic-jobs-powershell.md#create-the-elastic-job-agent) 创建弹性作业代理。
 
 
 ## <a name="create-a-credential-for-job-execution"></a>创建执行作业所需的凭据

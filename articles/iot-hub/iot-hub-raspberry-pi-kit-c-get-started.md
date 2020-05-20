@@ -97,7 +97,7 @@ ms.locfileid: "68514469"
 ### <a name="enable-ssh-and-spi"></a>启用 SSH 和 SPI
 
 1. 将 Pi 连接到监视器、键盘和鼠标，启动 Pi，然后通过将 `pi` 用作用户名并将 `raspberry` 用作密码来登录 Raspbian。
-1. 依次单击 Raspberry 图标 >“首选项”   > “Raspberry Pi 配置”  。
+1. 依次单击 Raspberry 图标 >“首选项” > “Raspberry Pi 配置”。
 
    ![Raspbian 首选项菜单](./media/iot-hub-raspberry-pi-kit-c-get-started/1-raspbian-preferences-menu.png)
 

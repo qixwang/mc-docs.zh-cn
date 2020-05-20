@@ -36,7 +36,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 ## <a name="prerequisites"></a>先决条件
 
-- 如果不熟悉 Azure 资源的托管标识，请查阅[概述部分](overview.md)。 请务必了解[系统分配的托管标识与用户分配的托管标识之间的差异](overview.md#how-does-the-managed-identities-for-azure-resources-work)  。
+- 如果不熟悉 Azure 资源的托管标识，请查阅[概述部分](overview.md)。 请务必了解[系统分配的托管标识与用户分配的托管标识之间的差异](overview.md#how-does-the-managed-identities-for-azure-resources-work)。
 - 如果还没有 Azure 帐户，请先[注册试用帐户](https://www.azure.cn/pricing/1rmb-trial/)，然后再继续。
 - 若要执行本文中的管理操作，帐户需要以下基于 Azure 角色的访问控制分配：
 
@@ -56,7 +56,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 要创建启用了系统分配托管标识的虚拟机规模集，请执行以下操作：
 
-1. 请参阅 [New-AzVmssConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azvmssconfig) cmdlet 参考文章中的示例 1  ，以创建具有系统分配的托管标识的虚拟机规模集。  将参数 `-IdentityType SystemAssigned` 添加到 `New-AzVmssConfig` cmdlet：
+1. 请参阅 [New-AzVmssConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azvmssconfig) cmdlet 参考文章中的示例 1，以创建具有系统分配的托管标识的虚拟机规模集。  将参数 `-IdentityType SystemAssigned` 添加到 `New-AzVmssConfig` cmdlet：
 
     ```powershell
     $VMSS = New-AzVmssConfig -Location $Loc -SkuCapacity 2 -SkuName "Standard_A0" -UpgradePolicyMode "Automatic" -NetworkInterfaceConfiguration $NetCfg -IdentityType SystemAssigned`

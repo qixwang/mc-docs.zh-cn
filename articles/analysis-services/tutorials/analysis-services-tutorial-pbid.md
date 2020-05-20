@@ -65,7 +65,7 @@ ms.locfileid: "74203618"
 
     ![可视化效果](./media/analysis-services-tutorial-pbid/aas-pbid-visualizations-report.png)
 
-5. 在“字段”  Internet Sales >  表中，选择 **Internet Sales Total** 和 **Margin** 度量值。  在 **Product Category** 表中，选择 **Product Category Name**。
+5. 在“字段” > **Internet Sales** 表中，选择 **Internet Sales Total** 和 **Margin** 度量值。 在 **Product Category** 表中，选择 **Product Category Name**。
 
     ![完成报表](./media/analysis-services-tutorial-pbid/aas-pbid-complete-report.png)
 

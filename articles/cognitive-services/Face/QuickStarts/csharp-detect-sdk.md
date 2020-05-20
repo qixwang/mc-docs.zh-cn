@@ -111,7 +111,7 @@ static void Main(string[] args)
 ```
 ### <a name="detect-faces"></a>检测人脸
 
-将以下方法添加到 **Program** 类。 它使用人脸服务客户端检测通过 URL 引用的远程图像中的人脸。 它使用 `faceAttributes` 字段&mdash;添加到 **的**DetectedFace`faceList` 对象将具有指定的属性（在此示例中为年龄和性别）。
+将以下方法添加到 **Program** 类。 它使用人脸服务客户端检测通过 URL 引用的远程图像中的人脸。 它使用 `faceAttributes` 字段&mdash;添加到 `faceList` 的 **DetectedFace** 对象将具有指定的属性（在此示例中为年龄和性别）。
 
 ```csharp
 // Detect faces in a remote image

@@ -84,7 +84,7 @@ ms.locfileid: "71125589"
 
 ## <a name="create-account-filters"></a>创建帐户筛选器
 
-在你下载的 Postman 的集合中，选择“帐户筛选器” **“创建或更新帐户筛选器”。** -> 
+在你下载的 Postman 的集合中，选择“帐户筛选器”->“创建或更新帐户筛选器”。
 
 **PUT** HTTP 请求方法类似于：
 
@@ -122,7 +122,7 @@ PUT https://management.chinacloudapi.cn/subscriptions/{subscriptionId}/resourceG
 
 可以指定资产或帐户筛选器的列表，这些筛选器将应用于流定位器。 [动态打包程序（流式处理终结点）](dynamic-packaging-overview.md)将此筛选器列表与客户端在 URL 中指定的筛选器一起应用。 此组合将生成[动态清单](filters-dynamic-manifest-overview.md)，该清单基于你在流定位器上指定的“URL + 筛选器”中的筛选器。 如果要应用筛选器，但不希望在 URL 中公开筛选器名称，建议使用此功能。
 
-若要使用 REST 创建筛选器并将其与流定位器关联，请使用[流定位器 - 创建](https://docs.microsoft.com/rest/api/media/streaminglocators/create) API并在`properties.filters`请求正文[中指定 ](https://docs.microsoft.com/rest/api/media/streaminglocators/create#request-body)。
+若要使用 REST 创建筛选器并将其与流定位器关联，请使用[流定位器 - 创建](https://docs.microsoft.com/rest/api/media/streaminglocators/create) API并在[请求正文](https://docs.microsoft.com/rest/api/media/streaminglocators/create#request-body)中指定 `properties.filters`。
                                 
 ## <a name="stream-using-filters"></a>使用筛选器的流
 

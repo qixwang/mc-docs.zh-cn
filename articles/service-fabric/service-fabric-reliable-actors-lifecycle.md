@@ -53,7 +53,7 @@ ms.locfileid: "79292010"
 * *扫描时间间隔*。 这是执行组件运行时为可以停用和进行垃圾回收的执行组件扫描其活动执行组件表的时间间隔。 此状态的默认值为 1 分钟。
 * *空闲超时*。 这是在停用执行组件并对其进行垃圾回收之前，该执行组件需要保持未使用（空闲）状态的时间。 此状态的默认值为 60 分钟。
 
-通常不需要更改这些默认值。 但是，如有必要，可在注册`ActorServiceSettings`执行组件服务[时通过 ](service-fabric-reliable-actors-platform.md) 更改这些时间间隔：
+通常不需要更改这些默认值。 但是，如有必要，可在注册[执行组件服务](service-fabric-reliable-actors-platform.md)时通过 `ActorServiceSettings` 更改这些时间间隔：
 
 ```csharp
 public class Program

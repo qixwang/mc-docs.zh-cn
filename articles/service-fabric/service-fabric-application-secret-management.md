@@ -29,7 +29,7 @@ ms.locfileid: "79291603"
 ## <a name="specify-encrypted-secrets-in-an-application"></a>在应用程序中指定加密的机密
 上一步骤介绍了如何使用证书来加密机密，并生成要在应用程序中使用的 base-64 编码的字符串。 可以在服务的 Settings.xml 中将此 base-64 编码的字符串指定为加密的[参数][parameters-link]，也可以在服务的 ServiceManifest.xml 中将其指定为加密的[环境变量][environment-variables-link]。
 
-通过在服务的 Settings.xml 配置文件中将 [ 属性设置为 ][parameters-link] 来指定加密的`IsEncrypted`参数`true`：
+通过在服务的 Settings.xml 配置文件中将 `IsEncrypted` 属性设置为 `true` 来指定加密的[参数][parameters-link]：
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -39,7 +39,7 @@ ms.locfileid: "79291603"
   </Section>
 </Settings>
 ```
-通过在服务的 ServiceManifest.xml 文件中将 [ 属性设置为 ][environment-variables-link] 来指定加密的`Type`环境变量`Encrypted`：
+通过在服务的 ServiceManifest.xml 文件中将 `Type` 属性设置为 `Encrypted` 来指定加密的[环境变量][environment-variables-link]：
 ```xml
 <CodePackage Name="Code" Version="1.0.0">
   <EnvironmentVariables>
@@ -97,13 +97,13 @@ Settings.xml 配置文件允许使用可在创建应用程序时提供的可重�
 
 现在，可以在创建应用程序实例时会值指定为*应用程序参数*。 可以使用 PowerShell 或 C# 编写用于创建应用程序实例的脚本，方便在生成过程中轻松集成。
 
-使用 PowerShell 时，参数以`New-ServiceFabricApplication`哈希表[的形式提供给 ](https://technet.microsoft.com/library/ee692803.aspx)：
+使用 PowerShell 时，参数以[哈希表](https://technet.microsoft.com/library/ee692803.aspx)的形式提供给 `New-ServiceFabricApplication`：
 
 ```powershell
 New-ServiceFabricApplication -ApplicationName fabric:/MyApp -ApplicationTypeName MyAppType -ApplicationTypeVersion 1.0.0 -ApplicationParameter @{"MySecret" = "I6jCCAeYCAxgFhBXABFxzAt ... gNBRyeWFXl2VydmjZNwJIM="}
 ```
 
-使用 C# 时，应用程序参数以 `ApplicationDescription` 的形式在 `NameValueCollection` 中指定：
+使用 C# 时，应用程序参数以 `NameValueCollection` 的形式在 `ApplicationDescription` 中指定：
 
 ```csharp
 FabricClient fabricClient = new FabricClient();

@@ -84,7 +84,7 @@ Service Fabric 群集中的节点横跨容错域和升级域的二维网格放�
 ## <a name="actions"></a>操作
 Service Fabric Explorer 提供用于对群集中的节点、应用程序和服务快速调用操作的方式。
 
-例如，要删除某应用程序实例，只需从左侧树中选择该应用程序，并选择“操作”   > “删除应用程序”  。
+例如，若要删除某应用程序实例，只需从左侧树中选择该应用程序，然后选择“操作” > “删除应用程序”。
 
 ![Service Fabric Explorer 中删除应用程序][sfx-delete-application]
 

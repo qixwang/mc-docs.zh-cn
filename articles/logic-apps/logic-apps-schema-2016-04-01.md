@@ -145,7 +145,7 @@ ms.locfileid: "63830121"
 
 ### <a name="renamed-manual-trigger-to-request-trigger"></a>已将“manual”触发器重命名为“request”触发器
 
-`manual` 触发器类型已弃用，并已通过类型 `request` 将其重命名为 `http`。 对于使用触发器构建的那类模式，此更改加强了一致性。
+`manual` 触发器类型已弃用，并已通过类型 `http` 将其重命名为 `request`。 对于使用触发器构建的那类模式，此更改加强了一致性。
 
 ### <a name="new-filter-action"></a>新“筛选器”操作
 

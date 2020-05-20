@@ -31,7 +31,7 @@ ms.locfileid: "80151739"
 
 2. 单击“身份验证/授权”  菜单选项。
 
-3. 在“验证提供程序”  部分下，单击“Azure Active Directory”  。
+3. 单击“身份验证提供程序”部分下的“Azure Active Directory”。
 
 4. 将“管理模式”  设置为“高级”  。
 
@@ -75,7 +75,7 @@ ms.locfileid: "80151739"
 
     将 **urlScheme** 替换为应用的唯一名称。  urlScheme 应与在 Azure 门户中的“允许的外部重定向 URL”字段中指定的 URL 方案协议相同  。 身份验证回调使用 urlScheme 在完成身份验证请求之后切换回到应用。
 
-2. 将 QSTodoListViewController.m  中 `viewDidLoad` 的 `[self refresh]` 替换为以下代码：
+2. 按以下代码替换 QSTodoListViewController.m 的 `viewDidLoad` 中的 `[self refresh]`：
 
     ```Objective-C
     [self loginAndGetData];
@@ -124,7 +124,7 @@ ms.locfileid: "80151739"
 
     此代码应放置在 `<dict>` 元素内部。  将 appname  字符串（位于  CFBundleURLSchemes 的数组内）替换为步骤 1 中所选的应用名称。  还可以在 plist 编辑器中进行这些更改 - 在 XCode 中单击 `AppName-Info.plist` 文件可打开 plist 编辑器。
 
-    将 CFBundleURLName  的 `com.microsoft.azure.zumo` 字符串替换为 Apple 捆绑包标识符。
+    将 CFBundleURLName 的 `com.microsoft.azure.zumo` 字符串替换为 Apple 捆绑包标识符。
 
 6. 按“运行”  启动应用，然后登录。 登录后，应可以查看 Todo 列表并进行更新。
 
@@ -161,7 +161,7 @@ ms.locfileid: "80151739"
 
     将 **urlScheme** 替换为应用的唯一名称。  urlScheme 应与在 Azure 门户中的“允许的外部重定向 URL”字段中指定的 URL 方案协议相同  。 身份验证回调使用 urlScheme 在完成身份验证请求之后切换回到应用。
 
-2. 删除 ToDoTableViewController.swift  中 `viewDidLoad()` 末尾的 `self.refreshControl?.beginRefreshing()` 和 `self.onRefresh(self.refreshControl)` 行。 在其位置上添加对 `loginAndGetData()` 的调用：
+2. 删除 *ToDoTableViewController.swift* 中 `viewDidLoad()` 末尾的 `self.refreshControl?.beginRefreshing()` 和 `self.onRefresh(self.refreshControl)` 行。 在其位置上添加对 `loginAndGetData()` 的调用：
 
     ```swift
     loginAndGetData()
@@ -202,7 +202,7 @@ ms.locfileid: "80151739"
 
     此代码应放置在 `<dict>` 元素内部。  将 appname  字符串（位于  CFBundleURLSchemes 的数组内）替换为步骤 1 中所选的应用名称。  还可以在 plist 编辑器中进行这些更改 - 在 XCode 中单击 `AppName-Info.plist` 文件可打开 plist 编辑器。
 
-    将 CFBundleURLName  的 `com.microsoft.azure.zumo` 字符串替换为 Apple 捆绑包标识符。
+    将 CFBundleURLName 的 `com.microsoft.azure.zumo` 字符串替换为 Apple 捆绑包标识符。
 
 5. 按“运行”  启动应用，然后登录。 登录后，应可以查看 Todo 列表并进行更新。
 

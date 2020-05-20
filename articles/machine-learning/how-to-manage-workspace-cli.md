@@ -98,7 +98,7 @@ az group create --name <resource-group-name> --location <location>
 若要创建新的工作区（将在其中自动创建服务），请使用以下命令： 
 
 > [!TIP]
-> 本部分中的命令创建一个基本版工作区。 若要创建企业版工作区，请在 `--sku enterprise` 命令中使用 `az ml workspace create` 开关。 有关 Azure 机器学习版本的详细信息，请参阅[什么是 Azure 机器学习](overview-what-is-azure-ml.md#sku)。
+> 本部分中的命令创建一个基本版工作区。 若要创建企业版工作区，请在 `az ml workspace create` 命令中使用 `--sku enterprise` 开关。 有关 Azure 机器学习版本的详细信息，请参阅[什么是 Azure 机器学习](overview-what-is-azure-ml.md#sku)。
 
 ```azurecli
 az ml workspace create -w <workspace-name> -g <resource-group-name>

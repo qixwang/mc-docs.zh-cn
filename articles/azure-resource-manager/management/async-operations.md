@@ -38,7 +38,7 @@ ms.locfileid: "75631408"
 
 但是，并非每个异步操作都会返回所有这些值。 例如，可能需要对一个操作计算 Azure-AsyncOperation 标头值，对另一个操作计算 Location 标头值。 
 
-检索这些标头值与检索请求的任何标头值一样。 例如，在 C# 中，可以使用以下代码从名为 `HttpWebResponse` 的 `response` 对象检索标头值：
+检索这些标头值与检索请求的任何标头值一样。 例如，在 C# 中，可以使用以下代码从名为 `response` 的 `HttpWebResponse` 对象检索标头值：
 
 ```cs
 response.Headers.GetValues("Azure-AsyncOperation").GetValue(0)

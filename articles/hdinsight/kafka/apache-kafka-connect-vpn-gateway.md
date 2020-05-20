@@ -258,7 +258,7 @@ HDInsight 不允许通过公共 Internet 直接连接到 Kafka。 Kafka 客户�
 
     ![Kafka 的配置链接](./media/apache-kafka-connect-vpn-gateway/select-kafka-config1.png)
 
-4. 要查找“kafka-env”  配置，请在右上方的“筛选器”`kafka-env`__字段中输入__ 。
+4. 要查找“kafka-env” 配置，请在右上方的“筛选器”字段中输入 `kafka-env`。
 
     ![Kafka 配置，适用于 kafka-env](./media/apache-kafka-connect-vpn-gateway/search-for-kafka-env.png)
 
@@ -272,9 +272,9 @@ HDInsight 不允许通过公共 Internet 直接连接到 Kafka。 Kafka 客户�
     echo "advertised.listeners=PLAINTEXT://$IP_ADDRESS:9092" >> /usr/hdp/current/kafka-broker/conf/server.properties
     ```
 
-6. 要配置 Kafka 侦听的接口，请在右上方的“筛选器”`listeners`__字段中输入__ 。
+6. 要配置 Kafka 侦听的接口，请在右上方的“筛选器”字段中输入 `listeners`。
 
-7. 要将 Kafka 配置为侦听所有网络接口，请将“侦听器”  字段的值更改为 `PLAINTEXT://0.0.0.0:9092`。
+7. 要将 Kafka 配置为侦听所有网络接口，请将“侦听器”字段的值更改为 `PLAINTEXT://0.0.0.0:9092`。
 
 8. 单击“保存”  按钮保存配置。 输入描述更改的文本消息。 保存更改后，请选择“确定”  。
 
@@ -292,7 +292,7 @@ HDInsight 不允许通过公共 Internet 直接连接到 Kafka。 Kafka 客户�
 
 ### <a name="connect-to-the-vpn-gateway"></a>连接到 VPN 网关
 
-若要连接到 VPN 网关，请按__配置点到站点连接__文档中[连接到 Azure](../../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md#connect) 部分进行操作。
+若要连接到 VPN 网关，请按[配置点到站点连接](../../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md#connect)文档中__连接到 Azure__ 部分进行操作。
 ## <a name="example-python-client"></a><a id="python-client"></a>示例：Python 客户端
 
 若要验证与 Kafka 的连接，请使用以下步骤来创建并运行 Python 生成者和使用者：

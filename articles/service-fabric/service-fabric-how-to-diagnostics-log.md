@@ -164,7 +164,7 @@ ASP.NET Core 日志记录（[Microsoft.Extensions.Logging NuGet 包](https://www
 5. 可以像在不使用 Serilog 的情况下运行 ASP.NET Core 一样检测代码。
 
     >[!NOTE]
-    >建议不要在前面的示例中使用静态  `Log.Logger`。 Service Fabric 可在单个进程中托管同一服务类型的多个实例。 如果使用静态 `Log.Logger`，属性扩充器的最后一个写入者会显示所有正在运行的实例的值。 这是 _logger 变量为何是服务类的专用成员变量的原因之一。 另外，必须将 `_logger` 提供给可跨服务使用的通用代码使用。
+    >建议不要在前面的示例中使用静态 `Log.Logger`。 Service Fabric 可在单个进程中托管同一服务类型的多个实例。 如果使用静态 `Log.Logger`，属性扩充器的最后一个写入者会显示所有正在运行的实例的值。 这是 _logger 变量为何是服务类的专用成员变量的原因之一。 另外，必须将 `_logger` 提供给可跨服务使用的通用代码使用。
 
 ## <a name="next-steps"></a>后续步骤
 

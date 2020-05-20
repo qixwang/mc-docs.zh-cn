@@ -43,8 +43,8 @@ ms.locfileid: "77028337"
 1. 上传所需的照片，并输入所需的信息。
 1. 选择“保存以上信息”  (save)。
 1. 选择“高级信息”  (advanced information)。
-1. 选择 OAuth2.0“授权设置”  (redirect URL) 字段旁边的“编辑”  (edit)。
-1. 为 OAuth2.0“授权设置”`https://your-tenant-name.b2clogin.cn/your-tenant-name.partner.onmschina.cn/oauth2/authresp` **(redirect URL) 输入** 。 例如，如果租户名称是 contoso，请将 URL 设置为 `https://contoso.b2clogin.cn/contoso.partner.onmschina.cn/oauth2/authresp`。
+1. 选择 OAuth2.0“授权设置”(redirect URL) 字段旁边的“编辑”(edit)。
+1. 为 OAuth2.0“授权设置”(redirect URL) 输入 `https://your-tenant-name.b2clogin.cn/your-tenant-name.partner.onmschina.cn/oauth2/authresp`。 例如，如果租户名称是 contoso，请将 URL 设置为 `https://contoso.b2clogin.cn/contoso.partner.onmschina.cn/oauth2/authresp`。
 1. 选择“提交”  (submit)。
 
 ## <a name="configure-a-weibo-account-as-an-identity-provider"></a>将微博帐户配置为标识提供者

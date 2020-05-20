@@ -78,7 +78,7 @@ ms.locfileid: "75335856"
 ```
 
 > [!Note]
-> 此索引定义复制自[使用 REST API 创建 Azure 认知搜索索引](https://docs.azure.cn/search/search-create-index-rest-api)。 除了字段定义的表面差异外，二者完全相同。 已在 `filterable`、`facetable`、`category`、`tags` 和 `parkingIncluded` 字段中显式添加 `smokingAllowed` 和 `rating` 属性。 在实践中，使用 REST API 时，默认会在这些字段中启用 `filterable` 和 `facetable`。 使用 .NET SDK 时，必须显式启用这些属性。
+> 此索引定义复制自[使用 REST API 创建 Azure 认知搜索索引](https://docs.azure.cn/search/search-create-index-rest-api)。 除了字段定义的表面差异外，二者完全相同。 已在 `category`、`tags`、`parkingIncluded`、`smokingAllowed` 和 `rating` 字段中显式添加 `filterable` 和 `facetable` 属性。 在实践中，使用 REST API 时，默认会在这些字段中启用 `filterable` 和 `facetable`。 使用 .NET SDK 时，必须显式启用这些属性。
 
 ## <a name="build-and-load-an-index"></a>生成和加载索引
 

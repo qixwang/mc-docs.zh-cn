@@ -36,7 +36,7 @@ ms.locfileid: "68878744"
 
 1. 启动 Power BI Desktop。
 
-2. 在菜单栏中，导航到“主页” **“获取数据”** “更多...”。 >    >  
+2. 在菜单栏中，导航到“主页” > “获取数据” > “更多...”。
 
     ![HDInsight Power BI 开放数据](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-power-bi-open-odbc.png)
 

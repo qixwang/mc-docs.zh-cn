@@ -27,7 +27,7 @@ ms.locfileid: "77155694"
 
 Blob 存储中存储的审核日志存储在 Azure 存储帐户中名为 `sqldbauditlogs` 的容器内。 该容器中的目录层次结构采用 `<ServerName>/<DatabaseName>/<AuditName>/<Date>/` 格式。 Blob 文件名的格式为 `<CreationTime>_<FileNumberInSession>.xel`，其中，`CreationTime` 采用 UTC `hh_mm_ss_ms` 格式，`FileNumberInSession` 是运行的索引（如果会话日志跨多个 Blob 文件）。
 
-例如，对于 `Database1` 上的数据库 `Server1`，下面是可能的有效路径：
+例如，对于 `Server1` 上的数据库 `Database1`，下面是可能的有效路径：
 
     Server1/Database1/SqlDbAuditing_ServerAudit_NoRetention/2019-02-03/12_23_30_794_0.xel
 
@@ -40,7 +40,7 @@ Blob 存储中存储的审核日志存储在 Azure 存储帐户中名为 `sqldba
 
 ### <a name="log-analytics"></a>Log Analytics
 
-审核事件将写入配置审核期间定义的 Log Analytics 工作区，并写入 `AzureDiagnostics` 类别的 `SQLSecurityAuditEvents` 表。 有关 Log Analytics 搜索语言和命令的其他有用信息，请参阅 [Log Analytics 搜索参考](/azure-monitor/log-query/log-query-overview)。
+审核事件将写入配置审核期间定义的 Log Analytics 工作区，并写入 `SQLSecurityAuditEvents` 类别的 `AzureDiagnostics` 表。 有关 Log Analytics 搜索语言和命令的其他有用信息，请参阅 [Log Analytics 搜索参考](/azure-monitor/log-query/log-query-overview)。
 
 ## <a name="audit-log-fields"></a><a id="subheading-1"></a>审核日志字段
 

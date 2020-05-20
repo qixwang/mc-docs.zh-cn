@@ -64,7 +64,7 @@ PHP 7.0 和 PHP 7.2 也可用，但它们在默认情况下不启用。 若要�
 ### <a name="changing-php_ini_user-php_ini_perdir-php_ini_all-configuration-settings"></a>更改 PHP\_INI\_USER、PHP\_INI\_PERDIR、PHP\_INI\_ALL 配置设置
 
 1. 将 [.user.ini] 文件添加到根目录。
-1. 使用会在 `.user.ini` 文件中使用的语法，将配置设置添加到 `php.ini` 文件。 例如，如果希望启用 `display_errors` 设置，并将 `upload_max_filesize` 设置设为 10 分钟，则 `.user.ini` 文件应包含以下文本：
+1. 使用会在 `php.ini` 文件中使用的语法，将配置设置添加到 `.user.ini` 文件。 例如，如果希望启用 `display_errors` 设置，并将 `upload_max_filesize` 设置设为 10 分钟，则 `.user.ini` 文件应包含以下文本：
 
         ; Example Settings
         display_errors=On
@@ -80,8 +80,8 @@ PHP 7.0 和 PHP 7.2 也可用，但它们在默认情况下不启用。 若要�
 ### <a name="changing-php_ini_system-configuration-settings"></a>更改 PHP\_INI\_SYSTEM 配置设置
 
 1. 向应用添加一个键为 `PHP_INI_SCAN_DIR` 且值为 `d:\home\site\ini` 的应用设置
-1. 使用 Kudu 控制器 (http://`settings.ini`site-name&lt;.scm.azurewebsite.net) 在 &gt; 目录中创建一个 `d:\home\site\ini` 文件。
-1. 使用会在 `settings.ini` 文件中使用的语法，将配置设置添加到 `php.ini` 文件。 例如，如果希望将 `curl.cainfo` 设置指向 `*.crt` 文件并将“wincache.maxfilesize”设置为 512K，则 `settings.ini` 文件应包含以下文本：
+1. 使用 Kudu 控制器 (http://&lt;site-name&gt;.scm.azurewebsite.net) 在 `d:\home\site\ini` 目录中创建一个 `settings.ini` 文件。
+1. 使用会在 `php.ini` 文件中使用的语法，将配置设置添加到 `settings.ini` 文件。 例如，如果希望将 `curl.cainfo` 设置指向 `*.crt` 文件并将“wincache.maxfilesize”设置为 512K，则 `settings.ini` 文件应包含以下文本：
 
         ; Example Settings
         curl.cainfo="%ProgramFiles(x86)%\Git\bin\curl-ca-bundle.crt"
@@ -97,8 +97,8 @@ PHP 7.0 和 PHP 7.2 也可用，但它们在默认情况下不启用。 若要�
 1. 将 `ext` 目录添加到 `d:\home\site` 目录。
 1. 将 `.dll` 扩展文件置于 `ext` 目录中（例如 `php_xdebug.dll`）。 确保扩展与默认版本的 PHP兼容，并且是 VC9 版本且与非线程安全 (nts) 兼容。
 1. 向应用添加一个键为 `PHP_INI_SCAN_DIR` 且值为 `d:\home\site\ini` 的应用设置
-1. 在 `ini` 中创建名为 `d:\home\site\ini` 的 `extensions.ini` 文件。
-1. 使用会在 `extensions.ini` 文件中使用的语法，将配置设置添加到 `php.ini` 文件。 例如，如果想要启用 MongoDB 和 XDebug 扩展，则 `extensions.ini` 文件应包含以下文本：
+1. 在 `d:\home\site\ini` 中创建名为 `extensions.ini` 的 `ini` 文件。
+1. 使用会在 `php.ini` 文件中使用的语法，将配置设置添加到 `extensions.ini` 文件。 例如，如果想要启用 MongoDB 和 XDebug 扩展，则 `extensions.ini` 文件应包含以下文本：
 
         ; Enable Extensions
         extension=d:\home\site\ext\php_mongo.dll
@@ -142,7 +142,7 @@ PHP 7.0 和 PHP 7.2 也可用，但它们在默认情况下不启用。 若要�
 > 可以[在此处针对应用服务中的一流编辑器支持进行投票](https://feedback.azure.com/forums/169385-web-apps-formerly-websites/suggestions/6477437-first-class-support-for-composer-and-pip)！
 >
 
-1. 在 [Azure 门户](https://portal.azure.cn)的 PHP 应用的边栏选项卡中，单击“工具” **“扩展”**  >   。
+1. 在 [Azure 门户](https://portal.azure.cn)的 PHP 应用的边栏选项卡中，单击“工具” > “扩展”。
 
     ![Azure 门户设置边栏选项卡，用于在 Azure 中启用编辑器自动化](./media/web-sites-php-configure/composer-extension-settings.png)
 2. 单击“添加”，并单击“编辑器”。  

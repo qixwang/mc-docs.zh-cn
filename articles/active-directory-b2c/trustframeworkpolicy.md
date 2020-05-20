@@ -114,7 +114,7 @@ ms.locfileid: "77531325"
 
 信赖方应用程序（例如 Web、移动或桌面应用程序）调用[信赖方 (RP) 策略](relyingparty.md)。 RP 策略文件执行特定任务，例如登录、重置密码，或编辑配置文件。 RP 策略将信赖方应用程序收到的声明列表配置为所颁发令牌的一部分。 多个应用程序可以使用同一策略。 所有应用程序都会收到包含声明的相同令牌，用户会经历相同的用户旅程。 单个应用程序可以使用多个策略。
 
-在 RP 策略文件中，指定指向 **UserJourney** 的 [DefaultUserJourney](userjourneys.md) 元素。 用户旅程通常在基本或扩展策略中定义。
+在 RP 策略文件中，指定指向 [UserJourney](userjourneys.md) 的 **DefaultUserJourney** 元素。 用户旅程通常在基本或扩展策略中定义。
 
 B2C_1A_signup_signin 策略：
 
@@ -134,7 +134,7 @@ B2C_1A_TrustFrameWorkBase 或 B2C_1A_TrustFrameworkExtensionPolicy：
 
 用户旅程定义用户所要经历的业务逻辑。 每个用户旅程是按顺序执行一系列操作，以进行身份验证和收集信息的一组业务流程步骤。
 
-**中的**SocialAndLocalAccounts`starter pack` 策略文件包含 SignUpOrSignIn、ProfileEdit 和 PasswordReset 用户旅程。 可为其他方案添加更多的用户旅程，例如，更改电子邮件地址或链接和取消链接社交帐户。 
+`starter pack` 中的 **SocialAndLocalAccounts** 策略文件包含 SignUpOrSignIn、ProfileEdit 和 PasswordReset 用户旅程。 可为其他方案添加更多的用户旅程，例如，更改电子邮件地址或链接和取消链接社交帐户。 
 
 业务流程步骤可以调用[技术配置文件](technicalprofiles.md)。 技术配置文件提供带有内置机制的框架来与不同类型的参与方通信。 例如，技术配置文件可执行以下操作：
 

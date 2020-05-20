@@ -212,7 +212,7 @@ uniqueregistryname.azurecr.cn/acr-helloworld    v1     01ac48d5c8cf    About a m
 docker push <acrName>.azurecr.cn/acr-helloworld:v1
 ```
 
-由于已经为异地复制配置了注册表，因此，使用这一条  *命令，即可将映像自动复制到“中国北部”和“中国东部”区域。*  `docker push`
+由于已经为异地复制配置了注册表，因此，使用这一条 `docker push` 命令，即可将映像自动复制到“中国北部”和“中国东部”区域。
 
 ```console
 $ docker push uniqueregistryname.azurecr.cn/acr-helloworld:v1

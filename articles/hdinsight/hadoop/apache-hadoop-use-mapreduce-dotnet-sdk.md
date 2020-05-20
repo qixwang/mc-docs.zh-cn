@@ -42,7 +42,7 @@ HDInsight .NET SDK 提供 .NET 客户端库，可简化从 .NET 中使用 HDInsi
 
 1. 启动 Visual Studio 并创建 C# 控制台应用程序。
 
-1. 导航到“工具” **“NuGet 包管理器”** “包管理器控制台”，然后输入以下命令 >    >   ：
+1. 导航到“工具” > “NuGet 包管理器” > “包管理器控制台”，然后输入以下命令：
 
     ```   
     Install-Package Microsoft.Azure.Management.HDInsight.Job

@@ -161,7 +161,7 @@ ProxyAddress 冲突的电子邮件通知示例如下所示：
    
     a. **用户 A** 首先使用 **UPN = User\@contoso.com** 同步。
    
-    b. 然后，尝试使用 **UPN = User**contoso.com **同步\@用户 B**。
+    b. 然后，尝试使用 **UPN = User\@contoso.com** 同步**用户 B**。
    
     c. **用户 B 的** UPN 已更改为**User1234\@contoso.partner.onmschina.cn**，**User\@contoso.com** 已添加到 **DirSyncProvisioningErrors**。
    

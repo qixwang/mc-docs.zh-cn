@@ -30,7 +30,7 @@ ms.locfileid: "76165470"
 
 ## <a name="create-a-server"></a>创建服务器
 
-1. 依次单击“+ 创建资源” **“数据 + 分析”** “Analysis Services” >    >   。
+1. 依次单击“+ 创建资源” > “数据 + 分析” > “Analysis Services”。
 
     <!--MOONCAKE is **Data + Analytics** format-->
     

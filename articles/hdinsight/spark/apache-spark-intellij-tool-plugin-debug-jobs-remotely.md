@@ -111,7 +111,7 @@ ms.locfileid: "72584009"
 
     a. 在“文件”  菜单中，选择“项目结构”  。
 
-    b. 在“项目结构”对话框中，选择“项目”以查看创建的默认项目   。 也可以通过选择加号 ( **) 来创建自己的项目+** 。
+    b. 在“项目结构”对话框中，选择“项目”以查看创建的默认项目   。 也可以通过选择加号 (+) 来创建自己的项目。
 
    ![创建 JAR](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/create-default-artifact.png)
 
@@ -120,7 +120,7 @@ ms.locfileid: "72584009"
 
     a. 在项目树中右键单击项目名称，并单击“打开模块设置”  。 
 
-    b. 在“项目结构”对话框中选择“库”，选择 (  **) 符号，并选择“从 Maven”。** **+** 
+    b. 在“项目结构”对话框中选择“库”，选择 (**+**) 符号，并选择“从 Maven”。
 
     ![添加库](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/intellij-add-library.png)
 
@@ -179,7 +179,7 @@ ms.locfileid: "72584009"
 8. 在“新建 Scala 类”  对话框中提供名称，在“种类”  对话框中选择“对象”  ，并选择“确定”  。
 
     ![新建 Scala 类](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/hdi-spark-scala-code-object.png)
-9. 在 `MyClusterAppMain.scala` 文件中粘贴以下代码。 此代码创建 Spark 上下文，并从 `executeJob` 对象打开 `SparkSample` 方法。
+9. 在 `MyClusterAppMain.scala` 文件中粘贴以下代码。 此代码创建 Spark 上下文，并从 `SparkSample` 对象打开 `executeJob` 方法。
 
     ```scala
     import org.apache.spark.{SparkConf, SparkContext}
@@ -262,7 +262,7 @@ ms.locfileid: "72584009"
 
     ![添加断点](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/intellij-create-breakpoint.png)
 
-1. 若要运行应用程序，请选择“远程运行”  配置下拉列表旁边的“调试运行”  按钮。
+1. 若要运行应用程序，请选择“远程运行”配置下拉列表旁边的“调试运行”按钮。
 
     ![选择“调试运行”按钮](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-run-mode-button.png)
 

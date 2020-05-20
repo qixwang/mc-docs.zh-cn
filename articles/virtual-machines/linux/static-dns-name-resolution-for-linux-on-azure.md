@@ -73,7 +73,7 @@ Azure 上的完整持续集成和持续部署 (CiCd) 基础结构需要某些服
 在以下示例中，请将示例参数名称替换为自己的值。 示例参数名称包括 `myResourceGroup`、`myNic` 和 `myVM`。
 
 ## <a name="create-the-resource-group"></a>创建资源组
-首先，使用 [az group create](https://docs.azure.cn/cli/group?view=azure-cli-latest#az-group-create) 创建资源组。 以下示例在 `myResourceGroup` 位置创建名为 `chinanorth` 的资源组：
+首先，使用 [az group create](https://docs.azure.cn/cli/group?view=azure-cli-latest#az-group-create) 创建资源组。 以下示例在 `chinanorth` 位置创建名为 `myResourceGroup` 的资源组：
 
 ```azurecli
 az group create --name myResourceGroup --location chinanorth

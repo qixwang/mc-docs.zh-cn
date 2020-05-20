@@ -224,11 +224,11 @@ JavaScript 不支持特性。
 
 # <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
-使用 `out EventGridEvent paramName` 等方法参数发送消息。 在 C# 脚本中，`paramName` 是在 `name`function.json*的* 属性中指定的值。 若要编写多条消息，可以使用 `ICollector<EventGridEvent>` 或 `IAsyncCollector<EventGridEvent>` 代替 `out EventGridEvent`。
+使用 `out EventGridEvent paramName` 等方法参数发送消息。 在 C# 脚本中，`paramName` 是在 *function.json* 的 `name` 属性中指定的值。 若要编写多条消息，可以使用 `ICollector<EventGridEvent>` 或 `IAsyncCollector<EventGridEvent>` 代替 `out EventGridEvent`。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-使用 `context.bindings.<name>` 访问输出事件，其中 `<name>` 是在 `name`function.json*的* 属性中指定的值。
+使用 `context.bindings.<name>` 访问输出事件，其中 `<name>` 是在 *function.json* 的 `name` 属性中指定的值。
 
 # <a name="java"></a>[Java](#tab/java)
 

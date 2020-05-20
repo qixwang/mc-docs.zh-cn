@@ -50,7 +50,7 @@ ms.locfileid: "76170795"
 - 如果 `constraints.required` 设置为 true，则文本框必须包含值才能成功通过验证  。 默认值是 **false**秒。
 - `constraints.regex` 是一个 JavaScript 正则表达式模式。 如果指定，则文本框的值必须与模式完全匹配才能成功通过验证。 默认值为 **null**。
 - `constraints.validationMessage` 是当文本框的值未通过验证时会显示的一个字符串。 如果未指定，则会使用文本框的内置验证消息。 默认值为 **null**。
-- 当 `constraints.regex` 设置为 `constraints.required`false**时可以为** 指定值。 在这种情况下，文本框并非必须具有值才能成功通过验证。 如果指定了一个值，则它必须与正则表达式模式匹配。
+- 当 `constraints.required` 设置为 **false** 时可以为 `constraints.regex` 指定值。 在这种情况下，文本框并非必须具有值才能成功通过验证。 如果指定了一个值，则它必须与正则表达式模式匹配。
 
 ## <a name="next-steps"></a>后续步骤
 

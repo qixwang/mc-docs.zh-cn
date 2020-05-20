@@ -53,7 +53,7 @@ Azure 存储提供分层安全模型。 使用此模型可以根据所用网络�
 默认情况下，存储帐户接受来自任何网络上客户端的连接。 若要限制为仅允许选定网络访问，必须先更改默认操作。
 
 > [!WARNING]
-> 更改网络规则可能会使应用程序无法正常连接到 Azure 存储。 除非还应用了**授予**访问权限的特定网络规则，否则将默认网络规则设置为“拒绝”会阻止对数据的所有访问  。 在将默认规则更改为拒绝访问之前，务必先使用网络规则对所有许可网络授予访问权限。
+> 更改网络规则可能会使应用程序无法正常连接到 Azure 存储。 除非还应用了**授予**访问权限的特定网络规则，否则将默认网络规则设置为“拒绝”会阻止对数据的所有访问。 在将默认规则更改为拒绝访问之前，务必先使用网络规则对所有许可网络授予访问权限。
 
 ### <a name="managing-default-network-access-rules"></a>管理默认网络访问规则
 
@@ -275,7 +275,7 @@ IP 网络规则仅适用于**公共 Internet** IP 地址。 IP 规则不允许�
 
 1. 检查并确保已选择允许从“所选网络”进行访问  。
 
-1. 若要向 Internet IP 范围授予访问权限，请在“防火墙” > “地址范围”下输入 IP 地址或地址范围（采用 CIDR 格式）   。
+1. 若要向 Internet IP 范围授予访问权限，请在“防火墙” > “地址范围”下输入 IP 地址或地址范围（采用 CIDR 格式）。
 
 1. 若要删除某个 IP 网络规则，请单击该地址范围旁边的垃圾桶图标。
 
@@ -380,7 +380,7 @@ IP 网络规则仅适用于**公共 Internet** IP 地址。 IP 规则不允许�
 | Azure 网络         | Microsoft.Network          | 存储和分析网络流量日志。 [了解详细信息](/network-watcher/network-watcher-nsg-flow-logging-overview)。 |
 | Azure Site Recovery      | Microsoft.SiteRecovery     | 使用启用了防火墙的缓存、源或目标存储帐户时，请启用复制，以实现 Azure IaaS 虚拟机的灾难恢复。  [了解详细信息](/site-recovery/azure-to-azure-tutorial-enable-replication)。 |
 
-如果已显式[将 RBAC 角色分配](storage-auth-aad.md#assign-rbac-roles-for-access-rights)到以下服务的特定实例的[系统分配的托管标识](../../active-directory/managed-identities-azure-resources/overview.md)，则“允许受信任的 Microsoft 服务...”设置也允许该资源实例访问存储帐户。  在这种情况下，该实例的访问权限范围对应于分配到托管标识的 RBAC 角色。
+如果已显式[将 RBAC 角色分配](storage-auth-aad.md#assign-rbac-roles-for-access-rights)到以下服务的特定实例的[系统分配的托管标识](../../active-directory/managed-identities-azure-resources/overview.md)，则“允许受信任的 Microsoft 服务...”设置也允许该资源实例访问存储帐户。 在这种情况下，该实例的访问权限范围对应于分配到托管标识的 RBAC 角色。
 
 | 服务                        | 资源提供程序名称          | 目的            |
 | :----------------------------- | :------------------------------------- | :---------- |

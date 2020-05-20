@@ -63,7 +63,7 @@ ms.locfileid: "79291725"
 </choose>
 ```
 
-控制流策略必须包含至少一个 `<when/>` 元素。 `<otherwise/>` 元素是可选的。 `<when/>` 元素中的条件根据其在策略中的出现顺序求值。 将应用条件属性等于 `<when/>` 的第一个 `true` 元素中括住的策略语句。 在所有 `<otherwise/>` 元素条件属性为 `<when/>` 的情况下，将应用 `false` 元素中括住的策略（如果存在）。
+控制流策略必须包含至少一个 `<when/>` 元素。 `<otherwise/>` 元素是可选的。 `<when/>` 元素中的条件根据其在策略中的出现顺序求值。 将应用条件属性等于 `true` 的第一个 `<when/>` 元素中括住的策略语句。 在所有 `<when/>` 元素条件属性为 `false` 的情况下，将应用 `<otherwise/>` 元素中括住的策略（如果存在）。
 
 ### <a name="examples"></a>示例
 
@@ -73,9 +73,9 @@ ms.locfileid: "79291725"
 
 此 set-variable 策略位于入站节，用于创建 `isMobile` 布尔[上下文](api-management-policy-expressions.md#ContextVariables)变量，该变量在 `User-Agent` 请求标头包含文本 `iPad` 或 `iPhone` 的情况下设置为 true。
 
-第一项控制流策略也位于入站节，并会根据 [ 上下文变量的值有条件地应用两项](api-management-transformation-policies.md#SetQueryStringParameter)设置查询字符串参数`isMobile`策略之一。
+第一项控制流策略也位于入站节，并会根据 `isMobile` 上下文变量的值有条件地应用两项[设置查询字符串参数](api-management-transformation-policies.md#SetQueryStringParameter)策略之一。
 
-第二项控制流策略位于出站节，并会在 [ 设置为 ](api-management-transformation-policies.md#ConvertXMLtoJSON) 时有条件地应用`isMobile`将 XML 转换为 JSON`true` 策略。
+第二项控制流策略位于出站节，并会在 `isMobile` 设置为 `true` 时有条件地应用[将 XML 转换为 JSON](api-management-transformation-policies.md#ConvertXMLtoJSON) 策略。
 
 ```xml
 <policies>
@@ -131,7 +131,7 @@ ms.locfileid: "79291725"
 | 元素   | 说明                                                                                                                                                                                                                                                               | 必选 |
 | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | choose    | 根元素。                                                                                                                                                                                                                                                             | 是      |
-| when      | 条件，用于 `if` 策略的 `ifelse` 或 `choose` 部分。 如果 `choose` 策略包含多个 `when` 节，则按顺序对其求值。 一旦 when 元素的 `condition` 的求值结果为 `true`，不再对 `when` 条件求值。 | 是      |
+| when      | 条件，用于 `choose` 策略的 `if` 或 `ifelse` 部分。 如果 `choose` 策略包含多个 `when` 节，则按顺序对其求值。 一旦 when 元素的 `condition` 的求值结果为 `true`，不再对 `when` 条件求值。 | 是      |
 | otherwise | 包含策略代码片段，该片段在没有 `when` 条件的求值结果为 `true` 的情况下使用。                                                                                                                                                                               | 否       |
 
 ### <a name="attributes"></a>属性
@@ -467,7 +467,7 @@ status code and media type. If no example or schema found, the content is empty.
 > [!NOTE]
 > 仅指定 `interval` 时，则会执行**固定**时间间隔的重试。
 > 仅指定 `interval` 和 `delta` 时，将使用**线性**时间间隔重试算法，其中，两次重试之间的等待时间按以下公式计算：`interval + (count - 1)*delta`。
-> 指定 `interval`、`max-interval`、`delta` 时，将应用指数时间间隔重试算法，其中，两次重试之间的等待时间根据以下公式从 **值呈指数增长到** 值：`interval``max-interval``min(interval + (2^count - 1) * random(delta * 0.8, delta * 1.2), max-interval)`。
+> 指定 `interval`、`max-interval`、`delta` 时，将应用指数时间间隔重试算法，其中，两次重试之间的等待时间根据以下公式从 `interval` 值呈指数增长到 `max-interval` 值：`min(interval + (2^count - 1) * random(delta * 0.8, delta * 1.2), max-interval)`。
 
 ### <a name="usage"></a>使用情况
  此策略可在以下策略[节](./api-management-howto-policies.md#sections)和[范围](./api-management-howto-policies.md#scopes)中使用。 请注意，此策略会继承子策略使用限制。  
@@ -871,7 +871,7 @@ status code and media type. If no example or schema found, the content is empty.
 ##  <a name="trace"></a><a name="Trace"></a>跟踪  
 `trace` 策略将自定义跟踪添加到 API 检查器输出、Application Insights 遥测和/或诊断日志。
 * 触发跟踪时，策略将自定义跟踪添加到 [API 检查器](./api-management-howto-api-inspector.md)输出，即显示 `Ocp-Apim-Trace` 请求标头并将其设置为 `true`，将显示 `Ocp-Apim-Subscription-Key` 请求标头，其中包含允许跟踪的有效密钥。
-* 当启用 [Application Insights 集成](/azure-monitor/app/data-model-trace-telemetry)且在策略中指定的 [ 级别等于或高于在诊断设置中指定的 ](/api-management/api-management-howto-app-insights) 级别时，此策略在 Application Insights 中创建`severity`跟踪`verbosity`遥测。
+* 当启用 [Application Insights 集成](/api-management/api-management-howto-app-insights)且在策略中指定的 `severity` 级别等于或高于在诊断设置中指定的 `verbosity` 级别时，此策略在 Application Insights 中创建[跟踪](/azure-monitor/app/data-model-trace-telemetry)遥测。
 * 当启用[诊断日志](/api-management/api-management-howto-use-azure-monitor#diagnostic-logs)并且策略中指定的严重级别等于或高于诊断设置中指定的详细级别时，策略将在日志条目中添加属性。  
   
 

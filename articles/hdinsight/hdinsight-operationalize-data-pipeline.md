@@ -101,13 +101,13 @@ Azure SQL 数据库现已准备就绪。
 
     `http://headnodehost:8080`
 
-1. 若要从 Ambari 内部访问“Oozie Web 控制台”，请导航到“Oozie” **“快速链接”>“[活动服务器]”>“Oozie Web UI”。**   >   
+1. 若要从 Ambari 内部访问“Oozie Web 控制台”，请导航到“Oozie” > “快速链接”>“[活动服务器]”>“Oozie Web UI”。
 
 ## <a name="configure-hive"></a>配置 Hive
 
 ### <a name="upload-data"></a>上传数据
 
-1. 下载包含一个月航班数据的示例 CSV 文件。 从 `2017-01-FlightData.zip`HDInsight GitHub 存储库[下载其 ZIP 文件 ](https://github.com/hdinsight/hdinsight-dev-guide)，并将其解压到 CSV 文件 `2017-01-FlightData.csv`。
+1. 下载包含一个月航班数据的示例 CSV 文件。 从 [HDInsight GitHub 存储库](https://github.com/hdinsight/hdinsight-dev-guide)下载其 ZIP 文件 `2017-01-FlightData.zip`，并将其解压到 CSV 文件 `2017-01-FlightData.csv`。
 
 1. 将此 CSV 文件复制到附加到 HDInsight 群集的 Azure 存储帐户，并将其置于 `/example/data/flights` 文件夹中。
 
@@ -502,13 +502,13 @@ Azure SQL 数据库现已准备就绪。
 
 可以看到，大部分协调器仅将配置信息传递到工作流实例。 但是，有几点需要强调。
 
-* 第 1 点：`start` 元素上的 `end` 和 `coordinator-app` 属性控制协调器运行的时间间隔。
+* 第 1 点：`coordinator-app` 元素上的 `start` 和 `end` 属性控制协调器运行的时间间隔。
 
     ```
     <coordinator-app ... start="2017-01-01T00:00Z" end="2017-01-05T00:00Z" frequency="${coord:days(1)}" ...>
     ```
 
-    协调器负责按照 `start` 属性指定的间隔，在 `end` 和 `frequency` 日期范围内计划操作。 每个计划的操作反过来按配置运行工作流。 在上面的协调器定义中，协调器被配置为从 2017 年 1 月 1 日到 2017 年 1 月 5 日运行操作。 频率通过 [Oozie 表达式语言](https://oozie.apache.org/docs/4.2.0/CoordinatorFunctionalSpec.html#a4.4._Frequency_and_Time-Period_Representation)频率表达式 `${coord:days(1)}` 设置为 1 天。 通过此操作，协调器会按每天一次的频率计划一个操作（以及工作流）。 对于过去的日期范围，如本示例所示，操作将计划为无延迟运行。 操作运行计划的开始日期称为“名义时间”  。 例如，若要处理 2017 年 1 月 1 日的数据，协调器将把操作的名义时间计划为 2017-01-01T00:00:00 GMT。
+    协调器负责按照 `frequency` 属性指定的间隔，在 `start` 和 `end` 日期范围内计划操作。 每个计划的操作反过来按配置运行工作流。 在上面的协调器定义中，协调器被配置为从 2017 年 1 月 1 日到 2017 年 1 月 5 日运行操作。 频率通过 [Oozie 表达式语言](https://oozie.apache.org/docs/4.2.0/CoordinatorFunctionalSpec.html#a4.4._Frequency_and_Time-Period_Representation)频率表达式 `${coord:days(1)}` 设置为 1 天。 通过此操作，协调器会按每天一次的频率计划一个操作（以及工作流）。 对于过去的日期范围，如本示例所示，操作将计划为无延迟运行。 操作运行计划的开始日期称为“名义时间”  。 例如，若要处理 2017 年 1 月 1 日的数据，协调器将把操作的名义时间计划为 2017-01-01T00:00:00 GMT。
 
 * 第 2 点：在工作流的日期范围内，`dataset` 元素指定 HDFS 中查找特定日期范围的数据的位置，并配置 Oozie 如何确定数据是否可进行处理。
 

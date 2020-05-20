@@ -38,7 +38,7 @@ ms.locfileid: "69544401"
    ![选择数据源：将 Excel 连接到 SQL 数据库。](./media/sql-database-connect-excel/excel_data_source.png)
 
    此时会打开“数据连接”向导。
-3. 在“连接到数据库服务器”  对话框中，以格式 <**服务器名称**  .database.chinacloudapi.cn> 键入要连接到的 SQL 数据库的**服务器名称**。 例如，**msftestserver.database.chinacloudapi.cn**。 输入数据库名称（可选）。 选择“确定”以打开凭据窗口  。
+3. 在“连接到数据库服务器”对话框中，以格式 <*服务器名称*>**.database.chinacloudapi.cn** 键入要连接到的 SQL 数据库的**服务器名称**。 例如，**msftestserver.database.chinacloudapi.cn**。 输入数据库名称（可选）。 选择“确定”以打开凭据窗口  。
 
    ![“连接到数据库服务器”对话框](media/sql-database-connect-excel/server-name.png)
 

@@ -18,7 +18,7 @@ ms.locfileid: "70857171"
 ---
 # <a name="create-an-application-gateway-that-hosts-multiple-web-sites-using-the-azure-cli"></a>使用 Azure CLI 创建托管多个网站的应用程序网关
 
-创建[应用程序网关](multiple-site-overview.md)时，可以使用 Azure CLI [配置多个网站的托管](overview.md)。 本文使用虚拟机规模集定义后端地址池。 然后，基于所拥有的域配置侦听器和规则，以确保 Web 流量可到达池中的相应服务器。 本文假定你拥有多个域，并使用示例 www*contoso.com 和 www\.fabrikam.com* *\.* 。
+创建[应用程序网关](overview.md)时，可以使用 Azure CLI [配置多个网站的托管](multiple-site-overview.md)。 本文使用虚拟机规模集定义后端地址池。 然后，基于所拥有的域配置侦听器和规则，以确保 Web 流量可到达池中的相应服务器。 本文假定你拥有多个域，并使用示例 www\.contoso.com 和 www\.fabrikam.com。
 
 在本文中，学习如何：
 
@@ -42,7 +42,7 @@ ms.locfileid: "70857171"
 
 资源组是在其中部署和管理 Azure 资源的逻辑容器。 使用 [az group create](/cli/group) 创建资源组。
 
-以下示例在“chinanorth”  位置创建名为“myResourceGroupAG”  的资源组。
+以下示例在“chinanorth”位置创建名为“myResourceGroupAG”的资源组。
 
 ```azurecli
 az group create --name myResourceGroupAG --location chinanorth
@@ -50,7 +50,7 @@ az group create --name myResourceGroupAG --location chinanorth
 
 ## <a name="create-network-resources"></a>创建网络资源
 
-使用 *az network vnet create* 创建虚拟网络和名为 [myAGSubnet](/cli/network/vnet) 的子网。 然后，可以使用 [az network vnet subnet create](/cli/network/vnet/subnet) 添加后端服务器所需的子网。 使用 *az network public-ip create* 创建名为 [myAGPublicIPAddress](https://docs.azure.cn/zh-cn/cli/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) 的公共 IP 地址。
+使用 [az network vnet create](/cli/network/vnet) 创建虚拟网络和名为 *myAGSubnet* 的子网。 然后，可以使用 [az network vnet subnet create](/cli/network/vnet/subnet) 添加后端服务器所需的子网。 使用 [az network public-ip create](https://docs.azure.cn/zh-cn/cli/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) 创建名为 *myAGPublicIPAddress* 的公共 IP 地址。
 
 ```azurecli
 az network vnet create `

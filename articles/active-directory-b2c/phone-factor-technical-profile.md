@@ -33,7 +33,7 @@ Azure Active Directory B2C (Azure AD B2C) 支持注册和验证电话号码。 �
 
 ## <a name="protocol"></a>协议
 
-“Protocol”  元素的“Name”  属性必须设置为 `Proprietary`。 handler 属性必须包含 Azure AD B2C 对电话因素使用的协议处理程序程序集的完全限定名称：  `Web.TPEngine.Providers.PhoneFactorProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`
+“Protocol”元素的“Name”属性必须设置为 `Proprietary`。 handler 属性必须包含 Azure AD B2C 对电话因素使用的协议处理程序程序集的完全限定名称：`Web.TPEngine.Providers.PhoneFactorProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`
 
 以下示例演示了用于注册和验证的电话因素技术配置文件：
 

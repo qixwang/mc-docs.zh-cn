@@ -21,7 +21,7 @@ ms.locfileid: "75631668"
     ![查看资源或资源组的标记](./media/resource-manager-tag-resources/view-tags.png)
 1. 若要添加标记，请选择“单击此处以添加标记”  。
 
-1. 提供名称和值。 选择“ **”+** 以添加标记。
+1. 提供名称和值。 选择“+”以添加标记。
 
     ![添加标记](./media/resource-manager-tag-resources/add-tag.png)
 1. 根据需要继续添加标记。 完成后，选择“保存”  。
@@ -46,7 +46,7 @@ ms.locfileid: "75631668"
 
     ![分配标记](./media/resource-manager-tag-resources/assign-tags.png)
 
-1. 在每个名称和值后，选择“ **”+** 。 完成后，选择“分配”  。
+1. 在每个名称和值后，选择“+”。 完成后，选择“分配”  。
 
     ![选择“分配”](./media/resource-manager-tag-resources/select-assign.png)
 

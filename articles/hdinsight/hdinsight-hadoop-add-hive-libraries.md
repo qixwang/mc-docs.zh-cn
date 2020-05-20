@@ -31,7 +31,7 @@ ms.locfileid: "79295898"
 
 创建群集时，可以使用脚本操作修改创建的群集节点。 本文档中的脚本接受一个参数，即库的位置。 此位置必须位于 Azure 存储帐户中，并且库必须作为 jar 文件存储。
 
-在群集创建过程中，该脚本将枚举文件、将这些文件复制到头节点和工作节点上的 `/usr/lib/customhivelibs/` 目录，然后将它们添加到 `hive.aux.jars.path` 文件中的 `core-site.xml` 属性。 在基于 Linux 的群集中，它还会针对文件位置更新 `hive-env.sh` 文件。
+在群集创建过程中，该脚本将枚举文件、将这些文件复制到头节点和工作节点上的 `/usr/lib/customhivelibs/` 目录，然后将它们添加到 `core-site.xml` 文件中的 `hive.aux.jars.path` 属性。 在基于 Linux 的群集中，它还会针对文件位置更新 `hive-env.sh` 文件。
 
 使用本文中的脚本操作，可以在使用 Hive 客户端 **WebHCat** 和 **HiveServer2** 时提供库。
 

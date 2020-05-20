@@ -96,7 +96,7 @@ ms.locfileid: "79543774"
 
 ### <a name="specify-provider-data-sources-in-tabular-1400-and-higher-model-projects"></a>在表格 1400 和更高版本的模型项目中指定提供程序数据源
 
-若要启用提供程序数据源，请在 Visual Studio 中单击“工具” **“选项”** “Analysis Services 表格” > “数据导入”，然后选择“启用旧数据源”。   >    >   
+若要启用提供程序数据源，请在 Visual Studio 中单击“工具” > “选项” > “Analysis Services 表格” > “数据导入”，然后选择“启用旧数据源”。
 
 ![启用旧数据源](media/analysis-services-datasource/aas-enable-legacy-datasources.png)
 

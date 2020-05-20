@@ -129,7 +129,7 @@ Site Recovery 与应用程序无关，应与在受支持的计算机上运行的
 
 > [!NOTE]
 > 选择以下 `Deploy to Azure` 后，选择 `Edit template` 并根据 Azure 中国区环境更新以下项。
-> * 在第 14 行中，将 `allowedValues` 参数的 `automationRegion` 属性替换为以下项。
+> * 在第 14 行中，将 `automationRegion` 参数的 `allowedValues` 属性替换为以下项。
 >   `chinaeast2,chinanorth,chinanorth2`
 > * 选择“保存”。
     

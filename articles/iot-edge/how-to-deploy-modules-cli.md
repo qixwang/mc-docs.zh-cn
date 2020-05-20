@@ -113,7 +113,7 @@ ms.locfileid: "80586695"
 
 应用使用模块信息配置的部署清单即可将模块部署至设备。
 
-将目录更改到保存有部署清单的文件夹。 如果使用了 VS Code IoT Edge 模板之一，请使用解决方案目录的 `deployment.json`config**文件夹中的** 文件，而不是使用 `deployment.template.json` 文件。
+将目录更改到保存有部署清单的文件夹。 如果使用了 VS Code IoT Edge 模板之一，请使用解决方案目录的 **config** 文件夹中的 `deployment.json` 文件，而不是使用 `deployment.template.json` 文件。
 
 使用以下命令将配置应用于 IoT Edge 设备：
 

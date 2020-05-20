@@ -100,7 +100,7 @@ Visual Studio 会创建应用程序项目和执行组件服务项目，并在解
 
 选择要将内容部署到其中的 Azure 帐户（如果尚未这样做）。 如果还没有该帐户，请[注册一个][create-account]。
 
-在“连接终结点”下，选择要将内容部署到其中的 Service Fabric 群集。  如果没有该群集，请选择“**新建群集...&lt;”&gt;** ，此时会打开通往 Azure 门户的 Web 浏览器窗口。 有关详细信息，请参阅[在门户中创建群集](service-fabric-cluster-creation-via-portal.md#create-cluster-in-the-azure-portal)。 
+在“连接终结点”下，选择要将内容部署到其中的 Service Fabric 群集。  如果没有该群集，请选择“&lt;新建群集...&gt;”，此时会打开通往 Azure 门户的 Web 浏览器窗口。 有关详细信息，请参阅[在门户中创建群集](service-fabric-cluster-creation-via-portal.md#create-cluster-in-the-azure-portal)。 
 
 创建 Service Fabric 群集时，请确保将“自定义终结点”设置设为“80”。  
 

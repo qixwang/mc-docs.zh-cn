@@ -161,17 +161,17 @@ using HitHighlights = System.Collections.Generic.IDictionary<string, System.Coll
 
 ### <a name="change-to-synonymmap"></a>对 SynonymMap 的更改 
 
-`SynonymMap` 构造函数不再为 `enum` 提供 `SynonymMapFormat` 参数。 此枚举只有一个值，因此是多余的。 如果因此看到生成错误，只需删除对 `SynonymMapFormat` 参数的引用即可。
+`SynonymMap` 构造函数不再为 `SynonymMapFormat` 提供 `enum` 参数。 此枚举只有一个值，因此是多余的。 如果因此看到生成错误，只需删除对 `SynonymMapFormat` 参数的引用即可。
 
 ### <a name="miscellaneous-model-class-changes"></a>其他模型类更改
 
-`AutocompleteMode` 的 `AutocompleteParameters` 属性不再可为 null。 如果代码将此属性分配到 `null`，则你只需删除该代码，该属性会自动初始化为默认值。
+`AutocompleteParameters` 的 `AutocompleteMode` 属性不再可为 null。 如果代码将此属性分配到 `null`，则你只需删除该代码，该属性会自动初始化为默认值。
 
 `IndexAction` 构造函数的参数顺序现已更改，此构造函数会自动生成。 我们建议使用工厂方法 `IndexAction.Upload`、`IndexAction.Merge` 等，而不要使用此构造函数。
 
 ### <a name="removed-preview-features"></a>删除了预览功能
 
-如果从版本 8.0-preview 升级到版本 9，请注意，使用客户托管密钥进行加密的功能已删除，因为此功能仍为预览版。 具体而言，已删除 `EncryptionKey` 和 `Index` 的 `SynonymMap` 属性。
+如果从版本 8.0-preview 升级到版本 9，请注意，使用客户托管密钥进行加密的功能已删除，因为此功能仍为预览版。 具体而言，已删除 `Index` 和 `SynonymMap` 的 `EncryptionKey` 属性。
 
 如果应用程序硬依赖于这些功能，则将无法升级到 Azure 搜索 .NET SDK 的版本 9。 可继续使用版本 8.0-preview。 但是，请记住，**我们不建议在生产应用程序中使用预览版 SDK**。 预览功能仅用于评估，并且可能会更改。
 
@@ -180,7 +180,7 @@ using HitHighlights = System.Collections.Generic.IDictionary<string, System.Coll
 
 ### <a name="behavioral-change-in-data-retrieval"></a>数据检索的行为变更
 
-如果使用返回 `Search` 的类型实例的“动态类型化”`Suggest`、`Get` 或 `Document` API，请注意，它们现在会将空的 JSON 数组反序列化为 `object[]` 而不是 `string[]`。
+如果使用返回 `Document` 的类型实例的“动态类型化”`Search`、`Suggest` 或 `Get` API，请注意，它们现在会将空的 JSON 数组反序列化为 `object[]` 而不是 `string[]`。
 
 ## <a name="conclusion"></a>结束语
 如果需要有关如何使用 Azure 搜索 .NET SDK 的更多详细信息，请参阅 [.NET 操作指南](search-howto-dotnet-sdk.md)。

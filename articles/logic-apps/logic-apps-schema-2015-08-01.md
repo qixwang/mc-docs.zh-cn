@@ -27,8 +27,8 @@ ms.locfileid: "63830132"
 
 适用于 Azure 逻辑应用的这个架构和 API 版本包含多项关键改进，使逻辑应用更可靠且更易于使用：
 
-* “APIApp”操作类型现在名为“**APIConnection**”[  ](#api-connections)。
-* “Repeat”操作现在名为“**Foreach**”[  ](#foreach)。
+* “APIApp”操作类型现在名为“[APIConnection](#api-connections)”。
+* “Repeat”操作现在名为“[Foreach](#foreach)”。
 * 不再需要 [**HTTP 侦听器** API 应用](#http-listener)。
 * 调用子工作流会使用[新架构](#child-workflows)。
 
@@ -85,7 +85,7 @@ GET https://management.azure.cn/subscriptions/<Azure-subscription-ID>/providers/
 ```
 
 使用 API 时，该 API 可以定义也可以不定义任何连接参数  。 因此，如果 API 未定义这些参数，则不需要任何连接。 如果 API 定义了这些参数，则必须创建含有指定名称的连接。  
-然后，可以在 `connection` 对象内的 `host` 对象中引用该名称。 若要在资源组中创建连接，请调用此方法：
+然后，可以在 `host` 对象内的 `connection` 对象中引用该名称。 若要在资源组中创建连接，请调用此方法：
 
 ```text
 PUT https://management.azure.cn/subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group-name>/providers/Microsoft.Web/connections/<name>?api-version=2015-08-01-preview

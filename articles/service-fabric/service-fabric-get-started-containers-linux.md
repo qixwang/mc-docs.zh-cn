@@ -204,7 +204,7 @@ docker push myregistry.azurecr.cn/samples/helloworldapp
 
 从 v6.1 开始，Service Fabric 自动将 [docker HEALTHCHECK](https://docs.docker.com/engine/reference/builder/#healthcheck) 事件集成到其系统运行状况报告。 这意味着，如果容器启用了 **HEALTHCHECK**，则只要容器的运行状况状态如 Docker 所报告的那样更改，Service Fabric 就会报告运行状况。  当 [health_status](service-fabric-visualizing-your-cluster.md) 为“正常”  时，会在 *Service Fabric Explorer* 中显示运行状况报告“正常”；  当 *health_status* 为“不正常”时，  会显示“警告”。 
 
-从 v6.4 的最新更新版开始，可以选择指定应将 Docker HEALTHCHECK 评估报告为错误。 如果此选项已启用，当 **health_status** 为“正常”时，将显示“正常”运行状况报告；当 *health_status* 为“不正常”时，将显示“错误”运行状况报告     。
+从 v6.4 的最新更新版开始，可以选择指定应将 Docker HEALTHCHECK 评估报告为错误。 如果此选项已启用，当 *health_status* 为“正常”时，将显示“正常”运行状况报告；当 *health_status* 为“不正常”时，将显示“错误”运行状况报告。
 
 生成容器映像时使用的 Dockerfile 中必须存在 **HEALTHCHECK** 指令，该指令指向监视容器运行状况时执行的实际检查。
 
@@ -232,7 +232,7 @@ docker push myregistry.azurecr.cn/samples/helloworldapp
 
 如果 *RestartContainerOnUnhealthyDockerHealthStatus* 设置为 **true**，则会重启（可能在其他节点上进行）反复报告“不正常”的容器。
 
-如果 *TreatContainerUnhealthyStatusAsError* 设置为 **true**，当容器的 **health_status** 为“运行不正常”时，将显示“错误”运行状况报告   。
+如果 *TreatContainerUnhealthyStatusAsError* 设置为 **true**，当容器的 *health_status* 为“运行不正常”时，将显示“错误”运行状况报告。
 
 若要禁用整个 Service Fabric 群集的 **HEALTHCHECK** 集成，则需将 [EnableDockerHealthCheckIntegration](service-fabric-cluster-fabric-settings.md) 设置为 **false**。
 
@@ -363,7 +363,7 @@ docker rmi myregistry.azurecr.cn/samples/helloworldapp
 
 若要将其他容器服务添加到使用 yeoman 创建的应用程序，请执行以下步骤：
 
-1. 将目录更改为现有应用程序的根目录。 例如，如果 `cd ~/YeomanSamples/MyApplication` 是 Yeoman 创建的应用程序，则使用 `MyApplication`。
+1. 将目录更改为现有应用程序的根目录。 例如，如果 `MyApplication` 是 Yeoman 创建的应用程序，则使用 `cd ~/YeomanSamples/MyApplication`。
 2. `yo azuresfcontainer:AddService`运行 {2}
 
 <a name="manually"></a>

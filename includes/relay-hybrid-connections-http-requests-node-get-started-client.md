@@ -27,7 +27,7 @@ ms.locfileid: "63845474"
 
 ### <a name="write-some-code-to-send-messages"></a>编写一些代码来发送消息
 
-1. 在 `constants` 文件的顶部，添加以下`sender.js`。
+1. 在 `sender.js` 文件的顶部，添加以下`constants`。
    
     ```js
     const https = require('hyco-https');

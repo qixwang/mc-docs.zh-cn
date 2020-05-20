@@ -36,7 +36,7 @@ ms.locfileid: "76116889"
 
 ## <a name="create-a-timer-triggered-function"></a>创建计时器触发的函数
 
-1. 展开 Function App，单击“Functions”旁边的  **按钮+**  。 如果这是函数应用中的第一个函数，请依次选择“门户中”  、“继续”  。 否则，请转到步骤 3。
+1. 展开 Function App，单击“Functions”旁边的 + 按钮。 如果这是函数应用中的第一个函数，请依次选择“门户中”  、“继续”  。 否则，请转到步骤 3。
 
    ![Azure 门户中的 Functions 快速入门页](./media/functions-create-scheduled-function/function-app-quickstart-choose-portal.png)
 

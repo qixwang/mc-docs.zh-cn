@@ -122,7 +122,7 @@ SELECT deviceId FROM devices
   WHERE configurations.[[yourconfigname]].status='Applied'
 ```
 
-如果要构建用于报告已配置模块的指标，请从 `moduleId` 中选择 `devices.modules`。 例如：
+如果要构建用于报告已配置模块的指标，请从 `devices.modules` 中选择 `moduleId`。 例如：
 
 ```sql
 SELECT deviceId, moduleId FROM devices.modules

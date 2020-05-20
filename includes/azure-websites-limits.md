@@ -8,8 +8,8 @@ ms.locfileid: "68912297"
 ---
 | 资源 | 免费 | 共享（预览） | 基本 | Standard | Premium </th> |
 | --- | --- | --- | --- | --- | --- |
-| 每个[应用服务计划](/app-service/)的 [Web 应用、移动应用或 API 应用数](../articles/app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)<sup>1</sup> |10 |100 |无限制<sup>2</sup> |无限制<sup>2</sup> |无限制<sup>2</sup> |
-| 每个[应用服务计划](/logic-apps/)的[逻辑应用数](../articles/app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)</a><sup>1</sup> |10 |10 |10 |每个核心 20 个 |每个核心 20 个 |
+| 每个[应用服务计划](../articles/app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)的 [Web 应用、移动应用或 API 应用数](/app-service/)<sup>1</sup> |10 |100 |无限制<sup>2</sup> |无限制<sup>2</sup> |无限制<sup>2</sup> |
+| 每个[应用服务计划](../articles/app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)的[逻辑应用数](/logic-apps/)</a><sup>1</sup> |10 |10 |10 |每个核心 20 个 |每个核心 20 个 |
 | [应用服务计划](../articles/app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md) |每个区域 1 个 |每个资源组 10 个 |每个资源组 100 个 |每个资源组 100 个 |每个资源组 100 个 |
 | 计算实例类型 |共享 |共享 |专用<sup>3</sup> |专用<sup>3</sup> |专用<sup>3</sup></p> |
 | [横向扩展](../articles/app-service/web-sites-scale.md)（最大实例数） |1 个共享 |1 个共享 |3 个专用<sup>3</sup> |10 个专用<sup>3</sup> |20 个专用（50 个在 ASE 中）<sup>3,4</sup> |

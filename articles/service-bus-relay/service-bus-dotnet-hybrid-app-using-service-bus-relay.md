@@ -100,8 +100,8 @@ ms.locfileid: "78154984"
 
    现已引用所需的客户端程序集。
 
-1. 为产品协定添加新类。 在“解决方案资源管理器”中，右键单击“ProductsServer”项目并选择“添加” **“类”。**    >  
-1. 在“名称”中输入名称 **ProductsContract.cs**，然后选择“添加”。  
+1. 为产品协定添加新类。 在“解决方案资源管理器”中，右键单击“ProductsServer”项目并选择“添加” > “类”。
+1. 在“名称”中输入名称 *ProductsContract.cs*，然后选择“添加”。
 
 对解决方案进行以下代码更改：
 
@@ -234,7 +234,7 @@ ms.locfileid: "78154984"
     </appSettings>
     ```
 
-1. 按 Ctrl+Shift+B 或者选择“生成” **“生成解决方案”以生成应用程序，并验证到目前为止操作的准确性。**  >  
+1. 按 Ctrl+Shift+B 或者选择“生成” > “生成解决方案”以生成应用程序，并验证到目前为止操作的准确性。
 
 ## <a name="create-an-aspnet-application"></a>创建 ASP.NET 应用程序
 
@@ -256,7 +256,7 @@ ms.locfileid: "78154984"
 
 1. 返回“创建新 ASP.NET Web 应用程序”，选择“创建”以创建 MVC 应用。  
 1. 配置新 Web 应用的 Azure 资源。 遵循[发布 Web 应用](../app-service/app-service-web-get-started-dotnet-framework.md#launch-the-publish-wizard)中的步骤。 然后，返回本教程并继续执行下一步。
-1. 在“解决方案资源管理器”中，右键单击“模型”并选择“添加” **“类”。**    >  
+1. 在“解决方案资源管理器”中，右键单击“模型”并选择“添加” > “类”。
 1. 将类命名为 *Product.cs*，然后选择“添加”。 
 
     ![创建产品模型][17]
@@ -301,13 +301,13 @@ ms.locfileid: "78154984"
     }
     ```
 
-1. 在“解决方案资源管理器”中展开“视图” **“共享”，然后双击“_Layout.cshtml”在 Visual Studio 编辑器中打开该文件。**   >   
+1. 在“解决方案资源管理器”中展开“视图” > “共享”，然后双击“_Layout.cshtml”在 Visual Studio 编辑器中打开该文件。
 1. 将出现的所有 `My ASP.NET Application` 更改为“Northwind Traders 产品”。 
 1. 删除 `Home`、`About` 和 `Contact` 链接。 在下面的示例中，删除突出显示的代码。
 
     ![删除生成的列表项][41]
 
-1. 在“解决方案资源管理器”中展开“视图” **“主目录”，然后双击“Index.cshtml”在 Visual Studio 编辑器中打开该文件。**   >    将文件的全部内容替换为以下代码：
+1. 在“解决方案资源管理器”中展开“视图” > “主目录”，然后双击“Index.cshtml”在 Visual Studio 编辑器中打开该文件。 将文件的全部内容替换为以下代码：
 
    ```html
    @model IEnumerable<ProductsWeb.Models.Product>
@@ -360,11 +360,11 @@ ms.locfileid: "78154984"
 
 下一步是将本地产品服务器与 ASP.NET 应用程序挂钩。
 
-1. 如果尚未打开在**创建 ASP.NET 应用程序**部分中创建的 [ProductsPortal](#create-an-aspnet-application) 项目，请在 Visual Studio 中重新打开该项目。
+1. 如果尚未打开在[创建 ASP.NET 应用程序](#create-an-aspnet-application)部分中创建的 **ProductsPortal** 项目，请在 Visual Studio 中重新打开该项目。
 1. 采用与[创建本地服务器](#create-an-on-premises-server)部分类似的步骤，将 NuGet 包添加到项目引用中。 在“解决方案资源管理器”中，右键单击“ProductsPortal”项目并选择“管理 NuGet 包”。   
 1. 搜索“WindowsAzure.ServiceBus”，然后选择“WindowsAzure.ServiceBus”   项。 然后完成安装过程并关闭此对话框。
-1. 在“解决方案资源管理器”中，右键单击“ProductsPortal”项目并选择“添加” **“现有项”。**    >  
-1. 从 *ProductsServer* 控制台项目导航到 **ProductsContract.cs** 文件。 突出显示“ProductsContract.cs”。  选择“添加”  旁边的向下箭头，然后选择“添加为链接”  。
+1. 在“解决方案资源管理器”中，右键单击“ProductsPortal”项目并选择“添加” > “现有项”。
+1. 从 **ProductsServer** 控制台项目导航到 *ProductsContract.cs* 文件。 突出显示“ProductsContract.cs”。  选择“添加”  旁边的向下箭头，然后选择“添加为链接”  。
 
    ![添加为链接][24]
 
@@ -410,14 +410,14 @@ ms.locfileid: "78154984"
    }
    ```
 
-1. 在“解决方案资源管理器”中右键单击“ProductsPortal”解决方案。   请务必右键单击该解决方案而不是项目。 选择“添加” **“现有项目”。**  >  
+1. 在“解决方案资源管理器”中右键单击“ProductsPortal”解决方案。   请务必右键单击该解决方案而不是项目。 选择“添加” > “现有项目”。
 1. 导航到 **ProductsServer** 项目，然后双击“ProductsServer.csproj”  解决方案文件以将其添加。
 1. **ProductsServer** 必须正在运行才能显示 **ProductsPortal** 中的数据。 在“解决方案资源管理器”中，右键单击“ProductsPortal”解决方案并选择“属性”以显示“属性页”。    
-1. 选择“通用属性” **“启动项目”，然后选择“多个启动项目”。**  >    确保 **ProductsServer** 和 **ProductsPortal** 按此顺序显示，并且两者的操作为“启动”。  
+1. 选择“通用属性” > “启动项目”，然后选择“多个启动项目”。 确保 **ProductsServer** 和 **ProductsPortal** 按此顺序显示，并且两者的操作为“启动”。  
 
       ![多个启动项目][25]
 
-1. 选择左侧的“通用属性” **“项目依赖项”。**  >  
+1. 选择左侧的“通用属性” > “项目依赖项”。
 1. 对于“项目”，请选择“ProductsPortal”。   确保已选择 **ProductsServer** 。
 
     ![项目依赖项][26]
@@ -430,7 +430,7 @@ ms.locfileid: "78154984"
 
 ![Web 应用程序][10]
 
-在“ProductsPortal”  页上选择“刷新”  。 每次刷新该页面时，都会看到服务器应用在调用来自 `GetProducts()`ProductsServer**的** 时显示一条消息。
+在“ProductsPortal”页上选择“刷新”。 每次刷新该页面时，都会看到服务器应用在调用来自 **ProductsServer** 的 `GetProducts()` 时显示一条消息。
 
 关闭这两个应用程序，然后转到下一部分。
 
@@ -457,8 +457,8 @@ ms.locfileid: "78154984"
 
     ![启动 URL][27]
 
-1. 选择“文件” **“全部保存”。**  >  
-1. 选择“生成” **“重新生成解决方案”。**  >  
+1. 选择“文件” > “全部保存”。
+1. 选择“生成” > “重新生成解决方案”。
 
 ## <a name="run-the-application"></a>运行应用程序
 
@@ -472,7 +472,7 @@ ms.locfileid: "78154984"
    > **ProductsServer** 控制台应用程序必须正在运行，而且能够为 **ProductsPortal** 应用程序提供数据。 如果浏览器显示错误，请多等几秒钟，让 **ProductsServer** 加载并显示以下消息；然后刷新浏览器。
    >
 
-在浏览器中刷新“ProductsPortal”页。  每次刷新该页面时，都会看到服务器应用在调用来自 `GetProducts()`ProductsServer**的** 时显示一条消息。
+在浏览器中刷新“ProductsPortal”页。  每次刷新该页面时，都会看到服务器应用在调用来自 **ProductsServer** 的 `GetProducts()` 时显示一条消息。
 
 ![更新的输出][38]
 

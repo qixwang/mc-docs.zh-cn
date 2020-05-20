@@ -25,7 +25,7 @@ ms.locfileid: "80517007"
 > [!NOTE]
 > 这些说明引用 Consul 版本 `1.6.0`，并至少使用 Helm 版本 `2.14.2`。
 >
-> 可针对 Kubernetes 版本 `1.6.x` 运行 Consul `1.13+` 版本。 可以在 [GitHub - Consul 版本][consul-github-releases]中找到其他 Consul 版本，并可以在 [Consul - 发行说明][consul-release-notes]中找到有关每个版本的信息。
+> 可针对 Kubernetes 版本 `1.13+` 运行 Consul `1.6.x` 版本。 可以在 [GitHub - Consul 版本][consul-github-releases]中找到其他 Consul 版本，并可以在 [Consul - 发行说明][consul-release-notes]中找到有关每个版本的信息。
 
 在本文中，学习如何：
 

@@ -26,7 +26,7 @@ Azure Active Directory B2C (Azure AD B2C) 使用 Azure 多重身份验证 (MFA) 
 
 此技术配置文件：
 
-- 不提供与用户交互的接口， 而是从[自断言](self-asserted-technical-profile.md)技术配置文件或充当[验证技术配置文件](display-controls.md)的[显示控件](validation-technical-profile.md)中调用用户界面。
+- 不提供与用户交互的接口， 而是从[自断言](self-asserted-technical-profile.md)技术配置文件或充当[验证技术配置文件](validation-technical-profile.md)的[显示控件](display-controls.md)中调用用户界面。
 - 使用 Azure MFA 服务生成代码并将其发送到某个手机号，然后验证该代码。  
 - 通过文本消息验证电话号码。
 
@@ -34,7 +34,7 @@ Azure Active Directory B2C (Azure AD B2C) 使用 Azure 多重身份验证 (MFA) 
 
 ## <a name="protocol"></a>协议
 
-“Protocol”  元素的“Name”  属性必须设置为 `Proprietary`。 handler 属性必须包含 Azure AD B2C 使用的协议处理程序程序集的完全限定名称  ：
+“Protocol”元素的“Name”属性必须设置为 `Proprietary`。 handler 属性必须包含 Azure AD B2C 使用的协议处理程序程序集的完全限定名称  ：
 
 ```
 Web.TPEngine.Providers.AzureMfaProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null

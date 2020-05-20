@@ -31,7 +31,7 @@ search "error"
 如上所示的无范围查询尽管用法简单，但并不高效，且可能返回大量不相关的结果。 更好的做法是在相关表甚至特定的列中执行搜索。
 
 ### <a name="table-scoping"></a>表范围限定
-若要在特定的表中搜索某个词语，请紧靠在 `in (table-name)`search**运算符的后面添加**：
+若要在特定的表中搜索某个词语，请紧靠在 **search** 运算符的后面添加 `in (table-name)`：
 
 ```Kusto
 search in (Event) "error"

@@ -32,7 +32,7 @@ ms.locfileid: "75335604"
 
 ## <a name="prerequisites"></a>先决条件
 
-- 如果不熟悉 Azure 资源的托管标识，请查阅[概述部分](overview.md)。 请务必了解[系统分配的托管标识与用户分配的托管标识之间的差异](overview.md#how-does-the-managed-identities-for-azure-resources-work)  。
+- 如果不熟悉 Azure 资源的托管标识，请查阅[概述部分](overview.md)。 请务必了解[系统分配的托管标识与用户分配的托管标识之间的差异](overview.md#how-does-the-managed-identities-for-azure-resources-work)。
 - 如果还没有 Azure 帐户，请先[注册试用帐户](https://www.azure.cn/pricing/1rmb-trial/)，然后再继续。
 - 安装[最新版本的 Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps)（如果尚未安装）。
 
@@ -45,7 +45,7 @@ ms.locfileid: "75335604"
    ```powershell
    Connect-AzAccount -Environment AzureChinaCloud
    ```
-2. 此示例要授予 Azure VM 对存储帐户的访问权限。 首先，我们使用 [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) 获取名为 `myVM` 的 VM 的服务主体，该 VM 是在启用托管标识时创建的。 然后，使用 [New-AzRoleAssignment](https://docs.microsoft.com/powershell/module/Az.Resources/New-AzRoleAssignment) 向 VM 提供对名为 `myStorageAcct` 的存储帐户的“读者”访问权限  ：
+2. 此示例要授予 Azure VM 对存储帐户的访问权限。 首先，我们使用 [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) 获取名为 `myVM` 的 VM 的服务主体，该 VM 是在启用托管标识时创建的。 然后，使用 [New-AzRoleAssignment](https://docs.microsoft.com/powershell/module/Az.Resources/New-AzRoleAssignment) 向 VM 提供对名为 `myStorageAcct` 的存储帐户的“读者”访问权限：
 
     ```powershell
     $spID = (Get-AzVM -ResourceGroupName myRG -Name myVM).identity.principalid

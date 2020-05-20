@@ -45,7 +45,7 @@ ms.locfileid: "74084789"
 在“更新许可证分配”页上，如果看到某些复选框不可用，则表示相应的服务不可更改，因为它们继承自组许可证。 
 
 1. 使用 Azure AD 组织中的许可证管理员帐户登录到 [Azure 门户](https://portal.azure.cn/)。
-1. 选择“Azure Active Directory” **“用户”，然后打开该用户对应的“配置文件”页。**  >   
+1. 选择“Azure Active Directory” > “用户”，然后打开该用户对应的“配置文件”页。
 1. 选择“许可证”。 
 1. 选择“分配”以编辑用户或组的许可证分配。  可以在“分配”页中解决许可证分配冲突。 
 1. 选中 Office 366 E3 对应的复选框，并确保至少选择了分配给用户的所有 E1 服务。
@@ -60,7 +60,7 @@ Azure AD 将应用新许可证，同时删除旧许可证以提供服务连续�
 ## <a name="change-group-license-assignments"></a>更改组许可证分配
 
 1. 使用 Azure AD 组织中的许可证管理员帐户登录到 [Azure 门户](https://portal.azure.cn/)。
-1. 选择“Azure Active Directory” **“组”，然后打开组的“概述”页。**  >   
+1. 选择“Azure Active Directory” > “组”，然后打开组的“概述”页。
 1. 选择“许可证”。 
 1. 选择“分配”命令以编辑用户或组的许可证分配。 
 1. 选中 Office 366 E3 对应的复选框。 为了保持服务连续性，请确保选择已分配给用户的所有 E1 服务。

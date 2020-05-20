@@ -72,7 +72,7 @@ the data source API will no longer return in the response of any REST operation,
 除重新生成应用程序之外，版本 3 中只有少量可能需要更改代码的重大更改。
 
 ### <a name="indexesgetclient-return-type"></a>Indexes.GetClient 返回类型
-`Indexes.GetClient` 方法具有新的返回类型。 以前，它返回 `SearchIndexClient`，但在版本 2.0-preview 中已将此项更改为 `ISearchIndexClient`，而该更改将传递给版本 3。 这是为了支持想要通过返回 `GetClient` 的模拟实现，来模拟测试单元的 `ISearchIndexClient` 方法的客户。
+`Indexes.GetClient` 方法具有新的返回类型。 以前，它返回 `SearchIndexClient`，但在版本 2.0-preview 中已将此项更改为 `ISearchIndexClient`，而该更改将传递给版本 3。 这是为了支持想要通过返回 `ISearchIndexClient` 的模拟实现，来模拟测试单元的 `GetClient` 方法的客户。
 
 #### <a name="example"></a>示例
 如果代码如下所示：

@@ -62,7 +62,7 @@ $virtualNetwork = New-AzVirtualNetwork `
 
 ### <a name="add-a-subnet"></a>添加子网
 
-Azure 将资源部署到虚拟网络中的子网，因此需要创建子网。 使用 [Add-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/add-azvirtualnetworksubnetconfig) 创建名为“default”  的子网配置：
+Azure 将资源部署到虚拟网络中的子网，因此需要创建子网。 使用 [Add-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/add-azvirtualnetworksubnetconfig) 创建名为“default”的子网配置：
 
 ```powershell
 $subnetConfig = Add-AzVirtualNetworkSubnetConfig `
@@ -148,7 +148,7 @@ mstsc /v:<publicIpAddress>
 1. 输入在创建 VM 时指定的用户名和密码。
 
     > [!NOTE]
-    > 可能需要选择“更多选择” > “使用其他帐户”，以指定在创建 VM 时输入的凭据   。
+    > 可能需要选择“更多选择” > “使用其他帐户”，以指定在创建 VM 时输入的凭据。
 
 1. 选择“确定”  。
 

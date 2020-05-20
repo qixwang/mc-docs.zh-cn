@@ -60,7 +60,7 @@ ms.locfileid: "79291373"
 * 如果多次执行 *AppCmd.exe* 操作，则可能会生成错误。 例如，尝试将某个节添加到 Web.config  中两次会生成错误。
 * 如果启动任务返回非零退出代码或 **errorlevel**，则为失败。 例如，AppCmd.exe  生成错误时。
 
-比较明智的做法通常是在调用 AppCmd.exe  之后检查 *errorlevel*，如果使用 .cmd  文件包装对 AppCmd.exe  的调用，则很容易做到这一点。 如果检测到已知的 **errorlevel** 响应，可以将其忽略，否则将其返回。
+比较明智的做法通常是在调用 AppCmd.exe 之后检查 **errorlevel**，如果使用 .cmd 文件包装对 AppCmd.exe 的调用，则很容易做到这一点。 如果检测到已知的 **errorlevel** 响应，可以将其忽略，否则将其返回。
 
 *AppCmd.exe* 返回的 errorlevel 在 winerror.h 文件中列出，并且还可以在 [MSDN](https://docs.microsoft.com/windows/desktop/Debug/system-error-codes--0-499-) 上看到。
 
@@ -119,7 +119,7 @@ EXIT %ERRORLEVEL%
 ```
 
 ## <a name="add-firewall-rules"></a>添加防火墙规则
-在 Azure 中，实际上有两个防火墙。 第一个防火墙控制虚拟机与外界之间的连接。 此防火墙由 [ServiceDefinition.csdef] 文件中的 [ServiceDefinition.csdef] 元素控制。
+在 Azure 中，实际上有两个防火墙。 第一个防火墙控制虚拟机与外界之间的连接。 此防火墙由 [ServiceDefinition.csdef] 文件中的 [EndPoints] 元素控制。
 
 第二个防火墙控制虚拟机与该虚拟机中的进程之间的连接。 可以通过 `netsh advfirewall firewall` 命令行工具控制此防火墙。
 
@@ -180,7 +180,7 @@ powershell -ExecutionPolicy Unrestricted -command "Install-WindowsFeature Web-IP
 
 此任务将导致每次初始化 Web 角色时都运行 **startup.cmd** 批处理文件，从而确保所需的 **ipSecurity** 节处于解锁状态。
 
-最后，修改 web 角色的 [web.config](https://www.iis.net/configreference/system.webserver/security/ipsecurity#005) 文件的 **system.webServer 节**以添加授予访问权限的 IP 地址列表，如下面的示例所示：
+最后，修改 web 角色的 **web.config** 文件的 [system.webServer 节](https://www.iis.net/configreference/system.webserver/security/ipsecurity#005)以添加授予访问权限的 IP 地址列表，如下面的示例所示：
 
 此示例配置**允许**所有 IP（两个已定义的 IP 除外）访问服务器
 
@@ -459,7 +459,7 @@ EXIT %ERRORLEVEL%
 ```
 
 > [!TIP]
-> **StartupLog.txt** 文件位于 C:\Resources\temp *{role identifier}\RoleTemp\\* 文件夹中。
+> **StartupLog.txt** 文件位于 C:\Resources\temp\\{role identifier}\RoleTemp 文件夹中。
 > 
 > 
 

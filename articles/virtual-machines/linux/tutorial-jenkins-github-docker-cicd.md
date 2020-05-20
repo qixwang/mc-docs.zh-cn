@@ -169,9 +169,9 @@ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 
 - 输入 *HelloWorld* 作为作业名称。 选择“自由风格项目”  ，然后选择“确定”  。
 - 在“常规”部分下面，选择“GitHub”项目并输入分叉的存储库的 URL，例如   *https://github.com/cynthn/nodejs-docs-hello-world*
-- 在“源代码管理”部分下面，选择“Git”并输入分叉的存储库 **.git** 的 URL，例如   *https://github.com/cynthn/nodejs-docs-hello-world.git*
+- 在“源代码管理”部分下面，选择“Git”并输入分叉的存储库 *.git* 的 URL，例如 *https://github.com/cynthn/nodejs-docs-hello-world.git*
 - 在“生成触发器”部分下面，选择“用于 GITscm 轮询的 GitHub 挂钩触发器”。  
-- 在“生成”  部分下面，选择“添加生成步骤”  。 选择“执行 shell”，并在命令窗口中输入  `echo "Test"`。
+- 在“生成”  部分下面，选择“添加生成步骤”  。 选择“执行 shell”，并在命令窗口中输入 `echo "Test"`。
 - 选择作业窗口底部的“保存”  。
 
 ## <a name="test-github-integration"></a>测试 GitHub 集成

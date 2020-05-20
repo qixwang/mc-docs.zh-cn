@@ -23,7 +23,7 @@ ms.locfileid: "79290696"
 > [!NOTE]
 > 这些说明引用 Linkerd 版本 `stable-2.6.0`。
 >
-> 可针对 Kubernetes 版本 `stable-2.6.x` 运行 Linkerd `1.13+`。 可以在 [GitHub - Linkerd 版本][linkerd-github-releases]中找到 Stable 和 Edge 的其他 Linkerd 版本。
+> 可针对 Kubernetes 版本 `1.13+` 运行 Linkerd `stable-2.6.x`。 可以在 [GitHub - Linkerd 版本][linkerd-github-releases]中找到 Stable 和 Edge 的其他 Linkerd 版本。
 
 在本文中，学习如何：
 

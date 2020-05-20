@@ -48,7 +48,7 @@ DNS 服务不支持动态端口。 若要解析动态端口上公开的服务，
 
 有了模板后，可以通过以下步骤启用 DNS 服务：
 
-1. 检查 `apiversion` 资源的 `2017-07-01-preview` 是否设置为 `Microsoft.ServiceFabric/clusters` 或更高，如果不是，请按以下示例所示进行更新：
+1. 检查 `Microsoft.ServiceFabric/clusters` 资源的 `apiversion` 是否设置为 `2017-07-01-preview` 或更高，如果不是，请按以下示例所示进行更新：
 
     ```json
     {
@@ -62,7 +62,7 @@ DNS 服务不支持动态端口。 若要解析动态端口上公开的服务，
 
 2. 现在，通过以下方式之一启用 DNS 服务：
 
-    - 若要启用采用默认设置的 DNS 服务，请将其添加到 `addonFeatures` 节中的 `properties` 节，如以下示例所示：
+    - 若要启用采用默认设置的 DNS 服务，请将其添加到 `properties` 节中的 `addonFeatures` 节，如以下示例所示：
 
         ```json
         "properties": {
@@ -74,7 +74,7 @@ DNS 服务不支持动态端口。 若要解析动态端口上公开的服务，
           ...
         }
         ```
-    - 若要启用采用非默认设置的服务，请将 `DnsService` 节添加到 `fabricSettings` 节中的 `properties` 节。 在这种情况下，不需要将 DnsService 添加到 `addonFeatures`。 若要详细了解可为 DNS 服务设置的属性，请参阅 [DNS 服务设置](./service-fabric-cluster-fabric-settings.md#dnsservice)。
+    - 若要启用采用非默认设置的服务，请将 `DnsService` 节添加到 `properties` 节中的 `fabricSettings` 节。 在这种情况下，不需要将 DnsService 添加到 `addonFeatures`。 若要详细了解可为 DNS 服务设置的属性，请参阅 [DNS 服务设置](./service-fabric-cluster-fabric-settings.md#dnsservice)。
 
         ```json
            "properties": {

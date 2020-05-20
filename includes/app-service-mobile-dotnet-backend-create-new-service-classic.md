@@ -13,7 +13,7 @@ ms.lasthandoff: 04/17/2020
 ms.locfileid: "71006577"
 ---
 1. 登录到 [Azure 门户]。
-2. 单击“+新建” **“Web + 移动”** “移动应用”，并为移动应用后端提供一个名称。 >    >  
+2. 单击“+新建” > “Web + 移动” > “移动应用”，并为移动应用后端提供一个名称。
 3. 在“资源组”下  ，选择一个现有资源组，或创建一个新资源组（使用与应用相同的名称）。 
 4. 对于“应用服务计划”  ，请选择默认计划（在[标准层](https://www.azure.cn/pricing/details/app-service/)中）。 还可以选择不同的计划，或[创建一个新计划](../articles/app-service/app-service-plan-manage.md#create-an-app-service-plan)。 
 
@@ -23,7 +23,7 @@ ms.locfileid: "71006577"
 6. 在新的移动应用后端的“设置”窗格中，依次选择“快速启动”>客户端应用平台 >“连接数据库”。    
    
    ![用于连接数据库的选项选择](./media/app-service-mobile-dotnet-backend-create-new-service/dotnet-backend-create-data-connection.png)
-7. 在“添加数据连接”  窗格中，选择“SQL 数据库” **“创建新数据库”。**  >   输入数据库名称，选择一个定价层，然后选择“服务器”  。 可以重复使用此新数据库。 如果在同一位置已有数据库，则可选择“使用现有数据库”。  不建议使用位于不同位置的数据库，因为有带宽成本且延迟较高。
+7. 在“添加数据连接”窗格中，选择“SQL 数据库” > “创建新数据库”。 输入数据库名称，选择一个定价层，然后选择“服务器”  。 可以重复使用此新数据库。 如果在同一位置已有数据库，则可选择“使用现有数据库”。  不建议使用位于不同位置的数据库，因为有带宽成本且延迟较高。
    
    ![选择数据库](./media/app-service-mobile-dotnet-backend-create-new-service/dotnet-backend-create-db.png)
 8. 在“新服务器”窗格中，在“服务器名称”框中输入唯一服务器名称，提供登录名和密码，选中“允许 Azure 服务访问服务器”，并选择“确定”。     此步骤创建新数据库。

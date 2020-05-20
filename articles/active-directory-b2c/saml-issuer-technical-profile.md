@@ -26,7 +26,7 @@ Azure Active Directory B2C (Azure AD B2C) 在处理每个身份验证流时颁�
 
 ## <a name="protocol"></a>协议
 
-“Protocol”  元素的“Name”  属性必须设置为 `None`。 将 **OutputTokenFormat** 元素设置为 `SAML2`。
+“Protocol”元素的“Name”属性必须设置为 `None`。 将 **OutputTokenFormat** 元素设置为 `SAML2`。
 
 以下示例演示了 `Saml2AssertionIssuer` 的技术配置文件：
 

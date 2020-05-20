@@ -55,7 +55,7 @@ ms.locfileid: "77541056"
         return b;
     }
     ```
-2. 在客户端中，在前面`WcfCommunicationClient`示例[中创建的 ](service-fabric-reliable-services-communication-wcf.md) 类保持不变。 但是，需要重写 `CreateClientAsync` 的 `WcfCommunicationClientFactory` 方法：
+2. 在客户端中，在前面[示例](service-fabric-reliable-services-communication-wcf.md)中创建的 `WcfCommunicationClient` 类保持不变。 但是，需要重写 `WcfCommunicationClientFactory` 的 `CreateClientAsync` 方法：
 
     ```csharp
     public class SecureWcfCommunicationClientFactory<TServiceContract> : WcfCommunicationClientFactory<TServiceContract> where TServiceContract : class

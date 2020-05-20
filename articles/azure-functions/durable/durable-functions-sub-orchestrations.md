@@ -66,7 +66,7 @@ module.exports = df.orchestrator(function*(context) {
 
 ---
 
-此业务流程协调程序函数可以按现样用于一次性设备预配，也可以用作大型业务流程的一部分。 在后一种情况下，父业务流程协调程序函数可以使用 `DeviceProvisioningOrchestration` (.NET) 或 `CallSubOrchestratorAsync` (JavaScript) API 调度 `callSubOrchestrator` 的实例。
+此业务流程协调程序函数可以按现样用于一次性设备预配，也可以用作大型业务流程的一部分。 在后一种情况下，父业务流程协调程序函数可以使用 `CallSubOrchestratorAsync` (.NET) 或 `callSubOrchestrator` (JavaScript) API 调度 `DeviceProvisioningOrchestration` 的实例。
 
 下面是一个示例，它展示了如何并行运行多个业务流程协调程序函数。
 

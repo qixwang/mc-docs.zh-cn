@@ -91,7 +91,7 @@ SHA-256('https://<yournamespace>.servicebus.chinacloudapi.cn/'+'\n'+ 1438205742)
 
 用于签名的共享访问授权规则必须在此 URI 指定的实体上，或由其分层父级之一进行配置。 例如，前面的示例中的 `http://contoso.servicebus.chinacloudapi.cn/contosoTopics/T1` 或 `http://contoso.servicebus.chinacloudapi.cn`。
 
-SAS 令牌对于以 `<resourceURI>` 中使用的 `signature-string` 为前缀的所有资源有效。
+SAS 令牌对于以 `signature-string` 中使用的 `<resourceURI>` 为前缀的所有资源有效。
 
 ## <a name="regenerating-keys"></a>重新生成密钥
 
@@ -107,7 +107,7 @@ SAS 令牌对于以 `<resourceURI>` 中使用的 `signature-string` 为前缀的
 
 ## <a name="access-shared-access-authorization-rules-on-an-entity"></a>访问实体上的共享访问授权规则
 
-使用服务总线 .NET Framework 库，可通过相应 [QueueDescription](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) 或 [TopicDescription](/dotnet/api/microsoft.servicebus.messaging.authorizationrules) 中的 [AuthorizationRules](/dotnet/api/microsoft.servicebus.messaging.queuedescription) 集合，访问在服务总线队列或主题上配置的 [Microsoft.ServiceBus.Messaging.SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.topicdescription) 对象。
+使用服务总线 .NET Framework 库，可通过相应 [QueueDescription](/dotnet/api/microsoft.servicebus.messaging.queuedescription) 或 [TopicDescription](/dotnet/api/microsoft.servicebus.messaging.topicdescription) 中的 [AuthorizationRules](/dotnet/api/microsoft.servicebus.messaging.authorizationrules) 集合，访问在服务总线队列或主题上配置的 [Microsoft.ServiceBus.Messaging.SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) 对象。
 
 下面的代码演示了如何向队列添加授权规则。
 
@@ -237,7 +237,7 @@ private bool PutCbsToken(Connection connection, string sasToken)
 }
 ```
 
-`PutCbsToken()` 方法接收代表服务的 TCP 连接的 connection  （[AMQP .NET Lite 库](https://github.com/Azure/amqpnetlite)提供的 AMQP Connection 类实例），以及表示要发送的 SAS 令牌的 sasToken  参数。
+`PutCbsToken()` 方法接收代表服务的 TCP 连接的 connection（[AMQP .NET Lite 库](https://github.com/Azure/amqpnetlite)提供的 AMQP Connection 类实例），以及表示要发送的 SAS 令牌的 sasToken 参数。
 
 > [!NOTE]
 > 请务必在 **SASL 身份验证机制设置为 ANONYMOUS** 的情况下创建连接（而不是在不需要发送 SAS 令牌时使用的包含用户名与密码的默认 PLAIN）。

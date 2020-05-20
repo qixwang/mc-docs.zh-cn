@@ -66,7 +66,7 @@ ms.locfileid: "75742451"
 
 ### <a name="application-package"></a>应用程序包
 
-1. 对于在 Azure 资源管理器模板的 `managedIdentities` 节中定义的每个标识，请在应用程序清单的 `<ManagedIdentity>`Principals**节下添加** 标记。 `Name` 属性需与 `name` 节中定义的 `managedIdentities` 属性匹配。
+1. 对于在 Azure 资源管理器模板的 `managedIdentities` 节中定义的每个标识，请在应用程序清单的 **Principals** 节下添加 `<ManagedIdentity>` 标记。 `Name` 属性需与 `managedIdentities` 节中定义的 `name` 属性匹配。
 
     **ApplicationManifest.xml**
 
@@ -90,7 +90,7 @@ ms.locfileid: "75742451"
       </ServiceManifestImport>
     ```
 
-3. 更新服务清单，将 **ManagedIdentity** 添加到 **Resources** 节中，其名称与应用程序清单的 `ServiceIdentityRef` 中的 `IdentityBindingPolicy` 匹配：
+3. 更新服务清单，将 **ManagedIdentity** 添加到 **Resources** 节中，其名称与应用程序清单的 `IdentityBindingPolicy` 中的 `ServiceIdentityRef` 匹配：
 
     **ServiceManifest.xml**
 

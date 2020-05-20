@@ -144,7 +144,7 @@ pca.acquireTokenSilentAsync(parameters);
 
 ## <a name="specify-a-policy"></a>指定策略
 
-由于 B2C 中的策略以单独的颁发机构表示，因此，可以通过在构造 `fromAuthority` 或 `acquireToken` 参数时指定 `acquireTokenSilent` 子句，来调用除默认策略以外的策略。  例如：
+由于 B2C 中的策略以单独的颁发机构表示，因此，可以通过在构造 `acquireToken` 或 `acquireTokenSilent` 参数时指定 `fromAuthority` 子句，来调用除默认策略以外的策略。  例如：
 
 ```java
 AcquireTokenParameters parameters = new AcquireTokenParameters.Builder()

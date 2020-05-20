@@ -17,7 +17,7 @@ ms.locfileid: "74461638"
 ---
 # <a name="tutorial-create-a-cache-aside-leaderboard-on-aspnet"></a>教程：在 ASP.NET 中创建缓存端排行榜
 
-在本教程中，我们将更新在*针对 Azure Redis 缓存的 ASP.NET 快速入门*中创建的 [ContosoTeamStats](cache-web-app-howto.md) ASP.NET Web 应用，以包括将缓存端模式与 Azure Redis 缓存配合使用的排行榜。 该示例应用程序显示数据库中的团队统计信息列表，并演示如何通过不同的方法使用用于 Redis 的 Azure 缓存在缓存中存储和检索数据，以提高性能。 完成本教程后，将有一个运行的 Web 应用，该应用可以对数据库执行读写操作，已通过用于 Redis 的 Azure 缓存进行优化，并且托管在 Azure 中。
+在本教程中，我们将更新在[针对 Azure Redis 缓存的 ASP.NET 快速入门](cache-web-app-howto.md)中创建的 *ContosoTeamStats* ASP.NET Web 应用，以包括将缓存端模式与 Azure Redis 缓存配合使用的排行榜。 该示例应用程序显示数据库中的团队统计信息列表，并演示如何通过不同的方法使用用于 Redis 的 Azure 缓存在缓存中存储和检索数据，以提高性能。 完成本教程后，将有一个运行的 Web 应用，该应用可以对数据库执行读写操作，已通过用于 Redis 的 Azure 缓存进行优化，并且托管在 Azure 中。
 
 在本教程中，你将了解如何执行以下操作：
 
@@ -45,7 +45,7 @@ ms.locfileid: "74461638"
 
 ### <a name="add-the-entity-framework-to-the-project"></a>将实体框架添加到项目
 
-1. 在 Visual Studio 中，打开在*用于 Redis 的 Azure 缓存的 ASP.NET 快速入门*中创建的 [ContosoTeamStats](cache-web-app-howto.md) 解决方案。
+1. 在 Visual Studio 中，打开在[用于 Redis 的 Azure 缓存的 ASP.NET 快速入门](cache-web-app-howto.md)中创建的 *ContosoTeamStats* 解决方案。
 2. 单击“工具”>“NuGet 包管理器”>“包管理器控制台”。 
 3. 在“包管理器控制台”窗口中，运行以下命令安装 EntityFramework： 
 
@@ -63,7 +63,7 @@ ms.locfileid: "74461638"
 
     ![添加模型类](./media/cache-web-app-cache-aside-leaderboard/cache-model-add-class-dialog.png)
 
-1. 将 `using`Team.cs*文件顶部的* 语句替换为以下 `using` 语句：
+1. 将 *Team.cs* 文件顶部的 `using` 语句替换为以下 `using` 语句：
 
     ```csharp
     using System;
@@ -201,11 +201,11 @@ ms.locfileid: "74461638"
     Database.SetInitializer<TeamContext>(new TeamInitializer());
     ```
 
-1. 在“解决方案资源管理器”中展开 **，并双击** 。`App_Start``RouteConfig.cs`
+1. 在“解决方案资源管理器”中展开 `App_Start`，并双击 `RouteConfig.cs`。
 
     ![RouteConfig.cs](./media/cache-web-app-cache-aside-leaderboard/cache-RouteConfig-cs.png)
 
-1. 在 `RegisterRoutes` 方法中，将 `controller = "Home"` 路由中的 `Default` 替换为 `controller = "Teams"`，如以下示例所示：
+1. 在 `RegisterRoutes` 方法中，将 `Default` 路由中的 `controller = "Home"` 替换为 `controller = "Teams"`，如以下示例所示：
 
     ```csharp
     routes.MapRoute(
@@ -217,7 +217,7 @@ ms.locfileid: "74461638"
 
 ### <a name="configure-the-layout-view"></a>配置布局视图
 
-1. 在“解决方案资源管理器”中，先展开 **Views** 文件夹，再展开 **Shared** 文件夹，然后双击 **_Layout.cshtml**。  
+1. 在“解决方案资源管理器”中，先展开 **Views** 文件夹，再展开 **Shared** 文件夹，然后双击 **_Layout.cshtml**。 
 
     ![_Layout.cshtml](./media/cache-web-app-cache-aside-leaderboard/cache-layout-cshtml.png)
 
@@ -227,7 +227,7 @@ ms.locfileid: "74461638"
     <title>@ViewBag.Title - Contoso Team Stats</title>
     ```
 
-1. 在 `body` 节中，紧靠在 `Html.ActionLink`Azure Cache for Redis Test*链接的下方为*Contoso Team Stats*添加以下新的* 语句。
+1. 在 `body` 节中，紧靠在 *Azure Cache for Redis Test* 链接的下方为 *Contoso Team Stats* 添加以下新的 `Html.ActionLink` 语句。
 
     ```csharp
     @Html.ActionLink("Contoso Team Stats", "Index", "Teams", new { area = "" }, new { @class = "navbar-brand" })`
@@ -508,7 +508,7 @@ ms.locfileid: "74461638"
 
 作为此示例一部分生成的基架代码包括用于添加、编辑和删除团队的方法。 只要添加、编辑或删除了团队，缓存中的数据就变成了过时的数据。 在本部分，我们将修改这三个清除缓存团队的方法，以便刷新缓存。
 
-1. 浏览到 `Create(Team team)` 类中的 `TeamsController` 方法。 添加对 `ClearCachedTeams` 方法的调用，如以下示例所示：
+1. 浏览到 `TeamsController` 类中的 `Create(Team team)` 方法。 添加对 `ClearCachedTeams` 方法的调用，如以下示例所示：
 
     ```csharp
     // POST: Teams/Create
@@ -532,7 +532,7 @@ ms.locfileid: "74461638"
     }
     ```
 
-2. 浏览到 `Edit(Team team)` 类中的 `TeamsController` 方法。 添加对 `ClearCachedTeams` 方法的调用，如以下示例所示：
+2. 浏览到 `TeamsController` 类中的 `Edit(Team team)` 方法。 添加对 `ClearCachedTeams` 方法的调用，如以下示例所示：
 
     ```csharp
     // POST: Teams/Edit/5
@@ -555,7 +555,7 @@ ms.locfileid: "74461638"
     }
     ```
 
-3. 浏览到 `DeleteConfirmed(int id)` 类中的 `TeamsController` 方法。 添加对 `ClearCachedTeams` 方法的调用，如以下示例所示：
+3. 浏览到 `TeamsController` 类中的 `DeleteConfirmed(int id)` 方法。 添加对 `ClearCachedTeams` 方法的调用，如以下示例所示：
 
     ```csharp
     // POST: Teams/Delete/5
@@ -575,7 +575,7 @@ ms.locfileid: "74461638"
 
 ### <a name="add-caching-methods-to-the-teams-index-view"></a>将缓存方法添加到“团队索引”视图
 
-1. 在“解决方案资源管理器”中，先展开 **Views** 文件夹，再展开 **Teams** 文件夹，然后双击“Index.cshtml”。  
+1. 在“解决方案资源管理器”中，先展开 **Views** 文件夹，再展开 **Teams** 文件夹，然后双击“Index.cshtml”。
 
     ![Index.cshtml](./media/cache-web-app-cache-aside-leaderboard/cache-views-teams-index-cshtml.png)
 
@@ -649,7 +649,7 @@ ms.locfileid: "74461638"
 
 1. 在 [Azure 门户](https://portal.azure.cn/)中，单击左上角的“创建资源”。 
 
-1. 在“新建”页上，单击“数据库” **“SQL 数据库”。**   >  
+1. 在“新建”页上，单击“数据库” > “SQL 数据库”。
 
 1. 对新 SQL 数据库使用以下设置：
 
@@ -660,7 +660,7 @@ ms.locfileid: "74461638"
    | **资源组**  | *TestResourceGroup* | 单击“使用现有项”，并使用缓存和应用服务所在的同一资源组。  |
    | **选择源** | **空白数据库** | 从空白数据库开始。 |
 
-1. 在“服务器”下，单击“配置所需的设置” **“创建新服务器”并提供以下信息，然后单击“选择”按钮：**   >   
+1. 在“服务器”下，单击“配置所需的设置” > “创建新服务器”并提供以下信息，然后单击“选择”按钮：
 
    | 设置       | 建议的值 | 说明 |
    | ------------ | ------------------ | ------------------------------------------------- |
@@ -671,7 +671,7 @@ ms.locfileid: "74461638"
 
 1. 单击“固定到仪表板”，然后单击“创建”以创建新数据库和服务器。  
 
-1. 创建新数据库后，单击“显示数据库连接字符串”，并复制 **ADO.NET** 连接字符串。 
+1. 创建新数据库后，单击“显示数据库连接字符串”，并复制 **ADO.NET** 连接字符串。
 
     ![显示连接字符串](./media/cache-web-app-cache-aside-leaderboard/cache-show-connection-strings.png)
 

@@ -115,7 +115,7 @@ Body:
 
 设置好 Service Fabric 客户端后，可以通过访问 EventStore（如 `sfhttpClient.EventStore.<request>`）来查询事件
 
-以下是通过 `2018-04-03T18:00:00Z` 函数请求 `2018-04-04T18:00:00Z` 和 `GetClusterEventListAsync` 之间的所有群集事件的示例。
+以下是通过 `GetClusterEventListAsync` 函数请求 `2018-04-03T18:00:00Z` 和 `2018-04-04T18:00:00Z` 之间的所有群集事件的示例。
 
 ```csharp
 var sfhttpClient = ServiceFabricClientFactory.Create(clusterUrl, settings);

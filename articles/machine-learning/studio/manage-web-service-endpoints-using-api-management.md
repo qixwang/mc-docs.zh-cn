@@ -65,7 +65,7 @@ Azure API 管理是一项 Azure 服务，支持通过定义用户访问权限、
 
 1. 单击“添加 API”。 
 2. 输入“Web API 名称”（本示例使用“AzureML 演示 API”）。 
-3. 对于“Web 服务 URL”，请输入“ **”。** `https://ussouthcentral.services.azureml.net`
+3. 对于“Web 服务 URL”，请输入“`https://ussouthcentral.services.azureml.net`”。
 4. 输入“Web API URL 后缀”。 这是客户向服务实例发送请求时使用的 URL 的最后一个部分（本示例使用“azureml-demo”）。
 5. 对于“Web API URL 方案”，请选择“HTTPS”。  
 6. 对于“产品”，请选择“初学者”。  
@@ -84,7 +84,7 @@ Azure API 管理是一项 Azure 服务，支持通过定义用户访问权限、
 首先为 AzureML RRS 服务创建一个操作：
 
 1. 对于“HTTP 谓词”，请选择“POST”。  
-2. 对于“URL 模板”，请键入“ **”。** `/workspaces/{workspace}/services/{service}/execute?api-version={apiversion}&details={details}`
+2. 对于“URL 模板”，请键入“`/workspaces/{workspace}/services/{service}/execute?api-version={apiversion}&details={details}`”。
 3. 输入“显示名称”（本示例使用“RRS 执行”）。 
 
    ![add-rrs-operation-signature](./media/manage-web-service-endpoints-using-api-management/add-rrs-operation-signature.png)
@@ -103,7 +103,7 @@ Azure API 管理是一项 Azure 服务，支持通过定义用户访问权限、
 
 1. 单击“添加操作”，将一个 BES 操作添加到 API。 
 2. 对于“HTTP 谓词”，请选择“POST”。  
-3. 对于“URL 模板”，请键入“ **”。** `/workspaces/{workspace}/services/{service}/jobs?api-version={apiversion}`
+3. 对于“URL 模板”，请键入“`/workspaces/{workspace}/services/{service}/jobs?api-version={apiversion}`”。
 4. 输入“显示名称”（本示例使用“BES 提交”）。 
 5. 在左侧依次单击“响应”   > “添加”  ，并选择“200 正常”  。
 6. 单击“保存”  。
@@ -112,7 +112,7 @@ Azure API 管理是一项 Azure 服务，支持通过定义用户访问权限、
 
 1. 单击“添加操作”，将一个 BES 操作添加到 API。 
 2. 对于“HTTP 谓词”，请选择“POST”。  
-3. 对于“HTTP 谓词”，请键入“ **”。** `/workspaces/{workspace}/services/{service}/jobs/{jobid}/start?api-version={apiversion}`
+3. 对于“HTTP 谓词”，请键入“`/workspaces/{workspace}/services/{service}/jobs/{jobid}/start?api-version={apiversion}`”。
 4. 输入“显示名称”（本示例使用“BES 启动”）。 
 6. 在左侧依次单击“响应”   > “添加”  ，并选择“200 正常”  。
 7. 单击“保存”  。
@@ -121,7 +121,7 @@ Azure API 管理是一项 Azure 服务，支持通过定义用户访问权限、
 
 1. 单击“添加操作”，将一个 BES 操作添加到 API。 
 2. 对于“HTTP 谓词”，请选择“GET”。  
-3. 对于“URL 模板”，请键入“ **”。** `/workspaces/{workspace}/services/{service}/jobs/{jobid}?api-version={apiversion}`
+3. 对于“URL 模板”，请键入“`/workspaces/{workspace}/services/{service}/jobs/{jobid}?api-version={apiversion}`”。
 4. 输入“显示名称”（本示例使用“BES 状态”）。 
 6. 在左侧依次单击“响应”   > “添加”  ，并选择“200 正常”  。
 7. 单击“保存”  。
@@ -130,7 +130,7 @@ Azure API 管理是一项 Azure 服务，支持通过定义用户访问权限、
 
 1. 单击“添加操作”，将一个 BES 操作添加到 API。 
 2. 对于“HTTP 谓词”，请选择“DELETE”。  
-3. 对于“URL 模板”，请键入“ **”。** `/workspaces/{workspace}/services/{service}/jobs/{jobid}?api-version={apiversion}`
+3. 对于“URL 模板”，请键入“`/workspaces/{workspace}/services/{service}/jobs/{jobid}?api-version={apiversion}`”。
 4. 输入“显示名称”（本示例使用“BES 删除”）。 
 5. 在左侧依次单击“响应”   > “添加”  ，并选择“200 正常”  。
 6. 单击“保存”  。
@@ -151,11 +151,11 @@ Azure API 管理是一项 Azure 服务，支持通过定义用户访问权限、
 
    ![try-it](./media/manage-web-service-endpoints-using-api-management/try-it.png)
 
-4. 对于“请求参数”，请键入自己的**工作区**和**服务**，为 **apiversion** 键入“2.0”，为 **details** 键入“true”。  可在 AzureML Web 服务仪表板中查找“工作区”  和“服务”  （请参阅附录 A 中的**测试 Web 服务**）。
+4. 对于“请求参数”，请键入自己的**工作区**和**服务**，为 **apiversion** 键入“2.0”，为 **details** 键入“true”。 可在 AzureML Web 服务仪表板中查找“工作区”  和“服务”  （请参阅附录 A 中的**测试 Web 服务**）。
 
-   对于“请求标头”，请单击“添加标头”，并键入“Content-Type”和“application/json”。   再次单击“添加标头”，键入“Authorization”和“Bearer **服务 API-KEY**”。 *\<\>* 可在 AzureML Web 服务仪表板中找到 API-KEY（请参阅附录 A 中的**测试 Web 服务**）。
+   对于“请求标头”，请单击“添加标头”，并键入“Content-Type”和“application/json”。   再次单击“添加标头”，键入“Authorization”和“Bearer \<服务 API-KEY\>”。 可在 AzureML Web 服务仪表板中找到 API-KEY（请参阅附录 A 中的**测试 Web 服务**）。
 
-   对于“请求正文”，请键入 **。** `{"Inputs": {"input1": {"ColumnNames": ["Col2"], "Values": [["This is a good day"]]}}, "GlobalParameters": {}}`
+   对于“请求正文”，请键入 `{"Inputs": {"input1": {"ColumnNames": ["Col2"], "Values": [["This is a good day"]]}}, "GlobalParameters": {}}`。
 
    ![azureml-demo-api](./media/manage-web-service-endpoints-using-api-management/azureml-demo-api.png)
 
@@ -233,7 +233,7 @@ AzureML Web 服务包含 RSS（请求/响应服务）和 BES（批处理执行�
 
 ![测试](./media/manage-web-service-endpoints-using-api-management/test.png)
 
-为“col2”  键入“今天天气不错”  。 单击复选标记。
+为“col2”键入“今天天气不错”。 单击复选标记。
 
 ![enter-data](./media/manage-web-service-endpoints-using-api-management/enter-data.png)
 

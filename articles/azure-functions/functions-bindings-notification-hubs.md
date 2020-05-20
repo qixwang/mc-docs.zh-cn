@@ -45,7 +45,7 @@ ms.locfileid: "79293301"
 
 ### <a name="c-script-template-example---out-parameter"></a>C# 脚本模板示例 - out 参数
 
-此示例发送一条在模板中包含 [ 占位符的](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)模板注册`message`通知。
+此示例发送一条在模板中包含 `message` 占位符的[模板注册](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)通知。
 
 ```cs
 using System;
@@ -93,7 +93,7 @@ private static IDictionary<string, string> GetTemplateProperties(string message)
 
 ### <a name="c-script-template-example---json"></a>C# 脚本模板示例 - JSON
 
-此示例使用有效的 JSON 字符串，发送一条在模板中包含 [ 占位符的](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)模板注册`message`通知。
+此示例使用有效的 JSON 字符串，发送一条在模板中包含 `message` 占位符的[模板注册](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)通知。
 
 ```cs
 using System;
@@ -132,7 +132,7 @@ private static TemplateNotification GetTemplateNotification(string message)
 
 ### <a name="f-template-example"></a>F # 模板示例
 
-此示例发送一条包含 [ 和 ](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md) 的`location`模板注册`message`的通知。
+此示例发送一条包含 `location` 和 `message` 的[模板注册](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)的通知。
 
 ```fsharp
 let Run(myTimer: TimerInfo, notification: byref<IDictionary<string, string>>) =
@@ -141,7 +141,7 @@ let Run(myTimer: TimerInfo, notification: byref<IDictionary<string, string>>) =
 
 ### <a name="javascript-template-example"></a>JavaScript 模板示例
 
-此示例发送一条包含 [ 和 ](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md) 的`location`模板注册`message`的通知。
+此示例发送一条包含 `location` 和 `message` 的[模板注册](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)的通知。
 
 ```javascript
 module.exports = function (context, myTimer) {
@@ -285,7 +285,7 @@ public static async Task Run(string myQueueItem, IAsyncCollector<Notification> n
 
 1. 导航到 [Azure 门户](https://portal.azure.cn)中的通知中心，选择“访问策略”，然后选择 DefaultFullSharedAccessSignature 策略旁边的复制按钮   。 这会将 DefaultFullSharedAccessSignature 策略的连接字符串复制到通知中心  。 此连接字符串可让函数将通知消息发送到中心。
     ![复制通知中心连接字符串](./media/functions-bindings-notification-hubs/get-notification-hub-connection.png)
-1. 导航到 Azure 门户中的函数应用，选择“应用程序设置”，添加一个键（例如 **MyHubConnectionString**），粘贴复制的 **DefaultFullSharedAccessSignature** 作为通知中心的值，然后单击“保存”。  
+1. 导航到 Azure 门户中的函数应用，选择“应用程序设置”，添加一个键（例如 **MyHubConnectionString**），粘贴复制的 *DefaultFullSharedAccessSignature* 作为通知中心的值，然后单击“保存”。
 
 此应用程序设置的名称将传入 *function.json* 中的输出绑定连接设置或 .NET 特性。 请参阅本文前面的[配置部分](#configuration)。
 

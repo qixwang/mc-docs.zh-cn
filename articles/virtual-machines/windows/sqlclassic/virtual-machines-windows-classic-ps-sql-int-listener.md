@@ -106,7 +106,7 @@ ms.locfileid: "77428060"
             Get-AzureVM -ServiceName $ServiceName -Name $node | Add-AzureEndpoint -Name "ListenerEndpoint" -LBSetName "ListenerEndpointLB" -Protocol tcp -LocalPort 1433 -PublicPort 1433 -ProbePort 59999 -ProbeProtocol tcp -ProbeIntervalInSeconds 10 -InternalLoadBalancerName $ILBName -DirectServerReturn $true | Update-AzureVM
         }
 
-13. 设置变量后，将脚本从文本编辑器复制到 PowerShell 会话中运行。 如果提示符仍然显示 **>>** ，请再次按 Enter，以确保脚本开始运行。
+13. 设置变量后，将脚本从文本编辑器复制到 PowerShell 会话中运行。 如果提示符仍然显示 >>，请再次按 Enter，以确保脚本开始运行。
 
 ## <a name="verify-that-kb2854082-is-installed-if-necessary"></a>如果需要，请验证是否已安装 KB2854082
 [!INCLUDE [kb2854082](../../../../includes/virtual-machines-ag-listener-kb2854082.md)]
@@ -152,7 +152,7 @@ ms.locfileid: "77428060"
 
         cluster res $IPResourceName /priv enabledhcp=0 address=$ILBIP probeport=59999  subnetmask=255.255.255.255
 
-3. 设置变量之后，打开提升的 Windows PowerShell 窗口，然后将文本编辑器中的脚本粘贴到 Azure PowerShell 会话中运行。 如果提示符仍然显示 **>>** ，请再次按 Enter，确保脚本开始运行。
+3. 设置变量之后，打开提升的 Windows PowerShell 窗口，然后将文本编辑器中的脚本粘贴到 Azure PowerShell 会话中运行。 如果提示符仍然显示 >>，请再次按 Enter，确保脚本开始运行。
 
 4. 针对每个 VM 重复上述步骤。  
     此脚本将使用云服务的 IP 地址来配置 IP 地址资源，同时设置探测端口等其他参数。 在 IP 地址资源联机后，它可以响应我们前面创建的负载均衡终结点在探测端口上的轮询。

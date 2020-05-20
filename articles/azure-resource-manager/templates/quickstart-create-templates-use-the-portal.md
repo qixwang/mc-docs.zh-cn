@@ -37,7 +37,7 @@ ms.locfileid: "76165477"
 
     ![在 Azure 门户菜单中，选择“创建资源”](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-a-resource.png)
 
-1. 选择“存储” **“存储帐户”**  >   。
+1. 选择“存储” > “存储帐户”。
 
     ![创建 Azure 存储帐户](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-storage-account-portal.png)
 1. 输入以下信息：
@@ -45,7 +45,7 @@ ms.locfileid: "76165477"
     |名称|值|
     |----|----|
     |**资源组**|选择“新建”  ，然后指定所选资源组的名称。 在屏幕截图中，资源组名称为 *mystorage1016rg*。 资源组是 Azure 资源的容器。 资源组方便 Azure 资源的管理。 |
-    |**名称**|为存储帐户指定唯一的名称。 存储帐户名称在整个 Azure 中必须是唯一的，且仅包含小写字母和数字。 名称长度必须介于 3 到 24 个字符之间。 如果收到错误消息“存储帐户名称‘mystorage1016’已被占用”，请尝试使用“**名称>存储&lt;MMDD 格式的今日日期>”，例如“johndolestorage1016”&lt;**  。 |
+    |**名称**|为存储帐户指定唯一的名称。 存储帐户名称在整个 Azure 中必须是唯一的，且仅包含小写字母和数字。 名称长度必须介于 3 到 24 个字符之间。 如果收到错误消息“存储帐户名称‘mystorage1016’已被占用”，请尝试使用“&lt;名称>存储&lt;MMDD 格式的今日日期>”，例如“johndolestorage1016”。 |
 
     <!--Not Available on For more information, see [Naming rules and restrictions](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions#naming-rules-and-restrictions)-->
     
@@ -84,7 +84,7 @@ ms.locfileid: "76165477"
 Azure 要求每个 Azure 服务都具有唯一的名称。 如果输入了已存在的存储帐户名，则部署可能失败。 若要避免此问题，可以修改模板，以便使用模板函数调用 `uniquestring()`，以生成唯一的存储帐户名。
 
 1. 从 Azure 门户菜单或“主页”页面，选择“创建资源”   。
-1. 在“搜索市场”中键入“模板部署”，然后按 **ENTER**。  
+1. 在“搜索市场”中键入“模板部署”，然后按 **ENTER**。
 1. 选择“模板部署”。 
 
     ![Azure 资源管理器模板库](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-template-library.png)

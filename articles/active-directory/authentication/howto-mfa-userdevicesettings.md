@@ -34,7 +34,7 @@ ms.locfileid: "74084487"
 ![从 Azure 门户管理身份验证方法](./media/howto-mfa-userdevicesettings/manage-authentication-methods.png)
 
 1. 登录 [Azure 门户](https://portal.azure.cn)。
-1. 在左侧，选择“Azure Active Directory” **“用户”** “所有用户” >    >   。
+1. 在左侧，选择“Azure Active Directory” > “用户” > “所有用户”。
 1. 选择要在其上执行操作的用户，然后选择“身份验证方法”。 
    - “重置密码”会重置用户的密码并分配一个必须在下次登录时更改的临时密码。 
    - “要求重新注册 MFA”在生效后，会请求用户在下次登录时设置一个新的 MFA 身份验证方法。 
@@ -47,7 +47,7 @@ ms.locfileid: "74084487"
 ### <a name="how-to-delete-users-existing-app-passwords"></a>如何删除用户现有的应用密码
 
 1. 登录 [Azure 门户](https://portal.azure.cn)。
-2. 在左侧，选择“Azure Active Directory” **“用户”** “所有用户” >    >   。
+2. 在左侧，选择“Azure Active Directory” > “用户” > “所有用户”。
 3. 在右侧，选择工具栏上的“多重身份验证”  。 多重身份验证页面将打开。
 4. 选中要管理的用户或用户旁的框。 右侧会显示快速步骤选项列表。
 5. 选择“管理用户设置”  。

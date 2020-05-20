@@ -24,7 +24,7 @@ ms.locfileid: "74461631"
   
   ![Azure Redis 缓存密钥](./media/redis-cache-access-keys/redis-cache-keys.png)
 
-- 若要获取主机名和端口，请在缓存的左侧导航栏中选择“属性”。  主机名的格式为 *DNS 名称>.redis.cache.chinacloudapi.cn\<* 。
+- 若要获取主机名和端口，请在缓存的左侧导航栏中选择“属性”。  主机名的格式为 \<DNS 名称>.redis.cache.chinacloudapi.cn。
 
   ![Azure Redis 缓存属性](./media/redis-cache-access-keys/redis-cache-hostname-ports.png)
 

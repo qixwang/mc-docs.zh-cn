@@ -97,7 +97,7 @@ public HttpResponseMessage run(
 
 ## <a name="update-the-tests"></a>更新测试
 
-由于原型还创建一组测试，因此需更新这些测试，以便处理 `msg` 方法签名中的新 `run` 参数。  
+由于原型还创建一组测试，因此需更新这些测试，以便处理 `run` 方法签名中的新 `msg` 参数。  
 
 浏览到测试代码在 _src/test/java_ 下的位置，打开 *Function.java* 项目文件，将 `//Invoke` 下的代码行替换为以下代码。
 

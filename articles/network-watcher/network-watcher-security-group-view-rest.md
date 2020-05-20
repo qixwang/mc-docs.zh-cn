@@ -64,7 +64,7 @@ $resourceGroupName = '<resource group name>'
 armclient get https://management.chinacloudapi.cn/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Compute/virtualMachines?api-version=2015-05-01-preview
 ```
 
-所需的信息是响应中类型 **下的**id`Microsoft.Compute/virtualMachines`，如以下示例中所示：
+所需的信息是响应中类型 `Microsoft.Compute/virtualMachines` 下的 **id**，如以下示例中所示：
 
 ```json
 ...,

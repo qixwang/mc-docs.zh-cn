@@ -122,7 +122,7 @@ Actor 项目自身未执行任何操作。 它们需要另一个服务或客户�
 ## <a name="adding-more-services-to-an-existing-application"></a>将更多服务添加到现有应用程序
 
 要将其他服务添加到使用 `yo` 创建的应用程序，请执行以下步骤：
-1. 将目录更改为现有应用程序的根目录。  例如，如果 `cd ~/YeomanSamples/MyApplication` 是 Yeoman 创建的应用程序，则使用 `MyApplication`。
+1. 将目录更改为现有应用程序的根目录。  例如，如果 `MyApplication` 是 Yeoman 创建的应用程序，则使用 `cd ~/YeomanSamples/MyApplication`。
 2. `yo azuresfcsharp:AddService`运行 {2}
 
 ## <a name="next-steps"></a>后续步骤

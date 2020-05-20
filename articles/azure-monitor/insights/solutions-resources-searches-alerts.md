@@ -75,7 +75,7 @@ Log Analytics 中的所有资源都包含在[工作区](../../azure-monitor/plat
 | query | 要运行的查询。 |
 
 > [!NOTE]
-> 如果查询中包含可解释为 JSON 的字符，则可能需要在查询中使用转义字符。 例如，如果查询为 AzureActivity | OperationName:"Microsoft.Compute/virtualMachines/write"  ，应在解决方案文件中将它编写为 AzureActivity | OperationName:/**Microsoft.Compute/virtualMachines/write\"\"** 。
+> 如果查询中包含可解释为 JSON 的字符，则可能需要在查询中使用转义字符。 例如，如果查询为 AzureActivity | OperationName:"Microsoft.Compute/virtualMachines/write"，应在解决方案文件中将它编写为 AzureActivity | OperationName:/\"Microsoft.Compute/virtualMachines/write\"。
 
 ## <a name="alerts"></a>警报
 [Azure 日志警报](../../azure-monitor/platform/alerts-unified-log.md)是由定期运行指定日志查询的 Azure 警报规则创建的。 如果查询结果与指定的条件相符，则会创建一个警报记录，并且会使用[操作组](../../azure-monitor/platform/action-groups.md)运行一个或多个操作。

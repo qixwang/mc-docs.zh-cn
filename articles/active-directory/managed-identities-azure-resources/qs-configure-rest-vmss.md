@@ -35,7 +35,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 ## <a name="prerequisites"></a>先决条件
 
-- 如果不熟悉 Azure 资源的托管标识，请查阅[概述部分](overview.md)。 请务必了解[系统分配的托管标识与用户分配的托管标识之间的差异](overview.md#how-does-the-managed-identities-for-azure-resources-work)  。
+- 如果不熟悉 Azure 资源的托管标识，请查阅[概述部分](overview.md)。 请务必了解[系统分配的托管标识与用户分配的托管标识之间的差异](overview.md#how-does-the-managed-identities-for-azure-resources-work)。
 - 如果还没有 Azure 帐户，请先[注册试用帐户](https://www.azure.cn/pricing/1rmb-trial/)，然后再继续。
 - 若要执行本文中的管理操作，帐户需要以下基于 Azure 角色的访问控制分配：
 
@@ -75,7 +75,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
    az account get-access-token
    ``` 
 
-4. 通过使用 CURL 对 Azure 资源管理器 REST 终结点进行调用，创建虚拟机规模集。 下面的示例在“myResourceGroup”中创建名为“myVMSS”的虚拟机规模集，该规模集具有系统分配的托管标识（请求正文中用值 `"identity":{"type":"SystemAssigned"}` 进行标识）   。 请将 `<ACCESS TOKEN>` 替换为上一步中请求持有者访问令牌和适合环境的 `<SUBSCRIPTION ID>` 值时收到的值。
+4. 通过使用 CURL 对 Azure 资源管理器 REST 终结点进行调用，创建虚拟机规模集。 下面的示例在“myResourceGroup”中创建名为“myVMSS”的虚拟机规模集，该规模集具有系统分配的托管标识（请求正文中用值 `"identity":{"type":"SystemAssigned"}` 进行标识）。 请将 `<ACCESS TOKEN>` 替换为上一步中请求持有者访问令牌和适合环境的 `<SUBSCRIPTION ID>` 值时收到的值。
 
    ```bash   
    curl 'https://management.chinacloudapi.cn/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2018-06-01' -X PUT -d '{"sku":{"tier":"Standard","capacity":3,"name":"Standard_D1_v2"},"location":"chinanorth","identity":{"type":"SystemAssigned"},"properties":{"overprovision":true,"virtualMachineProfile":{"storageProfile":{"imageReference":{"sku":"2016-Datacenter","publisher":"MicrosoftWindowsServer","version":"latest","offer":"WindowsServer"},"osDisk":{"caching":"ReadWrite","managedDisk":{"storageAccountType":"Standard_LRS"},"createOption":"FromImage"}},"osProfile":{"computerNamePrefix":"myVMSS","adminUsername":"azureuser","adminPassword":"myPassword12"},"networkProfile":{"networkInterfaceConfigurations":[{"name":"myVMSS","properties":{"primary":true,"enableIPForwarding":true,"ipConfigurations":[{"name":"myVMSS","properties":{"subnet":{"id":"/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myVnet/subnets/mySubnet"}}}]}}]}},"upgradePolicy":{"mode":"Manual"}}}' -H "Content-Type: application/json" -H "Authorization: Bearer <ACCESS TOKEN>"
@@ -167,7 +167,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
    az account get-access-token
    ```
 
-2. 使用以下 CURL 命令对 Azure 资源管理器 REST 终结点进行调用，为名为“myVMSS”  的虚拟机规模集启用系统分配的托管标识（在请求正文中用值 `{"identity":{"type":"SystemAssigned"}` 进行标识）。  请将 `<ACCESS TOKEN>` 替换为上一步中请求持有者访问令牌和适合环境的 `<SUBSCRIPTION ID>` 值时收到的值。
+2. 使用以下 CURL 命令对 Azure 资源管理器 REST 终结点进行调用，为名为“myVMSS”的虚拟机规模集启用系统分配的托管标识（在请求正文中用值 `{"identity":{"type":"SystemAssigned"}` 进行标识）。  请将 `<ACCESS TOKEN>` 替换为上一步中请求持有者访问令牌和适合环境的 `<SUBSCRIPTION ID>` 值时收到的值。
    
    > [!IMPORTANT]
    > 若要确保不删除用户分配给虚拟机规模集的任何现有托管标识，需要使用以下 CURL 命令列出用户分配的托管标识：`curl 'https://management.chinacloudapi.cn/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachineScaleSets/<VMSS NAME>?api-version=2018-06-01' -H "Authorization: Bearer <ACCESS TOKEN>"`。 如果具有用户分配给虚拟机规模集的任何标识（响应中用值 `identity` 进行标识），请跳过步骤 3，该步骤介绍了如何在虚拟机规模集上启用系统分配的托管标识的同时保留用户分配的托管标识。
@@ -336,7 +336,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 4. 按照此处的说明创建用户分配的托管标识：[创建用户分配的托管标识](how-to-manage-ua-identity-rest.md#create-a-user-assigned-managed-identity)。
 
-5. 通过使用 CURL 对 Azure 资源管理器 REST 终结点进行调用，创建虚拟机规模集。 下面的示例在资源组“myResourceGroup”中创建名为“myVMSS”的虚拟机规模集，该规模集具有用户分配的托管标识 `ID1`（请求正文中用值 `"identity":{"type":"UserAssigned"}` 进行标识）   。 请将 `<ACCESS TOKEN>` 替换为上一步中请求持有者访问令牌和适合环境的 `<SUBSCRIPTION ID>` 值时收到的值。
+5. 通过使用 CURL 对 Azure 资源管理器 REST 终结点进行调用，创建虚拟机规模集。 下面的示例在资源组“myResourceGroup”中创建名为“myVMSS”的虚拟机规模集，该规模集具有用户分配的托管标识 `ID1`（请求正文中用值 `"identity":{"type":"UserAssigned"}` 进行标识）。 请将 `<ACCESS TOKEN>` 替换为上一步中请求持有者访问令牌和适合环境的 `<SUBSCRIPTION ID>` 值时收到的值。
  
    **API 版本 2018-06-01**
 

@@ -91,7 +91,7 @@ Azure AD B2C 使用称作[跨源资源共享 (CORS)](https://www.w3.org/TR/cors/
 
 请遵循以下指导原则在用户体验页面中开始使用自己的 HTML 和 CSS。
 
-- 使用位于 `<div id="api"></div>` 中某处的空 `<body>` 元素创建格式正确的 HTML 内容。 此元素标记插入 Azure AD B2C 内容的位置。 以下示例显示了一个最小化页面：
+- 使用位于 `<body>` 中某处的空 `<div id="api"></div>` 元素创建格式正确的 HTML 内容。 此元素标记插入 Azure AD B2C 内容的位置。 以下示例显示了一个最小化页面：
 
     ```html
     <!DOCTYPE html>

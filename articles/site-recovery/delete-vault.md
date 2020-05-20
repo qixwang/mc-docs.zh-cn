@@ -41,14 +41,14 @@ ms.locfileid: "77611291"
 ## <a name="delete-a-vault-hyper-v-vm-with-vmm-to-azure"></a>删除保管库-Hyper-V VM（使用 VMM）到 Azure
 
 1. 按照[这些步骤](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-hyper-v-virtual-machine-replicating-to-azure-using-the-system-center-vmm-to-azure-scenario)操作，删除由 System Center VMM 管理的 Hyper-V VM。
-2. 取消关联并删除所有复制策略。 在保管库中执行此操作 > “Site Recovery 基础结构” **“对于 System Center VMM”** “复制策略”。 >    >  
+2. 取消关联并删除所有复制策略。 在保管库中执行此操作 > “Site Recovery 基础结构” > “对于 System Center VMM” > “复制策略”。
 3. 按照[这些步骤](site-recovery-manage-registration-and-protection.md#unregister-a-vmm-server)操作，取消注册已连接的 VMM 服务器。
 4. 然后，删除保管库。
 
 ## <a name="delete-a-vault-hyper-v-vm-to-azure"></a>删除保管库-Hyper-V VM 到 Azure
 
 1. 按照[这些步骤](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-hyper-v-virtual-machine-hyper-v-to-azure)操作，删除所有受保护的 VM。
-2. 取消关联并删除所有复制策略。 在保管库中执行此操作 >“Site Recovery 基础结构” **“对于 Hyper-V 站点”** “复制策略”。 >    >  
+2. 取消关联并删除所有复制策略。 在保管库中执行此操作 >“Site Recovery 基础结构” > “对于 Hyper-V 站点” > “复制策略”。
 3. 按照[这些说明](site-recovery-manage-registration-and-protection.md#unregister-a-hyper-v-host-in-a-hyper-v-site)操作，取消注册 Hyper-V 主机。
 4. 删除 Hyper-V 站点。
 5. 然后，删除保管库。

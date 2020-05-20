@@ -223,7 +223,7 @@ Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/virtualMachi
 
 ---
 
-编写相同查询的另一种方法是 `extend` 属性，并赋予其临时名称，以供查询使用，在本例中为 os  。 os 然后由 **和** 使用，如上例所示`summarize``count()`。
+编写相同查询的另一种方法是 `extend` 属性，并赋予其临时名称，以供查询使用，在本例中为 os  。 os 然后由 `summarize` 和 `count()` 使用，如上例所示。
 
 ```kusto
 Resources
@@ -378,7 +378,7 @@ Search-AzGraph -Query "Resources | where tags.environment=~'internal' | project 
 
 ---
 
-如果还要提供资源具有的标记及其值，请将属性“标记”添加到  **关键字**`project`。
+如果还要提供资源具有的标记及其值，请将属性“标记”添加到 `project` 关键字。
 
 ```kusto
 Resources

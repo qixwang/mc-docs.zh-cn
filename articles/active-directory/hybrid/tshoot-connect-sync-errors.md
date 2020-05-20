@@ -27,7 +27,7 @@ ms.locfileid: "76116769"
 
  本文假设读者熟悉 [ Azure AD 和 Azure AD Connect 的基础设计概念](plan-connect-design-concepts.md)。
 
-从 2016 年 9 月 1 日开始，默认将为所有[新的](how-to-connect-syncservice-duplicate-attribute-resiliency.md) Azure Active Directory 租户启用 *Azure Active Directory 重复属性复原*功能。 在接下来的几个月，会自动为现有租户启用此功能。
+从 2016 年 9 月 1 日开始，默认将为所有*新的* Azure Active Directory 租户启用 [Azure Active Directory 重复属性复原](how-to-connect-syncservice-duplicate-attribute-resiliency.md)功能。 在接下来的几个月，会自动为现有租户启用此功能。
 
 Azure AD Connect 通过它所同步的目录执行 3 种类型的操作：导入、同步和导出。 在执行所有这些操作时都可能发生错误。 本文重点介绍在导出到 Azure AD 期间发生的错误。
 
@@ -42,7 +42,7 @@ Azure AD Connect 通过它所同步的目录执行 3 种类型的操作：导入
 #### <a name="description"></a>说明
 * 当 Azure AD Connect \(步引擎\)指示 Azure Active Directory 添加或更新对象时，Azure AD 会使用 **sourceAnchor** 属性将传入对象与 Azure AD 中对象的 **immutableId** 属性进行匹配。 这种匹配称为**硬匹配**。
 * 如果 Azure AD **找不到**有任何对象的 **immutableId** 属性与传入对象的 **sourceAnchor** 属性匹配，则在预配新对象之前，它会回退为使用 ProxyAddresses 和 UserPrincipalName 属性来查找匹配项。 这种匹配称为**软匹配**。 软匹配旨在将 Azure AD 中已存在的对象（源自 Azure AD 的对象）与同步期间添加/更新的、代表相同实体（用户或组）的新对象进行匹配。
-* 如果硬匹配找不到任何匹配的对象，**并且**软匹配虽然找到了匹配的对象，但该对象的 **immutableId** 值不同于传入对象的 *SourceAnchor*（这意味着匹配的对象与本地 Active Directory 中的另一个对象同步），则会发生 *InvalidSoftMatch* 错误。
+* 如果硬匹配找不到任何匹配的对象，**并且**软匹配虽然找到了匹配的对象，但该对象的 *immutableId* 值不同于传入对象的 *SourceAnchor*（这意味着匹配的对象与本地 Active Directory 中的另一个对象同步），则会发生 **InvalidSoftMatch** 错误。
 
 换而言之，若要使软匹配正常工作，要进行软匹配的对象不应使用 *immutableId* 的任何值。 如果设置了 *immutableId* 值的任何对象不符合硬匹配条件但符合软匹配条件，相应的操作将导致 InvalidSoftMatch 同步错误。
 

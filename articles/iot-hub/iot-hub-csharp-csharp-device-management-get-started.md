@@ -67,13 +67,13 @@ ms.locfileid: "78155100"
 
 1. 在“解决方案资源管理器”中，右键单击“TriggerReboot”项目，然后选择“管理 NuGet 包”    。
 
-1. 选择“浏览”，然后搜索并选择 **Microsoft.Azure.Devices**。  选择“安装”  以安装“Microsoft.Azure.Devices”  包。
+1. 选择“浏览”，然后搜索并选择 **Microsoft.Azure.Devices**。 选择“安装”  以安装“Microsoft.Azure.Devices”  包。
 
     ![“NuGet 包管理器”窗口](./media/iot-hub-csharp-csharp-device-management-get-started/create-trigger-reboot-nuget-devices.png)
 
    此步骤将下载、安装 [Azure IoT 服务 SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices/) NuGet 包及其依赖项并添加对其的引用。
 
-1. 在 Program.cs`using`**文件顶部添加以下** 语句：
+1. 在 Program.cs 文件顶部添加以下 `using` 语句：
 
    ```csharp
    using Microsoft.Azure.Devices;
@@ -125,7 +125,7 @@ ms.locfileid: "78155100"
    Console.ReadLine();
    ```
 
-1. 选择“生成” **“生成解决方案”**  >   。
+1. 选择“生成” > “生成解决方案”。
 
 > [!NOTE]
 > 本教程仅针对设备的报告属性执行单个查询。 在生产代码中，我们建议通过轮询来检测报告属性是否更改。
@@ -144,19 +144,19 @@ ms.locfileid: "78155100"
 
 1. 在 Visual Studio 的已创建的 TriggerReboot 解决方案中，选择“文件”   > “新建”   > “项目”  。 在“创建新项目”中，找到并选择“控制台应用(.NET Framework)”项目模板，然后选择“下一步”    。
 
-1. 在“配置新项目”中，将项目命名为 **SimulateManagedDevice**；对于“解决方案”，请选择“添加到解决方案”。    选择“创建”  。
+1. 在“配置新项目”中，将项目命名为 *SimulateManagedDevice*；对于“解决方案”，请选择“添加到解决方案”。 选择“创建”  。
 
     ![命名项目并将其添加到解决方案](./media/iot-hub-csharp-csharp-device-management-get-started/configure-device-app.png)
 
 1. 在解决方案资源管理器中，右键单击新的“SimulateManagedDevice”项目，然后选择“管理 NuGet 包”。  
 
-1. 选择“浏览”，然后搜索并选择 **Microsoft.Azure.Devices.Client**。  选择“安装”  。
+1. 选择“浏览”，然后搜索并选择 **Microsoft.Azure.Devices.Client**。 选择“安装”  。
 
     ![“NuGet 包管理器”窗口客户端应用](./media/iot-hub-csharp-csharp-device-management-get-started/create-device-nuget-devices-client.png)
 
    此步骤将下载、安装 [Azure IoT 设备 SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/) NuGet 包及其依赖项并添加对它的引用。
 
-1. 在 Program.cs`using`**文件顶部添加以下** 语句：
+1. 在 Program.cs 文件顶部添加以下 `using` 语句：
 
     ```csharp
     using Microsoft.Azure.Devices.Client;
@@ -234,7 +234,7 @@ ms.locfileid: "78155100"
 
 1. 对于“常用属性”   >   “启动项目”，请选择“单个启动项目”，然后选择“SimulateManagedDevice”项目。   选择“确定”  保存更改。
 
-1. 选择“生成” **“生成解决方案”**  >   。
+1. 选择“生成” > “生成解决方案”。
 > [!NOTE]
 > 为简单起见，本教程不实现任何重试策略。 在生产代码中，应该按[暂时性故障处理](https://msdn.microsoft.com/library/hh680901.aspx)中所述实施重试策略（例如指数退避）。
 

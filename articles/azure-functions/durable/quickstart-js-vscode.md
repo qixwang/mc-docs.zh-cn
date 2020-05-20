@@ -86,7 +86,7 @@ Visual Studio Code 会根据需要安装 Azure Functions Core Tools。 它还会
 
 1. 使用“视图”菜单或按 Ctrl+Shift+`，在 VS Code 中打开新的终端。 
 
-1. 通过运行函数应用的根目录中的 `durable-functions` 来安装 `npm install durable-functions` npm 包。
+1. 通过运行函数应用的根目录中的 `npm install durable-functions` 来安装 `durable-functions` npm 包。
 
 ## <a name="creating-your-functions"></a>创建函数
 

@@ -51,14 +51,14 @@ ms.locfileid: "68331920"
 
 `bindings` 数组中的第二个元素是 Azure 表存储输出绑定。 `type` 和 `direction` 属性标识该绑定。 `name` 属性指定函数提供新表行的方式，在此例中是使用函数返回值来提供。 表格的名称位于 `tableName` 中，连接字符串位于由 `connection` 标识的应用设置中。
 
-若要在 Azure 门户中查看和编辑 *function.json* 的内容，请单击函数“集成”  选项卡上的“高级编辑器”  选项。
+若要在 Azure 门户中查看和编辑 *function.json* 的内容，请单击函数“集成”选项卡上的“高级编辑器”选项。
 
 > [!NOTE]
 > `connection` 的值是包含连接字符串的应用设置的名称，而不是连接字符串本身的名称。 绑定使用应用设置中存储的连接字符串，以强制执行 function.json  不包含服务密钥这一最佳做法。
 
 ## <a name="c-script-example"></a>C# 脚本示例
 
-以下是适用于此触发器和绑定的 C# 脚本代码。 请注意，提供队列消息内容的参数的名称是 `order`；需使用此名称是因为 function.json`name`*中的* 属性值是 `order` 
+以下是适用于此触发器和绑定的 C# 脚本代码。 请注意，提供队列消息内容的参数的名称是 `order`；需使用此名称是因为 function.json 中的 `name` 属性值是 `order` 
 
 ```cs
 #r "Newtonsoft.Json"

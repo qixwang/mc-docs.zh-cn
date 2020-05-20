@@ -58,7 +58,7 @@ ms.locfileid: "76170683"
 - `constraints.allowedValues` 的标签是项的显示文本，并且当选中时，其值是元素的输出值。
 - 如果已指定，则默认值必须是 `constraints.allowedValues` 中存在的一个标签。 如果未指定，则将选择 `constraints.allowedValues` 中的第一个项。 默认值为 **null**。
 - `constraints.allowedValues` 必须至少有一项。
-- 若要模拟一个不需要的值，请向 `""` 添加一个具有标签且值为 `constraints.allowedValues`（空字符串）的项。
+- 若要模拟一个不需要的值，请向 `constraints.allowedValues` 添加一个具有标签且值为 `""`（空字符串）的项。
 
 ## <a name="next-steps"></a>后续步骤
 

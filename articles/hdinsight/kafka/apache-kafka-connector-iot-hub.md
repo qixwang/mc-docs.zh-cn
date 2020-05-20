@@ -54,7 +54,7 @@ ms.locfileid: "77563495"
     sbt assembly
     ```
 
-    该生成可能需要几分钟时间才能完成。 使用此命令在项目的 `kafka-connect-iothub-assembly_2.11-0.7.0.jar` 目录中创建名为 `toketi-kafka-connect-iothub-master\target\scala-2.11` 的文件。
+    该生成可能需要几分钟时间才能完成。 使用此命令在项目的 `toketi-kafka-connect-iothub-master\target\scala-2.11` 目录中创建名为 `kafka-connect-iothub-assembly_2.11-0.7.0.jar` 的文件。
 
 ## <a name="install-the-connector"></a>安装连接器
 
@@ -209,7 +209,7 @@ ms.locfileid: "77563495"
 
 若要将源配置为使用 IoT 中心，请在与边缘节点建立 SSH 连接后执行以下操作：
 
-1. 在 `connect-iot-source.properties` 目录中创建 `/usr/hdp/current/kafka-broker/config/` 文件的副本。 若要从 toketi-kafka-connect-iothub 项目下载文件，请使用以下命令：
+1. 在 `/usr/hdp/current/kafka-broker/config/` 目录中创建 `connect-iot-source.properties` 文件的副本。 若要从 toketi-kafka-connect-iothub 项目下载文件，请使用以下命令：
 
     ```bash
     sudo wget -P /usr/hdp/current/kafka-broker/config/ https://raw.githubusercontent.com/Azure/toketi-kafka-connect-iothub/master/connect-iothub-source.properties
@@ -244,7 +244,7 @@ ms.locfileid: "77563495"
 
 若要将接收器连接配置为使用 IoT 中心，请在与边缘节点建立 SSH 连接后执行以下操作：
 
-1. 在 `connect-iothub-sink.properties` 目录中创建 `/usr/hdp/current/kafka-broker/config/` 文件的副本。 若要从 toketi-kafka-connect-iothub 项目下载文件，请使用以下命令：
+1. 在 `/usr/hdp/current/kafka-broker/config/` 目录中创建 `connect-iothub-sink.properties` 文件的副本。 若要从 toketi-kafka-connect-iothub 项目下载文件，请使用以下命令：
 
     ```bash
     sudo wget -P /usr/hdp/current/kafka-broker/config/ https://raw.githubusercontent.com/Azure/toketi-kafka-connect-iothub/master/connect-iothub-sink.properties

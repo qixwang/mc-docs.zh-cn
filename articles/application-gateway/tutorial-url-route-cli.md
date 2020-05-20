@@ -42,7 +42,7 @@ ms.locfileid: "70857208"
 
 资源组是在其中部署和管理 Azure 资源的逻辑容器。 使用 `az group create` 创建资源组。
 
-以下示例在“chinanorth”  位置创建名为“myResourceGroupAG”  的资源组。
+以下示例在“chinanorth”位置创建名为“myResourceGroupAG”的资源组。
 
 ```azurecli
 az group create --name myResourceGroupAG --location chinanorth
@@ -50,7 +50,7 @@ az group create --name myResourceGroupAG --location chinanorth
 
 ## <a name="create-network-resources"></a>创建网络资源
 
-使用 *创建名为*myVNet*的虚拟网络和名为*myAGSubnet`az network vnet create` 的子网。 然后，使用 *添加后端服务器所需的名为*myBackendSubnet`az network vnet subnet create` 的子网。 使用 *创建名为*myAGPublicIPAddress`az network public-ip create` 的公共 IP 地址。
+使用 `az network vnet create` 创建名为 *myVNet* 的虚拟网络和名为 *myAGSubnet* 的子网。 然后，使用 `az network vnet subnet create` 添加后端服务器所需的名为 *myBackendSubnet* 的子网。 使用 `az network public-ip create` 创建名为 *myAGPublicIPAddress* 的公共 IP 地址。
 
 ```azurecli
 az network vnet create `
@@ -107,7 +107,7 @@ az network application-gateway create `
 
 ### <a name="add-image-and-video-backend-pools-and-a-port"></a>添加映像及视频后端池和端口
 
-使用 *向应用程序网关添加名为*imagesBackendPool*和*videoBackendPool`az network application-gateway address-pool create` 的后端池。 使用 `az network application-gateway frontend-port create` 添加池的前端端口。
+使用 `az network application-gateway address-pool create` 向应用程序网关添加名为 *imagesBackendPool* 和 *videoBackendPool* 的后端池。 使用 `az network application-gateway frontend-port create` 添加池的前端端口。
 
 ```azurecli
 az network application-gateway address-pool create `
@@ -129,7 +129,7 @@ az network application-gateway frontend-port create `
 
 ### <a name="add-a-backend-listener"></a>添加后端侦听器
 
-使用 *添加路由流量所需的名为*backendListener`az network application-gateway http-listener create` 的后端侦听器。
+使用 `az network application-gateway http-listener create` 添加路由流量所需的名为 *backendListener* 的后端侦听器。
 
 
 ```azurecli
@@ -143,7 +143,7 @@ az network application-gateway http-listener create `
 
 ### <a name="add-a-url-path-map"></a>添加 URL 路径映射
 
-URL 路径映射可确保将特定的 URL 路由到特定的后端池。 使用 *和* 创建名为 *imagePathRule* 和 `az network application-gateway url-path-map create`videoPathRule`az network application-gateway url-path-map rule create` 的 URL 路径映射。
+URL 路径映射可确保将特定的 URL 路由到特定的后端池。 使用 `az network application-gateway url-path-map create` 和 `az network application-gateway url-path-map rule create` 创建名为 *imagePathRule* 和 *videoPathRule* 的 URL 路径映射。
 
 ```azurecli
 az network application-gateway url-path-map create `
@@ -168,7 +168,7 @@ az network application-gateway url-path-map rule create `
 
 ### <a name="add-a-routing-rule"></a>添加路由规则
 
-路由规则可将 URL 映射与所创建的侦听器相关联。 使用 *添加名为*rule2`az network application-gateway rule create` 的规则。
+路由规则可将 URL 映射与所创建的侦听器相关联。 使用 `az network application-gateway rule create` 添加名为 *rule2* 的规则。
 
 ```azurecli
 az network application-gateway rule create `

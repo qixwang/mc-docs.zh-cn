@@ -88,11 +88,11 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩�
 
 此处介绍如何使用 AzCopy 传输包含数据的文件。 若要下载并安装 AzCopy，请按照 [AzCopy 命令行实用工具入门](../../storage/common/storage-use-azcopy.md)中的说明进行操作。
 
-1. 在命令提示符窗口中，运行以下 AzCopy 命令（请将 \<path_to_data_folder> 替换为所需目标  ）：
+1. 在命令提示符窗口中，运行以下 AzCopy 命令（请将 \<path_to_data_folder> 替换为所需目标）：
 
         "C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:https://nyctaxitrips.blob.core.windows.net/data /Dest:<path_to_data_folder> /S
 
-1. 复制完成后，所选数据文件夹中总共会出现 24 个压缩文件。 将下载的文件解压缩到本地计算机上的同一目录。 记下未压缩的文件所在的文件夹。 此文件夹在下文中称为 \<path\_to\_unzipped_data\_files\>  。
+1. 复制完成后，所选数据文件夹中总共会出现 24 个压缩文件。 将下载的文件解压缩到本地计算机上的同一目录。 记下未压缩的文件所在的文件夹。 此文件夹在下文中称为 \<path\_to\_unzipped_data\_files\>。
 
 ## <a name="upload-the-data-to-the-default-container-of-the-hdinsight-hadoop-cluster"></a><a name="upload"></a>将数据上传到 HDInsight Hadoop 群集的默认容器
 > [!NOTE]
@@ -714,14 +714,14 @@ NYC 出租车数据集中的牌照标识一辆唯一的出租车。 通过询问
 
     hive -f "C:\temp\sample_hive_prepare_for_aml_full.hql"
 
-创建内部表 nyctaxidb.nyctaxi_downsampled_dataset 之后，可以使用机器学习中的[导入数据][import-data]模块访问该表  。 此外，可将此数据集用于构建机器学习模型。  
+创建内部表 nyctaxidb.nyctaxi_downsampled_dataset 之后，可以使用机器学习中的[导入数据][import-data]模块访问该表。 此外，可将此数据集用于构建机器学习模型。  
 
 ### <a name="use-the-import-data-module-in-machine-learning-to-access-the-down-sampled-data"></a>使用机器学习中的“导入数据”模块访问已经过下采样的数据
 若要在机器学习的[导入数据][import-data]模块中发出 Hive 查询，你必须访问机器学习工作区。 此外，还需有权访问群集凭据及其关联的存储帐户。
 
 下面是有关[导入数据][import-data]模块的一些详细信息和要输入的参数：
 
-**HCatalog 服务器 URI**：如果群集名称为“abc123”，则其 URI 即为： https://abc123.azurehdinsight.net  。
+**HCatalog 服务器 URI**：如果群集名称为“abc123”，则其 URI 即为：https://abc123.azurehdinsight.net。
 
 **Hadoop 用户帐户名称**：为群集选择的用户名（不是远程访问用户名）。
 

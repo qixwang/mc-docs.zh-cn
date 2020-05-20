@@ -19,7 +19,7 @@ ms.locfileid: "66004058"
 ---
 # <a name="use-the-azure-data-lake-storage-gen2-uri"></a>使用 Azure Data Lake Storage Gen2 URI
 
-通过方案标识符 [（Azure Blob 文件系统）可以知道与 Azure Data Lake Storage Gen2 兼容的 ](https://www.aosabook.org/en/hdfs.html)Hadoop 文件系统`abfs`驱动程序。 与其他 Hadoop 文件系统驱动程序一样，ABFS 驱动程序使用 URI 格式寻址支持 Data Lake Storage Gen2 的帐户中的文件和目录。
+通过方案标识符 `abfs`（Azure Blob 文件系统）可以知道与 Azure Data Lake Storage Gen2 兼容的 [Hadoop 文件系统](https://www.aosabook.org/en/hdfs.html)驱动程序。 与其他 Hadoop 文件系统驱动程序一样，ABFS 驱动程序使用 URI 格式寻址支持 Data Lake Storage Gen2 的帐户中的文件和目录。
 
 ## <a name="uri-syntax"></a>URI 语法
 

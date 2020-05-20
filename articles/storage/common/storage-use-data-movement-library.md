@@ -45,12 +45,12 @@ Azure 存储数据移动库是一个高性能的跨平台开源库，用于上�
 3. 在 Visual Studio Code 中打开此目录。 通过在 Windows 中命令行上键入 `code .` 可快速完成此步骤。
 4. 从 Visual Studio Code Marketplace 安装 [C# 扩展](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)。 重新启动 Visual Studio Code。
 5. 此时，应会出现两条提示。 其中一条提示指出要“添加所需的资产用于生成和调试。” 请单击“是”。 另一条提示指出要还原未解析的依赖项。 请单击“还原”。
-6. 修改 `launch.json` 下的 `.vscode`，将外部终端用作控制台。 此设置应为 `"console": "externalTerminal"`
+6. 修改 `.vscode` 下的 `launch.json`，将外部终端用作控制台。 此设置应为 `"console": "externalTerminal"`
 7. 可以使用 Visual Studio Code 调试 .NET Core 应用程序。 点击 `F5` 运行应用程序，并验证设置是否正常运行。 应会看到“Hello World!” 列显在控制台上。
 
 ## <a name="add-the-data-movement-library-to-your-project"></a>将数据移动库添加到项目
 
-1. 将最新版本的数据移动库添加到 `dependencies` 文件的 `<project-name>.csproj` 节。 在编写本文时，最新的版本是 `"Microsoft.Azure.Storage.DataMovement": "0.6.2"`
+1. 将最新版本的数据移动库添加到 `<project-name>.csproj` 文件的 `dependencies` 节。 在编写本文时，最新的版本是 `"Microsoft.Azure.Storage.DataMovement": "0.6.2"`
 2. 此时应会显示一条提示，指出要还原项目。 请单击“还原”按钮。 也可以从命令行还原项目，在项目的根目录中键入 `dotnet restore` 命令即可。
 
 修改 `<project-name>.csproj`：

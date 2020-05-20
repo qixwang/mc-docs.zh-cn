@@ -44,7 +44,7 @@ ms.locfileid: "78155063"
 
 ## <a name="prerequisites"></a>必备条件
 
-* [Java SE 开发工具包 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable)。 请确保在“长期支持”  下选择“Java 8”  以获取 JDK 8 的下载。
+* [Java SE 开发工具包 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable)。 请确保在“长期支持”下选择“Java 8”以获取 JDK 8 的下载。
 
 * [Maven 3](https://maven.apache.org/download.cgi)
 
@@ -138,7 +138,7 @@ ms.locfileid: "78155063"
 
 1. 在命令提示符下，导航到新的 `read-file-upload-notification` 文件夹。
 
-1. 使用文本编辑器打开 `pom.xml` 文件夹中的 `read-file-upload-notification` 文件，在 **dependencies** 节点中添加以下依赖项。 这样即可使用应用程序中的 **iothub-java-service-client** 包来与 IoT 中心服务通信：
+1. 使用文本编辑器打开 `read-file-upload-notification` 文件夹中的 `pom.xml` 文件，在 **dependencies** 节点中添加以下依赖项。 这样即可使用应用程序中的 **iothub-java-service-client** 包来与 IoT 中心服务通信：
 
     ```xml
     <dependency>
@@ -149,7 +149,7 @@ ms.locfileid: "78155063"
     ```
 
     > [!NOTE]
-    > 可以使用 **Maven 搜索**检查是否有最新版本的 [iot-service-client](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-service-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22)。
+    > 可以使用 [Maven 搜索](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-service-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22)检查是否有最新版本的 **iot-service-client**。
 
 1. 保存并关闭 `pom.xml` 文件。
 

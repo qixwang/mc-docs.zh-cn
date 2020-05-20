@@ -340,7 +340,7 @@ Set-AzResource -ResourceType $resourceType `
 对于以下示例，假定当前的故障转移优先级为 `China North 2 = 0`、`China East 2 = 1`、`China East = 2`。
 
 > [!CAUTION]
-> 在 `locationName` 的情况下更改 `failoverPriority=0` 会触发 Azure Cosmos 帐户的手动故障转移。 任何其他的优先级更改不会触发故障转移。
+> 在 `failoverPriority=0` 的情况下更改 `locationName` 会触发 Azure Cosmos 帐户的手动故障转移。 任何其他的优先级更改不会触发故障转移。
 
 ```powershell
 # Change the failover priority for an Azure Cosmos Account
@@ -372,7 +372,7 @@ Invoke-AzResourceAction -Action failoverPriorityChange `
 在下面的示例中，假设帐户的当前故障转移优先级为 `China North 2 = 0` 和 `China East 2 = 1`，然后将区域互换。
 
 > [!CAUTION]
-> 在 `locationName` 的情况下更改 `failoverPriority=0` 会触发 Azure Cosmos 帐户的手动故障转移。 任何其他优先级更改都不会触发故障转移。
+> 在 `failoverPriority=0` 的情况下更改 `locationName` 会触发 Azure Cosmos 帐户的手动故障转移。 任何其他优先级更改都不会触发故障转移。
 
 ```powershell
 # Change the failover priority for an Azure Cosmos Account

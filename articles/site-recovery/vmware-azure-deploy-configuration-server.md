@@ -40,12 +40,12 @@ ms.locfileid: "79291356"
 
 1. 创建应用程序的用户必须拥有应用程序开发人员角色。
     - 若要验证角色，请登录到 Azure 门户。<br />
-    - 转到“Azure Active Directory” > “角色和管理员”。  <br />
+    - 转到“Azure Active Directory” > “角色和管理员”。<br />
     - 检查应用程序开发人员角色是否已分配到该用户。 如果没有，请使用拥有此权限的用户，或[联系管理员启用该权限](/active-directory/fundamentals/active-directory-users-assign-role-azure-portal#assign-roles)。
 
-2. 如果无法分配应用程序开发人员角色，请确保“用户可以注册应用程序”标志设置为 **true**，使该用户能够创建标识。  若要启用这些权限：
+2. 如果无法分配应用程序开发人员角色，请确保“用户可以注册应用程序”标志设置为 **true**，使该用户能够创建标识。 若要启用这些权限：
     - 登录到 Azure 门户。
-    - 转到“Azure Active Directory” > “用户设置”。  
+    - 转到“Azure Active Directory” > “用户设置”。
     - 在“应用注册”下，对于“用户可以注册应用程序”，请选择“是”。   
 
         ![Azure AD_application_permission](media/vmware-azure-deploy-configuration-server/AAD_application_permission.png)
@@ -55,7 +55,7 @@ ms.locfileid: "79291356"
 
 ## <a name="download-the-template"></a>下载模板
 
-1. 在保管库中，转到“准备基础结构” > “源”   。
+1. 在保管库中，转到“准备基础结构” > “源”。
 2. 在“准备源”中，选择“+配置服务器”。  
 3. 在“添加服务器”中，检查“VMware 的配置服务器”是否已显示在“服务器类型”中    。
 4. 下载配置服务器的 OVA 模板。
@@ -80,7 +80,7 @@ ms.locfileid: "79291356"
 7. 在余下的向导页中，接受默认设置。
 8.  在“准备完成”中：
 
-    * 若要使用默认设置来设置 VM，请选择“部署后打开” > “完成”   。
+    * 若要使用默认设置来设置 VM，请选择“部署后打开” > “完成”。
     * 若要添加其他网络接口，请清除“部署后打开”，并选择“完成”   。 默认情况下，配置服务器模板是使用单个 NIC 部署的。 可以在部署后添加其他 NIC。
 
 > [!IMPORTANT]
@@ -94,9 +94,9 @@ ms.locfileid: "79291356"
 若要将其他 NIC 添加到配置服务器，请在将服务器注册到保管库中之前添加它。 注册后不支持添加其他适配器。
 
 1. 在 vSphere 客户端库存中，右键单击 VM 并选择“编辑设置”  。
-2. 在“硬件”中，选择“添加” > “以太网适配器”    。 然后，选择“下一步”  。
+2. 在“硬件”中，选择“添加” > “以太网适配器”。 然后，选择“下一步”  。
 3. 选择适配器类型和网络。
-4. 若要在打开 VM 时连接虚拟 NIC，请选择“上电时连接”  。 然后，选择“下一步” > “完成” > “确定”。   
+4. 若要在打开 VM 时连接虚拟 NIC，请选择“上电时连接”  。 然后，选择“下一步” > “完成” > “确定”。
 
 <a name="register-the-configuration-server"></a>
 ## <a name="register-the-configuration-server-with-azure-site-recovery-services"></a>将配置服务器注册到 Azure Site Recovery 服务
@@ -115,7 +115,7 @@ ms.locfileid: "79291356"
 ### <a name="configure-settings"></a>配置设置
 
 1. 在配置服务器管理向导中，选择“设置连接”。  在下拉框中，首先选择内置进程服务器用于发现的 NIC，并将移动服务的安装推送到源计算机上。 然后选择配置服务器用来与 Azure 建立连接的 NIC。 选择“保存”  。 配置后无法更改此设置。 不要更改配置服务器的 IP 地址。 确保分配给配置服务器的 IP 是静态 IP，而不是 DHCP IP。
-2. 在“选择恢复服务保管库”中，使用在[将配置服务器注册到 Azure Site Recovery 服务](#register-the-configuration-server-with-azure-site-recovery-services)的步骤 6 中所用的凭据登录到 Azure。 
+2. 在“选择恢复服务保管库”中，使用在[将配置服务器注册到 Azure Site Recovery 服务](#register-the-configuration-server-with-azure-site-recovery-services)的步骤 6 中所用的凭据登录到 Azure。
 3. 登录后，选择你的 Azure 订阅以及相关的资源组和保管库。
 
     > [!NOTE]
@@ -132,10 +132,10 @@ ms.locfileid: "79291356"
 
 5. 在“验证设备配置”中验证先决条件，然后继续  。
 6. 在“配置 vCenter Server/vSphere ESXi 服务器”中，输入要复制的 VM 所在的 vCenter Server 或 vSphere 主机的 FQDN 或 IP 地址  。 输入服务器侦听的端口。 为保管库中的 VMware 服务器输入一个可用的友好名称。
-7. 输入配置服务器用来连接到 VMware 服务器的凭据。 Site Recovery 将使用这些凭据自动发现可复制的 VMware VM。 选择“添加” > “继续”   。 此处输入的凭据会在本地保存。
+7. 输入配置服务器用来连接到 VMware 服务器的凭据。 Site Recovery 将使用这些凭据自动发现可复制的 VMware VM。 选择“添加” > “继续”。 此处输入的凭据会在本地保存。
 8. 在“配置虚拟机凭据”  中，输入虚拟机的用户名和密码，以便在复制过程中自动安装移动服务。 对于 Windows  计算机，该帐户在要复制的计算机上需有本地管理员特权。 对于 Linux  ，请提供根帐户的详细信息。
 9. 选择“完成配置”以完成注册  。
-10. 完成注册后，打开 Azure 门户，验证配置服务器和 VMware 服务器是否在“恢复服务保管库” > “管理” > “Site Recovery 基础结构” > “配置服务器”中列出     。
+10. 完成注册后，打开 Azure 门户，验证配置服务器和 VMware 服务器是否在“恢复服务保管库” > “管理” > “Site Recovery 基础结构” > “配置服务器”中列出。
 
 ## <a name="upgrade-the-configuration-server"></a>升级配置服务器
 
@@ -179,7 +179,7 @@ ms.locfileid: "79291356"
     否。 请不要更改配置服务器的通行短语。 通行短语的更改会中断受保护计算机的复制，并会导致关键运行状况状态。
 * 在哪里可以下载保管库注册密钥？
 
-    在“恢复服务保管库”中，选择“管理” > “Site Recovery 基础结构” > “配置服务器”     。 在“服务器”中，选择“下载注册密钥”以下载保管库凭据文件。  
+    在“恢复服务保管库”中，选择“管理” > “Site Recovery 基础结构” > “配置服务器”。 在“服务器”中，选择“下载注册密钥”以下载保管库凭据文件。  
 * 是否可以克隆现有配置服务器并将其用于复制业务流程？
 
     否。 不支持使用克隆的配置服务器组件。 克隆横向扩展进程服务器也是不受支持的方案。 克隆 Site Recovery 组件会影响正在进行的复制。

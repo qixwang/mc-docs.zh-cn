@@ -130,7 +130,7 @@ namespace Stateless1
 }
 ```
 
-作为 `CreatePipeline` 中 `ServiceFabricDiagnosticsPipelineFactory` 方法的参数传递的名称是表示 EventFlow 日志收集管道的运行状况实体  的名称。 如果 EventFlow 发生错误，并通过 Service Fabric 运行状况子系统进行报告，则使用此名称。
+作为 `ServiceFabricDiagnosticsPipelineFactory` 中 `CreatePipeline` 方法的参数传递的名称是表示 EventFlow 日志收集管道的运行状况实体的名称。 如果 EventFlow 发生错误，并通过 Service Fabric 运行状况子系统进行报告，则使用此名称。
 
 ### <a name="use-service-fabric-settings-and-application-parameters-in-eventflowconfig"></a>在 eventFlowConfig 中使用 Service Fabric 设置和应用程序参数
 

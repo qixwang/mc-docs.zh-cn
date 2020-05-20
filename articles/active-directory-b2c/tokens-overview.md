@@ -128,7 +128,7 @@ https://contoso.b2clogin.cn/contoso.partner.onmschina.cn/discovery/v2.0/keys?p=b
 ```
 位于此 URL 的 JSON 文档包含将在特定时间点使用的所有公钥信息。 应用可以使用 JWT 标头中的 `kid` 声明，选择用于签名特定令牌的 JSON 文档中的公钥。 然后，可以使用正确的公钥和指定的算法来执行签名验证。
 
-`B2C_1_signupsignin1` 租户中的 `contoso.partner.onmschina.cn` 策略的元数据文档位于：
+`contoso.partner.onmschina.cn` 租户中的 `B2C_1_signupsignin1` 策略的元数据文档位于：
 
 ```
 https://contoso.b2clogin.cn/contoso.partner.onmschina.cn/v2.0/.well-known/openid-configuration?p=b2c_1_signupsignin1

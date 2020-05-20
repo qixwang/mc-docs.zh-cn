@@ -43,7 +43,7 @@ ms.locfileid: "76116899"
 
 ## <a name="create-azure-cosmos-db-trigger"></a>创建 Azure Cosmos DB 触发器
 
-1. 展开 Function App，单击“Functions”旁边的  **按钮+**  。 如果这是函数应用中的第一个函数，请依次选择“门户中”  、“继续”  。 否则，请转到第三步。
+1. 展开 Function App，单击“Functions”旁边的 + 按钮。 如果这是函数应用中的第一个函数，请依次选择“门户中”  、“继续”  。 否则，请转到第三步。
 
    ![Azure 门户中的 Functions 快速入门页](./media/functions-create-cosmos-db-triggered-function/function-app-quickstart-choose-portal.png)
 
@@ -75,7 +75,7 @@ ms.locfileid: "76116899"
 
     此函数模板将文档的数量和第一个文档 ID 写入到日志中。
 
-接下来，连接到 Azure Cosmos DB 帐户并在 `Items` 数据库中创建 `Tasks` 容器。
+接下来，连接到 Azure Cosmos DB 帐户并在 `Tasks` 数据库中创建 `Items` 容器。
 
 ## <a name="create-the-items-container"></a>创建 Items 容器
 

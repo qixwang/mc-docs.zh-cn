@@ -16,7 +16,7 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 04/17/2020
 ms.locfileid: "75467297"
 ---
-使用 `myAppServicePlan`az webapp create[ 命令在 ](https://docs.azure.cn/cli/webapp?view=azure-cli-latest#az_webapp_create) 应用服务计划中创建一个 Web 应用。 
+使用 [az webapp create](https://docs.azure.cn/cli/webapp?view=azure-cli-latest#az_webapp_create) 命令在 `myAppServicePlan` 应用服务计划中创建一个 Web 应用。 
 
 在 Azure CLI 中，可以使用 [`az webapp create`](/cli/webapp?view=azure-cli-latest) 命令。在以下示例中，将 `<app-name>` 替换为全局唯一的应用名称（有效字符是 `a-z`、`0-9` 和 `-`）。 运行时设置为 `NODE|6.9`。 若要查看所有受支持的运行时，请运行 [`az webapp list-runtimes`](/cli/webapp?view=azure-cli-latest#az-webapp-list-runtimes)。 
 

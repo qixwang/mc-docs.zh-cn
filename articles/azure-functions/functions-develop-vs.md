@@ -90,11 +90,11 @@ Visual Studio 在开发函数时提供以下优势：
 
 ## <a name="configure-the-project-for-local-development"></a>为本地开发配置项目
 
-Functions 运行时在内部使用 Azure 存储帐户。 对于除 HTTP 和 Webhook 以外的所有触发器类型，必须将 **Values.AzureWebJobsStorage** 键设置为有效的 Azure 存储帐户连接字符串。 函数应用还可以在项目所需的 AzureWebJobsStorage 连接设置中使用 [Azure 存储模拟器](../storage/common/storage-use-emulator.md)  。 若要使用模拟器，请将 AzureWebJobsStorage 的值设置为  `UseDevelopmentStorage=true`。 在部署之前，请将此设置更改为实际的存储帐户连接字符串。
+Functions 运行时在内部使用 Azure 存储帐户。 对于除 HTTP 和 Webhook 以外的所有触发器类型，必须将 **Values.AzureWebJobsStorage** 键设置为有效的 Azure 存储帐户连接字符串。 函数应用还可以在项目所需的 AzureWebJobsStorage 连接设置中使用 [Azure 存储模拟器](../storage/common/storage-use-emulator.md)  。 若要使用模拟器，请将 AzureWebJobsStorage 的值设置为 `UseDevelopmentStorage=true`。 在部署之前，请将此设置更改为实际的存储帐户连接字符串。
 
 若要设置存储帐户连接字符串，请执行以下操作：
 
-1. 在 Visual Studio 中，打开“Cloud Explorer”，展开“存储帐户” **你的存储帐户，然后在“属性”** **选项卡中复制**主连接字符串 > 值。   
+1. 在 Visual Studio 中，打开“Cloud Explorer”，展开“存储帐户” >  你的存储帐户，然后在“属性”选项卡中复制**主连接字符串**值。
 
 2. 在项目内，打开 local.settings.json 项目文件，并将“AzureWebJobsStorage”键的值设置为复制的连接字符串。 
 
@@ -104,7 +104,7 @@ Functions 运行时在内部使用 Azure 存储帐户。 对于除 HTTP 和 Webh
 
 在 C# 类库函数中，可以通过在代码中应用属性来定义函数使用的绑定。 从提供的模板创建函数触发器时，将为你应用触发器属性。 
 
-1. 在“解决方案资源管理器”  中，右键单击项目节点，然后选择“添加”   > “新建项”  。 选择“Azure 函数”，键入类的**名称**，然后单击“添加”。  
+1. 在“解决方案资源管理器”  中，右键单击项目节点，然后选择“添加”   > “新建项”  。 选择“Azure 函数”，键入类的**名称**，然后单击“添加”。
 
 2. 选择你的触发器，设置绑定属性，然后单击“创建”。  以下示例显示创建队列存储触发的函数时的设置。 
 
@@ -148,7 +148,7 @@ Functions 运行时在内部使用 Azure 存储帐户。 对于除 HTTP 和 Webh
 
 2. 为特定绑定添加适当的 NuGet 扩展包。 有关详细信息，请参阅“触发器和绑定”一文中的[使用 Visual Studio 进行本地 C# 开发](./functions-bindings-register.md#local-csharp)。 特定于绑定的 NuGet 包要求位于绑定的参考文章中。 例如，可以在[事件中心绑定参考文章](functions-bindings-event-hubs.md)中找到事件中心触发器的包要求。
 
-3. 如果有绑定需要的应用设置，请将其添加到**本地设置文件**中的 [Values](functions-run-local.md#local-settings-file) 集合。 当函数在本地运行时，会使用这些值。 当函数在 Azure 的函数应用中运行时，会使用[函数应用设置](#function-app-settings)。
+3. 如果有绑定需要的应用设置，请将其添加到[本地设置文件](functions-run-local.md#local-settings-file)中的 **Values** 集合。 当函数在本地运行时，会使用这些值。 当函数在 Azure 的函数应用中运行时，会使用[函数应用设置](#function-app-settings)。
 
 4. 将适当的绑定属性添加到方法签名。 在以下示例中，一条队列消息触发了该函数，而输出绑定则创建了一条新的队列消息，在不同的队列中使用了相同的文本。
 

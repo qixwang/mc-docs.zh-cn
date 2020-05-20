@@ -374,7 +374,7 @@ public String cosmosDbQueryById(
 
 ### <a name="http-trigger-save-one-document-to-database-via-outputbinding"></a>HTTP 触发器，通过 OutputBinding 将一个文档保存到数据库
 
-以下示例显示了 Java 函数，该函数通过 ```OutputBinding<T>``` 输出参数将文档写入 CosmosDB。 在此示例中，需要使用 ```outputItem``` 为 ```@CosmosDBOutput``` 参数提供注释，而不要使用函数签名。 使用 ```OutputBinding<T>```，让函数可以利用绑定将文档写入 CosmosDB，同时还可向函数调用者返回不同的值，例如 JSON 或 XML 文档。
+以下示例显示了 Java 函数，该函数通过 ```OutputBinding<T>``` 输出参数将文档写入 CosmosDB。 在此示例中，需要使用 ```@CosmosDBOutput``` 为 ```outputItem``` 参数提供注释，而不要使用函数签名。 使用 ```OutputBinding<T>```，让函数可以利用绑定将文档写入 CosmosDB，同时还可向函数调用者返回不同的值，例如 JSON 或 XML 文档。
 
 ```java
     @FunctionName("WriteOneDocOutputBinding")
@@ -420,7 +420,7 @@ public String cosmosDbQueryById(
 
 ### <a name="http-trigger-save-multiple-documents-to-database-via-outputbinding"></a>HTTP 触发器，通过 OutputBinding 将多个文档保存到数据库
 
-以下示例显示了 Java 函数，该函数通过 ```OutputBinding<T>``` 输出参数将多个文档写入 CosmosDB。 在此示例中，需使用 ```outputItem``` 为 ```@CosmosDBOutput``` 参数提供注释，而不要使用函数签名。 输出参数 ```outputItem``` 有一个 ```ToDoItem``` 对象列表作为其模板参数类型。 使用 ```OutputBinding<T>```，让函数可以利用绑定将文档写入 CosmosDB，同时还可向函数调用者返回不同的值，例如 JSON 或 XML 文档。
+以下示例显示了 Java 函数，该函数通过 ```OutputBinding<T>``` 输出参数将多个文档写入 CosmosDB。 在此示例中，需使用 ```@CosmosDBOutput``` 为 ```outputItem``` 参数提供注释，而不要使用函数签名。 输出参数 ```outputItem``` 有一个 ```ToDoItem``` 对象列表作为其模板参数类型。 使用 ```OutputBinding<T>```，让函数可以利用绑定将文档写入 CosmosDB，同时还可向函数调用者返回不同的值，例如 JSON 或 XML 文档。
 
 ```java
     @FunctionName("WriteMultipleDocsOutputBinding")
@@ -519,7 +519,7 @@ JavaScript 不支持特性。
 |**collectionThroughput**|**CollectionThroughput**| 当 `CreateIfNotExists` 为 true 时，将定义所创建集合的[吞吐量](../cosmos-db/set-throughput.md)。|
 |**connectionStringSetting**    |**ConnectionStringSetting** |内含 Azure Cosmos DB 连接字符串的应用设置的名称。        |
 |**preferredLocations**| **PreferredLocations**| （可选）为 Azure Cosmos DB 服务中的异地复制数据库帐户定义首选位置（区域）。 值应以逗号分隔。 |
-|**useMultipleWriteLocations**| **UseMultipleWriteLocations**| （可选）与 `true` 一起设置为 `PreferredLocations` 时，它可以利用 Azure Cosmos DB 服务中的[多区域写入](../cosmos-db/how-to-manage-database-account.md#configure-multiple-write-regions)。 |
+|**useMultipleWriteLocations**| **UseMultipleWriteLocations**| （可选）与 `PreferredLocations` 一起设置为 `true` 时，它可以利用 Azure Cosmos DB 服务中的[多区域写入](../cosmos-db/how-to-manage-database-account.md#configure-multiple-write-regions)。 |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 

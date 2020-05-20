@@ -34,7 +34,7 @@ Azure Functions 用于在无服务器环境中运行代码，无需先创建虚�
 
 ## <a name="create-an-http-triggered-function"></a><a name="create-function"></a>创建 HTTP 触发的函数
 
-1. 展开新的函数应用，选择 **Functions+ 旁边的**  按钮，接着选择“门户中”  ，然后选择“继续”  。
+1. 展开新的函数应用，选择 **Functions** 旁边的 **+** 按钮，接着选择“门户中”，然后选择“继续”。
 
     ![有关选择平台的 Functions 快速入门。](./media/functions-create-first-azure-function/function-app-quickstart-choose-portal.png)
 

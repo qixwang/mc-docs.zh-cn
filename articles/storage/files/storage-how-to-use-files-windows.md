@@ -164,7 +164,7 @@ New-PSDrive -Name <desired-drive-letter> -PSProvider FileSystem -Root "\\$($file
 ```
 
 > [!Note]  
-> 对 `-Persist` cmdlet 使用 `New-PSDrive` 选项只会在凭据已保存的情况下，允许文件共享在启动时重新装载。 可以使用 cmdkey 来保存凭据，如[前所述](#persisting-azure-file-share-credentials-in-windows)。 
+> 对 `New-PSDrive` cmdlet 使用 `-Persist` 选项只会在凭据已保存的情况下，允许文件共享在启动时重新装载。 可以使用 cmdkey 来保存凭据，如[前所述](#persisting-azure-file-share-credentials-in-windows)。 
 
 可以根据需要使用以下 PowerShell cmdlet 来卸载 Azure 文件共享。
 
@@ -280,7 +280,7 @@ Disable-WindowsOptionalFeature -Online -FeatureName SMB1Protocol
 ### <a name="disabling-smb-1-on-legacy-versions-of-windowswindows-server"></a>在旧版 Windows/Windows Server 上禁用 SMB 1
 > 适用于 Windows Server 2012、Windows Server 2008 R2 和 Windows 7
 
-不能在旧版 Windows/Windows Server 上彻底删除 SMB 1，但可以通过注册表来禁用它。 若要禁用 SMB 1，请在 `SMB1` 下新建类型为 `DWORD` 且值为 `0` 的注册表项 `HKEY_LOCAL_MACHINE > SYSTEM > CurrentControlSet > Services > LanmanServer > Parameters`。
+不能在旧版 Windows/Windows Server 上彻底删除 SMB 1，但可以通过注册表来禁用它。 若要禁用 SMB 1，请在 `HKEY_LOCAL_MACHINE > SYSTEM > CurrentControlSet > Services > LanmanServer > Parameters` 下新建类型为 `DWORD` 且值为 `0` 的注册表项 `SMB1`。
 
 也可使用以下 PowerShell cmdlet 轻松完成该操作：
 

@@ -49,7 +49,7 @@ ms.locfileid: "80151721"
 1. [创建源应用的备份](manage-backup.md)。
 1. [在目标区域中的新应用服务计划中创建一个应用](app-service-plan-manage.md#create-an-app-service-plan)。
 2. [在目标应用中还原备份](web-sites-restore.md)
-2. 如果你使用自定义域，请使用 `awverify.` [提前将其绑定到目标应用](manage-custom-dns-migrate-domain.md#bind-the-domain-name-preemptively)，并[在目标应用中启用该域](manage-custom-dns-migrate-domain.md#enable-the-domain-for-your-app)。
+2. 如果你使用自定义域，请使用 `awverify.`[提前将其绑定到目标应用](manage-custom-dns-migrate-domain.md#bind-the-domain-name-preemptively)，并[在目标应用中启用该域](manage-custom-dns-migrate-domain.md#enable-the-domain-for-your-app)。
 3. 将目标应用中的其他所有内容配置为与源应用相同，并验证你的配置。
 4. 当你已准备好将自定义域指向目标应用时，[重新映射域名](manage-custom-dns-migrate-domain.md#remap-the-active-dns-name)。
 

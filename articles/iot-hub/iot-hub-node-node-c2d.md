@@ -100,7 +100,7 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
     npm install azure-iothub --save
     ```
 3. 通过文本编辑器，在 **sendcloudtodevicemessage**文件夹中创建一个 **SendCloudToDeviceMessage.js** 文件。
-4. 在 `require`SendCloudToDeviceMessage.js**文件的开头添加以下** 语句：
+4. 在 **SendCloudToDeviceMessage.js** 文件的开头添加以下 `require` 语句：
    
     ```javascript
     'use strict';

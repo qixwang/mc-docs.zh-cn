@@ -126,7 +126,7 @@ Azure 中最新的 SUSE Linux Enterprise Server (SLES) 和 openSUSE 映像已预
 
 Azure 中最新的 SLES 和 openSUSE 映像已预先配置 DHCPv6。 使用这些映像不需要进行额外的更改。 如果 VM 基于旧版或自定义的 SUSE 映像，请执行以下步骤：
 
-1. 编辑 /etc/sysconfig/network/ifcfg-eth0 文件，并使用以下值替换  *参数*`#BOOTPROTO='dhcp4'`：
+1. 编辑 /etc/sysconfig/network/ifcfg-eth0 文件，并使用以下值替换 `#BOOTPROTO='dhcp4'` 参数：
 
         BOOTPROTO='dhcp'
 

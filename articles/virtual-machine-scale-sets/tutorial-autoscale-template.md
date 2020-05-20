@@ -134,7 +134,7 @@ ms.locfileid: "80581611"
 ## <a name="create-an-autoscaling-scale-set"></a>创建自动缩放规模集
 让我们使用示例模板创建一个规模集并应用自动缩放规则。 可以[查看完整模板](https://raw.githubusercontent.com/Azure-Samples/compute-automation-configurations/master/scale_sets/autoscale.json)，或者[参阅模板的 *Microsoft.insights/autoscalesettings* 资源提供程序节](https://github.com/Azure-Samples/compute-automation-configurations/blob/master/scale_sets/autoscale.json#L220)。
 
-首先，使用 [az group create](/cli/group) 创建资源组。 以下示例在“chinanorth”  位置创建名为“myResourceGroup”  的资源组：
+首先，使用 [az group create](/cli/group) 创建资源组。 以下示例在“chinanorth”位置创建名为“myResourceGroup”的资源组：
 
 ```azurecli
 az group create --name myResourceGroup --location chinanorth
@@ -250,7 +250,7 @@ Every 2.0s: az vmss list-instances --resource-group myResourceGroup --name mySca
            6  True                  chinanorth      myScaleSet_6  Deleting             MYRESOURCEGROUP  9e4133dd-2c57-490e-ae45-90513ce3b336
 ```
 
-使用 *退出*watch`Ctrl-c`。 规模集继续每 5 分钟横向缩减一次，每次删除一个 VM 实例，直至达到最小实例计数 2。
+使用 `Ctrl-c` 退出 *watch*。 规模集继续每 5 分钟横向缩减一次，每次删除一个 VM 实例，直至达到最小实例计数 2。
 
 
 ## <a name="clean-up-resources"></a>清理资源

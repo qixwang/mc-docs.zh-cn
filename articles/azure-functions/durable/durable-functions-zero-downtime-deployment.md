@@ -168,7 +168,7 @@ Azure Pipelines 会在部署开始之前检查函数应用是否存在正在运�
 
 ### <a name="tracking-store-settings"></a>跟踪存储设置
 
-每个函数应用应使用单独的计划队列（这些队列可能位于不同的存储帐户中）。 若要跨应用程序的所有版本查询所有业务流程实例，可以在函数应用之间共享实例和历史记录表。 可以通过在 `trackingStoreConnectionStringName`host.json 设置`trackingStoreNamePrefix`文件中配置 [ 和 ](durable-functions-bindings.md#host-json) 设置来共享表，使它们全部使用相同的值。
+每个函数应用应使用单独的计划队列（这些队列可能位于不同的存储帐户中）。 若要跨应用程序的所有版本查询所有业务流程实例，可以在函数应用之间共享实例和历史记录表。 可以通过在 [host.json 设置](durable-functions-bindings.md#host-json)文件中配置 `trackingStoreConnectionStringName` 和 `trackingStoreNamePrefix` 设置来共享表，使它们全部使用相同的值。
 
 有关详细信息，请参阅[在 Azure 中管理 Durable Functions 中的实例](durable-functions-instance-management.md)。
 

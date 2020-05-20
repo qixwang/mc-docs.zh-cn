@@ -42,7 +42,7 @@ ms.locfileid: "75600457"
 
 ### <a name="create-domain-verification-record"></a>创建域验证记录
 
-若要验证域所有权，请添加 TXT 记录。 TXT 记录从 awverify._subdomain>&lt;_ 映射到 _appname>.chinacloudsites.cn&lt;_ 。 
+若要验证域所有权，请添加 TXT 记录。 TXT 记录从 awverify.&lt;subdomain> 映射到 &lt;appname>.chinacloudsites.cn。 
 
 你需要的 TXT 记录取决于要迁移的 DNS 记录。 有关示例，请参阅下表（`@` 通常表示根域）：
 
@@ -50,7 +50,7 @@ ms.locfileid: "75600457"
 | - | - | - |
 | \@（根） | awverify  | _&lt;appname>.chinacloudsites.cn_ |
 | www（子域） | awverify.www  | _&lt;appname>.chinacloudsites.cn_ |
-| \*（通配符） | awverify. _\*_ | _&lt;appname>.chinacloudsites.cn_ |
+| \*（通配符） | awverify.\* | _&lt;appname>.chinacloudsites.cn_ |
 
 在 DNS 记录页中，记下要迁移的 DNS 名称的记录类型。 应用服务支持来自 CNAME 和 A 记录的映射。
 
@@ -67,7 +67,7 @@ ms.locfileid: "75600457"
 
 ![自定义域菜单](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
 
-在“自定义域”  页中，选择“添加主机名” **+旁的**  图标  。
+在“自定义域”页中，选择“添加主机名”旁的 + 图标。
 
 ![添加主机名](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
 
@@ -101,7 +101,7 @@ ms.locfileid: "75600457"
 
 若要重新映射 A 记录，需要应用服务应用的外部 IP 地址，此地址显示在“自定义域”  页中。
 
-通过选择右上角的 X  关闭“添加主机名”  页。 
+通过选择右上角的 X 关闭“添加主机名”页。 
 
 在“自定义域”页中，复制应用的 IP 地址。 
 
@@ -127,7 +127,7 @@ ms.locfileid: "75600457"
 
 可以在订阅之间或者在同一订阅内部迁移 Azure 中的活动自定义域。 但是，这种不停机的迁移方案需要在特定的时间为源应用和目标应用分配同一个自定义域。 因此，需确保两个应用未部署到同一个部署单元（在内部称为“Web 空间”）。 一个域名只能分配到每个部署单元中的一个应用。
 
-可以通过查看 FTP/S URL `<deployment-unit>.ftp.chinacloudsites.chinacloudapi.cn` 的域名，找到应用的部署单元。 检查并确保源应用与目标应用的部署单元不同。 应用的部署单元由它所在的[应用服务计划](overview-hosting-plans.md)决定。 该部署单元是在创建计划时由 Azure 随机选择的，且无法更改。 [在同一资源组和同一区域中创建两个计划*时，Azure 只会确保这两个计划位于同一个部署单元，但不提供任何逻辑来确保计划位于不同的部署单元。* ](app-service-plan-manage.md#create-an-app-service-plan) 在不同部署单元中创建计划的唯一方法是在新的资源组或区域中不断地创建计划，直到获得不同的部署单元。
+可以通过查看 FTP/S URL `<deployment-unit>.ftp.chinacloudsites.chinacloudapi.cn` 的域名，找到应用的部署单元。 检查并确保源应用与目标应用的部署单元不同。 应用的部署单元由它所在的[应用服务计划](overview-hosting-plans.md)决定。 该部署单元是在创建计划时由 Azure 随机选择的，且无法更改。 [在同一资源组和同一区域中创建两个计划](app-service-plan-manage.md#create-an-app-service-plan)时，Azure 只会确保这两个计划位于同一个部署单元，但不提供任何逻辑来确保计划位于不同的部署单元。 在不同部署单元中创建计划的唯一方法是在新的资源组或区域中不断地创建计划，直到获得不同的部署单元。
 
 ## <a name="next-steps"></a>后续步骤
 

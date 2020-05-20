@@ -24,7 +24,7 @@ ms.locfileid: "63845486"
 ### <a name="add-the-relay-nuget-package"></a>添加中继 NuGet 包
 
 1. 右键单击新创建的项目，然后选择“管理 NuGet 包”  。
-2. 选择“浏览”，然后搜索 **Microsoft.Azure.Relay**。  在搜索结果中，选择“Microsoft Azure 中继”。  
+2. 选择“浏览”，然后搜索 **Microsoft.Azure.Relay**。 在搜索结果中，选择“Microsoft Azure 中继”。  
 3. 选择“安装”  即可完成安装。 关闭对话框。
 
 ### <a name="write-code-to-send-requests"></a>编写代码以发送请求
@@ -67,7 +67,7 @@ ms.locfileid: "63845486"
         Console.WriteLine(await response.Content.ReadAsStringAsync());        Console.ReadLine();
     }
     ```
-4. 在 `Main` 类的 `Program` 方法中添加以下代码行。
+4. 在 `Program` 类的 `Main` 方法中添加以下代码行。
    
     ```csharp
     RunAsync().GetAwaiter().GetResult();

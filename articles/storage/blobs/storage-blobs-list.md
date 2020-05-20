@@ -40,7 +40,7 @@ ms.locfileid: "78411959"
 
 ### <a name="manage-how-many-results-are-returned"></a>管理要返回的结果数
 
-默认情况下，列出操作每次最多返回 5000 条结果。 若要返回更少的结果，请在调用某个 `maxresults`ListBlobs**方法时为** 参数提供非零值。
+默认情况下，列出操作每次最多返回 5000 条结果。 若要返回更少的结果，请在调用某个 **ListBlobs** 方法时为 `maxresults` 参数提供非零值。
 
 如果列出操作返回的 Blob 超过 5000 个，或者你为 `maxresults` 指定了一个导致列出操作返回存储帐户中一部分容器的值，则 Azure 存储将返回一个包含 Blob 列表的继续标记。  继续标记是一个不透明值，可用于从 Azure 存储中检索下一组结果。
 
@@ -52,7 +52,7 @@ ms.locfileid: "78411959"
 
 ### <a name="return-metadata"></a>返回元数据
 
-若要连同结果一起返回 Blob 元数据，请指定 **BlobListingDetails** 枚举的 [Metadata](/dotnet/api/microsoft.windowsazure.storage.blob.bloblistingdetails) 值。 Azure 存储包含每个返回的 Blob 的元数据，因此在此上下文中，无需同时调用 **FetchAttributes** 方法之一即可检索 Blob 元数据。
+若要连同结果一起返回 Blob 元数据，请指定 [BlobListingDetails](/dotnet/api/microsoft.windowsazure.storage.blob.bloblistingdetails) 枚举的 **Metadata** 值。 Azure 存储包含每个返回的 Blob 的元数据，因此在此上下文中，无需同时调用 **FetchAttributes** 方法之一即可检索 Blob 元数据。
 
 ### <a name="flat-listing-versus-hierarchical-listing"></a>平面列表与分层列表
 

@@ -37,7 +37,7 @@ ms.locfileid: "74326642"
 
 资源组是在其中部署和管理 Azure 资源的逻辑容器。 使用 [az group create](/cli/group) 创建资源组。
 
-以下示例在“chinanorth”  位置创建名为“myResourceGroupAG”  的资源组。
+以下示例在“chinanorth”位置创建名为“myResourceGroupAG”的资源组。
 
 ```azurecli 
 az group create --name myResourceGroupAG --location chinanorth
@@ -45,7 +45,7 @@ az group create --name myResourceGroupAG --location chinanorth
 
 ## <a name="create-network-resources"></a>创建网络资源 
 
-使用 *az network vnet create* 创建名为 *myVNet* 的虚拟网络和名为 [myAGSubnet](/cli/network/vnet) 的子网。 然后，可以使用 *az network vnet subnet create* 添加后端服务器池所需的名为 [myBackendSubnet](/cli/network/vnet/subnet) 的子网。 使用 *az network public-ip create* 创建名为 [myAGPublicIPAddress](/cli/network/public-ip#az-network-public-ip-create) 的公共 IP 地址。
+使用 [az network vnet create](/cli/network/vnet) 创建名为 *myVNet* 的虚拟网络和名为 *myAGSubnet* 的子网。 然后，可以使用 [az network vnet subnet create](/cli/network/vnet/subnet) 添加后端服务器池所需的名为 *myBackendSubnet* 的子网。 使用 [az network public-ip create](/cli/network/public-ip#az-network-public-ip-create) 创建名为 *myAGPublicIPAddress* 的公共 IP 地址。
 
 ```azurecli
 az network vnet create `
@@ -119,7 +119,7 @@ az network application-gateway http-listener create `
 
 ### <a name="add-the-redirection-configuration"></a>添加重定向配置
 
-使用 *az network application-gateway redirect-config create\. 在应用程序网关中添加从* www*consoto.org\. 将流量发送到* www[contoso.com](/cli/network/application-gateway/redirect-config#az-network-application-gateway-redirect-config-create) 的侦听器的重定向配置。
+使用 [az network application-gateway redirect-config create](/cli/network/application-gateway/redirect-config#az-network-application-gateway-redirect-config-create) 在应用程序网关中添加从 *www\.consoto.org* 将流量发送到 *www\.contoso.com* 的侦听器的重定向配置。
 
 ```azurecli
 az network application-gateway redirect-config create `

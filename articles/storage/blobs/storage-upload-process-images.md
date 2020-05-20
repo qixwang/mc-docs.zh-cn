@@ -100,7 +100,7 @@ echo $blobStorageAccountKey
 
 使用 [az appservice plan create](/cli/appservice/plan) 命令创建应用服务计划。
 
-以下示例在免费  定价层中创建名为 `myAppServicePlan` 的应用服务计划：
+以下示例在免费定价层中创建名为 `myAppServicePlan` 的应用服务计划：
 
 ```azurecli 
 az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku Free
@@ -108,9 +108,9 @@ az appservice plan create --name myAppServicePlan --resource-group myResourceGro
 
 ## <a name="create-a-web-app"></a>创建 Web 应用
 
-Web 应用为从 GitHub 示例存储库部署的示例应用代码提供承载空间。 使用 [az webapp create](/cli/webapp) 命令在 `myAppServicePlan` 应用服务计划中创建一个 [Web 应用](../../app-service/overview.md)。  
+Web 应用为从 GitHub 示例存储库部署的示例应用代码提供承载空间。 使用 [az webapp create](/cli/webapp) 命令在 `myAppServicePlan` 应用服务计划中创建 [Web 应用](../../app-service/overview.md)。  
 
-在以下命令中，将 `<web_app>` 替换为唯一名称。 有效的字符是 `a-z`、`0-9` 和 `-`。 如果 `<web_app>` 不唯一，将收到错误消息：*具有给定名称 `<web_app>` 的网站已存在。* Web 应用的默认 URL 为 `https://<web_app>.chinacloudsites.cn`。  
+在以下命令中，将 `<web_app>` 替换为唯一名称。 有效的字符是 `a-z`、`0-9` 和 `-`。 如果 `<web_app>` 不是唯一名称，将收到错误消息：“具有给定名称 `<web_app>` 的网站已存在”。 Web 应用的默认 URL 为 `https://<web_app>.chinacloudsites.cn`。  
 
 ```azurecli
 $webapp="<web_app>"
@@ -181,7 +181,7 @@ az webapp config appsettings set --name $webapp --resource-group myResourceGroup
 
 ![在 .NET 中上传照片](media/storage-upload-process-images/figure1.png)
 
-在示例代码中，*Storagehelper.cs* 文件中的 `UploadFileToStorage` 任务用于使用 [UploadAsync](https://docs.microsoft.com/dotnet/api/azure.storage.blobs.blobclient.uploadasync) 方法将图像上传到存储帐户中的 images  容器。 下面的代码示例包含 `UploadFileToStorage` 任务。
+在示例代码中，*Storagehelper.cs* 文件中的 `UploadFileToStorage` 任务用于使用 [UploadAsync](https://docs.microsoft.com/dotnet/api/azure.storage.blobs.blobclient.uploadasync) 方法将图像上传到存储帐户中的 images 容器。 下面的代码示例包含 `UploadFileToStorage` 任务。
 
 ```csharp
 public static async Task<bool> UploadFileToStorage(Stream fileStream, string fileName,

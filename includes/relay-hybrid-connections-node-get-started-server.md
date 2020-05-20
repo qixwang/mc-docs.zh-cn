@@ -13,7 +13,7 @@ ms.locfileid: "63860532"
 * 从项目文件夹中的 Node 命令提示符运行 `npm install hyco-ws`。
 
 ### <a name="write-some-code-to-receive-messages"></a>编写一些代码来接收消息
-1. 在 `constant` 文件的顶部，添加以下`listener.js`。
+1. 在 `listener.js` 文件的顶部，添加以下`constant`。
    
     ```js
     const WebSocket = require('hyco-ws');

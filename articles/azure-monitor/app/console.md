@@ -49,7 +49,7 @@ telemetryClient.TrackTrace("Hello World!");
 > 提到了 **ApplicationInsights.config** 的说明仅适用于以 .NET Framework 为目标的应用，不适用于 .NET Core 应用程序。
 
 ### <a name="using-config-file"></a>使用配置文件
-默认情况下，创建 `ApplicationInsights.config` 时，Application Insights SDK 在工作目录中查找 `TelemetryConfiguration` 文件
+默认情况下，创建 `TelemetryConfiguration` 时，Application Insights SDK 在工作目录中查找 `ApplicationInsights.config` 文件
 
 ```csharp
 TelemetryConfiguration config = TelemetryConfiguration.Active; // Reads ApplicationInsights.config file if present

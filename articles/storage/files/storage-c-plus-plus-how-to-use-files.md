@@ -43,7 +43,7 @@ ms.locfileid: "63859984"
 若要安装用于 C++ 的 Azure 存储客户端 2.4.0，可以使用以下方法之一：
 
 * **Linux：** 按照[适用于 C++ 的 Azure 存储客户端库自述文件](https://github.com/Azure/azure-storage-cpp/blob/master/README.md)页中提供的说明操作。
-* **Windows：** 在 Visual Studio 中，单击“工具” **“NuGet 包管理器”&gt;“程序包管理器控制台”&gt;** 。 在 [NuGet 包管理器控制台](https://docs.nuget.org/docs/start-here/using-the-package-manager-console)中，键入以下命令，并按 **ENTER**。
+* **Windows：** 在 Visual Studio 中，单击“工具”&gt;“NuGet 包管理器”&gt;“程序包管理器控制台”。 在 [NuGet 包管理器控制台](https://docs.nuget.org/docs/start-here/using-the-package-manager-console)中，键入以下命令，并按 **ENTER**。
   
 
 ```powershell

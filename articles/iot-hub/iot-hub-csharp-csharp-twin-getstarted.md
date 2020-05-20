@@ -58,19 +58,19 @@ ms.locfileid: "78155095"
 
 1. 在 Visual Studio 中选择“创建新项目”  。 在“创建新项目”中，选择“控制台应用(.NET Framework)”，然后选择“下一步”    。
 
-1. 在“配置新项目”中，将项目命名为 **AddTagsAndQuery**。 
+1. 在“配置新项目”中，将项目命名为 **AddTagsAndQuery**。
 
     ![配置 AddTagsAndQuery 项目](./media/iot-hub-csharp-csharp-twin-getstarted/config-addtagsandquery-app.png)
 
 1. 在解决方案资源管理器中，右键单击“AddTagsAndQuery”  项目，并选择“管理 NuGet 包”  。
 
-1. 选择“浏览”，然后搜索并选择 **Microsoft.Azure.Devices**。  选择“安装”  。
+1. 选择“浏览”，然后搜索并选择 **Microsoft.Azure.Devices**。 选择“安装”  。
 
     ![“NuGet 包管理器”窗口](./media/iot-hub-csharp-csharp-twin-getstarted/nuget-package-addtagsandquery-app.png)
 
    此步骤将下载、安装 [Azure IoT 服务 SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices/) NuGet 包及其依赖项并添加对其的引用。
 
-1. 在 Program.cs`using`**文件顶部添加以下** 语句：
+1. 在 Program.cs 文件顶部添加以下 `using` 语句：
 
     ```csharp  
     using Microsoft.Azure.Devices;
@@ -139,15 +139,15 @@ ms.locfileid: "78155095"
 
 1. 在 Visual Studio 中，选择“文件”   > “新建”   > “项目”  。 在“创建新项目”中，选择“控制台应用(.NET Framework)”，然后选择“下一步”    。
 
-1. 在“配置新项目”中，将项目命名为 **ReportConnectivity**。  对于“解决方案”，请选择“添加到解决方案”，然后选择“创建”。   
+1. 在“配置新项目”中，将项目命名为 **ReportConnectivity**。 对于“解决方案”，请选择“添加到解决方案”，然后选择“创建”。   
 
 1. 在解决方案资源管理器中，右键单击“ReportConnectivity”  项目，并选择“管理 NuGet 包”  。
 
-1. 选择“浏览”，然后搜索并选择 **Microsoft.Azure.Devices.Client**。  选择“安装”  。
+1. 选择“浏览”，然后搜索并选择 **Microsoft.Azure.Devices.Client**。 选择“安装”  。
 
    此步骤将下载、安装 [Azure IoT 设备 SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/) NuGet 包及其依赖项并添加对它的引用。
 
-1. 在 Program.cs`using`**文件顶部添加以下** 语句：
+1. 在 Program.cs 文件顶部添加以下 `using` 语句：
 
     ```csharp  
     using Microsoft.Azure.Devices.Client;
@@ -231,7 +231,7 @@ ms.locfileid: "78155095"
 
 1. 在解决方案资源管理器中，右键单击解决方案并选择“设置启动项目”。 
 
-1. 在“通用属性” **“启动项目”中，选择“多个启动项目”。**  >    对于“ReportConnectivity”，请选择“启动”作为“操作”。    选择“确定”  保存更改。  
+1. 在“通用属性” > “启动项目”中，选择“多个启动项目”。 对于“ReportConnectivity”，请选择“启动”作为“操作”。    选择“确定”  保存更改。  
 
 1. 右键单击“ReportConnectivity”  项目并选择“调试”  ，然后选择“启动新实例”  来运行此应用。 随后应会看到该应用获取孪生信息，然后发送连接信息作为报告属性。
 
@@ -239,7 +239,7 @@ ms.locfileid: "78155095"
 
    设备报告了其连接信息后，应出现在两个查询中。
 
-1. 右键单击“AddTagsAndQuery”项目并选择“调试” **“启动新实例”，以再次运行查询。**   >   这次，**myDeviceId** 应出现在两个查询结果中。
+1. 右键单击“AddTagsAndQuery”项目并选择“调试” > “启动新实例”，以再次运行查询。 这次，**myDeviceId** 应出现在两个查询结果中。
 
     ![设备连接性报告成功](./media/iot-hub-csharp-csharp-twin-getstarted/tagappsuccess.png)
 

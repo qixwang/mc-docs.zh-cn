@@ -31,7 +31,7 @@ ms.locfileid: "80151535"
 
 ### <a name="how-to-get-an-access-token"></a>如何获取访问令牌
 
-若要获取访问令牌，需使用 `issueToken` 和订阅密钥向 `Ocp-Apim-Subscription-Key` 终结点发出请求。
+若要获取访问令牌，需使用 `Ocp-Apim-Subscription-Key` 和订阅密钥向 `issueToken` 终结点发出请求。
 
 `issueToken` 终结点具有以下格式：
 

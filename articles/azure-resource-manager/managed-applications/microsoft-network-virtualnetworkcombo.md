@@ -111,7 +111,7 @@ ms.locfileid: "76170783"
 - 必须指定 `constraints.minAddressPrefixSize`。 地址空间小于指定值的任何现有虚拟网络都不可供选择。
 - 必须指定 `subnets`，并且必须为每个子网指定 `constraints.minAddressPrefixSize`。
 - 创建新的虚拟网络时，会根据虚拟网络的地址前缀和相应的 `addressPrefixSize` 自动计算每个子网的地址前缀。
-- 使用现有虚拟网络时，任何小于相应 `constraints.minAddressPrefixSize` 的子网都不可供选择。 另外，如果指定，则没有至少 `minAddressCount` 个可用地址的子网也不可供选择。 默认值为 **0**。 要确保可用地址是连续的，请将 **指定为**true`requireContiguousAddresses`。 默认值为 **true**。
+- 使用现有虚拟网络时，任何小于相应 `constraints.minAddressPrefixSize` 的子网都不可供选择。 另外，如果指定，则没有至少 `minAddressCount` 个可用地址的子网也不可供选择。 默认值为 **0**。 要确保可用地址是连续的，请将 `requireContiguousAddresses` 指定为 **true**。 默认值为 **true**。
 - 不支持在现有虚拟网络中创建子网。
 - 如果 `options.hideExisting` 为 **true**，则用户无法选择现有虚拟网络。 默认值是 **false**秒。
 

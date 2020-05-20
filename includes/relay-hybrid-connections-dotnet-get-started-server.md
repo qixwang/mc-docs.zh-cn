@@ -14,7 +14,7 @@ ms.locfileid: "63847083"
 
 1. 右键单击新创建的项目，然后选择“管理 NuGet 包”  。
 2. 选择“包括预发行版”选项。  
-3. 选择“浏览”，然后搜索 **Microsoft.Azure.Relay**。  在搜索结果中，选择“Microsoft Azure 中继”。 
+3. 选择“浏览”，然后搜索 **Microsoft.Azure.Relay**。 在搜索结果中，选择“Microsoft Azure 中继”。 
 4. 对于版本，选择 **2.0.0-preview1-20180523**。 
 5. 选择“安装”  即可完成安装。 关闭对话框。
 
@@ -134,7 +134,7 @@ ms.locfileid: "63847083"
         await listener.CloseAsync(cts.Token);
     }
     ```
-5. 在 `Main` 类的 `Program` 方法中添加以下代码行：
+5. 在 `Program` 类的 `Main` 方法中添加以下代码行：
    
     ```csharp
     RunAsync().GetAwaiter().GetResult();

@@ -24,7 +24,7 @@ ms.locfileid: "77541055"
 
 若要在 C# 服务中使用服务远程处理时帮助保护服务，请遵循以下步骤：
 
-1. 创建接口 `IHelloWorldStateful`，用于定义可供服务的远程过程调用使用的方法。 服务将使用 `FabricTransportServiceRemotingListener` 命名空间中声明的 `Microsoft.ServiceFabric.Services.Remoting.FabricTransport.Runtime`。 这是可以提供远程处理功能的 `ICommunicationListener` 实现。
+1. 创建接口 `IHelloWorldStateful`，用于定义可供服务的远程过程调用使用的方法。 服务将使用 `Microsoft.ServiceFabric.Services.Remoting.FabricTransport.Runtime` 命名空间中声明的 `FabricTransportServiceRemotingListener`。 这是可以提供远程处理功能的 `ICommunicationListener` 实现。
 
     ```csharp
     public interface IHelloWorldStateful : IService
@@ -142,7 +142,7 @@ ms.locfileid: "77541055"
             };
         }
         ```
-3. 在安全服务上使用远程堆栈（而不是使用 `Microsoft.ServiceFabric.Services.Remoting.Client.ServiceProxy` 类）调用方法来创建服务代理时，请使用 `Microsoft.ServiceFabric.Services.Remoting.Client.ServiceProxyFactory`。 传入包含 `FabricTransportRemotingSettings` 的 `SecurityCredentials`。
+3. 在安全服务上使用远程堆栈（而不是使用 `Microsoft.ServiceFabric.Services.Remoting.Client.ServiceProxy` 类）调用方法来创建服务代理时，请使用 `Microsoft.ServiceFabric.Services.Remoting.Client.ServiceProxyFactory`。 传入包含 `SecurityCredentials` 的 `FabricTransportRemotingSettings`。
 
     ```csharp
 

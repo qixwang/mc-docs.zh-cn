@@ -63,7 +63,7 @@ ms.locfileid: "79292148"
     }
     ```
 
-2. 在 `using`AppDelegate.cs**文件顶部添加以下** 语句。
+2. 在 **AppDelegate.cs** 文件顶部添加以下 `using` 语句。
 
     ```csharp
     using Microsoft.WindowsAzure.MobileServices;

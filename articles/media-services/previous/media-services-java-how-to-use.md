@@ -66,7 +66,7 @@ ms.locfileid: "71124462"
 * `clientKey`：Azure AD 应用程序的客户端密钥
 * `restApiEndpoint`：Azure 媒体服务帐户的 REST API 终结点
 
-可以创建一个 Azure AD 应用程序，然后从 Azure 门户获取前面的配置值。 有关详细信息，请参阅[使用 Azure 门户进行 Azure AD 身份验证入门](/media-services/media-services-portal-get-started-with-aad)的“服务主体身份验证”部分。 
+可以创建一个 Azure AD 应用程序，然后从 Azure 门户获取前面的配置值。 有关详细信息，请参阅[使用 Azure 门户进行 Azure AD 身份验证入门](/media-services/media-services-portal-get-started-with-aad)的“服务主体身份验证”部分。
 
 该代码还依赖于本地存储的视频文件。 必须编辑代码，提供自己的要上传的本地文件。
 

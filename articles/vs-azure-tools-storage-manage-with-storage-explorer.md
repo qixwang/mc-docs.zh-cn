@@ -82,7 +82,7 @@ snap connect storage-explorer:password-manager-service :password-manager-service
 > [!NOTE]
 > 登录后，存储资源管理器要求拥有管理（Azure 资源管理器）和数据层权限才能全面访问资源。 这意味着，你需要拥有 Azure Active Directory (Azure AD) 权限，可以访问自己的存储帐户、该帐户中的容器以及该容器中的数据。 如果你仅在数据层拥有权限，请考虑[通过 Azure AD 添加资源](#add-a-resource-via-azure-ad)。 若要详细了解存储资源管理器所需的具体权限，请参阅 [Azure 存储资源管理器故障排除指南](/storage/common/storage-explorer-troubleshooting#rbac-permissions-issues)。
 
-1. 在存储资源管理器中，选择“视图” > “帐户管理”，或选择“管理帐户”按钮。   
+1. 在存储资源管理器中，选择“视图” > “帐户管理”，或选择“管理帐户”按钮。
 
     ![管理帐户][1]
 
@@ -109,7 +109,7 @@ snap connect storage-explorer:password-manager-service :password-manager-service
 * [通过 Azure AD 添加资源](#add-a-resource-via-azure-ad)。 如果你仅在数据层拥有权限，请使用此选项添加 Blob 容器或 Azure Data Lake Storage Gen2 Blob 存储容器。
 * [使用连接字符串](#use-a-connection-string)。 如果已获取存储帐户的连接字符串，请使用此选项。 存储资源管理器支持密钥和[共享访问签名](storage/common/storage-dotnet-shared-access-signature-part-1.md)连接字符串。
 * [使用共享访问签名 URI](#use-a-shared-access-signature-uri)。 如果已获取 Blob 容器、文件共享、队列或表的[共享访问签名 URI](storage/common/storage-dotnet-shared-access-signature-part-1.md)，请使用它附加到资源。 若要获取共享访问签名 URI，可以使用[存储资源管理器](#generate-a-sas-in-storage-explorer)或 [Azure 门户](https://portal.azure.cn)。
-* [使用名称和密钥](#use-a-name-and-key)。 如果你知道存储帐户的任一帐户密钥，则可以使用此选项快速建立连接。 在 [Azure 门户](https://portal.azure.cn)中选择“设置” > “访问密钥”，在存储帐户页中找到你的密钥。  
+* [使用名称和密钥](#use-a-name-and-key)。 如果你知道存储帐户的任一帐户密钥，则可以使用此选项快速建立连接。 在 [Azure 门户](https://portal.azure.cn)中选择“设置” > “访问密钥”，在存储帐户页中找到你的密钥。
 * [附加到本地仿真器](#attach-to-a-local-emulator)。 如果你正在使用某个可用的 Azure 存储仿真器，则使用此选项可以轻松连接到该仿真器。
 * [使用连接字符串连接到 Azure Cosmos DB 帐户](#connect-to-an-azure-cosmos-db-account-by-using-a-connection-string)。 如果已获取 CosmosDB 实例的连接字符串，请使用此选项。
 * [通过 URI 连接到 Azure Data Lake Store](#connect-to-azure-data-lake-store-by-uri)。 如果已获取 Azure Data Lake Store 的 URI，请使用此选项。
@@ -132,7 +132,7 @@ snap connect storage-explorer:password-manager-service :password-manager-service
 
 1. 检查“连接摘要”，确保所有信息正确。  如果正确，请选择“连接”。  否则，请选择“后退”返回前面的页，以修复任何错误的信息。 
 
-成功添加连接后，资源树中将打开表示该连接的节点。 该资源显示在“本地和附加” > “存储帐户” > “(附加的容器)” > “Blob 容器”下。     如果存储资源管理器无法添加你的连接，或者在成功添加连接后你无法访问自己的数据，请参阅 [Azure 存储资源管理器故障排除指南](/storage/common/storage-explorer-troubleshooting)。
+成功添加连接后，资源树中将打开表示该连接的节点。 该资源显示在“本地和附加” > “存储帐户” > “(附加的容器)” > “Blob 容器”下。 如果存储资源管理器无法添加你的连接，或者在成功添加连接后你无法访问自己的数据，请参阅 [Azure 存储资源管理器故障排除指南](/storage/common/storage-explorer-troubleshooting)。
 
 #### <a name="use-a-connection-string"></a>使用连接字符串
 
@@ -146,7 +146,7 @@ snap connect storage-explorer:password-manager-service :password-manager-service
 
 1. 检查“连接摘要”，确保所有信息正确。  如果正确，请选择“连接”。  否则，请选择“后退”返回前面的页，以修复任何错误的信息。 
 
-成功添加连接后，资源树中将打开表示该连接的节点。 该资源显示在“本地和附加” > “存储帐户”下。   如果存储资源管理器无法添加你的连接，或者在成功添加连接后你无法访问自己的数据，请参阅 [Azure 存储资源管理器故障排除指南](/storage/common/storage-explorer-troubleshooting)。
+成功添加连接后，资源树中将打开表示该连接的节点。 该资源显示在“本地和附加” > “存储帐户”下。 如果存储资源管理器无法添加你的连接，或者在成功添加连接后你无法访问自己的数据，请参阅 [Azure 存储资源管理器故障排除指南](/storage/common/storage-explorer-troubleshooting)。
 
 #### <a name="use-a-shared-access-signature-uri"></a>使用共享访问签名 URI
 
@@ -160,7 +160,7 @@ snap connect storage-explorer:password-manager-service :password-manager-service
 
 1. 检查“连接摘要”，确保所有信息正确。  如果正确，请选择“连接”。  否则，请选择“后退”返回前面的页，以修复任何错误的信息。 
 
-成功添加连接后，资源树中将打开表示该连接的节点。 该资源显示在“本地和附加” > “存储帐户” > “(附加的容器)” > “<适用于附加容器类型的服务节点>”下。     如果存储资源管理器无法添加你的连接，请参阅 [Azure 存储资源管理器故障排除指南](/storage/common/storage-explorer-troubleshooting)。 如果在成功添加连接后无法访问数据，请参阅故障排除指南。
+成功添加连接后，资源树中将打开表示该连接的节点。 该资源显示在“本地和附加” > “存储帐户” > “(附加的容器)” > “<适用于附加容器类型的服务节点>”下。 如果存储资源管理器无法添加你的连接，请参阅 [Azure 存储资源管理器故障排除指南](/storage/common/storage-explorer-troubleshooting)。 如果在成功添加连接后无法访问数据，请参阅故障排除指南。
 
 #### <a name="use-a-name-and-key"></a>使用名称和密钥
 
@@ -178,7 +178,7 @@ snap connect storage-explorer:password-manager-service :password-manager-service
 
 1. 检查“连接摘要”，确保所有信息正确。  如果正确，请选择“连接”。  否则，请选择“后退”返回前面的页，以修复任何错误的信息。 
 
-成功添加连接后，资源树中将打开表示该连接的节点。 该资源显示在“本地和附加” > “存储帐户”下。   如果存储资源管理器无法添加你的连接，或者在成功添加连接后你无法访问自己的数据，请参阅 [Azure 存储资源管理器故障排除指南](/storage/common/storage-explorer-troubleshooting)。
+成功添加连接后，资源树中将打开表示该连接的节点。 该资源显示在“本地和附加” > “存储帐户”下。 如果存储资源管理器无法添加你的连接，或者在成功添加连接后你无法访问自己的数据，请参阅 [Azure 存储资源管理器故障排除指南](/storage/common/storage-explorer-troubleshooting)。
 
 #### <a name="attach-to-a-local-emulator"></a>附加到本地仿真器
 
@@ -187,7 +187,7 @@ snap connect storage-explorer:password-manager-service :password-manager-service
 * [Azure 存储仿真器](storage/common/storage-use-emulator.md)（仅适用于 Windows）
 * [Azurite](https://github.com/azure/azurite)（Windows、macOS 或 Linux）
 
-如果仿真器正在侦听默认端口，则你可以使用“仿真器 - 默认端口”节点访问仿真器。  请留意“本地和附加” > “存储帐户”下的“仿真器 - 默认端口”。   
+如果仿真器正在侦听默认端口，则你可以使用“仿真器 - 默认端口”节点访问仿真器。  请留意“本地和附加” > “存储帐户”下的“仿真器 - 默认端口”。
 
 若要为连接使用不同的名称，或者仿真器不是在默认端口上运行，请执行以下步骤：
 
@@ -206,7 +206,7 @@ snap connect storage-explorer:password-manager-service :password-manager-service
 
 1. 检查“连接摘要”，确保所有信息正确。  如果正确，请选择“连接”。  否则，请选择“后退”返回前面的页，以修复任何错误的信息。 
 
-成功添加连接后，资源树中将打开表示该连接的节点。 该节点应显示在“本地和附加” > “存储帐户”下。   如果存储资源管理器无法添加你的连接，或者在成功添加连接后你无法访问自己的数据，请参阅 [Azure 存储资源管理器故障排除指南](/storage/common/storage-explorer-troubleshooting)。
+成功添加连接后，资源树中将打开表示该连接的节点。 该节点应显示在“本地和附加” > “存储帐户”下。 如果存储资源管理器无法添加你的连接，或者在成功添加连接后你无法访问自己的数据，请参阅 [Azure 存储资源管理器故障排除指南](/storage/common/storage-explorer-troubleshooting)。
 
 #### <a name="connect-to-an-azure-cosmos-db-account-by-using-a-connection-string"></a>使用连接字符串连接到 Azure Cosmos DB 帐户
 

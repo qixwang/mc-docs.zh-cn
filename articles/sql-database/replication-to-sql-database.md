@@ -55,7 +55,7 @@ ms.locfileid: "79292264"
 - SQL Server 上的单一发布可以支持 Azure SQL 数据库和 SQL Server（本地的以及 Azure 虚拟机中的 SQL Server）订阅服务器。  
 - 复制管理、监视和故障排除必须从本地 SQL Server 执行。  
 - 仅支持推送订阅 Azure SQL 数据库。  
-- 在适用于 SQL 数据库的 `@subscriber_type = 0`sp_addsubscription**中，仅** 受支持。  
+- 在适用于 SQL 数据库的 **sp_addsubscription** 中，仅 `@subscriber_type = 0` 受支持。  
 - Azure SQL 数据库不支持双向、即时、可更新或对等复制。
 
 ## <a name="replication-architecture"></a>复制体系结构  

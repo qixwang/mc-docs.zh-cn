@@ -58,7 +58,7 @@ ms.locfileid: "63845708"
 
 6. 选择“创建”  。
 
-创建过程通常不超过一分钟，一般几秒便可完成。 如果选择了“固定到仪表板”，可导航到仪表板来查看新容量。  或者，可导航到“所有服务” **“Power BI Embedded”来查看容量是否已准备就绪。**  >  
+创建过程通常不超过一分钟，一般几秒便可完成。 如果选择了“固定到仪表板”，可导航到仪表板来查看新容量。  或者，可导航到“所有服务” > “Power BI Embedded”来查看容量是否已准备就绪。
 
 ![其中显示了 Power BI Embedded 容量的 Azure 门户仪表板](./media/create-capacity/azure-portal-dashboard.png)
 

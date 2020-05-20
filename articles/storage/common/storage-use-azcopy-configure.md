@@ -130,7 +130,7 @@ AzCopy 为每个作业创建日志和计划文件。 可以使用日志调查并
 
 ### <a name="review-the-logs-for-errors"></a>查看日志中的错误
 
-以下命令从 `UPLOADFAILED` 日志中获取 `04dc9ca9-158f-7945-5933-564021086c79` 状态的所有错误：
+以下命令从 `04dc9ca9-158f-7945-5933-564021086c79` 日志中获取 `UPLOADFAILED` 状态的所有错误：
 
 **Windows (PowerShell)**
 

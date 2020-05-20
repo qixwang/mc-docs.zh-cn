@@ -63,7 +63,7 @@ ms.locfileid: "77428847"
 
 4. 在安全的 VM 中，打开 Windows 注册表编辑器 (regedit)。
 
-5. 选择 HKEY_LOCAL_MACHINE 键，然后选择菜单中的“文件” **“加载配置单元”**   >   。
+5. 选择 HKEY_LOCAL_MACHINE 键，然后选择菜单中的“文件” > “加载配置单元”。
 
 6. 浏览到 \Windows\System32\config 文件夹中的系统文件  。
 
@@ -87,7 +87,7 @@ ms.locfileid: "77428847"
     - `HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet00x\Services\AzureWLBackupInquirySvc\ErrorControl`
     - `HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet00x\Services\AzureWLBackupPluginSvc\ErrorControl`
 
-13. 选择 BROKENSYSTEM 项，然后从菜单中选择“文件” **“卸载配置单元”**   >   。
+13. 选择 BROKENSYSTEM 项，然后从菜单中选择“文件” > “卸载配置单元”。
 
 14. 从故障排除 VM 中分离 OS 磁盘。
 

@@ -119,12 +119,12 @@ ms.locfileid: "80109753"
 <a name="no-retry"></a>
 ### <a name="none"></a>无
 
-要指定操作或触发器不重试失败的请求，请将 <retry-policy-type> 设置为  `none`。
+要指定操作或触发器不重试失败的请求，请将 <retry-policy-type> 设置为 `none`。
 
 <a name="fixed-retry"></a>
 ### <a name="fixed-interval"></a>固定间隔
 
-要指定操作或触发器在等待指定的时间间隔后再发送下一个请求，请将 <retry-policy-type> 设置为  `fixed`。
+要指定操作或触发器在等待指定的时间间隔后再发送下一个请求，请将 <retry-policy-type> 设置为 `fixed`。
 
 *示例*
 
@@ -149,7 +149,7 @@ ms.locfileid: "80109753"
 
 ### <a name="exponential-interval"></a>指数间隔
 
-要指定操作或触发器在等待随机的时间间隔后再发送下一个请求，请将 <retry-policy-type> 设置为  `exponential`。 随机时间间隔选自呈指数增长的范围。 此外，可通过自行指定最小时间间隔和最大时间间隔替代默认的最小和最大时间间隔。
+要指定操作或触发器在等待随机的时间间隔后再发送下一个请求，请将 <retry-policy-type> 设置为 `exponential`。 随机时间间隔选自呈指数增长的范围。 此外，可通过自行指定最小时间间隔和最大时间间隔替代默认的最小和最大时间间隔。
 
 **随机变量范围**
 
@@ -263,7 +263,7 @@ ms.locfileid: "80109753"
 
 默认情况下，当范围的所有操作都成功时，范围的状态将标记为 `Succeeded`。 如果范围内最后一个操作的状态为 `Failed` 或 `Aborted`，则范围的状态将标记为 `Failed`。
 
-若要捕获 `Failed` 范围内的异常并运行用来处理这些错误的操作，可对该 `runAfter` 范围使用 `Failed` 属性。 这样，如果范围内的任何操作失败并且为该范围使用了  *属性，则可以创建单个操作来捕获失败。* `runAfter`
+若要捕获 `Failed` 范围内的异常并运行用来处理这些错误的操作，可对该 `Failed` 范围使用 `runAfter` 属性。 这样，如果范围内的任何操作失败并且为该范围使用了 `runAfter` 属性，则可以创建单个操作来捕获失败。
 
 有关作用域的限制，请参阅[限制和配置](../logic-apps/logic-apps-limits-and-config.md)。
 
@@ -329,7 +329,7 @@ ms.locfileid: "80109753"
    如果范围中的单个操作失败，For Each 循环中的操作仅运行一次  。 
    如果存在多个失败的操作，则将对每个失败执行一次操作。
 
-4. 针对 For Each 项响应正文（即  **表达式）发送 HTTP POST**`@item()['outputs']['body']`。 
+4. 针对 For Each 项响应正文（即 `@item()['outputs']['body']` 表达式）发送 HTTP POST。 
 
    `@result()` 项的形状与 `@actions()` 形状相同，可按相同的方式进行分析。
 

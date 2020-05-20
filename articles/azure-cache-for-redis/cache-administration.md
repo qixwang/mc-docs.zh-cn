@@ -85,7 +85,7 @@ ms.locfileid: "79291984"
 
 要指定维护时段，请勾选合适的日期，并指定每天的维护时段开始时间，最后再单击“确定”  。 请注意，维护时段使用 UTC 时间。 
 
-更新的默认最小维护时段为 5 小时。 此值不可以在 Azure 门户中配置，但可以在 PowerShell 中使用 `MaintenanceWindow`New-AzRmRedisCacheScheduleEntry[ cmdlet 的 ](https://docs.microsoft.com/powershell/module/az.rediscache/new-azrediscachescheduleentry) 参数进行配置。 有关详细信息，请参阅是否可以使用 PowerShell、CLI 或其他管理工具管理计划的更新？
+更新的默认最小维护时段为 5 小时。 此值不可以在 Azure 门户中配置，但可以在 PowerShell 中使用 [New-AzRmRedisCacheScheduleEntry](https://docs.microsoft.com/powershell/module/az.rediscache/new-azrediscachescheduleentry) cmdlet 的 `MaintenanceWindow` 参数进行配置。 有关详细信息，请参阅是否可以使用 PowerShell、CLI 或其他管理工具管理计划的更新？
 
 ## <a name="schedule-updates-faq"></a>计划更新常见问题
 * [如果不使用计划更新功能，何时进行更新？](#when-do-updates-occur-if-i-dont-use-the-schedule-updates-feature)

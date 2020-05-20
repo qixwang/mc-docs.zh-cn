@@ -277,7 +277,7 @@ sudo service bind9 status
 
 复制群集时，必须指定要复制的表。 在本节中，要将一些数据载入源群集。 下一部分会在两个群集之间启用复制。
 
-若要创建一个“联系人”表并在其中插入一些数据，请按照 [Apache HBase 教程  ：开始在 HDInsight 中使用 Apache HBase](apache-hbase-tutorial-get-started-linux.md) 中的说明进行操作。
+若要创建一个“联系人”表并在其中插入一些数据，请遵照 [Apache HBase 教程：开始在 HDInsight 中使用 Apache HBase](apache-hbase-tutorial-get-started-linux.md) 中的说明。
 
 > [!NOTE]
 > 如果要从自定义命名空间复制表，则需要确保也在目标群集上定义相应的自定义命名空间。

@@ -164,7 +164,7 @@ az account set --subscription <guid>
 * 用于有状态服务的副本选择。
 * 解析重试条件，允许你指定用于重新解析服务位置并重新发送请求的条件。
 
-“policyContent”是策略的 JSON 转义 XML 内容  。  对于本文，请创建一个将请求直接路由到以前部署的 .NET 或 Java 无状态服务的后端策略。 在入站策略下添加 `set-backend-service` 策略。  如果之前部署了 .NET 后端服务，则将 *sf-service-instance-name* 值替换为 `fabric:/ApiApplication/WebApiService`，如果部署了 Java 服务，则替换为 `fabric:/EchoServerApplication/EchoServerService`。  *backend-id* 引用一个后端资源，在此示例中为在 `Microsoft.ApiManagement/service/backends`apim.json*模板中定义的* 资源。 *backend-id* 也可引用使用 API 管理 API 创建的另一后端资源。 对于本文，请将 *backend-id* 设置为 *service_fabric_backend_name* 参数的值。
+“policyContent”是策略的 JSON 转义 XML 内容  。  对于本文，请创建一个将请求直接路由到以前部署的 .NET 或 Java 无状态服务的后端策略。 在入站策略下添加 `set-backend-service` 策略。  如果之前部署了 .NET 后端服务，则将 *sf-service-instance-name* 值替换为 `fabric:/ApiApplication/WebApiService`，如果部署了 Java 服务，则替换为 `fabric:/EchoServerApplication/EchoServerService`。  *backend-id* 引用一个后端资源，在此示例中为在 *apim.json* 模板中定义的 `Microsoft.ApiManagement/service/backends` 资源。 *backend-id* 也可引用使用 API 管理 API 创建的另一后端资源。 对于本文，请将 *backend-id* 设置为 *service_fabric_backend_name* 参数的值。
 
 ```xml
 <policies>
@@ -213,7 +213,7 @@ $b64 = [System.Convert]::ToBase64String($bytes);
 [System.Io.File]::WriteAllText("C:\mycertificates\sfclustertutorialgroup220171109113527.txt", $b64);
 ```
 
-在 *inbound_policy* 中，如果之前部署了 .NET 后端服务，则将 *sf-service-instance-name* 值替换为 `fabric:/ApiApplication/WebApiService`，如果部署了 Java 服务，则替换为 `fabric:/EchoServerApplication/EchoServerService`。 *backend-id* 引用一个后端资源，在此示例中为在 `Microsoft.ApiManagement/service/backends`apim.json*模板中定义的* 资源。 *backend-id* 也可引用使用 API 管理 API 创建的另一后端资源。 对于本文，请将 *backend-id* 设置为 *service_fabric_backend_name* 参数的值。
+在 *inbound_policy* 中，如果之前部署了 .NET 后端服务，则将 *sf-service-instance-name* 值替换为 `fabric:/ApiApplication/WebApiService`，如果部署了 Java 服务，则替换为 `fabric:/EchoServerApplication/EchoServerService`。 *backend-id* 引用一个后端资源，在此示例中为在 *apim.json* 模板中定义的 `Microsoft.ApiManagement/service/backends` 资源。 *backend-id* 也可引用使用 API 管理 API 创建的另一后端资源。 对于本文，请将 *backend-id* 设置为 *service_fabric_backend_name* 参数的值。
 
 ```xml
 <policies>

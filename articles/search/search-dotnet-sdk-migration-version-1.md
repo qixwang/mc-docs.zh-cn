@@ -153,7 +153,7 @@ Azure 搜索 .NET SDK 中的每个操作都公开为同步和异步调用方的�
 * 核心接口现在反而公开了允许在 HTTP 级别进行更多控制的方法（如果需要）。 现在可以传入要包括在请求中的自定义 HTTP 标头，并且新的 `AzureOperationResponse<T>` 返回类型使你可以直接访问操作的 `HttpRequestMessage` 和 `HttpResponseMessage`。 `AzureOperationResponse` 在 `Microsoft.Rest.Azure` 命名空间中定义，替换 `Hyak.Common.OperationResponse`。
 
 ### <a name="scoringparameters-changes"></a>ScoringParameters 更改
-名为 `ScoringParameter` 的新类已添加到最新的 SDK 中，使向搜索查询中的计分配置文件提供参数更为容易。 之前，`ScoringProfiles` 类的 `SearchParameters` 属性以 `IList<string>` 形式键入；现在它以 `IList<ScoringParameter>` 形式键入。
+名为 `ScoringParameter` 的新类已添加到最新的 SDK 中，使向搜索查询中的计分配置文件提供参数更为容易。 之前，`SearchParameters` 类的 `ScoringProfiles` 属性以 `IList<string>` 形式键入；现在它以 `IList<ScoringParameter>` 形式键入。
 
 #### <a name="example"></a>示例
 如果代码如下所示：
@@ -272,7 +272,7 @@ Azure 搜索 .NET SDK 中的每个操作都公开为同步和异步调用方的�
 `CloudException` 类已从 `Hyak.Common` 命名空间移动到 `Microsoft.Rest.Azure` 命名空间。 此外，其 `Error` 属性已重名为 `Body`。
 
 ### <a name="searchserviceclient-and-searchindexclient-changes"></a>SearchServiceClient 和 SearchIndexClient 更改
-`Credentials` 属性的类型已从 `SearchCredentials` 更改为其基类（即 `ServiceClientCredentials`）。 如果需要访问 `SearchCredentials` 或 `SearchIndexClient` 的 `SearchServiceClient`，请使用新的 `SearchCredentials` 属性。
+`Credentials` 属性的类型已从 `SearchCredentials` 更改为其基类（即 `ServiceClientCredentials`）。 如果需要访问 `SearchIndexClient` 或 `SearchServiceClient` 的 `SearchCredentials`，请使用新的 `SearchCredentials` 属性。
 
 在早期版本的 SDK 中，`SearchServiceClient` 和 `SearchIndexClient` 具有需要 `HttpClient` 参数的构造函数。 这些已替换为需要 `HttpClientHandler` 和一个 `DelegatingHandler` 对象数组的构造函数。 这使得必要时安装用于预处理 HTTP 请求的自定义处理程序更为容易。
 
@@ -293,7 +293,7 @@ Azure 搜索 .NET SDK 中的每个操作都公开为同步和异步调用方的�
 另请注意，凭据参数的类型已更改为 `ServiceClientCredentials`。 由于 `SearchCredentials` 派生自 `ServiceClientCredentials`，所以这不太可能影响代码。
 
 ### <a name="passing-a-request-id"></a>传递请求 ID
-在早期版本的 SDK 中，可以设置 `SearchServiceClient` 或 `SearchIndexClient` 上的请求 ID，它将包含在对 REST API 的每个请求中。 如果需要与支持人员联系，这对于解决搜索服务的问题非常有用。 不过，为每个操作设置唯一请求 ID 更加有用，而不是将同一 ID 用于所有操作。 出于此原因，`SetClientRequestId` 和 `SearchServiceClient` 的 `SearchIndexClient` 方法已删除。 相反，可以通过可选参数 `SearchRequestOptions` 将请求 ID 传递给每个操作方法。
+在早期版本的 SDK 中，可以设置 `SearchServiceClient` 或 `SearchIndexClient` 上的请求 ID，它将包含在对 REST API 的每个请求中。 如果需要与支持人员联系，这对于解决搜索服务的问题非常有用。 不过，为每个操作设置唯一请求 ID 更加有用，而不是将同一 ID 用于所有操作。 出于此原因，`SearchServiceClient` 和 `SearchIndexClient` 的 `SetClientRequestId` 方法已删除。 相反，可以通过可选参数 `SearchRequestOptions` 将请求 ID 传递给每个操作方法。
 
 > [!NOTE]
 > 在将来版本的 SDK 中，我们会添加一个新机制，用于在客户端对象上全局设置请求 ID，这与其他 Azure SDK 使用的方法一致。
@@ -327,7 +327,7 @@ Azure 搜索 .NET SDK 中的每个操作都公开为同步和异步调用方的�
 与自定义模型类的序列化有关的早期版本的 Azure 搜索 .NET SDK 中存在 Bug。 如果使用不可为 null 的值类型的属性创建了自定义模型类，可能会出现 Bug。
 
 ### <a name="steps-to-reproduce"></a>重现步骤
-使用不可为 null 的值类型的属性创建自定义模型类。 例如，添加类型为 `UnitCount`（而不是 `int`）的公共 `int?` 属性。
+使用不可为 null 的值类型的属性创建自定义模型类。 例如，添加类型为 `int`（而不是 `int?`）的公共 `UnitCount` 属性。
 
 如果使用该类型的默认值（例如，`int` 的 0）对文档编制索引，该字段在 Azure 搜索将为 null。 如果随后搜索该文档，`Search` 调用会引发 `JsonSerializationException`，声称无法将 `null` 转换为 `int`。
 

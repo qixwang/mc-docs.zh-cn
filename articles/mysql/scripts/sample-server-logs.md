@@ -24,7 +24,7 @@ ms.locfileid: "63860754"
 此示例 CLI 脚本可启用和下载单个 Azure Database for MySQL 服务器的慢查询日志。 本文需要 Azure CLI 2.0 或更高版本。 通过运行 `az --version` 来查看版本。 请参阅[安装 Azure CLI]( /cli/install-azure-cli)，了解如何安装或升级 Azure CLI 的版本。 
 
 ## <a name="sample-script"></a>示例脚本
-在此示例脚本中，编辑突出显示的行，将管理员用户名和密码更新为你自己的。 将 &lt; 命令中的 &gt;log_file_name`az monitor` 替换自己的服务器日志文件名。
+在此示例脚本中，编辑突出显示的行，将管理员用户名和密码更新为你自己的。 将 `az monitor` 命令中的 &lt;log_file_name&gt; 替换自己的服务器日志文件名。
 
 ```cli
 #!/bin/bash

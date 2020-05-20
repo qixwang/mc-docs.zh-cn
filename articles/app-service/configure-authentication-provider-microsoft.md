@@ -28,7 +28,7 @@ ms.locfileid: "76979353"
 1. 在 Azure 门户中转到[**应用注册**](https://portal.azure.cn/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)。 根据需要使用 Microsoft 帐户登录。
 1. 选择“新建注册”  ，然后输入应用程序名称。
 1. 在“支持的帐户类型”下，选择“任何组织目录(任何 Azure AD 目录 - 多租户)中的帐户和个人 Microsoft 帐户(例如，Skype、Xbox)”  
-1. 在“重定向 URI”  中，选择 **Web**，然后输入 `https://<app-domain-name>/.auth/login/aad/callback`。 将“*app-domain-name>”\<* 替换为应用的域名。  例如，`https://contoso.chinacloudsites.cn/.auth/login/aad/callback` 。 确保在 URL 中使用 HTTPS 方案。
+1. 在“重定向 URI”  中，选择 **Web**，然后输入 `https://<app-domain-name>/.auth/login/aad/callback`。 将“\<app-domain-name>”替换为应用的域名。  例如，`https://contoso.chinacloudsites.cn/.auth/login/aad/callback` 。 确保在 URL 中使用 HTTPS 方案。
 
 1. 选择“注册”  。
 1. 复制**应用程序(客户端) ID**。 稍后需要用到此信息。

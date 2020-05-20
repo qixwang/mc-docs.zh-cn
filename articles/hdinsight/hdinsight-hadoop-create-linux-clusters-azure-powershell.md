@@ -135,7 +135,7 @@ New-AzureRmHDInsightCluster `
 
 ## <a name="create-cluster-configuration-object"></a>创建群集：配置对象
 
-还可以使用 `New-AzHDInsightClusterConfig` cmdlet 创建 HDInsight 配置对象。 然后，可以修改此配置对象，为群集启用其他配置选项。 最后，使用 `-Config` cmdlet 的 `New-AzHDInsightCluster` 参数以利用该配置。
+还可以使用 `New-AzHDInsightClusterConfig` cmdlet 创建 HDInsight 配置对象。 然后，可以修改此配置对象，为群集启用其他配置选项。 最后，使用 `New-AzHDInsightCluster` cmdlet 的 `-Config` 参数以利用该配置。
 
 下面的脚本创建了一个配置对象，用于在 HDInsight 群集类型上配置 R Server。 该配置支持边缘节点、RStudio 和其他存储帐户。
 ```powershell

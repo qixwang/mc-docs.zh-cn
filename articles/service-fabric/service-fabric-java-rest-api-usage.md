@@ -62,7 +62,7 @@ ms.locfileid: "75742500"
     autorest --input-file=servicefabric.json --java --output-folder=java-rest-api-code --namespace=servicefabricrest
     ```
 
-    以下命令使用 ``servicefabric.json`` 规范文件作为输入，在 ``java-rest-api-    code`` 文件夹中生成 Java 客户端代码，然后将代码封装在 ``servicefabricrest`` 命名空间中。 执行此步骤后，会生成 ``models`` 和 ``implementation`` 两个文件夹，并会在 ``ServiceFabricClientAPIs.java`` 文件夹中生成 ``package-info.java`` 和 ``java-rest-api-code`` 两个文件。
+    以下命令使用 ``servicefabric.json`` 规范文件作为输入，在 ``java-rest-api-    code`` 文件夹中生成 Java 客户端代码，然后将代码封装在 ``servicefabricrest`` 命名空间中。 执行此步骤后，会生成 ``models`` 和 ``implementation`` 两个文件夹，并会在 ``java-rest-api-code`` 文件夹中生成 ``ServiceFabricClientAPIs.java`` 和 ``package-info.java`` 两个文件。
 
 ## <a name="include-and-use-the-generated-client-in-your-project"></a>在项目中包括和使用生成的客户端
 

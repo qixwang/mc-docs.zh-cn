@@ -445,7 +445,7 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
    mvn clean package
    ```
 
-    包过程会在 `KafkaTopology-1.0-SNAPSHOT.jar` 目录中创建名为 `target` 的文件。
+    包过程会在 `target` 目录中创建名为 `KafkaTopology-1.0-SNAPSHOT.jar` 的文件。
 
 3. 使用以下命令将包复制到 Storm on HDInsight 群集。 将 `sshuser` 替换为群集的 SSH 用户名。 将 `stormclustername` 替换为 Storm 群集的名称  。
 
@@ -580,7 +580,7 @@ Kafka 将数据存储在主题中  。 启动 Storm 拓扑之前，必须创建�
 
     * `-R /writer.yaml`：使用 `writer.yaml` 文件配置拓扑。 `-R` 指示此资源包含在 jar 文件中。 它位于 jar 的根目录中，因此 `/writer.yaml` 是它的路径。
 
-    * `--filter`：使用 `writer.yaml` 文件中的值填充 `dev.properties` 拓扑中的条目。 例如，文件中 `kafka.topic` 条目的值用于替换拓扑定义中的 `${kafka.topic}` 条目。
+    * `--filter`：使用 `dev.properties` 文件中的值填充 `writer.yaml` 拓扑中的条目。 例如，文件中 `kafka.topic` 条目的值用于替换拓扑定义中的 `${kafka.topic}` 条目。
 
 ## <a name="start-the-reader"></a>启动读取器
 

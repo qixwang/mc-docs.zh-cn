@@ -378,7 +378,7 @@ Azure 认知搜索作业门户演示包含本文中参考的示例。
 
 处理搜索结果时，观看“查询构造中的更改”的 URL。 此应用程序在选择每个分面时，将分面追加到 URI。
 
-1. 若要使用该演示应用的地图功能，请从[必应地图开发人员中心](https://www.bingmapsportal.com/)获取必应地图密钥。 请粘贴该密钥并覆盖 `index.cshtml` 页面中的现有密钥。 不使用 `BingApiKey` 文件中的 `Web.config` 设置。 
+1. 若要使用该演示应用的地图功能，请从[必应地图开发人员中心](https://www.bingmapsportal.com/)获取必应地图密钥。 请粘贴该密钥并覆盖 `index.cshtml` 页面中的现有密钥。 不使用 `Web.config` 文件中的 `BingApiKey` 设置。 
 
 2. 运行应用程序。 学习可选的教程，或关闭该对话框。
    

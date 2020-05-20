@@ -88,7 +88,7 @@ Web 模拟器中有三个区域。
 
    ![替换设备连接字符串](media/iot-hub-raspberry-pi-web-simulator/1-connectionstring.png)
 
-2. 选择“运行”，或键入 **，即可运行应用程序**`npm start`。
+2. 选择“运行”，或键入 `npm start`，即可运行应用程序。
 
 应看到以下输出，该输出显示传感器数据和发送到 IoT 中心的消息![输出 - 从 Raspberry Pi 发送到 IoT 中心的传感器数据](media/iot-hub-raspberry-pi-web-simulator/2-run-application.png)
 

@@ -216,7 +216,7 @@ sudo ./logstash-plugin install logstash-input-azureblob
 
 ### <a name="create-a-dashboard"></a>创建仪表板
 
-1. 在顶部导航栏中，选择“仪表板”或导航到  `http://<graylog-server-ip>:9000/dashboards/`
+1. 在顶部导航栏中，选择“仪表板”或导航到 `http://<graylog-server-ip>:9000/dashboards/`
 
 2. 在此处，请单击绿色的“创建仪表板”按钮，并在简短表单中填写仪表板的标题和说明。  单击“保存”按钮创建新仪表板。  随后会出现如下图所示的仪表板：
 

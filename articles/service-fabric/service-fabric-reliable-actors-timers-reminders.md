@@ -217,7 +217,7 @@ ActorReminder reminder = getReminder("Pay cell phone bill");
 CompletableFuture reminderUnregistration = unregisterReminderAsync(reminder);
 ```
 
-如上所示， `UnregisterReminderAsync`(C#) 或 `unregisterReminderAsync`(Java) 方法接受 `IActorReminder`(C#) 或 `ActorReminder`(Java) 接口。 执行组件基类支持 `GetReminder`(C#) 或 `getReminder`(Java) 方法，该方法可用于通过传入提醒名称来检索 `IActorReminder`(C#) 或 `ActorReminder`(Java) 接口。 这十分方便，因为执行组件无需保存从 `IActorReminder`(C#) 或 `ActorReminder`(Java) 方法调用返回的 `RegisterReminder`(C#) 或 `registerReminder`(Java) 接口。
+如上所示， `UnregisterReminderAsync`(C#) 或 `unregisterReminderAsync`(Java) 方法接受 `IActorReminder`(C#) 或 `ActorReminder`(Java) 接口。 执行组件基类支持 `GetReminder`(C#) 或 `getReminder`(Java) 方法，该方法可用于通过传入提醒名称来检索 `IActorReminder`(C#) 或 `ActorReminder`(Java) 接口。 这十分方便，因为执行组件无需保存从 `RegisterReminder`(C#) 或 `registerReminder`(Java) 方法调用返回的 `IActorReminder`(C#) 或 `ActorReminder`(Java) 接口。
 
 ## <a name="next-steps"></a>后续步骤
 了解 Reliable Actor 事件和可重入性：

@@ -56,7 +56,7 @@ ms.locfileid: "63823131"
     [;]
 
 > [!NOTE]
-> 请确保“*username\<”\>* 中不包括任何“*servername”\@* 后缀。
+> 请确保“\<username\>”中不包括任何“\@servername”后缀。
 
 ## <a name="12-create-external-data-sources"></a>1.2 创建外部数据源
 

@@ -59,7 +59,7 @@ az ad sp create-for-rbac --skip-assignment --name myAKSClusterServicePrincipal
 
 ## <a name="specify-a-service-principal-for-an-aks-cluster"></a>指定适用于 AKS 群集的服务主体
 
-若要在通过 [az aks create][az-aks-create] 命令创建 AKS 群集时使用现有的服务主体，请使用 `--service-principal`az ad sp create-for-rbac`--client-secret` 命令的输出中的 `appId` 和 `password` 参数来指定 [ 和 ][az-ad-sp-create]：
+若要在通过 [az aks create][az-aks-create] 命令创建 AKS 群集时使用现有的服务主体，请使用 [az ad sp create-for-rbac][az-ad-sp-create] 命令的输出中的 `--service-principal` 和 `--client-secret` 参数来指定 `appId` 和 `password`：
 
 ```azurecli
 az aks create \

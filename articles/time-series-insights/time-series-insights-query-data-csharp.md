@@ -66,7 +66,7 @@ ms.locfileid: "77494545"
 * [Microsoft.IdentityModel.Clients.ActiveDirectory](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) -  3.13.9 包。
 * [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json) - 9.0.1 包。
 
-在 Visual Studio 2019 中，通过选择“生成”   > “生成解决方案”  选项来下载包。
+在 Visual Studio 2019 中，通过选择“生成” > “生成解决方案”选项来下载程序包。
 
 或者，使用 [NuGet 2.12+](https://www.nuget.org/) 添加这些包：
 

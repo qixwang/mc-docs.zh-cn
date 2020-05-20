@@ -26,7 +26,7 @@ ms.locfileid: "80581648"
 
 ## <a name="protocol"></a>协议
 
-“Protocol”  元素的“Name”  属性必须设置为 `Proprietary`。 “handler”  属性必须包含 Azure AD B2C 用来自断言的协议处理程序程序集的完全限定名称：`Web.TPEngine.Providers.SelfAssertedAttributeProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`
+“Protocol”元素的“Name”属性必须设置为 `Proprietary`。 “handler”  属性必须包含 Azure AD B2C 用来自断言的协议处理程序程序集的完全限定名称：`Web.TPEngine.Providers.SelfAssertedAttributeProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`
 
 下面的示例显示了电子邮件注册的自断言技术配置文件：
 
@@ -57,7 +57,7 @@ ms.locfileid: "80581648"
 
 “DisplayClaims”元素包含要呈现在屏幕上用于从用户处收集数据的声明列表  。 若要预填充显示声明的值，请使用前面介绍的输入声明。 另外，此元素还可能包含默认值。
 
-“DisplayClaims”中的声明顺序指定 Azure AD B2C 在屏幕上呈现声明的顺序  。 若要强制用户提供特定声明的值，请将“DisplayClaim”元素的“Required”属性设置为   `true`。
+“DisplayClaims”中的声明顺序指定 Azure AD B2C 在屏幕上呈现声明的顺序  。 若要强制用户提供特定声明的值，请将“DisplayClaim”元素的“Required”属性设置为 `true`。
 
 “DisplayClaims”集合中的“ClaimType”元素需要将“UserInputType”元素设置为 Azure AD B2C 支持的任意用户输入类型    。 例如，`TextBox` 或 `DropdownSingleSelect`。
 

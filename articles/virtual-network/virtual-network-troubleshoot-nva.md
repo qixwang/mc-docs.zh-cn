@@ -124,7 +124,7 @@ NVA 供应商提供了对第三方 NVA 及其与 Azure 平台集成的技术支�
 ## <a name="advanced-network-administrator-troubleshooting"></a>高级网络管理员故障排除
 
 ### <a name="capture-network-trace"></a>捕获网络跟踪
-运行 **PsPing[ 或 Nmap 时，请在源 VM、NVA 和目标 VM 上捕获同步网络跟踪，并停止跟踪](https://docs.microsoft.com/sysinternals/downloads/psping)**  。
+运行 [PsPing](https://docs.microsoft.com/sysinternals/downloads/psping) 或 Nmap 时，请在源 VM、NVA 和目标 VM 上捕获同步网络跟踪，并停止跟踪。
 
 1. 若要捕获同步网络跟踪，请运行以下命令：
 
@@ -136,8 +136,8 @@ NVA 供应商提供了对第三方 NVA 及其与 Azure 平台集成的技术支�
 
         sudo tcpdump -s0 -i eth0 -X -w vmtrace.cap
 
-2. 使用从源 VM 到目标 VM 的 PsPing 或 Nmap（例如：**或**）  `PsPing 10.0.0.4:80``Nmap -p 80 10.0.0.4`。
-3. 使用[网络监视器](https://www.microsoft.com/download/details.aspx?id=4865)或 tcpdump 从目标 VM 打开网络跟踪。 为运行 PsPing 或 Nmap 的源 VM 的 IP 应用显示筛选器，例如 **或** (Linux)  `IPv4.address==10.0.0.4 (Windows netmon)``tcpdump -nn -r vmtrace.cap src or dst host 10.0.0.4`。
+2. 使用从源 VM 到目标 VM 的 PsPing 或 Nmap（例如：`PsPing 10.0.0.4:80` 或 `Nmap -p 80 10.0.0.4`）。
+3. 使用[网络监视器](https://www.microsoft.com/download/details.aspx?id=4865)或 tcpdump 从目标 VM 打开网络跟踪。 为运行 PsPing 或 Nmap 的源 VM 的 IP 应用显示筛选器，例如 `IPv4.address==10.0.0.4 (Windows netmon)` 或 `tcpdump -nn -r vmtrace.cap src or dst host 10.0.0.4` (Linux)。
 
 ### <a name="analyze-traces"></a>分析跟踪
 

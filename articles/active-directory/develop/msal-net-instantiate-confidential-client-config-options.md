@@ -65,7 +65,7 @@ MSAL.NET 中选项的属性名称与 ASP.NET Core 中 `AzureADOptions` 的属性
 
 从 MSAL.NET v3.x 开始，可以根据配置文件配置机密客户端应用程序。
 
-在需要配置和实例化应用程序的类中，需声明 `ConfidentialClientApplicationOptions` 对象。  使用 `IConfigurationRoot.Bind()`Microsoft.Extensions.Configuration.Binder nuget 包[ 中的 ](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Binder) 方法，将从源读取的配置（包括 appconfig.json 文件）绑定到应用程序选项的实例：
+在需要配置和实例化应用程序的类中，需声明 `ConfidentialClientApplicationOptions` 对象。  使用 [Microsoft.Extensions.Configuration.Binder nuget 包](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Binder) 中的 `IConfigurationRoot.Bind()` 方法，将从源读取的配置（包括 appconfig.json 文件）绑定到应用程序选项的实例：
 
 ```csharp
 using Microsoft.Identity.Client;

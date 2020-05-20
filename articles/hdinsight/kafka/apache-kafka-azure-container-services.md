@@ -74,7 +74,7 @@ HDInsight 和 AKS 使用 Azure 虚拟网络作为计算资源的容器。 若要
 
 ### <a name="create-virtual-network"></a>创建虚拟网络
 
-1. 若要为 HDInsight 创建虚拟网络，请导航到“+ 创建资源” __“网络”__ “虚拟网络”。 >    >  
+1. 若要为 HDInsight 创建虚拟网络，请导航到“+ 创建资源” > “网络” > “虚拟网络”。
 
 1. 对于某些属性，请按照以下准则创建网络：
 
@@ -119,7 +119,7 @@ HDInsight 和 AKS 使用 Azure 虚拟网络作为计算资源的容器。 若要
 
     ![Apache Ambari 服务配置](./media/apache-kafka-azure-container-services/select-kafka-config1.png)
 
-4. 要查找“kafka-env”  配置，请在右上方的“筛选器”`kafka-env`__字段中输入__ 。
+4. 要查找“kafka-env” 配置，请在右上方的“筛选器”字段中输入 `kafka-env`。
 
     ![Kafka 配置，适用于 kafka-env](./media/apache-kafka-azure-container-services/search-for-kafka-env.png)
 
@@ -133,9 +133,9 @@ HDInsight 和 AKS 使用 Azure 虚拟网络作为计算资源的容器。 若要
     echo "advertised.listeners=PLAINTEXT://$IP_ADDRESS:9092" >> /usr/hdp/current/kafka-broker/conf/server.properties
     ```
 
-6. 要配置 Kafka 侦听的接口，请在右上方的“筛选器”`listeners`__字段中输入__ 。
+6. 要配置 Kafka 侦听的接口，请在右上方的“筛选器”字段中输入 `listeners`。
 
-7. 要将 Kafka 配置为侦听所有网络接口，请将“侦听器”  字段的值更改为 `PLAINTEXT://0.0.0.0:9092`。
+7. 要将 Kafka 配置为侦听所有网络接口，请将“侦听器”字段的值更改为 `PLAINTEXT://0.0.0.0:9092`。
 
 8. 单击“保存”  按钮保存配置。 输入描述更改的文本消息。 保存更改后，请选择“确定”  。
 

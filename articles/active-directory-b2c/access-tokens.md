@@ -33,7 +33,7 @@ ms.locfileid: "79290932"
 
 ## <a name="scopes"></a>作用域
 
-可以通过作用域管理对受保护资源的权限。 在请求访问令牌时，客户端应用程序需要在请求的 scope  参数中指定所需的权限。 例如，对于其“应用 ID URI”为 **的 API，若将“作用域值”指定为**，则作用域为 `read`。  `https://contoso.partner.onmschina.cn/api``https://contoso.partner.onmschina.cn/api/read`
+可以通过作用域管理对受保护资源的权限。 在请求访问令牌时，客户端应用程序需要在请求的 scope  参数中指定所需的权限。 例如，对于其“应用 ID URI”为 `https://contoso.partner.onmschina.cn/api` 的 API，若将“作用域值”指定为 `read`，则作用域为 `https://contoso.partner.onmschina.cn/api/read`。
 
 Web API 使用作用域实施基于作用域的访问控制。 例如，可以让 Web API 用户拥有读取和写入访问权限，或者只拥有读取访问权限。 若要在同一请求中获取多个权限，可在请求的单个 **scope** 参数中添加多个条目并用空格分隔。
 
@@ -54,7 +54,7 @@ scope=https%3A%2F%2Fcontoso.partner.onmschina.cn%2Fapi%2Fread%20openid%20offline
 - **openid** - 请求 ID 令牌。
 - **offline_access** - 使用[授权代码流](authorization-code-flow.md)请求刷新令牌。
 
-如果 **请求中的**response_type`/authorize` 参数包含 `token`，那么 **scope** 参数必须包含至少一个将被授予的资源作用域（除 `openid` 和 `offline_access` 以外）。 否则，`/authorize` 请求会失败。
+如果 `/authorize` 请求中的 **response_type** 参数包含 `token`，那么 **scope** 参数必须包含至少一个将被授予的资源作用域（除 `openid` 和 `offline_access` 以外）。 否则，`/authorize` 请求会失败。
 
 ## <a name="request-a-token"></a>请求令牌
 

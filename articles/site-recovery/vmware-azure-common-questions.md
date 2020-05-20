@@ -292,7 +292,7 @@ Site Recovery 遵循 N-4 支持模型。 [详细了解](../site-recovery/service
 
 ### <a name="where-can-i-download-vault-registration-keys"></a>在哪里可以下载保管库注册密钥？
 
-在“恢复服务保管库”中，选择“Site Recovery 基础结构” **“管理”中的“配置服务器”。**   >   然后在“服务器”中，选择“下载注册密钥”以下载保管库凭据文件。  
+在“恢复服务保管库”中，选择“Site Recovery 基础结构” > “管理”中的“配置服务器”。 然后在“服务器”中，选择“下载注册密钥”以下载保管库凭据文件。  
 
 ### <a name="can-a-single-configuration-server-be-used-to-protect-multiple-vcenter-instances"></a>是否可以使用单个配置服务器来保护多个 vCenter 实例？
 

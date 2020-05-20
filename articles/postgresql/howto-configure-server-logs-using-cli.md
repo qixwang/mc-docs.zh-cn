@@ -26,7 +26,7 @@ ms.locfileid: "75776674"
 ## <a name="configure-logging"></a>配置日志记录
 可以将服务器配置为访问查询日志和错误日志。 错误日志包含自动清空、连接和检查点等信息。
 1. 启用日志。
-2. 要启动日期，请更新 log\_statement 和 log\_min\_duration\_statement   。
+2. 要启动日期，请更新 log\_statement 和 log\_min\_duration\_statement。
 3. 更新保留期。
 
 请参阅[自定义服务器配置参数](howto-configure-server-parameters-using-cli.md)，了解详细信息。
@@ -34,7 +34,7 @@ ms.locfileid: "75776674"
 ## <a name="list-logs"></a>列出日志
 若要列出服务器的可用日志文件，请运行 [az postgres server-logs list](/cli/postgres/server-logs) 命令。
 
-可以列出资源组“myresourcegroup”  下的服务器 **mydemoserver.postgres.database.chinacloudapi.cn** 的日志文件。 然后在日志文件列表中找到名为“log\_files\_list.txt”的文本文件  。
+可以列出资源组“myresourcegroup”下的服务器 **mydemoserver.postgres.database.chinacloudapi.cn** 的日志文件。 然后在日志文件列表中找到名为“log\_files\_list.txt”的文本文件。
 ```azurecli
 az postgres server-logs list --resource-group myresourcegroup --server mydemoserver > log_files_list.txt
 ```

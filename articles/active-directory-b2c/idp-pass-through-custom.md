@@ -75,7 +75,7 @@ Azure AD B2C 支持传递 [OAuth 2.0](authorization-code-flow.md) 和 [OpenID Co
 3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C”   。
 4. 选择“标识体验框架”  。
 5. 在“自定义策略”页上，单击“上传策略”  。
-6. 选择“覆盖策略(若存在)”，然后搜索并选择 **TrustframeworkExtensions.xml** 文件。 
+6. 选择“覆盖策略(若存在)”，然后搜索并选择 *TrustframeworkExtensions.xml* 文件。
 7. 选择“上传”。 
 8. 针对信赖方文件（例如 *SignUpOrSignIn.xml*）重复步骤 5 到 7。
 

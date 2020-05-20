@@ -200,7 +200,7 @@ az group deployment create --resource-group $resourceGroupName --template-file "
 ```
 
 > [!NOTE]
-> 此模板仅用作示例。 有许多存储帐户设置未在此模板中进行配置。 例如，如果想要使用 [Azure Data Lake Storage](/storage/blobs/data-lake-storage-introduction)，可以通过将 `isHnsEnabledad` 对象的 `StorageAccountPropertiesCreateParameters` 属性设为 `true` 来修改此模板。 
+> 此模板仅用作示例。 有许多存储帐户设置未在此模板中进行配置。 例如，如果想要使用 [Azure Data Lake Storage](/storage/blobs/data-lake-storage-introduction)，可以通过将 `StorageAccountPropertiesCreateParameters` 对象的 `isHnsEnabledad` 属性设为 `true` 来修改此模板。 
 
 若要了解如何修改此模板或创建新模板，请参阅：
 

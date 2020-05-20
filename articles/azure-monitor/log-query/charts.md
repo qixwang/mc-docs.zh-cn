@@ -71,7 +71,7 @@ Perf
 ![参考线](media/charts/charts-and-diagrams-multiSeriesThreshold.png)
 
 ## <a name="multiple-dimensions"></a>多个维度
-`by` 的 `summarize` 字句中的多个表达式在结果中创建多个行，每个值组合对应一行。
+`summarize` 的 `by` 字句中的多个表达式在结果中创建多个行，每个值组合对应一行。
 
 ```Kusto
 SecurityEvent

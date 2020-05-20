@@ -205,7 +205,7 @@ $env:PSModulePath = $env:PSModulePath + ";" + $rpModulePath
 
 1. 以服务管理员身份登录到管理员门户。
 2. 选择“资源组”  。
-3. 选择“system.**位置\<.mysqladapter”资源组。\>**
+3. 选择“system.\<位置\>.mysqladapter”资源组。
 4. 在资源组概述摘要页上，应当没有失败的部署。
 5. 最后，在管理员门户中选择“虚拟机”  ，以验证 MySQL 资源提供程序 VM 是否已成功创建且正在运行。
 

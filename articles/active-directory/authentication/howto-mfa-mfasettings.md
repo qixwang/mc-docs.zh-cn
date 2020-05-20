@@ -42,7 +42,7 @@ ms.locfileid: "79291106"
 ### <a name="enable-and-disable-verification-methods"></a>启用和禁用可选择验证方法
 
 1. 登录 [Azure 门户](https://portal.azure.cn)。
-2. 在左侧，选择“Azure Active Directory” **“用户和组”** “所有用户” >    >   。
+2. 在左侧，选择“Azure Active Directory” > “用户和组” > “所有用户”。
 3. 选择“多重身份验证”  。
 4. 在“多重身份验证”下，选择“服务设置”。 
 5. 在“服务设置”页上的“验证选项”  下，选择/取消选择要向用户提供的方法。 

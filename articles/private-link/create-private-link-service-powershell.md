@@ -24,7 +24,7 @@ ms.locfileid: "77540053"
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-创建专用链接之前，必须使用 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) 创建资源组。 以下示例在“chinaeast2”  位置创建名为“myResourceGroup”  的资源组：
+创建专用链接之前，必须使用 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) 创建资源组。 以下示例在“chinaeast2”位置创建名为“myResourceGroup”的资源组：
 
 ```azurepowershell
 $location = "chinaeast2"
@@ -115,7 +115,7 @@ $pls = Get-AzPrivateLinkService -Name $plsName -ResourceGroupName $rgName
 
 ## <a name="create-a-private-endpoint"></a>创建专用终结点
 ### <a name="create-a-virtual-network"></a>创建虚拟网络
-使用 [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork) 为专用终结点创建虚拟网络。 此示例在名为  *myResourceGroup* 的资源组中创建名为  vnetPE  的虚拟网络：
+使用 [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork) 为专用终结点创建虚拟网络。 此示例在名为 *myResourceGroup* 的资源组中创建名为  *vnetPE*  的虚拟网络：
 
 ```azurepowershell
 $virtualNetworkNamePE = "vnetPE"

@@ -57,7 +57,7 @@ Azure DNS 为支持自定义域或具有完全限定域名 (FQDN) 的任何 Azur
 
 若要为使用公共 IP 地址资源（例如应用程序网关、负载均衡器、云服务、资源管理器 VM 和经典 VM）的服务配置自定义域，请使用 A 记录。
 
-导航到“网络” **“公共 IP 地址”，选择“公共 IP 资源”，单击“配置”。**  >    记下显示的 IP 地址。
+导航到“网络” > “公共 IP 地址”，选择“公共 IP 资源”，单击“配置”。 记下显示的 IP 地址。
 
 ![公共 IP 边栏选项卡](./media/dns-custom-domain/publicip.png)
 
@@ -118,7 +118,7 @@ Azure DNS 为支持自定义域或具有完全限定域名 (FQDN) 的任何 Azur
 
 下面逐步介绍如何使用 asverify 方法配置 Blob 存储帐户的 CNAME 记录。 此方法可确保不会造成停机。
 
-导航到“存储” **“存储帐户”，选择自己的存储帐户，单击“自定义域”。**  >    记下步骤 2 中的 FQDN，此值用于创建第一条 CNAME 记录
+导航到“存储” > “存储帐户”，选择自己的存储帐户，单击“自定义域”。 记下步骤 2 中的 FQDN，此值用于创建第一条 CNAME 记录
 
 ![Blob 存储自定义域](./media/dns-custom-domain/blobcustomdomain.png)
 
@@ -133,7 +133,7 @@ Azure DNS 为支持自定义域或具有完全限定域名 (FQDN) 的任何 Azur
 |TTL 单位     | 小时        | 小时用作时间计量单位         |
 |Alias     | asverify.adatumfunctiona9ed.blob.core.chinacloudapi.cn        | 为其创建别名的 DNS 名称，在本示例中，为默认提供给存储帐户的 asverify.adatumfunctiona9ed.blob.core.chinacloudapi.cn DNS 名称。        |
 
-单击“存储” **“存储帐户”导航回到存储帐户，选择该存储帐户，单击“自定义域”。**  >    在文本框中键入创建的别名（不带 asverify 前缀），选中“使用间接 CNAME 验证”，单击“保存”   。 完成此步骤后，返回 DNS 区域，并创建不带 asverify 前缀的 CNAME 记录。  此后，可以安全删除带有 cdnverify 前缀的 CNAME 记录。
+单击“存储” > “存储帐户”导航回到存储帐户，选择该存储帐户，单击“自定义域”。 在文本框中键入创建的别名（不带 asverify 前缀），选中“使用间接 CNAME 验证”，单击“保存”   。 完成此步骤后，返回 DNS 区域，并创建不带 asverify 前缀的 CNAME 记录。  此后，可以安全删除带有 cdnverify 前缀的 CNAME 记录。
 
 ![Blob 存储自定义域](./media/dns-custom-domain/indirectvalidate.png)
 

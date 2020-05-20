@@ -177,7 +177,7 @@ private X509Certificate2 GetHttpsCertificateFromStore()
 
 ## <a name="give-network-service-access-to-the-certificates-private-key"></a>允许 NETWORK SERVICE 访问证书的私钥
 
-在前面的步骤中，已在开发计算机上将证书导入 `Cert:\LocalMachine\My` 存储。  现在，显式允许运行服务（默认为 NETWORK SERVICE）的帐户访问证书的私钥。 可以手动执行此步骤（使用 certlm.msc 工具），但最好是在服务清单的 [SetupEntryPoint](service-fabric-run-script-at-service-startup.md) 中**配置启动脚本**，以便自动运行 PowerShell 脚本。
+在前面的步骤中，已在开发计算机上将证书导入 `Cert:\LocalMachine\My` 存储。  现在，显式允许运行服务（默认为 NETWORK SERVICE）的帐户访问证书的私钥。 可以手动执行此步骤（使用 certlm.msc 工具），但最好是在服务清单的 **SetupEntryPoint** 中[配置启动脚本](service-fabric-run-script-at-service-startup.md)，以便自动运行 PowerShell 脚本。
 
 ### <a name="configure-the-service-setup-entry-point"></a>配置服务安装程序入口点
 
@@ -222,7 +222,7 @@ private X509Certificate2 GetHttpsCertificateFromStore()
 
 ### <a name="add-the-batch-and-powershell-setup-scripts"></a>添加批处理和 PowerShell 设置脚本
 
-若要从 **SetupEntryPoint** 点运行 PowerShell，可以在指向 PowerShell 文件的批处理文件中运行 PowerShell.exe。 首先，添加服务项目的批处理文件。  在“解决方案资源管理器”中，右键单击“VotingWeb”，选择“添加” **“新建项”，然后添加名为“Setup.bat”的新文件。**  ->   编辑 *Setup.bat* 文件，添加以下命令：
+若要从 **SetupEntryPoint** 点运行 PowerShell，可以在指向 PowerShell 文件的批处理文件中运行 PowerShell.exe。 首先，添加服务项目的批处理文件。  在“解决方案资源管理器”中，右键单击“VotingWeb”，选择“添加”->“新建项”，然后添加名为“Setup.bat”的新文件。  编辑 *Setup.bat* 文件，添加以下命令：
 
 ```bat
 powershell.exe -ExecutionPolicy Bypass -Command ".\SetCertAccess.ps1"
@@ -232,7 +232,7 @@ powershell.exe -ExecutionPolicy Bypass -Command ".\SetCertAccess.ps1"
 
 ![设置文件属性][image1]
 
-在“解决方案资源管理器”中，右键单击“VotingWeb”，选择“添加” **“新建项”，然后添加名为“SetCertAccess.ps1”的新文件。**  ->   编辑 *SetCertAccess.ps1* 文件，添加以下脚本：
+在“解决方案资源管理器”中，右键单击“VotingWeb”，选择“添加”->“新建项”，然后添加名为“SetCertAccess.ps1”的新文件。  编辑 *SetCertAccess.ps1* 文件，添加以下脚本：
 
 ```powershell
 $subject="mytestcert"

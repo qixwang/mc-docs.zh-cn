@@ -19,6 +19,6 @@ ms.locfileid: "71155920"
 
 * [Python 2.x 或 3.x](https://www.python.org/downloads/)。 请确保根据安装程序的要求，使用 32 位或 64 位安装。 在安装过程中出现提示时，请确保将 Python 添加到特定于平台的环境变量中。 如果使用 Python 2.x，则可能需要[安装或升级 pip  - Python 包管理系统](https://pip.pypa.io/en/stable/installing/)。
 
-* 如果需要，请使用命令 [ 安装 ](https://pypi.org/project/azure-iot-device/)azure-iot-device`pip install azure-iot-device` 包
+* 如果需要，请使用命令 `pip install azure-iot-device` 安装 [azure-iot-device](https://pypi.org/project/azure-iot-device/) 包
 
-* 如果需要，请使用命令 [ 安装 ](https://pypi.org/project/azure-iothub-service-client/)azure-iothub-service-client`pip install azure-iothub-service-client` 包
+* 如果需要，请使用命令 `pip install azure-iothub-service-client` 安装 [azure-iothub-service-client](https://pypi.org/project/azure-iothub-service-client/) 包

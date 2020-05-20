@@ -66,7 +66,7 @@ ms.locfileid: "78155002"
 
 2. 使用文本编辑器，在工作目录中创建名为 **dmpatterns_getstarted_device.py** 的文件。
 
-3. 在 `import`dmpatterns_getstarted_device.py**文件开头添加以下** 语句。
+3. 在 **dmpatterns_getstarted_device.py** 文件开头添加以下 `import` 语句。
 
     ```python
     import threading
@@ -158,7 +158,7 @@ ms.locfileid: "78155002"
 
 2. 使用文本编辑器，在工作目录中创建名为 **dmpatterns_getstarted_service.py** 的文件。
 
-3. 在 `import`dmpatterns_getstarted_service.py**文件开头添加以下** 语句。
+3. 在 **dmpatterns_getstarted_service.py** 文件开头添加以下 `import` 语句。
 
     ```python
     import sys, time

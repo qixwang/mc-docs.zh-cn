@@ -114,7 +114,7 @@ public class Function {
 }
 ```
 
-下面是 `function.json`azure-functions-maven-plugin[ 生成的相应 ](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-maven-plugin)：
+下面是 [azure-functions-maven-plugin](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-maven-plugin) 生成的相应 `function.json`：
 
 ```json
 {
@@ -140,7 +140,7 @@ public class Function {
 
 ## <a name="jdk-runtime-availability-and-support"></a>JDK 运行时的可用性与支持 
 
-若要进行本地 Java 函数应用开发，请从 [Azul Systems](https://assets.azul.com/files/Zulu-for-Azure-FAQ.pdf) 下载并使用[适用于 Azure 的 Azul Zulu Enterprise](https://www.azul.com/downloads/azure-only/zulu/) Java 8 JDK。 将函数应用部署到云时，Azure Functions 使用 Azul Java 8 JDK 运行时。
+若要进行本地 Java 函数应用开发，请从 [Azul Systems](https://www.azul.com/downloads/azure-only/zulu/) 下载并使用[适用于 Azure 的 Azul Zulu Enterprise](https://assets.azul.com/files/Zulu-for-Azure-FAQ.pdf) Java 8 JDK。 将函数应用部署到云时，Azure Functions 使用 Azul Java 8 JDK 运行时。
 
 对于 JDK 和函数应用的问题，[Azure 支持](https://www.azure.cn/support/)可通过[限定的支持计划](https://www.azure.cn/support/plans/)获得。
 
@@ -172,14 +172,14 @@ az functionapp config appsettings set --name <APP_NAME> \
 此示例将启用无外设模式。 请将 `<APP_NAME>` 替换为函数应用的名称，将 `<RESOURCE_GROUP>` 替换为资源组的名称。
 
 > [!WARNING]  
-> 在[消耗计划](functions-scale.md#consumption-plan)中，必须添加值为 `WEBSITE_USE_PLACEHOLDER` 的 `0` 设置。  
+> 在[消耗计划](functions-scale.md#consumption-plan)中，必须添加值为 `0` 的 `WEBSITE_USE_PLACEHOLDER` 设置。  
 此设置确实可增加 Java 函数的冷启动时间。
 
 ## <a name="third-party-libraries"></a>第三方库 
 
 Azure Functions 支持使用第三方库。 默认情况下，项目 `pom.xml` 文件中指定的所有依赖项将在 [`mvn package`](https://github.com/Microsoft/azure-maven-plugins/blob/master/azure-functions-maven-plugin/README.md#azure-functionspackage) 目标期间自动进行绑定。 对于未在 `pom.xml` 文件中指定为依赖项的库，请将它们放在函数根目录的 `lib` 目录中。 放置在 `lib` 目录中的依赖项将在运行时添加到系统类加载器中。
 
-默认情况下，类路径上提供了 `com.microsoft.azure.functions:azure-functions-java-library` 依赖项，不需要将其包含在 `lib` 目录中。 此外，[azure-functions-java-worker](https://github.com/Azure/azure-functions-java-worker) 会将[此处](https://github.com/Azure/azure-functions-java-worker/wiki/Azure-Java-Functions-Worker-Dependencies)列出的依赖项添加到类路径。
+默认情况下，类路径上提供了 `com.microsoft.azure.functions:azure-functions-java-library` 依赖项，不需要将其包含在 `lib` 目录中。 此外，[azure-functions-java-worker](https://github.com/Azure/azure-functions-java-worker/wiki/Azure-Java-Functions-Worker-Dependencies) 会将[此处](https://github.com/Azure/azure-functions-java-worker)列出的依赖项添加到类路径。
 
 ## <a name="data-type-support"></a>数据类型支持
 
@@ -191,7 +191,7 @@ Azure Functions 支持使用第三方库。 默认情况下，项目 `pom.xml` �
 
 ### <a name="binary-data"></a>Binary data
 
-通过将 function.json 中的 `byte[]` 字段设置为 `dataType`，将二进制输入或输出绑定到 `binary`：
+通过将 function.json 中的 `dataType` 字段设置为 `binary`，将二进制输入或输出绑定到 `byte[]`：
 
 ```java
    @FunctionName("BlobTrigger")
@@ -291,7 +291,7 @@ public class Function {
 
 如果有多个输出绑定，请只使用其中一个绑定的返回值。
 
-若要发送多个输出值，请使用 `OutputBinding<T>` 包中定义的 `azure-functions-java-library`。 
+若要发送多个输出值，请使用 `azure-functions-java-library` 包中定义的 `OutputBinding<T>`。 
 
 ```java
 @FunctionName("QueueOutputPOJOList")
@@ -358,7 +358,7 @@ public class Function {
     }
 }
 ```
-在前面的示例中，`queryValue` 绑定到 HTTP 请求 URL `name` 中的查询字符串参数 `http://{example.host}/api/metadata?name=test`。 下面是另一个示例，演示如何从队列触发器元数据绑定到 `Id`。
+在前面的示例中，`queryValue` 绑定到 HTTP 请求 URL `http://{example.host}/api/metadata?name=test` 中的查询字符串参数 `name`。 下面是另一个示例，演示如何从队列触发器元数据绑定到 `Id`。
 
 ```java
  @FunctionName("QueueTriggerMetadata")
@@ -379,11 +379,11 @@ public class Function {
 
 ## <a name="execution-context"></a>执行上下文
 
-`ExecutionContext` 中定义的 `azure-functions-java-library` 包含用来与 Functions 运行时通信的帮助器方法。
+`azure-functions-java-library` 中定义的 `ExecutionContext` 包含用来与 Functions 运行时通信的帮助器方法。
 
 ### <a name="logger"></a>记录器
 
-使用 `getLogger` 中定义的 `ExecutionContext` 从函数代码写入日志。
+使用 `ExecutionContext` 中定义的 `getLogger` 从函数代码写入日志。
 
 示例：
 

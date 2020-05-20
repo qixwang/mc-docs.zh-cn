@@ -85,7 +85,7 @@ ms.locfileid: "72272025"
     mongod --dbpath F:\MongoData\ --logpath F:\MongoLogs\mongolog.log
     ```
 
-    MongoDB 可能需要几分钟来分配日志文件和开始侦听连接。 当 *服务器启动和分配日志文件时，所有日志消息将定向到*F:\MongoLogs\mongolog.log`mongod.exe` 文件。
+    MongoDB 可能需要几分钟来分配日志文件和开始侦听连接。 当 `mongod.exe` 服务器启动和分配日志文件时，所有日志消息将定向到 *F:\MongoLogs\mongolog.log* 文件。
 
     > [!NOTE]
     > 运行 MongoDB 实例时，命令提示符的焦点放在此任务上。 将命令提示符窗口保持打开状态，以便继续运行 MongoDB。 或者，如下一步骤的详述，将 MongoDB 作为服务安装。
@@ -158,7 +158,7 @@ New-NetFirewallRule `
 如有需要，创建一个网络安全组规则，以允许从现有 Azure 虚拟网络子网外部访问 MongoDB。 可以使用 [Azure 门户](nsg-quickstart-portal.md)或 [Azure PowerShell](nsg-quickstart-powershell.md) 创建网络安全组规则。 与创建 Windows 防火墙规则时一样，允许通过 TCP 端口 27017 连接到 MongoDB VM 的虚拟网络接口。
 
 > [!NOTE]
-> TCP 端口 27017 是 MongoDB 使用的默认端口。 可以在启动时 `--port` 使用 `mongod.exe` 参数手动更改此端口，或者通过某个服务更改此端口。 如果更改了端口，请确保在前面的步骤中更新 Windows 防火墙和网络安全组规则。
+> TCP 端口 27017 是 MongoDB 使用的默认端口。 可以在启动时 `mongod.exe` 使用 `--port` 参数手动更改此端口，或者通过某个服务更改此端口。 如果更改了端口，请确保在前面的步骤中更新 Windows 防火墙和网络安全组规则。
 
 ## <a name="next-steps"></a>后续步骤
 本教程已介绍如何在 Windows VM 上安装和配置 MongoDB。 现在，可以遵循 [MongoDB 文档](https://docs.mongodb.com/manual/)中的高级主题访问 Windows VM 上的 MongoDB。

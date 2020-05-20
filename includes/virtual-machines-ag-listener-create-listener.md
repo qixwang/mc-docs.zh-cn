@@ -20,7 +20,7 @@ ms.locfileid: "63822449"
 
 3. 展开群集名称，并单击“角色”。 
 
-4. 在“角色”窗格中，右键单击可用性组名称，并选择“添加资源” **“客户端接入点”。**   >  
+4. 在“角色”窗格中，右键单击可用性组名称，并选择“添加资源” > “客户端接入点”。
 
     ![为可用性组添加客户端接入点](./media/virtual-machines-sql-server-configure-alwayson-availability-group-listener/IC678769.gif)
 

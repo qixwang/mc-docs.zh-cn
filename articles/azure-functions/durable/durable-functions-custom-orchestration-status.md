@@ -148,7 +148,7 @@ module.exports = async function(context, req) {
 ```
 
 > [!NOTE]
-> 在 JavaScript 中，在计划下一个 `customStatus` 或 `yield` 操作时设置 `return` 字段。
+> 在 JavaScript 中，在计划下一个 `yield` 或 `return` 操作时设置 `customStatus` 字段。
 
 ---
 

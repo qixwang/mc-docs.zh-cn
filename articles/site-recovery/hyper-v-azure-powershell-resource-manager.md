@@ -46,7 +46,7 @@ Azure PowerShell 提供用于通过 Windows PowerShell 管理 Azure 的 cmdlet�
 ## <a name="step-1-sign-in-to-your-azure-account"></a>步骤 1：登录到 Azure 帐户
 
 1. 打开 PowerShell 控制台，并运行以下命令以登录到 Azure 帐户。 此 cmdlet 会打开一个网页，提示输入帐户凭据：`Connect-AzAccount -Environment AzureChinaCloud`。
-    - 或者，可以使用 `Connect-AzAccount -Environment AzureChinaCloud`Credential**参数，在** cmdlet 中将帐户凭据作为参数包括。
+    - 或者，可以使用 **Credential** 参数，在 `Connect-AzAccount -Environment AzureChinaCloud` cmdlet 中将帐户凭据作为参数包括。
     
     <!-- Not Available on CSP partner working on behalf of a tenant -->
     
@@ -245,7 +245,7 @@ Set-AzRecoveryServicesAsrVaultContext -Vault $vault
 > 1. 通过更新 VM 属性启用到托管磁盘的故障转移
 > 1. 使用 `Get-AzRecoveryServicesAsrReplicationProtectedItem` cmdlet 获取受保护项的每个磁盘的磁盘 ID
 > 1. 使用 `New-Object "System.Collections.Generic.Dictionary``2[System.String,System.String]"` cmdlet 创建包含磁盘 ID 到磁盘加密集映射的字典对象。 这些磁盘加密集将由你在目标区域中预先创建。
-> 1. 通过在 `Set-AzRecoveryServicesAsrReplicationProtectedItem`DiskIdToDiskEncryptionSetMap**参数中传递字典对象，使用** cmdlet 更新 VM 属性。
+> 1. 通过在 **DiskIdToDiskEncryptionSetMap** 参数中传递字典对象，使用 `Set-AzRecoveryServicesAsrReplicationProtectedItem` cmdlet 更新 VM 属性。
 
 ## <a name="step-8-run-a-test-failover"></a>步骤 8：运行测试故障转移
 

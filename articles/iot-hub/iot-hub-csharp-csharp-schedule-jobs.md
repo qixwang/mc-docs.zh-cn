@@ -69,7 +69,7 @@ ms.locfileid: "78155097"
 
 1. 在 Visual Studio 中选择“创建新项目”，然后选择“控制台应用(.NET Framework)”项目模板。   选择“下一步”  继续。
 
-1. 在“配置新项目”中，将项目命名为 **SimulateDeviceMethods**，然后选择“创建”。  
+1. 在“配置新项目”中，将项目命名为 *SimulateDeviceMethods*，然后选择“创建”。
 
     ![配置 SimulateDeviceMethods 项目](./media/iot-hub-csharp-csharp-schedule-jobs/configure-device-app.png)
 
@@ -81,7 +81,7 @@ ms.locfileid: "78155097"
 
     此步骤将下载、安装 [Azure IoT 设备 SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/) NuGet 包及其依赖项并添加对它的引用。
 
-1. 在 Program.cs`using`**文件顶部添加以下** 语句：
+1. 在 Program.cs 文件顶部添加以下 `using` 语句：
 
     ```csharp
     using Microsoft.Azure.Devices.Client;
@@ -167,7 +167,7 @@ ms.locfileid: "78155097"
 
 1. 在 Visual Studio 中，选择“文件”   > “新建”   > “项目”  。 在“创建新项目”中，选择“控制台应用(.NET Framework)”，然后选择“下一步”    。
 
-1. 在“配置新项目”中，将项目命名为 **ScheduleJob**。  对于“解决方案”，请选择“添加到解决方案”，然后选择“创建”。   
+1. 在“配置新项目”中，将项目命名为 *ScheduleJob*。 对于“解决方案”，请选择“添加到解决方案”，然后选择“创建”。   
 
     ![命名并配置 ScheduleJob 项目](./media/iot-hub-csharp-csharp-schedule-jobs/config-schedule-job-app.png)
 
@@ -177,7 +177,7 @@ ms.locfileid: "78155097"
 
    此步骤将下载、安装 [Azure IoT 服务 SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices/) NuGet 包及其依赖项并添加对其的引用。
 
-4. 在 Program.cs`using`**文件顶部添加以下** 语句：
+4. 在 Program.cs 文件顶部添加以下 `using` 语句：
     
     ```csharp
     using Microsoft.Azure.Devices;
@@ -294,7 +294,7 @@ ms.locfileid: "78155097"
 
 1. 在 Visual Studio 的“解决方案资源管理器”中，右键单击解决方案，然后选择“设置启动项目”。 
 
-1. 选择“常用属性” **“启动项目”，然后选择“多个启动项目”。**  >   
+1. 选择“常用属性” > “启动项目”，然后选择“多个启动项目”。
 
 1. 请确保 `SimulateDeviceMethods` 位于列表顶部且后接 `ScheduleJob`。 将这两项的操作均设置为“启动”，然后选择“确定”   。
 

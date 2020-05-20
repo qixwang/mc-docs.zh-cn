@@ -41,7 +41,7 @@ ms.locfileid: "63852146"
 
 在“Azure AD 应用程序”部分，选择“新建”并为新的 Azure AD 应用程序注册命名（例如“VideoModADApp”）。   单击“保存”并等待几分钟时间，让应用程序配置完成。  然后，页面的“Azure AD 应用”部分下应会显示新的应用注册。 
 
-选择该应用注册，并单击其下面的“管理应用程序”按钮。  记下“应用程序 ID”字段中的值，因为稍后需要用到。  选择“设置” **“密钥”，并输入新密钥的说明（例如“VideoModKey”）。**  >   单击“保存”，然后注意新密钥值。  复制此字符串并将其保存到安全的位置。
+选择该应用注册，并单击其下面的“管理应用程序”按钮。  记下“应用程序 ID”字段中的值，因为稍后需要用到。  选择“设置” > “密钥”，并输入新密钥的说明（例如“VideoModKey”）。 单击“保存”，然后注意新密钥值。  复制此字符串并将其保存到安全的位置。
 
 有关上述过程的全面演练，请参阅 [Azure AD 身份验证入门](/media-services/media-services-portal-get-started-with-aad)。
 
@@ -84,7 +84,7 @@ using System.Collections.Generic;
 
 ### <a name="set-up-resource-references"></a>设置资源引用
 
-向 Program.cs 中的 Program 类添加以下静态字段   。 这些字段包含连接到 AMS 订阅所需的信息。 请在这些字段内填充在上述步骤中获取的值。 请注意，`CLIENT_ID` 是 Azure AD 应用的“应用程序 ID”值， **是为该应用创建的“VideoModKey”的值。** `CLIENT_SECRET`
+向 Program.cs 中的 Program 类添加以下静态字段   。 这些字段包含连接到 AMS 订阅所需的信息。 请在这些字段内填充在上述步骤中获取的值。 请注意，`CLIENT_ID` 是 Azure AD 应用的“应用程序 ID”值，`CLIENT_SECRET` 是为该应用创建的“VideoModKey”的值。
 
 ```csharp
 // declare constants and globals

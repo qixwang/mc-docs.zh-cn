@@ -259,7 +259,7 @@ print(token_response)
 
 Azure 机器学习中的 Web 服务使用不同于上述的身份验证模式。 要对部署的 Web 服务进行身份验证，最简单的方法是使用基于密钥的身份验证，这种身份验证会生成静态持有者类型身份验证密钥，无需刷新  。 如果你只需对部署的 Web 服务进行身份验证，则无需设置如上所述的服务主体身份验证。
 
-部署在 Azure Kubernetes 服务上的 Web 服务默认情况下会启用基于密钥的身份验证  。 默认情况下，Azure 容器实例部署的服务禁用基于密钥的身份验证，但你可以在创建 ACI Web 服务时通过设置  *来启用它*`auth_enabled=True`。 以下是创建已启用基于密钥的身份验证的 ACI 部署配置的示例。
+部署在 Azure Kubernetes 服务上的 Web 服务默认情况下会启用基于密钥的身份验证  。 默认情况下，Azure 容器实例部署的服务禁用基于密钥的身份验证，但你可以在创建 ACI Web 服务时通过设置 `auth_enabled=True` 来启用它。 以下是创建已启用基于密钥的身份验证的 ACI 部署配置的示例。
 
 ```python
 from azureml.core.webservice import AciWebservice

@@ -18,7 +18,7 @@ ms.locfileid: "75336489"
 ---
 # <a name="create-and-manage-api-keys-for-an-azure-cognitive-search-service"></a>创建和管理 Azure 认知搜索服务的 API 密钥
 
-对搜索服务的所有请求都需要专为服务生成的只读 API 密钥。 API 密钥是用于验证搜索服务终结点的访问的唯一机制，必须包含在每个请求中。 在 [REST 解决方案](search-get-started-postman.md)中，API 密钥通常在请求标头中指定。 在 [.NET 解决方案](search-howto-dotnet-sdk.md#core-scenarios)中，密钥通常以配置设置的形式指定，然后在 [SearchServiceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient.credentials) 上作为[凭据](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient.searchcredentials)（管理密钥）或 [SearchCredentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient)（查询密钥）传递。
+对搜索服务的所有请求都需要专为服务生成的只读 API 密钥。 API 密钥是用于验证搜索服务终结点的访问的唯一机制，必须包含在每个请求中。 在 [REST 解决方案](search-get-started-postman.md)中，API 密钥通常在请求标头中指定。 在 [.NET 解决方案](search-howto-dotnet-sdk.md#core-scenarios)中，密钥通常以配置设置的形式指定，然后在 [SearchServiceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient) 上作为[凭据](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient.credentials)（管理密钥）或 [SearchCredentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient.searchcredentials)（查询密钥）传递。
 
 在服务预配期间，将使用搜索服务创建密钥。 可以在 [Azure 门户](https://portal.azure.cn)中查看和获取密钥值。
 
@@ -46,7 +46,7 @@ API 密钥是随机生成的数字和字母所组成的字符串。 通过[基�
 
 1. 登录 [Azure 门户](https://portal.azure.cn)。
 2. 列出订阅的[搜索服务](https://portal.azure.cn/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。
-3. 选择该服务，在“概述”页上，单击“设置” **“密钥”以查看管理密钥和查询密钥。**  > 
+3. 选择该服务，在“概述”页上，单击“设置” >“密钥”以查看管理密钥和查询密钥。
 
    ![门户页上的“设置”>“密钥”部分](media/search-security-overview/settings-keys.png)
 
@@ -58,7 +58,7 @@ API 密钥是随机生成的数字和字母所组成的字符串。 通过[基�
 
 1. 登录 [Azure 门户](https://portal.azure.cn)。
 2. 列出订阅的[搜索服务](https://portal.azure.cn/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。
-3. 选择该服务，在“概述”页上单击“设置” **“密钥”。**  > 
+3. 选择该服务，在“概述”页上单击“设置” >“密钥”。
 4. 单击“管理查询密钥”。 
 5. 使用已为服务生成的查询密钥，或创建最多 50 个新的查询密钥。 默认查询密钥未命名，但可将其他查询密钥命名以便于管理。
 
@@ -73,7 +73,7 @@ API 密钥是随机生成的数字和字母所组成的字符串。 通过[基�
 
 系统将为每个服务生成两个管理密钥，以便在轮换主密钥时可以使用辅助密钥，从而实现业务连续性。
 
-1. 在“设置” **“密钥”页中，复制辅助密钥** >  。
+1. 在“设置” >“密钥”页中，复制辅助密钥。
 2. 对于所有应用程序，更新 API 密钥设置以使用辅助密钥。
 3. 重新生成主密钥。
 4. 更新所有应用程序以使用新的主密钥。
@@ -87,7 +87,7 @@ API 密钥是随机生成的数字和字母所组成的字符串。 通过[基�
 ## <a name="secure-api-keys"></a>保护 API 密钥
 通过门户或 Resource Manager 界面（PowerShell 或命令行接口）以限制访问，从而保护密钥安全。 如前所述，订阅管理员可以查看和重新生成所有 API 密钥。 作为预防措施，查看角色分配以了解谁有权访问管理密钥。
 
-+ 在服务仪表板中，依次单击“访问控制(IAM)”和“角色分配”  选项卡可查看服务的角色分配  。
++ 在服务仪表板中，依次单击“访问控制(IAM)”和“角色分配”选项卡可查看服务的角色分配。
 
 以下角色的成员可以查看和重新生成密钥：所有者、参与者和[搜索服务参与者](https://docs.azure.cn/role-based-access-control/built-in-roles#search-service-contributor)
 

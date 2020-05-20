@@ -90,7 +90,7 @@ Azure 应用服务本地缓存功能允许通过 Web 角色来查看内容。 �
 ## <a name="best-practices-for-using-app-service-local-cache"></a>使用应用服务本地缓存的最佳实践
 建议将本地缓存与[过渡环境](../app-service/deploy-staging-slots.md)功能结合在一起使用。
 
-* 将值为  *的*粘性`WEBSITE_LOCAL_CACHE_OPTION`应用设置 `Always` 添加到**生产**槽。 如果使用的是 `WEBSITE_LOCAL_CACHE_SIZEINMB`，也可将其作为粘性设置添加到“生产”槽。
+* 将值为 `Always` 的*粘性*应用设置 `WEBSITE_LOCAL_CACHE_OPTION` 添加到**生产**槽。 如果使用的是 `WEBSITE_LOCAL_CACHE_SIZEINMB`，也可将其作为粘性设置添加到“生产”槽。
 * 创建**过渡**槽，并发布到过渡槽。 如果获得了生产槽的本地缓存优势，则要想通过无缝的“构建-部署-测试”生命周期进行过渡，通常不需要将过渡槽设置为使用本地缓存。
 * 针对“过渡”槽来测试站点。  
 * 准备就绪以后，在过渡槽和生产槽之间执行[交换操作](../app-service/deploy-staging-slots.md#Swap)。  

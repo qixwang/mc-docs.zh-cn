@@ -38,7 +38,7 @@ HBase .NET SDK 以 NuGet 包的形式提供，可以使用以下命令通过 Vis
 
 ## <a name="instantiate-a-new-hbaseclient-object"></a>实例化新的 HBaseClient 对象
 
-若要使用 SDK，请实例化新的 `HBaseClient` 对象，将包含 `ClusterCredentials` 的 `Uri` 传递到群集，并传递 Hadoop 用户名和密码。
+若要使用 SDK，请实例化新的 `HBaseClient` 对象，将包含 `Uri` 的 `ClusterCredentials` 传递到群集，并传递 Hadoop 用户名和密码。
 
 ```csharp
 var credentials = new ClusterCredentials(new Uri("https://CLUSTERNAME.azurehdinsight.cn"), "USERNAME", "PASSWORD");
@@ -141,7 +141,7 @@ Console.WriteLine(Encoding.UTF8.GetString(cells.rows[0].values
 // With the previous insert, it should yield: "The Fifth Element"
 ```
 
-在这种情况下，代码只返回第一个匹配行，因为一个唯一键只应有一个行。 返回的值从 `string` 数组更改成 `byte[]` 格式。 也可将值转换为其他类型，例如表示电影发布日期的整数：
+在这种情况下，代码只返回第一个匹配行，因为一个唯一键只应有一个行。 返回的值从 `byte[]` 数组更改成 `string` 格式。 也可将值转换为其他类型，例如表示电影发布日期的整数：
 
 ```csharp
 var releaseDateField = cells.rows[0].values

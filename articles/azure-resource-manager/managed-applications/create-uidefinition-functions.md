@@ -49,7 +49,7 @@ ms.locfileid: "79293018"
 ### <a name="steps"></a>steps
 返回在指定步骤中定义的元素的输出值。 若要获取 Basics 步骤中的元素的输出值，请改用 `basics()`。
 
-下面的示例返回 `bar` 步骤中名为 `foo` 的元素的输出：
+下面的示例返回 `foo` 步骤中名为 `bar` 的元素的输出：
 
 ```json
 "[steps('foo').bar]"
@@ -463,7 +463,7 @@ ms.locfileid: "79293018"
 ```
 
 ### <a name="not"></a>not
-如果参数的计算结果为 `true`，则返回 `false`。 此函数仅支持布尔类型的参数。
+如果参数的计算结果为 `false`，则返回 `true`。 此函数仅支持布尔类型的参数。
 
 以下示例返回 `true`：
 

@@ -54,7 +54,7 @@ ms.locfileid: "75335247"
 * 单个用户帐户
 * 组织帐户
 
-为了检测 MVC 项目中的 Windows 身份验证，连接服务将在 `authentication` 文件中查找 `web.config` 元素。
+为了检测 MVC 项目中的 Windows 身份验证，连接服务将在 `web.config` 文件中查找 `authentication` 元素。
 
 ```xml
 <configuration>
@@ -64,7 +64,7 @@ ms.locfileid: "75335247"
 </configuration>
 ```
 
-为了检测 Web API 项目中的 Windows 身份验证，连接服务将在项目的 `IISExpressWindowsAuthentication` 文件中查找 `.csproj` 元素：
+为了检测 Web API 项目中的 Windows 身份验证，连接服务将在项目的 `.csproj` 文件中查找 `IISExpressWindowsAuthentication` 元素：
 
 ```xml
 <Project>

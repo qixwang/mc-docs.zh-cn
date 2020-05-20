@@ -108,7 +108,7 @@ az network vnet subnet create \
   --address-prefix 10.0.2.0/24
 ```
 
-使用 [az network vnet subnet update](https://docs.azure.cn/zh-cn/cli/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update) 将 *myRouteTablePublic* 路由表关联到公共子网。 
+使用 [az network vnet subnet update](https://docs.azure.cn/zh-cn/cli/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update) 将 *myRouteTablePublic* 路由表关联到公共子网。
 
 ```azurecli
 az network vnet subnet update \
@@ -162,7 +162,7 @@ az vm extension set \
 
 在虚拟网络中创建两个 VM，以便可以在后续步骤中验证来自公共子网的流量是否通过 NVA 路由到专用子网。   
 
-使用 [az vm create](https://docs.azure.cn/zh-cn/cli/vm?view=azure-cli-latest#az-vm-create) 在公共子网中创建一个 VM。  `--no-wait` 参数支持 Azure 在后台中执行命令，因此可以继续执行下一个命令。 为了简化本文的内容，此处使用了密码。 在生产部署中通常使用密钥。 如果使用密钥，还必须配置 SSH 代理转发。 有关详细信息，请参阅 SSH 客户端的文档。 将以下命令中的 `<replace-with-your-password>` 替换为所选的密码。
+使用 [az vm create](https://docs.azure.cn/zh-cn/cli/vm?view=azure-cli-latest#az-vm-create) 在公共子网中创建一个 VM。 `--no-wait` 参数支持 Azure 在后台中执行命令，因此可以继续执行下一个命令。 为了简化本文的内容，此处使用了密码。 在生产部署中通常使用密钥。 如果使用密钥，还必须配置 SSH 代理转发。 有关详细信息，请参阅 SSH 客户端的文档。 将以下命令中的 `<replace-with-your-password>` 替换为所选的密码。
 
 ```azurecli
 adminPassword="<replace-with-your-password>"
@@ -209,7 +209,7 @@ az vm create \
 
 ## <a name="route-traffic-through-an-nva"></a>通过 NVA 路由流量
 
-使用以下命令创建与 *myVmPrivate* VM 的 SSH 会话。 将 \<publicIpAddress>  替换为 VM 的公共 IP 地址。 在上面的示例中，IP 地址为 *13.90.242.231*。
+使用以下命令创建与 *myVmPrivate* VM 的 SSH 会话。 将 \<publicIpAddress> 替换为 VM 的公共 IP 地址。 在上面的示例中，IP 地址为 *13.90.242.231*。
 
 ```bash 
 ssh azureuser@<publicIpAddress>

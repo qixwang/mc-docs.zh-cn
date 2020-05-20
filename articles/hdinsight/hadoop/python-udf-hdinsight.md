@@ -32,14 +32,14 @@ HDInsight 还包含 Jython，后者是用 Java 编写的 Python 实现。 Jython
 * **HDInsight 上的 Hadoop 群集**。 请参阅 [Linux 上的 HDInsight 入门](apache-hadoop-linux-tutorial-get-started.md)。
 * **SSH 客户端**。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md)。
 * 群集主存储的 [URI 方案](../hdinsight-hadoop-linux-information.md#URI-and-scheme)。 对于 Azure 存储，此值为 wasb://；对于Azure Data Lake Storage Gen2，此值为 abfs://；对于 Azure Data Lake Storage Gen1，此值为 adl://。 如果为 Azure 存储或 Data Lake Storage Gen2 启用了安全传输，则 URI 分别是 wasbs:// 或 abfss://。另请参阅[安全传输](../../storage/common/storage-require-secure-transfer.md)。
-* **对存储配置所做的可能更改。**  如果使用 [ 类型的存储帐户，请参阅](#storage-configuration)存储配置`BlobStorage`。
+* **对存储配置所做的可能更改。**  如果使用 `BlobStorage` 类型的存储帐户，请参阅[存储配置](#storage-configuration)。
 * 可选。  如果计划使用 PowerShell，则需要安装 [AZ 模块](https://docs.microsoft.com/powershell/azure/new-azureps-module-az)。
 
 > [!NOTE]  
 > 本文中使用的存储帐户是启用了[安全传输](../../storage/common/storage-require-secure-transfer.md)的 Azure 存储，因此，本文通篇使用 `wasbs`。
 
 ## <a name="storage-configuration"></a>存储配置
-如果使用 `Storage (general purpose v1)` 或 `StorageV2 (general purpose v2)` 类型的存储帐户，则不需要执行任何操作。  本文中的过程至少向 `/tezstaging` 生成输出。  默认的 Hadoop 配置将在 `/tezstaging` 中的 `fs.azure.page.blob.dir` 配置变量内包含服务 `core-site.xml` 的 `HDFS`。  此配置会导致将页 Blob 输出到目录，而 `BlobStorage` 类型的存储帐户不支持页 Blob。  若要在本文中使用 `BlobStorage`，请删除 `/tezstaging` 配置变量中的 `fs.azure.page.blob.dir`。  可以通过 [Ambari UI](../hdinsight-hadoop-manage-ambari.md) 访问配置。  否则，会收到错误消息：`Page blob is not supported for this account type.`
+如果使用 `Storage (general purpose v1)` 或 `StorageV2 (general purpose v2)` 类型的存储帐户，则不需要执行任何操作。  本文中的过程至少向 `/tezstaging` 生成输出。  默认的 Hadoop 配置将在 `core-site.xml` 中的 `fs.azure.page.blob.dir` 配置变量内包含服务 `HDFS` 的 `/tezstaging`。  此配置会导致将页 Blob 输出到目录，而 `BlobStorage` 类型的存储帐户不支持页 Blob。  若要在本文中使用 `BlobStorage`，请删除 `fs.azure.page.blob.dir` 配置变量中的 `/tezstaging`。  可以通过 [Ambari UI](../hdinsight-hadoop-manage-ambari.md) 访问配置。  否则，会收到错误消息：`Page blob is not supported for this account type.`
 
 > [!WARNING]  
 > 本文档中的步骤基于以下假设：  
@@ -312,7 +312,7 @@ DUMP DETAILS;
 
 1. 第一行代码将示例数据文件 `sample.log` 加载到 `LOGS` 中。 它还将每个记录定义为 `chararray`。
 2. 第二行代码筛选出所有 null 值，并将操作结果存储在 `LOG` 中。
-3. 接下来，它将循环访问 `LOG` 中的记录，并使用 `GENERATE` 来调用作为 `create_structure` 加载的 Python/Jython 脚本中包含的 `myfuncs` 方法。 `LINE` 用于将当前记录传递给函数。
+3. 接下来，它将循环访问 `LOG` 中的记录，并使用 `GENERATE` 来调用作为 `myfuncs` 加载的 Python/Jython 脚本中包含的 `create_structure` 方法。 `LINE` 用于将当前记录传递给函数。
 4. 最后，使用 `DUMP` 命令将输出转储到 STDOUT。 在操作完成后，此命令会显示结果。
 
 ### <a name="create-file"></a>创建文件

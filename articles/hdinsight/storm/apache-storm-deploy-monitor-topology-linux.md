@@ -43,9 +43,9 @@ ms.locfileid: "79293165"
 
 1. 在“开始”窗口中，选择“创建新项目”   。
 
-1. 在“创建新项目”窗口中，选择搜索框并输入 **。** `Storm` 从结果列表中选择“Storm 示例”，然后选择“下一步”。  
+1. 在“创建新项目”窗口中，选择搜索框并输入 `Storm`。 从结果列表中选择“Storm 示例”，然后选择“下一步”。  
 
-1. 在“配置新项目”窗口输入一个**项目名称**，然后转到或创建一个**位置**用于保存新项目。  然后选择“创建”  。
+1. 在“配置新项目”窗口输入一个**项目名称**，然后转到或创建一个**位置**用于保存新项目。 然后选择“创建”  。
 
     ![“配置新项目”窗口，Visual Studio](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-sample1.png)
 
@@ -90,7 +90,7 @@ ms.locfileid: "79293165"
 ![监视拓扑，“Storm 拓扑视图”窗口，Visual Studio](./media/apache-storm-deploy-monitor-topology-linux/visual-studio-monitor.png)
 
 > [!NOTE]  
-> 也可以从“服务器资源管理器”  查看“Storm 拓扑”  。 展开“Azure”   > “HDInsight”  ，右键单击 Storm on HDInsight 群集，然后选择“查看 Storm 拓扑”  。
+> 也可以从“服务器资源管理器”查看“Storm 拓扑”。 展开“Azure” > “HDInsight”，右键单击 Storm on HDInsight 群集，然后选择“查看 Storm 拓扑”。
 
 选择 Spout 或 Bolt 的形状可查看有关这些组件的信息。 此时会显示所选项的工具提示，其中包含组件信息。
 

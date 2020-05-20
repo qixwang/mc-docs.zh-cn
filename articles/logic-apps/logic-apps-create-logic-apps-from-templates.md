@@ -44,7 +44,7 @@ ms.locfileid: "77428680"
 
 1. 登录到 [Azure 门户](https://portal.azure.cn "Azure 门户")（如果尚未登录）。
 
-2. 在 Azure 主菜单中，选择“创建资源” **“企业集成”** “逻辑应用” >    >   。
+2. 在 Azure 主菜单中，选择“创建资源” > “企业集成” > “逻辑应用”。
 
    ![Azure 门户 >“新建”>“Enterprise Integration”>“逻辑应用”](./media/logic-apps-create-logic-apps-from-templates/azure-portal-create-logic-app.png)
 

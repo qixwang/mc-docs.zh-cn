@@ -92,7 +92,7 @@ Windows 提供了各种[性能计数器](https://docs.microsoft.com/windows/desk
 
 ### <a name="collecting-performance-counters-in-code-for-aspnet-core-web-applications"></a>在 ASP.NET Core Web 应用程序的代码中收集性能计数器
 
-修改 `ConfigureServices` 类中的 `Startup.cs` 方法，如下所示。
+修改 `Startup.cs` 类中的 `ConfigureServices` 方法，如下所示。
 
 ```csharp
 using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector;

@@ -19,7 +19,7 @@ ms.locfileid: "75631037"
 ---
 # <a name="manage-resources-for-apache-spark-cluster-on-azure-hdinsight"></a>管理 Azure HDInsight 上 Apache Spark 群集的资源 
 
-了解如何访问与 [Apache Spark](https://ambari.apache.org/) 群集关联的界面（如 [Apache Ambari](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) UI、[Apache Hadoop YARN](./apache-azure-spark-history-server.md) UI 和 [Spark History Server](https://spark.apache.org/)），以及如何优化群集配置以达到最佳性能。
+了解如何访问与 [Apache Spark](https://spark.apache.org/) 群集关联的界面（如 [Apache Ambari](https://ambari.apache.org/) UI、[Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) UI 和 [Spark History Server](./apache-azure-spark-history-server.md)），以及如何优化群集配置以达到最佳性能。
 
 ## <a name="open-the-spark-history-server"></a>打开 Spark History Server
 
@@ -43,7 +43,7 @@ Spark History Server 是已完成和正在运行的 Spark 应用程序的 Web UI
 这三个配置参数可在群集级别配置（适用于群集上运行的所有应用程序），也可以针对每个应用程序指定。
 
 ### <a name="change-the-parameters-using-ambari-ui"></a>使用 Ambari UI 更改参数
-1. 在 Ambari UI 中，导航到“Spark2” **“配置”** “自定义 spark2-defaults”。 >    >  
+1. 在 Ambari UI 中，导航到“Spark2” > “配置” > “自定义 spark2-defaults”。
 
     ![使用 Ambari 自定义设置参数](./media/apache-spark-resource-manager/ambari-ui-spark2-configs.png "使用 Ambari 自定义设置参数")
 
@@ -93,7 +93,7 @@ Spark Thrift 服务器使用 Spark 动态执行器分配，因此未使用 `spar
 
 Spark Thrift 服务器驱动程序内存配置为头节点 RAM 大小的 25%，前提是头节点的 RAM 总大小大于 14 GB。 可以使用 Ambari UI 更改驱动程序内存配置，如以下屏幕截图所示：
 
-在 Ambari UI 中，导航到“Spark2” **“配置”** “高级 spark2-env”。 >    >   然后提供 **spark_thrift_cmd_opts** 的值。
+在 Ambari UI 中，导航到“Spark2” > “配置” > “高级 spark2-env”。 然后提供 **spark_thrift_cmd_opts** 的值。
 
 ## <a name="reclaim-spark-cluster-resources"></a>回收 Spark 群集资源
 由于 Spark 动态分配，因此 Thrift 服务器使用的唯一资源是两个应用程序主机的资源。 若要回收这些资源，必须停止群集上运行的 Thrift 服务器服务。

@@ -60,7 +60,7 @@ ms.locfileid: "72914499"
 
     ![ExpressRoute 线路屏幕截图](./media/expressroute-howto-linkvnet-portal-resource-manager/routing1.png)
 
-2. 现在可以开始预配连接，以便将虚拟网络网关链接到 ExpressRoute 线路。 单击“连接” **“添加”以打开“添加连接”页面，然后配置值。**  >   
+2. 现在可以开始预配连接，以便将虚拟网络网关链接到 ExpressRoute 线路。 单击“连接” > “添加”以打开“添加连接”页面，然后配置值。
 
     ![添加连接屏幕截图](./media/expressroute-howto-linkvnet-portal-resource-manager/samesub1.png)  
 
@@ -99,7 +99,7 @@ ms.locfileid: "72914499"
 > 每个连接都需要单独授权。
 >
 
-1. 在 ExpressRoute 页面中，单击“授权”，键入授权的**名称**并单击“保存”。  
+1. 在 ExpressRoute 页面中，单击“授权”，键入授权的**名称**并单击“保存”。
 
     ![授权](./media/expressroute-howto-linkvnet-portal-resource-manager/authorization.png)
 

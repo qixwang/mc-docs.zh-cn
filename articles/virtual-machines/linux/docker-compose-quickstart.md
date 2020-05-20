@@ -35,7 +35,7 @@ ms.locfileid: "68912978"
 
 [!INCLUDE [azure-cli-2-azurechinacloud-environment-parameter](../../../includes/azure-cli-2-azurechinacloud-environment-parameter.md)]
 
-首先，使用 [az group create](https://docs.azure.cn/cli/group?view=azure-cli-latest#az-group-create) 为 Docker 环境创建资源组。 以下示例在“chinaeast”  位置创建名为“myResourceGroup”  的资源组：
+首先，使用 [az group create](https://docs.azure.cn/cli/group?view=azure-cli-latest#az-group-create) 为 Docker 环境创建资源组。 以下示例在“chinaeast”位置创建名为“myResourceGroup”的资源组：
 
 ```azurecli
 az group create --name myDockerGroup --location chinaeast
@@ -104,7 +104,7 @@ db:
 ```
 
 ## <a name="start-the-containers-with-compose"></a>使用 Compose 启动容器
-在 docker-compose.yml 文件所在的目录中，运行以下命令（可能需要使用 *运行*，具体取决于用户环境）：`docker-compose``sudo`
+在 docker-compose.yml 文件所在的目录中，运行以下命令（可能需要使用 `sudo` 运行 `docker-compose`，具体取决于用户环境）：
 
 ```bash
 sudo docker-compose up -d

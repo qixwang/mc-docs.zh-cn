@@ -203,7 +203,7 @@ New-ServiceFabricApplication -ApplicationName 'fabric:/NodeApp' -ApplicationType
 ## <a name="adding-more-guest-executables-to-an-existing-application-using-yeoman-on-linux"></a>在 Linux 上使用 Yeoman 将更多来宾可执行文件添加到现有应用程序
 
 要将其他服务添加到使用 `yo` 创建的应用程序，请执行以下步骤： 
-1. 将目录更改为现有应用程序的根目录。  例如，如果 `cd ~/YeomanSamples/MyApplication` 是 Yeoman 创建的应用程序，则使用 `MyApplication`。
+1. 将目录更改为现有应用程序的根目录。  例如，如果 `MyApplication` 是 Yeoman 创建的应用程序，则使用 `cd ~/YeomanSamples/MyApplication`。
 2. 运行 `yo azuresfguest:AddService`，并提供必要的详细信息。
 
 ## <a name="next-steps"></a>后续步骤

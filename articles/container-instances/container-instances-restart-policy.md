@@ -35,7 +35,7 @@ ms.locfileid: "77428939"
 
 ## <a name="specify-a-restart-policy"></a>指定重启策略
 
-重启策略的指定方式取决于容器实例的创建方式，例如，是使用 Azure CLI、Azure PowerShell cmdlet 还是 Azure 门户。 在 Azure CLI 中，在调用 `--restart-policy`az container create[ 时指定 ][az-container-create] 参数。
+重启策略的指定方式取决于容器实例的创建方式，例如，是使用 Azure CLI、Azure PowerShell cmdlet 还是 Azure 门户。 在 Azure CLI 中，在调用 [az container create][az-container-create] 时指定 `--restart-policy` 参数。
 
 ```azurecli
 az container create \

@@ -82,7 +82,7 @@ V3 在从预览版过渡到正式版的过程中进行了以下更改：
 
 V3 终结点 HTTP 调用的格式已更改。
 
-如果希望按版本查询，首先需要使用 `"directVersionPublish":true` [通过 API 进行发布](https://{region}.dev.cognitive.azure.cn/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c3b)。 查询引用版本 ID 而不是槽名称的终结点。
+如果希望按版本查询，首先需要使用 `"directVersionPublish":true`[通过 API 进行发布](https://{region}.dev.cognitive.azure.cn/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c3b)。 查询引用版本 ID 而不是槽名称的终结点。
 
 |预测 API 版本|方法|URL|
 |--|--|--|

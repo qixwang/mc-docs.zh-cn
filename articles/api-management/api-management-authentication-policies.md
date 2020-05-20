@@ -108,7 +108,7 @@ ms.locfileid: "79291215"
 -   **策略范围：** 所有范围  
 
 ##  <a name="authenticate-with-managed-identity"></a><a name="ManagedIdentity"></a> 使用托管标识进行身份验证  
- 使用 `authentication-managed-identity` 策略通过 API 管理服务的托管标识向后端服务进行身份验证。 此策略实质上使用托管标识从 Azure Active Directory 获取访问令牌以访问指定资源。 成功获取令牌后，策略将使用 `Authorization` 方案在 `Bearer` 标头中设置令牌的值。
+ 使用 `authentication-managed-identity` 策略通过 API 管理服务的托管标识向后端服务进行身份验证。 此策略实质上使用托管标识从 Azure Active Directory 获取访问令牌以访问指定资源。 成功获取令牌后，策略将使用 `Bearer` 方案在 `Authorization` 标头中设置令牌的值。
   
 ### <a name="policy-statement"></a>策略语句  
   

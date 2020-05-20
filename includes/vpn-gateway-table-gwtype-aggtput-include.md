@@ -16,7 +16,7 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 04/17/2020
 ms.locfileid: "80634546"
 ---
-|**SKU**   | S2S/VNet 到 VNet**隧道<br>** | **P2S<br> SSTP 连接** | **P2S<br> IKEv2 连接** | **<br>聚合**吞吐量基准 | **BGP** |
+|**SKU**   | S2S/VNet 到 VNet<br>隧道 | **P2S<br> SSTP 连接** | **P2S<br> IKEv2 连接** | **<br>聚合**吞吐量基准 | **BGP** |
 |---         | ---        | ---       | ---            | ---       | ---       | ---|
 |**基本**   | 最大 10    | 最大 128  | 不支持  | 100 Mbps  | 不支持|
 |VpnGw1   | 最大 30   | 最大 128  | 最大 250       | 650 Mbps  | 支持 |

@@ -233,7 +233,7 @@ ms.locfileid: "77428663"
 以下为创建标准 SSD 盘时资源管理器模板中所需的参数：
 
 * Microsoft.Compute 的 apiVersion  必须设置为 `2018-04-01`（或更高）
-* 将 managedDisk.storageAccountType 指定为  `StandardSSD_LRS`
+* 将 managedDisk.storageAccountType 指定为 `StandardSSD_LRS`
 
 以下示例显示了使用标准 SSD 盘的 VM 的 properties.storageProfile.osDisk 部分  ：
 

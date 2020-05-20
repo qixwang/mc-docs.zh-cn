@@ -83,7 +83,7 @@ WHERE metric_type = 'm';
 
 若要启用 Phoenix 事务，请参阅[Apache Phoenix 事务文档](https://phoenix.apache.org/transactions.html)。
 
-若要创建启用事务的新表，请在 `TRANSACTIONAL` 语句中将 `true` 属性设置为 `CREATE`：
+若要创建启用事务的新表，请在 `CREATE` 语句中将 `TRANSACTIONAL` 属性设置为 `true`：
 
 ```sql
 CREATE TABLE my_table (k BIGINT PRIMARY KEY, v VARCHAR) TRANSACTIONAL=true;

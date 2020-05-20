@@ -115,7 +115,7 @@ public static void Run(Stream image, string filename, Stream imageSmall, ILogger
 <!--TODO: add JavaScript example -->
 <!-- Blocked by bug https://github.com/Azure/Azure-Functions/issues/248 -->
 
-类库中的特性同样能够使用绑定表达式和模式。 在以下示例中，特性构造函数参数的值与前面 `path`function.json*示例中的* 值相同： 
+类库中的特性同样能够使用绑定表达式和模式。 在以下示例中，特性构造函数参数的值与前面 *function.json* 示例中的 `path` 值相同： 
 
 ```csharp
 [FunctionName("ResizeImage")]
@@ -159,7 +159,7 @@ public static void Run(
 * NextVisibleTime
 * PopReceipt
 
-这些元数据值可在 function.json 文件属性中访问  。 例如，假设使用队列触发器，且队列消息中包含要读取的 blob 的名称。 在 function.json 文件中  ，可在 blob `queueTrigger` 属性中使用 `path` 元数据属性，如下面的示例中所示：
+这些元数据值可在 function.json 文件属性中访问  。 例如，假设使用队列触发器，且队列消息中包含要读取的 blob 的名称。 在 function.json 文件中，可在 blob `path` 属性中使用 `queueTrigger` 元数据属性，如下面的示例中所示：
 
 ```json
   "bindings": [
@@ -268,7 +268,7 @@ module.exports = function (context, info) {
 }
 ```
 
-可以直接以 `FileName` 的形式引用 `BlobName.FileName`。 使用此 JSON 格式时，上述示例中的 `path` 属性如下所示：
+可以直接以 `BlobName.FileName` 的形式引用 `FileName`。 使用此 JSON 格式时，上述示例中的 `path` 属性如下所示：
 
 ```json
 "path": "strings/{BlobName.FileName}.{BlobName.Extension}",

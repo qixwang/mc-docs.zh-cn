@@ -47,16 +47,16 @@ ms.locfileid: "80151728"
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
 
 ## <a name="add-authentication-to-the-portable-class-library"></a>向可移植类库添加身份验证
-移动应用使用 [MobileServiceClient][3] 上的 [LoginAsync][4] 扩展方法通过应用服务身份验证登录用户。 此示例使用服务器托管的身份验证流，在应用中显示提供程序的登录界面。 有关详细信息，请参阅[服务器托管的身份验证][5]。 若要在生产应用中提供更好的用户体验，应考虑改用[客户端托管的身份验证][6]。
+移动应用使用 [MobileServiceClient][4] 上的 [LoginAsync][3] 扩展方法通过应用服务身份验证登录用户。 此示例使用服务器托管的身份验证流，在应用中显示提供程序的登录界面。 有关详细信息，请参阅[服务器托管的身份验证][5]。 若要在生产应用中提供更好的用户体验，应考虑改用[客户端托管的身份验证][6]。
 
 若要使用 Xamarin Forms 项目进行身份验证，请在可移植类库中为应用定义 **IAuthenticate** 接口。 然后，将“登录”  按钮添加到可移植类库中定义的用户界面，用户单击此按钮即可开始进行身份验证。 身份验证成功后，将从移动应用后端加载数据。
 
 为应用支持的每个平台实现 **IAuthenticate** 接口。
 
-1. 在 Visual Studio 或 Xamarin Studio 中，从名称中包含 **Portable** 的项目（该项目是可移植类库项目）中打开 App.cs，并添加以下 `using` 语句：
+1. 在 Visual Studio 或 Xamarin Studio 中，从名称中包含 Portable 的项目（该项目是可移植类库项目）中打开 App.cs，然后添加以下 `using` 语句：
 
         using System.Threading.Tasks;
-2. 在 App.cs 中，在 `IAuthenticate` 类定义前添加以下 `App` 接口定义。
+2. 在 App.cs 中，在 `App` 类定义前添加以下 `IAuthenticate` 接口定义。
 
         public interface IAuthenticate
         {
@@ -70,7 +70,7 @@ ms.locfileid: "80151728"
         {
             Authenticator = authenticator;
         }
-4. 从可移植类库项目中打开 TodoList.xaml，在 **buttonsPanel** 布局元素中现有按钮之后添加以下 *Button* 元素：
+4. 从可移植类库项目中打开 TodoList.xaml，在 *buttonsPanel* 布局元素中现有按钮之后添加以下 **Button** 元素：
 
           <Button x:Name="loginButton" Text="Sign-in" MinimumHeightRequest="30"
             Clicked="loginButton_Clicked"/>
@@ -161,7 +161,7 @@ ms.locfileid: "80151728"
 
     如果使用的是 MicrosoftAccount 以外的其他标识提供者，请为 [MobileServiceAuthenticationProvider][7] 选择不同的值。
 
-6. 在 **元素内添加以下 XML，更新**AndroidManifest.xml`<application>` 文件：
+6. 在 `<application>` 元素内添加以下 XML，更新 **AndroidManifest.xml** 文件：
 
     ```xml
     <activity android:name="com.microsoft.windowsazure.mobileservices.authentication.RedirectUrlActivity" android:launchMode="singleTop" android:noHistory="true">
@@ -174,7 +174,7 @@ ms.locfileid: "80151728"
     </activity>
     ```
     将 `{url_scheme_of_your_app}` 替换为 URL 方案。
-7. 调用 **之前，向**MainActivity**类的**OnCreate`LoadApplication()` 方法添加以下代码：
+7. 调用 `LoadApplication()` 之前，向 **MainActivity** 类的 **OnCreate** 方法添加以下代码：
 
         // Initialize the authenticator before loading the app.
         App.Init((IAuthenticate)this);
@@ -246,7 +246,7 @@ ms.locfileid: "80151728"
             return TodoItemManager.DefaultManager.CurrentClient.ResumeWithURL(url);
         }
    
-7. 调用 **之前，向**FinishedLaunching`LoadApplication()` 方法添加以下代码行：
+7. 调用 `LoadApplication()` 之前，向 **FinishedLaunching** 方法添加以下代码行：
 
         App.Init(this);
 
@@ -310,7 +310,7 @@ ms.locfileid: "80151728"
 
     如果使用的是 MicrosoftAccount 以外的其他标识提供者，请为 [MobileServiceAuthenticationProvider][7] 选择不同的值。
 
-1. 调用 **之前，在**MainPage`LoadApplication()` 类的构造函数中添加以下代码行：
+1. 调用 `LoadApplication()` 之前，在 **MainPage** 类的构造函数中添加以下代码行：
 
         // Initialize the authenticator before loading the app.
         <your_Portable_Class_Library_namespace>.App.Init(this);

@@ -18,7 +18,7 @@ ms.locfileid: "71155820"
 ---
 在 Azure CLI 中，使用 [`az appservice plan create`](/cli/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) 命令创建一个应用服务计划。
 
-以下示例在免费定价层中创建名为 `myAppServicePlan` 的应用服务计划： 
+以下示例在免费定价层中创建名为 `myAppServicePlan` 的应用服务计划：
 
 ```azurecli
 az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku FREE

@@ -55,7 +55,7 @@ ms.locfileid: "77067925"
 
 - `input_alias`  
 
-    表示由 `input_alias` 子句引入，由 `FROM` 定义的值。  
+    表示由 `FROM` 子句引入，由 `input_alias` 定义的值。  
     此值可以保证不是**未定义的** -- 将跳过输入中的**未定义**值。  
 
 - `<scalar_expression>.property_name`  

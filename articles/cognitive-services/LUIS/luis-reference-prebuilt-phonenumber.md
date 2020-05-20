@@ -20,7 +20,7 @@ ms.lasthandoff: 04/17/2020
 ms.locfileid: "74884925"
 ---
 # <a name="phone-number-prebuilt-entity-for-a-luis-app"></a>LUIS 应用的电话号码预生成实体
-`phonenumber` 实体提取各种包括国家/地区代码在内的电话号码。 此实体已定型，因此不需要将陈述示例添加到应用程序。 仅在 `phonenumber` 区域性中支持 `en-us` 实体。 
+`phonenumber` 实体提取各种包括国家/地区代码在内的电话号码。 此实体已定型，因此不需要将陈述示例添加到应用程序。 仅在 `en-us` 区域性中支持 `phonenumber` 实体。 
 
 ## <a name="types-of-a-phone-number"></a>电话号码的类型
 `Phonenumber` 托管在 [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/Base-PhoneNumbers.yaml) GitHub 存储库中

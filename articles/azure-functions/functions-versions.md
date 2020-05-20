@@ -90,7 +90,7 @@ Azure Functions 版本 3.x 向后高度兼容版本 2.x。  许多应用应该�
 
 * `dataType` 为 binary 的事件中心触发函数将收到 `binary` 数组而非 `string` 数组。
 
-* 无法再通过 `context.bindingData.req` 访问 HTTP 请求有效负载。  仍然可以在 `context.req` 中以输入参数 `context.bindings` 的形式对其进行访问。
+* 无法再通过 `context.bindingData.req` 访问 HTTP 请求有效负载。  仍然可以在 `context.bindings` 中以输入参数 `context.req` 的形式对其进行访问。
 
 * Node.js 8 不再受支持，并且在 3.x 函数中不会执行。
 

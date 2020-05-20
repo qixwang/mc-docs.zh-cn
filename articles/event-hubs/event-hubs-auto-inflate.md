@@ -75,7 +75,7 @@ Azure 事件中心是高度可缩放的数据流式处理平台。 因此，开�
 
 ### <a name="enable-auto-inflate-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板启用自动膨胀
 
-可在 Azure 资源管理器模板部署期间启用自动膨胀。 例如，将 `isAutoInflateEnabled` 属性设置为“true”并将  **设置为 10**`maximumThroughputUnits`。 例如：
+可在 Azure 资源管理器模板部署期间启用自动膨胀。 例如，将 `isAutoInflateEnabled` 属性设置为“true”并将 `maximumThroughputUnits` 设置为 10。 例如：
 
 ```json
 "resources": [

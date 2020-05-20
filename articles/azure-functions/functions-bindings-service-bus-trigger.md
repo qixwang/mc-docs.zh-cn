@@ -23,7 +23,7 @@ ms.locfileid: "79546885"
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-以下示例演示了读取[消息元数据](functions-dotnet-class-library.md)并记录服务总线队列消息的 [C# 函数](#message-metadata)：
+以下示例演示了读取[消息元数据](#message-metadata)并记录服务总线队列消息的 [C# 函数](functions-dotnet-class-library.md)：
 
 ```cs
 [FunctionName("ServiceBusQueueTriggerCSharp")]                    
@@ -117,7 +117,7 @@ module.exports = function(context, myQueueItem) {
 
 # <a name="java"></a>[Java](#tab/java)
 
-以下 Java 函数使用 `@ServiceBusQueueTrigger`Java 函数运行时库[中的 ](https://docs.microsoft.com/java/api/overview/azure/functions/runtime) 注释来说明服务总线队列触发器的配置。 此函数获取放置在队列上的消息，然后将其添加到日志。
+以下 Java 函数使用 [Java 函数运行时库](https://docs.microsoft.com/java/api/overview/azure/functions/runtime)中的 `@ServiceBusQueueTrigger` 注释来说明服务总线队列触发器的配置。 此函数获取放置在队列上的消息，然后将其添加到日志。
 
 ```java
 @FunctionName("sbprocessor")
@@ -206,7 +206,7 @@ module.exports = function(context, myQueueItem) {
 要使用的服务总线帐户按以下顺序确定：
 
 * `ServiceBusTrigger` 特性的 `Connection` 属性。
-* 作为 `ServiceBusAccount` 特性应用到同一参数的 `ServiceBusTrigger` 特性。
+* 作为 `ServiceBusTrigger` 特性应用到同一参数的 `ServiceBusAccount` 特性。
 * 应用到函数的 `ServiceBusAccount` 特性。
 * 应用到类的 `ServiceBusAccount` 特性。
 * “AzureWebJobsServiceBus”应用设置。
@@ -243,7 +243,7 @@ JavaScript 不支持特性。
 |**subscriptionName**|**SubscriptionName**|要监视的订阅的名称。 仅在监视主题的情况下设置，不为队列设置。|
 |连接 |**Connection**|应用设置的名称，包含要用于此绑定的服务总线连接字符串。 如果应用设置名称以“AzureWebJobs”开头，则只能指定该名称的余下部分。 例如，如果将 `connection` 设为“MyServiceBus”，Functions 运行时会查找名为“AzureWebJobsMyServiceBus”的应用设置。 如果将 `connection` 留空，函数运行时将使用名为“AzureWebJobsServiceBus”的应用设置中的默认服务总线连接字符串。<br><br>若要获取连接字符串，请执行[获取管理凭据](../service-bus-messaging/service-bus-quickstart-portal.md#get-the-connection-string)中显示的步骤。 必须是服务总线命名空间的连接字符串，不限于特定的队列或主题。 |
 |**accessRights**|**Access**|连接字符串的访问权限。 可用值为 `manage` 和 `listen`。 默认值是 `manage`，其指示 `connection` 具有“管理”  权限。 如果使用不具有“管理”  权限的连接字符串，请将 `accessRights` 设置为“listen”。 否则，Functions 运行时可能会在尝试执行需要管理权限的操作时失败。 在 Azure Functions 版本 2.x 及更高版本中，此属性不可用，因为最新版本的服务总线 SDK 不支持管理操作。|
-|**isSessionsEnabled**|**IsSessionsEnabled**|如果连接到`true`会话感知[队列或订阅，则为 ](../service-bus-messaging/message-sessions.md)。 否则为 `false`（默认值）。|
+|**isSessionsEnabled**|**IsSessionsEnabled**|如果连接到[会话感知](../service-bus-messaging/message-sessions.md)队列或订阅，则为 `true`。 否则为 `false`（默认值）。|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 

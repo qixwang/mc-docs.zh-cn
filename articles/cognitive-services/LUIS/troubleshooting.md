@@ -123,7 +123,7 @@ Cortana 预构建应用已于 2017 年弃用。 它们不再受支持。
 LUIS 根据[区域性](luis-language-support.md#tokenization)将表述[标记化](luis-glossary.md#token)。 原始值和标记化值均可用于[数据提取](luis-concept-data-extraction.md#tokenized-entity-returned)。
 
 ### <a name="how-do-i-create-and-assign-a-luis-endpoint-key"></a>如何创建并分配 LUIS 终结点密钥？
-根据[服务](https://www.azure.cn/pricing/details/cognitive-services/)级别在 Azure 中[创建终结点密钥](luis-how-to-azure-subscription.md)。 在 **[密钥和终结点](luis-how-to-azure-subscription.md)** 页上[分配密钥](luis-how-to-azure-subscription.md)。 此操作没有相应的 API。 然后，必须更改针对此终结点的 HTTP 请求才能[使用新终结点密钥](luis-concept-keys.md#use-endpoint-key-in-query)。
+根据[服务](https://www.azure.cn/pricing/details/cognitive-services/)级别在 Azure 中[创建终结点密钥](luis-how-to-azure-subscription.md)。 在**[密钥和终结点](luis-how-to-azure-subscription.md)** 页上[分配密钥](luis-how-to-azure-subscription.md)。 此操作没有相应的 API。 然后，必须更改针对此终结点的 HTTP 请求才能[使用新终结点密钥](luis-concept-keys.md#use-endpoint-key-in-query)。
 
 ### <a name="how-do-i-interpret-luis-scores"></a>如何解释 LUIS 分数？
 系统应该使用最高得分意向，不管其值如何。 例如，分数低于 0.5（不到 50%）不一定意味着 LUIS 的置信度低。 提供更多训练数据有助于提高最可能意向的[分数](luis-concept-prediction-score.md)。
@@ -266,7 +266,7 @@ Get-AzCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Na
 
 #### <a name="resolve-issue-in-azure-bot-service"></a>在 Azure 机器人服务中解决问题
 
-如果在使用 Azure 机器人服务时遇到“网上聊天中的测试”返回 `Sorry, my bot code is having an issue` 问题，请查看日志  ：
+如果在使用 Azure 机器人服务时遇到“网上聊天中的测试”返回 `Sorry, my bot code is having an issue` 问题，请查看日志：
 
 1. 在 Azure 门户中，对于机器人，从“机器人管理”部分选择“生成”   。
 1. 打开联机代码编辑器。 

@@ -85,7 +85,7 @@ ms.locfileid: "71156062"
 
 模块标识和模块孪生为公共预览版。 仅在 IoT 中心预发行设备 SDK 中提供它。 若要安装它，请执行以下步骤：
 
-1. 在 Visual Studio 中，打开“工具” **“NuGet 包管理器”** “管理解决方案的 NuGet 包”。 >    >  
+1. 在 Visual Studio 中，打开“工具” > “NuGet 包管理器” > “管理解决方案的 NuGet 包”。
 
 1. 选择“浏览”，然后选择“包括预发行版”   。 搜索 *Microsoft.Azure.Devices.Client*。 选择最新版本并安装。
 
@@ -109,7 +109,7 @@ ms.locfileid: "71156062"
 
 若要创建应用，请按以下步骤操作：
 
-1. 在 Program.cs`using`**文件顶部添加以下** 语句：
+1. 在 Program.cs 文件顶部添加以下 `using` 语句：
 
   ```csharp
   using Microsoft.Azure.Devices.Client;

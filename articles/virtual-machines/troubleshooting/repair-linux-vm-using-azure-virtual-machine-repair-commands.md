@@ -81,7 +81,7 @@ ms.locfileid: "73730733"
 
 ## <a name="verify-and-enable-boot-diagnostics"></a>验证和启用启动诊断
 
-以下示例在名为 ``myVMDeployed`` 的资源组中名为 ``myResourceGroup`` 的 VM 上启用诊断扩展：
+以下示例在名为 ``myResourceGroup`` 的资源组中名为 ``myVMDeployed`` 的 VM 上启用诊断扩展：
 
 Azure CLI
 

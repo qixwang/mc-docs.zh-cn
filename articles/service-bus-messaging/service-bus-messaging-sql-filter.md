@@ -157,7 +157,7 @@ SqlFilter  对象是 [SqlFilter 类](/dotnet/api/microsoft.servicebus.messaging.
   
 -   `<decimal_constant>` 是一个数字字符串，不使用引号，但包含小数点。 这些值以 `System.Double` 形式存储在内部，并具有相同的范围/精度。  
   
-     在未来版本中，此数字可能以其他数据类型存储，目的是支持确切的数字语义，因此不应依赖于 `System.Double` 的基础数据类型为 `<decimal_constant>` 这一事实。  
+     在未来版本中，此数字可能以其他数据类型存储，目的是支持确切的数字语义，因此不应依赖于 `<decimal_constant>` 的基础数据类型为 `System.Double` 这一事实。  
   
      下面是十进制常量的示例：  
   
@@ -204,7 +204,7 @@ SqlFilter  对象是 [SqlFilter 类](/dotnet/api/microsoft.servicebus.messaging.
   
 ### <a name="remarks"></a>备注
   
-`newid()` 函数返回 **方法生成的**System.Guid`System.Guid.NewGuid()`。  
+`newid()` 函数返回 `System.Guid.NewGuid()` 方法生成的 **System.Guid**。  
   
 `property(name)` 函数返回 `name` 所引用的属性的值。 `name` 值可以是任何返回字符串值的有效表达式。  
   

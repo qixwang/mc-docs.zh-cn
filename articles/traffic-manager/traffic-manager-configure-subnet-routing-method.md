@@ -51,7 +51,7 @@ ms.locfileid: "77653225"
 <!--MOONCAKE: CORRECT ON *myIISVMChinaEast* and *myIISVMChinaNorth*-->
 <!--MOONCAKE: WRONG ON *myEndpointVMChinaEast* and *myEndpointVMChinaNorth*-->
 
-1. 在 Azure 门户的左上角选择“创建资源” > “虚拟机” > “Windows Server 2016 Datacenter”    。
+1. 在 Azure 门户的左上角选择“创建资源” > “虚拟机” > “Windows Server 2016 Datacenter”。
     
     <!--MOONCAKE: CORRECT ON Virtual Machines-->
     
@@ -71,7 +71,7 @@ ms.locfileid: "77653225"
 
     |设置|Value|
     |---|---|
-    |虚拟网络| 选择“虚拟网络”，在“创建虚拟网络”中，为“名称”输入 *myVNet1*，为“子网”输入 *mySubnet*。   |
+    |虚拟网络| 选择“虚拟网络”，在“创建虚拟网络”中，为“名称”输入 *myVNet1*，为“子网”输入 *mySubnet*。|
     |网络安全组|选择“基本”，在“选择公共入站端口”下拉列表中选择“HTTP”和“RDP”     |
     |启动诊断|选择“已禁用”。 |
     |||
@@ -85,7 +85,7 @@ ms.locfileid: "77653225"
     |资源组 | 选择“新建”  ，然后键入 *myResourceGroupTM2*|
     |位置|中国北部|
     |VM 名称 | myIISVMChinaNorth|
-    |虚拟网络 | 选择“虚拟网络”，在“创建虚拟网络”中，为“名称”输入 *myVNet2*，为“子网”输入 *mySubnet*。   |
+    |虚拟网络 | 选择“虚拟网络”，在“创建虚拟网络”中，为“名称”输入 *myVNet2*，为“子网”输入 *mySubnet*。|
     |||
 
 8. 创建 VM 可能需要数分钟的时间。 在两个 VM 完成创建之前，不要继续执行剩余的步骤。
@@ -96,7 +96,7 @@ ms.locfileid: "77653225"
 
 本部分介绍如何在 *myIISVMChinaEast* 和 *myIISVMChinaNorth* 这两个 VM 上安装 IIS 服务器，然后如何更新默认网站页面。 自定义网站页面显示从 Web 浏览器访问网站时要连接到的 VM 的名称。
 
-1. 在左侧菜单中选择“所有资源”，然后在资源列表中，单击位于 *myResourceGroupTM1* 资源组中的“myIISVMChinaEast”。  
+1. 在左侧菜单中选择“所有资源”，然后在资源列表中，单击位于 *myResourceGroupTM1* 资源组中的“myIISVMChinaEast”。
 2. 在“概述”页上单击“连接”，然后在“连接到虚拟机”中选择“下载 RDP 文件”。    
 3. 打开下载的 rdp 文件。 出现提示时，选择“连接”  。 输入在创建 VM 时指定的用户名和密码。 可能需要选择“更多选择”  ，然后选择“使用其他帐户”  ，以指定在创建 VM 时输入的凭据。
 4. 选择“确定”  。
@@ -131,7 +131,7 @@ ms.locfileid: "77653225"
 
 流量管理器基于服务终结点的 DNS 名称路由用户流量。 本部分介绍如何为 IIS 服务器 *myIISVMChinaEast* 和 *myIISVMChinaNorth* 配置 DNS 名称。
 
-1. 在左侧菜单中单击“所有资源”，然后在资源列表中，选择位于 *myResourceGroupTM1* 资源组中的“myIISVMChinaEast”。  
+1. 在左侧菜单中单击“所有资源”，然后在资源列表中，选择位于 *myResourceGroupTM1* 资源组中的“myIISVMChinaEast”。
 2. 在“概述”页上的“DNS 名称”下，选择“配置”。   
 3. 在“配置”页上的 DNS 名称标签下添加唯一的名称，然后选择“保存”。  
 4. 针对位于 *myResourceGroupTM1* 资源组中名为 *myIISVMChinaNorth* 的 VM 重复步骤 1-3。
@@ -140,7 +140,7 @@ ms.locfileid: "77653225"
 
 在本部分中，将在每个 Azure 区域（“中国东部”和“中国北部”）创建一个 VM（myVMChinaEast  和 myVMChinaNorth  ）   。 稍后将使用这些 VM 来测试当你浏览到该网站时，流量管理器如何将流量路由到最近的 IIS 服务器。
 
-1. 在 Azure 门户的左上角选择“创建资源” > “虚拟机” > “Windows Server 2016 Datacenter”    。
+1. 在 Azure 门户的左上角选择“创建资源” > “虚拟机” > “Windows Server 2016 Datacenter”。
 
     <!--MOONCAKE: CORRECT ON Virtual Machines -- Windows Server 2016 Datacenter-->
 
@@ -171,7 +171,7 @@ ms.locfileid: "77653225"
     |设置|Value|
     |---|---|
     |VM 名称 | *myVMChinaNorth*|
-    |资源组 | 选择“现有”，然后键入 *myResourceGroupTM2* |
+    |资源组 | 选择“现有”，然后键入 *myResourceGroupTM2*|
     |虚拟网络 | 选择“虚拟网络”，在“创建虚拟网络”中，为“名称”输入 myVNet4，为“子网”输入 mySubnet4      。|
     |||
 
@@ -199,7 +199,7 @@ ms.locfileid: "77653225"
 
 ## <a name="add-traffic-manager-endpoints"></a>添加流量管理器终结点
 
-添加运行 IIS 服务器的两个 VM (myIISVMChinaEast & myIISVMChinaNorth)，根据用户查询的子网路由用户流量   。
+添加运行 IIS 服务器的两个 VM (myIISVMChinaEast & myIISVMChinaNorth)，根据用户查询的子网路由用户流量。
 
 1. 在门户的搜索栏中，搜索在前面部分创建的流量管理器配置文件名称，并在显示的结果中选择该配置文件。
 2. 在“流量管理器配置文件”  的“设置”  部分单击“终结点”  ，然后单击“添加”。 
@@ -210,7 +210,7 @@ ms.locfileid: "77653225"
     | 类型                    | Azure 终结点                                   |
     | 名称           | myTestWebSiteEndpoint                                        |
     | 目标资源类型           | 公共 IP 地址                          |
-    | 目标资源          | **选择公共 IP 地址**以显示同一订阅下具有公共 IP 地址的资源列表。 在“资源”中，选择名为 *myIISVMChinaEast-ip* 的公共 IP 地址。  这是中国东部的 IIS 服务器 VM 的公共 IP 地址。|
+    | 目标资源          | **选择公共 IP 地址**以显示同一订阅下具有公共 IP 地址的资源列表。 在“资源”中，选择名为 *myIISVMChinaEast-ip* 的公共 IP 地址。 这是中国东部的 IIS 服务器 VM 的公共 IP 地址。|
     |  子网路由设置    |   添加 myVMChinaEast 测试 VM 的 IP 地址  。 源自此 VM 的任何用户查询都将定向到 myTestWebSiteEndpoint  。    |
 
 4. 重复步骤 2 和 3，为名为 *myIISVMChinaNorth* 的 IIS 服务器 VM 所关联的公共 IP 地址 *myIISVMChinaNorth-ip* 添加名为 *myProductionEndpoint* 的另一个终结点。 对于“子网路由”设置，添加测试 VM myVMChinaNorth 的 IP 地址   。 源自此测试 VM 的任何用户查询都将路由到终结点 myProductionWebsiteEndpoint  。
@@ -244,7 +244,7 @@ ms.locfileid: "77653225"
 ### <a name="view-traffic-manager-in-action"></a>查看正在运行的流量管理器
 在本部分，我们可以查看流量管理器的运作方式。
 
-1. 在左侧菜单中选择“所有资源”，然后在资源列表中，单击位于 *myResourceGroupTM1* 资源组中的“myVMChinaEast”。  
+1. 在左侧菜单中选择“所有资源”，然后在资源列表中，单击位于 *myResourceGroupTM1* 资源组中的“myVMChinaEast”。
 2. 在“概述”页上单击“连接”，然后在“连接到虚拟机”中选择“下载 RDP 文件”。    
 3. 打开下载的 rdp 文件。 出现提示时，选择“连接”  。 输入在创建 VM 时指定的用户名和密码。 可能需要选择“更多选择”  ，然后选择“使用其他帐户”  ，以指定在创建 VM 时输入的凭据。
 4. 选择“确定”  。

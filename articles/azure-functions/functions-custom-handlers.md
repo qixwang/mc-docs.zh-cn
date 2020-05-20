@@ -24,7 +24,7 @@ ms.locfileid: "80581857"
 - 在默认不支持的某个语言版本或运行时中实现函数应用
 - 对应用执行环境进行精细控制
 
-使用自定义处理程序时，将通过[扩展绑定](./functions-triggers-bindings.md)来支持所有[触发器以及输入和输出绑定](./functions-bindings-register.md)。
+使用自定义处理程序时，将通过[扩展绑定](./functions-bindings-register.md)来支持所有[触发器以及输入和输出绑定](./functions-triggers-bindings.md)。
 
 ## <a name="overview"></a>概述
 
@@ -60,7 +60,7 @@ ms.locfileid: "80581857"
 
 应用程序是通过 host.json 文件配置的。  此文件指向能够处理 HTTP 事件的 Web 服务器，以此告知 Functions 主机要将请求发送到哪个位置。
 
-自定义处理程序的定义方式是通过  *节在 host.json 文件中配置有关如何运行 Web 服务器的详细信息。* `httpWorker`
+自定义处理程序的定义方式是通过 `httpWorker` 节在 host.json 文件中配置有关如何运行 Web 服务器的详细信息。
 
 ```json
 {
@@ -235,7 +235,7 @@ content-type: application/json
 
 该函数配置为接受 `GET` 和 `POST` 请求，结果值通过名为 `res` 的参数提供。
 
-在应用的根目录中，host.json 文件配置为运行 Node.js 并指向  *文件。* `server.js`
+在应用的根目录中，host.json 文件配置为运行 Node.js 并指向 `server.js` 文件。
 
 ```json
 {
@@ -331,9 +331,9 @@ content-type: application/json
 
 ```
 
-此函数定义为返回 [HTTP 响应](./functions-bindings-http-webhook-trigger.md)并输出[队列存储](./functions-bindings-http-webhook-output.md)消息的 [HTTP 触发的函数](./functions-bindings-storage-queue-output.md)。
+此函数定义为返回 [HTTP 响应](./functions-bindings-http-webhook-output.md)并输出[队列存储](./functions-bindings-storage-queue-output.md)消息的 [HTTP 触发的函数](./functions-bindings-http-webhook-trigger.md)。
 
-在应用的根目录中，host.json 文件配置为运行 Node.js 并指向  *文件。* `server.js`
+在应用的根目录中，host.json 文件配置为运行 Node.js 并指向 `server.js` 文件。
 
 ```json
 {

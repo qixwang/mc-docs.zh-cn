@@ -150,7 +150,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerF
   * `string Entity` - 实体（队列、主题等）的名称
   * `Uri Endpoint` - 服务总线终结点 URL
 
-每个“Stop”事件具有表示 `Status` 异步操作已完成的 `TaskStatus` 属性，为便于阅读，下表中也省略了该属性。
+每个“Stop”事件具有表示 `TaskStatus` 异步操作已完成的 `Status` 属性，为便于阅读，下表中也省略了该属性。
 
 下面是检测操作的完整列表：
 

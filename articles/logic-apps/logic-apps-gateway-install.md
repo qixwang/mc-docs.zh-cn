@@ -41,7 +41,7 @@ ms.locfileid: "79291514"
     > [!NOTE]
     > 只能将一个网关安装和一个 Azure 网关资源相互链接。 不能将相同的网关安装链接到多个 Azure 帐户或 Azure 网关资源。 但是，Azure 帐户可以链接到多个网关安装和 Azure 网关资源。 在本地触发器或操作中，可以从各种 Azure 订阅中进行选择，然后选择关联的网关资源。
 
-  * 需要使用工作帐户或学校帐户（也称为组织帐户，类似于 `username@contoso.com`）登录。  不能使用类似于 @hotmail.com 或 @outlook.com 的 Azure B2B （来宾）帐户或个人 Microsoft 帐户。
+  * 需要使用工作帐户或学校帐户（也称为组织帐户，类似于 `username@contoso.com`）登录。 不能使用类似于 @hotmail.com 或 @outlook.com 的 Azure B2B （来宾）帐户或个人 Microsoft 帐户。
 
     > [!TIP]
     > 如果你已注册 Office 365 产品/服务但未提供工作电子邮件地址，则你的地址可能类似于 `username@domain.onmicrosoft.com`。 帐户将存储在 Azure Active Directory (Azure AD) 中的某个租户内。 在大多数情况下，Azure AD 帐户的用户主体名称 (UPN) 与电子邮件地址相同。
@@ -106,7 +106,7 @@ ms.locfileid: "79291514"
 
    网关安装只能链接到一个 Azure 帐户。
 
-1. 选择“在此计算机上注册新网关” > “下一步”。   此步骤会将网关安装注册到[网关云服务](#gateway-cloud-service)。
+1. 选择“在此计算机上注册新网关” > “下一步”。 此步骤会将网关安装注册到[网关云服务](#gateway-cloud-service)。
 
    ![在本地计算机上注册网关](./media/logic-apps-gateway-install/register-gateway-local-computer.png)
 
@@ -121,7 +121,7 @@ ms.locfileid: "79291514"
    > [!IMPORTANT]
    > 请将恢复密钥保存在安全位置。 更改位置以及移动、恢复或接管网关安装时，都需要用到此密钥。
 
-   请注意选项“添加到现有网关群集”。在为[高可用性方案](#high-availability)安装其他网关时，需选择此选项。 
+   请注意选项“添加到现有网关群集”。在为[高可用性方案](#high-availability)安装其他网关时，需选择此选项。
 
 1. 检查网关安装使用的网关云服务和 [Azure 服务总线](/service-bus-messaging/)的区域。 默认情况下，此区域是 Azure 帐户的 Azure AD 租户所在的同一位置。
 
@@ -180,7 +180,7 @@ ms.locfileid: "79291514"
 
 1. 安装程序打开后，使用之前用于安装网关的同一 Azure 帐户登录。
 
-1. 选择“迁移、还原或接管现有网关” > “下一步”，例如：  
+1. 选择“迁移、还原或接管现有网关” > “下一步”，例如：
 
    ![选择“迁移、还原或接管现有网关”](./media/logic-apps-gateway-install/migrate-recover-take-over-gateway.png)
 

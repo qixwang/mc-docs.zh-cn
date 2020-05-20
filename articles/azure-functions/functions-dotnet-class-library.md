@@ -86,8 +86,8 @@ public static class SimpleExample
 方法签名可能包含不与触发器属性一起使用的参数。 下面是可以包括的一些其他参数：
 
 * [输入和输出绑定](functions-triggers-bindings.md)通过使用属性修饰来进行此类标记。  
-* 用于`ILogger`日志`TraceWriter`的 [ 或 ](functions-versions.md#creating-1x-apps)（仅限[版本 1.x](#logging)）参数。
-* 用于`CancellationToken`正常关闭[的 ](#cancellation-tokens) 参数。
+* 用于[日志](#logging)的 `ILogger` 或 `TraceWriter`（仅限[版本 1.x](functions-versions.md#creating-1x-apps)）参数。
+* 用于[正常关闭](#cancellation-tokens)的 `CancellationToken` 参数。
 * 用于获取触发器元数据的[绑定表达式](./functions-bindings-expressions-patterns.md)参数。
 
 函数签名中的参数顺序并不重要。 例如，可以在其他绑定之前或之后放置触发器参数，也可以在触发器或绑定参数之前或之后添加记录器参数。
@@ -190,7 +190,7 @@ Functions 运行时的 1.x 版本和 2.x 版本使用相同的包。 1\.x 项目
 
 `Sdk` 包也依赖于 [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json)，并间接依赖于 [WindowsAzure.Storage](https://www.nuget.org/packages/WindowsAzure.Storage)。 这些依赖关系确保项目使用的包版本与项目面向的 Functions 运行时版本兼容。 例如，`Newtonsoft.Json` 的 11 版可用于 .NET Framework 4.6.1，但面向 .NET Framework 4.6.1 的 Functions 运行时仅与 `Newtonsoft.Json` 9.0.1 兼容。 因此该项目中的函数代码也只能使用 `Newtonsoft.Json` 9.0.1。
 
-GitHub 存储库 `Microsoft.NET.Sdk.Functions`azure[functions\-vs\-build\-sdk\- 中提供了适用于 ](https://github.com/Azure/azure-functions-vs-build-sdk) 的源代码。
+GitHub 存储库 [azure\-functions\-vs\-build\-sdk](https://github.com/Azure/azure-functions-vs-build-sdk) 中提供了适用于 `Microsoft.NET.Sdk.Functions` 的源代码。
 
 ## <a name="runtime-version"></a>运行时版本
 
@@ -326,7 +326,7 @@ public static class EnvironmentVariablesExample
 }
 ```
 
-在本地开发和在 Azure 中运行时，都可以从环境变量读取应用设置。 在本地开发时，应用设置来自 `Values`local.settings.json*文件中的* 集合。 在这两个环境（本地和 Azure）中，`GetEnvironmentVariable("<app setting name>")` 都会检索命名应用设置的值。 例如，在本地运行时，如果 *local.settings.json* 文件包含 `{ "Values": { "WEBSITE_SITE_NAME": "My Site Name" } }`，则会返回“My Site Name”。
+在本地开发和在 Azure 中运行时，都可以从环境变量读取应用设置。 在本地开发时，应用设置来自 *local.settings.json* 文件中的 `Values` 集合。 在这两个环境（本地和 Azure）中，`GetEnvironmentVariable("<app setting name>")` 都会检索命名应用设置的值。 例如，在本地运行时，如果 *local.settings.json* 文件包含 `{ "Values": { "WEBSITE_SITE_NAME": "My Site Name" } }`，则会返回“My Site Name”。
 
 [System.Configuration.ConfigurationManager.AppSettings](https://docs.microsoft.com/dotnet/api/system.configuration.configurationmanager.appsettings) 属性是用于获取应用设置值的替代 API，但我们建议你使用 `GetEnvironmentVariable`，如下所示。
 

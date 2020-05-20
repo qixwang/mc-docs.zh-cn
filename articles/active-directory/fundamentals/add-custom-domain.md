@@ -51,11 +51,11 @@ ms.locfileid: "74655383"
 
 1. 使用目录的全局管理员帐户登录到 [Azure 门户](https://portal.azure.cn/)。
 
-1. 在任意页面中搜索并选择“Azure Active Directory”。  然后选择“自定义域名” **“添加自定义域”。**  >  
+1. 在任意页面中搜索并选择“Azure Active Directory”。  然后选择“自定义域名” > “添加自定义域”。
 
     ![“自定义域名”页，其中显示了“添加自定义域”](./media/add-custom-domain/add-custom-domain.png)
 
-1. 在“自定义域名”中，输入组织的新名称（在本示例中为 **contoso.com**）。  选择“添加域”。 
+1. 在“自定义域名”中，输入组织的新名称（在本示例中为 *contoso.com*）。 选择“添加域”。 
 
     ![“自定义域名”页，其中显示了“添加自定义域”页](./media/add-custom-domain/add-custom-domain-blade.png)
 

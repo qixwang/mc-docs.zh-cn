@@ -95,7 +95,7 @@ class MyActorServiceImpl extends ActorService implements MyActorService
 }
 ```
 
-在本示例中，`IMyActorService` 是一个实现 `IService` (C#) 和 `Service` (Java)，并由 `MyActorService` 实现的远程协定。 通过添加此远程协定，并通过 `IMyActorService` 创建远程代理，现在 `ActorServiceProxy` 的方法也可用于客户端：
+在本示例中，`IMyActorService` 是一个实现 `IService` (C#) 和 `Service` (Java)，并由 `MyActorService` 实现的远程协定。 通过添加此远程协定，并通过 `ActorServiceProxy` 创建远程代理，现在 `IMyActorService` 的方法也可用于客户端：
 
 ```csharp
 IMyActorService myActorServiceProxy = ActorServiceProxy.Create<IMyActorService>(

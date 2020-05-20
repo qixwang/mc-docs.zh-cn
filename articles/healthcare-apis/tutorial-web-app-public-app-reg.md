@@ -20,7 +20,7 @@ ms.locfileid: "80343725"
 在上一篇教程中，你已部署并设置了 Azure API for FHIR。 既然已设置 Azure API for FHIR，接下来可以注册一个公共客户端应用程序。 可以通读[注册公共客户端应用](register-public-azure-ad-client-app.md)操作指南来了解更多详细信息或进行故障排除，下面重点列出了此教程的主要步骤。
 
 1. 导航到 Azure Active Directory
-1. 选择“应用注册” **“新建注册”**  -->  
+1. 选择“应用注册” --> “新建注册”
 1. 为应用程序命名，并将重定向 URI 设置为 https://www.getpostman.com/oauth2/callback
 
 

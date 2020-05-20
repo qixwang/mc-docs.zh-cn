@@ -164,7 +164,7 @@ ms.locfileid: "79543767"
 
 ![Azure 门户中的“日志搜索”选项](./media/analysis-services-logging/aas-logging-open-log-search.png)
 
-在查询生成器中，展开 LogManagement**AzureDiagnostics** >   。 AzureDiagnostics 包括引擎和服务事件。 注意即时创建了一个查询。 EventClass\_s 字段包含 xEvent 名称，如果使用 Xevent 进行本地日志记录，你可能觉得该名称很眼熟。 单击“EventClass**s”或某个事件名称，Log Analytics 工作区将继续构造查询\_** 。 请务必保存查询以便稍后重复使用。
+在查询生成器中，展开 LogManagement > AzureDiagnostics。 AzureDiagnostics 包括引擎和服务事件。 注意即时创建了一个查询。 EventClass\_s 字段包含 xEvent 名称，如果使用 Xevent 进行本地日志记录，你可能觉得该名称很眼熟。 单击“EventClass\_s”或某个事件名称，Log Analytics 工作区将继续构造查询。 请务必保存查询以便稍后重复使用。
 
 ### <a name="example-queries"></a>查询示例
 

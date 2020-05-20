@@ -30,10 +30,10 @@ ms.locfileid: "79291579"
 ## <a name="unregister-a-vmm-server"></a>取消注册 VMM 服务器
 
 1. 停止在要删除的 VMM 服务器上复制云中的虚拟机。
-2. 删除由需要删除的 VMM 服务器上的云使用的任何网络映射。 在“Site Recovery 基础结构”   > “对于 System Center VMM”   > “网络映射”  中，右键单击网络映射 > “删除”  。
+2. 删除由需要删除的 VMM 服务器上的云使用的任何网络映射。 在“Site Recovery 基础结构” > “对于 System Center VMM” > “网络映射”中，右键单击网络映射 >“删除”。
 3. 记下 VMM 服务器的 ID。
-4. 取消复制策略与要删除的 VMM 服务器上的云的关联。  在“Site Recovery 基础结构”   > “对于 System Center VMM”   >  “复制策略”  中，右键单击关联的策略。 右键单击云“取消关联”  。
-5. 删除 VMM 服务器或主动节点。 在“Site Recovery 基础结构”   > “对于 System Center VMM”   > “VMM 服务器”  中，右键单击服务器 > “删除”  。
+4. 取消复制策略与要删除的 VMM 服务器上的云的关联。  在“Site Recovery 基础结构” > “对于 System Center VMM” >  “复制策略”中，右键单击关联的策略。 右键单击云“取消关联”  。
+5. 删除 VMM 服务器或主动节点。 在“Site Recovery 基础结构” > “对于 System Center VMM” > “VMM 服务器”中，右键单击服务器 >“删除”。
 6. 如果 VMM 服务器处于“已断开连接”状态，请对 VMM 服务器下载并运行[清理脚本](https://aka.ms/asr-cleanup-script-vmm)。 使用“以管理员身份运行”  选项打开 PowerShell，以更改默认 (LocalMachine) 范围的执行策略。 在脚本中，指定要删除的 VMM 服务器的 ID。 脚本会从服务器中删除注册和云配对信息。
 5. 在所有辅助 VMM 服务器上，运行清理脚本。
 6. 在任何其他被动 VMM 群集节点（已安装提供程序）上运行清理脚本。
@@ -45,7 +45,7 @@ ms.locfileid: "79291579"
 未由 VMM 托管的 Hyper-V 主机将收集到 Hyper-V 站点中。 在 Hyper-V 站点中删除主机，如下所示：
 
 1. 禁用位于主机上的 Hyper-V VM 的复制。
-2. 取消关联 Hyper-V 站点的策略。 在“Site Recovery 基础结构”   > “对于 Hyper-V 站点”   >  “复制策略”  中，右键单击关联的策略。 右键单击站点 >“取消关联”  。
+2. 取消关联 Hyper-V 站点的策略。 在“Site Recovery 基础结构” > “对于 Hyper-V 站点” >  “复制策略”中，右键单击关联的策略。 右键单击站点 >“取消关联”  。
 3. 删除 Hyper-V 主机。 依次转到“Site Recovery 基础结构”   > “对于 Hyper-V 站点”   > “Hyper-V 主机”  ，右键单击服务器，再单击“删除”  。
 4. 从 Hyper-V 站点中删除所有主机后，将该站点删除。 依次转到“Site Recovery 基础结构”   > “对于 Hyper-V 站点”   > “Hyper-V 站点”  ，右键单击站点，再单击“删除”  。
 5. 如果 Hyper-V 主机处于“已断开连接”  状态，请对已删除的每个 Hyper-V 主机运行以下脚本。 该脚本清理服务器上的设置，并从保管库中取消注册该服务器。

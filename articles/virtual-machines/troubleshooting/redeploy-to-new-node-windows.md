@@ -30,7 +30,7 @@ ms.locfileid: "74116902"
 ## <a name="using-azure-powershell"></a>使用 Azure PowerShell
 请确保已在计算机上安装最新的 Azure PowerShell 1.x。 有关详细信息，请参阅[如何安装和配置 Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)。
 
-以下示例部署 `myVM` 资源组中名为 `myResourceGroup` 的 VM：
+以下示例部署 `myResourceGroup` 资源组中名为 `myVM` 的 VM：
 
 ```powershell
 Set-AzVM -Redeploy -ResourceGroupName "myResourceGroup" -Name "myVM"

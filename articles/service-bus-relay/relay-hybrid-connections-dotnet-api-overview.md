@@ -64,7 +64,7 @@ catch (ArgumentException ae)
 
 ## <a name="hybrid-connection-stream"></a>混合连接流
 
-无论使用的是 [HybridConnectionClient][HCStream]，还是 [HybridConnectionListener][HCClient]，[HybridConnectionStream][HCListener] 类这一主要对象均用于从 Azure 中继终结点发送和接收数据。
+无论使用的是 [HybridConnectionClient][HCClient]，还是 [HybridConnectionListener][HCListener]，[HybridConnectionStream][HCStream] 类这一主要对象均用于从 Azure 中继终结点发送和接收数据。
 
 ### <a name="getting-a-hybrid-connection-stream"></a>获取混合连接流
 
@@ -128,7 +128,7 @@ var data = Encoding.UTF8.GetBytes("hello");
 await clientConnection.WriteAsync(data, 0, data.Length);
 ```
 
-但是，如果要直接发送文本，而无需每次都对字符串进行编码，则可以使用 `hybridConnectionStream`StreamWriter[ 对象包装 ](https://msdn.microsoft.com/library/system.io.streamwriter(v=vs.110).aspx) 对象。
+但是，如果要直接发送文本，而无需每次都对字符串进行编码，则可以使用 [StreamWriter](https://msdn.microsoft.com/library/system.io.streamwriter(v=vs.110).aspx) 对象包装 `hybridConnectionStream` 对象。
 
 ```csharp
 // The StreamWriter object only needs to be created once

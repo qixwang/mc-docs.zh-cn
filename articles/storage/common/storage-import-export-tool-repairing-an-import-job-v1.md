@@ -75,7 +75,7 @@ WAImportExport.exe RepairImport /r:C:\WAImportExport\9WM35C2V.rep /d:C:\Users\bo
 </DriveLog>  
 ```
   
-将此复制日志传递给 Azure 导入/导出工具后，该工具将尝试通过网络复制缺少的内容来完成此文件的导入。 根据上面的示例，该工具会在两个目录（`\animals\koala.jpg` 和 `C:\Users\bob\Pictures`）中查找原始文件 `X:\BobBackup\photos`。 如果文件 `C:\Users\bob\Pictures\animals\koala.jpg` 存在，Azure 导入/导出工具会将缺少的数据部分复制到对应的 Blob `http://bobmediaaccount.blob.core.chinacloudapi.cn/pictures/animals/koala.jpg`。  
+将此复制日志传递给 Azure 导入/导出工具后，该工具将尝试通过网络复制缺少的内容来完成此文件的导入。 根据上面的示例，该工具会在两个目录（`C:\Users\bob\Pictures` 和 `X:\BobBackup\photos`）中查找原始文件 `\animals\koala.jpg`。 如果文件 `C:\Users\bob\Pictures\animals\koala.jpg` 存在，Azure 导入/导出工具会将缺少的数据部分复制到对应的 Blob `http://bobmediaaccount.blob.core.chinacloudapi.cn/pictures/animals/koala.jpg`。  
   
 ## <a name="resolving-conflicts-when-using-repairimport"></a>使用 RepairImport 时解决冲突  
 在某些情况下，可能会出于以下原因之一，工具无法找到或打开所需的文件：找不到该文件、文件不可访问、文件名不明确，或文件内容不再正确。  

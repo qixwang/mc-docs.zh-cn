@@ -91,7 +91,7 @@ ms.locfileid: "77540411"
 
 - 将一个节添加到 settings.xml
 
-    定义类型为 `DBPassword`、值为 `KeyVaultReference` 的 `<KeyVaultURL>` 参数
+    定义类型为 `KeyVaultReference`、值为 `<KeyVaultURL>` 的 `DBPassword` 参数
 
     ```xml
     <Section Name="dbsecrets">

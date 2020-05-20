@@ -87,7 +87,7 @@ Azure HDInsight 支持多个可随时部署的 Hadoop 群集版本。 从 2017 �
 Spark 2.1、2.2 和 Kafka 1.0 支持将于 2020 年 6月 30 日到期。
 
 > [!NOTE]  
-> 在对某个版本的支持到期后，不能通过 Microsoft Azure 门户获得该版本。 但是，可继续使用 Windows PowerShell `Version`New-AzHDInsightCluster[ 命令中的 ](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) 参数和 .NET SDK 获取群集版本，直到版本停用的那天为止。
+> 在对某个版本的支持到期后，不能通过 Microsoft Azure 门户获得该版本。 但是，可继续使用 Windows PowerShell [New-AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) 命令中的 `Version` 参数和 .NET SDK 获取群集版本，直到版本停用的那天为止。
 >
 
 ### <a name="retired-versions"></a>已停用的版本

@@ -15,7 +15,7 @@ ms.locfileid: "71006579"
 **.NET 后端 (C#)** ：
   
 1. 在 Visual Studio 中，右键单击服务器项目并单击“管理 NuGet 包”  ，搜索 `Microsoft.Azure.NotificationHubs`，并单击“安装”  。 这会安装通知中心库，以便从后端发送通知。
-2. 在后端的 Visual Studio 项目中，依次打开“控制器” **“TodoItemController.cs”。**  >   在文件的顶部，添加以下 `using` 语句：
+2. 在后端的 Visual Studio 项目中，依次打开“控制器” > “TodoItemController.cs”。 在文件的顶部，添加以下 `using` 语句：
 
     ```csharp
     using Microsoft.Azure.Mobile.Server.Config;

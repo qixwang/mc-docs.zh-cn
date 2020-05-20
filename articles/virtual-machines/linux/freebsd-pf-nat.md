@@ -35,7 +35,7 @@ Azure 资源管理器模板设置一个使用 PF 执行 NAT/重定向的 FreeBSD
 ![pf_topology](./media/freebsd-pf-nat/pf_topology.jpg)
 
 ### <a name="deploy-through-azure-cli"></a>通过 Azure CLI 进行部署
-需要安装最新版 [Azure CLI](https://docs.azure.cn/cli/install-az-cli2?view=azure-cli-latest)，并已使用 [az login](https://docs.azure.cn/cli/reference-index?view=azure-cli-latest#az-login) 登录 Azure 帐户。 使用 [az group create](https://docs.azure.cn/cli/group?view=azure-cli-latest#az-group-create) 创建资源组。 以下示例在 `myResourceGroup` 位置创建名为 `China North` 的资源组。
+需要安装最新版 [Azure CLI](https://docs.azure.cn/cli/install-az-cli2?view=azure-cli-latest)，并已使用 [az login](https://docs.azure.cn/cli/reference-index?view=azure-cli-latest#az-login) 登录 Azure 帐户。 使用 [az group create](https://docs.azure.cn/cli/group?view=azure-cli-latest#az-group-create) 创建资源组。 以下示例在 `China North` 位置创建名为 `myResourceGroup` 的资源组。
 
 [!INCLUDE [azure-cli-2-azurechinacloud-environment-parameter](../../../includes/azure-cli-2-azurechinacloud-environment-parameter.md)]
 
@@ -43,7 +43,7 @@ Azure 资源管理器模板设置一个使用 PF 执行 NAT/重定向的 FreeBSD
 az group create --name myResourceGroup --location chinanorth
 ```
 
-接下来，使用 [az group deployment create](https://github.com/Azure/azure-quickstart-templates/tree/master/pf-freebsd-setup) 部署模板 [pf-freebsd-setup](https://docs.azure.cn/cli/group/deployment?view=azure-cli-latest#az-group-deployment-create)。 在相同路径下下载 [azuredeploy.parameters.json](https://github.com/Azure/azure-quickstart-templates/blob/master/pf-freebsd-setup/azuredeploy.parameters.json)，并定义自己的资源值，如 `adminPassword`、`networkPrefix` 和 `domainNamePrefix`。 
+接下来，使用 [az group deployment create](https://docs.azure.cn/cli/group/deployment?view=azure-cli-latest#az-group-deployment-create) 部署模板 [pf-freebsd-setup](https://github.com/Azure/azure-quickstart-templates/tree/master/pf-freebsd-setup)。 在相同路径下下载 [azuredeploy.parameters.json](https://github.com/Azure/azure-quickstart-templates/blob/master/pf-freebsd-setup/azuredeploy.parameters.json)，并定义自己的资源值，如 `adminPassword`、`networkPrefix` 和 `domainNamePrefix`。 
 
 ```azurecli
 az group deployment create --resource-group myResourceGroup --name myDeploymentName \

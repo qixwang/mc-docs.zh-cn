@@ -72,7 +72,7 @@ az ad sp list --display-name "{name}" --query [].objectId --output tsv
 az role assignment create --role <role_name_or_id> --assignee <assignee> --resource-group <resource_group>
 ```
 
-以下示例将“虚拟机参与者”角色  分配给 *pharma-sales\@ 资源组范围内的* patlong*contoso.com* 用户：
+以下示例将“虚拟机参与者”角色分配给 *pharma-sales* 资源组范围内的 *patlong\@contoso.com* 用户：
 
 ```azurecli
 az role assignment create --role "Virtual Machine Contributor" --assignee patlong@contoso.com --resource-group pharma-sales
@@ -97,7 +97,7 @@ az role assignment create --role "Virtual Machine Contributor" --assignee patlon
 az role assignment create --role <role_id> --assignee <assignee> --resource-group <resource_group>
 ```
 
-以下示例将[“虚拟机参与者”角色](built-in-roles.md#virtual-machine-contributor)分配给 *pharma-sales\@ 资源组范围内的* patlong*contoso.com* 用户。 若要获取唯一的角色 ID，可以使用 [az role definition list](/cli/role/definition#az-role-definition-list) 命令，也可以参阅 [Azure 资源的内置角色](built-in-roles.md)。
+以下示例将[“虚拟机参与者”角色](built-in-roles.md#virtual-machine-contributor)分配给 *pharma-sales* 资源组范围内的 *patlong\@contoso.com* 用户。 若要获取唯一的角色 ID，可以使用 [az role definition list](/cli/role/definition#az-role-definition-list) 命令，也可以参阅 [Azure 资源的内置角色](built-in-roles.md)。
 
 ```azurecli
 az role assignment create --role 9980e02c-c2be-4d73-94e8-173b1dc7cf3c --assignee patlong@contoso.com --resource-group pharma-sales
@@ -121,7 +121,7 @@ az role assignment create --role Reader --assignee-object-id 22222222-2222-2222-
 
 若要为组添加角色分配，请使用 [az role assignment create](/cli/role/assignment#az-role-assignment-create)。 有关如何获取组的对象 ID 的信息，请参阅[获取对象 ID](#get-object-ids)。
 
-以下示例将“虚拟机参与者”角色  分配给名为 *pharma-sales-project-network* 的虚拟网络的资源范围内 ID 为 22222222-2222-2222-2222-222222222222 的“Ann Mack 团队”组  。
+以下示例将“虚拟机参与者”角色分配给名为 *pharma-sales-project-network* 的虚拟网络的资源范围内 ID 为 22222222-2222-2222-2222-222222222222 的“Ann Mack 团队”组。
 
 ```azurecli
 az role assignment create --role "Virtual Machine Contributor" --assignee-object-id 22222222-2222-2222-2222-222222222222 --scope /subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/pharma-sales/providers/Microsoft.Network/virtualNetworks/pharma-sales-project-network
@@ -179,7 +179,7 @@ az role assignment create --role "Billing Reader" --assignee alain@example.com -
 az role assignment create --role <role_name_or_id> --assignee-object-id <assignee_object_id> --assignee-principal-type <assignee_principal_type> --resource-group <resource_group> --scope </subscriptions/subscription_id>
 ```
 
-以下示例将“虚拟机参与者”  角色分配给“pharma-sales”  资源组范围内的 msi-test  托管标识：
+以下示例将“虚拟机参与者”角色分配给“pharma-sales”资源组范围内的 msi-test 托管标识：
 
 ```azurecli
 az role assignment create --role "Virtual Machine Contributor" --assignee-object-id 33333333-3333-3333-3333-333333333333 --assignee-principal-type ServicePrincipal --resource-group pharma-sales
@@ -193,7 +193,7 @@ az role assignment create --role "Virtual Machine Contributor" --assignee-object
 az role assignment delete --assignee <assignee> --role <role_name_or_id> --resource-group <resource_group>
 ```
 
-以下示例在 *pharma-sales* 资源组上从 *patlong\@contoso.com* 用户删除“虚拟机参与者”角色分配  ：
+以下示例在 *pharma-sales* 资源组上从 *patlong\@contoso.com* 用户删除“虚拟机参与者”角色分配：
 
 ```azurecli
 az role assignment delete --assignee patlong@contoso.com --role "Virtual Machine Contributor" --resource-group pharma-sales

@@ -82,7 +82,7 @@ mvn archetype:generate -DgroupId=com.azure.ams -DartifactId=testAzureApp -Darche
 
 ## <a name="connect-to-the-java-client"></a>连接到 Java 客户端
 
-1. 打开 `App.java` 下的 `src\main\java\com\azure\ams` 文件，确保包包括在顶部：
+1. 打开 `src\main\java\com\azure\ams` 下的 `App.java` 文件，确保包包括在顶部：
 
     ```java
     package com.azure.ams;

@@ -38,7 +38,7 @@ ms.locfileid: "77028342"
 1. 转到[https://connect.qq.com/index.html](https://connect.qq.com/index.html)。
 1. 单击“应用管理”  (app management)。
 1. 选择“创建应用”  (create app)，然后输入所需的信息。
-1. 在“授权回调域”`https://your-tenant-name.b2clogin.cn/your-tenant-name}.partner.onmschina.cn/oauth2/authresp` **(callback URL) 中输入** 。 例如，如果 `tenant_name` 是 contoso，请将 URL 设置为 `https://contoso.b2clogin.cn/contoso.partner.onmschina.cn/oauth2/authresp`。
+1. 在“授权回调域”(callback URL) 中输入 `https://your-tenant-name.b2clogin.cn/your-tenant-name}.partner.onmschina.cn/oauth2/authresp`。 例如，如果 `tenant_name` 是 contoso，请将 URL 设置为 `https://contoso.b2clogin.cn/contoso.partner.onmschina.cn/oauth2/authresp`。
 1. 选择“创建应用”  (create app)。
 1. 在确认页上选择“应用管理”  (app management) 返回应用管理页。
 1. 选择刚刚创建的应用旁边的“查看”  (view)。

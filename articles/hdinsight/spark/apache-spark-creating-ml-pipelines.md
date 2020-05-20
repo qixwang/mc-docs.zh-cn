@@ -96,7 +96,7 @@ pipeline = Pipeline(stages=[tokenizer, hashingTF, lr])
 model = pipeline.fit(training)
 ```
 
-若要查看由 `words` 和 `features` 转换器添加的新的 `Tokenizer` 和 `HashingTF` 列以及 `LogisticRegression` 估算器示例，在原始数据帧上运行 `PipelineModel.transform()` 方法。 在生产代码中，下一步为传入测试数据帧，以验证培训。
+若要查看由 `Tokenizer` 和 `HashingTF` 转换器添加的新的 `words` 和 `features` 列以及 `LogisticRegression` 估算器示例，在原始数据帧上运行 `PipelineModel.transform()` 方法。 在生产代码中，下一步为传入测试数据帧，以验证培训。
 
 ```python
 peek = model.transform(training)

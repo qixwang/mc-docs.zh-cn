@@ -23,7 +23,7 @@ ms.locfileid: "75631427"
 
 <!--Not Available on local Shell from the Azure portal, or-->
 
-以下示例介绍了如何对名为 `PrivateEndpointNetworkPolicies`myVirtualNetwork*的虚拟网络禁用*，此时*默认*子网托管在名为 *myResourceGroup* 的资源组中。
+以下示例介绍了如何对名为 *myVirtualNetwork* 的虚拟网络禁用 `PrivateEndpointNetworkPolicies`，此时*默认*子网托管在名为 *myResourceGroup* 的资源组中。
 
 ## <a name="using-azure-powershell"></a>使用 Azure PowerShell
 本部分介绍如何使用 Azure PowerShell 禁用子网专用终结点策略。

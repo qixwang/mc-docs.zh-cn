@@ -86,7 +86,7 @@ ms.locfileid: "77067734"
     
     解决方法：修改分区分发策略，或尝试 [EventHubClient.Send(eventDataWithOutPartitionKey)](/dotnet/api/microsoft.servicebus.messaging.eventhubclient) 可能会有所帮助。
 
-2. 事件中心命名空间没有足够的吞吐量单位（可以在 [Azure 门户](https://portal.azure.cn)中检查事件中心命名空间窗口中的“指标”  屏幕来确认）。 门户显示聚合（1 分钟）的信息，但我们会实时测量吞吐量，因此它只是一个估计值。
+2. 事件中心命名空间没有足够的吞吐量单位（可以在 [Azure 门户](https://portal.azure.cn)中检查事件中心命名空间窗口中的“指标”屏幕来确认）。 门户显示聚合（1 分钟）的信息，但我们会实时测量吞吐量，因此它只是一个估计值。
 
     解决方法：增加命名空间上的吞吐量单位可有所帮助。 可在门户上的事件中心命名空间屏幕的“缩放”  窗口中执行此操作。 或者，可以使用[自动膨胀](event-hubs-auto-inflate.md)。
 

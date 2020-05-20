@@ -135,7 +135,7 @@ datadrift_contribution|导致偏移的特征的重要性。|
 
 * 使用 `RunDetails`[Jupyter 小组件](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py)。
 * 针对任何 `datadrift` 运行对象使用 [`get_metrics()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py#get-metrics-name-none--recursive-false--run-type-none--populate-false-) 函数。
-* 在 [Azure 机器学习工作室](https://ml.azure.com)中工作区的“模型”部分查看指标。 
+* 在 [Azure 机器学习工作室](https://ml.azure.com)中工作区的“模型”部分查看指标。
 
 以下 Python 示例演示如何绘制相关数据偏移指标的图形。 可以使用返回的指标生成自定义可视化效果：
 
@@ -160,7 +160,7 @@ datadrift.enable_schedule()
 datadrift.disable_schedule()
 ```
 
-在 [Azure 机器学习工作室](https://ml.azure.com)中工作区的“详细信息”选项卡上的“模型”下，可以看到数据偏移检测器的配置。  
+在 [Azure 机器学习工作室](https://ml.azure.com)中工作区的“详细信息”选项卡上的“模型”下，可以看到数据偏移检测器的配置。
 
 [![Azure 机器学习工作室数据偏移](./media/how-to-monitor-data-drift/drift-config.png)](media/how-to-monitor-data-drift/drift-config-expanded.png)
 

@@ -72,7 +72,7 @@ PUT https://management.chinacloudapi.cn/subscriptions/{subscription-id}/resource
 | properties.osProfile       |          | [OSProfile](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#osprofile)             | 指定虚拟机的操作系统设置。 |
 | properties.networkProfile  |          | [NetworkProfile](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#networkprofile)   | 指定虚拟机的网络接口。 |
 
-下面是一个示例请求正文。 请确保在 `{computerName}` 和 `{name}` 参数中指定 VM 名称，在 `networkInterfaces` 下指定你创建的网络接口的名称，在 `adminUsername` 和 `path` 中指定用户名，在  *中指定 SSH 密钥的公共*`~/.ssh/id_rsa.pub`部分（例如位于 `keyData` 中）。 你可能希望更改的其他参数包括 `location` 和 `vmSize`。  
+下面是一个示例请求正文。 请确保在 `{computerName}` 和 `{name}` 参数中指定 VM 名称，在 `networkInterfaces` 下指定你创建的网络接口的名称，在 `adminUsername` 和 `path` 中指定用户名，在 `keyData` 中指定 SSH 密钥的公共部分（例如位于 `~/.ssh/id_rsa.pub` 中）。 你可能希望更改的其他参数包括 `location` 和 `vmSize`。  
 
 ```json
 {

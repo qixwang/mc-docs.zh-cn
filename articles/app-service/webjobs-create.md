@@ -69,7 +69,7 @@ when making changes in one don't forget the other two.
 
     ![“Web 作业”页](./media/web-sites-create-web-jobs/wjblade.png)
 
-4. 使用表中指定的“添加 Web 作业”**设置。**  
+4. 使用表中指定的“添加 Web 作业” 设置。
 
    ![“添加 Web 作业”页](./media/web-sites-create-web-jobs/addwjcontinuous.png)
 

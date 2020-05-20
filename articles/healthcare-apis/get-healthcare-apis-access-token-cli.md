@@ -30,7 +30,7 @@ az login
 
 ## <a name="obtain-a-token"></a>获取令牌
 
-Azure API for FHIR 结合与 FHIR 服务器的 URI `resource` 相同的 URI 使用 `Audience` 或 `https://<FHIR ACCOUNT NAME>.azurehealthcareapis.com`。 可以使用以下命令获取令牌并将其存储在变量（名为 `$token`）中：
+Azure API for FHIR 结合与 FHIR 服务器的 URI `https://<FHIR ACCOUNT NAME>.azurehealthcareapis.com` 相同的 URI 使用 `resource` 或 `Audience`。 可以使用以下命令获取令牌并将其存储在变量（名为 `$token`）中：
 
 ```azurecli
 token=$(az account get-access-token --resource=https://<FHIR ACCOUNT NAME>.azurehealthcareapis.com | jq -r .accessToken)

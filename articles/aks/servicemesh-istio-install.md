@@ -24,7 +24,7 @@ ms.locfileid: "80517006"
 > [!NOTE]
 > 以下说明引用 Istio 版本 `1.4.0`。
 >
-> Istio 团队已针对 Kubernetes 版本 `1.4.x`、`1.13` 和 `1.14` 测试了 `1.15` 版本。 可以在 [GitHub - Istio 版本][istio-github-releases]中找到其他 Istio 版本，在 [Istio 新闻][istio-release-notes]中找到有关每个版本的信息，在[一般的 Istio 常见问题解答][istio-faq]中找到支持的 Kubernetes 版本。
+> Istio 团队已针对 Kubernetes 版本 `1.13`、`1.14` 和 `1.15` 测试了 `1.4.x` 版本。 可以在 [GitHub - Istio 版本][istio-github-releases]中找到其他 Istio 版本，在 [Istio 新闻][istio-release-notes]中找到有关每个版本的信息，在[一般的 Istio 常见问题解答][istio-faq]中找到支持的 Kubernetes 版本。
 
 在本文中，学习如何：
 
@@ -67,7 +67,7 @@ ms.locfileid: "80517006"
 
 我们将安装 [Grafana][grafana] 和 [Kiali][kiali] 作为 Istio 安装的一部分。 Grafana 提供分析和监视仪表板，Kiali 提供服务网格观察仪表板。 在设置中，上述每个组件都需要凭据，必须以[机密][kubernetes-secrets]的形式提供这些凭据。
 
-在安装 Istio 组件之前，必须为 Grafana 和 Kiali 创建机密。 需要将这些机密安装到 Istio 将使用的 `istio-system` 命名空间中，因此我们还需要创建该命名空间。 在通过 `--save-config` 创建命名空间时，需要使用 `kubectl create` 选项，以便 Istio 安装程序将来可以在此对象上运行 `kubectl apply`。
+在安装 Istio 组件之前，必须为 Grafana 和 Kiali 创建机密。 需要将这些机密安装到 Istio 将使用的 `istio-system` 命名空间中，因此我们还需要创建该命名空间。 在通过 `kubectl create` 创建命名空间时，需要使用 `--save-config` 选项，以便 Istio 安装程序将来可以在此对象上运行 `kubectl apply`。
 
 ```console
 kubectl create namespace istio-system --save-config

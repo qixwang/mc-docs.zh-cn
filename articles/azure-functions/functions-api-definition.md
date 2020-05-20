@@ -56,9 +56,9 @@ Azure Functions 中的 OpenAPI 2.0（以前称为 Swagger）元数据支持一�
 
 |Swagger.json|门户 UI|Function.json|
 |:----|:-----|:-----|
-|[主机](https://swagger.io/specification/#fixed-fields-15)|“Function App 设置” **“应用服务设置”** “概述” > “URL”   >    >  |*不存在*
-|[路径](https://swagger.io/specification/#paths-object-29)|“集成” **“选择 HTTP 方法”**  >  |绑定：路由
-|[路径项](https://swagger.io/specification/#path-item-object-32)|“集成” **“路由模板”**  >  |绑定︰方法
+|[主机](https://swagger.io/specification/#fixed-fields-15)|“Function App 设置” > “应用服务设置” > “概述” > “URL”|*不存在*
+|[路径](https://swagger.io/specification/#paths-object-29)|“集成” > “选择 HTTP 方法”|绑定：路由
+|[路径项](https://swagger.io/specification/#path-item-object-32)|“集成” > “路由模板”|绑定︰方法
 |[安全性](https://swagger.io/specification/#security-scheme-object-112)|**“键”**|*不存在*|
 
 > [!NOTE]

@@ -18,7 +18,7 @@ ms.locfileid: "71059591"
 ---
 [!INCLUDE [resource group intro text](resource-group.md)]
 
-在 Azure CLI 中，使用 [`az group create`](/cli/group?view=azure-cli-latest#az-group-create) 命令创建资源组。 以下示例在“中国北部”  位置创建名为“myResourceGroup”  的资源组。 要查看“免费”层中应用服务支持的所有位置，请运行  [ 命令。`az appservice list-locations --sku FREE`](/cli/appservice?view=azure-cli-latest#az-appservice-list-locations)
+在 Azure CLI 中，使用 [`az group create`](/cli/group?view=azure-cli-latest#az-group-create) 命令创建资源组。 以下示例在“中国北部”位置创建名为“myResourceGroup”的资源组。 要查看“免费”层中应用服务支持的所有位置，请运行 [`az appservice list-locations --sku FREE`](/cli/appservice?view=azure-cli-latest#az-appservice-list-locations) 命令。
 
 ```azurecli
 az group create --name myResourceGroup --location "china north"

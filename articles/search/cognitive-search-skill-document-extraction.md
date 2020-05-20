@@ -37,7 +37,7 @@ Microsoft.Skills.Util.DocumentExtractionSkill
 | 输入            | 允许的值 | 说明 |
 |-----------------|----------------|-------------|
 | `parsingMode`   | `default` <br/> `text` <br/> `json`  | 对于从非纯文本或 json 文件进行的文档提取，请设置为 `default`。 若要提高针对纯文本文件的性能，请设置为 `text`。 若要从 json 文件中提取结构化内容，请设置为 `json`。 如果未显式定义 `parsingMode`，则它将设置为 `default`。 |
-| `dataToExtract` | `contentAndMetadata` <br/> `allMetadata` | 若要提取每个文件的所有元数据和文本内容，请设置为 `contentAndMetadata`。 若要仅提取`allMetadata`特定于内容类型的元数据[（例如，仅 .png 文件独有的元数据），请设置为 ](search-howto-indexing-azure-blob-storage.md#ContentSpecificMetadata)。 如果未显式定义 `dataToExtract`，则它将设置为 `contentAndMetadata`。 |
+| `dataToExtract` | `contentAndMetadata` <br/> `allMetadata` | 若要提取每个文件的所有元数据和文本内容，请设置为 `contentAndMetadata`。 若要仅提取[特定于内容类型的元数据](search-howto-indexing-azure-blob-storage.md#ContentSpecificMetadata)（例如，仅 .png 文件独有的元数据），请设置为 `allMetadata`。 如果未显式定义 `dataToExtract`，则它将设置为 `contentAndMetadata`。 |
 | `configuration` | 请参阅下文。 | 可选参数的字典，这些参数用于调整文档提取执行方式。 有关支持的配置属性的说明，请参阅下表。 |
 
 | 配置参数   | 允许的值 | 说明 |

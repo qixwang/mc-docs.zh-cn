@@ -59,7 +59,7 @@ Azure AD 中的对象最多可以有 100 个目录扩展属性。 最大长度�
 
 请确保选择“所有应用程序”  以查看此应用。
 
-这些属性的前面带有扩展名 **{ApplicationId}\_ 前缀\_** 。 对于 Azure AD 租户中的所有属性，ApplicationId 具有相同的值。 本主题中的所有其他方案都需要此值。
+这些属性的前面带有扩展名 \_{ApplicationId}\_ 前缀。 对于 Azure AD 租户中的所有属性，ApplicationId 具有相同的值。 本主题中的所有其他方案都需要此值。
 
 ## <a name="viewing-attributes-using-the-microsoft-graph-api"></a>使用 Microsoft Graph API 查看属性
 

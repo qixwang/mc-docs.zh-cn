@@ -155,7 +155,7 @@ print(package.location)
     az appservice plan create --name myplanname --resource-group myresourcegroup --sku B1 --is-linux
     ```
 
-    在此示例中，使用了基本定价层 ( __)__ `--sku B1`。
+    在此示例中，使用了基本定价层 (`--sku B1`)。
 
     > [!IMPORTANT]
     > Azure 机器学习创建的映像使用 Linux，因此需要使用 `--is-linux` 参数。

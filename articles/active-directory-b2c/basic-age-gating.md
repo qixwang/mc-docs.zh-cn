@@ -103,7 +103,7 @@ Azure AD B2C 使用用户输入的信息来确定他们是否是未成年人。 
 1. 创建启用了年龄限制的用户流。
 2. 创建用户流后，在菜单中选择“属性”  。
 3. 在“年龄限制”部分，选择“已启用”   。
-4. 然后确定如何管理标识为未成年人的用户。 对于“注册或登录”，可以选择 **或**`Allow minors to access your application``Block minors from accessing your application`。 如果选择阻止未成年人，则选择 `Send a JSON back to the application` 或 `Show an error message`。
+4. 然后确定如何管理标识为未成年人的用户。 对于“注册或登录”，可以选择 `Allow minors to access your application` 或 `Block minors from accessing your application`。 如果选择阻止未成年人，则选择 `Send a JSON back to the application` 或 `Show an error message`。
 
 <!-- Update_Description: link update -->
 

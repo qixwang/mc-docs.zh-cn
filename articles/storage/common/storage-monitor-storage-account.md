@@ -31,11 +31,11 @@ ms.locfileid: "78412614"
 ## <a name="configure-monitoring-for-a-storage-account"></a>为存储帐户配置监视
 
 1. 在 [Azure 门户](https://portal.azure.cn)中选择“存储帐户”，并单击存储帐户名称打开帐户仪表板。 
-1. 在菜单边栏选项卡的“监视”  部分选择“诊断”  。
+1. 在菜单边栏选项卡的“监视”部分选择“诊断”。
 
     ![MonitoringOptions](./media/storage-monitor-storage-account/storage-enable-metrics-00.png)
 
-1. 选择要监视的每个服务  的指标数据类型  ，以及数据的保留策略  。 还可以通过将“状态”  设置为“关闭”  来禁用监视。
+1. 选择要监视的每个**服务**的指标数据**类型**，以及数据的**保留策略**。 还可以通过将“状态”  设置为“关闭”  来禁用监视。
 
     ![MonitoringOptions](./media/storage-monitor-storage-account/storage-enable-metrics-01.png)
 
@@ -107,11 +107,11 @@ ms.locfileid: "78412614"
 
 可将任何存储帐户的 Azure 存储指标图表添加到门户仪表板。
 
-1. 在 [Azure 门户](https://portal.azure.cn)中查看仪表板时，单击“编辑仪表板”。 
-1. 在“磁贴库”  中，选择“查找磁贴依据”   > “类型”  。
-1. 选择“类型”   > “存储帐户”  。
+1. 在 [Azure 门户](https://portal.azure.cn)中查看仪表板的同时单击“编辑仪表板”。
+1. 在“磁贴库”中，选择“查找磁贴，依据” > “类型”。
+1. 选择“类型” > “存储帐户”。
 1. 在“资源”  中，选择要将其指标添加到仪表板的存储帐户。
-1. 选择“类别”   > “监视”  。
+1. 选择“类别” > “监视”。
 1. 将图表磁贴拖放到要显示的指标所在的仪表板中。 针对要在仪表板上显示的所有指标重复上述步骤。 在下图中，为了方便演示，已突出显示“Blob - 请求总数”图表，但可将所有图表放置在仪表板上。
 
    ![在 Azure 门户中的磁贴库](./media/storage-monitor-storage-account/storage-customize-dashboard.png)
@@ -128,11 +128,11 @@ ms.locfileid: "78412614"
 >
 
 1. 在 [Azure 门户](https://portal.azure.cn)中选择“存储帐户”  ，然后单击存储帐户的名称打开存储帐户边栏选项卡。
-1. 在菜单边栏选项卡的“监视(经典)”  部分中选择“诊断设置(经典)”  。
+1. 在菜单边栏选项卡的“监视(经典)”部分中选择“诊断设置(经典)”。
 
     ![Azure 门户中“监视”下面的诊断菜单项。](./media/storage-monitor-storage-account/storage-enable-metrics-00.png)
 
-1. 确保“状态”  设置为“打开”  ，选择要为其启用日志记录的服务  。
+1. 确保“状态”设置为“打开”，选择要为其启用日志记录的**服务**。
 
     ![在 Azure 门户中配置日志记录。](./media/storage-monitor-storage-account/enable-diagnostics.png)
 1. 单击“保存”  。

@@ -47,7 +47,7 @@ ms.locfileid: "79295887"
 ## <a name="determine-when-to-use-import-and-export-techniques-instead-of-a-dump-and-restore"></a>确定何时使用导入和导出技术（而不是转储和还原技术）
 在以下情况下，使用 MySQL 工具将数据库导入和导出到 Azure MySQL 数据库中。 而在其他情况下，使用[转储和还原](concepts-migrate-dump-restore.md)可能更有益。 
 
-- 需要有选择性地选择要从现有 MySQL 数据库导入到 Azure MySQL 数据库的几个表时，最好使用导入和导出技术。  这样做，可以在迁移过程中省略任何不需要的表，从而节省时间和资源。 例如，使用带有 `--include-tables`mysqlpump`--exclude-tables` 的 [ 或 ](https://dev.mysql.com/doc/refman/5.7/en/mysqlpump.html#option_mysqlpump_include-tables) switch 语句以及带有 `--tables`mysqldump[ 的 ](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html#option_mysqldump_tables) switch 语句。
+- 需要有选择性地选择要从现有 MySQL 数据库导入到 Azure MySQL 数据库的几个表时，最好使用导入和导出技术。  这样做，可以在迁移过程中省略任何不需要的表，从而节省时间和资源。 例如，使用带有 [mysqlpump](https://dev.mysql.com/doc/refman/5.7/en/mysqlpump.html#option_mysqlpump_include-tables) 的 `--include-tables` 或 `--exclude-tables` switch 语句以及带有 [mysqldump](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html#option_mysqldump_tables) 的 `--tables` switch 语句。
 - 移动表以外的数据库对象时，显式创建这些对象。 包括约束（主键、外键、索引）、视图、函数、过程、触发器和想要迁移的任何其他数据库对象。
 - 从 MySQL 数据库以外的外部数据源迁移数据时，使用 [mysqlimport](https://dev.mysql.com/doc/refman/5.7/en/mysqlimport.html) 创建平面文件并导入它们。
 

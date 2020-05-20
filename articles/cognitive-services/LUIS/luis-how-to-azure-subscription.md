@@ -88,13 +88,13 @@ ms.locfileid: "80342417"
 
     此时会打开一个浏览器，让你可以选择正确的帐户并提供身份验证。
 
-1. 在名为 **的现有资源组中为** 区域创建一个类型为 `LUIS.Authoring`、名称为 `my-luis-authoring-resource` 的 _LUIS 创作资源_。`my-resource-group``China East` 
+1. 在名为 `my-resource-group` 的现有资源组中为 `China East` 区域创建一个类型为 `LUIS.Authoring`、名称为 `my-luis-authoring-resource` 的 **LUIS 创作资源**。 
 
     ```console
     az cognitiveservices account create -n my-luis-authoring-resource -g my-resource-group --kind LUIS.Authoring --sku F0 -l chinaeast --yes
     ```
 
-1. 在名为 **的现有资源组中为** 区域创建一个类型为 `LUIS`、名称为 `my-luis-prediction-resource` 的 _LUIS 预测终结点资源_。`my-resource-group``chinaeast` 如果需要比免费层更高的吞吐量，请将 `F0` 更改为 `S0`。 详细了解[定价层和吞吐量](luis-boundaries.md#key-limits)。
+1. 在名为 `my-resource-group` 的现有资源组中为 `chinaeast` 区域创建一个类型为 `LUIS`、名称为 `my-luis-prediction-resource` 的 **LUIS 预测终结点资源**。 如果需要比免费层更高的吞吐量，请将 `F0` 更改为 `S0`。 详细了解[定价层和吞吐量](luis-boundaries.md#key-limits)。
 
     ```console
     az cognitiveservices account create -n my-luis-prediction-resource -g my-resource-group --kind LUIS --sku F0 -l chinaeast --yes

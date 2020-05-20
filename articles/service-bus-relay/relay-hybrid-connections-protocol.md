@@ -345,7 +345,7 @@ FEFEFEFEFEFEFEFEFEFEF...
 
 响应是名为“response”的 JSON 对象。 正文内容的处理规则与 `request` 消息的处理方式相同，并基于 `body` 属性。
 
-* **requestId** – 字符串。 必需。 正在响应的 `id` 消息的 `request` 属性值。
+* **requestId** – 字符串。 必需。 正在响应的 `request` 消息的 `id` 属性值。
 * **statusCode** – 数字。 必需。 指示通知结果的数字 HTTP 状态代码。 允许 [RFC7231 第 6 部分](https://tools.ietf.org/html/rfc7231#section-6)所述的所有状态代码，但 [502“错误的网关”](https://tools.ietf.org/html/rfc7231#section-6.6.3)和 [504“网关超时”](https://tools.ietf.org/html/rfc7231#section-6.6.5)除外。
 * **statusDescription** - 字符串。 可选。 [RFC7230 第 3.1.2 部分](https://tools.ietf.org/html/rfc7230#section-3.1.2)所述的 HTTP 状态代码原因短语
 * **responseHeaders** – 要在外部 HTTP 回复中设置的 HTTP 标头。
@@ -374,7 +374,7 @@ FEFEFEFEFEFEFEFEFEFEF...
 
 对于超过 64 kB 的响应，必须通过会合套接字传送响应。 此外，如果请求超过 64 kB，并 `request` 仅包含地址字段，则必须建立会合套接字以获取 `request`。 建立会合套接字后，必须通过持久保留的会合套接字传送对该相应客户端的响应，以及来自该相应客户端的后续请求。
 
-`address` 中的 `request` URL 必须原样使用，用于建立会合套接字，但要包含以下参数：
+`request` 中的 `address` URL 必须原样使用，用于建立会合套接字，但要包含以下参数：
 
 | 参数      | 必选 | 说明
 | -------------- | -------- | -------------------------------------------------------------------
@@ -430,7 +430,7 @@ wss://{namespace-address}/$hc/{path}?sb-hc-action=...&sb-hc-id=...&sbc-hc-token=
 
 _namespace-address_ 是托管混合连接的 Azure 中继命名空间的完全限定域名，通常格式为 `{myname}.servicebus.windows.net`。
 
-请求可以包含任意其他 HTTP 头，包括应用程序定义的头。 所有提供的头均流向侦听器并且可在“接受”控制消息的 `connectHeader` 对象上找到  。
+请求可以包含任意其他 HTTP 头，包括应用程序定义的头。 所有提供的头均流向侦听器并且可在 **accept** 控制消息的 `connectHeader` 对象上找到。
 
 查询字符串参数选项如下所示：
 
@@ -478,7 +478,7 @@ https://{namespace-address}/{path}?sbc-hc-token=...
 
 _namespace-address_ 是托管混合连接的 Azure 中继命名空间的完全限定域名，通常格式为 `{myname}.servicebus.windows.net`。
 
-请求可以包含任意其他 HTTP 头，包括应用程序定义的头。 提供的所有标头（RFC7230 中直接定义的标头除外，请参阅[请求消息](#Request message)）均流向侦听器并可在`requestHeader`请求**消息的**  对象上找到。
+请求可以包含任意其他 HTTP 头，包括应用程序定义的头。 提供的所有标头（RFC7230 中直接定义的标头除外，请参阅[请求消息](#Request message)）均流向侦听器并可在**请求**消息的 `requestHeader` 对象上找到。
 
 查询字符串参数选项如下所示：
 
@@ -488,7 +488,7 @@ _namespace-address_ 是托管混合连接的 Azure 中继命名空间的完全�
 
 也可以在 `ServiceBusAuthorization` 或 `Authorization` HTTP 标头中携带该令牌。 如果混合连接配置为允许匿名请求，则可以省略该令牌。
 
-由于服务实际上充当代理，因此，即使它不是真正的 HTTP 代理，也会添加 `Via` 标头，或批注符合 `Via`RFC7230 第 5.7.1 部分[的现有 ](https://tools.ietf.org/html/rfc7230#section-5.7.1) 标头。
+由于服务实际上充当代理，因此，即使它不是真正的 HTTP 代理，也会添加 `Via` 标头，或批注符合 [RFC7230 第 5.7.1 部分](https://tools.ietf.org/html/rfc7230#section-5.7.1)的现有 `Via` 标头。
 服务将中继命名空间主机名添加到 `Via`。
 
 | 代码 | 消息  | 说明                    |

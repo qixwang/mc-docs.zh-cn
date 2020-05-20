@@ -31,7 +31,7 @@ ms.locfileid: "77428763"
 ## <a name="convert-single-instance-vms"></a>转换单实例 VM
 本节介绍如何将单实例 Azure VM 从非托管磁盘转换为托管磁盘。 （如果 VM 位于可用性集中，请参阅下一节。） 
 
-1. 使用 [Stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm) cmdlet 解除分配 VM。 以下示例在名为 `myVM` 的资源组中解除分配名为 `myResourceGroup` 的 VM： 
+1. 使用 [Stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm) cmdlet 解除分配 VM。 以下示例在名为 `myResourceGroup` 的资源组中解除分配名为 `myVM` 的 VM： 
 
     ```powershell
     $rgName = "myResourceGroup"
@@ -49,7 +49,7 @@ ms.locfileid: "77428763"
 
 如果要转换为托管磁盘的 VM 位于可用性集中，则需要先将可用性集转换为托管可用性集。
 
-1. 使用 [Update-AzAvailabilitySet](https://docs.microsoft.com/powershell/module/az.compute/update-azavailabilityset) cmdlet 转换可用性集。 以下示例在名为 `myAvailabilitySet` 的资源组中更新名为 `myResourceGroup` 的可用性集：
+1. 使用 [Update-AzAvailabilitySet](https://docs.microsoft.com/powershell/module/az.compute/update-azavailabilityset) cmdlet 转换可用性集。 以下示例在名为 `myResourceGroup` 的资源组中更新名为 `myAvailabilitySet` 的可用性集：
 
     ```powershell
     $rgName = 'myResourceGroup'

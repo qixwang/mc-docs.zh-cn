@@ -51,7 +51,7 @@ ms.locfileid: "75856901"
 ## <a name="create-a-storage-container-and-upload-the-csv-input-file"></a>创建一个存储容器并上传 CSV 输入文件
 对于此步骤，可以使用任何 CSV 文件，例如从 GitHub 获取的文件。
 
-1. 在 Azure 门户中，单击“创建资源” **“存储”** “存储帐户” >    >   。
+1. 在 Azure 门户中，单击“创建资源” > “存储” > “存储帐户”。
 
 2. 提供一个名称（在本例中为 `samldemo`）。 该名称只能使用小写字母和数字，并且在 Azure 中必须唯一。 
 
@@ -59,7 +59,7 @@ ms.locfileid: "75856901"
 
     ![提供存储帐户详细信息](./media/stream-analytics-machine-learning-integration-tutorial/create-storage-account1.png)
 
-4. 在 Azure 门户中，选择存储帐户。 在存储帐户边栏选项卡中，单击“容器”，然后单击  “容器”以创建 blob 存储。 **+&nbsp;**
+4. 在 Azure 门户中，选择存储帐户。 在存储帐户边栏选项卡中，单击“容器”，然后单击**+“容器”以创建 blob 存储。&nbsp;**
 
     ![为输入创建 blob 存储容器](./media/stream-analytics-machine-learning-integration-tutorial/create-storage-account2.png)
 
@@ -118,7 +118,7 @@ ms.locfileid: "75856901"
 
 1. 转到 [Azure 门户](https://portal.azure.cn)。  
 
-2. 单击“创建资源” **“物联网”** “流分析作业” >    >   。 
+2. 单击“创建资源” > “物联网” > “流分析作业”。 
 
 3. 将作业命名为 `azure-sa-ml-demo`，指定一个订阅，指定一个现有资源组或新建一个资源组，然后为作业选择位置。
 
@@ -130,7 +130,7 @@ ms.locfileid: "75856901"
 
 1. 在创建作业后，在作业边栏选项卡中的“作业拓扑”下，单击“输入”选项   。    
 
-2. 在“输入”边栏选项卡中，单击“添加流输入” **“Blob 存储”**   > 
+2. 在“输入”边栏选项卡中，单击“添加流输入” >“Blob 存储”
 
 3. 使用以下值填写“Blob 存储”边栏选项卡  ：
 
@@ -151,7 +151,7 @@ ms.locfileid: "75856901"
 
 1. 在作业边栏选项卡中的“作业拓扑”下，单击“输出”选项   。  
 
-2. 在“输出”边栏选项卡中，单击“添加” **“Blob 存储”，然后添加别名为**  的输出   >  `datamloutput`。 
+2. 在“输出”边栏选项卡中，单击“添加” >“Blob 存储”，然后添加别名为 `datamloutput` 的输出。 
 
 3. 使用以下值填写“Blob 存储”边栏选项卡  ：
 
@@ -174,7 +174,7 @@ ms.locfileid: "75856901"
 
 1. 请确保具有之前在 Excel 工作簿中下载的 Web 服务 URL 和 API 密钥。
 
-2. 导航到作业边栏选项卡 >“函数” **“+ 添加”** “AzureML” >    >  
+2. 导航到作业边栏选项卡 >“函数” > “+ 添加” > “AzureML”
 
 3. 使用以下值填写“Azure 机器学习函数”边栏选项卡  ：
 
