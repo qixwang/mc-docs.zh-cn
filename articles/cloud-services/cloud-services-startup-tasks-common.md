@@ -119,13 +119,13 @@ EXIT %ERRORLEVEL%
 ```
 
 ## <a name="add-firewall-rules"></a>添加防火墙规则
-在 Azure 中，实际上有两个防火墙。 第一个防火墙控制虚拟机与外界之间的连接。 此防火墙由 [ServiceDefinition.csdef] 文件中的 [EndPoints] 元素控制。
+在 Azure 中，实际上有两个防火墙。 第一个防火墙控制虚拟机与外界之间的连接。 此防火墙由 [ServiceDefinition.csdef] 文件中的 [ServiceDefinition.csdef] 元素控制。
 
 第二个防火墙控制虚拟机与该虚拟机中的进程之间的连接。 可以通过 `netsh advfirewall firewall` 命令行工具控制此防火墙。
 
 Azure 将角色中启动的进程创建防火墙规则。 例如，启动服务或程序时，Azure 会自动创建必要的防火墙规则以允许该服务与 Internet 进行通信。 但是，如果创建的服务由角色外部的进程（例如，COM+ 服务或 Windows 计划任务）启动，则将需要手动创建防火墙规则以允许访问该服务。 可以通过使用启动任务来创建这些防火墙规则。
 
-创建防火墙规则的启动任务的 [executionContext][环境] 必须为 **elevated**。 将以下启动任务添加到 [ServiceDefinition.csdef] 文件。
+创建防火墙规则的启动任务的 [executionContext][任务] 必须为 **elevated**。 将以下启动任务添加到 [ServiceDefinition.csdef] 文件。
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -466,12 +466,12 @@ EXIT %ERRORLEVEL%
 ### <a name="set-executioncontext-appropriately-for-startup-tasks"></a>为启动任务适当地设置 executionContext
 为启动任务适当地设置权限。 有时启动任务必须以提升的权限运行，即使角色以普通权限运行，也是如此。
 
-[executionContext][环境] 属性将设置启动任务的权限级别。 使用 `executionContext="limited"` 意味着启动任务具有与角色相同的权限级别。 使用 `executionContext="elevated"` 意味着启动任务具有管理员权限，这会允许启动任务执行管理员任务，而无需向角色授予管理员权限。
+[executionContext][任务] 属性将设置启动任务的权限级别。 使用 `executionContext="limited"` 意味着启动任务具有与角色相同的权限级别。 使用 `executionContext="elevated"` 意味着启动任务具有管理员权限，这会允许启动任务执行管理员任务，而无需向角色授予管理员权限。
 
 需要提升的权限的启动任务示例是使用 **AppCmd.exe** 配置 IIS 的启动任务。 **AppCmd.exe** 需要 `executionContext="elevated"`。
 
 ### <a name="use-the-appropriate-tasktype"></a>使用适当的 taskType
-[taskType][环境] 属性决定了执行启动任务的方式。 有三个值：**simple**、**background** 和 **foreground**。 background 和 foreground 任务以异步方式启动，simple 任务以同步方式执行（一次一个）。
+[taskType][任务] 属性决定了执行启动任务的方式。 有三个值：**simple**、**background** 和 **foreground**。 background 和 foreground 任务以异步方式启动，simple 任务以同步方式执行（一次一个）。
 
 使用 **simple** 启动任务，可以设置顺序，让任务按照它们在 ServiceDefinition.csdef 文件中的列出顺序运行。 如果 **simple** 任务以非零退出代码结束，则启动过程将停止，并且角色不会启动。
 
@@ -501,10 +501,10 @@ EXIT %ERRORLEVEL%
 [创建和部署](cloud-services-how-to-create-deploy-portal.md)云服务包。
 
 [ServiceDefinition.csdef]: cloud-services-model-and-package.md#csdef
-[环境]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Task
+[任务]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Task
 [Startup]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Startup
 [Runtime]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Runtime
-[任务]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Environment
+[环境]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Environment
 [变量]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Variable
 [RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
 [RoleEnvironment]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.aspx

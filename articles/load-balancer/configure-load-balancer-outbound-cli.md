@@ -33,7 +33,7 @@ ms.locfileid: "74530648"
 
 使用 [az group create](/cli/group) 创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。
 
-以下示例在“chinaeast2”  位置创建名为“myresourcegroupoutbound”的资源组  ：
+以下示例在“chinaeast2”位置创建名为“myresourcegroupoutbound”的资源组：
 
 ```cli
   az group create \
@@ -41,7 +41,7 @@ ms.locfileid: "74530648"
     --location chinaeast2
 ```
 ## <a name="create-virtual-network"></a>创建虚拟网络
-使用 *az network vnet create* 在 *myresourcegroupoutbound* 中创建名为 *myvnetoutbound* 的虚拟网络，该虚拟网络包含名为 [mysubnetoutbound](/cli/network/vnet) 的子网。
+使用 [az network vnet create](/cli/network/vnet) 在 *myresourcegroupoutbound* 中创建名为 *myvnetoutbound* 的虚拟网络，该虚拟网络包含名为 *mysubnetoutbound* 的子网。
 
 ```cli
   az network vnet create \
@@ -131,7 +131,7 @@ ms.locfileid: "74530648"
 
 ### <a name="create-load-balancing-rule"></a>创建负载均衡规则
 
-负载均衡器规则定义传入流量的前端 IP 配置和后端池以接收流量，同时定义所需源和目标端口。 使用 *az network lb rule create* 创建负载均衡器规则 [myinboundlbrule](/cli/network/lb/rule?view=azure-cli-latest)，以便侦听前端池 *myfrontendinbound* 中的端口 80，并且将经过负载均衡的网络流量发送到也使用端口 80 的后端地址池 *bepool*。 
+负载均衡器规则定义传入流量的前端 IP 配置和后端池以接收流量，同时定义所需源和目标端口。 使用 [az network lb rule create](/cli/network/lb/rule?view=azure-cli-latest) 创建负载均衡器规则 *myinboundlbrule*，以便侦听前端池 *myfrontendinbound* 中的端口 80，并且将经过负载均衡的网络流量发送到也使用端口 80 的后端地址池 *bepool*。 
 
 >[!NOTE]
 >此负载均衡规则通过其 --disable-outbound-snat 参数禁用自动出站 (S)NAT。 出站 NAT 仅通过出站规则提供。

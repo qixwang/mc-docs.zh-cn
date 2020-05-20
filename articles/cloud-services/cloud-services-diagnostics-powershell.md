@@ -26,7 +26,7 @@ ms.locfileid: "72292426"
 可以使用 Azure 诊断扩展从云服务收集应用程序日志、性能计数器等诊断数据。 本文介绍如何使用 PowerShell 为云服务启用 Azure 诊断扩展。  有关本文所需的先决条件，请参阅[如何安装和配置 Azure PowerShell](../powershell-install-configure.md)。
 
 ## <a name="enable-diagnostics-extension-as-part-of-deploying-a-cloud-service"></a>在部署云服务过程中启用诊断扩展
-此方法适合持续集成类型的方案，在这些方案中可以在部署云服务的过程中启用诊断扩展。 创建新的云服务部署时，可以通过向 *New-AzureDeployment* cmdlet 传入 [ExtensionConfiguration](https://docs.microsoft.com/en-us/powershell/module/servicemanagement/azure/new-azuredeployment?view=azuresmps-3.7.0) 参数来启用诊断扩展。 *ExtensionConfiguration* 参数取值为可通过 [New-AzureServiceDiagnosticsExtensionConfig](https://docs.microsoft.com/en-us/powershell/module/servicemanagement/azure/new-azureservicediagnosticsextensionconfig?view=azuresmps-3.7.0) cmdlet 创建的诊断配置数组。
+此方法适合持续集成类型的方案，在这些方案中可以在部署云服务的过程中启用诊断扩展。 创建新的云服务部署时，可以通过向 [New-AzureDeployment](https://docs.microsoft.com/en-us/powershell/module/servicemanagement/azure/new-azuredeployment?view=azuresmps-3.7.0) cmdlet 传入 *ExtensionConfiguration* 参数来启用诊断扩展。 *ExtensionConfiguration* 参数取值为可通过 [New-AzureServiceDiagnosticsExtensionConfig](https://docs.microsoft.com/en-us/powershell/module/servicemanagement/azure/new-azureservicediagnosticsextensionconfig?view=azuresmps-3.7.0) cmdlet 创建的诊断配置数组。
 
 以下示例演示如何为某个云服务（其中的 WebRole 和 WorkerRole 拥有不同的诊断配置）启用诊断。
 
