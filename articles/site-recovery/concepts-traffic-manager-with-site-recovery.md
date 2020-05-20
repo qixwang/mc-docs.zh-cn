@@ -65,7 +65,7 @@ Azure 流量管理器的[加权](../traffic-manager/traffic-manager-configure-we
 
 对于此示例，我们假设**公司 C** 的所有应用程序基础结构在 Azure 中运行。 出于业务连续性和法规遵从的原因，**公司 C** 决定使用 Azure Site Recovery 来保护其应用程序。
 
-**公司 C** 使用公共终结点运行应用程序，希望在发生灾难时能够无缝将流量重定向到不同的 Azure 区域。 [公司 C](../traffic-manager/traffic-manager-configure-priority-routing-method.md) 客户可以通过**优先级**流量路由方法来轻松实现此故障转移模式。
+**公司 C** 使用公共终结点运行应用程序，希望在发生灾难时能够无缝将流量重定向到不同的 Azure 区域。 **公司 C** 客户可以通过[优先级](../traffic-manager/traffic-manager-configure-priority-routing-method.md)流量路由方法来轻松实现此故障转移模式。
 
 设置如下：
 - **公司 C** 创建[流量管理器配置文件](../traffic-manager/traffic-manager-create-profile.md)。

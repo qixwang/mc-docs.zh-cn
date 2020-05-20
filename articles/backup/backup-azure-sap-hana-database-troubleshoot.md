@@ -29,7 +29,7 @@ ms.locfileid: "79293456"
 | **错误消息**      | <span style="font-weight:normal">Azure 备份没有所需的角色权限，无法执行备份</span>    |
 | ---------------------- | ------------------------------------------------------------ |
 | 可能的原因     | 角色可能已被覆盖。                          |
-| **建议的操作** | 若要解决该问题，请运行“发现数据库”窗格中的脚本，或在[此处](https://aka.ms/scriptforpermsonhana)下载该脚本。  或者，将“SAP_INTERNAL_HANA_SUPPORT”角色添加到工作负荷备份用户 (AZUREWLBACKUPHANAUSER)。 |
+| **建议的操作** | 若要解决该问题，请运行“发现数据库”窗格中的脚本，或在[此处](https://aka.ms/scriptforpermsonhana)下载该脚本。 或者，将“SAP_INTERNAL_HANA_SUPPORT”角色添加到工作负荷备份用户 (AZUREWLBACKUPHANAUSER)。 |
 
 ### <a name="usererrorinopeninghanaodbcconnection"></a>UserErrorInOpeningHanaOdbcConnection
 

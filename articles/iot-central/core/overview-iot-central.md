@@ -61,7 +61,7 @@ IoT Central 是一个 IoT 应用程序平台，可减轻开发、管理和维护
 - 一个基于云的应用程序，它从设备接收遥测数据并使得你可以管理这些设备。
 - 运行自定义代码且连接到基于云的应用程序的多个设备。
 
-可以快速部署新的 IoT Central 应用程序，然后在浏览器中对其进行自定义以满足特定要求。 一开始可以使用普通的应用程序模板，或使用以[零售](../retail/overview-iot-central-retail-pnp.md)、[能源](../energy/overview-iot-central-energy.md)、[政府](../government/overview-iot-central-government.md)或[医疗保健](../healthcare/overview-iot-central-healthcare.md)行业为中心的某个应用程序模板。 
+可以快速部署新的 IoT Central 应用程序，然后在浏览器中对其进行自定义以满足特定要求。 一开始可以使用普通的应用程序模板，或使用以[零售](../retail/overview-iot-central-retail-pnp.md)、[能源](../energy/overview-iot-central-energy.md)、[政府](../government/overview-iot-central-government.md)或[医疗保健](../healthcare/overview-iot-central-healthcare.md)行业为中心的某个应用程序模板。
 
 作为解决方案构建者，你可以使用基于 Web 的工具为连接到应用程序的设备创建“设备模板”  。 设备模板是定义一种设备的特征和行为的蓝图，例如：
 
@@ -82,7 +82,7 @@ IoT Central 是一个 IoT 应用程序平台，可减轻开发、管理和维护
 可以使用 7 天免费试用版创建 IoT Central 应用程序，也可以使用标准定价计划。
 
 - 使用免费计划创建的应用程序在七天内是免费的，最多支持五台设备  。 在它们过期之前，随时可将其转换为使用标准定价计划。
-- 使用标准计划创建的应用程序按设备计费，你可以选择“标准 1”  或“标准 2”  定价计划，前两个设备是免费的  。 在 [Azure IoT Central 定价页](https://azure.microsoft.com/pricing/details/iot-central/)上详细了解免费和标准定价计划。
+- 使用标准计划创建的应用程序按设备计费，你可以选择“标准 1”或“标准 2”定价计划，前两个设备是免费的。 在 [Azure IoT Central 定价页](https://azure.microsoft.com/pricing/details/iot-central/)上详细了解免费和标准定价计划。
 
 ### <a name="create-device-templates"></a>创建设备模板
 
@@ -110,7 +110,7 @@ IoT Central 可以通过 [IoT 即插即用（预览版）](../../iot-pnp/overvie
 可以使用 7 天免费试用版创建 IoT Central 应用程序，也可以使用标准定价计划。
 
 - 使用免费计划创建的应用程序在七天内是免费的，最多支持五台设备  。 在它们过期之前，随时可将其转换为使用标准定价计划。
-- 使用标准计划创建的应用程序按设备计费，可以选择“标准 1”  或“标准 2”  定价计划，前两个设备是免费的  。 详细了解 [IoT Central 定价](https://aka.ms/iotcentral-pricing)。
+- 使用标准计划创建的应用程序按设备计费，可以选择“标准 1”或“标准 2”定价计划，前两个设备是免费的。 详细了解 [IoT Central 定价](https://aka.ms/iotcentral-pricing)。
 
 ## <a name="connect-your-devices"></a>连接数据
 

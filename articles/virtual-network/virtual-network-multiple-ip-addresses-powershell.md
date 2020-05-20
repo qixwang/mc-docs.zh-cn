@@ -307,7 +307,7 @@ ms.locfileid: "79292290"
     IpConfig-3 10.0.0.6                                                                     False
     ```
 
-    **IpConfig-3** 的 *PublicIpAddress* 列为空，这表示该 IP 配置当前没有任何关联的公共 IP 地址资源。 可将现有公共 IP 地址资源添加到 IpConfig-3，或输入以下命令来创建一个：
+    *IpConfig-3* 的 **PublicIpAddress** 列为空，这表示该 IP 配置当前没有任何关联的公共 IP 地址资源。 可将现有公共 IP 地址资源添加到 IpConfig-3，或输入以下命令来创建一个：
 
     ```powershell
     $MyPublicIp3 = New-AzPublicIpAddress `

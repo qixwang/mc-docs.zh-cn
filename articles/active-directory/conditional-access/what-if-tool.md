@@ -44,7 +44,7 @@ ms.locfileid: "79133835"
 
 ## <a name="running-the-tool"></a>运行此工具
 
-可以在 Azure 门户中的“**条件访问 - 策略** **[”页上找到 ](https://portal.azure.cn/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies)What If** 工具。
+可以在 Azure 门户中的“[条件访问 - 策略](https://portal.azure.cn/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies)”页上找到 **What If** 工具。
 
 若要启动此工具，请在策略列表顶部的工具栏中单击 **What If**。
 

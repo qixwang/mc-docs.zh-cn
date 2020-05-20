@@ -100,7 +100,7 @@ ms.locfileid: "80243980"
 
 如果你对 Azure 门户设置做了更改，但想要放弃这些更改，请选择“还原默认设置”。  对门户设置所做的所有更改将会丢失。 此选项不影响仪表板自定义。
 
-有关“导出所有设置”或“删除所有设置和专用仪表板”的详细信息，请参阅[导出或删除用户设置](azure-portal-export-delete-settings.md)。  
+有关“导出所有设置”或“删除所有设置和专用仪表板”的详细信息，请参阅[导出或删除用户设置](azure-portal-export-delete-settings.md)。 
 
 ## <a name="change-language-and-regional-settings"></a>更改语言和区域设置
 

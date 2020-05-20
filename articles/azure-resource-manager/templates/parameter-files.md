@@ -200,7 +200,7 @@ ms.locfileid: "79543874"
 
 ## <a name="parameter-name-conflicts"></a>参数名冲突
 
-如果模板包括的一个参数与 PowerShell 命令中的某个参数同名，PowerShell 使用后缀 **FromTemplate** 显示模板的参数。 例如，模板中名为 **ResourceGroupName** 的参数与 **New-AzResourceGroupDeployment** cmdlet 中的 [ResourceGroupName](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment) 参数冲突。 系统会提示你提供 **ResourceGroupNameFromTemplate** 的值。 可以使用未用于部署命令的参数名称来避免这种混淆。
+如果模板包括的一个参数与 PowerShell 命令中的某个参数同名，PowerShell 使用后缀 **FromTemplate** 显示模板的参数。 例如，模板中名为 **ResourceGroupName** 的参数与 [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment) cmdlet 中的 **ResourceGroupName** 参数冲突。 系统会提示你提供 **ResourceGroupNameFromTemplate** 的值。 可以使用未用于部署命令的参数名称来避免这种混淆。
 
 ## <a name="next-steps"></a>后续步骤
 

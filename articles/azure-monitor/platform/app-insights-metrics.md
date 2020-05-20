@@ -30,13 +30,13 @@ ms.locfileid: "79452365"
 
 在[指标资源管理器](metrics-getting-started.md)中绘制同一指标的图表时，不会使用默认值 - 查询会根据图表设置动态调整：
 
-- 所选的“时间范围”将转换为额外的 *where timestamp ...* 子句，以便仅选取所选时间范围内的事件。  例如，对于显示最近 24 小时数据的图表，查询将包含 *| where timestamp > ago(24 h)* 。
+- 所选的“时间范围”将转换为额外的 *where timestamp ...* 子句，以便仅选取所选时间范围内的事件。 例如，对于显示最近 24 小时数据的图表，查询将包含 *| where timestamp > ago(24 h)* 。
 
-- 所选的“时间粒度”将放入最终的 *summarize ... by bin(timestamp, [time grain])* 子句。 
+- 所选的“时间粒度”将放入最终的 *summarize ... by bin(timestamp, [time grain])* 子句。
 
-- 任何所选“筛选器”维度将转换为额外的 *where* 子句。 
+- 任何所选“筛选器”维度将转换为额外的 *where* 子句。
 
-- 所选的“拆分图表”维度将转换为额外的 summarize 属性。  例如，如果你按位置拆分图表，并使用 5 分钟时间粒度绘制图表，则 *summarize* 子句将由 *... by bin(timestamp, 5 m), location* 汇总。 
+- 所选的“拆分图表”维度将转换为额外的 summarize 属性。  例如，如果你按位置拆分图表，并使用 5 分钟时间粒度绘制图表，则 *summarize* 子句将由 *... by bin(timestamp, 5 m), location* 汇总。
 
 > [!NOTE]
 > 如果你不熟悉 Kusto 查询语言，请先复制 Kusto 语句并将其粘贴到 Log Analytics 查询窗格，而无需进行任何修改。 单击“运行”查看基本图表。  对查询语言的语法有一定的了解后，可以开始进行少量的修改，并查看更改造成的影响。 探索自己的数据是开始实现 [Log Analytics](../../azure-monitor/log-query/get-started-portal.md) 和 [Azure Monitor](../../azure-monitor/overview.md) 的全部功能的好办法。
@@ -255,7 +255,7 @@ exceptions
 
 ## <a name="performance-counters"></a>性能计数器
 
-使用“性能计数器”类别中的指标可以访问 [Application Insights 收集的系统性能计数器](../../azure-monitor/app/performance-counters.md)。 
+使用“性能计数器”类别中的指标可以访问 [Application Insights 收集的系统性能计数器](../../azure-monitor/app/performance-counters.md)。
 
 ### <a name="available-memory-performancecountersavailablememory"></a>可用内存 (performanceCounters/availableMemory)
 

@@ -40,7 +40,7 @@ ms.locfileid: "77028223"
 
    ![屏幕截图，显示选中了“成本管理 + 计费”旁边的星号](./media/azure-portal-add-remove-sort-favorites/azure-portal-favorites-add.png)
 
-1. “成本管理 + 计费”现在已作为最后一个项添加到**收藏夹**列表。 
+1. “成本管理 + 计费”现在已作为最后一个项添加到**收藏夹**列表。
 
 ## <a name="remove-an-item-from-favorites"></a>从收藏夹中删除项
 
@@ -58,7 +58,7 @@ ms.locfileid: "77028223"
 
 ### <a name="move-cost-management--billing-to-the-top-of-favorites"></a>将“成本管理 + 计费”移到收藏夹顶部
 
-1. 在**收藏夹**列表中选择“成本管理 + 计费”并将其按住。 
+1. 在**收藏夹**列表中选择“成本管理 + 计费”并将其按住。
 
    ![屏幕截图，显示选中了“成本管理 + 计费”](./media/azure-portal-add-remove-sort-favorites/azure-portal-favorites-sort.png)
 

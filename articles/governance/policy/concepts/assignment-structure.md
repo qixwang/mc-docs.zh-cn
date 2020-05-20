@@ -66,7 +66,7 @@ Azure Policy 使用策略分配来定义为哪些资源分配了哪些策略或�
 |已启用 |默认 |字符串 |是 |是 |在创建或更新资源期间强制实施策略效果。 |
 |已禁用 |DoNotEnforce |字符串 |是 |否 | 在创建或更新资源期间不强制实施策略效果。 |
 
-如果未在策略或计划定义中指定 **enforcementMode**，则使用值 _Default_。 即使 [enforcementMode](../how-to/remediate-resources.md) 设置为 [DoNotEnforce](./effects.md#deployifnotexists)，也可以针对 **deployIfNotExists** 策略启动_修正任务_。
+如果未在策略或计划定义中指定 **enforcementMode**，则使用值 _Default_。 即使 **enforcementMode** 设置为 _DoNotEnforce_，也可以针对 [deployIfNotExists](./effects.md#deployifnotexists) 策略启动[修正任务](../how-to/remediate-resources.md)。
 
 ## <a name="policy-definition-id"></a>策略定义 ID
 

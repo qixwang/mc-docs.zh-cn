@@ -46,7 +46,7 @@ ms.locfileid: "79452588"
         ![流式传输到事件中心](./media/enable-diagnostic-logs-topic/archive-event-hub.png)
     - 如果选择“发送到 Log Analytics”  ，请选择 Log Analytics 工作区。
         ![发送到 Log Analytics](./media/enable-diagnostic-logs-topic/send-log-analytics.png)
-7. 在“日志”  部分中选择 **DeliveryFailures** 和 **PublishFailures** 选项。 
+7. 在“日志”部分中选择 **DeliveryFailures** 和 **PublishFailures** 选项。 
     ![选择具体的失败](./media/enable-diagnostic-logs-topic/log-failures.png)
 8. 选择“保存”。  选择右上角的 **X** 以关闭页面。 
 9. 现在，返回“诊断设置”  页面，确认在“诊断设置”  表中看到了一个新条目。 

@@ -37,7 +37,7 @@ ms.locfileid: "79546997"
 
 ## <a name="restore-an-app-from-a-snapshot"></a>从快照还原应用
 
-1. 在 [Azure 门户](https://portal.azure.cn)中应用的“设置”页上，单击“备份”以显示“备份”页    。 然后，在“快照(预览)”部分下单击“还原”。  
+1. 在 [Azure 门户](https://portal.azure.cn)中应用的“设置”页上，单击“备份”以显示“备份”页  。 然后，在“快照(预览)”部分下单击“还原”。  
    
     ![](./media/app-service-web-restore-snapshots/1.png)
 

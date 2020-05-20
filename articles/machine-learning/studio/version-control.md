@@ -54,7 +54,7 @@ Azure 机器学习工作室（经典版）中的训练模型序列化为称为 i
 4. 调用对 Web 服务训练的 BES 终结点，并指定所需的 iLearner 文件名以及将存储它的 Blob 存储帐户位置。
 5. BES 调用完成后，即可获得生成的 iLearner 文件。
 
-检索 iLearner 文件的另一种方法是通过 PowerShell commandlet [Download-AmlExperimentNodeOutput  ](https://github.com/hning86/azuremlps#download-amlexperimentnodeoutput)。 如果只想获取 iLearner 文件的副本，不需要以编程方式重新训练模型，此方法可能比较容易。
+检索 iLearner 文件的另一种方法是通过 PowerShell commandlet [Download-AmlExperimentNodeOutput](https://github.com/hning86/azuremlps#download-amlexperimentnodeoutput)。 如果只想获取 iLearner 文件的副本，不需要以编程方式重新训练模型，此方法可能比较容易。
 
 有了 iLearner 文件（包含训练的模型）以后，即可采用自己的版本控制策略。 该策略就像将前缀/后缀作为命名约定应用一样简单，只需将 iLearner 文件保留在 Blob 存储中即可，也可将其复制/导入到版本控制系统中。
 

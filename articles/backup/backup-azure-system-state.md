@@ -70,7 +70,7 @@ ms.locfileid: "79293459"
 
     ![在恢复服务保管库列表中选择新保管库](./media/backup-try-azure-backup-in-10-mins/rs-vault-list.png)
 
-    选择保管库时，“恢复服务保管库”边栏选项卡会缩窄，“设置”边栏选项卡（**顶部有保管库的名称**）和保管库详细信息边栏选项卡会打开。 
+    选择保管库时，“恢复服务保管库”边栏选项卡会缩窄，“设置”边栏选项卡（*顶部有保管库的名称*）和保管库详细信息边栏选项卡会打开。
 
     ![查看新保管库的存储配置](./media/backup-try-azure-backup-in-10-mins/set-storage-configuration-2.png)
 2. 在新保管库的“设置”边栏选项卡中，使用垂直滚动条向下滚动到“管理”部分，并单击“备份基础结构”。 
@@ -82,7 +82,7 @@ ms.locfileid: "79293459"
 
     ![存储配置选择](./media/backup-try-azure-backup-in-10-mins/choose-storage-configuration.png)
 
-    默认情况下，保管库具有异地冗余存储。 如果使用 Azure 作为主要备份存储终结点，请继续使用“异地冗余”  。 如果不使用 Azure 作为主要的备份存储终结点，则请选择“本地冗余”，减少 Azure 存储费用。  请在此[存储冗余概述](../storage/common/storage-redundancy-grs.md)中深入了解[异地冗余](../storage/common/storage-redundancy-lrs.md)和[本地冗余](../storage/common/storage-redundancy.md)存储选项。
+    默认情况下，保管库具有异地冗余存储。 如果使用 Azure 作为主要备份存储终结点，请继续使用“异地冗余”  。 如果不使用 Azure 作为主要的备份存储终结点，则请选择“本地冗余”，减少 Azure 存储费用。  请在此[存储冗余概述](../storage/common/storage-redundancy.md)中深入了解[异地冗余](../storage/common/storage-redundancy-grs.md)和[本地冗余](../storage/common/storage-redundancy-lrs.md)存储选项。
 
 创建保管库之后，即可对其进行配置，以便备份 Windows 系统状态。
 

@@ -64,7 +64,7 @@ $vM = New-AzVm `
 
 ## <a name="enable-network-watcher"></a>启用网络观察程序
 
-如果已在“中国东部 2”区域启用了网络观察程序，请使用 [Get-AzureRmNetworkWatcher](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermnetworkwatcher) 来检索网络观察程序。 以下示例检索 NetworkWatcherRG  资源组中名为 NetworkWatcher_chinaeast  的现有网络观察程序：
+如果已在“中国东部 2”区域启用了网络观察程序，请使用 [Get-AzureRmNetworkWatcher](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermnetworkwatcher) 来检索网络观察程序。 以下示例检索 NetworkWatcherRG 资源组中名为 NetworkWatcher_chinaeast 的现有网络观察程序：
 
 ```powershell
 $networkWatcher = Get-AzNetworkWatcher `
@@ -132,7 +132,7 @@ Name State  Source  AddressPrefix           NextHopType NextHopIpAddress
      Active Default {172.16.0.0/12}         None        {}              
 ```
 
-正如在之前输出中所看到的，带有 0.0.0.0/0  的 AddressPrefix  的路由会将未指定给地址的所有流量路由到以 Internet 的下一个跃点为前缀的其他路由地址内  。 同时还可在输出结果中看到，虽然有一个到 172.16.0.0/12 前缀的默认路由（其中包括地址 172.31.0.100），但“nextHopType”为“无”。   Azure 会创建到 172.16.0.0/12 的默认路由，但不会无故指定下一个跃点类型。 在特定情况下，例如在已将 172.16.0.0/12 地址范围添加到虚拟网络的地址空间的情况下，Azure 会将路由的“nextHopType”更改为“虚拟网络”。   此时进行检查会将“nextHopType”显示为“虚拟网络”   。
+正如在之前输出中所看到的，带有 0.0.0.0/0 的 AddressPrefix 的路由会将未指定给地址的所有流量路由到以 Internet 的下一个跃点为前缀的其他路由地址内。 同时还可在输出结果中看到，虽然有一个到 172.16.0.0/12 前缀的默认路由（其中包括地址 172.31.0.100），但“nextHopType”为“无”。   Azure 会创建到 172.16.0.0/12 的默认路由，但不会无故指定下一个跃点类型。 在特定情况下，例如在已将 172.16.0.0/12 地址范围添加到虚拟网络的地址空间的情况下，Azure 会将路由的“nextHopType”更改为“虚拟网络”。   此时进行检查会将“nextHopType”显示为“虚拟网络”   。
 
 ## <a name="clean-up-resources"></a>清理资源
 

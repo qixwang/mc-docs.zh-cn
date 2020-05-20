@@ -50,11 +50,11 @@ expired_keys:46583
 db0:keys=3450,expires=2,avg_ttl=91861015336
 ```
 
-此外，可以查看缓存的诊断指标，确定密钥丢失的时间以及已过期密钥的高峰之间是否存在某种关联。 有关如何使用密钥空间通知或 [MONITOR](https://gist.github.com/JonCole/4a249477142be839b904f7426ccccf82#appendix) 调试此类问题的信息，请参阅**调试 Redis 密钥空间缺失**附录。
+此外，可以查看缓存的诊断指标，确定密钥丢失的时间以及已过期密钥的高峰之间是否存在某种关联。 有关如何使用密钥空间通知或 **MONITOR** 调试此类问题的信息，请参阅[调试 Redis 密钥空间缺失](https://gist.github.com/JonCole/4a249477142be839b904f7426ccccf82#appendix)附录。
 
 ### <a name="key-eviction"></a>密钥逐出
 
-Azure Cache for Redis 需要使用内存空间来存储数据。 在必要时，它将清除密钥以释放可用内存。 如果 **INFO** 命令中的 **used_memory** 或 [used_memory_rss](https://redis.io/commands/info) 值即将达到配置的 **maxmemory** 设置，Azure Cache for Redis 将会根据[缓存策略](https://redis.io/topics/lru-cache)从内存中开始逐出密钥。
+Azure Cache for Redis 需要使用内存空间来存储数据。 在必要时，它将清除密钥以释放可用内存。 如果 [INFO](https://redis.io/commands/info) 命令中的 **used_memory** 或 **used_memory_rss** 值即将达到配置的 **maxmemory** 设置，Azure Cache for Redis 将会根据[缓存策略](https://redis.io/topics/lru-cache)从内存中开始逐出密钥。
 
 可以使用 [INFO](https://redis.io/commands/info) 命令来监视逐出的密钥数。
 
@@ -64,7 +64,7 @@ Azure Cache for Redis 需要使用内存空间来存储数据。 在必要时，
 evicted_keys:13224
 ```
 
-此外，可以查看缓存的诊断指标，确定密钥丢失的时间以及已逐出密钥的高峰之间是否存在某种关联。 有关如何使用密钥空间通知或 [MONITOR](https://gist.github.com/JonCole/4a249477142be839b904f7426ccccf82#appendix) 调试此类问题的信息，请参阅**调试 Redis 密钥空间缺失**附录。
+此外，可以查看缓存的诊断指标，确定密钥丢失的时间以及已逐出密钥的高峰之间是否存在某种关联。 有关如何使用密钥空间通知或 **MONITOR** 调试此类问题的信息，请参阅[调试 Redis 密钥空间缺失](https://gist.github.com/JonCole/4a249477142be839b904f7426ccccf82#appendix)附录。
 
 ### <a name="key-deletion"></a>密钥删除
 

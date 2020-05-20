@@ -49,7 +49,7 @@ ms.locfileid: "63824102"
 
 1. 在“组 - 所有组”页中，搜索并选择要删除成员的组  。 我们将再次使用“MDM 策略-西部”  。
 
-2. 在“管理”区域中选择“成员”，搜索并选择要删除的成员姓名，然后选择“删除”    。
+2. 从“管理”区域中选择“成员”，搜索并选择要删除的成员的名称，然后选择“删除”。
 
     ![成员信息页，带有“删除”选项](./media/active-directory-groups-members-azure-portal/remove-members-from-group.png)
 

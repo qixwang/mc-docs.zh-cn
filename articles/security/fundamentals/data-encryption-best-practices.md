@@ -75,7 +75,7 @@ Azure Key Vault 旨在支持应用程序密钥和机密。 Key Vault 不应用�
 因为绝大多数的攻击以最终用户为目标，所以终结点将成为主要攻击点之一。 入侵终结点的攻击者可以使用用户的凭据来访问组织的数据。 大多数终结点攻击都利用了用户是其本地工作站的管理员这一事实。
 
 **最佳做法**：使用安全管理工作站来保护敏感帐户、任务和数据。   
-**详细信息**：使用[特权访问工作站](https://technet.microsoft.com/library/mt634654.aspx)来减小工作站的受攻击面。 这些安全管理工作站可帮助减轻其中一些攻击，以确保数据更为安全。
+详细信息：使用[特权访问工作站](https://technet.microsoft.com/library/mt634654.aspx)来减小工作站的受攻击面。 这些安全管理工作站可帮助减轻其中一些攻击，以确保数据更为安全。
 
 **最佳做法**：确保终结点受保护。   
 **详细信息**：在用于使用数据的所有设备上强制实施安全策略（无论数据位于云中还是本地）。
@@ -85,7 +85,7 @@ Azure Key Vault 旨在支持应用程序密钥和机密。 Key Vault 不应用�
 [静态数据加密](https://cloudblogs.microsoft.com/microsoftsecure/2015/09/10/cloud-security-controls-series-encrypting-data-at-rest/)是实现数据隐私性、符合性和数据主权的必要措施。
 
 **最佳做法**：使用磁盘加密来帮助保护数据。   
-**详细信息**：使用 [Azure 磁盘加密](/security/azure-security-disk-encryption-overview)。 它使 IT 管理员能够加密 Windows 和 Linux IaaS VM 磁盘。 磁盘加密利用符合行业标准的 Windows BitLocker 功能和 Linux dm-crypt 功能为 OS 和数据磁盘提供卷加密。
+详细信息：使用 [Azure 磁盘加密](/security/azure-security-disk-encryption-overview)。 它使 IT 管理员能够加密 Windows 和 Linux IaaS VM 磁盘。 磁盘加密利用符合行业标准的 Windows BitLocker 功能和 Linux dm-crypt 功能为 OS 和数据磁盘提供卷加密。
 
 Azure 存储和 Azure SQL 数据库默认对静态数据进行加密，并且许多服务都将加密作为选项提供。 可以使用 Azure Key Vault 来持续控制用于访问和加密数据的密钥。
 
@@ -103,13 +103,13 @@ Azure 存储和 Azure SQL 数据库默认对静态数据进行加密，并且许
 以下是特定于使用 Azure VPN 网关、SSL/TLS 和 HTTPS 的最佳做法。
 
 **最佳做法**：从位于本地的多个工作站安全访问 Azure 虚拟网络。   
-**详细信息**：使用[站点到站点 VPN](/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal)。
+详细信息：使用[站点到站点 VPN](/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal)。
 
 **最佳做法**：从位于本地的单个工作站安全访问 Azure 虚拟网络。   
-**详细信息**：使用[点到站点 VPN](/vpn-gateway/vpn-gateway-point-to-site-create)。
+详细信息：使用[点到站点 VPN](/vpn-gateway/vpn-gateway-point-to-site-create)。
 
 **最佳做法**：通过专用高速 WAN 链路移动大型数据集。   
-**详细信息**：使用 [ExpressRoute](/expressroute/expressroute-introduction)。 如果选择使用 ExpressRoute，则还可以使用 [SSL/TLS](https://support.microsoft.com/kb/257591) 或其他协议在应用程序级别加密数据，以提供额外的保护。
+详细信息：使用 [ExpressRoute](/expressroute/expressroute-introduction)。 如果选择使用 ExpressRoute，则还可以使用 [SSL/TLS](https://support.microsoft.com/kb/257591) 或其他协议在应用程序级别加密数据，以提供额外的保护。
 
 **最佳做法**：通过 Azure 门户与 Azure 存储交互。   
 **详细信息**：所有事务都通过 HTTPS 进行。 也可通过 HTTPS 使用[存储 REST API](https://msdn.microsoft.com/library/azure/dd179355.aspx) 与 [Azure 存储](https://azure.microsoft.com/services/storage/)进行交互。

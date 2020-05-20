@@ -33,7 +33,7 @@ ms.locfileid: "74884619"
 
     ![批处理测试链接](./media/luis-how-to-batch-test/batch-testing-link.png)
 
-2. 选择“导入数据集”  。 此时会显示“导入新数据集”对话框  。 选择“选择文件”并找到具有正确 [JSON 格式](luis-concept-batch-test.md#batch-file-format)的 JSON 文件，该文件包含的待测试话语数量不超过 1,000   。
+2. 选择“导入数据集”  。 此时会显示“导入新数据集”对话框  。 选择“选择文件”并找到具有正确 [JSON 格式](luis-concept-batch-test.md#batch-file-format)的 JSON 文件，该文件包含的待测试话语数量不超过 1,000。
 
     浏览器顶部的红色通知栏中将报告导入错误。 导入出现错误时，不会创建任何数据集。 有关详细信息，请参阅[常见错误](luis-concept-batch-test.md#common-errors-importing-a-batch)。
 

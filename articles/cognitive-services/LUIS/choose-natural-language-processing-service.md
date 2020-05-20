@@ -74,7 +74,7 @@ ms.locfileid: "78154955"
 
 借助 Bot Framework **[Dispatch CLI](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch)** 工具生成一个流程来处理这两个服务。 此工具将为意向生成一个顶层 LUIS 应用，用于调度充当子应用的 LUIS 和 QnA Maker。 
 
-使用以 **C#** 或 [Node.js](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/14.nlp-with-dispatch) 编写的机器人生成器示例[具有调度功能的 NLP](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/14.nlp-with-dispatch) 可以实现此类聊天机器人。 
+使用以 [C#](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/14.nlp-with-dispatch) 或 [Node.js](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/14.nlp-with-dispatch) 编写的机器人生成器示例**具有调度功能的 NLP** 可以实现此类聊天机器人。 
 
 ## <a name="best-practices"></a>最佳做法
 

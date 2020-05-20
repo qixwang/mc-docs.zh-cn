@@ -59,7 +59,7 @@ ms.locfileid: "63852244"
 
 
 ## <a name="create-a-scale-set"></a>创建规模集
-使用 [az group create](/cli/group) 创建资源组。 以下示例在“chinanorth”  位置创建名为“myResourceGroup”  的资源组：
+使用 [az group create](/cli/group) 创建资源组。 以下示例在“chinanorth”位置创建名为“myResourceGroup”的资源组：
 
 ```azurecli
 az group create --name myResourceGroup --location chinanorth

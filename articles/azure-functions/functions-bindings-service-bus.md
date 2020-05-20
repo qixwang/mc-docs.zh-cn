@@ -15,7 +15,7 @@ ms.locfileid: "79292845"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Functions 的 Azure 服务总线绑定
 
-Azure Functions 通过[触发器和绑定](https://www.azure.cn/home/features/service-bus)与 [Azure 服务总线](./functions-triggers-bindings.md)集成。 与服务总线集成后，你可以构建响应和发送队列或主题消息的函数。
+Azure Functions 通过[触发器和绑定](./functions-triggers-bindings.md)与 [Azure 服务总线](https://www.azure.cn/home/features/service-bus)集成。 与服务总线集成后，你可以构建响应和发送队列或主题消息的函数。
 
 | 操作 | 类型 |
 |---------|---------|

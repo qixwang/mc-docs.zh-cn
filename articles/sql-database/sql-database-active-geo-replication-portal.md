@@ -21,7 +21,7 @@ ms.locfileid: "79292453"
 ---
 # <a name="configure-active-geo-replication-for-azure-sql-database-in-the-azure-portal-and-initiate-failover"></a>在 Azure 门户中为 Azure SQL 数据库配置活动异地复制，并启动故障转移
 
-本文说明如何使用 [Azure 门户](sql-database-active-geo-replication.md#active-geo-replication-terminology-and-capabilities)为 Azure SQL 数据库中的[单一和共用数据库配置活动异地复制](https://portal.azure.cn)，以及如何启动故障转移。
+本文说明如何使用 [Azure 门户](https://portal.azure.cn)为 Azure SQL 数据库中的[单一和共用数据库配置活动异地复制](sql-database-active-geo-replication.md#active-geo-replication-terminology-and-capabilities)，以及如何启动故障转移。
 
 有关自动故障转移组与单一数据库和共用数据库的信息，请参阅[将故障转移组与单一数据库和共用数据库配合使用的最佳做法](sql-database-auto-failover-group.md#best-practices-of-using-failover-groups-with-single-databases-and-elastic-pools)。 有关自动故障转移组与托管实例的信息，请参阅[将故障转移组与托管实例配合使用的最佳做法](sql-database-auto-failover-group.md#best-practices-of-using-failover-groups-with-managed-instances)。
 

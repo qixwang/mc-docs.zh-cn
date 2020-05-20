@@ -21,11 +21,11 @@ ms.locfileid: "74883012"
 
 本文介绍了如何以管理员身份在 Azure IoT Central 应用程序中管理帐单，以及如何将试用版转换为即用即付版。
 
-只有 Azure IoT Central 应用程序的“管理员”  角色才能访问和使用“管理”  部分。 如果你创建了 Azure IoT Central 应用程序，则会自动分配到该应用程序的“管理员”  角色。
+只有 Azure IoT Central 应用程序的“管理员”角色才能访问和使用“管理”部分。 如果你创建了 Azure IoT Central 应用程序，则会自动分配到该应用程序的“管理员”  角色。
 
 ## <a name="view-your-bill"></a>查看帐单
 
-若要查看帐单，请在“管理”  部分转到“计费”  页。 Azure 计费页将在新选项卡中打开，可以在此处看到每个 Azure IoT Central 应用程序的帐单。
+若要查看帐单，请在“管理”部分转到“计费”页。 Azure 计费页将在新选项卡中打开，可以在此处看到每个 Azure IoT Central 应用程序的帐单。
 
 ## <a name="convert-your-trial-to-pay-as-you-go"></a>将试用转换为即用即付
 

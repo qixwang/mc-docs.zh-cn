@@ -53,7 +53,7 @@ ms.locfileid: "77494459"
 
 ## <a name="configure-the-collection"></a>配置集合
 
-1. 创建一个包含 **Postman** 集合的 .json 文件，该集合包含将文件上传到媒体服务所需的所有操作。 命名该文件（例如，**AzureMediaServicesOperations.postman_collection.json**）。 打开该文件并从**此代码清单**粘贴用于定义 [Postman](postman-collection.md) 集合的代码。
+1. 创建一个包含 **Postman** 集合的 .json 文件，该集合包含将文件上传到媒体服务所需的所有操作。 命名该文件（例如，**AzureMediaServicesOperations.postman_collection.json**）。 打开该文件并从[此代码清单](postman-collection.md)粘贴用于定义 **Postman** 集合的代码。
 2. 单击“导入”  导入该集合文件。
 3. 选择 **AzureMediaServicesOperations.postman_collection.json** 文件。
 

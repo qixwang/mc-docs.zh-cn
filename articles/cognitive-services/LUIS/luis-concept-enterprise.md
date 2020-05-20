@@ -57,7 +57,7 @@ LUIS 基于 Azure 资源的定价层，具有每月配额和每秒配额。
 如果有多个 LUIS 和 QnA Maker 应用需要响应一个机器人，请使用[调度模型](#dispatch-tool-and-model)来生成顶层应用。  然后更改机器人以使用[调度模型教程](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&branch=master&tabs=cs)中所示的级联调用。 
 
 ## <a name="dispatch-tool-and-model"></a>调度工具和模型
-使用 [BotBuilder-tools][dispatch-tool] 中的 [Dispatch](https://github.com/Microsoft/botbuilder-tools) 命令行工具，将多个 LUIS 和/或 QnA Maker 应用合并至父 LUIS 应用。 采用此方法可以得到一个父域，将所有使用者域和不同的子使用者域都包含在单独的应用中。 
+使用 [BotBuilder-tools](https://github.com/Microsoft/botbuilder-tools) 中的 [Dispatch][dispatch-tool] 命令行工具，将多个 LUIS 和/或 QnA Maker 应用合并至父 LUIS 应用。 采用此方法可以得到一个父域，将所有使用者域和不同的子使用者域都包含在单独的应用中。 
 
 ![调度体系结构的概念图](./media/luis-concept-enterprise/dispatch-architecture.png)
 

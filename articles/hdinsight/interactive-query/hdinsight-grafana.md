@@ -43,7 +43,7 @@ ms.locfileid: "80343597"
 
 1. 登录 [Azure 门户](https://portal.azure.cn/)。
 
-1. 在顶部的“搜索”框中，键入 **HDInsight**。 
+1. 在顶部的“搜索”框中，键入 **HDInsight**。
 
 1. 选择“服务”下的“HDInsight 群集”   。
 

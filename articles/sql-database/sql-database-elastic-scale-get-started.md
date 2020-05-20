@@ -84,7 +84,7 @@ ms.locfileid: "79293866"
 
 1. 下载 [Elastic DB Tools for Azure SQL - Getting Started sample](https://github.com/Azure/elastic-db-tools)（Azure SQL 弹性数据库工具 - 入门示例）。 将示例解压缩到所选位置。
 
-2. 若要创建项目，请从 C#  目录打开 ElasticScaleStarterKit.sln  解决方案。
+2. 若要创建项目，请从 C# 目录打开 ElasticScaleStarterKit.sln 解决方案。
 
 3. 在示例项目的解决方案中打开 app.config  文件。 然后遵循该文件中的说明，添加 Azure SQL 数据库服务器名称和登录信息（用户名和密码）。
 

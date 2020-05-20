@@ -35,7 +35,7 @@ ms.locfileid: "70310846"
 
 
 ## <a name="create-a-scale-set"></a>创建规模集
-创建规模集之前，需使用 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) 创建资源组。 以下示例在“chinanorth”  位置创建名为“myResourceGroup”  的资源组：
+创建规模集之前，需使用 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) 创建资源组。 以下示例在“chinanorth”位置创建名为“myResourceGroup”的资源组：
 
 ```azurepowershell
 New-AzResourceGroup -ResourceGroupName "myResourceGroup" -Location "ChinaNorth"

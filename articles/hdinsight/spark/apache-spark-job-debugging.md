@@ -26,7 +26,7 @@ ms.locfileid: "72583985"
 ---
 # <a name="debug-apache-spark-jobs-running-on-azure-hdinsight"></a>调试 Azure HDInsight 中运行的 Apache Spark 作业
 
-在本文中，将了解如何使用 [Apache Hadoop YARN](https://spark.apache.org/) UI、Spark UI 和 Spark 历史记录服务器来跟踪和调试 HDInsight 群集上运行的 [Apache Spark](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) 作业。 将使用 Spark 群集中提供的笔记本启动 Spark 作业，相关信息请参阅“机器学习：使用 MLLib 对食物检测数据进行预测分析”  。 也可以执行以下步骤来跟踪使用任何其他方法（例如 spark-submit）提交的应用程序  。
+在本文中，将了解如何使用 [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) UI、Spark UI 和 Spark 历史记录服务器来跟踪和调试 HDInsight 群集上运行的 [Apache Spark](https://spark.apache.org/) 作业。 将使用 Spark 群集中提供的笔记本启动 Spark 作业，相关信息请参阅“机器学习：使用 MLLib 对食物检测数据进行预测分析”  。 也可以执行以下步骤来跟踪使用任何其他方法（例如 spark-submit）提交的应用程序  。
 
 ## <a name="prerequisites"></a>必备条件
 必须满足以下条件：

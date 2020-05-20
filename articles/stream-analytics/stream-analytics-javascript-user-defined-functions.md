@@ -60,7 +60,7 @@ JavaScript 用户定义的函数支持仅用于计算的且不需要外部连接
 
 4.  在“新建函数”边栏选项卡中，为“函数类型”选择“JavaScript”。    编辑器中会显示默认函数模板。
 
-5.  为“UDF 别名”输入 **hex2Int**，并按如下所示更改函数实现： 
+5.  为“UDF 别名”输入 **hex2Int**，并按如下所示更改函数实现：
 
     ```javascript
     // Convert Hex value to integer.

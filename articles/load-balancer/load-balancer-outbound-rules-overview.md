@@ -37,7 +37,7 @@ ms.locfileid: "80625798"
 - 用于出站连接空闲超时的持续时间（4-120 分钟）。
 - 是否要在空闲超时时发送 TCP Reset
 
-出站规则扩展了[出站连接](load-balancer-outbound-connections.md#lb)一文中所述的[方案 2](load-balancer-outbound-connections.md)，方案优先顺序保持不变。
+出站规则扩展了[出站连接](load-balancer-outbound-connections.md)一文中所述的[方案 2](load-balancer-outbound-connections.md#lb)，方案优先顺序保持不变。
 
 ## <a name="outbound-rule"></a>出站规则
 

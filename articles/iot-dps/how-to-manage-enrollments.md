@@ -25,7 +25,7 @@ ms.locfileid: "77494129"
 
 可通过两种方法向预配服务注册设备：
 
-* “注册组”是共享 X.509 证书共同认证机制的一组设备，由同一个签名证书（可以是[根证书](/iot-dps/concepts-security#root-certificate)，也可以是[中间证书](/iot-dps/concepts-security#intermediate-certificate)）签名，并用于在物理设备上生成设备证书。  对于共享所需初始配置的大量设备，或者全部转到同一租户的设备，建议使用注册组。 请注意，只能注册使用 X.509 证明机制作为“注册组”的设备  。 
+* “注册组”是共享 X.509 证书共同认证机制的一组设备，由同一个签名证书（可以是[根证书](/iot-dps/concepts-security#root-certificate)，也可以是[中间证书](/iot-dps/concepts-security#intermediate-certificate)）签名，并用于在物理设备上生成设备证书。 对于共享所需初始配置的大量设备，或者全部转到同一租户的设备，建议使用注册组。 请注意，只能注册使用 X.509 证明机制作为“注册组”的设备  。 
 
     执行以下步骤可在门户中为一组设备创建注册组。
 
@@ -34,7 +34,7 @@ ms.locfileid: "77494129"
   1. 在预配服务中：  
      a. 单击“管理注册”，然后选择“注册组”选项卡   。  
      b. 单击顶部的“添加”按钮  。  
-     c. 当“添加注册组”面板出现时，输入注册列表项的信息。  **组名**是必需的。 另外，对于“证书类型”，请选择“CA 证书”或“中间证书”，并为设备组上传根**主证书**。   
+     c. 当“添加注册组”面板出现时，输入注册列表项的信息。  **组名**是必需的。 另外，对于“证书类型”，请选择“CA 证书”或“中间证书”，并为设备组上传根**主证书**。  
      d. 单击“保存”  。 注册组创建成功后，应可在“注册组”选项卡下看到组名称  。  
 
      [![门户中的注册组](./media/how-to-manage-enrollments/group-enrollment.png)](./media/how-to-manage-enrollments/group-enrollment.png#lightbox)

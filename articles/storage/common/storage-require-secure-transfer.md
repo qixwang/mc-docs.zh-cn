@@ -33,7 +33,7 @@ ms.locfileid: "75624334"
 
 ## <a name="require-secure-transfer-in-the-azure-portal"></a>需要在 Azure 门户中进行安全传输
 
-在 [Azure 门户](https://portal.azure.cn)中创建存储帐户时，可启用“需要安全传输”属性。  也可以为现有存储帐户启用该设置。
+在 [Azure 门户](https://portal.azure.cn)中创建存储帐户时，可启用“需要安全传输”属性。 也可以为现有存储帐户启用该设置。
 
 ### <a name="require-secure-transfer-for-a-new-storage-account"></a>新的存储帐户需要安全传输
 

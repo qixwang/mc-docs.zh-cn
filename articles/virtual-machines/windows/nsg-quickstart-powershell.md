@@ -35,7 +35,7 @@ Connect-AzAccount -Environment AzureChinaCloud
 
 在以下示例中，请将参数名称替换成自己的值。 示例参数名称包括了 myResourceGroup  、myNetworkSecurityGroup  和 myVnet  。
 
-使用 [New-AzNetworkSecurityRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecurityruleconfig) 创建规则。 以下示例创建一个名为 myNetworkSecurityGroupRule  的规则，以允许端口 80  上的 tcp  流量：
+使用 [New-AzNetworkSecurityRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecurityruleconfig) 创建规则。 以下示例创建一个名为 myNetworkSecurityGroupRule 的规则，以允许端口 80 上的 tcp 流量：
 
 ```powershell
 $httprule = New-AzNetworkSecurityRuleConfig `
@@ -61,7 +61,7 @@ $nsg = New-AzNetworkSecurityGroup `
     -SecurityRules $httprule
 ```
 
-现在我们将网络安全组分配给子网。 以下示例使用 *Get-AzVirtualNetwork* 向变量 *$vnet* 分配名为 [myVnet](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork) 的现有虚拟网络：
+现在我们将网络安全组分配给子网。 以下示例使用 [Get-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork) 向变量 *$vnet* 分配名为 *myVnet* 的现有虚拟网络：
 
 ```powershell
 $vnet = Get-AzVirtualNetwork `

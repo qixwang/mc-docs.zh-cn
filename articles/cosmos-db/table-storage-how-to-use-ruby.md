@@ -115,7 +115,7 @@ azure_table_service.update_entity("testtable", entity)
 对于 update_entity() 和 merge_entity()，如果要更新的实体不存在，更新操作会失败   。 因此，如果想要存储某个实体而不考虑它是否已存在，则应改用 insert_or_replace_entity() 或 insert_or_merge_entity()   。
 
 ## <a name="work-with-groups-of-entities"></a>使用实体组
-有时，有必要批量同时提交多项操作以确保通过服务器进行原子处理。 要完成此操作，首先要创建一个批处理对象，然后对 TableService 使用 execute_batch() 方法    。 下面的示例演示在一个批次中提交 RowKey 为 2 和 3 的两个实体。 请注意，这仅适用于具有相同 PartitionKey 的实体。
+有时，有必要批量同时提交多项操作以确保通过服务器进行原子处理。 若要完成此操作，首先要创建一个 Batch 对象，然后对 TableService 使用 execute_batch() 方法。 下面的示例演示在一个批次中提交 RowKey 为 2 和 3 的两个实体。 请注意，这仅适用于具有相同 PartitionKey 的实体。
 
 ```ruby
 azure_table_service = Azure::TableService.new
@@ -128,7 +128,7 @@ results = azure_table_service.execute_batch(batch)
 ```
 
 ## <a name="query-for-an-entity"></a>查询实体
-要在表中查询实体，请通过传递表名称、PartitionKey 和 RowKey 来使用 get_entity() 方法    。
+若要查询表中的实体，请传递表名称、PartitionKey 和 RowKey使用 get_entity() 方法。
 
 ```ruby
 result = azure_table_service.get_entity("testtable", "test-partition-key",

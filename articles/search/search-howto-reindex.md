@@ -35,7 +35,7 @@ ms.locfileid: "78850569"
 | 更新或删除索引中的分析器定义 | 无法删除或更改索引中的现有分析器配置（分析器、tokenizer、令牌筛选器或字符筛选器），除非重新生成整个索引。 |
 | 将字段添加到建议器 | 如果某个字段已存在，并且希望将其添加到[建议器](index-add-suggesters.md)构造，则必须重新生成索引。 |
 | 删除字段 | 若要以物理方式删除字段的所有跟踪，必须重新生成索引。 当即时重新生成不可行时，可以修改应用程序代码以禁用对“已删除的”字段的访问，或使用 [$select 查询参数](search-query-odata-select.md)选择要在结果集中显示的字段。 实际上，当你应用省略了相关字段的架构时，字段定义和内容会一直保留在索引中，直至下次重新生成。 |
-| 切换层 | 如果需要更多容量，则无法在 Azure 门户中就地升级。 必须创建新服务，必须在新服务中从头开始生成索引。 若要自动完成此过程，可以使用此 **Azure 认知搜索 .NET 示例存储库**中的 [index-backup-restore](https://github.com/Azure-Samples/azure-search-dotnet-samples) 示例代码。 此应用会将索引备份到一系列 JSON 文件，然后在指定的搜索服务中重新创建索引。|
+| 切换层 | 如果需要更多容量，则无法在 Azure 门户中就地升级。 必须创建新服务，必须在新服务中从头开始生成索引。 若要自动完成此过程，可以使用此 [Azure 认知搜索 .NET 示例存储库](https://github.com/Azure-Samples/azure-search-dotnet-samples)中的 **index-backup-restore** 示例代码。 此应用会将索引备份到一系列 JSON 文件，然后在指定的搜索服务中重新创建索引。|
 
 ## <a name="update-conditions"></a>更新条件
 

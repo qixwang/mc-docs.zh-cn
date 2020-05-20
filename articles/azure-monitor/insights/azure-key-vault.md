@@ -26,7 +26,7 @@ ms.locfileid: "78850334"
 要使用该解决方案，需要启用 Azure Key Vault 诊断的日志记录，并将诊断引导到 Log Analytics 工作区。 不需要将日志写入 Azure Blob 存储。
 
 > [!NOTE]
-> 2017 年 1 月，从 Key Vault 向 Log Analytics 发送日志的受支持方式已发生更改。 如果所用 Key Vault 解决方案的标题中演示了“(已弃用)”中，请参阅[从旧 Key Vault 解决方案迁移](#migrating-from-the-old-key-vault-solution)，了解需要执行的步骤。 
+> 2017 年 1 月，从 Key Vault 向 Log Analytics 发送日志的受支持方式已发生更改。 如果所用 Key Vault 解决方案的标题中演示了“(已弃用)”中，请参阅[从旧 Key Vault 解决方案迁移](#migrating-from-the-old-key-vault-solution)，了解需要执行的步骤。
 >
 >
 
@@ -74,7 +74,7 @@ Azure Key Vault 解决方案直接从 Key Vault 收集诊断日志。
 | Azure |  |  |&#8226; |  |  | 到达时 |
 
 ## <a name="use-azure-key-vault"></a>使用 Azure 密钥保管库
-[安装解决方案](https://market.azure.cn/zh-cn/marketplace/apps/Microsoft.KeyVaultAnalyticsOMS?tab=Overview)后，请在 Azure Monitor 的“概览”  页中单击“Key Vault 分析”  磁贴，查看 Key Vault 数据。 通过点击“见解”部分下的“更多”，从“Azure Monitor”菜单打开此页面    。 
+[安装解决方案](https://market.azure.cn/zh-cn/marketplace/apps/Microsoft.KeyVaultAnalyticsOMS?tab=Overview)后，请在 Azure Monitor 的“概览”页中单击“Key Vault 分析”磁贴，查看 Key Vault 数据。 通过点击“见解”部分下的“更多”，从“Azure Monitor”菜单打开此页面  。 
 
 ![Azure 密钥保管库磁贴的图像](media/azure-key-vault/log-analytics-keyvault-tile.png)
 

@@ -41,7 +41,7 @@ ms.locfileid: "79292294"
 - 如果使用 PowerShell 命令来完成本文中的任务，请从计算机运行 PowerShell。  本教程需要 Azure PowerShell 模块 1.0.0 或更高版本。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount -Environment AzureChinaCloud` 来创建与 Azure 的连接。
 - 如果使用 Azure 命令行界面 (CLI) 命令来完成本文中的任务，请从计算机运行 CLI。 本教程需要 Azure CLI 2.0.31 或更高版本。 运行 `az --version` 查找已安装的版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest)。 如果在本地运行 Azure CLI，则还需运行 `az login` 以创建与 Azure 的连接。
 
-必须将登录或连接到 Azure 所用的帐户分配给[网络参与者](../role-based-access-control/built-in-roles.md?toc=%2fvirtual-network%2ftoc.json#network-contributor)角色或分配有“[网络接口权限](../role-based-access-control/custom-roles.md?toc=%2fvirtual-network%2ftoc.json)”中所列适当操作的[自定义角色](virtual-network-network-interface.md#permissions)。
+必须将登录或连接到 Azure 所用的帐户分配给[网络参与者](../role-based-access-control/built-in-roles.md?toc=%2fvirtual-network%2ftoc.json#network-contributor)角色或分配有“[网络接口权限](virtual-network-network-interface.md#permissions)”中所列适当操作的[自定义角色](../role-based-access-control/custom-roles.md?toc=%2fvirtual-network%2ftoc.json)。
 
 <a name="create-ip-config"></a>
 ## <a name="add-ip-addresses"></a>添加 IP 地址
@@ -50,7 +50,7 @@ ms.locfileid: "79292294"
 
 1. 在 Azure 门户顶部包含“搜索资源”文本的框中，键入“网络接口”。   当“网络接口”出现在搜索结果中时，请选择它。 
 2. 从列表中选择要为其添加 IPv4 地址的网络接口。
-3. 在“设置”  下选择“IP 配置”  。
+3. 在“设置”下选择“IP 配置”。
 4. 在“IP 配置”  下选择“+ 添加”  。
 5. 指定以下内容，然后选择“确定”  ：
 
@@ -76,7 +76,7 @@ ms.locfileid: "79292294"
 
 1. 在 Azure 门户顶部包含“搜索资源”文本的框中，键入“网络接口”。   当“网络接口”出现在搜索结果中时，请选择它。 
 2. 从列表中选择要查看或更改 IP 网络设置的网络接口。
-3. 在“设置”  下选择“IP 配置”  。
+3. 在“设置”下选择“IP 配置”。
 4. 从列表中选择想要修改的 IP 配置。
 5. 使用有关[添加 IP 配置](#add-ip-addresses)的步骤 5 中的设置的信息，根据需要更改设置。
 6. 选择“保存”。 
@@ -98,7 +98,7 @@ ms.locfileid: "79292294"
 
 1. 在 Azure 门户顶部包含“搜索资源”文本的框中，键入“网络接口”。   当“网络接口”出现在搜索结果中时，请选择它。 
 2. 从列表中选择要移除 IP 地址的网络接口。
-3. 在“设置”  下选择“IP 配置”  。
+3. 在“设置”下选择“IP 配置”。
 4. 右键单击以选择要删除的[辅助](#secondary) IP 配置（无法删除[主要](#primary)配置），单击“删除”，然后选择“是”确认删除   。 如果该配置具有关联的公共 IP 地址资源，将从 IP 配置中取消关联该资源，但不会删除该资源。
 
 **命令**

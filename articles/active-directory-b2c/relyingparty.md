@@ -23,7 +23,7 @@ ms.locfileid: "79497182"
 
 RelyingParty  元素指定用户旅程，以执行当前对 Azure Active Directory B2C (Azure AD B2C) 的请求。 它还指定依赖方 (RP) 应用程序需要作为已颁发令牌一部分的声明列表。 RP 应用程序（例如 Web、移动或桌面应用程序）调用 RP 策略文件。 RP 策略文件执行特定任务，例如登录、重置密码，或编辑配置文件。 多个应用程序可以使用相同的 RP 策略，单个应用程序可以使用多个策略。 所有 RP 应用程序都接收具有相同声明的令牌，用户会经历相同的用户旅程。
 
-下面的示例演示 B2C_1A_signup_signin  策略文件中的 RelyingParty  元素：
+下面的示例演示 B2C_1A_signup_signin 策略文件中的 RelyingParty 元素：
 
 ```XML
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -164,7 +164,7 @@ ContentDefinitionParameters  元素包含以下属性：
 | 说明 | 0:1 | 一个字符串，其中包含技术配置文件的说明。 |
 | 协议 | 1:1 | 用于联合的协议。 |
 | 元数据 | 0:1 | 一个键/值对项  集合，由协议在事务过程中与终结点进行通信，以配置依赖方与其他社区参与者之间的交互。 |
-| OutputClaims | 1:1 | 作为技术配置文件中的输出的声明类型列表。 这些元素中的每一个都包含对已在 ClaimsSchema  部分或策略文件继承自的策略中定义的 ClaimType  。 |
+| OutputClaims | 1:1 | 作为技术配置文件中的输出的声明类型列表。 这些元素中的每一个都包含对已在 ClaimsSchema 部分或策略文件继承自的策略中定义的 ClaimType。 |
 | SubjectNamingInfo | 1:1 | 在令牌中使用的使用者名称。 |
 
 Protocol  元素包含以下属性：
@@ -185,7 +185,7 @@ OutputClaim  元素包含以下属性：
 
 | Attribute | 必选 | 说明 |
 | --------- | -------- | ----------- |
-| ClaimTypeReferenceId | 是 | 对在策略文件的 ClaimsSchema  部分定义的 ClaimType  的引用。 |
+| ClaimTypeReferenceId | 是 | 对在策略文件的 ClaimsSchema 部分定义的 ClaimType 的引用。 |
 | DefaultValue | 否 | 一个默认值，如果声明值为空，则可以使用该值。 |
 | PartnerClaimType | 否 | 按照 ClaimType 定义中配置的不同名称发送声明。 |
 

@@ -27,4 +27,4 @@ ms.locfileid: "73416353"
 
     ![创建 LUIS 新 HumanResources 应用](./media/cognitive-services-luis/tutorials-create-new-app/create-app.png)
 
-1. 选择“完成”  。 接下来，应用会显示具有 **None** 意向的“意向”页。 
+1. 选择“完成”  。 接下来，应用会显示具有 **None** 意向的“意向”页。

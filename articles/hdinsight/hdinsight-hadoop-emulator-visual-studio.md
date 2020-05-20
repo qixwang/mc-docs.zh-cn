@@ -76,7 +76,7 @@ Azure Data Lake 包含用于处理常规 Apache Hadoop 群集的工具。 本文
      >[!NOTE]  
      > 根据开发环境的速度以及分配给虚拟机的内存量，可能需要几分钟时间才能完成服务的配置和验证。
 
-完成这些步骤后，服务器资源管理器中的“HDInsight”  部分下面会出现“HDInsight 本地群集”  项。
+完成这些步骤后，服务器资源管理器中的“HDInsight”部分下面会出现“HDInsight 本地群集”项。
 
 ## <a name="write-an-apache-hive-query"></a>编写 Apache Hive 查询
 

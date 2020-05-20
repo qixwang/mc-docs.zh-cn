@@ -37,7 +37,7 @@ ms.locfileid: "72583929"
 ## <a name="download-and-install-the-virtual-machine"></a>下载并安装虚拟机
 1. 浏览到 [Cloudera 下载](https://www.cloudera.com/downloads/hortonworks-sandbox/hdp.html)。
 
-2. 单击“选择安装类型”  下的 **VIRTUALBOX**，在 VM 上下载最新的 Hortonworks 沙盒。 登录或填写产品兴趣表。
+2. 单击“选择安装类型”下的 **VIRTUALBOX**，在 VM 上下载最新的 Hortonworks 沙盒。 登录或填写产品兴趣表。
 
 1. 单击按钮“HDP 沙盒(最新)”  开始下载。
 

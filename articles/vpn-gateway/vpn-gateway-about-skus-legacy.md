@@ -23,7 +23,7 @@ ms.locfileid: "80634551"
 
 [!INCLUDE [Legacy gateway SKUs](../../includes/vpn-gateway-gwsku-legacy-include.md)]
 
-可以在“虚拟网关”部分（位于 [ExpressRoute 定价页](https://azure.cn/pricing/details/expressroute)上）查看旧版网关定价。 
+可以在“虚拟网关”部分（位于 [ExpressRoute 定价页](https://azure.cn/pricing/details/expressroute)上）查看旧版网关定价。
 
 ## <a name="estimated-aggregate-throughput-by-sku"></a><a name="agg"></a>按 SKU 列出的估计聚合吞吐量
 

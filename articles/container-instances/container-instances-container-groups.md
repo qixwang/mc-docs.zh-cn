@@ -19,7 +19,7 @@ Azure 容器实例中的顶层资源是容器组。  本文介绍容器组的定
 
 ## <a name="what-is-a-container-group"></a>什么是容器组？
 
-容器组是安排在同一主机上的容器集合。 容器组中的容器共享生命周期、资源、本地网络和存储卷。 它与 *Kubernetes* 中的 [Pod][kubernetes-pod] 这一概念相似。
+容器组是安排在同一主机上的容器集合。 容器组中的容器共享生命周期、资源、本地网络和存储卷。 它与 [Kubernetes][kubernetes-pod] 中的 *Pod* 这一概念相似。
 
 以下关系图显示了一个包含多个容器的容器组示例：
 
@@ -46,7 +46,7 @@ Azure 容器实例中的顶层资源是容器组。  本文介绍容器组的定
 
 ## <a name="resource-allocation"></a>资源分配
 
-Azure 容器实例通过添加组中实例的[资源请求][gpus]，将 CPU、内存和（可选）[GPU][resource-requests]（预览版）等资源分配到多容器组。 以 CPU 资源为例，如果创建包含两个容器实例的容器组，每个实例请求 1 个 CPU，则会为该容器组分配 2 个 CPU。
+Azure 容器实例通过添加组中实例的[资源请求][resource-requests]，将 CPU、内存和（可选）[GPU][gpus]（预览版）等资源分配到多容器组。 以 CPU 资源为例，如果创建包含两个容器实例的容器组，每个实例请求 1 个 CPU，则会为该容器组分配 2 个 CPU。
 
 ### <a name="resource-usage-by-container-instances"></a>容器实例的资源用量
 

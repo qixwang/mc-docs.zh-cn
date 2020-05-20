@@ -47,7 +47,7 @@ SQL 数据库还提供多种业务连续性功能，用于缓解各种计划外�
 
 - 使用[时态表](sql-database-temporal-tables.md)可以从任意时间点还原行版本。
 - 使用[内置自动备份](sql-database-automated-backups.md)和[时间点还原](sql-database-recovery-using-backups.md#point-in-time-restore)可将整个数据库还原到已配置保留期（最长为 35 天）内的某个时间点。
-- 如果 [SQL 数据库服务器尚未删除](sql-database-recovery-using-backups.md#deleted-database-restore)，可将**已删除的数据库还原**到删除时的时间点。
+- 如果 **SQL 数据库服务器尚未删除**，可将[已删除的数据库还原](sql-database-recovery-using-backups.md#deleted-database-restore)到删除时的时间点。
 - 使用[长期备份保留](sql-database-long-term-retention.md)可将备份保留长达 10 年之久。
 - 使用[活动异地复制](sql-database-active-geo-replication.md)，可以创建可读取的副本，并且在发生数据中心中断或应用程序升级期间手动故障转移到任何副本。
 - 发生数据中心中断时，应用程序可以通过[自动故障转移组](sql-database-auto-failover-group.md#auto-failover-group-terminology-and-capabilities)自动恢复。

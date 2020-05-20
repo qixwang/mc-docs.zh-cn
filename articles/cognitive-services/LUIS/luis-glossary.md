@@ -145,7 +145,7 @@ LUIS 配额是 [Azure 订阅层](https://www.azure.cn/zh-cn/pricing/details/cogn
 
 ## <a name="subscription-key"></a><a name="subscription-key"></a>订阅密钥
 
-订阅密钥是与[你在 Azure 中创建](luis-how-to-azure-subscription.md)的 LUIS 服务关联的**预测终结点**密钥。 此密钥不是[创作密钥](#programmatic-key)。 如果有终结点密钥，则应为所有终结点请求使用该密钥，而非创作密钥。 可在 [LUIS](luis-reference-regions.md) 网站中的[“密钥和终结点”页](luis-how-to-azure-subscription.md)底部的终结点 URL 内看到当前的终结点密钥  。 它是“subscription-key”名称/值对的值  。
+订阅密钥是与[你在 Azure 中创建](luis-how-to-azure-subscription.md)的 LUIS 服务关联的**预测终结点**密钥。 此密钥不是[创作密钥](#programmatic-key)。 如果有终结点密钥，则应为所有终结点请求使用该密钥，而非创作密钥。 可在 [LUIS](luis-reference-regions.md) 网站中的[“密钥和终结点”页](luis-how-to-azure-subscription.md)底部的终结点 URL 内看到当前的终结点密钥。 它是“subscription-key”名称/值对的值  。
 
 ## <a name="test"></a><a name="test"></a>测试
 

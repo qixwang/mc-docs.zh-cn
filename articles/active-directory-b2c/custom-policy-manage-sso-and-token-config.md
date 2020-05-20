@@ -90,7 +90,7 @@ ms.locfileid: "77028233"
 
 ## <a name="session-behavior-and-sso"></a>会话行为和 SSO
 
-若要更改会话行为和 SSO 配置，需要在 **RelyingParty** 元素内添加 [UserJourneyBehaviors](relyingparty.md) 元素。  **UserJourneyBehaviors** 元素必须紧跟在 **DefaultUserJourney** 之后。 **UserJourneyBehavors** 元素的内部看起来应当如以下示例所示：
+若要更改会话行为和 SSO 配置，需要在 [RelyingParty](relyingparty.md) 元素内添加 **UserJourneyBehaviors** 元素。  **UserJourneyBehaviors** 元素必须紧跟在 **DefaultUserJourney** 之后。 **UserJourneyBehavors** 元素的内部看起来应当如以下示例所示：
 
 ```XML
 <UserJourneyBehaviors>

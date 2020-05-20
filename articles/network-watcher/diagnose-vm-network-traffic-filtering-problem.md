@@ -92,7 +92,7 @@ ms.locfileid: "74982168"
     ![IP 流验证](./media/diagnose-vm-network-traffic-filtering-problem/ip-flow-verify-outbound.png)
 
     数秒钟后返回结果，指示访问已获得名为 **AllowInternetOutbound** 的安全规则的允许。 运行检查时，网络观察程序会自动在“中国东部 2”区域创建一个网络观察程序，前提是你在运行检查之前，已经在“中国东部 2”区域以外的其他区域有了一个网络观察程序。
-4. 再次完成步骤 3，但请将“远程 IP 地址”更改为 **172.31.0.100**。  返回的结果指示访问已被名为 **DefaultOutboundDenyAll** 的安全规则拒绝。
+4. 再次完成步骤 3，但请将“远程 IP 地址”更改为 **172.31.0.100**。 返回的结果指示访问已被名为 **DefaultOutboundDenyAll** 的安全规则拒绝。
 5. 再次完成步骤 3，但请将“方向”更改为“入站”，   将“本地端口”更改为  **80**，将“远程端口”更改为  **60000**。 返回的结果指示名为 **DefaultInboundDenyAll** 的安全规则已拒绝了访问。
 
 了解哪些安全规则允许或拒绝出入 VM 的流量以后，即可确定问题解决方法。
@@ -104,7 +104,7 @@ ms.locfileid: "74982168"
 
     ![有效的安全规则](./media/diagnose-vm-network-traffic-filtering-problem/effective-security-rules.png)
 
-    在[使用 IP 流验证](#use-ip-flow-verify)的步骤 3 中，你了解到允许通信的原因是因为 **AllowInternetOutbound** 规则。 可以在上图中看到规则的“目标”是 **Internet**。  尚不清楚在[使用 IP 流验证](#use-ip-flow-verify)的步骤 3 中测试的地址 13.107.21.200 与 **Internet** 的关系如何。
+    在[使用 IP 流验证](#use-ip-flow-verify)的步骤 3 中，你了解到允许通信的原因是因为 **AllowInternetOutbound** 规则。 可以在上图中看到规则的“目标”是 **Internet**。 尚不清楚在[使用 IP 流验证](#use-ip-flow-verify)的步骤 3 中测试的地址 13.107.21.200 与 **Internet** 的关系如何。
 3. 选择“AllowInternetOutBound”规则，然后选择“目标”，如下图所示：  
 
     ![安全规则前缀](./media/diagnose-vm-network-traffic-filtering-problem/security-rule-prefixes.png)

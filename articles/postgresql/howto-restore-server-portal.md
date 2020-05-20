@@ -36,7 +36,7 @@ Azure Database for PostgreSQL 服务器定期进行备份以便启用还原功�
 可以通过以下步骤更改服务器的备份保留期：
 1. 登录到 [Azure 门户](https://portal.azure.cn/)。
 2. 选择你的 Azure Database for PostgreSQL 服务器。 此操作将打开“概述”  页。
-3. 在“设置”  下，从菜单中选择“定价层”  。 使用滑块可以根据需要更改**备份保留期**（7 天到 35 天）。
+3. 在“设置”下，从菜单中选择“定价层”。 使用滑块可以根据需要更改**备份保留期**（7 天到 35 天）。
 在下面的屏幕截图中，该项已增加到 34 天。
 ![增加的备份保留期](./media/howto-restore-server-portal/3-increase-backup-days.png)
 

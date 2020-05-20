@@ -121,11 +121,11 @@ ms.locfileid: "80243197"
 
     [![筛选 PIM 服务的审核日志](./media/azure-pim-resource-rbac/filter-audit-logs.png "筛选 PIM 服务的审核日志")](./media/azure-pim-resource-rbac/filter-audit-logs.png)
 
-1. 选择一个审核日志事件，以在“详细信息”  窗格的“活动”  选项卡上查看票证编号。
+1. 选择一个审核日志事件，以在“详细信息”窗格的“活动”选项卡上查看票证编号。
   
     [![检查审核事件的票证编号](./media/azure-pim-resource-rbac/audit-event-ticket-number.png "检查审核事件的票证编号")](./media/azure-pim-resource-rbac/audit-event-ticket-number.png)]
 
-1. 可以在审核事件的“详细信息”  窗格的“目标”  选项卡上查看请求者（激活角色的人员）。 有三种适用于 Azure 资源角色的目标类型：
+1. 可以在审核事件的“详细信息”窗格的“目标”选项卡上查看请求者（激活角色的人员）。 有三种适用于 Azure 资源角色的目标类型：
 
     - 角色（  类型 = 角色）
     - 请求者（  类型 = 其他）

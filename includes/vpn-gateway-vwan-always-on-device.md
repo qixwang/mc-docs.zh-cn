@@ -81,7 +81,7 @@ ms.locfileid: "80634520"
    $Message = "Complete."
    Write-Host "$Message"
    ```
-1. 复制以下文本，并在 ***devicecert.ps1*** 所在的同一文件夹中将文件保存为 **VPNProfile.xml**。 编辑以下文本，使之与你的环境相匹配。
+1. 复制以下文本，并在 **devicecert.ps1** 所在的同一文件夹中将文件保存为 ***VPNProfile.xml***。 编辑以下文本，使之与你的环境相匹配。
 
    * `<Servers>azuregateway-1234-56-78dc.chinacloudapp.cn</Servers> <= Can be found in the VpnSettings.xml in the downloaded profile zip file`
    * `<Address>192.168.3.5</Address> <= IP of resource in the vnet or the vnet address space`
@@ -116,7 +116,7 @@ ms.locfileid: "80634520"
    <RegisterDNS>true</RegisterDNS>
    </VPNProfile>
    ```
-1. 从 **Sysinternals** 下载 [PsExec](https://docs.microsoft.com/sysinternals/downloads/psexec)，并将文件解压缩到 **C:\PSTools**。
+1. 从 [Sysinternals](https://docs.microsoft.com/sysinternals/downloads/psexec) 下载 **PsExec**，并将文件解压缩到 **C:\PSTools**。
 1. 在管理员命令提示符下，运行以下命令启动 PowerShell：
 
    ```

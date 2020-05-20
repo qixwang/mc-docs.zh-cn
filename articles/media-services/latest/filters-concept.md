@@ -140,7 +140,7 @@ ms.locfileid: "79293162"
 
 ## <a name="associating-filters-with-streaming-locator"></a>将筛选器与流定位符相关联
 
-可以在[流定位符](filters-concept.md)中指定[资产或帐户筛选器](https://docs.microsoft.com/rest/api/media/streaminglocators/create#request-body)列表。 [动态打包器](dynamic-packaging-overview.md)将此筛选器列表与客户端在 URL 中指定的筛选器一起应用。 此组合将生成[动态清单](filters-dynamic-manifest-overview.md)，该清单基于你在流定位符上指定的“URL + 筛选器”中的筛选器。 
+可以在[流定位符](https://docs.microsoft.com/rest/api/media/streaminglocators/create#request-body)中指定[资产或帐户筛选器](filters-concept.md)列表。 [动态打包器](dynamic-packaging-overview.md)将此筛选器列表与客户端在 URL 中指定的筛选器一起应用。 此组合将生成[动态清单](filters-dynamic-manifest-overview.md)，该清单基于你在流定位符上指定的“URL + 筛选器”中的筛选器。 
 
 请看以下示例：
 

@@ -37,7 +37,7 @@ Azure Active Directory (Azure AD) 是一个云标识服务，开发人员可以�
 
 ## <a name="get-started"></a>入门
 
-v1.0 快速入门和教程将逐步讲解如何使用 Azure AD 身份验证库 (ADAL) SDK 在偏好的平台上生成应用。 若要开始使用，请参阅 **Microsoft 标识平台（面向开发人员的 Azure Active Directory）** 中的 **v1.0 快速入门**和 [v1.0 教程](index.yml)。
+v1.0 快速入门和教程将逐步讲解如何使用 Azure AD 身份验证库 (ADAL) SDK 在偏好的平台上生成应用。 若要开始使用，请参阅 [Microsoft 标识平台（面向开发人员的 Azure Active Directory）](index.yml)中的 **v1.0 快速入门**和 **v1.0 教程**。
 
 ## <a name="how-to-guides"></a>操作方法指南
 

@@ -97,9 +97,9 @@ await fabricClient.ServiceManager.CreateServiceAsync(serviceDescription);
 >
 
 ## <a name="work-with-a-deployed-service-package"></a>使用已部署服务包
-节点上 ServicePackage 的活动副本称为[已部署服务包][p3]  。 使用独占进程模型创建服务时，对于给定应用程序，同一 *ServicePackage* 可能有多个已部署服务包。 执行特定于已部署服务包的操作时，应提供 **ServicePackageActivationId** 来标识特定的已部署服务包。 例如，在[报告已部署服务包的运行状况][p4]或[重启已部署服务包的代码包][p5]时，请提供 ID。
+节点上 ServicePackage 的活动副本称为[已部署服务包][p3]。 使用独占进程模型创建服务时，对于给定应用程序，同一 *ServicePackage* 可能有多个已部署服务包。 执行特定于已部署服务包的操作时，应提供 **ServicePackageActivationId** 来标识特定的已部署服务包。 例如，在[报告已部署服务包的运行状况][p4]或[重启已部署服务包的代码包][p5]时，请提供 ID。
 
-通过在节点上查询[已部署服务包][p3]的列表，可以找到已部署服务包的 ServicePackageActivationId  。 在节点上查询[已部署服务包][p6]、[已部署副本][p7]和[已部署代码包][p8]时，查询结果还包含父级已部署服务包的 ServicePackageActivationId  。
+通过在节点上查询[已部署服务包][p3]的列表，可以找到已部署服务包的 ServicePackageActivationId。 在节点上查询[已部署服务包][p6]、[已部署副本][p7]和[已部署代码包][p8]时，查询结果还包含父级已部署服务包的 ServicePackageActivationId  。
 
 > [!NOTE]
 > - 在共享进程托管模型下，对于指定应用程序，指定节点上只会激活一个 *ServicePackage* 副本。 ServicePackage 的 **ServicePackageActivationId** 是空字符串，不需要在执行已部署服务包相关操作时指定  。 
@@ -108,7 +108,7 @@ await fabricClient.ServiceManager.CreateServiceAsync(serviceDescription);
 >
 > - 如果省略了 **ServicePackageActivationId**，则它默认为空字符串。  如果存在共享进程模型下激活的已部署服务包，则需在此包上执行操作。 否则，操作会失败。
 >
-> - 不要对 **ServicePackageActivationId** 执行一次查询或缓存。 此 ID 是动态生成的，会出于各种原因发生更改。 执行需要 ServicePackageActivationId 的操作前，应先在节点上查询[已部署服务包][p3]的列表  。 然后使用查询结果中的 **ServicePackageActivationId** 执行原始操作。
+> - 不要对 **ServicePackageActivationId** 执行一次查询或缓存。 此 ID 是动态生成的，会出于各种原因发生更改。 执行需要 ServicePackageActivationId 的操作前，应先在节点上查询[已部署服务包][p3]的列表。 然后使用查询结果中的 **ServicePackageActivationId** 执行原始操作。
 >
 >
 

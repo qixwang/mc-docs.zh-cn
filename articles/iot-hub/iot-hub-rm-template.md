@@ -44,7 +44,7 @@ ms.locfileid: "77068363"
 ## <a name="prepare-your-visual-studio-project"></a>准备 Visual Studio 项目
 1. 在 Visual Studio 中，使用“控制台应用(.NET Framework)”  项目模板创建 Visual C# Windows 经典桌面项目。 将项目命名为 **CreateIoTHub**。
 2. 在解决方案资源管理器中右键单击项目，然后单击“**管理 NuGet 包**”。
-3. 在 NuGet 包管理器中，选中“包括预发行版”，并在“浏览”页上搜索 **Microsoft.Azure.Management.ResourceManager**   。 选择该包，单击“安装”  ，在“审阅更改”  中单击“确定”  ，并单击“我接受”  以接受许可证。
+3. 在 NuGet 包管理器中，选中“包括预发行版”，并在“浏览”页上搜索 **Microsoft.Azure.Management.ResourceManager**  。 选择该包，单击“安装”  ，在“审阅更改”  中单击“确定”  ，并单击“我接受”  以接受许可证。
 4. 在 NuGet 包管理器中，搜索 **Microsoft.IdentityModel.Clients.ActiveDirectory**。  单击“**安装**”，在“**审阅更改**”中单击“**确定**”，并单击“**我接受**”以接受许可证。
 5. 在 Program.cs 中，将现有 **using** 语句替换为以下代码：
 

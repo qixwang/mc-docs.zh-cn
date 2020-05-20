@@ -45,7 +45,7 @@ ms.locfileid: "77531316"
 
 ## <a name="add-the-scriptexecution-element"></a>添加 ScriptExecution 元素
 
-通过向 [RelyingParty](relyingparty.md)元素添加 ScriptExecution 元素来启用脚本执行  。
+通过向 [RelyingParty](relyingparty.md)元素添加 ScriptExecution 元素来启用脚本执行。
 
 1. 打开自定义策略文件。 例如，SignUpOrSignin.xml  。
 2. 向 RelyingParty 的 UserJourneyBehaviors 元素添加 ScriptExecution 元素    ：

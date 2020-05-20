@@ -56,7 +56,7 @@ $location = "China East"
 
 使用 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) 命令创建资源组。 
 
-Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 将资源组名称存储在变量中，以供以后使用。 本示例在“中国东部”  区域创建名为“howtoqueuesrg”  的资源组。
+Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 将资源组名称存储在变量中，以供以后使用。 本示例在“中国东部”区域创建名为“howtoqueuesrg”的资源组。
 
 ```powershell
 $resourceGroup = "howtoqueuesrg"

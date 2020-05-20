@@ -79,7 +79,7 @@ var token = embedToken.Generate("{access key}");
     </script>    
 ```
 
-这表示会根据设置为 models.ViewMode.View  的 viewMode  在查看模式下嵌入报表。
+这表示会根据设置为 models.ViewMode.View 的 viewMode 在查看模式下嵌入报表。
 
 ## <a name="view-mode"></a>查看模式
 

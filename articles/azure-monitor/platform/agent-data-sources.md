@@ -37,7 +37,7 @@ Azure Monitor 从代理收集的数据是由你配置的数据源定义的。  �
 
 
 ## <a name="configuring-data-sources"></a>配置数据源
-可以从工作区“高级设置”  中的“数据”  菜单配置数据源。  任何配置都将传送到工作区中所有已连接的数据源。  当前不能从此配置中排除任何代理。
+可以从工作区“高级设置”中的“数据”菜单配置数据源。  任何配置都将传送到工作区中所有已连接的数据源。  当前不能从此配置中排除任何代理。
 
 ![配置 Windows 事件](media/agent-data-sources/configure-events.png)
 

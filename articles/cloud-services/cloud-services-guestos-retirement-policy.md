@@ -74,7 +74,7 @@ Microsoft 将继续推出合并了最新 MSRC 更新的新来宾 OS 版本，直
 
 1. 及早开始计划迁移到较新的系列。 
 2. 设置临时测试部署以测试在新系列上运行的云服务。 
-3. 将来宾 OS 版本设置为“**自动**”（在 [.cscfg](./cloud-services-model-and-package.md#cscfg) 文件中设置 osVersion=*），以便自动迁移到新的来宾 OS 版本。
+3. 将来宾 OS 版本设置为“自动”（在 [.cscfg](./cloud-services-model-and-package.md#cscfg) 文件中设置 osVersion=*），以便自动迁移到新的来宾 OS 版本。
 
 **如果我的 Web 应用程序需要更深入地与 OS 集成，我该怎么办？**
 

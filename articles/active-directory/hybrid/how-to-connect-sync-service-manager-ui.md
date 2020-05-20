@@ -30,7 +30,7 @@ ms.locfileid: "63824282"
 
 **Synchronization Service Manager** UI 用于配置同步引擎的更高级设置，以及查看该服务的运行情况。
 
-可以从开始菜单启动 **Synchronization Service Manager** UI。 它名为“同步服务”，可以在 **Azure AD Connect** 组中找到。   
+可以从开始菜单启动 **Synchronization Service Manager** UI。 它名为“同步服务”，可以在 **Azure AD Connect** 组中找到。  
 ![Sync Service Manager](./media/how-to-connect-sync-service-manager-ui/startmenu.png)
 
 ## <a name="next-steps"></a>后续步骤

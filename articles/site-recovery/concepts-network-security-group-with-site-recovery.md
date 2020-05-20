@@ -40,7 +40,7 @@ ms.locfileid: "63851581"
 
 设置此类 NSG 配置时，请确保将正确的优先级应用于[安全规则](../virtual-network/security-overview.md#security-rules)。 规则按优先顺序进行处理。先处理编号较小的规则，因为编号越小，优先级越高。 一旦流量与某个规则匹配，处理即会停止。 因此，不会处理优先级较低（编号较大）的、其属性与高优先级规则相同的所有规则。
 
-将网络安全组同时应用到网络接口和子网时，你不一定总能察觉得到。 可通过查看网络接口的[有效安全规则](../virtual-network/virtual-network-network-interface.md#view-effective-security-rules)，验证已应用到网络接口的聚合规则。 还可使用 [Azure 网络观察程序](../network-watcher/diagnose-vm-network-traffic-filtering-problem.md)中的 [IP 流验证](../network-watcher/network-watcher-monitoring-overview.md)功能来确定是否允许发往或发自网络接口的通信。 该工具会告知通信是否受允许，以及哪个网络安全规则允许或拒绝流量。
+将网络安全组同时应用到网络接口和子网时，你不一定总能察觉得到。 可通过查看网络接口的[有效安全规则](../virtual-network/virtual-network-network-interface.md#view-effective-security-rules)，验证已应用到网络接口的聚合规则。 还可使用 [Azure 网络观察程序](../network-watcher/network-watcher-monitoring-overview.md)中的 [IP 流验证](../network-watcher/diagnose-vm-network-traffic-filtering-problem.md)功能来确定是否允许发往或发自网络接口的通信。 该工具会告知通信是否受允许，以及哪个网络安全规则允许或拒绝流量。
 
 ## <a name="on-premises-to-azure-replication-with-nsg"></a>使用 NSG 进行从本地到 Azure 的复制
 

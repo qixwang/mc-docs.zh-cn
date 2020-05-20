@@ -163,7 +163,7 @@ ms.locfileid: "77494253"
 
 ## <a name="test-the-assets-api-using-the-access-token"></a>使用访问令牌测试资产 API 
 
-本部分演示如何使用 Postman 访问资产 API   。
+此部分介绍如何使用 **Postman** 访问**资产** API。
 
 1. 打开 Postman  。
 2. 选择“GET”  。

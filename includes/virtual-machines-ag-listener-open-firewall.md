@@ -26,7 +26,7 @@ ms.locfileid: "63822450"
 
 6. 在“配置文件”  页上，接受默认设置，并单击“下一步”  。
 
-7. 在“名称”页的“名称”文本框中指定规则名称，例如 **Always On Listener Probe Port**，并单击“完成”。   
+7. 在“名称”页的“名称”文本框中指定规则名称，例如 **Always On Listener Probe Port**，并单击“完成”。  
 
 8. 为可用性组侦听器端口重复上述步骤（按之前在脚本的 $EndpointPort 参数中指定的那样），并指定合适的规则名称，例如 **Always On Listener Port**。
 

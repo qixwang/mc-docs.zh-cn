@@ -79,7 +79,7 @@ docker run -it --rm -p 8080:80 nginx
 docker tag nginx myregistry.azurecr.cn/samples/nginx
 ```
 
-有关使用命名空间进行标记的详细信息，请参阅 [Azure 容器注册表的最佳做法](container-registry-best-practices.md#repository-namespaces)的[存储库命名空间](container-registry-best-practices.md)部分。
+有关使用命名空间进行标记的详细信息，请参阅 [Azure 容器注册表的最佳做法](container-registry-best-practices.md)的[存储库命名空间](container-registry-best-practices.md#repository-namespaces)部分。
 
 ## <a name="push-the-image-to-your-registry"></a>将映像推送到注册表
 

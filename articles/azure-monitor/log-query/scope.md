@@ -16,7 +16,7 @@ ms.lasthandoff: 04/17/2020
 ms.locfileid: "79293520"
 ---
 # <a name="log-query-scope-and-time-range-in-azure-monitor-log-analytics"></a>Azure Monitor Log Analytics 中的日志查询范围和时间范围
-在 [Azure 门户上的 Log Analytics 中](log-query-overview.md)运行[日志查询](get-started-portal.md)时，该查询评估的数据集取决于所选的范围和时间范围。 本文介绍范围和时间范围，以及如何根据要求设置这两项。 本文还介绍了不同范围类型的行为。
+在 [Azure 门户上的 Log Analytics 中](get-started-portal.md)运行[日志查询](log-query-overview.md)时，该查询评估的数据集取决于所选的范围和时间范围。 本文介绍范围和时间范围，以及如何根据要求设置这两项。 本文还介绍了不同范围类型的行为。
 
 
 ## <a name="query-scope"></a>查询范围
@@ -82,7 +82,7 @@ Log Analytics 有助于防止跨多个区域中工作区的查询的过量开销
 
 如果使用 [workspace](workspace-expression.md) 或 [app](app-expression.md) 命令从另一个工作区或应用程序检索数据，时间选取器的行为可能有所不同。 如果范围是 Log Analytics 工作区，而你使用的是 **app**，或者，如果范围是 Application Insights 应用程序，而你使用的是 **workspace**，则 Log Analytics 可能不知道应该由筛选器中使用的属性来确定时间筛选器。
 
-在以下示例中，范围设置为 Log Analytics 工作区。  查询使用 **workspace** 从另一个 Log Analytics 工作区检索数据。 时间选取器将更改为“在查询中设置”，因为它会看到一个使用预期 **TimeGenerated** 属性的筛选器。 
+在以下示例中，范围设置为 Log Analytics 工作区。  查询使用 **workspace** 从另一个 Log Analytics 工作区检索数据。 时间选取器将更改为“在查询中设置”，因为它会看到一个使用预期 **TimeGenerated** 属性的筛选器。
 
 ![使用 workspace 的查询](media/scope/query-workspace.png)
 

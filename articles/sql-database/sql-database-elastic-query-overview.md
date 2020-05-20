@@ -89,7 +89,7 @@ ms.locfileid: "77155692"
 
 * [CREATE MASTER KEY](https://msdn.microsoft.com/library/ms174382.aspx) mymasterkey
 * [CREATE DATABASE SCOPED CREDENTIAL](https://msdn.microsoft.com/library/mt270260.aspx) mycredential
-* [RDBMS](https://msdn.microsoft.com/library/dn935022.aspx) 类型的 **CREATE/DROP 外部数据源** mydatasource
+* **RDBMS** 类型的 [CREATE/DROP 外部数据源](https://msdn.microsoft.com/library/dn935022.aspx) mydatasource
 * [CREATE/DROP EXTERNAL TABLE](https://msdn.microsoft.com/library/dn935021.aspx) mytable
 
 运行 DDL 语句后，可以访问远程表“mytable”，就像它是本地表一样。 Azure SQL 数据库会自动打开与远程数据库的连接，处理远程数据库上的请求并返回结果。
@@ -111,7 +111,7 @@ ms.locfileid: "77155692"
 * [CREATE MASTER KEY](https://docs.microsoft.com/sql/t-sql/statements/create-master-key-transact-sql) mymasterkey
 * [CREATE DATABASE SCOPED CREDENTIAL](https://docs.microsoft.com/sql/t-sql/statements/create-database-scoped-credential-transact-sql) mycredential
 * 使用弹性数据库客户端库创建表示数据层的[分片映射](sql-database-elastic-scale-shard-map-management.md)。
-* [SHARD_MAP_MANAGER](https://docs.microsoft.com/sql/t-sql/statements/create-external-data-source-transact-sql) 类型的 **CREATE/DROP 外部数据源** mydatasource
+* **SHARD_MAP_MANAGER** 类型的 [CREATE/DROP 外部数据源](https://docs.microsoft.com/sql/t-sql/statements/create-external-data-source-transact-sql) mydatasource
 * [CREATE/DROP EXTERNAL TABLE](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql) mytable
 
 执行这些步骤后，便可以访问水平分区的表“mytable”，就像它是本地表一样。 Azure SQL 数据库会自动打开与远程数据库（在其中表以物理方式存储）的多个并行连接，处理远程数据库上的请求并返回结果。

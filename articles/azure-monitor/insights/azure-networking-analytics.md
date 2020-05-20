@@ -49,7 +49,7 @@ Azure Monitor 提供了用于监视网络的以下解决方案：
 如果未针对特定资源类型启用诊断日志记录但安装了解决方案，该资源的仪表板边栏选项卡将为空白并显示错误消息。
 
 > [!NOTE]
-> 2017 年 1 月，将应用程序网关和网络安全组中的日志发送到 Log Analytics 工作区的受支持方式已发生更改。 如果看到了“Azure 网络分析(已弃用)”解决方案，请参阅 [migrating from the old Networking Analytics solution](#migrating-from-the-old-networking-analytics-solution)（从旧的网络分析解决方案迁移）了解需要执行的步骤。 
+> 2017 年 1 月，将应用程序网关和网络安全组中的日志发送到 Log Analytics 工作区的受支持方式已发生更改。 如果看到了“Azure 网络分析(已弃用)”解决方案，请参阅 [migrating from the old Networking Analytics solution](#migrating-from-the-old-networking-analytics-solution)（从旧的网络分析解决方案迁移）了解需要执行的步骤。
 >
 >
 

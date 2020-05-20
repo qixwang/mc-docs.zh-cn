@@ -159,7 +159,7 @@ Update-Module -Name Az.Sql
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-首先需要使用 [.pfx](/key-vault/key-vault-manage-with-cli2) 文件*设置 Azure Key Vault*。
+首先需要使用 *.pfx* 文件[设置 Azure Key Vault](/key-vault/key-vault-manage-with-cli2)。
 
 1. 在 PowerShell 中开始准备步骤：
 

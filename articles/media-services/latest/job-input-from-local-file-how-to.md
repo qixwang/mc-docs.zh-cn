@@ -33,7 +33,7 @@ ms.locfileid: "80625790"
 以下代码演示如何创建输入资产并将其用作作业的输入。 此 CreateInputAsset 函数执行以下操作：
 
 * 创建资产
-* 获取资产的[存储中容器](/storage/common/storage-dotnet-shared-access-signature-part-1)的可写 [SAS URL](/storage/blobs/storage-quickstart-blobs-dotnet#upload-blobs-to-a-container)
+* 获取资产的[存储中容器](/storage/blobs/storage-quickstart-blobs-dotnet#upload-blobs-to-a-container)的可写 [SAS URL](/storage/common/storage-dotnet-shared-access-signature-part-1)
 * 使用 SAS URL 将文件上传到存储中的容器中
 
 ```c#

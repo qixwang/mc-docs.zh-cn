@@ -35,7 +35,7 @@ ms.locfileid: "75859226"
 
 ## <a name="diagnose-using-azure-portal"></a>使用 Azure 门户诊断
 
-1. 使用拥有[所需权限](https://portal.azure.cn)的 Azure 帐户登录到 Azure [门户](virtual-network-network-interface.md#permissions)。
+1. 使用拥有[所需权限](virtual-network-network-interface.md#permissions)的 Azure 帐户登录到 Azure [门户](https://portal.azure.cn)。
 2. 在 Azure 门户顶部的搜索框中，输入处于运行状态的 VM 的名称。 当 VM 名称显示在搜索结果中时，请选择它。
 3. 在左侧的“设置”下，选择“网络”，然后通过选择网络接口资源的名称导航到对应资源   。
     

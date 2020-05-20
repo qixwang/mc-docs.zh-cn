@@ -38,7 +38,7 @@ az vmss show --resource-group myResourceGroup --name myScaleSet
 
 
 ## <a name="view-vms-in-a-scale-set"></a>查看规模集中的 VM
-要在规模集中查看 VM 实例的列表，请使用 [az vmss list-instances](/cli/vmss)。 以下示例将列出 myResourceGroup  资源组中 myScaleSet  规模集的所有 VM 实例。 为这些名称提供自己的值：
+要在规模集中查看 VM 实例的列表，请使用 [az vmss list-instances](/cli/vmss)。 以下示例将列出 myResourceGroup 资源组中 myScaleSet 规模集的所有 VM 实例。 为这些名称提供自己的值：
 
 ```azurecli
 az vmss list-instances `

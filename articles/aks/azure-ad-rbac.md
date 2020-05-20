@@ -161,7 +161,7 @@ rules:
 kubectl apply -f role-dev-namespace.yaml
 ```
 
-接下来，使用 [az ad group show][az-ad-group-show] 命令获取 appdev  组的资源 ID。 此组将设置为在下一步骤中创建的角色绑定的使用者。
+接下来，使用 [az ad group show][az-ad-group-show] 命令获取 appdev 组的资源 ID。 此组将设置为在下一步骤中创建的角色绑定的使用者。
 
 ```azurecli
 az ad group show --group appdev --query objectId -o tsv
@@ -195,7 +195,7 @@ kubectl apply -f rolebinding-dev-namespace.yaml
 
 现在请重复上述步骤，为 SRE 创建命名空间、角色和角色绑定。
 
-首先，使用 [kubectl create namespace][kubectl-create] 命令为 sre  创建一个命名空间：
+首先，使用 [kubectl create namespace][kubectl-create] 命令为 sre 创建一个命名空间：
 
 ```console
 kubectl create namespace sre
@@ -266,7 +266,7 @@ kubectl apply -f rolebinding-sre-namespace.yaml
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster --overwrite-existing
 ```
 
-在 dev  命名空间中使用 [kubectl run][kubectl-run] 命令计划一个基本的 NGINX Pod：
+在 dev 命名空间中使用 [kubectl run][kubectl-run] 命令计划一个基本的 NGINX Pod：
 
 ```console
 kubectl run --generator=run-pod/v1 nginx-dev --image=nginx --namespace dev
@@ -282,7 +282,7 @@ To sign in, use a web browser to open the page https://aka.ms/deviceloginchina a
 pod/nginx-dev created
 ```
 
-现在，请在 dev  命名空间中使用 [kubectl get pods][kubectl-get] 命令查看 Pod。
+现在，请在 dev 命名空间中使用 [kubectl get pods][kubectl-get] 命令查看 Pod。
 
 ```console
 kubectl get pods --namespace dev
@@ -325,7 +325,7 @@ Error from server (Forbidden): pods is forbidden: User "aksdev@contoso.com" cann
 
 若要确认 Azure AD 组成员身份和 Kubernetes RBAC 是否可在不同的用户和组之间正常运行，请在以 *opssre* 用户身份登录后尝试运行前面的命令。
 
-使用 [az aks get-credentials][az-aks-get-credentials] 命令重置 *kubeconfig* 上下文，以清除前面为 aksdev  用户缓存的身份验证令牌：
+使用 [az aks get-credentials][az-aks-get-credentials] 命令重置 *kubeconfig* 上下文，以清除前面为 aksdev 用户缓存的身份验证令牌：
 
 ```azurecli
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster --overwrite-existing

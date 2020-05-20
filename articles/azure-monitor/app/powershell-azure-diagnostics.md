@@ -18,7 +18,7 @@ ms.locfileid: "78850391"
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-可以将[世纪互联 Azure](https://portal.azure.cn) 配置为向 [Azure Application Insights](../../azure-monitor/platform/diagnostics-extension-to-application-insights.md)[发送 Azure 诊断](../../azure-monitor/app/app-insights-overview.md)。 该诊断与 Azure Cloud Service 和 Azure VM 有关。 它们是对使用 Application Insights SDK 从应用内发送的遥测的补充。 作为在 Azure 中自动处理新建资源过程的一部分，可以使用 PowerShell 配置诊断。
+可以将[世纪互联 Azure](https://portal.azure.cn) 配置为向 [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md)[发送 Azure 诊断](../../azure-monitor/platform/diagnostics-extension-to-application-insights.md)。 该诊断与 Azure Cloud Service 和 Azure VM 有关。 它们是对使用 Application Insights SDK 从应用内发送的遥测的补充。 作为在 Azure 中自动处理新建资源过程的一部分，可以使用 PowerShell 配置诊断。
 
 ## <a name="azure-template"></a>Azure 模板
 如果 Web 应用在 Azure 中，并且使用 Azure 资源管理器模板创建资源，可以通过将以下内容添加到资源节点来配置 Application Insights：

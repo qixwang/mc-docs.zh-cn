@@ -101,7 +101,7 @@ Azure AD B2C 不适用于 SharePoint 外部合作伙伴共享的情况；请改�
 
 #### <a name="applications"></a>[应用程序](#tab/applications/)
 
-1. 以订阅管理员  身份登录到 [Azure 门户](https://portal.azure.cn/)。 使用在注册 Azure 时使用的同一工作或学校帐户。
+1. 以订阅管理员身份登录到 [Azure 门户](https://portal.azure.cn/)。 使用在注册 Azure 时使用的同一工作或学校帐户。
 1. 在顶部菜单中选择“目录 + 订阅”  筛选器，然后选择包含Azure AD B2C 租户的目录。
 1. 在左侧菜单中，选择“Azure AD B2C”  。 或者，选择“所有服务”  并搜索并选择“Azure AD B2C”  。
 1. 删除 Azure AD B2C 租户中的所有**用户流(策略)** 。
@@ -122,7 +122,7 @@ Azure AD B2C 不适用于 SharePoint 外部合作伙伴共享的情况；请改�
 
 #### <a name="app-registrations-preview"></a>[应用注册（预览版）](#tab/app-reg-preview/)
 
-1. 以订阅管理员  身份登录到 [Azure 门户](https://portal.azure.cn/)。 使用在注册 Azure 时使用的同一工作或学校帐户。
+1. 以订阅管理员身份登录到 [Azure 门户](https://portal.azure.cn/)。 使用在注册 Azure 时使用的同一工作或学校帐户。
 1. 在顶部菜单中选择“目录 + 订阅”  筛选器，然后选择包含Azure AD B2C 租户的目录。
 1. 在左侧菜单中，选择“Azure AD B2C”  。 或者，选择“所有服务”  并搜索并选择“Azure AD B2C”  。
 1. 删除 Azure AD B2C 租户中的所有**用户流(策略)** 。

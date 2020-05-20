@@ -76,7 +76,7 @@ PlayReady 许可证模板设置在 PlayReady 许可证上启用的功能。 有�
 
 
 ## <a name="fairplay-configuration"></a>FairPlay 配置
-若要启用 FairPlay 加密，请选择“FairPlay 配置”  。 然后选择“应用证书”并输入**应用程序机密密钥**。  有关 FairPlay 配置和要求的详细信息，请参阅[使用 Apple FairPlay 或 Microsoft PlayReady 保护 HLS 内容](media-services-protect-hls-with-FairPlay.md)。
+若要启用 FairPlay 加密，请选择“FairPlay 配置”  。 然后选择“应用证书”并输入**应用程序机密密钥**。 有关 FairPlay 配置和要求的详细信息，请参阅[使用 Apple FairPlay 或 Microsoft PlayReady 保护 HLS 内容](media-services-protect-hls-with-FairPlay.md)。
 
 ![FairPlay 配置](./media/media-services-portal-content-protection/media-services-content-protection006.png)
 
@@ -89,7 +89,7 @@ PlayReady 许可证模板设置在 PlayReady 许可证上启用的功能。 有�
 ![“资产”选项](./media/media-services-portal-content-protection/media-services-content-protection007.png)
 
 ### <a name="encrypt-with-aes-or-drm"></a>使用 AES 或 DRM 加密
-针对资产选择“加密”时，会看到两个选择：**AES** 或 **DRM**。  
+针对资产选择“加密”时，会看到两个选择：**AES** 或 **DRM**。 
 
 #### <a name="aes"></a>AES
 对所有流式处理协议启用 AES 明文密钥加密：平滑流式处理、HLS 和 MPEG DASH。
@@ -102,7 +102,7 @@ PlayReady 许可证模板设置在 PlayReady 许可证上启用的功能。 有�
 * **仅将 PlayReady 应用于平滑流式处理、HLS 和 MPEG-DASH** 即可通过 PlayReady DRM 动态加密平滑流式处理、HLS 和 MPEG-DASH 流。
 * **仅将 FairPlay 应用于 HLS** 即可通过 FairPlay 动态加密 HLS 流。
 
-2. 若要启用 FairPlay 加密，请在“内容保护全局设置”边栏选项卡上选择“FairPlay 配置”。   然后选择“应用证书”并输入**应用程序机密密钥**。 
+2. 若要启用 FairPlay 加密，请在“内容保护全局设置”边栏选项卡上选择“FairPlay 配置”。   然后选择“应用证书”并输入**应用程序机密密钥**。
 
     ![加密类型](./media/media-services-portal-content-protection/media-services-content-protection009.png)
 

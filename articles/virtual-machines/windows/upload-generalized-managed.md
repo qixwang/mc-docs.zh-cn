@@ -26,7 +26,7 @@ ms.locfileid: "77428664"
 ## <a name="before-you-begin"></a>开始之前
 
 - 将任何 VHD 上传到 Azure 之前，应按照[准备要上传到 Azure 的 Windows VHD 或 VHDX](prepare-for-upload-vhd-image.md?toc=%2fvirtual-machines%2fwindows%2ftoc.json) 进行操作。
-- 开始迁移到[托管磁盘](on-prem-to-azure.md#plan-for-the-migration-to-managed-disks)之前，请先查看[规划迁移到托管磁盘](managed-disks-overview.md)。
+- 开始迁移到[托管磁盘](managed-disks-overview.md)之前，请先查看[规划迁移到托管磁盘](on-prem-to-azure.md#plan-for-the-migration-to-managed-disks)。
 
 ## <a name="generalize-the-source-vm-by-using-sysprep"></a>使用 Sysprep 通用化源 VM
 
@@ -92,7 +92,7 @@ $image = New-AzImage `
 
 ## <a name="create-the-vm"></a>创建 VM
 
-在已有映像之后，可以从该映像创建一个或多个新 VM。 本示例从 myResourceGroup 中的 myImage 创建名为 myVM 的 VM    。
+在已有映像之后，可以从该映像创建一个或多个新 VM。 本示例从 *myResourceGroup* 中的 *myImage* 创建名为 *myVM* 的 VM。
 
 ```powershell
 New-AzVm `

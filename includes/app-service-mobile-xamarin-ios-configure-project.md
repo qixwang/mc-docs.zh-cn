@@ -36,6 +36,6 @@ ms.locfileid: "71006552"
     ![](./media/app-service-mobile-xamarin-ios-configure-project/mobile-services-ios-push-24.png)
 
     这确保项目使用新配置文件进行代码签名。 有关正式的 Xamarin 设备预配文档，请参阅 [Xamarin 设备预配]。
-4. 双击 Info.plist 打开它，并在“后台模式”  下启用“远程通知”  。
+4. 双击 Info.plist 打开它，并在“后台模式”下启用“远程通知”。
 
 [Xamarin 设备预配]: http://developer.xamarin.com/guides/ios/getting_started/installation/device_provisioning/

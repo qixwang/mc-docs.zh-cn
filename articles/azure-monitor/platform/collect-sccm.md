@@ -121,7 +121,7 @@ Azure Monitor 支持 Configuration Manager 当前分支（版本 1606 及更高�
 如果密码或客户端机密密钥过期或丢失，需要手动更新 Log Analytics 连接属性。
 
 1. 在 Configuration Manager 的“管理”工作区中选择“云服务”  ，然后选择“OMS 连接器”  ，打开“OMS 连接属性”   页。
-2. 在此页中，单击“**Azure Active Directory**”选项卡，查看“**租户**”、“**客户端 ID**”、“**客户端密钥过期**”。 如果“客户端密钥”  已过期，则对其进行“验证”  。
+2. 在此页中，单击“**Azure Active Directory**”选项卡，查看“**租户**”、“**客户端 ID**”、“**客户端密钥过期**”。 如果“客户端密钥”已过期，则对其进行“验证”。
 
 ## <a name="import-collections"></a>导入集合
 
@@ -139,7 +139,7 @@ Azure Monitor 支持 Configuration Manager 当前分支（版本 1606 及更高�
 
 ## <a name="view-data-from-configuration-manager"></a>查看配置管理器中的数据
 
-将 Log Analytics 连接添加到 Configuration Manager 并在运行 Configuration Manager 服务连接点站点系统角色的计算机上安装了代理之后，来自代理的数据将发送到 Azure Monitor 中的 Log Analytics 工作区。 在 Azure Monitor 中，Configuration Manager 集合以[计算机组](../../azure-monitor/platform/computer-groups.md)的形式显示。 可以从“设置”>“计算机组”  下的“Configuration Manager”  页查看这些组。
+将 Log Analytics 连接添加到 Configuration Manager 并在运行 Configuration Manager 服务连接点站点系统角色的计算机上安装了代理之后，来自代理的数据将发送到 Azure Monitor 中的 Log Analytics 工作区。 在 Azure Monitor 中，Configuration Manager 集合以[计算机组](../../azure-monitor/platform/computer-groups.md)的形式显示。 可以从“设置”>“计算机组”下的“Configuration Manager”页查看这些组。
 
 在导入集合后，可以看到已检测到的具有集合成员身份的计算机数。 此外还可以看到已导入的集合数。
 

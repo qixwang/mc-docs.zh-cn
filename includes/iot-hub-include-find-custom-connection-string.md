@@ -25,7 +25,7 @@ ms.locfileid: "71155942"
 
 1. 从策略列表上方的顶部菜单中选择“添加”  。
 
-1. 在“添加共享访问策略”下，为策略输入一个说明性名称，例如 serviceAndRegistryRead  。  在“权限”下选择“注册表读取”和“服务连接”，然后选择“创建”   。  
+1. 在“添加共享访问策略”下，为策略输入一个说明性名称，例如 serviceAndRegistryRead。 在“权限”下选择“注册表读取”和“服务连接”，然后选择“创建”   。  
 
     ![显示如何添加新的共享访问策略](./media/iot-hub-include-find-custom-connection-string/iot-hub-add-custom-policy.png)
 

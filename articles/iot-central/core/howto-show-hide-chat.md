@@ -34,13 +34,13 @@ ms.locfileid: "80343675"
 
 ## <a name="hide-chat"></a>隐藏聊天
 
-若要隐藏聊天，请在“帮助”  面板中选择“隐藏聊天”  ：
+若要隐藏聊天，请在“帮助”面板中选择“隐藏聊天”：
 
  ![隐藏聊天](media/howto-show-hide-chat/hide-chat.png)
 
 ## <a name="enable-chat"></a>启用聊天
 
-若要显示聊天，请在“帮助”  面板中选择“显示聊天”  ：
+若要显示聊天，请在“帮助”面板中选择“显示聊天”：
 
  ![显示聊天](media/howto-show-hide-chat/show-chat.png)
 

@@ -121,7 +121,7 @@ ms.locfileid: "78850620"
     频道正在运行时，右键单击频道名称，向下导航，将鼠标悬停在“将输入 URL 复制到剪贴板”  上方，然后选择“主要输入 URL”  。  
 
     ![tricaster](./media/media-services-tricaster-live-encoder/media-services-tricaster6.png)
-9. 在 Tricaster 项目中，将此信息粘贴到“闪存服务器”  下的“位置”  字段。 另请在“流 ID”  字段中指定一个流名称。
+9. 在 Tricaster 项目中，将此信息粘贴到“闪存服务器”下的“位置”字段。 另请在“流 ID”  字段中指定一个流名称。
 
     如果流信息已添加到 FMLE 配置文件中，则也可通过以下方式将其导入此部分：单击“导入设置”  ，导航到已保存的 FMLE 配置文件，然后单击“确定”  。 相关的“闪存服务器”字段应使用 FMLE 中的信息进行填充。
 

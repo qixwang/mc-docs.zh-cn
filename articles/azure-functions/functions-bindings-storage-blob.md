@@ -14,7 +14,7 @@ ms.locfileid: "79293206"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions-overview"></a>适用于 Azure Functions 的 Azure Blob 存储绑定概述
 
-Azure Functions 通过[触发器和绑定](/storage/)与 [Azure 存储](./functions-triggers-bindings.md)集成。 与 Blob 存储集成即可构建函数，用于响应 blob 数据中的更改以及读取和写入值。
+Azure Functions 通过[触发器和绑定](./functions-triggers-bindings.md)与 [Azure 存储](/storage/)集成。 与 Blob 存储集成即可构建函数，用于响应 blob 数据中的更改以及读取和写入值。
 
 | 操作 | 类型 |
 |---------|---------|

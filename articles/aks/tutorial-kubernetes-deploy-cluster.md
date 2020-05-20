@@ -83,7 +83,7 @@ az aks install-cli --install-location <kubectl-download-path>
 
 ## <a name="connect-to-cluster-using-kubectl"></a>使用 kubectl 连接到群集
 
-若要将 `kubectl` 配置为连接到 Kubernetes 群集，请使用 [az aks get-credentials][] 命令。 以下示例获取 myResourceGroup  中名为“myAKSCluster”  的 AKS 群集的凭据：
+若要将 `kubectl` 配置为连接到 Kubernetes 群集，请使用 [az aks get-credentials][] 命令。 以下示例获取 myResourceGroup 中名为“myAKSCluster”的 AKS 群集的凭据：
 
 ```azurecli
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster

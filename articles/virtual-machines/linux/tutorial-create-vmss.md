@@ -99,7 +99,7 @@ runcmd:
 ```
 
 ## <a name="create-a-scale-set"></a>创建规模集
-使用 [az group create](https://docs.azure.cn/cli/group?view=azure-cli-latest#az-group-create) 创建资源组，才能创建规模集。 以下示例在“chinaeast”  位置创建名为“myResourceGroupScaleSet”  的资源组：
+使用 [az group create](https://docs.azure.cn/cli/group?view=azure-cli-latest#az-group-create) 创建资源组，才能创建规模集。 以下示例在“chinaeast”位置创建名为“myResourceGroupScaleSet”的资源组：
 
 ```azurecli
 az group create --name myResourceGroupScaleSet --location chinaeast

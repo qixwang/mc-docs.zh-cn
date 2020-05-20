@@ -50,7 +50,7 @@ ms.locfileid: "75336238"
     - **即用即付**应用程序按设备收费，前两个台设备免费。 详细了解 [IoT Central 定价](https://aka.ms/iotcentral-pricing)。 若要创建即用即付应用程序，需要选择“目录”、“Azure 订阅”和“位置”    ：
         - “目录”是将在其中创建应用程序的 Azure Active Directory (AAD)  。 Azure AD 包含用户标识、凭据和其他组织信息。 如果没有 Azure AD，则在创建 Azure 订阅时，系统会为你创建一个 Azure AD。
         - 有了 *Azure 订阅*，就可以创建 Azure 服务的实例。 IoT Central 将在订阅中预配资源。 如果没有 Azure 订阅，则可在 [Azure 注册页](https://aka.ms/createazuresubscription)上创建一个。 创建 Azure 订阅以后，请导航回“创建应用程序”页。  新订阅将显示在“Azue 订阅”下拉列表中  。
-        - “位置”是你想要创建应用程序的[地理位置](https://azure.microsoft.com/global-infrastructure/geographies/)  。 通常，应选择物理上离设备最近的位置以获得最佳性能。 选择一个位置后，之后便不能将应用程序移到其他位置。
+        - “位置”是你想要创建应用程序的[地理位置](https://azure.microsoft.com/global-infrastructure/geographies/)。 通常，应选择物理上离设备最近的位置以获得最佳性能。 选择一个位置后，之后便不能将应用程序移到其他位置。
 
 
 1. 查看“条款和条件”，并选择页面底部的“创建”  。

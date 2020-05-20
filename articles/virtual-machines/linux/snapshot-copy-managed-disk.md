@@ -44,7 +44,7 @@ osDiskId=$(az vm show \
    -o tsv)
 ```
 
-使用 *az snapshot create* 创建名为 [osDisk-backup](https://docs.azure.cn/zh-cn/cli/snapshot?view=azure-cli-latest#az-snapshot-create) 的快照。
+使用 [az snapshot create](https://docs.azure.cn/zh-cn/cli/snapshot?view=azure-cli-latest#az-snapshot-create) 创建名为 *osDisk-backup* 的快照。
 
 ```azurecli
 az snapshot create \

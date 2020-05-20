@@ -41,7 +41,7 @@ ms.locfileid: "79291091"
 
 ## <a name="app-registration"></a>应用注册
 
-要接受工作或学校帐户的每个应用必须已通过 **Azure 门户**中的[应用注册](https://portal.azure.cn/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)体验进行注册，才能使用 OAuth 2.0 或 OpenID Connect 将这些用户登录。 应用注册进程会收集一些值并将其分配到应用：
+要接受工作或学校帐户的每个应用必须已通过 [Azure 门户](https://portal.azure.cn/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)中的**应用注册**体验进行注册，才能使用 OAuth 2.0 或 OpenID Connect 将这些用户登录。 应用注册进程会收集一些值并将其分配到应用：
 
 * 用于唯一标识应用的**应用程序 ID**
 * 可用于将响应定向回到应用的**重定向 URI**（可选）

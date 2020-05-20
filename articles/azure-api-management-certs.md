@@ -37,12 +37,12 @@ ms.locfileid: "71674837"
 创建管理证书后（仅使用公钥的 .cer 文件），可将其上传到门户。 当该证书在门户中可用时，任何拥有匹配证书（私钥）的人都可通过 Management API 连接并访问与订阅相关联的资源。
 
 1. 登录到 [Azure 门户](http://portal.azure.cn)。
-2. 在底部的 Azure 服务列表中，单击“所有服务”  ，然后在“常规”  服务组中选择“订阅”  。
+2. 在底部的 Azure 服务列表中，单击“所有服务”，然后在“常规”服务组中选择“订阅”。
 
     ![订阅菜单](./media/azure-api-management-certs/subscriptions_menu.png)
 
 3. 请确保选择要与证书关联的正确订阅。     
-4. 选择了正确的订阅后，点按“设置”  组中的“管理证书”  。
+4. 选择了正确的订阅后，点按“设置”组中的“管理证书”。
 
     ![设置](./media/azure-api-management-certs/mgmtcerts_menu.png)
 

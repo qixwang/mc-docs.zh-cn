@@ -54,7 +54,7 @@ Azure Log Analytics 监视解决方案包含多个日志查询和视图，用于
 按照[监视解决方案](../insights/solutions.md#install-a-monitoring-solution)中的过程安装 **Activity Log Analytics** 解决方案。 无需其他配置。
 
 ### <a name="use-the-solution"></a>使用解决方案
-可以在 Azure 门户的“监视器”菜单中访问监视解决方案。  在“见解”部分选择“更多”，打开包含解决方案磁贴的“概览”页    。 “Azure 活动日志”磁贴显示工作区中 **AzureActivity** 记录的计数。 
+可以在 Azure 门户的“监视器”菜单中访问监视解决方案。  在“见解”部分选择“更多”，打开包含解决方案磁贴的“概览”页    。 “Azure 活动日志”磁贴显示工作区中 **AzureActivity** 记录的计数。
 
 ![Azure 活动日志磁贴](media/collect-activity-logs/azure-activity-logs-tile.png)
 

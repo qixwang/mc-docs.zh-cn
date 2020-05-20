@@ -60,7 +60,7 @@ Azure 存储和 SQL 没有固定的 IP 地址，因此，我们需要允许与�
 
 * 如果群集使用[网络安全组 (NSG)](../../virtual-network/virtual-network-vnet-plan-design-arm.md)。
 
-    转到 Azure 门户并找到与部署了群集的子网关联的 NSG。 在“出站安全规则”部分，允许不受限制地对 Internet 进行出站访问（请注意，此处的**优先级**编号越小，表示优先级越高）。  另外，在“子网”部分确认此 NSG 是否已应用到群集子网。 
+    转到 Azure 门户并找到与部署了群集的子网关联的 NSG。 在“出站安全规则”部分，允许不受限制地对 Internet 进行出站访问（请注意，此处的**优先级**编号越小，表示优先级越高）。 另外，在“子网”部分确认此 NSG 是否已应用到群集子网。 
 
 * 如果群集使用[用户定义的路由 (UDR)](../../virtual-network/virtual-networks-udr-overview.md)。
 

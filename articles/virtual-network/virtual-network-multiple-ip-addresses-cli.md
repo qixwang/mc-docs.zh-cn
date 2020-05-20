@@ -240,7 +240,7 @@ ms.locfileid: "77653266"
             IPConfig-2  /subscriptions/[Id]/resourceGroups/myResourceGroup/providers/Microsoft.Network/publicIPAddresses/myPublicIP2
             IPConfig-3
 
-        由于输出中 **IpConfig-3** 的 *PublicIpAddressId* 列为空白，因此，当前没有公共 IP 地址资源与其关联。 可将现有公共 IP 地址资源添加到 IpConfig-3，或输入以下命令来创建一个：
+        由于输出中 *IpConfig-3* 的 **PublicIpAddressId** 列为空白，因此，当前没有公共 IP 地址资源与其关联。 可将现有公共 IP 地址资源添加到 IpConfig-3，或输入以下命令来创建一个：
 
         ```bash
         az network public-ip create \

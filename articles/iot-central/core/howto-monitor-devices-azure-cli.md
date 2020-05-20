@@ -61,7 +61,7 @@ az login
 ```
 
 ### <a name="get-the-application-id-of-your-iot-central-app"></a>获取 IoT Central 应用的应用程序 ID
-在“管理/应用程序设置”中，复制**应用程序 ID**  。 在后续步骤中将要用到该 ID。
+在“管理/应用程序设置”中，复制**应用程序 ID** 。 在后续步骤中将要用到该 ID。
 
 ### <a name="monitor-messages"></a>监视消息
 监视从设备发送到 IoT Central 应用的消息。 这将包括所有标头和注释。

@@ -78,7 +78,7 @@ Azure 认知搜索服务不会通过门户或程序设计界面公开单个服�
 
 ## <a name="backup-and-restore"></a>备份和还原
 
-由于 Azure 认知搜索不是主数据存储解决方案，因此，我们不提供正式的自助备份和还原机制。 但是，你可以使用此 **Azure 认知搜索 .NET 示例存储库**中的 [index-backup-restore](https://github.com/Azure-Samples/azure-search-dotnet-samples) 示例代码将索引定义和快照备份到一系列 JSON 文件，然后根据需要使用这些文件来还原索引。 还可以使用此工具在服务层级之间移动索引。
+由于 Azure 认知搜索不是主数据存储解决方案，因此，我们不提供正式的自助备份和还原机制。 但是，你可以使用此 [Azure 认知搜索 .NET 示例存储库](https://github.com/Azure-Samples/azure-search-dotnet-samples)中的 **index-backup-restore** 示例代码将索引定义和快照备份到一系列 JSON 文件，然后根据需要使用这些文件来还原索引。 还可以使用此工具在服务层级之间移动索引。
 
 在其他情况下，如果误删索引，用于创建和填充索引的应用程序代码是事实上的还原选项。 要重新生成索引，请删除它（假设其存在），在服务中重新创建该索引，并通过从主数据存储中检索数据来重新加载该索引。
 

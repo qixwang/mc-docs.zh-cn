@@ -34,7 +34,7 @@ ms.locfileid: "68912294"
 NuGet 程序包会为客户端应用程序下载并添加所需的程序集引用，以通过 StackExchange.Azure Redis 缓存客户端访问 Azure Redis 缓存。
 
 > [!NOTE]
-> 如果以前已将项目配置为使用 StackExchange.Redis，则可以通过 **NuGet 包管理器**检查该包是否有更新。 若要检查并安装 StackExchange.Redis NuGet 包的更新版本，请在“NuGet 包管理器”  窗口中单击“更新”  。 如果 StackExchange.Redis NuGet 包有可用更新，则可以更新项目以使用更新后的版本。
+> 如果以前已将项目配置为使用 StackExchange.Redis，则可以通过 **NuGet 包管理器**检查该包是否有更新。 若要检查并安装 StackExchange.Redis NuGet 包的更新版本，请在“NuGet 包管理器”窗口中单击“更新”。 如果 StackExchange.Redis NuGet 包有可用更新，则可以更新项目以使用更新后的版本。
 >
 >
 

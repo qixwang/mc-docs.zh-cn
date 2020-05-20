@@ -27,7 +27,7 @@ ms.locfileid: "79452543"
 
 
 ## <a name="concepts"></a>概念
-视图显示在 Azure 门户的 Azure Monitor“概述”  页中。 通过点击“见解”部分下的“更多”，从“Azure Monitor”菜单打开此页面    。 每个自定义视图中的磁贴都按字母顺序显示，监视解决方案的磁贴安装在同一工作区中。
+视图显示在 Azure 门户的 Azure Monitor“概述”  页中。 通过点击“见解”部分下的“更多”，从“Azure Monitor”菜单打开此页面  。 每个自定义视图中的磁贴都按字母顺序显示，监视解决方案的磁贴安装在同一工作区中。
 
 ![概述页](media/view-designer/overview-page.png)
 
@@ -77,7 +77,7 @@ ms.locfileid: "79452543"
 ![视图设计器](media/view-designer/view-designer-screenshot.png)
 
 ### <a name="configure-the-view-tile"></a>配置视图磁贴
-一个自定义视图只能有一个磁贴。 若要查看当前磁贴或选择另一个磁贴，请在“控件”  窗格中选择“磁贴”  选项卡。 “属性”  窗格会显示当前磁贴的属性。 
+一个自定义视图只能有一个磁贴。 若要查看当前磁贴或选择另一个磁贴，请在“控件”窗格中选择“磁贴”选项卡。 “属性”  窗格会显示当前磁贴的属性。 
 
 可以根据[磁贴参考](view-designer-tiles.md)中的信息配置磁贴属性，然后单击“应用”  ，保存所做的更改。
 

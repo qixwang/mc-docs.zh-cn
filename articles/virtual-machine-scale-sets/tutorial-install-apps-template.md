@@ -76,7 +76,7 @@ ms.locfileid: "63850680"
 
 
 ## <a name="create-a-scale-set"></a>创建规模集
-让我们使用示例模板创建一个规模集并应用自定义脚本扩展。 首先，使用 [az group create](/cli/group) 创建资源组。 以下示例在“chinanorth”  位置创建名为“myResourceGroup”  的资源组：
+让我们使用示例模板创建一个规模集并应用自定义脚本扩展。 首先，使用 [az group create](/cli/group) 创建资源组。 以下示例在“chinanorth”位置创建名为“myResourceGroup”的资源组：
 
 ```azurecli
 az group create --name myResourceGroup --location chinanorth

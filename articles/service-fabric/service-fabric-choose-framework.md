@@ -48,7 +48,7 @@ ASP.NET Core 是一种开源跨平台框架，用于构建现代基于云的连�
 
 ## <a name="reliable-actors"></a>Reliable Actors
 
-Reliable Actor 框架在 Reliable Services 的基础上生成，是基于计算性[执行组件模型](https://research.microsoft.com/projects/orleans/)实现[虚拟执行组件](https://en.wikipedia.org/wiki/Actor_model)模式的应用程序框架。 Reliable Actor 框架通过称为“执行组件”  的单线程执行使用独立的计算单元和状态单元。 Reliable Actor 为执行组件提供内置通信，以及提供预设的状态暂留和扩展配置。
+Reliable Actor 框架在 Reliable Services 的基础上生成，是基于计算性[执行组件模型](https://en.wikipedia.org/wiki/Actor_model)实现[虚拟执行组件](https://research.microsoft.com/projects/orleans/)模式的应用程序框架。 Reliable Actor 框架通过称为“执行组件”  的单线程执行使用独立的计算单元和状态单元。 Reliable Actor 为执行组件提供内置通信，以及提供预设的状态暂留和扩展配置。
 
 由于 Reliable Actors 是在 Reliable Services 基础上构建的应用程序框架，因此它完全与 Service Fabric 平台集成，并且受益于平台所提供的完整功能集。
 

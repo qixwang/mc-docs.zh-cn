@@ -79,7 +79,7 @@ public void ListBlobsInContainer(string containerName, string iothub)
 > [!NOTE]
 > 如果存储帐户具有限制 IoT 中心连接的防火墙配置，请考虑使用 [Microsoft 信任的第一方例外](./virtual-network-support.md#egress-connectivity-to-storage-account-endpoints-for-routing)（在具有托管服务标识的 IoT 中心的选定区域中可用）。
 
-若要创建与 Azure Data Lake Gen2 兼容的存储帐户，请创建新的 V2 存储帐户，并在“高级”  选项卡的“分层命名空间”  字段上选择“启用”  ，如下图所示：
+若要创建与 Azure Data Lake Gen2 兼容的存储帐户，请创建新的 V2 存储帐户，并在“高级”选项卡的“分层命名空间”字段上选择“启用”，如下图所示：
 
 ![选择 Azure Date Lake Gen2 存储](./media/iot-hub-devguide-messages-d2c/selectadls2storage.png)
 
@@ -118,7 +118,7 @@ public void ListBlobsInContainer(string containerName, string iothub)
 
 ## <a name="fallback-route"></a>回退路由
 
-回退路由将所有不满足任何现有路由上的查询条件的消息发送到与[事件中心](/event-hubs/)兼容的内置事件中心（消息/事件）  。 如果已启用消息路由，则可以启用此回退路由功能。 在创建一个路由后，数据将停止流向内置终结点，除非创建了到该终结点的路由。 如果没有到内置终结点的路由并且已启用回退路由，则仅与路由上的任何查询条件不匹配的消息将被发送到内置终结点。 此外，如果已删除现有路由，必须启用回退路由才能接收内置终结点处的所有数据。 
+回退路由将所有不满足任何现有路由上的查询条件的消息发送到与[事件中心](/event-hubs/)兼容的内置事件中心（消息/事件）。 如果已启用消息路由，则可以启用此回退路由功能。 在创建一个路由后，数据将停止流向内置终结点，除非创建了到该终结点的路由。 如果没有到内置终结点的路由并且已启用回退路由，则仅与路由上的任何查询条件不匹配的消息将被发送到内置终结点。 此外，如果已删除现有路由，必须启用回退路由才能接收内置终结点处的所有数据。 
 
 可以在 Azure 门户->“消息路由”边栏选项卡中启用/禁用回退路由。 还可以将 Azure 资源管理器用于 [FallbackRouteProperties](https://docs.microsoft.com/en-us/rest/api/iothub/iothubresource/createorupdate#fallbackrouteproperties) 来为回退路由使用自定义终结点。
 

@@ -17,7 +17,7 @@ ms.locfileid: "70857385"
 ---
 # <a name="create-an-application-gateway-and-rewrite-http-headers"></a>创建应用程序网关和重写 HTTP 标头
 
-可以使用 Azure PowerShell 在创建新的[自动缩放和区域冗余的应用程序网关 SKU](rewrite-http-headers.md) 时配置[重写 HTTP 请求和响应标头的规则](/application-gateway/application-gateway-autoscaling-zone-redundant)。
+可以使用 Azure PowerShell 在创建新的[自动缩放和区域冗余的应用程序网关 SKU](/application-gateway/application-gateway-autoscaling-zone-redundant) 时配置[重写 HTTP 请求和响应标头的规则](rewrite-http-headers.md)。
 
 在本文中，学习如何：
 

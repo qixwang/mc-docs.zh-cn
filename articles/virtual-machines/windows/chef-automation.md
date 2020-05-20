@@ -80,7 +80,7 @@ New-AzureRmRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName 
 如果尚未使用 Chef 服务器，可以：
 
 * 注册[托管 Chef](https://manage.chef.io/signup)，这是 Chef 的最快入门方法。
-* 遵照 [Chef 文档](https://docs.chef.io/install_server.html)中的[安装说明](https://docs.chef.io/)，在基于 Linux 的计算机上安装独立的 Chef 服务器。
+* 遵照 [Chef 文档](https://docs.chef.io/)中的[安装说明](https://docs.chef.io/install_server.html)，在基于 Linux 的计算机上安装独立的 Chef 服务器。
 
 ### <a name="creating-a-hosted-chef-account"></a>创建托管 Chef 帐户
 

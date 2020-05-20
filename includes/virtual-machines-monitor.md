@@ -18,7 +18,7 @@ ms.locfileid: "73831408"
 
 ## <a name="diagnostics-and-metrics"></a>诊断和指标 
 
-可以在 Azure 门户、Azure CLI、Azure PowerShell 和编程应用程序编程接口 (API) 中使用[指标](https://docs.azure.cn/cli/vm/diagnostics?view=azure-cli-latest)来设置和监视[诊断数据](../articles/monitoring-and-diagnostics/monitoring-overview-metrics.md)收集。 例如，你能够：
+可以在 Azure 门户、Azure CLI、Azure PowerShell 和编程应用程序编程接口 (API) 中使用[指标](../articles/monitoring-and-diagnostics/monitoring-overview-metrics.md)来设置和监视[诊断数据](https://docs.azure.cn/cli/vm/diagnostics?view=azure-cli-latest)收集。 例如，你能够：
 
 - **观察 VM 的基本指标。** Azure 门户的“概述”屏幕上显示的基本指标包括 CPU 使用率、网络使用情况、总磁盘字节数以及每秒的磁盘操作数。
 

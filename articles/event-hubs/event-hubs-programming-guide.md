@@ -99,7 +99,7 @@ for (var i = 0; i < numMessagesToSend; i++)
 
 分批发送事件可有助于提高吞吐量。 可以使用 [CreateBatch](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createbatch) API 来创建一个批，以便稍后向其添加数据对象进行 [SendAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync) 调用。
 
-单个批不能超过事件的 1 MB 限制。 此外，批中的每个消息都要使用相同的发布者标识。 发送者负责确保批不超过最大事件大小。 如果超过该限制，会生成客户端 **Send** 错误。 可以使用帮助器方法 [EventHubClient.CreateBatch](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createbatch) 来确保批不超过 1 MB。 从 [CreateBatch](/dotnet/api/microsoft.azure.eventhubs.eventdatabatch) API 获取空的 [EventDataBatch](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createbatch)，然后使用 [TryAdd](/dotnet/api/microsoft.azure.eventhubs.eventdatabatch.tryadd) 添加事件来构造批。 
+单个批不能超过事件的 1 MB 限制。 此外，批中的每个消息都要使用相同的发布者标识。 发送者负责确保批不超过最大事件大小。 如果超过该限制，会生成客户端 **Send** 错误。 可以使用帮助器方法 [EventHubClient.CreateBatch](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createbatch) 来确保批不超过 1 MB。 从 [CreateBatch](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createbatch) API 获取空的 [EventDataBatch](/dotnet/api/microsoft.azure.eventhubs.eventdatabatch)，然后使用 [TryAdd](/dotnet/api/microsoft.azure.eventhubs.eventdatabatch.tryadd) 添加事件来构造批。 
 
 ## <a name="send-asynchronously-and-send-at-scale"></a>异步发送和按比例发送
 

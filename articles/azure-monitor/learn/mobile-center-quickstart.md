@@ -59,7 +59,7 @@ Analytics.trackEvent("Video clicked")
 
 若要从其他应用平台发送自定义事件，请在其 App Center SDK 中使用 `trackEvent` 方法。
 
-若要确保收到自定义事件，请转到 App Center“分析”  部分下的“事件”  选项卡。 从应用发送事件后，可能需要等待几分钟才会显示事件。
+若要确保收到自定义事件，请转到 App Center“分析”部分下的“事件”选项卡。 从应用发送事件后，可能需要等待几分钟才会显示事件。
 
 ## <a name="create-an-application-insights-resource"></a>创建 Application Insights 资源
 
@@ -133,7 +133,7 @@ Application Insights 可以查询、分段、筛选和分析来自应用的自�
 
    ![用户工具](./media/mobile-center-quickstart/users-001.png) 
 
-   例如，通过选择“拆分依据”  下拉菜单中的“国家或地区”  ，来根据地域对使用量进行分段。
+   例如，通过选择“拆分依据”下拉菜单中的“国家或地区”，来根据地域对使用量进行分段。
 
 3. **分析应用中的转换、保留和导航模式。** 从 Application Insights“概述”  页面上，选择目录中的“用户流”  。
 

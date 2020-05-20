@@ -17,7 +17,7 @@ ms.locfileid: "75776649"
 ---
 # <a name="fail-back-vmware-vms-to-on-premises-site"></a>将 VMware VM 故障回复到本地站点
 
-本文介绍如何使用 [Azure Site Recovery](site-recovery-failover.md)将 Azure VM 故障回复到本地站点，然后将本地 VM [故障转移](site-recovery-overview.md)到 Azure。 故障回复到本地后启用复制，使本地 VM 开始复制到 Azure。
+本文介绍如何使用 [Azure Site Recovery](site-recovery-overview.md)将 Azure VM 故障回复到本地站点，然后将本地 VM [故障转移](site-recovery-failover.md)到 Azure。 故障回复到本地后启用复制，使本地 VM 开始复制到 Azure。
 
 ## <a name="before-you-start"></a>开始之前
 

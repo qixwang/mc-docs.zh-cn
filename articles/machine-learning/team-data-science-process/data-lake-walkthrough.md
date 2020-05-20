@@ -38,7 +38,7 @@ Data Lake Analytics 也是 Cortana Analytics 套件的重要部分，可与 Azur
 Azure 机器学习工作室（经典版）用于生成和部署预测模型。 有两种方法可完成此操作：在 HDInsight (Hadoop) 群集上使用 Python 脚本或使用 Hive 表。
 
 ### <a name="scripts"></a>脚本
-本演练中仅概述了主要步骤。 可从 **GitHub** 下载完整的 **U-SQL 脚本**和 [Jupyter Notebook](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/AzureDataLakeWalkthrough)。
+本演练中仅概述了主要步骤。 可从 [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/AzureDataLakeWalkthrough) 下载完整的 **U-SQL 脚本**和 **Jupyter Notebook**。
 
 ## <a name="prerequisites"></a>必备条件
 在开始阅读这些主题前，必须具有：
@@ -72,7 +72,7 @@ Azure 机器学习工作室（经典版）用于生成和部署预测模型。 �
 ### <a name="create-an-azure-data-lake-store"></a>创建 Azure Data Lake Store
 
 
-从 [Azure 门户](https://portal.azure.cn)创建 ADLS。 有关详细信息，请参阅[使用 Azure 门户创建包含 Data Lake Store 的 HDInsight 群集](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)。 请务必在此处所述的“可选配置”  边栏选项卡的“DataSource”  边栏选项卡中设置群集 AAD 标识。
+从 [Azure 门户](https://portal.azure.cn)创建 ADLS。 有关详细信息，请参阅[使用 Azure 门户创建包含 Data Lake Store 的 HDInsight 群集](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)。 请务必在此处所述的“可选配置”边栏选项卡的“DataSource”边栏选项卡中设置群集 AAD 标识。
 
  ![3](./media/data-lake-walkthrough/3-create-ADLS.PNG)
 
@@ -133,7 +133,7 @@ Azure 机器学习工作室（经典版）用于生成和部署预测模型。 �
 * [数据采样](#sample)
 * [运行 U-SQL 作业](#run)
 
-此处所述的 U-SQL 脚本将提供在单独的文件中。 可从 **GitHub** 下载完整的 [U-SQL 脚本](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/AzureDataLakeWalkthrough)。
+此处所述的 U-SQL 脚本将提供在单独的文件中。 可从 [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/AzureDataLakeWalkthrough) 下载完整的 **U-SQL 脚本**。
 
 要执行 U-SQL，请打开 Visual Studio，单击“文件”-->“新建”-->“项目”  ，选择“U-SQL 项目”  ，对其进行命名，并将其保存到文件夹。
 
@@ -597,7 +597,7 @@ Azure 机器学习工作室（经典版）用于生成和部署预测模型。 �
 Azure 机器学习工作室（经典版）可直接从 Azure Data Lake Store 中读取数据，然后将其用于创建和部署模型。 此方法使用指向 Azure Data Lake Store 的 Hive 表。 使用此方法需要预配单独的 Azure HDInsight 群集，并在其中创建 Hive 表。 以下部分介绍了如何执行该操作。
 
 ### <a name="create-an-hdinsight-linux-cluster"></a>创建 HDInsight Linux 群集
-从 [Azure 门户](https://portal.azure.cn)创建 HDInsight 群集 (Linux)。 有关详细信息，请参阅**使用 Azure 门户创建包含 Data Lake Store 的 HDInsight 群集**中的[创建具有 Azure Data Lake Store 访问权限的 HDInsight 群集](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)部分。
+从 [Azure 门户](https://portal.azure.cn)创建 HDInsight 群集 (Linux)。 有关详细信息，请参阅[使用 Azure 门户创建包含 Data Lake Store 的 HDInsight 群集](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)中的**创建具有 Azure Data Lake Store 访问权限的 HDInsight 群集**部分。
 
  ![18](./media/data-lake-walkthrough/18-create_HDI_cluster.PNG)
 
@@ -606,7 +606,7 @@ Azure 机器学习工作室（经典版）可直接从 Azure Data Lake Store 中
 
  ![19](./media/data-lake-walkthrough/19-HDI-cluster-add-ADLS.PNG)
 
-然后单击“设置”  按钮旁的“仪表板”  ，随即会弹出一个窗口。 在页面的右上角，单击“Hive 视图”  ，然后会看到“查询编辑器”  。
+然后单击“设置”按钮旁的“仪表板”，随即会弹出一个窗口。 在页面的右上角，单击“Hive 视图”  ，然后会看到“查询编辑器”  。
 
  ![20](./media/data-lake-walkthrough/20-HDI-dashboard.PNG)
 
@@ -652,8 +652,8 @@ Azure 机器学习工作室（经典版）可直接从 Azure Data Lake Store 中
 ### <a name="build-and-deploy-models-in-azure-machine-learning-studio"></a>在 Azure 机器学习工作室中生成和部署模型
 现在可以通过 Azure 机器学习生成和部署预测是否为行程支付小费的模型。 分层采样数据可在二进制分类（是否支付小费）问题中使用。 可通过 Azure 机器学习工作室生成和部署使用多类分类 (tip_class) 和回归 (tip_amount) 的预测模型，但是此处只介绍如何处理使用二进制分类模型的内容。
 
-1. 使用“数据输入和输出”  部分的“导入数据”  模块，将数据导入 Azure 机器学习工作室（经典版）。 有关详细信息，请参阅[导入数据模块](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/)参考页。
-2. 在“属性”  面板中，选择“Hive 查询”  作为**数据源**。
+1. 使用“数据输入和输出”部分的“**导入数据**”模块，将数据导入 Azure 机器学习工作室（经典版）。 有关详细信息，请参阅[导入数据模块](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/)参考页。
+2. 在“属性”面板中，选择“Hive 查询”作为**数据源**。
 3. 将以下 Hive 脚本粘贴到“Hive 数据库查询”  编辑器
 
         select * from nyc_stratified_sample;

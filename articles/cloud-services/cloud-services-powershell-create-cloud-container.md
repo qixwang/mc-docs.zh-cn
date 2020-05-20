@@ -52,4 +52,4 @@ Get-help New-AzureService
 
 ### <a name="next-steps"></a>后续步骤
 * 若要管理云服务部署，请参阅 [Get-AzureService](https://docs.microsoft.com/en-us/powershell/module/servicemanagement/azure/Get-AzureService?view=azuresmps-4.0.0)、[Remove-AzureService](https://docs.microsoft.com/en-us/powershell/module/servicemanagement/azure/Remove-AzureService?view=azuresmps-4.0.0) 和 [Set-AzureService](/powershell/module/servicemanagement/azure/set-azureservice?view=azuresmps-4.0.0) 命令。 有关更多信息，还可以参阅[如何配置云服务](cloud-services-how-to-configure-portal.md)。
-* 若要将云服务项目发布到 Azure，请参见**已存档的云服务存储库**中的 [PublishCloudService.ps1](https://github.com/MicrosoftDocs/azure-cloud-services-files/tree/master/Scripts/cloud-services-continuous-delivery) 代码示例。
+* 若要将云服务项目发布到 Azure，请参见[已存档的云服务存储库](https://github.com/MicrosoftDocs/azure-cloud-services-files/tree/master/Scripts/cloud-services-continuous-delivery)中的 **PublishCloudService.ps1** 代码示例。

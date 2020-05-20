@@ -136,7 +136,7 @@ ms.locfileid: "75335734"
 
     ![创建 SendGrid API 密钥](media/howto-create-custom-rules/sendgrid-api-keys.png)
 
-1. 在“创建 API 密钥”页上，创建拥有“完全访问权限”的名为 **AzureFunctionAccess** 的密钥。  
+1. 在“创建 API 密钥”页上，创建拥有“完全访问权限”的名为 **AzureFunctionAccess** 的密钥。 
 1. 请记下该 API 密钥，因为在配置函数应用时需要用到。
 
 ## <a name="define-the-function"></a>定义函数

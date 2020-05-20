@@ -39,7 +39,7 @@ Azure PowerShell 模块用于从 PowerShell 命令行或脚本创建和管理 Az
 如果选择在本地安装并使用 PowerShell，则本教程需要 Azure PowerShell Az 模块。 运行 `Get-Module -ListAvailable Az` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 来创建与 Azure 的连接。
 
 ## <a name="create-a-workspace"></a>创建工作区
-使用 [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment) 创建工作区。 以下示例使用本地计算机上的资源管理器模板在“中国东部”  位置的资源组 Lab  中创建名为 TestWorkspace  的工作区。 JSON 模板在经过配置后，只提示你输入工作区的名称，并为其他参数指定默认值，这些参数将会用作环境中的标准配置。 
+使用 [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment) 创建工作区。 以下示例使用本地计算机上的资源管理器模板在“中国东部”位置的资源组 Lab中创建名为 TestWorkspace 的工作区。 JSON 模板在经过配置后，只提示你输入工作区的名称，并为其他参数指定默认值，这些参数将会用作环境中的标准配置。 
 
 若要了解支持的区域，请参阅[提供 Log Analytics 的区域](https://status.azure.com/zh-cn/status)，然后在“搜索产品”字段中搜索 Azure Monitor。  
 

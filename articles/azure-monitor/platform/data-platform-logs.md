@@ -60,7 +60,7 @@ Application Insights 中的日志数据使用与工作区相同的 Log Analytics
 ![工作区](media/data-platform-logs/workspaces.png)
 
 ## <a name="log-queries"></a>日志查询
-Azure Monitor 日志中的日志数据都是使用以 [Kusto 查询语言](../log-query/log-query-overview.md)编写的[日志查询](../log-query/get-started-queries.md)检索的，这使得你可以快速检索、合并和分析所收集的数据。 可以在 Azure 门户中使用 [Log Analytics](../log-query/log-query-overview.md) 编写和测试日志查询。 这可以通过交互方式使用结果，也可以将其固定到某个仪表板，与其他可视化效果一起查看。
+Azure Monitor 日志中的日志数据都是使用以 [Kusto 查询语言](../log-query/get-started-queries.md)编写的[日志查询](../log-query/log-query-overview.md)检索的，这使得你可以快速检索、合并和分析所收集的数据。 可以在 Azure 门户中使用 [Log Analytics](../log-query/log-query-overview.md) 编写和测试日志查询。 这可以通过交互方式使用结果，也可以将其固定到某个仪表板，与其他可视化效果一起查看。
 
 ![Log Analytics](media/data-platform-logs/log-analytics.png)
 

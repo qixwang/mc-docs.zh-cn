@@ -52,7 +52,7 @@ ms.locfileid: "77494502"
 
 可通过以下方式之一使用遥测数据：
 
-- 直接从 Azure 表存储中读取数据（例如使用存储 SDK）。 有关遥测存储表的说明，请参阅**此**主题中的[使用遥测信息](https://msdn.microsoft.com/library/mt742089.aspx)。
+- 直接从 Azure 表存储中读取数据（例如使用存储 SDK）。 有关遥测存储表的说明，请参阅[此](https://msdn.microsoft.com/library/mt742089.aspx)主题中的**使用遥测信息**。
 
 或
 

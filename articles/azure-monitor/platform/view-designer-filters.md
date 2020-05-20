@@ -33,7 +33,7 @@ ms.locfileid: "79452546"
 
 ## <a name="creating-a-filter"></a>创建筛选器
 
-[编辑视图](view-designer.md)时，从“筛选器”选项卡创建筛选器。   筛选器适用于视图全局并应用于视图的所有部分。  
+[编辑视图](view-designer.md)时，从“筛选器”选项卡创建筛选器。  筛选器适用于视图全局并应用于视图的所有部分。  
 
 ![筛选器设置](media/view-designer-filters/filters-settings.png)
 

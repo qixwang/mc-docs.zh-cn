@@ -87,7 +87,7 @@ Site Recovery 无法在 Azure 中创建故障转移的虚拟机。 发生此情�
 
 ## <a name="unable-to-connectrdpssh---vm-connect-button-available"></a>无法连接/RDP/SSH - VM“连接”按钮不可用
 
-在 Azure 中，如果故障转移后的 VM 上的“连接”  按钮可用（未灰显），则在虚拟机上检查**启动诊断**并检查是否存在[此文章](../virtual-machines/windows/boot-diagnostics.md)中列出的错误。
+如果 Azure 中已故障转移的 VM 的“连接”按钮可用（未灰显），则请检查虚拟机上的“启动诊断”，查看是否有[此文](../virtual-machines/windows/boot-diagnostics.md)中所列的错误。 
 
 1. 如果虚拟机尚未启动，请尝试故障转移到以前的恢复点。
 2. 如果虚拟机中的应用程序未启动，请尝试故障转移到应用一致的恢复点。

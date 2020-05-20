@@ -20,7 +20,7 @@ ms.lasthandoff: 04/17/2020
 ms.locfileid: "74884934"
 ---
 # <a name="keyphrase-prebuilt-entity-for-a-luis-app"></a>LUIS 应用的 keyPhrase 预构建实体
-keyPhrase 实体从话语中提取各种关键短语。 不需要将包含 keyPhrase 的示例话语添加到应用程序。 keyPhrase 实体作为[文本分析](luis-language-support.md#languages-supported)功能的一部分，在[许多区域性](../text-analytics/overview.md)中都受支持。 
+keyPhrase 实体从话语中提取各种关键短语。 不需要将包含 keyPhrase 的示例话语添加到应用程序。 keyPhrase 实体作为[文本分析](../text-analytics/overview.md)功能的一部分，在[许多区域性](luis-language-support.md#languages-supported)中都受支持。 
 
 ## <a name="resolution-for-prebuilt-keyphrase-entity"></a>预构建 keyPhrase 实体的解析
 

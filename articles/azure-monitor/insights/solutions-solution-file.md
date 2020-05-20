@@ -159,7 +159,7 @@ Azure 中的管理解决方案作为[资源管理器模板](../../azure-resource
 
 
 ### <a name="dependencies"></a>依赖项
-**dependsOn** 元素指定对另一个资源的[依赖](../../azure-resource-manager/templates/define-resource-dependency.md)。  安装解决方案时，资源的所有依赖均已创建后才能创建资源。  例如，如果解决方案使用[作业资源](solutions-resources-automation.md#runbooks)安装，则该解决方案需要[启动 runbook](solutions-resources-automation.md#automation-jobs)。  作业资源将依赖于 runbook 资源，以确保在创建作业之前创建 runbook。
+**dependsOn** 元素指定对另一个资源的[依赖](../../azure-resource-manager/templates/define-resource-dependency.md)。  安装解决方案时，资源的所有依赖均已创建后才能创建资源。  例如，如果解决方案使用[作业资源](solutions-resources-automation.md#automation-jobs)安装，则该解决方案需要[启动 runbook](solutions-resources-automation.md#runbooks)。  作业资源将依赖于 runbook 资源，以确保在创建作业之前创建 runbook。
 
 ### <a name="log-analytics-workspace-and-automation-account"></a>Log Analytics 工作区和自动化帐户
 管理解决方案需要 [Log Analytics 工作区](../../azure-monitor/platform/manage-access.md)来包含视图，也需要[自动化帐户](../../automation/automation-security-overview.md#automation-account-overview)来包含 runbook 和相关资源。  这些内容在解决方案中的资源创建之前必须已经存在，并且不能在解决方案本身中定义。  部署解决方案时，用户将[指定工作区和帐户](solutions.md#log-analytics-workspace-and-automation-account)，但作为作者，应考虑以下几点。
@@ -211,7 +211,7 @@ Azure 中的管理解决方案作为[资源管理器模板](../../azure-resource
 | referencedResources |解决方案中不应随解决方案一起删除的资源的列表。 |
 | containedResources |解决方案中应随解决方案一起删除的资源的列表。 |
 
-上面的示例适用于具有 runbook、计划和视图的解决方案。  在 *properties* 元素中**引用** 计划和 runbook，这样它们就不会随解决方案一起删除。  *包含*视图，以便它将随解决方案一起删除。
+上面的示例适用于具有 runbook、计划和视图的解决方案。  在 **properties** 元素中*引用* 计划和 runbook，这样它们就不会随解决方案一起删除。  *包含*视图，以便它将随解决方案一起删除。
 
 ### <a name="plan"></a>计划
 解决方案资源的 **plan** 实体具有下表中的属性。

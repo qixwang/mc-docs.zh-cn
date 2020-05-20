@@ -77,7 +77,7 @@ ms.locfileid: "79292726"
 
 ## <a name="intents-and-patterns"></a>意向和模式
 
-如果你有可部分或全部定义为正则表达式的示例话语，请考虑使用与[模式](luis-concept-entity-types.md#regular-expression-entity)配对的[正则表达式实体](luis-concept-patterns.md)。 
+如果你有可部分或全部定义为正则表达式的示例话语，请考虑使用与[模式](luis-concept-patterns.md)配对的[正则表达式实体](luis-concept-entity-types.md#regular-expression-entity)。 
 
 使用正则表达式实体可以确保数据提取，以便匹配模式。 模式匹配可确保返回确切的意向。 
 

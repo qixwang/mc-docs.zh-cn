@@ -70,7 +70,7 @@ ms.locfileid: "77028680"
 
 * `<null_constant>; null`  
 
-    表示 Null 类型的 null 值   。  
+    表示 Null 类型的 null 值 。  
 
 * `<boolean_constant>`  
 

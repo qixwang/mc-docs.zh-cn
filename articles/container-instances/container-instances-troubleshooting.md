@@ -17,7 +17,7 @@ ms.locfileid: "78213743"
 
 本文展示了如何排查管理容器或向 Azure 容器实例部署容器时出现的常见问题。 另请参阅[常见问题解答](container-instances-faq.md)。
 
-如果需要更多支持，请参阅 [Azure 门户](https://portal.azure.cn/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)中可用的  “帮助 + 支持”选项。
+如果需要更多支持，请参阅 [Azure 门户](https://portal.azure.cn/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)中可用的“帮助 + 支持”选项。
 
 <!--CORRECT ON (https://portal.azure.cn/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)-->
 

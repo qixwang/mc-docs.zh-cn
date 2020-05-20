@@ -127,7 +127,7 @@ ms.locfileid: "80151726"
     }
     ```
 
-6. 打开 Info.plist 文件，导航到“高级”部分中的“URL 类型”    。 现在配置 URL 类型的标识符  和 URL 方案  ，然后单击“添加 URL 类型”  。 URL 方案  应与你的 {url_scheme_of_your_app} 相同。
+6. 打开 **Info.plist** 文件，导航到“高级”节中的“URL 类型”。 现在配置 URL 类型的标识符  和 URL 方案  ，然后单击“添加 URL 类型”  。 URL 方案  应与你的 {url_scheme_of_your_app} 相同。
 7. 在已连接到 Mac 主机的 Visual Studio 中或在 Visual Studio for Mac 中，针对设备或模拟器运行客户端项目。 验证应用程序是否未显示任何数据。
 
     通过向下拉动项列表来执行刷新笔势，这会导致显示登录屏幕。 成功输入有效的凭据后，应用会显示待办事项列表，用户可以对数据进行更新。

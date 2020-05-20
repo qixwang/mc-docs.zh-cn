@@ -21,6 +21,6 @@ ms.locfileid: "73034462"
 
 [!INCLUDE [bindings errors intro](../../includes/functions-bindings-errors-intro.md)]
 
-有关 Functions 支持的服务返回的错误的信息，请参阅 [Azure Functions 错误处理概述](functions-bindings-error-pages.md#binding-error-codes)一文的[绑定错误代码](functions-bindings-error-pages.md)部分。  
+有关 Functions 支持的服务返回的错误的信息，请参阅 [Azure Functions 错误处理概述](functions-bindings-error-pages.md)一文的[绑定错误代码](functions-bindings-error-pages.md#binding-error-codes)部分。  
 
 <!-- Update_Description: wording update -->

@@ -36,7 +36,7 @@ ms.locfileid: "79290891"
 >[!NOTE]
 >如果选择使用 Terraform，则必须运行 Terraform Azure RM 提供程序 1.17.0 版或更高版本。
 
-要将用于容器的 Azure Monitor 添加到工作区，请参阅 [azurerm_log_analytics_solution](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_solution.html)，并通过纳入 [addon_profile **，以及指定 oms_agent，完成配置文件**](https://www.terraform.io/docs/providers/azurerm/r/kubernetes_cluster.html#addon_profile)  。 
+要将用于容器的 Azure Monitor 添加到工作区，请参阅 [azurerm_log_analytics_solution](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_solution.html)，并通过纳入 [addon_profile](https://www.terraform.io/docs/providers/azurerm/r/kubernetes_cluster.html#addon_profile)，以及指定 oms_agent，完成配置文件 。 
 
 启用监视并成功完成所有配置任务后，可通过两种方法监视群集性能：
 

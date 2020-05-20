@@ -68,7 +68,7 @@ ms.locfileid: "74116190"
 2. 单击“证书”  磁贴打开“证书”  页。
 3. 单击页面顶部的“添加证书”  。
 4. 在“名称”  框中键入证书的名称。
-5. 若要浏览 .cer 或.pfx 文件，请单击“上传证书文件”  下的“选择文件”  。 如果选择了 .pfx 文件，请指定密码，以及是否可以导出该文件。
+5. 若要浏览 .cer 或.pfx 文件，请单击“上传证书文件”下的“选择文件”。 如果选择了 .pfx 文件，请指定密码，以及是否可以导出该文件。
 6. 单击“创建”  以保存新的证书资产。
 
 ### <a name="to-create-a-new-certificate-with-powershell"></a>使用 PowerShell 创建新证书
@@ -145,7 +145,7 @@ Add-AzureCertificate -ServiceName $serviceName -CertToDeploy $cert
 
 ### <a name="graphical-runbook-sample"></a>图形 Runbook 示例
 
-通过在“库”窗格中右键单击证书并选择“添加到画布”  ，将 **Get-AutomationCertificate** 添加到图形 Runbook。
+通过在“库”窗格中右键单击证书并选择“添加到画布”，将 **Get-AutomationCertificate** 添加到图形 Runbook。
 
 ![将证书添加到画布](../media/certificates/automation-certificate-add-to-canvas.png)
 

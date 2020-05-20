@@ -33,7 +33,7 @@ ms.locfileid: "63844442"
 |                        |                                   |
 
 > [!NOTE]
-> 示例配置将 Cisco ASA 设备连接到 Azure 基于路由的 VPN 网关。  连接使用自定义 IPsec/IKE 策略并启用“UsePolicyBasedTrafficSelectors”选项，如[这篇文章](vpn-gateway-connect-multiple-policybased-rm-ps.md)中所述。 
+> 示例配置将 Cisco ASA 设备连接到 Azure 基于路由的 VPN 网关。  连接使用自定义 IPsec/IKE 策略并启用“UsePolicyBasedTrafficSelectors”选项，如[这篇文章](vpn-gateway-connect-multiple-policybased-rm-ps.md)中所述。
 >
 > 示例要求 ASA 设备中的“IKEv2”策略使用基于访问列表的配置，而不是基于 VTI 的配置。  请查阅 VPN 设备供应商规范，验证本地 VPN 设备是否支持 IKEv2 策略。
 

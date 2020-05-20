@@ -58,7 +58,7 @@ ms.locfileid: "80243577"
 
    ![选择“添加”](./media/logic-apps-enterprise-integration-edifact/edifact-agreement-2.png)
 
-6. 在“添加”下面，输入协议的**名称**。  对于“协议类型”，请选择“EDIFACT”。   为协议选择“宿主合作伙伴”，“宿主标识”、“来宾合作伙伴”和“来宾标识”。    
+6. 在“添加”下面，输入协议的**名称**。 对于“协议类型”，请选择“EDIFACT”。   为协议选择“宿主合作伙伴”，“宿主标识”、“来宾合作伙伴”和“来宾标识”。    
 
    ![提供协议详细信息](./media/logic-apps-enterprise-integration-edifact/edifact-1.png)
 

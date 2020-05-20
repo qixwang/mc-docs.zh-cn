@@ -40,7 +40,7 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 可以管
 
 遵循以下步骤可使用户符合 Azure 资源角色的条件。
 
-1. 使用“[特权角色管理员](https://portal.azure.cn/)”角色成员的用户身份登录到 [Azure 门户](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)。
+1. 使用“[特权角色管理员](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)”角色成员的用户身份登录到 [Azure 门户](https://portal.azure.cn/)。
 
     有关如何授予其他管理员访问权限以管理 Privileged Identity Management 的信息，请参阅[授予其他管理员访问权限以管理 Privileged Identity Management](pim-how-to-give-access-to-pim.md)。
 

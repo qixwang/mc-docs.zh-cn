@@ -79,7 +79,7 @@ New-AzManagementGroupDeployment `
 对于管理组部署，在使用模板函数时有一些重要注意事项：
 
 * 不支持 [resourceGroup()](template-functions-resource.md#resourcegroup) 函数。 
-* [不](template-functions-resource.md#subscription)支持 **subscription()** 函数。
+* **不**支持 [subscription()](template-functions-resource.md#subscription) 函数。
 * 支持 [reference()](template-functions-resource.md#reference) 和 [list()](template-functions-resource.md#list) 函数。
 * 支持 [resourceId()](template-functions-resource.md#resourceid) 函数。 可以使用它获取在管理组级别部署中使用的资源的资源 ID。 不要为资源组参数提供值。
 

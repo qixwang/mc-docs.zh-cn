@@ -65,7 +65,7 @@ ms.locfileid: "77540038"
 
 ## <a name="disable-the-classic-policy"></a>禁用经典策略
 
-若要禁用经典策略，请单击“详细信息”  视图中的“禁用”  。
+若要禁用经典策略，请单击“详细信息”视图中的“禁用”。
 
 ![禁用经典策略](./media/policy-migration-mfa/14.png)
 

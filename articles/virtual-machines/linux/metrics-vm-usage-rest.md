@@ -20,7 +20,7 @@ ms.locfileid: "68912815"
 ---
 # <a name="get-virtual-machine-usage-metrics-using-the-rest-api"></a>使用 REST API 获取虚拟机使用情况指标
 
-此示例演示如何使用 [Azure REST API](/virtual-machines/linux/monitor) 检索 [Linux 虚拟机](https://docs.microsoft.com/rest/api/azure/)的 CPU 使用情况。
+此示例演示如何使用 [Azure REST API](https://docs.microsoft.com/rest/api/azure/) 检索 [Linux 虚拟机](/virtual-machines/linux/monitor)的 CPU 使用情况。
 
 [Azure Monitor REST 参考](https://docs.microsoft.com/rest/api/monitor)中提供了完整的参考文档和 REST API 的其他示例。 
 

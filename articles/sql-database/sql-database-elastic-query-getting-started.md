@@ -34,7 +34,7 @@ ms.locfileid: "73041198"
 ## <a name="create-a-shard-map-manager-using-the-sample-app"></a>使用示例应用程序创建分片映射管理器
 在此处，将创建分片映射管理器以及多个分片，然后将数据插入分片。 如果分片中正好设置了分片数据，则可以跳过下面的步骤，直接转到下一部分。
 
-1. 按照文章部分**下载并运行示例应用**中的步骤，生成并运行[弹性数据库工具入门](sql-database-elastic-scale-get-started.md#download-and-run-the-sample-app-1)示例应用程序。 完成所有步骤后，会看到以下命令提示符：
+1. 按照文章部分[下载并运行示例应用](sql-database-elastic-scale-get-started.md#download-and-run-the-sample-app-1)中的步骤，生成并运行**弹性数据库工具入门**示例应用程序。 完成所有步骤后，会看到以下命令提示符：
 
     ![命令提示符][1]
 2. 在命令窗口中键入“1”，并按“Enter”  。 这会创建分片映射管理器，并将两个分片添加到服务器。 “然”后“键”入“3”并按“Enter”  ；重复该操作四次。 这会在分片中插入示例数据行。
@@ -69,7 +69,7 @@ ms.locfileid: "73041198"
         WITH IDENTITY = '<username>',
         SECRET = '<password>';
 
-    “username”和“password”应该与[弹性数据库工具入门](sql-database-elastic-scale-get-started.md#download-and-run-the-sample-app)一文中**下载并运行示例应用**部分的步骤 3 中使用的登录信息相同。
+    “username”和“password”应该与**弹性数据库工具入门**一文中[下载并运行示例应用](sql-database-elastic-scale-get-started.md#download-and-run-the-sample-app)部分的步骤 3 中使用的登录信息相同。
 
 ### <a name="external-data-sources"></a>外部数据源
 若要创建外部数据源，请对 ElasticDBQuery 数据库执行以下命令：

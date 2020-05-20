@@ -24,7 +24,7 @@ ms.locfileid: "75598979"
 
 以下文章介绍了如何浏览数据科学过程中通常使用的三种不同存储环境中的数据：
 
-* 使用 [Pandas](explore-data-blob.md) Python 包浏览 [Azure blob 容器](https://pandas.pydata.org/)数据。
+* 使用 [Pandas](https://pandas.pydata.org/) Python 包浏览 [Azure blob 容器](explore-data-blob.md)数据。
 * 使用 SQL 和编程语言（如 Python）浏览 [SQL Server](explore-data-sql-server.md) 数据。
 * 使用 Hive 查询浏览 [Hive 表](explore-data-hive-tables.md)数据。
 

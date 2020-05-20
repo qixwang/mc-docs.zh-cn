@@ -16,7 +16,7 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 04/17/2020
 ms.locfileid: "63821723"
 ---
-如果未将缓存固定到仪表板，请使用“所有服务”  在[Azure 门户](https://portal.azure.cn)中查找缓存。
+如果未将缓存固定到仪表板，请使用“所有服务”在[Azure 门户](https://portal.azure.cn)中查找缓存。
 
 ![Azure Redis 缓存的“浏览”边栏选项卡](./media/redis-cache-browse/redis-cache-browse.png)
 

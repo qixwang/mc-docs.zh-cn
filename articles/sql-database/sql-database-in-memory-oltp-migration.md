@@ -83,7 +83,7 @@ SSMS 包含可以针对具有活动工作负荷的数据库运行的**事务性�
    * 此时会显示“表内存优化顾问”  向导。
 3. 在向导中，单击“迁移验证”  （或“下一步”  按钮），以查看该表是否有任何在内存优化表中不受支持的功能。 有关详细信息，请参阅：
    
-   * *内存优化顾问中的*[内存优化清单](https://msdn.microsoft.com/library/dn284308.aspx)。
+   * [内存优化顾问中的](https://msdn.microsoft.com/library/dn284308.aspx)*内存优化清单*。
    * [内存中 OLTP 不支持的 Transact-SQL 构造](https://msdn.microsoft.com/library/dn246937.aspx)。
    * [迁移到内存中 OLTP](https://msdn.microsoft.com/library/dn247639.aspx)。
 4. 如果该表没有不受支持的功能，顾问可执行实际的架构和数据迁移。

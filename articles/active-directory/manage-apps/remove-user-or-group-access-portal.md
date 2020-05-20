@@ -33,7 +33,7 @@ ms.locfileid: "70134321"
 ## <a name="how-do-i-remove-a-user-assignment-to-an-enterprise-app-in-the-azure-portal"></a>如何在 Azure 门户中删除到企业应用的用户分配？
 1. 使用目录全局管理员的帐户登录到 [Azure 门户](https://portal.azure.cn)。
 1. 选择“所有服务”  ，在文本框中输入 **Azure Active Directory**，并选择“Enter”  。
-1. 在“Azure Active Directory - **directoryname *”页面（即，正在管理的目录的 Azure AD 页面）上，选择“企业应用程序”。*** 
+1. 在“Azure Active Directory - *directoryname*”页面（即，正在管理的目录的 Azure AD 页面）上，选择“企业应用程序”。 
 1. 在“企业应用程序 - 所有应用程序”  页上，你会看到你可以管理的应用的列表。 选择一个应用。
 1. 在 ***appname*** 概览页面（即标题中包含所选应用的名称的页面）上，选择“用户和组”  。
 1. 在“***appname*** - 用户”页面上，选择一个或多个用户，然后选择“删除”命令。   出现提示时确认所作的决定。

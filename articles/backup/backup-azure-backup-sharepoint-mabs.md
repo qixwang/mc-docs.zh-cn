@@ -72,7 +72,7 @@ Azure 备份服务器以 LocalSystem 帐户的身份运行。 若要备份 SQL S
 ### <a name="to-protect-a-sharepoint-farm"></a>保护 SharePoint 场
 1. 在 MABS 管理员控制台的“保护”选项卡中，单击“新建”。  
     ![新建保护选项卡](./media/backup-azure-backup-sharepoint/dpm-new-protection-tab.png)
-2. 在“创建新保护组”向导的“选择保护组类型”页上，选择“服务器”，并单击“下一步”     。
+2. 在“**创建新保护组**”向导的“**选择保护组类型**”页上，选择“**服务器**”，并单击“**下一步**”。
 
     ![选择保护组类型](./media/backup-azure-backup-sharepoint/select-protection-group-type.png)
 3. 在“选择组成员”屏幕上，选中要保护的 SharePoint 服务器对应的复选框，并单击“下一步”   。

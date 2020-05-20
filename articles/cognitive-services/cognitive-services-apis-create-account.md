@@ -89,7 +89,7 @@ ms.locfileid: "79291838"
 
 ## <a name="get-the-keys-for-your-resource"></a>获取资源的密钥
 
-1. 成功部署资源后，单击“后续步骤”  下的“转到资源”  。
+1. 成功部署资源后，单击“后续步骤”下的“转到资源”。
 
     ![搜索“认知服务”](media/cognitive-services-apis-create-account/resource-next-steps.png)
 

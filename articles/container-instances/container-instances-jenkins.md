@@ -22,7 +22,7 @@ Azure 容器实例 (ACI) 提供按需、可迸发的隔离环境用于运行容�
 
 ## <a name="deploy-a-jenkins-server"></a>部署 Jenkins 服务器
 
-1. 在 Azure 门户中，选择“创建资源”并搜索 **Jenkins**。  选择发行商为“Microsoft”的 Jenkins 产品/服务，然后选择“创建”。  
+1. 在 Azure 门户中，选择“创建资源”并搜索 **Jenkins**。 选择发行商为“Microsoft”的 Jenkins 产品/服务，然后选择“创建”。  
 
 2. 在“基本信息”窗体中输入以下信息，然后选择“确定”。  
 

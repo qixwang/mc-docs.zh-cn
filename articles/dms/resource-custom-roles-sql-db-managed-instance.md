@@ -32,7 +32,7 @@ Azure 数据库迁移服务使用应用 ID 来与 Azure 服务交互。 应用 I
 > [!NOTE]
 > 最后一项自定义角色要求最终可能会取消，因为新的 SQL 数据库托管实例代码将部署到 Azure 中。
 
-**应用 ID 的自定义角色**。 在资源或资源组级别进行 Azure 数据库迁移服务迁移时需要此角色（有关应用 ID 的详细信息，请参阅[使用门户创建可访问资源的 Azure AD 应用程序和服务主体](/active-directory/develop/howto-create-service-principal-portal)一文）。  
+**应用 ID 的自定义角色**。 在资源或资源组级别进行 Azure 数据库迁移服务迁移时需要此角色（有关应用 ID 的详细信息，请参阅[使用门户创建可访问资源的 Azure AD 应用程序和服务主体](/active-directory/develop/howto-create-service-principal-portal)一文）。 
 
 ```json
 {

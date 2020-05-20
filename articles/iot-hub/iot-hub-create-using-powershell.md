@@ -43,7 +43,7 @@ Login-AzAccount -Environment AzureChinaCloud
 
 需要一个资源组来部署 IoT 中心。 可以使用现有资源组，也可以创建新组。
 
-若要为 IoT 中心创建资源组，请使用 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.Resources/New-azResourceGroup) 命令。 此示例在“中国东部”  区域中创建名为 **MyIoTRG1** 的资源组：
+若要为 IoT 中心创建资源组，请使用 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.Resources/New-azResourceGroup) 命令。 此示例在“中国东部”区域中创建名为 **MyIoTRG1** 的资源组：
 
 ```powershell
 New-AzResourceGroup -Name MyIoTRG1 -Location "China East"
@@ -51,7 +51,7 @@ New-AzResourceGroup -Name MyIoTRG1 -Location "China East"
 
 ## <a name="create-an-iot-hub"></a>创建 IoT 中心
 
-若要在上一步创建的资源组中创建 IoT 中心，请使用 [New-AzIotHub](https://docs.microsoft.com/powershell/module/az.IotHub/New-azIotHub) 命令。 此示例在“中国东部”  区域中创建名为 **MyTestIoTHub** 的 **S1** 中心：
+若要在上一步创建的资源组中创建 IoT 中心，请使用 [New-AzIotHub](https://docs.microsoft.com/powershell/module/az.IotHub/New-azIotHub) 命令。 此示例在“中国东部”区域中创建名为 **MyTestIoTHub** 的 **S1** 中心：
 
 ```powershell
 New-AzIotHub `

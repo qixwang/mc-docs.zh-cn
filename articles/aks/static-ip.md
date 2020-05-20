@@ -40,7 +40,7 @@ az network public-ip create \
 ```
 
 > [!NOTE]
-> 如果在 AKS 群集中使用基本 SKU 负载平衡器，请在定义公共 IP 时对 *sku* 参数使用 *Basic*。  仅基本 SKU IP 兼容基本 SKU 负载均衡器，仅标准 SKU IP 兼容标准 SKU 负载均衡器。     
+> 如果在 AKS 群集中使用基本 SKU 负载平衡器，请在定义公共 IP 时对 *sku* 参数使用 *Basic*。 仅基本 SKU IP 兼容基本 SKU 负载均衡器，仅标准 SKU IP 兼容标准 SKU 负载均衡器。     
 
 将显示 IP 地址，如以下精简版示例输出中所示：
 

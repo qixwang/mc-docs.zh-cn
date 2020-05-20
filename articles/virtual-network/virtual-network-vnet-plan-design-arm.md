@@ -107,7 +107,7 @@ Azure 为子网中的出站流量创建多个默认路由。 可通过创建路�
 
 ### <a name="vpn-gateway"></a>VPN 网关
 
-可通过[站点到站点 VPN ](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md?toc=%2fvirtual-network%2ftoc.json)或与 Azure [ExpressRoute](../vpn-gateway/vpn-gateway-tutorial-vpnconnection-powershell.md?toc=%2fvirtual-network%2ftoc.json) 的专用连接，使用 Azure [VPN 网关](../expressroute/expressroute-introduction.md?toc=%2fvirtual-network%2ftoc.json)将虚拟网络连接到本地网络。
+可通过[站点到站点 VPN ](../vpn-gateway/vpn-gateway-tutorial-vpnconnection-powershell.md?toc=%2fvirtual-network%2ftoc.json)或与 Azure [ExpressRoute](../expressroute/expressroute-introduction.md?toc=%2fvirtual-network%2ftoc.json) 的专用连接，使用 Azure [VPN 网关](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md?toc=%2fvirtual-network%2ftoc.json)将虚拟网络连接到本地网络。
 
 <!--Not Available on [hub and spoke networks](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fvirtual-network%2ftoc.json)-->
 

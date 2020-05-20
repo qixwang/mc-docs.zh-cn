@@ -25,7 +25,7 @@ ms.locfileid: "80343351"
 
 此库存有 Microsoft Azure 机器学习工作室（经典）团队提供的示例试验，以及由机器学习社区共享的示例。 此外，还可以提出问题或发布有关试验的评论。
 
-若要了解如何使用此库，请观看[适合初学者的数据科学](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md)系列中 3 分钟的视频[复制其他人的工作来进行数据科学](data-science-for-beginners-the-5-questions-data-science-answers.md)。
+若要了解如何使用此库，请观看[适合初学者的数据科学](data-science-for-beginners-the-5-questions-data-science-answers.md)系列中 3 分钟的视频[复制其他人的工作来进行数据科学](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md)。
 
 
 

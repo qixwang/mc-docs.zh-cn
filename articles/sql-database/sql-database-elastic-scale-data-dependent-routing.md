@@ -37,7 +37,7 @@ ms.locfileid: "79293687"
 
 ## <a name="using-a-shardmapmanager-in-a-data-dependent-routing-application"></a>在数据依赖型路由应用程序中使用 ShardMapManager
 
-应用程序应使用工厂调用 GetSQLShardMapManager（[Java](https://docs.microsoft.com/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanagerfactory.getsqlshardmapmanager)、[.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.getsqlshardmapmanager)）在初始化期间实例化 ShardMapManager   。 在本示例中，将同时初始化 **ShardMapManager** 以及它所包含的特定 **ShardMap**。 本例演示 GetSqlShardMapManager 和 GetRangeShardMap（[Java](https://docs.microsoft.com/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager.getrangeshardmap)、[.NET](https://docs.microsoft.com/previous-versions/azure/dn824173(v=azure.100))）方法。
+应用程序应使用工厂调用 GetSQLShardMapManager（[Java](https://docs.microsoft.com/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanagerfactory.getsqlshardmapmanager)、[.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.getsqlshardmapmanager)）在初始化期间实例化 ShardMapManager 。 在本示例中，将同时初始化 **ShardMapManager** 以及它所包含的特定 **ShardMap**。 本例演示 GetSqlShardMapManager 和 GetRangeShardMap（[Java](https://docs.microsoft.com/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager.getrangeshardmap)、[.NET](https://docs.microsoft.com/previous-versions/azure/dn824173(v=azure.100))）方法。
 
 ```Java
 ShardMapManager smm = ShardMapManagerFactory.getSqlShardMapManager(connectionString, ShardMapManagerLoadPolicy.Lazy);
@@ -69,7 +69,7 @@ public SqlConnection OpenConnectionForKey<TKey>(TKey key, string connectionStrin
 
 * **key** 参数在分片映射中用作查找键，以确定该请求的相应数据库。
 * **connectionString** 用于仅传递所需连接的用户凭据。 此 connectionString  中不包含数据库名称或服务器名称，因为该方法使用 ShardMap  确定数据库和服务器。
-* 在分片映射可能会发生更改并且行可能会由于拆分或合并操作而移到其他数据库的环境中，connectionOptions（[Java](https://docs.microsoft.com/java/api/com.microsoft.azure.elasticdb.shard.mapper.connectionoptions)、[.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.connectionoptions)）应设置为 ConnectionOptions.Validate   。 此验证涉及在将连接传送到应用程序之前，在目标数据库上简要查询局部分片映射（而不是全局分片映射）。 
+* 在分片映射可能会发生更改并且行可能会由于拆分或合并操作而移到其他数据库的环境中，connectionOptions（[Java](https://docs.microsoft.com/java/api/com.microsoft.azure.elasticdb.shard.mapper.connectionoptions)、[.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.connectionoptions)）应设置为 ConnectionOptions.Validate 。 此验证涉及在将连接传送到应用程序之前，在目标数据库上简要查询局部分片映射（而不是全局分片映射）。 
 
 如果针对局部分片映射进行的验证失败（指示缓存不正确），分片映射管理器会查询全局分片映射来获取新的正确值以供查找、更新缓存以及获取和返回相应的数据库连接。
 

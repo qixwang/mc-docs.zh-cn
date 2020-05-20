@@ -35,7 +35,7 @@ AKS 群集的出站流量遵循 [Azure 负载均衡器约定][outbound-connectio
 
 ## <a name="create-a-static-public-ip"></a>创建静态公共 IP
 
-使用 [az aks show][az-aks-show] 命令并添加 `--query nodeResourceGroup` 查询参数获取资源组名称。 以下示例获取名为 myResourceGroup  的资源组中 AKS 群集名称 myAKSCluster  的节点资源组：
+使用 [az aks show][az-aks-show] 命令并添加 `--query nodeResourceGroup` 查询参数获取资源组名称。 以下示例获取名为 myResourceGroup 的资源组中 AKS 群集名称 myAKSCluster 的节点资源组：
 
 ```azurecli
 $ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv

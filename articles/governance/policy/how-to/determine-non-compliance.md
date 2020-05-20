@@ -31,15 +31,15 @@ ms.locfileid: "79293054"
 - 资源不合规的原因列表 
 
 > [!IMPORTANT]
-> 由于不合规资源的合规性详细信息显示有关该资源的属性的当前值，因此，用户必须对资源**类型**拥有**读取**操作权限。  例如，如果不合规的资源为 **Microsoft.Compute/virtualMachines**，则用户必须拥有 **Microsoft/virtualMachines/read** 操作权限。  如果用户没有所需的操作权限，将显示访问权限错误。
+> 由于不合规资源的合规性详细信息显示有关该资源的属性的当前值，因此，用户必须对资源**类型**拥有**读取**操作权限。 例如，如果不合规的资源为 **Microsoft.Compute/virtualMachines**，则用户必须拥有 **Microsoft/virtualMachines/read** 操作权限。 如果用户没有所需的操作权限，将显示访问权限错误。
 
 若要查看合规性详细信息，请执行以下步骤：
 
 1. 在 Azure 门户中单击“所有服务”，然后搜索并选择“策略”，启动 Azure Policy 服务。  
 
-1. 在“概述”或“合规性”页上，选择**合规性状态**为“不合规”的策略。   
+1. 在“概述”或“合规性”页上，选择**合规性状态**为“不合规”的策略。 
 
-1. 在“策略合规性”页的“资源合规性”选项卡下，右键单击**合规性状态**为“不合规”的资源或选择其对应的省略号。    然后选择“查看合规性详细信息”。 
+1. 在“策略合规性”页的“资源合规性”选项卡下，右键单击**合规性状态**为“不合规”的资源或选择其对应的省略号。  然后选择“查看合规性详细信息”。 
 
    ![“查看合规性详细信息”选项](../media/determine-non-compliance/view-compliance-details.png)
 
@@ -47,7 +47,7 @@ ms.locfileid: "79293054"
 
    ![“合规性详细信息”窗格和不合规的原因](../media/determine-non-compliance/compliance-details-pane.png)
 
-   对于 **auditIfNotExists** 或 **deployIfNotExists** 策略定义，详细信息包含 **details.type** 属性和所有可选属性。 有关列表，请参阅 [auditIfNotExists 属性](../concepts/effects.md#auditifnotexists-properties)和 [deployIfNotExists 属性](../concepts/effects.md#deployifnotexists-properties)。 “上次评估的资源”是定义的 **details** 节中的相关资源。 
+   对于 **auditIfNotExists** 或 **deployIfNotExists** 策略定义，详细信息包含 **details.type** 属性和所有可选属性。 有关列表，请参阅 [auditIfNotExists 属性](../concepts/effects.md#auditifnotexists-properties)和 [deployIfNotExists 属性](../concepts/effects.md#deployifnotexists-properties)。 “上次评估的资源”是定义的 **details** 节中的相关资源。
 
    部分 **deployIfNotExists** 定义示例：
 
@@ -83,7 +83,7 @@ ms.locfileid: "79293054"
 
 ### <a name="compliance-reasons"></a>合规性原因
 
-以下矩阵将每个可能的原因映射到策略定义中的控制 [条件：](../concepts/definition-structure.md#conditions) 
+以下矩阵将每个可能的原因映射到策略定义中的控制 [条件：](../concepts/definition-structure.md#conditions)
 
 |Reason | 条件 |
 |-|-|

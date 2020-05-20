@@ -80,7 +80,7 @@ ms.locfileid: "80343354"
 
     const string apiKey = "abc123"; // Replace this with the API key for the web service
 
-在“使用”  页的“基本使用信息”  部分中，找到主密钥，并将其复制到 **apikey** 声明。
+在“使用”页的“基本使用信息”部分中，找到主密钥，并将其复制到 **apikey** 声明。
 
 ### <a name="update-the-azure-storage-information"></a>更新 Azure 存储信息
 

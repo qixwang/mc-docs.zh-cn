@@ -51,7 +51,7 @@ ms.locfileid: "78850352"
 
 如果预期在可视化中看到的页面视图或自定义事件丢失：
 
-* 检查“编辑”  菜单中的“已排除事件”  部分。
+* 检查“编辑”菜单中的“已排除事件”部分。
 * 使用“其他”  节点上的加号按钮在可视化中包括不太频繁发生的事件。
 * 如果用户未频繁发送你预期的页面视图或自定义事件，请尝试在“编辑”  菜单中增加可视化的时间范围。
 * 确保将预期的页面视图、自定义事件或异常设置为由站点源代码中的 Application Insights SDK 收集。 [详细了解如何收集自定义事件。](../../azure-monitor/app/api-custom-events-metrics.md)
@@ -84,7 +84,7 @@ ms.locfileid: "78850352"
 
 ### <a name="some-of-the-nodes-in-my-visualization-are-too-high-level-for-example-a-node-that-just-says-button-clicked-how-can-i-break-it-down-into-more-detailed-nodes"></a>我的可视化中的某些节点太粗略。 例如，仅显示“已单击按钮”节点。 如何将其细分为更详细的节点？
 
-使用“编辑”  菜单中的“拆分依据”  选项：
+使用“编辑”菜单中的“拆分依据”选项：
 
 1. 在“事件”  菜单中选择要细分的事件。
 2. 在“维度”  菜单中选择维度。 例如，如果已有一个名为“已单击按钮”的事件，请尝试使用一个名为“按钮名称”的自定义属性。

@@ -158,7 +158,7 @@ Smith
 
 ### <a name="credentials"></a>凭据
 
-如果参数的数据类型为 **PSCredential**，则可以提供 Azure 自动化[凭据资产](automation-credentials.md)的名称。 Runbook 将检索具有指定名称的凭据。
+如果参数的数据类型为 PSCredential，则可以提供 Azure 自动化[凭据资产](automation-credentials.md)的名称。 Runbook 将检索具有指定名称的凭据。
 
 请考虑以下接受名为 credential 的参数的测试 Runbook。
 

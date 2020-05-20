@@ -24,7 +24,7 @@ ms.locfileid: "75334956"
 
 **示例代码**：[Azure SQL 数据库的弹性数据库工具 - Dapper 集成](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-e19fc77f)。
 
-将 **Dapper** 和 **DapperExtensions** 与 Azure SQL 数据库的弹性数据库客户端库的过程很简单。 将新 [SqlConnection](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection.aspx) 对象的创建和打开方式更改为使用来自[客户端库](https://msdn.microsoft.com/library/azure/dn807226.aspx)的 [OpenConnectionForKey](https://msdn.microsoft.com/library/azure/dn765902.aspx) 调用，应用程序即可使用数据依赖型路由。 这会将应用程序中的更改限制为已创建和打开新连接的位置。 
+将 **Dapper** 和 **DapperExtensions** 与 Azure SQL 数据库的弹性数据库客户端库的过程很简单。 将新 [SqlConnection](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection.aspx) 对象的创建和打开方式更改为使用来自[客户端库](https://msdn.microsoft.com/library/azure/dn765902.aspx)的 [OpenConnectionForKey](https://msdn.microsoft.com/library/azure/dn807226.aspx) 调用，应用程序即可使用数据依赖型路由。 这会将应用程序中的更改限制为已创建和打开新连接的位置。 
 
 ## <a name="dapper-overview"></a>Dapper 概述
 **Dapper** 是对象关系映射器。 它将应用程序中的 .NET 对象映射到关系数据库（或者执行相反的映射）。 示例代码的第一个部分演示了如何将弹性数据库客户端库与基于 Dapper 的应用程序相集成。 示例代码的第二个部分演示了同时使用 Dapper 和 DapperExtensions 时如何集成。  

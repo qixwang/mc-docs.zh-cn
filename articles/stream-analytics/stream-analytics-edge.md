@@ -138,7 +138,7 @@ IoT Edge 提供了一种在模块之间，以及模块和 IoT 中心之间以声
 以下示例定义了以下路由：
 - 来自 tempSensor  的每个消息均发送到名为 ASA 的模块，再  到名为“temperature”的输入  ，
 - ASA  模块的所有输出均发送到链接此设备的 IoT 中心 ($upstream)，
-- ASA  模块的所有输出均发送到 tempSensor  的控制  终结点。
+- ASA 模块的所有输出均发送到 tempSensor 的控制终结点。
 
 ## <a name="technical-information"></a>技术信息
 ### <a name="current-limitations-for-iot-edge-jobs-compared-to-cloud-jobs"></a>与云作业相比，IoT Edge 作业当前受限制

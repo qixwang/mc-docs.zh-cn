@@ -33,7 +33,7 @@ Azure Database for MySQL 通过使用防火墙保护数据来确保访问安全�
 
    ![Azure 门户 - 单击连接安全性](./media/howto-connect-webapp/1-connection-security.png)
 
-2. 在“允许访问 Azure 服务”  中选择“开”  ，然后选择“保存”  。
+2. 在“允许访问 Azure 服务”中选择“开”，然后选择“保存”。
    ![Azure 门户 - 允许 Azure 访问](./media/howto-connect-webapp/allow-azure.png)
 
 ## <a name="solution-2---create-a-firewall-rule-to-explicitly-allow-outbound-ips"></a>解决方案 2 - 创建显式允许出站 IP 的防火墙规则

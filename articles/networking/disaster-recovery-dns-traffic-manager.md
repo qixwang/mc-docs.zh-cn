@@ -147,7 +147,7 @@ Azure 流量管理器自动故障转移的配置步骤如下：
 
 ### <a name="step-2-create-endpoints-within-the-traffic-manager-profile"></a>第 2 步：在流量管理器配置文件中创建终结点
 
-在这一步，创建指向生产站点和灾难恢复站点的终结点。 此时，选择“类型”  作为外部终结点，但如果资源托管在 Azure 中，也可以选择“Azure 终结点”  。 如果选择“Azure 终结点”  ，请选择 Azure 分配的“应用服务”  或“公共 IP”  作为“目标资源”  。 优先级设置为“1”  ，因为它是区域 1 的主服务。
+在这一步，创建指向生产站点和灾难恢复站点的终结点。 此时，选择“类型”  作为外部终结点，但如果资源托管在 Azure 中，也可以选择“Azure 终结点”  。 如果选择“Azure 终结点”，请选择 Azure 分配的“应用服务”或“公共 IP”作为“目标资源”。 优先级设置为“1”  ，因为它是区域 1 的主服务。
 同样，也在流量管理器中创建灾难恢复终结点。
 
 ![创建灾难恢复终结点](./media/disaster-recovery-dns-traffic-manager/create-disaster-recovery-endpoint.png)

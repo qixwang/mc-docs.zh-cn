@@ -41,7 +41,7 @@ ms.locfileid: "80343193"
 
 ![创建 IoT Central 窗体](media/howto-manage-iot-central-from-portal/image6a.png)
 
-“位置”是你想要创建应用程序的[地理位置](https://azure.microsoft.com/global-infrastructure/geographies/)  。 通常，应选择物理上离设备最近的位置以获得最佳性能。 选择一个位置后，之后便不能将应用程序移到其他位置。
+“位置”是你想要创建应用程序的[地理位置](https://azure.microsoft.com/global-infrastructure/geographies/)。 通常，应选择物理上离设备最近的位置以获得最佳性能。 选择一个位置后，之后便不能将应用程序移到其他位置。
 
 
 填写所有字段后，选择“创建”  。

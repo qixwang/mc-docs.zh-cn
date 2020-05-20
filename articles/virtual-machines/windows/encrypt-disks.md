@@ -137,7 +137,7 @@ Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName `
 <!--UPDATE BE CAREFULLY-->
 
 ## <a name="create-a-virtual-machine"></a>创建虚拟机
-若要测试加密过程，请使用 [New-AzVm](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) 创建 VM。 以下示例使用 Windows Server 2016 Datacenter  映像创建名为 myVM  的 VM。 系统提示输入凭据时，请输入用于 VM 的用户名和密码：
+若要测试加密过程，请使用 [New-AzVm](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) 创建 VM。 以下示例使用 Windows Server 2016 Datacenter 映像创建名为 myVM 的 VM。 系统提示输入凭据时，请输入用于 VM 的用户名和密码：
 
 ```powershell
 $cred = Get-Credential

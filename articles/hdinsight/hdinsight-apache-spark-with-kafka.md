@@ -26,7 +26,7 @@ ms.locfileid: "75336085"
 ---
 # <a name="apache-spark-streaming-dstream-example-with-apache-kafka-on-hdinsight"></a>Apache Kafka on HDInsight 的 Apache Spark 流式处理 (DStream) 示例
 
-了解如何使用 [Apache Spark](https://spark.apache.org/) 通过 [DStreams](https://kafka.apache.org/) 将数据流式传入或流式传出 [Apache Kafka](https://spark.apache.org/docs/latest/api/java/org/apache/spark/streaming/dstream/DStream.html) on HDInsight。 本示例使用在 Spark 群集上运行的 [Jupyter Notebook](https://jupyter.org/)。
+了解如何使用 [Apache Spark](https://spark.apache.org/) 通过 [DStreams](https://spark.apache.org/docs/latest/api/java/org/apache/spark/streaming/dstream/DStream.html) 将数据流式传入或流式传出 [Apache Kafka](https://kafka.apache.org/) on HDInsight。 本示例使用在 Spark 群集上运行的 [Jupyter Notebook](https://jupyter.org/)。
 
 > [!NOTE]
 > 本文档中的步骤创建了一个包含 Spark on HDInsight 和 Kafka on HDInsight 群集的 Azure 资源组。 这些群集都位于 Azure 虚拟网络中，允许 Spark 群集直接与 Kafka 群集进行通信。

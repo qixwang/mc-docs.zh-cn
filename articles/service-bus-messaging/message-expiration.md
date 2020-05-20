@@ -53,7 +53,7 @@ ms.locfileid: "77067993"
 
 此功能是使用 [autoDeleteOnIdle](https://docs.microsoft.com/azure/templates/microsoft.servicebus/namespaces/queues) 属性启用的。 此属性设置为自动删除某个实体之前，该实体必须处于空闲（未使用）状态的持续时间。 此属性的最小值为 5。
  
-必须通过 Azure 资源管理器操作或 .NET Framework 客户端 [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) API 设置此  autoDeleteOnIdle 属性。 不能在门户中设置此属性。
+必须通过 Azure 资源管理器操作或 .NET Framework 客户端 [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) API 设置此 autoDeleteOnIdle 属性。 不能在门户中设置此属性。
 
 ## <a name="idleness"></a>空闲
 

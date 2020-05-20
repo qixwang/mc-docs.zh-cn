@@ -21,7 +21,7 @@ ms.locfileid: "74884624"
 ---
 # <a name="plan-your-luis-app-schema-with-subject-domain-and-data-extraction"></a>使用主题域和数据提取规划 LUIS 应用架构
 
-LUIS 应用架构包含与主题 [域](luis-glossary.md#intent)相关的[意向](luis-glossary.md#entity)和[实体](luis-glossary.md#domain)。 意向对用户[言语](luis-glossary.md#utterance)分类，实体从用户言语中提取数据。
+LUIS 应用架构包含与主题 [域](luis-glossary.md#domain)相关的[意向](luis-glossary.md#intent)和[实体](luis-glossary.md#entity)。 意向对用户[言语](luis-glossary.md#utterance)分类，实体从用户言语中提取数据。
 
 ## <a name="identify-your-domain"></a>标识域
 

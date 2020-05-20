@@ -21,7 +21,7 @@ ms.locfileid: "80343251"
 
 本文为管理员介绍如何通过更改应用程序名称和 URL 以及上传图像来管理应用程序，以及在 Azure IoT Central 应用程序中删除应用程序。
 
-只有 Azure IoT Central 应用程序的“管理员”  角色才能访问和使用“管理”  部分。 如果你创建了 Azure IoT Central 应用程序，则会自动分配到该应用程序的“管理员”  角色。
+只有 Azure IoT Central 应用程序的“管理员”角色才能访问和使用“管理”部分。 如果你创建了 Azure IoT Central 应用程序，则会自动分配到该应用程序的“管理员”  角色。
 
 ## <a name="change-application-name-and-url"></a>更改应用程序名称和 URL
 

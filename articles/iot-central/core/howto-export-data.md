@@ -559,7 +559,7 @@ ms.locfileid: "80343678"
 > [!Note]
 > 遥测流数据格式不受此更改的影响。 仅设备和设备模板数据流受影响。
 
-如果在启用了“设备”和“设备模板”流的预览版应用程序中已存在数据导出，则需在 2020 年 6 月 30 日  之前更新导出。   这适用于目标为 Azure Blob 存储、Azure 事件中心和 Azure 服务总线的导出。
+如果在启用了“设备”和“设备模板”流的预览版应用程序中已存在数据导出，则需在 2020 年 6 月 30 日之前更新导出。  这适用于目标为 Azure Blob 存储、Azure 事件中心和 Azure 服务总线的导出。
 
 自 2020 年 2 月 3 日起，启用了“设备”和“设备模板”流的应用程序中的所有新导出都将具有上述数据格式。 此前创建的所有导出在 2020 年 6 月 30 日之前会保留旧的数据格式，此后，这些导出会自动迁移到新的数据格式。 新数据格式与 IoT Central 公共 API 中的[设备](https://docs.microsoft.com/rest/api/iotcentral/devices/get)、[设备属性](https://docs.microsoft.com/rest/api/iotcentral/devices/getproperties)、[设备云属性](https://docs.microsoft.com/rest/api/iotcentral/devices/getcloudproperties)和[设备模板](https://docs.microsoft.com/rest/api/iotcentral/devicetemplates/get)对象匹配。 
  

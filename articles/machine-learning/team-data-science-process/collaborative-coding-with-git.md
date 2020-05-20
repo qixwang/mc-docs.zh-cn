@@ -90,7 +90,7 @@ git push origin script
 
 ![8](./media/collaborative-coding-with-git/8-add_comments.png)
 
-审阅者批准更改后，你或具有合并权限的其他人可以将工作分支合并到它的基分支中。 选择“完成”  ，然后在“完成拉取请求”  对话框中选择“完成合并”  。 可选择在合并完此工作分支后将其删除。 
+审阅者批准更改后，你或具有合并权限的其他人可以将工作分支合并到它的基分支中。 选择“完成”，然后在“完成拉取请求”对话框中选择“完成合并”。 可选择在合并完此工作分支后将其删除。 
 
 ![10](./media/collaborative-coding-with-git/10-spring-complete-pullrequest.png)
 

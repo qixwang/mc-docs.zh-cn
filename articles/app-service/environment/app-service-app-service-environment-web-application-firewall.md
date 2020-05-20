@@ -81,7 +81,7 @@ Barracuda WAF 使用 TCP 端口 8000 通过其管理门户进行配置。 如果
 
 ![流量管理器终结点][TrafficManagerEndpoint]
 
-如果应用程序需要身份验证，请确保有某个资源不需要任何身份验证，使流量管理器能够 ping 出应用程序的可用性。 可以在 [Azure 门户](https://portal.azure.cn)的“配置”  页上配置 URL，如下图所示：
+如果应用程序需要身份验证，请确保有某个资源不需要任何身份验证，使流量管理器能够 ping 出应用程序的可用性。 可以在 [Azure 门户](https://portal.azure.cn)的“配置”页上配置 URL，如下图所示：
 
 ![配置流量管理器][ConfigureTrafficManager]
 

@@ -120,7 +120,7 @@ $r.Headers["x-ms-ratelimit-remaining-subscription-reads"]
 
 有关完整 PowerShell 示例的信息，请参阅[检查订阅的资源管理器限制](https://github.com/Microsoft/csa-misc-utils/tree/master/psh-GetArmLimitsViaAPI)。
 
-如果想要查看剩余的调试请求数，可以在“PowerShell”cmdlet 中提供“-Debug”参数   。
+若要查看剩余请求数以进行调试，可在 **PowerShell** cmdlet 中提供 **-Debug** 参数。
 
 ```powershell
 Get-AzResourceGroup -Debug

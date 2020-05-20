@@ -33,7 +33,7 @@ ms.locfileid: "79291532"
 
 使用 [az group create](https://docs.azure.cn/zh-cn/cli/group) 创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。
 
-以下示例在“chinaeast”  位置创建名为“myResourceGroupILB”  的资源组：
+以下示例在“chinaeast”位置创建名为“myResourceGroupILB”的资源组：
 
 ```azurecli
   az group create \
@@ -42,7 +42,7 @@ ms.locfileid: "79291532"
 ```
 ## <a name="create-a-virtual-network"></a>创建虚拟网络
 
-使用 *az network vnet create* 在 *myResourceGroup* 中创建名为 *myVnet* 的虚拟网络，该虚拟网络包含名为 [mySubnet](https://docs.azure.cn/zh-cn/cli/network/vnet) 的子网。
+使用 [az network vnet create](https://docs.azure.cn/zh-cn/cli/network/vnet) 在 *myResourceGroup* 中创建名为 *myVnet* 的虚拟网络，该虚拟网络包含名为 *mySubnet* 的子网。
 
 ```azurecli
   az network vnet create \
@@ -88,7 +88,7 @@ ms.locfileid: "79291532"
 
 ### <a name="create-the-load-balancer-rule"></a>创建负载均衡器规则
 
-负载均衡器规则定义传入流量的前端 IP 配置和用于接收流量的后端 IP 池，以及所需源和目标端口。 使用 *az network lb rule create* 创建负载均衡器规则 [myHTTPRule](https://docs.azure.cn/zh-cn/cli/network/lb/rule?view=azure-cli-latest)，以便侦听前端池 *myFrontEnd* 中的端口 80，并且将经过负载均衡的网络流量发送到也使用端口 80 的后端地址池 *myBackEndPool*。 
+负载均衡器规则定义传入流量的前端 IP 配置和用于接收流量的后端 IP 池，以及所需源和目标端口。 使用 [az network lb rule create](https://docs.azure.cn/zh-cn/cli/network/lb/rule?view=azure-cli-latest) 创建负载均衡器规则 *myHTTPRule*，以便侦听前端池 *myFrontEnd* 中的端口 80，并且将经过负载均衡的网络流量发送到也使用端口 80 的后端地址池 *myBackEndPool*。 
 
 ```azurecli
   az network lb rule create \

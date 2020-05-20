@@ -63,7 +63,7 @@ ms.locfileid: "79292478"
 
 1. 选择 Function App，然后单击“新建函数”。 
 2. 选择“C#”  语言和“数据处理”  方案。
-3. 选择“BlobTrigger”  模板。 只要将 blob 上传到输入容器，就会触发此函数  。 下一步的“路径”  中指定了**输入**名称。
+3. 选择“BlobTrigger”  模板。 只要将 blob 上传到输入容器，就会触发此函数  。 下一步的“路径”中指定了**输入**名称。
 
     ![files](./media/media-services-azure-functions/media-services-azure-functions004.png)
 

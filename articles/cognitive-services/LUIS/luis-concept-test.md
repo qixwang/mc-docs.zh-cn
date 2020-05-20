@@ -49,7 +49,7 @@ ms.locfileid: "74884485"
 ## <a name="where-to-find-utterances"></a>在哪里可以找到话语
 LUIS 将记录的所有话语存储在查询日志中，可从 LUIS 门户上的**应用**列表页，以及 LUIS [创作 API](https://go.microsoft.com/fwlink/?linkid=2092087) 下载。 
 
-[LUIS](luis-reference-regions.md) 网站的“审查终结点话语”  页列出了 LUIS 不确定的所有话语。 
+[LUIS](luis-reference-regions.md) 网站的“审查终结点话语”页列出了 LUIS 不确定的所有话语。 
 
 ## <a name="remember-to-train"></a>请记住进行训练
 请记住在更改模型后[训练](luis-how-to-train.md) LUIS。 在训练应用前在测试中看不到对 LUIS 应用的更改。 

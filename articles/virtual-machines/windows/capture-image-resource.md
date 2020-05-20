@@ -207,7 +207,7 @@ Sysprep 将删除所有个人帐户和安全信息，并准备好要用作映像
 
 ## <a name="create-an-image-from-a-vm-that-uses-a-storage-account"></a>从使用存储帐户的 VM 创建映像
 
-若要从不使用托管磁盘的 VM 创建托管映像，需要存储帐户中 OS VHD 的 URI，格式如下： https://*mystorageaccount*.blob.core.chinacloudapi.cn/*vhdcontainer*/*vhdfilename.vhd*。 在本示例中，VHD 位于名为 vhdcontainer  的容器中的 mystorageaccount  中，且 VHD 文件名为 vhdfilename.vhd  。
+若要从不使用托管磁盘的 VM 创建托管映像，需要存储帐户中 OS VHD 的 URI，格式如下： https://*mystorageaccount*.blob.core.chinacloudapi.cn/*vhdcontainer*/*vhdfilename.vhd*。 在本示例中，VHD 位于名为 vhdcontainer 的容器中的 mystorageaccount 中，且 VHD 文件名为 vhdfilename.vhd。
 
 1. 创建若干变量。
 

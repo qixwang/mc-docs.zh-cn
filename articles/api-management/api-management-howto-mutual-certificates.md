@@ -75,7 +75,7 @@ API 管理允许你使用客户端证书保护对 API 后端服务的访问。 �
 
 ## <a name="configure-an-api-to-use-a-client-certificate-for-gateway-authentication"></a><a name="step2"> </a>将 API 配置为使用客户端证书进行网关身份验证
 
-1. 单击左侧“API 管理”  菜单中的“API”  ，然后导航至 API。  
+1. 单击左侧“API 管理”菜单中的“API”，然后导航至 API。  
 
     ![启用客户端证书](media/api-management-howto-mutual-certificates/apim-client-cert-enable.png)
 

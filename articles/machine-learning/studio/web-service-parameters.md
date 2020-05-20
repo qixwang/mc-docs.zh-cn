@@ -41,7 +41,7 @@ ms.locfileid: "80343321"
 Web 服务的 API 文档包括向 Web 服务用户提供的有关访问 Web 服务时如何以编程方式指定 Web 服务参数的信息。
 
 > [!NOTE]
-> 经典 Web 服务的 API 文档通过机器学习工作室（经典）的 Web 服务“仪表板”  中的“API 帮助页”  链接提供。 新 Web 服务的 API 文档通过 Web 服务“使用”  和“Swagger API”  页上的 [Azure 机器学习 Web 服务](https://services.azureml.net/Quickstart)门户提供。
+> 经典 Web 服务的 API 文档通过机器学习工作室（经典）的 Web 服务“仪表板”中的“API 帮助页”链接提供。 新 Web 服务的 API 文档通过 Web 服务“使用”和“Swagger API”页上的 [Azure 机器学习 Web 服务](https://services.azureml.net/Quickstart)门户提供。
 > 
 > 
 

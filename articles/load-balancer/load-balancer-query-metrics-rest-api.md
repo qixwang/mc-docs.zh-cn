@@ -20,7 +20,7 @@ ms.locfileid: "74884048"
 ---
 # <a name="get-load-balancer-usage-metrics-using-the-rest-api"></a>使用 REST API 获取负载均衡器使用情况指标
 
-使用 [Azure REST API](/load-balancer/load-balancer-standard-overview) 收集[标准负载均衡器](https://docs.microsoft.com/rest/api/azure/)在一段时间内处理的字节数。
+使用 [Azure REST API](https://docs.microsoft.com/rest/api/azure/) 收集[标准负载均衡器](/load-balancer/load-balancer-standard-overview)在一段时间内处理的字节数。
 
 [Azure Monitor REST 参考](https://docs.microsoft.com/rest/api/monitor)中提供了完整的参考文档和 REST API 的其他示例。 
 

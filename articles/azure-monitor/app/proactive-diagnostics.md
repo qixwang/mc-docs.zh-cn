@@ -26,7 +26,7 @@ ms.locfileid: "78850387"
     ![电子邮件警报](./media/proactive-diagnostics/03.png)
   
     单击大按钮以在门户中打开更多详细信息。
-* Application Insights 中的 **“智能检测”边栏选项卡**。 选择“调查”  菜单下的“智能检测”  以查看最近检测的列表。
+* Application Insights 中的 **“智能检测”边栏选项卡**。 选择“调查”菜单下的“智能检测”以查看最近检测的列表。
 
 ![查看最近的检测](./media/proactive-diagnostics/04.png)
 

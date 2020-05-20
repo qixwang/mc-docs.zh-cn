@@ -76,7 +76,7 @@ ms.locfileid: "75857240"
 
 ## <a name="test-connections"></a>测试连接
 
-通过在“测试连接”  下拉框中选择一个选项，可从“作业视图”  中测试输入和输出连接。
+通过在“测试连接”下拉框中选择一个选项，可从“作业视图”中测试输入和输出连接。
 
    ![“测试连接”下拉框](./media/stream-analytics-vs-tools/stream-analytics-test-connection-dropdown.png)
 

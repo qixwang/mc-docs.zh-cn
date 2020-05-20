@@ -95,7 +95,7 @@ az monitor diagnostic-settings create --name amsv3diagnostic \
 
 1. 在门户中，导航到左侧导航栏上的“存储帐户”部分  。
 1. 找到并单击上一部分中创建的存储帐户。
-1. 单击“Blob”，然后单击标记为 **insights-logs-keydeliveryrequests** 的容器。  这是包含日志的容器。 监视数据依次按资源 ID、日期和时间细分存入容器。
+1. 单击“Blob”，然后单击标记为 **insights-logs-keydeliveryrequests** 的容器。 这是包含日志的容器。 监视数据依次按资源 ID、日期和时间细分存入容器。
 1. 通过单击容器中的资源 ID、日期和时间，导航到 PT1H.json 文件。 单击 PT1H.json 文件，再单击“下载”  。
 
  现可查看存储帐户中存储的 JSON 事件。

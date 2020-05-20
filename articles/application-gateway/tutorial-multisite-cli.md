@@ -16,7 +16,7 @@ ms.locfileid: "80581798"
 ---
 # <a name="create-an-application-gateway-with-multiple-site-hosting-using-the-azure-cli"></a>使用 Azure CLI 创建托管多个站点的应用程序网关
 
-创建[应用程序网关](application-gateway-multi-site-overview.md)时可以使用 Azure CLI 配置[多个网站的托管](application-gateway-introduction.md)。 本教程中使用虚拟机规模集创建后端池。 然后，基于所拥有的域配置侦听器和规则，以确保 Web 流量可到达池中的相应服务器。 本教程假定你拥有多个域，并使用示例 `www.contoso.com` 和 `www.fabrikam.com`。
+创建[应用程序网关](application-gateway-introduction.md)时可以使用 Azure CLI 配置[多个网站的托管](application-gateway-multi-site-overview.md)。 本教程中使用虚拟机规模集创建后端池。 然后，基于所拥有的域配置侦听器和规则，以确保 Web 流量可到达池中的相应服务器。 本教程假定你拥有多个域，并使用示例 `www.contoso.com` 和 `www.fabrikam.com`。
 
 在本文中，学习如何：
 
@@ -37,7 +37,7 @@ ms.locfileid: "80581798"
 
 资源组是在其中部署和管理 Azure 资源的逻辑容器。 使用 [az group create](/cli/group) 创建资源组。
 
-以下示例在“chinanorth”  位置创建名为“myResourceGroupAG”  的资源组。
+以下示例在“chinanorth”位置创建名为“myResourceGroupAG”的资源组。
 
 ```azurecli 
 az group create --name myResourceGroupAG --location chinanorth
@@ -45,7 +45,7 @@ az group create --name myResourceGroupAG --location chinanorth
 
 ## <a name="create-network-resources"></a>创建网络资源 
 
-使用 *az network vnet create* 创建名为 *myVNet* 的虚拟网络和名为 [myAGSubnet](/cli/network/vnet) 的子网。 然后，可以使用 *az network vnet subnet create* 添加后端服务器所需的名为 [myBackendSubnet](/cli/network/vnet/subnet) 的子网。 使用 *az network public-ip create* 创建名为 [myAGPublicIPAddress](https://docs.azure.cn/zh-cn/cli/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) 的公共 IP 地址。
+使用 [az network vnet create](/cli/network/vnet) 创建名为 *myVNet* 的虚拟网络和名为 *myAGSubnet* 的子网。 然后，可以使用 [az network vnet subnet create](/cli/network/vnet/subnet) 添加后端服务器所需的名为 *myBackendSubnet* 的子网。 使用 [az network public-ip create](https://docs.azure.cn/zh-cn/cli/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) 创建名为 *myAGPublicIPAddress* 的公共 IP 地址。
 
 ```azurecli
 az network vnet create \
@@ -95,7 +95,7 @@ az network application-gateway create \
 
 ### <a name="add-the-backend-pools"></a>添加后端池
 
-使用 *az network application-gateway address-pool create* 添加包含后端服务器所需的名为 *contosoPool* 和 [fabrikamPool](/cli/network/application-gateway) 的后端池。
+使用 [az network application-gateway address-pool create](/cli/network/application-gateway) 添加包含后端服务器所需的名为 *contosoPool* 和 *fabrikamPool* 的后端池。
 
 ```azurecli
 az network application-gateway address-pool create \
@@ -112,7 +112,7 @@ az network application-gateway address-pool create \
 
 应用程序网关需要侦听器才能适当地将流量路由到后端池。 在本教程中，将为两个域创建两个侦听器。 在此示例中，将为域 *www.contoso.com* 和 *www.fabrikam.com* 创建侦听器。 
 
-使用 *az network application-gateway http-listener create* 添加路由流量所需的名为 *contosoListener* 和 [fabrikamListener](/cli/network/application-gateway) 的侦听器。
+使用 [az network application-gateway http-listener create](/cli/network/application-gateway) 添加路由流量所需的名为 *contosoListener* 和 *fabrikamListener* 的侦听器。
 
 ```azurecli
 az network application-gateway http-listener create \

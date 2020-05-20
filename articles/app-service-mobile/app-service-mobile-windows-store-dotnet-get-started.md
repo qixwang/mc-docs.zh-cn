@@ -63,7 +63,7 @@ ms.locfileid: "79084532"
 
 5. 按 F5 键部署并运行应用。
 
-6. 在应用的“插入待办事项”文本框中键入有意义的文本（例如“完成教程”  ），并单击“保存”   。
+6. 在应用的“插入待办事项”文本框中键入有意义的文本（例如“完成教程”），然后单击“保存”。
 
     ![Windows 快速入门完整桌面](./media/app-service-mobile-windows-store-dotnet-get-started/mobile-quickstart-startup.png)
 

@@ -93,9 +93,9 @@ ms.locfileid: "74530646"
 
 3. 在“创建负载均衡器”  下，为负载均衡器键入一个名称。 此方案使用名称 **mylb**。
 
-4. 在“公共 IP 地址”下，创建名为 **PublicIP1** 的新公共 IP。 
+4. 在“公共 IP 地址”下，创建名为 **PublicIP1** 的新公共 IP。
 
-5. 在“资源组”下，选择 VM 的现有资源组（例如 **contosofabrikam**）。  选择负载均衡器要部署到的位置，再选择“确定”。 
+5. 在“资源组”下，选择 VM 的现有资源组（例如 **contosofabrikam**）。 选择负载均衡器要部署到的位置，再选择“确定”。 
 
 负载均衡器随即开始部署。 部署可能需要几分钟才能成功完成。 部署完成后，负载均衡器将作为资源显示在资源组中。
 
@@ -109,7 +109,7 @@ ms.locfileid: "74530646"
 
    1. 键入前端 IP 地址的名称。
 
-   2. 对于“资源组”，请选择 VM 的现有资源组（例如 **contosofabrikam**）。 
+   2. 对于“资源组”，请选择 VM 的现有资源组（例如 **contosofabrikam**）。
 
    3. 对于“位置”，请选择 VM 所在的同一位置。 
 
@@ -125,7 +125,7 @@ ms.locfileid: "74530646"
 
 6. 键入前端 IP 地址的名称（例如 **contosofe** 或 **fabrikamfe**）。
 
-7. <a name="step3-7"></a>选择“IP 地址”。  在“选择公共 IP 地址”下选择前端的 IP 地址（**PublicIP1** 或 **PublicIP2**）。 
+7. <a name="step3-7"></a>选择“IP 地址”。  在“选择公共 IP 地址”下选择前端的 IP 地址（**PublicIP1** 或 **PublicIP2**）。
 
 8. 重复本部分中的<a href="#step3-3">步骤 3</a> 至<a href="#step3-7">步骤 7</a>，创建第二个前端 IP 地址。
 
@@ -149,9 +149,9 @@ ms.locfileid: "74530646"
 
     ![为负载均衡器配置后端池](./media/load-balancer-multiple-ip/lb-backendpool.PNG)
     
-    1. 对于“目标虚拟机”，请选择要添加到后端池的 VM（例如 **VM1** 或 **VM2**）。 
+    1. 对于“目标虚拟机”，请选择要添加到后端池的 VM（例如 **VM1** 或 **VM2**）。
 
-    2. 对于“网络 IP 配置”，请选择在前一步骤中为 VM 的辅助 NIC 选择的 IP 配置（例如 **VM1NIC2-ipconfig2** 或 **VM2NIC2-ipconfig2**）。 
+    2. 对于“网络 IP 配置”，请选择在前一步骤中为 VM 的辅助 NIC 选择的 IP 配置（例如 **VM1NIC2-ipconfig2** 或 **VM2NIC2-ipconfig2**）。
 
 7. 选择“确定”  。
 
@@ -175,11 +175,11 @@ ms.locfileid: "74530646"
     
 1. <a name="step6-1"></a>在“设置”  下，选择“负载均衡规则”  。 在下一个窗格中的顶部附近，选择“添加”。  
 
-2. 对于“名称”，请键入负载均衡规则的名称（例如，为 contoso.com 键入 **HTTPc**，为 fabrikam.com 键入 **HTTPf**）。 
+2. 对于“名称”，请键入负载均衡规则的名称（例如，为 contoso.com 键入 **HTTPc**，为 fabrikam.com 键入 **HTTPf**）。
 
-3. 对于“前端 IP 地址”，请选择前面创建的前端 IP 地址（例如 **contosofe** 或 **fabrikamfe**）。 
+3. 对于“前端 IP 地址”，请选择前面创建的前端 IP 地址（例如 **contosofe** 或 **fabrikamfe**）。
 
-4. 对于“端口”和“后端端口”，请保留默认值 **80**。  
+4. 对于“端口”和“后端端口”，请保留默认值 **80**。 
 
 5. 对于“浮动 IP (直接服务器返回)”  ，选择“已禁用”  。
 

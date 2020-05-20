@@ -29,7 +29,7 @@ ms.locfileid: "74658012"
 可以使用下列任一工具来查看云服务中虚拟机和角色实例的主机名。
 
 ### <a name="service-configuration-file"></a>服务配置文件
-可以从 Azure 门户中服务的“**配置**”边栏选项卡下载已部署服务的服务配置文件。 然后，可以查找 Role name  元素的 vmName  属性，以查看主机名。 请记住，此主机名将用作每个角色实例的主机名的基本元素。 例如，如果 **vmName** 是 *webrole*，并且该角色有三个实例，则这些实例的主机名将为 *webrole0*、*webrole1* 和 *webrole2*。
+可以从 Azure 门户中服务的“**配置**”边栏选项卡下载已部署服务的服务配置文件。 然后，可以查找 Role name 元素的 vmName 属性，以查看主机名。 请记住，此主机名将用作每个角色实例的主机名的基本元素。 例如，如果 **vmName** 是 *webrole*，并且该角色有三个实例，则这些实例的主机名将为 *webrole0*、*webrole1* 和 *webrole2*。
 
 ### <a name="remote-desktop"></a>远程桌面
 启用与虚拟机或角色实例的远程桌面 (Windows) 连接、Windows PowerShell 远程处理 (Windows) 连接或 SSH（Linux 和 Windows）连接后，可以通过多种方式从活动的远程桌面连接查看主机名：

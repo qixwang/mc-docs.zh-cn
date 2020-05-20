@@ -20,7 +20,7 @@ ms.locfileid: "80517005"
 
 ## <a name="scale-the-cluster-nodes"></a>缩放群集节点
 
-首先，使用 [az aks show][az-aks-show] 命令获取节点池的名称  。 以下示例获取 myResourceGroup 资源组中名为 myAKSCluster 的群集的节点池名称   ：
+首先，使用 [az aks show][az-aks-show] 命令获取节点池的名称。 以下示例获取 myResourceGroup 资源组中名为 myAKSCluster 的群集的节点池名称   ：
 
 ```azurecli
 az aks show --resource-group myResourceGroup --name myAKSCluster --query agentPoolProfiles

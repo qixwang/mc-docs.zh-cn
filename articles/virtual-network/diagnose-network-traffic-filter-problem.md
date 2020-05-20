@@ -37,7 +37,7 @@ ms.locfileid: "79293336"
 
 ## <a name="diagnose-using-azure-portal"></a>使用 Azure 门户诊断
 
-1. 使用拥有[所需权限](https://portal.azure.cn)的 Azure 帐户登录到 Azure [门户](virtual-network-network-interface.md#permissions)。
+1. 使用拥有[所需权限](virtual-network-network-interface.md#permissions)的 Azure 帐户登录到 Azure [门户](https://portal.azure.cn)。
 2. 在 Azure 门户顶部的搜索框中输入 VM 的名称。 当 VM 名称显示在搜索结果中时，请选择它。
 3. 如下图所示，在“设置”下选择“网络”：  
 
@@ -48,7 +48,7 @@ ms.locfileid: "79293336"
     - **mySubnetNSG**：已关联到网络接口所在的子网。
     - **myVMNSG**：已关联到 VM 中名为 **myVMVMNic** 的网络接口。
 
-     如**场景**中所述，名为 [DenyAllInBound](#scenario) 的规则阻止端口 80 从 Internet 与 VM 进行入站通信。 规则中为“源”列出了 *0.0.0.0/0*，其中包括 Internet。  其他更高优先级（较小的数字）的规则都不允许端口 80 入站通信。 若要允许通过端口 80 从 Internet 与 VM 进行入站通信，请参阅[解决问题](#resolve-a-problem)。 若要详细了解安全规则以及 Azure 如何应用这些规则，请参阅[网络安全组](security-overview.md)。
+     如[场景](#scenario)中所述，名为 **DenyAllInBound** 的规则阻止端口 80 从 Internet 与 VM 进行入站通信。 规则中为“源”列出了 *0.0.0.0/0*，其中包括 Internet。  其他更高优先级（较小的数字）的规则都不允许端口 80 入站通信。 若要允许通过端口 80 从 Internet 与 VM 进行入站通信，请参阅[解决问题](#resolve-a-problem)。 若要详细了解安全规则以及 Azure 如何应用这些规则，请参阅[网络安全组](security-overview.md)。
 
      在图片底部，还可以看到“出站端口规则”。  其下面是网络接口的出站端口规则。 尽管图片中仅显示了每个 NSG 的四个入站规则，但 NSG 包含的规则可能远远超过四个。 在图片中“源”和“目标”下面可以看到“VirtualNetwork”，在“源”下面可以看到“AzureLoadBalancer”。      **VirtualNetwork** 和 **AzureLoadBalancer** 是[服务标记](security-overview.md#service-tags)。 服务标记表示一组 IP 地址前缀，帮助最大程度地降低安全规则创建过程的复杂性。
 
@@ -163,11 +163,11 @@ az vm show \
 
 - **NetworkSecurityGroup**：网络安全组的 ID。
 - **Association**：网络安全组是关联到 *NetworkInterface* 还是 *Subnet*。 如果 NSG 关联到两者，则返回的输出将包含每个 NSG 的 **NetworkSecurityGroup**、**Association** 和 **EffectiveSecurityRules**。 如果在关联或取消关联 NSG 之后紧接着运行此命令来查看有效安全规则，则可能需要等待几秒钟时间，更改才会反映在命令输出中。
-- **EffectiveSecurityRules**：[创建安全规则](manage-network-security-group.md#create-a-security-rule)中详细解释了每个属性。 带有 *defaultSecurityRules/* 前缀的规则名称是每个 NSG 中存在的默认安全规则。 带有 *securityRules/* 前缀的规则名称是创建的规则。 为 [destinationAddressPrefix](security-overview.md#service-tags) 或 **sourceAddressPrefix** 属性指定**服务标记**（例如 **Internet**、**VirtualNetwork** 和 **AzureLoadBalancer**）的规则也包含 **expandedDestinationAddressPrefix** 属性的值。 **expandedDestinationAddressPrefix** 属性列出服务标记表示的所有地址前缀。
+- **EffectiveSecurityRules**：[创建安全规则](manage-network-security-group.md#create-a-security-rule)中详细解释了每个属性。 带有 *defaultSecurityRules/* 前缀的规则名称是每个 NSG 中存在的默认安全规则。 带有 *securityRules/* 前缀的规则名称是创建的规则。 为 **destinationAddressPrefix** 或 **sourceAddressPrefix** 属性指定[服务标记](security-overview.md#service-tags)（例如 **Internet**、**VirtualNetwork** 和 **AzureLoadBalancer**）的规则也包含 **expandedDestinationAddressPrefix** 属性的值。 **expandedDestinationAddressPrefix** 属性列出服务标记表示的所有地址前缀。
 
 如果输出中列出了重复规则，原因是 NSG 同时关联到了网络接口和子网。 两个 NSG 具有相同的默认规则，如果在两个 NSG 创建相同的规则，则它们可能包含其他重复规则。
 
-如**场景**中所述，名为 [defaultSecurityRules/DenyAllInBound](#scenario) 的规则阻止端口 80 从 Internet 与 VM 进行入站通信。 其他更高优先级（较小的数字）的规则都不允许通过端口 80 从 Internet 进行入站通信。
+如[场景](#scenario)中所述，名为 **defaultSecurityRules/DenyAllInBound** 的规则阻止端口 80 从 Internet 与 VM 进行入站通信。 其他更高优先级（较小的数字）的规则都不允许通过端口 80 从 Internet 进行入站通信。
 
 ## <a name="resolve-a-problem"></a>解决问题
 

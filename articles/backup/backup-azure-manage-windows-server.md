@@ -15,7 +15,7 @@ ms.locfileid: "74839064"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>监视和管理恢复服务保管库
 
-本文介绍如何使用恢复服务保管库的“概述”仪表板来监视和管理恢复服务保管库。  从列表中打开恢复服务保管库时，将打开所选保管库的“概述”仪表板。  仪表板提供有关该保管库的各种详细信息。 其中的磁贴显示：严重和警告性警报的状态、正在进行的和失败的备份作业，以及本地冗余存储 (LRS) 和异地冗余存储 (GRS) 使用量。  如果将 Azure VM 备份到保管库，则[“备份预检查状态”磁贴将显示所有严重或警告项 **。** ](https://azure.microsoft.com/blog/azure-vm-backup-pre-checks/) 下图是 **Contoso-vault** 的“概述”仪表板。  “备份项”磁贴显示有九个项已注册到保管库。 
+本文介绍如何使用恢复服务保管库的“概述”仪表板来监视和管理恢复服务保管库。  从列表中打开恢复服务保管库时，将打开所选保管库的“概述”仪表板。  仪表板提供有关该保管库的各种详细信息。 其中的磁贴显示：严重和警告性警报的状态、正在进行的和失败的备份作业，以及本地冗余存储 (LRS) 和异地冗余存储 (GRS) 使用量。  如果将 Azure VM 备份到保管库，则[“备份预检查状态”磁贴将显示所有严重或警告项](https://azure.microsoft.com/blog/azure-vm-backup-pre-checks/)。 下图是 **Contoso-vault** 的“概述”仪表板。 “备份项”磁贴显示有九个项已注册到保管库。 
 
 ![恢复服务保管库仪表板](./media/backup-azure-manage-windows-server/rs-vault-blade.png)
 

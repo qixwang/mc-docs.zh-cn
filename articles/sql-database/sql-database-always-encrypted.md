@@ -23,7 +23,7 @@ ms.locfileid: "69578615"
 ---
 # <a name="always-encrypted-protect-sensitive-data-and-store-encryption-keys-in-the-windows-certificate-store"></a>Always Encrypted：保护敏感数据并将加密密钥存储在 Windows 证书存储中
 
-本文演示如何使用 [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt459280.aspx) 中的[始终加密向导](https://msdn.microsoft.com/library/hh213248.aspx)，通过数据加密来保护 SQL 数据库中的敏感数据。 它还演示如何将加密密钥存储在 Windows 证书存储中。
+本文演示如何使用 [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/hh213248.aspx) 中的[始终加密向导](https://msdn.microsoft.com/library/mt459280.aspx)，通过数据加密来保护 SQL 数据库中的敏感数据。 它还演示如何将加密密钥存储在 Windows 证书存储中。
 
 始终加密是 Azure SQL 数据库和 SQL Server 中一项新的数据加密技术，用于保护服务器上的敏感静态数据、在客户端和服务器之间进行移动的敏感数据，以及正在使用中的数据，确保敏感数据永远不会在数据库系统中以明文形式显示。 加密数据之后，仅客户端应用程序或应用服务器（具有密钥访问权限）能够访问明文数据。 有关详细信息，请参阅[始终加密（数据库引擎）](https://msdn.microsoft.com/library/mt163865.aspx)。
 
@@ -107,11 +107,11 @@ SSMS 提供了一个向导，通过设置 CMK、CEK 和已加密列即可轻松�
 
 ### <a name="column-selection"></a>列选择
 
-单击“简介”  页上的“下一步”  ，可以打开“列选择”  页。 在此页上，选择想要加密的列，[加密类型和要使用的列加密密钥 (CEK)](https://msdn.microsoft.com/library/mt459280.aspx#Anchor_2)。
+单击“简介”页上的“下一步”，可以打开“列选择”页。 在此页上，选择想要加密的列，[加密类型和要使用的列加密密钥 (CEK)](https://msdn.microsoft.com/library/mt459280.aspx#Anchor_2)。
 
 加密每位患者的“SSN”  和“出生日期”  信息。 **SSN** 列将使用确定性加密，该加密支持相等性查找、联接和分组方式。 **BirthDate** 列将使用随机加密，该加密不支持操作。
 
-将 **SSN** 列的“加密类型”  设置为“确定”  ，并将 **BirthDate** 列设置为“随机”  。 单击“下一步”。 
+将 **SSN** 列的“加密类型”设置为“确定”，并将 **BirthDate** 列设置为“随机”。 单击“下一步”。 
 
 ![加密列](./media/sql-database-always-encrypted/column-selection.png)
 

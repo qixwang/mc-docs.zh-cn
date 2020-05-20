@@ -27,7 +27,7 @@ ms.locfileid: "74020972"
 
 - vCore 服务层级
 
-  [基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)中的“常规用途”和“业务关键”服务层级。   这两个服务层级已推出正式版。 基于 vCore 的购买模型还提供“超大规模”服务层级，该服务层级按需适应工作负荷的需求，可自动将每个数据库最大扩展到 100 TB。  “超大规模”服务层级提供的 IO 性能与[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)中的“高级”服务层级相当，价格与“高级 RS”服务层级比较接近。
+  [基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)中的“常规用途”和“业务关键”服务层级。  这两个服务层级已推出正式版。 基于 vCore 的购买模型还提供“超大规模”服务层级，该服务层级按需适应工作负荷的需求，可自动将每个数据库最大扩展到 100 TB。  “超大规模”服务层级提供的 IO 性能与[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)中的“高级”服务层级相当，价格与“高级 RS”服务层级比较接近。
 - Azure 混合权益和预留容量定价
 
   与许可证涵盖费率相比，[Azure 混合权益和预留容量定价](https://azure.cn/pricing/details/sql-database/)最多可将成本节省 80%。 有关这些选项的详细信息，请参阅[面向 SQL Server 的 Azure 混合权益](https://azure.cn/pricing/hybrid-benefit/)。

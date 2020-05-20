@@ -49,7 +49,7 @@ import com.microsoft.azure.storage.queue.*;
 
 ## <a name="set-up-an-azure-storage-connection-string"></a>设置 Azure 存储连接字符串
 
-Azure 存储客户端使用存储连接字符串来存储用于访问数据管理服务的终结点和凭据。 在客户端应用程序中运行时，必须提供以下格式的存储连接字符串，并对 AccountName  和 AccountKey  值使用 [Azure 门户](https://portal.azure.cn)中列出的存储帐户的名称和存储帐户的主访问密钥。 此示例演示如何声明一个静态字段以保存连接字符串：
+Azure 存储客户端使用存储连接字符串来存储用于访问数据管理服务的终结点和凭据。 在客户端应用程序中运行时，必须提供以下格式的存储连接字符串，并对 AccountName 和 AccountKey 值使用 [Azure 门户](https://portal.azure.cn)中列出的存储帐户的名称和存储帐户的主访问密钥。 此示例演示如何声明一个静态字段以保存连接字符串：
 
 ```java
 // Define the connection-string with your values.
@@ -60,7 +60,7 @@ public static final String storageConnectionString =
     "EndpointSuffix=core.chinacloudapi.cn";
 ```
 
-在 Azure 的角色中运行的应用程序中，此字符串可存储在服务配置文件 *ServiceConfiguration.cscfg*中，并可通过调用 **RoleEnvironment.getConfigurationSettings** 方法进行访问。 下面是从服务配置文件中名为 **StorageConnectionString** 的 *Setting* 元素中获取连接字符串的示例：
+在 Azure 的角色中运行的应用程序中，此字符串可存储在服务配置文件 *ServiceConfiguration.cscfg*中，并可通过调用 **RoleEnvironment.getConfigurationSettings** 方法进行访问。 下面是从服务配置文件中名为 *StorageConnectionString* 的 **Setting** 元素中获取连接字符串的示例：
 
 ```java
 // Retrieve storage account from connection-string.
@@ -71,7 +71,7 @@ String storageConnectionString =
 下面的示例假定使用了这两个方法之一来获取存储连接字符串。
 
 ## <a name="how-to-create-a-queue"></a>如何：创建队列
-利用 CloudQueueClient  对象，可以获取队列的引用对象。 以下代码将创建 CloudQueueClient  对象。 （注意：还有其他方式来创建 CloudStorageAccount 对象；有关详细信息，请参阅 [Azure 存储客户端 SDK 参考]中的 CloudStorageAccount   。
+利用 CloudQueueClient  对象，可以获取队列的引用对象。 以下代码将创建 CloudQueueClient  对象。 （注意：还有其他方式可创建 **CloudStorageAccount** 对象；有关详细信息，请参阅 [Azure 存储客户端 SDK 参考]中的 **CloudStorageAccount**。）
 
 使用 **CloudQueueClient** 对象获取对要使用的队列的引用。 如果队列不存在，可以创建它。
 
@@ -368,7 +368,7 @@ catch (Exception e)
 ```
 
 ## <a name="how-to-delete-a-queue"></a>如何：删除队列
-若要删除队列及其包含的所有消息，请对 CloudQueue  对象调用 deleteIfExists  方法。
+若要删除队列及其包含的所有消息，请对 **CloudQueue** 对象调用 **deleteIfExists** 方法。
 
 ```java
 try

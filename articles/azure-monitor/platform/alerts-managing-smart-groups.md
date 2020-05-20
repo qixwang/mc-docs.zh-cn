@@ -20,7 +20,7 @@ ms.locfileid: "79452559"
 
 1. 若要查看为警报实例创建的智能组，可以执行以下任一操作
 
-     1. 从“警报摘要”  页单击“智能组”     
+     1. 从“警报摘要”页单击“智能组”    
     ![Monitoring](./media/alerts-managing-smart-groups/sg-alerts-summary.jpg)
     
      1. 从“所有警报”页单击“警报(按智能组)”   

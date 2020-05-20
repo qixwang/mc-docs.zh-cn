@@ -171,7 +171,7 @@ ApplicationInsights | summarize AggregatedValue = sum(SampledCount) by Telemetry
 
 ## <a name="output-data"></a>输出数据
 
-将为每种输入数据创建 *ApplicationInsights* 类型的记录。  ApplicationInsights 记录具有以下部分中所述的属性：
+将为每种输入数据创建 *ApplicationInsights* 类型的记录。 ApplicationInsights 记录具有以下部分中所述的属性：
 
 ### <a name="generic-fields"></a>泛型字段
 

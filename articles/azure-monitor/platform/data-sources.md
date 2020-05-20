@@ -16,7 +16,7 @@ ms.lasthandoff: 04/17/2020
 ms.locfileid: "79452298"
 ---
 # <a name="sources-of-monitoring-data-for-azure-monitor"></a>Azure Monitor 的监视数据源
-Azure Monitor 基于包含[日志](data-platform.md)和[指标](data-platform-logs.md)的[通用监视数据平台](data-platform-metrics.md)。 将数据收集到此平台后，可以使用 Azure Monitor 中的一组通用工具统一分析来自多个资源的数据。 还可以将监视数据发送到其他位置以支持特定的方案，某些资源可能会将数据写入到其他位置，然后可以在日志或指标中收集数据。
+Azure Monitor 基于包含[日志](data-platform-logs.md)和[指标](data-platform-metrics.md)的[通用监视数据平台](data-platform.md)。 将数据收集到此平台后，可以使用 Azure Monitor 中的一组通用工具统一分析来自多个资源的数据。 还可以将监视数据发送到其他位置以支持特定的方案，某些资源可能会将数据写入到其他位置，然后可以在日志或指标中收集数据。
 
 本文介绍 Azure Monitor 收集的不同监视数据源，以及 Azure 资源创建的监视数据。 本文还提供了有关在不同位置收集这些数据所需的配置的详细信息的链接。
 

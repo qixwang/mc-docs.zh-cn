@@ -60,7 +60,7 @@ az aks browse --resource-group myResourceGroup --name myAKSCluster
 1. 若要使用图形化向导，请选择“创建应用”  。
 1. 为部署提供一个名称，例如 *nginx*
 1. 输入要使用的容器映像的名称，例如 *nginx:1.15.5*
-1. 若要为 Web 流量公开端口 80，请创建一个 Kubernetes 服务。 在“服务”下，选择“外部”，对于端口和目标端口，都输入 **80**。  
+1. 若要为 Web 流量公开端口 80，请创建一个 Kubernetes 服务。 在“服务”下，选择“外部”，对于端口和目标端口，都输入 **80**。 
 1. 准备就绪后，选择“部署”  来创建应用。
 
 ![在 Kubernetes Web 仪表板中部署应用](./media/kubernetes-dashboard/create-app.png)

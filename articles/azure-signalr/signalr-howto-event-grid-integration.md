@@ -27,7 +27,7 @@ Azure 事件网格是一个完全托管的事件路由服务，可以通过发�
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 以下 [az group create][az-group-create] 命令在 chinaeast2  区域中创建一个名为 myResourceGroup  的资源组。 若要对资源组使用不同的名称，请将 `RESOURCE_GROUP_NAME` 设置为不同的值。
+Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 以下 [az group create][az-group-create] 命令在 chinaeast2 区域中创建一个名为 myResourceGroup 的资源组。 若要对资源组使用不同的名称，请将 `RESOURCE_GROUP_NAME` 设置为不同的值。
 
 ```azurecli
 RESOURCE_GROUP_NAME=myResourceGroup

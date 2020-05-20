@@ -38,7 +38,7 @@ ms.locfileid: "79292090"
 - 在 SQL Server 实例上的 *C:\Program Files\Azure Workload Backup\bin* 文件夹中，创建或编辑 **ExtensionSettingsOverrides.json** 文件。
 - 在 **ExtensionSettingsOverrides.json** 中，设置 *{"EnableAutoHealer": false}* 。
 - 保存更改并关闭该文件。
-- 在 SQL Server 实例上打开“管理任务”，然后重启 **AzureWLBackupCoordinatorSvc** 服务。 
+- 在 SQL Server 实例上打开“管理任务”，然后重启 **AzureWLBackupCoordinatorSvc** 服务。
 
 ## <a name="can-i-control-how-many-concurrent-backups-run-on-the-sql-server"></a>是否可以控制 SQL Server 上运行的并发备份数？
 
@@ -85,7 +85,7 @@ Azure 备份恢复服务保管库可以检测并保护保管库所在的同一�
 
 如果从自动保护的实例中删除某个数据库，仍会尝试数据库备份。 这意味着，已删除的数据库会开始在“备份项”下面显示为不正常状态，但它仍受保护。 
 
-停止保护此数据库的正确方法是针对此数据库执行“停止备份”并**删除数据**。   
+停止保护此数据库的正确方法是针对此数据库执行“停止备份”并**删除数据**。  
 
 ## <a name="if-i-do-stop-backup-operation-of-an-autoprotected-database-what-will-be-its-behavior"></a>如果停止受保护数据库的备份操作，将出现怎样的备份行为？
 

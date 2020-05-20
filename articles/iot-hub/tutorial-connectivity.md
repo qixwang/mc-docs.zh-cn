@@ -69,7 +69,7 @@ node --version
 
 ![“IoT 设备”工具](media/tutorial-connectivity/iot-devices-tool.png)
 
-若要注册新设备，请单击“+ 添加”，将“设备 ID”设置为 **MyTestDevice**，然后单击“保存”：   
+若要注册新设备，请单击“+ 添加”，将“设备 ID”设置为 **MyTestDevice**，然后单击“保存”：  
 
 ![添加新设备](media/tutorial-connectivity/add-device.png)
 

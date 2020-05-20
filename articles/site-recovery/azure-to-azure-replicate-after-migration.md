@@ -17,7 +17,7 @@ ms.locfileid: "71340813"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-after-migration-to-azure"></a>设置 Azure VM 迁移到 Azure 后的灾难恢复 
 
-如果已使用 [Site Recovery](tutorial-migrate-on-premises-to-azure.md) 服务[将本地计算机迁移到 Azure VM](site-recovery-overview.md)，请按本文操作。现在，需设置 VM，以便灾难恢复到辅助 Azure 区域。 本文介绍如何确保将 Azure VM 代理安装在迁移的 VM 上，以及如何删除在迁移后不再需要的 Site Recovery 移动服务。
+如果已使用 [Site Recovery](site-recovery-overview.md) 服务[将本地计算机迁移到 Azure VM](tutorial-migrate-on-premises-to-azure.md)，请按本文操作。现在，需设置 VM，以便灾难恢复到辅助 Azure 区域。 本文介绍如何确保将 Azure VM 代理安装在迁移的 VM 上，以及如何删除在迁移后不再需要的 Site Recovery 移动服务。
 
 ## <a name="verify-migration"></a>验证迁移
 

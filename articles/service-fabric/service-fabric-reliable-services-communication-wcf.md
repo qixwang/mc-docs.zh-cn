@@ -14,7 +14,7 @@ ms.lasthandoff: 04/17/2020
 ms.locfileid: "75742412"
 ---
 # <a name="wcf-based-communication-stack-for-reliable-services"></a>Reliable Services 基于 WCF 的通信堆栈
-Reliable services 框架使服务创作者能够选择他们要用于其服务的通信堆栈。 他们可以通过从 **CreateServiceReplicaListeners or CreateServiceInstanceListeners** 方法返回的 [ICommunicationListener](service-fabric-reliable-services-communication.md) 来插入所选的通信堆栈。 对于想要使用基于 Windows Communication Foundation (WCF) 的通信的服务创作者，该框架提供了基于 WCF 的通信堆栈实现。
+Reliable services 框架使服务创作者能够选择他们要用于其服务的通信堆栈。 他们可以通过从 [CreateServiceReplicaListeners or CreateServiceInstanceListeners](service-fabric-reliable-services-communication.md) 方法返回的 **ICommunicationListener** 来插入所选的通信堆栈。 对于想要使用基于 Windows Communication Foundation (WCF) 的通信的服务创作者，该框架提供了基于 WCF 的通信堆栈实现。
 
 ## <a name="wcf-communication-listener"></a>WCF 通信侦听器
 特定于 WCF 的 **ICommunicationListener** 实现由 **Microsoft.ServiceFabric.Services.Communication.Wcf.Runtime.WcfCommunicationListener** 类提供。

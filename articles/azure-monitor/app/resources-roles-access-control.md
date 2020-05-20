@@ -16,7 +16,7 @@ ms.locfileid: "78850378"
 ---
 # <a name="resources-roles-and-access-control-in-application-insights"></a>Application Insights 中的资源、角色和访问控制
 
-通过使用[世纪互联 Azure 中基于角色的访问控制][start]，可以控制哪些用户对 Azure [Application Insights](../../role-based-access-control/role-assignments-portal.md) 中的数据具有读取和更新访问权限。
+通过使用[世纪互联 Azure 中基于角色的访问控制](../../role-based-access-control/role-assignments-portal.md)，可以控制哪些用户对 Azure [Application Insights][start] 中的数据具有读取和更新访问权限。
 
 > [!IMPORTANT]
 > 将访问权限分配给应用程序资源所属**资源组或订阅**中的用户（并非资源本身）。 分配 **Application Insights 组件参与者**角色。 这可确保对 Web 测试和警报及应用程序资源的访问实现统一控制。 [了解详细信息](#access)。

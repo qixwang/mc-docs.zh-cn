@@ -49,4 +49,4 @@ ms.locfileid: "66004318"
 [表设计模式](table-storage-design-patterns.md)一文中的以下模式针对的是设计实现高效查询和设计实现高效数据修改之间的折衷方案：  
 
 * [复合键模式](table-storage-design-patterns.md#compound-key-pattern) - 通过复合 **RowKey** 值，客户端可使用单个点查询查找相关数据。  
-* [日志结尾模式](table-storage-design-patterns.md#log-tail-pattern) - 利用按日期和时间倒序方式排序的 *RowKey* 值，检索最近添加到分区中的 **n** 个实体。  
+* [日志结尾模式](table-storage-design-patterns.md#log-tail-pattern) - 利用按日期和时间倒序方式排序的 **RowKey** 值，检索最近添加到分区中的 *n* 个实体。  

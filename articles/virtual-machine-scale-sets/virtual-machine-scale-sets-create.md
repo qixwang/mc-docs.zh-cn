@@ -114,7 +114,7 @@ PowerShell 的使用比 Azure CLI 更复杂。 Azure CLI 为网络相关资源�
 2. Get-AzureRMVMImageOffer
 3. Get-AzureRmVMImageSku
 
-cmdlet 的运行结果可以按顺序通过管道传送。 以下示例演示如何获取其发布服务器包含名称 **microsoft** 的“中国北部”  区域的所有映像。
+cmdlet 的运行结果可以按顺序通过管道传送。 以下示例演示如何获取其发布服务器包含名称 **microsoft** 的“中国北部”区域的所有映像。
 
 ```powershell
 Get-AzureRMVMImagePublisher -Location ChinaNorth | Where-Object PublisherName -Like *microsoft* | Get-AzureRMVMImageOffer | Get-AzureRmVMImageSku | Select-Object PublisherName, Offer, Skus

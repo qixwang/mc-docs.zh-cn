@@ -48,7 +48,7 @@ trigger-reboot  。 此应用：
 
 ## <a name="prerequisites"></a>必备条件
 
-* [Java SE 开发工具包 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable)。 请确保在“长期支持”  下选择“Java 8”  以获取 JDK 8 的下载。
+* [Java SE 开发工具包 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable)。 请确保在“长期支持”下选择“Java 8”以获取 JDK 8 的下载。
 
 * [Maven 3](https://maven.apache.org/download.cgi)
 
@@ -103,7 +103,7 @@ trigger-reboot  。 此应用：
     ```
 
     > [!NOTE]
-    > 可以使用 **Maven 搜索**检查是否有最新版本的 [iot-service-client](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-service-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22)。
+    > 可以使用 [Maven 搜索](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-service-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22)检查是否有最新版本的 **iot-service-client**。
 
 5. 在 **dependencies** 节点后添加以下 **build** 节点。 此配置指示 Maven 使用 Java 1.8 来生成应用：
 
@@ -253,9 +253,9 @@ trigger-reboot  。 此应用：
     ```
 
     > [!NOTE]
-    > 可以使用 **Maven 搜索**检查是否有最新版本的 [iot-device-client](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-device-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22)。
+    > 可以使用 [Maven 搜索](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-device-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22)检查是否有最新版本的 **iot-device-client**。
 
-4. 将以下依赖项添加到 **dependencies** 节点。 此依赖项为 Apache [SLF4J](https://www.slf4j.org/) 日志记录外观配置 NOP，设备客户端 SDK 使用它来实现日志记录。 此配置是可选的，但如果省略此配置，则在运行应用时，可能会在控制台中看到一条警告。 有关设备客户端 SDK 中的日志记录的详细信息，请参阅[适用于 Java 的 Azure IoT 设备 SDK 的示例](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/readme.md#logging)自述文件中的*日志记录*。
+4. 将以下依赖项添加到 **dependencies** 节点。 此依赖项为 Apache [SLF4J](https://www.slf4j.org/) 日志记录外观配置 NOP，设备客户端 SDK 使用它来实现日志记录。 此配置是可选的，但如果省略此配置，则在运行应用时，可能会在控制台中看到一条警告。 有关设备客户端 SDK 中的日志记录的详细信息，请参阅*适用于 Java 的 Azure IoT 设备 SDK 的示例*自述文件中的[日志记录](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/readme.md#logging)。
 
     ```xml
     <dependency>

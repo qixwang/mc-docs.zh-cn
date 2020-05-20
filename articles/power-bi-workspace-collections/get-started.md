@@ -60,7 +60,7 @@ ms.locfileid: "63856067"
 
 ## <a name="view-power-bi-api-access-keys"></a>查看 Power BI API 访问密钥
 
-调用 Power BI REST API 所需的最重要信息之一是 **访问密钥**。 这些访问密钥用于生成对 API 请求进行身份验证的 **应用程序令牌** 。 若要查看访问密钥  ，请单击“设置”  上的“访问密钥”  。 有关  应用令牌的详细信息，请参阅[通过 Power BI 工作区集合进行身份验证和授权](app-token-flow.md)。
+调用 Power BI REST API 所需的最重要信息之一是 **访问密钥**。 这些访问密钥用于生成对 API 请求进行身份验证的 **应用程序令牌** 。 若要查看访问密钥，请单击“设置”上的“访问密钥”。 有关  应用令牌的详细信息，请参阅[通过 Power BI 工作区集合进行身份验证和授权](app-token-flow.md)。
 
    ![Azure 门户的“工作区集合”设置中的访问密钥](./media/get-started/access-keys.png)
 

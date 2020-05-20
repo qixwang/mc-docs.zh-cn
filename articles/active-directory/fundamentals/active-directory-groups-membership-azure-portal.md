@@ -63,7 +63,7 @@ ms.locfileid: "75777017"
 
 2. 在“MDM 策略 - 西部概述”页上，选择“组成员身份”   。
 
-3. 从“MDM 策略 - 西部 - 组成员身份”页中选择“MDM 策略 - 所有组织”组，然后选择“MDM 策略 - 西部”页详细信息中的“删除”     。
+3. 从“MDM 策略 - 西部 - 组成员身份”页面上选择“MDM 策略 - 所有组织”，然后从“MDM 策略 - 西部”页面详细信息中选择“删除”。 
 
     ![显示成员和组详细信息的“组成员身份”页](./media/active-directory-groups-membership-azure-portal/group-membership-remove.png)
 

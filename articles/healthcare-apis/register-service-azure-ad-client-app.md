@@ -41,7 +41,7 @@ ms.locfileid: "80343690"
 
 需要授予服务客户端应用程序角色。 
 
-1. 打开“API 权限”，选择你的 [FHIR API 资源应用程序注册](register-resource-azure-ad-client-app.md)。  如果使用 Azure API for FHIR，可以通过搜索“我的组织使用的 API”下的 Azure 医疗保健 API，来添加对 Azure 医疗保健 API 的权限。 
+1. 打开“API 权限”，选择你的 [FHIR API 资源应用程序注册](register-resource-azure-ad-client-app.md)。 如果使用 Azure API for FHIR，可以通过搜索“我的组织使用的 API”下的 Azure 医疗保健 API，来添加对 Azure 医疗保健 API 的权限。 
 
     ![Azure 门户。 服务客户端 API 权限](media/how-to-aad/portal-aad-register-new-app-registration-SERVICE-CLIENT-API-PERMISSIONS.png)
 
@@ -57,7 +57,7 @@ ms.locfileid: "80343690"
 
 服务客户端需要机密（密码），获取令牌时将使用该机密。
 
-1. 单击“证书和机密” 
+1. 单击“证书和机密”
 
 2. 单击“新建客户端机密” 
 

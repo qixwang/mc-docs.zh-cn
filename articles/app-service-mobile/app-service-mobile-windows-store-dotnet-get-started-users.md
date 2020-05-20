@@ -136,7 +136,7 @@ ms.locfileid: "80151735"
             Window.Current.Activate();
             base.OnActivated(args);
         }
-6. 打开 Package.appxmanifest 文件，导航到“声明”，在“可用声明”下拉列表中，选择“协议”，然后单击“添加”按钮     。 现在，配置“协议”声明的“属性”   。 在“显示名称”中，添加要向应用程序用户显示的名称  。 在“名称”中，添加 {url_scheme_of_your_app}  。
+6. 打开 Package.appxmanifest 文件，导航到“声明”，在“可用声明”下拉列表中，选择“协议”，然后单击“添加”按钮     。 现在，配置**协议**声明的**属性**。 在“显示名称”中，添加要向应用程序用户显示的名称  。 在“名称”中，添加 {url_scheme_of_your_app}  。
 7. 按 F5 键运行该应用，单击“登录”  按钮，并使用所选的标识提供者登录到该应用。 成功登录后，该应用运行时不会出错，用户能够查询后端，并对数据进行更新。
 
 ## <a name="store-the-authentication-token-on-the-client"></a><a name="tokens"></a>在客户端上存储身份验证令牌

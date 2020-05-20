@@ -76,7 +76,7 @@ RDD 包含多个属性，可帮助创建高可用性且容错的 Spark 流作业
 
 如果**执行器**发生故障，其任务和接收器将由 Spark 自动重启，因此无需进行配置更改。
 
-但是，如果**驱动程序**发生故障，则其所有关联的执行器都会发生故障，并且所有已收到的块和计算结果都会丢失。 若要在发生驱动程序故障后进行恢复，可以根据*创建支持“恰好一次”事件处理的 Spark 流作业*使用 [DStream 检查点](apache-spark-streaming-exactly-once.md#use-checkpoints-for-drivers)。 DStream 检查点会定期将 DStreams 的有向无环图 (DAG) 保存到 Azure 存储等容错存储中。   检查点可让 Spark 结构化流根据检查点信息重启有故障的驱动程序。  重启此驱动程序会启动新的执行器，同时重启接收器。
+但是，如果**驱动程序**发生故障，则其所有关联的执行器都会发生故障，并且所有已收到的块和计算结果都会丢失。 若要在发生驱动程序故障后进行恢复，可以根据[创建支持“恰好一次”事件处理的 Spark 流作业](apache-spark-streaming-exactly-once.md#use-checkpoints-for-drivers)使用 *DStream 检查点*。 DStream 检查点会定期将 DStreams 的有向无环图 (DAG) 保存到 Azure 存储等容错存储中。   检查点可让 Spark 结构化流根据检查点信息重启有故障的驱动程序。  重启此驱动程序会启动新的执行器，同时重启接收器。
 
 使用 DStream 检查点恢复驱动程序：
 

@@ -23,7 +23,7 @@ ms.locfileid: "80625782"
 ---
 # <a name="import-the-postman-environment"></a>导入 Postman 环境  
 
-本文包含 **Postman 集合**使用的 [Postman](postman-collection.md) 环境变量的定义，该集合包含调用媒体服务 REST API 的分组 HTTP 请求。 [配置 Postman 以便进行媒体服务 REST API 调用](media-rest-apis-with-postman.md)教程将使用这些环境和集合文件。
+本文包含 [Postman 集合](postman-collection.md)使用的 **Postman** 环境变量的定义，该集合包含调用媒体服务 REST API 的分组 HTTP 请求。 [配置 Postman 以便进行媒体服务 REST API 调用](media-rest-apis-with-postman.md)教程将使用这些环境和集合文件。
 
 > [!NOTE]
 > `AzureADSTSEndpoint ` 的值 =  `https://login.partner.microsoftonline.cn/{{TenantId}}/oauth2/token`。 若要获取你的租户 ID，可以将鼠标悬停在门户中的用户名上（在右上角）。

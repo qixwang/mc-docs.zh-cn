@@ -37,7 +37,7 @@ ms.locfileid: "77563417"
 
 - 基于 Hortonworks 沙盒的 Hortonworks 数据平台 (HDP) 2.4，运行在本地计算机中。 若要设置 HDP，请参阅[通过虚拟机上的 Hadoop 沙盒了解 Apache Hadoop 生态系统](apache-hadoop-emulator-get-started.md)。 
     > [!NOTE]
-    > 用于 IntelliJ 的 HDInsight 工具只使用 HDP 2.4 测试过。 若要获取 HDP 2.4，请在 **Hortonworks 沙盒下载站点**中，展开 [Hortonworks 沙盒存档](https://hortonworks.com/downloads/#sandbox)。
+    > 用于 IntelliJ 的 HDInsight 工具只使用 HDP 2.4 测试过。 若要获取 HDP 2.4，请在 [Hortonworks 沙盒下载站点](https://hortonworks.com/downloads/#sandbox)中，展开 **Hortonworks 沙盒存档**。
 
 - [Java 开发人员工具包 (JDK) 1.8 或更高版本](https://aka.ms/azure-jdks)。 用于 IntelliJ 的 Azure 工具包需要 JDK。
 
@@ -78,7 +78,7 @@ ms.locfileid: "77563417"
 
 
 4. 选择“完成”  。
-5. 如果“项目”视图尚未打开，请按 **Alt+1** 将其打开。 
+5. 如果“项目”视图尚未打开，请按 **Alt+1** 将其打开。
 6. 在“项目资源管理器”  中展开项目，并选择“src”  。
 7. 右键单击“src”  ，指向“新建”  ，并选择“Scala 类”  。
 8. 在“名称”  框中，输入名称。 在“类型”  框中，选择“对象”  。 选择“确定”。 

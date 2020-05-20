@@ -21,7 +21,7 @@ Azure 提供了一套体验，让你随时了解云资源的运行状况。 这�
 
 Azure 服务运行状况是三个独立的较小服务的组合。
 
-[Azure 状态](azure-status-overview.md)在 **[Azure 状态页](https://status.azure.com)** 上通知你 Azure 中的服务中断。 该页是所有 Azure 区域中所有 Azure 服务运行状况的全局视图。 对于具有广泛影响的事件而言，该状态页是一个很好的参考，但我们强烈建议当前的 Azure 用户利用 Azure 服务运行状况随时了解 Azure 事件和维护的相关信息。
+[Azure 状态](azure-status-overview.md)会在 [“Azure 状态”页](https://status.azure.com)上通知你 Azure 中的服务中断。 该页是所有 Azure 区域中所有 Azure 服务运行状况的全局视图。 对于具有广泛影响的事件而言，该状态页是一个很好的参考，但我们强烈建议当前的 Azure 用户利用 Azure 服务运行状况随时了解 Azure 事件和维护的相关信息。
 
 [Azure 服务运行状况](service-health-overview.md)提供正在使用的 Azure 服务和区域的运行状况的个性化视图。 这是查找有关停机、计划内维护活动以及其他运行状况建议等影响服务的信息的最佳地方，因为已经过身份验证的 Azure 服务运行状况体验知道你当前使用哪些服务和资源。 使用服务运行状况的最佳方法是，设置服务运行状况警报，以便在服务问题、计划内维护或其他更改可能会影响你使用的 Azure 服务和区域时通过你首选的通信通道通知你。
 

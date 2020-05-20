@@ -41,7 +41,7 @@ Log Analytics 中的日志搜索功能最近已由一个可以分析 Azure Monit
 
 ![保存日志搜索](media/log-search-transition/save-search-log-search.png)
 
-若要在 Azure Monitor 日志中保存当前查询，请选择“保存”。  将“另存为”更改为“函数”，并提供一个**函数别名**以创建[函数](functions.md)。   若要使用[计算机组](../platform/computer-groups.md)的函数别名，请选择“将此查询另存为计算机组”  。
+若要在 Azure Monitor 日志中保存当前查询，请选择“保存”。  将“另存为”更改为“函数”，并提供一个**函数别名**以创建[函数](functions.md)。 若要使用[计算机组](../platform/computer-groups.md)的函数别名，请选择“将此查询另存为计算机组”。
 
 ![保存日志查询](media/log-search-transition/save-query-logs.png)
 

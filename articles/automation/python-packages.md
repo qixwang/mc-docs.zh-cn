@@ -23,7 +23,7 @@ ms.locfileid: "69993570"
 
 ## <a name="import-packages"></a>导入包
 
-在自动化帐户中，选择“共享资源”下的“Python 2 包”   。 单击“+ 添加 Python 2 包”  。
+在自动化帐户中，在“共享资源”下选择“Python 2 程序包”。 单击“+ 添加 Python 2 包”  。
 
 ![添加 Python 包](media/python-packages/add-python-package.png)
 
