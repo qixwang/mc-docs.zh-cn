@@ -5,17 +5,53 @@ services: virtual-wan
 author: rockboyfor
 ms.service: virtual-wan
 ms.topic: include
-origin.date: 10/17/2019
-ms.date: 03/30/2020
+origin.date: 03/24/2020
+ms.date: 05/18/2020
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: a0b6d5d66b79db50d5852ef91934bd947cf05998
-ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
+ms.openlocfilehash: 0df2d1f1f04863c8892708a6fed5201694d94ecf
+ms.sourcegitcommit: 8d56bc6baeb42d675695ecef1909d76f5c4a6ae3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82096015"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83406207"
 ---
+### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>用户是否需要将中心辐射型拓扑与 SD-WAN/VPN 设备配合使用才能使用 Azure 虚拟 WAN？
+
+虚拟 WAN 提供了许多内置于单个窗格中的功能，例如站点/站点到站点 VPN 连接、用户/P2S 连接、ExpressRoute 连接、虚拟网络连接、VPN ExpressRoute 互连、VNET 到 VNET 可传递连接、集中路由、Azure 防火墙和防火墙管理器安全性、监视、ExpressRoute 加密以及许多其他功能。 无需所有这些用例即可开始使用虚拟 WAN。 只需一个用例即可开始使用。 虚拟 WAN 体系结构是一种内置了规模和性能的中心辐射型体系结构，其中的分支（VPN/SD-WAN 设备）、用户（Azure VPN 客户端、openVPN 或 IKEv2 客户端）、ExpressRoute 线路和虚拟网络充当虚拟中心的辐条。 所有中心均在标准虚拟 WAN 中以完整网格的形式进行连接，使得用户能够轻松地使用 Azure 主干进行任意分支到任意分支的连接。 对于包含 SD-WAN/VPN 设备的中心辐射型体系结构，用户可以在 Azure 虚拟 WAN 门户中手动设置该它，也可以使用虚拟 WAN 合作伙伴 CPE (SD-WAN/VPN) 来设置与 Azure 的连接。 虚拟 WAN 合作伙伴提供自动进行连接的功能：将设备信息导出到 Azure 中，下载 Azure 配置，然后建立与 Azure 虚拟 WAN 中心的连接。 对于点到站点/用户 VPN 连接，我们支持 [Azure VPN 客户端](https://go.microsoft.com/fwlink/?linkid=2117554)、OpenVPN 或 IKEv2 客户端。 
+
+### <a name="what-client-does-the-azure-virtual-wan-user-vpn-point-to-site-support"></a>Azure 虚拟 WAN 用户 VPN（点到站点）支持什么客户端？
+
+虚拟 WAN 支持 [Azure VPN 客户端](https://go.microsoft.com/fwlink/?linkid=2117554)、OpenVPN 客户端或任何 IKEv2 客户端。 Azure VPN 客户端支持 Azure AD 身份验证。至少需要 Windows 10 客户端 OS 17763.0 或更高版本。  OpenVPN 客户端可以支持基于证书的身份验证。 在网关上选择基于证书的身份验证后，会看到需下载到设备的 .ovpn 文件。 IKEv2 支持证书和 RADIUS 身份验证。 
+
+### <a name="for-user-vpn-point-to-site--why-is-the-p2s-client-pool-split-into-two-routes"></a>就用户 VPN（点到站点）来说，为什么将 P2S 客户端池拆分为两个路由？
+
+每个网关都有两个实例，进行拆分是为了使每个网关实例可以独立地为连接的客户端分配客户端 IP，并将来自虚拟网络的流量路由回正确的网关实例，避免网关间的实例跃点。
+
+### <a name="how-do-i-add-dns-servers-for-p2s-clients"></a>如何为 P2S 客户端添加 DNS 服务器？
+
+可以通过两个选项为 P2S 客户端添加 DNS 服务器。
+
+1. 使用 Azure 打开支持票证，并用其将你的 DNS 服务器添加到中心
+2. 或者，如果你使用的是适用于 Windows 10 的 Azure VPN 客户端，则可修改下载的 XML 配置文件，在导入该文件之前添加 **\<dnsservers>\<dnsserver> \</dnsserver>\</dnsservers>** 标记。
+
+```
+<azvpnprofile>
+<clientconfig>
+
+    <dnsservers>
+        <dnsserver>x.x.x.x</dnsserver>
+        <dnsserver>y.y.y.y</dnsserver>
+    </dnsservers>
+
+</clientconfig>
+</azvpnprofile>
+```
+
+### <a name="for-user-vpn-point-to-site--how-many-clients-are-supported"></a>就用户 VPN（点到站点）来说，支持多少个客户端？
+
+每个用户 VPN P2S 网关都有两个实例，每个实例支持的用户数会随缩放单元的变化而变化，并有一个上限。 缩放单元 1-3 支持 500 个连接，缩放单元 4-6 支持 1000 个连接，缩放单元 7-10 支持 5000 个连接，缩放单元 11+ 支持最多 10,000 个连接。 例如，假设用户选择 1 个缩放单元。 每个缩放单元的存在都意味着已部署主动-主动网关，并且这些实例（在本例中为 2 个实例）中的每一个都支持最多 500 个连接。 每个网关可以获得 500 * 2 个连接，但这并不意味着你要为此缩放单元的 1000 个（而不是 500 个）连接做规划，因为系统可能需要为实例提供服务，而在服务期间，当你超过建议的连接数时，系统可能会中断这额外的 500 个连接。
+
 ### <a name="what-is-the-difference-between-an-azure-virtual-network-gateway-vpn-gateway-and-an-azure-virtual-wan-vpn-gateway"></a>Azure 虚拟网络网关（VPN 网关）和 Azure 虚拟 WAN VPN 网关之间有什么区别？
 
 虚拟 WAN 提供大规模站点到站点连接，在设计上考虑到了吞吐量、可伸缩性和易用性。 将站点连接到虚拟 WAN VPN 网关时，它不同于使用网关类型 “VPN”的常规虚拟网络网关。 同样，将 ExpressRoute 线路连接到虚拟 WAN 中心时，它对 ExpressRoute 网关使用的资源与对使用“ExpressRoute”网关类型的常规虚拟网络网关使用的资源不同。 对于 VPN 和 ExpressRoute，虚拟 WAN 最多支持 20 Gbps 聚合吞吐量。 虚拟 WAN 还实现了与 CPE 分支设备合作伙伴生态系统的连接自动化。 CPE 分支设备具有自动预配并连接到 Azure 虚拟 WAN 的内置自动化。 这些设备由一个不断扩张的 SD-WAN 和 VPN 合作伙伴生态系统提供。 请参阅[首选合作伙伴列表](../articles/virtual-wan/virtual-wan-locations-partners.md)。
@@ -90,10 +126,15 @@ ms.locfileid: "82096015"
 
 ### <a name="how-do-i-calculate-price-of-a-hub"></a>如何计算中心的价格？
 
+* 根据使用的中心服务付费。 例如，你有 10 个需要连接到 Azure 虚拟 WAN 的分支或本地设备表示连接到中心的 VPN 端点。 离开 Azure 的数据流量也将收费。
 
+    <!--Not Available on Lets say this is VPN of 1 scale unit = 500 Mbps, this is charged at $0.361/hr. Each connection is charged at $0.05/hr. For 10 connections, the total charge of service/hr would be $0.361 + $.5/hr. -->
+    
 * 还有其他的中心费用。 请参阅[定价](https://www.azure.cn/pricing/details/virtual-wan/)页面。
 
 * 如果由于 ExpressRoute 线路连接到虚拟中心而拥有 ExpressRoute 网关，则需支付缩放单元价格。 ER 中的每个缩放单元都是 2 Gbps，每个连接单元按与 VPN 连接单元相同的速率进行收费。
+
+* 如果分支 VNET 已连接到中心，则分支 VNET 的对等互连费用仍然适用。 
 
 ### <a name="how-do-new-partners-that-are-not-listed-in-your-launch-partner-list-get-onboarded"></a>没有在启动合作伙伴列表中列出的新合作伙伴如何加入？
 
@@ -171,8 +212,17 @@ ms.locfileid: "82096015"
 
 如果连接上的标志为“已启用”，则虚拟中心可将获知的默认路由传播到虚拟网络/站点到站点 VPN/ExpressRoute 连接。 当用户编辑虚拟网络连接、VPN 连接或 ExpressRoute 连接时，将显示此标志。 默认情况下，当站点或 ExpressRoute 线路连接到中心时，将禁用此标志。 如果添加虚拟网络连接以将 VNet 连接到虚拟中心，则默认情况下启用此功能。 默认路由不是源自虚拟 WAN 中心；只有当虚拟 WAN 中心由于在中心部署防火墙而获知默认路由或另一个连接的站点已启用强制隧道时，此标志才会将默认路由传播到连接。
 
+### <a name="how-does-the-virtual-hub-in-a-virtual-wan-select-the-best-path-for-a-route-from-multiple-hubs"></a>虚拟 WAN 中的虚拟中心如何从多个中心选择路由的最佳路径
+
+如果某个虚拟中心从多个远程中心获知同一路由，则其决定顺序如下所示
+1) 路由源  a) 网络路由 - 虚拟中心网关直接获知的 VNET 前缀  b) BGP  c) 中心 RouteTable（静态配置的路由）  d) 中心间路由
+2)  路由指标：虚拟 WAN 首选 ExpressRoute，而不是 VPN。 与 VPN 对等机相比，ExpressRoute 对等机具有更高的权重
+3)  AS 路径长度
+
 ### <a name="what-are-the-differences-between-the-virtual-wan-types-basic-and-standard"></a>虚拟 WAN 类型（基本和标准）之间的区别是什么？
 
-“基本”WAN 类型允许创建基本中心（SKU = 基本）。 “标准”WAN 类型允许创建标准中心（SKU = 标准）。 基本中心只支持站点到站点 VPN 功能。 利用标准中心，可以通过中心使用 ExpressRoute、用户 VPN (P2S)、完整网格中心和 VNet 到 VNet 传输。 你需要为标准中心支付 0.25 美元/小时的基本费用，并为 VNet 到 VNet 的连接过程中通过中心进行的传输和中心到中心流量的数据处理支付数据处理费用。 有关详细信息，请参阅[基本和标准虚拟 WAN](../articles/virtual-wan/virtual-wan-about.md#basicstandard)。 如需了解定价，请参阅[定价](https://www.azure.cn/pricing/details/virtual-wan/)页面。
+“基本”WAN 类型允许创建基本中心（SKU = 基本）。 “标准”WAN 类型允许创建标准中心（SKU = 标准）。 基本中心只支持站点到站点 VPN 功能。 利用标准中心，可以通过中心使用 ExpressRoute、用户 VPN (P2S)、完整网格中心和 VNet 到 VNet 传输。 有关详细信息，请参阅[基本和标准虚拟 WAN](../articles/virtual-wan/virtual-wan-about.md#basicstandard)。 如需了解定价，请参阅[定价](https://www.azure.cn/pricing/details/virtual-wan/)页面。
+
+<!--Not Available on You pay a base charge of $0.25/hr for standard hubs and a data processing fee for transiting through the hubs during VNet-to-VNet connectivity, as well as data processing for hub to hub traffic. -->
 
 <!-- Update_Description: update meta properties, wording update, update link -->

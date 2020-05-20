@@ -1,5 +1,5 @@
 ---
-title: Azure 安全中心常见问题 (FAQ) | Microsoft Docs
+title: Azure 安全中心常见问题 (FAQ) | Azure
 description: 此常见问题解答回答有关 Azure 安全中心的问题，Azure 安全中心是一个可帮助预防、检测和响应威胁的产品。
 services: security-center
 documentationcenter: na
@@ -14,12 +14,12 @@ ms.workload: na
 origin.date: 03/19/2019
 ms.date: 06/22/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 0dda408ece2140de79837e07773057079941dc24
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: dc4c75d7a1a5422086a44f127ee1ca1aac1e04b2
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75857899"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422537"
 ---
 # <a name="azure-security-center-frequently-asked-questions-faq"></a>Azure 安全中心常见问题 (FAQ)
 此 FAQ 解答有关 Azure 安全中心的问题。Azure 安全中心可帮助预防、检测和响应威胁，同时增加 Microsoft Azure 资源的可见性和安全方面的可控性。
@@ -29,15 +29,15 @@ ms.locfileid: "75857899"
 Azure 安全中心有助于预防、检测和响应威胁，同时增加 Azure 资源的可见性和安全可控性。 该服务提供订阅之间的集成安全监视和策略管理，帮助检测可能被忽略的威胁，且适用于广泛的安全解决方案生态系统。
 
 ### <a name="how-do-i-get-azure-security-center"></a>如何获取Azure 安全中心？
-Azure 安全中心通过世纪互联 Azure 订阅启用，可从 [Azure 门户](https://www.azure.cn/zh-cn/home/features/security-center/)访问。 （[登录到门户](https://portal.azure.cn)，选“浏览”  ，并滚动到“安全中心”  ）。  
+Azure 安全中心通过世纪互联 Azure 订阅启用，可从 [Azure 门户](https://www.azure.cn/home/features/security-center/)访问。 （[登录到门户](https://portal.azure.cn)，选“浏览”，并滚动到“安全中心”）。  
 
 ## <a name="billing"></a>计费
 ### <a name="how-does-billing-work-for-azure-security-center"></a>Azure 安全中心如何计费？
 安全中心分两个层提供：
 
-免费层提供 Azure 资源、基本安全策略、安全建议以及与合作伙伴安全产品和服务的集成的安全状态  。
+免费层提供 Azure 资源、基本安全策略、安全建议以及与合作伙伴安全产品和服务的集成的安全状态。
 
-标准层增添了高级威胁检测功能，包括威胁情报、行为分析、异常检测、安全事件和威胁归属报告  。 可以启动标准层免费试用版。 若要升级，请选择安全策略中的[定价层](https://www.azure.cn/zh-cn//pricing/details/security-center/)。 若要了解详细信息，请参阅[定价页](https://www.azure.cn/zh-cn//pricing/details/)。
+标准层增添了高级威胁检测功能，包括威胁情报、行为分析、异常检测、安全事件和威胁归属报告。 可以启动标准层免费试用版。 若要升级，请选择安全策略中的[定价层](https://www.azure.cn/pricing/details/security-center/)。 若要了解详细信息，请参阅[定价页](https://www.azure.cn/pricing/details/)。
 
 ### <a name="how-can-i-track-who-in-my-organization-performed-pricing-tier-changes-in-azure-security-center"></a>如何跟踪哪个组织用户在 Azure 安全中心执行了定价层更改
 Azure 订阅可能有多个管理员具有更改定价层的权限。 若要找出哪些用户执行了定价层更改，请使用 Azure 活动日志。 有关详细信息，请参阅[此文](https://techcommunity.microsoft.com/t5/Security-Identity/Tracking-Changes-in-the-Pricing-Tier-for-Azure-Security-Center/td-p/390832)。
@@ -51,7 +51,7 @@ Azure 安全中心使用[基于角色的访问控制 (RBAC)](../role-based-acces
 安全中心从 Azure 虚拟机 (VM)、虚拟机规模集 (VMSS)、IaaS 容器和非 Azure（包括本地）计算机收集数据，以监视安全漏洞和威胁。 数据是使用 Azure Monitoring Agent 收集的，它从计算机中读取各种安全相关的配置和事件日志，然后将数据复制到工作区以进行分析。
 
 ### <a name="am-i-billed-for-azure-monitor-logs-on-the-workspaces-created-by-security-center"></a>安全中心创建的工作区中的 Azure Monitor 日志是否会产生费用？
-不是。 由安全中心创建的并根据节点计费方式为 Azure Monitor 日志创建的工作区不会产生 Azure Monitor 日志费用。 安全中心的计费始终依据工作区上安装的以下安全中心安全策略和解决方案：
+否。 由安全中心创建的并根据节点计费方式为 Azure Monitor 日志创建的工作区不会产生 Azure Monitor 日志费用。 安全中心的计费始终依据工作区上安装的以下安全中心安全策略和解决方案：
 
 - **免费层** – 安全中心在默认工作区中启用“SecurityCenterFree”解决方案。 免费层不会产生费用。
 - **标准层** – 安全中心在默认工作区中启用“Security”解决方案。
@@ -74,7 +74,7 @@ Windows 或 Linux IaaS VM 的合格条件如下：
 - 该 VM 未用作应用程序，例如 Web 防火墙或下一代防火墙。
 
 ### <a name="can-i-delete-the-default-workspaces-created-by-security-center"></a>是否可以删除安全中心创建的默认工作区？
-建议不要删除默认工作区  。 安全中心使用默认工作区存储 VM 的安全数据。  删除工作区后，安全中心无法收集此数据，因此无法提供某些安全建议和提示。
+建议不要删除默认工作区。 安全中心使用默认工作区存储 VM 的安全数据。  删除工作区后，安全中心无法收集此数据，因此无法提供某些安全建议和提示。
 
 若要恢复，请删除连接到已删除工作区的 VM 上的 Azure Monitoring Agent。 安全中心会重新安装代理并创建新的默认工作区。
 
@@ -87,7 +87,7 @@ Windows 或 Linux IaaS VM 的合格条件如下：
 
 选择现有 Log Analytics 工作区的具体步骤：
 
-1. 在“安全策略 - 数据收集”  下，选择“使用另一个工作区”  。
+1. 在“安全策略 - 数据收集”下，选择“使用另一个工作区”。
 
    ![使用另一个工作区][5]
 
@@ -98,18 +98,18 @@ Windows 或 Linux IaaS VM 的合格条件如下：
    >
    >
 
-3. 选择“保存”。 
-4. 选择“保存”  后，系统就会询问是否要重新配置受监视的 VM。
+3. 选择“保存” 。
+4. 选择“保存”后，系统就会询问是否要重新配置受监视的 VM。
 
-   - 如果只希望在新 VM 上应用  新的工作区设置，请选择“否”  。 新的工作区设置只会应用于新的代理安装；新发现的 VM 没有安装 Azure Monitoring Agent。
-   - 如果希望在所有 VM 上应用  新的工作区设置，请选择“是”  。 此外，所有连接到安全中心创建的工作区的 VM 也都会重新连接到新的目标工作区。
+   - 如果只希望在新 VM 上应用新的工作区设置，请选择“否”。 新的工作区设置只会应用于新的代理安装；新发现的 VM 没有安装 Azure Monitoring Agent。
+   - 如果希望在所有 VM 上应用新的工作区设置，请选择“是”。 此外，所有连接到安全中心创建的工作区的 VM 也都会重新连接到新的目标工作区。
 
    > [!NOTE]
    > 如果选择“是”，不得删除安全中心创建的工作区，除非所有 VM 已重新连接到新的目标工作区。 如果过早删除工作区，此操作将会失败。
    >
    >
 
-   - 选择“取消”  ，以取消该操作。
+   - 选择“取消”，以取消该操作。
 
 ### <a name="what-if-the-azure-monitoring-agent-was-already-installed-as-an-extension-on-the-vm"></a>如果 Azure Monitoring Agent 已作为扩展安装到 VM 上，会怎样？<a name="mmaextensioninstalled"></a>
 将 Monitoring Agent 作为扩展安装时，扩展配置仅允许向单个工作区报告。 安全中心不会覆盖用户工作区的现有连接。 安全中心将来自 VM 的安全数据存储在已连接的工作区中，前提是已在该工作区中安装“Security”或“SecurityCenterFree”解决方案。 在此过程中，安全中心可将扩展版本升级到最新版本。
@@ -133,11 +133,11 @@ Windows 或 Linux IaaS VM 的合格条件如下：
 ### <a name="how-do-i-stop-the-automatic-agent-installation-and-workspace-creation"></a>如何停止自动安装代理和创建工作区？
 可以在安全策略中为订阅禁用自动预配，但不建议这样做。 禁用自动预配会限制安全中心的建议和警报。 禁用自动预配的具体步骤：
 
-1. 如果订阅配置为标准层，则打开该订阅的安全策略，并选择“免费”层  。
+1. 如果订阅配置为标准层，则打开该订阅的安全策略，并选择“免费”层。
 
    ![定价层][1]
 
-2. 接下来，通过在“安全策略 - 数据收集”  页上选择“关”  ，禁用自动预配。
+2. 接下来，通过在“安全策略 - 数据收集”页上选择“关”，禁用自动预配。
    ![数据收集][2]
 
 ### <a name="should-i-opt-out-of-the-automatic-agent-installation-and-workspace-creation"></a>是否应选择禁用自动安装代理和创建工作区？
@@ -164,7 +164,7 @@ Windows 或 Linux IaaS VM 的合格条件如下：
 
 应手动安装 Azure Monitoring Agent 扩展，使安全中心能够从 VM 收集安全数据并提供建议和警报。 有关安装的指导，请参阅 [Windows VM 的代理安装](../virtual-machines/extensions/oms-windows.md)或 [Linux VM 的代理安装](../virtual-machines/extensions/oms-linux.md)。
 
-可将代理连接到任何现有的自定义工作区或安全中心创建的工作区。 如果自定义工作区未启用“Security”或“SecurityCenterFree”解决方案，则需要应用某个解决方案。 若要应用，请选择自定义工作区或订阅，并通过“安全策略 – 定价层”边栏选项卡应用定价层。 
+可将代理连接到任何现有的自定义工作区或安全中心创建的工作区。 如果自定义工作区未启用“Security”或“SecurityCenterFree”解决方案，则需要应用某个解决方案。 若要应用，请选择自定义工作区或订阅，并通过“安全策略 – 定价层”边栏选项卡应用定价层。
 
    ![定价层][1]
 
@@ -180,9 +180,9 @@ Windows 或 Linux IaaS VM 的合格条件如下：
 
 手动删除代理：
 
-1.  在门户中，打开“Log Analytics”  。
+1.  在门户中，打开“Log Analytics”。
 2.  在“Log Analytics”页上，选择工作区：
-3.  选择不需要监视的 VM 并选择“断开连接”  。
+3.  选择不需要监视的 VM 并选择“断开连接”。
 
    ![删除代理][3]
 
@@ -193,10 +193,10 @@ Windows 或 Linux IaaS VM 的合格条件如下：
 ### <a name="how-do-i-disable-data-collection"></a>如何禁用数据收集？
 默认情况下自动设置处于关闭状态。 可以随时禁用安全策略中的此设置，禁用资源的自动设置。 强烈建议使用自动预配，以获取有关系统更新、OS 漏洞和终结点保护的安全警报和建议。
 
-若要禁用数据收集，请[登录到 Azure 门户](https://portal.azure.cn)，依次选择“浏览”、“安全中心”和“策略”    。 选择希望禁用自动设置的订阅。 选择订阅时，“安全策略 - 数据收集”将打开  。 在“自动设置”下，选择“关闭”   。
+若要禁用数据收集，请[登录到 Azure 门户](https://portal.azure.cn)，依次选择“浏览”、“安全中心”和“策略”  。 选择希望禁用自动设置的订阅。 选择订阅时，“安全策略 - 数据收集”将打开。 在“自动设置”下，选择“关闭” 。
 
 ### <a name="how-do-i-enable-data-collection"></a>如何启用数据收集？
-可在安全中心策略中对 Azure 订阅启用数据收集。 启用数据收集。 [登录到 Azure 门户](https://portal.azure.cn)，依次选择“浏览”、“安全中心”和“策略”    。 选择希望启用自动设置的订阅。 选择订阅时，“安全策略 - 数据收集”将打开  。 在“自动设置”下，选择“打开”   。
+可在安全中心策略中对 Azure 订阅启用数据收集。 启用数据收集。 [登录到 Azure 门户](https://portal.azure.cn)，依次选择“浏览”、“安全中心”和“策略”  。 选择希望启用自动设置的订阅。 选择订阅时，“安全策略 - 数据收集”将打开。 在“自动设置”下，选择“打开” 。
 
 ### <a name="what-happens-when-data-collection-is-enabled"></a>启用数据收集之后会发生什么？
 启动自动设置后，安全中心可在所有受支持的 Azure VM 以及任何新建的 Azure VM 中预配 Azure Monitoring Agent。 强烈建议进行自动预配，但也可以手动代理安装。 [了解如何安装 Azure Monitoring Agent 扩展](../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)。 
@@ -225,7 +225,7 @@ Windows 或 Linux IaaS VM 的合格条件如下：
 ### <a name="does-security-center-install-solutions-on-my-existing-log-analytics-workspaces-what-are-the-billing-implications"></a>安全中心是否在现有 Log Analytics 工作区上安装解决方案？ 计费会产生什么影响？
 安全中心确定 VM 已连接到所创建的工作区时，会根据定价层启用此工作区上的解决方案。
 
-- 免费层  – 安全中心在工作区中安装“SecurityCenterFree”解决方案。 免费层不会产生费用。
+- 免费层 – 安全中心在工作区中安装“SecurityCenterFree”解决方案。 免费层不会产生费用。
 - **标准层** – 安全中心在工作区中安装“Security”解决方案。
 
    ![默认工作区上的解决方案][4]
@@ -261,7 +261,7 @@ Azure 安全中心可分析 Azure 资源的安全状态。 发现潜在的安全
 安全策略中仅已启用的推荐操作会显示在此处。
 
 ### <a name="how-can-i-see-the-current-security-state-of-my-azure-resources"></a>如何查看 Azure 资源当前安的全状态？
-“安全中心概述”页显示按计算、网络、存储和数据以及应用程序细分的环境的总体安全状况  。 每个资源类型都有一个指示符，该指示符显示是否已发现潜在安全漏洞。 单击每个磁贴可显示安全中心发现的安全问题列表和订阅中的资源清单。
+“安全中心概述”页显示按计算、网络、存储和数据以及应用程序细分的环境的总体安全状况。 每个资源类型都有一个指示符，该指示符显示是否已发现潜在安全漏洞。 单击每个磁贴可显示安全中心发现的安全问题列表和订阅中的资源清单。
 
 ### <a name="what-triggers-a-security-alert"></a>什么会触发安全警报？
 Azure 安全中心自动从 Azure 资源、网络和合作伙伴解决方案（例如恶意软件和防火墙）收集、分析和融合数据。 检测到威胁时会创建安全警报。 示例中包括的检测项：

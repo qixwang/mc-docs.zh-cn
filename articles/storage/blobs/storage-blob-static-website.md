@@ -9,12 +9,12 @@ ms.reviewer: dineshm
 origin.date: 05/29/2019
 ms.date: 03/30/2020
 ms.subservice: blobs
-ms.openlocfilehash: df3a378e9feea129fc38b83e8886610070c1c79c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: d97fe36eec4300e79d84f91a6dec19ee81799b5b
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80290444"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422363"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Azure 存储中的静态网站托管
 
@@ -45,7 +45,7 @@ ms.locfileid: "80290444"
 > * [Azure CLI](storage-blob-static-website-how-to.md#cli)
 > * [Azure PowerShell 模块](storage-blob-static-website-how-to.md#powershell)
 > * [AzCopy](../common/storage-use-azcopy-v10.md)
-> * [Azure 存储浏览器](https://azure.microsoft.com/features/storage-explorer/)
+> * [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)
 > * [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/)
 > * [Visual Studio Code 扩展](https://docs.microsoft.com/azure/javascript/tutorial-vscode-static-website-node-01)
 
@@ -86,9 +86,8 @@ ms.locfileid: "80290444"
 
 ## <a name="mapping-a-custom-domain-to-a-static-website-url"></a>将自定义域映射到静态网站 URL
 
-你可以使静态网站可通过自定义域进行访问。 
-
-为自定义域启用 HTTP 访问更为容易，因为 Azure 存储原本就支持它。
+你可以使静态网站可通过自定义域进行访问。 为自定义域启用 HTTP 访问更为容易，因为 Azure 存储原本就支持它。
+如果将存储帐户配置为通过 HTTPS [要求进行安全传输](../common/storage-require-secure-transfer.md)，则用户必须使用 HTTPS 终结点。 
 
 > [!TIP]
 > 请考虑在 Azure 上托管你的域。 有关详细信息，请参阅[在 Azure DNS 中托管域](../../dns/dns-delegate-domain-azure-dns.md)。
@@ -97,9 +96,9 @@ ms.locfileid: "80290444"
 
 可以免费启用静态网站托管。 只会针对你的站点利用的 blob 存储和运营成本进行计费。 如需详细了解 Azure Blob 存储价格，请参阅 [Azure Blob 存储定价页](https://azure.cn/pricing/details/storage/blobs/)。
 
-## <a name="metrics"></a>度量值
+## <a name="metrics"></a>指标
 
-可以在静态网站页面上启用指标。 启用指标后，指标仪表板会报告有关 $web 容器中的文件的流量统计信息  。
+可以在静态网站页面上启用指标。 启用指标后，指标仪表板会报告有关 $web 容器中的文件的流量统计信息。
 
 若要在静态网站页面上启用指标，请参阅[在静态网站页面上启用指标](storage-blob-static-website-how-to.md#metrics)。
 
@@ -109,4 +108,5 @@ ms.locfileid: "80290444"
 * [将自定义域映射到 Azure Blob 存储终结点](storage-custom-domain-name.md)
 * [Azure Functions](/azure-functions/functions-overview)
 * [Azure 应用服务](/app-service/overview)
+
 * [教程：在 Azure DNS 中托管域](../../dns/dns-delegate-domain-azure-dns.md)

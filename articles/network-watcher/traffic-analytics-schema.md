@@ -1,5 +1,5 @@
 ---
-title: Azure 流量分析架构 | Microsoft Docs
+title: Azure 流量分析架构 | Azure Docs
 description: 了解用于分析 Azure 网络安全组流日志的流量分析的架构。
 services: network-watcher
 documentationcenter: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 origin.date: 02/26/2019
 ms.date: 02/27/2020
 ms.author: v-lingwu
-ms.openlocfilehash: 4b318cb15e61690dc48b2b6df93784a3539de5a4
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 3e801797a4bd7995cb5f26188660f70a506433fa
+ms.sourcegitcommit: b81ea2ab9eafa986986fa3eb1e784cfe9bbf9ec1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78155092"
+ms.lasthandoff: 05/13/2020
+ms.locfileid: "83367825"
 ---
 # <a name="schema-and-data-aggregation-in-traffic-analytics"></a>流量分析中的架构和数据聚合
 
@@ -105,7 +105,7 @@ https://{saName}@insights-logs-networksecuritygroupflowevent/resoureId=/SUBSCRIP
 | FlowIntervalStartTime_t | UTC 日期和时间 |  流日志处理间隔的开始时间。 这是开始计量流间隔的时间 |
 | FlowIntervalEndTime_t | UTC 日期和时间 | 流日志处理间隔的结束时间 |
 | FlowStartTime_t | UTC 日期和时间 |  流日志处理间隔中出现在“FlowIntervalStartTime_t”与“FlowIntervalEndTime_t”之间的第一个流（将会聚合）。 此流将会基于聚合逻辑进行聚合 |
-| FlowEndTime_t | UTC 日期和时间 | 流日志处理间隔中出现在“FlowIntervalStartTime_t”与“FlowIntervalEndTime_t”之间的最后一个流（将会聚合）。 在流日志 v2 中，此字段包含启动具有相同四元组的最后一个流（在原始流记录中标记为“B”）的时间。 |
+| FlowEndTime_t | UTC 日期和时间 | 流日志处理间隔中出现在“FlowIntervalStartTime_t”与“FlowIntervalEndTime_t”之间的最后一个流（将会聚合）。 在流日志 v2 中，此字段包含启动具有相同四元组的最后一个流（在原始流记录中标记为“B”）的时间 |
 | FlowType_s |  * IntraVNet <br> * InterVNet <br> * S2S <br> * P2S <br> * AzurePublic <br> * ExternalPublic <br> * MaliciousFlow <br> * Unknown Private <br> * Unknown | 表格下方的注释中提供了定义 |
 | SrcIP_s | 源 IP 地址 | 使用 AzurePublic 和 ExternalPublic 流时是空白的 |
 | DestIP_s | 目标 IP 地址 | 使用 AzurePublic 和 ExternalPublic 流时是空白的 |

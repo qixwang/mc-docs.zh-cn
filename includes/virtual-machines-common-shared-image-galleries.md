@@ -6,15 +6,15 @@ author: rockboyfor
 ms.service: virtual-machines
 ms.topic: include
 origin.date: 05/06/2019
-ms.date: 02/10/2020
+ms.date: 05/18/2020
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: 0641e8f21a06cd3a6a2f3ee1c5d5f2f98b5b4087
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 4b2301bb4b385bd634f1c4df8569b7cb4bb8a120
+ms.sourcegitcommit: 8d56bc6baeb42d675695ecef1909d76f5c4a6ae3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77428383"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83406202"
 ---
 共享映像库是一种可以帮助你围绕托管映像构建结构和组织的服务。 共享映像库提供以下功能：
 
@@ -51,7 +51,7 @@ ms.locfileid: "77428383"
 
 映像定义是映像版本的逻辑分组。 映像定义包含有关创建映像的原因、它适用于哪个 OS 的信息，以及映像的用法信息。 映像定义类似于一个计划，提供了有关如何创建特定映像的所有详细信息。 不要从映像定义部署 VM，而要从基于该定义创建的映像版本部署 VM。
 
-对于每个映像定义，将组合使用“发布者”、“套餐”和“SKU”这三个参数。    这些参数用于查找特定的映像定义。 可以拥有共享一个或两个但不是全部三个值的映像版本。  例如，以下是三个映像定义及其值：
+对于每个映像定义，将组合使用“发布者”、“套餐”和“SKU”这三个参数。   这些参数用于查找特定的映像定义。 可以拥有共享一个或两个但不是全部三个值的映像版本。  例如，以下是三个映像定义及其值：
 
 |映像定义|发布者|产品/服务|SKU|
 |---|---|---|---|
@@ -146,7 +146,7 @@ ms.locfileid: "77428383"
 
 ## <a name="billing"></a>计费
 使用共享映像库服务不会产生额外的费用。 以下资源会产生费用：
-- 存储共享映像版本的存储费用。 具体费用取决于映像版本的副本数，以及版本要复制到的区域数。 例如，如果你有 2 个映像，它们都已复制到 3 个区域，则你需要根据映像的大小，为 6 个托管磁盘付费。 有关详细信息，请参阅[托管磁盘定价](https://www.azure.cn/pricing/details/storage/)。
+- 存储共享映像版本的存储费用。 具体费用取决于映像版本的副本数，以及版本要复制到的区域数。 例如，如果你有 2 个映像，它们都已复制到 3 个区域，则你需要根据映像的大小，为 6 个托管磁盘付费。 有关详细信息，请参阅[托管磁盘定价](https://www.azure.cn/pricing/details/storage/managed-disks/)。
 - 将第一个映像版本从源区域复制到目标区域的网络传出费用。 后续副本将在区域中处理，因此不会产生额外的费用。 
 
 ## <a name="updating-resources"></a>更新资源
@@ -212,15 +212,15 @@ ms.locfileid: "77428383"
 若要在 Azure 门户上列出不同订阅中你有权访问的所有共享映像库资源，请执行以下步骤：
 
 1. 打开 [Azure 门户](https://portal.azure.cn)。
-1. 转到“所有资源”。 
+1. 转到“所有资源”。
 1. 选择要列出其中的所有资源的所有订阅。
-1. 查找类型为“专用库”的资源。 
+1. 查找类型为“专用库”的资源。
 
-    若要查看映像定义和映像版本，还应选择“显示隐藏的类型”。 
+    若要查看映像定义和映像版本，还应选择“显示隐藏的类型”。
 
     若要列出不同订阅中你有权访问的所有共享映像库资源，请在 Azure CLI 中使用以下命令：
 
-    ```bash
+    ```azurecli
     az account list -otsv --query "[].id" | xargs -n 1 az sig list --subscription
     ```
 

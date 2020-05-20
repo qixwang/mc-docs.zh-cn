@@ -7,13 +7,13 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 03/19/2020
-ms.date: 03/30/2020
-ms.openlocfilehash: 36e3d4a474a7f16684ef06c84f15628318affd5a
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/09/2020
+ms.openlocfilehash: 53030788dcaddf2635024f1f4902a604571e3b0a
+ms.sourcegitcommit: bfbd6694da33f703481386f2a3f16850c4e94bfa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80523178"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83417744"
 ---
 # <a name="data-formats-supported-by-azure-data-explorer-for-ingestion"></a>Azure 数据资源管理器支持的用于引入的数据格式
 
@@ -22,11 +22,12 @@ ms.locfileid: "80523178"
 |格式   |分机   |说明|
 |---------|------------|-----------|
 |Avro     |`.avro`     |一个 [Avro 容器文件](https://avro.apache.org/docs/current/)。 以下代码受支持：`null`、`deflate`（当前不支持 `snappy`）。|
+|ApacheAvro|`.avro`    |[Avro](https://avro.apache.org/docs/current/) 格式的实验性本机实现，支持[逻辑类型](https://avro.apache.org/docs/current/spec.html#Logical+Types)和 `snappy` 压缩编解码器。|
 |CSV      |`.csv`      |一个采用逗号分隔值 (`,`) 的文本文件。 请参阅 [RFC 4180:_Common Format and MIME Type for Comma-Separated Values (CSV) Files_](https://www.ietf.org/rfc/rfc4180.txt)（RFC 4180：逗号分隔值 (CSV) 文件的常见格式和 MIME 类型）。|
 |JSON     |`.json`     |一个文本文件，其中包含使用 `\n` 或 `\r\n` 分隔的 JSON 对象。 请参阅 [JSON Lines (JSONL)](http://jsonlines.org/)。|
 |MultiJSON|`.multijson`|一个文本文件，包含一个由属性包（每个包代表一条记录）组成的 JSON 数组，或者包含通过空格、`\n` 或 `\r\n` 分隔的任意数目的属性包。 每个属性包可以分布在多个行上。 此格式优先于 `JSON`，除非数据为非属性包。|
-|ORC      |`.orc`      |[Orc 文件](https://wikipedia.org/wiki/Apache_ORC)。|
-|Parquet  |`.parquet`  |一个 [Parquet 文件](https://wikipedia.org/wiki/Apache_Parquet)。|
+|ORC      |`.orc`      |Orc 文件。|
+|Parquet  |`.parquet`  |Parquet 文件。|
 |PSV      |`.psv`      |一个采用竖线分隔值 (<code>&#124;</code>) 的文本文件。|
 |RAW      |`.raw`      |一个文本文件，其整个内容就是一个字符串值。|
 |SCsv     |`.scsv`     |一个采用分号分隔值 (`;`) 的文本文件。|
@@ -50,12 +51,12 @@ ms.locfileid: "80523178"
 * `MyData.csv.zip` 指示格式化为 CSV 且使用 ZIP 进行压缩的 blob 或文件（存档或单个文件）
 * `MyData.csv.gz` 指示格式化为 CSV 且使用 GZip 进行压缩的 blob 或文件
 
-不包含格式扩展名而只包含压缩名的 Blob 名或文件名（例如 ）也受支持。 在这种情况下，必须将文件格式指定为引入属性，因为不能对它进行推断。
+不包含格式扩展名而只包含压缩名的 Blob 名或文件名（例如 `MyData.zip`）也受支持。 在这种情况下，必须将文件格式指定为引入属性，因为不能对它进行推断。
 
 > [!NOTE]
 > 某些压缩格式会在压缩的流中记录原始文件扩展名。 在确定文件格式时，通常会忽略此扩展名。 如果不能根据（压缩的）Blob 或文件的名称确定文件格式，则必须通过 `format` 引入属性指定它。
 
 ## <a name="next-steps"></a>后续步骤
-s
+
 * 详细了解[数据引入](/data-explorer/ingest-data-overview)
 * 详细了解 [Azure 数据资源管理器的数据引入属性](ingestion-properties.md)

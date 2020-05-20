@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 网络观察程序管理网络安全组流日志的存储 blob | Microsoft Docs
+title: 删除 Azure 网络观察程序中网络安全组流日志的存储 Blob | Azure Docs
 description: 本文介绍了如何在 Azure 网络观察程序中删除超过了其保留策略期限的网络安全组流日志存储 blob。
 services: network-watcher
 documentationcenter: na
@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 origin.date: 08/16/2019
 ms.date: 2/27/2020
 ms.author: v-lingwu
-ms.openlocfilehash: c31d73b093fb657120fce4290e3a6c7a0d6df681
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: ad6fb12c11e5913e58c62604b15eadcb7789a046
+ms.sourcegitcommit: b81ea2ab9eafa986986fa3eb1e784cfe9bbf9ec1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78154966"
+ms.lasthandoff: 05/13/2020
+ms.locfileid: "83367842"
 ---
 # <a name="delete-network-security-group-flow-log-storage-blobs-in-network-watcher"></a>在网络观察程序中删除网络安全组流日志存储 blob
 
@@ -136,6 +136,5 @@ Write-Output ('Retention policy for all NSGs evaluated and completed successfull
    ```
     
 ## <a name="next-steps"></a>后续步骤
-- 客户可以使用 [Azure 计划程序](https://docs.azure.cn/zh-cn/scheduler/)或 [Azure 自动化](https://docs.azure.cn/zh-cn/automation/)自动运行脚本。
-- 如需详细了解 NSG 日志记录，请参阅[网络安全组 (NSG) 的 Azure Monitor 日志](../virtual-network/virtual-network-nsg-manage-log.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)。
+- 客户可以使用 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)或 [Azure 自动化](https://docs.azure.cn/automation/)自动运行脚本
 

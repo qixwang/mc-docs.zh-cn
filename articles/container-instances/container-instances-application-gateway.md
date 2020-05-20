@@ -4,13 +4,15 @@ description: 在虚拟网络中创建容器组，并使用 Azure 应用程序网
 ms.topic: article
 ms.date: 05/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: dab1e914f110d614b32ddad02d785f60d19eb008
-ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
+ms.openlocfilehash: 5a8092a70e7dbc4fabd7328dc7c3a5a98b2263ef
+ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "83002299"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83392421"
 ---
+<!--Failed to create appContainer-->
+<!--DO NOT RELEASE THIS ARTICLES-->
 <!--Verified cmdlet to Line 65-->
 <!--Need to Verified the next cmdlet-->
 # <a name="expose-a-static-ip-address-for-a-container-group"></a>公开容器组的静态 IP 地址
@@ -26,7 +28,7 @@ ms.locfileid: "83002299"
 只要应用程序网关运行，并且容器组公开网络委托子网中的某个稳定专用 IP 地址，就可以通过此公共 IP 地址访问该容器组。
 
 > [!NOTE]
-> Azure 根据所预配网关的可用时间长短及其处理的数据量对应用程序网关收费。 请参阅[定价](https://www.azure.cn/pricing/details/application-gateway/)。
+> Azure 根据预配并提供网关的时间长短及其处理的数据量对应用程序网关进行收费。 请参阅[定价](https://www.azure.cn/pricing/details/application-gateway/)。
 
 ## <a name="create-virtual-network"></a>创建虚拟网络
 

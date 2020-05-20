@@ -6,17 +6,17 @@ author: rockboyfor
 ms.service: container-registry
 ms.topic: include
 origin.date: 07/12/2019
-ms.date: 08/26/2019
+ms.date: 05/18/2020
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: 830e2981d74ad8a8283fd5702db0330a7369c5a3
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 2a234b04dd8ae7ae4a237ecaecaf021a2d390d23
+ms.sourcegitcommit: 8d56bc6baeb42d675695ecef1909d76f5c4a6ae3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "70134523"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83406223"
 ---
-在命令输出中，`identity` 部分显示在任务中设置了 `SystemAssigned` 类型的标识。 `principalId` 是标识的服务主体 ID：
+在命令输出中，`identity` 部分显示在任务中设置了 `SystemAssigned` 类型的标识。 `principalId` 是任务标识的主体 ID：
 
 ```console
 [...]
@@ -29,12 +29,14 @@ ms.locfileid: "70134523"
   "location": "chinanorth",
 [...]
 ``` 
-使用 [az acr task show][az-acr-task-show] 命令将 principalId 存储在变量中，以便在后面的命令中使用：
+使用 [az acr task show][az-acr-task-show] 命令将 principalId 存储在变量中，以便在后面的命令中使用。 在以下命令中替换任务名称和注册表：
 
 ```azurecli
-principalID=$(az acr task show --name dockerhubtask --registry myregistry --query identity.principalId --output tsv)
+principalID=$(az acr task show --name mytask --registry myregistry --query identity.principalId --output tsv)
 ```
 
 <!-- LINKS - Internal -->
 
 [az-acr-task-show]: https://docs.azure.cn/cli/acr/task?view=azure-cli-latest#az-acr-task-show
+
+<!-- Update_Description: update meta properties, wording update, update link -->
