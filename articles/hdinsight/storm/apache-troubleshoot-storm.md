@@ -23,7 +23,7 @@ ms.locfileid: "79291567"
 ---
 # <a name="troubleshoot-apache-storm-by-using-azure-hdinsight"></a>使用 Azure HDInsight 对 Apache Storm 进行故障排除
 
-了解处理 [Apache Ambari](https://storm.apache.org/) 中的 [Apache Storm](https://ambari.apache.org/) 有效负载时的最常见问题及其解决方法。
+了解处理 [Apache Ambari](https://ambari.apache.org/) 中的 [Apache Storm](https://storm.apache.org/) 有效负载时的最常见问题及其解决方法。
 
 ## <a name="how-do-i-access-the-storm-ui-on-a-cluster"></a>如何在群集上访问 Storm UI？
 可以使用两个选项从浏览器访问 Storm UI：

@@ -27,7 +27,7 @@ ms.locfileid: "79452565"
 
 ## <a name="log-alert-didnt-fire"></a>日志警报未激发
 
-下面 [Azure Monitor 中配置的日志警报规则](../platform/alerts-log.md)状态不按预期[显示为已激发](../platform/alerts-managing-alert-states.md)的部分常见原因。  
+下面 [Azure Monitor 中配置的日志警报规则](../platform/alerts-log.md)状态不按预期[显示为已激发](../platform/alerts-managing-alert-states.md)的部分常见原因。 
 
 ### <a name="data-ingestion-time-for-logs"></a>日志的数据引入时间
 
@@ -75,7 +75,7 @@ ms.locfileid: "79452565"
 
 同样，如果其他任何 **$table** 值发生三次连续违规，则会触发另一条警报通知。 警报服务自动按时间排序一个绘图/实体中的值（如橙色框所示）
 
-现在，假设指标度量日志警报的规则已修改，且查询为 `search *| summarize AggregatedValue = count() by bin(timestamp, 1h)`。 剩余的配置与前面相同，包括警报逻辑同样为三次连续违规。 在这种情况下，“聚合依据”选项默认为 **timestamp**。  在查询中只为 **summarize…by** 提供了一个值（即 **timestamp**）。 与前面的示例类似，在执行结束时，输出将如下所示。
+现在，假设指标度量日志警报的规则已修改，且查询为 `search *| summarize AggregatedValue = count() by bin(timestamp, 1h)`。 剩余的配置与前面相同，包括警报逻辑同样为三次连续违规。 在这种情况下，“聚合依据”选项默认为 **timestamp**。 在查询中只为 **summarize…by** 提供了一个值（即 **timestamp**）。 与前面的示例类似，在执行结束时，输出将如下所示。
 
    ![包含单个值的指标度量查询执行](media/alert-log-troubleshoot/LogMMtimestamp.png)
 

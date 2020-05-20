@@ -30,7 +30,7 @@ Application Insights 一直都有一个总览窗格，可让用户快速、直�
 
 ![时间范围](./media/overview-dashboard/app-insights-overview-dashboard-03.png)
 
-总体性能已大大提高。 只需单击一次即可访问常用功能，例如**搜索**和**分析**。 每个默认动态更新的 KPI 磁贴都可让你深入了解相应的 Application Insights 功能。 若要了解有关失败请求的详细信息，请在“调查”  标题下选择“失败”  ：
+总体性能已大大提高。 只需单击一次即可访问常用功能，例如**搜索**和**分析**。 每个默认动态更新的 KPI 磁贴都可让你深入了解相应的 Application Insights 功能。 若要了解有关失败请求的详细信息，请在“调查”标题下选择“失败”：
 
 ![失败数](./media/overview-dashboard/app-insights-overview-dashboard-04.png)
 

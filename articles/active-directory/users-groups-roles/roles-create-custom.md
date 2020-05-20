@@ -31,7 +31,7 @@ ms.locfileid: "74655419"
 
 ### <a name="create-a-new-custom-role-to-grant-access-to-manage-app-registrations"></a>创建新的自定义角色，授予管理应用注册所需的访问权限
 
-1. 在 Azure AD 组织中使用特权角色管理员或全局管理员权限登录 [Azure 门户](https://portal.azure.cn)。 
+1. 在 Azure AD 组织中使用特权角色管理员或全局管理员权限登录 [Azure 门户](https://portal.azure.cn)。
 1. 选择“Azure Active Directory”   > “角色和管理员”   >   “新建自定义角色”。
 
    ![在“角色和管理员”页中创建或编辑角色](./media/roles-create-custom/new-custom-role.png)

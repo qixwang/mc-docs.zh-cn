@@ -1,23 +1,19 @@
 ---
-title: Azure 中 VM 的维护和更新 | Azure
+title: Azure 中 VM 的维护和更新
 description: 概述在 Azure 中运行的虚拟机的维护和更新。
-services: virtual-machines
-documentationcenter: ''
 author: rockboyfor
-editor: ''
-tags: azure-resource-manager,azure-service-management
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: article
 origin.date: 11/18/2019
-ms.date: 02/17/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: de2b45c377fde59510ed91f414c951938944b75c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 469ff837ee1659796beff7a46f3ea8b1263b183c
+ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77429969"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83392336"
 ---
 # <a name="maintenance-for-virtual-machines-in-azure"></a>Azure 中虚拟机的维护
 
@@ -46,8 +42,9 @@ Azure 定期更新其平台，以提高虚拟机的主机基础结构的可靠�
 
 此类更新可能会影响某些应用程序。 将 VM 实时迁移到另一主机时，某些敏感的工作负荷可能会有几分钟出现导致 VM 暂停的性能略微下降情况。 若要准备 VM 维护并减小 Azure 维护期间造成的影响，请尝试使用此类应用程序的适用于 [Windows](./windows/scheduled-events.md) 或 [Linux](./linux/scheduled-events.md) 的计划事件。 
 
-<!--Not Available on [Azure Dedicated Hosts](./linux/dedicated-hosts.md)-->
-<!--Not Available on [isolated VM](../security/fundamentals/isolation-choices.md)-->
+公共预览版中还提供了一项维护控制的功能，这项功能可以帮助管理不需要重新启动的维护。 必须使用 [Azure 专用主机](./linux/dedicated-hosts.md)。 使用维护控制可以选择跳过平台更新并选择 35 天滚动时段内的某个时间应用更新。 有关详细信息，请参阅[使用维护控制和 Azure CLI 来控制更新](maintenance-control-cli.md)。
+
+<!--Not Available on or an [isolated VM](../security/fundamentals/isolation-choices.md)-->
 
 ### <a name="live-migration"></a>实时迁移
 
@@ -68,15 +65,15 @@ Azure 定期更新其平台，以提高虚拟机的主机基础结构的可靠�
 
 在极少数情况下，VM 需重新启动以进行计划内维护，这种情况下系统会提前通知。 计划内维护有两个阶段：自助服务阶段和计划内维护阶段。
 
-自助服务阶段通常持续四周，你将在 VM 上启动维护。  在自助服务期间，可以查询每个 VM 来了解其状态，以及上次维护请求的结果。
+自助服务阶段通常持续四周，你将在 VM 上启动维护。 在自助服务期间，可以查询每个 VM 来了解其状态，以及上次维护请求的结果。
 
 启动自助维护时，VM 会重新部署到已更新的某个节点。 由于 VM 重新启动，临时磁盘会丢失，而与虚拟网络接口关联的动态 IP 地址会更新。
 
 如果在自助维护期间出错，操作将会停止，VM 不会更新，而你可以使用相应的选项来重试自助维护。 
 
-自助维护阶段结束时，计划内维护阶段随即开始。  在此阶段，仍可以查询维护阶段，但无法自行启动维护。
+自助维护阶段结束时，计划内维护阶段随即开始。 在此阶段，仍可以查询维护阶段，但无法自行启动维护。
 
-有关管理需要重新启动的维护的详细信息，请参阅“使用 Azure [CLI](maintenance-notifications-cli.md)、[PowerShell](maintenance-notifications-powershell.md) 或[门户](maintenance-notifications-portal.md)处理计划内维护通知”  。 
+有关管理需要重新启动的维护的详细信息，请参阅“使用 Azure [CLI](maintenance-notifications-cli.md)、[PowerShell](maintenance-notifications-powershell.md) 或[门户](maintenance-notifications-portal.md)处理计划内维护通知”。 
 
 ### <a name="availability-considerations-during-scheduled-maintenance"></a>计划内维护期间的可用性注意事项 
 
@@ -91,11 +88,11 @@ Azure 定期更新其平台，以提高虚拟机的主机基础结构的可靠�
 
 #### <a name="availability-sets-and-scale-sets"></a>可用性集和规模集
 
-在 Azure VM 上部署工作负荷时，可以在可用性集中创建 VM，向应用程序提供高可用性  。 使用可用性集可以确保在发生服务中断或需要重新启动的维护事件期间，至少有一个 VM 可用。
+在 Azure VM 上部署工作负荷时，可以在可用性集中创建 VM，向应用程序提供高可用性。 使用可用性集可以确保在发生服务中断或需要重新启动的维护事件期间，至少有一个 VM 可用。
 
 在可用性集中，个别 VM 可分布在最多 20 个更新域中。 在计划性维护期间，任何给定时间都只更新一个更新域。 更新域不一定要按顺序更新。 
 
-虚拟机规模集是一种 Azure 计算资源，可用于将一组相同的 VM 作为单个资源进行部署和管理  。 规模集自动跨 UD 进行部署，此类更新域就像可用性集中的 VM 一样。 在计划内维护期间使用规模集时，就像使用可用性集一样，在任意给定时间只会更新一个 UD。
+虚拟机规模集是一种 Azure 计算资源，可用于将一组相同的 VM 作为单个资源进行部署和管理。 规模集自动跨 UD 进行部署，此类更新域就像可用性集中的 VM 一样。 在计划内维护期间使用规模集时，就像使用可用性集一样，在任意给定时间只会更新一个 UD。
 
 有关设置 VM 以实现高可用性的详细信息，请参阅 [管理 Windows VM 的可用性](./windows/manage-availability.md)或适用于 [Linux](./linux/manage-availability.md) 的相应文章。
 
@@ -103,4 +100,5 @@ Azure 定期更新其平台，以提高虚拟机的主机基础结构的可靠�
 ## <a name="next-steps"></a>后续步骤 
 
 可以使用 [Azure CLI](maintenance-notifications-cli.md)、[Azure PowerShell](maintenance-notifications-powershell.md) 或[门户](maintenance-notifications-portal.md)来管理计划内维护。
-<!--Update_Description: update meta properties, wording update, update link -->
+
+<!-- Update_Description: update meta properties, wording update, update link -->

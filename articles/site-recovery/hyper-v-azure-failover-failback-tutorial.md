@@ -31,7 +31,7 @@ ms.locfileid: "75776728"
 3. 为 [Hyper-V VM](tutorial-hyper-v-to-azure.md) 或为[托管在 System Center VMM 云中的 Hyper-V VM](tutorial-hyper-v-vmm-to-azure.md) 设置灾难恢复
 4. [运行灾难恢复演练](tutorial-dr-drill-azure.md)
 
-[了解](failover-failback-overview.md#types-of-failover)不同类型的故障转移。 如果要在恢复计划中对多个 VM 进行故障转移，请查看[本文](site-recovery-failover.md)。
+[了解](failover-failback-overview.md#types-of-failover)不同类型的故障转移。 如果要在恢复计划中故障转移多个 VM，请查看[本文](site-recovery-failover.md)。
 
 ## <a name="prepare-for-failover"></a>准备故障转移 
 确保 VM 上无快照，并且本地 VM 在故障回复期间已关闭。 这有助于确保复制期间的数据一致性。 在故障回复期间不要打开本地 VM。 

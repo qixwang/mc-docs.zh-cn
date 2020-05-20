@@ -44,7 +44,7 @@ ms.locfileid: "79290898"
 
 Azure Monitor 日志有助于查找趋势、诊断瓶颈、预测或关联有助于确定是否最优执行当前群集配置的数据。 提供预定义日志搜索，可直接使用，也可通过自定义来按自己想要的方式返回信息。
 
-通过从预览窗格的“在分析中查看”  下拉列表中选择“查看 Kubernetes 事件日志”或“查看容器日志”选项，对工作区中的数据执行交互式分析   。 “日志搜索”页面在用户所处的 Azure 门户页面的右侧显示  。
+通过从预览窗格的“在分析中查看”下拉列表中选择“查看 Kubernetes 事件日志”或“查看容器日志”选项，对工作区中的数据执行交互式分析 。 “日志搜索”页面在用户所处的 Azure 门户页面的右侧显示  。
 
 ![在 Log Analytics 中分析数据](./media/container-insights-analyze/container-health-log-search-example.png)   
 

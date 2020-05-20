@@ -116,7 +116,7 @@ $subnetConfigDmz = Add-AzVirtualNetworkSubnetConfig `
 $virtualNetwork | Set-AzVirtualNetwork
 ```
 
-使用 [Set-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/set-azvirtualnetworksubnetconfig) 将 *myRouteTablePublic* 路由表关联到 Public  子网，然后使用 [Set-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/set-azvirtualnetwork) 将子网配置写入虚拟网络。
+使用 [Set-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/set-azvirtualnetworksubnetconfig) 将 *myRouteTablePublic* 路由表关联到 Public 子网，然后使用 [Set-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/set-azvirtualnetwork) 将子网配置写入虚拟网络。
 
 ```powershell
 Set-AzVirtualNetworkSubnetConfig `
@@ -197,7 +197,7 @@ $vmNva = New-AzVM `
 
 在虚拟网络中创建两个 VM，以便可以在后续步骤中验证来自公共子网的流量是否通过网络虚拟设备路由到专用子网。  
 
-使用 [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) 在 Public 子网中创建一个 VM。  以下示例在 *myVirtualNetwork* 虚拟网络的公共  子网中创建名为 *myVmPublic* 的 VM。
+使用 [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) 在 Public 子网中创建一个 VM。 以下示例在 *myVirtualNetwork* 虚拟网络的公共子网中创建名为 *myVmPublic* 的 VM。
 
 ```powershell
 New-AzVm `

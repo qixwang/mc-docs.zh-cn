@@ -18,7 +18,7 @@ ms.locfileid: "80343858"
 ---
 # <a name="enable-diagnostic-logging-in-azure-api-for-fhir"></a>在 Azure API for FHIR® 中启用诊断日志记录
 
-本文介绍如何在 Azure API for FHIR® 中启用诊断日志记录，以及如何查看这些日志的一些示例查询。 对于必须符合法规与管制要求的任何医疗保健服务（例如 HIPAA）而言，访问诊断日志是必不可少的。 Azure API for FHIR® 中用于启用诊断日志的功能是 Azure 门户中的[诊断**设置。** ](https://docs.azure.cn/azure-monitor/platform/diagnostic-settings) 
+本文介绍如何在 Azure API for FHIR® 中启用诊断日志记录，以及如何查看这些日志的一些示例查询。 对于必须符合法规与管制要求的任何医疗保健服务（例如 HIPAA）而言，访问诊断日志是必不可少的。 Azure API for FHIR® 中用于启用诊断日志的功能是 Azure 门户中的[诊断](https://docs.azure.cn/azure-monitor/platform/diagnostic-settings)设置。 
 
 ## <a name="enable-audit-logs"></a>启用审核日志
 1. 若要在 Azure API for FHIR® 中启用诊断日志记录，请在 Azure 门户中选择你的 Azure API for FHIR® 服务 

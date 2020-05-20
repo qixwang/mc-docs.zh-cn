@@ -18,7 +18,7 @@ ms.locfileid: "78850392"
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-可以在 [Application Insights](../../azure-monitor/app/alerts.md) 中自动配置[警报](../../azure-monitor/app/app-insights-overview.md)。
+可以在 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 中自动配置[警报](../../azure-monitor/app/alerts.md)。
 
 此外，可以[将 webhook 设置为自动执行对警报的响应](../../azure-monitor/platform/alerts-webhooks.md)。
 
