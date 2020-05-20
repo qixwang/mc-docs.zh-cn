@@ -56,7 +56,7 @@ ms.locfileid: "75599600"
 ### <a name="set-the-task-type"></a>设置任务类型
 可以通过 SDK 或 Azure 机器学习工作室为自动化 ML 试验设置任务类型。
 
-使用 `task` 构造函数中的 `AutoMLConfig` 参数来指定试验类型。
+使用 `AutoMLConfig` 构造函数中的 `task` 参数来指定试验类型。
 
 ```python
 from azureml.train.automl import AutoMLConfig

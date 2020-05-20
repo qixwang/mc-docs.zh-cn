@@ -41,7 +41,7 @@ ms.locfileid: "76123363"
 
 可以选择创建警告阈值。如果超出该阈值（假定启用了日志记录），则会记录一条警告消息。 警告消息包含所有存在的对象及其计数的转储。 可以通过此信息更好地了解问题。 
 
-若要启用警告阈值，必须在 `SpeechConfig` 对象上指定它。 创建新的识别器时，将检查此对象。 在下面的示例中，假设已创建一个名为 `SpeechConfig` 的 `config` 实例：
+若要启用警告阈值，必须在 `SpeechConfig` 对象上指定它。 创建新的识别器时，将检查此对象。 在下面的示例中，假设已创建一个名为 `config` 的 `SpeechConfig` 实例：
 
 ::: zone pivot="programming-language-csharp"
 
@@ -103,7 +103,7 @@ class Microsoft::CognitiveServices::Speech::Impl::ISpxAudioConfig 0
 class Microsoft::CognitiveServices::Speech::Impl::ISpxSpeechConfig 0
 ```
 
-若要启用错误阈值，必须在 `SpeechConfig` 对象上指定它。 创建新的识别器时，将检查此对象。 在下面的示例中，假设已创建一个名为 `SpeechConfig` 的 `config` 实例：
+若要启用错误阈值，必须在 `SpeechConfig` 对象上指定它。 创建新的识别器时，将检查此对象。 在下面的示例中，假设已创建一个名为 `config` 的 `SpeechConfig` 实例：
 
 ::: zone pivot="programming-language-csharp"
 

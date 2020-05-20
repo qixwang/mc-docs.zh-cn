@@ -55,13 +55,13 @@ HTTP 处理程序线程的速度预期很快：只需准备作业并返回 `quer
 
 * 如果使用外部 Hive 元存储，请检查数据库指标，并确保数据库未过载。 考虑缩放元存储数据库层。
 
-* 确保已启用并行操作（使 HTTP 处理程序线程能够并行运行）。 若要验证该值，请启动 [Apache Ambari](../hdinsight-hadoop-manage-ambari.md) 并导航到“Hive” **“配置”** “高级” > “自定义 hive-site”。   >    >   `hive.server2.parallel.ops.in.session` 的值应是 `true`。
+* 确保已启用并行操作（使 HTTP 处理程序线程能够并行运行）。 若要验证该值，请启动 [Apache Ambari](../hdinsight-hadoop-manage-ambari.md) 并导航到“Hive” > “配置” > “高级” > “自定义 hive-site”。    `hive.server2.parallel.ops.in.session` 的值应是 `true`。
 
 * 确保群集的 VM SKU 对于负载而言不会太小。 考虑将工作负载分散到多个群集。 有关详细信息，请参阅[选择群集类型](../hdinsight-capacity-planning.md#choose-a-cluster-type)。
 
 * 如果在群集上安装了 Ranger，请检查是否需要为每个查询评估过多的 Ranger 策略。 找出重复或不需要的策略。
 
-* 在 Ambari 中检查“HiveServer2 堆大小”值。  导航到“Hive” **“配置”** “设置” > “优化”。   >    >   确保该值大于 10 GB。 根据需要进行调整，以优化性能。
+* 在 Ambari 中检查“HiveServer2 堆大小”值。  导航到“Hive” > “配置” > “设置” > “优化”。   . 确保该值大于 10 GB。 根据需要进行调整，以优化性能。
 
 * 确保 Hive 查询经过适当的优化。 有关详细信息，请参阅[在 Azure HDInsight 中优化 Apache Hive 查询](../hdinsight-hadoop-optimize-hive-query.md)。
 
