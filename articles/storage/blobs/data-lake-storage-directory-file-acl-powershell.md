@@ -7,15 +7,15 @@ ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.topic: conceptual
 origin.date: 12/13/2019
-ms.date: 03/09/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: prishet
-ms.openlocfilehash: 18ffa89e395265e570d3b207f17fb7c52f28c24c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: a1c1a0b113e3fa44ee87654a20310dbe03fc4e87
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78411690"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422467"
 ---
 # <a name="use-powershell-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2-preview"></a>使用 PowerShell 管理 Azure Data Lake Storage Gen2 中的目录、文件和 ACL（预览版）
 
@@ -272,11 +272,19 @@ Remove-AzDataLakeGen2Item  -Context $ctx -FileSystem $filesystemName -Path $file
 可以获取、设置和更新目录与文件的访问权限。
 
 > [!NOTE]
-> 若要使用 Azure Active Directory (Azure AD) 为命令授权，请确保已为安全主体分配了[存储 Blob 数据所有者角色](/role-based-access-control/built-in-roles#storage-blob-data-owner)。 若要详细了解如何应用 ACL 权限以及更改它们所带来的影响，请参阅 [Azure Data Lake Storage Gen2 中的访问控制](/storage/blobs/data-lake-storage-access-control)。
+> 若要使用 Azure Active Directory (Azure AD) 为命令授权，请确保已为安全主体分配了[存储 Blob 数据所有者角色](https://docs.azure.cn/role-based-access-control/built-in-roles#storage-blob-data-owner)。 若要详细了解如何应用 ACL 权限以及更改它们所带来的影响，请参阅 [Azure Data Lake Storage Gen2 中的访问控制](/storage/blobs/data-lake-storage-access-control)。
 
 ### <a name="get-directory-and-file-permissions"></a>获取目录和文件权限
 
 使用 `Get-AzDataLakeGen2Item` cmdlet 获取目录或文件的 ACL。
+
+此示例获取某个文件系统的 ACL，然后将该 ACL 输出到控制台。
+
+```powershell
+$filesystemName = "my-file-system"
+$filesystem = Get-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName
+$filesystem.ACL
+```
 
 此示例获取某个**目录**的 ACL，然后将 ACL 输出到控制台。
 
@@ -304,6 +312,16 @@ $file.ACL
 ### <a name="set-directory-and-file-permissions"></a>设置目录和文件权限
 
 使用 `New-AzDataLakeGen2ItemAclObject` cmdlet 为所有者用户、所有者组或其他用户创建 ACL。 然后使用 `Update-AzDataLakeGen2Item` cmdlet 提交 ACL。
+
+```powershell
+$filesystemName = "my-file-system"
+$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -Permission rw- 
+$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType group -Permission rw- -InputObject $acl 
+$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType other -Permission -wx -InputObject $acl
+Update-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Acl $acl
+$filesystem = Get-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName
+$filesystem.ACL
+```
 
 此示例针对所有者用户、所有者组或其他用户的**目录**设置 ACL，然后将 ACL 输出到控制台。
 
@@ -340,7 +358,18 @@ $file.ACL
 
 使用 `Get-AzDataLakeGen2Item` cmdlet 获取目录或文件的 ACL。 然后，使用 `New-AzDataLakeGen2ItemAclObject` cmdlet 创建新的 ACL 条目。 使用 `Update-AzDataLakeGen2Item` cmdlet 应用新的 ACL。
 
-此示例向某个组提供对某个目录的写入和执行权限。
+```powershell
+$filesystemName = "my-file-system"
+$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -Permission rw- 
+$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType group -Permission rw- -InputObject $acl 
+$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType other -Permission -wx -InputObject $acl
+Get-AzDataLakeGen2ChildItem -Context $ctx -FileSystem $filesystemName -Recurse | Update-AzDataLakeGen2Item -Acl $acl
+```
+### <a name="add-or-update-an-acl-entry"></a>添加或更新 ACL 条目
+
+首先，获取 ACL。 然后，使用 `set-AzDataLakeGen2ItemAclObject` cmdlet 添加或更新 ACL 条目。 使用 `Update-AzDataLakeGen2Item` cmdlet 提交 ACL。
+
+此示例创建或更新用户目录的 ACL。
 
 ```powershell
 $filesystemName = "my-file-system"

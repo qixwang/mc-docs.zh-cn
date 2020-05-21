@@ -5,16 +5,16 @@ description: 了解如何管理 Azure Stack Hub 的存储基础结构。
 author: WenJason
 ms.topic: article
 origin.date: 1/22/2020
-ms.date: 03/23/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.lastreviewed: 03/11/2019
 ms.reviewer: jiaha
-ms.openlocfilehash: 175a7d13272bc8ec6824bd5e4be0901b41a04b77
-ms.sourcegitcommit: 4aeecfcc59cb42ba0b712a729d278d03bffc719a
+ms.openlocfilehash: a8fe5b2b7016dcb4e9bdbe65d3a9f0193ceeeebd
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81791033"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422383"
 ---
 # <a name="manage-storage-infrastructure-for-azure-stack-hub"></a>管理 Azure Stack Hub 的存储基础结构
 
@@ -26,9 +26,9 @@ ms.locfileid: "81791033"
 
 由 Windows Server 软件驱动的 Azure Stack Hub 定义了存储功能，其中包括存储空间直通 (S2D) 和 Windows Server 故障转移群集的组合。 这种组合提供高性能、可缩放且具有复原能力的存储服务。
 
-Azure Stack Hub 集成式系统合作伙伴提供众多的解决方案版本，包括各种灵活的存储。 目前，可以选择三种驱动器的组合：NVMe（非易失性快速存储器）、SATA/SAS SSD（固态硬盘）和 HDD（机械硬盘）。
+Azure Stack Hub 集成式系统合作伙伴提供众多的解决方案版本，包括各种灵活的存储。 目前，可从三种受支持的驱动器类型中选择最多两种驱动器类型：NVMe（非易失性快速存储器）、SATA/SAS SSD（固态硬盘）和 HDD（机械硬盘）。 
 
-存储空间直通提供缓存用于最大化存储性能。 在采用一种或多种驱动器的 Azure Stack Hub 设备中，存储空间直通自动使用“最快的”(NVMe &gt; SSD &gt; HDD) 的所有驱动器类型进行缓存。 剩余的驱动器用于提供容量。 驱动器可以分组成“全部闪存”或“混合”部署：
+存储空间直通提供缓存用于最大化存储性能。 在具有一种驱动器类型（即 NVMe 或 SSD）的 Azure Stack Hub 设备中，所有驱动器都用于提供容量。 如果有两种驱动器类型，存储空间直通会自动使用所有“最快”(NVMe &gt; SSD &gt; HDD) 类型的驱动器进行缓存。 剩余的驱动器用于提供容量。 驱动器可以分组成“全部闪存”或“混合”部署：
 
 ![Azure Stack Hub 存储基础结构](media/azure-stack-storage-infrastructure-overview/image1.png)
 
@@ -47,7 +47,7 @@ Azure Stack Hub 集成式系统合作伙伴提供众多的解决方案版本，�
 
 ### <a name="volumes"></a>卷
 
-存储服务将可用的存储分区成独立的卷，这些卷可分配用于保存系统数据和租户数据。  卷将驱动器合并到存储池中，提供存储空间直通的容错、可伸缩性和性能优势。
+存储服务将可用的存储分区成独立的卷，这些卷可分配用于保存系统数据和租户数据。 卷将驱动器合并到存储池中，提供存储空间直通的容错、可伸缩性和性能优势。
 
 ![Azure Stack Hub 存储基础结构](media/azure-stack-storage-infrastructure-overview/image4.png)
 
@@ -101,7 +101,7 @@ Get-AzsVolume -ScaleUnit $scaleunit_name -StorageSubSystem $subsystem_name | Sel
 | 操作状态 | 说明 |
 |---|---|
 | OK | 卷处于正常状态。 |
-| 欠佳 | 数据未均匀写入到各个驱动器。<br> <br>**操作：** 请联系支持人员优化存储池中的驱动器用法。 在此之前，请参考 https://docs.azure.cn/zh-cn/azure-stack/azure-stack-diagnostics#log-collection-tool 中的指导启动日志文件收集过程。 恢复失败的连接后，可能需要从备份还原数据。 |
+| 欠佳 | 数据未均匀写入到各个驱动器。<br> <br>**操作：** 请联系支持人员优化存储池中的驱动器用法。 在此之前，请参考 https://docs.azure.cn/azure-stack/operator/azure-stack-configure-on-demand-diagnostic-log-collection-portal-tzl 中的指导启动日志文件收集过程。 恢复失败的连接后，可能需要从备份还原数据。 |
 
 ### <a name="volume-health-state-warning"></a>卷运行状况：警告
 
@@ -119,7 +119,7 @@ Get-AzsVolume -ScaleUnit $scaleunit_name -StorageSubSystem $subsystem_name | Sel
 
 | 操作状态 | 说明 |
 |---|---|
-| 无冗余 | 由于过多的驱动器出现故障，该卷已丢失数据。<br> <br>**操作：** 请联系支持人员。 在此之前，请参考 https://docs.azure.cn/zh-cn/azure-stack/azure-stack-diagnostics#log-collection-tool 中的指导启动日志文件收集过程。 |
+| 无冗余 | 由于过多的驱动器出现故障，该卷已丢失数据。<br> <br>**操作：** 请联系支持人员。 在此之前，请参考 https://docs.azure.cn/azure-stack/operator/azure-stack-configure-on-demand-diagnostic-log-collection-portal-tzl 中的指导启动日志文件收集过程。 |
 
 ### <a name="volume-health-state-unknown"></a>卷运行状况：未知
 
@@ -127,7 +127,7 @@ Get-AzsVolume -ScaleUnit $scaleunit_name -StorageSubSystem $subsystem_name | Sel
 
 | 操作状态 | 说明 |
 |---|---|
-| 已分离 | 某个存储设备出现故障，从而可能导致卷不可访问。 某些数据可能已丢失。<br> <br>**操作：** <br>1.检查所有存储设备的物理连接和网络连接。<br>2.如果所有设备连接正确，请联系支持人员。 在此之前，请参考 https://docs.azure.cn/zh-cn/azure-stack/azure-stack-diagnostics#log-collection-tool 中的指导启动日志文件收集过程。 恢复失败的连接后，可能需要从备份还原数据。 |
+| 已分离 | 某个存储设备出现故障，从而可能导致卷不可访问。 某些数据可能已丢失。<br> <br>**操作：** <br>1.检查所有存储设备的物理连接和网络连接。<br>2.如果所有设备连接正确，请联系支持人员。 在此之前，请参考 https://docs.azure.cn/azure-stack/operator/azure-stack-configure-on-demand-diagnostic-log-collection-portal-tzl 中的指导启动日志文件收集过程。 恢复失败的连接后，可能需要从备份还原数据。 |
 
 ## <a name="drive-states"></a>驱动器状态
 
@@ -161,9 +161,9 @@ Get-AzsDrive -ScaleUnit $scaleunit_name -StorageSubSystem $subsystem_name | Sele
 | IO 错误 | 访问驱动器时发生暂时性错误。<br> <br>**操作：** 如果此状态持续出现，请更换驱动器，以确保能够全面复原。 |
 | 暂时性错误 | 驱动器出现暂时性错误。 此错误通常表示驱动器无响应，但也可能表示不恰当地从驱动器中删除了存储空间直通的保护分区。 <br> <br>**操作：** 如果此状态持续出现，请更换驱动器，以确保能够全面复原。 |
 | 异常延迟 | 驱动器有时无响应并出现故障迹象。<br> <br>**操作：** 如果此状态持续出现，请更换驱动器，以确保能够全面复原。 |
-| 从池中删除 | Azure Stack Hub 正在从其存储池中删除驱动器。<br> <br>**操作：** 等待 Azure Stack Hub 完成删除驱动器，然后检查状态。<br>如果仍旧出现此状态，请联系支持人员。 在此之前，请参考 https://docs.azure.cn/zh-cn/azure-stack/azure-stack-diagnostics#log-collection-tool 中的指导启动日志文件收集过程。 |
+| 从池中删除 | Azure Stack Hub 正在从其存储池中删除驱动器。<br> <br>**操作：** 等待 Azure Stack Hub 完成删除驱动器，然后检查状态。<br>如果仍旧出现此状态，请联系支持人员。 在此之前，请参考 https://docs.azure.cn/azure-stack/operator/azure-stack-configure-on-demand-diagnostic-log-collection-portal-tzl 中的指导启动日志文件收集过程。 |
 | 启动维护模式 | Azure Stack Hub 正在将驱动器置于维护模式。 此状态是暂时的 - 驱动器应该很快就会处于“维护中模式”状态。<br> <br>**操作：** 等待 Azure Stack Hub 完成该过程，然后检查状态。 |
-| 维护中模式 | 驱动器处于维护模式，因此对其的读取和写入操作已停止。 此状态通常表示正在执行 Azure Stack Hub 管理任务，例如，PNU 或 FRU 正在操作驱动器。 但是，管理员也可将驱动器置于维护模式。<br> <br>**操作：** 等待 Azure Stack Hub 完成管理任务，然后检查状态。<br>如果仍旧出现此状态，请联系支持人员。 在此之前，请参考 https://docs.azure.cn/zh-cn/azure-stack/azure-stack-diagnostics#log-collection-tool 中的指导启动日志文件收集过程。 |
+| 维护中模式 | 驱动器处于维护模式，因此对其的读取和写入操作已停止。 此状态通常表示正在执行 Azure Stack Hub 管理任务，例如，PNU 或 FRU 正在操作驱动器。 但是，管理员也可将驱动器置于维护模式。<br> <br>**操作：** 等待 Azure Stack Hub 完成管理任务，然后检查状态。<br>如果仍旧出现此状态，请联系支持人员。 在此之前，请参考 https://docs.azure.cn/azure-stack/operator/azure-stack-configure-on-demand-diagnostic-log-collection-portal-tzl 中的指导启动日志文件收集过程。 |
 | 停止维护模式 | Azure Stack Hub 正在将驱动器恢复联机。 此状态是暂时性的 - 驱动器应该很快就会处于另一种状态，最好是“正常运行”状态。<br> <br>**操作：** 等待 Azure Stack Hub 完成该过程，然后检查状态。 |
 
 ### <a name="drive-health-state-unhealthy"></a>驱动器运行状况：不正常
@@ -185,7 +185,7 @@ Get-AzsDrive -ScaleUnit $scaleunit_name -StorageSubSystem $subsystem_name | Sele
 
 某些驱动器尚未做好加入 Azure Stack Hub 存储池的准备。 通过查看驱动器的 `CannotPoolReason` 属性，可以确定驱动器为何不符合入池条件的原因。 下表更具体地描述了每种原因。
 
-| 原因 | 说明 |
+| Reason | 说明 |
 |---|---|
 | 硬件不合规 | 使用运行状况服务指定的已批准存储模型列表中不包括该驱动程序。<br> <br>**操作：** 使用新磁盘替换该驱动器。 |
 | 固件不合规 | 使用运行状况服务指定的已批准固件修订版列表中不包括该物理驱动器上的固件。<br> <br>**操作：** 使用新磁盘替换该驱动器。 |
@@ -194,8 +194,8 @@ Get-AzsDrive -ScaleUnit $scaleunit_name -StorageSubSystem $subsystem_name | Sele
 | 不正常 | 该驱动器不处于正常状态，可能需要更换。<br> <br>**操作：** 使用新磁盘替换该驱动器。 |
 | 容量不足 | 某些分区占用了驱动器上的可用空间。<br> <br>**操作：** 使用新磁盘替换该驱动器。 如果必须使用此磁盘，请从系统中删除该磁盘，确保该磁盘上没有任何有用的数据，擦除该磁盘，然后重新安装磁盘。 |
 | 正在验证 | 运行状况服务正在检查是否已批准使用驱动器上的固件。<br> <br>**操作：** 等待 Azure Stack Hub 完成该过程，然后检查状态。 |
-| 验证失败 | 运行状况服务无法检查是否已批准使用驱动器上的固件。<br> <br>**操作：** 请联系支持人员。 在此之前，请参考 https://docs.azure.cn/zh-cn/azure-stack/azure-stack-diagnostics#log-collection-tool 中的指导启动日志文件收集过程。 |
-| 脱机 | 驱动器已脱机。 <br> <br>**操作：** 请联系支持人员。 在此之前，请参考 https://docs.azure.cn/zh-cn/azure-stack/azure-stack-diagnostics#log-collection-tool 中的指导启动日志文件收集过程。 |
+| 验证失败 | 运行状况服务无法检查是否已批准使用驱动器上的固件。<br> <br>**操作：** 请联系支持人员。 在此之前，请参考 https://docs.azure.cn/azure-stack/operator/azure-stack-configure-on-demand-diagnostic-log-collection-portal-tzl 中的指导启动日志文件收集过程。 |
+| Offline | 驱动器已脱机。 <br> <br>**操作：** 请联系支持人员。 在此之前，请参考 https://docs.azure.cn/azure-stack/operator/azure-stack-configure-on-demand-diagnostic-log-collection-portal-tzl 中的指导启动日志文件收集过程。 |
 
 ## <a name="next-step"></a>后续步骤
 

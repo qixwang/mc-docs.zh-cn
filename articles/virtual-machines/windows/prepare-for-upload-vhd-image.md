@@ -1,5 +1,5 @@
 ---
-title: 准备好要上传到 Azure 的 Windows VHD | Azure
+title: 准备好要上传到 Azure 的 Windows VHD
 description: 了解如何准备要上传到 Azure 的 Windows VHD 或 VHDX
 services: virtual-machines-windows
 documentationcenter: ''
@@ -13,18 +13,18 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 origin.date: 05/11/2019
-ms.date: 02/10/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: 34deedcb69542c26791ef0eb731922188c2f290a
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 31ce3d0ebc3d6389718eb3abc96489f87b47a9cf
+ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292805"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83392423"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>准备好要上传到 Azure 的 Windows VHD 或 VHDX
 
-在将 Windows 虚拟机 (VM) 从本地上传到 Azure 之前，必须准备好虚拟硬盘（VHD 或 VHDX）。 Azure 支持采用 VHD 文件格式且具有固定大小磁盘的第 1 代和第 2 代 VM。 VHD 允许的最大大小为 1,023 GB。 
+在将 Windows 虚拟机 (VM) 从本地上传到 Azure 之前，必须准备好虚拟硬盘（VHD 或 VHDX）。 Azure 支持采用 VHD 文件格式且具有固定大小磁盘的第 1 代和第 2 代 VM。 VHD 允许的最大大小为 2 TB。
 
 在第 1 代 VM 中，可将 VHDX 文件系统转换成 VHD。 还可以将动态扩展磁盘转换为固定大小的磁盘。 但无法更改 VM 的代次。 有关详细信息，请参阅[应在 Hyper-V 中创建第 1 代还是第 2 代 VM？](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v)和 [Azure 对第 2 代 VM 的支持（预览版）](generation-2.md)。
 
@@ -67,13 +67,13 @@ ms.locfileid: "79292805"
 转换磁盘后，创建一个使用该磁盘的 VM。 启动并登录到 VM，以完成其上传准备工作。
 
 ### <a name="use-hyper-v-manager-to-convert-the-disk"></a>使用 Hyper-V 管理器转换磁盘 
-1. 打开 Hyper-V 管理器，在左侧选择本地计算机。 在计算机列表上方的菜单中，选择“操作” > “编辑磁盘”。  
-2. 在“查找虚拟硬盘”页上，选择你的虚拟磁盘。 
-3. 在“选择操作”页上选择“转换” > “下一步”。   
-4. 如果需要从 VHDX 进行转换，请选择“VHD” > “下一步”。  
-5. 如果需要从动态扩展磁盘进行转换，请选择“固定大小” > “下一步”。  
+1. 打开 Hyper-V 管理器，在左侧选择本地计算机。 在计算机列表上方的菜单中，选择“操作” > “编辑磁盘”。 
+2. 在“查找虚拟硬盘”页上，选择你的虚拟磁盘。
+3. 在“选择操作”页上选择“转换” > “下一步”。  
+4. 如果需要从 VHDX 进行转换，请选择“VHD” > “下一步”。 
+5. 如果需要从动态扩展磁盘进行转换，请选择“固定大小” > “下一步”。 
 6. 找到并选择新 VHD 文件的保存路径。
-7. 选择“完成”。 
+7. 选择“完成”。
 
     > [!NOTE]
     > 使用提升权限的 PowerShell 会话中运行本文中所述的命令。
@@ -267,7 +267,13 @@ Get-Service -Name RemoteRegistry | Where-Object { $_.StartType -ne 'Automatic' }
     ```PowerShell
     Set-NetFirewallRule -DisplayName "File and Printer Sharing (Echo Request - ICMPv4-In)" -Enabled True
     ``` 
-5. 如果 VM 会成为域的一部分，请检查以下 Azure AD 策略，确保未还原以前的设置。 
+5. 为 Azure 平台网络创建规则：
+
+    ```PowerShell
+    New-NetFirewallRule -DisplayName "AzurePlatform" -Direction Inbound -RemoteAddress 168.63.129.16 -Profile Any -Action Allow -EdgeTraversalPolicy Allow
+    New-NetFirewallRule -DisplayName "AzurePlatform" -Direction Outbound -RemoteAddress 168.63.129.16 -Profile Any -Action Allow
+    ``` 
+6. 如果 VM 会成为域的一部分，请检查以下 Azure AD 策略，确保未还原以前的设置。 
 
     | 目标                                 | 策略                                                                                                                                                  | Value                                   |
     |--------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------|
@@ -421,9 +427,9 @@ Get-Service -Name RemoteRegistry | Where-Object { $_.StartType -ne 'Automatic' }
 
 系统准备工具 (Sysprep) 是一个可以重置 Windows 安装的进程。 Sysprep 会删除所有个人数据并重置多个组件，从而为你提供“全新安装”体验。 
 
-通常你会运行 Sysprep 来创建一个模板，然后从中部署多个具有特定配置的其他 VM。 该模板称为“通用化映像”  。
+通常你会运行 Sysprep 来创建一个模板，然后从中部署多个具有特定配置的其他 VM。 该模板称为“通用化映像”。
 
-如果你只需从一个磁盘创建一个 VM，则不需使用 Sysprep。 可以从专用化映像创建 VM  。 有关如何从专用化磁盘创建 VM 的信息，请参阅：
+如果你只需从一个磁盘创建一个 VM，则不需使用 Sysprep。 可以从专用化映像创建 VM。 有关如何从专用化磁盘创建 VM 的信息，请参阅：
 
 - [从专用磁盘创建 VM](create-vm-specialized.md)
 - [Create a VM from a specialized VHD disk](/virtual-machines/windows/create-vm-specialized-portal)（从专用 VHD 磁盘创建 VM）
@@ -438,14 +444,14 @@ Get-Service -Name RemoteRegistry | Where-Object { $_.StartType -ne 'Automatic' }
 > 在以下步骤中运行 `sysprep.exe` 后，请关闭 VM。 在 Azure 中从该 VM 创建映像之前，请不要将其重新打开。
 
 1. 登录到 Windows VM。
-1. 以管理员身份运行命令提示符。  
+1. 以管理员身份运行命令提示符。 
 1. 将目录切换到 `%windir%\system32\sysprep`。 然后运行 `sysprep.exe`。
-1. 在“系统准备工具”对话框中，选择“进入系统全新体验(OOBE)”，确保已选中“通用化”复选框。   
+1. 在“系统准备工具”对话框中，选择“进入系统全新体验(OOBE)”，确保已选中“通用化”复选框。  
 
     ![系统准备工具](media/prepare-for-upload-vhd-image/syspre.png)
-1. 在“关机选项”中选择“关机”。  
-1. 选择“确定”  。
-1. 当 Sysprep 完成后，关闭 VM。 请勿使用“重启”来关闭 VM。 
+1. 在“关机选项”中选择“关机”。 
+1. 选择“确定” 。
+1. 当 Sysprep 完成后，关闭 VM。 请勿使用“重启”来关闭 VM。
 
 现在，VHD 已准备就绪，可以上传了。 有关如何从通用化磁盘创建 VM 的详细信息，请参阅[上传通用化 VHD 并使用它在 Azure 中创建新的 VM](sa-upload-generalized.md)。
 
@@ -456,7 +462,7 @@ Get-Service -Name RemoteRegistry | Where-Object { $_.StartType -ne 'Automatic' }
 以下设置不影响 VHD 上传。 但是，强烈建议配置这些设置。
 
 * 安装 [Azure 虚拟机代理](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)。 然后即可启用 VM 扩展。 VM 扩展实现了可能需要用于 VM 的大多数关键功能。 例如，需要使用这些扩展来重置密码或配置 RDP。 有关详细信息，请参阅 [Azure 虚拟机代理概述](../extensions/agent-windows.md)。
-* 在 Azure 中创建 VM 后，建议将 pagefile 置于临时驱动器卷以改进性能  。 可按如下所示设置文件位置：
+* 在 Azure 中创建 VM 后，建议将 pagefile 置于临时驱动器卷以改进性能。 可按如下所示设置文件位置：
 
     ```PowerShell
     Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management' -Name "PagingFiles" -Value "D:\pagefile.sys" -Type MultiString -Force

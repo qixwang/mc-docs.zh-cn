@@ -17,7 +17,7 @@ groups:
   - id: url-test-tool-curl
     title: cURL
   - id: url-test-tool-postman
-    title: Postman
+    title: postman
 - id: programming-languages-set-one
   title: 编程语言
   prompt: 选择编程语言
@@ -29,7 +29,7 @@ groups:
   - id: programming-language-java
     title: Java
   - id: programming-language-javascript
-    title: JavaScript
+    title: Javascript
   - id: programming-language-python
     title: Python
 - id: programming-languages-set-two
@@ -79,7 +79,7 @@ groups:
   - id: programming-language-go
     title: Go
   - id: programming-language-javascript
-    title: JavaScript
+    title: Javascript
   - id: programming-language-python
     title: Python
   - id: programming-language-ruby
@@ -91,7 +91,7 @@ groups:
   - id: programming-language-csharp
     title: C#
   - id: programming-language-javascript
-    title: JavaScript
+    title: Javascript
   - id: programming-language-python
     title: Python
 - id: programming-languages-set-seven
@@ -127,7 +127,7 @@ groups:
   - id: programming-language-python
     title: Python
   - id: programming-language-javascript
-    title: JavaScript
+    title: Javascript
   - id: programming-language-java
     title: Java
   - id: programming-language-other
@@ -141,7 +141,7 @@ groups:
   - id: programming-language-java
     title: Java
   - id: programming-language-javascript
-    title: JavaScript
+    title: Javascript
   - id: programming-language-python
     title: Python
 - id: programming-languages-set-eleven
@@ -181,7 +181,7 @@ groups:
   - id: programming-language-java
     title: Java
   - id: programming-language-javascript
-    title: JavaScript
+    title: Javascript
   - id: programming-language-powershell
     title: PowerShell
   - id: programming-language-python
@@ -197,7 +197,7 @@ groups:
   - id: programming-language-java
     title: Java
   - id: programming-language-javascript
-    title: JavaScript
+    title: Javascript
   - id: programming-language-other
     title: 其他语言...
 - id: programming-languages-set-diberry-3core
@@ -207,7 +207,7 @@ groups:
   - id: programming-language-csharp
     title: C#
   - id: programming-language-javascript
-    title: JavaScript
+    title: Javascript
   - id: programming-language-python
     title: Python
 - id: java-build-tools-set
@@ -279,15 +279,23 @@ groups:
   - id: programming-language-java
     title: Java
   - id: programming-language-javascript
-    title: JavaScript
+    title: Javascript
   - id: programming-language-python
     title: Python
   - id: programming-language-more
     title: 更多语言...
+- id: kql-flavors
+  title: Kusto 查询语言风格
+  prompt: 选择 Azure 服务
+  pivots:
+  - id: azuredataexplorer
+    title: Azure 数据资源管理器
+  - id: azuremonitor
+    title: Azure Monitor
 metadata:
-  ms.openlocfilehash: b33472d1460f41a127c3528648699161e6b2c14c
-  ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+  ms.openlocfilehash: 9e16ee2dcaf49650a1acb9e5d83d865ad33fb1dc
+  ms.sourcegitcommit: bfbd6694da33f703481386f2a3f16850c4e94bfa
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 04/24/2020
-  ms.locfileid: "82126697"
+  ms.lasthandoff: 05/15/2020
+  ms.locfileid: "83417779"

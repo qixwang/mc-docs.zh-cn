@@ -1,21 +1,19 @@
 ---
-title: 使用门户获取 Azure VM 的维护通知
+title: 将门户用于维护通知
 description: 使用门户查看在 Azure 中运行的虚拟机的维护通知并启动自助维护。
-services: virtual-machines
 author: rockboyfor
-tags: azure-service-management,azure-resource-manager
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: article
 origin.date: 11/19/2019
-ms.date: 02/17/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: e517a264653d53e77049b219b9197b53b84f680e
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 1e6a6a177759de3a6e84d98ec06051ddada224a1
+ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77429966"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83392323"
 ---
 <!--Verified successfully-->
 # <a name="handling-planned-maintenance-notifications-using-the-portal"></a>使用门户处理计划内维护通知
@@ -28,9 +26,9 @@ ms.locfileid: "77429966"
 
 1. 登录到 [Azure 门户](https://portal.azure.cn)。
 
-2. 在左侧导航栏中，单击“虚拟机”  。
+2. 在左侧导航栏中，单击“虚拟机”。
 
-3. 在“虚拟机”窗格中，选择“编辑列”  按钮以打开可用列列表。
+3. 在“虚拟机”窗格中，选择“编辑列”按钮以打开可用列列表。
 
 4. 选择并添加以下列：
 
@@ -53,7 +51,7 @@ ms.locfileid: "77429966"
 
 Azure 通过向订阅所有者和共有者组发送电子邮件来传达计划维护的安排。 可以通过创建 Azure 活动日志警报，为此通信添加其他收件人和频道。 有关详细信息，请参阅[创建有关服务通知的活动日志警报](../azure-monitor/platform/alerts-activity-log-service-notifications.md)。
 
-请确保将“事件类型”  设置为“计划内维护”  ，将“服务”  设置为“虚拟机规模集”  和/或“虚拟机”  。
+请确保将“事件类型”设置为“计划内维护”，将“服务”设置为“虚拟机规模集”和/或“虚拟机”。
 
 ## <a name="start-maintenance-on-your-vm-from-the-portal"></a>从门户启动虚拟机维护
 
@@ -70,5 +68,4 @@ Azure 通过向订阅所有者和共有者组发送电子邮件来传达计划�
 
 还可以使用 [Azure CLI](maintenance-notifications-cli.md) 或 [PowerShell](maintenance-notifications-powershell.md) 处理计划内维护。
 
-<!-- Update_Description: new article about maintenance notifications portal -->
-<!--NEW.date: 02/17/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

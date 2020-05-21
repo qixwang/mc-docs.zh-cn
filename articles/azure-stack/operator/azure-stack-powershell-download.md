@@ -3,28 +3,32 @@ title: 从 GitHub 下载 Azure Stack Hub 工具
 description: 了解如何下载操作 Azure Stack Hub 时所需的工具。
 author: WenJason
 ms.topic: article
-origin.date: 1/22/2020
-ms.date: 02/24/2020
+origin.date: 4/22/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: thoroet
-ms.lastreviewed: 09/19/2019
-ms.openlocfilehash: 2ac5554b1ee7e82b4f25ec8edc4d44186cc11c0d
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.lastreviewed: 4/22/2020
+ms.openlocfilehash: 03f1b35dc9a253fcc648cf3442125402a66781b5
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540366"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422481"
 ---
 # <a name="download-azure-stack-hub-tools-from-github"></a>从 GitHub 下载 Azure Stack Hub 工具
 
-**AzureStack-Tools** 是托管 PowerShell 模块的 [GitHub 存储库](https://github.com/Azure/AzureStack-Tools)，可用于管理资源并将其部署到 Azure Stack Hub。 如果你打算建立 VPN 连接，则可将这些 PowerShell 模块下载到 Azure Stack 开发工具包 (ASDK) 或基于 Windows 的外部客户端。 若要获取这些工具，请克隆 GitHub 存储库，或运行以下脚本来下载 **AzureStack-Tools** 文件夹：
+**AzureStack-Tools** 是托管 PowerShell 模块的 [GitHub 存储库](https://github.com/Azure/AzureStack-Tools)，可用于管理资源并将其部署到 Azure Stack Hub。 如果你打算建立 VPN 连接，则可将这些 PowerShell 模块下载到 Azure Stack 开发工具包 (ASDK) 或基于 Windows 的外部客户端。 
+
+## <a name="get-tools-for-azure-stack-hub-azurerm-module"></a>获取适用于 Azure Stack Hub AzureRM 模块的工具
+
+若要获取这些工具，请从 `master` 分支克隆 GitHub 存储库，或运行以下脚本来下载 AzureStack-Tools 文件夹：
 
 ```powershell
 # Change directory to the root directory.
 cd \
 
 # Download the tools archive.
-[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12 
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 invoke-webrequest `
   https://github.com/Azure/AzureStack-Tools/archive/master.zip `
   -OutFile master.zip
@@ -38,6 +42,33 @@ expand-archive master.zip `
 cd AzureStack-Tools-master
 
 ```
+若要详细了解如何使用适用于 Azure Stack Hub 的 AzureRM 模块，请参阅[安装适用于 Azure Stack Hub 的 PowerShell AzureRM 模块](azure-stack-powershell-install.md)
+
+## <a name="get-tools-for-azure-stack-hub-az-preview-module"></a>获取适用于 Azure Stack Hub Az（预览版）模块的工具
+
+若要获取这些工具，请从 `az` 分支克隆 GitHub 存储库，或运行以下脚本来下载 AzureStack-Tools 文件夹：
+
+```powershell
+# Change directory to the root directory.
+cd \
+
+# Download the tools archive.
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+invoke-webrequest `
+  https://github.com/Azure/AzureStack-Tools/archive/az.zip `
+  -OutFile az.zip
+
+# Expand the downloaded files.
+expand-archive az.zip `
+  -DestinationPath . `
+  -Force
+
+# Change to the tools directory.
+ cd AzureStack-Tools-az
+
+```
+
+若要详细了解如何使用适用于 Azure Stack Hub 的 Az 模块，请参阅[安装适用于 Azure Stack Hub 的 PowerShell Az 预览版模块](powershell-install-az-module.md)。
 
 ## <a name="functionality-provided-by-the-modules"></a>模块提供的功能
 

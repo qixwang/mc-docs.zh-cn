@@ -4,15 +4,15 @@ description: 了解如何使用 Azure 资源管理器模板快速创建 Kubernet
 services: container-service
 ms.topic: quickstart
 origin.date: 04/19/2019
-ms.date: 04/06/2020
+ms.date: 05/18/2020
 ms.author: v-yeche
 ms.custom: mvc,subject-armqs
-ms.openlocfilehash: f3f22b101bc9bd6f943e4447aba8a511ad5b96e3
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 1dbdd5cd675c02b3ff3f95e9d51fb16ab8ede929
+ms.sourcegitcommit: 436a5dd9a446fe7b6d3c4d5bc76b652f7848c1ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80517012"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83393129"
 ---
 <!--Verify successfully-->
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-an-azure-resource-manager-template"></a>快速入门：使用 Azure 资源管理器模板部署 Azure Kubernetes 服务 (AKS) 群集
@@ -37,6 +37,8 @@ Azure Kubernetes 服务 (AKS) 是可用于快速部署和管理群集的托管�
 
 若要使用资源管理器模板创建 AKS 群集，请提供 SSH 公钥和 Azure Active Directory 服务主体。 如果需要其中的任一资源，请参阅以下部分；否则请跳到[创建 AKS 群集](#create-an-aks-cluster)部分。
 
+<!--Not Available on [managed identity](use-managed-identity.md)-->
+
 ### <a name="create-an-ssh-key-pair"></a>创建 SSH 密钥对
 
 若要访问 AKS 节点，请使用 SSH 密钥对进行连接。 使用 `ssh-keygen` 命令生成 SSH 公钥和私钥文件。 默认情况下，这些文件在 *~/.ssh* 目录中创建。 如果给定的位置存在同名的 SSH 密钥对，则会覆盖这些文件。
@@ -54,6 +56,8 @@ ssh-keygen -t rsa -b 2048
 ### <a name="create-a-service-principal"></a>创建服务主体
 
 若要允许 AKS 群集与其他 Azure 资源交互，请使用 Azure Active Directory 服务主体。 使用 [az ad sp create-for-rbac][az-ad-sp-create-for-rbac] 命令创建服务主体。 `--skip-assignment` 参数限制分配任何其他权限。 默认情况下，此服务主体的有效期为一年。
+
+<!--Not Available on [Use managed identities](use-managed-identity.md)-->
 
 ```azurecli
 az ad sp create-for-rbac --skip-assignment
@@ -218,11 +222,11 @@ az ad sp create-for-rbac --skip-assignment
 
 2. 选择或输入以下值。
 
-    对于本快速入门，请保留“OS 磁盘大小(GB)”、“代理计数”、“代理 VM 大小”、“OS 类型”和“Kubernetes 版本”的默认值。      为以下模板参数提供自己的值：
+    对于本快速入门，请保留“OS 磁盘大小(GB)”、“代理计数”、“代理 VM 大小”、“OS 类型”和“Kubernetes 版本”的默认值。     为以下模板参数提供自己的值：
 
     * **订阅**：选择 Azure 订阅。
-    * **资源组**：选择“新建”。  输入资源组的唯一名称（例如 *myResourceGroup*），然后选择“确定”。 
-    * **位置**：选择一个位置，例如“中国东部 2”。 
+    * **资源组**：选择“新建”。 输入资源组的唯一名称（例如“myResourceGroup”），然后选择“确定”。
+    * **位置**：选择一个位置，例如“中国东部 2”。
     * **群集名称**：输入 AKS 群集的唯一名称，例如 *myAKSCluster*。
     * **DNS 前缀**：输入群集的唯一 DNS 前缀，例如 *myakscluster*。
     * **Linux 管理员用户名**：输入一个用户名用于通过 SSH 进行连接，例如 *azureuser*。
@@ -233,7 +237,7 @@ az ad sp create-for-rbac --skip-assignment
 
     ![用于在门户中创建 Azure Kubernetes 服务群集的资源管理器模板](./media/kubernetes-walkthrough-rm-template/create-aks-cluster-using-template-portal.png)
 
-3. 选择“购买”。 
+3. 选择“购买”。
 
 创建 AKS 群集需要几分钟时间。 等待群集成功部署，然后转到下一步骤。
 
@@ -259,7 +263,7 @@ az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 kubectl get nodes
 ```
 
-以下示例输出显示在上一步骤中创建的节点。 确保所有节点的状态为“就绪”： 
+以下示例输出显示在上一步骤中创建的节点。 确保所有节点的状态为“Ready”：
 
 ```output
 NAME                       STATUS   ROLES   AGE     VERSION

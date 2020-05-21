@@ -4,15 +4,15 @@ description: 介绍如何使用 Azure Analysis Services REST API 对模型数据
 author: rockboyfor
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 03/23/2020
+ms.date: 04/30/2020
 ms.author: v-yeche
 ms.reviewer: minewiskan
-ms.openlocfilehash: 311df26e7629051f326dd0d744e4bc5df76b95b0
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: b7ff1bbf9d97278ada0739d68b39193346c1dd0c
+ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79543788"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83392403"
 ---
 <!--Verify successfully-->
 # <a name="asynchronous-refresh-with-the-rest-api"></a>使用 REST API 执行异步刷新

@@ -3,17 +3,17 @@ title: 如何跨多个 Azure Stack Hub 订阅复制资源
 description: 了解如何使用 Azure Stack Hub 订阅复制器脚本集复制资源。
 author: WenJason
 ms.topic: how-to
-origin.date: 11/07/2019
-ms.date: 02/24/2020
+origin.date: 04/20/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: rtiberiu
 ms.lastreviewed: 11/07/2019
-ms.openlocfilehash: 072ace92cd463262438cd2d437fb45bbd07373f7
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 398e6f896913e6d4fd128521f66df4be420ba1db
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540756"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422043"
 ---
 # <a name="replicate-resources-using-the-azure-stack-hub-subscription-replicator"></a>使用 Azure Stack Hub 订阅复制器复制资源
 
@@ -77,7 +77,7 @@ Azure 订阅复制器采用模块化设计。 此工具使用核心处理器来�
 
 ## <a name="run-azure-subscription-replicator"></a>运行 Azure 订阅复制器
 
-若要运行 Azure 订阅复制器 (v3) 工具，必须启动 resource_retriever.ps1，并提供所有参数。 在 **resourceType** 参数中，有一个选项可用于选择“All”而不是一种资源类型。  如果选择“All”，resource_retriever.ps1 将按某种顺序处理所有资源，以便在运行部署时首先部署依赖的资源。  例如，先部署 VNet，再部署虚拟机，因为虚拟机需要 VNet 准备就绪才能正确部署。
+若要运行 Azure 订阅复制器 (v3) 工具，必须启动 resource_retriever.ps1，并提供所有参数。 在 **resourceType** 参数中，有一个选项可用于选择“All”而不是一种资源类型。 如果选择“All”，resource_retriever.ps1 将按某种顺序处理所有资源，以便在运行部署时首先部署依赖的资源。 例如，先部署 VNet，再部署虚拟机，因为虚拟机需要 VNet 准备就绪才能正确部署。
 
 脚本运行完成后，会出现三个新文件夹：**Deployment_Files**、**Parameter_Files** 和 **Custom_ARM_Templates**。
 
@@ -99,13 +99,13 @@ Deployment_Files 包含两个文件：**DeployResourceGroups.ps1** 和 **DeployR
 
     ![查看文件夹](./media/azure-stack-network-howto-backup-replicator/image4.png)
 
-3.  将上下文设置为目标订阅，将文件夹更改为 **Deployment_Files**，部署资源组，然后启动资源部署。
+3.  将上下文设置为目标订阅，将文件夹更改为 Deployment_Files，部署资源组（运行 DeployResourceGroups.ps1 脚本），然后启动资源部署（运行 DeployResources.ps1 脚本）。
 
     ![配置并启动部署](./media/azure-stack-network-howto-backup-replicator/image6.png)
 
 4.  运行 `Get-Job` 以检查状态。 Get-Job | Receive-Job 将返回结果。
 
-## <a name="clean-up"></a>清除
+## <a name="clean-up"></a>清理
 
 在 replicatorV3 文件夹中，有一个名为 **cleanup_generated_items.ps1** 的文件 - 该文件将删除 **Deployment_Files**、**Parameter_Files** 和 **Custom_ARM_Templates** 文件夹及其所有内容。
 

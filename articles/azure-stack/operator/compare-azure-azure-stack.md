@@ -5,24 +5,24 @@ description: 了解全球 Azure、Azure Stack Hub 与 Azure Stack HCI 之间的�
 author: WenJason
 ms.topic: overview
 origin.date: 05/03/2019
-ms.date: 03/23/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: unknown
 ms.lastreviewed: 03/29/2019
-ms.openlocfilehash: 99716e8a9f6d310bf0a95c0f3eb27acef4bef1aa
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: e9307a6556e031101f88736e71f5303e7709f313
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79547081"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422427"
 ---
 # <a name="differences-between-azure-azure-stack-hub-and-azure-stack-hci"></a>Azure、Azure Stack Hub 与 Azure Stack HCI 之间的差异
 
 Microsoft 在一个 Azure 生态系统中提供 Azure 和 Azure Stack Hub 系列的服务。 无论企业使用 Azure 还是本地资源，都可以结合 Azure 资源管理器使用相同的应用程序模型、自助门户和 API 来提供基于云的功能。
 
-本文介绍 Azure、Azure Stack Hub 与 Azure Stack HCI 功能的差异，并提供常见方案的建议，以帮助你做出最佳的选择来为组织交付基于 Microsoft 云的服务。
+本文介绍 Azure、Azure Stack Hub 和 Azure Stack HCI 的功能差异。 它提供了常见的方案建议，帮助你在为组织交付基于 Microsoft 云的服务时做出最佳选择。
 
-![Azure 生态系统概述](./media/compare-azure-azure-stack/azure-family.png)
+![Azure 生态系统概述](./media/compare-azure-azure-stack/azure-family.svg)
 
 ## <a name="azure"></a>Azure
 
@@ -39,7 +39,7 @@ Azure Stack Hub 是 Azure 的扩展，它将云计算的敏捷性和创新引入
 - 适用于 Windows 和 Linux 的 Azure VM
 - Azure Web 应用和 Functions
 - Azure Key Vault
-- Azure 资源管理器
+- Azure Resource Manager
 - Azure 市场
 - 容器
 - 管理工具（计划、套餐、RBAC 等）
@@ -52,7 +52,7 @@ Azure Stack Hub 的 PaaS 功能是可选的，因为 Azure Stack Hub 不是由 M
 - 以太坊区块链
 - Cloud Foundry
 
-### <a name="example-use-cases-for-azure-stack-hub"></a>Azure Stack Hub 的示例用例：
+### <a name="example-use-cases-for-azure-stack-hub"></a>Azure Stack Hub 的示例用例
 
 - 财务建模
 - 临床诊断和理赔数据

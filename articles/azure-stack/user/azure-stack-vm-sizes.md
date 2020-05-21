@@ -3,23 +3,25 @@ title: Azure Stack Hub 中支持的 VM 大小
 description: Azure Stack Hub 中支持的 VM 大小参考。
 author: WenJason
 ms.topic: reference
-origin.date: 12/3/2019
-ms.date: 02/24/2020
+origin.date: 03/23/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: kivenkat
-ms.lastreviewed: 12/3/2019
-ms.openlocfilehash: 89d6349b12ae4539b90ed8fc25b3b702325a7cbf
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.lastreviewed: 03/23/2020
+ms.openlocfilehash: 518ed9e8ec7f2f8205d95a7b9d4c43b4802582c6
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540735"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422581"
 ---
 # <a name="vm-sizes-supported-in-azure-stack-hub"></a>Azure Stack Hub 中支持的 VM 大小
 
 本文列出了 Azure Stack Hub 中可用的虚拟机 (VM) 大小。 可以使用本文帮助你选择支持 Azure Stack Hub 解决方案的 VM。
 
 Azure Stack Hub 上的磁盘 IOPS（每秒输入/输出操作次数）是 VM 大小（而不是磁盘类型）的函数。 这意味着，对于 Standard_Fs 系列 VM，不管你选择 SSD 还是 HDD 作为磁盘类型，单个额外的数据磁盘的 IOPS 限制都是 2300。 施加的 IOPS 限制是一种上限（最大可能值），目的是防止邻域干扰。 它不是你会在特定 VM 大小上获得的 IOPS 的保证。
+
+VM vCPU 取决于每个节点的核心数。 例如，核心或逻辑处理器的数目小于 64 的系统将不支持 VM 大小 Standard_F64s_v2。
 
 ## <a name="vm-general-purpose"></a>VM 常规用途
 
@@ -28,7 +30,7 @@ Azure Stack Hub 上的磁盘 IOPS（每秒输入/输出操作次数）是 VM 大
 ### <a name="basic-a"></a>基本 A
 
 > [!NOTE]
-> 通过门户[创建虚拟机规模集](../operator/azure-stack-compute-add-scalesets.md) (VMSS) 时，不再能够使用“基本 A”VM 大小。  若要按照此大小来创建 VMSS，请使用 PowerShell 或模板。
+> 通过门户[创建虚拟机规模集](../operator/azure-stack-compute-add-scalesets.md) (VMSS) 时，不再能够使用“基本 A”VM 大小。 若要按照此大小来创建 VMSS，请使用 PowerShell 或模板。
 
 |大小 - 大小\名称 |vCPU     |内存 | 最大临时磁盘大小 | 最大 OS 磁盘吞吐量：(IOPS) | 最大临时存储吞吐量 (IOPS) | 最大数据磁盘吞吐量 (IOPS) | 最大 NIC 数 |    
 |-----------------|-----|---------|---------|-----|------|-----------|----|

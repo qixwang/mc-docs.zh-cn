@@ -1,29 +1,19 @@
 ---
-title: 使用 Powershell 从命令行部署 ASDK | Microsoft Docs
+title: 使用 Powershell 从命令行部署 ASDK
 description: 了解如何使用 PowerShell 从命令行部署 ASDK。
-services: azure-stack
-documentationcenter: ''
 author: WenJason
-manager: digimobile
-editor: ''
-ms.assetid: ''
-ms.service: azure-stack
-ms.workload: na
-pms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.custom: ''
 origin.date: 05/06/2019
-ms.date: 11/18/2019
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: misainat
 ms.lastreviewed: 02/08/2019
-ms.openlocfilehash: e026ab45430dbb5006c8557782947b7a748ca56e
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 7c90d823c4667be9ffdf78ee24a926c2d1bdd384
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74020073"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422419"
 ---
 # <a name="deploy-asdk-from-the-command-line-using-powershell"></a>使用 Powershell 从命令行部署 ASDK
 
@@ -71,7 +61,7 @@ Azure Stack 开发工具包 (ASDK) 是一个测试和开发环境，可以在部
 在 ASDK 主机成功启动进入 CloudBuilder.vhdx 映像之后，请使用用于登录到 ASDK 主机的相同本地管理员凭据登录。 这些凭据也是在主机从 VHD 启动后完成 Windows Server 安装过程中所提供的相同凭据。
 
 > [!NOTE]
-> 也可在安装 ASDK 之前配置 [Azure Stack 遥测设置](asdk-telemetry.md#set-telemetry-level-in-the-windows-registry)。 
+> 也可在安装 ASDK 之前配置 [Azure Stack 遥测设置](asdk-telemetry.md#set-telemetry-level-in-the-windows-registry)。
 
 打开提升了权限的 PowerShell 控制台并运行此部分的命令，以便在 ASDK 主机上部署 ASDK。
 
@@ -109,7 +99,7 @@ Azure Stack 开发工具包 (ASDK) 是一个测试和开发环境，可以在部
 
 在 AD FS 部署中，默认的标记目录服务用作标识提供者。 登录时使用的默认帐户是 azurestackadmin@azurestack.local，而密码则会设置为在 PowerShell 安装命令中提供的密码。
 
-部署过程可能需要数小时，在此期间系统会自动重启一次。 如果部署成功，PowerShell 控制台会显示“COMPLETE:  Action 'Deployment'”。 如果部署失败，请尝试使用 -rerun 参数再次运行脚本。 也可从头开始[重新部署 ASDK](asdk-redeploy.md)。
+部署过程可能需要数小时，在此期间系统会自动重启一次。 如果部署成功，PowerShell 控制台会显示“COMPLETE: Action 'Deployment'”。 如果部署失败，请尝试使用 -rerun 参数再次运行脚本。 也可从头开始[重新部署 ASDK](asdk-redeploy.md)。
 
 > [!IMPORTANT]
 > 若要在 ASDK 主机重启后监视部署进度，必须以 AzureStack\AzureStackAdmin 身份登录。 如果在主机重启（并加入 azurestack.local 域）后以本地管理员身份登录，将看不到部署进度。 不要重新运行部署，而是以 AzureStack\AzureStackAdmin 身份登录，并使用与本地管理员相同的密码来验证安装程序是否正在运行。
@@ -159,7 +149,7 @@ $aadcred = Get-Credential "<Azure AD global administrator account name>" #Exampl
 我们建议重置密码过期策略，确保 ASDK 主机的密码不在评估期结束之前过期。
 
 > [!NOTE]
-> 也可在安装 ASDK 之后配置 [Azure Stack 遥测设置](asdk-telemetry.md#enable-or-disable-telemetry-after-deployment)。 
+> 也可在安装 ASDK 之后配置 [Azure Stack 遥测设置](asdk-telemetry.md#enable-or-disable-telemetry-after-deployment)。
 
 **[ASDK 后部署任务](asdk-post-deploy.md)**
 

@@ -4,16 +4,16 @@ description: 介绍了客户端应用程序和工具连接 Azure Analysis Servic
 author: rockboyfor
 ms.service: azure-analysis-services
 ms.topic: conceptual
-origin.date: 01/23/2020
-ms.date: 03/23/2020
+origin.date: 04/19/2020
+ms.date: 04/30/2020
 ms.author: v-yeche
 ms.reviewer: minewiskan
-ms.openlocfilehash: c04891910c6d79e60a58e5717d9d6e16e05dbc82
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: b2d57e1fcc75dc42242d854e432ebb9039508c23
+ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79543781"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83392234"
 ---
 # <a name="client-libraries-for-connecting-to-analysis-services"></a>用于连接到 Analysis Services 的客户端库
 
@@ -23,10 +23,10 @@ ms.locfileid: "79543781"
 
 |下载  |产品版本  | 
 |---------|---------|
-|[MSOLAP (amd64)](https://go.microsoft.com/fwlink/?linkid=829576)    |    15.1.21.27    |
-|[MSOLAP (x86)](https://go.microsoft.com/fwlink/?linkid=829575)     |     15.1.21.27       |
-|[AMO](https://go.microsoft.com/fwlink/?linkid=829578)     |   18.4.0.5    |
-|[ADOMD](https://go.microsoft.com/fwlink/?linkid=829577)     |    18.4.0.5     |
+|[MSOLAP (amd64)](https://go.microsoft.com/fwlink/?linkid=829576)    |    15.1.36.38    |
+|[MSOLAP (x86)](https://go.microsoft.com/fwlink/?linkid=829575)     |     15.1.36.38       |
+|[AMO](https://go.microsoft.com/fwlink/?linkid=829578)     |   18.6.0.1    |
+|[ADOMD](https://go.microsoft.com/fwlink/?linkid=829577)     |    18.6.0.1     |
 
 ## <a name="amo-and-adomd-nuget-packages"></a>AMO 和 ADOMD（NuGet 包）
 
@@ -34,8 +34,8 @@ Analysis Services Management Objects (AMO) 和 ADOMD 客户端库在 [NuGet.org]
 
 |程序包  | 产品版本  | 
 |---------|---------|
-|[AMO](https://www.nuget.org/packages/Microsoft.AnalysisServices.retail.amd64/)    |    18.4.0.5     |
-|[ADOMD](https://www.nuget.org/packages/Microsoft.AnalysisServices.AdomdClient.retail.amd64/)     |   18.4.0.5      |
+|[AMO](https://www.nuget.org/packages/Microsoft.AnalysisServices.retail.amd64/)    |    18.6.0.1     |
+|[ADOMD](https://www.nuget.org/packages/Microsoft.AnalysisServices.AdomdClient.retail.amd64/)     |   18.6.0.1      |
 
 NuGet 包程序集 AssemblyVersion 遵循语义版本控制：MAJOR.MINOR.PATCH。 NuGet 引用加载预期的版本，即使 GAC 中存在不同的版本（由 MSI 安装导致的）。 PATCH 将随每次发布递增。 AMO 和 ADOMD 版本保持同步。
 
@@ -74,19 +74,19 @@ ADOMD.NET 是用于查询 Analysis Services 数据的托管数据客户端库。
 
 1. 转到  `C:\Program Files\Microsoft Analysis Services\AS OLEDB\` 。 如果有多个文件夹，请选择较大的数字。
 
-2. 右键单击“msolap.dll” > “属性” > “详细信息”。    如果文件名为 msolap140.dll，则它早于最新版本并且应当升级。
+2. 右键单击“msolap.dll” > “属性” > “详细信息”。   如果文件名为 msolap140.dll，则它早于最新版本并且应当升级。
 
     ![客户端库详细信息](media/analysis-services-data-providers/aas-msolap-details.png)
 
 ### <a name="amo"></a>AMO
 
 1. 转到  `C:\Windows\Microsoft.NET\assembly\GAC_MSIL\Microsoft.AnalysisServices\` 。 如果有多个文件夹，请选择较大的数字。
-2. 右键单击“Microsoft.AnalysisServices” > ，选择“属性” > “详细信息”。     
+2. 右键单击“Microsoft.AnalysisServices” > ，选择“属性” > “详细信息”。    
 
 ### <a name="adomd"></a>ADOMD
 
 1. 转到  `C:\Windows\Microsoft.NET\assembly\GAC_MSIL\Microsoft.AnalysisServices.AdomdClient\` 。 如果有多个文件夹，请选择较大的数字。
-2. 右键单击“Microsoft.AnalysisServices.AdomdClient” > ，选择“属性” > “详细信息”。     
+2. 右键单击“Microsoft.AnalysisServices.AdomdClient” > ，选择“属性” > “详细信息”。    
 
 ## <a name="next-steps"></a>后续步骤
 [使用 Excel 进行连接](analysis-services-connect-excel.md)    

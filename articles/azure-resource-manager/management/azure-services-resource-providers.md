@@ -5,12 +5,12 @@ ms.topic: conceptual
 origin.date: 03/17/2020
 ms.date: 04/30/2020
 ms.author: v-yeche
-ms.openlocfilehash: 782d25f07b2cd3fe9db4e0f8c380a0d31c5a1e53
-ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
+ms.openlocfilehash: 43bf3ee8f9af3cdf6d186e4c0c28ec4c3fc5d100
+ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82596180"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83392317"
 ---
 <!--Verify sucessfully-->
 # <a name="resource-providers-for-azure-services"></a>Azure 服务的资源提供程序
@@ -21,7 +21,7 @@ ms.locfileid: "82596180"
 
 | 资源提供程序命名空间 | Azure 服务 |
 | --------------------------- | ------------- |
-| Microsoft.AAD | [Azure Active Directory 域服务 |
+| Microsoft.AAD | Azure Active Directory 域服务 |
 | Microsoft.Advisor | [Azure 顾问](/advisor/) |
 | Microsoft.AlertsManagement | [Azure Monitor](../../azure-monitor/index.yml) |
 | Microsoft.AnalysisServices | [Azure Analysis Services](/analysis-services/) |

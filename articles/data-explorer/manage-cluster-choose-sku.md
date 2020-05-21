@@ -7,13 +7,13 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 07/14/2019
-ms.date: 03/16/2020
-ms.openlocfilehash: 5595d4695db9d80d334bf830c1f3e68b7a84b6c2
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/09/2020
+ms.openlocfilehash: 86ecf2bf602a0ea20bb593eff6d993aff8a3a7e8
+ms.sourcegitcommit: bfbd6694da33f703481386f2a3f16850c4e94bfa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80243954"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83417738"
 ---
 # <a name="select-the-correct-vm-sku-for-your-azure-data-explorer-cluster"></a>为 Azure 数据资源管理器群集选择正确的 VM SKU 
 
@@ -38,7 +38,7 @@ Azure 数据资源管理器提供两种类型的群集：
 
 ## <a name="sku-types"></a>SKU 类型
 
-创建 Azure 数据资源管理器群集时，请根据计划的工作负荷选择最佳的 VM SKU。  可从以下两个 Azure 数据资源管理器 SKU 系列中选择：
+创建 Azure 数据资源管理器群集时，请根据计划的工作负荷选择最佳的 VM SKU。 可从以下两个 Azure 数据资源管理器 SKU 系列中选择：
 
 * **D v2**：D SKU 经过计算优化，具有两种风格：
     * VM 本身
@@ -52,7 +52,7 @@ Azure 数据资源管理器提供两种类型的群集：
 |---|---|---
 |**小型 SKU**|最小大小为 D11，提供两个核心|最小大小为 L4，具有四个核心 |
 |**可用性**|在所有区域可用（DS + PS 版本的可用性限制更高）|在几个区域中可用 |
-|**每核心每&nbsp;GB 缓存成本**|D SKU 的成本较高，DS + PS 版本的成本较低|使用即用即付选项的成本最低 |
+|**每核心每&nbsp;GB 缓存成本**|D SKU 的成本较高，DS + PS 版本的成本较低|使用“预付费”选项的成本最低 |
 |**预留实例 (RI) 定价**|高折扣（如果承诺使用期为三年，则折扣超过 55%）|较低折扣（如果承诺使用期为三年，则折扣为 20%） |  
 
 ## <a name="select-your-cluster-vm"></a>选择群集 VM 

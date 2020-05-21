@@ -4,22 +4,22 @@ description: 本文介绍如何在各种方案中启用适用于 Windows VM 的 
 author: rockboyfor
 ms.service: security
 ms.topic: article
-ms.author: v-yeche
 origin.date: 08/06/2019
-ms.date: 11/11/2019
+ms.date: 04/27/2020
+ms.author: v-yeche
 ms.custom: seodec18
-ms.openlocfilehash: 1d7895300a877912e205b0c0ccea021c9d65f0cd
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: b5a333da9a3b12f9187be6e8c7d9c3d0fd5612c8
+ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "73730696"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83392314"
 ---
 # <a name="azure-disk-encryption-scenarios-on-windows-vms"></a>Windows VM 上的 Azure 磁盘加密方案
 
-Azure 磁盘加密使用 BitLocker 外部密钥保护器来为 Azure 虚拟机 (VM) 的 OS 和数据磁盘提供卷加密，并与 Azure Key Vault 集成，帮助你控制和管理磁盘加密密钥与机密。 有关该服务的概述，请参阅[适用于 Windows VM 的 Azure 磁盘加密](disk-encryption-overview.md)。
+适用于 Windows 虚拟机 (VM) 的 Azure 磁盘加密使用 Windows 的 Bitlocker 功能对 OS 磁盘和数据磁盘进行完整的磁盘加密。 此外，当 VolumeType 参数为 All 时，它还可以对临时资源磁盘进行加密。
 
-有多种磁盘加密方案，具体步骤因方案而异。 以下部分更详细介绍了适用于 Windows VM 的方案。
+Azure 磁盘加密[与 Azure Key Vault 集成](disk-encryption-key-vault.md)，帮助你控制和管理磁盘加密密钥与机密。 有关该服务的概述，请参阅[适用于 Windows VM 的 Azure 磁盘加密](disk-encryption-overview.md)。
 
 只能对具有[支持的 VM 大小和操作系统](disk-encryption-overview.md#supported-vms-and-operating-systems)的虚拟机应用磁盘加密。 还必须满足以下先决条件：
 
@@ -41,13 +41,10 @@ Azure 磁盘加密使用 BitLocker 外部密钥保护器来为 Azure 虚拟机 (
 ## <a name="enable-encryption-on-an-existing-or-running-windows-vm"></a>在现有或正在运行的 Windows VM 上启用加密
 在此方案中，可以使用资源管理器模板、PowerShell cmdlet 或 CLI 命令启用加密。 如果需要虚拟机扩展的架构信息，请参阅[适用于 Windows 扩展的 Azure 磁盘加密](../extensions/azure-disk-enc-windows.md)一文。
 
-## <a name="enable-encryption-on-existing-or-running-iaas-windows-vms"></a>在现有或正在运行的 IaaS Windows VM 上启用加密
-可以使用模板、PowerShell cmdlet 或 CLI 命令启用加密。 如果需要虚拟机扩展的架构信息，请参阅[适用于 Windows 扩展的 Azure 磁盘加密](../extensions/azure-disk-enc-windows.md)一文。
-
 ### <a name="enable-encryption-on-existing-or-running-vms-with-azure-powershell"></a>使用 Azure PowerShell 在现有或正在运行的 VM 上启用加密 
 使用 [Set-AzVMDiskEncryptionExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmdiskencryptionextension) cmdlet 在 Azure 中运行的 IaaS 虚拟机上启用加密。 
 
--  **加密正在运行的 VM：** 以下脚本初始化变量并运行 Set-AzVMDiskEncryptionExtension cmdlet。 先决条件是事先创建资源组、VM 和密钥保管库。 请将 MyKeyVaultResourceGroup、MyVirtualMachineResourceGroup、MySecureVM 和 MySecureVault 替换为自己的值。
+- **加密正在运行的 VM：** 以下脚本初始化变量并运行 Set-AzVMDiskEncryptionExtension cmdlet。 先决条件是事先创建资源组、VM 和密钥保管库。 请将 MyKeyVaultResourceGroup、MyVirtualMachineResourceGroup、MySecureVM 和 MySecureVault 替换为自己的值。
 
     ```azurepowershell
     $KVRGname = 'MyKeyVaultResourceGroup';
@@ -125,7 +122,7 @@ Azure 磁盘加密使用 BitLocker 外部密钥保护器来为 Azure 虚拟机 (
 
 可以通过使用[资源管理器模板加密正在运行的 Windows VM](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-windows-vm-without-aad)，在 Azure 中现有或正在运行的 IaaS Windows VM 上启用磁盘加密。
 
-1. 在 Azure 快速入门模板中，单击“部署到 Azure”。 
+1. 在 Azure 快速入门模板中，单击“部署到 Azure”。
 
     [![“部署到 Azure”](http://azuredeploy.net/deploybutton.png)](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure%2Fazure-quickstart-templates%2Fmaster%2F201-encrypt-running-windows-vm-without-aad%2Fazuredeploy.json)
     
@@ -134,7 +131,7 @@ Azure 磁盘加密使用 BitLocker 外部密钥保护器来为 Azure 虚拟机 (
 
     <!--MOONCAKE: CUSTOMIZED THE URL-->
     
-2. 选择订阅、资源组、位置、设置、法律条款和协议。 单击“购买”，在现有或正在运行的 IaaS VM 上启用加密。 
+2. 选择订阅、资源组、位置、设置、法律条款和协议。 单击“购买”，在现有或正在运行的 IaaS VM 上启用加密。
 
     下表列出了现有或正在运行的 VM 的资源管理器模板参数：
 
@@ -170,7 +167,7 @@ New-AzVM -VM $VirtualMachine -ResourceGroupName "MyVirtualMachineResourceGroup"
 ### <a name="enable-encryption-on-a-newly-added-disk-with-azure-powershell"></a>使用 Azure PowerShell 在新添加的磁盘上启用加密
  使用 Powershell 加密 Windows VM 的新磁盘时，应指定新的序列版本。 序列版本必须唯一。 以下脚本生成序列版本的 GUID。 在某些情况下，Azure 磁盘加密扩展可能会自动加密新添加的数据磁盘。 新磁盘处于联机状态后，在 VM 重新启动时，通常会出现自动加密的情况。 这通常是由于之前在 VM 上运行磁盘加密时将卷类型指定为“全部”。 如果新添加的数据磁盘上发生自动加密的情况，我们建议结合新序列版本再次运行 Set-AzVmDiskEncryptionExtension cmdlet。 如果新数据磁盘已自动加密，但并不希望进行加密，请先解密所有驱动器，然后使用为卷类型指定 OS 的新序列版本重新进行加密。 
 
--  **加密正在运行的 VM：** 以下脚本初始化变量并运行 Set-AzVMDiskEncryptionExtension cmdlet。 先决条件是事先创建资源组、VM 和密钥保管库。 请将 MyKeyVaultResourceGroup、MyVirtualMachineResourceGroup、MySecureVM 和 MySecureVault 替换为自己的值。 本示例使用“All”作为 -VolumeType 参数，其中包含 OS 卷和 Data 卷。 如果只想加密 OS 卷，请使用“OS”作为 -VolumeType 参数。 
+- **加密正在运行的 VM：** 以下脚本初始化变量并运行 Set-AzVMDiskEncryptionExtension cmdlet。 先决条件是事先创建资源组、VM 和密钥保管库。 请将 MyKeyVaultResourceGroup、MyVirtualMachineResourceGroup、MySecureVM 和 MySecureVault 替换为自己的值。 本示例使用“All”作为 -VolumeType 参数，其中包含 OS 卷和 Data 卷。 如果只想加密 OS 卷，请使用“OS”作为 -VolumeType 参数。 
 
     ```azurepowershell
     $KVRGname = 'MyKeyVaultResourceGroup';
@@ -234,9 +231,9 @@ New-AzVM -VM $VirtualMachine -ResourceGroupName "MyVirtualMachineResourceGroup"
     ```
 - **使用资源管理器模板禁用加密：** 
 
-    1. 单击[在正在运行的 Windows VM 上禁用磁盘加密](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-windows-vm-without-aad)模板中的“部署到 Azure”。 
+    1. 单击[在正在运行的 Windows VM 上禁用磁盘加密](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-windows-vm-without-aad)模板中的“部署到 Azure”。
     2. 选择订阅、资源组、位置、VM、卷类型、法律条款和协议。
-    3. 单击“购买”，在正在运行的 Windows VM 上禁用磁盘加密。  
+    3. 单击“购买”，在正在运行的 Windows VM 上禁用磁盘加密。 
 
 ## <a name="unsupported-scenarios"></a>不支持的方案
 
@@ -252,6 +249,10 @@ Azure 磁盘加密不支持以下方案、功能和技术：
 - Windows Server 容器，为每个容器创建动态卷。
 - 临时 OS 磁盘。
 - 加密共享/分布式文件系统，包括但不限于 DFS、GFS、DRDB 和 CephFS。
+- 将加密的 VM 移到其他订阅。
+- Gen2 VM（请参阅：[Azure 对第 2 代 VM 的支持](generation-2.md#generation-1-vs-generation-2-capabilities)）
+
+<!--Not Available on - Lsv2 series VMs (see: [Lsv2-series](../lsv2-series.md))-->
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -259,5 +260,4 @@ Azure 磁盘加密不支持以下方案、功能和技术：
 - [Azure 磁盘加密示例脚本](disk-encryption-sample-scripts.md)
 - [Azure 磁盘加密疑难解答](disk-encryption-troubleshooting.md)
 
-<!--Update_Description: new articles on disk encryption windows -->
-<!--New.date: 11/04/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

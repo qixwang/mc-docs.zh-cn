@@ -1,25 +1,24 @@
 ---
-title: Azure 中 Windows VM 的时间同步 | Azure
+title: Azure 中 Windows VM 的时间同步
 description: Windows 虚拟机的时间同步。
 services: virtual-machines-windows
 documentationcenter: ''
 author: rockboyfor
 manager: digimobile
-editor: tysonn
 tags: azure-resource-manager
 ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 origin.date: 09/17/2018
-ms.date: 10/14/2019
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: 864f67cb4ef38c90c1bd72b544151e5754c1ba00
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 02116a632ed8aa7ba9a90edb26815c029b1b8da2
+ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "72272656"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83392238"
 ---
 # <a name="time-sync-for-windows-vms-in-azure"></a>Azure 中 Windows VM 的时间同步
 
@@ -37,9 +36,9 @@ Azure 现在受运行 Windows Server 2016 的基础设施的支持。 Windows Se
 
 计算机时钟的准确性根据计算机时钟与协调世界时 (UTC) 时间标准的接近程度来测量。 UTC 通过精确原子钟的跨国样本来定义，此类原子钟 300 年的偏差只有 1 秒。 但是，直接读取 UTC 需要专用硬件。 而时间服务器与 UTC 同步，可以从其他计算机访问，因此具备可伸缩性和可靠性。 每个计算机都有时间同步服务运行，该服务知道使用什么时间服务器，并定期检查计算机时钟是否需纠正，然后根据需要调整时间。 
 
-Azure 主机与内部 Azure 时间服务器同步，后者从 Azure 拥有的带 GPS 天线的第 1 层设备获取其时间。 Azure 中的虚拟机可以依赖其主机来获取准确的时间（主机时间）  ，也可以直接从时间服务器获取时间，或者同时采用这两种方法。 
+Azure 主机与内部 Azure 时间服务器同步，后者从 Azure 拥有的带 GPS 天线的第 1 层设备获取其时间。 Azure 中的虚拟机可以依赖其主机来获取准确的时间（主机时间），也可以直接从时间服务器获取时间，或者同时采用这两种方法。 
 
-虚拟机与主机的交互也可能影响时钟。 在[内存保留维护](maintenance-and-updates.md#maintenance-that-doesnt-require-a-reboot)期间，VM 会暂停最多 30 秒的时间。 例如，在维护开始之前，VM 时钟显示上午 10:00:00，这种状态会持续 28 秒。 在 VM 恢复后，VM 上的时钟仍显示上午 10:00:00，这样就造成 28 秒的偏差。 为了进行纠正，VMICTimeSync 服务会监视主机上发生的情况，并会提示用户在 VM 上进行更改以纠正时间偏差。
+虚拟机与主机的交互也可能影响时钟。 在[内存保留维护](../maintenance-and-updates.md#maintenance-that-doesnt-require-a-reboot)期间，VM 会暂停最多 30 秒的时间。 例如，在维护开始之前，VM 时钟显示上午 10:00:00，这种状态会持续 28 秒。 在 VM 恢复后，VM 上的时钟仍显示上午 10:00:00，这样就造成 28 秒的偏差。 为了进行纠正，VMICTimeSync 服务会监视主机上发生的情况，并会提示用户在 VM 上进行更改以纠正时间偏差。
 
 VMICTimeSync 服务以采样或同步模式运行，只会影响时钟前进。 在需要运行 W32time 的采样模式下，VMICTimeSync 服务每 5 秒轮询主机一次并向 W32time 提供时间样本。 W32time 服务大约每隔 30 秒就会抽取一次最新的时间样本并使用它来影响来宾的时钟。 如果来宾已被恢复，或者来宾的时钟比主机时钟慢 5 秒以上，则将激活同步模式。 在 W32time 服务正常运行的情况下，后一种情况应永远不会发生。
 
@@ -119,8 +118,8 @@ w32tm /query /source
 
 - **time.windows.com** - 在默认配置中，w32time 会从 time.windows.com 获取时间。 时间同步质量取决于到它的 Internet 连接，受数据包延迟的影响。 这是默认设置的常规输出。
 - **VM IC 时间同步提供程序** - VM 与主机同步时间。 这通常是你选择启用“仅主机”时间同步或 NtpServer 目前不可用的结果。 
--  你的域服务器 - 当前计算机位于某个域中，该域定义时间同步层次结构。
--  某个其他的服务器 - w32time 已显式配置为从该服务器获取时间。 时间同步质量取决于该时间服务器质量。
+- 你的域服务器 - 当前计算机位于某个域中，该域定义时间同步层次结构。
+- 某个其他的服务器 - w32time 已显式配置为从该服务器获取时间。 时间同步质量取决于该时间服务器质量。
 - **本地 CMOS 时钟** - 时钟未同步。 如果 w32time 在重启后还没有足够的时间启动，或者所有配置的时间源均不可用，则可能获得此输出。
 
 ## <a name="opt-in-for-host-only-time-sync"></a>选择启用“仅主机”时间同步

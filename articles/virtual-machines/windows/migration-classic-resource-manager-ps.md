@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure PowerShell 将 IaaS 资源从经典部署模型迁移到 Azure Resource Manager
+title: 使用 PowerShell 将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器部署模型
 description: 本文介绍如何在支持的平台上使用 Azure PowerShell 命令将 IaaS 资源（例如虚拟机 (VM)、虚拟网络和存储帐户）从经典部署模型迁移到 Azure 资源管理器部署模型
 services: virtual-machines-windows
 documentationcenter: ''
@@ -12,17 +12,21 @@ ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
-origin.date: 03/30/2017
-ms.date: 02/10/2020
+origin.date: 02/06/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: cfe7fae99828cc75b2654f776f30689b5e07be5c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 7a3d431478981c8527cf9f8e49866224aa6ba092
+ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77428325"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83392389"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-powershell"></a>使用 PowerShell 将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器部署模型
+
+> [!IMPORTANT]
+> 目前，大约有 90% 的 IaaS VM 在使用 [Azure 资源管理器](https://www.azure.cn/home/features/resource-manager/)。 自 2020 年 2 月 28 日起，经典 VM 已弃用，并将于 2023 年 3 月 1 日完全停用。 [详细了解](https://docs.azure.cn/virtual-machines/classic-vm-deprecation/)此弃用以及[它对你的影响](/virtual-machines/classic-vm-deprecation#how-does-this-affect-me)。
+
 以下步骤演示了如何使用 Azure PowerShell 命令将基础结构即服务 (IaaS) 资源从经典部署模型迁移到 Azure Resource Manager 部署模型。
 
 也可以根据需要使用 [Azure CLI](../linux/migration-classic-resource-manager-cli.md) 迁移资源。
@@ -52,14 +56,12 @@ ms.locfileid: "77428325"
 
 如需安装说明，请参阅 [How to install and configure Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)（如何安装和配置 Azure PowerShell）。
 
-<br />
-
 ## <a name="step-3-ensure-that-youre-an-administrator-for-the-subscription"></a>步骤 3：确保你是订阅的管理员
 若要执行此迁移，必须在 [Azure 门户](https://portal.azure.cn)中将你添加为订阅的共同管理员。
 
 1. 登录到 [Azure 门户](https://portal.azure.cn)。
-2. 在“中心”菜单上中选择“订阅”。   如果看不到该选项，请选择“所有服务”  。
-3. 查找相应订阅项，然后查看“我的角色”字段  。 对于共同管理员，该值应为“帐户管理员”  。
+2. 在“中心”菜单上中选择“订阅”。  如果看不到该选项，请选择“所有服务”。
+3. 查找相应订阅项，然后查看“我的角色”字段。 对于共同管理员，该值应为“帐户管理员”。
 
 如果无法添加协同管理员，请联系订阅的服务管理员或协同管理员，将自己添加为协同管理员。
 
@@ -103,6 +105,14 @@ ms.locfileid: "77428325"
 
 请确保在继续操作之前，RegistrationState 为 `Registered` 。
 
+在切换到经典部署模型之前，请确保在当前部署或虚拟网络的 Azure 区域中有足够的 Azure 资源管理器虚拟机 vCPU。 可以使用以下 PowerShell 命令检查 Azure 资源管理器中目前的 vCPU 数量。 若要了解有关 vCPU 配额的详细信息，请参阅[限制和 Azure 资源管理器](../../azure-resource-manager/management/azure-subscription-service-limits.md#managing-limits)。
+
+此示例检查 **中国北部** 区域的可用性。 使用自己的区域名称替换示例名称。
+
+```powershell
+    Get-AzVMUsage -Location "China North"
+```
+
 现在，请登录到经典部署模型的帐户。
 
 ```powershell
@@ -121,28 +131,15 @@ ms.locfileid: "77428325"
     Select-AzureSubscription -SubscriptionName "My Azure Subscription"
 ```
 
-<br />
-
-## <a name="step-5-have-enough-resource-manager-vm-vcpus"></a>步骤 5：具有足够的资源管理器 VM vCPU
-确保在当前部署或虚拟网络的 Azure 区域中有足够的 Azure 资源管理器虚拟机 vCPU。 可以使用以下 PowerShell 命令检查 Azure 资源管理器中目前的 vCPU 数量。 若要了解有关 vCPU 配额的详细信息，请参阅[限制和 Azure 资源管理器](../../azure-resource-manager/management/azure-subscription-service-limits.md#limits-and-the-azure-resource-manager)。
-
-<!--MOONCAKE: CORRECT ON limits-and-the-azure-resource-manager -->
-
-此示例检查 **中国北部** 区域的可用性。 使用自己的区域名称替换示例名称。
-
-```powershell
-Get-AzVMUsage -Location "China North"
-```
-
-## <a name="step-6-run-commands-to-migrate-your-iaas-resources"></a>步骤 6：运行迁移 IaaS 资源的命令
-* [迁移云服务中的 VM（不在虚拟网络中）](#step-61-option-1---migrate-virtual-machines-in-a-cloud-service-not-in-a-virtual-network)
-* [迁移虚拟网络中的 VM](#step-61-option-2---migrate-virtual-machines-in-a-virtual-network)
-* [迁移存储帐户](#step-62-migrate-a-storage-account)
+## <a name="step-5-run-commands-to-migrate-your-iaas-resources"></a>步骤 5：运行迁移 IaaS 资源的命令
+* [迁移云服务中的 VM（不在虚拟网络中）](#step-51-option-1---migrate-virtual-machines-in-a-cloud-service-not-in-a-virtual-network)
+* [迁移虚拟网络中的 VM](#step-51-option-2---migrate-virtual-machines-in-a-virtual-network)
+* [迁移存储帐户](#step-52-migrate-a-storage-account)
 
 > [!NOTE]
 > 此处描述的所有操作都是幂等的。 如果遇到功能不受支持或配置错误以外的问题，建议重试准备、中止或提交操作。 然后，平台会尝试再次操作。
 
-### <a name="step-61-option-1---migrate-virtual-machines-in-a-cloud-service-not-in-a-virtual-network"></a>步骤 6.1：选项 1 - 迁移云服务中的虚拟机（不在虚拟网络中）
+### <a name="step-51-option-1---migrate-virtual-machines-in-a-cloud-service-not-in-a-virtual-network"></a>步骤 5.1：选项 1 - 迁移云服务中的虚拟机（不在虚拟网络中）
 使用以下命令获取云服务列表。 然后选取要迁移的云服务。 如果云服务中的 VM 在虚拟网络中或者具有 Web 角色或辅助角色，该命令会返回错误消息。
 
 ```powershell
@@ -223,7 +220,7 @@ Get-AzVMUsage -Location "China North"
     Move-AzureService -Commit -ServiceName $serviceName -DeploymentName $deploymentName
 ```
 
-### <a name="step-61-option-2---migrate-virtual-machines-in-a-virtual-network"></a>步骤 6.1：选项 2 - 迁移虚拟网络中的虚拟机
+### <a name="step-51-option-2---migrate-virtual-machines-in-a-virtual-network"></a>步骤 5.1：选项 2 - 迁移虚拟网络中的虚拟机
 
 若要迁移虚拟网络中的虚拟机，可迁移虚拟网络。 虚拟机随虚拟网络自动迁移。 选取要迁移的虚拟网络。
 > [!NOTE]
@@ -266,7 +263,7 @@ Get-AzVMUsage -Location "China North"
     Move-AzureVirtualNetwork -Commit -VirtualNetworkName $vnetName
 ```
 
-### <a name="step-62-migrate-a-storage-account"></a>步骤 6.2：迁移存储帐户
+### <a name="step-52-migrate-a-storage-account"></a>步骤 5.2：迁移存储帐户
 完成虚拟机迁移之后，请先执行以下先决条件检查，然后再迁移存储帐户。
 
 > [!NOTE]

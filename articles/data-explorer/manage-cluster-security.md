@@ -7,32 +7,34 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 08/20/2019
-ms.date: 03/09/2020
-ms.openlocfilehash: 00e4d7401dd280bd3920e78a5c2b997f7d35cb8f
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/09/2020
+ms.openlocfilehash: ad5cc40fc31e586704f89435711c956e49da1b84
+ms.sourcegitcommit: bfbd6694da33f703481386f2a3f16850c4e94bfa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77590238"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83417722"
 ---
 # <a name="secure-your-cluster-in-azure-data-explorer---azure-portal"></a>在 Azure 数据资源管理器中保护群集 - Azure 门户
 
-[Azure 磁盘加密](/security/azure-security-disk-encryption-overview)有助于保护数据，使组织能够信守在安全性与合规性方面作出的承诺。 它为群集虚拟机的 OS 和数据磁盘提供卷加密。 它还与 [Azure Key Vault](/key-vault/) 集成，让我们可以控制和管理磁盘加密密钥和机密，并确保 VM 磁盘上的所有数据在 Azure 存储中进行静态加密。 
+[Azure 磁盘加密](/security/azure-security-disk-encryption-overview)有助于保护数据，使组织能够信守在安全性与合规性方面作出的承诺。 它为群集虚拟机的 OS 和数据磁盘提供卷加密。 它还与 [Azure Key Vault](/key-vault/) 集成，使我们可以控制和管理磁盘加密密钥和机密，并确保 VM 磁盘上的所有数据已加密。 
   
 ## <a name="enable-encryption-at-rest-in-the-azure-portal"></a>在 Azure 门户中启用静态加密
+
+<!-- Enabling [encryption at rest](/security/fundamentals/encryption-atrest) on your cluster provides data protection for stored data (at rest). -->
   
 通过群集安全设置可以在群集上启用磁盘加密。
 
-1. 在 Azure 门户中，转到 Azure 数据资源管理器群集资源。 在“设置”标题下，选择“安全性”   。 
+1. 在 Azure 门户中，转到 Azure 数据资源管理器群集资源。 在“设置”标题下，选择“安全性” 。 
 
     ![启用静态加密](media/manage-cluster-security/security-encryption-at-rest.png)
 
-1. 在“安全性”  窗口中，为“磁盘加密”  安全设置选择“打开”  。 
+1. 在“安全性”窗口中，为“磁盘加密”安全设置选择“打开”。 
 
-1. 选择“保存”。 
+1. 选择“保存” 。
  
 > [!NOTE]
-> 启用加密后，选择“关闭”  可禁用加密。
+> 启用加密后，选择“关闭”可禁用加密。
 
 ## <a name="next-steps"></a>后续步骤
 

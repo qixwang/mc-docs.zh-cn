@@ -2,32 +2,33 @@
 title: 将机密卷装载到容器组
 description: 了解如何装载机密卷以存储供容器实例访问的敏感信息
 ms.topic: article
-origin.date: 07/19/2018
-ms.date: 04/06/2020
+origin.date: 04/03/2020
+ms.date: 04/30/2020
 ms.author: v-yeche
-ms.openlocfilehash: f940dbf269085633e48534231b0d2c350edd0cec
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: c978f9775a81b9bc8c7a24db9f1b6d0ecb56530b
+ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80517024"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83392398"
 ---
 <!--Verified successfully-->
 # <a name="mount-a-secret-volume-in-azure-container-instances"></a>在 Azure 容器实例中装载机密卷
 
-可以使用机密  卷向容器组中的容器提供敏感信息。 机密  卷将机密存储在该卷内的文件中，然后容器组中的容器可以访问这些机密。 将机密存储在机密  卷中，可以避免将敏感数据（例如，SSH 密钥或数据库凭据）添加到应用程序代码中。
+可以使用机密卷向容器组中的容器提供敏感信息。 机密卷将机密存储在该卷内的文件中，然后容器组中的容器可以访问这些机密。 将机密存储在机密卷中，可以避免将敏感数据（例如，SSH 密钥或数据库凭据）添加到应用程序代码中。
 
-所有机密  卷均由 [tmpfs][tmpfs] 提供支持，后者是一个支持 RAM 的文件系统，其内容永远不会写入到非易失性存储。
+* 与机密一起部署到容器组中后，机密卷将为只读。
+* 所有机密卷均由 RAM 支持的文件系统 [tmpfs][tmpfs] 提供支持；其内容永远不会写入非易失性存储。
 
 > [!NOTE]
-> 机密  卷目前仅限于 Linux 容器。 在[设置环境变量](container-instances-environment-variables.md)中了解如何为 Linux 容器传递安全环境变量。
+> 机密卷目前仅限于 Linux 容器。 在[设置环境变量](container-instances-environment-variables.md)中了解如何为 Linux 容器传递安全环境变量。
 
 <!--Not Available on both Windows and Linux container-->
 <!--Not Available on  While we're working to bring all features to Windows containers, you can find current platform differences in the [overview](container-instances-overview.md#linux-and-windows-containers)-->
 
 ## <a name="mount-secret-volume---azure-cli"></a>装载机密卷 - Azure CLI
 
-若要使用 Azure CLI 部署包含一个或多个机密的容器，请在 `--secrets`az container create`--secrets-mount-path` 命令中包含 [ 和 ][az-container-create] 参数。 此示例在  *处装载一个机密*`/mnt/secrets`卷，其中包含两个机密 “mysecret1”和“mysecret2”：
+若要使用 Azure CLI 部署包含一个或多个机密的容器，请在 [az container create][az-container-create] 命令中包含 `--secrets` 和 `--secrets-mount-path` 参数。 此示例在 `/mnt/secrets` 处装载一个机密卷，该卷由两个包含机密“mysecret1”和“mysecret2”的文件组成：
 
 ```azurecli
 az container create \
@@ -41,11 +42,13 @@ az container create \
 以下 [az container exec][az-container-exec] 输出演示在运行的容器中打开 shell，列出机密卷中的文件，然后显示其内容：
 
 ```azurecli
-az container exec --resource-group myResourceGroup --name secret-volume-demo --exec-command "/bin/sh"
+az container exec \
+  --resource-group myResourceGroup \
+  --name secret-volume-demo --exec-command "/bin/sh"
 ```
 
 ```output
-/usr/src/app # ls -1 /mnt/secrets
+/usr/src/app # ls /mnt/secrets
 mysecret1
 mysecret2
 /usr/src/app # cat /mnt/secrets/mysecret1
@@ -62,7 +65,7 @@ Bye.
 
 使用 YAML 模板进行部署时，模板中的机密值必须已进行 **Base64 编码**。 但是，机密值会以明文形式显示在容器的文件中。
 
-以下 YAML 模板定义了一个容器组，其中包含一个容器，该容器在  *处装载了一个机密*`/mnt/secrets`卷。 机密卷有两个机密：“mysecret1”和“mysecret2”。
+以下 YAML 模板定义了一个容器组，其中包含一个容器，该容器在 `/mnt/secrets` 处装载了一个机密卷。 机密卷有两个包含机密“mysecret1”和“mysecret2”的文件。
 
 ```yaml
 apiVersion: '2018-10-01'
@@ -93,22 +96,24 @@ tags: {}
 type: Microsoft.ContainerInstance/containerGroups
 ```
 
-若要使用 YAML 模板进行部署，请将前面的 YAML 保存到名为 `deploy-aci.yaml` 的文件中，然后使用 [ 参数执行 ][az-container-create]az container create`--file` 命令：
+若要使用 YAML 模板进行部署，请将前面的 YAML 保存到名为 `deploy-aci.yaml` 的文件中，然后使用 `--file` 参数执行 [az container create][az-container-create] 命令：
 
 ```azurecli
 # Deploy with YAML template
-az container create --resource-group myResourceGroup --file deploy-aci.yaml
+az container create \
+  --resource-group myResourceGroup \
+  --file deploy-aci.yaml
 ```
 
 ## <a name="mount-secret-volume---resource-manager"></a>装载机密卷 - 资源管理器
 
 除了 CLI 和 YAML 部署外，还可以使用 Azure [资源管理器模板](https://docs.microsoft.com/azure/templates/microsoft.containerinstance/containergroups)部署容器组。
 
-首先，在模板的容器组 `volumes` 节中填充 `properties` 数组。 使用资源管理器模板进行部署时，模板中的机密值必须已进行 **Base64 编码**。 但是，机密值会以明文形式显示在容器的文件中。
+首先，在模板的容器组 `properties` 节中填充 `volumes` 数组。 使用资源管理器模板进行部署时，模板中的机密值必须已进行 **Base64 编码**。 但是，机密值会以明文形式显示在容器的文件中。
 
-接下来，针对容器组中希望装载*机密*卷的每个容器，在容器定义的 `volumeMounts` 节中填充 `properties` 数组。
+接下来，针对容器组中希望装载*机密*卷的每个容器，在容器定义的 `properties` 节中填充 `volumeMounts` 数组。
 
-以下资源管理器模板定义了一个容器组，其中包含一个容器，该容器在  *处装载了一个机密*`/mnt/secrets`卷。 机密卷有两个机密：“mysecret1”和“mysecret2”。
+以下资源管理器模板定义了一个容器组，其中包含一个容器，该容器在 `/mnt/secrets` 处装载了一个机密卷。 机密卷有两个机密：“mysecret1”和“mysecret2”。
 
 <!-- https://github.com/Azure/azure-docs-json-samples/blob/master/container-instances/aci-deploy-volume-secret.json -->
 
@@ -124,7 +129,7 @@ az container create --resource-group myResourceGroup --file deploy-aci.yaml
     {
       "name": "secret-volume-demo",
       "type": "Microsoft.ContainerInstance/containerGroups",
-      "apiVersion": "2018-06-01",
+      "apiVersion": "2018-10-01",
       "location": "[resourceGroup().location]",
       "properties": {
         "containers": [
@@ -178,11 +183,13 @@ az container create --resource-group myResourceGroup --file deploy-aci.yaml
 
 ```
 
-若要使用资源管理器模板进行部署，请将前面的 JSON 保存到名为 `deploy-aci.json` 的文件中，然后使用 [ 参数执行 ][az-group-deployment-create]az group deployment create`--template-file` 命令：
+若要使用资源管理器模板进行部署，请将前面的 JSON 保存到名为 `deploy-aci.json` 的文件中，然后使用 `--template-file` 参数执行 [az deployment group create][az-deployment-group-create] 命令：
 
 ```azurecli
 # Deploy with Resource Manager template
-az group deployment create --resource-group myResourceGroup --template-file deploy-aci.json
+az deployment group create \
+  --resource-group myResourceGroup \
+  --template-file deploy-aci.json
 ```
 
 ## <a name="next-steps"></a>后续步骤
@@ -207,6 +214,6 @@ az group deployment create --resource-group myResourceGroup --template-file depl
 
 [az-container-create]: https://docs.microsoft.com/cli/azure/container?view=azure-cli-latest#az-container-create
 [az-container-exec]: https://docs.microsoft.com/cli/azure/container?view=azure-cli-latest#az-container-exec
-[az-group-deployment-create]: https://docs.azure.cn/cli/group/deployment?view=azure-cli-latest#az-group-deployment-create
+[az-deployment-group-create]: https://docs.microsoft.com/cli/azure/deployment/group?view=azure-cli-latest#az-deployment-group-create
 
 <!-- Update_Description: update meta properties, wording update, update link -->

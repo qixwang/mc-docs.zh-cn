@@ -1,21 +1,19 @@
 ---
-title: 使用 CLI 获取 Azure VM 的维护通知
+title: 使用 CLI 获取维护通知
 description: 使用 Azure CLI 查看在 Azure 中运行的虚拟机的维护通知并启动自助维护。
-services: virtual-machines
 author: rockboyfor
-tags: azure-service-management,azure-resource-manager
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: article
 origin.date: 11/19/2019
-ms.date: 02/17/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: a808ce07e69ac7f808a18c855b10c81cc4a274db
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: ceb7b9e834542b138c2c8f79ac8c2f275ae9d8a3
+ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77429965"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83392330"
 ---
 # <a name="handling-planned-maintenance-notifications-using-the-azure-cli"></a>使用 Azure CLI 处理计划内维护通知
 
@@ -39,6 +37,8 @@ az vm perform-maintenance -g myResourceGroup -n myVM
 
 ## <a name="classic-deployments"></a>经典部署
 
+[!INCLUDE [classic-vm-deprecation](../../includes/classic-vm-deprecation.md)]
+
 如果你仍有通过使用经典部署模型部署的旧 VM，则可以使用 Azure 经典 CLI 查询 VM，并启动维护。
 
 通过键入以下内容确保在正确模式下使用经典 VM：
@@ -47,13 +47,13 @@ az vm perform-maintenance -g myResourceGroup -n myVM
 azure config mode asm
 ```
 
-若要获取名为 myVM  的 VM 维护状态，请键入：
+若要获取名为“myVM”的 VM 的维护状态，请键入：
 
 ```
 azure vm show myVM 
 ``` 
 
-若要在名为 myVM  的经典 VM 的 myService  服务和 myDeployment  部署中启动维护，请键入：
+若要在名为 myVM 的经典 VM 的 myService 服务和 myDeployment 部署中启动维护，请键入：
 
 ```
 azure compute virtual-machine initiate-maintenance --service-name myService --name myDeployment --virtual-machine-name myVM
@@ -63,5 +63,4 @@ azure compute virtual-machine initiate-maintenance --service-name myService --na
 
 还可以使用 [Azure PowerShell](maintenance-notifications-powershell.md) 或[门户](maintenance-notifications-portal.md)处理计划内维护。
 
-<!-- Update_Description: new articles of maintenance notification -->
-<!-- NEW.date: 02/17/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

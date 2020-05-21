@@ -1,9 +1,13 @@
 - name: Azure Stack HCI 文档
-  href: overview.md
+  href: index.yml
 - name: 概述
   items:
     - name: 什么是 Azure Stack HCI？
       href: overview.md
+- name: 入门
+  items:
+    - name: 在 Windows 管理中心使用 Azure Stack HCI
+      href: get-started.md
 - name: 管理
   items:
     - name: 创建卷
@@ -14,6 +18,10 @@
       href: manage/delete-volumes.md
     - name: 更换驱动器
       href: manage/replace-drives.md
+    - name: 使用 Azure Monitor 进行监视
+      href: manage/azure-monitor.md
+    - name: 将 GPU 连接到 Linux VM
+      href: manage/attach-gpu-to-linux-vm.md
 - name: 概念
   items:
     - name: 选择驱动器
@@ -32,10 +40,26 @@
       href: 'https://docs.microsoft.com/powershell/module/hyper-v'
     - name: 存储 PowerShell 命令
       href: 'https://docs.microsoft.com/powershell/module/storage'
+    - name: ClusterAwareUpdating PowerShell 命令
+      href: 'https://docs.microsoft.com/powershell/module/clusterawareupdating'
+    - name: FailoverClusters PowerShell 命令
+      href: 'https://docs.microsoft.com/powershell/module/failoverclusters'
+    - name: StorageReplica PowerShell 命令
+      href: 'https://docs.microsoft.com/powershell/module/storagereplica'
+    - name: NetAdapter PowerShell 命令
+      href: 'https://docs.microsoft.com/powershell/module/netadapter'
+    - name: NetQoS PowerShell 命令
+      href: 'https://docs.microsoft.com/powershell/module/netqos'
+    - name: DcbQoS PowerShell 命令
+      href: 'https://docs.microsoft.com/powershell/module/dcbqos'
 - name: 相关内容
   items:
     - name: Azure Stack 系列
       href: ../index.yml
+    - name: Azure Stack Hub
+      href: 'https://docs.microsoft.com/azure-stack/operator/azure-stack-overview?view=azs-2002'
+    - name: Windows Server
+      href: /windows-server/
     - name: Windows 管理中心
       href: 'https://docs.microsoft.com/windows-server/manage/windows-admin-center/understand/windows-admin-center'
     - name: Azure 混合服务

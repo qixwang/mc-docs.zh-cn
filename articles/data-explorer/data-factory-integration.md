@@ -8,13 +8,13 @@ ms.reviewer: tomersh26
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 01/20/2020
-ms.date: 02/17/2020
-ms.openlocfilehash: 8ab070e2aeb19aeec4bce61a414f83728f18d1ed
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/09/2020
+ms.openlocfilehash: d7e85996363b90266ed67a2f3d9eeb230043b1f7
+ms.sourcegitcommit: bfbd6694da33f703481386f2a3f16850c4e94bfa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77037923"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83417639"
 ---
 # <a name="integrate-azure-data-explorer-with-azure-data-factory"></a>将 Azure 数据资源管理器与 Azure 数据工厂集成
 
@@ -30,7 +30,7 @@ Azure 数据工厂复制活动用于在数据存储之间传输数据。 支持�
 Azure IR (Integration Runtime) 支持使用 Azure 数据资源管理器在 Azure 内部复制数据，自承载 IR 支持使用 Azure 数据资源管理器从/向本地或配置了访问控制的网络（例如 Azure 虚拟网络）中的数据存储复制数据。 有关详细信息，请参阅[要使用哪个 IR](/data-factory/concepts-integration-runtime#determining-which-ir-to-use)
  
 > [!TIP]
-> 使用复制活动以及创建**链接服务**或**数据集**时，请选择数据存储“Azure 数据资源管理器(Kusto)”，而不要选择旧数据存储“Kusto”。    
+> 使用复制活动以及创建**链接服务**或**数据集**时，请选择数据存储“Azure 数据资源管理器(Kusto)”，而不要选择旧数据存储“Kusto”。   
 
 ### <a name="lookup-activity"></a>查找活动
  
@@ -39,7 +39,7 @@ Azure IR (Integration Runtime) 支持使用 Azure 数据资源管理器在 Azure
 
 ### <a name="command-activity"></a>命令活动
 
-使用命令活动可以执行 Azure 数据资源管理器[控制命令](https://docs.microsoft.com/azure/kusto/concepts/#control-commands)。 与查询不同，控制命令可能会修改数据或元数据。 某些控制命令旨在通过 `.ingest` 或 `.set-or-append` 等命令将数据引入 Azure 数据资源管理器，或通过 `.export` 等命令将数据从 Azure 数据资源管理器复制到外部数据存储。
+使用命令活动可以执行 Azure 数据资源管理器[控制命令](https://docs.microsoft.com/azure/data-explorer/kusto/concepts/index#control-commands)。 与查询不同，控制命令可能会修改数据或元数据。 某些控制命令旨在通过 `.ingest` 或 `.set-or-append` 等命令将数据引入 Azure 数据资源管理器，或通过 `.export` 等命令将数据从 Azure 数据资源管理器复制到外部数据存储。
 有关命令活动的详细演练，请参阅[使用 Azure 数据工厂命令活动运行 Azure 数据资源管理器控制命令](data-factory-command-activity.md)。  使用控制命令复制数据有时比使用复制活动更快且更节省。 若要确定何时使用命令活动或复制活动，请参阅[复制数据时在复制活动与命令活动之间进行选择](#select-between-copy-and-azure-data-explorer-command-activities-when-copy-data)。
 
 ### <a name="copy-in-bulk-from-a-database-template"></a>从数据库模板批量复制
@@ -58,7 +58,7 @@ Azure IR (Integration Runtime) 支持使用 Azure 数据资源管理器在 Azure
 
 ### <a name="copy-data-from-azure-data-explorer"></a>从 Azure 数据资源管理器复制数据
   
-可以使用复制活动或 [`.export`](https://docs.microsoft.com/azure/kusto/management/data-export/) 命令从 Azure 数据资源管理器复制数据。 `.export` 命令执行某个查询，然后导出该查询的结果。 
+可以使用复制活动或 [`.export`](https://docs.microsoft.com/azure/data-explorer/kusto/management/data-export/index) 命令从 Azure 数据资源管理器复制数据。 `.export` 命令执行某个查询，然后导出该查询的结果。 
 
 下表比较了用于从 Azure 数据资源管理器复制数据的复制活动和 `.export` 命令。
 
@@ -67,21 +67,21 @@ Azure IR (Integration Runtime) 支持使用 Azure 数据资源管理器在 Azure
 | **流程说明** | ADF 对 Kusto 执行查询，处理结果，然后将结果发送到目标数据存储。 <br>（**ADX > ADF > 接收器数据存储**） | ADF 将 `.export` 控制命令发送到 Azure 数据资源管理器，后者执行该命令，然后将数据直接发送到目标数据存储。 <br>（**ADX > 接收器数据存储**） |
 | **支持的目标数据存储** | 有多种[支持的数据存储](/data-factory/copy-activity-overview#supported-data-stores-and-formats) | ADLSv2、Azure Blob、SQL 数据库 |
 | **“性能”** | 集中式 | <ul><li>分布式（默认配置），从多个节点同时导出数据</li><li>速度更快，COGS 成本效益更高。</li></ul> |
-| **服务器限制** | 可以提高/禁用[查询限制](https://docs.microsoft.com/azure/kusto/concepts/querylimits)。 默认情况下，ADF 查询包含： <ul><li>500,000 条记录或 64 MB 的大小限制。</li><li>10 分钟时间限制。</li><li>`noTruncation` 设置为 false。</li></ul> | 默认情况下，可提高或禁用查询限制： <ul><li>禁用大小限制。</li><li>将服务器超时提高至 1 小时。</li><li>`MaxMemoryConsumptionPerIterator` 和 `MaxMemoryConsumptionPerQueryPerNode` 提高至最大值（5 GB，TotalPhysicalMemory/2）。</li></ul>
+| **服务器限制** | 可以提高/禁用[查询限制](https://docs.microsoft.com/azure/data-explorer/kusto/concepts/querylimits)。 默认情况下，ADF 查询包含： <ul><li>500,000 条记录或 64 MB 的大小限制。</li><li>10 分钟时间限制。</li><li>`noTruncation` 设置为 false。</li></ul> | 默认情况下，可提高或禁用查询限制： <ul><li>禁用大小限制。</li><li>将服务器超时提高至 1 小时。</li><li>`MaxMemoryConsumptionPerIterator` 和 `MaxMemoryConsumptionPerQueryPerNode` 提高至最大值（5 GB，TotalPhysicalMemory/2）。</li></ul>
 
 > [!TIP]
 > 如果复制目标是 `.export` 命令支持的数据存储之一，并且没有任何复制活动功能对于满足需求而言至关重要，请选择 `.export` 命令。
 
 ### <a name="copying-data-to-azure-data-explorer"></a>将数据复制到 Azure 数据资源管理器
 
-可以使用复制活动或[从查询引入](https://docs.microsoft.com/azure/kusto/management/data-ingestion/ingest-from-query)（`.set-or-append`、`.set-or-replace`、`.set`、`.replace)`）和[从存储引入](https://docs.microsoft.com/azure/kusto/management/data-ingestion/ingest-from-storage) (`.ingest`) 等引入命令，将数据复制到 Azure 数据资源管理器。 
+可以使用复制活动或[从查询引入](https://docs.microsoft.com/azure/data-explorer/kusto/management/data-ingestion/ingest-from-query)（`.set-or-append`、`.set-or-replace`、`.set`、`.replace)`）和[从存储引入](https://docs.microsoft.com/azure/data-explorer/kusto/management/data-ingestion/ingest-from-storage) (`.ingest`) 等引入命令，将数据复制到 Azure 数据资源管理器。 
 
 下表比较了用于将数据复制到 Azure 数据资源管理器的复制活动和引入命令。
 
 | | 复制活动 | 从查询引入<br> `.set-or-append` / `.set-or-replace` / `.set` / `.replace` | 从存储引入 <br> `.ingest` |
 |---|---|---|---|
 | **流程说明** | ADF 从源数据存储获取数据，将数据转换为表格格式，并执行所需的架构映射更改。 然后，ADF 将数据上传到 Azure Blob，将数据拆分为区块，然后下载 Blob 以将其引入 ADX 表中。 <br> （**源数据存储 > ADF > Azure Blob > ADX**） | 这些命令可以执行查询或 `.show` 命令，并将查询结果引入表中 (**ADX > ADX**)。 | 此命令通过从一个或多个云存储项目“提取”数据，将数据引入表中。 |
-| **支持的源数据存储** |  [多种选项](https://docs.azure.cn/data-factory/copy-activity-overview#supported-data-stores-and-formats) | ADLS Gen 2、Azure Blob、SQL（使用 sql_request 插件）、Cosmos（使用 cosmosdb_sql_request 插件），以及提供 HTTP 或 Python API 的任何其他数据存储。 | Filesystem、Azure Blob 存储、ADLS Gen 1、ADLS Gen 2 |
+| **支持的源数据存储** |  [多种选项](/data-factory/copy-activity-overview#supported-data-stores-and-formats) | ADLS Gen 2、Azure Blob、SQL（使用 sql_request 插件）、Cosmos（使用 cosmosdb_sql_request 插件），以及提供 HTTP 或 Python API 的任何其他数据存储。 | Filesystem、Azure Blob 存储、ADLS Gen 1、ADLS Gen 2 |
 | **“性能”** | 引入内容将会排队并受到管理，确保实现小规模的引入，并通过提供负载均衡、重试和错误处理来确保高可用性。 | <ul><li>这些命令并不旨在用于导入大量数据。</li><li>它们可按预期方式运行，且成本低廉。 但是，对于生产方案以及在流量速率和数据量较大时，请使用复制活动。</li></ul> |
 | **服务器限制** | <ul><li>无大小限制。</li><li>最大超时限制：引入每个 Blob 为 1 小时。 |<ul><li>只有查询部分存在大小限制，可通过指定 `noTruncation=true` 来跳过该限制。</li><li>最大超时限制：1 小时。</li></ul> | <ul><li>无大小限制。</li><li>最大超时限制：1 小时。</li></ul>|
 
@@ -95,20 +95,20 @@ Azure IR (Integration Runtime) 支持使用 Azure 数据资源管理器在 Azure
 
 | 步骤 | 操作 | 最低权限级别 | 注释 |
 |---|---|---|---|
-| **创建链接服务** | 数据库导航 | 数据库查看者  <br>使用 ADF 的已登录用户需获得授权才能读取数据库元数据。 | 用户可以手动提供数据库名称。 |
-| | 测试连接 | 数据库监视者或表引入者   <br>服务主体需获得授权才能执行数据库级别的 `.show` 命令或表级别的引入。 | <ul><li>TestConnection 验证与群集的连接，而不验证与数据库的连接。 即使数据库不存在，此命令也可能会成功。</li><li>拥有表管理员权限并不足够。</li></ul>|
-| **创建数据集** | 表导航 | 数据库监视者  <br>使用 ADF 的已登录用户必须获得授权才能执行数据库级别的 `.show` 命令。 | 用户可以手动提供表名称。|
-| **创建数据集**或**复制活动** | 预览数据 | 数据库查看者  <br>服务主体必须获得授权才能读取数据库元数据。 | | 
-|   | 导入架构 | 数据库查看者  <br>服务主体必须获得授权才能读取数据库元数据。 | 当 ADX 是表格到表格复制操作的源时，ADF 会自动导入架构，即使用户未显式导入架构。 |
-| **ADX 用作接收器** | 创建按名称的列映射 | 数据库监视者  <br>服务主体必须获得授权才能执行数据库级别的 `.show` 命令。 | <ul><li>所有必需的操作将使用“表引入者”角色。 </li><li> 某些可选操作可能会失败。</li></ul> |
-|   | <ul><li>在表中创建 CSV 映射</li><li>删除映射</li></ul>| 表引入者或数据库管理员   <br>服务主体必须获得授权才能对表进行更改。 | |
-|   | 引入数据 | 表引入者或数据库管理员   <br>服务主体必须获得授权才能对表进行更改。 | | 
-| **ADX 用作源** | 执行查询 | 数据库查看者  <br>服务主体必须获得授权才能读取数据库元数据。 | |
+| **创建链接服务** | 数据库导航 | 数据库查看者 <br>使用 ADF 的已登录用户需获得授权才能读取数据库元数据。 | 用户可以手动提供数据库名称。 |
+| | 测试连接 | 数据库监视者或表引入者  <br>服务主体需获得授权才能执行数据库级别的 `.show` 命令或表级别的引入。 | <ul><li>TestConnection 验证与群集的连接，而不验证与数据库的连接。 即使数据库不存在，此命令也可能会成功。</li><li>拥有表管理员权限并不足够。</li></ul>|
+| **创建数据集** | 表导航 | 数据库监视者 <br>使用 ADF 的已登录用户必须获得授权才能执行数据库级别的 `.show` 命令。 | 用户可以手动提供表名称。|
+| **创建数据集**或**复制活动** | 预览数据 | 数据库查看者 <br>服务主体必须获得授权才能读取数据库元数据。 | | 
+|   | 导入架构 | 数据库查看者 <br>服务主体必须获得授权才能读取数据库元数据。 | 当 ADX 是表格到表格复制的源时，ADF 会自动导入架构，即使用户未显式导入架构也是如此。 |
+| **ADX 用作接收器** | 创建按名称的列映射 | 数据库监视者 <br>服务主体必须获得授权才能执行数据库级别的 `.show` 命令。 | <ul><li>所有必需的操作将使用“表引入者”角色。</li><li> 某些可选操作可能会失败。</li></ul> |
+|   | <ul><li>在表中创建 CSV 映射</li><li>删除映射</li></ul>| 表引入者或数据库管理员  <br>服务主体必须获得授权才能对表进行更改。 | |
+|   | 引入数据 | 表引入者或数据库管理员  <br>服务主体必须获得授权才能对表进行更改。 | | 
+| **ADX 用作源** | 执行查询 | 数据库查看者 <br>服务主体必须获得授权才能读取数据库元数据。 | |
 | **Kusto 命令** | | 根据每个命令的权限级别。 |
 
 ## <a name="performance"></a>性能 
 
-如果 Azure 数据资源管理器是源，而你使用包含 where 查询的查找、复制或命令活动，请参阅[查询最佳做法](https://docs.microsoft.com/azure/kusto/query/best-practices)了解性能信息，并参阅[复制活动的 ADF 文档](/data-factory/copy-activity-performance)。
+如果 Azure 数据资源管理器是源，而你使用包含 where 查询的查找、复制或命令活动，请参阅[查询最佳做法](https://docs.microsoft.com/azure/data-explorer/kusto/query/best-practices)了解性能信息，并参阅[复制活动的 ADF 文档](/data-factory/copy-activity-performance)。
   
 本部分介绍如何使用将 Azure 数据资源管理器用作接收器的复制活动。 Azure 数据资源管理器接收器的估计吞吐量为 11-13 MBps。 下表详细描述了影响 Azure 数据资源管理器接收器性能的参数。
 
@@ -117,7 +117,7 @@ Azure IR (Integration Runtime) 支持使用 Azure 数据资源管理器在 Azure
 | **组件的地理邻近性** | 将所有组件放在同一区域：<ul><li>源和接收器数据存储。</li><li>ADF 集成运行时。</li><li>ADX 群集。</li></ul>确保最起码你自己的集成运行时位于 ADX 群集所在的同一区域。 |
 | **DIU 数** | ADF 使用的每 4 个 DIU 有 1 个 VM。 <br>仅当源是包含多个文件的基于文件的存储时，增加 DIU 才有作用。 然后，每个 VM 将并行处理一个不同的文件。 因此，复制单个大文件比复制多个小文件的延迟更高。|
 |**ADX 群集的数量和 SKU** | 使用大量的 ADX 节点会大幅增加引入处理时间。|
-| **并行度** | 若要从数据库中复制大量数据，请将数据分区，然后使用 ForEach 循环并行复制每个分区，或使用[“从数据库批量复制到 Azure 数据资源管理器”模板](data-factory-template.md)。 注意：复制活动中的“设置” > “并行度”与 ADX 无关。   |
+| **并行度** |    若要从数据库中复制大量数据，请将数据分区，然后使用 ForEach 循环并行复制每个分区，或使用[“从数据库批量复制到 Azure 数据资源管理器”模板](data-factory-template.md)。 注意：复制活动中的“设置” > “并行度”与 ADX 无关。  |
 | **数据处理复杂性** | 延迟根据源文件格式、列映射和压缩而有所不同。|
 | **运行集成运行时的 VM** | <ul><li>对于 Azure 复制，无法更改 ADF VM 和计算机 SKU。</li><li> 对于本地到 Azure 的复制，请确定托管自承载 IR 的 VM 是否足够强大。</li></ul>|
 
@@ -125,7 +125,7 @@ Azure IR (Integration Runtime) 支持使用 Azure 数据资源管理器在 Azure
 
 ### <a name="monitor-activity-progress"></a>监视活动进度
 
-* 监视活动进度时，“写入的数据”属性可能比“读取的数据”属性要大得多，因为“读取的数据”是根据二进制文件大小计算的，而“写入的数据”是在反序列化并解压缩数据后，根据内存中大小计算的。    
+* 监视活动进度时，“写入的数据”属性可能比“读取的数据”属性要大得多，因为“读取的数据”是根据二进制文件大小计算的，而“写入的数据”是在反序列化并解压缩数据后，根据内存中大小计算的。   
 
 * 监视活动进度时，可以看到数据已写入 Azure 数据资源管理器接收器。 查询 Azure 数据资源管理器表时，会看到数据尚未抵达。 这是因为，复制到 Azure 数据资源管理器的过程是分两个阶段完成的。 
     * 第一阶段读取源数据，将数据拆分为 900-MB 的区块，然后将每个区块上传到 Azure Blob。 ADF 活动进度视图会显示第一阶段。 
@@ -135,7 +135,7 @@ Azure IR (Integration Runtime) 支持使用 Azure 数据资源管理器在 Azure
 
 Azure 数据资源管理器要求 CSV 文件遵循 [RFC 4180](https://www.ietf.org/rfc/rfc4180.txt)。
 它要求：
-* 包含需要转义的字符（例如 " 和新行）的字段应以 **"** 字符开头和结尾，不使用空格。 字段中的所有 **"** 字符  都使用双 **"** 字符 ( **""** ) 进行转义。 例如， _"Hello, ""World"""_ 是一个有效的 CSV 文件，所包含的单个记录有一个内容为 _Hello, "World"_ 的列或字段。
+* 包含需要转义的字符（例如 " 和新行）的字段应以 **"** 字符开头和结尾，不使用空格。 字段中的所有 **"** 字符都使用双 **"** 字符 ( **""** ) 进行转义。 例如， _"Hello, ""World"""_ 是一个有效的 CSV 文件，所包含的单个记录有一个内容为 _Hello, "World"_ 的列或字段。
 * 文件中的所有记录必须有相同的列数和字段数。
 
 Azure 数据工厂允许反斜杠（转义）字符。 如果使用 Azure 数据工厂生成一个包含反斜杠字符的 CSV 文件，则无法将该文件引入 Azure 数据资源管理器。
@@ -163,7 +163,7 @@ ABC   DEF<br/>
 * 不支持数组。
 * 如果 JSON 结构包含对象数据类型，Azure 数据工厂会将对象的子项平展，并尝试将每个子项映射到 Azure 数据资源管理器表中的不同列。 若要将整个对象项映射到 Azure 数据资源管理器中的单个列，请执行以下操作：
     * 将整个 JSON 行引入 Azure 数据资源管理器中的单个动态列。
-    * 使用 Azure 数据工厂的 JSON 编辑器手动编辑管道定义。 在“映射”中，执行以下操作： 
+    * 使用 Azure 数据工厂的 JSON 编辑器手动编辑管道定义。 在“映射”中，执行以下操作：
        * 删除为每个子项创建的多个映射，并添加单个可将对象类型映射到表列的映射。
        * 在右方括号后面添加一个逗号，后跟：<br/>
        `"mapComplexValuesToString": true`。

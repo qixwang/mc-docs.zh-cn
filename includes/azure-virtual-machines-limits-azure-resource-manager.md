@@ -2,19 +2,37 @@
 author: rockboyfor
 ms.service: virtual-machines
 ms.topic: include
-origin.date: 11/09/2018
-ms.date: 05/20/2019
+origin.date: 02/10/2020
+ms.date: 05/18/2020
 ms.author: v-yeche
-ms.openlocfilehash: f79508676c14a590033132999007228390d205db
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 36789e8ea2cede413ef8008007498874eb2eb57d
+ms.sourcegitcommit: 8d56bc6baeb42d675695ecef1909d76f5c4a6ae3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "66039218"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83406194"
 ---
-| 资源 | 默认限制 |
-| --- | --- |
-| 每个可用性集的虚拟机数 | 200 |
-| 每个订阅的证书数 |不受限制<sup>1</sup> |
+<!--MOONCAKE: CORRECT ON https://www.azure.cn/pricing/details/virtual-machines/index.html-->
+<!--MOONCAKE: CORRECT ON /billing/billing-add-change-azure-subscription-administrator/-->
 
-<sup>1</sup>使用 Azure 资源管理器时，证书将存储在 Azure 密钥保管库中。 对于每个订阅，证书个数没有限制。 对于每个部署（包括单一 VM 或可用性集），证书的限制为 1-MB。
+| 资源 | 限制 |
+| --- | --- |
+| 每个[订阅](https://docs.azure.cn/billing/billing-sign-up-azure-account-and-get-a-pia-subscription)的 VM 数 |每个区域 25,000 个<sup>1</sup>。 |
+| 每个[订阅](https://docs.azure.cn/billing/billing-sign-up-azure-account-and-get-a-pia-subscription)的 VM 核心总数 |每个区域 20 个<sup>1</sup> 若要提高限制，请与支持人员联系。 |
+| VM 系列（例如 Dv2 和 F）、每个[订阅](https://docs.azure.cn/billing/billing-sign-up-azure-account-and-get-a-pia-subscription)的核心数 |每个区域 20 个<sup>1</sup> 若要提高限制，请与支持人员联系。 |
+| 每个订阅的[可用性集数](../articles/virtual-machines/windows/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) |每个区域 2,000 个。 |
+| 每个可用性集的虚拟机数 | 200 |
+| 每个订阅的证书数 |无限制<sup>2</sup> |
+
+<!--Not Available on Azure Spot VM -->
+
+<sup>1</sup>默认限制因套餐类别类型（如试用和标准预付费套餐）和系列（如 Dv2 和 F）而异。例如，企业协议订阅的默认值为 350。
+
+<sup>2</sup>使用 Azure 资源管理器时，证书存储在 Azure Key Vault 中。 对于每个订阅，证书个数没有限制。 对于每个部署（包括单一 VM 或可用性集），证书的限制为 1-MB。
+
+> [!NOTE]
+> 虚拟机核心数存在区域总数限制。 区域大小系列（例如 Dv2 和 F）也存在限制。这些限制是单独实施的。 例如，假设某个订阅在中国东部的 VM 核心数限制为 30 个，即 A 系列的核心数限制为 30，D 系列的核心数限制也为 30。 此订阅可以部署 30 个 A1 VM、30 个 D1 VM，或两者的组合，但总共不能超过 30 个核心。 例如，10 个 A1 VM 和 20 个 D1 VM 就是一种组合。  
+> 
+>
+
+<!-- Update_Description: update meta properties, wording update, update link -->

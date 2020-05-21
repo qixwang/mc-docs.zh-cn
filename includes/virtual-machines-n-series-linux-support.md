@@ -6,15 +6,15 @@ author: rockboyfor
 ms.service: virtual-machines-linux
 ms.topic: include
 origin.date: 02/11/2019
-ms.date: 11/11/2019
+ms.date: 05/18/2020
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: 32aad4d974de26985fad3d6415d68288bfcad451
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: f933a891fe9eebe3fb0c48f553094a30b726b007
+ms.sourcegitcommit: 8d56bc6baeb42d675695ecef1909d76f5c4a6ae3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "73831451"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83406193"
 ---
 ## <a name="supported-distributions-and-drivers"></a>支持的分发和驱动程序
 
@@ -25,8 +25,8 @@ ms.locfileid: "73831451"
 <!-- Not Available on NC, NCv2, and ND-series-->
 <!-- Not Available on (optional for NV-series)-->
 
-
-<!-- Not Availale on  [Data Science Virtual Machine](../articles/machine-learning/data-science-virtual-machine/overview.md)-->
+> [!TIP]
+> 作为一种在 Linux VM 上手动安装 CUDA 驱动程序的替代方法，可以部署 Azure [数据科学虚拟机](../articles/machine-learning/data-science-virtual-machine/overview.md)映像。 用于 Ubuntu 16.04 LTS 或 CentOS 7.4 的 DSVM 版本预安装 NVIDIA CUDA 驱动程序、CUDA 深度神经网络库和其他工具。
 
 | 分发 | 驱动程序 |
 | --- | -- | 
@@ -39,4 +39,4 @@ ms.locfileid: "73831451"
 
 <!-- Not Available on NV-series-->
 <!-- Not Available on [Red Hat Knowledgebase article](https://access.redhat.com/articles/1067)-->
-<!-- Update_Description: update meta properties, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

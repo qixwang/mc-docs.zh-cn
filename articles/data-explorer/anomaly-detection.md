@@ -2,18 +2,18 @@
 title: 在 Azure 数据资源管理器中进行时序异常情况检测和预测
 description: 了解如何使用 Azure 数据资源管理器分析时序数据以检测和预测异常情况。
 author: orspod
-ms.author: orspodek
+ms.date: 05/15/2020
+ms.author: v-tawe
 ms.reviewer: adieldar
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 04/24/2019
-ms.date: 03/16/2020
-ms.openlocfilehash: 1f539b0f4e02d232badd2110631c67d97233d35f
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 155d38ac1dc9998462d203a42358f305627c24eb
+ms.sourcegitcommit: bfbd6694da33f703481386f2a3f16850c4e94bfa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80521966"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83417692"
 ---
 # <a name="anomaly-detection-and-forecasting-in-azure-data-explorer"></a>在 Azure 数据资源管理器中进行异常情况检测和预测
 
@@ -21,18 +21,18 @@ Azure 数据资源管理器持续从云服务或 IoT 设备收集遥测数据。
 
 本文将详细介绍 Azure 数据资源管理器时序异常情况检测和预测功能。 适用的时序函数基于一个可靠的已知分解模型，其中的每个原始时序将分解成季节性组件、趋势组件和残余组件。 异常情况是根据残余组件上的离群值检测的，而预测则是通过推算季节性组件和趋势组件执行的。 Azure 数据资源管理器实现显著增强了基本分解模型，它可以自动检测季节性、可靠分析离群值，并使用矢量化实现在几秒钟内处理数千个时序。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
-有关时序功能的概述，请参阅 [Azure 数据资源管理器中的时序分析](https://docs.azure.cn/data-explorer/time-series-analysis)。
+有关时序功能的概述，请参阅 [Azure 数据资源管理器中的时序分析](/data-explorer/time-series-analysis)。
 
 ## <a name="time-series-decomposition-model"></a>时序分解模型
 
 用于时序预测和异常情况检测的 Azure 数据资源管理器本机实现使用一个已知的分解模型。 此模型将应用到预期的指标时序，以揭示定期行为和趋势的行为（例如服务流量、组件检测信号和 IoT 定期度量值），从而预测将来的指标值和检测异常的指标值。 此回归过程的假设条件是，时序是随机分布的，而不是存在事先已知的季节性行为和趋势行为。 然后，你可以通过季节性组件和趋势组件（统称为基线）预测将来的指标值，并忽略残余部分。 也可以仅使用残余部分基于离群值分析检测异常值。
-若要创建分解模型，请使用函数 [`series_decompose()`](https://docs.microsoft.com/azure/kusto/query/series-decomposefunction)。 `series_decompose()` 函数采用一系列时序，并自动将每个时序分解成其季节性、趋势、残余和基线组件。 
+若要创建分解模型，请使用函数 [`series_decompose()`](https://docs.microsoft.com/azure/data-explorer/kusto/query/series-decomposefunction)。 `series_decompose()` 函数采用一系列时序，并自动将每个时序分解成其季节性、趋势、残余和基线组件。 
 
 例如，可以使用以下查询分解内部 Web 服务的流量：
 
-<!-- **\[**[**Click to run query**](https://dataexplorer.azure.cn/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WQ3WrDMAyF7/sUukvCnDXJGIOVPEULuwxqoixm/gm2+jf28JObFjbYrmyho3M+yRCD1a5jaGFAJtaW8qaqX8qqLqvnYrMySYHnvxRNWT1B07xW1U03JFEzbVYDWd9Z/KAuUtAUm9UXpLJcSnAH2+LxPZe3AO9gJ6ZbRjvDGLy9EbG/BUemOXnvLxD1AOJ1mijQtWhbyHbbOgOA9RogkqGeAaXn3g1BooVb6OiDNHpD6CjAUccDGv2JrL0TSzozuQHyPYqHdqRkDKN3aBRwkJaCQJIoQ4VsuXh2A/Xezj5SWkVBWSvI0vSoOSsWpLtEpyDwY4KTW8nnJ5ws+2+eAhSyOxjkd+HDVVcIfHplp2TYTxgYTpqnnDUbarM32gPO86PY4jjqfmGw3vGkftNlCi5xNprbWW5kYvENQQnqDh8CAAA=)**\]** -->
+**\[** [**单击以运行查询**](https://dataexplorer.azure.cn/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WQ3WrDMAyF7/sUukvCnDXJGIOVPEULuwxqoixm/gm2+jf28JObFjbYrmyho3M+yRCD1a5jaGFAJtaW8qaqX8qqLqvnYrMySYHnvxRNWT1B07xW1U03JFEzbVYDWd9Z/KAuUtAUm9UXpLJcSnAH2+LxPZe3AO9gJ6ZbRjvDGLy9EbG/BUemOXnvLxD1AOJ1mijQtWhbyHbbOgOA9RogkqGeAaXn3g1BooVb6OiDNHpD6CjAUccDGv2JrL0TSzozuQHyPYqHdqRkDKN3aBRwkJaCQJIoQ4VsuXh2A/Xezj5SWkVBWSvI0vSoOSsWpLtEpyDwY4KTW8nnJ5ws+2+eAhSyOxjkd+HDVVcIfHplp2TYTxgYTpqnnDUbarM32gPO86PY4jjqfmGw3vGkftNlCi5xNprbWW5kYvENQQnqDh8CAAA=) **\]**
 
 ```kusto
 let min_t = datetime(2017-01-05);
@@ -48,8 +48,8 @@ demo_make_series2
 ![时序分解](media/anomaly-detection/series-decompose-timechart.png)
 
 * 原始时序带有 **num**（如红色所示）标签。 
-* 分解过程首先使用函数 [`series_periods_detect()`](https://docs.microsoft.com/azure/kusto/query/series-periods-detectfunction) 自动检测季节性，并提取**季节性**模式（如紫色所示）。
-* 从原始时序中减去季节性模式，并使用函数 [`series_fit_line()`](https://docs.microsoft.com/azure/kusto/query/series-fit-linefunction) 运行线性回归，以找到**趋势**组件（如浅蓝色所示）。
+* 分解过程首先使用函数 [`series_periods_detect()`](https://docs.microsoft.com/azure/data-explorer/kusto/query/series-periods-detectfunction) 自动检测季节性，并提取**季节性**模式（如紫色所示）。
+* 从原始时序中减去季节性模式，并使用函数 [`series_fit_line()`](https://docs.microsoft.com/azure/data-explorer/kusto/query/series-fit-linefunction) 运行线性回归，以找到**趋势**组件（如浅蓝色所示）。
 * 该函数减去趋势，余下的部分是**残余**组件（如绿色所示）。
 * 最后，该函数将季节性组件和趋势组件相加，以生成**基线**（如蓝色所示）。
 
@@ -59,6 +59,7 @@ demo_make_series2
 
 使用以下查询可以检测内部 Web 服务流量的异常：
 
+**\[** [**单击以运行查询**](https://dataexplorer.azure.cn/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WR3W7CMAyF73mKI25KpRbaTmjSUJ8CpF1WoXVptPxUifmb9vBLoGO7GFeR7ePv2I4ihpamYdToBBNLTYuqKF/zosyLdbqZqagQl/8UVV68oKreimLSdVFUDZtZR9o2WnxQ48lJ8tXsCzHM7yHMUdfidFiEN4U12AXoloUe0Turp4nYTsaeaYzs/RVedgis80CObkFdI9ltywTAagV4UtQyRKiZgyLEaTGZ9taFQqtIGHI4SX8USn4KltYEJF2YTIeFMFaHPPkMvrWOMuxFoEpDaVjujmo6aq0erafmIY+7ZCiX6wx5mSGJHb3kJA1sF8jB8q69toNwjLPkYfGTseqoja//eLNkRXXyTnuIcVyCneh72cL2YQdtDQ8ZHvIkDcsfPWH+3AvPvObx0FMXD/RLhfDYW9VhtNKwj/8U69M1b2S//AbRUQMWQQIAAA==) **\]**
 
 ```kusto
 let min_t = datetime(2017-01-05);
@@ -79,10 +80,11 @@ demo_make_series2
 
 ## <a name="time-series-forecasting"></a>时序预测
 
-函数 [`series_decompose_forecast()`](https://docs.microsoft.com/azure/kusto/query/series-decompose-forecastfunction) 预测一组时序的未来值。 此函数调用 `series_decompose()` 生成分解模型，然后针对每个时序，推断未来的基线组件。
+函数 [`series_decompose_forecast()`](https://docs.microsoft.com/azure/data-explorer/kusto/query/series-decompose-forecastfunction) 预测一组时序的未来值。 此函数调用 `series_decompose()` 生成分解模型，然后针对每个时序，推断未来的基线组件。
 
 使用以下查询可以预测下一周的 Web 服务流量：
 
+**\[** [**单击以运行查询**](https://dataexplorer.azure.cn/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22QzW6DMBCE73mKuQFqKISqitSIW98gkXpEDl5iK9hG9uanUR++dqE99YRGO8x845EYRtuO0UIKJtaG8qbebMt6U9avxW41Joe4/+doyvoFTfNW14tPJlOjZqGc1w9n263crSQZ1xlxpi6Q1xSa1ReSLGcJezGtuJ7y+C3gLA6xZM/CTBi8MwshuxnkaUlGYJpS5/ETQUvEzJsiTz+ibZEd9psMQFUBgUbqGSLe7GkkpBVYygfn46EfSVjyuOpwEaN+CNbOxki6M1mZTNSLkAbOv3WSemcmF6j7vSX8dcTUlvOFsZJcFDHFx4wYnmp7JTzjplnlrHmkNvugI8Q0PYO9GAbdww0RyDjLav1XHLnBimAjEG5E5zQ7vRP284x36hOOTtxZ8Q3The8P2QEAAA==) **\]**
 
 ```kusto
 let min_t = datetime(2017-01-05);
@@ -99,7 +101,7 @@ demo_make_series2
 ![时序预测](media/anomaly-detection/series-forecasting.png)
 
 * 原始指标（如红色所示）。 未来值缺失，已按默认设置为 0。
-* 推断基线组件（如蓝色所示）以预测下一周的值。
+* 推断基线组件（蓝色）以预测下一周的值。
 
 ## <a name="scalability"></a>可伸缩性
 
@@ -107,6 +109,7 @@ Azure 数据资源管理器查询语言语法允许通过单个调用来处理�
 
 以下查询显示同时处理三个时序的结果：
 
+**\[** [**单击以运行查询**](https://dataexplorer.azure.cn/clusters/help/databases/Samples?query=H4sIAAAAAAAAA21Qy26DMBC85yvmFlChcUirSI34ikTqETl4KVawjfDmqX587UCaHuqLtePxPLYjhtG2YpRQkom1oaQQy3Uulrl4TzezLjLk5T9GkYsViuJDiImnIqlox6F1g745W67VZqbIuMrIA1WeBk2+mH0jjvk4wh5NKU9fSbhTOItdMNmyND2awZkpIbsxyMukDM/UR8/9FV6rIEkXJqvgmsYTl7X0lISHspzvtqt5hjdxPxkeYBHA4gGKFMBiAUilIAfWja617CY1NG4ASX/FSfuj7PRNsg4ZXANz7Fj3HSGuBmOjZ5hYbcSqIBwbZpNk+iQFcQpx4/omrqLamd55qh5v41d22nIybWChOI0qQ9Cg4e5ftyE6zprbhDV3VM4/aQ/Z96/gQTahU4wsYZzlNvs11vYL3BJsCIQz0eHed/W30jz9AUEBI0ktAgAA) **\]**
 
 ```kusto
 let min_t = datetime(2017-01-05);
@@ -123,10 +126,10 @@ demo_make_series2
 
 ![时序可伸缩性](media/anomaly-detection/series-scalability.png)
 
-## <a name="summary"></a>总结
+## <a name="summary"></a>摘要
 
 本文档详细介绍了用于时序异常情况检测和预测的本机 Azure 数据资源管理器函数。 每个原始时序将分解成季节性、趋势和残余组件，以检测异常情况和/或进行预测。 这些功能可用于近实时监视方案，例如故障检测、预测性维护以及需求和负载预测。
 
 ## <a name="next-steps"></a>后续步骤
 
-了解 Azure 数据资源管理器中的[机器学习功能](https://docs.azure.cn/data-explorer/machine-learning-clustering)。
+了解 Azure 数据资源管理器中的[机器学习功能](/data-explorer/machine-learning-clustering)。
