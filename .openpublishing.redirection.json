@@ -24356,7 +24356,33 @@
       "source_path": "articles/service-bus-relay/service-bus-relay-security-attributes.md",
       "redirect_url": "/azure-relay/azure-relay-security-controls",
       "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/service-bus-messaging/service-bus-dotnet-advanced-message-queuing.md",
+      "redirect_url": "/service-bus-messaging/service-bus-amqp-dotnet",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/automation/automation-first-runbook-graphical.md",
+      "redirect_url": "/automation/learn/automation-tutorial-runbook-graphical",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/automation/automation-first-runbook-textual.md",
+      "redirect_url": "/automation/learn/automation-tutorial-runbook-textual",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/automation/automation-first-runbook-textual-powershell.md",
+      "redirect_url": "/automation/learn/automation-tutorial-runbook-textual-powershell",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/automation/automation-first-runbook-textual-python2.md",
+      "redirect_url": "/automation/learn/automation-tutorial-runbook-textual-python2",
+      "redirect_document_id": false
     }
+
 
 
 
