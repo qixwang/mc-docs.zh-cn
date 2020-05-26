@@ -5,14 +5,14 @@ description: 了解 Azure Kubernetes 服务 (AKS) 中的默认配额、受限制
 services: container-service
 ms.topic: conceptual
 origin.date: 04/09/2019
-ms.date: 05/18/2020
+ms.date: 05/25/2020
 ms.author: v-yeche
-ms.openlocfilehash: 094e2b7fb3002cbc28d87e23dc7d9dfdabb08d66
-ms.sourcegitcommit: 436a5dd9a446fe7b6d3c4d5bc76b652f7848c1ba
+ms.openlocfilehash: 61f92e9dcd7651f201c9d997e8d17669ac2e6792
+ms.sourcegitcommit: 7e6b94bbaeaddb854beed616aaeba6584b9316d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83393120"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83735135"
 ---
 # <a name="quotas-virtual-machine-size-restrictions-and-region-availability-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中的配额、虚拟机大小限制和适用地区
 
