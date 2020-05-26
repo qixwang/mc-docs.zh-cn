@@ -5,15 +5,15 @@ services: automation
 ms.subservice: process-automation
 keywords: azure 自动化, DSC, powershell, 状态配置, 更新管理, 更改跟踪, DSC, 库存, runbook, python, 图形
 origin.date: 10/18/2018
-ms.date: 05/11/2020
+ms.date: 05/25/2020
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: 912103ce48a7807ee97d67edda0caf29fd5e63fb
-ms.sourcegitcommit: 7443ff038ea8afe511f7419d9c550d27fb642246
+ms.openlocfilehash: a4bf222e4e6a4cc113047137e705f690eb295985
+ms.sourcegitcommit: 981a75a78f8cf74ab5a76f9e6b0dc5978387be4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "83001621"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83801332"
 ---
 # <a name="an-introduction-to-azure-automation"></a>Azure 自动化简介
 
@@ -21,7 +21,7 @@ ms.locfileid: "83001621"
 
 ## <a name="about-azure-automation"></a>关于 Azure 自动化
 
-Azure 自动化提供基于云的自动化和配置服务，用于支持 Azure 环境和非 Azure 环境之间的一致管理。 Azure 自动化包括流程自动化、配置管理、共享功能和异类功能。 在部署、操作和解除工作负荷与资源期间，自动化可以提供全面的控制。
+Azure 自动化提供基于云的自动化和配置服务，用于支持 Azure 环境和非 Azure 环境之间的一致管理。 Azure 自动化包括流程自动化、配置管理、更新管理、共享功能和异类功能。 在部署、操作和解除工作负荷与资源期间，自动化可以提供全面的控制。
 
 ![自动化功能](media/automation-overview/automation-overview.png)
 
@@ -36,6 +36,14 @@ Azure 自动化提供基于云的自动化和配置服务，用于支持 Azure �
 Azure 自动化[状态配置](automation-dsc-overview.md)是一个基于云的解决方案，适用于为企业环境提供服务的 PowerShell Desired State Configuration (DSC)。 使用此功能可以在 Azure 自动化中管理 DSC 资源，并将配置应用于 Azure 云中 DSC 拉取服务器上的虚拟机或物理机。 可以在云中或本地的 Windows 或 Linux 上监视并自动更新物理机和虚拟机的计算机配置。
  
 Azure 自动化状态配置服务提供丰富的报告和搜索功能。 可以使用这些功能查找有关操作系统中进行了哪些配置的详细信息。 一个重要的相关功能是报告主要事件，例如，当节点状况不符合为节点分配的配置时发出的事件。 
+
+## <a name="update-management"></a>更新管理
+
+Azure 自动化包含适用于跨混合环境的 Windows 和 Linux 系统的[更新管理](automation-update-management.md)解决方案。 使用此解决方案可以洞察 Azure、其他云和本地的更新合规性。 使用更新管理可以创建计划的部署，用于在定义的维护时段内协调更新的安装。 如果不应在计算机上安装某项更新，可以使用更新管理功能从部署中排除该项更新。
+
+## <a name="shared-capabilities"></a>共享功能
+
+Azure 自动化提供许多共享功能，包括共享资源、基于角色的访问控制、灵活计划、源代码管理集成、审核和标记。
 
 ### <a name="shared-resources"></a><a name="shared-resources"></a>共享资源
 

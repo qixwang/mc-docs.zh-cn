@@ -3,14 +3,14 @@ title: 资源可用性（按区域）
 description: Azure 容器实例服务的计算和内存资源在不同 Azure 区域的可用性。
 ms.topic: article
 origin.date: 02/19/2020
-ms.date: 03/02/2020
+ms.date: 04/30/2020
 ms.author: v-yeche
-ms.openlocfilehash: bd0e0d752bd57cd2affc5de8a8e02826996f3f8f
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: aefa33959ff53f026bd17f978ada7215cea7881a
+ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292525"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83392427"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Azure 容器实例在 Azure 区域的资源可用性
 
@@ -19,21 +19,23 @@ ms.locfileid: "79292525"
 提供的值是指部署一个[容器组](container-instances-container-groups.md)时可以使用的最大资源。 在本文发布时，值是最新的。 
 
 > [!NOTE]
-> 在这些资源限制内创建的容器组受部署区域内可用性的限制。 某个区域负载较重时，部署实例时可能会失败。 若要减少此类部署失败，请尝试部署具有较低资源设置的实例，或稍后尝试部署。
+> 在这些资源限制内创建的容器组受部署区域内可用性的限制。 某个区域负载较重时，部署实例时可能会失败。 若要减少此类部署失败，请尝试部署具有较低资源设置的实例，或稍后尝试部署，或在具有可用资源的其他区域中进行部署。
 
 若要了解部署中的配额和其他限制，请参阅 [Azure 容器实例的配额和限制](container-instances-quotas.md)。
 
 ## <a name="availability---general"></a>可用性 - 常规
 
-以下区域和资源可供包含 Linux 容器的容器组使用。
+以下区域和最大资源可供包含 Linux 容器的容器组使用。
 
 <!--Not Available on [supported](container-instances-faq.md#what-windows-base-os-images-are-supported) Windows Server 2016-based-->
+<!--CUSTOMIZE ON MOONCAKE CPU/4 AND MEMORY/14GB-->
 
-| 区域 | OS | 最大 CPU | 最大内存 (GB) | 存储器 (GB) |
+| 区域 | 操作系统 | 最大 CPU | 最大内存 (GB) | 存储器 (GB) |
 | -------- | -- | :---: | :-----------: | :---: |
-| 中国东部 2 | Linux | 4 | 16 | 50 |
+| 中国东部 2 | Linux | 4 | 14 | 50 |
+| 中国北部 2 | Linux | 4 | 14 | 50 |
 
-<!--CORRECT ON China East 2 for Linux container-->
+<!--CORRECT ON China East/North 2 for Linux container-->
 <!--Not Available on | China East 2, China North 2 | Windows | 2 | 3.5 |-->
 
 <!--Need to verified from PG-->
@@ -43,6 +45,8 @@ ms.locfileid: "79292525"
 <!--Not Available on ## Availability - Virtual network deployment-->
 <!--Not Available on [Azure 虚拟网络](container-instances-vnet.md)-->
 <!--Not Available on [!INCLUDE [container-instances-vnet-limits](../../includes/container-instances-vnet-limits.md)]-->
+
+<!--CUSTOMIZE: NEED TO REQUEST BEFORE USE GPU-->
 
 ## <a name="availability---gpu-resources-preview"></a>可用性 - GPU 资源（预览版）
 

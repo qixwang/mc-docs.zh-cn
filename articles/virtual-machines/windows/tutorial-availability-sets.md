@@ -1,5 +1,5 @@
 ---
-title: 教程 - 使用 Azure PowerShell 创建和部署高度可用的虚拟机 | Azure
+title: 教程 - 使用 Azure PowerShell 创建和部署高度可用的虚拟机
 description: 本教程介绍如何使用 Azure PowerShell 在可用性集中部署高度可用的虚拟机
 documentationcenter: ''
 services: virtual-machines-windows
@@ -13,21 +13,21 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: tutorial
 origin.date: 11/30/2018
-ms.date: 10/14/2019
+ms.date: 04/27/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 384127163a87c9f5b3e9d86664e6de143b5fcb3c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 5c9a94616522306681f86c28e51a49b66ad7d54f
+ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "72272652"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83392237"
 ---
 # <a name="tutorial-create-and-deploy-highly-available-virtual-machines-with-azure-powershell"></a>教程：使用 Azure PowerShell 创建和部署高度可用的虚拟机
 
 本教程介绍如何使用可用性集提高虚拟机 (VM) 的可用性和可靠性。 可用性集确保在 Azure 上部署的 VM 能够跨群集中多个隔离的硬件节点分布。 
 
-在本教程中，你将了解如何执行以下操作：
+本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 创建可用性集
@@ -45,12 +45,9 @@ ms.locfileid: "72272652"
 
 ## <a name="launch-azure-powershell"></a>启动 Azure PowerShell
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
-
-
 ## <a name="create-an-availability-set"></a>创建可用性集
 
-同一位置的硬件分为多个更新域和容错域。 更新域  是一组可同时重启的 VM 和基础物理硬件。 同一个容错域  内的 VM 共享公用存储，以及公用电源和网络交换机。  
+同一位置的硬件分为多个更新域和容错域。 更新域是一组可同时重启的 VM 和基础物理硬件。 同一个容错域内的 VM 共享公用存储，以及公用电源和网络交换机。  
 
 可以使用 [New-AzAvailabilitySet](https://docs.microsoft.com/powershell/module/az.compute/new-azavailabilityset) 创建可用性集。 在此示例中，更新域和容错域的数目为 *2*，可用性集名为 *myAvailabilitySet*。
 
@@ -63,7 +60,7 @@ New-AzResourceGroup `
    -Location ChinaEast
 ```
 
-结合 [ 参数使用 ](https://docs.microsoft.com/powershell/module/az.compute/new-azavailabilityset)New-AzAvailabilitySet`-sku aligned` 创建托管的可用性集。
+结合 `-sku aligned` 参数使用 [New-AzAvailabilitySet](https://docs.microsoft.com/powershell/module/az.compute/new-azavailabilityset) 创建托管的可用性集。
 
 ```powershell
 New-AzAvailabilitySet `
@@ -104,15 +101,15 @@ for ($i=1; $i -le 2; $i++)
 }
 ```
 
-创建和配置这两个 VM 需要几分钟的时间完成。 完成后，你将拥有两个跨基础硬件分布的虚拟机。 
+创建和配置这两个 VM 需要几分钟的时间。 完成后，你将拥有两个跨基础硬件分布的虚拟机。 
 
-如果转到“资源组” **“myResourceGroupAvailability”** “myAvailabilitySet”在门户中查看可用性集，应会看到 VM 在两个容错域和更新域之间的分布方式。 >    >  
+如果转到“资源组” > “myResourceGroupAvailability” > “myAvailabilitySet”在门户中查看可用性集，应会看到 VM 在两个容错域和更新域之间的分布方式。  
 
 ![门户中的可用性集](./media/tutorial-availability-sets/fd-ud.png)
 
 ## <a name="check-for-available-vm-sizes"></a>检查可用的 VM 大小 
 
-稍后可向可用性集添加更多 VM，但需了解在硬件上可用的 VM 大小。 使用 [Get-AzVMSize](https://docs.microsoft.com/powershell/module/az.compute/get-azvmsize) 列出可用性集的硬件群集上的所有可用大小。
+在可用性集中创建 VM 时，需了解在硬件上可用的 VM 大小。 使用 [Get-AzVMSize](https://docs.microsoft.com/powershell/module/az.compute/get-azvmsize) 命令获取能够在可用性集中部署的虚拟机的所有可用大小。
 
 ```powershell
 Get-AzVMSize `
@@ -124,11 +121,11 @@ Get-AzVMSize `
 
 还可使用 Azure 顾问获取有关如何提高 VM 可用性的详细信息。 Azure 顾问可分析配置和用量遥测数据，然后推荐解决方案来帮助提高 Azure 资源的经济效益、性能、可用性和安全性。
 
-登录到 [Azure 门户](https://portal.azure.cn)，选择“所有服务”，然后键入“顾问”   。 顾问仪表板显示针对所选订阅的个性化建议。 有关详细信息，请参阅 [Azure 顾问入门](../../advisor/advisor-get-started.md)。
+登录到 [Azure 门户](https://portal.azure.cn)，选择“所有服务”，然后键入“顾问” 。 顾问仪表板显示针对所选订阅的个性化建议。 有关详细信息，请参阅 [Azure 顾问入门](../../advisor/advisor-get-started.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你了解了如何执行以下操作：
+在本教程中，你已学习了如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建可用性集

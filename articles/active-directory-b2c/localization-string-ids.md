@@ -7,21 +7,21 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/01/2020
+ms.date: 05/18/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 8393e439b67c86eb624067f7a31f98730bec70b2
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 287d3735c422936ec21dcce36d9bc5bfda79cb29
+ms.sourcegitcommit: 87e789550ea49ff77c7f19bc68fad228009fcf44
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80581634"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83748132"
 ---
 # <a name="localization-string-ids"></a>本地化字符串 ID
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Localization  元素使你能够在用户旅程的策略中支持多个区域设置或语言。 本文提供了可在策略中使用的本地化 ID 列表。 若要熟悉 UI 本地化，请参阅[本地化](localization.md)。
+Localization 元素使你能够在用户旅程的策略中支持多个区域设置或语言。 本文提供了可在策略中使用的本地化 ID 列表。 若要熟悉 UI 本地化，请参阅[本地化](localization.md)。
 
 ## <a name="sign-up-or-sign-in-page-elements"></a>注册或登录页面元素
 
@@ -54,7 +54,7 @@ Localization  元素使你能够在用户旅程的策略中支持多个区域设
 
 ![注册或登录页面 UX 元素](./media/localization-string-ids/localization-susi.png)
 
-标识提供者的 ID 在用户旅程 ClaimsExchange  元素中配置。 若要本地化标识提供者的标题，请将 ElementType  设置为 `ClaimsProvider`，同时将 StringId  设置为 `ClaimsExchange` 的 ID。
+标识提供者的 ID 在用户旅程 ClaimsExchange 元素中配置。 若要本地化标识提供者的标题，请将 ElementType 设置为 `ClaimsProvider`，同时将 StringId 设置为 `ClaimsExchange` 的 ID。
 
 ```XML
 <OrchestrationStep Order="2" Type="ClaimsExchange">
@@ -261,7 +261,8 @@ Localization  元素使你能够在用户旅程的策略中支持多个区域设
 |UserMessageIfMaxRetryAttempted |一次性密码提供的验证已超过最大尝试次数 |
 |UserMessageIfSessionDoesNotExist |一次性密码验证会话已过期 |
 |UserMessageIfSessionConflict |一次性密码验证会话存在冲突 |
-|UserMessageIfInvalidCode |为验证提供的一次性密码不正确 |
+|UserMessageIfInvalidCode |所提供的用于验证的一次性密码不正确 |
+|UserMessageIfVerificationFailedRetryAllowed |验证码不正确。 请重试。 | 
 
 ### <a name="example"></a>示例
 
@@ -272,6 +273,7 @@ Localization  元素使你能够在用户旅程的策略中支持多个区域设
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfMaxRetryAttempted">You have exceed the number of retries allowed.</LocalizedString>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfInvalidCode">You have entered the wrong code.</LocalizedString>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfSessionConflict">Cannot verify the code, please try again later.</LocalizedString>
+   <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfVerificationFailedRetryAllowed">That code is incorrect. Please try again.</LocalizedString>
   </LocalizedStrings>
 </LocalizedResources>
 ```

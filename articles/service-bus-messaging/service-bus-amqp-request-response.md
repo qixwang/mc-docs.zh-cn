@@ -15,12 +15,12 @@ ms.workload: na
 origin.date: 01/23/2020
 ms.date: 2/6/2020
 ms.author: v-lingwu
-ms.openlocfilehash: c42d6c3c67ceb80aacee5dd76a751d9981bc74e4
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: feb14780fe05961bf6dba8498ac9017e842486b1
+ms.sourcegitcommit: a04b0b1009b0c62f2deb7c7acee75a1304d98f87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77068277"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83796743"
 ---
 # <a name="amqp-10-in-microsoft-azure-service-bus-request-response-based-operations"></a>Microsoft Azure 服务总线中的 AMQP 1.0：基于请求/响应的操作
 
@@ -32,7 +32,7 @@ ms.locfileid: "77068277"
 
 ### <a name="entity-description"></a>实体描述  
 
-实体说明是指服务总线的 [QueueDescription 类](/dotnet/api/microsoft.servicebus.messaging.queuedescription)、[TopicDescription 类](/dotnet/api/microsoft.servicebus.messaging.topicdescription)或 [SubscriptionDescription 类](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription)对象。  
+实体说明是指服务总线的 [QueueDescription 类](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.queuedescription)、[TopicDescription 类](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.topicdescription)或 [SubscriptionDescription 类](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription)对象。  
   
 ### <a name="brokered-message"></a>中转消息  
 
@@ -500,7 +500,7 @@ sql-filter 映射必须包含以下条目：
 |session-id|string|否||  
 |reply-to-session-id|string|否||  
 |content-type|string|否||  
-|properties|map|否|映射到服务总线 [BrokeredMessage.Properties](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)。|  
+|properties|map|否|映射到服务总线 [BrokeredMessage.Properties](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)。|  
   
 **sql-rule-action** 映射必须包含以下条目：  
   

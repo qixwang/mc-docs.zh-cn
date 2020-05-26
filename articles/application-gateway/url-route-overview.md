@@ -4,15 +4,15 @@ description: 本文概述 Azure 应用程序网关基于 URL 的内容路由、U
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.date: 02/17/2020
+ms.date: 05/19/2020
 ms.author: v-junlch
 ms.topic: conceptual
-ms.openlocfilehash: cb720c554a4dfaa3382be5f820e389769219751c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: b4dfc6bbb128587a3a97abc0d38d879b3edf6b94
+ms.sourcegitcommit: 87e789550ea49ff77c7f19bc68fad228009fcf44
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77494490"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83748163"
 ---
 # <a name="url-path-based-routing-overview"></a>基于 URL 路径的路由概述
 
@@ -113,8 +113,8 @@ PathBasedRouting 规则的代码段：
         "id": "/subscriptions/{subscriptionId}/../microsoft.network/applicationGateways/{gatewayName}/httpListeners/<listenerName>"
     },
     "urlPathMap": {
-        "id": "/subscriptions/{subscriptionId}/../microsoft.network/applicationGateways/{gatewayName}/ urlPathMaps/{urlpathMapName}"
-    },
+        "id": "/subscriptions/{subscriptionId}/../microsoft.network/applicationGateways/{gatewayName}/urlPathMaps/{urlpathMapName}"
+    }
 
 }
     }
@@ -125,4 +125,3 @@ PathBasedRouting 规则的代码段：
 
 了解基于 URL 的内容路由之后，请转到[使用基于 URL 的路由创建应用程序网关](create-url-route-portal.md)，使用 URL 路由规则创建应用程序网关。
 
-<!-- Update_Description: wording update -->

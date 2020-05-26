@@ -6,15 +6,14 @@ services: application-gateway
 author: abshamsft
 ms.service: application-gateway
 ms.topic: article
-origin.date: 11/14/2019
-ms.date: 11/21/2019
+ms.date: 05/19/2020
 ms.author: v-junlch
-ms.openlocfilehash: b6f702009e7ddb02fb1d46178c83f8c1593bcaff
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 0f73a3a614ddc36545169e9edec86988d8e1e689
+ms.sourcegitcommit: 87e789550ea49ff77c7f19bc68fad228009fcf44
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74327422"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83748153"
 ---
 # <a name="troubleshoot-azure-application-gateway-session-affinity-issues"></a>排查 Azure 应用程序网关会话相关性问题
 
@@ -76,7 +75,7 @@ ms.locfileid: "74327422"
 
 #### <a name="symptom"></a>症状
 
-你已启用“基于 Cookie 的相关性”设置，但在 Internet Explorer 中使用短名 URL（例如 [http://website](http://website/)）访问应用程序网关时，请求仍在后端服务器之间弹跳。
+你已启用“基于 Cookie 的相关性”设置，但在 Internet Explorer 中使用短名 URL（例如 `http://website`）访问应用程序网关时，请求仍在后端服务器之间弹跳。
 
 若要识别此问题，请遵照以下说明操作：
 
@@ -98,7 +97,7 @@ ms.locfileid: "74327422"
 
 #### <a name="resolution"></a>解决方法
 
-若要解决此问题，应使用 FQDN 访问应用程序网关。 例如，使用 [https://website.com](https://website.com/) 或 [http://appgw.website.com](http://appgw.website.com/)。
+若要解决此问题，应使用 FQDN 访问应用程序网关。 例如，使用 [http://website.com](https://website.com/) 或 [http://appgw.website.com](http://website.com/)。
 
 ## <a name="additional-logs-to-troubleshoot"></a>用于故障排除的其他日志
 
@@ -211,4 +210,3 @@ Fiddler 之类的 Web 调试工具可以捕获 Internet 与测试计算机之间
 
 如果上述步骤无法解决问题，请开具[支持票证](https://www.azure.cn/support/contact/)。
 
-<!-- Update_Description: update metedata properties -->

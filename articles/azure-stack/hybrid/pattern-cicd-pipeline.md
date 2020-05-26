@@ -1,20 +1,19 @@
 ---
-title: 使用 Azure 和 Azure Stack Hub 的智能边缘的 DevOps 模式。
-description: 了解使用 Azure 和 Azure Stack Hub 的智能边缘的 DevOps 模式。
+title: Azure Stack Hub 中的 DevOps 模式
+description: 了解 DevOps 模式，以便能够确保 Azure 与 Azure Stack Hub 中的部署保持一致。
 author: WenJason
-ms.service: azure-stack
 ms.topic: article
 origin.date: 11/05/2019
-ms.date: 11/18/2019
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: anajod
 ms.lastreviewed: 11/05/2019
-ms.openlocfilehash: 0be13ce9df6051051847dd3fa22025e48202c25e
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 1efd6c6c399306dd8a883e84030022a287ef8887
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74020563"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422530"
 ---
 # <a name="devops-pattern"></a>DevOps 模式
 
@@ -42,7 +41,7 @@ ms.locfileid: "74020563"
 
 ## <a name="issues-and-considerations"></a>问题和注意事项
 
-DevOps 模式旨在确保无论目标环境为何，都能实现跨部署的一致性。 但是，云和本地环境中的功能有所不同。 请注意以下几点：
+DevOps 模式旨在确保无论目标环境为何，都能实现跨部署的一致性。 但是，云和本地环境中的功能有所不同。 请考虑以下要点：
 
 - 部署中的函数、终结点、服务和其他资源在目标部署位置是否可用？
 - 配置项目是否存储在可跨云访问的位置？
@@ -61,9 +60,9 @@ DevOps 模式旨在确保无论目标环境为何，都能实现跨部署的一�
 
 DevPattern 上下文中的可用性是指能够恢复与工作流关联的任何状态信息，例如测试结果、代码依赖项，或其他项目。 若要评估可用性要求，请考虑两个常见指标：
 
--   恢复时间目标 (RTO) 指定允许系统发生故障多长时间。
+- 恢复时间目标 (RTO) 指定允许系统发生故障多长时间。
 
--   恢复点目标 (RPO) 表示服务中断影响到系统时，允许丢失多少数据。
+- 恢复点目标 (RPO) 表示服务中断影响到系统时，允许丢失多少数据。
 
 在实践中，RTO 和 RPO 涉及到冗余和备份。 在 Azure 云中，可用性与硬件恢复无关（这是 Azure 的部分责任），而是为了确保维持 DevOps 系统的状态。 在 Azure Stack Hub 上，硬件恢复可能是一个考虑因素。
 
@@ -90,7 +89,8 @@ DevPattern 上下文中的可用性是指能够恢复与工作流关联的任何
 ## <a name="next-steps"></a>后续步骤
 
 若要详细了解本文中介绍的主题：
-- 请参阅 [Azure DevOps 文档](https://docs.microsoft.com/azure/devops)来详细了解 Azure DevOps 和相关工具，包括 Azure Repos 与 Azure Pipelines。
-- 请参阅 [Azure Stack 产品和解决方案系列](/azure-stack)详细了解产品和解决方案的整个阵容。
 
-准备好测试解决方案示例时，请继续阅读 [DevOps 混合 CI/CD 解决方案部署指南](https://aka.ms/hybriddevopsdeploy)。 该部署指南逐步说明了如何部署和测试 Azure Stack 的组件。 了解如何使用混合持续集成/持续交付 (CI/CD) 管道将应用程序部署到 Azure 和 Azure Stack Hub。
+- 请参阅 [Azure DevOps 文档](https://docs.microsoft.com/azure/devops)来详细了解 Azure DevOps 和相关工具，包括 Azure Repos 与 Azure Pipelines。
+- 请参阅 [Azure Stack 产品和解决方案系列](/azure-stack)，详细了解产品和解决方案的整个阵容。
+
+准备好测试解决方案示例时，请继续阅读 [DevOps 混合 CI/CD 解决方案部署指南](https://aka.ms/hybriddevopsdeploy)。 该部署指南逐步说明了如何部署和测试 Azure Stack 的组件。 了解如何使用混合持续集成/持续交付 (CI/CD) 管道将应用部署到 Azure 和 Azure Stack Hub。

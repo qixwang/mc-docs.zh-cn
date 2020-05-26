@@ -4,14 +4,14 @@ description: 了解如何使用 Azure CLI 创建支持 Azure Active Directory �
 services: container-service
 ms.topic: article
 origin.date: 04/16/2019
-ms.date: 04/06/2020
+ms.date: 05/25/2020
 ms.author: v-yeche
-ms.openlocfilehash: ad4cda6e0511f79d9bc8cb1acf2404236d02bbbd
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 3a8493bc4f8934fb3e8a2a399dce8792c460e409
+ms.sourcegitcommit: 7e6b94bbaeaddb854beed616aaeba6584b9316d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80517019"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83735175"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service-using-the-azure-cli"></a>使用 Azure CLI 将 Azure Active Directory 与 Azure Kubernetes 服务集成
 
@@ -59,7 +59,7 @@ serverApplicationId=$(az ad app create \
     --identifier-uris "https://${aksname}Server" \
     --query appId -o tsv)
 
-# Update the application group memebership claims
+# Update the application group membership claims
 az ad app update --id $serverApplicationId --set groupMembershipClaims=All
 ```
 

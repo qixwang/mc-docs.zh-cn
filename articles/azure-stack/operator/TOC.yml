@@ -23,7 +23,7 @@
   items:
     - name: 向用户提供服务
       href: tutorial-offer-services.md
-    - name: 测试服务套餐
+    - name: 测试服务产品
       href: tutorial-test-offer.md
 - name: 概念
   items:
@@ -114,7 +114,7 @@
               href: azure-stack-integrate-security.md
             - name: 设备审核
               href: azure-stack-integrate-physical-device-auditing.md
-- name: 操作方法指南
+- name: 操作指南
   items:
     - name: 管理 Azure Stack Hub
       items:
@@ -134,8 +134,12 @@
           href: azure-stack-cli-admin.md
         - name: 设置管理环境
           items:
-            - name: 安装 Azure Stack Hub PowerShell
+            - name: 安装 PowerShell AzureRM
               href: azure-stack-powershell-install.md
+            - name: 安装 PowerShell Az
+              href: powershell-install-az-module.md
+            - name: 将 PowerShell AzureRM 迁移到 Az
+              href: migrate-azurerm-az.md
             - name: 下载工具
               href: azure-stack-powershell-download.md
             - name: 使用 PowerShell 连接
@@ -248,7 +252,7 @@
           href: azure-stack-supported-os.md
         - name: 提供虚拟机规模集
           href: azure-stack-compute-add-scalesets.md
-        - name: 市场中的 Windows Server 常见问题解答
+        - name: Azure Stack Hub 市场常见问题解答
           href: azure-stack-windows-server-faq.md
         - name: 提供 Linux 虚拟机
           href: azure-stack-linux.md
@@ -286,7 +290,7 @@
               href: azure-stack-app-service-overview.md
             - name: 应用服务容量规划
               href: azure-stack-app-service-capacity-planning.md
-            - name: 开始操作之前
+            - name: 准备工作
               href: azure-stack-app-service-before-you-get-started.md
             - name: 部署应用服务
               href: azure-stack-app-service-deploy.md
@@ -308,6 +312,8 @@
               href: app-service-back-up.md
             - name: 恢复应用服务
               href: app-service-recover.md
+            - name: 删除应用服务
+              href: app-service-remove.md
             - name: 应用服务计费常见问题解答
               href: app-service-billing-faq.md
             - name: 基于 Azure Stack Hub 的应用服务发行说明
@@ -328,6 +334,34 @@
                   href: azure-stack-app-service-release-notes-update-seven.md
                 - name: Azure Stack Hub 上的应用服务 Update 8 发行说明
                   href: azure-stack-app-service-release-notes-update-eight.md
+        - name: Azure Stack Hub 上的事件中心
+          items:
+            - name: 概述
+              href: event-hubs-rp-overview.md
+            - name: 容量计划
+              href: event-hubs-rp-capacity-planning.md
+            - name: 先决条件
+              href: event-hubs-rp-prerequisites.md
+            - name: 安装
+              href: event-hubs-rp-install.md
+            - name: 生命周期管理
+              items:
+                - name: 应用更新
+                  href: resource-provider-apply-updates.md
+                - name: 备份和还原
+                  href: azure-stack-backup-infrastructure-backup.md
+                - name: 收集日志
+                  href: azure-stack-diagnostic-log-collection-overview-tzl.md
+                - name: 运行状况和警报
+                  href: azure-stack-monitor-health.md
+                - name: 管理
+                  href: event-hubs-rp-manage.md
+                - name: 轮换机密
+                  href: azure-stack-rotate-secrets.md
+                - name: 服务更新公告
+                  href: 'https://techcommunity.microsoft.com/t5/Event-Hubs-Blog/bg-p/EventHubs'
+            - name: 删除
+              href: event-hubs-rp-remove.md
         - name: Azure Stack Hub 上的 MySQL
           items:
             - name: 概述
@@ -379,7 +413,7 @@
     - name: 使用情况和计费
       href: azure-stack-billing-and-chargeback.md
       items:
-        - name: 以 CSP 身份管理用量和计费
+        - name: 以 CSP 身份管理使用情况和计费
           href: azure-stack-add-manage-billing-as-a-csp.md
           items:
             - name: 添加租户以获取用量和计费信息
@@ -427,19 +461,23 @@
         - name: “帮助和支持”门户
           items:
             - name: 概述
-              href: azure-stack-help-and-support-overview.md
+              href: azure-stack-help-and-support-overview-tzl.md
+            - name: 查找你的云 ID
+              href: azure-stack-find-cloud-id.md
             - name: 诊断日志收集
               items:
                 - name: 概述
-                  href: azure-stack-diagnostic-log-collection-overview.md
-                - name: 自动收集
+                  href: azure-stack-diagnostic-log-collection-overview-tzl.md
+                - name: 主动发送日志
+                  href: azure-stack-configure-automatic-diagnostic-log-collection-tzl.md
+                - name: 立即发送日志
                   items:
-                    - name: 配置自动收集
-                      href: azure-stack-configure-automatic-diagnostic-log-collection.md
-                    - name: 最佳做法
-                      href: azure-stack-best-practices-automatic-diagnostic-log-collection.md
-                - name: 按需收集
-                  href: azure-stack-configure-on-demand-diagnostic-log-collection.md
+                    - name: 使用管理员门户
+                      href: azure-stack-configure-on-demand-diagnostic-log-collection-portal-tzl.md
+                    - name: 使用 PowerShell
+                      href: azure-stack-configure-on-demand-diagnostic-log-collection-powershell-tzl.md
+                - name: Get-AzureStackLog (PEP)
+                  href: azure-stack-get-azurestacklog.md
         - name: Azure Stack Hub 验证
           href: azure-stack-diagnostic-test.md
         - name: 故障排除

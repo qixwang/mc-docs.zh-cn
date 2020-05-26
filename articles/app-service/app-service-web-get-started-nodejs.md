@@ -4,17 +4,15 @@ description: 在数分钟内将第一个 Node.js Hello World 部署到 Azure 应
 ms.assetid: 582bb3c2-164b-42f5-b081-95bfcb7a502a
 ms.topic: quickstart
 origin.date: 03/04/2020
-ms.date: 03/30/2020
+ms.date: 05/22/2020
 ms.author: v-tawe
 ms.custom: mvc, devcenter, seodec18
-experimental: false
-experiment_id: a231f2b4-2625-4d
-ms.openlocfilehash: b247f48153cebbec80a6a84703ddc3d44791b33e
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.openlocfilehash: 28b8694d0e99fe3198020a932af03b63f2539a26
+ms.sourcegitcommit: 981a75a78f8cf74ab5a76f9e6b0dc5978387be4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82127057"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83801298"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>在 Azure 中创建 Node.js Web 应用 
 
@@ -47,7 +45,7 @@ ms.locfileid: "82127057"
     npm start
     ```
     
-1. 打开浏览器并导航到 [http://localhost:1337](http://localhost:1337)。 浏览器应会显示“Hello World!”。
+1. 打开浏览器并导航到 `http://localhost:1337`。 浏览器应会显示“Hello World!”。
 
 1. 在终端中按 **Ctrl**+**C** 停止服务器。
 
@@ -81,7 +79,7 @@ ms.locfileid: "82127057"
 
     <!-- - Linux: Choose **Create new Web App** -->
 
-    - Windows:选择“创建新 Web 应用...  高级”
+    - Windows：选择“创建新 Web 应用...  高级”
 
 1. 键入 Web 应用的全局唯一名称，然后按 **Enter**。 该名称必须在整个 Azure 中保持唯一，且只能使用字母数字字符（“A-Z”、“a-z”和“0-9”）和连字符（“-”）。
 

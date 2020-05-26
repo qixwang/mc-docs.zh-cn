@@ -5,24 +5,18 @@ services: virtual-machines
 author: rockboyfor
 ms.service: virtual-machines
 ms.topic: include
-origin.date: 09/20/2018
-ms.date: 07/01/2019
+origin.date: 01/28/2020
+ms.date: 05/25/2020
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: 55cd79899c59a6a0d4a1cbff9fba1faf2d288454
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 3d31ec3d8a7275c3d2f984439cbfda0cc40203e1
+ms.sourcegitcommit: 981a75a78f8cf74ab5a76f9e6b0dc5978387be4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77029030"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83801276"
 ---
 <!--Verify Successfully-->
-## <a name="using-rbac-to-share-images"></a>使用 RBAC 共享映像
-
-可以使用基于角色的访问控制 (RBAC) 在订阅之间共享映像。 任何对映像版本具有读取权限的用户，即使跨订阅，也能够使用映像版本部署虚拟机。
-
-有关如何使用 RBAC 共享资源的详细信息，请参阅[使用 RBAC 和 Azure CLI 管理访问权限](/role-based-access-control/role-assignments-cli)。
-
 ## <a name="list-information"></a>列出信息
 
 使用 [az sig list](https://docs.microsoft.com/cli/azure/sig?view=azure-cli-latest#az-sig-list) 获取有关可用映像库的位置、状态和其他信息。
@@ -54,4 +48,4 @@ az sig image-version show \
    --query "id"
 ```
 
-<!--Update_Description: wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

@@ -8,21 +8,22 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 03/31/2020
+ms.date: 05/20/2020
 ms.custom: seodec18
-ms.openlocfilehash: b1d5825e36c36a4453c80e4630d97e524ed66329
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: ea60b3e2f274ded594a43d06e7c4fe4474d7e0d3
+ms.sourcegitcommit: 87e789550ea49ff77c7f19bc68fad228009fcf44
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80581825"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83748144"
 ---
 # <a name="time-series-model-in-azure-time-series-insights-preview"></a>Azure 时序见解预览版中的时序模型
 
 本文介绍时序模型及其功能，以及如何在 Azure 时序见解预览版环境中开始生成和更新自己的模型。
 
 > [!TIP]
->  * 有关实时时序模型的示例，请转到  [Contoso 风力发电厂演示](https://insights.timeseries.azure.com/preview/samples)环境。
+>
+> * 有关实时时序模型的示例，请转到  [Contoso 风力发电厂演示](https://insights.timeseries.azure.com/preview/samples)环境。
 > * 通过时序见解 Web 资源管理器了解[如何使用时序模型](time-series-insights-update-how-to-tsm.md)。
 
 ## <a name="summary"></a>摘要
@@ -50,9 +51,9 @@ ms.locfileid: "80581825"
 
 [![时序模型智能烤箱图表示例](./media/v2-update-tsm/time-series-model-smart-oven.png)](./media/v2-update-tsm/time-series-model-smart-oven.png#lightbox)
 
-* 时序模型在查询和导航中起着至关重要的作用，因为它允许跨时间范围以及在传感器与设备类型之间绘制比较比较，因此可将数据上下文化。 (**A**) 
+* 时序模型在查询和导航中起着至关重要的作用，因为它允许跨时间范围以及在传感器与设备类型之间绘制比较比较，因此可将数据上下文化。 (**A**)
 * 数据之所以能够进一步上下文化，是因为时序模型中保存的数据将时序查询计算结果作为变量保留，并在查询时重新使用这些结果。
-* 时序模型对数据进行组织与聚合，以改进可视化和管理功能。 (**B**) 
+* 时序模型对数据进行组织与聚合，以改进可视化和管理功能。 (**B**)
 
 ### <a name="key-capabilities"></a>关键功能
 
@@ -289,7 +290,7 @@ ms.locfileid: "80581825"
 
 每个变量可以是以下三个种类之一：数字、分类和聚合。    
 
-* “数字”种类适用于连续值。  
+* “数字”种类适用于连续值。 
 * “分类”种类适用于一组定义的离散值。 
 * “聚合”值组合单个种类（要么全为数字，要么全为分类）的多个变量。 
 

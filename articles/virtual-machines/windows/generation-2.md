@@ -12,14 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
 origin.date: 02/11/2020
-ms.date: 03/30/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: 357ad49fb771777d828716642327d6bbdec1b21a
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: ad804073dcb062adcfdfb20024e7af70c756a82e
+ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80516969"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83392150"
 ---
 <!--Verify sucessfully-->
 # <a name="support-for-generation-2-vms-on-azure"></a>Azure 对第 2 代 VM 的支持
@@ -40,7 +40,7 @@ Azure 中的所有 VM 大小都支持第 1 代 VM。 Azure 目前为以下选定
 
 * [B 系列](/virtual-machines/windows/b-series-burstable)
     
-    <!--Not Available on * [DC-series](/virtual-machines/linux/sizes-general#dc-series)-->
+    <!--Not Available on * [DC-series](../dcv2-series.md)-->
  
 * [DSv2 系列](../dv2-dsv2-series.md)和 [Dsv3 系列](../dv3-dsv3-series.md)
 * [Esv3 系列](../ev3-esv3-series.md)
@@ -78,8 +78,8 @@ Azure 中的所有 VM 大小都支持第 1 代 VM。 Azure 目前为以下选定
 <!--MOONCAKE: CUSTOMIZED-->
 
 > [!NOTE]
-> 可将 Windows Server 上的 `(Gen2)` 后缀或 Linux 的 `(Generation 2 VM)` 追加到映像说明，然后在市场中搜索相应的映像。<br />
-> 例如：`Windows Server 2019 Datacenter (Gen2)` 和 `Ubuntu Server 16.04 LTS (Generation 2 VM)`
+> 可将 Windows Server 上的 `(Gen2)` 后缀追加到映像说明，然后在市场中搜索相应的映像。<br />
+> 例如：`Windows Server 2019 Datacenter (Gen2)`
 
 <!--MOONCAKE: CUSTOMIZED-->
 
@@ -128,12 +128,12 @@ Azure 目前不支持本地 Hyper-V 对第 2 代 VM 所支持的某些特性。
 下面是在 Azure 门户中创建第 2 代 (Gen2) VM 的步骤。
 
 1. 通过 https://portal.azure.cn 登录到 Azure 门户。
-1. 选择“创建资源”。 
-1. 在左侧的“Azure 市场”中单击“查看全部”  。
+1. 选择“创建资源”。
+1. 在左侧的“Azure 市场”中单击“查看全部”。
 1. 选择支持 Gen2 的映像。
 1. 单击**创建**。
-1. 在“高级”  选项卡的“VM 代系”  部分下，选择“Gen 2”  选项。
-1. 在“基本信息”  选项卡的“实例详细信息”  下，转到“大小”  并打开“选择 VM 大小”  边栏选项卡。
+1. 在“高级”选项卡的“VM 代系”部分下，选择“Gen 2”选项。
+1. 在“基本信息”选项卡的“实例详细信息”下，转到“大小”并打开“选择 VM 大小”边栏选项卡。
 1. 选择[支持的第 2 代 VM](#generation-2-vm-sizes)。
 1. 通过 [Azure 门户创建流](quick-create-portal.md)完成 VM 的创建。
 
@@ -203,12 +203,12 @@ az vm image list --publisher Canonical --sku gen2 --output table --all
     若要在 Azure 门户中增大 OS 磁盘大小：
 
     1. 在 Azure 门户中，转到 VM 属性页。
-    1. 若要关闭并解除分配 VM，请选择“停止”按钮。 
-    1. 在“磁盘”部分，选择要增大的 OS 磁盘。 
-    1. 在“磁盘”部分，选择“配置”并将“大小”更新为所需的值。   
+    1. 若要关闭并解除分配 VM，请选择“停止”按钮。
+    1. 在“磁盘”部分，选择要增大的 OS 磁盘。
+    1. 在“磁盘”部分，选择“配置”并将“大小”更新为所需的值。  
     1. 返回到 VM 属性页并**启动** VM。
 
-    你可能会看到一条警告，指出 OS 磁盘大于 2 TB。 该警告不适用于第 2 代 VM。 但是，不建议使用大于 4 TB 的 OS 磁盘大小。 
+    你可能会看到一条警告，指出 OS 磁盘大于 2 TB。 该警告不适用于第 2 代 VM。 但是，不建议使用大于 4 TB 的 OS 磁盘大小。
 
 * **第 2 代 VM 是否支持加速网络？**  
     是的。 有关详细信息，请参阅[创建具有加速网络的 VM](../../virtual-network/create-vm-accelerated-networking-cli.md)。
@@ -226,7 +226,7 @@ az vm image list --publisher Canonical --sku gen2 --output table --all
 
     可以通过执行以下操作来解决此问题：
 
-    1. 确认“高级”  选项卡中的“VM 代系”  属性已设为“Gen 2”  。
+    1. 确认“高级”选项卡中的“VM 代系”属性已设为“Gen 2”。
     1. 验证是否正在搜索[支持 Gen2 VM 的 VM 大小](#generation-2-vm-sizes)。
 
 ## <a name="next-steps"></a>后续步骤

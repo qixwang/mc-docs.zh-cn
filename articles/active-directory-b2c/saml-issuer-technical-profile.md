@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/16/2020
+ms.date: 05/18/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 14b6c71cdeb5033160595c1b19dc7171efa8e13c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: afa08ed709de4c952494c21b75783fe40c764549
+ms.sourcegitcommit: 87e789550ea49ff77c7f19bc68fad228009fcf44
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79497390"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83748115"
 ---
 # <a name="define-a-technical-profile-for-a-saml-token-issuer-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义 SAML 令牌颁发者的技术配置文件
 
@@ -33,7 +33,7 @@ Azure Active Directory B2C (Azure AD B2C) 在处理每个身份验证流时颁�
 ```XML
 <TechnicalProfile Id="Saml2AssertionIssuer">
   <DisplayName>Token Issuer</DisplayName>
-  <Protocol Name="None"/>
+  <Protocol Name="SAML2"/>
   <OutputTokenFormat>SAML2</OutputTokenFormat>
   <Metadata>
     <Item Key="IssuerUri">https://tenant-name.b2clogin.cn/tenant-name.partner.onmschina.cn/B2C_1A_signup_signin_SAML</Item>
@@ -44,7 +44,7 @@ Azure Active Directory B2C (Azure AD B2C) 在处理每个身份验证流时颁�
   </CryptographicKeys>
   <InputClaims/>
   <OutputClaims/>
-  <UseTechnicalProfileForSessionManagement ReferenceId="SM-Saml-sp"/>
+  <UseTechnicalProfileForSessionManagement ReferenceId="SM-Saml-issuer"/>
 </TechnicalProfile>
 ```
 

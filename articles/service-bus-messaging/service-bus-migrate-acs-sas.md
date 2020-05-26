@@ -14,12 +14,12 @@ ms.topic: article
 origin.date: 01/27/2020
 ms.date: 2/6/2020
 ms.author: v-lingwu
-ms.openlocfilehash: e10e433f27490ffd44a9949f27d6906c33dc3f5c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 8c86d830b9d33c6fc011bf5a1280000480e5ee87
+ms.sourcegitcommit: a04b0b1009b0c62f2deb7c7acee75a1304d98f87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77068008"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83796796"
 ---
 # <a name="service-bus---migrate-from-azure-active-directory-access-control-service-to-shared-access-signature-authorization"></a>服务总线 - 从 Azure Active Directory 访问控制服务迁移到共享访问签名授权
 
@@ -39,7 +39,7 @@ ACS 和服务总线是通过签名密钥  这一共用概念进行集成。 ACS 
 
 迁移方案分为三大类：
 
-1.  **未更改默认值**： 一些客户使用 [SharedSecretTokenProvider](/dotnet/api/microsoft.servicebus.sharedsecrettokenprovider) 对象，同时传递为 ACS 命名空间（与服务总线命名空间配对）自动生成的所有者  服务标识及其密钥，，未添加新规则。
+1.  **未更改默认值**： 一些客户使用 [SharedSecretTokenProvider](https://docs.azure.cn/dotnet/api/microsoft.servicebus.sharedsecrettokenprovider) 对象，同时传递为 ACS 命名空间（与服务总线命名空间配对）自动生成的所有者  服务标识及其密钥，，未添加新规则。
 
 2.  **包含简单规则的自定义服务标识**。 一些客户添加新的服务标识，并授予每个新服务标识对一个特定实体的“发送”  、“侦听”  和“管理”  权限。
 
@@ -49,13 +49,13 @@ ACS 和服务总线是通过签名密钥  这一共用概念进行集成。 ACS 
 
 ### <a name="unchanged-defaults"></a>未更改默认值
 
-如果应用程序未更改 ACS 默认值，可以将使用的所有 [SharedSecretTokenProvider](/dotnet/api/microsoft.servicebus.sharedsecrettokenprovider) 替换为 [SharedAccessSignatureTokenProvider](/dotnet/api/microsoft.servicebus.sharedaccesssignaturetokenprovider) 对象，并使用命名空间预配置的 RootManageSharedAccessKey  ，而不是 ACS 所有者  帐户。 请注意，即使使用 ACS 所有者  帐户，通常也都不建议使用这种配置（现在仍不建议），因为此帐户/规则提供对命名空间的完整管理权限，包括删除任何实体的权限。
+如果应用程序未更改 ACS 默认值，可以将使用的所有 [SharedSecretTokenProvider](https://docs.azure.cn/dotnet/api/microsoft.servicebus.sharedsecrettokenprovider) 替换为 [SharedAccessSignatureTokenProvider](https://docs.azure.cn/dotnet/api/microsoft.servicebus.sharedaccesssignaturetokenprovider) 对象，并使用命名空间预配置的 RootManageSharedAccessKey  ，而不是 ACS 所有者  帐户。 请注意，即使使用 ACS 所有者  帐户，通常也都不建议使用这种配置（现在仍不建议），因为此帐户/规则提供对命名空间的完整管理权限，包括删除任何实体的权限。
 
 ### <a name="simple-rules"></a>简单规则
 
 如果应用程序使用包含简单规则的自定义服务标识，那么在创建 ACS 服务标识以提供对特定队列的访问控制时，迁移非常简单。 SaaS 式解决方案通常会出现这种情况。在此类解决方案中，每个队列被用作与租户网站或分支机构的桥梁，并且会为特定网站创建服务标识。 在这种情况下，可以直接在队列上将各自的服务标识迁移到共享访问签名规则。 服务标识名称可能会变成 SAS 规则名称，服务标识密钥可能会变成 SAS 规则密钥。 然后，将 SAS 规则的权限配置为相当于实体的各自适用 ACS 规则。
 
-可以在与 ACS 联合的任何现有命名空间上就地额外配置新 SAS，随后使用 [SharedAccessSignatureTokenProvider](/dotnet/api/microsoft.servicebus.sharedaccesssignaturetokenprovider)（而不是 [SharedSecretTokenProvider](/dotnet/api/microsoft.servicebus.sharedsecrettokenprovider)）从 ACS 迁移。 命名空间不需要与 ACS 取消关联。
+可以在与 ACS 联合的任何现有命名空间上就地额外配置新 SAS，随后使用 [SharedAccessSignatureTokenProvider](https://docs.azure.cn/dotnet/api/microsoft.servicebus.sharedaccesssignaturetokenprovider)（而不是 [SharedSecretTokenProvider](https://docs.azure.cn/dotnet/api/microsoft.servicebus.sharedsecrettokenprovider)）从 ACS 迁移。 命名空间不需要与 ACS 取消关联。
 
 ### <a name="complex-rules"></a>复杂规则
 

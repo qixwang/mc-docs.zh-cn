@@ -3,17 +3,17 @@ title: 将 AD FS 标识与 Azure Stack Hub 数据中心集成
 description: 了解如何将 Azure Stack Hub AD FS 标识提供者与数据中心 AD FS 集成。
 author: WenJason
 ms.topic: article
-origin.date: 05/10/2019
-ms.date: 02/24/2020
+origin.date: 04/10/2019
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: thoroet
 ms.lastreviewed: 05/10/2019
-ms.openlocfilehash: a5544263030188bbeab0b5a1e98464e0ac6d2ee5
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 1d3f7f2bcbd73103c231657f21b89fbde244c9fc
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540988"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422613"
 ---
 # <a name="integrate-ad-fs-identity-with-your-azure-stack-hub-datacenter"></a>将 AD FS 标识与 Azure Stack Hub 数据中心集成
 
@@ -28,7 +28,7 @@ ms.locfileid: "77540988"
 
 身份验证是标识的一部分。 若要在 Azure Stack Hub 中管理基于角色的访问控制 (RBAC)，必须配置 Graph 组件。 委托资源的访问权限后，Graph 组件使用 LDAP 协议来查找现有 Active Directory 林中的用户帐户。
 
-![Azure Stack Hub AD FS 体系结构](media/azure-stack-integrate-identity/Azure-Stack-ADFS-architecture.png)
+![Azure Stack Hub AD FS 体系结构](media/azure-stack-integrate-identity/azure-stack-adfs-architecture.svg)
 
 现有 AD FS 是将声明发送到 Azure Stack Hub AD FS（资源 STS）的帐户安全令牌服务 (STS)。 在 Azure Stack Hub 中，自动化功能将与现有 AD FS 的元数据终结点建立声明提供程序信任关系。
 
@@ -44,8 +44,8 @@ ms.locfileid: "77540988"
 
 |组件|要求|
 |---------|---------|
-|Graph|Microsoft Active Directory 2012/2012 R2/2016|
-|AD FS|Windows Server 2012/2012 R2/2016|
+|Graph|Microsoft Active Directory 2012/2012 R2/2016 2019|
+|AD FS|Windows Server 2012/2012 R2/2016 2019|
 
 ## <a name="setting-up-graph-integration"></a>设置 Graph 集成
 
@@ -164,7 +164,6 @@ Azure Stack Hub 中的 Graph 服务使用以下协议和端口来与目标 Activ
 
 以下信息是作为自动化参数的输入所必需的：
 
-
 |参数|说明|示例|
 |---------|---------|---------|
 |CustomAdfsName|声明提供程序的名称。 AD FS 登录页上会显示此名称。|Contoso|
@@ -265,7 +264,7 @@ Microsoft 提供了用于配置信赖方信任（包括声明转换规则）的�
 
 3. 若要添加信赖方信任，请在 AD FS 实例或场成员上运行以下 Windows PowerShell 命令。 请务必更新 AD FS 终结点，并指向步骤 1 中创建的文件。
 
-   **对于 AD FS 2016**
+   **对于 AD FS 2016/2019**
 
    ```powershell  
    Add-ADFSRelyingPartyTrust -Name AzureStack -MetadataUrl "https://YourAzureStackADFSEndpoint/FederationMetadata/2007-06/FederationMetadata.xml" -IssuanceTransformRulesFile "C:\ClaimIssuanceRules.txt" -AutoUpdateEnabled:$true -MonitoringEnabled:$true -enabled:$true -AccessControlPolicyName "Permit everyone" -TokenLifeTime 1440
@@ -288,6 +287,13 @@ Microsoft 提供了用于配置信赖方信任（包括声明转换规则）的�
    ```powershell  
    Set-AdfsProperties -IgnoreTokenBinding $true
    ```
+
+   **对于 AD FS 2002 及更高版本**
+
+   > [!NOTE]
+   > 在客户所拥有的 ADFS 主机/场上执行 `Add-ADFSRelyingPartyTrust` 时，必须首先确保 ADFS 主机/场上强制执行了 TLS1.2，否则尝试执行将导致以下错误消息：
+
+`Add-ADFSRelyingPartyTrust : The underlying connection was closed: An unexpected error occurred on a send.`
 
 ## <a name="spn-creation"></a>创建 SPN
 

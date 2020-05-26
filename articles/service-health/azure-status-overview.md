@@ -2,13 +2,13 @@
 title: Azure 状态概述 | Microsoft Docs
 description: Azure 服务运行状况的全局视图
 ms.topic: overview
-ms.date: 03/17/2020
-ms.openlocfilehash: 6c07129c0ac73ca202b8b1e3822c26c983c75965
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/20/2020
+ms.openlocfilehash: eed0048915280ebafea104f1e2af671a75e47c8a
+ms.sourcegitcommit: 87e789550ea49ff77c7f19bc68fad228009fcf44
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79497091"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83748166"
 ---
 # <a name="azure-status-overview"></a>Azure 状态概述
 
@@ -24,9 +24,11 @@ Azure 状态页会根据 Azure 服务的更改而实时更新。 如果保持 Az
 
 ## <a name="azure-status-history"></a>Azure 状态历史记录
 
-虽然 Azure 状态页始终显示最新运行状况信息，但是可使用 [Azure 状态历史记录页](https://status.azure.com/status)查看先前事件。
+虽然 Azure 状态页始终显示最新运行状况信息，但是可使用 [Azure 状态历史记录页](https://status.azure.com/status/history/)查看先前事件。 历史记录页包含在 2019 年 11 月 20 日或之后发生的事件的所有 RCA，并将从该日起向前提供 5 年的 RCA 历史记录。 2019 年 11 月 20 日以前的 RCA 不可用。
 
-状态历史记录页显示从 2019 年 11 月发布的事件开始过去 365 天内的事件，包括初步的根本原因、缓解措施和 Azure 的后续步骤。
+## <a name="rss-feed"></a>RSS 源
+
+Azure 状态还提供可订阅的 Azure 服务的运行状况更改的 [RSS 源](https://status.azure.com/status/feed/)。
 
 ## <a name="next-steps"></a>后续步骤
 

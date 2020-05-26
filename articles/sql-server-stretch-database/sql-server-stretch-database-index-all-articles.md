@@ -1,25 +1,25 @@
 ---
 title: 有关 SQL Server Stretch Database 服务的所有主题 | Azure
-description: 位于 https://www.azure.cn/documentation/articles/ 的有关名为 SQL Server Stretch Database 的 Azure 服务的所有主题的表格，包括标题和说明。
+description: 位于 / 且名为 SQL Server Stretch Database 的 Azure 服务的所有主题的表格，包括标题和说明。
 services: sql-server-stretch-database
 documentationcenter: ''
-author: rockboyfor
-manager: digimobile
-editor: MightyPen
 ms.assetid: b1718024-84d6-4f5c-a912-3a99edb3f632
 ms.service: sql-server-stretch-database
 ms.workload: sql-server-stretch-database
 ms.tgt_pltfrm: na
 ms.topic: article
 origin.date: 10/05/2016
-ms.date: 04/22/2019
+ms.date: 05/18/2020
+author: rockboyfor
 ms.author: v-yeche
-ms.openlocfilehash: aee052bf4d505c699ee6619cc596a5437b93e54e
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.reviewer: jroth
+manager: digimobile
+ms.openlocfilehash: 46cf6a55366f61cef9e6f01e3869b3685026cc8c
+ms.sourcegitcommit: bfbd6694da33f703481386f2a3f16850c4e94bfa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "63860701"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83417783"
 ---
 # <a name="all-topics-for-azure-sql-server-stretch-database-service"></a>有关 Azure SQL Server Stretch Database 服务的所有主题
 本主题列出的每个主题都可以直接应用于 Azure **SQL Server Stretch Database** 服务。 可以使用 **Ctrl+F** 来搜索此网页的关键字，以便查找当前感兴趣的主题。

@@ -2,16 +2,16 @@
 title: 使用 Azure 备份服务器还原 VMware VM
 description: 使用 Azure 备份服务器 (MABS) 还原 VMware vCenter/ESXi 服务器上运行的 VMware VM。
 ms.topic: conceptual
-author: lingliw
+author: Johnnytechn
 origin.date: 08/18/2019
-ms.date: 12/04/2019
-ms.author: v-lingwu
-ms.openlocfilehash: 7651d39e0b925a9c1a45d4f4d7849ea093030ccc
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/15/2020
+ms.author: v-johya
+ms.openlocfilehash: cd2a4d2bff10a00a96e09716c4aea3a4e2a6e8a9
+ms.sourcegitcommit: 08b42258a48d96d754244064d065e4d5703f1cfb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79290887"
+ms.lasthandoff: 05/18/2020
+ms.locfileid: "83445141"
 ---
 # <a name="restore-vmware-virtual-machines"></a>还原 VMware 虚拟机
 
@@ -84,3 +84,4 @@ ms.locfileid: "79290887"
 ## <a name="next-steps"></a>后续步骤
 
 若要排查在使用 Azure 备份服务器时出现的问题，请查看 [Azure 备份服务器的故障排除指南](./backup-azure-mabs-troubleshoot.md)。
+

@@ -1,11 +1,10 @@
 ---
-title: 教程 - 使用 Azure PowerShell 创建和管理 Windows VM | Azure
+title: 教程 - 使用 Azure PowerShell 创建和管理 Windows VM
 description: 本教程介绍如何使用 Azure PowerShell 在 Azure 中创建和管理 Windows VM
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: rockboyfor
 manager: digimobile
-editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-windows
@@ -13,19 +12,19 @@ ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 origin.date: 06/06/2019
-ms.date: 10/14/2019
+ms.date: 04/27/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 9b1e599cfdf0a760e95f5c0b4662b10b4e502866
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: cbf7df3ef64dc7e674e8b055edac1a04dc0f21be
+ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "72272819"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83392449"
 ---
 # <a name="tutorial-create-and-manage-windows-vms-with-azure-powershell"></a>教程：使用 Azure PowerShell 创建和管理 Windows VM
 
-Azure 虚拟机提供完全可配置的灵活计算环境。 本教程介绍 Azure 虚拟机 (VM) 的基本部署任务，例如选择 VM 大小、选择 VM 映像和部署 VM。 学习如何：
+Azure 虚拟机提供完全可配置的灵活计算环境。 本教程介绍 Azure 虚拟机 (VM) 的基本部署任务，例如选择 VM 大小、选择 VM 映像和部署 VM。 你将学习如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建并连接到 VM
@@ -38,14 +37,11 @@ Azure 虚拟机提供完全可配置的灵活计算环境。 本教程介绍 Azu
 
 打开 Azure Powershell 控制台，并以管理员权限运行以下脚本。
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
-
-
 ## <a name="create-resource-group"></a>创建资源组
 
 使用 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) 命令创建资源组。
 
-Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 必须在创建虚拟机前创建资源组。 在以下示例中，在“ChinaEast”  区域中创建了名为“myResourceGroupVM”  的资源组：
+Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 必须在创建虚拟机前创建资源组。 在以下示例中，在“ChinaEast”区域中创建了名为“myResourceGroupVM”的资源组：
 
 ```powershell
 # Sign in the Azure China Cloud
@@ -60,7 +56,7 @@ New-AzResourceGroup `
 
 ## <a name="create-a-vm"></a>创建 VM
 
-创建 VM 时，可使用多个选项，例如操作系统映像、网络配置和管理凭据。 此示例创建名为 *myVM* 的 VM，运行默认版本的 Windows Server 2016 Datacenter。
+创建 VM 时，可使用多个选项，例如操作系统映像、网络配置和管理凭据。 此示例创建名为“myVM”的 VM，并运行默认版本的 Windows Server 2016 Datacenter。
 
 使用 [Get-Credential](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-credential?view=powershell-6) 设置 VM 上管理员帐户所需的用户名和密码：
 
@@ -99,7 +95,7 @@ Get-AzPublicIpAddress `
 mstsc /v:<publicIpAddress>
 ```
 
-在“Windows 安全性”  窗口中，依次选择“更多选择”  、“使用其他帐户”  。 键入针对 VM 创建的用户名和密码，然后单击“确定”。 
+在“Windows 安全性”窗口中，依次选择“更多选择”、“使用其他帐户”。 键入针对 VM 创建的用户名和密码，然后单击“确定”。
 
 ## <a name="understand-marketplace-images"></a>了解市场映像
 
@@ -189,7 +185,7 @@ VM 大小决定 VM 可用计算资源（如 CPU、GPU 和内存）的数量。 �
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | [常规用途](sizes-general.md)         |B、Dsv3、Dv3、DSv2、Dv2、Av2 | CPU 与内存之比均衡。 适用于开发/测试、小到中型应用程序和数据解决方案。  |
 | [计算优化](sizes-compute.md)   | Fsv2          | 高 CPU 与内存之比。 适用于中等流量的应用程序、网络设备和批处理。        |
-| [内存优化](sizes-memory.md)    | Esv3、Ev3、M、DSv2、Dv2  | 较高的内存核心比。 适用于关系数据库、中到大型缓存和内存分析。                 |
+| [内存优化](sizes-memory.md)    | Esv3、Ev3、M、DSv2、Dv2  | 较高的内存核心比。 适用于关系数据库、中到大型缓存和内存中分析。                 |
 | [GPU](sizes-gpu.md)          |  NCv3        | 专门针对大量图形绘制和视频编辑的 VM。       |
 
 <!-- Not Available on DC Series -->
@@ -312,7 +308,7 @@ Remove-AzResourceGroup `
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，已学习 VM 创建和管理的基本知识，例如如何：
+在本教程中，你已学习 VM 创建和管理的基本知识，例如如何：
 
 > [!div class="checklist"]
 > * 创建并连接到 VM
@@ -326,4 +322,4 @@ Remove-AzResourceGroup `
 > [!div class="nextstepaction"]
 > [创建和管理 VM 磁盘](./tutorial-manage-data-disk.md)
 
-<!--Update_Description: update meta properties, wording update, update link -->
+<!-- Update_Description: update meta properties, wording update, update link -->

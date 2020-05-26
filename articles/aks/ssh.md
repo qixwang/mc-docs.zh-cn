@@ -4,20 +4,21 @@ description: 了解如何与 Azure Kubernetes 服务 (AKS) 群集节点建立 SS
 services: container-service
 ms.topic: article
 origin.date: 07/31/2019
-ms.date: 03/09/2020
+ms.date: 05/25/2020
 ms.author: v-yeche
-ms.openlocfilehash: d2e411cc959aac6c40e3bfe1489d4dbbb2e4951e
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: ad654346bef4a866f52ea615965fd5d5c337d027
+ms.sourcegitcommit: 7e6b94bbaeaddb854beed616aaeba6584b9316d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79290692"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83735169"
 ---
 # <a name="connect-with-ssh-to-azure-kubernetes-service-aks-cluster-nodes-for-maintenance-or-troubleshooting"></a>使用 SSH 连接到 Azure Kubernetes 服务 (AKS) 群集节点以进行维护或故障排除
 
 在 Azure Kubernetes 服务 (AKS) 群集的整个生命周期内，可能需要访问 AKS 节点。 进行这种访问的原因包括维护、日志收集或其他故障排除操作。 可以使用 SSH 访问 AKS 节点。 出于安全考虑，AKS 节点不会在 Internet 中公开。 若要通过 SSH 连接到 AKS 节点，需使用专用 IP 地址。
 
-<!--Not Available on Windows Server nodes (currently in preview in AKS)-->
+<!--Not Available on including Windows Server nodes.-->
+<!--Not Available on [connect to Windows Server nodes using remote desktop protocol (RDP) connections][aks-windows-rdp]-->
 
 本文介绍如何使用 AKS 节点的专用 IP 地址来与它们建立 SSH 连接。
 
@@ -155,7 +156,7 @@ aks-nodepool1-79590246-0  10.240.0.4
     kubectl run --generator=run-pod/v1 -it --rm aks-ssh --image=debian
     ```
 
-    <!--Not Available on Windows Server nodes (currently in preview in AKS), add a node selector-->
+    <!--Not Available on Windows Server nodes, add a node selector-->
 
 1. 将终端会话连接到该容器后，使用 `apt-get` 安装 SSH 客户端：
 

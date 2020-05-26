@@ -1,24 +1,24 @@
 ---
-title: Azure Stack Hub 市场中的 Windows Server 常见问题解答
+title: Azure Stack Hub 市场常见问题解答
 titleSuffix: Azure Stack Hub
 description: 列出有关 Windows Server 的 Azure Stack Hub 市场常见问题解答。
 author: WenJason
 ms.topic: article
-origin.date: 12/27/2019
-ms.date: 02/24/2020
+origin.date: 03/19/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: avishwan
 ms.lastreviewed: 08/29/2019
-ms.openlocfilehash: f3e1ceef0c489233d6e2e6141f4a06f343a26889
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: ae18dd6d84f617c7570bee59518cc1a79671f3f2
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540245"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422430"
 ---
-# <a name="windows-server-in-azure-stack-hub-marketplace-faq"></a>Azure Stack Hub 市场中的 Windows Server 常见问题解答
+# <a name="azure-stack-hub-marketplace-faq"></a>Azure Stack Hub 市场常见问题解答
 
-本文解答有关 [Azure Stack Hub 市场](azure-stack-marketplace.md)中 Windows Server 映像的一些常见问题。
+本文解答有关 [Azure Stack Hub 市场](azure-stack-marketplace.md)中市场项的一些常见问题。
 
 ## <a name="marketplace-items"></a>市场项
 
@@ -33,7 +33,7 @@ ms.locfileid: "77540245"
 Azure 通过 Azure Stack Hub 市场提供两种版本的 Windows Server 映像。 在 Azure Stack Hub 环境中只能使用此映像的一个版本。  
 
 - **预支付**：这些映像运行全价 Windows 计量器。
-   谁应使用此选项：使用消耗量计费模型的企业协议 (EA) 客户；不想要使用 SPLA 许可的 CSP。 
+   谁应使用此选项：使用消耗量计费模型的企业协议 (EA) 客户；不想要使用 SPLA 许可的 CSP。
 - **自带许可证 (BYOL)** ：这些映像运行基本计量器。
    谁应使用此选项：具有 Windows Server 许可证的 EA 客户、使用 SPLA 许可的 CSP。
 
@@ -41,13 +41,13 @@ Azure Stack Hub 不支持 Azure 混合使用权益 (AHUB)。 通过“容量”�
 
 ### <a name="what-if-i-downloaded-the-wrong-version-to-offer-my-tenantsusers"></a>如果下载了错误的版本并将其提供给租户/用户，该怎么办？
 
-请先通过“市场管理”删除错误的版本。 等待删除操作完成（请查看完成通知，而不要查看“市场管理”  边栏选项卡）。 然后下载正确的版本。
+请先通过“市场管理”删除错误的版本。 等待删除操作完成（请查看完成通知，而不要查看“市场管理”边栏选项卡）。 然后下载正确的版本。
 
 如果下载了两个版本的映像，则最终客户在 Azure Stack Hub 市场中只能看到最新版本。
 
 ### <a name="what-if-my-user-incorrectly-checked-the-i-have-a-license-box-in-previous-windows-builds-and-they-dont-have-a-license"></a>如果我的用户在旧版 Windows 生成中错误地选中了“我有许可证”框，但他们其实并没有许可证，该怎么办？
 
-可以通过运行以下脚本来更改许可证模型属性，以将自带许可 (BYOL) 切换为预付费模型：
+可以通过运行以下脚本来更改许可证模型属性，以将 BYOL 切换为预付费模型：
 
 ```powershell
 $vm= Get-Azurermvm -ResourceGroup "<your RG>" -Name "<your VM>"
@@ -55,7 +55,7 @@ $vm.LicenseType = "None"
 Update-AzureRmVM -ResourceGroupName "<your RG>" -VM $vm
 ```
 
-可以通过运行以下命令来检查 VM 的许可证类型。 如果许可证模型显示 **Windows_Server**，你将按 BYOL 价格收费，否则你将按预付费模型收取 Windows 计量费用：
+可以通过运行以下命令来检查 VM 的许可证类型。 如果许可证模型显示 Windows_Server，则按 BYOL 价格收费。 否则，Windows 计量器按预付费模型收费：
 
 ```powershell
 $vm | ft Name, VmId,LicenseType,ProvisioningState
@@ -73,7 +73,7 @@ Update-AzureRmVM -ResourceGroupName "<your RG>" -VM $vm
 
 ### <a name="what-about-other-vms-that-use-windows-server-such-as-sql-or-machine-learning-server"></a>对于使用 Windows Server 的其他 VM （例如 SQL 或 Machine Learning Server），该如何处理？
 
-这些映像应用 **licenseType** 参数，因此它们采用即用即付模式。 可以设置此参数（请参阅以前的常见问题解答）。 这只适用于 Windows Server 软件，而不适用于 SQL 等分层产品（需要自带许可证）。 即付即付许可不适用于分层软件产品。
+这些映像应用 licenseType 参数，因此它们采用即用即付模式。 可以设置此参数（请参阅以前的常见问题解答）。 这只适用于 Windows Server 软件，而不适用于 SQL 等分层产品（需要自带许可证）。 即付即付许可不适用于分层软件产品。
 
 如果版本为 XX.X.20190410 或更高版本，则只能更改 Azure Stack Hub 市场中 SQL Server 映像的 **licenseType** 属性。 如果正在运行来自 Azure Stack Hub 市场的 SQL Server 映像的旧版本，则不能更改 **licenseType** 属性，并且必须使用 Azure Stack Hub 市场中的最新 SQL Server 映像重新部署。
 

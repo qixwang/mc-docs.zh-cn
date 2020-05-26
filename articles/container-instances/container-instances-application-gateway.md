@@ -28,7 +28,7 @@ ms.locfileid: "83392421"
 只要应用程序网关运行，并且容器组公开网络委托子网中的某个稳定专用 IP 地址，就可以通过此公共 IP 地址访问该容器组。
 
 > [!NOTE]
-> Azure 根据预配并提供网关的时间长短及其处理的数据量对应用程序网关进行收费。 请参阅[定价](https://www.azure.cn/pricing/details/application-gateway/)。
+> Azure 根据为网关预配的及可用时间的时间长短及其处理的数据量对应用程序网关进行收费。 请参阅[定价](https://www.azure.cn/pricing/details/application-gateway/)。
 
 ## <a name="create-virtual-network"></a>创建虚拟网络
 

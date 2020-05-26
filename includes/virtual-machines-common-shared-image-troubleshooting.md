@@ -9,12 +9,12 @@ origin.date: 04/25/2019
 ms.date: 05/20/2019
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: e5a0ef012873ff03dd25252fe8b01d5b5a877ac9
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 3d5afc2aa0663ac39fc496f364796628075cb5d2
+ms.sourcegitcommit: 981a75a78f8cf74ab5a76f9e6b0dc5978387be4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "65835805"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83801311"
 ---
 如果在对共享映像库、映像定义和映像版本执行任何操作时遇到问题，请在调试模式下再次运行失败的命令。 若要激活调试模式，可以通过 CLI 来传递 **-debug** 开关，通过 PowerShell 来传递 **-Debug** 开关。 确定错误的位置以后，请按本文档的说明来排查错误。
 
@@ -94,7 +94,6 @@ ms.locfileid: "65835805"
 
 ## <a name="azure-limits-and-quotas"></a>Azure 限制和配额 
 
-[Azure 限制和配额]()适用于所有共享映像库、映像定义和映像版本资源。 请确保未超出订阅限制。
+[Azure 限制和配额](/azure-resource-manager/management/azure-subscription-service-limits)适用于所有共享映像库、映像定义和映像版本资源。 请确保未超出订阅限制。
 
-<!-- Update_Description: new article about VM common shared image troubleshooting -->
-<!--ms.date: 05/20/2019-->
+<!-- Update_Description: update meta properties, wording update -->

@@ -16,12 +16,12 @@ ms.workload: na
 origin.date: 10/18/2019
 ms.date: 03/02/2020
 ms.author: v-lingwu
-ms.openlocfilehash: d8d8646d903d0be5d8cf20852c3ee2ae010f39d5
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: bd6097a4b4e8747d558ee7ba414c7a8cd1bb2da1
+ms.sourcegitcommit: bfbd6694da33f703481386f2a3f16850c4e94bfa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80342350"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83417782"
 ---
 # <a name="introduction-to-azure-security"></a>Azure 安全性简介
 ## <a name="overview"></a>概述
@@ -292,7 +292,7 @@ Azure 安全中心不断分析 Azure 资源的安全状态，以实现网络安�
 本部分提供了关于此区域中主要特性的其他信息以及有关这些功能的摘要信息。
 
 ### <a name="antimalware--antivirus"></a>反恶意软件和防病毒软件
-借助 Azure IaaS，可以使用来自 Microsoft、Symantec、Trend Micro、McAfee 和 Kaspersky 等安全性供应商的反恶意软件，以保护虚拟机免受恶意文件、广告软件和其他威胁的侵害。 适用于 Azure 云服务和虚拟机的 [Microsoft 反恶意软件](antimalware.md)是一种保护功能，可帮助识别并删除病毒、间谍软件和其他恶意软件。 当已知恶意软件或不需要的软件试图在 Azure 系统上安装自身或运行时，Microsoft 反恶意软件将提供可配置的警报。 此外可以使用 Azure 安全中心部署 Microsoft 反恶意软件
+借助 Azure IaaS，可以使用来自 Microsoft、Trend Micro、McAfee 和 Kaspersky 等安全性供应商的反恶意软件，以保护虚拟机免受恶意文件、广告软件和其他威胁的侵害。 适用于 Azure 云服务和虚拟机的 [Microsoft 反恶意软件](antimalware.md)是一种保护功能，可帮助识别并删除病毒、间谍软件和其他恶意软件。 当已知恶意软件或不需要的软件试图在 Azure 系统上安装自身或运行时，Microsoft 反恶意软件将提供可配置的警报。 此外可以使用 Azure 安全中心部署 Microsoft 反恶意软件
 
 ### <a name="hardware-security-module"></a>硬件安全模块
 加密和身份验证无法提高安全性，除非密钥本身也受到保护。 通过将关键密码和密钥存储在 [Azure Key Vault](../../key-vault/key-vault-overview.md) 中，可以简化此类密码和密钥的管理和保护。 Key Vault 可将用户密钥存储在已通过 FIPS 140-2 Level 2 标准认证的硬件安全模块 (HSM) 中。 用于备份或 [透明数据加密](https://msdn.microsoft.com/library/bb934049.aspx) 的 SQL Server 加密密钥可以存储在密钥保管库中，此外还可存储应用程序中的任意密钥或机密。 对这些受保护项的权限和访问权限通过 [Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/)进行管理。

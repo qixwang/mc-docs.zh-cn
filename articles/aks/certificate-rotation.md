@@ -5,14 +5,14 @@ services: container-service
 author: rockboyfor
 ms.topic: article
 origin.date: 11/15/2019
-ms.date: 05/06/2020
+ms.date: 05/25/2020
 ms.author: v-yeche
-ms.openlocfilehash: 29c794c33ec4820f8f844aa6c94e9fe02d07e2ed
-ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
+ms.openlocfilehash: 0ce561c4e14d913d995450cbe453bc5f73d91770
+ms.sourcegitcommit: 7e6b94bbaeaddb854beed616aaeba6584b9316d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "83001873"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83735172"
 ---
 <!--CONFIRME WITH DONG LIU SUCCESSFULLY-->
 <!--NEW FEATURES HAS BEEN RELEASED ON AZURE CHINA CLOUD-->

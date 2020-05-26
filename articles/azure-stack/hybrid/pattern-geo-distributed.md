@@ -1,24 +1,22 @@
 ---
-title: 使用 Azure 和 Azure Stack Hub 的智能边缘的地理分散式应用模式。
+title: Azure Stack Hub 中的地理分散式应用模式
 description: 了解使用 Azure 和 Azure Stack Hub 的智能边缘的地理分散式应用模式。
 author: WenJason
-ms.service: azure-stack
 ms.topic: article
 origin.date: 11/05/2019
-ms.date: 11/18/2019
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: anajod
-ms.lastreviewed: 11/05/2019
-ms.openlocfilehash: 07639b70fa7c10f21dfc597a9e63d5a8a6c29e33
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 7e0e3d7c5c6ce883c57948d27130db34c5b5bcf2
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74020555"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422526"
 ---
-# <a name="geo-distributed-pattern"></a>地理分散模式
+# <a name="geo-distributed-app-pattern"></a>地理分散式应用模式
 
-了解如何跨多个区域提供应用终结点，并根据位置和符合性需求路由用户流量。
+了解如何跨多个区域提供应用终结点，并根据位置和合规性需求路由用户流量。
 
 ## <a name="context-and-problem"></a>上下文和问题
 
@@ -32,21 +30,27 @@ Azure Stack Hub 地理流量路由模式或地理分散式应用允许根据各�
 
 ## <a name="components"></a>组件
 
-**流量管理器**  
+### <a name="outside-the-cloud"></a>云外部
+
+#### <a name="traffic-manager"></a>流量管理器
+
 在图中，流量管理器位于公有云外部，但它需要能够在本地数据中心和公有云中协调流量。 均衡器将流量路由到各个地理位置。
 
-**域名系统管理 (DNS)**  
+#### <a name="domain-name-system-dns"></a>域名系统 (DNS)
+
 域名系统或 DNS 负责将网站或服务名称转换（或解析）为它的 IP 地址。
 
 ### <a name="public-cloud"></a>公有云
 
-**云终结点**  
-公共 IP 地址用于将传入流量通过流量管理器路由到公有云应用程序资源终结点。  
+#### <a name="cloud-endpoint"></a>云终结点
+
+公共 IP 地址用于将传入流量通过流量管理器路由到公有云应用资源终结点。  
 
 ### <a name="local-clouds"></a>本地云
 
-**本地终结点**  
-公共 IP 地址用于将传入流量通过流量管理器路由到公有云应用程序资源终结点。
+#### <a name="local-endpoint"></a>本地终结点
+
+公共 IP 地址用于将传入流量通过流量管理器路由到公有云应用资源终结点。
 
 ## <a name="issues-and-considerations"></a>问题和注意事项
 
@@ -54,7 +58,7 @@ Azure Stack Hub 地理流量路由模式或地理分散式应用允许根据各�
 
 ### <a name="scalability"></a>可伸缩性
 
-此模式用于处理地理流量路由，而不是通过缩放来应对流量增加的情况。 但是，可以将此模式与其他 Azure 和本地解决方案结合使用。 例如，此模式可以与跨云缩放模式配合使用。
+此模式用于处理地理流量路由，而不是通过缩放来应对流量增加的情况。 但是，可以将此模式与其他 Azure 和本地解决方案结合使用。 例如，此模式可与跨云缩放模式配合使用。
 
 ### <a name="availability"></a>可用性
 
@@ -69,13 +73,14 @@ Azure Stack Hub 地理流量路由模式或地理分散式应用允许根据各�
 - 我的组织有海外分公司，需要自定义的区域安全性和分发策略。
 - 我组织的每个办事处提取员工、业务和设施数据，需要根据当地法规和时区报告活动。
 - 只要对单个区域内和跨区域的多个应用部署进行应用的水平扩展，即可达到高缩放性要求以处理极高的负载要求。
-- 这些应用程序必须高度可用并能够快速响应客户端请求，即使发生了单区域中断。
+- 这些应用必须高度可用并能够快速响应客户端请求，即使发生了单区域中断。
 
 ## <a name="next-steps"></a>后续步骤
 
 若要详细了解本文中介绍的主题：
-- 请参阅 [Azure 流量管理器概述](/traffic-manager/traffic-manager-overview)，详细了解这个基于 DNS 的流量负载均衡器的工作原理。
-- 请参阅[混合应用程序设计注意事项](overview-app-design-considerations.md)，其中详细介绍了最佳做法，并解答了其他问题。
-- 请参阅 [Azure Stack 产品和解决方案系列](/azure-stack)详细了解产品和解决方案的整个阵容。
 
-准备好测试解决方案示例时，请继续阅读[地理分散式应用解决方案部署指南](solution-deployment-guide-geo-distributed.md)。 该部署指南逐步说明了如何部署和测试 Azure Stack 的组件。 了解如何根据各种指标，使用异地分布式应用模式将流量定向到特定的终结点。 使用基于地理位置的路由和终结点配置创建流量管理器配置文件可确保根据区域要求、企业与国际法规和数据需求将信息路由到终结点。
+- 请参阅 [Azure 流量管理器概述](/traffic-manager/traffic-manager-overview)，详细了解这个基于 DNS 的流量负载均衡器的工作原理。
+- 请参阅[混合应用设计注意事项](overview-app-design-considerations.md)以了解有关最佳做法的详细信息，并获取对其他任何问题的解答。
+- 请参阅 [Azure Stack 产品和解决方案系列](/azure-stack)，详细了解产品和解决方案的整个阵容。
+
+准备好测试解决方案示例时，请继续阅读[地理分散式应用解决方案部署指南](solution-deployment-guide-geo-distributed.md)。 该部署指南逐步说明了如何部署和测试 Azure Stack 的组件。 了解如何根据各种指标，使用地理分散式应用模式将流量定向到特定的终结点。 使用基于地理位置的路由和终结点配置创建流量管理器配置文件可确保根据区域要求、企业与国际法规和数据需求将信息路由到终结点。

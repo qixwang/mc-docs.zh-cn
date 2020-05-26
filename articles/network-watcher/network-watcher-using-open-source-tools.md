@@ -4,8 +4,7 @@ titleSuffix: Azure Network Watcher
 description: 本页介绍如何使用网络观察程序数据包捕获与 Capanalysis 来可视化传入和传出 VM 的流量模式。
 services: network-watcher
 documentationcenter: na
-author: rockboyfor
-manager: digimobile
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
@@ -14,12 +13,12 @@ ms.workload: infrastructure-services
 origin.date: 02/22/2017
 ms.date: 08/13/2018
 ms.author: v-yeche
-ms.openlocfilehash: dca883c00454b68fc1d48ddbc8c4326da1367396
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: db8d0200e0c0318f3d61f2a06475352b76c93281
+ms.sourcegitcommit: a04b0b1009b0c62f2deb7c7acee75a1304d98f87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78154558"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83796686"
 ---
 # <a name="visualize-network-traffic-patterns-to-and-from-your-vms-using-open-source-tools"></a>使用开源工具将传入和传出 VM 的网络流量模式可视化
 

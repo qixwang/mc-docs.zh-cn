@@ -1,28 +1,28 @@
 ---
-title: Azure 安全中心内的安全警报 | Microsoft Docs
+title: Azure 安全中心的安全警报 | Azure
 description: 本主题介绍什么是安全警报，以及 Azure 安全中心提供哪些不同类型的安全警报。
 services: security-center
 documentationcenter: na
-author: lingliw
+author: memildin
 manager: rkarlin
 ms.assetid: 1b71e8ad-3bd8-4475-b735-79ca9963b823
 ms.service: security-center
 ms.topic: conceptual
-origin.date: 11/04/2019
-ms.date: 03/13/2020
-ms.author: v-lingwu
-ms.openlocfilehash: 0f4bc84a76460d13b8ee4742e985fd8643b4d622
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+origin.date: 03/15/2020
+ms.date: 05/12/2020
+ms.author: v-tawe
+ms.openlocfilehash: b76cc7b35ef5ae1c3fafbd7cd18e1292b34c7a88
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79290663"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422471"
 ---
 # <a name="security-alerts-in-azure-security-center"></a>Azure 安全中心的安全警报
 
 Azure 安全中心提供许多不同资源类型的各种警报。 安全中心针对 Azure 上的部署资源，以及本地和混合云环境中部署的资源生成警报。
 
-安全警报由高级检测触发，仅在 Azure 安全中心标准层中提供。 有免费试用版可用。 可以在 [安全策略](security-center-pricing.md)中从选择定价层开始升级。 访问 [“安全中心”页](https://www.azure.cn/zh-cn/pricing/details/security-center/) ，了解详细的定价情况。
+安全警报由高级检测触发，仅在 Azure 安全中心标准层中提供。 有免费试用版可用。 可以在 [安全策略](security-center-pricing.md)中从选择定价层开始升级。 访问 [“安全中心”页](https://www.azure.cn/pricing/details/security-center/) ，了解详细的定价情况。
 
 ## <a name="responding-to-todays-threats"></a>应对当前的威胁 <a name="respond-threats"> </a>
 
@@ -32,11 +32,15 @@ Azure 安全中心提供许多不同资源类型的各种警报。 安全中心�
 
 作为响应，组织通常会部署各种点解决方案，查找已知的攻击特征，重点做好企业外围防护或终结点防护。 这些解决方案会生成大量的低保真警报，需要安全分析师进行会审和调查。 大多数组织缺乏必要的时间和专业技术来响应此类警报 – 许多警报被置之不理。  
 
+此外，攻击者还改进其方法，用于破坏许多基于签名的防御并[适应云环境](https://azure.microsoft.com/blog/detecting-threats-with-azure-security-center/)。 必须采用新方法更快地确定新出现的威胁，加快检测和应对速度。
 
-## <a name="what-are-security-alerts"></a>什么是安全警报？
+## <a name="what-are-security-alerts-and-security-incidents"></a>什么是安全警报和安全事件？ 
 
 警报是安全中心在检测到资源遭受威胁时生成的通知。 安全中心按优先级列出警报，同时会提供所需的信息让你快速调查问题。 安全中心还提供有关如何针对攻击采取补救措施的建议。
 
+安全事件是相关警报的集合，而不是单独列出每个警报。 安全中心使用[云智能警报关联](security-center-alerts-cloud-smart.md)将不同的警报和低保真信号关联到安全事件。
+
+使用事件，安全中心可提供攻击活动和所有相关警报的单独视图。 利用此视图，可以快速了解攻击者采取的操作以及受影响的资源。 有关详细信息，请参阅[云智能警报关联](security-center-alerts-cloud-smart.md)。
 ## <a name="how-does-security-center-detect-threats"></a>安全中心如何检测威胁？ <a name="detect-threats"> </a>
 
 Microsoft 安全研究人员始终在不断地寻找威胁。 由于 Microsoft 在云中和本地的广泛存在，他们可以访问大量的遥测数据。 由于能够广泛访问和收集各种数据集，因此可以通过本地消费产品和企业产品以及联机服务发现新的攻击模式和趋势。 因此，当攻击者发布新的越来越复杂的漏斗利用方式时，安全中心就可以快速更新其检测算法。 此方法可以让用户始终跟上变化莫测的威胁环境。
@@ -47,25 +51,13 @@ Microsoft 安全研究人员始终在不断地寻找威胁。 由于 Microsoft �
 
 安全中心使用各种高级安全分析，远不止几种基于攻击特征的方法。 可以充分利用大数据和 [机器学习](https://azure.microsoft.com/blog/machine-learning-in-azure-security-center/) 技术的突破跨整个云结构对事件进行评估，检测那些使用手动方式不可能发现的威胁，并预测攻击的发展方式。 此类安全分析包括：
 
-* **集成威胁智能**：利用 Microsoft 产品和服务、Microsoft 数字犯罪部门 (DCU)、Microsoft 安全响应中心 (MSRC) 以及外部源提供的全球威胁情报，搜寻已知的行为不端的攻击者。
-* **行为分析**：运用已知模式发现恶意行为。
-* **异常检测**：使用统计分析生成历史基线。 如果出现与已知基线偏离的情况，并且这些情况符合潜在攻击载体的行为，则会发出警报。
 
-以下部分将更详细地讨论上述每种分析。
 
-### <a name="integrated-threat-intelligence"></a>集成式威胁情报
+* **集成威胁智能**：Microsoft 提供大量的全球威胁情报。 遥测数据的来源包括：Azure、Office 365、Microsoft CRM Online、Microsoft Dynamics AX、outlook.com、MSN.com、Microsoft 数字犯罪部门 (DCU)、Microsoft 安全响应中心 (MSRC)。 研究人员还会收到在主要云服务提供商之间共享的威胁情报信息，以及来自其他第三方的源。 Azure 安全中心可能会在分析该信息后发出警报，提醒用户注意来自行为不端攻击者的威胁。
 
-Microsoft 提供大量的全球威胁情报。 遥测数据的来源包括：Azure、Office 365、Microsoft CRM Online、Microsoft Dynamics AX、outlook.com、MSN.com、Microsoft 数字犯罪部门 (DCU)、Microsoft 安全响应中心 (MSRC)。 研究人员还会收到在主要云服务提供商之间共享的威胁情报信息，以及来自其他第三方的源。 Azure 安全中心可能会在分析该信息后发出警报，提醒用户注意来自行为不端攻击者的威胁。
+* **行为分析**：行为分析是一种技术，该技术会对数据进行分析并将数据与一系列已知模式对比。 不过，这些模式不是简单的特征， 需要对大型数据集运用复杂的机器学习算法来确定， 或者由分析专家通过仔细分析恶意行为来确定。 Azure 安全中心可以使用行为分析对虚拟机日志、虚拟网络设备日志、结构日志、故障转储和其他资源进行分析，确定受攻击的资源。
 
-### <a name="behavioral-analytics"></a>行为分析
-
-行为分析是一种技术，该技术会对数据进行分析并将数据与一系列已知模式对比。 不过，这些模式不是简单的特征， 需要对大型数据集运用复杂的机器学习算法来确定， 或者由分析专家通过仔细分析恶意行为来确定。 Azure 安全中心可以使用行为分析对虚拟机日志、虚拟网络设备日志、结构日志、故障转储和其他资源进行分析，确定受攻击的资源。
-
-此外，还可以通过与其他信号的关联性，查看是否存在某个广泛传播活动的支持证据。 此关联性也可用于确定那些符合已确定的攻击特征的事件。 
-
-### <a name="anomaly-detection"></a>异常检测
-
-Azure 安全中心也通过异常检测确定威胁。 与行为分析（依赖于已知的从大型数据集派生的模式）相比，异常检测更“个性化”，注重特定于用户部署的基线。 运用机器学习确定部署的正常活动，并生成规则，定义可能表示安全事件的异常条件。
+* **异常检测**：Azure 安全中心也通过异常检测确定威胁。 与行为分析（依赖于已知的从大型数据集派生的模式）相比，异常检测更“个性化”，注重特定于用户部署的基线。 运用机器学习确定部署的正常活动，并生成规则，定义可能表示安全事件的异常条件。
 
 ## <a name="how-are-alerts-classified"></a>如何为警报分类？
 
@@ -94,13 +86,11 @@ Azure 安全中心也通过异常检测确定威胁。 与行为分析（依赖�
 
 将这些措施结合起来，形成新的改进型检测方法，使用户能够即时受益，而用户不需采取任何措施。
 
-## <a name="security-alerts-in-azure-activity-log"></a>Azure 活动日志中的安全警报
-
-除了在 Azure 门户中或以编程方式查看安全警报和事故以外，还可以在 [Azure 活动日志](/azure-monitor/platform/activity-log-view)中将其作为事件进行审核。 
 
 ## <a name="next-steps"></a>后续步骤
 
 本文介绍了安全中心提供的不同类型的警报。 有关详细信息，请参阅：
 
-* [Azure 安全中心常见问题](/security-center/security-center-faq)
+* [Azure 安全中心的威胁防护](threat-protection.md) - 有关 Azure 安全中心显示的安全警报来源的简要说明 
+* Azure 活动日志中的安全警报 - 除了在 Azure 门户中或以编程方式查看安全警报和事故以外，还可以在 [Azure 活动日志](https://docs.azure.cn/azure-monitor/platform/activity-log-view)中将其作为事件进行审核。 有关事件架构的详细信息，请参阅 [Azure 活动日志中的安全警报](https://go.microsoft.com/fwlink/?linkid=2114113)
 

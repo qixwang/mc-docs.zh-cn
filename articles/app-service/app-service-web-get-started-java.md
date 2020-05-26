@@ -7,15 +7,15 @@ ms.assetid: 582bb3c2-164b-42f5-b081-95bfcb7a502a
 ms.devlang: Java
 ms.topic: quickstart
 origin.date: 05/29/2019
-ms.date: 03/16/2020
+ms.date: 05/22/2020
 ms.author: v-tawe
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 07ce8f3340d9a291b768de2a579d7baf5ed2d4d2
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 588c6ec81241802e4263f152c47d760edea3f693
+ms.sourcegitcommit: 981a75a78f8cf74ab5a76f9e6b0dc5978387be4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79547000"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83801299"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service-on-windows"></a>快速入门：在 Windows 上的 Azure 应用服务中创建 Java 应用
 
@@ -97,7 +97,7 @@ code pom.xml
 | `SUBSCRIPTION_ID` | 想要将应用部署到的订阅的唯一 ID。 可以使用 `az account show` 命令从 Azure CLI 中找到默认订阅的 ID。 对于所有可用的订阅，请使用 `az account list` 命令。|
 | `RESOURCEGROUP_NAME` | 要在其中创建应用的新资源组的名称。 通过将应用的所有资源都放在一个组中，可以一起管理它们。 例如，删除资源组会删除与该应用关联的所有资源。 使用唯一的新资源组名称（例如 *myResourceGroup*）更新此值。 将在后面的部分使用此资源组名称来清除所有 Azure 资源。 |
 | `WEBAPP_NAME` | 部署到 Azure (WEBAPP_NAME.chinacloudsites.cn) 时，应用名称将成为应用的主机名的一部分。 使用将托管 Java 应用的新应用服务应用的唯一名称（例如 *contoso*）更新此值。 |
-| `REGION` | 托管着应用的 Azure 区域，例如 chinaeast2  。 可以从 Azure CLI 使用 `az account list-locations` 命令获取区域列表。 |
+| `REGION` | 托管着应用的 Azure 区域，例如 chinaeast2。 可以从 Azure CLI 使用 `az account list-locations` 命令获取区域列表。 |
 
 ## <a name="deploy-the-app"></a>部署应用
 
@@ -116,9 +116,20 @@ mvn package azure-webapp:deploy
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 
 ## <a name="next-steps"></a>后续步骤
+> [!div class="nextstepaction"]
+> [使用 Java 连接到 Azure SQL 数据库](/sql-database/sql-database-connect-query-java?toc=%2Fjava%2Ftoc.json)
+
+> [!div class="nextstepaction"]
+> [使用 Java 连接到 Azure DB for MySQL](/mysql/connect-java)
+
+> [!div class="nextstepaction"]
+> [使用 Java 连接到 Azure DB for PostgreSQL](/postgresql/connect-java)
 
 > [!div class="nextstepaction"]
 > [面向 Java 开发人员的 Azure 资源](/java/)
 
 > [!div class="nextstepaction"]
 > [映射自定义域](app-service-web-tutorial-custom-domain.md)
+
+> [!div class="nextstepaction"]
+> [详细了解 Azure 的 Maven 插件](https://github.com/microsoft/azure-maven-plugins)

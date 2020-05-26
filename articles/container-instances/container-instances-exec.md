@@ -19,7 +19,7 @@ Azure 容器实例支持在运行的容器中执行命令。 在应用程序开�
 
 ## <a name="run-a-command-with-azure-cli"></a>使用 Azure CLI 运行命令
 
-在 [Azure CLI][az-container-exec] 中使用 [az container exec][azure-cli] 在运行的容器中执行命令：
+在 [Azure CLI][azure-cli] 中使用 [az container exec][az-container-exec] 在运行的容器中执行命令：
 
 ```azurecli
 az container exec --resource-group <group-name> --name <container-group-name> --exec-command "<command>"

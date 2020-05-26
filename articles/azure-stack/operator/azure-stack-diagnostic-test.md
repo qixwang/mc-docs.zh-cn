@@ -4,16 +4,16 @@ description: 了解如何使用 Azure Stack Hub 验证工具验证系统状态�
 author: WenJason
 ms.topic: article
 origin.date: 01/10/2020
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: adshar
 ms.lastreviewed: 01/10/2020
-ms.openlocfilehash: 9c0e2fb67e62743b1e081fced1832ff175c408d6
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 949ea1b04853b8b9737b33f9a49bb032bce99cbe
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540934"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422557"
 ---
 # <a name="validate-azure-stack-hub-system-state"></a>验证 Azure Stack Hub 系统状态
 
@@ -48,9 +48,9 @@ Azure Stack Hub 操作员必须能够按需确定系统的运行状况和状态�
 
    有关详细信息，请参阅[参数注意事项](azure-stack-diagnostic-test.md#parameter-considerations)和[用例](azure-stack-diagnostic-test.md#use-case-examples)。
 
-1. 如果有任何测试报告了“失败”  ，请运行 `Get-AzureStackLog`。 有关集成系统的说明，请参阅[在 Azure Stack Hub 集成系统上运行 Get-AzureStackLog](azure-stack-configure-on-demand-diagnostic-log-collection.md#use-the-privileged-endpoint-pep-to-collect-diagnostic-logs)；有关 ASDK 的说明，请参阅[在 ASDK 系统上运行 Get-AzureStackLog](azure-stack-configure-on-demand-diagnostic-log-collection.md#run-get-azurestacklog-on-an-azure-stack-development-kit-asdk-system)。
+1. 如果有任何测试报告了“失败”，请运行 `Get-AzureStackLog`。 有关集成系统的说明，请参阅[在 Azure Stack Hub 集成系统上运行 Get-AzureStackLog](azure-stack-get-azurestacklog.md)。
 
-   该 cmdlet 收集 Test-AzureStack 生成的日志。 如果测试报告“WARN”（警告），建议你不要改为收集日志并联系 CSS。 
+   该 cmdlet 收集 Test-AzureStack 生成的日志。 如果测试报告“WARN”（警告），建议你不要改为收集日志并联系 CSS。
 
 1. 如果 CSS 已指示你运行验证工具，CSS 代表会请求你提供收集的日志，以便继续排查问题。
 
@@ -202,14 +202,14 @@ Test-AzureStack -Include AzsControlPlane, AzsDefenderSummary, AzsHostingInfraSum
 
 ### <a name="run-validation-tool-to-test-infrastructure-backup-settings"></a>运行验证工具以测试基础结构备份设置
 
-在配置基础结构备份之前，可以使用 **AzsBackupShareAccessibility** 测试来测试备份共享路径和凭据。 
+在配置基础结构备份之前，可以使用 **AzsBackupShareAccessibility** 测试来测试备份共享路径和凭据。
 
   ```powershell
   Enter-PSSession -ComputerName "<ERCS VM-name/IP address>" -ConfigurationName PrivilegedEndpoint -Credential $localcred 
   Test-AzureStack -Include AzsBackupShareAccessibility -BackupSharePath "\\<fileserver>\<fileshare>" -BackupShareCredential $using:backupcred
   ```
 
-配置备份之后，可以运行 **AzsBackupShareAccessibility** 来验证是否可以从 ERCS 访问共享： 
+配置备份之后，可以运行 **AzsBackupShareAccessibility** 来验证是否可以从 ERCS 访问共享：
 
   ```powershell
   Enter-PSSession -ComputerName "<ERCS VM-name/IP address>" -ConfigurationName PrivilegedEndpoint -Credential $localcred 
@@ -235,6 +235,6 @@ Test-AzureStack -Include AzsNetworkInfra -Debug
 
 ## <a name="next-steps"></a>后续步骤
 
-若要详细了解 Azure Stack Hub 诊断工具和问题日志记录，请参阅 [Azure Stack Hub 诊断工具](azure-stack-configure-on-demand-diagnostic-log-collection.md#use-the-privileged-endpoint-pep-to-collect-diagnostic-logs)。
+若要详细了解 Azure Stack Hub 诊断工具和问题日志记录，请参阅 [Azure Stack Hub 诊断工具](azure-stack-diagnostic-log-collection-overview-tzl.md)。
 
 若要了解有关故障排除的详细信息，请参阅 [Azure Stack Hub 故障排除](azure-stack-troubleshooting.md)。

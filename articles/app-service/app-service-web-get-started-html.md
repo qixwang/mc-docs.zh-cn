@@ -5,15 +5,15 @@ author: msangapu-msft
 ms.assetid: 60495cc5-6963-4bf0-8174-52786d226c26
 ms.topic: quickstart
 origin.date: 08/23/2019
-ms.date: 03/30/2020
+ms.date: 05/22/2020
 ms.author: v-tawe
 ms.custom: mvc, cli-validate, seodec18
-ms.openlocfilehash: 3205433e9031893150bdb6f1e2bc19e5ddf771f8
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: e5c52549daf5a2917906cc1e960567ec5d7d74b4
+ms.sourcegitcommit: 981a75a78f8cf74ab5a76f9e6b0dc5978387be4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80521985"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83801300"
 ---
 # <a name="create-a-static-html-web-app-in-azure"></a>在 Azure 中创建静态 HTML Web 应用
 
@@ -43,15 +43,11 @@ git clone https://github.com/Azure-Samples/html-docs-hello-world.git
 
 ## <a name="create-a-web-app"></a>创建 Web 应用
 
-切换到包含示例代码的目录并运行 `az webapp up` 命令。
-
-在以下示例中，请将 <app_name> 替换为一个唯一的应用名称。
+切换到包含示例代码的目录并运行 `az webapp up` 命令。 在以下示例中，请将 <app_name> 替换为一个唯一的应用名称。 静态内容由 `--html` 标志予以指示。
 
 ```bash
 cd html-docs-hello-world
-```
 
-```azurecli
 az webapp up --location chinaeast --name <app_name> --html
 ```
 
@@ -67,19 +63,19 @@ az webapp up --location chinaeast --name <app_name> --html
 
 此命令可能需要花费几分钟时间运行。 运行时，该命令会显示类似于以下示例的信息：
 
-```json
+<pre>
 {
-  "app_url": "https://<app_name>.chinacloudsites.cn",
+  "app_url": "https://&lt;app_name&gt;.chinacloudsites.cn",
   "location": "China East",
-  "name": "<app_name>",
+  "name": "&lt;app_name&gt;",
   "os": "Windows",
   "resourcegroup": "appsvc_rg_Windows_chinaeast",
   "serverfarm": "appsvc_asp_Windows_chinaeast",
   "sku": "FREE",
-  "src_path": "/home/<username>/quickstart/html-docs-hello-world ",
-  < JSON data removed for brevity. >
+  "src_path": "/home/&lt;username&gt;/quickstart/html-docs-hello-world ",
+  &lt; JSON data removed for brevity. &gt;
 }
-```
+</pre>
 
 记下 `resourceGroup` 值。 需要在[清理资源](#clean-up-resources)部分使用它。
 
@@ -113,11 +109,11 @@ az webapp up --location chinaeast --name <app_name> --html
 
 ## <a name="manage-your-new-azure-app"></a>管理新的 Azure 应用
 
-若要管理所创建的 Web 应用，请在 [Azure 门户](https://portal.azure.cn)中，搜索并选择“应用服务”  "。 
+若要管理所创建的 Web 应用，请在 [Azure 门户](https://portal.azure.cn)中，搜索并选择“应用服务”"。 
 
 ![在 Azure 门户中选择应用服务](./media/app-service-web-get-started-html/portal0.png)
 
-在“应用服务”页上，选择 Azure 应用的名称  。
+在“应用服务”页上，选择 Azure 应用的名称。
 
 ![在门户中导航到 Azure 应用](./media/app-service-web-get-started-html/portal1.png)
 

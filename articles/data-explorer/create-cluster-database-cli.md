@@ -7,18 +7,18 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 06/03/2019
-ms.date: 03/16/2020
-ms.openlocfilehash: 1169982cf1d8ac9c86e956b8a8d5e63bff6a5863
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/09/2020
+ms.openlocfilehash: 9cfecf7fe05f87033233b06ea548f8de8f917d32
+ms.sourcegitcommit: bfbd6694da33f703481386f2a3f16850c4e94bfa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80243978"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83417772"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-azure-cli"></a>使用 Azure CLI 创建 Azure 数据资源管理器群集和数据库
 
 > [!div class="op_single_selector"]
-> * [门户](create-cluster-database-portal.md)
+> * [Portal](create-cluster-database-portal.md)
 > * [CLI](create-cluster-database-cli.md)
 > * [PowerShell](create-cluster-database-powershell.md)
 > * [C#](create-cluster-database-csharp.md)
@@ -27,7 +27,7 @@ ms.locfileid: "80243978"
 
 Azure 数据资源管理器是一项快速、完全托管的数据分析服务，用于实时分析从应用程序、网站和 IoT 设备等资源流式传输的海量数据。 若要使用 Azure 数据资源管理器，请先创建群集，再在该群集中创建一个或多个数据库。 然后将数据引入（加载）到数据库，以便对其运行查询。 在本文中，将使用 Azure CLI 创建群集和数据库。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要完成本文，需要 Azure 订阅。 如果没有订阅，请在开始之前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 
@@ -57,14 +57,15 @@ Azure 数据资源管理器是一项快速、完全托管的数据分析服务�
 1. 请使用以下命令创建群集：
 
     ```azurecli
-    az kusto cluster create --name azureclitest --sku D11_v2 --resource-group testrg
+    az kusto cluster create --name azureclitest --sku name="Standard_D13_v2" tier="Standard" --resource-group testrg --location chinaeast2
     ```
 
    |**设置** | **建议的值** | **字段说明**|
    |---|---|---|
    | name | *azureclitest* | 所需的群集名称。|
-   | sku | *D13_v2* | 将用于群集的 SKU。 |
+   | sku | *Standard_D13_v2* | 将用于群集的 SKU。 参数：name - SKU 名称。 tier - SKU 层。 |
    | resource-group | *testrg* | 将在其中创建群集的资源组名称。 |
+   | location | *chinaeast2* | 将在其中创建群集的位置。 |
 
     可以使用其他可选参数，例如群集的容量。
 
@@ -74,23 +75,22 @@ Azure 数据资源管理器是一项快速、完全托管的数据分析服务�
     az kusto cluster show --name azureclitest --resource-group testrg
     ```
 
-如果结果包含带 `provisioningState` 值的 `Succeeded`，则表示已成功创建群集。
+如果结果包含带 `Succeeded` 值的 `provisioningState`，则表示已成功创建群集。
 
 ## <a name="create-the-database-in-the-azure-data-explorer-cluster"></a>在 Azure 数据资源管理器群集中创建数据库
 
 1. 请使用以下命令创建数据库：
 
     ```azurecli
-    az kusto database create --cluster-name azureclitest --name clidatabase --resource-group testrg --soft-delete-period P365D --hot-cache-period P31D
+    az kusto database create --cluster-name azureclitest --database-name clidatabase --resource-group testrg --read-write-database soft-delete-period=P365D hot-cache-period=P31D location=chinaeast2
     ```
 
    |**设置** | **建议的值** | **字段说明**|
    |---|---|---|
    | cluster-name | *azureclitest* | 将在其中创建数据库的群集的名称。|
-   | name | *clidatabase* | 数据库名称。|
+   | database-name | *clidatabase* | 数据库名称。|
    | resource-group | *testrg* | 将在其中创建群集的资源组名称。 |
-   | soft-delete-period | P365D  | 表示供查询使用的数据的保留时间。 有关详细信息，请参阅[保留策略](https://docs.microsoft.com/azure/kusto/concepts/retentionpolicy)。 |
-   | hot-cache-period | P31D  | 表示数据将在缓存中保留的时间。 有关详细信息，请参阅[缓存策略](https://docs.microsoft.com/azure/kusto/concepts/cachepolicy)。 |
+   | read-write-database | *P365D* *P31D* *chinaeast2* | 数据库类型。 参数：soft-delete-period - 表示供查询使用的数据的保留时间。 有关详细信息，请参阅[保留策略](https://docs.microsoft.com/azure/data-explorer/kusto/management/retentionpolicy)。 hot-cache-period - 表示数据将在缓存中保留的时间。 有关详细信息，请参阅[缓存策略](https://docs.microsoft.com/azure/data-explorer/kusto/management/cachepolicy)。 location - 这是会在其中创建数据库的位置。 |
 
 1. 若要查看已创建的数据库，请运行以下命令：
 

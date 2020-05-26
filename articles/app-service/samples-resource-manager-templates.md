@@ -5,15 +5,15 @@ author: tfitzmac
 tags: azure-service-management
 ms.topic: sample
 origin.date: 01/04/2019
-ms.date: 01/13/2020
+ms.date: 05/22/2020
 ms.author: v-tawe
 ms.custom: mvc
-ms.openlocfilehash: 4d412bde8beed84a971e8dc30fb319695c9e6d3b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: db06aadcc1cfc5ee00c5487bb6634424d98e144f
+ms.sourcegitcommit: 981a75a78f8cf74ab5a76f9e6b0dc5978387be4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75600396"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83801316"
 ---
 # <a name="azure-resource-manager-templates-for-app-service"></a>应用服务的 Azure 资源管理器模板
 
@@ -28,9 +28,9 @@ ms.locfileid: "75600396"
 | [链接到 GitHub 存储库的应用](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-github-deploy)| 部署从 GitHub 提取代码的应用服务应用。 |
 | [使用自定义部署槽位的应用](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-custom-deployment-slots)| 使用自定义部署槽位/环境部署应用服务应用。 |
 |**配置应用**||
-| [来自 Key Vault 的应用证书](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-certificate-from-key-vault)| 部署来自 Azure Key Vault 机密的应用服务应用证书并将其用于 SSL 绑定。 |
+| [来自 Key Vault 的应用证书](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-certificate-from-key-vault)| 部署来自 Azure Key Vault 机密的应用服务应用证书并将其用于 TLS/SSL 绑定。 |
 | [使用自定义域的应用](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-custom-domain)| 使用自定义主机名部署应用服务应用。 |
-| [使用自定义域和 SSL 的应用](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-custom-domain-and-ssl)| 使用自定义主机名部署应用服务应用，并从 Key Vault 获取应用证书用于 SSL 绑定。 |
+| [使用自定义域和 SSL 的应用](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-custom-domain-and-ssl)| 使用自定义主机名部署应用服务应用，并从 Key Vault 获取应用证书以用于 TLS/SSL 绑定。 |
 | [使用 GoLang 扩展的应用](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-with-golang)| 使用 Golang 站点扩展部署应用服务应用。 然后，可以在 Azure 中运行在 GoLang 上开发的 Web 应用程序。 |
 | [使用 Java 8 和 Tomcat 8 的应用](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-java-tomcat)| 部署已启用 Java 8 和 Tomcat 8 的应用服务应用。 然后，可以在 Azure 中运行 Java 应用程序。 |
 |**保护应用**||
@@ -44,5 +44,5 @@ ms.locfileid: "75600396"
 |**应用服务环境**||
 | [创建应用服务环境 v2](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-asev2-create) | 在虚拟网络中创建应用服务环境 v2。 |
 | [使用 ILB 地址创建应用服务环境 v2](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-asev2-ilb-create/) | 使用专用的内部负载均衡器地址在虚拟网络中创建应用服务环境 v2。 |
-| [为 ILB 应用服务环境或 ILB 应用服务环境 v2 配置默认的 SSL 证书](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-ase-ilb-configure-default-ssl) | 为 ILB 应用服务环境或 ILB 应用服务环境 v2 配置默认的 SSL 证书。 |
+| [为 ILB 应用服务环境或 ILB 应用服务环境 v2 配置默认的 SSL 证书](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-ase-ilb-configure-default-ssl) | 为 ILB 应用服务环境或 ILB 应用服务环境 v2 配置默认的 TLS/SSL 证书。 |
 | | |

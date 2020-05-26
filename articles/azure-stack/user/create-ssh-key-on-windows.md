@@ -4,27 +4,27 @@ description: 了解如何将 Kubernetes 群集部署到 Azure Stack Hub 上的�
 author: WenJason
 ms.topic: article
 origin.date: 2/28/2020
-ms.date: 03/23/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: waltero
 ms.lastreviewed: 2/28/2020
-ms.openlocfilehash: a71e9f64cf24b8488632126cb27f718924d88078
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 99fe4f20df4d4967533d0fb580e5a283680a04b9
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80625724"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422577"
 ---
 # <a name="create-an-ssh-key-for-linux-on-azure-stack-hub"></a>在 Azure Stack Hub 上为 Linux 创建 SSH 密钥
 
-可以在 Windows 计算机上为 Linux 计算机创建 SSH（安全外壳）密钥。 使用本文中步骤生成的公钥对 VM 进行 SSH 身份验证。 如果你使用的是 Windows 计算机，请在 Windows 上安装 Ubuntu，以便在 Windows 上通过 bash、ssh 和 git 等实用程序以及 Ubuntu 来获取终端。 运行 **ssh-keygen** 来创建密钥。
+可以在 Windows 计算机上为 Linux 计算机创建 SSH（安全外壳）密钥。 使用本文中步骤生成的公钥对 VM 进行 SSH 身份验证。 如果你使用的是 Windows 计算机，请在 Windows 上安装 Ubuntu，以便通过 bash、ssh、git、apt 等实用工具获取终端。 运行 **ssh-keygen** 来创建密钥。
 
 ## <a name="open-bash-on-windows"></a>在 Windows 上打开 Bash
 
 1. 如果你没有在计算机上安装适用于 Linux 的 Windows 子系统，请[在 Windows 上安装 Ubuntu](https://www.microsoft.com/en-us/p/ubuntu/9nblggh4msv6?activetab=pivot:overviewtab)。  
     有关使用适用于 Linux 的 Windows 子系统的详细信息，请参阅[适用于 Linux 的 Windows 子系统的文档](https://docs.microsoft.com/windows/wsl/about)。
 
-2. 在工具栏中键入 **Ubuntu**，然后选择“打开”  。
+2. 在工具栏中键入 **Ubuntu**，然后选择“打开”。
 
 ## <a name="create-a-key-with-ssh-keygen"></a>使用 ssh-keygen 创建密钥
 

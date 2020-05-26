@@ -2,16 +2,16 @@
 title: 容器实例的安全性
 description: 有关保护 Azure 容器实例的映像和机密的建议，以及任何容器平台的一般性安全注意事项
 ms.topic: article
-origin.date: 04/29/2019
-ms.date: 01/15/2020
+origin.date: 01/10/2020
+ms.date: 04/30/2020
 ms.author: v-yeche
 ms.custom: ''
-ms.openlocfilehash: c294a64f7916446a4467e0b097525733f71d093b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 8b54c294bde0bc98e8b4e3a6dc6fd69239829759
+ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78213750"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83392252"
 ---
 # <a name="security-considerations-for-azure-container-instances"></a>Azure 容器实例的安全注意事项
 
@@ -25,9 +25,9 @@ ms.locfileid: "78213750"
 
 ### <a name="use-a-private-registry"></a>使用专用注册表
 
-容器是基于一个或多个存储库中存储的映像构建的。 这些存储库可以属于公共注册表（例如 [Docker Hub](https://hub.docker.com)），也可以属于专用注册表。 [Docker 受信任注册表](https://docs.docker.com/datacenter/dtr/2.0/)是专用注册表的例子，它可以安装在本地或者安装在虚拟私有云中。 还可以使用基于云的专用容器注册表服务，包括 [Azure 容器注册表](../container-registry/container-registry-intro.md)。 
+容器是基于一个或多个存储库中存储的映像构建的。 这些存储库可以属于公共注册表（例如 [Docker Hub](https://hub.docker.com)），也可以属于专用注册表。 [Docker 受信任注册表](https://docs.docker.com/datacenter/dtr/)是专用注册表的例子，它可以安装在本地或者安装在虚拟私有云中。 还可以使用基于云的专用容器注册表服务，包括 [Azure 容器注册表](../container-registry/container-registry-intro.md)。 
 
-公用的容器映像不保证安全性。 容器映像包括多个软件层，每个软件层可能有漏洞。 为帮助减少攻击风险，应在 Azure 容器注册表或 Docker 受信任注册表等专用注册表中存储和检索映像 除了提供托管的专用注册表以外，Azure 容器注册表还支持通过 Azure Active Directory 使用[基于服务主体的身份验证](../container-registry/container-registry-authentication.md)执行基本身份验证流。 此身份验证包括使用只读（提取）、写入（推送）和所有者权限进行的基于角色的访问。
+公用的容器映像不保证安全性。 容器映像包括多个软件层，每个软件层可能有漏洞。 为帮助减少攻击风险，应在 Azure 容器注册表或 Docker 受信任注册表等专用注册表中存储和检索映像 除了提供托管的专用注册表以外，Azure 容器注册表还支持通过 Azure Active Directory 使用[基于服务主体的身份验证](../container-registry/container-registry-authentication.md)执行基本身份验证流。 此身份验证包括使用只读（提取）、写入（推送）和其他权限进行的基于角色的访问。
 
 <!--Not Avaialble on ### Monitor and scan container images-->
 
@@ -95,17 +95,17 @@ ms.locfileid: "78213750"
 
 还可以通过从容器运行时中删除任何不使用或不必要的进程或特权，来最大程度地减小潜在受攻击面。 特权容器以 root 身份运行。 如果恶意用户或工作负荷侵入某个特权容器，则该容器就会在该系统上以 root 身份运行。
 
-### <a name="whitelist-files-and-executables-that-the-container-is-allowed-to-access-or-run"></a>将允许容器访问或运行的文件和可执行文件加入允许列表 
+### <a name="preapprove-files-and-executables-that-the-container-is-allowed-to-access-or-run"></a>预先批准允许容器访问或运行的文件和可执行文件 
 
-减少可变因素或未知因素的数量有助于维持稳定可靠的环境。 限制容器以使其只能访问或运行已预先批准的或已加入允许列表的文件和可执行文件，是限制风险因素的已证实方法。  
+减少可变因素或未知因素的数量有助于维持稳定可靠的环境。 限制容器以使其只能访问或运行已预先批准的或已加入安全列表的文件和可执行文件，是限制风险因素的已证实方法。  
 
-管理从一开始就实施的允许列表要容易得多。 允许列表提供控制措施和管理功能，因为你知道正常运行应用程序需要哪些文件和可执行文件。 
+管理从一开始就实施的安全列表要容易得多。 安全列表提供控制措施和管理功能，因为你知道正常运行应用程序需要哪些文件和可执行文件。 
 
-允许列表不仅可以减小受攻击面，而且还能提供异常状况的基线，并防止出现“干扰邻居”和容器入侵情形的用例。 
+安全列表不仅可以减小受攻击面，而且还能提供异常状况的基线，并防止出现“干扰邻居”和容器入侵情形的用例。 
 
 ### <a name="enforce-network-segmentation-on-running-containers"></a>在运行的容器中强制网络分段  
 
-为了防范一个子网中的容器在另一个子网中遇到安全风险，请在运行的容器之间保持网络分段（或 nano 分段）或隔离。 在需要满足合规要求的行业中使用容器时，也可能需要保持网络分段。  
+为了防范一个子网中的容器在另一个子网中遇到安全风险，请在运行的容器之间保持网络分段（或 nano 分段）或隔离。 若要在需要满足合规要求的行业中使用容器，可能还需要保持网络分段。  
 
 <!--Not Avaialble on [Aqua](https://market.azure.cn/marketplace/apps/aqua-security.aqua-security?tab=Overview)-->
 
@@ -113,7 +113,7 @@ ms.locfileid: "78213750"
 
 与使用任何 IT 环境时一样，应始终如一地监视容器生态系统中的活动和用户访问，以快速识别任何可疑或恶意活动。 Azure 提供容器监视解决方案，包括：
 
-* [用于容器的 Azure Monitor](../azure-monitor/insights/container-insights-overview.md) 可以监视托管在 Azure Kubernetes 服务 (AKS) 上的 Kubernetes 环境中部署的工作负荷的性能。 用于容器的 Azure Monitor 通过 Metrics API 从 Kubernetes 中提供的控制器、节点和容器收集内存和处理器指标，来提供性能可见性。 
+* [用于容器的 Azure Monitor](../azure-monitor/insights/container-insights-overview.md) 监视托管在 Azure Kubernetes 服务 (AKS) 上的 Kubernetes 环境中部署的工作负荷的性能。 用于容器的 Azure Monitor 通过 Metrics API 从 Kubernetes 中提供的控制器、节点和容器收集内存和处理器指标，来提供性能可见性。 
 
 * [Azure 容器监视解决方案](../azure-monitor/insights/containers.md)可帮助你在单个位置查看和管理其他 Docker 容器主机。 例如：
     
@@ -139,15 +139,17 @@ ms.locfileid: "78213750"
 
 ### <a name="log-all-container-administrative-user-access-for-auditing"></a>记录所有容器管理用户访问以用于审核 
 
-维护对容器生态系统、容器注册表和容器映像的管理访问的准确审核线索。 这些日志在审核时可能需要用到，在发生任何安全事件后可用作法庭证据。 可以使用 [Azure 容器监视解决方案](../azure-monitor/insights/containers.md)来实现此目的。 
+维护对容器生态系统（包括 Kubernetes 群集）、容器注册表和容器映像的管理访问的准确审核线索。 这些日志在审核时可能需要用到，在发生任何安全事件后可用作法庭证据。 Azure 解决方案包括：
 
-## <a name="next-steps"></a>后续步骤
+<!--Not Availabl eon * [Integration of Azure Kubernetes Service with Azure Security Center](../security-center/azure-kubernetes-service-integration.md)-->
 
-* 详细了解如何使用 [Twistlock](https://www.twistlock.com/solutions/microsoft-azure-container-security/) 和 [Aqua Security](https://www.aquasec.com/solutions/azure-container-security/) 提供的解决方案来管理容器漏洞。
+* [Azure 容器监视解决方案](../azure-monitor/insights/containers.md)
+* [Azure 容器实例](container-instances-log-analytics.md)的资源日志
 
-* 详细了解 [Azure 中的容器安全性](https://azure.microsoft.com/resources/container-security-in-microsoft-azure/)。
-
-<!--CORRECT ON [container security in Azure](https://azure.microsoft.com/resources/container-security-in-microsoft-azure/)-->
-
-<!-- Update_Description: new article about container instances image security -->
-<!--NEW.date: 01/15/2020-->
+    <!--Not Available on [Azure Container Registry](../container-registry/container-registry-diagnostics-audit-logs.md)-->
+    
+<!--Not Available on ## Next steps-->
+<!--Not Available on [Azure Security Center](../security-center/container-security.md)-->
+<!--Not Available on [Twistlock](https://www.twistlock.com/solutions/microsoft-azure-container-security/)-->
+<!--Not Available on [Aqua Security](https://www.aquasec.com/solutions/azure-container-security/)-->
+<!-- Update_Description: update meta properties, wording update, update link -->

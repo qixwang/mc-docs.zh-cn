@@ -1,0 +1,58 @@
+### YamlMime:Landing
+title: Azure Stack HCI 文档
+summary: Azure Stack HCI 是超融合的 Windows Server 2019 群集，可在本地环境使用经过验证的硬件来运行虚拟化工作负载，使客户可以轻松合并旧基础结构并连接到 Azure 以实现云服务。
+metadata:
+  title: Azure Stack HCI 文档
+  description: Azure Stack HCI 是超融合的 Windows Server 2019 群集，可在本地环境使用经过验证的硬件来运行虚拟化工作负荷。
+  ms.topic: landing-page
+  author: WenJason
+  ms.author: v-jay
+  origin.date: 04/17/2020
+  ms.date: 05/18/2020
+  ms.openlocfilehash: d4249a9def9a3b0dad495316e84edae436658f9c
+  ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 05/15/2020
+  ms.locfileid: "83422981"
+landingContent:
+- title: 关于 Azure Stack HCI
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 Azure Stack HCI？
+      url: overview.md
+  - linkListType: get-started
+    links:
+    - text: 在 Windows 管理中心使用 Azure Stack HCI
+      url: get-started.md
+- title: 管理 Azure Stack HCI
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 创建卷
+      url: manage/create-volumes.md
+    - text: 扩展卷
+      url: manage/extend-volumes.md
+    - text: 删除卷
+      url: manage/delete-volumes.md
+    - text: 更换驱动器
+      url: manage/replace-drives.md
+    - text: 使用 Azure Monitor 进行监视
+      url: manage/azure-monitor.md
+    - text: 将 GPU 附加到 Linux VM
+      url: manage/attach-gpu-to-linux-vm.md
+- title: Azure Stack HCI 概念
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 选择驱动器
+      url: concepts/choose-drives.md
+    - text: 规划卷
+      url: concepts/plan-volumes.md
+    - text: 了解缓存
+      url: concepts/cache.md
+    - text: 容错和存储效率
+      url: concepts/fault-tolerance.md
+    - text: 群集和存储池仲裁
+      url: concepts/quorum.md

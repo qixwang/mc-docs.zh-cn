@@ -15,12 +15,12 @@ ms.topic: conceptual
 origin.date: 01/27/2020
 ms.date: 2/6/2020
 ms.author: v-lingwu
-ms.openlocfilehash: c3b2d685e10954834f940f0c92e114b9739ce418
-ms.sourcegitcommit: 1fbdefdace8a1d3412900c6c3f89678d8a9b29bc
+ms.openlocfilehash: 735293205ee8cb4d7588a7112d0415906ee97f01
+ms.sourcegitcommit: a04b0b1009b0c62f2deb7c7acee75a1304d98f87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82886809"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83796781"
 ---
 # <a name="service-bus-premium-and-standard-messaging-tiers"></a>服务总线高级和标准消息传送层
 
@@ -52,9 +52,9 @@ ms.locfileid: "82886809"
 
 ### <a name="express-entities"></a>快速实体
 
-由于高级消息传送在一个完全隔离的运行时环境中运行，因此高级命名空间中不支持快速实体。 有关快速功能的详细信息，请参阅 [QueueDescription.EnableExpress](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enableexpress#Microsoft_ServiceBus_Messaging_QueueDescription_EnableExpress) 属性。
+由于高级消息传送在一个完全隔离的运行时环境中运行，因此高级命名空间中不支持快速实体。 有关快速功能的详细信息，请参阅 [QueueDescription.EnableExpress](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.queuedescription.enableexpress#Microsoft_ServiceBus_Messaging_QueueDescription_EnableExpress) 属性。
 
-如果有在标准传送下运行的代码并且希望将其移植到高级层，请确保将 [EnableExpress](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enableexpress#Microsoft_ServiceBus_Messaging_QueueDescription_EnableExpress) 属性设置为 **false**（默认值）。
+如果有在标准传送下运行的代码并且希望将其移植到高级层，请确保将 [EnableExpress](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.queuedescription.enableexpress#Microsoft_ServiceBus_Messaging_QueueDescription_EnableExpress) 属性设置为 **false**（默认值）。
 
 ## <a name="get-started-with-premium-messaging"></a>高级消息传送入门
 

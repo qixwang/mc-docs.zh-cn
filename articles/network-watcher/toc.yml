@@ -7,6 +7,8 @@
 - name: 快速入门
   expanded: true
   items:
+    - name: 连接监视器（预览版）
+      href: connection-monitor-preview.md
     - name: 诊断 VM 流量筛选器问题 - 门户
       href: diagnose-vm-network-traffic-filtering-problem.md
     - name: 诊断 VM 流量筛选器问题 - PowerShell
@@ -41,7 +43,7 @@
       href: network-watcher-security-group-view-overview.md
     - name: 基于角色的访问控制权限
       href: required-rbac-permissions.md
-- name: 操作方法指南
+- name: 操作指南
   items:
     - name: 配置网络观察程序
       href: network-watcher-create.md
@@ -85,6 +87,8 @@
               items:
                 - name: 查找异常
                   href: network-watcher-deep-packet-inspection.md
+                - name: 使用 Azure Functions 执行主动网络监视
+                  href: network-watcher-alert-triggered-packet-capture.md
                 - name: 使用开放源代码工具执行入侵检测
                   href: network-watcher-intrusion-detection-open-source-tools.md
                 - name: 使用开放源代码工具可视化网络流量模式
@@ -99,6 +103,10 @@
               href: network-watcher-nsg-flow-logging-cli.md
             - name: REST
               href: network-watcher-nsg-flow-logging-rest.md
+            - name: Azure 资源管理器
+              href: network-watcher-nsg-flow-logging-azure-resource-manager.md
+        - name: 删除 NSG 流日志存储 Blob
+          href: network-watcher-delete-nsg-flow-log-blobs.md
         - name: 分析 NSG 流日志
           items:
             - name: 读取 NSG 流日志
@@ -110,6 +118,8 @@
                   href: traffic-analytics-faq.md
                 - name: 架构和数据聚合
                   href: traffic-analytics-schema.md
+                - name: 架构更新（2019 年 8 月）
+                  href: traffic-analytics-schema-update.md
             - name: 使用 Power BI
               href: network-watcher-visualize-nsg-flow-logs-power-bi.md
             - name: 使用 Elastic Stack
@@ -146,26 +156,30 @@
       href: view-network-topology.md
     - name: 确定位置和 Azure 区域之间的相对延迟
       href: view-relative-latencies.md
+    - name: 监视网络性能
+      href: 'https://docs.azure.cn/azure-monitor/insights/network-performance-monitor?toc=%2Fazure%2Fnetwork-watcher%2Ftoc.json'
 - name: 参考
   items:
     - name: Azure CLI
-      href: 'https://docs.azure.cn/zh-cn/cli/network/watcher?view=azure-cli-latest'
+      href: 'https://docs.azure.cn/cli/network/watcher?view=azure-cli-latest'
     - name: Azure PowerShell
       href: 'http://docs.microsoft.com/powershell/module/azurerm.network/#network_watcher'
     - name: Java
-      href: 'https://docs.azure.cn/zh-cn/java/api/com.microsoft.azure.management.network?view=azure-java-stable'
+      href: 'https://docs.azure.cn/java/api/com.microsoft.azure.management.network?view=azure-java-stable'
     - name: Ruby
-      href: 'http://www.rubydoc.info/gems/azure_mgmt_network/Azure/Network/Mgmt/V2016_09_01/Models/NetworkWatcher'
+      href: 'https://www.rubydoc.info/gems/azure_mgmt_network/Azure/Network/Mgmt/V2016_09_01/Models/NetworkWatcher'
     - name: Python
       href: 'https://docs.microsoft.com/python/api/overview/azure/network'
     - name: .NET
-      href: 'https://docs.azure.cn/en-us/dotnet/api/overview/virtual-network?view=azure-dotnet'
+      href: 'https://docs.azure.cn/dotnet/api/overview/virtual-network?view=azure-dotnet'
     - name: Node.js
-      href: /javascript/api/azure-arm-network
+      href: 'https://docs.microsoft.com/javascript/api/@azure/arm-network/?view=azure-node-latest'
     - name: REST
       href: 'http://docs.microsoft.com/rest/api/network-watcher/'
 - name: 资源
   items:
+    - name: 网络观察程序常见问题解答
+      href: frequently-asked-questions.md
     - name: MSDN 论坛
       href: 'https://www.azure.cn/support/contact/'
     - name: 定价
@@ -174,3 +188,5 @@
       href: 'https://www.azure.cn/what-is-new/'
     - name: SLA
       href: 'https://www.azure.cn/support/legal/sla/'
+    - name: Stack Overflow
+      href: 'http://stackoverflow.com/questions/tagged/network-watcher'

@@ -5,15 +5,15 @@ author: ccompy
 ms.assetid: 384cf393-5c63-4ffb-9eb2-bfd990bc7af1
 ms.topic: quickstart
 origin.date: 05/29/2018
-ms.date: 03/30/2020
+ms.date: 05/22/2020
 ms.author: v-tawe
 ms.custom: mvc, seodec18
-ms.openlocfilehash: a3d4abfdc848d4f94de89a25b614b1f82dd19da7
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: eafa3e0ac9229e208384e7426b441818efcaa906
+ms.sourcegitcommit: 981a75a78f8cf74ab5a76f9e6b0dc5978387be4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80522067"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83801282"
 ---
 # <a name="configure-your-app-service-environment-with-forced-tunneling"></a>使用强制隧道配置应用服务环境
 
@@ -61,7 +61,7 @@ ASE 具有许多外部依赖项，详见[应用服务环境网络体系结构][n
 将 ASE 子网配置为忽略 BGP 路由：
 
 * 创建 UDR 并将其分配到 ASE 子网（如果没有 UDR）。
-* 在 Azure 门户中，打开分配到 ASE 子网的路由表的 UI。  选择“配置”。  将 BGP 路由传播设置为“已禁用”。  单击“保存”。 [创建路由表][routetable]文档介绍了如何关闭此设置。
+* 在 Azure 门户中，打开分配到 ASE 子网的路由表的 UI。  选择“配置”。  将“虚拟网关路由传播”设置为“禁用”。  单击“保存”。 [创建路由表][routetable]文档介绍了如何关闭此设置。
 
 将 ASE 子网配置为忽略所有 BGP 路由后，应用将不再能够访问本地资源。 若要让用于访问本地资源，请编辑分配到 ASE 子网的 UDR，并添加本地地址范围的路由。 “下一跃点类型”应设置为“虚拟网络网关”。 
 
@@ -86,7 +86,7 @@ ASE 具有许多外部依赖项，详见[应用服务环境网络体系结构][n
 
 ![使用服务终结点的强制隧道][2]
 
-<!-- ## Add your own IPs to the ASE Azure SQL firewall ## -->
+## <a name="add-your-own-ips-to-the-ase-azure-sql-firewall"></a>将自己的 IP 添加到 ASE Azure SQL 防火墙 ##
 
 若要让来自 ASE 的所有出站流量（到 Azure 存储的除外）进入隧道，请执行以下步骤：
 
@@ -96,7 +96,11 @@ ASE 具有许多外部依赖项，详见[应用服务环境网络体系结构][n
 
 3. 获取可供所有从应用服务环境到 Internet 的出站流量使用的地址。 如果在本地路由流量，则这些地址为 NAT 或网关 IP。 若要通过 NVA 路由应用服务环境出站流量，则出口地址为 NVA 的公共 IP。
 
-<!-- Azure Resource manager not available-->
+4. 在现有应用服务环境中设置出口地址：  请转到 resources.azure.com，再转到 Subscription/\<subscription id>/resourceGroups/\<ase resource group>/providers/Microsoft.Web/hostingEnvironments/\<ase name>。 然后即可看到描述应用服务环境的 JSON 代码。 确保代码的顶部显示“读/写”  。 选择“编辑”  。 向下滚动到底部。 将“userWhitelistedIpRanges”值从“null”更改为类似于以下内容的值   。 使用要设置为出口地址范围的地址。 
+
+        "userWhitelistedIpRanges": ["11.22.33.44/32", "55.66.77.0/24"] 
+
+   选择顶部的“PUT”  。 此选项会触发应用服务环境的缩放操作，并对防火墙进行调整。
 
 使用出口地址创建 ASE  ：按照[使用模板创建应用服务环境][template]中的说明进行操作，并下拉相应的模板。  编辑 azuredeploy.json 文件中的 "resources" 节，但 "properties" 块除外，并添加一行，用于 **userWhitelistedIpRanges**（含值）。
 

@@ -4,16 +4,16 @@ description: Azure Stack Hub 服务、计划、套餐和订阅的概述。
 author: WenJason
 ms.topic: conceptual
 origin.date: 12/18/2019
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: efemmano
 ms.lastreviewed: 10/01/2019
-ms.openlocfilehash: 5b8e7cb0357d8759f56126c87ca775d4ac830a65
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 3583d7555b46d516f77d20a02614a6575ec7669f
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292663"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422376"
 ---
 # <a name="azure-stack-hub-services-plans-offers-subscriptions-overview"></a>Azure Stack Hub 服务、计划、套餐和订阅概述
 
@@ -32,7 +32,7 @@ Azure Stack Hub 操作员可以使用套餐、计划和订阅来配置及交付�
 1. 使用以下服务规划服务套餐：
 
    - 基础服务，例如计算、存储、网络或 Key Vault。
-   - 增值服务，例如应用服务、SQL Server 或 MySQL Server。
+   - 增值服务，例如事件中心、应用服务、SQL Server 或 MySQL Server。
 
 2. 创建包含一个或多个服务的计划。 创建计划时，需选择或创建配额，用于定义计划中每个服务的资源限制。
 3. 创建包含一个或多个计划的套餐。 套餐可以包含基本计划和可选的附加计划。
@@ -45,8 +45,9 @@ Azure Stack Hub 操作员可以使用套餐、计划和订阅来配置及交付�
 
 你可以提供[基础结构即服务](https://azure.microsoft.com/overview/what-is-iaas/) (IaaS) 服务，使用户能够构建按需计算基础结构，并通过 Azure Stack Hub 用户门户进行预配和管理。
 
-还可以通过 Microsoft 和其他第三方提供商为 Azure Stack Hub 部署[平台即服务](https://azure.microsoft.com/overview/what-is-paas/) (PaaS) 服务。 可以提供的 PaaS 服务包括但不限于：
+还可以通过 Microsoft 和第三方提供商为 Azure Stack Hub 部署[平台即服务](https://azure.microsoft.com/overview/what-is-paas/) (PaaS) 服务。 可以部署的 PaaS 服务包括但不限于：
 
+- [事件中心](event-hubs-rp-overview.md)
 - [应用服务](azure-stack-app-service-overview.md)
 - [SQL Server](azure-stack-sql-resource-provider-deploy.md)
 - [MySQL Server](azure-stack-mysql-resource-provider-deploy.md)
@@ -55,7 +56,7 @@ Azure Stack Hub 操作员可以使用套餐、计划和订阅来配置及交付�
 
 ### <a name="quotas"></a>配额
 
-为了帮助管理云容量，可以使用预配置的配额  ，或者为计划中的每个服务创建新配额。 配额定义用户订阅可以部署或使用的资源上限。 例如，配额可能允许用户最多创建五个 VM。
+为了帮助管理云容量，可以使用预配置的配额，或者为计划中的每个服务创建新配额。 配额定义用户订阅可以部署或使用的资源上限。 例如，配额可能允许用户最多创建五个 VM。
 
 > [!IMPORTANT]
 > 在用户门户中出现可用的新配额或者强制实施更改的配额可能需要长达两小时的时间。

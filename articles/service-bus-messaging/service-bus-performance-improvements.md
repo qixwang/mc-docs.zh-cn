@@ -3,20 +3,20 @@ title: 使用 Azure 服务总线提高性能的最佳做法
 description: 介绍如何使用服务总线在交换中转消息时优化性能。
 services: service-bus-messaging
 documentationcenter: na
-author: lingliw
-manager: digimobile
+author: axisc
+manager: timlt
 editor: spelluru
 ms.service: service-bus-messaging
 ms.topic: article
 origin.date: 03/12/2020
 ms.date: 03/20/2020
 ms.author: v-lingwu
-ms.openlocfilehash: 233e993760e7dd2aacd97cdfaf6d660edc63024a
-ms.sourcegitcommit: 1fbdefdace8a1d3412900c6c3f89678d8a9b29bc
+ms.openlocfilehash: 989a9670d89607d5845e3f65c0f1fa69d9e53e34
+ms.sourcegitcommit: a04b0b1009b0c62f2deb7c7acee75a1304d98f87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82886810"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83796783"
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>使用服务总线消息传递改进性能的最佳实践
 
@@ -136,7 +136,7 @@ receiver.RegisterMessageHandler(
     new MessageHandlerOptions(e => LogErrorAsync(e.Exception))
     {
         AutoComplete = false,
-        MaxConcurrentCalls = 1
+        MaxConcurrentCalls = 20
     });
 ```
 
@@ -160,7 +160,7 @@ receiver.OnMessageAsync(
     new OnMessageOptions
     {
         AutoComplete = false,
-        MaxConcurrentCalls = 1
+        MaxConcurrentCalls = 20
     });
 ```
 
@@ -405,12 +405,15 @@ var queue = namespaceManager.CreateQueue(queueDescription);
 * 将批量存储访问保留为启用状态。 此访问会增加可将消息写入主题的总写入速率。
 * 将预提取计数设置为预期接收速率的 20 倍（以秒为单位）。 此计数会减少服务总线客户端协议传输的数量。
 
+<!-- .NET Standard SDK, Microsoft.Azure.ServiceBus -->
 [QueueClient]: /dotnet/api/microsoft.azure.servicebus.queueclient
 [MessageSender]: /dotnet/api/microsoft.azure.servicebus.core.messagesender
-[MessagingFactory]: /dotnet/api/microsoft.servicebus.messaging.messagingfactory
-[BatchFlushInterval]: /dotnet/api/microsoft.servicebus.messaging.messagesender.batchflushinterval
-[ForcePersistence]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage.forcepersistence
-[EnablePartitioning]: /dotnet/api/microsoft.servicebus.messaging.queuedescription.enablepartitioning
-[TopicDescription.EnableFiltering]: /dotnet/api/microsoft.servicebus.messaging.topicdescription.enablefilteringmessagesbeforepublishing
+
+<!-- .NET Framework SDK, Microsoft.Azure.ServiceBus -->
+[MessagingFactory]: https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.messagingfactory
+[BatchFlushInterval]: https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.messagesender.batchflushinterval
+[ForcePersistence]: https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.forcepersistence
+[EnablePartitioning]: https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.queuedescription.enablepartitioning
+[TopicDescription.EnableFiltering]: https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.topicdescription.enablefilteringmessagesbeforepublishing
+<!-- Local links -->
 [Partitioned messaging entities]: service-bus-partitioning.md
-[TopicDescription.EnableFilteringMessagesBeforePublishing]: /dotnet/api/microsoft.servicebus.messaging.topicdescription.enablefilteringmessagesbeforepublishing

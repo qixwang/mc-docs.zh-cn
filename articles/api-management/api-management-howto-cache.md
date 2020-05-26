@@ -1,6 +1,6 @@
 ---
 title: 添加缓存以提高 Azure API 管理中的性能
-description: 了解如何改善滞后时间、带宽消耗和 API 管理服务调用的 web 服务负载。
+description: 了解如何改善 API 管理服务调用的延迟、带宽消耗和 web 服务负载。
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -37,7 +37,7 @@ API 管理中的操作可以配置为响应缓存。 响应缓存可以显著减
 
 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 完成本教程：
 
@@ -50,11 +50,11 @@ API 管理中的操作可以配置为响应缓存。 响应缓存可以显著减
 
 1. 在 [https://portal.azure.cn](https://portal.azure.cn) 中登录 Azure 门户。
 2. 浏览到自己的 APIM 实例。
-3. 选择“API”选项卡。 
-4. 在 API 列表中单击“演示会议 API”。 
-5. 选择“GetSpeakers”  。
-6. 选择屏幕顶部的“设计”选项卡。 
-7. 在“入站处理”  部分中，单击 **</>** 图标。
+3. 选择“API”选项卡。
+4. 在 API 列表中单击“演示会议 API”。
+5. 选择“GetSpeakers”。
+6. 选择屏幕顶部的“设计”选项卡。
+7. 在“入站处理”部分中，单击 **</>** 图标。
 
     ![代码编辑器](media/api-management-howto-cache/code-editor.png) 
 
@@ -70,7 +70,7 @@ API 管理中的操作可以配置为响应缓存。 响应缓存可以显著减
 
         <cache-store duration="20" />
 
-    **持续时间** 指定缓存响应的过期时间间隔。 此示例中的时间间隔为 **20** 秒。
+    **持续时间**指定缓存响应的到期时间间隔。 此示例中的时间间隔为 **20** 秒。
 
 > [!TIP]
 > 如果使用的是外部缓存，如[在 Azure API 管理中使用外部 Azure Redis 缓存](api-management-howto-cache-external.md)中所述，可能需要指定缓存策略的 `caching-type` 属性。 有关更多详细信息，请参阅 [API 管理缓存策略](api-management-caching-policies.md)。
@@ -79,14 +79,14 @@ API 管理中的操作可以配置为响应缓存。 响应缓存可以显著减
 若要查看作用的缓存，请从开发人员门户调用操作。
 
 1. 在 Azure 门户中浏览到自己的 APIM 实例。
-2. 选择“API”  选项卡。
+2. 选择“API”选项卡。
 3. 选择向其添加了缓存策略的 API。
-4. 选择“GetSpeakers”操作。 
-5. 单击右上方菜单中的“测试”选项卡。 
-6. 按“发送”。 
+4. 选择“GetSpeakers”操作。
+5. 单击右上方菜单中的“测试”选项卡。
+6. 按“发送”。
 
 ## <a name="next-steps"></a><a name="next-steps"> </a>后续步骤
-* 有关缓存策略的详细信息，请参阅 [API 管理策略参考][Caching policies]中的[缓存策略][API Management policy reference]。
+* 有关缓存策略的详细信息，请参阅 [API 管理策略参考][API Management policy reference]中的[缓存策略][Caching policies]。
 * 有关使用策略表达式按密钥缓存项目的信息，请参阅 [Azure API 管理中的自定义缓存](api-management-sample-cache-by-key.md)。
 * 有关使用外部 Azure Redis 缓存的详细信息，请参阅[在 Azure API 管理中使用外部 Azure Redis 缓存](api-management-howto-cache-external.md)。
 

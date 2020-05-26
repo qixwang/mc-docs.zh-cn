@@ -11,14 +11,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 09/10/2018
-ms.date: 04/12/2019
-ms.author: v-lingwu
-ms.openlocfilehash: 0dcdf71b6dba83bb65a26f56acf88b2f9b7ff1d8
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/08/2020
+ms.author: v-tawe
+ms.openlocfilehash: c478f892e4623665e4b2519bd9198f98d46f01dc
+ms.sourcegitcommit: b81ea2ab9eafa986986fa3eb1e784cfe9bbf9ec1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77028878"
+ms.lasthandoff: 05/13/2020
+ms.locfileid: "83367838"
 ---
 # <a name="read-nsg-flow-logs"></a>读取 NSG 流日志
 
@@ -39,7 +39,7 @@ NSG 流日志存储于[块 blob](https://docs.microsoft.com/rest/api/storageserv
 
 ## <a name="retrieve-the-block-list"></a>检索块列表
 
-下方 PowerShell 设置查询 NSG 流日志 blob 和列出 [CloudBlockBlob](https://docs.azure.cn/zh-cn/dotnet/api/microsoft.windowsazure.storage.blob.cloudblockblob?view=azure-dotnet?view=azurestorage-8.1.3) 块 blob 中的块所需的变量。 更新脚本以包含适合你环境的有效值。
+下方 PowerShell 设置查询 NSG 流日志 blob 和列出 [CloudBlockBlob](https://docs.azure.cn/dotnet/api/microsoft.windowsazure.storage.blob.cloudblockblob?view=azure-dotnet?view=azurestorage-8.1.3) 块 blob 中的块所需的变量。 更新脚本以包含适合你环境的有效值。
 
 ```powershell
 function Get-NSGFlowLogCloudBlockBlob {
@@ -189,6 +189,8 @@ A","1497646742,10.0.0.4,168.62.32.14,44942,443,T,O,A","1497646742,10.0.0.4,52.24
 ## <a name="next-steps"></a>后续步骤
 
 请访问[使用弹性堆栈](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)、[使用 Grafana](network-watcher-nsg-grafana.md) 和[使用 Graylog](network-watcher-analyze-nsg-flow-logs-graylog.md) 详细了解查看 NSG 流日志的方法。 可以在此处找到直接使用 Blob 并发送给各种日志分析使用者的开源 Azure 函数方法：[Azure 网络观察程序 NSG 流日志连接器](https://github.com/Microsoft/AzureNetworkWatcherNSGFlowLogsConnector)。
+
+可使用 [Azure 流量分析](https://docs.azure.cn/network-watcher/traffic-analytics)获取有关流量流的见解。 流量分析使用 [Log Analytics](https://docs.azure.cn/azure-monitor/log-query/get-started-portal) 来使流量流可查询。
 
 若要详细了解存储 blob，请访问：[Azure Functions Blob 存储绑定](../azure-functions/functions-bindings-storage-blob.md)
 

@@ -4,12 +4,12 @@ ms.topic: include
 origin.date: 11/15/2019
 ms.date: 03/09/2020
 ms.author: v-yeche
-ms.openlocfilehash: c1562cd8599add29e5de332e08e85e815e4ad66d
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 41a07ecd8aa9cd12e105289cdcc6b7c563863091
+ms.sourcegitcommit: 7e6b94bbaeaddb854beed616aaeba6584b9316d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79290701"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83735163"
 ---
 ## <a name="download-and-install-the-istio-istioctl-client-binary"></a>下载并安装 Istio istioctl 客户端二进制文件
 
@@ -34,10 +34,11 @@ New-Item -ItemType Directory -Force -Path "C:\Istio"
 Copy-Item -Path .\bin\istioctl.exe -Destination "C:\Istio\"
 
 # Add C:\Istio to PATH. 
-# Make the new PATH permanently available for the current User, and also immediately available in the current shell.
-$PATH = [environment]::GetEnvironmentVariable("PATH", "User") + "; C:\Istio\"
-[environment]::SetEnvironmentVariable("PATH", $PATH, "User") 
-[environment]::SetEnvironmentVariable("PATH", $PATH)
+# Make the new PATH permanently available for the current User
+$USER_PATH = [environment]::GetEnvironmentVariable("PATH", "User") + ";C:\Istio\"
+[environment]::SetEnvironmentVariable("PATH", $USER_PATH, "User")
+# Make the new PATH immediately available in the current shell
+$env:PATH += ";C:\Istio\"
 ```
 
 <!-- Update_Description: update meta properties, wording update, update link -->

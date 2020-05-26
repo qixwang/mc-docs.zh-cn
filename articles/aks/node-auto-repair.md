@@ -4,14 +4,14 @@ description: 了解节点自动修复功能，以及 AKS 如何修复损坏的�
 services: container-service
 ms.topic: conceptual
 origin.date: 03/10/2020
-ms.date: 05/06/2020
+ms.date: 05/25/2020
 ms.author: v-yeche
-ms.openlocfilehash: a398831b7b2488282e2f9e130531065f7b3fad7a
-ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
+ms.openlocfilehash: bcfb6555358985a7dae9d3bbeaa2ade46730b615
+ms.sourcegitcommit: 7e6b94bbaeaddb854beed616aaeba6584b9316d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "83002258"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83735095"
 ---
 # <a name="azure-kubernetes-service-aks-node-auto-repair"></a>Azure Kubernetes 服务 (AKS) 节点自动修复
 

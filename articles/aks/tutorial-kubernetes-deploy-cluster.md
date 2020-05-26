@@ -4,15 +4,15 @@ description: 此 Azure Kubernetes 服务 (AKS) 教程介绍如何创建 AKS 群�
 services: container-service
 ms.topic: tutorial
 origin.date: 02/25/2020
-ms.date: 03/09/2020
+ms.date: 05/25/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: cf58ea70bbfc9b8e2ad66c101f088da953b5fef8
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 51e874e884d70ab90d9aff11651a892bfd47a962
+ms.sourcegitcommit: 7e6b94bbaeaddb854beed616aaeba6584b9316d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79290777"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83735149"
 ---
 # <a name="tutorial-deploy-an-azure-kubernetes-service-aks-cluster"></a>教程：部署 Azure Kubernetes 服务 (AKS) 群集
 
@@ -29,13 +29,15 @@ Kubernetes 为容器化应用程序提供一个分布式平台。 使用 AKS 可
 
 在以前的教程中，已创建容器映像并上传到 Azure 容器注册表实例。 如果尚未完成这些步骤，并且想要逐一完成，请先参阅[教程 1 - 创建容器映像][aks-tutorial-prepare-app]。
 
-此教程需要运行 Azure CLI 2.0.75 版或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
+此教程需要运行 Azure CLI 2.0.53 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
 
 ## <a name="create-a-kubernetes-cluster"></a>创建 Kubernetes 群集
 
 AKS 群集可以使用 Kubernetes 基于角色的访问控制 (RBAC)。 可以使用这些控制根据分配给用户的角色定义资源访问权限。 权限可以组合（如果为用户分配了多个角色），可以局限于单个命名空间，也可以涵盖整个群集。 默认情况下，Azure CLI 会在你创建 AKS 群集时自动启用 RBAC。
 
 使用 [az aks create][] 创建 AKS 群集。 以下示例在名为 *myResourceGroup* 的资源组中创建名为 *myAKSCluster* 的群集。 此资源组是在[上一教程][aks-tutorial-prepare-acr]中创建的。 为了允许 AKS 群集与其他 Azure 资源进行交互，将自动创建一个 Azure Active Directory 服务主体，因为未指定该主体。 在这里，此服务主体[被授予从上一教程中创建的 Azure 容器注册表 (ACR) 实例中拉取映像][container-registry-integration]的权限。
+
+<!--Not Available on [managed identity](use-managed-identity.md)-->
 
 ```azurecli
 az aks create \

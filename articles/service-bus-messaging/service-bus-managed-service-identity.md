@@ -3,7 +3,7 @@ title: 结合使用 Azure 资源的托管标识与 Azure 服务总线
 description: 本文介绍如何使用托管标识访问 Azure 服务总线实体（队列、主题和订阅）。
 services: service-bus-messaging
 documentationcenter: na
-author: lingliw
+author: axisc
 editor: spelluru
 ms.assetid: ''
 ms.service: service-bus-messaging
@@ -14,12 +14,12 @@ ms.workload: na
 origin.date: 01/24/2020
 ms.date: 2/6/2020
 ms.author: aschhab
-ms.openlocfilehash: c57053082905e08b1079bc15f40a7141a049428e
-ms.sourcegitcommit: 1fbdefdace8a1d3412900c6c3f89678d8a9b29bc
+ms.openlocfilehash: da30503837a0fc8453196e7e0d6d0ba8bfad4190
+ms.sourcegitcommit: a04b0b1009b0c62f2deb7c7acee75a1304d98f87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82886919"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83796807"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-azure-service-bus-resources"></a>使用 Azure Active Directory 对托管标识进行身份验证，以便访问 Azure 服务总线资源
 [Azure 资源的托管标识](../active-directory/managed-identities-azure-resources/overview.md)是一项跨 Azure 功能，可便于用户创建与其中运行应用程序代码的部署关联的安全标识。 然后可以将该标识与访问控制角色进行关联，后者授予的自定义权限可用于访问应用程序需要的特定 Azure 资源。
@@ -89,7 +89,7 @@ Azure Active Directory (Azure AD) 通过[基于角色的访问控制 (RBAC)](../
 ## <a name="use-service-bus-with-managed-identities-for-azure-resources"></a>结合使用服务总线与 Azure 资源的托管标识
 若要将服务总线与托管标识配合使用，需为标识分配角色和相应的范围。 此部分的过程使用一个简单的应用程序，该应用程序在托管标识下运行并访问服务总线资源。
 
-在这里，我们将使用一个在 [Azure 应用服务](/app-service/)中托管的示例 Web 应用程序。 有关如何创建 Web 应用程序的分步说明，请参阅[在 Azure 中创建 ASP.NET Core Web 应用](../app-service/app-service-web-get-started-dotnet.md)
+在这里，我们将使用一个在 [Azure 应用服务](https://www.azure.cn/pricing/details/app-service/index.html)中托管的示例 Web 应用程序。 有关如何创建 Web 应用程序的分步说明，请参阅[在 Azure 中创建 ASP.NET Core Web 应用](../app-service/app-service-web-get-started-dotnet.md)
 
 创建应用程序后，请执行以下步骤： 
 

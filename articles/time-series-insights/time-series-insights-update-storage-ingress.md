@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 04/28/2020
+ms.date: 05/20/2020
 ms.custom: seodec18
-ms.openlocfilehash: 90574c99a8dd9802cd4ab6ce9b7bb6e958a63e8c
-ms.sourcegitcommit: e3512c5c2bbe61704d5c8cbba74efd56bfe91927
+ms.openlocfilehash: f5ec1050e572a9f756f70f9e1d79ec97af211ec6
+ms.sourcegitcommit: 87e789550ea49ff77c7f19bc68fad228009fcf44
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82267667"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83748143"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Azure 时序见解预览版中的数据存储和入口
 
@@ -23,7 +23,7 @@ ms.locfileid: "82267667"
 
 ## <a name="data-ingress"></a>数据入口
 
-Azure 时序见解环境包含一个用于收集、处理和存储时序数据的引入引擎。  
+Azure 时序见解环境包含一个用于收集、处理和存储时序数据的引入引擎。 
 
 [规划环境](time-series-insights-update-plan.md)时，需要考虑一些事项，以确保处理所有传入的数据，实现较高的引入规模，并最大限度地降低引入延迟（时序见解读取和处理事件源中的数据所花费的时间）。 
 
@@ -31,7 +31,7 @@ Azure 时序见解环境包含一个用于收集、处理和存储时序数据�
 
 ### <a name="ingress-policies"></a>流入策略
 
-数据引入涉及到如何将数据发送到 Azure 时序见解预览版环境。  
+数据引入涉及到如何将数据发送到 Azure 时序见解预览版环境。 
 
 下面汇总了关键配置、格式和最佳做法。
 
@@ -42,10 +42,11 @@ Azure 时序见解预览版支持以下事件源：
 - [Azure IoT 中心](../iot-hub/about-iot-hub.md)
 - [Azure 事件中心](../event-hubs/event-hubs-about.md)
 
-Azure 时序见解预览版对每个实例最多支持两个事件源。 连接事件源时，TSI 环境会从最早的事件开始，读取当前存储在 IoT 中心或事件中心的所有事件。 
+Azure 时序见解预览版对每个实例最多支持两个事件源。 连接事件源时，TSI 环境会从最早的事件开始，读取当前存储在 IoT 中心或事件中心的所有事件。
 
-> [!IMPORTANT] 
-> * 将事件源附加到预览版环境时，可能会遇到较高的初始延迟。 
+> [!IMPORTANT]
+>
+> * 将事件源附加到预览版环境时，可能会遇到较高的初始延迟。
 > 事件源的延迟取决于 IoT 中心或事件中心内当前的事件数。
 > * 首次引入事件源数据后，较高的延迟预期将会下降。 如果持续遇到较高的延迟，请通过 Azure 门户提交支持票证。
 
@@ -64,7 +65,7 @@ Azure 时序见解支持通过 Azure IoT 中心或 Azure 事件中心发送的 U
 
 #### <a name="objects-and-arrays"></a>对象和数组
 
-可将复杂类型（例如对象和数组）作为事件有效负载的一部分发送，但存储的数据将会经历一个平展过程。 
+可将复杂类型（例如对象和数组）作为事件有效负载的一部分发送，但存储的数据将会经历一个平展过程。
 
 [如何调整要引入和查询的 JSON](./time-series-insights-update-how-to-shape-events.md) 中提供了有关如何调整 JSON 事件、发送复杂类型和嵌套对象平展的详细信息，以帮助你进行规划和优化。
 
@@ -78,7 +79,7 @@ Azure 时序见解支持通过 Azure IoT 中心或 Azure 事件中心发送的 U
 
 * 阅读[如何为引入和查询调整 JSON](./time-series-insights-update-how-to-shape-events.md) 来了解如何优化和调整 JSON 数据，以及当前的预览版限制。
 
-### <a name="ingress-scale-and-preview-limitations"></a>引入规模和预览版的限制 
+### <a name="ingress-scale-and-preview-limitations"></a>引入规模和预览版的限制
 
 Azure 时序见解预览版的引入限制如下所述。
 
@@ -93,7 +94,8 @@ Azure 时序见解预览版的引入限制如下所述。
 
 默认情况下，对于每个时序见解环境，时序见解预览版可按**每秒最多 1 兆字节 (MBps)** 的速率引入传入的数据。 存在针对[单个中心分区](/time-series-insights/time-series-insights-update-storage-ingress#hub-partitions-and-per-partition-limits)的其他限制。
 
-> [!TIP] 
+> [!TIP]
+>
 > * 我们可按请求提供最高 16 MBps 引入速度的环境支持。
 > * 如果需要更高的吞吐量，请通过在 Azure 门户中提交支持票证来联系我们。
  
@@ -117,7 +119,7 @@ Azure 时序见解预览版的引入限制如下所述。
 
 规划时序见解环境时，必须考虑要连接到时序见解的事件源的配置。 Azure IoT 中心和事件中心都利用分区来实现事件处理的水平缩放。 
 
-分区是中心内保留的有序事件。  分区计数是在中心创建阶段设置的，且不可更改。 
+分区是中心内保留的有序事件。  分区计数是在中心创建阶段设置的，且不可更改。
 
 有关事件中心分区的最佳做法，请参阅[我需要多少分区？](/event-hubs/event-hubs-faq#how-many-partitions-do-i-need)
 
@@ -132,7 +134,7 @@ Azure 时序见解预览版的引入限制如下所述。
 
 在 IoT 中心内创建设备时，会将该设备永久分配到某个分区。 这样，IoT 中心就可以保证事件的排序（因为分配永远不会更改）。
 
-固定的分区分配也会影响引入下游 IoT 中心发送的数据的时序见解实例。 使用相同的网关设备 ID 将来自多个设备的消息转发到中心时，这些消息可能抵达同一分区，同时，可能会超出每个分区的规模限制。 
+固定的分区分配也会影响引入下游 IoT 中心发送的数据的时序见解实例。 使用相同的网关设备 ID 将来自多个设备的消息转发到中心时，这些消息可能抵达同一分区，同时，可能会超出每个分区的规模限制。
 
 **影响**：
 
@@ -145,6 +147,7 @@ Azure 时序见解预览版的引入限制如下所述。
 
 > [!IMPORTANT]
 > 对于使用 IoT 中心作为事件源的环境，请使用正在使用的中心设备数计算引入速率，以确保速率低于预览版中每个分区 0.5 MBps 的限制。
+>
 > * 即使多个事件同时抵达，也不会超出预览版的限制。
 
   ![IoT 中心分区示意图](./media/concepts-ingress-overview/iot-hub-partiton-diagram.png)
@@ -185,7 +188,7 @@ Azure 时序见解预览版的引入限制如下所述。
 
 创建 Azure 时序见解预览版 PAYG 环境时，会创建一个 Azure 存储常规用途 V1 Blob 帐户作为长期冷存储。  
 
-Azure 时序见解预览版在 Azure 存储帐户中为每个事件保留最多两个副本。 一个副本存储按引入时间排序的事件，始终允许按时序访问事件。 随着时间的推移，时序见解预览版还会创建数据的重新分区的副本，通过优化实现高性能时序见解查询。 
+Azure 时序见解预览版在 Azure 存储帐户中为每个事件保留最多两个副本。 一个副本存储按引入时间排序的事件，始终允许按时序访问事件。 随着时间的推移，时序见解预览版还会创建数据的重新分区的副本，通过优化实现高性能时序见解查询。
 
 在公共预览版中，数据无限期存储在 Azure 存储帐户中。
 
@@ -193,7 +196,7 @@ Azure 时序见解预览版在 Azure 存储帐户中为每个事件保留最多�
 
 为了确保查询性能和数据可用性，请不要编辑或删除时序见解预览版创建的任何 Blob。
 
-#### <a name="accessing-time-series-insights-preview-cold-store-data"></a>访问时序见解预览版冷存储数据 
+#### <a name="accessing-time-series-insights-preview-cold-store-data"></a>访问时序见解预览版冷存储数据
 
 除了从[时序查询](./time-series-insights-update-tsq.md)访问数据外，还可能需要直接从存储在冷存储中的 Parquet 文件访问数据。 例如，可以在 Jupyter 笔记本中读取、转换和清理数据，然后使用它来训练同一 Spark 工作流中的 Azure 机器学习模型。
 
@@ -222,6 +225,7 @@ Parquet 是一种开源的列式文件格式，旨在提高存储效率和性能
 在这两种情况下，Parquet 文件的时间属性对应于 Blob 创建时间。 当数据写入文件以后，将原封不动地保留 `PT=Time` 文件夹中的数据。 `PT=TsId` 文件夹中的数据会不断针对查询进行优化，不是静态的。
 
 > [!NOTE]
+>
 > * `<YYYY>` 映射到四位数的年份表示形式。
 > * `<MM>` 映射到两位数的月份表示形式。
 > * `<YYYYMMDDHHMMSSfff>` 映射到时间戳表示形式，其中包括四位数的年份 (`YYYY`)、两位数的月份 (`MM`)、两位数的日 (`DD`)、两位数的小时 (`HH`)、两位数的分钟 (`MM`)、两位数的秒 (`SS`) 和三位数的毫秒 (`fff`)。

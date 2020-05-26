@@ -12,12 +12,12 @@ metadata:
   author: Johnnytechn
   ms.author: v-johya
   ms.date: 05/06/2020
-  ms.openlocfilehash: 27e08af421b566f72db129bd76e40b2548a104b2
-  ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
+  ms.openlocfilehash: 576b33c2d5ac1477a8cb7afde5d8685aa6e29ccd
+  ms.sourcegitcommit: cada23b6400453ff9c08cfb08393e635e2fddac1
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 05/09/2020
-  ms.locfileid: "83001958"
+  ms.lasthandoff: 05/21/2020
+  ms.locfileid: "83734525"
 landingContent:
 - title: 关于事件网格
   linkLists:
@@ -57,8 +57,6 @@ landingContent:
       url: resize-images-on-storage-blob-upload-event.md
     - text: 在 IoT 中心设备已添加时发送电子邮件
       url: publish-iot-hub-events-to-logic-apps.md
-    - text: 响应服务总线事件
-      url: ../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json
     - text: 从事件中心对数据进行流式传输
       url: event-grid-event-hubs-integration.md
     - text: 路由到混合连接

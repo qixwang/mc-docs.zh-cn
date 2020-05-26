@@ -1,19 +1,22 @@
 ---
-ms.openlocfilehash: fa5d08e0010e93a7cc6094ab049420bb4c755045
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 0ea18d5d4440e0f29dbf020f4cdf075b131e46ea
+ms.sourcegitcommit: cada23b6400453ff9c08cfb08393e635e2fddac1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "63860532"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83734526"
 ---
 ### <a name="create-a-nodejs-application"></a>创建 Node.js 应用程序
-* 创建一个名为 `listener.js` 的新 JavaScript 文件。
+
+创建一个名为 `listener.js` 的新 JavaScript 文件。
 
 ### <a name="add-the-relay-npm-package"></a>添加中继 NPM 包
-* 从项目文件夹中的 Node 命令提示符运行 `npm install hyco-ws`。
+
+从项目文件夹中的 Node 命令提示符运行 `npm install hyco-ws`。
 
 ### <a name="write-some-code-to-receive-messages"></a>编写一些代码来接收消息
-1. 在 `listener.js` 文件的顶部，添加以下`constant`。
+
+1. 将下面的常量添加到 `listener.js` 文件顶部。
    
     ```js
     const WebSocket = require('hyco-ws');

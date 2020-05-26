@@ -13,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 02/22/2018
-ms.date: 02/10/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: a114e322356ad37ccd0b2c1deaf84e868472c549
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 5963b20e8fc6c7272a85e944d508447b1dc91502
+ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77428800"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83392261"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Azure 元数据服务：适用于 Windows VM 的计划事件
 
@@ -46,7 +46,7 @@ ms.locfileid: "77428800"
 
 预定事件提供以下用例中的事件：
 - [平台启动的维护](/virtual-machines/windows/maintenance-and-updates)（例如 VM 重启、主机的实时迁移或内存保留更新）
-- 降级的硬件
+- 虚拟机正在根据预测很快会出现故障的[降级主机硬件](https://azure.microsoft.com/blog/find-out-when-your-virtual-machine-hardware-is-degraded-with-scheduled-events)上运行
 - 用户启动的维护（例如，用户重启或重新部署 VM）
 
     <!--Not Available on - [Spot VM](spot-vms.md) and [Spot scale set](../../virtual-machine-scale-sets/use-spot.md) instance evictions-->
@@ -58,17 +58,18 @@ Azure 元数据服务公开在 VM 中使用可访问的 REST 终结点运行虚�
 ### <a name="endpoint-discovery"></a>终结点发现
 对于启用了 VNET 的 VM，元数据服务可通过不可路由的静态 IP (`169.254.169.254`) 使用。 最新版本的计划事件的完整终结点是： 
 
- > `http://169.254.169.254/metadata/scheduledevents?api-version=2017-08-01`
+ > `http://169.254.169.254/metadata/scheduledevents?api-version=2019-01-01`
 
 如果不是在虚拟网络中创建虚拟机（云服务和经典 VM 的默认情况），则需使用额外的逻辑以发现要使用的 IP 地址。 请参阅此示例，了解如何[发现主机终结点](https://github.com/azure-samples/virtual-machines-python-scheduled-events-discover-endpoint-for-non-vnet-vm)。
 
 ### <a name="version-and-region-availability"></a>版本和区域可用性
-计划事件服务受版本控制。 版本是必需的，当前版本为 `2017-11-01`。
+计划事件服务受版本控制。 版本是必需的，当前版本为 `2019-01-01`。
 
 | 版本 | 发布类型 | 区域 | 发行说明 | 
 | - | - | - | - |
+| 2019-01-01 | 正式版 | 全部 | <li> 添加了对虚拟机规模集 EventType“Terminate”的支持 |
 | 2017-08-01 | 正式版 | 全部 | <li> 已从 IaaS VM 的资源名称中删除前置下划线<br /><li>针对所有请求强制执行元数据标头要求 | 
-| 2017-03-01 | 预览 | 全部 |<li>初始版本
+| 2017-03-01 | 预览 | 全部 |<li>初始版本 |
 
 <!--Not Available on | 2017-11-01 | General Availability | All | <li> Added support for Low-priority VM eviction EventType 'Preempt'<br /> |-->
 
@@ -93,9 +94,9 @@ Azure 元数据服务公开在 VM 中使用可访问的 REST 终结点运行虚�
 ### <a name="query-for-events"></a>查询事件
 只需进行以下调用即可查询计划事件：
 
-#### <a name="powershell"></a>Powershell
+#### <a name="powershell"></a>PowerShell
 ```
-curl http://169.254.169.254/metadata/scheduledevents?api-version=2017-11-01 -H @{"Metadata"="true"}
+curl http://169.254.169.254/metadata/scheduledevents?api-version=2019-01-01 -H @{"Metadata"="true"}
 ```
 
 响应包含计划事件的数组。 数组为空意味着目前没有计划事件。
@@ -109,7 +110,7 @@ curl http://169.254.169.254/metadata/scheduledevents?api-version=2017-11-01 -H @
     "Events": [
         {
             "EventId": {eventID},
-            "EventType": "Reboot" | "Redeploy" | "Freeze" ",
+            "EventType": "Reboot" | "Redeploy" | "Freeze" | "Terminate",
             "ResourceType": "VirtualMachine",
             "Resources": [{resourceName}],
             "EventStatus": "Scheduled" | "Started",
@@ -130,7 +131,7 @@ DocumentIncarnation 是一个 ETag，它提供了一种简单的方法来检查�
 |属性  |  说明 |
 | - | - |
 | EventId | 此事件的全局唯一标识符。 <br /><br /> 示例： <br /><ul><li>602d9444-d2cd-49c7-8624-8643e7171297  |
-| EventType | 此事件造成的影响。 <br /><br /> 值： <br /><ul><li> `Freeze`：虚拟机计划暂停数秒。 CPU 和网络连接可能会暂停，但对内存或打开的文件没有影响。 <li>`Reboot`：计划重启虚拟机（非永久性内存丢失）。 <li>`Redeploy`：计划将虚拟机移到另一节点（临时磁盘将丢失）。 |
+| EventType | 此事件造成的影响。 <br /><br /> 值： <br /><ul><li> `Freeze`：虚拟机计划暂停数秒。 CPU 和网络连接可能会暂停，但对内存或打开的文件没有影响。 <li>`Reboot`：计划重启虚拟机（非永久性内存丢失）。 <li>`Redeploy`：计划将虚拟机移到另一节点（临时磁盘将丢失）。 <li> `Terminate`：计划删除虚拟机。 |
 | ResourceType | 此事件影响的资源的类型。 <br /><br /> 值： <ul><li>`VirtualMachine`|
 | 资源| 此事件影响的资源的列表。 它保证最多只能包含一个[更新域](manage-availability.md)的计算机，但可能不包含该更新域中的所有计算机。 <br /><br /> 示例： <br /><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
 | 事件状态 | 此事件的状态。 <br /><br /> 值： <ul><li>`Scheduled`：此事件计划在 `NotBefore` 属性指定的时间之后启动。<li>`Started`：此事件已启动。</ul> 不提供 `Completed` 或类似状态；事件完成后，将不再返回事件。
@@ -146,8 +147,12 @@ DocumentIncarnation 是一个 ETag，它提供了一种简单的方法来检查�
 | 冻结| 15 分钟 |
 | 重新启动 | 15 分钟 |
 | 重新部署 | 10 分钟 |
+| 终止 | 允许用户配置：5 - 15 分钟 |
 
 <!--Not Available on | Preempt | 30 seconds |-->
+
+> [!NOTE] 
+> 在某些情况下，由于硬件降级，Azure 能够预测主机故障，并会尝试通过对迁移进行计划来缓解服务中断。 受影响的虚拟机会收到计划事件，该事件的 `NotBefore` 通常是将来几天的时间。 实际时间因预测的故障风险评估而异。 Azure 会尝试尽可能提前 7 天发出通知，但实际时间会有所不同，如果预测硬件即将发生故障的可能性很大，则实际时间可能会更短。 为了最大程度地降低服务的风险，以防硬件在系统启动迁移之前出现故障，建议尽快自行重新部署虚拟机。
 
 ### <a name="event-scope"></a>事件作用域     
 计划的事件传送到：
@@ -173,9 +178,9 @@ DocumentIncarnation 是一个 ETag，它提供了一种简单的方法来检查�
 }
 ```
 
-#### <a name="powershell"></a>Powershell
+#### <a name="powershell"></a>PowerShell
 ```
-curl -H @{"Metadata"="true"} -Method POST -Body '{"StartRequests": [{"EventId": "f020ba2e-3bc0-4c40-a10b-86575a9eabd5"}]}' -Uri http://169.254.169.254/metadata/scheduledevents?api-version=2017-11-01
+curl -H @{"Metadata"="true"} -Method POST -Body '{"StartRequests": [{"EventId": "f020ba2e-3bc0-4c40-a10b-86575a9eabd5"}]}' -Uri http://169.254.169.254/metadata/scheduledevents?api-version=2019-01-01
 ```
 
 > [!NOTE] 
@@ -220,7 +225,7 @@ function Handle-ScheduledEvents($scheduledEvents)
 
 # Set up the scheduled events URI for a VNET-enabled VM
 $localHostIP = "169.254.169.254"
-$scheduledEventURI = 'http://{0}/metadata/scheduledevents?api-version=2017-11-01' -f $localHostIP 
+$scheduledEventURI = 'http://{0}/metadata/scheduledevents?api-version=2019-01-01' -f $localHostIP 
 
 # Get events
 $scheduledEvents = Get-ScheduledEvents $scheduledEventURI
@@ -248,4 +253,4 @@ foreach($event in $scheduledEvents.Events)
 - 有关 API 的更多信息，请参阅[实例元数据服务](instance-metadata-service.md)。
 - 了解 [Azure 中 Windows 虚拟机的计划内维护](planned-maintenance.md)。
 
-<!-- Update_Description: update meta properties, wording update  -->
+<!-- Update_Description: update meta properties, wording update, update link -->

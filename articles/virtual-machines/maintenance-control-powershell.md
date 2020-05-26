@@ -8,13 +8,14 @@ ms.workload: infrastructure-services
 origin.date: 01/31/2020
 ms.date: 04/30/2020
 ms.author: v-yeche
-ms.openlocfilehash: 1df21c266b542034eb662dbb90a9ed7ffa8741bc
-ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
+ms.openlocfilehash: 367abdf4a8695c94d7b736f78fc708c44b9c0a2b
+ms.sourcegitcommit: bfbd6694da33f703481386f2a3f16850c4e94bfa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82596512"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83417705"
 ---
+<!--Verified successfully-->
 # <a name="control-updates-with-maintenance-control-and-azure-powershell"></a>使用维护控制和 Azure PowerShell 来控制更新
 
 维护控制允许你决定何时向隔离的 VM 和 Azure 专用主机应用更新。 本主题介绍维护控制的 Azure PowerShell 选项。 有关使用维护控制的好处、其限制和其他管理选项的详细信息，请参阅[使用维护控制管理平台更新](maintenance-control.md)。
@@ -29,26 +30,26 @@ Install-Module -Name PowerShellGet -Repository PSGallery -Force
 
 如果在本地安装，请确保以管理员身份打开 PowerShell 提示符。
 
-系统还可能会要求你确认是否要从不受信任的存储库进行安装  。 键入 `Y` 或选择“全是”以安装该模块  。
+系统还可能会要求你确认是否要从不受信任的存储库进行安装。 键入 `Y` 或选择“全是”以安装该模块。
 
 ## <a name="create-a-maintenance-configuration"></a>创建维护配置
 
-创建一个资源组作为适用于配置的容器。 此示例在 chinaeast 中创建名为 myMaintenanceRG 的资源组   。 如果已有一个可供使用的资源组，则可跳过此部分，并在其余示例中将资源组名称替换为你自己的名称。
+创建一个资源组作为适用于配置的容器。 此示例在 chinaeast2 中创建名为 myMaintenanceRG 的资源组 。 如果已有一个可供使用的资源组，则可跳过此部分，并在其余示例中将资源组名称替换为你自己的名称。
 
 ```powershell
 New-AzResourceGroup `
-   -Location chinaeast `
+   -Location chinaeast2 `
    -Name myMaintenanceRG
 ```
 
-使用 [New-AzMaintenanceConfiguration](https://docs.microsoft.com/powershell/module/az.maintenance/new-azmaintenanceconfiguration) 创建维护配置。 此示例创建名为 myConfig 的维护配置，该配置的范围限定为主机  。 
+使用 [New-AzMaintenanceConfiguration](https://docs.microsoft.com/powershell/module/az.maintenance/new-azmaintenanceconfiguration) 创建维护配置。 此示例创建名为 myConfig 的维护配置，该配置的范围限定为主机。 
 
 ```powershell
 $config = New-AzMaintenanceConfiguration `
    -ResourceGroup myMaintenanceRG `
    -Name myConfig `
    -MaintenanceScope host `
-   -Location  chinaeast
+   -Location  chinaeast2
 ```
 
 使用 `-MaintenanceScope host` 确保将维护配置用于控制对主机的更新。
@@ -72,7 +73,7 @@ Get-AzMaintenanceConfiguration | Format-Table -Property Name,Id
 ```powershell
 New-AzConfigurationAssignment `
    -ResourceGroupName myResourceGroup `
-   -Location chinaeast `
+   -Location chinaeast2 `
    -ResourceName myVM `
    -ResourceType VirtualMachines `
    -ProviderName Microsoft.Compute `
@@ -87,7 +88,7 @@ New-AzConfigurationAssignment `
 ```powershell
 New-AzConfigurationAssignment `
    -ResourceGroupName myResourceGroup `
-   -Location chinaeast `
+   -Location chinaeast2 `
    -ResourceName myHost `
    -ResourceType hosts `
    -ResourceParentName myHostGroup `

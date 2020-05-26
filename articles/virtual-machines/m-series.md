@@ -5,23 +5,23 @@ services: virtual-machines
 author: rockboyfor
 ms.service: virtual-machines
 ms.topic: article
-origin.date: 02/05/2019
-ms.date: 03/09/2020
+origin.date: 03/31/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: 762818898b76a5ee52833ce82310649318209a4a
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 91d11ec8e19414522b1d837b7d9837d8e227563d
+ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79084511"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83392342"
 ---
 <!--Verified successfully-->
 <!--Partical Content from verified-->
 # <a name="m-series"></a>M 系列
 
-M 系列提供高 vCPU 计数（最多 128 个vCPU）和大量内存（最高 3.8 TiB）。 它也非常适用于极大型数据库或受益于高 vCPU 计数和大量内存的其他应用程序。 M 系列大小基于 Intel® Xeon® CPU E7-8890 v3 @ 2.50GHz
+M 系列提供高 vCPU 计数（最多 128 个vCPU）和大量内存（最高 3.8 TiB）。 它也非常适用于极大型数据库或受益于高 vCPU 计数和大量内存的其他应用程序。 Intel&reg; Xeon&reg; CPU E7-8890 v3 @ 2.50GHz 和 Intel&reg; Xeon&reg; Platinum 8280M 2.7GHz (Cascade Lake) 均支持 M 系列大小。
 
-M 系列 VM 采用 Intel® 超线程技术
+M 系列 VM 采用 Intel&reg; 超线程技术。
 
 ACU：160-180
 
@@ -79,5 +79,4 @@ ACU：160-180
 
 了解有关 [Azure 计算单元 (ACU)](acu.md) 如何帮助跨 Azure SKU 比较计算性能的详细信息。
 
-<!-- Update_Description: new article about m series -->
-<!--NEW.date: 03/09/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

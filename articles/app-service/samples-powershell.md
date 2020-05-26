@@ -5,15 +5,15 @@ tags: azure-service-management
 ms.assetid: b48d1137-8c04-46e0-b430-101e07d7e470
 ms.topic: sample
 origin.date: 03/08/2017
-ms.date: 01/13/2020
+ms.date: 05/22/2020
 ms.author: v-tawe
 ms.custom: mvc
-ms.openlocfilehash: f6af4fdbe54c799fc4259cc25f73b0b9bb5a092b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: aa3e821f1dc456562e265ebff876e22dbb6d3de1
+ms.sourcegitcommit: 981a75a78f8cf74ab5a76f9e6b0dc5978387be4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75600397"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83801317"
 ---
 # <a name="powershell-samples-for-azure-app-service"></a>Azure 应用服务的 PowerShell 示例
 
@@ -29,7 +29,7 @@ ms.locfileid: "75600397"
 | [创建应用并将代码部署到过渡环境](./scripts/powershell-deploy-staging-environment.md?toc=%2fpowershell%2fmodule%2ftoc.json) | 创建应用服务应用并为其配置用于暂存代码更改的部署槽位。 |
 |**配置应用**||
 | [将自定义域映射到应用](./scripts/powershell-configure-custom-domain.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 创建应用服务应用并将自定义域名映射到它。 |
-| [将自定义 SSL 证书绑定到应用](./scripts/powershell-configure-ssl-certificate.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 创建应用服务应用并将自定义域名的 SSL 证书绑定到它。 |
+| [将自定义 TLS/SSL 证书绑定到应用](./scripts/powershell-configure-ssl-certificate.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 创建应用服务应用并将自定义域名的 TLS/SSL 证书绑定到该应用。 |
 |**缩放应用**||
 | [手动缩放应用](./scripts/powershell-scale-manual.md?toc=%2fpowershell%2fmodule%2ftoc.json) | 创建应用服务应用并将其在 2 个实例之间进行缩放。 |
 | [缩放具有高可用性体系结构的全球应用](./scripts/powershell-scale-high-availability.md?toc=%2fpowershell%2fmodule%2ftoc.json) | 在两个不同地理区域中创建两个应用服务应用，并使用 Azure 流量管理器通过单个终结点使其可用。 |

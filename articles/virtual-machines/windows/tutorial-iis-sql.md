@@ -1,46 +1,43 @@
 ---
-title: 教程 - 在 Azure 中创建运行 SQL、IIS、.NET 堆栈的 VM | Azure
+title: 教程 - 使用 Azure PowerShell 在 Windows 虚拟机中安装 SQL、IIS、.NET 堆栈
 description: 本教程介绍如何在 Azure 中的 Windows 虚拟机上安装 Azure SQL、IIS、.NET 堆栈。
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: rockboyfor
 manager: digimobile
-editor: tysonn
 tags: azure-resource-manager
 ms.service: virtual-machines-windows
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 origin.date: 12/05/2018
-ms.date: 10/14/2019
+ms.date: 04/27/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 0ea4f0669d2843d31a1a1e7d99c50408e56dc217
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 0ed1e748bcebeaf5559eded5ea1502f8f4168387
+ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "72272842"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83392395"
 ---
-# <a name="tutorial-install-the-sql-iis-net-stack-in-a-windows-vm-with-azure-powershell"></a>教程：使用 Azure PowerShell 在 Windows VM 中安装 SQL、IIS、.NET 堆栈
+# <a name="tutorial-install-the-sql-iis-net-stack-in-a-windows-vm-with-azure-powershell"></a>教程：使用 Azure PowerShell 在 Windows 虚拟机中安装 SQL、IIS、.NET 堆栈
 
-在本教程中，我们将使用 Azure PowerShell 安装 SQL、IIS、.NET 堆栈。 此堆栈包含两个运行 Windows Server 2016 的 VM，一个带有 IIS 和 .NET，另一个带有 SQL Server。
+在本教程中，我们将使用 Azure PowerShell 安装 SQL、IIS、.NET 堆栈。 此堆栈包含两个运行 Windows Server 2016 的虚拟机，一个带有 IIS 和 .NET，另一个带有 SQL Server。
 
 > [!div class="checklist"]
-> * 创建 VM 
-> * 在 VM 上安装 IIS 和 .NET Core SDK
-> * 创建运行 SQL Server 的 VM
+> * 创建虚拟机 
+> * 在虚拟机上安装 IIS 和 .NET Core SDK
+> * 创建运行 SQL Server 的虚拟机
 > * 安装 SQL Server 扩展
 
 ## <a name="launch-azure-powershell"></a>启动 Azure PowerShell
 
 打开 Azure Powershell 控制台，并以管理员权限运行以下脚本。
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
-
 ## <a name="create-an-iis-vm"></a>创建 IIS VM 
 
-在此示例中，我们使用 [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) cmdlet 在 PowerShell 中快速创建 Windows Server 2016 VM，然后安装 IIS 和 .NET Framework。 IIS 和 SQL VM 共享资源组和虚拟网络，因此我们创建这些名称的变量。
+在此示例中，我们使用 [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) cmdlet 在 PowerShell 中快速创建 Windows Server 2016 Datacenter，然后安装 IIS 和 .NET Framework。 IIS 和 SQL VM 共享资源组和虚拟网络，因此我们创建这些名称的变量。
 
 <!--Notice: Remove Cloud Shell-->
 
@@ -125,12 +122,12 @@ Set-AzVMSqlServerExtension `
    -ResourceGroupName $resourceGroup  `
    -VMName mySQLVM `
    -Name "SQLExtension" `
-   -Location "chinanorth"
+   -Location "ChinaEast"
 ```
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，已使用 Azure PowerShell 安装 SQL&#92;IIS&#92;.NET 堆栈。 你已了解如何执行以下操作：
+在本教程中，已使用 Azure PowerShell 安装 SQL&#92;IIS&#92;.NET 堆栈。 你已了解如何：
 
 > [!div class="checklist"]
 > * 创建 VM 
@@ -138,9 +135,9 @@ Set-AzVMSqlServerExtension `
 > * 创建运行 SQL Server 的 VM
 > * 安装 SQL Server 扩展
 
-转到下一教程，了解如何使用 SSL 证书保护 IIS Web 服务器。
+转到下一教程，了解如何使用 TLS/SSL 证书保护 IIS Web 服务器。
 
 > [!div class="nextstepaction"]
-> [使用 SSL 证书保护 IIS Web 服务器](tutorial-secure-web-server.md)
+> [使用 TLS/SSL 证书保护 IIS Web 服务器](tutorial-secure-web-server.md)
 
-<!-- Update_Description: update meta properties, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

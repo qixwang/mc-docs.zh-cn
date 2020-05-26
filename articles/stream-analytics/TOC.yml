@@ -38,8 +38,6 @@
       href: stream-analytics-stream-analytics-query-patterns.md
     - name: 分析 JSON 和 AVRO 数据
       href: stream-analytics-parsing-json.md
-    - name: 事件排序注意事项
-      href: stream-analytics-out-of-order-and-late-events.md
     - name: 检查点和重播
       href: stream-analytics-concepts-checkpoint-replay.md
 - name: 操作方式指南
@@ -111,8 +109,6 @@
       href: stream-analytics-job-diagram-with-metrics.md
     - name: 诊断日志
       href: stream-analytics-job-diagnostic-logs.md
-    - name: 事件中心接收方
-      href: stream-analytics-event-hub-consumer-groups.md
 - name: 参考
   items:
     - name: Azure PowerShell

@@ -65,6 +65,8 @@
       href: user-overview.md
     - name: 用户配置文件属性
       href: user-profile-attributes.md
+    - name: SSO 会话
+      href: session-overview.md
 - name: 操作指南
   items:
     - name: 应用集成
@@ -138,11 +140,6 @@
           href: idp-pass-through-user-flow.md
     - name: 自定义策略
       items:
-        - name: 创建策略
-          items:
-            - name: 启用“使我保持登录状态”
-              href: custom-policy-keep-me-signed-in.md
-              displayName: kmsi
         - name: UX 自定义
           items:
             - name: 自定义语言
@@ -152,7 +149,9 @@
         - name: 令牌和会话管理
           items:
             - name: 自定义令牌
-              href: custom-policy-manage-sso-and-token-config.md
+              href: configure-tokens-custom-policy.md
+            - name: 配置会话行为
+              href: session-behavior-custom-policy.md
         - name: 传递外部 IdP 令牌
           href: idp-pass-through-custom.md
         - name: 自适应体验
@@ -222,6 +221,8 @@
                       href: technical-profiles-overview.md
                     - name: 关于验证技术配置文件
                       href: validation-technical-profile.md
+                    - name: Application Insights
+                      href: application-insights-technical-profile.md
                     - name: Azure Active Directory
                       href: active-directory-technical-profile.md
                     - name: Azure 多重身份验证
@@ -240,6 +241,8 @@
                       href: restful-technical-profile.md
                     - name: SAML
                       href: saml-technical-profile.md
+                    - name: SAML 标识提供者
+                      href: saml-identity-provider-technical-profile.md
                     - name: SAML 令牌颁发者
                       href: saml-issuer-technical-profile.md
                     - name: 自断言
@@ -297,7 +300,7 @@
       href: error-codes.md
     - name: 扩展应用
       href: extensions-app.md
-    - name: Identity Experience Framework 发行说明
+    - name: IEF 发行说明
       href: custom-policy-developer-notes.md
     - name: Microsoft Graph API 操作
       href: microsoft-graph-operations.md

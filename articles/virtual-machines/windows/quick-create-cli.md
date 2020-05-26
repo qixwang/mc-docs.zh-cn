@@ -5,7 +5,6 @@ services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: rockboyfor
 manager: digimobile
-editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-windows
@@ -13,15 +12,15 @@ ms.topic: quickstart
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 origin.date: 07/02/2019
-ms.date: 10/14/2019
+ms.date: 04/27/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 9fcebd2c4cc30d6e714f81b3360bee24cb65aa05
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 227a7ab7051a9822e82159e797d6a84b73c2d952
+ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "72272538"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83392217"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-with-the-azure-cli"></a>快速入门：使用 Azure CLI 创建 Windows 虚拟机
 
@@ -33,13 +32,13 @@ Azure CLI 用于从命令行或脚本创建和管理 Azure 资源。 本快速�
 
 <!--MOONCAKE: az cli 2.0 is put next paragrapgh-->
 
-打开本地 Shell 运行以下脚本。 如果需要安装或升级，请参阅[安装 Azure CLI](https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest)。
+打开本地 Azure CLI 运行以下脚本。 如果需要安装或升级，请参阅[安装 Azure CLI](https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest)。
 
 [!INCLUDE [azure-cli-2-azurechinacloud-environment-parameter](../../../includes/azure-cli-2-azurechinacloud-environment-parameter.md)]
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-使用 [az group create](https://docs.azure.cn/cli/group?view=azure-cli-latest#az-group-create) 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 以下示例在“chinaeast”  位置创建名为“myResourceGroup”  的资源组：
+使用 [az group create](https://docs.azure.cn/cli/group?view=azure-cli-latest#az-group-create) 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 以下示例在“chinaeast”位置创建名为“myResourceGroup”的资源组：
 
 ```azurecli
 az group create --name myResourceGroup --location chinaeast
@@ -47,22 +46,22 @@ az group create --name myResourceGroup --location chinaeast
 
 ## <a name="create-virtual-machine"></a>创建虚拟机
 
-使用 [az vm create](https://docs.azure.cn/cli/vm?view=azure-cli-latest#az-vm-create) 创建 VM。 以下示例创建一个名为 myVM  的 VM。 此示例使用 azureuser  作为管理用户名。 
+使用 [az vm create](https://docs.azure.cn/cli/vm?view=azure-cli-latest#az-vm-create) 创建 VM。 以下示例创建一个名为 myVM 的 VM。 此示例使用 azureuser 作为管理用户名。 
 
-必须更改 `--admin-password` 的值，否则它将失败。 将其更改为符合 [Azure VM 的密码要求](/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm)的密码。 用户名和密码将在以后连接到 VM 时使用。
+你将需要提供符合 [Azure VM 密码要求](/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm
+)的密码。 使用以下示例时，系统将提示你在命令行中输入密码。 你还可以在 `--admin-password` 参数中添加密码值。 用户名和密码将在以后连接到 VM 时使用。
 
 ```azurecli
 az vm create \
     --resource-group myResourceGroup \
     --name myVM \
     --image win2016datacenter \
-    --admin-username azureuser \
-    --admin-password myPassword
+    --admin-username azureuser 
 ```
 
 创建 VM 和支持资源需要几分钟时间。 以下示例输出表明 VM 创建操作已成功。
 
-```azurecli
+```output
 {
   "fqdns": "",
   "id": "/subscriptions/<guid>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM",
@@ -124,4 +123,4 @@ az group delete --name myResourceGroup
 > [!div class="nextstepaction"]
 > [Azure Windows 虚拟机教程](./tutorial-manage-vm.md)
 
-<!--Update_Description: update meta properties -->
+<!-- Update_Description: update meta properties, wording update, update link -->

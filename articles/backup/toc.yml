@@ -23,12 +23,16 @@
       href: tutorial-backup-azure-vm.md
     - name: 还原磁盘
       href: tutorial-restore-disk.md
+    - name: 还原单个文件
+      href: tutorial-restore-files.md
     - name: 在 Azure VM 上备份 SQL Server
       href: tutorial-sql-backup.md
     - name: 备份 Azure VM 中的 SAP HANA 数据库
       href: tutorial-backup-sap-hana-db.md
     - name: 备份 Windows Server
       href: tutorial-backup-windows-server-to-azure.md
+    - name: 将文件还原到 Windows Server
+      href: tutorial-backup-restore-files-windows-server.md
     - name: Azure VM 上的 SAP HANA 数据库 - 使用 CLI
       items:
         - name: 备份 SAP HANA 数据库 - CLI
@@ -57,10 +61,14 @@
           href: backup-azure-backup-faq.md
         - name: 常见问题解答 - Azure VM 备份
           href: backup-azure-vm-backup-faq.md
+        - name: 常见问题解答 - MARS 代理
+          href: backup-azure-file-folder-backup-faq.md
         - name: 常见问题解答 - 备份 Azure VM 上的 SQL Server 数据库
           href: faq-backup-sql-server.md
         - name: 常见问题解答 - 备份 Azure VM 上的 SAP HANA 数据库
           href: sap-hana-faq-backup-azure-vm.md
+        - name: 常见问题解答 - Azure 备份服务器和 DPM
+          href: backup-azure-dpm-azure-server-faq.md
     - name: 备份体系结构
       href: backup-architecture.md
 - name: 操作方法指南
@@ -71,17 +79,15 @@
           href: backup-azure-recovery-services-vault-overview.md
         - name: 创建
           href: backup-create-rs-vault.md
-        - name: 删除
+        - name: Delete
           href: backup-azure-delete-vault.md
-        - name: 移动
-          href: backup-azure-move-recovery-services-vault.md
         - name: 管理
           href: backup-azure-manage-windows-server.md
     - name: Azure VM 备份
       items:
         - name: 概述
           href: backup-azure-vms-introduction.md
-        - name: 备份
+        - name: Backup
           items:
             - name: 使用 Azure 备份即时还原来备份和还原 Azure VM
               href: backup-instant-restore-capability.md
@@ -113,7 +119,7 @@
       items:
         - name: 概述
           href: backup-azure-sql-database.md
-        - name: 备份
+        - name: Backup
           href: backup-sql-server-database-azure-vms.md
         - name: 还原
           href: restore-sql-database-azure-vm.md
@@ -121,8 +127,18 @@
           href: manage-monitor-sql-database-backup.md
     - name: 使用 MARS 代理的 Windows 备份
       items:
-        - name: 备份
+        - name: 概述
+          href: backup-azure-about-mars.md
+        - name: 安装或升级
           items:
+            - name: 安装 MARS 代理
+              href: install-mars-agent.md
+            - name: 升级 MARS 代理
+              href: upgrade-mars-agent.md
+        - name: Backup
+          items:
+            - name: 备份 Windows Server 文件和文件夹
+              href: backup-windows-with-mars-agent.md
             - name: 备份 Windows Server 系统状态
               href: backup-azure-system-state.md
         - name: 还原
@@ -131,17 +147,19 @@
               href: backup-azure-restore-windows-server.md
             - name: 还原 Windows Server 系统状态
               href: backup-azure-restore-system-state.md
+        - name: 管理
+          href: backup-azure-manage-mars.md
     - name: Azure 文件共享备份
       items:
         - name: 使用 PowerShell
           items:
-            - name: 备份
+            - name: Backup
               href: backup-azure-afs-automation.md
     - name: 备份 Azure VM 上的 SAP HANA 数据库
       items:
         - name: 概述
           href: sap-hana-db-about.md
-        - name: 备份
+        - name: Backup
           href: backup-azure-sap-hana-database.md
         - name: 还原
           href: sap-hana-db-restore.md
@@ -165,6 +183,8 @@
               href: backup-mabs-unattended-install.md
         - name: 保护工作负荷
           items:
+            - name: 备份 Hyper-V 虚拟机
+              href: back-up-hyper-v-virtual-machines-mabs.md
             - name: VMware 服务器
               href: backup-azure-backup-server-vmware.md
             - name: Exchange
@@ -177,6 +197,8 @@
               href: backup-mabs-system-state-and-bmr.md
         - name: 从 Azure 备份服务器恢复数据
           href: backup-azure-alternate-dpm-server.md
+        - name: 使用 Azure 备份服务器还原 VMware VM
+          href: restore-azure-backup-server-vmware.md
     - name: Azure Stack 上的 Azure 备份服务器
       items:
         - name: 安装 Azure 备份服务器
@@ -209,12 +231,34 @@
           href: backup-azure-backup-server-import-export-.md
     - name: 监视和警报
       items:
+        - name: 使用备份资源管理器
+          href: monitor-azure-backup-with-backup-explorer.md
         - name: 使用 Azure 门户
           href: backup-azure-monitoring-built-in-monitor.md
         - name: 使用 Azure Monitor
           href: backup-azure-monitoring-use-azuremonitor.md
+    - name: 报告
+      items:
+        - name: 配置 Azure 备份报表
+          items:
+            - name: 配置 Azure 备份报表
+              href: configure-reports.md
+        - name: 配置恢复服务保管库的诊断事件
+          items:
+            - name: 使用恢复服务保管库的诊断设置
+              href: backup-azure-diagnostic-events.md
+            - name: 资源特定诊断事件的 Log Analytics 数据模型
+              href: backup-azure-reports-data-model.md
+            - name: Azure 备份的 Log Analytics 数据模型（Azure 诊断模式）
+              href: backup-azure-diagnostics-mode-data-model.md
     - name: 自动化
       items:
+        - name: Azure 备份的内置 Azure Policy
+          items:
+            - name: 使用 Azure Policy 在创建 VM 时自动启用备份
+              href: backup-azure-auto-enable-backup.md
+            - name: 大规模配置保管库诊断设置
+              href: azure-policy-configure-diagnostics.md
         - name: PowerShell
           items:
             - name: Azure 门户中的 Azure VM
@@ -241,10 +285,12 @@
               href: backup-azure-arm-userestapi-restoreazurevms.md
             - name: 管理 Azure 备份作业
               href: backup-azure-arm-userestapi-managejobs.md
-        - name: 资源管理器模板
+        - name: Resource Manager 模板
           href: backup-rm-template-samples.md
     - name: 安全性
       items:
+        - name: 概述
+          href: security-overview.md
         - name: 基于角色的访问控制
           href: backup-rbac-rs-vault.md
         - name: 云工作负荷的安全性
@@ -271,6 +317,8 @@
           href: backup-sql-server-azure-troubleshoot.md
         - name: Azure VM 中的 SAP HANA 备份
           href: backup-azure-sap-hana-database-troubleshoot.md
+        - name: 系统状态
+          href: backup-azure-system-state-troubleshoot.md
 - name: 参考
   items:
     - name: .NET
@@ -283,10 +331,12 @@
       href: 'https://docs.microsoft.com/rest/api/backup/'
     - name: REST - 恢复服务保管库
       href: 'https://docs.microsoft.com/rest/api/recoveryservices/'
-    - name: 资源管理器模板
+    - name: Resource Manager 模板
       href: 'https://docs.microsoft.com/azure/templates/microsoft.recoveryservices/allversions'
 - name: 资源
   items:
+    - name: 合规性
+      href: compliance-offerings.md
     - name: Azure 路线图
       href: 'https://azure.microsoft.com/roadmap/'
     - name: MSDN 论坛

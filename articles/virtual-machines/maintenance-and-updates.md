@@ -42,7 +42,7 @@ Azure 定期更新其平台，以提高虚拟机的主机基础结构的可靠�
 
 此类更新可能会影响某些应用程序。 将 VM 实时迁移到另一主机时，某些敏感的工作负荷可能会有几分钟出现导致 VM 暂停的性能略微下降情况。 若要准备 VM 维护并减小 Azure 维护期间造成的影响，请尝试使用此类应用程序的适用于 [Windows](./windows/scheduled-events.md) 或 [Linux](./linux/scheduled-events.md) 的计划事件。 
 
-公共预览版中还提供了一项维护控制的功能，这项功能可以帮助管理不需要重新启动的维护。 必须使用 [Azure 专用主机](./linux/dedicated-hosts.md)。 使用维护控制可以选择跳过平台更新并选择 35 天滚动时段内的某个时间应用更新。 有关详细信息，请参阅[使用维护控制和 Azure CLI 来控制更新](maintenance-control-cli.md)。
+公共预览版中还提供了一项“维护控制”功能，这项功能可以帮助管理不需要重新启动的维护。 必须使用 [Azure 专用主机](./linux/dedicated-hosts.md)。 使用维护控制可以选择跳过平台更新并选择在 35 天滚动时段内的某个时间应用更新。 有关详细信息，请参阅[使用维护控制和 Azure CLI 来控制更新](maintenance-control-cli.md)。
 
 <!--Not Available on or an [isolated VM](../security/fundamentals/isolation-choices.md)-->
 

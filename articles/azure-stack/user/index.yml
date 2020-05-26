@@ -1,45 +1,73 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Azure Stack Hub 用户文档
+summary: Azure Stack Hub 是一个混合云平台，可用于通过公司或服务提供商的数据中心使用 Azure 服务。
 metadata:
   title: Azure Stack Hub 文档 - 教程和 API 参考
-  meta.description: azure-stack
-  services: azure-stack
-  author: WenJason
-  manager: digimobile
-  layout: LandingPage
-  ms.assetid: cbf798da-6f1a-7d4d-7707-5d5e02589e22
+  description: Azure Stack Hub 是一个混合云平台，可用于通过公司或服务提供商的数据中心使用 Azure 服务。
   ms.service: azure-stack
-  ms.tgt_pltfrm: from-team
-  ms.devlang: from-team
   ms.topic: landing-page
-  origin.date: 07/11/2019
-  ms.date: 02/24/2020
+  author: WenJason
   ms.author: v-jay
-abstract:
-  description: Azure Stack Hub 是一个混合云平台，可用于通过公司或服务提供商的数据中心使用 Azure 服务。 开发人员可以在 Azure Stack Hub 上生成应用。 然后，可将这些应用部署到 Azure Stack Hub 或 Azure，也可生成利用 Azure Stack Hub 云与 Azure 之间的连接的真正混合式应用。 使用快速入门和教程了解如何创建资源和部署应用。<br/><br/>如果你是 Azure Stack Hub 操作员并想要管理基础结构和提供服务，请参阅<a href="../operator/">操作员文档</a>。<br/><br/>如果你是对 Azure Stack 开发工具包 (ASDK)、Azure Stack Hub（可以免费下载和使用）的单节点部署感兴趣的 Azure Stack Hub 用户，请参阅我们的 <a href="../asdk">ASDK 文档</a>。
-sections:
-  - title: Azure Stack Hub 入门
-    items:
-      - type: list
-        style: cards
-        className: cardsA
-        items:
-          - html: '<a href="/azure-stack/user/azure-stack-dev-start"> <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_code-edit.svg" alt=""> <br><b>开发 Azure Stack Hub 的解决方案</b></a> <p>使用 Windows 10、Linux 或 macOS 工作站开发适用于 Azure Stack Hub 的应用程序。</p>'
-          - html: '<a href="/azure-stack/operator/azure-stack-powershell-install"> <img height="48" width="48" src="https://docs.microsoft.com/media/logos/logo_powershell.svg" alt=""> <br><b>Azure Stack Hub PowerShell</b></a> <p>通过 PowerShell 轻松管理 Azure Stack Hub 资源。</p>'
-          - html: '<a href="/azure-stack/user/azure-stack-version-profiles-azurecli2"> <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_cligeneric.svg" alt=""> <br><b>Azure 命令行界面 (CLI)</b></a> <p>用于管理 Azure Stack Hub 资源的命令行体验。</p>'
-  - title: Azure Stack Hub 上的基础结构即服务 (IaaS)
-    items:
-      - type: list
-        style: cards
-        className: cardsA
-        items:
-          - html: '<a href="/azure-stack/user/azure-stack-quick-linux-portal"> <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_vmm-cloud.svg" alt=""> <br><b>快速入门 - 创建 VM</b></a> <p>创建 VM 来托管应用。</p>'
-          - html: '<a href="/azure-stack/user/azure-stack-dev-start-deploy-app"> <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_web-color.svg" alt=""> <br><b>托管用代码编写的应用。</b></a> <p>在 Azure Stack Hub 中设置 VM，并使用 C#、Java、Python、Go、Ruby 或 NodeJS 部署应用。</p>'
-  - title: Azure Stack Hub 上的平台即服务 (PaaS)
-    items:
-      - type: list
-        style: cards
-        className: cardsA
-        items:
-          - html: <a href="/azure-stack/user/azure-stack-solution-template-service-fabric-cluster"> <img height="48" width="48" src="/azure-stack/user/media/index/service-fabric-cluster.png" alt=""> <br><b>部署 Service Fabric 群集</b></a> <p>在 Azure Stack Hub 中部署受保护的 Service Fabric 群集。</p>
+  origin.date: 03/19/2020
+  ms.date: 05/18/2020
+  ms.openlocfilehash: 2cf1ac98d2d2c204aaf99af0c0fd3f460e51f00e
+  ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 05/15/2020
+  ms.locfileid: "83422008"
+landingContent:
+- title: 关于 Azure Stack Hub
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 Azure Stack Hub？
+      url: user-overview.md
+    - text: Azure 与 Azure Stack Hub 之间的差异
+      url: azure-stack-considerations.md
+- title: 入门
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: 创建 Windows VM
+      url: azure-stack-quick-windows-portal.md
+    - text: 创建 Linux VM
+      url: azure-stack-quick-linux-portal.md
+  - linkListType: tutorial
+    links:
+    - text: 将 C# Web 应用部署到 Windows VM
+      url: azure-stack-dev-start-howto-vm-dotnet.md
+    - text: 部署 Java Web 应用
+      url: azure-stack-dev-start-howto-vm-java.md
+    - text: 部署 Python Web 应用
+      url: azure-stack-dev-start-howto-vm-python.md
+- title: 配置客户端
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: 安装 Azure Stack Hub PowerShell
+      url: /azure-stack/operator/azure-stack-powershell-install
+    - text: 为 Azure Stack Hub 安装 CLI
+      url: azure-stack-version-profiles-azurecli2.md
+  - linkListType: sample
+    links:
+    - text: 使用 Docker 运行 PowerShell
+      url: azure-stack-powershell-user-docker.md
+    - text: 使用 Visual Studio Code
+      url: azure-stack-dev-start-vscode-azure.md
+- title: Azure Stack Hub 上的基础结构即服务 (IaaS)
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 配置虚拟网络
+      url: deploy-foundational-patterns.md
+    - text: 快速入门 - 创建 VM
+      url: azure-stack-quick-linux-portal.md
+    - text: 托管用代码编写的应用
+      url: azure-stack-dev-start-deploy-app.md
+- title: Azure Stack Hub 上的平台即服务 (PaaS)
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 部署 Service Fabric 群集
+      url: azure-stack-solution-template-service-fabric-cluster.md

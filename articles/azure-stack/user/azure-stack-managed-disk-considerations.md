@@ -4,20 +4,20 @@ description: 了解 Azure Stack Hub 中托管磁盘和托管映像的差异与�
 author: WenJason
 ms.topic: article
 origin.date: 01/22/2020
-ms.date: 03/23/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: jiahan
 ms.lastreviewed: 03/23/2019
-ms.openlocfilehash: eab2844e479c49fe0f02edf2926aa60d2dcd1f61
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 19b398f94aa9d2cff756ecc34dfdfca7120dcf04
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79547026"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422643"
 ---
 # <a name="azure-stack-hub-managed-disks-differences-and-considerations"></a>Azure Stack Hub 托管磁盘：差异与注意事项
 
-本文汇总了 [Azure Stack Hub 中的托管磁盘](azure-stack-manage-vm-disks.md)与 [Azure 中的托管磁盘](/virtual-machines/windows/managed-disks-overview)之间的差异  。 有关 Azure Stack Hub 与 Azure 之间的大致差异的详细信息，请参阅[重要注意事项](azure-stack-considerations.md)一文。
+本文汇总了 [Azure Stack Hub 中的托管磁盘](azure-stack-manage-vm-disks.md)与 [Azure 中的托管磁盘](/virtual-machines/windows/managed-disks-overview)之间的差异。 有关 Azure Stack Hub 与 Azure 之间的大致差异的详细信息，请参阅[重要注意事项](azure-stack-considerations.md)一文。
 
 托管磁盘通过管理与 VM 磁盘关联的[存储帐户](../operator/azure-stack-manage-storage-accounts.md)简化了 IaaS 虚拟机 (VM) 的磁盘管理。
 
@@ -55,7 +55,8 @@ ms.locfileid: "79547026"
 
 Azure Stack Hub 托管磁盘支持以下 API 版本：
 
-- 2017-03-30
+- 2017-03-30 
+- 2017-12-01（仅限托管映像，无磁盘，无快照）
 
 ## <a name="convert-to-managed-disks"></a>转换为托管磁盘
 
@@ -128,7 +129,7 @@ New-AzureRmVM -VM $VirtualMachine -ResourceGroupName $ResourceGroupName -Locatio
 
 ## <a name="managed-images"></a>托管映像
 
-Azure Stack Hub 支持托管映像，可让你在通用化 VM（非托管和托管的 VM）上创建托管映像对象，以后只能创建托管磁盘 VM。  托管映像可实现以下两种方案：
+Azure Stack Hub 支持托管映像，可让你在通用化 VM（非托管和托管的 VM）上创建托管映像对象，以后只能创建托管磁盘 VM。 托管映像可实现以下两种方案：
 
 - 你有通用化的非托管 VM，后来想要使用托管磁盘。
 - 你有通用化的托管 VM，并想要创建多个类似的托管 VM。
@@ -217,8 +218,8 @@ New-AzureRmVM -ResourceGroupName $ResourceGroupName -Location $Location -VM $VmC
 应用 1808 或更高版本的更新后，必须先进行以下配置更改，然后再使用托管磁盘：
 
 - 如果订阅是在应用 1808 更新之前创建的，请遵循以下步骤来更新订阅。 否则，在此订阅中部署 VM 可能会失败，并出现错误消息“磁盘管理器发生内部错误。”
-   1. 在 Azure Stack Hub 用户门户中，转到“订阅”，找到相应订阅。  依次单击“资源提供程序”、“Microsoft.Compute”  、“重新注册”  。 
-   2. 在同一订阅下，转到“访问控制(标识和访问管理)”，验证“Azure Stack Hub - 托管磁盘”是否已列出。  
+   1. 在 Azure Stack Hub 用户门户中，转到“订阅”，找到相应订阅。 依次单击“资源提供程序”、“Microsoft.Compute”、“重新注册”。
+   2. 在同一订阅下，转到“访问控制(标识和访问管理)”，验证“Azure Stack Hub - 托管磁盘”是否已列出。 
 - 如果使用多租户环境，请让云操作员（可以是组织内部或来自服务提供商的操作员）根据[此文](../operator/azure-stack-enable-multitenancy.md#registering-azure-stack-hub-with-the-guest-directory)中的步骤重新配置每个来宾目录。 否则，在与该来宾目录关联的订阅中部署 VM 可能会失败，并出现错误消息“磁盘管理器中出现内部错误。”
 
 ## <a name="next-steps"></a>后续步骤

@@ -23,7 +23,7 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 05/13/2020
 ms.locfileid: "83367869"
 ---
-# <a name="network-connectivity-monitoring-with-connection-monitor-preview"></a>用连接监视器（预览版）进行监视的网络连接
+# <a name="network-connectivity-monitoring-with-connection-monitor-preview"></a>使用连接监视器（预览版）进行网络连接监视
 
 连接监视器（预览版）在 Azure 网络观察程序中提供统一的端到端连接监视。 连接监视器（预览版）功能支持混合部署和 Azure 云部署。 网络观察程序提供的工具可用于监视、诊断和查看针对 Azure 部署的与连接相关的指标。
 
@@ -38,12 +38,12 @@ ms.locfileid: "83367869"
 
 下面是连接监视器（预览版）的一些优点：
 
-* 适用于 Azure 和混合监视需求的统一的直观体验
+* 适用于 Azure 和混合监视需求的直观一致的体验
 * 跨区域且跨工作区的连接监视
 * 更高的探测频率，更好地了解网络性能
 * 为混合部署提供更快的警报
 * 支持基于 HTTP、TCP 和 ICMP 的连接检查 
-* 针对 Azure 和非 Azure 测试设置的指标和 Log Analytics 支持
+* 同时适用于 Azure 和非 Azure 测试设置的指标和 Log Analytics 支持
 
 ![显示连接监视器如何与 Azure VM、非 Azure 主机、终结点和数据存储位置进行交互的示意图](./media/connection-monitor-2-preview/hero-graphic.png)
 
@@ -59,15 +59,15 @@ ms.locfileid: "83367869"
 
 ## <a name="install-monitoring-agents"></a>安装监视代理
 
-连接监视器依赖轻型的可执行文件来运行连接性检查。  它支持来自 Azure 环境和本地环境的连接性检查。 你使用的可执行文件取决于 VM 是托管在 Azure 上还是托管在本地。
+连接监视器依赖轻型的可执行文件来运行连接性检查。  它同时支持来自 Azure 环境和本地环境的连接性检查。 使用的可执行文件取决于 VM 是托管在 Azure 上还是托管在本地。
 
 ### <a name="agents-for-azure-virtual-machines"></a>Azure 虚拟机代理
 
-若要使连接监视器将 Azure VM 识别为监视源，请在其上安装网络观察程序代理虚拟机扩展。 此扩展也称为*网络观察程序扩展*。 Azure 虚拟机需要扩展来触发端对端监控和其他高级功能。 
+若要使连接监视器将 Azure VM 识别为监视源，请在其上安装网络观察程序代理虚拟机扩展。 此扩展也称为*网络观察程序扩展*。 Azure 虚拟机需要该扩展来触发端对端监控和其他高级功能。 
 
-可以在[创建 VM](https://docs.azure.cn/network-watcher/connection-monitor#create-the-first-vm) 时安装网络观察程序扩展。 你还可以为 [Linux](https://docs.azure.cn/virtual-machines/extensions/network-watcher-linux) 和 [Windows](https://docs.azure.cn/virtual-machines/extensions/network-watcher-windows) 分别安装、配置网络观察程序扩展并对其进行故障排除。
+可以在[创建 VM](https://docs.azure.cn/network-watcher/connection-monitor#create-the-first-vm) 时安装网络观察程序扩展。 还可以为 [Linux](https://docs.azure.cn/virtual-machines/extensions/network-watcher-linux) 和 [Windows](https://docs.azure.cn/virtual-machines/extensions/network-watcher-windows) 分别安装、配置网络观察程序扩展并对其进行故障排除。
 
-对于网络安全组 (NSG) 或防火墙的规则可以阻止源和目标之间的通信。 连接监视器检测到此问题并将其显示为拓扑中的诊断消息。 若要启用连接监视，请确保 NSG 和防火墙规则允许在源和目标之间使用 TCP 或 ICMP 上的数据包。
+用于网络安全组 (NSG) 或防火墙的规则可以阻止源和目标之间的通信。 连接监视器检测到此问题并将其显示为拓扑中的诊断消息。 若要启用连接监视，请确保 NSG 和防火墙规则允许在源和目标之间使用 TCP 或 ICMP 上的数据包。
 
 ### <a name="agents-for-on-premises-machines"></a>本地计算机的代理
 
@@ -85,7 +85,7 @@ ms.locfileid: "83367869"
 
 ## <a name="create-a-connection-monitor"></a>创建连接监视器 
 
-连接监视器会定期监视通信。 它会通知你有关可访问性和延迟的更改情况。 你还可以在源代理和目标终结点之间检查当前的和历史的网络拓扑。
+连接监视器会定期监视通信。 它会通知你有关可访问性和延迟的更改情况。 还可以检查源代理和目标终结点之间当前的和历史的网络拓扑。
 
 源可以是 Azure VM，源也可以是具有已安装的监视代理的本地计算机。 目标终结点可以是 Office 365 URL、Dynamics 365 URL、自定义 URL、Azure VM 资源 ID、IPv4、IPv6、FQDN 或任何域名。
 
@@ -108,7 +108,7 @@ ms.locfileid: "83367869"
 * **终结点** – 参与连接检查的源或目标。 终结点的示例包括 Azure VM、本地代理、URL 和 IP。
 * **测试配置** – 针对测试的特定于协议的配置。 根据选定协议，可以定义端口、阈值、测试频率和其他参数。
 * **测试组** – 包含源终结点、目标终结点和测试配置的组。 连接监视器可包含多个测试组。
-* **测试** – 将源终结点、目标终结点和测试配置组合在一起。 测试是可用监视数据的最精细级别。 监视数据包括检查失败的百分比和往返时间 (RTT)。
+* **测试** – 将源终结点、目标终结点和测试配置组合在一起。 测试是可用于监视数据的最精细级别。 监视数据包括检查失败的百分比和往返时间 (RTT)。
 
  ![显示连接监视器的示意图（该图定义了测试组和测试之间的关系）](./media/connection-monitor-2-preview/cm-tg-2.png)
 
@@ -121,7 +121,7 @@ ms.locfileid: "83367869"
    * **连接监视器名称** - 添加连接监视器的名称。 使用针对 Azure 资源的标准命名规则。
    * **订阅** - 为连接监视器选择订阅。
    * **区域** - 为连接监视器选择区域。 只能选择在此区域创建的源 VM。
-   * **工作区配置** - 工作区包含监视数据。 你可以使用自定义工作区或默认工作区。 
+   * **工作区配置** - 工作区包含监视数据。 可以使用自定义工作区或默认工作区。 
        * 若要使用默认工作区，请选择此复选框。 
        * 若要选择自定义工作区，请清除此复选框。 然后为自定义工作区选择订阅和区域。 
 1. 在选项卡底部，选择“下一步：测试组”。
@@ -131,16 +131,16 @@ ms.locfileid: "83367869"
 1. 在“测试组”选项卡上，选择“+ 测试组” 。 若要设置测试组，请参阅[在连接监视器中创建测试组](#create-test-groups-in-a-connection-monitor)。 
 1. 在选项卡底部，选择“下一步：查看 + 创建”可查看连接监视器。
 
-   ![显示“测试组”选项卡和窗格的屏幕截图（可以在其中添加测试组详细信息）](./media/connection-monitor-2-preview/create-tg.png)
+   ![显示“测试组”选项卡和窗格（可以在其中添加测试组详细信息）的屏幕截图](./media/connection-monitor-2-preview/create-tg.png)
 
-1. 在“查看 + 创建”选项卡上，先查看基本信息和测试组，再创建连接监视器。 如果需要编辑连接监视器：
+1. 先在“查看 + 创建”选项卡上查看基本信息和测试组，再创建连接监视器。 如果需要编辑连接监视器：
    * 若要编辑基本详细信息，请选择铅笔图标。
    * 若要编辑测试组，请将其选中。
 
    > [!NOTE] 
    > “查看 + 创建”选项卡显示连接监视器预览阶段每月的成本。 目前，“当前成本”列显示无需付费。 连接监视器公开上市之后，此列才会显示每月费用。 
    > 
-   > 即使在连接监视器预览阶段，也会收取 Log Analytics 引入费用。
+   > 在连接监视器预览阶段，仍需支付 Log Analytics 引入费用。
 
 1. 准备好创建连接监视器后，在“查看 + 创建”选项卡的底部，选择“创建” 。
 
@@ -389,26 +389,26 @@ armclient PUT $ARM/$SUB/$NW/connectionMonitors/$connectionMonitorName/?api-versi
 
 ### <a name="create-test-groups-in-a-connection-monitor"></a>在连接监视器中创建测试组
 
-每个连接监视器中的测试组都包括可在网络参数上进行测试的源和目标。 它们测试的是失败检查的百分比和测试配置上的 RTT。
+每个连接监视器中的测试组都包括按网络参数进行测试的源和目标。 它们测试的是失败检查的百分比和基于测试配置的 RTT。
 
 在 Azure 门户中，若要在连接监视器中创建测试组，请为以下字段指定值：
 
 * **禁用测试组** - 可以选择此字段，为测试组指定的所有源和目标禁用监视。 默认情况下，此选择处于未选中状态。
 * **名称** - 命名测试组。
-* **源** - 如果在 Azure VM 和本地计算机上安装了代理，则可以将其指定为源。 若要为源安装代理，请参阅[安装监视代理](#install-monitoring-agents)。
+* **源** - 如果在 Azure VM 和本地计算机上安装了代理，则可以将前二者均指定为源。 若要为源安装代理，请参阅[安装监视代理](#install-monitoring-agents)。
    * 若要选择 Azure 代理，请选择“Azure 代理”选项卡。此处只能看到绑定到创建连接监视器时指定的区域的 VM。 默认情况下，会将 VM 分组到它们所属的订阅中。 已折叠这些组。 
    
        可以从订阅级别向下钻取到层次结构中的其他级别：
 
       订阅 > 资源组 > VNET > 子网 > 具有代理的 VM    
 
-      还可以更改“分组依据”字段的值，以从任何其他级别启动树。 例如，如果按虚拟网络分组，则会看到层次结构（VNET > 子网 > 具有代理的 VM）中具有代理的 VM  。
+      还可以更改“分组依据”字段的值，从任何其他级别启动树。 例如，如果按虚拟网络分组，则会看到层次结构（VNET > 子网 > 具有代理的 VM）中具有代理的 VM  。
 
       ![连接监视器的屏幕截图（显示“添加源”面板和“Azure 代理”选项卡）](./media/connection-monitor-2-preview/add-azure-sources.png)
 
    * 若要选择本地代理，请选择“非 Azure 代理”选项卡。默认情况下，代理按区域分组到工作区中。 所有这些工作区都配置了网络性能监视器解决方案。 
    
-       如果需要将网络性能监视器添加到工作区，请从 [Azure 市场](https://market.azure.cn/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview)网络性能监视器。 有关如何添加网络性能监视器的信息，请参阅 [Azure Monitor 中的监视解决方案](https://docs.azure.cn/azure-monitor/insights/solutions)。 
+       如果需要将网络性能监视器添加到工作区，请通过 [Azure 市场](https://market.azure.cn/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview)获取。 有关如何添加网络性能监视器的信息，请参阅 [Azure Monitor 中的监视解决方案](https://docs.azure.cn/azure-monitor/insights/solutions)。 
    
        在“创建连接监视器”视图的“基本信息”选项卡上，已选择默认区域 。 如果更改了区域，则可以在新区域的工作区中选择代理。 还可以更改“分组依据”字段的值，以按子网进行分组。
 
@@ -448,7 +448,7 @@ armclient PUT $ARM/$SUB/$NW/connectionMonitors/$connectionMonitorName/?api-versi
     * **测试频率** - 使用此字段以选择源在指定协议和指定端口上端对端连接目标的频率。 可以选择 30 秒、1 分钟、5 分钟、15 分钟或 30 分钟。 源将根据所选的值来测试与目标的连接。  例如，如果选择 30 秒，则源将在 30 秒的时间段内至少检查一次与目标的连接。
     * **成功阈值** - 可以在以下网络参数上设置阈值：
        * **检查失败** - 设置在源使用指定条件检查到目标的连接时可能检查失败的百分比。 对于 TCP 或 ICMP 协议，检查失败的百分比可能会与数据包丢失的百分比相同。 对于 HTTP 协议，此字段表示未接收到响应的 HTTP 请求的百分比。
-       * **往返时间** - 设置 RTT（以毫秒为单位），用于确定源通过测试配置连接到目标所需的时间。
+       * **往返时间** - 设置 RTT（以毫秒为单位），用于确定源按测试配置连接到目标所需的时间。
     
        ![显示在连接监视器中设置测试配置的位置的屏幕截图](./media/connection-monitor-2-preview/add-test-config.png)
 
@@ -608,7 +608,7 @@ armclient PUT $ARM/$SUB/$NW/connectionMonitors/$connectionMonitorName/?api-versi
 
 #### <a name="metrics-in-azure-monitor"></a>Azure Monitor 中的指标
 
-在连接监视器（预览版）体验之前创建的连接监视器中，所有四个指标都可用：探测失败、AverageRoundtripMs、ChecksFailedPercent（预览版）和 RoundTripTimeMs（预览版）。 在连接监视器（预览版）体验中创建的连接监视器中，数据仅可用于标记为（预览版）”的指标。
+在连接监视器（预览版）体验推出之前创建的连接监视器中，所有四个指标都可用：探测失败、AverageRoundtripMs、ChecksFailedPercent（预览版）和 RoundTripTimeMs（预览版）。 在连接监视器（预览版）体验中创建的连接监视器中，数据仅可用于标记为（预览版）”的指标。
 
 ![显示连接监视器（预览版）中指标的屏幕截图](./media/connection-monitor-2-preview/monitor-metrics.png)
 
@@ -642,14 +642,14 @@ armclient PUT $ARM/$SUB/$NW/connectionMonitors/$connectionMonitorName/?api-versi
 
 ## <a name="diagnose-issues-in-your-network"></a>诊断网络中的问题
 
-连接监视器（预览版）可以帮助你诊断连接监视器中的问题和网络中的问题。 混合网络中的问题由你之前安装的 Log Analytics 代理进行检测。 Azure 中的问题由网络观察程序扩展进行检测。 
+连接监视器（预览版）可以帮助你诊断连接监视器中的问题和网络中的问题。 混合网络中的问题通过你之前安装的 Log Analytics 代理进行检测。 Azure 中的问题由网络观察程序扩展进行检测。 
 
 可以在网络拓扑的 Azure 网络中查看问题。
 
-针对其源为本地 VM 的网络，可以检测到以下问题：
+对于源为本地 VM 的网络，可以检测到以下问题：
 
 * 请求已超时。
-* 终结点永远无法由 DNS 进行解析。 URL 无效。
+* DNS 未解析终结点 - 暂时或永久。 URL 无效。
 * 无法找到主机。
 * 源无法连接到目标。 无法通过 ICMP 访问目标。
 * 与证书相关的问题： 

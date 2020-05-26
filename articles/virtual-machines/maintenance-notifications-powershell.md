@@ -1,29 +1,25 @@
 ---
 title: 使用 PowerShell 获取 Azure VM 的维护通知
 description: 使用 PowerShell 查看在 Azure 中运行的虚拟机的维护通知并启动自助维护。
-services: virtual-machines
-documentationcenter: ''
 author: rockboyfor
-editor: ''
-tags: azure-service-management,azure-resource-manager
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: article
 origin.date: 11/19/2019
-ms.date: 02/17/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: 3de634fb557e8ca3086578a68e54aecb8265d65b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: b6963e9abc890fd575ce0185b68fd92ce33a1cb8
+ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77429964"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83392474"
 ---
 # <a name="handling-planned-maintenance-using-powershell"></a>使用 PowerShell 处理计划内维护
 
 **本文适用于同时运行 Linux 和 Windows 的虚拟机。**
 
-可以使用 Azure Powershell 查看何时安排 VM 进行[维护](maintenance-notifications.md)。 使用 [ 参数时可通过 ](https://docs.microsoft.com/powershell/module/az.compute/get-azvm)Get-AzVM`-status` cmdlet 获得计划内维护信息。
+可以使用 Azure PowerShell 查看何时安排 VM 进行[维护](maintenance-notifications.md)。 使用 `-status` 参数时可通过 [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) cmdlet 获得计划内维护信息。
 
 仅当有计划内维护时，才会返回维护信息。 如果未计划任何影响 VM 的维护，该 cmdlet 不返回任何维护信息。 
 
@@ -33,7 +29,7 @@ Get-AzVM -ResourceGroupName myResourceGroup -Name myVM -Status
 
 在 MaintenanceRedeployStatus 下返回以下属性： 
 
-| 值 | 说明   |
+| Value | 说明   |
 |-------|---------------|
 | IsCustomerInitiatedMaintenanceAllowed | 指示此时是否可以在 VM 上启动维护 |
 | PreMaintenanceWindowStartTime         | 可以在 VM 上启动维护的自助式维护时段的起点 |
@@ -86,6 +82,8 @@ Restart-AzVM -PerformMaintenance -name $vm.Name -ResourceGroupName $rg.ResourceG
 
 ## <a name="classic-deployments"></a>经典部署
 
+[!INCLUDE [classic-vm-deprecation](../../includes/classic-vm-deprecation.md)]
+
 如果你仍在使用由经典部署模型部署的旧 VM，则可以使用 PowerShell 查询 VM，并启动维护。
 
 若要获取 VM 的维护状态，请键入：
@@ -104,5 +102,4 @@ Restart-AzureVM -InitiateMaintenance -ServiceName <service name> -Name <VM name>
 
 还可以使用 [Azure CLI](maintenance-notifications-cli.md) 或[门户](maintenance-notifications-portal.md)处理计划内维护。
 
-<!-- Update_Description: new article about maintenance notifications powershell -->
-<!--NEW.date: 02/17/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

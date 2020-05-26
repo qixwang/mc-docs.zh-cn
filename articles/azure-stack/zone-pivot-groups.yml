@@ -1,0 +1,17 @@
+### YamlMime:ZonePivotGroups
+groups:
+- id: state-connected-disconnected
+  title: 网络状态
+  prompt: 选择部署连接模型
+  pivots:
+  - id: state-connected
+    title: 已连接
+  - id: state-disconnected
+    title: 已断开连接
+metadata:
+  ms.openlocfilehash: ab8cf8b71de73464f5afe0197929cab07685c425
+  ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 05/15/2020
+  ms.locfileid: "83422886"

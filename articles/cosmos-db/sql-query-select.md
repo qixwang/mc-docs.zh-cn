@@ -4,33 +4,32 @@ description: 了解 Azure Cosmos DB 的 SQL SELECT 子句。 将 SQL 用作 Azur
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
-origin.date: 06/10/2019
-ms.date: 04/27/2020
+origin.date: 05/08/2020
+ms.date: 05/12/2020
 ms.author: v-yeche
-ms.openlocfilehash: 8c0d7efa8608f09906022e20dd0d8a94c484e102
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.openlocfilehash: 7ba84199a24e4e834a502c30bcd66111eb28762e
+ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82134866"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83392364"
 ---
 # <a name="select-clause-in-azure-cosmos-db"></a>Azure Cosmos DB 中的 SELECT 子句
 
-每个查询按 ANSI SQL 标准由 SELECT 子句和可选的 [FROM](sql-query-from.md) 和 [WHERE](sql-query-where.md) 子句组成。 通常，将会枚举 FROM 子句中的源，WHERE 子句对该源应用一个筛选器，以检索 JSON 项的子集。 然后，SELECT 子句在 select 列表中投影请求的 JSON 值。
+每个查询按 ANSI SQL 标准由 `SELECT` 子句和可选的 [FROM](sql-query-from.md) 和 [WHERE](sql-query-where.md) 子句组成。 通常，将枚举 `FROM` 子句中的源，`WHERE` 子句对该源应用一个筛选器，以检索 JSON 项的子集。 然后，`SELECT` 子句在 select 列表中投影请求的 JSON 值。
 
 ## <a name="syntax"></a>语法
 
 ```sql
 SELECT <select_specification>  
 
-<select_specification> ::=   
-      '*'   
-      | [DISTINCT] <object_property_list>   
+<select_specification> ::=
+      '*'
+      | [DISTINCT] <object_property_list>
       | [DISTINCT] VALUE <scalar_expression> [[ AS ] value_alias]  
 
-<object_property_list> ::=   
+<object_property_list> ::=
 { <scalar_expression> [ [ AS ] property_alias ] } [ ,...n ]  
-
 ```  
 
 ## <a name="arguments"></a>参数
@@ -97,122 +96,6 @@ SELECT <select_specification>
         "city": "Seattle"
       }
     }]
-```
-
-### <a name="quoted-property-accessor"></a>带引号的属性访问器
-可以使用带引号的属性运算符 [] 访问属性。 例如，由于再也无法解析标识符“Families”，因此 `SELECT c.grade` and `SELECT c["grade"]` 是等效的。 此语法很适合用于转义包含空格和特殊字符的属性，或者其名称与 SQL 关键字或保留字相同的属性。
-
-```sql
-    SELECT f["lastName"]
-    FROM Families f
-    WHERE f["id"] = "AndersenFamily"
-```
-
-### <a name="nested-properties"></a>嵌套属性
-
-以下示例投影两个嵌套属性：`f.address.state` 和 `f.address.city`。
-
-```sql
-    SELECT f.address.state, f.address.city
-    FROM Families f
-    WHERE f.id = "AndersenFamily"
-```
-
-结果有：
-
-```json
-    [{
-      "state": "WA",
-      "city": "Seattle"
-    }]
-```
-### <a name="json-expressions"></a>JSON 表达式
-
-投影也支持 JSON 表达式，如以下示例所示：
-
-```sql
-    SELECT { "state": f.address.state, "city": f.address.city, "name": f.id }
-    FROM Families f
-    WHERE f.id = "AndersenFamily"
-```
-
-结果有：
-
-```json
-    [{
-      "$1": {
-        "state": "WA",
-        "city": "Seattle",
-        "name": "AndersenFamily"
-      }
-    }]
-```
-
-在上述示例中，SELECT 子句需要创建一个 JSON 对象；由于该示例未提供键，因此子句使用了隐式参数变量名称 `$1`。 以下查询返回两个隐式参数变量：`$1` 和 `$2`。
-
-```sql
-    SELECT { "state": f.address.state, "city": f.address.city },
-           { "name": f.id }
-    FROM Families f
-    WHERE f.id = "AndersenFamily"
-```
-
-结果有：
-
-```json
-    [{
-      "$1": {
-        "state": "WA",
-        "city": "Seattle"
-      }, 
-      "$2": {
-        "name": "AndersenFamily"
-      }
-    }]
-```
-## <a name="reserved-keywords-and-special-characters"></a>保留关键字和特殊字符
-
-如果你的数据包含与保留关键字（例如“order”或“Group”）同名的属性，则针对这些文档的查询会产生语法错误。 你应该显式地将该属性包含在 `[]` 字符中，以便成功运行查询。
-
-例如，下面是一个文档，具有一个名为 `order` 的属性和一个包含特殊字符的属性 `price($)`：
-
-```json
-{
-  "id": "AndersenFamily",
-  "order": [
-     {
-         "orderId": "12345",
-         "productId": "A17849",
-         "price($)": 59.33
-     }
-  ],
-  "creationDate": 1431620472,
-  "isRegistered": true
-}
-```
-
-如果运行包含 `order` 属性或 `price($)` 属性的查询，则会收到语法错误。
-
-```sql
-SELECT * FROM c where c.order.orderid = "12345"
-```
-```sql
-SELECT * FROM c where c.order.price($) > 50
-```
-结果为：
-
-`
-Syntax error, incorrect syntax near 'order'
-`
-
-应按如下所示重写相同的查询：
-
-```sql
-SELECT * FROM c WHERE c["order"].orderId = "12345"
-```
-
-```sql
-SELECT * FROM c WHERE c["order"]["price($)"] > 50
 ```
 
 ## <a name="next-steps"></a>后续步骤

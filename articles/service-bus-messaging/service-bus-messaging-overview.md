@@ -1,5 +1,5 @@
 ---
-title: Azure 服务总线消息传送概述 | Microsoft Docs
+title: Azure 服务总线消息传送概述 | Azure
 description: 本文粗略概述了 Azure 服务总线（一种完全托管的企业集成消息代理）。
 services: service-bus-messaging
 documentationcenter: ''
@@ -12,12 +12,12 @@ origin.date: 11/04/2019
 ms.date: 02/25/2020
 ms.custom: mvc
 ms.author: v-lingwu
-ms.openlocfilehash: 6065f7c49f9fe1554b8ecdaf866e27a93df1d8c0
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: f4f5894d18c50680f92ecd45f58370ebe9300742
+ms.sourcegitcommit: a04b0b1009b0c62f2deb7c7acee75a1304d98f87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79291764"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83796802"
 ---
 # <a name="what-is-azure-service-bus"></a>什么是 Azure 服务总线？
 
@@ -27,7 +27,7 @@ Microsoft Azure 服务总线是一种完全托管的企业集成消息中转站�
 
 * *消息*。 传输业务数据，例如销售或采购订单、日志或库存变动。
 * *分离应用程序*。 提高应用程序和服务的可靠性和可伸缩性。 客户端和服务不必同时处于联机状态。
-* *主题和订阅*。 启用发布者和订阅者之间的 1:n 关系  。
+* *主题和订阅*。 启用发布者和订阅者之间的 1:n 关系。
 * *消息会话*。 实现要求消息排序或消息延迟的工作流。
 
 ## <a name="namespaces"></a>命名空间
@@ -36,21 +36,21 @@ Microsoft Azure 服务总线是一种完全托管的企业集成消息中转站�
 
 ## <a name="queues"></a>队列
 
-消息可以发送到队列，也可以从其接收。  在能够使用接收应用程序接收并处理消息之前，可以通过队列来存储消息。
+消息可以发送到队列，也可以从其接收。 在能够使用接收应用程序接收并处理消息之前，可以通过队列来存储消息。
 
 ![队列](./media/service-bus-messaging-overview/about-service-bus-queue.png)
 
-队列中的消息会排队，并在到达时加盖时间戳。 获得接受后，消息会安全地存储在冗余存储中。 消息以拉取模式传送，即仅按请求传送消息。 
+队列中的消息会排队，并在到达时加盖时间戳。 获得接受后，消息会安全地存储在冗余存储中。 消息以拉取模式传送，即仅按请求传送消息。
 
 ## <a name="topics"></a>主题
 
-也可通过主题发送和接收消息。  队列通常用于点到点通信，而主题则用于发布/订阅方案。
+也可通过主题发送和接收消息。 队列通常用于点到点通信，而主题则用于发布/订阅方案。
 
 ![主题](./media/service-bus-messaging-overview/about-service-bus-topic.png)
 
 主题可以有多个独立的订阅。 主题的订阅者可以收到发送到该主题的每个消息的副本。 订阅是命名实体。 订阅可以保留，但会过期或自动删除。
 
-你可能不希望单个订阅接收发送给某个主题的所有消息。 如果是这样，则可以使用“规则”和“筛选器”来定义触发可选操作的条件    。 可以筛选指定的消息并设置或修改消息属性。 有关详细信息，请参阅[主题筛选器和操作](topic-filters.md)。
+你可能不希望单个订阅接收发送给某个主题的所有消息。 如果是这样，则可以使用“规则”和“筛选器”来定义触发可选操作的条件  。 可以筛选指定的消息并设置或修改消息属性。 有关详细信息，请参阅[主题筛选器和操作](topic-filters.md)。
 
 ## <a name="advanced-features"></a>高级功能
 
@@ -82,7 +82,7 @@ Microsoft Azure 服务总线是一种完全托管的企业集成消息中转站�
 
 ### <a name="transactions"></a>事务
 
-一个事务将两个或更多操作组合成执行作用域  。 服务总线支持对单个事务作用域内的消息传送实体执行分组操作。 消息实体可以是队列、主题或订阅。 有关详细信息，请参阅[服务总线事务处理概述](service-bus-transactions.md)。
+一个事务将两个或更多操作组合成执行作用域。 服务总线支持对单个事务作用域内的消息传送实体执行分组操作。 消息实体可以是队列、主题或订阅。 有关详细信息，请参阅[服务总线事务处理概述](service-bus-transactions.md)。
 
 ### <a name="filtering-and-actions"></a>筛选和操作
 
@@ -90,7 +90,7 @@ Microsoft Azure 服务总线是一种完全托管的企业集成消息中转站�
 
 ### <a name="autodelete-on-idle"></a>出现空闲队列时自动删除
 
-可以使用“出现空闲队列时自动删除”功能指定一个空闲时间间隔，该时间间隔过后系统会自动删除队列。 最短持续时间为 5 分钟。 有关详细信息，请参阅 [QueueDescription.AutoDeleteOnIdle 属性](/dotnet/api/microsoft.servicebus.messaging.queuedescription.autodeleteonidle)。
+可以使用“出现空闲队列时自动删除”功能指定一个空闲时间间隔，该时间间隔过后系统会自动删除队列。 最短持续时间为 5 分钟。 有关详细信息，请参阅 [QueueDescription.AutoDeleteOnIdle 属性](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.queuedescription.autodeleteonidle)。
 
 ### <a name="duplicate-detection"></a>重复检测
 
@@ -103,7 +103,7 @@ Microsoft Azure 服务总线是一种完全托管的企业集成消息中转站�
 
 ### <a name="geo-disaster-recovery"></a>异地灾难恢复
 
-在 Azure 区域数据中心遭遇停机的情况下，可以使用异地灾难恢复在其他区域或数据中心进行数据处理，以实现连续运行。 有关详细信息，请参阅 [Azure 服务总线异地灾难恢复](service-bus-geo-dr.md)。
+在 Azure 区域或数据中心遭遇停机的情况下，可以使用异地灾难恢复在其他区域或数据中心进行数据处理，以实现连续运行。 有关详细信息，请参阅 [Azure 服务总线异地灾难恢复](service-bus-geo-dr.md)。
 
 ### <a name="security"></a>安全性
 

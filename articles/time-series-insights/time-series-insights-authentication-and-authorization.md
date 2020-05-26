@@ -10,14 +10,14 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 04/28/2020
-ms.custom: seodec18
-ms.openlocfilehash: 68c7008e45adf375864c21c1cb9969c94f6de88c
-ms.sourcegitcommit: e3512c5c2bbe61704d5c8cbba74efd56bfe91927
+ms.date: 05/20/2020
+ms.custom: seodec18, has-adal-ref
+ms.openlocfilehash: c25762f1ccf733d3f09553d5883afe9293f32c1e
+ms.sourcegitcommit: 87e789550ea49ff77c7f19bc68fad228009fcf44
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82267701"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83748164"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Azure 时序见解 API 的身份验证和授权
 
@@ -124,7 +124,7 @@ Azure Active Directory 应用注册流程涉及三个主要步骤。
 
    1. 随后可在应用程序调用时序见解 API 时，将令牌传入 `Authorization` 标头。
 
-* 开发人员也可以选择使用 MSAL 进行身份验证。 阅读[迁移到 MSAL](/active-directory/develop/msal-net-migration)，并查看我们的[使用 C# 管理 Azure 时序见解环境的正式版参考数据](time-series-insights-manage-reference-data-csharp.md)以了解更多信息。 
+* 开发人员也可以选择使用 MSAL 进行身份验证。 阅读[迁移到 MSAL](/active-directory/develop/msal-net-migration)，并查看我们的[使用 C# 管理 Azure 时序见解环境的正式版参考数据](time-series-insights-manage-reference-data-csharp.md)以了解更多信息。
 
 ## <a name="common-headers-and-parameters"></a>常用标头和参数
 
@@ -135,7 +135,7 @@ Azure Active Directory 应用注册流程涉及三个主要步骤。
 
 ### <a name="authentication"></a>身份验证
 
-若要对[时序见解 REST API](https://docs.microsoft.com/rest/api/time-series-insights/) 执行经过身份验证的查询，必须使用所选的 REST 客户端（Postman、JavaScript、C#）在[授权标头](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/authorizationserver/createorupdate)中传递有效的 OAuth 2.0 持有者令牌。 
+若要对[时序见解 REST API](https://docs.microsoft.com/rest/api/time-series-insights/) 执行经过身份验证的查询，必须使用所选的 REST 客户端（Postman、JavaScript、C#）在[授权标头](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/authorizationserver/createorupdate)中传递有效的 OAuth 2.0 持有者令牌。
 
 > [!TIP]
 > 阅读托管的 Azure 时序见解[客户端 SDK 示例可视化](https://tsiclientsample.azurewebsites.net/)，了解如何使用 [JavaScript 客户端 SDK](https://github.com/microsoft/tsiclient/blob/master/docs/API.md) 以及图表和图以编程方式使用时序见解 API 进行身份验证。
@@ -146,7 +146,7 @@ Azure Active Directory 应用注册流程涉及三个主要步骤。
 
 | 必需的请求标头 | 说明 |
 | --- | --- |
-| 授权 | 若要使用时序见解进行身份验证，必须在“授权”标头中传递有效的 OAuth 2.0 持有者令牌  。 | 
+| 授权 | 若要使用时序见解进行身份验证，必须在“授权”标头中传递有效的 OAuth 2.0 持有者令牌  。 |
 
 > [!IMPORTANT]
 > 令牌必须严格颁发给 `https://api.timeseries.azure.cn/` 资源（也称为令牌的“受众”）。

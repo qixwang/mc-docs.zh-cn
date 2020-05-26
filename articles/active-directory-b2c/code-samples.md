@@ -5,17 +5,17 @@ services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.author: v-junlch
-ms.date: 03/16/2020
+ms.date: 05/18/2020
 ms.custom: mvc
 ms.topic: sample
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 99e9504493a66b4067ae738676b8988dd66bd4e2
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: b02038cb23b1c7930fb02a24a8378dc94766fe6c
+ms.sourcegitcommit: 87e789550ea49ff77c7f19bc68fad228009fcf44
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79497119"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83748055"
 ---
 # <a name="azure-active-directory-b2c-code-samples"></a>Azure Active Directory B2C 代码示例
 
@@ -47,4 +47,10 @@ ms.locfileid: "79497119"
 | 示例 | 说明 |
 |--------| ----------- |
 | [javascript-msal-singlepageapp](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp) | 调用了一个 Web API 的单页应用程序 (SPA)。 通过 MSAL.js 使用 Azure AD B2C 完成身份验证。 |
+
+## <a name="saml-test-application"></a>SAML 测试应用程序
+
+| 示例 | 说明 |
+|--------| ----------- |
+| [saml-sp-tester](https://github.com/azure-ad-b2c/saml-sp-tester/tree/master/source-code) | SAML 测试应用程序，用于测试已配置为充当 SAML 标识提供者的 Azure AD B2C。 |
 

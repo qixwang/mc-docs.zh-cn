@@ -3,15 +3,15 @@ title: 常见问题
 description: 有关 Azure 容器注册表服务的常见问题的解答
 author: rockboyfor
 ms.topic: article
-origin.date: 07/02/2019
-ms.date: 04/06/2020
+origin.date: 03/18/2020
+ms.date: 04/30/2020
 ms.author: v-yeche
-ms.openlocfilehash: 41bb5f4d9d141bd0a4a3e52e626616d81ed8e776
-ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
+ms.openlocfilehash: 1155da9d8e61c54e3e594cb7642ae0b4b684215b
+ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82093223"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83392191"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>有关 Azure 容器注册表的常见问题解答
 
@@ -20,7 +20,9 @@ ms.locfileid: "82093223"
 ## <a name="resource-management"></a>资源管理
 
 - [是否可以使用资源管理器模板创建 Azure 容器注册表？](#can-i-create-an-azure-container-registry-using-a-resource-manager-template)
-- [是否会对 ACR 中的映像执行安全漏洞扫描？](#is-there-security-vulnerability-scanning-for-images-in-acr)
+    
+    <!--Not Available on - [Is there security vulnerability scanning for images in ACR?](#is-there-security-vulnerability-scanning-for-images-in-acr)-->
+    
 - [如何使用 Azure 容器注册表配置 Kubernetes？](#how-do-i-configure-kubernetes-with-azure-container-registry)
 - [如何获取容器注册表的管理员凭据？](#how-do-i-get-admin-credentials-for-a-container-registry)
 - [如何获取资源管理器模板中的管理员凭据？](#how-do-i-get-admin-credentials-in-a-resource-manager-template)
@@ -37,9 +39,10 @@ ms.locfileid: "82093223"
 
 <!--MOONCAKE: CORRECT THE DEPLOYMENT-->
 
-### <a name="is-there-security-vulnerability-scanning-for-images-in-acr"></a>是否会对 ACR 中的映像执行安全漏洞扫描？
-
-是的。 请参阅 [Twistlock](https://www.twistlock.com/2016/11/07/twistlock-supports-azure-container-registry/) 和 [Aqua](https://blog.aquasec.com/image-vulnerability-scanning-in-azure-container-registry) 的文档。
+<!--Not Available on ### Is there security vulnerability scanning for images in ACR?-->
+<!--Not Available on [Azure Security Center](/security-center/azure-container-registry-integration)-->
+<!--Not Available on [Twistlock](https://www.twistlock.com/2016/11/07/twistlock-supports-azure-container-registry/)-->
+<!--Not Available on [Aqua](https://blog.aquasec.com/image-vulnerability-scanning-in-azure-container-registry)-->
 
 ### <a name="how-do-i-configure-kubernetes-with-azure-container-registry"></a>如何使用 Azure 容器注册表配置 Kubernetes？
 
@@ -255,13 +258,19 @@ ACR 支持提供不同权限级别的[自定义角色](container-registry-roles.
 
 映像隔离目前是 ACR 的预览版功能。 可以启用注册表的隔离模式，使普通用户只能看到已成功通过安全扫描的映像。 有关详细信息，请参阅 [ACR GitHub 存储库](https://github.com/Azure/acr/tree/master/docs/preview/quarantine)。
 
+### <a name="how-do-i-enable-anonymous-pull-access"></a>如何实现匿名提取访问？
+
+为匿名（公共）提取访问设置 Azure 容器注册表目前是一项预览功能。 若要实现公共访问，请在 https://support.azure.cn/support/support-azure/ 中创建支持工单。 有关详细信息，请参阅 [Azure 反馈论坛](https://support.azure.cn/support/contact/)。
+
+<!--CORRECT ON https://support.azure.cn/support/support-azure/-->
+
 ## <a name="diagnostics-and-health-checks"></a>诊断和运行状况检查
 
 - [使用 `az acr check-health` 检查运行状况](#check-health-with-az-acr-check-health)
 - [Docker 提取失败并出现错误：net/http: 等待连接时取消了请求(等待标头时超过了 Client.Timeout)](#docker-pull-fails-with-error-nethttp-request-canceled-while-waiting-for-connection-clienttimeout-exceeded-while-awaiting-headers)
 - [Docker 推送成功，但 Docker 提取失败并出现错误：未授权: 需要身份验证](#docker-push-succeeds-but-docker-pull-fails-with-error-unauthorized-authentication-required)
 - [`az acr login` 成功，但 Docker 命令失败并出现错误：未授权: 需要身份验证](#az-acr-login-succeeds-but-docker-fails-with-error-unauthorized-authentication-required)
-- [启用和获取 Docker 守护程序的调试日志](#enable-and-get-the-debug-logs-of-the-docker-daemon) 
+- [启用和获取 Docker 守护程序的调试日志](#enable-and-get-the-debug-logs-of-the-docker-daemon)
 - [新用户权限在更新后可能不会立即生效](#new-user-permissions-may-not-be-effective-immediately-after-updating)
 - [未在 REST API 调用中以正确的格式指定身份验证信息](#authentication-information-is-not-given-in-the-correct-format-on-direct-rest-api-calls)
 - [为何 Azure 门户不列出我的所有存储库或标记？](#why-does-the-azure-portal-not-list-all-my-repositories-or-tags)
@@ -326,7 +335,7 @@ unauthorized: authentication required
 
 请确保使用全小写的服务器 URL（例如 `docker push myregistry.azurecr.cn/myimage:latest`），即使注册表资源名称是大写的或大小写混合的（例如 `myRegistry`）。
 
-### <a name="enable-and-get-the-debug-logs-of-the-docker-daemon"></a>启用和获取 Docker 守护程序的调试日志  
+### <a name="enable-and-get-the-debug-logs-of-the-docker-daemon"></a>启用和获取 Docker 守护程序的调试日志
 
 使用 `debug` 选项启动 `dockerd`。 首先创建 Docker 守护程序配置文件 (`/etc/docker/daemon.json`)（如果不存在），并添加 `debug` 选项：
 

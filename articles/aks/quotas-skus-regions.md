@@ -1,17 +1,18 @@
 ---
-title: Azure Kubernetes 服务 (AKS) 中的配额、SKU 和适用地区
+title: 资源、SKU、区域的限制
+titleSuffix: Azure Kubernetes Service
 description: 了解 Azure Kubernetes 服务 (AKS) 中的默认配额、受限制的节点 VM SKU 大小和适用地区。
 services: container-service
 ms.topic: conceptual
 origin.date: 04/09/2019
-ms.date: 03/09/2020
+ms.date: 05/18/2020
 ms.author: v-yeche
-ms.openlocfilehash: e289628f5fe9ef5a26886089a74177ccafc69ca8
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 094e2b7fb3002cbc28d87e23dc7d9dfdabb08d66
+ms.sourcegitcommit: 436a5dd9a446fe7b6d3c4d5bc76b652f7848c1ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79291326"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83393120"
 ---
 # <a name="quotas-virtual-machine-size-restrictions-and-region-availability-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中的配额、虚拟机大小限制和适用地区
 
@@ -55,7 +56,7 @@ AKS 群集中的每个节点都包含固定数量的计算资源，例如 vCPU �
 
 <!--MOONCAKE: CORRECT ON Support Type with Quota-->
 
-某些默认限制和配额可以提高。 如果资源支持提高配额，请通过 [Azure 支持请求][azure-support]来请求提高配额（请选择“配额”作为“支持类型”   ）。
+某些默认限制和配额可以提高。 如果资源支持提高配额，请通过 [Azure 支持请求][azure-support]来请求提高配额（请选择“配额”作为“支持类型” ）。
 
 <!--MOONCAKE: CORRECT ON Support Type with Quota-->
 

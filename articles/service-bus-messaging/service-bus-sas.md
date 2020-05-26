@@ -15,12 +15,12 @@ ms.workload: na
 origin.date: 12/20/2019
 ms.date: 1/2/2020
 ms.author: v-lingwu
-ms.openlocfilehash: 899fb64cae73dcdaf7ea2d23d7d6ba9dcfcf0849
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 1188f6e5d14dd05c7c13f411aef5024683cc2f51
+ms.sourcegitcommit: a04b0b1009b0c62f2deb7c7acee75a1304d98f87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80109756"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83796721"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>使用共享访问签名进行服务总线访问控制
 
@@ -32,9 +32,9 @@ SAS 可以根据授权规则来保护对服务总线的访问。 可以在命名
 
 共享访问签名是使用简单令牌的基于声明的授权机制。 使用 SAS 时，永远不会通过网络传递密钥。 密钥用于以加密方式将信息签名，以后，服务可以验证这些信息。 可以像使用用户名和密码一样使用 SAS。在用户名和密码方案中，客户端直接拥有授权规则名称和匹配的密钥。 此外，还可以像在联合安全模型中一样使用 SAS。在此模型中，客户端从安全令牌服务接收限时且经过签名的访问令牌，而无需拥有签名密钥。
 
-服务总线中的 SAS 身份验证配置了指定的[共享访问授权规则](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule)，这些规则具有关联的访问权限，以及一对主要和辅助加密密钥。 密钥是采用 Base64 表示法的 256 位值。 在服务总线的中继、队列和主题中，可以在命名空间级别配置规则。
+服务总线中的 SAS 身份验证配置了指定的[共享访问授权规则](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule)，这些规则具有关联的访问权限，以及一对主要和辅助加密密钥。 密钥是采用 Base64 表示法的 256 位值。 在服务总线的中继、队列和主题中，可以在命名空间级别配置规则。
 
-[共享访问签名](/dotnet/api/microsoft.servicebus.sharedaccesssignaturetokenprovider)令牌包含所选授权规则的名称、应访问的资源的 URI、即时过期时间，以及使用所选授权规则的主要或辅助加密密钥基于这些字段计算的 HMAC-SHA256 加密签名。
+[共享访问签名](https://docs.azure.cn/dotnet/api/microsoft.servicebus.sharedaccesssignaturetokenprovider)令牌包含所选授权规则的名称、应访问的资源的 URI、即时过期时间，以及使用所选授权规则的主要或辅助加密密钥基于这些字段计算的 HMAC-SHA256 加密签名。
 
 ## <a name="shared-access-authorization-policies"></a>共享访问授权策略
 
@@ -58,7 +58,7 @@ SAS 可以根据授权规则来保护对服务总线的访问。 可以在命名
 
 ## <a name="configuration-for-shared-access-signature-authentication"></a>共享访问签名身份验证的配置
 
-可以在服务总线命名空间、队列，或主题上配置 [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) 规则。 当前不支持在服务总线订阅上配置 [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule)，但是可以使用命名空间或主题上配置的规则来确保安全访问订阅。 有关说明此过程的工作示例，请参阅 [Using Shared Access Signature (SAS) authentication with Service Bus Subscriptions](https://code.msdn.microsoft.com/Using-Shared-Access-e605b37c)（将共享访问签名 (SAS) 身份验证与服务总线订阅配合使用）示例。
+可以在服务总线命名空间、队列，或主题上配置 [SharedAccessAuthorizationRule](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) 规则。 当前不支持在服务总线订阅上配置 [SharedAccessAuthorizationRule](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule)，但是可以使用命名空间或主题上配置的规则来确保安全访问订阅。 有关说明此过程的工作示例，请参阅 [Using Shared Access Signature (SAS) authentication with Service Bus Subscriptions](https://code.msdn.microsoft.com/Using-Shared-Access-e605b37c)（将共享访问签名 (SAS) 身份验证与服务总线订阅配合使用）示例。
 
 ![SAS](./media/service-bus-sas/service-bus-namespace.png)
 
@@ -95,9 +95,9 @@ SAS 令牌对于以 `signature-string` 中使用的 `<resourceURI>` 为前缀的
 
 ## <a name="regenerating-keys"></a>重新生成密钥
 
-建议定期重新生成 [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) 对象中使用的密钥。 提供了主要和辅助密钥槽，以便可以逐步轮换密钥。 如果应用程序通常使用主要密钥，则可将主要密钥复制到辅助密钥槽，并只在完成此过程后才重新生成主要密钥。 然后，可以在客户端应用程序（可以使用辅助槽中的旧主要密钥继续访问）中配置新的主要密钥值。 更新所有客户端后，可以重新生成辅助密钥，以便最终停用旧主要密钥。
+建议定期重新生成 [SharedAccessAuthorizationRule](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) 对象中使用的密钥。 提供了主要和辅助密钥槽，以便可以逐步轮换密钥。 如果应用程序通常使用主要密钥，则可将主要密钥复制到辅助密钥槽，并只在完成此过程后才重新生成主要密钥。 然后，可以在客户端应用程序（可以使用辅助槽中的旧主要密钥继续访问）中配置新的主要密钥值。 更新所有客户端后，可以重新生成辅助密钥，以便最终停用旧主要密钥。
 
-如果你知道或者怀疑密钥已泄漏，因此必须吊销这些密钥，则可以同时生成 [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) 的 [PrimaryKey](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) 和 [SecondaryKey](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule)，并用新的密钥替换它们。 此过程将使得由旧密钥签名的所有令牌失效。
+如果你知道或者怀疑密钥已泄漏，因此必须吊销这些密钥，则可以同时生成 [SharedAccessAuthorizationRule](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) 的 [PrimaryKey](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) 和 [SecondaryKey](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule)，并用新的密钥替换它们。 此过程将使得由旧密钥签名的所有令牌失效。
 
 ## <a name="shared-access-signature-authentication-with-service-bus"></a>服务总线的共享访问签名身份验证
 
@@ -107,7 +107,7 @@ SAS 令牌对于以 `signature-string` 中使用的 `<resourceURI>` 为前缀的
 
 ## <a name="access-shared-access-authorization-rules-on-an-entity"></a>访问实体上的共享访问授权规则
 
-使用服务总线 .NET Framework 库，可通过相应 [QueueDescription](/dotnet/api/microsoft.servicebus.messaging.queuedescription) 或 [TopicDescription](/dotnet/api/microsoft.servicebus.messaging.topicdescription) 中的 [AuthorizationRules](/dotnet/api/microsoft.servicebus.messaging.authorizationrules) 集合，访问在服务总线队列或主题上配置的 [Microsoft.ServiceBus.Messaging.SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) 对象。
+使用服务总线 .NET Framework 库，可通过相应 [QueueDescription](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.queuedescription) 或 [TopicDescription](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.topicdescription) 中的 [AuthorizationRules](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.authorizationrules) 集合，访问在服务总线队列或主题上配置的 [Microsoft.ServiceBus.Messaging.SharedAccessAuthorizationRule](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) 对象。
 
 下面的代码演示了如何向队列添加授权规则。
 
@@ -142,7 +142,7 @@ nsm.CreateQueue(qd);
 
 ## <a name="use-shared-access-signature-authorization"></a>使用共享访问签名授权
 
-使用具有服务总线 .NET 库的 Azure.NET SDK 的应用程序可以通过 [SharedAccessSignatureTokenProvider](/dotnet/api/microsoft.servicebus.sharedaccesssignaturetokenprovider) 类使用 SAS 授权。 下面的代码演示了使用令牌提供程序向服务总线队列发送消息。 如果不使用此处所示的代码，还可以向令牌提供程序工厂方法传递以前颁发的令牌。
+使用具有服务总线 .NET 库的 Azure.NET SDK 的应用程序可以通过 [SharedAccessSignatureTokenProvider](https://docs.azure.cn/dotnet/api/microsoft.servicebus.sharedaccesssignaturetokenprovider) 类使用 SAS 授权。 下面的代码演示了使用令牌提供程序向服务总线队列发送消息。 如果不使用此处所示的代码，还可以向令牌提供程序工厂方法传递以前颁发的令牌。
 
 ```csharp
 Uri runtimeUri = ServiceBusEnvironment.CreateServiceUri("sb",
@@ -161,7 +161,7 @@ sendClient.Send(helloMessage);
 
 连接字符串可以包含规则名称 (*SharedAccessKeyName*) 和规则密钥 (*SharedAccessKey*) 或以前颁发的令牌 (*SharedAccessSignature*)。 如果传递给接受连接字符串的任何构造函数或工厂方法中包含这些参数，则系统会自动创建并填充 SAS 令牌提供程序。
 
-请注意，要使用服务总线中继的 SAS 授权，可以使用服务总线命名空间上配置的 SAS 密钥。 如果在命名空间上显式创建中继（[NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) 与 [RelayDescription](/dotnet/api/microsoft.servicebus.messaging.relaydescription)）对象，可以只为该中继设置 SAS 规则。 若要使用服务总线订阅的 SAS 授权，可以使用服务总线命名空间或主题上配置的 SAS 密钥。
+请注意，要使用服务总线中继的 SAS 授权，可以使用服务总线命名空间上配置的 SAS 密钥。 如果在命名空间上显式创建中继（[NamespaceManager](https://docs.azure.cn/dotnet/api/microsoft.servicebus.namespacemanager) 与 [RelayDescription](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.relaydescription)）对象，可以只为该中继设置 SAS 规则。 若要使用服务总线订阅的 SAS 授权，可以使用服务总线命名空间或主题上配置的 SAS 密钥。
 
 ## <a name="use-the-shared-access-signature-at-http-level"></a>使用共享访问签名（在 HTTP 级别）
 
@@ -275,7 +275,7 @@ AMQP 消息包含一组属性，比简单消息包含更多信息。 SAS 令牌�
 | 将消息放入死信队列 |侦听 |任何有效队列地址 |
 | 获取与消息队列会话关联的状态 |侦听 |任何有效队列地址 |
 | 设置与消息队列会话关联的状态 |侦听 |任何有效队列地址 |
-| 安排消息稍后发送；例如，[ScheduleMessageAsync()](/dotnet/api/microsoft.azure.servicebus.queueclient.schedulemessageasync#Microsoft_Azure_ServiceBus_QueueClient_ScheduleMessageAsync_Microsoft_Azure_ServiceBus_Message_System_DateTimeOffset_) |侦听 | 任何有效队列地址
+| 安排消息稍后发送；例如，[ScheduleMessageAsync()](https://docs.azure.cn/dotnet/api/microsoft.azure.servicebus.queueclient.schedulemessageasync#Microsoft_Azure_ServiceBus_QueueClient_ScheduleMessageAsync_Microsoft_Azure_ServiceBus_Message_System_DateTimeOffset_) |侦听 | 任何有效队列地址
 | **主题** | | |
 | 创建主题 |管理 |任何命名空间地址 |
 | 删除主题 |管理 |任何有效主题地址 |

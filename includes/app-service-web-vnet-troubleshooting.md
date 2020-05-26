@@ -5,17 +5,17 @@ ms.topic: include
 origin.date: 02/27/2020
 ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: 5dacc149664a4e272bbf74e43d3753a55bb0d512
-ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
+ms.openlocfilehash: ea6608098681559065537dea4ff058b8f762e793
+ms.sourcegitcommit: 981a75a78f8cf74ab5a76f9e6b0dc5978387be4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82595304"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83801331"
 ---
-虽然此功能很容易设置，但这并不意味着你的体验不会遇到任何问题。 如果在访问所需终结点时遇到问题，可以使用某些实用程序来测试从应用控制台发出的连接。 可以使用两种控制台。 一种是 Kudu 控制台，另一种是 Azure 门户中的控制台。 若要访问应用中的 Kudu 控制台，请转到“工具”   >   “Kudu”。 此外，还可以通过 [sitename].scm.azurewebsites.net 访问 Kudo 控制台。 打开网站负载后，转到“调试控制台”选项卡  。若要从应用访问 Azure 门户托管的控制台，请转到“工具”   >   “控制台”。
+虽然此功能很容易设置，但这并不意味着你的体验不会遇到任何问题。 如果在访问所需终结点时遇到问题，可以使用某些实用程序来测试从应用控制台发出的连接。 可以使用两种控制台。 一种是 Kudu 控制台，另一种是 Azure 门户中的控制台。 若要访问应用中的 Kudu 控制台，请转到“工具” > “Kudu”。 此外，还可以通过 [sitename].scm.chinacloudsites.cn 访问 Kudo 控制台。 打开网站负载后，转到“调试控制台”选项卡。若要从应用访问 Azure 门户托管的控制台，请转到“工具” > “控制台”。
 
 #### <a name="tools"></a>工具
-由于存在安全约束，因此无法通过控制台运行 ping、nslookup 和 tracert 工具    。 为了填补此空白，我们添加了两个单独的工具。 我们添加了名为 nameresolver.exe 的工具，用于测试 DNS 功能  。 语法为：
+由于存在安全约束，因此无法通过控制台运行 ping、nslookup 和 tracert 工具  。 为了填补此空白，我们添加了两个单独的工具。 我们添加了名为 nameresolver.exe 的工具，用于测试 DNS 功能。 语法为：
 
     nameresolver.exe hostname [optional: DNS Server]
 
@@ -40,7 +40,7 @@ ms.locfileid: "82595304"
 **需要网关的 VNet 集成**
 * 点到站点地址范围是否在 RFC 1918 范围内 (10.0.0.0-10.255.255.255 / 172.16.0.0-172.31.255.255 / 192.168.0.0-192.168.255.255)？
 * 网关在门户中是否显示为已启动？ 如果网关处于关闭状态，则将其重新启动。
-* 证书是否显示正在同步？或者，你是否怀疑网络配置已更改？  如果证书未同步，或者你怀疑对虚拟网络配置做出了与 ASP 不同步的更改，请选择“同步网络”  。
+* 证书是否显示正在同步？或者，你是否怀疑网络配置已更改？  如果证书未同步，或者你怀疑对虚拟网络配置做出了与 ASP 不同步的更改，请选择“同步网络”。
 * 如果通过 VPN 传输，本地网关是否配置为将流量路由回 Azure？ 如果可以访问虚拟网络中的终结点，但不能访问本地的终结点，请检查路由。
 * 你是否正在尝试使用一个既支持点到站点连接，又支持 ExpressRoute 的共存网关？ VNet 集成不支持共存网关。
 
@@ -57,15 +57,15 @@ ms.locfileid: "82595304"
 
 其他调试步骤包括：
 
-* 连接到虚拟网络中的某个 VM，尝试在该处访问资源主机:端口。 若要针对 TCP 访问权限进行测试，请使用 PowerShell 命令 test-netconnection  。 语法为：
+* 连接到虚拟网络中的某个 VM，尝试在该处访问资源主机:端口。 若要针对 TCP 访问权限进行测试，请使用 PowerShell 命令 test-netconnection。 语法为：
 
       test-netconnection hostname [optional: -Port]
 
-* 在某个 VM 中启动应用程序，然后使用 tcpping 测试能否在应用的控制台中访问该主机和端口  。
+* 在某个 VM 中启动应用程序，然后使用 tcpping 测试能否在应用的控制台中访问该主机和端口。
 
 #### <a name="on-premises-resources"></a>本地资源 ####
 
-如果应用无法访问本地资源，请检查是否能够通过虚拟网络访问该资源。 请使用 test-netconnection PowerShell 命令来针对 TCP 访问权限进行测试  。 如果 VM 无法访问本地资源，原因可能是未正确配置 VPN 或 ExpressRoute 连接。
+如果应用无法访问本地资源，请检查是否能够通过虚拟网络访问该资源。 请使用 test-netconnection PowerShell 命令来针对 TCP 访问权限进行测试。 如果 VM 无法访问本地资源，原因可能是未正确配置 VPN 或 ExpressRoute 连接。
 
 如果虚拟网络托管的 VM 能够访问本地系统但应用无法访问，则可能是由于以下某个原因：
 

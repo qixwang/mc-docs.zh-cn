@@ -6,19 +6,19 @@ author: cephalin
 ms.service: app-service
 ms.topic: include
 origin.date: 02/02/2018
-ms.date: 02/02/2018
+ms.date: 05/22/2020
 ms.author: v-tawe
 ms.custom: include file
-ms.openlocfilehash: 7e46004a10e60ec9a2599767603786611284a1dd
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 0a1f83eadf72786e17db37fe05862ad9adb8f803
+ms.sourcegitcommit: 981a75a78f8cf74ab5a76f9e6b0dc5978387be4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "71059582"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83801215"
 ---
 使用 [az appservice plan create](/cli/appservice/plan?view=azure-cli-latest) 命令创建应用服务计划。
 
-[!INCLUDE [app-service-plan](app-service-plan.md)]
+<!-- [!INCLUDE [app-service-plan](app-service-plan.md)] -->
 
 以下示例在免费定价层中创建名为 `myAppServicePlan` 的应用服务计划：
 
@@ -28,7 +28,7 @@ az appservice plan create --name myAppServicePlan --resource-group myResourceGro
 
 创建应用服务计划后，Azure CLI 会显示类似于以下示例的信息：
 
-```json
+<pre>
 { 
   "adminSiteName": null,
   "appServicePlanName": "myAppServicePlan",
@@ -39,9 +39,9 @@ az appservice plan create --name myAppServicePlan --resource-group myResourceGro
   "location": "China North",
   "maximumNumberOfWorkers": 1,
   "name": "myAppServicePlan",
-  < JSON data removed for brevity. >
+  &lt; JSON data removed for brevity. &gt;
   "targetWorkerSizeId": 0,
   "type": "Microsoft.Web/serverfarms",
   "workerTierName": null
 } 
-```
+</pre>

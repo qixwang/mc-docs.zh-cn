@@ -3,37 +3,37 @@ title: 在数据中心发布 Azure Stack Hub 服务
 description: 了解如何在数据中心发布 Azure Stack Hub 服务。
 author: WenJason
 ms.topic: article
-origin.date: 12/11/2019
-ms.date: 02/24/2020
+origin.date: 04/10/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: wamota
 ms.lastreviewed: 12/11/2019
-ms.openlocfilehash: b452034a152394b175da5f483372d71b379a5274
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: d3e29bbad48ff6a0c29cf9ddb07e3103e81e61cb
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79291448"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422615"
 ---
-# <a name="publish-azure-stack-hub-services-in-your-datacenter"></a>在数据中心发布 Azure Stack Hub 服务 
+# <a name="publish-azure-stack-hub-services-in-your-datacenter"></a>在数据中心发布 Azure Stack Hub 服务
 
 Azure Stack Hub 会为其基础结构角色设置虚拟 IP 地址 (VIP)。 这些 VIP 是从公共 IP 地址池分配的。 每个 VIP 受软件定义的网络层中的访问控制列表 (ACL) 保护。 还可以在物理交换机（TOR 和 BMC）之间使用 ACL 来进一步强化解决方案。 将会根据部署时的指定，针对外部 DNS 区域中的每个终结点创建一个 DNS 条目。 例如，将为用户门户分配 DNS 主机条目 portal. *&lt;region>.&lt;fqdn>* 。
 
 以下体系结构图显示了不同的网络层和 ACL：
 
-![显示不同网络层和 ACL 的图表](media/azure-stack-integrate-endpoints/Integrate-Endpoints-01.png)
+![显示不同网络层和 ACL 的图表](media/azure-stack-integrate-endpoints/integrate-endpoints-01.svg)
 
-### <a name="ports-and-urls"></a>端口和 URL
+## <a name="ports-and-urls"></a>端口和 URL
 
 要使 Azure Stack Hub 服务（例如门户、Azure 资源管理器、DNS 等）可供外部网络使用，必须允许特定 URL、端口和协议的入站流量发往这些终结点。
- 
+
 在到传统代理服务器或防火墙的透明代理上行链路正在保护解决方案的部署中，必须允许特定的端口和 URL，以便进行[入站](azure-stack-integrate-endpoints.md#ports-and-protocols-inbound)和[出站](azure-stack-integrate-endpoints.md#ports-and-urls-outbound)通信。 这包括用于标识、市场、修补和更新、注册和使用情况数据的端口与 URL。
 
 SSL 流量拦截[不受支持](azure-stack-firewall.md#ssl-interception)，并且在访问终结点时可能会导致服务故障。 
 
 ## <a name="ports-and-protocols-inbound"></a>端口和协议（入站）
 
-将 Azure Stack Hub 终结点发布到外部网络需要一组基础结构 VIP。  “终结点 (VIP)”表显示了每个终结点、所需的端口和协议。 请参阅特定资源提供程序部署文档，了解需要其他资源提供程序（例如 SQL 资源提供程序）的终结点。
+将 Azure Stack Hub 终结点发布到外部网络需要一组基础结构 VIP。 “终结点 (VIP)”表显示了每个终结点、所需的端口和协议。 请参阅特定资源提供程序部署文档，了解需要其他资源提供程序（例如 SQL 资源提供程序）的终结点。
 
 此处未列出内部基础结构 VIP，因为发布 Azure Stack Hub 时不需要这些 VIP。 用户 VIP 是动态的，由用户自己定义，而不受 Azure Stack Hub 操作员的控制。
 
@@ -50,7 +50,7 @@ SSL 流量拦截[不受支持](azure-stack-firewall.md#ssl-interception)，并�
 |Azure 资源管理器（管理员）|Adminmanagement. *&lt;region>.&lt;fqdn>*|HTTPS|443|
 |门户（用户）|Portal. *&lt;region>.&lt;fqdn>*|HTTPS|443|
 |Azure 资源管理器（用户）|Management. *&lt;region>.&lt;fqdn>*|HTTPS|443|
-|图形|Graph. *&lt;region>.&lt;fqdn>*|HTTPS|443|
+|Graph|Graph. *&lt;region>.&lt;fqdn>*|HTTPS|443|
 |证书吊销列表|Crl. *&lt;region>.&lt;fqdn>*|HTTP|80|
 |DNS|&#42;. *&lt;region>.&lt;fqdn>*|TCP 和 UDP|53|
 |Hosting | *.hosting.\<region>.\<fqdn> | HTTPS | 443 |
@@ -84,10 +84,11 @@ SSL 流量拦截[不受支持](azure-stack-firewall.md#ssl-interception)，并�
 |修补程序和更新|https://&#42;.azureedge.net<br>https:\//aka.ms/azurestackautomaticupdate|HTTPS|443|公共 VIP - /27|
 |注册|**Azure 中国世纪互联**<br>https:\//management.chinacloudapi.cn/|HTTPS|443|公共 VIP - /27|
 |使用情况|**Azure 中国世纪互联**<br>https://&#42;.trafficmanager.cn|HTTPS|443|公共 VIP - /27|
-|Windows Defender|&#42;.wdcp.microsoft.com<br>&#42;.wdcpalt.microsoft.com<br>&#42;.wd.microsoft.com<br>&#42;.update.microsoft.com<br>&#42;.download.microsoft.com<br>https:\//www.microsoft.com/pkiops/crl<br>https:\//www.microsoft.com/pkiops/certs<br>https:\//crl.microsoft.com/pki/crl/products<br>https:\//www.microsoft.com/pki/certs<br>https:\//secure.aadcdn.microsoftonline-p.com<br>|HTTPS|80<br>443|公共 VIP - /27<br>公共基础结构网络|
+|Windows Defender|&#42;.wdcp.microsoft.com<br>&#42;.wdcpalt.microsoft.com<br>&#42;.wd.microsoft.com<br>&#42;.update.microsoft.com<br>&#42;.download.microsoft.com<br><br>https:\//secure.aadcdn.microsoftonline-p.com<br>|HTTPS|80<br>443|公共 VIP - /27<br>公共基础结构网络|
 |NTP|（为部署提供的 NTP 服务器的 IP）|UDP|123|公共 VIP - /27|
 |DNS|（为部署提供的 DNS 服务器的 IP）|TCP<br>UDP|53|公共 VIP - /27|
-|CRL|（证书上的 CRL 分发点下的 URL）|HTTP|80|公共 VIP - /27|
+|SYSLOG|（为部署提供的 SYSLOG 服务器的 IP）|TCP<br>UDP|6514<br>514|公共 VIP - /27|
+|CRL|（证书上的 CRL 分发点下的 URL）<br>http://crl.microsoft.com/pki/crl/products<br>http://mscrl.microsoft.com/pki/mscorp<br>http://www.microsoft.com/pki/certs<br>http://www.microsoft.com/pki/mscorp<br>http://www.microsoft.com/pkiops/crl<br>http://www.microsoft.com/pkiops/certs<br>|HTTP|80|公共 VIP - /27|
 |LDAP|为 Graph 集成提供的 Active Directory 林|TCP<br>UDP|389|公共 VIP - /27|
 |LDAP SSL|为 Graph 集成提供的 Active Directory 林|TCP|636|公共 VIP - /27|
 |LDAP GC|为 Graph 集成提供的 Active Directory 林|TCP|3268|公共 VIP - /27|

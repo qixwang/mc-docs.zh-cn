@@ -4,17 +4,17 @@ description: 使用用于 Java 的 Azure 存储库在启用了分层命名空间
 author: WenJason
 ms.service: storage
 origin.date: 11/24/2019
-ms.date: 03/02/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.topic: conceptual
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.openlocfilehash: 4c895bda99e5ca183c98f958ed44f3ecd357615c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 8424a3d4adb2f4428d640a2c0e40539b8e673f5b
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78412160"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422352"
 ---
 # <a name="use-java-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2-preview"></a>使用 Java 管理 Azure Data Lake Storage Gen2（预览版）中的目录、文件和 ACL
 
@@ -25,7 +25,7 @@ ms.locfileid: "78412160"
 
 [包 (Maven)](https://search.maven.org/artifact/com.azure/azure-storage-file-datalake) | [示例](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake) | [API 参考](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.0.0-preview.6/index.html) | [提供反馈](https://github.com/Azure/azure-sdk-for-java/issues)
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 > [!div class="checklist"]
 > * Azure 订阅。 请参阅[获取 Azure 1 元人民币的试用订阅](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth)。
@@ -33,7 +33,9 @@ ms.locfileid: "78412160"
 
 ## <a name="set-up-your-project"></a>设置项目
 
-若要开始，请打开[此页](https://search.maven.org/artifact/com.azure/azure-storage-file-datalake)，找到最新版本的 Java 库。 然后，在文本编辑器中打开 pom.xml 文件  。 添加引用该版本的依赖项元素。
+若要开始，请打开[此页](https://search.maven.org/artifact/com.azure/azure-storage-file-datalake)，找到最新版本的 Java 库。 然后，在文本编辑器中打开 pom.xml 文件。 添加引用该版本的依赖项元素。
+
+如果计划使用 Azure Active Directory (AD) 验证客户端应用程序，可将依赖项添加到 Azure 机密客户端库。 请参阅[将机密客户端库包添加到项目](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/identity/azure-identity#adding-the-package-to-your-project)。
 
 接下来，将这些 import 语句添加到代码文件。
 
@@ -54,7 +56,7 @@ import com.azure.storage.file.datalake.models.RolePermissions;
 
 ## <a name="connect-to-the-account"></a>连接到帐户 
 
-若要使用本文中的代码片段，需创建一个表示存储帐户的 **DataLakeServiceClient** 实例。 若要获取一个，最简单的方法是使用帐户密钥。 
+若要使用本文中的代码片段，需创建一个表示存储帐户的 **DataLakeServiceClient** 实例。 若要获得一个实例，最简单的方法是使用帐户密钥。 
 
 此示例使用帐户密钥创建 **DataLakeServiceClient** 的实例。
 
@@ -113,7 +115,7 @@ static public DataLakeDirectoryClient CreateDirectory
 
 通过调用 **DataLakeDirectoryClient.rename** 方法来重命名或移动目录。 以参数形式传递所需目录的路径。 
 
-此示例将子目录重命名为 `my-subdirectory-renamed` 的名称。
+此示例将某个子目录重命名为名称 `my-subdirectory-renamed`。
 
 ```java
 static public DataLakeDirectoryClient
@@ -160,7 +162,7 @@ static public void DeleteDirectory(DataLakeFileSystemClient fileSystemClient){
 此示例获取并设置名为 `my-directory` 的目录的 ACL。 此示例为拥有用户提供读取、写入和执行权限，为拥有组授予读取和执行权限，并为所有其他用户提供读取访问权限。
 
 > [!NOTE]
-> 如果你的应用程序通过使用 Azure Active Directory (Azure AD) 来授予访问权限，请确保已向应用程序用来授权访问的安全主体分配了[存储 Blob 数据所有者角色](/role-based-access-control/built-in-roles#storage-blob-data-owner)。 若要详细了解如何应用 ACL 权限以及更改它们所带来的影响，请参阅 [Azure Data Lake Storage Gen2 中的访问控制](/storage/blobs/data-lake-storage-access-control)。
+> 如果你的应用程序通过使用 Azure Active Directory (Azure AD) 来授予访问权限，请确保已向应用程序用来授权访问的安全主体分配了[存储 Blob 数据所有者角色](https://docs.azure.cn/role-based-access-control/built-in-roles#storage-blob-data-owner)。 若要详细了解如何应用 ACL 权限以及更改它们所带来的影响，请参阅 [Azure Data Lake Storage Gen2 中的访问控制](/storage/blobs/data-lake-storage-access-control)。
 
 ```java
 static public void ManageDirectoryACLs(DataLakeFileSystemClient fileSystemClient){

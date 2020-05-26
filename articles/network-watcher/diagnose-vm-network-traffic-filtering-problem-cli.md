@@ -19,12 +19,12 @@ origin.date: 04/20/2018
 ms.date: 10/19/2018
 ms.author: v-lingli
 ms.custom: mvc
-ms.openlocfilehash: edc7b058d421cddc9c846d0dfa6b68b104db330e
-ms.sourcegitcommit: b81ea2ab9eafa986986fa3eb1e784cfe9bbf9ec1
+ms.openlocfilehash: 53e23e011c84ce2e6d8becda534e6e5ca2a1da31
+ms.sourcegitcommit: a04b0b1009b0c62f2deb7c7acee75a1304d98f87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83367835"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83796838"
 ---
 # <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem---azure-cli"></a>快速入门：诊断虚拟机网络流量筛选器问题 - Azure CLI
 
@@ -251,7 +251,7 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你已创建 VM 并对入站和出站网络流量筛选器进行诊断。 你已了解了如何通过网络安全组规则来允许或拒绝出入 VM 的流量。 请详细了解[安全规则](https://docs.azure.cn/virtual-network/security-overview?toc=/azure/network-watcher/toc.json)以及如何[创建安全规则](https://docs.azure.cn/virtual-network/manage-network-security-group?toc=/azure/network-watcher/toc.json#create-a-security-rule)。
+在本快速入门中，你已创建 VM 并对入站和出站网络流量筛选器进行诊断。 你已了解了如何通过网络安全组规则来允许或拒绝出入 VM 的流量。 请详细了解[安全规则](https://docs.azure.cn/virtual-network/security-overview?toc=/network-watcher/toc.json)以及如何[创建安全规则](https://docs.azure.cn/virtual-network/manage-network-security-group?toc=/network-watcher/toc.json#create-a-security-rule)。
 
 即使相应的网络流量筛选器已就位，与 VM 的通信仍可能因路由配置问题而失败。 若要了解如何诊断 VM 网络路由问题，请参阅[诊断 VM 路由问题](diagnose-vm-network-routing-problem-cli.md)；若要使用某个工具诊断出站路由、延迟和流量筛选问题，请参阅[排查连接问题](network-watcher-connectivity-cli.md)。
 

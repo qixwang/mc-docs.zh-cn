@@ -8,12 +8,12 @@ ms.date: 03/16/2020
 ms.author: v-tawe
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 93c35bc3f68b4c569b4e2dca87e4164b84442cfa
-ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
+ms.openlocfilehash: d01cbd89708ffe50af1b706db1e9b69b300c0322
+ms.sourcegitcommit: 981a75a78f8cf74ab5a76f9e6b0dc5978387be4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82588574"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83801210"
 ---
 # <a name="add-an-ssl-certificate-in-azure-app-service"></a>在 Azure 应用服务中添加 SSL 证书
 
@@ -83,7 +83,7 @@ To purchase an App Service certificate, go to [Start certificate order](#start-c
 <!--
 ### Start certificate order
 
-Start an App Service certificate order in the <a href="https://portal.azure.com/#create/Microsoft.SSL" target="_blank">App Service Certificate create page</a>.
+Start an App Service certificate order in the <a href="https://portal.azure.cn/#create/Microsoft.SSL" target="_blank">App Service Certificate create page</a>.
 
 ![Start App Service certificate purchase](./media/configure-ssl-certificate/purchase-app-service-cert.png)
 
@@ -102,7 +102,7 @@ Use the following table to help you configure the certificate. When finished, cl
 
 Once the certificate purchase process is complete, there are few more steps you need to complete before you can start using this certificate. 
 
-Select the certificate in the [App Service Certificates](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) page, then click **Certificate Configuration** > **Step 1: Store**.
+Select the certificate in the [App Service Certificates](https://portal.azure.cn/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) page, then click **Certificate Configuration** > **Step 1: Store**.
 
 ![Configure Key Vault storage of App Service certificate](./media/configure-ssl-certificate/configure-key-vault.png)
 

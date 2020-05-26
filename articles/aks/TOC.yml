@@ -38,6 +38,11 @@
       href: tutorial-kubernetes-app-update.md
     - name: 7 - 升级群集
       href: tutorial-kubernetes-upgrade-cluster.md
+- name: 示例
+  items:
+    - name: Azure Policy 内置策略定义
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: 概念
   items:
     - name: 群集和工作负荷
@@ -171,6 +176,8 @@
           href: api-server-authorized-ip-ranges.md
         - name: 更新群集凭据
           href: update-credentials.md
+        - name: 限制和控制群集出口流量
+          href: limit-egress-traffic.md
         - name: 实现 Azure Active Directory 集成
           items:
             - name: 使用 Azure CLI
@@ -195,7 +202,7 @@
           href: kubelet-logs.md
     - name: 开发和运行应用程序
       items:
-        - name: 使用 Helm 运行应用程序
+        - name: 通过 Helm 安装现有应用程序
           href: kubernetes-helm.md
         - name: 使用 OpenFaaS
           href: openfaas.md

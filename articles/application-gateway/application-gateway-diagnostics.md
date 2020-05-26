@@ -6,14 +6,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 04/26/2020
+ms.date: 05/19/2020
 ms.author: v-junlch
-ms.openlocfilehash: df4b45eae033416fe5cbf088b418970081567c54
-ms.sourcegitcommit: e3512c5c2bbe61704d5c8cbba74efd56bfe91927
+ms.openlocfilehash: 8000df07c819bd68cd2eb42706422016bbea0d17
+ms.sourcegitcommit: a04b0b1009b0c62f2deb7c7acee75a1304d98f87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82267639"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83796853"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>应用程序网关的后端运行状况和诊断日志
 
@@ -39,12 +39,12 @@ ms.locfileid: "82267639"
 
 ### <a name="view-back-end-health-through-the-portal"></a>通过门户查看后端运行状况
 
-在门户中，后端运行状况是自动提供的。 在现有的应用程序网关中，选择“监视”   > “后端运行状况”  。
+在门户中，后端运行状况是自动提供的。 在现有的应用程序网关中，选择“监视” > “后端运行状况”。
 
-后端池中的每个成员都列在此页上（不管其是 NIC、IP 还是 FQDN）。 会显示后端池名称、端口、后端 HTTP 设置名称以及运行状况。 运行状况的有效值为“正常”、“不正常”、“未知”。   
+后端池中的每个成员都列在此页上（不管其是 NIC、IP 还是 FQDN）。 会显示后端池名称、端口、后端 HTTP 设置名称以及运行状况。 运行状况的有效值为“正常”、“不正常”、“未知”。  
 
 > [!NOTE]
-> 如果后端运行状况显示为“未知”，请确保未通过虚拟网络中的 NSG 规则、用户定义路由 (UDR) 或自定义 DNS 阻止对后端的访问。 
+> 如果后端运行状况显示为“未知”，请确保未通过虚拟网络中的 NSG 规则、用户定义路由 (UDR) 或自定义 DNS 阻止对后端的访问。
 
 ![后端运行状况][10]
 
@@ -132,7 +132,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 
 ### <a name="enable-logging-through-the-azure-portal"></a>通过 Azure 门户启用日志记录
 
-1. 在 Azure 门户中找到资源，然后选择“诊断设置”  。
+1. 在 Azure 门户中找到资源，然后选择“诊断设置”。
 
    对于应用程序网关，提供 3 种日志：
 
@@ -140,15 +140,15 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
    * 性能日志
    * 防火墙日志
 
-2. 若要开始收集数据，请选择“启用诊断”  。
+2. 若要开始收集数据，请选择“启用诊断”。
 
    ![启用诊断][1]
 
-3. “诊断设置”  页提供用于诊断日志的设置。 本示例使用 Log Analytics 存储日志。 也可使用事件中心和存储帐户保存诊断日志。
+3. “诊断设置”页提供用于诊断日志的设置。 本示例使用 Log Analytics 存储日志。 也可使用事件中心和存储帐户保存诊断日志。
 
    ![启动配置过程][2]
 
-5. 键入设置的名称，确认设置，然后选择“保存”。 
+5. 键入设置的名称，确认设置，然后选择“保存”。
 
 ### <a name="activity-log"></a>活动日志
 
@@ -158,7 +158,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 
 只有按照上述步骤在每个应用程序网关实例上启用了访问日志，才会生成该日志。 数据存储在启用日志记录时指定的存储帐户中。 应用程序网关的每次访问均以 JSON 格式记录下来，如下面 v1 示例所示：
 
-|值  |说明  |
+|Value  |说明  |
 |---------|---------|
 |instanceId     | 处理请求的应用程序网关实例。        |
 |clientIP     | 请求的起始 IP。        |
@@ -202,7 +202,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 ```
 对于应用程序网关和 WAF v2，日志显示了一些详细信息：
 
-|值  |说明  |
+|Value  |说明  |
 |---------|---------|
 |instanceId     | 处理请求的应用程序网关实例。        |
 |clientIP     | 请求的起始 IP。        |
@@ -256,7 +256,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 只有在每个应用程序网关实例上启用了性能日志，才会生成此日志，如上述步骤所示。 数据存储在启用日志记录时指定的存储帐户中。 每隔 1 分钟生成性能日志数据。 性能日志数据仅适用于 v1 SKU。 对于 v2 SKU，请对性能数据使用[指标](application-gateway-metrics.md)。 将记录以下数据：
 
 
-|值  |说明  |
+|Value  |说明  |
 |---------|---------|
 |instanceId     |  正在为其生成性能数据的应用程序网关实例。 对于多实例应用程序网关，一个实例对应于一行。        |
 |healthyHostCount     | 后端池中运行正常的主机数。        |
@@ -293,7 +293,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 只有按照上述步骤为每个应用程序网关启用了防火墙日志，才会生成该日志。 此日志还需要在应用程序网关上配置 Web 应用程序防火墙。 数据存储在启用日志记录时指定的存储帐户中。 将记录以下数据：
 
 
-|值  |说明  |
+|Value  |说明  |
 |---------|---------|
 |instanceId     | 为其生成了防火墙数据的应用程序网关实例。 对于多实例应用程序网关，一个实例对应于一行。         |
 |clientIp     |   请求的起始 IP。      |
@@ -368,6 +368,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 ## <a name="next-steps"></a>后续步骤
 
 * 使用 [Azure Monitor 日志](../azure-monitor/insights/azure-networking-analytics.md)可视化计数器和事件日志。
+* [Visualize your Azure Activity Log with Power BI](https://powerbi.microsoft.com/blog/monitor-azure-audit-logs-with-power-bi/)（使用 Power BI 直观显示 Azure 活动日志）博客文章。
 * [View and analyze Azure activity logs in Power BI and more](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/)（在 Power BI 和其他组件中查看和分析 Azure 活动日志）博客文章。
 
 [1]: ./media/application-gateway-diagnostics/figure1.png

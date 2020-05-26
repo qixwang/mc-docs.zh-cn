@@ -4,28 +4,28 @@ description: 此 Azure Kubernetes 服务 (AKS) 教程介绍如何将现有 AKS �
 services: container-service
 ms.topic: tutorial
 origin.date: 02/25/2020
-ms.date: 03/09/2020
+ms.date: 05/25/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 98310ab8cad742a43955727f7cea9fd479b13f49
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: faf4253cdc46ea7ace7717aa13e5fe299a8fbe61
+ms.sourcegitcommit: 7e6b94bbaeaddb854beed616aaeba6584b9316d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79290791"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83735127"
 ---
 # <a name="tutorial-upgrade-kubernetes-in-azure-kubernetes-service-aks"></a>教程：在 Azure Kubernetes 服务 (AKS) 中升级 Kubernetes
 
 在应用程序和群集生命周期中，你可能希望升级到最新可用的 Kubernetes 版本并使用新功能。 可使用 Azure CLI 升级 Azure Kubernetes 服务 (AKS) 群集。
 
-在本教程的第 7 部分中，升级了 Kubernetes 群集。 学习如何：
+在本教程的第 7 部分中，升级了 Kubernetes 群集。 你将学习如何执行以下操作：
 
 > [!div class="checklist"]
 > * 确定 Kubernetes 的当前版本和可用版本
 > * 升级 Kubernetes 节点
 > * 验证升级是否成功
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 上一教程中，应用程序已打包到容器映像中。 该映像已上传到 Azure容器注册表，同时，你创建了 AKS 群集。 然后，应用程序部署到了 AKS 群集。 如果尚未完成这些步骤，并且想要逐一完成，请先参阅[教程 1 - 创建容器映像][aks-tutorial-prepare-app]。
 
@@ -39,7 +39,7 @@ ms.locfileid: "79290791"
 az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster --output table
 ```
 
-在以下示例中，当前版本为 1.14.8，可用版本将显示在“升级”列下   。
+在以下示例中，当前版本为 1.14.8，可用版本将显示在“升级”列下 。
 
 ```
 Name     ResourceGroup    MasterVersion    NodePoolVersion    Upgrades
@@ -57,16 +57,16 @@ default  myResourceGroup  1.14.8           1.14.8             1.15.5, 1.15.7
 1. 准备好新节点并将其加入群集后，Kubernetes 计划程序开始在该群集上运行 Pod。
 1. 删除旧节点，群集的下一个节点随即开始隔离和排空进程。
 
-使用 [az aks upgrade][] 命令升级 AKS 群集。 以下示例将群集升级到 Kubernetes 版本 1.14.6  。
+使用 [az aks upgrade][] 命令升级 AKS 群集。 以下示例将群集升级到 Kubernetes 版本 1.14.6。
 
 > [!NOTE]
-> 一次只能升级一个次要版本。 例如，可以从 1.14.x 升级到 1.15.x，但不能从 1.14.x 直接升级到 1.16.x     。 若要从 1.14.x 升级到 1.16.x，请先从 1.14.x 升级到 1.15.x，然后再执行一次升级从 1.15.x 升级到 1.16.x       。
+> 一次只能升级一个次要版本。 例如，可以从 1.14.x 升级到 1.15.x，但不能从 1.14.x 直接升级到 1.16.x   。 若要从 1.14.x 升级到 1.16.x，请先从 1.14.x 升级到 1.15.x，然后再执行一次升级从 1.15.x 升级到 1.16.x     。
 
 ```azurecli
 az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes-version 1.15.5
 ```
 
-以下精简示例输出显示 kubernetesVersion 现在报告 1.15.5   ：
+以下精简示例输出显示 kubernetesVersion 现在报告 1.15.5 ：
 
 ```json
 {
@@ -99,7 +99,7 @@ az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes
 az aks show --resource-group myResourceGroup --name myAKSCluster --output table
 ```
 
-以下示例输出显示 AKS 群集运行 KubernetesVersion 1.15.5  ：
+以下示例输出显示 AKS 群集运行 KubernetesVersion 1.15.5：
 
 ```
 Name          Location    ResourceGroup    KubernetesVersion    ProvisioningState    Fqdn
@@ -118,9 +118,11 @@ az group delete --name myResourceGroup --yes --no-wait
 > [!NOTE]
 > 删除群集时，AKS 群集使用的 Azure Active Directory 服务主体不会被删除。 有关如何删除服务主体的步骤，请参阅 [AKS 服务主体的注意事项和删除][sp-delete]。
 
+<!--Not Available on  managed identity-->
+
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，在 AKS 群集中升级了 Kubernetes。 你已了解如何执行以下操作：
+在本教程中，在 AKS 群集中升级了 Kubernetes。 你已了解如何：
 
 > [!div class="checklist"]
 > * 确定 Kubernetes 的当前版本和可用版本

@@ -12,16 +12,15 @@ ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 origin.date: 11/29/2018
-ms.date: 04/27/2020
+ms.date: 05/25/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.subservice: disks
-ms.openlocfilehash: efd3ffee3438c2ee6f50fe601f0e4fa62601a514
-ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
+ms.openlocfilehash: 02329d961388bba1cff0e135ed13390bdfcd68aa
+ms.sourcegitcommit: 981a75a78f8cf74ab5a76f9e6b0dc5978387be4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83392393"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83801115"
 ---
 # <a name="tutorial---manage-azure-disks-with-azure-powershell"></a>教程 - 使用 Azure PowerShell 管理 Azure 磁盘
 

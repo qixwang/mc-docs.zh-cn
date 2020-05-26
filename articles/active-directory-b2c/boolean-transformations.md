@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/01/2020
+ms.date: 05/18/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 46e823a2b7cccb6bf896e5523e391ceb442975d2
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: e24e6b11ea6dfc942dc2077c6fe61685098549a8
+ms.sourcegitcommit: 87e789550ea49ff77c7f19bc68fad228009fcf44
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80581593"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83748065"
 ---
 # <a name="boolean-claims-transformations"></a>布尔型声明转换
 
@@ -136,7 +136,7 @@ AssertBooleanClaimIsEqualToValue  声明转换始终从[验证技术配置文件
     <InputParameter Id="valueToCompareTo" DataType="boolean" Value="true" />
   </InputParameters>
   <OutputClaims>
-      <OutputClaim  ClaimTypeReferenceId="accountEnabled" TransformationClaimType="compareResult"/>
+    <OutputClaim  ClaimTypeReferenceId="accountEnabled" TransformationClaimType="compareResult"/>
   </OutputClaims>
 </ClaimsTransformation>
 ```
@@ -167,6 +167,7 @@ AssertBooleanClaimIsEqualToValue  声明转换始终从[验证技术配置文件
 <ClaimsTransformation Id="CheckWhetherEmailBePresented" TransformationMethod="NotClaims">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="userExists" TransformationClaimType="inputClaim" />
+  </InputClaims>
   <OutputClaims>
     <OutputClaim ClaimTypeReferenceId="userExists" TransformationClaimType="outputClaim" />
   </OutputClaims>
@@ -201,7 +202,6 @@ AssertBooleanClaimIsEqualToValue  声明转换始终从[验证技术配置文件
   <OutputClaims>
     <OutputClaim ClaimTypeReferenceId="presentTOSSelfAsserted" TransformationClaimType="outputClaim" />
   </OutputClaims>
-</ClaimsTransformation>
 </ClaimsTransformation>
 ```
 

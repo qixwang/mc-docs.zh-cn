@@ -8,12 +8,12 @@ ms.topic: conceptual
 origin.date: 12/24/2019
 ms.date: 12/31/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 8fcb08526236b4db2b19a61c474e75350a35a31f
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 636f22f7db56e466ad3896540dbede972b6e1303
+ms.sourcegitcommit: a04b0b1009b0c62f2deb7c7acee75a1304d98f87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79452448"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83796717"
 ---
 # <a name="log-analytics-agent-overview"></a>Log Analytics 代理概述
 之所以开发 Azure Log Analytics 代理，是为了跨任意云中的虚拟机、本地计算机以及通过 [System Center Operations Manager](https://docs.microsoft.com/system-center/scom/) 监视的计算机进行全面的管理。 Windows 和 Linux 代理将从不同源收集的数据发送到 Azure Monitor 中的 Log Analytics 工作区，并发送在监视解决方案中定义的任何特有日志或指标。 Log Analytics 代理还支持 Azure Monitor 中的见解和其他服务，例如 [Azure 安全中心](/azure/security-center/)和 [Azure 自动化](../../automation/automation-intro.md)。
@@ -112,7 +112,7 @@ Windows 代理官方支持以下版本的 Windows 操作系统：
 
 下表重点介绍了要安装代理的受支持 Linux 发行版所需的包。
 
-|所需程序包 |说明 |最低版本 |
+|所需的包 |说明 |最低版本 |
 |-----------------|------------|----------------|
 |Glibc |    GNU C 库 | 2.5-12 
 |Openssl    | OpenSSL 库 | 1.0.x 或 1.1.x |
@@ -133,11 +133,12 @@ Windows 代理官方支持以下版本的 Windows 操作系统：
 
 |代理资源|端口 |方向 |绕过 HTTPS 检查|
 |------|---------|--------|--------|   
-|*.ods.opinsights.chinacloudapi.cn |端口 443 |出站|是 |  
-|*.oms.opinsights.chinacloudapi.cn|端口 443 |出站|是 |  
+|*.ods.opinsights.azure.cn |端口 443 |出站|是 |  
+|*.oms.opinsights.azure.cn |端口 443 |出站|是 |  
 |*.blob.core.chinacloudapi.cn |端口 443 |出站|是 |  
 |*.azure-automation.cn |端口 443 |出站|是 |  
 
+<!-- Correct in China: *.ods.opinsights.azure.cn, *.oms.opinsights.azure.cn, *.blob.core.chinacloudapi.cn, *.azure-automation.cn -->
 
 如果计划使用 Azure 自动化混合 Runbook 辅助角色连接到自动化服务并在其中注册以在环境中使用 Runbook 或管理解决方案，则它必须可以访问“针对混合 Runbook 辅助角色配置网络”中所述的端口号和 URL。 
 
@@ -150,7 +151,7 @@ Windows 和 Linux 代理支持使用 HTTPS 协议通过代理服务器或 Log An
 > [!NOTE]
 > 如果代理服务器无需进行身份验证，Linux 代理仍要求提供伪用户名/密码。 这可以是任何用户名或密码。
 
-|properties| 说明 |
+|属性| 说明 |
 |--------|-------------|
 |协议 | https |
 |user | 用于代理身份验证的可选用户名 |

@@ -4,36 +4,36 @@ description: 本文介绍如何使用 Azure 门户、PowerShell 或 REST API 管
 author: rockboyfor
 ms.service: azure-analysis-services
 ms.topic: conceptual
-origin.date: 10/29/2019
-ms.date: 11/25/2019
+origin.date: 04/15/2020
+ms.date: 04/30/2020
 ms.author: v-yeche
 ms.reviewer: minewiskan
-ms.openlocfilehash: 20cb8da7455ebe6bd77c5b3af969a879a555815b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 5c0b7ad3332fb201c2db6e1c0a50b48bb3977b9b
+ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74203560"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83392358"
 ---
 # <a name="manage-server-administrators"></a>管理服务器管理员
 
-服务器管理员必须是 Azure Active Directory (Azure AD) 中服务器所在租户的有效用户或安全组。 可以对 Azure 门户中的服务器使用“Analysis Services 管理员”  ，或使用 SSMS、PowerShell 或 REST API 中的“服务器属性”来管理服务器管理员。 
+服务器管理员必须是 Azure Active Directory (Azure AD) 中服务器所在租户的有效用户或安全组。 可以使用 **Analysis Services 管理员**来管理 Azure 门户中的服务器，在 SSMS、PowerShell 或 REST API 中使用“服务器属性”来管理服务器管理员。 
 
-**安全组**必须[已启用邮件](https://docs.microsoft.com/exchange/recipients-in-exchange-online/manage-mail-enabled-security-groups)且 `MailEnabled` 属性设置为 `True`。 按电子邮件地址指定组时，请使用 `obj:groupid@tenantid`。
+添加“安全组”时，请使用 `obj:groupid@tenantid`。
 
 ## <a name="to-add-server-administrators-by-using-azure-portal"></a>使用 Azure 门户添加服务器管理员
 
-1. 在门户中，对于服务器，单击“Analysis Services 管理员”  。
-2. 在“**servername> - Analysis Services 管理员”\<** 中，单击“添加”  。
-3. 在“添加服务器管理员”  中，从 Azure AD 选择用户帐户，或使用电子邮件地址邀请外部用户。
+1. 在门户中，对于服务器，单击“Analysis Services 管理员”。
+2. 在“\<servername> - Analysis Services 管理员”中，单击“添加”。
+3. 在“添加服务器管理员”中，从 Azure AD 选择用户帐户，或使用电子邮件地址邀请外部用户。
 
     ![Azure 门户中的服务器管理员](./media/analysis-services-server-admins/aas-manage-users-admins.png)
 
 ## <a name="to-add-server-administrators-by-using-ssms"></a>使用 SSMS 添加服务器管理员
 
-1. 右键单击服务器 >“属性”  。
-2. 在“Analysis Server 属性”  中，单击“安全性”  。
-3. 单击“添加”  ，然后输入 Azure AD 中用户或组的电子邮件地址。
+1. 右键单击服务器 >“属性”。
+2. 在“Analysis Server 属性”中，单击“安全性”。
+3. 单击“添加”，然后输入 Azure AD 中用户或组的电子邮件地址。
 
     ![在 SSMS 中添加服务器管理员](./media/analysis-services-server-admins/aas-manage-users-ssms.png)
 
@@ -46,8 +46,8 @@ ms.locfileid: "74203560"
 
 ## <a name="rest-api"></a>REST API
 
-使用 [Create](https://docs.microsoft.com/rest/api/analysisservices/servers/create) 在创建新服务器时指定 asAdministrator 属性。 <br />
-使用 [Update](https://docs.microsoft.com/rest/api/analysisservices/servers/update) 在修改现有服务器时指定 asAdministrator 属性。 <br />
+创建新服务器时，使用 [Create](https://docs.microsoft.com/rest/api/analysisservices/servers/create) 指定 asAdministrator 属性。 <br />
+修改现有服务器时，使用 [Update](https://docs.microsoft.com/rest/api/analysisservices/servers/update)指定 asAdministrator 属性。 <br />
 
 ## <a name="next-steps"></a>后续步骤 
 

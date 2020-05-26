@@ -20,17 +20,17 @@ ms.locfileid: "83406205"
 
 计划迁移和执行迁移很大程度都取决于体系结构的复杂性，这可能需要几个月的时间。  
 
-## <a name="what-is-the-definition-of-a-new-customer-on-iaas-vms-classic"></a>新客户在 IaaS VM （经典版）上的定义是什么？
+## <a name="what-is-the-definition-of-a-new-customer-on-iaas-vms-classic"></a>IaaS VM（经典版）新客户的定义是什么？
 
-2020 年 2 月（开始弃用之前的一个月）的订阅中没有 IaaS VM （经典版）的客户则视为新客户。 
+2020 年 2 月（开始弃用之前的一个月）的订阅中没有 IaaS VM（经典版）的客户则视为新客户。 
 
-## <a name="what-is-the-definition-of-an-existing-customer-on-iaas-virtual-machines-classic"></a>IaaS 虚拟机（经典版）上现有客户的定义是什么？
+## <a name="what-is-the-definition-of-an-existing-customer-on-iaas-virtual-machines-classic"></a>IaaS 虚拟机（经典版）现有客户的定义是什么？
 
-2020 年 2 月在其订阅中有过活跃的或已停止但已分配的 IaaS VM （经典版）的客户则视为现有客户。 只有这些客户才会在 2023 年 3 月 1 日之后将其 VM 从 Azure Service Manager 迁移到 Azure 资源管理器。 
+2020 年 2 月在其订阅中有过活跃的或已停止但曾分配过的 IaaS VM（经典版）的客户则视为现有客户。 只有这些客户才会在 2023 年 3 月 1 日之后将其 VM 从 Azure Service Manager 迁移到 Azure 资源管理器。 
 
 ## <a name="why-am-i-getting-an-error-stating-newclassicvmcreationnotallowedforsubscription"></a>为什么会收到“NewClassicVMCreationNotAllowedForSubscription”这样的错误信息？
 
-作为停用过程的一部分，IaaS VM （经典版）不再适用于新客户。 我们已将你识别为新客户，因此你的操作未获得授权。 我们强烈推荐使用[通过 ARM 的 Azure 虚拟机](/virtual-machines/windows/quick-create-powershell)。 如果无法通过 ARM 使用 Azure VM，请联系订阅白名单上的支持人员。
+停用过程开始后，IaaS VM（经典版）不再适用于新客户。 我们已将你识别为新客户，因此你无权执行该操作。 我们强烈推荐使用[使用 ARM 的 Azure 虚拟机](/virtual-machines/windows/quick-create-powershell)。 如果无法通过 ARM 使用 Azure VM，请联系订阅白名单上的支持人员。
 
 ## <a name="does-this-migration-plan-affect-any-of-my-existing-services-or-applications-that-run-on-azure-virtual-machines"></a>此迁移计划是否影响 Azure 虚拟机上运行的任何现有服务或应用程序？ 
 
@@ -38,7 +38,7 @@ ms.locfileid: "83406205"
 
 ## <a name="what-happens-to-my-vms-if-i-dont-plan-on-migrating-in-the-near-future"></a>如果我近期不打算迁移，我的 VM 会出现什么情况？ 
 
-2023 年 3 月 1 日起会全面停用 IaaS VM（经典版），并且会停止或解除分配任何活跃的或分配的 VM。 为避免影响业务，我们强烈推荐在 2023 年 3 月 1 日之前立即开始计划迁移并完成迁移。 我们近期不会淘汰现有的经典 API、云服务和资源模型。 我们想要通过 Resource Manager 部署模型中提供的高级功能，让迁移变得简单。 我们建议开始计划将这些资源迁移到 Azure 资源管理器。 
+2023 年 3 月 1 日起会全面停用 IaaS VM（经典版），并且会停止或解除分配任何活跃的或分配的 VM。 为避免影响业务，我们强烈建议现在就开始计划迁移并在 2023 年 3 月 1 日之前完成迁移。 我们近期不会淘汰现有的经典 API、云服务和资源模型。 我们想要通过 Resource Manager 部署模型中提供的高级功能，让迁移变得简单。 我们建议现在开始计划将这些资源迁移到 Azure 资源管理器。 
 
 ## <a name="what-does-this-migration-plan-mean-for-my-existing-tooling"></a>对于我现有的工具而言，此迁移计划有何意义？ 
 

@@ -3,17 +3,17 @@ title: Azure Stack Hub 网络差异
 description: 了解 Azure Stack Hub 中网络的差异和用法注意事项。
 author: WenJason
 origin.date: 1/22/2020
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.topic: article
 ms.author: v-jay
 ms.reviewer: wamota
 ms.lastreviewed: 07/10/2019
-ms.openlocfilehash: 04fb0c95c7ac05c0bc1b4a2d4009d25b0b86170c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: c498dfc1326433e5d58b125ca7da0cdd89786181
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540750"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422632"
 ---
 # <a name="differences-and-considerations-for-azure-stack-hub-networking"></a>Azure Stack Hub 网络的差异和注意事项
 
@@ -23,7 +23,7 @@ Azure Stack Hub 网络具有许多由 Azure 网络提供的功能。 但是，�
 
 ## <a name="cheat-sheet-networking-differences"></a>速查表：网络差异
 
-| 服务 | Feature | Azure（全局） | Azure Stack Hub |
+| 服务 | 功能 | Azure（公有云） | Azure Stack Hub |
 |--------------------------|----------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|
 | DNS | 多租户 DNS | 支持 | 尚不支持 |
 |  | DNS AAAA 记录 | 支持 | 不支持 |
@@ -39,9 +39,10 @@ Azure Stack Hub 网络具有许多由 Azure 网络提供的功能。 但是，�
 |  | 服务终结点 | 支持 Azure 服务的内部（非Internet）连接。 | 尚不支持。 |
 |  | 服务终结点策略 | 支持 | 尚不支持。 |
 |  | 服务隧道 | 支持 | 尚不支持。  |
-| 网络安全组 | 扩充式安全规则 | 支持 | 尚不支持。 |
+| 网络安全组 | 扩充式安全规则 | 支持 | 。 |
 |  | 有效安全规则 | 支持 | 尚不支持。 |
 |  | 应用程序安全组 | 支持 | 尚不支持。 |
+|  | 规则协议 | TCP、UDP、ICMP、任意 | 仅 TCP、UDP 或任意 |
 | 虚拟网络网关 | 点到站点 VPN 网关 | 支持 | 尚不支持。 |
 |  | VNet 到 VNet 网关 | 支持 | 尚不支持。 |
 |  | 虚拟网络网关类型 | Azure 支持 VPN<br> Express Route <br> Hyper Net。 | Azure Stack Hub 目前仅支持 VPN 类型。 |
@@ -61,7 +62,7 @@ Azure Stack Hub 网络具有许多由 Azure 网络提供的功能。 但是，�
 | 网络接口 | 获取有效路由表 | 支持 | 尚不支持。 |
 |  | 获取有效 ACL | 支持 | 尚不支持。 |
 |  | 启用加速网络 | 支持 | 尚不支持。 |
-|  | IP 转发 | 默认已禁用。  可以启用。 | 不支持切换此设置。  默认已启用。 |
+|  | IP 转发 | 默认已禁用。  可启用。 | 不支持切换此设置。  默认已启用。 |
 |  | 应用程序安全组 | 支持 | 尚不支持。 |
 |  | 内部 DNS 名称标签 | 支持 | 尚不支持。 |
 |  | 专用 IP 地址版本 | 支持 IPv6 和 IPv4。 | 仅支持 IPv4。 |

@@ -7,12 +7,12 @@ ms.topic: conceptual
 origin.date: 07/07/2019
 ms.date: 09/23/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 49f7a279aa618806df218baf0395f79d88bff4e6
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 27293015662d8d9bcd5b32b6abf3e02fbb6a8886
+ms.sourcegitcommit: 08b42258a48d96d754244064d065e4d5703f1cfb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74838948"
+ms.lasthandoff: 05/18/2020
+ms.locfileid: "83445174"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure 备份 - 常见问题
 
@@ -27,25 +27,22 @@ ms.locfileid: "74838948"
 ### <a name="are-there-limits-on-the-number-of-serversmachines-that-can-be-registered-against-each-vault"></a>可针对每个保管库注册的服务器/计算机数量是否有限制？
 每个保管库最多可以注册 1000 个 Azure 虚拟机。 如果使用世纪互联 Azure 备份代理，每个保管库最多可以注册 50 个 MAB 代理。 可以将 50 个 MAB 服务器/DPM 服务器注册到一个保管库。
 
-### <a name="how-many-datasourcesitems-can-be-protected-in-a-vault"></a>可以在保管库中保护多少数据源/项？
+### <a name="how-many-datasourcesitems-can-be-protected-in-a-vault"></a>在保管库中可以保护多少个数据源/项？
 
-可以在保管库中跨所有工作负荷（IaaS VM、SQL、AFS 等）保护多达 2000 个数据源/项。
-例如，如果已在保管库中保护 500 个 VM 和 400 个 Azure 文件共享，则最多还能在其中保护 1100 个 SQL 数据库。
+在一个保管库中，可以跨所有工作负荷（IaaS VM、SQL、AFS 等）保护多达 2000 个数据源/项。
+例如，如果已在保管库中保护了 500 个VM 和 400 个 Azure 文件共享，则最多只能保护其中的 1100 个 SQL 数据库。
 
-### <a name="how-many-policies-can-i-create-per-vault"></a>每个保管库可以创建多少项策略？ 
-每个保管库最多只能有 200 项策略。
+### <a name="how-many-policies-can-i-create-per-vault"></a>每个保管库可以创建多少个策略？ 
+每个保管库最多只能有 200 个策略。
 
 ### <a name="if-my-organization-has-one-vault-how-can-i-isolate-data-from-different-servers-in-the-vault-when-restoring-data"></a>如果本组织有一个保管库，如何在还原数据时将数据与保管库中的其他服务器隔离？
 设置备份时，你想要一起恢复的服务器数据应使用相同密码。 如果要将恢复隔离到一个特定服务器或多个服务器，仅使用该服务器的密码。 例如，人力资源服务器可能使用一个加密通行短语，会计结算服务器使用另一个通行短语，而存储服务器使用第三个通行短语。
 
-### <a name="can-i-move-my-vault-between-subscriptions"></a>是否可以在订阅之间移动我的保管库？
-是的。 若要移动恢复服务保管库，请参阅此[文章](backup-azure-move-recovery-services-vault.md)
-
 ### <a name="can-i-move-backup-data-to-another-vault"></a>是否可以将备份数据移动到另一个保管库？
-不是。 保管库中存储的备份数据无法移动到不同的保管库。
+否。 保管库中存储的备份数据无法移动到不同的保管库。
 
-### <a name="can-i-change-from-grs-to-lrs-after-a-backup"></a>能否在备份后从 GRS 更改为 LRS？
-不是。 仅在存储任何备份之后，恢复服务保管库才可更改存储选项。
+### <a name="can-i-change-from-grs-to-lrs-after-a-backup"></a>备份后是否可以从 GRS 更改为 LRS？
+否。 恢复服务保管库只能在存储任何备份之前更改存储选项。
 
 ### <a name="can-i-do-an-item-level-restore-ilr-for-vms-backed-up-to-a-recovery-services-vault"></a>是否可以对备份到恢复服务保管库的 VM 执行项级别还原 (ILR)？
 否，不支持 ILR。
@@ -121,13 +118,13 @@ BMR/系统状态 |正在备份计算机的 BMR 或系统状态的每个副本。
 不可以，Azure 备份不支持从存储的备份中删除或清除单个项。
 
 ### <a name="if-i-cancel-a-backup-job-after-it-starts-is-the-transferred-backup-data-deleted"></a>如果在备份作业开始后取消，是否会删除已传输的备份数据？
-不是。 在备份作业取消之前传输到保管库中的所有数据将保留在保管库中。
+否。 在备份作业取消之前传输到保管库中的所有数据将保留在保管库中。
 
 - Azure 备份使用检查点机制，在备份过程中偶尔要对备份数据添加检查点。
 - 由于备份数据中有检查点，下次备份过程可以验证文件的完整性。
-- 下一次备份作业将是以前备份的数据的增量。 增量备份仅传输新增或更改的数据，这相当于更好地利用带宽。
+- 下一备份作业会在已备份数据的基础上进行增量备份。 增量备份仅传输新的或已更改的数据，这相当于更好地利用带宽。
 
-如果取消了 Azure VM 的备份作业，则已传输的数据会被忽略。 下次备份作业将传输上次成功的备份作业之后的增量数据。
+如果取消 Azure VM 的备份作业，则会忽略任何已传输的数据。 下次备份作业将传输上次成功的备份作业之后的增量数据。
 
 ## <a name="retention-and-recovery"></a>保留和恢复
 
@@ -138,22 +135,22 @@ BMR/系统状态 |正在备份计算机的 BMR 或系统状态的每个副本。
 是的，可以自定义策略。 例如，可以配置每周和每日保留期要求，但不能配置每年和每月保留期要求。
 
 ### <a name="can-i-use-different-times-for-backup-scheduling-and-retention-policies"></a>是否可以对备份计划和保留策略使用不同时间？
-不是。 只能在备份时间点应用保留策略。 例如，此图显示了午夜 12 点和下午 6 点创建的备份的保留策略。
+否。 只能在备份时间点应用保留策略。 例如，此图显示了中午 12 点和下午 6 点创建的备份保留策略。
 
 ![计划备份和保持](./media/backup-azure-backup-faq/Schedule.png)
 
 ### <a name="if-a-backup-is-kept-for-a-long-time-does-it-take-more-time-to-recover-an-older-data-point"></a>如果备份保留了很长一段时间，是否需要更多时间才能恢复较旧的数据点？
 
-不是。 恢复最旧或最新时间点所需的时间相同。 每个恢复点的行为类似一个完整的点。
+否。 恢复最旧或最新时间点所需的时间相同。 每个恢复点的行为类似一个完整的点。
 
 ### <a name="if-each-recovery-point-is-like-a-full-point-does-it-impact-the-total-billable-backup-storage"></a>如果每个恢复点相当于完整的点，它会影响总体可计费备份存储吗？
 
 典型的长期保留点产品将备份数据存储为完整的点。
 
 - 完整点的存储 *效率不高* ，但能使还原变得更方便和快速。
-- 增量复制为高效  存储，但要求还原数据链，这会影响恢复时间
+- 增量复制为高效存储，但要求还原数据链，这会影响恢复时间
 
-Azure 备份存储体系结构提供这两个领域的最佳产品，它以最佳方式用于快速恢复的数据存储中，产生较低的存储成本。 这种方法可确保提高（入口和出口）带宽使用效率。 数据存储量和恢复数据所需的时间都会尽量减少。 了解有关[增量备份](https://azure.microsoft.com/blog/microsoft-azure-backup-save-on-long-term-storage/)的更多信息。
+Azure 备份存储体系结构在这两方面都能提供最佳性能，它以最佳方式存储数据，以便快速还原，且产生的存储成本低。 这种方法可确保提高（入口和出口）带宽使用效率。 数据存储量和恢复数据所需的时间都会尽量减少。 了解有关[增量备份](https://azure.microsoft.com/blog/microsoft-azure-backup-save-on-long-term-storage/)的更多信息。
 
 ### <a name="is-there-a-limit-on-the-number-of-recovery-points-that-can-be-created"></a>可创建的恢复点数量是否有限制？
 最多可为单个受保护实例创建 9999 个恢复点。 受保护的实例包括计算机、服务器（物理或虚拟）或备份到 Azure 的工作负载。
@@ -161,11 +158,11 @@ Azure 备份存储体系结构提供这两个领域的最佳产品，它以最�
 - 了解有关[备份和保留](./backup-overview.md)的更多信息。
 
 
-### <a name="how-many-times-can-i-recover-data-thats-backed-up-to-azure"></a>我可以将备份到 Azure 的数据恢复多少次？
+### <a name="how-many-times-can-i-recover-data-thats-backed-up-to-azure"></a>我可以恢复多少次备份到 Azure 的数据？
 从 Azure 备份执行恢复的次数没有限制。
 
 ### <a name="when-restoring-data-do-i-pay-for-the-egress-traffic-from-azure"></a>还原数据时，Azure 的出口流量是否需要付费？
-不是。 恢复是免费的，不收取传出流量费。
+否。 恢复是免费的，不收取传出流量费。
 
 ### <a name="what-happens-when-i-change-my-backup-policy"></a>如果更改备份策略，会发生什么情况？
 应用新策略时，将遵循新策略的计划和保留期。
@@ -173,7 +170,7 @@ Azure 备份存储体系结构提供这两个领域的最佳产品，它以最�
 - 如果延长保留期，则会对现有的恢复点进行标记，按新策略要求保留它们。
 - 如果缩短保留期，则会将其标记为在下一清理作业中删除，随后会将其删除。
 
-## <a name="encryption"></a>加密
+## <a name="encryption"></a>Encryption
 
 ### <a name="is-the-data-sent-to-azure-encrypted"></a>发送到 Azure 的数据会加密吗？
 是的。 使用 AES256 在本地计算机上对数据进行加密。 数据通过安全的 HTTPS 链接发送。 在云中传输的数据仅在存储和恢复服务之间通过 HTTPS 链接进行保护。 iSCSI 协议可保护恢复服务和用户计算机之间传输的数据。 安全隧道用于保护 iSCSI 通道。

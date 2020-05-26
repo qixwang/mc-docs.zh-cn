@@ -5,15 +5,15 @@ author: ccompy
 ms.assetid: 9e21a7e4-2436-4e81-bb05-4a6ba70eeaf7
 ms.topic: article
 origin.date: 08/29/2018
-ms.date: 01/13/2020
+ms.date: 05/22/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 731d1a6ae94a86bf06009db47ea0bb2d8da7633f
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 8fc70963ac3f81aef86791b2991930f3505d65f6
+ms.sourcegitcommit: 981a75a78f8cf74ab5a76f9e6b0dc5978387be4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75600481"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83801281"
 ---
 # <a name="certificates-and-the-app-service-environment"></a>证书和应用服务环境 
 
@@ -28,7 +28,7 @@ ASE 是单租户系统。 由于它是单一租户，某些只能在 ASE 中使�
 可以使用两个选项配置 ILB ASE 的证书。  可为 ILB ASE 设置通配符默认证书，或者在 ASE 中的单个 Web 应用上设置证书。  无论做出哪种选择，都必须正确配置以下证书属性：
 
 - **使用者：** 对于通配符 ILB ASE 证书，此属性必须设置为 *.[根域]。 如果为应用创建证书，则此属性应是 [应用名称].[根域]
-- **使用者可选名称**：此属性必须同时通配符 ILB ASE 证书的 *.[根域] 和 *.scm.[根域]。 如果为应用创建证书，则此属性应是 [应用名称].[根域] 和 [应用名称].scm.[根域]
+- **使用者可选名称：** 此属性必须同时包括通配符 ILB ASE 证书的 *.[根域] 和 *.scm.[根域]。 如果为应用创建证书，则此属性应是 [应用名称].[根域] 和 [应用名称].scm.[根域]
 
 作为第三种变体，可以创建在证书 SAN 中包含所有应用名称的 ILB ASE 证书，而不使用通配符引用。 此方法的问题在于，需要事先知道要放入 ASE 的应用名称，或者需要不断更新 ILB ASE 证书。
 
@@ -85,7 +85,7 @@ ASE 是单租户系统。 由于它是单一租户，某些只能在 ASE 中使�
 
 若要执行测试，可以创建自签名证书，并使用以下 PowerShell 命令生成 *.cer* 文件： 
 
-    $certificate = New-SelfSignedCertificate -certstorelocation cert:\localmachine\my -dnsname "*.internal-contoso.com","*.scm.internal-contoso.com
+    $certificate = New-SelfSignedCertificate -certstorelocation cert:\localmachine\my -dnsname "*.internal-contoso.com","*.scm.internal-contoso.com"
 
     $certThumbprint = "cert:\localMachine\my\" + $certificate.Thumbprint
     $password = ConvertTo-SecureString -String "CHANGETHISPASSWORD" -Force -AsPlainText

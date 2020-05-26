@@ -5,16 +5,16 @@ services: virtual-machines
 author: rockboyfor
 ms.service: virtual-machines
 ms.topic: include
-origin.date: 05/13/2019
-ms.date: 12/25/2019
+origin.date: 03/31/2019
+ms.date: 05/18/2020
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: f477b0c834dd3b6f70123271a0923bb097fbcdff
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 95d792d0986bbde3dec67cd61ee02a94163e771c
+ms.sourcegitcommit: 8d56bc6baeb42d675695ecef1909d76f5c4a6ae3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77428127"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83406195"
 ---
 本文将对有关 Azure 托管磁盘和 Azure 高级 SSD 盘的一些常见问题进行解答。
 
@@ -24,7 +24,7 @@ ms.locfileid: "77428127"
 
 托管磁盘是一种通过处理存储帐户管理来简化 Azure IaaS VM 的磁盘管理的功能。 有关详细信息，请参阅[托管磁盘概述](../articles/virtual-machines/windows/managed-disks-overview.md)。
 
- 如果从现有的 VHD（80 GB）创建标准托管磁盘，需要多少费用？
+如果从现有的 VHD（80 GB）创建标准托管磁盘，需要多少费用？
 
 从 80 GB VHD 创建的标准托管磁盘被视为下一个可用的标准磁盘大小（S10 磁盘）。 我们按 S10 磁盘定价收费。 有关详细信息，请参阅[定价页](https://www.azure.cn/pricing/details/storage/)。
 
@@ -36,15 +36,15 @@ ms.locfileid: "77428127"
 
 我们根据磁盘的预配容量收费。 有关详细信息，请参阅[定价页](https://www.azure.cn/pricing/details/storage/)。
 
- 高级托管磁盘与非托管磁盘的定价有何不同？
+高级托管磁盘与非托管磁盘的定价有何不同？
 
 高级托管磁盘的定价与高级非托管磁盘的定价相同。
 
- 是否可以更改托管磁盘的存储帐户类型（标准或高级）？
+是否可以更改托管磁盘的存储帐户类型（标准或高级）？
 
 是的。 可以使用 Azure 门户、PowerShell 或 Azure CLI 更改托管磁盘的存储帐户类型。
 
- 是否可以使用 Azure 存储帐户中的 VHD 文件以不同的订阅创建托管磁盘？
+是否可以使用 Azure 存储帐户中的 VHD 文件以不同的订阅创建托管磁盘？
 
 是的。
 
@@ -52,15 +52,11 @@ ms.locfileid: "77428127"
 
 否。
 
- 客户使用托管磁盘是否存在任何规模限制？
+客户使用托管磁盘是否存在任何规模限制？
 
 托管磁盘取消了与存储帐户相关的限制。 但是，订阅的最大限制为每个区域、每个磁盘类型 50,000 个托管磁盘。
 
-**是否可以创建托管磁盘的增量快照？**
-
-否。 当前的快照功能可提供托管磁盘的完整副本。
-
- 可用性集中的 VM 是否可以同时包含托管和非托管磁盘？
+可用性集中的 VM 是否可以同时包含托管和非托管磁盘？
 
 否。 可用性集中的 VM 必须全部使用托管磁盘或全部使用非托管磁盘。 创建可用性集时，可以选择要使用的磁盘类型。
 
@@ -72,7 +68,7 @@ ms.locfileid: "77428127"
 
 是的。 可创建空磁盘。 可独立于 VM 创建托管磁盘，例如，不需要将磁盘附加到 VM。
 
- 什么是使用托管磁盘的可用性集的支持容错域计数？
+什么是使用托管磁盘的可用性集的支持容错域计数？
 
 使用托管磁盘的可用性集的支持容错域计数为 2 或 3，具体取决于它所在的区域。
 
@@ -80,7 +76,7 @@ ms.locfileid: "77428127"
 
 设置 VM 诊断的专用存储帐户。
 
- 托管磁盘支持哪类基于角色的访问控制？
+托管磁盘支持哪类基于角色的访问控制？
 
 托管磁盘支持三个密钥默认角色：
 
@@ -88,7 +84,7 @@ ms.locfileid: "77428127"
 * 参与者：可管理除访问权限以外的一切内容
 * 读者：可查看一切内容，但不可作出更改
 
- 是否可将托管磁盘复制或导出到专用存储帐户？
+是否可将托管磁盘复制或导出到专用存储帐户？
 
 可以为托管磁盘生成只读共享访问签名 (SAS) URI，使用它将内容复制到专用存储帐户或本地存储。 可以通过 Azure 门户、Azure PowerShell、Azure CLI 或 [AzCopy](../articles/storage/common/storage-use-azcopy.md) 使用 SAS URI
 
@@ -96,11 +92,11 @@ ms.locfileid: "77428127"
 
 客户可以生成托管磁盘的快照，并使用快照创建另一个托管磁盘。
 
- 是否仍支持非托管磁盘？
+是否仍支持非托管磁盘？
 
 是的，非托管磁盘和托管磁盘均受支持。 建议对新的工作负荷使用托管磁盘，并将当前的工作负荷迁移到托管磁盘。
 
-是否可以在同一 VM 上归置非托管和托管磁盘？ 
+是否可以在同一 VM 上归置非托管和托管磁盘？
 
 否。
 
@@ -108,23 +104,23 @@ ms.locfileid: "77428127"
 
 是的。
 
- 是否可以创建本地冗余存储、异地冗余存储和区域冗余存储托管磁盘？
+是否可以创建本地冗余存储、异地冗余存储和区域冗余存储托管磁盘？
 
 Azure 托管磁盘当前仅支持本地冗余存储托管磁盘。
 
- 是否可以收缩或缩小托管磁盘？
+是否可以收缩或缩小托管磁盘？
 
 否。 目前，不支持此功能。
 
-是否可以在磁盘上中断租用？ 
+是否可以在磁盘上中断租用？
 
 否。 目前不支持此功能，因为租用的作用是防止磁盘在使用时被意外删除。
 
- 当使用专用（未使用系统准备工具创建或未通用化）操作系统磁盘预配 VM 时，是否可以更改计算机名称属性？
+当使用专用（未使用系统准备工具创建或未通用化）操作系统磁盘预配 VM 时，是否可以更改计算机名称属性？
 
 否。 无法更新计算机名称属性。 新 VM 从创建操作系统磁盘时所用的父 VM 继承该属性。 
 
- 在哪里可找到用于使用托管磁盘创建 VM 的示例 Azure 资源管理器模板？
+在哪里可找到用于使用托管磁盘创建 VM 的示例 Azure 资源管理器模板？
 * [List of templates using Managed Disks](https://github.com/Azure/azure-quickstart-templates/blob/master/managed-disk-support-list.md)（使用托管磁盘的模板列表）
 * https://github.com/chagarw/MDPP
 
@@ -149,6 +145,7 @@ Azure 托管磁盘当前仅支持本地冗余存储托管磁盘。
 <!--Not Available on Ultra SSDs do not support snapshots.-->
 <!--Not Available on ### Disk reservation-->
 
+<!--Not Available on ### Azure shared disks-->
 <!--Not Available on ## Ultra disks-->
 ## <a name="uploading-to-a-managed-disk"></a>上传到托管磁盘
 
@@ -170,7 +167,7 @@ Azure 托管磁盘当前仅支持本地冗余存储托管磁盘。
 
 ## <a name="standard-ssd-disks"></a>标准 SSD 盘
 
-Azure 标准 SSD 盘是什么？ 
+Azure 标准 SSD 盘是什么？
 标准 SSD 盘是受固态介质支持的标准磁盘，经过优化而作为在较低 IOPS 级别需要一致性能的工作负载的高性价比存储。
 
 <a name="standard-ssds-azure-regions"></a>
@@ -180,13 +177,13 @@ Azure 标准 SSD 盘是什么？
 **使用标准 SSD 时是否可以使用 Azure 备份？**
 是的，Azure 备份现已可用。
 
-如何创建标准 SSD 盘？ 
+如何创建标准 SSD 盘？
 可以使用 Azure 资源管理器模板、SDK、PowerShell 或 CLI 创建标准 SSD 盘。 以下为创建标准 SSD 盘时资源管理器模板中所需的参数：
 
-* Microsoft.Compute 的 apiVersion  必须设置为 `2018-04-01`（或更高）
+* Microsoft.Compute 的 apiVersion 必须设置为 `2018-04-01`（或更高）
 * 将 managedDisk.storageAccountType 指定为 `StandardSSD_LRS`
 
-以下示例显示了使用标准 SSD 盘的 VM 的 properties.storageProfile.osDisk 部分  ：
+以下示例显示了使用标准 SSD 盘的 VM 的 properties.storageProfile.osDisk 部分：
 
 ```json
 "osDisk": {
@@ -202,17 +199,17 @@ Azure 标准 SSD 盘是什么？
 
 有关如何使用模板创建标准 SSD 盘的完整模板示例，请参阅[使用标准 SSD 数据磁盘从 Windows 映像创建 VM](https://github.com/azure/azure-quickstart-templates/tree/master/101-vm-with-standardssd-disk/)。
 
-是否可以将现有磁盘转换为标准 SSD？ 
+是否可以将现有磁盘转换为标准 SSD？
 可以。 请参阅[将 Azure 托管磁盘存储从标准转换为高级，反之亦然](/virtual-machines/windows/convert-disk-storage)，以了解有关转换托管磁盘的常规指南。 此外，使用以下值将磁盘类型更新为标准 SSD。
 -AccountType StandardSSD_LRS
 
 **使用标准 SSD 盘而不使用 HDD 的好处是什么？**
 与 HDD 磁盘相比，标准 SSD 盘可以提供更好的延迟、一致性、可用性和可靠性。 因此，应用程序工作负荷可以更平稳地在标准 SSD 上运行。 注意，高级 SSD 盘是适用于大多数 IO 密集型生产工作负荷的建议解决方案。
 
-是否可将标准 SSD 用作非托管磁盘？ 
+是否可将标准 SSD 用作非托管磁盘？
 不可以，标准 SSD 盘仅可用作托管磁盘。
 
-标准 SSD 磁盘是否支持“单实例 VM SLA”？ 
+标准 SSD 磁盘是否支持“单实例 VM SLA”？
 不是，标准 SSD 没有单实例 VM SLA。 将高级 SSD 磁盘用于单实例 VM SLA。
 
 ## <a name="migrate-to-managed-disks"></a>迁移到托管磁盘
@@ -221,15 +218,15 @@ Azure 标准 SSD 盘是什么？
 
 迁移涉及将磁盘从一个存储位置移动到另一个存储位置。 这是通过在后台复制数据来安排的，可能需要花费数小时才能完成，通常少于 24 小时，具体取决于磁盘中的数据量。 在此期间，由于一些读取可能被重定向到原始位置，所以应用程序可能会经历比平常更高的读取延迟，并且可能需要花费更长时间才能完成。 在此期间，对写入延迟没有影响。  
 
-迁移到托管磁盘之前/之后，需要在现有的 Azure 备份服务配置中进行哪些更改？ 
+迁移到托管磁盘之前/之后，需要在现有的 Azure 备份服务配置中进行哪些更改？
 
 不需要进行任何更改。
 
-在迁移之前通过 Azure 备份服务创建的 VM 备份是否可继续工作？ 
+在迁移之前通过 Azure 备份服务创建的 VM 备份是否可继续工作？
 
 是的，备份可以顺利工作。
 
-迁移到托管磁盘之前/之后，需要在现有的 Azure 磁盘加密配置中进行哪些更改？ 
+迁移到托管磁盘之前/之后，需要在现有的 Azure 磁盘加密配置中进行哪些更改？
 
 不需要进行任何更改。
 
@@ -237,25 +234,25 @@ Azure 标准 SSD 盘是什么？
 
 否。 可以使用包含非托管磁盘的旧规模集中的映像创建包含托管磁盘的新规模集。
 
-是否可以通过迁移到托管磁盘之前创建的页 Blob 快照创建托管磁盘？ 
+是否可以通过迁移到托管磁盘之前创建的页 Blob 快照创建托管磁盘？
 
 否。 可将页 Blob 快照导出为页 Blob，然后从导出的页 Blob 创建托管磁盘。
 
-是否可将 Azure Site Recovery 保护的本地计算机故障转移到包含托管磁盘的 VM？ 
+是否可将 Azure Site Recovery 保护的本地计算机故障转移到包含托管磁盘的 VM？
 
 是的，可以选择故障转移到包含托管磁盘的 VM。
 
-迁移是否影响 Azure Site Recovery 通过 Azure 到 Azure 复制保护的 Azure VM？ 
+迁移是否影响 Azure Site Recovery 通过 Azure 到 Azure 复制保护的 Azure VM？
 
 否。 对于包含托管磁盘的 VM，提供 Azure Site Recovery Azure 到 Azure 保护。
 
-是否可以迁移位于存储帐户中现在或以前已加密的 VM 的非托管磁盘迁移到托管磁盘？ 
+是否可以迁移位于存储帐户中现在或以前已加密的 VM 的非托管磁盘迁移到托管磁盘？
 
 是
 
 ## <a name="managed-disks-and-storage-service-encryption"></a>托管磁盘和存储服务加密
 
- 创建托管磁盘时，是否会默认启用 Azure 存储服务加密？
+创建托管磁盘时，是否会默认启用 Azure 存储服务加密？
 
 是的。
 
@@ -269,21 +266,21 @@ Azure 标准 SSD 盘是什么？
 
 <!-- Notice: Change Microsoft to 21Vianet -->
 
- 是否可以为托管磁盘禁用存储服务加密？
+是否可以为托管磁盘禁用存储服务加密？
 
 否。
 
- 存储服务加密是否仅适用于特定区域？
+存储服务加密是否仅适用于特定区域？
 
 否。 它适用于托管磁盘可用的所有区域。 托管磁盘适用于所有公共区域。 这也适用于中国，但仅适用于 21Vianet 托管密钥，不适用于客户托管密钥。
 
 <!--Not Available on And German-->
 
- 如何确定托管磁盘是否已加密？
+如何确定托管磁盘是否已加密？
 
 可以从 Azure 门户、Azure CLI 和 PowerShell 确定托管磁盘的创建时间。 如果时间是在 2017 年 6 月 9 日之后，则磁盘已加密。
 
- 如何对 2017 年 6 月 10 日之前创建的现有磁盘加密？
+如何对 2017 年 6 月 10 日之前创建的现有磁盘加密？
 
 自 2017 年 6 月 10 日起，写入到现有托管磁盘的新数据会自动加密。 我们还打算对现有数据进行加密，且在后台以异步方式加密。 如果必须立即对现有数据进行加密，请创建磁盘的副本。 将对新磁盘进行加密。
 
@@ -294,17 +291,17 @@ Azure 标准 SSD 盘是什么？
 
 是的。 2017 年 6 月 9 日之后创建的所有托管快照和映像均会自动加密。 
 
- 是否可以将 VM 的位于存储帐户且现在或以前已加密的非托管磁盘转换为托管磁盘？
+是否可以将 VM 的位于存储帐户且现在或以前已加密的非托管磁盘转换为托管磁盘？
 
 是
 
- 是否会同时加密从托管磁盘或快照导出的 VHD？
+是否会同时加密从托管磁盘或快照导出的 VHD？
 
 否。 但如果将 VHD 从加密托管磁盘或快照导出到加密存储帐户，则会对其进行加密。 
 
 ## <a name="premium-disks-managed-and-unmanaged"></a>高级磁盘：托管和非托管
 
-如果 VM 使用支持高级 SSD 盘的大小系列（比如 DSv2），是否可以同时附加高级和标准数据磁盘？  
+如果 VM 使用支持高级 SSD 盘的大小系列（比如 DSv2），是否可以同时附加高级和标准数据磁盘？ 
 
 是的。
 
@@ -314,25 +311,25 @@ Azure 标准 SSD 盘是什么？
 
 否。 只可以将标准数据磁盘附加到不使用支持高级 SSD 盘的大小系列的 VM。
 
- 如果从现有的 VHD (80 GB) 创建高级数据磁盘，需要多少费用？
+如果从现有的 VHD (80 GB) 创建高级数据磁盘，需要多少费用？
 
 从 80 GB VHD 创建的高级数据磁盘被视为下一个可用的高级磁盘大小（P10 磁盘）。 我们按 P10 磁盘定价收费。
 
-使用高级 SSD 盘时是否存在事务成本？ 
+使用高级 SSD 盘时是否存在事务成本？
 
 每个磁盘大小都有固定成本，其根据 IOPS 和吞吐量的特定限制进行预配。 其他成本包括出站带宽和快照容量（如果适用）。 有关详细信息，请参阅[定价页](https://www.azure.cn/pricing/details/storage/)。
 
- 可从磁盘缓存获取的 IOPS 和吞吐量限制是多少？
+可从磁盘缓存获取的 IOPS 和吞吐量限制是多少？
 
 DS 系列的缓存和本地 SSD 合并限制是每个核心 4,000 IOPS，以及每个核心每秒 33 MiB。 
 
 <!-- Not Available on G-series-->
 
- 托管磁盘 VM 是否支持本地 SSD？
+托管磁盘 VM 是否支持本地 SSD？
 
 本地 SSD 是托管磁盘 VM 随附的临时存储。 临时存储不需要额外的成本。 建议不要使用此本地 SSD 来存储应用程序数据，因为这些数据不会永久保存在 Azure Blob 存储中。
 
- 在高级磁盘上使用 TRIM 是否有任何影响？
+在高级磁盘上使用 TRIM 是否有任何影响？
 
 在高级或标准磁盘的 Azure 磁盘上使用 TRIM 没有负面影响。
 
@@ -361,7 +358,7 @@ Azure 支持的操作系统磁盘的分区类型是主启动记录 (MBR)。 MBR 
 
 Azure 支持的操作系统磁盘的分区类型是主启动记录 (MBR)。 MBR 格式支持的磁盘最大大小为 2 TiB。 Azure 支持的操作系统非托管磁盘的最大大小为 2 TiB。 Azure 支持的非托管数据磁盘最大大小为 4 TiB。
 
- 支持的最大页 blob 大小是多少？
+支持的最大页 blob 大小是多少？
 
 Azure 支持的最大页 blob 大小是 8 TiB (8,191 GiB)。 附加到 VM 作为数据或操作系统磁盘时，最大页 blob 大小为 4 TiB (4,095 GiB)。
 
@@ -376,7 +373,7 @@ Azure 支持的最大页 blob 大小是 8 TiB (8,191 GiB)。 附加到 VM 作为
 |Azure CLI v2     | 版本号 2.0.12：2017 年 7 月版本或更高版本|
 |AzCopy           | 版本号 6.1.0：2017 年 6 月版本或更高版本|
 
- 非托管磁盘或页 blob 是否支持 P4 和 P6 磁盘大小？
+非托管磁盘或页 blob 是否支持 P4 和 P6 磁盘大小？
 
 非托管磁盘和页 blob 不支持 P4 (32 GiB) 和 P6 (64 GiB) 磁盘大小作为默认磁盘层。 需要显式[设置 Blob 层](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier)，将其设为 P4 和 P6，以便存储映射到这些层的磁盘。 如果使用少于 32 GiB 或介于 32 GiB 到 64 GiB 之间的磁盘大小或内容长度部署非托管磁盘或页 blob 而不设置 Blob 层，则将继续停留在 P10（500 IOPS 和 100 MiB/秒）和映射的定价层。
 
@@ -394,7 +391,7 @@ Azure 支持的最大页 blob 大小是 8 TiB (8,191 GiB)。 附加到 VM 作为
 
 **Azure 备份和 Azure Site Recovery 服务支持的最大磁盘大小是多少？**
 
-Azure 备份和 Azure Site Recovery 服务支持的最大磁盘大小为 4 TiB。 目前尚不支持高达 32 TiB 的大型磁盘。
+Azure 备份支持的最大磁盘大小是 32 TiB（加密磁盘为 4 TiB）。 Azure Site Recovery 支持的最大磁盘大小为 8 TiB。 目前 Azure Site Recovery 中尚不支持高达 32 TiB 的大型磁盘。
 
 **标准 SSD 和标准 HDD 大型磁盘大小 (>4 TiB) 用于实现优化磁盘 IOPS 和带宽建议的 VM 大小是多少？**
 
@@ -422,6 +419,6 @@ Azure 全球、 Microsoft Azure 政府和 Azure 中国世纪互联涵盖的所�
 
 <!--Not Available on You can post a question at the end of this article in the comments.-->
 
-若要提出功能请求，请将请求和想法提交到 [Azure 支持站点](https://support.azure.cn/zh-cn/support/support-azure/)。
+若要提出功能请求，请将请求和想法提交到 [Azure 支持站点](https://support.azure.cn/support/support-azure/)。
 
 <!--Update_Description: wording update, update link -->

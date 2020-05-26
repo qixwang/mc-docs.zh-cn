@@ -4,16 +4,16 @@ description: 了解如何与 Azure 防火墙集成，以保护应用服务环境
 author: ccompy
 ms.assetid: 955a4d84-94ca-418d-aa79-b57a5eb8cb85
 ms.topic: article
-origin.date: 01/24/2020
-ms.date: 03/30/2020
+origin.date: 03/31/2020
+ms.date: 05/22/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: ad5b3a1bdc79525e7e27ba67204a546fa77b21ad
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 480ec62ecf9d10605b39136912ac52a17070215b
+ms.sourcegitcommit: 981a75a78f8cf74ab5a76f9e6b0dc5978387be4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80522071"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83801286"
 ---
 # <a name="locking-down-an-app-service-environment"></a>锁定应用服务环境
 

@@ -13,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 origin.date: 02/20/2020
-ms.date: 03/09/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: a0f5f9132e1e85b8cf95887c0cb2f9c0e1c69d4b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 962dd11af9191b79f13d7dab4d6753b28a9aa1a3
+ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79084512"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83392482"
 ---
 # <a name="previous-generations-of-virtual-machine-sizes"></a>前几代虚拟机大小
 
@@ -80,7 +80,7 @@ Mbps = 每秒 10^6 字节，GiB = 1024^3 字节。
 
 本部分提供了有关先前几代虚拟机大小的信息。 这些大小仍受支持，但无法接收更多的容量。 有更新的或备用的大小，这些大小已公开发布。 请参阅 [Azure 中 Linux 虚拟机的大小](linux/sizes.md)，选择最适合自己需求的 VM 大小。  
 
-有关如何重设 Windows VM 大小的详细信息，请参阅[重设 Linux VM 大小](linux/change-vm-size.md)。  
+有关如何调整 Linux VM 的大小的详细信息，请参阅[调整 Linux VM 的大小](linux/change-vm-size.md)。  
 
 <br />
 
@@ -231,7 +231,7 @@ ACU：160-250 <sup>1,2</sup>
 <!--Not Available on ### Ls-series-->
 <!--Not Avaialble on ### GS-series -->
 <!--Not Available on ### G-series -->
-
+<!--Not Available on ## NV-series -->
 
 ## <a name="other-sizes"></a>其他大小
 
@@ -249,5 +249,4 @@ ACU：160-250 <sup>1,2</sup>
 
 了解有关 [Azure 计算单元 (ACU)](acu.md) 如何帮助跨 Azure SKU 比较计算性能的详细信息。
 
-<!-- Update_Description: new article about sizes previous gen -->
-<!--NEW.date: 03/09/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

@@ -14,17 +14,17 @@ ms.workload: infrastructure-services
 origin.date: 06/19/2017
 ms.date: 10/22/2018
 ms.author: v-lingwu
-ms.openlocfilehash: d2ba62154ecb5074cd4191d1f98fcccbdd7f51e4
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 0cde5e50169ea69d652b29e81b3d41145dcaab2d
+ms.sourcegitcommit: b81ea2ab9eafa986986fa3eb1e784cfe9bbf9ec1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77028987"
+ms.lasthandoff: 05/13/2020
+ms.locfileid: "83367834"
 ---
 # <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher-azure-cli"></a>使用 Azure 网络观察程序 Azure CLI 对虚拟网络网关和连接进行故障排除
 
 > [!div class="op_single_selector"]
-> - [门户](diagnose-communication-problem-between-networks.md)
+> - [Portal](diagnose-communication-problem-between-networks.md)
 > - [PowerShell](network-watcher-troubleshoot-manage-powershell.md)
 > - [Azure CLI](network-watcher-troubleshoot-manage-cli.md)
 > - [REST API](network-watcher-troubleshoot-manage-rest.md)
@@ -32,9 +32,9 @@ ms.locfileid: "77028987"
 网络观察程序提供了许多功能，因为它关系到了解 Azure 中的网络资源。 其中一项功能就是资源故障排除。 可以通过门户、PowerShell、CLI 或 REST API 调用资源故障排除。 调用后，网络观察程序会检查虚拟网络网关或连接的运行状况，并返回调查结果。
 
 
-若要执行本文中的步骤，需要[安装适用于 Mac、Linux 和 Windows 的 Azure 命令行接口 (Azure CLI)](https://docs.azure.cn/zh-cn/cli/install-az-cli2?view=azure-cli-latest)。
+若要执行本文中的步骤，需要[安装适用于 Mac、Linux 和 Windows 的 Azure 命令行接口 (CLI)](https://docs.azure.cn/cli/install-az-cli2?view=azure-cli-latest)。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 此方案假定已按照[创建网络观察程序](network-watcher-create.md)中的步骤创建网络观察程序。
 

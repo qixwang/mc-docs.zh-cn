@@ -6,15 +6,15 @@ author: cephalin
 ms.service: app-service
 ms.topic: include
 origin.date: 02/02/2018
-ms.date: 03/16/2020
+ms.date: 05/22/2020
 ms.author: v-tawe
 ms.custom: include file
-ms.openlocfilehash: 815729f2ef9ce4083fee7f0a9865dda48d70f097
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 38dc01c872d93de7cd9b934a603efd775d2e5873
+ms.sourcegitcommit: 981a75a78f8cf74ab5a76f9e6b0dc5978387be4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80272694"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83801218"
 ---
 在 `myAppServicePlan` 应用服务计划中创建一个 Web 应用。 
 
@@ -26,8 +26,8 @@ az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name
 
 创建 Web 应用后，Azure CLI 会显示类似于以下示例的输出：
 
-```json
-Local git is configured with url of 'https://<username>@<app-name>.scm.chinacloudsites.cn/<app-name>.git'
+<pre>
+Local git is configured with url of 'https://&lt;username&gt;@&lt;app-name&gt;.scm.chinacloudsites.cn/&lt;app-name&gt;.git'
 {
   "availabilityState": "Normal",
   "clientAffinityEnabled": true,
@@ -36,13 +36,13 @@ Local git is configured with url of 'https://<username>@<app-name>.scm.chinaclou
   "cloningInfo": null,
   "containerSize": 0,
   "dailyMemoryTimeQuota": 0,
-  "defaultHostName": "<app-name>.chinacloudsites.cn",
-  "deploymentLocalGitUrl": "https://<username>@<app-name>.scm.chinacloudsites.cn/<app-name>.git",
+  "defaultHostName": "&lt;app-name&gt;.chinacloudsites.cn",
+  "deploymentLocalGitUrl": "https://&lt;username&gt;@&lt;app-name&gt;.scm.chinacloudsites.cn/&lt;app-name&gt;.git",
   "enabled": true,
-  < JSON data removed for brevity. >
+  &lt; JSON data removed for brevity. &gt;
 }
-```
+</pre>
 
 > [!NOTE]
-> Git 远程的 URL 将显示在 `deploymentLocalGitUrl` 属性中，其格式为 `https://<username>@<app_name>.scm.chinacloudsites.cn/<app-name>.git`。 保存此 URL，后续将会用到。
+> Git 远程的 URL 将显示在 `deploymentLocalGitUrl` 属性中，其格式为 `https://<username>@<app-name>.scm.chinacloudsites.cn/<app-name>.git`。 保存此 URL，后续将会用到。
 >

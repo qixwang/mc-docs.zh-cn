@@ -15,16 +15,16 @@ ms.workload: na
 origin.date: 01/24/2020
 ms.date: 02/26/2020
 ms.author: v-lingwu
-ms.openlocfilehash: 634800bc38d5d4ab3189891b0679074be7b32806
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 6a69b7cb963fb6c907601b770d1d8d85fbed1f96
+ms.sourcegitcommit: a04b0b1009b0c62f2deb7c7acee75a1304d98f87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78154465"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83796797"
 ---
 # <a name="sqlruleaction-syntax-reference-for-azure-service-bus"></a>Azure 服务总线的 SQLRuleAction 语法参考
 
-SqlRuleAction 是 [SqlRuleAction](/dotnet/api/microsoft.servicebus.messaging.sqlruleaction) 类的实例，代表以基于 SQL 语言的语法编写的一组操作，该语法针对 [BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) 执行。   
+SqlRuleAction 是 [SqlRuleAction](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.sqlruleaction) 类的实例，代表以基于 SQL 语言的语法编写的一组操作，该语法针对 [BrokeredMessage](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) 执行。   
   
 本文列出了有关 SQL 规则操作语法的详细信息。  
 
@@ -66,7 +66,7 @@ SqlRuleAction 是 [SqlRuleAction](/dotnet/api/microsoft.servicebus.messaging.sql
 
 ## <a name="arguments"></a>参数  
   
--   `<scope>` 是一个可选字符串，指示 `<property_name>` 的范围。 有效值为 `sys` 或 `user`。 `sys` 值指示系统范围，其中 `<property_name>` 是 [BrokeredMessage 类](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)的公共属性名称。 `user` 指示用户范围，其中 `<property_name>` 是 [BrokeredMessage 类](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)字典的项。 `user` 范围是默认范围（如果 `<scope>` 未指定）。  
+-   `<scope>` 是一个可选字符串，指示 `<property_name>` 的范围。 有效值为 `sys` 或 `user`。 `sys` 值指示系统范围，其中 `<property_name>` 是 [BrokeredMessage 类](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)的公共属性名称。 `user` 指示用户范围，其中 `<property_name>` 是 [BrokeredMessage 类](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)字典的项。 `user` 范围是默认范围（如果 `<scope>` 未指定）。  
   
 ### <a name="remarks"></a>备注  
 
@@ -219,9 +219,9 @@ SqlRuleAction 是 [SqlRuleAction](/dotnet/api/microsoft.servicebus.messaging.sql
 - 当表达式类型和现有的属性类型不同时，SET 会尽可能执行隐式转换。
 - 如果引用了不存在的系统属性，操作会失败。
 - 如果引用了不存在的用户属性，操作不会失败。
-- 不存在的用户属性在内部的求值为“未知”，其遵循的语义与 [SQLFilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter) 相同（在对运算符求值时）。
+- 不存在的用户属性在内部的求值为“未知”，其遵循的语义与 [SQLFilter](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.sqlfilter) 相同（在对运算符求值时）。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [SQLRuleAction 类](/dotnet/api/microsoft.servicebus.messaging.sqlruleaction)
-- [SQLFilter 类](/dotnet/api/microsoft.servicebus.messaging.sqlfilter)
+- [SQLRuleAction 类](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.sqlruleaction)
+- [SQLFilter 类](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.sqlfilter)

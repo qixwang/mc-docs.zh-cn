@@ -1,18 +1,18 @@
 ---
 title: 使用恢复服务保管库的诊断设置
 description: 本文介绍如何使用 Azure 备份服务的新旧诊断事件
-author: lingliw
+author: Johnnytechn
 ms.reviewer: srinathv
 ms.topic: conceptual
 origin.date: 10/30/2019
 ms.date: 12/05/2019
-ms.author: v-lingwu
-ms.openlocfilehash: 477c606ae93c4206c469a0b24d885eb5a586119f
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.author: v-johya
+ms.openlocfilehash: 3241fb84d081c3f70da3ed0793e8f1540aad37b2
+ms.sourcegitcommit: 08b42258a48d96d754244064d065e4d5703f1cfb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74840100"
+ms.lasthandoff: 05/18/2020
+ms.locfileid: "83445173"
 ---
 # <a name="using-diagnostics-settings-for-recovery-services-vaults"></a>使用恢复服务保管库的诊断设置
 

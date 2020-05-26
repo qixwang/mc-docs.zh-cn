@@ -2,21 +2,23 @@
 title: 收集和分析资源日志
 description: 了解如何从 Azure 容器实例中的容器组将资源日志和事件数据发送到 Azure Monitor 日志
 ms.topic: article
-origin.date: 01/08/2020
-ms.date: 01/15/2020
+origin.date: 04/07/2020
+ms.date: 04/30/2020
 ms.author: v-yeche
-ms.openlocfilehash: 23515d7aaff401f877cc184c93c4d3bb6d7ea189
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: a3bde7a2bd37c97a62e2336492622e16fee6dc9b
+ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78213752"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83392360"
 ---
 # <a name="container-group-and-instance-logging-with-azure-monitor-logs"></a>使用 Azure Monitor 日志进行容器组和实例日志记录
 
 Log Analytics 工作区提供了一个集中的位置，用于存储和查询来自 Azure 资源、本地资源以及其他云中的资源的日志数据。 Azure 容器实例提供内置支持，支持将日志和事件数据发送到 Azure Monitor 日志。
 
-若要将容器组日志和事件数据发送到 Azure Monitor 日志，请在创建容器组时指定现有 Log Analytics 工作区 ID 和工作区密钥。 以下部分介绍如何创建启用了日志记录的容器组以及如何查询日志。
+若要将容器组日志和事件数据发送到 Azure Monitor 日志，请在配置容器组时指定现有 Log Analytics 工作区 ID 和工作区密钥。 
+
+以下部分介绍如何创建启用了日志记录的容器组以及如何查询日志。 还可以使用工作区 ID 和工作区密钥[更新容器组](container-instances-update.md)以启用日志记录。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -39,8 +41,8 @@ Azure 容器实例需要权限才能向 Log Analytics 工作区发送数据。 �
 若要获取 Log Analytics 工作区 ID 和主密钥，请执行以下操作：
 
 1. 在 Azure 门户中导航到 Log Analytics 工作区
-1. 在“设置”下，选择“高级设置”  
-1. 选择“连接的源” > “Linux 服务器”  
+1. 在“设置”下，选择“高级设置” 
+1. 选择“连接的源” > “Linux 服务器” 
 
     <!--Not Available on **Windows Servers**-->
     <!--Not Available on  (or **Linux Servers**--the ID and keys are the same for both)-->
@@ -110,11 +112,11 @@ az container create --resource-group myResourceGroup --name mycontainergroup001 
 部署容器组以后，可能需要等待数分钟（最多 10 分钟），第一个日志条目才会显示在 Azure 门户中。 若要查看 `ContainerInstanceLog_CL` 表中的容器组日志，请执行以下操作：
 
 1. 在 Azure 门户中导航到 Log Analytics 工作区
-1. 在“常规”  下，选择“日志”   
+1. 在“常规”下，选择“日志”  
 1. 键入以下查询：`ContainerInstanceLog_CL | limit 50`
-1. 选择“运行” 
+1. 选择“运行”
 
-此时应看到查询显示了多个结果。 如果起初没有看到任何结果，请等待几分钟，然后选择“运行”按钮，再次执行查询  。 默认情况下会以“表”的形式显示日志条目  。 然后即可展开某一行来查看单个日志条目的内容。
+此时应看到查询显示了多个结果。 如果起初没有看到任何结果，请等待几分钟，然后选择“运行”按钮，再次执行查询。 默认情况下会以“表”的形式显示日志条目。 然后即可展开某一行来查看单个日志条目的内容。
 
 ![Azure 门户中的“日志搜索”结果][log-search-01]
 
@@ -123,11 +125,11 @@ az container create --resource-group myResourceGroup --name mycontainergroup001 
 还可以在 Azure 门户中查看容器实例的事件。 事件包括实例的创建时间和启动时间。 若要查看 `ContainerEvent_CL` 表中的事件数据，请执行以下操作：
 
 1. 在 Azure 门户中导航到 Log Analytics 工作区
-1. 在“常规”  下，选择“日志”   
+1. 在“常规”下，选择“日志”  
 1. 键入以下查询：`ContainerEvent_CL | limit 50`
-1. 选择“运行” 
+1. 选择“运行”
 
-此时应看到查询显示了多个结果。 如果起初没有看到任何结果，请等待几分钟，然后选择“运行”按钮，再次执行查询  。 默认情况下会以“表”的形式显示条目  。 然后即可展开某一行来查看单个条目的内容。
+此时应看到查询显示了多个结果。 如果起初没有看到任何结果，请等待几分钟，然后选择“运行”按钮，再次执行查询。 默认情况下会以“表”的形式显示条目。 然后即可展开某一行来查看单个条目的内容。
 
 ![Azure 门户中的“事件搜索”结果][log-search-02]
 
@@ -137,7 +139,7 @@ Azure Monitor 日志包含全面的[查询语言][query_lang]，用于从可能�
 
 查询的基本结构是一个源表（在本文中为 `ContainerInstanceLog_CL` 或 `ContainerEvent_CL`），后跟一系列以竖线字符 (`|`) 分隔的运算符。 可以将多个运算符链接起来以优化结果和执行高级函数。
 
-若要查看示例查询结果，请将以下查询粘贴到查询文本框中，然后选择“运行”按钮以执行该查询。  此查询显示其“消息”字段包含“warn”一词的所有日志条目：
+若要查看示例查询结果，请将以下查询粘贴到查询文本框中，然后选择“运行”按钮以执行该查询。 此查询显示其“消息”字段包含“warn”一词的所有日志条目：
 
 ```query
 ContainerInstanceLog_CL
@@ -181,5 +183,4 @@ ContainerInstanceLog_CL
 
 [az-container-create]: https://docs.microsoft.com/cli/azure/container?view=azure-cli-latest#az-container-create
 
-<!-- Update_Description: new article about container instances log analytics -->
-<!--NEW.date: 01/15/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

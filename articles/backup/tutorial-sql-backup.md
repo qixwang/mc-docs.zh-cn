@@ -2,16 +2,16 @@
 title: 教程 - 将 SQL Server 数据库备份到 Azure
 description: 在本教程中，了解如何将 Azure VM 上运行的 SQL Server 数据库备份到 Azure 备份恢复服务保管库。
 ms.topic: tutorial
-author: lingliw
+author: Johnnytechn
 origin.date: 06/18/2019
-ms.date: 11/14/2019
-ms.author: v-lingwu
-ms.openlocfilehash: bbeaf20c9491c02b46133958e1e2ca41140ca0b8
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/11/2020
+ms.author: v-johya
+ms.openlocfilehash: ce8b3c6c1392ff1fa9df5d20079b787c703335ff
+ms.sourcegitcommit: 08b42258a48d96d754244064d065e4d5703f1cfb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75857756"
+ms.lasthandoff: 05/18/2020
+ms.locfileid: "83445170"
 ---
 # <a name="back-up-a-sql-server-database-in-an-azure-vm"></a>在 Azure VM 中备份 SQL Server 数据库
 
@@ -39,7 +39,7 @@ ms.locfileid: "75857756"
 对于所有操作，SQL Server VM 需要与 Azure 公共 IP 地址建立连接。 如果未连接到公共 IP 地址，VM 操作（数据库发现、配置备份、计划备份、还原恢复点等）将失败。 使用以下选项之一建立连接：
 
 - **允许 Azure 数据中心 IP 范围**：允许下载中的 [IP 范围](https://docs.azure.cn/zh-cn/downloads/)。 若要访问网络安全组 (NSG)，请使用 **Set-AzureNetworkSecurityRule** cmdlet。
-- **部署用于路由流量的 HTTP 代理服务器**：在 Azure VM 中备份 SQL Server 数据库时，该 VM 上的备份扩展将使用 HTTPS API 将管理命令发送到 Azure 备份，并将数据发送到 Azure 存储。 备份扩展还使用 Azure Active Directory (Azure AD) 进行身份验证。 通过 HTTP 代理路由这三个服务的备份扩展流量。 该扩展是为了访问公共 Internet 而配置的唯一组件。
+* **部署用于路由流量的 HTTP 代理服务器**：在 Azure VM 中备份 SQL Server 数据库时，该 VM 上的备份扩展将使用 HTTPS API 将管理命令发送到 Azure 备份，并将数据发送到 Azure 存储。 备份扩展还使用 Azure Active Directory (Azure AD) 进行身份验证。 通过 HTTP 代理路由这三个服务的备份扩展流量。 该扩展是为了访问公共 Internet 而配置的唯一组件。
 
 每个选项各有其优缺点
 
@@ -67,7 +67,7 @@ ms.locfileid: "75857756"
 * 右方括号“]”
 * 数据库名称以“F:\”开头
 
-对于 Azure 表不支持的字符，可以使用别名，但我们建议避免使用别名。 [了解详细信息](https://docs.microsoft.com/rest/api/storageservices/Understanding-the-Table-Service-Data-Model?redirectedfrom=MSDN)。
+对于 Azure 表不支持的字符，可以使用别名，但我们建议避免使用别名。 [了解详细信息](https://docs.microsoft.com/rest/api/storageservices/Understanding-the-Table-Service-Data-Model)。
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
@@ -238,5 +238,4 @@ ms.locfileid: "75857756"
 
 > [!div class="nextstepaction"]
 > [还原 Azure VM 上的 SQL Server 数据库](./restore-sql-database-azure-vm.md)
- 
 

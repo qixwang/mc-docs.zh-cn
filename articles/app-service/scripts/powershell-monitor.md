@@ -5,19 +5,19 @@ tags: azure-service-management
 ms.assetid: 5805d7cd-9e56-4eba-bd85-75b013690ff5
 ms.topic: sample
 origin.date: 03/20/2017
-ms.date: 01/13/2020
+ms.date: 05/22/2020
 ms.author: v-tawe
 ms.custom: mvc
-ms.openlocfilehash: 478db1ed3d127de3b92ed29048c795d38e953322
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 0c06da2ab42fa0cd4623ab429cfc449dc4cf1142
+ms.sourcegitcommit: 981a75a78f8cf74ab5a76f9e6b0dc5978387be4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75600262"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83801119"
 ---
 # <a name="monitor-a-web-appwith-web-server-logs"></a>使用 Web 服务器日志监视 Web 应用
 
-在此方案中，将创建资源组、应用服务计划、Web 应用，并配置 Web 应用以启用 Web 服务器日志。 然后，下载日志文件以供查看。
+在此方案中，将创建资源组、应用服务计划、Web 应用，并配置 Web 应用以启用 Web 服务器日志。 然后，将下载日志文件以供查看。
 
 必要时，请使用 [Azure PowerShell 指南](https://docs.microsoft.com/powershell/azure/overview)中的说明安装 Azure PowerShell，并运行 `Connect-AzAccount -Environment AzureChinaCloud` 创建与 Azure 的连接。
 
@@ -65,13 +65,12 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 注释 |
+| Command | 说明 |
 |---|---|
 | [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) | 创建用于存储所有资源的资源组。 |
 | [New-AzAppServicePlan](https://docs.microsoft.com/powershell/module/az.websites/new-azappserviceplan) | 创建应用服务计划。 |
 | [New-AzWebApp](https://docs.microsoft.com/powershell/module/az.websites/new-azwebapp) | 创建 Web 应用。 |
 | [Set-AzWebApp](https://docs.microsoft.com/powershell/module/az.websites/set-azwebapp) | 修改 Web 应用的配置。 |
-| [Get-AzWebAppMetric](https://docs.microsoft.com/powershell/module/az.websites/get-azwebappmetric) | 获取 Web 应用的指标。 |
 
 ## <a name="next-steps"></a>后续步骤
 

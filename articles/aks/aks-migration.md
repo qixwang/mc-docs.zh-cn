@@ -4,15 +4,15 @@ description: 迁移到 Azure Kubernetes 服务 (AKS)。
 services: container-service
 ms.topic: article
 origin.date: 02/25/2020
-ms.date: 03/09/2020
+ms.date: 05/25/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: ed6d62ce0fbf140cb21dd4f73e7773b8a716f45d
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 2223cc47ba6d5bb05b2258cdd0a980397e6139f2
+ms.sourcegitcommit: 7e6b94bbaeaddb854beed616aaeba6584b9316d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78850466"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83735146"
 ---
 <!--Can be Release after confirmation-->
 # <a name="migrate-to-azure-kubernetes-service-aks"></a>迁移到 Azure Kubernetes 服务 (AKS)
@@ -24,9 +24,9 @@ ms.locfileid: "78850466"
 * 将[可用性集](/virtual-machines/windows/tutorial-availability-sets)支持的 AKS 群集迁移到[虚拟机规模集](/virtual-machine-scale-sets/overview)
 * 迁移 AKS 群集以使用[标准 SKU 负载均衡器](/aks/load-balancer-standard)
 * 从 [Azure 容器服务 (ACS) - 2020 年 1 月 31 日停用](https://azure.microsoft.com/updates/azure-container-service-will-retire-on-january-31-2020/)迁移到 AKS
-* 从 AKS 引擎迁移到 AKS
-
-    <!--Not Available on [AKS engine](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908)-->
+    
+    <!--Not Available on * Migrating from AKS engine to AKS-->
+    <!--Not Available on [AKS engine](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908)-->
     
 * 从不是基于 Azure 的 Kubernetes 群集迁移到 AKS
 
@@ -99,7 +99,7 @@ az aks create \
 
 可能需要请求提高[网络配额](https://support.azure.cn/support/support-azure/)，以确保不会耗尽 IP。 有关更多信息，请参阅 [AKS 的网络和 IP 范围](/aks/configure-kubenet)。
 
-有关详细信息，请参阅 [Azure 订阅和服务限制](/azure-resource-manager/management/azure-subscription-service-limits)。 若要查看当前配额，请在 Azure 门户中转到[订阅边栏选项卡](https://portal.azure.cn/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)，选择自己的订阅，然后选择“用量 + 配额”。 
+有关详细信息，请参阅 [Azure 订阅和服务限制](/azure-resource-manager/management/azure-subscription-service-limits)。 若要查看当前配额，请在 Azure 门户中转到[订阅边栏选项卡](https://portal.azure.cn/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)，选择自己的订阅，然后选择“用量 + 配额”。
 
 ## <a name="high-availability-and-business-continuity"></a>高可用性和业务连续性
 
@@ -109,7 +109,7 @@ az aks create \
 
 若要完成迁移，需将客户端指向 AKS 上运行的新服务。 建议通过将 DNS 更新为指向 AKS 群集前面的负载均衡器，来重定向流量。
 
-[Azure 流量管理器](/traffic-manager/)可将客户定向到所需的 Kubernetes 群集和应用程序实例。  流量管理器是可以在区域间分布网络流量的基于 DNS 的流量负载均衡器。  为获得最佳性能和冗余，在进入 AKS 群集之前，通过流量管理器来定向所有应用程序流量。  在多群集部署中，客户应连接到指向每个 AKS 群集上的服务的流量管理器 DNS 名称。 使用流量管理器终结点定义这些服务。 每个终结点都是服务负载均衡器 IP  。 使用此配置可将网络流量从一个区域的流量管理器终结点定向到另一个区域的终结点。
+[Azure 流量管理器](/traffic-manager/)可将客户定向到所需的 Kubernetes 群集和应用程序实例。  流量管理器是可以在区域间分布网络流量的基于 DNS 的流量负载均衡器。  为获得最佳性能和冗余，在进入 AKS 群集之前，通过流量管理器来定向所有应用程序流量。  在多群集部署中，客户应连接到指向每个 AKS 群集上的服务的流量管理器 DNS 名称。 使用流量管理器终结点定义这些服务。 每个终结点都是服务负载均衡器 IP。 使用此配置可将网络流量从一个区域的流量管理器终结点定向到另一个区域的终结点。
 
 ![将 AKS 与流量管理器配合使用](media/operator-best-practices-bc-dr/aks-azure-traffic-manager.png)
 
@@ -130,7 +130,7 @@ az aks create \
 * [将静态 Azure 磁盘作为卷装载](/aks/azure-disk-volume#mount-disk-as-volume)
 
 如果这两种方法都不起作用，可以使用备份和还原选项：
-* [Azure 上的 Velero](https://github.com/heptio/velero/blob/master/site/docs/master/azure-config.md)
+* [Azure 上的 Velero](https://github.com/vmware-tanzu/velero-plugin-for-microsoft-azure/blob/master/README.md)
 
 #### <a name="azure-files"></a>Azure 文件
 
@@ -196,5 +196,4 @@ kubectl get deployment -o=yaml --export > deployments.yaml
 
 <!--Not Available on [azure-dev-spaces]: /dev-spaces/-->
 
-<!-- Update_Description: new article about aks migration -->
-<!--NEW.date: 03/09/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

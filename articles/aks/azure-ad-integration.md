@@ -4,14 +4,14 @@ description: 如何创建支持 Azure Active Directory 的 Azure Kubernetes 服�
 services: container-service
 ms.topic: article
 origin.date: 02/02/2019
-ms.date: 03/09/2020
+ms.date: 05/25/2020
 ms.author: v-yeche
-ms.openlocfilehash: a82c4b4f58919d8d804659818cf233f7713b6a02
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 07c00f0dfced1ec7c3305d2346e45c68e3966f23
+ms.sourcegitcommit: 7e6b94bbaeaddb854beed616aaeba6584b9316d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79290821"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83735072"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service"></a>将 Azure Active Directory 与 Azure Kubernetes Service 集成
 
@@ -52,59 +52,59 @@ ms.locfileid: "79290821"
 <!--MOONCAKE: CORRECT ON  New application registration-->
 <!--MOONCAKE: CUSTOMIZATION -->
 
-1. 选择“Azure Active Directory” > “应用注册” > “新建注册”。   
+1. 选择“Azure Active Directory” > “应用注册” > “新建注册”。  
 
     a. 为应用程序命名，例如 *AKSAzureADServer*。
 
-    b. 对于“支持的帐户类型”设置，请选择“仅限此组织目录中的帐户”。  
+    b. 对于“支持的帐户类型”设置，请选择“仅限此组织目录中的帐户”。 
     
-    c. 对于“重定向 URI”类型，请选择“Web”，然后输入任何 URI 格式的值，例如 *https://aksazureadserver* 。 
+    c. 对于“重定向 URI”类型，请选择“Web”，然后输入任何 URI 格式的值，例如 *https://aksazureadserver* 。
 
-    d. 完成后，选择“注册”。 
+    d. 完成后，选择“注册”。
 
-2. 选择“清单”，将 **groupMembershipClaims:** 值编辑为 **All**。  完成更新后，选择“保存”。 
+2. 选择“清单”，将 **groupMembershipClaims:** 值编辑为 **All**。 完成更新后，选择“保存”。
 
     ![将组成员身份更新为“所有”](media/aad-integration/edit-manifest.png)
 
-3. 在 Azure AD 应用程序的左窗格中，选择“证书和机密”。 
+3. 在 Azure AD 应用程序的左窗格中，选择“证书和机密”。
 
-    a. 选择“+ 新建客户端机密”。 
+    a. 选择“+ 新建客户端机密”。
 
-    b. 添加密钥说明，例如“AKS Azure AD 服务器”。  选择过期时间，然后选择“添加”。 
+    b. 添加密钥说明，例如“AKS Azure AD 服务器”。 选择过期时间，然后选择“添加”。
 
     c. 记下密钥值，因为以后不再会显示此值。 部署支持 Azure AD 的 AKS 群集时，此值称为“服务器应用程序机密”。
 
-4. 在 Azure AD 应用程序的左窗格中，依次选择“API 权限”、“+ 添加权限”。  
+4. 在 Azure AD 应用程序的左窗格中，依次选择“API 权限”、“+ 添加权限”。 
 
-    a. 在“Microsoft API”下选择“Microsoft Graph”。  
+    a. 在“Microsoft API”下选择“Microsoft Graph”。 
 
-    b. 选择“委托的权限”，然后勾选“目录”>“Directory.Read.All (读取目录数据)”。  
+    b. 选择“委托的权限”，然后勾选“目录”>“Directory.Read.All (读取目录数据)”。 
 
-    c. 如果“用户”>“User.Read (登录并读取用户个人资料)”的默认委托权限不存在，请勾选该权限。 
+    c. 如果“用户”>“User.Read (登录并读取用户个人资料)”的默认委托权限不存在，请勾选该权限。
 
-    d. 选择“应用程序权限”，然后勾选“目录”>“Directory.Read.All (读取目录数据)”。  
+    d. 选择“应用程序权限”，然后勾选“目录”>“Directory.Read.All (读取目录数据)”。 
 
     ![设置 Graph 权限](media/aad-integration/graph-permissions.png)
 
-    e. 选择“添加权限”以保存更新。 
+    e. 选择“添加权限”以保存更新。
 
-    f. 在“授予许可”下，选择“授予管理员许可”。   如果正在使用的当前帐户未作为租户管理员列出，此按钮将不可用。
+    f. 在“授予许可”下，选择“授予管理员许可”。  如果正在使用的当前帐户未作为租户管理员列出，此按钮将不可用。
 
     成功授予权限后，门户中会显示以下通知：
 
     ![权限授予成功的通知](media/aad-integration/permissions-granted.png)
 
-5. 在 Azure AD 应用程序的左窗格中，依次选择“公开 API”、“+ 添加范围”。  
+5. 在 Azure AD 应用程序的左窗格中，依次选择“公开 API”、“+ 添加范围”。 
     
     a. 输入**范围名称**、**管理员许可显示名称**和**管理员许可说明**，例如 *AKSAzureADServer*。
 
-    b. 确保“状态”设置为“已启用”   。
+    b. 确保“状态”设置为“已启用” 。
 
     ![将服务器应用作为 API 公开，以便与其他服务配合使用](media/aad-integration/expose-api.png)
 
-    c. 选择“添加作用域”。 
+    c. 选择“添加作用域”。
 
-6. 返回到应用程序的“概述”页，并记下“应用程序(客户端) ID”。   部署支持 Azure AD 的 AKS 群集时，此值称为“服务器应用程序 ID”。
+6. 返回到应用程序的“概述”页，并记下“应用程序(客户端) ID”。  部署支持 Azure AD 的 AKS 群集时，此值称为“服务器应用程序 ID”。
 
     ![获取应用程序 ID](media/aad-integration/application-id.png)
 
@@ -112,44 +112,45 @@ ms.locfileid: "79290821"
 
 使用 Kubernetes CLI (kubectl) 登录时，将使用第二个 Azure AD 应用程序。
 
-1. 选择“Azure Active Directory” > “应用注册” > “新建注册”。   
+1. 选择“Azure Active Directory” > “应用注册” > “新建注册”。  
 
     a. 为应用程序命名，例如 *AKSAzureADClient*。
 
-    b. 对于“支持的帐户类型”设置，请选择“仅限此组织目录中的帐户”。  
+    b. 对于“支持的帐户类型”设置，请选择“仅限此组织目录中的帐户”。 
 
-    c. 对于“重定向 URI”类型，请选择“Web”，然后输入任何 URI 格式的值，例如 *https://aksazureadclient* 。 
+    c. 对于“重定向 URI”类型，请选择“Web”，然后输入任何 URI 格式的值，例如 *https://aksazureadclient* 。
 
-    <!--MOONCAKE CUSTOMIZED-->
+        <!--MOONCAKE CUSTOMIZED-->
     
-    >[!NOTE]
-    >若要新建启用了 RBAC 的群集以支持用于容器的 Azure Monitor，请将以下两个附加重定向 URL 作为 **Web** 应用程序类型添加到此列表中。 第一个基 URL 值应为 `https://afd.hosting.portal.chinacloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html`，第二个基 URL 值应为 `https://monitoring.hosting.portal.chinacloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html`。
-    >
+        >[!NOTE]
+        >If you are creating a new RBAC-enabled cluster to support Azure Monitor for containers, add the following two additional redirect URLs to this list as **Web** application types. The first base URL value should be `https://afd.hosting.azureportal.chinacloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html` and the second base URL value should be `https://monitoring.hosting.azureportal.chinacloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html`.
+        >
     
-    <!--MOONCAKE CUSTOMIZED-->
+        <!--CORRECT ON https://afd.hosting.azureportal.chinaloudapi.cn-->
+        <!--MOONCAKE CUSTOMIZED-->
+        <!--DUPLICATED ON REFERENCE https://afd.hosting.azureportal.chinaloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html ON AZURE CHINA CLOUD-->
+        <!--Not Available on [How to setup the Live Data (preview) feature](../azure-monitor/insights/container-insights-livedata-setup.md)-->
+        <!--Not Available on [Configure AD integrated authentication](../azure-monitor/insights/container-insights-livedata-setup.md#configure-ad-integrated-authentication)-->
     
-    <!--DUPLICATED ON REFERENCE https://afd.hosting.azureportal.chinaloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html ON AZURE CHINA CLOUD-->
-    <!--Not Available on [How to setup the Live Data (preview) feature](../azure-monitor/insights/container-insights-livedata-setup.md)-->
-    
-    d. 完成后，选择“注册”。 
+    d. 完成后，选择“注册”。
 
-2. 在 Azure AD 应用程序的左窗格中，依次选择“API 权限”、“+ 添加权限”。  
+2. 在 Azure AD 应用程序的左窗格中，依次选择“API 权限”、“+ 添加权限”。 
 
-    a. 选择“我的 API”，然后选择在上一步创建的 Azure AD 服务器应用程序，例如 *AKSAzureADServer*。 
+    a. 选择“我的 API”，然后选择在上一步创建的 Azure AD 服务器应用程序，例如 *AKSAzureADServer*。
 
-    b. 选择“委托的权限”，然后勾选你的 Azure AD 服务器应用。 
+    b. 选择“委托的权限”，然后勾选你的 Azure AD 服务器应用。
 
     ![配置应用程序权限](media/aad-integration/select-api.png)
 
-    c. 选择“添加权限”  。
+    c. 选择“添加权限”。
 
-    d. 在“授予许可”下，选择“授予管理员许可”。   如果当前帐户不是租户管理员，则此按钮不可用。授予权限后，门户中会显示以下通知：
+    d. 在“授予许可”下，选择“授予管理员许可”。  如果当前帐户不是租户管理员，则此按钮不可用。授予权限后，门户中会显示以下通知：
 
     ![权限授予成功的通知](media/aad-integration/permissions-granted.png)
 
-3. 在 Azure AD 应用程序的左窗格中，选择“身份验证”  。
+3. 在 Azure AD 应用程序的左窗格中，选择“身份验证”。
 
-    - 在“默认客户端类型”  下，对于“将客户端视为公共客户端”  ，选择“是”  。
+    - 在“默认客户端类型”下，对于“将客户端视为公共客户端”，选择“是”。
 
 4. 在 Azure AD 应用程序的左窗格中，记下应用程序 ID。 部署支持 Azure AD 的 AKS 群集时，此值称为“客户端应用程序 ID”。
 
@@ -159,7 +160,7 @@ ms.locfileid: "79290821"
 
 接下来，获取 Azure 租户的 ID。 创建 AKS 群集时，要使用此值。
 
-在 Azure 门户中，选择“Azure Active Directory” > “属性”并记下“目录 ID”。    创建支持 Azure AD 的 AKS 群集时，此值称为“租户 ID”。
+在 Azure 门户中，选择“Azure Active Directory” > “属性”并记下“目录 ID”。   创建支持 Azure AD 的 AKS 群集时，此值称为“租户 ID”。
 
 ![获取 Azure 租户 ID](media/aad-integration/tenant-id.png)
 

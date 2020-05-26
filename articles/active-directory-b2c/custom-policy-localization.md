@@ -7,21 +7,21 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/16/2020
+ms.date: 05/18/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: ad90351e958a4aaef8fbcad81393b49d26cdb76a
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 78c3e78dd79f456f0ef48f0b79823137feaced5e
+ms.sourcegitcommit: 87e789550ea49ff77c7f19bc68fad228009fcf44
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79497384"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83748045"
 ---
 # <a name="localize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略来本地化应用程序的用户界面
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-你可以使用 Azure Active Directory B2C (Azure AD B2C) 中的语言自定义来容纳不同的语言以满足客户需求。 Microsoft 提供 36 种语言的翻译，但你也可以为任何语言提供自己的翻译。 即使体验是针对一种语言提供的，也可以自定义页面上的任何文本。 
+你可以使用 Azure Active Directory B2C (Azure AD B2C) 中的语言自定义来容纳不同的语言以满足客户需求。 Microsoft 提供 [36 种语言](/active-directory-b2c/user-flow-language-customization#supported-languages)的翻译，但你也可以为任何语言提供自己的翻译。 即使体验是针对一种语言提供的，也可以自定义页面上的任何文本。 
 
 本文将介绍如何在用户旅程的策略中支持多个区域设置或语言。 本地化需要执行三个步骤：设置受支持语言的显式列表，提供特定于语言的字符串和集合，以及编辑页面的[内容定义](contentdefinitions.md)。 
 
@@ -241,15 +241,15 @@ ms.locfileid: "79497384"
 ### <a name="upload-the-custom-policy"></a>上传自定义策略
 
 1. 保存扩展文件。
-1. 请确保使用包含 Azure AD B2C 租户的目录，方法是选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录  。
-1. 搜索并选择“Azure AD B2C”  。
-1. 在“策略”下，选择“Identity Experience Framework”。  
-1. 选择“上传自定义策略”  。
+1. 请确保使用包含 Azure AD B2C 租户的目录，方法是选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录。
+1. 搜索并选择“Azure AD B2C”。
+1. 在“策略”下，选择“Identity Experience Framework”。 
+1. 选择“上传自定义策略”。
 1. 上传以前已更改的扩展文件。
 
-### <a name="test-the-custom-policy-by-using-run-now"></a>使用“立即运行”测试自定义策略 
+### <a name="test-the-custom-policy-by-using-run-now"></a>使用“立即运行”测试自定义策略
 
-1. 选择已上传的策略，然后选择“立即运行”。 
+1. 选择已上传的策略，然后选择“立即运行”。
 1. 你应该能够看到已本地化的注册或登录页面。
 1. 单击注册链接，你应该能够看到已本地化的注册页面。
 1. 将浏览器默认语言切换为西班牙语。 还可以将查询字符串参数 `ui_locales` 添加到授权请求。 例如： 

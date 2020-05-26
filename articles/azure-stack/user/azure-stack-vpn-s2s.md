@@ -4,15 +4,15 @@ description: 了解并配置 Azure Stack Hub 中站点到站点 VPN 或 VNet 到
 author: WenJason
 ms.topic: article
 origin.date: 01/07/2020
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.lastreviewed: 05/07/2019
-ms.openlocfilehash: 02b5924d0081421e41a89867de411111fda49dd4
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 9e6dd91d9908a36c2615ef44b7a53570e5c1a41f
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540541"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422579"
 ---
 # <a name="configure-ipsecike-policy-for-site-to-site-vpn-connections"></a>配置站点到站点 VPN 连接的 IPsec/IKE 策略
 
@@ -31,7 +31,7 @@ IPsec 和 IKE 协议标准支持采用各种组合的各种加密算法。 若�
 
 使用这些策略时，请注意以下重要事项：
 
-- IPsec/IKE 策略仅适用于“标准”和“高性能”（基于路由）网关 SKU。  
+- IPsec/IKE 策略仅适用于“标准”和“高性能”（基于路由）网关 SKU。 
 
 - 一个给定的连接只能指定一个策略组合。
 
@@ -65,10 +65,10 @@ IPsec 和 IKE 协议标准支持采用各种组合的各种加密算法。 若�
 |------------------------------------------------------|--------------------------------------------------------------------------|
 | IKEv2 加密                                     | AES256、AES192、AES128、DES3、DES                                        |
 | IKEv2 完整性                                      | SHA384、SHA256、SHA1、MD5                                                |
-| DH 组                                             | ECP384、ECP256、DHGroup14、DHGroup2048、DHGroup2、DHGroup1、无         |
+| DH 组                                             | ECP384、ECP256、DHGroup24、DHGroup14、DHGroup2、DHGroup1                 |
 | IPsec 加密                                     | GCMAES256、GCMAES192、GCMAES128、AES256、AES192、AES128、DES3、DES、无 |
-| IPsec 完整性                                      | GCMASE256、GCMAES192、GCMAES128、SHA256、SHA1、MD5                       |
-| PFS 组                                            | PFS24、ECP384、ECP256、PFS2048、PFS2、PFS1、无                         |
+| IPsec 完整性                                      | GCMASE256、GCMAES192、GCMAES128                                          |
+| PFS 组                                            | PFS24、ECP384、ECP256、PFS2048、PFS2、PFS1、PFSMM、无                  |
 | QM SA 生存期                                       | （可选：如果未指定，则使用默认值）<br />                         秒（整数；至少为 300 秒/默认为 27000 秒）<br />                         KB（整数；至少为 1024 KB/默认为 102400000 KB） |
 | 流量选择器                                     | Azure Stack Hub 不支持基于策略的流量选择器。         |
 
@@ -232,7 +232,7 @@ New-AzureRmVirtualNetworkGatewayConnection -Name $Connection16 -ResourceGroupNam
 3. 从连接中删除 IPsec/IKE 策略。
 
 > [!NOTE]
-> IPsec/IKE 策略仅受基于路由的标准 VPN 网关和高性能 VPN 网关支持   。 它不适用于“基本”网关 SKU。 
+> IPsec/IKE 策略仅受基于路由的标准 VPN 网关和高性能 VPN 网关支持 。 它不适用于“基本”网关 SKU。
 
 ### <a name="1-show-the-ipsecike-policy-of-a-connection"></a>1.显示连接的 IPsec/IKE 策略
 

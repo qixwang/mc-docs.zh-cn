@@ -6,21 +6,21 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 origin.date: 08/25/2018
-ms.date: 03/09/2020
+ms.date: 04/30/2020
 ms.author: v-yeche
 tags: connectors
-ms.openlocfilehash: 027799c9b980b082e999b4462df92214b869871e
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: e2d792c005505c4809aac17790686554a31e1fea
+ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78304664"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83392232"
 ---
 # <a name="send-email-from-your-smtp-account-with-azure-logic-apps"></a>使用 Azure 逻辑应用从 SMTP 帐户发送电子邮件
 
 使用 Azure 逻辑应用和简单邮件传输协议 (SMTP) 连接器，可以创建从 SMTP 帐户发送电子邮件的自动化任务和工作流。 还可以让其他操作使用来自 SMTP 操作的输出。 例如，在 SMTP 发送电子邮件后，你可以通过 Slack 连接器通知你在 Slack 中的团队。 如果你不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅。 如果没有 Azure 订阅，请[注册一个 Azure 试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。 
 
@@ -33,7 +33,7 @@ ms.locfileid: "78304664"
 * 要在其中访问 SMTP 帐户的逻辑应用。 
     若要使用 SMTP 操作，请使用触发器启动逻辑应用，例如，如果你有 Salesforce 帐户，则可使用 Salesforce 触发器。
 
-    例如，可以使用“创建记录时”Salesforce 触发器来启动逻辑应用。  
+    例如，可以使用“创建记录时”Salesforce 触发器来启动逻辑应用。 
     每当在 Salesforce 中创建新记录（例如潜在顾客）时，此触发器都会激发。 
     在此触发器后，可以跟随执行 SMTP **发送电子邮件**操作。 这样一来，当创建了新记录时，逻辑应用都会从你的 SMTP 帐户发送一封关于新记录的电子邮件。
 
@@ -43,23 +43,23 @@ ms.locfileid: "78304664"
 
 1. 登录到 [Azure 门户](https://portal.azure.cn)，在逻辑应用设计器中打开逻辑应用（如果尚未打开）。
 
-1. 在要添加 SMTP 操作的最后一个步骤下，选择“新建步骤”。  
+1. 在要添加 SMTP 操作的最后一个步骤下，选择“新建步骤”。 
 
     若要在步骤之间添加操作，请将鼠标指针移到步骤之间的箭头上。 
-    选择出现的加号 ( **+** )，然后选择“添加操作”。 
+    选择出现的加号 ( **+** )，然后选择“添加操作”。
 
 1. 在搜索框中，输入“smtp”作为筛选器。 在操作列表下，选择所需的操作。
 
 1. 出现提示时，提供此连接信息：
 
-    | properties | 必选 | 说明 |
+    | 属性 | 必须 | 说明 |
     |----------|----------|-------------|
     | **连接名称** | 是 | 到 SMTP 服务器的连接的名称 | 
     | **SMTP 服务器地址** | 是 | SMTP 服务器的地址 | 
     | **用户名** | 是 | SMTP 帐户的用户名 | 
     | **密码** | 是 | SMTP 帐户的密码 | 
     | **SMTP 服务器端口** | 否 | SMTP 服务器上你要使用的特定端口 | 
-    | **启用 SSL?** | 否 | 启用或禁用 SSL 加密。 | 
+    | **启用 SSL?** | 否 | 启用或禁用 TLS/SSL 加密。 | 
     |||| 
 
 1. 为所选操作提供必要的详细信息。 

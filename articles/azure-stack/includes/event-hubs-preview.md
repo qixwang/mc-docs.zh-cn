@@ -15,4 +15,4 @@ ms.lasthandoff: 05/15/2020
 ms.locfileid: "83422826"
 ---
 > [!IMPORTANT]
-> Azure Stack 中心上的事件中心目前处于预览阶段，在预览期间免费使用。
+> Azure Stack 中心上的事件中心目前处于预览阶段，在预览期间可免费使用。

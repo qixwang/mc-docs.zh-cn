@@ -15,12 +15,12 @@ ms.workload: na
 origin.date: 01/27/2020
 ms.date: 2/6/2020
 ms.author: v-lingwu
-ms.openlocfilehash: fbeea56c1c501e2f35a3e7e50d4acb5fa44711a6
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: de05e7e767fca3b2ff123b7ce5a61dffd32c91ad
+ms.sourcegitcommit: a04b0b1009b0c62f2deb7c7acee75a1304d98f87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79291474"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83796689"
 ---
 # <a name="overview-of-service-bus-transaction-processing"></a>服务总线事务处理概述
 
@@ -38,10 +38,10 @@ ms.locfileid: "79291474"
 
 可以在事务作用域内执行的操作如下所示：
 
-* **[QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient)、[MessageSender](/dotnet/api/microsoft.azure.servicebus.core.messagesender)、[TopicClient](/dotnet/api/microsoft.azure.servicebus.topicclient)** ：Send、SendAsync、SendBatch、SendBatchAsync 
-* **[BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)** ：Complete、CompleteAsync、Abandon、AbandonAsync、Deadletter、DeadletterAsync、Defer、DeferAsync、RenewLock、RenewLockAsync 
+* **[QueueClient](https://docs.azure.cn/dotnet/api/microsoft.azure.servicebus.queueclient)、[MessageSender](https://docs.azure.cn/dotnet/api/microsoft.azure.servicebus.core.messagesender)、[TopicClient](https://docs.azure.cn/dotnet/api/microsoft.azure.servicebus.topicclient)** ：Send、SendAsync、SendBatch、SendBatchAsync 
+* **[BrokeredMessage](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)** ：Complete、CompleteAsync、Abandon、AbandonAsync、Deadletter、DeadletterAsync、Defer、DeferAsync、RenewLock、RenewLockAsync 
 
-不包括接收操作，因为假定应用程序在某个接收循环内使用 [ReceiveMode.PeekLock](/dotnet/api/microsoft.azure.servicebus.receivemode) 模式或通过 [OnMessage](/dotnet/api/microsoft.servicebus.messaging.queueclient.onmessage) 回调获取消息，而且只有那时才打开用于处理消息的事务作用域。
+不包括接收操作，因为假定应用程序在某个接收循环内使用 [ReceiveMode.PeekLock](https://docs.azure.cn/dotnet/api/microsoft.azure.servicebus.receivemode) 模式或通过 [OnMessage](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.queueclient.onmessage) 回调获取消息，而且只有那时才打开用于处理消息的事务作用域。
 
 然后，消息的处置（完成、放弃、死信、延迟）会在事务作用域内进行，并依赖于在事务处理的整体结果。
 

@@ -2,21 +2,20 @@
 title: 有关选择时序 ID 的最佳做法 - Azure 时序见解 | Microsoft Docs
 description: 了解在 Azure 时序见解预览版中选择时序 ID 时的最佳做法。
 author: deepakpalled
-ms.author: v-yiso
+ms.author: v-junlch
 manager: cshankar
 ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-origin.date: 12/19/2019
-ms.date: 01/20/2020
+ms.date: 05/20/2020
 ms.custom: seodec18
-ms.openlocfilehash: 9adb9fb101c2ddc6c9d10fe712ca9b80e35422b1
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: ae658aa500fd034439f74650f355b8cb117ba61d
+ms.sourcegitcommit: a04b0b1009b0c62f2deb7c7acee75a1304d98f87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75859661"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83796843"
 ---
 # <a name="best-practices-for-choosing-a-time-series-id"></a>选择时序 ID 的最佳做法
 
@@ -28,6 +27,7 @@ ms.locfileid: "75859661"
 
 > [!IMPORTANT]
 > 时序 ID 如下：
+>
 > * 区分大小写的属性  ：搜索、比较和更新以及分区都会用到字母和字符的大小写。
 > * 不可变属性  ：一旦创建，无法更改。
 
@@ -41,7 +41,6 @@ ms.locfileid: "75859661"
 * 时序 ID 属性名称字符串的字符数限制为 128 个。 时序 ID 属性值的字符数限制为 1024 个。
 * 如果时序 ID 的某个唯一属性值缺失，该值将被视为 null 值，并遵循相同的唯一性约束规则。
 * 此外，最多可以选择三个键属性作为时序 ID。  这些属性的组合将是表示时序 ID 的组合键。  
-
   > [!NOTE]
   > 三个键属性必须是字符串。
   > 必须针对此组合键运行查询，而不能每次查询一个属性。
@@ -58,7 +57,7 @@ ms.locfileid: "75859661"
 
 ### <a name="example-2-time-series-id-with-a-composite-key"></a>示例 2：具有组合键的时序 ID
 
-* 同一组资产中需要多个唯一的属性。 
+* 同一组资产中需要多个唯一的属性。
 * 你是一家智能建筑制造商，希望在每个房间部署传感器。 对于每个房间，通常对 **sensorId** 使用相同的值。 例如，**sensor1**、**sensor2** 和 **sensor3**。
 * 建筑物在属性 **flrRm** 中包含不同场地的重叠楼层号和房间号。 这些数字使用类似于 **1a**、**2b** 和 **3a** 的值。
 * **location** 属性包含类似于 **Redmond**、**Barcelona** 和 **Tokyo** 的值。 若要实现唯一性，可将以下三个属性指定为时序 ID 键：**sensorId**、**flrRm** 和 **location**。
@@ -74,7 +73,7 @@ ms.locfileid: "75859661"
 }
 ```
 
-然后，可在 Azure 门户中输入组合键，如下所示： 
+然后，可在 Azure 门户中输入组合键，如下所示：
 
 ```JSON
 [{"name":"sensorId","type":"String"},{"name":"flrRm","type":"String"},{"name":"location","type":"string"}]
@@ -85,3 +84,4 @@ ms.locfileid: "75859661"
 * 详细了解[数据建模](./time-series-insights-update-tsm.md)。
 
 * 规划 [Azure 时序见解预览版环境](./time-series-insights-update-plan.md)。
+

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/02/2018
 ms.author: clemensv
 ms.custom: include file
-ms.openlocfilehash: 2784102cdc778188f0874a15e3ff02e4cc2e3eb8
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: c3acbdccce4f52bca4cb93f757a65399248fff16
+ms.sourcegitcommit: cada23b6400453ff9c08cfb08393e635e2fddac1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "63845484"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83734522"
 ---
 ### <a name="create-a-console-application"></a>创建控制台应用程序
 
@@ -21,9 +21,11 @@ ms.locfileid: "63845484"
 
 ### <a name="add-the-relay-nuget-package"></a>添加中继 NuGet 包
 
-1. 右键单击新创建的项目，然后选择“管理 NuGet 包”  。
-2. 选择“浏览”，然后搜索 **Microsoft.Azure.Relay**。 在搜索结果中，选择“Microsoft Azure 中继”。  
-3. 选择“安装”  即可完成安装。 关闭对话框。
+1. 右键单击新创建的项目，然后选择“管理 NuGet 包”。
+2. 选择“包括预发行版”选项。 
+3. 选择“浏览”，然后搜索 **Microsoft.Azure.Relay**。 在搜索结果中，选择“Microsoft Azure 中继”。
+4. 对于版本，选择 **2.0.0-preview1-20180523**。 
+5. 选择“安装”即可完成安装。 关闭对话框。
 
 ### <a name="write-code-to-receive-messages"></a>编写接收消息的代码
 
@@ -35,13 +37,21 @@ ms.locfileid: "63845484"
     using System.Threading;
     using System.Threading.Tasks;
     using Microsoft.Azure.Relay;
+    using System.Net;
     ```
 2. 将常量添加到 `Program` 类，用于保存混合连接的连接详细信息。 将括号中的占位符替换为在创建混合连接时获得的值。 请务必使用完全限定的命名空间名称。
    
     ```csharp
+    // replace {RelayNamespace} with the name of your namespace
     private const string RelayNamespace = "{RelayNamespace}.servicebus.windows.net";
+
+    // replace {HybridConnectionName} with the name of your hybrid connection
     private const string ConnectionName = "{HybridConnectionName}";
+
+    // replace {SAKKeyName} with the name of your Shared Access Policies key, which is RootManageSharedAccessKey by default
     private const string KeyName = "{SASKeyName}";
+
+    // replace {SASKey} with the primary key of the namespace you saved earlier
     private const string Key = "{SASKey}";
     ```
 

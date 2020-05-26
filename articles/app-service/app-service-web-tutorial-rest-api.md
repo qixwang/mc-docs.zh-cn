@@ -4,16 +4,16 @@ description: 了解如何通过 Azure 应用服务来托管包含 CORS 支持的
 ms.assetid: a820e400-06af-4852-8627-12b3db4a8e70
 ms.devlang: dotnet
 ms.topic: tutorial
-origin.date: 02/11/2019
-ms.date: 03/30/2020
+origin.date: 04/28/2020
+ms.date: 05/22/2020
 ms.author: v-tawe
 ms.custom: mvc, devcenter, seo-javascript-september2019, seo-javascript-october2019, seodec18
-ms.openlocfilehash: c5a1706d602da4e3dc9da69d156ba7f31bf7cf6c
-ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
+ms.openlocfilehash: 0ec476cdb1afc7deaa27ee67d37672e757df94f9
+ms.sourcegitcommit: 981a75a78f8cf74ab5a76f9e6b0dc5978387be4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82588581"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83801216"
 ---
 # <a name="tutorial-host-a-restful-api-with-cors-in-azure-app-service"></a>教程：在 Azure 应用服务中托管启用了 CORS 的 RESTful API
 
@@ -34,8 +34,8 @@ ms.locfileid: "82588581"
 
 完成本教程：
 
-* [安装 Git](https://git-scm.com/)。
-* [安装 .NET Core](https://www.microsoft.com/net/core/)。
+* <a href="https://git-scm.com/" target="_blank">安装 Git</a>
+ * <a href="https://dotnet.microsoft.com/download/dotnet-core/3.1" target="_blank">安装最新的 .NET Core 3.1 SDK</a>
 
 ## <a name="create-local-aspnet-core-app"></a>创建本地 ASP.NET Core 应用
 
@@ -96,37 +96,38 @@ dotnet run
 
 [!INCLUDE [app-service-plan-no-h](../../includes/app-service-web-git-push-to-azure-no-h.md)]
 
-```bash
-Counting objects: 98, done.
-Delta compression using up to 8 threads.
-Compressing objects: 100% (92/92), done.
-Writing objects: 100% (98/98), 524.98 KiB | 5.58 MiB/s, done.
-Total 98 (delta 8), reused 0 (delta 0)
+<pre>
+Enumerating objects: 83, done.
+Counting objects: 100% (83/83), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (78/78), done.
+Writing objects: 100% (83/83), 22.15 KiB | 3.69 MiB/s, done.
+Total 83 (delta 26), reused 0 (delta 0)
 remote: Updating branch 'master'.
-remote: .
 remote: Updating submodules.
-remote: Preparing deployment for commit id '0c497633b8'.
+remote: Preparing deployment for commit id '509236e13d'.
 remote: Generating deployment script.
-remote: Project file path: ./DotNetCoreSqlDb.csproj
+remote: Project file path: .\TodoApi.csproj
+remote: Generating deployment script for ASP.NET MSBuild16 App
 remote: Generated deployment script files
 remote: Running deployment command...
-remote: Handling ASP.NET Core Web Application deployment.
+remote: Handling ASP.NET Core Web Application deployment with MSBuild16.
 remote: .
 remote: .
 remote: .
 remote: Finished successfully.
 remote: Running post deployment command(s)...
+remote: Triggering recycle (preview mode disabled).
 remote: Deployment successful.
-remote: App container will begin restart within 10 seconds.
-To https://<app_name>.scm.chinacloudsites.cn/<app_name>.git
+To https://&lt;app_name&gt;.scm.chinacloudsites.cn/&lt;app_name&gt;.git
  * [new branch]      master -> master
-```
+</pre>
 
 ### <a name="browse-to-the-azure-app"></a>转到 Azure 应用
 
 在浏览器中导航到 `http://<app_name>.chinacloudsites.cn/swagger`，开始使用 Swagger UI。
 
-![在 Azure 应用服务中运行的 ASP.NET Core API](./media/app-service-web-tutorial-rest-api/azure-run.png)
+![在 Azure 应用服务中运行的 ASP.NET Core API](./media/app-service-web-tutorial-rest-api/azure-app-service-browse-app.png)
 
 导航到 `http://<app_name>.chinacloudsites.cn/swagger/v1/swagger.json` 即可看到已部署 API 的 _swagger.json_。
 
@@ -158,10 +159,10 @@ dotnet run
 
 ### <a name="enable-cors"></a>启用 CORS 
 
-在 Windows 终端中，使用 [`az resource update`](/cli/resource#az-resource-update) 命令对客户端的 URL 启用 CORS。 替换 _&lt;appname>_ 占位符。
+在 Windows 终端中，使用 [`az webapp cors add`](/cli/webapp/cors#az-webapp-cors-add) 命令对客户端的 URL 启用 CORS。 替换 _&lt;appname>_ 占位符。
 
 ```azurecli
-az resource update --name web --resource-group myResourceGroup --namespace Microsoft.Web --resource-type config --parent sites/<app_name> --set properties.cors.allowedOrigins="['http://localhost:5000']" --api-version 2015-06-01
+az webapp cors add --resource-group myResourceGroup --name <app-name> --allowed-origins 'http://localhost:5000'
 ```
 
 可以在 `properties.cors.allowedOrigins` (`"['URL1','URL2',...]"`) 中设置多个客户端 URL。 也可使用 `"['*']"` 启用所有客户端 URL。

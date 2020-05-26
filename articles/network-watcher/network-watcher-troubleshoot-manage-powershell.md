@@ -4,8 +4,7 @@ titleSuffix: Azure Network Watcher
 description: 此页说明了如何使用 Azure 网络观察程序对 PowerShell cmdlet 进行故障排除
 services: network-watcher
 documentationcenter: na
-author: lingliw
-manager: digimobile
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
@@ -14,19 +13,19 @@ ms.workload: infrastructure-services
 origin.date: 06/19/2017
 ms.date: 04/12/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 99931c56c2e45b355e968020a0ac0bd2dff7b128
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 7569cd5aca618dfae13c784e55b18de0771a405e
+ms.sourcegitcommit: a04b0b1009b0c62f2deb7c7acee75a1304d98f87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79290889"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83796685"
 ---
 # <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher-powershell"></a>使用 Azure 网络观察程序 PowerShell 对虚拟网络网关和连接进行故障排除
 
 > [!div class="op_single_selector"]
 > - [门户](diagnose-communication-problem-between-networks.md)
 > - [PowerShell](network-watcher-troubleshoot-manage-powershell.md)
-> - [Azure CLI](network-watcher-troubleshoot-manage-cli.md)
+> - [CLI](network-watcher-troubleshoot-manage-cli.md)
 > - [REST API](network-watcher-troubleshoot-manage-rest.md)
 
 网络观察程序提供了许多功能，因为它关系到了解 Azure 中的网络资源。 其中一项功能就是资源故障排除。 可以通过门户、PowerShell、CLI 或 REST API 调用资源故障排除。 调用后，网络观察程序会检查虚拟网络网关或连接的运行状况，并返回调查结果。
@@ -49,8 +48,7 @@ ms.locfileid: "79290889"
 第一步是检索网络观察程序实例。 `$networkWatcher` 变量传递给步骤 4 中的 `Start-AzNetworkWatcherResourceTroubleshooting` cmdlet。
 
 ```powershell
-$nw = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "China North" } 
-$networkWatcher = Get-AzNetworkWatcher -Name $nw.Name -ResourceGroupName $nw.ResourceGroupName 
+$networkWatcher = Get-AzNetworkWatcher -Location "China North" 
 ```
 
 ## <a name="retrieve-a-virtual-network-gateway-connection"></a>检索虚拟网络网关连接

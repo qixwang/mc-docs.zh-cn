@@ -4,9 +4,7 @@ titleSuffix: Azure Network Watcher
 description: 本文介绍如何使用 Azure 网络观察程序和开源工具执行网络入侵检测
 services: network-watcher
 documentationcenter: na
-author: lingliw
-manager: digimobile
-editor: ''
+author: damendo
 ms.assetid: 0f043f08-19e1-4125-98b0-3e335ba69681
 ms.service: network-watcher
 ms.devlang: na
@@ -16,12 +14,12 @@ ms.workload: infrastructure-services
 origin.date: 02/22/2017
 ms.date: 11/26/2018
 ms.author: v-lingwu
-ms.openlocfilehash: 354786e8b0aaffb7c78828191b880a6f5240e766
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 921a173565d0c388981efecfe392c45205569ad1
+ms.sourcegitcommit: a04b0b1009b0c62f2deb7c7acee75a1304d98f87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75336391"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83796766"
 ---
 # <a name="perform-network-intrusion-detection-with-network-watcher-and-open-source-tools"></a>使用网络观察程序和开源工具执行网络入侵检测
 
@@ -29,7 +27,7 @@ ms.locfileid: "75336391"
 
 Suricata 就是这样的一种开源工具，它是一个 IDS 引擎，可使用规则集来监视网络流量，每当出现可疑事件时，它会触发警报。 Suricata 提供多线程引擎，意味着它能够以更高的速度和效率执行网络流量分析。 有关 Suricata 及其功能的更多详细信息，请访问其网站 https://suricata-ids.org/ 。
 
-## <a name="scenario"></a>场景
+## <a name="scenario"></a>方案
 
 本文介绍如何将环境设置为使用网络观察程序、Suricata 和 Elastic Stack 执行网络入侵检测。 网络观察程序提供用于执行网络入侵检测的数据包捕获。 Suricata 处理数据包捕获，并根据与其给定威胁规则集匹配的数据包触发警报。 这些警报存储在本地计算机上的某个日志文件中。 使用 Elastic Stack 可为 Suricata 生成的日志编制索引，并使用这些日志创建 Kibana 仪表板，提供日志的可视化形式，同时，提供潜在网络漏洞的见解。  
 
@@ -247,7 +245,7 @@ tail -f /var/log/suricata/fast.log
 
 1. 在[此处](https://aka.ms/networkwatchersuricatadashboard)下载仪表板文件，在[此处](https://aka.ms/networkwatchersuricatavisualization)下载可视化效果文件，在[此处](https://aka.ms/networkwatchersuricatasavedsearch)下载已保存的搜索文件。
 
-1. 在 Kibana 的“Management”（管理）选项卡下，导航到“Saved Objects”（已保存的对象）并导入所有三个文件。   然后，可从“仪表板”  选项卡打开并加载示例仪表板。
+1. 在 Kibana 的“Management”（管理）选项卡下，导航到“Saved Objects”（已保存的对象）并导入所有三个文件。  然后，可从“仪表板”选项卡打开并加载示例仪表板。
 
 还可以创建自己的可视化效果，以及根据感兴趣的指标定制的仪表板。 阅读 Kibana 的[正式文档](https://www.elastic.co/guide/en/kibana/current/visualize.html)，详细了解如何创建 Kibana 可视化效果。
 
@@ -279,12 +277,12 @@ tail -f /var/log/suricata/fast.log
 
 有关创建自定义可视化效果和仪表板的更多文档，请参阅 [Kibana 的正式文档](https://www.elastic.co/guide/en/kibana/current/introduction.html)。
 
-## <a name="conclusion"></a>结束语
+## <a name="conclusion"></a>结论
 
 通过将网络观察程序提供的数据包捕获与 Suricata 等开源 IDS 工具相结合，可以针对各种威胁执行网络入侵检测。 使用这些仪表板可以快速探查网络中的趋势和异常，以及挖掘数据来发现恶意用户代理或有漏洞的端口触发警报的根本原因。 使用这些提取的数据，可以在如何抵御网络中的任何有害入侵企图方面做出明智的决策，并创建规则来防范网络中将来发生入侵。
 
 ## <a name="next-steps"></a>后续步骤
-<!--Not Available on [Use packet capture to do proactive network monitoring with Azure Functions](network-watcher-alert-triggered-packet-capture.md) -->
+访问 [Use packet capture to do proactive network monitoring with Azure Functions](network-watcher-alert-triggered-packet-capture.md)（在 Azure Functions 中使用数据包捕获执行主动网络监视），了解如何根据警报触发数据包捕获
 
 访问 [Visualize NSG flows logs with Power BI](network-watcher-visualize-nsg-flow-logs-power-bi.md)（使用 Power BI 可视化 NSG 流日志），了解如何使用 Power BI 可视化 NSG 流日志
 

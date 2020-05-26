@@ -9,13 +9,14 @@ origin.date: 04/25/2019
 ms.date: 05/20/2019
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: 3ad63708d02496bc20dd21bc13624685de03c361
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 89f4c0b627127aff65734a99ab70ab2e6546cfea
+ms.sourcegitcommit: 981a75a78f8cf74ab5a76f9e6b0dc5978387be4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77029199"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83801277"
 ---
+<!--Verified successfully-->
 ## <a name="update-resources"></a>更新资源
 
 对于能够更新的内容，存在一些限制。 以下项目可以更新： 

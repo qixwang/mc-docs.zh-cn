@@ -6,15 +6,15 @@ ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
 origin.date: 10/11/2019
-ms.date: 03/02/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: stewu
-ms.openlocfilehash: 7d9d872b74a4910770b8de2c83f13ab346a9cc38
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 1cbf31ffe0062e2fe3dee62339fa1a178da647a8
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78412194"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422347"
 ---
 # <a name="using-azure-data-lake-storage-gen2-for-big-data-requirements"></a>使用 Azure Data Lake Storage Gen2 满足大数据需求
 
@@ -51,6 +51,13 @@ ms.locfileid: "78412194"
 
 这表示可由应用程序、设备、传感器等多种源生成的数据。此数据可通过各种工具引入 Data Lake Storage Gen2。 这些工具通常实时逐事件捕获和处理数据，并随后批量将事件写入 Data Lake Storage Gen2，以便这些事件可以得到进一步处理。
 
+下面是一个列表，其中包含可以用来引入流式处理的数据的工具。
+
+|工具 | 指南 |
+|---|--|
+|Azure 流分析|[快速入门：使用 Azure 门户创建流分析作业](/stream-analytics/stream-analytics-quick-create-portal) <br> [Azure Data Lake Gen2 流出量](/stream-analytics/stream-analytics-define-outputs#blob-storage-and-azure-data-lake-gen2)|
+
+
 ### <a name="relational-data"></a>关系数据
 
 也可从关系数据库中获得数据。 在一个时间段期间，关系数据库会收集大量数据，这些数据如果通过大数据管道处理，可提供重要见解。 可使用以下工具将此类数据移入 Data Lake Storage Gen2。
@@ -59,7 +66,7 @@ ms.locfileid: "78412194"
 
 |工具 | 指南 |
 |---|--|
-|Azure 数据工厂 | [Azure 数据工厂中的 Copy 活动](/data-factory/copy-activity-overview) |
+|Azure 数据工厂 | [Azure 数据工厂中的 Copy 活动](https://docs.azure.cn/data-factory/copy-activity-overview) |
 
 ### <a name="web-server-log-data-upload-using-custom-applications"></a>Web 服务器日志数据（使用自定义应用程序上传）
 
@@ -69,7 +76,7 @@ ms.locfileid: "78412194"
 
 |工具 | 指南 |
 |---|--|
-|Azure 数据工厂 | [Azure 数据工厂中的 Copy 活动](/data-factory/copy-activity-overview)  |
+|Azure 数据工厂 | [Azure 数据工厂中的 Copy 活动](https://docs.azure.cn/data-factory/copy-activity-overview)  |
 |Azure PowerShell|[Azure PowerShell](data-lake-storage-directory-file-acl-powershell.md)|
 
 对于上传 web 服务器日志数据和上传其他类型的数据（例如社会情绪数据），编写自定义脚本/应用程序是一个非常不错的方式，因为这可灵活地将数据上传组件作为更大的大数据应用程序的一部分而包含在内。 某些情况下，此代码的形式可能是脚本或简单的命令行实用工具。 其他情况下，此代码可用于将大数据处理集成到业务应用程序或解决方案中。
@@ -82,9 +89,9 @@ ms.locfileid: "78412194"
 
 |工具 | 指南 |
 |---|--|
-|Apache DistCp | [使用 DistCp 在 Azure 存储 Blob 与 Data Lake Storage Gen2 之间复制数据](/storage/blobs/data-lake-storage-use-distcp) |
-|AzCopy 工具 | [使用 AzCopy 传输数据](/storage/common/storage-use-azcopy-v10) |
-|Azure 数据工厂 | [使用 Azure 数据工厂向/从 Azure Data Lake Storage Gen2 复制数据](/data-factory/load-azure-data-lake-storage-gen2) |
+|Apache DistCp | [使用 DistCp 在 Azure 存储 Blob 与 Data Lake Storage Gen2 之间复制数据](https://docs.azure.cn/storage/blobs/data-lake-storage-use-distcp) |
+|AzCopy 工具 | [使用 AzCopy 传输数据](https://docs.azure.cn/storage/common/storage-use-azcopy-v10) |
+|Azure 数据工厂 | [使用 Azure 数据工厂向/从 Azure Data Lake Storage Gen2 复制数据](https://docs.azure.cn/data-factory/load-azure-data-lake-storage-gen2) |
 
 ### <a name="data-stored-in-on-premises-or-iaas-hadoop-clusters"></a>存储在本地或 IaaS Hadoop 群集的数据
 
@@ -111,7 +118,7 @@ Azure ExpressRoute 允许在 Azure 数据中心与本地中的基础结构之间
 
 |工具 | 指南 |
 |---|--|
-|Azure HDInsight | [将 Azure Data Lake Storage Gen2 用于 Azure HDInsight 群集](/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2) |
+|Azure HDInsight | [将 Azure Data Lake Storage Gen2 用于 Azure HDInsight 群集](https://docs.azure.cn/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2) |
 
 ## <a name="download-the-data"></a>下载数据
 
@@ -127,7 +134,7 @@ Azure ExpressRoute 允许在 Azure 数据中心与本地中的基础结构之间
 
 |工具 | 指南 |
 |---|--|
-|Azure 数据工厂 | [Azure 数据工厂中的 Copy 活动](/data-factory/copy-activity-overview) |
-|Apache DistCp | [使用 DistCp 在 Azure 存储 Blob 与 Data Lake Storage Gen2 之间复制数据](/storage/blobs/data-lake-storage-use-distcp) |
+|Azure 数据工厂 | [Azure 数据工厂中的 Copy 活动](https://docs.azure.cn/data-factory/copy-activity-overview) |
+|Apache DistCp | [使用 DistCp 在 Azure 存储 Blob 与 Data Lake Storage Gen2 之间复制数据](https://docs.azure.cn/storage/blobs/data-lake-storage-use-distcp) |
 |Azure 存储资源管理器|[使用 Azure 存储资源管理器管理 Azure Data Lake Storage Gen2 中的目录、文件和 ACL](data-lake-storage-explorer.md)|
 |AzCopy 工具|[使用 AzCopy 和 Blob 存储传输数据](../common/storage-use-azcopy-blobs.md)|

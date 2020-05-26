@@ -1,21 +1,20 @@
 ---
 title: 对访问 Azure 服务总线实体的应用程序进行身份验证
 description: 本文介绍如何对使用 Azure Active Directory 访问 Azure 服务总线实体（队列、主题等）的应用程序进行身份验证
-author: lingliw
-manager: digimobile
 services: service-bus-messaging
 ms.service: event-hubs
 documentationcenter: ''
+author: axisc
 ms.topic: conceptual
 origin.date: 08/22/2019
 ms.date: 12/13/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 0c529a0742cb394b273c37737b2f10262c8423f9
-ms.sourcegitcommit: 1fbdefdace8a1d3412900c6c3f89678d8a9b29bc
+ms.openlocfilehash: 8756dc77df9b6147a91929e9d29308197975ff54
+ms.sourcegitcommit: a04b0b1009b0c62f2deb7c7acee75a1304d98f87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82886925"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83796848"
 ---
 # <a name="authenticate-and-authorize-an-application-with-azure-active-directory-to-access-azure-service-bus-entities"></a>使用 Azure Active Directory 对应用程序进行身份验证和授权，使之能够访问 Azure 服务总线实体
 Azure 服务总线支持使用 Azure Active Directory (Azure AD) 授权对服务总线实体（队列、主题、订阅或筛选器）的请求。 可以通过 Azure AD 使用基于角色的访问控制 (RBAC) 授予对服务主体的访问权限，该服务主体可能是用户、组或应用程序服务主体。 若要详细了解角色和角色分配，请参阅[了解不同的角色](../role-based-access-control/overview.md)。
@@ -62,7 +61,7 @@ Azure Active Directory (Azure AD) 通过[基于角色的访问控制 (RBAC)](../
 
 
 ## <a name="assign-rbac-roles-using-the-azure-portal"></a>使用 Azure 门户分配 RBAC 角色  
-若要详细了解如何使用 RBAC 和 Azure 门户管理对 Azure 资源的访问，请参阅[此文](..//role-based-access-control/role-assignments-portal.md)。 
+若要详细了解如何使用 RBAC 和 Azure 门户管理对 Azure 资源的访问，请参阅[此文](../role-based-access-control/role-assignments-portal.md)。 
 
 在确定角色分配的适当范围后，在 Azure 门户中导航到该资源。 显示资源的“访问控制(IAM)”设置，并按以下说明管理角色分配：
 

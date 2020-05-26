@@ -134,8 +134,13 @@
               items:
                 - name: Azure Monitor
                   href: ./../scripts/virtual-machines-windows-cli-sample-create-vm-oms.md
+    - name: Azure Policy 内置策略定义
+      displayName: 'samples, policies, definitions'
+      href: ../policy-samples.md?toc=/virtual-machines/windows/toc.json&bc=/virtual-machines/windows/breadcrumb/toc.json
 - name: 概念
   items:
+    - name: 映像
+      href: shared-image-galleries.md
     - name: Azure Resource Manager
       href: ../../azure-resource-manager/management/overview.md?toc=/virtual-machines/windows/toc.json&bc=/virtual-machines/windows/breadcrumb/toc.json
     - name: 区域
@@ -256,6 +261,8 @@
           items:
             - name: PowerShell
               href: dedicated-hosts-powershell.md
+            - name: 门户
+              href: dedicated-hosts-portal.md
         - name: '使用 C#'
           href: csharp.md
         - name: 使用专用磁盘
@@ -298,6 +305,81 @@
           href: migration-classic-resource-manager-community-tools.md
         - name: 常见问题
           href: migration-classic-resource-manager-faq.md
+    - name: 使用映像
+      displayName: 'SIG, AMI, image'
+      items:
+        - name: 创建和共享映像
+          items:
+            - name: PowerShell
+              items:
+                - name: 创建库
+                  href: ../shared-images-powershell.md
+                - name: 创建映像
+                  items:
+                    - name: 从 VM
+                      href: ../image-version-vm-powershell.md
+                    - name: 从托管映像迁移
+                      href: ../image-version-managed-image-powershell.md
+                    - name: 从另一个库复制
+                      href: ../image-version-another-gallery-powershell.md
+                - name: 创建 VM
+                  items:
+                    - name: 通用
+                      href: ../vm-generalized-image-version-powershell.md
+                    - name: 专用
+                      href: ../vm-specialized-image-version-powershell.md
+                - name: 更新映像资源
+                  href: ../update-image-resources-powershell.md
+            - name: CLI
+              items:
+                - name: 创建库
+                  href: ../linux/shared-images.md
+                - name: 创建映像
+                  items:
+                    - name: 从 VM
+                      href: ../image-version-vm-cli.md
+                    - name: 从托管映像迁移
+                      href: ../image-version-managed-image-cli.md
+                    - name: 从另一个库复制
+                      href: ../image-version-another-gallery-cli.md
+                    - name: 从另一个库复制
+                      href: ../image-version-another-gallery-cli.md
+                - name: 创建 VM
+                  items:
+                    - name: 通用
+                      href: ../vm-generalized-image-version-cli.md
+                - name: 更新映像资源
+                  href: ../update-image-resources-cli.md
+            - name: 门户
+              items:
+                - name: 创建库、映像和 VM
+                  href: shared-images-portal.md
+            - name: 资源管理器模板
+              items:
+                - name: 创建共享映像库
+                  href: 'https://github.com/Azure/azure-quickstart-templates/tree/master/101-sig-create/'
+                - name: 在共享映像库中创建映像定义
+                  href: 'https://github.com/Azure/azure-quickstart-templates/tree/master/101-sig-image-definition-create/'
+                - name: 在共享映像库中创建映像版本
+                  href: 'https://github.com/Azure/azure-quickstart-templates/tree/master/101-sig-image-version-create/'
+                - name: 从映像版本创建 VM
+                  href: 'https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-sig/'
+            - name: 排查共享映像问题
+              href: troubleshooting-shared-images.md
+        - name: 查找和使用映像
+          href: cli-ps-findimage.md
+        - name: 准备要上传的 VM
+          href: prepare-for-upload-vhd-image.md
+        - name: 将 VM 捕获到映像
+          href: capture-image-resource.md
+        - name: 使用通用映像
+          href: create-vm-generalized-managed.md
+        - name: 使用 Packer 生成映像
+          href: build-image-with-packer.md
+        - name: 使用 Windows 客户端映像
+          href: client-images.md
+        - name: 下载现有磁盘
+          href: download-vhd.md
     - name: 保护 VM
       items:
         - name: 建议
@@ -406,10 +488,12 @@
               href: ../maintenance-notifications-powershell.md?toc=/virtual-machines/windows/toc.json&bc=/virtual-machines/windows/breadcrumb/toc.json
         - name: 维护控制
           items:
-            - name: PowerShell
-              href: ../maintenance-control-powershell.md?toc=/virtual-machines/windows/toc.json&bc=/virtual-machines/windows/breadcrumb/toc.json
+            - name: 概述
+              href: ../maintenance-control.md?toc=/virtual-machines/windows/toc.json&bc=/virtual-machines/windows/breadcrumb/toc.json
             - name: CLI
               href: ../maintenance-control-cli.md?toc=/virtual-machines/windows/toc.json&bc=/virtual-machines/windows/breadcrumb/toc.json
+            - name: PowerShell
+              href: ../maintenance-control-powershell.md?toc=/virtual-machines/windows/toc.json&bc=/virtual-machines/windows/breadcrumb/toc.json
         - name: 计划事件
           href: scheduled-events.md
         - name: Windows 计划事件服务
@@ -422,34 +506,6 @@
           href: ../../azure-monitor/platform/alerts-log.md?toc=/virtual-machines/windows/toc.json&bc=/virtual-machines/windows/breadcrumb/toc.json
         - name: 使用 REST 获取使用情况指标
           href: ../linux/metrics-vm-usage-rest.md?toc=/virtual-machines/windows/toc.json&bc=/virtual-machines/windows/breadcrumb/toc.json
-    - name: 使用映像
-      items:
-        - name: 共享映像
-          items:
-            - name: 概述
-              href: shared-image-galleries.md
-            - name: PowerShell
-              href: shared-images.md
-            - name: 门户
-              href: shared-images-portal.md
-            - name: CLI
-              href: ../linux/shared-images.md?toc=%2fvirtual-machines%2fwindows%2ftoc.json&bc=/virtual-machines/windows/breadcrumb/toc.json
-            - name: 用于共享的应用注册
-              href: share-images-across-tenants.md
-            - name: 排查共享映像问题
-              href: troubleshooting-shared-images.md
-        - name: 查找和使用映像
-          href: cli-ps-findimage.md
-        - name: 准备要上传的 VM
-          href: prepare-for-upload-vhd-image.md
-        - name: 将 VM 捕获到映像
-          href: capture-image-resource.md
-        - name: 使用通用映像
-          href: create-vm-generalized-managed.md
-        - name: 使用 Packer 生成映像
-          href: build-image-with-packer.md
-        - name: 下载现有磁盘
-          href: download-vhd.md
     - name: 可用性和规模
       items:
         - name: 虚拟机规模集

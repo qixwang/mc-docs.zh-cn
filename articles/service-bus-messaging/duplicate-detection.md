@@ -1,5 +1,5 @@
 ---
-title: Azure 服务总线重复消息检测 | Microsoft Docs
+title: Azure 服务总线重复消息检测 | Azure
 description: 本文介绍如何检测 Azure 服务总线消息中的重复项。 可以忽略并丢弃重复消息。
 services: service-bus-messaging
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.topic: article
 origin.date: 01/24/2020
 ms.date: 2/6/2020
 ms.author: v-lingwu
-ms.openlocfilehash: d0ae6a12042964dd2d0b34f3a1bef85ec4b40c5a
-ms.sourcegitcommit: 1fbdefdace8a1d3412900c6c3f89678d8a9b29bc
+ms.openlocfilehash: 8fd7fd165a1401c4f8aac1217dd190d2a6f560c5
+ms.sourcegitcommit: a04b0b1009b0c62f2deb7c7acee75a1304d98f87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82886921"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83796859"
 ---
 # <a name="duplicate-detection"></a>重复检测
 
@@ -29,27 +29,27 @@ ms.locfileid: "82886921"
 
 重复检测支持发送程序重新发送相同的消息，并让队列或主题放弃任何重复的副本，从而消除了这些情况下的各种怀疑。
 
-启用重复检测，有助于跟踪在指定时间范围内发送到队列或主题的所有消息的 MessageId  （由应用程序控制）。 如果使用已在相应时间范围内记录的 MessageId  发送任何新消息，则将该消息报告为“已接受”（即发送操作成功），但将立即忽略和删除新发送的消息。 除了 MessageId  之外，不会检查消息的其他任何部分。
+启用重复检测，有助于跟踪在指定时间范围内发送到队列或主题的所有消息的 MessageId（由应用程序控制）。 如果使用已在相应时间范围内记录的 MessageId 发送任何新消息，则将该消息报告为“已接受”（即发送操作成功），但将立即忽略和删除新发送的消息。 除了 MessageId 之外，不会检查消息的其他任何部分。
 
-应用程序控制的此标识符至关重要，因为只有它才能让应用程序将 MessageId  绑定到业务流程上下文，从中可以在发生故障时预见性地重新构造消息。
+应用程序控制的此标识符至关重要，因为只有它才能让应用程序将 MessageId 绑定到业务流程上下文，从中可以在发生故障时预见性地重新构造消息。
 
-如果业务流程是在处理某应用程序上下文的过程中发送多个消息，MessageId  可能会复合应用程序级上下文标识符，如采购订单号和消息主题；例如，12345.2017/payment  。
+如果业务流程是在处理某应用程序上下文的过程中发送多个消息，MessageId 可能会复合应用程序级上下文标识符，如采购订单号和消息主题；例如，12345.2017/payment。
 
-虽然 MessageId  可以始终是某 GUID，但将标识符绑定到业务流程可以预测重复消息，这更有利于有效使用重复检测功能。
+虽然 MessageId 可以始终是某 GUID，但将标识符绑定到业务流程可以预测重复消息，这更有利于有效使用重复检测功能。
 
 > [!NOTE]
 > 如果启用了重复检测，并且未设置会话 ID 或分区键，则消息 ID 将用作分区键。 如果消息 ID 也未设置，.NET 和 AMQP 库将自动为消息生成消息 ID。 有关详细信息，请参阅[使用分区键](service-bus-partitioning.md#use-of-partition-keys)。
 
 ## <a name="enable-duplicate-detection"></a>启用重复检测
 
-在门户中，此功能在实体创建期间处于启用状态（即“启用重复检测”  复选框已选中）。不过，默认情况下，此功能处于禁用状态。 用于新建主题的设置是等效的。
+在门户中，此功能在实体创建期间处于启用状态（即“启用重复检测”复选框已选中）。不过，默认情况下，此功能处于禁用状态。 用于新建主题的设置是等效的。
 
 ![][1]
 
 > [!IMPORTANT]
 > 创建队列后，无法启用/禁用重复检测。 只能在创建队列时执行此操作。 
 
-通过编程方式，可以结合使用 [QueueDescription.requiresDuplicateDetection](/dotnet/api/microsoft.servicebus.messaging.queuedescription.requiresduplicatedetection#Microsoft_ServiceBus_Messaging_QueueDescription_RequiresDuplicateDetection) 属性和整个 .NET Framework API，从而设置标志。 借助 Azure 资源管理器 API，可以使用 [queueProperties.requiresDuplicateDetection](https://docs.microsoft.com/azure/templates/microsoft.servicebus/namespaces/queues#property-values) 属性设置此值。
+通过编程方式，可以结合使用 [QueueDescription.requiresDuplicateDetection](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.queuedescription.requiresduplicatedetection#Microsoft_ServiceBus_Messaging_QueueDescription_RequiresDuplicateDetection) 属性和整个 .NET Framework API，从而设置标志。 借助 Azure 资源管理器 API，可以使用 [queueProperties.requiresDuplicateDetection](https://docs.microsoft.com/azure/templates/microsoft.servicebus/namespaces/queues#property-values) 属性设置此值。
 
 队列和主题的重复检测时间历史记录默认为 30 秒，最大值不得超过 7 天。 可以在 Azure 门户的队列和主题属性窗口中更改此设置。
 

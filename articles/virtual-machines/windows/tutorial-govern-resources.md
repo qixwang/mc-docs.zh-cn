@@ -1,25 +1,24 @@
 ---
-title: 教程：了解如何使用 Azure PowerShell 管理 Windows 虚拟机
+title: 教程 - 了解如何使用 Azure PowerShell 管理 Windows 虚拟机
 description: 本教程介绍如何通过使用 Azure PowerShell 应用 RBAC、策略、锁和标记管理 Azure 虚拟机
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: rockboyfor
 manager: digimobile
-editor: tysonn
 ms.service: virtual-machines-windows
 ms.workload: infrastructure
 ms.tgt_pltfrm: vm-windows
 ms.topic: tutorial
 origin.date: 12/05/2018
-ms.date: 02/10/2020
+ms.date: 04/27/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 3fb034742bf77705e8e526b38590d0e3c43c2403
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 110a36bf9c2711735b63a78a7a7837e6632bfb23
+ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77428667"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83392397"
 ---
 # <a name="tutorial-learn-about-windows-virtual-machine-management-with-azure-powershell"></a>教程：了解如何使用 Azure PowerShell 管理 Windows 虚拟机
 
@@ -28,8 +27,6 @@ ms.locfileid: "77428667"
 ## <a name="launch-azure-powershell"></a>启动 Azure PowerShell
 
 打开 Azure Powershell 控制台，并以管理员权限运行以下脚本。
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="understand-scope"></a>了解范围
 
@@ -70,7 +67,7 @@ New-AzRoleAssignment -ObjectId $adgroup.id `
   -RoleDefinitionName "Virtual Machine Contributor"
 ```
 
-如果收到一条错误，指出“主体 \<guid> 不存在于目录中”  ，则表明新组未在 Azure Active Directory 中完成传播。 请尝试再次运行命令。
+如果收到一条错误，指出“主体 \<guid> 不存在于目录中”，则表明新组未在 Azure Active Directory 中完成传播。 请尝试再次运行命令。
 
 通常情况下，请对*网络参与者*和*存储帐户参与者*重复执行此过程，确保分配用户来管理已部署的资源。 在本文中，可以跳过这些步骤。
 
@@ -82,7 +79,7 @@ New-AzRoleAssignment -ObjectId $adgroup.id `
 (Get-AzPolicyDefinition).Properties | Format-Table displayName, policyType
 ```
 
-可以看到现有的策略定义。 策略类型为“内置”或“自定义”   。 在这些定义中查找所述条件正是你要分配的条件的定义。 在本文中，分配的策略要符合以下条件：
+可以看到现有的策略定义。 策略类型为“内置”或“自定义” 。 在这些定义中查找所述条件正是你要分配的条件的定义。 在本文中，分配的策略要符合以下条件：
 
 * 限制所有资源的位置。
 * 限制虚拟机的 SKU。

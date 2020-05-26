@@ -196,7 +196,7 @@ az vm create \
 
 ## <a name="test-traffic-filters"></a>测试流量筛选器
 
-使用以下命令来与 *myVmMgmt* VM 建立 SSH 会话。 将 *publicIpAddress>\<* 替换为 VM 的公共 IP 地址。 在上面的示例中，IP 地址为 *13.90.242.231*。
+使用以下命令来与 *myVmMgmt* VM 建立 SSH 会话。 将 \<publicIpAddress> 替换为 VM 的公共 IP 地址。 在上面的示例中，IP 地址为 *13.90.242.231*。
 
 ```bash 
 ssh azureuser@<publicIpAddress>
@@ -224,7 +224,7 @@ sudo apt-get -y update
 sudo apt-get -y install nginx
 ```
 
-允许 *myVmWeb* VM 向 Internet 发送出站流量以检索 nginx，因为默认安全规则允许发往 Internet 的所有出站流量。 退出 *myVmWeb* SSH 会话。随即会在 `username@myVmMgmt:~$`myVmMgmt*VM 的* 提示符下退出。 若要从 *myVmWeb* VM 检索 nginx 欢迎屏幕，请输入以下命令：
+允许 *myVmWeb* VM 向 Internet 发送出站流量以检索 nginx，因为默认安全规则允许发往 Internet 的所有出站流量。 退出 *myVmWeb* SSH 会话。随即会在 *myVmMgmt* VM 的 `username@myVmMgmt:~$` 提示符下退出。 若要从 *myVmWeb* VM 检索 nginx 欢迎屏幕，请输入以下命令：
 
 ```bash
 curl myVmWeb

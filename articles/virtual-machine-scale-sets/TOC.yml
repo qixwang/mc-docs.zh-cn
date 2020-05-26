@@ -63,6 +63,9 @@
       href: cli-samples.md
     - name: PowerShell
       href: powershell-samples.md
+    - name: Azure Policy 内置策略定义
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: 概念
   items:
     - name: Azure Resource Manager
@@ -70,11 +73,13 @@
       maintainContext: true
     - name: 区域
       href: ../virtual-machines/windows/regions.md
-    - name: 性能
+    - name: 可用性和性能
       maintainContext: true
       items:
         - name: 网络性能
           href: ../virtual-network/virtual-network-optimize-network-bandwidth.md
+    - name: 映像
+      href: shared-image-galleries.md
     - name: VM 类型和大小
       href: ../virtual-machines/windows/sizes.md
       maintainContext: true
@@ -100,7 +105,7 @@
           href: ../virtual-machines/windows/sizes-gpu.md
           maintainContext: true
           items:
-            - name: 安装 GPU 驱动程序
+            - name: 安装 NVIDIA GPU 驱动程序
               href: ../virtual-machines/windows/n-series-driver-setup.md
               maintainContext: true
         - name: Azure 计算单元 (ACU)
@@ -172,6 +177,27 @@
           href: virtual-machine-scale-sets-design-overview.md
         - name: 了解实例 ID
           href: virtual-machine-scale-sets-instance-ids.md
+    - name: 使用映像
+      displayName: 'SIG, AMI, image'
+      items:
+        - name: 共享映像库
+          items:
+            - name: PowerShell
+              items:
+                - name: 创建规模集
+                  items:
+                    - name: 专用
+                      href: instance-specialized-image-version-powershell.md
+                    - name: 通用
+                      href: instance-generalized-image-version-powershell.md
+            - name: CLI
+              items:
+                - name: 创建规模集
+                  items:
+                    - name: 专用
+                      href: instance-specialized-image-version-cli.md
+                    - name: 通用
+                      href: instance-generalized-image-version-cli.md
     - name: 创建模板
       items:
         - name: 了解规模集模板
@@ -234,6 +260,20 @@
           href: virtual-machine-scale-sets-instance-protection.md
         - name: 缩小策略
           href: virtual-machine-scale-sets-scale-in-policy.md
+        - name: 删除时终止通知
+          href: virtual-machine-scale-sets-terminate-notification.md
+        - name: 共享映像库
+          items:
+            - name: 概述
+              href: shared-image-galleries.md
+            - name: CLI
+              href: shared-images-cli.md
+            - name: PowerShell
+              href: shared-images-powershell.md
+            - name: 在租户间共享映像
+              href: share-images-across-tenants.md
+            - name: 排查共享映像问题
+              href: troubleshooting-shared-images.md
         - name: 使用 DSC 和规模集
           href: virtual-machine-scale-sets-dsc.md
         - name: 将模板转换为托管磁盘

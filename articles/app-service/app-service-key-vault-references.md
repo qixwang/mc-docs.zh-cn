@@ -4,35 +4,35 @@ description: 了解如何使用 Key Vault 引用设置 Azure 应用服务和 Azu
 author: mattchenderson
 ms.topic: article
 origin.date: 10/09/2019
-ms.date: 03/09/2020
+ms.date: 05/22/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: dc652e5ce3f8429e47f0483dd29d67a9d2af21c6
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: c968fb5556d12a078298dfc045c877e1bcc8f015
+ms.sourcegitcommit: 981a75a78f8cf74ab5a76f9e6b0dc5978387be4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79291864"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83801262"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>使用应用服务和 Azure Functions 的 Key Vault 引用
 
-本主题介绍在不需进行任何代码更改的情况下，如何使用应用服务或 Azure Functions 应用程序的 Azure Key Vault 中的机密。 [Azure Key Vault](../key-vault/key-vault-overview.md) 是一项服务，可以提供集中式机密管理，并且可以完全控制访问策略和审核历史记录。
+本主题介绍在不需进行任何代码更改的情况下，如何使用应用服务或 Azure Functions 应用程序的 Azure Key Vault 中的机密。 [Azure Key Vault](../key-vault/general/overview.md) 是一项服务，可以提供集中式机密管理，并且可以完全控制访问策略和审核历史记录。
 
 ## <a name="granting-your-app-access-to-key-vault"></a>授予应用对 Key Vault 的访问权限
 
 若要从 Key Vault 读取机密，需创建一个保管库并授予应用访问该保管库的权限。
 
-1. 按照 [Key Vault 快速入门](../key-vault/quick-create-cli.md)中的说明创建一个密钥保管库。
+1. 按照 [Key Vault 快速入门](../key-vault/secrets/quick-create-cli.md)中的说明创建一个密钥保管库。
 
 1. 为应用程序创建一个[系统分配托管标识](overview-managed-identity.md)。
 
    > [!NOTE] 
    > Key Vault 引用目前仅支持系统分配托管标识。 不能使用用户分配标识。
 
-1. 在 Key Vault 中为此前创建的应用程序标识创建一项[访问策略](../key-vault/key-vault-secure-your-key-vault.md#key-vault-access-policies)。 在此策略上启用“获取”机密权限。 请勿配置“授权的应用程序”或 `applicationId` 设置，因为这与托管标识不兼容。
+1. 在 Key Vault 中为此前创建的应用程序标识创建一项[访问策略](../key-vault/general/secure-your-key-vault.md#key-vault-access-policies)。 在此策略上启用“获取”机密权限。 请勿配置“授权的应用程序”或 `applicationId` 设置，因为这与托管标识不兼容。
 
     > [!NOTE]
-    > Key Vault 引用目前无法解析 Key Vault 中存储的机密，并存在[网络限制](../key-vault/key-vault-overview-vnet-service-endpoints.md)。
+    > Key Vault 引用目前无法解析 Key Vault 中存储的机密，并存在[网络限制](../key-vault/general/overview-vnet-service-endpoints.md)。
 
 ## <a name="reference-syntax"></a>引用语法
 

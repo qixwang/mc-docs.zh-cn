@@ -1,5 +1,5 @@
 ---
-title: Azure 流量分析常见问题解答 | Microsoft Docs
+title: Azure 流量分析常见问题解答 | Azure Docs
 description: 获取有关流量分析的常见问题的解答。
 services: network-watcher
 documentationcenter: na
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 origin.date: 03/08/2018
 ms.date: 02/27/2020
 ms.author: v-lingwu
-ms.openlocfilehash: 889627930ec1253f49774afaa1ac1f27ff708d4b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: c269e2de1076d214a7d1e525f338257cb0a0d35e
+ms.sourcegitcommit: b81ea2ab9eafa986986fa3eb1e784cfe9bbf9ec1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78155093"
+ms.lasthandoff: 05/13/2020
+ms.locfileid: "83367828"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>流量分析常见问题解答
 
@@ -55,7 +55,7 @@ ms.locfileid: "78155093"
 
 1. 使用 **Login-AzAccount -Environment AzureChinaCloud** 登录到 Azure。 
 
-2. 使用 Select-AzSubscription 选择所需订阅  。 
+2. 使用 Select-AzSubscription 选择所需订阅。 
 
 3. 若要列出分配给特定用户的所有角色，请使用 **Get-AzRoleAssignment -SignInName [user email] -IncludeClassicAdministrators**。 
 
@@ -96,7 +96,7 @@ Log Analytics 工作区必须存在于以下区域中：
 
 ## <a name="what-if-i-am-getting-the-status-failed-to-load-under-the-nsg-flow-logs-page"></a>如果在 NSG 流日志页显示“无法加载”状态，该如何解决？
 
-要使流日志记录正常工作，必须注册 Microsoft.Insights 提供程序。 如果不确定是否为订阅注册了 Microsoft.Insights 提供程序，请替换以下命令中的“xxxxx-xxxxx-xxxxxx-xxxx”  ，并从 PowerShell 运行以下命令：
+要使流日志记录正常工作，必须注册 Microsoft.Insights 提供程序。 如果不确定是否为订阅注册了 Microsoft.Insights 提供程序，请替换以下命令中的“xxxxx-xxxxx-xxxxxx-xxxx”，并从 PowerShell 运行以下命令：
 
 ```
 **Select-AzSubscription** -SubscriptionId xxxxx-xxxxx-xxxxxx-xxxx
@@ -114,7 +114,7 @@ Log Analytics 工作区必须存在于以下区域中：
 - 在上部菜单栏中选择不同的 Log Analytics 工作区。
 - 如果流量分析是最近才启用的，请尝试在 30 分钟后访问它。
     
-如果问题仍未解决，请在 [User Voice 论坛](https://support.azure.cn/zh-cn/support/contact/)中咨询。
+如果问题仍未解决，请在 [User Voice 论坛](https://support.azure.cn/support/contact/)中咨询。
 
 ## <a name="what-if-i-get-this-message-analyzing-your-nsg-flow-logs-for-the-first-time-this-process-may-take-20-30-minutes-to-complete-check-back-after-some-time-2-if-the-above-step-doesnt-work-and-your-workspace-is-under-the-free-sku-then-check-your-workspace-usage-here-to-validate-over-quota-else-refer-to-faqs-for-further-information"></a>如果收到以下消息：“正在首次分析 NSG 流日志。 此过程可能需要 20-30 分钟才能完成。 请过一段时间回来查看。 2) 如果上述步骤不起作用，并且工作区位于免费 SKU，则在此处检查工作区使用情况，以验证是否超出配额，或者参阅常见问题解答中的其他信息”，该如何解决？
 
@@ -122,11 +122,11 @@ Log Analytics 工作区必须存在于以下区域中：
 - 流量分析最近才启用，可能尚未聚合足够的数据，无法获得有意义的见解。
 - 正在使用免费版 Log Analytics 工作区，并且它超出了配额限制。 可能需要使用容量更大的工作区。
     
-如果问题仍未解决，请在 [User Voice 论坛](https://support.azure.cn/zh-cn/support/contact/)中咨询。
+如果问题仍未解决，请在 [User Voice 论坛](https://support.azure.cn/support/contact/)中咨询。
     
 ## <a name="what-if-i-get-this-message-looks-like-we-have-resources-data-topology-and-no-flows-information-meanwhile-click-here-to-see-resources-data-and-refer-to-faqs-for-further-information"></a>如果收到以下消息：“似乎我们已获得资源数据（拓扑），但没有流信息。 同时，请单击此处查看资源数据，并参阅常见问题解答了解其他信息”，该如何解决？
 
-仪表板上显示了资源信息，但未显示与流相关的统计信息。 由于资源之间没有通信流，因此可能不显示数据。 请在 60 分钟后重新检查状态。 如果问题仍未解决，并且确信资源之间存在通信流，请在 [User Voice 论坛](https://support.azure.cn/zh-cn/support/contact/)中咨询。
+仪表板上显示了资源信息，但未显示与流相关的统计信息。 由于资源之间没有通信流，因此可能不显示数据。 请在 60 分钟后重新检查状态。 如果问题仍未解决，并且确信资源之间存在通信流，请在 [User Voice 论坛](https://support.azure.cn/support/contact/)中咨询。
 
 ## <a name="can-i-configure-traffic-analytics-using-powershell-or-an-azure-resource-manager-template-or-client"></a>是否可以使用 PowerShell 或 Azure 资源管理器模板或客户端配置流量分析？
 
@@ -204,7 +204,7 @@ armclient post "https://management.chinacloudapi.cn/subscriptions/<NSG subscript
 
 ## <a name="how-frequently-does-traffic-analytics-process-data"></a>流量分析多久处理一次数据？
 
-请参阅“流量分析架构和数据聚合”文档中的[“数据聚合”部分](/network-watcher/traffic-analytics-schema#data-aggregation)
+请参阅“流量分析架构和数据聚合”文档中的[“数据聚合”部分](https://docs.azure.cn/network-watcher/traffic-analytics-schema#data-aggregation)
 
 ## <a name="how-does-traffic-analytics-decide-that-an-ip-is-malicious"></a>流量分析如何确定 IP 是恶意 IP？ 
 
@@ -216,7 +216,8 @@ armclient post "https://management.chinacloudapi.cn/subscriptions/<NSG subscript
 - 可以在流量分析中使 Log Analytics 的短链接。 
 - 使用[此处记录的架构](traffic-analytics-schema.md)编写查询 
 - 单击“新建警报规则”以创建警报
-- 请参阅[日志警报文档](/azure-monitor/platform/alerts-log)以创建警报
+- 请参阅[日志警报文档](https://docs.azure.cn/azure-monitor/platform/alerts-log)以创建警报
+
 ## <a name="how-do-i-check-which-vms-are-receiving-most-on-premise-traffic"></a>如何检查哪些 VM 接收的本地流量最多？
 
             AzureNetworkAnalytics_CL
@@ -289,13 +290,13 @@ armclient post "https://management.chinacloudapi.cn/subscriptions/<NSG subscript
         
 ### <a name="keyboard-navigation-on-the-map"></a>地图中的键盘导航
     
-- 在标题中选择任一筛选器并按 `Ctrl+F6` 后，焦点将移至地图视图中某个突出显示的节点（“Azure 数据中心”或“国家/地区”）   。
+- 在标题中选择任一筛选器并按 `Ctrl+F6` 后，焦点将移至地图视图中某个突出显示的节点（“Azure 数据中心”或“国家/地区”） 。
 - 若要移至地图中其他突出显示的节点，请使用 `Tab` 或 `Right arrow` 键向前移动。 使用 `Shift+Tab` 或 `Left arrow` 键向后移动。
 - 若要在地图中选择突出显示的任一节点，可以使用 `Enter` 或 `Down arrow` 键。
-- 选择任一此类节点后，焦点会转移到节点的“信息工具框”。  默认情况下，焦点会转移到“信息工具框”中的关闭按钮。  若要进一步在“框”视图中移动，可分别使用 `Right arrow` 和 `Left arrow` 键向前和向后移动  。 按 `Enter` 的效果与在“信息工具框”中选择聚焦的按钮相同。 
-- 当焦点位于“信息工具框”时，如果按 `Tab`，则焦点会移至选定节点所在的同一大洲中的终结点  。 使用 `Right arrow` 和 `Left arrow` 键可浏览这些终结点。
+- 选择任一此类节点后，焦点会转移到节点的“信息工具框”。 默认情况下，焦点会转移到“信息工具框”中的关闭按钮。 若要进一步在“框”视图中移动，可分别使用 `Right arrow` 和 `Left arrow` 键向前和向后移动。 按 `Enter` 的效果与在“信息工具框”中选择聚焦的按钮相同。
+- 当焦点位于“信息工具框”时，如果按 `Tab`，则焦点会移至选定节点所在的同一大洲中的终结点。 使用 `Right arrow` 和 `Left arrow` 键可浏览这些终结点。
 - 若要移至其他流终结点或大洲群集，请使用 `Tab` 向前移动，或使用 `Shift+Tab` 向后移动。
-- 焦点位于“大洲群集”时，可以使用 `Enter` 或 `Down` 箭头键突出显示大洲群集中的终结点  。 若要在大洲群集的信息框中浏览终结点和使用关闭按钮，可分别使用 `Right arrow` 或 `Left arrow` 键向前或向后移动。 在任一终结点上，可以使用 `Shift+L` 切换到从选定节点到终结点的连接线。 可以再次按 `Shift+L` 以移至所选终结点。
+- 焦点位于“大洲群集”时，可以使用 `Enter` 或 `Down` 箭头键突出显示大洲群集中的终结点。 若要在大洲群集的信息框中浏览终结点和使用关闭按钮，可分别使用 `Right arrow` 或 `Left arrow` 键向前或向后移动。 在任一终结点上，可以使用 `Shift+L` 切换到从选定节点到终结点的连接线。 可以再次按 `Shift+L` 以移至所选终结点。
         
 ### <a name="keyboard-navigation-at-any-stage"></a>任何阶段的键盘导航
     
@@ -319,10 +320,10 @@ armclient post "https://management.chinacloudapi.cn/subscriptions/<NSG subscript
         
 ### <a name="keyboard-navigation-on-the-topology"></a>拓扑中的键盘导航
     
-- 在标题中选择任一筛选器并按 `Ctrl+F6` 后，焦点移至拓扑视图中某个突出显示的节点 (VNet)  。
+- 在标题中选择任一筛选器并按 `Ctrl+F6` 后，焦点移至拓扑视图中某个突出显示的节点 (VNet)。
 - 若要移至拓扑视图中其他突出显示的节点，请使用 `Shift+Right arrow` 键向前移动。 
-- 在突出显示的节点上，焦点会移至节点的“信息工具框”  。 默认情况下，焦点会移至“信息工具框”中的“更多详细信息”按钮   。 若要进一步在“框”视图中移动，可分别使用 `Right arrow` 和 `Left arrow` 键向前和向后移动  。 按 `Enter` 的效果与在“信息工具框”中选择聚焦的按钮相同。 
-- 选择任何此类节点时，可通过按 `Shift+Left arrow` 键逐个访问其所有连接。 焦点将移至该连接的“信息工具框”  。 在任何时候，都可通过再次按 `Shift+Right arrow`，将焦点移回该节点。
+- 在突出显示的节点上，焦点会移至节点的“信息工具框”。 默认情况下，焦点会移至“信息工具框”中的“更多详细信息”按钮 。 若要进一步在“框”视图中移动，可分别使用 `Right arrow` 和 `Left arrow` 键向前和向后移动。 按 `Enter` 的效果与在“信息工具框”中选择聚焦的按钮相同。
+- 选择任何此类节点时，可通过按 `Shift+Left arrow` 键逐个访问其所有连接。 焦点将移至该连接的“信息工具框”。 在任何时候，都可通过再次按 `Shift+Right arrow`，将焦点移回该节点。
     
 
 ## <a name="how-can-i-navigate-by-using-the-keyboard-in-the-subnet-topology-view"></a>如何在子网拓扑视图中使用键盘导航？
@@ -341,8 +342,8 @@ armclient post "https://management.chinacloudapi.cn/subscriptions/<NSG subscript
         
 ### <a name="keyboard-navigation-on-the-topology"></a>拓扑中的键盘导航
     
-- 在标题中选择任一筛选器并按 `Ctrl+F6` 后，焦点移至拓扑视图中某个突出显示的节点（子网）。 
+- 在标题中选择任一筛选器并按 `Ctrl+F6` 后，焦点移至拓扑视图中某个突出显示的节点（子网）。
 - 若要移至拓扑视图中其他突出显示的节点，请使用 `Shift+Right arrow` 键向前移动。 
-- 在突出显示的节点上，焦点会移至节点的“信息工具框”  。 默认情况下，焦点会移至“信息工具框”中的“更多详细信息”按钮   。 若要进一步在“框”视图中移动，可分别使用 `Right arrow` 和 `Left arrow` 键向前和向后移动  。 按 `Enter` 的效果与在“信息工具框”中选择聚焦的按钮相同。 
-- 选择任何此类节点时，可通过按 `Shift+Left arrow` 键逐个访问其所有连接。 焦点将移至该连接的“信息工具框”  。 在任何时候，都可通过再次按 `Shift+Right arrow`，将焦点移回该节点。    
+- 在突出显示的节点上，焦点会移至节点的“信息工具框”。 默认情况下，焦点会移至“信息工具框”中的“更多详细信息”按钮 。 若要进一步在“框”视图中移动，可分别使用 `Right arrow` 和 `Left arrow` 键向前和向后移动。 按 `Enter` 的效果与在“信息工具框”中选择聚焦的按钮相同。
+- 选择任何此类节点时，可通过按 `Shift+Left arrow` 键逐个访问其所有连接。 焦点将移至该连接的“信息工具框”。 在任何时候，都可通过再次按 `Shift+Right arrow`，将焦点移回该节点。    
 

@@ -2,14 +2,14 @@
 author: rockboyfor
 ms.topic: include
 origin.date: 10/09/2019
-ms.date: 03/09/2020
+ms.date: 05/25/2020
 ms.author: v-yeche
-ms.openlocfilehash: efa4374a54cc2fdbe48b635049680a7865375866
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 306c332b81c9db4daf70505eacf733f3ae3579d3
+ms.sourcegitcommit: 7e6b94bbaeaddb854beed616aaeba6584b9316d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79290697"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83735566"
 ---
 ## <a name="download-and-install-the-linkerd-linkerd-client-binary"></a>下载并安装 Linkerd linkerd 客户端二进制文件
 
@@ -32,11 +32,11 @@ New-Item -ItemType Directory -Force -Path "C:\Linkerd"
 Copy-Item -Path ".\linkerd2-cli-$LINKERD_VERSION-windows.exe" -Destination "C:\Linkerd\linkerd.exe"
 
 # Add C:\Linkerd to PATH. 
-# Make the new PATH permanently available for the current User, and also immediately available in the current shell.
-$PATH = [environment]::GetEnvironmentVariable("PATH", "User") + "; C:\Linkerd\"
-[environment]::SetEnvironmentVariable("PATH", $PATH, "User") 
-[environment]::SetEnvironmentVariable("PATH", $PATH)
+# Make the new PATH permanently available for the current User
+$USER_PATH = [environment]::GetEnvironmentVariable("PATH", "User") + ";C:\Linkerd\"
+[environment]::SetEnvironmentVariable("PATH", $USER_PATH, "User")
+# Make the new PATH immediately available in the current shell
+$env:PATH += ";C:\Linkerd\"
 ```
 
-<!--Update_Description: new articles on linkerd install client binary windows -->
-<!--New.date: 11/04/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

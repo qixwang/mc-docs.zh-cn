@@ -4,15 +4,15 @@ description: 了解如何使用 Azure 资源管理器模板快速创建 Kubernet
 services: container-service
 ms.topic: quickstart
 origin.date: 04/19/2019
-ms.date: 05/18/2020
+ms.date: 05/25/2020
 ms.author: v-yeche
 ms.custom: mvc,subject-armqs
-ms.openlocfilehash: 1dbdd5cd675c02b3ff3f95e9d51fb16ab8ede929
-ms.sourcegitcommit: 436a5dd9a446fe7b6d3c4d5bc76b652f7848c1ba
+ms.openlocfilehash: 58eb8cd082ea1643899214b1e9429e1391ab02bf
+ms.sourcegitcommit: 7e6b94bbaeaddb854beed616aaeba6584b9316d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83393129"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83735062"
 ---
 <!--Verify successfully-->
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-an-azure-resource-manager-template"></a>快速入门：使用 Azure 资源管理器模板部署 Azure Kubernetes 服务 (AKS) 群集
@@ -170,7 +170,7 @@ az ad sp create-for-rbac --skip-assignment
     },
     "resources": [
         {
-            "apiVersion": "2018-03-31",
+            "apiVersion": "2020-03-01",
             "type": "Microsoft.ContainerService/managedClusters",
             "location": "[parameters('location')]",
             "name": "[parameters('clusterName')]",
@@ -218,7 +218,7 @@ az ad sp create-for-rbac --skip-assignment
 
 1. 选择下图登录到 Azure 并打开一个模板。
 
-    [![“部署到 Azure”](./media/kubernetes-walkthrough-rm-template/deploy-to-azure.png)](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-aks%2Fazuredeploy.json)
+    [![“部署到 Azure”](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-aks%2Fazuredeploy.json)
 
 2. 选择或输入以下值。
 
@@ -421,6 +421,8 @@ az group delete --name myResourceGroup --yes --no-wait
 
 > [!NOTE]
 > 删除群集时，AKS 群集使用的 Azure Active Directory 服务主体不会被删除。 有关如何删除服务主体的步骤，请参阅 [AKS 服务主体的注意事项和删除][sp-delete]。
+
+<!--Not Available on managed identity-->
 
 ## <a name="get-the-code"></a>获取代码
 

@@ -5,15 +5,15 @@ author: ccompy
 ms.assetid: 955a4d84-94ca-418d-aa79-b57a5eb8cb85
 ms.topic: article
 origin.date: 01/24/2020
-ms.date: 03/19/2020
+ms.date: 05/22/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 8580f299fd86cff8d09d6d16ebe4dcecb504fb75
-ms.sourcegitcommit: 9b0a89269a7e422570b7bc0ca983f60d2f317d48
+ms.openlocfilehash: 0254602fe5e37cebe9c7c7d2d560136bb1267452
+ms.sourcegitcommit: 981a75a78f8cf74ab5a76f9e6b0dc5978387be4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81675788"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83801338"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>应用服务环境的网络注意事项 #
 

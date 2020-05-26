@@ -8,14 +8,14 @@ metadata:
   ms.topic: landing-page
   author: ju-shim
   ms.author: v-junlch
-  manager: gwallace
-  ms.date: 03/31/2020
-  ms.openlocfilehash: 4ba0be66f408814d6187421076cd84ddd5d684a5
-  ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+  ms.reviewer: mimckitt
+  ms.date: 05/21/2020
+  ms.openlocfilehash: 4f3580a8274c926acb89b13ead3fc06f394d7a65
+  ms.sourcegitcommit: 87e789550ea49ff77c7f19bc68fad228009fcf44
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 04/17/2020
-  ms.locfileid: "80581714"
+  ms.lasthandoff: 05/21/2020
+  ms.locfileid: "83748155"
 landingContent:
 - title: 关于虚拟机规模集
   linkLists:
@@ -41,6 +41,8 @@ landingContent:
     links:
     - text: 横向缩减策略
       url: virtual-machine-scale-sets-scale-in-policy.md
+    - text: 终止通知
+      url: virtual-machine-scale-sets-terminate-notification.md
     - text: 实例保护
       url: virtual-machine-scale-sets-instance-protection.md
 - title: 分步指南

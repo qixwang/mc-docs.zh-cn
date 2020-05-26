@@ -1,5 +1,5 @@
 ---
-title: Azure 安全中心安全建议 | Microsoft Docs
+title: Azure 安全中心内的安全建议 | Azure
 description: 本文档介绍 Azure 安全中心中的建议如何帮助你保护 Azure 资源并保持符合安全策略。
 services: security-center
 documentationcenter: na
@@ -14,12 +14,12 @@ ms.workload: na
 origin.date: 07/29/2019
 ms.date: 09/22/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 2ae927e88558b2beb8e461a85e09d3a1ffb4aca9
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: b5fd3d3cbeec90912bdf17f9d0ef9962b922f201
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75857866"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422426"
 ---
 # <a name="security-recommendations-in-azure-security-center"></a>Azure 安全中心的安全建议 
 本主题说明如何查看和了解 Azure 安全中心内的建议，以帮助你保护 Azure 资源。
@@ -37,24 +37,24 @@ ms.locfileid: "75857866"
 每项建议都提供：
 
 - 建议的简短说明。
-- 为实施建议而要执行的补救步骤。 <!-- In some cases, one-click remediation is available. -->
+- 为实施建议而要执行的补救步骤。 <!-- In some cases, Quick Fix remediation is available. -->
 - 哪些资源需要你对其执行建议的操作。
-- **安全分数影响**，这是如果你实施此建议，安全分数将增加的数量。
+- 安全功能分数影响，这是如果你实施此建议，安全功能分数将增加的数量。
 
 ## <a name="monitor-recommendations"></a>监视建议 <a name="monitor-recommendations"></a>
 
-安全中心将分析资源的安全状态，以识别潜在的漏洞。 “概述”  下的“建议”  磁贴显示了安全中心列出的建议总数。
+安全中心将分析资源的安全状态，以识别潜在的漏洞。 “概述”下的“建议”磁贴显示了安全中心列出的建议总数。
 
 ![安全中心概述](./media/security-center-recommendations/asc-overview.png)
 
-1. 选择“概述”  下的“建议”  磁贴。 这会打开“建议”  列表。
+1. 选择“概述”下的“建议”磁贴。 这会打开“建议”列表。
     
       ![查看建议](./media/security-center-recommendations/view-recommendations.png)
 
-    可筛选建议。 要筛选建议，请选择“建议”边栏选项卡上的“筛选器”。   此时会打开“筛选器”  边栏选项卡，选择要查看严重性和状态值。
+    可筛选建议。 要筛选建议，请选择“建议”边栏选项卡上的“筛选器”。  此时会打开“筛选器”边栏选项卡，选择要查看严重性和状态值。
 
    * **建议**：建议。
-   * **安全功能分数影响**：安全中心使用你的安全建议并应用高级算法来确定每个建议的重要性而生成的分数。
+   * **安全功能分数影响**：安全中心使用你的安全建议并应用高级算法来确定每个建议的重要性而生成的分数。 有关详细信息，请参阅[安全功能分数计算](security-center-secure-score.md#secure-score-calculation)。
    * **资源**：列出了此建议适用的资源。
    * **状态栏**：描述该特定建议的严重性：
        * **高（红色）** ：重要资源（如应用程序、VM 或网络安全组）存在漏洞，需要提请注意。

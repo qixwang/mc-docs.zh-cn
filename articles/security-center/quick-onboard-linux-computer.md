@@ -1,5 +1,5 @@
 ---
-title: 将 Linux 计算机加入到 Azure 安全中心 | Microsoft Docs
+title: 将 Linux 计算机载入到 Azure 安全中心 | Azure
 description: 本快速入门展示了如何将 Linux 计算机载入到安全中心。
 services: security-center
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.workload: na
 origin.date: 12/02/2018
 ms.date: 5/22/2019
 ms.author: v-lingwu
-ms.openlocfilehash: e2b9a4da673f938166051094d967a18e852fd1d0
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 12d8592df6d3d2647394345c1f524fc0aada19a0
+ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75858354"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83422356"
 ---
 # <a name="quickstart-onboard-linux-computers-to-azure-security-center"></a>快速入门：将 Linux 计算机载入到安全中心
 载入 Azure 订阅之后，可以通过预配 Linux 代理为在 Azure 外部（例如，在本地或在其他云中）运行的 Linux 资源启用安全中心。
@@ -35,18 +35,18 @@ ms.locfileid: "75858354"
 ## <a name="add-new-linux-computer"></a>添加新的 Linux 计算机
 
 1. 登录到 [Azure 门户](https://portal.azure.cn)。
-2. 在“世纪互联 Azure”  菜单上选择“安全中心”  。 此时会打开“安全中心 - 概览”。 
+2. 在“世纪互联 Azure”菜单上选择“安全中心”。 此时会打开“安全中心 - 概览”。
 
    ![安全中心概述][2]
 
-3. 在“安全中心”主菜单下，选择“入门”  。
-4. 选择“入门”  选项卡。![入门][3]
+3. 在“安全中心”主菜单下，选择“入门”。
+4. 选择“入门”选项卡。![入门][3]
 
-5. 单击“添加新的非 Azure 计算机”  下的“配置”  ，将显示 Log Analytics 工作区列表。 该列表包含启用自动预配时由安全中心创建的默认工作区（如果适用）。 选择此工作区或要使用的其他工作区。
+5. 单击“添加新的非 Azure 计算机”下的“配置”，将显示 Log Analytics 工作区列表。 该列表包含启用自动预配时由安全中心创建的默认工作区（如果适用）。 选择此工作区或要使用的其他工作区。
 
     ![添加非 Azure 计算机](./media/quick-onboard-linux-computer/non-azure.png)
 
-6. 在“直接代理”  页面上，在“下载和板载 Agent for Linux”  下，选择“复制”  按钮以复制 *wget* 命令。
+6. 在“直接代理”页面上，在“下载和板载 Agent for Linux”下，选择“复制”按钮以复制 *wget* 命令。
 
 7. 打开记事本并粘贴此命令。 将此文件保存到可以从你的 Linux 计算机访问的位置。
 
@@ -57,15 +57,15 @@ ms.locfileid: "75858354"
 
    ![安装代理][5]
 
-可在以下位置找到该代理的日志：  /var/opt/microsoft/omsagent/\<workspace id>/log/
+可在以下位置找到该代理的日志：/var/opt/microsoft/omsagent/\<workspace id>/log/
 
   ![代理的日志][6]
 
 在一段时间后（可能需要多达 30 分钟），新的 Linux 计算机将显示在安全中心内。
 
-现在，可以从单个位置监视 Azure VM 和非 Azure 计算机了。 在“计算”  下，可以概览所有 VM 和计算机以及建议。 每一列代表一组建议。 颜色表示 VM 或计算机针对该建议的当前安全状态。 安全中心还会在“安全警报”中显示针对这些计算机的任何检测。
+现在，可以从单个位置监视 Azure VM 和非 Azure 计算机了。 在“计算”下，可以概览所有 VM 和计算机以及建议。 每一列代表一组建议。 颜色表示 VM 或计算机针对该建议的当前安全状态。 安全中心还会在“安全警报”中显示针对这些计算机的任何检测。
 
-  ![计算边栏选项卡][7] -“计算”  边栏选项卡上提供了两种类型的图标：
+  ![计算边栏选项卡][7] -“计算”边栏选项卡上提供了两种类型的图标：
 
   ![icon1](./media/quick-onboard-linux-computer/security-center-monitoring-icon1.png) 非 Azure 计算机
 
