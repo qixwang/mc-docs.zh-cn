@@ -4,15 +4,15 @@ description: 了解如何在 Azure Stack Hub 中部署虚拟机，并使用密�
 author: WenJason
 ms.topic: conceptual
 origin.date: 01/24/2020
-ms.date: 05/18/2020
+ms.date: 02/24/2020
 ms.author: v-jay
-ms.lastreviewed: 12/27/2019
-ms.openlocfilehash: 4e065b590bdd4a2c1737b4e308601500c5c3581a
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.lastreviewed: 12/27/2018
+ms.openlocfilehash: b8d4eb12688bad242db3f6c5943eed3f86aceaf9
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83422450"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "77540783"
 ---
 # <a name="deploy-a-vm-with-a-securely-stored-certificate-on-azure-stack-hub"></a>使用安全地存放在 Azure Stack Hub 上的证书部署 VM
 
@@ -115,7 +115,7 @@ Set-AzureKeyVaultSecret `
 
 ## <a name="update-the-azuredeployparametersjson-file"></a>更新 azuredeploy.parameters.json 文件
 
-根据环境，以 **、机密 URI、** 和其他参数更新 `vaultName`azuredeploy.parameters.json`VmName` 文件。 以下 JSON 文件显示模板参数文件的示例：
+根据环境，以 `vaultName`、机密 URI、`VmName` 和其他参数更新 **azuredeploy.parameters.json** 文件。 以下 JSON 文件显示模板参数文件的示例：
 
 ```json
 {

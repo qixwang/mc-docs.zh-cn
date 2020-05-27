@@ -8,13 +8,13 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 09/08/2019
-ms.date: 05/09/2020
-ms.openlocfilehash: 6659802100aeea68cde8494c9c561942240c4f13
-ms.sourcegitcommit: bfbd6694da33f703481386f2a3f16850c4e94bfa
+ms.date: 02/17/2019
+ms.openlocfilehash: 84169b9b0d75c9658e95c898bb09045768b10dc0
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83417640"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "77037927"
 ---
 # <a name="copy-in-bulk-from-a-database-to-azure-data-explorer-by-using-the-azure-data-factory-template"></a>使用 Azure 数据工厂模板从数据库批量复制到 Azure 数据资源管理器 
 
@@ -24,12 +24,12 @@ Azure 数据资源管理器是一个快速、完全托管的数据分析服务�
 
 [Azure 数据工厂模板](/data-factory/solution-templates-introduction)是预定义的数据工厂管道。 这些模板可以帮助你快速开始使用数据工厂，缩短数据集成项目的开发时间。 
 
-可以使用 *Lookup* 和 *ForEach* 活动创建“从数据库批量复制到 Azure 数据资源管理器”模板。  为了更快地复制数据，可以使用模板针对每个数据库或每个表创建多个管道。 
+可以使用 *Lookup* 和 *ForEach* 活动创建“从数据库批量复制到 Azure 数据资源管理器”模板。 为了更快地复制数据，可以使用模板针对每个数据库或每个表创建多个管道。 
 
 > [!IMPORTANT]
 > 请务必使用与所要复制的数据量相适应的工具。
 > * 使用“从数据库批量复制到 Azure 数据资源管理器”模板可将 SQL Server 和 Google BigQuery 等数据库中的大量数据复制到 Azure 数据资源管理器。  
-> * 使用[数据工厂复制数据工具*可将少量或中等数量的数据复制到 Azure 数据资源管理器。* ](data-factory-load-data.md) 
+> * 使用[数据工厂复制数据工具](data-factory-load-data.md)可将少量或中等数量的数据复制到 Azure 数据资源管理器。 
 
 ## <a name="prerequisites"></a>必备条件
 

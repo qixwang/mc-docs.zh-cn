@@ -4,16 +4,16 @@ description: 将 Java WAR 部署到 Azure Stack Hub 中的虚拟机。
 author: WenJason
 ms.topic: overview
 origin.date: 1/22/2020
-ms.date: 05/18/2020
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: sijuman
 ms.lastreviewed: 10/02/2019
-ms.openlocfilehash: 4dd82057d20273f04be4b496a1b46af711dd3988
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.openlocfilehash: 74595b4d568db305269880be95b55d2de03e2643
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83422635"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "77540828"
 ---
 # <a name="deploy-a-java-web-app-to-a-vm-in-azure-stack-hub"></a>将 Java Web 应用部署到 Azure Stack Hub 中的 VM
 

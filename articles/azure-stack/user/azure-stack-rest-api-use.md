@@ -4,16 +4,16 @@ description: 了解如何从 Azure 检索身份验证令牌，以向 Azure Stack
 author: WenJason
 ms.topic: article
 origin.date: 01/23/2020
-ms.date: 05/18/2020
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: thoroet
-ms.lastreviewed: 01/14/2020
-ms.openlocfilehash: 7580e343023aa5592676746d32545a45aaed4d35
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.lastreviewed: 01/14/2019
+ms.openlocfilehash: ac48327159730eb86868e58aed367781d2acef53
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83422592"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "77541016"
 ---
 <!--  cblackuk and charliejllewellyn. This is a community contribution by cblackuk-->
 
@@ -160,7 +160,7 @@ curl -X "POST" "https://login.chinacloudapi.cn/fabrikam.partner.onmschina.cn/oau
 
 ## <a name="api-queries"></a>API 查询
 
-获取访问令牌后，请将其作为标头添加到每个 API 请求。 若要将其添加为标头，请创建值为  **的**授权`Bearer <access token>`标头。 例如：
+获取访问令牌后，请将其作为标头添加到每个 API 请求。 若要将其添加为标头，请创建值为 `Bearer <access token>` 的**授权**标头。 例如：
 
 请求：
 

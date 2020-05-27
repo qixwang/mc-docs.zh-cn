@@ -4,16 +4,16 @@ description: 了解如何使用 Azure 门户或 SQL Server Management Studio 配
 author: rockboyfor
 ms.service: azure-analysis-services
 ms.topic: tutorial
-origin.date: 04/15/2020
-ms.date: 04/30/2020
+origin.date: 10/30/2019
+ms.date: 03/23/2020
 ms.author: v-yeche
 ms.reviewer: owend
-ms.openlocfilehash: 262a606540436eb17ca3659b5e5f8b2189d4e054
-ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
+ms.openlocfilehash: c31b54b870c70854682668ac35988527359c1327
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83392404"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "79543739"
 ---
 <!--Notice: Verify successfully-->
 # <a name="tutorial-configure-server-administrator-and-user-roles"></a>教程：配置服务器管理员和用户角色
@@ -73,7 +73,7 @@ ms.locfileid: "83392404"
 
 ## <a name="add-a-user-account-to-the-server-administrator-role"></a>将用户帐户添加到服务器管理员角色
 
-在此任务中，请将用户或组帐户从 Azure AD 添加到服务器管理员角色。 如果指定安全组，请使用 `obj:groupid@tenantid`。
+在此任务中，请将用户或组帐户从 Azure AD 添加到服务器管理员角色。 如果要添加安全组，必须将 `MailEnabled` 属性设置为 `True`。
 
 1. 在“对象资源管理器”中，右键单击服务器名称，然后单击“属性”。   
 2. 在“Analysis Server 属性”  窗口中，单击“安全性”   >   “添加”。
@@ -105,7 +105,7 @@ ms.locfileid: "83392404"
 
 在此任务中，请使用 TMSL 脚本中的 [Create](https://docs.microsoft.com/analysis-services/tmsl/create-command-tmsl) 命令创建一个新的 Internet 销售全局角色，为该角色指定读取  权限，然后从 Azure AD 添加用户或组帐户。
 
-1. 在“对象资源管理器”中右键单击“adventureworks”，然后单击“新建查询”   **“XMLA”。**  >   
+1. 在“对象资源管理器”中右键单击“adventureworks”，然后单击“新建查询” > “XMLA”。  
 2. 将以下 TMSL 脚本复制并粘贴到查询编辑器中：
 
     ```JSON
@@ -134,8 +134,8 @@ ms.locfileid: "83392404"
 
 ## <a name="verify-your-changes"></a>验证所做的更改
 
-1. 在“对象资源管理器”中单击服务器名，然后单击“刷新”或按 **F5**。  
-2. 展开“数据库” **“adventureworks”** “角色”。 >    >   验证在前述任务中添加的用户帐户和新角色更改是否显示。   
+1. 在“对象资源管理器”中单击服务器名，然后单击“刷新”或按 **F5**。 
+2. 展开“数据库” > “adventureworks” > “角色”。   验证在前述任务中添加的用户帐户和新角色更改是否显示。   
 
     ![在对象资源管理器中验证](./media/analysis-services-tutorial-roles/aas-connect-ssms-verify.png)
 

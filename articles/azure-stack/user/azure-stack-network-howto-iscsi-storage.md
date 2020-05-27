@@ -3,23 +3,23 @@ title: 如何使用 Azure Stack Hub 连接到 iSCSI 存储
 description: 了解如何使用 Azure Stack Hub 连接到 iSCSI 存储。
 author: WenJason
 ms.topic: how-to
-origin.date: 04/20/2020
-ms.date: 05/18/2020
+origin.date: 10/28/2019
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: sijuman
 ms.lastreviewed: 10/28/2019
-ms.openlocfilehash: 1f01b278444df398356b5b46c9b324be288b9737
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.openlocfilehash: 07823a434c71d88d5414be8e14933d858080591b
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83422035"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "77540032"
 ---
 # <a name="connect-to-iscsi-storage-with-azure-stack-hub"></a>使用 Azure Stack Hub 连接到 iSCSI 存储
 
 可以使用本文中的模板，将 Azure Stack Hub 虚拟机 (VM) 连接到本地 iSCSI 目标，并将 VM 设置为使用托管在 Azure Stack Hub 外部和数据中心其他位置的存储。 本文介绍如何将 Windows 计算机用作 iSCSI 目标。
 
-可以在 **Azure 智能边缘模式** GitHub 存储库的 [lucidqdreams](https://github.com/lucidqdreams/azure-intelligent-edge-patterns) 分支中找到该模板。 该模板位于 **storage-iSCSI** 文件夹中。 该模板旨在用于设置 Azure Stack Hub 端所需的基础结构，以便连接到 iSCSI 目标。 此配置包括用作 iSCSI 发起程序的虚拟机，及其随附的 VNet、NSG、PIP 和存储。 部署该模板之后，需要运行两个 PowerShell 脚本来完成配置。 其中一个脚本在本地 VM（目标）上运行，另一个在 Azure Stack Hub VM（发起端）上运行。 这些操作完成后，本地存储即会添加到 Azure Stack Hub VM。 
+可以在 [Azure 智能边缘模式](https://github.com/lucidqdreams/azure-intelligent-edge-patterns) GitHub 存储库的 **lucidqdreams** 分支中找到该模板。 该模板位于 **storage-iSCSI** 文件夹中。 该模板旨在用于设置 Azure Stack Hub 端所需的基础结构，以便连接到 iSCSI 目标。 此配置包括用作 iSCSI 发起程序的虚拟机，及其随附的 VNet、NSG、PIP 和存储。 部署该模板之后，需要运行两个 PowerShell 脚本来完成配置。 其中一个脚本在本地 VM（目标）上运行，另一个在 Azure Stack Hub VM（发起端）上运行。 这些操作完成后，本地存储即会添加到 Azure Stack Hub VM。 
 
 ## <a name="overview"></a>概述
 

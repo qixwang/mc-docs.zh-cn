@@ -7,13 +7,13 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 06/03/2019
-ms.date: 05/09/2020
-ms.openlocfilehash: 630321bf82720370861e5262e9f69b7341330d7f
-ms.sourcegitcommit: bfbd6694da33f703481386f2a3f16850c4e94bfa
+ms.date: 03/16/2020
+ms.openlocfilehash: ae285bda409dc5a04d222e704ff0a861440d555e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83417609"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "80522122"
 ---
 # <a name="ingest-data-using-the-azure-data-explorer-net-standard-sdk-preview"></a>使用 Azure 数据资源管理器 .NET Standard SDK（预览版）引入数据
 
@@ -39,7 +39,7 @@ Azure 数据资源管理器使用 AAD 租户 ID，以对应用程序进行身份
 https://login.chinacloudapi.cn/<YourDomain>/.well-known/openid-configuration/
 ```
 
-例如，如果域名为 contoso.com，则该 URL 将是：  [https://login.chinacloudapi.cn/contoso.com/.well-known/openid-configuration/](https://login.chinacloudapi.cn/contoso.com/.well-known/openid-configuration/)。 单击此 URL 以查看结果；第一行如下所示。 
+例如，如果域名为 contoso.com，则该 URL 将是：[https://login.chinacloudapi.cn/contoso.com/.well-known/openid-configuration/](https://login.chinacloudapi.cn/contoso.com/.well-known/openid-configuration/)。 单击此 URL 以查看结果；第一行如下所示。 
 
 ```
 "authorization_endpoint":"https://login.chinacloudapi.cn/6babcaad-604b-40ac-a9d7-9fd97c0b779f/oauth2/authorize"
@@ -82,7 +82,7 @@ var blobPath = "https://kustosamplefiles.blob.core.chinacloudapi.cn/samplefiles/
 ```
 
 ## <a name="create-a-table-on-your-test-cluster"></a>在测试群集上创建表
-创建与 `StormEvents` 文件中的数据架构匹配的名为 `StormEvents.csv` 的表。
+创建与 `StormEvents.csv` 文件中的数据架构匹配的名为 `StormEvents` 的表。
 
 ```csharp
 var table = "StormEvents";
@@ -124,7 +124,7 @@ using (var kustoClient = KustoClientFactory.CreateCslAdminProvider(kustoConnecti
 ## <a name="define-ingestion-mapping"></a>定义引入映射
 
 将传入的 CSV 数据映射到创建表时使用的列名称。
-在该表上预配 [CSV 列映射对象](https://docs.microsoft.com/azure/data-explorer/kusto/management/create-ingestion-mapping-command)
+在该表上预配 [CSV 列映射对象](https://docs.microsoft.com/azure/kusto/management/create-ingestion-mapping-command)
 
 ```csharp
 var tableMapping = "StormEvents_CSV_Mapping";

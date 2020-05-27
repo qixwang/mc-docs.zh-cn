@@ -3,17 +3,16 @@ title: 在 Azure Stack Hub 中创建 MySQL 数据库
 description: 了解如何在 Azure Stack Hub 中创建和管理使用 MySQL 适配器资源提供程序预配的 MySQL 数据库。
 author: WenJason
 ms.topic: article
-origin.date: 1/22/2020
-ms.date: 05/18/2020
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: xiaofmao
-ms.lastreviewed: 10/16/2019
-ms.openlocfilehash: 93cb142feb3f1603dc7ba80a66500889e5b3ce81
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.lastreviewed: 10/16/2018
+ms.openlocfilehash: a6aaf8253ea702246387aff306747c6b49b0bc84
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83422551"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "77540906"
 ---
 # <a name="create-mysql-databases-in-azure-stack-hub"></a>在 Azure Stack Hub 中创建 MySQL 数据库
 订阅了包含 MySQL 数据库服务的套餐的 Azure Stack Hub 用户可以在用户门户中创建和管理自助式 MySQL 数据库。
@@ -51,7 +50,7 @@ ms.locfileid: "83422551"
 
 若要修改密码，可以在 MySQL 服务器实例上更改密码。
 
-1. 选择“管理资源” **“MySQL 宿主服务器”。**  >   选择宿主服务器。
+1. 选择“管理资源” > “MySQL 宿主服务器”。  选择宿主服务器。
 2. 在“设置”下，选择“密码”。  
 3. 在“密码”下输入  新密码，然后选择“保存”。 
 

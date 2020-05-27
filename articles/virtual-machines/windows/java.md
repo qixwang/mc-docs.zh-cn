@@ -5,6 +5,7 @@ services: virtual-machines-windows
 documentationcenter: ''
 author: rockboyfor
 manager: digimobile
+editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-windows
@@ -12,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
 origin.date: 07/17/2017
-ms.date: 04/27/2020
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 14c599707d8f6196a31d733fb94adfbcbb6b806e
-ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
+ms.openlocfilehash: 466e4e827f25e9f5be9cbc11f80f8b714601fc02
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83392465"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "77428647"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-java"></a>使用 Java 创建和管理 Azure 中的 Windows VM
 
@@ -133,14 +134,14 @@ ms.locfileid: "83392465"
     graphURL=https://graph.chinacloudapi.cn/
     ```
 
-    将 **subscription-id&lt; 替换为订阅标识符，&gt;application-id** 替换为 Active Directory 应用程序标识符，**authentication-key&lt; 替换为授权密钥，&gt;tenant-id** 替换为租户标识符 **&lt;&gt;** **&lt;&gt;** 。
+    将 &lt;subscription-id&gt; 替换为订阅标识符，&lt;application-id&gt; 替换为 Active Directory 应用程序标识符，&lt;authentication-key&gt; 替换为授权密钥，&lt;tenant-id&gt; 替换为租户标识符   。
 
 2. 保存文件。
 3. 在 shell 中将包含完整路径的环境变量 AZURE_AUTH_LOCATION 设置为身份验证文件。
 
 ### <a name="create-the-management-client"></a>创建管理客户端
 
-1. 打开 `App.java` 下的 `src\main\java\com\fabrikam` 文件，确保此包语句处于顶部：
+1. 打开 `src\main\java\com\fabrikam` 下的 `App.java` 文件，确保此包语句处于顶部：
 
     ```java
     package com.fabrikam.testAzureApp;

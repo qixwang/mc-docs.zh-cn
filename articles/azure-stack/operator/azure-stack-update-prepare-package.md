@@ -2,18 +2,18 @@
 title: 准备 Azure Stack Hub 更新包
 description: 了解如何准备 Azure Stack Hub 更新包。
 author: WenJason
-ms.topic: how-to
-origin.date: 03/04/2020
-ms.date: 05/18/2020
+ms.topic: article
+origin.date: 1/22/2020
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.lastreviewed: 09/10/2019
 ms.reviewer: ppacent
-ms.openlocfilehash: 496648a9ec6d96ab9dc7ebe6f271cc787b9d93f6
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.openlocfilehash: b6d0d7a13d40b3d8fbe78026f819f50730c7679a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83422603"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "77540267"
 ---
 # <a name="prepare-an-azure-stack-hub-update-package"></a>准备 Azure Stack Hub 更新包
 
@@ -44,7 +44,7 @@ Azure Stack Hub 更新和修补程序的更新包可通过已连接系统的更�
 - **Metadata.xml 文件**。 此文件包含有关更新的基本信息，例如发布者、名称、先决条件、大小和支持路径 URL。
 
 ### <a name="automatic-download-and-preparation-for-update-packages"></a>自动下载和准备更新包
-对于已连接到 **Azure Stack Hub 自动更新终结点**的系统，系统会自动准备 Azure Stack Hub 软件更新和修补程序： https://*.azureedge.net 和 https://aka.ms/azurestackautomaticupdate 。 有关与 **Azure Stack Hub 自动更新终结点**建立连接的详细信息，请参阅 **Azure Stack Hub 防火墙集成**中所述的[修补升级](/azure-stack/operator/azure-stack-integrate-endpoints#ports-and-urls-outbound)终结点
+对于已连接到 **Azure Stack Hub 自动更新终结点**的系统，系统会自动准备 Azure Stack Hub 软件更新和修补程序： https://*.azureedge.net 和 https://aka.ms/azurestackautomaticupdate 。 有关与 **Azure Stack Hub 自动更新终结点**建立连接的详细信息，请参阅 [Azure Stack Hub 防火墙集成](/azure-stack/operator/azure-stack-integrate-endpoints#ports-and-urls-outbound)中所述的**修补升级**终结点
 
 ### <a name="where-to-download-azure-stack-hub-update-packages"></a>Azure Stack Hub 更新包的下载位置
 

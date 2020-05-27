@@ -4,15 +4,15 @@ description: 了解如何运行从 Azure Stack Hub 中的密钥保管库检索�
 author: WenJason
 ms.topic: conceptual
 origin.date: 02/19/2020
-ms.date: 05/18/2020
+ms.date: 03/23/2020
 ms.author: v-jay
 ms.lastreviewed: 04/08/2019
-ms.openlocfilehash: ecbd04881564427867525b01cd5d4febd88975ad
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.openlocfilehash: 8905575ae1d245089de73191496aabc09c000a58
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83422062"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "79547083"
 ---
 # <a name="allow-apps-to-access-azure-stack-hub-key-vault-secrets"></a>允许应用访问 Azure Stack Hub Key Vault 机密
 
@@ -20,7 +20,7 @@ ms.locfileid: "83422062"
 
 ## <a name="prerequisites"></a>必备条件
 
-如果已[通过 VPN 建立连接](../asdk/asdk-connect.md#connect-to-azure-stack-using-rdp)，可以从 [Azure Stack 开发工具包](../asdk/asdk-connect.md#connect-to-azure-stack-using-vpn)或从基于 Windows 的外部客户端安装以下必备组件：
+如果已[通过 VPN 建立连接](../asdk/asdk-connect.md#connect-to-azure-stack-using-vpn)，可以从 [Azure Stack 开发工具包](../asdk/asdk-connect.md#connect-to-azure-stack-using-rdp)或从基于 Windows 的外部客户端安装以下必备组件：
 
 * 安装 [Azure Stack Hub 兼容的 Azure PowerShell 模块](../operator/azure-stack-powershell-install.md)。
 * 下载[使用 Azure Stack Hub 所需的工具](../operator/azure-stack-powershell-download.md)。
@@ -164,7 +164,7 @@ Write-Host
 可以使用 **HelloKeyVault** 示例执行以下操作：
 
 * 对密钥和机密执行基本操作，例如创建、加密、包装和删除。
-* 向 `encrypt`HelloKeyVault`decrypt` 传递诸如 **和** 之类的参数，以及向密钥保管库应用指定的更改。
+* 向 **HelloKeyVault** 传递诸如 `encrypt` 和 `decrypt` 之类的参数，以及向密钥保管库应用指定的更改。
 
 ## <a name="next-steps"></a>后续步骤
 

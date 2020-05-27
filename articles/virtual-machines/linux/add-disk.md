@@ -1,21 +1,28 @@
 ---
 title: 将磁盘添加到 Linux VM | Azure
 description: 了解如何使用 Azure CLI 将持久性数据磁盘添加到 Linux VM
-author: Johnnytechn
+services: virtual-machines-linux
+documentationcenter: ''
+author: rockboyfor
 manager: digimobile
+editor: tysonn
+tags: azure-resource-manager
 ms.service: virtual-machines-linux
 ms.topic: article
+ms.workload: infrastructure-services
+ms.tgt_pltfrm: vm-linux
+ms.devlang: azurecli
 origin.date: 06/13/2018
-ms.date: 05/18/2020
-ms.author: v-johya
+ms.date: 08/12/2019
+ms.author: v-yeche
 ms.custom: H1Hack27Feb2017
 ms.subservice: disks
-ms.openlocfilehash: 1da06d3562c11e2bc68983087f7f8e6c3c125c22
-ms.sourcegitcommit: 436a5dd9a446fe7b6d3c4d5bc76b652f7848c1ba
+ms.openlocfilehash: 6b9e4f2c48eb267f12b11cf0d67d6cd71e0a7596
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83393122"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "79291312"
 ---
 # <a name="add-a-disk-to-a-linux-vm"></a>将磁盘添加到 Linux VM
 本文介绍了如何将持久性磁盘附加到 VM 以便持久保存数据 - 即使 VM 由于维护或调整大小而重新预配。
@@ -74,7 +81,7 @@ dmesg | grep SCSI
 > [!NOTE]
 > 建议你使用适用于你的发行版的最新版 fdisk 或 parted。
 
-此处，*sdc* 是我们需要的磁盘。 使用 `parted` 对磁盘进行分区，如果磁盘大小为 2TiB 或更大，则必须使用 GPT 进行分区，如果小于 2TiB，则可以使用 MBR 或 GPT 进行分区。 如果使用 MBR 分区，则可以使用 `fdisk`。 将其设置为分区 1 中的主磁盘，并接受其他默认值。 以下示例在 `fdisk`/dev/sdc*上启动* 进程：
+此处，*sdc* 是我们需要的磁盘。 使用 `parted` 对磁盘进行分区，如果磁盘大小为 2TiB 或更大，则必须使用 GPT 进行分区，如果小于 2TiB，则可以使用 MBR 或 GPT 进行分区。 如果使用 MBR 分区，则可以使用 `fdisk`。 将其设置为分区 1 中的主磁盘，并接受其他默认值。 以下示例在 */dev/sdc* 上启动 `fdisk` 进程：
 
 ```bash
 sudo fdisk /dev/sdc
@@ -123,7 +130,9 @@ The partition table has been altered!
 Calling ioctl() to re-read partition table.
 Syncing disks.
 ```
+
 使用以下命令更新内核：
+
 ```
 partprobe 
 ```
@@ -212,7 +221,7 @@ UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,nofail 
 
 在 Linux VM 中有两种方法可以启用 TRIM 支持。 与往常一样，有关建议的方法，请参阅分发：
 
-* 在 `discard`/etc/fstab*中使用* 装载选项，例如：
+* 在 */etc/fstab* 中使用 `discard` 装载选项，例如：
 
     ```bash
     UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,discard   1   2

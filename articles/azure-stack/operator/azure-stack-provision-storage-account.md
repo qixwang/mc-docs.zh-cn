@@ -3,23 +3,23 @@ title: 在 Azure Stack Hub 中创建存储帐户
 titleSuffix: Azure Stack Hub
 description: 了解如何在 Azure Stack Hub 中创建存储帐户。
 author: WenJason
-ms.topic: how-to
+ms.topic: conceptual
 origin.date: 1/22/2020
-ms.date: 05/18/2020
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.lastreviewed: 01/18/2019
-ms.openlocfilehash: fe6220dda3a6eced319e134fdbd3e70f62924e7c
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.openlocfilehash: 2328eff7e51cc6acfa3e55d7cb38c3fb9ac31ce8
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83422476"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "77540365"
 ---
 # <a name="create-storage-accounts-in-azure-stack-hub"></a>在 Azure Stack Hub 中创建存储帐户
 
 Azure Stack Hub 中的存储帐户包括 Blob 和表服务，以及存储数据对象的唯一命名空间。 默认情况下，只有你，即存储帐户所有者，才能使用帐户中的数据。
 
-1. 在 Azure Stack Hub POC 计算机上，以`https://adminportal.local.azurestack.external`管理员[身份登录到 ](../asdk/asdk-connect.md)，然后单击“+ 创建资源” **“数据 + 存储”** “存储帐户”。 >    >  
+1. 在 Azure Stack Hub POC 计算机上，以[管理员](../asdk/asdk-connect.md)身份登录到 `https://adminportal.local.azurestack.external`，然后单击“+ 创建资源” > “数据 + 存储” > “存储帐户”。  
 
    ![在 Azure Stack Hub 管理员门户中创建存储帐户](media/azure-stack-provision-storage-account/image01.png)
 

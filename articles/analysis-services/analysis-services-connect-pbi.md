@@ -4,16 +4,16 @@ description: 了解如何使用 Power BI 连接到 Azure Analysis Services 服�
 author: rockboyfor
 ms.service: azure-analysis-services
 ms.topic: conceptual
-origin.date: 03/30/2020
-ms.date: 04/30/2020
+origin.date: 10/30/2019
+ms.date: 11/25/2019
 ms.author: v-yeche
 ms.reviewer: minewiskan
-ms.openlocfilehash: f0a32a38d7bf92cfd7fd2e9ee630392f95e34f65
-ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
+ms.openlocfilehash: 22f99a397e296c423a5943feb6f69a46ac6a4d02
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83392291"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "74203637"
 ---
 # <a name="connect-with-power-bi"></a>使用 Power BI 进行连接
 
@@ -36,7 +36,7 @@ ms.locfileid: "83392291"
 
 4. 选择连接选项，然后按“连接”  。 
 
-    同时支持“实时连接”  和“导入”  选项。 但是，我们建议你使用实时连接，因为导入模式确实存在一些限制；最重要的是，导入过程中可能会影响服务器性能。 此外，如果要在 Power BI 服务中刷新模型，仅当选择“实时连接”  时，“允许从 Power BI 访问”  设置才适用。
+    同时支持“实时连接”  和“导入”  选项。 但是，我们建议你使用实时连接，因为导入模式确实存在一些限制；最重要的是，导入过程中可能会影响服务器性能。 此外，如果要在 Power BI 服务中刷新模型，仅当选择“实时连接”时，“允许从 Power BI 访问”设置才适用。
 
 5. 如果出现系统提示，请输入登录凭据。 
 
@@ -47,7 +47,7 @@ ms.locfileid: "83392291"
 ## <a name="connect-in-power-bi-service"></a>在 Power BI（服务）中进行连接
 
 1. 在服务器上创建一个与模型具有实时连接的 Power BI Desktop 文件。
-2. 在 [Power BI](https://powerbi.microsoft.com) 中，单击“获取数据” **“文件”，然后找到 .pbix 文件并选择该文件** >   。
+2. 在 [Power BI](https://powerbi.microsoft.com) 中，单击“获取数据” > “文件”，然后找到 .pbix 文件并选择该文件 。
 
 ## <a name="see-also"></a>另请参阅
 [连接到 Azure Analysis Services](analysis-services-connect.md)   

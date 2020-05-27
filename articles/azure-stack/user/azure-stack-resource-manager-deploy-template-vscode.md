@@ -4,16 +4,16 @@ description: 作为用户，我希望在 Visual Studio Code 中创建 Azure 资�
 author: WenJason
 ms.topic: article
 origin.date: 1/22/2020
-ms.date: 05/18/2020
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: sijuman
 ms.lastreviewed: 09/30/2019
-ms.openlocfilehash: b351be900016d2d5986322066f49fb50ba374738
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.openlocfilehash: be09a4db962e7617dcdc5d9bdd9337f543bf933d
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83422348"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "77541017"
 ---
 # <a name="deploy-with-visual-studio-code-to-azure-stack-hub"></a>使用 Visual Studio Code 部署到 Azure Stack Hub
 
@@ -65,7 +65,7 @@ Azure Stack Hub 部署架构通过 Visual Studio Code 中的 Azure 资源管理�
     ```bash  
     CD AzureStack-QuickStart-Templates
     ```
-5. 选择“打开”以打开存储库中位于  **处的文件。** `/101-vm-windows-create/azuredeploy.json`
+5. 选择“打开”以打开存储库中位于 `/101-vm-windows-create/azuredeploy.json` 处的文件。
 6. 将该文件保存到自己的工作区中；如果已创建存储库的分支，则可以在原位操作。
 7. 在文件仍保持打开的情况下，将 `$Schema` 字段更改为 `https://schema.management.azure.com/schemas/2019-03-01-hybrid/deploymentTemplate.json#`。
 8. 可以通过清除 apiProfile 字段值来检查部署架构是否正常运行。

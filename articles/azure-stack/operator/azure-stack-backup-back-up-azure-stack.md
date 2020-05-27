@@ -4,16 +4,16 @@ description: 了解如何在 Azure Stack Hub 上执行按需备份。
 author: WenJason
 ms.topic: article
 origin.date: 02/12/2019
-ms.date: 05/18/2020
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: hectorl
-ms.lastreviewed: 09/05/2019
-ms.openlocfilehash: 6d0bfd5592f7c1ae4242b6ce8244ea0ef22ab395
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.lastreviewed: 09/05/2018
+ms.openlocfilehash: 335ebdaf96488a5beab442e800e3fcad85ee0d0c
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83422148"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "77540951"
 ---
 # <a name="back-up-azure-stack-hub"></a>备份 Azure Stack Hub
 
@@ -105,8 +105,8 @@ ms.locfileid: "83422148"
 使用 Azure Stack Hub 管理员门户按照以下步骤验证备份是否已成功完成：
 
 1. 打开 [Azure Stack Hub 管理员门户](azure-stack-manage-portals.md)。
-2. 选择“所有服务”  ，然后在“管理”  类别下选择“基础结构备份”  。 在“基础结构备份”  边栏选项卡中选择“配置”  。
-3. 在“可用备份”  列表中查找备份的**名称**和**完成日期**。
+2. 选择“所有服务”  ，然后在“管理”  类别下选择“基础结构备份”  。 在“基础结构备份”边栏选项卡中选择“配置”。
+3. 在“可用备份”列表中查找备份的**名称**和**完成日期**。
 4. 验证**状态**是否为“成功”  。
 
 ## <a name="next-steps"></a>后续步骤

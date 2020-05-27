@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 origin.date: 02/22/2017
 ms.date: 11/26/2018
 ms.author: v-lingwu
-ms.openlocfilehash: 9227c365c689b2917f622f2919b298426c7ef658
-ms.sourcegitcommit: b81ea2ab9eafa986986fa3eb1e784cfe9bbf9ec1
+ms.openlocfilehash: de405fa989dc8fd312d5341eeecbd5dfdfe86547
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83367875"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "78155106"
 ---
 # <a name="packet-inspection-with-azure-network-watcher"></a>使用 Azure 网络观察程序执行数据包检查
 
@@ -41,7 +41,7 @@ ms.locfileid: "83367875"
 
 本方案说明如何查看两个终结点之间发生的传输控制协议 (TCP) 对话的初始往返时间 (RTT)。
 
-建立 TCP 连接后，在连接中发送的前三个数据包遵循一种通常称作“三次握手”的模式。 通过检查此握手中发送的前两个数据包、客户端发出的初始请求以及服务器发出的响应，我们可以计算建立此连接时的延迟。 此延迟称为“往返时间”(RTT)。 有关 TCP 协议和三次握手的详细信息，请参阅以下资源。 [https://support.microsoft.com/help/172983/explanation-of-the-three-way-handshake-via-tcp-ip](https://support.microsoft.com/help/172983/explanation-of-the-three-way-handshake-via-tcp-ip)
+建立 TCP 连接后，在连接中发送的前三个数据包遵循一种通常称作“三次握手”的模式。 通过检查此握手中发送的前两个数据包、客户端发出的初始请求以及服务器发出的响应，我们可以计算建立此连接时的延迟。 此延迟称为“往返时间”(RTT)。 有关 TCP 协议和三次握手的详细信息，请参阅以下资源。 [https://support.microsoft.com/en-us/help/172983/explanation-of-the-three-way-handshake-via-tcp-ip](https://support.microsoft.com/en-us/help/172983/explanation-of-the-three-way-handshake-via-tcp-ip)
 
 ### <a name="step-1"></a>步骤 1
 
@@ -53,7 +53,7 @@ ms.locfileid: "83367875"
 
 ### <a name="step-3"></a>步骤 3
 
-若要查看 TCP 对话中的初始往返时间 (RTT)，只需检查 TCP 握手中涉及的前两个数据包。 我们将使用三次握手中的前两个数据包，即 [SYN]、和 [SYN, ACK] 数据包。 这两个数据包是根据 TCP 标头中的标志命名的。 本方案不使用握手中的最后一个数据包，即 [ACK] 数据包。 [SYN] 数据包由客户端发送。 收到该数据包后，服务器将发送 [ACK] 数据包，表示确认收到客户端发来的 SYN。 利用服务器响应所需的开销极少这一事实，可通过对客户端收到 [SYN, ACK] 数据包的时间与客户端发送 [SYN] 数据包的时间进行减法运算，来计算 RTT。
+若要查看 TCP 对话中的初始往返时间 (RTT)，只需检查 TCP 握手中涉及的前两个数据包。 我们将使用三次握手中的前两个数据包，即 [SYN]、和 [SYN, ACK] 数据包。 这两个数据包是根据 TCP 标头中的标志命名的。 本方案不使用握手中的最后一个数据包，即 [ACK] 数据包。 [SYN] 数据包由客户端发送。 收到该数据包后，服务器将发送 [ACK] 数据包，表示确认收到客户端发来的 SYN。 利用服务器响应所需的开销极少这一事实，可通过从客户端收到 [SYN, ACK] 数据包的时间减法客户端发送 [SYN] 数据包的时间来计算 RTT。
 
 使用 WireShark 可以计算此值。
 
@@ -79,7 +79,7 @@ ms.locfileid: "83367875"
 
 ### <a name="step-1"></a>步骤 1
 
-使用前一方案中的同一个捕获。单击“统计信息” > “协议层次结构”  
+使用前一方案中的同一个捕获。单击“统计信息” > “协议层次结构” 
 
 ![协议层次结构菜单][2]
 
@@ -95,7 +95,7 @@ ms.locfileid: "83367875"
 
 ### <a name="step-1"></a>步骤 1
 
-使用前一方案中的同一个捕获。单击“统计信息” > “IPv4 统计信息” > “目标和端口”   
+使用前一方案中的同一个捕获。单击“统计信息” > “IPv4 统计信息” > “目标和端口”  
 
 ![数据包捕获窗口][4]
 
@@ -121,7 +121,7 @@ tcp.port == 111
 
 ![图 6][6]
 
-从结果可以看出，所有流量来自同一子网中的某个本地虚拟机。 如果仍不了解出现此流量的原因，可以进一步检查数据包，确定该流量为何在端口 111 上发出这些调用。 使用这些信息可以采取相应的措施。
+从结果可以看出，所有流量来自同一子网中的某个本地虚拟机。 如果仍不了解发生此流量的原因，可以进一步检查数据包，以确定它为什么在端口 111 上进行这些调用。 使用这些信息可以采取相应的措施。
 
 ## <a name="next-steps"></a>后续步骤
 

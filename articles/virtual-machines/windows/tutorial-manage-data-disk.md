@@ -5,6 +5,7 @@ services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: rockboyfor
 manager: digimobile
+editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-windows
@@ -12,15 +13,16 @@ ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 origin.date: 11/29/2018
-ms.date: 05/25/2020
+ms.date: 02/10/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 02329d961388bba1cff0e135ed13390bdfcd68aa
-ms.sourcegitcommit: 981a75a78f8cf74ab5a76f9e6b0dc5978387be4b
+ms.subservice: disks
+ms.openlocfilehash: 655c87fcc67169af2ac3a3b403f049c37042bb2a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83801115"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "77428665"
 ---
 # <a name="tutorial---manage-azure-disks-with-azure-powershell"></a>教程 - 使用 Azure PowerShell 管理 Azure 磁盘
 
@@ -36,6 +38,8 @@ Azure 虚拟机使用磁盘来存储 VM 操作系统、应用程序和数据。 
 ## <a name="launch-azure-powershell"></a>启动 Azure PowerShell
 
 打开 Azure Powershell 控制台，并以管理员权限运行以下脚本。
+
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 ## <a name="default-azure-disks"></a>默认 Azure 磁盘
 
@@ -141,7 +145,7 @@ Get-Disk | Where partitionstyle -eq 'raw' |
 
 ## <a name="verify-the-data-disk"></a>验证数据磁盘
 
-若要验证是否已附加数据磁盘，请查看附加 `StorageProfile` 的 `DataDisks`。
+若要验证是否已附加数据磁盘，请查看附加 `DataDisks` 的 `StorageProfile`。
 
 ```powershell
 $vm.StorageProfile.DataDisks
@@ -175,4 +179,5 @@ VirtualHardDisk :
 > [!div class="nextstepaction"]
 > [自动配置 VM](./tutorial-automate-vm-deployment.md)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link -->
+

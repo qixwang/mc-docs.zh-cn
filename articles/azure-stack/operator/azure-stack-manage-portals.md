@@ -4,16 +4,16 @@ description: 了解如何在 Azure Stack Hub 中使用管理员门户。
 author: WenJason
 ms.topic: quickstart
 origin.date: 06/07/2019
-ms.date: 05/18/2020
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: efemmano
 ms.lastreviewed: 06/07/2019
-ms.openlocfilehash: d8c5fc7f1e817779fbdd461c4c57a2d6820efcfb
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.openlocfilehash: e364e61c87569cf4403f62cd9cd0e54f2de494da
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83422604"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "77540914"
 ---
 # <a name="use-the-administrator-portal-in-azure-stack-hub"></a>在 Azure Stack Hub 中使用管理员门户
 
@@ -76,7 +76,7 @@ Azure Stack Hub 中有两种门户：管理员门户和用户门户。 Azure Sta
 
 ### <a name="quick-access-to-help-and-support"></a>快速访问帮助和支持内容
 
-如果单击管理员门户右上角的“帮助”图标（问号），单击“帮助 + 支持”  ，然后单击“支持”  下的“新建支持请求”  ，则会出现以下结果之一：
+如果单击管理员门户右上角的“帮助”图标（问号），单击“帮助 + 支持”，然后单击“支持”下的“新建支持请求”，则会出现以下结果之一：
 
 - 如果使用的是集成系统，此操作会打开一个站点，可在其中直接向 Azure 客户支持服务 (CSS) 创建支持票证。 若要了解何时应该获取 Azure 支持或原始设备制造商 (OEM) 硬件供应商支持，请参阅[在何处获取支持](azure-stack-manage-basics.md#where-to-get-support)。
 - 如果使用的是 ASDK，则此操作会直接打开 [Azure Stack Hub 论坛站点](https://social.msdn.microsoft.com/Forums/zh-CN/home?forum=AzureStack)。 我们会定期关注这些论坛。 由于 ASDK 是一个评估环境，因此我们不会通过 Azure CSS 提供官方支持。

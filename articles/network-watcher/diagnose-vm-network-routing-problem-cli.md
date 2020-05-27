@@ -19,12 +19,12 @@ origin.date: 04/20/2018
 ms.date: 10/19/2018
 ms.author: v-lingwu
 ms.custom: ''
-ms.openlocfilehash: 47b39ad78643b7251133a1b0ca5e06d4024de089
-ms.sourcegitcommit: b81ea2ab9eafa986986fa3eb1e784cfe9bbf9ec1
+ms.openlocfilehash: f6412487da73aa659c5eea67c0d1707d99669dc8
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83367843"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "75858648"
 ---
 # <a name="diagnose-a-virtual-machine-network-routing-problem---azure-cli"></a>诊断虚拟机网络路由问题 - Azure CLI
 
@@ -34,17 +34,17 @@ ms.locfileid: "83367843"
 
 [!INCLUDE [azure-cli-2-azurechinacloud-environment-parameter](../../includes/azure-cli-2-azurechinacloud-environment-parameter.md)]
 
-如果选择在本地安装并使用 CLI，本文要求运行 Azure CLI 2.0.28 或更高版本。 要查找已安装的版本，请运行 `az --version`。 如需进行安装或升级，请参阅[安装 Azure CLI](https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest)。 验证 CLI 版本以后，请运行 `az login`，以便创建与 Azure 的连接。 本文中的 CLI 命令已格式化，适合在 Bash Shell 中运行。
+如果选择在本地安装并使用 CLI，本文要求运行 Azure CLI 2.0.28 或更高版本。 要查找已安装的版本，请运行 `az --version`。 如需进行安装或升级，请参阅[安装 Azure CLI](https://docs.azure.cn/zh-cn/cli/install-azure-cli?view=azure-cli-latest)。 验证 CLI 版本以后，请运行 `az login`，以便创建与 Azure 的连接。 本文中的 CLI 命令已格式化，适合在 Bash Shell 中运行。
 
 ## <a name="create-a-vm"></a>创建 VM
 
-在创建 VM 之前，必须创建该 VM 所属的资源组。 使用 [az group create](https://docs.azure.cn/cli/group?view=azure-cli-latest#az-group-create) 创建资源组。 以下示例在“chinaeast”  位置创建名为“myResourceGroup”  的资源组：
+在创建 VM 之前，必须创建该 VM 所属的资源组。 使用 [az group create](https://docs.azure.cn/zh-cn/cli/group?view=azure-cli-latest#az-group-create) 创建资源组。 以下示例在“chinaeast”位置创建名为“myResourceGroup”的资源组：
 
 ```azurecli
 az group create --name myResourceGroup --location chinaeast
 ```
 
-使用 [az vm create](https://docs.azure.cn/cli/vm?view=azure-cli-latest#az-vm-create) 创建 VM。 如果默认密钥位置中尚不存在 SSH 密钥，该命令会创建它们。 若要使用特定的一组密钥，请使用 `--ssh-key-value` 选项。 以下示例创建名为 myVm 的 VM  ：
+使用 [az vm create](https://docs.azure.cn/zh-cn/cli/vm?view=azure-cli-latest#az-vm-create) 创建 VM。 如果默认密钥位置中尚不存在 SSH 密钥，该命令会创建它们。 若要使用特定的一组密钥，请使用 `--ssh-key-value` 选项。 以下示例创建名为 myVm 的 VM  ：
 
 ```azurecli
 az vm create \
@@ -62,7 +62,7 @@ az vm create \
 
 ### <a name="enable-network-watcher"></a>启用网络观察程序
 
-如果已在“中国东部”区域启用网络观察程序，请跳到[使用下一跃点](#use-next-hop)。 使用 [az network watcher configure](https://docs.azure.cn/cli/network/watcher?view=azure-cli-latest#az-network-watcher-configure) 命令在“中国东部 2”区域中创建网络观察程序：
+如果已在“中国东部”区域启用网络观察程序，请跳到[使用下一跃点](#use-next-hop)。 使用 [az network watcher configure](https://docs.azure.cn/zh-cn/cli/network/watcher?view=azure-cli-latest#az-network-watcher-configure) 命令在“中国东部 2”区域中创建网络观察程序：
 
 ```azurecli
 az network watcher configure \
@@ -73,7 +73,7 @@ az network watcher configure \
 
 ### <a name="use-next-hop"></a>使用下一个跃点
 
-Azure 自动创建到默认目标的路由。 可以创建自定义路由来覆盖默认路由。 有时，自定义路由可能会导致通信故障。 要测试来自 VM 的路由，请使用 [az network watcher show-next-hop](https://docs.azure.cn/cli/network/watcher?view=azure-cli-latest#az-network-watcher-show-next-hop) 确定流量发送到特定地址时的下一个路由跃点。
+Azure 自动创建到默认目标的路由。 可以创建自定义路由来覆盖默认路由。 有时，自定义路由可能会导致通信故障。 要测试来自 VM 的路由，请使用 [az network watcher show-next-hop](https://docs.azure.cn/zh-cn/cli/network/watcher?view=azure-cli-latest#az-network-watcher-show-next-hop) 确定流量发送到特定地址时的下一个路由跃点。
 
 测试从 VM 发往 www.bing.com 的某个 IP 地址的出站通信：
 
@@ -105,7 +105,7 @@ az network watcher show-next-hop \
 
 ## <a name="view-details-of-a-route"></a>查看路由详细信息
 
-若要进一步分析路由情况，请使用 [az network nic show-effective-route-table](https://docs.azure.cn/cli/network/nic?view=azure-cli-latest#az-network-nic-show-effective-route-table) 命令查看网络接口的有效路由：
+若要进一步分析路由情况，请使用 [az network nic show-effective-route-table](https://docs.azure.cn/zh-cn/cli/network/nic?view=azure-cli-latest#az-network-nic-show-effective-route-table) 命令查看网络接口的有效路由：
 
 ```azurecli
 az network nic show-effective-route-table \
@@ -155,7 +155,7 @@ az network nic show-effective-route-table \
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不再需要资源组及其包含的所有资源，可以使用 [az group delete](https://docs.azure.cn/cli/group?view=azure-cli-latest#az-group-delete) 将其删除：
+如果不再需要资源组及其包含的所有资源，可以使用 [az group delete](https://docs.azure.cn/zh-cn/cli/group?view=azure-cli-latest#az-group-delete) 将其删除：
 
 ```azurecli
 az group delete --name myResourceGroup --yes

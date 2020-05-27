@@ -2,18 +2,18 @@
 title: 对 Azure Stack Hub 应用原始设备制造商 (OEM) 更新
 description: 了解如何对 Azure Stack Hub 应用原始设备制造商 (OEM) 更新。
 author: WenJason
-ms.topic: how-to
+ms.topic: article
 origin.date: 10/15/2019
-ms.date: 05/18/2020
+ms.date: 02/24/2020
 ms.author: v-jay
-ms.lastreviewed: 03/04/2020
+ms.lastreviewed: 08/15/2019
 ms.reviewer: ppacent
-ms.openlocfilehash: e40e348a3b40f91438c8a239352af30ee0f2fb21
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.openlocfilehash: 313ba6e9c69fd86b3f57d725cac653554d83549e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83422600"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "77540268"
 ---
 # <a name="apply-azure-stack-hub-original-equipment-manufacturer-oem-updates"></a>应用 Azure Stack Hub 原始设备制造商 (OEM) 更新
 
@@ -46,7 +46,7 @@ ms.locfileid: "83422600"
 按以下步骤应用 OEM 包：
 
 > [!IMPORTANT]
-> 在 Azure Stack Hub 中应用更新之前，请确保已完成**更新前清单**中的[所有](release-notes-checklist.md)步骤，并为要应用的更新类型计划了相应的维护时段。
+> 在 Azure Stack Hub 中应用更新之前，请确保已完成[更新前清单](release-notes-checklist.md)中的**所有**步骤，并为要应用的更新类型计划了相应的维护时段。
 
 1. 以下事项需联系 OEM：
       - 确定 OEM 包的当前版本。  
@@ -57,7 +57,7 @@ ms.locfileid: "83422600"
 
 ## <a name="configure-hardware-vendor-vm"></a>配置硬件供应商 VM
 
-某些硬件供应商可能会要求使用 VM 来处理 OEM 更新过程。 如果在运行 `ProxyVM`Set-OEMExternalVM`HardwareManager`cmdlet 时需要将 **或** 用于 **-VMType**，以及应将哪个凭据用于 **-Credential**，则硬件供应商将负责创建这些 VM 并进行记录。 这些 VM 创建好以后，请通过特权终结点使用 **Set-OEMExternalVM** 配置它们。
+某些硬件供应商可能会要求使用 VM 来处理 OEM 更新过程。 如果在运行 **Set-OEMExternalVM**cmdlet 时需要将 `ProxyVM` 或 `HardwareManager` 用于 **-VMType**，以及应将哪个凭据用于 **-Credential**，则硬件供应商将负责创建这些 VM 并进行记录。 这些 VM 创建好以后，请通过特权终结点使用 **Set-OEMExternalVM** 配置它们。
 
 有关 Azure Stack Hub 上的特权终结点的详细信息，请参阅[使用 Azure Stack Hub 中的特权终结点](azure-stack-privileged-endpoint.md)。
 

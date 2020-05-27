@@ -7,13 +7,13 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: tutorial
 origin.date: 09/24/2018
-ms.date: 05/09/2020
-ms.openlocfilehash: ee6f7f4576711e0b885529371bb87ba27f817cc2
-ms.sourcegitcommit: bfbd6694da33f703481386f2a3f16850c4e94bfa
+ms.date: 05/01/2019
+ms.openlocfilehash: 59c257d33ad10aecf50d486528e0a5029b75d088
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83417563"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "74657671"
 ---
 # <a name="tutorial-visualize-data-from-azure-data-explorer-in-power-bi"></a>教程：在 Power BI 中可视化 Azure 数据资源管理器中的数据
 
@@ -36,7 +36,7 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
 
 * [测试群集和数据库](create-cluster-database-portal.md)
 
-* [StormEvents 示例数据](ingest-sample-data.md)。 [!INCLUDE [data-explorer-storm-events](includes/data-explorer-storm-events.md)]
+* [StormEvents 示例数据](ingest-sample-data.md)。 [!INCLUDE [data-explorer-storm-events](../../includes/data-explorer-storm-events.md)]
 
 * [Power BI Desktop](https://powerbi.microsoft.com/get-started/)（选择“免费下载”  ）
 
@@ -220,7 +220,7 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
 
 1. 在“我的工作区”  下，向下滚动到“报表”  并查找“storm-events”  。
 
-1. 选择“storm-events”  旁边的省略号 (. . .  )，然后选择“删除”  。
+1. 选择“storm-events”旁边的省略号 (. . .)，然后选择“删除”。
 
     ![删除报表](media/visualize-power-bi/remove-report.png)
 

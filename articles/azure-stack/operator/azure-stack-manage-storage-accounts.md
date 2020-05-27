@@ -3,17 +3,17 @@ title: 管理 Azure Stack Hub 存储帐户
 description: 了解如何查找、管理、恢复和回收 Azure Stack Hub 存储帐户。
 author: WenJason
 ms.topic: conceptual
-origin.date: 03/04/2020
-ms.date: 05/18/2020
+origin.date: 1/22/2020
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: xiaofmao
 ms.lastreviewed: 03/19/2019
-ms.openlocfilehash: af40834c6242d719a91b609089c992f6b29428c6
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.openlocfilehash: f10b7cd186adc029b4f6dfc41e55175971881dfa
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83422124"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "79292195"
 ---
 # <a name="manage-azure-stack-hub-storage-accounts"></a>管理 Azure Stack Hub 存储帐户
 
@@ -25,7 +25,7 @@ ms.locfileid: "83422124"
 
 1. 登录到[管理员门户](https://adminportal.local.azurestack.external)。
 
-2. 选择“所有服务” **“存储”** “存储帐户” >    >   。
+2. 选择“所有服务” > “存储” > “存储帐户”  。
 
    ![Azure Stack Hub 存储帐户](media/azure-stack-manage-storage-accounts/image4.png)
 
@@ -91,7 +91,7 @@ ms.locfileid: "83422124"
 **更改保留期：**
 
 1. 登录到[管理员门户](https://adminportal.local.azurestack.external)。
-2. 在“管理”  下选择“所有服务” >   “区域管理”  。
+2. 在“管理”下选择“所有服务” > “区域管理”。
 3. 选择“资源提供程序”   > “存储”   >   “设置”。 路径为主目录 > *区域* - 资源提供程序 > 存储。
 4. 选择“配置”，然后编辑保留期值。 
 

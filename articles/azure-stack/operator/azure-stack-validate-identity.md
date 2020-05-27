@@ -3,18 +3,18 @@ title: 验证 Azure 标识
 titleSuffix: Azure Stack Hub
 description: 使用 Azure Stack Hub 就绪性检查器来验证 Azure 标识。
 author: WenJason
-ms.topic: how-to
-origin.date: 03/04/2020
-ms.date: 05/18/2020
+ms.topic: conceptual
+origin.date: 06/24/2019
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: unknown
 ms.lastreviewed: 03/23/2019
-ms.openlocfilehash: 2a98ee7495647d73a33b38187e44b7314c73932b
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.openlocfilehash: 4ee53d9ca99bac824ed1c2dd5bd96258fc500a93
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83422375"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "77540612"
 ---
 # <a name="validate-azure-identity"></a>验证 Azure 标识
 
@@ -182,7 +182,7 @@ Invoke-AzsAzureIdentityValidation Completed
 
 **原因** - 虽然帐户可以成功登录，但帐户不是 Azure AD (**AADDirectoryTenantName**) 的管理员。  
 
-**解决方法** - 以帐户所有者身份登录到 [Azure 门户](https://portal.azure.cn)，依次选择“Azure Active Directory”、“用户”、“选择用户”    。 然后选择“目录角色”并确保用户是“全局管理员”   。 如果帐户是“用户”，请转到“Azure Active Directory” **“自定义域名”，并确认你为** AADDirectoryTenantName **提供的名称已标记为此目录的主域名。**  >    在此示例中，它是 **contoso.partner.onmschina.cn**。
+**解决方法** - 以帐户所有者身份登录到 [Azure 门户](https://portal.azure.cn)，依次选择“Azure Active Directory”、“用户”、“选择用户”    。 然后选择“目录角色”并确保用户是“全局管理员”   。 如果帐户是“用户”，请转到“Azure Active Directory” > “自定义域名”，并确认你为 **AADDirectoryTenantName** 提供的名称已标记为此目录的主域名。   在此示例中，它是 **contoso.partner.onmschina.cn**。
 
 Azure Stack Hub 要求域名是主域名。
 

@@ -4,16 +4,16 @@ description: 本文介绍如何从 Azure Analysis Services 数据库备份和还
 author: rockboyfor
 ms.service: azure-analysis-services
 ms.topic: conceptual
-origin.date: 03/30/2020
-ms.date: 04/30/2020
+origin.date: 10/30/2019
+ms.date: 11/25/2019
 ms.author: v-yeche
 ms.reviewer: minewiskan
-ms.openlocfilehash: 2c6fa16af5301ce83347430dff06e3e77ed381d4
-ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
+ms.openlocfilehash: e676faadb5f3df69f1980d8325a6e4d15e776268
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83392402"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "74203639"
 ---
 # <a name="backup-and-restore"></a>备份和还原
 
@@ -83,7 +83,7 @@ ms.locfileid: "83392402"
 
 1. 在 SSMS 中，右键单击某个数据库，转到“还原”  。
 
-2. 在“备份文件”  的“备份数据库”  对话框中，单击“浏览”  。
+2. 在“备份文件”的“备份数据库”对话框中，单击“浏览”。
 
 3. 在“定位数据库文件”  对话框中，选择要还原的文件。
 

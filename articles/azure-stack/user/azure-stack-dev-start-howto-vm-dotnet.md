@@ -3,17 +3,17 @@ title: 将 C# ASP.NET Web 应用部署到 Azure Stack Hub 中的虚拟机
 description: 将 C# ASP.NET Web 应用部署到 Azure Stack Hub 中的 VM。
 author: WenJason
 ms.topic: overview
-origin.date: 04/20/2020
-ms.date: 05/18/2020
+origin.date: 11/11/2019
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: sijuman
 ms.lastreviewed: 11/11/2019
-ms.openlocfilehash: 6151d3186d31f16dad9ba7686c7c1e2a058f3a77
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.openlocfilehash: b0c975e16265af448eaa3400739610b9fdae3983
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83422511"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "77540829"
 ---
 # <a name="deploy-a-c-aspnet-web-app-to-a-vm-in-azure-stack-hub"></a>将 C# ASP.NET Web 应用部署到 Azure Stack Hub 中的 VM
 
@@ -66,7 +66,7 @@ ms.locfileid: "83422511"
 
     a. 对于“源”，请选择“任何”。  
 
-    b. 对于“源端口范围”，请键入星号 (  **)。\***
+    b. 对于“源端口范围”，请键入星号 ( **\*** )。
 
     c. 对于“目标”，请选择“任何”。  
 
@@ -113,11 +113,11 @@ ms.locfileid: "83422511"
 1. 选择“IIS”、“FTP”等  。
 1. 选择“发布”  。
 1. 对于“发布方法”，请选择“Web 部署”。  
-1. 对于“服务器”，请输入前面定义的 DNS 名称，例如 **w21902.local.cloudapp.azurestack.external**。 
+1. 对于“服务器”，请输入前面定义的 DNS 名称，例如 *w21902.local.cloudapp.azurestack.external*。
 1. 对于“站点名称”，请输入“默认网站”。  
 1. 对于“用户名”，请输入计算机的用户名。 
 1. 对于“密码”，请输入计算机的密码。 
-1. 对于“目标 URL”，请输入站点的 URL，例如 **mywebapp.local.cloudapp.azurestack.external**。 
+1. 对于“目标 URL”，请输入站点的 URL，例如 *mywebapp.local.cloudapp.azurestack.external*。
 
     ![部署 ASP.NET Web 应用 - 配置 Web 部署](media/azure-stack-dev-start-howto-vm-dotnet/configure-web-deploy.png)
 

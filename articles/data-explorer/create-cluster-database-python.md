@@ -7,13 +7,13 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 06/03/2019
-ms.date: 05/09/2020
-ms.openlocfilehash: 05f1405c74d9c4d106f34da5d2cd4addc260a7ac
-ms.sourcegitcommit: bfbd6694da33f703481386f2a3f16850c4e94bfa
+ms.date: 03/16/2020
+ms.openlocfilehash: 26e0f955c10bc5523984aac082e47702777c513d
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83417663"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "80243973"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-python"></a>使用 Python 创建 Azure 数据资源管理器群集和数据库
 
@@ -68,7 +68,7 @@ pip install azure-mgmt-kusto
         tenant=tenant_id
     )
 
-    location = 'China East 2'
+    location = 'China East'
     sku_name = 'Standard_D13_v2'
     capacity = 5
     tier = "Standard"
@@ -100,7 +100,7 @@ pip install azure-mgmt-kusto
     cluster_operations.get(resource_group_name = resource_group_name, cluster_name= clusterName, custom_headers=None, raw=False)
     ```
 
-如果结果包含带 `provisioningState` 值的 `Succeeded`，则表示已成功创建群集。
+如果结果包含带 `Succeeded` 值的 `provisioningState`，则表示已成功创建群集。
 
 ## <a name="create-the-database-in-the-azure-data-explorer-cluster"></a>在 Azure 数据资源管理器群集中创建数据库
 
