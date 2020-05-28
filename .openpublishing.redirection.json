@@ -24385,6 +24385,26 @@
       "source_path": "articles/automation/automation-first-runbook-textual-python2.md",
       "redirect_url": "/automation/learn/automation-tutorial-runbook-textual-python2",
       "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/security-center/security-center-resolve-endpoint-protection-health-alerts.md",
+      "redirect_url": "/security-center/security-center-faq",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/security-center/security-center-faq.md",
+      "redirect_url": "/security-center/faq-general",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/security-center/security-center-container-recommendations.md",
+      "redirect_url": "/security-center/container-security",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/security-center/security-center-virtual-machine.md",
+      "redirect_url": "/security-center/security-center-intro",
+      "redirect_document_id": false
     }
   ]
 }
