@@ -1,22 +1,21 @@
 ---
-title: 排查 Azure 应用程序网关的网关无效 (502) 错误
-description: 了解如何排查应用程序网关的 502 错误
+title: 排查“错误的网关”错误 - Azure 应用程序网关
+description: 了解如何排查应用程序网关服务器错误：502 - Web 服务器在充当网关或代理服务器时收到了无效响应。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-origin.date: 04/25/2019
-ms.date: 05/20/2019
+ms.date: 05/19/2020
 ms.author: v-junlch
-ms.openlocfilehash: 24d8b4524a6402d54bb2f5cdea6a678b65680311
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 217f50c08009e27b74fc92953f5ff339b1c804ab
+ms.sourcegitcommit: a04b0b1009b0c62f2deb7c7acee75a1304d98f87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "65960876"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83796846"
 ---
 # <a name="troubleshooting-bad-gateway-errors-in-application-gateway"></a>排查应用程序网关中的网关无效错误
-
+<p class="alert is-flex is-primary"><span class="has-padding-left-medium has-padding-top-extra-small"><a class="button is-primary" href="https://azurevirtualsupportagent.services.microsoft.com?content=66c070b6-1c47-4c7f-b928-317a8c8b452f" target='_blank'>开始</a></span><span class="has-padding-small">通过使用虚拟代理运行<b>自动诊断，快速解决问题。</b></span><span class="has-padding-small"><a href="https://privacy.microsoft.com/privacystatement" target='_blank'><div align="right"><sub>隐私声明</sub></div></a></span></p>
 了解如何排查使用 Azure 应用程序网关时收到的网关无效 (502) 错误。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -198,4 +197,3 @@ BackendAddressPoolsText：
 如果上述步骤无法解决问题，请开具[支持票证](https://www.azure.cn/support/contact/)。
 
 
-<!-- Update_Description: wording update -->

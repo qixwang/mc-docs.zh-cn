@@ -1,21 +1,21 @@
 ---
-title: Azure Monitor 中的 Azure 服务总线指标 | Microsoft Docs
+title: Azure Monitor 中的 Azure 服务总线指标 | Azure
 description: 本文介绍如何使用 Azure Monitor 监视服务总线实体（队列、主题和订阅）。
 services: service-bus-messaging
 documentationcenter: .NET
-author: lingliw
-manager: digimobile
+author: axisc
+editor: spelluru
 ms.service: service-bus-messaging
 ms.topic: article
 origin.date: 01/27/2020
 ms.date: 2/6/2020
 ms.author: v-lingwu
-ms.openlocfilehash: dac96c4dfb6183c3fec1be0f925d4c11977f2ce8
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 20850be9dffea36cbf4f2315aedc2f39ed38da25
+ms.sourcegitcommit: a04b0b1009b0c62f2deb7c7acee75a1304d98f87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80109777"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83796803"
 ---
 # <a name="azure-service-bus-metrics-in-azure-monitor"></a>Azure Monitor 中的 Azure 服务总线指标
 
@@ -38,7 +38,7 @@ Azure Monitor 提供多种访问指标的方法。 可通过 [Azure 门户](http
 
 ![][1]
 
-也可以直接通过命名空间来访问指标。 为此，请选择命名空间，然后单击“指标”  。 若要显示筛选到实体范围的指标，请选择实体，然后单击“指标”  。
+也可以直接通过命名空间来访问指标。 为此，请选择命名空间，然后单击“指标”。 若要显示筛选到实体范围的指标，请选择实体，然后单击“指标”。
 
 ![][2]
 
@@ -74,7 +74,7 @@ Azure Monitor 提供多种访问指标的方法。 可通过 [Azure 门户](http
 下面两种类型的错误被归类为用户错误：
 
 1. 客户端错误（在 HTTP 中为 400 错误）。
-2. 在处理消息时发生的错误，如 [MessageLockLostException](/dotnet/api/microsoft.azure.servicebus.messagelocklostexception)。
+2. 在处理消息时发生的错误，如 [MessageLockLostException](https://docs.azure.cn/dotnet/api/microsoft.azure.servicebus.messagelocklostexception)。
 
 
 ## <a name="message-metrics"></a>消息指标
@@ -104,7 +104,11 @@ Azure Monitor 提供多种访问指标的方法。 可通过 [Azure 门户](http
 ## <a name="resource-usage-metrics"></a>资源使用情况指标
 
 > [!NOTE] 
-> 以下指标仅适用于  高级层。 
+> 以下指标仅适用于高级层。 
+> 
+> 用于监视高级层命名空间中是否存在中断的重要指标包括：**每个命名空间的 CPU 使用率**和**每个命名空间的内存大小**。 使用 Azure Monitor 为这些指标[设置警报](../azure-monitor/platform/alerts-metric.md)。
+> 
+> 你可以监视的另一个指标是：**限制的请求数**。 不过，只要命名空间保持在其内存、CPU 和中转连接限制内，就不会出现问题。 有关详细信息，请参阅 [Azure 服务总线高级层中的限制](service-bus-throttling.md#throttling-in-azure-service-bus-premium-tier)
 
 | 指标名称 | 说明 |
 | ------------------- | ----------------- |
@@ -121,49 +125,49 @@ Azure 总线服务支持对 Azure Monitor 中的指标使用以下维度。 为�
 
 ## <a name="set-up-alerts-on-metrics"></a>针对指标设置警报
 
-1. 在“服务总线命名空间”页面的“指标”选项卡上，选择“配置警报”。    
+1. 在“服务总线命名空间”页面的“指标”选项卡上，选择“配置警报”。   
 
     ![“指标”页面 - 配置警报菜单](./media/service-bus-metrics-azure-monitor/metrics-page-configure-alerts-menu.png)
-2. 选择“选择目标”选项  ，并在“选择资源”  页面上执行以下操作： 
-    1. 对于“按资源类型筛选”字段，选择“服务总线命名空间”。   
-    2. 对于“按订阅筛选”字段，选择你的订阅。 
-    3. 从列表中选择“服务总线命名空间”。  
-    4. 选择“完成”  。 
+2. 选择“选择目标”选项，并在“选择资源”页面上执行以下操作： 
+    1. 对于“按资源类型筛选”字段，选择“服务总线命名空间”。  
+    2. 对于“按订阅筛选”字段，选择你的订阅。
+    3. 从列表中选择“服务总线命名空间”。 
+    4. 选择“完成” 。 
     
         ![选择命名空间](./media/service-bus-metrics-azure-monitor/select-namespace.png)
-1. 选择“添加条件”  ，并在“配置信号逻辑”  页面上执行以下操作：
-    1. 对于“信号类型”，选择“指标”。   
+1. 选择“添加条件”，并在“配置信号逻辑”页面上执行以下操作：
+    1. 对于“信号类型”，选择“指标”。  
     2. 选择一个信号。 例如：**服务错误**。 
 
         ![选择“服务器错误”](./media/service-bus-metrics-azure-monitor/select-server-errors.png)
-    1. 对于“条件”，选择“大于”。  
-    2. 对于“时间聚合”，选择“总计”。   
-    3. 对于“阈值”，输入 **5**。  
-    4. 选择“完成”  。    
+    1. 对于“条件”，选择“大于”。 
+    2. 对于“时间聚合”，选择“总计”。  
+    3. 对于“阈值”，输入 **5**。 
+    4. 选择“完成” 。    
 
         ![指定条件](./media/service-bus-metrics-azure-monitor/specify-condition.png)    
-1. 在“创建规则”  页面上，展开“定义警报详细信息”  ，执行以下操作：
+1. 在“创建规则”页面上，展开“定义警报详细信息”，执行以下操作：
     1. 为警报输入**名称**。 
     2. 为警报输入**说明**。
     3. 选择警报的**严重性**。 
 
         ![警报详细信息](./media/service-bus-metrics-azure-monitor/alert-details.png)
-1. 在“创建规则”  页面上，展开“定义操作组”  ，选择“新建操作组”  ，然后在“添加操作组”  页面上执行以下操作。 
+1. 在“创建规则”页面上，展开“定义操作组”，选择“新建操作组”，然后在“添加操作组”页面上执行以下操作。 
     1. 为操作组输入名称。
     2. 为操作组输入短名称。 
     3. 选择订阅。 
     4. 选一个择资源组。 
-    5. 在本演练中，对于“操作名称”，输入“发送电子邮件”。  
-    6. 对于“操作类型”，选择“电子邮件/短信/推送/语音”。   
-    7. 选择“编辑详细信息”  。 
-    8. 在“电子邮件/短信/推送/语音”  页面上，执行以下操作：
-        1. 选择“电子邮件”  。 
+    5. 在本演练中，对于“操作名称”，输入“发送电子邮件”。 
+    6. 对于“操作类型”，选择“电子邮件/短信/推送/语音”。  
+    7. 选择“编辑详细信息”。 
+    8. 在“电子邮件/短信/推送/语音”页面上，执行以下操作：
+        1. 选择“电子邮件”。 
         2. 键入**电子邮件地址**。 
-        3. 选择“确定”  。
+        3. 选择“确定” 。
 
             ![警报详细信息](./media/service-bus-metrics-azure-monitor/add-action-group.png)
-        4. 在“添加操作组”  页面上，选择“确定”。  
-1. 在“创建规则”  页面上，选择“创建警报规则”  。 
+        4. 在“添加操作组”页面上，选择“确定”。 
+1. 在“创建规则”页面上，选择“创建警报规则”。 
 
     ![“创建警报规则”按钮](./media/service-bus-metrics-azure-monitor/create-alert-rule.png)
 

@@ -15,12 +15,12 @@ ms.topic: quickstart
 origin.date: 01/27/2020
 ms.date: 2/6/2020
 ms.author: v-lingwu
-ms.openlocfilehash: bee252c494de2782e385787874969008d281a1d4
-ms.sourcegitcommit: 1fbdefdace8a1d3412900c6c3f89678d8a9b29bc
+ms.openlocfilehash: 69d3a00b9c2f3d848af4f9de6865cac19dbd13e6
+ms.sourcegitcommit: a04b0b1009b0c62f2deb7c7acee75a1304d98f87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82886808"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83796793"
 ---
 # <a name="quickstart-use-service-bus-queues-in-azure-with-nodejs-and-the-azure-sb-package"></a>快速入门：通过 Node.js 和 azure-sb 包使用 Azure 中的服务总线队列
 本教程介绍如何使用 [azure-sb](https://www.npmjs.com/package/azure-sb) 包创建 Node.js 应用程序，用于向/从 Azure 服务总线队列发送/接收消息。 示例以 JavaScript 编写并使用 Node.js [Azure 模块](https://www.npmjs.com/package/azure)，该模块在内部使用 azure-sb 包。
@@ -31,7 +31,7 @@ ms.locfileid: "82886808"
 > 若要详细了解新包，请参阅[如何通过 Node.js 和 @azure/service-bus 包使用服务总线队列](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-nodejs-how-to-use-queues-new-package)，否则请继续阅读以了解如何使用 [azure](https://www.npmjs.com/package/azure) 包。
 
 ## <a name="prerequisites"></a>先决条件
-- Azure 订阅。 若要完成本教程，需要一个 Azure 帐户。 你可以激活 [MSDN 订阅者权益](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF)或注册[试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。
+- Azure 订阅。 若要完成本教程，需要一个 Azure 帐户。 你可以注册[试用帐户](https://www.azure.cn/pricing/1rmb-trial/)或购买[预付费订阅](https://wd.azure.cn/pricing/pia-waiting-list/?form-type=identityauth)。
 - 如果没有可使用的队列，请遵循[使用 Azure 门户创建服务总线队列](service-bus-quickstart-portal.md)一文来创建队列。
     1. 阅读服务总线**队列**的快速**概述**。 
     2. 创建一个服务总线**命名空间**。 
@@ -85,7 +85,7 @@ Azure 模块读取环境变量 `AZURE_SERVICEBUS_CONNECTION_STRING`，获取连�
 var serviceBusService = azure.createServiceBusService();
 ```
 
-通过对 ServiceBusService 对象调用 `createQueueIfNotExists`，会返回指定的队列（如果存在），否则会使用指定的名称创建一个新队列  。 以下代码使用 `createQueueIfNotExists` 创建或连接到名为 `myqueue` 的队列：
+通过对 ServiceBusService 对象调用 `createQueueIfNotExists`，会返回指定的队列（如果存在），否则会使用指定的名称创建一个新队列。 以下代码使用 `createQueueIfNotExists` 创建或连接到名为 `myqueue` 的队列：
 
 ```javascript
 serviceBusService.createQueueIfNotExists('myqueue', function(error){
@@ -133,7 +133,7 @@ var serviceBusService = azure.createServiceBusService().withFilter(retryOperatio
 ```
 
 ## <a name="send-messages-to-a-queue"></a>向队列发送消息
-要向服务总线队列发送消息，应用程序需对 ServiceBusService 对象调用 `sendQueueMessage` 方法  。 发往服务总线队列的消息以及从服务总线队列接收的消息是 **BrokeredMessage** 对象，它们具有一组标准属性（如 **Label** 和 **TimeToLive**）、一个用来保存自定义应用程序特定属性的字典和一段任意应用程序数据正文。 应用程序可以通过将字符串作为消息传递来设置消息正文。 任何必需的标准属性将用默认值来填充。
+要向服务总线队列发送消息，应用程序需对 ServiceBusService 对象调用 `sendQueueMessage` 方法。 发往服务总线队列的消息以及从服务总线队列接收的消息是 **BrokeredMessage** 对象，它们具有一组标准属性（如 **Label** 和 **TimeToLive**）、一个用来保存自定义应用程序特定属性的字典和一段任意应用程序数据正文。 应用程序可以通过将字符串作为消息传递来设置消息正文。 任何必需的标准属性将用默认值来填充。
 
 以下示例演示如何使用 `sendQueueMessage` 向名为 `myqueue` 的队列发送一条测试消息：
 
@@ -153,13 +153,13 @@ serviceBusService.sendQueueMessage('myqueue', message, function(error){
 服务总线队列在[标准层](service-bus-premium-messaging.md)中支持的最大消息大小为 256 KB，在[高级层](service-bus-premium-messaging.md)中则为 1 MB。 标头最大大小为 64 KB，其中包括标准和自定义应用程序属性。 一个队列中包含的消息数量不受限制，但消息的总大小受限制。 此队列大小在创建时定义，上限为 5 GB。 有关配额的详细信息，请参阅 [服务总线配额][Service Bus quotas]。
 
 ## <a name="receive-messages-from-a-queue"></a>从队列接收消息
-对 ServiceBusService 对象使用 `receiveQueueMessage` 方法可从队列接收消息  。 默认情况下，消息被读取后即从队列删除；但是可以读取（速览）并锁定消息而不将其从队列删除，只要将可选参数 `isPeekLock` 设置为“true”即可  。
+对 ServiceBusService 对象使用 `receiveQueueMessage` 方法可从队列接收消息。 默认情况下，消息被读取后即从队列删除；但是可以读取（速览）并锁定消息而不将其从队列删除，只要将可选参数 `isPeekLock` 设置为“true”即可。
 
 在接收过程中读取并删除消息的默认行为是最简单的模型，并且最适合在发生故障时应用程序可以容忍不处理消息的情况。 为了理解此行为，可以考虑这样一种情形：使用方发出接收请求，但在处理该请求前发生了崩溃。 由于服务总线会将消息标记为“已使用”，因此当应用程序重启并重新开始使用消息时，它会遗漏在发生崩溃前使用的消息。
 
-如果将 `isPeekLock` 参数设置为“true”，则接收会变成一个两阶段操作，从而可支持无法容忍遗漏消息的应用程序  。 当 Service Bus 收到请求时，它会查找下一条要使用的消息，锁定该消息以防其他使用者接收，并将该消息返回到应用程序。 应用程序处理完该消息（或将它可靠地存储起来留待将来处理）后，通过调用 `deleteMessage` 方法并提供要删除的消息作为参数，完成接收过程的第二阶段。 `deleteMessage` 方法会将消息标记为已使用，并将其从队列中删除。
+如果将 `isPeekLock` 参数设置为“true”，则接收会变成一个两阶段操作，从而可支持无法容忍遗漏消息的应用程序。 当 Service Bus 收到请求时，它会查找下一条要使用的消息，锁定该消息以防其他使用者接收，并将该消息返回到应用程序。 应用程序处理完该消息（或将它可靠地存储起来留待将来处理）后，通过调用 `deleteMessage` 方法并提供要删除的消息作为参数，完成接收过程的第二阶段。 `deleteMessage` 方法会将消息标记为已使用，并将其从队列中删除。
 
-以下示例演示如何使用 `receiveQueueMessage` 接收和处理消息。 该示例先接收并删除一条消息，然后使用设置为“true”的 `isPeekLock` 接收一条消息，最后使用 `deleteMessage` 删除该消息  ：
+以下示例演示如何使用 `receiveQueueMessage` 接收和处理消息。 该示例先接收并删除一条消息，然后使用设置为“true”的 `isPeekLock` 接收一条消息，最后使用 `deleteMessage` 删除该消息：
 
 ```javascript
 serviceBusService.receiveQueueMessage('myqueue', function(error, receivedMessage){
@@ -180,7 +180,7 @@ serviceBusService.receiveQueueMessage('myqueue', { isPeekLock: true }, function(
 ```
 
 ## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>如何处理应用程序崩溃和不可读消息
-Service Bus 提供了相关功能来帮助你轻松地从应用程序错误或消息处理问题中恢复。 如果接收方应用程序因某种原因无法处理消息，则它可以对 ServiceBusService 对象调用 `unlockMessage` 方法  。 这会导致服务总线解锁队列中的消息并使其能够重新被同一个正在使用的应用程序或其他正在使用的应用程序接收。
+Service Bus 提供了相关功能来帮助你轻松地从应用程序错误或消息处理问题中恢复。 如果接收方应用程序因某种原因无法处理消息，则它可以对 ServiceBusService 对象调用 `unlockMessage` 方法。 这会导致服务总线解锁队列中的消息并使其能够重新被同一个正在使用的应用程序或其他正在使用的应用程序接收。
 
 还存在与队列中已锁定的消息相关联的超时，并且如果应用程序未能在锁定超时到期之前处理消息（例如，如果应用程序崩溃），服务总线则将自动解锁该消息，使它可以再次被接收。
 

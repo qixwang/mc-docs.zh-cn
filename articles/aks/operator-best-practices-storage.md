@@ -1,17 +1,18 @@
 ---
-title: 操作员最佳做法 - Azure Kubernetes 服务 (AKS) 中的存储
+title: 存储和备份的最佳做法
+titleSuffix: Azure Kubernetes Service
 description: 了解有关 Azure Kubernetes 服务 (AKS) 中的存储、数据加密和备份的群集操作员最佳做法
 services: container-service
 ms.topic: conceptual
 origin.date: 05/06/2019
-ms.date: 04/06/2020
+ms.date: 05/25/2020
 ms.author: v-yeche
-ms.openlocfilehash: d6ac01199baca322e14f8947bb022b03a8737ea0
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: c914b01f8be599d7008eec05764b83e74e7c673e
+ms.sourcegitcommit: 7e6b94bbaeaddb854beed616aaeba6584b9316d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80516971"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83735151"
 ---
 # <a name="best-practices-for-storage-and-backups-in-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 中的存储和备份的最佳做法
 
@@ -35,7 +36,7 @@ ms.locfileid: "80516971"
 
 <!--Not Available on   Windows Server container support-->
 
-| 用例 | 卷插件 | 读/写一次 | 只读多次 | 读/写多次 |
+| 使用案例 | 卷插件 | 读/写一次 | 只读多次 | 读/写多次 |
 |----------|---------------|-----------------|----------------|-----------------|
 | 共享配置       | Azure 文件   | 是 | 是 | 是 |
 | 结构化应用数据        | Azure 磁盘   | 是 | 否  | 否  |
@@ -43,7 +44,7 @@ ms.locfileid: "80516971"
 
 为 AKS 中的卷提供的两种主要存储类型由 Azure 磁盘或 Azure 文件支持。 为了提高安全性，两种类型的存储都默认使用 Azure 存储服务加密 (SSE) 来加密静态数据。 目前无法使用 AKS 节点级别的 Azure 磁盘加密对磁盘进行加密。
 
-Azure 文件目前在标准性能层中可用。 Azure 磁盘在标准和高级性能层可用：
+Azure 文件存储和 Azure 磁盘均可在“标准”和“高级”性能层中使用：
 
 - *高级*磁盘由高性能固态硬盘 (SSD) 支持。 建议为所有生产工作负载使用高级磁盘。
 - *标准*磁盘由常规旋转磁盘 (HDD) 支持，适用于存档或不经常访问的数据。
@@ -52,7 +53,7 @@ Azure 文件目前在标准性能层中可用。 Azure 磁盘在标准和高级�
 
 ### <a name="create-and-use-storage-classes-to-define-application-needs"></a>创建和使用存储类来定义应用程序需求
 
-所使用的存储类型是使用 Kubernetes 存储类定义的  。 然后在 pod 或部署规范中引用存储类。 这些定义共同发生作用，创建合适的存储并将其连接到 pod。 有关详细信息，请参阅 [AKS 中的存储类][aks-concepts-storage-classes]。
+所使用的存储类型是使用 Kubernetes 存储类定义的。 然后在 pod 或部署规范中引用存储类。 这些定义共同发生作用，创建合适的存储并将其连接到 pod。 有关详细信息，请参阅 [AKS 中的存储类][aks-concepts-storage-classes]。
 
 ## <a name="size-the-nodes-for-storage-needs"></a>根据存储需求调整节点大小
 
@@ -60,14 +61,14 @@ Azure 文件目前在标准性能层中可用。 Azure 磁盘在标准和高级�
 
 AKS 节点作为 Azure VM 运行。 有不同类型和大小的 VM 可使用。 每种大小的 VM 提供不同数量的核心资源，例如 CPU 和内存。 对于每种不同的 VM 大小，存在可附加的最大磁盘数。 不同大小的 VM 用于实现最大本地和附加磁盘 IOPS（每秒的输入/输出操作）的存储性能也会有所不同。
 
-若应用程序需要 Azure 磁盘作为其存储解决方案，请规划并选择合适的节点 VM 大小。 选择 VM 大小时，CPU 和内存量不是唯一的考量因素。 存储功能也很重要。 例如，Standard_B2ms 和 Standard_DS2_v2 大小的 VM 包含相似数量的 CPU 和内存资源   。 但其潜在的存储性能不同，如下表所示：
+若应用程序需要 Azure 磁盘作为其存储解决方案，请规划并选择合适的节点 VM 大小。 选择 VM 大小时，CPU 和内存量不是唯一的考量因素。 存储功能也很重要。 例如，Standard_B2ms 和 Standard_DS2_v2 大小的 VM 包含相似数量的 CPU 和内存资源 。 但其潜在的存储性能不同，如下表所示：
 
 | 节点类型和大小 | vCPU | 内存 (GiB) | 最大数据磁盘数 | 最大未缓存磁盘 IOPS | 最大未缓存吞吐量 (MBps) |
 |--------------------|------|--------------|----------------|------------------------|--------------------------------|
 | Standard_B2ms      | 2    | 8            | 4              | 1,920                  | 22.5                           |
 | Standard_DS2_v2    | 2    | 7            | 8              | 6,400                  | 96                             |
 
-此处，Standard_DS2_v2 可将附加磁盘数量增加一倍，并提供三到四倍的 IOPS 和磁盘吞吐量  。 若只关注核心计算资源和成本，则可以选择 Standard_B2ms 大小的 VM，但存储性能较差且存在较多限制  。 与应用程序开发团队沟通，了解他们的存储容量和性能需求。 为 AKS 节点选择合适的 VM 大小以满足或超出其性能需求。 定期调整应用程序的基线，以根据需要调整 VM 大小。
+此处，Standard_DS2_v2 可将附加磁盘数量增加一倍，并提供三到四倍的 IOPS 和磁盘吞吐量。 若只关注核心计算资源和成本，则可以选择 Standard_B2ms 大小的 VM，但存储性能较差且存在较多限制。 与应用程序开发团队沟通，了解他们的存储容量和性能需求。 为 AKS 节点选择合适的 VM 大小以满足或超出其性能需求。 定期调整应用程序的基线，以根据需要调整 VM 大小。
 
 有关可用 VM 大小的详细信息，请参阅 [Azure 中的 Linux 虚拟机大小][vm-sizes]。
 
@@ -85,7 +86,7 @@ AKS 节点作为 Azure VM 运行。 有不同类型和大小的 VM 可使用。 
 
 若要查看这些卷的运行情况，请参阅“如何使用 [Azure 磁盘][dynamic-disks]或 [Azure 文件存储][dynamic-files]动态创建和使用永久性卷”。
 
-作为存储类定义的一部分，请设置相应的 reclaimPolicy  。 删除 Pod 后且可能不再需要永久性卷时，此 reclaimPolicy 可控制基础 Azure 存储资源在此情况下的行为。 可删除基础存储资源，也可保留基础存储资源以便与未来的 Pod 配合使用。 可将 reclaimPolicy 设置为“保留”或“删除”   。 了解应用程序需求，并定期检查存储，以最大限度地减少未利用的存储量和费用。
+作为存储类定义的一部分，请设置相应的 reclaimPolicy。 删除 Pod 后且可能不再需要永久性卷时，此 reclaimPolicy 可控制基础 Azure 存储资源在此情况下的行为。 可删除基础存储资源，也可保留基础存储资源以便与未来的 Pod 配合使用。 可将 reclaimPolicy 设置为“保留”或“删除” 。 了解应用程序需求，并定期检查存储，以最大限度地减少未利用的存储量和费用。
 
 有关存储类选项的详细信息，请参阅[存储回收策略][reclaim-policy]。
 

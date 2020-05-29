@@ -5,15 +5,15 @@ description: 本页提供有关 Web 应用程序防火墙 CRS 规则组和规则
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 04/26/2020
+ms.date: 05/19/2020
 ms.author: v-junlch
 ms.topic: conceptual
-ms.openlocfilehash: 9938a76005a27ad38a77848e19e3b4515addc9ce
-ms.sourcegitcommit: e3512c5c2bbe61704d5c8cbba74efd56bfe91927
+ms.openlocfilehash: e0e8d695e8f80115daf294e046de723d48677bf8
+ms.sourcegitcommit: 87e789550ea49ff77c7f19bc68fad228009fcf44
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82267661"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83748161"
 ---
 # <a name="web-application-firewall-crs-rule-groups-and-rules"></a>Web 应用程序防火墙 CRS 规则组和规则
 
@@ -218,6 +218,7 @@ CRS 2.2.9 包含下表中所示的 10 个规则组。 每个组包含多个可�
 |932120|远程命令执行 = 找到 Windows PowerShell 命令|
 |932130|远程命令执行 = 找到 Unix Shell 表达式|
 |932140|远程命令执行 = 找到 Windows FOR/IF 命令|
+|932150|远程命令执行：直接 Unix 命令执行|
 |932160|远程命令执行 = 找到 Unix Shell 代码|
 |932170|远程命令执行 = Shellshock (CVE-2014-6271)|
 |932171|远程命令执行 = Shellshock (CVE-2014-6271)|

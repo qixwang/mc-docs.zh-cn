@@ -5,14 +5,14 @@ services: container-service
 author: rockboyfor
 ms.topic: troubleshooting
 origin.date: 12/13/2019
-ms.date: 04/06/2020
+ms.date: 05/25/2020
 ms.author: v-yeche
-ms.openlocfilehash: f374355d7beac251b9870ddc0db6204e4ba12a99
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 64291b738a053fc8cb99584db213f8d6373770f8
+ms.sourcegitcommit: 7e6b94bbaeaddb854beed616aaeba6584b9316d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80517002"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83735150"
 ---
 # <a name="aks-troubleshooting"></a>AKS 疑难解答
 
@@ -59,7 +59,7 @@ ms.locfileid: "80517002"
 
 ## <a name="i-cant-connect-to-the-dashboard-what-should-i-do"></a>我无法连接到仪表板。 我该怎么办？
 
-要访问群集外的服务，最简单的方法是运行 `kubectl proxy`，它将代理对 Kubernetes API 服务器使用 localhost 端口 8001 的请求。 在此，API 服务器可以代理服务：`http://localhost:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard/proxy/#!/node?namespace=default`。
+要访问群集外的服务，最简单的方法是运行 `kubectl proxy`，它将代理对 Kubernetes API 服务器使用 localhost 端口 8001 的请求。 在此，API 服务器可以代理服务：`http://localhost:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard/proxy/`。
 
 如果看不到 Kubernetes 仪表板，请检查 `kube-proxy` Pod 是否在 `kube-system` 命名空间中运行。 如果未处于运行状态，请删除 Pod，它会重启。
 
@@ -122,7 +122,7 @@ Azure 平台和 AKS 都实施了命名限制。 如果资源名称或参数违�
 
 * 群集名称必须为 1-63 个字符。 唯一允许的字符是字母、数字、短划线和下划线。 第一个和最后一个字符必须是字母或数字。
 * AKS *MC_* 资源组名称组合了资源组名称和资源名称。 自动生成的语法 `MC_resourceGroupName_resourceName_AzureRegion` 不能超过 80 个字符。 如果需要，请缩短你的资源组名称或 AKS 群集名称的长度。
-* dnsPrefix  必须以字母数字值开头和结尾，并且必须为 1 到 54 个字符。 有效字符包括字母数字值和连字符 (-)。 *dnsPrefix* 不能包含特殊字符，例如句点 (.)。
+* dnsPrefix 必须以字母数字值开头和结尾，并且必须为 1 到 54 个字符。 有效字符包括字母数字值和连字符 (-)。 *dnsPrefix* 不能包含特殊字符，例如句点 (.)。
 
 ## <a name="im-receiving-errors-when-trying-to-create-update-scale-delete-or-upgrade-cluster-that-operation-is-not-allowed-as-another-operation-is-in-progress"></a>我在尝试创建、更新、缩放、删除或升级群集时收到错误，该操作不被允许，因为另一个操作正在进行。
 
@@ -132,7 +132,7 @@ Azure 平台和 AKS 都实施了命名限制。 如果资源名称或参数违�
 
 根据群集状态的输出：
 
-* 如果群集的预配状态不是“成功”或“失败”，请等待   操作（升级/更新/创建/缩放/删除/迁移  ）终止。 当上一操作完成后，请重试最新的群集操作。
+* 如果群集的预配状态不是“成功”或“失败” ，请等到操作（升级/更新/创建/缩放/删除/迁移）终止。 当上一操作完成后，请重试最新的群集操作。
 
 * 如果群集的升级失败，请按[有错误指出，我的群集处于故障状态，在解决此解决之前无法进行升级或缩放](#im-receiving-errors-that-my-cluster-is-in-failed-state-and-upgrading-or-scaling-will-not-work-until-it-is-fixed)中概述的步骤操作。
 
@@ -145,7 +145,11 @@ Azure 平台和 AKS 都实施了命名限制。 如果资源名称或参数违�
 2. 如果使用自动化脚本，请在创建服务主体和创建 AKS 群集之间添加时间延迟。
 3. 如果使用 Azure 门户，请在创建过程中返回到群集设置，并在几分钟后重试验证页。
 
-<!--Not Avaiablle on ## I'm receiving errors after restricting my egress traffic-->
+## <a name="im-receiving-errors-after-restricting-my-egress-traffic"></a>在限制出口流量后收到错误
+
+限制 AKS 群集的出口流量时，AKS 有[必需的和可选的建议](limit-egress-traffic.md)出站端口/网络规则和 FQDN/应用程序规则。 如果你的设置与其中任何规则冲突，则可能无法运行某些 `kubectl` 命令。 创建 AKS 群集时也可能会看到错误。
+
+确认设置不与任何必需或可选的建议出站端口/网络规则和 FQDN/应用程序规则冲突。
 
 ## <a name="azure-storage-and-aks-troubleshooting"></a>Azure 存储和 AKS 故障排除
 
@@ -257,7 +261,7 @@ MountVolume.WaitForAttach failed for volume "pvc-12b458f4-c23f-11e8-8d27-46799c2
 | 1.11 | 1.11.5 或更高版本 |
 | 1.12 | 1.12.3 或更高版本 |
 | 1.13 | 1.13.0 或更高版本 |
-| 1.14 或更高版本 | 不适用 |
+| 1.14 或更高版本 | 空值 |
 
 如果使用的 Kubernetes 版本未解决此问题，可以等待几分钟再重试，这样就可以缓解此问题。
 
@@ -299,7 +303,7 @@ MountVolume.WaitForAttach failed for volume "pvc-12b458f4-c23f-11e8-8d27-46799c2
 | 1.11 | 1.11.9 或更高版本 |
 | 1.12 | 1.12.7 或更高版本 |
 | 1.13 | 1.13.4 或更高版本 |
-| 1.14 或更高版本 | 不适用 |
+| 1.14 或更高版本 | 空值 |
 
 如果使用的 Kubernetes 版本未解决此问题，可以通过手动分离磁盘来缓解此问题。
 
@@ -314,7 +318,7 @@ MountVolume.WaitForAttach failed for volume "pvc-12b458f4-c23f-11e8-8d27-46799c2
 | 1.12 | 1.12.9 或更高版本 |
 | 1.13 | 1.13.6 或更高版本 |
 | 1.14 | 1.14.2 或更高版本 |
-| 1.15 和更高版本 | 不适用 |
+| 1.15 和更高版本 | 空值 |
 
 如果使用的 Kubernetes 版本未解决此问题，并且节点 VM 包含过时的磁盘列表，则你可以通过一个批量操作从 VM 中分离所有不存在的磁盘，以此缓解此问题。 **单独分离不存在的磁盘可能会失败。**
 
@@ -333,7 +337,7 @@ MountVolume.WaitForAttach failed for volume "pvc-12b458f4-c23f-11e8-8d27-46799c2
 | 1.12 | 1.12.10 或更高版本 |
 | 1.13 | 1.13.8 或更高版本 |
 | 1.14 | 1.14.4 或更高版本 |
-| 1.15 和更高版本 | 不适用 |
+| 1.15 和更高版本 | 空值 |
 
 如果使用的 Kubernetes 版本未解决此问题，并且节点 VM 处于故障状态，可以使用以下方法之一手动更新 VM 状态，以此缓解此问题：
 
@@ -374,7 +378,7 @@ MountVolume.WaitForAttach failed for volume "pvc-12b458f4-c23f-11e8-8d27-46799c2
 | 1.12.0 - 1.12.1 | 0755 |
 | 1.12.2 和更高版本 | 0777 |
 
-如果使用的是 Kubernetes 版本为 1.8.5 或更高版本的群集，并且使用存储类动态创建永久性卷，则可以在存储类对象上指定装载选项。 以下示例设置 *0777*：
+如果使用的是 Kubernetes 版本为 1.8.5 或更高版本的群集，并且使用存储类动态创建永久性卷，则可以在存储类对象上指定装载选项。 以下示例设置 0777：
 
 ```yaml
 kind: StorageClass
@@ -397,7 +401,7 @@ parameters:
 其他一些有用的 *mountOptions* 设置：
 
 * *mfsymlinks* 将使 Azure 文件存储装入点 (cifs) 支持符号链接
-* *nobrl* 将阻止向服务器发送字节范围锁请求。 对于中断 cifs 样式强制字节范围锁的某些应用程序，必须使用此设置。 大多数 cifs 服务器尚不支持请求建议字节范围锁。 如果不使用 *nobrl*，则中断 cifs 样式强制字节范围锁的应用程序可能导致如下所示的错误消息：
+* *nobrl* 将阻止向服务器发送字节范围锁请求。 对于与 cifs 样式强制字节范围锁冲突的某些应用程序，必须使用此设置。 大多数 cifs 服务器尚不支持请求建议字节范围锁。 如果不使用 *nobrl*，则与 cifs 样式强制字节范围锁存在冲突的应用程序可能导致如下所示的错误消息：
     ```console
     Error: SQLITE_BUSY: database is locked
     ```
@@ -424,13 +428,13 @@ fixing permissions on existing directory /var/lib/postgresql/data
 
 ### <a name="error-when-enabling-allow-access-allow-access-from-selected-network-setting-on-storage-account"></a>在存储帐户中启用“允许从所选网络进行访问”设置时出错
 
-如果在用于 AKS 中的动态预配的存储帐户上启用“允许从所选网络进行访问”，当 AKS 创建文件共享时会出现错误： 
+如果在用于 AKS 中的动态预配的存储帐户上启用“允许从所选网络进行访问”，当 AKS 创建文件共享时会出现错误：
 
 ```console
 persistentvolume-controller (combined from similar events): Failed to provision volume with StorageClass "azurefile": failed to create share kubernetes-dynamic-pvc-xxx in account xxx: failed to create file share, err: storage: service returned error: StatusCode=403, ErrorCode=AuthorizationFailure, ErrorMessage=This request is not authorized to perform this operation.
 ```
 
-出现此错误的原因是在设置“允许从所选网络进行访问”时，Kubernetes *persistentvolume-controller* 不在所选的网络中。 
+出现此错误的原因是在设置“允许从所选网络进行访问”时，Kubernetes *persistentvolume-controller* 不在所选的网络中。
 
 可以通过[对 Azure 文件存储使用静态预配](azure-files-volume.md)来缓解此问题。
 
@@ -460,7 +464,7 @@ kubectl edit secret azure-storage-account-{storage-account-name}-secret
 
 ### <a name="slow-disk-attachment-getazuredisklun-takes-10-to-15-minutes-and-you-receive-an-error"></a>磁盘附加速度缓慢，GetAzureDiskLun 需要 10 到 15 分钟，并且会显示一个错误
 
-在早于1.15.0  的 Kubernetes 版本上，你可能会收到一个错误，例如错误“WaitForAttach 找不到磁盘的 Lun”  。  解决此问题的方法是等待大约 15 分钟，然后重试。
+在早于1.15.0 的 Kubernetes 版本上，你可能会收到一个错误，例如错误“WaitForAttach 找不到磁盘的 Lun”。  解决此问题的方法是等待大约 15 分钟，然后重试。
 
 <!-- LINKS - internal -->
 

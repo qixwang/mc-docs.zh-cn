@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 05/18/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 54049c72bf68bffacbf6e0bc002a3f041212cb8a
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: fdb4eb12dee9cf7c60a22c9b0c5f4409def6ff79
+ms.sourcegitcommit: 87e789550ea49ff77c7f19bc68fad228009fcf44
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80581645"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83748076"
 ---
 # <a name="manage-azure-ad-b2c-user-accounts-with-microsoft-graph"></a>使用 Microsoft Graph 管理 Azure AD B2C 用户帐户
 
@@ -53,17 +53,34 @@ Microsoft Graph 允许通过在 Microsoft Graph API 中提供创建、读取、�
 客户帐户（可以是使用者、合作伙伴或居民）可与以下标识类型相关联：
 
 - **本地**标识 - 将用户名和密码存储在 Azure AD B2C 目录本地。 我们通常将此类标识称为“本地帐户”。
-- **联合标识** - 也称为社交或企业帐户，该用户标识由 Microsoft、ADFS 或 Salesforce 等联合标识提供者进行管理。  
+- **联合标识** - 也称为社交或企业帐户，该用户标识由 Microsoft、ADFS 或 Salesforce 等联合标识提供者进行管理。 
 
 具有客户帐户的用户可以使用多个标识进行登录。 例如，使用用户名、电子邮件、员工 ID、政府 ID 等。 一个帐户可以有多个密码相同的本地和社交标识。
 
 在 Microsoft Graph API 中，本地标识和联合标识都存储在 [objectIdentity][graph-objectIdentity] 类型的用户 `identities` 特性中。 `identities` 集合表示用于登录到用户帐户的一组标识。 此集合使用户能够使用其关联的任何标识登录到用户帐户。
 
-| properties   | 类型 |说明|
+| 属性   | 类型 |说明|
 |:---------------|:--------|:----------|
-|signInType|字符串| 指定目录中的用户登录类型。 对于本地帐户：`emailAddress`、`emailAddress1`、`emailAddress2`、`emailAddress3`、`userName`，或所需的任何其他类型。 社交帐户必须设置为 `federated`。|
-|颁发者|字符串|指定标识的颁发者。 对于本地帐户（其 **signInType** 不是 `federated`），此属性是本地 B2C 租户的默认域名，例如 `contoso.partner.onmschina.cn`。 对于社交标识（其 **signInType** 是 `federated`），该值是颁发者的名称。|
-|issuerAssignedId|字符串|指定由颁发者分配给用户的唯一标识符。 **issuer** 和 **issuerAssignedId** 的组合在租户中必须唯一。 对于本地帐户，当 **signInType** 设置为 `emailAddress` 或 `userName` 时，它表示用户的登录名。<br>如果 **signInType** 设置为： <ul><li>`emailAddress`（或以 `emailAddress` 开头，例如 `emailAddress1`），则 **issuerAssignedId** 必须是有效的电子邮件地址</li><li>`userName`（或任何其他值），则 **issuerAssignedId** 必须是有效的[电子邮件地址本地部分](https://tools.ietf.org/html/rfc3696#section-3)</li><li>`federated`，则 **issuerAssignedId** 表示联合帐户唯一标识符</li></ul>|
+|signInType|string| 指定目录中的用户登录类型。 对于本地帐户：`emailAddress`、`emailAddress1`、`emailAddress2`、`emailAddress3`、`userName`，或所需的任何其他类型。 社交帐户必须设置为 `federated`。|
+|颁发者|string|指定标识的颁发者。 对于本地帐户（其 **signInType** 不是 `federated`），此属性是本地 B2C 租户的默认域名，例如 `contoso.partner.onmschina.cn`。 对于社交标识（其 **signInType** 是 `federated`），该值是颁发者的名称。|
+|issuerAssignedId|string|指定由颁发者分配给用户的唯一标识符。 **issuer** 和 **issuerAssignedId** 的组合在租户中必须唯一。 对于本地帐户，当 **signInType** 设置为 `emailAddress` 或 `userName` 时，它表示用户的登录名。<br>如果 **signInType** 设置为： <ul><li>`emailAddress`（或以 `emailAddress` 开头，例如 `emailAddress1`），则 **issuerAssignedId** 必须是有效的电子邮件地址</li><li>`userName`（或任何其他值），则 **issuerAssignedId** 必须是有效的[电子邮件地址本地部分](https://tools.ietf.org/html/rfc3696#section-3)</li><li>`federated`，则 **issuerAssignedId** 表示联合帐户唯一标识符</li></ul>|
+
+以下 Identities 属性包含一个本地帐户标识、一个电子邮件地址和一个社交标识，它们均可用作登录名。 
+
+ ```JSON
+ "identities": [
+     {
+       "signInType": "userName",
+       "issuer": "contoso.partner.onmschina.cn",
+       "issuerAssignedId": "johnsmith"
+     },
+     {
+       "signInType": "emailAddress",
+       "issuer": "contoso.partner.onmschina.cn",
+       "issuerAssignedId": "jsmith@yahoo.com"
+     }
+   ]
+ ```
 
 对于联合标识，根据标识提供者，**issuerAssignedId** 是每个应用程序的给定用户或开发帐户的唯一值。 使用社交网络提供商以前分配的相同应用程序 ID 或者同一开发帐户中的另一应用程序配置 Azure AD B2C 策略。
 
@@ -92,7 +109,7 @@ Azure AD B2C 密码策略（对于本地帐户）基于 Azure Active Directory [
 
 ### <a name="extension-properties"></a>扩展属性
 
-每个面向客户的应用程序对要收集的信息都有独特的要求。 Azure AD B2C 租户附带了一组存储在属性中的内置信息：名字、姓氏、城市和邮政编码。 使用 Azure AD B2C 可以扩展存储在每个客户帐户中的属性集。 有关定义自定义属性的详细信息，请参阅[自定义属性（用户流）](user-flow-custom-attributes.md)。
+每个面向客户的应用程序对要收集的信息都有独特的要求。 Azure AD B2C 租户附带了一组存储在属性中的内置信息：名字、姓氏、城市和邮政编码。 使用 Azure AD B2C 可以扩展存储在每个客户帐户中的属性集。 若要详细了解如何定义自定义属性，请参阅[自定义属性（用户流）](user-flow-custom-attributes.md)和“自定义属性（自定义策略）”。
 
 Microsoft Graph API 支持使用扩展特性创建和更新用户。 图形 API 中的扩展属性使用约定 `extension_ApplicationObjectID_attributename` 来命名。 例如：
 
@@ -129,7 +146,7 @@ git clone https://github.com/Azure-Samples/ms-identity-dotnetcore-b2c-account-ma
 
 ### <a name="code-discussion"></a>代码探讨
 
-示例代码使用 [Microsoft Graph SDK](https://docs.microsoft.com/graph/sdks/sdks-overview)，旨在简化可访问 Microsoft Graph 的优质、高效且可复原的应用程序的生成。 因此，无需直接调用 Microsoft Graph API。
+示例代码使用 [Microsoft Graph SDK](https://docs.microsoft.com/graph/sdks/sdks-overview)，旨在简化可访问 Microsoft Graph 的优质、高效且可复原的应用程序的生成。
 
 对 Microsoft Graph API 发出的任何请求都需要使用访问令牌进行身份验证。 该解决方案利用 [Microsoft.Graph.Auth](https://www.nuget.org/packages/Microsoft.Graph.Auth/) NuGet 包，该包提供 Microsoft 身份验证库 (MSAL) 的基于身份验证方案的包装器，以便与 Microsoft Graph SDK 配合使用。
 

@@ -5,15 +5,15 @@ tags: top-support-issue
 ms.assetid: 10da5b8a-1823-41a3-a2ff-a0717c2b5c2d
 ms.topic: article
 origin.date: 10/21/2019
-ms.date: 01/13/2020
+ms.date: 05/22/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 895c9c16172b5bf3c2dc7e99e594a54790321327
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 20acab8b491959500b8605a16eb782a0a5403f8c
+ms.sourcegitcommit: 981a75a78f8cf74ab5a76f9e6b0dc5978387be4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75600457"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83801173"
 ---
 # <a name="migrate-an-active-dns-name-to-azure-app-service"></a>将活动 DNS 名称迁移到 Azure 应用服务
 
@@ -23,7 +23,7 @@ ms.locfileid: "75600457"
 
 如果你不担心 DNS 解析中的停机时间，请参阅[将现有的自定义 DNS 名称映射到 Azure 应用服务](app-service-web-tutorial-custom-domain.md)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要完成本操作说明：
 
@@ -31,10 +31,10 @@ ms.locfileid: "75600457"
 
 ## <a name="bind-the-domain-name-preemptively"></a>提前绑定域名
 
-提前绑定自定义域时，对 DNS 记录进行任何更改之前，需要完成以下两项操作：
+提前绑定自定义域时，请先完成下面的两项操作，再对 DNS 记录进行更改：
 
 - 验证域所有权
-- 启用应用的域名
+- 为应用启用域名
 
 最终将自定义 DNS 名称从旧站点迁移到应用服务应用时，DNS 解析中将不会有停机时间。
 
@@ -48,8 +48,8 @@ ms.locfileid: "75600457"
 
 | DNS 记录示例 | TXT 主机 | TXT 值 |
 | - | - | - |
-| \@（根） | awverify  | _&lt;appname>.chinacloudsites.cn_ |
-| www（子域） | awverify.www  | _&lt;appname>.chinacloudsites.cn_ |
+| \@（根） | awverify | _&lt;appname>.chinacloudsites.cn_ |
+| www（子域） | awverify.www | _&lt;appname>.chinacloudsites.cn_ |
 | \*（通配符） | awverify.\* | _&lt;appname>.chinacloudsites.cn_ |
 
 在 DNS 记录页中，记下要迁移的 DNS 名称的记录类型。 应用服务支持来自 CNAME 和 A 记录的映射。
@@ -63,7 +63,7 @@ ms.locfileid: "75600457"
 
 ### <a name="enable-the-domain-for-your-app"></a>启用应用的域
 
-在 [Azure 门户](https://portal.azure.cn)中的应用页的左侧导航窗格中，选择“自定义域”  。 
+在 [Azure 门户](https://portal.azure.cn)中的应用页的左侧导航窗格中，选择“自定义域”。 
 
 ![自定义域菜单](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
 
@@ -73,17 +73,17 @@ ms.locfileid: "75600457"
 
 键入已添加 TXT 记录的完全限定的域名，如 `www.contoso.com`。 对于通配符域（如 \*.contoso.com），可以使用与通配符域匹配的任何 DNS 名称。 
 
-选择“验证”。 
+选择“验证”。
 
-“添加主机名”  按钮会被激活。 
+“添加主机名”按钮会被激活。 
 
-请确保“主机名记录类型”  设置为你想要迁移的 DNS 记录类型。
+请确保“主机名记录类型”设置为你想要迁移的 DNS 记录类型。
 
-选择“添加主机名”  。
+选择“添加主机名”。
 
 ![将 DNS 名称添加到应用](./media/app-service-web-tutorial-custom-domain/validate-domain-name-cname.png)
 
-新主机名可能需要经过一段时间后才会反映在应用的“自定义域”页面中  。 请尝试刷新浏览器来更新数据。
+新主机名可能需要经过一段时间后才会反映在应用的“自定义域”页中。 请尝试刷新浏览器来更新数据。
 
 ![已添加 CNAME 记录](./media/app-service-web-tutorial-custom-domain/cname-record-added.png)
 
@@ -99,11 +99,11 @@ ms.locfileid: "75600457"
 
 如果你要重新映射 CNAME 记录，请跳过此部分。 
 
-若要重新映射 A 记录，需要应用服务应用的外部 IP 地址，此地址显示在“自定义域”  页中。
+若要重新映射 A 记录，需要应用服务应用的外部 IP 地址，此地址显示在“自定义域”页中。
 
 通过选择右上角的 X 关闭“添加主机名”页。 
 
-在“自定义域”页中，复制应用的 IP 地址。 
+在“自定义域”页面中，复制应用的 IP 地址。
 
 ![在门户中导航到 Azure 应用](./media/app-service-web-tutorial-custom-domain/mapping-information.png)
 
@@ -113,9 +113,9 @@ ms.locfileid: "75600457"
 
 对于 `contoso.com` 根域示例，重新映射 A 或 CNAME 记录，如下表中的示例所示： 
 
-| FQDN 示例 | 记录类型 | 主机 | 值 |
+| FQDN 示例 | 记录类型 | 主机 | Value |
 | - | - | - | - |
-| contoso.com（根域） | A | `@` | 在[复制应用的 IP 地址](#info)步骤中复制的 IP 地址 |
+| contoso.com (root) | A | `@` | 通过[复制应用的 IP 地址](#info)获得的 IP 地址 |
 | www\.contoso.com (sub) | CNAME | `www` | _&lt;appname>.chinacloudsites.cn_ |
 | \*.contoso.com（通配符域） | CNAME | _\*_ | _&lt;appname>.chinacloudsites.cn_ |
 
@@ -131,7 +131,7 @@ ms.locfileid: "75600457"
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何将自定义 SSL 证书绑定到应用服务。
+了解如何将自定义 TLS/SSL 证书绑定到应用服务。
 
 > [!div class="nextstepaction"]
-> [将 SSL 证书绑定到 Azure 应用服务](configure-ssl-bindings.md)
+> [在 Azure 应用服务中使用 TLS 绑定保护自定义 DNS 名称](configure-ssl-bindings.md)

@@ -1,17 +1,18 @@
 ---
-title: 操作员最佳做法 - Azure Kubernetes 服务 (AKS) 中的标识
+title: 管理身份的最佳做法
+titleSuffix: Azure Kubernetes Service
 description: 了解有关为 Azure Kubernetes 服务 (AKS) 中的群集管理身份验证和授权的群集操作员最佳做法
 services: container-service
 ms.topic: conceptual
 origin.date: 04/24/2019
-ms.date: 03/09/2020
+ms.date: 05/25/2020
 ms.author: v-yeche
-ms.openlocfilehash: 30dc78a6e70792258ff19eb60e6f884a430ef1a1
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 993072dfae53a430d31ac2901b69ed693d9f4081
+ms.sourcegitcommit: 7e6b94bbaeaddb854beed616aaeba6584b9316d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79290717"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83735153"
 ---
 # <a name="best-practices-for-authentication-and-authorization-in-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 中的身份验证和授权的最佳做法
 
@@ -30,7 +31,7 @@ ms.locfileid: "79290717"
 
 Kubernetes 群集的开发人员和应用程序所有者需要访问不同的资源。 Kubernetes 不提供标识管理解决方案来控制哪些用户可与哪些资源交互。 通常，你会将群集与现有的标识解决方案相集成。 Azure Active Directory (AD) 提供企业就绪的标识管理解决方案，并可与 AKS 群集相集成。
 
-使用 AKS 中与 Azure AD 集成的群集，创建角色或群集角色用于定义对资源的访问权限。   然后，从 Azure AD 将角色绑定到用户或组。  下一部分将介绍这些 Kubernetes 基于角色的访问控制 (RBAC)。 下图显示了 Azure AD 集成，以及如何控制对资源的访问：
+使用 AKS 中与 Azure AD 集成的群集，创建角色或群集角色用于定义对资源的访问权限。  然后，从 Azure AD 将角色绑定到用户或组。 下一部分将介绍这些 Kubernetes 基于角色的访问控制 (RBAC)。 下图显示了 Azure AD 集成，以及如何控制对资源的访问：
 
 ![与 AKS 集成的 Azure Active Directory 的群集级身份验证](media/operator-best-practices-identity/cluster-level-authentication-flow.png)
 
@@ -133,9 +134,7 @@ roleRef:
 
 [aks-concepts-identity]: concepts-identity.md
 [aks-aad]: azure-ad-integration-cli.md
-
-<!--Not Available on [managed-identities:]: ../active-directory/managed-identities-azure-resources/overview.md-->
-
+[managed-identities]: ../active-directory/managed-identities-azure-resources/overview.md
 [aks-best-practices-scheduler]: operator-best-practices-scheduler.md
 [aks-best-practices-advanced-scheduler]: operator-best-practices-advanced-scheduler.md
 [aks-best-practices-cluster-isolation]: operator-best-practices-cluster-isolation.md

@@ -3,19 +3,21 @@ title: 在 Azure Kubernetes 服务 (AKS) 中使用系统节点池
 description: 了解如何在 Azure Kubernetes 服务 (AKS) 中创建和管理系统节点池
 services: container-service
 ms.topic: article
-origin.date: 04/06/2020
-ms.date: 05/06/2020
+origin.date: 04/28/2020
+ms.date: 05/25/2020
 ms.author: v-yeche
-ms.openlocfilehash: 07e0b17a03d7f8e1e5c14e7614b9f1e22d1c0626
-ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
+ms.openlocfilehash: c6bd423823c10c21b58caaed6b23651b797ebffe
+ms.sourcegitcommit: 7e6b94bbaeaddb854beed616aaeba6584b9316d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "83002211"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83735085"
 ---
+<!--Verified successfully-->
+<!--Verified on Portal-->
 # <a name="manage-system-node-pools-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中管理系统节点池
 
-在 Azure Kubernetes 服务 (AKS) 中，采用相同配置的节点分组成节点池。  节点池包含运行应用程序的底层 VM。 系统节点池和用户节点池是 AKS 群集的两种不同的节点池模式。 系统节点池主要用于托管关键系统 Pod（例如 CoreDNS 和 tunnelfront）。 用户节点池主要用于托管应用程序 Pod。 但是，如果希望在 AKS 群集中只有一个池，可以在系统节点池上计划应用程序 Pod。 每个 AKS 群集必须至少包含一个系统节点池，该池至少包含一个节点。 
+在 Azure Kubernetes 服务 (AKS) 中，采用相同配置的节点分组成节点池。 节点池包含运行应用程序的底层 VM。 系统节点池和用户节点池是 AKS 群集的两种不同的节点池模式。 系统节点池主要用于托管关键系统 Pod（例如 CoreDNS 和 tunnelfront）。 用户节点池主要用于托管应用程序 Pod。 但是，如果希望在 AKS 群集中只有一个池，可以在系统节点池上计划应用程序 Pod。 每个 AKS 群集必须至少包含一个系统节点池，该池至少包含一个节点。 
 
 > [!Important]
 > 如果在生产环境中为 AKS 群集运行单个系统节点池，则建议至少将三个节点用作节点池。
@@ -32,7 +34,10 @@ ms.locfileid: "83002211"
 * 必须使用虚拟机规模集作为 VM 类型来构建 AKS 群集。
 * 节点池的名称只能包含小写字母数字字符，且必须以小写字母开头。 对于 Linux 节点池，长度必须为 1 到 12 个字符。
 
-<!--Not Available on  For Windows node pools, the length must be between 1 and 6 characters.-->
+    <!--Not Available on  For Windows node pools, the length must be between 1 and 6 characters.-->
+    
+* 必须使用 2020-03-01 版或更高版的 API 版本设置节点池模式。
+* 节点池模式是必需属性，当使用 ARM 模板或直接 API 调用时，必须显式设置该属性。
 
 ## <a name="system-and-user-node-pools"></a>系统节点池和用户节点池
 
@@ -55,10 +60,11 @@ ms.locfileid: "83002211"
 * 删除用户节点池。
 * 可以删除系统节点池，前提是在 AKS 群集中有另一个可取代它的系统节点池。
 * 一个 AKS 群集可以包含多个系统节点池，并且至少需要一个系统节点池。
+* 如果希望更改现有节点池上的各种不可变设置，可以新建节点池将其替换。 例如，添加具有全新 maxPods 设置的全新节点池，然后删除旧节点池。
 
 ## <a name="create-a-new-aks-cluster-with-a-system-node-pool"></a>创建包含系统节点池的新 AKS 群集
 
-创建新的 AKS 群集时，会自动创建包含单个节点的系统节点池。 初始节点池默认为某个模式类型系统。 使用 az aks nodepool add 创建新节点池时，除非显式指定模式参数，否则这些节点池为用户节点池。
+创建新的 AKS 群集时，会自动创建包含单个节点的系统节点池。 初始节点池默认为某种类型模式的系统。 使用 az aks nodepool add 创建新节点池时，除非显式指定模式参数，否则这些节点池为用户节点池。
 
 以下示例在 *chinaeast2* 区域创建名为 *myResourceGroup* 的资源组。
 
@@ -87,7 +93,7 @@ az aks nodepool add -g myResourceGroup --cluster-name myAKSCluster -n mynodepool
 az aks nodepool show -g myResourceGroup --cluster-name myAKSCluster -n mynodepool
 ```
 
-将为系统节点池定义“系统”类型的模式，并为用户节点池定义“用户”类型的模式。  
+将为系统节点池定义“系统”类型的模式，并为用户节点池定义“用户”类型的模式。 
 
 ```output
 {
@@ -185,7 +191,6 @@ az aks nodepool delete -g myResourceGroup --cluster-name myAKSCluster -n mynodep
 [taints-tolerations]: operator-best-practices-advanced-scheduler.md#provide-dedicated-nodes-using-taints-and-tolerations
 [vm-sizes]: ../virtual-machines/linux/sizes.md
 [use-multiple-node-pools]: use-multiple-node-pools.md
-[maximum-pods]: faq.md#why-cant-i-set-maxpods-below-30
+[maximum-pods]: configure-azure-cni.md#maximum-pods-per-node
 
-<!-- Update_Description: new article about use system pools -->
-<!--NEW.date: 05/06/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

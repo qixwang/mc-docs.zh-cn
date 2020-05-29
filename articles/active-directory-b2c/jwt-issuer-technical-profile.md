@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/16/2020
+ms.date: 05/18/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 7b4b4c769e95ecacef3d1adc82283244b2ea15ab
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 6c5535cd36ccc4c31c73ec27bd207a9c732d9071
+ms.sourcegitcommit: 87e789550ea49ff77c7f19bc68fad228009fcf44
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79497188"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83748081"
 ---
 # <a name="define-a-technical-profile-for-a-jwt-token-issuer-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义 JWT 令牌颁发者的技术配置文件
 
@@ -26,16 +26,25 @@ Azure Active Directory B2C (Azure AD B2C) 在处理每个身份验证流时颁�
 
 ## <a name="protocol"></a>协议
 
-“Protocol”  元素的“Name”  属性必须设置为 `None`。 将 **OutputTokenFormat** 元素设置为 `JWT`。
+“Protocol”元素的“Name”属性必须设置为 `None`。 将 **OutputTokenFormat** 元素设置为 `JWT`。
 
 以下示例演示了 `JwtIssuer` 的技术配置文件：
 
 ```XML
 <TechnicalProfile Id="JwtIssuer">
   <DisplayName>JWT Issuer</DisplayName>
-  <Protocol Name="None" />
+  <Protocol Name="OpenIdConnect" />
   <OutputTokenFormat>JWT</OutputTokenFormat>
-  ...
+  <Metadata>
+    <Item Key="client_id">{service:te}</Item>
+    <Item Key="issuer_refresh_token_user_identity_claim_type">objectId</Item>
+    <Item Key="SendTokenResponseBodyWithJsonNumbers">true</Item>
+  </Metadata>
+  <CryptographicKeys>
+    <Key Id="issuer_secret" StorageReferenceId="B2C_1A_TokenSigningKeyContainer" />
+    <Key Id="issuer_refresh_token_key" StorageReferenceId="B2C_1A_TokenEncryptionKeyContainer" />
+  </CryptographicKeys>
+  <UseTechnicalProfileForSessionManagement ReferenceId="SM-jwt-issuer" />
 </TechnicalProfile>
 ```
 
@@ -64,10 +73,14 @@ CryptographicKeys 元素包含以下属性：
 
 | 属性 | 必须 | 说明 |
 | --------- | -------- | ----------- |
-| issuer_secret | 是 | 用于对 JWT 令牌进行签名的 X509 证书（RSA 密钥集）。  | 
-| issuer_refresh_token_key | 是 | 用于加密刷新令牌的 X509 证书（RSA 密钥集）。 |
+| issuer_secret | 是 | 用于对 JWT 令牌进行签名的 X509 证书（RSA 密钥集）。  |
+| issuer_refresh_token_key | 是 | 用于加密刷新令牌的 X509 证书（RSA 密钥集）。  |
 
-<!-- Update_Description: wording update -->
+## <a name="session-management"></a>会话管理
+
+若要在 Azure AD B2C 和信赖方应用程序之间配置 Azure AD B2C 会话，请在 `UseTechnicalProfileForSessionManagement` 元素的属性中添加对 [OAuthSSOSessionProvider](custom-policy-reference-sso.md#oauthssosessionprovider) SSO 会话的引用。
+
+
 
 
 

@@ -2,175 +2,267 @@
 title: 教程 - 通过 Azure PowerShell 使用规模集中的自定义 VM 映像
 description: 了解如何使用 Azure PowerShell 来创建可用于部署虚拟机规模集的自定义 VM 映像
 author: cynthn
-tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
+ms.subservice: imaging
 ms.topic: tutorial
-ms.date: 02/10/2020
+ms.date: 05/21/2020
 ms.author: v-junlch
-ms.custom: mvc
-ms.openlocfilehash: 84417eebabce7c6dd3710bf0e761d54fade6f494
-ms.sourcegitcommit: b80d236ce3c706abc25bbaa41b0ccddd896e48fc
+ms.reviewer: akjosh
+ms.custom: akjosh
+ms.openlocfilehash: 867bd6e54ba430b832adcb71f31163f3113f907f
+ms.sourcegitcommit: 87e789550ea49ff77c7f19bc68fad228009fcf44
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81873145"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83748147"
 ---
 # <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-azure-powershell"></a>教程：通过 Azure PowerShell 创建和使用虚拟机规模集的自定义映像
 
 创建规模集时，需指定部署 VM 实例时要使用的映像。 若要在部署 VM 实例之后减少任务数目，可以使用自定义 VM 映像。 在此自定义 VM 映像中可以完成全部所需的应用程序安装或配置步骤。 在规模集中创建的任何 VM 实例使用自定义 VM 映像，并随时可为应用程序流量提供服务。 本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
-> * 创建和自定义 VM
-> * 取消预配和通用化 VM
-> * 从源 VM 创建自定义 VM 映像
-> * 部署使用自定义 VM 映像的规模集
+> * 创建共享映像库
+> * 创建映像定义
+> * 创建映像版本
+> * 从映像创建规模集 
+> * 共享映像库
 
-如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 
-[!INCLUDE [updated-for-az.md](../../includes/updated-for-az.md)]
+## <a name="before-you-begin"></a>准备阶段
 
+下列步骤详细说明如何将现有 VM 转换为可重用自定义映像，以便将其用于创建规模集。
 
-## <a name="create-and-configure-a-source-vm"></a>创建并配置源 VM
+若要完成本教程中的示例，必须现有一个虚拟机。 如果需要，可以参阅 [PowerShell 快速入门](quick-create-powershell.md)来创建本教程所用的 VM。 在学习本教程期间，请根据需要替换资源名称。
 
->[!NOTE]
-> 本教程介绍创建和使用通用化 VM 映像的过程。 不支持从专用 VHD 创建规模集。
+## <a name="get-the-vm"></a>获取 VM
 
-首先使用 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) 创建资源组，然后使用 [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) 创建 VM。 此 VM 可用作自定义 VM 映像的源。 以下示例在名为 *myResourceGroup* 的资源组中创建名为 *myCustomVM* 的 VM。 系统提示时，请输入用作 VM 登录凭据的用户名和密码：
-
-```azurepowershell
-# Create a resource a group
-New-AzResourceGroup -Name "myResourceGroup" -Location "ChinaNorth"
-
-# Create a Windows Server 2016 Datacenter VM
-New-AzVm `
-  -ResourceGroupName "myResourceGroup" `
-  -Name "myCustomVM" `
-  -ImageName "Win2016Datacenter" `
-  -OpenPorts 3389
-```
-
-若要连接到 VM，请使用 [Get-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress) 列出公共 IP 地址，如下所示：
+可以使用 [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) 查看资源组中可用的 VM 列表。 了解 VM 名称和资源组后，可以再次使用 `Get-AzVM` 来获取 VM 对象并将其存储在变量中，供稍后使用。 此示例从“myResourceGroup”资源组获取名为 sourceVM 的 VM，并将其分配给变量 $vm 。 
 
 ```azurepowershell
-Get-AzPublicIpAddress -ResourceGroupName myResourceGroup | Select IpAddress
+$sourceVM = Get-AzVM `
+   -Name sourceVM `
+   -ResourceGroupName myResourceGroup
 ```
+## <a name="create-a-resource-group"></a>创建资源组
 
-创建与 VM 的远程连接。 提供你自己在前一命令中使用的 IP 地址。 出现提示时，请输入在第一步创建 VM 时使用的凭据：
+使用 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) 命令创建资源组。
 
-```powershell
-mstsc /v:<IpAddress>
-```
-
-为了自定义 VM，让我们安装一个基本的 Web 服务器。 部署规模集中的 VM 实例时，该实例会包含运行 Web 应用程序的全部所需包。 在 VM 上打开本地 PowerShell 提示符，然后使用 [Install-WindowsFeature](https://docs.microsoft.com/powershell/module/servermanager/install-windowsfeature) 安装 IIS Web 服务器，如下所示：
-
-```powershell
-Install-WindowsFeature -name Web-Server -IncludeManagementTools
-```
-
-准备将 VM 用作自定义映像的最后一步是使 VM 通用化。 Sysprep 会删除所有个人帐户信息和配置，并将 VM 重置为干净状态，以便将来进行部署。 有关详细信息，请参阅[如何使用 Sysprep：简介](https://technet.microsoft.com/library/bb457073.aspx)。
-
-若要使 VM 通用化，请运行 Sysprep 并针对开箱即用体验来设置 VM。 完成后，指示 Sysprep 关闭 VM：
-
-```powershell
-C:\Windows\system32\sysprep\sysprep.exe /oobe /generalize /shutdown
-```
-
-当 Sysprep 完成相关过程并关闭 VM 后，到 VM 的远程连接会自动关闭。
-
-
-## <a name="create-a-custom-vm-image-from-the-source-vm"></a>从源 VM 创建自定义 VM 映像
-现已自定义源 VM，其上已安装 IIS Web 服务器。 让我们创建与规模集配合使用的自定义 VM 映像。
-
-若要创建映像，需要解除分配 VM。 通过 [Stop-AzVm](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm) 解除分配 VM。 然后，使用 [Set-AzVm](https://docs.microsoft.com/powershell/module/az.compute/set-azvm) 将 VM 的状态设置为已通用化，以便 Azure 平台知道该 VM 可使用自定义映像。 只能从通用化 VM 创建映像：
+Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 以下示例在“ChinaNorth”区域中创建名为“myGalleryRG”的资源组 ：
 
 ```azurepowershell
-Stop-AzVM -ResourceGroupName "myResourceGroup" -Name "myCustomVM" -Force
-Set-AzVM -ResourceGroupName "myResourceGroup" -Name "myCustomVM" -Generalized
+$resourceGroup = New-AzResourceGroup `
+   -Name 'myGalleryRG' `
+   -Location 'ChinaNorth'
 ```
 
-解除分配和通用化 VM 可能需要花费几分钟时间。
+## <a name="create-an-image-gallery"></a>创建映像库 
 
-现在，请使用 [New-AzImageConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azimageconfig) 和 [New-AzImage](https://docs.microsoft.com/powershell/module/az.compute/new-azimage) 来创建 VM 的映像。 以下示例从 VM 创建名为 *myImage* 的映像：
+映像库是用于启用映像共享的主要资源。 允许用于库名称的字符为大写或小写字母、数字、点和句点。 库名称不能包含短划线。 库名称在你的订阅中必须唯一。 
+
+使用 [New-AzGallery](https://docs.microsoft.com/powershell/module/az.compute/new-azgallery) 创建映像库。 以下示例在“myGalleryRG”资源组中创建名为“myGallery”的库 。
 
 ```azurepowershell
-# Get VM object
-$vm = Get-AzVM -Name "myCustomVM" -ResourceGroupName "myResourceGroup"
-
-# Create the VM image configuration based on the source VM
-$image = New-AzImageConfig -Location "ChinaNorth" -SourceVirtualMachineId $vm.ID 
-
-# Create the custom VM image
-New-AzImage -Image $image -ImageName "myImage" -ResourceGroupName "myResourceGroup"
+$gallery = New-AzGallery `
+   -GalleryName 'myGallery' `
+   -ResourceGroupName $resourceGroup.ResourceGroupName `
+   -Location $resourceGroup.Location `
+   -Description 'Shared Image Gallery for my organization'  
 ```
 
-## <a name="configure-the-network-security-group-rules"></a>配置网络安全组规则
-在创建规模集之前，需要配置关联的网络安全组规则，以允许访问 HTTP、RDP 和远程处理 
+
+## <a name="create-an-image-definition"></a>创建映像定义 
+
+映像定义为映像创建一个逻辑分组。 它们用于管理有关映像版本的信息，这些版本是在其中创建的。 映像定义名称可能包含大写或小写字母、数字、点、短划线和句点。 若要详细了解可以为映像定义指定的值，请参阅[映像定义](/virtual-machines/windows/shared-image-galleries#image-definitions)。
+
+使用 [New-AzGalleryImageDefinition](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion) 创建映像定义。 在此示例中，库映像名为 myGalleryImage，它是为专用化映像创建的。 
 
 ```azurepowershell
-$rule1 = New-AzNetworkSecurityRuleConfig -Name web-rule -Description "Allow HTTP" -Access Allow -Protocol Tcp -Direction Inbound -Priority 100 -SourceAddressPrefix Internet -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 80
-
-$rule2 = New-AzNetworkSecurityRuleConfig -Name rdp-rule -Description "Allow RDP" -Access Allow -Protocol Tcp -Direction Inbound -Priority 110 -SourceAddressPrefix Internet -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 3389
-
-$rule3 = New-AzNetworkSecurityRuleConfig -Name remoting-rule -Description "Allow PS Remoting" -Access Allow -Protocol Tcp -Direction Inbound -Priority 120 -SourceAddressPrefix Internet -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 5985
-
-New-AzNetworkSecurityGroup -Name "myNSG" -ResourceGroupName "myResourceGroup" -Location "ChinaNorth" -SecurityRules $rule1,$rule2,$rule3
+$galleryImage = New-AzGalleryImageDefinition `
+   -GalleryName $gallery.Name `
+   -ResourceGroupName $resourceGroup.ResourceGroupName `
+   -Location $gallery.Location `
+   -Name 'myImageDefinition' `
+   -OsState specialized `
+   -OsType Windows `
+   -Publisher 'myPublisher' `
+   -Offer 'myOffer' `
+   -Sku 'mySKU'
 ```
 
-## <a name="create-a-scale-set-from-the-custom-vm-image"></a>从自定义 VM 映像创建规模集
+
+## <a name="create-an-image-version"></a>创建映像版本
+
+使用 [New-AzGalleryImageVersion](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion) 从 VM 创建映像版本。 
+
+允许用于映像版本的字符为数字和句点。 数字必须在 32 位整数范围内。 格式：*MajorVersion*.*MinorVersion*.*Patch*。
+
+在此示例中，映像版本为 1.0.0，该版本被复制到中国北部和中国北部数据中心  。 选择复制的目标区域时，需要将源区域包含为复制目标。
+
+若要从 VM 创建映像版本，请对 `-Source` 使用 `$vm.Id.ToString()`。
+
+```azurepowershell
+$region1 = @{Name='China North';ReplicaCount=1}
+$region2 = @{Name='China North';ReplicaCount=2}
+$targetRegions = @($region1,$region2)
+
+New-AzGalleryImageVersion `
+   -GalleryImageDefinitionName $galleryImage.Name`
+   -GalleryImageVersionName '1.0.0' `
+   -GalleryName $gallery.Name `
+   -ResourceGroupName $resourceGroup.ResourceGroupName `
+   -Location $resourceGroup.Location `
+   -TargetRegion $targetRegions  `
+   -Source $vm.Id.ToString() `
+   -PublishingProfileEndOfLifeDate '2020-12-01'
+```
+
+可能需要一段时间才能将映像复制到所有目标区域。
+
+## <a name="create-a-scale-set-from-the-image"></a>从映像创建规模集
 现在，请使用 [New-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/new-azvmss) 来创建规模集，前者使用 `-ImageName` 参数来定义在上一步创建的自定义 VM 映像。 若要将流量分配到单独的 VM 实例，则还要创建负载均衡器。 负载均衡器包含的规则可在 TCP 端口 80 上分配流量，并允许 TCP 端口 3389 上的远程桌面流量，以及 TCP 端口 5985 上的 PowerShell 远程流量。 出现提示时，请针对规模集中的 VM 实例提供自己的所需管理凭据：
 
 ```azurepowershell
+# Define variables for the scale set
+$resourceGroupName = "myVMSSRG3"
+$scaleSetName = "myScaleSet3"
+$location = "China North"
+
+# Create a resource group
+New-AzResourceGroup -ResourceGroupName $resourceGroupName -Location $location
+
+# Create a networking pieces
+$subnet = New-AzVirtualNetworkSubnetConfig `
+  -Name "mySubnet" `
+  -AddressPrefix 10.0.0.0/24
+$vnet = New-AzVirtualNetwork `
+  -ResourceGroupName $resourceGroupName `
+  -Name "myVnet" `
+  -Location $location `
+  -AddressPrefix 10.0.0.0/16 `
+  -Subnet $subnet
+$publicIP = New-AzPublicIpAddress `
+  -ResourceGroupName $resourceGroupName `
+  -Location $location `
+  -AllocationMethod Static `
+  -Name "myPublicIP"
+$frontendIP = New-AzLoadBalancerFrontendIpConfig `
+  -Name "myFrontEndPool" `
+  -PublicIpAddress $publicIP
+$backendPool = New-AzLoadBalancerBackendAddressPoolConfig -Name "myBackEndPool"
+$inboundNATPool = New-AzLoadBalancerInboundNatPoolConfig `
+  -Name "myRDPRule" `
+  -FrontendIpConfigurationId $frontendIP.Id `
+  -Protocol TCP `
+  -FrontendPortRangeStart 50001 `
+  -FrontendPortRangeEnd 50010 `
+  -BackendPort 3389
+# Create the load balancer and health probe
+$lb = New-AzLoadBalancer `
+  -ResourceGroupName $resourceGroupName `
+  -Name "myLoadBalancer" `
+  -Location $location `
+  -FrontendIpConfiguration $frontendIP `
+  -BackendAddressPool $backendPool `
+  -InboundNatPool $inboundNATPool
+Add-AzLoadBalancerProbeConfig -Name "myHealthProbe" `
+  -LoadBalancer $lb `
+  -Protocol TCP `
+  -Port 80 `
+  -IntervalInSeconds 15 `
+  -ProbeCount 2
+Add-AzLoadBalancerRuleConfig `
+  -Name "myLoadBalancerRule" `
+  -LoadBalancer $lb `
+  -FrontendIpConfiguration $lb.FrontendIpConfigurations[0] `
+  -BackendAddressPool $lb.BackendAddressPools[0] `
+  -Protocol TCP `
+  -FrontendPort 80 `
+  -BackendPort 80 `
+  -Probe (Get-AzLoadBalancerProbeConfig -Name "myHealthProbe" -LoadBalancer $lb)
+Set-AzLoadBalancer -LoadBalancer $lb
+
+# Create IP address configurations
+$ipConfig = New-AzVmssIpConfig `
+  -Name "myIPConfig" `
+  -LoadBalancerBackendAddressPoolsId $lb.BackendAddressPools[0].Id `
+  -LoadBalancerInboundNatPoolsId $inboundNATPool.Id `
+  -SubnetId $vnet.Subnets[0].Id
+
+# Create a configuration 
+$vmssConfig = New-AzVmssConfig `
+    -Location $location `
+    -SkuCapacity 2 `
+    -SkuName "Standard_DS2" `
+    -UpgradePolicyMode "Automatic"
+
+# Reference the image version
+Set-AzVmssStorageProfile $vmssConfig `
+  -OsDiskCreateOption "FromImage" `
+  -ImageReferenceId $galleryImage.Id
+
+# Complete the configuration
+ 
+Add-AzVmssNetworkInterfaceConfiguration `
+  -VirtualMachineScaleSet $vmssConfig `
+  -Name "network-config" `
+  -Primary $true `
+  -IPConfiguration $ipConfig 
+
+# Create the scale set 
 New-AzVmss `
-  -ResourceGroupName "myResourceGroup" `
-  -Location "ChinaNorth" `
-  -VMScaleSetName "myScaleSet" `
-  -VirtualNetworkName "myVnet" `
-  -SubnetName "mySubnet" `
-  -SecurityGroupName "myNSG"
-  -PublicIpAddressName "myPublicIPAddress" `
-  -LoadBalancerName "myLoadBalancer" `
-  -UpgradePolicyMode "Automatic" `
-  -ImageName "myImage"
+  -ResourceGroupName $resourceGroupName `
+  -Name $scaleSetName `
+  -VirtualMachineScaleSet $vmssConfig
 ```
 
 创建和配置所有的规模集资源和 VM 需要几分钟时间。
 
 
-## <a name="test-your-scale-set"></a>测试规模集
-若要查看运行中的规模集，请使用 [Get-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/Get-AzPublicIpAddress) 获取负载均衡器的公共 IP 地址，如下所示：
+## <a name="share-the-gallery"></a>共享库
 
+我们建议你在映像库级别共享访问权限。 使用电子邮件地址和 [Get-AzADUser](https://docs.microsoft.com/powershell/module/az.resources/get-azaduser) cmdlet 获取用户的对象 ID，然后使用 [New-AzRoleAssignment](https://docs.microsoft.com/powershell/module/Az.Resources/New-AzRoleAssignment) 授予他们对该库的访问权限。 请将此示例中的示例电子邮件地址 alinne_montes@contoso.com 替换为你自己的信息。
 
 ```azurepowershell
-Get-AzPublicIpAddress `
-  -ResourceGroupName "myResourceGroup" `
-  -Name "myPublicIPAddress" | Select IpAddress
+# Get the object ID for the user
+$user = Get-AzADUser -StartsWith alinne_montes@contoso.com
+# Grant access to the user for our gallery
+New-AzRoleAssignment `
+   -ObjectId $user.Id `
+   -RoleDefinitionName Reader `
+   -ResourceName $gallery.Name `
+   -ResourceType Microsoft.Compute/galleries `
+   -ResourceGroupName $resourceGroup.ResourceGroupName
 ```
-
-在 Web 浏览器中键入公共 IP 地址。 随后会显示默认的 IIS 网页，如以下示例所示：
-
-![从自定义 VM 映像运行的 IIS](./media/tutorial-use-custom-image-powershell/default-iis-website.png)
-
 
 ## <a name="clean-up-resources"></a>清理资源
-若要删除规模集和其他资源，请使用 [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) 删除资源组及其所有资源。 `-Force` 参数将确认是否希望删除资源，而不会有额外提示。 `-AsJob` 参数会使光标返回提示符处，无需等待操作完成。
+
+不再需要时，可以使用 [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) cmdlet 删除资源组和所有相关资源：
 
 ```azurepowershell
-Remove-AzResourceGroup -Name "myResourceGroup" -Force -AsJob
+# Delete the gallery 
+Remove-AzResourceGroup -Name myGalleryRG
+
+# Delete the scale set resource group
+Remove-AzResourceGroup -Name myResoureceGroup
 ```
 
+## <a name="azure-image-builder"></a>Azure 映像生成器
+
+Azure 还提供一个基于 Packer 的服务：Azure VM 映像生成器。 只需在模板中描述你的自定义设置，然后该模板即会处理映像的创建。 
 
 ## <a name="next-steps"></a>后续步骤
 本教程介绍了如何通过 Azure PowerShell 创建和使用规模集的自定义 VM 映像：
 
 > [!div class="checklist"]
-> * 创建和自定义 VM
-> * 取消预配和通用化 VM
-> * 创建自定义 VM 映像
-> * 部署使用自定义 VM 映像的规模集
+> * 创建共享映像库
+> * 创建映像定义
+> * 创建映像版本
+> * 从映像创建规模集 
+> * 共享映像库
 
 请继续学习下一教程，了解如何将应用程序部署到规模集。
 
 > [!div class="nextstepaction"]
 > [将应用程序部署到规模集](tutorial-install-apps-powershell.md)
 
-<!-- Update_Description: update metedata properties -->

@@ -3,8 +3,7 @@ title: 创建 Azure 网络观察程序实例 | Azure
 description: 了解如何在 Azure 区域中启用网络观察程序。
 services: network-watcher
 documentationcenter: na
-author: lingliw
-manager: digimobile
+author: damendo
 ms.assetid: b1314119-0b87-4f4d-b44c-2c4d0547fb76
 ms.service: network-watcher
 ms.devlang: na
@@ -14,12 +13,12 @@ ms.workload: infrastructure-services
 origin.date: 02/22/2017
 ms.date: 11/26/2018
 ms.author: v-lingwu
-ms.openlocfilehash: 671dd9e6944d75ab162058332cbefe65e8da9340
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: aea39040f48f4eb02e0a751f96ff8e47d027ddda
+ms.sourcegitcommit: a04b0b1009b0c62f2deb7c7acee75a1304d98f87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78154969"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83796764"
 ---
 # <a name="create-an-azure-network-watcher-instance"></a>创建 Azure 网络观察程序实例
 
@@ -49,11 +48,11 @@ az provider register -n Microsoft.Network
 
 ## <a name="create-a-network-watcher-in-the-portal"></a>在门户中创建网络观察程序
 
-导航到“所有服务”   > “网络”   > “网络观察程序”  。 可以选择要为其启用网络观察程序的所有订阅。 此操作在每个可用的区域中创建网络观察程序。
+导航到“所有服务” > “网络” > “网络观察程序”。 可以选择要为其启用网络观察程序的所有订阅。 此操作在每个可用的区域中创建网络观察程序。
 
 ![创建网络观察程序](./media/network-watcher-create/figure1.png)
 
-使用门户启用网络观察程序时，网络观察程序实例的名称会自动设置为 *NetworkWatcher_region_name*，其中，*region_name* 对应于启用了该实例的 Azure 区域。 例如，在“中国东部 2”区域启用的网络观察程序名为“NetworkWatcher_chinaeast2”  。
+使用门户启用网络观察程序时，网络观察程序实例的名称会自动设置为 *NetworkWatcher_region_name*，其中，*region_name* 对应于启用了该实例的 Azure 区域。 例如，在“中国东部 2”区域启用的网络观察程序名为“NetworkWatcher_chinaeast2”。
 
 将自动在名为 *NetworkWatcherRG* 的资源组中创建网络观察程序实例。 如果该资源组尚不存在，则会创建该资源组。
 
@@ -67,7 +66,7 @@ az provider register -n Microsoft.Network
 New-AzNetworkWatcher -Name "NetworkWatcher_chinaeast2" -ResourceGroupName "NetworkWatcherRG" -Location "China East 2"
 ```
 
-## <a name="create-a-network-watcher-with-the-azure-cli"></a>使用 Azure CLI 创建网络观察程序
+## <a name="create-a-network-watcher-with-the-cli"></a>使用 CLI 创建网络观察程序
 
 若要创建网络观察程序的实例，请运行以下示例：
 
@@ -103,7 +102,7 @@ armclient put "https://management.chinacloudapi.cn/subscriptions/${subscriptionI
 
 ## <a name="delete-a-network-watcher-in-the-portal"></a>在门户中删除网络观察程序
 
-导航到“所有服务”   > “网络”   > “网络观察程序”  。
+导航到“所有服务” > “网络” > “网络观察程序”。
 
 选择“概述”选项卡（如果尚未在该选项卡上）。 使用下拉列表选择要在其中禁用网络观察程序的订阅。
 通过单击箭头，展开所选订阅的区域列表。 对于任何给定区域，使用右侧的 3 个点访问上下文菜单。

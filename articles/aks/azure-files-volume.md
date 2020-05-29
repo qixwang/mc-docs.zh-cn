@@ -1,17 +1,18 @@
 ---
-title: 在 Azure Kubernetes 服务 (AKS) 中创建用于多个 Pod 的静态卷
+title: 手动创建 Azure 文件共享
+titleSuffix: Azure Kubernetes Service
 description: 了解如何在 Azure Kubernetes 服务 (AKS) 中使用 Azure 文件手动创建用于多个并发 Pod 的卷
 services: container-service
 ms.topic: article
 origin.date: 03/01/2019
-ms.date: 03/09/2020
+ms.date: 05/25/2020
 ms.author: v-yeche
-ms.openlocfilehash: 5ec11a3a5ce21abf2050c2ec7f8b2052f9827db3
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: cc422092b3766aad1f3c9e36751bbc29d8a261bd
+ms.sourcegitcommit: 7e6b94bbaeaddb854beed616aaeba6584b9316d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79290769"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83735137"
 ---
 # <a name="manually-create-and-use-a-volume-with-azure-files-share-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中通过 Azure 文件共享手动创建并使用卷
 
@@ -136,7 +137,7 @@ Volumes:
 
 ## <a name="mount-options"></a>装载选项
 
-对于 Kubernetes 版本 1.9.1 及更高版本，fileMode  和 dirMode  的默认值为 0755  。 如果使用 Kuberetes 版本为 1.8.5 或更高版本的群集并静态创建永久性卷对象，则需要在 PersistentVolume  对象上指定装载选项。 以下示例设置 *0777*：
+对于 Kubernetes 版本 1.9.1 及更高版本，fileMode 和 dirMode 的默认值为 0755。 如果使用 Kubernetes 版本为 1.8.5 或更高版本的群集并静态创建永久性卷对象，则需要在 PersistentVolume 对象上指定装载选项。 以下示例设置 *0777*：
 
 ```yaml
 apiVersion: v1
@@ -164,7 +165,7 @@ spec:
 
 如果使用版本为 1.8.0 - 1.8.4 的群集，则可在指定安全性上下文时，将 *runAsUser* 值设置为 *0*。 有关 Pod 安全性上下文的详细信息，请参阅[配置安全性上下文][kubernetes-security-context]。
 
-若要更新装载选项，请创建包含 PersistentVolume  的 azurefile-mount-options-pv.yaml  文件。 例如：
+若要更新装载选项，请创建包含 PersistentVolume 的 azurefile-mount-options-pv.yaml 文件。 例如：
 
 ```yaml
 apiVersion: v1
@@ -190,7 +191,7 @@ spec:
   - nobrl
 ```
 
-创建一个 azurefile-mount-options-pvc.yaml  文件，其中包含使用 PersistentVolume  的 PersistentVolumeClaim  。 例如：
+创建一个 azurefile-mount-options-pvc.yaml 文件，其中包含使用 PersistentVolume 的 PersistentVolumeClaim。 例如：
 
 ```yaml
 apiVersion: v1
@@ -206,14 +207,14 @@ spec:
       storage: 5Gi
 ```
 
-使用 `kubectl` 命令创建 PersistentVolume  和 PersistentVolumeClaim  。
+使用 `kubectl` 命令创建 PersistentVolume 和 PersistentVolumeClaim。
 
 ```console
 kubectl apply -f azurefile-mount-options-pv.yaml
 kubectl apply -f azurefile-mount-options-pvc.yaml
 ```
 
-验证 PersistentVolumeClaim  是否已创建并绑定到 PersistentVolume  。
+验证 PersistentVolumeClaim 是否已创建并绑定到 PersistentVolume。
 
 ```console
 $ kubectl get pvc azurefile
@@ -222,7 +223,7 @@ NAME        STATUS   VOLUME      CAPACITY   ACCESS MODES   STORAGECLASS   AGE
 azurefile   Bound    azurefile   5Gi        RWX            azurefile      5s
 ```
 
-更新容器规范以引用 PersistentVolumeClaim  并更新 Pod。 例如：
+更新容器规范以引用 PersistentVolumeClaim并更新 Pod。 例如：
 
 ```yaml
 ...
@@ -259,4 +260,4 @@ azurefile   Bound    azurefile   5Gi        RWX            azurefile      5s
 [operator-best-practices-storage]: operator-best-practices-storage.md
 [concepts-storage]: concepts-storage.md
 
-<!-- Update_Description: wording update, update link -->
+<!-- Update_Description: update meta properties, wording update, update link -->

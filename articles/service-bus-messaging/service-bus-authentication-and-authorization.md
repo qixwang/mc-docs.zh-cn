@@ -1,9 +1,9 @@
 ---
-title: Azure 服务总线身份验证和授权 | Microsoft Docs
+title: Azure 服务总线身份验证和授权 | Azure
 description: 使用共享访问签名 (SAS) 身份验证向服务总线验证应用程序。
 services: service-bus-messaging
 documentationcenter: na
-author: lingliw
+author: axisc
 editor: spelluru
 ms.assetid: 18bad0ed-1cee-4a5c-a377-facc4785c8c9
 ms.service: service-bus-messaging
@@ -14,12 +14,12 @@ ms.workload: na
 origin.date: 08/22/2019
 ms.date: 09/23/2019
 ms.author: v-lingwu
-ms.openlocfilehash: acb4208ee621cf754ef58431d9fcd368b310c5c8
-ms.sourcegitcommit: 1fbdefdace8a1d3412900c6c3f89678d8a9b29bc
+ms.openlocfilehash: f6daa452ef89f42def69f4af6d183ae1eac00fd3
+ms.sourcegitcommit: a04b0b1009b0c62f2deb7c7acee75a1304d98f87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82886935"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83796737"
 ---
 # <a name="service-bus-authentication-and-authorization"></a>服务总线身份验证和授权
 
@@ -36,6 +36,7 @@ SAS 令牌既可由服务总线客户端直接生成，也可由某些颁发与�
 有关使用 Azure AD 进行身份验证的详细信息，请参阅以下文章：
 
 - [使用托管标识进行身份验证](service-bus-managed-service-identity.md)
+- [从应用程序进行身份验证](authenticate-application.md)
 
 > [!IMPORTANT]
 > 使用 Azure AD 返回的 OAuth 2.0 令牌授权用户或应用程序可提供比共享访问签名 (SAS) 更高的安全性和易用性。 使用 Azure AD，不需要在代码中存储令牌，也不需要冒潜在的安全漏洞风险。 我们建议你尽可能通过 Azure 服务总线应用程序使用 Azure AD。 
@@ -44,23 +45,23 @@ SAS 令牌既可由服务总线客户端直接生成，也可由某些颁发与�
 ## <a name="shared-access-signature"></a>共享访问签名
 通过 [SAS 身份验证](service-bus-sas.md)可向具有特定权限的用户授予对服务总线资源的访问权限。 服务总线中的 SAS 身份验证涉及配置具有服务总线资源相关权限的加密密钥。 客户端随后即可通过提供 SAS 令牌获取该资源的访问权限，该令牌由要访问的资源 URI 和签有已配置密钥的过期时间组成。
 
-可以在服务总线命名空间上配置用于 SAS 的密钥。 该密钥将应用到该命名空间中的所有消息传送实体。 可在服务总线队列和主题上配置密钥。 [Azure 中继](../service-bus-relay/relay-authentication-and-authorization.md)也支持 SAS。
+可以在服务总线命名空间上配置用于 SAS 的密钥。 该密钥将应用到该命名空间中的所有消息传送实体。 还可在服务总线队列和主题上配置密钥。 [Azure 中继](../service-bus-relay/relay-authentication-and-authorization.md)也支持 SAS。
 
 若要使用 SAS，可以为命名空间、队列或主题配置 [SharedAccessAuthorizationRule](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) 对象。 此规则由以下元素组成：
 
 * *KeyName*：标识规则。
 * *PrimaryKey*：用于对 SAS 令牌进行签名/验证的加密密钥。
 * *SecondaryKey*：用于对 SAS 令牌进行签名/验证的加密密钥。密钥。
-* *Rights*：表示授予的“侦听”、“发送”或“管理”权限的集合。   
+* *Rights*：表示授予的“侦听”、“发送”或“管理”权限的集合。  
 
-通过在命名空间级别配置的授权规则，可以向具有使用相应密钥签名的令牌的客户端授予命名空间中所有实体的访问权限。 在服务总线命名空间、队列或主题上最多可配置 12 个此类规则。 默认情况下，首次预配时，将为每个命名空间配置具有所有权限的 [SharedAccessAuthorizationRule](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule)。
+通过在命名空间级别配置的授权规则，可以向具有使用相应密钥签名的令牌的客户端授予对命名空间中所有实体的访问权限。 在服务总线命名空间、队列或主题上最多可配置 12 个此类规则。 默认情况下，首次预配时，为每个命名空间配置具有所有权限的 [SharedAccessAuthorizationRule](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) 。
 
-若要访问某个实体，客户端需要使用特定 [SharedAccessAuthorizationRule](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) 生成的 SAS 令牌。 SAS 令牌是通过使用资源字符串的 HMAC-SHA256 生成的，该字符串由要授予对其访问权限的资源 URI 和授权规则相关加密密钥的过期时间组成。
+若要访问某个实体，客户端需要使用特定 [SharedAccessAuthorizationRule](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) 生成的 SAS 令牌。 SAS 令牌是通过使用资源字符串的 HMAC-SHA256 生成的，该字符串由要授予对其访问权限的资源 URI 和授权规则相关加密密钥的到期时间组成。
 
-Azure.NET SDK 2.0 版和更高版本支持服务总线的 SAS 身份验证。 SAS 支持 [SharedAccessAuthorizationRule](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule)。 允许将连接字符串作为参数的所有 API 都支持 SAS 连接字符串。
+Azure .NET SDK 2.0 版和更高版本支持服务总线的 SAS 身份验证。 SAS 支持 [SharedAccessAuthorizationRule](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule)。 允许将连接字符串作为参数的所有 API 都支持 SAS 连接字符串。
 
 ## <a name="next-steps"></a>后续步骤
 - 有关 SAS 的详细信息，请继续阅读[使用共享访问签名进行服务总线身份验证](./service-bus-sas.md)。
 - 如何[从 Azure Active Directory 访问控制 (ACS) 迁移到共享访问签名授权](service-bus-migrate-acs-sas.md)。
-- [更改为启用 ACS 的命名空间。](https://blogs.msdn.microsoft.com/servicebus/2017/06/01/upcoming-changes-to-acs-enabled-namespaces/)
+- [更改为启用 ACS 的命名空间](https://blogs.msdn.microsoft.com/servicebus/2017/06/01/upcoming-changes-to-acs-enabled-namespaces/)。
 - 有关 Azure 中继身份验证和授权的相关信息，请参阅 [Azure 中继身份验证和授权](../service-bus-relay/relay-authentication-and-authorization.md)。 

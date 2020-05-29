@@ -1,18 +1,18 @@
 ---
 title: 管理 Azure Log Analytics 代理
 description: 本文介绍在计算机上部署的 Log Analytics Windows 或 Linux 代理的生命周期中通常会执行的不同管理任务。
-author: lingliw
+author: Johnnytechn
 manager: digimobile
 ms.topic: conceptual
 origin.date: 06/14/2019
-ms.date: 07/14/2019
-ms.author: v-lingwu
-ms.openlocfilehash: 5e3c8ae3286544dc495710bb6783710809f4359a
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/21/2020
+ms.author: v-johya
+ms.openlocfilehash: 9f57a859a6a03d8231ff33daed130a6684ba0428
+ms.sourcegitcommit: a04b0b1009b0c62f2deb7c7acee75a1304d98f87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79452581"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83796736"
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>管理并维护 Windows 和 Linux 的 Log Analytics 代理
 
@@ -34,15 +34,15 @@ ms.locfileid: "79452581"
 
 可以通过执行以下步骤从你的 Log Analytics 工作区下载 Windows 代理的最新版本。
 
-1. 登录 [Azure 门户](https://portal.azure.cn)。
+1. 登录到 [Azure 门户](https://portal.azure.cn)。
 
-2. 在 Azure 门户中，单击“所有服务”  。 在资源列表中，键入“Log Analytics”  。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics 工作区”  。
+2. 在 Azure 门户中，单击“所有服务”。 在资源列表中，键入“Log Analytics”。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics 工作区”。
 
 3. 在 Log Analytics 工作区列表中选择一个工作区。
 
-4. 在你的 Log Analytics 工作区中，选择“高级设置”  ，然后选择“连接的源”  ，最后选择“Windows Server”  。
+4. 在你的 Log Analytics 工作区中，选择“高级设置”，然后选择“连接的源”，最后选择“Windows Server”。
 
-5. 在“Windows Server”页上，选择“下载 Windows 代理”，根据 Windows 操作系统的处理器体系结构下载相应的版本。  
+5. 在“Windows Server”页上，选择“下载 Windows 代理”，根据 Windows 操作系统的处理器体系结构下载相应的版本。 
 
 >[!NOTE]
 >在升级适用于 Windows 的 Log Analytics 代理期间，不支持配置或重新配置要报告到的工作区。 若要配置该代理，需要遵循[添加或删除工作区](#adding-or-removing-a-workspace)下列出的受支持的方法之一。
@@ -54,13 +54,13 @@ ms.locfileid: "79452581"
 
 2. 执行 **MMASetup-\<platform\>.exe** 以启动安装向导。
 
-3. 在安装向导的第一页上，单击“下一步”  。
+3. 在安装向导的第一页上，单击“下一步”。
 
-4. 在“Microsoft Monitoring Agent 安装”  对话框中，单击“我同意”  以接受许可协议。
+4. 在“Microsoft Monitoring Agent 安装”对话框中，单击“我同意”以接受许可协议。
 
-5. 在“Microsoft Monitoring Agent 安装”  对话框中，单击“升级”  。 状态页面将显示升级进度。
+5. 在“Microsoft Monitoring Agent 安装”对话框中，单击“升级”。 状态页面将显示升级进度。
 
-6. 当“Microsoft Monitoring Agent 配置已成功完成。”  页面出现时，单击“完成”  。
+6. 当“Microsoft Monitoring Agent 配置已成功完成。” 页面出现时，单击“完成”。
 
 #### <a name="to-upgrade-from-the-command-line"></a>从命令行进行升级
 
@@ -91,13 +91,15 @@ ms.locfileid: "79452581"
 
 1. 使用具有管理权限的帐户登录到计算机。
 
-2. 打开“控制面板” 
+2. 打开“控制面板”
 
-3. 选择“Microsoft Monitoring Agent”，然后单击“Azure Log Analytics”选项卡   。
+3. 选择“Microsoft Monitoring Agent”，然后单击“Azure Log Analytics”选项卡 。
 
-4. 若要删除工作区，请选中该工作区，然后单击“删除”  。 如果还需代理停止向任何其他工作区报告，请重复此步骤。
-5. 若要添加工作区，请单击“添加”，然后在“添加 Log Analytics 工作区”对话框中粘贴工作区 ID 和工作区密钥（主密钥）   。 如果计算机应向 Azure 中国云中的 Log Analytics 工作区报告，请从“Azure 云”下拉列表中选择“Azure 中国政府”。
-6. 单击 **“确定”** 保存所做的更改。
+4. 若要删除工作区，请选中该工作区，然后单击“删除”。 如果还需代理停止向任何其他工作区报告，请重复此步骤。
+
+5. 若要添加工作区，请单击“添加”，然后在“添加 Log Analytics 工作区”对话框中粘贴工作区 ID 和工作区密钥（主密钥） 。 
+
+6.  单击“确定”以保存你的更改。
 
 #### <a name="remove-a-workspace-using-powershell"></a>使用 PowerShell 删除工作区
 
@@ -118,15 +120,16 @@ $mma.AddCloudWorkspace($workspaceId, $workspaceKey)
 $mma.ReloadConfiguration()
 ```
 
-#### <a name="add-a-workspace-in-azure-for-china-government-using-powershell"></a>使用 PowerShell 在 Azure 中国政府版中添加工作区
+#### <a name="add-a-workspace-in-azure-for-china-using-powershell"></a>使用 PowerShell 在中国区 Azure 中添加工作区
 
 ```powershell
 $workspaceId = "<Your workspace Id>"
 $workspaceKey = "<Your workspace Key>"
 $mma = New-Object -ComObject 'AgentConfigManager.MgmtSvcCfg'
-$mma.AddCloudWorkspace($workspaceId, $workspaceKey, 1)
+$mma.AddCloudWorkspace($workspaceId, $workspaceKey, 2)
 $mma.ReloadConfiguration()
 ```
+<!-- The correct parameter for Mooncake should be 2 -->
 
 >[!NOTE]
 >如果以前已使用命令行或脚本安装或配置了代理，`EnableAzureOperationalInsights` 会被 `AddCloudWorkspace` 和 `RemoveCloudWorkspace` 取代。
@@ -172,11 +175,11 @@ $mma.ReloadConfiguration()
 
 1. 使用具有管理权限的帐户登录到计算机。
 
-2. 打开“控制面板” 
+2. 打开“控制面板”
 
-3. 选择“Microsoft Monitoring Agent”，然后单击“代理设置”选项卡   。
+3. 选择“Microsoft Monitoring Agent”，然后单击“代理设置”选项卡 。
 
-4. 单击“使用代理服务器”，然后提供代理服务器或网关的 URL 和端口号  。 如果代理服务器或 Log Analytics 网关要求身份验证，请键入用户名和密码进行身份验证，然后单击“确定”  。
+4. 单击“使用代理服务器”，然后提供代理服务器或网关的 URL 和端口号。 如果代理服务器或 Log Analytics 网关要求身份验证，请键入用户名和密码进行身份验证，然后单击“确定”。
 
 #### <a name="update-settings-using-powershell"></a>使用 PowerShell 更新设置
 
@@ -231,9 +234,9 @@ $healthServiceSettings.SetProxyInfo($ProxyDomainName, $ProxyUserName, $cred.GetN
 #### <a name="uninstall-from-control-panel"></a>从控制面板卸载
 1. 使用具有管理权限的帐户登录到计算机。
 
-2. 在“控制面板”中，单击“程序和功能”   。
+2. 在“控制面板”中，单击“程序和功能” 。
 
-3. 在“程序和功能”中依次单击“Microsoft Monitoring Agent”、“卸载”、“是”     。
+3. 在“程序和功能”中依次单击“Microsoft Monitoring Agent”、“卸载”、“是”   。
 
 >[!NOTE]
 >还可以通过双击“MMASetup-\<platform\>.exe”运行代理安装向导，该程序可从 Azure 门户中的工作区下载。
@@ -261,19 +264,19 @@ $healthServiceSettings.SetProxyInfo($ProxyDomainName, $ProxyUserName, $cred.GetN
 
 1. 使用具有管理权限的帐户登录到计算机。
 
-2. 打开“控制面板” 
+2. 打开“控制面板”
 
-3. 单击“Microsoft Monitoring Agent”，然后单击“Operations Manager”选项卡   。
+3. 单击“Microsoft Monitoring Agent”，然后单击“Operations Manager”选项卡 。
 
 4. 如果 Operations Manager 服务器与 Active Directory 集成，请单击“**自动更新 AD DS 中的管理组分配**”。
 
 5. 单击“**添加**”以打开“**添加管理组**”对话框。
 
-6. 在“管理组名称”字段，键入管理组的名称  。
+6. 在“管理组名称”字段，键入管理组的名称。
 
-7. 在“主管理服务器”字段，键入主管理服务器的计算机名  。
+7. 在“主管理服务器”字段，键入主管理服务器的计算机名。
 
-8. 在“管理服务器端口”字段，键入 TCP 端口号  。
+8. 在“管理服务器端口”字段，键入 TCP 端口号。
 
 9. 在“**代理操作帐户**”下面，选择本地系统帐户或本地域帐户。
 
@@ -284,7 +287,7 @@ $healthServiceSettings.SetProxyInfo($ProxyDomainName, $ProxyUserName, $cred.GetN
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
-1. 编辑 `/etc/opt/omi/conf/omiserver.conf` 文件
+1. 编辑 `/etc/opt/omi/conf/omiserver.conf`
 
 2. 确保以 `httpsport=` 开头的行定义了端口 1270。 例如：`httpsport=1270`
 
@@ -294,6 +297,4 @@ $healthServiceSettings.SetProxyInfo($ProxyDomainName, $ProxyUserName, $cred.GetN
 
 - 如果在安装或管理 Linux 代理时遇到问题，请查看 [Linux 代理疑难解答](agent-linux-troubleshoot.md)。
 
-
-
-
+- 如果在安装或管理 Windows 代理时遇到问题，请查看 [Windows 代理疑难解答](agent-windows-troubleshoot.md)。

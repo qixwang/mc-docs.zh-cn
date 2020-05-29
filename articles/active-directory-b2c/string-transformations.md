@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/01/2020
+ms.date: 05/18/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: fdb2fccd9ede46780d457c859bc4c1448d1da75a
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 6da66fb64a494de76df3846242f47ec33baca489
+ms.sourcegitcommit: 87e789550ea49ff77c7f19bc68fad228009fcf44
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80581654"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83748111"
 ---
 # <a name="string-claims-transformations"></a>字符串声明转换
 
@@ -34,12 +34,12 @@ ms.locfileid: "80581654"
 | InputClaim | inputClaim2 | string | 要比较的第二个声明的类型。 |
 | InputParameter | stringComparison | string | 字符串比较，值为下列其中一项：Ordinal、OrdinalIgnoreCase。 |
 
-AssertStringClaimsAreEqual  声明转换始终从[验证技术配置文件](validation-technical-profile.md)执行，该文件由[自断言技术配置文件](self-asserted-technical-profile.md)或 [DisplayConrtol](display-controls.md) 调用。 自断言技术配置文件的 `UserMessageIfClaimsTransformationStringsAreNotEqual` 元数据控制向用户显示的错误消息。 可以将错误消息[本地化](localization-string-ids.md#claims-transformations-error-messages)。
+AssertStringClaimsAreEqual 声明转换始终从[验证技术配置文件](validation-technical-profile.md)执行，该文件由[自断言技术配置文件](self-asserted-technical-profile.md)或 [DisplayConrtol](display-controls.md) 调用。 自断言技术配置文件的 `UserMessageIfClaimsTransformationStringsAreNotEqual` 元数据控制向用户显示的错误消息。 可以将错误消息[本地化](localization-string-ids.md#claims-transformations-error-messages)。
 
 
 ![AssertStringClaimsAreEqual 执行](./media/string-transformations/assert-execution.png)
 
-可以使用此声明转换来确保两个 ClaimTypes 具有相同的值。 如果没有，则会引发错误消息。 以下示例检查 strongAuthenticationEmailAddress  ClaimType 是否等同于 email  ClaimType， 否则会引发错误消息。
+可以使用此声明转换来确保两个 ClaimTypes 具有相同的值。 如果没有，则会引发错误消息。 以下示例检查 strongAuthenticationEmailAddress ClaimType 是否等同于 email ClaimType， 否则会引发错误消息。
 
 ```XML
 <ClaimsTransformation Id="AssertEmailAndStrongAuthenticationEmailAddressAreEqual" TransformationMethod="AssertStringClaimsAreEqual">
@@ -54,7 +54,7 @@ AssertStringClaimsAreEqual  声明转换始终从[验证技术配置文件](vali
 ```
 
 
-login-NonInteractive  验证技术配置文件调用 AssertEmailAndStrongAuthenticationEmailAddressAreEqual  声明转换。
+login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenticationEmailAddressAreEqual 声明转换。
 ```XML
 <TechnicalProfile Id="login-NonInteractive">
   ...
@@ -64,7 +64,7 @@ login-NonInteractive  验证技术配置文件调用 AssertEmailAndStrongAuthent
 </TechnicalProfile>
 ```
 
-自断言技术配置文件调用验证 login-NonInteractive  技术配置文件。
+自断言技术配置文件调用验证 login-NonInteractive 技术配置文件。
 
 ```XML
 <TechnicalProfile Id="SelfAsserted-LocalAccountSignin-Email">
@@ -80,10 +80,10 @@ login-NonInteractive  验证技术配置文件调用 AssertEmailAndStrongAuthent
 ### <a name="example"></a>示例
 
 - 输入声明：
-  -  inputClaim1: someone@contoso.com
-  -  inputClaim2: someone@outlook.com
+  - inputClaim1: someone@contoso.com
+  - inputClaim2: someone@outlook.com
 - 输入参数：
-  -  stringComparison: ordinalIgnoreCase
+  - stringComparison: ordinalIgnoreCase
 - 结果：引发错误
 
 ## <a name="changecase"></a>ChangeCase
@@ -115,11 +115,11 @@ login-NonInteractive  验证技术配置文件调用 AssertEmailAndStrongAuthent
 ### <a name="example"></a>示例
 
 - 输入声明：
-  -  email: SomeOne@contoso.com
+  - email: SomeOne@contoso.com
 - 输入参数：
     - **toCase**：LOWER
 - 输出声明：
-  -  email: someone@contoso.com
+  - email: someone@contoso.com
 
 ## <a name="createstringclaim"></a>CreateStringClaim
 
@@ -162,7 +162,7 @@ login-NonInteractive  验证技术配置文件调用 AssertEmailAndStrongAuthent
 | InputParameter | ignoreCase | boolean | 指定此比较是否应忽略所比较字符串的大小写。 |
 | OutputClaim | outputClaim | boolean | 调用此声明转换后生成的 ClaimType。 |
 
-使用此声明转换检查一个声明是否等于另一个声明。 例如，以下声明转换检查 email  声明的值是否等于 Verified.Email  声明的值。
+使用此声明转换检查一个声明是否等于另一个声明。 例如，以下声明转换检查 email 声明的值是否等于 Verified.Email 声明的值。
 
 ```XML
 <ClaimsTransformation Id="CheckEmail" TransformationMethod="CompareClaims">
@@ -183,11 +183,11 @@ login-NonInteractive  验证技术配置文件调用 AssertEmailAndStrongAuthent
 ### <a name="example"></a>示例
 
 - 输入声明：
-  -  inputClaim1: someone@contoso.com
-  -  inputClaim2: someone@outlook.com
+  - inputClaim1: someone@contoso.com
+  - inputClaim2: someone@outlook.com
 - 输入参数：
     - **operator**：不等于
-    -  ignoreCase: true
+    - ignoreCase: true
 - 输出声明：
     - **outputClaim**: true
 
@@ -203,7 +203,7 @@ login-NonInteractive  验证技术配置文件调用 AssertEmailAndStrongAuthent
 | InputParameter | ignoreCase | boolean | 指定此比较是否应忽略所比较字符串的大小写。 |
 | OutputClaim | outputClaim | boolean | 调用此声明转换后生成的 ClaimType。 |
 
-可以使用此声明转换检查一个声明是否等于指定的值。 例如，以下声明转换将检查 termsOfUseConsentVersion  声明的值是否等于 `v1`。
+可以使用此声明转换检查一个声明是否等于指定的值。 例如，以下声明转换将检查 termsOfUseConsentVersion 声明的值是否等于 `v1`。
 
 ```XML
 <ClaimsTransformation Id="IsTermsOfUseConsentRequiredForVersion" TransformationMethod="CompareClaimToValue">
@@ -223,11 +223,11 @@ login-NonInteractive  验证技术配置文件调用 AssertEmailAndStrongAuthent
 
 ### <a name="example"></a>示例
 - 输入声明：
-    -  inputClaim1: v1
+    - inputClaim1: v1
 - 输入参数：
     - **compareTo**:V1
     - **operator**：EQUAL
-    -  ignoreCase:  true
+    - ignoreCase:  true
 - 输出声明：
     - **outputClaim**: true
 
@@ -261,7 +261,7 @@ login-NonInteractive  验证技术配置文件调用 AssertEmailAndStrongAuthent
 - 输入参数：
     - **randomGeneratorType**：GUID
 - 输出声明：
-    -  outputClaim: bc8bedd2-aaa3-411e-bdee-2f1810b73dfc
+    - outputClaim: bc8bedd2-aaa3-411e-bdee-2f1810b73dfc
 
 下面的示例生成 0 到 1000 之间的随机整数值。 值被格式化为 OTP_{random value}。
 
@@ -285,7 +285,7 @@ login-NonInteractive  验证技术配置文件调用 AssertEmailAndStrongAuthent
     - **randomGeneratorType**：INTEGER
     - **maximumNumber**：1000
     - **stringFormat**：OTP_{0}
-    -  base64: false
+    - base64: false
 - 输出声明：
     - **outputClaim**：OTP_853
 
@@ -300,7 +300,7 @@ login-NonInteractive  验证技术配置文件调用 AssertEmailAndStrongAuthent
 | InputParameter | stringFormat | string | 字符串格式，包括 {0} 参数。 此输入参数支持[字符串声明转换表达式](string-transformations.md#string-claim-transformations-expressions)。  |
 | OutputClaim | outputClaim | string | 调用此声明转换后生成的 ClaimType。 |
 
-使用此声明转换格式化任何带一个参数 {0} 的字符串。 以下示例创建一个 userPrincipalName  。 所有社交标识提供者技术配置文件都调用 **CreateUserPrincipalName** 来生成 **userPrincipalName**。
+使用此声明转换格式化任何带一个参数 {0} 的字符串。 以下示例创建一个 userPrincipalName。 所有社交标识提供者技术配置文件都调用 **CreateUserPrincipalName** 来生成 **userPrincipalName**。
 
 ```XML
 <ClaimsTransformation Id="CreateUserPrincipalName" TransformationMethod="FormatStringClaim">
@@ -321,9 +321,9 @@ login-NonInteractive  验证技术配置文件调用 AssertEmailAndStrongAuthent
 - 输入声明：
     - **inputClaim**：5164db16-3eee-4629-bfda-dcc3326790e9
 - 输入参数：
-    -  stringFormat:  cpim_{0}@{RelyingPartyTenantId}
+    - stringFormat:  cpim_{0}@{RelyingPartyTenantId}
 - 输出声明：
-  -  outputClaim: cpim_5164db16-3eee-4629-bfda-dcc3326790e9@b2cdemo.partner.onmschina.cn
+  - outputClaim: cpim_5164db16-3eee-4629-bfda-dcc3326790e9@b2cdemo.partner.onmschina.cn
 
 ## <a name="formatstringmultipleclaims"></a>FormatStringMultipleClaims
 
@@ -336,7 +336,7 @@ login-NonInteractive  验证技术配置文件调用 AssertEmailAndStrongAuthent
 | InputParameter | stringFormat | string | 字符串格式，包括 {0} 和 {1} 参数。 此输入参数支持[字符串声明转换表达式](string-transformations.md#string-claim-transformations-expressions)。   |
 | OutputClaim | outputClaim | string | 调用此声明转换后生成的 ClaimType。 |
 
-使用此声明转换格式化任何带两个参数 {0} 和 {1} 的字符串。 下面的示例创建带指定格式的 displayName  ：
+使用此声明转换格式化任何带两个参数 {0} 和 {1} 的字符串。 下面的示例创建带指定格式的 displayName：
 
 ```XML
 <ClaimsTransformation Id="CreateDisplayNameFromFirstNameAndLastName" TransformationMethod="FormatStringMultipleClaims">
@@ -435,14 +435,14 @@ login-NonInteractive  验证技术配置文件调用 AssertEmailAndStrongAuthent
 
 ## <a name="getmappedvaluefromlocalizedcollection"></a>GetMappedValueFromLocalizedCollection
 
-从声明 Restriction  集合中查找项。
+从声明 Restriction 集合中查找项。
 
 | 项目 | TransformationClaimType | 数据类型 | 注释 |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | mapFromClaim | string | 该声明包含要在带 Restriction  集合的 restrictionValueClaim  声明中查找的文本。  |
-| OutputClaim | restrictionValueClaim | string | 包含 Restriction  集合的声明。 在调用声明转换后，此声明的值将包含选定项的值。 |
+| InputClaim | mapFromClaim | string | 该声明包含要在带 Restriction 集合的 restrictionValueClaim 声明中查找的文本。  |
+| OutputClaim | restrictionValueClaim | string | 包含 Restriction 集合的声明。 在调用声明转换后，此声明的值将包含选定项的值。 |
 
-下面的示例基于错误密钥查找错误消息描述。 ResponseMsg  声明包含一系列要显示给最终用户或发送给信赖方的错误消息。
+下面的示例基于错误密钥查找错误消息描述。 ResponseMsg 声明包含一系列要显示给最终用户或发送给信赖方的错误消息。
 
 ```XML
 <ClaimType Id="responseMsg">
@@ -509,14 +509,14 @@ login-NonInteractive  验证技术配置文件调用 AssertEmailAndStrongAuthent
 ### <a name="example"></a>示例
 
 - 输入声明：
-    -  inputParameterId: test.com
+    - inputParameterId: test.com
 - 输入参数：
     - **contoso.com**：13c15f79-8fb1-4e29-a6c9-be0d36ff19f1
     - **microsoft.com**：0213308f-17cb-4398-b97e-01da7bd4804e
-    -  test.com: c7026f88-4299-4cdb-965d-3f166464b8a9
-    -  errorOnFailedLookup: false
+    - test.com: c7026f88-4299-4cdb-965d-3f166464b8a9
+    - errorOnFailedLookup: false
 - 输出声明：
-    -  outputClaim:  c7026f88-4299-4cdb-965d-3f166464b8a9
+    - outputClaim:  c7026f88-4299-4cdb-965d-3f166464b8a9
 
 将 `errorOnFailedLookup` 输入参数设置为 `true` 时，**LookupValue** 声明转换始终从[验证技术配置文件](validation-technical-profile.md)执行，该文件由[自断言技术配置文件](self-asserted-technical-profile.md)或 [DisplayConrtol](display-controls.md) 调用。 自断言技术配置文件的 `LookupNotFound` 元数据控制向用户显示的错误消息。
 
@@ -548,7 +548,7 @@ login-NonInteractive  验证技术配置文件调用 AssertEmailAndStrongAuthent
 - 输入参数：
     - **contoso.com**：13c15f79-8fb1-4e29-a6c9-be0d36ff19f1
     - **microsoft.com**：0213308f-17cb-4398-b97e-01da7bd4804e
-    -  test.com: c7026f88-4299-4cdb-965d-3f166464b8a9
+    - test.com: c7026f88-4299-4cdb-965d-3f166464b8a9
     - **errorOnFailedLookup**: true
 - 错误：
     - 在输入参数 ID 列表中找不到输入声明值的匹配项，errorOnFailedLookup 为 true。
@@ -586,7 +586,7 @@ login-NonInteractive  验证技术配置文件调用 AssertEmailAndStrongAuthent
 | InputClaim | emailAddress | string | 包含电子邮件地址的 ClaimType。 |
 | OutputClaim | 域 | string | 调用此声明转换后生成的 ClaimType - 域。 |
 
-使用此声明转换分析用户 @ 符号之后的域名。 以下声明转换演示如何分析 email  声明中的域名。
+使用此声明转换分析用户 @ 符号之后的域名。 以下声明转换演示如何分析 email 声明中的域名。
 
 ```XML
 <ClaimsTransformation Id="SetDomainName" TransformationMethod="ParseDomain">
@@ -602,9 +602,9 @@ login-NonInteractive  验证技术配置文件调用 AssertEmailAndStrongAuthent
 ### <a name="example"></a>示例
 
 - 输入声明：
-  -  emailAddress: joe@outlook.com
+  - emailAddress: joe@outlook.com
 - 输出声明：
-    -  domain: outlook.com
+    - domain: outlook.com
 
 ## <a name="setclaimsifregexmatch"></a>SetClaimsIfRegexMatch
 
@@ -615,13 +615,17 @@ login-NonInteractive  验证技术配置文件调用 AssertEmailAndStrongAuthent
 | inputClaim | claimToMatch | string | 要比较的声明类型。 |
 | InputParameter | matchTo | string | 要匹配的正则表达式。 |
 | InputParameter | outputClaimIfMatched | string | 字符串相等情况下要设置的值。 |
+| InputParameter | extractGroups | boolean | [可选] 指定正则表达式匹配是否应提取组值。 可能的值：`true` 或 `false`（默认值）。 | 
 | OutputClaim | outputClaim | string | 如果正则表达式是匹配项，此输出声明包含 `outputClaimIfMatched` 输入参数的值。 如果没有匹配项，则为 null。 |
 | OutputClaim | regexCompareResultClaim | boolean | 正则表达式匹配结果输出声明类型，根据匹配结果设置为 `true` 或 `false`。 |
+| OutputClaim| 声明名称| string | 如果 extractGroups 输入参数设置为 true，调用此声明转换后生成的声明类型列表。 ClaimType 的名称必须与正则表达式组名称匹配。 | 
 
-例如，根据电话号码正则表达式模式检查提供的电话号码是否有效。
+### <a name="example-1"></a>示例 1
+
+根据电话号码正则表达式模式检查提供的电话号码是否有效。
 
 ```XML
-<ClaimsTransformation Id="SetIsPhoneRegex" TransformationMethod="setClaimsIfRegexMatch">
+<ClaimsTransformation Id="SetIsPhoneRegex" TransformationMethod="SetClaimsIfRegexMatch">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="phone" TransformationClaimType="claimToMatch" />
   </InputClaims>
@@ -636,8 +640,6 @@ login-NonInteractive  验证技术配置文件调用 AssertEmailAndStrongAuthent
 </ClaimsTransformation>
 ```
 
-### <a name="example"></a>示例
-
 - 输入声明：
     - **claimToMatch**："64854114520"
 - 输入参数：
@@ -647,6 +649,39 @@ login-NonInteractive  验证技术配置文件调用 AssertEmailAndStrongAuthent
     - **outputClaim**: "isPhone"
     - **regexCompareResultClaim**: true
 
+### <a name="example-2"></a>示例 2
+
+检查提供的电子邮件地址是否有效，并返回电子邮件别名。
+
+```XML
+<ClaimsTransformation Id="GetAliasFromEmail" TransformationMethod="SetClaimsIfRegexMatch">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="email" TransformationClaimType="claimToMatch" />
+  </InputClaims>
+  <InputParameters>
+    <InputParameter Id="matchTo" DataType="string" Value="(?&lt;mailAlias&gt;.*)@(.*)$" />
+    <InputParameter Id="outputClaimIfMatched" DataType="string" Value="isEmail" />
+    <InputParameter Id="extractGroups" DataType="boolean" Value="true" />
+  </InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="validationResult" TransformationClaimType="outputClaim" />
+    <OutputClaim ClaimTypeReferenceId="isEmailString" TransformationClaimType="regexCompareResultClaim" />
+    <OutputClaim ClaimTypeReferenceId="mailAlias" />
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+- 输入声明：
+    - **claimToMatch**: "emily@contoso.com"
+- 输入参数：
+    - **matchTo**: `(?&lt;mailAlias&gt;.*)@(.*)$`
+    - **outputClaimIfMatched**:  "isEmail"
+    - **extractGroups**: true
+- 输出声明：
+    - **outputClaim**: "isEmail"
+    - **regexCompareResultClaim**: true
+    - **mailAlias**: emily
+    
 ## <a name="setclaimsifstringsareequal"></a>SetClaimsIfStringsAreEqual
 
 检查字符串声明和 `matchTo` 输入参数是否相等，并使用 `stringMatchMsg` 和 `stringMatchMsgCode` 输入参数中提供的值设置输出声明，以及比较结果输出声明，将基于比较结果将此声明设置为 `true` 或 `false`。
@@ -662,7 +697,7 @@ login-NonInteractive  验证技术配置文件调用 AssertEmailAndStrongAuthent
 | OutputClaim | outputClaim2 | string | 如果字符串相等，则此输出声明包含 `stringMatchMsgCode` 输入参数的值。 |
 | OutputClaim | stringCompareResultClaim | boolean | 比较结果输出声明类型，将基于比较结果设置为 `true` 或 `false`。 |
 
-可以使用此声明转换检查一个声明是否等于指定的值。 例如，以下声明转换将检查 termsOfUseConsentVersion  声明的值是否等于 `v1`。 如果是，则将值更改为 `v2`。
+可以使用此声明转换检查一个声明是否等于指定的值。 例如，以下声明转换将检查 termsOfUseConsentVersion 声明的值是否等于 `v1`。 如果是，则将值更改为 `v2`。
 
 ```XML
 <ClaimsTransformation Id="CheckTheTOS" TransformationMethod="SetClaimsIfStringsAreEqual">
@@ -685,16 +720,16 @@ login-NonInteractive  验证技术配置文件调用 AssertEmailAndStrongAuthent
 ### <a name="example"></a>示例
 
 - 输入声明：
-    -  inputClaim: v1
+    - inputClaim: v1
 - 输入参数：
     - **matchTo**：V1
-    -  stringComparison: ordinalIgnoreCase
+    - stringComparison: ordinalIgnoreCase
     - **stringMatchMsg**：B2C_V1_90005
     - **stringMatchMsgCode**：TOS 升级到 v2
 - 输出声明：
     - **outputClaim1**：B2C_V1_90005
     - **outputClaim2**：TOS 升级到 v2
-    -  stringCompareResultClaim: true
+    - stringCompareResultClaim: true
 
 ## <a name="setclaimsifstringsmatch"></a>SetClaimsIfStringsMatch
 
@@ -709,7 +744,7 @@ login-NonInteractive  验证技术配置文件调用 AssertEmailAndStrongAuthent
 | OutputClaim | outputClaim | string | 如果字符串相等，则此输出声明包含 `outputClaimIfMatched` 输入参数的值。 或者如果字符串不匹配，则为 NULL。 |
 | OutputClaim | stringCompareResultClaim | boolean | 比较结果输出声明类型，将基于比较结果设置为 `true` 或 `false`。 |
 
-例如，以下声明转换检查 ageGroup  声明的值是否等于 `Minor`。 如果是，则返回 `B2C_V1_90001` 值。
+例如，以下声明转换检查 ageGroup 声明的值是否等于 `Minor`。 如果是，则返回 `B2C_V1_90001` 值。
 
 ```XML
 <ClaimsTransformation Id="SetIsMinor" TransformationMethod="SetClaimsIfStringsMatch">
@@ -734,11 +769,11 @@ login-NonInteractive  验证技术配置文件调用 AssertEmailAndStrongAuthent
     - **claimToMatch**：Minor
 - 输入参数：
     - **matchTo**：Minor
-    -  stringComparison: ordinalIgnoreCase
+    - stringComparison: ordinalIgnoreCase
     - **outputClaimIfMatched**：B2C_V1_90001
 - 输出声明：
     - **isMinorResponseCode**：B2C_V1_90001
-    -  isMinor: true
+    - isMinor: true
 
 
 ## <a name="stringcontains"></a>StringContains
@@ -775,7 +810,7 @@ login-NonInteractive  验证技术配置文件调用 AssertEmailAndStrongAuthent
     - **inputClaim**："Admin, Approver, Editor"
 - 输入参数：
     - **contains**: "admin,"
-    -  ignoreCase: true
+    - ignoreCase: true
 - 输出声明：
     - **outputClaim**: true
 
@@ -935,4 +970,3 @@ Azure AD B2C 自定义策略中的声明转换表达式提供了有关租户 ID 
  | `{RelyingPartyTenantId}` | 信赖方策略的租户 ID。 | your-tenant.partner.onmschina.cn |
  | `{TrustFrameworkTenantId}` | 信任框架的租户 ID。 | your-tenant.partner.onmschina.cn |
 
-<!-- Update_Description: wording update -->

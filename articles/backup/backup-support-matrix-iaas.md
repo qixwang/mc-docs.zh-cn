@@ -2,18 +2,19 @@
 title: Azure VM 备份的支持矩阵
 description: 提供有关在使用 Azure 备份服务备份 Azure VM 时的支持设置和限制摘要。
 ms.topic: conceptual
-author: lingliw
+author: Johnnytechn
 origin.date: 09/13/2019
-ms.date: 11/20/2019
-ms.author: v-lingwu
-ms.openlocfilehash: 00351ca35af4e0a7c3616d934142ae884356566d
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/11/2020
+ms.author: v-johya
+ms.openlocfilehash: a95f183ecb120f1addfe1fa7fa53cf9de06ec88f
+ms.sourcegitcommit: 08b42258a48d96d754244064d065e4d5703f1cfb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292095"
+ms.lasthandoff: 05/18/2020
+ms.locfileid: "83445176"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM 备份的支持矩阵
+
 可以使用 [Azure 备份服务](backup-overview.md)备份本地计算机和工作负荷以及 Azure 虚拟机 (VM)。 本文汇总了使用 Azure 备份服务备份 Azure VM 时的支持设置和限制。
 
 其他支持矩阵：
@@ -29,7 +30,7 @@ ms.locfileid: "79292095"
 **方案** | **备份** | **代理** |**还原**
 --- | --- | --- | ---
 直接备份 Azure VM  | 备份整个 VM。  | 无需在 Azure VM 上安装其他代理。 Azure 备份将为 VM 上运行的 [Azure VM 代理](/virtual-machines/extensions/agent-windows)安装一个扩展并使用该扩展。 | 按如下所述进行还原：<br/><br/> - **创建基本的 VM**。 如果 VM 不使用特殊配置（例如多个 IP 地址），则此操作非常有用。<br/><br/> - **还原 VM 磁盘**。 还原磁盘。 然后将磁盘附加到现有 VM，或使用 PowerShell 从磁盘创建新的 VM。<br/><br/> - **替换 VM 磁盘**。 如果 VM 存在并使用托管磁盘（未加密），则你可以还原磁盘并使用它来替换 VM 上的现有磁盘。<br/><br/> - **还原特定的文件/文件夹**。 可以从 VM 还原文件/文件夹，而不是从整个 VM 还原。
-直接备份 Azure VM（仅适用于 Windows）  | 备份特定的文件/文件夹/卷。 | 安装 Azure 恢复服务代理<br/><br/> 可将 MARS 代理与适用于 Azure VM 代理的备份扩展一同运行，以便在文件/文件夹级别备份 VM。 | 还原特定的文件夹/文件。
+直接备份 Azure VM（仅适用于 Windows）  | 备份特定的文件/文件夹/卷。 | 安装 [Azure 恢复服务代理](backup-azure-file-folder-backup-faq.md)。<br/><br/> 可将 MARS 代理与适用于 Azure VM 代理的备份扩展一同运行，以便在文件/文件夹级别备份 VM。 | 还原特定的文件夹/文件。
 将 Azure VM 备份到备份服务器  | 将文件/文件夹/卷、系统状态/裸机文件和应用数据备份到 System Center DPM 或 Microsoft Azure 备份服务器 (MABS)。<br/><br/> 然后，DPM/MABS 将备份到备份保管库。 | 在 VM 上安装 DPM/MABS 保护代理。 在 DPM/MABS 上安装 MARS 代理。| 还原文件/文件夹/卷；系统状态/裸机文件；应用数据。
 
 详细了解如何[使用备份服务器](backup-architecture.md#architecture-back-up-to-dpmmabs)进行备份以及[支持要求](backup-support-matrix-mabs-dpm.md)。
@@ -38,13 +39,13 @@ ms.locfileid: "79292095"
 > **Azure 备份现在支持使用 Azure 虚拟机备份解决方案进行选择性磁盘备份和还原。**
 >
 >如今，Azure 备份支持使用虚拟机备份解决方案将 VM 中的所有磁盘（操作系统和数据）备份到一起。 使用排除磁盘功能，可以选择从 VM 的多个数据磁盘中备份一个或多个数据磁盘。 这样就提供了一个高效且经济的针对备份和还原需求的解决方案。 每个恢复点都包含备份操作中包含的磁盘的数据，因此还可以在还原操作过程中从给定的恢复点还原部分磁盘。 这适用于从快照和保管库进行的还原。
+>
+>**若要注册预览版，请向 AskAzureBackupTeam@microsoft.com 发送邮件**
 
 ## <a name="supported-backup-actions"></a>支持的备份操作
 
 **操作** | **支持**
 --- | ---
-创建 Windows Azure VM 时启用备份 | 支持： <br/><br/> - Windows Server 2019 (Datacenter/Datacenter Core/Standard) <br/><br/> - Windows Server 2016 (Datacenter/Datacenter Core/Standard) <br/><br/> - Windows Server 2012 R2 (Datacenter/Standard) <br/><br/> - Windows Server 2008 R2（RTM 和 SP1 Standard）
-创建 Linux VM 时启用备份 | 支持：<br/><br/> - Ubuntu Server：18.04、17.10、17.04、16.04 (LTS)、14.04 (LTS)<br/><br/> - Red Hat：RHEL 6.7、6.8、6.9、7.2、7.3、7.4<br/><br/> - SUSE Linux Enterprise Server：11 SP4、12 SP2、12 SP3、15 <br/><br/> - Debian：8、9<br/><br/> - CentOS：6.9、7.3<br/><br/> - Oracle Linux：6.7、6.8、6.9、7.2、7.3
 备份已关闭的 VM/脱机 VM | 。<br/><br/> 仅创建崩溃一致性快照，不会创建应用一致性快照。
 迁移到托管磁盘后备份磁盘 | 。<br/><br/> 备份将继续工作。 因此不需要执行任何操作。
 启用资源组锁定后备份托管磁盘 | 不支持。<br/><br/> Azure 备份无法删除旧的还原点；如果达到了还原点数目的上限，备份将开始失败。
@@ -56,18 +57,18 @@ ms.locfileid: "79292095"
 每日备份（通过 DPM/MABS） | 每日进行两次计划的备份。
 每月/每年备份| 使用 Azure VM 扩展备份时不受支持。 仅支持每日和每周备份。<br/><br/> 可将策略设置为按每月/每年保留期保留每日/每周备份。
 自动时钟调整 | 不支持。<br/><br/> 备份 VM 时，Azure 备份不会根据夏令时自动调整。<br/><br/>  请根据需要手动修改策略。
-[混合备份的安全功能](/backup/backup-azure-security-feature) |  不支持禁用安全功能。
+[混合备份的安全功能](/backup/backup-azure-security-feature) |不支持禁用安全功能。
 备份其计算机时间已发生更改的 VM | 不支持。<br/><br/> 如果在为 VM 启用备份后，其计算机时间已更改为将来的日期时间，那么，即使时间更改已还原，也不能保证备份成功。  
 
 ## <a name="operating-system-support-windows"></a>操作系统支持 (Windows)
 
-下表汇总了备份 Windows Azure VM 时支持的操作系统。
+下表汇总了备份 Azure VM 时支持的操作系统。
 
 **方案** | **OS 支持**
 --- | ---
-使用 Azure VM 代理扩展进行备份 | - Windows 10 客户端（仅 64 位） <br/><br/>- Windows Server 2019 (Datacenter/Datacenter Core/Standard) <br/><br/> - Windows Server 2016 (Datacenter/Datacenter Core/Standard) <br/><br/> - Windows Server 2012 R2 (Datacenter/Standard) <br/><br/> - Windows Server 2008 R2（RTM 和 SP1 Standard）  <br/><br/> - Windows 2008（仅 64 位）
-使用 MARS 代理进行备份 | [支持](backup-support-matrix-mars-agent.md#support-for-direct-backups)的操作系统。
-
+使用 Azure VM 代理扩展进行备份 | - Windows 10 客户端（仅 64 位） <br/><br/>- Windows Server 2019 (Datacenter/Datacenter Core/Standard) <br/><br/> - Windows Server 2016 (Datacenter/Datacenter Core/Standard) <br/><br/> - Windows Server 2012 R2 (Datacenter/Standard) <br/><br/> - Windows Server 2008 R2（RTM 和 SP1 Standard）  <br/><br/> - Windows Server 2008（仅限 64 位）
+使用 MARS 代理进行备份 | [支持](backup-support-matrix-mars-agent.md)的操作系统。
+使用 DPM/MABS 备份 | 使用 [MABS](backup-mabs-protection-matrix.md) 和 [DPM](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix?view=sc-dpm-1807) 备份时支持的操作系统。
 
 Azure 备份不支持 32 位操作系统。
 
@@ -105,19 +106,18 @@ DPM/MABS 磁盘上的恢复点数 | 文件服务器为 64 个，应用服务器�
 
 ## <a name="supported-restore-methods"></a>支持的还原方法
 
-**还原方法** | **详细信息**
+**还原选项** | **详细信息**
 --- | ---
-创建新 VM | 可以在还原过程中创建 VM。 <br/><br/> 此选项可以启动并运行一个基本的 VM。 可以指定 VM 名称、资源组、虚拟网络、子网和存储。  
-还原磁盘 | 可以还原某个磁盘并使用它来创建 VM。<br/><br/> 如果选择此选项，Azure 备份会将保管库中的数据复制到所选的存储帐户。 还原作业生成一个模板。 可以下载此模板，并使用它来指定自定义的 VM 设置和创建 VM。<br/><br/> 与前面用于创建 VM 的选项相比，使用此选项可以指定更多的设置。<br/><br/>
-替换现有磁盘 | 可以还原某个磁盘，然后使用还原的磁盘来替换当前 VM 上的磁盘。
-还原文件 | 可以从所选的恢复点恢复文件。 下载一个脚本，用于从恢复点装载 VM 磁盘。 然后，浏览磁盘卷以找到想要恢复的文件/文件夹，并在完成后卸载磁盘。
+**创建新 VM** | 从还原点快速创建并正常运行一个基本的 VM。<br/><br/> 可以为 VM 指定名称，选择要将其放入的资源组和虚拟网络 (VNet)，并为还原的 VM 指定存储帐户。 新 VM 必须在源 VM 所在的区域创建。
+**还原磁盘** | 还原某个 VM 磁盘，然后使用它来创建新的 VM。<br/><br/> Azure 备份提供一个模板来帮助你自定义和创建 VM。 <br/><br> 还原作业会生成一个模板，可以下载该模板，并使用它来指定自定义的 VM 设置和创建 VM。<br/><br/> 磁盘将复制到指定的资源组。<br/><br/> 或者，可将磁盘附加到现有 VM，或使用 PowerShell 创建新的 VM。<br/><br/> 若要自定义 VM、添加在备份时不存在的配置设置，或添加必须使用模板或 PowerShell 配置的设置，则此选项非常有用。
+**替换现有项** | 可以还原某个磁盘，并使用它来替换现有 VM 上的磁盘。<br/><br/> 当前 VM 必须存在。 如果已将其删除，则无法使用此选项。<br/><br/> Azure 备份将在替换磁盘前创建现有 VM 的快照，并将其存储在指定的暂存位置中。 连接到该 VM 的现有磁盘将替换为所选的还原点。<br/><br/> 该快照将复制到保管库，并根据保留策略予以保留。 <br/><br/> 替换磁盘操作完成后，原始磁盘会保留在资源组中。 如果不需要原始磁盘，可以选择手动删除它们。 <br/><br/>支持替换未加密的托管 VM 的现有磁盘。 不支持对非托管磁盘、[通用化 VM](/virtual-machines/windows/capture-image-resource) 或[使用自定义映像创建的](https://azure.microsoft.com/resources/videos/create-a-custom-virtual-machine-image-in-azure-resource-manager-with-powershell/) VM 使用该选项。<br/><br/> 如果还原点中的磁盘数多于或少于当前 VM 中的磁盘数，则还原点中的磁盘数只反映 VM 配置。<br><br> 包含链接资源（如[用户分配的托管标识](/active-directory/managed-identities-azure-resources/overview) 或 [Key Vault](/key-vault/key-vault-overview)）的 VM 不支持替换现有磁盘，因为备份客户端应用在执行还原时对这些资源没有权限。
+**跨区域（次要区域）** | 跨区域还原可用于还原次要区域（[Azure 配对区域](https://docs.microsoft.com/azure/best-practices-availability-paired-regions#what-are-paired-regions)）中的 Azure VM。<br><br> 如果备份在次要区域中完成，则可针对所选恢复点还原所有 Azure VM。<br><br> 此功能适用于以下选项：<br> * [创建 VM](/backup/backup-azure-arm-restore-vms#create-a-vm) <br> * [还原磁盘](/backup/backup-azure-arm-restore-vms#restore-disks) <br><br> 当前不支持[替换现有磁盘](/backup/backup-azure-arm-restore-vms#replace-existing-disks)选项。<br><br> 权限<br> 次要区域中的还原操作可由备份管理员和应用管理员执行。
 
 ## <a name="support-for-file-level-restore"></a>文件级还原支持
 
 **还原** | **支持**
 --- | ---
 跨操作系统还原文件 | 可以在与备份的 VM 使用相同（或兼容）OS 的任何计算机上还原文件。 请参阅[兼容的 OS 表格](backup-azure-restore-files-from-vm.md#system-requirements)。
-还原经典 VM 上的文件 | 不支持。
 还原已加密 VM 中的文件 | 不支持。
 还原网络受限的存储帐户中的文件 | 不支持。
 使用 Windows 存储空间还原 VM 上的文件 | 不支持在同一 VM 上还原。<br/><br/> 应在兼容的 VM 上还原文件。
@@ -145,22 +145,23 @@ DPM/MABS 磁盘上的恢复点数 | 文件服务器为 64 个，应用服务器�
 
 **计算** | **支持**
 --- | ---
-VM 大小 |   至少有 2 个 CPU 核心和 1-GB RAM 的任意 Azure VM 大小。<br/><br/> [了解详细信息。](/virtual-machines/windows/sizes)
-备份[可用性集](/virtual-machines/windows/regions-and-availability#availability-sets)中的 VM | 。<br/><br/> 无法使用快速创建 VM 的选项来还原可用性集中的 VM。 还原 VM 时，需要还原磁盘并使用它来部署 VM，或者还原磁盘并使用它来替换现有磁盘。
+VM 大小 |至少有 2 个 CPU 核心和 1-GB RAM 的任意 Azure VM 大小。<br/><br/> [了解详细信息。](/virtual-machines/windows/sizes)
+备份[可用性集](/virtual-machine-scale-sets/availability#availability-sets)中的 VM | 。<br/><br/> 无法使用快速创建 VM 的选项来还原可用性集中的 VM。 还原 VM 时，需要还原磁盘并使用它来部署 VM，或者还原磁盘并使用它来替换现有磁盘。
 备份使用[混合使用权益 (HUB)](/virtual-machines/windows/hybrid-use-benefit-licensing) 部署的 VM | 。
-备份[规模集](/virtual-machine-scale-sets/overview)中部署的 VM |  不支持。
-备份从 [Azure 市场](https://azuremarketplace.microsoft.com/en-us/marketplace/apps?filters=virtual-machine-images)部署的 VM<br/><br/> （由 Microsoft 或第三方发布） |  。<br/><br/> VM 必须运行受支持的操作系统。<br/><br/> 恢复 VM 上的文件时，可以仅还原到兼容的 OS（不是早期版本或更高版本的 OS）。 我们不会将 Azure 市场 VM 作为 VM 还原（因为这需要订单信息），而只会作为磁盘还原。
-备份从自定义映像部署的 VM（第三方） |   。<br/><br/> VM 必须运行受支持的操作系统。<br/><br/> 恢复 VM 上的文件时，可以仅还原到兼容的 OS（不是早期版本或更高版本的 OS）。
-备份已迁移到 Azure 的 VM  | 。<br/><br/> 若要备份 VM，必须在迁移的计算机上安装 VM 代理。
+备份[规模集](/virtual-machine-scale-sets/overview)中部署的 VM |不支持。
+备份从 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps?filters=virtual-machine-images)部署的 VM<br/><br/> （由 Microsoft 或第三方发布） |。<br/><br/> VM 必须运行受支持的操作系统。<br/><br/> 恢复 VM 上的文件时，可以仅还原到兼容的 OS（不是早期版本或更高版本的 OS）。 我们不会将 Azure 市场 VM 作为 VM 还原（因为这需要订单信息），而只会作为磁盘还原。
+备份从自定义映像部署的 VM（第三方） |。<br/><br/> VM 必须运行受支持的操作系统。<br/><br/> 恢复 VM 上的文件时，可以仅还原到兼容的 OS（不是早期版本或更高版本的 OS）。
+备份已迁移到 Azure 的 VM| 。<br/><br/> 若要备份 VM，必须在迁移的计算机上安装 VM 代理。
 备份多 VM 一致性 | Azure 备份不提供跨多个 VM 的数据和应用程序一致性。
 备份包含[诊断设置](/azure-monitor/platform/diagnostic-logs-overview)的 VM  | 不支持。 <br/><br/> 如果使用[新建](backup-azure-arm-restore-vms.md#create-a-vm)选项触发包含诊断设置的 Azure VM 的还原，还原将会失败。
-
+还原区域固定 VM | 支持（适用于 2019 年 1 月以后备份的并且可以使用[可用性区域](https://azure.microsoft.com/global-infrastructure/availability-zones/)的 VM）。<br/><br/>目前支持还原到在 VM 中固定的区域。 但是，如果该区域不可用，则还原将失败。
+Gen2 VM | 支持 <br> Azure 备份支持备份和还原 [Gen2 VM](https://azure.microsoft.com/updates/generation-2-virtual-machines-in-azure-public-preview/)。 从恢复点还原这些 VM 时，这些 VM 将还原为 [Gen2 VM](https://azure.microsoft.com/updates/generation-2-virtual-machines-in-azure-public-preview/)。
 
 ## <a name="vm-storage-support"></a>VM 存储支持
 
 **组件** | **支持**
 --- | ---
-Azure VM 数据磁盘 | 备份包含 16 个或更少数据磁盘的 VM。
+Azure VM 数据磁盘 | 备份数据磁盘不超过 16 个的 VM。<BR> 若要注册获取包含 16 个以上磁盘（最多 32 个磁盘）的个人预览版 VM，请向我们发送电子邮件：AskAzureBackupTeam@microsoft.com
 数据磁盘大小 | 对于 VM 中的所有磁盘，单个磁盘大小最大为 32 TB，组合磁盘大小最大为 256 TB。
 存储类型 | 标准 HDD、标准 SSD、高级 SSD。
 托管磁盘 | 。
@@ -170,6 +171,7 @@ Azure VM 数据磁盘 | 备份包含 16 个或更少数据磁盘的 VM。
 将磁盘添加到受保护的 VM | 。
 调整受保护 VM 上的磁盘大小 | 。
 共享存储| 不支持使用群集共享卷 (CSV) 或横向扩展文件服务器备份 VM。 在备份期间，CSV 写入器可能会失败。 还原时，包含 CSV 卷的磁盘可能不会启动。
+[共享磁盘](/virtual-machines/windows/disks-shared-enable) | 不支持。
 
 ## <a name="vm-network-support"></a>VM 网络支持
 
@@ -205,7 +207,7 @@ Azure 备份支持针对传输中数据和静态数据的加密：
 
 数据安全：
 
-- 备份 Azure VM 时，需要在虚拟机内部设置加密。 
+- 备份 Azure VM 时，需要在虚拟机内部设置加密。
 - Azure 备份支持 Azure 磁盘加密，后者在 Windows 虚拟机上使用 BitLocker，在 Linux 虚拟机上使用 **dm-crypt**。
 - 在后端，Azure 备份使用 [Azure 存储服务加密](../storage/common/storage-service-encryption.md)来保护静态数据。
 
@@ -240,3 +242,4 @@ Azure VM | 不可用 | 不可用
 [green]: ./media/backup-support-matrix/green.png
 [yellow]: ./media/backup-support-matrix/yellow.png
 [red]: ./media/backup-support-matrix/red.png
+

@@ -15,12 +15,12 @@ ms.topic: quickstart
 origin.date: 01/27/2020
 ms.date: 2/6/2020
 ms.author: v-lingwu
-ms.openlocfilehash: 9a6cf1ee43429ce4cddacbba9b1fe872fa816411
-ms.sourcegitcommit: 1fbdefdace8a1d3412900c6c3f89678d8a9b29bc
+ms.openlocfilehash: 36b5a7e5297ab9a2468db10fcd7ad494ecfd5ea6
+ms.sourcegitcommit: a04b0b1009b0c62f2deb7c7acee75a1304d98f87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82886932"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83796776"
 ---
 # <a name="quickstart-use-service-bus-topics-and-subscriptions-with-python"></a>快速入门：通过 Python 使用服务总线主题和订阅
 
@@ -35,8 +35,8 @@ ms.locfileid: "82886932"
 - 删除主题和订阅
 
 ## <a name="prerequisites"></a>先决条件
-1. Azure 订阅。 若要完成本教程，需要一个 Azure 帐户。 可以激活 [Visual Studio 或 MSDN 订阅者权益](https://www.azure.cn/support/legal/offer-rate-plans/)或者注册[试用帐户](https://www.azure.cn/pricing/1rmb-trial-full/?form-type=identityauth)。
-- 遵循以下文章中的步骤创建的服务总线命名空间：[快速入门：使用 Azure 门户创建服务总线主题和订阅](service-bus-quickstart-topics-subscriptions-portal.md)。 复制“共享访问策略”屏幕中的命名空间名称、共享访问密钥名称和主密钥值，以便稍后在本快速入门中使用。  
+1. Azure 订阅。 若要完成本教程，需要一个 Azure 帐户。 你可以注册[试用帐户](https://www.azure.cn/pricing/1rmb-trial/)或[预付费](https://wd.azure.cn/pricing/pia-waiting-list/?form-type=identityauth)。
+- 遵循以下文章中的步骤创建的服务总线命名空间：[快速入门：使用 Azure 门户创建服务总线主题和订阅](service-bus-quickstart-topics-subscriptions-portal.md)。 复制“共享访问策略”屏幕中的命名空间名称、共享访问密钥名称和主密钥值，以便稍后在本快速入门中使用。 
 - 装有 [Azure Python SDK][Azure Python package] 包的 Python 3.4x 或更高版本。 有关详细信息，请参阅 [Python 安装指南](/azure/python/python-sdk-azure-install)。
 
 ## <a name="create-a-servicebusservice-object"></a>创建 ServiceBusService 对象
@@ -47,7 +47,7 @@ ms.locfileid: "82886932"
 from azure.servicebus.control_client import ServiceBusService, Message, Topic, Rule, DEFAULT_RULE_NAME
 ```
 
-添加以下代码以创建 **ServiceBusService** 对象。 请将 `<namespace>`、`<sharedaccesskeyname>` 和 `<sharedaccesskeyvalue>` 替换为你的服务总线命名空间名称、共享访问签名 (SAS) 密钥名称和主密钥值。 可以在 [Azure 门户][Azure portal]上服务总线命名空间中的“共享访问策略”下找到这些值。 
+添加以下代码以创建 **ServiceBusService** 对象。 请将 `<namespace>`、`<sharedaccesskeyname>` 和 `<sharedaccesskeyvalue>` 替换为你的服务总线命名空间名称、共享访问签名 (SAS) 密钥名称和主密钥值。 可以在 [Azure 门户][Azure portal]上服务总线命名空间中的“共享访问策略”下找到这些值。
 
 ```python
 bus_service = ServiceBusService(
@@ -88,7 +88,7 @@ bus_service.create_subscription('mytopic', 'AllMessages')
 
 最灵活的筛选器类型是 **SqlFilter**，它使用 SQL-92 的子集。 SQL 筛选器基于发布到主题的消息的属性运行。 有关可用于 SQL 筛选器的表达式的详细信息，请参阅 [SqlFilter.SqlExpression][SqlFilter.SqlExpression] 语法。
 
-由于 **MatchAll** 默认筛选器会自动应用到所有新订阅，因此，必须先从要筛选的订阅中删除该筛选器，否则 **MatchAll** 会重写指定的任何其他筛选器。 可以使用 ServiceBusService 对象的 `delete_rule` 方法删除默认规则  。
+由于 **MatchAll** 默认筛选器会自动应用到所有新订阅，因此，必须先从要筛选的订阅中删除该筛选器，否则 **MatchAll** 会重写指定的任何其他筛选器。 可以使用 ServiceBusService 对象的 `delete_rule` 方法删除默认规则。
 
 以下示例创建名为 `HighMessages` 的对 `mytopic` 的订阅，该订阅使用名为 `HighMessageFilter`的 **SqlFilter** 规则。 `HighMessageFilter` 规则仅选择自定义 `messageposition` 属性大于 3 的消息：
 
@@ -167,7 +167,7 @@ Service Bus 提供了相关功能来帮助你轻松地从应用程序错误或�
 
 订阅中锁定的消息还存在超时。 如果应用程序无法在锁定超时期满前处理消息（例如，如果应用程序崩溃），服务总线会自动解锁消息，让它再次可供接收。
 
-如果应用程序在处理消息之后，但在调用 `complete` 方法之前崩溃，则在应用程序重启时会将该消息重新传送给它。 此行为通常称为“至少处理一次”。  每条消息将至少处理一次，但在某些情况下，可能会重新传送同一消息。 如果方案无法容许重复处理，可以使用消息的 **MessageId** 属性（多次尝试传送时，该属性保持不变）来处理重复消息传送。 
+如果应用程序在处理消息之后，但在调用 `complete` 方法之前崩溃，则在应用程序重启时会将该消息重新传送给它。 此行为通常称为“至少处理一次”。 每条消息将至少处理一次，但在某些情况下，可能会重新传送同一消息。 如果方案无法容许重复处理，可以使用消息的 **MessageId** 属性（多次尝试传送时，该属性保持不变）来处理重复消息传送。 
 
 ## <a name="delete-topics-and-subscriptions"></a>删除主题和订阅
 

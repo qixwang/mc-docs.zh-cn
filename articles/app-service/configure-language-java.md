@@ -6,16 +6,16 @@ author: jasonfreeberg
 ms.devlang: java
 ms.topic: article
 origin.date: 04/12/2019
-ms.date: 03/30/2020
+ms.date: 05/22/2020
 ms.author: v-tawe
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 671f33136e95a4ef4deb560366b9c3d72cdd5f01
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 482274ea6303c1cdd1718a1f8f3c361ae356b6ed
+ms.sourcegitcommit: 981a75a78f8cf74ab5a76f9e6b0dc5978387be4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80522064"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83801162"
 ---
 # <a name="configure-a-windows-java-app-for-azure-app-service"></a>为 Azure 应用服务配置 Windows Java 应用
 
@@ -44,7 +44,7 @@ Azure 应用服务可让 Java 开发人员在完全托管的基于 Windows 的�
 
 若要进行定时记录，需要 Java 应用程序的 PID（进程 ID）。 若要查找 PID，请打开浏览器，导航到 Web 应用的 SCM 站点 https://<your-site-name>.scm.chinacloudsites.cn/ProcessExplorer/。 此页面显示 Web 应用中正在运行的进程。 在表中找到名为“java”的进程，并复制相应的 PID（进程 ID）。
 
-接下来，打开 SCM 站点顶部工具栏中的“调试控制台”  ，运行以下命令。 将 `<pid>` 替换为此前复制的进程 ID。 此命令会启动对 Java 应用程序的 30 秒探查器记录，并在 `D:\home` 目录中生成名为 `timed_recording_example.jfr` 的文件。
+接下来，打开 SCM 站点顶部工具栏中的“调试控制台”，运行以下命令。 将 `<pid>` 替换为此前复制的进程 ID。 此命令会启动对 Java 应用程序的 30 秒探查器记录，并在 `D:\home` 目录中生成名为 `timed_recording_example.jfr` 的文件。
 
 ```
 jcmd <pid> JFR.start name=TimedRecording settings=profile duration=30s filename="D:\home\timed_recording_example.JFR"
@@ -77,14 +77,14 @@ Azure 应用服务原生支持通过 Azure 门户和 CLI 进行优化和自定�
 
 - [配置应用设置](configure-common.md#configure-app-settings)
 - [设置自定义域](app-service-web-tutorial-custom-domain.md)
-- [配置 SSL 绑定](configure-ssl-bindings.md)
+- [配置 TLS 绑定](configure-ssl-bindings.md)
 - [配置 Kudu 站点](https://github.com/projectkudu/kudu/wiki/Configurable-settings)
 
 ### <a name="set-java-runtime-options"></a>设置 Java 运行时选项
 
 若要设置分配的内存或其他 JVM 运行时选项，请使用这些选项创建名为 `JAVA_OPTS` 的[应用设置](configure-common.md#configure-app-settings)。 应用服务在启动时，会将此设置作为环境变量传递给 Java 运行时。
 
-在 Azure 门户中 Web 应用的“应用程序设置”下，创建名为 `JAVA_OPTS` 且包含其他设置的新应用设置，例如 `-Xms512m -Xmx1204m`。 
+在 Azure 门户中 Web 应用的“应用程序设置”下，创建名为 `JAVA_OPTS` 且包含其他设置的新应用设置，例如 `-Xms512m -Xmx1204m`。
 
 若要通过 Maven 插件配置应用设置，请在 Azure 插件部分中添加设置/值标记。 以下示例设置特定的最小和最大 Java 堆大小：
 
@@ -107,7 +107,7 @@ Azure 应用服务原生支持通过 Azure 门户和 CLI 进行优化和自定�
 
 ### <a name="turn-on-web-sockets"></a>启用 Web 套接字
 
-在 Azure 门户中应用程序的“应用程序设置”中启用 Web 套接字支持。  需要重启应用程序才能使设置生效。
+在 Azure 门户中应用程序的“应用程序设置”中启用 Web 套接字支持。 需要重启应用程序才能使设置生效。
 
 在 Azure CLI 中使用以下命令启用 Web 套接字支持：
 
@@ -124,7 +124,7 @@ az webapp start --name <app-name> --resource-group <resource-group-name>
 
 ### <a name="set-default-character-encoding"></a>设置默认的字符编码
 
-在 Azure 门户中 Web 应用的“应用程序设置”下，创建名为 `JAVA_OPTS` 且包含值 `-Dfile.encoding=UTF-8` 的新应用设置。 
+在 Azure 门户中 Web 应用的“应用程序设置”下，创建名为 `JAVA_OPTS` 且包含值 `-Dfile.encoding=UTF-8` 的新应用设置。
 
 或者，可以使用应用服务 Maven 插件配置应用设置。 在插件配置中添加设置名称和值标记：
 
@@ -147,7 +147,7 @@ az webapp start --name <app-name> --resource-group <resource-group-name>
 
 ### <a name="authenticate-users-easy-auth"></a>对用户进行身份验证（简易身份验证）
 
-在 Azure 门户中使用“身份验证和授权”选项设置应用身份验证。  在此处，可以使用 Azure Active Directory 或社交登录名（例如 GitHub）启用身份验证。 仅当配置单个身份验证提供程序时，Azure 门户配置才起作用。 有关详细信息，请参阅[将应用服务应用配置为使用 Azure Active Directory 登录](configure-authentication-provider-aad.md)，以及其他标识提供者的相关文章。 如果需要启用多个登录提供程序，请遵照[自定义应用服务身份验证](app-service-authentication-how-to.md)一文中的说明。
+在 Azure 门户中使用“身份验证和授权”选项设置应用身份验证。 在此处，可以使用 Azure Active Directory 或社交登录名（例如 GitHub）启用身份验证。 仅当配置单个身份验证提供程序时，Azure 门户配置才起作用。 有关详细信息，请参阅[将应用服务应用配置为使用 Azure Active Directory 登录](configure-authentication-provider-aad.md)，以及其他标识提供者的相关文章。 如果需要启用多个登录提供程序，请遵照[自定义应用服务身份验证](app-service-authentication-how-to.md)一文中的说明。
 
 #### <a name="tomcat"></a>Tomcat
 
@@ -185,11 +185,11 @@ public int getServerPort()
 
 ### <a name="configure-tlsssl"></a>配置 TLS/SSL
 
-按照[在 Azure 应用服务中使用 SSL 绑定保护自定义 DNS 名称](configure-ssl-bindings.md)中的说明上传现有的 SSL 证书，并将其绑定到应用程序的域名。 默认情况下，应用程序仍允许 HTTP 连接 - 请遵循教程中的具体步骤来强制实施 SSL 和 TLS。
+按照[在 Azure 应用服务中使用 TLS 绑定保护自定义 DNS 名称](configure-ssl-bindings.md)中的说明上传现有的 SSL 证书，并将其绑定到应用程序的域名。 默认情况下，应用程序仍允许 HTTP 连接 - 请遵循教程中的具体步骤来强制实施 SSL 和 TLS。
 
 ### <a name="use-keyvault-references"></a>使用 KeyVault 引用
 
-[Azure KeyVault](../key-vault/key-vault-overview.md) 使用访问策略和审核历史记录来提供集中式机密管理。 可以在 KeyVault 中存储机密（例如密码或连接字符串），然后通过环境变量在应用程序中访问这些机密。
+[Azure KeyVault](../key-vault/general/overview.md) 使用访问策略和审核历史记录来提供集中式机密管理。 可以在 KeyVault 中存储机密（例如密码或连接字符串），然后通过环境变量在应用程序中访问这些机密。
 
 首先，按照有关[为应用授予对 Key Vault 的访问权限](app-service-key-vault-references.md#granting-your-app-access-to-key-vault)以及[在应用程序设置中添加对机密的 KeyVault 引用](app-service-key-vault-references.md#reference-syntax)的说明操作。 可以在远程访问应用服务终端时，通过输出环境变量来验证该引用是否解析为机密。
 
@@ -221,7 +221,7 @@ public int getServerPort()
 </appSettings>
 ```
 
-或者在 Azure 门户中的“配置” > “应用程序设置”页上设置环境变量。  
+或者在 Azure 门户中的“配置” > “应用程序设置”页上设置环境变量。 
 
 接下来，确定数据源应当供一个应用程序使用，还是供在 Tomcat servlet 上运行的所有应用程序使用。
 

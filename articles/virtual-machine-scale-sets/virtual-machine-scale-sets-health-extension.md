@@ -1,34 +1,27 @@
 ---
-title: 配合使用 Azure 虚拟机规模集和应用程序运行状况扩展 | Microsoft Docs
+title: 配合使用 Azure 虚拟机规模集和应用程序运行状况扩展
 description: 了解如何使用应用程序运行状况扩展监视部署在虚拟机规模集上的应用程序的运行状况。
-services: virtual-machine-scale-sets
-documentationcenter: ''
-author: mayanknayar
-manager: drewm
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-origin.date: 01/30/2019
-ms.date: 10/30/2019
+author: ju-shim
 ms.author: v-junlch
-ms.openlocfilehash: bb24efe43fb2887665ed7e605526af75e8b86825
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.topic: how-to
+ms.service: virtual-machine-scale-sets
+ms.subservice: extensions
+ms.date: 05/21/2020
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: 665e722e81cc8370152e4eaa1bf0034978566f5c
+ms.sourcegitcommit: 87e789550ea49ff77c7f19bc68fad228009fcf44
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "73142192"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83748149"
 ---
 # <a name="using-application-health-extension-with-virtual-machine-scale-sets"></a>配合使用虚拟机规模集和应用程序运行状况扩展
 监视应用程序的运行状况是管理和升级部署的重要信号。 Azure 虚拟机规模集支持[滚动升级](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)，后者依赖于对各实例的运行状况监视来升级部署。
 
 本文介绍如何使用应用程序运行状况扩展监控部署在虚拟机规模集上的应用程序的运行状况。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 本文假定你熟悉以下内容：
 -   Azure 虚拟机[扩展](../virtual-machines/extensions/overview.md)
 -   [修改](virtual-machine-scale-sets-upgrade-scale-set.md)虚拟机规模集
@@ -40,7 +33,7 @@ ms.locfileid: "73142192"
 
 ## <a name="extension-schema"></a>扩展架构
 
-以下 JSON 显示应用程序运行状况扩展的架构。 扩展至少需要“tcp”或“http”请求，且各自具有相关的端口或请求路径。
+以下 JSON 显示应用程序运行状况扩展的架构。 扩展至少需要“tcp”、“http”或“https”请求，且各自具有相关的端口或请求路径。
 
 ```json
 {
@@ -67,17 +60,17 @@ ms.locfileid: "73142192"
 | 名称 | 值/示例 | 数据类型
 | ---- | ---- | ---- 
 | apiVersion | `2018-10-01` | date |
-| 发布者 | `Microsoft.ManagedServices` | 字符串 |
-| type | `ApplicationHealthLinux` (Linux)、`ApplicationHealthWindows` (Windows) | 字符串 |
+| publisher | `Microsoft.ManagedServices` | string |
+| type | `ApplicationHealthLinux` (Linux)、`ApplicationHealthWindows` (Windows) | string |
 | typeHandlerVersion | `1.0` | int |
 
 ### <a name="settings"></a>设置
 
 | 名称 | 值/示例 | 数据类型
 | ---- | ---- | ----
-| protocol | `http` 或 `tcp` | 字符串 |
-| port | 协议为 `http` 时为可选，协议为 `tcp` 时为必需 | int |
-| requestPath | 协议为 `http` 时为必需，协议为 `tcp` 时为不允许 | 字符串 |
+| 协议 | `http` 或 `https` 或 `tcp` | string |
+| port | 协议为 `http` 或 `https` 时为可选，协议为 `tcp` 时为必需 | int |
+| requestPath | 协议为 `http` 或 `https` 时为必需，协议为 `tcp` 时为不允许 | string |
 
 ## <a name="deploy-the-application-health-extension"></a>部署应用程序运行状况扩展
 可以使用多种方法将应用程序运行状况扩展部署到规模集，如下面的示例所示。

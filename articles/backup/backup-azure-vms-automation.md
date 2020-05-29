@@ -2,16 +2,16 @@
 title: 使用 PowerShell 备份和恢复 Azure VM
 description: 介绍如何使用 Azure 备份与 PowerShell 来备份和恢复 Azure VM
 ms.topic: conceptual
-author: lingliw
+author: Johnnytechn
 origin.date: 09/11/2019
-ms.date: 09/23/2019
-ms.author: v-lingwu
-ms.openlocfilehash: 8f31d06b77a23e3ae2bd4fd11b107c5c88ae9060
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/11/2020
+ms.author: v-johya
+ms.openlocfilehash: 200adce0868016c284a2c66fbde775933abac479
+ms.sourcegitcommit: 08b42258a48d96d754244064d065e4d5703f1cfb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292111"
+ms.lasthandoff: 05/18/2020
+ms.locfileid: "83445192"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>使用 PowerShell 备份和恢复 Azure VM
 
@@ -29,7 +29,7 @@ ms.locfileid: "79292111"
 ## <a name="before-you-start"></a>开始之前
 
 * [详细了解](backup-azure-recovery-services-vault-overview.md)恢复服务保管库。
-* [查看](backup-architecture.md) Azure VM 备份的体系结构、[了解](backup-azure-vms-introduction.md)备份过程，以及[查看](backup-support-matrix-iaas.md)支持、限制和先决条件。
+* [查看](backup-architecture.md#architecture-built-in-azure-vm-backup) Azure VM 备份的体系结构、[了解](backup-azure-vms-introduction.md)备份过程，以及[查看](backup-support-matrix-iaas.md)支持、限制和先决条件。
 * 查看恢复服务的 PowerShell 对象层次结构。
 
 ## <a name="recovery-services-object-hierarchy"></a>恢复服务对象层次结构
@@ -53,7 +53,7 @@ ms.locfileid: "79292111"
     ```powershell
     Get-Command *azrecoveryservices*
     ```
- 
+
     这将显示 Azure 备份、Azure Site Recovery 和恢复服务保管库的别名和 cmdlet。 下图是你将看到的内容的一个示例。 它不是完整的 cmdlet 列表。
 
     ![恢复服务的列表](./media/backup-azure-vms-automation/list-of-recoveryservices-ps.png)
@@ -92,6 +92,7 @@ ms.locfileid: "79292111"
     ```powershell
     New-AzResourceGroup -Name "test-rg" -Location "China North"
     ```
+
 2. 使用 [New-AzRecoveryServicesVault](https://docs.microsoft.com/powershell/module/az.recoveryservices/new-azrecoveryservicesvault?view=azps-1.4.0) cmdlet 创建恢复服务保管库。 确保为保管库指定的位置与用于资源组的位置是相同的。
 
     ```powershell
@@ -124,7 +125,7 @@ Get-AzRecoveryServicesVault
 Name              : Contoso-vault
 ID                : /subscriptions/1234
 Type              : Microsoft.RecoveryServices/vaults
-Location          : China North
+Location          : ChinaNorth
 ResourceGroupName : Contoso-docs-rg
 SubscriptionId    : 1234-567f-8910-abc
 Properties        : Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties
@@ -201,7 +202,7 @@ DefaultPolicy        AzureVM            AzureVM              4/14/2016 5:00:00 P
 默认情况下，会在“计划策略对象”中定义开始时间。 请使用以下示例将开始时间更改为所需的开始时间。 所需的开始时间也应采用 UTC 格式。 以下示例假设在进行每日备份时，所需的开始时间为 UTC 时间凌晨 1:00。
 
 ```powershell
-$schPol = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType "AzureVM" -VaultId $targetVault.ID
+$schPol = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType "AzureVM" 
 $UtcTime = Get-Date -Date "2019-03-20 01:00:00Z"
 $UtcTime = $UtcTime.ToUniversalTime()
 $schpol.ScheduleRunTimes[0] = $UtcTime
@@ -213,7 +214,7 @@ $schpol.ScheduleRunTimes[0] = $UtcTime
 以下示例将计划策略和保留策略存储在变量中。 此示例使用这些变量来定义在创建保护策略 *NewPolicy* 时要使用的参数。
 
 ```powershell
-$retPol = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType "AzureVM" -VaultId $targetVault.ID
+$retPol = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType "AzureVM" 
 New-AzRecoveryServicesBackupProtectionPolicy -Name "NewPolicy" -WorkloadType "AzureVM" -RetentionPolicy $retPol -SchedulePolicy $schPol -VaultId $targetVault.ID
 ```
 
@@ -257,16 +258,13 @@ $pol = Get-AzRecoveryServicesBackupProtectionPolicy -Name "NewPolicy" -VaultId $
 Enable-AzRecoveryServicesBackupProtection -Policy $pol -Name "V2VM" -ResourceGroupName "RGName1" -VaultId $targetVault.ID
 ```
 
-> [!NOTE]
-> 如果使用 Azure China Cloud 云，则请对 [Set-AzKeyVaultAccessPolicy](https://docs.microsoft.com/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) cmdlet 中的参数 ServicePrincipalName 使用值 ff281ffe-705c-4f53-9f37-a40e6f2c68f3。
->
-
+<!-- Azure Government cloud,so removed -->
 ## <a name="monitoring-a-backup-job"></a>监视备份作业
 
 可以在不使用 Azure 门户的情况下监视长时间运行的操作，例如备份作业。 若要获取正在进行的作业的状态，请使用 [Get-AzRecoveryservicesBackupJob](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjob) cmdlet。 此 cmdlet 获取特定保管库的备份作业，并且该保管库是在保管库上下文中指定的。 以下示例将正在进行的作业的状态获取为数组，并将状态存储在 $joblist 变量中。
 
 ```powershell
-$joblist = Get-AzRecoveryservicesBackupJob –Status "InProgress" -VaultId $targetVault.ID
+$joblist = Get-AzRecoveryservicesBackupJob -Status "InProgress" -VaultId $targetVault.ID
 $joblist[0]
 ```
 
@@ -326,6 +324,20 @@ Set-AzRecoveryServicesBackupProtectionPolicy -policy $bkpPol -VaultId $targetVau
 ````
 
 默认值为 2，用户可以将值设置为 1 到 5。 每周备份策略的保留期设置为 5，不能更改。
+
+#### <a name="creating-azure-backup-resource-group-during-snapshot-retention"></a>在快照保留期间创建 Azure 备份资源组
+
+> [!NOTE]
+> 从 Azure PS 3.7.0 版开始，用户可以创建和编辑为存储即时快照而创建的资源组。
+
+若要详细了解资源组创建规则和其他相关详细信息，请参阅[适用于虚拟机的 Azure 备份资源组](/backup/backup-during-vm-creation#azure-backup-resource-group-for-virtual-machines)文档。
+
+```powershell
+$bkpPol = Get-AzureRmRecoveryServicesBackupProtectionPolicy -name "DefaultPolicyForVMs"
+$bkpPol.AzureBackupRGName="Contosto_"
+$bkpPol.AzureBackupRGNameSuffix="ForVMs"
+Set-AzureRmRecoveryServicesBackupProtectionPolicy -policy $bkpPol
+```
 
 ### <a name="trigger-a-backup"></a>触发备份
 
@@ -466,7 +478,7 @@ $restorejob
 >
 >
 
-提供了附加参数 TargetResourceGroupName  来指定托管磁盘要还原到的 RG。
+提供了附加参数 TargetResourceGroupName 来指定托管磁盘要还原到的 RG。
 
 > [!NOTE]
 > 强烈建议使用 **TargetResourceGroupName** 参数来还原托管磁盘，因为它可以显著提高性能。 此外，从 Azure Powershell Az 模块 1.0 开始，在使用托管磁盘进行还原时，此参数是必需的
@@ -477,7 +489,7 @@ $restorejob
 $restorejob = Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -StorageAccountName "DestAccount" -StorageAccountResourceGroupName "DestRG" -TargetResourceGroupName "DestRGforManagedDisks" -VaultId $targetVault.ID
 ```
 
-VMConfig.JSON  文件将还原到存储帐户，托管磁盘将还原到指定的目标 RG。
+VMConfig.JSON 文件将还原到存储帐户，托管磁盘将还原到指定的目标 RG。
 
 输出类似于以下示例：
 
@@ -537,10 +549,10 @@ $details = Get-AzRecoveryServicesBackupJobDetails -Job $restorejob -VaultId $tar
 1. 首先从 templateBlobURI 中提取模板名称。 此格式如下所述。 可以使用 Powershell 中的拆分操作从该 URL 提取最终模板名称。
 
 ```http
-https://<storageAccountName.blob.core.windows.net>/<containerName>/<templateName>
+https://<storageAccountName.blob.core.chinacloudapi.cn>/<containerName>/<templateName>
 ```
 
-2. 然后，可以生成完整的 URL，如[此处](https://docs.microsoft.com/azure/azure-resource-manager/templates/secure-template-with-sas-token?tabs=azure-powershell#provide-sas-token-during-deployment)所述。
+2. 然后，可以生成完整的 URL，如[此处](/azure-resource-manager/templates/secure-template-with-sas-token?tabs=azure-powershell#provide-sas-token-during-deployment)所述。
 
 ```powershell
 Set-AzCurrentStorageAccount -Name $storageAccountName -ResourceGroupName <StorageAccount RG name>
@@ -599,7 +611,7 @@ New-AzResourceGroupDeployment -Name ExampleDeployment ResourceGroupName ExampleR
 
 * **使用 Azure AD 的非托管加密 VM（仅限 BEK）** - 对于使用 Azure AD 的非托管加密 VM（仅限使用 BEK 加密），需先将机密还原到 Key Vault，然后才能附加磁盘。 有关详细信息，请参阅[从 Azure 备份恢复点还原已加密的虚拟机](backup-azure-restore-key-secret.md)。 以下示例展示了如何为加密的 VM 附加 OS 和数据磁盘。 设置 OS 磁盘时，请确保提及相关的 OS 类型。
 
-      ```powershell
+```powershell
       $dekUrl = "https://ContosoKeyVault.vault.azure.cn:443/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
       $dekUrl = "/subscriptions/abcdedf007-4xyz-1a2b-0000-12a2b345675c/resourceGroups/ContosoRG108/providers/Microsoft.KeyVault/vaults/ContosoKeyVault"
       Set-AzVMOSDisk -VM $vm -Name "osdisk" -VhdUri $obj.'properties.storageProfile'.osDisk.vhd.uri -DiskEncryptionKeyUrl $dekUrl -DiskEncryptionKeyVaultId $keyVaultId -CreateOption "Attach" -Windows/Linux
@@ -608,11 +620,11 @@ New-AzResourceGroupDeployment -Name ExampleDeployment ResourceGroupName ExampleR
       {
        $vm = Add-AzVMDataDisk -VM $vm -Name "datadisk1" -VhdUri $dd.vhd.Uri -DiskSizeInGB 127 -Lun $dd.Lun -CreateOption "Attach"
       }
-      ```
+```
 
-   * **使用 Azure AD 的非托管加密 VM（BEK 和 KEK）** - 对于使用 Azure AD 的非托管加密 VM（使用 BEK 和 KEK 加密），需先将密钥和机密还原到 Key Vault，然后才能附加磁盘。 有关详细信息，请参阅[从 Azure 备份恢复点还原已加密的虚拟机](backup-azure-restore-key-secret.md)。 以下示例展示了如何为加密的 VM 附加 OS 和数据磁盘。
+* **使用 Azure AD 的非托管加密 VM（BEK 和 KEK）** - 对于使用 Azure AD 的非托管加密 VM（使用 BEK 和 KEK 加密），需先将密钥和机密还原到 Key Vault，然后才能附加磁盘。 有关详细信息，请参阅[从 Azure 备份恢复点还原已加密的虚拟机](backup-azure-restore-key-secret.md)。 以下示例展示了如何为加密的 VM 附加 OS 和数据磁盘。
 
-      ```powershell
+```powershell
       $dekUrl = "https://ContosoKeyVault.vault.azure.cn:443/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
       $kekUrl = "https://ContosoKeyVault.vault.azure.cn:443/keys/ContosoKey007/x9xxx00000x0000x9b9949999xx0x006"
       $keyVaultId = "/subscriptions/abcdedf007-4xyz-1a2b-0000-12a2b345675c/resourceGroups/ContosoRG108/providers/Microsoft.KeyVault/vaults/ContosoKeyVault"
@@ -629,7 +641,7 @@ New-AzResourceGroupDeployment -Name ExampleDeployment ResourceGroupName ExampleR
 仅当源 keyVault/机密不可用时，才需要执行以下脚本。
 
 ```powershell
-      $dekUrl = "https://ContosoKeyVault.vault.azure.net/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
+      $dekUrl = "https://ContosoKeyVault.vault.azure.cn/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
       $keyVaultId = "/subscriptions/abcdedf007-4xyz-1a2b-0000-12a2b345675c/resourceGroups/ContosoRG108/providers/Microsoft.KeyVault/vaults/ContosoKeyVault"
       $encSetting = "{""encryptionEnabled"":true,""encryptionSettings"":[{""diskEncryptionKey"":{""sourceVault"":{""id"":""$keyVaultId""},""secretUrl"":""$dekUrl""}}]}"
       $osBlobName = $obj.'properties.StorageProfile'.osDisk.name + ".vhd"
@@ -656,8 +668,8 @@ New-AzResourceGroupDeployment -Name ExampleDeployment ResourceGroupName ExampleR
 仅当源 keyVault/密钥/机密不可用时，才需要执行以下脚本。
 
 ```powershell
-      $dekUrl = "https://ContosoKeyVault.vault.azure.net/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
-      $kekUrl = "https://ContosoKeyVault.vault.azure.net/keys/ContosoKey007/x9xxx00000x0000x9b9949999xx0x006"
+      $dekUrl = "https://ContosoKeyVault.vault.azure.cn/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
+      $kekUrl = "https://ContosoKeyVault.vault.azure.cn/keys/ContosoKey007/x9xxx00000x0000x9b9949999xx0x006"
       $keyVaultId = "/subscriptions/abcdedf007-4xyz-1a2b-0000-12a2b345675c/resourceGroups/ContosoRG108/providers/Microsoft.KeyVault/vaults/ContosoKeyVault"
       $encSetting = "{""encryptionEnabled"":true,""encryptionSettings"":[{""diskEncryptionKey"":{""sourceVault"":{""id"":""$keyVaultId""},""secretUrl"":""$dekUrl""},""keyEncryptionKey"":{""sourceVault"":{""id"":""$keyVaultId""},""keyUrl"":""$kekUrl""}}]}"
       $osBlobName = $obj.'properties.StorageProfile'.osDisk.name + ".vhd"
@@ -679,7 +691,7 @@ New-AzResourceGroupDeployment -Name ExampleDeployment ResourceGroupName ExampleR
       }
 ```
 
-* 托管的非加密 VM  -对于托管的非加密 VM，将附加还原的托管磁盘。 有关深入信息，请参阅[使用 PowerShell 将数据磁盘附加到 Windows VM](../virtual-machines/windows/attach-disk-ps.md)。
+* 托管的非加密 VM -对于托管的非加密 VM，将附加还原的托管磁盘。 有关深入信息，请参阅[使用 PowerShell 将数据磁盘附加到 Windows VM](../virtual-machines/windows/attach-disk-ps.md)。
 
 * **使用 Azure AD 的托管加密 VM（仅限 BEK）** - 对于使用 Azure AD 的托管加密 VM（仅限使用 BEK 加密），请附加已还原的托管磁盘。 有关深入信息，请参阅[使用 PowerShell 将数据磁盘附加到 Windows VM](../virtual-machines/windows/attach-disk-ps.md)。
 
@@ -690,7 +702,7 @@ New-AzResourceGroupDeployment -Name ExampleDeployment ResourceGroupName ExampleR
 仅当源 keyVault/机密不可用时，才需要执行以下脚本。  
 
 ```powershell
-$dekUrl = "https://ContosoKeyVault.vault.azure.net/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
+$dekUrl = "https://ContosoKeyVault.vault.azure.cn/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
 $keyVaultId = "/subscriptions/abcdedf007-4xyz-1a2b-0000-12a2b345675c/resourceGroups/ContosoRG108/providers/Microsoft.KeyVault/vaults/ContosoKeyVault"
 $diskupdateconfig = New-AzDiskUpdateConfig -EncryptionSettingsEnabled $true
 $encryptionSettingsElement = New-Object Microsoft.Azure.Management.Compute.Models.EncryptionSettingsElement
@@ -711,8 +723,8 @@ Update-AzDisk -ResourceGroupName "testvault" -DiskName $obj.'properties.StorageP
 仅当源 keyVault/密钥/机密不可用时，才需要执行以下脚本。
 
 ```powershell
-$dekUrl = "https://ContosoKeyVault.vault.azure.net/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
-$kekUrl = "https://ContosoKeyVault.vault.azure.net/keys/ContosoKey007/x9xxx00000x0000x9b9949999xx0x006"
+$dekUrl = "https://ContosoKeyVault.vault.azure.cn/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
+$kekUrl = "https://ContosoKeyVault.vault.azure.cn/keys/ContosoKey007/x9xxx00000x0000x9b9949999xx0x006"
 $keyVaultId = "/subscriptions/abcdedf007-4xyz-1a2b-0000-12a2b345675c/resourceGroups/ContosoRG108/providers/Microsoft.KeyVault/vaults/ContosoKeyVault"
 $diskupdateconfig = New-AzDiskUpdateConfig -EncryptionSettingsEnabled $true
 $encryptionSettingsElement = New-Object Microsoft.Azure.Management.Compute.Models.EncryptionSettingsElement

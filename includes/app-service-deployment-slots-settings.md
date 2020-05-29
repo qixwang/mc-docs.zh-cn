@@ -3,14 +3,14 @@ author: cephalin
 ms.service: app-service
 ms.topic: include
 origin.date: 09/18/2019
-ms.date: 11/25/2019
+ms.date: 05/22/2020
 ms.author: v-tawe
-ms.openlocfilehash: 15f0079fe46c9731bdad2b538905f7ade47ed1a7
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 2a11d1640cca743dfd9c9bc3118bbcf61d93e349
+ms.sourcegitcommit: 981a75a78f8cf74ab5a76f9e6b0dc5978387be4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74555968"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83801194"
 ---
 从另一个部署槽克隆配置时，可以编辑克隆的配置。 某些配置元素在交换时遵循内容（不特定于槽），而其他配置元素会在交换之后保留在同一个槽（特定于槽）。 以下列表显示交换槽时会更改的设置。
 
@@ -37,10 +37,10 @@ ms.locfileid: "74555968"
 * 缩放设置
 * Web 作业计划程序
 * IP 限制
-* AlwaysOn
-* 诊断日志设置
+* Always On
+* 诊断设置
 * 跨域资源共享 (CORS)
 
 > [!NOTE]
-> 应用于不交换的设置的某些应用设置也不交换。 例如，由于诊断日志设置不会交换，因此相关的应用设置（如 `WEBSITE_HTTPLOGGING_RETENTION_DAYS` 和 `DIAGNOSTICS_AZUREBLOBRETENTIONDAYS`）也不会交换，即使它们未显示为槽设置也是如此。
+> 应用于不交换的设置的某些应用设置也不交换。 例如，由于诊断设置不会交换，因此相关的应用设置（如 `WEBSITE_HTTPLOGGING_RETENTION_DAYS` 和 `DIAGNOSTICS_AZUREBLOBRETENTIONDAYS`）也不会交换，即使它们未显示为槽设置也是如此。
 >

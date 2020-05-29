@@ -1,11 +1,11 @@
 ---
-title: 使用 PowerShell 管理 Azure 服务总线资源 | Microsoft Docs
+title: 使用 PowerShell 管理 Azure 服务总线资源 | Azure
 description: 本文介绍如何使用 Azure PowerShell 模块创建和管理服务总线实体（命名空间、队列、主题和订阅）。
 services: service-bus-messaging
 documentationcenter: .NET
-author: lingliw
-manager: digimobile
-editor: ''
+author: axisc
+manager: timlt
+editor: spelluru
 ms.assetid: ''
 ms.service: service-bus-messaging
 ms.devlang: na
@@ -15,26 +15,26 @@ ms.workload: na
 origin.date: 01/24/2020
 ms.date: 2/6/2020
 ms.author: v-lingwu
-ms.openlocfilehash: 32443d50a12b5b95195018b922edc499aeec8c59
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 094da7b3d70cf00320004f960c22e3b439265b59
+ms.sourcegitcommit: a04b0b1009b0c62f2deb7c7acee75a1304d98f87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77068020"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83796806"
 ---
 # <a name="use-powershell-to-manage-service-bus-resources"></a>使用 PowerShell 管理服务总线资源
 
-Azure PowerShell 是一个脚本编写环境，可用于控制和自动执行 Azure 服务的部署和管理。 本文介绍如何使用[服务总线 Resource Manager PowerShell 模块](https://docs.microsoft.com/powershell/module/azurerm.servicebus)，通过本地 Azure PowerShell 控制台或脚本来预配和管理服务总线实体（命名空间、队列、主题和订阅）。
+Azure PowerShell 是一个脚本编写环境，可用于控制和自动执行 Azure 服务的部署和管理。 本文介绍如何通过本地 Azure PowerShell 控制台或脚本，使用[服务总线 Resource Manager PowerShell 模块](https://docs.microsoft.com/powershell/module/azurerm.servicebus)来预配和管理服务总线实体（命名空间、队列、主题和订阅）。
 
-还可以使用 Azure 资源管理器模板管理服务总线实体。 有关详细信息，请参阅[使用 Azure 资源管理器模板创建服务总线资源](service-bus-resource-manager-overview.md)一文。
+还可以使用 Azure Resource Manager 模板管理服务总线实体。 有关详细信息，请参阅[使用 Azure Resource Manager 模板创建服务总线资源](service-bus-resource-manager-overview.md)一文。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在开始之前，需要符合以下先决条件：
 
-* Azure 订阅。 有关如何获取订阅的详细信息，请参阅[购买选项][购买选项]、[会员套餐][会员套餐]或[试用帐户][试用帐户]。
+* Azure 订阅。 若要详细了解如何获取订阅，请参阅[购买选项][purchase options]、[会员套餐][member offers]或[试用帐户][trial account]。
 * 配备 Azure PowerShell 的计算机。 有关说明，请参阅 [Azure PowerShell cmdlet 入门](https://docs.microsoft.com/powershell/azure/get-started-azureps)。
 * 大致了解 PowerShell 脚本、NuGet 包和 .NET Framework。
 
@@ -48,9 +48,9 @@ Azure PowerShell 是一个脚本编写环境，可用于控制和自动执行 Az
 
 本示例在脚本中创建几个本地变量：`$Namespace` 和 `$Location`。
 
-* `$Namespace` 是我们要使用的服务总线命名空间的名称。
+* `$Namespace` 是要使用的服务总线命名空间的名称。
 * `$Location` 标识我们要在其中预配命名空间的数据中心。
-* `$CurrentNamespace` 将存储我们检索（或创建）的引用命名空间。
+* `$CurrentNamespace` 存储我们检索（或创建）的引用命名空间。
 
 在实际脚本中，`$Namespace` 和 `$Location` 可作为参数传递。
 
@@ -166,14 +166,17 @@ Set-AzServiceBusQueue -ResourceGroup $ResGrpName -NamespaceName $Namespace -Queu
 ## <a name="next-steps"></a>后续步骤
 
 - 有关服务总线 Resource Manager PowerShell 模块的完整文档，请参阅[此处](https://docs.microsoft.com/powershell/module/az.servicebus)。 此页列出所有可用的 cmdlet。
-- 有关使用 Azure 资源管理器模板的信息，请参阅[使用 Azure 资源管理器模板创建服务总线资源](service-bus-resource-manager-overview.md)一文。
+- 有关使用 Azure Resource Manager 模板的信息，请参阅[使用 Azure Resource Manager 模板创建服务总线资源](service-bus-resource-manager-overview.md)一文。
 - 有关[服务总线 .NET 管理库](service-bus-management-libraries.md)的信息。
 
 这些博客文章介绍管理服务总线实体的一些备选方法：
 
-* [How to create Service Bus queues, topics and subscriptions using a PowerShell script](https://blogs.msdn.com/b/paolos/archive/2014/12/02/how-to-create-a-service-bus-queues-topics-and-subscriptions-using-a-powershell-script.aspx)（如何使用 PowerShell 脚本创建服务总线队列、主题和订阅）
-* [How to create a Service Bus Namespace and an Event Hub using a PowerShell script](https://blogs.msdn.com/b/paolos/archive/2014/12/01/how-to-create-a-service-bus-namespace-and-an-event-hub-using-a-powershell-script.aspx)（如何使用 PowerShell 脚本创建服务总线命名空间和事件中心）
+* [How to create Service Bus queues, topics and subscriptions using a PowerShell script（如何使用 PowerShell 脚本创建服务总线队列、主题和订阅）](https://docs.microsoft.com/archive/blogs/paolos/how-to-create-service-bus-queues-topics-and-subscriptions-using-a-powershell-script)
+* [如何使用 PowerShell 脚本创建 Service Bus 命名空间和事件中心](https://blogs.msdn.com/b/paolos/archive/2014/12/01/how-to-create-a-service-bus-namespace-and-an-event-hub-using-a-powershell-script.aspx)
 * [服务总线 PowerShell 脚本](https://code.msdn.microsoft.com/Service-Bus-PowerShell-a46b7059)
 
 <!--Anchors-->
 
+[purchase options]: https://www.azure.cn/pricing/
+[member offers]: https://www.azure.cn/support/legal/offer-rate-plans/
+[trial account]: https://wd.azure.cn/pricing/1rmb-trial/

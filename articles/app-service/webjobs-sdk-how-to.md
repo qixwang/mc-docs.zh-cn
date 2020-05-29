@@ -5,14 +5,14 @@ author: ggailey777
 ms.devlang: dotnet
 ms.topic: article
 origin.date: 02/18/2019
-ms.date: 03/16/2020
+ms.date: 05/22/2020
 ms.author: v-tawe
-ms.openlocfilehash: 3ab44f5c41b939b60d54931406ad42c4dc5d35c6
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 6b60ffe97e93e3391dabebcf7d8c8bbce2703547
+ms.sourcegitcommit: 981a75a78f8cf74ab5a76f9e6b0dc5978387be4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79546911"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83801315"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>如何使用 Azure WebJobs SDK 进行事件驱动的后台处理
 
@@ -34,6 +34,7 @@ ms.locfileid: "79546911"
 > * Azure Functions C# 类库的示例代码类似于 WebJobs SDK 代码，不过，在 WebJobs SDK 项目中，无需指定 `FunctionName` 特性。
 > * 某些绑定类型，例如 HTTP (Webhook) 以及基于 HTTP 的事件网格，只在 Functions 中受支持。
 >
+
 <!-- > For more information, see [Compare the WebJobs SDK and Azure Functions](../azure-functions/functions-compare-logic-apps-ms-flow-webjobs.md#compare-functions-and-webjobs). -->
 
 ## <a name="webjobs-host"></a>WebJobs 主机
@@ -82,7 +83,7 @@ static void Main(string[] args)
 
 #### <a name="version-3x"></a>版本 3.*x*
 
-版本 3.x  使用标准 ASP.NET Core API。 对 [`HostBuilder`](https://docs.microsoft.com/dotnet/api/microsoft.extensions.hosting.hostbuilder) 实例调用 [`UseEnvironment`](https://docs.microsoft.com/dotnet/api/microsoft.extensions.hosting.hostinghostbuilderextensions.useenvironment) 方法。 传递名为 `development` 的字符串，如以下示例中所示：
+版本 3.x 使用标准 ASP.NET Core API。 对 [`HostBuilder`](https://docs.microsoft.com/dotnet/api/microsoft.extensions.hosting.hostbuilder) 实例调用 [`UseEnvironment`](https://docs.microsoft.com/dotnet/api/microsoft.extensions.hosting.hostinghostbuilderextensions.useenvironment) 方法。 传递名为 `development` 的字符串，如以下示例中所示：
 
 ```cs
 static async Task Main()
@@ -156,14 +157,14 @@ static void Main(string[] args)
 ```cs
 public static void Run(
     [QueueTrigger("myqueue-items")] string myQueueItem,
-    [Blob("samples-workitems/{myQueueItem}", FileAccess.Read)] Stream myBlob,
+    [Blob("samples-workitems/{queueTrigger}", FileAccess.Read)] Stream myBlob,
     ILogger log)
 {
     log.LogInformation($"BlobInput processed blob\n Name:{myQueueItem} \n Size: {myBlob.Length} bytes");
 }
 ```
 
-`QueueTrigger` 特性告知运行时，每当某个队列消息显示在 `myqueue-items` 队列中，就要调用该函数。 `Blob` 特性告知运行时要使用队列消息读取 *sample-workitems* 容器中的 Blob。 在 `myQueueItem` 参数中传递给函数的队列消息的内容是 Blob 的名称。
+`QueueTrigger` 特性告知运行时，每当某个队列消息显示在 `myqueue-items` 队列中，就要调用该函数。 `Blob` 特性告知运行时要使用队列消息读取 *sample-workitems* 容器中的 Blob。 `samples-workitems` 容器中 Blob 项的名称将直接从队列触发器以绑定表达式 (`{queueTrigger}`) 的形式获得。
 
 [!INCLUDE [webjobs-always-on-note](../../includes/webjobs-always-on-note.md)]
 
@@ -424,7 +425,7 @@ static async Task Main()
 }
 ```
 
-有关更多详细信息，请参阅[事件中心绑定](../azure-functions/functions-bindings-event-hubs-output.md#hostjson-settings)一文。
+有关更多详细信息，请参阅[事件中心绑定](../azure-functions/functions-bindings-event-hubs-trigger.md#host-json)一文。
 
 ### <a name="queue-storage-trigger-configuration"></a>队列存储触发器配置
 
@@ -693,7 +694,7 @@ Azure Functions 文档中提供了有关每个绑定类型的参考信息。 每
 
 [`Disable`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/DisableAttribute.cs) 特性用于控制是否可以触发某个函数。 
 
-在以下示例中，如果应用设置 `Disable_TestJob` 使用值 `1` 或 `True`（不区分大小写），则函数不会运行。 在这种情况下，运行时将创建日志消息“函数 'Functions.TestJob' 已禁用”。 
+在以下示例中，如果应用设置 `Disable_TestJob` 使用值 `1` 或 `True`（不区分大小写），则函数不会运行。 在这种情况下，运行时将创建日志消息“函数 'Functions.TestJob' 已禁用”。
 
 ```cs
 [Disable("Disable_TestJob")]
@@ -752,7 +753,7 @@ public static async Task ProcessImage([BlobTrigger("images")] Stream image)
 
 ### <a name="scope-values"></a>范围值
 
-可以在单一实例中指定一个范围表达式/值。  表达式/值可确保特定范围内的所有函数执行都将序列化。 以这种方式实现更细化的锁定可以为函数提供一定程度的并行度，同时根据你的需求串行化其他调用。 例如，在以下代码中，范围表达式将绑定到传入消息的 `Region` 值。 如果队列分别在区域 East、East 和 West 中包含 3 条消息，则区域为“East”的消息将串行运行，而区域为 West 的消息将与 East 中的这些消息并行运行。
+可以在单一实例中指定一个范围表达式/值。 表达式/值可确保特定范围内的所有函数执行都将序列化。 以这种方式实现更细化的锁定可以为函数提供一定程度的并行度，同时根据你的需求串行化其他调用。 例如，在以下代码中，范围表达式将绑定到传入消息的 `Region` 值。 如果队列分别在区域 East、East 和 West 中包含 3 条消息，则区域为“East”的消息将串行运行，而区域为 West 的消息将与 East 中的这些消息并行运行。
 
 ```csharp
 [Singleton("{Region}")]
@@ -897,7 +898,7 @@ config.LoggerFactory = new LoggerFactory()
 
 #### <a name="version-3x"></a>版本 3.*x*
 
-由于 WebJobs SDK 的版本 3.x  依赖于 .NET Core 通用主机，因此不再提供自定义遥测工厂。 但可以使用依赖关系注入将自定义遥测添加到管道。 本部分中的示例要求使用下列 `using` 语句：
+由于 WebJobs SDK 的版本 3.x 依赖于 .NET Core 通用主机，因此不再提供自定义遥测工厂。 但可以使用依赖关系注入将自定义遥测添加到管道。 本部分中的示例要求使用下列 `using` 语句：
 
 ```cs
 using Microsoft.ApplicationInsights.Extensibility;
@@ -953,13 +954,13 @@ static async Task Main()
 
 构造 [`TelemetryConfiguration`] 时，将添加所有已注册类型的 [`ITelemetryInitializer`]。 若要了解详细信息，请参阅[用于处理自定义事件和指标的 Application Insights API](../azure-monitor/app/api-custom-events-metrics.md)。
 
-在版本 3.x  中，主机停止时无需刷新 [`TelemetryClient`]。 .NET Core 依赖关系注入系统将自动释放已注册 `ApplicationInsightsLoggerProvider`，可刷新 [`TelemetryClient`]。
+在版本 3.x 中，主机停止时无需刷新 [`TelemetryClient`]。 .NET Core 依赖关系注入系统将自动释放已注册 `ApplicationInsightsLoggerProvider`，可刷新 [`TelemetryClient`]。
 
 #### <a name="version-2x"></a>版本 2.*x*
 
-在版本 2.x  中，Application Insights 提供程序为 WebJobs SDK 在内部创建的 [`TelemetryClient`] 使用 [`ServerTelemetryChannel`](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/ServerTelemetryChannel/ServerTelemetryChannel.cs)。 当 Application Insights 终结点时不可用或限制传入请求时，此通道会[在 Web 应用的文件系统中保存请求，并稍后提交这些请求](https://apmtips.com/blog/2015/09/03/more-telemetry-channels)。
+在版本 2.x 中，Application Insights 提供程序为 WebJobs SDK 在内部创建的 [`TelemetryClient`] 使用 [`ServerTelemetryChannel`](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/.publicApi/Microsoft.AI.ServerTelemetryChannel.dll)。 当 Application Insights 终结点时不可用或限制传入请求时，此通道会[在 Web 应用的文件系统中保存请求，并稍后提交这些请求](https://apmtips.com/blog/2015/09/03/more-telemetry-channels)。
 
-[`TelemetryClient`] 是实现 `ITelemetryClientFactory` 的类创建的。 默认为 [`DefaultTelemetryClientFactory`](https://github.com/Azure/azure-webjobs-sdk/blob/dev/src/Microsoft.Azure.WebJobs.Logging.ApplicationInsights/DefaultTelemetryClientFactory.cs)。
+[`TelemetryClient`] 是实现 `ITelemetryClientFactory` 的类创建的。 默认为 [`DefaultTelemetryClientFactory`](https://github.com/Azure/azure-webjobs-sdk/blob/dev/src/Microsoft.Azure.WebJobs.Logging.ApplicationInsights/)。
 
 若要修改 Application Insights 管道的任何组成部分，可以提供自己的 `ITelemetryClientFactory`，而主机会使用你的类来构造 [`TelemetryClient`]。 例如，此代码会重写 `DefaultTelemetryClientFactory` 以修改 `ServerTelemetryChannel` 的属性：
 

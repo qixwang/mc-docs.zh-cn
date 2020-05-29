@@ -1,17 +1,17 @@
 ---
 title: 恢复服务保管库概述
 description: 恢复服务保管库和 Azure 备份保管库的概述和比较。
-ms.topic: conceptual
-author: lingliw
+author: Johnnytechn
 origin.date: 08/10/2018
-ms.date: 11/26/2019
-ms.author: v-lingwu
-ms.openlocfilehash: 2b1f1f12b75830b261af85e1bec49ff4c1fcb63a
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.topic: conceptual
+ms.date: 05/11/2020
+ms.author: v-johya
+ms.openlocfilehash: d330fa9e5ffd9fe1e7d7f4b6a9bc8e6e62c78ac9
+ms.sourcegitcommit: 08b42258a48d96d754244064d065e4d5703f1cfb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74839057"
+ms.lasthandoff: 05/18/2020
+ms.locfileid: "83445158"
 ---
 # <a name="recovery-services-vaults-overview"></a>恢复服务保管库概述
 
@@ -29,24 +29,33 @@ ms.locfileid: "74839057"
 
 - **针对混合 IT 环境进行集中监视**：使用恢复服务保管库时，可以通过中心门户监视 [Azure IaaS VM](backup-azure-manage-vms.md) 和[本地资产](backup-azure-manage-windows-server.md#manage-backup-items)。 [了解详细信息](https://azure.microsoft.com/blog/alerting-and-monitoring-for-azure-backup)
 
-- **基于角色的访问控制 (RBAC)** ：RBAC 在 Azure 中提供精细的访问管理控制。 [Azure 提供各种内置角色](../role-based-access-control/built-in-roles.md)，而 Azure 备份包含三个[用于管理恢复点的内置角色](backup-rbac-rs-vault.md)。 恢复服务保管库兼容 RBAC，后者会限制对已定义用户角色集的备份和还原访问权限。 [了解详细信息](backup-rbac-rs-vault.md)
+- **基于角色的访问控制 (RBAC)** ：RBAC 在 Azure 中提供精细的访问管理控制。 [Azure 提供各种内置角色](../role-based-access-control/built-in-roles.md)，而 Azure 备份具有三个[用于管理恢复点的内置角色](backup-rbac-rs-vault.md)。 恢复服务保管库与 RBAC 兼容，后者会限制对已定义用户角色集的备份和还原访问权限。 [了解详细信息](backup-rbac-rs-vault.md)
 
-- **保护 Azure 虚拟机的所有配置**：恢复服务保管库保护基于 Resource Manager 的 VM，其中包括高级磁盘、托管磁盘和加密 VM。 将备份保管库升级到恢复服务保管库以后，即可将基于 Service Manager 的 VM 升级到基于 Resource Manager 的 VM。 在升级保管库的同时，可以保留基于 Service Manager 的 VM 恢复点，并为已升级（已启用 Resource Manager）的 VM 配置保护。 [了解详细信息](https://azure.microsoft.com/blog/azure-backup-recovery-services-vault-ga)
+- **保护 Azure 虚拟机的所有配置**：恢复服务保管库保护基于资源管理器的 VM，其中包括高级磁盘、托管磁盘和加密 VM。 将备份保管库升级到恢复服务保管库以后，即可将基于 Service Manager 的 VM 升级到基于 Resource Manager 的 VM。 在升级保管库的同时，可以保留基于 Service Manager 的 VM 恢复点，并为已升级（已启用 Resource Manager）的 VM 配置保护。 [了解详细信息](https://azure.microsoft.com/blog/azure-backup-recovery-services-vault-ga)
 
-- **适用于 IaaS VM 的即时还原**：使用恢复服务保管库时，可以从 IaaS VM 还原文件和文件夹，不需还原整个 VM，从而缩短还原时间。 适用于 IaaS VM 的即时还原可供 Windows 和 Linux VM 使用。 [了解详细信息](https://azure.microsoft.com/blog/instant-file-recovery-from-azure-linux-vm-backup-using-azure-backup-preview)
+- **适用于 IaaS VM 的即时还原**：使用恢复服务保管库时，可以从 IaaS VM 还原文件和文件夹，不需还原整个 VM，从而缩短还原时间。 适用于 IaaS VM 的即时还原可用于 Windows 和 Linux VM。 [了解详细信息](backup-instant-restore-capability.md)
+
+## <a name="storage-settings-in-the-recovery-services-vault"></a>恢复服务保管库中的存储设置
+
+恢复服务保管库是用于存储在不同时间创建的备份和恢复点的实体。 恢复服务保管库还包含与受保护虚拟机关联的备份策略。
+
+Azure 备份会自动处理保管库的存储。 查看如何[更改存储设置](/backup/backup-create-rs-vault#set-storage-redundancy)。
+
+若要详细了解存储冗余，请参阅有关[异地](/storage/common/storage-redundancy-grs)冗余和[本地](/storage/common/storage-redundancy-lrs)冗余的这些文章。
 
 ## <a name="managing-your-recovery-services-vaults-in-the-portal"></a>在门户中管理恢复服务保管库
-在 Azure 门户中创建和管理恢复服务保管库很容易，因为备份服务可集成到其他 Azure 服务中。 这种集成意味着，可以在目标服务上下文中  创建和管理恢复服务保管库。 例如，若要查看 VM 的恢复点，请选中该 VM，并在“操作”菜单中单击“备份”。 
 
-![VM 中的恢复服务保管库详细信息](./media/backup-azure-recovery-services-vault-overview/rs-vault-in-context-vm.png)
+在 Azure 门户中创建和管理恢复服务保管库很容易，因为备份服务已集成到其他 Azure 服务中。 这种集成意味着，可以在目标服务上下文中创建和管理恢复服务保管库。 例如，若要查看 VM 的恢复点，请选中该 VM，并在“操作”菜单中单击“备份”。
+
+![恢复服务保管库详细信息 VM](./media/backup-azure-recovery-services-vault-overview/rs-vault-in-context-vm.png)
 
 如果 VM 未配置备份，则会提示你配置备份。 如果已配置备份，你将看到有关 VM 的备份信息，包括还原点列表。  
 
 ![VM 中的恢复服务保管库详细信息](./media/backup-azure-recovery-services-vault-overview/vm-recovery-point-list.png)
 
-在前面的示例中，ContosoVM  是虚拟机的名称。 **ContosoVM-demovault** 是恢复服务保管库的名称。 不需记住用于存储恢复点的恢复服务保管库的名称，可以在虚拟机中访问该信息。  
+在上一示例中，ContosoVM 是虚拟机的名称。 **ContosoVM-demovault** 是恢复服务保管库的名称。 不需记住用于存储恢复点的恢复服务保管库的名称，可以在虚拟机中访问该信息。  
 
-如果一个恢复服务保管库保护多个服务器，则查看恢复服务保管库可能更符合逻辑。 可以在订阅中搜索所有恢复服务保管库，并从列表中选择一个。
+如果一个恢复服务保管库保护多个服务器，则查看恢复服务保管库可能更合乎逻辑。 可以在订阅中搜索所有恢复服务保管库，并从列表中选择一个。
 
 以下部分包含多篇文章的链接，这些文章说明了如何在每类活动中使用恢复服务保管库。
 
@@ -54,28 +63,30 @@ ms.locfileid: "74839057"
 > 如果恢复服务保管库在 24 小时内被删除，则无法以相同的名称创建它。 请使用其他资源名称或选择其他资源组，或者在 24 小时后重试。
 
 ### <a name="back-up-data"></a>备份数据
+
 - [备份 Azure VM](backup-azure-vms-first-look-arm.md)
-- [备份 Windows Server 或 Windows 工作站](backup-configure-vault.md)
 - [将 DPM 工作负荷备份到 Azure](backup-azure-dpm-introduction.md)
 - [准备使用 Azure 备份服务器来备份工作负荷](backup-azure-microsoft-azure-backup.md)
 
 ### <a name="manage-recovery-points"></a>管理恢复点
+
 - [管理 Azure VM 备份](backup-azure-manage-vms.md)
 - [管理文件和文件夹](backup-azure-manage-windows-server.md)
 
 ### <a name="restore-data-from-the-vault"></a>从保管库还原数据
+
 - [从 Azure VM 恢复单个文件](backup-azure-restore-files-from-vm.md)
 - [还原 Azure VM](backup-azure-arm-restore-vms.md)
 
 ### <a name="secure-the-vault"></a>保护保管库
+
 - [保护恢复服务保管库中的云备份数据](backup-azure-security-feature.md)
 
-
-
 ## <a name="next-steps"></a>后续步骤
+
 使用以下文章了解相关操作：</br>
 [备份 IaaS VM](backup-azure-arm-vms-prepare.md)</br>
 [备份 Azure 备份服务器](backup-azure-microsoft-azure-backup.md)</br>
-[备份 Windows Server](backup-configure-vault.md)
+[备份 Windows Server](backup-windows-with-mars-agent.md)
 
 <!-- Update_Description: wording update -->

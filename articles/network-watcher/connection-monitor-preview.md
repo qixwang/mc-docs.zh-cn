@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 04/30/2020
 ms.author: v-tawe
 ms.custom: mvc
-ms.openlocfilehash: 7acd430c0494e586457f737109b7de2271a6a4cf
-ms.sourcegitcommit: b81ea2ab9eafa986986fa3eb1e784cfe9bbf9ec1
+ms.openlocfilehash: a5c2da969c777cfa4ca456b703b3f17558c6334e
+ms.sourcegitcommit: a04b0b1009b0c62f2deb7c7acee75a1304d98f87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83367869"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83796777"
 ---
 # <a name="network-connectivity-monitoring-with-connection-monitor-preview"></a>使用连接监视器（预览版）进行网络连接监视
 
@@ -157,15 +157,15 @@ $connectionMonitorName = "sampleConnectionMonitor"
 
 $ARM = "https://management.chinacloudapi.cn"
 
-$SUB = "subscriptions/\&lt;subscription id 1\&gt;"
+$SUB = "subscriptions/<subscription id 1>;"
 
-$NW = "resourceGroups/NetworkWatcherRG/providers/Microsoft.Network/networkWatchers/NetworkWatcher\_centraluseuap"
+$NW = "resourceGroups/NetworkWatcherRG/providers/Microsoft.Network/networkWatchers/NetworkWatcher\_<region>"
 
 $body =
 
 "{
 
-location: 'chinaeast',
+location: '<region>',
 
 properties: {
 
@@ -173,7 +173,7 @@ endpoints: [{
 
 name: 'workspace',
 
-resourceId: '/subscriptions/\&lt;subscription id\&gt;/resourcegroups/\&lt;resource group\&gt;/providers/Microsoft.OperationalInsights/workspaces/sampleWorkspace',
+resourceId: '/subscriptions/<subscription id>/resourcegroups/<resource group>/providers/Microsoft.OperationalInsights/workspaces/sampleWorkspace',
 
 filter: {
 
@@ -181,7 +181,7 @@ filter: {
 
 type: 'AgentAddress',
 
-address: '\&lt;FQDN of your on-premises agent'
+address: '<FQDN of your on-premises agent>'
 
 }]
 
@@ -193,7 +193,7 @@ address: '\&lt;FQDN of your on-premises agent'
 
 name: 'vm1',
 
-resourceId: '/subscriptions/\&lt;subscription id\&gt;/resourceGroups/\&lt;resource group\&gt;/providers/Microsoft.Compute/virtualMachines/\&lt;vm-name\&gt;'
+resourceId: '/subscriptions/<subscription id>/resourceGroups/<resource group>/providers/Microsoft.Compute/virtualMachines/<vm-name>'
 
 },
 
@@ -201,7 +201,7 @@ resourceId: '/subscriptions/\&lt;subscription id\&gt;/resourceGroups/\&lt;resour
 
 name: 'vm2',
 
-resourceId: '/subscriptions/\&lt;subscription id\&gt;/resourceGroups/\&lt;resource group\&gt;/providers/Microsoft.Compute/virtualMachines/\&lt;vm-name\&gt;'
+resourceId: '/subscriptions/<subscription id>/resourceGroups/<resource group>/providers/Microsoft.Compute/virtualMachines/<vm-name>'
 
    },
 
@@ -209,7 +209,7 @@ resourceId: '/subscriptions/\&lt;subscription id\&gt;/resourceGroups/\&lt;resour
 
 name: 'azure portal'
 
-address: '\&lt;URL\&gt;'
+address: '<URL>'
 
    },
 
@@ -217,7 +217,7 @@ address: '\&lt;URL\&gt;'
 
     name: 'ip',
 
-     address: '\&lt;IP\&gt;'
+     address: '<IP>'
 
  }
 
@@ -239,6 +239,8 @@ address: '\&lt;URL\&gt;'
 
     name: 'Connectivty from Azure VM 1 to Azure VM 2',
 
+   // Choose your protocol
+   
     testConfigurations: ['http', 'https', 'tcpDisabled', 'icmpDisabled'],
 
     sources: ['vm1'],
@@ -255,15 +257,15 @@ address: '\&lt;URL\&gt;'
 
     name: 'http',
 
-    testFrequencySec: 60,
+    testFrequencySec: <frequency>,
 
     protocol: 'HTTP',
 
     successThreshold: {
 
-     checksFailedPercent: 50,
+     checksFailedPercent: <threshold for checks failed %>,
 
-     roundTripTimeMs: 3.4
+     roundTripTimeMs: <threshold for RTT>
 
     }
 
@@ -271,7 +273,7 @@ address: '\&lt;URL\&gt;'
 
     name: 'https',
 
-    testFrequencySec: 60,
+    testFrequencySec: <frequency>,
 
     protocol: 'HTTP',
 
@@ -283,9 +285,9 @@ address: '\&lt;URL\&gt;'
 
     successThreshold: {
 
-     checksFailedPercent: 50,
+     checksFailedPercent: <choose your checks failed threshold>,
 
-     roundTripTimeMs: 3.4
+     roundTripTimeMs: <choose your RTT threshold>
 
     }
 
@@ -293,7 +295,7 @@ address: '\&lt;URL\&gt;'
 
     name: 'tcpEnabled',
 
-    testFrequencySec: 30,
+    testFrequencySec: <frequency>,
 
     protocol: 'TCP',
 
@@ -305,9 +307,9 @@ address: '\&lt;URL\&gt;'
 
     successThreshold: {
 
-     checksFailedPercent: 30,
+     checksFailedPercent: <choose your checks failed threshold>,
 
-     roundTripTimeMs: 5.2
+     roundTripTimeMs: <choose your RTT threshold>
 
     }
 
@@ -315,15 +317,15 @@ address: '\&lt;URL\&gt;'
 
     name: 'icmpEnabled',
 
-    testFrequencySec: 90,
+    testFrequencySec: <frequency>,
 
     protocol: 'ICMP',
 
     successThreshold: {
 
-     checksFailedPercent: 50,
+     checksFailedPercent: <choose your checks failed threshold>,
 
-     roundTripTimeMs: 3.4
+     roundTripTimeMs: <choose your RTT threshold>
 
     }
 
@@ -331,7 +333,7 @@ address: '\&lt;URL\&gt;'
 
     name: 'icmpDisabled',
 
-    testFrequencySec: 120,
+    testFrequencySec: <frequency>,
 
     protocol: 'ICMP',
 
@@ -343,9 +345,9 @@ address: '\&lt;URL\&gt;'
 
     successThreshold: {
 
-     checksFailedPercent: 50,
+     checksFailedPercent: <choose your checks failed threshold>,
 
-     roundTripTimeMs: 3.4
+     roundTripTimeMs: <choose your RTT threshold>
 
     }
 
@@ -353,7 +355,7 @@ address: '\&lt;URL\&gt;'
 
     name: 'tcpDisabled',
 
-    testFrequencySec: 45,
+    testFrequencySec: <frequency>,
 
     protocol: 'TCP',
 
@@ -367,9 +369,9 @@ address: '\&lt;URL\&gt;'
 
     successThreshold: {
 
-     checksFailedPercent: 30,
+     checksFailedPercent: <choose your checks failed threshold>,
 
-     roundTripTimeMs: 5.2
+     roundTripTimeMs: <choose your RTT threshold>
 
     }
 
@@ -512,7 +514,7 @@ armclient PUT $ARM/$SUB/$NW/connectionMonitors/$connectionMonitorName/?api-versi
 
 监视数据也可用于 Azure Monitor 指标中。 可以根据需要使用 Log Analytics 保留监视数据。 默认情况下，Azure Monitor 仅存储 30 天的指标。 
 
-
+可以[根据数据设置基于指标的警报](https://azure.microsoft.com/blog/monitor-at-scale-in-azure-monitor-with-multi-resource-metric-alerts/)。
 
 #### <a name="monitoring-dashboards"></a>监视仪表板
 

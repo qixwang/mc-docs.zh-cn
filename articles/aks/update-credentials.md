@@ -1,23 +1,28 @@
 ---
-title: 为 Azure Kubernetes 服务 (AKS) 群集重置凭据
+title: 重置群集的凭据
+titleSuffix: Azure Kubernetes Service
 description: 了解如何为 Azure Kubernetes 服务 (AKS) 群集更新或重置服务主体或 AAD 应用程序凭据
 services: container-service
 ms.topic: article
 origin.date: 03/11/2019
-ms.date: 04/06/2020
+ms.date: 05/25/2020
 ms.author: v-yeche
-ms.openlocfilehash: 9d997138dac1bb6996ed8e7043cdf5d7ab7fdda6
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 282f5c9fac4640b82bf8b0708bcfa8a5eeb5682c
+ms.sourcegitcommit: 7e6b94bbaeaddb854beed616aaeba6584b9316d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80517023"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83735058"
 ---
 # <a name="update-or-rotate-the-credentials-for-azure-kubernetes-service-aks"></a>更新或轮换 Azure Kubernetes 服务 (AKS) 的凭据
 
 默认情况下，使用服务主体创建的 AKS 群集具有为期一年的有效期。 在有效期即将结束时，你可以重置凭据来将服务主体延长额外的一段时间。 作为已定义安全策略的一部分，还可能要更新或轮换凭据。 本文详细介绍如何为 AKS 群集更新这些凭据。
 
-## <a name="before-you-begin"></a>开始之前
+还可以[将 AKS 群集与 Azure Active Directory 集成][aad-integration]，并将其用作群集的身份验证提供程序。 在这种情况下，你将为群集、AAD 服务器应用和 AAD 客户端应用创建另外 2 个标识，还可以重置这些凭据。
+
+<!--Not Avaialble on managed identity-->
+
+## <a name="before-you-begin"></a>准备阶段
 
 需要安装并配置 Azure CLI 2.0.65 或更高版本。 运行  `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅 [安装 Azure CLI][install-azure-cli]。
 
@@ -30,7 +35,7 @@ ms.locfileid: "80517023"
 
 ### <a name="reset-existing-service-principal-credential"></a>重置现有的服务主体凭据
 
-若要为现有服务主体更新凭据，请使用 [az aks show][az-aks-show] 命令获取群集的服务主体 ID。 以下示例获取 myResourceGroup 资源组中名为 myAKSCluster 的群集的 ID   。 服务主体 ID 设置为名为“SP_ID”  变量以供在其他命令中使用。
+若要为现有服务主体更新凭据，请使用 [az aks show][az-aks-show] 命令获取群集的服务主体 ID。 以下示例获取 myResourceGroup 资源组中名为 myAKSCluster 的群集的 ID 。 服务主体 ID 设置为名为“SP_ID”变量以供在其他命令中使用。
 
 ```azurecli
 SP_ID=$(az aks show --resource-group myResourceGroup --name myAKSCluster \
@@ -66,7 +71,7 @@ az ad sp create-for-rbac --skip-assignment
 }
 ```
 
-现在使用自己的 [az ad sp create-for-rbac][az-ad-sp-create] 命令的输出为服务主体 ID 和客户端密码定义变量，如下面的示例所示。 SP_ID  是 appId  ，SP_SECRET  是 password  ：
+现在使用自己的 [az ad sp create-for-rbac][az-ad-sp-create] 命令的输出为服务主体 ID 和客户端密码定义变量，如下面的示例所示。 SP_ID是你的 appId，而 SP_SECRET 是你的密码：
 
 ```console
 SP_ID=7d837646-b1f3-443d-874c-fd83c7c739c5
@@ -77,7 +82,7 @@ SP_SECRET=a5ce83c9-9186-426d-9183-614597c7f2f7
 
 ## <a name="update-aks-cluster-with-new-service-principal-credentials"></a>使用新的服务主体凭据更新 AKS 群集
 
-无论是选择为现有服务主体更新凭据还是创建服务主体，现在都通过 [az aks update-credentials][az-aks-update-credentials] 命令，使用新凭据更新 AKS 群集。 会使用 --service-principal  和 --client-secret  的变量：
+无论是选择为现有服务主体更新凭据还是创建服务主体，现在都通过 [az aks update-credentials][az-aks-update-credentials] 命令，使用新凭据更新 AKS 群集。 会使用 --service-principal 和 --client-secret 的变量：
 
 ```azurecli
 az aks update-credentials \

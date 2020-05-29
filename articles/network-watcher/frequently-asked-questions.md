@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 origin.date: 10/10/2019
 ms.date: 05/08/2020
 ms.author: v-tawe
-ms.openlocfilehash: 222c2ef4d8c19f727150fc2992b2a9abaea7db4c
-ms.sourcegitcommit: b81ea2ab9eafa986986fa3eb1e784cfe9bbf9ec1
+ms.openlocfilehash: 766607bcbb07404b9c7edca490d74e8d5ee339d3
+ms.sourcegitcommit: a04b0b1009b0c62f2deb7c7acee75a1304d98f87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83367819"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83796837"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-network-watcher"></a>有关 Azure 网络观察程序的常见问题解答 (FAQ)
 [Azure 网络观察程序](https://docs.azure.cn/network-watcher/network-watcher-monitoring-overview)服务提供一套工具用于监视、诊断 Azure 虚拟网络中的资源、查看其指标，以及为其启用或禁用日志。 本文解答有关该服务的常见问题。
@@ -62,7 +62,7 @@ ms.locfileid: "83367819"
 网络观察程序服务是为每个订阅自动启用的。
 
 ### <a name="what-is-the-network-watcher-deployment-model"></a>网络观察程序部署模型是什么？
-网络观察程序父资源是使用每个区域中的唯一实例部署的。 命名格式：NetworkWatcher_RegionName。 示例：NetworkWatcher_centralus 是“美国中部”区域的网络观察程序资源。
+网络观察程序父资源是使用每个区域中的唯一实例部署的。 命名格式：NetworkWatcher_RegionName。 示例：NetworkWatcher_centralus 是“中国东部”区域的网络观察程序资源。
 
 ### <a name="what-is-the-networkwatcherrg"></a>NetworkWatcherRG 是什么？
 网络观察程序资源位于自动创建的、隐藏的 **NetworkWatcherRG** 资源组中。 例如，NSG 流日志资源是网络观察程序的子资源，在 NetworkWatcherRG 中启用。

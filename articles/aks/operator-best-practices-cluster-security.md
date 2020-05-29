@@ -1,23 +1,24 @@
 ---
-title: 操作员最佳做法 - Azure Kubernetes 服务 (AKS) 中的群集安全性
+title: 有关群集安全性的最佳做法
+titleSuffix: Azure Kubernetes Service
 description: 了解有关如何在 Azure Kubernetes 服务 (AKS) 中管理群集安全性和升级的群集操作员最佳做法
 services: container-service
 ms.topic: conceptual
 origin.date: 12/06/2018
-ms.date: 03/09/2020
+ms.date: 05/25/2020
 ms.author: v-yeche
-ms.openlocfilehash: 5b22769075134adb42462d8abaa65a16548d9f18
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 9775aaf4a07c15d4650134eded75f4a2184966fe
+ms.sourcegitcommit: 7e6b94bbaeaddb854beed616aaeba6584b9316d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79290719"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83735155"
 ---
 # <a name="best-practices-for-cluster-security-and-upgrades-in-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 中的群集安全性和升级的最佳做法
 
 在 Azure Kubernetes 服务 (AKS) 中管理群集时，关键是要确保工作负荷和数据的安全性。 特别是在使用逻辑隔离运行多租户群集时，需要保护对资源和工作负荷的访问。 为了尽量减少攻击风险，还需确保应用最新的 Kubernetes 和节点 OS 安全更新。
 
-本文重点介绍如何保护 AKS 群集。 学习如何：
+本文重点介绍如何保护 AKS 群集。 你将学习如何执行以下操作：
 
 > [!div class="checklist"]
 > * 使用 Azure Active Directory 和基于角色的访问控制来保护 API 服务器访问
@@ -54,7 +55,7 @@ Azure Active Directory (AD) 提供可与 AKS 群集集成的企业级标识管�
 若要更精确地控制容器操作，还可以使用内置 Linux 安全功能，例如 *AppArmor* 和 *seccomp*。 这些功能在节点级别定义，然后通过 Pod 清单实现。 内置的 Linux 安全功能仅在 Linux 节点和 Pod 上提供。
 
 > [!NOTE]
-> AKS 或其他位置中的 Kubernetes 环境并不完全安全，因为可能存在恶意的多租户使用情况。 用于节点的其他安全功能（如 *AppArmor*、*seccomp*、*Pod 安全策略*或更细粒度的基于角色的访问控制 (RBAC)）可增加攻击的难度。 但是，为了在运行恶意多租户工作负荷时获得真正的安全性，虚拟机监控程序应是你唯一信任的安全级别。 Kubernetes 的安全域成为整个群集，而不是单个节点。 对于这些类型的恶意多租户工作负荷，应使用物理隔离的群集。
+> AKS 或其他位置中的 Kubernetes 环境并不完全安全，因为可能存在恶意的多租户使用情况。 用于节点的其他安全功能（如 AppArmor、seccomp、Pod 安全策略或更细粒度的基于角色的访问控制 (RBAC)）可增加攻击的难度。 但是，为了在运行恶意多租户工作负荷时获得真正的安全性，虚拟机监控程序应是你唯一信任的安全级别。 Kubernetes 的安全域成为整个群集，而不是单个节点。 对于这些类型的恶意多租户工作负荷，应使用物理隔离的群集。
 
 ### <a name="app-armor"></a>App Armor
 
@@ -198,7 +199,7 @@ az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes
 
 **最佳做法指南** - AKS 会自动在每个 Linux 节点上下载并安装安全修补程序，但不会在必要时自动重启。 使用 `kured` 监视挂起的重启操作，然后安全地封锁并排空节点以允许节点重启，应用更新并尽可能安全地保护 OS。
 
-<!--Not Available on Windows Server nodes (currently in preview in AKS)-->
+<!--Not Available on For Windows Server nodes, regularly perform an AKS upgrade operation to safely cordon and drain pods and deploy updated nodes.-->
 
 每天晚上，AKS 中的 Linux 节点都会通过其发行版更新通道获得安全修补程序。 当在 AKS 群集中部署节点时，会​​自动配置此行为。 为了尽量减少对正在运行的工作负荷的中断和潜在影响，AKS 不会在安全修补程序或内核更新需要进行重启时自动重启节点。
 

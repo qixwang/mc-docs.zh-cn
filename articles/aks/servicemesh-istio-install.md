@@ -4,15 +4,15 @@ description: 了解如何在 Azure Kubernetes 服务 (AKS) 群集中安装和使
 author: rockboyfor
 ms.topic: article
 origin.date: 02/19/2020
-ms.date: 04/06/2020
+ms.date: 05/25/2020
 ms.author: v-yeche
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: 8bb7cdb0d5080d593d1dcfe5e74469f0d81e23a4
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: f4e2ce5a1ff1b8500c6e8b8802456586a63536fa
+ms.sourcegitcommit: 7e6b94bbaeaddb854beed616aaeba6584b9316d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80517006"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83735164"
 ---
 <!--CORRECT ON client-operating-system-->
 # <a name="install-and-use-istio-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中安装和使用 Istio
@@ -35,7 +35,7 @@ ms.locfileid: "80517006"
 > * 访问加载项
 > * 从 AKS 中卸载 Istio
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 本文中详述的步骤假设已创建 AKS 群集（已启用 RBAC 的 Kubernetes `1.13` 及更高版本）并已与该群集建立 `kubectl` 连接。 如果需要帮助完成这些项目，请参阅 [AKS 快速入门][aks-quickstart]。
 
@@ -101,7 +101,9 @@ kubectl create namespace istio-system --save-config
 <!--Not Available on  If you have Windows Server nodes in your cluster, you must ensure that the Istio pods are only scheduled to run on Linux nodes. We'll use [node selectors][kubernetes-node-selectors] to make sure pods are scheduled to the correct nodes.-->
 
 > [!CAUTION]
-> [SDS（机密发现服务）][istio-feature-sds]和 [Istio CNI][istio-feature-cni] Istio 功能目前为 [Alpha][istio-feature-stages] 版，因此在启用它们之前应谨慎。 另外，[服务帐户令牌卷投影][kubernetes-feature-sa-projected-volume] Kubernetes 功能（SDS 所必需的）在当前的 AKS 版本中未启用。
+> [SDS（机密发现服务）][istio-feature-sds]和 [Istio CNI][istio-feature-cni] Istio 功能目前为 [Alpha][istio-feature-stages] 版，因此在启用它们之前应谨慎。
+>
+> 请注意，对于 AKS 中的所有 Kubernetes 1.13 以及更高版本，现在已启用[服务帐户令牌卷投影][kubernetes-feature-sa-projected-volume] Kubernetes 功能（SDS 所必需的）。
 
 使用以下内容创建名为 `istio.aks.yaml` 的文件。 此文件将保存用于配置 Istio 的 [Istio 控制平面规范][istio-control-plane]详细信息。
 
@@ -399,7 +401,7 @@ kubectl delete -f istio-components-aks -R
 
 - [Istio - 安装指南][istio-installation-guides]
 
-也可使用以下项按照其他方案操作：
+也可以使用以下示例应用程序按照其他方案操作：
 
 - [Istio Bookinfo 应用程序示例][istio-bookinfo-example]
 

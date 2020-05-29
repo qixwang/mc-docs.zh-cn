@@ -4,32 +4,32 @@ description: 查找有关创建 Azure 资源管理器模板以预配和部署应
 author: tfitzmac
 ms.topic: article
 origin.date: 01/03/2019
-ms.date: 03/16/2020
+ms.date: 05/22/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 28cd8b0ab8c2d41071c05e40a91f88115be0146f
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 359ef11575477aea27b105a0c3de4bbf24e40c83
+ms.sourcegitcommit: 981a75a78f8cf74ab5a76f9e6b0dc5978387be4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79546981"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83801182"
 ---
-# <a name="guidance-on-deploying-web-apps-by-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板部署 Web 应用的指南
+# <a name="guidance-on-deploying-web-apps-by-using-azure-resource-manager-templates"></a>有关使用 Azure 资源管理器模板部署 Web 应用的指南
 
-本文提供创建 Azure 资源管理器模板以部署 Azure 应用服务解决方案的建议。 这些建议可以帮助你避免常见问题。
+本文提供创建 Azure 资源管理器模板以部署 Azure 应用服务解决方案的建议。 这些建议可帮助你避免常见问题。
 
-## <a name="define-dependencies"></a>定义依赖项
+## <a name="define-dependencies"></a>定义依赖关系
 
 为 Web 应用定义依赖项需要了解 Web 应用中的资源如何进行交互。 如果以错误的顺序指定依赖项，则可能会导致部署错误或者创建造成停止部署的争用条件。
 
 > [!WARNING]
-> 如果在模板中包括了 MSDeploy 站点扩展，则必须将任何配置资源设置为依赖于 MSDeploy 资源。 配置更改会导致站点以异步方式重新启动。 通过使配置资源依赖于 MSDeploy，可确保 MSDeploy 在站点重新启动前完成。 如果没有这些依赖关系，则站点可能会在 MSDeploy 的部署过程中重新启动。 有关示例模板，请参阅[具有 Web 部署依赖项的 WordPress 模板](https://github.com/davidebbo/AzureWebsitesSamples/blob/master/ARMTemplates/WordpressTemplateWebDeployDependency.json)。
+> 如果在模板中包括了 MSDeploy 站点扩展，则必须将任何配置资源设置为依赖于 MSDeploy 资源。 配置更改会导致站点以异步方式重启。 通过使配置资源依赖于 MSDeploy，可确保 MSDeploy 在站点重启前完成。 如果没有这些依赖关系，则站点可能会在 MSDeploy 的部署过程中重启。 有关示例模板，请参阅[具有 Web 部署依赖项的 WordPress 模板](https://github.com/davidebbo/AzureWebsitesSamples/blob/master/ARMTemplates/WordpressTemplateWebDeployDependency.json)。
 
 下图显示了各种应用服务资源的依赖顺序：
 
-![Web 应用依赖项](media/web-sites-rm-template-guidance/web-dependencies.png)
+![Web 应用依赖关系](media/web-sites-rm-template-guidance/web-dependencies.png)
 
-请按以下顺序部署资源：
+按以下顺序部署资源：
 
 **第 1 层**
 * 应用服务计划。
@@ -52,9 +52,9 @@ ms.locfileid: "79546981"
 * 主机名绑定 - 依赖于如果存在的证书； 若不存在，则依赖于较高级别的资源。
 * 站点扩展 - 依赖于存在的配置设置； 若不存在，则依赖于较高级别的资源。
 
-通常，你的解决方案仅包括这些资源和层中的一部分。 对于缺少的层，请将较低的资源映射到下一个较高的层。
+通常，解决方案仅包括上述某些资源和层。 对于缺少的层，请将较低的资源映射到下一个较高的层。
 
-下面的示例显示了模板的一部分。 连接字符串配置值依赖于 MSDeploy 扩展。 MSDeploy 扩展依赖于 Web 应用和数据库。 
+以下示例显示了模板的一部分。 连接字符串配置值依赖于 MSDeploy 扩展。 MSDeploy 扩展依赖于 Web 应用和数据库。 
 
 ```json
 {
@@ -110,7 +110,7 @@ Web 应用的名称必须全局唯一。 可以使用某个可能唯一的命名
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-如果模板包括用于 SSL 绑定的 [Microsoft.Web/certificates](https://docs.microsoft.com/azure/templates/microsoft.web/certificates) 资源，且证书存储在 Key Vault 中，则须确保应用服务标识可以访问该证书。
+如果模板包括用于 TLS/SSL 绑定的 [Microsoft.Web/certificates](https://docs.microsoft.com/azure/templates/microsoft.web/certificates) 资源，且证书存储在 Key Vault 中，则须确保应用服务标识可以访问该证书。
 
 在 Azure 中，应用服务服务主体的 ID 为 **abfa0a7c-a6b6-4736-8310-5855508787cd**。 若要为应用服务服务主体授予对 Key Vault 的访问权限，请使用：
 
@@ -122,9 +122,9 @@ Set-AzKeyVaultAccessPolicy `
   -PermissionsToCertificates get
 ```
 
-在 Azure 政府中，应用服务服务主体所拥有的 ID 为 6a02c803-dafd-4136-b4c3-5a6f318b4714  。 使用上一示例中的 ID。
+在 Azure 政府中，应用服务服务主体所拥有的 ID 为 6a02c803-dafd-4136-b4c3-5a6f318b4714。 使用上一示例中的 ID。
 
-在 Key Vault 中，选择“证书”和“生成/导入”以上传证书   。
+在 Key Vault 中，选择“证书”和“生成/导入”以上传证书 。
 
 ![导入证书](media/web-sites-rm-template-guidance/import-certificate.png)
 

@@ -1,21 +1,22 @@
 ---
-title: 在 Azure Kubernetes 服务 (AKS) 中使用网络策略保护 Pod
+title: 使用网络策略保护 Pod 流量
+titleSuffix: Azure Kubernetes Service
 description: 了解如何在 Azure Kubernetes 服务 (AKS) 中使用 Kubernetes 网络策略保护流入和流出 Pod 的流量
 services: container-service
 ms.topic: article
 origin.date: 05/06/2019
-ms.date: 03/09/2020
+ms.date: 05/25/2020
 ms.author: v-yeche
-ms.openlocfilehash: 37c58bdc7e52faf5305e32a6b25106435f52d929
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 285dc6f4562f618f67d0372ce1652c7c794e3da7
+ms.sourcegitcommit: 7e6b94bbaeaddb854beed616aaeba6584b9316d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79290779"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83735091"
 ---
 # <a name="secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中使用网络策略保护 Pod 之间的流量
 
-在 Kubernetes 中运行最新的基于微服务的应用程序时，通常想要控制哪些组件可以相互通信。 对于在 Azure Kubernetes 服务 (AKS) 群集中的 Pod 之间流量的流动方式，应该应用最低特权原则。 假设你要阻止流量直接流入后端应用程序。 在 Kubernetes 中，使用“网络策略”可在群集中定义用于 Pod 之间的入口和出口流量的规则  。
+在 Kubernetes 中运行最新的基于微服务的应用程序时，通常想要控制哪些组件可以相互通信。 对于在 Azure Kubernetes 服务 (AKS) 群集中的 Pod 之间流量的流动方式，应该应用最低特权原则。 假设你要阻止流量直接流入后端应用程序。 在 Kubernetes 中，使用“网络策略”可在群集中定义用于 Pod 之间的入口和出口流量的规则。
 
 本文介绍如何安装网络策略引擎，并创建 Kubernetes 网络策略来控制 AKS 中 Pod 之间的流量流动方式。 应该只对 AKS 中基于 Linux 的节点和 Pod 使用网络策略。
 
@@ -44,8 +45,8 @@ ms.locfileid: "79290779"
 
 Azure 提供两种方式来实现网络策略。 可以在创建 AKS 群集时选择一个网络策略选项。 创建群集后无法更改策略选项：
 
-* Azure 自身的实现，称为“Azure 网络策略”。 
-* Calico 网络策略 - 由 [Tigera][tigera] 建立的开源网络和网络安全解决方案。 
+* Azure 自身的实现，称为“Azure 网络策略”。
+* Calico 网络策略 - 由 [Tigera][tigera] 建立的开源网络和网络安全解决方案。
 
 这两个实现都使用 Linux *IPTables* 来实施指定的策略。 策略将转换为一系列允许和禁止的 IP 对。 然后，这些对将编程为 IPTable 筛选规则。
 
@@ -80,11 +81,13 @@ Azure 提供两种方式来实现网络策略。 可以在创建 AKS 群集时�
 
 * 创建虚拟网络和子网。
 * 创建用于 AKS 群集的 Azure Active Directory (Azure AD) 服务主体。
-* 对虚拟网络的 AKS 服务主体授予“参与者”权限  。
+* 对虚拟网络的 AKS 服务主体授予“参与者”权限。
 * 在定义的虚拟网络中创建 AKS 群集并启用网络策略。
     * 将使用 *azure* 网络策略选项。 若要改用 Calico 作为网络策略选项，请使用 `--network-policy calico` 参数。 注意：可以结合 `--network-plugin azure` 或 `--network-plugin kubenet` 使用 Calico。
 
-提供自己的安全 SP_PASSWORD  。 可以替换 *RESOURCE_GROUP_NAME* 和 *CLUSTER_NAME* 变量：
+<!--Not Available on [Use managed identities](use-managed-identity.md)-->
+
+提供自己的安全 SP_PASSWORD。 可以替换 *RESOURCE_GROUP_NAME* 和 *CLUSTER_NAME* 变量：
 
 ```azurecli
 RESOURCE_GROUP_NAME=myResourceGroup-NP
@@ -154,7 +157,7 @@ kubectl create namespace development
 kubectl label namespace/development purpose=development
 ```
 
-创建运行 NGINX 的示例后端 Pod。 此后端 Pod 可用于模拟基于 Web 的示例后端应用程序。 在 development 命名空间中创建此 Pod，并且打开端口 80，以提供 Web 流量   。 将 Pod 贴上标签：app=webapp,role=backend，以便我们可在下一节中使用网络策略定向到它  ：
+创建运行 NGINX 的示例后端 Pod。 此后端 Pod 可用于模拟基于 Web 的示例后端应用程序。 在 development 命名空间中创建此 Pod，并且打开端口 80，以提供 Web 流量 。 将 Pod 贴上标签：app=webapp,role=backend，以便我们可在下一节中使用网络策略定向到它：
 
 ```console
 kubectl run backend --image=nginx --labels app=webapp,role=backend --namespace development --expose --port 80 --generator=run-pod/v1
@@ -174,7 +177,7 @@ wget -qO- http://backend
 
 以下示例输出显示了返回的默认 NGINX 网页：
 
-```
+```output
 <!DOCTYPE html>
 <html>
 <head>
@@ -190,7 +193,7 @@ exit
 
 ### <a name="create-and-apply-a-network-policy"></a>创建并应用网络策略
 
-确认可以在示例后端 Pod 上使用基本的 NGINX 网页后，接下来请创建一个拒绝所有流量的网络策略。 创建名为 `backend-policy.yaml` 的文件并粘贴以下 YAML 清单。 此清单使用 *podSelector* 将策略附加到具有 *app:webapp,role:backend* 标签的 Pod，类似于示例 NGINX Pod。 入口下未定义任何规则，因此将拒绝流向 Pod 的所有入站流量  ：
+确认可以在示例后端 Pod 上使用基本的 NGINX 网页后，接下来请创建一个拒绝所有流量的网络策略。 创建名为 `backend-policy.yaml` 的文件并粘贴以下 YAML 清单。 此清单使用 *podSelector* 将策略附加到具有 *app:webapp,role:backend* 标签的 Pod，类似于示例 NGINX Pod。 入口下未定义任何规则，因此将拒绝流向 Pod 的所有入站流量：
 
 ```yaml
 kind: NetworkPolicy
@@ -206,9 +209,11 @@ spec:
   ingress: []
 ```
 
+<!--Not Available on [https://shell.azure.com](https://shell.azure.com)-->
+
 使用 [kubectl apply][kubectl-apply] 命令应用网络策略，并指定 YAML 清单的名称：
 
-```azurecli
+```console
 kubectl apply -f backend-policy.yaml
 ```
 
@@ -220,11 +225,13 @@ kubectl apply -f backend-policy.yaml
 kubectl run --rm -it --image=alpine network-policy --namespace development --generator=run-pod/v1
 ```
 
-在 shell 提示符下，使用 `wget` 确认是否可以访问默认的 NGINX 网页。 这一次，将超时值设为 2 秒  。 网络策略现在会阻止所有入站流量，因此无法加载页面，如以下示例中所示：
+在 shell 提示符下，使用 `wget` 确认是否可以访问默认的 NGINX 网页。 这一次，将超时值设为 2 秒。 网络策略现在会阻止所有入站流量，因此无法加载页面，如以下示例中所示：
 
 ```console
-$ wget -qO- --timeout=2 http://backend
+wget -qO- --timeout=2 http://backend
+```
 
+```output
 wget: download timed out
 ```
 
@@ -238,7 +245,7 @@ exit
 
 在上一部分，我们已计划了一个后端 NGINX Pod，并创建了拒绝所有流量的网络策略。 让我们创建一个前端 Pod，并更新网络策略以允许来自前端 Pod 的流量。
 
-更新网络策略，以允许来自具有标签 app:webapp,role:frontend 的 Pod 和任何命名空间的流量  。 编辑前面所述的 *backend-policy.yaml* 文件，并添加 *matchLabels* 入口规则，使清单如以下示例所示：
+更新网络策略，以允许来自具有标签 app:webapp,role:frontend 的 Pod 和任何命名空间的流量。 编辑前面所述的 *backend-policy.yaml* 文件，并添加 *matchLabels* 入口规则，使清单如以下示例所示：
 
 ```yaml
 kind: NetworkPolicy
@@ -261,11 +268,11 @@ spec:
 ```
 
 > [!NOTE]
-> 此网络策略使用 namespaceSelector 和 podSelector 元素作为入口规则   。 YAML 语法对于入口规则的严格性非常重要。 在此示例中，两个元素必须匹配要应用的入口规则。 低于 *1.12* 的 Kubernetes 版本可能无法正确解释这些元素和按预期限制网络流量。 有关此行为的详细信息，请参阅[目标和来源选择器的行为][policy-rules]。
+> 此网络策略使用 namespaceSelector 和 podSelector 元素作为入口规则 。 YAML 语法对于入口规则的严格性非常重要。 在此示例中，两个元素必须匹配要应用的入口规则。 低于 *1.12* 的 Kubernetes 版本可能无法正确解释这些元素和按预期限制网络流量。 有关此行为的详细信息，请参阅[目标和来源选择器的行为][policy-rules]。
 
 使用 [kubectl apply][kubectl-apply] 命令应用已更新的网络策略，并指定 YAML 清单的名称：
 
-```azurecli
+```console
 kubectl apply -f backend-policy.yaml
 ```
 
@@ -283,7 +290,7 @@ wget -qO- http://backend
 
 由于入口规则允许带有标签 *app: webapp,role: frontend* 的 Pod 的流量，因此允许来自前端 Pod 的流量。 以下示例输出显示了返回的默认 NGINX 网页：
 
-```
+```output
 <!DOCTYPE html>
 <html>
 <head>
@@ -299,7 +306,7 @@ exit
 
 ### <a name="test-a-pod-without-a-matching-label"></a>测试没有匹配标签的 Pod
 
-网络策略允许来自标记为 app: webapp,role: frontend 的 Pod 的流量，但应拒绝其他所有流量  。 让我们看看不带这些标签的另一个 Pod 是否可以访问后端 NGINX Pod。 创建另一个测试 Pod，并附加一个终端会话：
+网络策略允许来自标记为 app: webapp,role: frontend 的 Pod 的流量，但应拒绝其他所有流量。 让我们看看不带这些标签的另一个 Pod 是否可以访问后端 NGINX Pod。 创建另一个测试 Pod，并附加一个终端会话：
 
 ```console
 kubectl run --rm -it --image=alpine network-policy --namespace development --generator=run-pod/v1
@@ -308,8 +315,10 @@ kubectl run --rm -it --image=alpine network-policy --namespace development --gen
 在 shell 提示符下，使用 `wget` 确认是否可以访问默认的 NGINX 网页。 网络策略将阻止入站流量，因此无法加载页面，如以下示例所示：
 
 ```console
-$ wget -qO- --timeout=2 http://backend
+wget -qO- --timeout=2 http://backend
+```
 
+```output
 wget: download timed out
 ```
 
@@ -321,7 +330,7 @@ exit
 
 ## <a name="allow-traffic-only-from-within-a-defined-namespace"></a>仅允许来自定义命名空间的流量
 
-在前面的示例中，你已创建拒绝所有流量的网络策略，然后更新了该策略，以允许来自具有特定标签的 Pod 的流量。 另一个常见需求是将流量限制在给定的命名空间内。 如果前面的示例适用于 *development* 命名空间中的流量，请创建一个网络策略用于阻止来自另一命名空间（例如 *production*）的流量访问 Pod。
+在前面的示例中，你已创建拒绝所有流量的网络策略，然后更新了该策略，以允许来自具有特定标签的 Pod 的流量。 另一个常见需求是将流量限制在给定的命名空间内。 如果前面的示例适用于 development 命名空间中的流量，请创建一个网络策略用于阻止来自另一命名空间（例如 production）的流量访问 Pod 。
 
 首先，创建新的命名空间，模拟生产命名空间：
 
@@ -330,7 +339,7 @@ kubectl create namespace production
 kubectl label namespace/production purpose=production
 ```
 
-在具有标签 app=webapp,role=frontend 的 production 命名空间中计划测试 Pod   。 附加终端会话：
+在具有标签 app=webapp,role=frontend 的 production 命名空间中计划测试 Pod 。 附加终端会话：
 
 ```console
 kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace production --generator=run-pod/v1
@@ -344,7 +353,7 @@ wget -qO- http://backend.development
 
 由于 Pod 的标签匹配网络策略中当前允许的内容，因此允许该流量。 网络策略不会查看命名空间，只有 Pod 标签会查看。 以下示例输出显示了返回的默认 NGINX 网页：
 
-```
+```output
 <!DOCTYPE html>
 <html>
 <head>
@@ -360,7 +369,7 @@ exit
 
 ### <a name="update-the-network-policy"></a>更新网络策略
 
-让我们更新入口规则 *namespaceSelector* 节，以仅允许来自 *development* 命名空间内部的流量。 编辑 backend-policy.yaml 清单文件，如以下示例所示  ：
+让我们更新入口规则 *namespaceSelector* 节，以仅允许来自 *development* 命名空间内部的流量。 编辑 backend-policy.yaml 清单文件，如以下示例所示：
 
 ```yaml
 kind: NetworkPolicy
@@ -388,7 +397,7 @@ spec:
 
 使用 [kubectl apply][kubectl-apply] 命令应用已更新的网络策略，并指定 YAML 清单的名称：
 
-```azurecli
+```console
 kubectl apply -f backend-policy.yaml
 ```
 
@@ -403,8 +412,10 @@ kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend -
 在 shell 提示符下，使用 `wget` 查看目前拒绝流量的网络策略：
 
 ```console
-$ wget -qO- --timeout=2 http://backend.development
+wget -qO- --timeout=2 http://backend.development
+```
 
+```output
 wget: download timed out
 ```
 
@@ -428,7 +439,7 @@ wget -qO- http://backend
 
 之所以允许流量，是因为该 Pod 计划在匹配网络策略中允许的内容的命名空间中。 以下示例输出显示了返回的默认 NGINX 网页：
 
-```
+```output
 <!DOCTYPE html>
 <html>
 <head>
@@ -474,7 +485,7 @@ kubectl delete namespace development
 <!-- LINKS - internal -->
 
 [install-azure-cli]: https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest
-[use-advanced-networking]: configure-advanced-networking.md
+[use-advanced-networking]: configure-azure-cni.md
 [az-aks-get-credentials]: https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
 [concepts-network]: concepts-network.md
 [az-feature-register]: https://docs.azure.cn/cli/feature?view=azure-cli-latest#az-feature-register

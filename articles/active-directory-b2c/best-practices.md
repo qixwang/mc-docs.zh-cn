@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/16/2020
+ms.date: 05/18/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: f6f4643dfe687297c405c42bf4be16a07470f7d2
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: b8a759bd5a3f82ae79098ce6177469933e81d4e9
+ms.sourcegitcommit: 87e789550ea49ff77c7f19bc68fad228009fcf44
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79497385"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83748064"
 ---
 # <a name="recommendations-and-best-practices-for-azure-active-directory-b2c"></a>适用于 Azure Active Directory B2C 的建议和最佳做法
 
@@ -64,7 +64,7 @@ ms.locfileid: "79497385"
 |--|--|
 | 考虑全局流量 | 使用来自不同全局地址的流量源来测试性能和本地化要求。 确保所有 HTMLs、CSS 和依赖项符合性能需求。 |
 | 功能和 UI 测试 | 测试端到端的用户流。 使用 Selenium、VS Web Test 等工具每隔几分钟添加一次综合测试。 |
-| 渗透测试 | 在推出解决方案之前执行渗透测试演练，以验证所有组件（包括任何第三方依赖项）是否安全。 验证是否已使用访问令牌保护了 API，并为应用程序方案使用了适当的身份验证协议。 详细了解渗透测试，以及 [Microsoft 云渗透测试统一参与规则](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)。 |
+| 渗透测试 | 在推出解决方案之前执行渗透测试演练，以验证所有组件（包括任何第三方依赖项）是否安全。 验证是否已使用访问令牌保护了 API，并为应用程序方案使用了适当的身份验证协议。 详细了解[渗透测试](/security/fundamentals/pen-testing)，以及 [Microsoft 云渗透测试统一参与规则](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)。 |
 | A/B 测试 | 先在外部让少量的随机用户体验你的新功能，然后再将其推出到整个用户群。 在 Azure AD B2C 中启用 JavaScript 后，可与 Optimizely、Clarity 等 A/B 测试工具相集成。 |
 | 负载测试 | Azure AD B2C 可以缩放，但应用程序仅在其所有依赖项均可缩放时才能缩放。 对 API 和 CDN 进行负载测试。 |
 | 限制 |  如果在短时间内从同一个源发送了过多的请求，Azure AD B2C 会限制流量。 执行负载测试时请使用多个流量源，并在应用程序中适当处理 `AADB2C90229` 错误代码。 |
@@ -80,6 +80,7 @@ ms.locfileid: "79497385"
 | 对自定义策略使用版本控制 | 考虑对 Azure AD B2C 自定义策略使用 GitHub、Azure Repos 或其他基于云的版本控制系统。 |
 | 使用 Microsoft Graph API 将 B2C 租户管理自动化 | Microsoft Graph API：<br/>管理 [Identity Experience Framework](https://docs.microsoft.com/graph/api/resources/trustframeworkpolicy?view=graph-rest-beta)（自定义策略）<br/>[“键”](https://docs.microsoft.com/graph/api/resources/trustframeworkkeyset?view=graph-rest-beta)<br/>[用户流](https://docs.microsoft.com/graph/api/resources/identityuserflow?view=graph-rest-beta) |
 | 与 Azure Monitor 集成 | 审核日志事件仅保留七天。 [与 Azure Monitor 集成](azure-monitor.md)，以保留日志供长期使用，或者将其与第三方安全信息和事件管理 (SIEM) 工具相集成，以获取有关环境的见解。 |
+| 设置有效警报和监视 | 使用 Application Insights 在 Azure AD B2C 中跟踪用户行为。 |
 
 
 ## <a name="support-and-status-updates"></a>支持和状态更新
@@ -89,6 +90,6 @@ ms.locfileid: "79497385"
 |  |  |
 |--|--|
 | [服务更新](https://azure.microsoft.com/updates/?product=active-directory-b2c) |  随时关注 Azure AD B2C 产品更新和公告。 |
-| [Microsoft 支持](support-options.md) | 遇到 Azure AD B2C 技术问题时请提出支持请求。 计费和订阅管理支持免费提供。 |
+| [Microsoft 支持部门](support-options.md) | 遇到 Azure AD B2C 技术问题时请提出支持请求。 计费和订阅管理支持免费提供。 |
 | [Azure 状态](https://status.azure.com/status) | 查看所有 Azure 服务的当前运行状况。 |
 

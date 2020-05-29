@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/04/2020
+ms.date: 05/18/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: e4023ddff523180050c224836326914686905074
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: c753d2362dee12d2005bea638759a0df4abf1d29
+ms.sourcegitcommit: 87e789550ea49ff77c7f19bc68fad228009fcf44
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78266002"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83748107"
 ---
 # <a name="stringcollection-claims-transformations"></a>StringCollection 声明转换
 
@@ -34,9 +34,9 @@ ms.locfileid: "78266002"
 | InputClaim | collection | stringCollection | [可选] 如果已指定，则声明转换会复制此集合中的项，并将该项添加到输出集合声明的末尾。 |
 | OutputClaim | collection | stringCollection | 调用此声明转换后生成的 ClaimType，其值在输入声明中指定。 |
 
-使用此声明转换将字符串添加到新的或现有的 stringCollection。 它通常用于 AAD-UserWriteUsingAlternativeSecurityId  技术配置文件。 在创建新的社交帐户之前，CreateOtherMailsFromEmail  声明转换会读取 ClaimType，并将值添加到 otherMails  ClaimType。
+使用此声明转换将字符串添加到新的或现有的 stringCollection。 它通常用于 AAD-UserWriteUsingAlternativeSecurityId 技术配置文件。 在创建新的社交帐户之前，CreateOtherMailsFromEmail 声明转换会读取 ClaimType，并将值添加到 otherMails ClaimType。
 
-以下声明转换会将 email  ClaimType 添加到 otherMails  ClaimType。
+以下声明转换会将 email ClaimType 添加到 otherMails ClaimType。
 
 ```XML
 <ClaimsTransformation Id="CreateOtherMailsFromEmail" TransformationMethod="AddItemToStringCollection">
@@ -102,7 +102,7 @@ ms.locfileid: "78266002"
 | InputClaim | collection | stringCollection | 由声明转换用于获取项的 ClaimTypes。 |
 | OutputClaim | extractedItem | string | 调用此 ClaimsTransformation 后生成的 ClaimType。 集合中的第一项。 |
 
-以下示例读取 otherMails  声明，并将第一项返回到 email  声明中。
+以下示例读取 otherMails 声明，并将第一项返回到 email 声明中。
 
 ```XML
 <ClaimsTransformation Id="CreateEmailFromOtherMails" TransformationMethod="GetSingleItemFromStringCollection">
@@ -159,5 +159,39 @@ ms.locfileid: "78266002"
 - 输出声明：
     - **outputClaim**: "true"
 
-<!-- Update_Description: wording update -->
+## <a name="stringcollectioncontainsclaim"></a>StringCollectionContainsClaim
+
+检查 StringCollection 声明类型是否包含声明值。
+
+| 项目 | TransformationClaimType | 数据类型 | 注释 |
+| ---- | ----------------------- | --------- | ----- |
+| InputClaim | collection | stringCollection | 要搜索的声明类型。 |
+| InputClaim | item|string| 包含要搜索的值的声明类型。|
+|InputParameter|ignoreCase|string|指定此比较是否应忽略所比较字符串的大小写。|
+| OutputClaim | outputClaim | boolean | 调用此 ClaimsTransformation 后生成的 ClaimType。 布尔指示符（如果集合包含这样的字符串） |
+
+以下示例检查 `roles` stringCollection 声明类型是否包含 `role` 声明类型。
+
+```XML
+<ClaimsTransformation Id="HasRequiredRole" TransformationMethod="StringCollectionContainsClaim">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="roles" TransformationClaimType="collection" />
+    <InputClaim ClaimTypeReferenceId="role" TransformationClaimType="item" />
+  </InputClaims>
+  <InputParameters>
+    <InputParameter Id="ignoreCase" DataType="string" Value="true" />
+  </InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="hasAccess" TransformationClaimType="outputClaim" />
+  </OutputClaims>
+</ClaimsTransformation> 
+```
+
+- 输入声明：
+    - **collection**: ["reader", "author", "admin"]
+    - **item**:“Admin”
+- 输入参数：
+    - **ignoreCase**: "true"
+- 输出声明：
+    - **outputClaim**: "true"
 

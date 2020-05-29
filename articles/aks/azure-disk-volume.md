@@ -4,14 +4,14 @@ description: 了解如何在 Azure Kubernetes 服务 (AKS) 中使用 Azure 磁�
 services: container-service
 ms.topic: article
 origin.date: 03/01/2019
-ms.date: 03/09/2020
+ms.date: 05/25/2020
 ms.author: v-yeche
-ms.openlocfilehash: fdbff6fbb8203997bddc8e98ba277e50ae9de31f
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 50a151dbc924c4257c7682876ba146b39adbd686
+ms.sourcegitcommit: 7e6b94bbaeaddb854beed616aaeba6584b9316d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79290820"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83735111"
 ---
 # <a name="manually-create-and-use-a-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中通过 Azure 磁盘手动创建并使用卷
 
@@ -32,7 +32,9 @@ ms.locfileid: "79290820"
 
 创建用于 AKS 的 Azure 磁盘时，可以在**节点**资源组中创建磁盘资源。 此方法允许 AKS 群集访问和管理磁盘资源。 如果想要在单独的资源组中创建磁盘，则必须向群集的 Azure Kubernetes 服务 (AKS) 服务主体授予磁盘的资源组的 `Contributor` 角色。
 
-对于本文，请在节点资源组中创建磁盘。 首先，使用 [az aks show][az-aks-show] 命令获取资源组名称并添加 `--query nodeResourceGroup` 查询参数。 以下示例获取名为 myResourceGroup  的资源组中 AKS 群集名称 myAKSCluster  的节点资源组：
+<!--Not Available on [Use managed identities](use-managed-identity.md)-->
+
+对于本文，请在节点资源组中创建磁盘。 首先，使用 [az aks show][az-aks-show] 命令获取资源组名称并添加 `--query nodeResourceGroup` 查询参数。 以下示例获取名为 myResourceGroup 的资源组中 AKS 群集名称 myAKSCluster 的节点资源组：
 
 ```azurecli
 $ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv
@@ -53,9 +55,7 @@ az disk create \
 ```
 
 > [!NOTE]
-> Azure 磁盘依据特定大小的 SKU 收取费用。 高级托管磁盘的吞吐量和 IOPS 性能取决于 SKU 和 AKS 群集中节点的实例大小。 请参阅[托管磁盘的定价和性能][managed-disk-pricing-performance]。
-
-<!--Not Available on These SKUs range from 32GiB for S4 or P4 disks to 32TiB for S80 or P80 disks (in PREVIEW)-->
+> Azure 磁盘依据特定大小的 SKU 收取费用。 这些 SKU 的范围为 32 GiB（适用于 S4 或 P4 磁盘）到 32 TiB（适用于 S80 或 P80 磁盘），属于预览版。 高级托管磁盘的吞吐量和 IOPS 性能取决于 SKU 和 AKS 群集中节点的实例大小。 请参阅[托管磁盘的定价和性能][managed-disk-pricing-performance]。
 
 在命令成功完成后将显示磁盘资源 ID，如以下示例输出中所示。 在下一步骤中将使用此磁盘 ID 来装载磁盘。
 
@@ -139,7 +139,7 @@ Events:
 
 [kubernetes-disks]: https://github.com/kubernetes/examples/blob/master/staging/volumes/azure_disk/README.md
 [kubernetes-volumes]: https://kubernetes.io/docs/concepts/storage/volumes/
-[managed-disk-pricing-performance]: https://www.azure.cn/pricing/details/storage/
+[managed-disk-pricing-performance]: https://www.azure.cn/pricing/details/storage/managed-disks/
 
 <!-- LINKS - internal -->
 

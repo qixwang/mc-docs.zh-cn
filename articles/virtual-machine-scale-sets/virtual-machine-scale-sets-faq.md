@@ -2,18 +2,19 @@
 title: Azure 虚拟机规模集常见问题解答
 description: 获取有关 Azure 虚拟机规模集最常见问题的解答。
 author: mimckitt
-tags: azure-resource-manager
-ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
-ms.service: virtual-machine-scale-sets
-ms.topic: conceptual
-ms.date: 04/28/2020
 ms.author: v-junlch
-ms.openlocfilehash: c3041485156a9b8a8e9c8985cff32d382a8ad229
-ms.sourcegitcommit: e3512c5c2bbe61704d5c8cbba74efd56bfe91927
+ms.topic: conceptual
+ms.service: virtual-machine-scale-sets
+ms.subservice: faq
+ms.date: 05/21/2020
+ms.reviewer: jushiman
+ms.custom: mimckitt
+ms.openlocfilehash: 11bf57e5883e6b2b514a6c8465a3cfce1f5c6035
+ms.sourcegitcommit: 87e789550ea49ff77c7f19bc68fad228009fcf44
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82267575"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83748151"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure 虚拟机规模集常见问题解答
 
@@ -45,11 +46,13 @@ ms.locfileid: "82267575"
 
 ### <a name="if-i-reduce-my-scale-set-capacity-from-20-to-15-which-vms-are-removed"></a>如果我将规模集容量从 20 减少到 15，会删除哪些 VM？
 
-将从跨更新域和容错域的规模集中均匀地删除虚拟机，以最大限度地提高可用性。 首先删除 ID 最大的 VM。
+默认情况下，将从跨容错域的规模集中均匀地删除虚拟机，以最大限度地提高可用性。 首先删除 ID 最大的 VM。
+
+可以通过为规模集指定[横向缩减策略](virtual-machine-scale-sets-scale-in-policy.md)来更改虚拟机删除顺序。
 
 ### <a name="what-if-i-then-increase-the-capacity-from-15-to-18"></a>如果将容量从 15 增加到 18，会发生什么情况？
 
-如果将容量增加到 18，则创建 3 个新 VM。 每增加容量一次，VM 实例 ID 就会从以前的最高值（例如 20、21、22）递增。 容错域与和更新域中的 VM 是均衡的。
+如果将容量增加到 18，则创建 3 个新 VM。 每增加容量一次，VM 实例 ID 就会从以前的最高值（例如 20、21、22）递增。 VM 会在容错域之间进行均衡。
 
 ### <a name="when-im-using-multiple-extensions-in-a-scale-set-can-i-enforce-an-execution-sequence"></a>在一个规模集中使用多个扩展时，是否可以强制规定执行序列？
 
@@ -251,7 +254,7 @@ Windows 远程管理 (WinRM) 证书引用必须在 OS 配置文件的 Secrets �
 
 ### <a name="if-i-add-secrets-to-an-existing-virtual-machine-scale-set-are-the-secrets-injected-into-existing-vms-or-only-into-new-ones"></a>如果将机密添加到现有虚拟机规模集，机密会注入到现有 VM 中，还是仅注入到新 VM 中？
 
-证书将添加到所有 VM，包括现有的 VM。 如果虚拟机规模集的 upgradePolicy 属性设置为“手动”  ，对 VM 执行手动更新时，证书会添加到该 VM。
+证书将添加到所有 VM，包括现有的 VM。 如果虚拟机规模集的 upgradePolicy 属性设置为“手动”，对 VM 执行手动更新时，证书会添加到该 VM。
 
 ### <a name="where-do-i-put-certificates-for-linux-vms"></a>在 Linux VM 上，证书放在哪个位置？
 
@@ -325,13 +328,13 @@ Key Vault 要求指定证书版本的目的是为了使用户清楚地了解哪�
 
 是的。 可在适用于 [Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi) 和 [Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi) 的“Azure 快速入门”模板中查看一些示例 MSI 模板。
 
-## <a name="deleting"></a>正在删除 
+## <a name="deleting"></a>正在删除
 
 ### <a name="will-the-locks-i-set-in-place-on-virtual-machine-scale-set-instances-be-respected-when-deleting-instances"></a>删除实例时，是否遵守我在虚拟机规模集实例上设置的锁？
 
-在 Azure 门户中，可通过选择多个实例来删除单个实例或批量删除。 如果尝试删除带有锁的单个实例，则遵守此锁，并且你将无法删除该实例。 但是，如果批量选择多个实例，并且这些实例中的任何一个实例都带有锁，则不遵守锁，并且所有选定的实例都将被删除。 
- 
-在 Azure CLI 中，只能删除单个实例。 如果尝试删除带有锁的单个实例，则遵守此锁，并且你将无法删除该实例。 
+在 Azure 门户中，可通过选择多个实例来删除单个实例或批量删除。 如果尝试删除带有锁的单个实例，则遵守此锁，并且你将无法删除该实例。 但是，如果批量选择多个实例，并且这些实例中的任何一个实例都带有锁，则不遵守锁，并且所有选定的实例都将被删除。
+
+在 Azure CLI 中，只能删除单个实例。 如果尝试删除带有锁的单个实例，则遵守此锁，并且你将无法删除该实例。
 
 ## <a name="extensions"></a>扩展
 
@@ -357,11 +360,11 @@ Update-AzVmss -ResourceGroupName "resource_group_name" -VMScaleSetName "vmssName
 
 如果更新策略设置为**自动**，使用新扩展属性重新部署模板可更新所有 VM。
 
-如果更新策略设置为“手动”  ，先更新扩展，并手动更新 VM 中的所有实例。
+如果更新策略设置为“手动”，先更新扩展，并手动更新 VM 中的所有实例。
 
 ### <a name="if-the-extensions-associated-with-an-existing-virtual-machine-scale-set-are-updated-are-existing-vms-affected"></a>如果更新与现有虚拟机规模集关联的扩展，是否会影响现有的 VM？
 
-如果更新虚拟机规模集模型中的扩展定义，且将 upgradePolicy 属性设置为“自动”  ，则会更新 VM。 如果 upgradePolicy 属性设置为“手动”  ，扩展会标记为不匹配模型。
+如果更新虚拟机规模集模型中的扩展定义，且将 upgradePolicy 属性设置为“自动”，则会更新 VM。 如果 upgradePolicy 属性设置为“手动”，扩展会标记为不匹配模型。
 
 ### <a name="are-extensions-run-again-when-an-existing-machine-is-service-healed-or-reimaged"></a>对现有的计算机进行服务修复或重置映像时，是否会再次运行扩展？
 
@@ -435,7 +438,7 @@ Update-AzVmss -ResourceGroupName $rgname -Name $vmssname -VirtualMachineScaleSet
 
     直接在规模集模型中更新管理凭据（例如，使用 Azure 资源浏览器、PowerShell 或 CLI）。 规模集完成更新后，所有新的 VM 将获得全新凭据。 现有 VM 只有被重置映像时才获得新凭据。
 
-- 使用 VM 访问扩展重置密码。
+- 使用 VM 访问扩展重置密码。 请确保遵循[此处](/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm)所述的密码要求。
 
     使用以下 PowerShell 示例：
 
@@ -540,7 +543,7 @@ IP 地址是从指定的子网中选择的。
 
 ### <a name="how-can-i-configure-a-scale-set-to-assign-a-public-ip-address-to-each-vm"></a>如何将规模集配置为向每个 VM 分配公共 IP 地址？
 
-要创建向每个 VM 分配公共 IP 地址的虚拟机规模集，请确保 Microsoft.Compute/virtualMachineScaleSets 资源的 API 版本为 2017-03-30，并将 publicipaddressconfiguration  JSON 数据包添加到规模集的 ipConfigurations 部分中。 示例：
+要创建向每个 VM 分配公共 IP 地址的虚拟机规模集，请确保 Microsoft.Compute/virtualMachineScaleSets 资源的 API 版本为 2017-03-30，并将 publicipaddressconfiguration JSON 数据包添加到规模集的 ipConfigurations 部分中。 示例：
 
 ```json
     "publicipaddressconfiguration": {
@@ -639,7 +642,7 @@ az vmss extension set --name MicrosoftMonitoringAgent --publisher Microsoft.Ente
 可在 Azure 门户的 Log Analytics 工作区中查找所需的 workspaceId 和 workspaceKey。 在“概述”页面上，单击“设置”磁贴。 单击顶部的“相连的源”选项卡。
 
 > [!NOTE]
-> 如果规模集 _upgradePolicy_ 设置为“手动”，则需要通过对 VM 调用升级将扩展应用到集中的所有 VM。 在 CLI 中，这将为“az vmss update-instances”  。
+> 如果规模集 _upgradePolicy_ 设置为“手动”，则需要通过对 VM 调用升级将扩展应用到集中的所有 VM。 在 CLI 中，这将为“az vmss update-instances”。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 

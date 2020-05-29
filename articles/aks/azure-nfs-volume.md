@@ -1,18 +1,19 @@
 ---
-title: 创建可供 Azure Kubernetes 服务 (AKS) 的 Pod 使用的 NFS（网络文件系统）Ubuntu 服务器
+title: 创建 NFS Ubuntu Linux 服务器卷
+titleSuffix: Azure Kubernetes Service
 description: 了解如何手动创建可供 Azure Kubernetes 服务 (AKS) 中的 Pod 使用的 NFS Ubuntu Linux 服务器卷
 services: container-service
 author: rockboyfor
 ms.topic: article
 origin.date: 04/25/2019
-ms.date: 03/09/2020
+ms.date: 05/25/2020
 ms.author: v-yeche
-ms.openlocfilehash: 16f8995f3eedb3808efe32ef79ce71836d5bd8b0
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 40d67028351cae79d643b1d90cd5f9dbf8e24220
+ms.sourcegitcommit: 7e6b94bbaeaddb854beed616aaeba6584b9316d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79290768"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83735136"
 ---
 # <a name="manually-create-and-use-an-nfs-network-file-system-linux-server-volume-with-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中手动创建和使用 NFS（网络文件系统）Linux 服务器卷
 基于容器的服务和应用程序往往需要在容器之间共享数据。 通常，会有各种 Pod 需要访问外部持久性卷上的相同信息。    

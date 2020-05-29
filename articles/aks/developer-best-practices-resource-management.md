@@ -1,18 +1,19 @@
 ---
-title: 开发人员最佳做法 - Azure Kubernetes 服务 (AKS) 中的资源管理
+title: 资源管理最佳做法
+titleSuffix: Azure Kubernetes Service
 description: 了解有关 Azure Kubernetes 服务 (AKS) 中的资源管理的应用程序开发人员最佳做法
 services: container-service
 author: rockboyfor
 ms.topic: conceptual
 origin.date: 11/13/2019
-ms.date: 03/09/2020
+ms.date: 05/25/2020
 ms.author: v-yeche
-ms.openlocfilehash: 1bb1c351d7f4eb344263f51825b7a7e1ff60d7ed
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 0d731db27c16445405c07a7e7869316ae5b56649
+ms.sourcegitcommit: 7e6b94bbaeaddb854beed616aaeba6584b9316d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79290756"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83735162"
 ---
 # <a name="best-practices-for-application-developers-to-manage-resources-in-azure-kubernetes-service-aks"></a>有关管理 Azure Kubernetes 服务 (AKS) 中的资源的应用程序开发人员最佳做法
 
@@ -29,7 +30,7 @@ ms.locfileid: "79290756"
 
 ## <a name="define-pod-resource-requests-and-limits"></a>定义 pod 资源请求和限制
 
-**最佳做法指导** - 在 YAML 清单中针对所有 pod 设置 pod 请求和限制。 如果 AKS 群集使用资源配额，而你未定义这些值，则可能会拒绝你的部署。 
+**最佳做法指导** - 在 YAML 清单中针对所有 pod 设置 pod 请求和限制。 如果 AKS 群集使用资源配额，而你未定义这些值，则你的部署可能会被拒绝。
 
 管理 AKS 群集中的计算资源的主要方法是使用 pod 请求和限制。 这些请求和限制可让 Kubernetes 计划程序知道应该为 pod 分配哪些计算资源。
 
@@ -45,7 +46,7 @@ ms.locfileid: "79290756"
 
 在 Pod 规范中，必须根据上述信息定义这些请求和限制，这是**最佳做法且很重要**。 如果不包含这些值，则 Kubernetes 计划程序无法考虑应用程序在制定决策时所需的资源。
 
-如果计划程序在资源不足的节点上放置一个 Pod，则应用程序性能会下降。 强烈建议群集管理员针对需要你设置资源请求和限制的命名空间设置资源配额。  有关详细信息，请参阅 [AKS 群集上的资源配额][resource-quotas]。
+如果计划程序在资源不足的节点上放置一个 Pod，则应用程序性能会下降。 强烈建议群集管理员针对需要你设置资源请求和限制的命名空间设置资源配额。 有关详细信息，请参阅 [AKS 群集上的资源配额][resource-quotas]。
 
 定义 CPU 请求或限制时，值以 CPU 单位计量。 
 * *1.0* CPU 相当于节点上的一个基础虚拟 CPU 核心。 

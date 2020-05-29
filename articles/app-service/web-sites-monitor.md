@@ -5,20 +5,20 @@ author: btardif
 ms.assetid: d273da4e-07de-48e0-b99d-4020d84a425e
 ms.topic: article
 origin.date: 01/11/2019
-ms.date: 03/30/2020
+ms.date: 05/22/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 7cbc4b9cdb5b820a57dee82422aa1c6eb63984cf
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 2d76aacc7ef8a383510e39419a8dbc86700f8138
+ms.sourcegitcommit: 981a75a78f8cf74ab5a76f9e6b0dc5978387be4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80522060"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83801329"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>监视 Azure 应用服务中的应用
 [Azure 应用服务](overview.md)针对 [Azure 门户](https://portal.azure.cn)中的 Web 应用、移动和 API 应用提供内置监视功能。
 
-在 Azure 门户中，可以查看应用和应用服务计划的配额和指标，并设置警报和基于规则的自动缩放指标。    
+在 Azure 门户中，可以查看应用和应用服务计划的配额和指标，并设置警报和基于规则的自动缩放指标。   
 
 ## <a name="understand-quotas"></a>了解配额
 
@@ -26,9 +26,9 @@ ms.locfileid: "80522060"
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
-如果应用托管在“免费”或“共享”计划中，则该应用可用资源的限制由配额定义。  
+如果应用托管在“免费”或“共享”计划中，则该应用可用资源的限制由配额定义。 
 
-如果应用托管在“基本”、“标准”或“高级”计划中，则该应用可用资源的限制由应用服务计划的大小（小、中、大）和实例计数（1、2、3 等等）设置。     
+如果应用托管在“基本”、“标准”或“高级”计划中，则该应用可用资源的限制由应用服务计划的大小（小、中、大）和实例计数（1、2、3 等等）设置。    
 
 “免费”或“共享”应用的配额如下：
 
@@ -40,17 +40,17 @@ ms.locfileid: "80522060"
 | **带宽** | 一天内允许此应用使用的传出带宽总量。 此配额每隔 24 小时在 UTC 午夜时间重置。 |
 | **Filesystem** | 允许的存储空间总量。 |
 
-适用于托管在“基本”、“标准”和“高级”层级中的应用的唯一配额是“文件系统”。   
+适用于托管在“基本”、“标准”和“高级”层级中的应用的唯一配额是“文件系统”。  
 
 有关各种应用服务 SKU 的特定配额、限制和可用功能的详细信息，请参阅 [Azure 订阅服务限制](../azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits)。
 
 ### <a name="quota-enforcement"></a>配额强制执行
 
-如果应用超过“CPU（短期）”、“CPU（天）”或“带宽”配额，则将终止该应用，直到配额重置。    在此期间，所有传入请求都将导致 HTTP 403 错误。
+如果应用超过“CPU（短期）”、“CPU（天）”或“带宽”配额，则将终止该应用，直到配额重置。   在此期间，所有传入请求都将导致 HTTP 403 错误。
 
 ![403 错误消息][http403]
 
-如果超过应用内存配额，则将重启该应用。
+如果超过应用内存配额，则应用会暂时停止。
 
 如果超过文件系统配额，则任何写入操作都会失败。 写入操作失败包括对日志的任何写入。
 
@@ -63,7 +63,7 @@ ms.locfileid: "80522060"
 > 
 
 > [!IMPORTANT]
-> “平均响应时间”  将弃用，以避免与指标聚合混淆。 使用“响应时间”  作为替代。
+> “平均响应时间”将弃用，以避免与指标聚合混淆。 使用“响应时间”作为替代。
 
 指标提供有关应用或应用服务计划行为的信息。
 
@@ -110,7 +110,7 @@ ms.locfileid: "80522060"
 应用服务计划的可用指标包括：
 
 > [!NOTE]
-> 应用服务计划指标仅适用于“基本”、“标准”和“高级”层中的计划。   
+> 应用服务计划指标仅适用于“基本”、“标准”和“高级”层中的计划。  
 > 
 
 | 指标 | 说明 |
@@ -132,24 +132,20 @@ ms.locfileid: "80522060"
 **CPU 百分比**：适用于托管在“基本”、“标准”和“高级”计划中的应用，因为它们可横向扩展。CPU 百分比是所有实例中总用量的良好指标。
 
 ## <a name="metrics-granularity-and-retention-policy"></a>指标粒度和保留策略
-应用和应用服务计划的指标由具有下列粒度和保留策略的服务进行记录和聚合：
-
-* “分钟”粒度级的指标保留 30 小时。 
-* “小时”粒度级的指标保留 30 天。 
-* “天”粒度级的指标保留 30 天。 
+应用和应用服务计划的指标由服务记录并聚合，并[根据这些规则保留](../azure-monitor/platform/data-platform-metrics.md#retention-of-metrics)。
 
 ## <a name="monitoring-quotas-and-metrics-in-the-azure-portal"></a>在 Azure 门户中监视配额和指标
 若要查看影响应用的各种配额和指标的状态，请转到 [Azure 门户](https://portal.azure.cn)。
 
 ![Azure 门户中的“配额”图表][quotas]
 
-若要查找配额，请选择“设置” > “配额”。   在图表中，可以查看： 
+若要查找配额，请选择“设置” > “配额”。  在图表中，可以查看： 
 1. 配额名称。
 1. 配额的重置时间间隔。
 1. 配额的当前限制。
 1. 配额的当前值。
 
-![Azure 门户中的“指标”图表][metrics]可以直接从资源“概览”页访问指标。  在这里，会看到表示某些应用指标的图表。
+![Azure 门户中的“指标”图表][metrics]可以直接从资源“概览”页访问指标。 在这里，会看到表示某些应用指标的图表。
 
 单击其中任何图表会转到指标视图，可以在该视图中创建自定义图表、查询不同的指标，等等。 
 

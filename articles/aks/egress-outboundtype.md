@@ -4,15 +4,17 @@ description: 了解如何在 Azure Kubernetes 服务 (AKS) 中自定义出口路
 services: container-service
 ms.topic: article
 origin.date: 03/16/2020
-ms.date: 05/06/2020
+ms.date: 05/25/2020
 ms.author: v-yeche
-ms.openlocfilehash: ada700c6bb8cddcb3b9fc8f23f5a1956d17e8a08
-ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
+ms.openlocfilehash: 339eba67002df086ab7044cbcc35d0e46dbe3a0a
+ms.sourcegitcommit: 7e6b94bbaeaddb854beed616aaeba6584b9316d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "83002212"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83735102"
 ---
+<!--Verified on Prerequisites successfully-->
+<!--Verified to dig function-->
 # <a name="customize-cluster-egress-with-a-user-defined-route-preview"></a>使用用户定义的路由自定义群集出口（预览版）
 
 可以根据具体的方案自定义 AKS 群集的出口。 默认情况下，AKS 将预配一个可设置并用于出口的标准 SKU 负载均衡器。 但是，如果禁用了公共 IP 或者出口需要额外的跃点，则默认设置可能不能满足所有方案的要求。
@@ -20,7 +22,7 @@ ms.locfileid: "83002212"
 本文介绍了如何自定义群集的出口路由以支持自定义网络方案，例如，禁用公共 IP 并要求群集位于网络虚拟设备 (NVA) 后面。
 
 > [!IMPORTANT]
-> AKS 预览版功能是自助服务，根据用户的选择提供。 预览版按原样提供，并且仅在可用情况下提供，不享受服务级别协议 (SLA) 和有限担保。   AKS 预览版由客户支持尽力提供部分支持。  因此，这些功能不适用于生产用途。 有关详细信息，请参阅以下支持文章：
+> AKS 预览版功能是自助服务，根据用户的选择提供。 预览版按原样提供，并且仅在可用情况下提供，不享受服务级别协议 (SLA) 和有限担保。  AKS 预览版由客户支持尽力提供部分支持。 因此，这些功能不适用于生产用途。 有关详细信息，请参阅以下支持文章：
 >
 > * [AKS 支持策略](support-policies.md)
 > * [Azure 支持常见问题](faq.md)
@@ -75,7 +77,7 @@ az extension update --name aks-preview
 
 如果设置了 `userDefinedRouting`，则 AKS 不会自动配置出口路径。 以下设置预期由**用户**完成。
 
-必须将群集部署到具有已配置的子网的现有虚拟网络。 具有出站连接的子网中必须存在有效的用户定义路由 (UDR)。
+必须将 AKS 群集部署到具有已配置的子网的现有虚拟网络。 使用标准负载均衡器 (SLB) 体系结构时，必须建立显式出口。 这需要向防火墙、网关、本地等设备发送出口请求，或者需要将公共 IP 分配到标准负载均衡器或给定节点以完成出口操作。
 
 AKS 资源提供程序将部署一个标准负载均衡器 (SLB)。 不会为负载均衡器配置任何规则，且[在实施规则之前，负载均衡器不会产生费用](https://www.azure.cn/pricing/details/load-balancer/)。 AKS **不会**自动为 SLB 前端预配公共 IP 地址。 AKS **不会**自动配置负载均衡器后端池。
 
@@ -86,13 +88,13 @@ AKS 资源提供程序将部署一个标准负载均衡器 (SLB)。 不会为负
 ![锁定的拓扑](media/egress-outboundtype/outboundtype-udr.png)
 
 * 强制入口流量流经防火墙筛选器
-   * 一个隔离的子网包含用于路由到代理节点的内部负载均衡器
-   * 代理节点隔离在专用子网中
+    * 一个隔离的子网包含用于路由到代理节点的内部负载均衡器
+    * 代理节点隔离在专用子网中
 * 出站请求从代理节点启动并使用用户定义的路由发送到 Azure 防火墙内部 IP
-   * 来自 AKS 代理节点的请求遵循 AKS 群集所部署到的子网中已放置的 UDR。
-   * Azure 防火墙通过公共 IP 前端将流量传出虚拟网络
-   * 对 AKS 控制平面的访问由已启用防火墙前端 IP 地址的 NSG 提供保护
-   * 对公共 Internet 或其他 Azure 服务的访问流量会流入和流出防火墙前端 IP 地址
+    * 来自 AKS 代理节点的请求遵循 AKS 群集所部署到的子网中已放置的 UDR。
+    * Azure 防火墙通过公共 IP 前端将流量传出虚拟网络
+    * 对 AKS 控制平面的访问由已启用防火墙前端 IP 地址的 NSG 提供保护
+    * 对公共 Internet 或其他 Azure 服务的访问流量会流入和流出防火墙前端 IP 地址
 
 ### <a name="set-configuration-via-environment-variables"></a>通过环境变量设置配置
 
@@ -363,11 +365,11 @@ az aks update -g $RG -n $AKS_NAME --api-server-authorized-ip-ranges $CURRENT_IP/
 
 ```
 
- 使用 [az aks get-credentials][az-aks-get-credentials] 命令将 `kubectl` 配置为连接到新建的 Kubernetes 群集。 
+使用 [az aks get-credentials][az-aks-get-credentials] 命令将 `kubectl` 配置为连接到新建的 Kubernetes 群集。 
 
- ```azure-cli
- az aks get-credentials -g $RG -n $AKS_NAME
- ```
+```azure-cli
+az aks get-credentials -g $RG -n $AKS_NAME
+```
 
 ### <a name="setup-the-internal-load-balancer"></a>设置内部负载均衡器
 

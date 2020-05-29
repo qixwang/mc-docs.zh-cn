@@ -3,8 +3,8 @@ title: 通过 Java 使用 Azure 服务总线主题和订阅
 description: 在本快速入门中，先编写 Java 代码，将消息发送到某个 Azure 服务总线主题，然后从该主题的订阅中接收消息。
 services: service-bus-messaging
 documentationcenter: java
-author: lingliw
-manager: digimobile
+author: axisc
+manager: timlt
 editor: spelluru
 ms.assetid: 63d6c8bd-8a22-4292-befc-545ffb52e8eb
 ms.service: service-bus-messaging
@@ -16,12 +16,12 @@ origin.date: 01/24/2020
 ms.date: 2/6/2020
 ms.author: v-lingwu
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 2bd29056070d1cb7603aaf20950799eadd3f3ace
-ms.sourcegitcommit: 1fbdefdace8a1d3412900c6c3f89678d8a9b29bc
+ms.openlocfilehash: 3438c0cf58c91bb0d22c31ac3f3c92013502fb48
+ms.sourcegitcommit: a04b0b1009b0c62f2deb7c7acee75a1304d98f87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82886838"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83796809"
 ---
 # <a name="quickstart-use-service-bus-topics-and-subscriptions-with-java"></a>快速入门：通过 Java 使用服务总线主题和订阅
 
@@ -31,7 +31,7 @@ ms.locfileid: "82886838"
 
 ## <a name="prerequisites"></a>先决条件
 
-1. Azure 订阅。 若要完成本教程，需要一个 Azure 帐户。 可以激活 [Visual Studio 或 MSDN 订阅者权益](https://www.azure.cn/support/legal/offer-rate-plans/)或者注册[试用帐户](https://www.azure.cn/pricing/1rmb-trial-full/?form-type=identityauth)。
+1. Azure 订阅。 若要完成本教程，需要一个 Azure 帐户。 你可以注册[试用帐户](https://www.azure.cn/pricing/1rmb-trial/)或[预付费](https://wd.azure.cn/pricing/pia-waiting-list/?form-type=identityauth)。
 2. 按照[快速入门：使用 Azure 门户创建服务总线主题和主题的订阅](service-bus-quickstart-topics-subscriptions-portal.md)来执行以下任务：
     1. 创建一个服务总线**命名空间**。
     2. 获取**连接字符串**。
@@ -183,7 +183,7 @@ public class MyServiceBusTopicClient {
         receiveClient.registerMessageHandler(
                     messageHandler,
                     // callback invoked when the message handler has an exception to report
-                // 1 concurrent call, messages are auto-completed, auto-renew duration
+                // 1 concurrent call, messages aren't auto-completed, auto-renew duration
                 new MessageHandlerOptions(1, false, Duration.ofMinutes(1)));
 
     }
@@ -456,15 +456,18 @@ Message sending: Id = 9
                         Content: [ firstName = Werner, name = Heisenberg ]
 ```
 
+> [!NOTE]
+> 可以使用[服务总线资源管理器](https://github.com/paolosalvatori/ServiceBusExplorer/)管理服务总线资源。 服务总线资源管理器允许用户连接到服务总线命名空间并以一种简单的方式管理消息传送实体。 该工具提供高级功能，如导入/导出功能或用于对主题、队列、订阅、中继服务、通知中心和事件中心进行测试的功能。 
+
 ## <a name="next-steps"></a>后续步骤
 有关详细信息，请参阅[服务总线队列、主题和订阅][Service Bus queues, topics, and subscriptions]。
 
-  [Azure SDK for Java]: https://www.azure.cn/develop/java/
+[Azure SDK for Java]: https://docs.microsoft.com/java/api/overview/azure/
 [Azure Toolkit for Eclipse]: ../azure-toolkit-for-eclipse.md
 [Service Bus queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
-[SqlFilter]: https://docs.azure.cn/dotnet/api/microsoft.azure.servicebus.sqlfilter
+[SqlFilter]: /dotnet/api/microsoft.azure.servicebus.sqlfilter
 [SqlFilter.SqlExpression]: /dotnet/api/microsoft.azure.servicebus.sqlfilter.sqlexpression
-[BrokeredMessage]: dotnet/api/microsoft.servicebus.messaging.brokeredmessage
+[BrokeredMessage]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage
 
 [0]: ./media/service-bus-java-how-to-use-topics-subscriptions/sb-queues-13.png
 [2]: ./media/service-bus-java-how-to-use-topics-subscriptions/sb-queues-04.png

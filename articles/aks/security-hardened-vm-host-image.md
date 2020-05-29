@@ -5,40 +5,39 @@ services: container-service
 author: rockboyfor
 ms.topic: article
 origin.date: 09/11/2019
-ms.date: 03/09/2020
+ms.date: 05/25/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: e707ca7f8187c571bd3d45c611ccaea2fca3c6d3
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 6fd7ec2d52926dcc78c7d9ba681eea9aeb5aeed4
+ms.sourcegitcommit: 7e6b94bbaeaddb854beed616aaeba6584b9316d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79290711"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83735130"
 ---
-# <a name="security-hardening-in-aks-virtual-machine-hosts"></a>AKS 虚拟主机中的安全强化 
+# <a name="security-hardening-for-aks-agent-node-host-os"></a>AKS 代理节点主机 OS 的安全强化
 
 Azure Kubernetes 服务 (AKS) 是符合 SOC、ISO、PCI DSS 和 HIPAA 标准的安全服务。 本文介绍适用于 AKS 虚拟主机的安全强化。 有关 AKS 安全性的详细信息，请参阅 [Azure Kubernetes 服务 (AKS) 中应用程序和群集的安全性概念](/aks/concepts-security)。
 
-AKS 群集部署在运行安全优化 OS 的虚拟主机上。 此主机 OS 目前基于 Ubuntu 16.04.LTS 映像，应用了一系列其他的安全强化步骤（请参阅“安全强化详细信息”）。   
+> [!Note]
+> 本文档仅适用于 AKS 中的 Linux 代理。
 
-安全强化主机 OS 的目标是减少受攻击面，允许以安全方式部署容器。 
+AKS 群集部署在运行安全优化 OS 的虚拟主机上，该 OS 用于在 AKS 上运行的容器。 此主机 OS 基于 Ubuntu 16.04.LTS 映像，应用了其他安全强化和优化（请参阅“安全强化详细信息”）。
+
+经过安全强化的主机 OS 的目标是减少受攻击面，并以安全的方式优化容器部署。
 
 > [!Important]
-> 安全强化 OS 未进行 CIS 基准测试。 虽然存在与 CIS 基准重叠的情况，但此目标不需符合 CIS 标准。 主机 OS 强化的目标是在与 Azure 自己的内部主机安全标准一致的安全级别上进行聚合。 
+> 安全强化 OS 未进行 CIS 基准测试。 虽然存在与 CIS 基准重叠的情况，但此目标不需符合 CIS 标准。 主机 OS 强化的目标是在与 Azure 自己的内部主机安全标准一致的安全级别上进行聚合。
 
-## <a name="security-hardening-features"></a>安全强化功能 
+## <a name="security-hardening-features"></a>安全强化功能
 
-* 默认情况下，AKS 提供安全优化主机 OS。 没有用于选择备用操作系统的当前选项。 
+* 默认情况下，AKS 提供安全优化主机 OS。 没有用于选择备用操作系统的选项。
 
 * Azure 会将每日修补程序（包括安全修补程序）应用到 AKS 虚拟主机。 这些修补程序中，部分需要重启，部分不需要。 你负责根据需要计划 AKS VM 主机重启。 有关如何自动进行 AKS 修补的指南，请参阅[修补 AKS 节点](/aks/node-updates-kured)。
 
-下面是在 AKS-Engine 中实现的用于生成安全优化主机 OS 的映像强化工作的摘要。 该工作已在[此 GitHub 项目](https://github.com/Azure/aks-engine/projects/7)中实施。  
+## <a name="what-is-configured"></a>配置内容
 
-AKS-Engine 目前不推行或遵循任何特定的安全标准，但为了方便起见，会根据情况提供 CIS（Internet 安全中心）审核 ID。 
-
-## <a name="whats-configured"></a>配置的内容
-
-| CIS  | 审核说明| 
+| CIS  | 审核说明|
 |---|---|
 | 1.1.1.1 |确保禁用装载 cramfs 文件系统的功能|
 | 1.1.1.2 |确保禁用装载 freevxfs 文件系统的功能|
@@ -79,9 +78,9 @@ AKS-Engine 目前不推行或遵循任何特定的安全标准，但为了方便
 
 ## <a name="additional-notes"></a>附加说明
 
-* 为了进一步减少受攻击面，我们在 OS 中禁用了一些不必要的内核模块驱动程序。 
+* 为了进一步减少受攻击面，我们在 OS 中禁用了一些不必要的内核模块驱动程序。
 
-* 安全强化 OS 在 AKS 平台外部不受支持。 
+* 经过安全强化的 OS 是专门为 AKS 构建和维护的，因此，仅在 AKS 平台受支持。
 
 ## <a name="next-steps"></a>后续步骤  
 

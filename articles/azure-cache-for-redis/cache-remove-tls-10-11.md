@@ -4,14 +4,14 @@ description: 了解在与 Azure Cache for Redis 通信时如何从应用程序�
 author: yegu-ms
 ms.service: cache
 ms.topic: conceptual
-ms.date: 04/26/2020
+ms.date: 05/20/2020
 ms.author: v-junlch
-ms.openlocfilehash: e7abc51742262257fca47e761e0a017c95da1e58
-ms.sourcegitcommit: e3512c5c2bbe61704d5c8cbba74efd56bfe91927
+ms.openlocfilehash: 123148be0c3d1494dbcd2828fe7f54a5e16887c5
+ms.sourcegitcommit: 87e789550ea49ff77c7f19bc68fad228009fcf44
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82267582"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83748130"
 ---
 # <a name="remove-tls-10-and-11-from-use-with-azure-cache-for-redis"></a>删除与 Azure Cache for Redis 配合使用的 TLS 1.0 和 1.1
 
@@ -19,7 +19,7 @@ ms.locfileid: "82267582"
 
 作为此项工作的一部分，我们将对 Azure Cache for Redis 进行以下更改：
 
-* **阶段 1：** 对于新创建的缓存实例，我们会将默认的最低 TLS 版本配置为 1.2。 （此项以前为 TLS 1.0。）此时不会更新现有的缓存实例。 如果需要，可以将[最低 TLS 版本更改](cache-configure.md#access-ports)回 1.0 或1.1，以实现后向兼容性。 此更改可以通过 Azure 门户或其他管理 API 来完成。
+* **阶段 1：** 对于新创建的缓存实例，我们会将默认的最低 TLS 版本配置为 1.2（以前为 TLS 1.0）。  此时不会更新现有的缓存实例。 如果需要，可以将[最低 TLS 版本更改](cache-configure.md#access-ports)回 1.0 或1.1，以实现后向兼容性。 此更改可以通过 Azure 门户或其他管理 API 来完成。
 * **阶段 2：** 我们将停止支持 TLS 版本 1.0 和 1.1。 在此更改之后，应用程序需要使用 TLS 1.2 或更高版本才能与缓存通信。
 
 另外，作为此更改的一部分，我们将删除对较旧的不安全的加密套件的支持。  如果为缓存配置最低 TLS 版本 (1.2)，则受支持的加密套件会受到以下限制。
@@ -33,14 +33,14 @@ ms.locfileid: "82267582"
 
 | 云               | 阶段 1 开始日期 | 阶段 2 开始日期      |
 |---------------------|--------------------|-------------------------|
-| Azure（公有云）      |  2020 年 1 月 13 日  | 2020 年 5 月 11 日（已延长） |
-| Azure Government     |  2020 年 3 月 13 日    | 2020 年 5 月 11 日            |
+| Azure（公有云）      |  2020 年 1 月 13 日  | 2020 年 5 月 11 日            |
+| Azure Government    |  2020 年 3 月 13 日    | 2020 年 5 月 11 日            |
 | Azure 德国       |  2020 年 3 月 13 日    | 2020 年 5 月 11 日            |
 | Azure 中国         |  2020 年 3 月 13 日    | 2020 年 5 月 11 日            |
 
 ## <a name="check-whether-your-application-is-already-compliant"></a>检查应用程序是否已合规
 
-确定应用程序是否能够使用 TLS 1.2 的最简单方法是，在应用程序使用的测试或过渡缓存中将“最低 TLS 版本”值设置为 TLS 1.2。  “最低 TLS 版本”设置位于Azure 门户的缓存实例的[高级设置](cache-configure.md#advanced-settings)中。  如果做出此项更改后，应用程序可继续按预期方式运行，则应用程序可能是合规的。 可能需要专门将应用程序使用的某些 Redis 客户端库配置为启用 TLS 1.2，使之能够通过该安全协议连接到 Azure Cache for Redis。
+确定应用程序是否能够使用 TLS 1.2 的最简单方法是，在应用程序使用的测试或过渡缓存中将“最低 TLS 版本”值设置为 TLS 1.2。 “最低 TLS 版本”设置位于Azure 门户的缓存实例的[高级设置](cache-configure.md#advanced-settings)中。 如果做出此项更改后，应用程序可继续按预期方式运行，则应用程序可能是合规的。 可能需要专门将应用程序使用的某些 Redis 客户端库配置为启用 TLS 1.2，使之能够通过该安全协议连接到 Azure Cache for Redis。
 
 ## <a name="configure-your-application-to-use-tls-12"></a>将应用程序配置为使用 TLS 1.2
 

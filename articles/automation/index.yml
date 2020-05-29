@@ -1,24 +1,22 @@
 ### YamlMime:Landing
 title: Azure 自动化文档
 metadata:
-  document_id: 
   title: Azure 自动化文档
   description: 了解如何在混合环境中使用自动化来配置和自动完成操作任务。
   services: automation
   author: WenJason
   manager: digimobile
   ms.service: automation
-  ms.tgt_pltfrm: na
   ms.topic: landing-page
   origin.date: 09/06/2019
-  ms.date: 12/09/2019
+  ms.date: 05/25/2020
   ms.author: v-jay
-  ms.openlocfilehash: 60ce0885d0c2209ed54cebdf29e3d53d2aa6df00
-  ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+  ms.openlocfilehash: b7ba9bd24c7d39d2fdbd12b71ec77df4489a8d9e
+  ms.sourcegitcommit: 981a75a78f8cf74ab5a76f9e6b0dc5978387be4b
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 04/17/2020
-  ms.locfileid: "74884053"
+  ms.lasthandoff: 05/22/2020
+  ms.locfileid: "83801240"
 landingContent:
 - title: Azure 自动化入门
   linkLists:
@@ -34,6 +32,20 @@ landingContent:
     links:
     - text: 创建 runbook
       url: automation-quickstart-create-runbook.md
+- title: 管理 VM 的更新
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 更新管理概述
+      url: automation-update-management.md
+  - linkListType: get-started
+    links:
+    - text: 管理多个 VM 的更新
+      url: manage-update-multi.md
+  - linkListType: deploy
+    links:
+    - text: 关于 Azure VM 的更新
+      url: automation-onboard-solutions-from-automation-account.md
 - title: 使用 Desired State Configuration 配置 VM
   linkLists:
   - linkListType: overview

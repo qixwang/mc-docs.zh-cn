@@ -10,12 +10,12 @@ origin.date: 01/11/2020
 ms.date: 05/11/2020
 ms.topic: conceptual
 manager: digimobile
-ms.openlocfilehash: d966c9550562fd1f3103d8cc3c5d095cdf2922b3
-ms.sourcegitcommit: 7443ff038ea8afe511f7419d9c550d27fb642246
+ms.openlocfilehash: 2dc41f0ed9f2cc4f3538ab1a790b4c45cb987a07
+ms.sourcegitcommit: 981a75a78f8cf74ab5a76f9e6b0dc5978387be4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "83001591"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83801255"
 ---
 # <a name="encrypt-secure-assets-in-azure-automation"></a>加密 Azure 自动化中的安全资产
 
@@ -33,7 +33,7 @@ Azure 自动化帐户默认使用 Microsoft 托管密钥。
 
 可以使用自己的密钥来管理自动化帐户的安全资产加密。 在自动化帐户级别指定客户管理的密钥时，该密钥将用于保护和控制对自动化帐户的帐户加密密钥的访问。 而帐户加密密钥又可用于加密和解密所有安全资产。 使用客户管理的密钥可以更灵活地创建、轮换、禁用和撤销访问控制。 还可以审核用于保护安全资产的加密密钥。
 
-使用 Azure Key Vault 存储客户管理的密钥。 可以创建自己的密钥并将其存储在 Key Vault 中，或者使用 Azure Key Vault API 来生成密钥。  有关 Azure 密钥保管库的详细信息，请参阅[什么是 Azure 密钥保管库？](../key-vault/key-vault-overview.md)
+使用 Azure Key Vault 存储客户管理的密钥。 可以创建自己的密钥并将其存储在 Key Vault 中，或者使用 Azure Key Vault API 来生成密钥。  有关 Azure 密钥保管库的详细信息，请参阅[什么是 Azure 密钥保管库？](../key-vault/general/overview.md)
 
 ## <a name="enable-customer-managed-keys-for-an-automation-account"></a>为自动化帐户启用客户管理的密钥
 
@@ -53,7 +53,7 @@ Azure 自动化帐户默认使用 Microsoft 托管密钥。
 在为自动化帐户启用客户管理的密钥之前，必须确保满足以下先决条件：
 
  - 客户管理的密钥存储在 Azure Key Vault 中。 
- - 在 Key Vault 中同时启用“软删除”和“不清除”属性。   需要启用这些功能，才能在意外删除密钥的情况下恢复密钥。
+ - 在 Key Vault 中同时启用“软删除”和“不清除”属性。  需要启用这些功能，才能在意外删除密钥的情况下恢复密钥。
  - Azure 自动化加密仅支持 RSA 密钥。 有关密钥的详细信息，请参阅[关于 Azure Key Vault 密钥、机密和证书](../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys)。
 - 自动化帐户和 Key Vault 可以位于不同的订阅中，但需要位于同一个 Azure Active Directory 租户中。
 
@@ -96,7 +96,7 @@ PATCH https://management.chinacloudapi.cn/subscriptions/00000000-0000-0000-0000-
 
 ### <a name="configure-the-key-vault-access-policy"></a>配置 Key Vault 访问策略
 
-将托管标识分配到自动化帐户后，请配置对存储客户管理的密钥的 Key Vault 的访问权限。 Azure 自动化需要对客户管理的密钥拥有 get、recover、wrapKey 和 UnwrapKey 权限。    
+将托管标识分配到自动化帐户后，请配置对存储客户管理的密钥的 Key Vault 的访问权限。 Azure 自动化需要对客户管理的密钥拥有 get、recover、wrapKey 和 UnwrapKey 权限。   
 
 可以使用以下 REST API 调用设置此类访问策略：
 
@@ -130,11 +130,11 @@ PUT https://management.chinacloudapi.cn/subscriptions/00000000-0000-0000-0000-00
 ```
 
 > [!NOTE]
-> 必须在自动化帐户的托管标识的响应中分别为“tenantId”  和“objectId”  字段提供 identity.tenantId  和 identity.principalId  的值。
+> 必须在自动化帐户的托管标识的响应中分别为“tenantId”和“objectId”字段提供 identity.tenantId 和 identity.principalId 的值。
 
 ### <a name="change-the-configuration-of-automation-account-to-use-customer-managed-key"></a>将自动化帐户的配置更改为使用客户管理的密钥
 
-最后，可以使用以下 REST API 调用将自动化帐户从 Microsft 托管密钥切换为客户管理的密钥：
+最后，可以使用以下 REST API 调用将自动化帐户从 Microsoft 托管密钥切换为客户管理的密钥：
 
 ```http
 PATCH https://management.chinacloudapi.cn/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resource-group-name/providers/Microsoft.Automation/automationAccounts/automation-account-name?api-version=2020-01-13-preview
@@ -193,10 +193,7 @@ PATCH https://management.chinacloudapi.cn/subscriptions/00000000-0000-0000-0000-
 
 ## <a name="next-steps"></a>后续步骤
 
-- [什么是 Azure 密钥保管库？](../key-vault/key-vault-overview.md)
-
+- [什么是 Azure 密钥保管库？](../key-vault/general/overview.md)
 - [Azure 自动化中的证书资产](shared-resources/certificates.md)
-
 - [Azure 自动化中的凭据资产](shared-resources/credentials.md)
-
 - [Azure 自动化中的变量资产](shared-resources/variables.md)

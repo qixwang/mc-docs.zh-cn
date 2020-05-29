@@ -1,23 +1,23 @@
 ---
-title: Azure Kubernetes 服务 (AKS) 中的高可用性和灾难恢复
+title: AKS 业务连续性和灾难恢复的最佳做法
 description: 了解群集操作员的最佳做法，以最大程度实现应用程序的正常运行时间，提供高可用性，并为 Azure Kubernetes 服务 (AKS) 中的灾难恢复情况做好准备。
 services: container-service
 author: rockboyfor
 ms.topic: conceptual
 origin.date: 11/28/2018
-ms.date: 03/09/2020
+ms.date: 05/25/2020
 ms.author: v-yeche
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 4f5a18fdba929562ea79c6c3180efbb8094cd301
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 2a826e7bd095727e3cfb87205d09c5e78739ed8c
+ms.sourcegitcommit: 7e6b94bbaeaddb854beed616aaeba6584b9316d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79290716"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83735154"
 ---
 # <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中实现业务连续性和灾难恢复的最佳做法
 
-在 Azure Kubernetes 服务 (AKS) 中管理群集时，应用程序的正常运行时间变得非常重要。 AKS 通过在可用性集中使用多个节点来提供高可用性。 但是，这些节点不能避免系统受到区域故障的影响。 为了最大化正常运行时间，请提前规划以维持业务连续性并为灾难恢复做好准备。
+在 Azure Kubernetes 服务 (AKS) 中管理群集时，应用程序的正常运行时间变得非常重要。 默认情况下，AKS 通过在[虚拟机规模集 (VMSS)](/virtual-machine-scale-sets/overview) 中使用多个节点来提供高可用性。 但是，这些节点不能避免系统受到区域故障的影响。 为了最大化正常运行时间，请提前规划以维持业务连续性并为灾难恢复做好准备。
 
 本文重点介绍如何在 AKS 中规划业务连续性和灾难恢复。 你将学习如何执行以下操作：
 
@@ -39,7 +39,7 @@ ms.locfileid: "79290716"
     <!--Not Available on [Azure paired regions](/best-practices-availability-paired-regions)-->
     
 * **Azure 配对区域**：对于你的地理区域，选择两个相互配对的区域。 配对区域协调平台更新，并在需要时确定恢复工作的优先级。
-* **服务可用性**：确定配对区域应采用热/热、热/暖还是热/冷配置。 是否要同时运行两个区域，其中一个区域已准备好开始提供流量？  或者，是否要运行一个区域，以便有时间来准备好提供流量？
+* **服务可用性**：确定配对区域应采用热/热、热/暖还是热/冷配置。 是否要同时运行两个区域，其中一个区域已准备好开始提供流量？ 或者，是否要运行一个区域，以便有时间来准备好提供流量？
 
 AKS 区域可用性和配对区域是共同考虑的因素。 将 AKS 群集部署到配对区域中，这些区域旨在一起管理区域灾难恢复。 例如，AKS 在中国东部 2 和中国东部 2 提供。 这些区域是配对的。 创建 AKS BC/DR 策略时，请选择这两个区域。
 
@@ -53,7 +53,7 @@ AKS 区域可用性和配对区域是共同考虑的因素。 将 AKS 群集部�
 
 ![将 AKS 与流量管理器配合使用](media/operator-best-practices-bc-dr/aks-azure-traffic-manager.png)
 
-使用单个 AKS 群集的客户通常连接到给定应用程序的服务 IP 或 DNS 名称。 在多群集部署中，客户应连接到指向每个 AKS 群集上的服务的流量管理器 DNS 名称。 使用流量管理器终结点定义这些服务。 每个终结点都是服务负载均衡器 IP  。 使用此配置可将网络流量从一个区域的流量管理器终结点定向到另一个区域的终结点。
+使用单个 AKS 群集的客户通常连接到给定应用程序的服务 IP 或 DNS 名称。 在多群集部署中，客户应连接到指向每个 AKS 群集上的服务的流量管理器 DNS 名称。 使用流量管理器终结点定义这些服务。 每个终结点都是服务负载均衡器 IP。 使用此配置可将网络流量从一个区域的流量管理器终结点定向到另一个区域的终结点。
 
 ![通过流量管理器进行地理路由](media/operator-best-practices-bc-dr/traffic-manager-geographic-routing.png)
 
@@ -86,13 +86,13 @@ AKS 区域可用性和配对区域是共同考虑的因素。 将 AKS 群集部�
 * **更可靠**：如果一个区域不可用，AKS 群集将从可用的容器注册表提取映像。
 * **更经济实惠**：数据中心之间没有任何网络出口费用。
 
-异地复制是高级 SKU 容器注册表的一项功能。  有关如何配置异地复制的信息，请参阅[容器注册表异地复制](/container-registry/container-registry-geo-replication)。
+异地复制是高级 SKU 容器注册表的一项功能。 有关如何配置异地复制的信息，请参阅[容器注册表异地复制](/container-registry/container-registry-geo-replication)。
 
 ## <a name="remove-service-state-from-inside-containers"></a>从容器内删除服务状态
 
 **最佳做法**：在可能的情况下，不要将服务状态存储在容器中。 请改用支持多区域复制的 Azure 平台即服务 (PaaS)。
 
-服务状态指的是服务正常运行所需的内存中数据或磁盘上数据  。 状态包括服务读取和写入的数据结构和成员变量。 状态可能还包括存储在磁盘上的文件或其他资源，具体取决于服务的体系结构。 例如，状态可能包括数据库用来存储数据和事务日志的文件。
+服务状态指的是服务正常运行所需的内存中数据或磁盘上数据。 状态包括服务读取和写入的数据结构和成员变量。 状态可能还包括存储在磁盘上的文件或其他资源，具体取决于服务的体系结构。 例如，状态可能包括数据库用来存储数据和事务日志的文件。
 
 状态可以外部化或与操作状态的代码共存。 通常，你会使用一个数据库或其他数据存储（在网络中不同计算机上运行或同一计算机进程外部运行）来实现状态的外部化。
 

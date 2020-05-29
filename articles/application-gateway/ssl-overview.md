@@ -5,14 +5,14 @@ services: application-gateway
 author: amsriva
 ms.service: application-gateway
 ms.topic: article
-ms.date: 04/26/2020
+ms.date: 05/19/2020
 ms.author: v-junlch
-ms.openlocfilehash: aecdb6d3242f11b0a502ea8f178dda5b822c59db
-ms.sourcegitcommit: e3512c5c2bbe61704d5c8cbba74efd56bfe91927
+ms.openlocfilehash: f29e4a31ce165e478c49e3fa519dbb1a19e2f7f7
+ms.sourcegitcommit: 87e789550ea49ff77c7f19bc68fad228009fcf44
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82267647"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83748137"
 ---
 # <a name="overview-of-tls-termination-and-end-to-end-tls-with-application-gateway"></a>应用程序网关的 TLS 终止和端到端 TLS 概述
 
@@ -28,6 +28,10 @@ ms.locfileid: "82267647"
 - **证书管理** - 只需在应用程序网关上购买并安装证书，所有后端服务器不需要证书。 这可以节省时间和开支。
 
 若要配置 TLS 终止，需将一个 TLS/SSL 证书添加到侦听器，使应用程序网关能够根据 TLS/SSL 协议规范派生对称密钥。 然后，可以使用该对称密钥来加密和解密发送到网关的流量。 TLS/SSL 证书需采用个人信息交换 (PFX) 格式。 此文件格式适用于导出私钥，后者是应用程序网关对流量进行加解密所必需的。
+
+> [!IMPORTANT] 
+> 请注意，侦听器上的证书要求上传整个证书链。 
+
 
 > [!NOTE] 
 >
@@ -72,7 +76,7 @@ TLS 策略会应用到前端和后端流量。 在前端上，应用程序网关
 
 > [!NOTE] 
 >
-> 添加到“后端 HTTP 设置”中用于对后端服务器进行身份验证的证书可以是添加到侦听器的用于在应用程序网关上实现 TLS 终止的同一个证书；为了增强安全性，也可以要求两者不同   。
+> 添加到“后端 HTTP 设置”中用于对后端服务器进行身份验证的证书可以是添加到侦听器的用于在应用程序网关上实现 TLS 终止的同一个证书；为了增强安全性，也可以要求两者不同 。
 
 ![端到端 TLS 方案][1]
 
@@ -104,7 +108,7 @@ TLS 策略会应用到前端和后端流量。 在前端上，应用程序网关
 > 自签名证书必须是证书链的一部分。 V2 SKU 不支持无链的单个自签名证书。
 
 - 除了根证书匹配之外，应用程序网关还会验证后端 HTTP 设置中指定的主机设置是否与后端服务器的 TLS/SSL 证书提供的公用名 (CN) 的主机设置相匹配。 尝试与后端建立 TLS 连接时，应用程序网关会将服务器名称指示 (SNI) 扩展设置为后端 HTTP 设置中指定的主机。
-- 如果已选择“从后端地址选择主机名”  而不是选择后端 HTTP 设置中的主机字段，则 SNI 标头始终设置为后端池 FQDN，并且后端服务器 TLS/SSL 证书上的 CN 必须与其 FQDN 匹配。 此方案不支持具有 IP 的后端池成员。
+- 如果已选择“从后端地址选择主机名”而不是选择后端 HTTP 设置中的主机字段，则 SNI 标头始终设置为后端池 FQDN，并且后端服务器 TLS/SSL 证书上的 CN 必须与其 FQDN 匹配。 此方案不支持具有 IP 的后端池成员。
 - 根证书是来自后端服务器证书的 base64 编码的根证书。
 
 ## <a name="next-steps"></a>后续步骤

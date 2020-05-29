@@ -3,8 +3,8 @@ title: 快速入门 - 部署 Azure Kubernetes 服务群集
 description: 了解如何使用 Azure CLI 快速创建 Kubernetes 群集、部署应用程序，以及监视 Azure Kubernetes 服务 (AKS) 中的性能。
 services: container-service
 ms.topic: quickstart
-origin.date: 09/13/2019
-ms.date: 04/06/2020
+origin.date: 04/28/2020
+ms.date: 05/25/2020
 ms.author: v-yeche
 ms.custom:
 - H1Hack27Feb2017
@@ -13,12 +13,12 @@ ms.custom:
 - seo-javascript-september2019
 - seo-javascript-october2019
 - seo-python-october2019
-ms.openlocfilehash: d500edf211e0e89ef784f846e17a1db4b6fae5db
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 83e763f990eb2763f713cfe90db577df1582b04f
+ms.sourcegitcommit: 7e6b94bbaeaddb854beed616aaeba6584b9316d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80517010"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83735061"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-cluster-using-the-azure-cli"></a>快速入门：使用 Azure CLI 部署 Azure Kubernetes 服务群集
 
@@ -46,7 +46,7 @@ ms.locfileid: "80517010"
 
 Azure 资源组是一个逻辑组，用于部署和管理 Azure 资源。 创建资源组时，系统会要求你指定一个位置， 此位置是资源组元数据的存储位置，如果你在创建资源期间未指定另一个区域，则它还是你的资源在 Azure 中的运行位置。 使用 [az group create][az-group-create] 命令创建资源组。
 
-以下示例在“chinaeast2”  位置创建名为“myResourceGroup”  的资源组。
+以下示例在“chinaeast2”位置创建名为“myResourceGroup”的资源组。
 
 ```azurecli
 az group create --name myResourceGroup --location chinaeast2
@@ -69,7 +69,7 @@ az group create --name myResourceGroup --location chinaeast2
 
 ## <a name="create-aks-cluster"></a>创建 AKS 群集
 
-使用 [az aks create][az-aks-create] 命令创建 AKS 群集。 以下示例创建一个具有一个节点的名为  myAKSCluster 的群集。 用于容器的 Azure Monitor也已通过 *--enable-addons monitoring* 参数启用。  此操作将需要几分钟才能完成。
+使用 [az aks create][az-aks-create] 命令创建 AKS 群集。 以下示例创建一个具有一个节点的名为 myAKSCluster 的群集。 用于容器的 Azure Monitor也已通过 *--enable-addons monitoring* 参数启用。  此操作将需要几分钟才能完成。
 
 > [!NOTE]
 > 创建 AKS 群集时，会自动创建另一个资源组来存储 AKS 资源。 有关详细信息，请参阅[为什么使用 AKS 创建两个资源组？](/aks/faq#why-are-two-resource-groups-created-with-aks)
@@ -100,7 +100,7 @@ az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 kubectl get nodes
 ```
 
-以下示例输出显示在上一步创建的单个节点。 请确保节点的状态为 *Ready*：
+以下示例输出显示在上一步创建的单个节点。 请确保节点的状态为“就绪”：
 
 ```output
 NAME                       STATUS   ROLES   AGE     VERSION
@@ -259,6 +259,8 @@ az group delete --name myResourceGroup --yes --no-wait
 > [!NOTE]
 > 删除群集时，AKS 群集使用的 Azure Active Directory 服务主体不会被删除。 有关如何删除服务主体的步骤，请参阅 [AKS 服务主体的注意事项和删除][sp-delete]。
 
+<!--Not Available on managed identity-->
+
 ## <a name="get-the-code"></a>获取代码
 
 本快速入门使用预先创建的容器映像创建了 Kubernetes 部署。 GitHub 上提供了相关的应用程序代码、Dockerfile 和 Kubernetes 清单文件。
@@ -302,4 +304,4 @@ az group delete --name myResourceGroup --yes --no-wait
 [kubernetes-dashboard]: kubernetes-dashboard.md
 
 <!--Not Available on [windows-container-cli]: windows-container-cli.md-->
-<!-- Update_Description: wording update, update link -->
+<!-- Update_Description: update meta properties, wording update, update link -->

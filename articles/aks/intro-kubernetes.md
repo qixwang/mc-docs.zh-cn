@@ -4,15 +4,15 @@ description: 了解 Azure Kubernetes 服务的功能和优势，以便在 Azure 
 services: container-service
 ms.topic: overview
 origin.date: 05/06/2019
-ms.date: 03/09/2020
+ms.date: 05/25/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 3774dafdab4bfd06b9d0a5e941f7c4e289ef1249
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 60072cb8e272173c020bbd0e44ad17cb891240fc
+ms.sourcegitcommit: 7e6b94bbaeaddb854beed616aaeba6584b9316d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79290835"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83735064"
 ---
 # <a name="azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS)
 
@@ -52,9 +52,9 @@ ms.locfileid: "79290835"
 
 ## <a name="clusters-and-nodes"></a>群集和节点
 
-AKS 节点在 Azure 虚拟机上运行。 可以将存储连接到节点和 Pod、升级群集配置以及使用 GPU。
+AKS 节点在 Azure 虚拟机上运行。 可以将存储连接到节点和 Pod、升级群集配置以及使用 GPU。 AKS 支持运行多个节点池的 Kubernetes 群集。
 
-<!--Not Available on AKS supports Kubernetes clusters that run multiple node pools to support mixed operating systems and Windows Server containers (currently in preview). Linux nodes run a customized Ubuntu OS image, and Windows Server nodes run a customized Windows Server 2019 OS image.-->
+<!--Not Available on to support mixed operating systems and Windows Server containers. Linux nodes run a customized Ubuntu OS image, and Windows Server nodes run a customized Windows Server 2019 OS image. -->
 
 ### <a name="cluster-node-and-pod-scaling"></a>群集节点和 Pod 缩放
 
@@ -80,7 +80,7 @@ AKS 支持创建启用了 GPU 的节点池。 Azure 目前提供单个或多个�
 
 有关详细信息，请参阅 [AKS 中应用程序的存储选项][concepts-storage]。
 
-使用 [Azure 磁盘][azure-disk]或 [Azure 文件存储][azure-files]完成动态永久性卷的入门。
+使用 [Azure 磁盘][azure-disk]或 [Azure 文件存储][azure-files]完成动态永久性卷入门。
 
 ## <a name="virtual-networks-and-ingress"></a>虚拟网络和入口
 
@@ -98,7 +98,7 @@ AKS 群集可以部署到现有的虚拟网络中。 在此配置中，群集中
 
 ## <a name="development-tooling-integration"></a>开发工具集成
 
-Kubernetes 有丰富的生态系统，其中包含各种开发和管理工具，例如 Helm、Draft 以及适用于 Visual Studio Code 的 Kubernetes 扩展。 这些工具可以与 AKS 无缝地配合使用。
+Kubernetes 有丰富的生态系统，其中包含各种开发和管理工具，例如 Helm 和适用于 Visual Studio Code 的 Kubernetes 扩展。 这些工具可以与 AKS 无缝地配合使用。
 
 <!--Not Available on Additionally, Azure Dev Spaces provides a rapid, iterative Kubernetes development experience for teams. With minimal configuration, you can run and debug containers directly in AKS. To get started, see [Azure Dev Spaces][azure-dev-spaces]-->
 <!--Not Available on To get started, see [Azure Dev Spaces][azure-dev-spaces]-->
@@ -155,10 +155,10 @@ Azure Kubernetes 服务 (AKS) 符合 SOC、ISO、PCI DSS 和 HIPAA 规范。 有
 [azure-files]: ./azure-files-dynamic-pv.md
 
 [container-health]: ../azure-monitor/insights/container-insights-overview.md
+
 <!--URL monitoring-container-health.md direct to azure-monitor/insights/container-insights-overview.md-->
 
-<!--Not Available on [aks-master-logs]: view-master-logs.md-->
-
+[aks-master-logs]: view-master-logs.md
 [aks-supported versions]: supported-kubernetes-versions.md
 [concepts-clusters-workloads]: concepts-clusters-workloads.md
 [kubernetes-rbac]: concepts-identity.md#role-based-access-controls-rbac

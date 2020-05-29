@@ -1,17 +1,18 @@
 ---
-title: 在 Azure Kubernetes 服务 (AKS) 群集中创建 HTTPS 入口
+title: 通过自动 TLS 创建入口
+titleSuffix: Azure Kubernetes Service
 description: 了解如何安装和配置 NGINX 入口控制器，该控制器使用 Let's Encrypt 在 Azure Kubernetes 服务 (AKS) 群集中自动生成 TLS 证书。
 services: container-service
 ms.topic: article
-origin.date: 01/29/2020
-ms.date: 03/09/2020
+origin.date: 04/27/2020
+ms.date: 05/25/2020
 ms.author: v-yeche
-ms.openlocfilehash: 1e3170bc5ab117f3a2276e7d8eed639c324dd175
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 2ad7b5b74c4d2faf0e377ad5d17c56fdaea93b26
+ms.sourcegitcommit: 7e6b94bbaeaddb854beed616aaeba6584b9316d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79290836"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83735157"
 ---
 # <a name="create-an-https-ingress-controller-on-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中创建 HTTPS 入口控制器
 
@@ -37,7 +38,7 @@ ms.locfileid: "79290836"
 
 <!--Not Available on [a custom domain][custom-domain]-->
 
-本文使用 Helm 安装 NGINX 入口控制器、cert-manager 和示例 Web 应用。 请确保使用 Helm 的最新版本。 有关升级说明，请参阅 [Helm 安装文档][helm-install]。有关配置和使用 Helm 的详细信息，请参阅[在 Azure Kubernetes 服务 (AKS) 中使用 Helm 安装应用程序][use-helm]。
+本文使用 [Helm 3][helm] 安装 NGINX 入口控制器和证书管理器。 请确保使用 Helm 的最新版本。 有关升级说明，请参阅 [Helm 安装文档][helm-install]。有关配置和使用 Helm 的详细信息，请参阅[在 Azure Kubernetes 服务 (AKS) 中使用 Helm 安装应用程序][use-helm]。
 
 本文还要求运行 Azure CLI 2.0.64 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
 
@@ -47,13 +48,13 @@ ms.locfileid: "79290836"
 
 还需要在 Linux 节点上计划入口控制器。 使用 `--set nodeSelector` 参数指定节点选择器，以告知 Kubernetes 计划程序在基于 Linux 的节点上运行 NGINX 入口控制器。
 
-<!--Not Available on  Windows Server nodes (currently in preview in AKS) shouldn't run the ingress controller.-->
+<!--Not Available on   Windows Server nodes shouldn't run the ingress controller.-->
 
 > [!TIP]
 > 以下示例为名为 *ingress-basic* 的入口资源创建 Kubernetes 命名空间。 根据需要为你自己的环境指定一个命名空间。
 
 > [!TIP]
-> 若要为对群集中容器的请求启用[客户端源 IP 保留][client-source-ip]，请将 `--set controller.service.externalTrafficPolicy=Local` 添加到 Helm install 命令中。 客户端源 IP 存储在 X-Forwarded-For  下的请求头中。 使用启用了客户端源 IP 保留的入口控制器时，SSL 传递将不起作用。
+> 若要为对群集中容器的请求启用[客户端源 IP 保留][client-source-ip]，请将 `--set controller.service.externalTrafficPolicy=Local` 添加到 Helm install 命令中。 客户端源 IP 存储在 X-Forwarded-For 下的请求头中。 使用启用了“客户端源 IP 保留”的入口控制器时，TLS 直通将不起作用。
 
 <!--MOONCAKE: Add --set defaultBackend.image.repository=gcr.azk8s.cn/google_containers/defaultbackend-amd64-->
 
@@ -97,7 +98,7 @@ nginx-ingress-default-backend                    ClusterIP      10.0.255.77    <
 az network dns record-set a add-record \
     --resource-group myResourceGroup \
     --zone-name MY_CUSTOM_DOMAIN \
-    --record-set-name * \
+    --record-set-name '*' \
     --ipv4-address MY_EXTERNAL_IP
 ```
 
@@ -176,32 +177,96 @@ spec:
 若要创建证书颁发者，请使用 `kubectl apply` 命令。
 
 ```console
-kubectl apply -f cluster-issuer.yaml --namespace ingress-basic
+kubectl apply -f cluster-issuer.yaml
 ```
 
 ## <a name="run-demo-applications"></a>运行演示应用程序
 
-入口控制器和证书管理解决方案已配置完毕。 现在让我们在你的 AKS 群集中运行两个演示应用程序。 此示例使用 Helm 来部署一个简单  “Hello world”应用程序的两个实例。
+入口控制器和证书管理解决方案已配置完毕。 现在让我们在你的 AKS 群集中运行两个演示应用程序。 此示例使用 Helm 来部署一个简单“Hello world”应用程序的两个实例。
 
-需将 Azure 示例存储库添加到 Helm 环境中，才能安装示例 Helm 图表。
+若要查看运行中的入口控制器，请在 AKS 群集中运行两个演示应用程序。 此示例使用 `kubectl apply` 来部署一个简单“Hello world”应用程序的两个实例。
 
-```console
-helm repo add azure-samples https://azure-samples.github.io/helm-charts/
+创建“aks-helloworld-one.yaml”文件，并将其复制到以下示例 YAML 中：
+
+```yml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aks-helloworld-one
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: aks-helloworld-one
+  template:
+    metadata:
+      labels:
+        app: aks-helloworld-one
+    spec:
+      containers:
+      - name: aks-helloworld-one
+        image: neilpeterson/aks-helloworld:v1
+        ports:
+        - containerPort: 80
+        env:
+        - name: TITLE
+          value: "Welcome to Azure Kubernetes Service (AKS)"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: aks-helloworld-one
+spec:
+  type: ClusterIP
+  ports:
+  - port: 80
+  selector:
+    app: aks-helloworld-one
 ```
 
-使用 *azure-samples/aks-helloworld* Helm 图表，创建名为 *aks-helloworld* 的演示应用程序。
+创建“aks-helloworld-two.yaml”文件，并将其复制到以下示例 YAML 中：
 
-```console
-helm install aks-helloworld azure-samples/aks-helloworld --namespace ingress-basic
+```yml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aks-helloworld-two
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: aks-helloworld-two
+  template:
+    metadata:
+      labels:
+        app: aks-helloworld-two
+    spec:
+      containers:
+      - name: aks-helloworld-two
+        image: neilpeterson/aks-helloworld:v1
+        ports:
+        - containerPort: 80
+        env:
+        - name: TITLE
+          value: "AKS Ingress Demo"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: aks-helloworld-two
+spec:
+  type: ClusterIP
+  ports:
+  - port: 80
+  selector:
+    app: aks-helloworld-two
 ```
 
-创建名为 *aks-helloworld-two* 的演示应用程序的另一个实例。 使用 *--set* 指定新的标题和唯一的服务名称，使这两个应用程序在外观上不同。
+使用 `kubectl apply` 运行这两个演示应用程序：
 
 ```console
-helm install aks-helloworld-two azure-samples/aks-helloworld \
-    --namespace ingress-basic \
-    --set title="AKS Ingress Demo" \
-    --set serviceName="aks-helloworld-two"
+kubectl apply -f aks-helloworld-one.yaml --namespace ingress-basic
+kubectl apply -f aks-helloworld-two.yaml --namespace ingress-basic
 ```
 
 ## <a name="create-an-ingress-route"></a>创建入口路由
@@ -209,6 +274,9 @@ helm install aks-helloworld-two azure-samples/aks-helloworld \
 两个应用程序现在都在 Kubernetes 群集中运行。 但是，它们使用类型为 `ClusterIP` 的服务进行配置，并且无法从 Internet 进行访问。 若要公开发布这两个应用程序，请创建 Kubernetes 入口资源。 该入口资源配置将流量路由到这两个应用程序之一的规则。
 
 在以下示例中，到地址 *hello-world-ingress.MY_CUSTOM_DOMAIN* 的流量会路由到 *aks-helloworld* 服务。 到地址 *hello-world-ingress.MY_CUSTOM_DOMAIN/hello-world-two* 的流量会路由到 *aks-helloworld-two* 服务。 到 *hello-world-ingress.MY_CUSTOM_DOMAIN/static* 的流量会路由到静态资产的名为 *aks-helloworld* 的服务。
+
+> [!NOTE]
+> 如果为入口控制器 IP 地址（而不是自定义域）配置了 FQDN，请使用 FQDN 而不是 hello-world-ingress.MY_CUSTOM_DOMAIN。 例如，如果 FQDN 为“demo-aks-ingress.chinaeast2.cloudapp.chinacloudapi.cn”，则在 `hello-world-ingress.yaml` 中将“hello-world-ingress.MY_CUSTOM_DOMAIN”替换为“demo-aks-ingress.chinaeast2.cloudapp.chinacloudapi.cn”。
 
 使用下面的示例 YAML 创建名为 `hello-world-ingress.yaml` 的文件。 将 *hosts* 和 *host* 更新为在前面步骤中创建的 DNS 名称。
 
@@ -231,7 +299,7 @@ spec:
     http:
       paths:
       - backend:
-          serviceName: aks-helloworld
+          serviceName: aks-helloworld-one
           servicePort: 80
         path: /(.*)
       - backend:
@@ -257,7 +325,7 @@ spec:
     http:
       paths:
       - backend:
-          serviceName: aks-helloworld
+          serviceName: aks-helloworld-one
           servicePort: 80
         path: /static(/|$)(.*)
 ```
@@ -272,7 +340,7 @@ kubectl apply -f hello-world-ingress.yaml --namespace ingress-basic
 
 接下来，必须创建证书资源。 证书资源定义了必需的 X.509 证书。 有关详细信息，请参阅[证书管理器证书][cert-manager-certificates]。 证书管理器已使用 ingress-shim（自 v0.2.2 以来随证书管理器自动部署）为你自动创建了证书对象。 有关详细信息，请参阅 [ingress-shim 文档][ingress-shim]。
 
-若要验证证书是否已成功创建，请使用 `kubectl get certificate --namespace ingress-basic` 命令，并验证 *READY* 是否为 *True*，这可能需要数分钟。
+若要验证证书是否已成功创建，请使用 `kubectl get certificate --namespace ingress-basic` 命令，并验证“READY”是否为“True”（这可能需要几分钟时间）。
 
 ```
 $ kubectl get certificate --namespace ingress-basic
@@ -297,12 +365,6 @@ tls-secret   True    tls-secret   11m
 kubectl delete namespace ingress-basic
 ```
 
-然后，删除 AKS hello world 应用的 Helm 存储库：
-
-```console
-helm repo remove azure-samples
-```
-
 ### <a name="delete-resources-individually"></a>单独删除资源
 
 也可采用更细致的方法来删除单个已创建的资源。 首先，删除群集颁发者资源：
@@ -311,33 +373,30 @@ helm repo remove azure-samples
 kubectl delete -f cluster-issuer.yaml --namespace ingress-basic
 ```
 
-使用 `helm list` 命令列出 Helm 版本。 查找名为“nginx-ingress”  和“aks-helloworld”  的图表，如以下示例输出中所示：
+使用 `helm list` 命令列出 Helm 版本。 查找名为“nginx”和“cert-manager”的图表，如以下示例输出中所示 ：
 
 ```
 $ helm list --namespace ingress-basic
 
 NAME                    NAMESPACE       REVISION        UPDATED                                 STATUS          CHART                   APP VERSION
-aks-helloworld          ingress-basic   1               2020-01-15 10:24:32.054871 -0600 CST    deployed        aks-helloworld-0.1.0               
-aks-helloworld-two      ingress-basic   1               2020-01-15 10:24:37.671667 -0600 CST    deployed        aks-helloworld-0.1.0               
 cert-manager            ingress-basic   1               2020-01-15 10:23:36.515514 -0600 CST    deployed        cert-manager-v0.13.0    v0.13.0    
 nginx                   ingress-basic   1               2020-01-15 10:09:45.982693 -0600 CST    deployed        nginx-ingress-1.29.1    0.27.0  
 ```
 
-通过 `helm delete` 命令删除发布。 以下示例删除 NGINX 入口部署和两个示例 AKS hello world 应用。
+使用 `helm uninstall` 命令卸载这些版本。 以下示例将卸载 NGINX 入口和证书管理器部署。
 
 ```
-$ helm uninstall aks-helloworld aks-helloworld-two cert-manager nginx --namespace ingress-basic
+$ helm uninstall cert-manager nginx --namespace ingress-basic
 
-release "aks-helloworld" uninstalled
-release "aks-helloworld-two" uninstalled
 release "cert-manager" uninstalled
 release "nginx" uninstalled
 ```
 
-接下来，删除 AKS hello world 应用的 Helm 存储库：
+接下来，删除两个示例应用程序：
 
 ```console
-helm repo remove azure-samples
+kubectl delete -f aks-helloworld-one.yaml --namespace ingress-basic
+kubectl delete -f aks-helloworld-two.yaml --namespace ingress-basic
 ```
 
 删除将流量定向到示例应用的入口路由：
@@ -373,8 +432,11 @@ kubectl delete namespace ingress-basic
 <!-- LINKS - external -->
 
 [az-network-dns-record-set-a-add-record]: https://docs.azure.cn/cli/network/dns/record-set/a?view=azure-cli-latest#az-network-dns-record-set-a-add-record
-[custom-domain]: ../app-service/manage-custom-dns-buy-domain.md#buy-the-domain
+
+<!--Not Available on [custom-domain]: ../app-service/manage-custom-dns-buy-domain.md#buy-the-domain-->
+
 [dns-zone]: ../dns/dns-getstarted-cli.md
+[helm]: https://helm.sh/
 [helm-cli]: /aks/kubernetes-helm
 [cert-manager]: https://github.com/jetstack/cert-manager
 [cert-manager-certificates]: https://cert-manager.readthedocs.io/en/latest/reference/certificates.html

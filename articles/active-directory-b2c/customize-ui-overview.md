@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 05/18/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 042fa1b0dc2e93ec363571bbbeae0d3d8f7e4112
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 14c5c1242aac8680b448b784ce85f95b59bafd09
+ms.sourcegitcommit: 87e789550ea49ff77c7f19bc68fad228009fcf44
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80581613"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83748080"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>自定义 Azure Active Directory B2C 中的用户界面
 
@@ -28,7 +28,7 @@ ms.locfileid: "80581613"
 
 ### <a name="user-flows"></a>用户流
 
-如果使用[用户流](user-flow-overview.md)，可以使用内置的页面布局模板或自己的 HTML 和 CSS 来更改用户流页面的外观。  本文稍后会介绍这两种方法。
+如果使用[用户流](user-flow-overview.md)，可以使用内置的页面布局模板或自己的 HTML 和 CSS 来更改用户流页面的外观。 本文稍后会介绍这两种方法。
 
 使用 [Azure 门户](tutorial-customize-ui.md)配置用户流的 UI 自定义。
 
@@ -41,7 +41,7 @@ ms.locfileid: "80581613"
 
 如果需要根据客户的决策提供动态内容，可以使用可根据查询字符串中发送的参数动态更改页面内容的自定义策略。 例如，可以基于从 Web 或移动应用程序传递的参数，更改 Azure AD B2C 注册或登录页面上的背景图像。
 
-### <a name="javascript"></a>JavaScript
+### <a name="javascript"></a>Javascript
 
 可以在[用户流](user-flow-javascript-overview.md)和[自定义策略](page-layout.md)中启用客户端 JavaScript 代码。
 
@@ -49,7 +49,7 @@ ms.locfileid: "80581613"
 
 用户流提供多个可供选择的内置模板，以便为用户体验页面提供专业的外观。 这些布局模板还可充当你自己的自定义操作的起点。
 
-在左侧菜单中的“自定义”下选择“页面布局”，然后选择“模板”。   
+在左侧菜单中的“自定义”下选择“页面布局”，然后选择“模板”。  
 
 ![Azure 门户的用户流页中的模板选择下拉列表](./media/customize-ui-overview/template-selection.png)
 
@@ -59,7 +59,7 @@ ms.locfileid: "80581613"
 |:-:|:-:|:-:|
 |![注册登录页上呈现的“海蓝”模板的示例](./media/customize-ui-overview/template-ocean-blue.png)|![注册登录页面上呈现的“青灰”模板示例](./media/customize-ui-overview/template-slate-gray.png)|![注册登录页面上呈现的“经典”模板示例](./media/customize-ui-overview/template-classic.png)|
 
-选择某个模板时，选定的布局将应用于用户流中的所有页面，并且每个页面的 URI 将显示在“自定义页面 URI”  字段中。
+选择某个模板时，选定的布局将应用于用户流中的所有页面，并且每个页面的 URI 将显示在“自定义页面 URI”字段中。
 
 ## <a name="custom-html-and-css"></a>自定义 HTML 和 CSS
 
@@ -85,7 +85,7 @@ Azure AD B2C 使用称作[跨源资源共享 (CORS)](https://www.w3.org/TR/cors/
 
 使用自己的 HTML 和 CSS 文件自定义 UI 时，可将 UI 内容托管在支持 CORS 的任何公用 HTTPS 终结点上。 例如，[Azure Blob 存储](../storage/blobs/storage-blobs-introduction.md)、Web 服务器、CDN、AWS S3 或文件共享系统。
 
-重要的一点是，可以在启用了 CORS 的公共 HTTPS 终结点上托管内容。 在内容中指定绝对 URL 时，必须使用绝对 URL。
+重要的一点是，你将内容托管在一个[启用了 CORS](https://enable-cors.org/server.html) 且公开可用的 HTTPS 终结点上。 在内容中指定绝对 URL 时，必须使用绝对 URL。
 
 ## <a name="get-started-with-custom-html-and-css"></a>自定义 HTML 和 CSS 入门
 

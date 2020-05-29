@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 03/30/2020
+ms.date: 05/19/2020
 ms.author: v-junlch
-ms.openlocfilehash: e6c191b5c2a092ce69e1b0f49184bd7b8cecfd4a
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: ea4bd68eadf39b39ceec6461cb11486ed462f112
+ms.sourcegitcommit: 87e789550ea49ff77c7f19bc68fad228009fcf44
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80581808"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83748156"
 ---
 # <a name="rewrite-http-headers-with-application-gateway"></a>重写应用程序网关的 HTTP 标头
 
@@ -56,7 +56,7 @@ HTTP 标头可让客户端和服务器连同请求或响应一起传递附加的
 
 ## <a name="server-variables"></a>服务器变量
 
-应用程序网关使用服务器变量来存储有关服务器、与客户端建立的连接以及对连接的当前请求的有用信息。 例如，存储的信息包括客户端的 IP 地址和 Web 浏览器类型。 服务器变量会动态更改，例如，加载新页或发布表单时就会更改。 可以使用这些变量来评估重写条件和重写标头。
+应用程序网关使用服务器变量来存储有关服务器、与客户端建立的连接以及对连接的当前请求的有用信息。 例如，存储的信息包括客户端的 IP 地址和 Web 浏览器类型。 服务器变量会动态更改，例如，加载新页或发布表单时就会更改。 可以使用这些变量来评估重写条件和重写标头。 若要使用服务器变量的值重写标头，需要在语法 {var_*serverVariable*} 中指定这些变量
 
 应用程序网关支持以下服务器变量：
 
@@ -69,20 +69,21 @@ HTTP 标头可让客户端和服务器连同请求或响应一起传递附加的
 | client_port                | 客户端端口。                                                  |
 | client_tcp_rtt             | 有关客户端 TCP 连接的信息。 在支持 TCP_INFO 套接字选项的系统上可用。 |
 | client_user                | 使用 HTTP 身份验证时提供用于身份验证的用户名。 |
-| host                       | 按此优先顺序排列：请求行中的主机名、Host 请求标头字段中的主机名，或与请求匹配的服务器名称。 |
+| host                       | 按此优先顺序排列：请求行中的主机名、Host 请求标头字段中的主机名，或与请求匹配的服务器名称。 示例：在请求 http://contoso.com:8080/article.aspx?id=123&title=fabrikam 中，主机值将为 contoso.com  |
 | cookie_*name*              | *name* Cookie。                                            |
 | http_method                | 用于发出 URL 请求的方法。 例如 GET 或 POST。 |
 | http_status                | 会话状态。 例如 200、400 或 403。                       |
 | http_version               | 请求协议。 通常为 HTTP/1.0、HTTP/1.1 或 HTTP/2.0。 |
-| query_string               | 请求的 URL 中“?”后面的变量/值对列表。 |
+| query_string               | 请求的 URL 中“?”后面的变量/值对列表。 示例：在请求 http://contoso.com:8080/article.aspx?id=123&title=fabrikam 中，query_string 值将为 id=123&title=fabrikam  |
 | received_bytes             | 请求的长度（包括请求行、标头和请求正文）。 |
 | request_query              | 请求行中的参数。                                |
 | request_scheme             | 请求方案：http 或 https。                            |
-| request_uri                | 完整的原始请求 URI（带参数）。                   |
+| request_uri                | 完整的原始请求 URI（带参数）。 示例：在请求 http://contoso.com:8080/article.aspx?id=123&title=fabrikam 中，request_uri 值将为 /article.aspx?id=123&title=fabrikam    |
 | sent_bytes                 | 发送到客户端的字节数。                             |
 | server_port                | 接受请求的服务器端口。                 |
 | ssl_connection_protocol    | 已建立的 TLS 连接的协议。        |
 | ssl_enabled                | 如果连接在 TLS 模式下建立，则为“On”。 否则为空字符串。 |
+| uri_path                   | 标识 Web 客户端要访问的主机中的特定资源。 这是请求 URI 中没有参数的部分。 示例：在请求 http://contoso.com:8080/article.aspx?id=123&title=fabrikam 中，uri_path 值将为 /article.aspx   |
 
 ## <a name="rewrite-configuration"></a>重写配置
 
@@ -156,6 +157,8 @@ HTTP 标头可让客户端和服务器连同请求或响应一起传递附加的
 ## <a name="limitations"></a>限制
 
 - 如果响应中包含多个同名的标头，则重写其中某个标头的值会导致删除该响应中的其他标头。 这种情况往往出现于 Set-Cookie 标头，因为在一个响应中可以包含多个 Set-Cookie 标头。 例如，如果将应用服务与应用程序网关一起使用，并在应用程序网关上配置了基于 Cookie 的会话关联，则就会出现此类情况。 在这种情况下，响应将包含两个 Set-Cookie 标头：一个用于应用服务（例如 `Set-Cookie: ARRAffinity=ba127f1caf6ac822b2347cc18bba0364d699ca1ad44d20e0ec01ea80cda2a735;Path=/;HttpOnly;Domain=sitename.chinacloudsites.cn`），另一个用于应用程序网关关联（例如 `Set-Cookie: ApplicationGatewayAffinity=c1a2bd51lfd396387f96bl9cc3d2c516; Path=/`）。 在此情况下重写其中一个 Set-Cookie 标头可能会导致从响应中删除另一个 Set-Cookie 标头。
+
+- 当应用程序网关配置为重定向请求或显示自定义错误页时，不支持重写。
 
 - 目前不支持重写 Connection、Upgrade 和 Host 标头。
 

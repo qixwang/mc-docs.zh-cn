@@ -3,7 +3,7 @@ title: 删除 Azure 网络观察程序中网络安全组流日志的存储 Blob 
 description: 本文介绍了如何在 Azure 网络观察程序中删除超过了其保留策略期限的网络安全组流日志存储 blob。
 services: network-watcher
 documentationcenter: na
-author: lingliw
+author: damendo
 manager: ''
 editor: ''
 ms.service: network-watcher
@@ -14,16 +14,17 @@ ms.workload: infrastructure-services
 origin.date: 08/16/2019
 ms.date: 2/27/2020
 ms.author: v-lingwu
-ms.openlocfilehash: ad6fb12c11e5913e58c62604b15eadcb7789a046
-ms.sourcegitcommit: b81ea2ab9eafa986986fa3eb1e784cfe9bbf9ec1
+ms.openlocfilehash: 0fd62a48ac99c17f58bbe0eabbad5baf146d31bc
+ms.sourcegitcommit: a04b0b1009b0c62f2deb7c7acee75a1304d98f87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83367842"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83796756"
 ---
 # <a name="delete-network-security-group-flow-log-storage-blobs-in-network-watcher"></a>在网络观察程序中删除网络安全组流日志存储 blob
 
-目前存在一个问题，即：网络观察程序的[网络安全组 (NSG) 流日志](network-watcher-nsg-flow-logging-overview.md)未根据保留策略设置自动从 Blob 存储中删除。 你现在必须运行一个 PowerShell 脚本来手动删除存储帐户中的流日志，如本文所述。
+如果需要从存储帐户中手动删除流日志，可以使用下面的 PowerShell 脚本。
+此脚本仅删除比用户指定的现有保留策略旧的存储 blob。
 
 ## <a name="run-powershell-script-to-delete-nsg-flow-logs"></a>运行 PowerShell 脚本来删除 NSG 流日志
  

@@ -1,26 +1,26 @@
 ---
-title: 使用 Helm 在 Kubernetes on Azure 中部署容器
+title: 使用 Helm 在 AKS 中安装现有应用程序
 description: 了解如何使用 Helm 打包工具在 Azure Kubernetes 服务 (AKS) 群集中部署容器
 services: container-service
 author: rockboyfor
 ms.topic: article
 origin.date: 11/22/2019
-ms.date: 03/09/2020
+ms.date: 05/25/2020
 ms.author: v-yeche
-ms.openlocfilehash: b4acadcfb4f7ca4e381f7a48585f9ed91a2b76aa
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 06f76209eeb6aca29ae1721f72267575523a8c92
+ms.sourcegitcommit: 7e6b94bbaeaddb854beed616aaeba6584b9316d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79290831"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83735147"
 ---
-# <a name="install-applications-with-helm-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中使用 Helm 安装应用程序
+# <a name="install-existing-applications-with-helm-in-azure-kubernetes-service-aks"></a>使用 Helm 在 Azure Kubernetes 服务 (AKS) 中安装现有应用程序
 
-[Helm][helm] 是一种开放源打包工具，有助于安装和管理 Kubernetes 应用程序的生命周期。 与诸如 *APT* 和 *Yum* 的 Linux 包管理器类似，Helm 用于管理 Kubernetes 图表，这些图表是预配置的 Kubernetes 资源包。
+[Helm][helm] 是一种开放源打包工具，有助于安装和管理 Kubernetes 应用程序的生命周期。 与诸如 APT 和 Yum 之类的 Linux 包管理器类似，Helm 用于管理 Kubernetes 图表（即包含预配置的 Kubernetes 资源的包）。
 
 本文介绍如何在 AKS 上的 Kubernetes 群集中配置和使用 Helm。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 本文假定你拥有现有的 AKS 群集。 如果需要 AKS 群集，请参阅 AKS 快速入门[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 门户][aks-quickstart-portal]。
 
@@ -254,9 +254,9 @@ Helm 客户端和 Tiller 服务使用 TLS/SSL 进行身份验证和相互通信�
 <!--MOONCAKE: helm init with tiller-images-->
 
 ```console
-helm init --history-max 200 --service-account tiller --node-selectors "beta.kubernetes.io/os=linux" `
-    --tiller-image gcr.azk8s.cn/kubernetes-helm/tiller:v2.13.0 `
-    --stable-repo-url https://mirror.azure.cn/kubernetes/charts/
+helm init --history-max 200 --service-account tiller --node-selectors "beta.kubernetes.io/os=linux" \
+ --tiller-image gcr.azk8s.cn/kubernetes-helm/tiller:v2.13.0 \
+ --stable-repo-url https://mirror.azure.cn/kubernetes/charts/
 ```
 
 <!--MOONCAKE: helm init with tiller-images-->
@@ -347,8 +347,8 @@ helm install stable/nginx-ingress \
 以下精简示例输出显示了 Helm 图表创建的 Kubernetes 资源的部署状态：
 
 ```
-$ helm install stable/nginx-ingress --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux
->     --set defaultBackend.image.repository=gcr.azk8s.cn/google_containers/defaultbackend-amd64
+$ helm install stable/nginx-ingress --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux \
+ --set defaultBackend.image.repository=gcr.azk8s.cn/google_containers/defaultbackend-amd64
 
 NAME:   flailing-alpaca
 LAST DEPLOYED: Thu May 23 12:55:21 2019
@@ -372,7 +372,7 @@ flailing-alpaca-nginx-ingress-default-backend  ClusterIP     10.0.44.97  <none> 
 ...
 ```
 
-需要一两分钟才能填充 nginx-ingress-controller 服务的 EXTERNAL-IP  地址，并允许你使用 Web 浏览器访问该地址。
+需要一两分钟才能填充 nginx-ingress-controller 服务的 EXTERNAL-IP 地址，并允许你使用 Web 浏览器访问该地址。
 
 ### <a name="list-helm-releases"></a>列出 Helm 版本
 
@@ -387,7 +387,7 @@ flailing-alpaca   1         Thu May 23 12:55:21 2019    DEPLOYED    nginx-ingres
 
 ### <a name="clean-up-resources"></a>清理资源
 
-在部署 Helm 图表时，会创建若干 Kubernetes 资源。 这些资源包括 pod、部署和服务。 若要清理这些资源，请使用 `helm delete` 命令并指定版本名称，如上一个 `helm list` 命令中所示。 以下示例将删除名为 flailing-alpaca 的版本  ：
+在部署 Helm 图表时，会创建若干 Kubernetes 资源。 这些资源包括 pod、部署和服务。 若要清理这些资源，请使用 `helm delete` 命令并指定版本名称，如上一个 `helm list` 命令中所示。 以下示例将删除名为 flailing-alpaca 的版本：
 
 ```console
 $ helm delete flailing-alpaca

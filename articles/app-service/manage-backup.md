@@ -4,15 +4,15 @@ description: 了解如何在 Azure 应用服务中创建应用备份。 运行�
 ms.assetid: 6223b6bd-84ec-48df-943f-461d84605694
 ms.topic: article
 origin.date: 10/16/2019
-ms.date: 01/13/2020
+ms.date: 05/22/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 1f2ed06993bec26ed33b9360fbaf1bc35729c5ad
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 6fd0b0f963719e2fb6ac78bce9665cff05bbcc9b
+ms.sourcegitcommit: 981a75a78f8cf74ab5a76f9e6b0dc5978387be4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292229"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83801178"
 ---
 # <a name="back-up-your-app-in-azure"></a>在 Azure 中备份应用
 利用 [Azure App Service](overview.md) 中的备份和还原功能，可以轻松地手动或按计划创建应用备份。 可以将备份配置为无限期保留。 通过覆盖现有应用或还原为另一应用可将应用还原为先前状态的快照。
@@ -43,11 +43,11 @@ ms.locfileid: "79292229"
 <a name="requirements"></a>
 
 ## <a name="requirements-and-restrictions"></a>要求和限制
-* 备份和还原功能要求应用服务计划处于标准层或高级层   。 有关缩放应用服务计划以使用更高层的详细信息，请参阅[增加 Azure 中的应用](manage-scale-up.md)。 与**标准**层相比，**高级**层每日允许更多备份量。
+* 备份和还原功能要求应用服务计划处于标准层或高级层 。 有关缩放应用服务计划以使用更高层的详细信息，请参阅[增加 Azure 中的应用](manage-scale-up.md)。 与**标准**层相比，**高级**层每日允许更多备份量。
 * 在要备份的应用所在的订阅中，需要一个 Azure 存储帐户和容器。 有关 Azure 存储帐户的详细信息，请参阅 [Azure 存储帐户概述](/storage/common/storage-account-overview)。
 * 最多可备份 10 GB 的应用和数据库内容。 如果备份大小超过此限制，会出错。
-* 不支持备份启用了 SSL 的 Azure Database for MySQL。 如果配置备份，备份将失败。
-* 不支持备份启用了 SSL 的 Azure Database for PostgreSQL。 如果配置备份，备份将失败。
+* 不支持备份启用了 TLS 的 Azure Database for MySQL。 如果配置备份，备份将失败。
+* 不支持备份启用了 TLS 的 Azure Database for PostgreSQL。 如果配置备份，备份将失败。
 * 应用内 MySQL 数据库无需任何配置即可自动备份。 如果对应用内 MySQL 数据库进行手动设置，例如添加连接字符串，则备份可能无法正常工作。
 * 不支持将启用了防火墙的存储帐户用作备份目标。 如果配置备份，备份将失败。
 
@@ -55,7 +55,7 @@ ms.locfileid: "79292229"
 <a name="manualbackup"></a>
 
 ## <a name="create-a-manual-backup"></a>创建手动备份
-1. 在 [Azure 门户](https://portal.azure.cn)中，导航到应用的页面，然后选择“备份”  。 将显示“备份”页  。
+1. 在 [Azure 门户](https://portal.azure.cn)中，导航到应用的页面，然后选择“备份”。 将显示“备份”页。
 
     ![“备份”页面](./media/manage-backup/access-backup-page.png)
 
@@ -66,29 +66,29 @@ ms.locfileid: "79292229"
     > 
     > 
 
-2. 在“备份”  页中，选择“未配置备份。  单击此处为应用配置备份”。
+2. 在“备份”页中，选择“未配置备份。单击此处为应用配置备份”。
 
     ![单击“配置”](./media/manage-backup/configure-start.png)
 
-3. 在“备份配置”页中，单击“存储未配置”来配置存储帐户   。
+3. 在“备份配置”页中，单击“存储未配置”来配置存储帐户 。
 
     ![选择存储帐户](./media/manage-backup/configure-storage.png)
 
-4. 选择“存储帐户”  和“容器”  来选择备份目标。 该存储帐户必须与要备份的应用属于同一订阅。 也可在各自的页面中新建存储帐户或容器。 完成后，单击“选择”  。
+4. 选择“存储帐户”和“容器”来选择备份目标。 该存储帐户必须与要备份的应用属于同一订阅。 也可在各自的页面中新建存储帐户或容器。 完成后，单击“选择” 。
 
-5. 在仍处于打开状态的“备份配置”页中，可配置“备份数据库”，然后选择备份要包含的数据库（SQL 数据库或 MySQL），然后单击“确定”    。
+5. 在仍处于打开状态的“备份配置”页中，可配置“备份数据库”，然后选择备份要包含的数据库（SQL 数据库或 MySQL），然后单击“确定”  。
 
     ![选择存储帐户](./media/manage-backup/configure-database.png)
 
     > [!NOTE]
-    > 若要使数据库显示在此列表中，其连接字符串必须位于应用中“应用程序设置”页的“连接字符串”部分中   。 
+    > 若要使数据库显示在此列表中，其连接字符串必须位于应用中“应用程序设置”页的“连接字符串”部分中 。 
     >
     > 应用内 MySQL 数据库无需任何配置即可自动备份。 如果对应用内 MySQL 数据库进行手动设置，例如添加连接字符串，则备份可能无法正常工作。
     > 
     > 
 
-6. 在“备份配置”页中，单击“保存”   。
-7. 在“备份”页中，单击“备份”   。
+6. 在“备份配置”页中，单击“保存” 。
+7. 在“备份”页中，单击“备份” 。
 
     ![BackUpNow 按钮](./media/manage-backup/manual-backup.png)
 
@@ -99,11 +99,11 @@ ms.locfileid: "79292229"
 <a name="automatedbackups"></a>
 
 ## <a name="configure-automated-backups"></a>配置自动备份
-1. 在“备份配置”页中，将“计划备份”设置为“开”    。 
+1. 在“备份配置”页中，将“计划备份”设置为“开”  。 
 
     ![启用自动化的备份](./media/manage-backup/scheduled-backup.png)
 
-2. 根据需要配置备份计划，然后选择“确定”  。
+2. 根据需要配置备份计划，然后选择“确定”。
 
 <a name="partialbackups"></a>
 
@@ -150,7 +150,7 @@ ms.locfileid: "79292229"
 <a name="aboutbackups"></a>
 
 ## <a name="how-backups-are-stored"></a>如何存储备份
-对应用进行了一次或多次备份后，可在存储帐户的“容器”  页中看到备份以及应用。 在存储帐户中，每个备份都由一个 `.zip` 文件和一个 `.xml` 文件组成，前者包含备份数据，后者包含 `.zip` 文件内容的清单。 如果想要在无需实际执行应用还原的情况下访问备份，则可以解压缩并浏览这些文件。
+对应用进行了一次或多次备份后，可在存储帐户的“容器”页中看到备份以及应用。 在存储帐户中，每个备份都由一个 `.zip` 文件和一个 `.xml` 文件组成，前者包含备份数据，后者包含 `.zip` 文件内容的清单。 如果想要在无需实际执行应用还原的情况下访问备份，则可以解压缩并浏览这些文件。
 
 应用的数据库备份存储在 .zip 文件的根目录中。 对于 SQL 数据库，这是 BACPAC 文件（无文件扩展名），并且可以导入。 若要基于 BACPAC 导出创建 SQL 数据库，请参阅[导入 BACPAC 文件以创建新的用户数据库](https://technet.microsoft.com/library/hh710052.aspx)。
 

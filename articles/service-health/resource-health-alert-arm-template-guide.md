@@ -1,18 +1,14 @@
 ---
-title: 使用资源管理器模板配置 Azure 资源运行状况警报
+title: 用于创建资源运行状况警报的模板
 description: 以编程方式创建在 Azure 资源不可用时发出通知的警报。
-author: stephbaron
-ms.author: v-yiso
 ms.topic: conceptual
-ms.service: service-health
-origin.date: 09/04/2018
-ms.date: 01/20/2020
-ms.openlocfilehash: 4023f8fb579919be57185c217cf86ff1803dd50b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/20/2020
+ms.openlocfilehash: ce272fc827e4c66fb3a473ef8fbcc16b4da95395
+ms.sourcegitcommit: 87e789550ea49ff77c7f19bc68fad228009fcf44
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75859550"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83748157"
 ---
 # <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>使用资源管理器模板创建资源运行状况警报
 
@@ -25,17 +21,17 @@ ms.locfileid: "75859550"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要按本页中的说明操作，需事先进行几项设置：
 
 1. 需安装 [Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-Az-ps)
 2. [创建或重新使用](../azure-monitor/platform/action-groups.md)配置为向你发出通知的操作组
 
-## <a name="instructions"></a>Instructions
+## <a name="instructions"></a>说明
 1. 使用 PowerShell，使用你的帐户登录到 Azure，并选择需与之交互的订阅
 
-        Login-AzAccount
+        Connect-AzAccount -Environment AzureChinaCloud
         Select-AzSubscription -Subscription <subscriptionId>
 
     > 可以使用 `Get-AzSubscription` 列出有权访问的订阅。
@@ -151,7 +147,6 @@ ms.locfileid: "75859550"
 警报模板是在订阅级别配置的，但如果你需要将警报配置为仅通知关于某些资源或某个资源组内资源的运行状况，只需修改上述模板的 `scopes` 部分。
 
 对于资源组级别的范围而言，范围部分应如下所示：
-
 ```json
 "scopes": [
     "/subscriptions/<subscription id>/resourcegroups/<resource group>"
@@ -182,12 +177,12 @@ ms.locfileid: "75859550"
             "anyOf": [
                 {
                     "field": "resourceType",
-                    "equals": "Microsoft.Compute/virtualMachines",
+                    "equals": "MICROSOFT.COMPUTE/VIRTUALMACHINES",
                     "containsAny": null
                 },
                 {
                     "field": "resourceType",
-                    "equals": "Microsoft.Storage/storageAccounts",
+                    "equals": "MICROSOFT.STORAGE/STORAGEACCOUNTS",
                     "containsAny": null
                 },
                 ...
@@ -200,7 +195,7 @@ ms.locfileid: "75859550"
 其中，我们使用 `anyOf` 包装器使资源运行状况警报符合指定的任何条件，从而实现以特定资源类型为目标的警报。
 
 ### <a name="adjusting-the-resource-health-events-that-alert-you"></a>调整向你发出警报的资源运行状况事件
-在资源经历运行状况事件时，它们可经过几个代表运行状况事件状态的阶段：`Active`、`InProgress`、`Updated` 和 `Resolved`。
+在资源经历运行状况事件时，它们可经过几个代表运行状况事件状态的阶段：`Active`、`In Progress`、`Updated` 和 `Resolved`。
 
 你可能希望在资源运行状况不正常时获得通知，在这种情况下需将警报配置为仅在 `status` 为 `Active` 时发出通知。 而如果希望在其他阶段也得到通知，可以像下面的示例那样添加相关详细信息：
 
@@ -216,9 +211,9 @@ ms.locfileid: "75859550"
                 },
                 {
                     "field": "status",
-                    "equals": "InProgress"
+                    "equals": "In Progress"
                 },
-                        {
+                {
                     "field": "status",
                     "equals": "Resolved"
                 },
@@ -233,6 +228,9 @@ ms.locfileid: "75859550"
 ```
 
 如果希望在运行状况的全部四个阶段都获得通知，可以将这一条件全部删除，这样不管 `status` 属性是什么，警报都会向你发出通知。
+
+> [!NOTE]
+> 每个“anyOf”部分应只包含一个字段类型值。
 
 ### <a name="adjusting-the-resource-health-alerts-to-avoid-unknown-events"></a>将资源运行状况警报调整为避免“Unknown”事件
 
@@ -286,7 +284,7 @@ Azure 资源运行状况可通过使用测试运行器持续监控资源，向�
 },
 ```
 
-在此示例中，我们仅对当前和以前的运行状况不是“Unknown”的事件发出通知。 如果你的警报被直接发送到移动电话货电子邮件，这一变化可能比较有用。
+在此示例中，我们仅对当前和以前的运行状况不是“Unknown”的事件发出通知。 如果你的警报被直接发送到移动电话货电子邮件，这一变化可能比较有用。 
 
 请注意，在某些事件中，currentHealthStatus 和 previousHealthStatus 属性可能为 null。 例如，发生更新事件时，资源的运行状况状态可能自上次报告以来并未变化，只有该额外的事件信息（例如，原因）可用。 因此，使用上述原因可能导致某些警报无法触发，因为 properties.currentHealthStatus 和 properties.previousHealthStatus 的值将会设置为 null。
 
@@ -411,7 +409,7 @@ Azure 资源运行状况可通过使用测试运行器持续监控资源，向�
                                 },
                                 {
                                     "field": "status",
-                                    "equals": "InProgress",
+                                    "equals": "In Progress",
                                     "containsAny": null
                                 },
                                 {
@@ -444,6 +442,8 @@ Azure 资源运行状况可通过使用测试运行器持续监控资源，向�
 -  [Azure 资源运行状况概述](Resource-health-overview.md)
 -  [可通过 Azure 资源运行状况使用的资源类型和运行状况检查](resource-health-checks-resource-types.md)
 
+
 创建服务运行状况警报：
 -  [配置服务运行状况的警报](../azure-monitor/platform/alerts-activity-log-service-notifications.md) 
 -  [Azure 活动日志事件架构](../azure-monitor/platform/activity-log-schema.md)
+

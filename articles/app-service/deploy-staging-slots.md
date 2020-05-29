@@ -4,19 +4,19 @@ description: 了解如何将应用部署到非生产槽并自动交换到生产�
 ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
 ms.topic: article
 origin.date: 03/04/2020
-ms.date: 03/16/2020
+ms.date: 05/22/2020
 ms.author: v-tawe
-ms.openlocfilehash: 72202a6621bfaa029b2ae9b1de59ca1dbc5597dd
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 548dba77a8805986ddd8d03cd5f5df0316573480
+ms.sourcegitcommit: 981a75a78f8cf74ab5a76f9e6b0dc5978387be4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79546974"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83801193"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>设置 Azure 应用服务中的过渡环境
 <a name="Overview"></a>
 
-将 Web 应用、移动后端和 API 应用部署到 [Azure 应用服务](https://docs.azure.cn/app-service/overview)时，如果应用在“标准”  或“高级”  应用服务计划层中运行，则可以使用单独的部署槽而不是默认的生产槽。 部署槽是具有自身主机名的实时应用。 两个部署槽（包括生产槽）之间的应用内容与配置元素可以交换。 
+将 Web 应用、移动后端和 API 应用部署到 [Azure 应用服务](https://docs.azure.cn/app-service/overview)时，如果是在“标准”、“高级”或“独立”应用服务计划层中运行，则可以使用单独的部署槽而不是默认的生产槽。 部署槽是具有自身主机名的实时应用。 两个部署槽（包括生产槽）之间的应用内容与配置元素可以交换。 
 
 将应用程序部署到非生产槽具有以下优点：
 
@@ -26,44 +26,44 @@ ms.locfileid: "79546974"
 
 每种应用服务计划层支持不同数量的部署槽。 使用部署槽不会产生额外的费用。 若要了解应用层支持的槽数，请参阅[应用服务限制](https://docs.azure.cn/azure-subscription-service-limits#app-service-limits)。 
 
-若要将应用缩放到其他层，请确保目标层支持应用业已使用的槽数。 例如，如果应用有 5 个以上的槽，则不能向下缩放到“标准”层，因为“标准”层只支持 5 个部署槽   。 
+若要将应用缩放到其他层，请确保目标层支持应用业已使用的槽数。 例如，如果应用有 5 个以上的槽，则不能向下缩放到“标准”层，因为“标准”层只支持 5 个部署槽 。 
 
 <a name="Add"></a>
 
 ## <a name="add-a-slot"></a>添加槽
-应用必须在“标准”、“高级”或“独立”层中运行，才能启用多个部署槽位    。
+应用必须在“标准”、“高级”或“独立”层中运行，才能启用多个部署槽位  。
 
 
-1. 在 [Azure 门户](https://portal.azure.cn/)中搜索并选择“应用服务”  ，然后选择应用。 
+1. 在 [Azure 门户](https://portal.azure.cn/)中搜索并选择“应用服务”，然后选择应用。 
    
     ![搜索应用服务](./media/web-sites-staged-publishing/search-for-app-services.png)
    
 
-2. 在左窗格中，选择“部署槽” > “添加槽”   。
+2. 在左窗格中，选择“部署槽” > “添加槽” 。
    
     ![添加新部署槽](./media/web-sites-staged-publishing/QGAddNewDeploymentSlot.png)
    
    > [!NOTE]
-   > 如果应用尚未处于“标准”、“高级”或“独立”层级，则你会收到一条消息，其中指示了支持启用过渡发布的层级    。 此时，可选择“升级”  ，转到应用的“缩放”  选项卡，然后继续。
+   > 如果应用尚未处于“标准”、“高级”或“独立”层级，则你会收到一条消息，其中指示了支持启用过渡发布的层级  。 此时，可选择“升级”，转到应用的“缩放”选项卡，然后继续。
    > 
 
-3. 在“添加槽”对话框中，为槽提供一个名称，并选择是否要从其他部署槽中克隆应用配置  。 选择“添加”以继续  。
+3. 在“添加槽”对话框中，为槽提供一个名称，并选择是否要从其他部署槽中克隆应用配置。 选择“添加”以继续。
    
     ![配置源](./media/web-sites-staged-publishing/ConfigurationSource1.png)
    
     可以从任何现有槽克隆配置。 可以克隆的设置包括应用设置、连接字符串、语言框架版本、Web 套接字、HTTP 版本和平台位数。
 
-4. 添加槽后，选择“关闭”以关闭对话框  。 新槽现在显示在“部署槽”页面中  。 默认情况下，新槽的“流量 %”设置为 0，所有客户流量都路由到生产槽  。
+4. 添加槽后，选择“关闭”以关闭对话框。 新槽现在显示在“部署槽”页面中。 默认情况下，新槽的“流量 %”设置为 0，所有客户流量都路由到生产槽。
 
 5. 选择新部署槽打开该槽的资源页。
    
     ![部署槽标题](./media/web-sites-staged-publishing/StagingTitle.png)
 
-    过渡槽具有管理页面，就像任何其他应用服务应用一样。 可以更改此槽的配置。 槽的名称将出现在页面顶部，提醒你正在查看部署槽位。
+    过渡槽具有管理页面，就像任何其他应用服务应用一样。 可以更改此槽的配置。 为了提醒你正在查看的是部署槽，应用名称会显示为“\<app-name>/\<slot-name>”，应用类型为“应用服务(槽)”。 也可以将槽视为资源组中具有相同名称的单独应用。
 
 6. 选择此槽资源页中的应用 URL。 部署槽有其自己的主机名，同时也是动态应用。 若要限制对部署槽的公共访问权限，请参阅 [Azure 应用服务 IP 限制](app-service-ip-restrictions.md)。
 
-即使从其他槽克隆设置，新部署槽位也无内容。 例如，可以[使用 Git 发布到此槽](deploy-local-git.md)。 可以从其他存储库分支或不同的存储库部署到槽。 
+即使从其他槽克隆设置，新部署槽位也无内容。 例如，可以[使用 Git 发布到此槽](app-service-deploy-local-git.md)。 可以从其他存储库分支或不同的存储库部署到槽。
 
 <a name="AboutConfiguration"></a>
 
@@ -101,14 +101,14 @@ ms.locfileid: "79546974"
 
 [!INCLUDE [app-service-deployment-slots-settings](../../includes/app-service-deployment-slots-settings.md)]
 
-若要将应用设置或连接字符串配置为粘滞到特定的槽（未交换），请转到该槽的“配置”页。  添加或编辑某个设置，然后选择“部署槽设置”。  选中此复选框可让应用服务知道该设置不可交换。 
+若要将应用设置或连接字符串配置为粘滞到特定的槽（未交换），请转到该槽的“配置”页。 添加或编辑某个设置，然后选择“部署槽设置”。 选中此复选框可让应用服务知道该设置不可交换。 
 
 ![槽设置](./media/web-sites-staged-publishing/SlotSetting.png)
 
 <a name="Swap"></a>
 
 ## <a name="swap-two-slots"></a>交换两个槽 
-可以在应用的“部署槽”页上以及“概述”页上交换部署槽   。 有关交换槽的技术详细信息，请参阅[交换期间发生的情况](#AboutConfiguration)。
+可以在应用的“部署槽”页上以及“概述”页上交换部署槽 。 有关交换槽的技术详细信息，请参阅[交换期间发生的情况](#AboutConfiguration)。
 
 > [!IMPORTANT]
 > 将应用从部署槽交换到生产槽之前，请确保生产槽是目标槽，并且已完全根据生产槽中的情况配置了源槽中的所有设置。
@@ -117,19 +117,19 @@ ms.locfileid: "79546974"
 
 若要交换部署槽：
 
-1. 转到应用的“部署槽”页，然后选择“交换”。  
+1. 转到应用的“部署槽”页，然后选择“交换”。 
    
     ![“交换”按钮](./media/web-sites-staged-publishing/SwapButtonBar.png)
 
-    “交换”对话框显示将要更改的所选源和目标槽中的设置  。
+    “交换”对话框显示将要更改的所选源和目标槽中的设置。
 
-2. 选择所需的“源”和“目标”槽   。 目标通常是生产槽。 此外，选择“源更改”和“目标更改”选项卡，并验证配置更改是否符合预期   。 完成后，可以通过选择“交换”立即交换槽  。
+2. 选择所需的“源”和“目标”槽 。 目标通常是生产槽。 此外，选择“源更改”和“目标更改”选项卡，并验证配置更改是否符合预期 。 完成后，可以通过选择“交换”立即交换槽。
 
     ![完成交换](./media/web-sites-staged-publishing/SwapImmediately.png)
 
-    若要在交换实际发生之前查看目标槽如何使用新设置运行，请不要选择“交换”，而是按照[交换预览](#Multi-Phase)中的说明进行操作  。
+    若要在交换实际发生之前查看目标槽如何使用新设置运行，请不要选择“交换”，而是按照[交换预览](#Multi-Phase)中的说明进行操作。
 
-3. 完成后，选择“关闭”以关闭对话框  。
+3. 完成后，选择“关闭”以关闭对话框。
 
 如果遇到任何问题，请参阅[排查交换问题](#troubleshoot-swaps)。
 
@@ -145,21 +145,21 @@ ms.locfileid: "79546974"
 
 若要交换并预览：
 
-1. 按照[交换部署槽](#Swap)中的步骤进行操作，但请选择“使用预览执行交换”  。
+1. 按照[交换部署槽](#Swap)中的步骤进行操作，但请选择“使用预览执行交换”。
 
     ![带预览的交换](./media/web-sites-staged-publishing/SwapWithPreview.png)
 
     该对话框显示源槽中的配置在阶段 1 中的更改方式，以及源槽和目标槽在阶段 2 中的更改方式。
 
-2. 如果已准备好开始交换，请选择“开始交换”。 
+2. 如果已准备好开始交换，请选择“开始交换”。
 
     第 1 阶段完成后，对话框中会显示通知。 通过转到 `https://<app_name>-<source-slot-name>.chinacloudsites.cn` 来预览源槽中的交换。 
 
-3. 准备完成挂起的交换后，在“交换操作”中选择“完成交换”，然后选择“完成交换”    。
+3. 准备完成挂起的交换后，在“交换操作”中选择“完成交换”，然后选择“完成交换”  。
 
-    若要取消挂起的交换，请选择“取消交换”  。
+    若要取消挂起的交换，请选择“取消交换”。
 
-4. 完成后，选择“关闭”以关闭对话框  。
+4. 完成后，选择“关闭”以关闭对话框。
 
 如果遇到任何问题，请参阅[排查交换问题](#troubleshoot-swaps)。
 
@@ -185,9 +185,9 @@ ms.locfileid: "79546974"
 
 若要配置自动交换：
 
-1. 转到应用的资源页。 选择“部署槽” > “\<所需的源槽>” > “配置” > “常规设置”。    
+1. 转到应用的资源页。 选择“部署槽” > “\<所需的源槽>” > “配置” > “常规设置”。 
    
-2. 对于“启用自动交换”，请选择“打开”。   为“自动交换部署槽”选择所需的目标槽，然后选择在命令栏上“保存”。   
+2. 对于“启用自动交换”，请选择“打开”。  为“自动交换部署槽”选择所需的目标槽，然后选择在命令栏上“保存”。  
    
     ![用于配置自动交换的选项](./media/web-sites-staged-publishing/AutoSwap02.png)
 
@@ -224,7 +224,7 @@ ms.locfileid: "79546974"
 
 如果[交换操作](#AboutConfiguration)需要很长时间才能完成，则可以在[活动日志](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)中获取有关交换操作的信息。
 
-在门户的应用资源页上的左窗格中，选择“活动日志”  。
+在门户的应用资源页上的左窗格中，选择“活动日志”。
 
 交换操作在日志查询中显示为 `Swap Web App Slots`。 可以将其展开，然后选择一个子操作或错误来查看详细信息。
 
@@ -236,9 +236,9 @@ ms.locfileid: "79546974"
 
 若要自动路由生产流量：
 
-1. 转到应用的资源页，然后选择“部署槽”  。
+1. 转到应用的资源页，然后选择“部署槽”。
 
-2. 在要路由到的槽的“流量 %”列中，指定一个百分比（介于 0 到 100 之间）以表示要路由的总流量  。 选择“保存”  。
+2. 在要路由到的槽的“流量 %”列中，指定一个百分比（介于 0 到 100 之间）以表示要路由的总流量。 选择“保存” 。
 
     ![设置流量百分比](./media/web-sites-staged-publishing/RouteTraffic.png)
 
@@ -274,7 +274,7 @@ ms.locfileid: "79546974"
 
 ## <a name="delete-a-slot"></a>删除槽
 
-转到应用的资源页。 选择“部署槽” > “\<删除槽>” > “概述”    。 在命令栏上选择“删除”。   
+搜索并选择应用。 选择“部署槽” > “\<删除槽>” > “概述”。 应用类型将显示为“应用服务(槽)”，以提醒你正在查看部署槽。 在命令栏上选择“删除”。  
 
 ![删除部署槽](./media/web-sites-staged-publishing/DeleteStagingSiteButton.png)
 
@@ -305,7 +305,7 @@ New-AzWebAppSlot -ResourceGroupName [resource group name] -Name [app name] -Slot
 ---
 ### <a name="initiate-a-swap-with-a-preview-multi-phase-swap-and-apply-destination-slot-configuration-to-the-source-slot"></a>启动带预览的交换（多阶段交换）并将目标槽配置应用到源槽
 ```powershell
-$ParametersObject = @{targetSlot  = "[slot name – e.g. “production”]"}
+$ParametersObject = @{targetSlot  = "[slot name – e.g. "production"]"}
 Invoke-AzResourceAction -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots -ResourceName [app name]/[slot name] -Action applySlotConfig -Parameters $ParametersObject -ApiVersion 2015-07-01
 ```
 
@@ -318,7 +318,7 @@ Invoke-AzResourceAction -ResourceGroupName [resource group name] -ResourceType M
 ---
 ### <a name="swap-deployment-slots"></a>交换部署槽
 ```powershell
-$ParametersObject = @{targetSlot  = "[slot name – e.g. “production”]"}
+$ParametersObject = @{targetSlot  = "[slot name – e.g. "production"]"}
 Invoke-AzResourceAction -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots -ResourceName [app name]/[slot name] -Action slotsswap -Parameters $ParametersObject -ApiVersion 2015-07-01
 ```
 
@@ -335,7 +335,7 @@ Remove-AzResource -ResourceGroupName [resource group name] -ResourceType Microso
 
 ## <a name="automate-with-resource-manager-templates"></a>使用资源管理器模板自动执行
 
-[Azure 资源管理器模板](/azure-resource-manager/template-deployment-overview)是用于自动部署和配置 Azure 资源的声明性 JSON 文件。 为了使用资源管理器模板交换槽，你将在 Microsoft.Web/sites/slots  和 Microsoft.Web/sites  资源中设置两个属性：
+[Azure 资源管理器模板](/azure-resource-manager/template-deployment-overview)是用于自动部署和配置 Azure 资源的声明性 JSON 文件。 为了使用资源管理器模板交换槽，你将在 Microsoft.Web/sites/slots 和 Microsoft.Web/sites 资源中设置两个属性：
 
 - `buildVersion`：这是一个字符串属性，表示槽中部署的应用的当前版本。 例如：“v1”、“1.0.0.1”或“2019-09-20T11:53:25.2887393-07:00”。
 - `targetBuildVersion`：这是一个字符串属性，指定槽应使用哪个 `buildVersion`。 如果 targetBuildVersion 不等于当前的 `buildVersion`，则此属性会通过查找指定了 `buildVersion` 的槽来触发交换操作。
@@ -425,7 +425,7 @@ Remove-AzResource -ResourceGroupName [resource group name] -ResourceType Microso
     ```
 - 某些 [IP 限制规则](app-service-ip-restrictions.md)可能会阻止交换操作将 HTTP 请求发送到应用。 以 `10.` 和 `100.` 开头的 IPv4 地址范围是部署内部的地址。 应允许这些地址连接到你的应用。
 
-- 槽交换之后，应用可能会遇到意外的重启。 这是因为，在交换之后，主机名绑定配置会失去同步，这种情况本身不会导致重启。 但是，某些基础存储事件（例如存储卷故障转移）可能会检测到这些差异，因而强制所有工作进程重启。 为了尽量减少这种重启，请在所有槽中设置 [`WEBSITE_ADD_SITENAME_BINDINGS_IN_APPHOST_CONFIG=1` 应用设置](https://github.com/projectkudu/kudu/wiki/Configurable-settings#disable-the-generation-of-bindings-in-applicationhostconfig)。  但是，此应用设置不适用于 Windows Communication Foundation (WCF) 应用。 
+- 槽交换之后，应用可能会遇到意外的重启。 这是因为，在交换之后，主机名绑定配置会失去同步，这种情况本身不会导致重启。 但是，某些基础存储事件（例如存储卷故障转移）可能会检测到这些差异，因而强制所有工作进程重启。 为了尽量减少这种重启，请在所有槽中设置 [`WEBSITE_ADD_SITENAME_BINDINGS_IN_APPHOST_CONFIG=1` 应用设置](https://github.com/projectkudu/kudu/wiki/Configurable-settings#disable-the-generation-of-bindings-in-applicationhostconfig)。 但是，此应用设置不适用于 Windows Communication Foundation (WCF) 应用。
 
 ## <a name="next-steps"></a>后续步骤
 [阻止对非生产槽进行访问](app-service-ip-restrictions.md)

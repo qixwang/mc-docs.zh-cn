@@ -4,14 +4,14 @@ description: 一个可供客户端通过 HTTP 调用在 Azure 自动化中启动
 services: automation
 ms.subservice: process-automation
 origin.date: 01/16/2020
-ms.date: 03/30/2020
+ms.date: 05/25/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4ea0b2214c419d3bb6550cc9689923b691be608c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: c9bb595c045772ef1689b0c3838efe28518b1c93
+ms.sourcegitcommit: 981a75a78f8cf74ab5a76f9e6b0dc5978387be4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80290404"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83801251"
 ---
 # <a name="starting-an-azure-automation-runbook-with-a-webhook"></a>使用 webhook 启动 Azure 自动化 runbook
 
@@ -86,14 +86,14 @@ Webhook 的安全性取决于其 URL 的私密性。URL 中包含一个用于调
 
 另一种策略是让 Runbook 在收到 Webhook 请求时对外部条件执行某种验证。 例如，假设每当有新的内容提交到 GitHub 存储库时，GitHub 将调用某个 Runbook。 该 Runbook 在继续之前，可以连接到 GitHub 来验证是否有新的提交内容。
 
-## <a name="creating-a-webhook"></a>创建 Webhook
+## <a name="create-a-webhook"></a>创建 Webhook
 
 在 Azure 门户中使用以下过程来创建新的链接到 Runbook 的 Webhook。
 
-1. 在 Azure 门户上的“Runbook”页中，单击 Webhook 要启动的 Runbook 以查看其详细信息。 确保 Runbook 的“状态”字段设置为“已发布”。  
-2. 单击页面顶部的“Webhook”打开“添加 Webhook”页。 
-3. 单击“创建新的 Webhook”打开“创建 Webhook”页。 
-4. 填写 Webhook 的“名称”和“过期日期”字段，并指定是否要启用它。   有关这些属性的详细信息，请参阅 [Webhook 属性](#webhook-properties)。
+1. 在 Azure 门户上的“Runbook”页中，单击 Webhook 要启动的 Runbook 以查看其详细信息。 确保 Runbook 的“状态”字段设置为“已发布”。 
+2. 单击页面顶部的“Webhook”打开“添加 Webhook”页。
+3. 单击“创建新的 Webhook”打开“创建 Webhook”页。
+4. 填写 Webhook 的“名称”和“过期日期”字段，并指定是否要启用它。  有关这些属性的详细信息，请参阅 [Webhook 属性](#webhook-properties)。
 5. 单击复制图标，并按 Ctrl+C 以复制 Webhook 的 URL。 然后，将其记录在某个安全的位置。 
 
     > [!NOTE]
@@ -104,7 +104,7 @@ Webhook 的安全性取决于其 URL 的私密性。URL 中包含一个用于调
 1. 单击“参数”  为 Runbook 参数提供值。 如果 Runbook 包含必需的参数，除非提供了值，否则无法创建 Webhook。
 1. 单击“创建”以创建 Webhook  。
 
-## <a name="using-a-webhook"></a>使用 Webhook
+## <a name="use-a-webhook"></a>使用 Webhook
 
 若要在创建 Webhook 后使用该 Webhook，客户端必须发出包含 Webhook URL 的 HTTP `POST` 请求。 语法为：
 
@@ -129,20 +129,20 @@ http://<Webhook Server>/token?=<Token Value>
 
 客户端无法从 Webhook 确定 Runbook 的作业何时完成或其完成状态。 可以使用作业 ID 并配合其他机制（例如 [Windows PowerShell](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azureautomationjob) 或 [Azure 自动化 API](https://docs.microsoft.com/rest/api/automation/job)）找到此信息。
 
-## <a name="renewing-a-webhook"></a><a name="renew-webhook"></a>续订 Webhook
+## <a name="renew-a-webhook"></a>续订 Webhook
 
 创建 Webhook 后，其有效期为十年，此期限过后，它会自动过期。 Webhook 过期后，无法重新激活它。 只能删除然后重新创建它。 
 
 对于尚未过期的 Webhook，可将其延期。 若要将 Webhook 延期：
 
 1. 导航到包含该 Webhook 的 Runbook。 
-2. 选择“资源” ****下的“Webhook”**** 。 
+2. 选择“资源”****下的“Webhook”****。 
 3. 单击要延期的 Webhook。 
-4. 在“Webhook”页中，选择新的过期日期和时间，然后单击“保存”。 
+4. 在“Webhook”页中，选择新的过期日期和时间，然后单击“保存”。
 
 ## <a name="sample-runbook"></a>示例 Runbook
 
-以下示例 Runbook 将接受 Webhook 数据，并启动请求正文中指定的虚拟机。 若要测试此 Runbook，请在自动化帐户中的“Runbook”下，单击“创建 Runbook”。   如果不知道如何创建 Runbook，请参阅[创建 Runbook](automation-quickstart-create-runbook.md)。
+以下示例 Runbook 将接受 Webhook 数据，并启动请求正文中指定的虚拟机。 若要测试此 Runbook，请在自动化帐户中的“Runbook”下，单击“创建 Runbook”。  如果不知道如何创建 Runbook，请参阅[创建 Runbook](automation-quickstart-create-runbook.md)。
 
 ```powershell
 param
@@ -195,7 +195,7 @@ else {
 }
 ```
 
-## <a name="testing-the-sample"></a>测试示例
+## <a name="test-the-sample"></a>测试示例
 
 以下示例使用 Windows PowerShell 并配合 Webhook 来启动 Runbook。 任何可以发出 HTTP 请求的语言都可以使用 Webhook。 此处使用 Windows PowerShell 作为示例。
 

@@ -5,18 +5,18 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 04/26/2020
+ms.date: 05/19/2020
 ms.author: v-junlch
-ms.openlocfilehash: 37f1ed5353bed1bb37ad3a2d65d5e31f97e40425
-ms.sourcegitcommit: e3512c5c2bbe61704d5c8cbba74efd56bfe91927
+ms.openlocfilehash: 4baf86efadaa09007d38f628acbcdf5b54981752
+ms.sourcegitcommit: 87e789550ea49ff77c7f19bc68fad228009fcf44
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82267694"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83748146"
 ---
 # <a name="tls-termination-with-key-vault-certificates"></a>使用 Key Vault 证书进行 TLS 终止
 
-[Azure Key Vault](../key-vault/key-vault-overview.md) 是平台托管的机密存储，可以用来保证机密、密钥和 TLS/SSL 证书的安全。 Azure 应用程序网关支持与密钥保管库集成，以存储附加到支持 HTTPS 的侦听器的服务器证书。 此支持仅限 v2 SKU 版应用程序网关。
+[Azure Key Vault](../key-vault/general/overview.md) 是平台托管的机密存储，可以用来保证机密、密钥和 TLS/SSL 证书的安全。 Azure 应用程序网关支持与密钥保管库集成，以存储附加到支持 HTTPS 的侦听器的服务器证书。 此支持仅限 v2 SKU 版应用程序网关。
 
 Key Vault 集成提供了两种用于 TLS 终止的模型：
 
@@ -47,10 +47,24 @@ Key Vault 集成提供了两种用于 TLS 终止的模型：
 
 1. **配置密钥保管库**
 
-   然后导入现有的证书，或者在密钥保管库中创建新证书。 此证书将供通过应用程序网关的应用程序使用。 在此步骤中，也可使用密钥保管库机密，该机密将存储为无密码的 base-64 编码的 PFX 文件。 我们建议使用证书类型是因为适用于密钥保管库中证书类型对象的自动续订功能。 在创建证书或机密以后，即可在密钥保管库中定义访问策略，此类策略允许为标识授予对机密的“获取”  访问权限。
+   然后导入现有的证书，或者在密钥保管库中创建新证书。 此证书将供通过应用程序网关的应用程序使用。 在此步骤中，也可使用密钥保管库机密，该机密将存储为无密码的 base-64 编码的 PFX 文件。 我们建议使用证书类型是因为适用于密钥保管库中证书类型对象的自动续订功能。 在创建证书或机密以后，即可在密钥保管库中定义访问策略，此类策略允许为标识授予对机密的“获取”访问权限。
    
    > [!NOTE]
-   > 如果通过 ARM 模板来部署应用程序网关（不管是使用 Azure CLI 还是使用 PowerShell），或通过从 Azure 门户部署的 Azure 应用程序来执行此操作，则以 base-64 编码 PFX 文件形式存储在密钥保管库中的 SSL 证书必须无密码  。 另外，还必须完成[在部署过程中使用 Azure Key Vault 传递安全参数值](../azure-resource-manager/templates/key-vault-parameter.md)中的步骤。 将 `enabledForTemplateDeployment` 设置为 `true` 尤其重要。
+   > 如果通过 ARM 模板来部署应用程序网关（不管是使用 Azure CLI 还是使用 PowerShell），或通过从 Azure 门户部署的 Azure 应用程序来执行此操作，则 SSL 证书将以 base64 编码的 PFX 文件形式存储在密钥保管库中。 必须完成[在部署过程中使用 Azure Key Vault 传递安全参数值](../azure-resource-manager/templates/key-vault-parameter.md)中的步骤。 
+   >
+   > 将 `enabledForTemplateDeployment` 设置为 `true` 尤其重要。 此证书可能无密码，也可能有密码。 对于具有密码的证书，以下示例显示了应用网关 ARM 模板配置的 `properties` 中 `sslCertificates` 条目的可能配置。 `appGatewaySSLCertificateData` 和 `appGatewaySSLCertificatePassword` 的值可从密钥保管库中查找，如[通过动态 ID 引用机密](../azure-resource-manager/templates/key-vault-parameter.md#reference-secrets-with-dynamic-id)部分所述。 请遵循 `parameters('secretName')` 中的后向引用，了解查找方法。 如果证书无密码，请省略 `password` 条目。
+   >   
+   > ```
+   > "sslCertificates": [
+   >     {
+   >         "name": "appGwSslCertificate",
+   >         "properties": {
+   >             "data": "[parameters('appGatewaySSLCertificateData')]",
+   >             "password": "[parameters('appGatewaySSLCertificatePassword')]"
+   >         }
+   >     }
+   > ]
+   > ```
 
 1. **配置应用程序网关**
 

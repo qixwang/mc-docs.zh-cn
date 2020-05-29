@@ -1,18 +1,19 @@
 ---
-title: 快速入门 - 在门户中创建 Azure Kubernetes 服务 (AKS) 群集
+title: 在门户中创建 AKS 群集
+titleSuffix: Azure Kubernetes Service
 description: 了解如何使用 Azure 门户快速创建 Kubernetes 群集、部署应用程序，以及监视 Azure Kubernetes 服务 (AKS) 中的性能。
 services: container-service
 ms.topic: quickstart
 origin.date: 01/21/2020
-ms.date: 04/06/2020
+ms.date: 05/25/2020
 ms.author: v-yeche
 ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: 4a036a9f3e8a28636243b80c4fdf8ad88988c5d0
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: e3e93e7bf3067d27e311fef6787d44de8d427251
+ms.sourcegitcommit: 7e6b94bbaeaddb854beed616aaeba6584b9316d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80517014"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83735046"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-portal"></a>快速入门：使用 Azure 门户部署 Azure Kubernetes 服务 (AKS) 群集
 
@@ -34,32 +35,32 @@ Azure Kubernetes 服务 (AKS) 是可用于快速部署和管理群集的托管�
 
 <!--MOONCAKE: Custmize for MC-->
 
-1. 在 Azure 门户菜单或**主页**上，选择“创建资源”  ，键入“Kubernetes 服务”  并在“新建”页中选择 Enter 键，然后在“市场”页中选择“Kubernetes 服务”  。
+1. 在 Azure 门户菜单或**主页**上，选择“创建资源”，键入“Kubernetes 服务”并在“新建”页中选择 Enter 键，然后在“市场”页中选择“Kubernetes 服务”。
 
     <!--MOONCAKE: Custmize for MC-->
     
-1. 在“基本信息”页面上，配置以下选项  ：
+1. 在“基本信息”页面上，配置以下选项：
     - **项目详细信息**：选择 Azure **订阅**，然后选择或创建 Azure **资源组**，例如 *myResourceGroup*。
     - **群集详细信息**：输入 **Kubernetes 群集名称**，例如 *myAKSCluster*。 选择 AKS 群集的**区域**、**Kubernetes 版本**和 **DNS 名称前缀**。
-    - **主节点池**：选择 AKS 节点的 VM **节点大小**。 一旦部署 AKS 群集，则不能更改 VM 大小  。 
-        - 选择要部署到群集中的节点数。 对于本快速入门，请将“节点计数”设置为“1”。   部署群集后，可以调整节点计数  。
+    - **主节点池**：选择 AKS 节点的 VM **节点大小**。 一旦部署 AKS 群集，则不能更改 VM 大小。 
+        - 选择要部署到群集中的节点数。 对于本快速入门，请将“节点计数”设置为“1”。 部署群集后，可以调整节点计数。
     
         ![创建 AKS 群集 - 提供基本信息](media/kubernetes-walkthrough-portal/create-cluster-basics.png)
 
     在完成时选择“下一步:**缩放”** 。
 
-4. 在“缩放”  页上，保留默认选项。 单击屏幕底部的“下一步:  身份验证”。
+4. 在“缩放”页上，保留默认选项。 单击屏幕底部的“下一步:身份验证”。
     
     > [!CAUTION]
     > 创建新的 AAD 服务主体可能需要几分钟的时间才能传播并变得可用，这样会导致 Azure 门户中出现“找不到服务主体”错误和验证失败。 如果遇到这种情况，请访问[此处](troubleshooting.md#im-receiving-errors-that-my-service-principal-was-not-found-when-i-try-to-create-a-new-cluster-without-passing-in-an-existing-one)进行缓解。
 
-5. 在“身份验证”  页上，配置以下选项：
-    - 通过将“服务主体”  字段保留为“(新)默认服务主体”  来创建新的服务主体。 或者，可以选择“配置服务主体”  以使用现有的服务主体。 如果使用现有的服务主体，则需要提供 SPN 客户端 ID 和机密。
+5. 在“身份验证”页上，配置以下选项：
+    - 通过将“服务主体”字段保留为“(新)默认服务主体”来创建新的服务主体。 或者，可以选择“配置服务主体”以使用现有的服务主体。 如果使用现有的服务主体，则需要提供 SPN 客户端 ID 和机密。
     - 启用 Kubernetes 基于角色的访问控制 (RBAC) 所对应的选项。 这样可以对部署在 AKS 群集中的 Kubernetes 资源进行更精细的访问控制。
 
-默认情况下将使用“基本”  网络，并且会启用适用于容器的 Azure Monitor。 验证完成后，依次单击“查看 + 创建”  、“创建”  。
+默认情况下将使用“基本”网络，并且会启用适用于容器的 Azure Monitor。 验证完成后，依次单击“查看 + 创建”、“创建”。
 
-创建 AKS 群集需要几分钟时间。 完成部署后，单击“转到资源”  ，或浏览到 AKS 群集资源组（如 myResourceGroup  ），然后选择 AKS 资源（如 myAKSCluster  ）。 此时会显示 AKS 群集仪表板，如以下示例所示：
+创建 AKS 群集需要几分钟时间。 完成部署后，单击“转到资源”，或浏览到 AKS 群集资源组（如 myResourceGroup），然后选择 AKS 资源（如 myAKSCluster ）。 此时会显示 AKS 群集仪表板，如以下示例所示：
 
 ![Azure 门户中的示例 AKS 仪表板](media/kubernetes-walkthrough-portal/aks-portal-dashboard.png)
 
@@ -73,7 +74,7 @@ Azure Kubernetes 服务 (AKS) 是可用于快速部署和管理群集的托管�
 
 <!--Not Available on  ![Open the Azure Cloud Shell in the portal](media/kubernetes-walkthrough-portal/aks-cloud-shell.png)-->
 
-若要将 `kubectl` 配置为连接到 Kubernetes 群集，请使用 [az aks get-credentials][az-aks-get-credentials] 命令。 此命令将下载凭据，并将 Kubernetes CLI 配置为使用这些凭据。 以下示例获取名为 *myResourceGroup* 的资源组中群集名称 *myAKSCluster* 的凭据：
+若要将 `kubectl` 配置为连接到 Kubernetes 群集，请使用 [az aks get-credentials][az-aks-get-credentials] 命令。 此命令将下载凭据，并将 Kubernetes CLI 配置为使用这些凭据。 以下示例获取名为 myResourceGroup 的资源组中群集名称 myAKSCluster 的凭据 ：
 
 [!INCLUDE [azure-cli-2-azurechinacloud-environment-parameter](../../includes/azure-cli-2-azurechinacloud-environment-parameter.md)]
 
@@ -88,7 +89,7 @@ az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 kubectl get nodes
 ```
 
-以下示例输出显示在上一步创建的单个节点。 请确保节点的状态为 *Ready*：
+以下示例输出显示在上一步创建的单个节点。 请确保节点的状态为“就绪”：
 
 ```output
 NAME                       STATUS    ROLES     AGE       VERSION
@@ -241,22 +242,22 @@ azure-vote-front   LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
 
 在 Azure 门户中填充此数据可能需要几分钟。 若要查看 Azure Vote Pod 的当前状态、运行时间和资源使用情况，请浏览回到 Azure 门户中的 AKS 资源，例如 *myAKSCluster*。 然后可以访问运行状况，如下所示：
 
-1. 在左侧的“监视”  下，选择“见解” 
-1. 在顶部，选择“+ 添加筛选器” 
-1. 选择“命名空间”  作为属性，然后选择“\<除 kube-system 之外的所有项\>” 
-1. 选择查看“容器”  。
+1. 在左侧的“监视”下，选择“见解”
+1. 在顶部，选择“+ 添加筛选器”
+1. 选择“命名空间”作为属性，然后选择“\<除 kube-system 之外的所有项\>”
+1. 选择查看“容器”。
 
 将显示 *azure-vote-back* 和 *azure-vote-front* 容器，如下面的示例中所示：
 
 ![查看在 AKS 中运行的容器的运行状况](media/kubernetes-walkthrough-portal/monitor-containers.png)
 
-若要查看 `azure-vote-front` Pod 的日志，请从容器列表的下拉列表中选择“查看容器日志”  。 这些日志包括容器中的 *stdout* 和 *stderr* 流。
+若要查看 `azure-vote-front` Pod 的日志，请从容器列表的下拉列表中选择“查看容器日志”。 这些日志包括容器中的 *stdout* 和 *stderr* 流。
 
 ![查看 AKS 中的容器日志](media/kubernetes-walkthrough-portal/monitor-container-logs.png)
 
 ## <a name="delete-cluster"></a>删除群集
 
-不再需要群集时，可以删除群集资源，这会一并删除所有关联的资源。 选择 AKS 群集仪表板上的“删除”按钮即可在 Azure 门户中完成此操作。  也可在本地 Shell 中使用 [az aks delete][az-aks-delete] 命令：
+不再需要群集时，可以删除群集资源，这会一并删除所有关联的资源。 选择 AKS 群集仪表板上的“删除”按钮即可在 Azure 门户中完成此操作。 也可在本地 Shell 中使用 [az aks delete][az-aks-delete] 命令：
 
 ```azurecli
 az aks delete --resource-group myResourceGroup --name myAKSCluster --no-wait
@@ -264,6 +265,8 @@ az aks delete --resource-group myResourceGroup --name myAKSCluster --no-wait
 
 > [!NOTE]
 > 删除群集时，AKS 群集使用的 Azure Active Directory 服务主体不会被删除。 有关如何删除服务主体的步骤，请参阅 [AKS 服务主体的注意事项和删除][sp-delete]。
+
+<!--Not Available on managed identity-->
 
 ## <a name="get-the-code"></a>获取代码
 

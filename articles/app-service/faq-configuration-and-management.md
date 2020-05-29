@@ -7,14 +7,14 @@ tags: top-support-issue
 ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.topic: article
 origin.date: 10/30/2018
-ms.date: 03/23/2020
+ms.date: 05/22/2020
 ms.author: v-tawe
-ms.openlocfilehash: 36cc22301617cc4b489d57566e4df88a78dc1397
-ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
+ms.openlocfilehash: c9a4035aa5f3971451dba43958ca36bfa7523f6d
+ms.sourcegitcommit: 981a75a78f8cf74ab5a76f9e6b0dc5978387be4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82588668"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83801325"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Azure Web 应用配置及管理常见问题解答
 
@@ -36,14 +36,14 @@ ms.locfileid: "82588668"
 <!-- To learn how to purchase and set up a custom domain for your App Service web app, see [Buy and configure a custom domain name in App Service](manage-custom-dns-buy-domain.md). -->
 
 
-## <a name="how-do-i-upload-and-configure-an-existing-ssl-certificate-for-my-web-app"></a>如何上传和配置 Web 应用的现有 SSL 证书？
+## <a name="how-do-i-upload-and-configure-an-existing-tlsssl-certificate-for-my-web-app"></a>如何上传和配置 Web 应用的现有 TLS/SSL 证书？
 
-若要了解如何上传和设置现有的自定义 SSL 证书，请参阅[将 SSL 证书添加到应用服务应用](configure-ssl-certificate.md)。
+若要了解如何上传和设置现有的自定义 TLS/SSL 证书，请参阅[将 TLS/SSL 证书添加到应用服务应用](configure-ssl-certificate.md)。
 
 
-## <a name="how-do-i-purchase-and-configure-a-new-ssl-certificate-in-azure-for-my-web-app"></a>如何在 Azure 中为 Web 应用购买和配置新的 SSL 证书？
+## <a name="how-do-i-purchase-and-configure-a-new-tlsssl-certificate-in-azure-for-my-web-app"></a>如何在 Azure 中为 Web 应用购买和配置新的 TLS/SSL 证书？
 
-若要了解如何为应用服务 Web 应用购买和设置 SSL 证书，请参阅[将 SSL 证书添加到应用服务应用](configure-ssl-certificate.md)。
+若要了解如何为应用服务 Web 应用购买和设置 TLS/SSL 证书，请参阅[将 TLS/SSL 证书添加到应用服务应用](configure-ssl-certificate.md)。
 
 
 ## <a name="how-do-i-move-application-insights-resources"></a>如何移动 Application Insights 资源？
@@ -60,25 +60,25 @@ ms.locfileid: "82588668"
 
 为 Web 应用设置服务器时区：
 
-1. 在 Azure 门户的应用服务订阅中，转到“应用程序设置”  菜单。
-2. 在“应用设置”  下，添加此设置：
+1. 在 Azure 门户的应用服务订阅中，转到“应用程序设置”菜单。
+2. 在“应用设置”下，添加此设置：
     * 键 = WEBSITE_TIME_ZONE
     * 值 = *所需时区*
-3. 选择“保存”  。
+3. 选择“保存” 。
 
-对于在 Windows 上运行的应用服务，请参阅[默认时区](https://docs.microsoft.com/windows-hardware/manufacture/desktop/default-time-zones)一文中的“时区”  列了解接受的值。 
+对于在 Windows 上运行的应用服务，请参阅[默认时区](https://docs.microsoft.com/windows-hardware/manufacture/desktop/default-time-zones)一文中的“时区”列了解接受的值。 
 
 <!-- For the App services that run on Linux, set the TZ database name as the time zone value. Here is an example of TZ database name: America/Adak. -->
 
 ## <a name="why-do-my-continuous-webjobs-sometimes-fail"></a>为什么连续 Web 作业有时会失败？
 
-默认情况下，如果 Web 应用已处于空闲状态相当一段时间，则其处于未加载的状态。 这样可以让系统节省资源。 在基本和标准计划中，可打开“Always On”  设置，保持 Web 应用一直处于已加载的状态。 如果 Web 应用运行连续的 Web 作业，应启用“Always On”  ；否则，这些 Web 作业可能无法可靠运行。 有关详细信息，请参阅[创建连续运行的 Web 作业](webjobs-create.md#CreateContinuous)。
+默认情况下，如果 Web 应用已处于空闲状态相当一段时间，则其处于未加载的状态。 这样可以让系统节省资源。 在基本和标准计划中，可打开“Always On”设置，保持 Web 应用一直处于已加载的状态。 如果 Web 应用运行连续的 Web 作业，应启用“Always On”；否则，这些 Web 作业可能无法可靠运行。 有关详细信息，请参阅[创建连续运行的 Web 作业](webjobs-create.md#CreateContinuous)。
 
 ## <a name="how-do-i-get-the-outbound-ip-address-for-my-web-app"></a>如何获取 Web 应用的出站 IP 地址？
 
 获取 Web 应用出站 IP 地址列表：
 
-1. 在 Azure 门户中的 Web 应用边栏选项卡上，转到“属性”  菜单。
+1. 在 Azure 门户中的 Web 应用边栏选项卡上，转到“属性”菜单。
 2. 搜索**出站 IP 地址**。
 
 随即显示出站 IP 地址列表。
@@ -87,7 +87,7 @@ ms.locfileid: "82588668"
 
 ## <a name="how-do-i-get-a-reserved-or-dedicated-inbound-ip-address-for-my-web-app"></a>如何获取 Web 应用的保留或专用入站 IP 地址？
 
-若要为针对 Azure 应用网站的入站调用设置专用的或保留的 IP 地址，请安装和配置基于 IP 的 SSL 证书。
+若要为针对 Azure 应用网站发出的入站调用设置专用或保留 IP 地址，请安装并配置基于 IP 的 TLS/SSL 证书。
 
 请注意，若要将专用或保留的 IP 地址用于入站调用，应用服务计划必须包含在基本或更高的服务计划中。
 
@@ -128,12 +128,12 @@ PCI DSS 3.1 版证书要求禁用传输层安全性 (TLS) 1.0。 目前，大多
 
 查看 Web 作业日志：
 
-1. 登录到 [Kudu 网站](https://*yourwebsitename*.scm.chinacloudsites.cn)。
+1. 登录到 Kudu 网站 (`https://*yourwebsitename*.scm.chinacloudsites.cn`)。
 2. 选择 Web 作业。
-3. 选择“切换输出”  按钮。
-4. 若要下载输出文件，请选择“下载”  链接。
-5. 对于单个运行，选择“单个调用”  。
-6. 选择“切换输出”  按钮。
+3. 选择“切换输出”按钮。
+4. 若要下载输出文件，请选择“下载”链接。
+5. 对于单个运行，选择“单个调用”。
+6. 选择“切换输出”按钮。
 7. 选择下载链接。
 
 ## <a name="im-trying-to-use-hybrid-connections-with-sql-server-why-do-i-see-the-message-systemoverflowexception-arithmetic-operation-resulted-in-an-overflow"></a>我在尝试对 SQL Server 使用混合连接。 为什么会看到消息“System.OverflowException: 算术运算导致了溢出”？
@@ -178,19 +178,19 @@ Exception: System.Data.Entity.Core.EntityException: The underlying provider fail
 
 1. 在 Internet Explorer 中，转到网站。 请务必先登录，然后再执行后续步骤。 否则，F12 跟踪会捕获敏感登录数据。
 2. 按 F12。
-3. 确认已选中“网络”  选项卡，然后选中绿色“播放”  按钮。
+3. 确认已选中“网络”选项卡，然后选中绿色“播放”按钮。
 4. 执行可重现问题的步骤。
-5. 选择红色“停止”  按钮。
-6. 选择“保存”  按钮（磁盘图标），然后保存 HAR 文件（在 Internet Explorer 和 Microsoft Edge 中），或  右键单击 HAR 文件，然后选择“保存为包含内容的 HAR”  （在 Chrome 中）。
+5. 选择红色“停止”按钮。
+6. 选择“保存”按钮（磁盘图标），然后保存 HAR 文件（在 Internet Explorer 和 Microsoft Edge 中），或右键单击 HAR 文件，然后选择“保存为包含内容的 HAR”（在 Chrome 中）。
 
 ### <a name="f12-console-output"></a>F12 控制台输出
 
-1. 选择“控制台”选项卡。 
-2. 对于每个至少包含一项的选项卡，选择选项卡（“错误”  、“警告”  或“信息”  ）。 如果未选中选项卡，移开光标时，选项卡图标呈灰色或黑色。
-3. 右键单击窗格中的信息区域，然后选择“全部复制”  。
+1. 选择“控制台”选项卡。
+2. 对于每个至少包含一项的选项卡，选择选项卡（“错误”、“警告”或“信息”）。 如果未选中选项卡，移开光标时，选项卡图标呈灰色或黑色。
+3. 右键单击窗格中的信息区域，然后选择“全部复制”。
 4. 将复制的文本粘贴到文件中，然后保存该文件。
 
-若要查看 HAR 文件，可以使用 [HAR 查看器](https://www.softwareishard.com/har/viewer/)。
+若要查看 HAR 文件，可以使用 [HAR 查看器](http://www.softwareishard.com/har/viewer/)。
 
 ## <a name="why-do-i-get-an-error-when-i-try-to-connect-an-app-service-web-app-to-a-virtual-network-that-is-connected-to-expressroute"></a>在我尝试将应用服务 Web 应用到连接到与 ExpressRoute 连接的虚拟网络时，为何会遇到错误？
 

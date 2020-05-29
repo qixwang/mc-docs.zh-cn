@@ -3,50 +3,50 @@ title: 查看 Azure Kubernetes 服务 (AKS) 控制器日志
 description: 了解如何启用和查看 Azure Kubernetes 服务 (AKS) 中 Kubernetes 主节点的日志
 services: container-service
 ms.topic: article
-ms.date: 03/09/2020
+ms.date: 05/25/2020
 ms.author: v-yeche
-ms.openlocfilehash: d5a8870aa99b34e2f6e67852d9baf52462a1b280
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 37ef19251ce7e9cbe534b3f336ab452ab6c1749a
+ms.sourcegitcommit: 7e6b94bbaeaddb854beed616aaeba6584b9316d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79290780"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83735160"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>启用和查看 Azure Kubernetes 服务 (AKS) 中 Kubernetes 主节点的日志
 
 使用 Azure Kubernetes 服务 (AKS)，可以提供 *kube-apiserver* 和 *kube-controller-manager* 等主组件作为托管服务。 创建和管理运行 *kubelet* 与容器运行时的节点，并通过托管的 Kubernetes API 服务器部署应用程序。 为帮助排查应用程序和服务问题，可能需要查看这些主组件生成的日志。 本文介绍如何使用 Azure Monitor 日志从 Kubernetes 主组件启用和查询日志。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 本文要求在 Azure 帐户中运行一个现有的 AKS 群集。 如果还没有 AKS 群集，请使用 [Azure CLI][cli-quickstart] 或 [Azure 门户][portal-quickstart]创建一个。 Azure Monitor 日志适用于支持 RBAC 和不支持 RBAC 的 AKS 群集。
 
-## <a name="enable-diagnostics-logs"></a>启用诊断日志
+## <a name="enable-resource-logs"></a>启用资源日志
 
-为帮助收集和审查来自多个源的数据，Azure Monitor 日志提供了查询语言和分析引擎，该引擎可提供环境的见解。 工作区用于整理和分析数据，并可与 Application Insights 和安全中心等其他 Azure 服务集成。 若要使用不同的平台分析日志，可以选择将诊断日志发送到 Azure 存储帐户或事件中心。 有关详细信息，请参阅[什么是 Azure Monitor 日志？][log-analytics-overview]。
+为帮助收集和审查来自多个源的数据，Azure Monitor 日志提供了查询语言和分析引擎，该引擎可提供环境的见解。 工作区用于整理和分析数据，并可与 Application Insights 和安全中心等其他 Azure 服务集成。 若要使用不同的平台分析日志，可以选择将资源日志发送到 Azure 存储帐户或事件中心。 有关详细信息，请参阅[什么是 Azure Monitor 日志？][log-analytics-overview]。
 
 Azure Monitor 日志是在 Azure 门户中启用和管理的。 若要为 AKS 群集中的 Kubernetes 主组件启用日志收集，请在 Web 浏览器中打开 Azure 门户并完成以下步骤：
 
 <!--MOONCAKE: CUSTOMIZE, UPDATE BEFORE CONFIRM-->
 
-1. 选择 AKS 群集的资源组，例如 MC_myResourceGroup_myAKSCluster_chinaeast2  。
+1. 选择 AKS 群集的资源组，例如 MC_myResourceGroup_myAKSCluster_chinaeast2。
 
     <!--Not Available on  Don't select the resource group that contains your individual AKS cluster resources, such as *MC_myResourceGroup_myAKSCluster_chinaeast2*.-->
     
-1. 在左侧选择“诊断设置”。 
+1. 在左侧选择“诊断设置”。
 
-1. 选择资源组和 AKS 群集（例如，“myResourceGroup”  和“myAKSCluster”  ），然后选择“添加诊断设置”  。
+1. 选择资源组和 AKS 群集（例如，“myResourceGroup”和“myAKSCluster”），然后选择“添加诊断设置”。
 
     <!--MOONCAKE: CUSTOMIZE, UPDATE BEFORE CONFIRM-->
     
-1. 输入名称（例如 myAKSClusterLogs  ），然后选择“发送到 Log Analytics”选项。 
+1. 输入名称（例如 myAKSClusterLogs），然后选择“发送到 Log Analytics”选项。
 1. 选择现有工作区或者创建新的工作区。 如果创建工作区，请提供工作区名称、资源组和位置。
-1. 在可用日志列表中，选择要启用的日志。 常见日志包括 kube-apiserver  、kube-controller-manager  和 kube-scheduler  。 你可以启用其他日志，例如 kube-audit  。 启用 Log Analytics 工作区后，可以返回并更改收集的日志。
+1. 在可用日志列表中，选择要启用的日志。 常见日志包括 kube-apiserver、kube-controller-manager 和 kube-scheduler。 你可以启用其他日志，例如 kube-audit。 启用 Log Analytics 工作区后，可以返回并更改收集的日志。
     
     <!--Not Available on and *cluster-autoscaler*-->
     
-1. 准备就绪后，选择“保存”以启用收集选定日志。 
+1. 准备就绪后，选择“保存”以启用收集选定日志。
 
-以下示例门户屏幕截图显示了“诊断设置”窗口： 
+以下示例门户屏幕截图显示了“诊断设置”窗口：
 
 ![为 AKS 群集的 Azure Monitor 日志启用 Log Analytics 工作区](media/view-master-logs/enable-oms-log-analytics.png)
 
@@ -84,11 +84,11 @@ pod/nginx created
 
 ## <a name="view-collected-logs"></a>查看收集的日志
 
-可能需要等待几分钟，诊断日志才会启用并显示在 Log Analytics 工作区中。 在 Azure 门户中，选择 Log Analytics 工作区的资源组（例如 *myResourceGroup*），然后选择 Log Analytics 资源（例如 *myAKSLogs*）。
+可能需要等待几分钟，诊断日志才会启用并显示在 Log Analytics 工作区中。 在 Azure 门户中，选择 Log Analytics 工作区的资源组（例如 myResourceGroup），然后选择 Log Analytics 资源（例如 myAKSLogs） 。
 
 ![选择 AKS 群集的 Log Analytics 工作区](media/view-master-logs/select-log-analytics-workspace.png)
 
-在左侧选择“日志”。  若要查看 *kube-apiserver*，请在文本框中输入以下查询：
+在左侧选择“日志”。 若要查看 *kube-apiserver*，请在文本框中输入以下查询：
 
 ```
 AzureDiagnostics
@@ -117,7 +117,7 @@ AzureDiagnostics
 
 为帮助分析日志数据，下表详细说明了用于每个事件的架构：
 
-| 字段名               | 说明 |
+| 字段名称               | 说明 |
 |--------------------------|-------------|
 | *resourceId* | 生成日志的 Azure 资源 |
 | *time* | 上传日志的时间戳 |
@@ -162,4 +162,4 @@ AzureDiagnostics
 [az-feature-list]: https://docs.azure.cn/cli/feature?view=azure-cli-latest#az-feature-list
 [az-provider-register]: https://docs.azure.cn/cli/provider?view=azure-cli-latest#az-provider-register
 
-<!--Update_Description: wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

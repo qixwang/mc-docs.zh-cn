@@ -1,12 +1,12 @@
 ---
-title: Azure 服务总线诊断日志 | Microsoft Docs
+title: Azure 服务总线诊断日志 | Azure
 description: 本文概述了可用于 Azure 服务总线的所有操作和诊断日志。
 keywords: ''
 documentationcenter: .net
 services: service-bus-messaging
-author: lingliw
-manager: digimobile
-editor: ''
+author: axisc
+manager: timlt
+editor: spelluru
 ms.assetid: ''
 ms.service: service-bus-messaging
 ms.devlang: na
@@ -16,18 +16,18 @@ ms.workload: data-services
 origin.date: 01/24/2020
 ms.date: 2/6/2020
 ms.author: v-lingwu
-ms.openlocfilehash: e8e643d5cfc507aeb9db6cbbe1e78d3c0fbaaf79
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 4ecb82d617ee7fd7c6f752f42a4289d1f51ac6d5
+ms.sourcegitcommit: a04b0b1009b0c62f2deb7c7acee75a1304d98f87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77067985"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83796830"
 ---
 # <a name="enable-diagnostics-logs-for-service-bus"></a>为服务总线启用诊断日志
 
 开始使用 Azure 服务总线命名空间时，你可能想要监视命名空间的创建、删除或访问方式和时间。 本文概述所有可用的操作日志和诊断日志。
 
-Azure 服务总线目前支持活动日志和操作日志，这些日志捕获针对 Azure 服务总线命名空间执行的管理操作。  具体而言，这些日志捕获操作类型，包括队列创建、所用的资源和操作状态。
+Azure 服务总线目前支持活动日志和操作日志，这些日志捕获针对 Azure 服务总线命名空间执行的管理操作。 具体而言，这些日志捕获操作类型，包括队列创建、所用的资源和操作状态。
 
 ## <a name="operational-logs-schema"></a>操作日志架构
 
@@ -77,42 +77,42 @@ Azure 服务总线目前支持活动日志和操作日志，这些日志捕获�
 
 | 作用域 | 操作|
 |-------| -------- |
-| 命名空间 | <ul> <li> 创建命名空间</li> <li> 更新命名空间 </li> <li> 删除命名空间 </li>  </ul> | 
-| 队列 | <ul> <li> 创建队列</li> <li> 更新队列</li> <li> 删除队列 </li> </ul> | 
-| 主题 | <ul> <li> 创建主题 </li> <li> 更新主题 </li> <li> 删除主题 </li> </ul> |
-| 订阅 | <ul> <li> 创建订阅 </li> <li> 更新订阅 </li> <li> 删除订阅 </li> </ul> |
+| 命名空间 | <ul> <li> 创建命名空间</li> <li> 更新命名空间 </li> <li> 删除命名空间 </li> <li> 更新命名空间 SharedAccess 策略 </li> </ul> | 
+| 队列 | <ul> <li> 创建队列</li> <li> 更新队列</li> <li> 删除队列 </li> <li> 自动删除 - 删除队列 </li> </ul> | 
+| 主题 | <ul> <li> 创建主题 </li> <li> 更新主题 </li> <li> 删除主题 </li> <li> 自动删除 - 删除主题 </li> </ul> |
+| 订阅 | <ul> <li> 创建订阅 </li> <li> 更新订阅 </li> <li> 删除订阅 </li> <li> 自动删除 - 删除订阅 </li> </ul> |
 
 > [!NOTE]
-> 目前，不会在操作日志中跟踪“读取”操作。 
+> 目前，不会在操作日志中跟踪“读取”操作。
 
 ## <a name="enable-operational-logs"></a>启用操作日志
 
 操作日志默认已禁用。 若要启用诊断日志，请执行以下操作：
 
-1. 在 [Azure 门户](https://portal.azure.cn)中，转到你的 Azure 服务总线命名空间，然后在“监视”下选择“诊断设置”。  
+1. 在 [Azure 门户](https://portal.azure.cn)中，转到你的 Azure 服务总线命名空间，然后在“监视”下选择“诊断设置”。 
 
    ![“诊断设置”链接](./media/service-bus-diagnostic-logs/image1.png)
 
-1. 在“诊断设置”窗格中，选择“添加诊断设置”。    
+1. 在“诊断设置”窗格中，选择“添加诊断设置”。   
 
    ![“添加诊断设置”链接](./media/service-bus-diagnostic-logs/image2.png)
 
 1. 执行以下操作来配置诊断设置：
 
-   a. 在“名称”框中，输入诊断设置的名称。   
+   a. 在“名称”框中，输入诊断设置的名称。  
 
    b. 为诊断日志选择以下三个目标之一：  
-   - 如果选择“存档到存储帐户”，则需要配置用于存储诊断日志的存储帐户。   
-   - 如果选择“流式传输到事件中心”，则需要配置要将诊断日志流式传输到的事件中心。 
-   - 如果选择“发送到 Log Analytics”，则需要指定要将诊断发送到的 Log Analytics 实例。   
+   - 如果选择“存档到存储帐户”，则需要配置用于存储诊断日志的存储帐户。  
+   - 如果选择“流式传输到事件中心”，则需要配置要将诊断日志流式传输到的事件中心。
+   - 如果选择“发送到 Log Analytics”，则需要指定要将诊断发送到的 Log Analytics 实例。  
 
-   c. 选中“OperationalLogs”复选框。 
+   c. 选中“OperationalLogs”复选框。
 
     ![“诊断设置”窗格](./media/service-bus-diagnostic-logs/image3.png)
 
-1. 选择“保存”  。
+1. 选择“保存” 。
 
-新设置将在大约 10 分钟后生效。 日志将显示在“诊断日志”窗格中配置的存档目标中。 
+新设置将在大约 10 分钟后生效。 日志将显示在“诊断日志”窗格中配置的存档目标中。
 
 有关配置诊断设置的详细信息，请参阅 [Azure 诊断日志概述](../azure-monitor/platform/diagnostic-logs-overview.md)。
 

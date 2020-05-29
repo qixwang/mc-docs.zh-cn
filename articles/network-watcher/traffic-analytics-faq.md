@@ -3,21 +3,20 @@ title: Azure 流量分析常见问题解答 | Azure Docs
 description: 获取有关流量分析的常见问题的解答。
 services: network-watcher
 documentationcenter: na
-author: lingliw
-manager: digimobile
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-origin.date: 03/08/2018
-ms.date: 02/27/2020
-ms.author: v-lingwu
-ms.openlocfilehash: c269e2de1076d214a7d1e525f338257cb0a0d35e
-ms.sourcegitcommit: b81ea2ab9eafa986986fa3eb1e784cfe9bbf9ec1
+ms.workload: infrastructure-services
+ms.date: 03/08/2018
+ms.author: damendo
+ms.openlocfilehash: ddd3c4465f06e676c796897240570b524764c97b
+ms.sourcegitcommit: a04b0b1009b0c62f2deb7c7acee75a1304d98f87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83367828"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83796842"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>流量分析常见问题解答
 

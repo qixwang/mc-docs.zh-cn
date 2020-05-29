@@ -8,32 +8,34 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/16/2020
+ms.date: 05/18/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: c6ecfcfb47e3f01e60a1f38f51296b98cb86e7d7
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 6e0b6e889cd33d123bd27cbd76723300363f8883
+ms.sourcegitcommit: 87e789550ea49ff77c7f19bc68fad228009fcf44
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79497160"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83748047"
 ---
 # <a name="single-sign-on-session-management-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的单一登录会话管理
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-使用 Azure Active Directory B2C (Azure AD B2C) 中的单一登录 (SSO) 会话管理，管理员可在用户已通过身份验证之后控制与用户的交互。 例如，管理员可以控制是否显示所选的标识提供者，或是否需要再次输入本地帐户详细信息。 本文介绍如何配置 Azure AD B2C SSO 的设置。
-
-SSO 会话管理包括两个部分。 第一个部分处理用户与 Azure AD B2C 之间的直接交互，另一个部分处理用户与外部参与方之间的交互。 Azure AD B2C 不会重写或绕过外部参与方可能保留的 SSO 会话。 更确切地说，通过 Azure AD B2C 转到外部参与方的路由将被记住，因此无需重新提示用户选择其社交或企业标识提供者。 最终的 SSO 决策仍由外部参与方做出。
-
-SSO 会话管理使用的语义，与自定义策略中其他任何技术配置文件使用的语义相同。 执行某个业务流程步骤时，会在与该步骤关联的技术配置文件中查询 `UseTechnicalProfileForSessionManagement` 引用。 如果存在该引用，则会检查引用的 SSO 会话提供程序，确定用户是否为会话参与者。 如果是，则使用 SSO 会话提供程序来重新填充会话。 同样，在完成执行某个业务流程步骤后，如果已指定 SSO 会话提供程序，则使用该提供程序将信息存储在会话中。
+[单一登录 (SSO) 会话](session-overview.md)管理使用的语义与自定义策略中其他任何技术配置文件使用的语义相同。 执行某个业务流程步骤时，会在与该步骤关联的技术配置文件中查询 `UseTechnicalProfileForSessionManagement` 引用。 如果存在该引用，则会检查引用的 SSO 会话提供程序，确定用户是否为会话参与者。 如果是，则使用 SSO 会话提供程序来重新填充会话。 同样，在完成执行某个业务流程步骤后，如果已指定 SSO 会话提供程序，则使用该提供程序将信息存储在会话中。
 
 Azure AD B2C 定义了大量可用的 SSO 会话提供程序：
 
-* NoopSSOSessionProvider
-* DefaultSSOSessionProvider
-* ExternalLoginSSOSessionProvider
-* SamlSSOSessionProvider
+|会话提供程序  |作用域  |
+|---------|---------|
+|[NoopSSOSessionProvider](#noopssosessionprovider)     |  无       |       
+|[DefaultSSOSessionProvider](#defaultssosessionprovider)    | Azure AD B2C 内部会话管理器。      |       
+|[ExternalLoginSSOSessionProvider](#externalloginssosessionprovider)     | 在 Azure AD B2C 和 OAuth1、OAuth2 或 OpenId 连接标识提供者之间。        |         |
+|[OAuthSSOSessionProvider](#oauthssosessionprovider)     | 在 OAuth2 或 OpenId 连接依赖方应用程序和 Azure AD B2C 之间。        |        
+|[SamlSSOSessionProvider](#samlssosessionprovider)     | 在 Azure AD B2C 和 SAML 标识提供者之间。 以及在 SAML 服务提供商（信赖方应用）和 Azure AD B2C 之间。  |        
+
+
+
 
 SSO 管理类是使用技术配置文件的 `<UseTechnicalProfileForSessionManagement ReferenceId="{ID}" />` 元素指定的。
 
@@ -64,11 +66,11 @@ SSO 管理类是使用技术配置文件的 `<UseTechnicalProfileForSessionManag
 
 ### <a name="defaultssosessionprovider"></a>DefaultSSOSessionProvider
 
-此提供程序可以用于在会话中存储声明。 此提供程序通常在用于管理本地帐户的技术配置文件中引用。 
+此提供程序可以用于在会话中存储声明。 此提供程序通常在用于管理本地和联合帐户的技术配置文件中引用。
 
 ```XML
 <TechnicalProfile Id="SM-AAD">
-  <DisplayName>Session Mananagement Provider</DisplayName>
+  <DisplayName>Session Management Provider</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.DefaultSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
   <PersistedClaims>
     <PersistedClaim ClaimTypeReferenceId="objectId" />
@@ -101,11 +103,11 @@ SSO 管理类是使用技术配置文件的 `<UseTechnicalProfileForSessionManag
 
 ### <a name="externalloginssosessionprovider"></a>ExternalLoginSSOSessionProvider
 
-此提供程序用于禁止显示“选择标识提供者”屏幕。 它通常在针对外部标识提供者配置的技术配置文件中引用。
+此提供程序用于禁止“选择标识提供者”屏幕并从联合标识提供者注销。 它通常在为联合标识提供者（如 Azure Active Directory）配置的技术配置文件中引用。 
 
 ```XML
 <TechnicalProfile Id="SM-SocialLogin">
-  <DisplayName>Session Mananagement Provider</DisplayName>
+  <DisplayName>Session Management Provider</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.ExternalLoginSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
   <Metadata>
     <Item Key="AlwaysFetchClaimsFromProvider">true</Item>
@@ -122,9 +124,20 @@ SSO 管理类是使用技术配置文件的 `<UseTechnicalProfileForSessionManag
 | --- | --- | --- |
 | AlwaysFetchClaimsFromProvider | 否 | 当前未使用，可以忽略。 |
 
+### <a name="oauthssosessionprovider"></a>OAuthSSOSessionProvider
+
+此提供程序用于管理 OAuth2 或 OpenId 连接信赖方与 Azure AD B2C 之间的 Azure AD B2C 会话。
+
+```xml
+<TechnicalProfile Id="SM-jwt-issuer">
+  <DisplayName>Session Management Provider</DisplayName>
+  <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.OAuthSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+</TechnicalProfile>
+```
+
 ### <a name="samlssosessionprovider"></a>SamlSSOSessionProvider
 
-此提供程序用于管理信赖方应用程序或联合 SAML 标识提供者之间的 Azure AD B2C SAML 会话。 使用 SSO 提供程序存储 SAML 标识提供者会话时，`RegisterServiceProviders` 必须设为 `false`。 以下 `SM-Saml-idp` 技术配置文件由 [SAML 技术配置文件](saml-technical-profile.md)使用。
+此提供程序用于管理信赖方应用程序或联合 SAML 标识提供者之间的 Azure AD B2C SAML 会话。 使用 SSO 提供程序存储 SAML 标识提供者会话时，`RegisterServiceProviders` 必须设为 `false`。 以下 `SM-Saml-idp` 技术配置文件由 [SAML 标识提供者技术配置文件](saml-identity-provider-technical-profile.md)使用。
 
 ```XML
 <TechnicalProfile Id="SM-Saml-idp">
@@ -138,14 +151,15 @@ SSO 管理类是使用技术配置文件的 `<UseTechnicalProfileForSessionManag
 
 使用提供程序存储 B2C SAML 会话时，`RegisterServiceProviders` 必须设为 `true`。 需要 `SessionIndex` 和 `NameID` 才能完成 SAML 会话注销。
 
-以下 `SM-Saml-idp` 技术配置文件由 [SAML 颁发者技术配置文件](saml-issuer-technical-profile.md)使用
+以下 `SM-Saml-issuer` 技术配置文件由 [SAML 颁发者技术配置文件](saml-issuer-technical-profile.md)使用
 
 ```XML
-<TechnicalProfile Id="SM-Saml-sp">
+<TechnicalProfile Id="SM-Saml-issuer">
   <DisplayName>Session Management Provider</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.SamlSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"/>
 </TechnicalProfile>
 ```
+
 #### <a name="metadata"></a>Metadata
 
 | 属性 | 必须 | 说明|
@@ -154,5 +168,8 @@ SSO 管理类是使用技术配置文件的 `<UseTechnicalProfileForSessionManag
 | RegisterServiceProviders | 否 | 指示提供程序应注册已颁发断言的所有 SAML 服务提供程序。 可能的值为 `true`（默认）或 `false`。|
 
 
+## <a name="next-steps"></a>后续步骤
 
+- 详细了解 [Azure AD B2C 会话](session-overview.md)。
+- 了解如何[在自定义策略中配置会话行为](session-behavior-custom-policy.md)。
 

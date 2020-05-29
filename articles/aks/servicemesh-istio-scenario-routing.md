@@ -1,18 +1,19 @@
 ---
-title: 使用 Istio 在 Azure Kubernetes 服务 (AKS) 中实现智能路由和 Canary 发布
+title: 使用 Istio 进行智能路由
+titleSuffix: Azure Kubernetes Service
 description: 了解如何使用 Istio 在 Azure Kubernetes 服务 (AKS) 群集中提供智能路由并部署 Canary 发布
 author: rockboyfor
 ms.topic: article
 origin.date: 10/09/2019
-ms.date: 04/06/2020
+ms.date: 05/25/2020
 ms.author: v-yeche
 zone_pivot_groups: client-operating-system-aks-lm
-ms.openlocfilehash: 06596257562faf6159a764fdfbc0c2798c162264
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: e008b1886443fb89d9732c70c00e6afd22f227fd
+ms.sourcegitcommit: 7e6b94bbaeaddb854beed616aaeba6584b9316d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80517008"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83735047"
 ---
 <!--CORRECT ON client-operating-system-aks-lm-->
 # <a name="use-intelligent-routing-and-canary-releases-with-istio-in-azure-kubernetes-service-aks"></a>借助 Istio 在 Azure Kubernetes 服务 (AKS) 中使用智能路由和 Canary 发布
@@ -29,7 +30,7 @@ ms.locfileid: "80517008"
 > * 推出应用程序的 Canary 发布
 > * 完成推出
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 > [!NOTE]
 > 本方案已针对 Istio 版本 `1.3.2` 进行测试。
@@ -139,9 +140,9 @@ voting-storage-1-0-5d8fcc89c4-2jhms     2/2       Running   0          39s   app
 创建 Istio [网关][istio-reference-gateway]和[虚拟服务][istio-reference-virtualservice]后，才能连接到投票应用。 这些 Istio 资源将来自默认 Istio Ingress 网关的流量路由到应用程序。
 
 > [!NOTE]
-> 网关是位于服务网格边缘的组件，用于接收入站或出站 HTTP 和 TCP 流量。 
+> 网关是位于服务网格边缘的组件，用于接收入站或出站 HTTP 和 TCP 流量。
 > 
-> 虚拟服务将定义一组适用于一个或多个目标服务的路由规则。 
+> 虚拟服务将定义一组适用于一个或多个目标服务的路由规则。
 
 使用 `kubectl apply` 命令部署网关和虚拟服务 yaml。 请记得指定这些资源要部署到的命名空间。
 
@@ -164,7 +165,7 @@ kubectl get service istio-ingressgateway --namespace istio-system -o jsonpath='{
 
 以下示例输出显示 Ingress 网关的 IP 地址：
 
-```
+```output
 20.188.211.19
 ```
 
@@ -184,13 +185,13 @@ kubectl get service istio-ingressgateway --namespace istio-system -o jsonpath='{
 
 让我们部署 `voting-analytics` 组件 `1.1` 版本。 在 `voting` 命名空间中创建此组件：
 
-```azurecli
+```console
 kubectl apply -f kubernetes/step-2-update-voting-analytics-to-1.1.yaml --namespace voting
 ```
 
 以下示例输出显示正在创建资源：
 
-```console
+```output
 deployment.apps/voting-analytics-1-1 created
 ```
 
@@ -223,7 +224,7 @@ deployment.apps/voting-analytics-1-1 created
 
 下面的示例输出显示了网站在两个版本之间切换时返回的网站的相关部分：
 
-```console
+```output
   <div id="results"> Cats: 2 | Dogs: 4 </div>
   <div id="results"> Cats: 2 | Dogs: 4 </div>
   <div id="results"> Cats: 2/6 (33%) | Dogs: 4/6 (67%) </div>
@@ -235,9 +236,9 @@ deployment.apps/voting-analytics-1-1 created
 
 现在我们仅将流量锁定到 `voting-analytics` 组件的 `1.1` 版本和 `voting-storage` 组件的 `1.0` 版本。 然后定义适用于所有其他组件的路由规则。
 
-> * 虚拟服务将定义一组适用于一个或多个目标服务的路由规则。 
-> * “目标规则”定义流量策略和特定于版本的策略。 
-> * “策略”定义工作负载可以接受的身份验证方法。 
+> * 虚拟服务将定义一组适用于一个或多个目标服务的路由规则。
+> * “目标规则”定义流量策略和特定于版本的策略。
+> * “策略”定义工作负载可以接受的身份验证方法。
 
 使用 `kubectl apply` 命令替换 `voting-app` 上的虚拟服务定义，并添加适用于其他组件的[目标规则][istio-reference-destinationrule]和[虚拟服务][istio-reference-virtualservice]。 将[策略][istio-reference-policy]添加到 `voting` 命名空间，以确保使用相互 TLS 和客户端证书保护服务之间的所有通信。
 
@@ -422,7 +423,7 @@ kubectl get pods --namespace voting -w
 
 现在你已成功推出 AKS 投票应用的新版本。
 
-## <a name="clean-up"></a>清除 
+## <a name="clean-up"></a>清理 
 
 可以通过删除 `voting` 命名空间，来删除 AKS 群集中的、在本方案中使用的 AKS 投票应用，如下所示：
 

@@ -2,20 +2,20 @@
 title: Azure 备份支持矩阵
 description: 汇总 Azure 备份服务的支持设置和限制。
 ms.topic: conceptual
-author: lingliw
+author: Johnnytechn
 origin.date: 02/17/2019
-ms.date: 11/06/2019
-ms.author: v-lingwu
-ms.openlocfilehash: 26bfd7a3c80f3da14b024ca846de4596d90c2be0
-ms.sourcegitcommit: b80d236ce3c706abc25bbaa41b0ccddd896e48fc
+ms.date: 05/11/2020
+ms.author: v-johya
+ms.openlocfilehash: f66d6b820b2f67e6251c0e0217aca373e0e27776
+ms.sourcegitcommit: 08b42258a48d96d754244064d065e4d5703f1cfb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81873140"
+ms.lasthandoff: 05/18/2020
+ms.locfileid: "83445154"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure 备份的支持矩阵
 
-可以使用 [Azure 备份](backup-overview.md)将数据备份到 Microsoft Azure 云平台。 本文汇总了 Azure 备份方案和部署的一般支持设置和限制。
+可以使用 [Azure 备份](backup-overview.md)将数据备份到 Azure 云平台。 本文汇总了 Azure 备份方案和部署的一般支持设置和限制。
 
 提供其他支持矩阵：
 
@@ -23,6 +23,7 @@ ms.locfileid: "81873140"
 - 使用 [System Center Data Protection Manager (DPM)/Microsoft Azure 备份服务器 (MABS)](backup-support-matrix-mabs-dpm.md) 的备份的支持矩阵
 - 使用 [Microsoft Azure 恢复服务 (MARS) 代理](backup-support-matrix-mars-agent.md)进行备份的支持矩阵
 
+<!-- Not abailable in service lighthouse -->
 ## <a name="vault-support"></a>保管库支持
 
 Azure 备份使用恢复服务保管库来安排和管理备份。 它还使用保管库来存储备份的数据。
@@ -33,7 +34,7 @@ Azure 备份使用恢复服务保管库来安排和管理备份。 它还使用�
 --- | ---
 **订阅中的保管库数** | 单个订阅中最多可以有 500 个恢复服务保管库。
 **保管库中的计算机数** | 单个保管库中最多可以有 1,000 个 Azure VM。<br/><br/> 单个保管库中最多可注册 50 个 MABS 服务器。
-**保管库存储中的数据源** | 最多 54,400 GB。 Azure VM 备份没有限制。
+**数据源** | 单个[数据源](/backup/backup-azure-backup-faq#how-is-the-data-source-size-determined)的最大大小为 54,400 GB。 此限制不适用于 Azure VM 备份。 可以备份到保管库的数据总量没有限制。
 **保管库备份** | **Azure VM：** 每天 1 次。<br/><br/>**受 DPM/MABS 保护的计算机：** 一天两次。<br/><br/> **直接使用 MARS 代理备份的计算机：** 一天三次。
 **在保管库之间备份** | 备份在一个区域内进行。<br/><br/> 在包含想要备份的 VM 的每个 Azure 区域中都需要有一个保管库。 无法备份到其他区域。
 **移动保管库** | 可以跨订阅或同一订阅中的资源组之间[移动保管库](/backup/backup-azure-move-recovery-services-vault)。 但是，不支持跨区域移动保管库。
@@ -57,7 +58,7 @@ Azure 备份使用恢复服务保管库来安排和管理备份。 它还使用�
 
 **限制** | **详细信息**
 --- | ---
-**Azure VM 数据磁盘** | 限制为 16 个
+**Azure VM 数据磁盘** | 限制为 16 个 <br> 若要注册获取包含 16 个以上磁盘（最多 32 个磁盘）的个人预览版 VM，请向我们发送电子邮件：AskAzureBackupTeam@microsoft.com
 **Azure VM 数据磁盘大小** | 对于 VM 中的所有磁盘，单个磁盘大小最大为 32 TB，组合磁盘大小最大为 256 TB。
 
 ### <a name="azure-vm-backup-options"></a>Azure VM 备份选项
@@ -85,7 +86,7 @@ Azure 备份使用恢复服务保管库来安排和管理备份。 它还使用�
 
 ## <a name="daylight-saving-time-support"></a>夏令时支持
 
-Azure 备份不支持根据 Azure VM 备份的夏令时时自动调整时钟。 请根据需要手动修改备份策略。
+Azure 备份不支持根据 Azure VM 备份的夏令时时自动调整时钟。 它不会将备份的时间向前或向后移动。 若要确保备份在所需的时间运行，请根据需要手动修改备份策略。
 
 ## <a name="disk-deduplication-support"></a>磁盘重复数据删除支持
 
@@ -110,7 +111,7 @@ Azure 备份支持针对传输中数据和静态数据的加密。
 
 ### <a name="data-security"></a>数据安全性
 
-- 备份 Azure VM 时，需要在虚拟机内部  设置加密。
+- 备份 Azure VM 时，需要在虚拟机内部设置加密。
 - Azure 备份支持 Azure 磁盘加密，后者在 Windows 虚拟机上使用 BitLocker，在 Linux 虚拟机上使用 **dm-crypt**。
 - 在后端，Azure 备份使用 [Azure 存储服务加密](../storage/common/storage-service-encryption.md)来保护静态数据。
 
@@ -148,15 +149,14 @@ Azure 备份支持对备份流量进行压缩，详细情况汇总在下表中�
 
 ## <a name="cross-region-restore"></a>跨区域还原
 
-Azure 备份添加了“跨区域还原”功能以增强数据可用性和复原能力，使客户能够完全控制将数据还原到次要区域的过程。 若要配置此功能，请访问[“设置跨区域还原”一文](backup-create-rs-vault.md)。 以下管理类型支持此功能：
+Azure 备份添加了“跨区域还原”功能以增强数据可用性和复原能力，使客户能够完全控制将数据还原到次要区域的过程。 若要配置此功能，请访问[“设置跨区域还原”一文](backup-create-rs-vault.md#set-cross-region-restore)。 以下管理类型支持此功能：
 
 | 备份管理类型 | 支持                                                    | 支持的区域 |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
-| MARS 代理/本地 | 否                                                           | 不适用               |
-| SQL/SAP HANA          | 否                                                           | 不适用               |
-| AFS                    | 否                                                           | 不适用               |
-
-
+| Azure VM               | 是的。   支持用于加密的 VM 和磁盘小于 4 TB 的 VM | 所有 Azure 公共区域。  |
+| MARS 代理/本地 | 否                                                           | 空值               |
+| SQL/SAP HANA          | 否                                                           | 空值               |
+| AFS                    | 否                                                           | 空值               |
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -165,3 +165,4 @@ Azure 备份添加了“跨区域还原”功能以增强数据可用性和复�
 [green]: ./media/backup-support-matrix/green.png
 [yellow]: ./media/backup-support-matrix/yellow.png
 [red]: ./media/backup-support-matrix/red.png
+

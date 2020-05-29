@@ -4,15 +4,15 @@ description: 了解如何启用诊断日志记录并将检测添加到应用程�
 ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
 origin.date: 09/17/2019
-ms.date: 03/16/2020
+ms.date: 05/22/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 77d21277c1c1017342048945aa7baef48314e797
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: cd1b08e6452f19836a310cc919ddbd7f696e340a
+ms.sourcegitcommit: 981a75a78f8cf74ab5a76f9e6b0dc5978387be4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79546912"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83801197"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>为 Azure 应用服务中的应用启用诊断日志记录
 ## <a name="overview"></a>概述
@@ -27,7 +27,7 @@ Azure 提供内置诊断功能，可帮助调试[应用服务应用](overview.md
 
 |类型|平台|位置|说明|
 |-|-|-|-|
-| 应用程序日志记录 | Windows | 应用服务文件系统和/或 Azure 存储 Blob | 记录应用程序代码生成的消息。 这些消息可能由所选的 Web 框架生成，或者由应用程序代码使用你的语言的标准日志记录模式直接生成。 为每条消息分配以下类别之一：“严重”、“错误”、“警告”、“信息”、“调试”和“跟踪”。       启用应用程序日志记录时，可以通过设置严重性级别来选择日志记录的详细程度。|
+| 应用程序日志记录 | Windows | 应用服务文件系统和/或 Azure 存储 Blob | 记录应用程序代码生成的消息。 这些消息可能由所选的 Web 框架生成，或者由应用程序代码使用你的语言的标准日志记录模式直接生成。 为每条消息分配以下类别之一：“严重”、“错误”、“警告”、“信息”、“调试”和“跟踪”。      启用应用程序日志记录时，可以通过设置严重性级别来选择日志记录的详细程度。|
 | Web 服务器日志记录| Windows | 应用服务文件系统或 Azure 存储 Blob| 采用 [W3C 扩展日志文件格式](https://docs.microsoft.com/windows/desktop/Http/w3c-logging)的原始 HTTP 请求数据。 每条日志消息包含 HTTP 方法、资源 URI、客户端 IP、客户端端口、用户代理、响应代码等数据。 |
 | 详细错误消息| Windows | 应用服务文件系统 | 已发送到客户端浏览器的 *.htm* 错误页副本。 出于安全原因，不应将详细错误页发送到生产环境中的客户端，但每当出现 HTTP 代码为 400 或更高的应用程序错误时，应用服务都可以保存错误页。 该页可能包含有助于确定服务器返回错误代码的原因的信息。 |
 | 失败请求跟踪 | Windows | 应用服务文件系统 | 有关失败请求的详细跟踪信息，包括对用于处理请求的 IIS 组件和每个组件所用的时间的跟踪。 如果要提高站点性能或隔离特定的 HTTP 错误，这将非常有用。 为每个失败的请求生成一个文件夹，其中包含 XML 日志文件，以及用于查看日志文件的 XSL 样式表。 |
@@ -43,23 +43,26 @@ Azure 提供内置诊断功能，可帮助调试[应用服务应用](overview.md
 
 ## <a name="enable-application-logging-windows"></a>启用应用程序日志记录 (Windows)
 
-若要在 [Azure 门户](https://portal.azure.cn)中为 Windows 应用启用应用程序日志记录，请导航到你的应用，然后选择“应用服务日志”。 
+> [!NOTE]
+> Blob 存储的应用程序日志记录只能使用应用服务所在区域中的存储帐户
 
-对“应用程序日志记录(文件系统)”和/或“应用程序日志记录(Blob)”选择“打开”。    
+若要在 [Azure 门户](https://portal.azure.cn)中为 Windows 应用启用应用程序日志记录，请导航到你的应用，然后选择“应用服务日志”。
 
-“文件系统”选项用于临时调试，在 12 小时后会自行关闭。  “Blob”选项用于长期日志记录，需要提供一个要将日志写入到的 Blob 存储容器。   “Blob”选项还会在日志消息中包含其他信息，例如日志消息的来源 VM 实例 ID (`InstanceId`)、线程 ID (`Tid`) 和更详细的时间戳 ([`EventTickCount`](https://docs.microsoft.com/dotnet/api/system.datetime.ticks))。 
+对“应用程序日志记录(文件系统)”和/或“应用程序日志记录(Blob)”选择“打开”。   
+
+“文件系统”选项用于临时调试，在 12 小时后会自行关闭。 “Blob”选项用于长期日志记录，需要提供一个要将日志写入到的 Blob 存储容器。  “Blob”选项还会在日志消息中包含其他信息，例如日志消息的来源 VM 实例 ID (`InstanceId`)、线程 ID (`Tid`) 和更详细的时间戳 ([`EventTickCount`](https://docs.microsoft.com/dotnet/api/system.datetime.ticks))。
 
 > [!NOTE]
 > 目前，只有 .NET 应用程序日志可以写入到 blob 存储。 Java、PHP、Node.js、Python 应用程序日志只能存储在应用服务文件系统上（无需修改代码即可将日志写入外部存储）。
 >
 > 此外，如果[重新生成存储帐户的访问密钥](../storage/common/storage-create-storage-account.md)，则必须重置相应的日志记录配置才能使用更新的访问密钥。 为此，请按以下步骤操作：
 >
-> 1. 在“配置”  选项卡上，将相应的日志记录功能设置为“关闭”  。 保存设置。
+> 1. 在“配置”选项卡上，将相应的日志记录功能设置为“关闭”。 保存设置。
 > 2. 再次启用将日志记录到存储帐户 Blob。 保存设置。
 >
 >
 
-选择“级别”，即要记录的详细级别。  下表显示了每个级别包含的日志类别：
+选择“级别”，即要记录的详细级别。 下表显示了每个级别包含的日志类别：
 
 | Level | 包含的类别 |
 |-|-|
@@ -69,33 +72,33 @@ Azure 提供内置诊断功能，可帮助调试[应用服务应用](overview.md
 |**信息** | “信息”、“警告”、“错误”、“严重”|
 |**详细** | “跟踪”、“调试”、“信息”、“警告”、“错误”、“严重”（所有类别） |
 
-完成后，选择“保存”。 
+完成后，选择“保存”。
 
 <!-- ## Enable application logging (Linux/Container) -->
 
 ## <a name="enable-web-server-logging"></a>启用 Web 服务器日志记录
 
-若要在 [Azure 门户](https://portal.azure.cn)中为 Windows 应用启用 Web 服务器日志记录，请导航到你的应用，然后选择“应用服务日志”。 
+若要在 [Azure 门户](https://portal.azure.cn)中为 Windows 应用启用 Web 服务器日志记录，请导航到你的应用，然后选择“应用服务日志”。
 
-对于“Web 服务器日志记录”，请选择“存储”以将日志存储在 Blob 存储上，或选择“文件系统”以将日志存储在应用服务文件系统上。    
+对于“Web 服务器日志记录”，请选择“存储”以将日志存储在 Blob 存储上，或选择“文件系统”以将日志存储在应用服务文件系统上。   
 
-在“保留期(天)”中，设置日志要保留的天数。 
+在“保留期(天)”中，设置日志要保留的天数。
 
 > [!NOTE]
 > 如果[重新生成存储帐户的访问密钥](../storage/common/storage-create-storage-account.md)，则必须重置相应的日志记录配置才能使用更新的密钥。 为此，请按以下步骤操作：
 >
-> 1. 在“配置”  选项卡上，将相应的日志记录功能设置为“关闭”  。 保存设置。
+> 1. 在“配置”选项卡上，将相应的日志记录功能设置为“关闭”。 保存设置。
 > 2. 再次启用将日志记录到存储帐户 Blob。 保存设置。
 >
 >
 
-完成后，选择“保存”。 
+完成后，选择“保存”。
 
 ## <a name="log-detailed-errors"></a>记录详细错误
 
-若要在 [Azure 门户](https://portal.azure.cn)中保存 Windows 应用的错误页或失败请求跟踪，请导航到你的应用，然后选择“应用服务日志”。 
+若要在 [Azure 门户](https://portal.azure.cn)中保存 Windows 应用的错误页或失败请求跟踪，请导航到你的应用，然后选择“应用服务日志”。
 
-在“详细错误日志记录”或“失败请求跟踪”下，选择“打开”，然后选择“保存”。    
+在“详细错误日志记录”或“失败请求跟踪”下，选择“打开”，然后选择“保存”。   
 
 这两种类型的日志都将存储在应用服务文件系统中。 最多可保留 50 个错误（文件/文件夹）。 当 HTML 文件的数目超过 50 个时，会自动删除最早的 26 个错误。
 
@@ -121,13 +124,10 @@ Azure 提供内置诊断功能，可帮助调试[应用服务应用](overview.md
 
 ### <a name="in-azure-portal"></a>在 Azure 门户中配置
 
-若要在 [Azure 门户](https://portal.azure.cn)中流式传输日志，请导航到你的应用并选择“日志流”。  
+若要在 [Azure 门户](https://portal.azure.cn)中流式传输日志，请导航到你的应用并选择“日志流”。 
 
 <!-- ### In Cloud Shell -->
 
-### <a name="in-local-terminal"></a>在本地终端中
-
-若要在本地控制台中流式传输日志，请[安装 Azure CLI](https://docs.azure.cn/cli/install-azure-cli) 并[登录帐户](https://docs.azure.cn/cli/authenticate-azure-cli)。 登录后，使用以下命令：
 
 ```azurecli
 az webapp log tail --name appname --resource-group myResourceGroup
@@ -143,6 +143,10 @@ az webapp log tail --name appname --resource-group myResourceGroup --filter Erro
 ```azurecli
 az webapp log tail --name appname --resource-group myResourceGroup --path http
 ```
+
+### <a name="in-local-terminal"></a>在本地终端中
+
+若要在本地控制台中流式传输日志，请[安装 Azure CLI](https://docs.azure.cn/cli/install-azure-cli) 并[登录帐户](https://docs.azure.cn/cli/authenticate-azure-cli)。 登录后，使用以下命令：
 
 ## <a name="access-log-files"></a>访问日志文件
 
@@ -162,7 +166,7 @@ az webapp log tail --name appname --resource-group myResourceGroup --path http
 |-|-|-|
 | **应用程序日志** |*/LogFiles/Application/* | 包含一个或多个文本文件。 日志消息的格式取决于所用的日志记录提供程序。 |
 | **失败请求跟踪** | */LogFiles/W3SVC#########/* | 包含 XML 文件和一个 XSL 文件。 可以在浏览器中查看带格式的 XML 文件。 |
-| **详细错误日志** | */LogFiles/DetailedErrors/* | 包含 HTM 错误文件。 可以在浏览器中查看 HTM 文件。<br/>查看失败请求跟踪的另一种方法是在门户中导航到应用页。 在左侧菜单中选择“诊断和解决问题”，搜索“失败请求跟踪日志”，然后单击相应的图标来浏览和查看所需的跟踪。   |
+| **详细错误日志** | */LogFiles/DetailedErrors/* | 包含 HTM 错误文件。 可以在浏览器中查看 HTM 文件。<br/>查看失败请求跟踪的另一种方法是在门户中导航到应用页。 在左侧菜单中选择“诊断和解决问题”，搜索“失败请求跟踪日志”，然后单击相应的图标来浏览和查看所需的跟踪。  |
 | **Web 服务器日志** | */LogFiles/http/RawLogs/* | 包含使用 [W3C 扩展日志文件格式](/windows/desktop/Http/w3c-logging)的文本文件。 可以使用文本编辑器或诸如[日志分析程序](https://go.microsoft.com/fwlink/?LinkId=246619)之类实用工具来阅读此信息。<br/>应用服务不支持 `s-computername`、`s-ip` 或 `cs-version` 字段。 |
 | **部署日志** | */LogFiles/Git/* 和 */deployments/* | 包含内部部署进程生成的日志，以及 Git 部署的日志。 |
 

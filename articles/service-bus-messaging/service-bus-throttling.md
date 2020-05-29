@@ -1,5 +1,5 @@
 ---
-title: Azure 服务总线限制概述 | Microsoft Docs
+title: Azure 服务总线限制概述 | Azure
 description: 概述了服务总线限制 - 标准层和高级层。
 services: service-bus-messaging
 author: axisc
@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 04/30/2020
 ms.author: v-tawe
 origin.date: 10/01/2019
-ms.openlocfilehash: 17d1b3444d153f8e3488226a72d050a18aba07da
-ms.sourcegitcommit: 1fbdefdace8a1d3412900c6c3f89678d8a9b29bc
+ms.openlocfilehash: bd32f1601f7870d6e6ef020e4fc9f889db81919b
+ms.sourcegitcommit: a04b0b1009b0c62f2deb7c7acee75a1304d98f87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82886954"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83796716"
 ---
 # <a name="throttling-operations-on-azure-service-bus"></a>Azure 服务总线中的限制操作
 
@@ -64,7 +64,7 @@ Azure 服务总线标准层以多租户设置形式运行，采用预付定价�
 
 ### <a name="how-will-i-know-that-im-being-throttled"></a>如何知道我受到了限制？
 
-当客户端应用程序请求受到限制时，应用程序将收到并记录以下服务器响应。
+当客户端应用程序请求受到限制时，应用程序会收到并记录以下服务器响应。
 
 ```
 The request was terminated because the entity is being throttled. Error code: 50009. Please wait 2 seconds and try again.
@@ -95,9 +95,9 @@ The request was terminated because the entity is being throttled. Error code: 50
 ### <a name="how-will-i-know-that-im-being-throttled"></a>如何知道我受到了限制？
 
 可以通过多种方式确定在 Azure 服务总线高级层中是否受到了限制 - 
-  * 可以通过 [Azure Monitor 请求指标](service-bus-metrics-azure-monitor.md#request-metrics)中显示的“限制的请求数”来确定有多少个请求受到限制。 
-  * 较高的“CPU 使用率”表示当前资源分配量较高，如果当前工作负荷没有降低，则请求可能会受到限制。 
-  * 较高的“内存使用率”表示当前资源分配量较高，如果当前工作负荷没有降低，则请求可能会受到限制。 
+  * 可以通过 [Azure Monitor 请求指标](service-bus-metrics-azure-monitor.md#request-metrics)中显示的“限制的请求数”来确定有多少个请求受到限制。
+  * 较高的“CPU 使用率”表示当前资源分配量较高，如果当前工作负荷没有降低，则请求可能会受到限制。
+  * 较高的“内存使用率”表示当前资源分配量较高，如果当前工作负荷没有降低，则请求可能会受到限制。
 
 ### <a name="how-can-i-avoid-being-throttled"></a>如何避免受到限制？
 

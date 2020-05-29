@@ -1,10 +1,10 @@
 ---
-title: 排查 Azure 服务总线中的 AMQP 错误 | Microsoft Docs
+title: 排查 Azure 服务总线中的 AMQP 错误 | Azure
 description: 提供使用 Azure 服务总线时可能收到的 AMQP 错误以及这些错误的原因的列表。
 services: service-bus-messaging
 documentationcenter: na
-author: lingliw
-manager: digimobile
+author: axisc
+manager: timlt
 editor: spelluru
 ms.assetid: ''
 ms.service: service-bus-messaging
@@ -15,12 +15,12 @@ ms.workload: na
 origin.date: 04/23/2019
 ms.date: 09/23/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 5afaa88e7c66cf05b827071a828ce5bd09489c7c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 69829541594ac442b795152d721683a468313776
+ms.sourcegitcommit: a04b0b1009b0c62f2deb7c7acee75a1304d98f87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "71330330"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83796741"
 ---
 # <a name="amqp-errors-in-azure-service-bus"></a>Azure 服务总线中的 AMQP 错误
 本文提供了在 Azure 服务总线中使用 AMQP 时所收到的一些错误。 这些错误都是服务的标准行为。 可以通过在连接/链路上发出发送/接收调用来避免这些错误，这会自动重新创建连接/链路。
@@ -51,9 +51,9 @@ Error{condition=amqp:connection:forced, description='The connection was inactive
 若要详细了解 AMQP 和服务总线，请单击以下链接：
 
 * [服务总线 AMQP 概述]
-* [AMQP 1.0 protocol guide]
+* [AMQP 1.0 协议指南]
 * [适用于 Windows Server 的服务总线中的 AMQP]
 
 [服务总线 AMQP 概述]: service-bus-amqp-overview.md
-[AMQP 1.0 protocol guide]: service-bus-amqp-protocol-guide.md
+[AMQP 1.0 协议指南]: service-bus-amqp-protocol-guide.md
 [适用于 Windows Server 的服务总线中的 AMQP]: https://docs.microsoft.com/previous-versions/service-bus-archive/dn282144(v=azure.100)

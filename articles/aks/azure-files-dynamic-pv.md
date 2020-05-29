@@ -1,17 +1,18 @@
 ---
-title: 在 Azure Kubernetes 服务 (AKS) 中为多个 Pod 动态创建文件卷
+title: 动态创建 Azure 文件共享
+titleSuffix: Azure Kubernetes Service
 description: 了解如何使用 Azure 文件动态创建永久性卷，以便与 Azure Kubernetes 服务 (AKS) 中的多个并发 Pod 一起使用
 services: container-service
 ms.topic: article
 origin.date: 09/12/2019
-ms.date: 04/06/2020
+ms.date: 05/25/2020
 ms.author: v-yeche
-ms.openlocfilehash: 192a475050c4f9fb521c4309c62c6872e71d9fd7
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: ff11d52ea3744e9e36f8a047bb8e36b02ffc9872
+ms.sourcegitcommit: 7e6b94bbaeaddb854beed616aaeba6584b9316d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80517018"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83735143"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-files-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中动态创建永久性卷并将其用于 Azure 文件
 
@@ -19,7 +20,7 @@ ms.locfileid: "80517018"
 
 有关 Kubernetes 卷的详细信息，请参阅 [AKS 中应用程序的存储选项][concepts-storage]。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 本文假定你拥有现有的 AKS 群集。 如果需要 AKS 群集，请参阅 AKS 快速入门[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 门户][aks-quickstart-portal]。
 
@@ -86,7 +87,7 @@ spec:
 ```
 
 > [!NOTE]
-> 如果将 *Premium_LRS* SKU 用于存储类，则存储  的最小值必须为 100Gi  。
+> 如果将 *Premium_LRS* SKU 用于存储类，则存储的最小值必须为 100Gi。
 
 使用 [kubectl apply][kubectl-apply] 命令创建永久性卷声明：
 
@@ -142,7 +143,7 @@ spec:
 kubectl apply -f azure-pvc-files.yaml
 ```
 
-现有一个正在运行的 Pod，其中的 Azure 文件存储共享已装载到 /mnt/azure 目录中  。 通过 `kubectl describe pod mypod` 检查 pod 时，可以看到此配置。 以下精简示例输出显示容器中装载的卷：
+现有一个正在运行的 Pod，其中的 Azure 文件存储共享已装载到 /mnt/azure 目录中。 通过 `kubectl describe pod mypod` 检查 pod 时，可以看到此配置。 以下精简示例输出显示容器中装载的卷：
 
 ```
 Containers:
@@ -167,7 +168,7 @@ Volumes:
 
 ## <a name="mount-options"></a>装载选项
 
-对于 Kubernetes 版本 1.13.0 及更高版本，fileMode  和 dirMode  的默认值为 0777  。 如果使用存储类动态创建永久性卷，则可以在存储类对象上指定装载选项。 以下示例设置 *0777*：
+对于 Kubernetes 版本 1.13.0 及更高版本，fileMode 和 dirMode 的默认值为 0777。 如果使用存储类动态创建永久性卷，则可以在存储类对象上指定装载选项。 以下示例设置 *0777*：
 
 ```yaml
 kind: StorageClass

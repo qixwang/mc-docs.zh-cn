@@ -1,18 +1,18 @@
 ---
 title: 使用 Azure Kubernetes 服务 (AKS) 运行 Apache Spark 作业
-description: 使用 Azure Kubernetes 服务 (AKS) 运行 Apache Spark 作业
+description: 使用 Azure Kubernetes 服务 (AKS) 创建并运行 Apache Spark 作业来进行大规模数据处理。
 author: rockboyfor
 ms.topic: conceptual
 origin.date: 10/18/2019
-ms.date: 03/09/2020
+ms.date: 05/25/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 3d17e4dad8e92901dae62076184b1ebf15c70037
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 05d3cee82691ee2718fe6ed91868d60e292e7e54
+ms.sourcegitcommit: 7e6b94bbaeaddb854beed616aaeba6584b9316d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79290693"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83735170"
 ---
 # <a name="running-apache-spark-jobs-on-aks"></a>在 AKS 中运行 Apache Spark 作业
 
@@ -187,7 +187,7 @@ export AZURE_STORAGE_CONNECTION_STRING=`az storage account show-connection-strin
 
 使用以下命令将 jar 文件上传到 Azure 存储帐户。
 
-```bash
+```azurecli
 CONTAINER_NAME=jars
 BLOB_NAME=SparkPi-assembly-0.1.0-SNAPSHOT.jar
 FILE_TO_UPLOAD=target/scala-2.11/SparkPi-assembly-0.1.0-SNAPSHOT.jar
@@ -242,8 +242,10 @@ kubectl create clusterrolebinding spark-role --clusterrole=edit --serviceaccount
 此操作会启动 Spark 作业，该作业将作业状态流式传输到 shell 会话。 运行作业时，可以使用 kubectl get pods 命令查看 Spark 驱动程序 pod 和执行器 pod。 打开另一个终端会话以运行这些命令。
 
 ```console
-$ kubectl get pods
+kubectl get pods
+```
 
+```output
 NAME                                               READY     STATUS     RESTARTS   AGE
 spark-pi-2232778d0f663768ab27edc35cb73040-driver   1/1       Running    0          16s
 spark-pi-2232778d0f663768ab27edc35cb73040-exec-1   0/1       Init:0/1   0          4s
@@ -271,7 +273,7 @@ kubectl get pods --show-all
 
 输出：
 
-```bash
+```output
 NAME                                               READY     STATUS      RESTARTS   AGE
 spark-pi-2232778d0f663768ab27edc35cb73040-driver   0/1       Completed   0          1m
 ```
@@ -284,7 +286,7 @@ kubectl logs spark-pi-2232778d0f663768ab27edc35cb73040-driver
 
 在这些日志中，可以看到 Spark 作业的结果，即 Pi 的值。
 
-```bash
+```output
 Pi is roughly 3.152155760778804
 ```
 

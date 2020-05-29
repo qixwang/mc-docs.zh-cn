@@ -1,18 +1,19 @@
 ---
-title: 检查 Azure 上的 Kubernetes 部署，确定最佳做法的实现情况
+title: 检查部署是否符合最佳做法
+titleSuffix: Azure Kubernetes Service
 description: 了解如何使用 kube-advisor 检查 Azure Kubernetes 服务上部署的最佳做法实现情况
 services: container-service
 author: rockboyfor
 ms.topic: troubleshooting
 origin.date: 11/05/2018
-ms.date: 03/09/2020
+ms.date: 05/25/2020
 ms.author: v-yeche
-ms.openlocfilehash: d6e79bed80d33d48795972c6fc3357e3a8771c15
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 82cc81136d1579e2c45cc227e2c947a95d2949a9
+ms.sourcegitcommit: 7e6b94bbaeaddb854beed616aaeba6584b9316d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79290731"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83735174"
 ---
 # <a name="checking-for-kubernetes-best-practices-in-your-cluster"></a>检查 Kubernetes 群集中的最佳做法
 

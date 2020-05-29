@@ -1,17 +1,18 @@
 ---
-title: 在 Azure Kubernetes 服务 (AKS) 中使用 kured 更新并重启 Linux 节点
+title: 使用 kured 处理 Linux 节点重启
+titleSuffix: Azure Kubernetes Service
 description: 了解如何在 Azure Kubernetes 服务 (AKS) 中使用 kured 更新并自动重启 Linux 节点
 services: container-service
 ms.topic: article
 origin.date: 02/28/2019
-ms.date: 03/09/2020
+ms.date: 05/25/2020
 ms.author: v-yeche
-ms.openlocfilehash: a72d88f8dfb2d5baba1341390d707add91a0bba5
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 67d99a170b79cb1d72614ba6bc6ecf17fcfec62d
+ms.sourcegitcommit: 7e6b94bbaeaddb854beed616aaeba6584b9316d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79290724"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83735081"
 ---
 # <a name="apply-security-and-kernel-updates-to-linux-nodes-in-azure-kubernetes-service-aks"></a>将安全更新和内核更新应用于 Azure Kubernetes 服务 (AKS) 中的 Linux 节点
 
@@ -24,7 +25,7 @@ ms.locfileid: "79290724"
 > [!NOTE]
 > `Kured` 是 Weaveworks 提供的一个开源项目。 我们尽可能地在 AKS 中提供对该项目的支持。 在 #weave-community Slack 通道中可找到其他支持。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 本文假定你拥有现有的 AKS 群集。 如果需要 AKS 群集，请参阅 AKS 快速入门[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 门户][aks-quickstart-portal]。
 
@@ -36,13 +37,13 @@ ms.locfileid: "79290724"
 
 ![使用 kured 进行的 AKS 节点更新和重启进程](media/node-updates-kured/node-reboot-process.png)
 
-部分安全更新（如内核更新）需要重启节点才能完成更新进程。 需要重启的 Linux 节点会创建名为 /var/run/reboot-required 的文件  。 此重启进程不会自动进行。
+部分安全更新（如内核更新）需要重启节点才能完成更新进程。 需要重启的 Linux 节点会创建名为 /var/run/reboot-required 的文件。 此重启进程不会自动进行。
 
-你可以使用自己的工作流和进程来重启节点，或使用 `kured` 安排该进程。 使用 `kured`，可以部署在群集每个 Linux 节点上运行 Pod 的 [DaemonSet][DaemonSet]。 DaemonSet 中的这些 pod 会监视是否存在 /var/run/reboot-required 文件，然后启动重启节点的进程  。
+你可以使用自己的工作流和进程来重启节点，或使用 `kured` 安排该进程。 使用 `kured`，可以部署在群集每个 Linux 节点上运行 Pod 的 [DaemonSet][DaemonSet]。 DaemonSet 中的这些 pod 会监视是否存在 /var/run/reboot-required 文件，然后启动重启节点的进程。
 
 ### <a name="node-upgrades"></a>节点升级
 
-AKS 中还有额外的进程，可通过该进程升级群集  。 升级通常是指移动到 Kubernetes 的较新版本，而不仅是应用节点安全更新。 AKS 升级执行以下操作：
+AKS 中还有额外的进程，可通过该进程升级群集。 升级通常是指移动到 Kubernetes 的较新版本，而不仅是应用节点安全更新。 AKS 升级执行以下操作：
 
 * 部署新节点，应用最新的安全更新和 Kubernetes 版本。
 * 封锁并排除旧节点。
@@ -79,20 +80,20 @@ helm install kured stable/kured --namespace kured --set nodeSelector."beta\.kube
 sudo apt-get update && sudo apt-get upgrade -y
 ```
 
-如果所应用的更新需要重启节点，则会将文件写入 /var/run/reboot-required  。 默认情况下，`Kured` 每 60 分钟检查一次需要重启的节点。
+如果所应用的更新需要重启节点，则会将文件写入 /var/run/reboot-required。 默认情况下，`Kured` 每 60 分钟检查一次需要重启的节点。
 
 ## <a name="monitor-and-review-reboot-process"></a>监视和查看重启进程
 
 如果 DaemonSet 中的某个副本检测到某个节点需要重启，系统将通过 Kubernetes API 对该节点进行锁定。 该锁定可防止将其他 pod 调度到此节点上。 该锁定还指示一次只应重启一个节点。 封锁节点后，将从节点中排除运行中的 pod，并重启节点。
 
-可使用 [kubectl get nodes][kubectl-get-nodes] 命令监视节点的状态。 以下示例输出显示了一个在节点准备进行重启时状态为 SchedulingDisabled 的节点  ：
+可使用 [kubectl get nodes][kubectl-get-nodes] 命令监视节点的状态。 以下示例输出显示了一个在节点准备进行重启时状态为 SchedulingDisabled 的节点：
 
 ```
 NAME                       STATUS                     ROLES     AGE       VERSION
 aks-nodepool1-28993262-0   Ready,SchedulingDisabled   agent     1h        v1.11.7
 ```
 
-更新过程完成后，可使用带有 `--output wide` 参数的 [kubectl get nodes][kubectl-get-nodes] 命令查看节点的状态。 通过此附加输出，可发现基础节点的 KERNEL-VERSION 会有所差异，如以下示例输出所示  。 在上一步中已更新 *aks-nodepool1-28993262-0*，并显示内核版本为 *4.15.0-1039-azure*。 尚未更新的 *aks-nodepool1-28993262-1* 节点显示的内核版本为 *4.15.0-1037-azure*。
+更新过程完成后，可使用带有 `--output wide` 参数的 [kubectl get nodes][kubectl-get-nodes] 命令查看节点的状态。 通过此附加输出，可发现基础节点的 KERNEL-VERSION 会有所差异，如以下示例输出所示。 在上一步中已更新 *aks-nodepool1-28993262-0*，并显示内核版本为 *4.15.0-1039-azure*。 尚未更新的 *aks-nodepool1-28993262-1* 节点显示的内核版本为 *4.15.0-1037-azure*。
 
 ```
 NAME                       STATUS    ROLES     AGE       VERSION   INTERNAL-IP   EXTERNAL-IP   OS-IMAGE             KERNEL-VERSION      CONTAINER-RUNTIME

@@ -4,15 +4,15 @@ description: 了解如何在 TLS 上对客户端证书进行身份验证。 Azur
 ms.assetid: cd1d15d3-2d9e-4502-9f11-a306dac4453a
 ms.topic: article
 origin.date: 10/01/2019
-ms.date: 03/16/2020
+ms.date: 05/22/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: e344d10dc4e7122f13fbad53cf9ef6142bbcfd61
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: d2577bd75b073f1418cadaaa3c797d8308ec323a
+ms.sourcegitcommit: 981a75a78f8cf74ab5a76f9e6b0dc5978387be4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79547007"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83801303"
 ---
 # <a name="configure-tls-mutual-authentication-for-azure-app-service"></a>为 Azure 应用服务配置 TLS 相互身份验证
 
@@ -26,7 +26,7 @@ ms.locfileid: "79547007"
 
 ## <a name="enable-client-certificates"></a>启用客户端证书
 
-若要将应用设置为要求提供客户端证书，需要将应用的 `clientCertEnabled` 设置指定为 `true`。 若要设置该设置，请在 Azure CLI 中运行以下命令。
+若要将应用设置为需要客户端证书，可以通过从 Azure 门户选择“配置” > “常规设置”将“需要传入证书”切换到“开”，或者需要将应用的 `clientCertEnabled` 设置设为 `true`。 若要设置该设置，请在 Azure CLI 中运行以下命令。
 
 ```azurecli
 az webapp update --set clientCertEnabled=true --name <app_name> --resource-group <group_name>
@@ -36,14 +36,14 @@ az webapp update --set clientCertEnabled=true --name <app_name> --resource-group
 
 为应用程序启用相互身份验证时，应用根目录下的所有路径都需要客户端证书才能进行访问。 若要允许某些路径对匿名访问保持开放，可以将排除路径定义为应用程序配置的一部分。
 
-可以通过选择“配置”   > “常规设置”  并定义排除路径来配置排除路径。 在此示例中，应用程序的 `/public` 路径下的任何内容都不会请求客户端证书。
+可以通过选择“配置” > “常规设置”并定义排除路径来配置排除路径。 在此示例中，应用程序的 `/public` 路径下的任何内容都不会请求客户端证书。
 
 ![证书排除路径][exclusion-paths]
 
 
 ## <a name="access-client-certificate"></a>访问客户端证书
 
-在应用服务中，请求的 SSL 终端是在前端负载均衡器上发生的。 在[已启用客户端证书](#enable-client-certificates)的情况下将请求转发到应用代码时，应用服务会注入包含客户端证书的 `X-ARR-ClientCert` 请求标头。 应用服务不会对此客户端证书执行任何操作，而只会将它转发到你的应用。 应用代码负责验证客户端证书。
+在应用服务中，请求的 TLS 终止发生在前端负载均衡器上。 在[已启用客户端证书](#enable-client-certificates)的情况下将请求转发到应用代码时，应用服务会注入包含客户端证书的 `X-ARR-ClientCert` 请求标头。 应用服务不会对此客户端证书执行任何操作，而只会将它转发到你的应用。 应用代码负责验证客户端证书。
 
 对于 ASP.NET，可以通过 **HttpRequest.ClientCertificate** 属性提供客户端证书。
 

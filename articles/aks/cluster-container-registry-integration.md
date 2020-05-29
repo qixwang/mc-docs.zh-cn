@@ -5,32 +5,30 @@ services: container-service
 manager: digimobile
 ms.topic: article
 origin.date: 02/25/2020
-ms.date: 04/06/2020
+ms.date: 05/25/2020
 ms.author: v-yeche
-ms.openlocfilehash: f29737d38d3d72fe2503c232dfc1642602410c82
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: a7157ba3acc05dc9dbd60a892d1e717b48764f86
+ms.sourcegitcommit: 7e6b94bbaeaddb854beed616aaeba6584b9316d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80517016"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83735171"
 ---
 <!--Verify successfully-->
 # <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>使用 Azure 容器注册表从 Azure Kubernetes 服务进行身份验证
 
 结合使用 Azure 容器注册表 (ACR) 和 Azure Kubernetes 服务 (AKS) 时，需要建立身份验证机制。 本文提供了在这两个 Azure 服务之间配置身份验证的示例。
 
-可以使用 Azure CLI 通过几个简单的命令设置 AKS 与 ACR 的集成。
+可以使用 Azure CLI 通过几个简单的命令设置 AKS 与 ACR 的集成。 此集成会将 AcrPull 角色分配给关联到 AKS 群集的服务主体。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 这些示例需要：
 
 * **Azure 订阅**上的**所有者**或 **Azure 帐户管理员**角色
 * Azure CLI 2.0.73 版或更高版本
 
-为了避免需要“所有者”  或“Azure 帐户管理员”  角色，可以手动配置服务主体或使用现有服务主体从 AKS 进行 ACR 身份验证。 有关详细信息，请参阅[使用服务主体进行 ACR 身份验证](../container-registry/container-registry-auth-service-principal.md)。
-
-<!--Not Available on [Authenticate from Kubernetes with a pull secret](../container-registry/container-registry-auth-kubernetes.md)-->
+为了避免需要“所有者”或“Azure 帐户管理员”角色，可以手动配置服务主体或使用现有服务主体从 AKS 进行 ACR 身份验证。 有关详细信息，请参阅[使用服务主体进行 ACR 身份验证](../container-registry/container-registry-auth-service-principal.md)或[使用请求密码从 Kubernetes 进行身份验证](../container-registry/container-registry-auth-kubernetes.md)。
 
 ## <a name="create-a-new-aks-cluster-with-acr-integration"></a>通过 ACR 集成创建新的 AKS 群集
 
@@ -40,7 +38,7 @@ ms.locfileid: "80517016"
 
 ```azurecli
 # set this to the name of your Azure Container Registry.  It must be globally unique
-MYACR=myContainerRegistry
+$MYACR=myContainerRegistry
 
 # Run the following line to create an Azure Container Registry if you do not already have one
 az acr create -n $MYACR -g myContainerRegistryResourceGroup --sku basic

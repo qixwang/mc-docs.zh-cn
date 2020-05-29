@@ -7,15 +7,15 @@ tags: top-support-issue
 ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.topic: article
 origin.date: 10/31/2018
-ms.date: 03/16/2020
+ms.date: 05/22/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 2b1ddddf35f1945fc002d64bbcbce27cedf5e91f
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 3ce5ce7e67e5be21ac33bce1fd8a7215185b58f1
+ms.sourcegitcommit: 981a75a78f8cf74ab5a76f9e6b0dc5978387be4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79546956"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83801176"
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Azure 中 Web 应用的应用程序性能常见问题解答
 
@@ -46,9 +46,9 @@ ms.locfileid: "79546956"
 
 查看 Web 应用的事件日志：
 
-1. 登录到 [Kudu 网站](https://*yourwebsitename*.scm.chinacloudsites.cn)。
-2. 在菜单中，选择“调试控制台”   > “CMD”  。
-3. 选择“LogFiles”  文件夹。
+1. 登录到 Kudu 网站 (`https://*yourwebsitename*.scm.chinacloudsites.cn`)。
+2. 在菜单中，选择“调试控制台” > “CMD”。
+3. 选择“LogFiles”文件夹。
 4. 若要查看事件日志，请选择 **eventlog.xml** 旁的铅笔图标。
 5. 若要下载日志，请运行 PowerShell cmdlet `Save-AzureWebSiteLog -Name webappname`。
 
@@ -56,22 +56,22 @@ ms.locfileid: "79546956"
 
 若要捕获 Web 应用的用户模式内存转储，请执行以下操作：
 
-1. 登录到 [Kudu 网站](https://*yourwebsitename*.scm.chinacloudsites.cn)。
-2. 选择“进程资源管理器”  菜单。
-3. 右键单击“w3wp.exe”  进程或 WebJob 进程。
-4. 选择“下载内存转储”   > “完全转储”  。
+1. 登录到 Kudu 网站 (`https://*yourwebsitename*.scm.chinacloudsites.cn`)。
+2. 选择“进程资源管理器”菜单。
+3. 右键单击“w3wp.exe”进程或 WebJob 进程。
+4. 选择“下载内存转储” > “完全转储”。
 
 ## <a name="how-do-i-view-process-level-info-for-my-web-app"></a>如何查看 Web 应用的进程级信息？
 
 可通过两种方法查看 Web 应用的进程级信息：
 
 *   在 Azure 门户中：
-    1. 打开 Web 应用的“进程资源管理器”  。
-    2. 若要查看详细信息，请选择“w3wp.exe”  进程。
+    1. 打开 Web 应用的“进程资源管理器”。
+    2. 若要查看详细信息，请选择“w3wp.exe”进程。
 *   在 Kudu 控制台中：
-    1. 登录到 [Kudu 网站](https://*yourwebsitename*.scm.chinacloudsites.cn)。
-    2. 选择“进程资源管理器”  菜单。
-    3. 对于“w3wp.exe”  进程，选择“属性”  。
+    1. 登录到 Kudu 网站 (`https://*yourwebsitename*.scm.chinacloudsites.cn`)。
+    2. 选择“进程资源管理器”菜单。
+    3. 对于“w3wp.exe”进程，选择“属性”。
 
 ## <a name="when-i-browse-to-my-app-i-see-error-403---this-web-app-is-stopped-how-do-i-resolve-this"></a>浏览到应用时，看到“错误 403 - 此 web 应用已停止。” 如何解决此问题？
 
@@ -89,26 +89,26 @@ ms.locfileid: "79546956"
 
 ## <a name="how-do-i-decrease-the-response-time-for-the-first-request-after-idle-time"></a>如何缩短空闲时间后第一个请求的响应时间？
 
-默认情况下，如果 Web 应用已处于空闲状态相当一段时间，则其处于未加载的状态。 这样，系统可以节省资源。 其缺点是：Web 应用处于未加载的状态后，对第一个请求的响应时间较长，需要等待 Web 应用加载和启动处理响应。 在基本和标准服务计划中，可启用“始终打开”  设置，使应用保持加载状态。 这样就无需在应用处于空闲状态后重新加载应用。 若要更改“始终打开”  设置，请执行以下操作：
+默认情况下，如果 Web 应用已处于空闲状态相当一段时间，则其处于未加载的状态。 这样，系统可以节省资源。 其缺点是：Web 应用处于未加载的状态后，对第一个请求的响应时间较长，需要等待 Web 应用加载和启动处理响应。 在基本和标准服务计划中，可启用“始终打开”设置，使应用保持加载状态。 这样就无需在应用处于空闲状态后重新加载应用。 若要更改“始终打开”设置，请执行以下操作：
 
 1. 在 Azure 门户中，转到自己的 Web 应用。
-2. 选择“配置” 
-3. 选择“常规设置”  。
-4. 对于“始终打开”  ，选择“打开”  。
+2. 选择“配置”
+3. 选择“常规设置”。
+4. 对于“始终打开”，选择“打开”。
 
 ## <a name="how-do-i-turn-on-failed-request-tracing"></a>如何打开失败请求跟踪？
 
 若要打开失败的请求跟踪，请执行以下操作：
 
 1. 在 Azure 门户中，转到自己的 Web 应用。
-3. 选择“所有设置”   > “诊断日志”  。
-4. 对于“失败的请求跟踪”  ，选择“打开”  。
-5. 选择“保存”  。
-6. 在 Web 应用边栏选项卡，选择“工具”  。
-7. 选择“Visual Studio Online”  。
-8. 如果设置不是“打开”  ，则选择“打开”  。
-9. 选择“转到”  。
-10. 选择“Web.config”  。
+3. 选择“所有设置” > “诊断日志”。
+4. 对于“失败的请求跟踪”，选择“打开”。
+5. 选择“保存” 。
+6. 在 Web 应用边栏选项卡，选择“工具”。
+7. 选择“Visual Studio Online”。
+8. 如果设置不是“打开”，则选择“打开”。
+9. 选择“转到”。
+10. 选择“Web.config”。
 11. 在 system.webServer 中，添加此配置（以捕获特定的 URL）：
 
     ```xml
@@ -142,9 +142,9 @@ ms.locfileid: "79546956"
     </tracing>
     ```
 13. 若要下载失败的请求跟踪，请在[门户](https://portal.azure.cn)中转到你的网站。
-15. 选择“工具”   > “Kudu”   > “转到”  。
-18. 在菜单中，选择“调试控制台”   > “CMD”  。
-19. 选择“LogFiles”  文件夹，然后选择名称以“W3SVC”  开头的文件夹。
+15. 选择“工具” > “Kudu” > “转到”。
+18. 在菜单中，选择“调试控制台” > “CMD”。
+19. 选择“LogFiles”文件夹，然后选择名称以“W3SVC”开头的文件夹。
 20. 若要查看 XML 文件，请选择铅笔图标。
 
 ## <a name="i-see-the-message-worker-process-requested-recycle-due-to-percent-memory-limit-how-do-i-address-this-issue"></a>看到消息“由于‘内存百分比’限制工作进程请求回收。” 如何解决此问题？
@@ -174,7 +174,7 @@ WebJobs 专用于后台处理。 可在 WebJobs 中执行任意数量的后台�
 
 如果使用应用服务的本地缓存功能，应用服务实例“LogFiles 和数据”文件夹的文件夹结构会受到影响。 使用本地缓存时，将在存储 LogFiles 和数据文件夹中创建子文件夹。 子文件夹使用“唯一标识符”+ 时间戳的命名模式。 每个子文件夹对应于一个 VM 实例，其中的 Web 应用正在运行或已运行。
 
-若要确定是否是在本地缓存，请检查应用服务的“应用程序设置”  选项卡。如果在使用本地缓存，应用设置 `WEBSITE_LOCAL_CACHE_OPTION` 设置为 `Always`。
+若要确定是否是在本地缓存，请检查应用服务的“应用程序设置”选项卡。如果在使用本地缓存，应用设置 `WEBSITE_LOCAL_CACHE_OPTION` 设置为 `Always`。
 
 如果未使用本地缓存，并且遇到此问题，请提交支持请求。
 

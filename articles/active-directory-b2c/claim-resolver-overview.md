@@ -8,21 +8,21 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/01/2020
+ms.date: 05/18/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: f2ff27e7778cf514cd03e11de0d7b7fddfbf0ff8
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 4b6f0ee7ab536739a59eed9b46f9c782ce369432
+ms.sourcegitcommit: 87e789550ea49ff77c7f19bc68fad228009fcf44
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80581589"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83748060"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>关于 Azure Active Directory B2C 自定义策略中的声明解析程序
 
 Azure Active Directory B2C (Azure AD B2C) [自定义策略](custom-policy-overview.md)中的声明解析程序提供关于授权请求的上下文信息，例如策略名称、请求相关 ID、用户界面语言等。
 
-若要在输入或输出声明中使用声明解析程序，请在 [ClaimsSchema](claimsschema.md) 元素下定义字符串 ClaimType，然后将 DefaultValue 设置为输入或输出声明元素中的声明解析程序。 Azure AD B2C 读取声明解决程序的值并将该值用于技术配置文件中。
+若要在输入或输出声明中使用声明解析程序，请在 [ClaimsSchema](claimsschema.md) 元素下定义字符串 ClaimType，然后将 DefaultValue 设置为输入或输出声明元素中的声明解析程序 。 Azure AD B2C 读取声明解决程序的值并将该值用于技术配置文件中。
 
 在以下示例中，使用 `string` 数据类型定义名为 `correlationId` 的声明类型。
 
@@ -66,7 +66,7 @@ Azure Active Directory B2C (Azure AD B2C) [自定义策略](custom-policy-overvi
 
 | 声明 | 说明 | 示例 |
 | ----- | ----------- | --------|
-| {OIDC:AuthenticationContextReferences} |`acr_values` 查询字符串参数。 | 不适用 |
+| {OIDC:AuthenticationContextReferences} |`acr_values` 查询字符串参数。 | 空值 |
 | {OIDC:ClientId} |`client_id` 查询字符串参数。 | 00000000-0000-0000-0000-000000000000 |
 | {OIDC:DomainHint} |`domain_hint` 查询字符串参数。 |  |
 | {OIDC:LoginHint} |  `login_hint` 查询字符串参数。 | someone@contoso.com |
@@ -88,9 +88,16 @@ Azure Active Directory B2C (Azure AD B2C) [自定义策略](custom-policy-overvi
 | {Context:DateTimeInUtc} |UTC 格式的日期时间。  | 2018/10/10 中午 12:00 |
 | {Context:DeploymentMode} |策略部署模式。  | 生产 |
 | {Context:IPAddress} | 用户 IP 地址。 | 11.111.111.11 |
-| {Context:KMSI} | 指示是否选中了“[使我保持登录状态](custom-policy-keep-me-signed-in.md)”复选框。 |  是 |
+| {Context:KMSI} | 指示是否选中 `Keep me signed in` 复选框。 |  是 |
 
-### <a name="non-protocol-parameters"></a>非协议参数
+### <a name="claims"></a>声明 
+
+| 声明 | 说明 | 示例 |
+| ----- | ----------- | --------|
+| {Claim:claim type} | 已在策略文件或父策略文件的 ClaimsSchema 节中定义的声明类型的标识符。  例如：`{Claim:displayName}` 或 `{Claim:objectId}`。 | 声明类型值。|
+
+
+### <a name="oauth2-key-value-parameters"></a>OAuth2 键值参数
 
 可以将 OIDC 或 OAuth2 请求中包括的任何参数名称映射到用户旅程中的某个声明， 例如，来自应用程序的请求可能包括名为 `app_session`、`loyalty_number` 的查询字符串参数或任何自定义查询字符串。
 
@@ -99,7 +106,7 @@ Azure Active Directory B2C (Azure AD B2C) [自定义策略](custom-policy-overvi
 | {OAUTH-KV:campaignId} | 查询字符串参数。 | Hawaii |
 | {OAUTH-KV:app_session} | 查询字符串参数。 | A3C5R |
 | {OAUTH-KV:loyalty_number} | 查询字符串参数。 | 1234 |
-| {OAUTH-KV:any custom query string} | 查询字符串参数。 | 不适用 |
+| {OAUTH-KV:any custom query string} | 查询字符串参数。 | 空值 |
 
 ### <a name="oauth2"></a>OAuth2
 
@@ -118,6 +125,7 @@ Azure Active Directory B2C (Azure AD B2C) [自定义策略](custom-policy-overvi
 | {SAML:AllowCreate} | SAML 请求的 `NameIDPolicy` 元素中的 `AllowCreate` 特性值。 | True |
 | {SAML:ForceAuthn} | SAML 请求的 `AuthnRequest` 元素中的 `ForceAuthN` 特性值。 | True |
 | {SAML:ProviderName} | SAML 请求的 `AuthnRequest` 元素中的 `ProviderName` 特性值。| Contoso.com |
+| {SAML:RelayState} | `RelayState` 查询字符串参数。| 
 
 ## <a name="using-claim-resolvers"></a>使用声明解析程序
 
@@ -125,12 +133,13 @@ Azure Active Directory B2C (Azure AD B2C) [自定义策略](custom-policy-overvi
 
 | 项目 | 元素 | 设置 |
 | ----- | ----------------------- | --------|
+|Application Insights 技术配置文件 |`InputClaim` | |
 |[Azure Active Directory](active-directory-technical-profile.md) 技术配置文件| `InputClaim`, `OutputClaim`| 1, 2|
 |OAuth2 技术配置文件| `InputClaim`, `OutputClaim`| 1, 2|
 |[OpenID Connect](openid-connect-technical-profile.md) 技术配置文件| `InputClaim`, `OutputClaim`| 1, 2|
 |声明转换技术配置文件| `InputClaim`, `OutputClaim`| 1, 2|
 |[RESTful 提供程序](restful-technical-profile.md)技术配置文件| `InputClaim`| 1, 2|
-|[SAML2](saml-technical-profile.md) 技术配置文件| `OutputClaim`| 1, 2|
+|[SAML 标识提供程序](saml-identity-provider-technical-profile.md)技术配置文件| `OutputClaim`| 1, 2|
 |[自断言](self-asserted-technical-profile.md)技术配置文件| `InputClaim`, `OutputClaim`| 1, 2|
 |[ContentDefinition](contentdefinitions.md)| `LoadUri`| |
 |[ContentDefinitionParameters](relyingparty.md#contentdefinitionparameters)| `Parameter` | |
@@ -161,7 +170,7 @@ Azure Active Directory B2C (Azure AD B2C) [自定义策略](custom-policy-overvi
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="userLanguage" DefaultValue="{Culture:LCID}" AlwaysUseDefaultValue="true" />
     <InputClaim ClaimTypeReferenceId="policyName" DefaultValue="{Policy:PolicyId}" AlwaysUseDefaultValue="true" />
-    <InputClaim ClaimTypeReferenceId="scope" DefaultValue="{OIDC:scope}" AlwaysUseDefaultValue="true" />
+    <InputClaim ClaimTypeReferenceId="scope" DefaultValue="{OIDC:Scope}" AlwaysUseDefaultValue="true" />
     <InputClaim ClaimTypeReferenceId="clientId" DefaultValue="{OIDC:ClientId}" AlwaysUseDefaultValue="true" />
   </InputClaims>
   <UseTechnicalProfileForSessionManagement ReferenceId="SM-Noop" />
@@ -174,7 +183,7 @@ Azure Active Directory B2C (Azure AD B2C) [自定义策略](custom-policy-overvi
 
 ### <a name="dynamic-ui-customization"></a>动态 UI 自定义
 
-通过 Azue AD B2C，可将查询字符串参数传递给 HTML 内容定义终结点，以便动态呈现页面内容。 例如，这允许基于从 Web 或移动应用程序传递的自定义参数，更改 Azure AD B2C 注册或登录页面上的背景图像。 此外，还可以根据语言参数本地化 HTML 页，或者根据客户端 ID 更改内容。
+通过 Azue AD B2C，可将查询字符串参数传递给 HTML 内容定义终结点，以便动态呈现页面内容。 例如，此功能允许基于从 Web 或移动应用程序传递的自定义参数，更改 Azure AD B2C 注册或登录页面上的背景图像。 此外，还可以根据语言参数本地化 HTML 页，或者根据客户端 ID 更改内容。
 
 以下示例传入了名为 **campaignId** 且值为 `Hawaii` 的查询字符串参数、**language** 代码 `en-US` 以及表示客户端 ID 的 **app**：
 
@@ -205,6 +214,24 @@ Azure Active Directory B2C (Azure AD B2C) [自定义策略](custom-policy-overvi
 </ContentDefinition>
 ```
 
+### <a name="application-insights-technical-profile"></a>Application Insights 技术配置文件
+
+使用 Azure Application Insights 和声明解析程序，可以了解用户行为。 在 Application Insights 技术配置文件中，将向 Azure Application Insights 发送保留的输入声明。 下面的示例将向 Azure Application Insights 发送策略 ID、相关 ID、语言 ID 和客户端 ID。
+
+```XML
+<TechnicalProfile Id="AzureInsights-Common">
+  <DisplayName>Alternate Email</DisplayName>
+  <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.Insights.AzureApplicationInsightsProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+  ...
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="PolicyId" PartnerClaimType="{property:Policy}" DefaultValue="{Policy:PolicyId}" />
+    <InputClaim ClaimTypeReferenceId="CorrelationId" PartnerClaimType="{property:CorrelationId}" DefaultValue="{Context:CorrelationId}" />
+    <InputClaim ClaimTypeReferenceId="language" PartnerClaimType="{property:language}" DefaultValue="{Culture:RFC5646}" />
+    <InputClaim ClaimTypeReferenceId="AppId" PartnerClaimType="{property:App}" DefaultValue="{OIDC:ClientId}" />
+  </InputClaims>
+</TechnicalProfile>
+```
+
 ### <a name="relying-party-policy"></a>信赖方策略
 
 在[信赖方](relyingparty.md)策略技术配置文件中，你可能希望在 JWT 中将租户 ID 或相关 ID 发送给信赖方应用程序。
@@ -230,4 +257,3 @@ Azure Active Directory B2C (Azure AD B2C) [自定义策略](custom-policy-overvi
   </RelyingParty>
 ```
 
-<!-- Update_Description: wording update -->

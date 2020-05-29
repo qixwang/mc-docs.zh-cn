@@ -4,14 +4,14 @@ description: 了解如何在 Azure 应用服务中还原已删除的应用。 �
 author: btardif
 ms.author: v-tawe
 origin.date: 09/23/2019
-ms.date: 03/09/2020
+ms.date: 05/22/2020
 ms.topic: article
-ms.openlocfilehash: 065fbc811a0346b7da1050ce9132b138e0002bfd
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: bb2dd2773124f778ca50fa3a418a57424ef2729f
+ms.sourcegitcommit: 981a75a78f8cf74ab5a76f9e6b0dc5978387be4b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77566651"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83801260"
 ---
 # <a name="restore-deleted-app-service-app-using-powershell"></a>使用 PowerShell 还原已删除的应用服务应用
 
@@ -55,6 +55,9 @@ Get-AzDeletedWebApp -Name <your_deleted_app> -Location <your_deleted_app_locatio
 ```powershell
 Restore-AzDeletedWebApp -ResourceGroupName <my_rg> -Name <my_app> -TargetAppServicePlanName <my_asp>
 ```
+> [!NOTE]
+> 部署槽不会作为应用的一部分进行还原。 如果需要还原过渡槽，请使用 `-Slot <slot-name>` 标志。
+>
 
 命令的输入为：
 

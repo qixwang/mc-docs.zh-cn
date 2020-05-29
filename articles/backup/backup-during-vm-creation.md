@@ -2,16 +2,16 @@
 title: 在创建 Azure VM 时启用备份
 description: 介绍了如何在创建 Azure VM 时通过 Azure 备份启用备份。
 ms.topic: conceptual
-author: lingliw
+author: Johnnytechn
 origin.date: 06/13/2019
-ms.date: 12/04/2019
-ms.author: v-lingwu
-ms.openlocfilehash: affedafd23725409255b0e43eb9465bffb639541
-ms.sourcegitcommit: b80d236ce3c706abc25bbaa41b0ccddd896e48fc
+ms.date: 05/11/2020
+ms.author: v-johya
+ms.openlocfilehash: d9b7d7aeef24c3e3ffb4a899d509076bbf627fc4
+ms.sourcegitcommit: 08b42258a48d96d754244064d065e4d5703f1cfb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81873148"
+ms.lasthandoff: 05/18/2020
+ms.locfileid: "83445185"
 ---
 # <a name="enable-backup-when-you-create-an-azure-vm"></a>在创建 Azure VM 时启用备份
 
@@ -26,17 +26,17 @@ ms.locfileid: "81873148"
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
 如果尚未登录到你的帐户，请先登录到 [Azure 门户](https://portal.azure.cn)。
- 
+
 ## <a name="create-a-vm-with-backup-configured"></a>创建配置了备份的 VM
 
-1. 在 Azure 门户中，单击“创建资源”  。
+1. 在 Azure 门户中，单击“创建资源”。
 
-2. 在 Azure 市场中，单击“计算”  ，然后选择一个 VM 映像。
+2. 在 Azure 市场中，单击“计算”，然后选择一个 VM 映像。
 
 3. 根据适用于 [Windows](/virtual-machines/windows/quick-create-portal) 或 [Linux](/virtual-machines/linux/quick-create-portal) 的说明设置 VM。
 
-4. 在“管理”  选项卡上，在“启用备份”  中，单击“开启”  。
-5. Azure 备份将备份到恢复服务保管库。 如果没有现有的保管库，请单击“新建”  。
+4. 在“管理”选项卡上，在“启用备份”中，单击“开启”。
+5. Azure 备份将备份到恢复服务保管库。 如果没有现有的保管库，请单击“新建”。
 6. 接受建议的保管库名称或自己指定名称。
 7. 指定或创建保管库将位于其中的资源组。 资源组保管库可以不同于 VM 资源组。
 
@@ -68,14 +68,16 @@ ms.locfileid: "81873148"
 ![修改策略时更改名称](./media/backup-during-vm-creation/modify-policy.png)
 6. 建议不要锁定为了供备份服务使用而创建的资源组。
 
+若要使用 PowerShell 为虚拟机配置 Azure 备份资源组，请参阅[在快照保留期间创建 Azure 备份资源组](backup-azure-vms-automation.md#creating-azure-backup-resource-group-during-snapshot-retention)。
+
 ## <a name="start-a-backup-after-creating-the-vm"></a>在创建 VM 后启动备份
 
 你的 VM 备份将根据备份策略运行。 但是，我们建议你运行一个初始备份。
 
 创建 VM 后，请执行以下操作：
 
-1. 在 VM 属性中，单击“备份”。  VM 状态将保持为“初始备份挂起”，直到初始备份运行
-2. 单击“立即备份”  来运行按需备份。
+1. 在 VM 属性中，单击“备份”。 VM 状态将保持为“初始备份挂起”，直到初始备份运行
+2. 单击“立即备份”来运行按需备份。
 
     ![运行按需备份](./media/backup-during-vm-creation/run-backup.png)
 
@@ -91,3 +93,4 @@ ms.locfileid: "81873148"
 - [还原 VM](backup-azure-arm-restore-vms.md)
 
 如果遇到任何问题，请[查看](backup-azure-vms-troubleshoot.md)故障排除指南。
+

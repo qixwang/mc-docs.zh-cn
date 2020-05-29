@@ -3,20 +3,20 @@ title: 使用 Azure Monitor 监视 Azure AD B2C
 titleSuffix: Azure AD B2C
 description: 了解如何使用委托资源管理通过 Azure Monitor 记录 Azure AD B2C 事件。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.author: v-junlch
 ms.subservice: B2C
-ms.date: 02/20/2020
-ms.openlocfilehash: 1df220db96d3a2682e82de940e9306e45cbe7d2d
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/18/2020
+ms.openlocfilehash: 87e00571ebadcb91e62912f48eda027b073786a2
+ms.sourcegitcommit: 87e789550ea49ff77c7f19bc68fad228009fcf44
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77531339"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83748071"
 ---
 # <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>使用 Azure Monitor 监视 Azure AD B2C
 
@@ -30,7 +30,7 @@ ms.locfileid: "77531339"
 
 ![Azure Monitor](./media/azure-monitor/azure-monitor-flow.png)
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要完成本文中的步骤，请使用 Azure PowerShell 模块部署 Azure 资源管理器模板。
 
@@ -44,27 +44,27 @@ ms.locfileid: "77531339"
 
 此资源组包含要从 Azure Monitor 接收数据的目标 Azure 存储帐户、事件中心或 Log Analytics 工作区。 部署 Azure 资源管理器模板时请指定资源组名称。
 
-[创建资源组](../azure-resource-manager/management/manage-resource-groups-portal.md#create-resource-groups)，或者在包含你的 Azure 订阅的 Azure Active Directory (Azure AD) 租户（不是包含你的 Azure AD B2C 租户的目录）中选择现有的资源组。 
+[创建资源组](../azure-resource-manager/management/manage-resource-groups-portal.md#create-resource-groups)，或者在包含你的 Azure 订阅的 Azure Active Directory (Azure AD) 租户（不是包含你的 Azure AD B2C 租户的目录）中选择现有的资源组。
 
-此示例使用“中国东部”区域中名为 *azure-ad-b2c-monitor* 的资源组。 
+此示例使用“中国东部”区域中名为 *azure-ad-b2c-monitor* 的资源组。
 
 ## <a name="delegate-resource-management"></a>委托资源管理
 
 接下来收集以下信息：
 
-Azure AD B2C 目录的“目录 ID”（也称为租户 ID）。 
+Azure AD B2C 目录的“目录 ID”（也称为租户 ID）。
 
-1. 以具有“用户管理员”角色（或更高）的用户身份登录到 [Azure 门户](https://portal.azure.cn/)。 
-1. 在门户工具栏中选择“目录 + 订阅”图标，然后选择包含 Azure AD B2C 租户的目录  。
-1. 依次选择“Azure Active Directory”、“属性”。  
-1. 记下“目录 ID”。 
+1. 以具有“用户管理员”角色（或更高）的用户身份登录到 [Azure 门户](https://portal.azure.cn/)。
+1. 在门户工具栏中选择“目录 + 订阅”图标，然后选择包含 Azure AD B2C 租户的目录。
+1. 依次选择“Azure Active Directory”、“属性”。 
+1. 记下“目录 ID”。
 
-要向其授予对前面在包含订阅的目录中创建的资源组的“参与者”权限的 Azure AD B2C 组或用户的**对象 ID**。 
+要向其授予对前面在包含订阅的目录中创建的资源组的“参与者”权限的 Azure AD B2C 组或用户的**对象 ID**。
 
-为了简化管理，建议为每个角色使用 Azure AD 用户组，这使你能够向组添加或删除单个用户，而不是直接向此用户分配权限。  在本演练中，你将添加一个用户。
+为了简化管理，建议为每个角色使用 Azure AD 用户组，这使你能够向组添加或删除单个用户，而不是直接向此用户分配权限。 在本演练中，你将添加一个用户。
 
-1. 在 Azure 门户中仍选择了“Azure Active Directory”的情况下，选择“用户”，然后选择一个用户。  
-1. 请记下该用户的“对象 ID”。 
+1. 在 Azure 门户中仍选择了“Azure Active Directory”的情况下，选择“用户”，然后选择一个用户。 
+1. 请记下该用户的“对象 ID”。
 
 ### <a name="create-an-azure-resource-manager-template"></a>创建 Azure 资源管理器模板
 
@@ -72,16 +72,16 @@ Azure AD B2C 目录的“目录 ID”（也称为租户 ID）。
 
 | 字段   | 定义 |
 |---------|------------|
-| `mspOfferName`                     | 描述此定义的名称。 例如“Azure AD B2C 托管服务”。  此值将作为产品/服务的标题显示给客户。 |
-| `mspOfferDescription`              | 套餐的简短说明。 例如，“在 Azure AD B2C 中启用 Azure Monitor”。 |
+| `mspOfferName`                     | 描述此定义的名称。 例如“Azure AD B2C 托管服务”。 此值将作为产品/服务的标题显示给客户。 |
+| `mspOfferDescription`              | 套餐的简短说明。 例如，“在 Azure AD B2C 中启用 Azure Monitor”。|
 | `rgName`                           | 前面在 Azure AD 租户中创建的资源组的名称。 例如 *azure-ad-b2c-monitor*。 |
-| `managedByTenantId`                | Azure AD B2C 租户的“目录 ID”（也称为租户 ID）。  |
-| `authorizations.value.principalId` | 有权访问此 Azure 订阅中的资源的 B2C 组或用户的“对象 ID”。  对于本演练，请指定前面记下的用户对象 ID。 |
+| `managedByTenantId`                | Azure AD B2C 租户的“目录 ID”（也称为租户 ID）。 |
+| `authorizations.value.principalId` | 有权访问此 Azure 订阅中的资源的 B2C 组或用户的“对象 ID”。 对于本演练，请指定前面记下的用户对象 ID。 |
 
 下载 Azure 资源管理器模板和参数文件：
 
-- [rgDelegatedResourceManagement.json](https://raw.githubusercontent.com/Azure/Azure-Lighthouse-samples/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.json)
-- [rgDelegatedResourceManagement.parameters.json](https://raw.githubusercontent.com/Azure/Azure-Lighthouse-samples/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.parameters.json)
+- [rgDelegatedResourceManagement.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.json)
+- [rgDelegatedResourceManagement.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.parameters.json)
 
 接下来，请使用前面记下的值更新参数文件。 以下 JSON 代码片段演示了 Azure 资源管理器模板参数文件的示例。 对于 `authorizations.value.roleDefinitionId`，请使用“参与者”角色的[内置角色](../role-based-access-control/built-in-roles.md)值 `b24988ac-6180-42a0-ab88-20f7382dd24c`。
 
@@ -195,7 +195,7 @@ Parameters              :
 
 1. 如果当前已在 Azure 门户中登录，请**注销**。 此步骤以及下一步骤的目的是在门户会话中刷新你的凭据。
 1. 使用 Azure AD B2C 管理帐户登录到 [Azure 门户](https://portal.azure.cn)。
-1. 在门户工具栏中选择“目录 + 订阅”  图标。
+1. 在门户工具栏中选择“目录 + 订阅”图标。
 1. 选择包含订阅的目录。
 
     ![切换目录](./media/azure-monitor/azure-monitor-portal-03-select-subscription.png)
@@ -212,4 +212,30 @@ Parameters              :
 - [Log Analytics 工作区](../azure-monitor/platform/resource-logs-collect-workspace.md)
 
 如果尚未这样做，请在 [Azure 资源管理器模板](#create-an-azure-resource-manager-template)中指定的资源组内创建所选目标类型的实例。
- 
+
+### <a name="create-diagnostic-settings"></a>创建诊断设置
+
+你已准备好在 Azure 门户中`Create diagnostic settings`。
+
+为 Azure AD B2C 活动日志配置监视设置：
+
+1. 登录到 [Azure 门户](https://portal.azure.cn/)。
+1. 在门户工具栏中选择“目录 + 订阅”图标，然后选择包含 Azure AD B2C 租户的目录。
+1. 选择“Azure Active Directory”
+1. 在“监视”下，选择“诊断设置” 。
+1. 如果资源上有现有的设置，则会看到已配置的设置列表。 如果要添加新设置，请选择“添加诊断设置”；如果要编辑现有设置，请选择“编辑”设置 。 每个设置最多只能包含一个目标类型。
+
+    ![Azure 门户中的诊断设置窗格](./media/azure-monitor/azure-monitor-portal-05-diagnostic-settings-pane-enabled.png)
+
+1. 为设置指定名称（如果未指定）。
+1. 选中要将日志发送到的每个目标对应的框。 选择“配置”并根据下表中所述指定其设置。
+
+    | 设置 | 说明 |
+    |:---|:---|
+    | 存档到存储帐户 | 存储帐户的名称。 |
+    | 流式传输到事件中心 | 要在其中创建事件中心的命名空间（如果这是首次流式传输日志）或要将日志流式传输到的命名空间（如果已有资源将该日志类别流式传输到此命名空间）。
+    | 发送到 Log Analytics | 工作区的名称。 |
+
+1. 选择“AuditLogs”和“SignInLogs” 。
+1. 选择“保存” 。
+

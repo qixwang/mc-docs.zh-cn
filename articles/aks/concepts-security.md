@@ -3,19 +3,19 @@ title: 概念 - Azure Kubernetes 服务 (AKS) 安全性
 description: 了解 Azure Kubernetes 服务 (AKS) 安全性，包括 master 和节点通信、网络策略和 Kubernetes 机密。
 services: container-service
 ms.topic: conceptual
-origin.date: 03/01/2019
-ms.date: 03/09/2020
+origin.date: 05/08/2020
+ms.date: 05/25/2020
 ms.author: v-yeche
-ms.openlocfilehash: 54a918c2e3607081ab2f65bf33a11af82b215f1a
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 4474c509f159a61e043ceab2bc4bc871179b7aac
+ms.sourcegitcommit: 7e6b94bbaeaddb854beed616aaeba6584b9316d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79290761"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83735101"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中应用程序和群集的安全性相关概念
 
-在 Azure Kubernetes 服务 (AKS) 中运行应用程序工作负荷的过程中，若要保护客户数据，关键是要确保群集的安全性。 Kubernetes 包括安全组件，如网络策略和机密   。 Azure 会添加组件，例如网络安全组和协调群集升级。 这些安全组件共同确保 AKS 群集运行最新的 OS 安全更新和 Kubernetes 版本，并确保安全的 pod 流量和对敏感凭据的安全访问。
+在 Azure Kubernetes 服务 (AKS) 中运行应用程序工作负荷的过程中，若要保护客户数据，关键是要确保群集的安全性。 Kubernetes 包括安全组件，如网络策略和机密 。 Azure 会添加组件，例如网络安全组和协调群集升级。 这些安全组件共同确保 AKS 群集运行最新的 OS 安全更新和 Kubernetes 版本，并确保安全的 pod 流量和对敏感凭据的安全访问。
 
 本文介绍用于保护 AKS 中应用程序的核心概念：
 
@@ -31,7 +31,10 @@ ms.locfileid: "79290761"
 
 <!--MOONCAKE: Update from Microsoft to Azure-->
 
-默认情况下，Kubernetes API 服务器使用公共 IP 地址和完全限定域名 (FQDN)。 可使用 Kubernetes 基于角色的访问控制和 Azure Active Directory 控制对 API 服务器的访问。 有关详细信息，请参阅 [Azure AD 与 AKS 集成][aks-aad]。
+默认情况下，Kubernetes API 服务器使用公共 IP 地址和完全限定域名 (FQDN)。 可以使用[经授权的 IP 范围][authorized-ip-ranges]将访问范围限制为 API 服务器终结点。 
+
+<!--Not Available on [private cluster][private-clusters]-->
+可使用 Kubernetes 基于角色的访问控制和 Azure Active Directory 控制对 API 服务器的访问。 有关详细信息，请参阅 [Azure AD 与 AKS 集成][aks-aad]。
 
 ## <a name="node-security"></a>节点安全性
 
@@ -41,7 +44,7 @@ AKS 节点是由你管理和维护的 Azure 虚拟机。 Linux 节点通过 Moby
 
 Azure 平台会在夜间自动将 OS 安全修补程序应用于 Linux 节点。 如果 Linux OS 安全更新需要重启主机，系统不会自动执行重启操作。 可以手动重启 Linux 节点，或使用常用的方法，即使用 [Kured][kured]，这是一个适用于 Kubernetes 的开源重启守护程序。 Kured 作为 [DaemonSet][aks-daemonsets] 运行并监视每个节点，用于确定指示需要重启的文件是否存在。 通过使用相同的 [cordon 和 drain 进程](#cordon-and-drain)作为群集升级，来跨群集管理重启。
 
-<!--MOONCAKE: Not Available on For Windows Server nodes (currently in preview in AKS)-->
+<!--MOONCAKE: Not Available on For Windows Server nodes-->
 
 系统将节点部署到专用虚拟网络子网中，且不分配公共 IP 地址。 出于故障排除和管理的目的，会默认启用 SSH。 只能使用内部 IP 地址访问此 SSH。
 
@@ -72,9 +75,13 @@ Azure 平台会在夜间自动将 OS 安全修补程序应用于 Linux 节点。
 
 为筛选虚拟网络中的通信流量，Azure 使用网络安全组规则。 这些规则定义要允许或拒绝哪些源和目标 IP 范围、端口和协议访问资源。 会创建默认规则以允许 TLS 流量流向 Kubernetes API 服务器。 在使用负载均衡器、端口映射或入口路由创建服务时，AKS 会自动修改网络安全组，以便流量流向正确的方向。
 
+### <a name="kubernetes-network-policy"></a>Kubernetes 网络策略
+
+为了限制群集中 Pod 之间的网络流量，AKS 提供了对 [Kubernetes 网络策略][network-policy]的支持。 使用网络策略，可以选择基于命名空间和标签选择器来允许或拒绝群集中的特定网络路径。
+
 ## <a name="kubernetes-secrets"></a>Kubernetes 机密
 
-Kubernetes *机密*用于将敏感数据注入到 pod，例如访问凭据或密钥。 首先使用 Kubernetes API 创建机密。 在定义 pod 或部署时，可以请求特定机密。 机密仅提供给所计划的 pod 需要该机密的节点，且机密存储在 *tmpfs* 中，不写入磁盘。 当节点上最后一个需要该机密的 pod 被删除后，将从该节点的 tmpfs 中删除该机密。 机密存储在给定的命名空间中，只有同一命名空间中的 pod 能访问该机密。
+Kubernetes *机密*用于将敏感数据注入到 pod，例如访问凭据或密钥。 首先使用 Kubernetes API 创建机密。 在定义 pod 或部署时，可以请求特定机密。 机密仅提供给所计划的 Pod 需要该机密的节点，且机密存储在 tmpfs 中，不写入磁盘。 当节点上最后一个需要该机密的 pod 被删除后，将从该节点的 tmpfs 中删除该机密。 机密存储在给定的命名空间中，只有同一命名空间中的 pod 能访问该机密。
 
 使用机密会减少 pod 或服务 YAML 清单中定义的敏感信息。 可以请求存储在 Kubernetes API 服务器中的机密，作为 YAML 清单的一部分。 此方法仅为 pod 提供特定的机密访问权限。 请注意：原始机密清单文件包含 base64 格式的机密数据（如需更多详细信息，请参阅[官方文档][secret-risks]）。 因此，此文件应被视为敏感信息，不应提交给源代码管理。
 
@@ -112,5 +119,10 @@ Kubernetes *机密*用于将敏感数据注入到 pod，例如访问凭据或密
 [operator-best-practices-cluster-security]: operator-best-practices-cluster-security.md
 [developer-best-practices-pod-security]: developer-best-practices-pod-security.md
 [nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool
+[authorized-ip-ranges]: api-server-authorized-ip-ranges.md
 
-<!-- Update_Description: wording update, update link -->
+<!--Not Available on [private-clusters]: private-clusters.md-->
+
+[network-policy]: use-network-policies.md
+
+<!-- Update_Description: update meta properties, wording update, update link -->

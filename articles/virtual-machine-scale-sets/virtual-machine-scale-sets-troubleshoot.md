@@ -1,27 +1,20 @@
 ---
-title: 疑难解答使用虚拟机规模集的自动缩放问题 | Microsoft Docs
+title: 排查与虚拟机规模集的自动缩放相关的问题
 description: 疑难解答使用虚拟机规模集的自动缩放问题。 了解遇到的典型问题以及如何解决这些问题。
-services: virtual-machine-scale-sets
-documentationcenter: ''
-author: mayanknayar
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: c7d87b72-ee24-4e52-9377-a42f337f76fa
-ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: windows
-ms.devlang: na
-ms.topic: article
-origin.date: 11/16/2017
-ms.date: 03/28/2019
+author: avirishuv
 ms.author: v-junlch
-ms.openlocfilehash: 35a528cca4011c3d9118f7f1265deba061f1aa1a
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.topic: troubleshooting
+ms.service: virtual-machine-scale-sets
+ms.subservice: autoscale
+ms.date: 05/21/2020
+ms.reviwer: jushiman
+ms.custom: avverma
+ms.openlocfilehash: ca9abe54b6e17ff3fc7c92222bdcc4f4095b1312
+ms.sourcegitcommit: 87e789550ea49ff77c7f19bc68fad228009fcf44
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "63844209"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83748044"
 ---
 # <a name="troubleshooting-autoscale-with-virtual-machine-scale-sets"></a>疑难解答使用虚拟机规模集的自动缩放问题
 **问题** - 已使用虚拟机规模集在 Azure 资源管理器中创建自动缩放基础结构（例如，通过部署与 https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale 类似的模板来这样做）。已定义了缩放规则，其效果良好，但无论在 VM 中施加多少负载，它都不会自动缩放。
@@ -33,7 +26,7 @@ ms.locfileid: "63844209"
   上面的 Azure 快速入门模板示例具有 do_work.php 脚本，它可以加载单个 vCPU。 如果正在使用比单 vCPU VM 大小（如 Standard_A1 或 D1）更大的 VM，则需要多次运行此加载过程。 通过查看 [Azure 中 Windows 虚拟机的大小](../virtual-machines/windows/sizes.md)检查 VM 中有多少个 vCPU
 * 虚拟机规模集中有多少个 VM，正在处理每个 VM 吗？
   
-    仅当规模集中所有  VM 的平均 CPU 在自动缩放规则中定义的内部时间之内超出阈值时，才会发生横向扩展事件。
+    仅当规模集中所有 VM 的平均 CPU 在自动缩放规则中定义的内部时间之内超出阈值时，才会发生横向扩展事件。
 * 是否遗漏任何缩放事件？
   
     查看 Azure 门户中的审核日志以查找缩放事件。 或许遗漏了一个纵向扩展事件和一个纵向缩减事件。 可以通过“缩放”进行筛选。
@@ -45,25 +38,25 @@ ms.locfileid: "63844209"
 * 是否编写过自己的 JSON 模板？
   
     编写时很容易犯错，因此可使用如上述的久经验证的模板来开始编写，并进行微小的增量更改。 
-* 可以手动横向缩减或扩展吗？
+* 可以手动缩小或扩大吗？
   
     请尝试使用不同的“容量”设置重新部署虚拟机规模集资源，以手动更改 VM 的数目。 此处是一个示例模板： https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-scale-existing - 可能需要编辑该模板以确保它与规模集所用的计算机大小相同。 如果成功手动更改 VM 数目，则可知该问题与自动缩放无关。
 
 * 诊断扩展运行正常且可发出性能数据吗？
   
-     更新：已增强 Azure 自动缩放，以使用基于主机的指标管道，这将不再需要安装诊断扩展。 如果使用新管道创建自动缩放应用程序，则后续几个段落不再适用。 此处提供了一个已转换为使用主机管道的 Azure 模板的示例： https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale 。 
+    **更新：** 已增强 Azure 自动缩放，以使用基于主机的指标管道，这将不再需要安装诊断扩展。 如果使用新管道创建自动缩放应用程序，则后续几个段落不再适用。 此处提供了一个已转换为使用主机管道的 Azure 模板的示例： https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale 。 
   
     使用基于主机的指标进行自动缩放比较好的原因如下：
   
-  * 由于没有诊断扩展，需要安装更少的移动部件。
-  * 模板更简单。 只需将 insights 自动缩放规则添加到现有规模集模板。
-  * 新 VM 的报告更可靠，并且启动更快。
+  * 由于不需要安装诊断扩展，因为移动的部件更少。
+  * 模板更简单。 只需将见解自动缩放规则添加到现有规模集模板即可。
+  * 报告更可靠，新 VM 的启动速度更快。
     
     你可能想要继续使用诊断扩展的唯一原因是需要内存诊断报告/缩放。 基于主机的指标不会报告内存。
     
     考虑到这一点，如果在使用诊断扩展进行自动缩放，则只需按照本文的剩余部分进行操作即可。
     
-    Azure 资源管理器中的自动缩放借助于（但不再必须借助于）称为“诊断扩展”的 VM 扩展才能正常工作。 它会向模板中定义的存储帐户发出性能数据。 然后此数据由 Azure Monitor 服务聚合。
+    Azure 资源管理器中的自动缩放借助于（但不再必须借助于）称为“诊断扩展”的 VM 扩展才能正常工作。 它会向模板中定义的存储帐户发出性能数据。 然后此数据由 Azure 监视器服务聚合。
     
     如果 Insights 服务无法从 VM 读取数据，它应向你发送电子邮件。 例如，如果 VM 关闭你应收到电子邮件。 请务必查看创建 Azure 帐户时在电子邮件地址中指定的电子邮件。
     
@@ -85,4 +78,3 @@ ms.locfileid: "63844209"
 [explorer]: ./media/virtual-machine-scale-sets-troubleshoot/image1.png
 [tables]: ./media/virtual-machine-scale-sets-troubleshoot/image4.png
 
-<!-- Update_Description: link update -->

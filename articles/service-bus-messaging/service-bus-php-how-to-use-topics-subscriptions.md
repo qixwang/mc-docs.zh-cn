@@ -15,12 +15,12 @@ ms.topic: quickstart
 origin.date: 01/24/2020
 ms.date: 2/6/2020
 ms.author: v-lingwu
-ms.openlocfilehash: 9098e13a4cbb8cf4796507fae915f6f59ef95749
-ms.sourcegitcommit: 1fbdefdace8a1d3412900c6c3f89678d8a9b29bc
+ms.openlocfilehash: 08641528ed1d0bb8c2b4510597a7f7785e5b1d20
+ms.sourcegitcommit: a04b0b1009b0c62f2deb7c7acee75a1304d98f87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82886801"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83796782"
 ---
 # <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-php"></a>快速入门：如何通过 PHP 使用服务总线主题和订阅
 
@@ -35,7 +35,7 @@ ms.locfileid: "82886801"
 - 删除主题和订阅
 
 ## <a name="prerequisites"></a>先决条件
-1. Azure 订阅。 若要完成本教程，需要一个 Azure 帐户。 可以激活 [Visual Studio 或 MSDN 订阅者权益](https://www.azure.cn/support/legal/offer-rate-plans/)或者注册[试用帐户](https://www.azure.cn/pricing/1rmb-trial-full/?form-type=identityauth)。
+1. Azure 订阅。 若要完成本教程，需要一个 Azure 帐户。 你可以注册[试用帐户](https://www.azure.cn/pricing/1rmb-trial/)或[预付费](https://wd.azure.cn/pricing/pia-waiting-list/?form-type=identityauth)。
 2. 按照[快速入门：使用 Azure 门户创建一个服务总线主题和对此主题的订阅](service-bus-quickstart-topics-subscriptions-portal.md)来创建服务总线**命名空间**并获取**连接字符串**。
 
     > [!NOTE]
@@ -102,7 +102,7 @@ Endpoint=[yourEndpoint];SharedAccessKeyName=RootManageSharedAccessKey;SharedAcce
 若要创建任何 Azure 服务客户端，必须使用 `ServicesBuilder` 类。 方法：
 
 * 将连接字符串直接传递给它。
-* 使用 CloudConfigurationManager (CCM) 检查多个外部源以获取连接字符串： 
+* 使用 CloudConfigurationManager (CCM) 检查多个外部源以获取连接字符串：
   * 默认情况下，它附带了对一个外部源的支持 - 环境变量。
   * 可通过扩展 `ConnectionStringSource` 类来添加新源。
 
@@ -157,7 +157,7 @@ catch(ServiceException $e){
 主题订阅也是使用 `ServiceBusRestProxy->createSubscription` 方法创建的。 订阅已命名，并且具有一个限制传递到订阅的虚拟队列的消息集的可选筛选器。
 
 ### <a name="create-a-subscription-with-the-default-matchall-filter"></a>创建具有默认 (MatchAll) 筛选器的订阅
-如果在创建新订阅时未指定任何筛选器，则将使用默认的 MatchAll  筛选器。 使用 **MatchAll** 筛选器时，发布到主题的所有消息都会置于订阅的虚拟队列中。 以下示例创建名为 `mysubscription` 的订阅，并使用默认的 **MatchAll** 筛选器。
+如果在创建新订阅时未指定任何筛选器，则将使用默认的 MatchAll 筛选器。 使用 **MatchAll** 筛选器时，发布到主题的所有消息都会置于订阅的虚拟队列中。 以下示例创建名为 `mysubscription` 的订阅，并使用默认的 **MatchAll** 筛选器。
 
 ```php
 require_once 'vendor/autoload.php';
@@ -185,14 +185,14 @@ catch(ServiceException $e){
 ```
 
 ### <a name="create-subscriptions-with-filters"></a>创建具有筛选器的订阅
-还可以设置筛选器，以指定发送到主题的哪些消息应该在特定主题订阅中显示。 订阅支持的最灵活的一种筛选器是 [SqlFilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter)，它实现了一部分 SQL92 功能。 SQL 筛选器对发布到主题的消息的属性进行操作。 有关 SqlFilter 的详细信息，请参阅 [SqlFilter.SqlExpression 属性][sqlfilter]。
+还可以设置筛选器，以指定发送到主题的哪些消息应该在特定主题订阅中显示。 订阅支持的最灵活的一种筛选器是 [SqlFilter](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.sqlfilter)，它实现了一部分 SQL92 功能。 SQL 筛选器对发布到主题的消息的属性进行操作。 有关 SqlFilter 的详细信息，请参阅 [SqlFilter.SqlExpression 属性][sqlfilter]。
 
 > [!NOTE]
 > 有关订阅的每个规则单独处理传入消息，并将其结果消息添加到订阅。 此外，每个新订阅具有一个默认 **Rule** 对象，该对象包含将主题中的所有消息添加到订阅的筛选器。 要仅接收与筛选器匹配的消息，必须删除默认规则。 可以使用 `ServiceBusRestProxy->deleteRule` 方法删除默认规则。
 > 
 > 
 
-以下示例创建了一个名为 `HighMessages` 的订阅，该订阅带有只选择自定义 `MessageNumber` 属性大于 3 的消息的 SqlFilter。  有关向消息添加自定义属性的信息，请参阅[将消息发送到主题](#send-messages-to-a-topic) 。
+以下示例创建了一个名为 `HighMessages` 的订阅，该订阅带有只选择自定义 `MessageNumber` 属性大于 3 的消息的 SqlFilter。 有关向消息添加自定义属性的信息，请参阅[将消息发送到主题](#send-messages-to-a-topic) 。
 
 ```php
 $subscriptionInfo = new SubscriptionInfo("HighMessages");
@@ -324,7 +324,7 @@ Service Bus 提供了相关功能来帮助你轻松地从应用程序错误或�
 
 队列中的锁定消息还有相关超时，如果应用程序无法在锁定超时期满前处理消息（例如，当应用程序发生故障时），服务总线会自动解除锁定消息，让它再次可供接收。
 
-如果应用程序在处理消息后、但在发出 `deleteMessage` 请求前发生故障，消息会重新传递给重启的应用程序。 这种处理类型通常称作“至少处理一次”，即每条消息将至少被处理一次，但在某些情况下，同一消息可能会被重新传送  。 如果方案无法容忍重复处理，则应用程序开发人员应向其应用程序添加更多逻辑以处理重复消息传送。 这通常可通过使用消息的 `getMessageId` 方法来实现，该方法在多次传送尝试中保持不变。
+如果应用程序在处理消息后、但在发出 `deleteMessage` 请求前发生故障，消息会重新传递给重启的应用程序。 这种处理类型通常称作“至少处理一次”，即每条消息将至少被处理一次，但在某些情况下，同一消息可能会被重新传送。 如果方案无法容忍重复处理，则应用程序开发人员应向其应用程序添加更多逻辑以处理重复消息传送。 这通常可通过使用消息的 `getMessageId` 方法来实现，该方法在多次传送尝试中保持不变。
 
 ## <a name="delete-topics-and-subscriptions"></a>删除主题和订阅
 若要删除某个主题或订阅，请分别使用 `ServiceBusRestProxy->deleteTopic` 或 `ServiceBusRestProxy->deleteSubscripton` 方法。 删除某个主题也会删除向该主题注册的所有订阅。

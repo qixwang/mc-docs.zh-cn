@@ -2,17 +2,17 @@
 title: 服务运行状况概述 | Microsoft Docs
 description: 有关当前和将来的 Azure 服务问题及维护对 Azure 应用造成的影响的个性化信息。
 ms.topic: conceptual
-ms.date: 03/17/2020
-ms.openlocfilehash: 4a5b4c2144285e98d0eee4d35f498faefbf6594d
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/20/2020
+ms.openlocfilehash: aecb144dbd1e8c5800a5202e60107b869614e3a4
+ms.sourcegitcommit: 87e789550ea49ff77c7f19bc68fad228009fcf44
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79497177"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83748158"
 ---
 # <a name="service-health-overview"></a>服务运行状况概述
 
-服务运行状况提供可定制的仪表板，用于跟踪 Azure 服务在使用区域中的运行状况。 在此仪表板中，可跟踪活动事件，例如正在处理的服务问题、即将开始的计划内维护或相关运行状况公告。 当事件转变为非活动状态时，将在运行状况历史记录中保留最多 90 天。 最后，可使用服务运行状况仪表板创建和管理服务运行状况警报，受服务问题影响时会主动发出通知。
+服务运行状况提供可定制的仪表板，用于跟踪 Azure 服务在使用区域中的运行状况。 在此仪表板中，可跟踪活动事件，例如正在处理的服务问题、即将开始的计划内维护或相关运行状况公告。 当事件转变为非活动状态时，将在运行状况历史记录中保留最多 90 天。 最后，可使用服务运行状况仪表板创建和管理服务运行状况警报，在服务问题影响到自己时提前获得通知。
 
 ## <a name="service-health-events"></a>服务运行状况事件
 
@@ -20,7 +20,7 @@ ms.locfileid: "79497177"
 
 1. **服务问题** - Azure 服务中目前已经造成了影响的问题。 
 2. **计划内维护** - 即将进行的且将来可能会影响服务可用性的维护。  
-3. **运行状况通告** - Azure 服务中发生的、需要引以注意的更改。 示例包括已弃用某些 Azure 功能，或超出了使用配额。
+3. **运行状况通告** - Azure 服务中发生的、需要引以注意的更改。 示例包括弃用 Azure 功能或升级要求（如升级到受支持的 PHP 框架）。
 4. **安全公告（预览版）** - 与安全性相关的通知，可能会影响 Azure 服务的可用性。
 
 > [!NOTE]
@@ -34,13 +34,19 @@ ms.locfileid: "79497177"
 
 ## <a name="see-current-issues-which-impact-your-services"></a>查看当前影响了服务的问题
 
-“服务问题”视图显示 Azure 服务中当前正在影响资源的所有问题。  可以了解问题的开始时间，以及受影响的服务和区域。 还可以阅读最新的更新，了解 Azure 正在采取哪些措施来解决问题。 
+“服务问题”视图显示 Azure 服务中当前正在影响资源的所有问题。 可以了解问题的开始时间，以及受影响的服务和区域。 还可以阅读最新的更新，了解 Azure 正在采取哪些措施来解决问题。 
 
 ![管理服务问题](./media/service-health-overview/azure-service-health-overview-2.png)
 
-选择“潜在影响”选项卡查看自己拥有的、可能被问题影响的特定资源列表。  可以下载这些资源的 CSV 列表，以便与团队共享。
+选择“潜在影响”选项卡查看自己拥有的、可能被问题影响的特定资源列表。 可以下载这些资源的 CSV 列表，以便与团队共享。
 
 ![管理服务问题 - 影响](./media/service-health-overview/azure-service-health-overview-4.png)
+
+## <a name="see-emerging-issues-which-may-impact-your-services"></a>查看可能会影响服务的新出现的问题
+
+在某些情况下，可能会先将广泛的服务问题发布到[“Azure 状态”页](https://status.azure.com)上，然后才能将目标通信发送给受影响的客户。 为了确保 Azure 服务运行状况提供可能影响你的问题的全面视图，活动的“Azure 状态”页问题会在服务运行状况中显示为“新出现的问题”。 当某个事件在“Azure 状态”页上处于活动状态时，服务运行状况中会显示一个“新出现的问题”横幅。 单击此横幅可查看该问题的完整详细信息。
+
+![新出现的服务问题](./media/service-health-overview/azure-service-health-emerging-issue.png)
 
 ## <a name="get-links-and-downloadable-explanations"></a>获取链接和可下载的说明 
 

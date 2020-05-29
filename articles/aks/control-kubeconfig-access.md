@@ -3,19 +3,19 @@ title: 限制对 Azure Kubernetes 服务 (AKS) 中的 kubeconfig 的访问
 description: 了解如何控制群集管理员和群集用户对 Kubernetes 配置文件 (kubeconfig) 的访问
 services: container-service
 ms.topic: article
-origin.date: 01/28/2020
-ms.date: 03/09/2020
+origin.date: 05/06/2020
+ms.date: 05/25/2020
 ms.author: v-yeche
-ms.openlocfilehash: f0384f119a554a98998fb1715a028c3bc1f381df
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: a3c45035959e61a73a0c425a6595f7150ed168cf
+ms.sourcegitcommit: 7e6b94bbaeaddb854beed616aaeba6584b9316d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79290759"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83735161"
 ---
 # <a name="use-azure-role-based-access-controls-to-define-access-to-the-kubernetes-configuration-file-in-azure-kubernetes-service-aks"></a>使用 Azure 基于角色的访问控制定义对 Azure Kubernetes 服务 (AKS) 中的 Kubernetes 配置文件的访问
 
-可以使用 `kubectl` 工具来与 Kubernetes 群集交互。 在 Azure CLI 中，可以轻松获取所需的访问凭据和配置信息，以使用 `kubectl` 连接到 AKS 群集。 若要限制谁可以获取该 Kubernetes 配置 (*kubeconfig*) 信息及限制其拥有的权限，可以使用 Azure 基于角色的访问控制 (RBAC)。
+可以使用 `kubectl` 工具来与 Kubernetes 群集交互。 在 Azure CLI 中，可以轻松获取所需的访问凭据和配置信息，以使用 `kubectl` 连接到 AKS 群集。 若要限制谁可以获取该 Kubernetes 配置 (kubeconfig) 信息及限制其拥有的权限，可以使用 Azure 基于角色的访问控制 (RBAC)。
 
 本文介绍如何分配 RBAC 角色用于限制谁可以获取 AKS 群集的配置信息。
 
@@ -42,9 +42,10 @@ ms.locfileid: "79290759"
 
 这些 RBAC 角色可以应用到 Azure Active Directory (AD) 用户或组。
 
-> ![NOTE] 在使用 Azure AD 的群集上，具有 clusterUser  角色的用户有一个提示登录的空 kubeconfig  文件。 登录后，用户可以根据其 Azure AD 用户或组设置进行访问。 具有 clusterAdmin  角色的用户拥有管理员访问权限。
+> [!NOTE]
+> 在使用 Azure AD 的群集上，具有 clusterUser 角色的用户有一个提示登录的空 kubeconfig 文件。 登录后，用户可以根据其 Azure AD 用户或组设置进行访问。 具有 clusterAdmin 角色的用户拥有管理员访问权限。
 >
-> 不使用 Azure AD 的群集仅使用 clusterAdmin  角色。
+> 不使用 Azure AD 的群集仅使用 clusterAdmin 角色。
 
 ## <a name="assign-role-permissions-to-a-user-or-group"></a>将角色权限分配给用户或组
 
@@ -54,7 +55,7 @@ ms.locfileid: "79290759"
 * 使用 [az account show][az-account-show] 和 [az ad user show][az-ad-user-show] 命令获取用户 ID。
 * 最后，使用 [az role assignment create][az-role-assignment-create] 命令分配角色。
 
-以下示例将 Azure Kubernetes 服务群集管理员角色分配给单个用户帐户： 
+以下示例将 Azure Kubernetes 服务群集管理员角色分配给单个用户帐户：
 
 ```azurecli
 # Get the resource ID of your AKS cluster
@@ -72,9 +73,9 @@ az role assignment create \
 ```
 
 > [!TIP]
-> 若要将权限分配给 Azure AD 组，请使用组而不是用户的对象 ID 更新在上一示例中显示的 `--assignee` 参数。   若要获取组的对象 ID，请使用 [az ad group show][az-ad-group-show] 命令。 以下示例获取名为 *appdev* 的 Azure AD 组的对象 ID：`az ad group show --group appdev --query objectId -o tsv`
+> 若要将权限分配给 Azure AD 组，请使用组而不是用户的对象 ID 更新在上一示例中显示的 `--assignee` 参数。  若要获取组的对象 ID，请使用 [az ad group show][az-ad-group-show] 命令。 以下示例获取名为 *appdev* 的 Azure AD 组的对象 ID：`az ad group show --group appdev --query objectId -o tsv`
 
-可根据需要将上述分配更改为“群集用户角色”。 
+可根据需要将上述分配更改为“群集用户角色”。
 
 以下示例输出显示已成功创建角色分配：
 
@@ -93,13 +94,13 @@ az role assignment create \
 
 ## <a name="get-and-verify-the-configuration-information"></a>获取并验证配置信息
 
-分配 RBAC 角色后，使用 [az aks get-credentials][az-aks-get-credentials] 命令获取 AKS 群集的 *kubeconfig* 定义。 以下示例获取 *--admin* 凭据，如果为用户分配了“群集管理员角色”，则这些凭据可正常运行： 
+分配 RBAC 角色后，使用 [az aks get-credentials][az-aks-get-credentials] 命令获取 AKS 群集的 *kubeconfig* 定义。 以下示例获取 *--admin* 凭据，如果为用户分配了“群集管理员角色”，则这些凭据可正常运行：
 
 ```azurecli
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster --admin
 ```
 
-然后，可以使用 [kubectl config view][kubectl-config-view] 命令来验证群集上下文是否显示已应用管理员配置信息： 
+然后，可以使用 [kubectl config view][kubectl-config-view] 命令来验证群集上下文是否显示已应用管理员配置信息：
 
 ```
 $ kubectl config view
