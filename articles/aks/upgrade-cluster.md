@@ -1,17 +1,17 @@
 ---
 title: 升级 Azure Kubernetes 服务 (AKS) 群集
-description: 了解如何升级 Azure Kubernetes 服务 (AKS) 群集
+description: 了解如何升级 Azure Kubernetes 服务 (AKS) 群集以获取最新的功能和安全更新。
 services: container-service
 ms.topic: article
 origin.date: 05/31/2019
-ms.date: 03/09/2020
+ms.date: 05/25/2020
 ms.author: v-yeche
-ms.openlocfilehash: 579e0576342425c58f78dedebea573f586b83512
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 6302de82aea90efc30ddd1b0e0444c53151fe376
+ms.sourcegitcommit: 7e6b94bbaeaddb854beed616aaeba6584b9316d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79290849"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83735116"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>升级 Azure Kubernetes 服务 (AKS) 群集
 
@@ -32,7 +32,7 @@ ms.locfileid: "79290849"
 
 ## <a name="check-for-available-aks-cluster-upgrades"></a>检查是否有可用的 AKS 群集升级
 
-若要检查哪些 Kubernetes 版本可用于群集，请使用 [az aks get-upgrades][az-aks-get-upgrades] 命令。 以下示例在名为 *myResourceGroup* 的资源组中检查是否有可供名为 *myAKSCluster* 的群集使用的升级：
+若要检查哪些 Kubernetes 版本可用于群集，请使用 [az aks get-upgrades][az-aks-get-upgrades] 命令。 以下示例在名为“myResourceGroup”的资源组中检查是否有可供名为“myAKSCluster”的群集使用的升级：
 
 ```azurecli
 az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster --output table
@@ -43,7 +43,7 @@ az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster --outpu
 >
 > 若要从 1.12.x 升级到 1.14.x，请先从 1.12.x 升级到 1.13.x，然后再从 1.13.x 升级到 1.14.x。
 
-以下示例输出表明，群集可以升级到版本 1.13.9  和 1.13.10  ：
+以下示例输出表明，群集可以升级到版本 1.13.9 和 1.13.10：
 
 ```console
 Name     ResourceGroup     MasterVersion    NodePoolVersion    Upgrades
@@ -60,7 +60,7 @@ ERROR: Table output unavailable. Use the --query option to specify an appropriat
 
 如果有一系列适用于 AKS 群集的版本，则可使用 [az aks upgrade][az-aks-upgrade] 命令进行升级。 在升级过程中，AKS 将向运行指定 Kubernetes 版本的群集添加一个新节点，然后仔细地一次[隔离并清空][kubernetes-drain]一个旧节点，将对正在运行的应用程序造成的中断情况降到最低。 确认新节点运行应用程序 Pod 以后，就会删除旧节点。 此过程会重复进行，直至群集中的所有节点都已升级完毕。
 
-以下示例将群集升级到版本 1.13.10  ：
+以下示例将群集升级到版本 1.13.10：
 
 ```azurecli
 az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes-version 1.13.10
@@ -77,7 +77,7 @@ az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes
 az aks show --resource-group myResourceGroup --name myAKSCluster --output table
 ```
 
-以下示例输出表明群集现在运行 1.13.10  ：
+以下示例输出表明群集现在运行 1.13.10：
 
 ```json
 Name          Location    ResourceGroup    KubernetesVersion    ProvisioningState    Fqdn
