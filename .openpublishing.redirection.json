@@ -24387,6 +24387,23 @@
       "redirect_document_id": false
     },
     {
+      "source_path": "articles/security-center/security-center-virtual-machine.md",
+      "redirect_url": "/security-center/security-center-intro",
+      "source_path": "articles/event-hubs/event-hubs-api-overview.md",
+      "redirect_url": "/event-hubs/event-hubs-samples",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/event-hubs/event-hubs-dotnet-framework-api-overview.md",
+      "redirect_url": "/event-hubs/event-hubs-dotnet-framework-getstarted-send",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/event-hubs/event-hubs-dotnet-standard-api-overview.md",
+      "redirect_url": "/event-hubs/event-hubs-dotnet-standard-getstarted-send",
+      "redirect_document_id": false
+    },
+    {
       "source_path": "articles/security-center/security-center-resolve-endpoint-protection-health-alerts.md",
       "redirect_url": "/security-center/security-center-faq",
       "redirect_document_id": false
@@ -24395,23 +24412,106 @@
       "source_path": "articles/security-center/security-center-faq.md",
       "redirect_url": "/security-center/faq-general",
       "redirect_document_id": false
-    },
+    }, 
     {
       "source_path": "articles/security-center/security-center-container-recommendations.md",
       "redirect_url": "/security-center/container-security",
       "redirect_document_id": false
     },
     {
-      "source_path": "articles/security-center/security-center-virtual-machine.md",
-      "redirect_url": "/security-center/security-center-intro",
+      "source_path": "articles/security/fundamentals/database-best-practices.md",
+      "redirect_url": "/sql-database/sql-database-security-best-practice",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/active-directory/active-directory-view-access-usage-reports.md",
+      "redirect_url": "/active-directory/active-directory-reporting-azure-portal",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/active-directory/active-directory-identityprotection.md",
+      "redirect_url": "/active-directory/identity-protection/overview-identity-protection",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/security/azure-security-threat-modeling-tool.md",
+      "redirect_url": "/security/develop/threat-modeling-tool",
       "redirect_document_id": false
     },
     {
       "source_path": "articles/expressroute/expressroute-security-attributes.md",
       "redirect_url": "/expressroute/expressroute-security-controls",
       "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/storage/common/storage-account-container-recovery.md",
+      "redirect_url": "/storage/common/storage-redundancy",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/storage/blobs/storage-blob-snapshots.md",
+      "redirect_url": "/storage/blobs/snapshots-overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/storage/blobs/storage-blob-soft-delete.md",
+      "redirect_url": "/storage/blobs/soft-delete-overview",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "articles/storage/blobs/storage-quickstart-blobs-javascript-client-libraries.md",
+      "redirect_url": "/storage/blobs/storage-quickstart-blobs-javascript-client-libraries-legacy",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/storage/blobs/storage-simulate-failure-ragrs-account-app.md",
+      "redirect_url": "/storage/common/simulate-primary-region-failure",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/storage/blobs/storage-troubleshoot-vhds.md",
+      "redirect_url": "/virtual-machines/troubleshooting",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/storage/common/storage-cors-support.md",
+      "redirect_url": "/storage/common/storage-account-overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/storage/common/storage-decide-blobs-files-disks.md",
+      "redirect_url": "/storage/common/storage-introduction",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "articles/storage/common/storage-designing-ha-apps-with-ragrs.md",
+      "redirect_url": "/storage/common/geo-redundant-design",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "articles/storage/common/storage-java-hudson-continuous-integration-solution.md",
+      "redirect_url": "/storage/blobs/storage-blobs-introduction",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/storage/common/storage-metrics-in-azure-monitor.md",
+      "redirect_url": "/storage/common/monitor-storage",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/storage/common/storage-migration-to-premium-storage.md",
+      "redirect_url": "/virtual-machines/windows/migrate-to-managed-disks",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/storage/common/storage-powershell-guide-full.md",
+      "redirect_url": "https://docs.microsoft.com/powershell/module/az.storage",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/storage/files/storage-how-to-recover-deleted-account.md",
+      "redirect_url": "/storage/common/storage-account-create",
+      "redirect_document_id": false
     }
-
-
   ]
 }
