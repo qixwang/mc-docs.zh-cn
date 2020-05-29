@@ -24405,6 +24405,13 @@
       "source_path": "articles/security-center/security-center-virtual-machine.md",
       "redirect_url": "/security-center/security-center-intro",
       "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/expressroute/expressroute-security-attributes.md",
+      "redirect_url": "/expressroute/expressroute-security-controls",
+      "redirect_document_id": false
     }
+
+
   ]
 }
