@@ -1,0 +1,134 @@
+---
+title: 了解如何在 Azure 自动化中载入更新管理、更改跟踪和清单解决方案
+description: 了解如何载入包含属于 Azure 自动化的一部分的更新管理、更改跟踪和清单解决方案的 Azure 虚拟机
+services: automation
+origin.date: 4/11/2019
+ms.date: 05/25/2020
+ms.topic: conceptual
+ms.custom: mvc
+ms.openlocfilehash: 333b6aa2ee39b58d90b98c05c09fcbc3aa27192d
+ms.sourcegitcommit: 981a75a78f8cf74ab5a76f9e6b0dc5978387be4b
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83801830"
+---
+# <a name="onboard-update-management-solutions"></a>加入更新管理解决方案
+
+Azure 自动化提供所需的解决方案用于管理计算机上安装的操作系统安全更新。 可通过两种方式加入计算机：[从虚拟机](automation-onboard-solutions-from-vm.md)或者从自动化帐户加入解决方案。 本文介绍了如何从自动化帐户载入这些解决方案。
+
+## <a name="sign-in-to-azure"></a>登录 Azure
+
+通过 https://portal.azure.cn 登录到 Azure。
+
+## <a name="enable-solutions"></a>启用解决方案
+
+导航到你的自动化帐户，选择“配置管理”下的“更新管理”。 
+
+选择 Log Analytics 工作区和自动化帐户，然后单击“启用”以启用此解决方案。 启用此解决方案最长需要 15 分钟的时间。
+
+![载入更新解决方案](media/automation-onboard-solutions-from-automation-account/onboardsolutions2.png)
+
+使用更新管理解决方案可以管理 Azure 和混合 VM 的更新与修补程序。 可评估可用更新的状态、计划所需更新的安装以及查看部署结果，验证更新是否已成功应用到 VM。
+
+## <a name="scope-configuration"></a>范围配置
+
+每个解决方案在工作区中使用范围配置来确定获取解决方案的计算机。 范围配置是包含一个或多个已保存搜索的组，该组用来将解决方案的范围限制为特定计算机。 若要访问范围配置，请在自动化帐户中的“相关资源”下选择“工作区”。  然后，在工作区中的“工作区数据源”下选择“范围配置”。 
+
+如果所选工作区中没有“更新管理”解决方案，将创建以下范围配置：
+
+* **MicrosoftDefaultScopeConfig-Updates**
+
+如果所选工作区已有解决方案，则不会重新部署解决方案，也不会添加范围配置。
+
+## <a name="saved-searches"></a>保存的搜索
+
+将计算机添加到“更新管理”解决方案时，会将其添加到工作区中的已保存搜索中。 这些已保存搜索是包含这些解决方案的目标计算机的查询。
+
+导航到你的 Log Analytics 工作区，在“常规”下选择“保存的搜索”。  可以在下表中看到这些解决方案使用的已保存搜索：
+
+|名称     |Category  |别名  |
+|---------|---------|---------|
+|MicrosoftDefaultComputerGroup     | 更新        | Updates__MicrosoftDefaultComputerGroup         |
+
+选择已保存的搜索来查看用于填充组的查询。 下图显示了查询及其结果：
+
+![保存的搜索](media/automation-onboard-solutions-from-automation-account/savedsearch.png)
+
+## <a name="onboard-azure-vms"></a>载入 Azure VM
+
+在自动化帐户中，选择“更新管理”下的“更新管理”。 
+
+单击“+ 添加 Azure VM”，从列表中选择一个或多个 VM。 无法启用的虚拟机为灰显，无法选择。 无论自动化帐户的位置如何，Azure VM 都可以存在于任何区域中。 在“启用更新管理”页上，单击“启用”。 此操作会将选定 VM 添加到计算机组“为此解决方案保存的搜索结果”。
+
+![启用 Azure VM](media/automation-onboard-solutions-from-automation-account/enable-azure-vms.png)
+
+## <a name="onboard-a-non-azure-machine"></a>载入非 Azure 计算机
+
+需要手动添加 Azure 中没有的计算机。 在自动化帐户中，选择“更新管理”下的“更新管理”。 
+
+单击“添加非 Azure 计算机”。 此操作将打开一个新的浏览器窗口，其中包含[有关安装和配置适用于 Windows 的 Log Analytics 代理的说明](../azure-monitor/platform/log-analytics-agent.md)，使计算机可以开始向解决方案报告。 如果加入的计算机当前由 System Center Operations Manager 管理，则不需要新代理，工作区信息将输入到现有代理中。
+
+## <a name="onboard-machines-in-the-workspace"></a>在工作区中载入计算机
+
+必须将手动安装的计算机或已向工作区进行报告的计算机添加到 Azure 自动化中，才能启用解决方案。 在自动化帐户中，选择“更新管理”下的“更新管理”。 
+
+此操作将打开“管理计算机”页面。 此页面允许你在所选一组计算机上、所有可用的计算机上启用解决方案，或者为所有当前计算机启用解决方案并为所有将来的计算机启用解决方案。 如果之前选择了“在所有可用和将来的计算机上启用”选项，则“管理计算机”按钮可能灰显。 
+
+![保存的搜索](media/automation-onboard-solutions-from-automation-account/managemachines.png)
+
+### <a name="all-available-machines"></a>所有可用计算机
+
+若要为所有可用的计算机启用解决方案，请选择“在所有可用的计算机上启用”。 此操作禁用单独添加计算机的控件。 此任务会将向工作区进行报告的所有计算机的名称添加到计算机组保存的搜索查询。 选中此项后，此操作将禁用“管理计算机”按钮。
+
+### <a name="all-available-and-future-machines"></a>所有可用的和将来的计算机
+
+若要为所有可用的计算机和将来的计算机启用解决方案，请选择“在所有可用的和将来的计算机上启用”。 此选项会从工作区中删除已保存的搜索和范围配置。 此操作将为向工作区进行报告的所有 Azure 和非 Azure 计算机打开解决方案。 选中此项后，此操作将永久禁用“管理计算机”按钮，因为没有剩余的范围配置。
+
+可以通过加回初始的已保存搜索来添加范围配置。 有关详细信息，请参阅[保存的搜索](#saved-searches)。
+
+### <a name="selected-machines"></a>所选计算机
+
+若要为一台或多台计算机启用该解决方案，请选择“在所选计算机上启用”，然后单击要添加到该解决方案的每台计算机旁边的“添加”。  此任务会将所选计算机名称添加到计算机组为此解决方案保存的搜索查询。
+
+## <a name="unlink-workspace"></a>取消工作区链接
+
+以下解决方案依赖于 Log Analytics 工作区：
+
+* [更新管理](automation-update-management.md)如果你决定不再将自动化帐户与 Log Analytics 工作区集成，可以直接从 Azure 门户取消链接你的帐户。  在继续之前，首先需要删除前面所述的解决方案，否则此过程将无法继续。 查看已导入的特定解决方案的主题，了解删除该解决方案所需的步骤。
+
+删除这些解决方案后，可以完成以下步骤取消链接自动化帐户。
+
+> [!NOTE]
+> 某些解决方案（包括早期版本的 Azure SQL 监视解决方案）可能已创建自动化资产并可能还需要在取消链接工作区之前删除。
+
+1. 从 Azure 门户中打开自动化帐户，并在“自动化帐户”页左侧标有“相关资源”的部分下，选择“链接工作区” 。
+
+2. 在“取消链接工作区”页上，单击“取消链接工作区”。
+
+   ![“取消链接工作区”页](media/automation-onboard-solutions-from-automation-account/automation-unlink-workspace-blade.png)上获取。
+
+   系统会提示用户确认是否要继续。
+
+3. 当 Azure 自动化尝试从 Log Analytics 工作区中取消链接该帐户时，可以在菜单中的“通知”下跟踪进度。
+
+（可选）删除解决方案后，你可能想要删除以下不再需要的项。
+
+* 更新计划 - 每个计划都将具有与所创建的更新部署匹配的名称。
+
+* 为解决方案创建的混合辅助角色组 - 每个混合辅助角色组的命名都将类似于 machine1.contoso.com_9ceb8108-26c9-4051-b6b3-227600d715c8。
+
+或者，还可以在 Log Analytics 工作区中从自动化帐户取消链接你的工作区。 在工作区中，选择“相关资源”下的“自动化帐户”。  在“自动化帐户”页上，选择“取消链接帐户”。
+
+## <a name="clean-up-resources"></a>清理资源
+
+从更新管理中删除 VM：
+
+* 在 Log Analytics 工作区中，从范围配置 `MicrosoftDefaultScopeConfig-Updates` 的已保存的搜索中删除 VM。 已保存的搜索位于工作区的“常规”下。
+* 删除[适用于 Windows 的 Log Analytics 代理](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources)或[适用于 Linux 的 Log Analytics 代理](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources)。
+
+## <a name="next-steps"></a>后续步骤
+
+继续学习有关解决方案的教程来了解如何使用它们。
+
+* [教程 - 管理 VM 的更新](automation-tutorial-update-management.md)

@@ -5,14 +5,14 @@ services: container-service
 author: rockboyfor
 ms.topic: article
 origin.date: 01/24/2020
-ms.date: 03/09/2020
+ms.date: 05/25/2020
 ms.author: v-yeche
-ms.openlocfilehash: cfbac7ae221cd57e34cb8c40182c537d782364fa
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: e7fd2e406d3c5bd36579c3e085d0a36b1def5b23
+ms.sourcegitcommit: 7e6b94bbaeaddb854beed616aaeba6584b9316d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79290690"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83735119"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Azure Kubernetes 服务的支持策略
 
@@ -28,7 +28,7 @@ ms.locfileid: "79290690"
 
 基本的基础结构即服务 (IaaS) 云组件（例如计算或网络组件）可让用户访问低级别的控件机制和自定义选项。 相比之下，AKS 提供统包式的 Kubernetes 部署，为客户提供一组通用配置和所需的功能。 AKS 客户可用的自定义功能、部署和其他选项有限。 这些客户不需要考虑或直接管理 Kubernetes 群集。
 
-借助 AKS，客户可以获得一个完全托管型的控制平面。  该控制平面包含客户操作以及向最终用户提供 Kubernetes 群集的全部所需组件和服务。 所有 Kubernetes 组件都由 Azure 维护和运营。
+借助 AKS，客户可以获得一个完全托管型的控制平面。 该控制平面包含客户操作以及向最终用户提供 Kubernetes 群集的全部所需组件和服务。 所有 Kubernetes 组件都由 Azure 维护和运营。
 
 <!--MOONCAKE: CORRECT ON operated by Azure.-->
 
@@ -39,14 +39,9 @@ Azure 通过控制平面管理和监视以下组件：
 * DNS 服务（例如 kube-dns 或 CoreDNS）
 * Kubernetes 代理或网络
 
-AKS 不是完全托管型的群集解决方案。 某些组件（例如工作器节点）实行分担责任制，用户必须帮助维护 AKS 群集。  例如，必须提供用户输入才能应用工作器节点操作系统 (OS) 安全修补程序。
+AKS 不是完全托管型的群集解决方案。 某些组件（例如工作器节点）实行分担责任制，用户必须帮助维护 AKS 群集。 例如，必须提供用户输入才能应用工作器节点操作系统 (OS) 安全修补程序。
 
-服务是托管型的，Azure 和 AKS 团队将部署、操作并负责服务的可用性和功能。  客户无法改动这些托管组件。 为确保一致且可缩放的用户体验，Azure 将限制自定义。 有关完全可自定义的解决方案，请参阅 [AKS 引擎](https://github.com/Azure/aks-engine)。
-
-> [!NOTE]
-> AKS 工作器节点作为常规的 Azure IaaS 资源显示在 Azure 门户中。 但是，这些虚拟机将部署到自定义的 Azure 资源组（带有 MC\\* 前缀）。 无法更改 AKS 工作器节点。 例如，可以使用安全外壳 (SSH) 更改 AKS 工作器节点，如同更改普通虚拟机一样（但是，无法更改基本的 OS 映像，并且更新或重新启动后，更改不会持久保留），并可以将其他 Azure 资源附加到 AKS 工作器节点。 但是，如果更改带外管理和自定义项，AKS 群集可能变得不受支持。  除非 Azure 支持人员指示你进行更改，否则请避免更改工作器节点。
-
-发出上面定义的不受支持的操作（如所有代理节点的带外解除分配）会导致群集不受支持。 对于已配置了“停止支持”规则以将支持期限延长至等于或超过 30 天的控制平面，AKS 保留了将其存档的权利。 AKS 维护群集 etcd 元数据的备份，并可轻松地重新分配群集。 此重新分配可由使群集重新受支持的任何 PUT 操作（例如升级或扩展到活动代理节点）来启动。
+服务是托管型的，Azure 和 AKS 团队将部署、操作并负责服务的可用性和功能。 客户无法改动这些托管组件。 为确保一致且可缩放的用户体验，Azure 将限制自定义。 有关完全可自定义的解决方案，请参阅 [AKS 引擎](https://github.com/Azure/aks-engine)。
 
 ## <a name="shared-responsibility"></a>共担责任
 
@@ -104,12 +99,26 @@ Azure 不提供以下方面的技术支持：
 
 ### <a name="customer-responsibilities-for-aks-worker-nodes"></a>客户对 AKS 工作器节点承担的责任
 
-Azure 不会自动重新启动工作器节点来应用 OS 级修补程序。 尽管 OS 修补程序是为工作器节点交付的，但客户需负责重新启动工作器节点来应用更改。  系统或 OS 级别的共享库、守护程序（例如固态混合驱动器 (SSHD)）和其他组件将自动得到修补。
+Azure 不会自动重新启动工作器节点来应用 OS 级修补程序。 尽管 OS 修补程序是为工作器节点交付的，但客户需负责重新启动工作器节点来应用更改。 系统或 OS 级别的共享库、守护程序（例如固态混合驱动器 (SSHD)）和其他组件将自动得到修补。
 
 客户负责执行 Kubernetes 升级。 他们可以通过 Azure 控制面板或 Azure CLI 执行升级。 这适用于包含 Kubernetes 安全性或功能改进的更新。
 
+#### <a name="user-customization-of-worker-nodes"></a>对工作器节点进行的用户自定义
 > [!NOTE]
-> 由于 AKS 是一个托管服务，其最终目标包括消除修补、更新和日志收集方面的责任，使服务管理变得更完整且无需人工干预。  由于用于端到端管理的服务容量不断增大，将来的版本可能会省略某些功能（例如，节点重新启动和自动修补）。
+> AKS 工作器节点作为常规的 Azure IaaS 资源显示在 Azure 门户中。 但是，这些虚拟机将部署到自定义的 Azure 资源组（带有 MC\\* 前缀）。 可以在 AKS 工作器节点的基础配置的基础上对其进行扩充。 例如，你可以使用安全外壳 (SSH) 更改 AKS 工作器节点，就像更改普通虚拟机一样。 但是，你无法更改基础操作系统映像。 自定义更改在升级、缩放、更新或重启后可能不会保留。 **但是**，在 AKS API 的带外和作用域外进行更改会导致 AKS 群集变得不受支持。 除非 Azure 支持人员指示你进行更改，否则请避免更改工作器节点。
+
+发出上面定义的不受支持的操作（如所有代理节点的带外解除分配）会导致群集不受支持。 对于已配置了“停止支持”规则以将支持期限延长至等于或超过 30 天的控制平面，AKS 保留了将其存档的权利。 AKS 维护群集 etcd 元数据的备份，并可轻松地重新分配群集。 此重新分配可由使群集重新受支持的任何 PUT 操作（例如升级或扩展到活动代理节点）来启动。
+
+AKS 代表客户管理工作器节点的生命周期和操作 - **不支持**修改与工作器节点关联的 IaaS 资源。 不支持的操作的一个示例是通过 VMSS 门户或 VMSS API 手动更改 VMSS 上的配置来自定义节点池 VM 规模集。
+
+对于特定于工作负荷的配置或包，AKS 建议使用 [Kubernetes daemonset](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/)。
+
+使用 Kubernetes 特权 daemonset 和 init 容器，客户可以在群集工作器节点上调整/修改或安装第三方软件。 此类自定义的示例包括添加自定义安全扫描软件或更新 sysctl 设置。
+
+虽然当上述要求适用时这是建议的路径，但 AKS 工程和支持部门无法协助排查或诊断损坏性/非功能性修改的问题，也无法协助排查或诊断由于客户部署的 daemonset 而导致节点不可用的修改的问题。
+
+> [!NOTE]
+> 作为一项托管服务，AKS 的最终目标包括免除用户在修补、更新和日志收集方面的职责，使服务管理变得更完整且无需人工干预。 由于用于端到端管理的服务容量不断增大，将来的版本可能会省略某些功能（例如，节点重新启动和自动修补）。
 
 ### <a name="security-issues-and-patching"></a>安全问题和修补
 
@@ -129,7 +138,7 @@ Azure 不会自动重新启动工作器节点来应用 OS 级修补程序。 尽
 
 ## <a name="network-ports-access-and-nsgs"></a>网络端口、访问和 NSG
 
-作为一项托管服务，AKS 在网络和连接方面存在特定的要求。 与普通 IaaS 组件的要求相比，这些要求不太灵活。 在 AKS 中，自定义 NSG 规则、阻止特定端口（例如，使用防火墙规则阻止出站端口 443）以及将 URL 加入白名单等操作可能导致群集不受支持。
+作为一项托管服务，AKS 在网络和连接方面存在特定的要求。 与普通 IaaS 组件的要求相比，这些要求不太灵活。 在 AKS 中，自定义 NSG 规则、阻止特定端口（例如，使用防火墙规则阻止出站端口 443）以及将 URL 加入允许列表等操作可能导致群集不受支持。
 
 > [!NOTE]
 > 目前，AKS 不允许你完全锁定群集的出口流量。
@@ -158,7 +167,7 @@ AKS 仅支持上游 Kubernetes 项目中的稳定功能。 除非另有说明，
 * [Azure 支持常见问题](https://www.azure.cn/support/faq/)
 
 > [!NOTE]
-> 预览功能在 Azure 订阅  级别生效。 请勿在生产订阅上安装预览功能。 在生产订阅上，预览功能可以更改默认 API 行为并影响常规操作。
+> 预览功能在 Azure 订阅级别生效。 请勿在生产订阅上安装预览功能。 在生产订阅上，预览功能可以更改默认 API 行为并影响常规操作。
 
 <!--MOONCAKE: CUSTOMIZED CAREFULLY-->
 

@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/16/2020
+ms.date: 05/18/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: e98685babee35581613e907f98b402fafe8422b8
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 053c4c3e76569f7994f49709f4310bc84c47306e
+ms.sourcegitcommit: 87e789550ea49ff77c7f19bc68fad228009fcf44
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79497187"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83748129"
 ---
 # <a name="localization"></a>本地化
 
@@ -39,9 +39,9 @@ ms.locfileid: "79497187"
 
 **Localization** 元素包含以下属性：
 
-| Attribute | 必选 | 说明 |
+| 属性 | 必须 | 说明 |
 | --------- | -------- | ----------- |
-| 已启用 | 否 | 可能的值：`true` 或 `false`。 |
+| Enabled | 否 | 可能的值：`true` 或 `false`。 |
 
 **Localization** 元素包含以下 XML 元素
 
@@ -54,7 +54,7 @@ ms.locfileid: "79497187"
 
 **SupportedLanguages** 元素包含以下属性：
 
-| Attribute | 必选 | 说明 |
+| 属性 | 必须 | 说明 |
 | --------- | -------- | ----------- |
 | DefaultLanguage | 是 | 用作本地化资源默认值的语言。 |
 | MergeBehavior | 否 | 与父策略中具有相同标识符的任何 ClaimType 合并在一起的值的枚举值。 覆盖基本策略中指定的声明时，请使用此属性。 可能的值：`Append`、`Prepend` 或 `ReplaceAll`。 `Append` 值指定应将现有数据集合追加到父策略中指定的集合的末尾。 `Prepend` 值指定应将现有数据集合添加到父策略中指定的集合的前面。 `ReplaceAll` 值指定应忽略父策略中定义的数据集合，改用当前策略中定义的数据。 |
@@ -71,7 +71,7 @@ ms.locfileid: "79497187"
 
 **LocalizedResources** 元素包含以下属性：
 
-| Attribute | 必选 | 说明 |
+| 属性 | 必须 | 说明 |
 | --------- | -------- | ----------- |
 | ID | 是 | 用于唯一标识本地化资源的标识符。 |
 
@@ -94,7 +94,7 @@ ms.locfileid: "79497187"
 
 **LocalizedCollection** 元素包含以下属性：
 
-| Attribute | 必选 | 说明 |
+| 属性 | 必须 | 说明 |
 | --------- | -------- | ----------- |
 | ElementType | 是 | 引用策略文件中的 ClaimType 元素或用户界面元素。 |
 | ElementId | 是 | 一个字符串，包含当 **ElementType** 设置为 ClaimType 时使用的 ClaimsSchema 节中已定义的声明类型的引用。 |
@@ -104,14 +104,14 @@ ms.locfileid: "79497187"
 
 | 元素 | 出现次数 | 说明 |
 | ------- | ----------- | ----------- |
-| Item | 0:n | 定义可让用户在用户界面中为声明选择的可用选项，例如下拉列表中的值。 |
+| 项目 | 0:n | 定义可让用户在用户界面中为声明选择的可用选项，例如下拉列表中的值。 |
 
 **Item** 元素包含以下属性：
 
-| Attribute | 必选 | 说明 |
+| 属性 | 必须 | 说明 |
 | --------- | -------- | ----------- |
 | 文本 | 是 | 应在用户界面中向用户显示的此选项的用户友好字符串。 |
-| 值 | 是 | 与此选项关联的字符串声明值。 |
+| Value | 是 | 与此选项关联的字符串声明值。 |
 | SelectByDefault | 否 | 指示默认情况下是否应在 UI 中选择此选项。 可能的值：True 或 False。 |
 
 以下示例演示了 **LocalizedCollections** 元素的用法。 其中包含两个 **LocalizedCollection** 元素，一个元素适用于英语区域设置，另一个元素适用于西班牙语区域设置。 这两个元素都设置了声明 `Gender` 的 **Restriction** 集合，以及适用于英语和西班牙语的项列表。
@@ -144,67 +144,168 @@ ms.locfileid: "79497187"
 
 **LocalizedString** 元素包含以下属性：
 
-| Attribute | 必选 | 说明 |
+| 属性 | 必须 | 说明 |
 | --------- | -------- | ----------- |
-| ElementType | 是 | 对策略中声明类型元素或用户界面元素的引用。 可能的值：`ClaimType`、`UxElement`、`ErrorMessage`、`Predicate` 或 `GetLocalizedStringsTransformationClaimType`。 `ClaimType` 值用于本地化 StringId 中指定的某个声明属性。 `UxElement` 值用于本地化 StringId 中指定的某个用户界面元素。 `ErrorMessage` 值用于本地化 StringId 中指定的某个系统错误消息。 `Predicate` 值用于本地化 StringId 中指定的某个 [Predicate](predicates.md) 错误消息。 `InputValidation` 值用于本地化 StringId 中指定的某个 [PredicateValidation](predicates.md) 组错误消息。 `GetLocalizedStringsTransformationClaimType` 值用于将本地化字符串复制到声明。 有关详细信息，请参阅 [GetLocalizedStringsTransformation 声明转换](string-transformations.md#getlocalizedstringstransformation)  | 
+| ElementType | 是 | 可能的值：[ClaimsProvider](#claimsprovider)、[ClaimType](#claimtype)、[ErrorMessage](#errormessage)、[GetLocalizedStringsTransformationClaimType](#getlocalizedstringstransformationclaimtype)、[Predicate](#predicate)、[InputValidation](#inputvalidation) 或 [UxElement](#uxelement)。   | 
 | ElementId | 是 | 如果 **ElementType** 设置为 `ClaimType`、`Predicate` 或 `InputValidation`，此元素包含对 ClaimsSchema 节中已定义的声明类型的引用。 |
 | StringId | 是 | 如果 **ElementType** 设置为 `ClaimType`，此元素包含对声明类型的属性的引用。 可能的值：`DisplayName`、`AdminHelpText` 或 `PatternHelpText`。 `DisplayName` 值用于设置声明显示名称。 `AdminHelpText` 值用于设置声明用户的帮助文本名称。 `PatternHelpText` 值用于设置声明模式帮助文本。 如果 **ElementType** 设置为 `UxElement`，此元素包含对用户界面元素的属性的引用。 如果 **ElementType** 设置为 `ErrorMessage`，此元素指定错误消息的标识符。 有关 `UxElement` 标识符的完整列表，请参阅[本地化字符串 ID](localization-string-ids.md)。|
 
+## <a name="elementtype"></a>ElementType
 
-以下示例演示了一个本地化的注册页。 前三个 **LocalizedString** 值设置声明属性。 第三个值更改继续按钮的值。 最后一个值更改错误消息。
+ElementType 引用策略中要本地化的声明类型、声明转换或用户界面元素。
 
-```XML
-<LocalizedResources Id="api.selfasserted.en">
-  <LocalizedStrings>
-    <LocalizedString ElementType="ClaimType" ElementId="email" StringId="DisplayName">Email</LocalizedString>
-    <LocalizedString ElementType="ClaimType" ElementId="email" StringId="UserHelpText">Please enter your email</LocalizedString>
-    <LocalizedString ElementType="ClaimType" ElementId="email" StringId="PatternHelpText">Please enter a valid email address</LocalizedString>
-    <LocalizedString ElementType="UxElement" StringId="button_continue">Create new account</LocalizedString>
-   <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfClaimsPrincipalAlreadyExists">The account you are trying to create already exists, please sign-in.</LocalizedString>
-  </LocalizedStrings>
-</LocalizedResources>
+| 要本地化的元素 | ElementType | ElementId |StringId |
+| --------- | -------- | ----------- |----------- |
+| 标识提供者名称 |`ClaimsProvider`| | ClaimsExchange 元素的 ID|
+| 声明类型特性|`ClaimType`|声明类型的名称| 要本地化的声明的特性。 可能的值：`AdminHelpText`、`DisplayName`、`PatternHelpText` 和 `UserHelpText`。|
+|错误消息|`ErrorMessage`||错误消息的 ID |
+|将已本地化的字符串复制到声明中|`GetLocalizedStringsTra nsformationClaimType`||输出声明的名称|
+|谓词用户消息|`Predicate`|谓词的名称| 要本地化的谓词的特性。 可能的值：`HelpText`。|
+|谓词组用户消息|`InputValidation`|PredicateValidation 元素的 ID。|PredicateGroup 元素的 ID。 谓词组必须是 ElementId 中定义的谓词验证元素的子级。|
+|用户界面元素 |`UxElement` | | 要本地化的用户界面元素的 ID。|
+
+## <a name="examples"></a>示例
+
+### <a name="claimtype"></a>ClaimType
+
+ClaimType 值用于本地化某个声明特性。 
+
+```xml
+<ClaimType Id="email">
+  <DisplayName>Email Address</DisplayName>
+  <DataType>string</DataType>
+  <UserHelpText>Email address that can be used to contact you.</UserHelpText>
+  <UserInputType>TextBox</UserInputType>
+</ClaimType>
 ```
 
-以下示例演示了 ID 为 `IsLengthBetween8And64` 的 **Predicate** 的本地化 **UserHelpText**。 另外还演示了 ID 为 `CharacterClasses` 的 **PredicateGroup**，以及 ID 为 `StrongPassword` 的 **PredicateValidation** 的本地化 **UserHelpText**。
+以下示例演示如何本地化电子邮件声明类型的 DisplayName、UserHelpText 和 PatternHelpText 特性。
 
 ```XML
-<PredicateValidation Id="StrongPassword">
-  <PredicateGroups>
-    ...
-    <PredicateGroup Id="CharacterClasses">
-    ...
-    </PredicateGroup>
-  </PredicateGroups>
-</PredicateValidation>
+<LocalizedString ElementType="ClaimType" ElementId="email" StringId="DisplayName">Email</LocalizedString>
+<LocalizedString ElementType="ClaimType" ElementId="email" StringId="UserHelpText">Please enter your email</LocalizedString>
+<LocalizedString ElementType="ClaimType" ElementId="email" StringId="PatternHelpText">Please enter a valid email address</LocalizedString>
+```
 
-...
+### <a name="errormessage"></a>ErrorMessage
 
-<Predicate Id="IsLengthBetween8And64" Method="IsLengthRange">
+ErrorMessage 值用于本地化某个系统错误消息。 
+
+```xml
+<TechnicalProfile Id="AAD-UserWriteUsingAlternativeSecurityId">
+  <Metadata>
+    <Item Key="RaiseErrorIfClaimsPrincipalAlreadyExists">true</Item>
+    <Item Key="UserMessageIfClaimsPrincipalAlreadyExists">You are already registered, please press the back button and sign in instead.</Item>
+  </Metadata>
   ...
-</Predicate>
-...
-
-
-<LocalizedString ElementType="InputValidation" ElementId="StrongPassword" StringId="CharacterClasses">The password must have at least 3 of the following:</LocalizedString>
-
-<LocalizedString ElementType="Predicate" ElementId="IsLengthBetween8And64" StringId="HelpText">The password must be between 8 and 64 characters.</LocalizedString>
+</TechnicalProfile>
 ```
 
-## <a name="set-up-localization"></a>设置本地化
+以下示例演示如何本地化 UserMessageIfClaimsPrincipalAlreadyExists 错误消息。
 
-本文将介绍如何在用户旅程的策略中支持多个区域设置或语言。 本地化需要执行三个步骤：设置受支持语言的显式列表，提供特定于语言的字符串和集合，以及编辑页面的 ContentDefinition。
-
-### <a name="set-up-the-explicit-list-of-supported-languages"></a>设置受支持语言的显式列表
-
-在 **BuildingBlocks** 元素下，添加包含受支持语言列表的 **Localization** 元素。 以下示例演示如何为英语（默认）和西班牙语定义本地化支持：
 
 ```XML
-<Localization Enabled="true">
-  <SupportedLanguages DefaultLanguage="en" MergeBehavior="ReplaceAll">
-    <SupportedLanguage>en</SupportedLanguage>
-    <SupportedLanguage>es</SupportedLanguage>
-  </SupportedLanguages>
-</Localization>
+<LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfClaimsPrincipalAlreadyExists">The account you are trying to create already exists, please sign-in.</LocalizedString>
+```
+
+### <a name="getlocalizedstringstransformationclaimtype"></a>GetLocalizedStringsTransformationClaimType
+
+GetLocalizedStringsTransformationClaimType 值用于将已本地化的字符串复制到声明中。 有关详细信息，请参阅 [GetLocalizedStringsTransformation 声明转换](string-transformations.md#getlocalizedstringstransformation)
+
+
+```xml
+<ClaimsTransformation Id="GetLocalizedStringsForEmail" TransformationMethod="GetLocalizedStringsTransformation">
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="subject" TransformationClaimType="email_subject" />
+    <OutputClaim ClaimTypeReferenceId="message" TransformationClaimType="email_message" />
+    <OutputClaim ClaimTypeReferenceId="codeIntro" TransformationClaimType="email_code" />
+    <OutputClaim ClaimTypeReferenceId="signature" TransformationClaimType="email_signature" />
+   </OutputClaims>
+</ClaimsTransformation>
+```
+
+以下示例演示如何本地化 GetLocalizedStringsTransformation 声明转换的输出声明。
+
+```xml
+<LocalizedString ElementType="GetLocalizedStringsTransformationClaimType" StringId="email_subject">Contoso account email verification code</LocalizedString>
+<LocalizedString ElementType="GetLocalizedStringsTransformationClaimType" StringId="email_message">Thanks for verifying your account!</LocalizedString>
+<LocalizedString ElementType="GetLocalizedStringsTransformationClaimType" StringId="email_code">Your code is</LocalizedString>
+<LocalizedString ElementType="GetLocalizedStringsTransformationClaimType" StringId="email_signature">Sincerely</LocalizedString>
+```
+
+### <a name="predicate"></a>Predicate
+
+Predicate 值用于本地化某个 [Predicate](predicates.md) 错误消息。 
+
+```xml
+<Predicates>
+  <Predicate Id="LengthRange" Method="IsLengthRange"  HelpText="The password must be between 6 and 64 characters.">
+    <Parameters>
+      <Parameter Id="Minimum">6</Parameter>
+      <Parameter Id="Maximum">64</Parameter>
+    </Parameters>
+  </Predicate>
+  <Predicate Id="Lowercase" Method="IncludesCharacters" HelpText="a lowercase letter">
+    <Parameters>
+      <Parameter Id="CharacterSet">a-z</Parameter>
+    </Parameters>
+  </Predicate>
+  <Predicate Id="Uppercase" Method="IncludesCharacters" HelpText="an uppercase letter">
+    <Parameters>
+      <Parameter Id="CharacterSet">A-Z</Parameter>
+    </Parameters>
+  </Predicate>
+</Predicates>
+```
+
+以下示例演示如何本地化谓词帮助文本。
+
+```xml
+<LocalizedString ElementType="Predicate" ElementId="LengthRange" StringId="HelpText">The password must be between 6 and 64 characters.</LocalizedString>
+<LocalizedString ElementType="Predicate" ElementId="Lowercase" StringId="HelpText">a lowercase letter</LocalizedString>
+<LocalizedString ElementType="Predicate" ElementId="Uppercase" StringId="HelpText">an uppercase letter</LocalizedString>
+```
+
+### <a name="inputvalidation"></a>InputValidation
+
+InputValidation 值用于本地化某个 [PredicateValidation](predicates.md) 组错误消息。 
+
+```xml
+<PredicateValidations>
+  <PredicateValidation Id="CustomPassword">
+    <PredicateGroups>
+      <PredicateGroup Id="LengthGroup">
+        <PredicateReferences MatchAtLeast="1">
+          <PredicateReference Id="LengthRange" />
+        </PredicateReferences>
+      </PredicateGroup>
+      <PredicateGroup Id="CharacterClasses">
+        <UserHelpText>The password must have at least 3 of the following:</UserHelpText>
+        <PredicateReferences MatchAtLeast="3">
+          <PredicateReference Id="Lowercase" />
+          <PredicateReference Id="Uppercase" />
+          <PredicateReference Id="Number" />
+          <PredicateReference Id="Symbol" />
+        </PredicateReferences>
+      </PredicateGroup>
+    </PredicateGroups>
+  </PredicateValidation>
+</PredicateValidations>
+```
+
+以下示例演示如何本地化谓词验证组帮助文本。
+
+```XML
+<LocalizedString ElementType="InputValidation" ElementId="CustomPassword" StringId="CharacterClasses">The password must have at least 3 of the following:</LocalizedString>
+```
+
+### <a name="uxelement"></a>UxElement
+
+UxElement 值用于本地化某个用户界面元素。 以下示例演示如何本地化继续和取消按钮。
+
+```XML
+<LocalizedString ElementType="UxElement" StringId="button_continue">Create new account</LocalizedString>
+<LocalizedString ElementType="UxElement" StringId="button_cancel">Cancel</LocalizedString>
 ```
 
 ## <a name="next-steps"></a>后续步骤
