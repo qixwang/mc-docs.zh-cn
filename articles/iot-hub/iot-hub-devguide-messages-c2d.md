@@ -11,12 +11,12 @@ ms.workload: na
 origin.date: 03/15/2018
 ms.author: v-yiso
 ms.date: 03/23/2020
-ms.openlocfilehash: c92393fc2790cd4506cdaff871c719bf06a6c5b2
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 1fa5682bbd2af98974fe89bd18248fc58aebf5f6
+ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79295928"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84186934"
 ---
 # <a name="send-cloud-to-device-messages-from-an-iot-hub"></a>从 IoT 中心发送云到设备的消息
 
@@ -169,17 +169,6 @@ IoT 中心服务向设备发送消息时，该服务会将消息状态设置为�
 
 ## <a name="next-steps"></a>后续步骤
 
-有关可用于接收云到设备消息的 SDK 的信息，请参阅 [Azure IoT SDK][lnk-sdks]。
+有关可用于接收云到设备消息的 SDK 的信息，请参阅 [Azure IoT SDK](iot-hub-devguide-sdks.md)。
 
-若要尝试接收云到设备消息，请参阅[发送云到设备][lnk-c2d-tutorial]教程。
-
-[img-lifecycle]: ./media/iot-hub-devguide-messages-c2d/lifecycle.png
-
-[lnk-portal]: ./iot-hub-create-through-portal.md
-[lnk-c2d-guidance]: ./iot-hub-devguide-c2d-guidance.md
-[lnk-endpoints]: ./iot-hub-devguide-endpoints.md
-[lnk-sdks]: ./iot-hub-devguide-sdks.md
-[lnk-ttl]: #message-expiration-time-to-live
-[lnk-c2d-configuration]: #cloud-to-device-configuration-options
-[lnk-lifecycle]: #message-lifecycle
-[lnk-c2d-tutorial]: ./iot-hub-csharp-csharp-c2d.md
+若要尝试接收云到设备消息，请参阅[发送云到设备](iot-hub-csharp-csharp-c2d.md)教程。

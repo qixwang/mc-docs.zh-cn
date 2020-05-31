@@ -2,22 +2,22 @@
 title: ApplicationInsights.config 参考 - Azure | Azure Docs
 description: 启用或禁用数据收集模块，并添加性能计数器和其他参数。
 ms.topic: conceptual
-author: lingliw
 origin.date: 05/22/2019
-ms.date: 6/4/2019
+author: Johnnytechn
+ms.date: 05/28/2020
 ms.reviewer: olegan
-ms.author: v-lingwu
-ms.openlocfilehash: bfa94ffbde2cbac6ac8d09f6b884b8328fcb10eb
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.author: v-johya
+ms.openlocfilehash: b0bc6db86696714e82edf62213748300562104c6
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79291727"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199498"
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>使用 ApplicationInsights.config 或 .xml 配置 Application Insights SDK
 Application Insights .NET SDK 由多个 NuGet 包组成。 [核心包](https://www.nuget.org/packages/Microsoft.ApplicationInsights)提供 API，用于将遥测数据发送到 Application Insights。 [其他包](https://www.nuget.org/packages?q=Microsoft.ApplicationInsights)提供遥测*模块*和*初始值设定项*，用于自动从应用程序及其上下文跟踪遥测。 可以通过调整配置文件来启用或禁用遥测模块和初始值设定项并为其设置参数。
 
-配置文件名为 `ApplicationInsights.config` 或 `ApplicationInsights.xml`，具体取决于应用程序的类型。 [安装大多数版本的 SDK][start] 时，系统会自动将配置文件添加到项目。 默认情况下，使用支持“添加”>“添加 Application Insights 遥测”的 Visual Studio 模板项目提供的自动化体验时，  ApplicationInsights.config 文件在项目根文件夹中创建，在编译后复制到 bin 文件夹。 通过使用 [IIS 服务器上的状态监视器][redfield]，也会将配置文件添加到 Web 应用。 如果使用了 [Azure 网站的扩展](azure-web-apps.md)或 [Azure VM 和虚拟机规模集的扩展](azure-vm-vmss-apps.md)，则会忽略此配置文件。
+配置文件名为 `ApplicationInsights.config` 或 `ApplicationInsights.xml`，具体取决于应用程序的类型。 [安装大多数版本的 SDK][start] 时，系统会自动将配置文件添加到项目。 默认情况下，使用支持“添加”>“添加 Application Insights 遥测”的 Visual Studio 模板项目提供的自动化体验时，ApplicationInsights.config 文件在项目根文件夹中创建，在编译后复制到 bin 文件夹。 通过使用 [IIS 服务器上的状态监视器][redfield]，也会将配置文件添加到 Web 应用。 如果使用了 [Azure 网站的扩展](azure-web-apps.md)或 [Azure VM 和虚拟机规模集的扩展](azure-vm-vmss-apps.md)，则会忽略此配置文件。
 
 没有等效的文件可以控制[网页中的 SDK][client]。
 
@@ -123,7 +123,7 @@ Microsoft.ApplicationInsights 包提供 SDK 的[核心 API](https://msdn.microso
 * `OperationNameTelemetryInitializer` 根据 HTTP 方法、ASP.NET MVC 控制器的名称以及为了处理请求而调用的操作，更新所有遥测项的 `RequestTelemetry` 的 `Name` 属性，以及 `Operation` 上下文的 `Name` 属性。
 * `OperationIdTelemetryInitializer` 或 `OperationCorrelationTelemetryInitializer` 在处理包含自动生成的 `RequestTelemetry.Id` 的请求时，更新跟踪的所有遥测项的 `Operation.Id` 上下文属性。
 * 对于包含从用户浏览器中运行的 Application Insights JavaScript 检测代码生成的 `ai_session` Cookie 提取的值的所有遥测项，`SessionTelemetryInitializer` 将更新 `Session` 上下文的 `Id` 属性。
-* `SyntheticTelemetryInitializer` 或 `SyntheticUserAgentTelemetryInitializer` 在处理来自综合源（例如可用性测试或搜索引擎 Bot）的请求时，更新跟踪的所有遥测项的 `User`、`Session` 和 `Operation` 上下文属性。 默认情况下，[指标资源管理器](../../azure-monitor/app/metrics-explorer.md)不显示综合遥测数据。
+* `SyntheticTelemetryInitializer` 或 `SyntheticUserAgentTelemetryInitializer` 在处理来自综合源（例如可用性测试或搜索引擎 Bot）的请求时，更新跟踪的所有遥测项的 `User`、`Session` 和 `Operation` 上下文属性。 默认情况下，[指标资源管理器](../../azure-monitor/platform/metrics-charts.md)不显示综合遥测数据。
 
     `<Filters>` 设置请求的标识属性。
 * 对于包含从用户浏览器中运行的 Application Insights JavaScript 检测代码生成的 `ai_user` Cookie 提取的值的所有遥测项，`UserTelemetryInitializer` 将更新 `User` 上下文的 `Id` 和 `AcquisitionDate` 属性。
@@ -168,65 +168,6 @@ Microsoft.ApplicationInsights 包提供 SDK 的[核心 API](https://msdn.microso
      </Add>
    </TelemetryProcessors>
 
-```
-
-
-
-## <a name="channel-parameters-java"></a>通道参数 (Java)
-这些参数会影响到 Java SDK 存储和刷新它所收集的遥测数据的方式。
-
-#### <a name="maxtelemetrybuffercapacity"></a>MaxTelemetryBufferCapacity
-可以存储在 SDK 内存中的遥测项数。 达到此数目时，将刷新遥测缓冲区 - 即，将遥测项发送到 Application Insights 服务器。
-
-* 最小值：1
-* 最大值：1000
-* 默认值：500
-
-```
-
-  <ApplicationInsights>
-      ...
-      <Channel>
-       <MaxTelemetryBufferCapacity>100</MaxTelemetryBufferCapacity>
-      </Channel>
-      ...
-  </ApplicationInsights>
-```
-
-#### <a name="flushintervalinseconds"></a>FlushIntervalInSeconds
-确定以何种频率刷新存储在内存中的数据（以及将数据发送到 Application Insights）。
-
-* 最小值：1
-* 最大值：300
-* 默认值：5
-
-```
-
-    <ApplicationInsights>
-      ...
-      <Channel>
-        <FlushIntervalInSeconds>100</FlushIntervalInSeconds>
-      </Channel>
-      ...
-    </ApplicationInsights>
-```
-
-#### <a name="maxtransmissionstoragecapacityinmb"></a>MaxTransmissionStorageCapacityInMB
-确定分配给本地磁盘上持久性存储的最大大小，以 MB 为单位。 此存储用于保存无法发送到 Application Insights 终结点的遥测项。 达到该存储大小时，将丢弃新遥测项。
-
-* 最小值：1
-* 最大值：100
-* 默认值：10
-
-```
-
-   <ApplicationInsights>
-      ...
-      <Channel>
-        <MaxTransmissionStorageCapacityInMB>50</MaxTransmissionStorageCapacityInMB>
-      </Channel>
-      ...
-   </ApplicationInsights>
 ```
 
 ## <a name="instrumentationkey"></a>InstrumentationKey
@@ -359,7 +300,4 @@ TelemetryConfiguration.Active.ApplicationIdProvider = new DictionaryApplicationI
 [new]: ../../azure-monitor/app/create-new-resource.md 
 [redfield]: ../../azure-monitor/app/monitor-performance-live-website-now.md
 [start]: ../../azure-monitor/app/app-insights-overview.md
-
-
-
 

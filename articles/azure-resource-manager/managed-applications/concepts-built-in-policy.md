@@ -6,12 +6,12 @@ ms.topic: conceptual
 origin.date: 09/06/2019
 ms.date: 01/20/2020
 ms.author: v-yeche
-ms.openlocfilehash: 99ddc49ac325e8c99d684a35624ce40e0e3d68a0
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 268c58b869728847ac72313897db50691c740ef7
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "76170625"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199378"
 ---
 # <a name="deploy-associations-for-a-managed-application-using-azure-policy"></a>使用 Azure Policy 为托管应用程序部署关联
 
@@ -25,12 +25,12 @@ Azure 策略可用于部署关联，将资源关联到托管应用程序。 本�
 - 要关联的资源类型 - 这些资源类型是要关联到托管应用程序的资源类型的列表。 可以使用同一策略将多个资源类型关联到一个托管应用程序。
 - 关联名称前缀 - 此字符串是要添加到正在创建的关联资源的名称中的前缀。 默认值为“DeployedByPolicy”。
 
-DeployIfNotExists 评估 它在资源提供程序处理了所选资源类型的创建或更新资源请求之后运行，该计算返回了成功状态代码。 目前可以使用任何模板部署方法部署此模板。
-有关关联的详细信息，请参阅 [Azure 自定义提供程序资源载入](../custom-providers/concepts-resource-onboarding.md)
+<!--Not Available on custom-providers-->
+<!--Not Available on see [Azure Custom Providers resource onboarding](../custom-providers/concepts-resource-onboarding.md)-->
 
 ## <a name="how-to-use-the-deploy-associations-built-in-policy"></a>如何使用部署关联内置策略 
 
-### <a name="prerequisites"></a>必备条件
+### <a name="prerequisites"></a>先决条件
 如果托管应用程序需要订阅的权限来执行操作，则在不授权的情况下，关联资源的策略部署将不起作用。
 
 ### <a name="policy-assignment"></a>策略分配

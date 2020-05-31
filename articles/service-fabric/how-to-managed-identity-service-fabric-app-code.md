@@ -4,13 +4,17 @@ description: 如何使用 Azure Service Fabric 应用程序代码中的托管标
 ms.topic: article
 ms.date: 05/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: e6686d8a0531cb687b59819b39f1bb736fc6be33
-ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
+ms.openlocfilehash: aaac7e0613f83d4cf46db1b54d7d4c4ceaac011e
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "83001982"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199482"
 ---
+<!--Not Available on MOONCAKE-->
+<!--RELEASE BEFORE CONFIRMATION-->
+<!--https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities#azure-services-that-support-managed-identities-for-azure-resources-->
+
 # <a name="how-to-leverage-a-service-fabric-applications-managed-identity-to-access-azure-services"></a>如何利用 Service Fabric 应用程序的托管标识访问 Azure 服务
 
 Service Fabric 应用程序可以利用托管标识来访问支持基于 Azure Active Directory 的身份验证的其他 Azure 资源。 应用程序可以获取代表其标识（由系统分配或用户分配）的[访问令牌](../active-directory/develop/developer-glossary.md#access-token)，并使用该令牌作为“持有者”令牌在其他服务（也称为[受保护的资源服务器](../active-directory/develop/developer-glossary.md#resource-server)）中验证自己的身份。 令牌表示分配给 Service Fabric 应用程序的标识，只会颁发给共享该标识的 Azure 资源（包括 SF 应用程序）。 有关托管标识的详细介绍以及系统分配的标识和用户分配的标识之间的区别，请参阅[托管标识概述](../active-directory/managed-identities-azure-resources/overview.md)文档。 在整篇文章中，我们将支持托管标识的 Service Fabric 应用程序称作[客户端应用程序](../active-directory/develop/developer-glossary.md#client-application)。

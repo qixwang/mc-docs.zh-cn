@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 647680b9cde0bcd8300aff36eb924963b02764e5
-ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
+ms.openlocfilehash: e7251925878284b76c251d476e084aec86d6d5ba
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "83002271"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199801"
 ---
 <!--Verified successfully-->
 # <a name="interconnect-with-china-using-azure-virtual-wan-and-secure-hub"></a>使用 Azure 虚拟 WAN 和安全中心与中国互连
@@ -94,7 +94,9 @@ ms.locfileid: "83002271"
 
 <!--Not Available on  [ExpressRoute Global Reach](../expressroute/expressroute-global-reach.md)-->
 
-ExpressRoute Global Reach 在某些区域不可用。 例如，如果需要与巴西或印度互连，需要利用[云交换提供商](../expressroute/expressroute-locations.md#connectivity-through-exchange-providers)来提供路由服务。
+ExpressRoute Global Reach 在某些区域不可用。 例如，如果需要与巴西或印度互连，需要利用[云交换提供商](../expressroute/expressroute-locations.md)来提供路由服务。
+
+<!--Not Available on #connectivity-through-exchange-providers-->
 
 下图显示了此方案的上述两种示例连接。
 
@@ -132,7 +134,9 @@ ExpressRoute Global Reach 在某些区域不可用。 例如，如果需要与�
 <a name="option-2"></a>
 ### <a name="option-2-expressroute-and-sdwan-or-vpn"></a>选项 2：ExpressRoute 和 SDWAN 或 VPN
 
-本部分讨论了在香港使用 ExpressRoute 并对其他分支使用 VPN/SDWAN 的设计。 此选项展示了如何使用在香港终止流量的 ExpressRoute 以及通过 SDWAN 或 VPN 连接的其他分支。 香港的 ExpressRoute 目前仅可供少量提供商使用，可以在 [Express Route 合作伙伴](../expressroute/expressroute-locations-providers.md#global-commercial-azure)列表中找到这些提供商。
+本部分讨论了在香港使用 ExpressRoute 并对其他分支使用 VPN/SDWAN 的设计。 此选项展示了如何使用在香港终止流量的 ExpressRoute 以及通过 SDWAN 或 VPN 连接的其他分支。 香港的 ExpressRoute 目前仅可供少量提供商使用，可以在 [Express Route 合作伙伴](../expressroute/expressroute-locations-providers.md)列表中找到这些提供商。
+
+<!--Not Available on #global-commercial-azure-->
 
 ![中国大陆到香港的流量 - ExpressRoute](./media/interconnect-china/expressroute.png)
 

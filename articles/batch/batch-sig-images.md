@@ -1,20 +1,16 @@
 ---
-title: 使用共享映像库创建自定义池 - Azure Batch | Microsoft Docs
+title: 使用共享映像库创建自定义池
 description: 使用共享映像库创建 Batch 池，以便将自定义映像预配到计算节点，这些节点包含应用程序所需的软件和数据。 自定义映像是配置计算节点以运行 Batch 工作负载的高效方法。
-services: batch
-author: LauraBrenner
-manager: evansma
-ms.service: batch
 ms.topic: article
 origin.date: 08/28/2019
 ms.date: 04/27/2020
 ms.author: v-tawe
-ms.openlocfilehash: 119601efe7f25e0d2249b43921e40cc8c7f4c96e
-ms.sourcegitcommit: 1fbdefdace8a1d3412900c6c3f89678d8a9b29bc
+ms.openlocfilehash: bb8376fa59632b7c39e107c0b050d318f4a172db
+ms.sourcegitcommit: cbaa1aef101f67bd094f6ad0b4be274bbc2d2537
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82886881"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84126603"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-custom-pool"></a>使用共享映像库创建自定义池
 
@@ -43,7 +39,7 @@ ms.locfileid: "82886881"
 > [!NOTE]
 > 需要使用 Azure AD 进行身份验证。 如果使用共享密钥身份验证，则会出现身份验证错误。  
 
-*  一个 Azure Batch 帐户。 若要创建 Batch 帐户，请参阅 Batch 快速入门（使用 [Azure 门户](quick-create-portal.md)或 [Azure CLI](quick-create-cli.md)）。
+* 一个 Azure Batch 帐户。 若要创建 Batch 帐户，请参阅 Batch 快速入门（使用 [Azure 门户](quick-create-portal.md)或 [Azure CLI](quick-create-cli.md)）。
 
 * **一个共享映像库映像**。 若要创建共享映像，需要具有或创建托管映像资源。 应该基于 VM 的 OS 磁盘快照及其附加的数据磁盘（可选）创建该映像。 有关详细信息，请参阅[准备托管映像](#prepare-a-managed-image)。
 
@@ -58,7 +54,7 @@ ms.locfileid: "82886881"
 * 带托管磁盘的通用 Azure VM
 * 已上传到云的通用本地 VHD
 
-若要使用自定义映像来可靠地缩放 Batch 池，建议仅使用第一种方法创建托管映像，即使用 VM 磁盘的快照。  请参阅以下步骤来准备 VM、创建快照，然后基于该快照创建映像。
+若要使用自定义映像来可靠地缩放 Batch 池，建议仅使用第一种方法创建托管映像，即使用 VM 磁盘的快照。 请参阅以下步骤来准备 VM、创建快照，然后基于该快照创建映像。
 
 ### <a name="prepare-a-vm"></a>准备 VM
 
@@ -141,11 +137,11 @@ private static void CreateBatchPool(BatchClient batchClient, VirtualMachineConfi
 在 Azure 门户中，使用以下步骤从共享映像创建池。
 
 1. 打开 [Azure 门户](https://portal.azure.cn)。
-1. 转到“Batch 帐户”  ，然后选择你的帐户。
-1. 选择“池”，然后选择“添加”，以便创建新池。  
-1. 在“映像类型”部分，选择“共享映像库”。  
+1. 转到“Batch 帐户”，然后选择你的帐户。
+1. 选择“池”，然后选择“添加”，以便创建新池。 
+1. 在“映像类型”部分，选择“共享映像库”。 
 1. 使用托管映像的相关信息完成剩余部分。
-1. 选择“确定”  。
+1. 选择“确定” 。
 
 ![通过门户使用共享映像创建池。](media/batch-sig-images/create-custom-pool.png)
 

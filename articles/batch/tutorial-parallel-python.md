@@ -1,22 +1,18 @@
 ---
-title: 运行并行工作负荷 - Azure Batch Python
+title: 运行并行工作负载
 description: 教程 - 在 Azure Batch 中使用 Batch Python 客户端库通过 ffmpeg 并行处理媒体文件
-services: batch
-author: lingliw
-manager: digimobile
-ms.service: batch
 ms.devlang: python
 ms.topic: tutorial
 origin.date: 11/29/2018
 ms.date: 09/23/2019
 ms.author: v-lingwu
 ms.custom: mvc
-ms.openlocfilehash: 8aa6054f581c090a5011bc8770a9217cc26b6094
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 442937edbc83feaa4f1e3e143fe500e663acc6fc
+ms.sourcegitcommit: cbaa1aef101f67bd094f6ad0b4be274bbc2d2537
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77028591"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84126773"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-python-api"></a>教程：使用 Python API 通过 Azure Batch 运行并行工作负荷
 
@@ -34,7 +30,7 @@ ms.locfileid: "77028591"
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * [Python 2.7、3.3 或更高版本](https://www.python.org/downloads/)
 
@@ -214,7 +210,7 @@ batch_service_client.job.add(job)
 
 ### <a name="create-tasks"></a>创建任务
 
-应用通过调用 `add_tasks` 在作业中创建任务。 这个定义的函数使用 [TaskAddParameter](https://docs.microsoft.com/python/api/azure-batch/azure.batch.models.taskaddparameter) 类创建任务对象的列表。 每个任务都运行 ffmpeg，使用 `resource_files` 参数来处理输入 `command_line` 对象。 ffmpeg 此前已在创建池时安装在每个节点上。 在这里，命令行运行 ffmpeg 将每个输入 MP4（视频）文件转换为 MP3（音频）文件。
+应用通过调用 `add_tasks` 在作业中创建任务。 这个定义的函数使用 [TaskAddParameter](https://docs.microsoft.com/python/api/azure-batch/azure.batch.models.taskaddparameter) 类创建任务对象的列表。 每个任务都运行 ffmpeg，使用 `command_line` 参数来处理输入 `resource_files` 对象。 ffmpeg 此前已在创建池时安装在每个节点上。 在这里，命令行运行 ffmpeg 将每个输入 MP4（视频）文件转换为 MP3（音频）文件。
 
 此示例在运行命令行后为 MP3 文件创建 [OutputFile](https://docs.microsoft.com/python/api/azure-batch/azure.batch.models.outputfile) 对象。 每个任务的输出文件（在此示例中为一个）都会使用任务的 `output_files` 属性上传到关联的存储帐户中的一个容器。
 

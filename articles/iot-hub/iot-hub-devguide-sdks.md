@@ -10,12 +10,12 @@ origin.date: 01/14/2019
 ms.author: v-yiso
 ms.custom: H1Hack27Feb2017
 ms.date: 05/11/2020
-ms.openlocfilehash: 8172fe5d8e4fb615a54bb9e92e97a8a2f101e5ab
-ms.sourcegitcommit: 95efd248f5ee3701f671dbd5cfe0aec9c9959a24
+ms.openlocfilehash: 644d37ced3417902d4e2eb67e8d4bc1b473f3ec0
+ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82507738"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84186927"
 ---
 # <a name="understand-and-use-azure-iot-hub-sdks"></a>了解和使用 Azure IoT 中心 SDK
 
@@ -66,8 +66,8 @@ Microsoft Azure IoT 设备 SDK 包含的代码可帮助构建连接到 Azure IoT
 
 * 添加到 [Maven](https://github.com/Azure/azure-iot-sdk-java/blob/master/doc/java-devbox-setup.md#for-the-device-sdk) 项目
 * [源代码](https://github.com/Azure/azure-iot-sdk-java)
-* [API 参考](/java/api/com.microsoft.azure.sdk.iot.device)
-* [模块参考](/java/api/com.microsoft.azure.sdk.iot.device._module_client?view=azure-java-stable)
+* [API 参考](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.sdk.iot.device)
+* [模块参考](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.sdk.iot.device._module_client?view=azure-java-stable)
 
 适用于 Node.js 的 Azure IoT 中心设备 SDK： 
 
@@ -102,7 +102,7 @@ Azure IoT 服务 SDK 包含的代码可帮助生成直接与 IoT 中心进行交
 
 * 添加到 [Maven](https://github.com/Azure/azure-iot-sdk-java/blob/master/doc/java-devbox-setup.md#for-the-service-sdk) 项目
 * [源代码](https://github.com/Azure/azure-iot-sdk-java)
-* [API 参考](/java/api/com.microsoft.azure.sdk.iot.service)
+* [API 参考](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.sdk.iot.service)
 
 适用于 Node.js 的 Azure IoT 中心服务 SDK： 
 
@@ -179,4 +179,4 @@ Azure IoT SDK 还提供了一组工具来帮助开发：
 * [用于设备孪生、作业和消息路由的 IoT 中心查询语言](iot-hub-devguide-query-language.md)
 * [配额和限制](iot-hub-devguide-quotas-throttling.md)
 * [IoT 中心 MQTT 支持](iot-hub-mqtt-support.md)
-* [IoT 中心 REST API 参考](/rest/api/iothub/)
+* [IoT 中心 REST API 参考](https://docs.microsoft.com/en-us/rest/api/iothub/)

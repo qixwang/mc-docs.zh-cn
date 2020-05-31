@@ -8,12 +8,12 @@ origin.date: 06/17/2019
 ms.date: 01/13/2020
 ms.author: v-tawe
 ms.custom: security-recommendations
-ms.openlocfilehash: d89b0a6253fe7305a432eebd20ad72516ee3a190
-ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
+ms.openlocfilehash: b1406840275aab244cad3d35d1f8c54c76a38288
+ms.sourcegitcommit: 8b77a146f74ebe2cb287821fe5fc13870f89467a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82588539"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83844169"
 ---
 # <a name="security-recommendations-for-app-service"></a>适用于应用服务的安全建议
 
@@ -52,12 +52,6 @@ ms.locfileid: "82588539"
 | 选择独立定价层 | 除了独立定价层，所有层都在 Azure 应用服务的共享网络基础结构上运行应用。
 | 在访问本地资源时使用安全连接 | 可以使用[混合连接](app-service-hybrid-connections.md)或[虚拟网络集成](web-sites-integrate-with-vnet.md)连接到本地资源。 |
 | 限制向入站网络流量公开 | 可以通过网络安全组限制网络访问并控制公开的终结点数。 |
-
-## <a name="monitoring"></a>监视
-
-| 建议 | 注释 |
-|-|-|
-|使用 Azure 安全中心标准层 | [Azure 安全中心](../security-center/security-center-app-services.md)以原生方式集成 Azure 应用服务。 它可以运行评估并提供安全建议。 |
 
 ## <a name="next-steps"></a>后续步骤
 

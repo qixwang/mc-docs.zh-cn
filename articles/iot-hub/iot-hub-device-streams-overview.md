@@ -7,12 +7,12 @@ ms.service: iot-hub
 ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: robinsh
-ms.openlocfilehash: 008bb005abe473d7f65354faa995c3f0cff2b9ed
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 88e87df729ed4a18f7fd8a66e639515ba2812f4c
+ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77068293"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84186895"
 ---
 # <a name="iot-hub-device-streams-preview"></a>IoT 中心设备流（预览版）
 
@@ -152,7 +152,7 @@ az iot hub devicestream show --name <YourIoTHubName>
 
 ## <a name="iot-hub-device-stream-samples"></a>IoT 中心设备流示例
 
-IoT 中心页上提供两个[快速入门示例](/azure/iot-hub)。 这些示例演示应用程序如何使用设备流。
+IoT 中心页上提供两个[快速入门示例](/iot-hub)。 这些示例演示应用程序如何使用设备流。
 
 * *echo* 示例演示如何以编程方式使用设备流（通过直接调用 SDK API）。
 

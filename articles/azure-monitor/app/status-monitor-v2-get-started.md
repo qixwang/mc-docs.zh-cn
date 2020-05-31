@@ -7,12 +7,12 @@ manager: digimobile
 origin.date: 08/22/2019
 ms.date: 04/23/2019
 ms.author: v-lingwu
-ms.openlocfilehash: c1c2b776fe09b5102655aecbe6e7679014cedc42
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 0426f2e4037fabbeb96ca8fccdd65cde5cc198df
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78850360"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199340"
 ---
 # <a name="get-started-with-azure-monitor-application-insights-agent-for-on-premises-servers"></a>本地服务器的 Azure Monitor Application Insights 代理入门
 
@@ -73,7 +73,7 @@ Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-xxxx-xxxx
 
  查看遥测：
 
-- [浏览指标](../../azure-monitor/app/metrics-explorer.md)，以便监视性能和使用情况。
+- [浏览指标](../../azure-monitor/platform/metrics-charts.md)，以便监视性能和使用情况。
 - [搜索事件和日志](../../azure-monitor/app/diagnostic-search.md)以诊断问题。
 - [使用分析](../../azure-monitor/log-query/log-query-overview.md)，以便进行更高级的查询。
 - [创建仪表板](../../azure-monitor/app/overview-dashboard.md)。

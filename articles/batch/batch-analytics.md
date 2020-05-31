@@ -1,23 +1,16 @@
 ---
 title: Azure Batch 分析
 description: 批处理分析中的主题包含可用于批处理服务资源的事件和警报的参考信息。
-services: batch
-author: lingliw
-manager: digimobile
-ms.assetid: ''
-ms.service: batch
 ms.topic: article
-ms.tgt_pltfrm: ''
-ms.workload: big-compute
 origin.date: 04/20/2017
 ms.date: 05/14/2018
 ms.author: v-lingwu
-ms.openlocfilehash: fd0b2b7cd7ab5ccdfc6edd58e9618c5b8dfb944c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 6031b51d90c0a5eef7911d1c42bfa7d4a8d45d6c
+ms.sourcegitcommit: cbaa1aef101f67bd094f6ad0b4be274bbc2d2537
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77497400"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84126737"
 ---
 # <a name="batch-analytics"></a>批处理分析
 批处理分析中的主题包含可用于批处理服务资源的事件和警报的参考信息。

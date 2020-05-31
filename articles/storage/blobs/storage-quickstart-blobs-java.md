@@ -4,22 +4,22 @@ description: 本快速入门介绍如何使用适用于 Java 的 Azure Blob 存�
 author: WenJason
 ms.author: v-jay
 origin.date: 01/27/2020
-ms.date: 03/30/2020
+ms.date: 06/01/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: c732534f58dee3ea14ef8e4b6d01262ff9e1a79b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 8da4d3d9c408da035263610e47b580223fd4540e
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80290339"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199658"
 ---
 # <a name="quickstart-manage-blobs-with-java-v12-sdk"></a>快速入门：使用 Java v12 SDK 管理 blob
 
 本快速入门介绍如何使用 Java 管理 blob。 Blob 是可以保存大量文本或二进制数据（包括图像、文档、流媒体和存档数据）的对象。 你将上传、下载和列出 Blob，并创建和删除容器。
 
-[API 参考文档](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/index.html) | [库源代码](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-blob) | [包 (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-blob?repo=jcenter) | [示例](/storage/common/storage-samples-java?toc=%2fstorage%2fblobs%2ftoc.json#blob-samples)
+[API 参考文档](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/index.html) | [库源代码](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-blob) | [包 (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-blob) | [示例](/storage/common/storage-samples-java?toc=%2fstorage%2fblobs%2ftoc.json#blob-samples)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -108,7 +108,7 @@ ms.locfileid: "80290339"
 <dependency>
     <groupId>com.azure</groupId>
     <artifactId>azure-storage-blob</artifactId>
-    <version>12.0.0</version>
+    <version>12.6.0</version>
 </dependency>
 ```
 

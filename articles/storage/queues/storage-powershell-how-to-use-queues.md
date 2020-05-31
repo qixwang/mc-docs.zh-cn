@@ -4,21 +4,21 @@ description: 如何使用 PowerShell 对 Azure 队列存储执行操作
 author: WenJason
 ms.author: v-jay
 origin.date: 05/15/2019
-ms.date: 03/30/2020
+ms.date: 06/01/2020
 ms.service: storage
 ms.subservice: queues
 ms.topic: conceptual
 ms.reviewer: cbrooks
-ms.openlocfilehash: 17ffbc2c53b1d9ab3b949ee9f00dbcd98a865d71
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: f00e37de9eb4f7783267c1afeb5a191b46c99041
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80290457"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199474"
 ---
 # <a name="perform-azure-queue-storage-operations-with-azure-powershell"></a>使用 Azure PowerShell 执行 Azure 队列存储操作
 
-Azure 队列存储是一项可存储大量消息的服务，用户可以通过 HTTP 或 HTTPS 从世界任何地方访问这些消息。 有关详细信息，请参阅 [Azure 队列简介](storage-queues-introduction.md)。 此操作指南文章介绍常见的队列存储操作。 学习如何：
+Azure 队列存储是一项可存储大量消息的服务，用户可以通过 HTTP 或 HTTPS 从世界任何地方访问这些消息。 有关详细信息，请参阅 [Azure 队列简介](storage-queues-introduction.md)。 此操作指南文章介绍常见的队列存储操作。 你将学习如何执行以下操作：
 
 > [!div class="checklist"]
 >
@@ -29,7 +29,7 @@ Azure 队列存储是一项可存储大量消息的服务，用户可以通过 H
 > * 删除消息
 > * 删除队列
 
-本操作指南需要 Azure PowerShell 模块 Az 0.7 或更高版本。 运行 `Get-Module -ListAvailable Az` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-Az-ps)。
+本操作指南需要 Azure PowerShell 模块 Az 0.7 或更高版本。 运行 `Get-Module -ListAvailable Az` 即可查找版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](https://docs.microsoft.com/powershell/azure/install-Az-ps)（安装 Azure PowerShell 模块）。
 
 队列的数据平面没有相应的 PowerShell cmdlet。 若要执行数据平面操作（如添加消息、读取消息和删除消息），必须使用 PowerShell 中公开的 .NET 存储客户端库。 创建消息对象，然后可以使用命令（例如 AddMessage）对该消息执行操作。 本文介绍如何执行该操作。
 
@@ -45,10 +45,10 @@ Connect-AzAccount -EnvironmentName AzureChinaCloud
 
 ## <a name="retrieve-list-of-locations"></a>检索位置列表
 
-如果你不知道要使用哪个位置，可以列出可用的位置。 显示列表后，找到要使用的位置。 本练习使用“中国东部”。  将此内容存储在变量 location  中，以供以后使用。
+如果你不知道要使用哪个位置，可以列出可用的位置。 显示列表后，找到要使用的位置。 本练习使用“中国东部”。 将此内容存储在变量 location 中，以供以后使用。
 
 ```powershell
-Get-AzLocation | select Location
+Get-AzLocation | Select-Object Location
 $location = "China East"
 ```
 
@@ -65,7 +65,7 @@ New-AzResourceGroup -ResourceGroupName $resourceGroup -Location $location
 
 ## <a name="create-storage-account"></a>创建存储帐户
 
-使用 [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/New-azStorageAccount) 创建具有本地冗余存储 (LRS) 的标准通用存储帐户。 获取用于定义要使用的存储帐户的存储帐户上下文。 对存储帐户执行操作时，引用上下文而不是重复提供凭据。
+使用 [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/New-azStorageAccount) 创建具有本地冗余存储 (LRS) 的标准常规用途存储帐户。 获取用于定义要使用的存储帐户的存储帐户上下文。 对存储帐户执行操作时，引用上下文而不是重复提供凭据。
 
 ```powershell
 $storageAccountName = "howtoqueuestorage"
@@ -104,7 +104,7 @@ Get-AzStorageQueue -Context $ctx | Select-Object Name
 
 ## <a name="add-a-message-to-a-queue"></a>向队列添加消息
 
-影响队列中的实际消息的操作使用 PowerShell 中公开的 .NET 存储客户端库。 若要在队列中添加消息，请创建消息对象 [Microsoft.Azure.Storage.Queue.CloudQueueMessage](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.queue._cloud_queue_message) 类的新实例。 接下来，调用 [AddMessage](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.queue._cloud_queue.addmessage) 方法。 可从字符串（UTF-8 格式）或字节数组创建 CloudQueueMessage。
+影响队列中的实际消息的操作使用 PowerShell 中公开的 .NET 存储客户端库。 若要在队列中添加消息，请创建消息对象 [Microsoft.Azure.Storage.Queue.CloudQueueMessage](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.queue.cloudqueuemessage) 类的新实例。 接下来，调用 [AddMessage](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.queue.cloudqueue.addmessage) 方法。 可从字符串（UTF-8 格式）或字节数组创建 CloudQueueMessage。
 
 以下示例演示如何向队列中添加消息。
 
@@ -133,7 +133,7 @@ $queue.CloudQueue.AddMessageAsync($QueueMessage)
 
 代码分两步从队列中读取消息。 调用 [Microsoft.Azure.Storage.Queue.CloudQueue.GetMessage](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueue.getmessage) 方法时，将获取队列中的下一条消息。 从 **GetMessage** 返回的消息变得对从此队列读取消息的任何其他代码不可见。 若要完成从队列中删除消息，请调用 [Microsoft.Azure.Storage.Queue.CloudQueue.DeleteMessage](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueue.deletemessage) 方法。 
 
-在以下示例中，你将读完三条队列消息，然后等待 10 秒（不可见超时）。 然后再次读取这三条消息，读取后，通过调用 DeleteMessage  删除该消息。 如果在删除消息后尝试读取队列，$queueMessage 将返回为 NULL。
+在以下示例中，你将读完三条队列消息，然后等待 10 秒（不可见超时）。 然后再次读取这三条消息，读取后，通过调用 DeleteMessage 删除该消息。 如果在删除消息后尝试读取队列，$queueMessage 将返回为 NULL。
 
 ```powershell
 # Set the amount of time you want to entry to be invisible after read from the queue

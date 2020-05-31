@@ -3,15 +3,15 @@ author: WenJason
 ms.service: storage
 ms.topic: include
 origin.date: 10/26/2018
-ms.date: 01/06/2020
+ms.date: 06/01/2020
 ms.author: v-jay
 ms.custom: seo-python-october2019
-ms.openlocfilehash: ff6e331403718a547c4b9db3455d7b65f35297f2
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 170ee3e7c7374b6fbc8845933735f4a4c12ed16f
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75624093"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199730"
 ---
 ## <a name="what-is-queue-storage"></a>什么是队列存储？
 
@@ -27,7 +27,7 @@ Azure 队列服务包含以下组件：
   
     可使用以下 URL 访问示意图中的某个队列：  
   
-    `http://myaccount.queue.core.chinacloudapi.cn/images-to-download`
+    `http://myaccount.queue.core.chinacloudapi.cn/incoming-orders`
 
 * **存储帐户：** 对 Azure 存储进行的所有访问都要通过存储帐户完成。 有关存储帐户的详细信息，请参阅[存储帐户概述](../articles/storage/common/storage-account-overview.md)。
 * **队列：** 一个队列包含一组消息。 所有消息必须位于相应的队列中。 请注意，队列名称必须全部小写。 有关命名队列的详细信息，请参阅 [命名队列和元数据](https://msdn.microsoft.com/library/azure/dd179349.aspx)。

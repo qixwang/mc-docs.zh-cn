@@ -14,14 +14,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 origin.date: 12/06/2018
-ms.date: 02/17/2020
+ms.date: 05/29/2020
 ms.author: v-tawe
-ms.openlocfilehash: b0dc0faa54a819424d4a8fbaed80d3b314767c9d
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: e9f5613eadb99624ed193d7e435f5a9619921163
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77067730"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199773"
 ---
 # <a name="azure-event-hubs-quotas-and-limits"></a>Azure 事件中心的配额和限制
 

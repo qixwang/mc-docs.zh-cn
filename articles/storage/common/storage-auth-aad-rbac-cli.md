@@ -7,16 +7,16 @@ author: WenJason
 ms.service: storage
 ms.topic: article
 origin.date: 07/25/2019
-ms.date: 01/06/2020
+ms.date: 06/01/2020
 ms.author: v-jay
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 13d6c04c7a8581834e4319cbc644225e1e4283e6
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 0eec3bfea9adb76328ac78c439c1f77775193092
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75624163"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199527"
 ---
 # <a name="use-azure-cli-to-assign-an-rbac-role-for-access-to-blob-and-queue-data"></a>使用 Azure CLI 为 blob 和队列数据分配 RBAC 角色
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 orgin.date: 06/25/2018
 ms.date: 02/17/2020
 ms.author: v-yiso
-ms.openlocfilehash: 7f23a5175d201083854f7b1c8768151de175520a
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: f8d49ef3460d7b8c94dd794a0abce8e7ffc8f117
+ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77068200"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84186936"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-c"></a>IoT 中心模块标识和模块孪生 (C) 入门
 
@@ -33,7 +33,7 @@ ms.locfileid: "77068200"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 有效的 Azure 帐户。 （如果没有帐户，只需几分钟即可创建一个[免费帐户][lnk-free-trial]。）
+* 有效的 Azure 帐户。 （如果没有帐户，只需几分钟即可创建一个[免费帐户](https://www.azure.cn/pricing/1rmb-trial/)。）
 
 * 最新 [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c)。
 
@@ -49,7 +49,7 @@ ms.locfileid: "77068200"
 
 ## <a name="create-a-device-identity-and-a-module-identity-in-iot-hub"></a>在 IoT 中心中创建设备标识和模块标识
 
-本部分将创建一个 C 应用，用于在 IoT 中心的标识注册表中创建设备标识和模块标识。 设备或模块无法连接到 IoT 中心，除非它在标识注册表中具有条目。 有关详细信息，请参阅 [IoT 中心开发人员指南](iot-hub-devguide-identity-registry.md)中的“标识注册表”  部分。 运行此控制台应用时，它会为设备和模块生成唯一的 ID 和密钥。 设备和模块在向 IoT 中心发送设备到云的消息时，使用这些值来标识自身。 ID 区分大小写。
+本部分将创建一个 C 应用，用于在 IoT 中心的标识注册表中创建设备标识和模块标识。 设备或模块无法连接到 IoT 中心，除非它在标识注册表中具有条目。 有关详细信息，请参阅 [IoT 中心开发人员指南](iot-hub-devguide-identity-registry.md)中的“标识注册表”部分。 运行此控制台应用时，它会为设备和模块生成唯一的 ID 和密钥。 设备和模块在向 IoT 中心发送设备到云的消息时，使用这些值来标识自身。 ID 区分大小写。
 
 将以下代码添加到 C 文件：
 
@@ -176,7 +176,7 @@ int main(void)
 }
 ```
 
-此应用在设备“myFirstDevice”下创建 ID 为“myFirstDevice”的设备标识，以及 ID 为“myFirstModule”的模块标识    。 （如果该模块 ID 已在标识注册表中，代码就只检索现有的模块信息。）然后，应用程序会显示该标识的主密钥。 在模拟模块应用中使用此密钥连接到 IoT 中心。
+此应用在设备“myFirstDevice”下创建 ID 为“myFirstDevice”的设备标识，以及 ID 为“myFirstModule”的模块标识  。 （如果该模块 ID 已在标识注册表中，代码就只检索现有的模块信息。）然后，应用程序会显示该标识的主密钥。 在模拟模块应用中使用此密钥连接到 IoT 中心。
 
 > [!NOTE]
 > IoT 中心标识注册表只存储设备和模块标识，以启用对 IoT 中心的安全访问。 标识注册表存储用作安全凭据的设备 ID 和密钥。 标识注册表还为每个设备存储启用/禁用标志，该标志可以用于禁用对该设备的访问。 如果应用程序需要存储其他特定于设备的元数据，则应使用特定于应用程序的存储。 没有针对模块标识的“已启用/已禁用”标记。 有关详细信息，请参阅 [IoT 中心开发人员指南](iot-hub-devguide-identity-registry.md)。
@@ -389,16 +389,3 @@ int main(void)
 
 * [设备管理入门](iot-hub-node-node-device-management-get-started.md)
 * [IoT Edge 入门](../iot-edge/quickstart-linux.md)
-
-
-<!-- Images. -->
-[15]: ./media\iot-hub-csharp-csharp-module-twin-getstarted/module-detail.JPG
-<!-- Links -->
-[lnk-hub-sdks]: iot-hub-devguide-sdks.md
-[lnk-free-trial]: http://www.azure.cn/pricing/1rmb-trial/
-[lnk-portal]: https://portal.azure.cn/
-
-[lnk-device-management]: iot-hub-node-node-device-management-get-started.md
-[lnk-iot-edge]: ../iot-edge/quickstart-linux.md
-[lnk-devguide-identity]: iot-hub-devguide-identity-registry.md
-[lnk-nuget-service-sdk]: https://www.nuget.org/packages/Microsoft.Azure.Devices/

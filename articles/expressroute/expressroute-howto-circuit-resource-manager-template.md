@@ -1,20 +1,20 @@
 ---
 title: Azure ExpressRoute 模板：创建 ExpressRoute 线路
 description: 创建、预配、删除和取消预配 ExpressRoute 线路。
-services: expressroute;azure-resource-manager
-author: cherylmc
+services: expressroute
+author: charwen
 ms.service: expressroute
 ms.topic: article
 origin.date: 11/13/2019
-ms.date: 12/02/2019
+ms.date: 06/08/2020
 ms.author: v-yiso
 ms.reviewer: ganesr
-ms.openlocfilehash: 854e20a7e13b6bfb222a2a104df6ace876be1b92
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 0711ef9c6e4260c44f155164b933d03b0a27e977
+ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74389450"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84186595"
 ---
 # <a name="create-an-expressroute-circuit-by-using-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建 ExpressRoute 线路
 
@@ -78,9 +78,9 @@ ms.locfileid: "74389450"
 
 在本教程中，请使用 Azure PowerShell 来部署模板。 如需其他模板部署方法，请参阅：
 
-* [使用 Azure 门户](../azure-resource-manager/resource-group-template-deploy-portal.md)。
-* [使用 Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md)。
-* [使用 REST API](../azure-resource-manager/resource-group-template-deploy-rest.md)。
+* [使用 Azure 门户](../azure-resource-manager/templates/deploy-portal.md)。
+* [使用 Azure CLI](../azure-resource-manager/templates/deploy-cli.md)。
+* [使用 REST API](../azure-resource-manager/templates/deploy-rest.md)。
 
 ## <a name="deprovisioning-and-deleting-an-expressroute-circuit"></a><a name="delete"></a>取消设置和删除 ExpressRoute 线路
 

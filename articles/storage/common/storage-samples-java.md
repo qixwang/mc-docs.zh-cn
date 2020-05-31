@@ -4,16 +4,16 @@ description: 查看、下载和运行 Azure 存储的示例代码和应用程序
 author: WenJason
 ms.author: v-jay
 origin.date: 02/13/2020
-ms.date: 03/09/2020
+ms.date: 06/01/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: f10c0475debbfed129ac2dfddccaea83a3d8386a
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: c20ffd77dcc8630b678c7e87b5bd9b65e3cdf08a
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78412247"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199798"
 ---
 # <a name="azure-storage-samples-using-v12-java-client-libraries"></a>使用 v12 Java 客户端库的 Azure 存储示例
 
@@ -110,7 +110,7 @@ ms.locfileid: "78412247"
    :::column-end:::
 :::row-end:::
 
-### <a name="troubleshooting"></a>故障排除
+### <a name="troubleshooting"></a>疑难解答
 :::row:::
    :::column span="2":::
       [使用容器客户端触发可恢复的错误](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/StorageErrorHandlingExample.java#L11)
@@ -210,19 +210,7 @@ ms.locfileid: "78412247"
       [获取对文件的访问控制](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/GetSetAccessControlExample.java#L104)
    :::column-end:::
 :::row-end:::
-:::row:::
-   :::column span="":::
-      [使用 Data Lake 文件客户端创建文件](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/UploadDownloadExample.java#L67)
-   :::column-end:::
-   :::column span="":::
-      [将数据追加到文件](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/UploadDownloadExample.java#L85)
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="2":::
-      [下载文件](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/UploadDownloadExample.java#L127)
-   :::column-end:::
-:::row-end:::
+
 
 ## <a name="azure-file-samples"></a>Azure 文件示例
 

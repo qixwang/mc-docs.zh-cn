@@ -15,12 +15,12 @@ ms.workload: na
 origin.date: 05/24/2018
 ms.date: 04/29/2019
 ms.author: v-yiso
-ms.openlocfilehash: 97eba137da96b5e4a16a51dca41d325f77a579a6
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 633360f15042dc04a7971506592b14226bf87e43
+ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "63829091"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84186918"
 ---
 # <a name="develop-for-constrained-devices-using-azure-iot-c-sdk"></a>使用 Azure IoT C SDK 针对受限制设备进行开发
 
@@ -90,12 +90,3 @@ C SDK 支持两种编程模型。 其中一组拥有具有 _LL_ 中缀的 API，
 若要详细了解 Azure IoT C SDK 体系结构，请参阅：
 - [Azure IoT C SDK 源代码](https://github.com/Azure/azure-iot-sdk-c/)
 - [适用于 C 语言的 Azure IoT 设备 SDK 简介](iot-hub-device-sdk-c-intro.md)
-
-------
-[lnk-cmake]: https://cmake.org/
-[lnk-devbox-setup]:  https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md
-[lnk-choosing-protocol]: iot-hub-devguide-protocols.md
-[lnk-hub-file-upload]: iot-hub-devguide-file-upload.md
-[lnk-strip]: https://en.wikipedia.org/wiki/Strip_(Unix)
-[lnk-serializer]: https://github.com/Azure/azure-iot-sdk-c/tree/master/serializer
-[lnk-parson]: https://github.com/kgabis/parson

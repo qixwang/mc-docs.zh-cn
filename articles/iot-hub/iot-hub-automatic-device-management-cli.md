@@ -9,12 +9,12 @@ ms.topic: conceptual
 origin.date: 12/13/2019
 ms.date: 04/06/2020
 ms.author: v-yiso
-ms.openlocfilehash: bf9018f809f114af48651902638be1f39e0b8af8
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 7d5576c09c62ac78530d44be9aca6acccbd64247
+ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80343583"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84186628"
 ---
 # <a name="automatic-iot-device-and-module-management-using-the-azure-cli"></a>使用 Azure CLI 进行 IoT 设备和模块的自动管理
 
@@ -236,7 +236,7 @@ az iot hub configuration delete --config-id [configuration id] \
 若要进一步探索 IoT 中心的功能，请参阅：
 
 * [IoT 中心开发人员指南](iot-hub-devguide.md)
-* [使用 Azure IoT Edge 将 AI 部署到边缘设备](../iot-edge/tutorial-simulate-device-linux.md)
+* [使用 Azure IoT Edge 将 AI 部署到边缘设备](../iot-edge/quickstart-linux.md)
 
 若要了解如何使用 IoT 中心设备预配服务启用零接触实时预配，请参阅： 
 

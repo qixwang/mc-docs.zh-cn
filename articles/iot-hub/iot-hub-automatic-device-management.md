@@ -9,12 +9,12 @@ ms.topic: conceptual
 origin.date: 12/13/2019
 ms.date: 01/13/2020
 ms.author: v-yiso
-ms.openlocfilehash: 3626811d0189510ea17544ad419faabf60972f78
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: ada6ff1c368c54eec24f6bcc692e8dc90ff4386f
+ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79293256"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84186629"
 ---
 # <a name="automatic-iot-device-and-module-management-using-the-azure-portal"></a>使用 Azure 门户自动管理 IoT 设备和模块
 
@@ -241,7 +241,7 @@ SELECT deviceId, moduleId FROM devices.modules
 若要进一步探索 IoT 中心的功能，请参阅：
 
 * [IoT 中心开发人员指南](iot-hub-devguide.md)
-* [使用 Azure IoT Edge 将 AI 部署到边缘设备](../iot-edge/tutorial-simulate-device-linux.md)
+* [使用 Azure IoT Edge 将 AI 部署到边缘设备](../iot-edge/quickstart-linux.md)
 
 若要了解如何使用 IoT 中心设备预配服务启用零接触实时预配，请参阅： 
 

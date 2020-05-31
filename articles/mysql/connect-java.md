@@ -7,14 +7,14 @@ ms.service: mysql
 ms.custom: mvc, devcenter, seo-java-july2019, seo-java-august2019
 ms.topic: quickstart
 ms.devlang: java
-origin.date: 12/02/2019
-ms.date: 02/10/2020
-ms.openlocfilehash: 2248fb2a69e25c44a63cf48ce87f4ec3c6cc2439
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+origin.date: 3/18/2020
+ms.date: 06/01/2020
+ms.openlocfilehash: 4622baf6f4033b79fff243705b0459b62a8aa87d
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77068309"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199757"
 ---
 # <a name="quickstart-use-java-to-connect-to-and-query-data-in-azure-database-for-mysql"></a>快速入门：使用 Java 连接到 Azure Database for MySQL 并查询其中的数据
 
@@ -42,9 +42,9 @@ ms.locfileid: "77068309"
 获取连接到 Azure Database for MySQL 所需的连接信息。 需要完全限定的服务器名称和登录凭据。
 
 1. 登录到 [Azure 门户](https://portal.azure.cn/)。
-2. 在 Azure 门户的左侧菜单中，选择“所有资源”  ，然后搜索已创建的服务器（例如 mydemoserver  ）。
+2. 在 Azure 门户的左侧菜单中，选择“所有资源”，然后搜索已创建的服务器（例如 mydemoserver）。
 3. 选择服务器名称。
-4. 从服务器的“概览”面板中记下“服务器名称”和“服务器管理员登录名”。    如果忘记了密码，也可通过此面板来重置密码。
+4. 从服务器的“概览”面板中记下“服务器名称”和“服务器管理员登录名”。   如果忘记了密码，也可通过此面板来重置密码。
  ![Azure Database for MySQL 服务器名称](./media/connect-java/azure-database-mysql-server-name.png)
 
 ## <a name="connect-create-table-and-insert-data"></a>进行连接，创建表，然后插入数据
@@ -66,18 +66,6 @@ public class CreateTableInsertRows {
         String database = "quickstartdb";
         String user = "myadmin@mydemoserver";
         String password = "<server_admin_password>";
-
-        // check that the driver is installed
-        try
-        {
-            Class.forName("org.mariadb.jdbc");
-        }
-        catch (ClassNotFoundException e)
-        {
-            throw new ClassNotFoundException("MariaDB JDBC driver NOT detected in library path.", e);
-        }
-
-        System.out.println("MariaDB JDBC driver detected in library path.");
 
         Connection connection = null;
 
@@ -151,6 +139,7 @@ public class CreateTableInsertRows {
 ```
 
 ## <a name="read-data"></a>读取数据
+
 使用以下代码，通过 **SELECT** SQL 语句读取数据。 [getConnection()](https://mariadb.com/kb/en/library/about-mariadb-connector-j/#using-drivermanager) 方法用于连接到 MySQL。 使用 [createStatement()](https://mariadb.com/kb/en/library/about-mariadb-connector-j/#creating-a-table-on-a-mariadb-or-mysql-server) 和 executeQuery() 方法来连接和运行 select 语句。 使用 ResultSet 对象处理结果。 
 
 将 host、database、user 和 password 参数替换为创建你自己的服务器和数据库时指定的值。
@@ -168,18 +157,6 @@ public class ReadTable {
         String database = "quickstartdb";
         String user = "myadmin@mydemoserver";
         String password = "<server_admin_password>";
-
-        // check that the driver is installed
-        try
-        {
-            Class.forName("org.mariadb.jdbc");
-        }
-        catch (ClassNotFoundException e)
-        {
-            throw new ClassNotFoundException("MariaDB JDBC driver NOT detected in library path.", e);
-        }
-
-        System.out.println("MariaDB JDBC driver detected in library path.");
 
         Connection connection = null;
 
@@ -256,18 +233,6 @@ public class UpdateTable {
         String user = "myadmin@mydemoserver";
         String password = "<server_admin_password>";
 
-        // check that the driver is installed
-        try
-        {
-            Class.forName("org.mariadb.jdbc");
-        }
-        catch (ClassNotFoundException e)
-        {
-            throw new ClassNotFoundException("MariaDB JDBC driver NOT detected in library path.", e);
-        }
-
-        System.out.println("MariaDB JDBC driver detected in library path.");
-
         Connection connection = null;
 
         // Initialize connection object
@@ -338,18 +303,6 @@ public class DeleteTable {
         String database = "quickstartdb";
         String user = "myadmin@mydemoserver";
         String password = "<server_admin_password>";
-        
-        // check that the driver is installed
-        try
-        {
-            Class.forName("org.mariadb.jdbc");
-        }
-        catch (ClassNotFoundException e)
-        {
-            throw new ClassNotFoundException("MariaDB JDBC driver NOT detected in library path.", e);
-        }
-
-        System.out.println("MariaDB JDBC driver detected in library path.");
 
         Connection connection = null;
 

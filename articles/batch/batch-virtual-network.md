@@ -1,21 +1,17 @@
 ---
 title: 在虚拟网络中预配池 - Azure Batch | Microsoft Docs
 description: 如何在 Azure 虚拟网络中创建 Batch 池，以便计算节点可以安全地与网络（例如文件服务器）中的其他 VM 通信。
-services: batch
-author: LauraBrenner
-manager: evansma
-ms.service: batch
 ms.topic: article
 origin.date: 04/03/2020
 ms.date: 04/27/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 52f7a01e08d323c0bdbb457a1c02aae263b1d687
-ms.sourcegitcommit: 1fbdefdace8a1d3412900c6c3f89678d8a9b29bc
+ms.openlocfilehash: d840db00bf2a127d826c078e1b8ec42507305e5f
+ms.sourcegitcommit: cbaa1aef101f67bd094f6ad0b4be274bbc2d2537
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82886868"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84126690"
 ---
 # <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>在虚拟网络中创建 Azure Batch 池
 

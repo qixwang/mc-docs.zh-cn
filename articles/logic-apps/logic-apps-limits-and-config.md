@@ -8,12 +8,12 @@ ms.topic: article
 origin.date: 03/12/2020
 ms.date: 03/30/2020
 ms.author: v-yeche
-ms.openlocfilehash: 6913ee0208b53882925bb467bf953819a5fc8ddb
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 8f9e764b877da2c6f1444cc18df5735f34ffae6f
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80243257"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199715"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure 逻辑应用的限制和配置信息
 
@@ -160,6 +160,7 @@ Azure 逻辑应用支持通过网关执行写入操作（包括插入和更新�
 | 请求 URL 字符限制 | 16,384 个字符 |
 |||
 
+<a name="retry-policy-limits"></a>
 #### <a name="retry-policy"></a>重试策略
 
 | 名称 | 限制 | 注释 |

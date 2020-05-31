@@ -7,14 +7,14 @@ ms.service: event-hubs
 ms.workload: core
 ms.topic: quickstart
 origin.date: 02/11/2020
-ms.date: 04/20/2020
+ms.date: 05/29/2020
 ms.author: v-tawe
-ms.openlocfilehash: 9ee50f02f083511aa469c358fbb84d40ab1f540e
-ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
+ms.openlocfilehash: 25dfd3c24810a74463feff4173905963f013e8a3
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82588742"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199762"
 ---
 # <a name="send-events-to-or-receive-events-from-event-hubs-by-using-python-azure-eventhub-version-5"></a>使用 Python（azure-eventhub 版本 5）向/从事件中心发送/接收事件
 本快速入门介绍如何使用 **azure-eventhub 版本 5** Python 包向事件中心发送事件以及从事件中心接收事件。
@@ -31,7 +31,7 @@ ms.locfileid: "82588742"
 - Python 2.7、3.5 或更高版本，装有 PIP 且已更新。
 - 事件中心的 Python 包。 
 
-    若要安装此包，请在路径中包含 Python 的命令提示符中运行以下命令：
+    若要安装该包，请在包路径中包含 Python 的命令提示符中运行以下命令：
 
     ```cmd
     pip install azure-eventhub
@@ -85,12 +85,16 @@ ms.locfileid: "82588742"
 ## <a name="receive-events"></a>接收事件
 本快速入门使用 Azure Blob 存储作为检查点存储。 检查点存储用于保存检查点（即，上次读取位置）。  
 
+> [!NOTE]
+> 如果在 Azure Stack Hub 上运行，该平台支持的存储 Blob SDK 版本可能不同于通常在 Azure 上提供的版本。 例如，如果在 [Azure Stack Hub 版本 2002](https://docs.azure.cn/azure-stack/user/event-hubs-overview) 上运行，则存储服务的最高可用版本为版本 2017-11-09。 在这种情况下，除了执行本部分中的步骤以外，还需要添加相关代码，将存储服务 API 版本 2017-11-09 作为目标。 如需通过示例来了解如何以特定的存储 API 版本为目标，请参阅 [GitHub 上的此示例](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs-checkpointstore-blob/src/samples/java/com/azure/messaging/eventhubs/checkpointstore/blob/EventProcessorWithCustomStorageVersion.java)。 有关 Azure Stack Hub 上支持的 Azure 存储服务版本的详细信息，请参阅 [Azure Stack Hub 存储：差异和注意事项](https://docs.azure.cn/azure-stack/user/azure-stack-acs-differences)。
+
+
 ### <a name="create-an-azure-storage-account-and-a-blob-container"></a>创建 Azure 存储帐户和 Blob 容器
 执行以下步骤，创建 Azure 存储帐户并在其中创建 Blob 容器：
 
 1. [创建 Azure 存储帐户](../storage/common/storage-account-create.md?tabs=azure-portal)
 2. [创建一个 blob 容器](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)
-3. [获取存储帐户的连接字符串](../storage/common/storage-configure-connection-string.md?#view-and-copy-a-connection-string)
+3. [获取存储帐户的连接字符串](../storage/common/storage-configure-connection-string.md)
 
 请务必记下连接字符串和容器名称，供稍后在接收代码中使用。
 

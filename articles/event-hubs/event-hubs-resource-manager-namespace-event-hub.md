@@ -12,15 +12,15 @@ ms.topic: quickstart
 ms.tgt_pltfrm: dotnet
 ms.workload: na
 origin.date: 02/11/2020
-ms.date: 03/09/2020
+ms.date: 05/29/2020
 ms.author: v-tawe
 ms.custom: subject-armqs
-ms.openlocfilehash: e8f6f0d3ce8f4c1cbeb78acd47a5245ecfbcfb6c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 2584e8cba5c721fd4a4df259eb13441c8b075958
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80586641"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199772"
 ---
 # <a name="quickstart-create-an-event-hub-by-using-an-azure-resource-manager-template"></a>快速入门：使用 Azure 资源管理器模板创建事件中心
 
@@ -73,8 +73,8 @@ To deploy the template:
 
    创建事件中心需要一些时间。
 
-1. 选择“复制”以复制 PowerShell 脚本。 
-1. 右键单击 shell 控制台，然后选择“粘贴”  。
+1. 选择“复制”以复制 PowerShell 脚本。
+1. 右键单击 shell 控制台，然后选择“粘贴”。
 
 ## <a name="verify-the-deployment"></a>验证部署
 
@@ -105,7 +105,7 @@ Write-Host "Press [ENTER] to continue ..."
 
 ## <a name="next-steps"></a>后续步骤
 
-在本文中，你创建了一个事件中心命名空间，并在该命名空间中创建了一个事件中心。 有关如何将事件发送到事件中心（或）从事件中心接收事件的分步说明，请参阅“发送和接收事件”教程  ：
+在本文中，你创建了一个事件中心命名空间，并在该命名空间中创建了一个事件中心。 有关如何将事件发送到事件中心（或）从事件中心接收事件的分步说明，请参阅“发送和接收事件”教程：
 
 - [.NET Core](get-started-dotnet-standard-send-v2.md)
 - [Java](get-started-java-send-v2.md)

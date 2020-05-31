@@ -1,5 +1,5 @@
 ---
-title: 使用 Go 连接到 Azure Database for MySQL
+title: 使用 Go 进行连接 - Azure Database for MySQL
 description: 本快速入门提供了多个 Go 代码示例，你可以使用它来连接到 Azure Database for MySQL 并查询其中的数据。
 author: WenJason
 ms.author: v-jay
@@ -7,14 +7,14 @@ ms.service: mysql
 ms.custom: mvc
 ms.devlang: go
 ms.topic: quickstart
-origin.date: 02/28/2018
-ms.date: 07/15/2019
-ms.openlocfilehash: f1bda654e5815de7bad5b834bcd732de02d3ca5a
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+origin.date: 03/18/2020
+ms.date: 06/01/2020
+ms.openlocfilehash: a4bf98d00d57a2f7cddfa5156a05ecabeed1f24e
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "67845407"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199707"
 ---
 # <a name="azure-database-for-mysql-use-go-language-to-connect-and-query-data"></a>Azure Database for MySQL：使用 Go 语言进行连接并查询数据
 
@@ -294,7 +294,7 @@ func main() {
     rows, err := db.Exec("UPDATE inventory SET quantity = ? WHERE name = ?", 200, "banana")
     checkError(err)
     rowCount, err := rows.RowsAffected()
-    fmt.Printf("Deleted %d row(s) of data.\n", rowCount)
+    fmt.Printf("Updated %d row(s) of data.\n", rowCount)
     fmt.Println("Done.")
 }
 ```

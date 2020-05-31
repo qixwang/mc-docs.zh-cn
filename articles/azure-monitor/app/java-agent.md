@@ -2,17 +2,16 @@
 title: Java Web 应用性能监视 - Azure Application Insights
 description: 使用 Application Insights 监视 Java 网站的扩展性能和使用情况。
 ms.topic: conceptual
-author: lingliw
-manager: digimobile
+author: Johnnytechn
 origin.date: 01/10/2019
-ms.date: 10/25/2019
-ms.author: v-lingwu
-ms.openlocfilehash: 02134c011f6abb99e818fbdff2e5e5e6f8a45133
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/28/2020
+ms.author: v-johya
+ms.openlocfilehash: 0ff1e3fd4c46cd852a30fe147a98da94c3b6e869
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78850456"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199703"
 ---
 # <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>监视 Java Web 应用中的依赖项、捕获的异常和方法执行时间
 
@@ -136,11 +135,7 @@ ms.locfileid: "78850456"
 [apiexceptions]: ../../azure-monitor/app/api-custom-events-metrics.md#track-exception
 [availability]: ../../azure-monitor/app/monitor-web-app-availability.md
 [diagnostic]: ../../azure-monitor/app/diagnostic-search.md
-[eclipse]: app-insights-java-eclipse.md
 [java]: java-get-started.md
 [javalogs]: java-trace-logs.md
-[metrics]: ../../azure-monitor/app/metrics-explorer.md
-
-
-
+[metrics]: ../../azure-monitor/platform/metrics-charts.md
 

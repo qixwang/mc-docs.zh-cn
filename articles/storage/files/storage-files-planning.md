@@ -5,15 +5,15 @@ author: WenJason
 ms.service: storage
 ms.topic: conceptual
 origin.date: 1/3/2020
-ms.date: 03/30/2020
+ms.date: 06/01/2020
 ms.author: v-jay
 ms.subservice: files
-ms.openlocfilehash: f8043ae9c97648c77c79213290ea204fd33e4989
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 144aa5073ce7d0bae9eb74ed816814c6c58b8880
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80290392"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199487"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>规划 Azure 文件部署
 可通过以下主要方式部署 [Azure 文件存储](storage-files-introduction.md)：直接装载无服务器 Azure 文件共享。
@@ -109,7 +109,7 @@ Azure 文件存储支持两种不同类型的加密：传输中加密（与装�
 > 文件共享性能与计算机网络限制、可用网络带宽、IO 大小、并行度和其他许多因素相关。 若要实现最大性能规模，请将负载分散到多个 VM。 有关一些常见性能问题和解决方法，请参阅[故障排除指南](storage-troubleshooting-files-performance.md)。
 
 #### <a name="bursting"></a>突发
-高级文件共享最大可按系数 3 突发其 IOPS。 突发是自动进行的，根据额度系统运行。 突发采用“尽力而为”的原则，突发限制没有保证，文件共享只能在限制范围内突发。 
+高级文件共享最大可按系数 3 突发其 IOPS。 突发是自动进行的，根据额度系统运行。 突发采用“尽力而为”的原则，突发限制没有保证，文件共享只能在限制范围内突发。
 
 每当文件共享的流量低于基线 IOPS 时，额度将累积在突发桶中。 例如，100 GiB 共享有 100 个基线 IOPS。 如果共享中的实际流量在特定 1 秒间隔内为 40 IOPS，则会将 60 个未使用的 IOPS 贷记到突发桶。 以后在操作超过基线 IOPS 时，将使用这些额度。
 
@@ -129,7 +129,7 @@ Azure 文件存储支持两种不同类型的加密：传输中加密（与装�
 ### <a name="enable-standard-file-shares-to-span-up-to-100-tib"></a>启用标准文件共享最高可以扩展到 100 TiB
 [!INCLUDE [storage-files-tiers-enable-large-shares](../../../includes/storage-files-tiers-enable-large-shares.md)]
 
-#### <a name="regional-availability"></a>区域可用性
+#### <a name="limitations"></a>限制
 [!INCLUDE [storage-files-tiers-large-file-share-availability](../../../includes/storage-files-tiers-large-file-share-availability.md)]
 
 ## <a name="redundancy"></a>冗余

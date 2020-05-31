@@ -1,11 +1,6 @@
 ---
 title: 使用 Python API 运行 Azure Batch 作业
 description: 使用 Batch Python 客户端库快速运行 Azure Batch 示例作业和任务。 了解 Batch 服务的关键概念。
-services: batch
-author: lingliw
-manager: digimobile
-ms.service: batch
-ms.devlang: python
 ms.topic: quickstart
 origin.date: 11/27/2018
 ms.date: 09/03/2019
@@ -13,12 +8,12 @@ ms.author: v-lingwu
 ms.custom:
 - seo-python-october2019
 - mvc
-ms.openlocfilehash: 8b3aa77b69b441ab03f2aae05a5860d51c1bcaeb
-ms.sourcegitcommit: 1fbdefdace8a1d3412900c6c3f89678d8a9b29bc
+ms.openlocfilehash: d075cfc9ccacfafba3bd6d2fbd5f8a48e3c69d9c
+ms.sourcegitcommit: cbaa1aef101f67bd094f6ad0b4be274bbc2d2537
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82886847"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84126722"
 ---
 # <a name="quickstart-use-python-api-to-run-an-azure-batch-job"></a>快速入门：使用 Python API 运行 Azure Batch 作业
 
@@ -154,7 +149,7 @@ batch_client = batch.BatchServiceClient(
 
 节点数 (`_POOL_NODE_COUNT`) 和 VM 大小 (`_POOL_VM_SIZE`) 是定义的常数。 此示例默认创建的池包含 2 个大小为 *Standard_A1_v2* 的节点。 就此快速示例来说，建议的大小在性能和成本之间达成了很好的平衡。
 
-[pool.add](/python/api/azure-batch/azure.batch.operations.pooloperations) 方法将池提交到 Batch 服务。
+[pool.add](https://docs.microsoft.com/python/api/azure-batch/azure.batch.operations.pooloperations) 方法将池提交到 Batch 服务。
 
 ```python
 new_pool = batch.models.PoolAddParameter(

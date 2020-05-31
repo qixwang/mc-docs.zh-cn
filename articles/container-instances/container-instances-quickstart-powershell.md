@@ -10,15 +10,15 @@ origin.date: 03/21/2019
 ms.date: 01/15/2020
 ms.author: v-yeche
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 54e035b30ff5513161bb3377c9d5f01ee2fb243e
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 6263cf58a769e9b42183e658df061a8dc1cbf15a
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79543879"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199585"
 ---
-<!--Verified successfully-->
-<!--Feedback invalid after Releasement-->
+<!--Verified Failed-->
+<!--Windows Container Instance is invalid on MOONCAKE-->
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 在 Azure 中部署容器实例
 
 使用 Azure 容器实例在 Azure 中快速方便地运行无服务器 Docker 容器。 当你不需要像 AzureKubernetes 服务这样的完整容器业务流程平台时，可以按需将应用程序部署到容器实例。
@@ -39,7 +39,7 @@ ms.locfileid: "79543879"
 
 Azure 容器实例（例如所有 Azure 资源）都必须部署到资源组中。 使用资源组可以组织和管理相关的 Azure 资源。
 
-首先，使用以下 [New-AzResourceGroup][New-AzResourceGroup] 命令在 chinaeast2  位置中创建一个名为“myResourceGroup”  的资源组：
+首先，使用以下 [New-AzResourceGroup][New-AzResourceGroup] 命令在 chinaeast2 位置中创建一个名为“myResourceGroup”的资源组：
 
  ```powershell
 New-AzResourceGroup -Name myResourceGroup -Location ChinaEast2

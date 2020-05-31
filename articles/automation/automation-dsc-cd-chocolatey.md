@@ -6,12 +6,12 @@ ms.subservice: dsc
 origin.date: 08/08/2018
 ms.date: 05/11/2020
 ms.topic: conceptual
-ms.openlocfilehash: 514ca4c4e80a7a5651bc6e701ff296e9d06e3916
-ms.sourcegitcommit: 7443ff038ea8afe511f7419d9c550d27fb642246
+ms.openlocfilehash: 9949cb978b01227be3d4344f08f8db5d4830e4b7
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "83001648"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199571"
 ---
 # <a name="provide-continuous-deployment-to-virtual-machines-using-automation-state-configuration-and-chocolatey"></a>使用 Automation State Configuration 和 Chocolatey 提供到虚拟机的持续部署
 
@@ -37,7 +37,7 @@ Azure 自动化是 Azure 中的托管服务，可让你使用 Runbook、节点�
 [apt-get](https://en.wikipedia.org/wiki/Advanced_Packaging_Tool) 之类的包管理器在 Linux 领域耳熟能详，但在 Windows 领域并不被大家所熟悉。
 [Chocolatey](https://chocolatey.org/) 就是这样一个工具，Scott Hanselman 的有关该工具主题的[博客](https://www.hanselman.com/blog/IsTheWindowsUserReadyForAptget.aspx)对此工具进行了深入介绍。 简单地说，Chocolatey 可让你使用命令行将中央存储库中的包安装到 Windows 操作系统。 可以创建和管理自己的存储库，Chocolatey 可以从指定的任何数量的存储库来安装包。
 
-[PowerShell DSC](/powershell/scripting/dsc/overview/overview) 是一个 PowerShell 工具，用于为计算机声明你所需要的配置。 例如，如果你想要安装 Chocolatey、安装 IIS、打开端口 80、安装网站 1.0.0 版，DSC 本地配置管理器 (LCM) 可实现这种配置。 DSC 拉取服务器包含一个计算机配置存储库。 每台计算机上的 LCM 定期检查计算机的配置是否与存储的配置匹配。 它可以报告状态，也可以尝试让计算机恢复到与存储的配置匹配。 可以编辑“拉”服务器上存储的配置，使一台计算机或一组计算机与更改的配置匹配。
+[PowerShell DSC](https://docs.microsoft.com/powershell/scripting/dsc/overview/overview) 是一个 PowerShell 工具，用于为计算机声明你所需要的配置。 例如，如果你想要安装 Chocolatey、安装 IIS、打开端口 80、安装网站 1.0.0 版，DSC 本地配置管理器 (LCM) 可实现这种配置。 DSC 拉取服务器包含一个计算机配置存储库。 每台计算机上的 LCM 定期检查计算机的配置是否与存储的配置匹配。 它可以报告状态，也可以尝试让计算机恢复到与存储的配置匹配。 可以编辑“拉”服务器上存储的配置，使一台计算机或一组计算机与更改的配置匹配。
 
 DSC 资源是具有特定功能（例如管理网络、Active Directory 或 SQL Server）的代码模块。 Chocolatey DSC 资源知道如何访问 NuGet 服务器（以及其他组件）、下载包、安装包，等等。 [PowerShell 库](https://www.powershellgallery.com/packages?q=dsc+resources&prerelease=&sortOrder=package-title)中有其他许多 DSC 资源。 可将这些模块安装到 Azure Automation State Configuration 拉取服务器以供配置使用。
 
@@ -107,7 +107,7 @@ New-AzureRmAutomationAccount –ResourceGroupName MY-AUTOMATION-RG –Location M
 
 7. 运行以下命令。
 
-    ```azurepowershell-interactive
+    ```azurepowershell
     New-AzureRmAutomationModule `
       -ResourceGroupName MY-AUTOMATION-RG -AutomationAccountName MY-AUTOMATION-ACCOUNT `
       -Name MODULE-NAME –ContentLinkUri 'https://STORAGE-URI/CONTAINERNAME/MODULE-NAME.zip'

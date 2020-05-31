@@ -1,21 +1,18 @@
 ---
 title: 使用 Azure Functions 触发批处理作业
 description: 教程 - 在扫描文档添加到存储 Blob 时将 OCR 应用于这些文档
-author: lingliw
-manager: digimobile
-ms.service: batch
 ms.devlang: dotnet
 ms.topic: tutorial
 origin.date: 05/30/2019
 ms.date: 08/30/2019
 ms.author: v-lingwu
 ms.custom: mvc
-ms.openlocfilehash: f02f679a36ed5386287d65e6cde908109b5270f1
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 87a9661067af62d697c57fae0d667ed527ab7e1b
+ms.sourcegitcommit: cbaa1aef101f67bd094f6ad0b4be274bbc2d2537
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78850190"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84126772"
 ---
 # <a name="tutorial-trigger-a-batch-job-using-azure-functions"></a>教程：使用 Azure Functions 触发批处理作业
 

@@ -5,15 +5,16 @@ ms.topic: article
 origin.date: 07/25/2019
 ms.author: v-yeche
 ms.date: 01/06/2020
-ms.openlocfilehash: 46598e7f618cd152d68a2efd9b20ac2ed3ddd55e
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 8d727f085b0539b36b41ae2a0e61ef7ccb277daf
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75742453"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199496"
 ---
-<!--Not Available on "apiVersion": "2019-06-01-preview" on 12/12/2019 -->
+<!--Not Available on MOONCAKE-->
 <!--RELEASE BEFORE CONFIRMATION-->
+<!--https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities#azure-services-that-support-managed-identities-for-azure-resources-->
 # <a name="deploy-service-fabric-application-with-system-assigned-managed-identity-preview"></a>使用系统分配的托管标识部署 Service Fabric 应用程序（预览）
 
 若要访问 Azure Service Fabric 应用程序的托管标识功能，必须先在群集上启用托管标识令牌服务。 此服务负责使用 Service Fabric 应用程序的托管标识对这些应用程序进行身份验证，以及代表它们获取访问令牌。 启用此服务以后，即可在 Service Fabric Explorer 中左侧窗格的“系统”部分  看到它，它在其他系统服务旁边以 **fabric:/System/ManagedIdentityTokenService** 名称运行。

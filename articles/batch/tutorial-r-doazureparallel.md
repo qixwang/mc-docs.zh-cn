@@ -1,29 +1,24 @@
 ---
 title: 使用 Azure Batch 进行并行 R 模拟
 description: 教程 - 分步说明如何在 Azure Batch 中使用 R doAzureParallel 包运行 Monte Carlo 财务模拟
-services: batch
-author: lingliw
-manager: digimobile
-ms.assetid: ''
-ms.service: batch
 ms.devlang: r
 ms.topic: tutorial
 origin.date: 01/23/2018
 ms.date: 01/23/2019
 ms.author: v-lingwu
 ms.custom: mvc
-ms.openlocfilehash: 4cbb37deea6bcea7e54977b5e707dd507c393012
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 97ccd6081271523548ff2e315894b37e389b63c8
+ms.sourcegitcommit: cbaa1aef101f67bd094f6ad0b4be274bbc2d2537
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77028590"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84126771"
 ---
 # <a name="tutorial-run-a-parallel-r-simulation-with-azure-batch"></a>教程：使用 Azure Batch 运行并行 R 模拟 
 
 使用 [doAzureParallel](https://www.github.com/Azure/doAzureParallel) 包大规模运行并行 R 工作负荷。该包是一种轻型 R 包，允许直接从 R 会话使用 Azure Batch。 doAzureParallel 包在常用 [foreach](https://cran.r-project.org/web/packages/foreach/index.html) R 包的基础上生成。 doAzureParallel 执行 foreach 循环的每个迭代，将其作为 Azure Batch 任务提交。
 
-本教程介绍如何部署 Batch 池，然后直接在 RStudio 中通过 Azure Batch 运行并行 R 作业。 学习如何：
+本教程介绍如何部署 Batch 池，然后直接在 RStudio 中通过 Azure Batch 运行并行 R 作业。 你将学习如何执行以下操作：
  
 
 > [!div class="checklist"]
@@ -31,7 +26,7 @@ ms.locfileid: "77028590"
 > * 创建一个 Batch 池，作为 R 会话的并行后端
 > * 在池中运行示例并行模拟
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 已安装的 [R](https://www.r-project.org/) 发行版，例如 [Microsoft R Open](https://mran.microsoft.com/open)。 使用 R 3.3.1 或更高版。
 
@@ -96,7 +91,7 @@ setCredentials("credentials.json")
 
 ## <a name="create-a-batch-pool"></a>创建 Batch 池 
 
-doAzureParallel 包括一个函数，用于生成运行并行 R 作业所需的 Azure Batch 池（群集）。 节点运行基于 Ubuntu 的 Azure 数据科学虚拟机；Microsoft R Open 和常用 R 包已预安装在此映像上。 可以查看或自定义某些群集设置，例如节点的数量和大小。 
+doAzureParallel 包括一个函数，用于生成运行并行 R 作业所需的 Azure Batch 池（群集）。 这些节点运行基于 Ubuntu 的 [Azure 数据科学虚拟机](../machine-learning/data-science-virtual-machine/overview.md)。 Microsoft R Open 和常用 R 包已预装在此映像上。 可以查看或自定义某些群集设置，例如节点的数量和大小。 
 
 若要在工作目录中生成群集配置 JSON 文件，请执行以下操作： 
  
@@ -111,7 +106,7 @@ generateClusterConfig("cluster.json")
 * 将 `maxTasksPerNode` 增加到 *2*，以便充分利用每个节点上的两个核心
 * 将 `dedicatedNodes` 设置为 *0*，以便尝试适用于 Batch 的低优先级 VM。 将 `lowPriorityNodes` 的 `min` 设置为 *5*， 并将 `max` 设置为 *10*，或者根据需要选择更小的数字。 
 
-其余设置保留默认值，然后保存文件。 该属性应与下面类似：
+其余设置保留默认值，然后保存文件。 结果如下图所示：
 
 ```json
 {
@@ -227,7 +222,7 @@ closingPrices_p <- foreach(i = 1:100, .combine='c', .options.azure = opt) %dopar
 end_p <- Sys.time() 
 ```
 
-此模拟将任务分发到 Batch 池中的节点。 在 Azure 门户中，可以查看池的热度地图中的活动。 转到“Batch 帐户”   >   “myBatchAccount”。 单击“池”   >   “myPoolName”。 
+此模拟将任务分发到 Batch 池中的节点。 在 Azure 门户中，可以查看池的热度地图中的活动。 转到“Batch 帐户” > “myBatchAccount”。 单击“池” > “myPoolName”。 
 
 ![运行并行 R 任务的池的热度地图](media/tutorial-r-doazureparallel/pool.png)
 

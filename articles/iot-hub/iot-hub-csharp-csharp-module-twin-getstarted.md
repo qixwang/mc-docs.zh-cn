@@ -11,12 +11,12 @@ origin.date: 08/07/2019
 ms.date: 09/02/2019
 ms.author: v-yiso
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 377a57c32bd9f8a2f2a44a493de15a5de3849b44
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 31ded750e2e63621fdcdd7f9906d7557b505bc78
+ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "71156016"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84186835"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-net"></a>IoT 中心模块标识和模块孪生 (.NET) 入门
 
@@ -38,7 +38,7 @@ ms.locfileid: "71156016"
 
 * Visual Studio。
 
-* 有效的 Azure 帐户。 （如果没有帐户，只需几分钟即可创建一个[试用帐户][lnk-free-trial]。）
+* 有效的 Azure 帐户。 （如果没有帐户，只需几分钟即可创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。）
 
 ## <a name="create-a-hub"></a>创建中心
 
@@ -182,17 +182,5 @@ ms.locfileid: "71156016"
 若要继续了解 IoT 中心入门知识并浏览其他 IoT 方案，请参阅：
 
 * [设备管理入门](iot-hub-node-node-device-management-get-started.md)
+
 * [IoT Edge 入门](../iot-edge/quickstart-linux.md)
-
-
-<!-- Images. -->
-[13]: ./media\iot-hub-csharp-csharp-module-twin-getstarted/update-twins-csharp1.JPG
-[14]: ./media\iot-hub-csharp-csharp-module-twin-getstarted/install-sdk.png
-[15]: ./media\iot-hub-csharp-csharp-module-twin-getstarted/module-detail.JPG
-<!-- Links -->
-[lnk-hub-sdks]: iot-hub-devguide-sdks.md
-[lnk-free-trial]: http://www.azure.cn/pricing/1rmb-trial/
-[lnk-portal]: https://portal.azure.cn/
-
-[lnk-device-management]: iot-hub-node-node-device-management-get-started.md
-

@@ -2,25 +2,21 @@
 title: 配置调用 Web API 的守护程序应用 - Microsoft 标识平台 | Azure
 description: 了解如何为调用 Web API 的守护程序应用程序配置代码（应用配置）
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/10/2020
+ms.date: 05/28/2020
 ms.author: v-junlch
 ms.custom: aaddev
-ms.openlocfilehash: 3f34ab9994d5df0d53f6f647c2fa76ad7a17b29c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: c44270c8fc52393174b492a4990dc0ae5a395ec6
+ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79133814"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84186661"
 ---
 # <a name="daemon-app-that-calls-web-apis---code-configuration"></a>调用 Web API 的守护程序应用 - 代码配置
 
@@ -63,7 +59,7 @@ ms.locfileid: "79133814"
 
 [appsettings.json](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/master/1-Call-MSGraph/daemon-console/appsettings.json)，来自 [.NET Core 控制台守护程序](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2)示例。
 
-```JSon
+```json
 {
   "Instance": "https://login.partner.microsoftonline.cn/{0}",
   "Tenant": "[Enter here the tenantID or domain name for your Azure AD tenant]",
@@ -346,5 +342,5 @@ ConfidentialClientApplication cca =
 > [!div class="nextstepaction"]
 > [守护程序应用 - 获取应用的令牌](/active-directory/develop/scenario-daemon-acquire-token?tabs=java)
 
-<!-- Update_Description: wording update -->
+---
 

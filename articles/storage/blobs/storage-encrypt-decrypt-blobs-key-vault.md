@@ -7,16 +7,16 @@ author: WenJason
 ms.service: storage
 ms.topic: tutorial
 origin.date: 12/04/2019
-ms.date: 05/18/2020
+ms.date: 06/01/2020
 ms.author: v-jay
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: 17668a9ba6511c881dd72510c28436fe309bede1
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.openlocfilehash: fdb73ceab47948617f52113de9e51109e40d3f83
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83422630"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199663"
 ---
 # <a name="tutorial---encrypt-and-decrypt-blobs-using-azure-key-vault"></a>教程 - 使用 Azure 密钥保管库加密和解密 blob
 
@@ -24,7 +24,7 @@ ms.locfileid: "83422630"
 
 **估计完成时间：** 20 分钟
 
-有关 Azure Key Vault 的概述信息，请参阅[什么是 Azure Key Vault？](../../key-vault/key-vault-overview.md)。
+有关 Azure Key Vault 的概述信息，请参阅[什么是 Azure Key Vault？](../../key-vault/general/overview.md)。
 
 有关 Azure 存储客户端加密的概述信息，请参阅 [Azure 存储的客户端加密和 Azure Key Vault](../common/storage-client-side-encryption.md?toc=%2fstorage%2fblobs%2ftoc.json)。
 
@@ -49,7 +49,7 @@ ms.locfileid: "83422630"
 
 ## <a name="set-up-your-azure-key-vault"></a>设置 Azure 密钥保管库
 
-若要继续学习本教程，需要执行教程[快速入门：使用 .NET Web 应用在 Azure Key Vault 中设置和检索机密](../../key-vault/quick-create-net.md)中所述的以下步骤：
+若要继续学习本教程，需要执行教程[快速入门：使用 .NET Web 应用在 Azure Key Vault 中设置和检索机密](../../key-vault/secrets/quick-create-net.md)中所述的以下步骤：
 
 * 创建密钥保管库。
 * 将密钥或密码添加到密钥保管库。
@@ -161,7 +161,7 @@ KeyVaultKeyResolver cloudResolver = new KeyVaultKeyResolver(GetToken);
 // Retrieve the key that you created previously.
 // The IKey that is returned here is an RsaKey.
 var rsa = cloudResolver.ResolveKeyAsync(
-            "https://contosokeyvault.vault.azure.net/keys/TestRSAKey1", 
+            "https://contosokeyvault.vault.azure.cn/keys/TestRSAKey1", 
             CancellationToken.None).GetAwaiter().GetResult();
 
 // Now you simply use the RSA key to encrypt by setting it in the BlobEncryptionPolicy.

@@ -1,27 +1,27 @@
 ---
 title: 查询存储 - Azure Database for MySQL
-description: 了解 Azure Database for MySQL 中的查询存储功能，可以帮助你跟踪一段时间内的性能。
+description: 了解 Azure Database for MySQL 中的查询存储功能，该功能用于跟踪一段时间内的性能。
 author: WenJason
 ms.author: v-jay
 ms.service: mysql
 ms.topic: conceptual
-origin.date: 12/02/2019
-ms.date: 03/02/2020
-ms.openlocfilehash: ff3d4fbcfeb2267a6defd9b41e90d3cc0d6a9ae4
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+origin.date: 5/12/2020
+ms.date: 06/01/2020
+ms.openlocfilehash: a3ab9f34cb90d08c57ed418ccfd9759faec9aff7
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78154348"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199698"
 ---
 # <a name="monitor-azure-database-for-mysql-performance-with-query-store"></a>使用查询存储监视 Azure Database for MySQL 的性能
 
 > [!NOTE]
 > 将要查看的是 Azure Database for MySQL 的新服务。 若要查看经典 MySQL Database for Azure 的文档，请访问[此页](https://docs.azure.cn/zh-cn/mysql-database-on-azure/)。
 
-**适用于：** Azure Database for MySQL 5.7
+**适用于：** Azure Database for MySQL 5.7、8.0
 
-使用 Azure Database for MySQL 中的查询存储功能可以跟踪一段时间内的查询性能。 通过帮助快速查找运行时间最长且资源最密集的查询，查询存储可简化性能故障排除。 查询存储自动捕获查询和运行时统计信息的历史记录，并保留它们以供查看。 它按时间范围分隔数据，以便可以查看数据库使用模式。 所有用户、数据库和查询的数据都存储在 Azure Database for MySQL 实例上的 **mysql** 架构数据库中。
+Azure Database for MySQL 中的查询存储功能提供了一种方法来跟踪一段时间内的查询性能。 通过帮助快速查找运行时间最长且资源最密集的查询，查询存储可简化性能故障排除。 查询存储自动捕获查询和运行时统计信息的历史记录，并保留它们以供查看。 它按时间范围分隔数据，以便可以查看数据库使用模式。 所有用户、数据库和查询的数据都存储在 Azure Database for MySQL 实例上的 **mysql** 架构数据库中。
 
 ## <a name="common-scenarios-for-using-query-store"></a>使用查询存储的常见场景
 
@@ -38,7 +38,7 @@ ms.locfileid: "78154348"
 ### <a name="enable-query-store-using-the-azure-portal"></a>使用 Azure 门户启用查询存储
 
 1. 登录到 Azure 门户，选择你的 Azure Database for MySQL 服务器。
-1. 在菜单的“设置”部分中选择“服务器参数”   。
+1. 在菜单的“设置”部分中选择“服务器参数” 。
 1. 搜索 query_store_capture_mode 参数。
 1. 将值设置为 ALL，然后**保存**。
 
@@ -47,7 +47,7 @@ ms.locfileid: "78154348"
 1. 搜索 query_store_wait_sampling_capture_mode 参数。
 1. 将值设置为 ALL，然后**保存**。
 
-第一批数据可在 mysql 数据库中最长保留 20 分钟。
+留出最多 20 分钟以便第一批数据保存到 mysql 数据库中。
 
 ## <a name="information-in-query-store"></a>查询存储中的信息
 
@@ -82,8 +82,8 @@ SELECT * FROM mysql.query_store_wait_stats;
 | **观测** | **操作** |
 |---|---|
 |高锁定等待 | 检查受影响查询的查询文本，并确定目标实体。 在查询存储中查找修改同一实体的其他查询，这些查询经常执行和/或持续很长时间。 确定这些查询后，请考虑更改应用程序逻辑以提高并发性，或使用限制较少的隔离级别。 |
-|高缓冲 IO 等待 | 在查询存储中查找具有大量物理读取的查询。 如果它们匹配具有高 IO 等待的查询，考虑在基础实体上引入索引，以便进行搜索而不是扫描。 这将最小化查询的 IO 开销。 检查门户中服务器的“性能建议”，以查看是否存在可优化查询的此服务器的索引建议  。 |
-|高内存等待 | 在查询存储中查找消耗内存最多的查询。 这些查询可能会延迟受影响查询的进度。 检查门户中服务器的“性能建议”，以查看是否存在可优化这些查询的索引建议  。|
+|高缓冲 IO 等待 | 在查询存储中查找具有大量物理读取的查询。 如果它们匹配具有高 IO 等待的查询，考虑在基础实体上引入索引，以便进行搜索而不是扫描。 这将最小化查询的 IO 开销。 检查门户中服务器的“性能建议”，以查看是否存在可优化查询的此服务器的索引建议。 |
+|高内存等待 | 在查询存储中查找消耗内存最多的查询。 这些查询可能会延迟受影响查询的进度。 检查门户中服务器的“性能建议”，以查看是否存在可优化这些查询的索引建议。|
 
 ## <a name="configuration-options"></a>配置选项
 
@@ -112,7 +112,7 @@ SELECT * FROM mysql.query_store_wait_stats;
 
 ## <a name="views-and-functions"></a>视图和函数
 
-使用以下视图和函数查看并管理查询存储。 [选择特权公共角色](howto-create-users.md#how-to-create-additional-admin-users-in-azure-database-for-mysql)中的任何人都可使用这些视图来查看查询存储中的数据。 这些视图仅在 **mysql** 数据库中提供。
+使用以下视图和函数查看并管理查询存储。 具有[选择权限公共角色](howto-create-users.md#how-to-create-additional-admin-users-in-azure-database-for-mysql)的任何人都可使用这些视图来查看查询存储中的数据。 这些视图仅在 **mysql** 数据库中提供。
 
 删除文本和常数后，通过查看查询的结构来规范化查询。 如果除文本值之外两个查询相同，则它们将具有相同的哈希值。
 
@@ -178,7 +178,7 @@ SELECT * FROM mysql.query_store_wait_stats;
 - 如果 MySQL 服务器启用了参数 `default_transaction_read_only`，查询存储将无法捕获数据。
 - 如果遇到较长的 Unicode 查询（\>= 6000 个字节），查询存储功能可能会中断。
 - 等待统计信息的保留期为 24 小时。
-- 等待统计信息使用样本来捕获一部分事件。 可以使用参数 `query_store_wait_sampling_frequency` 修改频率。
+- 等待统计信息使用样本来捕获一部分事件。 可以使用参数 `query_store_wait_sampling_frequency` 来修改频率。
 
 ## <a name="next-steps"></a>后续步骤
 

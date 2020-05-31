@@ -10,12 +10,12 @@ ms.topic: conceptual
 origin.date: 04/26/2018
 ms.date: 09/30/2019
 ms.author: v-yiso
-ms.openlocfilehash: 420234eecfb4bd4ade07b21c7e9c7bfe5231062f
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 5d03fedf6d242eb7ce74503776500b287a6be663
+ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "71155924"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84186917"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-nodejs"></a>IoT 中心模块标识和模块孪生 (Node.js) 入门
 
@@ -30,13 +30,13 @@ ms.locfileid: "71155924"
 * **UpdateModuleTwinReportedProperties**，用于将更新的模块孪生报告属性发送到 IoT 中心。
 
 > [!NOTE]
-> 有关 Azure IoT SDK 的信息（可以使用这些 SDK 构建可在设备和解决方案后端上运行的应用程序），请参阅 [Azure IoT SDK][lnk-hub-sdks]。
+> 有关 Azure IoT SDK 的信息（可以使用这些 SDK 构建可在设备和解决方案后端上运行的应用程序），请参阅 [Azure IoT SDK](iot-hub-devguide-sdks.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
 * Node.js 版本 10.0.x 或更高版本。 [准备开发环境](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md)介绍了如何在 Windows 或 Linux 上安装本教程所用的 Node.js。
 
-* 有效的 Azure 帐户。 （如果没有帐户，只需几分钟即可创建一个[试用帐户][lnk-free-trial]。）
+* 有效的 Azure 帐户。 （如果没有帐户，只需几分钟即可创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。）
 
 ## <a name="create-an-iot-hub"></a>创建 IoT 中心
 
@@ -50,7 +50,7 @@ ms.locfileid: "71155924"
 
 ## <a name="create-a-device-identity-and-a-module-identity-in-iot-hub"></a>在 IoT 中心中创建设备标识和模块标识
 
-本部分将创建一个 Node.js 应用，用于在 IoT 中心的标识注册表中创建设备标识和模块标识。 设备或模块无法连接到 IoT 中心，除非它在标识注册表中具有条目。 有关详细信息，请参阅 [IoT 中心开发人员指南][lnk-devguide-identity]的“标识注册表”部分。 运行此控制台应用时，它会为设备和模块生成唯一的 ID 和密钥。 设备和模块在向 IoT 中心发送设备到云的消息时，使用这些值来标识自身。 ID 区分大小写。
+本部分将创建一个 Node.js 应用，用于在 IoT 中心的标识注册表中创建设备标识和模块标识。 设备或模块无法连接到 IoT 中心，除非它在标识注册表中具有条目。 有关详细信息，请参阅 [IoT 中心开发人员指南](iot-hub-devguide-identity-registry.md)的“标识注册表”部分。 运行此控制台应用时，它会为设备和模块生成唯一的 ID 和密钥。 设备和模块在向 IoT 中心发送设备到云的消息时，使用这些值来标识自身。 ID 区分大小写。
 
 1. 创建目录以保存代码。
 2. 在该目录中，首先运行 npm init -y 使用默认值创建一个空的 package.json  。 这是代码的项目文件。
@@ -117,10 +117,10 @@ ms.locfileid: "71155924"
 
 此应用在设备“myFirstDevice”下创建 ID 为“myFirstDevice”的设备标识，以及 ID 为“myFirstModule”的模块标识    。 （如果该模块 ID 已在标识注册表中，代码就只检索现有的模块信息。）然后，应用程序会显示该标识的主密钥。 在模拟模块应用中使用此密钥连接到 IoT 中心。
 
-5. 使用节点 add.js 运行它。 它将为设备标识提供一个连接字符串，并为模块标识提供另一个连接字符串。
+使用节点 add.js 运行它。 它将为设备标识提供一个连接字符串，并为模块标识提供另一个连接字符串。
 
-    > [!NOTE]
-    > IoT 中心标识注册表只存储设备和模块标识，以启用对 IoT 中心的安全访问。 标识注册表存储用作安全凭据的设备 ID 和密钥。 标识注册表还为每个设备存储启用/禁用标志，该标志可以用于禁用对该设备的访问。 如果应用程序需要存储其他特定于设备的元数据，则应使用特定于应用程序的存储。 没有针对模块标识的“已启用/已禁用”标记。 有关详细信息，请参阅 [IoT 中心开发人员指南][lnk-devguide-identity]。
+> [!NOTE]
+> IoT 中心标识注册表只存储设备和模块标识，以启用对 IoT 中心的安全访问。 标识注册表存储用作安全凭据的设备 ID 和密钥。 标识注册表还为每个设备存储启用/禁用标志，该标志可以用于禁用对该设备的访问。 如果应用程序需要存储其他特定于设备的元数据，则应使用特定于应用程序的存储。 没有针对模块标识的“已启用/已禁用”标记。 有关详细信息，请参阅 [IoT 中心开发人员指南](iot-hub-devguide-identity-registry.md)。
 
 ## <a name="update-the-module-twin-using-nodejs-device-sdk"></a>使用 Node.js 设备 SDK 更新模块孪生
 
@@ -128,7 +128,7 @@ ms.locfileid: "71155924"
 
 1. **获取模块连接字符串** - 登录到 [Azure 门户](https://portal.azure.cn/)。 导航到 IoT 中心并单击 IoT 设备。 查找并打开 myFirstDevice，可以看到 myFirstModule 已成功创建。 复制模块连接字符串。 下一步将需要它。
 
-    ![Azure 门户模块详细信息][15]
+   ![Azure 门户模块详细信息](./media/iot-hub-node-node-module-twin-getstarted/module-detail.png)
 
 2. 与上面步骤中的操作类似，为设备代码创建一个目录，使用 NPM 对它进行初始化并安装设备 SDK (**npm install -S azure-iot-device-amqp\@modules-preview**)。
 
@@ -211,17 +211,6 @@ ms.locfileid: "71155924"
 
 若要继续了解 IoT 中心入门知识并浏览其他 IoT 方案，请参阅：
 
-* [设备管理入门][lnk-device-management]
-* [IoT Edge 入门][lnk-iot-edge]
+* [设备管理入门](iot-hub-node-node-device-management-get-started.md)
 
-<!-- Images. -->
-[15]: ./media/iot-hub-csharp-csharp-module-twin-getstarted/module-detail.JPG
-<!-- Links -->
-[lnk-hub-sdks]: iot-hub-devguide-sdks.md
-[lnk-free-trial]: http://www.azure.cn/pricing/1rmb-trial/
-[lnk-portal]: https://portal.azure.cn/
-
-[lnk-device-management]: iot-hub-node-node-device-management-get-started.md
-[lnk-iot-edge]: ../iot-edge/quickstart-linux.md
-[lnk-devguide-identity]: iot-hub-devguide-identity-registry.md
-[lnk-nuget-service-sdk]: https://www.nuget.org/packages/Microsoft.Azure.Devices/
+* [IoT Edge 入门](../iot-edge/quickstart-linux.md)

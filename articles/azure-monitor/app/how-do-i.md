@@ -2,17 +2,16 @@
 title: 如何在 Azure Application Insights 中执行... | Azure Docs
 description: 有关 Application Insights 的常见问题解答。
 ms.topic: conceptual
-author: lingliw
-manager: digimobile
+author: Johnnytechn
 origin.date: 04/04/2017
-ms.date: 6/4/2019
-ms.author: v-lingwu
-ms.openlocfilehash: 2936ab8ab5960e293f16aca53992565935d84824
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/28/2020
+ms.author: v-johya
+ms.openlocfilehash: 9b91f1793efa5a7c1a3d0332dcaf14afd5342919
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78850427"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199711"
 ---
 # <a name="how-do-i--in-application-insights"></a>如何在 Application Insights 中执行...？
 ## <a name="get-an-email-when-"></a>... 时收到电子邮件
@@ -20,13 +19,13 @@ ms.locfileid: "78850427"
 设置[可用性 Web 测试](../../azure-monitor/app/monitor-web-app-availability.md)。
 
 ### <a name="email-if-my-site-is-overloaded"></a>站点过载时发送电子邮件
-针对“服务器响应时间”设置[警报](../../azure-monitor/app/alerts.md)。  介于 1 和 2 秒之间的阈值应可解决问题。
+针对“服务器响应时间”设置[警报](../../azure-monitor/app/alerts.md)。 介于 1 和 2 秒之间的阈值应可解决问题。
 
 ![](./media/how-do-i/030-server.png)
 
-应用还可能通过返回失败代码来表明资源紧张的迹象。 针对“失败的请求”设置警报。 
+应用还可能通过返回失败代码来表明资源紧张的迹象。 针对“失败的请求”设置警报。
 
-如果想要针对“服务器异常”设置警报，可能需要执行[其他一些设置](../../azure-monitor/app/asp-net-exceptions.md)才能看到数据。 
+如果想要针对“服务器异常”设置警报，可能需要执行[其他一些设置](../../azure-monitor/app/asp-net-exceptions.md)才能看到数据。
 
 ### <a name="email-on-exceptions"></a>发生异常时发送电子邮件
 1. [设置异常监视](../../azure-monitor/app/asp-net-exceptions.md)
@@ -49,7 +48,7 @@ ms.locfileid: "78850427"
 
     telemetry.TrackMetric("Alarm", 0.5);
 
-在[指标资源管理器](../../azure-monitor/app/metrics-explorer.md)中创建一个图表来查看警报：
+在[指标资源管理器](../../azure-monitor/platform/metrics-charts.md)中创建一个图表来查看警报：
 
 ![](./media/how-do-i/010-alarm.png)
 
@@ -72,7 +71,7 @@ ms.locfileid: "78850427"
 [使用 PowerShell 创建新警报](../../azure-monitor/app/alerts.md#automation)
 
 ## <a name="use-powershell-to-manage-application-insights"></a>使用 PowerShell 管理 Application Insights
-
+* [创建新资源](/azure-monitor/app/create-new-resource#creating-a-resource-automatically)
 * [创建新警报](../../azure-monitor/app/alerts.md#automation)
 
 ## <a name="separate-telemetry-from-different-versions"></a>不同版本中的单独遥测
@@ -86,7 +85,10 @@ ms.locfileid: "78850427"
 
 ## <a name="visualize-data"></a>可视化数据
 #### <a name="dashboard-with-metrics-from-multiple-apps"></a>包含来自多个应用的指标的仪表板
-* 在 [指标资源管理器](../../azure-monitor/app/metrics-explorer.md) 中，自定义图表并将它保存到收藏夹。 将图表固定到 Azure 仪表板。
+* 在 [指标资源管理器](../../azure-monitor/platform/metrics-charts.md) 中，自定义图表并将它保存到收藏夹。 将图表固定到 Azure 仪表板。
+
+#### <a name="dashboard-with-data-from-other-sources-and-application-insights"></a>包含来自其他源和 Application Insights 的数据的仪表板
+* [将遥测数据导出到 Power BI](../../azure-monitor/app/export-power-bi.md )。
 
 或
 
@@ -150,7 +152,7 @@ ms.locfileid: "78850427"
 * **ASP.NET Core 应用程序** - 按照 [ApplicationInsights ASP.NET Core](../../azure-monitor/app/asp-net-core.md#configuring-or-removing-default-telemetrymodules) 中的遥测模块配置选项进行操作
 
 ## <a name="view-system-performance-counters"></a>查看系统性能计数器
-可以在指标资源管理器中显示的指标信息是一组系统性能计数器。 有一个标题为“服务器”的预定义边栏选项卡显示了其中的多个计数器。 
+可以在指标资源管理器中显示的指标信息是一组系统性能计数器。 有一个标题为“服务器”的预定义边栏选项卡显示了其中的多个计数器。
 
 ![打开 Application Insights 资源并单击“服务器”](./media/how-do-i/121-servers.png)
 
@@ -160,9 +162,6 @@ ms.locfileid: "78850427"
 * **Unix 服务器** - [安装 collectd](../../azure-monitor/app/java-collectd.md)
 
 ### <a name="to-display-more-performance-counters"></a>显示更多性能计数器
-* 首先[添加一个新图表](../../azure-monitor/app/metrics-explorer.md)，然后查看计数器是否出现在提供的基本集内。
+* 首先[添加一个新图表](../../azure-monitor/platform/metrics-charts.md)，然后查看计数器是否出现在提供的基本集内。
 * 如果没有，请[将计数器添加到性能计数器模块收集的集内](../../azure-monitor/app/performance-counters.md)。
-
-
-
 

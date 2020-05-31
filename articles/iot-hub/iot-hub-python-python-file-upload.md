@@ -11,12 +11,12 @@ ms.workload: na
 origin.date: 03/31/2020
 ms.date: 05/11/2020
 ms.author: v-yiso
-ms.openlocfilehash: 6093b38930e413963e28ea239cdba54275d72835
-ms.sourcegitcommit: 95efd248f5ee3701f671dbd5cfe0aec9c9959a24
+ms.openlocfilehash: b3ea85ac8f1aa20f66c15114d1dd07b241c2c753
+ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82507710"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84186910"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-python"></a>使用 IoT 中心将文件从设备上传到云 (Python)
 
@@ -214,15 +214,3 @@ ms.locfileid: "82507710"
 * [Azure Blob 存储文档](/storage/blobs/)
 
 * [适用于 Python API 的 Azure Blob 存储文档](https://docs.microsoft.com/python/api/overview/azure/storage-blob-readme?view=azure-python)
-
-
-
-<!-- Links -->
-[Azure IoT Developer Center]: /develop/iot
-
-[lnk-create-hub]: iot-hub-rm-template-powershell.md
-[lnk-c-sdk]: iot-hub-device-sdk-c-intro.md
-[lnk-sdks]: iot-hub-devguide-sdks.md
-[lnk-python-download]: https://www.python.org/downloads/
-[lnk-visual-c-redist]: http://www.microsoft.com/download/confirmation.aspx?id=48145
-[lnk-install-pip]: https://pip.pypa.io/en/stable/installing/

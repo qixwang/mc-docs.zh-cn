@@ -9,12 +9,12 @@ ms.topic: conceptual
 origin.date: 01/30/2020
 ms.date: 03/09/2020
 ms.author: v-yiso
-ms.openlocfilehash: 906373ba32dc9d5a541a983b347d4021d6e3f2d9
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 25a809a59cc484d5f5117727905709e56ad8aec9
+ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78154564"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84186883"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-disconnects-with-azure-iot-hub"></a>监视、诊断和排查 Azure IoT 中心的连接断开问题
 
@@ -108,11 +108,5 @@ ms.locfileid: "78154564"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 要了解有关解决暂时性问题的详细信息，请参阅[暂时性故障处理](/azure/architecture/best-practices/transient-faults)。
+* 要了解有关解决暂时性问题的详细信息，请参阅[暂时性故障处理](https://docs.microsoft.com/en-us/azure/architecture/best-practices/transient-faults)。
 * 要了解有关 Azure IoT SDK 和管理重试的详细信息，请参阅[如何使用 Azure IoT Hub 设备 SDK 管理连接和可靠消息传递](iot-hub-reliability-features-in-sdks.md#connection-and-retry)。
-
-<!-- Images -->
-[1]: ../../includes/media/iot-hub-diagnostics-settings/turnondiagnostics.png
-[2]: ./media/iot-hub-troubleshoot-connectivity/diagnostic-settings-recommendation.png
-[3]: ./media/iot-hub-troubleshoot-connectivity/metric-alert.png
-[4]: ./media/iot-hub-troubleshoot-connectivity/diag-logs.png

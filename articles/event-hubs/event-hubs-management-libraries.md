@@ -7,15 +7,16 @@ manager: timlt
 ms.service: event-hubs
 ms.devlang: dotnet
 ms.topic: article
+ms.custom: seodec18
 origin.date: 12/06/2018
-ms.date: 09/16/2019
+ms.date: 05/29/2020
 ms.author: v-tawe
-ms.openlocfilehash: 0bca8be2e06afa9144fc389ed1747c2fbd31aae9
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 011e957e29602a6af4488f8b4ec4e0429018a3a5
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "72872931"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199782"
 ---
 # <a name="event-hubs-management-libraries"></a>事件中心管理库
 
@@ -75,6 +76,4 @@ ms.locfileid: "72872931"
 
 ## <a name="next-steps"></a>后续步骤
 * [.NET 管理示例](https://github.com/Azure-Samples/event-hubs-dotnet-management/)
-* [Microsoft.Azure.Management.EventHub 引用](/dotnet/api/Microsoft.Azure.Management.EventHub?view=azure-dotnet)
-
-<!--Update_Description: update title and some wordings -->
+* [Microsoft.Azure.Management.EventHub 引用](/dotnet/api/Microsoft.Azure.Management.EventHub) 

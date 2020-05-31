@@ -6,12 +6,12 @@ ms.subservice: process-automation
 origin.date: 12/10/2019
 ms.date: 04/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: aa322ab76648c11d03eb16771be9cf420224b848
-ms.sourcegitcommit: 7443ff038ea8afe511f7419d9c550d27fb642246
+ms.openlocfilehash: 40f5082dedbf90a5d3efe2efcbb52542311a86ee
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "83001577"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199651"
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Azure 自动化中的源代码管理集成
 
@@ -76,7 +76,7 @@ Azure 自动化支持三种类型的源代码管理：
 
 ### <a name="configure-source-control-in-powershell"></a>在 PowerShell 中配置源代码管理
 
-也可以使用 PowerShell 在 Azure 自动化中配置源代码管理。 若要使用 PowerShell cmdlet 执行此操作，需要个人访问令牌 (PAT)。 使用 [New-AzAutomationSourceControl](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationsourcecontrol?view=azps-3.5.0) cmdlet 创建源代码管理连接。 此 cmdlet 需要 PAT 的安全字符串。 若要了解如何创建安全字符串，请参阅 [ConvertTo-SecureString](/powershell/module/microsoft.powershell.security/convertto-securestring?view=powershell-6)。
+也可以使用 PowerShell 在 Azure 自动化中配置源代码管理。 若要使用 PowerShell cmdlet 执行此操作，需要个人访问令牌 (PAT)。 使用 [New-AzAutomationSourceControl](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationsourcecontrol?view=azps-3.5.0) cmdlet 创建源代码管理连接。 此 cmdlet 需要 PAT 的安全字符串。 若要了解如何创建安全字符串，请参阅 [ConvertTo-SecureString](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/convertto-securestring?view=powershell-6)。
 
 以下附属部分演示如何在 PowerShell 中创建 GitHub、Azure Repos (Git) 和 Azure Repos (TFVC) 的源代码管理连接。 
 

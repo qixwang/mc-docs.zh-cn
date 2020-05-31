@@ -8,27 +8,28 @@ ms.topic: quickstart
 origin.date: 06/12/2019
 ms.date: 07/22/2019
 ms.author: v-yiso
-ms.openlocfilehash: 99aca5e4b4acefa8ccf7eec126fca9036a17e588
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: ebe2748db1090469312c879ad1efac524683a0ab
+ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "67845266"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84186453"
 ---
 # <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-azure-cli"></a>快速入门：使用 Azure CLI 在 Azure HDInsight 中创建 Apache Spark 群集
 
-在本快速入门中，你将了解如何使用 Azure CLI 在 Azure HDInsight 中创建 Apache Spark 群集。 通过 Apache Spark 可以使用内存处理进行快速数据分析和群集计算。 [Azure 命令行接口 (CLI)](/cli/?view=azure-cli-latest) 是用于管理 Azure 资源的 Microsoft 跨平台命令行体验。
+本快速入门介绍如何使用 Azure 命令行接口 (CLI) 在 Azure HDInsight 中创建 Apache Spark 群集。 Azure HDInsight 是适用于企业的分析服务，具有托管、全面且开源的特点。 用于 HDInsight 的 Apache Spark 框架使用内存中处理功能实现快速数据分析和群集计算。 Azure CLI 是用于管理 Azure 资源的 Microsoft 跨平台命令行体验。
 
 如果没有 Azure 订阅，可在开始前创建一个[试用帐户](http://www.azure.cn/pricing/1rmb-trial)。
 
 ## <a name="prerequisites"></a>先决条件
 
-Azure CLI。 如果尚未安装 Azure CLI，请参阅[安装 Azure CLI](/cli/install-azure-cli) 来了解步骤。
+- 具有活动订阅的 Azure 帐户。 [创建帐户](https://www.azure.cn/pricing/1rmb-trial)。
+- [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
 
 
 ## <a name="create-an-apache-spark-cluster"></a>创建 Apache Spark 群集
 
-1. 登录到 Azure 订阅。 如果你打算使用 Azure Cloud Shell，则只需要在代码块的右上角选择“尝试”  。 否则，请输入以下命令：
+1. 登录到 Azure 订阅。 
 
     ```azurecli
     az login
@@ -103,12 +104,12 @@ Azure CLI。 如果尚未安装 Azure CLI，请参阅[安装 Azure CLI](/cli/ins
         --http-password $httpCredential \
         --http-user admin \
         --location $location \
-        --size $clusterSizeInNodes \
+        --workernode-count $clusterSizeInNodes \
         --ssh-password $sshCredentials \
         --ssh-user sshuser \
         --storage-account $AZURE_STORAGE_ACCOUNT \
         --storage-account-key $AZURE_STORAGE_KEY \
-        --storage-default-container $AZURE_STORAGE_CONTAINER \
+        --storage-container $AZURE_STORAGE_CONTAINER \
         --version $clusterVersion
     ```
 
@@ -141,7 +142,7 @@ az group delete \
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你学习了如何使用 Azure CLI 在 Azure HDInsight 中创建 Apache Spark 群集。  转到下一教程，了解如何使用 HDInsight Spark 群集针对示例数据运行交互式查询。
+在本快速入门中，你学习了如何使用 Azure CLI 在 Azure HDInsight 中创建 Apache Spark 群集。  转到下一教程，了解如何使用 HDInsight 群集针对示例数据运行交互式查询。
 
 > [!div class="nextstepaction"]
 > [在 Apache Spark 上运行交互式查询](./apache-spark-load-data-run-query.md)

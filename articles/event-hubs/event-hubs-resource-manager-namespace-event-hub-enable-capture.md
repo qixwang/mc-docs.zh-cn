@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: dotnet
 ms.workload: na
 origin.date: 02/12/2020
-ms.date: 03/09/2020
+ms.date: 05/29/2020
 ms.author: v-tawe
-ms.openlocfilehash: 1cd1d39a8b47e7575153733cb16564d7ceb148e0
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 976c48c6ef407fc25605a2c2176c2b0fb6e83d32
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78155118"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199775"
 ---
 # <a name="create-a-namespace-with-event-hub-and-enable-capture-using-a-template"></a>使用模板通过事件中心创建一个命名空间并启用捕获
 

@@ -6,12 +6,12 @@ author: lingliw
 origin.date: 02/07/2019
 ms.date: 6/4/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 61abee9e4fa2b9e297aeba1bd60a76aa84aa7dc2
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 8961e434700cf8cb302032a1343578f396513d3a
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78850387"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199470"
 ---
 # <a name="smart-detection-in-application-insights"></a>Application Insights 中的智能检测
  当 Web 应用程序中存在潜在性能问题和故障异常时，智能检测会自动向你发出警告。 它会对应用发送至 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 的遥测数据执行主动分析。 如果失败率中存在骤升或者客户端或服务器性能中存在异常模式，将收到警报。 此功能不需要任何配置。 它会在应用程序发送足够的遥测时运行。
@@ -53,7 +53,7 @@ ms.locfileid: "78850387"
 ## <a name="next-steps"></a>后续步骤
 这些诊断工具可帮助检查应用中的遥测数据：
 
-* [指标资源管理器](../../azure-monitor/app/metrics-explorer.md)
+* [指标资源管理器](../../azure-monitor/platform/metrics-charts.md)
 * [搜索资源管理器](../../azure-monitor/app/diagnostic-search.md)
 * [分析 - 功能强大的查询语言](../../azure-monitor/log-query/get-started-portal.md)
 

@@ -7,14 +7,14 @@ ms.service: event-hubs
 ms.workload: core
 ms.topic: quickstart
 origin.date: 01/30/2020
-ms.date: 04/20/2020
+ms.date: 05/29/2020
 ms.author: v-tawe
-ms.openlocfilehash: 08d32f3d0e276ceda23add4a6dc5169032a8f873
-ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
+ms.openlocfilehash: d6492a1a1ce8f0afdac33e3bbd0ad699d1985f96
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82588560"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199764"
 ---
 # <a name="send-events-to-or-receive-events-from-event-hubs-by-using-javascript--azureevent-hubs-version-5"></a>使用 JavaScript（azure/event-hubs 版本 5）向/从事件中心发送/接收事件
 本快速入门介绍如何使用 **azure/event-hubs 版本 5** JavaScript 包向事件中心发送事件以及从事件中心接收事件。 
@@ -111,18 +111,22 @@ npm install @azure/eventhubs-checkpointstore-blob
 ## <a name="receive-events"></a>接收事件
 在本部分中，你将在 JavaScript 应用程序中使用 Azure Blob 存储检查点存储从事件中心接收事件。 该应用程序将在 Azure 存储 Blob 中定期针对收到的消息执行元数据检查点。 使用此方式可以很容易地在以后的某个时间从退出的位置继续接收消息。
 
+> [!NOTE]
+> 如果在 Azure Stack Hub 上运行，该平台支持的存储 Blob SDK 版本可能不同于通常在 Azure 上提供的版本。 例如，如果在 [Azure Stack Hub 版本 2002](https://docs.azure.cn/azure-stack/user/event-hubs-overview) 上运行，则存储服务的最高可用版本为版本 2017-11-09。 在这种情况下，除了执行本部分中的步骤以外，还需要添加相关代码，将存储服务 API 版本 2017-11-09 作为目标。 如需通过示例来了解如何以特定的存储 API 版本为目标，请参阅 [GitHub 上的此示例](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs-checkpointstore-blob/src/samples/java/com/azure/messaging/eventhubs/checkpointstore/blob/EventProcessorWithCustomStorageVersion.java)。 有关 Azure Stack Hub 上支持的 Azure 存储服务版本的详细信息，请参阅 [Azure Stack Hub 存储：差异和注意事项](https://docs.azure.cn/azure-stack/user/azure-stack-acs-differences)。
+
+
 ### <a name="create-an-azure-storage-account-and-a-blob-container"></a>创建 Azure 存储帐户和 Blob 容器
 若要创建 Azure 存储帐户并在其中创建 Blob 容器，请执行以下操作：
 
 1. [创建 Azure 存储帐户](../storage/common/storage-account-create.md?tabs=azure-portal)  
 2. [在存储帐户中创建 Blob 容器](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)  
-3. [获取存储帐户的连接字符串](../storage/common/storage-configure-connection-string.md?#view-and-copy-a-connection-string)
+3. [获取存储帐户的连接字符串](../storage/common/storage-configure-connection-string.md)
 
 请务必记下连接字符串和容器名称，供稍后在接收代码中使用。
 
 ### <a name="write-code-to-receive-events"></a>编写用于接收事件的代码
 
-1. 打开你常用的编辑器，例如 [Visual Studio Code](https://code.visualstudio.com)。
+1. 打开偏好的编辑器，例如 [Visual Studio Code](https://code.visualstudio.com)。
 1. 创建名为 *receive.js* 的文件，然后将以下代码粘贴到其中：
 
     ```javascript
@@ -182,9 +186,9 @@ npm install @azure/eventhubs-checkpointstore-blob
 1. 在命令提示符下运行 `node receive.js` 以执行此文件。 窗口中应会显示有关已收到事件的消息。
 
     > [!NOTE]
-    > 有关完整源代码（包括附加的参考注释），请参阅 [GitHub receiveEventsUsingCheckpointStore.js 页](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/receiveEventsUsingCheckpointStore.js)。
+    > 有关完整源代码（包括附加的参考注释），请参阅 [GitHub receiveEventsUsingCheckpointStore.js 页](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/javascript/receiveEventsUsingCheckpointStore.js)。
 
-祝贺！ 现已从事件中心收到事件。 接收器程序将从事件中心内默认使用者组的所有分区接收事件。
+祝贺你！ 现已从事件中心收到事件。 接收器程序将从事件中心内默认使用者组的所有分区接收事件。
 
 ## <a name="next-steps"></a>后续步骤
 查看 GitHub 中的以下示例：

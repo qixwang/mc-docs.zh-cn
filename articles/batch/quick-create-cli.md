@@ -1,22 +1,17 @@
 ---
 title: Azure 快速入门 - 运行 Batch 作业 - CLI
 description: 快速了解如何使用 Azure CLI 运行 Batch 作业。 从命令行或通过脚本创建和管理 Azure 资源。
-services: batch
-author: lingliw
-manager: digimobile
-ms.service: batch
-ms.devlang: azurecli
 ms.topic: quickstart
 origin.date: 07/03/2018
 ms.date: 10/19/2018
 ms.author: v-lingwu
 ms.custom: mvc
-ms.openlocfilehash: 17b487f8878f74873a5d08a865edd85ae3434ceb
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: c08a3e8f94bb51694f50bfb8e6dc66d1b7f4538a
+ms.sourcegitcommit: cbaa1aef101f67bd094f6ad0b4be274bbc2d2537
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77497567"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84126720"
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-azure-cli"></a>快速入门：使用 Azure CLI 运行第一个 Batch 作业
 

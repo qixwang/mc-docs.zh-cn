@@ -10,12 +10,12 @@ ms.tgt_pltfrm: arduino
 origin.date: 03/19/2018
 ms.date: 05/11/2020
 ms.author: liydu
-ms.openlocfilehash: fa207ec9fe58b2239084216483c0c20f38cf3b98
-ms.sourcegitcommit: 95efd248f5ee3701f671dbd5cfe0aec9c9959a24
+ms.openlocfilehash: 4f71722ea8aa0f25b74f0b11e41d657ca8b68b70
+ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82507677"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84186937"
 ---
 # <a name="door-monitor----using-azure-functions-and-sendgrid-send-email-when-a-door-is-opened"></a>门监视器 - 使用 Azure Functions 和 SendGrid 在门打开时发送电子邮件           
 
@@ -67,7 +67,7 @@ MXChip IoT DevKit 包含内置的磁传感器。 在此项目中，请检测附�
 
 完成注册表单：
 
-* **资源组**：创建用于托管 SendGrid 服务的资源组，或使用现有资源组。 请参阅[使用资源组管理 Azure 资源](/azure/azure-resource-manager/resource-group-portal)。
+* **资源组**：创建用于托管 SendGrid 服务的资源组，或使用现有资源组。 请参阅[使用资源组管理 Azure 资源](/azure-resource-manager/resource-group-portal)。
 
 * **名称**：SendGrid 服务的名称。 选择一个不同于你的其他服务的唯一名称。
 

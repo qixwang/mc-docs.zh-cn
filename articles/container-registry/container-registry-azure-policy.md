@@ -5,12 +5,12 @@ ms.topic: article
 origin.date: 02/26/2020
 ms.date: 05/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: f1bb481a4ee125a68446d64ff23daf4c1849c39d
-ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
+ms.openlocfilehash: 366e985a0fa68825bd719469c12050c6d5aa2222
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "83002289"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199580"
 ---
 <!--Verified successfully-->
 # <a name="audit-compliance-of-azure-container-registries-using-azure-policy"></a>使用 Azure Policy 审核 Azure 容器注册表的合规性
@@ -28,7 +28,7 @@ ms.locfileid: "83002289"
 
 以下内置策略定义特定于 Azure 容器注册表：
 
-[!INCLUDE [azure-policy-samples-policies-container-registry](../../includes/azure-policy-samples-policies-container-registry.md)]
+[!INCLUDE [azure-policy-samples-policies-container-registry](../../includes/policy/samples/bycat/policies-container-registry.md)]
 
 另请参阅内置网络策略定义：[[预览版] 容器注册表应使用虚拟网络服务终结点](https://portal.azure.cn/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc4857be7-912a-4c75-87e6-e30292bcdf78)。
 

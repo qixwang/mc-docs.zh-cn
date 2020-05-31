@@ -2,17 +2,16 @@
 title: Azure Application Insights 代理故障排除和已知问题 | Microsoft Docs
 description: Application Insights 代理和故障排除已知问题的示例。 无需重新部署网站即可监视网站性能。 使用托管在本地、VM 或 Azure 上的 ASP.NET Web 应用。
 ms.topic: conceptual
-author: lingliw
-manager: digimobile
+author: Johnnytechn
 origin.date: 04/23/2019
-ms.date: 11/04/2019
-ms.author: v-lingwu
-ms.openlocfilehash: 4ba3a2ecc352a2d74ca2e6372ffec18ebf299fc0
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/28/2020
+ms.author: v-johya
+ms.openlocfilehash: 3cb53e8233a55e575dfe44aeed855838fbf90915
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78850359"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199339"
 ---
 # <a name="troubleshooting-application-insights-agent-formerly-named-status-monitor-v2"></a>Application Insights 代理（以前称为状态监视器 v2）故障排除
 
@@ -118,7 +117,7 @@ Cmdlet          Start-ApplicationInsightsMonitoringTrace           0.4.0      Az
    - Application Insights SDK 版本
    - PowerShell 模块的文件路径
     
-有关如何使用此 cmdlet 的详细说明，请查看 [API 参考](status-monitor-v2-api-get-status.md)。
+有关如何使用此 cmdlet 的详细说明，请查看 [API 参考](status-monitor-v2-api-reference.md)。
 
 
 ### <a name="troubleshooting-running-processes"></a>对正在运行的进程进行故障排除
@@ -128,7 +127,7 @@ Cmdlet          Start-ApplicationInsightsMonitoringTrace           0.4.0      Az
 
 使用 `Get-ApplicationInsightsMonitoringStatus -InspectProcess` 命令来检查 DLL。
 
-有关如何使用此 cmdlet 的详细说明，请查看 [API 参考](status-monitor-v2-api-get-status.md)。
+有关如何使用此 cmdlet 的详细说明，请查看 [API 参考](status-monitor-v2-api-reference.md)。
 
 
 ### <a name="collect-etw-logs-by-using-perfview"></a>使用 PerfView 收集 ETW 日志
@@ -159,3 +158,4 @@ Cmdlet          Start-ApplicationInsightsMonitoringTrace           0.4.0      Az
 
 - 请查看 [API 参考](status-monitor-v2-overview.md#powershell-api-reference)，以了解你可能错过的参数。
 - 如果遇到此处未列出的问题，可以通过 [GitHub](https://github.com/Microsoft/ApplicationInsights-Home/issues) 联系我们。
+

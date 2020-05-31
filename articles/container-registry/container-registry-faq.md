@@ -6,12 +6,12 @@ ms.topic: article
 origin.date: 03/18/2020
 ms.date: 04/30/2020
 ms.author: v-yeche
-ms.openlocfilehash: 1155da9d8e61c54e3e594cb7642ae0b4b684215b
-ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
+ms.openlocfilehash: 61deabd7234492fc930f4bd397a649f0e1805347
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83392191"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199700"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>有关 Azure 容器注册表的常见问题解答
 
@@ -258,6 +258,7 @@ ACR 支持提供不同权限级别的[自定义角色](container-registry-roles.
 
 映像隔离目前是 ACR 的预览版功能。 可以启用注册表的隔离模式，使普通用户只能看到已成功通过安全扫描的映像。 有关详细信息，请参阅 [ACR GitHub 存储库](https://github.com/Azure/acr/tree/master/docs/preview/quarantine)。
 
+<a name="how-do-i-enable-anonymous-pull-access"></a>
 ### <a name="how-do-i-enable-anonymous-pull-access"></a>如何实现匿名提取访问？
 
 为匿名（公共）提取访问设置 Azure 容器注册表目前是一项预览功能。 若要实现公共访问，请在 https://support.azure.cn/support/support-azure/ 中创建支持工单。 有关详细信息，请参阅 [Azure 反馈论坛](https://support.azure.cn/support/contact/)。

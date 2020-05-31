@@ -10,12 +10,12 @@ ms.topic: conceptual
 origin.date: 08/20/2019
 ms.author: v-jamebr
 ms.date: 03/09/2020
-ms.openlocfilehash: a782045e289342fe0fdabfc823adf6cb2b0ebe3f
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 54a0a4c78fbf6a2818677a4010a6c5e6f0b7ca18
+ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78155100"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84186845"
 ---
 # <a name="get-started-with-device-management-net"></a>设备管理入门 (.NET)
 
@@ -36,7 +36,7 @@ ms.locfileid: "78155100"
 ## <a name="prerequisites"></a>必备条件
 
 * Visual Studio。
-* 有效的 Azure 帐户。 （如果没有帐户，只需几分钟即可创建一个[试用帐户][lnk-free-trial]。）
+* 有效的 Azure 帐户。 （如果没有帐户，只需几分钟即可创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。）
 * 确保已在防火墙中打开端口 8883。 本文中的设备示例使用 MQTT 协议，该协议通过端口 8883 进行通信。 在某些公司和教育网络环境中，此端口可能被阻止。 有关解决此问题的更多信息和方法，请参阅[连接到 IoT 中心(MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
 
 ## <a name="create-an-iot-hub"></a>创建 IoT 中心
@@ -251,25 +251,3 @@ ms.locfileid: "78155100"
     ![运行的服务和设备应用](./media/iot-hub-csharp-csharp-device-management-get-started/combinedrun.png)
 
 [!INCLUDE [iot-hub-dm-followup](../../includes/iot-hub-dm-followup.md)]
-
-<!-- images and links -->
-[img-output]: ./media/iot-hub-get-started-with-dm/image6.png
-[img-dm-ui]: ./media/iot-hub-get-started-with-dm/dmui.png
-[img-servicenuget]: ./media/iot-hub-csharp-csharp-device-management-get-started/servicesdknuget.png
-[img-createserviceapp]: ./media/iot-hub-csharp-csharp-device-management-get-started/createserviceapp.png
-[img-clientnuget]: ./media/iot-hub-csharp-csharp-device-management-get-started/clientsdknuget.png
-[img-createdeviceapp]: ./media/iot-hub-csharp-csharp-device-management-get-started/createdeviceapp.png
-[img-combinedrun]: ./media/iot-hub-csharp-csharp-device-management-get-started/combinedrun.png
-
-[lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-node/blob/master/doc/node-devbox-setup.md
-
-[lnk-free-trial]: http://www.azure.cn/pricing/1rmb-trial/
-[Azure portal]: https://portal.azure.cn/
-[Using resource groups to manage your Azure resources]: ../azure-portal/resource-group-portal.md
-[lnk-dm-github]: https://github.com/Azure/azure-iot-device-management
-
-[lnk-devtwin]: iot-hub-devguide-device-twins.md
-[lnk-c2dmethod]: iot-hub-devguide-direct-methods.md
-[lnk-transient-faults]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
-[lnk-nuget-client-sdk]: https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/
-[lnk-nuget-service-sdk]: https://www.nuget.org/packages/Microsoft.Azure.Devices/

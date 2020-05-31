@@ -4,16 +4,16 @@ description: 查看、下载和运行 Azure 存储的示例代码和应用程序
 author: WenJason
 ms.author: v-jay
 origin.date: 02/13/2020
-ms.date: 03/09/2020
+ms.date: 06/01/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: dae27dc5a605ad179fa534872a76218dec21d1d5
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 441c2b973c501695cedf648ff363cd220bed9ca1
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78412593"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199575"
 ---
 # <a name="azure-storage-samples-using-v12-net-client-libraries"></a>使用 v12 .NET 客户端库的 Azure 存储示例
 
@@ -52,18 +52,18 @@ ms.locfileid: "78412593"
 
 :::row:::
    :::column span="":::
-      [在一个请求中删除多个 Blob](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample03b_BatchingAsync.cs#L22)
+      [在一个请求中删除多个 Blob](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs.Batch/samples/Sample03b_BatchingAsync.cs#L22)
    :::column-end:::
    :::column span="":::
-      [在一个请求中设置多个 Blob 访问层](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample03b_BatchingAsync.cs#L56)
+      [在一个请求中设置多个 Blob 访问层](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/storage/Azure.Storage.Blobs.Batch/samples/Sample03b_BatchingAsync.cs#L56)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [批处理请求中的精细控制](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample03b_BatchingAsync.cs#L90)
+      [批处理请求中的精细控制](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/storage/Azure.Storage.Blobs.Batch/samples/Sample03b_BatchingAsync.cs#L90)
    :::column-end:::
    :::column span="":::
-      [捕获失败子操作的错误](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample03b_BatchingAsync.cs#L136)
+      [捕获失败子操作的错误](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/storage/Azure.Storage.Blobs.Batch/samples/Sample03b_BatchingAsync.cs#L136)
    :::column-end:::
 :::row-end:::
 

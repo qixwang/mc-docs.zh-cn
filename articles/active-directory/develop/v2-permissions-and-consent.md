@@ -8,27 +8,24 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/23/2020
+ms.date: 05/28/2020
 ms.author: v-junlch
 ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: aaddev, fasttrack-edit
-ms.openlocfilehash: 6bcf2fb7b27d3458817ba32b8656c166176cd686
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.openlocfilehash: 05c45cc748562944832f927cc58064aefbd22c2f
+ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82126391"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84186847"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Microsoft 标识平台终结点中的权限和许可
 
 与 Microsoft 标识平台集成的应用程序遵循的授权模型可让用户和管理员控制数据的访问方式。 该授权模型的实现已在 Microsoft 标识平台终结点中更新，它改变了应用与 Microsoft 标识平台交互的方式。 本文介绍此授权模型的基本概念，包括范围、权限和许可。
 
-> [!NOTE]
-> Microsoft 标识平台终结点并非支持所有方案和功能。 若要确定是否应使用 Microsoft 标识平台终结点，请阅读 [Microsoft 标识平台限制](azure-ad-endpoint-comparison.md)。
-
 ## <a name="scopes-and-permissions"></a>范围和权限
 
-Microsoft 标识平台实现 [OAuth 2.0](active-directory-v2-protocols.md) 授权协议。 OAuth 2.0 是可让第三方应用代表用户访问 Web 托管资源的方法。 与 Microsoft 标识平台集成的任何 Web 托管资源都有一个资源标识符，也称为“应用程序 ID URI”。  例如，Microsoft 的部分 Web 托管资源包括：
+Microsoft 标识平台实现 [OAuth 2.0](active-directory-v2-protocols.md) 授权协议。 OAuth 2.0 是可让第三方应用代表用户访问 Web 托管资源的方法。 与 Microsoft 标识平台集成的任何 Web 托管资源都有一个资源标识符，也称为“应用程序 ID URI”。 例如，Microsoft 的部分 Web 托管资源包括：
 
 * Microsoft Graph： `https://microsoftgraph.chinacloudapi.cn`
 * Office 365 邮件 API：`https://outlook.office.com`
@@ -45,7 +42,7 @@ Microsoft 标识平台实现 [OAuth 2.0](active-directory-v2-protocols.md) 授�
 
 通过定义这些类型的权限，资源可以更精细地控制其数据以及 API 功能的公开方式。 第三方应用可以从用户和管理员请求这些权限，只有在用户或管理员批准该请求之后，应用才能代表用户访问或处理数据。 通过将资源的功能分割成较小的权限集，可将第三方应用构建为只请求所需的特定权限来执行其功能。 用户和管理员可以确切地知道应用有权访问哪些数据，并且他们可以更加确信应用不会怀有恶意的企图。 开发人员应始终遵守“最低特权”的概念，仅请求分配正常运行应用程序所需的权限。
 
-在 OAuth 2.0 中，这些类型的权限称为“范围”  。 它们通常也称为“权限”。  权限在 Microsoft 标识平台中以字符串值表示。 仍以 Microsoft Graph 为例，每个权限的字符串值为：
+在 OAuth 2.0 中，这些类型的权限称为“范围”。 它们通常也称为“权限”。 权限在 Microsoft 标识平台中以字符串值表示。 仍以 Microsoft Graph 为例，每个权限的字符串值为：
 
 * 使用 `Calendars.Read`
 * 使用 `Calendars.ReadWrite`
@@ -61,13 +58,13 @@ Microsoft 标识平台支持两种类型的权限：**委托的权限**和**应�
 
 * **应用程序权限**由无需存在登录用户即可运行的应用使用；例如，以后台服务或守护程序形式运行的应用。  应用程序权限只能[由管理员许可](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant)。
 
-有效权限是应用在对目标资源发出请求时拥有的权限。  在对目标资源发出调用时，必须了解应用授予的委托权限和应用程序权限与其有效权限之间的差别。
+有效权限是应用在对目标资源发出请求时拥有的权限。 在对目标资源发出调用时，必须了解应用授予的委托权限和应用程序权限与其有效权限之间的差别。
 
-- 对于委托的权限，应用的有效权限是（通过许可）授予应用的委托权限与当前登录用户的特权的最低特权交集。  应用的特权永远不会超过登录用户的特权。 在组织内部，可以通过策略或者一个或多个管理员角色的成员身份来确定登录用户的特权。 若要了解哪些管理员角色可以同意委托的权限，请参阅 [Azure AD 中的管理员角色权限](../users-groups-roles/directory-assign-admin-roles.md)。
+- 对于委托的权限，应用的有效权限是（通过许可）授予应用的委托权限与当前登录用户的特权的最低特权交集。 应用的特权永远不会超过登录用户的特权。 在组织内部，可以通过策略或者一个或多个管理员角色的成员身份来确定登录用户的特权。 若要了解哪些管理员角色可以同意委托的权限，请参阅 [Azure AD 中的管理员角色权限](../users-groups-roles/directory-assign-admin-roles.md)。
 
    例如，假设为应用授予了 Microsoft Graph 中的 _User.ReadWrite.All_ 委托权限。 此权限在名义上会授予应用读取和更新组织中每个用户的个人资料的权限。 如果登录用户是全局管理员，则应用可以更新组织中每个用户的个人资料。 但是，如果登录用户不是充当管理员角色，则应用只能更新登录用户的个人资料。 它无法更新组织中其他用户的个人资料，因为该应用有权代表的用户没有这些特权。
-  
-- 对于应用程序权限，应用的有效权限是权限默示的完整特权级别。  例如，拥有 _User.ReadWrite.All_ 应用程序权限的应用可以更新组织中每个用户的个人资料。 
+
+- 对于应用程序权限，应用的有效权限是权限默示的完整特权级别。 例如，拥有 _User.ReadWrite.All_ 应用程序权限的应用可以更新组织中每个用户的个人资料。
 
 ## <a name="openid-connect-scopes"></a>OpenID Connect 范围
 
@@ -92,7 +89,7 @@ OpenID Connect 的 Microsoft 标识平台实现有一些明确定义但未应用
 > [!NOTE]
 > 目前，此权限会出现在所有同意屏幕上，即使对于不提供刷新令牌的流（[隐式流](v2-oauth2-implicit-grant-flow.md)）也是如此。  这是为了涵盖客户端可以在隐式流中开始的场景，然后移至需要刷新令牌的代码流的场景。
 
-在 Microsoft 标识平台上（向 v2.0 终结点发出的请求），应用程序必须显式请求 `offline_access` 范围才能接收刷新令牌。 这意味着，在 [OAuth 2.0 授权代码流](active-directory-v2-protocols.md)中兑换授权代码时，只能从 `/token` 终结点接收访问令牌。 访问令牌在短期内有效。 访问令牌的有效期通常为一小时。 到时，应用需要将用户重定向回到 `/authorize` 终结点以获取新的授权代码。 此重定向期间，用户可能需要再次输入其凭据或重新同意权限，具体取决于应用类型。 
+在 Microsoft 标识平台上（向 v2.0 终结点发出的请求），应用程序必须显式请求 `offline_access` 范围才能接收刷新令牌。 这意味着，在 [OAuth 2.0 授权代码流](active-directory-v2-protocols.md)中兑换授权代码时，只能从 `/token` 终结点接收访问令牌。 访问令牌在短期内有效。 访问令牌的有效期通常为一小时。 到时，应用需要将用户重定向回到 `/authorize` 终结点以获取新的授权代码。 此重定向期间，用户可能需要再次输入其凭据或重新同意权限，具体取决于应用类型。
 
 有关如何获取及使用刷新令牌的详细信息，请参阅 [Microsoft 标识平台协议参考](active-directory-v2-protocols.md)。
 
@@ -100,7 +97,7 @@ OpenID Connect 的 Microsoft 标识平台实现有一些明确定义但未应用
 
 在 [OpenID Connect 或 OAuth 2.0](active-directory-v2-protocols.md) 授权请求中，应用可以使用 `scope` 查询参数来请求所需的权限。 例如，当用户登录应用程序时，应用发送如下示例所示的请求（包含换行符以便于阅读）：
 
-```
+```HTTP
 GET https://login.partner.microsoftonline.cn/common/oauth2/v2.0/authorize?
 client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &response_type=code
@@ -117,7 +114,7 @@ https%3A%2F%2Fmicrosoftgraph.chinacloudapi.cn%2Fmail.send
 在用户输入其凭据之后，Microsoft 标识平台终结点将检查是否有匹配的 *用户许可*记录。 如果用户未曾许可所请求权限的任何一项，并且管理员尚未代表整个组织许可这些权限，则 Microsoft 标识平台终结点将请求用户授予请求的权限。
 
 > [!NOTE]
->在此期间，`offline_access`（“维持对已授予访问权限的数据的访问”）和 `user.read`（“登录并读取配置文件”）权限将自动包含在对应用程序的初始许可中。  这些权限通常是应用功能正常所必需 - `offline_access` 授予应用对刷新令牌（对本机和 Web 应用十分重要）的访问权限，而 `user.read` 授予对 `sub` 声明的访问权限，允许客户端或应用随时间推移正确标识用户并访问基本用户信息。  
+>在此期间，`offline_access`（“维持对已授予访问权限的数据的访问”）和 `user.read`（“登录并读取配置文件”）权限将自动包含在对应用程序的初始许可中。  这些权限通常是应用功能正常所必需 - `offline_access` 授予应用对刷新令牌（对本机和 Web 应用十分重要）的访问权限，而 `user.read` 授予对 `sub` 声明的访问权限，允许客户端或应用随时间推移正确标识用户并访问基本用户信息。
 
 ![显示工作帐户同意的示例屏幕截图](./media/v2-permissions-and-consent/work_account_consent.png)
 
@@ -145,12 +142,12 @@ https%3A%2F%2Fmicrosoftgraph.chinacloudapi.cn%2Fmail.send
 
 如果应用程序请求高特权的委托权限，而管理员通过管理员许可终结点授予这些权限，则为租户中的所有用户授予许可。
 
-如果应用程序请求应用程序权限，而管理员通过管理员许可终结点授予这些权限，则不会代表任何特定用户进行此授权， 而是直接为客户端应用程序授予权限。  这些类型的权限只由守护程序服务以及后台运行的其他非交互式应用程序使用。
+如果应用程序请求应用程序权限，而管理员通过管理员许可终结点授予这些权限，则不会代表任何特定用户进行此授权， 而是直接为客户端应用程序授予权限。 这些类型的权限只由守护程序服务以及后台运行的其他非交互式应用程序使用。
 
 ## <a name="using-the-admin-consent-endpoint"></a>使用管理员许可终结点
 
-> [!NOTE] 
-> 请注意，在使用管理员同意终结点授予管理员同意后，你已经完成授予管理员同意，用户不需要执行任何其他操作。 授予管理员同意后，用户可以通过典型的授权流获得访问令牌，并且生成的访问令牌将具有同意的权限。 
+> [!NOTE]
+> 请注意，在使用管理员同意终结点授予管理员同意后，你已经完成授予管理员同意，用户不需要执行任何其他操作。 授予管理员同意后，用户可以通过典型的授权流获得访问令牌，并且生成的访问令牌将具有同意的权限。
 
 当公司管理员使用你的应用程序并定向到授权终结点时，Microsoft 标识平台将检测用户的角色，并询问他们是否要代表整个租户许可请求的权限。 但是，如果你想要主动请求管理员代表整个租户授予权限，则还可以使用一个专用的管理员许可终结点。 请求应用程序权限（不能使用授权终结点来请求）时，也必须使用此终结点。
 
@@ -168,13 +165,13 @@ https%3A%2F%2Fmicrosoftgraph.chinacloudapi.cn%2Fmail.send
 #### <a name="to-configure-the-list-of-statically-requested-permissions-for-an-application"></a>配置应用程序的静态请求权限列表
 
 1. 在 [Azure 门户 - 应用注册](https://portal.azure.cn/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)体验中转到你的应用程序，或[创建一个应用](quickstart-register-app.md)（如果尚未创建）。
-2. 找到“API 权限”部分  ，然后在“API 权限”中单击“添加权限”。
+2. 找到“API 权限”部分，然后在“API 权限”中单击“添加权限”。
 3. 从可用 API 列表中选择 **Microsoft Graph**，然后添加应用所需的权限。
 3. **保存** 应用注册。
 
 ### <a name="recommended-sign-the-user-into-your-app"></a>建议：让用户登录到应用
 
-在构建使用管理员许可终结点的应用程序时，应用通常需要一个页面或视图，使管理员能够批准应用的权限。 此页面可以是应用注册流的一部分、应用设置的一部分，或者专用的“连接”流。 在许多情况下，合理的结果是应用只在用户使用工作或学校 Microsoft 帐户登录之后才显示此“连接”视图。
+在构建使用管理员许可终结点的应用程序时，应用通常需要一个页面或视图，使管理员能够批准应用的权限。 此页面可以是应用注册流的一部分、应用设置的一部分，或者专用的“连接”流。 在许多情况下，合理的结果是只有在用户使用工作或学校帐户登录后，应用才显示此“连接”视图。
 
 将用户登录到应用后，便可识别管理员所属的组织，然后要求他们批准必要的权限。 尽管在严格意义上不需要这样做，但这有助于为组织用户带来更直观的体验。 若要将用户登录，请遵循 [Microsoft 标识平台协议教程](active-directory-v2-protocols.md)。
 
@@ -182,25 +179,25 @@ https%3A%2F%2Fmicrosoftgraph.chinacloudapi.cn%2Fmail.send
 
 准备好向组织管理员请求权限时，可将用户重定向到 Microsoft 标识平台*管理员许可终结点*。
 
-```
+```HTTP
 // Line breaks are for legibility only.
-  GET https://login.partner.microsoftonline.cn/{tenant}/v2.0/adminconsent?
-  client_id=6731de76-14a6-49ae-97bc-6eba6914391e
-  &state=12345
-  &redirect_uri=http://localhost/myapp/permissions
-  &scope=
-  https://microsoftgraph.chinacloudapi.cn/calendars.read 
-  https://microsoftgraph.chinacloudapi.cn/mail.send
+GET https://login.partner.microsoftonline.cn/{tenant}/v2.0/adminconsent?
+client_id=6731de76-14a6-49ae-97bc-6eba6914391e
+&state=12345
+&redirect_uri=http://localhost/myapp/permissions
+&scope=
+https://microsoftgraph.chinacloudapi.cn/calendars.read
+https://microsoftgraph.chinacloudapi.cn/mail.send
 ```
 
 
 | 参数        | 条件        | 说明                                                                                |
 |:--------------|:--------------|:-----------------------------------------------------------------------------------------|
-| `tenant` | 必需 | 要向其请求权限的目录租户。 可以用 GUID 或友好名称格式提供，或以常规方式使用组织引用，如示例所示。 |
-| `client_id` | 必需 | [Azure 门户 - 应用注册](https://portal.azure.cn/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)体验分配给应用的**应用程序（客户端）ID**。 |
-| `redirect_uri` | 必需 |要向其发送响应，供应用处理的重定向 URI。 必须与在应用注册门户中注册的重定向 URI 之一完全匹配。 |
+| `tenant` | 必须 | 要向其请求权限的目录租户。 可以用 GUID 或友好名称格式提供，或以常规方式使用组织引用，如示例所示。 |
+| `client_id` | 必须 | [Azure 门户 - 应用注册](https://portal.azure.cn/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)体验分配给应用的**应用程序（客户端）ID**。 |
+| `redirect_uri` | 必须 |要向其发送响应，供应用处理的重定向 URI。 必须与在应用注册门户中注册的重定向 URI 之一完全匹配。 |
 | `state` | 建议 | 同样随令牌响应返回的请求中所包含的值。 可以是所需的任何内容的字符串。 使用该状态可在身份验证请求出现之前，在应用中编码用户的状态信息，例如用户过去所在的页面或视图。 |
-|`scope`        | 必需        | 定义应用程序请求的权限集。 这可以是静态范围（使用 [`/.default`](#the-default-scope)）或动态范围。  这可以包括 OIDC 范围（`openid`、`profile`、`email`）。 如果需要应用程序权限，必须使用 `/.default` 来请求静态配置的权限列表。  | 
+|`scope`        | 必须        | 定义应用程序请求的权限集。 这可以是静态范围（使用 [`/.default`](#the-default-scope)）或动态范围。  这可以包括 OIDC 范围（`openid`、`profile`、`email`）。 如果需要应用程序权限，必须使用 `/.default` 来请求静态配置的权限列表。  |
 
 
 此时，Azure AD 要求租户管理员登录，以完成请求。 系统要求管理员批准你在 `scope` 参数中请求的所有权限。  如果你使用了静态 (`/.default`) 值，则其功能将类似于 v1.0 管理员许可终结点，并请求对应用所需权限中找到的所有范围的许可。
@@ -209,7 +206,7 @@ https%3A%2F%2Fmicrosoftgraph.chinacloudapi.cn%2Fmail.send
 
 如果管理员批准了应用的权限，成功响应如下所示：
 
-```
+```HTTP
 GET http://localhost/myapp/permissions?tenant=a8990e1f-ff32-408a-9f8e-78d3b9139b95&state=state=12345&admin_consent=True
 ```
 
@@ -223,7 +220,7 @@ GET http://localhost/myapp/permissions?tenant=a8990e1f-ff32-408a-9f8e-78d3b9139b
 
 如果管理员未批准应用的权限，失败响应如下所示：
 
-```
+```HTTP
 GET http://localhost/myapp/permissions?error=permission_denied&error_description=The+admin+canceled+the+request
 ```
 
@@ -238,7 +235,7 @@ GET http://localhost/myapp/permissions?error=permission_denied&error_description
 
 用户许可应用的权限之后，应用即可获取访问令牌，这些令牌表示应用以某种身份访问资源的权限。 访问令牌只能用于单个资源，但其内部编码了应用已获得的该资源的所有权限。 若要获取访问令牌，应用可以对 Microsoft 标识平台令牌终结点发出类似于以下请求：
 
-```
+```HTTP
 POST common/oauth2/v2.0/token HTTP/1.1
 Host: https://login.partner.microsoftonline.cn
 Content-Type: application/json
@@ -253,7 +250,7 @@ Content-Type: application/json
 }
 ```
 
-可在资源的 HTTP 请求中使用生成的访问令牌。 该令牌可靠地向资源指明，应用已获得适当权限，可执行特定的任务。 
+可在资源的 HTTP 请求中使用生成的访问令牌。 该令牌可靠地向资源指明，应用已获得适当权限，可执行特定的任务。
 
 有关 OAuth 2.0 协议以及如何获取访问令牌的详细信息，请参阅 [Microsoft 标识平台终结点协议参考](active-directory-v2-protocols.md)。
 
@@ -261,7 +258,7 @@ Content-Type: application/json
 
 可以使用 `/.default` 范围，帮助将应用从 v1.0 终结点迁移到 Microsoft 标识平台终结点。 这是每个引用应用程序注册时配置的权限静态列表的应用程序的内置范围。 值为 `scope` 的 `https://microsoftgraph.chinacloudapi.cn/.default` 从功能上与 v1.0 终结点 `resource=https://microsoftgraph.chinacloudapi.cn` 相同 - 也就是说，它请求具有 Microsoft Graph 上的范围的令牌，应用程序在 Azure 门户中已注册 Microsoft Graph。  它是使用资源 URI + `/.default` 构造的（例如，如果资源 URI 为 `https://contosoApp.com`，则请求的范围为 `https://contosoApp.com/.default`）。  如果必须包含另一个斜杠，请参阅[有关尾部斜杠的部分](#trailing-slash-and-default)，以正确请求令牌。
 
-可在任何 OAuth 2.0 流中使用 /.default 范围，但在[代理流](v2-oauth2-on-behalf-of-flow.md)和[客户端凭据流](v2-oauth2-client-creds-grant-flow.md)中，以及在使用 v2 管理员许可终结点请求应用程序权限时，必须使用该范围。  
+可在任何 OAuth 2.0 流中使用 /.default 范围，但在[代理流](v2-oauth2-on-behalf-of-flow.md)和[客户端凭据流](v2-oauth2-client-creds-grant-flow.md)中，以及在使用 v2 管理员许可终结点请求应用程序权限时，必须使用该范围。
 
 > [!NOTE]
 > 客户端不能在单个请求中合并静态许可 (`/.default`) 和动态许可。 因此，`scope=https://microsoftgraph.chinacloudapi.cn/.default+mail.read` 将因范围类型组合而导致错误。
@@ -290,7 +287,7 @@ Content-Type: application/json
 
 `/.default` 范围的一种特殊情况是客户端请求其自己的 `/.default` 范围。 以下示例演示了这种情况。
 
-```
+```HTTP
 // Line breaks are for legibility only.
 
 GET https://login.partner.microsoftonline.cn/{tenant}/oauth2/v2.0/authorize?
@@ -301,13 +298,13 @@ response_type=token            //code or a hybrid flow is also possible here
 &state=1234
 ```
 
-这将产生显示所有已注册权限（如果根据许可和 `/.default` 的上述说明适用）的许可屏幕，然后返回 id_token，而不是访问令牌。  此行为针对从 ADAL 迁移到 MSAL 的某些旧客户端存在，并且**不应**由面向 Microsoft 标识平台终结点的新客户端使用。  
+这将产生显示所有已注册权限（如果根据许可和 `/.default` 的上述说明适用）的许可屏幕，然后返回 id_token，而不是访问令牌。  此行为针对从 ADAL 迁移到 MSAL 的某些旧客户端存在，并且**不应**由面向 Microsoft 标识平台终结点的新客户端使用。
 
 ### <a name="trailing-slash-and-default"></a>尾部斜杠和 /.default
 
-某些资源 URI 包含尾部斜杠（`https://contoso.com/` 而不是 `https://contoso.com`），这可能导致验证令牌时出现问题。  这种情况主要发生在请求 Azure 资源管理 (`https://management.chinacloudapi.cn/`) 的令牌时。资源管理的资源 URI 包含一个尾部斜杠，请求令牌时需要提供此斜杠。  因此，在请求 `https://management.chinacloudapi.cn/` 的令牌和使用 `/.default` 时，必须请求 `https://management.chinacloudapi.cn//.default` - 注意双斜杠！ 
+某些资源 URI 包含尾部斜杠（`https://contoso.com/` 而不是 `https://contoso.com`），这可能导致验证令牌时出现问题。  这种情况主要发生在请求 Azure 资源管理 (`https://management.chinacloudapi.cn/`) 的令牌时。资源管理的资源 URI 包含一个尾部斜杠，请求令牌时需要提供此斜杠。  因此，在请求 `https://management.chinacloudapi.cn/` 的令牌和使用 `/.default` 时，必须请求 `https://management.chinacloudapi.cn//.default` - 注意双斜杠！
 
-一般情况下，如果已验证令牌正在颁发，但应该接受该令牌的 API 却拒绝了它，请考虑添加另一个斜杠并重试。 之所以出现这种情况，是因为登录服务器发出的令牌包含与 `scope` 参数中的 URI 匹配的受众，并删除了末尾的 `/.default`。  如果删除了尾部斜杠，则登录服务器仍会处理请求，并根据资源 URI 对其进行验证，即使 URI 不再匹配 - 这是非标准的验证，应用程序不应依赖这种验证。  
+一般情况下，如果已验证令牌正在颁发，但应该接受该令牌的 API 却拒绝了它，请考虑添加另一个斜杠并重试。 之所以出现这种情况，是因为登录服务器发出的令牌包含与 `scope` 参数中的 URI 匹配的受众，并删除了末尾的 `/.default`。  如果删除了尾部斜杠，则登录服务器仍会处理请求，并根据资源 URI 对其进行验证，即使 URI 不再匹配 - 这是非标准的验证，应用程序不应依赖这种验证。
 
 ## <a name="troubleshooting-permissions-and-consent"></a>权限和许可故障排除
 

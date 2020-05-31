@@ -16,12 +16,12 @@ ms.workload: na
 origin.date: 10/29/2018
 ms.date: 03/02/2020
 ms.author: v-lingwu
-ms.openlocfilehash: ece0c5b53da3c9b032e929dc5d3e3df7e1349282
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 66468948db1618180af6569864c65d6935e5f857
+ms.sourcegitcommit: 1578f3feab2805d00156b2afcfac9c69a42837cb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80342336"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84172840"
 ---
 # <a name="azure-network-security-overview"></a>Azure 网络安全概述
 
@@ -36,7 +36,7 @@ ms.locfileid: "80342336"
 * 可用性
 * 名称解析
 * 外围网络 (DMZ) 体系结构
-* Azure DDoS 防护
+
 * Azure Front Door
 * 流量管理器
 * 监视和威胁检测
@@ -124,7 +124,6 @@ Azure 网络支持在虚拟网络上为流量自定义路由行为。 由此可�
 * 网络级别防病毒和反恶意软件
 * 防 Bot 保护
 * 应用程序访问控制
-* 其他 DDoS 防护（除了 Azure 结构自身提供的 DDoS 防护以外）
 
 可以使用 Azure 合作伙伴解决方案来访问这些增强的网络安全功能。 通过访问 [Azure 市场](https://market.azure.cn/zh-cn)并搜索“安全”和“网络安全”，可以找到最新的 Azure 合作伙伴网络安全解决方案。
 
@@ -308,29 +307,13 @@ Azure 以 Azure DNS 的形式提供一个高可用性且高性能的外部 DNS �
 
 * [Microsoft 云服务和网络安全](network-best-practices.md)
 
-## <a name="azure-ddos-protection"></a>Azure DDoS 防护
-
-分布式拒绝服务 (DDoS) 攻击是将应用程序移动到云的客户所面临的一些最大的可用性和安全性问题。 DDoS 攻击尝试耗尽应用程序的资源，使应用程序对于合法用户不可用。 DDoS 攻击可能会将任何可通过 Internet 公开访问的终结点作为目标。
-Microsoft 提供“基本”DDoS 防护作为 Azure 平台的一部分。  此防护功能是免费的，包含针对常见网络级攻击的不间断监视和实时缓解。 除了“基本”DDoS 防护随附的保护以外，还可以启用“标准”选项。   DDoS 保护标准功能包括：
-
-* **本机平台集成：** 以本机方式集成到 Azure 中。 包括通过 Azure 门户进行配置。 DDoS 保护标准了解你的资源和资源配置。
-* **成套保护：** 一旦启用 DDoS 保护标准，简化后的配置会立即保护虚拟网络上的所有资源。 要求没有干预或用户定义。 一旦检测到攻击，标准 DDoS 保护会立即自动减轻攻击。
-* **始终可用的流量监控：** 应用程序流量模式将全天候受到监控，以寻找 DDoS 攻击的迹象。 将在超出保护策略范围时执行缓解措施。
-* **攻击缓解报表** 攻击缓解报表使用聚合的网络流数据提供有关针对你的资源的攻击的详细信息。
-* **攻击缓解流日志** 通过攻击缓解流日志，可在活动 DDoS 攻击期间近乎实时地查看丢弃的流量、转发的流量和其他攻击数据。
-* **自适应优化：** 智能流量分析了解不同时段的应用程序流量，并选择和更新最适合服务的配置文件。 当流量随时间变化时，配置文件将进行调整。 第 3 层到第 7 层保护：与 Web 应用程序防火墙配合使用时，提供完整的堆栈 DDoS 保护。
-* **广泛的缓解规模：** 可以使用全球容量缓解超过 60 种不同攻击类型，从而防止最大的已知 DDoS 攻击。
-* **攻击指标：** 可以通过 Azure Monitor 访问每个攻击的汇总指标。
-* **攻击警报：** 可以使用内置攻击指标在攻击开始和停止时以及攻击持续期间配置警报。 警报会集成到操作软件（如 Microsoft Azure Monitor 日志、Splunk、Azure 存储、电子邮件和 Azure 门户）中。
-* **成本保证：** 记录的 DDoS 攻击的数据传输和应用程序横向扩展服务信用度。
-* **DDoS 快速响应** DDoS 防护标准版客户可以在攻击正在进行时联系“快速响应”团队。 DRR 可以帮助进行攻击调查，在攻击发生期间定制缓解措施以及进行攻击后分析。
 
 
 ## <a name="azure-front-door"></a>Azure Front Door
 
 使用 Azure Front Door 服务，你可以定义、管理和监视 Web 流量的全局路由。 它可以优化流量的路由以实现最佳性能和高可用性。 Azure Front Door 允许编写自定义 Web 应用程序防火墙 (WAF) 规则进行访问控制，以基于客户端 IP 地址、国家/地区代码和 http 参数来防范 HTTP/HTTPS 工作负荷遭到恶意利用。 此外，使用 Front Door 还可以创建速率限制规则来对付恶意的机器人流量，它包括 SSL 卸载和每 HTTP/HTTPS 请求以及应用程序层处理。
 
-Front Door 平台本身由 Azure DDoS 防护基本版提供保护。 若要进一步提供保护，可在 VNET 中启用 Azure DDoS 防护标准版，并通过自动优化和缓解措施来防范资源遭到网络层 (TCP/UDP) 攻击。 Front Door 是第 7 层反向代理，它仅允许 Web 流量通过后端服务器，默认会阻止其他类型的流量。
+Front Door 是第 7 层反向代理，它仅允许 Web 流量通过后端服务器，默认会阻止其他类型的流量。
 
 
 

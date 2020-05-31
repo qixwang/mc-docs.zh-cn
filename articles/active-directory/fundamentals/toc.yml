@@ -17,6 +17,14 @@
 - name: 概念
   expanded: true
   items:
+    - name: 安全性
+      items:
+        - name: 阻止传统身份验证
+          href: concept-fundamentals-block-legacy-authentication.md
+        - name: 保护远程辅助角色
+          href: concept-secure-remote-workers.md
+        - name: 连续访问评估
+          href: concept-fundamentals-continuous-access-evaluation.md
     - name: 组和用户
       items:
         - name: 组和访问管理
@@ -29,6 +37,10 @@
       items:
         - name: Azure AD 体系结构
           href: active-directory-architecture.md
+    - name: 部署指南
+      items:
+        - name: 部署 30 天、90 天及之后的时间
+          href: active-directory-deployment-checklist-p2.md
 - name: 操作指南
   expanded: true
   items:
@@ -64,7 +76,7 @@
           href: add-users-azure-active-directory.md
         - name: 添加或更改用户配置文件信息
           href: active-directory-users-profile-azure-portal.md
-        - name: 重置用户密码
+        - name: 重置用户的密码
           href: active-directory-users-reset-password-azure-portal.md
         - name: 向用户分配角色
           href: active-directory-users-assign-role-azure-portal.md

@@ -70,18 +70,18 @@
           href: platform/data-platform.md
         - name: 数据位置
           href: platform/data-locations.md
-        - name: 度量值
+        - name: 指标
           href: platform/data-platform-metrics.md
         - name: 日志
           href: platform/data-platform-logs.md
         - name: 日志数据引入时间
           displayname: latency
           href: platform/data-ingestion-time.md
-    - name: 洞察力
+    - name: 见解
       href: insights/insights-overview.md
     - name: 监视解决方案
       href: insights/solutions-inventory.md
-    - name: 数据安全
+    - name: 数据安全性
       items:
         - name: 日志数据
           href: platform/data-security.md
@@ -111,7 +111,7 @@
       href: visualizations.md
     - name: 合作伙伴集成
       href: platform/partners.md
-- name: 操作方法指南
+- name: 操作指南
   items:
     - name: 管理 Azure Monitor
       items:
@@ -228,22 +228,6 @@
                       href: app/status-monitor-v2-detailed-instructions.md
                     - name: 故障排除和已知问题
                       href: app/status-monitor-v2-troubleshoot.md
-                    - name: API Disable-InstrumentationEngine
-                      href: app/status-monitor-v2-api-disable-instrumentation-engine.md
-                    - name: API Disable-ApplicationInsightsMonitoring
-                      href: app/status-monitor-v2-api-disable-monitoring.md
-                    - name: API Enable-InstrumentationEngine
-                      href: app/status-monitor-v2-api-enable-instrumentation-engine.md
-                    - name: API Enable-ApplicationInsightsMonitoring
-                      href: app/status-monitor-v2-api-enable-monitoring.md
-                    - name: API Get-ApplicationInsightsMonitoringConfig
-                      href: app/status-monitor-v2-api-get-config.md
-                    - name: API Get-ApplicationInsightsMonitoringStatus
-                      href: app/status-monitor-v2-api-get-status.md
-                    - name: API Set-ApplicationInsightsMonitoringConfig
-                      href: app/status-monitor-v2-api-set-config.md
-                    - name: API Start-ApplicationInsightsMonitoringTrace
-                      href: app/status-monitor-v2-api-start-trace.md
             - name: 创建资源
               href: app/create-new-resource.md
             - name: 应用程序仪表板
@@ -280,14 +264,12 @@
             - name: 实时指标流
               displayname: 'live, quickpulse, quick pulse, live metrics'
               href: app/live-stream.md
-            - name: 度量值
+            - name: 指标
               items:
                 - name: 基于日志的和预聚合的指标
                   href: app/pre-aggregated-metrics-log-metrics.md
                 - name: 基于日志的指标定义
                   href: platform/app-insights-metrics.md
-                - name: 经典指标资源管理器
-                  href: app/metrics-explorer.md
             - name: 搜索
               href: app/diagnostic-search.md
             - name: 快照调试器
@@ -369,7 +351,7 @@
                   href: app/custom-operations-tracking.md
                 - name: 自定义电子邮件报告
                   href: app/automate-custom-reports.md
-                - name: 例外
+                - name: 异常
                   href: app/asp-net-exceptions.md
                 - name: 日志跟踪
                   href: app/asp-net-trace-logs.md
@@ -393,7 +375,7 @@
                       href: app/separate-resources.md
                     - name: 如何在 Application Insights 中执行...？
                       href: app/how-do-i.md
-            - name: Export
+            - name: 导出
               items:
                 - name: 连续导出
                   href: app/export-telemetry.md
@@ -421,7 +403,7 @@
               items:
                 - name: 概述
                   href: insights/container-insights-overview.md
-                - name: 常见问题解答
+                - name: 常见问题
                   href: insights/container-insights-faq.md
                 - name: 启用监视
                   items:
@@ -534,7 +516,7 @@
               href: insights/service-map.md
             - name: 计算机组
               href: platform/computer-groups.md
-            - name: 配置管理器
+            - name: Configuration Manager
         - name: Azure 资源
           items:
             - name: 活动日志
@@ -545,7 +527,7 @@
                   href: platform/activity-log-view.md
                 - name: 收集和分析
                   href: platform/activity-log-collect.md
-                - name: Export
+                - name: 导出
                   href: platform/activity-log-export.md
                 - name: 架构
                   href: platform/activity-log-schema.md
@@ -583,7 +565,7 @@
                   href: insights/network-performance-monitor-expressroute.md
                 - name: 定价
                   href: insights/network-performance-monitor-pricing-faq.md
-                - name: 常见问题解答
+                - name: 常见问题
                   href: insights/network-performance-monitor-faq.md
         - name: 其他资源
           items:
@@ -603,7 +585,7 @@
               href: insights/solution-targeting.md
     - name: 分析数据
       items:
-        - name: 度量值
+        - name: 指标
           items:
             - name: 指标资源管理器入门
               href: platform/metrics-getting-started.md
@@ -784,7 +766,7 @@
               href: platform/autoscale-get-started.md
             - name: 设置
               href: platform/autoscale-understanding-settings.md
-            - name: 最佳做法
+            - name: 最佳实践
               href: platform/autoscale-best-practices.md
             - name: 常见指标
               href: platform/autoscale-common-metrics.md
@@ -812,7 +794,7 @@
                   href: app/powershell-azure-diagnostics.md
         - name: Azure CLI 示例
           href: platform/cli-samples.md
-        - name: 资源管理器模板
+        - name: Resource Manager 模板
           href: platform/template-workspace-configuration.md
     - name: Extend
       items:
@@ -828,7 +810,7 @@
               href: insights/solutions-resources-searches-alerts.md
             - name: 视图
               href: insights/solutions-resources-views.md
-            - name: 最佳做法
+            - name: 最佳实践
               href: insights/solutions-best-practices.md
 - name: 参考
   items:
@@ -880,13 +862,13 @@
           href: 'https://docs.microsoft.com//rest/api/monitor/'
         - name: 日志
           href: 'https://docs.microsoft.com//rest/api/loganalytics'
-    - name: 资源管理器模板
+    - name: Resource Manager 模板
       items:
         - name: 监视
           href: 'https://www.microsoft.com/azure/templates/microsoft.insights/allversions'
         - name: 日志
           href: 'https://www.microsoft.com/azure/templates/microsoft.operationalinsights/allversions'
-    - name: 度量值
+    - name: 指标
       items:
         - name: 支持的指标
           href: platform/metrics-supported.md
@@ -919,7 +901,7 @@
       href: 'https://www.azure.cn/zh-cn/home/features/products-by-region'
     - name: 快速入门模板
       href: 'https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Insights'
-    - name: 堆栈溢出
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/search?q=monitoring'
     - name: 代码示例
       href: 'https://azure.microsoft.com/resources/samples/?service=monitor'

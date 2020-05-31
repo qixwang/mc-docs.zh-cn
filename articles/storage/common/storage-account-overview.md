@@ -7,15 +7,15 @@ author: WenJason
 ms.service: storage
 ms.topic: conceptual
 origin.date: 01/17/2020
-ms.date: 03/30/2020
+ms.date: 06/01/2020
 ms.author: v-jay
 ms.subservice: common
-ms.openlocfilehash: 44fc3796ef96cefaf6d41784634ffbdc31f9d838
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: c2c585b280a95c818da945127f6602cf8842619f
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80290340"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199536"
 ---
 # <a name="storage-account-overview"></a>存储帐户概述
 

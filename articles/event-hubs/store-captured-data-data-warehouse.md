@@ -7,15 +7,15 @@ manager: ''
 ms.author: v-tawe
 ms.custom: seodec18
 origin.date: 01/15/2020
-ms.date: 03/23/2020
+ms.date: 05/29/2020
 ms.topic: tutorial
 ms.service: event-hubs
-ms.openlocfilehash: b6452acd9ecba32feed2b657adf01902df2633db
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 40dade9fa4868415b3939ada99166f93543957fd
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79133677"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199366"
 ---
 # <a name="tutorial-migrate-captured-event-hubs-data-to-a-sql-data-warehouse-using-event-grid-and-azure-functions"></a>教程：使用事件网格和 Azure Functions 将捕获的事件中心数据迁移到 SQL 数据仓库
 

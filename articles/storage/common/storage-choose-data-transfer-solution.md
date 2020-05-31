@@ -7,14 +7,14 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: article
 origin.date: 06/03/2019
-ms.date: 03/30/2020
+ms.date: 06/01/2020
 ms.author: v-jay
-ms.openlocfilehash: d410b68407ac77d24ae625fe7e322379eab96a66
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: bdb7f272bded5857a0d34c84e0e9e518d285aaba
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80290332"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199511"
 ---
 # <a name="choose-an-azure-solution-for-data-transfer"></a>选择 Azure 数据传输解决方案
 
@@ -40,13 +40,13 @@ ms.locfileid: "80290332"
 
 ## <a name="data-transfer-feature-in-azure-portal"></a>Azure 门户中的数据传输功能
 
-也可转到 Azure 门户中的 Azure 存储帐户，然后选择“数据传输”功能。  请在环境中提供网络带宽、要传输的数据大小以及数据传输的频率。 将会看到与提供的信息相对应的最佳数据传输解决方案。 
+也可转到 Azure 门户中的 Azure 存储帐户，然后选择“数据传输”功能。 请在环境中提供网络带宽、要传输的数据大小以及数据传输的频率。 将会看到与提供的信息相对应的最佳数据传输解决方案。 
 
 ## <a name="next-steps"></a>后续步骤
 
 - [获取 Azure 存储资源管理器简介](https://azure.microsoft.com/resources/videos/introduction-to-microsoft-azure-storage-explorer/)。
 - [阅读 AzCopy 概述](/storage/common/storage-use-azcopy-v10)。
-- [将 Azure PowerShell 与 Azure 存储一起使用](/storage/common/storage-powershell-guide-full)
+- [快速入门：使用 PowerShell 上传、下载和列出 blob](../blobs/storage-quickstart-blobs-powershell.md)
 - [快速入门：使用 Azure CLI 创建、下载和列出 blob](../blobs/storage-quickstart-blobs-cli.md)
 - [了解什么是 Azure 数据工厂](/data-factory/copy-activity-overview)。
 - 使用 REST API 传输数据

@@ -10,14 +10,14 @@ ms.devlang: na
 ms.custom: seodec18
 ms.topic: article
 origin.date: 12/20/2019
-ms.date: 04/20/2020
+ms.date: 05/29/2020
 ms.author: v-tawe
-ms.openlocfilehash: 6a3417e0a6a463a61838435a8712d2ac8a54e2a5
-ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
+ms.openlocfilehash: 79dc78dcee553a652631dc5232ed1307c254c8c8
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82588791"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199784"
 ---
 # <a name="configure-ip-firewall-rules-for-an-azure-event-hubs-namespace"></a>为 Azure 事件中心命名空间配置 IP 防火墙规则
 默认情况下，只要请求附带了有效的身份验证和授权，就可以从 Internet 访问事件中心命名空间。 使用 IP 防火墙，可以将其进一步限制为采用 CIDR（无类域间路由）表示法的一组 IPv4 地址或一个 IPv4 地址。

@@ -1,101 +1,102 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Hub
 title: Azure 存储文档
+summary: Azure 存储包括对象、文件、磁盘、队列和表存储。 还有用于混合存储解决方案的服务，以及用于传输、共享和备份数据的服务。
+brand: azure
 metadata:
-  title: Azure 存储文档 - 教程和 API 参考 | Microsoft 文档
-  description: Azure 存储是 Microsoft 托管的云服务，其提供的存储的可用性、安全性、持久性、可伸缩性和冗余性都很高。 Azure 存储包括 Azure Blob、Azure Data Lake Storage Gen2、Azure 文件、Azure 队列和 Azure 表。
-  services: storage
-  author: WenJason
-  manager: digimobile
+  title: Azure 存储文档
+  description: Azure 存储文档中心页。 指向云和混合存储解决方案以及用于传输、共享和备份数据的服务的服务文档。
   ms.service: storage
-  ms.tgt_pltfrm: na
-  ms.devlang: na
-  ms.topic: landing-page
-  origin.date: 06/27/2018
-  ms.date: 03/09/2020
+  ms.topic: hub-page
+  author: WenJason
   ms.author: v-jay
-abstract:
-  description: Azure 存储是一项 Microsoft 托管服务，其提供的云存储的可用性、安全性、持久性、可伸缩性和冗余性都很高。 Azure 存储包括 Azure Blob（对象）、Azure Data Lake Storage Gen2、Azure 文件、Azure 队列和 Azure 表。 使用快速入门和教程了解如何在应用程序中利用 Azure 存储。
-sections:
-  - title: 5 分钟快速入门
+  origin.date: 05/01/2020
+  ms.date: 06/01/2020
+  ms.openlocfilehash: 509eae6eab1640ac7c452d54cac7c4dc3bdf2c54
+  ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 05/29/2020
+  ms.locfileid: "84199807"
+highlightedContent:
+  items:
+  - title: 核心存储服务简介
+    itemType: concept
+    url: /storage/common/storage-introduction?toc=%2fstorage%2fblobs%2ftoc.json
+  - title: 了解存储帐户类型
+    itemType: concept
+    url: /storage/common/storage-account-overview?toc=%2fstorage%2fblobs%2ftoc.json
+  - title: 创建存储帐户
+    itemType: how-to-guide
+    url: /storage/common/storage-account-create?toc=%2fstorage%2fblobs%2ftoc.json
+  - title: 了解数据冗余
+    itemType: concept
+    url: /storage/common/storage-redundancy?toc=%2fstorage%2fblobs%2ftoc.json
+  - title: 将数据传输到 Azure
+    itemType: concept
+    url: /storage/common/storage-choose-data-transfer-solution?toc=%2fstorage%2fblobs%2ftoc.json
+additionalContent:
+  sections:
+  - title: 云存储解决方案
     items:
-      - type: paragraph
-        text: 通过浏览这些快速入门了解如何使用 Azure 存储。
-      - type: table
-        style: dataMatrix
-        columns:
-          - image:
-              src: media/index/portal.svg
-              text: 门户
-          - image:
-              src: media/index/logo_powershell.svg
-              text: Powershell
-          - image:
-              src: media/index/cli.svg
-              text: Azure CLI
-          - image:
-              src: media/index/logo_net.svg
-          - image:
-              src: media/index/logo_java.svg
-          - image:
-              src: media/index/logo_python.svg
-          - image:
-              src: media/index/logo_nodejs.svg
-        rows:
-          - title: 创建存储帐户
-            values:
-              - href: /storage/common/storage-quickstart-create-account?tabs=portal
-              - href: /storage/common/storage-quickstart-create-account?tabs=azure-powershell
-              - href: /storage/common/storage-quickstart-create-account?tabs=azure-cli
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-          - title: Blob 快速入门
-            values:
-              - href: /storage/blobs/storage-quickstart-blobs-portal
-              - href: /storage/blobs/storage-quickstart-blobs-powershell
-              - href: /storage/blobs/storage-quickstart-blobs-cli
-              - href: /storage/blobs/storage-quickstart-blobs-dotnet
-              - href: /storage/blobs/storage-quickstart-blobs-java
-              - href: /storage/blobs/storage-quickstart-blobs-python
-              - href: /storage/blobs/storage-quickstart-blobs-nodejs
-          - title: Data Lake Storage Gen2
-            values:
-              - href: /storage/blobs/data-lake-storage-quickstart-create-account
-              - href: /storage/blobs/data-lake-storage-quickstart-create-account
-              - href: /storage/blobs/data-lake-storage-quickstart-create-account
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-  - title: 分步教程
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Blob
-            html: <p>在云中上传和处理图像数据</p><ul><li><a href="/storage/blobs/storage-upload-process-images">上传和检索云中的图像数据</a></li><li><a href="/event-grid/resize-images-on-storage-blob-upload-event?toc=%2fstorage%2fblobs%2ftoc.json">触发 Azure Functions 来处理 Blob</a></li><li><a href="/storage/blobs/storage-secure-access-application">保护应用程序数据</a></li><li><a href="/storage/blobs/storage-monitor-troubleshoot-storage-application">监视存储和排查其问题</a></li></ul><p>针对高可用性设计应用程序</p><ul><li><a href="/storage/blobs/storage-create-geo-redundant-storage">使应用程序数据的可用性高</a></li><li><a href="/storage/blobs/storage-simulate-failure-ragrs-account-app">模拟从主要区域读取数据时出现的故障</a></li></ul>
-  - title: 示例
-    items:
-      - type: paragraph
-        text: 查找常见管理任务的脚本。
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: '.NET &#58; <a href="https://azure.microsoft.com/resources/samples/?service=storage&term=blob&sort=0&platform=dotnet">Blob</a> | <a     href="https://azure.microsoft.com/resources/samples/?service=storage&term=file&sort=0&platform=dotnet">文件</a> | <a href="https://azure.microsoft.com/resources/samples/?service=storage&term=queue&sort=0&platform=dotnet">队列</a>'
-          - html: 'Java &#58; <a href="https://azure.microsoft.com/resources/samples/?service=storage&term=blob&sort=0&platform=java">Blob</a> | <a href="https://azure.microsoft.com/resources/samples/?service=storage&term=file&sort=0&platform=java">文件</a> | <a href="https://azure.microsoft.com/resources/samples/?service=storage&term=queue&sort=0&platform=java">队列</a>'
-          - html: <a href="/storage/blobs/storage-samples-blobs-powershell">Azure PowerShell</a>
-          - html: <a href="/storage/blobs/storage-samples-blobs-cli">Azure CLI</a>
-  - title: 参考
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: 命令行
-            html: '<p><a href="https://docs.microsoft.com/powershell/storage">PowerShell</a></p><p><a href="/cli/storage">Azure CLI</a></p>'
-          - title: REST
-            html: '<p><a href="https://docs.microsoft.com/rest/api/storageservices">Blob、队列、表和文件 API</a></p><p><a href="https://docs.microsoft.com/rest/api/storagerp">存储资源提供程序 API</a></p><p><a href="https://docs.microsoft.com/rest/api/storageimportexport">导入/导出服务 API</a></p>'
+    - title: 用于应用的对象存储
+      links:
+      - url: /storage/blobs/storage-blobs-introduction
+        text: 了解用于非结构化数据的存储（Blob 存储）
+      - url: https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs
+        text: 了解块 Blob、追加 Blob 和 页 Blob
+      - url: /storage/blobs/
+        text: 查看更多 >
+    - title: 用于大数据分析的存储
+      links:
+      - url: /storage/blobs/data-lake-storage-introduction
+        text: 了解用于企业数据湖的存储 (Data Lake Storage)
+      - url: /storage/blobs/data-lake-storage-data-scenarios
+        text: 了解用于处理大数据的选项和工具
+    - title: 云托管文件共享
+      links:
+      - url: /storage/files/storage-files-introduction
+        text: 使用核心 Azure 存储平台提供的文件共享（Azure 文件存储）
+    - title: 用于 IaaS 工作负荷的磁盘存储
+      links:
+      - url: /virtual-machines/windows/managed-disks-overview
+        text: 了解 Azure VM 的块级存储卷
+      - url: /virtual-machines/windows/disks-types
+        text: 了解可用磁盘类型
+      - url: /virtual-machines/windows/attach-managed-disk-portal
+        text: 向 VM 添加新磁盘 - Windows
+      - url: /virtual-machines/linux/attach-disk-portal
+        text: 将数据磁盘附加到 VM - Linux
+    - title: 用于异步消息队列的存储
+      links:
+      - url: /storage/queues/storage-queues-introduction
+        text: 了解用于队列的 Azure 存储解决方案（队列存储）
+      - url: /service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted
+        text: 队列存储与服务总线队列的比较
+      - url: /storage/queues/
+        text: 查看更多 >
+    - title: 用于结构化 NoSQL 数据的存储
+      links:
+      - url: /storage/tables/table-storage-overview
+        text: 将结构化 NoSQL 数据存储在云中（表存储和 Cosmos DB）
+      - url: /cosmos-db/table-support
+        text: 表存储与 Cosmos DB 表 API 的比较
+      - url: /storage/tables/
+        text: 查看更多 >
+    - title: 传输小型数据集（联机）
+      links:
+      - url: /storage/common/storage-use-azcopy-v10?toc=%2fstorage%2fblobs%2ftoc.json
+        text: 使用 AzCopy 命令行工具
+      - url: /storage/blobs/storage-quickstart-blobs-storage-explorer
+        text: 使用基于 Azure 存储资源管理器 GUI 的工具
+    - title: 控制成本
+      links:
+      - url: /storage/blobs/storage-blob-storage-tiers
+        text: 以经济高效的方式对 Blob 数据进行分层（热、冷、存档）
+    - title: 备份数据
+      links:
+      - url: /backup/quick-backup-vm-portal
+        text: 备份 VM（Azure 备份）
+      - url: /backup/tutorial-backup-azure-files
+        text: 备份 Azure 文件共享
+      - url: /backup/
+        text: 查看更多 >

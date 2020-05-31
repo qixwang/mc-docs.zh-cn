@@ -5,16 +5,16 @@ services: storage
 author: WenJason
 ms.service: storage
 ms.topic: article
-origin.date: 04/23/2018
-ms.date: 01/06/2020
+origin.date: 03/09/2020
+ms.date: 06/01/2020
 ms.author: v-jay
 ms.subservice: tables
-ms.openlocfilehash: 838b34f917f42d6ab2e3b99e932c1c4792a839a3
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 240fe52cd678dd9ccc4094a96cd4914be4f22f89
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79293278"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199681"
 ---
 # <a name="design-scalable-and-performant-tables"></a>设计可伸缩的高性能表
 
@@ -25,7 +25,7 @@ ms.locfileid: "79293278"
 ## <a name="about-the-azure-table-service"></a>关于 Azure 表服务
 本部分重点介绍表服务的一些主要功能，这些功能尤其与设计性能和可伸缩性相关。 如果不熟悉 Azure 存储和表服务，请在阅读本文的其他部分之前，先阅读 [Azure 存储简介](../../storage/common/storage-introduction.md)和[通过 .NET 实现 Azure 表存储入门](../../cosmos-db/table-storage-how-to-use-dotnet.md)。 尽管本指南的重点是介绍表服务，但它也包括对 Azure 队列和 Blob 服务的论述，并介绍了如何将它们与表服务一起使用。  
 
-什么是表服务？ 从名称可以推测出，表服务将使用表格格式来存储数据。 在标准术语中，表的每一行表示一个实体，而列存储该实体的各种属性。 每个实体都有唯一地标识它的一对键，还有一个时间戳列，表服务使用该列来跟踪实体的最后更新时间。 时间戳是自动应用的，无法使用任意值手动覆盖它。 表服务使用此上次修改时间戳 (LMT) 来管理开放式并发。  
+什么是表服务？ 从名称可以推测出，表服务使用表格格式来存储数据。 在标准术语中，表的每一行表示一个实体，而列存储该实体的各种属性。 每个实体都有唯一地标识它的一对键，还有一个时间戳列，表服务使用该列来跟踪实体的最后更新时间。 时间戳是自动应用的，无法使用任意值手动覆盖它。 表服务使用此上次修改时间戳 (LMT) 来管理开放式并发。  
 
 > [!NOTE]
 > 表服务 REST API 操作还会返回它从 LMT 推导出的 **ETag** 值。 本文档互换使用术语 ETag 和 LMT，因为它们指的是同一基础数据。  
@@ -38,7 +38,7 @@ ms.locfileid: "79293278"
 <tr>
 <th>PartitionKey</th>
 <th>RowKey</th>
-<th>时间戳</th>
+<th>Timestamp</th>
 <th></th>
 </tr>
 <tr>
@@ -50,8 +50,8 @@ ms.locfileid: "79293278"
 <tr>
 <th>FirstName</th>
 <th>LastName</th>
-<th>年龄</th>
-<th>电子邮件</th>
+<th>Age</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Don</td>
@@ -70,11 +70,11 @@ ms.locfileid: "79293278"
 <tr>
 <th>FirstName</th>
 <th>LastName</th>
-<th>年龄</th>
-<th>电子邮件</th>
+<th>Age</th>
+<th>Email</th>
 </tr>
 <tr>
-<td>六月</td>
+<td>Jun</td>
 <td>Cao</td>
 <td>47</td>
 <td>junc@contoso.com</td>
@@ -83,7 +83,7 @@ ms.locfileid: "79293278"
 </tr>
 <tr>
 <td>Marketing</td>
-<td>部门</td>
+<td>系</td>
 <td>2014-08-22T00:50:30Z</td>
 <td>
 <table>
@@ -107,8 +107,8 @@ ms.locfileid: "79293278"
 <tr>
 <th>FirstName</th>
 <th>LastName</th>
-<th>年龄</th>
-<th>电子邮件</th>
+<th>Age</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Ken</td>
@@ -133,27 +133,16 @@ ms.locfileid: "79293278"
 
 在表服务中，单个节点为一个或多个完整的分区提供服务，并且该服务可通过对节点上的分区进行动态负载均衡来进行缩放。 如果某节点负载过轻，表服务将该节点针对的分区范围*拆分*为不同节点；流量下降时，该服务可将无操作的节点的分区范围*合并*为单个节点。  
 
-若要深入了解表服务的内部细节（特别是服务管理分区的方式），请参阅文章 [Microsoft Azure Storage: A Highly Available Cloud Storage Service with Strong Consistency](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)（Microsoft Azure 存储：具有高度一致性的高可用云存储服务）。  
+有关表服务内部细节的详细信息（特别是该服务如何管理分区），请参阅文章 [Microsoft Azure 存储：具有高度一致性的高可用云存储服务](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)。  
 
 ## <a name="entity-group-transactions"></a>实体组事务
-在表服务中，实体组事务 (EGT) 是唯一内置机制，用于对多个实体执行原子更新。 EGT 有时也被称为“批处理事务”  。 EGT 只能对存储在同一分区中的实体（也就是说，在给定的表中共享同一分区键）执行操作。 因此，任何时候需要实现跨多个实体的原子事务行为时，必须确保那些实体位于同一分区中。 这通常是将多个实体类型保存在同一个表（和分区）中，而不是对不同实体类型使用多个表的原因。 单个 EGT 最多可应用于 100 个实体。  若要提交多个并发 EGT 进行处理，请务必确保不在 EGT 共用实体上操作这些 EGT，否则会造成延迟处理。
+在表服务中，实体组事务 (EGT) 是唯一内置机制，用于对多个实体执行原子更新。 EGT 有时也被称为“批处理事务”。 EGT 只能对存储在同一分区中的实体（也就是说，在给定的表中共享同一分区键）执行操作。 因此，任何时候需要实现跨多个实体的原子事务行为时，必须确保那些实体位于同一分区中。 这通常是将多个实体类型保存在同一个表（和分区）中，而不是对不同实体类型使用多个表的原因。 单个 EGT 最多可应用于 100 个实体。  若要提交多个并发 EGT 进行处理，请务必确保不在 EGT 共用实体上操作这些 EGT，否则会造成延迟处理。
 
-EGT 还引入了一个在设计时需要评估的潜在权衡。 那就是，使用更多分区会提高应用程序的可伸缩性，因为 Azure 可以有更多的机会在各个节点之间对请求进行负载均衡。 但是，使用更多分区可能会限制应用程序执行原子事务以及保持数据的强一致性的能力。 而且，在分区级别还有特定的可伸缩性目标，这些目标可能会限制预期单个节点可以实现的事务吞吐量。 有关 Azure 标准存储帐户的可伸缩性目标的详细信息，请参阅[标准存储帐户的可伸缩性目标](../common/scalability-targets-standard-account.md)。 有关表服务的可伸缩性目标的详细信息，请参阅[表存储的可伸缩性和性能目标](scalability-targets.md)。
+EGT 还引入了一个在设计时需要评估的潜在权衡。 那就是，使用更多分区会提高应用程序的可伸缩性，因为 Azure 可以有更多的机会在各个节点之间对请求进行负载均衡。 但是，使用更多分区可能会限制应用程序执行原子事务以及保持数据的强一致性的能力。 而且，在分区级别还有特定的可伸缩性目标，这些目标可能会限制预期单个节点可以实现的事务吞吐量。 有关 Azure 标准存储帐户的可伸缩性目标的详细信息，请参阅[标准存储帐户的可伸缩性目标](../common/scalability-targets-standard-account.md)。 有关表服务的可伸缩性目标的详细信息，请参阅 [表存储的可伸缩性和性能目标](scalability-targets.md)。
 
 ## <a name="capacity-considerations"></a>容量注意事项
-下表介绍了设计表服务解决方案时需要注意的一些关键值：  
 
-| Azure 存储帐户的总容量 | 500 TB |
-| --- | --- |
-| Azure 存储帐户中表的个数 |仅受存储帐户的容量限制 |
-| 表中的分区个数 |仅受存储帐户的容量限制 |
-| 分区中实体的个数 |仅受存储帐户的容量限制 |
-| 单个实体的大小 |最大 1 MB，最多 255 个属性（包括 **PartitionKey**、**RowKey** 和 **Timestamp**） |
-| **PartitionKey** 的大小 |大小最大为 1 KB 的字符串 |
-| **RowKey** 的大小 |大小最大为 1 KB 的字符串 |
-| 实体组事务的大小 |一个事务最多可包含 100 个实体，并且负载大小必须小于 4 MB。 EGT 只能更新一次实体。 |
-
-有关详细信息，请参阅 [Understanding the Table Service Data Model](https://msdn.microsoft.com/library/azure/dd179338.aspx)（了解表服务数据模型）。  
+[!INCLUDE [storage-table-scale-targets](../../../includes/storage-tables-scale-targets.md)]
 
 ## <a name="cost-considerations"></a>成本注意事项
 表存储的价格相对便宜，但在评估任何表服务解决方案时，应同时针对容量使用情况和事务数量进行成本估算。 但是，在许多情况下，为提高解决方案的性能或可伸缩性，存储非规范化或重复的数据是一种有效方法。 有关定价的详细信息，请参阅 [Azure 存储定价](https://azure.cn/pricing/details/storage/)。  

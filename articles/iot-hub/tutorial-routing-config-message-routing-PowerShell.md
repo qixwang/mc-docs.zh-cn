@@ -10,12 +10,12 @@ origin.date: 03/25/2019
 ms.date: 11/18/2019
 ms.author: v-yiso
 ms.custom: mvc
-ms.openlocfilehash: 8416aaa82c533d63fdb15ce2814e98dddc7022be
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 5c27ff5a7ae29cc2ed24256817aaf6f576e056c1
+ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "73831411"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84186608"
 ---
 # <a name="tutorial-use-azure-powershell-to-configure-iot-hub-message-routing"></a>教程：使用 Azure PowerShell 配置 IoT 中心消息路由
 
@@ -133,7 +133,7 @@ New-AzServiceBusQueue -ResourceGroupName $resourceGroup `
 
 [!INCLUDE [iot-hub-include-create-routing-description](../../includes/iot-hub-include-create-routing-description.md)]
 
-若要创建路由终结点，请使用 [Add-AzIotHubRoutingEndpoint](/powershell/module/az.iothub/Add-AzIotHubRoutingEndpoint)。 若要创建终结点的消息路由，请使用 [Add-AzIotHubRoute](/powershell/module/az.iothub/Add-AzIoTHubRoute)。
+若要创建路由终结点，请使用 [Add-AzIotHubRoutingEndpoint](https://docs.microsoft.com/en-us/powershell/module/az.iothub/Add-AzIotHubRoutingEndpoint)。 若要创建终结点的消息路由，请使用 [Add-AzIotHubRoute](https://docs.microsoft.com/en-us/powershell/module/az.iothub/Add-AzIoTHubRoute)。
 
 ### <a name="route-to-a-storage-account"></a>路由到存储帐户 
 

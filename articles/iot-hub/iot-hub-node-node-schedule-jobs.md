@@ -12,12 +12,12 @@ ms.workload: na
 origin.date: 08/16/2019
 ms.date: 04/06/2020
 ms.author: v-yiso
-ms.openlocfilehash: 09f2a7e4d9005f93853269c0a2a55a690bcad061
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 5ccea43f4a210f16611a6457db1eccc7e3c11219
+ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80343491"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84186922"
 ---
 # <a name="schedule-and-broadcast-jobs-nodejs"></a>计划和广播作业 (Node.js)
 
@@ -33,27 +33,28 @@ Azure IoT 中心是一项完全托管的服务，允许后端应用创建和跟�
 
 可在以下文章中了解有关所有这些功能的详细信息：
 
-* 设备孪生和属性：[设备孪生入门][lnk-get-started-twin]和[教程：如何使用设备孪生属性][lnk-twin-props]
-* 直接方法：[IoT 中心开发人员指南 - 直接方法][lnk-dev-methods]和[教程：直接方法][lnk-c2d-methods]
+* 设备孪生和属性：[设备孪生入门](iot-hub-node-node-twin-getstarted.md)和[教程：如何使用设备孪生属性](tutorial-device-twins.md)
+
+* 直接方法：[IoT 中心开发人员指南 - 直接方法](iot-hub-devguide-direct-methods.md)和[教程：直接方法](quickstart-control-device-node.md)
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
 本教程演示如何：
 
-* 创建一个具有直接方法的 Node.js 模拟设备应用，启用可由解决方案后端进行调用的 lockDoor  。
+* 创建一个具有直接方法的 Node.js 模拟设备应用，启用可由解决方案后端进行调用的 lockDoor。
 * 创建一个 Node.js 控制台应用，该应用使用作业调用模拟设备应用中的 **lockDoor** 直接方法，并使用设备作业更新所需属性。
 
 在本教程结束时，会创建两个 Node.js 应用：
 
 **simDevice.js**，它使用设备标识连接到 IoT 中心，并接收 **lockDoor** 直接方法。
 
-scheduleJobService.js，它调用模拟设备应用中的直接方法，并通过作业更新设备孪生的所需属性  。
+scheduleJobService.js，它调用模拟设备应用中的直接方法，并通过作业更新设备孪生的所需属性。
 
 ## <a name="prerequisites"></a>先决条件
 
 * Node.js 版本 10.0.x 或更高版本。 [准备开发环境](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md)介绍了如何在 Windows 或 Linux 上安装本教程所用的 Node.js。
 
-* 有效的 Azure 帐户。 （如果没有帐户，只需几分钟即可创建一个[试用帐户][lnk-free-trial]。）
+* 有效的 Azure 帐户。 （如果没有帐户，只需几分钟即可创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。）
 
 * 确保已在防火墙中打开端口 8883。 本文中的设备示例使用 MQTT 协议，该协议通过端口 8883 进行通信。 在某些公司和教育网络环境中，此端口可能被阻止。 有关解决此问题的更多信息和方法，请参阅[连接到 IoT 中心(MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
 
@@ -66,7 +67,7 @@ scheduleJobService.js，它调用模拟设备应用中的直接方法，并通�
 [!INCLUDE [iot-hub-get-started-create-device-identity](../../includes/iot-hub-get-started-create-device-identity.md)]
 
 ## <a name="create-a-simulated-device-app"></a>创建模拟设备应用程序
-本部分将创建一个 Node.js 控制台应用，用于响应通过云调用的方法，这会触发模拟 lockDoor 方法  。
+本部分将创建一个 Node.js 控制台应用，用于响应通过云调用的方法，这会触发模拟 lockDoor 方法。
 
 1. 新建名为 **simDevice**的空文件夹。  在 **simDevice** 文件夹的命令提示符处，使用以下命令创建 package.json 文件。  接受所有默认值：
 
@@ -130,7 +131,7 @@ scheduleJobService.js，它调用模拟设备应用中的直接方法，并通�
 8. 保存并关闭 **simDevice.js** 文件。
 
 > [!NOTE]
-> 为简单起见，本教程不实现任何重试策略。 在生产代码中，应该按文章 [Transient Fault Handling][lnk-transient-faults]（暂时性故障处理）中所述实施重试策略（例如指数退避）。
+> 为简单起见，本教程不实现任何重试策略。 在生产代码中，应该按文章 [Transient Fault Handling](https://docs.microsoft.com/en-us/azure/architecture/best-practices/transient-faults)（暂时性故障处理）中所述实施重试策略（例如指数性的回退）。
 > 
 
 ## <a name="get-the-iot-hub-connection-string"></a>获取 IoT 中心连接字符串
@@ -148,7 +149,7 @@ scheduleJobService.js，它调用模拟设备应用中的直接方法，并通�
     npm init
     ```
 
-2. 在 scheduleJobService  文件夹的命令提示符处，运行以下命令安装 azure-iothub  设备 SDK 包和 azure-iot-device-mqtt  包：
+2. 在 scheduleJobService 文件夹的命令提示符处，运行以下命令安装 azure-iothub 设备 SDK 包和 azure-iot-device-mqtt 包：
 
     ```console
     npm install azure-iothub uuid --save
@@ -263,7 +264,7 @@ scheduleJobService.js，它调用模拟设备应用中的直接方法，并通�
 ## <a name="run-the-applications"></a>运行应用程序
 现在，已准备就绪，可以运行应用程序了。
 
-1. 在 simDevice  文件夹的命令提示符处，运行以下命令以开始侦听重启直接方法。
+1. 在 simDevice 文件夹的命令提示符处，运行以下命令以开始侦听重启直接方法。
    
     ```console
     node simDevice.js
@@ -290,15 +291,4 @@ scheduleJobService.js，它调用模拟设备应用中的直接方法，并通�
 
 若要继续完成 IoT 中心和设备管理模式（如远程无线固件更新）的入门内容，请参阅[教程：如何执行固件更新](tutorial-firmware-update.md)。
 
-
-若要继续完成 IoT 中心入门内容，请参阅 [Azure IoT Edge 入门][lnk-iot-edge]。
-
-[lnk-get-started-twin]: ./iot-hub-node-node-twin-getstarted.md
-[lnk-twin-props]: tutorial-device-twins.md
-[lnk-c2d-methods]: quickstart-control-device-node.md
-[lnk-dev-methods]: ./iot-hub-devguide-direct-methods.md
-[lnk-fwupdate]: ./tutorial-firmware-update.md
-[lnk-iot-edge]: ../iot-edge/quickstart-linux.md
-[lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md
-[lnk-free-trial]: https://www.azure.cn/pricing/1rmb-trial/
-[lnk-transient-faults]: https://msdn.microsoft.com/zh-cn/library/hh680901(v=pandp.50).aspx
+若要继续完成 IoT 中心入门内容，请参阅 [Azure IoT Edge 入门](../iot-edge/quickstart-linux.md)。

@@ -15,19 +15,21 @@ ms.workload: na
 origin.date: 01/29/2018
 ms.date: 03/23/2020
 ms.author: v-yiso
-ms.openlocfilehash: c52426e252ef5f5b6b7f3d627be4ff7117f33860
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 640fe4a58066e3ba5a87dc96c7a66be547fd2b09
+ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79295866"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84186919"
 ---
 # <a name="device-to-cloud-communications-guidance"></a>从设备到云通信指南
 将信息从设备应用发送到解决方案后端时，IoT 中心会公开三个选项：
 
-* [设备到云消息][lnk-d2c]，用于时序遥测和警报。
-* [设备孪生的报告属性][lnk-twins]，用于报告设备状态信息，例如可用功能、条件或长时间运行的工作流的状态。 例如，配置和软件更新。
-* [文件上传][lnk-fileupload]，用于由间歇性连接的设备上传的或为了节省带宽而压缩的媒体文件和大型遥测批文件。
+* [设备到云消息](iot-hub-devguide-messages-d2c.md)，用于时序遥测和警报。
+
+* [设备孪生的报告属性](iot-hub-devguide-device-twins.md)，用于报告设备状态信息，例如可用功能、条件或长时间运行的工作流的状态。 例如，配置和软件更新。
+
+* [文件上传](iot-hub-devguide-file-upload.md)，用于由间歇性连接的设备上传的或为了节省带宽而压缩的媒体文件和大型遥测批文件。
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
@@ -35,21 +37,15 @@ ms.locfileid: "79295866"
 
 |  | 设备到云的消息 | 设备克隆的报告属性 | 文件上传 |
 | ---- | ------- | ---------- | ---- |
-| 场景 | 遥测时序和警报。 例如，每隔 5 分钟发送的 256KB 传感器数据批。 | 可用功能和条件。 例如，当前设备连接模式，诸如手机网络或 WiFi。 同步长时间运行的工作流，如配置和软件更新。 | 媒体文件。 大型（通常为压缩的）遥测批。 |
-| 存储和检索 | IoT 中心的临时存储，最多可保存 7 天。 仅顺序读取。 | 由 IoT 中心存储在设备孪生中。 可使用 [IoT 中心查询语言][lnk-query]进行检索。 | 存储在用户提供的 Azure 存储帐户中。 |
+| 方案 | 遥测时序和警报。 例如，每隔 5 分钟发送 256-KB 的传感器数据批。 | 可用功能和条件。 例如，当前设备连接模式，诸如手机网络或 WiFi。 同步长时间运行的工作流，如配置和软件更新。 | 媒体文件。 大型（通常为压缩的）遥测批。 |
+| 存储和检索 | 通过 IoT 中心临时进行存储，最多存储 7 天。 仅顺序读取。 | 通过 IoT 中心存储在设备孪生中。 可使用 [IoT 中心查询语言](iot-hub-devguide-query-language.md)进行检索。 | 存储在用户提供的 Azure 存储帐户中。 |
 | 大小 | 消息大小最大为 256-KB。 | 最大报告属性大小为 32 KB。 | Azure Blob 存储支持的最大文件大小。 |
-| 频率 | 高。 有关详细信息，请参阅 [IoT 中心限制][lnk-quotas]。 | 中。 有关详细信息，请参阅 [IoT 中心限制][lnk-quotas]。 | 低。 有关详细信息，请参阅 [IoT 中心限制][lnk-quotas]。 |
-| 协议 | 适用于所有协议。 | 使用 MQTT 或 AMQP 时可用。 | 在使用任何协议时可用，但设备上必须具备 HTTPS。 |
+| 频率 | 高。 有关详细信息，请参阅 [IoT 中心限制](iot-hub-devguide-quotas-throttling.md)。 | 中。 有关详细信息，请参阅 [IoT 中心限制](iot-hub-devguide-quotas-throttling.md)。 | 低。 有关详细信息，请参阅 [IoT 中心限制](iot-hub-devguide-quotas-throttling.md)。 |
+| 协议 | 在所有协议上可用。 | 使用 MQTT 或 AMQP 时可用。 | 在使用任何协议时可用，但设备上必须具备 HTTPS。 |
 
 应用程序可能需要同时将信息作为遥测时序或警报发送，并且使其在设备孪生中可用。 在这种情况下，可以选择以下选项之一：
 
 * 设备应用发送一条设备到云消息并报告属性更改。
-* 解决方案后端在收到消息时可以将信息存储在设备孪生的标记中。
+* 解决方案后端在收到消息时可将信息存储在设备孪生的标记中。
 
 由于设备到云消息允许的吞吐量远高于设备孪生更新，因此有时需要避免为每条设备到云消息更新设备孪生。
-
-[lnk-twins]: ./iot-hub-devguide-device-twins.md
-[lnk-fileupload]: ./iot-hub-devguide-file-upload.md
-[lnk-quotas]: ./iot-hub-devguide-quotas-throttling.md
-[lnk-query]: ./iot-hub-devguide-query-language.md
-[lnk-d2c]: ./iot-hub-devguide-messages-d2c.md

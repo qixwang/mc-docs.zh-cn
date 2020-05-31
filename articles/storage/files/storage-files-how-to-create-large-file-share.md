@@ -5,15 +5,15 @@ author: WenJason
 ms.service: storage
 ms.topic: conceptual
 origin.date: 11/20/2019
-ms.date: 03/09/2020
+ms.date: 06/01/2020
 ms.author: v-jay
 ms.subservice: files
-ms.openlocfilehash: f7d2c5ca724180cd1d840397a13cc62311279905
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 036b90ad183d1722e08bbed29e6255fe13a9fb43
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78412541"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199759"
 ---
 # <a name="enable-and-create-large-file-shares"></a>启用和创建大型文件共享
 
@@ -28,6 +28,7 @@ ms.locfileid: "78412541"
 ## <a name="restrictions"></a>限制
 
 目前，只能在启用了大型文件共享的帐户中使用本地冗余存储 (LRS)。 不能使用异地冗余存储 (GRS) 或读取访问异地冗余存储 (RA-GRS)。
+
 在帐户中启用大型文件共享是一个不可逆的过程。 启用后，无法将帐户转换为 GRS 或 RA-GRS。
 
 ## <a name="create-a-new-storage-account"></a>新建存储帐户
@@ -35,17 +36,17 @@ ms.locfileid: "78412541"
 ### <a name="portal"></a>门户
 
 1. 登录到 [Azure 门户](https://portal.azure.cn)。
-1. 在 Azure 门户中，选择“所有服务”。  
-1. 在资源列表中输入“存储帐户”。  键入时，列表会根据输入的内容进行筛选。 选择“存储帐户”  。
-1. 在显示的“存储帐户”窗口中，选择“添加”。  
+1. 在 Azure 门户中，选择“所有服务”。 
+1. 在资源列表中输入“存储帐户”。 键入时，列表会根据输入的内容进行筛选。 选择“存储帐户”。
+1. 在显示的“存储帐户”窗口中，选择“添加”。 
 1. 选择用于创建存储帐户的订阅。
-1. 在“资源组”  字段下，选择“新建”  。 输入新资源组的名称。
+1. 在“资源组”字段下，选择“新建”。 输入新资源组的名称。
 
     ![显示如何在门户中创建资源组的屏幕截图](media/storage-files-how-to-create-large-file-share/create-large-file-share.png)
 
 1. 然后，输入存储帐户的名称。 该名称在 Azure 中必须唯一。 该名称的长度必须是 3 到 24 个字符，只能包含数字和小写字母。
-1. 选择存储帐户的位置，并确保它是[支持复制大型文件共享的帐户之一](storage-files-planning.md#regional-availability)。
-1. 将复制设置为“本地冗余存储”。 
+1. 选择存储帐户的位置。
+1. 将复制设置为“本地冗余存储”。
 1. 将以下字段保留其默认值：
 
    |字段  |Value  |
@@ -55,12 +56,12 @@ ms.locfileid: "78412541"
    |帐户类型     |StorageV2（常规用途 v2）         |
    |访问层     |热         |
 
-1. 选择“高级”，然后选择“大型文件共享”右侧的“已启用”选项按钮。   
-1. 选择“查看+创建”  可查看存储帐户设置并创建帐户。
+1. 选择“高级”，然后选择“大型文件共享”右侧的“已启用”选项按钮。  
+1. 选择“查看+创建”可查看存储帐户设置并创建帐户。
 
     ![Azure 门户中新存储帐户对应的“已启用”选项按钮的屏幕截图](media/storage-files-how-to-create-large-file-share/large-file-shares-advanced-enable.png)
 
-1. 选择“创建”  。
+1. 选择“创建” 。
 
 ### <a name="cli"></a>CLI
 
@@ -79,7 +80,7 @@ az storage account create --name <yourStorageAccountName> -g <yourResourceGroup>
 
 若要创建启用了大文件共享的存储帐户，请使用以下命令。 请将 `<yourStorageAccountName>`、`<yourResourceGroup>` 和 `<yourDesiredRegion>` 替换为自己的信息。
 
-```PowerShell
+```powershell
 ## This command creates a large file share–enabled account. It will not support GRS, or RA-GRS.
 New-AzStorageAccount -ResourceGroupName <yourResourceGroup> -Name <yourStorageAccountName> -Location <yourDesiredRegion> -SkuName Standard_LRS -EnableLargeFileShare;
 ```
@@ -91,9 +92,9 @@ New-AzStorageAccount -ResourceGroupName <yourResourceGroup> -Name <yourStorageAc
 ### <a name="portal"></a>门户
 
 1. 打开 [Azure 门户](https://portal.azure.cn)，转到要在其中启用大型文件共享的存储帐户。
-1. 打开存储帐户并选择“配置”。 
-1. 选择“大型文件共享”对应的“已启用”，然后选择“保存”。   
-1. 依次选择“概述”、“刷新”。  
+1. 打开存储帐户并选择“配置”。
+1. 选择“大型文件共享”对应的“已启用”，然后选择“保存”。  
+1. 依次选择“概述”、“刷新”。 
 
 ![在 Azure 门户中选择现有存储帐户对应的“已启用”选项按钮](media/storage-files-how-to-create-large-file-share/enable-large-file-shares-on-existing.png)
 
@@ -113,7 +114,7 @@ az storage account update --name <yourStorageAccountName> -g <yourResourceGroup>
 
 若要在现有帐户中启用大型文件共享，请使用以下命令。 请将 `<yourStorageAccountName>` 和 `<yourResourceGroup>` 替换为自己的信息。
 
-```PowerShell
+```powershell
 Set-AzStorageAccount -ResourceGroupName <yourResourceGroup> -Name <yourStorageAccountName> -EnableLargeFileShare
 ```
 
@@ -125,9 +126,9 @@ Set-AzStorageAccount -ResourceGroupName <yourResourceGroup> -Name <yourStorageAc
 
 创建大型文件共享的过程与创建标准文件共享几乎完全相同。 主要差别在于，配额最高可以设置为 100 TiB。
 
-1. 在存储帐户中选择“文件共享”。 
-1. 选择“+ 文件共享”。 
-1. 输入文件共享的名称。 也可以设置所需的配额大小，不超过 100 TiB 即可。 然后选择“创建”  。 
+1. 在存储帐户中选择“文件共享”。
+1. 选择“+ 文件共享”。
+1. 输入文件共享的名称。 也可以设置所需的配额大小，不超过 100 TiB 即可。 然后选择“创建”。 
 
 ![显示“名称”和“配额”框的 Azure 门户 UI](media/storage-files-how-to-create-large-file-share/large-file-shares-create-share.png)
 
@@ -143,7 +144,7 @@ az storage share create --account-name <yourStorageAccountName> --account-key <y
 
 若要创建大型文件共享，请使用以下命令。 请将 `<YourStorageAccountName>`、`<YourStorageAccountKey>` 和 `<YourStorageAccountFileShareName>` 替换为自己的信息。
 
-```PowerShell
+```powershell
 ##Config
 $storageAccountName = "<YourStorageAccountName>"
 $storageAccountKey = "<YourStorageAccountKey>"
@@ -158,9 +159,9 @@ New-AzStorageShare -Name $shareName -Context $ctx
 
 ### <a name="portal"></a>门户
 
-1. 在存储帐户中选择“文件共享”。 
-1. 右键单击文件共享并选择“配额”。 
-1. 输入所需的新大小，然后选择“确定”。 
+1. 在存储帐户中选择“文件共享”。
+1. 右键单击文件共享并选择“配额”。
+1. 输入所需的新大小，然后选择“确定”。
 
 ![显示了现有文件共享配额的 Azure 门户 UI](media/storage-files-how-to-create-large-file-share/update-large-file-share-quota.png)
 
@@ -176,7 +177,7 @@ az storage share update --account-name <yourStorageAccountName> --account-key <y
 
 若要将配额设置为最大大小，请使用以下命令。 请将 `<YourStorageAccountName>`、`<YourStorageAccountKey>` 和 `<YourStorageAccountFileShareName>` 替换为自己的信息。
 
-```PowerShell
+```powershell
 ##Config
 $storageAccountName = "<YourStorageAccountName>"
 $storageAccountKey = "<YourStorageAccountKey>"

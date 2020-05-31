@@ -14,14 +14,14 @@ ms.devlang: multiple
 ms.topic: quickstart
 ms.custom: seodec18
 origin.date: 11/05/2019
-ms.date: 12/02/2019
+ms.date: 05/29/2020
 ms.author: v-tawe
-ms.openlocfilehash: a9142addf0c48e81c8ae3d6c816f10e94a00ec75
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 0b89d2c328891ce130143d1c1955fdaf9c4fa5ba
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74657999"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199768"
 ---
 # <a name="quickstart-receive-events-from-event-hubs-using-apache-storm"></a>快速入门：使用 Apache Storm 从事件中心接收事件
 
@@ -253,7 +253,7 @@ ms.locfileid: "74657999"
 <!-- Links -->
 [Event Hubs overview]: event-hubs-what-is-event-hubs.md
 [HDInsight Storm]: ../hdinsight/storm/apache-storm-overview.md
-[使用事件中心的 HDInsight Storm 示例]: https://azure.microsoft.com/resources/samples/hdinsight-java-storm-eventhub/
+[使用事件中心的 HDInsight Storm 示例]: https://github.com/Azure-Samples/hdinsight-java-storm-eventhub
 
 <!-- Images -->
 

@@ -2,15 +2,16 @@
 title: 内置策略计划列表
 description: 列出 Azure Policy 的内置策略计划。 类别包括“合规性”、“来宾配置”等。
 origin.date: 01/31/2020
-ms.date: 03/09/2020
+ms.date: 05/29/2020
 ms.author: v-tawe
 ms.topic: sample
-ms.openlocfilehash: 746e64c99279605cae9a30e68f34f397254e9998
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.custom: generated
+ms.openlocfilehash: 90e0830cc325c9e08b666d91c5d11c1d7bafc979
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292699"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199265"
 ---
 # <a name="azure-policy-built-in-initiative-definitions"></a>Azure Policy 内置计划定义
 
@@ -18,7 +19,21 @@ ms.locfileid: "79292699"
 
 每个内置项的名称会链接到 [Azure Policy GitHub 存储库](https://github.com/Azure/azure-policy)中的计划定义源。 这些内置项按**元数据**中的 **category** 属性进行分组。 若要跳转到特定的**类别**，请使用页面右侧的菜单。 否则，请按 <kbd>Ctrl</kbd>-<kbd>F</kbd> 来使用浏览器的搜索功能。
 
-[!INCLUDE [azure-policy-samples-policyset-index](../../../../includes/azure-policy-samples-policyset-index.md)]
+## <a name="guest-configuration"></a>来宾配置
+
+[!INCLUDE [azure-policy-samples-policysets-guest-configuration](../../../../includes/policy/samples/bycat/policysets-guest-configuration.md)]
+
+## <a name="monitoring"></a>监视
+
+[!INCLUDE [azure-policy-samples-policysets-monitoring](../../../../includes/policy/samples/bycat/policysets-monitoring.md)]
+
+<!-- ## Regulatory Compliance
+
+[!INCLUDE [azure-policy-samples-policysets-regulatory-compliance](../../../../includes/policy/samples/bycat/policysets-regulatory-compliance.md)] -->
+
+## <a name="security-center"></a>安全中心
+
+[!INCLUDE [azure-policy-samples-policysets-security-center](../../../../includes/policy/samples/bycat/policysets-security-center.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

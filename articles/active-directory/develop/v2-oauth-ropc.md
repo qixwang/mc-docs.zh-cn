@@ -3,27 +3,22 @@ title: 使用资源所有者密码凭据授予进行登录 | Azure
 titleSuffix: Microsoft identity platform
 description: 支持使用资源所有者密码凭据 (ROPC) 授予的无浏览器身份验证流。
 services: active-directory
-documentationcenter: ''
-author: rwike77
+author: hpsin
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/06/2020
+ms.date: 05/28/2020
 ms.author: v-junlch
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c0ebd2d2fb5e5242f5c4ee13233ca62559a17f2
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: cd1a5e6dfd3647b3b54af8530238ed6ec80e520c
+ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75777027"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84186853"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-resource-owner-password-credentials"></a>Microsoft 标识平台和 OAuth 2.0 资源所有者密码凭据
 
@@ -54,8 +49,8 @@ ROPC 流是单一请求：它将客户端标识和用户的凭据发送到 IDP�
 > [![尝试在 Postman 中运行此请求](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 
 
-```
-// Line breaks and spaces are for legibility only.  This is a public client, so no secret is required. 
+```HTTP
+// Line breaks and spaces are for legibility only.  This is a public client, so no secret is required.
 
 POST {tenant}/oauth2/v2.0/token
 Host: login.partner.microsoftonline.cn
@@ -71,13 +66,13 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | 参数 | 条件 | 说明 |
 | --- | --- | --- |
 | `tenant` | 必选 | 一个目录租户，用户需登录到其中。 这可采用 GUID 或友好名称格式。 此参数不能设置为 `common` 或 `consumers`，但可以设置为 `organizations`。 |
-| `client_id` | 必选 | [Azure 门户 - 应用注册](https://portal.azure.cn/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)页分配给应用的应用程序（客户端）ID。 | 
+| `client_id` | 必选 | [Azure 门户 - 应用注册](https://portal.azure.cn/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)页分配给应用的应用程序（客户端）ID。 |
 | `grant_type` | 必选 | 必须设置为 `password`。 |
 | `username` | 必选 | 用户的电子邮件地址。 |
 | `password` | 必选 | 用户的密码。 |
 | `scope` | 建议 | 以空格分隔的[范围](v2-permissions-and-consent.md)或权限的列表，这是应用需要的。 在交互式流中，管理员或用户必须提前同意这些范围。 |
-| `client_secret`| 有时必需 | 如果应用是公共客户端，则无法包括 `client_secret` 或 `client_assertion`。  如果应用是机密客户端，则它必须包括在内。 | 
-| `client_assertion` | 有时必需 | 使用证书生成的不同形式的 `client_secret`。  有关更多详细信息，请参阅[证书凭据](active-directory-certificate-credentials.md)。 | 
+| `client_secret`| 有时必需 | 如果应用是公共客户端，则无法包括 `client_secret` 或 `client_assertion`。  如果应用是机密客户端，则它必须包括在内。 |
+| `client_assertion` | 有时必需 | 使用证书生成的不同形式的 `client_secret`。  有关更多详细信息，请参阅[证书凭据](active-directory-certificate-credentials.md)。 |
 
 ### <a name="successful-authentication-response"></a>成功的身份验证响应
 
@@ -119,4 +114,3 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 * 请通过[示例控制台应用程序](https://github.com/azure-samples/active-directory-dotnetcore-console-up-v2)自行试用 ROPC。
 * 若要确定是否应使用 v2.0 终结点，请阅读 [Microsoft 标识平台限制](azure-ad-endpoint-comparison.md)。
 
-<!-- Update_Description: wording update -->

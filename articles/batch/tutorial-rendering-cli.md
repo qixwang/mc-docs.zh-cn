@@ -1,21 +1,17 @@
 ---
-title: 在云中渲染场景 - Azure Batch
+title: 在云中渲染场景
 description: 教程 - 如何使用 Batch 渲染服务和 Azure 命令行界面通过 Arnold 来渲染 Autodesk 3ds Max 场景
-services: batch
-author: LauraBrenner
-manager: evansma
-ms.service: batch
 ms.topic: tutorial
 origin.date: 03/05/2020
 ms.date: 04/29/2020
 ms.author: v-tawe
 ms.custom: mvc
-ms.openlocfilehash: 41014d30755c965d997baa9391bf7175818dff82
-ms.sourcegitcommit: 1fbdefdace8a1d3412900c6c3f89678d8a9b29bc
+ms.openlocfilehash: 5a75a0a840c6a26084ae254f20745dae0264fd6f
+ms.sourcegitcommit: cbaa1aef101f67bd094f6ad0b4be274bbc2d2537
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82886839"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84126770"
 ---
 # <a name="tutorial-render-a-scene-with-azure-batch"></a>教程：使用 Azure Batch 渲染场景 
 
@@ -42,7 +38,7 @@ Azure Batch 提供云规模的渲染功能，按使用付费。 Azure Batch 支�
 
 在订阅中创建资源组、Batch 帐户和链接存储帐户（如果尚未这样做）。 
 
-使用 [az group create](/cli/group#az-group-create) 命令创建资源组。 以下示例在“chinanorth”  位置创建名为“myResourceGroup”  的资源组。
+使用 [az group create](/cli/group#az-group-create) 命令创建资源组。 以下示例在“chinanorth”位置创建名为“myResourceGroup”的资源组。
 
 ```azurecli 
 az group create \
@@ -123,7 +119,7 @@ az storage blob upload-batch \
       "publisher": "batch",
       "offer": "rendering-windows2016",
       "sku": "rendering",
-      "version": "1.3.2"
+      "version": "1.3.8"
     },
     "nodeAgentSKUId": "batch.node.windows amd64"
   },
@@ -316,7 +312,7 @@ az batch task show \
     --task-id mymultitask1
 ```
  
-这些任务在计算节点上生成名为 *dragon0002.jpg* - *dragon0007.jpg* 的输出文件，并将其上传到存储帐户中的 *job-myrenderjob* 容器。 若要查看输出，请使用 [az storage blob download-batch](/cli/storage/blob#az-storage-blob-download_batch) 命令将文件下载到本地计算机上的某个文件夹。 例如：
+这些任务在计算节点上生成名为 *dragon0002.jpg* - *dragon0007.jpg* 的输出文件，并将其上传到存储帐户中的 *job-myrenderjob* 容器。 若要查看输出，请使用 [az storage blob download-batch](/cli/storage/blob) 命令将文件下载到本地计算机上的某个文件夹。 例如：
 
 ```azurecli
 az storage blob download-batch \
@@ -352,4 +348,3 @@ az group delete --name myResourceGroup
 
 > [!div class="nextstepaction"]
 > [Batch Rendering 服务](batch-rendering-service.md)
-

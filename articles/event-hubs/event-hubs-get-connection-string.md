@@ -8,18 +8,18 @@ manager: timlt
 ms.service: event-hubs
 ms.topic: article
 origin.date: 02/19/2019
-ms.date: 03/16/2020
+ms.date: 05/29/2020
 ms.author: v-tawe
-ms.openlocfilehash: 19fc3c0e5bc8b335dae3f07441e5f8f58ae43ed9
-ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
+ms.openlocfilehash: 0b41848eaa7bb6781c4e0a14de665c7ecef6353c
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82588792"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199785"
 ---
 # <a name="get-an-event-hubs-connection-string"></a>获取事件中心连接字符串
 
-若要使用事件中心，需要创建一个事件中心命名空间。 命名空间是多个事件中心主题的范围容器。 此命名空间提供唯一的 FQDN。 创建命名空间后，可以获取与事件中心通信所需的连接字符串。
+若要使用事件中心，需要创建一个事件中心命名空间。 命名空间是多个事件中心或 Kafka 主题的范围容器。 此命名空间提供唯一的 FQDN。 创建命名空间后，可以获取与事件中心通信所需的连接字符串。
 
 Azure 事件中心的连接字符串中嵌入了以下组成部分：
 
@@ -38,16 +38,16 @@ Endpoint=sb://<FQDN>/;SharedAccessKeyName=<KeyName>;SharedAccessKey=<KeyValue>
 
 ## <a name="get-connection-string-from-the-portal"></a>从门户中获取连接字符串
 1. 登录到 [Azure 门户](https://portal.azure.cn)。 
-2. 在左侧导航菜单中，选择“所有服务”  。 
-3. 选择“分析”部分中的“事件中心”   。 
+2. 在左侧导航菜单中，选择“所有服务”。 
+3. 选择“分析”部分中的“事件中心” 。 
 4. 在事件中心列表中，选择事件中心。
-6. 在“事件中心命名空间”页中的左侧菜单上选择“共享访问策略”   。
+6. 在“事件中心命名空间”页中的左侧菜单上选择“共享访问策略” 。
 
     ![共享访问策略菜单项](./media/event-hubs-get-connection-string/event-hubs-get-connection-string1.png)
-7. 在策略列表中选择“共享访问策略”  。 默认值命名为：RootManageSharedAccessPolicy  。 可以添加具有适当权限（读取、写入）的策略，并使用该策略。 
+7. 在策略列表中选择“共享访问策略”。 默认值命名为：RootManageSharedAccessPolicy。 可以添加具有适当权限（读取、写入）的策略，并使用该策略。 
 
     ![事件中心共享访问策略](./media/event-hubs-get-connection-string/event-hubs-get-connection-string2.png)
-8. 选择“连接字符串 - 主密钥”字段旁边的“复制”按钮   。 
+8. 选择“连接字符串 - 主密钥”字段旁边的“复制”按钮 。 
 
     ![事件中心 - 获取连接字符串](./media/event-hubs-get-connection-string/event-hubs-get-connection-string3.png)
 

@@ -7,12 +7,12 @@ manager: digimobile
 origin.date: 05/15/2017
 ms.date: 6/4/2019
 ms.author: v-lingwu
-ms.openlocfilehash: b9fb645f3667534307f2c5758bcd33b5e45ae33e
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: cff97797917a853fcf8e3e5657c508053148aaed
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78850377"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199350"
 ---
 # <a name="separating-telemetry-from-development-test-and-production"></a>分隔开发、测试和生产阶段的遥测
 
@@ -74,7 +74,7 @@ ms.locfileid: "78850377"
 
 ![依次单击“新建”、“Application Insights”](./media/separate-resources/01-new.png)
 
-* **应用程序类型**会影响在概述边栏选项卡上看到的内容和[指标资源管理器](../../azure-monitor/app/metrics-explorer.md)中的可用属性。 如果未看到应用类型，请选择网页的 Web 类型之一。
+* **应用程序类型**会影响在概述边栏选项卡上看到的内容和[指标资源管理器](../../azure-monitor/platform/metrics-charts.md)中的可用属性。 如果未看到应用类型，请选择网页的 Web 类型之一。
 * **资源组**便于管理[访问控件](../../azure-monitor/app/resources-roles-access-control.md)之类的属性。 可为开发、测试和生产使用单独的资源组。
 * **订阅**是 Azure 中的付款帐户。
 * **位置**是保留数据的位置。 当前无法更改它。 
@@ -92,7 +92,7 @@ ms.locfileid: "78850377"
 ## <a name="filter-on-build-number"></a>按版本号筛选
 发布新应用版本时，我们希望能够将不同版本的遥测数据分开。
 
-可以设置“应用程序版本”属性，这样便可以筛选[搜索](../../azure-monitor/app/diagnostic-search.md)和[指标资源管理器](../../azure-monitor/app/metrics-explorer.md)结果。
+可以设置“应用程序版本”属性，这样便可以筛选[搜索](../../azure-monitor/app/diagnostic-search.md)和[指标资源管理器](../../azure-monitor/platform/metrics-charts.md)结果。
 
 ![按属性进行筛选](./media/separate-resources/050-filter.png)
 
@@ -142,7 +142,7 @@ ms.locfileid: "78850377"
     </PropertyGroup>
 ```
 
-当它具有内部信息时，Application Insights Web 模块自动将**应用程序版本**作为属性添加到每个遥测项。 这样，便可以在执行[诊断搜索](../../azure-monitor/app/diagnostic-search.md)或[浏览指标](../../azure-monitor/app/metrics-explorer.md)时按版本进行筛选。
+当它具有内部信息时，Application Insights Web 模块自动将**应用程序版本**作为属性添加到每个遥测项。 这样，便可以在执行[诊断搜索](../../azure-monitor/app/diagnostic-search.md)或[浏览指标](../../azure-monitor/platform/metrics-charts.md)时按版本进行筛选。
 
 但请注意，内部版本号只能由 Azure 生成引擎生成，而不能由 Visual Studio 中的开发人员生成引擎生成。
 

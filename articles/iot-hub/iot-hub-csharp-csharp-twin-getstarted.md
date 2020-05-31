@@ -10,12 +10,12 @@ ms.topic: conceptual
 origin.date: 08/26/2019
 ms.author: v-yiso
 ms.date: 03/09/2020
-ms.openlocfilehash: 26a478959cc2b9a8d0de2b4277303320e4f4efcb
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: e395de3d2f547e8aa62b710dc989265cc0c62860
+ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78155095"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84186921"
 ---
 # <a name="get-started-with-device-twins-net"></a>设备孪生入门 (.NET)
 [!INCLUDE [iot-hub-selector-twin-get-started](../../includes/iot-hub-selector-twin-get-started.md)]
@@ -35,7 +35,7 @@ ms.locfileid: "78155095"
 ## <a name="prerequisites"></a>必备条件
 
 * Visual Studio。
-* 有效的 Azure 帐户。 （如果没有帐户，只需几分钟即可创建一个[试用帐户][lnk-free-trial]。）
+* 有效的 Azure 帐户。 （如果没有帐户，只需几分钟即可创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。）
 * 确保已在防火墙中打开端口 8883。 本文中的设备示例使用 MQTT 协议，该协议通过端口 8883 进行通信。 在某些公司和教育网络环境中，此端口可能被阻止。 有关解决此问题的更多信息和方法，请参阅[连接到 IoT 中心(MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
 
 ## <a name="create-an-iot-hub"></a>创建 IoT 中心
@@ -253,34 +253,3 @@ ms.locfileid: "78155095"
 * 若要了解如何使用设备孪生的所需属性配置设备，请参阅[使用所需属性配置设备](tutorial-device-twins.md)教程。
 
 * 若要了解如何以交互方式控制设备（例如从用户控制的应用打开风扇），请参阅[使用直接方法](quickstart-control-device-dotnet.md)教程。
-
-
-
-<!-- images -->
-[img-servicenuget]: ./media/iot-hub-csharp-csharp-twin-getstarted/servicesdknuget.png
-[img-createapp]: ./media/iot-hub-csharp-csharp-twin-getstarted/createnetapp.png
-[img-addtagapp]: ./media/iot-hub-csharp-csharp-twin-getstarted/addtagapp.png
-[img-createdeviceapp]: ./media/iot-hub-csharp-csharp-twin-getstarted/createdeviceapp.png
-[img-clientnuget]: ./media/iot-hub-csharp-csharp-twin-getstarted/clientsdknuget.png
-[img-rundeviceapp]: ./media/iot-hub-csharp-csharp-twin-getstarted/rundeviceapp.png
-[img-tagappsuccess]: ./media/iot-hub-csharp-csharp-twin-getstarted/tagappsuccess.png
-
-<!-- links -->
-[lnk-hub-sdks]: ./iot-hub-devguide-sdks.md
-[lnk-free-trial]: https://www.azure.cn/pricing/1rmb-trial/
-[lnk-nuget-service-sdk]: https://www.nuget.org/packages/Microsoft.Azure.Devices/
-[lnk-nuget-client-sdk]: https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/
-
-[lnk-device-identity-csharp]: ./iot-hub-csharp-csharp-getstarted.md#DeviceIdentity_csharp
-[lnk-d2c]: ./iot-hub-devguide-messaging.md#device-to-cloud-messages
-[lnk-methods]: ./iot-hub-devguide-direct-methods.md
-[lnk-twins]: ./iot-hub-devguide-device-twins.md
-[lnk-query]: ./iot-hub-devguide-query-language.md
-[lnk-identity]: ./iot-hub-devguide-identity-registry.md
-
-[lnk-iothub-getstarted]: quickstart-send-telemetry-dotnet.md
-[lnk-methods-tutorial]: quickstart-control-device-node.md
-[lnk-twin-how-to-configure]: tutorial-device-twins.md
-
-[lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-node/blob/master/doc/node-devbox-setup.md
-

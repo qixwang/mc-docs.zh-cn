@@ -9,12 +9,19 @@
 - name: 快速入门
   expanded: true
   items:
-    - name: 创建 DB - 门户
-      href: quickstart-create-mysql-server-database-using-azure-portal.md
-    - name: 创建 DB - Azure CLI
-      href: quickstart-create-mysql-server-database-using-azure-cli.md
-    - name: 创建 DB - Azure CLI up 命令
-      href: quickstart-create-server-up-azure-cli.md
+    - name: 创建 DB
+      items:
+        - name: 创建 DB - 门户
+          href: quickstart-create-mysql-server-database-using-azure-portal.md
+        - name: 创建 DB - Azure CLI
+          href: quickstart-create-mysql-server-database-using-azure-cli.md
+        - name: 创建 DB - Azure CLI up 命令
+          href: quickstart-create-server-up-azure-cli.md
+        - name: 创建 DB - Azure PowerShell
+          href: quickstart-create-mysql-server-database-using-azure-powershell.md
+        - name: 创建 DB - ARM 模板
+          href: quickstart-create-mysql-server-database-using-arm-template.md
+          displayName: deploy azure resource manager template
     - name: 连接和查询
       items:
         - name: PHP
@@ -43,6 +50,8 @@
           href: tutorial-design-database-using-portal.md
         - name: Azure CLI
           href: tutorial-design-database-using-cli.md
+        - name: Azure PowerShell
+          href: tutorial-design-database-using-powershell.md
         - name: Azure Resource Manager 模板
           href: tutorial-provision-mysql-server-using-Azure-Resource-Manager-templates.md
     - name: 2 - 创建 Web 应用
@@ -56,6 +65,9 @@
       href: sample-scripts-azure-cli.md
     - name: Java 连接池
       href: sample-scripts-java-connection-pooling.md
+    - name: Azure Policy 内置策略定义
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: 概念
   items:
     - name: 数据库和服务器
@@ -145,6 +157,8 @@
           href: howto-restore-server-portal.md
         - name: Azure CLI
           href: howto-restore-server-cli.md
+        - name: Azure PowerShell
+          href: howto-restore-server-powershell.md
     - name: 迁移数据库
       items:
         - name: 转储和还原
@@ -171,12 +185,16 @@
           href: howto-server-parameters.md
         - name: Azure CLI
           href: howto-configure-server-parameters-using-cli.md
+        - name: Azure PowerShell
+          href: howto-configure-server-parameters-using-powershell.md
     - name: 自动增长存储
       items:
         - name: Azure 门户
           href: howto-auto-grow-storage-portal.md
         - name: Azure CLI
           href: howto-auto-grow-storage-cli.md
+        - name: Azure PowerShell
+          href: howto-auto-grow-storage-powershell.md
     - name: 访问服务器日志
       items:
         - name: 慢查询日志
@@ -203,6 +221,8 @@
           href: howto-read-replicas-portal.md
         - name: 使用 Azure CLI、REST API 创建只读副本
           href: howto-read-replicas-cli.md
+        - name: 创建只读副本 - Azure PowerShell
+          href: howto-read-replicas-powershell.md
     - name: 故障排除
       items:
         - name: 排查连接错误
@@ -223,6 +243,8 @@
           href: howto-restart-server-portal.md
         - name: Azure CLI
           href: howto-restart-server-cli.md
+        - name: Azure PowerShell
+          href: howto-restart-server-powershell.md
 - name: 参考
   items:
     - name: Azure CLI

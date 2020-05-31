@@ -57,9 +57,9 @@
     - name: Azure Stack 系列
       href: ../index.yml
     - name: Azure Stack Hub
-      href: 'https://docs.microsoft.com/azure-stack/operator/azure-stack-overview?view=azs-2002'
+      href: /azure-stack/operator/azure-stack-overview?view=azs-2002
     - name: Windows Server
-      href: /windows-server/
+      href: 'https://docs.microsoft.com/windows-server/'
     - name: Windows 管理中心
       href: 'https://docs.microsoft.com/windows-server/manage/windows-admin-center/understand/windows-admin-center'
     - name: Azure 混合服务

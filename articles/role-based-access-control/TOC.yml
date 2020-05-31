@@ -1,9 +1,9 @@
-- name: Azure 资源的 RBAC 文档
+- name: Azure RBAC 文档
   href: index.yml
   items: null
 - name: 概述
   items:
-    - name: 什么是 RBAC?
+    - name: 什么是 Azure RBAC？
       href: overview.md
     - name: 了解不同角色
       href: rbac-and-directory-admin-roles.md
@@ -22,14 +22,17 @@
       href: tutorial-role-assignments-user-template.md
     - name: 授予组访问权限 - PowerShell
       href: tutorial-role-assignments-group-powershell.md
-    - name: 创建自定义角色 - PowerShell
-      href: tutorial-custom-role-powershell.md
-    - name: 创建自定义角色 - CLI
-      href: tutorial-custom-role-cli.md
+- name: 示例
+  items:
+    - name: Azure Policy 内置策略定义
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: 概念
   items:
     - name: 最佳实践
       href: best-practices.md
+    - name: 用于 Azure 管理的条件访问
+      href: conditional-access-azure-management.md
 - name: 操作指南
   items:
     - name: 列出角色定义
@@ -52,6 +55,8 @@
       items:
         - name: 门户
           href: role-assignments-portal.md
+        - name: 门户 - 来宾用户
+          href: role-assignments-external-users.md
         - name: PowerShell
           href: role-assignments-powershell.md
         - name: Azure CLI
@@ -70,7 +75,7 @@
           href: deny-assignments-powershell.md
         - name: REST API
           href: deny-assignments-rest.md
-    - name: 创建自定义角色
+    - name: 创建或更新自定义角色
       items:
         - name: 概述
           href: custom-roles.md
@@ -96,7 +101,7 @@
       href: built-in-roles.md
     - name: 资源提供程序操作
       href: resource-provider-operations.md
-    - name: RBAC 限制
+    - name: Azure RBAC 限制
       href: '../azure-resource-manager/management/azure-subscription-service-limits.md#role-based-access-control-limits'
     - name: Azure PowerShell
       href: 'https://docs.microsoft.com/powershell/module/az.resources'

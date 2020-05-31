@@ -8,14 +8,14 @@ ms.service: event-hubs
 ms.workload: core
 ms.topic: quickstart
 origin.date: 11/05/2019
-ms.date: 12/02/2019
+ms.date: 05/29/2020
 ms.author: v-tawe
-ms.openlocfilehash: 7dc1e09d006354f256a4a6b54480de7acff7dece
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: e33afd350e9f3f88780e8a0157e44c8f99001f00
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74657844"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199783"
 ---
 # <a name="quickstart-send-events-to-or-receive-events-from-event-hubs-using-go"></a>快速入门：使用 Go 将事件发送到事件中心或从其接收事件
 Azure 事件中心是一个大数据流式处理平台和事件引入服务，每秒能够接收和处理数百万个事件。 事件中心可以处理和存储分布式软件和设备生成的事件、数据或遥测。 可以使用任何实时分析提供程序或批处理/存储适配器转换和存储发送到数据中心的数据。 有关事件中心的详细概述，请参阅[事件中心概述](event-hubs-about.md)和[事件中心功能](event-hubs-features.md)。
@@ -216,9 +216,9 @@ if err != nil {
 
 ### <a name="create-a-check-pointer-and-a-leaser"></a>创建检查指针和出租人 
 
-创建“出租人”，负责将分区租给特定接收器；创建检查指针，负责编写消息流的检查点，以便其他接收器可开始读取正确的偏移量   。
+创建“出租人”，负责将分区租给特定接收器；创建检查指针，负责编写消息流的检查点，以便其他接收器可开始读取正确的偏移量 。
 
-目前，提供使用相同存储容器的单个 StorageLeaserCheckpointer 来管理租用和检查点  。 除存储帐户和容器名称外，StorageLeaserCheckpointer 还需要上一步中创建的凭据和 Azure 结构，才能正确访问容器  。
+目前，提供使用相同存储容器的单个 StorageLeaserCheckpointer 来管理租用和检查点。 除存储帐户和容器名称外，StorageLeaserCheckpointer 还需要上一步中创建的凭据和 Azure 结构，才能正确访问容器。
 
 ```go
 leaserCheckpointer, err := storageLeaser.NewStorageLeaserCheckpointer(

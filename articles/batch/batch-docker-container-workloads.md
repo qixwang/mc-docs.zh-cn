@@ -1,22 +1,17 @@
 ---
-title: 容器工作负荷 - Azure Batch
+title: 容器工作负荷
 description: 了解如何从 Azure Batch 上的容器映像运行和缩放应用。 创建一个支持运行容器任务的计算节点池。
-services: batch
-author: LauraBrenner
-manager: evansma
-ms.service: batch
 ms.topic: article
-ms.workload: na
 ms.date: 04/29/2020
 ms.author: v-tawe
 ms.custom: seodec18
 origin.date: 03/02/2020
-ms.openlocfilehash: b7feaf97bc8a87378cb9db6474bef2a525edaa8c
-ms.sourcegitcommit: 1fbdefdace8a1d3412900c6c3f89678d8a9b29bc
+ms.openlocfilehash: 4f446a946eba076b4e1114fa4c5786de740505aa
+ms.sourcegitcommit: cbaa1aef101f67bd094f6ad0b4be274bbc2d2537
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82886993"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84126784"
 ---
 # <a name="run-container-applications-on-azure-batch"></a>在 Azure Batch 上运行容器应用程序
 

@@ -9,12 +9,12 @@ ms.topic: troubleshooting
 origin.date: 01/30/2020
 ms.date: 02/17/2020
 ms.author: v-yiso
-ms.openlocfilehash: c9b937824b5610f5a6051082fa610807efc08f07
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 5e6b63ce17c3ca94af2f840bcc5304cc4999986e
+ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79290914"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84186896"
 ---
 # <a name="500xxx-internal-errors"></a>500xxx 内部错误
 
@@ -34,7 +34,7 @@ ms.locfileid: "79290914"
 
 ## <a name="cause"></a>原因
 
-500xxx 错误响应可能有多种原因。 在所有情况下，此问题很可能是暂时性的。 尽管 IoT 中心团队会努力维持 [SLA](https://azure.microsoft.com/support/legal/sla/iot-hub/)，但一小部分 IoT 中心节点偶尔会遇到暂时性故障。 如果设备尝试连接到有问题的节点，则你会收到此错误。
+500xxx 错误响应可能有多种原因。 在所有情况下，此问题很可能是暂时性的。 尽管 IoT 中心团队会努力维持 [SLA](https://www.azure.cn/support/sla/iot-hub/)，但一小部分 IoT 中心节点偶尔会遇到暂时性故障。 如果设备尝试连接到有问题的节点，则你会收到此错误。
 
 ## <a name="solution"></a>解决方案
 

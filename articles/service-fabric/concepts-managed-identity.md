@@ -5,14 +5,16 @@ ms.topic: conceptual
 origin.date: 12/09/2019
 ms.author: v-yeche
 ms.date: 01/06/2020
-ms.openlocfilehash: 34561d29dc5c840cb15631b4425d186ddfedd411
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: ad9f19bca284d905a6c057f026dbbdd9bc698e82
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75957105"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199497"
 ---
-<!--Verify successfully-->
+<!--Not Available on MOONCAKE-->
+<!--RELEASE BEFORE CONFIRMATION-->
+<!--https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities#azure-services-that-support-managed-identities-for-azure-resources-->
 # <a name="managed-identity-for-service-fabric-application-preview"></a>Service Fabric 应用程序的托管标识（预览版）
 
 生成云应用程序时需要应对的常见挑战是，如何管理代码中用于云服务身份验证的凭据。 保护凭据的安全是一项重要任务，因为凭据从来不会显示在开发人员工作站上，并且不会签入源代码管理中。 Azure Active Directory (Azure AD) 中的 Azure 资源托管标识功能可以解决此问题。 此功能为 Azure 服务提供了 Azure AD 中的自动托管标识。 可以使用此标识向支持 Azure AD 身份验证的任何服务（包括 Key Vault）证明身份，无需在代码中放入任何凭据。

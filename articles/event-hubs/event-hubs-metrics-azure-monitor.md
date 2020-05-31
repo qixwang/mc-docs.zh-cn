@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.custom: seodec18
 origin.date: 09/18/2019
-ms.date: 03/16/2020
+ms.date: 05/29/2020
 ms.author: v-tawe
-ms.openlocfilehash: 7398afbbba507ffad5d3c7eb0cad79938b9bb497
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 950dfc358d2b91c9da1161e1f79a0928b3411a25
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80243925"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199780"
 ---
 # <a name="azure-event-hubs-metrics-in-azure-monitor"></a>Azure Monitor 中的 Azure 事件中心指标
 

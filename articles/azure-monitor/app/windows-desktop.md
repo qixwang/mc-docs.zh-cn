@@ -7,12 +7,12 @@ manager: digimobile
 origin.date: 10/29/2019
 ms.date: 11/04/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 770e20aef9442f10c7c4ce78388631fa4da66568
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 48f78033ea9e9a63d0d90f435160bfb9f36e64c5
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78850339"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199338"
 ---
 # <a name="monitoring-usage-and-performance-in-classic-windows-desktop-apps"></a>监视经典 Windows 桌面应用中的使用情况和性能
 
@@ -114,7 +114,7 @@ namespace CustomInitializer.Telemetry
 ## <a name="next-steps"></a>后续步骤
 * [创建仪表板](../../azure-monitor/app/overview-dashboard.md)
 * [诊断搜索](../../azure-monitor/app/diagnostic-search.md)
-* [探索指标](../../azure-monitor/app/metrics-explorer.md)
+* [探索指标](../../azure-monitor/platform/metrics-charts.md)
 * [编写分析查询](../../azure-monitor/log-query/log-query-overview.md)
 
 

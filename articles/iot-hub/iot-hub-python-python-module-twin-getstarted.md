@@ -9,12 +9,12 @@ ms.topic: conceptual
 origin.date: 04/03/2020
 ms.date: 05/11/2020
 ms.author: v-yiso
-ms.openlocfilehash: 4a3fc5f0d7fcefa30d16903c1a7ee1a3c95104fb
-ms.sourcegitcommit: 95efd248f5ee3701f671dbd5cfe0aec9c9959a24
+ms.openlocfilehash: 8ec62c720d6979af4638190a9c1aded2ae97b8c1
+ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82507714"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84186909"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-python"></a>IoT 中心模块标识和模块孪生 (Python) 入门
 
@@ -187,7 +187,7 @@ ms.locfileid: "82507714"
 
 在本部分，你将创建一个用于在设备上获取模块孪生所需属性更新的 Python 应用。
 
-1. 获取模块连接字符串。 在 [Azure 门户](https://portal.azure.com/)中导航到你的 IoT 中心，并在左侧窗格中选择“IoT 设备”  。 从设备列表中选择“myFirstDevice”并将其打开  。 在“模块标识”下选择“myFirstModule”。   复制模块连接字符串。 在下一步骤中需要使用此字符串。
+1. 获取模块连接字符串。 在 [Azure 门户](https://portal.azure.cn/)中导航到你的 IoT 中心，并在左侧窗格中选择“IoT 设备”  。 从设备列表中选择“myFirstDevice”并将其打开  。 在“模块标识”下选择“myFirstModule”。   复制模块连接字符串。 在下一步骤中需要使用此字符串。
 
    ![Azure 门户模块详细信息](./media/iot-hub-python-python-module-twin-getstarted/module-detail.png)
 

@@ -15,12 +15,12 @@ ms.workload: na
 origin.date: 08/08/2017
 ms.author: v-yiso
 ms.date: 07/15/2019
-ms.openlocfilehash: 2ebf96942cb8f7113af4f6df906f8095171de627
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: f5c59a2d52b6cb98fba71ef5a621fb62229d18f2
+ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74179014"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84186889"
 ---
 # <a name="create-an-iot-hub-using-the-resource-provider-rest-api-net"></a>使用资源提供程序 REST API 创建 IoT 中心 (.NET)
 [!INCLUDE [iot-hub-resource-manager-selector](../../includes/iot-hub-resource-manager-selector.md)]
@@ -33,7 +33,7 @@ ms.locfileid: "74179014"
 
 * Visual Studio。
 
-* 有效的 Azure 帐户。 <br/>如果没有帐户，只需花费几分钟就能创建一个[帐户][lnk-free-trial]。
+* 有效的 Azure 帐户。 <br/>如果没有帐户，只需花费几分钟就能创建一个[帐户](https://www.azure.cn/pricing/1rmb-trial/)。
 * [Azure PowerShell 1.0][lnk-powershell-install] 或更高版本。
 
 [!INCLUDE [iot-hub-prepare-resource-manager](../../includes/iot-hub-prepare-resource-manager.md)]

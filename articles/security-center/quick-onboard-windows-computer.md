@@ -15,17 +15,17 @@ ms.workload: na
 origin.date: 12/3/2018
 ms.date: 05/22/2019
 ms.author: v-lingwu
-ms.openlocfilehash: f710347033ae826cf44943245f9c16b31f067b84
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.openlocfilehash: e26310de8b62ebe89d74079523239f72721741dc
+ms.sourcegitcommit: cbaa1aef101f67bd094f6ad0b4be274bbc2d2537
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83422355"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84126793"
 ---
 # <a name="quickstart-onboard-windows-computers-to-azure-security-center"></a>快速入门：将 Windows 计算机加入安全中心
-加入 Azure 订阅之后，可以通过预配 Microsoft Monitoring Agent 为 Azure 外部（例如，本地或在其他云中）运行的资源启用安全中心。
+载入 Azure 订阅之后，可以通过预配 Log Analytics 代理为在 Azure 外部（例如，在本地或在其他云中）运行的资源启用安全中心。
 
-本快速入门演示如何在 Windows 计算机上安装 Microsoft Monitoring Agent。
+本快速入门演示如何在 Windows 计算机上安装 Log Analytics 代理。
 
 ## <a name="prerequisites"></a>先决条件
 若要开始使用安全中心，必须具有 Microsoft Azure 订阅。 如果你尚无订阅，则可以注册[试用帐户](https://www.azure.cn/pricing/free-trial/)。
@@ -73,7 +73,7 @@ ms.locfileid: "83422355"
 9. 在“准备安装”页上检查所做的选择，并选择“安装” 。
 10. 在“配置已成功完成”页上，选择“完成” 
 
-完成后，**Microsoft Monitoring Agent** 将显示在“**控制面板**”中。 可以在该处检查配置，并验证代理是否已连接。
+完成后，**Log Analytics 代理**会显示在“控制面板”中。  可以在该处检查配置，并验证代理是否已连接。
 
 有关安装和配置代理的详细信息，请参阅[连接 Windows 计算机](../azure-monitor/platform/agent-windows.md#install-the-agent-using-setup-wizard)。
 
@@ -94,10 +94,10 @@ ms.locfileid: "83422355"
 
 1. 打开“控制面板”
 2. 打开“程序和功能”。
-3. 在“程序和功能”中选择“Microsoft Monitoring Agent”，单击“卸载”。  
+3. 在“程序和功能”中选择“Log Analytics 代理”，单击“卸载”。   
 
 ## <a name="next-steps"></a>后续步骤
-在本快速入门中，已在 Windows 计算机上预配了 Microsoft Monitoring Agent。 若要详细了解如何使用安全中心，请继续阅读教程，了解如何配置安全策略和评估资源的安全性。
+在本快速入门中，你已在 Windows 计算机上预配了 Log Analytics 代理。 若要详细了解如何使用安全中心，请继续阅读教程，了解如何配置安全策略和评估资源的安全性。
 
 > [!div class="nextstepaction"]
 > [教程：定义和评估安全策略](tutorial-security-policy.md)

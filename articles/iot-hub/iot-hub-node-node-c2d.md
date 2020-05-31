@@ -10,12 +10,12 @@ ms.topic: conceptual
 origin.date: 06/16/2017
 ms.author: v-yiso
 ms.date: 03/09/2020
-ms.openlocfilehash: 006535cfbc04d979daa0ce3eb1c40fb99a43a5cc
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 6c66039bb31e0768dedf969e84b56e12663d7487
+ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78154493"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84186617"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-nodejs"></a>使用 IoT 中心发送云到设备消息 (Node.js)
 
@@ -31,7 +31,7 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
 * 在设备上接收云到设备的消息。
 * 通过解决方案后端，请求确认收到从 IoT 中心发送到设备的消息（反馈  ）。
 
-可以在 [IoT 中心开发人员指南][IoT Hub developer guide - C2D]中找到有关云到设备消息的详细信息。
+可以在 [IoT 中心开发人员指南](iot-hub-devguide-messaging.md)中找到有关云到设备消息的详细信息。
 
 在本教程结束时，会运行两个 Node.js 控制台应用：
 
@@ -47,7 +47,7 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
 
 * Node.js 版本 10.0.x 或更高版本。 [准备开发环境](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md)介绍了如何在 Windows 或 Linux 上安装本教程所用的 Node.js。
 
-* 有效的 Azure 帐户。 （如果没有帐户，只需几分钟即可创建一个[试用帐户][lnk-free-trial]。）
+* 有效的 Azure 帐户。 （如果没有帐户，只需几分钟即可创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。）
 * 确保已在防火墙中打开端口 8883。 本文中的设备示例使用 MQTT 协议，该协议通过端口 8883 进行通信。 在某些公司和教育网络环境中，此端口可能被阻止。 有关解决此问题的更多信息和方法，请参阅[连接到 IoT 中心(MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
 
 ## <a name="receive-messages-in-the-simulated-device-app"></a>在模拟设备应用中接收消息
@@ -182,23 +182,4 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
 ## <a name="next-steps"></a>后续步骤
 在本教程中，已学习如何发送和接收云到设备的消息。 
 
-
-若要了解有关使用 IoT 中心开发解决方案的详细信息，请参阅 [IoT 中心开发人员指南]。
-
-<!-- Images -->
-[img-simulated-device]: ./media/iot-hub-node-node-c2d/receivec2d.png
-[img-send-command]:  ./media/iot-hub-node-node-c2d/sendc2d.png
-
-<!-- Links -->
-
-[Get started with IoT Hub]: quickstart-send-telemetry-node.md
-[IoT Hub Developer Guide - C2D]: ./iot-hub-devguide-messaging.md
-[IoT 中心开发人员指南]: ./iot-hub-devguide.md
-[Azure IoT Developer Center]: https://www.azure.cn/develop/iot/
-[lnk-free-trial]: https://www.azure.cn/pricing/1rmb-trial/
-[lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md
-[Transient Fault Handling]: https://msdn.microsoft.com/zh-cn/library/hh680901(v=pandp.50).aspx
-[Azure portal]: https://portal.azure.cn
-[Azure IoT Remote Monitoring solution accelerator]: /iot-suite/
-
-<!--Update_Description:update meta properties and wording-->
+若要了解有关使用 IoT 中心开发解决方案的详细信息，请参阅 [IoT 中心开发人员指南](iot-hub-devguide.md)。

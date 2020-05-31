@@ -5,16 +5,16 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: cbrooks
 origin.date: 03/05/2020
-ms.date: 03/30/2020
-ms.topic: quickstart
+ms.date: 06/01/2020
+ms.topic: how-to
 ms.service: storage
 ms.subservice: blobs
-ms.openlocfilehash: 5fd3bb4d45128efc89cdcb9b9765bad9d8d38f4b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: f519e6f8e4d1bac66d8a75385ebe2ef6655b130d
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80290450"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199753"
 ---
 # <a name="quickstart-route-storage-events-to-web-endpoint-with-azure-cli"></a>快速入门：使用 Azure CLI 将存储事件路由到 Web 终结点
 
@@ -92,7 +92,7 @@ storageid=$(az storage account show --name <storage_account_name> --resource-gro
 endpoint=https://$sitename.chinacloudsites.cn/api/updates
 
 az eventgrid event-subscription create \
-  --resource-id $storageid \
+  --source-resource-id $storageid \
   --name <event_subscription_name> \
   --endpoint $endpoint
 ```

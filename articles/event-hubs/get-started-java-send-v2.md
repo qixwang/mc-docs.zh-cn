@@ -7,14 +7,14 @@ ms.service: event-hubs
 ms.workload: core
 ms.topic: quickstart
 origin.date: 02/11/2020
-ms.date: 04/20/2020
+ms.date: 05/29/2020
 ms.author: v-tawe
-ms.openlocfilehash: 8046b89624ea04e18b57d91b9e8c121bfe8f1cf0
-ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
+ms.openlocfilehash: 16e09c40af702f77dafc5b828f1df3edb4055ecc
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82588722"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199763"
 ---
 # <a name="use-java-to-send-events-to-or-receive-events-from-azure-event-hubs-azure-messaging-eventhubs"></a>使用 Java 向/从 Azure 事件中心 (azure-messaging-eventhubs) 发送/接收事件
 本快速入门介绍如何使用 **azure-messaging-eventhubs** Java 包向事件中心发送事件以及从事件中心接收事件。
@@ -141,6 +141,9 @@ public class Sender {
 ## <a name="receive-events"></a>接收事件
 本教程中的代码基于 [GitHub 上的 EventProcessorClient 示例](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/src/samples/java/com/azure/messaging/eventhubs/EventProcessorClientSample.java)，可检查该代码以查看完整的工作应用程序。
 
+> [!NOTE]
+> 如果在 Azure Stack Hub 上运行，该平台支持的存储 Blob SDK 可能不同于通常在 Azure 上提供的版本。 例如，如果在 [Azure Stack Hub 版本 2002](https://docs.azure.cn/azure-stack/user/event-hubs-overview) 上运行，则存储服务的最高可用版本为版本 2017-11-09。 在这种情况下，除了执行本部分中的步骤以外，还需要添加相关代码，将存储服务 API 版本 2017-11-09 作为目标。 如需通过示例来了解如何以特定的存储 API 版本为目标，请参阅 [GitHub 上的此示例](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs-checkpointstore-blob/src/samples/java/com/azure/messaging/eventhubs/checkpointstore/blob/EventProcessorWithCustomStorageVersion.java)。 有关 Azure Stack Hub 上支持的 Azure 存储服务版本的详细信息，请参阅 [Azure Stack Hub 存储：差异和注意事项](https://docs.azure.cn/azure-stack/user/azure-stack-acs-differences)
+
 ### <a name="create-a-java-project"></a>创建一个 Java 项目
 
 事件中心的 Java 客户端库可用于 [Maven 中央存储库](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs-eph%22)中的 Maven 项目，并且可以使用 Maven 项目文件中的以下依赖项声明进行引用： 
@@ -191,7 +194,7 @@ public class Sender {
                      .processEvent(processEvent)
                      .processError(processError)
                      .consumerGroup(EventHubClientBuilder.DEFAULT_CONSUMER_GROUP_NAME)
-                     .checkpointStore(new InMemoryCheckpointStore())
+                     .checkpointStore(new SampleCheckpointStore())
                      .buildEventProcessorClient();
     
              System.out.println("Starting event processor");
@@ -209,7 +212,7 @@ public class Sender {
      }
     ```
     
-2. 从 [GitHub](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/src/samples/java/com/azure/messaging/eventhubs/InMemoryCheckpointStore.java) 下载 **InMemoryCheckpointStore.java** 文件，并将其添加到项目。 
+2. 从 [GitHub](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/src/samples/java/com/azure/messaging/eventhubs/SampleCheckpointStore.java) 下载 SampleCheckpointStore.java  文件，并将其添加到你的项目。 
 3. 生成程序，并确保没有引发任何错误。 
 
 ## <a name="run-the-applications"></a>运行应用程序

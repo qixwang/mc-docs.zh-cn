@@ -7,14 +7,14 @@ documentationcenter: ''
 author: spelluru
 ms.topic: conceptual
 origin.date: 08/22/2019
-ms.date: 08/22/2019
+ms.date: 05/29/2020
 ms.author: v-tawe
-ms.openlocfilehash: 15cd0fe0972f21b4ef88776dc0ee66c8e9ae6037
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 208c103828c382d9643cc887bcf7b54df1d21a37
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "72887687"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199454"
 ---
 # <a name="authorizing-access-to-event-hubs-resources-using-shared-access-signatures"></a>使用共享访问签名授权访问事件中心资源
 使用共享访问签名 (SAS) 可以授予对事件中心命名空间中的资源的受限访问权限。 SAS 基于授权规则保护对事件中心资源的访问。 这些规则是针对命名空间或实体（事件中心或主题）配置的。 本文提供 SAS 模型的概述，并探讨 SAS 最佳做法。

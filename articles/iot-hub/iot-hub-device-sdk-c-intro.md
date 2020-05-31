@@ -9,12 +9,12 @@ ms.topic: conceptual
 origin.date: 05/17/2019
 ms.author: v-yiso
 ms.date: 05/11/2020
-ms.openlocfilehash: 9bd489e7c4e0068b425ef20d09a1344b849cb452
-ms.sourcegitcommit: 95efd248f5ee3701f671dbd5cfe0aec9c9959a24
+ms.openlocfilehash: 5e9e78c2d5a6493cbef13362c632554150d6d275
+ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82507742"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84186925"
 ---
 # <a name="azure-iot-device-sdk-for-c"></a>适用于 C 的 Azure IoT 设备 SDK
 
@@ -77,7 +77,7 @@ SDK 已在许多平台上进行了测试（有关详细信息，请参阅 [Azure
 
 如果不熟悉设备资源管理器工具，请参阅以下过程，了解如何使用该工具来添加设备和获取设备连接字符串。
 
-1. 若要安装设备资源管理器工具，请参阅[如何对 IoT 中心设备使用设备资源管理器](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer)。
+1. 若要安装设备资源管理器工具，请参阅[如何对 IoT 中心设备使用设备资源管理器](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/)。
 
 1. 运行该程序时，可以看到以下界面：
 

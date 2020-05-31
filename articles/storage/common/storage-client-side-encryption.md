@@ -6,16 +6,16 @@ author: WenJason
 ms.service: storage
 ms.topic: article
 origin.date: 10/20/2017
-ms.date: 09/30/2019
+ms.date: 06/01/2020
 ms.author: v-jay
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 5b88ab4beb715c7007f7ab41c525f1b8b068dab0
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: c7941cdd1107350a3cd2cc4e689d5f6e60a99bb7
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "71306732"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199667"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-for-azure-storage"></a>Azure 存储的客户端加密和 Azure Key Vault
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
@@ -107,7 +107,7 @@ ms.locfileid: "71306732"
 > 若要执行查询操作，必须指定一个能够解析结果集中的所有密钥的密钥解析程序。 如果查询结果中包含的实体不能解析为提供程序，则客户端库会引发错误。 对于执行服务器端投影的任何查询，在默认情况下，客户端库将为所选列添加特殊的加密元数据属性（_ClientEncryptionMetadata1 和 _ClientEncryptionMetadata2）。
 
 ## <a name="azure-key-vault"></a>Azure Key Vault
-Azure 密钥保管库可帮助保护云应用程序和服务使用的加密密钥和机密。 借助 Azure Key Vault，用户可使用密钥来加密密钥和机密（例如身份验证密钥、存储帐户密钥、数据加密密钥、.PFX 文件和密码）。 有关详细信息，请参阅[什么是 Azure 密钥保管库？](../../key-vault/key-vault-overview.md)。
+Azure 密钥保管库可帮助保护云应用程序和服务使用的加密密钥和机密。 借助 Azure Key Vault，用户可使用密钥来加密密钥和机密（例如身份验证密钥、存储帐户密钥、数据加密密钥、.PFX 文件和密码）。 有关详细信息，请参阅[什么是 Azure 密钥保管库？](../../key-vault/general/overview.md)。
 
 存储客户端库使用密钥保管库核心库，以便在整个 Azure 上提供一个通用框架进行管理密钥。 用户还可以从使用密钥保管库扩展库中获得其他好处。 扩展库围绕简单无缝的对称/RSA 本地和云密钥提供程序以及使用聚合和缓存提供有用的功能。
 
@@ -246,4 +246,4 @@ Azure 密钥保管库可帮助保护云应用程序和服务使用的加密密�
 * [教程：在 Azure 存储中使用 Azure Key Vault 加密和解密 Blob](../blobs/storage-encrypt-decrypt-blobs-key-vault.md)
 * 下载 [适用于 .NET NuGet 包的 Azure 存储客户端库](https://www.nuget.org/packages/WindowsAzure.Storage)
 * 下载 Azure Key Vault NuGet [核心](https://www.nuget.org/packages/Microsoft.Azure.KeyVault.Core/)、[客户端](https://www.nuget.org/packages/Microsoft.Azure.KeyVault/)和[扩展](https://www.nuget.org/packages/Microsoft.Azure.KeyVault.Extensions/)包  
-* 访问 [Azure 密钥保管库文档](../../key-vault/key-vault-overview.md)
+* 访问 [Azure 密钥保管库文档](../../key-vault/general/overview.md)

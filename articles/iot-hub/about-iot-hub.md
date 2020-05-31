@@ -11,16 +11,16 @@ ms.service: iot-hub
 documentationcenter: ''
 manager: timlt
 ms.devlang: na
-ms.openlocfilehash: 5115a72e2c2ca20a40230ed4fcc82904e75a3c4f
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 4c276e981dd55d33fe9a849cb5d316b457b9db2e
+ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75630758"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84186939"
 ---
 # <a name="what-is-azure-iot-hub"></a>Azure IoT 中心是什么？
 
-IoT 中心托管服务在云中进行托管，充当中央消息中心，用于 IoT 应用程序与其管理的设备之间的双向通信。 可以使用 Azure IoT 中心，通过数百万 IoT 设备和云托管解决方案后端之间可靠又安全的通信，生成 IoT 解决方案。 几乎可以将任何设备连接到 IoT 中心。
+IoT 中心托管服务在云中进行托管，充当中央消息中心，用于 IoT 应用程序与其管理的设备之间的双向通信。 可以使用 Azure IoT 中心，将数百万 IoT 设备和云托管解决方案后端之间建立可靠又安全的通信，生成 IoT 解决方案。 几乎可以将任何设备连接到 IoT 中心。
 
 IoT 中心支持设备与云之间的双向通信。 IoT 中心支持多种消息传递模式，例如设备到云的遥测、从设备上传文件以及从云控制设备的请求-回复方式。 IoT 中心的监视功能可跟踪各种事件（例如设备创建、设备故障和设备连接），有助于维持解决方案的良好运行。
 
@@ -48,7 +48,8 @@ IoT 中心为发送数据的设备提供保护信道。
 
 内置的消息路由功能可以灵活地设置基于规则的自动消息扇出：
 
-* 使用消息路由控制中心发送设备遥测的位置。
+* 使用[消息路由](iot-hub-devguide-messages-d2c.md)控制你的中心发送设备遥测数据的位置。
+
 * 无需支付额外费用，即可将消息路由到多个终结点。
 * 无代码路由规则替代了自定义消息调度程序代码。
 
@@ -65,7 +66,7 @@ IoT 中心为发送数据的设备提供保护信道。
 
 ## <a name="configure-and-control-your-devices"></a>配置和控制设备
 
-可以通过内置功能的数组，管理连接到 IoT 中心的设备。
+可以通过一系列的内置功能，管理连接到 IoT 中心的设备。
 
 * 存储、同步和查询设备元数据和所有设备的状态信息。
 * 根据每个设备或设备的共同功能设置设备状态。
@@ -93,7 +94,7 @@ IoT 中心和设备 SDK 支持用于连接设备的以下协议：
 * MQTT
 * 基于 WebSocket 的 MQTT
 
-如果解决方案无法使用设备库，则设备可以使用 MQTT v3.1.1、HTTPS 1.1 或 AMQP 1.0 协议，本地连接到中心。
+如果解决方案无法使用设备库，则设备可以使用 MQTT v3.1.1、HTTPS 1.1 或 AMQP 1.0 协议，以本地化的方式连接到中心。
 
 如果解决方案无法使用其中一种支持的协议，则可以将 IoT 中心扩展到支持自定义协议：
 
@@ -104,7 +105,8 @@ IoT 中心和设备 SDK 支持用于连接设备的以下协议：
 
 每个 Azure 订阅都有默认的配额限制以防止服务滥用，并且这些限制可能会影响 IoT 解决方案的作用域。 每个订阅的当前限制是每个订阅 50 个 IoT 中心。 可以通过联系支持人员，请求增加配额。 有关详细信息，请参阅 [IoT 中心配额和限制](iot-hub-devguide-quotas-throttling.md)。 有关配额限制的详细信息，请参阅以下文章之一：
 
-* [Azure 订阅服务限制](../azure-subscription-service-limits.md)
+* [Azure 订阅服务限制](../azure-resource-manager/management/azure-subscription-service-limits.md)
+
 * [IoT Hub throttling and you](https://azure.microsoft.com/blog/iot-hub-throttling-and-you/)（IoT 中心限制和你）
 
 ## <a name="next-steps"></a>后续步骤

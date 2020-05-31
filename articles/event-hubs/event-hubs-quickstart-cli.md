@@ -9,14 +9,14 @@ ms.devlang: java
 ms.topic: quickstart
 ms.custom: seodec18
 origin.date: 02/11/2020
-ms.date: 03/16/2020
+ms.date: 05/29/2020
 ms.author: v-tawe
-ms.openlocfilehash: 70bcde132db078651110f3cccba6e39618039dab
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 36278b17688e06f516a765b4c9a98c56c7c6ff99
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80243920"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199776"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-cli"></a>快速入门：使用 Azure CLI 创建事件中心
 
@@ -24,7 +24,7 @@ Azure 事件中心是一个大数据流式处理平台和事件引入服务，�
 
 在本快速入门中，请使用 Azure CLI 创建事件中心。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 若要完成本快速入门，需要一个 Azure 订阅。 如果没有订阅，请在开始之前[创建一个试用帐户][]。
 
 
@@ -48,7 +48,7 @@ az account set --subscription MyAzureSub
 ``` 
 
 ## <a name="create-a-resource-group"></a>创建资源组
-资源组是 Azure 资源的逻辑集合。 所有资源在资源组中进行部署和管理。 运行以下命令来创建资源组：
+资源组是 Azure 资源的逻辑集合。 所有资源在资源组中进行部署和管理。 运行以下命令创建资源组：
 
 ```azurecli
 # Create a resource group. Specify a name for the resource group.
@@ -71,11 +71,11 @@ az eventhubs namespace create --name <Event Hubs namespace> --resource-group <re
 az eventhubs eventhub create --name <event hub name> --resource-group <resource group name> --namespace-name <Event Hubs namespace>
 ```
 
-祝贺你！ 现已使用 Azure CLI 创建了一个事件中心命名空间，并在该命名空间中创建了一个事件中心。 
+祝贺！ 现已使用 Azure CLI 创建了一个事件中心命名空间，并在该命名空间中创建了一个事件中心。 
 
 ## <a name="next-steps"></a>后续步骤
 
-在本文中，你已创建一个资源组、一个事件中心命名空间和一个事件中心。 有关如何将事件发送到事件中心（或）从事件中心接收事件的分步说明，请参阅“发送和接收事件”教程  ： 
+在本文中，你已创建一个资源组、一个事件中心命名空间和一个事件中心。 有关如何将事件发送到事件中心（或）从事件中心接收事件的分步说明，请参阅“发送和接收事件”教程： 
 
 - [.NET Core](get-started-dotnet-standard-send-v2.md)
 - [Java](get-started-java-send-v2.md)
@@ -86,6 +86,5 @@ az eventhubs eventhub create --name <event hub name> --resource-group <resource 
 - [Apache Storm（仅接收）](event-hubs-storm-getstarted-receive.md)
 
 [创建一个试用帐户]: https://www.azure.cn/pricing/1rmb-trial/
-[Install the Azure CLI]: /cli/install-azure-cli?view=azure-cli-latest
-[az group create]: /cli/azure/group#az_group_create
-[fully qualified domain name]: https://en.wikipedia.org/wiki/Fully_qualified_domain_name
+[Install the Azure CLI]: /cli/install-azure-cli
+[az group create]: /cli/group#az_group_create

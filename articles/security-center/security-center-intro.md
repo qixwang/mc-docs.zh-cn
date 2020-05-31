@@ -1,5 +1,5 @@
 ---
-title: 什么是 Azure 安全中心? | Azure
+title: 什么是 Azure 安全中心？
 description: 此页介绍安全中心的主要优点 - 发现安全状态，并通过云和本地涵盖的资源来改善此状态。
 services: security-center
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.workload: na
 ms.date: 05/11/2020
 ms.author: v-tawe
 origin.date: 06/06/2019
-ms.openlocfilehash: 0a4fc783aa8a12add709dbc79786a6fae4488599
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.openlocfilehash: 62de8f145bab88eef356e2f559be27d571c01abc
+ms.sourcegitcommit: cbaa1aef101f67bd094f6ad0b4be274bbc2d2537
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83422920"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84126762"
 ---
 # <a name="what-is-azure-security-center"></a>什么是 Azure 安全中心？
 
@@ -44,13 +44,13 @@ Azure 安全中心解决了三个最紧急的安全性挑战：
 
 -   **更快地获取安全性**：在安全中心中，一切操作都以云速度完成。 由于它以本机方式集成，因此可以轻松部署安全中心，从而通过 Azure 服务为你提供自动预配和保护。
 
-<!-- global is deleted-->
+<!-- not available-->
 
 ## <a name="architecture"></a>体系结构
 
 由于安全中心本身是 Azure 的一部分，因此 Azure 中的 PaaS 服务（包括 Service Fabric、SQL 数据库和存储帐户）会受到安全中心的监视和保护，无需进行任何部署。
 
-此外，安全中心通过在 Windows 和 Linux 服务器的云中或本地非 Azure 服务器和虚拟机上安装 Microsoft Monitoring Agent 来对它们进行保护。 Azure 虚拟机是在安全中心中自动预配的。
+此外，安全中心还会保护云中或本地的非 Azure 服务器和虚拟机（针对 Windows 和 Linux 服务器），具体方式是在其上安装 Log Analytics 代理。 Azure 虚拟机是在安全中心中自动预配的。
 
 从代理和 Azure 收集的事件在安全分析引擎中相关联，以为你提供量身定制的建议（强化任务），你应该遵循这些建议以确保工作负荷安全，并发出安全警报。 应尽快调查此类警报以确保没有针对工作负荷发生的恶意攻击。
 
@@ -62,7 +62,7 @@ Azure 安全中心解决了三个最紧急的安全性挑战：
 
 ### <a name="manage-organization-security-policy-and-compliance"></a>管理组织安全策略和符合性
 
-了解并确保工作负荷的安全性是保障安全的基础，并且要从拥有量身定制的适当安全策略开始。 由于安全中心中的所有策略都是基于 Azure 策略控制构建的，因此你将获得世界级策略解决方案的全方位服务和灵活性。 在安全中心中，可以将策略设置为在管理组上、订阅中以及甚至为整个租户运行。
+了解并确保工作负荷的安全性是保障安全的基础，并且要从拥有量身定制的适当安全策略开始。 由于安全中心的所有策略都是基于 Azure Policy 控制构建的，因此你将获得世界级策略解决方案的全方位服务和灵活性。 在安全中心中，可以将策略设置为在管理组上、订阅中以及甚至为整个租户运行。
 
 ![安全中心仪表板](media/security-center-intro/sc-dashboard.png)
 
@@ -146,5 +146,7 @@ Azure 安全中心的值的核心在于其建议。 这些建议是针对在工�
 ## <a name="next-steps"></a>后续步骤
 
 - 若要开始使用安全中心，需要具有 Microsoft Azure 订阅。 如果你尚无订阅，则可以注册[试用帐户](https://wd.azure.cn/pricing/1rmb-trial-full)。
-- 安全中心的免费定价层通过 Azure 订阅启用。 若要利用高级安全管理和威胁防护功能，必须升级到标准定价层。 标准层可以免费试用 30 天。 有关详细信息，请参阅[安全中心定价页](https://www.azure.cn/pricing/details/security-center/)。
+
+- 首次在 Azure 门户中访问 Azure 安全中心仪表板后，或通过 API 以编程方式启用安全中心的免费定价层后，安全中心的免费定价层就会在所有当前的 Azure 订阅上启用。 若要利用高级安全管理和威胁检测功能，必须升级到“标准”定价层。 标准层可以免费试用 30 天。 有关详细信息，请参阅[安全中心定价页](https://www.azure.cn/pricing/details/security-center/)。
+
 - 如果已准备好立即启用安全中心标准版，请参阅[快速入门：将 Azure 订阅载入到安全中心标准版](security-center-get-started.md)以详细了解相关步骤。

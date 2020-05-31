@@ -9,12 +9,12 @@ origin.date: 12/06/2018
 ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: sachins
-ms.openlocfilehash: 0d92c3e99449b48bd2b44ef75e82353755e4e497
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.openlocfilehash: d84fe88425d3cea32986f9081ec2e5dfee365ddf
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83422346"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199577"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen2"></a>使用 Azure Data Lake Storage Gen2 的最佳做法
 
@@ -41,8 +41,6 @@ Azure Active Directory 服务主体通常可供服务用来访问 Data Lake Stor
 ### <a name="enable-the-data-lake-storage-gen2-firewall-with-azure-service-access"></a>启用 Data Lake Storage Gen2 防火墙，允许 Azure 服务访问
 
 Data Lake Storage Gen2 支持启用防火墙并仅限 Azure 服务进行访问的选项。如果需要限制外部攻击途径，建议使用这一选项。 可以在 Azure 门户的存储帐户上启用防火墙，方法是单击“防火墙和虚拟网络”>“允许来自所有网络的访问”。
-
-若要从 Azure Databricks 访问你的存储帐户，请将 Azure Databricks 部署到你的虚拟网络，然后将该虚拟网络添加到防火墙。 请参阅[配置 Azure 存储防火墙和虚拟网络](https://docs.azure.cn/storage/common/storage-network-security)。
 
 ## <a name="resiliency-considerations"></a>复原注意事项
 

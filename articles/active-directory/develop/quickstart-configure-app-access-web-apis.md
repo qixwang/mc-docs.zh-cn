@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 03/20/2020
+ms.date: 05/27/2020
 ms.author: v-junlch
 ms.custom: aaddev
 ms.reviewer: lenalepa, aragra, sureshja
-ms.openlocfilehash: b3dc95843c61f478b8b8009d7a94e155630da35d
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 8e0ef3599378d785fb49f1e8da657fba0fb798ee
+ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80243149"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84186879"
 ---
 # <a name="quickstart-configure-a-client-application-to-access-web-apis"></a>快速入门：配置客户端应用程序以访问 Web API
 
@@ -51,14 +51,14 @@ ms.locfileid: "80243149"
 
    * 对于 Web 应用程序，请提供应用程序的基 URL。 例如，`http://localhost:31544` 可以是本地计算机上运行的 Web 应用程序的 URL。 用户将使用此 URL 登录到 Web 客户端应用程序。
    * 对于公共应用程序，请提供 Azure AD 返回令牌响应时所用的 URI。 输入特定于应用程序的值，例如 `https://MyFirstApp`。
-1. 选择“保存”  。
+1. 选择“保存”。 
 
 若要从建议用于公共客户端的重定向 URI 中进行选择，请执行以下步骤：
 
 1. 在应用的“概述”页中，选择“身份验证”。  
 1. 找到“建议用于公共客户端(移动、桌面)的重定向 URI”。  可能需要选择“切换到旧体验”。 
 1. 为应用程序选择一个或多个重定向 URI。 还可以输入自定义重定向 URI。 如果不确定要使用哪个值，请参阅库文档。
-1. 选择“保存”  。
+1. 选择“保存”。 
 
 某些限制适用于重定向 URI。 有关详细信息，请参阅[重定向 URI/回复 URL 的限制和局限性](/active-directory/develop/reply-url)。
 
@@ -79,8 +79,8 @@ ms.locfileid: "80243149"
 * 对于单页应用，可以启用“隐式授权”，并选择希望授权终结点颁发的令牌。 
 * 对于“默认客户端类型”部分中使用 Windows 集成身份验证、设备代码流或用户名/密码获取令牌的桌面应用，请将“将应用程序视为公共客户端”设置指定为“是”。   
 * 对于使用 Live SDK 来与 Microsoft 帐户服务集成的传统应用，请配置“Live SDK 支持”。  新应用不需要此设置。
-* 默认客户端类型。 
-* 支持的帐户类型。 
+* **默认客户端类型**。
+* **支持的帐户类型**。
 
 ### <a name="modify-supported-account-types"></a>修改支持的帐户类型
 
@@ -88,8 +88,8 @@ ms.locfileid: "80243149"
 
 如果在注册应用程序时配置了支持的帐户类型，则只能在以下情况下使用应用程序清单编辑器更改此设置：
 
-* 将帐户类型从 AzureADMyOrg 或 AzureADMultipleOrgs 更改为 AzureADandPersonalMicrosoftAccount，或反之，或者   
-* 将帐户类型从 AzureADMyOrg 更改为 AzureADMultipleOrgs，或反之。  
+* 将帐户类型从 **AzureADMyOrg** 或 **AzureADMultipleOrgs** 更改为 **AzureADandPersonalMicrosoftAccount**，或反之，或者
+* 将帐户类型从 **AzureADMyOrg** 更改为 **AzureADMultipleOrgs**，或反之。
 
 若要更改现有应用注册支持的帐户类型，请更新 `signInAudience` 键。 有关详细信息，请参阅[配置应用程序清单](reference-app-manifest.md#configure-the-app-manifest)。
 
@@ -108,9 +108,12 @@ ms.locfileid: "80243149"
    | 平台                | 配置设置            |
    |-------------------------|-----------------------------------|
    | **Web**              | 输入应用程序的“重定向 URI”。  |
-   | iOS/macOS               | 输入应用的“捆绑 ID”（可在 XCode 中的 info.plist 内找到，或者在“生成设置”中找到）。  添加捆绑 ID 可自动创建应用程序的重定向 URI。 |
-   | **Android**          | 提供应用的“包名称”（可在 AndroidManifest.xml 文件中找到）。 <br/>生成并输入签名哈希。  添加签名哈希可自动创建应用程序的重定向 URI。  |
-   | 移动和桌面应用程序   | 可选。 为桌面和设备生成应用时，请选择**建议的重定向 URI** 之一。<br/>可选。 输入一个**自定义重定向 URI**，用作 Azure AD 在响应身份验证请求时将用户重定向到的位置。 例如，对于要交互的 .NET Core 应用程序，请使用 `https://localhost`。 |
+   | **iOS/macOS**              | 输入应用的“捆绑 ID”（可在 XCode 中的 info.plist 内找到，或者在“生成设置”中找到）。  添加捆绑 ID 可自动创建应用程序的重定向 URI。 |
+   | **Android**          | 提供应用的“包名称”（可在 AndroidManifest.xml 文件中找到）。 <br/>生成并输入**签名哈希**。 添加签名哈希可自动创建应用程序的重定向 URI。  |
+   | **移动和桌面应用程序**  | 可选。 为桌面和设备生成应用时，请选择**建议的重定向 URI** 之一。<br/>可选。 输入一个**自定义重定向 URI**，用作 Azure AD 在响应身份验证请求时将用户重定向到的位置。 例如，对于要交互的 .NET Core 应用程序，请使用 `http://localhost`。 |
+
+   > [!NOTE]
+   > 在 Active Directory 联合身份验证服务 (AD FS) 和 Azure AD B2C 上，还必须指定端口号。  例如：`http://localhost:1234`。 
 
    > [!IMPORTANT]
    > 对于不使用最新 Microsoft 身份验证库 (MSAL) 或不使用中介的移动应用程序，必须在“桌面 + 设备”中为这些应用程序配置重定向 URI。 
@@ -130,7 +133,7 @@ ms.locfileid: "80243149"
 1. 在应用的“概述”页中，选择“证书和机密”部分。  
 1. 选择“上传证书”。 
 1. 选择要上传的文件。 它必须是以下文件类型之一：.cer、.pem、.crt。
-1. 选择“添加”   。
+1. 选择 **添加** 。
 
 若要添加客户端机密：
 
@@ -138,7 +141,7 @@ ms.locfileid: "80243149"
 1. 选择“新建客户端机密”。 
 1. 添加客户端机密的说明。
 1. 选择持续时间。
-1. 选择“添加”   。
+1. 选择 **添加** 。
 
 > [!NOTE]
 > 保存配置更改后，最右边的列会包含客户端机密值。 **请务必复制此值**，以便在客户端应用程序代码中使用，因为退出此页后将无法访问此密钥。
@@ -147,8 +150,8 @@ ms.locfileid: "80243149"
 
 默认已选择[图形 API 登录和读取用户配置文件权限](https://developer.microsoft.com/graph/docs/concepts/permissions_reference#user-permissions)。 对于每个 Web API，可以从[两种类型的权限](developer-glossary.md#permissions)中进行选择：
 
-* 应用程序权限。  客户端应用程序需要自行直接访问 Web API，不使用用户上下文。 此权限类型需要管理员许可。 此权限不适用于桌面和移动客户端应用程序。
-* 委托的权限。  客户端应用程序需要以登录用户的身份访问 Web API，但访问权限受所选权限的限制。 除非权限需要管理员许可，否则用户可以授予此类型的权限。
+* **应用程序权限**。 客户端应用程序需要自行直接访问 Web API，不使用用户上下文。 此权限类型需要管理员许可。 此权限不适用于桌面和移动客户端应用程序。
+* **委托的权限**。 客户端应用程序需要以登录用户的身份访问 Web API，但访问权限受所选权限的限制。 除非权限需要管理员许可，否则用户可以授予此类型的权限。
 
   > [!NOTE]
   > 将委托权限添加到应用程序不会自动向租户中的用户授予许可。 除非管理员代表所有用户授予许可，否则用户仍必须在运行时手动同意添加的委托权限。
@@ -159,9 +162,9 @@ ms.locfileid: "80243149"
 1. 在“已配置权限”  下，选择“添加权限”  。
 1. 默认情况下，此视图允许从“Microsoft API”进行选择。  选择感兴趣的 API 部分。
 
-    * Microsoft API。  用于选择 Microsoft API（例如 Microsoft Graph）的权限。
-    * 我的组织使用的 API。  用于选择组织公开的 API 或者组织已集成的 API 的权限。
-    * 我的 API。  用于选择你公开的 API 的权限。
+    * **Microsoft API**。 用于选择 Microsoft API（例如 Microsoft Graph）的权限。
+    * **我的组织使用的 API**。 用于选择组织公开的 API 或者组织已集成的 API 的权限。
+    * **我的 API**。 用于选择你公开的 API 的权限。
 
 1. 选择 API 后，会看到“请求 API 权限”页。  如果 API 公开委托的权限和应用程序权限，请选择应用程序需要哪种类型的权限。
 1. 完成后，请选择“添加权限”  。

@@ -1,24 +1,16 @@
 ---
 title: 在 Batch 中使用计算密集型 Azure VM
 description: 如何利用 Azure Batch 池中的 GPU 虚拟机大小。 了解 OS 依赖项，并查看几个方案示例。
-documentationcenter: ''
-author: LauraBrenner
-manager: evansma
-editor: ''
-ms.assetid: ''
-ms.service: batch
-ms.workload: big-compute
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 04/27/2020
 ms.author: v-tawe
 origin.date: 12/17/2018
-ms.openlocfilehash: 4b676999d8d1d8e642c5cb4d7232b6b83132e416
-ms.sourcegitcommit: 1fbdefdace8a1d3412900c6c3f89678d8a9b29bc
+ms.openlocfilehash: 9c3203c519be0a528e5e7d530e5e7c9190a843f1
+ms.sourcegitcommit: cbaa1aef101f67bd094f6ad0b4be274bbc2d2537
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82886983"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84126575"
 ---
 # <a name="use-rdma-or-gpu-instances-in-batch-pools"></a>在 Batch 池中使用 RDMA 或 GPU 实例
 
@@ -33,6 +25,10 @@ ms.locfileid: "82886983"
 
 
 * 启用 GPU 的 VM 大小（[Linux](../virtual-machines/linux/sizes-gpu.md)、[Windows](../virtual-machines/windows/sizes-gpu.md)） 
+
+> [!NOTE]
+> 某些 VM 大小在创建批处理帐户的区域中可能无法使用。 若要检查大小是否可用，请参阅[可用产品（按区域）](https://status.azure.com/status)以及[选择 Batch 池的 VM 大小](batch-pool-vm-sizes.md)。
+
 ## <a name="dependencies"></a>依赖项
 
 Batch 中计算密集型大小的 RDMA 或 GPU 功能仅在某些操作系统中支持。 （支持的操作系统列表是一个子集，属于以此类大小创建的虚拟机所支持的操作系统。）根据创建 Batch 池的方式，可能需要在节点上安装或配置其他驱动程序或软件。 下表总结了这些依存关系。 有关详细信息，请参阅链接的文章。 有关配置 Batch 池的选项，请参阅本文后面部分。
@@ -68,9 +64,9 @@ Batch 中计算密集型大小的 RDMA 或 GPU 功能仅在某些操作系统中
 ## <a name="example-nvidia-gpu-drivers-on-windows-nc-vm-pool"></a>示例：Windows NC VM 池上的 NVIDIA GPU 驱动程序
 若要在 Windows NC 节点的池上运行 CUDA 应用程序，需要安装 NVDIA GPU 驱动程序。 以下示例步骤使用应用程序包来安装 NVIDIA GPU 驱动程序。 如果工作负载取决于特定的 GPU 驱动程序版本，则可以选择此选项。
 
-1. 从 [NVIDIA 网站](https://www.nvidia.com/Download/index.aspx)下载 Windows Server 2016 上的 GPU 驱动程序的安装程序包 - 例如，[版本 411.82](https://us.download.nvidia.com/Windows/Quadro_Certified/411.82/411.82-tesla-desktop-winserver2016-international.exe)。 使用短名称（如 GPUDriverSetup.exe）在本地保存文件  。
+1. 从 [NVIDIA 网站](https://www.nvidia.com/Download/index.aspx)下载 Windows Server 2016 上的 GPU 驱动程序的安装程序包 - 例如，[版本 411.82](https://us.download.nvidia.com/Windows/Quadro_Certified/411.82/411.82-tesla-desktop-winserver2016-international.exe)。 使用短名称（如 GPUDriverSetup.exe）在本地保存文件。
 2. 为程序包创建 zip 文件。
-3. 将程序包上载到 Batch 帐户。 有关详细步骤，请参阅[应用程序包](batch-application-packages.md)指南。 指定应用程序 ID（如 GPUDriver）和版本（如 411.82）   。
+3. 将程序包上载到 Batch 帐户。 有关详细步骤，请参阅[应用程序包](batch-application-packages.md)指南。 指定应用程序 ID（如 GPUDriver）和版本（如 411.82） 。
 1. 通过 Batch API 或 Azure 门户，在虚拟机配置中创建具有所需节点数和规模的池。 下表显示了使用启动任务静默安装 NVIDIA GPU 驱动程序的示例设置：
 | 设置 | Value |
 | ---- | ----- | 
@@ -80,7 +76,7 @@ Batch 中计算密集型大小的 RDMA 或 GPU 功能仅在某些操作系统中
 | **Sku** | 2016-Datacenter |
 | **节点大小** | NC6 标准 |
 | **应用程序包引用** | GPUDriver，版本 411.82 |
-| **启用了启动任务** | True<br>  - `cmd /c "%AZ_BATCH_APP_PACKAGE_GPUDriver#411.82%\\GPUDriverSetup.exe /s"`<br/>**用户标识** - 池自动用户、管理员<br/>**等待成功** - True
+| **启用了启动任务** | True<br> - `cmd /c "%AZ_BATCH_APP_PACKAGE_GPUDriver#411.82%\\GPUDriverSetup.exe /s"`<br/>**用户标识** - 池自动用户、管理员<br/>**等待成功** - True
 ## <a name="example-nvidia-gpu-drivers-on-a-linux-nc-vm-pool"></a>示例：Linux NC VM 池上的 NVIDIA GPU 驱动程序
 
 若要在 Linux NC 节点的池上运行 CUDA 应用程序，需要从 CUDA Toolkit 安装必要的 NVIDIA Tesla GPU 驱动程序。 以下示例步骤使用 GPU 驱动程序创建和部署自定义 Ubuntu 16.04 LTS 映像：

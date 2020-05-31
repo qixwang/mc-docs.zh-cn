@@ -2,25 +2,21 @@
 title: 获取用于调用 Web API（守护程序应用）的令牌 - Microsoft 标识平台 | Azure
 description: 了解如何构建调用 Web API 的守护程序应用（获取令牌）
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/10/2020
+ms.date: 05/28/2020
 ms.author: v-junlch
 ms.custom: aaddev
-ms.openlocfilehash: 87152c66e856367a3ede62a9437d2bb7999c70b2
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 06a58e10e6df26789d5462c12c3880b3ad061f98
+ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79291047"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84186655"
 ---
 # <a name="daemon-app-that-calls-web-apis---acquire-a-token"></a>用于调用 Web API 的守护程序应用 - 获取令牌
 
@@ -177,7 +173,7 @@ private static IAuthenticationResult acquireToken() throws Exception {
 
 #### <a name="first-case-access-the-token-request-by-using-a-shared-secret"></a>第一种情况：使用共享机密访问令牌请求
 
-```Text
+```HTTP
 POST /{tenant}/oauth2/v2.0/token HTTP/1.1           //Line breaks for clarity.
 Host: login.partner.microsoftonline.cn
 Content-Type: application/x-www-form-urlencoded
@@ -190,7 +186,7 @@ client_id=535fb089-9ff3-47b6-9bfb-4f1264799865
 
 #### <a name="second-case-access-the-token-request-by-using-a-certificate"></a>第二种情况：使用证书访问令牌请求
 
-```Text
+```HTTP
 POST /{tenant}/oauth2/v2.0/token HTTP/1.1               // Line breaks for clarity.
 Host: login.partner.microsoftonline.cn
 Content-Type: application/x-www-form-urlencoded
@@ -219,7 +215,7 @@ scope=https%3A%2F%2Fmicrosoftgraph.chinacloudapi.cn%2F.default
 如果在调用 API 时出现错误“权限不足，无法完成该操作”，  则租户管理员需要授予对应用程序的权限。 请查看上面的步骤 6：注册客户端应用。
 通常会看到如下错误：
 
-```JSon
+```json
 Failed to call the web API: Forbidden
 Content: {
   "error": {

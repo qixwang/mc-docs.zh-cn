@@ -2,22 +2,22 @@
 title: OAuth 2.0 隐式授权流 - Microsoft 标识平台 | Azure
 description: 使用 Microsoft 标识平台隐式流保护单页应用。
 services: active-directory
-author: rwike77
+author: hpsin
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/23/2020
+ms.date: 05/28/2020
 ms.author: v-junlch
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 1b34a1baa3d7ab8df6d649daef7def97d7ffb7e2
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.openlocfilehash: 494fbe2e066b61f23a0bb4369c7d4a1943a4384d
+ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82126402"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84186849"
 ---
 # <a name="microsoft-identity-platform-and-implicit-grant-flow"></a>Microsoft 标识平台和隐式授权流
 
@@ -32,9 +32,6 @@ ms.locfileid: "82126402"
 本文介绍如何在应用程序中直接针对协议进行编程。  如果可能，建议你改用受支持的 Microsoft 身份验证库 (MSAL) 来[获取令牌并调用受保护的 Web API](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows)。  另请参阅[使用 MSAL 的示例应用](sample-v2-code.md)。
 
 但是，如果不想在单页面应用中使用库，而是要自行发送协议消息，请遵循下面的常规步骤。
-
-> [!NOTE]
-> Microsoft 标识平台终结点并非支持所有 Azure Active Directory (Azure AD) 方案和功能。 若要确定是否应使用 Microsoft 标识平台终结点，请阅读 [Microsoft 标识平台限制](azure-ad-endpoint-comparison.md)。
 
 ## <a name="suitable-scenarios-for-the-oauth2-implicit-grant"></a>OAuth2 隐式授权的适用方案
 
@@ -79,7 +76,7 @@ OAuth2 规范声明，设计隐式授权是为了实现用户代理应用程序�
 最初将用户登录到应用时，可以发送 [OpenID Connect](v2-protocols-oidc.md) 身份验证请求，并从 Microsoft 标识平台终结点获取 `id_token`。
 
 > [!IMPORTANT]
-> 若要成功请求 ID 令牌和/或访问令牌，必须通过在“隐式授权”部分下选择“ID 令牌”和/或“访问令牌”，为 [Azure 门户 - 应用注册](https://portal.azure.cn/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)页中的应用注册启用相应的隐式授权流。    如果未启用，将返回 `unsupported_response` 错误：为输入参数“response_type”提供的值不允许用于此客户端。  预期值为“code””
+> 若要成功请求 ID 令牌和/或访问令牌，必须通过在“隐式授权”部分下选择“ID 令牌”和/或“访问令牌”，为 [Azure 门户 - 应用注册](https://portal.azure.cn/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)页中的应用注册启用相应的隐式授权流。   如果未启用，将返回 `unsupported_response` 错误：为输入参数“response_type”提供的值不允许用于此客户端。预期值为“code””
 
 ```
 // Line breaks for legibility only
@@ -112,7 +109,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `login_hint`  |可选 |如果事先知道其用户名称，可用于预先填充用户登录页面的用户名称/电子邮件地址字段。 通常，应用会在重新身份验证期间使用此参数，并且已经使用 `preferred_username` 声明从前次登录提取用户名。|
 | `domain_hint` | 可选 |如果包含，它跳过用户在登录页上经历的基于电子邮件的发现过程，导致稍微更加流畅的用户体验。 这通常用于在单个租户中运行的业务线应用，它们会提供给定租户中的域名。  这样就会将用户转发到该租户的联合身份验证提供程序。  请注意，这会阻止来宾登录到此应用程序。  |
 
-此时，将请求用户输入凭据并完成身份验证。 Microsoft 标识平台终结点还会确保用户已许可 `scope` 查询参数中指定的权限。 如果用户未曾同意这些权限的任何一项，就请求用户同意请求的权限。  有关详细信息，请参阅[权限、同意和多租户应用](v2-permissions-and-consent.md)。
+此时，将请求用户输入凭据并完成身份验证。 Microsoft 标识平台终结点还会确保用户已许可 `scope` 查询参数中指定的权限。 如果用户未曾同意这些权限的任何一项，就请求用户同意请求的权限。 有关详细信息，请参阅[权限、同意和多租户应用](v2-permissions-and-consent.md)。
 
 用户经过身份验证并授予许可后，Microsoft 标识平台终结点将使用 `response_mode` 参数中指定的方法，将响应返回到位于所指示的 `redirect_uri` 的应用。
 
@@ -120,7 +117,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 使用 `response_mode=fragment` 和 `response_type=id_token+token` 的成功响应如下所示（为方便阅读，包含了换行符）：
 
-```
+```HTTP
 GET https://localhost/myapp/#
 &token_type=Bearer
 &expires_in=3599
@@ -141,7 +138,7 @@ GET https://localhost/myapp/#
 
 错误响应可能也发送到 `redirect_uri` ，让应用可以适当地处理：
 
-```
+```HTTP
 GET https://localhost/myapp/#
 error=access_denied
 &error_description=the+user+canceled+the+authentication
@@ -187,7 +184,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 使用 `response_mode=fragment` 的成功响应如下所示：
 
-```
+```HTTP
 GET https://localhost/myapp/#
 access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q...
 &state=12345
@@ -209,7 +206,7 @@ access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q..
 
 错误响应还可能发送到 `redirect_uri` ，因此应用可以适当地对其进行处理。 如果是 `prompt=none`，预期的错误为：
 
-```
+```HTTP
 GET https://localhost/myapp/#
 error=user_authentication_required
 &error_description=the+request+could+not+be+completed+silently
@@ -242,4 +239,7 @@ https://login.partner.microsoftonline.cn/{tenant}/oauth2/v2.0/logout?post_logout
 ## <a name="next-steps"></a>后续步骤
 
 * 重温 [MSAL JS 示例](sample-v2-code.md)以开始编码。
+
+[OAuth2-Spec-Implicit-Misuse]: https://tools.ietf.org/html/rfc6749#section-10.16
+[OAuth2-Threat-Model-And-Security-Implications]: https://tools.ietf.org/html/rfc6819
 

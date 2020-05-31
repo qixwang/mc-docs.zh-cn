@@ -9,16 +9,16 @@ ms.topic: conceptual
 origin.date: 05/06/2019
 ms.date: 05/27/2019
 ms.author: v-yiso
-ms.openlocfilehash: 4320834e7b0ae0545fe2b756f20ddf42ae643657
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 4a8d289e9261f6a5d6c14a1d0134e80a02815a2e
+ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "65829329"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84186935"
 ---
 # <a name="schedule-jobs-on-multiple-devices"></a>在多个设备上计划作业
 
-Azure IoT 中心可启用多个构建基块（如[设备孪生属性和标记][lnk-twin-devguide]和[直接方法][lnk-dev-methods]）。  通常情况下，后端应用允许设备管理员和操作员在计划的时间批量更新 IoT 设备并与之交互。  作业在计划的时间针对一组设备执行设备孪生更新和直接方法。  例如，操作员可使用用于启动和跟踪作业的后端应用在不会中断大楼运作的时间重新启动 43 号大楼第 3 层中的一组设备。
+Azure IoT 中心可启用多个构建基块（如[设备孪生属性和标记](iot-hub-devguide-device-twins.md)和[直接方法](iot-hub-devguide-direct-methods.md)）。 通常情况下，后端应用允许设备管理员和操作员在计划的时间批量更新 IoT 设备并与之交互。 作业在计划的时间针对一组设备执行设备孪生更新和直接方法。 例如，操作员可使用用于启动和跟踪作业的后端应用在不会中断大楼运作的时间重新启动 43 号大楼第 3 层中的一组设备。
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
@@ -33,10 +33,11 @@ Azure IoT 中心可启用多个构建基块（如[设备孪生属性和标记][l
 作业由解决方案后端启动，并由 IoT 中心维护。 可以通过面向服务的 URI (`PUT https://<iot hub>/jobs/v2/<jobID>?api-version=2018-06-30`) 启动作业，并通过面向服务的 URI (`GET https://<iot hub>/jobs/v2/<jobID?api-version=2018-06-30`) 查询正在执行的作业的进度。 若要在启动作业后刷新正在运行的作业的状态，请运行作业查询。
 
 > [!NOTE]
-> 启动作业时，属性名称和值只能包含 US-ASCII 可打印字母数字，但下列集中的任一项除外：`$ ( ) < > @ , ; : \ " / [ ] ? = { } SP HT`。
+> 启动作业时，属性名称和值只能包含 US-ASCII 可打印字母数字，但下列组中的任一项除外：`$ ( ) < > @ , ; : \ " / [ ] ? = { } SP HT`
 
 ## <a name="jobs-to-execute-direct-methods"></a>用于执行直接方法的作业
-以下代码片段显示了使用作业在一组设备上执行[直接方法][lnk-dev-methods]的 HTTPS 1.1 请求详细信息：
+
+以下代码片段显示了使用作业在一组设备上执行[直接方法](iot-hub-devguide-direct-methods.md)的 HTTPS 1.1 请求详细信息：
 
 ```
 PUT /jobs/v2/<jobId>?api-version=2018-06-30
@@ -65,7 +66,8 @@ Content-Type: application/json; charset=utf-8
 "queryCondition" = "deviceId IN ['MyDevice1','MyDevice2']"
 "queryCondition" = "deviceId IN ['MyDevice1']"
 ```
-[IoT 中心查询语言][lnk-query]格外详细地介绍了 IoT 中心查询语言。
+
+[IoT 中心查询语言](iot-hub-devguide-query-language.md)格外详细地介绍了 IoT 中心查询语言。
 
 以下代码片段演示了特定作业的请求和响应，该作业计划在 contoso-hub-1 的所有设备上调用名为 testMethod 的直接方法：
 
@@ -168,7 +170,7 @@ Content-Type: application/json; charset=utf-8
 
 从响应提供 continuationToken。  
 
-可以使用[设备孪生、作业和消息路由的 IoT 中心查询语言][lnk-query]在每台设备上查询作业执行状态。
+可以使用[设备孪生、作业和消息路由的 IoT 中心查询语言](iot-hub-devguide-query-language.md)在每台设备上查询作业执行状态。
 
 ## <a name="jobs-properties"></a>作业属性
 以下列表显示了属性和相应说明，在查询作业或作业结果时可使用这些属性。
@@ -199,26 +201,17 @@ Content-Type: application/json; charset=utf-8
 ### <a name="additional-reference-material"></a>其他参考资料
 IoT 中心开发人员指南中的其他参考主题包括：
 
-* [IoT 中心终结点][lnk-endpoints]介绍了每个 IoT 中心针对运行时和管理操作公开的各种终结点。
-* [限制和配额][lnk-quotas]介绍了适用于 IoT 中心服务的配额，以及使用服务时预期会碰到的限制行为。
-* [Azure IoT 设备和服务 SDK][lnk-sdks] 列出了开发与 IoT 中心交互的设备和服务应用时可使用的各种语言 SDK。
-* [设备孪生、作业和消息路由的 IoT 中心查询语言][lnk-query]介绍 IoT 中心查询语言。 使用此查询语言从 IoT 中心检索设备孪生和作业的相关信息。
-* [IoT 中心 MQTT 支持][lnk-devguide-mqtt]提供了有关 IoT 中心对 MQTT 协议的支持的详细信息。
+* [IoT 中心终结点](iot-hub-devguide-endpoints.md)介绍了每个 IoT 中心针对运行时和管理操作公开的各种终结点。
+
+* [限制和配额](iot-hub-devguide-quotas-throttling.md)介绍了适用于 IoT 中心服务的配额，以及使用服务时预期会碰到的限制行为。
+
+* [Azure IoT 设备和服务 SDK](iot-hub-devguide-sdks.md) 列出了开发与 IoT 中心交互的设备和服务应用时可使用的各种语言 SDK。
+
+* [设备孪生、作业和消息路由的 IoT 中心查询语言](iot-hub-devguide-query-language.md)介绍 IoT 中心查询语言。 使用此查询语言从 IoT 中心检索设备孪生和作业的相关信息。
+
+* [IoT 中心 MQTT 支持](iot-hub-mqtt-support.md)提供了有关 IoT 中心对 MQTT 协议的支持的详细信息。
 
 ## <a name="next-steps"></a>后续步骤
 要尝试本文中介绍的一些概念，请参阅以下 IoT 中心教程：
 
-* [计划和广播作业][lnk-jobs-tutorial]
-
-<!-- links and images -->
-
-[lnk-endpoints]: ./iot-hub-devguide-endpoints.md
-[lnk-quotas]: ./iot-hub-devguide-quotas-throttling.md
-[lnk-sdks]: ./iot-hub-devguide-sdks.md
-[lnk-query]: ./iot-hub-devguide-query-language.md
-[lnk-devguide-mqtt]: ./iot-hub-mqtt-support.md
-[lnk-jobs-tutorial]: ./iot-hub-node-node-schedule-jobs.md
-[lnk-c2d-methods]: quickstart-control-device-node.md
-[lnk-dev-methods]: ./iot-hub-devguide-direct-methods.md
-[lnk-get-started-twin]: ./iot-hub-node-node-twin-getstarted.md
-[lnk-twin-devguide]: ./iot-hub-devguide-device-twins.md
+* [计划和广播作业](iot-hub-node-node-schedule-jobs.md)

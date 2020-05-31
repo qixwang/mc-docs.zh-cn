@@ -10,12 +10,12 @@ origin.date: 03/13/2019
 ms.date: 04/06/2020
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: 8acaaeb7217b762ee121f20dc9f0757c5bd0ea92
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 4cd514a58c07660c183f795c2ea62d7f359194df
+ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80634560"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84186928"
 ---
 # <a name="tutorial-set-up-and-use-metrics-and-diagnostic-logs-with-an-iot-hub"></a>教程：通过 IoT 中心设置和使用指标和诊断日志
 
@@ -184,7 +184,7 @@ az iot hub device-identity show --device-id $iotDeviceName \
 
 转到门户中的中心。 单击“资源组”，选择“ContosoResources”，然后选择 IoT 中心“ContosoTestHub”。    
 
-IoT 中心尚未迁移到 [Azure Monitor 中的指标](/azure/azure-monitor/platform/data-collection#metrics)；必须使用[经典警报](/azure/azure-monitor/platform/alerts-classic.overview)。
+IoT 中心尚未迁移到 [Azure Monitor 中的指标](/azure-monitor/platform/data-collection#metrics)；必须使用[经典警报](/azure-monitor/platform/alerts-classic.overview)。
 
 1. 在“监视”下，单击“警报”。此时会显示警报主屏幕。   
 

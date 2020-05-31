@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: pim
 ms.topic: overview
-ms.date: 01/08/2020
+ms.date: 05/28/2020
 ms.author: v-junlch
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e43e98d8c1760fbb1fa2fae4fe1fdd96906db43f
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 9cc567e849d4e2f9090a8ec6ea90e7253209d637
+ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75777087"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84186902"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>什么是 Azure AD Privileged Identity Management？
 
@@ -39,6 +39,7 @@ Privileged Identity Management 提供基于时间和基于审批的角色激活�
 - 强制要求在激活任何角色时执行**多重身份验证**
 - 使用**理由**来了解用户激活角色的原因
 - 激活特权角色时获取**通知**
+- 开展**访问评审**，以确保用户仍然需要角色
 - 下载**审核历史记录**进行内部或外部审核
 
 ## <a name="what-can-i-do-with-it"></a>它的作用是什么？
@@ -49,9 +50,7 @@ Privileged Identity Management 提供基于时间和基于审批的角色激活�
 
 ## <a name="who-can-do-what"></a>用户及其权限
 
-如果你是第一个使用 Privileged Identity Management 的人，系统会自动在目录中为你分配[“安全管理员”](../users-groups-roles/directory-assign-admin-roles.md#security-administrator)和[“特权角色管理员”](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)角色。
-
-对于 Privileged Identity Management 中的 Azure AD 角色，只有充当“特权角色管理员”角色的用户可以管理其他管理员分配。 可以[授予其他管理员访问权限以管理 Privileged Identity Management](pim-how-to-give-access-to-pim.md)。 全局管理员、安全管理员、全局读取者和安全读取者也可在 Privileged Identity Management 中查看 Azure AD 角色的分配。
+对于 Privileged Identity Management 中的 Azure AD 角色，只有充当“特权角色管理员”或“全局管理员”角色的用户可以管理其他管理员分配。 可以[授予其他管理员访问权限以管理 Privileged Identity Management](pim-how-to-give-access-to-pim.md)。 全局管理员、安全管理员、全局读取者和安全读取者也可在 Privileged Identity Management 中查看 Azure AD 角色的分配。
 
 对于 Privileged Identity Management 中的 Azure 资源角色，只有订阅管理员、资源所有者或资源用户访问管理员可以管理其他管理员的分配。 默认情况下，充当特权角色管理员、安全管理员或安全读取者的用户无权在 Privileged Identity Management 中查看 Azure 资源角色的分配。
 
@@ -106,4 +105,3 @@ Privileged Identity Management 支持以下方案：
 - [使用 Privileged Identity Management 的许可要求](subscription-requirements.md)
 - [部署 Privileged Identity Management](pim-deployment-plan.md)
 
-<!-- Update_Description: wording update -->

@@ -1,25 +1,17 @@
 ---
 title: 将作业和任务输出持久保存到数据存储 - Azure Batch
 description: 了解用于保存批处理任务和作业的输出数据的不同选项。 可以将数据保存到 Azure 存储，或保存到其他数据存储。
-services: batch
-author: lingliw
-manager: digimobile
-editor: ''
-ms.assetid: 16e12d0e-958c-46c2-a6b8-7843835d830e
-ms.service: batch
 ms.topic: article
-ms.tgt_pltfrm: ''
-ms.workload: big-compute
 origin.date: 11/14/2018
 ms.date: 11/26/2018
 ms.author: v-lingwu
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b92a8ae161fb5640a712f54935db1fd9845de83a
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: eeb31d32306bf07756ecd572024f18bc84e39178
+ms.sourcegitcommit: cbaa1aef101f67bd094f6ad0b4be274bbc2d2537
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77497367"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84126699"
 ---
 # <a name="persist-job-and-task-output"></a>持久性作业和任务输出
 

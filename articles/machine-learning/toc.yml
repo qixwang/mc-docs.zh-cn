@@ -410,8 +410,6 @@
       href: azure-machine-learning-release-notes.md
     - name: Azure 路线图
       href: 'https://azure.microsoft.com/roadmap/'
-    - name: 定价
-      href: 'https://www.azure.cn/pricing/details/machine-learning-services/'
     - name: 区域可用性
       href: 'https://azure.microsoft.com/regions/services/'
     - name: 已知问题

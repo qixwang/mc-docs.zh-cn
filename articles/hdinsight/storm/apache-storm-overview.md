@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: big-data
-origin.date: 03/02/2020
-ms.date: 04/06/2020
+origin.date: 04/20/2020
+ms.date: 06/08/2020
 ms.author: v-yiso
-ms.openlocfilehash: 2595ccc6a39aed18c2b3d10ff1c0a03fde9f9ab4
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 2149c43029f1363309dcbdd894eabf2d1896b475
+ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80343591"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84186903"
 ---
 # <a name="what-is-apache-storm-on-azure-hdinsight"></a>什么是 Azure HDInsight 上的 Apache Storm？
 

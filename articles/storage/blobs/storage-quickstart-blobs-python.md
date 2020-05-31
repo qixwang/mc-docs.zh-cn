@@ -4,16 +4,16 @@ description: 本快速入门介绍如何使用适用于 Python 的 Azure Blob �
 author: WenJason
 ms.author: v-jay
 origin.date: 01/24/2020
-ms.date: 03/30/2020
+ms.date: 06/01/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 36615164fb1d07000673e27cfb4df7b45017d6fd
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: e7e05c861ad05541129195a7c5492c5f43259408
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80290338"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199656"
 ---
 # <a name="quickstart-manage-blobs-with-python-v12-sdk"></a>快速入门：使用 Python v12 SDK 管理 blob
 
@@ -38,7 +38,7 @@ ms.locfileid: "80290338"
 
 ### <a name="create-the-project"></a>创建项目
 
-创建名为 blob-quickstart-v12 的 Python 应用程序  。
+创建名为 blob-quickstart-v12 的 Python 应用程序。
 
 1. 在控制台窗口（例如 cmd、PowerShell 或 Bash）中，为项目创建新目录。
 
@@ -46,13 +46,13 @@ ms.locfileid: "80290338"
     mkdir blob-quickstart-v12
     ```
 
-1. 切换到新创建的 blob-quickstart-v12 目录  。
+1. 切换到新创建的 blob-quickstart-v12 目录。
 
     ```console
     cd blob-quickstart-v12
     ```
 
-1. 在 blob-quickstart-v12 目录中，创建名为 data 的另一个目录   。 将在这里创建和存储 blob 数据文件。
+1. 在 blob-quickstart-v12 目录中，创建名为 data 的另一个目录 。 将在这里创建和存储 blob 数据文件。
 
     ```console
     mkdir data
@@ -90,7 +90,7 @@ pip install azure-storage-blob
         print(ex)
     ```
 
-1. 在 blob-quickstart-v12 目录中，将新文件另存为 blob-quickstart-v12.py   。
+1. 在 blob-quickstart-v12 目录中，将新文件另存为 blob-quickstart-v12.py 。
 
 [!INCLUDE [storage-quickstart-credentials-include](../../../includes/storage-quickstart-credentials-include.md)]
 
@@ -172,7 +172,7 @@ container_client = blob_service_client.create_container(container_name)
 将此代码添加到 `try` 块的末尾：
 
 ```python
-# Create a file in local Documents directory to upload and download
+# Create a file in local data directory to upload and download
 local_path = "./data"
 local_file_name = "quickstart" + str(uuid.uuid4()) + ".txt"
 upload_file_path = os.path.join(local_path, local_file_name)
@@ -215,7 +215,7 @@ for blob in blob_list:
 
 ```python
 # Download the blob to a local file
-# Add 'DOWNLOAD' before the .txt extension so you can see both files in Documents
+# Add 'DOWNLOAD' before the .txt extension so you can see both files in the data directory
 download_file_path = os.path.join(local_path, str.replace(local_file_name ,'.txt', 'DOWNLOAD.txt'))
 print("\nDownloading blob to \n\t" + download_file_path)
 
@@ -250,7 +250,7 @@ print("Done")
 
 此应用在本地文件夹中创建测试文件，并将其上传到 Blob 存储。 然后，该示例会列出容器中的 blob，并使用新名称下载文件，这样便可对新旧文件进行对比。
 
-导航到包含 blob-quickstart-v12.py 文件的目录，然后执行以下 `python` 命令来运行应用  。
+导航到包含 blob-quickstart-v12.py 文件的目录，然后执行以下 `python` 命令来运行应用。
 
 ```console
 python blob-quickstart-v12.py
@@ -277,9 +277,9 @@ Deleting the local source and downloaded files...
 Done
 ```
 
-在开始清理过程之前，请在“Documents”文件夹中查看这两个文件  。 可以打开它们，然后就会观察到它们完全相同。
+在开始清理过程之前，请在“data”文件夹中查看这两个文件。 可以打开它们，然后就会观察到它们完全相同。
 
-验证文件后，按 Enter 键以删除测试文件并完成演示  。
+验证文件后，按 Enter 键以删除测试文件并完成演示。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -291,4 +291,4 @@ Done
 > [Azure Blob 存储 SDK v12 Python 示例](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-blob/samples)
 
 * 若要了解详细信息，请参阅 [Azure SDK for Python](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/README.md)。
-* 有关教程、示例、快速入门和其他文档，请访问 [面向 Python 开发人员的 Azure](https://docs.microsoft.com/azure/python/)。
+* 有关教程、示例、快速入门和其他文档，请访问[面向 Python 开发人员的 Azure](https://docs.microsoft.com/azure/python/)。

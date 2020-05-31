@@ -7,14 +7,14 @@ ms.service: event-hubs
 ms.workload: core
 ms.topic: quickstart
 origin.date: 01/15/2020
-ms.date: 03/16/2020
+ms.date: 05/29/2020
 ms.author: v-tawe
-ms.openlocfilehash: 3d51d2b2bb0f85333c7ff769df40935bd75479d2
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: b7e0e7efbd28d32bd1b1cf5b738d88ab96a52f2d
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80243923"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199779"
 ---
 # <a name="quickstart-send-events-to-or-receive-events-from-azure-event-hubs-using-javascript-azureevent-hubs-version-2"></a>快速入门：使用 JavaScript（@azure/event-hubs 版本 2）向/从 Azure 事件中心发送/接收事件
 本快速入门介绍了如何使用 azure/event-hubs 版本 2 JavaScript 程序包创建 JavaScript 应用程序，向事件中心发送事件以及从事件中心接收事件。 
@@ -36,13 +36,13 @@ ms.locfileid: "80243923"
 
 
 ### <a name="install-npm-package"></a>安装 npm 包
-若要安装[事件中心的 npm 包](https://www.npmjs.com/package/@azure/event-hubs/v/2.1.0)，请打开路径中包含 `npm` 的命令提示符，将目录更改为要包含示例的文件夹，然后运行此命令
+若要安装[事件中心的 npm 包](https://www.npmjs.com/package/@azure/event-hubs/v/2.1.0)，请打开路径中包含 `npm` 的命令提示符，将目录更改为要包含示例的文件夹，然后运行此命令。
 
 ```shell
 npm install @azure/event-hubs@2
 ```
 
-若要安装[事件处理程序主机的 npm 包](https://www.npmjs.com/package/@azure/event-processor-host)，请改为运行以下命令
+若要安装[事件处理器主机的 npm 包](https://www.npmjs.com/package/@azure/event-processor-host)，请运行以下命令
 
 ```shell
 npm install @azure/event-processor-host
@@ -55,8 +55,8 @@ npm install @azure/event-processor-host
 > [!NOTE]
 > 可以从 [GitHub](https://github.com/Azure/azure-event-hubs-node/tree/master/client) 下载此用作示例的快速入门，将 `EventHubConnectionString` 和 `EventHubName` 字符串替换为事件中心值，并运行它。 或者，可以按照本教程中的步骤创建自己的解决方案。
 
-1. 打开你常用的编辑器，例如 [Visual Studio Code](https://code.visualstudio.com)。 
-2. 创建一个名为 `send.js` 的文件，并将下面的代码粘贴到其中。 按照以下文章中的说明获取事件中心命名空间的连接字符串：[获取连接字符串](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)。 
+1. 打开偏好的编辑器，例如 [Visual Studio Code](https://code.visualstudio.com)。 
+2. 创建名为 `send.js` 的文件，并在其中粘贴以下代码。 按照以下文章中的说明获取事件中心命名空间的连接字符串：[获取连接字符串](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)。 
 
     ```javascript
     const { EventHubClient } = require("@azure/event-hubs@2");
@@ -84,18 +84,18 @@ npm install @azure/event-processor-host
       console.log("Error occurred: ", err);
     });
     ```
-3. 在上面的代码中输入连接字符串和事件中心的名称
-4. 然后在命令提示符下运行命令 `node send.js` 以执行此文件。 这会向事件中心发送 100 个事件
+3. 输入以上代码中显示的连接字符串和事件中心名称
+4. 然后，在命令提示符中运行命令 `node send.js` 以执行此文件。 此命令将向事件中心发送 100 个事件
 
-祝贺！ 现在已向事件中心发送事件。
+祝贺你！ 现已向事件中心发送事件。
 
 
 ## <a name="receive-events"></a>接收事件
 
 本部分介绍如何创建一个可从事件中心默认使用者组的单个分区接收事件的 JavaScript 应用程序。 
 
-1. 打开你常用的编辑器，例如 [Visual Studio Code](https://code.visualstudio.com)。 
-2. 创建一个名为 `receive.js` 的文件，并将下面的代码粘贴到其中。
+1. 打开偏好的编辑器，例如 [Visual Studio Code](https://code.visualstudio.com)。 
+2. 创建名为 `receive.js` 的文件，并在其中粘贴以下代码。
     ```javascript
     const { EventHubClient, delay } = require("@azure/event-hubs@2");
 
@@ -128,17 +128,17 @@ npm install @azure/event-processor-host
       console.log("Error occurred: ", err);
     });
     ```
-3. 在上面的代码中输入连接字符串和事件中心的名称。
-4. 然后在命令提示符下运行命令 `node receive.js` 以执行此文件。 这将从事件中心的默认使用者组的分区之一接收事件
+3. 输入以上代码中显示的连接字符串和事件中心名称。
+4. 然后，在命令提示符中运行命令 `node receive.js` 以执行此文件。 此命令将从事件中心内默认使用者组的某个分区接收事件
 
-祝贺！ 现在已从事件中心接收事件。
+祝贺你！ 现已从事件中心收到事件。
 
 ## <a name="receive-events-using-event-processor-host"></a>使用事件处理程序主机接收事件
 
 本部分介绍如何在 JavaScript 应用程序中使用 Azure [EventProcessorHost](event-hubs-event-processor-host.md) 从事件中心接收事件。 EventProcessorHost (EPH) 通过在事件中心的使用者组中的所有分区中创建接收器，帮助你高效地从事件中心接收事件。 它定期在 Azure 存储 Blob 中为收到的消息的元数据创建检查点。 使用此方式，可以很容易地在以后的某个时间从离开的位置继续接收消息。
 
-1. 打开你常用的编辑器，例如 [Visual Studio Code](https://code.visualstudio.com)。 
-2. 创建一个名为 `receiveAll.js` 的文件，并将下面的代码粘贴到其中。
+1. 打开偏好的编辑器，例如 [Visual Studio Code](https://code.visualstudio.com)。 
+2. 创建名为 `receiveAll.js` 的文件，并在其中粘贴以下代码。
     ```javascript
     const { EventProcessorHost, delay } = require("@azure/event-processor-host");
 
@@ -183,15 +183,15 @@ npm install @azure/event-processor-host
     });
 
     ```
-3. 在上面的代码中输入连接字符串和事件中心的名称以及 Azure Blob 存储的连接字符串
-4. 然后在命令提示符下运行命令 `node receiveAll.js` 以执行此文件。
+3. 输入以上代码中显示的连接字符串和事件中心名称，并输入 Azure Blob 存储的连接字符串
+4. 然后，在命令提示符中运行命令 `node receiveAll.js` 以执行此文件。
 
-祝贺！ 现在已使用事件处理程序主机从事件中心接收事件。 这将从事件中心的默认使用者组的所有分区接收事件
+祝贺你！ 现已使用事件处理程序主机从事件中心收到事件。 此命令将从事件中心内默认使用者组的所有分区接收事件
 
 ## <a name="next-steps"></a>后续步骤
 请阅读以下文章：
 
 - [EventProcessorHost](event-hubs-event-processor-host.md)
 - [Azure 事件中心的功能和术语](event-hubs-features.md)
-- [事件中心常见问题](event-hubs-faq.md)
+- [事件中心常见问题解答](event-hubs-faq.md)
 - 在 GitHub 上查看有关[事件中心](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs/samples)和[事件处理器主机](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-processor-host/samples)的其他 JavaScript 示例

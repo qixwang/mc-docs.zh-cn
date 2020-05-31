@@ -6,12 +6,12 @@ author: rockboyfor
 origin.date: 05/13/2019
 ms.date: 01/20/2020
 ms.author: v-yeche
-ms.openlocfilehash: 593c79c2fc8b48f6d88bc141c024036ba1b5591b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: e30cdeac28b94a9aea0e1193b3dd0097ac8604d4
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "76170752"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199678"
 ---
 # <a name="azure-managed-application-with-managed-identity"></a>包含托管标识的 Azure 托管应用程序
 
@@ -372,10 +372,8 @@ authorizationAudience | 请求其访问令牌的 `aud`（受众）。 这与 `li
 ResourceId | 颁发的令牌的 Azure 资源 ID。 此值为托管应用程序 ID 或用户分配的标识 ID。
 token_type | 令牌的类型。
 
-## <a name="next-steps"></a>后续步骤
-
-> [!div class="nextstepaction"]
-> [如何使用自定义提供程序配置托管应用程序](../custom-providers/overview.md)
+<!--Not Available on ## Next steps-->
+<!--Not Available on [How to configure a Managed Application with a Custom Provider](../custom-providers/overview.md)-->
 
 <!-- Update_Description: new article about publish managed identity -->
 <!--NEW.date: 01/20/2020-->

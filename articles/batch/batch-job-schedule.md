@@ -1,24 +1,17 @@
 ---
 title: 计划作业
 description: 使用作业计划来管理任务。
-services: batch
-author: LauraBrenner
-manager: evansma
-editor: ''
-ms.assetid: 63d9d4f1-8521-4bbb-b95a-c4cad73692d3
-ms.service: batch
 ms.topic: article
-ms.workload: big-compute
 ms.date: 04/29/2020
 ms.author: v-tawe
 ms.custom: seodec18
 origin.date: 02/20/2020
-ms.openlocfilehash: f769be70b8cefda06a1fd53d409292dbfa1b1633
-ms.sourcegitcommit: 1fbdefdace8a1d3412900c6c3f89678d8a9b29bc
+ms.openlocfilehash: ceb2fd9b9e7688c6d0390e242aaccd078b4d25a1
+ms.sourcegitcommit: cbaa1aef101f67bd094f6ad0b4be274bbc2d2537
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82886989"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84126779"
 ---
 # <a name="schedule-jobs-for-efficiency"></a>计划作业以提高效率
 

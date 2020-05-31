@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 04/24/2020
+ms.date: 05/29/2020
 ms.author: v-junlch
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 14fcd54bb383050cc6b73ce6d38aa8e707616d59
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.openlocfilehash: 049c47780efb6012359024628cd03179ecd9315d
+ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82126297"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84186666"
 ---
 # <a name="conditional-access-grant"></a>条件访问：授予
 
@@ -72,7 +72,6 @@ ms.locfileid: "82126297"
 - Microsoft Kaizala
 - Microsoft Launcher
 - Microsoft Office
-- Microsoft Office 中心
 - Microsoft OneDrive
 - Microsoft OneNote
 - Microsoft Outlook
@@ -94,7 +93,7 @@ ms.locfileid: "82126297"
 **备注**
 
 - 批准的客户端应用支持 Intune 移动应用管理功能。
-- “需要批准的客户端应用”  要求：
+- “需要批准的客户端应用”要求：
    - 仅支持 iOS 和 Android 作为设备平台条件。
    - 注册设备需要代理应用。 在 iOS 上，代理应用是 Microsoft Authenticator；在 Android 上，代理应用是 Intune 公司门户应用。
 - 条件访问无法将 InPrivate 模式下的 Microsoft Edge 视为已批准的客户端应用。
@@ -117,7 +116,7 @@ ms.locfileid: "82126297"
 **备注**
 
 - 适用于应用保护策略的应用支持带策略保护的 Intune 移动应用程序管理功能。
-- “需要应用保护策略”要求： 
+- “需要应用保护策略”要求：
     - 仅支持 iOS 和 Android 作为设备平台条件。
     - 注册设备需要代理应用。 在 iOS 上，代理应用是 Microsoft Authenticator；在 Android 上，代理应用是 Intune 公司门户应用。
 

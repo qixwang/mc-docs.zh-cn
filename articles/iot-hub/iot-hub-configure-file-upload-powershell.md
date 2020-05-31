@@ -8,12 +8,12 @@ ms.topic: conceptual
 origin.date: 08/08/2017
 ms.author: v-yiso
 ms.date: 10/08/2018
-ms.openlocfilehash: 66b5023d8569165f354ce6cdd27ac55307fda0c9
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 5cb1b1960cfdfded3b0fe6fb122bd40947ae68e0
+ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "63822169"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84186888"
 ---
 # <a name="configure-iot-hub-file-uploads-using-powershell"></a>使用 PowerShell 配置 IoT 中心文件上传
 
@@ -25,7 +25,7 @@ ms.locfileid: "63822169"
 
 要完成本教程，需要以下各项：
 
-* 有效的 Azure 帐户。 若尚无帐户，只需几分钟即可创建一个 [试用帐户][lnk-free-trial] 。
+* 有效的 Azure 帐户。 若尚无帐户，只需几分钟即可创建一个 [试用帐户](https://www.azure.cn/pricing/1rmb-trial/) 。
 * [Azure PowerShell cmdlet](https://docs.microsoft.com/powershell/azure/install-Az-ps)。
 
 * Azure IoT 中心。 如果没有 IoT 中心，可以使用 [New-AzIoTHub cmdlet](https://docs.microsoft.com/powershell/module/az.iothub/new-aziothub) 创建一个，或者使用门户[创建一个 IoT 中心](iot-hub-create-through-portal.md)。

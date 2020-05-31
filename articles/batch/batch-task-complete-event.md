@@ -1,23 +1,16 @@
 ---
 title: Azure Batch 任务完成事件
 description: 批处理任务完成事件参考。 无论退出代码如何，任务完成后都会发出此事件。
-services: batch
-author: lingliw
-manager: digimobile
-ms.assetid: ''
-ms.service: batch
 ms.topic: article
-ms.tgt_pltfrm: ''
-ms.workload: big-compute
 origin.date: 04/20/2017
 ms.date: 05/14/2018
 ms.author: v-lingwu
-ms.openlocfilehash: e4ddc288927e04e329c0ca70601c4785cfb31586
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 716754b31ae8489a14530ee9acd0ff214afb6818
+ms.sourcegitcommit: cbaa1aef101f67bd094f6ad0b4be274bbc2d2537
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77497374"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84126598"
 ---
 # <a name="task-complete-event"></a>任务完成事件
 

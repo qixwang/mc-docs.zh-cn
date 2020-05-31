@@ -1,28 +1,28 @@
 ---
-title: 从 MySQL Workbench 连接到 Azure Database for MySQL
+title: 使用 MySQL Workbench 进行连接 - Azure Database for MySQL
 description: 本快速入门介绍如何使用 MySQL Workbench 连接到 Azure Database for MySQL 并查询其中的数据。
 author: WenJason
 ms.author: v-jay
 ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
-origin.date: 02/28/2018
-ms.date: 04/29/2019
-ms.openlocfilehash: d64ca7879b7ca6a8513adb4ab80f3490229f4b5b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+origin.date: 3/18/2020
+ms.date: 06/01/2020
+ms.openlocfilehash: fded96e6b96bd8a8c8ed799a35a24ff4852d52d6
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "67236657"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199578"
 ---
-# <a name="azure-database-for-mysql-use-mysql-workbench-to-connect-and-query-data"></a>Azure Database for MySQL：使用 MySQL Workbench 进行连接并查询数据
+# <a name="azure-database-for-mysql-use-mysql-workbench-to-connect-and-query-data"></a>Azure Database for MySQL：使用 MySQL Workbench 连接和查询数据
 
 > [!NOTE]
 > 将要查看的是 Azure Database for MySQL 的新服务。 若要查看经典 MySQL Database for Azure 的文档，请访问[此页](https://docs.azure.cn/zh-cn/mysql-database-on-azure/)。
 
 本快速入门演示如何使用 MySQL Workbench 应用程序连接到 Azure Database for MySQL。 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 此快速入门使用以下任意指南中创建的资源作为起点：
 - [使用 Azure 门户创建用于 MySQL 服务器的 Azure 数据库](./quickstart-create-mysql-server-database-using-azure-portal.md)
 - [使用 Azure CLI 创建用于 MySQL 服务器的 Azure 数据库](./quickstart-create-mysql-server-database-using-azure-cli.md)
@@ -35,36 +35,36 @@ ms.locfileid: "67236657"
 
 1. 登录到 [Azure 门户](https://portal.azure.cn/)。
 
-2. 在 Azure 门户的左侧菜单中，单击“所有资源”  ，然后搜索已创建的服务器（例如 mydemoserver  ）。
+2. 在 Azure 门户的左侧菜单中，单击“所有资源”，然后搜索已创建的服务器（例如 mydemoserver）。
 
 3. 单击服务器名称。
 
-4. 从服务器的“概览”面板中记下“服务器名称”和“服务器管理员登录名”。    如果忘记了密码，也可通过此面板来重置密码。
+4. 从服务器的“概览”面板中记下“服务器名称”和“服务器管理员登录名”。   如果忘记了密码，也可通过此面板来重置密码。
  ![Azure Database for MySQL 服务器名称](./media/connect-php/1_server-overview-name-login.png)
 
 ## <a name="connect-to-the-server-by-using-mysql-workbench"></a>使用 MySQL Workbench 连接服务器 
 若要使用 GUI 工具 MySQL Workbench 连接到 Azure MySQL 服务器，请执行以下操作：
 
-1.  启动计算机上的 MySQL Workbench 应用程序。 
+1.    启动计算机上的 MySQL Workbench 应用程序。 
 
-2.  在“设置新连接”  对话框的“参数”  选项卡上，输入以下信息：
+2.    在“设置新连接”对话框的“参数”选项卡上，输入以下信息：
 
     ![设置新连接](./media/connect-workbench/2-setup-new-connection.png)
+    
+   | **设置** | **建议的值** | **字段说明** |
+   |---|---|---|
+   |    连接名称 | 演示连接 | 指定此连接的标签。 |
+   | 连接方法 | 标准 (TCP/IP) | 标准 (TCP/IP) 就足够了。 |
+   | 主机名 | 服务器名称 | 指定此前在创建 Azure Database for MySQL 时使用过的服务器名称值。 显示的示例服务器为 mydemoserver.mysql.database.chinacloudapi.cn。 请使用完全限定的域名 (\*.mysql.database.chinacloudapi.cn)，如示例中所示。 如果记不起服务器名称，请按上一部分的步骤操作，以便获取连接信息。  |
+   | 端口 | 3306 | 在连接到 Azure Database for MySQL 时，始终使用端口 3306。 |
+   | 用户名 |  服务器管理员登录名 | 键入此前在创建 Azure Database for MySQL 时提供的服务器管理员登录用户名。 示例用户名为 myadmin@mydemoserver。 如果记不起用户名，请按上一部分的步骤操作，以便获取连接信息。 格式为 username\@servername。
+   | 密码 | 你的密码 | 单击“在保管库中存储...”按钮来保存密码。 |
 
-    | **设置** | **建议的值** | **字段说明** |
-    |---|---|---|
-    |   连接名称 | 演示连接 | 指定此连接的标签。 |
-    | 连接方法 | 标准 (TCP/IP) | 标准 (TCP/IP) 就足够了。 |
-    | 主机名 | 服务器名称  | 指定此前在创建 Azure Database for MySQL 时使用过的服务器名称值。 显示的示例服务器为 mydemoserver.mysql.database.chinacloudapi.cn。 请使用完全限定的域名 (\*.mysql.database.chinacloudapi.cn)，如示例中所示。 如果记不起服务器名称，请按上一部分的步骤操作，以便获取连接信息。  |
-    | 端口 | 3306 | 在连接到 Azure Database for MySQL 时，始终使用端口 3306。 |
-    | 用户名 |  服务器管理员登录名  | 键入此前在创建 Azure Database for MySQL 时提供的服务器管理员登录用户名。 示例用户名为 myadmin@mydemoserver。 如果记不起用户名，请按上一部分的步骤操作，以便获取连接信息。 格式为 username\@servername。
-    | 密码 | 你的密码 | 单击“在保管库中存储...”  按钮来保存密码。 |
+3.   单击“测试连接”以测试是否所有参数均已正确配置。 
 
-3.   单击“测试连接”  以测试是否所有参数均已正确配置。 
+4.   单击“确定”保存连接。 
 
-4.   单击“确定”  保存连接。 
-
-5.   在“MySQL 连接”  列表中，单击与服务器对应的磁贴并等待建立连接。
+5.   在“MySQL 连接”列表中，单击与服务器对应的磁贴并等待建立连接。
 
         将打开一个新的 SQL 选项卡，该选项卡包含一个可在其中键入查询的空白编辑器。
     
@@ -105,9 +105,9 @@ ms.locfileid: "67236657"
     
     ![运行示例 SQL 代码的 MySQL Workbench SQL 选项卡](media/connect-workbench/3-workbench-sql-tab.png)
 
-2. 若要运行示例 SQL 代码，请单击“SQL 文件”  选项卡工具栏中的闪电图标。
-3. 请注意页面中间“结果网格”部分中的三个选项卡式结果  。 
-4. 请注意页面底部的“输出”  列表。 显示有每个命令的状态。 
+2. 若要运行示例 SQL 代码，请单击“SQL 文件”选项卡工具栏中的闪电图标。
+3. 请注意页面中间“结果网格”部分中的三个选项卡式结果。 
+4. 请注意页面底部的“输出”列表。 显示有每个命令的状态。 
 
 现已使用 MySQL Workbench 连接到 Azure Database for MySQL，并已使用 SQL 语言查询数据。
 

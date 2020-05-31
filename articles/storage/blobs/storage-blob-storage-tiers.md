@@ -4,17 +4,17 @@ description: Azure 存储帐户的热、冷、存档访问层。
 author: WenJason
 ms.author: v-jay
 origin.date: 03/23/2019
-ms.date: 03/09/2020
+ms.date: 06/01/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: 1e4e112196f7a1ea3b79e9ca3869d5c49c128c03
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 31ce2f78423edb650c1e32214d85668f5f3167e4
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79293422"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199750"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-access-tiers"></a>Azure Blob 存储：热、冷、存档访问层
 
@@ -195,7 +195,7 @@ $storageAccount =Get-AzStorageAccount -ResourceGroupName $rgName -Name $accountN
 $ctx = $storageAccount.Context
 
 #Select the blob from a container
-$blobs = Get-AzStorageBlob -Container $containerName -Blob $blobName -Context $context
+$blob = Get-AzStorageBlob -Container $containerName -Blob $blobName -Context $ctx
 
 #Change the blob's access tier to archive
 $blob.ICloudBlob.SetStandardBlobTier("Archive")

@@ -5,15 +5,16 @@ ms.topic: article
 origin.date: 12/09/2019
 ms.author: v-yeche
 ms.date: 01/06/2020
-ms.openlocfilehash: dc7a20a167f25b01ea657254b2ceeba7c948aad6
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 72e55605710f151f50f9b13af15403b120213ab4
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75742451"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199486"
 ---
-<!--Not Available on "apiVersion": "2019-06-01-preview"-->
-<!--RELEAASE BEFORE CONFIRM-->
+<!--Not Available on MOONCAKE-->
+<!--RELEASE BEFORE CONFIRMATION-->
+<!--https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities#azure-services-that-support-managed-identities-for-azure-resources-->
 # <a name="deploy-service-fabric-application-with-a-user-assigned-managed-identity-preview"></a>使用用户分配的托管标识部署 Service Fabric 应用程序（预览）
 
 若要使用托管标识部署 Service Fabric 应用程序，需通过 Azure 资源管理器部署应用程序，通常需要使用 Azure 资源管理器模板。 若要详细了解如何通过 Azure 资源管理器部署 Service Fabric 应用程序，请参阅[将应用程序和服务作为 Azure 资源管理器资源进行管理](service-fabric-application-arm-resource.md)。

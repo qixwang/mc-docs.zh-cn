@@ -5,16 +5,16 @@ author: WenJason
 ms.service: storage
 ms.topic: conceptual
 origin.date: 03/11/2019
-ms.date: 10/28/2019
+ms.date: 06/01/2020
 ms.author: v-jay
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 84d6597220138f452efdcb5970b529aa96335110
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 111a6e46ec97383d27639f89040b1e5948636f83
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79291193"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199532"
 ---
 # <a name="azure-storage-analytics-metrics-classic"></a>Azure 存储分析指标（经典）
 
@@ -24,7 +24,7 @@ ms.locfileid: "79291193"
 
 > [!NOTE]
 > 存储分析指标适用于 Blob、队列、表和文件服务。
-> 存储分析指标目前为经典指标。 Azure 建议使用 [Azure Monitor 中的存储指标](storage-metrics-in-azure-monitor.md)，而不要使用存储分析指标。
+> 存储分析指标目前为经典指标。 Azure 建议使用 [Azure Monitor 中的存储指标](monitor-storage.md)，而不要使用存储分析指标。
 
 ## <a name="transaction-metrics"></a>事务指标  
  对于每个存储服务和请求的 API 操作，以小时或分钟为间隔记录一组可靠的数据，其中包括入口/出口、可用性、错误和分类请求百分比。 可以在 [存储分析指标表架构](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-metrics-table-schema) 主题中查看事务详细信息的完整列表。  

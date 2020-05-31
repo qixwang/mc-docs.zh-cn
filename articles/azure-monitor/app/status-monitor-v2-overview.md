@@ -2,17 +2,16 @@
 title: Azure Application Insights 代理概述 | Microsoft Docs
 description: Application Insights 代理的概述。 无需重新部署网站即可监视网站性能。 使用托管在本地、VM 或 Azure 上的 ASP.NET Web 应用。
 ms.topic: conceptual
-author: lingliw
-manager: digimobile
+author: Johnnytechn
 origin.date: 09/16/2019
-ms.date: 11/4/2019
-ms.author: v-lingwu
-ms.openlocfilehash: 32a50a0f77562c531fb8a62f7fee8f8c130e4bab
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/28/2020
+ms.author: v-johya
+ms.openlocfilehash: 4a3cf86937d81ff5957d706c7718237c24f2d1b6
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79293026"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199598"
 ---
 # <a name="deploy-azure-monitor-application-insights-agent-for-on-premises-servers"></a>为本地服务器部署 Azure Monitor Application Insights 代理
 
@@ -38,14 +37,14 @@ Application Insights 代理位于此处： https://www.powershellgallery.com/pac
 - 请参阅[详细说明](status-monitor-v2-detailed-instructions.md)，以深入了解如何开始使用。
 
 ## <a name="powershell-api-reference"></a>PowerShell API 参考
-- [Disable-ApplicationInsightsMonitoring](status-monitor-v2-api-disable-monitoring.md)
-- [Disable-InstrumentationEngine](status-monitor-v2-api-disable-instrumentation-engine.md)
-- [Enable-ApplicationInsightsMonitoring](status-monitor-v2-api-enable-monitoring.md)
-- [Enable-InstrumentationEngine](status-monitor-v2-api-enable-instrumentation-engine.md)
-- [Get-ApplicationInsightsMonitoringConfig](status-monitor-v2-api-get-config.md)
-- [Get-ApplicationInsightsMonitoringStatus](status-monitor-v2-api-get-status.md)
-- [Set-ApplicationInsightsMonitoringConfig](status-monitor-v2-api-set-config.md)
-- [Start-ApplicationInsightsMonitoringTrace](status-monitor-v2-api-start-trace.md)
+- [Disable-ApplicationInsightsMonitoring](/azure-monitor/app/status-monitor-v2-api-reference#disable-applicationinsightsmonitoring)
+- [Disable-InstrumentationEngine](/azure-monitor/app/status-monitor-v2-api-reference#disable-instrumentationengine)
+- [Enable-ApplicationInsightsMonitoring](/azure-monitor/app/status-monitor-v2-api-reference#enable-applicationinsightsmonitoring)
+- [Enable-InstrumentationEngine](/azure-monitor/app/status-monitor-v2-api-reference#enable-instrumentationengine)
+- [Get-ApplicationInsightsMonitoringConfig](/azure-monitor/app/status-monitor-v2-api-reference#get-applicationinsightsmonitoringconfig)
+- [Get-ApplicationInsightsMonitoringStatus](/azure-monitor/app/status-monitor-v2-api-reference#get-applicationinsightsmonitoringstatus)
+- [Set-ApplicationInsightsMonitoringConfig](/azure-monitor/app/status-monitor-v2-api-reference#set-applicationinsightsmonitoringconfig)
+- [Start-ApplicationInsightsMonitoringTrace](/azure-monitor/app/status-monitor-v2-api-reference#start-applicationinsightsmonitoringtrace)
 
 ## <a name="troubleshooting"></a>故障排除
 - [故障排除](status-monitor-v2-troubleshoot.md)
@@ -66,7 +65,7 @@ Application Insights 代理位于此处： https://www.powershellgallery.com/pac
 
 - 如何验证启用是否成功？
 
-  - [Get-ApplicationInsightsMonitoringStatus](status-monitor-v2-api-get-status.md) cmdlet 可用于验证启用是否成功。
+  - [Get-ApplicationInsightsMonitoringStatus](/azure-monitor/app/status-monitor-v2-api-reference#get-applicationinsightsmonitoringstatus) cmdlet 可用于验证启用是否成功。
   - 我们建议你使用[实时指标](/azure-monitor/app/live-stream)来快速确定应用是否正在发送遥测数据。
 
   - 还可以使用 [Log Analytics](../log-query/get-started-portal.md) 列出当前正在发送遥测数据的所有云角色：
@@ -78,7 +77,7 @@ Application Insights 代理位于此处： https://www.powershellgallery.com/pac
 
 查看遥测：
 
-* [浏览指标](../../azure-monitor/app/metrics-explorer.md)，以便监视性能和使用情况。
+* [浏览指标](../../azure-monitor/platform/metrics-charts.md)，以便监视性能和使用情况。
 * [搜索事件和日志](../../azure-monitor/app/diagnostic-search.md)以诊断问题。
 * [使用分析](../../azure-monitor/log-query/log-query-overview.md)，以便进行更高级的查询。
 * [创建仪表板](../../azure-monitor/app/overview-dashboard.md)。
@@ -88,8 +87,5 @@ Application Insights 代理位于此处： https://www.powershellgallery.com/pac
 * [创建 Web 测试](monitor-web-app-availability.md)，以确保站点保持活动状态。
 * [添加 Web 客户端遥测](../../azure-monitor/app/javascript.md)，以查看网页代码中的异常并启用跟踪调用。
 * [将 Application Insights SDK 添加到代码](../../azure-monitor/app/asp-net.md)，以便插入跟踪和日志调用。
-
-
-
 
 

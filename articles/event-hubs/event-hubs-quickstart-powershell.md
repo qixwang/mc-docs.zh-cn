@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: quickstart
 ms.custom: seodec18
 origin.date: 11/05/2019
-ms.date: 03/16/2020
+ms.date: 05/29/2020
 ms.author: v-tawe
-ms.openlocfilehash: 3e2973f9122a05569952d38a83d0d35b2712e470
-ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
+ms.openlocfilehash: ef68cfda942a562a608964f1b7ec3dd929f02e6f
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82588789"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199774"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建事件中心
 
@@ -68,7 +68,7 @@ New-AzEventHub -ResourceGroupName myResourceGroup -NamespaceName namespace_name 
 
 ## <a name="next-steps"></a>后续步骤
 
-在本文中，我们已创建事件中心命名空间，并使用示例应用程序从事件中心发送和接收事件。 有关如何将事件发送到事件中心（或）从事件中心接收事件的分步说明，请参阅“发送和接收事件”教程  ： 
+在本文中，我们已创建事件中心命名空间，并使用示例应用程序从事件中心发送和接收事件。 有关如何将事件发送到事件中心（或）从事件中心接收事件的分步说明，请参阅“发送和接收事件”教程： 
 
 - [.NET Core](get-started-dotnet-standard-send-v2.md)
 - [Java](get-started-java-send-v2.md)

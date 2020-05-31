@@ -11,12 +11,12 @@ ms.workload: na
 origin.date: 08/29/2018
 ms.author: v-yiso
 ms.date: 03/18/2019
-ms.openlocfilehash: 1d6deb132005188e5ade89a1e359769c2e195d9f
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: de3dd4d47663a88722cc2e7691e3686ea7c1a5e9
+ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "67307568"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84186698"
 ---
 # <a name="create-an-iot-hub-using-the-new-aziothub-cmdlet"></a>使用 New-AzIotHub cmdlet 创建 IoT 中心
 
@@ -26,7 +26,7 @@ ms.locfileid: "67307568"
 
 可以使用 Azure PowerShell cmdlet 创建和管理 Azure IoT 中心。 本教程介绍如何使用 PowerShell 创建 IoT 中心。
 
-若要完成本操作说明，需要 Azure 订阅。 如果没有 Azure 订阅，可在开始前创建一个 [试用帐户][lnk-free-trial] 。
+若要完成本操作说明，需要 Azure 订阅。 如果没有 Azure 订阅，可在开始前创建一个 [试用帐户](https://www.azure.cn/pricing/1rmb-trial/) 。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

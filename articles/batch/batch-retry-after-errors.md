@@ -1,27 +1,16 @@
 ---
 title: 出错后重试任务
 description: 检查是否存在错误，然后重试。
-services: batch
-documentationcenter: .net
-author: LauraBrenner
-manager: evansma
-editor: ''
-tags: azure-batch
-ms.assetid: 16279b23-60ff-4b16-b308-5de000e4c028
-ms.service: batch
 ms.topic: article
-ms.tgt_pltfrm: ''
-ms.workload: big-compute
-ms.date: 04/29/2020
-ms.author: v-tawe
+ms.date: 02/15/2020
 ms.custom: seodec18
 origin.date: 02/15/2020
-ms.openlocfilehash: fccab332735126c28e0f4d645c70eb4b560e2e2e
-ms.sourcegitcommit: 1fbdefdace8a1d3412900c6c3f89678d8a9b29bc
+ms.openlocfilehash: 9d5313b294c5f9984f75dd5949803c0908f7fe77
+ms.sourcegitcommit: cbaa1aef101f67bd094f6ad0b4be274bbc2d2537
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82886982"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84126597"
 ---
 # <a name="detecting-and-handling-batch-service-errors"></a>检测和处理 Batch 服务错误
 

@@ -2,17 +2,16 @@
 title: Azure Application Insights 代理详细说明 | Microsoft Docs
 description: 有关如何开始使用 Application Insights 代理的详细说明。 无需重新部署网站即可监视网站性能。 使用托管在本地、VM 或 Azure 上的 ASP.NET Web 应用。
 ms.topic: conceptual
-author: lingliw
-manager: digimobile
+author: Johnnytechn
 origin.date: 04/23/2019
-ms.date: 04/23/2019
-ms.author: v-lingwu
-ms.openlocfilehash: e8196a017141c121e8f4f9d7eb4e28cf8640ac0d
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/28/2020
+ms.author: v-johya
+ms.openlocfilehash: a7f034e94c47d4d0e19173cfca0b1cfdc7bf7635
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79293027"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199343"
 ---
 # <a name="application-insights-agent-formerly-named-status-monitor-v2-detailed-instructions"></a>Application Insights 代理（以前称为状态监视器 v2）：详细说明
 
@@ -118,7 +117,7 @@ SerializationVersion           1.1.0.1
 
 4. 安装最新版本的 PowerShellGet。
     - 说明:此模块包含用于从 PowerShell 库中获取其他模块的工具。 Windows 10 和 Windows Server 随附了版本 1.0.0.1。 需要 1.6.0 或更高版本。 若要确定安装了哪个版本，请运行 `Get-Command -Module PowerShellGet` 命令。
-    - 参考：[安装 PowerShellGet](https://docs.microsoft.com/powershell/scripting/gallery/installing-psget)。
+    - 参考：[安装 PowerShellGet](/powershell/scripting/gallery/installing-psget)。
     - 命令：`Install-Module -Name PowerShellGet`。
     - 可选参数：
         - `-Proxy`。 指定请求的代理服务器。
@@ -162,7 +161,7 @@ SerializationVersion           1.1.0.1
 
 ### <a name="option-1-install-into-a-powershell-modules-directory"></a>选项 1：安装到 PowerShell 模块目录中
 将手动下载的 PowerShell 模块安装到 PowerShell 目录中，使之可被 PowerShell 会话发现。
-有关详细信息，请参阅[安装 PowerShell 模块](https://docs.microsoft.com/powershell/scripting/developer/module/installing-a-powershell-module)。
+有关详细信息，请参阅[安装 PowerShell 模块](/powershell/scripting/developer/module/installing-a-powershell-module)。
 
 
 #### <a name="unzip-nupkg-as-a-zip-file-by-using-expand-archive-v1010"></a>使用 Expand-Archive (v1.0.1.0) 将 nupkg 作为 zip 文件解压缩
@@ -193,7 +192,7 @@ SerializationVersion           1.1.0.1
 
 ### <a name="option-2-unzip-and-import-nupkg-manually"></a>选项 2：手动解压缩并导入 nupkg
 将手动下载的 PowerShell 模块安装到 PowerShell 目录中，使之可被 PowerShell 会话发现。
-有关详细信息，请参阅[安装 PowerShell 模块](https://docs.microsoft.com/powershell/developer/module/installing-a-powershell-module)。
+有关详细信息，请参阅[安装 PowerShell 模块](/powershell/scripting/developer/module/installing-a-powershell-module)。
 
 若要将模块安装到任何其他目录中，请使用 [Import-Module](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/import-module?view=powershell-6) 手动导入模块。
 
@@ -221,7 +220,7 @@ Application Insights SDK 需要将应用的遥测数据发送给 Microsoft。 �
 
 使用 `Enable-ApplicationInsightsMonitoring` 命令以启用监视。
 
-有关如何使用此 cmdlet 的详细说明，请参阅 [API 参考](status-monitor-v2-api-enable-monitoring.md)。
+有关如何使用此 cmdlet 的详细说明，请参阅 [API 参考](/azure-monitor/app/status-monitor-v2-api-reference#enable-applicationinsightsmonitoring)。
 
 
 
@@ -229,10 +228,11 @@ Application Insights SDK 需要将应用的遥测数据发送给 Microsoft。 �
 
  查看遥测：
 
-- [浏览指标](../../azure-monitor/app/metrics-explorer.md)，以便监视性能和使用情况。
+- [浏览指标](../../azure-monitor/platform/metrics-charts.md)，以便监视性能和使用情况。
 - [搜索事件和日志](../../azure-monitor/app/diagnostic-search.md)以诊断问题。
 - [使用分析](../../azure-monitor/log-query/log-query-overview.md)，以便进行更高级的查询。
 - [创建仪表板](../../azure-monitor/app/overview-dashboard.md)。
+<!-- Correct on link: azure-monitor/log-query/log-query-overview.md -->
 
  添加更多遥测：
 
@@ -243,3 +243,4 @@ Application Insights SDK 需要将应用的遥测数据发送给 Microsoft。 �
 使用 Application Insights 代理执行更多操作：
 
 - 使用我们的指南对 Application Insights 代理进行[故障排除](status-monitor-v2-troubleshoot.md)。
+

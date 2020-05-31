@@ -4,18 +4,18 @@ description: 支持 Azure 资源托管标识和 Azure AD 身份验证的服务�
 services: active-directory
 author: MarkusVi
 ms.author: v-junlch
-ms.date: 04/23/2020
+ms.date: 05/29/2020
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: msi
 manager: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 771641f7e6eca92b13dc95bac47a340cabdfacd8
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.openlocfilehash: 23f6c05f379b8bd268f7f346fa8d632a3cde868f
+ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82126522"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84186635"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>支持 Azure 资源托管标识的服务
 
@@ -71,6 +71,14 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 - [Azure CLI](/app-service/overview-managed-identity#using-the-azure-cli)
 - [Azure PowerShell](/app-service/overview-managed-identity#using-azure-powershell)
 - [Azure Resource Manager 模板](/app-service/overview-managed-identity#using-an-azure-resource-manager-template)
+
+
+### <a name="azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS)
+
+| 托管标识类型 | 所有正式发布版<br>全球 Azure 区域 | Azure Government | Azure 德国 | Azure 中国世纪互联 |
+| --- | :-: | :-: | :-: | :-: |
+| 系统分配 | ![可用][check] | - | - | - | 
+| 用户分配 | ![可用][check] | - | - | - |
 
 ### <a name="azure-functions"></a>Azure Functions
 

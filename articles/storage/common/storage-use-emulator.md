@@ -4,16 +4,16 @@ description: Azure 存储模拟器为开发和测试 Azure 存储应用程序提
 author: WenJason
 ms.author: v-jay
 origin.date: 08/21/2018
-ms.date: 10/28/2019
+ms.date: 06/01/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.openlocfilehash: f846ebc4c3e1f52f477baa418c6c096d5727e9f1
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 68bd5d798c8587b0165c1b102814ce4bf2220574
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "72914452"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199742"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>使用 Azure 存储模拟器进行开发和测试
 
@@ -326,6 +326,6 @@ https://storageaccount.blob.core.chinacloudapi.cn/sascontainer?sv=2012-02-12&se=
 
 ## <a name="next-steps"></a>后续步骤
 
-* 评估跨平台的、由社区维护的开源存储模拟器 [Azurite](https://github.com/arafato/azurite)。 
+* 评估跨平台的、由社区维护的开源存储模拟器 [Azurite](https://github.com/azure/azurite)。 
 * [使用 .NET 的 Azure 存储示例](../storage-samples-dotnet.md)包含开发应用程序时可使用的多个代码示例的链接。
 * 可使用 [Microsoft Azure 存储资源管理器](https://storageexplorer.com)处理云存储帐户和存储模拟器中的资源。

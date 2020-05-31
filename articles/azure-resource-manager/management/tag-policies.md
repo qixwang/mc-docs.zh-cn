@@ -5,12 +5,12 @@ ms.topic: conceptual
 origin.date: 03/20/2020
 ms.date: 05/08/2020
 ms.author: v-yeche
-ms.openlocfilehash: 06da5d002f7ee68fba168d5086c461091de4ee1a
-ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
+ms.openlocfilehash: 2decdc9ae64fe98c9d6889df1e3e3718adf53bab
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "83001889"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199791"
 ---
 <!--Verified successfully-->
 # <a name="assign-policies-for-tag-compliance"></a>分配用于确保标记符合性的策略
@@ -19,7 +19,7 @@ ms.locfileid: "83001889"
 
 ## <a name="policies"></a>策略
 
-[!INCLUDE [Tag policies](../../../includes/azure-policy-samples-policies-tags.md)]
+[!INCLUDE [Tag policies](../../../includes/policy/samples/bycat/policies-tags.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

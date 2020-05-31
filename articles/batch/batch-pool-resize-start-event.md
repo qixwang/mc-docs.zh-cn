@@ -1,23 +1,16 @@
 ---
 title: Azure Batch 池调整大小开始事件
 description: Batch 池调整大小开始事件参考。 示例显示池调整大小开始事件（即通过手动调整大小将池的大小从 0 调整为 2 个节点）的正文。
-services: batch
-author: lingliw
-manager: digimobile
-ms.assetid: ''
-ms.service: batch
 ms.topic: article
-ms.tgt_pltfrm: ''
-ms.workload: big-compute
 origin.date: 04/20/2017
 ms.date: 05/14/2018
 ms.author: v-lingwu
-ms.openlocfilehash: 9f92741294b04c52fd5c3ee4be41037ca05f4869
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: e47a6d25e11d53e3be9954a6417336bb2460181c
+ms.sourcegitcommit: cbaa1aef101f67bd094f6ad0b4be274bbc2d2537
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75857940"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84126570"
 ---
 # <a name="pool-resize-start-event"></a>池调整大小开始事件
 

@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 origin.date: 03/27/2020
-ms.date: 04/20/2020
+ms.date: 05/29/2020
 ms.author: v-tawe
-ms.openlocfilehash: 9c76e8ef750ea5360d1710f20642988c9907aa7f
-ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
+ms.openlocfilehash: af749adb5ca537098473edf9b6b2bc80e0eb960b
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82588744"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199439"
 ---
 # <a name="availability-and-consistency-in-event-hubs"></a>事件中心内的可用性和一致性
 

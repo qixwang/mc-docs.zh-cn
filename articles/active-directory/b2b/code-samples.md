@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: sample
-ms.date: 04/29/2020
+ms.date: 05/29/2020
 ms.author: v-junlch
 author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
-ms.custom: it-pro, seo-update-azuread-jan
+ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 49c7f49e1f4805215fb7fabcef1a028bc0116c5f
-ms.sourcegitcommit: 95efd248f5ee3701f671dbd5cfe0aec9c9959a24
+ms.openlocfilehash: d361047479d852b2097ccf0627773a1dd2af3bf5
+ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82515707"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84186695"
 ---
 # <a name="azure-active-directory-b2b-collaboration-code-and-powershell-samples"></a>Azure Active Directory B2B 协作代码和 PowerShell 示例
 
@@ -25,7 +25,7 @@ ms.locfileid: "82515707"
 可通过已存储在 .CSV 文件中的电子邮件地址批量邀请外部用户加入组织。
 
 1. 准备 .CSV 文件：创建一个新的 CSV 文件，并将其命名为 invitations.csv。 在此示例中，该文件保存在 C:\data 中，并包含以下信息：
-  
+
    名称                  |  InvitedUserEmailAddress
    --------------------- | --------------------------
    Gmail B2B 被邀请者     | b2binvitee@gmail.com
@@ -73,44 +73,44 @@ namespace SampleInviteApp
         /// Microsoft Graph resource.
         /// </summary>
         static readonly string GraphResource = "https://microsoftgraph.chinacloudapi.cn";
- 
+
         /// <summary>
         /// Microsoft Graph invite endpoint.
         /// </summary>
         static readonly string InviteEndPoint = "https://microsoftgraph.chinacloudapi.cn/v1.0/invitations";
- 
+
         /// <summary>
         ///  Authentication endpoint to get token.
         /// </summary>
         static readonly string EstsLoginEndpoint = "https://login.partner.microsoftonline.cn";
- 
+
         /// <summary>
         /// This is the tenantid of the tenant you want to invite users to.
         /// </summary>
         private static readonly string TenantID = "";
- 
+
         /// <summary>
         /// This is the application id of the application that is registered in the above tenant.
         /// The required scopes are available in the below link.
         /// https://developer.microsoft.com/graph/docs/api-reference/v1.0/api/invitation_post
         /// </summary>
         private static readonly string TestAppClientId = "";
- 
+
         /// <summary>
         /// Client secret of the application.
         /// </summary>
         private static readonly string TestAppClientSecret = @"";
- 
+
         /// <summary>
         /// This is the email address of the user you want to invite.
         /// </summary>
         private static readonly string InvitedUserEmailAddress = @"";
- 
+
         /// <summary>
         /// This is the display name of the user you want to invite.
         /// </summary>
         private static readonly string InvitedUserDisplayName = @"";
- 
+
         /// <summary>
         /// Main method.
         /// </summary>
@@ -120,7 +120,7 @@ namespace SampleInviteApp
             Invitation invitation = CreateInvitation();
             SendInvitation(invitation);
         }
- 
+
         /// <summary>
         /// Create the invitation object.
         /// </summary>
@@ -135,7 +135,7 @@ namespace SampleInviteApp
             invitation.SendInvitationMessage = true;
             return invitation;
         }
- 
+
         /// <summary>
         /// Send the guest user invite request.
         /// </summary>
@@ -143,17 +143,17 @@ namespace SampleInviteApp
         private static void SendInvitation(Invitation invitation)
         {
             string accessToken = GetAccessToken();
- 
+
             HttpClient httpClient = GetHttpClient(accessToken);
- 
-            // Make the invite call. 
+
+            // Make the invite call.
             HttpContent content = new StringContent(JsonConvert.SerializeObject(invitation));
             content.Headers.Add("ContentType", "application/json");
             var postResponse = httpClient.PostAsync(InviteEndPoint, content).Result;
             string serverResponse = postResponse.Content.ReadAsStringAsync().Result;
             Console.WriteLine(serverResponse);
         }
- 
+
         /// <summary>
         /// Get the HTTP client.
         /// </summary>
@@ -171,7 +171,7 @@ namespace SampleInviteApp
                 httpClient.DefaultRequestHeaders.GetValues("client-request-id").Single());
             return httpClient;
         }
- 
+
         /// <summary>
         /// Get the access token for our application to talk to Microsoft Graph.
         /// </summary>
@@ -179,7 +179,7 @@ namespace SampleInviteApp
         private static string GetAccessToken()
         {
             string accessToken = null;
- 
+
             // Get the access token for our application to talk to Microsoft Graph.
             try
             {
@@ -195,10 +195,10 @@ namespace SampleInviteApp
                 Console.WriteLine("An exception was thrown while fetching the token: {0}.", ex);
                 throw;
             }
- 
+
             return accessToken;
         }
- 
+
         /// <summary>
         /// Invitation class.
         /// </summary>
@@ -208,17 +208,17 @@ namespace SampleInviteApp
             /// Gets or sets display name.
             /// </summary>
             public string InvitedUserDisplayName { get; set; }
- 
+
             /// <summary>
             /// Gets or sets display name.
             /// </summary>
             public string InvitedUserEmailAddress { get; set; }
- 
+
             /// <summary>
             /// Gets or sets a value indicating whether Invitation Manager should send the email to InvitedUser.
             /// </summary>
             public bool SendInvitationMessage { get; set; }
- 
+
             /// <summary>
             /// Gets or sets invitation redirect URL
             /// </summary>
@@ -232,5 +232,4 @@ namespace SampleInviteApp
 ## <a name="next-steps"></a>后续步骤
 
 - [什么是 Azure AD B2B 协作？](what-is-b2b.md)
-
 

@@ -5,14 +5,14 @@ author: sffamily
 ms.service: signalr
 ms.topic: conceptual
 origin.date: 11/13/2019
-ms.date: 12/16/2019
+ms.date: 05/25/2020
 ms.author: v-tawe
-ms.openlocfilehash: 6c8b918364ff02c7f76fc9fa01b3cb3b18ecdf94
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 3effaedcbd7b79a09a459a4576172d6b1891d12e
+ms.sourcegitcommit: 8b77a146f74ebe2cb287821fe5fc13870f89467a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75336053"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83844171"
 ---
 # <a name="azure-signalr-service-authentication"></a>Azure SignalR 服务身份验证
 
@@ -544,8 +544,8 @@ az webapp deployment source config-local-git --name $WebAppName \
 
     | 设置 | 示例 |
     | ------- | ------- |
-    | 主页 URL | https://signalrtestwebapp22665120.chinacloudsites.cn/home |
-    | 授权回调 URL | https://signalrtestwebapp22665120.chinacloudsites.cn/signin-github |
+    | 主页 URL | `https://signalrtestwebapp22665120.chinacloudsites.cn/home` |
+    | 授权回调 URL | `https://signalrtestwebapp22665120.chinacloudsites.cn/signin-github` |
 
 3. 导航到 Web 应用 URL，并测试应用程序。
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 origin.date: 11/07/2017
 ms.author: v-yiso
 ms.date: 03/09/2020
-ms.openlocfilehash: 56dce13c6eb1297d792ef3063b05f2d2f9fab03e
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 36d1474626bdaa5f1880a58ff213021170381f22
+ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78154634"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84186621"
 ---
 # <a name="upload-files-with-iot-hub"></a>使用 IoT 中心上传文件
 
@@ -159,26 +159,3 @@ IoT 中心开发人员指南中的其他参考主题包括：
 要尝试本文中介绍的一些概念，请参阅以下 IoT 中心教程：
 
 * [如何通过 IoT 中心将文件从设备上传到云中](iot-hub-csharp-csharp-file-upload.md)
-
-[lnk-resource-provider-apis]: https://docs.microsoft.com/rest/api/iothub/iothubresource
-[lnk-endpoints]: ./iot-hub-devguide-endpoints.md
-[lnk-quotas]: ./iot-hub-devguide-quotas-throttling.md
-[lnk-sdks]: ./iot-hub-devguide-sdks.md
-[lnk-query]: ./iot-hub-devguide-query-language.md
-[lnk-devguide-mqtt]: ./iot-hub-mqtt-support.md
-[lnk-management-portal]: https://portal.azure.cn
-[lnk-fileupload-tutorial]: ./iot-hub-csharp-csharp-file-upload.md
-[lnk-associate-storage]: ./iot-hub-devguide-file-upload.md#associate-an-azure-storage-account-with-iot-hub
-[lnk-initialize]: ./iot-hub-devguide-file-upload.md#initialize-a-file-upload
-[lnk-notify]: ./iot-hub-devguide-file-upload.md#notify-iot-hub-of-a-completed-file-upload
-[lnk-service-notification]: ./iot-hub-devguide-file-upload.md#file-upload-notifications
-[lnk-lifecycle]: ./iot-hub-devguide-messages-c2d.md#the-cloud-to-device-message-lifecycle
-[lnk-d2c-guidance]: ./iot-hub-devguide-d2c-guidance.md
-
-[lnk-devguide-identities]: ./iot-hub-devguide-identity-registry.md
-[lnk-devguide-security]: ./iot-hub-devguide-security.md
-[lnk-devguide-device-twins]: ./iot-hub-devguide-device-twins.md
-[lnk-devguide-directmethods]: ./iot-hub-devguide-direct-methods.md
-[lnk-devguide-jobs]: ./iot-hub-devguide-jobs.md
-
-<!--Update_Description: update meta data only-->

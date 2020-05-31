@@ -11,13 +11,13 @@ ms.workload: na
 origin.date: 02/14/2019
 ms.author: v-yiso
 ms.custom: H1Hack27Feb2017
-ms.date: 08/05/2019
-ms.openlocfilehash: 5f67dd3f1fa41630c37d3683f1ed9c0b93755ef6
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 06/08/2019
+ms.openlocfilehash: 3e48088bee9c4f38ff2cb080f83de788b90808c0
+ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "68514469"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84186912"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-c"></a>将 Raspberry Pi 连接到 Azure IoT 中心 (C)
 
@@ -138,7 +138,7 @@ BME280 传感器可收集温度和湿度数据。 如果设备和云之间有通
 
 ### <a name="connect-pi-to-the-network"></a>将 Pi 连接到网络
 
-通过使用微型 USB 电缆和电源为 Pi 通电。 使用以太网电缆将 Pi 连接到有线网络，或者按照 [Raspberry Pi Foundation 中的说明](https://www.raspberrypi.org/learning/software-guide/wifi/)将 Pi 连接到无线网络。 将 Pi 成功连接到网络后，需要记下 [Pi 的 IP 地址](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-3-network-setup/finding-your-pis-ip-address)。
+通过使用微型 USB 电缆和电源为 Pi 通电。 使用以太网电缆将 Pi 连接到有线网络，或者按照 [Raspberry Pi Foundation 中的说明](https://www.raspberrypi.org/documentation/configuration/wireless/)将 Pi 连接到无线网络。 将 Pi 成功连接到网络后，需要记下 [Pi 的 IP 地址](https://www.raspberrypi.org/documentation/remote-access/ip-address.md)。
 
 ![已连接到有线网络](./media/iot-hub-raspberry-pi-kit-c-get-started/5-power-on-pi.png)
 

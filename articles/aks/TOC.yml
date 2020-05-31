@@ -38,11 +38,6 @@
       href: tutorial-kubernetes-app-update.md
     - name: 7 - 升级群集
       href: tutorial-kubernetes-upgrade-cluster.md
-- name: 示例
-  items:
-    - name: Azure Policy 内置策略定义
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: 概念
   items:
     - name: 群集和工作负荷
@@ -176,8 +171,6 @@
           href: api-server-authorized-ip-ranges.md
         - name: 更新群集凭据
           href: update-credentials.md
-        - name: 限制和控制群集出口流量
-          href: limit-egress-traffic.md
         - name: 实现 Azure Active Directory 集成
           items:
             - name: 使用 Azure CLI
@@ -189,8 +182,6 @@
           maintainContext: true
         - name: 轮换证书
           href: certificate-rotation.md
-        - name: 为磁盘使用 BYOK
-          href: azure-disk-customer-managed-keys.md
     - name: 监视和日志记录
       items:
         - name: 用于容器的 Azure Monitor

@@ -12,14 +12,14 @@ ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
 origin.date: 02/11/2020
-ms.date: 04/20/2020
+ms.date: 05/29/2020
 ms.author: v-tawe
-ms.openlocfilehash: 4bf3968b4c7d75077b6572298fb5133acd56073b
-ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
+ms.openlocfilehash: 136f57d2a6f01779f133ae0c256e1920859d4bb8
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82588723"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199766"
 ---
 # <a name="send-events-to-and-receive-events-from-azure-event-hubs---net-core-azuremessagingeventhubs"></a>向/从 Azure 事件中心发送/接收事件 - .NET Core (Azure.Messaging.EventHubs) 
 本快速入门介绍如何使用 **Azure.Messaging.EventHubs** .NET Core 库向事件中心发送事件以及从事件中心接收事件。 
@@ -119,12 +119,15 @@ ms.locfileid: "82588723"
 本部分介绍如何编写一个使用事件处理器从事件中心接收消息的 .NET Core 控制台应用程序。 该事件处理器通过从事件中心管理持久检查点和并行接收操作，来简化从这些事件中心接收事件的过程。 事件处理器与特定的事件中心和使用者组相关联。 它从事件中心内的多个分区接收事件，并将其传递给处理程序委托，以使用提供的代码进行处理。 
 
 
+> [!NOTE]
+> 如果在 Azure Stack Hub 上运行，该平台支持的存储 Blob SDK 版本可能不同于通常在 Azure 上提供的版本。 例如，如果在 [Azure Stack Hub 版本 2002](https://docs.azure.cn/azure-stack/user/event-hubs-overview) 上运行，则存储服务的最高可用版本为版本 2017-11-09。 在这种情况下，除了执行本部分中的步骤以外，还需要添加相关代码，将存储服务 API 版本 2017-11-09 作为目标。 如需通过示例来了解如何以特定的存储 API 版本为目标，请参阅 [GitHub 上的此示例](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/Sample10_RunningWithDifferentStorageVersion.cs)。 有关 Azure Stack Hub 上支持的 Azure 存储服务版本的详细信息，请参阅 [Azure Stack Hub 存储：差异和注意事项](https://docs.azure.cn/azure-stack/user/azure-stack-acs-differences)。
+
 ### <a name="create-an-azure-storage-and-a-blob-container"></a>创建 Azure 存储和 Blob 容器
 本快速入门使用 Azure 存储作为检查点存储。 按照以下步骤创建 Azure 存储帐户。 
 
 1. [创建 Azure 存储帐户](/storage/common/storage-account-create?tabs=azure-portal)
 2. [创建一个 blob 容器](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)
-3. [获取存储帐户的连接字符串](../storage/common/storage-configure-connection-string.md?#view-and-copy-a-connection-string)
+3. [获取存储帐户的连接字符串](../storage/common/storage-configure-connection-string.md)
 
     请记下该连接字符串和容器名称。 稍后要在接收代码中使用这些信息。 
 
@@ -200,11 +203,13 @@ ms.locfileid: "82588723"
 1. 现在，将以下事件和错误处理程序方法添加到类中。 
 
     ```csharp
-        static Task ProcessEventHandler(ProcessEventArgs eventArgs)
-        { 
+        static async Task ProcessEventHandler(ProcessEventArgs eventArgs)
+        {
             // Write the body of the event to the console window
-            Console.WriteLine("\tReceived event: {0}", Encoding.UTF8.GetString(eventArgs.Data.Body.ToArray())); 
-            return Task.CompletedTask; 
+            Console.WriteLine("\tRecevied event: {0}", Encoding.UTF8.GetString(eventArgs.Data.Body.ToArray()));
+
+            // Update checkpoint in the blob storage so that the app receives only new events the next time it's run
+            await eventArgs.UpdateCheckpointAsync(eventArgs.CancellationToken);
         }
 
         static Task ProcessErrorHandler(ProcessErrorEventArgs eventArgs)

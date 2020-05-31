@@ -8,15 +8,15 @@ ms.topic: quickstart
 origin.date: 05/06/2020
 ms.date: 05/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 595cdb94f283f2124aa6ebca7a238ace6f4fbe28
-ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
+ms.openlocfilehash: 10630924a4021ac19eb36b42223c96456afe5718
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83392453"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199583"
 ---
-<!--Verified with PM-->
-<!--Validation Failed: Unable to download deployment content from 'https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/fw-docs-qs/azuredeploy.json'.-->
+<!--Verified successfully on 05/25/2020-->
+<!--Successfully on Mooncake portal-->
 # <a name="quickstart-create-an-azure-firewall-with-multiple-public-ip-addresses---resource-manager-template"></a>快速入门：创建具有多个公共 IP 地址的 Azure 防火墙 - 资源管理器模板
 
 在本快速入门中，我们使用资源管理器模板部署具有多个公共 IP 地址的 Azure 防火墙。
@@ -450,18 +450,18 @@ ms.locfileid: "83392453"
 
 将资源管理器模板部署到 Azure：
 
-1. 选择“部署到 Azure”  ，登录到 Azure 并打开模板。 该模板将创建 Azure 防火墙、网络基础结构和两个虚拟机。
+1. 选择“部署到 Azure”，登录到 Azure 并打开模板。 该模板将创建 Azure 防火墙、网络基础结构和两个虚拟机。
 
-    [![“部署到 Azure”](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Ffw-docs-qs%2Fazuredeploy.json)
+    [![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Ffw-docs-qs%2Fazuredeploy.json)
 
-2. 在门户中的“创建具有多个公共 IP 地址的 Azure 防火墙”页上，键入或选择以下值： 
+2. 在门户中的“创建具有多个公共 IP 地址的 Azure 防火墙”页上，键入或选择以下值：
     - 订阅：从现有订阅中选择 
-    - 资源组：从现有资源组中选择，或者选择“新建”，然后选择“确定”。  
-    - 位置：选择位置
+    - 资源组：从现有资源组中选择，或者选择“新建”，然后选择“确定”。 
+    - 位置：选择一个位置
     - 管理员用户名：键入管理员用户帐户的用户名 
     - 管理员密码：键入管理员密码或密钥
 
-3. 选择“我同意上述条款和条件”，然后选择“购买”   。 部署可能需要 10 分钟或更长时间才能完成。
+3. 选择“我同意上述条款和条件”，然后选择“购买” 。 部署可能需要 10 分钟或更长时间才能完成。
 
 ## <a name="validate-the-deployment"></a>验证部署
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 origin.date: 04/03/2019
 ms.date: 03/09/2020
 ms.author: v-yiso
-ms.openlocfilehash: 0facd90000892f77d5c7d75bab37b3b81b4522c4
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 9cedcb85b7f82a0f539b7928ed92a81db2adff7a
+ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78155098"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84186605"
 ---
 # <a name="send-messages-from-the-cloud-to-your-device-with-iot-hub-net"></a>使用 IoT 中心 (.NET) 将消息从云发送到设备
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
@@ -46,7 +46,7 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
 
 * Visual Studio
 
-* 有效的 Azure 帐户。 （如果没有帐户，只需几分钟即可创建一个[试用帐户][lnk-free-trial]。）
+* 有效的 Azure 帐户。 （如果没有帐户，只需几分钟即可创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。）
 * 确保已在防火墙中打开端口 8883。 本文中的设备示例使用 MQTT 协议，该协议通过端口 8883 进行通信。 在某些公司和教育网络环境中，此端口可能被阻止。 有关解决此问题的更多信息和方法，请参阅[连接到 IoT 中心(MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
 
 ## <a name="receive-messages-in-the-device-app"></a>在设备应用中接收消息
@@ -216,23 +216,3 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
 
 
 若要了解有关使用 IoT 中心开发解决方案的详细信息，请参阅 [IoT 中心开发人员指南](iot-hub-devguide.md)。
-
-<!-- Images -->
-[20]: ./media/iot-hub-csharp-csharp-c2d/create-identity-csharp1.png
-[21]: ./media/iot-hub-csharp-csharp-c2d/sendc2d1.png
-[22]: ./media/iot-hub-csharp-csharp-c2d/sendc2d2.png
-
-<!-- Links -->
-
-[Azure IoT - Service SDK NuGet package]: https://www.nuget.org/packages/Microsoft.Azure.Devices/
-[Transient Fault Handling]: https://msdn.microsoft.com/zh-cn/library/hh680901(v=pandp.50).aspx
-
-[IoT Hub Developer Guide - C2D]: ./iot-hub-devguide-messaging.md
-
-[IoT Hub Developer Guide]: ./iot-hub-devguide.md
-[Get started with IoT Hub]: quickstart-send-telemetry-dotnet.md
-[lnk-free-trial]: https://www.azure.cn/pricing/1rmb-trial/
-[Azure IoT Remote Monitoring solution accelerator]: /iot-accelerators/
-[Azure IoT device SDKs]: ./iot-hub-devguide-sdks.md
-
-<!--Update_Description: update wording and some links-->

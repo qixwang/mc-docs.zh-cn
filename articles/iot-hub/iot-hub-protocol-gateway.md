@@ -15,12 +15,12 @@ ms.workload: na
 origin.date: 07/11/2017
 ms.date: 11/20/2017
 ms.author: v-yiso
-ms.openlocfilehash: c560a263c85046f9be5de0fc8e3d97348734a4cb
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 5539c583ce22096e34ac91de2a0368c0e34126b6
+ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "63822467"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84186924"
 ---
 # <a name="support-additional-protocols-for-iot-hub"></a>支持 IoT 中心的其他协议
 Azure IoT 中心通过 MQTT、AMQP 和 HTTPS 协议以本机方式支持通信。 在某些情况下，设备或现场网关可能无法使用其中一个标准协议，并需要协议适配。 在这种情况下，可以使用自定义网关。 自定义网关通过桥接进出 IoT 中心的流量，为 IoT 中心终结点启用协议适配。 可以使用 [Azure IoT 协议网关](https://github.com/Azure/azure-iot-protocol-gateway/blob/master/README.md) 作为自定义网关，为 IoT 中心启用协议自适应。
@@ -44,12 +44,8 @@ MQTT 适配器还会演示用来为其他协议构建协议适配器的编程模
 
 若要深入了解如何规划 IoT 中心部署，请参阅：
 
-* [与事件中心比较][lnk-compare]
-* [缩放、高可用性和灾难恢复][lnk-scaling]
-* [IoT 中心开发人员指南][lnk-devguide]
+* [与事件中心比较](iot-hub-compare-event-hubs.md)
 
-[lnk-compare]: ./iot-hub-compare-event-hubs.md
-[lnk-scaling]: ./iot-hub-scaling.md
-[lnk-devguide]: ./iot-hub-devguide.md
+* [缩放、高可用性和灾难恢复](iot-hub-scaling.md)
 
-<!--Update_Description:update meta properties only-->
+* [IoT 中心开发人员指南](iot-hub-devguide.md)

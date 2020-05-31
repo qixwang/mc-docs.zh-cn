@@ -1,26 +1,17 @@
 ---
 title: 在 Azure 门户中创建帐户 - Azure Batch | Microsoft Docs
 description: 了解如何在 Azure 门户中创建 Azure Batch 帐户，以便在云中运行大规模并行工作负荷
-services: batch
-documentationcenter: ''
-author: lingliw
-manager: digimobile
-editor: ''
-ms.assetid: 3fbae545-245f-4c66-aee2-e25d7d5d36db
-ms.service: batch
-ms.workload: big-compute
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 origin.date: 02/26/2019
 ms.date: 12/04/2019
 ms.author: v-lingwu
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1f5b5a4c6a7fec82d6f7e952765e8e16da6fde36
-ms.sourcegitcommit: 1fbdefdace8a1d3412900c6c3f89678d8a9b29bc
+ms.openlocfilehash: f70bb6516f2d479a052f2d88b08fff95ed3d2125
+ms.sourcegitcommit: cbaa1aef101f67bd094f6ad0b4be274bbc2d2537
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82886914"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84126754"
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>使用 Azure 门户创建 Batch 帐户
 
@@ -34,11 +25,11 @@ ms.locfileid: "82886914"
 
 1. 登录到 [Azure 门户][azure_portal]。
 
-1. 选择“创建资源”   >   “计算” >   “Batch 服务”。
+1. 选择“创建资源” > “计算” > “Batch 服务”。
 
     ![市场中的批处理][marketplace_portal]
 
-1. 输入“新 Batch 帐户”  设置。 查看以下详细信息。
+1. 输入“新 Batch 帐户”设置。 查看以下详细信息。
 
     ![创建批处理帐户][account_portal]
 
@@ -46,7 +37,7 @@ ms.locfileid: "82886914"
 
     b. **资源组**：为新 Batch 帐户选择现有的资源组，或选择创建一个新组。
 
-    c. **帐户名称**：所选名称必须在创建帐户的 Azure 区域中唯一（参见下面的“位置”）。  帐户名只能包含小写字符或数字，且长度必须为 3-24 个字符。
+    c. **帐户名称**：所选名称必须在创建帐户的 Azure 区域中唯一（参见下面的“位置”）。 帐户名只能包含小写字符或数字，且长度必须为 3-24 个字符。
 
     d. **位置**：要在其中创建 Batch 帐户的 Azure 区域。 只有订阅和资源组支持的区域显示为选项。
 
@@ -54,11 +45,11 @@ ms.locfileid: "82886914"
 
       ![创建存储帐户][storage_account]
 
-    f. **池分配模式**：在“高级”设置选项卡中，可将池分配模式指定为“Batch 服务”或“用户订阅”    。 对于大多数情况，请接受默认值“Batch 服务”  。
+    f. **池分配模式**：在“高级”设置选项卡中，可将池分配模式指定为“Batch 服务”或“用户订阅”  。 对于大多数情况，请接受默认值“Batch 服务”。
 
       ![Batch 池分配模式][pool_allocation]
 
-1. 选择“创建”  可创建帐户。
+1. 选择“创建”可创建帐户。
 
 ## <a name="view-batch-account-properties"></a>查看 Batch 帐户属性
 
@@ -68,13 +59,13 @@ ms.locfileid: "82886914"
 
 * **Batch 帐户名、URL 和密钥**：通过 [Batch API](batch-apis-tools.md#azure-accounts-for-batch-development) 开发应用程序时，需要帐户 URL 和密钥才能访问 Batch 资源。 （Batch 还支持 Azure Active Directory 身份验证。）
 
-    若要查看 Batch 帐户访问信息，请选择“密钥”  。
+    若要查看 Batch 帐户访问信息，请选择“密钥”。
 
     ![Azure 门户中的 Batch 帐户密钥][account_keys]
 
-* 若要查看与 Batch 帐户关联的存储帐户的名称和密钥，请选择“存储帐户”  。
+* 若要查看与 Batch 帐户关联的存储帐户的名称和密钥，请选择“存储帐户”。
 
-* 若要查看适用于 Batch 帐户的资源配额，请选择“配额”  。 有关详细信息，请参阅 [Batch 服务配额和限制](batch-quota-limit.md)。
+* 若要查看适用于 Batch 帐户的资源配额，请选择“配额”。 有关详细信息，请参阅 [Batch 服务配额和限制](batch-quota-limit.md)。
 
 ## <a name="additional-configuration-for-user-subscription-mode"></a>用户订阅模式的其他配置
 
@@ -86,41 +77,42 @@ ms.locfileid: "82886914"
 
 1. 登录到 [Azure 门户][azure_portal]。
 
-1. 选择“所有服务”   >   “订阅”，然后选择要用于 Batch 帐户的订阅。
+1. 选择“所有服务” > “订阅”，然后选择要用于 Batch 帐户的订阅。
 
-1. 在“订阅”  页中选择“资源提供程序”  ，然后搜索“Microsoft.Batch”。  查看 **Microsoft.Batch** 资源提供程序是否已在订阅中注册。 如果未注册，请选择“注册”  链接。
+1. 在“订阅”页中选择“资源提供程序”，然后搜索“Microsoft.Batch”。 查看 **Microsoft.Batch** 资源提供程序是否已在订阅中注册。 如果未注册，请选择“注册”链接。
 
     ![注册 Microsoft.Batch 提供程序][register_provider]
 
-1. 在“订阅”  页上，选择“访问控制(IAM)”   > “角色分配”   > “添加角色分配”  。
+1. 在“订阅”页上，选择“访问控制(IAM)” > “角色分配” > “添加角色分配”。
 
     ![订阅访问控制][subscription_access]
 
-1. 在“添加角色分配”页上，选择“参与者”角色，然后搜索 Batch API   。 搜索每一条字符串，直到找到此 API：
-    1. MicrosoftAzureBatch  。
-    1. Microsoft Azure Batch  。 较新的 Azure AD 租户可能使用此名称。
-    1. ddbf3205-c6bd-46ae-8127-60eb93363864 是此 Batch API 的 ID  。
+1. 在“添加角色分配”页上，选择“参与者”角色，然后搜索 Batch API 。 搜索每一条字符串，直到找到此 API：
+    1. MicrosoftAzureBatch。
+    1. Microsoft Azure Batch。 较新的 Azure AD 租户可能使用此名称。
+    1. ddbf3205-c6bd-46ae-8127-60eb93363864 是此 Batch API 的 ID。
 
-1. 找到此 Batch API 后，将其选中，然后选择“保存”。 
+1. 找到此 Batch API 后，将其选中，然后选择“保存”。
 
     ![添加批处理权限][add_permission]
 
 ### <a name="create-a-key-vault"></a>创建密钥保管库
-在“用户订阅”模式下，需要的 Azure 密钥保管库与要创建的批处理帐户属于同一资源组。 请确保资源组所在的区域是[提供](https://www.azure.cn/home/features/products-by-region)批处理的区域，也是订阅所支持的区域。
 
-1. 在 [Azure 门户][azure_portal]中，选择“新建”   >   “安全性” > “密钥保管库”  。
+在“用户订阅”模式下，需要的 Azure 密钥保管库与要创建的批处理帐户属于同一资源组。 请确保资源组所在的区域是[提供](https://status.azure.com/status)批处理的区域，也是订阅所支持的区域。
 
-1. 在“创建密钥保管库”页中，输入密钥保管库的名称，并在区域中创建需要用于 Batch 帐户的资源组。  让其余设置保留默认值，然后选择“创建”。 
+1. 在 [Azure 门户][azure_portal]中，选择“新建” > “安全性” > “密钥保管库”。
 
-在用户订阅模式下创建 Batch 帐户时，请使用密钥保管库的资源组。 指定“用户订阅”  作为池分配模式，选择密钥保管库，然后选中该框以授予 Azure Batch 对密钥保管库的访问权限。 
+1. 在“创建密钥保管库”页中，输入密钥保管库的名称，并在区域中创建需要用于 Batch 帐户的资源组。 让其余设置保留默认值，然后选择“创建”。
 
-如果希望手动授予对密钥保管库的访问权限，请转到密钥保管库的“访问策略”  部分，然后选择“添加访问策略”  并搜索“Microsoft Azure Batch”  。 选择后，你将需要使用下拉菜单配置“机密权限”  。 必须至少授予 Azure Batch **Get**、**List**、**Set** 和 **Delete** 权限。
+在用户订阅模式下创建 Batch 帐户时，请使用密钥保管库的资源组。 指定“用户订阅”作为池分配模式，选择密钥保管库，然后选中该框以授予 Azure Batch 对密钥保管库的访问权限。 
+
+如果希望手动授予对密钥保管库的访问权限，请转到密钥保管库的“访问策略”部分，然后选择“添加访问策略”并搜索“Microsoft Azure Batch”。 选择后，你将需要使用下拉菜单配置“机密权限”。 必须至少授予 Azure Batch **Get**、**List**、**Set** 和 **Delete** 权限。
 
 ![Azure Batch 的机密权限](./media/batch-account-create-portal/secret-permissions.png)
 
 
 > [!NOTE]
-> 确保在链接的**密钥保管库**资源的“访问策略”  下选中“用于部署的 Azure 虚拟机”  和“用于模板部署的 Azure 资源管理器”  复选框。
+> 确保在链接的**密钥保管库**资源的“访问策略”下选中“用于部署的 Azure 虚拟机”和“用于模板部署的 Azure 资源管理器”复选框。
 > 
 > ![强制实施密钥保管库访问策略](./media/batch-account-create-portal/key-vault-access-policy.png)在 Azure 门户中创建 Batch 帐户时，这不是必需的。 此选项默认情况下已选中。
 
@@ -132,11 +124,12 @@ ms.locfileid: "82886914"
 
 1. 在 [Azure 门户][azure_portal]中选择用户订阅模式 Batch 帐户，以便显示其设置和属性。
 
-1. 在左侧菜单中选择“配额”，以便查看和配置与 Batch 帐户相关联的核心配额。 
+1. 在左侧菜单中选择“配额”，以便查看和配置与 Batch 帐户相关联的核心配额。
 
 有关用户订阅模式核心配额的详细信息，请参阅 [Batch 服务的配额和限制](batch-quota-limit.md)。
 
 ## <a name="other-batch-account-management-options"></a>其他 Batch 帐户管理选项
+
 除了使用 Azure 门户外，还可使用以下工具创建和管理 Batch 帐户：
 
 * [Batch PowerShell cmdlet](batch-powershell-cmdlets-get-started.md)
@@ -145,7 +138,7 @@ ms.locfileid: "82886914"
 
 ## <a name="next-steps"></a>后续步骤
 - 请参阅[批处理功能概述](batch-api-basics.md)，详细了解处理服务的概念和功能。 本文讨论主要 Batch 资源（例如池、计算节点、作业和任务），并提供适用于大规模计算工作负荷的服务功能概述。
-- 了解使用批处理 .NET 客户端库或 Python 开发支持批处理的应用程序的基本概念。 这些快速入门介绍了使用 Batch 服务在多个计算节点上执行工作负荷的示例应用程序，并说明了如何使用 Azure 存储进行工作负荷文件暂存和检索。
+- 了解使用[批处理 .NET 客户端库](quick-run-dotnet.md)或 [Python](quick-run-python.md) 开发支持批处理的应用程序的基本概念。 这些快速入门介绍了使用 Batch 服务在多个计算节点上执行工作负荷的示例应用程序，并说明了如何使用 Azure 存储进行工作负荷文件暂存和检索。
 
 [azure_portal]: https://portal.azure.cn
 [batch_pricing]: https://www.azure.cn/pricing/details/batch/

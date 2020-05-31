@@ -1,26 +1,17 @@
 ---
 title: 使用 .NET 文件约定库将输出数据持久保存到 Azure 存储 - Azure Batch
 description: 了解如何使用适用于 .NET 的 Azure Batch 文件约定库将 Batch 任务和作业输出持久保存到 Azure 存储，然后在 Azure 门户中查看该输出。
-services: batch
-documentationcenter: .net
-author: LauraBrenner
-manager: evansma
-editor: ''
-ms.assetid: 16e12d0e-958c-46c2-a6b8-7843835d830e
-ms.service: batch
 ms.topic: article
-ms.tgt_pltfrm: ''
-ms.workload: big-compute
 origin.date: 11/14/2018
 ms.date: 04/27/2020
 ms.author: v-tawe
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 08f20c91df8059e8b5b9964362fd83e4eb94e591
-ms.sourcegitcommit: 1fbdefdace8a1d3412900c6c3f89678d8a9b29bc
+ms.openlocfilehash: 3575a90bd72fc10818620e811b31a48ea8ab0931
+ms.sourcegitcommit: cbaa1aef101f67bd094f6ad0b4be274bbc2d2537
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82886877"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84126678"
 ---
 # <a name="persist-job-and-task-data-to-azure-storage-with-the-batch-file-conventions-library-for-net"></a>使用适用于 .NET 的 Batch 文件约定库将作业和任务数据保存到 Azure 存储
 
@@ -110,7 +101,7 @@ await taskOutputStorage.SaveAsync(TaskOutputKind.TaskOutput, "frame_full_res.jpg
 await taskOutputStorage.SaveAsync(TaskOutputKind.TaskPreview, "frame_low_res.jpg");
 ```
 
-[TaskOutputStorage](https://docs.azure.cn/dotnet/api/microsoft.azure.batch.conventions.files.taskoutputstorage?view=azure-dotnet).[SaveAsync](https://docs.azure.cn/dotnet/api/microsoft.azure.batch.conventions.files.taskoutputstorage.saveasync?view=azure-dotnet#overloads) 方法的 `kind` 参数可以将持久保存的文件分类。 有四种预定义的 [TaskOutputKind][net_taskoutputkind] 类型：`TaskOutput`、`TaskPreview`、`TaskLog` 和 `TaskIntermediate.`，也可定义输出的自定义类别。
+[TaskOutputStorage](/dotnet/api/microsoft.azure.batch.conventions.files.taskoutputstorage?view=azure-dotnet).[SaveAsync](/dotnet/api/microsoft.azure.batch.conventions.files.taskoutputstorage.saveasync?view=azure-dotnet#overloads) 方法的 `kind` 参数可以将持久保存的文件分类。 有四种预定义的 [TaskOutputKind][net_taskoutputkind] 类型：`TaskOutput`、`TaskPreview`、`TaskLog` 和 `TaskIntermediate.`，也可定义输出的自定义类别。
 
 以后在 Batch 中查询给定任务的已保存输出时，可以使用这些输出类型来指定要列出哪种类型的输出。 换而言之，列出某个任务的输出时，可以根据某种输出类型来筛选列表。 例如，“列出任务 *109* 的预览  输出。” 本文稍后的“检索输出”部分中会详细介绍如何列出和检索输出。
 
@@ -193,7 +184,7 @@ foreach (CloudTask task in myJob.ListTasks())
 
 ## <a name="view-output-files-in-the-azure-portal"></a>在 Azure 门户中查看输出文件
 
-Azure 门户将显示使用 [Batch 文件约定标准](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions)保存到链接的 Azure 存储帐户的任务输出文件和日志。 可以使用所选语言自行实现这些约定，也可以在 .NET 应用程序中使用文件约定库。
+Azure 门户将显示使用 [Batch 文件约定标准](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/batch/Microsoft.Azure.Batch.Conventions.Files)保存到链接的 Azure 存储帐户的任务输出文件和日志。 可以使用所选语言自行实现这些约定，也可以在 .NET 应用程序中使用文件约定库。
 
 若要在门户中显示输出文件，必须满足以下要求：
 

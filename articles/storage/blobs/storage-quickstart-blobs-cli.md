@@ -4,18 +4,18 @@ titleSuffix: Azure Storage
 description: 在本快速入门中，你将了解如何使用 Azure CLI 将 blob 上传到 Azure 存储、下载 blob 以及在容器中列出 blob。
 services: storage
 author: WenJason
-ms.custom: mvc
 ms.service: storage
+ms.subservice: blobs
 ms.topic: quickstart
-origin.date: 02/26/2020
-ms.date: 03/30/2020
+origin.date: 04/23/2020
+ms.date: 06/01/2020
 ms.author: v-jay
-ms.openlocfilehash: 665460bfaf09babda3577361e04bb9b9f482b49c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 424347059430820b46ebbb376eecca39dab7a16a
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80290437"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199661"
 ---
 # <a name="quickstart-create-download-and-list-blobs-with-azure-cli"></a>快速入门：使用 Azure CLI 创建、下载和列出 blob
 
@@ -69,7 +69,7 @@ az storage account create \
     --resource-group <resource-group> \
     --location <location> \
     --sku Standard_GRS \
-    --encryption blob
+    --encryption-services blob
 ```
 
 ## <a name="create-a-container"></a>创建容器
@@ -154,7 +154,7 @@ az group delete \
 
 ## <a name="next-steps"></a>后续步骤
 
-在此快速入门中，你了解了如何在本地文件系统和 Azure Blob 存储中的容器之间传输文件。 若要详细了解如何使用 Azure 存储中的 blob，请继续通过本教程了解如何使用 Azure Blob 存储。
+在此快速入门中，你了解了如何在本地文件系统和 Azure Blob 存储中的容器之间传输文件。 若要详细了解如何使用 Azure CLI 操作 Blob 存储，请浏览“适用于 Blob 存储的 Azure CLI 示例”。
 
 > [!div class="nextstepaction"]
-> [如何：通过 Azure CLI 对 Blob 存储执行操作](storage-how-to-use-blobs-cli.md)
+> [适用于 Blob 存储的 Azure CLI 示例](/storage/blobs/storage-samples-blobs-cli?toc=%2fstorage%2fblobs%2ftoc.json)

@@ -9,12 +9,12 @@ ms.topic: conceptual
 origin.date: 07/04/2017
 ms.date: 03/09/2020
 ms.author: v-yiso
-ms.openlocfilehash: decce299d35dc44b1867fcec26885ae3dc3e9a56
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: aab16e3371398e96ede928c83a08d1aa2369c3ee
+ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78155096"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84186834"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-net"></a>使用 IoT 中心 (.NET) 将文件从设备上传到云
 
@@ -47,7 +47,7 @@ ms.locfileid: "78155096"
 ## <a name="prerequisites"></a>必备条件
 
 * Visual Studio
-* 有效的 Azure 帐户。 （如果没有帐户，只需几分钟即可创建一个[试用帐户][lnk-free-trial]。）
+* 有效的 Azure 帐户。 （如果没有帐户，只需几分钟即可创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。）
 * 确保已在防火墙中打开端口 8883。 本文中的设备示例使用 MQTT 协议，该协议通过端口 8883 进行通信。 在某些公司和教育网络环境中，此端口可能被阻止。 有关解决此问题的更多信息和方法，请参阅[连接到 IoT 中心(MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
 
 [!INCLUDE [iot-hub-associate-storage](../../includes/iot-hub-associate-storage.md)]
@@ -95,7 +95,7 @@ ms.locfileid: "78155096"
     ```
 
 > [!NOTE]
-> 为简单起见，本教程不实现任何重试策略。 在生产代码中，应该按[暂时性故障处理](/azure/architecture/best-practices/transient-faults)中所述实施重试策略（例如指数退避）。
+> 为简单起见，本教程不实现任何重试策略。 在生产代码中，应该按[暂时性故障处理](https://docs.microsoft.com/en-us/azure/architecture/best-practices/transient-faults)中所述实施重试策略（例如指数退避）。
 
 ## <a name="get-the-iot-hub-connection-string"></a>获取 IoT 中心连接字符串
 
@@ -186,27 +186,3 @@ ms.locfileid: "78155096"
 若要进一步探索 IoT 中心的功能，请参阅：
 
 * [使用 Azure IoT Edge 将 AI 部署到边缘设备](../iot-edge/quickstart-linux.md)
-
-<!-- Images. -->
-
-[50]: ./media/iot-hub-csharp-csharp-file-upload/run-apps1.png
-[1]: ./media/iot-hub-csharp-csharp-file-upload/image-properties.png
-[2]: ./media/iot-hub-csharp-csharp-file-upload/file-upload-project-csharp1.png
-
-<!-- Links -->
-
-[Azure portal]: https://portal.azure.cn/
-
-[Azure IoT Developer Center]: https://www.azure.cn/develop/iot
-
-[Transient Fault Handling]: https://msdn.microsoft.com/zh-cn/library/hh680901(v=pandp.50).aspx
-[Azure IoT service SDK NuGet package]: https://www.nuget.org/packages/Microsoft.Azure.Devices/
-[lnk-free-trial]: https://www.azure.cn/pricing/1rmb-trial/
-
-[lnk-create-hub]: ./iot-hub-rm-template-powershell.md
-[lnk-c-sdk]: ./iot-hub-device-sdk-c-intro.md
-[lnk-sdks]: ./iot-hub-devguide-sdks.md
-
-
-
-<!--Update_Description: update wording and code-->

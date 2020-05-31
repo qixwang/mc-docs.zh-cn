@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 054caf311e430a4897854acfd329cd7183c1edaf
-ms.sourcegitcommit: 95efd248f5ee3701f671dbd5cfe0aec9c9959a24
+ms.openlocfilehash: b5ba1b7f860216d9b15ec6c8e1acd32743699883
+ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82515640"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84186691"
 ---
 # <a name="what-is-guest-user-access-in-azure-active-directory-b2b"></a>什么是 Azure Active Directory B2B 中的来宾用户访问权限？
 
@@ -65,15 +65,6 @@ ms.locfileid: "82515640"
 - 目录中的来宾用户会被分配到应用或组。  
 
 ![显示“新建来宾用户邀请”入口页的屏幕截图](./media/what-is-b2b/add-a-b2b-user-to-azure-portal.png)
-
-## <a name="let-application-and-group-owners-manage-their-own-guest-users"></a>让应用程序和组所有者管理自己的来宾用户
-
-可以委托应用程序所有者管理来宾用户，不论是否为 Microsoft 应用程序，他们都可以将来宾用户直接添加到他们想要共享的任何应用程序。
-
-- 管理员设置自助服务应用和组管理。
-- 非管理员使用其[访问面板](https://account.activedirectory.windowsazure.cn/r#/applications)将来宾用户添加到应用程序或组。
-
-![显示来宾用户的访问面板的屏幕截图](./media/what-is-b2b/access-panel-manage-app.png)
 
 ## <a name="customize-the-onboarding-experience-for-b2b-guest-users"></a>自定义 B2B 来宾用户的载入体验
 

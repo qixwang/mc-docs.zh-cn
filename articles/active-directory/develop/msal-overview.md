@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 04/22/2020
+ms.date: 05/27/2020
 ms.author: v-junlch
 ms.reviewer: saeeda
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: d90561bc2509c45d54552226ec2676bd5b123aa7
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.openlocfilehash: 8ec6a14150c63c699dd640f65a09021850bdd9bd
+ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82126499"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84186877"
 ---
 # <a name="overview-of-microsoft-authentication-library-msal"></a>Microsoft 身份验证库 (MSAL) 的概述
 借助 Microsoft 身份验证库 (MSAL)，开发人员能够从 Microsoft 标识平台终结点获取[令牌](developer-glossary.md#security-token)，以访问受保护的 Web API。 这些 Web API 可以是 Microsoft Graph、其他 Microsoft API、第三方 Web API 或你自己的 Web API。 MSAL 适用于 .NET、JavaScript、Android 和 iOS，支持许多不同的应用程序体系结构和平台。
@@ -54,8 +54,8 @@ MSAL 为你提供了许多获取令牌的方法，将一致的 API 用于许多�
 | [MSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)| JavaScript/TypeScript 框架：例如 AngularJS、Ember.js 或 Durandal.js|
 | [适用于 Android 的 MSAL](https://github.com/AzureAD/microsoft-authentication-library-for-android)|Android|
 | [适用于 iOS 和 macOS 的 MSAL](https://github.com/AzureAD/microsoft-authentication-library-for-objc)|iOS 和 macOS|
-| [MSAL Java（预览版）](https://github.com/AzureAD/microsoft-authentication-library-for-java)|Java|
-| [MSAL Python（预览版）](https://github.com/AzureAD/microsoft-authentication-library-for-python)|Python|
+| [MSAL Java](https://github.com/AzureAD/microsoft-authentication-library-for-java)|Windows、macOS、Linux|
+| [MSAL Python](https://github.com/AzureAD/microsoft-authentication-library-for-python)|Windows、macOS、Linux|
 
 ## <a name="differences-between-adal-and-msal"></a>ADAL 和 MSAL 之间的差异
 

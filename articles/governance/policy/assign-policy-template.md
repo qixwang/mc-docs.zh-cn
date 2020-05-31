@@ -3,20 +3,20 @@ title: 快速入门：带有模板的新策略分配
 description: 本快速入门介绍如何使用资源管理器模板创建策略分配以识别不合规的资源。
 ms.author: v-tawe
 origin.date: 03/16/2020
-ms.date: 04/20/2020
+ms.date: 05/29/2020
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.openlocfilehash: d9027216e6a0fd0fd986a1c8faaf911d4b20bf6f
-ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
+ms.openlocfilehash: c8200cb0d5e7ddc6c32edf95ef72acc63c745c26
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82588739"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199677"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-by-using-a-resource-manager-template"></a>快速入门：使用资源管理器模板创建策略分配以识别不合规的资源
 
 若要了解 Azure 中的符合性，第一步是确定资源的状态。
-本快速入门逐步讲解如何创建策略分配，以识别未使用托管磁盘的虚拟机。 此过程结束时，你可以成功识别哪些虚拟机未使用托管磁盘。 这些虚拟机不符合策略分配要求。 
+本快速入门逐步讲解如何创建策略分配，以识别未使用托管磁盘的虚拟机。 此过程结束时，你可以成功识别哪些虚拟机未使用托管磁盘。 这些虚拟机不符合策略分配要求。
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -26,7 +26,7 @@ ms.locfileid: "82588739"
 
 ## <a name="create-a-policy-assignment"></a>创建策略分配
 
-在本快速入门中，我们将创建一个策略分配，并分配一个名为“审核不使用托管磁盘的 VM”的内置策略定义。  有关可用内置策略的部分列表，请参阅 [Azure Policy 示例](./samples/index.md)。
+在本快速入门中，我们将创建一个策略分配，并分配一个名为“审核不使用托管磁盘的 VM”的内置策略定义。 有关可用内置策略的部分列表，请参阅 [Azure Policy 示例](./samples/index.md)。
 
 ### <a name="review-the-template"></a>查看模板
 
@@ -90,14 +90,14 @@ ms.locfileid: "82588739"
    | 名称 | Value |
    |------|-------|
    | 订阅 | 选择 Azure 订阅。 |
-   | 资源组 | 选择“新建”，指定名称，然后选择“确定”。   在此屏幕截图中，资源组名称为 mypolicyquickstart\<MMDD 格式的日期\>rg  。 |
+   | 资源组 | 选择“新建”，指定名称，然后选择“确定”。  在屏幕截图中，资源组名称为 _mypolicyquickstart\<Date in MMDD\>rg_。 |
    | 位置 | 选择区域。 例如，**中国北部**。 |
-   | 策略分配名称 | 指定策略分配名称。 如果需要，可以使用策略定义显示名称。 例如，“审核不使用托管磁盘的 VM”。  |
+   | 策略分配名称 | 指定策略分配名称。 如果需要，可以使用策略定义显示名称。 例如，“审核不使用托管磁盘的 VM”。 |
    | 资源组名称 | 指定要将策略分配到的资源组名称。 本快速入门使用默认值 **[resourceGroup().name]** 。 **[resourceGroup()](../../azure-resource-manager/templates/template-functions-resource.md#resourcegroup)** 是检索资源组的模板函数。 |
    | 策略定义 ID | 指定 **/providers/Microsoft.Authorization/policyDefinitions/0a914e76-4921-4c19-b460-a2d36003525a**。 |
    | 我同意上述条款和条件 | （选择） |
 
-1. 选择“购买”。 
+1. 选择“购买”。
 
 其他某些资源：
 
@@ -108,11 +108,11 @@ ms.locfileid: "82588739"
 
 ## <a name="validate-the-deployment"></a>验证部署
 
-选择页面左侧的“符合性”  。 然后找到所创建的“审核未使用托管磁盘的 VM”策略分配  。
+选择页面左侧的“符合性”。 然后找到所创建的“审核未使用托管磁盘的 VM”策略分配。
 
-![策略符合性概述页](./media/assign-policy-template/policy-compliance.png)
+:::image type="content" source="./media/assign-policy-template/policy-compliance.png" alt-text="策略符合性概述页" border="false":::
 
-如果存在与此新分配不相符的任何现有资源，这些资源会在“不符合的资源”下显示  。
+如果存在与此新分配不相符的任何现有资源，这些资源会在“不符合的资源”下显示。
 
 有关详细信息，请参阅[合规工作原理](./how-to/get-compliance-data.md#how-compliance-works)。
 
@@ -120,11 +120,11 @@ ms.locfileid: "82588739"
 
 删除创建的分配，请执行以下步骤：
 
-1. 选择“Azure Policy”页面左侧中的“符合性”（或“分配”）并找到你创建的“审核未使用托管磁盘的 VM”策略分配。   
+1. 选择“Azure Policy”页面左侧中的“符合性”（或“分配”）并找到你创建的“审核未使用托管磁盘的 VM”策略分配。  
 
-1. 右键单击“审核不使用托管磁盘的 VM”策略分配并选择“删除分配”。  
+1. 右键单击“审核不使用托管磁盘的 VM”策略分配并选择“删除分配”。 
 
-   ![从符合性概述页中删除分配](./media/assign-policy-template/delete-assignment.png)
+   :::image type="content" source="./media/assign-policy-template/delete-assignment.png" alt-text="从符合性概述页中删除分配" border="false":::
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -8,14 +8,14 @@ ms.service: event-hubs
 ms.custom: seodec18
 ms.topic: article
 origin.date: 01/15/2020
-ms.date: 03/16/2020
+ms.date: 05/29/2020
 ms.author: v-tawe
-ms.openlocfilehash: 26713d717dcb34e3a8693c72e28ba2f08f24c806
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 0ae7dbf0d4d03195ac7877141a0281f6aa173601
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80243922"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199778"
 ---
 # <a name="net-programming-guide-for-azure-event-hubs-legacy-microsoftazureeventhubs-package"></a>Azure 事件中心的 .NET 编程指南（旧版 Microsoft.Azure.EventHubs 包）
 本文介绍使用 Azure 事件中心编写代码时的一些常见情况。 它假设你对事件中心已有初步的了解。 有关事件中心的概念概述，请参阅 [事件中心概述](event-hubs-what-is-event-hubs.md)。

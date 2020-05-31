@@ -15,16 +15,16 @@ ms.workload: na
 origin.date: 03/11/2019
 ms.date: 04/08/2019
 ms.author: v-yiso
-ms.openlocfilehash: ad40b5b70f9cd125331fbe0649c3925d089f8842
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 936a015936f3907b90f132ba3c8c7efc1db4938c
+ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79293439"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84186931"
 ---
 # <a name="azure-iot-hub-pricing-information"></a>Azure IoT 中心定价信息
 
-[Azure IoT 中心定价][lnk-pricing]概述了 IoT 中心的不同 SKU 和定价。 本文还详述了 IoT 中心如何按消息对各种 IoT 中心功能计费。
+[Azure IoT 中心定价](https://www.azure.cn/pricing/details/iot-hub)概述了 IoT 中心的不同 SKU 和定价。 本文还详述了 IoT 中心如何按消息对各种 IoT 中心功能计费。
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
@@ -72,6 +72,3 @@ ms.locfileid: "79293439"
 解决方案后端使用 28 条消息 (14KB/0.5KB) 读取设备孪生，并使用 1 条消息进行更新，总计 29 条消息。
 
 设备和解决方案后端每天总共使用 641 条消息。
-
-[lnk-pricing]: https://www.azure.cn/pricing/details/iot-hub
-[lnk-message-size]: ./iot-hub-devguide-messages-construct.md

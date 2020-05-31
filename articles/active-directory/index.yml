@@ -11,13 +11,13 @@ metadata:
   author: mtillman
   ms.author: v-junlch
   manager: daveba
-  ms.date: 10/28/2019
-  ms.openlocfilehash: fb424c3148c144ed6774b51b694b14c81a071240
-  ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+  ms.date: 05/27/2020
+  ms.openlocfilehash: 572b2a0ca60af8fe11637f89e4bac8f80793db3a
+  ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 04/17/2020
-  ms.locfileid: "77653465"
+  ms.lasthandoff: 05/29/2020
+  ms.locfileid: "84186594"
 highlightedContent:
   items:
   - title: 什么是 Azure AD？
@@ -26,15 +26,15 @@ highlightedContent:
   - title: 向用户分配角色
     itemType: how-to-guide
     url: ./fundamentals/active-directory-users-assign-role-azure-portal.md
-  - title: 创建组并添加成员
-    itemType: how-to-guide
-    url: ./fundamentals/add-users-azure-active-directory.md
+  - title: Azure AD 部署清单
+    itemType: concept
+    url: ./fundamentals/active-directory-deployment-checklist-p2.md
   - title: 将订阅添加到租户
     itemType: how-to-guide
     url: ./fundamentals/active-directory-how-subscriptions-associated-directory.md
 conceptualContent:
   items:
-  - title: Authentication
+  - title: 身份验证
     links:
     - url: ./authentication/overview-authentication.md
       itemType: concept
@@ -42,9 +42,26 @@ conceptualContent:
     - url: ./authentication/tutorial-enable-sspr.md
       itemType: tutorial
       text: 启用自助式密码重置
+    - url: ./authentication/tutorial-enable-azure-mfa.md
+      itemType: tutorial
+      text: 启用 Azure 多重身份验证
     footerLink:
       url: ./authentication/index.yml
-      text: 查看详细信息
+      text: 查看更多
+  - title: 企业对企业 (B2B)
+    links:
+    - url: ./b2b/what-is-b2b.md
+      itemType: overview
+      text: 什么是 Azure AD B2B？
+    - url: ./b2b/add-users-administrator.md
+      itemType: how-to-guide
+      text: 在门户中添加来宾用户
+    - url: ./b2b/o365-external-user.md
+      itemType: concept
+      text: B2B 和 Office 365 共享
+    footerLink:
+      url: ./b2b/index.yml
+      text: 查看更多
   - title: 企业对客户 (B2C)
     links:
     - url: ../active-directory-b2c/overview.md
@@ -55,10 +72,24 @@ conceptualContent:
       text: 创建 Azure AD B2C 租户
     footerLink:
       url: ../active-directory-b2c/index.yml
-      text: 查看详细信息
+      text: 查看更多
+  - title: 条件访问
+    links:
+    - url: ./conditional-access/overview.md
+      itemType: overview
+      text: 什么是条件访问？
+    - url: ./conditional-access/app-based-mfa.md
+      itemType: quickstart
+      text: 要求对特定应用执行 MFA
+    - url: ./conditional-access/location-condition.md
+      itemType: concept
+      text: 基于位置的条件
+    footerLink:
+      url: ./conditional-access/index.yml
+      text: 查看更多
   - title: 开发人员
     links:
-    - url: ./develop/about-microsoft-identity-platform.md
+    - url: ./develop/v2-overview.md
       itemType: overview
       text: 关于 Microsoft 标识平台
     - url: ./develop/v2-oauth2-auth-code-flow.md
@@ -69,7 +100,7 @@ conceptualContent:
       text: 将应用注册到 Microsoft 标识平台
     footerLink:
       url: ./develop/index.yml
-      text: 查看详细信息
+      text: 查看更多
   - title: 企业用户
     links:
     - url: ./users-groups-roles/groups-settings-v2-cmdlets.md
@@ -80,7 +111,7 @@ conceptualContent:
       text: Azure AD 服务限制和局限性
     footerLink:
       url: ./users-groups-roles/index.yml
-      text: 查看详细信息
+      text: 查看更多
   - title: 混合标识
     links:
     - url: ./hybrid/whatis-hybrid-identity.md
@@ -91,7 +122,7 @@ conceptualContent:
       text: Azure AD Connect 自定义安装
     footerLink:
       url: ./hybrid/index.yml
-      text: 查看详细信息
+      text: 查看更多
   - title: Azure 资源的托管标识
     links:
     - url: ./managed-identities-azure-resources/tutorial-windows-vm-access-sql.md
@@ -105,7 +136,7 @@ conceptualContent:
       text: 支持托管标识的服务
     footerLink:
       url: ./managed-identities-azure-resources/index.yml
-      text: 查看详细信息
+      text: 查看更多
   - title: Privileged Identity Management (PIM)
     links:
     - url: ./privileged-identity-management/pim-getting-started.md
@@ -119,7 +150,7 @@ conceptualContent:
       text: 分配目录角色
     footerLink:
       url: ./privileged-identity-management/index.yml
-      text: 查看详细信息
+      text: 查看更多
   - title: 报表和监视
     links:
     - url: ./reports-monitoring/concept-audit-logs.md
@@ -133,7 +164,7 @@ conceptualContent:
       text: 登录错误代码参考
     footerLink:
       url: ./reports-monitoring/index.yml
-      text: 查看详细信息
+      text: 查看更多
 additionalContent:
   sections:
   - items:

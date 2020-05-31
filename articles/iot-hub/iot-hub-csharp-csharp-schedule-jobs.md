@@ -11,12 +11,12 @@ ms.workload: na
 origin.date: 08/20/2019
 ms.date: 03/09/2020
 ms.author: v-yiso
-ms.openlocfilehash: 880287cdfad7d7f1d71961d1b25e8bca79737528
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: a5ae547f7ed96457df766f57e2286960c575fba5
+ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78155097"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84186839"
 ---
 # <a name="schedule-and-broadcast-jobs-net"></a>计划和广播作业 (.NET)
 
@@ -53,7 +53,7 @@ ms.locfileid: "78155097"
 ## <a name="prerequisites"></a>必备条件
 
 * Visual Studio。
-* 有效的 Azure 帐户。 若尚无帐户，只需几分钟即可创建一个 [试用帐户][lnk-free-trial] 。
+* 有效的 Azure 帐户。 若尚无帐户，只需几分钟即可创建一个 [试用帐户](https://www.azure.cn/pricing/1rmb-trial/) 。
 
 * 确保已在防火墙中打开端口 8883。 本文中的设备示例使用 MQTT 协议，该协议通过端口 8883 进行通信。 在某些公司和教育网络环境中，此端口可能被阻止。 有关解决此问题的更多信息和方法，请参阅[连接到 IoT 中心(MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
 ## <a name="create-an-iot-hub"></a>创建 IoT 中心
@@ -311,24 +311,3 @@ ms.locfileid: "78155097"
 若要继续完成 IoT 中心和设备管理模式（如远程无线固件更新）的入门内容，请参阅[教程：如何进行固件更新](tutorial-firmware-update.md)。
 
 若要了解如何将 AI 部署到具有 Azure IoT Edge 的边缘设备，请参阅 [IoT Edge 入门](../iot-edge/quickstart-linux.md)。
-
-
-<!-- images -->
-[img-createdeviceapp]: ./media/iot-hub-csharp-csharp-schedule-jobs/create-device-app.png
-[img-clientnuget]: ./media/iot-hub-csharp-csharp-schedule-jobs/device-app-nuget.png
-[img-servicenuget]: media/iot-hub-csharp-csharp-schedule-jobs/servicesdknuget.png
-[img-createapp]: media/iot-hub-csharp-csharp-schedule-jobs/createnetapp.png
-[img-schedulejobs]: media/iot-hub-csharp-csharp-schedule-jobs/schedulejobs.png
-
-[lnk-get-started-twin]: iot-hub-csharp-csharp-twin-getstarted.md
-[lnk-twin-props]: tutorial-device-twins.md
-[lnk-c2d-methods]: quickstart-control-device-dotnet.md
-[lnk-dev-methods]: iot-hub-devguide-direct-methods.md
-[lnk-fwupdate]: tutorial-firmware-update.md
-[lnk-iot-edge]: ./iot-hub-linux-iot-edge-simulated-device.md
-[lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-node/blob/master/doc/node-devbox-setup.md
-[lnk-free-trial]: http://www.azure.cn/pricing/1rmb-trial
-[lnk-transient-faults]: https://docs.microsoft.com/azure/architecture/best-practices/transient-faults
-[lnk-nuget-client-sdk]: https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/
-[lnk-nuget-service-sdk]: https://www.nuget.org/packages/Microsoft.Azure.Devices/
-[lnk-query]: ./iot-hub-devguide-query-language

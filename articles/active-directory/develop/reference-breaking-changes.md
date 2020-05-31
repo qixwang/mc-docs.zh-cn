@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/22/2020
+ms.date: 05/28/2020
 ms.author: v-junlch
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: b309818beae8190f55a192bef4b0a9a9ab0e6a58
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.openlocfilehash: a1bbd65fd666b36450d37d47d4f6b506ea4f1b1b
+ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82126459"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84186867"
 ---
 # <a name="whats-new-for-authentication"></a>身份验证的新增功能
 
@@ -43,7 +43,7 @@ ms.locfileid: "82126459"
 
 **生效日期**：2020 年 3 月 13 日
 
-**受影响的终结点**：v1.0 和 v2.0
+**受影响的终结点**：全部
 
 **受影响的协议**：所有用户流。
 

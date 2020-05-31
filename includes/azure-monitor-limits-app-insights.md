@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: 6a548b9cf9be584fc18e4310ac5c147e8f58f5b4
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: ada652d6b0468afed2d2ecdee5e08a1e85796dfb
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74663599"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84200512"
 ---
 每个应用程序（即每个检测密钥）的指标和事件数都有一些限制。 限制取决于选择的[定价计划](https://azure.microsoft.com/pricing/details/application-insights/)。
 
@@ -21,7 +21,7 @@ ms.locfileid: "74663599"
 | --- | --- | --- |
 | 每日的总数据量 | 100 GB | 可以通过设置一个上限来减少数据。 如果需要更多数据，可以在门户中最多将上限提高到 1,000 GB。 如需大于 1,000 GB 的容量，请将电子邮件发送到 AIDataCap@microsoft.com。
 | 限制 | 32,000 事件/秒 | 限制按分钟计量。
-| 数据保留 | 90 天 | 此资源适用于[搜索](../articles/azure-monitor/app/diagnostic-search.md)、[分析](../articles/azure-monitor/log-query/log-query-overview.md)和[指标资源管理器](../articles/azure-monitor/app/metrics-explorer.md)。
+| 数据保留 | 90 天 | 此资源适用于[搜索](../articles/azure-monitor/app/diagnostic-search.md)、[分析](../articles/azure-monitor/log-query/log-query-overview.md)和[指标资源管理器](../articles/azure-monitor/platform/metrics-charts.md)。
 | [可用性多步骤测试](../articles/azure-monitor/app/availability-multistep.md)详细结果保留 | 90 天 | 此资源提供了每个步骤的详细结果。
 | 最大事件大小 | 64,000 |
 | 属性和指标名称长度 | 150 | 请参阅[类型架构](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/EndpointSpecs/Schemas/Docs/)。

@@ -16,6 +16,12 @@
       href: how-to-routefilter-portal.md
 - name: 概念
   items:
+    - name: 远程工作
+      items:
+        - name: 远程工作支持
+          href: ../networking/working-remotely-support.md?toc=%2fexpressroute%2ftoc.json
+        - name: 用于远程用户的混合连接
+          href: work-remotely-support.md
     - name: 连接模型
       href: expressroute-connectivity-models.md
     - name: 线路和对等互连
@@ -28,7 +34,7 @@
           href: expressroute-locations.md
     - name: 关于虚拟网络网关
       href: expressroute-about-virtual-network-gateways.md
-    - name: 必备条件
+    - name: 先决条件
       href: expressroute-prerequisites.md
     - name: 工作流
       href: expressroute-workflows.md
@@ -58,7 +64,7 @@
       items:
         - name: 专用对等互连
           href: designing-for-disaster-recovery-with-expressroute-privatepeering.md
-- name: 操作方法指南
+- name: 操作指南
   items:
     - name: 创建和修改线路
       items:
@@ -68,7 +74,7 @@
           href: expressroute-howto-circuit-arm.md
         - name: Azure CLI
           href: howto-circuit-cli.md
-        - name: Azure 资源管理器模板
+        - name: Azure Resource Manager 模板
           displayName: 'ARM,resource manager template'
           href: expressroute-howto-circuit-resource-manager-template.md
     - name: 创建和修改对等配置
@@ -119,7 +125,7 @@
       items:
         - name: ExpressRoute 监视、指标和警报
           href: expressroute-monitoring-metrics-alerts.md
-    - name: 经典部署模型文章
+    - name: 经典版和旧版文章
       items:
         - name: 修改线路
           href: expressroute-howto-circuit-classic.md
@@ -131,6 +137,8 @@
           href: expressroute-howto-coexist-classic.md
         - name: 将网关添加到 VNet
           href: expressroute-howto-add-gateway-classic.md
+        - name: 创建和修改公共对等互连
+          href: about-public-peering.md
     - name: 最佳实践
       items:
         - name: 网络安全和云服务最佳实践

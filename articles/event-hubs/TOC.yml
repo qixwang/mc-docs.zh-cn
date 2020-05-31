@@ -4,6 +4,8 @@
   items:
     - name: 什么是事件中心？
       href: event-hubs-about.md
+    - name: 用于 Apache Kafka 的事件中心
+      href: event-hubs-for-kafka-ecosystem-overview.md
     - name: 事件中心捕获
       href: event-hubs-capture-overview.md
     - name: 事件中心专用层
@@ -60,8 +62,21 @@
           href: get-started-capture-python-v2.md
         - name: 使用 Python 读取捕获的数据（azure-eventhub 版本 1）
           href: event-hubs-capture-python.md
+    - name: 流式传输到用于 Apache Kafka 的事件中心
+      href: event-hubs-quickstart-kafka-enabled-event-hubs.md
+- name: 教程
+  items:
+    - name: 将捕获的数据存储在 SQL 数据仓库中
+      href: store-captured-data-data-warehouse.md
+    - name: 使用 Stream analytics 处理用于事件中心的 Apache Kafka 事件
+      href: event-hubs-kafka-stream-analytics.md
 - name: 示例
-  href: event-hubs-samples.md
+  items:
+    - name: 代码示例
+      href: event-hubs-samples.md
+    - name: Azure Policy 内置策略定义
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: 概念
   items:
     - name: 事件中心术语
@@ -101,6 +116,10 @@
       maintainContext: true
 - name: 操作指南
   items:
+    - name: 跨区域移动
+      href: move-across-regions.md
+    - name: 从 Azure Service Manager（经典）API 迁移到资源管理器 API
+      href: ../service-bus-messaging/deprecate-service-bus-management.md?toc=%2fazure%2fevent-hubs%2ftoc.json
     - name: 开发
       items:
         - name: 获取事件中心连接字符串
@@ -117,10 +136,44 @@
               href: 'https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/event-hubs/README.md'
             - name: .NET (Microsoft.Azure.EventHubs)
               href: event-hubs-programming-guide.md
+    - name: 处理数据
+      items:
+        - name: 使用 Azure 流分析处理数据
+          href: process-data-azure-stream-analytics.md
+    - name: 与 Spring Framework 集成
+      items:
+        - name: 创建 Spring Cloud Stream Binder 应用
+          href: 'https://docs.microsoft.com/java/azure/spring-framework/configure-spring-cloud-stream-binder-java-app-azure-event-hub'
+          maintainContext: true
+        - name: 使用适用于 Apache Kafka 的 Spring Boot Starter
+          href: 'https://docs.microsoft.com/java/azure/spring-framework/configure-spring-cloud-stream-binder-java-app-kafka-azure-event-hub'
+          maintainContext: true
+    - name: 与 Apache Kafka 集成
+      items:
+        - name: 针对事件中心的 Kafka 开发人员指南
+          href: apache-kafka-developer-guide.md
+        - name: 针对事件中心的 Kafka 迁移指南
+          href: apache-kafka-migration-guide.md
+        - name: 针对事件中心的 Kafka 故障排除指南
+          href: apache-kafka-troubleshooting-guide.md
+        - name: 在事件中心镜像 Kafka 代理
+          href: event-hubs-kafka-mirror-maker-tutorial.md
+        - name: 将 Apache Spark 连接到事件中心
+          href: event-hubs-kafka-spark-tutorial.md
+        - name: 将 Apache Flink 连接到事件中心
+          href: event-hubs-kafka-flink-tutorial.md
+        - name: 将 Apache Kafka Connect 与中心集成（预览版）
+          href: event-hubs-kafka-connect-tutorial.md
+        - name: 将 Akka Streams 连接到事件中心
+          href: event-hubs-kafka-akka-streams-tutorial.md
+        - name: 常见问题解答 - 用于 Kafka 的事件中心
+          href: apache-kafka-frequently-asked-questions.md
     - name: 管理和监视
       items:
         - name: 使用 Azure 监视来监视事件中心
           href: event-hubs-metrics-azure-monitor.md
+        - name: 设置诊断日志
+          href: event-hubs-diagnostic-logs.md
         - name: 使用事件中心流式传输 Azure 诊断数据
           href: event-hubs-streaming-azure-diags-data.md
         - name: 自动缩放吞吐量单位
@@ -134,6 +187,8 @@
     - name: 故障排除
       items:
         - name: 故障排除指南
+          href: troubleshooting-guide.md
+        - name: .NET 异常
           href: event-hubs-messaging-exceptions.md
         - name: 资源管理器异常
           href: resource-manager-exceptions.md

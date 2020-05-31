@@ -11,16 +11,17 @@ ms.service: event-hubs
 ms.workload: na
 ms.tgt_pltfrm: c
 ms.devlang: csharp
-ms.topic: article
+ms.topic: quickstart
+ms.custom: seodec18
 origin.date: 11/05/2019
-ms.date: 12/02/2019
+ms.date: 05/29/2020
 ms.author: v-tawe
-ms.openlocfilehash: 6a8fa2e5c5d88bfc6fb02537f147b08f76b92e1c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 1a7187cd97a88c5029aa9592d41c3a658212eaed
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74658008"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199437"
 ---
 # <a name="quickstart-send-events-to-azure-event-hubs-using-c"></a>快速入门：使用 C 将事件发送到 Azure 事件中心
 

@@ -3,14 +3,14 @@ title: 教程：创建自定义策略定义
 description: 本教程介绍如何创建 Azure Policy 的自定义策略定义以在 Azure 资源上强制实施自定义业务规则。
 ms.author: v-tawe
 origin.date: 11/25/2019
-ms.date: 01/17/2020
+ms.date: 05/29/2020
 ms.topic: tutorial
-ms.openlocfilehash: 859702a53b8275f97ef841fa7191e1be0fb12716
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 17a35f55b3ff807f2a8787e20df18d8152e21c9f
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79291751"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199712"
 ---
 # <a name="tutorial-create-a-custom-policy-definition"></a>教程：创建自定义策略定义
 
@@ -73,9 +73,9 @@ ms.locfileid: "79291751"
 #### <a name="existing-resource-in-the-portal"></a>门户中的现有资源
 
 查找属性的最简单方法是查找相同类型的现有资源。 已使用所要强制实施的设置配置的资源也会提供用于比较的值。
-在 Azure 门户中，找到该特定资源的“导出模板”页（在“设置”下）   。
+在 Azure 门户中，找到该特定资源的“导出模板”页（在“设置”下） 。
 
-![现有资源上的“导出模板”页](../media/create-custom-policy-definition/export-template.png)
+:::image type="content" source="../media/create-custom-policy-definition/export-template.png" alt-text="现有资源上的“导出模板”页" border="false":::
 
 针对存储帐户执行此操作会显示以下示例所示的模板：
 
@@ -121,13 +121,13 @@ ms.locfileid: "79291751"
 ...
 ```
 
-“属性”下面提供了名为 **supportsHttpsTrafficOnly**、设置为 **false** 的值。  此属性似乎是我们所要查找的属性。 此外，该资源的**类型**为 **Microsoft.Storage/storageAccounts**。 该类型告知我们，要将策略限定于此类型的资源。
+“属性”下面提供了名为 **supportsHttpsTrafficOnly**、设置为 **false** 的值。 此属性似乎是我们所要查找的属性。 此外，该资源的**类型**为 **Microsoft.Storage/storageAccounts**。 该类型告知我们，要将策略限定于此类型的资源。
 
 #### <a name="create-a-resource-in-the-portal"></a>在门户中创建资源
 
-另一种方式是通过门户中的资源创建体验。 通过门户创建存储帐户时，“高级”选项卡下会提供“需要安全传输”选项。   此属性具有“已禁用”和“已启用”选项。   信息图标包含附加文本，确认此选项可能是我们所需的属性。 但是，门户不会在此屏幕上显示属性名称。
+另一种方式是通过门户中的资源创建体验。 通过门户创建存储帐户时，“高级”选项卡下会提供“需要安全传输”选项。  此属性具有“已禁用”和“已启用”选项。  信息图标包含附加文本，确认此选项可能是我们所需的属性。 但是，门户不会在此屏幕上显示属性名称。
 
-在“查看 + 创建”选项卡上，页面底部提供了“下载自动化模板”链接。   选择该链接会打开用于创建所配置的资源的模板。 在这种情况下，我们会看到两段重要信息：
+在“查看 + 创建”选项卡上，页面底部提供了“下载自动化模板”链接。  选择该链接会打开用于创建所配置的资源的模板。 在这种情况下，我们会看到两段重要信息：
 
 ```json
 ...
@@ -458,11 +458,11 @@ Search-AzGraph -Query "Resources | where type=~'microsoft.storage/storageaccount
 
 如果今后不再使用本教程中的资源，请使用以下步骤删除前面创建的所有分配或定义：
 
-1. 在“Azure Policy”页左侧的“创作”下选择“定义”（如果尝试删除分配，则选择“分配”）    。
+1. 在“Azure Policy”页左侧的“创作”下选择“定义”（如果尝试删除分配，则选择“分配”）  。
 
 1. 搜索要删除的新计划或策略定义（或分配）。
 
-1. 右键单击定义（或分配）对应的行或选择其末尾的省略号，然后选择“删除定义”（或“删除分配”）。  
+1. 右键单击定义（或分配）对应的行或选择其末尾的省略号，然后选择“删除定义”（或“删除分配”）。 
 
 ## <a name="review"></a>审阅
 
