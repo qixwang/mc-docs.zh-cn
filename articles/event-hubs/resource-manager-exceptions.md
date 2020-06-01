@@ -11,14 +11,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 origin.date: 12/08/2019
-ms.date: 01/17/2020
+ms.date: 05/29/2020
 ms.author: v-tawe
-ms.openlocfilehash: c7c49408c9d49dd130eaec36f243c35e4aaf1594
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: cd8d9f838c0e83080ddc39cb9d1ab4e0f9ad2310
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "76123431"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199675"
 ---
 # <a name="azure-event-hubs---resource-manager-exceptions"></a>Azure 事件中心 - 资源管理器异常
 本文列出了使用 Azure 资源管理器通过模板或直接调用来与 Azure 事件中心交互时生成的异常。
@@ -33,7 +33,6 @@ ms.locfileid: "76123431"
 | 错误代码 | 错误子代码 | 错误消息 | 说明 | 建议 |
 | ---------- | ------------- | ------------- | ----------- | -------------- |
 | Conflict | 40300 | 已达到或超过 EventHub 类型的资源数上限。 实际数目: #，最大允许数目: # | 命名空间已达到其可以包含的事件中心数[配额](event-hubs-quotas.md)。 | 从命名空间中删除任何未使用的或无关的事件中心，或考虑升级到[专用群集](event-hubs-dedicated-overview.md)。 |
-| Conflict | 无 | 由于复制正在进行，无法删除灾难恢复 (DR) 配置。 在尝试删除 DR 配置之前进行故障转移或中断配对。 | 异地灾难恢复复制正在进行，此时无法删除配置。 | 若要取消阻止删除配置，请等待复制完成，触发故障转移，或中断异地灾难恢复配对。 |
 | Conflict | 无 | 后端存在冲突，命名空间更新失败。 | 当前正在对此命名空间执行另一项操作。 | 等待当前操作完成，然后重试。 |
 
 ## <a name="error-code-429"></a>错误代码：429
@@ -41,7 +40,6 @@ ms.locfileid: "76123431"
 | 错误代码 | 错误子代码 | 错误消息 | 说明 | 建议 |
 | ---------- | ------------- | ------------- | ----------- | -------------- |
 | 429 | 无 | 命名空间预配正在转换 | 当前正在对此命名空间执行另一项操作。 | 等待当前操作完成，然后重试。 |
-| 429 | 无 | 灾难恢复操作正在进行。 | 当前正在对此命名空间或配对执行某项异地灾难恢复操作。 | 等待当前异地灾难恢复操作完成，然后重试。 |
 
 ## <a name="error-code-badrequest"></a>错误代码：BadRequest
 
