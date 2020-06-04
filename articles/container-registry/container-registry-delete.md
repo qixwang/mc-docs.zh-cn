@@ -54,7 +54,7 @@ Are you sure you want to continue? (y/n):
 ```
 
 > [!TIP]
-> 按标记删除不应与删除标记（取消标记）混淆  。 可使用 Azure CLI 命令 [az acr repository untag][az-acr-repository-untag] 删除标记。 取消标记映像时不释放任何空间，因为其[清单](container-registry-concepts.md#manifest)和层数据仍保留在注册表中。 仅删除标记引用本身。
+> 按标记删除不应与删除标记（取消标记）混淆。 可使用 Azure CLI 命令 [az acr repository untag][az-acr-repository-untag] 删除标记。 取消标记映像时不释放任何空间，因为其[清单](container-registry-concepts.md#manifest)和层数据仍保留在注册表中。 仅删除标记引用本身。
 
 ## <a name="delete-by-manifest-digest"></a>按清单摘要删除
 
@@ -116,10 +116,10 @@ az acr repository show-manifests --name <acrName> --repository <repositoryName> 
 --orderby time_asc -o tsv --query "[?timestamp < '2019-04-05'].[digest, timestamp]"
 ```
 
-在确定过时的清单摘要以后，可以运行以下 Bash 脚本，删除早于指定时间戳的清单摘要。 它需要 Azure CLI 和 xargs  。 默认情况下，该脚本不执行任何删除。 将 `ENABLE_DELETE` 值改为 `true` 以启用映像删除。
+在确定过时的清单摘要以后，可以运行以下 Bash 脚本，删除早于指定时间戳的清单摘要。 它需要 Azure CLI 和 xargs。 默认情况下，该脚本不执行任何删除。 将 `ENABLE_DELETE` 值改为 `true` 以启用映像删除。
 
 > [!WARNING]
-> 请谨慎使用以下示例脚本，已删除映像数据是无法恢复的。 如果系统按清单摘要（而不是映像名称）拉取映像，则不应运行这些脚本。 删除清单摘要后，这些系统即无法从注册表拉取映像。 不按清单拉取，而是考虑采用[建议的最佳做法](container-registry-image-tag-version.md)，即“唯一标记”方案  。 
+> 请谨慎使用以下示例脚本，已删除映像数据是无法恢复的。 如果系统按清单摘要（而不是映像名称）拉取映像，则不应运行这些脚本。 删除清单摘要后，这些系统即无法从注册表拉取映像。 不按清单拉取，而是考虑采用[建议的最佳做法](container-registry-image-tag-version.md)，即“唯一标记”方案。 
 
 ```bash
 #!/bin/bash
@@ -154,10 +154,10 @@ fi
 
 ## <a name="delete-untagged-images"></a>删除无标记的映像
 
-如[清单摘要](container-registry-concepts.md#manifest-digest)部分中所述，使用现有标记推送已修改的映像时，会取消标记之前推送的映像，从而导致孤立（或“无关联”）的映像  。 之前推送的映像的清单及其层数据仍保留在注册表中。 请注意以下事件序列：
+如[清单摘要](container-registry-concepts.md#manifest-digest)部分中所述，使用现有标记推送已修改的映像时，会取消标记之前推送的映像，从而导致孤立（或“无关联”）的映像。 之前推送的映像的清单及其层数据仍保留在注册表中。 请注意以下事件序列：
 
-1. 推送具有标记 latest 的映像 acr-helloworld：`docker push myregistry.azurecr.cn/acr-helloworld:latest` 
-1. 检查存储库 acr-helloworld 的清单  ：
+1. 推送具有标记 latest 的映像 acr-helloworld：`docker push myregistry.azurecr.cn/acr-helloworld:latest`
+1. 检查存储库 acr-helloworld 的清单：
 
     ```azurecli
     az acr repository show-manifests --name myregistry --repository acr-helloworld
@@ -176,9 +176,9 @@ fi
     ]
     ```
 
-1. 修改 acr-helloworld Dockerfile 
-1. 推送具有标记 latest 的映像 acr-helloworld：`docker push myregistry.azurecr.cn/acr-helloworld:latest` 
-1. 检查存储库 acr-helloworld 的清单  ：
+1. 修改 acr-helloworld Dockerfile
+1. 推送具有标记 latest 的映像 acr-helloworld：`docker push myregistry.azurecr.cn/acr-helloworld:latest`
+1. 检查存储库 acr-helloworld 的清单：
 
     ```azurecli
     az acr repository show-manifests --name myregistry --repository acr-helloworld
@@ -201,7 +201,7 @@ fi
     ]
     ```
 
-正如上一步骤的输出中所示，现在存在一个 `"tags"` 属性为空列表的孤立清单。 此清单仍与其引用的任何唯一层数据一起位于注册表中。 要删除此类孤立映像及其层数据，必须按清单摘要删除  。
+正如上一步骤的输出中所示，现在存在一个 `"tags"` 属性为空列表的孤立清单。 此清单仍与其引用的任何唯一层数据一起位于注册表中。 要删除此类孤立映像及其层数据，必须按清单摘要删除。
 
 ## <a name="delete-all-untagged-images"></a>删除所有无标记的映像
 
@@ -214,11 +214,11 @@ az acr repository show-manifests --name <acrName> --repository <repositoryName> 
 在脚本中使用此命令，可以删除存储库中所有未标记的映像。
 
 > [!WARNING]
-> 请谨慎使用以下示例脚本，已删除映像数据是无法恢复的。 如果系统按清单摘要（而不是映像名称）拉取映像，则不应运行这些脚本。 删除无标的记映像后，这些系统即无法从注册表拉取映像。 不按清单拉取，而是考虑采用[建议的最佳做法](container-registry-image-tag-version.md)，即“唯一标记”方案  。
+> 请谨慎使用以下示例脚本，已删除映像数据是无法恢复的。 如果系统按清单摘要（而不是映像名称）拉取映像，则不应运行这些脚本。 删除无标的记映像后，这些系统即无法从注册表拉取映像。 不按清单拉取，而是考虑采用[建议的最佳做法](container-registry-image-tag-version.md)，即“唯一标记”方案。
 
 **Bash 中的 Azure CLI**
 
-以下 Bash 脚本会删除存储库中所有无标记的映像。 它需要 Azure CLI 和 xargs  。 默认情况下，该脚本不执行任何删除。 将 `ENABLE_DELETE` 值改为 `true` 以启用映像删除。
+以下 Bash 脚本会删除存储库中所有无标记的映像。 它需要 Azure CLI 和 xargs。 默认情况下，该脚本不执行任何删除。 将 `ENABLE_DELETE` 值改为 `true` 以启用映像删除。
 
 ```bash
 #!/bin/bash

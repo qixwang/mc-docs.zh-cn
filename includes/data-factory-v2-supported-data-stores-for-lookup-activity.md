@@ -16,7 +16,7 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 04/17/2020
 ms.locfileid: "75624222"
 ---
-| 类别 | 数据存储 |
+| Category | 数据存储 |
 |:--- |:--- |
 | **Azure** |[Azure Blob 存储](../articles/data-factory/connector-azure-blob-storage.md) |
 | &nbsp; |[Azure Cosmos DB (SQL API)](../articles/data-factory/connector-azure-cosmos-db.md) |
@@ -58,7 +58,7 @@ ms.locfileid: "75624222"
 | &nbsp; |[Vertica](../articles/data-factory/connector-vertica.md) |
 | **NoSQL** |[Cassandra](../articles/data-factory/connector-cassandra.md) |
 | &nbsp; |[Couchbase（预览）](../articles/data-factory/connector-couchbase.md) |
-| **File** |[Amazon S3](../articles/data-factory/connector-amazon-simple-storage-service.md) |
+| **文件** |[Amazon S3](../articles/data-factory/connector-amazon-simple-storage-service.md) |
 | &nbsp; |[文件系统](../articles/data-factory/connector-file-system.md) |
 | &nbsp; |[FTP](../articles/data-factory/connector-ftp.md) |
 | &nbsp; |[Google Cloud Storage](../articles/data-factory/connector-google-cloud-storage.md) |
@@ -96,4 +96,4 @@ ms.locfileid: "75624222"
 | &nbsp; |[Zoho（预览）](../articles/data-factory/connector-zoho.md) |
 
 > [!NOTE]
-> 连接器标记为“预览”  意味着，可以试用它并向我们提供反馈。 若要在解决方案中使用预览版连接器的依赖项，请联系 [Azure 客户支持](https://support.azure.cn/zh-cn/support/contact/)。
+> 连接器标记为“预览”意味着，可以试用它并向我们提供反馈。 若要在解决方案中使用预览版连接器的依赖项，请联系 [Azure 客户支持](https://support.azure.cn/zh-cn/support/contact/)。

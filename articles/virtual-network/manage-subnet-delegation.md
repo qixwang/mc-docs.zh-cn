@@ -43,14 +43,14 @@ ms.locfileid: "82093317"
 
 <!--CORRECT ON [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/Az.Resources/New-AzResourceGroup)-->
 
-以下示例在“chinaeast”  位置创建名为“myResourceGroup”  的资源组：
+以下示例在“chinaeast”位置创建名为“myResourceGroup”的资源组：
 
 ```powershell
   New-AzResourceGroup -Name myResourceGroup -Location chinaeast
 ```
 ### <a name="create-virtual-network"></a>创建虚拟网络
 
-使用 **New-AzVirtualNetwork** 在 **myResourceGroup** 中创建名为 [myVnet](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig?view=latest) 的虚拟网络，并使用 **New-AzVirtualNetworkSubnetConfig** 创建名为 [mySubnet](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork?view=latest) 的子网。 虚拟网络的 IP 地址空间是 **10.0.0.0/16**。 虚拟网络中的子网是 **10.0.0.0/24**。  
+使用 [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork?view=latest) 在 **myResourceGroup** 中创建名为 **myVnet** 的虚拟网络，该虚拟网络包含使用 [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig?view=latest) 配置的名为 **mySubnet** 的子网。 虚拟网络的 IP 地址空间是 **10.0.0.0/16**。 虚拟网络中的子网是 **10.0.0.0/24**。  
 
 ```powershell
   $subnet = New-AzVirtualNetworkSubnetConfig -Name mySubnet -AddressPrefix "10.0.0.0/24"

@@ -38,7 +38,7 @@ ms.locfileid: "82126714"
 
 ## <a name="create-a-dashboard"></a>创建仪表板
 
-要创建仪表板，请从 [Azure 门户](https://portal.azure.cn)菜单中选择“仪表板”，然后选择“新建仪表板”。  
+要创建仪表板，请从 [Azure 门户](https://portal.azure.cn)菜单中选择“仪表板”，然后选择“新建仪表板”。 
 
 ![“新建仪表板”命令](./media/azure-portal-dashboards-create-programmatically/new-dashboard-command.png)
 
@@ -52,17 +52,17 @@ ms.locfileid: "82126714"
 
 ## <a name="share-the-dashboard"></a>共享仪表板
 
-配置仪表板后，下一步是使用“共享”命令发布仪表板。 
+配置仪表板后，下一步是使用“共享”命令发布仪表板。
 
 ![共享仪表板](./media/azure-portal-dashboards-create-programmatically/share-command.png)
 
-选择“共享”时，系统会提示选择要发布到的订阅和资源组。  必须对所选订阅和资源组拥有写入访问权限。 有关详细信息，请参阅[使用 Azure RBAC 和 Azure 门户添加或删除角色分配](../role-based-access-control/role-assignments-portal.md)。
+选择“共享”时，系统会提示选择要发布到的订阅和资源组。 必须对所选订阅和资源组拥有写入访问权限。 有关详细信息，请参阅[使用 Azure RBAC 和 Azure 门户添加或删除角色分配](../role-based-access-control/role-assignments-portal.md)。
 
 ![对共享和访问权限进行更改](./media/azure-portal-dashboards-create-programmatically/sharing-and-access.png)
 
 ## <a name="fetch-the-json-representation-of-the-dashboard"></a>提取仪表板的 JSON 表示形式
 
-仅需要几秒钟即可完成发布。 完成后，下一步是使用“下载”  命令获取 JSON。
+仅需要几秒钟即可完成发布。 完成后，下一步是使用“下载”命令获取 JSON。
 
 ![下载 JSON 表示形式](./media/azure-portal-dashboards-create-programmatically/download-command.png)
 

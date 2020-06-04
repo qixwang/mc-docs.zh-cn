@@ -54,7 +54,7 @@ ms.locfileid: "82197767"
 1. 创建链接的集成运行时。
 1. 撤消共享。
 
-### <a name="prerequisites"></a>必备条件 
+### <a name="prerequisites"></a>先决条件 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -102,7 +102,7 @@ ms.locfileid: "82197767"
     > [!NOTE]  
     > 此步骤是可选的。 若已有数据工厂，请跳过此步骤。 
 
-    使用 [New-AzResourceGroup](../azure-resource-manager/management/overview.md) 命令创建 [Azure 资源组](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup)。 资源组是在其中以组的形式部署和管理 Azure 资源的逻辑容器。 以下示例在 ChinaEast2 位置创建名为 `myResourceGroup` 的资源组： 
+    使用 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) 命令创建 [Azure 资源组](../azure-resource-manager/management/overview.md)。 资源组是在其中以组的形式部署和管理 Azure 资源的逻辑容器。 以下示例在 ChinaEast2 位置创建名为 `myResourceGroup` 的资源组： 
 
     ```powershell
     New-AzResourceGroup -Location $DataFactoryLocation -Name $ResourceGroupName

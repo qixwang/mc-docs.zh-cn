@@ -24,7 +24,7 @@ ms.locfileid: "82093504"
 > * 在 Azure 中创建安全的 Linux 群集
 > * 将应用程序部署到群集
 
-在此系列教程中，你会学习如何：
+在此系列教程中，你将学习如何：
 
 > [!div class="checklist"]
 > * [生成 Java Service Fabric Reliable Services 应用程序](service-fabric-tutorial-create-java-app.md)
@@ -34,7 +34,7 @@ ms.locfileid: "82093504"
 
 <!-- Not Avaiable on [Set up monitoring and diagnostics for the application](service-fabric-tutorial-java-elk.md)-->
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在开始学习本教程之前：
 
@@ -43,7 +43,7 @@ ms.locfileid: "82093504"
 * 安装用于 [Mac](service-fabric-get-started-mac.md) 或 [Linux](service-fabric-get-started-linux.md) 的 Service Fabric SDK
 * [安装 Python 3](https://wiki.python.org/moin/BeginnersGuide/Download)
 
-## <a name="create-a-service-fabric-cluster-in-azure"></a>缩放 Azure 中的 Service Fabric 群集
+## <a name="create-a-service-fabric-cluster-in-azure"></a>在 Azure 中创建 Service Fabric 群集
 
 以下步骤创建的资源是将应用程序部署到 Service Fabric 群集所必需的。 另外还会设置通过 ELK（Elasticsearch、Logstash、Kibana）堆栈监视解决方案的运行状况所需的资源。 具体说来，[事件中心](https://www.azure.cn/home/features/event-hubs/)用作接收器，接收来自 Service Fabric 的日志。 根据配置，它可以将日志从 Service Fabric 群集发送到 Logstash 实例。
 
@@ -97,7 +97,7 @@ ms.locfileid: "82093504"
     Example: az storage account create -g teststorageaccountrg -l chinanorth --name teststorageaccount --kind Storage
     ```
 
-7. 访问 [Azure 门户](https://portal.azure.cn)，导航到供存储帐户使用的“共享访问签名”选项卡。  生成 SAS 令牌，如下所示。
+7. 访问 [Azure 门户](https://portal.azure.cn)，导航到供存储帐户使用的“共享访问签名”选项卡。 生成 SAS 令牌，如下所示。
 
     ![生成用于存储的 SAS](./media/service-fabric-tutorial-java-deploy-azure/storagesas.png)
 
@@ -129,7 +129,7 @@ ms.locfileid: "82093504"
     Please provide string value for 'receiveAuthorizationRuleName' (? for help): receiver
     ```
 
-    将“输出”字段的内容复制到上一命令的 JSON 输出中。  创建 Service Fabric 群集时，使用发送方信息。 接收方名称和密钥应该保存，供下一教程使用。在下一教程中，Logstash 服务配置为接收事件中心的消息。 以下 Blob 为 JSON 输出示例：
+    将“输出”字段的内容复制到上一命令的 JSON 输出中。 创建 Service Fabric 群集时，使用发送方信息。 接收方名称和密钥应该保存，供下一教程使用。在下一教程中，Logstash 服务配置为接收事件中心的消息。 以下 Blob 为 JSON 输出示例：
 
     ```json
     "outputs": {
@@ -193,7 +193,7 @@ ms.locfileid: "82093504"
 
 ## <a name="deploy-your-application-to-the-cluster"></a>将应用程序部署到群集
 
-1. 在部署应用程序之前，需将以下代码片段添加到 *Voting/VotingApplication/ApplicationManifest.xml* 文件。 **X509FindValue** 字段是从“在 Azure 中创建 Service Fabric 群集”  部分的步骤 4 返回的指纹。 此代码片段嵌套在 **ApplicationManifest** 字段（根字段）下。
+1. 在部署应用程序之前，需将以下代码片段添加到 *Voting/VotingApplication/ApplicationManifest.xml* 文件。 **X509FindValue** 字段是从“在 Azure 中创建 Service Fabric 群集”部分的步骤 4 返回的指纹。 此代码片段嵌套在 **ApplicationManifest** 字段（根字段）下。
 
     ```xml
     <Certificates>
@@ -227,7 +227,7 @@ ms.locfileid: "82093504"
 
     ![Voting 应用 Java Azure](./media/service-fabric-tutorial-java-deploy-azure/votingappjavaazure.png)
 
-7. 若要从群集中卸载应用程序，请在 *Scripts* 文件夹中运行 **uninstall.sh** 脚本
+7. 若要从群集中卸载应用程序，请在 **Scripts** 文件夹中运行 *uninstall.sh* 脚本
 
     ```bash
     ./uninstall.sh

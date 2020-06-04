@@ -35,18 +35,18 @@ Azure Analysis Services 集成许多 Azure 服务，因此可以生成复杂的�
 
 ## <a name="the-right-tier-when-you-need-it"></a>符合需要的层级
 
-可在基本层  和标准层  中使用 Azure Analysis Services。 每个层中的计划成本因处理能力、查询处理单位 (QPU) 和内存大小而异。 创建服务器时，会在层内选择计划。 可以在同一层内上下更改计划，或者升级到更高的层，但不能从较高的层降级到较低的层。
+可在基本层和标准层中使用 Azure Analysis Services。 每个层中的计划成本因处理能力、查询处理单位 (QPU) 和内存大小而异。 创建服务器时，将在层内选择计划。 可以在同一层内上下更改计划，或者升级到更高的层，但不能从较高的层降级到较低的层。
 
 <!--MOONCAKE Not Available on **Developer** -->
 <!--MOONCAKE Not Available on ### Developer tier-->
 
 ### <a name="basic-tier"></a>基本层
 
-建议在具有小型表格模型的生产解决方案、限制用户并发性和要求简单数据刷新的场合下使用该层。 查询副本横向扩展*不适用于*此层。 此层不支持透视图、多个分区和 DirectQuery 表格模型功能。   
+建议在具有小型表格模型的生产解决方案、限制用户并发性和要求简单数据刷新的场合下使用该层。 查询副本横向扩展不适用于此层。 此层不支持透视图、多个分区和 DirectQuery 表格模型功能。  
 
 |计划  |QPU  |内存 (GB)  |
 |---------|---------|---------|
-|B1    |    40     |    10 个     |
+|B1    |    40     |    10     |
 |B2    |    80     |    16     |
 
 ### <a name="standard-tier"></a>标准层
@@ -57,7 +57,7 @@ Azure Analysis Services 集成许多 Azure 服务，因此可以生成复杂的�
 
 |计划  |QPU  |内存 (GB)  |
 |---------|---------|---------|
-|S0    |    40     |    10 个     |
+|S0    |    40     |    10     |
 |S1    |    100     |    25     |
 |S2    |    200     |    50     |
 |S4    |    400     |    100     |
@@ -96,7 +96,7 @@ Azure Analysis Services 集成许多 Azure 服务，因此可以生成复杂的�
 
 ### <a name="scale-out-resources-for-fast-query-responses"></a>进行快速查询响应的横向扩展资源
 
-启用横向扩展后，客户端查询就会分布在查询池中的多个查询副本中。  查询副本已同步表格模型的副本。 可以通过分散查询工作负荷，缩短查询工作负荷高峰期间的响应时间。 可以将模型处理操作与查询池分开，确保客户端查询不受处理操作的负面影响。 
+启用横向扩展后，客户端查询就会分布在查询池中的多个查询副本中。 查询副本已同步表格模型的副本。 可以通过分散查询工作负荷，缩短查询工作负荷高峰期间的响应时间。 可以将模型处理操作与查询池分开，确保客户端查询不受处理操作的负面影响。 
 
 <!--MOONCAKE: Replicas is Max with seven on China East 2-->
 
@@ -112,7 +112,7 @@ Azure Analysis Services 集成许多 Azure 服务，因此可以生成复杂的�
 
 ## <a name="built-on-sql-server-analysis-services"></a>基于 SQL Server Analysis Services
 
-Azure Analysis Services 兼容 SQL Server Analysis Services Enterprise Edition 中已有的多个强大功能。 Azure Analysis Services 支持 1200 和更高[兼容级别](analysis-services-compat-level.md)的表格模型。 表格模型属于关系建模构造（模型、表、列），在表格元数据对象定义中以表格模型脚本语言 (TMSL) 和表格对象模型 (TOM) 代码阐述。 支持分区、透视图、行级安全性、双向关系和转换\*。 Azure Analysis Services 不支持多维模型和 PowerPivot for SharePoint。 
+Azure Analysis Services 兼容 SQL Server Analysis Services Enterprise Edition 中已有的多个强大功能。 Azure Analysis Services 支持 1200 和更高[兼容级别](analysis-services-compat-level.md)的表格模型。 表格模型属于关系建模构造（模型、表、列），在表格元数据对象定义中以表格模型脚本语言 (TMSL) 和表格对象模型 (TOM) 代码阐述。 支持分区、透视图、行级安全性、双向关系和转换\*。 Azure Analysis Services 不支持多维模型和 PowerPivot for SharePoint。
 
 支持内存中模式和 DirectQuery 模式的表格模型。 内存中模式（默认）表格模型支持多个数据源。 由于模型数据经过高度压缩并缓存在内存中，因此，此模式可针对大量数据提供最快的查询响应。 此外，它还针对复杂数据集和查询提供最高的灵活性。 分区可以实现增量加载、提高并行度，并减少内存消耗。 其他高级数据建模功能（例如计算表）和所有 DAX 函数均受支持。 必须刷新（处理）内存中模型才能更新数据源中的缓存数据。 借助 Azure 服务主体支持，使用 PowerShell、TOM、TMSL 和 REST 的无人参与刷新操作可灵活确保模型数据始终保持最新。 
 
@@ -126,11 +126,11 @@ Azure Analysis Services 中的表格模型支持各种数据源：从简单的�
 
 <!-- Not Available on Azure Data Lake Store-->
 
-## <a name="compatibility-level"></a>兼容级别
+## <a name="compatibility-level"></a>兼容性级别
 
 “兼容性级别”是指 Analysis Services 引擎中特定于发布的行为。 Azure Analysis Services 支持 1200 和更高兼容级别的表格模型。 若要了解详细信息，请参阅[表格模型的兼容性级别](https://docs.microsoft.com/analysis-services/tabular-models/compatibility-level-for-tabular-models-in-analysis-services)。
 
-## <a name="your-data-is-secure"></a>数据是安全的
+## <a name="your-data-is-secure"></a>你的数据是安全的
 
 Azure Analysis Services 为多个级别的敏感数据提供安全性。
 
@@ -146,7 +146,7 @@ Azure Analysis Services 防火墙阻止所有客户端连接，规则中指定�
 
 用户身份验证由 [Azure Active Directory (AAD)](../active-directory/fundamentals/active-directory-whatis.md) 处理。 登录时，用户需使用组织帐户标识对数据库进行基于角色的访问。 用户标识必须是服务器所在订阅的默认 Azure Active Directory 成员。 若要了解详细信息，请参阅[身份验证和用户权限](analysis-services-manage-users.md)。
 
-### <a name="data-security"></a>数据安全性
+### <a name="data-security"></a>数据安全
 
 Azure Analysis Services 使用 Azure Blob 存储来持久保留 Analysis Services 数据库的存储和元数据。 使用 [Azure Blob 服务器端加密 (SSE)](../storage/common/storage-service-encryption.md) 加密 Blob 中的数据文件。 使用“直接查询”模式时，仅存储元数据。 查询时通过加密的协议从数据源访问实际数据。
 
@@ -158,7 +158,7 @@ Analysis Services 使用[基于角色的授权](https://docs.microsoft.com/analy
 
 通过数据库角色向查询数据的非管理最终用户授予访问权限。 数据库角色作为数据库中的单独对象创建，并且仅适用于创建该角色的数据库。 数据库角色按（数据库）“管理员”、“读取”与“读取和处理”权限来定义。 使用 SSMS 或 PowerShell 添加用户和组帐户。
 
-### <a name="row-level-security"></a>行级别安全性
+### <a name="row-level-security"></a>行级安全性
 
 所有兼容级别的表格模型都支持行级安全性。 行级安全性的定义方式如下：在模型中使用 DAX 表达式，这些表达式可在表中定义行，以及在用户可查询的相关表的许多方向定义任何行。 为“读取”与“读取和处理”权限定义使用 DAX 表达式的行筛选器。 
 
@@ -170,7 +170,7 @@ Analysis Services 使用[基于角色的授权](https://docs.microsoft.com/analy
 
 服务主体是在租户中创建的 Azure Active Directory 应用程序资源，用于执行无人参与的资源和服务级别操作。 服务主体可与 Azure 自动化、PowerShell 无人参与模式、自定义客户端应用程序和 Web 应用配合使用，以便自动完成常见的任务，例如数据刷新、纵向扩展/缩减和暂停/恢复。 权限通过角色成员身份分配给服务主体。 有关详细信息，请参阅[使用服务主体进行自动化](analysis-services-service-principal.md)。
 
-### <a name="azure-governance"></a>Azure 监管
+### <a name="azure-governance"></a>Azure 治理
 
 Azure Analysis Services 受 [Microsoft 联机服务条款](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)和 [Microsoft 隐私声明](https://privacy.microsoft.com/privacystatement)的约束。
 若要详细了解 Azure 安全性，请参阅 [Azure 信任中心](https://www.trustcenter.cn/cloudservices/azure.html)。

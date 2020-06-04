@@ -19,7 +19,7 @@ Azure Service Fabric 命令行接口 (CLI) 是一个命令行实用程序，用�
 
 [!INCLUDE [links to azure cli and service fabric cli](../../includes/service-fabric-sfctl.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在安装之前，请确保环境中已安装 Python 和 pip。 有关详细信息，请参阅 [pip 快速入门文档](https://pip.pypa.io/en/latest/quickstart/)和官方的 [Python 安装文档](https://wiki.python.org/moin/BeginnersGuide/Download)。
 
@@ -62,9 +62,9 @@ pip install -I sfctl==1.1.0
 
 2. 启动安装程序。
 
-3. 在提示的底部，选择“将 Python 3.7 添加到路径”  。
+3. 在提示的底部，选择“将 Python 3.7 添加到路径”。
 
-4. 选择“立即安装”  ，并完成安装。
+4. 选择“立即安装”，并完成安装。
 
 现在可以打开新的命令窗口，获取 Python 和 pip 的版本。
 
@@ -100,7 +100,7 @@ sfctl -h
 
 `sfctl: command not found`
 
-请确保可从 `~/.local/bin` 访问 `$PATH`：
+请确保可从 `$PATH` 访问 `~/.local/bin`：
 
 ```bash
 export PATH=$PATH:~/.local/bin

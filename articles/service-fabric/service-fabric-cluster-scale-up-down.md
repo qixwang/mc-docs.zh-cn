@@ -22,7 +22,7 @@ ms.locfileid: "82093228"
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="scale-a-service-fabric-cluster-in-or-out-using-auto-scale-rules-or-manually"></a>使用自动缩放规则或者手动来扩展和缩减 Service Fabric 群集
-虚拟机规模集是一种 Azure 计算资源，可用于将一组 VM 作为一个集进行部署和管理。 在 Service Fabric 群集中定义的每个节点类型将设置为不同的虚拟机规模集。 然后，每个节点类型可以独立扩展或缩减、打开不同的端口集，并可以有不同的容量指标。 可在 [Service Fabric 节点类型](service-fabric-cluster-nodetypes.md)文档中了解有关详细信息。 由于群集中的 Service Fabric 节点类型由后端的虚拟机规模集构成，因此需要为每个节点类型/虚拟机规模集设置自动缩放规则。
+虚拟机规模集是一种 Azure 计算资源，可用于将一组虚拟机作为一个集进行部署和管理。 在 Service Fabric 群集中定义的每个节点类型将设置为不同的虚拟机规模集。 然后，每个节点类型可以独立缩减或扩展、打开不同的端口集，并可以有不同的容量指标。 可在 [Service Fabric 节点类型](service-fabric-cluster-nodetypes.md)文档中了解有关详细信息。 由于群集中的 Service Fabric 节点类型由后端的虚拟机规模集构成，因此需要为每个节点类型/虚拟机规模集设置自动缩放规则。
 
 > [!NOTE]
 > 订阅必须有足够的核心用于添加构成此群集的新 VM。 当前没有模型验证，因此如果达到任何配额限制，会遇到部署时故障。 此外，对于单个节点类型，每个 VMSS 不能超过 100 个节点。 要实现目标缩放，可能需要添加 VMSS，且自动缩放不会自动添加 VMSS。 将 VMSS 就地添加到实时集群非常具有挑战性务，这通常会导致用户使用创建时预配的相应节点类型来预配新集群。请相应地[计划群集容量](/service-fabric/service-fabric-cluster-capacity)。 
@@ -41,7 +41,7 @@ Get-AzVmss -ResourceGroupName <RGname> -VMScaleSetName <virtual machine scale se
 ```
 
 ## <a name="set-auto-scale-rules-for-the-node-typevirtual-machine-scale-set"></a>为节点类型/虚拟机规模集设置自动缩放规则
-如果群集具有多个节点类型，请为要缩放（扩展或缩减）的每个节点类型/虚拟机规模集重复此操作。 在设置自动缩放之前请考虑必须具有的节点数。 对于主节点类型所必须具有的最小节点数受所选择的可靠性级别影响。 了解有关[可靠性级别](service-fabric-cluster-capacity.md)的详细信息。
+如果群集具有多个节点类型，请为要缩放（扩展或缩减）的每个节点类型/虚拟机规模集重复此操作。 在设置自动缩放之前请考虑必须具有的节点数。 对于主节点类型所必须具有的最小节点数受所选择的可靠性级别影响。 了解有关 [可靠性级别](service-fabric-cluster-capacity.md)的详细信息。
 
 > [!NOTE]
 > 将主节点类型减少到小于最小数量会使群集不稳定或使它关闭。 这可能会对应用程序和系统服务造成数据丢失。
@@ -69,7 +69,7 @@ Get-AzVmss -ResourceGroupName <RGname> -VMScaleSetName <virtual machine scale se
 根据[快速入门模板库](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-scale-existing)中的示例/说明更改每个节点类型的 VM 数目。 
 
 ### <a name="add-vms-using-powershell-or-cli-commands"></a>使用 PowerShell 或 CLI 命令添加 VM
-以下代码按名称获取规模集，并使规模集的容量增加 1。 
+以下代码按名称获取规模集，并使规模集的容量增加 1。
 
 ```powershell
 $scaleset = Get-AzVmss -ResourceGroupName SFCLUSTERTUTORIALGROUP -VMScaleSetName nt1vm
@@ -98,7 +98,7 @@ Service Fabric 系统服务在群集中以主节点类型运行。 缩小主节�
 
 ### <a name="remove-the-service-fabric-node"></a>删除 Service Fabric 节点
 
-手动删除节点状态的步骤仅适用于具有“铜”  持续性层的节点类型。  对于“白银”和“黄金”持续性层，平台会自动完成上述步骤。   有关持续性的详细信息，请参阅 [Service Fabric 群集容量规划][durability]。
+手动删除节点状态的步骤仅适用于具有“铜”持续性层的节点类型。  对于“白银”和“黄金”持续性层，平台会自动完成上述步骤。  有关持续性的详细信息，请参阅 [Service Fabric 群集容量规划][durability]。
 
 为了使群集节点均匀地分布在升级域和容错域中，从而使它们的利用均匀，应该首先删除最近创建的节点。 换句话说，应该按照创建节点的相反顺序删除节点。 最近创建的节点是具有最大 `virtual machine scale set InstanceId` 属性值的节点。 下面的代码示例返回最近创建的节点。
 
@@ -186,7 +186,7 @@ else
 }
 ```
 
-在下面的“sfctl”代码中，使用以下命令获取最近创建的节点  **的 “node-name”值：**  `sfctl node list --query "sort_by(items[*], &name)[-1].name"`
+在下面的“sfctl”代码中，使用以下命令获取最近创建的节点 `sfctl node list --query "sort_by(items[*], &name)[-1].name"` 的 “node-name”值： 
 
 ```shell
 # Inform the node that it is going to be removed
@@ -200,7 +200,7 @@ sfctl node remove-state --node-name _nt1vm_5
 ```
 
 > [!TIP]
-> 使用以下“sfctl”查询检查每个步骤的状态。 
+> 使用以下“sfctl”查询检查每个步骤的状态。
 >
 > **检查停用状态**
 > `sfctl node list --query "sort_by(items[*], &name)[-1].nodeDeactivationInfo"`
@@ -239,7 +239,7 @@ Service Fabric Explorer 中列出的节点是 Service Fabric 系统服务（特�
 
 若要确保在删除 VM 时删除节点，有两个选项：
 
-1. 为群集中的节点类型选择金级或银级持续性级别，这会提供基础结构集成。 这随后会在进行纵向缩减时自动从我们的系统服务 (FM) 状态中删除节点。
+1. 为群集中的节点类型选择金级或银级持续性级别，这会提供基础结构集成。 这随后会在进行减少时自动从我们的系统服务 (FM) 状态中删除节点。
     在[此处](service-fabric-cluster-capacity.md)了解有关持续性级别的详细信息
 
 2. 减少 VM 实例之后，需要调用 [Remove-ServiceFabricNodeState cmdlet](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricnodestate)。

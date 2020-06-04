@@ -18,7 +18,7 @@ ms.locfileid: "82126718"
 # <a name="customize-server-configuration-parameters-by-using-azure-cli"></a>使用 Azure CLI 自定义服务器配置参数
 可以使用 Azure CLI、Azure 命令行实用工具来列出、显示和更新 Azure Database for MariaDB 服务器的配置参数。 在服务器级别会公开引擎配置的一个子集，并可以进行修改。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 若要逐步执行本操作方法指南，需要：
 - [Azure Database for MariaDB 服务器](quickstart-create-mariadb-server-database-using-azure-cli.md)
 - [Azure CLI](/cli/install-azure-cli) 命令行实用工具。
@@ -36,7 +36,7 @@ az mariadb server configuration list --resource-group myresourcegroup --server m
 ## <a name="show-server-configuration-parameter-details"></a>显示服务器配置参数详细信息
 若要显示服务器的某个特定配置参数的详细信息，请运行 [az mariadb server configuration show](https://docs.microsoft.com/cli/azure/mariadb/server/configuration#az-mariadb-server-configuration-show) 命令。
 
-本示例显示了资源组 **myresourcegroup\_ 下服务器 \_mydemoserver.mariadb.database.chinacloudapi.cn** 的服务器配置参数 **slow**query**log** 的详细信息。
+本示例显示了资源组 **myresourcegroup** 下服务器 **mydemoserver.mariadb.database.chinacloudapi.cn** 的服务器配置参数 **slow\_query\_log** 的详细信息。
 ```azurecli
 az mariadb server configuration show --name slow_query_log --resource-group myresourcegroup --server mydemoserver
 ```
@@ -44,7 +44,7 @@ az mariadb server configuration show --name slow_query_log --resource-group myre
 ## <a name="modify-a-server-configuration-parameter-value"></a>修改服务器配置参数值
 此外，你还可以修改某个服务器配置参数的值，这会更新 MariaDB 服务器引擎的基础配置值。 若要更新配置，请使用 [az mariadb server configuration set](https://docs.microsoft.com/cli/azure/mariadb/server/configuration#az-mariadb-server-configuration-set) 命令。 
 
-更新资源组 **myresourcegroup\_ 下服务器 \_mydemoserver.mariadb.database.chinacloudapi.cn** 的服务器配置参数 **slow**query**log**。
+更新资源组 **myresourcegroup** 下服务器 **mydemoserver.mariadb.database.chinacloudapi.cn** 的服务器配置参数 **slow\_query\_log**。
 ```azurecli
 az mariadb server configuration set --name slow_query_log --resource-group myresourcegroup --server mydemoserver --value ON
 ```
@@ -54,7 +54,7 @@ az mariadb server configuration set --name slow_query_log --resource-group myres
 az mariadb server configuration set --name slow_query_log --resource-group myresourcegroup --server mydemoserver
 ```
 
-此代码会将 slow**query\_log\_** 配置重置为默认值 OFF  。 
+此代码会将 slow\_query\_log 配置重置为默认值 OFF。 
 
 ## <a name="working-with-the-time-zone-parameter"></a>使用时区参数
 
@@ -70,7 +70,7 @@ CALL mysql.az_load_timezone();
 ```
 
 > [!IMPORTANT]
-> 应重启服务器，确保正确填充时区表。 要重启服务器，请使用 [Azure 门户](howto-restart-server-portal.md)或 [CLI](howto-restart-server-cli.md)。
+> 应重启服务器，以确保正确填充时区表。 要重启服务器，请使用 [Azure 门户](howto-restart-server-portal.md)或 [CLI](howto-restart-server-cli.md)。
 
 要查看可用的时区值，请运行以下命令：
 
@@ -82,7 +82,7 @@ SELECT name FROM mysql.time_zone_name;
 
 可以使用 [az mariadb server configuration set](https://docs.microsoft.com/cli/azure/mariadb/server/configuration#az-mariadb-server-configuration-set) 命令来设置全局级时区。
 
-以下命令将资源组 **myresourcegroup\_ 下的服务器** mydemoserver.mariadb.database.chinacloudapi.cn**的服务器配置参数**time**zone** 更新为 **US/Pacific**。
+以下命令将资源组 **myresourcegroup** 下的服务器 **mydemoserver.mariadb.database.chinacloudapi.cn** 的服务器配置参数 **time\_zone** 更新为 **US/Pacific**。
 
 ```azurecli
 az mariadb server configuration set --name time_zone --resource-group myresourcegroup --server mydemoserver --value "US/Pacific"
@@ -90,7 +90,7 @@ az mariadb server configuration set --name time_zone --resource-group myresource
 
 ### <a name="setting-the-session-level-time-zone"></a>设置会话级时区
 
-可以通过从 MariaDB 命令行或 MariaDB Workbench 等工具运行 `SET time_zone` 命令来设置会话级时区。 以下示例将时区设置为“美国/太平洋”  时区。  
+可以通过从 MariaDB 命令行或 MariaDB Workbench 等工具运行 `SET time_zone` 命令来设置会话级时区。 以下示例将时区设置为“美国/太平洋”时区。  
 
 ```sql
 SET time_zone = 'US/Pacific';

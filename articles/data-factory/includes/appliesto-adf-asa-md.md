@@ -6,5 +6,5 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "82197744"
 ---
-<Token>适用于：  ![是](../media/applies-to/yes.png) Azure 数据工厂![是](../media/applies-to/yes.png) Azure Synapse Analytics（预览版）</Token>
+<Token>适用于：![是](../media/applies-to/yes.png) Azure 数据工厂![是](../media/applies-to/yes.png) Azure Synapse Analytics（预览版）</Token>
 

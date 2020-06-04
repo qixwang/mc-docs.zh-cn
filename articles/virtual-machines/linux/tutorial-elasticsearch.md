@@ -43,7 +43,7 @@ ms.locfileid: "82159179"
 
 使用 [az group create](https://docs.azure.cn/zh-cn/cli/group?view=azure-cli-latest#az-group-create) 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 
 
-以下示例在“chinaeast”  位置创建名为“myResourceGroup”  的资源组。
+以下示例在“chinaeast”位置创建名为“myResourceGroup”的资源组。
 
 ```azurecli 
 az group create --name myResourceGroup --location chinaeast
@@ -226,11 +226,11 @@ sudo systemctl start kibana.service
 az vm open-port --port 5601 --resource-group myResourceGroup --name myVM
 ```
 
-打开 Kibana 控制台并选择“创建”，根据之前发送给 Elasticsearch 的 syslog 数据生成默认索引  。 
+打开 Kibana 控制台并选择“创建”，根据之前发送给 Elasticsearch 的 syslog 数据生成默认索引。 
 
 ![浏览 Kibana 中的 Syslog 事件](media/elasticsearch-install/kibana-index.png)
 
-在 Kibana 控制台上选择“发现”，搜索、浏览和筛选 syslog 事件  。
+在 Kibana 控制台上选择“发现”，搜索、浏览和筛选 syslog 事件。
 
 ![浏览 Kibana 中的 Syslog 事件](media/elasticsearch-install/kibana-search-filter.png)
 

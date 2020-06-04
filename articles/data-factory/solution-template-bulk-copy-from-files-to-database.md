@@ -39,15 +39,15 @@ ms.locfileid: "82198009"
 
 ## <a name="how-to-use-this-solution-template"></a>如何使用此解决方案模板
 
-1. 转到“从文件批量复制到数据库”模板。  创建与源 Gen2 存储的新连接。  请注意，“GetMetadataDataset”和“SourceDataset”是对源文件存储的同一连接的引用。
+1. 转到“从文件批量复制到数据库”模板。 创建与源 Gen2 存储的新连接。 请注意，“GetMetadataDataset”和“SourceDataset”是对源文件存储的同一连接的引用。
 
     ![创建与源数据存储的新连接](media/solution-template-bulk-copy-from-files-to-database/source-connection.png)
 
-2. 创建与接收器数据存储（要将数据复制到其中）的新  连接。
+2. 创建与接收器数据存储（要将数据复制到其中）的新连接。
 
     ![创建与接收器数据存储的新连接](media/solution-template-bulk-copy-from-files-to-database/destination-connection.png)
     
-3. 选择“使用此模板”  。
+3. 选择“使用此模板”。
 
     ![使用此模板](media/solution-template-bulk-copy-from-files-to-database/use-template.png)
     
@@ -56,11 +56,11 @@ ms.locfileid: "82198009"
     ![查看管道](media/solution-template-bulk-copy-from-files-to-database/new-pipeline.png)
 
     > [!NOTE]
-    > 如果在上面提到的**步骤 2** 中选择了“Azure Synapse Analytics（以前为 SQL DW）”  作为数据目标，需要按 SQL 数据仓库 Polybase 的要求，输入用于暂存的 Azure Blob 存储的连接。 如以下屏幕截图所示，模板会自动为 Blob 存储生成*存储路径*。 检查是否在管道运行后创建了容器。
+    > 如果在上面提到的**步骤 2** 中选择了“Azure Synapse Analytics（以前为 SQL DW）”作为数据目标，需要按 SQL 数据仓库 Polybase 的要求，输入用于暂存的 Azure Blob 存储的连接。 如以下屏幕截图所示，模板会自动为 Blob 存储生成*存储路径*。 检查是否在管道运行后创建了容器。
         
     ![Polybase 设置](media/solution-template-bulk-copy-from-files-to-database/staging-account.png)
 
-5. 选择“调试”，输入**参数**，然后选择“完成”。  
+5. 选择“调试”，输入**参数**，然后选择“完成”。 
 
     ![单击“调试”****](media/solution-template-bulk-copy-from-files-to-database/debug-run.png)
 

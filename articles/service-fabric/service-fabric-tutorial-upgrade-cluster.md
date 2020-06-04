@@ -22,13 +22,13 @@ ms.locfileid: "82093332"
 
 如果群集已在运行最新的 Service Fabric 运行时，则不需要执行此步骤。 但是，可以参考本文在 Azure Service Fabric 群集上安装任何受支持的运行时。
 
-在本教程中，你将了解如何执行以下操作：
+本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 读取群集版本
 > * 设置群集版本
 
-在此系列教程中，你会学习如何：
+在此系列教程中，你将学习如何：
 > [!div class="checklist"]
 > * 使用模板在 Azure 上创建安全 [Windows 群集](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
 > * [监视群集](service-fabric-tutorial-monitor-cluster.md)
@@ -38,7 +38,7 @@ ms.locfileid: "82093332"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在开始学习本教程之前：
 
@@ -76,7 +76,7 @@ Get-AzServiceFabricCluster | Select-Object Name, ClusterCodeVersion
 
 ## <a name="upgrade-the-runtime"></a>升级运行时
 
-在 **cmdlet 中使用在上一部分获取的**ClusterCodeVersion`Get-ServiceFabricRuntimeUpgradeVersion` 值来发现可升级到的版本。 只能在已连接到 Internet 的计算机上运行此 cmdlet。 例如，如果想要查看可从版本 `5.7.198.9494` 升级到哪些运行时版本，请使用以下命令：
+在 `Get-ServiceFabricRuntimeUpgradeVersion` cmdlet 中使用在上一部分获取的 **ClusterCodeVersion** 值来发现可升级到的版本。 只能在已连接到 Internet 的计算机上运行此 cmdlet。 例如，如果想要查看可从版本 `5.7.198.9494` 升级到哪些运行时版本，请使用以下命令：
 
 ```powershell
 Get-ServiceFabricRuntimeUpgradeVersion -BaseVersion "5.7.198.9494"
@@ -190,14 +190,14 @@ sfctl cluster upgrade-status
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你了解了如何执行以下操作：
+在本教程中，你已学习了如何执行以下操作：
 
 > [!div class="checklist"]
 > * 获取群集运行时的版本
 > * 升级群集运行时
 > * 监视升级
 
-转到下一教程：
+进入下一教程：
 
 > [!div class="nextstepaction"]
 > [删除群集](service-fabric-tutorial-delete-cluster.md)

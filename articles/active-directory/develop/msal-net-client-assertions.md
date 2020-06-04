@@ -39,7 +39,7 @@ MSAL.NET 可以通过四种方法将凭据或断言提供给机密客户端应�
 
 ### <a name="signed-assertions"></a>签名断言
 
-签名客户端断言采用签名 JWT 形式，其有效负载包含 Azure AD 强制要求的、Base64 编码的身份验证声明。 使用方式：
+签名客户端断言采用签名 JWT 形式，其有效负载包含 Azure AD 强制要求的、Base64 编码的身份验证声明。 若要使用它，请执行以下步骤：
 
 ```csharp
 string signedClientAssertion = ComputeAssertion();
@@ -50,7 +50,7 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 
 Azure AD 预期的声明为：
 
-声明类型 | 值 | 说明
+声明类型 | Value | 说明
 ---------- | ---------- | ----------
 aud | `https://login.partner.microsoftonline.cn/{tenantId}/v2.0` | “aud”（受众）声明标识 JWT 预期的接收者（在这里为 Azure AD）。请参阅 [RFC 7519 的 4.1.3 部分]
 exp | 2019 年 6 月 27 日，周四 15:04:17 GMT+0200（罗马夏令时） | “exp”（过期时间）声明指定只能在哪个时间（含）之前接受 JWT 的处理。 请参阅 [RFC 7519 的 4.1.4 部分]
@@ -196,5 +196,5 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 
 如果传入的目录中的某个声明与某个必需声明相同，则会考虑其他声明的值。 它会重写 MSAL.NET 计算的声明。
 
-若要提供你自己的声明（包括 Azure AD 预期的必需声明），请针对 `false` 参数传入 `mergeWithDefaultClaims`。
+若要提供你自己的声明（包括 Azure AD 预期的必需声明），请针对 `mergeWithDefaultClaims` 参数传入 `false`。
 

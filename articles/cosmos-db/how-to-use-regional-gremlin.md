@@ -26,9 +26,9 @@ Azure Cosmos DB Graph 数据库是[多区域分布](distribute-data-globally.md)
 
 ## <a name="traffic-routing"></a>流量路由
 
-Cosmos DB Graph 数据库引擎正在多个区域中运行，其中每个区域都包含多个群集。 每个群集都有数百台计算机。 Cosmos DB Graph 帐户 DNS CNAME accountname.gremlin.cosmos.azure.cn  解析为群集的 DNS A 记录。 负载平衡器的单个 IP 地址将隐藏内部群集拓扑。
+Cosmos DB Graph 数据库引擎正在多个区域中运行，其中每个区域都包含多个群集。 每个群集都有数百台计算机。 Cosmos DB Graph 帐户 DNS CNAME accountname.gremlin.cosmos.azure.cn 解析为群集的 DNS A 记录。 负载平衡器的单个 IP 地址将隐藏内部群集拓扑。
 
-将为 Cosmos DB Graph 帐户的每个区域创建一个区域 DNS CNAME 记录。 区域终结点的格式是 accountname-region.gremlin.cosmos.azure.cn  。 通过删除 [Azure 区域](https://azure.microsoft.com/global-infrastructure/regions/)名称中的所有空格获取区域终结点的区域段。 例如，`"China East 2"` 多区域数据库帐户的 `"contoso"` 区域将具有 DNS CNAME contoso-chinaeast2.gremlin.cosmos.azure.cn 
+将为 Cosmos DB Graph 帐户的每个区域创建一个区域 DNS CNAME 记录。 区域终结点的格式是 accountname-region.gremlin.cosmos.azure.cn。 通过删除 [Azure 区域](https://azure.microsoft.com/global-infrastructure/regions/)名称中的所有空格获取区域终结点的区域段。 例如，`"contoso"` 多区域数据库帐户的 `"China East 2"` 区域将具有 DNS CNAME contoso-chinaeast2.gremlin.cosmos.azure.cn
 
 TinkerPop Gremlin 客户端设计用于单台服务器。 应用程序可将多区域可写入 DNS CNAME 用于读取和写入流量。 可识别区域的应用程序应使用区域终结点来读取流量。 仅在特定区域配置为接受写入时，才将区域终结点用于写入流量。 
 

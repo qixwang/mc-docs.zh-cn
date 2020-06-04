@@ -49,8 +49,8 @@ ms.locfileid: "83392409"
 
 1. 登录到 Windows 虚拟机。
 2. 以管理员身份打开“命令提示符”窗口。 将目录切换到 **%windir%\system32\sysprep**，然后运行 `sysprep.exe`。
-3. 在“系统准备工具”对话框中，选择“进入系统全新体验(OOBE)”，确保已选中“通用化”复选框。   
-4. 在“关机选项”中选择“关机”。  
+3. 在“系统准备工具”对话框中，选择“进入系统全新体验(OOBE)”，确保已选中“通用化”复选框。  
+4. 在“关机选项”中选择“关机”。 
 5. 单击 **“确定”** 。
 
     ![启动 Sysprep](./media/upload-generalized-managed/sysprepgeneral.png)
@@ -274,7 +274,7 @@ New-AzVM -ResourceGroupName $rgName -Location $location -VM $vm
 ```
 
 ## <a name="verify-that-the-vm-was-created"></a>验证是否已创建 VM
-完成后，应会在 [Azure 门户](https://portal.azure.cn)的“浏览” > “虚拟机”下看到新建的 VM，也可以使用以下 PowerShell 命令查看该 VM：  
+完成后，应会在 [Azure 门户](https://portal.azure.cn)的“浏览” > “虚拟机”下看到新建的 VM，也可以使用以下 PowerShell 命令查看该 VM： 
 
 ```powershell
     $vmList = Get-AzVM -ResourceGroupName $rgName

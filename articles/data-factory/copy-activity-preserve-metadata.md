@@ -32,9 +32,9 @@ ms.locfileid: "82198267"
 复制活动支持在数据复制期间保留以下属性：
 
 - **所有客户指定的元数据** 
-- 以及以下五个数据存储内置系统属性： **、** （Amazon S3 除外）、`contentType`、`contentLanguage`、`contentEncoding``contentDisposition``cacheControl`。
+- 以及以下五个数据存储内置系统属性：`contentType`、`contentLanguage`（Amazon S3 除外）、`contentEncoding`、`contentDisposition`、`cacheControl`。
 
-按原样将文件从 Amazon S3/Azure Data Lake Storage Gen2/Azure Blob 复制到二进制格式的 Azure Data Lake Storage Gen2/Azure Blob 时，可以在用于活动创作的“复制活动” **“设置”选项卡或复制数据工具的“设置”页上找到“保留”选项**   >    。
+按原样将文件从 Amazon S3/Azure Data Lake Storage Gen2/Azure Blob 复制到二进制格式的 Azure Data Lake Storage Gen2/Azure Blob 时，可以在用于活动创作的“复制活动” > “设置”选项卡或复制数据工具的“设置”页上找到“保留”选项   。
 
 ![复制活动保留元数据](./media/copy-activity-preserve-metadata/copy-activity-preserve-metadata.png)
 

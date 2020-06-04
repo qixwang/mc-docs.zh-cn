@@ -21,7 +21,7 @@ ms.locfileid: "82093481"
 
 ## <a name="what-are-base-images"></a>什么是基础映像？
 
-定义了大部分容器映像的 Dockerfile 会指定映像所基于的父级映像，通常将父级映像称为它的基础映像  。 基础映像通常包含操作系统，例如 [Alpine Linux][base-alpine] 或 [Windows Nano Server][base-windows]，其余的容器层应用于这些操作系统上。 这些映像可能还包括应用程序框架，例如 [Node.js][base-node] 或 [.NET Core][base-dotnet]。 这些基础映像本身通常基于公共上游映像。 多个应用程序映像可以共享一个通用基本映像。
+定义了大部分容器映像的 Dockerfile 会指定映像所基于的父级映像，通常将父级映像称为它的基础映像。 基础映像通常包含操作系统，例如 [Alpine Linux][base-alpine] 或 [Windows Nano Server][base-windows]，其余的容器层应用于这些操作系统上。 这些映像可能还包括应用程序框架，例如 [Node.js][base-node] 或 [.NET Core][base-dotnet]。 这些基础映像本身通常基于公共上游映像。 多个应用程序映像可以共享一个通用基本映像。
 
 基础映像通常通过映像维护程序更新，以将 OS 或框架的新功能或改进添加进该映像中。 安全补丁是更新基础映像的另一常见原因。 当这些上游更新发生时，你还必须更新基础映像，使之包括关键修复。 然后，还必须重新生成每个应用程序映像，以包含目前已包含在基础映像中的这些上游修复。
 
@@ -46,9 +46,9 @@ ms.locfileid: "82093481"
 
 ## <a name="additional-considerations"></a>其他注意事项
 
-* **应用程序映像的基础映像** - 目前，ACR 任务仅跟踪应用程序（*运行时*）映像的基础映像更新。 它不跟踪多阶段 Dockerfile 中使用的中间 (buildtime  ) 映像的基础映像更新。  
+* **应用程序映像的基础映像** - 目前，ACR 任务仅跟踪应用程序（*运行时*）映像的基础映像更新。 它不跟踪多阶段 Dockerfile 中使用的中间 (buildtime) 映像的基础映像更新。  
 
-* **默认启用** - 使用 [az acr task create][az-acr-task-create] 命令创建某个 ACR 任务时，会默认启用该任务，以便在更新基础映像时触发。  即，`base-image-trigger-enabled` 属性设置为 True。 若要在任务中禁用此行为，请将该属性更新为 False。 例如，运行以下 [az acr task update][az-acr-task-update] 命令：
+* **默认启用** - 使用 [az acr task create][az-acr-task-create] 命令创建某个 ACR 任务时，会默认启用该任务，以便在更新基础映像时触发。 即，`base-image-trigger-enabled` 属性设置为 True。 若要在任务中禁用此行为，请将该属性更新为 False。 例如，运行以下 [az acr task update][az-acr-task-update] 命令：
 
     ```azurecli
     az acr task update --registry myregistry --name mytask --base-image-trigger-enabled False
@@ -58,7 +58,7 @@ ms.locfileid: "82093481"
 
 * **触发依赖项跟踪** - 若要启用某个 ACR 任务来确定并跟踪容器映像的依赖项（包括其基础映像），必须先将该任务触发**至少一次**。 例如，使用 [az acr task run][az-acr-task-run] 命令手动触发该任务。
 
-* **基础映像的稳定标记** - 若要在更新基础映像时触发任务，基础映像必须有一个稳定的标记，例如 *。* `node:9-alpine` 在将 OS 和框架修补到最新稳定版本时会更新的基础映像往往带有此标记。 如果使用新的版本标记更新基础映像，则不会触发任务。 有关映像标记的详细信息，请参阅[最佳做法指南](container-registry-image-tag-version.md)。 
+* **基础映像的稳定标记** - 若要在更新基础映像时触发任务，基础映像必须有一个稳定的标记，例如 `node:9-alpine`。 在将 OS 和框架修补到最新稳定版本时会更新的基础映像往往带有此标记。 如果使用新的版本标记更新基础映像，则不会触发任务。 有关映像标记的详细信息，请参阅[最佳做法指南](container-registry-image-tag-version.md)。 
 
 * **其他任务触发器** - 在由基础映像更新触发的任务中，你还可以启用基于[源代码提交](container-registry-tutorial-build-task.md)或[计划](container-registry-tasks-scheduled.md)的触发器。 基础映像更新还可以触发[多步骤任务](container-registry-tasks-multi-step.md)。
 

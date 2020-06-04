@@ -48,7 +48,7 @@ Connect-AzAccount -Environment AzureChinaCloud
 $cred = Get-Credential
 ```
 
-现在，可使用 [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) 创建 VM。 以下示例在“ChinaEast”位置  创建一个名为 myVM  的 VM。 如果资源组 *myResourceGroupAutomate* 和支持的网络资源不存在，则会创建它们。 此 cmdlet 还打开端口 *80*，目的是允许 Web 流量。
+现在，可使用 [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) 创建 VM。 以下示例在“ChinaEast”位置创建一个名为 myVM 的 VM。 如果资源组 *myResourceGroupAutomate* 和支持的网络资源不存在，则会创建它们。 此 cmdlet 还打开端口 *80*，目的是允许 Web 流量。
 
 ```powershell
 New-AzVm `
@@ -66,7 +66,7 @@ New-AzVm `
 创建资源和 VM 需要几分钟的时间。
 
 ## <a name="automate-iis-install"></a>自动安装 IIS
-使用 [Set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) 安装自定义脚本扩展。 该扩展运行 `powershell Add-WindowsFeature Web-Server` 来安装 IIS Web 服务器，然后更新 Default.htm  页以显示 VM 的主机名：
+使用 [Set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) 安装自定义脚本扩展。 该扩展运行 `powershell Add-WindowsFeature Web-Server` 来安装 IIS Web 服务器，然后更新 Default.htm 页以显示 VM 的主机名：
 
 ```powershell
 Set-AzVMExtension -ResourceGroupName "myResourceGroupAutomate" `
@@ -80,7 +80,7 @@ Set-AzVMExtension -ResourceGroupName "myResourceGroupAutomate" `
 ```
 
 ## <a name="test-web-site"></a>测试网站
-使用 [Get-AzPublicIPAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress) 获取负载均衡器的公共 IP 地址。 以下示例获取前面创建的 myPublicIPAddress  的 IP 地址：
+使用 [Get-AzPublicIPAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress) 获取负载均衡器的公共 IP 地址。 以下示例获取前面创建的 myPublicIPAddress 的 IP 地址：
 
 ```powershell
 Get-AzPublicIPAddress `

@@ -39,7 +39,7 @@ ms.locfileid: "82886818"
 
 ## <a name="create-a-service-bus-namespace"></a>创建服务总线命名空间
 
-在本快速入门中，使用 [Azure 快速启动模板](https://github.com/Azure/azure-quickstart-templates/blob/master/101-servicebus-create-namespace/azuredeploy.json)中的[现有资源管理器模板](https://azure.microsoft.com/resources/templates/)：
+在本快速入门中，使用 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/)中的[现有资源管理器模板](https://github.com/Azure/azure-quickstart-templates/blob/master/101-servicebus-create-namespace/azuredeploy.json)：
 
 ```
 {
@@ -101,11 +101,11 @@ ms.locfileid: "82886818"
 }
 ```
 
-若要查找更多模板示例，请参阅 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Servicebus&pageNumber=1&sort=Popular)。
+若要查找更多模板示例，请参阅 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Servicebus&pageNumber=1&sort=Popular)。
 
 若要通过部署模板创建服务总线命名空间，请执行以下操作：
 
-1. 从以下代码块中选择“试一试”  ，然后按照说明登录到 Azure PowerShell。
+1. 从以下代码块中选择“试一试”，然后按照说明登录到 Azure PowerShell。
 
     ```
     $serviceBusNamespaceName = Read-Host -Prompt "Enter a name for the service bus namespace to be created"
@@ -121,10 +121,10 @@ ms.locfileid: "82886818"
 
     资源组名称是追加了 **rg** 的服务总线命名空间名称。
 
-2. 选择“复制”以复制 PowerShell 脚本。 
-3. 右键单击 shell 控制台并选择“粘贴”  。
+2. 选择“复制”以复制 PowerShell 脚本。
+3. 右键单击 shell 控制台，然后选择“粘贴”。
 
-创建事件中心需要花费片刻时间。
+创建事件中心需要一些时间。
 
 ## <a name="verify-the-deployment"></a>验证部署
 

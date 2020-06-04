@@ -27,7 +27,7 @@ ms.locfileid: "82093502"
 可以使用两个不同的工作流将群集升级至最新版本或受支持的 Service Fabric 版本。 其中一个工作流适用于已建立网络连接，可自动下载最新版本的群集。 另一个工作流适用于未建立网络连接，无法下载最新 Service Fabric 版本的群集。
 
 ## <a name="enable-auto-upgrade-of-the-service-fabric-version-of-your-cluster"></a>支持自动升级群集的 Service Fabric 版本
-要将群集设置为在 Azure 发布新版本时下载 Service Fabric 的更新，可将 `fabricClusterAutoupgradeEnabled` 群集配置设置为 true  。 若要手动选择希望群集一直使用的某个受支持的 Service Fabric 版本，可将 `fabricClusterAutoupgradeEnabled` 群集配置设置为 false  。
+要将群集设置为在 Azure 发布新版本时下载 Service Fabric 的更新，可将 `fabricClusterAutoupgradeEnabled` 群集配置设置为 true。 若要手动选择希望群集一直使用的某个受支持的 Service Fabric 版本，可将 `fabricClusterAutoupgradeEnabled` 群集配置设置为 false。
 
 <a name="upgrade-the-cluster-configuration"></a>
 ## <a name="upgrade-clusters-that-have-connectivity-to-download-the-latest-code-and-configuration"></a>升级已建立网络连接，可下载最新代码和配置的群集
@@ -96,7 +96,7 @@ ms.locfileid: "82093502"
 >
 
 ### <a name="auto-provisioning-vs-manual-provisioning"></a>自动预配与手动预配
-若要为最新代码版本启用自动下载和注册，请设置 Service Fabric 更新服务。 有关说明，请参阅[独立包](service-fabric-cluster-standalone-package-contents.md)中的 Tools\ServiceFabricUpdateService.zip\Readme_InstructionsAndHowTos.txt  。
+若要为最新代码版本启用自动下载和注册，请设置 Service Fabric 更新服务。 有关说明，请参阅[独立包](service-fabric-cluster-standalone-package-contents.md)中的 Tools\ServiceFabricUpdateService.zip\Readme_InstructionsAndHowTos.txt。
 
 对于手动步骤，请根据以下说明操作。
 

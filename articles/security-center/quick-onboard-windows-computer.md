@@ -73,7 +73,7 @@ ms.locfileid: "84126793"
 9. 在“准备安装”页上检查所做的选择，并选择“安装” 。
 10. 在“配置已成功完成”页上，选择“完成” 
 
-完成后，**Log Analytics 代理**会显示在“控制面板”中。  可以在该处检查配置，并验证代理是否已连接。
+完成后，**Log Analytics 代理**会显示在“控制面板”中。 可以在该处检查配置，并验证代理是否已连接。
 
 有关安装和配置代理的详细信息，请参阅[连接 Windows 计算机](../azure-monitor/platform/agent-windows.md#install-the-agent-using-setup-wizard)。
 
@@ -94,7 +94,7 @@ ms.locfileid: "84126793"
 
 1. 打开“控制面板”
 2. 打开“程序和功能”。
-3. 在“程序和功能”中选择“Log Analytics 代理”，单击“卸载”。   
+3. 在“程序和功能”中选择“Log Analytics 代理”，单击“卸载”。  
 
 ## <a name="next-steps"></a>后续步骤
 在本快速入门中，你已在 Windows 计算机上预配了 Log Analytics 代理。 若要详细了解如何使用安全中心，请继续阅读教程，了解如何配置安全策略和评估资源的安全性。

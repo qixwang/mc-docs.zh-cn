@@ -25,7 +25,7 @@ ms.locfileid: "82134884"
 
 ## <a name="install-the-emulator-build-task"></a>安装模拟器生成任务
 
-若要使用生成任务，需先将它安装到 Azure DevOps 组织。  在[市场](https://marketplace.visualstudio.com/items?itemName=azure-cosmosdb.emulator-public-preview)中找到“Azure Cosmos DB 模拟器”，然后单击“免费获取”。 
+若要使用生成任务，需先将它安装到 Azure DevOps 组织。 在[市场](https://marketplace.visualstudio.com/items?itemName=azure-cosmosdb.emulator-public-preview)中找到“Azure Cosmos DB 模拟器”，然后单击“免费获取”。
 
 ![在 Azure DevOps 市场中找到并安装 Azure Cosmos DB 模拟器生成任务](./media/tutorial-setup-ci-cd/addExtension_1.png)
 
@@ -44,7 +44,7 @@ ms.locfileid: "82134884"
 
     ![创建新的生成管道](./media/tutorial-setup-ci-cd/CreateNewBuildDef_1.png)
 
-2. 选择所需**源**、**团队项目**、**存储库**和**手动和计划生成的默认分库**。 选择所需选项后，请选择“继续”  。
+2. 选择所需**源**、**团队项目**、**存储库**和**手动和计划生成的默认分库**。 选择所需选项后，请选择“继续”。
 
     ![针对生成管道选择团队项目、存储库和分库](./media/tutorial-setup-ci-cd/CreateNewBuildDef_2.png)
 
@@ -63,9 +63,9 @@ Start-CosmosDbEmulator
 <a name="addEmulatorBuildTaskToBuildDefinition"></a>
 ## <a name="add-the-task-to-a-build-pipeline"></a>将任务添加到生成管道
 
-1. 在向生成管道添加任务之前，应先添加代理作业。 导航到生成管道，选择“...”，然后选择“添加代理作业”。  
+1. 在向生成管道添加任务之前，应先添加代理作业。 导航到生成管道，选择“...”，然后选择“添加代理作业”。 
 
-1. 接下来选择代理作业旁边的 **+** 符号，以便添加模拟器生成任务。 在搜索框中搜索 **cosmos**，选择“Azure Cosmos DB 模拟器”，然后将其添加到代理作业。  此生成任务会启动一个容器，其中的 Cosmos DB 模拟器实例已经运行。 应该将 Azure Cosmos DB 模拟器任务置于任何其他预期模拟器会处于运行状态的任务之前。
+1. 接下来选择代理作业旁边的 **+** 符号，以便添加模拟器生成任务。 在搜索框中搜索 **cosmos**，选择“Azure Cosmos DB 模拟器”，然后将其添加到代理作业。 此生成任务会启动一个容器，其中的 Cosmos DB 模拟器实例已经运行。 应该将 Azure Cosmos DB 模拟器任务置于任何其他预期模拟器会处于运行状态的任务之前。
 
     ![向生成定义添加模拟器生成任务](./media/tutorial-setup-ci-cd/addExtension_3.png)
 
@@ -90,7 +90,7 @@ Start-CosmosDbEmulator
 </RunSettings>
 ```
 
-如果正在为使用 Azure Cosmos DB 的 MongoDB API 的应用程序设置 CI/CD 管道，则连接字符串默认包含端口号 10255。 但是，此端口当前未打开，作为替代方法，你应该使用端口 10250 建立连接。 Azure Cosmos DB 用于 MongoDB 连接字符串的 API 保持不变，不同的是支持的端口号是 10250 而不是 10255。
+如果正在为使用 Azure Cosmos DB 的 API for MongoDB 的应用程序设置 CI/CD 管道，则连接字符串默认包含端口号 10255。 但是，此端口当前未打开，作为替代方法，你应该使用端口 10250 建立连接。 Azure Cosmos DB 的 API for MongoDB 连接字符串保持不变，不同的是支持的端口号是 10250 而不是 10255。
 
 这些参数 (`TestRunParameters`) 通过应用程序的测试项目中的 `TestContext` 属性引用。 下面是一个针对 Cosmos DB 运行的测试的示例。
 
@@ -140,13 +140,13 @@ namespace todo.Tests
 }
 ```
 
-导航到 Visual Studio 测试任务中的“执行选项”。 在“设置文件”选项中，指定测试使用  **.runsettings** 文件进行配置。 在“替代测试运行参数”选项中，添加 **。** `-endpoint $(CosmosDbEmulator.Endpoint)` 这样做会将测试任务配置为引用模拟器生成任务的终结点，而不是在 **.runsettings** 文件中定义的终结点。  
+导航到 Visual Studio 测试任务中的“执行选项”。 在“设置文件”选项中，指定测试使用 **.runsettings** 文件进行配置。 在“替代测试运行参数”选项中，添加 `-endpoint $(CosmosDbEmulator.Endpoint)`。 这样做会将测试任务配置为引用模拟器生成任务的终结点，而不是在 **.runsettings** 文件中定义的终结点。  
 
 ![使用模拟器生成任务终结点替代终结点变量](./media/tutorial-setup-ci-cd/addExtension_5.png)
 
 ## <a name="run-the-build"></a>运行生成
 
-现在，请对该生成执行“保存并排队”操作。  
+现在，请对该生成执行“保存并排队”操作。 
 
 ![保存并运行生成](./media/tutorial-setup-ci-cd/runBuild_1.png)
 

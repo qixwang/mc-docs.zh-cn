@@ -46,7 +46,7 @@ ms.locfileid: "82198214"
 
 对于特定于 Dynamics AX 连接器的数据工厂实体，以下部分提供了有关用于定义这些实体的属性的详细信息。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要使用服务主体身份验证，请执行以下步骤：
 
@@ -62,7 +62,7 @@ ms.locfileid: "82198214"
 
 Dynamics AX 链接的服务支持以下属性：
 
-| properties | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | **type** 属性必须设置为 **DynamicsAX**。 |是 |
 | url | Dynamics AX（或 Dynamics 365 Finance and Operations）实例 OData 终结点。 |是 |
@@ -106,10 +106,10 @@ Dynamics AX 链接的服务支持以下属性：
 
 要从 Dynamics AX 复制数据，请将数据集的 **type** 属性设置为 **DynamicsAXResource**。 支持以下属性：
 
-| properties | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 数据集的 **type** 属性必须设置为 **DynamicsAXResource**。 | 是 |
-| 路径 | Dynamics AX OData 实体的路径。 | 是 |
+| path | Dynamics AX OData 实体的路径。 | 是 |
 
 **示例**
 
@@ -140,10 +140,10 @@ Dynamics AX 链接的服务支持以下属性：
 
 若要从 Dynamics AX 复制数据，请将复制活动中的 **source** 类型设置为 **DynamicsAXSource**。 复制活动 **source** 节支持以下属性：
 
-| properties | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 **type** 属性必须设置为 **DynamicsAXSource**。 | 是 |
-| query | 用于筛选数据的 OData 查询选项。 示例：`"?$select=Name,Description&$top=5"`。<br/><br/>**注意**：连接器从以下组合 URL 复制数据：`[URL specified in linked service]/[path specified in dataset][query specified in copy activity source]`。 有关详细信息，请参阅 [OData URL 组件](https://www.odata.org/documentation/odata-version-3-0/url-conventions/)。 | 否 |
+| 查询 | 用于筛选数据的 OData 查询选项。 示例：`"?$select=Name,Description&$top=5"`。<br/><br/>**注意**：连接器会从以下组合 URL 复制数据：`[URL specified in linked service]/[path specified in dataset][query specified in copy activity source]`。 有关详细信息，请参阅 [OData URL 组件](https://www.odata.org/documentation/odata-version-3-0/url-conventions/)。 | 否 |
 
 **示例**
 

@@ -57,9 +57,9 @@ ms.locfileid: "82197787"
 
 名称 | 说明 | 类型 | 必需？
 ---- | ----------- | ---- | --------
-dataset | 为查找提供数据集引用。 从每篇相应的连接器文章的“数据集属性”  部分中获取详细信息。 | 键/值对 | 是
-source | 包含特定于数据集的源属性，与复制活动源相同。 从每篇相应的连接器文章的“复制活动属性”  部分中获取详细信息。 | 键/值对 | 是
-firstRowOnly | 指示仅返回第一行还是返回所有行。 | Boolean | 不是。 默认为 `true`。
+dataset | 为查找提供数据集引用。 从每篇相应的连接器文章的“数据集属性”部分中获取详细信息。 | 键/值对 | 是
+source | 包含特定于数据集的源属性，与复制活动源相同。 从每篇相应的连接器文章的“复制活动属性”部分中获取详细信息。 | 键/值对 | 是
+firstRowOnly | 指示仅返回第一行还是返回所有行。 | 布尔 | 否。 默认为 `true`。
 
 > [!NOTE]
 > 
@@ -83,7 +83,7 @@ firstRowOnly | 指示仅返回第一行还是返回所有行。 | Boolean | 不�
     }
     ```
 
-* **当 `firstRowOnly` 设置为 `false` 时**，输出格式如以下代码所示。 `count` 字段指示返回的记录数。 详细值显示在固定的 `value` 数组下。 在这种情况下，查找活动后跟 [Foreach 活动](control-flow-for-each-activity.md)。 使用 `value` 模式将 `items` 数组传递给 ForEach 活动 `@activity('MyLookupActivity').output.value` 字段。 若要访问 `value` 数组中的元素，请使用以下语法：`@{activity('lookupActivity').output.value[zero based index].propertyname}`。 示例为 `@{activity('lookupActivity').output.value[0].tablename}`。
+* **当 `firstRowOnly` 设置为 `false` 时**，输出格式如以下代码所示。 `count` 字段指示返回的记录数。 详细值显示在固定的 `value` 数组下。 在这种情况下，查找活动后跟 [Foreach 活动](control-flow-for-each-activity.md)。 使用 `@activity('MyLookupActivity').output.value` 模式将 `value` 数组传递给 ForEach 活动 `items` 字段。 若要访问 `value` 数组中的元素，请使用以下语法：`@{activity('lookupActivity').output.value[zero based index].propertyname}`。 例如 `@{activity('lookupActivity').output.value[0].tablename}`。
 
     ```json
     {
@@ -107,7 +107,7 @@ firstRowOnly | 指示仅返回第一行还是返回所有行。 | Boolean | 不�
 本示例演示如何只查找第一行。 若要查找所有行并将结果与 ForEach 活动链接，请参阅[使用 Azure 数据工厂批量复制多个表](tutorial-bulk-copy.md)中的示例。
 
 ### <a name="pipeline"></a>管道
-此管道包含两个活动：“查找”和“复制”。 
+此管道包含两个活动：查找和复制。 
 
 - 查找活动配置为使用 **LookupDataset**，该项引用 Azure Blob 存储中的一个位置。 查找活动在此位置从 JSON 文件读取 SQL 表名称。 
 - 复制活动使用查找活动的输出，即 SQL 表的名称。 **SourceDataset** 中的 **tableName** 属性配置为使用查找活动的输出。 复制活动将数据从 SQL 表复制到 Azure Blob 存储中的一个位置。 该位置由 **SinkDataset** 属性指定。 

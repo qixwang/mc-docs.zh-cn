@@ -36,7 +36,7 @@ ms.locfileid: "82134985"
 
 ### <a name="creating-vertices-and-edges"></a>创建顶点和边缘
 
-`GraphBulkExecutor` 提供的 `BulkImportAsync` 方法要求使用一个包含 `IEnumerable` 或 `GremlinVertex` 对象的 `GremlinEdge` 列表，这两个对象都是在 `Microsoft.Azure.CosmosDB.BulkExecutor.Graph.Element` 命名空间中定义的。 在示例中，我们已将边缘和顶点划分到两个 BulkExecutor 导入任务中。 请参阅以下示例：
+`GraphBulkExecutor` 提供的 `BulkImportAsync` 方法要求使用一个包含 `GremlinVertex` 或 `GremlinEdge` 对象的 `IEnumerable` 列表，这两个对象都是在 `Microsoft.Azure.CosmosDB.BulkExecutor.Graph.Element` 命名空间中定义的。 在示例中，我们已将边缘和顶点划分到两个 BulkExecutor 导入任务中。 请参阅以下示例：
 
 ```csharp
 
@@ -115,7 +115,7 @@ e.AddProperty("customProperty", "value");
 
 ## <a name="sample-application"></a>示例应用程序
 
-### <a name="prerequisites"></a>必备条件
+### <a name="prerequisites"></a>先决条件
 * 包含 Azure 开发工作负荷的 Visual Studio 2019。 一开始可以使用免费的 [Visual Studio 2019 Community Edition](https://visualstudio.microsoft.com/downloads/)。
 * Azure 订阅。 可以[在此创建一个 Azure 试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。
      
@@ -145,7 +145,7 @@ git clone https://github.com/Azure-Samples/azure-cosmosdb-graph-bulkexecutor-dot
 ---|---
 `EndPointUrl`|这是 **.NET SDK 终结点**，位于 Azure Cosmos DB Gremlin API 数据库帐户的“概览”边栏选项卡中。 此项的格式为 `https://your-graph-database-account.documents.azure.cn:443/`
 `AuthorizationKey`|这是在 Azure Cosmos DB 帐户下列出的主密钥或辅助密钥。 详细了解如何[确保对 Azure Cosmos DB 数据的安全访问](/cosmos-db/secure-access-to-data#master-keys)
-`DatabaseName`、`CollectionName`|这些是**目标数据库和集合名称**。 当 `ShouldCleanupOnStart` 设置为 `true` 时，将会根据这些值和 `CollectionThroughput` 来删除它们并创建新的数据库和集合。 同样，如果 `ShouldCleanupOnFinish` 设置为 `true`，将会根据这些值在引入完成后立即删除数据库。 请注意，目标集合必须是**无限制集合**。
+`DatabaseName`, `CollectionName`|这些是**目标数据库和集合名称**。 当 `ShouldCleanupOnStart` 设置为 `true` 时，将会根据这些值和 `CollectionThroughput` 来删除它们并创建新的数据库和集合。 同样，如果 `ShouldCleanupOnFinish` 设置为 `true`，将会根据这些值在引入完成后立即删除数据库。 请注意，目标集合必须是**无限制集合**。
 `CollectionThroughput`|如果 `ShouldCleanupOnStart` 选项设置为 `true`，则使用此项来创建新的集合。
 `ShouldCleanupOnStart`|此项会在程序运行之前删除数据库帐户和集合，然后使用 `DatabaseName`、`CollectionName` 和 `CollectionThroughput` 值创建新的。
 `ShouldCleanupOnFinish`|此项会在程序运行之后删除具有指定 `DatabaseName` 和 `CollectionName` 的数据库帐户和集合。

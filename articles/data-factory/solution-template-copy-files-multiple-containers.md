@@ -37,14 +37,14 @@ ms.locfileid: "82198006"
 - **Copy** 将源存储中的每个容器复制到目标存储。
 
 模板定义以下参数：
--  SourceFileFolder 是数据源存储的文件夹路径，在其中可以获取容器的列表。 该路径是包含多个容器文件夹的根目录。 此参数的默认值为 `sourcefolder`。
--  SourceFileDirectory 是数据源存储的根目录下的子文件夹路径。 此参数的默认值为 `subfolder`。
--  DestinationFileFolder 是文件将复制到目标存储中的文件夹路径。 此参数的默认值为 `destinationfolder`。
--  DestinationFileDirectory 是文件将复制到目标存储中的子文件夹路径。 此参数的默认值为 `subfolder`。
+- SourceFileFolder 是数据源存储的文件夹路径，在其中可以获取容器的列表。 该路径是包含多个容器文件夹的根目录。 此参数的默认值为 `sourcefolder`。
+- SourceFileDirectory 是数据源存储的根目录下的子文件夹路径。 此参数的默认值为 `subfolder`。
+- DestinationFileFolder 是文件将复制到目标存储中的文件夹路径。 此参数的默认值为 `destinationfolder`。
+- DestinationFileDirectory 是文件将复制到目标存储中的子文件夹路径。 此参数的默认值为 `subfolder`。
 
 ## <a name="how-to-use-this-solution-template"></a>如何使用此解决方案模板
 
-1. 转到“在文件存储之间复制多个文件容器”  模板。 创建与源存储的**新**连接。 源存储是你要从多个容器复制文件的位置。
+1. 转到“在文件存储之间复制多个文件容器”模板。 创建与源存储的**新**连接。 源存储是你要从多个容器复制文件的位置。
 
     ![与源建立新的连接](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image1.png)
 
@@ -52,7 +52,7 @@ ms.locfileid: "82198006"
 
     ![与目标建立新的连接](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image2.png)
 
-3. 选择“使用此模板”  。
+3. 选择“使用此模板”。
 
     ![使用此模板](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image3.png)
     
@@ -60,7 +60,7 @@ ms.locfileid: "82198006"
 
     ![显示管道](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image4.png)
 
-5. 选择“调试”，输入**参数**，然后选择“完成”。  
+5. 选择“调试”，输入**参数**，然后选择“完成”。 
 
     ![运行管道](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image5.png)
 

@@ -68,7 +68,7 @@ ms.locfileid: "82198008"
             (5, 'project_table','select * from project_table where ID >= 1000 and ID < 2000');
     ```
 
-2. 转到“从数据库大容量复制”模板。  创建与在步骤 1 中创建的外部控制表的**新**连接。
+2. 转到“从数据库大容量复制”模板。 创建与在步骤 1 中创建的外部控制表的**新**连接。
 
     ![与控制表建立新的连接](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable2.png)
 
@@ -80,13 +80,13 @@ ms.locfileid: "82198008"
 
     ![与目标存储建立新的连接](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable4.png)
 
-5. 选择“使用此模板”  。
+5. 选择“使用此模板”。
 
 6. 可以看到管道，如以下示例所示：
 
     ![查看管道](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable6.png)
 
-7. 选择“调试”，输入**参数**，然后选择“完成”。  
+7. 选择“调试”，输入**参数**，然后选择“完成”。 
 
     ![单击“调试”****](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable7.png)
 

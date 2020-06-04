@@ -22,7 +22,7 @@ ms.locfileid: "82126852"
 
 可以使用 Azure CLI、Azure 命令行实用工具来列出、显示和更新 Azure Database for MySQL 服务器的配置参数。 在服务器级别会公开引擎配置的一个子集，并可以进行修改。 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 若要逐步执行本操作方法指南，需要：
 - [Azure Database for MySQL 服务器](quickstart-create-mysql-server-database-using-azure-cli.md)
 - [Azure CLI](/cli/install-azure-cli) 命令行实用工具。
@@ -30,7 +30,7 @@ ms.locfileid: "82126852"
 ## <a name="list-server-configuration-parameters-for-azure-database-for-mysql-server"></a>列出 Azure Database for MySQL 服务器的服务器配置参数
 若要列出服务器中的所有可修改参数及其值，请运行 [az mysql server configuration list](/cli/mysql/server/configuration#az-mysql-server-configuration-list) 命令。
 
-可以列出资源组“myresourcegroup”  下服务器 **mydemoserver.mysql.database.chinacloudapi.cn** 的服务器配置参数。
+可以列出资源组“myresourcegroup”下服务器 **mydemoserver.mysql.database.chinacloudapi.cn** 的服务器配置参数。
 ```cli
 az mysql server configuration list --resource-group myresourcegroup --server mydemoserver
 ```
@@ -39,14 +39,14 @@ az mysql server configuration list --resource-group myresourcegroup --server myd
 ## <a name="show-server-configuration-parameter-details"></a>显示服务器配置参数详细信息
 若要显示服务器的某个特定配置参数的详细信息，请运行 [az mysql server configuration show](/cli/mysql/server/configuration#az-mysql-server-configuration-show) 命令。
 
-本示例显示了资源组“myresourcegroup” **\_下服务器 \_mydemoserver.mysql.database.chinacloudapi.cn** 的服务器配置参数 **slow**query**log** 的详细信息。
+本示例显示了资源组“myresourcegroup”下服务器 **mydemoserver.mysql.database.chinacloudapi.cn** 的服务器配置参数 **slow\_query\_log** 的详细信息。
 ```cli
 az mysql server configuration show --name slow_query_log --resource-group myresourcegroup --server mydemoserver
 ```
 ## <a name="modify-a-server-configuration-parameter-value"></a>修改服务器配置参数值
 此外，你还可以修改某个服务器配置参数的值，这会更新 MySQL 服务器引擎的基础配置值。 若要更新配置，请使用 [az mysql server configuration set](/cli/mysql/server/configuration#az-mysql-server-configuration-set) 命令。 
 
-更新资源组“myresourcegroup” **\_下服务器 \_mydemoserver.mysql.database.chinacloudapi.cn** 的服务器配置参数 **slow**query**log**。
+更新资源组“myresourcegroup”下服务器 **mydemoserver.mysql.database.chinacloudapi.cn** 的服务器配置参数 **slow\_query\_log**。
 ```cli
 az mysql server configuration set --name slow_query_log --resource-group myresourcegroup --server mydemoserver --value ON
 ```
@@ -54,7 +54,7 @@ az mysql server configuration set --name slow_query_log --resource-group myresou
 ```cli
 az mysql server configuration set --name slow_query_log --resource-group myresourcegroup --server mydemoserver
 ```
-此代码会将 slow**query\_log\_** 配置重置为默认值 OFF  。 
+此代码会将 slow\_query\_log 配置重置为默认值 OFF。 
 
 ## <a name="working-with-the-time-zone-parameter"></a>使用时区参数
 
@@ -82,7 +82,7 @@ SELECT name FROM mysql.time_zone_name;
 
 可以使用 [az mysql server configuration set](/cli/mysql/server/configuration#az-mysql-server-configuration-set) 命令来设置全局级时区。
 
-以下命令将资源组 myresourcegroup 下的服务器 mydemoserver.mysql.database.chinacloudapi.cn 的 time**zone 服务器配置参数更新为“美国/太平洋”\_**    。
+以下命令将资源组 myresourcegroup 下的服务器 mydemoserver.mysql.database.chinacloudapi.cn 的 time\_zone 服务器配置参数更新为“美国/太平洋”   。
 
 ```azurecli
 az mysql server configuration set --name time_zone --resource-group myresourcegroup --server mydemoserver --value "US/Pacific"
@@ -90,7 +90,7 @@ az mysql server configuration set --name time_zone --resource-group myresourcegr
 
 ### <a name="setting-the-session-level-time-zone"></a>设置会话级时区
 
-可以通过从 MySQL 命令行或 MySQL Workbench 等工具运行 `SET time_zone` 命令来设置会话级时区。 以下示例将时区设置为“美国/太平洋”  时区。  
+可以通过从 MySQL 命令行或 MySQL Workbench 等工具运行 `SET time_zone` 命令来设置会话级时区。 以下示例将时区设置为“美国/太平洋”时区。  
 
 ```sql
 SET time_zone = 'US/Pacific';

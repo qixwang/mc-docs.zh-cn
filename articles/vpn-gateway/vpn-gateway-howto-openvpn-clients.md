@@ -17,9 +17,9 @@ ms.locfileid: "82507685"
 ---
 # <a name="configure-openvpn-clients-for-azure-vpn-gateway"></a>为 Azure VPN 网关配置 OpenVPN 客户端
 
-本文可帮助你配置 OpenVPN  **协议&reg;** 客户端。
+本文可帮助你配置 OpenVPN &reg; 协议客户端。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 验证你已完成为 VPN 网关配置 OpenVPN 的步骤。 有关详细信息，请参阅[为 Azure VPN 网关配置 OpenVPN](vpn-gateway-howto-openvpn.md)。
 
