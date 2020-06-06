@@ -1,45 +1,456 @@
 ---
-title: 使用资源管理器模板创建和管理 Azure Cosmos DB
-description: 使用 Azure 资源管理器模板创建和配置 Azure Cosmos DB for SQL (Core) API
+title: 利用资源管理器模板创建和管理 Azure Cosmos DB
+description: 使用 Azure 资源管理器模板创建和配置 Azure Cosmos DB for Core (SQL) API
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
-origin.date: 04/14/2020
-ms.date: 04/27/2020
+origin.date: 05/19/2020
+ms.date: 06/08/2020
 ms.author: v-yeche
-ms.openlocfilehash: d73b151b687377a4e8642c506a33a1bf2a7d0502
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.openlocfilehash: 67d535434e5783421f6916330c5f99107e3ef954
+ms.sourcegitcommit: 8a2fbc0eae8d8f7297f5334f508ff868b4077f32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82134656"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84320999"
 ---
 <!--Verify successfully-->
-# <a name="manage-azure-cosmos-db-sql-core-api-resources-with-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板管理 Azure Cosmos DB SQL (Core) API 资源
+# <a name="manage-azure-cosmos-db-core-sql-api-resources-with-azure-resource-manager-templates"></a>利用 Azure 资源管理器模板管理 Azure Cosmos DB Core (SQL) API 资源
 
-在本文中，你将了解如何使用 Azure 资源管理器模板来帮助自动管理 Azure Cosmos DB 帐户、数据库和容器。
+在本文中，你将了解如何使用 Azure 资源管理器模板来帮助部署和管理 Azure Cosmos DB 帐户、数据库和容器。
 
-本文仅展示了适用于 SQL API 帐户的 Azure 资源管理器模板示例。 你还可以查找适用于 [Cassandra](manage-cassandra-with-resource-manager.md)、[Gremlin](manage-gremlin-with-resource-manager.md)、[MongoDB](manage-mongodb-with-resource-manager.md) 和[表](manage-table-with-resource-manager.md) API 的模板示例。
-
-<a name="create-resource"></a>
-
-## <a name="create-an-azure-cosmos-account-database-and-container"></a>创建 Azure Cosmos 帐户、数据库和容器
-
-下面的 Azure 资源管理器模板创建包含以下项的 Azure Cosmos 帐户：
-
-* 两个在数据库级别共享 400 请求单位/秒 (RU/s) 吞吐量的容器。
-* 一个具有专用 400 RU/s 吞吐量的容器。
-
-若要创建 Azure Cosmos DB 资源，请复制下面的示例模板，并按照说明通过 [PowerShell](#deploy-via-powershell) 或 [Azure CLI](#deploy-via-azure-cli) 进行部署。
-
-* 还可以访问 [Azure 快速入门库](https://github.com/Azure/azure-quickstart-templates/tree/master/101-cosmosdb-sql/)，然后从 Azure 门户部署模板。
-* 还可以将模板下载到本地计算机，或者创建新模板并使用 `--template-file` 参数指定本地路径。
+本文仅显示适用于 Core (SQL) API 帐户的 Azure 资源管理器模板示例。 你还可以查找 [Cassandra](manage-cassandra-with-resource-manager.md)、[Gremlin](manage-gremlin-with-resource-manager.md)、[MongoDB](manage-mongodb-with-resource-manager.md) 和[表](manage-table-with-resource-manager.md) API 的模板示例。
 
 > [!IMPORTANT]
 >
-> * 在 Azure Cosmos 帐户中添加或删除位置时，不能同时修改其他属性。 这些操作必须单独执行。
 > * 帐户名称限制为 44 个字符，全部小写。
-> * 若要更改吞吐量值，请使用更新后的 RU/s 重新提交模板。
+> * 若要更改吞吐量值，请用更新的 RU/s 重新部署模板。
+> * 当你在 Azure Cosmos 帐户中添加或删除位置时，无法同时修改其他属性。 必须单独执行这些操作。
+
+若要创建以下任何 Azure Cosmos DB 资源，请将下列示例模板复制到新的 json 文件中。 在部署具有不同名称和值的同一资源的多个实例时，可以选择创建要使用的参数 json 文件。 可以通过多种方式部署 Azure 资源管理器模板，包括 [Azure 门户](../azure-resource-manager/templates/deploy-portal.md)、[Azure CLI](../azure-resource-manager/templates/deploy-cli.md)、[Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md) 和 [GitHub](../azure-resource-manager/templates/deploy-to-azure-button.md)。
+
+<a name="create-autoscale"></a>
+<a name="create-resource"></a>
+
+## <a name="azure-cosmos-account-with-autoscale-throughput"></a>具有自动缩放吞吐量的 Azure Cosmos 帐户
+
+此模板在两个区域创建一个 Azure Cosmos 帐户，其中包含用于一致性和故障转移的选项，以及为启用了大多数策略选项的自动缩放吞吐量配置的数据库和容器。 此模板还支持从 Azure 快速入门模板库进行一键部署。
+
+[![“部署到 Azure”](https://aka.ms/deploytoazurebutton)](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-sql-autoscale%2Fazuredeploy.json)
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "accountName": {
+            "type": "string",
+            "defaultValue": "[concat('sql-', uniqueString(resourceGroup().id))]",
+            "metadata": {
+                "description": "Cosmos DB account name, max length 44 characters, lowercase"
+            }
+        },
+        "location": {
+            "type": "string",
+            "defaultValue": "[resourceGroup().location]",
+            "metadata": {
+                "description": "Location for the Cosmos DB account."
+            }
+        },
+        "primaryRegion":{
+            "type":"string",
+            "metadata": {
+                "description": "The primary replica region for the Cosmos DB account."
+            }
+        },
+        "secondaryRegion":{
+            "type":"string",
+            "metadata": {
+              "description": "The secondary replica region for the Cosmos DB account."
+          }
+        },
+        "defaultConsistencyLevel": {
+            "type": "string",
+            "defaultValue": "Session",
+            "allowedValues": [ 
+                "Eventual", 
+                "ConsistentPrefix", 
+                "Session", 
+                "BoundedStaleness", 
+                "Strong" 
+            ],
+            "metadata": {
+                "description": "The default consistency level of the Cosmos DB account."
+            }
+        },
+        "maxStalenessPrefix": {
+            "type": "int",
+            "minValue": 10,
+            "defaultValue": 100000,
+            "maxValue": 2147483647,
+            "metadata": {
+                "description": "Max stale requests. Required for BoundedStaleness. Valid ranges, Single Region: 10 to 1000000. Multi Region: 100000 to 1000000."
+            }
+        },
+        "maxIntervalInSeconds": {
+            "type": "int",
+            "minValue": 5,
+            "defaultValue": 300,
+            "maxValue": 86400,
+            "metadata": {
+                "description": "Max lag time (minutes). Required for BoundedStaleness. Valid ranges, Single Region: 5 to 84600. Multi Region: 300 to 86400."
+            }
+        },
+        "automaticFailover": {
+            "type": "bool",
+            "defaultValue": true,
+            "allowedValues": [ 
+                true, 
+                false 
+            ],
+            "metadata": {
+                "description": "Enable automatic failover for regions"
+            }
+        },
+        "databaseName": {
+            "type": "string",
+            "metadata": {
+                "description": "The name for the database"
+            }
+        },
+        "containerName": {
+            "type": "string",
+            "metadata": {
+                "description": "The name for the container"
+            }
+        },
+        "throughputPolicy":{
+            "type": "string",
+            "defaultValue": "Autoscale",
+            "allowedValues": [ "Manual", "Autoscale" ],
+            "metadata": {
+                "description": "The throughput policy for the Container"
+            }
+        },
+        "manualProvisionedThroughput": {
+            "type": "int",
+            "defaultValue": 400,
+            "minValue": 400,
+            "maxValue": 1000000,
+            "metadata": {
+                "description": "Throughput value when using Manual Throughput Policy for the container"
+            }
+        },
+        "autoscaleMaxThroughput": {
+            "type": "int",
+            "defaultValue": 4000,
+            "minValue": 4000,
+            "maxValue": 1000000,
+            "metadata": {
+                "description": "Maximum throughput when using Autoscale Throughput Policy for the container"
+            }
+        }
+    },
+    "variables": {
+        "accountName": "[toLower(parameters('accountName'))]",
+        "consistencyPolicy": {
+            "Eventual": {
+                "defaultConsistencyLevel": "Eventual"
+            },
+            "ConsistentPrefix": {
+                "defaultConsistencyLevel": "ConsistentPrefix"
+            },
+            "Session": {
+                "defaultConsistencyLevel": "Session"
+            },
+            "BoundedStaleness": {
+                "defaultConsistencyLevel": "BoundedStaleness",
+                "maxStalenessPrefix": "[parameters('maxStalenessPrefix')]",
+                "maxIntervalInSeconds": "[parameters('maxIntervalInSeconds')]"
+            },
+            "Strong": {
+                "defaultConsistencyLevel": "Strong"
+            }
+        },
+        "locations": [
+            {
+                "locationName": "[parameters('primaryRegion')]",
+                "failoverPriority": 0,
+                "isZoneRedundant": false
+            },
+            {
+                "locationName": "[parameters('secondaryRegion')]",
+                "failoverPriority": 1,
+                "isZoneRedundant": false
+            }
+        ],
+        "throughputPolicy": {
+            "Manual": {
+                "throughput": "[parameters('manualProvisionedThroughput')]"
+            },
+            "Autoscale": {
+                "autoscaleSettings": { 
+                    "maxThroughput": "[parameters('autoscaleMaxThroughput')]" 
+                }
+            }
+        },
+        "throughputPolicyToUse": "[if(equals(parameters('throughputPolicy'), 'Manual'), variables('throughputPolicy').Manual, variables('throughputPolicy').Autoscale)]"
+    },
+    "resources": [
+        {
+            "type": "Microsoft.DocumentDB/databaseAccounts",
+            "name": "[variables('accountName')]",
+            "apiVersion": "2020-04-01",
+            "kind": "GlobalDocumentDB",
+            "location": "[parameters('location')]",
+            "properties": {
+                "consistencyPolicy": "[variables('consistencyPolicy')[parameters('defaultConsistencyLevel')]]",
+                "locations": "[variables('locations')]",
+                "databaseAccountOfferType": "Standard",
+                "enableAutomaticFailover": "[parameters('automaticFailover')]"
+            }
+        },
+        {
+            "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases",
+            "name": "[concat(variables('accountName'), '/', parameters('databaseName'))]",
+            "apiVersion": "2020-04-01",
+            "dependsOn": [ 
+                "[resourceId('Microsoft.DocumentDB/databaseAccounts', variables('accountName'))]" 
+            ],
+            "properties":{
+                "resource":{
+                    "id": "[parameters('databaseName')]"
+                }
+            }
+        },
+        {
+            "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers",
+            "name": "[concat(variables('accountName'), '/', parameters('databaseName'), '/', parameters('containerName'))]",
+            "apiVersion": "2020-04-01",
+            "dependsOn": [ 
+                "[resourceId('Microsoft.DocumentDB/databaseAccounts/sqlDatabases', variables('accountName'), parameters('databaseName'))]" 
+            ],
+            "properties":
+            {
+                "resource":{
+                    "id":  "[parameters('containerName')]",
+                    "partitionKey": {
+                        "paths": [
+                            "/myPartitionKey"
+                        ],
+                        "kind": "Hash"
+                    },
+                    "indexingPolicy": {
+                        "indexingMode": "consistent",
+                        "includedPaths": [
+                            {
+                                "path": "/*"
+                            }
+                        ],
+                        "excludedPaths": [
+                            {
+                                "path": "/myPathToNotIndex/*"
+                            }
+                        ],
+                        "compositeIndexes":[  
+                            [
+                                {
+                                    "path":"/name",
+                                    "order":"ascending"
+                                },
+                                {
+                                    "path":"/age",
+                                    "order":"descending"
+                                }
+                            ]
+                        ],
+                        "spatialIndexes": [
+                            {
+                                "path": "/path/to/geojson/property/?",
+                                "types": [
+                                    "Point",
+                                    "Polygon",
+                                    "MultiPolygon",
+                                    "LineString"
+                                ]
+                            }
+                        ]
+                    },
+                    "defaultTtl": 86400,
+                    "uniqueKeyPolicy": {
+                        "uniqueKeys": [
+                            {
+                                "paths": [
+                                    "/phoneNumber"
+                                ]
+                            }
+                        ]
+                    }
+                },
+                "options": "[variables('throughputPolicyToUse')]"
+            }
+        }
+    ]
+}
+```
+
+<a name="create-analytical-store"></a>
+
+<a name="azure-cosmos-account-with-analytical-store"></a>
+## <a name="azure-cosmos-account-with-analytical-store"></a>具有分析存储的 Azure Cosmos 帐户
+
+此模板在一个区域中创建一个 Azure Cosmos 帐户，其中包含启用了分析 TTL 的容器和手动或自动缩放吞吐量选项。 此模板还支持从 Azure 快速入门模板库进行一键部署。
+
+[![“部署到 Azure”](https://aka.ms/deploytoazurebutton)](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-sql-analytical-store%2Fazuredeploy.json)
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "accountName": {
+            "type": "string",
+            "defaultValue": "[concat('cosmos', uniqueString(resourceGroup().id))]",
+            "metadata": {
+                "description": "Cosmos DB account name"
+            }
+        },
+        "location": {
+            "type": "string",
+            "defaultValue": "[resourceGroup().location]",
+            "metadata": {
+                "description": "Location for the Cosmos DB account."
+            }
+        },
+        "databaseName": {
+            "type": "string",
+            "defaultValue": "database1",
+            "metadata": {
+                "description": "The name for the database"
+            }
+        },
+        "containerName": {
+            "type": "string",
+            "defaultValue": "container1",
+            "metadata": {
+                "description": "The name for the container"
+            }
+        },
+        "partitionKeyPath": {
+            "type": "string",
+            "defaultValue": "/partitionKey",
+            "metadata": {
+                "description": "The partition key for the container"
+            }
+        },
+        "throughputPolicy": {
+            "type": "string",
+            "defaultValue": "Autoscale",
+            "allowedValues": [
+                "Manual",
+                "Autoscale"
+            ],
+            "metadata": {
+                "description": "The throughput policy for the container"
+            }
+        },
+        "manualProvisionedThroughput": {
+            "type": "int",
+            "defaultValue": 400,
+            "minValue": 400,
+            "maxValue": 1000000,
+            "metadata": {
+                "description": "Throughput value when using Manual Throughput Policy for the container"
+            }
+        },
+        "autoscaleMaxThroughput": {
+            "type": "int",
+            "defaultValue": 4000,
+            "minValue": 4000,
+            "maxValue": 1000000,
+            "metadata": {
+                "description": "Maximum throughput when using Autoscale Throughput Policy for the container"
+            }
+        }
+    },
+    "variables": {
+        "accountName": "[toLower(parameters('accountName'))]",
+        "locations": [
+            {
+                "locationName": "[parameters('location')]",
+                "failoverPriority": 0,
+                "isZoneRedundant": false
+            }
+        ],
+        "throughputPolicy": {
+            "Manual": {
+                "Throughput": "[parameters('manualProvisionedThroughput')]"
+            },
+            "Autoscale": {
+                "autoscaleSettings": { "maxThroughput": "[parameters('autoscaleMaxThroughput')]" }
+            }
+        }
+    },
+    "resources": [
+        {
+            "type": "Microsoft.DocumentDB/databaseAccounts",
+            "name": "[variables('accountName')]",
+            "apiVersion": "2020-04-01",
+            "location": "[parameters('location')]",
+            "properties": {
+                "consistencyPolicy": {
+                    "defaultConsistencyLevel": "Session"
+                },
+                "databaseAccountOfferType": "Standard",
+                "locations": "[variables('locations')]",
+                "enableAnalyticalStorage": true
+            }
+        },
+        {
+            "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases",
+            "name": "[concat(variables('accountName'), '/', parameters('databaseName'))]",
+            "apiVersion": "2020-04-01",
+            "dependsOn": [
+                "[resourceId('Microsoft.DocumentDB/databaseAccounts', variables('accountName'))]"
+            ],
+            "properties": {
+                "resource": {
+                    "id": "[parameters('databaseName')]"
+                }
+            }
+        },
+        {
+            "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers",
+            "name": "[concat(variables('accountName'), '/', parameters('databaseName'), '/', parameters('containerName'))]",
+            "apiVersion": "2020-04-01",
+            "dependsOn": [
+                "[resourceId('Microsoft.DocumentDB/databaseAccounts/sqlDatabases', variables('accountName'), parameters('databaseName'))]"
+            ],
+            "properties": {
+                "resource": {
+                    "id": "[parameters('containerName')]",
+                    "partitionKey": {
+                        "paths": [
+                            "[parameters('partitionKeyPath')]"
+                        ],
+                        "kind": "Hash"
+                    },
+                    "analyticalStorageTtl": -1
+                },
+                "options": "[variables('throughputPolicy')[parameters('throughputPolicy')]]"
+            }
+        }
+    ]
+}
+```
+
+<a name="create-manual"></a>
+
+## <a name="azure-cosmos-account-with-standard-provisioned-throughput"></a>具有标准预配吞吐量的 Azure Cosmos 帐户
+
+此模板在两个区域创建一个 Azure Cosmos 帐户，其中包含用于一致性和故障转移的选项，以及为启用了大多数策略选项的标准吞吐量配置的数据库和容器。 此模板还支持从 Azure 快速入门模板库进行一键部署。
+
+[![“部署到 Azure”](https://aka.ms/deploytoazurebutton)](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-sql%2Fazuredeploy.json)
 
 ```json
 {
@@ -98,65 +509,35 @@ ms.locfileid: "82134656"
                 "description": "Max lag time (minutes). Required for BoundedStaleness. Valid ranges, Single Region: 5 to 84600. Multi Region: 300 to 86400."
             }
         },  
-        "multipleWriteLocations": {
-            "type": "bool",
-            "defaultValue": false,
-            "allowedValues": [ true, false ],
-            "metadata": {
-                "description": "Enable multi-master to make all regions writable."
-            }
-        },
         "automaticFailover": {
             "type": "bool",
-            "defaultValue": false,
+            "defaultValue": true,
             "allowedValues": [ true, false ],
             "metadata": {
-                "description": "Enable automatic failover for regions. Ignored when Multi-Master is enabled"
+                "description": "Enable automatic failover for regions"
             }
         },
         "databaseName": {
             "type": "string",
+            "defaultValue": "myDatabase",
             "metadata": {
-                "description": "The name for the SQL database"
+                "description": "The name for the database"
             }
         },
-        "sharedThroughput": {
+        "containerName": {
+            "type": "string",
+            "defaultValue": "myContainer",
+            "metadata": {
+                "description": "The name for the container"
+            }
+        },
+        "throughput": {
             "type": "int",
             "defaultValue": 400,
             "minValue": 400,
             "maxValue": 1000000,
             "metadata": {
-                "description": "The throughput for the database to be shared"
-            }           
-        },
-        "sharedContainer1Name": {
-            "type": "string",
-            "defaultValue": "sharedContainer1",
-            "metadata": {
-                "description": "The name for the first container with shared throughput"
-            }
-        },
-        "sharedContainer2Name": {
-            "type": "string",
-            "defaultValue": "sharedContainer2",
-            "metadata": {
-                "description": "The name for the second container with shared throughput"
-            }
-        },
-        "dedicatedContainer1Name": {
-            "type": "string",
-            "defaultValue": "dedicatedContainer1",
-            "metadata": {
-                "description": "The name for the container with dedicated throughput"
-            }
-        },
-        "dedicatedThroughput": {
-            "type": "int",
-            "defaultValue": 400,
-            "minValue": 400,
-            "maxValue": 1000000,
-            "metadata": {
-                "description": "The throughput for the container with dedicated throughput"
+                "description": "The throughput for the container"
             }           
         }
     },
@@ -200,96 +581,36 @@ ms.locfileid: "82134656"
         {
             "type": "Microsoft.DocumentDB/databaseAccounts",
             "name": "[variables('accountName')]",
-            "apiVersion": "2019-08-01",
+            "apiVersion": "2020-03-01",
             "kind": "GlobalDocumentDB",
             "location": "[parameters('location')]",
             "properties": {
                 "consistencyPolicy": "[variables('consistencyPolicy')[parameters('defaultConsistencyLevel')]]",
                 "locations": "[variables('locations')]",
                 "databaseAccountOfferType": "Standard",
-                "enableAutomaticFailover": "[parameters('automaticFailover')]",
-                "enableMultipleWriteLocations": "[parameters('multipleWriteLocations')]"
+                "enableAutomaticFailover": "[parameters('automaticFailover')]"
             }
         },
         {
             "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases",
             "name": "[concat(variables('accountName'), '/', parameters('databaseName'))]",
-            "apiVersion": "2019-08-01",
+            "apiVersion": "2020-03-01",
             "dependsOn": [ "[resourceId('Microsoft.DocumentDB/databaseAccounts', variables('accountName'))]" ],
             "properties":{
                 "resource":{
                     "id": "[parameters('databaseName')]"
-                },
-                "options": { "throughput": "[parameters('sharedThroughput')]" }
-            }
-        },
-        {
-            "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers",
-            "name": "[concat(variables('accountName'), '/', parameters('databaseName'), '/', parameters('sharedContainer1Name'))]",
-            "apiVersion": "2019-08-01",
-            "dependsOn": [ "[resourceId('Microsoft.DocumentDB/databaseAccounts/sqlDatabases', variables('accountName'), parameters('databaseName'))]" ],
-            "properties":
-            {
-                "resource":{
-                    "id":  "[parameters('sharedContainer1Name')]",
-                    "partitionKey": {
-                        "paths": [
-                        "/myPartitionKey"
-                        ],
-                        "kind": "Hash"
-                    },
-                    "indexingPolicy": {
-                        "indexingMode": "consistent",
-                        "includedPaths": [{
-                                "path": "/*"
-                            }
-                        ],
-                        "excludedPaths": [{
-                                "path": "/myPathToNotIndex/*"
-                            }
-                        ]
-                    }
                 }
             }
         },
         {
             "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers",
-            "name": "[concat(variables('accountName'), '/', parameters('databaseName'), '/', parameters('sharedContainer2Name'))]",
-            "apiVersion": "2019-08-01",
+            "name": "[concat(variables('accountName'), '/', parameters('databaseName'), '/', parameters('containerName'))]",
+            "apiVersion": "2020-03-01",
             "dependsOn": [ "[resourceId('Microsoft.DocumentDB/databaseAccounts/sqlDatabases', variables('accountName'), parameters('databaseName'))]" ],
             "properties":
             {
                 "resource":{
-                    "id":  "[parameters('sharedContainer2Name')]",
-                    "partitionKey": {
-                        "paths": [
-                        "/myPartitionKey"
-                        ],
-                        "kind": "Hash"
-                    },
-                    "indexingPolicy": {
-                        "indexingMode": "consistent",
-                        "includedPaths": [{
-                                "path": "/*"
-                            }
-                        ],
-                        "excludedPaths": [{
-                                "path": "/myPathToNotIndex/*"
-                            }
-                        ]
-                    }
-                }
-            }
-        },
-        {
-            "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers",
-            "name": "[concat(variables('accountName'), '/', parameters('databaseName'), '/', parameters('dedicatedContainer1Name'))]",
-            "apiVersion": "2019-08-01",
-            "dependsOn": [ "[resourceId('Microsoft.DocumentDB/databaseAccounts/sqlDatabases', variables('accountName'), parameters('databaseName'))]" ],
-            "properties":
-            {
-                "resource":{
-                    "id":  "[parameters('dedicatedContainer1Name')]",
+                    "id":  "[parameters('containerName')]",
                     "partitionKey": {
                         "paths": [
                         "/myPartitionKey"
@@ -341,110 +662,20 @@ ms.locfileid: "82134656"
                         ]
                     }
                 },
-                "options": { "throughput": "[parameters('dedicatedThroughput')]" }
+                "options": { "throughput": "[parameters('throughput')]" }
             }
         }
     ]
 }
-
 ```
-
-> [!NOTE]
-> 若要使用大的分区键创建容器，请修改前面的模板以在 `"version":2` 对象内包括 `partitionKey` 属性。
-
-### <a name="deploy-via-powershell"></a>通过 PowerShell 部署
-
-若要使用 PowerShell 部署 Azure 资源管理器模板，请执行以下操作：
-
-<!--Not Available on  Select **Try it** to open Azure Cloud Shell.-->
-
-```powershell
-
-$resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
-$accountName = Read-Host -Prompt "Enter the account name"
-$location = Read-Host -Prompt "Enter the location (i.e. chinanorth2)"
-$primaryRegion = Read-Host -Prompt "Enter the primary region (i.e. chinanorth2)"
-$secondaryRegion = Read-Host -Prompt "Enter the secondary region (i.e. chinaeast2)"
-$databaseName = Read-Host -Prompt "Enter the database name"
-$sharedThroughput = Read-Host -Prompt "Enter the shared database throughput (i.e. 400)"
-$sharedContainer1Name = Read-Host -Prompt "Enter the first shared container name"
-$sharedContainer2Name = Read-Host -Prompt "Enter the second shared container name"
-$dedicatedContainer1Name = Read-Host -Prompt "Enter the dedicated container name"
-$dedicatedThroughput = Read-Host -Prompt "Enter the dedicated container throughput (i.e. 400)"
-
-New-AzResourceGroup -Name $resourceGroupName -Location $location
-New-AzResourceGroupDeployment `
-    -ResourceGroupName $resourceGroupName `
-    -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-cosmosdb-sql/azuredeploy.json" `
-    -accountName $accountName `
-    -location $location `
-    -primaryRegion $primaryRegion `
-    -secondaryRegion $secondaryRegion `
-    -databaseName $databaseName `
-    -sharedThroughput $ $sharedThroughput `
-    -sharedContainer1Name $sharedContainer1Name `
-    -sharedContainer2Name $sharedContainer2Name `
-    -dedicatedContainer1Name $dedicatedContainer1Name `
-    -dedicatedThroughput $dedicatedThroughput
-
- (Get-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2019-08-01" -ResourceGroupName $resourceGroupName).name
-```
-
-<!--CORRECT ON POWERSHELL CONTAINS ONE DASH(-) IN CMDLET-->
-
-你可以选择使用本地安装的 PowerShell 版本来部署模板。 你需要[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)。 请运行 `Get-Module -ListAvailable Az` 来查找所需的版本。
-
-<!--Not Available on Azure Cloud Shell-->
-
-### <a name="deploy-via-azure-cli"></a>通过 Azure CLI 部署
-
-若要使用 Azure CLI 部署 Azure 资源管理器模板，请执行以下操作：
-
-<!--Not Avaialble on Cloud Shell of select **Try it** to open Azure local Shell. To paste the script, right-click the shell, and then select **Paste**:-->
-
-```azurecli
-read -p 'Enter the Resource Group name: ' resourceGroupName
-read -p 'Enter the location (i.e. chinanorth2): ' location
-read -p 'Enter the account name: ' accountName
-read -p 'Enter the primary region (i.e. chinanorth2): ' primaryRegion
-read -p 'Enter the secondary region (i.e. chinaeast2): ' secondaryRegion
-read -p 'Enter the database name: ' databaseName
-read -p 'Enter the shared database throughput: sharedThroughput
-read -p 'Enter the first shared container name: ' sharedContainer1Name
-read -p 'Enter the second shared container name: ' sharedContainer2Name
-read -p 'Enter the dedicated container name: ' dedicatedContainer1Name
-read -p 'Enter the dedicated container throughput: dedicatedThroughput
-
-az group create --name $resourceGroupName --location $location
-az group deployment create --resource-group $resourceGroupName \
-   --template-uri https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-cosmosdb-sql/azuredeploy.json \
-   --parameters accountName=$accountName \
-   primaryRegion=$primaryRegion \
-   secondaryRegion=$secondaryRegion \
-   databaseName=$databaseName \
-   sharedThroughput=$sharedThroughput \
-   sharedContainer1Name=$sharedContainer1Name \
-   sharedContainer2Name=$sharedContainer2Name \
-   dedicatedContainer1Name=$dedicatedContainer1Name \
-   dedicatedThroughput=$dedicatedThroughput
-
-az cosmosdb show --resource-group $resourceGroupName --name accountName --output tsv
-```
-
-`az cosmosdb show` 命令显示预配后的新建 Azure Cosmos 帐户。 你可以选择使用本地安装的 Azure CLI 版本来部署模板。 有关详细信息，请参阅 [Azure 命令行接口 (CLI)](https://docs.azure.cn/cli/?view=azure-cli-latest) 一文。
-
-<!--Not Available on instead of using CloudShell-->
 
 <a name="create-sproc"></a>
 
-## <a name="create-an-azure-cosmos-db-container-with-server-side-functionality"></a>使用服务器端功能创建 Azure Cosmos DB 容器
+## <a name="azure-cosmos-db-container-with-server-side-functionality"></a>具有服务器端功能的 Azure Cosmos DB 容器
 
-可以使用 Azure 资源管理器模板创建包含存储过程、触发器和用户定义的函数的 Azure Cosmos DB 容器。
+此模板创建包含存储过程、触发器和用户定义函数的 Azure Cosmos 帐户、数据库和容器。 此模板还支持从 Azure 快速入门模板库进行一键部署。
 
-复制下面的示例模板，并按照说明通过 [PowerShell](#deploy-with-powershell) 或 [Azure CLI](#deploy-with-azure-cli) 进行部署。
-
-* 还可以访问 [Azure 快速入门库](https://github.com/Azure/azure-quickstart-templates/tree/master/101-cosmosdb-sql-container-sprocs/)，然后从 Azure 门户部署模板。
-* 还可以将模板下载到本地计算机，或者创建新模板并使用 `--template-file` 参数指定本地路径。
+[![“部署到 Azure”](https://aka.ms/deploytoazurebutton)](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-sql-container-sprocs%2Fazuredeploy.json)
 
 ```json
 {
@@ -502,21 +733,13 @@ az cosmosdb show --resource-group $resourceGroupName --name accountName --output
             "metadata": {
                 "description": "Max lag time (seconds). Required for BoundedStaleness. Valid ranges, Single Region: 5 to 84600. Multi Region: 300 to 86400."
             }
-        },  
-        "multipleWriteLocations": {
-            "type": "bool",
-            "defaultValue": false,
-            "allowedValues": [ true, false ],
-            "metadata": {
-                "description": "Enable multi-master to make all regions writable."
-            }
-        },
+        },    
         "automaticFailover": {
             "type": "bool",
-            "defaultValue": false,
+            "defaultValue": true,
             "allowedValues": [ true, false ],
             "metadata": {
-                "description": "Enable automatic failover for regions. Ignored when Multi-Master is enabled"
+                "description": "Enable automatic failover for regions"
             }
         },
         "databaseName": {
@@ -582,21 +805,20 @@ az cosmosdb show --resource-group $resourceGroupName --name accountName --output
         {
             "type": "Microsoft.DocumentDB/databaseAccounts",
             "name": "[variables('accountName')]",
-            "apiVersion": "2019-08-01",
+            "apiVersion": "2020-03-01",
             "location": "[parameters('location')]",
             "kind": "GlobalDocumentDB",
             "properties": {
                 "consistencyPolicy": "[variables('consistencyPolicy')[parameters('defaultConsistencyLevel')]]",
                 "locations": "[variables('locations')]",
                 "databaseAccountOfferType": "Standard",
-                "enableAutomaticFailover": "[parameters('automaticFailover')]",
-                "enableMultipleWriteLocations": "[parameters('multipleWriteLocations')]"
+                "enableAutomaticFailover": "[parameters('automaticFailover')]"
             }
         },
         {
             "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases",
             "name": "[concat(variables('accountName'), '/', parameters('databaseName'))]",
-            "apiVersion": "2019-08-01",
+            "apiVersion": "2020-03-01",
             "dependsOn": [ "[resourceId('Microsoft.DocumentDB/databaseAccounts', variables('accountName'))]" ],
             "properties":{
                 "resource":{
@@ -607,7 +829,7 @@ az cosmosdb show --resource-group $resourceGroupName --name accountName --output
         {
             "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers",
             "name": "[concat(variables('accountName'), '/', parameters('databaseName'), '/', parameters('containerName'))]",
-            "apiVersion": "2019-08-01",
+            "apiVersion": "2020-03-01",
             "dependsOn": [ "[resourceId('Microsoft.DocumentDB/databaseAccounts/sqlDatabases', variables('accountName'), parameters('databaseName'))]" ],
             "properties":
             {
@@ -630,7 +852,7 @@ az cosmosdb show --resource-group $resourceGroupName --name accountName --output
                 {
                     "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/storedProcedures",
                     "name": "[concat(variables('accountName'), '/', parameters('databaseName'), '/', parameters('containerName'), '/myStoredProcedure')]",
-                    "apiVersion": "2019-08-01",
+                    "apiVersion": "2020-03-01",
                     "dependsOn": [ "[resourceId('Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers', variables('accountName'), parameters('databaseName'), parameters('containerName'))]" ],
                     "properties": {
                         "resource": {
@@ -642,7 +864,7 @@ az cosmosdb show --resource-group $resourceGroupName --name accountName --output
                 {
                     "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/triggers",
                     "name": "[concat(variables('accountName'), '/', parameters('databaseName'), '/', parameters('containerName'), '/myPreTrigger')]",
-                    "apiVersion": "2019-08-01",
+                    "apiVersion": "2020-03-01",
                     "dependsOn": [ "[resourceId('Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers', variables('accountName'), parameters('databaseName'), parameters('containerName'))]" ],
                     "properties": {
                         "resource": {
@@ -656,7 +878,7 @@ az cosmosdb show --resource-group $resourceGroupName --name accountName --output
                 {
                     "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/userDefinedFunctions",
                     "name": "[concat(variables('accountName'), '/', parameters('databaseName'), '/', parameters('containerName'), '/myUserDefinedFunction')]",
-                    "apiVersion": "2019-08-01",
+                    "apiVersion": "2020-03-01",
                     "dependsOn": [ "[resourceId('Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers', variables('accountName'), parameters('databaseName'), parameters('containerName'))]" ],
                     "properties": {
                         "resource": {
@@ -669,74 +891,10 @@ az cosmosdb show --resource-group $resourceGroupName --name accountName --output
         }
     ]
 }
-
 ```
 
-### <a name="deploy-with-powershell"></a>使用 PowerShell 部署
-
-若要使用 PowerShell 部署 Azure 资源管理器模板，请执行以下操作：
-
-<!--Not Available on  **Copy** the script and select **Try it** to open the Azure Cloud shell. To paste the script, right-click the shell, and then select **Paste**:-->
-
-```powershell
-Connect-AzAccount -Environment AzureChinaCloud
-
-$resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
-$accountName = Read-Host -Prompt "Enter the account name"
-$location = Read-Host -Prompt "Enter the location (i.e. chinanorth2)"
-$primaryRegion = Read-Host -Prompt "Enter the primary region (i.e. chinanorth2)"
-$secondaryRegion = Read-Host -Prompt "Enter the secondary region (i.e. chinaeast2)"
-$databaseName = Read-Host -Prompt "Enter the database name"
-$containerName = Read-Host -Prompt "Enter the container name"
-
-New-AzResourceGroup -Name $resourceGroupName -Location $location
-New-AzResourceGroupDeployment `
-    -ResourceGroupName $resourceGroupName `
-    -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-cosmosdb-sql-container-sprocs/azuredeploy.json" `
-    -accountName $accountName `
-    -location $location `
-    -primaryRegion $primaryRegion `
-    -secondaryRegion $secondaryRegion `
-    -databaseName $databaseName `
-    -containerName $containerName
-
- (Get-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2019-08-01" -ResourceGroupName $resourceGroupName).name
-```
-
-你可以选择使用本地安装的 PowerShell 版本来部署模板。 你需要[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)。 请运行 `Get-Module -ListAvailable Az` 来查找所需的版本。
-
-<!--MOONCAKE: Not available on instead of using CloudShell-->
-
-### <a name="deploy-with-azure-cli"></a>使用 Azure CLI 进行部署
-
-若要使用 Azure CLI 部署 Azure 资源管理器模板，请执行以下操作：
-
-
-<!--Not Available on **Copy** the script and select **Try it** to open the Azure Cloud shell. To paste the script, right-click the shell, and then select **Paste**:-->
-
-[!INCLUDE [azure-cli-2-azurechinacloud-environment-parameter](../../includes/azure-cli-2-azurechinacloud-environment-parameter.md)]
-
-<!--MOONCAKE: parameter correct on --name $accountName-->
-
-```azurecli
-read -p 'Enter the Resource Group name: ' resourceGroupName
-read -p 'Enter the location (i.e. chinanorth2): ' location
-read -p 'Enter the account name: ' accountName
-read -p 'Enter the primary region (i.e. chinanorth2): ' primaryRegion
-read -p 'Enter the secondary region (i.e. chinaeast2): ' secondaryRegion
-read -p 'Enter the database name: ' databaseName
-read -p 'Enter the container name: ' containerName
-
-az group create --name $resourceGroupName --location $location
-az group deployment create --resource-group $resourceGroupName \
-   --template-uri https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-cosmosdb-sql-container-sprocs/azuredeploy.json \
-   --parameters accountName=$accountName primaryRegion=$primaryRegion secondaryRegion=$secondaryRegion databaseName=$databaseName \
-   containerName=$containerName
-
-az cosmosdb show --resource-group $resourceGroupName --name $accountName --output tsv
-```
-
-<!--MOONCAKE: parameter correct on --name $accountName-->
+<!--Not Available on ## Free tier Azure Cosmos DB account-->
+<!--Upload the template failed-->
 
 ## <a name="next-steps"></a>后续步骤
 
