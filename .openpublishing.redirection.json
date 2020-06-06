@@ -24389,6 +24389,9 @@
     {
       "source_path": "articles/security-center/security-center-virtual-machine.md",
       "redirect_url": "/security-center/security-center-intro",
+      "redirect_document_id": false
+    },
+    {
       "source_path": "articles/event-hubs/event-hubs-api-overview.md",
       "redirect_url": "/event-hubs/event-hubs-samples",
       "redirect_document_id": false
@@ -24512,6 +24515,77 @@
       "source_path": "articles/storage/files/storage-how-to-recover-deleted-account.md",
       "redirect_url": "/storage/common/storage-account-create",
       "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/security/fundamentals/service-fabric-checklist.md",
+      "redirect_url": "/service-fabric/service-fabric-best-practices-security",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/active-directory/active-directory-conditional-access-azure-portal.md",
+      "redirect_url": "/active-directory/conditional-access/overview",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "articles/log-analytics/log-analytics-queries.md",
+      "redirect_url": "/azure-monitor/log-query/log-query-overview",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "articles/active-directory/active-directory-reporting-guide.md",
+      "redirect_url": "/active-directory/active-directory-reporting-azure-portal",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/active-directory/active-directory-passwords-reporting.md",
+      "redirect_url": "/active-directory/authentication/howto-sspr-reporting",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "articles/security/azure-security-threat-modeling-tool-getting-started.md",
+      "redirect_url": "/security/develop/threat-modeling-tool-getting-started",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "articles/application-insights/app-insights-overview.md",
+      "redirect_url": "/azure-monitor/app/app-insights-overview",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "articles/log-analytics/log-analytics-add-solutions.md",
+      "redirect_url": "/monitoring/monitoring-solutions",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/log-analytics/log-analytics-ad-assessment.md",
+      "redirect_url": "/azure-monitor/insights/ad-assessment",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "articles/log-analytics/log-analytics-sql-assessment.md",
+      "redirect_url": "/azure-monitor/insights/sql-assessment",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "articles/operations-management-suite/oms-solution-agenthealth.md",
+      "redirect_url": "/monitoring/monitoring-solution-agenthealth",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/log-analytics/log-analytics-activity.md",
+      "redirect_url": "/azure-monitor/platform/collect-activity-logs",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/azure-monitor/platform/collect-activity-logs.md",
+      "redirect_url": "/azure-monitor/platform/activity-log-collect",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/media-services/previous/media-services-configure-tricaster-live-encoder.md",
+      "redirect_url": "/media-services",
+      "redirect_document_id": false
     }
+
   ]
 }
