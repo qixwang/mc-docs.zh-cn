@@ -1,24 +1,20 @@
 ---
 title: 使用 Azure Site Recovery 将 Azure Stack VM 复制到 Azure | Azure
 description: 了解如何使用 Azure Site Recovery 服务为 Azure Stack VM 设置到 Azure 的灾难恢复。
-services: site-recovery
-author: rockboyfor
-manager: digimobile
 ms.topic: conceptual
-ms.service: site-recovery
 origin.date: 08/05/2019
-ms.date: 01/13/2020
+ms.date: 06/08/2020
 ms.author: v-yeche
-ms.openlocfilehash: 87f5e1c49d0b494ba856281384d143068d30d85c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 6dda11aa6b6416a994b497211f09b555df32b29f
+ms.sourcegitcommit: 5ae04a3b8e025986a3a257a6ed251b575dbf60a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75776676"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84440680"
 ---
 # <a name="replicate-azure-stack-vms-to-azure"></a>将 Azure Stack VM 复制到 Azure
 
-本文介绍如何使用 [Azure Site Recovery 服务](/site-recovery/site-recovery-overview)设置将 Azure Stack VM 灾难恢复到 Azure。
+本文介绍如何使用 [Azure Site Recovery 服务](site-recovery-overview.md)设置将 Azure Stack VM 灾难恢复到 Azure。
 
 Site Recovery 有助于实现业务连续性和灾难恢复 (BCDR) 策略。 该服务可确保在出现预期内和意外中断时，VM 工作负载仍然可用。
 
@@ -45,9 +41,9 @@ Site Recovery 有助于实现业务连续性和灾难恢复 (BCDR) 策略。 该
 
 **位置** | **组件** |**详细信息**
 --- | --- | ---
-**配置服务器** | 在单个 Azure Stack VM 上运行。 | 在每个订阅中设置配置服务器 VM。 此 VM 运行以下 Site Recovery 组件：<br/><br/> - 配置服务器：在本地和 Azure 之间协调通信并管理数据复制。 - 进程服务器：充当复制网关。 它接收复制数据，通过缓存、压缩和加密对其进行优化，然后将数据发送到 Azure 存储。<br/><br/> 如果要复制的 VM 超出了下述限制，则可设置单独的独立进程服务器。 [了解详细信息](/site-recovery/vmware-azure-set-up-process-server-scale)。
-**移动服务** | 安装在要复制的每个 VM 上。 | 在本文所述步骤中，我们准备了一个帐户，以便复制启用后自动在 VM 上安装移动服务。 如果不想自动安装该服务，则可使用许多其他方法。 [了解详细信息](/site-recovery/vmware-azure-install-mobility-service)。
-**Azure** | 在 Azure 中，你需要一个恢复服务保管库、一个存储帐户和一个虚拟网络。 |  复制的数据存储在存储帐户中。 进行故障转移时，Azure VM 将添加到 Azure 网络。 
+**配置服务器** | 在单个 Azure Stack VM 上运行。 | 在每个订阅中设置配置服务器 VM。 此 VM 运行以下 Site Recovery 组件：<br/><br/> - 配置服务器：在本地和 Azure 之间协调通信并管理数据复制。 - 进程服务器：充当复制网关。 它接收复制数据，通过缓存、压缩和加密对其进行优化，然后将数据发送到 Azure 存储。<br/><br/> 如果要复制的 VM 超出了下述限制，则可设置单独的独立进程服务器。 [了解详细信息](vmware-azure-set-up-process-server-scale.md)。
+**移动服务** | 安装在要复制的每个 VM 上。 | 在本文所述步骤中，我们准备了一个帐户，以便复制启用后自动在 VM 上安装移动服务。 如果不想自动安装该服务，则可使用许多其他方法。 [了解详细信息](vmware-azure-install-mobility-service.md)。
+**Azure** | 在 Azure 中，你需要一个恢复服务保管库、一个存储帐户和一个虚拟网络。 |  复制的数据存储在存储帐户中。 进行故障转移时，Azure VM 将添加到 Azure 网络。
 
 复制按如下方式进行：
 
@@ -67,8 +63,8 @@ Site Recovery 有助于实现业务连续性和灾难恢复 (BCDR) 策略。 该
 **要求** | **详细信息**
 --- | ---
 **Azure 订阅帐户** | 如果没有 Azure 订阅，请创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。
-**Azure 帐户权限** | 使用的 Azure 帐户需以下权限：<br/><br/> - 创建恢复服务保管库<br/><br/> - 在用于方案的资源组和虚拟网络中创建虚拟机<br/><br/> - 向指定的存储帐户进行写入<br/><br/> 请注意：<br/><br/> \- 如果创建帐户，则你是自己的订阅的管理员，可以执行所有操作。<br/><br/> - 如果你使用现有订阅并且不是管理员，则需要请求管理员为你分配“所有者”或“参与者”权限。<br/><br/> - 如需更加细化的权限，请查看[此文](/site-recovery/site-recovery-role-based-linked-access-control)。 
-**Azure Stack VM** | 需要租户订阅中的 Azure Stack VM，该 VM 将部署为 Site Recovery 配置服务器。 
+**Azure 帐户权限** | 使用的 Azure 帐户需以下权限：<br/><br/> - 创建恢复服务保管库<br/><br/> - 在用于方案的资源组和虚拟网络中创建虚拟机<br/><br/> - 向指定的存储帐户进行写入<br/><br/> 请注意：<br/><br/> \- 如果创建帐户，则你是自己的订阅的管理员，可以执行所有操作。<br/><br/> - 如果你使用现有订阅并且不是管理员，则需要请求管理员为你分配“所有者”或“参与者”权限。<br/><br/> - 如需更加细化的权限，请查看[此文](site-recovery-role-based-linked-access-control.md)。
+**Azure Stack VM** | 需要租户订阅中的 Azure Stack VM，该 VM 将部署为 Site Recovery 配置服务器。
 
 ### <a name="prerequisites-for-the-configuration-server"></a>配置服务器的先决条件
 
@@ -84,7 +80,7 @@ Site Recovery 有助于实现业务连续性和灾难恢复 (BCDR) 策略。 该
 --- | ---
 **64 位 Windows** | Windows Server 2016、Windows Server 2012 R2、Windows Server 2012、Windows Server 2008 R2（自 SP1 起）
 **CentOS** | 5.2 到 5.11、6.1 到 6.9、7.0 到 7.3
-**Ubuntu** | 14.04 LTS 服务器、16.04 LTS 服务器。 查看[支持的内核](/site-recovery/vmware-physical-azure-support-matrix#ubuntu-kernel-versions)
+**Ubuntu** | 14.04 LTS 服务器、16.04 LTS 服务器。 查看[支持的内核](vmware-physical-azure-support-matrix.md#ubuntu-kernel-versions)
 
 ### <a name="prepare-for-mobility-service-installation"></a>准备安装移动服务
 
@@ -140,7 +136,7 @@ Site Recovery 有助于实现业务连续性和灾难恢复 (BCDR) 策略。 该
 
     <!--Notice: Correct on **Monitoring + Management** on Mooncake-->
     
-2. 在“名称”  中，输入一个友好名称以标识此保管库。 
+2. 在“名称”  中，输入一个友好名称以标识此保管库。
 3. 在“资源”组中，创建或选择资源组  。 我们将使用 contosoRG  。
 4. 在“位置”中，输入 Azure 区域  。 我们将使用“中国北部”  。
 5. 若要从仪表板快速访问保管库，请选择“固定到仪表板”   >   “创建”。
@@ -178,7 +174,7 @@ Site Recovery 有助于实现业务连续性和灾难恢复 (BCDR) 策略。 该
 
 若要安装并注册配置服务器，请与要用于配置服务器的 VM 建立 RDP 连接，然后运行统一安装程序。
 
-开始操作之前，[请务必将时钟与 VM 上的](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/get-started/windows-time-service/windows-time-service)时间服务器同步。 如果时间与当地时间误差超过五分钟，则安装失败。
+开始操作之前，[请务必将时钟与 VM 上的](https://docs.microsoft.com/windows-server/networking/windows-time-service/windows-time-service-top)时间服务器同步。 如果时间与当地时间误差超过五分钟，则安装失败。
 
 现在来安装配置服务器：
 
@@ -252,13 +248,13 @@ Site Recovery 有助于实现业务连续性和灾难恢复 (BCDR) 策略。 该
 
 ### <a name="verify-machine-properties"></a>验证计算机属性
 
-运行测试故障转移前，请验证计算机属性，确保其符合 [Azure 要求](/site-recovery/vmware-physical-azure-support-matrix#azure-vm-requirements)。 可按如下方式查看和修改属性：
+运行测试故障转移前，请验证计算机属性，确保其符合 [Azure 要求](vmware-physical-azure-support-matrix.md#azure-vm-requirements)。 可按如下方式查看和修改属性：
 
 1. 在“受保护的项”  中，单击“复制的项”  >“虚拟机”。
 2. “复制的项”窗格中具有 VM 信息、运行状况状态和最新可用恢复点的摘要  。 单击“属性”  ，查看详细信息。
 3. 在“计算和网络”中，按需修改设置  。
 
-    - 可修改 Azure 名称、资源组、目标大小、[可用性集](../virtual-machines/windows/tutorial-availability-sets.md)和托管的磁盘设置。
+    - 可修改 Azure 名称、资源组、目标大小、[可用性集](/virtual-machines/windows/tutorial-availability-sets)和托管的磁盘设置。
     - 还可查看和修改网络设置。 其中包括故障转移后 Azure VM 加入的网络/子网，以及将分配给 VM 的 IP 地址。
 1. 在“磁盘”中，可查看关于 VM 上的操作系统和数据磁盘的信息  。
 
@@ -281,19 +277,19 @@ Site Recovery 有助于实现业务连续性和灾难恢复 (BCDR) 策略。 该
     
     <!--MOONCAKE: Protected Items to replace Setting-->
     
-2. 在本演练中，我们将选择使用“最新处理”恢复点  。 
+2. 在本演练中，我们将选择使用“最新处理”恢复点  。
 3. 在“测试故障转移”中，选择目标 Azure 网络  。
 4. 单击“确定”  开始故障转移。
 5. 可通过单击 VM 打开其属性来跟踪进度。 或者，可在保管库名称  > “设置” > “作业” >“Site Recovery 作业”中单击“测试故障转移”作业      。
 6. 故障转移完成后，副本 Azure VM 会显示在 Azure 门户 >“虚拟机”中。  检查 VM 大小是否合适、是否已连接到正确的网络且正在运行。
-7. 现在应该能够连接到 Azure 中复制的 VM。 [了解详细信息](/site-recovery/site-recovery-test-failover-to-azure#prepare-to-connect-to-azure-vms-after-failover)。
+7. 现在应该能够连接到 Azure 中复制的 VM。 [了解详细信息](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover)。
 8. 若要删除在测试故障转移期间创建的 Azure VM，请在 VM 上单击“清理测试故障转移”  。 在“说明”中，保存与测试性故障转移相关联的任何观测结果  。
 
 ## <a name="fail-over-and-fail-back"></a>故障转移和故障回复
 
 设置复制后，运行演练以确保一切正常，之后则可按需将计算机故障转移到 Azure。
 
-运行故障转移前，如果要在故障转移后连接 Azure 中的计算机，则可在开始前，[准备进行连接](/site-recovery/site-recovery-test-failover-to-azure#prepare-to-connect-to-azure-vms-after-failover)。
+运行故障转移前，如果要在故障转移后连接 Azure 中的计算机，则可在开始前，[准备进行连接](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover)。
 
 然后按如下所述运行故障转移：
 
@@ -303,7 +299,7 @@ Site Recovery 有助于实现业务连续性和灾难恢复 (BCDR) 策略。 该
     
 2. 选择要使用的恢复点。
 3. 在“测试故障转移”中，选择目标 Azure 网络  。
-4. 选择“在开始故障转移前关闭计算机”  。 选择此设置后，Site Recovery 会在开始故障转移前尝试关闭源计算机。 但即使关机失败，故障转移也仍会继续。 
+4. 选择“在开始故障转移前关闭计算机”  。 选择此设置后，Site Recovery 会在开始故障转移前尝试关闭源计算机。 但即使关机失败，故障转移也仍会继续。
 5. 单击“确定”  开始故障转移。 可以在“作业”  页上跟踪故障转移进度。
 6. 故障转移完成后，副本 Azure VM 会显示在 Azure 门户 >“虚拟机”中。  如果打算在故障转移后进行连接，请检查 VM 大小是否合适、是否已连接到正确的网络且正在运行。
 7. 验证 VM 后，单击“提交”完成故障转移  。 这会删除所有可用的恢复点。
@@ -315,12 +311,12 @@ Site Recovery 有助于实现业务连续性和灾难恢复 (BCDR) 策略。 该
 
 主站点重新启动并运行后，可从 Azure 故障回复到 Azure Stack。 若要进行此操作，需下载 Azure VM VHD，并将其上传到 Azure Stack。
 
-1. 关闭 Azure VM，以便可下载 VHD。 
+1. 关闭 Azure VM，以便可下载 VHD。
 2. 若要开始下载 VHD，请安装 [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)。
 3. 导航到 Azure 门户中的 VM（使用 VM 名称）。
 4. 在“磁盘”中，单击磁盘名称，然后收集设置  。
 
-    - 例如，我们的测试中使用的 VHD URI：可将 https://502055chinaeast.blob.core.chinacloudapi.cn/wahv9b8d2ceb284fb59287/copied-3676553984.vhd 分解，获得用于下载 VHD 的以下输入参数。
+    - 例如，我们的测试中使用的 VHD URI：可将 `https://502055chinaeast.blob.core.chinacloudapi.cn/wahv9b8d2ceb284fb59287/copied-3676553984.vhd` 分解，获得用于下载 VHD 的以下输入参数。
         - 存储帐户：502055chinaeast
         - 容器：wahv9b8d2ceb284fb59287
         - VHD 名称：copied-3676553984.vhd
@@ -340,5 +336,4 @@ Site Recovery 有助于实现业务连续性和灾难恢复 (BCDR) 策略。 该
 
 故障回复后，可重新保护 VM 并再次开始将其复制到 Azure。若要执行此操作，请重复本文中的步骤。
 
-<!-- Update_Description: update link, update meta properties -->
-
+<!-- Update_Description: update meta properties, wording update, update link -->

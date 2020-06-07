@@ -6,14 +6,14 @@ manager: digimobile
 ms.service: site-recovery
 ms.topic: conceptual
 origin.date: 11/27/2018
-ms.date: 01/21/2019
+ms.date: 06/08/2020
 ms.author: v-yeche
-ms.openlocfilehash: f87dc23bbdd39e342b656aeca0d1c40350179aa3
-ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
+ms.openlocfilehash: 0c485e3852e5896f718d22850b2815b9d82478ad
+ms.sourcegitcommit: 5ae04a3b8e025986a3a257a6ed251b575dbf60a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "83002092"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84440496"
 ---
 <!--NOT SUITABLE FOR AZURE CHINA CLOUD DUE TO LIMIT DESCRIPTION-->
 # <a name="set-up-vmware-disaster-recovery-in-a-multi-tenancy-environment-with-the-cloud-solution-provider-csp-program"></a>使用云解决方案提供商 (CSP) 计划在多租户环境中设置 VMware 灾难恢复
@@ -34,7 +34,10 @@ ms.locfileid: "83002092"
 
 ## <a name="create-a-tenant-account"></a>创建租户帐户
 
-1. 通过 [Azure 合作伙伴中心](https://market-publish.azure.cn/zh-cn/isv/index)登录到 CSP 帐户。
+1. 通过 [Azure 合作伙伴中心](https://www.microsoft.com/solution-providers/home)登录到 CSP 帐户。
+
+    <!--Review late, currently follow the MICROSOFT GLOABLE PARTNER LINK-->
+    
 2. 在“仪表板”  菜单上，选择“客户”  。
 3. 在打开的页面上，单击“添加客户”按钮。 
 4. 在“新建客户”页上，填写租户的帐户信息细节。 

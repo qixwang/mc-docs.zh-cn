@@ -2,14 +2,15 @@
 title: 在应用程序中使用托管标识
 description: 如何使用 Azure Service Fabric 应用程序代码中的托管标识访问 Azure 服务。
 ms.topic: article
-ms.date: 05/06/2020
+origin.date: 10/09/2019
+ms.date: 06/08/2020
 ms.author: v-yeche
-ms.openlocfilehash: aaac7e0613f83d4cf46db1b54d7d4c4ceaac011e
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+ms.openlocfilehash: 030131c643e5aa8ebb376ae3869147be0ec35603
+ms.sourcegitcommit: 0e178672632f710019eae60cea6a45ac54bb53a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84199482"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84356140"
 ---
 <!--Not Available on MOONCAKE-->
 <!--RELEASE BEFORE CONFIRMATION-->

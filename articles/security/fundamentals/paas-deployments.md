@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 05/29/2020
 ms.author: v-tawe
 origin.date: 10/28/2019
-ms.openlocfilehash: 7186d008e9a08bcc72751621b3db4d7b6c75e0df
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+ms.openlocfilehash: eaa35710233c53498701ebde3c2ffc8e4d3a8a75
+ms.sourcegitcommit: 79c99a9ea013b3c74706a1038a505f4eea2aaac4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84200050"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84439504"
 ---
 # <a name="securing-paas-deployments"></a>保护 PaaS 部署
 
@@ -102,9 +102,9 @@ Microsoft [安全开发生命周期](https://www.microsoft.com/sdl)指定团队�
 | 欺骗 | 身份验证 | 需要 HTTPS 连接。 |
 | 篡改 | 完整性 | 验证 TLS/SSL 证书。 |
 | 否认性 | 不可否认性 | 启用 Azure [监视和诊断](/architecture/best-practices/monitoring)。 |
-| 信息泄露 | 机密性 | 使用[服务证书](/rest/api/appservice/certificates)加密静态敏感数据。 |
+| 信息泄露 | 机密性 | 使用[服务证书](https://docs.microsoft.com/rest/api/appservice/certificates)加密静态敏感数据。 |
 | 拒绝服务 | 可用性 | 监视潜在拒绝服务条件的性能指标。 实现连接筛选器。 |
-| 特权提升 | 授权 | 使用[特权标识管理](/azure/active-directory/privileged-identity-management/subscription-requirements)。 |
+| 特权提升 | 授权 | 使用[特权标识管理](/active-directory/privileged-identity-management/subscription-requirements)。 |
 
 ## <a name="develop-on-azure-app-service"></a>在 Azure 应用服务上开发
 [Azure App Service](/app-service/overview) 是一个 PaaS 产品，可创建适用于任何平台或设备的 Web 和移动应用，并可连接到云中或本地任何位置的数据。 应用服务所包括的 Web 功能和移动功能是以前作为 Azure 网站和 Azure 移动服务单独交付的。 它还包括各种新功能，可以实现业务流程的自动化，并可托管云 API。 应用服务以单个集成服务的形式为 Web、移动和集成方案提供一组丰富的功能。

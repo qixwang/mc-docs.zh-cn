@@ -16,12 +16,12 @@ ms.workload: na
 origin.date: 08/13/2018
 ms.date: 03/02/2020
 ms.author: v-lingwu
-ms.openlocfilehash: 795287c22a03253e3fecd17ae6f4fc7b713ab411
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 97afd4f44a1a958b8c794ae9bff767f255d24d65
+ms.sourcegitcommit: 79c99a9ea013b3c74706a1038a505f4eea2aaac4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78213787"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84439500"
 ---
 # <a name="penetration-testing"></a>渗透测试
 使用 Azure 进行应用程序测试和部署的一个优点是可快速创建环境。 不必为请求、获取以及“搭架和堆叠”本地硬件担心。
@@ -32,7 +32,7 @@ ms.locfileid: "78213787"
 
 我们不会为你对应用程序进行渗透测试，但我们确实了解你想要并需要对自己的应用程序进行渗透测试。 这是好事，因为改进自己的应用程序的安全性可以加强整个 Azure 生态系统的安全性。
 
-自 2017 年 6 月 15 日起，Microsoft 不再需要预先批准即可针对 Azure 资源进行渗透测试。 愿意正式记录即将进行的针对 Microsoft Azure 的渗透测试活动的用户，请填写 [Azure 服务渗透测试通知表](https://portal.msrc.microsoft.com/en-us/engage/pentest)。 本流程仅与 Microsoft Azure 相关，并不适用于任何其他 Microsoft 云服务。
+自 2017 年 6 月 15 日起，Microsoft 不再需要预先批准即可针对 Azure 资源进行渗透测试。 愿意正式记录即将进行的针对 Microsoft Azure 的渗透测试活动的用户，请填写 [Azure 服务渗透测试通知表](https://portal.msrc.microsoft.com/engage/pentest)。 本流程仅与 Microsoft Azure 相关，并不适用于任何其他 Microsoft 云服务。
 
 >[!IMPORTANT]
 >虽然参加渗透测试时无需再通知 Microsoft，客户仍须遵守 [Microsoft 云统一渗透测试参与规则](https://technet.microsoft.com/mt784683)。

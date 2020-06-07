@@ -34,6 +34,6 @@
     - name: Azure 安全基线概述
       href: security-baselines-overview.md
     - name: Cosmos DB 安全基线
-      href: ../../cosmos-db/security-baseline.md
+      href: /cosmos-db/security-baseline.md
     - name: HDInsight 安全基线
-      href: ../../hdinsight/security-baseline.md
+      href: /hdinsight/security-baseline.md

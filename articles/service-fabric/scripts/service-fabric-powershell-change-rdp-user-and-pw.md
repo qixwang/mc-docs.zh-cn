@@ -1,5 +1,5 @@
 ---
-title: 在 Powershell 中更新 RDP 用户名和密码
+title: 在 PowerShell 中更新 RDP 用户名和密码
 description: Azure PowerShell 脚本示例 - 更新特定节点类型的所有 Service Fabric 群集节点的 RDP 用户名和密码。
 services: service-fabric
 documentationcenter: ''
@@ -12,15 +12,15 @@ ms.service: service-fabric
 ms.workload: multiple
 ms.topic: sample
 origin.date: 03/19/2018
-ms.date: 02/24/2020
+ms.date: 06/08/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: f9865de4c6170398fc288ec1091e95d56abf1d49
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 94f356a50f63ca39be45b30f9c478e665bc1aa59
+ms.sourcegitcommit: 0e178672632f710019eae60cea6a45ac54bb53a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540711"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84356201"
 ---
 # <a name="update-the-admin-username-and-password-of-the-vms-in-a-cluster"></a>更新群集中 VM 的管理员用户名和密码
 
@@ -60,10 +60,14 @@ Update-AzVmss -ResourceGroupName $resourceGroup -Name $nodeTypeName -VirtualMach
 | [Add-AzVmssExtension](https://docs.microsoft.com/powershell/module/az.compute/add-azvmssextension)| 将扩展添加到虚拟机规模集。|
 | [Update-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/update-azvmss)|将虚拟机规模集的状态更新为 VMSS 对象的状态。|
 
+## <a name="duration"></a>Duration
+
+对于单节点类型，例如，如果有五个节点，那么更改用户名或密码的持续时间为 45 到 60 分钟。 
+
 ## <a name="next-steps"></a>后续步骤
 
 有关 Azure PowerShell 模块的详细信息，请参阅 [Azure PowerShell 文档](https://docs.microsoft.com/powershell/azure/overview)。
 
 可以在 [Azure PowerShell 示例](../service-fabric-powershell-samples.md)中找到 Azure Service Fabric 的其他 Azure Powershell 示例。
 
-<!-- Update_Description: update meta properties, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

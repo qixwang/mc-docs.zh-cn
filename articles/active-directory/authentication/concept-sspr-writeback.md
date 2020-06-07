@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 04/24/2020
+ms.date: 06/02/2020
 ms.author: v-junlch
 author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71b85e158735740b3995531d423899244d780d53
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.openlocfilehash: a6a48c2ba5cd2173cca9690a5576ab2be0a8ce91
+ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82126216"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84275356"
 ---
 # <a name="how-does-self-service-password-reset-writeback-work-in-azure-active-directory"></a>Azure Active Directory 中的自助式密码重置写回如何工作？
 
@@ -149,5 +149,5 @@ Azure Active Directory (Azure AD) 自助式密码重置 (SSPR) 允许用户在�
 若要开始 SSPR 写回，请完成以下教程：
 
 > [!div class="nextstepaction"]
-> [教程：启用自助式密码重置 (SSPR) 写回](tutorial-enable-sspr-writeback.md)
+> [教程：启用自助式密码重置 (SSPR) 写回](tutorial-enable-writeback.md)
 

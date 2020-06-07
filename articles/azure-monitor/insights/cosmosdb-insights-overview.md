@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: Johnnytechn
 ms.author: v-johya
 ms.date: 05/22/2020
-ms.openlocfilehash: 84d24343f96af510425a47890b2f2f6ef8068596
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+ms.openlocfilehash: e8299afdde68bebd0a5cb2fc07f01694263a35d5
+ms.sourcegitcommit: 5ae04a3b8e025986a3a257a6ed251b575dbf60a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84199986"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84440727"
 ---
 # <a name="explore-azure-monitor-for-azure-cosmos-db"></a>探究适用于 Azure Cosmos DB 的 Azure Monitor
 
@@ -96,6 +96,7 @@ ms.locfileid: "84199986"
 
 ![操作工作簿](./media/cosmosdb-insights-overview/operation.png) 
 
+<!-- Not available in MC now: export and expand by selecting the icon at the top right of the section. -->
 ## <a name="pin"></a>引脚
 
 可以将任一指标部分固定到 [Azure 仪表板](https://docs.azure.cn/azure-portal/azure-portal-dashboards)，方法是选择该部分右上角的图钉图标。

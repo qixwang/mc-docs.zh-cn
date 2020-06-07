@@ -1,17 +1,16 @@
 ---
 title: 在 Windows 群集上设置加密证书
 description: 了解如何在 Windows 群集上设置加密证书并对机密进行加密。
-author: rockboyfor
 ms.topic: conceptual
 origin.date: 01/04/2019
-ms.date: 02/24/2020
+ms.date: 06/08/2020
 ms.author: v-yeche
-ms.openlocfilehash: c7e917889f2ba99a69dbe122b4968cd7a9c02ded
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 2de8809be3d93c86ce6b6e8bebaaed784b943aa6
+ms.sourcegitcommit: 0e178672632f710019eae60cea6a45ac54bb53a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540493"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84356289"
 ---
 # <a name="set-up-an-encryption-certificate-and-encrypt-secrets-on-windows-clusters"></a>在 Windows 群集上设置加密证书并对机密进行加密
 本文展示了如何在 Windows 群集上设置加密证书并使用它来加密机密。 对于 Linux 群集，请参阅[在 Linux 群集上设置加密证书并对机密进行加密][secret-management-linux-specific-link]。
@@ -48,7 +47,7 @@ Invoke-ServiceFabricEncryptText -CertStore -CertThumbprint "<thumbprint>" -Text 
 
 <!-- Links -->
 
-[key-vault-get-started]:../key-vault/key-vault-overview.md
+[key-vault-get-started]:../key-vault/general/overview.md
 [service-fabric-cluster-creation-via-arm]: service-fabric-cluster-creation-via-arm.md
 [parameters-link]:service-fabric-how-to-parameterize-configuration-files.md
 [environment-variables-link]: service-fabric-how-to-specify-environment-variables.md

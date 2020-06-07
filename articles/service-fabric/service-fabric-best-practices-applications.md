@@ -4,14 +4,14 @@ description: 使用 Azure Service Fabric 开发应用程序和服务的最佳做
 author: rockboyfor
 ms.topic: conceptual
 origin.date: 06/18/2019
-ms.date: 04/13/2020
+ms.date: 06/08/2020
 ms.author: v-yeche
-ms.openlocfilehash: f67082231cad12472d7ac35f94d452ebcb9722ac
-ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
+ms.openlocfilehash: eb667906ec88aff3f322b63ff802bca74b202ea2
+ms.sourcegitcommit: 0e178672632f710019eae60cea6a45ac54bb53a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82093474"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84356198"
 ---
 # <a name="azure-service-fabric-application-design-best-practices"></a>有关 Azure Service Fabric 应用程序设计的最佳做法
 
@@ -75,7 +75,7 @@ ms.locfileid: "82093474"
 在服务调用中添加[应用程序日志记录](/service-fabric/service-fabric-diagnostics-event-generation-app)时应该面面俱到。 日志记录有助于诊断服务相互调用的方案。 例如，如果 A 调用 B，B 调用 C，C 调用 D，则调用可能会在任何一个位置失败。 如果没有足够的日志，将难以诊断。 如果服务记录的日志过多（因为调用量很大），请确保至少记录错误和警告。
 
 ## <a name="iot-and-messaging-applications"></a>IoT 和消息传送应用程序
-从 [Azure IoT 中心](/iot-hub/)或 [Azure 事件中心](/event-hubs/)读取消息时，请使用 [ServiceFabricProcessor](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/ServiceFabricProcessor)。 ServiceFabricProcessor 与 Service Fabric Reliable Services 集成，可保留从事件中心分区读取消息的状态，并通过 `IEventProcessor::ProcessEventsAsync()` 方法将新消息推送到服务。
+从 [Azure IoT 中心](/iot-hub/)或 [Azure 事件中心](/event-hubs/)读取消息时，请使用 [ServiceFabricProcessor](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/ServiceFabricProcessor)。 ServiceFabricProcessor 与 Service Fabric Reliable Services 集成，可保留从事件中心分区读取消息的状态，并通过 `IEventProcessor::ProcessEventsAsync()` 方法将新消息推送到服务。
 
 <!--Not Available on ## Design guidance on Azure-->
 <!--Not Available on [Azure architecture center](https://docs.microsoft.com/azure/architecture/microservices/)-->

@@ -6,12 +6,12 @@ ms.subservice: dsc
 ms.topic: conceptual
 origin.date: 08/08/2018
 ms.date: 05/25/2020
-ms.openlocfilehash: 083ebdcea4f967d111e7b9d65c67feba75b7d207
-ms.sourcegitcommit: 981a75a78f8cf74ab5a76f9e6b0dc5978387be4b
+ms.openlocfilehash: 066519bb1d65f03d67df08fa1c64314370d1f36b
+ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83801272"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84275560"
 ---
 # <a name="configure-servers-to-a-desired-state-and-manage-drift"></a>将服务器配置到所需状态并管理偏移
 
@@ -99,7 +99,7 @@ Register-AzAutomationDscNode -ResourceGroupName 'MyResourceGroup' -AutomationAcc
 
 ### <a name="specify-configuration-mode-settings"></a>指定配置模式设置
 
-使用 [Register-AzAutomationDscNode](/powershell/module/azurerm.automation/register-azurermautomationdscnode) cmdlet，以托管节点形式注册 VM 并指定配置属性。 例如，可以通过将 `ApplyOnly` 指定为 `ConfigurationMode` 属性的值来指定计算机状态仅应用一次。 状态配置在初始检查结束后不会尝试应用这些配置。
+使用 [Register-AzAutomationDscNode](https://docs.microsoft.com/powershell/module/azurerm.automation/register-azurermautomationdscnode) cmdlet，以托管节点形式注册 VM 并指定配置属性。 例如，可以通过将 `ApplyOnly` 指定为 `ConfigurationMode` 属性的值来指定计算机状态仅应用一次。 状态配置在初始检查结束后不会尝试应用这些配置。
 
 ```powershell
 Register-AzAutomationDscNode -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'myAutomationAccount' -AzureVMName 'DscVm' -ConfigurationMode 'ApplyOnly'

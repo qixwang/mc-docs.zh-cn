@@ -8,12 +8,12 @@ origin.date: 09/24/2018
 ms.date: 04/12/2019
 ms.author: v-lingwu
 ms.subservice: metrics
-ms.openlocfilehash: 3b6121b00bf50bd09e4e462d7978d8deb8452823
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 23b2828378b328c83bc76fe7c995098717e2352b
+ms.sourcegitcommit: 5ae04a3b8e025986a3a257a6ed251b575dbf60a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79452397"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84440714"
 ---
 # <a name="send-custom-metrics-for-an-azure-resource-to-the-azure-monitor-metric-store-by-using-a-rest-api"></a>使用 REST API 将 Azure 资源的自定义指标发送到 Azure Monitor 指标存储
 
@@ -94,7 +94,7 @@ curl -X POST https://login.partner.microsoftonline.cn/<yourtenantid>/oauth2/toke
 1. 无法针对作为 Azure 资源的订阅或资源组发布指标。 
 1. 无法将已过去了 20 分钟的指标放入到存储中。 指标存储针对警报和实时图表绘制进行了优化。 
 2. 维度名称的数量应当与值数量匹配，反之亦然。 检查值。 
-2. 你可能在针对不支持自定义指标的区域发布指标。 请参阅[支持的区域](../../azure-monitor/platform/metrics-custom-overview.md#supported-regions)。 
+2. 你可能在针对不支持自定义指标的区域发布指标。 请参阅[支持的区域](../../azure-monitor/platform/metrics-custom-overview.md)。 
 
 
 

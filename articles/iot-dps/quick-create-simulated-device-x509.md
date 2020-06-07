@@ -4,17 +4,17 @@ description: 本快速入门使用单独注册。 本快速入门使用适用于
 author: wesmc7777
 ms.author: v-tawe
 origin.date: 11/08/2019
-ms.date: 03/02/2020
+ms.date: 06/01/2020
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 781a12ea92b5109c1040759f2fcc7f66a6437acb
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 3720db6ea0fb62fd315d3d52e27e701a1d7ddda1
+ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80586772"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84275520"
 ---
 # <a name="quickstart-provision-an-x509-simulated-device-using-the-azure-iot-c-sdk"></a>快速入门：使用 Azure IoT C SDK 预配 X.509 模拟设备
 

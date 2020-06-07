@@ -10,12 +10,12 @@ origin.date: 05/04/2020
 ms.date: 06/01/2020
 ms.author: v-yeche
 ms.reviewer: akjosh
-ms.openlocfilehash: 3b64ab35de9ddf455a2a48345b5b3cdb0fb842f8
-ms.sourcegitcommit: 981a75a78f8cf74ab5a76f9e6b0dc5978387be4b
+ms.openlocfilehash: 1bfcbdc9c2620f86c87adf3c09bd61482c7d0b86
+ms.sourcegitcommit: 8a2fbc0eae8d8f7297f5334f508ff868b4077f32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83801827"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84321000"
 ---
 # <a name="migrate-from-a-managed-image-to-a-shared-image-gallery-image"></a>从托管映像迁移到共享映像库映像
 
@@ -113,8 +113,10 @@ $job.State
 > [!NOTE]
 > 需等待映像版本彻底生成并复制完毕，然后才能使用同一托管映像来创建另一映像版本。 
 >
-> 创建映像版本时，还可以通过添加 `-StorageAccountType Premium_LRS` 在高级存储中存储映像，或者通过添加 `-StorageAccountType Standard_ZRS` 在[区域冗余存储](/storage/common/storage-redundancy-zrs)中存储映像。
+> 创建映像版本时，还可以通过添加 `-StorageAccountType Premium_LRS` 在高级存储中存储映像。
 >
+
+<!--Not Available on [Zone Redundant Storage](/storage/common/storage-redundancy-zrs)-->
 
 ## <a name="delete-the-managed-image"></a>删除托管映像
 

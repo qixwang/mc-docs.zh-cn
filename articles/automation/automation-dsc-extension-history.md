@@ -10,12 +10,12 @@ services: automation
 ms.service: automation
 ms.subservice: dsc
 ms.topic: conceptual
-ms.openlocfilehash: 12391823c7a7842ce3c4482e7adb5952c61edf73
-ms.sourcegitcommit: 981a75a78f8cf74ab5a76f9e6b0dc5978387be4b
+ms.openlocfilehash: e2d6cc3baa7e7698cd6697c2c648b362fb52650d
+ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83801842"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84275618"
 ---
 # <a name="azure-desired-state-configuration-extension-version-history"></a>Azure Desired State Configuration 扩展版本历史记录
 
@@ -65,7 +65,7 @@ ms.locfileid: "83801842"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关 PowerShell DSC 的详细信息，请转到 [PowerShell 文档中心](/powershell/scripting/dsc/overview/overview)。
-- 查看[适用于 DSC 扩展的资源管理器模板](/azure/virtual-machines/extensions/dsc-template)。
+- 有关 PowerShell DSC 的详细信息，请转到 [PowerShell 文档中心](https://docs.microsoft.com/powershell/scripting/dsc/overview/overview)。
+- 查看[适用于 DSC 扩展的资源管理器模板](/virtual-machines/extensions/dsc-template)。
 - 若要了解可以使用 PowerShell DSC 管理的其他功能并获取更多 DSC 资源，请浏览 [PowerShell 库](https://www.powershellgallery.com/packages?q=DscResource&x=0&y=0)。
-- 有关将敏感参数传入配置的详细信息，请参阅[使用 DSC 扩展处理程序安全管理凭据](/azure/virtual-machines/extensions/dsc-credentials)。
+- 有关将敏感参数传入配置的详细信息，请参阅[使用 DSC 扩展处理程序安全管理凭据](/virtual-machines/extensions/dsc-credentials)。

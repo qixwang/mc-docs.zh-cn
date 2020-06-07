@@ -8,12 +8,12 @@ origin.date: 11/28/2018
 ms.date: 05/25/2020
 ms.author: v-yeche
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 2a826e7bd095727e3cfb87205d09c5e78739ed8c
-ms.sourcegitcommit: 7e6b94bbaeaddb854beed616aaeba6584b9316d9
+ms.openlocfilehash: 8cbe8c381a774c7a0d80edfa2b13801e52e4af8b
+ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83735154"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84275562"
 ---
 # <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中实现业务连续性和灾难恢复的最佳做法
 
@@ -36,7 +36,7 @@ ms.locfileid: "83735154"
 
 * [**AKS 区域可用性**](/aks/quotas-skus-regions#region-availability)：选择靠近用户的区域。 AKS 不断向新区域扩展。
     
-    <!--Not Available on [Azure paired regions](/best-practices-availability-paired-regions)-->
+    <!-- Not Available on [Azure paired regions](/best-practices-availability-paired-regions) -->
     
 * **Azure 配对区域**：对于你的地理区域，选择两个相互配对的区域。 配对区域协调平台更新，并在需要时确定恢复工作的优先级。
 * **服务可用性**：确定配对区域应采用热/热、热/暖还是热/冷配置。 是否要同时运行两个区域，其中一个区域已准备好开始提供流量？ 或者，是否要运行一个区域，以便有时间来准备好提供流量？

@@ -2,21 +2,21 @@
 title: 教程 - 在 Python 中将 Azure Key Vault 与 Windows 虚拟机配合使用 | Azure
 description: 本教程介绍如何将 ASP.NET Core 应用程序配置为从 Key Vault 读取机密。
 services: key-vault
-author: msmbaldwin
-manager: rajvijan
+author: ShaneBala-keyvault
+manager: ravijan
 ms.service: key-vault
 ms.subservice: general
 ms.topic: tutorial
-origin.date: 09/05/2018
-ms.date: 04/20/2020
+origin.date: 05/11/2020
+ms.date: 06/02/2020
 ms.author: v-tawe
 ms.custom: mvc
-ms.openlocfilehash: d8ae60fe726f8bad9ffba9129a92e1f0d86e476e
-ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
+ms.openlocfilehash: 05dbc74ddd50e77cdb502103a1e546064b906adf
+ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82588964"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84275473"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-windows-virtual-machine-in-python"></a>教程：将 Azure Key Vault 与通过 Python 编写的 Windows 虚拟机配合使用
 
@@ -42,7 +42,7 @@ Azure Key Vault 可以帮助保护机密，例如访问应用程序、服务和 
 
 对于 Windows、Mac 和 Linux：
   * [Git](https://git-scm.com/downloads)
-  * 本教程要求在本地运行 Azure CLI。 必须安装 Azure CLI 2.0.4 或更高版本。 运行 `az --version` 即可查找版本。 如果需要安装或升级 CLI，请参阅[安装 Azure CLI 2.0](/cli/install-azure-cli)。
+  * 本部分教程要求在本地运行 Azure CLI。 必须安装 Azure CLI 2.0.4 或更高版本。 运行 `az --version` 即可查找版本。 如果需要安装或升级 CLI，请参阅[安装 Azure CLI 2.0](/cli/install-azure-cli)。
 
 ## <a name="about-managed-service-identity"></a>关于托管服务标识
 
@@ -78,7 +78,7 @@ az group create --name "<YourResourceGroupName>" --location "China North"
 
 本教程通篇使用新建的资源组。
 
-## <a name="create-a-key-vault"></a>创建密钥保管库
+## <a name="create-a-key-vault"></a>创建 key vault
 
 若要在上一步创建的资源组中创建 Key Vault，请提供以下信息：
 
@@ -135,7 +135,7 @@ az keyvault set-policy --name '<YourKeyVaultName>' --object-id <VMSystemAssigned
 
 ## <a name="log-on-to-the-virtual-machine"></a>登录到虚拟机
 
-若要登录到虚拟机，请按[连接并登录到运行 Windows 的 Azure 虚拟机](../../virtual-machines/windows/connect-logon.md)中的说明操作。
+若要登录到虚拟机，请遵照[连接并登录到运行 Windows 的 Azure 虚拟机](../../virtual-machines/windows/connect-logon.md)中的说明操作。
 
 ## <a name="create-and-run-a-sample-python-app"></a>创建并运行示例 Python 应用
 
@@ -154,7 +154,10 @@ az keyvault set-policy --name '<YourKeyVaultName>' --object-id <VMSystemAssigned
     # importing the requests library 
     import requests 
 
-    # Step 1: Fetch an access token from a Managed Identity enabled azure resource.      
+    # Step 1: Fetch an access token from a Managed Identity enabled azure resource.
+    # Resources with an MSI configured recieve an AAD access token by using the Azure Instance Metadata Service (IMDS)
+    # IMDS provides an endpoint accessible to all IaaS VMs using a non-routable well-known IP Address
+    # To learn more about IMDS and MSI Authentication see the following link: https://docs.azure.cn/virtual-machines/windows/instance-metadata-service
     # Note that the resource here is https://vault.azure.cn for public cloud and api-version is 2018-02-01
     MSI_ENDPOINT = "http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fvault.azure.cn"
     r = requests.get(MSI_ENDPOINT, headers = {"Metadata" : "true"}) 
@@ -164,7 +167,7 @@ az keyvault set-policy --name '<YourKeyVaultName>' --object-id <VMSystemAssigned
     data = r.json() 
     
     # Step 2: Pass the access_token received from previous HTTP GET call to your key vault.
-    KeyVaultURL = "https://prashanthwinvmvault.vault.azure.cn/secrets/RandomSecret?api-version=2016-10-01"
+    KeyVaultURL = "https://{YOUR KEY VAULT NAME}.vault.azure.cn/secrets/{YOUR SECRET NAME}?api-version=2016-10-01"
     kvSecret = requests.get(url = KeyVaultURL, headers = {"Authorization": "Bearer " + data["access_token"]})
     
     print(kvSecret.json()["value"])

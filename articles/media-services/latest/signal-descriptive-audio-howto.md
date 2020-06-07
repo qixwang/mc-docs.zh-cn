@@ -13,12 +13,12 @@ ms.custom: ''
 origin.date: 09/25/2019
 ms.date: 11/04/2019
 ms.author: v-jay
-ms.openlocfilehash: 50f1859471f46657a3d6e4487fae96b06d2a06d1
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 7560283d70d5b8546286abde656d34a76f4af85b
+ms.sourcegitcommit: 1f890a4085e184cc678485d05f08dd6de8dc973f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "73416289"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84438927"
 ---
 # <a name="signal-descriptive-audio-tracks"></a>指示描述性音频轨道
 
@@ -428,6 +428,3 @@ private static async Task<IList<string>> GetStreamingUrlsAsync(
 
 Azure Media Player 可用于测试，但不可在生产环境中使用。 
 
-## <a name="next-steps"></a>后续步骤
-
-[分析视频](analyze-videos-tutorial-with-api.md)

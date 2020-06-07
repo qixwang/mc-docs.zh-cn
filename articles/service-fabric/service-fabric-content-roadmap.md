@@ -3,14 +3,14 @@ title: 详细了解 Azure Service Fabric
 description: 了解 Azure Service Fabric 的核心概念和主要应用领域。 扩展概述了 Service Fabric 以及如何创建微服务。
 ms.topic: conceptual
 origin.date: 12/08/2017
+ms.date: 06/08/2020
 ms.author: v-yeche
-ms.date: 01/06/2020
-ms.openlocfilehash: e47e8e48ff6773299eaada6b7117dd72068e55f2
-ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
+ms.openlocfilehash: 415198ad5729cfec008e9fbdf716cde423a213d0
+ms.sourcegitcommit: 0e178672632f710019eae60cea6a45ac54bb53a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82093471"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84356278"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>想要了解 Service Fabric 吗？
 Service Fabric 是分布式系统平台，可借助它轻松打包、部署和管理可缩放且可靠的微服务。  不过，Service Fabric 的外围应用领域广泛，有很多东西需要学习。  本文简要说明了 Service Fabric，并介绍了核心概念、编程模型、应用程序生命周期、测试、群集和运行状况监视。 请参阅[概述](service-fabric-overview.md)和[什么是微服务？](service-fabric-overview-microservices.md)，概览相关信息，并了解如何使用 Service Fabric 创建微服务。 本文包含的内容列表虽不完整，但确实提供了 Service Fabric 每个应用领域的概述和入门文章链接。 
@@ -141,12 +141,14 @@ Service Fabric 提供一个安装包，用于在本地或者任何云提供程�
 有关详细信息，请阅读[保护群集](service-fabric-cluster-security.md)。
 
 ### <a name="scaling"></a>扩展
-如果向群集添加新节点，Service Fabric 会在新增加的节点间重新平衡分区副本和实例。 应用程序总体性能提高，访问内存的争用减少。 如果没有高效使用群集中的节点，可以减少群集中节点的数量。 Service Fabric 会再次在减少的节点间重新平衡分区副本和实例以更加充分利用每个节点上的硬件。 可以在 Azure 上[手动](service-fabric-cluster-scale-up-down.md)或[以编程方式](service-fabric-cluster-programmatic-scaling.md)扩展群集。 可以[手动](service-fabric-cluster-windows-server-add-remove-nodes.md)扩展独立群集。
+如果向群集添加新节点，Service Fabric 会在新增加的节点间重新平衡分区副本和实例。 应用程序总体性能提高，访问内存的争用减少。 如果没有高效使用群集中的节点，可以减少群集中节点的数量。 Service Fabric 会再次在减少的节点间重新平衡分区副本和实例以更加充分利用每个节点上的硬件。 可以在 Azure 上[手动](service-fabric-cluster-scale-in-out.md)或[以编程方式](service-fabric-cluster-programmatic-scaling.md)扩展群集。 可以[手动](service-fabric-cluster-windows-server-add-remove-nodes.md)扩展独立群集。
 
 ### <a name="cluster-upgrades"></a>群集升级
 我们会定期发布新版本的 Service Fabric 运行时。 在群集上执行运行时或结构升级，以便始终运行[受支持的版本](service-fabric-support.md)。 除了结构升级，还可以更新群集配置（例如证书或应用程序端口）。
 
 Service Fabric 群集是你拥有的，但部分由世纪互联管理的资源。 Azure 负责修补基础 OS 并在群集上执行结构升级。 当 Azure 发布新版本时，可以将群集设置为接收自动结构升级，或选择所需的受支持结构版本。 可通过 Azure 门户或 Resource Manager 设置结构和配置升级。 有关详细信息，请参阅[升级 Service Fabric 群集](service-fabric-cluster-upgrade.md)。 
+
+<!--CORRECT ON 21Vianet-->
 
 独立群集是你完全拥有的资源。 负责修补基础 OS 和启动结构升级。 如果群集可以连接到 [https://www.microsoft.com/download](https://www.microsoft.com/download)，可以将群集设置为自动下载并预配新的 Service Fabric 运行时包。 然后会启动升级。 如果群集无法访问 [https://www.microsoft.com/download](https://www.microsoft.com/download)，可以从连接 Internet 的计算机手动下载新的运行时包，并启动升级。 有关详细信息，请参阅[升级独立 Service Fabric 群集](service-fabric-cluster-upgrade-windows-server.md)。
 
@@ -201,4 +203,4 @@ Service Fabric 提供了多种方式查看在运行状况存储中聚合的[运�
 [cluster-application-instances]: media/service-fabric-content-roadmap/cluster-application-instances.png
 [cluster-imagestore-apptypes]: ./media/service-fabric-content-roadmap/cluster-imagestore-apptypes.png
 
-<!--Update_Description: update meta properties , wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

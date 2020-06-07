@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 06/25/2018
-ms.date: 04/06/2020
+ms.date: 06/08/2020
 ms.author: v-jay
-ms.openlocfilehash: 42229738be91539152e78b209c8602f268cbdc68
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: ec8a0e757a0994bfe3e0ecdaab669b41cb318794
+ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80625638"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84275468"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-using-azure-cli"></a>使用 Azure CLI 在多个 IP 配置上进行负载均衡
 
@@ -121,3 +121,4 @@ ms.locfileid: "80625638"
 
 ## <a name="next-steps"></a>后续步骤
 - 若要深入了解如何在 Azure 中结合使用负载均衡服务，请参阅[在 Azure 中使用负载均衡服务](../traffic-manager/traffic-manager-load-balancing-azure.md)。
+- 若要了解如何在 Azure 中使用不同类型的日志对负载均衡器进行管理和故障排除，请参阅[用于 Azure 负载均衡器的日志分析](../load-balancer/load-balancer-monitor-log.md)。

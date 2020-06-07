@@ -11,13 +11,13 @@ metadata:
   ms.author: v-tawe
   manager: philmea
   origin.date: 08/05/2019
-  ms.date: 03/02/2020
-  ms.openlocfilehash: f6e074460cf5b4dc253bf5d8e4d6fd868bd2cdbd
-  ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+  ms.date: 06/01/2020
+  ms.openlocfilehash: 0ab6704a8bbed09ac3173da227dcd9e1ab64c34c
+  ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 04/17/2020
-  ms.locfileid: "77494471"
+  ms.lasthandoff: 06/02/2020
+  ms.locfileid: "84275590"
 landingContent:
 - title: 针对 Linux 设备进行开发
   linkLists:
@@ -100,7 +100,7 @@ landingContent:
   - linkListType: how-to-guide
     links:
     - text: 使用 Azure CLI 大规模部署并监视
-      url: how-to-deploy-monitor-cli.md
+      url: how-to-deploy-cli-at-scale.md
     - text: 使用 Azure Pipelines 创建 CI/CD 管道
       url: how-to-ci-cd.md
   - linkListType: deploy

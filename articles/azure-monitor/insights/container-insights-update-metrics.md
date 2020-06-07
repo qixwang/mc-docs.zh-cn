@@ -4,16 +4,16 @@ description: 本文介绍如何更新用于容器的 Azure Monitor，以启用�
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: lingliw
-ms.author: v-lingwu
+author: Johnnytechn
+ms.author: v-johya
 origin.date: 11/11/2019
 ms.date: 11/18/2019
-ms.openlocfilehash: 9e1d4bc7a43d25db14f6447c889aeda4eefdc368
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 99daa2dd3daf29d8ae8b84b88a2b92df8f138c69
+ms.sourcegitcommit: 5ae04a3b8e025986a3a257a6ed251b575dbf60a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74838965"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84440460"
 ---
 # <a name="how-to-update-azure-monitor-for-containers-to-enable-metrics"></a>如何更新用于容器的 Azure Monitor 以启用指标
 
@@ -38,7 +38,7 @@ ms.locfileid: "74838965"
 
 在开始之前，请确认以下事项：
 
-* 自定义指标只在一部分 Azure 区域中可用。 受支持的区域列表在[此处](../platform/metrics-custom-overview.md#supported-regions)记录。
+* 自定义指标只在一部分 Azure 区域中可用。 受支持的区域列表在[此处](../platform/metrics-custom-overview.md)记录。
 * 你是 AKS 群集资源上的 **[所有者](../../role-based-access-control/built-in-roles.md#owner)** 角色的成员，这样才能收集节点和 Pod 自定义性能指标。 
 
 如果选择使用 Azure CLI，首先需要在本地安装和使用 CLI。 必须运行 Azure CLI 2.0.59 或更高版本。 若要确定版本，请运行 `az --version`。 如果需要安装或升级 Azure CLI，请参阅[安装 Azure CLI](/cli/install-azure-cli)。 

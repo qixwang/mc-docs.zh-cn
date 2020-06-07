@@ -6,12 +6,12 @@ ms.subservice: update-management
 origin.date: 05/04/2020
 ms.date: 05/25/2020
 ms.topic: conceptual
-ms.openlocfilehash: a9c070255b2092cd2a5cb3054247f7525503d15e
-ms.sourcegitcommit: 981a75a78f8cf74ab5a76f9e6b0dc5978387be4b
+ms.openlocfilehash: a1dd85299c0ade671456781af08c7eb4c3a8287e
+ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83801916"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84275615"
 ---
 # <a name="configure-windows-update-settings-for-update-management"></a>为更新管理配置 Windows 更新客户端设置
 
@@ -28,7 +28,7 @@ Azure 更新管理依赖使用 [Windows 更新客户端](https://docs.microsoft.
 
 ## <a name="pre-download-updates"></a>下载前的更新
 
-若要配置更新自动下载但不自动安装更新，可以使用组策略将“[配置自动更新设置](/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates##configure-automatic-updates)”设置为 **3**。 此设置启用在后台下载所需的更新，并在准备好安装更新时发出通知。 这样，更新管理仍受计划的控制，但可以在更新管理维护时段以外下载更新。 此行为可以防止更新管理中出现“已超过维护时段”错误。
+若要配置更新自动下载但不自动安装更新，可以使用组策略将“[配置自动更新设置](https://docs.microsoft.com/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates##configure-automatic-updates)”设置为 **3**。 此设置启用在后台下载所需的更新，并在准备好安装更新时发出通知。 这样，更新管理仍受计划的控制，但可以在更新管理维护时段以外下载更新。 此行为可以防止更新管理中出现“已超过维护时段”错误。
 
 可运行以下命令，使用 PowerShell 启用此设置：
 
@@ -40,7 +40,7 @@ $WUSettings.Save()
 
 ## <a name="configure-reboot-settings"></a>配置重启设置
 
-即使在“更新部署”设置中指定了“永不重启”，[通过编辑注册表来配置自动更新](https://docs.microsoft.com/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry)以及[用于管理重启的注册表项](/windows/deployment/update/waas-restart#registry-keys-used-to-manage-restart)中列出的注册表项也可能导致计算机重启。  请配置这些注册表项，使其最适合你的环境。
+即使在“更新部署”设置中指定了“永不重启”，[通过编辑注册表来配置自动更新](https://docs.microsoft.com/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry)以及[用于管理重启的注册表项](https://docs.microsoft.com/windows/deployment/update/waas-restart#registry-keys-used-to-manage-restart)中列出的注册表项也可能导致计算机重启。  请配置这些注册表项，使其最适合你的环境。
 
 ## <a name="enable-updates-for-other-microsoft-products"></a>启用其他 Microsoft 产品的更新
 

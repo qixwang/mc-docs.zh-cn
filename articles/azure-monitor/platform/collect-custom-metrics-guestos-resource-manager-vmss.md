@@ -1,19 +1,19 @@
 ---
 title: 使用模板在 Azure Monitor 中收集 Windows 规模集指标
 description: 使用 Windows 虚拟机规模集的资源管理器模板将来宾 OS 指标发送到 Azure Monitor 指标存储
-author: lingliw
+author: Johnnytechn
 services: azure-monitor
 ms.topic: conceptual
 origin.date: 09/09/2019
-ms.date: 09/23/2019
-ms.author: v-lingwu
+ms.date: 05/28/2020
+ms.author: v-johya
 ms.subservice: metrics
-ms.openlocfilehash: 5e369b0fe7d9678207bd8e114d0d7da4d9a40b7a
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 31edd8293d735c2921ab53cafe829e0de5a99a64
+ms.sourcegitcommit: 5ae04a3b8e025986a3a257a6ed251b575dbf60a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79452324"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84440492"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine-scale-set"></a>使用 Windows 虚拟机规模集的 Azure 资源管理器模板将来宾 OS 指标发送到 Azure Monitor 指标存储
 
@@ -31,7 +31,8 @@ ms.locfileid: "79452324"
 
 - 需要已安装 [Azure PowerShell](https://docs.microsoft.com/powershell/azure)。 
 
-- VM 资源必须位于[支持自定义指标的区域](metrics-custom-overview.md#supported-regions)中。
+- VM 资源必须位于[支持自定义指标的区域](metrics-custom-overview.md)中。
+<!-- Not available in MC: You need to have ...-->
 
 ## <a name="set-up-azure-monitor-as-a-data-sink"></a>将 Azure Monitor 设置为数据接收器 
 Azure 诊断扩展使用名为“数据接收器”的功能将指标和日志路由到不同位置。  以下步骤说明如何通过资源管理器模板和 PowerShell 来使用新的 Azure Monitor 数据接收器部署 VM。 
@@ -253,7 +254,7 @@ MSI 扩展中的以下代码还会将诊断扩展和配置作为扩展资源添�
    ```
 
    > [!NOTE]  
-   > 请记得使用为自定义指标启用的 Azure 区域。 请记得使用[为自定义指标启用的 Azure 区域](https://github.com/MicrosoftDocs/azure-docs-pr/pull/metrics-custom-overview.md#supported-regions)。
+   > 请记得使用为自定义指标启用的 Azure 区域。 请记得使用[为自定义指标启用的 Azure 区域](./metrics-custom-overview.md)。
  
 1. 运行以下命令以部署 VM：  
 
@@ -278,7 +279,7 @@ MSI 扩展中的以下代码还会将诊断扩展和配置作为扩展资源添�
 
 1. 在“监视”页上选择“指标”   。 
 
-   ![监视 - 指标页](media/collect-custom-metrics-guestos-resource-manager-vmss/metrics.png) 
+   ![监视 - 指标页](./media/collect-custom-metrics-guestos-resource-manager-vmss/metrics.png) 
 
 1. 将聚合时限更改为“过去 30 分钟”  。  
 
@@ -294,4 +295,6 @@ MSI 扩展中的以下代码还会将诊断扩展和配置作为扩展资源添�
 
 ## <a name="next-steps"></a>后续步骤
 - 详细了解[自定义指标](metrics-custom-overview.md)。
+
+
 

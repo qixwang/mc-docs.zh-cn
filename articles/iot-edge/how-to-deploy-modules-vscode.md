@@ -5,23 +5,23 @@ author: kgremban
 manager: philmea
 ms.author: v-tawe
 origin.date: 01/08/2019
-ms.date: 03/02/2020
+ms.date: 06/01/2020
 ms.topic: conceptual
 ms.reviewer: ''
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a5a969b4b01beb5de8e9a029c8598940059c42f5
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: cb14715721ce077f52e791b5fd375bb235b77b0e
+ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77494316"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84275573"
 ---
 # <a name="deploy-azure-iot-edge-modules-from-visual-studio-code"></a>通过 Visual Studio Code 部署 Azure IoT Edge 模块
 
 使用业务逻辑创建 IoT Edge 模块后，需要将其部署到设备后才能在边缘操作。 如果多个模块共同协作来收集和处理数据，可同时部署它们并声明用于连接它们的路由规则。
 
-本文介绍了如何创建 JSON 部署清单，然后使用此文件将部署推送至 IoT Edge 设备。 有关基于设备的共享标签创建针对多个设备的部署的信息，请参阅[使用 Visual Studio Code 大规模部署 IoT Edge 模块](how-to-deploy-monitor-vscode.md)。
+本文介绍了如何创建 JSON 部署清单，然后使用此文件将部署推送至 IoT Edge 设备。 有关基于设备的共享标签创建针对多个设备的部署的信息，请参阅[使用 Visual Studio Code 大规模部署 IoT Edge 模块](how-to-deploy-vscode-at-scale.md)。
 
 ## <a name="prerequisites"></a>必备条件
 
@@ -151,4 +151,4 @@ ms.locfileid: "77494316"
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何[使用 Visual Studio Code 大规模部署和监视 IoT Edge 模块](how-to-deploy-monitor.md)
+了解如何[使用 Visual Studio Code 大规模部署和监视 IoT Edge 模块](how-to-deploy-at-scale.md)

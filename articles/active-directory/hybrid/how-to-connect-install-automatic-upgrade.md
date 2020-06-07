@@ -12,17 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-origin.date: 02/26/2019
-ms.date: 04/23/2019
+ms.date: 06/02/2020
 ms.subservice: hybrid
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f725cc78dd998bd8efcf2312d2eb0391bec3bdaa
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.openlocfilehash: 586d68ac073a812f89d51c3c12c39f78e0d0f5e7
+ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82126578"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84275321"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect：自动升级
 此功能是随内部版本 1.1.105.0（于 2016 年 2 月发布）一起推出的。  此功能已在内部版本 1.1.561 中更新，现在支持以前不支持的其他方案。
@@ -87,17 +86,16 @@ ms.locfileid: "82126578"
 | UpgradeAbortedSyncExeInUse |服务器上打开了 [Synchronization Service Manager UI](how-to-connect-sync-service-manager-ui.md)。 |
 | UpgradeAbortedSyncOrConfigurationInProgress |安装向导正在运行，或者在计划程序外部计划了同步。 |
 | **UpgradeNotSupported** | |
-| UpgradeNotSupportedAdfsSignInMethod | 已选择 Adfs 作为登录方法。 | 
+| UpgradeNotSupportedAdfsSignInMethod | 已选择 Adfs 作为登录方法。 |
 | UpgradeNotSupportedCustomizedSyncRules |已将自己的自定义规则添加到配置中。 |
 | UpgradeNotSupportedInvalidPersistedState |安装不是快速设置或 DirSync 升级。 |
 | UpgradeNotSupportedMetaverseSizeExceeeded |metaverse 中的对象超过 100,000 个。 |
 | UpgradeNotSupportedMultiForestSetup |正在连接到多个林。 快速设置仅连接到一个林。 |
 | UpgradeNotSupportedNonLocalDbInstall |使用的不是 SQL Server Express LocalDB 数据库。 |
 | UpgradeNotSupportedNonMsolAccount |[AD DS 连接器帐户](reference-connect-accounts-permissions.md#ad-ds-connector-account)不再是默认的 MSOL_ 帐户。 |
-| UpgradeNotSupportedNotConfiguredSignInMethod | 在设置 AAD Connect 期间，请在选择登录方法时选择“不配置”。  | 
+| UpgradeNotSupportedNotConfiguredSignInMethod | 在设置 AAD Connect 期间，请在选择登录方法时选择“不配置”。  |
 | UpgradeNotSupportedStagingModeEnabled |服务器已设置为[暂存模式](how-to-connect-sync-staging-server.md)。 |
 
 ## <a name="next-steps"></a>后续步骤
 了解有关[将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。
 
-<!-- Update_Description: wording update -->

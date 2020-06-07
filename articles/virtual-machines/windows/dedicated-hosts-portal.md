@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 05/25/2020
 ms.author: v-yeche
 ms.reviewer: zivr
-ms.openlocfilehash: 41ba7314d4d88f8d282cf4c5dcc825245b367395
-ms.sourcegitcommit: 981a75a78f8cf74ab5a76f9e6b0dc5978387be4b
+ms.openlocfilehash: 2be45070ed9eb7a73f33153b85baa78b53e599d1
+ms.sourcegitcommit: 8a2fbc0eae8d8f7297f5334f508ff868b4077f32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83801838"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84320997"
 ---
 <!--Verified the Portal UI-->
 <!--CAN NOT VERIFIED DUE TO LIMITED CPU VCORE-->
@@ -29,7 +29,9 @@ ms.locfileid: "83801838"
 1. 在“新建”页的“常用”下，选择“Windows Server 2016 Datacenter”。
 1. 在“基本信息”选项卡中的“项目详细信息”下，确保选择了正确的订阅，然后选择 myDedicatedHostsRG 作为“资源组” 。 
 1. 在“实例详细信息”下，对于“虚拟机名称”，键入“myVM”，对于“位置”，选择“中国东部”。
-1. 在“可用性选项”中，选择“可用性区域”，然后从下拉列表中选择 1 。
+    
+    <!--Not Available on **Availability options** select **Availability zone**-->
+    
 1. 对于大小，选择“更改大小”。 在可用大小列表中，选择 Esv3 系列其中一个，例如“标准 E2s v3”。 可能需要清除筛选器才能查看所有可用大小。
 1. 在“管理员帐户”下，提供用户名（例如 *azureuser*）和密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](faq.md#what-are-the-password-requirements-when-creating-a-vm)。
 1. 在“入站端口规则”下，选择“允许所选端口”，然后从下拉列表中选择“RDP (3389)”。  
@@ -46,7 +48,8 @@ ms.locfileid: "83801838"
 - VM 需要位于专用主机所在的同一区域。
 - VM 不能是邻近放置组的一部分。 在将 VM 移动到专用主机之前，请先从邻近放置组中删除该 VM。 有关详细信息，请参阅[将 VM 移出邻近放置组](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups#move-an-existing-vm-out-of-a-proximity-placement-group)
 - VM 不能位于可用性集中。
-- 如果 VM 位于可用性区域中，则该可用性区域必须与主机组相同。 VM 和主机组的可用性区域设置必须匹配。
+
+    <!--Not Available on  availability zone-->
 
 使用[门户](https://portal.azure.cn)将 VM 迁移到专用主机。
 

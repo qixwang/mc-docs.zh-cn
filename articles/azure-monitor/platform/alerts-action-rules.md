@@ -2,16 +2,17 @@
 title: Azure Monitor 警报的操作规则
 description: 了解 Azure Monitor 中的操作规则是什么，以及如何配置和管理操作规则。
 ms.topic: conceptual
-author: lingliw
+author: Johnnytechn
 origin.date: 04/25/2019
-ms.date: 10/25/2019
-ms.author: v-lingwu
-ms.openlocfilehash: 4291ed8c58bce2b44970038d5a45f5a7a01c0964
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/28/2020
+ms.subservice: alerts
+ms.author: v-johya
+ms.openlocfilehash: b8d6df77c6be94200bac97607e5a6d009958305e
+ms.sourcegitcommit: 5ae04a3b8e025986a3a257a6ed251b575dbf60a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79452568"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84440457"
 ---
 # <a name="action-rules-preview"></a>操作规则（预览版）
 
@@ -39,25 +40,25 @@ ms.locfileid: "79452568"
 
 在 Azure Monitor 中的“警报”登陆页上选择“管理操作”可以访问该功能。   然后选择“操作规则(预览版)”。  在警报登陆页的仪表板中选择“操作规则(预览版)”可以访问规则。 
 
-![Azure Monitor 登陆页中的操作规则](media/alerts-action-rules/action-rules-landing-page.png)
+![Azure Monitor 登陆页中的操作规则](./media/alerts-action-rules/action-rules-landing-page.png)
 
 选择“+ 新建操作规则”。  
 
-![添加新的操作规则](media/alerts-action-rules/action-rules-new-rule.png)
+![添加新的操作规则](./media/alerts-action-rules/action-rules-new-rule.png)
 
 或者，也可以在配置警报规则时创建操作规则。
 
-![添加新的操作规则](media/alerts-action-rules/action-rules-alert-rule.png)
+![添加新的操作规则](./media/alerts-action-rules/action-rules-alert-rule.png)
 
 此时应会看到用于创建操作规则的流程页。 配置以下元素： 
 
-![新建操作规则的流程](media/alerts-action-rules/action-rules-new-rule-creation-flow.png)
+![新建操作规则的流程](./media/alerts-action-rules/action-rules-new-rule-creation-flow.png)
 
 ### <a name="scope"></a>作用域
 
 首先选择范围（Azure 订阅、资源组或目标资源）。 还可以多重选择单个订阅中的范围组合。
 
-![操作规则范围](media/alerts-action-rules/action-rules-new-rule-creation-flow-scope.png)
+![操作规则范围](./media/alerts-action-rules/action-rules-new-rule-creation-flow-scope.png)
 
 ### <a name="filter-criteria"></a>筛选条件
 
@@ -75,7 +76,7 @@ ms.locfileid: "79452568"
 
 这些筛选器相互结合应用。 例如，如果设置 **“资源类型”= 虚拟机**， **“严重性”= Sev0**，则只会在 VM 上筛选所有的 **Sev0** 警报。 
 
-![操作规则筛选器](media/alerts-action-rules/action-rules-new-rule-creation-flow-filters.png)
+![操作规则筛选器](./media/alerts-action-rules/action-rules-new-rule-creation-flow-filters.png)
 
 ### <a name="suppression-or-action-group-configuration"></a>消除或操作组配置
 
@@ -88,7 +89,7 @@ ms.locfileid: "79452568"
 * **在计划时间**：在有限的持续时间内消除通知。
 * **重复**：按每日、每周或每月重复计划消除通知。
 
-![操作规则 - 消除](media/alerts-action-rules/action-rules-new-rule-creation-flow-suppression.png)
+![操作规则 - 消除](./media/alerts-action-rules/action-rules-new-rule-creation-flow-suppression.png)
 
 #### <a name="action-group"></a>操作组
 
@@ -97,7 +98,7 @@ ms.locfileid: "79452568"
 > [!NOTE]
 > 只能将一个操作组关联到一个操作规则。
 
-![通过选择操作组来添加或创建新的操作规则](media/alerts-action-rules/action-rules-new-rule-creation-flow-action-group.png)
+![通过选择操作组来添加或创建新的操作规则](./media/alerts-action-rules/action-rules-new-rule-creation-flow-action-group.png)
 
 ### <a name="action-rule-details"></a>操作规则详细信息
 
@@ -146,7 +147,7 @@ Contoso [在订阅级别定义了一个指标警报](/azure-monitor/platform/ale
 
 可以通过列表视图查看和管理操作规则：
 
-![操作规则列表视图](media/alerts-action-rules/action-rules-list-view.png)
+![操作规则列表视图](./media/alerts-action-rules/action-rules-list-view.png)
 
 在此处，可以通过选中相应的复选框，大规模启用、禁用或删除操作规则。 选择某个操作规则会打开其配置页。 此页可帮助你更新该操作规则的定义，以及启用或禁用该规则。
 
@@ -154,11 +155,11 @@ Contoso [在订阅级别定义了一个指标警报](/azure-monitor/platform/ale
 
 结合[“结果数”](alerts-unified-log.md)选项创建的日志警报会使用整个搜索结果生成单个警报实例（可能跨多台计算机）。 在此方案中，如果操作规则使用“警报上下文(有效负载)”筛选器，则只要有匹配项，该规则就会作用于警报实例。  在上述方案 2 中，如果生成的日志警报的搜索结果包含 **Computer-01** 和 **Computer-02**，则会消除整个通知。 完全不会为 **Computer-02** 生成通知。
 
-![操作规则和日志警报（结果数）](media/alerts-action-rules/action-rules-log-alert-number-of-results.png)
+![操作规则和日志警报（结果数）](./media/alerts-action-rules/action-rules-log-alert-number-of-results.png)
 
 若要充分利用日志警报和操作规则，请使用[“指标度量”](alerts-unified-log.md)选项创建日志警报。 此选项会根据定义的组字段生成单独的警报实例。 然后，在方案 2 中，将为 **Computer-01** 和 **Computer-02** 生成单独的警报实例。 由于该方案中所述的操作规则，只会消除 **Computer-01** 的通知。 **Computer-02** 的通知会继续照常激发。
 
-![操作规则和日志警报（结果数）](media/alerts-action-rules/action-rules-log-alert-metric-measurement.png)
+![操作规则和日志警报（结果数）](./media/alerts-action-rules/action-rules-log-alert-metric-measurement.png)
 
 ## <a name="faq"></a>常见问题
 
@@ -171,7 +172,7 @@ Contoso [在订阅级别定义了一个指标警报](/azure-monitor/platform/ale
 * 超集：例如，你定义的操作规则在某个资源组中，而重叠的操作规则在包含该资源组的订阅中。
 * 交集：例如，你定义的操作规则在 **VM1** 和 **VM2** 中，而重叠的操作规则在 **VM2** 和 **VM3** 中。
 
-![重叠的操作规则](media/alerts-action-rules/action-rules-overlapping.png)
+![重叠的操作规则](./media/alerts-action-rules/action-rules-overlapping.png)
 
 ### <a name="while-im-configuring-an-alert-rule-is-it-possible-to-know-if-there-are-already-action-rules-defined-that-might-act-on-the-alert-rule-im-defining"></a>在配置警报规则时，能够知道是否已存在可能作用于我所定义的警报规则的任何操作规则吗？
 
@@ -182,13 +183,13 @@ Contoso [在订阅级别定义了一个指标警报](/azure-monitor/platform/ale
 * 超集：例如，你定义的警报规则在某个资源组中，而操作规则在包含该资源组的订阅中。
 * 交集：例如，你定义的警报规则在 **VM1** 和 **VM2** 中，而操作规则在 **VM2** 和 **VM3** 中。
     
-![重叠的操作规则](media/alerts-action-rules/action-rules-alert-rule-overlapping.png)
+![重叠的操作规则](./media/alerts-action-rules/action-rules-alert-rule-overlapping.png)
 
 ### <a name="can-i-see-the-alerts-that-have-been-suppressed-by-an-action-rule"></a>是否可以看到操作规则消除的警报？
 
 在[警报列表页](/azure-monitor/platform/alerts-managing-alert-instances)中，可以选择一个名为“消除状态”的附加列。  如果消除了某个警报实例的通知，该实例会在列表中显示该状态。
 
-![消除的警报实例](media/alerts-action-rules/action-rules-suppressed-alerts.png)
+![消除的警报实例](./media/alerts-action-rules/action-rules-suppressed-alerts.png)
 
 ### <a name="if-theres-an-action-rule-with-an-action-group-and-another-with-suppression-active-on-the-same-scope-what-happens"></a>如果某个操作规则包含操作组，而同一范围的另一个操作规则启用了通知消除，会发生什么情况？
 
@@ -218,3 +219,4 @@ Contoso [在订阅级别定义了一个指标警报](/azure-monitor/platform/ale
 ## <a name="next-steps"></a>后续步骤
 
 - [详细了解 Azure 中的警报](/azure-monitor/platform/alerts-overview)
+

@@ -3,15 +3,15 @@ title: 升级 Azure Service Fabric 群集
 description: 了解如何升级 Azure Service Fabric 群集的版本或配置 - 设置群集更新模式、升级证书、添加应用程序端口、执行 OS 修补程序以及执行升级时可预期的内容。
 ms.topic: conceptual
 origin.date: 11/12/2018
-ms.date: 02/24/2020
+ms.date: 06/08/2020
 ms.author: v-yeche
 ms.custom: sfrev
-ms.openlocfilehash: 8291e38c64b85beb6f0ec0fb170587d03c0215c1
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 8de242775f4d5ed08fa244cf5dd3da5f5d2740ab
+ms.sourcegitcommit: 0e178672632f710019eae60cea6a45ac54bb53a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292562"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84356295"
 ---
 # <a name="upgrading-and-updating-an-azure-service-fabric-cluster"></a>升级和更新 Azure Service Fabric 群集
 
@@ -107,7 +107,7 @@ Service Fabric 使用创建群集时指定的 [X.509 服务器证书](service-fa
 ## <a name="next-steps"></a>后续步骤
 
 * 了解如何自定义 [Service Fabric 群集结构设置](service-fabric-cluster-fabric-settings.md)的部分内容
-* 了解如何[扩展和缩减群集](service-fabric-cluster-scale-up-down.md)
+* 了解如何[扩展和缩减群集](service-fabric-cluster-scale-in-out.md)
 * 了解[应用程序升级](service-fabric-application-upgrade.md)
 
 <!--Image references-->
@@ -120,4 +120,4 @@ Service Fabric 使用创建群集时指定的 [X.509 服务器证书](service-fa
 [Create_Manualmode]: ./media/service-fabric-cluster-upgrade/Create_Manualmode.PNG
 [Manage_Automaticmode]: ./media/service-fabric-cluster-upgrade/Manage_Automaticmode.PNG
 
-<!--Update_Description: update meta properties -->
+<!-- Update_Description: update meta properties, wording update, update link -->

@@ -1,19 +1,18 @@
 ---
 title: 在 Azure Monitor 日志查询中使用字符串 | Microsoft Docs
 description: 本文提供了有关在 Azure 门户中使用 Azure Monitor Log Analytics 对 Azure Monitor 中的日志数据进行查询和分析的教程。
-author: lingliw
-manager: digimobile
+origin.date: 08/16/2018
 ms.subservice: logs
 ms.topic: conceptual
-origin.date: 08/16/2018
-ms.date: 01/21/2019
-ms.author: v-lingwu
-ms.openlocfilehash: 23fc061197993e09b897d24c1f545c365645b284
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+author: Johnnytechn
+ms.author: v-johya
+ms.date: 05/28/2020
+ms.openlocfilehash: 3f301e7ba8dba45e2f207878646ddd03d643b88d
+ms.sourcegitcommit: 5ae04a3b8e025986a3a257a6ed251b575dbf60a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78850273"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84440445"
 ---
 # <a name="working-with-json-and-data-structures-in-azure-monitor-log-queries"></a>在 Azure Monitor 日志查询中使用 JSON 和数据结构
 
@@ -50,7 +49,7 @@ print hosts_report
 如果只有一个元素，则只能使用圆点表示法：
 
 ```Kusto
-let hosts_report='{"location":"North_DC", "status":"running", "rate":5}';
+let hosts_report=dynamic({"location":"North_DC", "status":"running", "rate":5});
 print hosts_report 
 | extend status = hosts_report.status
 ```
@@ -87,7 +86,7 @@ print hosts_object
 | mvexpand hosts_object.hosts[0]
 ```
 
-![mvexpand](media/json-data-structures/mvexpand.png)
+![mvexpand](./media/json-data-structures/mvexpand.png)
 
 ### <a name="buildschema"></a>buildschema
 使用 `buildschema` 获取允许对象的所有值的架构：
@@ -123,7 +122,7 @@ print hosts_object
 ```
 
 
-![生成架构](media/json-data-structures/buildschema.png)
+![生成架构](./media/json-data-structures/buildschema.png)
 
 ## <a name="next-steps"></a>后续步骤
 参阅有关在 Azure Monitor 中使用日志查询的其他课：
@@ -135,3 +134,4 @@ print hosts_object
 - [高级查询编写](advanced-query-writing.md)
 - [联接](joins.md)
 - [图表](charts.md)
+

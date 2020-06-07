@@ -10,16 +10,16 @@ ms.subservice: general
 ms.topic: overview
 ms.custom: mvc
 origin.date: 01/07/2019
-ms.date: 04/20/2020
+ms.date: 06/02/2020
 ms.author: v-tawe
-ms.openlocfilehash: 4e57677cdb64610730af0934945ef0114d9e0f7f
-ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
+ms.openlocfilehash: cbff6a41503570d59d2c7d53b2c615976e58246e
+ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82588810"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84275608"
 ---
-# <a name="what-is-azure-key-vault"></a>什么是 Azure 密钥保管库？
+# <a name="about-azure-key-vault"></a>关于 Azure Key Vault
 
 Azure Key Vault 有助于解决以下问题：
 
@@ -84,4 +84,7 @@ Key Vault 本身可以与存储帐户、事件中心和 Log Analytics 集成。
 
 ## <a name="next-steps"></a>后续步骤
 
+- 详细了解[密钥、机密和证书](about-keys-secrets-certificates.md)
 - [快速入门：使用 CLI 创建 Azure Key Vault](../secrets/quick-create-cli.md)
+- [身份验证、请求和响应](../general/authentication-requests-and-responses.md)
+- [Key Vault 开发人员指南](../general/developers-guide.md)

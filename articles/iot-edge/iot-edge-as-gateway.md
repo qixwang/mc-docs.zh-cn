@@ -5,16 +5,19 @@ author: kgremban
 manager: philmea
 ms.author: v-tawe
 origin.date: 02/25/2019
-ms.date: 03/02/2020
+ms.date: 06/01/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 7742b879880db246b70c2d7877bb4bebdeb7195b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.custom:
+- amqp
+- mqtt
+ms.openlocfilehash: 11a03dcbd9e0ab805eb9b526f6cca4645eaf7620
+ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77494055"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84275589"
 ---
 # <a name="how-an-iot-edge-device-can-be-used-as-a-gateway"></a>如何将 IoT Edge 设备用作网关
 

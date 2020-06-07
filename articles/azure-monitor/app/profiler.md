@@ -4,14 +4,14 @@ description: 使用 Application Insights Profiler 探查 Azure 应用服务上�
 ms.topic: conceptual
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 05/25/2020
+ms.date: 05/28/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: 64ade8baf40fd8e9620a67b0d9ede28cac842c4f
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+ms.openlocfilehash: 5cb26e4041da86d7a0f13569202cd2761e1d7a47
+ms.sourcegitcommit: 5ae04a3b8e025986a3a257a6ed251b575dbf60a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84200150"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84440733"
 ---
 # <a name="profile-live-azure-app-service-apps-with-application-insights"></a>使用 Application Insights 探查实时 Azure 应用服务应用
 

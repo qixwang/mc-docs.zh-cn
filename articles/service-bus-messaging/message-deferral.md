@@ -14,12 +14,12 @@ ms.topic: article
 origin.date: 01/24/2020
 ms.date: 2/6/2020
 ms.author: v-lingwu
-ms.openlocfilehash: eee4548b9721f41c919221e1b4a5d776a6390652
-ms.sourcegitcommit: a04b0b1009b0c62f2deb7c7acee75a1304d98f87
+ms.openlocfilehash: ff7e07e0b8eafeb41590c67912ee3580c45c2881
+ms.sourcegitcommit: 79c99a9ea013b3c74706a1038a505f4eea2aaac4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83796678"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84439514"
 ---
 # <a name="message-deferral"></a>消息延迟
 
@@ -33,11 +33,11 @@ ms.locfileid: "83796678"
 
 ## <a name="message-deferral-apis"></a>消息延迟 API
 
-.NET Framework 客户端中的 API 为 [BrokeredMessage.Defer](https:docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.defer?view=azureservicebus-4.1.1#Microsoft_ServiceBus_Messaging_BrokeredMessage_Defer) 或 [BrokeredMessage.DeferAsync](https:docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.deferasync?view=azureservicebus-4.1.1#Microsoft_ServiceBus_Messaging_BrokeredMessage_DeferAsync)，.NET 标准客户端中的 API 为 [MessageReceiver.DeferAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.deferasync)，Java 客户端中的 API 为 [IMessageReceiver.defer](https://docs.microsoft.com/java/api/com.microsoft.azure.servicebus.imessagereceiver.defer?view=azure-java-stable) 或 [IMessageReceiver.deferAsync](https://docs.microsoft.com/java/api/com.microsoft.azure.servicebus.imessagereceiver.deferasync?view=azure-java-stable)。 
+.NET Framework 客户端中的 API 为 [BrokeredMessage.Defer](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.defer?view=azureservicebus-4.1.1#Microsoft_ServiceBus_Messaging_BrokeredMessage_Defer) 或 [BrokeredMessage.DeferAsync](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.deferasync?view=azureservicebus-4.1.1#Microsoft_ServiceBus_Messaging_BrokeredMessage_DeferAsync)，.NET 标准客户端中的 API 为 [MessageReceiver.DeferAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.deferasync)，Java 客户端中的 API 为 [IMessageReceiver.defer](/java/api/com.microsoft.azure.servicebus.imessagereceiver.defer?view=azure-java-stable) 或 [IMessageReceiver.deferAsync](/java/api/com.microsoft.azure.servicebus.imessagereceiver.deferasync?view=azure-java-stable)。 
 
 延迟的消息连同其他所有活动消息保留在主队列中（与保留在子队列中的死信消息不同），但不再可以使用正则 Receive/ReceiveAsync 函数接收。 如果应用程序不再能跟踪延迟的消息，可以通过[消息浏览](message-browsing.md)来发现这些消息。
 
-若要检索延迟的消息，其所有者在延迟它时需负责记住 [SequenceNumber](https://docs.azure.cn/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.sequencenumber#Microsoft_Azure_ServiceBus_Message_SystemPropertiesCollection_SequenceNumber)。 知道已延迟消息的序列号的任何接收器以后可使用 `Receive(sequenceNumber)` 显式接收该消息。
+若要检索延迟的消息，其所有者在延迟它时需负责记住 [SequenceNumber](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.sequencenumber#Microsoft_Azure_ServiceBus_Message_SystemPropertiesCollection_SequenceNumber)。 知道已延迟消息的序列号的任何接收器以后可使用 `Receive(sequenceNumber)` 显式接收该消息。
 
 如果由于处理消息的特定资源暂时不可用，因而无法处理该消息，但同时又不能立即暂停消息处理，则将该消息搁置几分钟的方法是在要延后几分钟的[计划消息](message-sequencing.md)中记住 SequenceNumber，并在计划的消息到达时重新检索已延迟的消息。 如果消息处理程序依赖于使用某个数据库来执行所有操作，而该数据库暂时不可用，则不应使用延迟，而应全面暂停接收消息，直到数据库再次可用。
 

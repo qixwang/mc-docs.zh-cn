@@ -4,17 +4,19 @@ description: Azure 操作方法 - 如何将不同的证明机制与 Azure 中的
 author: robinsh
 ms.author: v-tawe
 origin.date: 03/30/2018
-ms.date: 03/02/2020
+ms.date: 06/01/2020
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.custom: mvc
-ms.openlocfilehash: 19cfd41208d30bc74eeefe20f33faa34843de666
-ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
+ms.custom:
+- mvc
+- amqp
+ms.openlocfilehash: 87f73df06a2dc857f44e1543ffefbb986d34e5a8
+ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82588555"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84275495"
 ---
 # <a name="how-to-use-different-attestation-mechanisms-with-device-provisioning-service-client-sdk-for-c"></a>如何将不同的证明机制与用于 C 的设备预配服务客户端 SDK 配合使用
 

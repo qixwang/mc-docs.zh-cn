@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 origin.date: 12/08/2018
-ms.date: 09/23/2019
+ms.date: 06/08/2020
 ms.author: v-jay
 ms.custom: seodec18
-ms.openlocfilehash: 1f96aac259a2a5c6ca61bcf2d9ca1fdb9c5b4e23
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: bc1f0e4e8171ba4b5e1f91f89d151881ec11b342
+ms.sourcegitcommit: 79c99a9ea013b3c74706a1038a505f4eea2aaac4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "72914498"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84439527"
 ---
 # <a name="apple-fairplay-license-requirements-and-configuration"></a>Apple FairPlay 许可要求和配置 
 
@@ -109,7 +109,7 @@ private static ContentKeyPolicyFairPlayConfiguration ConfigureFairPlayPolicyOpti
         RentalAndLeaseKeyType =
                 ContentKeyPolicyFairPlayRentalAndLeaseKeyType
                 .PersistentUnlimited,
-        RentalDuration = 2249
+        RentalDuration = 2249 // in seconds
     };
 
     return fairPlayConfiguration;

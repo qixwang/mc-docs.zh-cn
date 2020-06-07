@@ -3,23 +3,22 @@ title: 使用 Azure 门户将逻辑应用导入为 API | Microsoft Docs
 description: 本教程介绍如何使用 API 管理 (APIM) 将逻辑应用导入为 API。
 services: api-management
 documentationcenter: ''
-author: vladvino
 manager: cfowler
 editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: tutorial
 origin.date: 08/01/2019
-ms.author: v-yiso
-ms.date: 12/09/2019
-ms.openlocfilehash: 8da20365c166e864bff6ea0f441f85cfd926e3ed
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.topic: tutorial
+author: Johnnytechn
+ms.date: 06/04/2020
+ms.author: v-johya
+ms.openlocfilehash: 82556d961f09d4a9c39d0a4fa78d07181138c9a5
+ms.sourcegitcommit: 5ae04a3b8e025986a3a257a6ed251b575dbf60a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74657694"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84440738"
 ---
 # <a name="import-a-logic-app-as-an-api"></a>将逻辑应用导入为 API
 
@@ -28,20 +27,21 @@ ms.locfileid: "74657694"
 在本文中，学习如何：
 
 > [!div class="checklist"]
-> * 将逻辑应用导入为 API
-> * 在 Azure 门户中测试 API
-> * 在开发人员门户中测试 API
+>
+> -   将逻辑应用导入为 API
+> -   在 Azure 门户中测试 API
+> -   在开发人员门户中测试 API
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
-* 完成以下快速入门：[创建 Azure API 管理实例](get-started-create-service-instance.md)
-* 确保订阅中已有一个公开 HTTP 终结点的逻辑应用。 有关详细信息，请参阅[使用 HTTP 终结点触发工作流](../logic-apps/logic-apps-http-endpoint.md)
+-   请完成以下快速入门：[创建一个 Azure API 管理实例](get-started-create-service-instance.md)
+-   确保订阅中已有一个公开 HTTP 终结点的逻辑应用。 有关详细信息，请参阅[使用 HTTP 终结点触发工作流](../logic-apps/logic-apps-http-endpoint.md)
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
 ## <a name="import-and-publish-a-back-end-api"></a><a name="create-api"> </a>导入和发布后端 API
 
-1. 在“API 管理”下面选择“API”。  
+1. 在 Azure 门户中导航到 API 管理服务，然后从菜单中选择“API”  。
 2. 从“添加新的 API”列表中选择“逻辑应用”   。
 
     ![逻辑应用](./media/import-logic-app-as-api/logic-app-api.png)
@@ -55,13 +55,15 @@ ms.locfileid: "74657694"
 
     默认情况下，每个 API 管理实例附带两个示例产品：
 
-    * **入门**
-    * **不受限制**   
-7. 选择“创建”  。
+    - **入门**
+    - **不受限制**
+
+7. 输入其他 API 设置。 可以在创建过程中设置这些值，也可以稍后转到“设置”  选项卡来配置这些值。在[导入和发布第一个 API](import-and-publish.md#-import-and-publish-a-backend-api) 教程中对这些设置进行了说明。
+8. 选择“创建”  。
 
 ## <a name="test-the-api-in-the-azure-portal"></a>在 Azure 门户中测试 API
 
-可直接从 Azure 门户调用操作，这样可以方便地查看和测试 API 的操作。  
+可直接从 Azure 门户调用操作，这样可以方便地查看和测试 API 的操作。
 
 1. 选择上一步中创建的 API。
 2. 按“测试”选项卡  。
@@ -76,11 +78,13 @@ ms.locfileid: "74657694"
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-append-apis.md)]
 
 >[!NOTE]
-> 每个逻辑应用程序都有一个 **manual-invoke** 操作。 若要构造包含多个逻辑应用的 API，为避免冲突，需要将函数重命名。
+>每个逻辑应用程序都有一个 **manual-invoke** 操作。 若要构造包含多个逻辑应用的 API，为避免冲突，需要将函数重命名。
 
 [!INCLUDE [api-management-define-api-topics.md](../../includes/api-management-define-api-topics.md)]
 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
+>
 > [转换和保护已发布的 API](transform-api.md)
+

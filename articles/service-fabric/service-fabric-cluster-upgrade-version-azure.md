@@ -3,18 +3,20 @@ title: 升级群集的 Azure Service Fabric 版本
 description: 升级运行 Service Fabric 群集的 Service Fabric 代码和/或配置，包括设置群集更新模式、升级证书、添加应用程序端口、执行操作系统修补，等等。 执行升级时你会预料到哪种结果？
 ms.topic: conceptual
 origin.date: 11/12/2018
+ms.date: 06/08/2020
 ms.author: v-yeche
-ms.date: 01/06/2020
-ms.openlocfilehash: c0540cd0cc70678d41c137d7f7253bb19909af70
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: c7aa0915cb91584e21f5ddbd52ba21045a99d599
+ms.sourcegitcommit: 0e178672632f710019eae60cea6a45ac54bb53a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75742320"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84356144"
 ---
 # <a name="upgrade-the-service-fabric-version-of-a-cluster"></a>升级群集的 Service Fabric 版本
 
 对于任何现代系统，设计可升级性都是实现产品长期成功的关键。 Azure Service Fabric 群集是你拥有的，但部分由世纪互联管理的资源。 本文介绍如何升级 Azure 群集中运行的 Service Fabric 版本。
+
+<!--CORRECT ON 21Vianet-->
 
 可以将群集设置为 Azure 发布自动结构升级时接收该升级，也可以选择想要群集安装的受支持结构版本。
 
@@ -112,7 +114,7 @@ Output:
 
 ## <a name="next-steps"></a>后续步骤
 * 了解如何自定义 [Service Fabric 群集结构设置](service-fabric-cluster-fabric-settings.md)的部分内容
-* 了解如何[扩展和缩减群集](service-fabric-cluster-scale-up-down.md)
+* 了解如何[扩展和缩减群集](service-fabric-cluster-scale-in-out.md)
 * 了解[应用程序升级](service-fabric-application-upgrade.md)
 
 <!--Image references-->
@@ -125,4 +127,4 @@ Output:
 [Create_Manualmode]: ./media/service-fabric-cluster-upgrade/Create_Manualmode.PNG
 [Manage_Automaticmode]: ./media/service-fabric-cluster-upgrade/Manage_Automaticmode.PNG
 
-<!-- Update_Description: update meta properties, wording update  -->
+<!-- Update_Description: update meta properties, wording update, update link -->

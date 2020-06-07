@@ -3,15 +3,15 @@ title: Service Fabric 群集中基于 X.509 证书的身份验证
 description: 了解 Service Fabric 群集中基于证书的身份验证，以及如何检测、缓解和修复与证书相关的问题。
 ms.topic: conceptual
 origin.date: 03/16/2020
-ms.date: 05/06/2020
+ms.date: 06/08/2020
 ms.author: v-yeche
 ms.custom: sfrev
-ms.openlocfilehash: d983fe69801450af56cf76a01363319c34b76955
-ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
+ms.openlocfilehash: 3e68dc55b687e8fa393cdf0dd1fc8c7de6937903
+ms.sourcegitcommit: 0e178672632f710019eae60cea6a45ac54bb53a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "83002281"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84356263"
 ---
 <!--Character content without cmdlet or portal process-->
 # <a name="x509-certificate-based-authentication-in-service-fabric-clusters"></a>Service Fabric 群集中基于 X.509 证书的身份验证

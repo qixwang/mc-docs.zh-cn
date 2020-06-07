@@ -14,12 +14,12 @@ origin.date: 01/21/2020
 ms.date: 05/11/2020
 ms.author: v-jay
 ms.custom: seodec18
-ms.openlocfilehash: 53e39578911827e68e966efa40bee1335030eec4
-ms.sourcegitcommit: 95efd248f5ee3701f671dbd5cfe0aec9c9959a24
+ms.openlocfilehash: 9f0e235f1ed3f285fdc63bcbca075e1d52d23c4a
+ms.sourcegitcommit: 1f890a4085e184cc678485d05f08dd6de8dc973f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82507708"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84438952"
 ---
 # <a name="filtering-ordering-and-paging-of-media-services-entities"></a>媒体服务实体的筛选、排序和分页
 
@@ -143,14 +143,14 @@ while (currentPage.NextPageLink != null)
 以下 REST 示例检查作业的状态：
 
 ```
-https://management.chinacloudapi.cn/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/qbtest/providers/Microsoft.Media/mediaServices/qbtest/transforms/VideoAnalyzerTransform/jobs?$filter=properties/state%20eq%20Microsoft.Media.JobState'Scheduled'%20or%20properties/state%20eq%20Microsoft.Media.JobState'Processing'&api-version=2018-07-01
+https://management.chinacloudapi.cn/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/qbtest/providers/Microsoft.Media/mediaServices/qbtest/transforms/AdaptiveStreaming/jobs?$filter=properties/state%20eq%20Microsoft.Media.JobState'Scheduled'%20or%20properties/state%20eq%20Microsoft.Media.JobState'Processing'&api-version=2018-07-01
 ```
 
 可以在 C# 中构造同一查询，如下所示： 
 
 ```csharp
 var odataQuery = new ODataQuery<Job>("properties/state eq Microsoft.Media.JobState'Scheduled' or properties/state eq Microsoft.Media.JobState'Processing'");
-client.Jobs.List(config.ResourceGroup, config.AccountName, VideoAnalyzerTransformName, odataQuery);
+client.Jobs.List(config.ResourceGroup, config.AccountName, AdaptiveStreaming, odataQuery);
 ```
 
 ## <a name="filtering-and-ordering-options-of-entities"></a>实体的筛选和排序选项

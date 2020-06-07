@@ -5,22 +5,22 @@ author: kgremban
 manager: philmea
 ms.author: v-tawe
 origin.date: 01/30/2020
-ms.date: 03/02/2020
+ms.date: 06/01/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 75bb25ca359a499292dcd6d9d90913cc33975f19
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: c639466022b2bccd8f7deab136edf5161591a7b0
+ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77494568"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84275597"
 ---
 # <a name="understand-iot-edge-automatic-deployments-for-single-devices-or-at-scale"></a>了解单设备或大规模的 IoT Edge 自动部署
 
 自动部署和分层部署可帮助你在大量 IoT Edge 设备上管理和配置模块。
 
-Azure IoT Edge 提供了两种方法来配置要在 IoT Edge 设备上运行的模块。 第一种方法是在每个设备上部署模块。 创建部署清单，并按名称将其应用到特定设备。 第二种方法是将模块自动部署到满足一组定义条件的任何已注册设备。 创建一个部署清单，然后根据设备孪生中的[标记](../iot-edge/how-to-deploy-monitor.md#identify-devices-using-tags)来定义应用它的设备。
+Azure IoT Edge 提供了两种方法来配置要在 IoT Edge 设备上运行的模块。 第一种方法是在每个设备上部署模块。 创建部署清单，并按名称将其应用到特定设备。 第二种方法是将模块自动部署到满足一组定义条件的任何已注册设备。 创建一个部署清单，然后根据设备孪生中的[标记](../iot-edge/how-to-deploy-at-scale.md#identify-devices-using-tags)来定义应用它的设备。
 
 本文重点介绍如何配置和监视设备群（统称为 IoT Edge 自动部署）。  基本部署步骤如下所述：
 
@@ -29,7 +29,7 @@ Azure IoT Edge 提供了两种方法来配置要在 IoT Edge 设备上运行的�
 3. IoT 中心服务从 IoT Edge 设备检索状态，然后将这些状态提供给操作员。  例如，如果某个 Edge 设备配置不成功，或者某个模块在运行时发生故障，操作员就会看到。
 4. 随时对新的符合目标条件的 IoT Edge 设备进行部署配置。
 
-本文将介绍配置和监视部署过程中涉及的每个组件。 如需创建和更新部署的详细介绍，请参阅[大规模部署和监视 IoT Edge 模块](how-to-deploy-monitor.md)。
+本文将介绍配置和监视部署过程中涉及的每个组件。 如需创建和更新部署的详细介绍，请参阅[大规模部署和监视 IoT Edge 模块](how-to-deploy-at-scale.md)。
 
 ## <a name="deployment"></a>部署
 
@@ -198,5 +198,5 @@ IoT Edge 设备只能应用一个标准自动部署，但它可以应用多个�
 
 ## <a name="next-steps"></a>后续步骤
 
-* 阅读[大规模地部署和监视 IoT Edge 模块](how-to-deploy-monitor.md)，详细了解创建、更新或删除部署的步骤。
+* 阅读[大规模地部署和监视 IoT Edge 模块](how-to-deploy-at-scale.md)，详细了解创建、更新或删除部署的步骤。
 * 详细了解其他 IoT Edge 概念，例如 [IoT Edge 运行时](iot-edge-runtime.md)和 [IoT Edge 模块](iot-edge-modules.md)。

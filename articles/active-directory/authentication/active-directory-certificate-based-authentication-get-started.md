@@ -5,18 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 04/24/2020
+ms.date: 06/02/2020
 ms.author: v-junlch
 author: iainfoulds
 manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ecf63e87539803e4f318cc91ba6a757b4287e71c
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.custom: has-adal-ref
+ms.openlocfilehash: 58a9b59f52f5d3980e81d91b0781b101cf86d6ae
+ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82126230"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84275376"
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>Azure Active Directory 中基于证书的身份验证入门
 
@@ -45,7 +46,7 @@ ms.locfileid: "82126230"
 - 必须已向客户端颁发用于客户端身份验证的客户端证书。
 
 >[!IMPORTANT]
->Azure Active Directory 成功下载和缓存的 CRL 的最大大小为 20MB，下载 CRL 所需的时间不得超过 10 秒。  如果 Azure Active Directory 无法下载 CRL，则使用相应 CA 颁发的证书进行的基于证书的身份验证将失败。 确保 CRL 文件符合大小限制的最佳做法是将证书生存期保持在合理的限制内，并清理过期的证书。 
+>Azure Active Directory 成功下载和缓存的 CRL 的最大大小为 20MB，下载 CRL 所需的时间不得超过 10 秒。  如果 Azure Active Directory 无法下载 CRL，则使用相应 CA 颁发的证书进行的基于证书的身份验证将失败。 确保 CRL 文件符合大小限制的最佳做法是将证书生存期保持在合理的限制内，并清理过期的证书。
 
 ## <a name="step-1-select-your-device-platform"></a>步骤 1：选择设备平台
 

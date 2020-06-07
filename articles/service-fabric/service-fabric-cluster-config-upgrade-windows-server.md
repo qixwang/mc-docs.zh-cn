@@ -4,14 +4,14 @@ description: 了解如何升级运行独立 Service Fabric 群集的配置。
 author: rockboyfor
 ms.topic: conceptual
 origin.date: 11/09/2018
-ms.date: 02/24/2020
+ms.date: 06/08/2020
 ms.author: v-yeche
-ms.openlocfilehash: 5b8941e6f97368bba759cfba28423907f378fa57
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: d63be2a7dca1f631ef754b1b575266894f9aca7c
+ms.sourcegitcommit: 0e178672632f710019eae60cea6a45ac54bb53a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77539999"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84356268"
 ---
 <!--Verify Successfully-->
 # <a name="upgrade-the-configuration-of-a-standalone-cluster"></a>升级独立群集的配置 
@@ -76,11 +76,11 @@ Start-ServiceFabricClusterConfigurationUpgrade -ClusterConfigPath <Path to Confi
 
 ## <a name="next-steps"></a>后续步骤
 * 了解如何自定义某些 [Service Fabric 群集设置](service-fabric-cluster-fabric-settings.md)。
-* 了解如何[扩大和缩小群集](service-fabric-cluster-scale-up-down.md)。
+* 了解如何[扩大和缩小群集](service-fabric-cluster-scale-in-out.md)。
 * 了解[应用程序升级](service-fabric-application-upgrade.md)。
 
 <!--Image references-->
 
 [getfabversions]: ./media/service-fabric-cluster-upgrade-windows-server/getfabversions.PNG
 
-<!-- Update_Description: update meta properties -->
+<!-- Update_Description: update meta properties, wording update, update link -->

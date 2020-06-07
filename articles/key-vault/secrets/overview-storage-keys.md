@@ -9,13 +9,13 @@ author: msmbaldwin
 ms.author: v-tawe
 manager: rkarlin
 origin.date: 09/18/2019
-ms.date: 04/20/2020
-ms.openlocfilehash: 27aa4cd78c27c14a3ee912ee4e8e594420a97a16
-ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
+ms.date: 06/02/2020
+ms.openlocfilehash: 15597d99b1f0939944e5613249bbeb28b23eb2a2
+ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82588844"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84275434"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-the-azure-cli"></a>使用 Key Vault 和 Azure CLI 管理存储帐户密钥
 
@@ -81,7 +81,7 @@ az role assignment create --role "Storage Account Key Operator Service Role" --a
 
 使用 Azure CLI [az keyvault-set-policy](/cli/keyvault?view=azure-cli-latest#az-keyvault-set-policy) cmdlet 更新 Key Vault 访问策略，并向用户帐户授予存储帐户权限。
 
-```azurecli-interactive
+```azurecli
 # Give your user principal access to all storage account permissions, on your Key Vault instance
 
 az keyvault set-policy --name <YourKeyVaultName> --upn user@domain.com --storage-permissions get list delete set update regeneratekey getsas listsas deletesas setsas recover backup restore purge

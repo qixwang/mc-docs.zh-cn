@@ -8,12 +8,12 @@ origin.date: 09/09/2019
 ms.date: 09/23/2019
 ms.author: v-lingwu
 ms.subservice: metrics
-ms.openlocfilehash: 8ef94c6fb72e7dd6c2d9dfb1e814a35e5260f81d
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 3269d477a2c958198ac859ed45e1fcd48bd26261
+ms.sourcegitcommit: 5ae04a3b8e025986a3a257a6ed251b575dbf60a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79452316"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84440483"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-classic-cloud-services"></a>将来宾 OS 指标发送到 Azure Monitor 指标存储经典云服务 
 
@@ -35,7 +35,7 @@ ms.locfileid: "79452316"
 
 - 你需要具备任一个 [Azure PowerShell](https://docs.microsoft.com/powershell/azure)。
 
-- 云服务必须位于[支持自定义指标的区域](metrics-custom-overview.md#supported-regions)中。
+- 云服务必须位于[支持自定义指标的区域](metrics-custom-overview.md)中。
 
 ## <a name="provision-a-cloud-service-and-storage-account"></a>预配云服务和存储帐户 
 

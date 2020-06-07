@@ -14,12 +14,12 @@ ms.topic: article
 origin.date: 01/24/2020
 ms.date: 2/6/2020
 ms.author: v-lingwu
-ms.openlocfilehash: e0d5865c85eb436d50d9b1081dfba1549aef74f6
-ms.sourcegitcommit: a04b0b1009b0c62f2deb7c7acee75a1304d98f87
+ms.openlocfilehash: 43e867f3404ef5ccef0b0e98ffc42fb66a8d651e
+ms.sourcegitcommit: 79c99a9ea013b3c74706a1038a505f4eea2aaac4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83796835"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84439513"
 ---
 # <a name="message-expiration-time-to-live"></a>消息过期时间（生存时间）
 
@@ -27,7 +27,7 @@ ms.locfileid: "83796835"
 
 对于经常在应用程序或应用程序部件部分运行轮次的上下文中使用队列与主题的开发和测试环境，还需要对滞留的测试消息自动进行垃圾回收，使下一轮测试运行能够从新启动。
 
-可以通过设置 [TimeToLive](https://docs.azure.cn/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) 系统属性（指定相对持续时间）来控制任何一条消息的过期时间。 在实体中将消息排队后，过期时间即成为一个绝对时刻。 此时，[ExpiresAtUtc](https://docs.azure.cn/dotnet/api/microsoft.azure.servicebus.message.expiresatutc) 属性取值为 [(**EnqueuedTimeUtc**](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc#Microsoft_ServiceBus_Messaging_BrokeredMessage_EnqueuedTimeUtc) + [**TimeToLive**)](https://docs.azure.cn/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive)。 当没有客户端主动侦听时，不会强制实施中转消息的生存时间 (TTL) 设置。
+可以通过设置 [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) 系统属性（指定相对持续时间）来控制任何一条消息的过期时间。 在实体中将消息排队后，过期时间即成为一个绝对时刻。 此时，[ExpiresAtUtc](/dotnet/api/microsoft.azure.servicebus.message.expiresatutc) 属性取值为 [(**EnqueuedTimeUtc**](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc#Microsoft_ServiceBus_Messaging_BrokeredMessage_EnqueuedTimeUtc) + [**TimeToLive**)](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive)。 当没有客户端主动侦听时，不会强制实施中转消息的生存时间 (TTL) 设置。
 
 在 **ExpiresAtUtc** 时刻过后，消息不可检索。 过期时间不会影响当前已锁定等待传送的消息；这些消息仍会按正常方式得到处理。 如果锁已过期或者消息被丢弃，则过期时间立即生效。
 

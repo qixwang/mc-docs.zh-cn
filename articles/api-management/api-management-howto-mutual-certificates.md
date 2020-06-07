@@ -14,12 +14,12 @@ ms.topic: article
 origin.date: 01/08/2020
 ms.author: v-yiso
 ms.date: 02/24/2020
-ms.openlocfilehash: 6204ec34651dbfe76dcab8c5abc22f33d62a4146
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 09d8ba0cfef505eae90e8c76b42eea428d1dde02
+ms.sourcegitcommit: 5ae04a3b8e025986a3a257a6ed251b575dbf60a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78213723"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84440563"
 ---
 # <a name="how-to-secure-back-end-services-using-client-certificate-authentication-in-azure-api-management"></a>如何使用 Azure API 管理中的客户端证书身份验证确保后端服务安全
 
@@ -59,7 +59,7 @@ API 管理允许你使用客户端证书保护对 API 后端服务的访问。 �
 证书上传后显示在“证书”中  。  如果有多个证书，请记下所需证书的指纹，以便[将 API 配置为使用客户端证书进行网关身份验证][Configure an API to use a client certificate for gateway authentication]。
 
 > [!NOTE]
-> 若要在使用某个证书（例如自签名证书）时关闭证书链验证，请执行此常见问题[项](api-management-faq.md#can-i-use-a-self-signed-ssl-certificate-for-a-back-end)中描述的步骤。
+> 若要在使用某个证书（例如自签名证书）时关闭证书链验证，请执行此常见问题[项](api-management-faq.md)中描述的步骤。
 > 
 > 
 

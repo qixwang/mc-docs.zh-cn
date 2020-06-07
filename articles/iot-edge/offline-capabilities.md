@@ -4,16 +4,16 @@ description: 了解 IoT Edge 设备和模块如何能够长时间在无 Internet
 author: kgremban
 ms.author: v-tawe
 origin.date: 11/22/2019
-ms.date: 03/30/2020
+ms.date: 06/01/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 79f980aab35f606f801c18092126e2942ada86c5
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 7b022afed91b713835dfdf9c431ce391e32b722c
+ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80586800"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84275620"
 ---
 # <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices"></a>了解有关 IoT Edge 设备、模块和子设备的扩展脱机功能
 
@@ -109,7 +109,7 @@ az iot hub device-identity add-children \
 
 ## <a name="specify-dns-servers"></a>指定 DNS 服务器
 
-为了提高可靠性，强烈建议指定在环境中使用的 DNS 服务器地址。 若要为 IoT Edge 设置 DNS服务器，请参阅故障排除文章中 [Edge 代理模块不断报告“空配置文件”且设备上没有模块启动](troubleshoot.md#edge-agent-module-continually-reports-empty-config-file-and-no-modules-start-on-the-device)的解决方案。
+为了提高可靠性，强烈建议指定在环境中使用的 DNS 服务器地址。 若要为 IoT Edge 设置 DNS服务器，请参阅故障排除文章中 [Edge 代理模块不断报告“空配置文件”且设备上没有模块启动](troubleshoot-common-errors.md#edge-agent-module-reports-empty-config-file-and-no-modules-start-on-the-device)的解决方案。
 
 ## <a name="optional-offline-settings"></a>可选脱机设置
 

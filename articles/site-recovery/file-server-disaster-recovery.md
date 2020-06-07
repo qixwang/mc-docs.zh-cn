@@ -6,15 +6,15 @@ manager: digimobile
 ms.service: site-recovery
 ms.topic: conceptual
 origin.date: 07/31/2019
-ms.date: 02/24/2020
+ms.date: 06/08/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 9715025a49177d13d7b6c871ccb7cc3afa79f529
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 9abd848c212f4a89c09edd957a8e4d14be1b48b9
+ms.sourcegitcommit: 5ae04a3b8e025986a3a257a6ed251b575dbf60a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77611290"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84440424"
 ---
 # <a name="protect-a-file-server-by-using-azure-site-recovery"></a>使用 Azure Site Recovery 保护文件服务器 
 
@@ -65,12 +65,12 @@ DFSR 使用称为远程差分压缩 (RDC) 的压缩算法，该算法可用于�
 ### <a name="site-recovery-support"></a>Site Recovery 支持
 由于 Site Recovery 复制不区分应用程序，因此这些建议应该也适用于以下场景。
 
-| 源    |到辅助站点    |到 Azure
+| 源  |到辅助站点  |到 Azure
 |---------|---------|---------|
-|Azure| -|是|
-|Hyper-V|   是 |是
-|VMware |是|   是
-|物理服务器|   是 |是
+|Azure|  -|是|
+|Hyper-V|  是  |是
+|VMware  |是|  是
+|物理服务器|  是  |是
 
 > [!IMPORTANT]
 > 在继续使用以下三种方法中的任何一种之前，请确保已处理好这些依赖项。

@@ -10,12 +10,12 @@ origin.date: 04/02/2019
 ms.date: 05/25/2020
 ms.topic: conceptual
 manager: digimobile
-ms.openlocfilehash: 0d15d376b5d61faade0f79a5ca3c427ba99c4972
-ms.sourcegitcommit: 981a75a78f8cf74ab5a76f9e6b0dc5978387be4b
+ms.openlocfilehash: b8ac74a601ce292ee1c2babc043db38fd370daa4
+ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83801291"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84275561"
 ---
 # <a name="manage-certificates-in-azure-automation"></a>管理 Azure 自动化中的证书
 
@@ -35,7 +35,7 @@ ms.locfileid: "83801291"
 |[Remove-AzureRmAutomationCertificate](https://docs.microsoft.com/powershell/module/azurerm.automation/remove-azurermautomationcertificate)|从自动化中删除证书。|
 |[Set-AzureRmAutomationCertificate](https://docs.microsoft.com/powershell/module/azurerm.automation/set-azurermautomationcertificate)|设置现有证书的属性，包括上传证书文件和设置 **.pfx** 文件的密码。|
 
-[Add-AzureCertificate](/powershell/module/servicemanagement/azure/add-azurecertificate) cmdlet 还可用于上传指定云服务的服务证书。
+[Add-AzureCertificate](https://docs.microsoft.com/powershell/module/servicemanagement/azure/add-azurecertificate) cmdlet 还可用于上传指定云服务的服务证书。
 
 ## <a name="internal-cmdlets-to-access-certificates"></a>用于访问证书的内部 cmdlet
 

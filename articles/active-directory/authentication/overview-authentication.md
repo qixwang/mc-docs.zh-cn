@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: overview
-ms.date: 02/07/2020
+ms.date: 06/02/2020
 ms.author: v-junlch
 author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66687cc172dd8b38a8674d2132f5800884dac44a
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: c7f89898fc767fb3d96c929b27327805310dbcc7
+ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77067558"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84275354"
 ---
 # <a name="what-is-azure-active-directory-authentication"></a>Azure Active Directory 身份验证是什么？
 
@@ -86,14 +86,15 @@ Azure 多重身份验证需要以下身份验证方法中的两种或更多种�
 
 ## <a name="next-steps"></a>后续步骤
 
-若要开始使用，请参阅[自助式密码重置快速入门][quickstart-sspr]。
+若要开始，请参阅[自助式密码重置 (SSPR) 的教程][tutorial-sspr]和 [Azure 多重身份验证][tutorial-azure-mfa]。
 
 若要详细了解自助式密码重置概念，请参阅 [Azure AD 自助式密码重置的工作原理][concept-sspr]。
 
 若要详细了解多重身份验证概念，请参阅 [Azure 多重身份验证的工作原理][concept-mfa]。
 
 <!-- INTERNAL LINKS -->
-[quickstart-sspr]: quickstart-sspr.md
+[tutorial-sspr]: tutorial-enable-sspr.md
+[tutorial-azure-mfa]: tutorial-enable-azure-mfa.md
 [concept-sspr]: concept-sspr-howitworks.md
 [concept-mfa]: concept-mfa-howitworks.md
 

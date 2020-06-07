@@ -5,17 +5,17 @@ author: kgremban
 manager: philmea
 ms.author: v-tawe
 origin.date: 08/16/2019
-ms.date: 03/30/2020
+ms.date: 06/01/2020
 ms.topic: conceptual
 ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 04ec8ed6849623635979de175a5533586cd10687
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: f76a93507b1ba6c44054959db98a4568d3b38a19
+ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80586695"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84275575"
 ---
 # <a name="deploy-azure-iot-edge-modules-with-azure-cli"></a>使用 Azure CLI 部署 Azure IoT Edge 模块
 
@@ -23,7 +23,7 @@ ms.locfileid: "80586695"
 
 [Azure CLI](https://docs.azure.cn/cli?view=azure-cli-latest) 是一个开源跨平台命令行工具，用于管理 IoT Edge 等 Azure 资源。 使用 Azure CLI 2.0 可以管理 Azure IoT 中心资源、设备预配服务实例和现成的链接中心。 新的 IoT 扩展丰富了 Azure CLI 的功能，例如设备管理和完整的 IoT Edge 功能。
 
-本文介绍了如何创建 JSON 部署清单，然后使用此文件将部署推送至 IoT Edge 设备。 要了解如何创建基于设备的共享标记而面向多台设备的部署，请参阅[大规模地部署和监视 IoT Edge 模块](how-to-deploy-monitor-cli.md)
+本文介绍了如何创建 JSON 部署清单，然后使用此文件将部署推送至 IoT Edge 设备。 要了解如何创建基于设备的共享标记而面向多台设备的部署，请参阅[大规模地部署和监视 IoT Edge 模块](how-to-deploy-cli-at-scale.md)
 
 ## <a name="prerequisites"></a>必备条件
 
@@ -141,4 +141,4 @@ device ID 参数区分大小写。
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何[大规模地部署和监视 IoT Edge 模块](how-to-deploy-monitor.md)
+了解如何[大规模地部署和监视 IoT Edge 模块](how-to-deploy-at-scale.md)

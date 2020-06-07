@@ -5,14 +5,14 @@ author: WenJason
 ms.author: v-jay
 ms.service: mariadb
 ms.topic: conceptual
-origin.date: 3/18/2020
-ms.date: 04/27/2020
-ms.openlocfilehash: 37b2ef426952b4fd7751e558dce9f2b81af4117f
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+origin.date: 5/7/2020
+ms.date: 06/08/2020
+ms.openlocfilehash: 90881504b1eb063a2b0415ac7508c18d21386420
+ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82127080"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84275611"
 ---
 # <a name="configure-ssl-connectivity-in-your-application-to-securely-connect-to-azure-database-for-mariadb"></a>配置应用程序的 SSL 连接性以安全连接到 Azure Database for MariaDB
 Azure Database for MariaDB 支持使用安全套接字层 (SSL) 将 Azure Database for MariaDB 服务器连接到客户端应用程序。 通过在数据库服务器与客户端应用程序之间强制实施 SSL 连接，可以加密服务器与应用程序之间的数据流，有助于防止“中间人”攻击。
@@ -105,7 +105,7 @@ conn = pymysql.connect(user = 'myadmin@mydemoserver',
         password = 'yourpassword', 
         database = 'quickstartdb', 
         host = 'mydemoserver.mariadb.database.chinacloudapi.cn', 
-        ssl = {'ssl': {'ca': 'C:\OpenSSL-Win32\bin\DigiCertGlobalRootCA.pem'}})
+        ssl = {'ca': 'C:\OpenSSL-Win32\bin\DigiCertGlobalRootCA.pem'}})
 ```
 ### <a name="ruby"></a>Ruby
 ```ruby

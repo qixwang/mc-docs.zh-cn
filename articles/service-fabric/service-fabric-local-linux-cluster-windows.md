@@ -4,14 +4,14 @@ description: 本文介绍如何设置在 Windows 开发计算机上运行的 Ser
 author: rockboyfor
 ms.topic: conceptual
 origin.date: 11/20/2017
-ms.date: 01/13/2020
+ms.date: 06/08/2020
 ms.author: v-yeche
-ms.openlocfilehash: 74b40ba217e7206ef25efcf125f5c798648813da
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 569b04d9c415f1dc28cc7e849fe9cfaaad0403a0
+ms.sourcegitcommit: 0e178672632f710019eae60cea6a45ac54bb53a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75742497"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84356142"
 ---
 # <a name="set-up-a-linux-service-fabric-cluster-on-your-windows-developer-machine"></a>设置 Windows 开发人员计算机上的 Linux Service Fabric 群集
 
@@ -44,7 +44,7 @@ ms.locfileid: "75742497"
 2. 在新目录中创建名为 `Dockerfile` 的文件，以生成 Service Fabric 映像：
 
     ```Dockerfile
-    FROM microsoft/service-fabric-onebox
+    FROM mcr.microsoft.com/service-fabric/onebox:latest
     WORKDIR /home/ClusterDeployer
     RUN ./setup.sh
     #Generate the local
@@ -85,10 +85,10 @@ ms.locfileid: "75742497"
     >
     >如果应用程序正在侦听特定端口，则必须使用附加的 `-p` 标记指定这些端口。 例如，如果应用程序正在侦听端口 8080，请添加下面的 `-p` 标记：
     >
-    >`docker run -itd -p 19080:19080 -p 8080:8080 --name sfonebox microsoft/service-fabric-onebox`
+    >`docker run -itd -p 19080:19080 -p 8080:8080 --name sfonebox mcr.microsoft.com/service-fabric/onebox:latest`
     >
 
-5. 群集需要一小段时间来启动，可以使用以下命令查看日志，或者通过 [http://localhost:19080](http://localhost:19080) 跳转到仪表板来查看群集运行状况：
+5. 群集需要一小段时间来启动，可以使用以下命令查看日志，或者通过 `http://localhost:19080` 跳转到仪表板来查看群集运行状况：
 
     ```powershell 
     docker logs sftestcluster

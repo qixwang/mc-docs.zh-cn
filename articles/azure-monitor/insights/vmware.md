@@ -8,12 +8,12 @@ ms.topic: conceptual
 origin.date: 05/04/2018
 ms.date: 07/02/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 251f7cff5746fd9f20e490191465bc7833e784f4
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: cdf95eecfd2b0efbb71d8542630991ec8e30ed67
+ms.sourcegitcommit: 5ae04a3b8e025986a3a257a6ed251b575dbf60a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78850307"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84440451"
 ---
 # <a name="vmware-monitoring-deprecated-solution-in-azure-monitor"></a>Azure Monitor 中的 VMware 监视（已弃用）解决方案
 
@@ -29,7 +29,7 @@ Azure Monitor 中的 VMware 监视解决方案是一个有助于针对大型 VMw
 ## <a name="install-and-configure-the-solution"></a>安装和配置解决方案
 使用以下信息安装和配置解决方案。
 
-* 使用[安装监视解决方案](../insights/solutions.md#install-a-monitoring-solution)中所述的过程将 VMware 监视解决方案添加到订阅。
+* 使用[安装监视解决方案](../insights/solutions.md)中所述的过程将 VMware 监视解决方案添加到订阅。
 
 #### <a name="supported-vmware-esxi-hosts"></a>受支持的 VMware ESXi 主机
 vSphere ESXi 主机 5.5、6.0 和 6.5

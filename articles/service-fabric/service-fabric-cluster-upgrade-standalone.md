@@ -3,14 +3,14 @@ title: 升级 Azure Service Fabric 独立群集
 description: 了解有关升级 Azure Service Fabric 独立群集的版本或配置的信息。  T
 ms.topic: conceptual
 origin.date: 11/12/2018
+ms.date: 06/08/2020
 ms.author: v-yeche
-ms.date: 01/06/2020
-ms.openlocfilehash: 21cea9257601fdcba89c0a4ed04219700829de53
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: ff34050d3902f114c573d91eb62addb9f4447235
+ms.sourcegitcommit: 0e178672632f710019eae60cea6a45ac54bb53a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75742319"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84356137"
 ---
 # <a name="upgrading-and-updating-a-service-fabric-standalone-cluster"></a>升级和更新 Service Fabric 独立群集
 
@@ -38,7 +38,7 @@ ms.locfileid: "75742319"
 
 ## <a name="next-steps"></a>后续步骤
 * 了解如何自定义 [Service Fabric 群集结构设置](service-fabric-cluster-fabric-settings.md)的部分内容
-* 了解如何[扩展和缩减群集](service-fabric-cluster-scale-up-down.md)
+* 了解如何[扩展和缩减群集](service-fabric-cluster-scale-in-out.md)
 * 了解[应用程序升级](service-fabric-application-upgrade.md)
 
 <!--Image references-->
@@ -51,4 +51,4 @@ ms.locfileid: "75742319"
 [Create_Manualmode]: ./media/service-fabric-cluster-upgrade/Create_Manualmode.PNG
 [Manage_Automaticmode]: ./media/service-fabric-cluster-upgrade/Manage_Automaticmode.PNG
 
-<!-- Update_Description: update link -->
+<!-- Update_Description: update meta properties, wording update, update link -->

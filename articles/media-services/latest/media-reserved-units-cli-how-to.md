@@ -15,12 +15,12 @@ origin.date: 03/09/2020
 ms.date: 05/11/2020
 ms.author: v-jay
 ms.custom: seodec18
-ms.openlocfilehash: 3db4575fd8553a3f87ff07d002a496bf11f80d77
-ms.sourcegitcommit: 95efd248f5ee3701f671dbd5cfe0aec9c9959a24
+ms.openlocfilehash: 42e89c7983b81d7533130fffce080426e8f63c7d
+ms.sourcegitcommit: 1f890a4085e184cc678485d05f08dd6de8dc973f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82507707"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84438938"
 ---
 # <a name="scaling-media-processing"></a>缩放媒体处理能力
 
@@ -40,13 +40,9 @@ ms.locfileid: "82507707"
 
 ## <a name="considerations"></a>注意事项
 
-* 对于由媒体服务 v3 或视频索引器触发的音频分析和视频分析作业，强烈建议采用 S3 单位类型。
 * 如果使用共享的池（即没有任何预留单位），则编码任务将具有与 S1 RU 相同的性能。 但是，任务在排队状态下花费的时间可能没有上限，并且在任何给定的时间内，最多只会运行一项任务。
 
 本文的其余部分介绍如何使用[媒体服务 v3 CLI](https://aka.ms/ams-v3-cli-ref) 来缩放 MRU。
-
-> [!NOTE]
-> 对于由媒体服务 v3 或视频索引器触发的音频分析和视频分析作业，强烈建议为你的帐户预配 10 S3 MRU。 如果需要超过 10 S3 MRU 的数量，请使用 [Azure 门户](https://portal.azure.cn/)打开一个支持票证。
 
 ## <a name="prerequisites"></a>先决条件 
 
@@ -67,10 +63,6 @@ az ams account mru set -n amsaccount -g amsResourceGroup --count 10 --type S3
 ## <a name="billing"></a>计费
 
 根据在帐户中预配的媒体预留单位的分钟数计费。 这与帐户中是否有作业运行无关。 有关详细说明，请参阅[媒体服务定价](https://azure.cn/pricing/details/media-services/)页的“常见问题”部分。   
-
-## <a name="next-step"></a>后续步骤
-
-[分析视频](analyze-videos-tutorial-with-api.md) 
 
 ## <a name="see-also"></a>另请参阅
 

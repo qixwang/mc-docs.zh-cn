@@ -3,14 +3,14 @@ title: 创建 Azure Service Fabric 群集
 description: 了解如何使用 Azure 资源管理器在 Azure 中设置安全的 Service Fabric 群集。  可以使用默认模板或自己的群集模板创建群集。
 ms.topic: conceptual
 origin.date: 08/16/2018
-ms.date: 04/13/2020
+ms.date: 06/08/2020
 ms.author: v-yeche
-ms.openlocfilehash: f0a5eb834604398d995378056e8bf0148f892be6
-ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
+ms.openlocfilehash: c04f415f93f3fdb4c58630fa79ec659efd9f2c67
+ms.sourcegitcommit: 0e178672632f710019eae60cea6a45ac54bb53a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82093391"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84356266"
 ---
 # <a name="create-a-service-fabric-cluster-using-azure-resource-manager"></a>使用 Azure 资源管理器创建 Service Fabric 群集 
 > [!div class="op_single_selector"]
@@ -255,7 +255,7 @@ az sf cluster create --resource-group $resourceGroupName --location $resourceGro
 
 ### <a name="use-a-pointer-to-a-secret-uploaded-into-a-key-vault"></a>使用指向上传到密钥保管库中的机密的指针
 
-要使用现有密钥保管库，则必须[针对部署启用](../key-vault/key-vault-manage-with-cli2.md#bkmk_KVperCLI)该密钥保管库，使计算资源提供程序能够从中获取证书并将其安装在群集节点上。
+要使用现有密钥保管库，则必须[针对部署启用](../key-vault/general/manage-with-cli2.md#bkmk_KVperCLI)该密钥保管库，使计算资源提供程序能够从中获取证书并将其安装在群集节点上。
 
 使用 PowerShell 部署群集：
 

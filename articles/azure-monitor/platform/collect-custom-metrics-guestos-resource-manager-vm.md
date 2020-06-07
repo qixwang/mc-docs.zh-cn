@@ -8,12 +8,12 @@ origin.date: 08/22/2019
 ms.date: 01/21/2019
 ms.author: v-lingwu
 ms.subservice: metrics
-ms.openlocfilehash: 426fbcaacf51d0974ac5dd5023f56f7dbb509825
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 055d0b3986356aeffa3b9f61f41d54350971ba06
+ms.sourcegitcommit: 5ae04a3b8e025986a3a257a6ed251b575dbf60a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79452354"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84440481"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-using-a-resource-manager-template-for-a-windows-virtual-machine"></a>使用 Windows 虚拟机的资源管理器模板将来宾 OS 指标发送到 Azure Monitor 指标存储
 
@@ -32,7 +32,7 @@ ms.locfileid: "79452354"
 - 你的订阅必须已注册到 [Microsoft.Insights](/azure-resource-manager/resource-manager-supported-services#portal)。
 
 - 需要安装任一个 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-6.8.1)。
-- VM 资源必须位于[支持自定义指标的区域](metrics-custom-overview.md#supported-regions)中。 
+- VM 资源必须位于[支持自定义指标的区域](metrics-custom-overview.md)中。 
 
 
 ## <a name="set-up-azure-monitor-as-a-data-sink"></a>将 Azure Monitor 设置为数据接收器

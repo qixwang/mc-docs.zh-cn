@@ -5,16 +5,19 @@ author: kgremban
 manager: philmea
 ms.author: v-tawe
 origin.date: 04/03/2019
-ms.date: 04/20/2020
+ms.date: 06/01/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9563a92d9e0936e7130af8e934d9b922e5ed37a2
-ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
+ms.custom:
+- amqp
+- mqtt
+ms.openlocfilehash: a018c3ba646702bcb6f52220af137f52746fef26
+ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82588782"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84275576"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>将 IoT Edge 设备配置为充当透明网关
 

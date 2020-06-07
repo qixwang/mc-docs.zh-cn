@@ -105,7 +105,7 @@
           href: how-to-install-iot-edge-windows-server-vm.md
         - name: Ubuntu VM
           href: how-to-install-iot-edge-ubuntuvm.md
-        - name: kubernetes
+        - name: Kubernetes
           href: how-to-install-iot-edge-kubernetes.md
         - name: 管理设备证书
           href: how-to-manage-device-certificates.md
@@ -150,13 +150,15 @@
         - name: 大规模部署
           items:
             - name: Azure 门户
-              href: how-to-deploy-monitor.md
+              href: how-to-deploy-at-scale.md
             - name: Azure CLI
-              href: how-to-deploy-monitor-cli.md
+              href: how-to-deploy-cli-at-scale.md
             - name: Visual Studio Code
-              href: how-to-deploy-monitor-vscode.md
+              href: how-to-deploy-vscode-at-scale.md
     - name: 监视和诊断部署
       items:
+        - name: 监视 IoT Edge 部署
+          href: how-to-monitor-iot-edge-deployments.md
         - name: EdgeAgent 直接方法
           href: how-to-edgeagent-direct-method.md
     - name: 使用 IoT Edge 设备作为网关
@@ -182,7 +184,11 @@
         - name: Azure DevOps
           href: how-to-ci-cd.md
     - name: 故障排除
-      href: troubleshoot.md
+      items:
+        - name: 标准诊断步骤
+          href: troubleshoot.md
+        - name: 常见错误解决方法
+          href: troubleshoot-common-errors.md
 - name: 资源
   items:
     - name: Azure IoT 服务

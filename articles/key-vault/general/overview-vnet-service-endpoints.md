@@ -6,16 +6,16 @@ author: amitbapat
 ms.author: v-tawe
 manager: rkarlin
 origin.date: 01/02/2019
-ms.date: 04/20/2020
+ms.date: 06/02/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: 70f1631d7db912c6d4765ad33163e4281e49db77
-ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
+ms.openlocfilehash: 78170725c7c266b2eda7f76c54d5ee0949384653
+ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82588970"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84275610"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Azure Key Vault 的虚拟网络服务终结点
 

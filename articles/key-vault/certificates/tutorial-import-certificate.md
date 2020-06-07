@@ -10,14 +10,14 @@ ms.subservice: certificates
 ms.topic: tutorial
 ms.custom: mvc
 origin.date: 04/03/2020
-ms.date: 04/20/2020
+ms.date: 06/02/2020
 ms.author: v-tawe
-ms.openlocfilehash: 17991c5b45329577423ff484885f7617b29074c4
-ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
+ms.openlocfilehash: b9bc3c7492286f00f8fc9c60e1c0f5fb3b876fb5
+ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82588871"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84275552"
 ---
 # <a name="tutorial-import-a-certificate-in-azure-key-vault"></a>教程：在 Azure Key Vault 中导入证书
 
@@ -29,6 +29,7 @@ Azure Key Vault 是一项云服务，它为机密提供了安全的存储。 可
 > * 创建密钥保管库。
 > * 使用门户在 Key Vault 中导入证书。
 > * 使用 CLI 在 Key Vault 中导入证书。
+
 
 在开始之前，请阅读 [Key Vault 的基本概念](../general/basic-concepts.md)。 
 
@@ -45,7 +46,7 @@ Azure Key Vault 是一项云服务，它为机密提供了安全的存储。 可
 3. 从结果列表中选择“Key Vault”  。
 4. 在“Key Vault”部分，选择“创建”  。
 5. 在“创建密钥保管库”部分，提供以下信息： 
-    - **名称**：必须提供唯一的名称。 在本快速入门中，我们使用 Example-Vault  。 
+    - **Name**：必须提供唯一的名称。 在本快速入门中，我们使用 Example-Vault  。 
     - **订阅**：选择订阅。
     - 在“资源组”  下选择“新建”  ，然后输入资源组名称。
     - 在“位置”下拉菜单中选择一个位置。 
@@ -76,11 +77,14 @@ Azure Key Vault 是一项云服务，它为机密提供了安全的存储。 可
     - **证书创建方法**：导入。
     - **证书名称**：ExampleCertificate。
     - **上传证书文件**：从磁盘选择证书文件
-    - 让其他值保留默认设置。 单击**创建**。
+    - **密码**：如果要上传受密码保护的证书文件，请在此处提供该密码。 否则，请将其留空。 成功导入证书文件后，密钥保管库会删除该密码。
+4. 单击“创建”。 
 
 ![证书属性](../media/certificates/tutorial-import-cert/cert-import.png)
 
-收到证书已成功创建的消息后，可以在列表中单击该证书。 然后，你可以看到它的一些属性。 
+使用“导入”  方法添加证书后，Azure 密钥保管库会自动填充证书参数（即有效期、颁发者名称、激活日期等）。
+
+收到证书已成功导入的消息后，可以单击列表中的该证书以查看其属性。 
 
 ![证书属性](../media/certificates/tutorial-import-cert/current-version-hidden.png)
 
@@ -101,6 +105,20 @@ az keyvault certificate import --file
 ```
 请在[此处](https://docs.azure.cn/cli/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-import)详细了解这些参数
 
+导入证书后，可以使用 [certificate show](https://docs.azure.cn/cli/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-show) 来查看证书
+```azurecli
+az keyvault certificate show [--id]
+                             [--name]
+                             [--only-show-errors]
+                             [--subscription]
+                             [--vault-name]
+                             [--version]
+```
+
+
+
+现在，你已创建了一个密钥保管库，导入了一个证书并查看了证书的属性。
+
 ## <a name="clean-up-resources"></a>清理资源
 
 其他 Key Vault 快速入门和教程是在本快速入门的基础上制作的。 如果打算继续使用后续的快速入门和教程，则可能需要保留这些资源。
@@ -110,9 +128,11 @@ az keyvault certificate import --file
 2. 选择“删除资源组”  。
 3. 在“键入资源组名称:”框中，键入资源组的名称，然后选择“删除”   。
 
+
 ## <a name="next-steps"></a>后续步骤
 
 在本教程中，你创建了一个 Key Vault 并在其中导入了一个证书。 若要详细了解 Key Vault 以及如何将其与应用程序集成，请继续阅读以下文章。
 
+- 详细了解如何[在 Azure Key Vault 中管理证书创建](https://docs.azure.cn/key-vault/certificates/create-certificate-scenarios)
 - 参阅[使用 REST API 导入证书](https://docs.microsoft.com/rest/api/keyvault/importcertificate/importcertificate)的示例
 - 查看 [Azure Key Vault 最佳做法](../general/best-practices.md)
