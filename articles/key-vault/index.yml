@@ -13,13 +13,13 @@ metadata:
   author: msmbaldwin
   ms.author: v-tawe
   origin.date: 04/07/2020
-  ms.date: 04/07/2020
-  ms.openlocfilehash: 2dc5d7d043d2fda26f54e41bd725010a6b177a2b
-  ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
+  ms.date: 06/02/2020
+  ms.openlocfilehash: f8d774221491bc1c0b57f75da9d1e8dfc4156fce
+  ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 04/30/2020
-  ms.locfileid: "82588755"
+  ms.lasthandoff: 06/02/2020
+  ms.locfileid: "84275316"
 highlightedContent:
   items:
   - title: Azure Key Vault 简介
@@ -78,17 +78,37 @@ conceptualContent:
     - url: ./secrets/quick-create-portal.md
       itemType: quickstart
       text: 使用 Azure 门户在 Azure Key Vault 中设置和检索机密
+    - url: ./secrets/tutorial-rotation.md
+      itemType: tutorial
+      text: 为单用户资源轮换机密
     footerLink:
       url: ./secrets/index.yml
       text: 查看更多
-  - title: 管理存储密钥
+  - title: 将 Key Vault 与存储配合使用
     links:
     - url: ./secrets/overview-storage-keys.md
       itemType: overview
-      text: 存储密钥 - CLI
+      text: 管理存储密钥 - CLI
     - url: ./secrets/overview-storage-keys-powershell.md
       itemType: overview
-      text: 存储密钥 - PowerShell
+      text: 管理存储密钥 - PowerShell
     - url: ./secrets/storage-keys-sas-tokens-code.md
       itemType: overview
       text: 在代码中提取 SAS 令牌
+  - title: 将 Key Vault 与虚拟机配合使用
+    links:
+    - url: ../virtual-machines/extensions/key-vault-windows.md
+      itemType: overview
+      text: Key Vault VM 扩展 - Windows
+    - url: ../virtual-machines/extensions/key-vault-linux.md
+      itemType: overview
+      text: Key Vault VM 扩展 - Linux
+    - url: /azure/developer/ansible/key-vault-configure-vm-security
+      itemType: overview
+      text: 在 Ansible 中将 Key Vault 与 Linux VM 配合使用
+    - url: ../virtual-machines/windows/disk-encryption-key-vault.md
+      itemType: overview
+      text: 将 Key Vault 与 Azure 磁盘加密配合使用 - Windows
+    - url: ../virtual-machines/linux/disk-encryption-key-vault.md
+      itemType: overview
+      text: 将 Key Vault 与 Azure 磁盘加密配合使用 - Linux

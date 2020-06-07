@@ -36,9 +36,13 @@
           href: /active-directory/fundamentals/active-directory-users-assign-role-azure-portal
         - name: 还原已删除的用户
           href: /active-directory/fundamentals/active-directory-users-restore
+        - name: 添加 B2B 用户
+          href: /active-directory/b2b/what-is-b2b
+        - name: 向 B2B 用户分配角色
+          href: /active-directory/b2b/add-guest-to-role
     - name: 管理目录
       items:
-        - name: 管理目录
+        - name: Azure AD 组织
           href: /active-directory/fundamentals/active-directory-administer
         - name: 管理域名
           href: domains-manage.md
@@ -52,7 +56,7 @@
           href: /active-directory/connect/active-directory-aadconnect
     - name: 管理组
       items:
-        - name: 使用 Azure AD 组管理访问权限
+        - name: 使用组管理访问权限
           href: /active-directory/fundamentals/active-directory-manage-groups
         - name: 创建组（Azure 门户）
           href: /active-directory/fundamentals/active-directory-groups-create-azure-portal
@@ -72,6 +76,8 @@
           href: /active-directory/fundamentals/active-directory-groups-membership-azure-portal
     - name: 分配许可证
       items:
+        - name: 将许可证分配给用户
+          href: /active-directory/fundamentals/license-users-groups
         - name: 将许可证分配给组
           href: licensing-groups-assign.md
         - name: 解决组的许可证问题

@@ -4,6 +4,8 @@
   items:
     - name: 什么是 Azure 负载均衡器？
       href: load-balancer-overview.md
+    - name: 常见问题
+      href: load-balancer-faqs.md
 - name: 快速入门
   items:
     - name: 创建负载均衡器 - 门户
@@ -29,14 +31,20 @@
       href: powershell-samples.md
 - name: 概念
   items:
-    - name: 组件和限制
-      href: concepts-limitations.md
+    - name: 组件
+      href: components.md
+    - name: 概念
+      href: concepts.md
+    - name: SKU
+      href: skus.md
     - name: 运行状况监视
       items:
         - name: 运行状况探测
           href: load-balancer-custom-probe-overview.md
         - name: 标准负载均衡器指标和诊断
           href: load-balancer-standard-diagnostics.md
+        - name: 基本负载均衡器的 Azure Monitor 日志
+          href: load-balancer-monitor-log.md
         - name: 使用 REST 获取负载均衡器指标
           href: load-balancer-query-metrics-rest-api.md
     - name: 高可用性端口
@@ -83,7 +91,7 @@
           href: /virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-cli
         - name: Azure PowerShell
           href: /virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell
-        - name: Azure 资源管理器模板
+        - name: Azure Resource Manager 模板
           href: /virtual-network/ipv6-configure-standard-load-balancer-template-json
           displayName: ARM
     - name: 配置内部负载均衡器
@@ -92,7 +100,7 @@
           href: load-balancer-get-started-ilb-arm-cli.md
         - name: Azure PowerShell
           href: load-balancer-get-started-ilb-arm-ps.md
-        - name: Azure 资源管理器模板
+        - name: Azure Resource Manager 模板
           href: load-balancer-get-started-ilb-arm-template.md
           displayName: ARM
     - name: 配置负载均衡器的 TCP 空闲超时
@@ -120,8 +128,10 @@
           href: move-across-regions-internal-load-balancer-powershell.md
     - name: 故障排除
       items:
-        - name: 排查 Azure 负载均衡器问题
+        - name: 对 Azure 负载均衡器进行故障排除
           href: load-balancer-troubleshoot.md
+        - name: 排查常见部署错误
+          href: load-balancer-common-deployment-errors.md
 - name: 参考
   items:
     - name: 代码示例
@@ -142,6 +152,9 @@
       href: 'http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.network.operations.html#azure.mgmt.network.operations.LoadBalancersOperations'
     - name: REST
       href: 'https://msdn.microsoft.com/library/azure/mt163651.aspx'
+    - name: Resource Manager 模板
+      href: 'https://docs.microsoft.com/azure/templates/microsoft.network/loadbalancers'
+      displayName: ARM
 - name: 资源
   items:
     - name: 定价

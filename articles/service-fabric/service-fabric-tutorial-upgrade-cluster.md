@@ -3,15 +3,15 @@ title: 在 Azure 中升级 Service Fabric 运行时
 description: 本教程介绍如何使用 PowerShell 升级 Azure 托管的 Service Fabric 群集的运行时。
 ms.topic: tutorial
 origin.date: 07/22/2019
-ms.date: 04/13/2020
+ms.date: 06/08/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 8a76124933a3fa119a4dbe4b4b45ab041192cff1
-ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
+ms.openlocfilehash: 09f9f6a984049fe1405115a9e20d5cb5492c90c6
+ms.sourcegitcommit: 0e178672632f710019eae60cea6a45ac54bb53a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82093332"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84356200"
 ---
 # <a name="tutorial-upgrade-the-runtime-of-a-service-fabric-cluster-in-azure"></a>教程：升级 Azure 中 Service Fabric 群集的运行时
 
@@ -96,7 +96,7 @@ Set-AzServiceFabricUpgradeType -ResourceGroupName SFCLUSTERTUTORIALGROUP `
 
 可以使用 PowerShell 或 Azure Service Fabric CLI (sfctl) 监视升级状态。
 
-首先，请使用在本教程第一部分中创建的 SSL 证书连接到群集。 使用 `Connect-ServiceFabricCluster` cmdlet 或 `sfctl cluster upgrade-status`。
+首先，请使用在本教程第一部分中创建的 TLS/SSL 证书连接到群集。 使用 `Connect-ServiceFabricCluster` cmdlet 或 `sfctl cluster upgrade-status`。
 
 ```powershell
 $endpoint = "<mycluster>.chinaeast.cloudapp.chinacloudapi.cn:19000"

@@ -4,16 +4,16 @@ description: 了解如何使用 .NET 客户端库 (v3) 在 Azure 密钥保管库
 author: msmbaldwin
 ms.author: v-tawe
 origin.date: 11/05/2019
-ms.date: 04/20/2020
+ms.date: 06/02/2020
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.openlocfilehash: 29b3577ea4542d724eff06833c1e852c46447bb8
-ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
+ms.openlocfilehash: fef2087634f04a2494bd268a6a65b8068b6d3cc9
+ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82588982"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84275433"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-net-sdk-v3"></a>快速入门：适用于 .NET 的 Azure Key Vault 客户端库 (SDK v3)
 
@@ -40,7 +40,7 @@ Azure 密钥保管库可帮助保护云应用程序和服务使用的加密密�
 ## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅 - [创建试用订阅](https://www.azure.cn/pricing/1rmb-trial/)。
-* [.NET Core 2.1 SDK 或更高版本](https://dotnet.microsoft.com/download/dotnet-core/2.1)。
+* [.NET Core 3.1 SDK 或更高版本](https://dotnet.microsoft.com/download/dotnet-core/3.1)。
 * [Azure CLI](/cli/install-azure-cli?view=azure-cli-latest) 或 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)
 
 本快速入门假定你正在 Windows 终端（例如 [PowerShell Core](https://docs.microsoft.com/powershell/scripting/install/installing-powershell-core-on-windows?view=powershell-6)、[Windows PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-6)）中运行 `dotnet`、[Azure CLI](/cli/install-azure-cli?view=azure-cli-latest) 和 Windows 命令。
@@ -101,12 +101,14 @@ az keyvault create --name <your-unique-keyvault-name> -g "myResourceGroup"
 
 ### <a name="create-a-service-principal"></a>创建服务主体
 
-对基于云的 .NET 应用程序进行身份验证的最简单方法是使用托管标识；有关详细信息，请参阅[使用应用服务托管标识访问 Azure Key Vault](../general/managed-identity.md)。 不过，为简单起见，本快速入门将创建一个 .NET 控制台应用程序。 在 Azure 中对桌面应用程序进行身份验证需要使用服务主体和访问控制策略。
+对基于云的 .NET 应用程序进行身份验证的最简单方法是使用托管标识；有关详细信息，请参阅[使用应用服务托管标识访问 Azure Key Vault](../general/managed-identity.md)。 
+
+不过，为了简单起见，本快速入门创建了一个需要使用服务主体和访问控制策略的 .NET 控制台应用程序。 服务主体要求使用格式为“http://&lt;my-unique-service-principle-name&gt;”的唯一名称。
 
 使用 Azure CLI [az ad sp create-for-rbac](/cli/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) 命令创建服务主体：
 
 ```azurecli
-az ad sp create-for-rbac -n "http://mySP" --sdk-auth
+az ad sp create-for-rbac -n "http://&lt;my-unique-service-principle-name&gt;" --sdk-auth
 ```
 
 此操作将返回一系列键/值对。 

@@ -9,14 +9,14 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: tutorial
 origin.date: 08/12/2019
-ms.date: 04/20/2020
+ms.date: 06/02/2020
 ms.author: v-tawe
-ms.openlocfilehash: 01eda379b0c14a56981257cf99194a12bca0b836
-ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
+ms.openlocfilehash: 003cfdd66266b137b84225ce9cede7d1d52c3cb1
+ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82588869"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84275559"
 ---
 # <a name="access-azure-key-vault-behind-a-firewall"></a>访问防火墙后面的 Azure Key Vault
 
@@ -26,7 +26,7 @@ ms.locfileid: "82588869"
 
 * 通过 Azure Active Directory (Azure AD) 进行身份验证。
 * 管理 Azure Key Vault。 这包括通过 Azure Resource Manager 创建、读取、更新、删除和设置访问策略。
-* 通过密钥保管库特定的终结点（例如 [https://yourvaultname.vault.azure.cn](https://yourvaultname.vault.azure.cn)），访问和管理密钥保管库本身存储的对象（密钥和机密）。  
+* 通过密钥保管库特定的终结点（例如 `https://yourvaultname.vault.azure.cn`），访问和管理密钥保管库本身存储的对象（密钥和机密）。  
 
 根据配置和环境，会有一些变化。
 
@@ -56,7 +56,7 @@ ms.locfileid: "82588869"
 
 ## <a name="key-vault-operations"></a>Key Vault 操作
 
-对于所有密钥保管库对象（密钥和密码）管理和加密操作，密钥保管库客户端需要访问密钥保管库终结点。 根据密钥保管库的位置，终结点 DNS 后缀会有所不同。 密钥保管库终结点的格式是 vault-name.region-specific-dns-suffix，如下表所示   。  
+对于所有密钥保管库对象（密钥和密码）管理和加密操作，密钥保管库客户端需要访问密钥保管库终结点。 根据密钥保管库的位置，终结点 DNS 后缀会有所不同。 密钥保管库终结点的格式是 vault-name.region-specific-dns-suffix，如下表所示 。  
 
 | 操作类型 | 终结点：端口 |
 | --- | --- |
@@ -64,7 +64,10 @@ ms.locfileid: "82588869"
 
 ## <a name="ip-address-ranges"></a>IP 地址范围
 
-Key Vault 服务使用其他 Azure 资源，例如 PaaS 基础结构。 因此，不可能提供 Key Vault 服务终结点在任意特定时间会有的特定 IP 地址范围。 如果防火墙仅支持 IP 地址范围，请参阅 [Microsoft Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)文档。 身份验证和标识 (Azure Active Directory) 是一项全球性服务，可能会故障转移到其他区域或移动流量，恕不另行通知。 在这种情况下，[身份验证和标识 IP 地址](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity_ip)中列出的所有 IP 范围都应添加到防火墙中。
+Key Vault 服务使用其他 Azure 资源，例如 PaaS 基础结构。 因此，不可能提供 Key Vault 服务终结点在任意特定时间会有的特定 IP 地址范围。 如果防火墙仅支持 IP 地址范围，请参阅“Microsoft Azure 数据中心 IP 范围”文档，网址为：
+* [中国](https://www.microsoft.com/en-us/download/details.aspx?id=57062)
+
+身份验证和标识 (Azure Active Directory) 是一项全球性服务，可能会故障转移到其他区域或移动流量，恕不另行通知。 在这种情况下，[身份验证和标识 IP 地址](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity_ip)中列出的所有 IP 范围都应添加到防火墙中。
 
 ## <a name="next-steps"></a>后续步骤
 

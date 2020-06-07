@@ -2,20 +2,20 @@
 title: Azure AD UserPrincipalName 填充
 description: 以下文档介绍了如何填充 UserPrincipalName 属性。
 author: billmath
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: v-junlch
-origin.date: 06/26/2018
-ms.date: 01/03/2019
-ms.topic: article
+ms.date: 06/02/2020
+ms.topic: conceptual
 ms.workload: identity
-ms.service: active-Directory
-manager: mtillman
-ms.openlocfilehash: 39cf23b6162f34e21ff47e6af5d932a69e31e9f8
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.service: active-directory
+manager: daveba
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 57d47d246085988aa7bf4130876bac02ccecaf2f
+ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "63828661"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84275601"
 ---
 # <a name="azure-ad-userprincipalname-population"></a>Azure AD UserPrincipalName 填充
 
@@ -52,7 +52,7 @@ Azure AD 使用 UPN 让用户登录。  用户可以使用的 UPN 取决于域�
 
 备用登录 ID 允许配置登录体验，用户可以使用其 UPN 以外的属性（如邮件）登录。
 
-若要在 Azure AD 中启用备用登录 ID，可以使用 Azure AD Connect，而无需执行任何附加的配置步骤。 可以直接通过向导配置备用 ID。 请参阅“同步”部分中适用于用户的 Azure AD 登录配置。在“用户主体名称”下拉列表中，选择“备用登录 ID”对应的属性。 
+若要在 Azure AD 中启用备用登录 ID，可以使用 Azure AD Connect，而无需执行任何附加的配置步骤。 可以直接通过向导配置备用 ID。 请参阅“同步”部分中适用于用户的 Azure AD 登录配置。在“用户主体名称”下拉列表中，选择“备用登录 ID”对应的属性。
 
 ![未验证的域](./media/plan-connect-userprincipalname/altloginid.png)  
 
@@ -93,7 +93,7 @@ Azure AD 使用 UPN 让用户登录。  用户可以使用的 UPN 取决于域�
 - mailNickName：&lt;未设置&gt;
 - proxyAddresses：{SMTP:us1@contoso.com}
 - mail：us2@contoso.com
-- userPrincipalName：us3@contoso.com`
+- userPrincipalName：us3@contoso.com
 
 首次将用户对象同步到 Azure AD 租户
 - 将 Azure AD MailNickName 属性设置为主要 SMTP 地址前缀。
@@ -181,4 +181,3 @@ Azure AD 租户用户对象：
 - [将本地目录与 Azure Active Directory 进行集成](whatis-hybrid-identity.md)
 - [Azure AD Connect 的自定义安装](how-to-connect-install-custom.md)
 
-<!-- Update_Description: link update -->

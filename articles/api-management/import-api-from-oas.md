@@ -3,30 +3,26 @@ title: 使用 Azure 门户导入 OpenAPI 规范
 description: 了解如何使用 API 管理导入 OpenAPI 规范。
 services: api-management
 documentationcenter: ''
-author: vladvino
 manager: cfowler
 editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 origin.date: 07/12/2019
-ms.date: 12/09/2019
-ms.author: v-yiso
-ms.openlocfilehash: 05162466748581fe07b8cca93bacd5ecc192a0dd
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+author: Johnnytechn
+ms.date: 06/04/2020
+ms.author: v-johya
+ms.openlocfilehash: 28ce39fc788dcb3366e8fffe32fab40d88d29bf6
+ms.sourcegitcommit: 5ae04a3b8e025986a3a257a6ed251b575dbf60a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74657696"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84440740"
 ---
 # <a name="import-an-openapi-specification"></a>导入 OpenAPI 规范
 
-本文介绍如何导入 http://conferenceapi.azurewebsites.cn?format=json 中的“OpenAPI 规范”后端 API。 此后端 API 由 Microsoft 提供并托管在 Azure 上。 此外，介绍如何测试 APIM API。
-
-> [!IMPORTANT]
-> 如需与 OpenAPI 导入相关的重要信息和提示，请参阅此[文档](https://blogs.msdn.microsoft.com/apimanagement/2018/04/11/important-changes-to-openapi-import-and-export/)。
+本文介绍如何导入 https://conferenceapi.chinacloudsites.cn?format=json 中的“OpenAPI 规范”后端 API。 此后端 API 由 Microsoft 提供并托管在 Azure 上。 此外，介绍如何测试 APIM API。
 
 在本文中，学习如何：
 
@@ -35,50 +31,23 @@ ms.locfileid: "74657696"
 > * 在 Azure 门户中测试 API
 > * 在开发人员门户中测试 API
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
-完成以下快速入门：[创建 Azure API 管理实例](get-started-create-service-instance.md)
+完成以下快速入门：[创建一个 Azure API 管理实例](get-started-create-service-instance.md)
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
 ## <a name="import-and-publish-a-back-end-api"></a><a name="create-api"> </a>导入和发布后端 API
 
-1. 在“API 管理”下面选择“API”。  
-2. 从“添加新的 API”列表中选择“OpenAPI 规范”   。
+1. 在 Azure 门户中导航到 API 管理服务，然后从菜单中选择“API”。
+2. 从“添加新的 API”列表中选择“OpenAPI 规范” 。
+
     ![OpenAPI 规范](./media/import-api-from-oas/oas-api.png)
-3. 输入相应的设置。 可以在创建过程中设置所有 API 值。 或者，以后可以转到“设置”选项卡来设置一部分值。  <br/> 如果按 **Tab** 键，部分（或所有）字段中会填充来自指定后端服务的信息。
-
-    ![创建 API](./media/api-management-get-started/create-api.png)
-
-
-   |          设置          |                       值                       |                                                                                                                                                                                                                                                                                                                                                                          说明                                                                                                                                                                                                                                                                                                                                                                          |
-   |---------------------------|---------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-   | **OpenAPI 规范** | http://conferenceapi.azurewebsites.cn?format=json |                                                                                                                                                                                                                                                                                                                                引用实现 API 的服务。 API 管理将请求转发到此地址。                                                                                                                                                                                                                                                                                                                                 |
-   |     **显示名称**      |               演示会议 API                |                                                                                                                                                                                                                                                                                               如果在输入服务 URL 后按 Tab 键，APIM 将根据 json 中的内容填充此字段。 <br/>此名称显示在开发人员门户中。                                                                                                                                                                                                                                                                                               |
-   |         **名称**          |               *demo-conference-api*               |                                                                                                                                                                                                                                                                                                     提供 API 的唯一名称。 <br/>如果在输入服务 URL 后按 Tab 键，APIM 将根据 json 中的内容填充此字段。                                                                                                                                                                                                                                                                                                     |
-   |      **说明**      |    提供 API 的可选说明。    |                                                                                                                                                                                                                                                                                                                         如果在输入服务 URL 后按 Tab 键，APIM 将根据 json 中的内容填充此字段。                                                                                                                                                                                                                                                                                                                          |
-   |    **API URL 后缀**     |                   会议                     |                                                                                                                                                                                                                                                                             此后缀附加到 API 管理服务的基础 URL。 API 管理通过其后缀区分 API，因此后缀对给定发布者上的每个 API 必须唯一。                                                                                                                                                                                                                                                                             |
-   |      **URL 方案**       |                      *HTTPS*                      |                                                                                                                                                                                                                                                                                                                                                   确定可用于访问 API 的协议。                                                                                                                                                                                                                                                                                                                                                   |
-   |       **产品**        |                    *不受限制*                    | 通过关联 API 与产品来发布 API。 若要根据需要将此新 API 添加到某个产品，请键入该产品的名称。 多次重复此步骤以将 API 添加到多个产品。<br/>产品是一个或多个 API 的关联。 可以包含多个 API，并通过开发人员门户将其提供给开发人员。 开发人员必须先订阅产品才能访问 API。 订阅时，他们会得到一个订阅密钥，此密钥对该产品中的任何 API 都有效。 如果创建了 APIM 实例，那么你已是管理员，因此默认情况下订阅了每个产品。<br/> 每个 API 管理实例默认附带两个示例产品：“入门”和“无限制”   。 |
-
-
-4. 选择“创建”  。
+3. 输入 API 设置。 可以在创建过程中设置这些值，也可以稍后转到“设置”选项卡来配置这些值。在[导入和发布第一个 API](import-and-publish.md#-import-and-publish-a-backend-api) 教程中对这些设置进行了说明。
+4. 选择“创建” 。
 
 > [!NOTE]
 > API 导入限制在[另一篇文章](api-management-api-import-restrictions.md)中介绍。
-
-## <a name="test-the-new-api-in-the-azure-portal"></a>在 Azure 门户中测试新的 API
-
-![测试 API 映射](./media/api-management-get-started/01-import-first-api-01.png)
-
-可直接从 Azure 门户调用操作，这样可以方便地查看和测试 API 的操作。
-
-1. 从“API”选项卡选择在上一步骤中创建的 API。 
-2. 按“测试”选项卡  。
-3. 单击“GetSpeakers”  。 该页显示查询参数的字段（在此示例中为“无”），以及标头。 其中一个标头是“Ocp-Apim-Subscription-Key”，用于提供和此 API 关联的产品订阅密钥。 将自动填充该密钥。
-4. 按“发送”。 
-
-    后端以“200 正常”和某些数据做出响应  。
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-append-apis.md)]
 
@@ -88,3 +57,4 @@ ms.locfileid: "74657696"
 
 > [!div class="nextstepaction"]
 > [转换和保护已发布的 API](transform-api.md)
+

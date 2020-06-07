@@ -7,15 +7,15 @@ author: WenJason
 manager: digimobile
 ms.author: v-jay
 origin.date: 04/16/2020
-ms.date: 05/11/2020
+ms.date: 06/08/2020
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: dee4238d7a45d5cb4d05a20c6fee0d7225d1457d
-ms.sourcegitcommit: 95efd248f5ee3701f671dbd5cfe0aec9c9959a24
+ms.openlocfilehash: eb6c41b05b56640b5f6c0e3ec1888f166466414d
+ms.sourcegitcommit: 79c99a9ea013b3c74706a1038a505f4eea2aaac4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82507729"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84439529"
 ---
 # <a name="tested-on-premises-live-streaming-encoders"></a>经过测试的本地实时传送视频流编码器
 
@@ -58,7 +58,6 @@ ms.locfileid: "82507729"
 - Telestream Wirecast（根据 TLS 1.2 要求，版本为 13.0.2 或更高）
 - Telestream Wirecast S（仅支持 RTMP）
 - Teradek Slice 756
-- TriCaster 8000
 - VMIX
 - xStream
 - [Ffmpeg](https://www.ffmpeg.org)

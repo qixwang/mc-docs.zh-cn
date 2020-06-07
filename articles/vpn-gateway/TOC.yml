@@ -261,10 +261,8 @@
   items:
     - name: VPN 网关常见问题
       href: vpn-gateway-vpn-faq.md
-    - name: 博客
-      href: 'https://azure.microsoft.com/blog/topics/networking'
     - name: 论坛
-      href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=WAVirtualMachinesVirtualNetwork'
+      href: 'https://social.msdn.microsoft.com/Forums/zh-CN/home'
     - name: 订阅和服务限制
       href: ../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fvpn-gateway%2ftoc.json
     - name: 定价
@@ -273,5 +271,3 @@
       href: 'https://www.azure.cn/pricing/calculator/'
     - name: SLA
       href: 'https://www.azure.cn/support/legal/sla'
-    - name: 视频
-      href: 'https://azure.microsoft.com/documentation/videos/index/?services=vpn-gateway'

@@ -4,17 +4,16 @@ description: 了解如何使用 Azure Site Recovery 为本地站点之间的 Hyp
 author: rockboyfor
 manager: digimobile
 ms.service: site-recovery
-ms.topic: tutorial
+ms.topic: how-to
 origin.date: 11/14/2019
-ms.date: 04/13/2020
+ms.date: 06/08/2020
 ms.author: v-yeche
-ms.custom: MVC
-ms.openlocfilehash: 4594975900f4af23b4367007aacae10dd30758de
-ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
+ms.openlocfilehash: ad24c958f8689e9980fd176e9009fe2c962cf90b
+ms.sourcegitcommit: 5ae04a3b8e025986a3a257a6ed251b575dbf60a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82093499"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84440565"
 ---
 # <a name="set-up-disaster-recovery-for-hyper-v-vms-to-a-secondary-on-premises-site"></a>为 Hyper-V VM 设置到辅助本地站点的灾难恢复
 

@@ -8,12 +8,12 @@ ms.topic: overview
 origin.date: 03/05/2020
 ms.date: 03/16/2020
 ms.author: v-lingwu
-ms.openlocfilehash: 7aa9f240fda4d99fe419097e2890ce2165f27a1b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 4d0032fc29554ffc03d66564a742901079626b19
+ms.sourcegitcommit: 5ae04a3b8e025986a3a257a6ed251b575dbf60a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80290087"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84440449"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Azure Monitor 文档中有哪些新增内容？
 本文提供新的或已经过重大更新的 Azure Monitor 文章列表。 在每个月的第一周，本文将会刷新，以包含上个月的文章更新。
@@ -92,7 +92,6 @@ ms.locfileid: "80290087"
 - [在 Azure Monitor 中创建具有动态阈值的警报](platform/alerts-dynamic-thresholds.md) - 添加了有关解释动态阈值图表的部分。
 - [Azure 中的警报和通知监视概述](platform/alerts-overview.md) - 更新了 Resource Graph 查询。
 - [Azure Monitor 中的指标警报支持的资源](platform/alerts-metric-near-real-time.md) - 对支持的指标和维度做了更新。
-- [从旧的 Log Analytics 警报 API 切换到新的 Azure 警报 API](platform/alerts-log-api-switch.md) - 添加了有关已修改的警报名称的说明。
 - [了解指标警报在 Azure Monitor 中的工作原理](platform/alerts-metric-overview.md) - 添加了支持用于大规模监视的资源类型。
 
 ### <a name="application-insights"></a>Application Insights

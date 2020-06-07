@@ -10,16 +10,16 @@ ms.service: notification-hubs
 ms.workload: mobile
 ms.topic: article
 origin.date: 01/17/2020
-ms.date: 03/02/2020
+ms.date: 06/03/2020
 ms.author: v-tawe
 ms.reviewer: jowargo
 ms.lastreviewed: 03/28/2019
-ms.openlocfilehash: 1d40ed657869ae688c7fe0461007c95dbb4a819a
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 0a0db699580935d7acacd5c7f3e60e541b7a080d
+ms.sourcegitcommit: 40d1ff17251ab1d2d607845523470f11ce087039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77501442"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84320481"
 ---
 # <a name="azure-notification-hubs-samples"></a>Azure 通知中心示例
 
@@ -36,4 +36,4 @@ ms.locfileid: "77501442"
 
 ## <a name="next-steps"></a>后续步骤
 
-请参阅目录的“教程”  部分中的教程。
+请参阅目录的“教程”部分中的教程。

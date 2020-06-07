@@ -4,14 +4,14 @@ description: 升级运行独立 Service Fabric 群集的 Azure Service Fabric �
 author: rockboyfor
 ms.topic: conceptual
 origin.date: 11/09/2018
-ms.date: 04/13/2020
+ms.date: 06/08/2020
 ms.author: v-yeche
-ms.openlocfilehash: af76e3a8ad065924659ecf54748f4e4a4b9b4f28
-ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
+ms.openlocfilehash: d4bc3aef4aa2907240019901c310674f36539908
+ms.sourcegitcommit: 0e178672632f710019eae60cea6a45ac54bb53a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82093502"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84356298"
 ---
 # <a name="upgrade-the-service-fabric-version-that-runs-on-your-cluster"></a>升级群集上运行的 Service Fabric 版本 
 
@@ -164,7 +164,7 @@ ms.locfileid: "82093502"
 ## <a name="next-steps"></a>后续步骤
 * [升级独立群集的配置](service-fabric-cluster-config-upgrade-windows-server.md)
 * 自定义部分 [Service Fabric 群集设置](service-fabric-cluster-fabric-settings.md)。
-* [扩展和缩减群集](service-fabric-cluster-scale-up-down.md)。
+* [扩展和缩减群集](service-fabric-cluster-scale-in-out.md)。
 
 <!--Image references-->
 

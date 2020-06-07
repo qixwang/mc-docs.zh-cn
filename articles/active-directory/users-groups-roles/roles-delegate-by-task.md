@@ -4,22 +4,22 @@ description: 在 Azure Active Directory 中为标识任务委托角色
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 03/11/2020
+ms.date: 06/01/2020
 ms.author: v-junlch
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 553ee38093e76423a5ae4ef65b1f0fbd1a09357c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 9a6dc77fabcbb12ca5b4320f3f485bcbee23e808
+ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79133983"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84275622"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>在 Azure Active Directory 中按管理员任务委托管理员角色
 
@@ -63,7 +63,7 @@ ms.locfileid: "79133983"
 
 任务 | 最小特权角色 | 其他角色
 ---- | --------------------- | ----------------
-读取所有配置 | 全局读取者 | 
+读取所有配置 | 全局读取者 | 混合标识管理员  |
 
 ## <a name="custom-domain-names"></a>自定义域名
 
@@ -81,7 +81,6 @@ ms.locfileid: "79133983"
 同意 Microsoft Graph 的应用程序权限 | 特权角色管理员 | 
 同意应用程序访问自己的数据 | 默认用户角色（[请参阅文档](/active-directory/fundamentals/users-default-permissions)） | 
 创建企业应用程序 | 云应用程序管理员 | 应用程序管理员
-管理应用程序代理 | 应用程序管理员 | 
 管理用户设置 | 全局管理员角色 | 
 读取组或应用的访问评审 | 安全读取者 | 安全管理员、用户管理员
 读取所有配置 | 默认用户角色（[请参阅文档](/active-directory/fundamentals/users-default-permissions)） | 
@@ -189,6 +188,26 @@ ms.locfileid: "79133983"
 配置身份验证方法 | 全局管理员角色 | 
 读取所有配置 | 全局读取者 | 
 
+## <a name="security---conditional-access"></a>安全性 - 条件访问
+
+任务 | 最小特权角色 | 其他角色
+---- | --------------------- | ----------------
+配置 MFA 受信任的 IP | 条件访问管理员 | 
+创建自定义控件 | 条件访问管理员 | 安全管理员
+创建命名位置 | 条件访问管理员 | 安全管理员
+创建策略 | 条件访问管理员 | 安全管理员
+创建使用条款 | 条件访问管理员 | 安全管理员
+创建 VPN 连接证书 | 条件访问管理员 | 安全管理员
+删除经典策略 | 条件访问管理员 | 安全管理员
+删除使用条款 | 条件访问管理员 | 安全管理员
+删除 VPN 连接证书 | 条件访问管理员 | 安全管理员
+禁用经典策略 | 条件访问管理员 | 安全管理员
+管理自定义控件 | 条件访问管理员 | 安全管理员
+管理命名位置 | 条件访问管理员 | 安全管理员
+管理使用条款 | 条件访问管理员 | 安全管理员
+读取所有配置 | 安全读取者 | 安全管理员
+读取命名位置 | 安全读取者 | 条件访问管理员、安全管理员
+
 ## <a name="security---identity-security-score"></a>安全性 - 标识安全分数
 
 任务 | 最小特权角色 | 其他角色 | 
@@ -232,4 +251,3 @@ ms.locfileid: "79133983"
 * [如何分配或删除 Azure AD 管理员角色](directory-manage-roles-portal.md)
 * [Azure AD 管理员角色参考](directory-assign-admin-roles.md)
 
-<!-- Update_Description: wording update -->

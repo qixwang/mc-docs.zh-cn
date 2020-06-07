@@ -16,12 +16,12 @@ ms.workload: na
 origin.date: 05/06/2019
 ms.date: 03/02/2020
 ms.author: v-lingwu
-ms.openlocfilehash: fbfab1f215cd004ff2baebb771ea3b718625678b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 9971b7e25074e5922245dc8b364ca4ccfd319171
+ms.sourcegitcommit: 79c99a9ea013b3c74706a1038a505f4eea2aaac4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80290085"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84439483"
 ---
 # <a name="azure-data-security-and-encryption-best-practices"></a>Azure 数据安全与加密最佳做法
 本文介绍了针对数据安全和加密的最佳做法。
@@ -75,7 +75,7 @@ Azure Key Vault 旨在支持应用程序密钥和机密。 Key Vault 不应用�
 因为绝大多数的攻击以最终用户为目标，所以终结点将成为主要攻击点之一。 入侵终结点的攻击者可以使用用户的凭据来访问组织的数据。 大多数终结点攻击都利用了用户是其本地工作站的管理员这一事实。
 
 **最佳做法**：使用安全管理工作站来保护敏感帐户、任务和数据。   
-详细信息：使用[特权访问工作站](https://technet.microsoft.com/library/mt634654.aspx)来减小工作站的受攻击面。 这些安全管理工作站可帮助减轻其中一些攻击，以确保数据更为安全。
+**详细信息**：使用[特权访问工作站](https://technet.microsoft.com/library/mt634654.aspx)来减小工作站的受攻击面。 这些安全管理工作站可帮助减轻其中一些攻击，以确保数据更为安全。
 
 **最佳做法**：确保终结点受保护。   
 **详细信息**：在用于使用数据的所有设备上强制实施安全策略（无论数据位于云中还是本地）。
@@ -85,7 +85,7 @@ Azure Key Vault 旨在支持应用程序密钥和机密。 Key Vault 不应用�
 [静态数据加密](https://cloudblogs.microsoft.com/microsoftsecure/2015/09/10/cloud-security-controls-series-encrypting-data-at-rest/)是实现数据隐私性、符合性和数据主权的必要措施。
 
 **最佳做法**：使用磁盘加密来帮助保护数据。   
-详细信息：使用 [Azure 磁盘加密](/security/azure-security-disk-encryption-overview)。 它使 IT 管理员能够加密 Windows 和 Linux IaaS VM 磁盘。 磁盘加密利用符合行业标准的 Windows BitLocker 功能和 Linux dm-crypt 功能为 OS 和数据磁盘提供卷加密。
+**详细信息**：使用 [Azure 磁盘加密](/security/azure-security-disk-encryption-overview)。 它使 IT 管理员能够加密 Windows 和 Linux IaaS VM 磁盘。 磁盘加密利用符合行业标准的 Windows BitLocker 功能和 Linux dm-crypt 功能为 OS 和数据磁盘提供卷加密。
 
 Azure 存储和 Azure SQL 数据库默认对静态数据进行加密，并且许多服务都将加密作为选项提供。 可以使用 Azure Key Vault 来持续控制用于访问和加密数据的密钥。
 
@@ -103,16 +103,16 @@ Azure 存储和 Azure SQL 数据库默认对静态数据进行加密，并且许
 以下是特定于使用 Azure VPN 网关、SSL/TLS 和 HTTPS 的最佳做法。
 
 **最佳做法**：从位于本地的多个工作站安全访问 Azure 虚拟网络。   
-详细信息：使用[站点到站点 VPN](/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal)。
+**详细信息**：使用[站点到站点 VPN](/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal)。
 
 **最佳做法**：从位于本地的单个工作站安全访问 Azure 虚拟网络。   
-详细信息：使用[点到站点 VPN](/vpn-gateway/vpn-gateway-point-to-site-create)。
+**详细信息**：使用[点到站点 VPN](/vpn-gateway/vpn-gateway-point-to-site-create)。
 
 **最佳做法**：通过专用高速 WAN 链路移动大型数据集。   
-详细信息：使用 [ExpressRoute](/expressroute/expressroute-introduction)。 如果选择使用 ExpressRoute，则还可以使用 [SSL/TLS](https://support.microsoft.com/kb/257591) 或其他协议在应用程序级别加密数据，以提供额外的保护。
+**详细信息**：使用 [ExpressRoute](/expressroute/expressroute-introduction)。 如果选择使用 ExpressRoute，则还可以使用 [SSL/TLS](https://support.microsoft.com/kb/257591) 或其他协议在应用程序级别加密数据，以提供额外的保护。
 
 **最佳做法**：通过 Azure 门户与 Azure 存储交互。   
-**详细信息**：所有事务都通过 HTTPS 进行。 也可通过 HTTPS 使用[存储 REST API](https://msdn.microsoft.com/library/azure/dd179355.aspx) 与 [Azure 存储](https://azure.microsoft.com/services/storage/)进行交互。
+**详细信息**：所有事务都通过 HTTPS 进行。 也可通过 HTTPS 使用[存储 REST API](https://msdn.microsoft.com/library/azure/dd179355.aspx) 与 [Azure 存储](https://www.azure.cn/pricing/details/storage/)进行交互。
 
 无法保护传输中数据的组织更容易遭受[中间人攻击](https://technet.microsoft.com/library/gg195821.aspx)、[窃听](https://technet.microsoft.com/library/gg195641.aspx)和会话劫持。 这些攻击可能是获取机密数据访问权限的第一步。
 
@@ -120,7 +120,7 @@ Azure 存储和 Azure SQL 数据库默认对静态数据进行加密，并且许
 
 你希望控制并帮助保护在公司外部共享的电子邮件、文档和敏感数据。 
 
-分类始终是可标识的，而无论数据的存储位置或数据的共享人员。 标签包括视觉标记，如页眉、页脚或水印。 元数据以明文形式添加到文件和电子邮件标题中。 明文形式确保其他服务（如防止数据丢失的解决方案）可以识别分类并采取相应的操作。
+分类始终是可标识的，不管数据存储在什么位置，也不管数据是与谁共享的。 标签包括视觉标记，如页眉、页脚或水印。 元数据以明文形式添加到文件和电子邮件标题中。 明文形式确保其他服务（如防止数据丢失的解决方案）可以识别分类并采取相应的操作。
 
 
 [数据分类](https://download.microsoft.com/download/0/A/3/0A3BE969-85C5-4DD2-83B6-366AA71D1FE3/Data-Classification-for-Cloud-Readiness.pdf)和文件保护能力不佳的组织可能更容易遭到数据泄漏或数据滥用。 使用适当的文件保护，可以分析数据流，以深入了解业务、检测风险行为并采取纠正措施、跟踪对文档的访问等等。

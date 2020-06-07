@@ -9,59 +9,16 @@ ms.service: key-vault
 ms.subservice: certificates
 ms.topic: overview
 origin.date: 09/04/2019
-ms.date: 04/20/2019
+ms.date: 06/02/2020
 ms.author: v-tawe
-ms.openlocfilehash: e41151a59e9ccc783cc77b36351d2ab0b5e961bb
-ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
+ms.openlocfilehash: 3cd64d326d385eed55099d3b7c7a1e90f048998c
+ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82588896"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84275555"
 ---
 # <a name="about-azure-key-vault-certificates"></a>关于 Azure Key Vault 证书
-
-Microsoft Azure 应用程序和用户可以通过 Azure Key Vault 来存储和使用证书（基于密钥和机密而构建），并添加自动续订功能。
-
-有关 Key Vault 的更多常规信息，请参阅[什么是 Azure Key Vault？](/key-vault/key-vault-overview)
-
-## <a name="azure-key-vault"></a>Azure Key Vault
-
-以下部分提供在实现 Key Vault 服务中可以用到的常规信息。
-
-### <a name="supporting-standards"></a>支持标准
-
-JavaScript 对象表示法 (JSON) 与 JavaScript 对象的签名和加密 (JOSE) 规范是重要的背景信息。  
-
--   [JSON Web 密钥 (JWK)](https://tools.ietf.org/html/draft-ietf-jose-json-web-key-41)  
--   [JSON Web 加密 (JWE)](https://tools.ietf.org/html/draft-ietf-jose-json-web-encryption-40)  
--   [JSON Web 算法 (JWA)](https://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms-40)  
--   [JSON Web 签名 (JWS)](https://tools.ietf.org/html/draft-ietf-jose-json-web-signature-41)  
-
-### <a name="objects-identifiers-and-versioning"></a>对象、标识符和版本控制
-
-对于存储在 Key Vault 中的对象，在创建了某一对象的新实例后，这些对象就会受到版本控制。 每个版本都分配有唯一标识符和 URL。 首次创建一个对象时，该对象被赋予了一个唯一的版本标识符，并标记为当前版本的对象。 创建与对象同名的新实例会向新对象赋予一个唯一的版本标识符，并使其成为当前版本。  
-
-Key Vault 中的对象可以使用当前标识符或特定于版本的标识符进行寻址。 例如，给定一个名称为 `MasterKey` 的密钥，使用当前标识符执行操作会导致系统使用最新的可用版本。 使用特定于版本的标识符执行操作会导致系统使用该特定版本的对象。  
-
-Key Vault 中的对象通过 URL 唯一标识。 不管地理位置如何，系统中都不存在两个具有相同 URL 的对象。 对象的完整 URL 称为对象标识符。 URL 由标识 Key Vault 的前缀、对象类型、用户提供的对象名称和对象版本组成。 对象名称不区分大小写且不可变。 不包括对象版本的标识符称为基本标识符。  
-
-有关详细信息，请参阅[身份验证、请求和响应](../general/authentication-requests-and-responses.md)
-
-对象标识符具有以下常规格式：  
-
-`https://{keyvault-name}.vault.azure.cn/{object-type}/{object-name}/{object-version}`  
-
-其中：  
-
-|||  
-|-|-|  
-|`keyvault-name`|Azure Key Vault 服务中的密钥保管库名称。<br /><br /> Key Vault 名称由用户选择，并且全局唯一。<br /><br /> Key Vault 的名称必须是 3-24 个字符，且仅包含 0-9、a-z、A-Z 和 -。|  
-|`object-type`|对象的类型，要么为“密钥”，要么为“机密”。|  
-|`object-name`|`object-name` 是用户提供名称，在 Key Vault 中必须保持唯一。 该名称必须是 1-127 个字符，且仅包含 0-9、a-z、A-Z 和 - 的字符串。|  
-|`object-version`|`object-version` 是系统生成的 32 个字符的字符串标识符，可以选择用来对某个对象的唯一版本进行寻址。|  
-
-
-## <a name="key-vault-certificates"></a>Key Vault 证书
 
 密钥保管库证书支持适用于 x509 证书管理，它提供以下行为：  
 
@@ -74,7 +31,7 @@ Key Vault 中的对象通过 URL 唯一标识。 不管地理位置如何，系�
 >[!Note]
 >也允许使用非合作伙伴提供者/颁发机构，但将不支持自动续订功能。
 
-### <a name="composition-of-a-certificate"></a>证书组合
+## <a name="composition-of-a-certificate"></a>证书组合
 
 创建 Key Vault 证书后，还可以创建具有相同名称的可寻址密钥和机密。 Key Vault 密钥允许密钥操作，Key Vault 机密允许以机密的形式检索证书值。 Key Vault 证书还包含公共 x509 证书元数据。  
 
@@ -82,25 +39,25 @@ Key Vault 中的对象通过 URL 唯一标识。 不管地理位置如何，系�
  
 ![证书是复杂的对象](../media/azure-key-vault.png)
 
-### <a name="exportable-or-non-exportable-key"></a>可导出或不可导出密钥
+## <a name="exportable-or-non-exportable-key"></a>可导出或不可导出密钥
 
 创建 Key Vault 证书后，可以使用 PFX 或 PEM 格式的私钥从可寻址机密中检索该证书。 用于创建证书的策略必须指示密钥可导出。 如果策略指示密钥不可导出，则在作为机密检索私钥时，该私钥不包括在值中。  
 
-可寻址密钥与不可导出的 KV 证书的相关性变得更高。 可寻址 KV 密钥的操作是从用于创建 KV 证书的 KV 证书策略的“密钥使用情况”字段映射的  。  
+可寻址密钥与不可导出的 KV 证书的相关性变得更高。 可寻址 KV 密钥的操作是从用于创建 KV 证书的 KV 证书策略的“密钥使用情况”字段映射的。  
 
 <!-- Two types of key are supported – *RSA* or *RSA HSM* with certificates. Exportable is only allowed with RSA, not supported by RSA HSM.   -->
 
-### <a name="certificate-attributes-and-tags"></a>证书属性和标记
+## <a name="certificate-attributes-and-tags"></a>证书属性和标记
 
 除了证书元数据、可寻址密钥和可寻址机密外，Key Vault 证书还包含属性和标记。  
 
-#### <a name="attributes"></a>属性
+### <a name="attributes"></a>属性
 
 证书属性将镜像到创建 KV 证书时创建的可寻址密钥和机密的属性。  
 
 Key Vault 证书具有以下属性：  
 
--   enabled：布尔型，可选，默认值为 true   。 可以指定，以指示证书数据是否可以作为机密进行检索，或者可以作为密钥进行操作。 还可与 nbf 和 exp 结合使用，如果在 nbf 和 exp 之间出现操作，只有在 enabled 设置为 true 时，才允许该操作     。 nbf  和 exp  时段外的操作会自动禁止。  
+-   enabled：布尔型，可选，默认值为 true。 可以指定，以指示证书数据是否可以作为机密进行检索，或者可以作为密钥进行操作。 还可与 nbf 和 exp 结合使用，如果在 nbf 和 exp 之间出现操作，只有在 enabled 设置为 true 时，才允许该操作   。 nbf 和 exp 时段外的操作会自动禁止。  
 
 在响应中还包括以下其他只读属性：
 
@@ -112,14 +69,14 @@ Key Vault 证书具有以下属性：
 > [!Note] 
 > 如果 Key Vault 证书过期，则它是可寻址密钥，机密变得无法操作。  
 
-#### <a name="tags"></a>Tags
+### <a name="tags"></a>Tags
 
  客户端指定的键值对字典，类似于密钥和机密中的标记。  
 
  > [!Note]
-> 如果调用方具有该对象类型（密钥、机密或证书）的列出或获取权限，则调用方可读取标记   。
+> 如果调用方具有该对象类型（密钥、机密或证书）的列出或获取权限，则调用方可读取标记 。
 
-### <a name="certificate-policy"></a>证书策略
+## <a name="certificate-policy"></a>证书策略
 
 证书策略包含有关如何创建和管理 Key Vault 证书生命周期的信息。 具有私钥的证书导入到密钥保管库时，将通过阅读 x509 证书创建一个默认策略。  
 
@@ -134,16 +91,16 @@ Key Vault 证书具有以下属性：
 
      - 触发器：通过距离到期的天数或生存期范围百分比指定  
 
-     - 操作：指定操作类型 - emailContacts 或 autoRenew    
+     - 操作：指定操作类型 - emailContacts 或 autoRenew   
 
 -   颁发者：有关用于颁发 x509 证书的证书颁发者的参数。  
 -   策略属性：包含与策略关联的属性  
 
-#### <a name="x509-to-key-vault-usage-mapping"></a>X509 到 Key Vault 使用情况的映射
+### <a name="x509-to-key-vault-usage-mapping"></a>X509 到 Key Vault 使用情况的映射
 
 下表表示 x509 密钥使用策略映射到在创建 Key Vault 证书过程中创建的密钥的有效密钥操作。
 
-|X.509 密钥使用情况标记 |Key Vault 密钥的操作 |默认行为 |
+|X.509 密钥使用情况标记|Key Vault 密钥的操作|默认行为|
 |----------|--------|--------|
 |DataEncipherment|加密、解密| 空值 |
 |DecipherOnly|解密| 空值  |
@@ -154,13 +111,13 @@ Key Vault 证书具有以下属性：
 |NonRepudiation|签名、验证| 空值 |
 |crlsign|签名、验证| 空值 |
 
-### <a name="certificate-issuer"></a>证书颁发者
+## <a name="certificate-issuer"></a>证书颁发者
 
 Key Vault 证书对象包含与所选证书颁发者提供者进行通信的配置以订购 x509 证书。  
 
 -   Key Vault 合作伙伴，具有 TLS/SSL 证书的以下证书颁发者提供者
 
-|提供者名称 |**位置**|
+|提供者名称|**位置**|
 |----------|--------|
 |DigiCert|公有云和 Azure 政府中的所有密钥保管库服务位置均支持|
 |GlobalSign|公有云和 Azure 政府中的所有密钥保管库服务位置均支持|
@@ -181,7 +138,7 @@ Key Vault 允许使用其他颁发者提供者的配置创建多个颁发者对�
 
 颁发者对象在保管库中创建，并且仅可用于同一个保管库中的 KV 证书。  
 
-### <a name="certificate-contacts"></a>证书联系人
+## <a name="certificate-contacts"></a>证书联系人
 
 证书联系人包含联系人信息以发送由证书生存期事件触发的通知。 密钥保管库中的所有证书共享联系人信息。 如果保管库中的任何证书发生事件，所有指定联系人都会收到通知。  
 
@@ -192,7 +149,7 @@ Key Vault 允许使用其他颁发者提供者的配置创建多个颁发者对�
 
   如果你将证书策略设置为手动续订（仅限电子邮件），系统会在你需要续订证书时发送通知。  
 
-### <a name="certificate-access-control"></a>证书访问控制
+## <a name="certificate-access-control"></a>证书访问控制
 
  证书的访问控制由 Key Vault 托管，并且由包含这些证书的 Key Vault 提供。 在同一 Key Vault 中，证书的访问控制策略不同于密钥和机密的访问控制策略。 用户可以创建一个或多个保管库来保存证书，以维护方案相应的证书分段和管理。  
 
@@ -220,7 +177,11 @@ Key Vault 允许使用其他颁发者提供者的配置创建多个颁发者对�
 
 有关详细信息，请参阅 [Key Vault REST API 中的证书操作参考](https://docs.microsoft.com/rest/api/keyvault)。 有关建立权限的信息，请参阅[保管库 - 创建或更新](https://docs.microsoft.com/rest/api/keyvault/vaults/createorupdate)和[保管库 - 更新访问策略](https://docs.microsoft.com/rest/api/keyvault/vaults/updateaccesspolicy)。
 
-## <a name="see-also"></a>另请参阅
+## <a name="next-steps"></a>后续步骤
 
+- [关于 Key Vault](../general/overview.md)
+- [关于键、密钥和证书](../general/about-keys-secrets-certificates.md)
+- [关于密钥](../keys/about-keys.md)
+- [关于机密](../secrets/about-secrets.md)
 - [身份验证、请求和响应](../general/authentication-requests-and-responses.md)
 - [Key Vault 开发人员指南](../general/developers-guide.md)

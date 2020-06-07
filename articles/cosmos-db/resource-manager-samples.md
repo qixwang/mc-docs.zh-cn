@@ -7,15 +7,15 @@ ms.topic: conceptual
 origin.date: 04/14/2020
 ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: 3241d1d83648acc3a3a4914b2f51e890a9be4ad8
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.openlocfilehash: 71eca39ab030a21bc74e90cabe4f64382f2cf4e6
+ms.sourcegitcommit: 8a2fbc0eae8d8f7297f5334f508ff868b4077f32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82134578"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84321001"
 ---
 <!--Verify successfully-->
-# <a name="azure-resource-manager-templates-for-azure-cosmos-db"></a>Azure Cosmos DB 的 Azure 资源管理器模板
+# <a name="azure-resource-manager-templates-for-azure-cosmos-db"></a>用于 Azure Cosmos DB 的 Azure 资源管理器模板
 
 下表包含 Azure Cosmos DB 的 Azure 资源管理器模板链接：
 
@@ -32,7 +32,7 @@ ms.locfileid: "82134578"
 
 |**模板**|**说明**|
 |---| ---|
-|[创建 Azure Cosmos 帐户、数据库、集合](manage-mongodb-with-resource-manager.md#create-resource) | 此模板使用 Azure Cosmos DB API for MongoDB 在两个区域创建一个启用了多主数据库的帐户。 Azure Cosmos 帐户会有两个共享数据库级吞吐量的容器。 |
+|[创建 Azure Cosmos 帐户、数据库、集合](manage-mongodb-with-resource-manager.md) | 此模板使用 Azure Cosmos DB API for MongoDB 在两个区域创建一个启用了多主数据库的帐户。 Azure Cosmos 帐户会有两个共享数据库级吞吐量的容器。 |
 
 ## <a name="cassandra-api"></a>Cassandra API
 

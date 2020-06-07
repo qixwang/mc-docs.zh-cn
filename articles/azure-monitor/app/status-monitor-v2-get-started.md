@@ -2,17 +2,16 @@
 title: Azure Application Insights 代理 - 入门 | Microsoft Docs
 description: Application Insights 代理的快速入门指南。 无需重新部署网站即可监视网站性能。 使用托管在本地、VM 或 Azure 上的 ASP.NET Web 应用。
 ms.topic: conceptual
-author: lingliw
-manager: digimobile
+author: Johnnytechn
 origin.date: 08/22/2019
-ms.date: 04/23/2019
-ms.author: v-lingwu
-ms.openlocfilehash: 0426f2e4037fabbeb96ca8fccdd65cde5cc198df
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+ms.date: 05/28/2020
+ms.author: v-johya
+ms.openlocfilehash: b730d685fcd11d68ac272f99aa04632654188a21
+ms.sourcegitcommit: 5ae04a3b8e025986a3a257a6ed251b575dbf60a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84199340"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84440723"
 ---
 # <a name="get-started-with-azure-monitor-application-insights-agent-for-on-premises-servers"></a>本地服务器的 Azure Monitor Application Insights 代理入门
 
@@ -22,7 +21,7 @@ ms.locfileid: "84199340"
 
 有关这些命令的说明、自定义说明以及有关故障排除的信息，请参阅[详细说明](status-monitor-v2-detailed-instructions.md)。
 
-如果没有 Azure 订阅，可在开始前创建一个 [试用帐户](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth) 。
+如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 
 ## <a name="download-and-install-via-powershell-gallery"></a>通过 PowerShell 库下载并安装
 
@@ -88,3 +87,4 @@ Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-xxxx-xxxx
 
 - 有关此处找到的命令的说明，请查看[详细说明](status-monitor-v2-detailed-instructions.md)。
 - 使用我们的指南对 Application Insights 代理进行[故障排除](status-monitor-v2-troubleshoot.md)。
+

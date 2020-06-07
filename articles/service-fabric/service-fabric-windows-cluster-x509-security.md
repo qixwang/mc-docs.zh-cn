@@ -4,14 +4,14 @@ description: 保护 Azure Service Fabric 独立群集或本地群集内部的通
 author: rockboyfor
 ms.topic: conceptual
 origin.date: 10/15/2017
-ms.date: 02/24/2020
+ms.date: 06/08/2020
 ms.author: v-yeche
-ms.openlocfilehash: 4011a9c7d84906716b83b28c462f8583cd9f8657
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 6f665f903c404bd5e80df57239bdf5f36e3318a7
+ms.sourcegitcommit: 0e178672632f710019eae60cea6a45ac54bb53a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540723"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84356230"
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-x509-certificates"></a>使用 X.509 证书在 Windows 上保护独立群集
 本文介绍如何保护独立 Windows 群集的不同节点之间的通信。 此外，还介绍如何使用 X.509 证书针对连接到此群集的客户端进行身份验证。 身份验证可确保只有经过授权的用户才能访问该群集和部署的应用程序，以及执行管理任务。 创建群集时，应在该群集上启用证书安全性。  
@@ -107,7 +107,7 @@ ms.locfileid: "77540723"
 },
 ```
 
-该部分描述保护独立 Windows 群集所需的证书。 如果指定群集证书，请将 ClusterCredentialType 的值设置为 _X509_。 如果为外部连接指定服务器证书，请将 ServerCredentialType 设置为 _X509_。 虽然并非强制，但为了妥善保护群集，我们建议同时拥有这两个证书。 如果将这些值设置为 *X509*，还必须指定相应的证书，否则 Service Fabric 将引发异常。 在某些情况下，仅需要指定 _ClientCertificateThumbprints_ 或 _ReverseProxyCertificate_。 在这些情况下，不需要将 _ClusterCredentialType_ 或 _ServerCredentialType_ 设置为 _X509_。
+该部分描述保护独立 Windows 群集所需的证书。 如果指定群集证书，请将 ClusterCredentialType 的值设置为 _X509_。 如果为外部连接指定服务器证书，请将 ServerCredentialType 的值设置为 _X509_。 虽然并非强制，但为了妥善保护群集，我们建议同时拥有这两个证书。 如果将这些值设置为 *X509*，还必须指定相应的证书，否则 Service Fabric 将引发异常。 在某些情况下，仅需要指定 _ClientCertificateThumbprints_ 或 _ReverseProxyCertificate_。 在这些情况下，不需要将 _ClusterCredentialType_ 或 _ServerCredentialType_ 设置为 _X509_。
 
 > [!NOTE]
 > [指纹](https://en.wikipedia.org/wiki/Public_key_fingerprint)是证书的主要标识。 若要查找创建的证书的指纹，请阅读[检索证书的指纹](https://msdn.microsoft.com/library/ms734695.aspx)。
@@ -256,11 +256,11 @@ ms.locfileid: "77540723"
 创建能够得到适当保护的自签名证书的一种方法是，使用位于 C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup\Secure 目录的 Service Fabric SDK 文件夹中的 CertSetup.ps1 脚本。 编辑此文件以更改证书的默认名称。 （查找值 CN=ServiceFabricDevClusterCert。）以 `.\CertSetup.ps1 -Install` 的方式运行此脚本。
 
 现在，请将证书导出到使用受保护密码的 .pfx 文件。 首先获取证书的指纹。 
-1. 从“开始”  菜单，运行“管理计算机证书”  。 
+1. 从“开始”菜单，运行“管理计算机证书”。 
 
 2. 转到 **Local Computer\Personal** 文件夹，找到创建的证书。 
 
-3. 双击证书将其打开，选择“详细信息”选项卡，然后向下滚动到“指纹”字段   。 
+3. 双击证书将其打开，选择“详细信息”选项卡，然后向下滚动到“指纹”字段 。 
 
 4. 删除空格，将指纹值复制到以下 PowerShell 命令中。 
 
@@ -292,7 +292,7 @@ ms.locfileid: "77540723"
     $PfxFilePath ="C:\mypfx.pfx"
     Import-PfxCertificate -Exportable -CertStoreLocation Cert:\LocalMachine\My -FilePath $PfxFilePath -Password (ConvertTo-SecureString -String $pswd -AsPlainText -Force)
     ```
-3. 现在通过运行以下脚本设置对此证书的访问控制，以便在网络服务帐户下运行的 Service Fabric 进程可以使用它。 为服务帐户提供证书指纹以及**网络服务**。 可检查证书上的 ACL 是否正确，方法是在“开始”   > “管理计算机证书”  中打开证书，并查看“所有任务”   > “管理私钥”  。
+3. 现在通过运行以下脚本设置对此证书的访问控制，以便在网络服务帐户下运行的 Service Fabric 进程可以使用它。 为服务帐户提供证书指纹以及**网络服务**。 可检查证书上的 ACL 是否正确，方法是在“开始” > “管理计算机证书”中打开证书，并查看“所有任务” > “管理私钥”。
 
     ```powershell
     param
@@ -309,7 +309,7 @@ ms.locfileid: "77540723"
     $cert = Get-ChildItem -Path cert:\LocalMachine\My | Where-Object -FilterScript { $PSItem.ThumbPrint -eq $pfxThumbPrint; }
 
     # Specify the user, the permissions, and the permission type
-    $permission = "$($serviceAccount)","FullControl","Allow"
+    $permission = "$($serviceAccount)","FullControl","Allow" # "NT AUTHORITY\NetworkService" is the service account
     $accessRule = New-Object -TypeName System.Security.AccessControl.FileSystemAccessRule -ArgumentList $permission
 
     # Location of the machine-related keys

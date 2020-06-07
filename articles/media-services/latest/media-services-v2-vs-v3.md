@@ -16,12 +16,12 @@ ms.workload: media
 origin.date: 03/09/2020
 ms.date: 04/06/2020
 ms.author: v-jay
-ms.openlocfilehash: 06e68be2603a27d2613039af774144a89f11c93b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 23fc373df63f6df2e8d31dc97ee87f84ae7967d2
+ms.sourcegitcommit: 1f890a4085e184cc678485d05f08dd6de8dc973f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80625847"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84438929"
 ---
 # <a name="media-services-v2-vs-v3"></a>媒体服务 v2 与 v3
 
@@ -73,7 +73,7 @@ ms.locfileid: "80625847"
 
 与 v2 API 相比，v3 API 存在以下功能差距。 我们正在弥补这些差距。
 
-* 不能通过 v3 访问[媒体分析处理器](../previous/media-services-analytics-overview.md)。<br/>想要从媒体索引器 1 或 2 预览版迁移的客户可以立即使用 v3 API 中的 AudioAnalyzer 预设。  此新预设包含的功能比旧版媒体索引器 1 或 2 更多。 
+* 不能通过 v3 访问[媒体分析处理器](../previous/media-services-analytics-overview.md)。
 * [v2 API 中的许多 Media Encoder Standard 高级功能](../previous/media-services-advanced-encoding-with-mes.md)目前在 v3 中不可用，例如：
   
     * 资产拼接

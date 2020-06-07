@@ -2,18 +2,18 @@
 title: 安装并配置 Windows Azure 诊断扩展 (WAD)
 description: 了解如何在 Azure 存储帐户中收集 Azure 诊断数据，以便可以使用几种可用工具之一查看这些数据。
 services: azure-monitor
-author: lingliw
+author: Johnnytechn
 ms.subservice: diagnostic-extension
 ms.topic: conceptual
 origin.date: 02/17/2020
-ms.date: 3/2/2020
-ms.author: v-lingwu
-ms.openlocfilehash: 293fbe7dff1281ed07b970832c91d8ffa8b9f68d
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/28/2020
+ms.author: v-johya
+ms.openlocfilehash: 5eb763cf5ebe56a41fffeb1fdbc39b78641e9d07
+ms.sourcegitcommit: 5ae04a3b8e025986a3a257a6ed251b575dbf60a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79453255"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84440404"
 ---
 # <a name="install-and-configure-windows-azure-diagnostics-extension-wad"></a>安装并配置 Windows Azure 诊断扩展 (WAD)
 Azure 诊断扩展是 Azure Monitor 中的一个代理，可从 Azure 虚拟机的来宾操作系统和工作负荷及其他计算资源收集监视数据。 本文详细介绍如何安装并配置 Windows 诊断扩展，以及如何将数据存储在 Azure 存储帐户中。
@@ -27,14 +27,14 @@ Azure 诊断扩展是 Azure Monitor 中的一个代理，可从 Azure 虚拟机�
 > 有些诊断扩展设置无法使用 Azure 门户进行配置，包括将数据发送到 Azure 事件中心的设置。 对于这些设置，必须使用其他配置方法之一。
 
 1. 在 Azure 门户中打开虚拟机的菜单。
-2. 在 VM 菜单的“监视”部分单击“诊断设置”。  
-3. 如果尚未启用诊断扩展，请单击“启用来宾级监视”。 
-4. 随后将为 VM 创建一个新的 Azure 存储帐户，其名称基于 VM 资源组的名称。 可以选择“代理”选项卡将 VM 附加到另一个存储帐户。 
+2. 在 VM 菜单的“监视”部分单击“诊断设置”。 
+3. 如果尚未启用诊断扩展，请单击“启用来宾级监视”。
+4. 随后将为 VM 创建一个新的 Azure 存储帐户，其名称基于 VM 资源组的名称。 可以选择“代理”选项卡将 VM 附加到另一个存储帐户。
 
-![诊断设置](media/diagnostics-extension-windows-install/diagnostic-settings.png)
+![诊断设置](./media/diagnostics-extension-windows-install/diagnostic-settings.png)
 
 
-启用诊断扩展后，可以修改默认配置。 下表描述了可在不同选项卡中修改的选项。 某些选项提供“自定义”命令用于指定更详细的配置；有关不同设置的详细信息，请参阅 [Windows 诊断扩展架构](diagnostics-extension-schema-windows.md)。 
+启用诊断扩展后，可以修改默认配置。 下表描述了可在不同选项卡中修改的选项。 某些选项提供“自定义”命令用于指定更详细的配置；有关不同设置的详细信息，请参阅 [Windows 诊断扩展架构](diagnostics-extension-schema-windows.md)。
 
 | 选项卡 | 说明 |
 |:---|:---|
@@ -53,7 +53,7 @@ Azure 诊断扩展是 Azure Monitor 中的一个代理，可从 Azure 虚拟机�
 请参阅[将监视和诊断与 Windows VM 和 Azure 资源管理器模板配合使用](../../virtual-machines/extensions/diagnostics-template.md)，了解如何使用 Azure 资源管理器模板部署诊断扩展。 
 
 ## <a name="azure-cli-deployment"></a>Azure CLI 部署
-可以在 Azure CLI 中使用 [az vm extension set](https://docs.microsoft.com/cli/azure/vm/extension?view=azure-cli-latest#az-vm-extension-set) 将 Azure 诊断扩展部署到现有的虚拟机，如以下示例所示。 
+可以在 Azure CLI 中使用 [az vm extension set](/cli/vm/extension?view=azure-cli-latest#az-vm-extension-set) 将 Azure 诊断扩展部署到现有的虚拟机，如以下示例所示。 
 
 ```azurecli
 az vm extension set \
@@ -71,7 +71,7 @@ az vm extension set \
 {
     "storageAccountName": "mystorageaccount",
     "storageAccountKey": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-    "storageAccountEndPoint": "https://mystorageaccount.blob.core.windows.net"
+    "storageAccountEndPoint": "https://mystorageaccount.blob.core.chinacloudapi.cn"
 }
 ```
 公共设置在配置架构的 [Public 元素](diagnostics-extension-schema-windows.md#publicconfig-element)中定义。 下面是公共设置文件的极简示例，该示例启用诊断基础结构日志、单个性能计数器和单个事件日志的收集。 有关公共设置的完整详细信息，请参阅[示例配置](diagnostics-extension-schema-windows.md#publicconfig-element)。
@@ -125,28 +125,28 @@ Set-AzVMDiagnosticsExtension -ResourceGroupName "myvmresourcegroup" `
     "PublicConfig": {
         "WadCfg": {
             "DiagnosticMonitorConfiguration": {
-                "overallQuotaInMB": 10000
-            },
-            "DiagnosticInfrastructureLogs": {
-                "scheduledTransferLogLevelFilter": "Error"
-            },
-            "PerformanceCounters": {
-                "scheduledTransferPeriod": "PT1M",
-                "PerformanceCounterConfiguration": [
-                    {
-                        "counterSpecifier": "\\Processor(_Total)\\% Processor Time",
-                        "sampleRate": "PT3M",
-                        "unit": "percent"
-                    }
-                ]
-            },
-            "WindowsEventLog": {
-                "scheduledTransferPeriod": "PT1M",
-                    "DataSource": [
-                    {
-                        "name": "Application!*[System[(Level=1 or Level=2 or Level=3)]]"
-                    }
-                ]
+                "overallQuotaInMB": 10000,
+                "DiagnosticInfrastructureLogs": {
+                    "scheduledTransferLogLevelFilter": "Error"
+                },
+                "PerformanceCounters": {
+                    "scheduledTransferPeriod": "PT1M",
+                    "PerformanceCounterConfiguration": [
+                        {
+                            "counterSpecifier": "\\Processor(_Total)\\% Processor Time",
+                            "sampleRate": "PT3M",
+                            "unit": "percent"
+                        }
+                    ]
+                },
+                "WindowsEventLog": {
+                    "scheduledTransferPeriod": "PT1M",
+                        "DataSource": [
+                        {
+                            "name": "Application!*[System[(Level=1 or Level=2 or Level=3)]]"
+                        }
+                    ]
+                }
             }
         },
         "StorageAccount": "mystorageaccount",
@@ -180,8 +180,8 @@ Set-AzVMDiagnosticsExtension -ResourceGroupName "myvmresourcegroup" `
 ## <a name="tools-to-view-diagnostic-data"></a>用于查看诊断数据的工具
 将数据传输到存储后，可以使用多个工具进行查看。 例如：
 
-* Visual Studio 中的服务器资源管理器 - 如果已安装 Azure Tools for Microsoft Visual Studio，则可以在服务器资源管理器中使用“Azure 存储”节点从 Azure 存储帐户查看只读 Blob 和表数据。 既可以从本地存储模拟器帐户显示数据，也可以从为 Azure 创建的存储帐户显示数据。 有关详细信息，请参阅[使用服务器资源管理器浏览和管理存储资源](/visualstudio/azure/vs-azure-tools-storage-resources-server-explorer-browse-manage)。
-* [Microsoft Azure 存储资源管理器](../../vs-azure-tools-storage-manage-with-storage-explorer.md) 是一款独立应用，可用于在 Windows、OSX 和 Linux 上轻松处理 Azure 存储数据。
+* Visual Studio 中的服务器资源管理器 - 如果已安装 Azure Tools for Microsoft Visual Studio，则可以在服务器资源管理器中使用“Azure 存储”节点从 Azure 存储帐户查看只读 Blob 和表数据。 既可以从本地存储模拟器帐户显示数据，也可以从为 Azure 创建的存储帐户显示数据。 有关详细信息，请参阅[使用服务器资源管理器浏览和管理存储资源](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-storage-resources-server-explorer-browse-manage)。
+* [Azure 存储资源管理器](../../vs-azure-tools-storage-manage-with-storage-explorer.md)是一款独立应用，可用于在 Windows、OSX 和 Linux 上轻松处理 Azure 存储数据。
 * [Azure Management Studio](https://www.cerebrata.com/products/azure-management-studio/introduction) 随附 Azure 诊断管理器，可用于查看、下载和管理 Azure 中运行的应用程序收集的诊断数据。
 
 ## <a name="next-steps"></a>后续步骤

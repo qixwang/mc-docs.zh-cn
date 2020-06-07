@@ -13,6 +13,9 @@
     - name: 使用门户和 Wirecast 创建直播活动
       displayName: 'live, event, portal, wirecast'
       href: live-events-wirecast-quickstart.md
+    - name: 使用门户和 OBS 创建直播活动
+      displayName: 'live, event, portal, obs'
+      href: live-events-obs-quickstart.md
 - name: 教程
   items:
     - name: 对远程文件进行编码并流式传输视频
@@ -32,9 +35,6 @@
     - name: 实时流式处理
       href: stream-live-tutorial-with-api.md
       displayName: 'Live Events, Live Outputs, ingest'
-    - name: 分析视频
-      displayName: 'job, transform, VideoAnalyzerPreset, AudioAnalyzerPreset'
-      href: analyze-videos-tutorial-with-api.md
     - name: 通过 AES-128 进行动态加密
       href: protect-with-aes128.md
     - name: 通过 DRM 进行动态加密
@@ -83,13 +83,6 @@
           href: autogen-bitrate-ladder.md
         - name: 内容感知型编码
           href: content-aware-encoding.md
-    - name: 分析内容（视频索引器）
-      items:
-        - name: 概述
-          href: analyzing-video-audio-files-concept.md
-          displayName: 'analyze, analyzing, presets, jobs'
-        - name: 转换和作业
-          href: transforms-jobs-concept.md
     - name: 实时传送视频流
       items:
         - name: 概述
@@ -231,8 +224,6 @@
           href: cli-create-transform.md
         - name: 创建作业
           href: cli-create-jobs.md
-        - name: 具有多个转换输出的作业
-          href: job-multiple-transform-outputs.md
     - name: 对内容进行编码
       items:
         - name: HTTPS 作为作业输入
@@ -367,3 +358,5 @@
       href: limits-quotas-constraints.md
     - name: Azure 云和区域
       href: azure-clouds-regions.md
+    - name: 文档更新
+      href: docs-release-notes.md

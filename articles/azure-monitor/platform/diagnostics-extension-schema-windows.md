@@ -3,16 +3,16 @@ title: Windows 诊断扩展架构
 description: Azure Monitor 中 Windows 诊断扩展 (WAD) 的配置架构参考。
 ms.subservice: diagnostic-extension
 ms.topic: reference
-author: lingliw
+author: Johnnytechn
+ms.author: v-johya
 origin.date: 01/20/2020
-ms.date: 3/2/2020
-ms.author: v-lingwu
-ms.openlocfilehash: 0412a5a7982079c4f5a94db8f96cfc5cf45cde8a
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/28/2020
+ms.openlocfilehash: f19cacf20f409627ebbaa4ff0bd3121011ad05e6
+ms.sourcegitcommit: 5ae04a3b8e025986a3a257a6ed251b575dbf60a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79453260"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84440503"
 ---
 # <a name="windows-diagnostics-extension-schema"></a>Windows 诊断扩展架构
 Azure 诊断扩展是 Azure Monitor 中的一个代理，用于从 Azure 计算资源的来宾操作系统和工作负荷中收集监视数据。 本文详细介绍了用于在 Windows 虚拟机和其他计算资源上配置诊断扩展的架构。
@@ -25,7 +25,7 @@ Azure 诊断扩展是 Azure Monitor 中的一个代理，用于从 Azure 计算�
 通过执行以下 PowerShell 命令下载公共配置文件架构定义：  
 
 ```powershell  
-(Get-AzureServiceAvailableExtension -ExtensionName 'PaaSDiagnostics' -ProviderNamespace 'Microsoft.Azure.Diagnostics').PublicConfigurationSchema | Out-File –Encoding utf8 -FilePath 'C:\temp\WadConfig.xsd'  
+(Get-AzureServiceAvailableExtension -ExtensionName 'PaaSDiagnostics' -ProviderNamespace 'Microsoft.Azure.Diagnostics').PublicConfigurationSchema | Out-File -Encoding utf8 -FilePath 'C:\temp\WadConfig.xsd'  
 ```  
 
 
@@ -190,7 +190,7 @@ Azure 诊断扩展是 Azure Monitor 中的一个代理，用于从 Azure 计算�
 
  可以生成针对快速查询进行优化的性能计数器表。 在 **PerformanceCounters** 元素中定义的每个性能计数器除存储在性能计数器表内外，还存储在度量值表中。  
 
- 必需 **resourceId** 属性。  要在其中部署 Azure 诊断的虚拟机或虚拟机规模集的资源 ID。 从 [Azure 门户](https://portal.azure.com)获取 **resourceID**。 选择“浏览”   -> “资源组”   -> “<名称\>”  。 单击“属性”  磁贴，并从“ID”  字段复制值。  
+ 必需 **resourceId** 属性。  要在其中部署 Azure 诊断的虚拟机或虚拟机规模集的资源 ID。 从 [Azure 门户](https://portal.azure.cn)获取 **resourceID**。 选择“浏览” -> “资源组” -> “<名称\>”。 单击“属性”磁贴，并从“ID”字段复制值。  
 
 |子元素|说明|  
 |--------------------|-----------------|  
@@ -209,7 +209,7 @@ Azure 诊断扩展是 Azure Monitor 中的一个代理，用于从 Azure 计算�
 
 |子元素|说明|  
 |-------------------|-----------------|  
-|**PerformanceCounterConfiguration**|需要以下属性：<br /><br /> - **counterSpecifier** - 性能计数器的名称。 例如，`\Processor(_Total)\% Processor Time`。 若要获取性能计数器列表，请在主机上运行 `typeperf` 命令。<br /><br /> - **sampleRate** - 应对计数器进行采样的频率。<br /><br /> 可选属性：<br /><br /> **unit** - 计数器的度量单位。 值在 [UnitType 类](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.sql.models.unittype?view=azure-dotnet)中提供 |
+|**PerformanceCounterConfiguration**|需要以下属性：<br /><br /> - **counterSpecifier** - 性能计数器的名称。 例如，`\Processor(_Total)\% Processor Time`。 若要获取性能计数器列表，请在主机上运行 `typeperf` 命令。<br /><br /> - **sampleRate** - 应对计数器进行采样的频率。<br /><br /> 可选属性：<br /><br /> **unit** - 计数器的度量单位。 值在 [UnitType 类](https://docs.azure.cn/zh-cn/dotnet/api/microsoft.azure.management.sql.models.unittype?view=azure-dotnet)中提供 |
 |**sinks** | 在 1.5 中添加。 可选。 指向同时要发送诊断数据的接收器位置。 例如 Azure Monitor 或事件中心。|    
 
 
@@ -224,9 +224,8 @@ Azure 诊断扩展是 Azure Monitor 中的一个代理，用于从 Azure 计算�
 
 |子元素|说明|  
 |-------------------|-----------------|  
-|**DataSource**|要收集的 Windows 事件日志。 必需属性：<br /><br /> **name** - 描述要收集的 Windows 事件的 XPath 查询。 例如：<br /><br /> `Application!*[System[(Level <=3)]], System!*[System[(Level <=3)]], System!*[System[Provider[@Name='Microsoft Antimalware']]], Security!*[System[(Level <= 3)]`<br /><br /> 若要收集所有事件，请指定“*”|  
-
-
+|**DataSource**|要收集的 Windows 事件日志。 必需属性：<br /><br /> **name** - 描述要收集的 Windows 事件的 XPath 查询。 例如：<br /><br /> `Application!*[System[(Level <=3)]], System!*[System[(Level <=3)]], System!*[System[Provider[@Name='Microsoft Antimalware']]], Security!*[System[(Level <= 3)]`<br /><br /> 若要收集所有事件，请指定“*” |
+|**sinks** | 在 1.5 中添加。 可选。 指向接收器位置以同时发送支持接收器的所有子元素的诊断数据。 接收器示例是 Application Insights 或事件中心。|  
 
 
 ## <a name="logs-element"></a>Logs 元素  
@@ -239,7 +238,7 @@ Azure 诊断扩展是 Azure Monitor 中的一个代理，用于从 Azure 计算�
 |属性|类型|说明|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|**unsignedInt**|可选。 指定可用于存储指定数据的文件系统存储最大容量。<br /><br /> 默认值为 0。|  
-|**scheduledTransferLogLevelFilter**|**string**|可选。 指定传输的日志条目的最低严重级别。 默认值是“未定义”  ，这会传输所有日志。 其他可能的值是（按信息严重级别从高到低排序）“详细”  、“信息”  、“警告”  、“错误”  和“严重”  。|  
+|**scheduledTransferLogLevelFilter**|**string**|可选。 指定传输的日志条目的最低严重级别。 默认值是“未定义”，这会传输所有日志。 其他可能的值是（按信息严重级别从高到低排序）“详细”、“信息”、“警告”、“错误”和“严重”。|  
 |**scheduledTransferPeriod**|**duration**|可选。 指定计划的数据传输之间的时间间隔，向上舍入为最接近的分钟数。<br /><br /> 默认是 PT0S。|  
 |**sinks** |**string**| 在 1.5 中添加。 可选。 指向同时要发送诊断数据的接收器位置。 例如，Application Insights 或事件中心。|  
 
@@ -275,7 +274,7 @@ Azure 诊断扩展是 Azure Monitor 中的一个代理，用于从 Azure 计算�
 |元素|类型|说明|  
 |-------------|----------|-----------------|  
 |**Application Insights**|string|仅在将数据发送到 Application Insights 时使用。 包含有权访问的有效 Application Insights 帐户的检测密钥。|  
-|通道 |string|每个对应一个流处理的其他筛选|  
+|通道|string|每个对应一个流处理的其他筛选|  
 
 ## <a name="channels-element"></a>Channels 元素  
  *树：根 - DiagnosticsConfiguration - PublicConfig - WadCFG - SinksConfig - Sink - Channels*
@@ -297,7 +296,7 @@ Azure 诊断扩展是 Azure Monitor 中的一个代理，用于从 Azure 计算�
 
 |属性|类型|说明|  
 |----------------|----------|-----------------|  
-|**logLevel**|**string**|指定传输的日志条目的最低严重级别。 默认值是“未定义”  ，这会传输所有日志。 其他可能的值是（按信息严重级别从高到低排序）“详细”  、“信息”  、“警告”  、“错误”  和“严重”  。|  
+|**logLevel**|**string**|指定传输的日志条目的最低严重级别。 默认值是“未定义”，这会传输所有日志。 其他可能的值是（按信息严重级别从高到低排序）“详细”、“信息”、“警告”、“错误”和“严重”。|  
 |**name**|**string**|要引用的通道的唯一名称|  
 
 
@@ -326,10 +325,10 @@ Azure 诊断扩展是 Azure Monitor 中的一个代理，用于从 Azure 计算�
  
 ### <a name="json"></a>JSON
 
- PublicConfig 和  PrivateConfig 是分开的，因为在大多数 JSON 用例中，它们作为不同的变量传递。 这些用例包括资源管理器模板、PowerShell 和 Visual Studio。
+PublicConfig 和 PrivateConfig 是分开的，因为在大多数 JSON 用例中，它们作为不同的变量传递。 这些用例包括资源管理器模板、PowerShell 和 Visual Studio。
 
 > [!NOTE]
-> 公共配置 Azure Monitor 接收器定义有两个属性：resourceId  和 region  。 这些属性仅是经典 VM 和经典云服务所必需的。 这些属性不应用于其他资源。
+> 公共配置 Azure Monitor 接收器定义有两个属性：resourceId 和 region。 这些属性仅是经典 VM 和经典云服务所必需的。 这些属性不应用于其他资源。
 
 ```json
 "PublicConfig" {
@@ -495,7 +494,7 @@ Azure 诊断扩展是 Azure Monitor 中的一个代理，用于从 Azure 计算�
                     "name": "secondaryStorageAccount",
                     "StorageAccount": {
                         "name": "secondarydiagstorageaccount",
-                        "endpoint": "https://core.windows.net"
+                        "endpoint": "https://core.chinacloudapi.cn"
                     }
                 }
             ]
@@ -507,14 +506,14 @@ Azure 诊断扩展是 Azure Monitor 中的一个代理，用于从 Azure 计算�
 ```
 
 > [!NOTE]
-> 专用配置 Azure Monitor 接收器定义有两个属性：PrincipalId  和 Secret  。 这些属性仅是经典 VM 和经典云服务所必需的。 这些属性不应用于其他资源。
+> 专用配置 Azure Monitor 接收器定义有两个属性：PrincipalId 和 Secret。 这些属性仅是经典 VM 和经典云服务所必需的。 这些属性不应用于其他资源。
 
 
 ```json
 "PrivateConfig" {
     "storageAccountName": "diagstorageaccount",
     "storageAccountKey": "{base64 encoded key}",
-    "storageAccountEndPoint": "https://core.windows.net",
+    "storageAccountEndPoint": "https://core.chinacloudapi.cn",
     "storageAccountSasToken": "{sas token}",
     "EventHub": {
         "Url": "https://myeventhub-ns.servicebus.chinacloudapi.cn/diageventhub",
@@ -532,7 +531,7 @@ Azure 诊断扩展是 Azure Monitor 中的一个代理，用于从 Azure 计算�
             {
                 "name": "secondarydiagstorageaccount",
                 "key": "{base64 encoded key}",
-                "endpoint": "https://core.windows.net",
+                "endpoint": "https://core.chinacloudapi.cn",
                 "sasToken": "{sas token}"
             }
         ]
@@ -650,7 +649,7 @@ Azure 诊断扩展是 Azure Monitor 中的一个代理，用于从 Azure 计算�
 
   <PrivateConfig>  <!-- Added in 1.3 -->  
     <StorageAccount name="" key="" endpoint="" sasToken="{sas token}"  />  <!-- sasToken in Private config added in 1.8.1 -->  
-    <EventHub Url="https://myeventhub-ns.servicebus.windows.net/diageventhub" SharedAccessKeyName="SendRule" SharedAccessKey="{base64 encoded key}" />
+    <EventHub Url="https://myeventhub-ns.servicebus.chinacloudapi.cn/diageventhub" SharedAccessKeyName="SendRule" SharedAccessKey="{base64 encoded key}" />
 
     <AzureMonitorAccount>
         <ServicePrincipalMeta> <!-- Added in 1.11; only needed for classic VMs and Classic cloud services -->
@@ -664,7 +663,7 @@ Azure 诊断扩展是 Azure Monitor 中的一个代理，用于从 Azure 计算�
     </SecondaryStorageAccounts>
 
     <SecondaryEventHubs>
-       <EventHub Url="https://myeventhub-ns.servicebus.windows.net/secondarydiageventhub" SharedAccessKeyName="SendRule" SharedAccessKey="{base64 encoded key}" />
+       <EventHub Url="https://myeventhub-ns.servicebus.chinacloudapi.cn/secondarydiageventhub" SharedAccessKeyName="SendRule" SharedAccessKey="{base64 encoded key}" />
     </SecondaryEventHubs>
 
   </PrivateConfig>  
@@ -676,3 +675,4 @@ Azure 诊断扩展是 Azure Monitor 中的一个代理，用于从 Azure 计算�
 > 公共配置 Azure Monitor 接收器定义有两个属性：resourceId 和 region。 这些属性仅是经典 VM 和经典云服务所必需的。 这些属性不应该用于资源管理器虚拟机或虚拟机规模集。
 > Azure Monitor 接收器还有一个额外的 Private Config 元素，它传入主体 ID 和机密。 此属性仅是经典 VM 和经典云服务所必需的。 对于资源管理器 VM 和 VMSS，可以排除 private config 元素中的 Azure Monitor 定义。
 >
+

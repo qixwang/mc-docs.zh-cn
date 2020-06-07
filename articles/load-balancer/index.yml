@@ -10,14 +10,14 @@ metadata:
   ms.collection: collection
   author: WenJason
   ms.author: v-jay
-  origin.date: 12/05/2019
-  ms.date: 02/24/2020
-  ms.openlocfilehash: 082a0eb9c77f97f893552e0d76f2c93f7173e92a
-  ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+  origin.date: 05/07/2020
+  ms.date: 06/08/2020
+  ms.openlocfilehash: 68ffb9ecae5db62fef1a49e5b4a3c9dcf998fc5a
+  ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 04/17/2020
-  ms.locfileid: "77540036"
+  ms.lasthandoff: 06/02/2020
+  ms.locfileid: "84275438"
 landingContent:
 - title: 关于负载均衡器
   linkLists:
@@ -25,11 +25,17 @@ landingContent:
     links:
     - text: 什么是负载均衡器？
       url: load-balancer-overview.md
+    - text: 负载均衡器的概念
+      url: concepts.md
+    - text: 负载均衡器组件
+      url: components.md
+    - text: 负载均衡器 SKU
+      url: skus.md
 - title: 入门
   linkLists:
   - linkListType: quickstart
     links:
-    - text: 创建标准负载均衡器以对 VM 进行负载均衡
+    - text: 创建负载均衡器以对 VM 进行负载均衡
       url: quickstart-load-balancer-standard-public-portal.md
   - linkListType: tutorial
     links:
@@ -49,17 +55,19 @@ landingContent:
       url: load-balancer-multivip-overview.md
   - linkListType: how-to-guide
     links:
-    - text: 使用 Azure CLI 在标准负载均衡器中配置负载均衡和出站规则
+    - text: 在负载均衡器中配置负载均衡和出站规则 (Azure CLI)
       url: configure-load-balancer-outbound-cli.md
-    - text: 使用 PowerShell 创建支持 IPv6 的面向 Internet 的负载均衡器
+    - text: 创建使用 IPv6 的面向 Internet 的负载均衡器 (PowerShell)
       url: load-balancer-ipv6-internet-ps.md
     - text: 配置分布模式
       url: load-balancer-distribution-mode.md
+    - text: 从“基本”升级到“标准”
+      url: upgrade-basic-standard.md
 - title: 部署
   linkLists:
   - linkListType: concept
     links:
-    - text: 负载均衡器空闲情况下的 TCP 重置（公共预览版）
+    - text: 在空闲时发送 TCP 重置的负载均衡器
       url: load-balancer-tcp-reset.md
   - linkListType: how-to-guide
     links:
@@ -71,8 +79,10 @@ landingContent:
     links:
     - text: 通过指标、警报和资源运行状况进行标准负载均衡器诊断
       url: load-balancer-standard-diagnostics.md
-    - text: 排查 Azure 负载均衡器问题
+    - text: 对 Azure 负载均衡器进行故障排除
       url: load-balancer-troubleshoot.md
+    - text: 常见的 Azure 负载均衡器错误
+      url: load-balancer-common-deployment-errors.md
 - title: 参考
   linkLists:
   - linkListType: reference
@@ -81,3 +91,7 @@ landingContent:
       url: https://docs.microsoft.com/powershell/module/az.network/?view=azps-2.5.0#load_balancer
     - text: Azure CLI
       url: /cli/network/lb?view=azure-cli-latest
+    - text: ARM 模板
+      url: https://docs.microsoft.com/azure/templates/microsoft.network/loadbalancers#quickstart-templates
+    - text: 常见的负载均衡器问题
+      url: load-balancer-faqs.md

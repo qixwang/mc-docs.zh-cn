@@ -11,6 +11,9 @@
   items:
     - name: 将 Azure VM 复制到另一个区域
       href: azure-to-azure-quickstart.md
+    - name: 创建保管库 - ARM 模板
+      displayName: Resource Manager
+      href: quickstart-create-vault-template.md
 - name: 教程
   items:
     - name: Azure VM 灾难恢复到 Azure
@@ -359,6 +362,8 @@
               href: hyper-v-azure-failback.md
         - name: 管理
           items:
+            - name: 弃用 Site Recovery 数据加密
+              href: encryption-feature-deprecation.md
             - name: 升级已配置了 Site Recovery 的 Windows Servers
               href: upgrade-2012R2-to-2016.md
             - name: 删除服务器并禁用保护
@@ -401,6 +406,8 @@
               href: vmware-physical-secondary-disaster-recovery.md
         - name: Hyper-V VM
           items:
+            - name: 弃用 Hyper-V VM 的站点到站点方案
+              href: site-to-site-deprecation.md
             - name: 演练 - VMM 云中的 Hyper-V VM 到辅助站点的灾难恢复
               href: hyper-v-vmm-disaster-recovery.md
             - name: 运行向辅助站点进行的 Hyper-V VM 灾难恢复钻取
@@ -484,7 +491,7 @@
 - name: 资源
   items:
     - name: 博客
-      href: 'https://www.azure.cn/blog/tags/Azure%20Site%20Recovery'
+      href: 'https://azure.microsoft.com/blog/tag/azure-site-recovery/'
     - name: 论坛
       href: 'https://support.azure.cn/support/contact/'
     - name: 定价

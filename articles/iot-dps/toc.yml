@@ -15,7 +15,7 @@
           href: quick-setup-auto-provision-cli.md
         - name: Azure RM 模板
           href: quick-setup-auto-provision-rm.md
-    - name: 预配单个模拟设备
+    - name: 预配单个设备
       items:
         - name: 对称密钥证明
           items:

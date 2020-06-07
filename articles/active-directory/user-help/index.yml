@@ -8,17 +8,15 @@ metadata:
   ms.service: active-directory
   ms.subservice: user-help
   ms.topic: landing-page
-  ms.collection: M365-identity-device-management
-  author: eross-msft
+  author: curtand
   ms.author: v-junlch
-  origin.date: 08/26/2019
-  ms.date: 11/14/2019
-  ms.openlocfilehash: 25db6b720dc48b296d6a3f74d6b38d8199be3dc5
-  ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+  ms.date: 06/02/2020
+  ms.openlocfilehash: a333d11186cdbe67948e8706e7f952bcd4008a8f
+  ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 04/17/2020
-  ms.locfileid: "77067722"
+  ms.lasthandoff: 06/02/2020
+  ms.locfileid: "84275545"
 landingContent:
 - title: 选择双重验证方法
   linkLists:
