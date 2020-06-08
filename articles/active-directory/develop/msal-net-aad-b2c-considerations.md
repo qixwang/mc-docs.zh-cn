@@ -1,7 +1,7 @@
 ---
-title: Azure AD B2C (MSAL.NET) | Azure
+title: Azure AD B2C 和 MSAL.NET
 titleSuffix: Microsoft identity platform
-description: 了解将 Azure AD B2C 与适用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 配合使用时的具体注意事项。
+description: 将 Azure AD B2C 与用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 配合使用时的注意事项。
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -9,44 +9,44 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 04/22/2020
+ms.date: 05/27/2020
 ms.author: v-junlch
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: ea13c9b282fe7409e000043aba974703b18c2836
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.openlocfilehash: d628d73f48cf7d7722832af1f95a8755cd8159da
+ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82126504"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84186880"
 ---
 # <a name="use-msalnet-to-sign-in-users-with-social-identities"></a>使用 MSAL.NET 通过社交标识将用户登录
 
 可以在 [Azure Active Directory B2C (Azure AD B2C)](/active-directory-b2c/active-directory-b2c-overview) 中使用 MSAL.NET 通过社交标识将用户登录。 Azure AD B2C 是围绕策略这一概念构建的。 在 MSAL.NET 中，指定策略相当于提供颁发机构。
 
-- 实例化公共客户端应用程序时，需要在颁发机构中指定策略。
-- 想要应用策略时，需要调用包含 `authority` 参数的 `AcquireTokenInteractive` 的重写。
+- 实例化公共客户端应用程序时，需要将策略指定为颁发机构的一部分。
+- 需要应用策略时，请调用一个接受 `authority` 参数的 `AcquireTokenInteractive` 的重写。
 
-本页面的内容适用于 MSAL 3.x。 如果你对 MSAL 2.x 感兴趣，请参阅 [MSAL 2.x 中的 Azure AD B2C 细节](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/AAD-B2C-Specifics-MSAL-2.x)。
+本文适用于 MSAL.NET 3.x。 有关 MSAL.NET 2.x 的信息，请在 GitHub 上参阅 MSAL.NET Wiki 中的[有关将 Azure AD B2C 与 MSAL 2.x 配合使用的细节](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/AAD-B2C-Specifics-MSAL-2.x)。
 
-## <a name="authority-for-a-azure-ad-b2c-tenant-and-policy"></a>Azure AD B2C 租户和策略的颁发机构
+## <a name="authority-for-an-azure-ad-b2c-tenant-and-policy"></a>Azure AD B2C 租户和策略的颁发机构
 
-要使用的颁发机构是 `https://{azureADB2CHostname}/tfp/{tenant}/{policyName}`，其中：
+Azure AD B2C 的颁发机构格式是：`https://{azureADB2CHostname}/tfp/{tenant}/{policyName}`
 
-- `azureADB2CHostname` 是 Azure AD B2C 租户的名称加上主机（例如 `{your-tenant-name}.b2clogin.com`），
-- `tenant` 是 Azure AD B2C 租户的完整名称（例如，`{your-tenant-name}.partner.onmschina.cn`）或租户的 GUID，
-- `policyName` 要应用的策略或用户流的名称（例如，“b2c_1_susi”用于注册/登录）。
+- `azureADB2CHostname` - Azure AD B2C 租户的名称加主机。 例如，contosob2c.b2clogin.cn。
+- `tenant` - Azure AD B2C 租户的域名或目录（租户）ID。 例如，它们分别可以是 contosob2c.partner.onmschina.cn 或 GUID。
+- `policyName` - 要应用的用户流或自定义策略的名称。 例如，b2c_1_susi 这样的注册/登录策略。
 
-有关 Azure AD B2C 机构的详细信息，请参阅此[文档](/active-directory-b2c/b2clogin)。
+有关 Azure AD B2C 颁发机构的详细信息，请参阅[将重定向 URL 设置为 b2clogin.cn](../../active-directory-b2c/b2clogin.md)。
 
 ## <a name="instantiating-the-application"></a>实例化应用程序
 
-生成应用程序时，需要提供颁发机构。
+创建应用程序对象时，请通过调用 `WithB2CAuthority()` 提供颁发机构：
 
 ```csharp
 // Azure AD B2C Coordinates
 public static string Tenant = "fabrikamb2c.partner.onmschina.cn";
-public static string AzureADB2CHostname = "fabrikamb2c.b2clogin.com";
+public static string AzureADB2CHostname = "fabrikamb2c.b2clogin.cn";
 public static string ClientID = "90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6";
 public static string PolicySignUpSignIn = "b2c_1_susi";
 public static string PolicyEditProfile = "b2c_1_edit_profile";
@@ -64,74 +64,80 @@ application = PublicClientApplicationBuilder.Create(ClientID)
 
 ## <a name="acquire-a-token-to-apply-a-policy"></a>获取用于应用策略的令牌
 
-在公共客户端应用程序中获取受 Azure AD B2C 保护的 API 的令牌需要使用颁发机构的重写：
+为公共客户端应用程序中受 Azure AD B2C 保护的 API 获取令牌时，需要将重写与颁发机构配合使用：
 
 ```csharp
 IEnumerable<IAccount> accounts = await application.GetAccountsAsync();
-AuthenticationResult ar = await application .AcquireTokenInteractive(scopes)
-                                            .WithAccount(GetAccountByPolicy(accounts, policy))
-                                            .WithParentActivityOrWindow(ParentActivityOrWindow)
-                                            .ExecuteAsync();
+AuthenticationResult ar = await application.AcquireTokenInteractive(scopes)
+                                           .WithAccount(GetAccountByPolicy(accounts, policy))
+                                           .WithParentActivityOrWindow(ParentActivityOrWindow)
+                                           .ExecuteAsync();
 ```
 
-替换为：
+在前面的代码片段中：
 
-- `policy`：前面的字符串之一（例如 `PolicySignUpSignIn`）。
-- `ParentActivityOrWindow` 对于 Android（活动）是必需的，对于支持父 UI 的其他平台（例如 Windows 中的窗口和 iOS 中的 UIViewController）是可选的。 在[此处的 UI 对话框](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Acquiring-tokens-interactively#withparentactivityorwindow)中查看更多信息。
+- `policy` 是一个字符串，其中包含 Azure AD B2C 用户流或自定义策略的名称（例如 `PolicySignUpSignIn`）。
+- `ParentActivityOrWindow` 对于 Android（活动）是必需的，对于支持父 UI（如 Microsoft Windows 中的窗口和 iOS 中的 UIViewController）的其他平台则是可选的。 有关 UI 对话框的详细信息，请参阅 MSAL Wiki 上的 [WithParentActivityOrWindow](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Acquiring-tokens-interactively#withparentactivityorwindow)。
 - `GetAccountByPolicy(IEnumerable<IAccount>, string)`：用于在帐户中查找给定策略的方法。 例如：
 
   ```csharp
   private IAccount GetAccountByPolicy(IEnumerable<IAccount> accounts, string policy)
   {
-   foreach (var account in accounts)
-   {
-    string userIdentifier = account.HomeAccountId.ObjectId.Split('.')[0];
-    if (userIdentifier.EndsWith(policy.ToLower()))
-     return account;
-   }
-   return null;
+      foreach (var account in accounts)
+      {
+          string userIdentifier = account.HomeAccountId.ObjectId.Split('.')[0];
+          if (userIdentifier.EndsWith(policy.ToLower()))
+              return account;
+      }
+      return null;
   }
   ```
 
-目前通过调用 `AcquireTokenInteractive` 来应用策略或用户流（例如，让最终用户编辑其配置文件或重置其密码）。 对于这两个策略，不使用返回的令牌/身份验证结果。
+目前通过调用 `AcquireTokenInteractive` 来应用用户流或自定义策略（例如，让用户编辑其配置文件或重置其密码）。 对于这两个策略，不使用返回的令牌/身份验证结果。
 
-## <a name="special-case-of-editprofile-and-resetpassword-policies"></a>EditProfile 和 ResetPassword 策略的特殊情况
+## <a name="profile-edit-policies"></a>配置文件编辑策略
 
-若要提供让最终用户使用社交标识登录，然后编辑其个人资料的体验，需要应用 Azure AD B2C 编辑配置文件策略。 为此，可以使用该策略的特定权限调用 `AcquireTokenInteractive`，并将 Prompt 设置为 `Prompt.NoPrompt` 以避免显示帐户选择对话框（因为用户已登录并拥有活动的 Cookie 会话）。
+要让用户能够使用社交标识登录并编辑其配置文件，请应用 Azure AD B2C 编辑配置文件策略。
+
+为此，请使用该策略的颁发机构调用 `AcquireTokenInteractive`。 由于用户已经登录，并且具有活动 Cookie 会话，请使用 `Prompt.NoPrompt` 以阻止显示“帐户选择”对话框。
 
 ```csharp
 private async void EditProfileButton_Click(object sender, RoutedEventArgs e)
 {
- IEnumerable<IAccount> accounts = await app.GetAccountsAsync();
- try
- {
-  var authResult = await app.AcquireToken(scopes:App.ApiScopes)
-                               .WithAccount(GetUserByPolicy(accounts, App.PolicyEditProfile)),
-                               .WithPrompt(Prompt.NoPrompt),
-                               .WithB2CAuthority(App.AuthorityEditProfile)
-                               .ExecuteAsync();
-  DisplayBasicTokenInfo(authResult);
- }
- catch
- {
-  . . .
- }
+    IEnumerable<IAccount> accounts = await app.GetAccountsAsync();
+    try
+    {
+        var authResult = await app.AcquireToken(scopes:App.ApiScopes)
+                            .WithAccount(GetUserByPolicy(accounts, App.PolicyEditProfile)),
+                            .WithPrompt(Prompt.NoPrompt),
+                            .WithB2CAuthority(App.AuthorityEditProfile)
+                            .ExecuteAsync();
+        DisplayBasicTokenInfo(authResult);
+    }
+    catch
+    {
+    }
 }
 ```
-## <a name="resource-owner-password-credentials-ropc-with-azure-ad-b2c"></a>Azure AD B2C 中的资源所有者密码凭据 (ROPC)
-有关 ROPC 流的更多详细信息，请参阅[此文档](v2-oauth-ropc.md)。
 
-**不建议**使用此流，因为要求用户提供其密码的应用程序是不安全的。 有关此问题的详细信息，请参阅[此文](https://news.microsoft.com/features/whats-solution-growing-problem-passwords-says-microsoft/)。
+## <a name="resource-owner-password-credentials-ropc"></a>资源所有者密码凭据 (ROPC)
 
-使用用户名/密码意味着会丧失许多功能：
-- 新式标识的核心原则：密码被窃取、重放。 我们的观点是共享机密可能会被截获。 此方法与无密码登录是不兼容的。
+有关 ROPC 流的详细信息，请参阅[使用“资源所有者密码凭据授权”登录](v2-oauth-ropc.md)。
+
+不建议使用 ROPC 流，因为在应用程序中要求用户提供其密码是不安全的。 有关此问题的详细信息，请参阅[如何解决不断增多的密码问题？](https://news.microsoft.com/features/whats-solution-growing-problem-passwords-says-microsoft/)。
+
+在 ROPC 流中使用用户名/密码会有以下几点不利影响：
+
+- 新式标识的核心原则：密码可能会被窃取或重放，因为共享的机密信息可能会被截获。 按照定义，ROPC 与无密码流不兼容。
 - 需要执行 MFA 的用户将无法登录（因为没有交互）。
-- 用户无法执行单一登录。
+- 用户将无法使用单一登录 (SSO)。
 
 ### <a name="configure-the-ropc-flow-in-azure-ad-b2c"></a>在 Azure AD B2C 配置 ROPC 流
-在 Azure AD B2C 租户中创建一个新的用户流，然后选择“使用 ROPC 登录”。  这会为租户启用 ROPC 策略。 有关更多详细信息，请参阅[配置资源所有者密码凭据流](/active-directory-b2c/configure-ropc)。
 
-`IPublicClientApplication` 包含一个方法：
+在 Azure AD B2C 租户中，新建一个用户流并选择“使用 ROPC 登录”，以便为该用户流启用 ROPC。 有关详细信息，请参阅[配置资源所有者密码凭据流](/active-directory-b2c/configure-ropc)。
+
+`IPublicClientApplication` 包含 `AcquireTokenByUsernamePassword` 方法：
+
 ```csharp
 AcquireTokenByUsernamePassword(
             IEnumerable<string> scopes,
@@ -139,38 +145,44 @@ AcquireTokenByUsernamePassword(
             SecureString password)
 ```
 
-此方法采用以下参数：
-- 要请求其访问令牌的范围。 
-- 一个用户名。 
-- 用户的安全字符串密码。 
+该 `AcquireTokenByUsernamePassword` 方法采用以下参数：
 
-请记得使用包含 ROPC 策略的颁发机构。
+- 要为其获取访问令牌的范围。
+- 一个用户名。
+- 用户的安全字符串密码。
 
 ### <a name="limitations-of-the-ropc-flow"></a>ROPC 流的限制
- - ROPC 流**仅适用于本地帐户**（使用电子邮件或用户名注册到 Azure AD B2C 的帐户）。 如果联合到 Azure AD B2C 支持的任何标识提供者，则此流不起作用。
 
-## <a name="caching-with-azure-ad-b2c-in-msalnet"></a>在 MSAL.Net 中使用 Azure AD B2C 进行缓存
+ROPC 流仅适用于本地帐户，在本地帐户中用户已使用电子邮件地址或用户名注册到 Azure AD B2C。 在联合到 Azure AD B2C 支持的外部标识提供者时，此流不起作用。
+
+## <a name="token-caching-in-msalnet"></a>MSAL.NET 中的令牌缓存
 
 ### <a name="known-issue-with-azure-ad-b2c"></a>Azure AD B2C 的已知问题
 
-MSAL.Net 支持[令牌缓存](/dotnet/api/microsoft.identity.client.tokencache?view=azure-dotnet)。 缓存令牌密钥基于标识提供者返回的声明。 目前，MSAL.Net 需要使用两个声明来生成令牌缓存密钥：
-- `tid`：Azure AD 租户 ID；
+MSAL.NET 支持[令牌缓存](/dotnet/api/microsoft.identity.client.tokencache?view=azure-dotnet)。 令牌缓存密钥基于标识提供者 (IdP) 返回的声明。
+
+目前，MSAL.NET 需要两个声明来生成令牌缓存密钥：
+
+- `tid`（Azure AD 租户 ID）
 - `preferred_username`
 
-许多 Azure AD B2C 方案中缺少这两个声明。
+在 Azure AD B2C 场景中，这两个声明可能都会缺失，因为并非所有社交标识提供者都会在其返回到 Azure AD B2C 的令牌中返回这些声明。
 
-判断客户是否受到影响的依据是，在尝试显示用户名字段时，值是否显示为“在令牌响应中缺失”？ 如果是，原因是 Azure AD B2C 不会在 IdToken 中返回 preferred_username 的值，因为社交帐户和外部标识提供者 (IdP) 存在限制。 Azure AD 返回 preferred_username 的值，因为它知道谁是用户，但对于 Azure AD B2C，由于用户可以使用本地帐户、GitHub 等登录，Azure AD B2C 无法对 preferred_username 使用某个一致的值。 为了阻止 MSAL 实施与 ADAL 的缓存兼容性，我们决定在处理 Azure AD B2C 帐户的过程中，当 IdToken 未返回 preferred_username 的任何值时，在我们一端使用“在令牌响应中缺失”。 MSAL 必须返回 preferred_username 的值才能保持库间的缓存兼容性。
+这种场景的现象是：当你访问 Azure AD B2C 所颁发令牌中的 `preferred_username` 声明值时，MSAL.NET 会返回 `Missing from the token response`。 对于 `preferred_username`，MSAL 使用 `Missing from the token response` 值以保持库之间的缓存交叉兼容性。
 
 ### <a name="workarounds"></a>解决方法
 
-#### <a name="mitigation-for-the-missing-tenant-id"></a>缺少租户 ID 的缓解措施
+#### <a name="mitigation-for-missing-tenant-id"></a>缺少租户 ID 的缓解措施
 
-建议的解决方法是使用[按策略缓存](#acquire-a-token-to-apply-a-policy)
+建议的解决方法是使用之前介绍的[按策略缓存](#acquire-a-token-to-apply-a-policy)。
 
-或者，如果使用的是 B2C 自定义策略，则可以使用 `tid` 声明，因为它提供了向应用程序返回其他声明的功能。
+或者，如果要在 Azure AD B2C 中使用自定义策略，也可使用 `tid` 声明。 自定义策略可通过使用声明转换将其他声明返回到应用程序。
 
 #### <a name="mitigation-for-missing-from-the-token-response"></a>“在令牌响应中缺失”的缓解措施
-一种做法是使用“name”声明作为首选用户名。 [B2C 文档](../../active-directory-b2c/user-flow-overview.md)中提到了该过程 ->“在‘返回声明’列中，选择需要在成功获得配置文件编辑体验后发回到应用程序的授权令牌中返回的声明。 例如，选择‘显示名称’、‘邮政编码’。”
+
+一种选择是使用 `name` 声明，而不是 `preferred_username`。 要在 Azure AD B2C 颁发的 ID 令牌中包括 `name` 声明，请在配置用户流时选择“显示名称”。
+
+有关指定用户流返回哪些声明的详细信息，请参阅[教程：在 Azure AD B2C 中创建用户流](../../active-directory-b2c/tutorial-create-user-flows.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -178,5 +190,5 @@ MSAL.Net 支持[令牌缓存](/dotnet/api/microsoft.identity.client.tokencache?v
 
 | 示例 | 平台 | 说明|
 |------ | -------- | -----------|
-|[active-directory-b2c-xamarin-native](https://github.com/Azure-Samples/active-directory-b2c-xamarin-native) | Xamarin iOS、Xamarin Android、UWP | 一个简单的 Xamarin Forms 应用，演示如何使用 MSAL.NET 通过 Azure AD B2C 对用户进行身份验证，并使用生成的令牌访问 Web API。|
+|[active-directory-b2c-xamarin-native](https://github.com/Azure-Samples/active-directory-b2c-xamarin-native) | Xamarin iOS、Xamarin Android、UWP | 一个 Xamarin Forms 应用，它使用 MSAL.NET 通过 Azure AD B2C 对用户进行身份验证，然后使用返回的令牌访问 Web API。|
 
