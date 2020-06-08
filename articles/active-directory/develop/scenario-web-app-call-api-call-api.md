@@ -2,34 +2,35 @@
 title: 从 Web 应用调用 Web API - Microsoft 标识平台 | Azure
 description: 了解如何构建调用 Web API 的 Web 应用（调用受保护的 Web API）
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/06/2020
+ms.date: 05/28/2020
 ms.author: v-junlch
 ms.custom: aaddev
-ms.openlocfilehash: 835f5ba135adb07ba4dfdb2a7b4d735e91c1bb5b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 94b230462c982b753823c50f938f047b68253408
+ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77067698"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84186863"
 ---
 # <a name="a-web-app-that-calls-web-apis-call-a-web-api"></a>调用 Web API 的 Web 应用：调用 Web API
 
 现在你已有令牌，可以调用受保护的 Web API 了。
 
+## <a name="call-a-protected-web-api"></a>调用受保护的 Web API
+
+调用受保护的 Web API 取决于所选的语言和框架：
+
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
 下面是 `HomeController` 操作的简化代码。 此代码获取用于调用 Microsoft Graph 的令牌。 添加了代码以演示如何将 Microsoft Graph 作为 REST API 调用。 Microsoft Graph API 的 URL 在 appsettings.json 文件中提供，并在名为 `webOptions` 的变量中读取：
 
-```JSon
+```json
 {
   "AzureAd": {
     "Instance": "https://login.partner.microsoftonline.cn/",
@@ -43,41 +44,25 @@ ms.locfileid: "77067698"
 ```csharp
 public async Task<IActionResult> Profile()
 {
- var application = BuildConfidentialClientApplication(HttpContext, HttpContext.User);
- string accountIdentifier = claimsPrincipal.GetMsalAccountId();
- string loginHint = claimsPrincipal.GetLoginHint();
+ // Acquire the access token.
+ string[] scopes = new string[]{"https://microsoftgraph.chinacloudapi.cn/user.read"};
+ string accessToken = await tokenAcquisition.GetAccessTokenForUserAsync(scopes);
 
- // Get the account.
- IAccount account = await application.GetAccountAsync(accountIdentifier);
+ // Use the access token to call a protected web API.
+ HttpClient client = new HttpClient();
+ client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+ 
+  var response = await httpClient.GetAsync($"{webOptions.GraphApiUrl}/beta/me");
 
- // Special case for guest users, because the guest ID / tenant ID are not surfaced.
- if (account == null)
- {
-  var accounts = await application.GetAccountsAsync();
-  account = accounts.FirstOrDefault(a => a.Username == loginHint);
- }
+  if (response.StatusCode == HttpStatusCode.OK)
+  {
+   var content = await response.Content.ReadAsStringAsync();
 
- AuthenticationResult result;
- result = await application.AcquireTokenSilent(new []{"https://microsoftgraph.chinacloudapi.cn/user.read"}, account)
-                            .ExecuteAsync();
- var accessToken = result.AccessToken;
+   dynamic me = JsonConvert.DeserializeObject(content);
+   ViewData["Me"] = me;
+  }
 
- // Calls the web API (Microsoft Graph in this case).
- HttpClient httpClient = new HttpClient();
- httpClient.DefaultRequestHeaders.Authorization =
-     new AuthenticationHeaderValue(Constants.BearerAuthorizationScheme,accessToken);
- var response = await httpClient.GetAsync($"{webOptions.GraphApiUrl}/beta/me");
-
- if (response.StatusCode == HttpStatusCode.OK)
- {
-  var content = await response.Content.ReadAsStringAsync();
-
-  dynamic me = JsonConvert.DeserializeObject(content);
-  return me;
- }
-
- ViewData["Me"] = me;
- return View();
+  return View();
 }
 ```
 
@@ -134,4 +119,3 @@ def graphcall():
 > [!div class="nextstepaction"]
 > [转移到生产环境](scenario-web-app-call-api-production.md)
 
-<!-- Update_Description: wording update -->

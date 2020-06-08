@@ -1,20 +1,18 @@
 ---
 title: Azure Application Insights 遥测关联 | Azure Docs
 description: Application Insights 遥测关联
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: lingliw
+author: Johnnytechn
 origin.date: 06/07/2019
-ms.date: 12/30/2019
+ms.date: 05/28/2020
 ms.reviewer: sergkanz
-ms.author: v-lingwu
-ms.openlocfilehash: 609d6747e4a65916715aeb8fad26c308d6cb5455
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.author: v-johya
+ms.openlocfilehash: e37d828247d72dfb16e6e340e2f6bf9ff3476582
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79291552"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199317"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Application Insights 中的遥测关联
 
@@ -66,7 +64,7 @@ Application Insights 正在过渡到 [W3C Trace-Context](https://w3c.github.io/t
 
 最新版本 Application Insights SDK 支持 Trace-Context 协议，但你可能需要选择启用此协议。 （将保持与 Application Insights SDK 支持的旧关联协议的后向兼容性。）
 
-[关联 HTTP 协议（也称为 Request-Id）](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md)即将弃用。 此协议定义两个标头：
+[关联 HTTP 协议（也称为 Request-Id）](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md)即将弃用。 此协议定义两个标头：
 
 - `Request-Id`：承载调用的全局唯一 ID。
 - `Correlation-Context`：承载分布式跟踪属性的名称值对集合。
@@ -132,6 +130,11 @@ public void ConfigureServices(IServiceCollection services)
 
 ### <a name="enable-w3c-distributed-tracing-support-for-java-apps"></a>启用对 Java 应用的 W3C 分布式跟踪支持
 
+#### <a name="java-30-agent"></a>Java 3.0 代理
+
+  Java 3.0 代理直接支持 W3C，不需要任何其他配置。 
+
+#### <a name="java-sdk"></a>Java SDK
 - **传入配置**
 
   - 对于 Java EE 应用，请将以下内容添加到 ApplicationInsights.xml 内的 `<TelemetryModules>` 标记中：
@@ -205,13 +208,13 @@ public void ConfigureServices(IServiceCollection services)
 
 [OpenTracing 数据模型规范](https://opentracing.io/)和 Application Insights 数据模型按以下方式映射：
 
-| Application Insights                  | OpenTracing                                       |
-|------------------------------------   |-------------------------------------------------  |
-| `Request`, `PageView`                 | 带 `span.kind = server` 的 `Span`                  |
-| `Dependency`                          | 带 `span.kind = client` 的 `Span`                  |
-| `Request` 和 `Dependency` 的 `Id`    | `SpanId`                                          |
-| `Operation_Id`                        | `TraceId`                                         |
-| `Operation_ParentId`                  | `ChildOf` 类型的 `Reference`（父级范围）   |
+| Application Insights                   | OpenTracing                                        |
+|------------------------------------    |-------------------------------------------------    |
+| `Request`, `PageView`                  | 带 `span.kind = server` 的 `Span`                    |
+| `Dependency`                           | 带 `span.kind = client` 的 `Span`                    |
+| `Request` 和 `Dependency` 的 `Id`     | `SpanId`                                            |
+| `Operation_Id`                         | `TraceId`                                           |
+| `Operation_ParentId`                   | `ChildOf` 类型的 `Reference`（父级范围）     |
 
 有关详细信息，请参阅 [Application Insights 遥测数据模型](../../azure-monitor/app/data-model.md)。
 
@@ -253,8 +256,11 @@ curl --header "traceparent: 00-4bf92f3577b34da6a3ce929d0e0e4736-00f067aa0ba902b7
 查看 [Trace-Context 标头格式](https://www.w3.org/TR/trace-context/#trace-context-http-headers-format)，可以获得以下信息：
 
 `version`: `00`
+
 `trace-id`: `4bf92f3577b34da6a3ce929d0e0e4736`
+
 `parent-id/span-id`: `00f067aa0ba902b7`
+
 `trace-flags`: `01`
 
 如果查看发送到 Azure Monitor 的请求条目，可以看到填充了跟踪标头信息的字段。 可以在 Azure Monitor Application Insights 资源中的“日志(分析)”下找到此数据。
@@ -296,18 +302,20 @@ logger.warning('After the span')
 ```
 请注意，范围中的日志消息有一个对应的 `spanId`。 它与属于名为 `hello` 的范围的 `spanId` 相同。
 
+可以使用 `AzureLogHandler` 导出日志数据。 有关详细信息，请参阅[此文章](/azure-monitor/app/opencensus-python#logs)。
+
 ## <a name="telemetry-correlation-in-net"></a>.NET 中的遥测关联
 
 .NET 至今已定义了多种方式来关联遥测和诊断日志：
 
 - `System.Diagnostics.CorrelationManager` 允许跟踪 [LogicalOperationStack 和 ActivityId](https://msdn.microsoft.com/library/system.diagnostics.correlationmanager.aspx)。
 - `System.Diagnostics.Tracing.EventSource` 和 Windows 事件跟踪 (ETW) 定义了 [SetCurrentThreadActivityId](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.setcurrentthreadactivityid.aspx) 方法。
-- `ILogger` 使用[日志范围](https://docs.microsoft.com/aspnet/core/fundamentals/logging#log-scopes)。 
+- `ILogger` 使用[日志范围](https://docs.microsoft.com/aspnet/core/fundamentals/logging#log-scopes)。
 - Windows Communication Foundation (WCF) 和 HTTP 将“当前”上下文传播关联到一起。
 
 但是，这些方法并未实现自动分布式跟踪支持。 `DiagnosticSource` 支持自动跨计算机关联。 .NET 库支持 `DiagnosticSource`，并允许通过 HTTP 等传输方法自动跨计算机传播关联上下文。
 
-`DiagnosticSource` 中的[活动用户指南](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md)解释了跟踪活动的基础知识。
+`DiagnosticSource` 中的[活动用户指南](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md)解释了跟踪活动的基础知识。
 
 ASP.NET Core 2.0 支持提取 HTTP 标头和启动新的活动。
 
@@ -318,24 +326,32 @@ ASP.NET Core 2.0 支持提取 HTTP 标头和启动新的活动。
 从版本 2.4.0-beta1 开始，Application Insights SDK 使用 `DiagnosticSource` 和 `Activity` 收集遥测数据并将其与当前活动相关联。
 
 <a name="java-correlation"></a>
-## <a name="telemetry-correlation-in-the-java-sdk"></a>Java SDK 中的遥测关联
+## <a name="telemetry-correlation-in-java"></a>Java 中的遥测关联
 
-[适用于 Java 的 Application Insights SDK](../../azure-monitor/app/java-get-started.md) 2.0.0 或更高版本支持自动关联遥测。 对于所有在请求范围内发出的遥测（例如跟踪、异常、自定义事件），它会自动填充 `operation_id`。 对于通过 HTTP 进行的服务到服务调用，它还会传播关联标头（如前所述），前提是 [Java SDK 代理](../../azure-monitor/app/java-agent.md)已配置。
+[Java 代理](/azure-monitor/app/java-in-process-agent)以及 [Java SDK](../../azure-monitor/app/java-get-started.md) 2.0.0 或更高版本支持自动关联遥测。 对于所有在请求范围内发出的遥测（例如跟踪、异常、自定义事件），它会自动填充 `operation_id`。 对于通过 HTTP 进行的服务到服务调用，它还会传播关联标头（如前所述），前提是 [Java SDK 代理](../../azure-monitor/app/java-agent.md)已配置。
 
 > [!NOTE]
-> 只有通过 Apache HttpClient 进行的调用才能使用关联功能。 Spring RestTemplate 和 Feign 实际上都可以与 Apache HttpClient 配合使用。
+> Application Insights Java 代理自动收集 JMS、Kafka、Netty/Webflux 等的请求和依赖项。 对于 Java SDK，关联功能仅支持通过 Apache HttpClient 进行的调用。 该 SDK 不支持跨消息传送技术（例如，Kafka、RabbitMQ 和 Azure 服务总线）自动进行上下文传播。 
 
-目前不支持跨消息传送技术（例如，Kafka、RabbitMQ 和 Azure 服务总线）自动进行上下文传播。 可以使用 `trackDependency` 和 `trackRequest` 方法手动为此类方案编写代码。 在这些方法中，依赖项遥测表示生成者排队的消息。 请求表示使用者正在处理的消息。 在这种情况下，`operation_id` 和 `operation_parentId` 都应在消息的属性中传播。
+> [!NOTE]
+> 若要收集自定义遥测，需要使用 Java 2.6 SDK 检测应用程序。 
 
-### <a name="telemetry-correlation-in-asynchronous-java-applications"></a>异步 Java 应用程序中的遥测关联
-
-若要了解如何在异步 Spring Boot 应用程序中关联遥测，请参阅[异步 Java 应用程序中的分布式跟踪](https://github.com/Microsoft/ApplicationInsights-Java/wiki/Distributed-Tracing-in-Asynchronous-Java-Applications)。 此文提供了有关检测 Spring 的 [ThreadPoolTaskExecutor](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/scheduling/concurrent/ThreadPoolTaskExecutor.html) 和 [ThreadPoolTaskScheduler](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/scheduling/concurrent/ThreadPoolTaskScheduler.html) 的指导。
-
-
-<a name="java-role-name"></a>
-## <a name="role-name"></a>角色名称
+### <a name="role-names"></a>角色名称
 
 你可能需要对组件名称在[应用程序映射](../../azure-monitor/app/app-map.md)中的显示方式进行自定义。 为此，可执行以下操作之一来手动设置 `cloud_RoleName`：
+
+- 对于 Application Insights Java 代理 3.0，请按如下所示设置云角色名称：
+
+    ```json
+    {
+      "instrumentationSettings": {
+        "preview": {
+          "roleName": "my cloud role name"
+        }
+      }
+    }
+    ```
+    还可以使用环境变量 `APPLICATIONINSIGHTS_ROLE_NAME` 设置云角色名称。
 
 - 使用 Application Insights Java SDK 2.5.0 和更高版本时，可以通过将 `<RoleName>` 添加到 ApplicationInsights.xml 文件来指定 `cloud_RoleName`：
 
@@ -357,12 +373,10 @@ ASP.NET Core 2.0 支持提取 HTTP 标头和启动新的活动。
 ## <a name="next-steps"></a>后续步骤
 
 - 编写[自定义遥测](../../azure-monitor/app/api-custom-events-metrics.md)。
+- 对于 ASP.NET Core 和 ASP.NET 中的高级关联方案，请参阅[跟踪自定义操作](custom-operations-tracking.md)。
 - 详细了解如何为其他 SDK [设置 cloud_RoleName](../../azure-monitor/app/app-map.md#set-cloud-role-name)。
 - 在 Application Insights 中载入微服务的所有组件。 查看[支持的平台](../../azure-monitor/app/platforms.md)。
 - 有关 Application Insights 的类型，请参阅[数据模型](../../azure-monitor/app/data-model.md)。
 - 了解如何[扩展和筛选遥测](../../azure-monitor/app/api-filtering-sampling.md)。
 - 参阅 [Application Insights 配置参考](configuration-with-applicationinsights-config.md)。
-
-
-
 

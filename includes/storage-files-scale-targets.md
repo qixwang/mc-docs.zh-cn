@@ -3,14 +3,14 @@ author: WenJason
 ms.service: storage
 ms.topic: include
 origin.date: 05/06/2019
-ms.date: 03/30/2020
+ms.date: 06/01/2020
 ms.author: v-jay
-ms.openlocfilehash: fdf906616e9da1a2853e3c664bb150fd8c055464
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: d696f4154b05dfff89b21f2f90286e9f847dd71c
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80341731"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199479"
 ---
 | 资源 | 标准文件共享 | 高级文件共享 |
 |----------|---------------|------------------------------------------|
@@ -28,4 +28,4 @@ ms.locfileid: "80341731"
 | 最大对象（目录和文件）名称长度 | 2,048 个字符 | 2,048 个字符 |
 | 最大路径名组成部分（在路径 \A\B\C\D 中，每个字母是一个组成部分） | 255 个字符 | 255 个字符 |
 
-\* 在大多数区域中可用，有关可用区域的详细信息，请参阅[区域可用性](../articles/storage/files/storage-files-planning.md#regional-availability)。
+\* 标准文件共享的默认值为 5 TiB。若要详细了解如何将标准文件共享纵向扩展到 100 TiB，请参阅[启用和创建大型文件共享](../articles/storage/files/storage-files-how-to-create-large-file-share.md)。

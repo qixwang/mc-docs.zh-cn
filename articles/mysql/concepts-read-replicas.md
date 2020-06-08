@@ -5,14 +5,14 @@ author: WenJason
 ms.author: v-jay
 ms.service: mysql
 ms.topic: conceptual
-origin.date: 01/16/2020
-ms.date: 02/10/2020
-ms.openlocfilehash: 700d92a2eb37bc347e5efc81682207022506ab57
-ms.sourcegitcommit: 4aeecfcc59cb42ba0b712a729d278d03bffc719a
+origin.date: 5/4/2020
+ms.date: 06/01/2020
+ms.openlocfilehash: bbb6a0471f382778d8d485f8e5a867c4c2c7c937
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81791034"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199696"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Azure Database for MySQL 中的只读副本
 
@@ -41,7 +41,7 @@ ms.locfileid: "81791034"
 可以在任何 [Azure Database for MySQL 区域](https://azure.microsoft.com/global-infrastructure/services/?regions=china-non-regional,china-east,china-east-2,china-north,china-north-2&products=mysql)中设置主服务器。  主服务器可以在其配对区域中有一个副本。
 
 ### <a name="paired-regions"></a>配对区域
-可以在主服务器的 Azure 配对区域中创建只读副本。
+可以在主服务器的 Azure 配对区域中创建只读副本。 如果你不知道所在区域的配对，可以从 [Azure 配对区域](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)一文中了解更多信息。
 
 如果你使用跨区域副本进行灾难恢复规划，建议你在配对区域而不是其他某个区域中创建副本。 配对区域可避免同时更新，并优先考虑物理隔离和数据驻留。  
 
@@ -57,7 +57,7 @@ ms.locfileid: "81791034"
 
 ## <a name="connect-to-a-replica"></a>连接到副本
 
-创建时，副本会继承主服务器的防火墙规则或 VNet 服务终结点。 之后，这些规则将独立于主服务器。
+创建时，副本会继承主服务器的防火墙规则。 之后，这些规则将独立于主服务器。
 
 副本从主服务器继承其管理员帐户。 主服务器上的所有用户帐户将复制到只读副本。 只能使用主服务器上可用的用户帐户连接到只读副本。
 
@@ -71,7 +71,7 @@ mysql -h myreplica.mysql.database.chinacloudapi.cn -u myadmin@myreplica -p
 
 ## <a name="monitor-replication"></a>监视复制
 
-Azure Database for MySQL 在 Azure Monitor 中提供“复制滞后时间(秒)”指标。  此指标仅适用于副本。
+Azure Database for MySQL 在 Azure Monitor 中提供“复制滞后时间(秒)”指标。 此指标仅适用于副本。
 
 此指标是使用 MySQL 的 `SHOW SLAVE STATUS` 命令中提供的 `seconds_behind_master` 指标计算的。
 
@@ -110,7 +110,7 @@ Azure Database for MySQL 在 Azure Monitor 中提供“复制滞后时间(秒)�
 > [!IMPORTANT]
 > 将主服务器的配置更新为新值之前，请将副本配置更新为与这些新值相等或更大的值。 此操作可确保副本与主服务器发生的任何更改保持同步。
 
-创建副本服务器时，防火墙规则、虚拟网络规则和参数设置会从主服务器继承到副本服务器。 之后，副本服务器的规则将独立。
+创建副本服务器时，防火墙规则和参数设置会从主服务器继承到副本服务器。 之后，副本服务器的规则将独立。
 
 ### <a name="stopped-replicas"></a>停止的副本
 
@@ -133,6 +133,8 @@ Azure Database for MySQL 在 Azure Monitor 中提供“复制滞后时间(秒)�
 - [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators)
 
 将在副本服务器上锁定 [`event_scheduler`](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_event_scheduler) 参数。 
+
+若要更新主服务器上的上述参数之一，请删除副本服务器，更新主服务器上的参数值，然后重新创建副本。
 
 ### <a name="other"></a>其他
 

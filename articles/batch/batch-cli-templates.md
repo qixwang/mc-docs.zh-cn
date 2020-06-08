@@ -1,23 +1,17 @@
 ---
-title: 使用模板端到端运行作业 - Azure Batch
+title: 使用模板端到端运行作业
 description: 只需使用 CLI 命令便可创建池、上传输入数据、创建作业和关联的任务，以及下载生成的输出数据。
-services: batch
-author: LauraBrenner
-manager: evansma
-ms.assetid: ''
-ms.service: batch
 ms.topic: article
-ms.workload: big-compute
 origin.date: 12/07/2018
 ms.date: 04/27/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: f6b7b9331ca102a697311194e6c48e0606c439ed
-ms.sourcegitcommit: 1fbdefdace8a1d3412900c6c3f89678d8a9b29bc
+ms.openlocfilehash: 7ada19002978f0eb0d051457db44fb3a39dc73d2
+ms.sourcegitcommit: cbaa1aef101f67bd094f6ad0b4be274bbc2d2537
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82886906"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84126787"
 ---
 # <a name="use-azure-batch-cli-templates-and-file-transfer"></a>使用 Azure Batch CLI 模板和文件传输
 
@@ -29,7 +23,7 @@ ms.locfileid: "82886906"
 
 通过 Azure CLI 扩展，非开发者用户可使用端到端的 Batch。 只需使用 CLI 命令便可创建池、上传输入数据、创建作业和关联的任务，以及下载生成的输出数据。 不需要任何其他代码。 可以直接运行 CLI 命令，也可以将其集成到脚本中。
 
-Batch 模板基于 [Azure CLI 中现有的 Batch 支持](batch-cli-get-started.md#json-files-for-resource-creation)，在创建池、作业、任务和其他项时允许使用 JSON 文件来指定属性值。 Batch 模板添加了以下功能：
+Batch 模板基于 [Azure CLI](batch-cli-get-started.md#json-files-for-resource-creation) 中现有的 Batch 支持构建，在创建池、作业、任务和其他项时允许使用 JSON 文件来指定属性值。 Batch 模板添加了以下功能：
 
 -   可以定义参数。 使用模板时，仅指定参数值以创建项，而在模板正文中指定其他项属性值。 了解 Batch 和 Batch 运行的应用程序的用户可以创建模板、指定池、作业和任务属性值。 不太熟悉 Batch 和/或应用程序的用户只需指定定义的参数的值。
 
@@ -157,7 +151,7 @@ CLI 会提示你提供 `poolId` 和 `nodeCount` 参数的值。 也可以提供 
 }
 ```
 
-如果参数 JSON 文件名为 pool-parameters.json，请按以下所示调用该模板  ：
+如果参数 JSON 文件名为 pool-parameters.json，请按以下所示调用该模板：
 
 ```azurecli
 az batch pool create --template pool-ffmpeg.json --parameters pool-parameters.json
@@ -261,11 +255,11 @@ CLI 同样会提示你提供参数的值。 也可以提供 JSON 文件中的参
 
 上传模板：
 
-1. 在 Batch Explorer 中，选择“库” > “本地模板”   。
+1. 在 Batch Explorer 中，选择“库” > “本地模板” 。
 
 2. 选择或拖放本地池或作业模板。
 
-3. 选择“使用此模板”，并按照屏幕上的提示操作  。
+3. 选择“使用此模板”，并按照屏幕上的提示操作。
 
 ## <a name="file-groups-and-file-transfer"></a>文件组和文件传输
 
@@ -283,7 +277,7 @@ az batch file download --file-group ffmpeg-output --local-path
     c:\output_lowres_videos
 ```
 
-通过池和作业模板，可将存储在文件组中的文件指定为复制到池节点或离开池节点返回到文件组。 例如，在之前指定的作业模板中，为任务工厂指定文件组 ffmpeg-input ，作为复制到节点以供转码的源视频文件的位置  。 文件组 ffmpeg-output 是从运行每个任务的节点复制已转码输出文件的位置  。
+通过池和作业模板，可将存储在文件组中的文件指定为复制到池节点或离开池节点返回到文件组。 例如，在之前指定的作业模板中，为任务工厂指定文件组 ffmpeg-input ，作为复制到节点以供转码的源视频文件的位置。 文件组 ffmpeg-output 是从运行每个任务的节点复制已转码输出文件的位置。
 
 ## <a name="summary"></a>摘要
 

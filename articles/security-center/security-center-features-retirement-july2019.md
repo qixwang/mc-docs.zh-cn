@@ -1,5 +1,5 @@
 ---
-title: 停用的安全中心功能（2019 年 7 月）| Azure
+title: 停用的安全中心功能（2019 年 7 月）
 description: 本文介绍 2019 年 7 月 31 日安全中心内停用的功能。
 services: security-center
 author: memildin
@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 05/15/2020
 ms.author: v-tawe
 origin.date: 09/10/2019
-ms.openlocfilehash: 703d0d062fd3dc50be355e1ab2e68cc7252e6094
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.openlocfilehash: 8b62ca3cac692e0d3a5c5c03fba81a5a2f871eab
+ms.sourcegitcommit: cbaa1aef101f67bd094f6ad0b4be274bbc2d2537
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83423122"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84126567"
 ---
 # <a name="retirement-of-security-center-features-july-2019"></a>停用的安全中心功能（2019 年 7 月）
 
@@ -44,7 +44,7 @@ ms.locfileid: "83423122"
 
 ## <a name="events-dashboard"></a>事件仪表板<a name="menu_events"></a>
 
-安全中心使用 Microsoft Monitoring Agent 收集计算机中各种与安全有关的配置和事件。 它将这些事件存储在工作区中。 [事件仪表板](https://docs.azure.cn/security-center/security-center-events-dashboard)让你能够查看这些数据，并为你提供 Log Analytics 的入口点。
+安全中心使用 Log Analytics 代理收集计算机中各种与安全有关的配置和事件。 它将这些事件存储在工作区中。 [事件仪表板](https://docs.microsoft.com/azure/security-center/security-center-events-dashboard)让你能够查看这些数据，并为你提供 Log Analytics 的入口点。
 
 我们停用了选择工作区时显示的事件仪表板：
 
@@ -88,11 +88,11 @@ Azure 安全中心目前使用 Azure Monitor 日志搜索来检索和分析安�
 
 我们停用了上述步骤中显示的三个屏幕。 你的数据在 Log Analytics 安全解决方案中仍然可用，并且没有被修改或删除。
 
-### <a name="classic-identity--access---the-new-experience"></a>经典标识和访问 - 新体验
+### <a name="classic-identity--access-preview---the-new-experience"></a>经典标识和访问（预览）- 新体验
 
 Log Analytics 仪表板在单个工作区中显示了见解。 但是，本机安全中心功能提供对所有订阅及其关联的所有工作区的可见性。 你可以访问易于使用的视图，该视图根据安全功能分数对建议进行排序，让你专注于重要事项。
 
-可以通过在安全中心内选择“标识和访问”来访问 Log Analytics 中的“标识和访问”仪表板的所有功能 。
+可以通过在安全中心选择“标识和访问(预览)”来访问 Log Analytics 中的“标识和访问”仪表板的所有功能 。
 
 ![标识页 - 经典体验停用][9]
 
@@ -103,7 +103,7 @@ Log Analytics 仪表板在单个工作区中显示了见解。 但是，本机�
 
 Azure 安全中心应用 [150 多种建议的规则](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335)来监视安全配置，以便强化 OS。 这些规则适用于防火墙、审核、密码策略等。 如果发现计算机中的某项配置有漏洞，则安全中心会生成安全建议。 [编辑安全配置屏幕](https://docs.azure.cn/security-center/security-center-customize-os-security-config)使客户能够在安全中心内自定义默认的 OS 安全配置。
 
-我们停用了此预览功能。 若要在停用日期后将安全配置重置回默认值，请使用[以下说明](https://github.com/Azure/Azure-Security-Center/tree/master/Powershell%20samples/Reset%20security%20configurations%20customization)通过 API 和 Powershell 执行此操作。
+我们停用了此预览功能。 若要在停用日期后将安全配置重置回默认值，请使用[以下说明](https://github.com/Azure/Azure-Security-Center/tree/master/Powershell%20scripts/Reset%20security%20configurations%20customization)通过 API 和 Powershell 执行此操作。
 
 ![编辑安全配置][17]
 

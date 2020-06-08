@@ -2,17 +2,16 @@
 title: 监视 Linux 上 Java Web 应用的性能 - Azure | Azure Docs
 description: 通过 Application Insights 的 CollectD 插件监视 Java 网站的扩展应用程序性能。
 ms.topic: conceptual
-author: lingliw
-manager: digimobile
+author: Johnnytechn
 origin.date: 03/14/2019
-ms.date: 6/4/2019
-ms.author: v-lingwu
-ms.openlocfilehash: 6d19b416fb3da1f441f0310c4e82b75f6d9a4ba9
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/28/2020
+ms.author: v-johya
+ms.openlocfilehash: fc5ebe00842b5278569254d1d95faa3552df9928
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78850415"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199702"
 ---
 # <a name="collectd-linux-performance-metrics-in-application-insights"></a>collectd：Application Insights 中的 Linux 性能指标
 
@@ -22,7 +21,7 @@ ms.locfileid: "78850415"
 如果已[使用 Application Insights 检测了 Java Web 服务][java]，则通常会使用 collectd。 它可提供更多数据，有助于增强应用性能或诊断问题。 
 
 ## <a name="get-your-instrumentation-key"></a>获取检测密钥
-在[世纪互联 Azure 门户](https://portal.azure.cn)中，打开要显示数据的 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 资源。 （或[创建新资源](../../azure-monitor/app/create-new-resource.md )。）
+在 [Azure 门户](https://portal.azure.cn)中，打开要显示数据的 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 资源。 （或[创建新资源](../../azure-monitor/app/create-new-resource.md )。）
 
 复制可标识资源的检测密钥。
 
@@ -32,7 +31,7 @@ ms.locfileid: "78850415"
 在 Linux 服务器计算机上：
 
 1. 安装 [collectd](https://collectd.org/) 版本 5.4.0 或更高版本。
-2. 下载 [Application Insights collectd 编写器插件](https://aka.ms/aijavasdk)。 注意版本号。
+2. 下载 [Application Insights collectd 编写器插件](https://github.com/microsoft/ApplicationInsights-Java/tree/master/collectd/src/main/java/com/microsoft/applicationinsights/collectd/internal)。 注意版本号。
 3. 将插件 JAR 复制到 `/usr/share/collectd/java`。
 4. 编辑 `/etc/collectd/collectd.conf`：
    * 确保已启用 [Java 插件](https://collectd.org/wiki/index.php/Plugin:Java)。
@@ -129,13 +128,9 @@ Application Insights 写入插件与某些读取插件不兼容。 Application I
 [apiexceptions]: ../../azure-monitor/app/api-custom-events-metrics.md#track-exception
 [availability]: ../../azure-monitor/app/monitor-web-app-availability.md
 [diagnostic]: ../../azure-monitor/app/diagnostic-search.md
-[eclipse]: app-insights-java-eclipse.md
 [java]: java-get-started.md
 [javalogs]: java-trace-logs.md
-[metrics]: ../../azure-monitor/app/metrics-explorer.md
-
-
-
+[metrics]: ../../azure-monitor/platform/metrics-charts.md
 
 
 

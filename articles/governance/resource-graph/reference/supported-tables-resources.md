@@ -1,16 +1,16 @@
 ---
 title: 支持的资源管理器资源类型
 description: 提供 Azure Resource Graph 和更改历史记录支持的资源管理器资源类型的列表。
-origin.date: 04/15/2020
-ms.date: 04/20/2020
+origin.date: 04/29/2020
+ms.date: 06/01/2020
 ms.topic: reference
 ms.author: v-tawe
-ms.openlocfilehash: 57318b5e67b6686642e96d1f2040aaa2e6dc1460
-ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
+ms.openlocfilehash: 9d975ed63fe540a7dcc453c39c0f1b4e9ff9acba
+ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82588617"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84275543"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Azure Resource Graph 表和资源类型引用
 
@@ -52,7 +52,11 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 - livearena.broadcast/services
 - mailjet.email/services
 - microsoft.aad/domainservices
+- microsoft.aadiam/privateLinkForAzureAD/read
 - microsoft.aadiam/tenants
+- microsoft.aisupercomputer/accounts
+- microsoft.aisupercomputer/accounts/jobgroups
+- microsoft.aisupercomputer/accounts/jobgroups/jobs
 - microsoft.alertsmanagement/actionrules
 - microsoft.alertsmanagement/smartdetectoralertrules
 - microsoft.analysisservices/servers
@@ -60,17 +64,21 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 - microsoft.appconfiguration/configurationstores
 - microsoft.appplatform/spring
 - microsoft.archive/collections
+- microsoft.attestation/attestationproviders
 - microsoft.automation/automationaccounts
 - microsoft.automation/automationaccounts/configurations
 - microsoft.automation/automationaccounts/runbooks
+- microsoft.autonomoussystems/workspaces
 - microsoft.azconfig/configurationstores
 - microsoft.azureactivedirectory/b2cdirectories
+- microsoft.azuredata/datacontrollers
 - microsoft.azuredata/hybriddatamanagers
 - microsoft.azuredata/postgresinstances
 - microsoft.azuredata/sqlbigdataclusters
 - microsoft.azuredata/sqlinstances
 - microsoft.azuredata/sqlserverregistrations
 - microsoft.azurestack/registrations
+- microsoft.azurestackhci/clusters
 - microsoft.baremetal/consoleconnections
 - microsoft.baremetal/crayservers
 - microsoft.baremetal/monitoringservers
@@ -101,6 +109,7 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 - microsoft.cognition/syntheticsaccounts
 - microsoft.cognitiveservices/accounts
 - microsoft.compute/availabilitysets
+- microsoft.compute/diskaccesses
 - microsoft.compute/diskencryptionsets
 - microsoft.compute/disks
 - microsoft.compute/galleries
@@ -141,6 +150,7 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 - microsoft.databricks/workspaces
 - microsoft.datacatalog/catalogs
 - microsoft.datacatalog/datacatalogs
+- microsoft.datadog/monitors
 - microsoft.datafactory/datafactories
 - microsoft.datafactory/factories
 - microsoft.datalakeanalytics/accounts
@@ -353,6 +363,7 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 - microsoft.remoteapp/collections
 - microsoft.resourcegraph/queries
 - microsoft.resources/deploymentscripts
+- microsoft.resources/templatespecs
 - microsoft.saas/applications
 - microsoft.scheduler/jobcollections
 - microsoft.search/searchservices
@@ -407,6 +418,12 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 - microsoft.visualstudio/account
 - microsoft.visualstudio/account/extension
 - microsoft.visualstudio/account/project
+- microsoft.vmware/arczones
+- microsoft.vmware/resourcepools
+- microsoft.vmware/vcenters
+- microsoft.vmware/virtualmachines
+- microsoft.vmware/virtualmachinetemplates
+- microsoft.vmware/virtualnetworks
 - microsoft.vmwarecloudsimple/dedicatedcloudnodes
 - microsoft.vmwarecloudsimple/dedicatedcloudservices
 - microsoft.vmwarecloudsimple/virtualmachines
@@ -456,7 +473,6 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 
 ## <a name="securityresources"></a>securityresources
 
-- assessmentmetadata
 - microsoft.security/assessments
 - microsoft.security/assessments/subassessments
 - microsoft.security/pricings

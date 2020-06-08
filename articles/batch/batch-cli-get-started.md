@@ -1,26 +1,17 @@
 ---
-title: Azure Batch CLI 入门 | Microsoft Docs
+title: Azure CLI for Batch 入门
 description: Azure CLI 中用于管理 Azure Batch 服务资源的 Batch 命令简介
-services: batch
-documentationcenter: ''
-author: LauraBrenner
-manager: evansma
-editor: ''
-ms.assetid: fcd76587-1827-4bc8-a84d-bba1cd980d85
-ms.service: batch
 ms.topic: conceptual
-ms.tgt_pltfrm: multiple
-ms.workload: big-compute
 origin.date: 07/24/2018
 ms.date: 10/19/2018
 ms.author: v-lingwu
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a6eb78688985241e4fdc10e3c497a4e983d9d8c7
-ms.sourcegitcommit: 1fbdefdace8a1d3412900c6c3f89678d8a9b29bc
+ms.openlocfilehash: 6332161b00dbc1e010d1b5f60235fbcbe9fca9af
+ms.sourcegitcommit: cbaa1aef101f67bd094f6ad0b4be274bbc2d2537
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82886907"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84126789"
 ---
 # <a name="manage-batch-resources-with-azure-cli"></a>使用 Azure CLI 管理 Batch 资源
 
@@ -131,7 +122,7 @@ az batch pool create my_batch_pool.json
 
 尽管只使用命令行选项即可创建大多数 Batch 资源，但某些功能需要指定 JSON 格式的包含资源详细信息的文件。 例如，若要指定启动任务的资源文件，必须使用 JSON 文件。
 
-若要查看创建资源所需的 JSON 语法，请参阅 [Batch REST API 参考][rest_api]文档。 REST API 参考中的每个“添加资源类型”主题都包含用于创建该资源的示例 JSON 脚本。  可以将这些示例 JSON 脚本用作模板，以便将 JSON 文件与 Azure CLI 配合使用。 例如，若要查看用于创建池的 JSON 语法，请参阅[向帐户添加池][rest_add_pool]。
+若要查看创建资源所需的 JSON 语法，请参阅 [Batch REST API 参考][rest_api]文档。 REST API 参考中的每个“添加资源类型”主题都包含用于创建该资源的示例 JSON 脚本。 可以将这些示例 JSON 脚本用作模板，以便将 JSON 文件与 Azure CLI 配合使用。 例如，若要查看用于创建池的 JSON 语法，请参阅[向帐户添加池][rest_add_pool]。
 
 如需用于指定 JSON 文件的示例脚本，请参阅[使用 Batch 运行作业和任务](./scripts/batch-cli-sample-run-job.md)。
 

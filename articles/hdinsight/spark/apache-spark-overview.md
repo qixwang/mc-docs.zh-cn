@@ -8,15 +8,15 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.devlang: na
 ms.topic: overview
-origin.date: 02/25/2020
+origin.date: 04/17/2020
 ms.date: 03/23/2020
 ms.author: v-yiso
-ms.openlocfilehash: 0e95bc84889354c30ca065a753c8dd9218e3b1ca
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: b7867073c205598e5b075308cc67321750498734
+ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79295942"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84186434"
 ---
 # <a name="what-is-apache-spark-in-azure-hdinsight"></a>Azure HDInsight 中的 Apache Spark 是什么
 
@@ -43,7 +43,7 @@ HDInsight 中的 Spark 群集提供完全托管的 Spark 服务。 下面列出�
 | SSD 缓存 |可以选择将数据缓存在内存中，或缓存在已附加到群集节点的 SSD 中。 内存缓存提供最佳的查询性能，但可能费用不菲。 SSD 缓存是改善查询性能的绝佳选项，而且不需要根据内存中的整个数据集创建满足其需求的群集规模。 请参阅[使用 Azure HDInsight IO 缓存提高 Apache Spark 工作负载的性能](apache-spark-improve-performance-iocache.md)。 |
 | 与 BI 工具集成 |HDInsight 中的 Spark 群集提供 BI 工具（如 [Power BI](https://www.powerbi.com/)）的连接器，用于数据分析。 |
 | 预先加载的 Anaconda 库 |HDInsight 中的 Spark 群集随附预先安装的 Anaconda 库。 [Anaconda](https://docs.continuum.io/anaconda/) 提供将近 200 个用于机器学习、数据分析、可视化效果等的库。 |
-| 可伸缩性 | HDInsight 允许更改群集节点数量。 此外，由于所有数据都存储在 Azure 存储或 Data Lake Storage 中，因此可以在不丢失数据的情况下删除 Spark 群集。 |
+| 自适应性 | HDInsight 允许更改群集节点数量。 此外，由于所有数据都存储在 Azure 存储或 Data Lake Storage 中，因此可以在不丢失数据的情况下删除 Spark 群集。 |
 | SLA |HDInsight 中的 Spark 群集附有全天候支持和保证正常运行时间达 99.9% 的 SLA。 |
 
 默认情况下，HDInsight 中的 Apache Spark 群集可通过群集提供以下组件。
@@ -54,7 +54,7 @@ HDInsight 中的 Spark 群集提供完全托管的 Spark 服务。 下面列出�
 * [Jupyter 笔记本](https://jupyter.org)
 * [Apache Zeppelin 笔记本](http://zeppelin-project.org/)
 
-HDInsight 中的 Spark 群集还提供 [ODBC 驱动程序](https://go.microsoft.com/fwlink/?LinkId=616229)，可让你从诸如 Microsoft Power BI 的 BI 工具连接到 HDInsight 中的 Spark 群集。
+HDInsight Spark 群集提供了一个 [ODBC 驱动程序](https://go.microsoft.com/fwlink/?LinkId=616229)，用于从 BI 工具（例如 Microsoft Power BI）建立连接。
 
 ## <a name="spark-cluster-architecture"></a>Spark 群集体系结构
 
@@ -64,11 +64,11 @@ HDInsight 中的 Spark 群集还提供 [ODBC 驱动程序](https://go.microsoft.
 
 Spark 应用程序在群集上作为一组独立的进程运行，由主要程序（称为驱动器程序）中的 SparkContext 对象加以协调。
 
-SparkContext 可连接到多种类型的群集管理器，因而可跨应用程序分配资源。 这些群集管理器包括 [Apache Mesos](https://mesos.apache.org/)、[Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) 或 Spark 群集管理器。 在 HDInsight 中，Spark 使用 YARN 群集管理器运行。 连接后，Spark 可获取群集中工作节点上的执行程序，该执行程序是为应用程序运行计算和存储数据的进程。 然后，它将应用程序代码（由传递给 SparkContext 的 JAR 或 Python 文件指定）发送到执行程序。 最后，SparkContext 将任务发送给执行程序来运行。
+SparkContext 可连接到多种类型的群集管理器，可跨应用程序分配资源。 这些群集管理器包括 Apache Mesos、[Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) 或 Spark 群集管理器。 在 HDInsight 中，Spark 使用 YARN 群集管理器运行。 连接后，Spark 可获取群集中工作节点上的执行程序，该执行程序是为应用程序运行计算和存储数据的进程。 然后，它将应用程序代码（由传递给 SparkContext 的 JAR 或 Python 文件指定）发送到执行程序。 最后，SparkContext 将任务发送给执行程序来运行。
 
 SparkContext 在工作节点上运行用户的主函数，并执行各种并行操作。 然后，SparkContext 收集操作的结果。 工作节点从 Hadoop 分布式文件系统读取数据并将数据写入其中。 工作节点还将已转换数据作为弹性分布式数据集 (RDD) 缓存在内存中。
 
-SparkContext 连接到 Spark 主服务器，并负责将应用程序转换为单个任务的有向图 (DAG)，这些任务在工作节点上的执行程序进程中执行。 每个应用程序获取自己的执行程序进程，这些进程在整个应用程序持续时间内保留，并以多个线程运行任务。
+SparkContext 连接到 Spark 主节点，负责将应用程序转换为各个任务的有向图 (DAG)。 在工作器节点上的执行程序进程内执行的任务。 每个应用程序都有其自己的执行程序进程。 这些进程会在整个应用程序的持续时间内保持运行，并以多个线程的形式运行任务。
 
 ## <a name="spark-in-hdinsight-use-cases"></a>HDInsight 中的 Spark 用例
 
@@ -82,14 +82,10 @@ HDInsight 中的 Apache Spark 将数据存储在 Azure 存储或 Azure Data Lake
 
 ### <a name="spark-machine-learning"></a>Spark 机器学习
 
-Apache Spark 随附 [MLlib](https://spark.apache.org/mllib/) - 构建在 Spark（可以从 HDInsight 中的 Spark 群集使用）基础之上的机器学习库。 HDInsight 中的 Spark 群集还包含 Anaconda - 为机器学习提供各种包的 Python 发行版。 结合内置的 Jupyter 和 Zeppelin 笔记本支持，即可拥有机器学习应用程序创建环境。
+Apache Spark 附带了 [MLlib](https://spark.apache.org/mllib/)。 MLlib 是在 Spark 基础上构建的机器学习库，可以从 HDInsight 中的 Spark 群集使用。 HDInsight 中的 Spark 群集还包含 Anaconda - 为机器学习提供各种包的 Python 发行版。 结合内置的 Jupyter 和 Zeppelin 笔记本支持，你有了一个用于创建机器学习应用程序的环境。
 
 * [教程：使用 HVAC 数据预测建筑物温度](apache-spark-ipython-notebook-machine-learning.md)  
 * [教程：预测食品检测结果](apache-spark-machine-learning-mllib-ipython.md)
-
-### <a name="spark-streaming-and-real-time-data-analysis"></a>Spark 流式处理和实时数据分析
-
-    Spark clusters in HDInsight offer a rich support for building real-time analytics solutions. While Spark already has connectors to ingest data from many sources like Kafka, Flume, Twitter, ZeroMQ, or TCP sockets, Spark in HDInsight adds first-class support for ingesting data from Azure Event Hubs. Event Hubs is the most widely used queuing service on Azure. Having an out-of-the-box support for Event Hubs makes Spark clusters in HDInsight an ideal platform for building real-time analytics pipeline.
 
 ## <a name="where-do-i-start"></a>从哪里开始？
 
@@ -103,6 +99,6 @@ Apache Spark 随附 [MLlib](https://spark.apache.org/mllib/) - 构建在 Spark�
 
 ## <a name="next-steps"></a>后续步骤
 
-在此概述中，可了解 Azure HDInsight 中 Apache Spark 的一些基础知识。 转到下一文章，了解如何创建 HDInsight Spark 群集并运行 Spark SQL 查询：
+在此概述中，可了解 Azure HDInsight 中 Apache Spark 的一些基础知识。 了解如何创建 HDInsight Spark 群集并运行一些 Spark SQL 查询：
 
 - [在 HDInsight 中创建 Apache Spark 群集](./apache-spark-jupyter-spark-sql-use-portal.md)

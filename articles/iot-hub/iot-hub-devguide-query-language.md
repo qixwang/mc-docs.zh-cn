@@ -8,13 +8,13 @@ services: iot-hub
 ms.topic: conceptual
 origin.date: 10/29/2018
 ms.author: v-yiso
-ms.date: 05/11/2019
-ms.openlocfilehash: 3b576fc939bd42ae7b0e0da3d8d09e14673988aa
-ms.sourcegitcommit: 95efd248f5ee3701f671dbd5cfe0aec9c9959a24
+ms.date: 06/08/2019
+ms.openlocfilehash: a548d484124ecac24cd833c858e15b5b8064900f
+ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82507743"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84186926"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>用于设备和模块孪生、作业和消息路由的 IoT 中心查询语言
 
@@ -183,7 +183,7 @@ SELECT * FROM devices.modules
 
 ### <a name="c-example"></a>C# 示例
 
-查询功能由 [C# 服务 SDK](iot-hub-devguide-sdks.md) 在 RegistryManager 类中公开  。
+查询功能由 [C# 服务 SDK](iot-hub-devguide-sdks.md) 在 RegistryManager 类中公开。
 
 下面是一个简单的查询示例：
 
@@ -199,13 +199,13 @@ while (query.HasMoreResults)
 }
 ```
 
-“查询”对象实例化为页面大小（最大为 100）  。 然后通过多次调用 GetNextAsTwinAsync 方法来检索多个页面  。
+“查询”对象实例化为页面大小（最大为 100）。 然后通过多次调用 GetNextAsTwinAsync 方法来检索多个页面。
 
-查询对象公开多个“下一步”值，具体取决于该查询所需的反序列化选项  。 例如，设备孪生或作业对象，或使用投影时的普通 JSON。
+查询对象公开多个“下一步”值，具体取决于该查询所需的反序列化选项。 例如，设备孪生或作业对象，或使用投影时的普通 JSON。
 
 ### <a name="nodejs-example"></a>Node.js 示例
 
-查询功能由[适用于 Node.js 的 Azure IoT 服务 SDK](iot-hub-devguide-sdks.md) 在 Registry 对象中公开  。
+查询功能由[适用于 Node.js 的 Azure IoT 服务 SDK](iot-hub-devguide-sdks.md) 在 Registry 对象中公开。
 
 下面是一个简单的查询示例：
 
@@ -228,13 +228,13 @@ var onResults = function(err, results) {
 query.nextAsTwin(onResults);
 ```
 
-“查询”对象实例化为页面大小（最大为 100）  。 然后通过多次调用 nextAsTwin 方法来检索多个页面  。
+“查询”对象实例化为页面大小（最大为 100）。 然后通过多次调用 nextAsTwin 方法来检索多个页面。
 
-查询对象公开多个“下一步”值，具体取决于该查询所需的反序列化选项  。 例如，设备孪生或作业对象，或使用投影时的普通 JSON。
+查询对象公开多个“下一步”值，具体取决于该查询所需的反序列化选项。 例如，设备孪生或作业对象，或使用投影时的普通 JSON。
 
 ### <a name="limitations"></a>限制
 > [!IMPORTANT]
-> 关于设备孪生中的最新值，查询结果可能有几分钟的延迟。 如果通过 ID 查询单个设备孪生，请使用检索设备双向 API。 此 API 始终包含最新值，并具有更高的节流限制。
+> 关于设备孪生中的最新值，查询结果可能有几分钟的延迟。 如果按 ID 查询单个设备孪生，请使用[获取孪生 REST API](https://docs.microsoft.com/rest/api/iothub/service/twin/getdevicetwin)。 此 API 始终返回最新值，并具有更高的节流限制。 可以直接发出 REST API 或使用 [Azure IoT 中心服务 SDK](iot-hub-devguide-sdks.md#azure-iot-hub-service-sdks) 之一中的等效功能。
 
 目前，仅支持在基元类型（无对象）之间进行比较，例如，仅在这些属性具有基元值时才支持 `... WHERE properties.desired.config = properties.reported.config`。
 
@@ -324,7 +324,7 @@ FROM <from_specification>
 
 ## <a name="from-clause"></a>FROM 子句
 
-FROM <from_specification> 子句只能假定三个值  ：用于查询设备孪生的“FROM devices”、用于查询模块孪生的“FROM devices.modules”或用于根据设备详情查询作业“FROM devices.jobs”    。
+FROM <from_specification> 子句只能假定三个值：用于查询设备孪生的“FROM devices”、用于查询模块孪生的“FROM devices.modules”或用于根据设备详情查询作业“FROM devices.jobs”  。
 
 ## <a name="where-clause"></a>WHERE 子句
 **WHERE <filter_condition>** 子句是可选的。 它指定要将 FROM 集合中的 JSON 文档内含在结果中时需满足的一项或多项条件。 任何 JSON 文档必须将指定的条件求值为“true”才能包含在结果中。
@@ -397,7 +397,7 @@ GROUP BY 的正式语法为：
 * 求值结果为 JSON 类型的实例（例如布尔值、数字、字符串、数组或对象）。
 * 由设备 JSON 文档中的操作数据以及使用内置运算符和函数的常量定义。
 
-条件  是求值为布尔值的表达式。 将任何不同于布尔值“true”的常数视为“false”   。 此规则包括“Null”、“undefined”、任何对象或数组实例、任何字符串和布尔值“false”    。
+条件是求值为布尔值的表达式。 将任何不同于布尔值“true”的常数视为“false” 。 此规则包括“Null”、“undefined”、任何对象或数组实例、任何字符串和布尔值“false”  。
 
 表达式的语法为：
 

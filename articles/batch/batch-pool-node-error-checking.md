@@ -1,19 +1,17 @@
 ---
-title: 检查池和节点错误 - Azure Batch
+title: 检查池和节点错误
 description: 本文介绍在创建池和节点时可能发生的后台操作、要检查的错误以及如何避免这些错误。
-services: batch
-ms.service: batch
 author: mscurrell
 ms.author: v-tawe
 origin.date: 08/23/2019
 ms.date: 04/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: 905950972a7baf485097366ad1c49ce0a37ffd39
-ms.sourcegitcommit: 1fbdefdace8a1d3412900c6c3f89678d8a9b29bc
+ms.openlocfilehash: 7a50c29a7b2f91bee3a21833e5ea82b84d222ab4
+ms.sourcegitcommit: cbaa1aef101f67bd094f6ad0b4be274bbc2d2537
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82886891"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84126677"
 ---
 # <a name="check-for-pool-and-node-errors"></a>检查池和节点错误
 
@@ -89,13 +87,13 @@ ms.locfileid: "82886891"
 
 ### <a name="container-download-failure"></a>容器下载失败
 
-可以在池上指定一个或多个容器引用。 Batch 可将指定的容器下载到每个节点。 节点的 [errors](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) 属性报告容器下载失败，并将节点状态设置为“不可用”  。
+可以在池上指定一个或多个容器引用。 Batch 可将指定的容器下载到每个节点。 节点的 [errors](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) 属性报告容器下载失败，并将节点状态设置为“不可用”。
 
 ### <a name="node-in-unusable-state"></a>处于“不可用”状态的节点
 
 Azure Batch 可能出于多种原因将[节点状态](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodestate)设置为 **unusable**。 将节点状态设置为 **unusable** 后，无法为该节点计划任务，但它仍会产生费用。
 
-节点处于“unusable”状态但  没有 [errors](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror)，这意味着 Batch 无法与 VM 通信。 在这种情况下，Batch 始终尝试恢复 VM。 Batch 不会自动尝试恢复无法安装应用程序包或容器的 VM，即使这些 VM 的状态为“unusable”  。
+节点处于“unusable”状态但没有 [errors](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror)，这意味着 Batch 无法与 VM 通信。 在这种情况下，Batch 始终尝试恢复 VM。 Batch 不会自动尝试恢复无法安装应用程序包或容器的 VM，即使这些 VM 的状态为“unusable”。
 
 如果 Batch 可以确定原因，则节点 [errors](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) 属性会报告此原因。
 
@@ -125,21 +123,36 @@ Batch 使用池节点 VM 的临时驱动器来存储作业文件、任务文件�
 - 任务资源文件
 - 下载到某个 Batch 文件夹的特定于应用程序的文件
 - 每次用于执行任务应用程序的 stdout 和 stderr 文件
-- 特定于应用程序的输出文件。其中某些文件（例如，池应用程序包或池启动任务资源文件）仅在创建池节点时写入一次。 即使是仅在创建节点时写入一次，但如果这些文件太大，它们也可能会填满临时驱动器。
+- 特定于应用程序的输出文件
+
+其中某些文件（例如，池应用程序包或池启动任务资源文件）仅在创建池节点时写入一次。 即使是仅在创建节点时写入一次，但如果这些文件太大，它们也可能会填满临时驱动器。
 
 将为在节点上运行的每个任务写出其他文件，例如 stdout 和 stderr。 如果在同一节点上运行大量任务并且/或者任务文件太大，这些文件可能会填满临时驱动器。
 
 临时驱动器的大小取决于 VM 大小。 选择 VM 大小时，一个注意事项是确保临时驱动器具有足够的空间。
+
 - 在 Azure 门户中添加池时，可以显示 VM 大小的完整列表，其中包含一个“资源磁盘大小”列。
-- 介绍所有 VM 大小的文章（例如[计算优化的 VM 大小](/virtual-machines/windows/sizes-compute)）中提供了包含“临时存储”列的表格。对于确定任务文件在被系统自动清理之前要保留多长时间的每个任务，可以指定保留时间。 可以缩短保留时间以降低存储需求。
+- 描述所有 VM 大小的文章都有包含“临时存储”列的表格（例如，[计算优化 VM 大小](/virtual-machines/windows/sizes-compute)）
+
+通过每个任务写出文件时，可以为每个任务指定保留时间，该保留时间决定了任务文件在被自动清除之前会保留多长时间。 可以缩短保留时间以降低存储需求。
+
+
 如果临时磁盘的空间耗尽（或者快要耗尽），节点将转换为[不可用](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodestate)状态，并且会报告节点错误，指出磁盘已满。
+
 ### <a name="what-to-do-when-a-disk-is-full"></a>磁盘已满时怎么办
+
 确定磁盘已满的原因：如果不确定哪些内容占用了节点上的空间，建议通过远程方式连接到节点，并手动调查空间耗尽的原因。 还可以利用 [Batch 列出文件 API](https://docs.microsoft.com/rest/api/batchservice/file/listfromcomputenode) 来检查 Batch 托管文件夹中的文件（例如任务输出）。 请注意，此 API 只会列出 Batch 托管目录中的文件。如果任务在其他位置创建了文件，则你看不到这些文件。
+
 确保已从节点中检索到所需的数据或已将其上传到持久存储。 磁盘填满问题的所有缓解措施都涉及到通过删除数据来释放空间。
+
 ### <a name="recovering-the-node"></a>恢复节点
+
 1. 如果你的池是 [C.loudServiceConfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#cloudserviceconfiguration) 池，可以通过 [Batch 重置映像 API](https://docs.microsoft.com/rest/api/batchservice/computenode/reimage) 来重置节点的映像。这会清理整个磁盘。 [VirtualMachineConfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#virtualmachineconfiguration) 池目前不支持重置映像。
+
 2. 如果你的池是 [VirtualMachineConfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#virtualmachineconfiguration)，可以使用[删除节点 API](https://docs.microsoft.com/rest/api/batchservice/pool/removenodes) 从池中删除节点。 然后，可以再次增大池，以将不良的节点替换为全新的节点。
+
 3.  删除其任务数据仍保留在节点上的旧的已完成作业或旧的已完成任务。 若要了解哪些作业/任务数据会保留在节点上，可以查看节点上的 [RecentTasks 集合](https://docs.microsoft.com/rest/api/batchservice/computenode/get#taskinformation)或[节点上的文件](https://docs.microsoft.com//rest/api/batchservice/file/listfromcomputenode)。 删除作业会删除该作业中的所有任务，而删除作业中的任务会触发所要删除节点上的任务目录中的数据，从而释放空间。 释放足够的空间后，重新启动该节点，然后，该节点会摆脱“不可用”状态，再次进入“空闲”状态。
+
 ## <a name="next-steps"></a>后续步骤
 
 检查是否已将应用程序设置为实施全面的错误检查，尤其是对于异步操作。 及时检测和诊断问题有时是很关键的。

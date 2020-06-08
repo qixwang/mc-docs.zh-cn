@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/22/2020
+ms.date: 05/28/2020
 ms.author: v-junlch
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: f8cdc39c75bf0b13e5392b4a5a594efe0d75ed6e
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.openlocfilehash: 11f72dd06d49dde1480e5f5f6e9982d0e9e5ae64
+ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82126462"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84186870"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Azure AD 身份验证和授权错误代码
 
@@ -72,9 +72,9 @@ ms.locfileid: "82126462"
 | `temporarily_unavailable` | 服务器暂时繁忙，无法处理请求。 | 重试请求。 客户端应用程序可向用户说明，其响应由于临时状况而延迟。 |
 
 ## <a name="lookup-current-error-code-information"></a>查找当前错误代码信息
-错误代码和消息可能会更改。  有关最新信息，请查看 `https://login.partner.microsoftonline.cn/error` 页，以查找 AADSTS 错误说明、修复程序和一些建议的解决方法。  
+错误代码和消息可能会更改。  有关最新信息，请查看 [https://login.partner.microsoftonline.cn/error](https://login.partner.microsoftonline.cn/error) 页，以查找 AADSTS 错误说明、修复程序和一些建议的解决方法。  
 
-针对返回的错误代码的数字部分进行搜索。  例如，如果收到错误代码“AADSTS16000”，则在 `https://login.partner.microsoftonline.cn/error` 中搜索“16000”。  还可以通过将错误代码编号添加到 URL `https://login.partner.microsoftonline.cn/error?code=16000` 来直接链接到特定错误。
+针对返回的错误代码的数字部分进行搜索。  例如，如果收到错误代码“AADSTS16000”，则在 [https://login.partner.microsoftonline.cn/error](https://login.partner.microsoftonline.cn/error) 中搜索“16000”。  还可以通过将错误代码编号添加到 URL [https://login.partner.microsoftonline.cn/error?code=16000](https://login.partner.microsoftonline.cn/error?code=16000) 来直接链接到特定错误。
 
 ## <a name="aadsts-error-codes"></a>AADSTS 错误代码
 
@@ -189,6 +189,7 @@ ms.locfileid: "82126462"
 | AADSTS65001 | DelegationDoesNotExist - 用户或管理员尚未许可将应用程序与 ID X 配合使用。请发送针对该用户和资源的交互式授权请求。 |
 | AADSTS65004 | UserDeclinedConsent - 用户已拒绝许可访问该应用。 让用户重试登录并许可应用|
 | AADSTS65005 | MisconfiguredApplication - 应用所需的资源访问列表不包含可以通过资源来发现的应用，或者客户端应用请求访问的资源未在其必需的资源访问列表中指定，或者 Graph 服务返回了错误的请求，或者资源找不到。 如果应用支持 SAML，则原因可能是使用错误的标识符（实体）配置了应用。  |
+| AADSTS650052 | 应用需要访问你的组织 `\"{organization}\"` 尚未订阅或启用的服务 `(\"{name}\")`。 若要查看服务订阅的配置，请与 IT 管理员联系。 |
 | AADSTS67003 | ActorNotValidServiceIdentity |
 | AADSTS70000 | InvalidGrant - 身份验证失败。 刷新令牌无效。 该错误的可能原因如下：<ul><li>令牌绑定标头为空</li><li>令牌绑定哈希不匹配</li></ul> |
 | AADSTS70001 | UnauthorizedClient - 应用程序处于禁用状态。 |
@@ -206,6 +207,7 @@ ms.locfileid: "82126462"
 | AADSTS75001 | BindingSerializationError - SAML 消息绑定期间出错。 |
 | AADSTS75003 | UnsupportedBindingError - 应用返回了与不受支持的绑定相关的错误（无法通过 HTTP POST 以外的绑定发送 SAML 协议响应）。 |
 | AADSTS75005 | Saml2MessageInvalid - Azure AD 不支持应用针对 SSO 所发送的 SAML 请求。 |
+| AADSTS7500514 | 找不到支持的 SAML 响应类型。 支持的响应类型为“Response”（在 XML 命名空间“'urn:oasis:names:tc:SAML:2.0:protocol”中）或“Assertion”（在 XML 命名空间“urn:oasis:names:tc:SAML:2.0:assertion”中）。 应用程序错误 - 开发人员会处理此错误。|
 | AADSTS75008 | RequestDeniedError - 由于 SAML 请求的目标不符合预期，来自应用的请求被拒绝。 |
 | AADSTS75011 | NoMatchedAuthnContextInOutputClaims - 用户在服务中用于身份验证的身份验证方法与请求的身份验证方法不匹配。 |
 | AADSTS75016 | Saml2AuthenticationRequestInvalidNameIDPolicy - SAML2 身份验证请求包含无效的 NameIdPolicy。 |
@@ -248,7 +250,7 @@ ms.locfileid: "82126462"
 | AADSTS90043 | NationalCloudAuthCodeRedirection - 已禁用该功能。 |
 | AADSTS90051 | InvalidNationalCloudId - 国家云标识符包含无效的云标识符。 |
 | AADSTS90055 | TenantThrottlingError - 传入的请求过多。 此异常是针对阻止的租户引发的。 |
-| AADSTS90056 | BadResourceRequest - 若要兑换访问令牌的代码，应用应该向 `/token` 终结点发送 POST 请求。 另外，在此之前，应该提供授权代码，并在发往 `/token` 终结点的 POST 请求中发送此代码。 有关 OAuth 2.0 授权代码流的概述，请参阅此文章：[/active-directory/develop/active-directory-protocols-oauth-code](/active-directory/develop/active-directory-protocols-oauth-code)。 将用户定向到 `/authorize` 终结点，该终结点会返回 authorization_code。 通过向 `/token` 终结点发布请求，用户可以获取访问令牌。 在 Azure 门户中登录，并检查“应用注册”>“终结点”以确认是否正确配置了两个终结点。  |
+| AADSTS90056 | BadResourceRequest - 若要兑换访问令牌的代码，应用应该向 `/token` 终结点发送 POST 请求。 另外，在此之前，应该提供授权代码，并在发往 `/token` 终结点的 POST 请求中发送此代码。 有关 OAuth 2.0 授权代码流的概述，请参阅此文章：[/active-directory/develop/active-directory-protocols-oauth-code](/active-directory/develop/active-directory-protocols-oauth-code)。 将用户定向到 `/authorize` 终结点，该终结点会返回 authorization_code。 通过向 `/token` 终结点发布请求，用户可以获取访问令牌。 在 Azure 门户中登录，并检查“应用注册”>“终结点”以确认是否正确配置了两个终结点。 |
 | AADSTS90072 | PassThroughUserMfaError - 用户登录时所用的外部帐户在其登录到的租户中不存在；因此，该用户无法满足该租户的 MFA 要求。 必须先将该帐户作为外部用户添加到该租户中。 请注销并使用其他 Azure AD 用户帐户登录。 |
 | AADSTS90081 | OrgIdWsFederationMessageInvalid - 服务尝试处理 WS 联合身份验证消息时出错。 消息无效。 |
 | AADSTS90082 | OrgIdWsFederationNotSupported - 目前不支持对该请求使用所选的身份验证策略。 |
@@ -311,6 +313,7 @@ ms.locfileid: "82126462"
 | AADSTS700020 | InteractionRequired - 访问权限授予需要交互。 |
 | AADSTS700022 | InvalidMultipleResourcesScope - 为输入参数范围提供的值无效，因为它包含多个资源。 |
 | AADSTS700023 | InvalidResourcelessScope - 请求访问令牌时，为输入参数范围提供的值无效。 |
+| AADSTS7000215 | 提供的客户端密码无效。 开发人员错误 - 应用尝试在没有必需的或正确的身份验证参数的情况下登录。|
 | AADSTS7000222| InvalidClientSecretExpiredKeysProvided - 提供的客户端密钥已过期。 访问 Azure 门户，为你的应用创建新密钥，或者考虑使用证书凭据提高安全性： https://docs.azure.cn/active-directory/develop/active-directory-certificate-credentials |
 | AADSTS700005 | InvalidGrantRedeemAgainstWrongTenant - 提供的授权代码是用于其他租户的，因此已被拒绝。 兑换 OAuth2 授权代码时所针对的租户必须是获取该代码时所针对的租户（根据情况使用 /common 或 {tenant ID} 进行指定） |
 | AADSTS1000000 | UserNotBoundError - 绑定 API 要求 Azure AD 用户同时使用外部 IDP 进行身份验证，但尚未执行此操作。 |

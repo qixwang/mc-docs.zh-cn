@@ -15,12 +15,12 @@ ms.workload: na
 origin.date: 10/02/2019
 ms.date: 03/02/2020
 ms.author: v-lingwu
-ms.openlocfilehash: 8be6716caa6583f6228bf9351648990dafae5c25
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: fa22d9430632e305f58a46f5d873a670226423ec
+ms.sourcegitcommit: 1578f3feab2805d00156b2afcfac9c69a42837cb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80342343"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84172846"
 ---
 # <a name="azure-best-practices-for-network-security"></a>Azure 网络安全最佳做法
 本文介绍一系列有关增强网络安全性的 Azure 最佳做法。 这些最佳实践衍生自我们的 Azure 网络经验和客户的经验。
@@ -68,7 +68,7 @@ Azure 虚拟网络类似于本地网络上的 LAN。 Azure 虚拟网络背后的
 **详细信息**：针对你认为将来可能会更改的，或者要在多个网络安全组之间使用的 IP 地址列表，定义一个应用程序安全组。 务必明确地为应用程序安全组命名，使其他人能够理解其内容和用途。
 
 ## <a name="adopt-a-zero-trust-approach"></a>采用零信任方法
-外围网络是根据“网络中所有系统都可受信任”这一假设前提运行的。 但是，当今的员工会在任何位置通过各种设备和应用访问其组织的资源，使得外围安全控制起不到作用。 仅注重谁可以访问资源的访问控制策略不足以保证安全。 若要在安全性与工作效率之间取得平衡，安全管理员还需要考虑到资源的访问方式。 
+外围网络是根据“网络中所有系统都可受信任”这一假设前提运行的。 但是，当今的员工会在任何位置通过各种设备和应用访问其组织的资源，使得外围安全控制起不到作用。 仅注重谁可以访问资源的访问控制策略不足以保证安全。 若要在安全性与工作效率之间取得平衡，安全管理员还需要考虑到资源的访问方式。
 
 网络需要在传统防御措施的基础上演进，因为网络可能很容易受到侵犯：攻击者可能会侵入受信任边界内的单个终结点，然后在整个网络中快速拓展其据点。 [零信任](https://www.microsoft.com/security/blog/2018/06/14/building-zero-trust-networks-with-microsoft-365/)网络消除了基于外围网络位置的信任这一概念。 零信任体系结构使用设备和用户信任声明来把关对组织数据和资源的访问。 对于新计划，请采用可在访问时验证信任的零信任方法。
 
@@ -117,7 +117,7 @@ Azure 网络安全设备可提供比网络级控制所提供的更高的安全�
 ## <a name="deploy-perimeter-networks-for-security-zones"></a>为安全区部署外围网络
 [外围网格](https://docs.microsoft.com/azure/architecture/vdc/networking-virtual-datacenter)（也称为 DMZ）是物理或逻辑网络区段，可在资产与 Internet 之间提供额外的安全层。 外围网络边缘的专用网络访问控制设备只允许所需流量流入虚拟网络。
 
-外围网络非常有用，因为可以将网络访问控制管理、监视、日志记录和报告的重点放在位于 Azure 虚拟网络边缘的设备上。 在外围网络中，通常会启用分布式拒绝服务 (DDoS) 预防、入侵检测/入侵防护系统 (IDS/IPS)、防火墙规则和策略、Web 筛选、网络反恶意软件等。 网络安全设备位于 Internet 与 Azure 虚拟网络之间，在两个网络上均有接口。
+外围网络非常有用，因为可以将网络访问控制管理、监视、日志记录和报告的重点放在位于 Azure 虚拟网络边缘的设备上。网络安全设备位于 Internet 与 Azure 虚拟网络之间，具有两个网络均适用的接口。
 
 尽管这是外围网络的基本设计，但有许多不同的设计，例如背靠背式、三闸式、多闸式。
 

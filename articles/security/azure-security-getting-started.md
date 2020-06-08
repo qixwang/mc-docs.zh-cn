@@ -15,12 +15,12 @@ ms.workload: na
 origin.date: 11/21/2017
 ms.date: 11/26/2018
 ms.author: v-lingwu
-ms.openlocfilehash: b7e1e1e99056d447c991df9a7b904c17bfa3cede
-ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
+ms.openlocfilehash: 3e2fa12d4a6bea9a51cbe54ef7fbde541fa52fcc
+ms.sourcegitcommit: 1578f3feab2805d00156b2afcfac9c69a42837cb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82588412"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84172848"
 ---
 # <a name="getting-started-with-microsoft-azure-security"></a>Microsoft Azure 安全入门
 
@@ -188,7 +188,7 @@ Azure 管理员通过 Web 门户访问日志，对日志进行的访问必须经
 
 ## <a name="threat-mitigation"></a>威胁缓解措施
 
-除了隔离、加密和筛选，Azure 还采用了大量的威胁缓解机制和流程来保护基础结构和服务。 其中包括内部控制和技术，用于检测和化解各种高级威胁，例如 DDoS 和特权提升。
+除了隔离、加密和筛选，Azure 还采用了大量的威胁缓解机制和流程来保护基础结构和服务。 其中包括内部控制和技术，用于检测和化解各种高级威胁，例如特权提升。
 
 21Vianet 采取的安全控制和风险管理流程目的是确保其云基础结构的安全性，从而降低发生安全事件的风险。 但是，在发生事件的情况下，客户支持团队会全天候进行响应。
 

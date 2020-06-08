@@ -1,22 +1,21 @@
 ---
 title: 从 Azure Application Insights 导出到 SQL | Azure Docs
 description: 使用流分析将 Application Insights 数据连续导出到 SQL。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: lingliw
+author: Johnnytechn
 origin.date: 09/11/2017
-ms.date: 6/4/2019
-ms.author: v-lingwu
-ms.openlocfilehash: 08fad879fa46e4be719f0e678d12f675969e97b4
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/28/2020
+ms.author: v-johya
+ms.openlocfilehash: f29a61d6669d78dbf46b47e6ebeb0079f2108a95
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "72970923"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199332"
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>演练：使用流分析从 Application Insights 导出到 SQL
 本文说明如何使用[连续导出][export]和 [Azure 流分析](/stream-analytics/)，将遥测数据从 [Azure Application Insights][start] 移入 Azure SQL 数据库。 
+<!--Correct on link -->
 
 连续导出以 JSON 格式将遥测数据移入 Azure 存储。 我们将使用 Azure 流分析来分析 JSON 对象，并在数据库表中创建行。
 
@@ -66,10 +65,10 @@ ms.locfileid: "72970923"
     ![选择事件类型](./media/code-sample-export-sql-stream-analytics/085-types.png)
 
 
-1. 让我们累积一些数据。 请休息一下，让其他人先使用该应用程序一段时间。 应用程序中会逐渐传入遥测数据，[指标资源管理器](../../azure-monitor/app/metrics-explorer.md)中会显示统计图表，[诊断搜索](../../azure-monitor/app/diagnostic-search.md)中会显示各个事件。 
+1. 让我们累积一些数据。 请休息一下，让其他人先使用该应用程序一段时间。 应用程序中会逐渐传入遥测数据，[指标资源管理器](../../azure-monitor/platform/metrics-charts.md)中会显示统计图表，[诊断搜索](../../azure-monitor/app/diagnostic-search.md)中会显示各个事件。 
    
     此外，数据将导出到存储。 
-2. 在门户中检查导出的数据 - 选择“浏览”，选择存储帐户，然后选择“容器”；也可以在 Visual Studio 中检查。   在 Visual Studio 中，请选择“查看”>“Cloud Explorer”，并打开“Azure”>“存储”。  （如果没有此菜单选项，则需要安装 Azure SDK：打开“新建项目”对话框，打开 Visual C# /云/获取用于 .NET 的世纪互联 Azure SDK。）
+2. 在门户中检查导出的数据 - 选择“浏览”，选择存储帐户，然后选择“容器”；也可以在 Visual Studio 中检查。  在 Visual Studio 中，请选择“查看”>“Cloud Explorer”，并打开“Azure”>“存储”。 （如果没有此菜单选项，则需要安装 Azure SDK：打开“新建项目”对话框，打开 Visual C#/云/获取 Azure SDK for .NET。）
    
     ![在 Visual Studio 中，依次打开“Server Browser”、“Azure”、“存储”](./media/code-sample-export-sql-stream-analytics/087-explorer.png)
    
@@ -142,7 +141,7 @@ CREATE CLUSTERED INDEX [pvTblIdx] ON [dbo].[PageViewsTable]
 
 ![](./media/code-sample-export-sql-stream-analytics/SA002.png)
 
-创建新作业后，选择“转到资源”  。
+创建新作业后，选择“转到资源”。
 
 ![流分析设置](./media/code-sample-export-sql-stream-analytics/SA003.png)
 
@@ -245,19 +244,18 @@ CREATE CLUSTERED INDEX [pvTblIdx] ON [dbo].[PageViewsTable]
 
 
 ## <a name="related-articles"></a>相关文章
+* [使用流分析导出到 Power BI](../../azure-monitor/app/export-power-bi.md )
 * [属性类型和值的详细数据模型参考。](../../azure-monitor/app/export-data-model.md)
 * [Application Insights 中的连续导出](../../azure-monitor/app/export-telemetry.md)
 * [Application Insights](/azure-monitor/)
+<!--Correct on link: /azure-monitor/-->
 
 <!--Link references-->
 
 [diagnostic]: ../../azure-monitor/app/diagnostic-search.md
 [export]: ../../azure-monitor/app/export-telemetry.md
-[metrics]: ../../azure-monitor/app/metrics-explorer.md
+[metrics]: ../../azure-monitor/platform/metrics-charts.md
 [portal]: https://portal.azure.cn/
 [start]: ../../azure-monitor/app/app-insights-overview.md
-
-
-
 
 

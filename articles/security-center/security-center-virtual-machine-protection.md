@@ -1,6 +1,6 @@
 ---
 title: 保护计算机和应用程序
-description: 本文档介绍 Azure 安全中心内提供的，可帮助保护虚拟机和计算机以及 Web 应用和应用服务环境的建议。
+description: 本文档介绍安全中心内提供的可帮助保护虚拟机和计算机以及 Web 应用的建议。
 services: security-center
 documentationcenter: na
 author: lingliw
@@ -14,12 +14,12 @@ ms.workload: na
 origin.date: 02/11/2020
 ms.date: 05/09/2020
 ms.author: v-tawe
-ms.openlocfilehash: a5c7df386309b559f793738a3f65e88d057fcd09
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.openlocfilehash: 15d76d8b3b3d9c979f1e18f3caed9b08efdef8d7
+ms.sourcegitcommit: cbaa1aef101f67bd094f6ad0b4be274bbc2d2537
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83422335"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84126664"
 ---
 # <a name="protect-your-machines-and-applications"></a>保护计算机和应用程序
 在 Azure 安全中心识别出潜在的安全漏洞时，它会创建建议，指导你完成配置所需控件以强化和保护资源的过程。
@@ -42,8 +42,6 @@ ms.locfileid: "83422335"
 * [**VM 规模集**](#vmscale-sets)：列出对规模集的建议 
 
 * [**云服务**](#cloud-services)：列出对由安全中心监视的 Web 角色和辅助角色的建议
-
-* [**应用服务**](#app-services)：列出应用服务环境及其当前安全状态的建议
 
 * [**容器**](#containers)：列出对容器的建议以及对其配置的安全评估
 
@@ -86,9 +84,9 @@ ms.locfileid: "83422335"
 
 
 ### <a name="virtual-machine-scale-sets"></a><a name="vmscale-sets"></a>虚拟机规模集
-安全中心会自动发现你是否有规模集，并会建议你在其上安装 Microsoft Monitoring Agent。
+安全中心会自动发现你是否有规模集，并会建议你在其上安装 Log Analytics 代理。
 
-若要安装 Microsoft Monitoring Agent，请执行以下操作： 
+若要安装 Log Analytics 代理，请执行以下操作： 
 
 1. 选择建议“在虚拟机规模集上安装监视代理”。 你会获得未收监视的规模集的列表。
 
@@ -96,7 +94,7 @@ ms.locfileid: "83422335"
 
    ![安装 MMS](./media/security-center-virtual-machine-recommendations/install-mms.png)
 
-若要将新规模集设置为自动安装 Microsoft Monitoring Agent，请执行以下操作：
+若要将新规模集设置为自动安装 Log Analytics 代理，请执行以下操作：
 1. 转到 Azure Policy，单击“定义”。
 
 1. 搜索策略“为 Windows 虚拟机规模集部署 Log Analytics 代理”，然后单击它。
@@ -105,7 +103,7 @@ ms.locfileid: "83422335"
 
 1. 设置“范围”和“Log Analytics 工作区”，然后单击“分配”。  
 
-若要将所有现有的规模集设置为安装 Microsoft Monitoring Agent，请在 Azure Policy 中转到“修正”，将现有的策略应用到现有的规模集。
+若要将所有现有的规模集设置为安装 Log Analytics 代理，请在 Azure Policy 中转到“修正”，将现有的策略应用到现有的规模集。
 
 
 

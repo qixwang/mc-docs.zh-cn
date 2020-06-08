@@ -8,12 +8,12 @@ ms.topic: conceptual
 origin.date: 10/01/2019
 ms.date: 11/04/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 7d105e4e8953bad410166c26c4cc2e2a96e5b11a
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 90855343c916550fcf16545be246722b533b18f8
+ms.sourcegitcommit: 5ae04a3b8e025986a3a257a6ed251b575dbf60a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80417383"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84440484"
 ---
 # <a name="send-log-data-to-azure-monitor-with-the-http-data-collector-api-public-preview"></a>使用 HTTP 数据收集器 API（公共预览版）将日志数据发送到 Azure Monitor
 本文介绍如何使用 HTTP 数据收集器 API 从 REST API 客户端将日志数据发送到 Azure Monitor。  其中说明了对于脚本或应用程序收集的数据，如何设置其格式、将其包含在请求中，并由 Azure Monitor 授权该请求。  将针对 PowerShell、C# 和 Python 提供示例。
@@ -56,7 +56,7 @@ Log Analytics 工作区中的所有数据都存储为具有某种特定记录类
 | 授权 |授权签名。 在本文的后面部分，可以了解有关如何创建 HMAC-SHA256 标头的信息。 |
 | Log-Type |指定正在提交的数据的记录类型。 只能包含字母、数字和下划线 (_)，不能超过 100 个字符。 |
 | x-ms-date |处理请求的日期，采用 RFC 1123 格式。 |
-| x-ms-AzureResourceId | 应该与数据关联的 Azure 资源的资源 ID。 这样会填充 `_ResourceId` 属性，并允许将数据包括在[以资源为中心](manage-access.md#access-modes)的查询中。 如果未指定此字段，则不会将数据包括在以资源为中心的查询中。 |
+| x-ms-AzureResourceId | 应该与数据关联的 Azure 资源的资源 ID。 这样会填充 `_ResourceId` 属性，并允许将数据包括在[以资源为中心](manage-access.md)的查询中。 如果未指定此字段，则不会将数据包括在以资源为中心的查询中。 |
 | time-generated-field | 数据中包含数据项时间戳的字段名称。 如果指定某一字段，其内容用于 **TimeGenerated**。 如果未指定此字段，**TimeGenerated** 的默认值是引入消息的时间。 消息字段的内容应遵循 ISO 8601 格式 YYYY-MM-DDThh:mm:ssZ。 |
 
 ## <a name="authorization"></a>授权
@@ -193,7 +193,7 @@ HTTP 状态代码 200 表示已接收请求以便进行处理。 这表示操作
 | 400 |错误的请求 |MissingApiVersion |未指定 API 版本。 |
 | 400 |错误的请求 |MissingContentType |未指定内容类型。 |
 | 400 |错误的请求 |MissingLogType |未指定所需的值日志类型。 |
-| 400 |错误的请求 |UnsupportedContentType |内容类型未设为“application/json”  。 |
+| 400 |错误的请求 |UnsupportedContentType |内容类型未设为“application/json”。 |
 | 403 |禁止 |InvalidAuthorization |服务未能对请求进行身份验证。 验证工作区 ID 和连接密钥是否有效。 |
 | 404 |未找到 | | 提供的 URL 不正确，或请求太大。 |
 | 429 |请求过多 | | 服务遇到来自帐户的大量数据。 请稍后重试请求。 |
@@ -209,7 +209,7 @@ HTTP 状态代码 200 表示已接收请求以便进行处理。 这表示操作
 对于每个示例，执行以下步骤来设置授权标头的变量：
 
 1. 在 Azure 门户中，找到 Log Analytics 工作区。
-2. 依次选择“高级设置”  和“已连接的源”  。
+2. 依次选择“高级设置”和“已连接的源”。
 2. 在 **Workspace ID** 的右侧，选择复制图标，并粘贴该 ID 作为 **Customer ID** 变量的值。
 3. 在 **Primary Key** 的右侧，选择复制图标，并粘贴该 ID 作为 **Shared Key** 变量的值。
 

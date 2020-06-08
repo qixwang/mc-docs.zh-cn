@@ -13,12 +13,12 @@ origin.date: 08/20/2019
 ms.date: 09/30/2019
 ms.author: v-yiso
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 563cac8a1fe638bcb987018f5a46d2a3ddfc70a5
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 7988f31c397a4800e9e38e098c996c965ddca13b
+ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "71156062"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84186929"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-the-portal-and-net-device"></a>使用门户和 .NET 设备创建 IoT 中心模块标识和模块孪生入门
 
@@ -35,13 +35,13 @@ ms.locfileid: "71156062"
 * 如何使用 .NET 设备 SDK 更新设备的模块孪生。
 
 > [!NOTE]
-> 有关 Azure IoT SDK 的信息（可以使用这些 SDK 构建可在设备和解决方案后端上运行的应用程序），请参阅 [Azure IoT SDK][lnk-hub-sdks]。
+> 有关 Azure IoT SDK 的信息（可以使用这些 SDK 生成可在设备和解决方案后端上运行的应用程序），请参阅 [Azure IoT SDK][lnk-hub-sdks]。
 >
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * Visual Studio。
-* 有效的 Azure 帐户。 （如果没有帐户，只需几分钟即可创建一个[试用帐户][lnk-free-trial]。）
+* 有效的 Azure 帐户。 如果没有帐户，可以创建一个[试用帐户](http://www.azure.cn/pricing/1rmb-trial/)，只需几分钟即可完成。
 
 ## <a name="create-a-hub"></a>创建中心
 
@@ -55,9 +55,9 @@ ms.locfileid: "71156062"
 
 在一个设备标识中，最多可以创建 20 个模块标识。 若要添加标识，请执行以下步骤：
 
-1. 对于在上一部分创建的设备，请选择“添加模块标识”，以便创建第一个模块标识。 
+1. 对于在上一部分创建的设备，请选择“添加模块标识”，以便创建第一个模块标识。
 
-1. 输入名称“myFirstModule”  。 保存模块标识。
+1. 输入名称“myFirstModule”。 保存模块标识。
 
     ![添加模块标识](./media/iot-hub-portal-csharp-module-twin-getstarted/add-module-identity.png)
 
@@ -65,7 +65,7 @@ ms.locfileid: "71156062"
 
     ![查看模块标识详细信息](./media/iot-hub-portal-csharp-module-twin-getstarted/module-identity-details.png)
 
-保存“连接字符串 - 主密钥”。  可以在下一部分使用它，以便在设备上设置模块。
+保存“连接字符串 - 主密钥”。 可以在下一部分使用它，以便在设备上设置模块。
 
 ## <a name="update-the-module-twin-using-net-device-sdk"></a>使用 .NET 设备 SDK 更新模块孪生
 
@@ -75,9 +75,9 @@ ms.locfileid: "71156062"
 
 若要创建一个应用来更新模块孪生报告属性，请执行以下步骤：
 
-1. 在 Visual Studio 中依次选择“创建新项目”、“控制台应用(.NET Framework)”、“下一步”。   
+1. 在 Visual Studio 中依次选择“创建新项目”、“控制台应用(.NET Framework)”、“下一步”。  
 
-1. 在“配置新项目”中，  输入 *UpdateModuleTwinReportedProperties* 作为“项目名称”。  选择“创建”  继续操作。
+1. 在“配置新项目”中，输入 *UpdateModuleTwinReportedProperties* 作为“项目名称”。 选择“创建”继续操作。
 
     ![配置 Visual Studio 项目](./media/iot-hub-portal-csharp-module-twin-getstarted/configure-twins-project.png)
 
@@ -85,9 +85,9 @@ ms.locfileid: "71156062"
 
 模块标识和模块孪生为公共预览版。 仅在 IoT 中心预发行设备 SDK 中提供它。 若要安装它，请执行以下步骤：
 
-1. 在 Visual Studio 中，打开“工具” > “NuGet 包管理器” > “管理解决方案的 NuGet 包”。
+1. 在 Visual Studio 中，打开“工具” > “NuGet 包管理器” > “管理解决方案的 NuGet 包”。  
 
-1. 选择“浏览”，然后选择“包括预发行版”   。 搜索 *Microsoft.Azure.Devices.Client*。 选择最新版本并安装。
+1. 选择“浏览”，然后选择“包括预发行版” 。 搜索 *Microsoft.Azure.Devices.Client*。 选择最新版本并安装。
 
     ![安装 Azure IoT 中心 .NET 服务 SDK 预览版](./media/iot-hub-csharp-csharp-module-twin-getstarted/install-sdk.png)
 
@@ -95,13 +95,13 @@ ms.locfileid: "71156062"
 
 ### <a name="get-your-module-connection-string"></a>获取模块连接字符串
 
-需要控制台应用的模块连接字符串。 执行以下步骤:
+需要控制台应用的模块连接字符串。 执行以下步骤：
 
-1. 登录 [Azure 门户](https://portal.azure.cn/)。
+1. 登录到 [Azure 门户](https://portal.azure.cn/)。
 
-1. 导航到 IoT 中心并选择“IoT 设备”。  打开 **myFirstDevice**，可以看到 **myFirstModule** 已成功创建。
+1. 导航到 IoT 中心并选择“IoT 设备”。 打开 **myFirstDevice**，可以看到 **myFirstModule** 已成功创建。
 
-1. 在“模块标识”下选择“myFirstModule”。   在“模块标识详细信息”中复制“连接字符串(主密钥)”。  
+1. 在“模块标识”下选择“myFirstModule”。  在“模块标识详细信息”中复制“连接字符串(主密钥)”。 
 
     ![Azure 门户模块详细信息](./media/iot-hub-portal-csharp-module-twin-getstarted/module-identity-details.png)
 
@@ -109,7 +109,7 @@ ms.locfileid: "71156062"
 
 若要创建应用，请按以下步骤操作：
 
-1. 在 Program.cs 文件顶部添加以下 `using` 语句：
+1. 在 **Program.cs** 文件顶部添加以下 `using` 语句：
 
   ```csharp
   using Microsoft.Azure.Devices.Client;
@@ -117,14 +117,14 @@ ms.locfileid: "71156062"
   using Newtonsoft.Json;
   ```
 
-将以下字段添加到 Program 类  。 将占位符值替换为模块连接字符串。
+将以下字段添加到 **Program** 类。 将占位符值替换为模块连接字符串。
 
 ```csharp
 private const string ModuleConnectionString = "<Your module connection string>";
 private static ModuleClient Client = null;
 ```
 
-将以下方法“OnDesiredPropertyChanged”添加到“Program”类   ：
+将以下方法“OnDesiredPropertyChanged”添加到“Program”类 ：
 
 ```csharp
 private static async Task OnDesiredPropertyChanged(TwinCollection desiredProperties, object userContext)
@@ -190,18 +190,5 @@ private static void ConnectionStatusChangeHandler(ConnectionStatus status, Conne
 若要继续了解 IoT 中心入门知识并浏览其他 IoT 方案，请参阅：
 
 * [通过 .NET 备份和 .NET 设备开始使用 IoT 中心模块标识和模块孪生][lnk-csharp-csharp-getstarted]
+
 * [IoT Edge 入门](../iot-edge/quickstart-linux.md)
-
-<!-- Images. -->
-[9]:./media/iot-hub-portal-csharp-module-twin-getstarted/create-module-id.JPG
-[12]:./media/iot-hub-portal-csharp-module-twin-getstarted/module-details.JPG
-[13]: ./media/iot-hub-csharp-csharp-module-twin-getstarted/update-twins-csharp1.JPG
-[14]: ./media/iot-hub-csharp-csharp-module-twin-getstarted/install-sdk.png
-[15]: ./media/iot-hub-csharp-csharp-module-twin-getstarted/module-detail.JPG
-<!-- Links -->
-[lnk-hub-sdks]: iot-hub-devguide-sdks.md
-[lnk-free-trial]: http://www.azure.cn/pricing/1rmb-trial/
-[lnk-portal]: https://portal.azure.cn/
-
-[lnk-csharp-csharp-getstarted]: iot-hub-csharp-csharp-module-twin-getstarted.md
-[lnk-iot-edge]: ../iot-edge/quickstart-linux.md

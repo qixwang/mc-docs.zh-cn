@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/13/2020
 ms.author: v-tawe
 origin.date: 02/12/2020
-ms.openlocfilehash: b953e36d320d50d31e7fdc1d4458a5c210cc6345
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.openlocfilehash: b508be57915ebcbfc0b19330249f68bfffff386d
+ms.sourcegitcommit: cbaa1aef101f67bd094f6ad0b4be274bbc2d2537
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83422850"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84126569"
 ---
 # <a name="monitoring-the-security-of-your-containers"></a>监视容器的安全性
 
@@ -22,7 +22,7 @@ ms.locfileid: "83422850"
 
 Azure 安全中心涵盖容器安全的以下三个方面：
 
-- **漏洞管理** - 如果你使用的是安全中心的标准定价层（请参阅[定价](https://docs.azure.cn/security-center/security-center-pricing)），则可以在每次推送新映像时扫描基于 ARM 的 Azure 容器注册表。 扫描程序（由 Qualys 提供支持）会以安全中心建议的方式提供发现结果。
+- **漏洞管理** - 如果你使用的是安全中心的标准定价层（请参阅[定价](/security-center/security-center-pricing)），则可以在每次推送新映像时扫描基于 ARM 的 Azure 容器注册表。 扫描程序（由 Qualys 提供支持）会以安全中心建议的方式提供发现结果。
     有关详细说明，请参阅下文中的[扫描容器注册表中的漏洞](#scanning-your-arm-based-container-registries-for-vulnerabilities)。
 
 - **强化容器的 Docker 主机** - 安全中心发现托管在 IaaS Linux VM 或其他运行 Docker 的 Linux 计算机上的非托管容器，并持续将容器的配置与 Internet 安全中心 (CIS) Docker 基准进行比较。 如果容器不满足任何控件的要求，安全中心会发出警报。 持续监控因配置不当造成的安全风险是任何安全计划的关键组成部分。 
@@ -132,7 +132,9 @@ Azure 安全中心涵盖容器安全的以下三个方面：
 
     [![Log Analytics 操作](media/monitor-container-security/log-analytics-for-action-small.png)](media/monitor-container-security/log-analytics-for-action.png#lightbox)
 
-1. 调整查询参数，并在确定查询已经面向主机做好准备后，选择“运行”。 
+1. 如有必要，请调整查询参数。
+
+1. 当确定命令适合主机使用时，请选择“运行”。
 
 
 

@@ -1,20 +1,20 @@
 ---
-title: Azure Database for MySQL（单一服务器）中的安全性
-description: Azure Database for MySQL（单一服务器）中的安全性功能概述。
+title: 安全性 - Azure Database for MySQL
+description: Azure Database for MySQL 中的安全功能概述。
 author: WenJason
 ms.author: v-jay
 ms.service: mysql
 ms.topic: conceptual
-origin.date: 11/25/2019
-ms.date: 12/09/2019
-ms.openlocfilehash: 32b20a16db8cb6e3d644273eaf2f97072437c123
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+origin.date: 3/18/2020
+ms.date: 06/01/2020
+ms.openlocfilehash: eb2460d2ef5c2d47c4314db4beedd3c10d29f438
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74840116"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199697"
 ---
-# <a name="security-in-azure-database-for-mysql---single-server"></a>Azure Database for MySQL（单一服务器）中的安全性
+# <a name="security-in-azure-database-for-mysql"></a>Azure Database for MySQL 中的安全性
 
 可以通过多层安全性来保护 Azure Database for MySQL 服务器上的数据。 本文概述了这些安全选项。
 
@@ -27,7 +27,7 @@ Azure Database for MySQL 使用传输层安全性来加密动态数据，通过�
 Azure Database for MySQL 服务使用 FIPS 140-2 验证的加密模块对静态数据进行存储加密。 数据（包括备份）在磁盘上加密，运行查询时创建的临时文件除外。 该服务使用包含在 Azure 存储加密中的 AES 256 位密码，并且密钥由系统进行管理。 存储加密始终处于启用状态，无法禁用。
 
 
-## <a name="network-security"></a>网络安全
+## <a name="network-security"></a>网络安全性
 到 Azure Database for MySQL 服务器的连接首先通过区域性网关进行路由。 网关 IP 可以公开访问，而服务器 IP 地址则受保护。 有关网关的详细信息，请参阅[连接体系结构文章](concepts-connectivity-architecture.md)。  
 
 新创建的 Azure Database for MySQL 服务器有一个防火墙，可以阻止所有外部连接。 它们可以到达网关，但不能连接到服务器。 

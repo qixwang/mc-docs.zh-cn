@@ -2,24 +2,29 @@
 title: Azure Application Insights 替代默认 SDK 终结点
 description: 修改 Azure 政府等区域的默认 Azure Monitor Application Insights SDK 终结点。
 ms.topic: conceptual
-author: lingliw
+author: Johnnytechn
 origin.date: 05/25/2019
-ms.date: 07/26/2019
-ms.author: v-lingwu
-ms.openlocfilehash: 327e9d157572e364ccaf013f7a0f43c798a7b48d
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/28/2020
+ms.author: v-johya
+ms.openlocfilehash: 8e6dd18dae8a007bbd71c9237d85396d308cd3e4
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78850440"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199315"
 ---
 # <a name="application-insights-overriding-default-endpoints"></a>替代默认终结点的 Application Insights
 
 若要将 Application Insights 中的数据发送到某些区域，需要替代默认终结点地址。 每个 SDK 都需要进行稍有不同的修改，本文将对所有这些修改进行说明。 这些更改需要调整示例代码，并将 `QuickPulse_Endpoint_Address`、`TelemetryChannel_Endpoint_Address` 和 `Profile_Query_Endpoint_address` 的占位符值替换为特定区域的实际终结点地址。 本文末尾包含指向需要此配置的区域的终结点地址的链接。
 
+> [!NOTE]
+> [连接字符串](/azure-monitor/app/sdk-connection-string?tabs=net)是在 Application Insights 中设置自定义终结点的新首选方法。
+
+---
+
 ## <a name="sdk-code-changes"></a>SDK 代码更改
 
-### <a name="net-with-applicationinsightsconfig"></a>使用 applicationinsights.config 的 .NET
+# <a name="net"></a>[.NET](#tab/net)
 
 > [!NOTE]
 > 每次执行 SDK 升级时，都会自动重写 applicationinsights.config 文件。 执行 SDK 升级后，请确保重新输入区域特定的终结点值。
@@ -44,7 +49,7 @@ ms.locfileid: "78850440"
 </ApplicationInsights>
 ```
 
-### <a name="aspnet-core"></a>ASP.NET Core
+# <a name="net-core"></a>[.NET Core](#tab/netcore)
 
 按如下所示修改项目中的 appsettings.json 文件以调整主终结点：
 
@@ -72,58 +77,14 @@ using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPuls
     //Place in the ConfigureServices method. Place this before services.AddApplicationInsightsTelemetry("instrumentation key"); if it's present
 ```
 
-### <a name="azure-functions-v2x"></a>Azure Functions v2.x
+# <a name="azure-functions"></a>[Azure Functions](#tab/functions)
 
-在函数项目中安装以下包：
+对于 Azure Functions，现在建议使用在函数的“应用程序设置”中设置的[连接字符串](/azure-monitor/app/sdk-connection-string?tabs=net)。 若要从“函数”窗格中访问函数的应用程序设置，请选择“设置” > “配置” > “应用程序设置”。 
+<!-- Correct in acrolinx -->
 
-- Microsoft.ApplicationInsights 版本 2.10.0
-- Microsoft.ApplicationInsights.PerfCounterCollector 版本 2.10.0
-- Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel 版本 2.10.0
+姓名：`APPLICATIONINSIGHTS_CONNECTION_STRING` 值：`Connection String Value`
 
-然后，添加（或修改）函数应用程序的启动代码：
-
-```csharp
-[assembly: WebJobsStartup(typeof(Example.Startup))]
-namespace Example
-{
-  class Startup : FunctionsStartup
-  {
-      public override void Configure(IWebJobsBuilder builder)
-      {
-          var quickPulseFactory = builder.Services.FirstOrDefault(sd => sd.ServiceType == typeof(ITelemetryModule) && 
-                                               sd.ImplementationType == typeof(QuickPulseTelemetryModule));
-          if (quickPulseFactory != null)
-          {
-              builder.Services.Remove(quickPulseFactory);
-          }
-
-          var appIdFactory = builder.Services.FirstOrDefault(sd => sd.ServiceType == typeof(IApplicationIdProvider));
-          if (appIdFactory != null)
-          {
-              builder.Services.Remove(appIdFactory);
-          }
-
-          var channelFactory = builder.Services.FirstOrDefault(sd => sd.ServiceType == typeof(ITelemetryChannel));
-          if (channelFactory != null)
-          {
-              builder.Services.Remove(channelFactory);
-          }
-
-          builder.Services.AddSingleton<ITelemetryModule, QuickPulseTelemetryModule>(_ =>
-              new QuickPulseTelemetryModule
-              {
-                  QuickPulseServiceEndpoint = "QuickPulse_Endpoint_Address"
-              });
-
-          builder.Services.AddSingleton<IApplicationIdProvider, ApplicationInsightsApplicationIdProvider>(_ => new ApplicationInsightsApplicationIdProvider() { ProfileQueryEndpoint = "Profile_Query_Endpoint_address" });
-
-          builder.Services.AddSingleton<ITelemetryChannel>(_ => new ServerTelemetryChannel() { EndpointAddress = "TelemetryChannel_Endpoint_Address" });
-      }
-  }
-}
-```
-
-### <a name="java"></a>Java
+# <a name="java"></a>[Java](#tab/java)
 
 修改 applicationinsights.xml 文件以更改默认终结点地址。
 
@@ -158,7 +119,7 @@ namespace Example
 azure.application-insights.channel.in-process.endpoint-address= TelemetryChannel_Endpoint_Address
 ```
 
-### <a name="nodejs"></a>Node.js
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
 ```javascript
 var appInsights = require("applicationinsights");
@@ -177,7 +138,7 @@ Profile Endpoint: "Profile_Query_Endpoint_address"
 Live Metrics Endpoint: "QuickPulse_Endpoint_Address"
 ```
 
-### <a name="javascript"></a>JavaScript
+# <a name="javascript"></a>[JavaScript](#tab/js)
 
 ```javascript
 <script type="text/javascript">
@@ -190,14 +151,21 @@ Live Metrics Endpoint: "QuickPulse_Endpoint_Address"
 </script>
 ```
 
+# <a name="python"></a>[Python](#tab/python)
+
+有关修改 opencensus-python SDK 的引入终结点的指南，请参阅 [opencensus-python 存储库](https://github.com/census-instrumentation/opencensus-python/blob/af284a92b80bcbaf5db53e7e0813f96691b4c696/contrib/opencensus-ext-azure/opencensus/ext/azure/common/__init__.py)。
+<!-- Correct in acrolinx -->
+
+---
+
 ## <a name="regions-that-require-endpoint-modification"></a>需要修改终结点的区域
 
 目前唯一需要修改终结点的区域是 [Azure 政府](https://docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#application-insights)和 [Azure 中国](https://docs.microsoft.com/azure/china/resources-developer-guide)。
 
-|区域 |  终结点名称 | 值 |
+|区域 |  终结点名称 | Value |
 |-----------------|:------------|:-------------|
 | Azure 中国 | 遥测通道 | `https://dc.applicationinsights.azure.cn/v2/track` |
-| Azure 中国 | QuickPulse（实时指标） |`https://quickpulse.applicationinsights.azure.cn/QuickPulseService.svc` |
+| Azure 中国 | QuickPulse（实时指标） |`https://live.applicationinsights.azure.cn/QuickPulseService.svc` |
 | Azure 中国 | 配置文件查询 |`https://dc.applicationinsights.azure.cn/api/profiles/{0}/appId`  |
 | Azure Government | 遥测通道 |`https://dc.applicationinsights.us/v2/track` |
 | Azure Government | QuickPulse（实时指标） |`https://quickpulse.applicationinsights.us/QuickPulseService.svc` |
@@ -205,8 +173,9 @@ Live Metrics Endpoint: "QuickPulse_Endpoint_Address"
 
 如果当前使用的是 [Application Insights REST API](https://dev.applicationinsights.io/
 )（通常通过“api.applicationinsights.io”访问），则需要使用你所在地区的本地终结点：
+<!-- Correct in acrolinx -->
 
-|区域 |  终结点名称 | 值 |
+|区域 |  终结点名称 | Value |
 |-----------------|:------------|:-------------|
 | Azure 中国 | REST API | `api.applicationinsights.azure.cn` |
 > [!NOTE]
@@ -216,3 +185,4 @@ Live Metrics Endpoint: "QuickPulse_Endpoint_Address"
 
 - 若要了解有关 Azure 政府的自定义修改的更多信息，请参阅有关 [Azure 监视和管理](https://docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#application-insights)的详细指南。
 - 若要了解有关 Azure 中国的详细信息，请查阅 [Azure 中国 Playbook](https://docs.microsoft.com/azure/china/)。
+

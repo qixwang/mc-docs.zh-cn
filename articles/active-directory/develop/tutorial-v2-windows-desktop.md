@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 04/22/2020
+ms.date: 05/28/2020
 ms.author: v-junlch
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: ac03228b9fc0e7fb554d6e7c83f0e2cebbe4c87a
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.openlocfilehash: d77c2d73358aaeec200c097bde08d96b36599c98
+ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82126409"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84186857"
 ---
 # <a name="call-the-microsoft-graph-api-from-a-windows-desktop-app"></a>从 Windows 桌面应用调用 Microsoft Graph API
 
@@ -52,7 +52,7 @@ MSAL 负责管理缓存和刷新访问令牌，因此应用程序无需执行这
 
 ## <a name="set-up-your-project"></a>设置项目
 
-在本部分中，你将创建一个新项目，用于演示如何将 Windows 桌面 .NET 应用程序 (XAML) 与“使用 Microsoft 登录”集成，使该应用程序能够查询需要令牌的 Web API  。
+在本部分中，你将创建一个新项目，用于演示如何将 Windows 桌面 .NET 应用程序 (XAML) 与“使用 Microsoft 登录”集成，使该应用程序能够查询需要令牌的 Web API。
 
 使用本指南创建的应用程序将显示一个用于调用图的按钮、一个用于在屏幕上显示结果的区域和一个注销按钮。
 
@@ -62,13 +62,13 @@ MSAL 负责管理缓存和刷新访问令牌，因此应用程序无需执行这
 
 若要创建应用程序，请执行以下操作：
 
-1. 在 Visual Studio 中，选择“文件”   > “新建”   > “项目”  。
-2. 在“模板”下，选择“Visual C#”   。
-3. 选择“WPF 应用(.NET Framework)”  ，具体取决于所使用的 Visual Studio 版本。
+1. 在 Visual Studio 中，选择“文件” > “新建” > “项目”。
+2. 在“模板”下，选择“Visual C#” 。
+3. 选择“WPF 应用(.NET Framework)”，具体取决于所使用的 Visual Studio 版本。
 
 ## <a name="add-msal-to-your-project"></a>将 MSAL 添加到项目
 
-1. 在 Visual Studio 中，选择“工具” > “NuGet 包管理器”> “包管理器控制台”    。
+1. 在 Visual Studio 中，选择“工具” > “NuGet 包管理器”> “包管理器控制台”  。
 2. 在“包管理器控制台”窗口中，粘贴以下 Azure PowerShell 命令：
 
     ```powershell
@@ -87,7 +87,7 @@ MSAL 负责管理缓存和刷新访问令牌，因此应用程序无需执行这
 
 可以通过执行以下操作快速注册应用程序：
 1. 访问 [Azure 门户 - 应用程序注册](https://portal.azure.cn/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/WinDesktopQuickstartPage/sourceType/docs)。
-1. 输入应用程序的名称并选择“注册”  。
+1. 输入应用程序的名称并选择“注册”。
 1. 遵照说明下载内容，并只需单击一下自动配置新应用程序。
 
 ### <a name="option-2-advanced-mode"></a>选项 2：高级模式
@@ -96,16 +96,16 @@ MSAL 负责管理缓存和刷新访问令牌，因此应用程序无需执行这
 1. 使用工作或学校帐户登录到 [Azure 门户](https://portal.azure.cn)。
 1. 如果你的帐户有权访问多个租户，请在右上角选择该帐户，并将门户会话设置为所需的 Azure AD 租户。
 1. 导航到面向开发人员的 Microsoft 标识平台的[应用注册](https://portal.azure.cn/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)页。
-1. 选择“新注册”。 
-   - 在“名称”  部分输入一个会显示给应用用户的有意义的应用程序名称，例如 `Win-App-calling-MsGraph`。
-   - 在“支持的帐户类型”部分，选择“任何组织目录中的帐户”。  
-   - 选择“注册”  以创建应用程序。
-1. 在应用的页面列表中，选择“身份验证”。 
-   1. 在“重定向 URI”  部分的重定向 URI 列表中：
-   1. 在“类型”列中选择“公共客户端/本机(移动和桌面)”   。
-   1. 在“重定向 URI”列中输入  `https://login.partner.microsoftonline.cn/common/oauth2/nativeclient`
-1. 选择“注册”  。
-1. 转到 Visual Studio，打开 App.xaml.cs  文件，然后将下面代码片段中的 `Enter_the_Application_Id_here` 替换为刚注册并复制的应用程序 ID。
+1. 选择“新注册”。
+   - 在“名称”部分输入一个会显示给应用用户的有意义的应用程序名称，例如 `Win-App-calling-MsGraph`。
+   - 在“支持的帐户类型”部分，选择“任何组织目录中的帐户”。 
+   - 选择“注册”以创建应用程序。
+1. 在应用的页面列表中，选择“身份验证”。
+   1. 在“重定向 URI”部分的重定向 URI 列表中：
+   1. 在“类型”列中选择“公共客户端/本机(移动和桌面)” 。
+   1. 在“重定向 URI”列中输入 `https://login.partner.microsoftonline.cn/common/oauth2/nativeclient`
+1. 选择“注册”。
+1. 转到 Visual Studio，打开 App.xaml.cs 文件，然后将下面代码片段中的 `Enter_the_Application_Id_here` 替换为刚注册并复制的应用程序 ID。
 
     ```csharp
     private static string ClientId = "Enter_the_Application_Id_here";
@@ -154,7 +154,7 @@ MSAL 负责管理缓存和刷新访问令牌，因此应用程序无需执行这
 
 本部分说明应用程序如何查询受保护的后端服务器，例如 Microsoft Graph。
 
-项目模板中应自动创建了 *MainWindow.xaml* 文件。 打开此文件，然后将应用程序的 *\<Grid>* 节点替换为以下代码：
+项目模板中应自动创建了 *MainWindow.xaml* 文件。 打开此文件，然后将应用程序的 \<Grid> 节点替换为以下代码：
 
 ```xml
 <Grid>
@@ -249,7 +249,6 @@ MSAL 负责管理缓存和刷新访问令牌，因此应用程序无需执行这
         }
     ```
 
-<!--start-collapse-->
 ### <a name="more-information"></a>详细信息
 
 #### <a name="get-a-user-token-interactively"></a>以交互方式获取用户令牌
@@ -269,7 +268,6 @@ MSAL 负责管理缓存和刷新访问令牌，因此应用程序无需执行这
 * 此示例中的代码随后处理此异常，方法是通过调用 `AcquireTokenInteractive` 使其显示用户登录提示。
 
 * 它可以改为向用户呈现视觉指示，要求用户进行交互式登录，以便他们可以选择适当的时间进行登录。 也可以让应用程序稍后重试 `AcquireTokenSilent`。 当用户可以使用其他应用程序功能而不导致中断时（例如，当脱机内容在应用程序中可用时），会频繁使用此模式。 在这种情况下，用户可以决定何时需要登录来访问受保护的资源或刷新过期信息。 也可让应用程序决定在网络临时不可用又还原后，是否重试 `AcquireTokenSilent`。
-<!--end-collapse-->
 
 ## <a name="call-the-microsoft-graph-api-by-using-the-token-you-just-obtained"></a>使用刚获得的令牌调用 Microsoft Graph API
 
@@ -302,11 +300,9 @@ public async Task<string> GetHttpContentWithToken(string url, string token)
 }
 ```
 
-<!--start-collapse-->
 ### <a name="more-information-about-making-a-rest-call-against-a-protected-api"></a>对受保护 API 进行 REST 调用的详细信息
 
 在此示例应用程序中，请使用 `GetHttpContentWithToken` 方法对需要令牌的受保护资源发出 HTTP `GET` 请求，然后将内容返回给调用方。 此方法在 HTTP 授权标头中添加获取的令牌。 此示例中的资源是 Microsoft Graph API *me* 终结点，用于显示用户的个人资料信息。
-<!--end-collapse-->
 
 ## <a name="add-a-method-to-sign-out-a-user"></a>添加注销用户的方法
 
@@ -337,13 +333,11 @@ private async void SignOutButton_Click(object sender, RoutedEventArgs e)
 }
 ```
 
-<!--start-collapse-->
 ### <a name="more-information-about-user-sign-out"></a>有关用户注销的详细信息
 
 `SignOutButton_Click` 方法删除 MSAL 用户缓存中的用户，这样可有效地告知 MSAL 忘记当前用户，使将来获取令牌的请求只能在交互模式下取得成功。
 
 虽然此示例中的应用程序支持单个用户，但 MSAL 也支持多个帐户可能同时登录的情况。 用户在其中具有多个帐户的电子邮件应用程序就是一个示例。
-<!--end-collapse-->
 
 ## <a name="display-basic-token-information"></a>显示基本令牌信息
 
@@ -364,11 +358,9 @@ private void DisplayBasicTokenInfo(AuthenticationResult authResult)
 }
 ```
 
-<!--start-collapse-->
 ### <a name="more-information"></a>详细信息
 
-除了用于调用 Microsoft Graph API 的访问令牌，MSAL 还可以在用户登录后获取 ID 令牌。 此令牌包含一小部分与用户相关的信息。 `DisplayBasicTokenInfo` 方法显示包含在令牌中的基本信息。 例如，它显示用户的显示名称和 ID，以及令牌到期日期和表示访问令牌本身的字符串。 多次选择“调用 Microsoft Graph API”按钮，便会发现后续请求使用了同一令牌。  而且还会注意到，在 MSAL 决定续订令牌时，到期日期也延长了。
-<!--end-collapse-->
+除了用于调用 Microsoft Graph API 的访问令牌，MSAL 还可以在用户登录后获取 ID 令牌。 此令牌包含一小部分与用户相关的信息。 `DisplayBasicTokenInfo` 方法显示包含在令牌中的基本信息。 例如，它显示用户的显示名称和 ID，以及令牌到期日期和表示访问令牌本身的字符串。 多次选择“调用 Microsoft Graph API”按钮，便会发现后续请求使用了同一令牌。 而且还会注意到，在 MSAL 决定续订令牌时，到期日期也延长了。
 
 [!INCLUDE [5. Test and Validate](../../../includes/active-directory-develop-guidedsetup-windesktop-test.md)]
 

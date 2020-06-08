@@ -2,15 +2,15 @@
 title: 策略分配结构的详细信息
 description: 介绍策略分配定义，Azure Policy 使用该定义将策略定义和参数关联到资源，以进行评估。
 ms.author: v-tawe
-origin.date: 09/23/2019
-ms.date: 03/09/2020
+origin.date: 04/15/2020
+ms.date: 05/29/2020
 ms.topic: conceptual
-ms.openlocfilehash: 6bde77b51de1e8d3ea9e474307236596b5974e3b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 24394562d40a3e26f0a58c362a64d19f68f180b2
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292787"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199302"
 ---
 # <a name="azure-policy-assignment-structure"></a>Azure Policy 分配结构
 
@@ -22,8 +22,9 @@ Azure Policy 使用策略分配来定义为哪些资源分配了哪些策略或�
 - description
 - metadata
 - 强制模式
+- 排除的范围
 - 策略定义
-- parameters
+- 参数
 
 例如，以下 JSON 显示包含动态参数的、处于 _DoNotEnforce_ 模式的策略分配：
 
@@ -36,6 +37,7 @@ Azure Policy 使用策略分配来定义为哪些资源分配了哪些策略或�
             "assignedBy": "Cloud Center of Excellence"
         },
         "enforcementMode": "DoNotEnforce",
+        "notScopes": [],
         "policyDefinitionId": "/subscriptions/{mySubscriptionID}/providers/Microsoft.Authorization/policyDefinitions/ResourceNaming",
         "parameters": {
             "prefix": {
@@ -53,7 +55,7 @@ Azure Policy 使用策略分配来定义为哪些资源分配了哪些策略或�
 
 ## <a name="display-name-and-description"></a>显示名称和说明
 
-使用 **displayName** 和 **description** 来标识策略分配，并提供它与特定资源集配合使用时的上下文。 **displayName** 的最大长度为 128  个字符，**description** 的最大长度为 512  个字符。
+使用 **displayName** 和 **description** 来标识策略分配，并提供它与特定资源集配合使用时的上下文。 **displayName** 的最大长度为 128 个字符，**description** 的最大长度为 512 个字符。
 
 ## <a name="enforcement-mode"></a>强制模式
 
@@ -61,12 +63,16 @@ Azure Policy 使用策略分配来定义为哪些资源分配了哪些策略或�
 
 此属性具有以下值：
 
-|“模式” |JSON 值 |类型 |手动修正 |活动日志条目 |说明 |
+|Mode |JSON 值 |类型 |手动修正 |活动日志条目 |说明 |
 |-|-|-|-|-|-|
-|已启用 |默认 |字符串 |是 |是 |在创建或更新资源期间强制实施策略效果。 |
-|已禁用 |DoNotEnforce |字符串 |是 |否 | 在创建或更新资源期间不强制实施策略效果。 |
+|Enabled |默认 |string |是 |是 |在创建或更新资源期间强制实施策略效果。 |
+|已禁用 |DoNotEnforce |string |是 |否 | 在创建或更新资源期间不强制实施策略效果。 |
 
 如果未在策略或计划定义中指定 **enforcementMode**，则使用值 _Default_。 即使 **enforcementMode** 设置为 _DoNotEnforce_，也可以针对 [deployIfNotExists](./effects.md#deployifnotexists) 策略启动[修正任务](../how-to/remediate-resources.md)。
+
+## <a name="excluded-scopes"></a>排除的范围
+
+分配的范围包括所有子资源容器和子资源。 如果子资源容器或子资源不应应用定义，则可以通过设置 notScopes 将每个项从计算中排除。 此属性是一个数组，用于从计算中排除一个或多个资源容器或资源。 notScopes 可以在创建初始赋值后添加或更新。
 
 ## <a name="policy-definition-id"></a>策略定义 ID
 
@@ -95,6 +101,6 @@ Azure Policy 使用策略分配来定义为哪些资源分配了哪些策略或�
 
 - 了解[策略定义结构](./definition-structure.md)。
 - 了解如何[以编程方式创建策略](../how-to/programmatically-create.md)。
-- 了解如何[获取符合性数据](../how-to/get-compliance-data.md)。
-- 了解如何[修正不符合的资源](../how-to/remediate-resources.md)。
+- 了解如何[获取合规性数据](../how-to/get-compliance-data.md)。
+- 了解如何[修正不合规的资源](../how-to/remediate-resources.md)。
 - 参阅[使用 Azure 管理组来组织资源](../../management-groups/overview.md)，了解什么是管理组。

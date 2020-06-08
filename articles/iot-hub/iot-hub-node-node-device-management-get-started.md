@@ -9,12 +9,12 @@ ms.topic: conceptual
 origin.date: 08/25/2017
 ms.date: 03/09/2020
 ms.author: v-yiso
-ms.openlocfilehash: c56047db686de07b89f475af29328d09c82dd46d
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 4ec5c953ae1368a8919e9f20df8c930a716f3d3e
+ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78154502"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84186618"
 ---
 # <a name="get-started-with-device-management-nodejs"></a>设备管理入门 (Node.js)
 
@@ -22,21 +22,22 @@ ms.locfileid: "78154502"
 
 本教程演示如何：
 
-* 使用 Azure 门户创建 IoT 中心，以及如何在 IoT 中心创建设备标识。
+* 使用 [Azure 门户](https://portal.azure.cn)创建 IoT 中心，并在 IoT 中心创建设备标识。
+
 * 创建包含重新启动该设备的直接方法的模拟设备应用。 直接方法是从云中调用的。
 * 创建一个 Node.js 控制台应用，其通过 IoT 中心直接重启模拟设备应用。
 
-在本教程结束时，会创建两个 Node.js 控制台应用：
+本教程结束时，会创建两个 Node.js 控制台应用：
 
 * **dmpatterns_getstarted_device.js**，它使用先前创建的设备标识连接到 IoT 中心，接收重新启动直接方法，模拟物理重新启动，并报告上次重新启动的时间。
 
 * **dmpatterns_getstarted_service.js**，它调用模拟设备应用中的直接方法，显示响应，并显示更新后的报告属性。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * Node.js 版本 10.0.x 或更高版本。 [准备开发环境](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md)介绍了如何在 Windows 或 Linux 上安装本教程所用的 Node.js。
 
-* 有效的 Azure 帐户。 （如果没有帐户，只需几分钟即可创建一个[试用帐户][lnk-free-trial]。）
+* 有效的 Azure 帐户。 （如果没有帐户，只需几分钟即可创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。）
 * 确保已在防火墙中打开端口 8883。 本文中的设备示例使用 MQTT 协议，该协议通过端口 8883 进行通信。 在某些公司和教育网络环境中，此端口可能被阻止。 有关解决此问题的更多信息和方法，请参阅[连接到 IoT 中心(MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
 
 ## <a name="create-an-iot-hub"></a>创建 IoT 中心
@@ -52,7 +53,7 @@ ms.locfileid: "78154502"
 本部分的操作：
 
 * 创建一个 Node.js 控制台应用，用于响应通过云调用的直接方法
-* 触发模拟设备重新启动
+* 触发模拟的设备重启
 * 通过报告的属性，设备孪生查询可标识设备及设备上次重新启动的时间
 
 1. 创建名为 **manageddevice** 的空文件夹。  在 **manageddevice** 文件夹的命令提示符处，使用以下命令创建 package.json 文件。  接受所有默认值：
@@ -139,8 +140,8 @@ ms.locfileid: "78154502"
     ```
 8. 保存并关闭 **dmpatterns_getstarted_device.js** 文件。
 
-   >[!NOTE]
-   > 为简单起见，本教程不实现任何重试策略。 在生产代码中，应该按文章 [Transient Fault Handling][lnk-transient-faults]（暂时性故障处理）中所述实施重试策略（例如指数退避）。
+> [!NOTE]
+> 为简单起见，本教程不实现任何重试策略。 在生产代码中，应该按文章 [Transient Fault Handling](https://docs.microsoft.com/en-us/azure/architecture/best-practices/transient-faults)（暂时性故障处理）中所述实施重试策略（例如指数性的回退）。
 
 ## <a name="get-the-iot-hub-connection-string"></a>获取 IoT 中心连接字符串
 
@@ -149,7 +150,7 @@ ms.locfileid: "78154502"
 [!INCLUDE [iot-hub-include-find-service-connection-string](../../includes/iot-hub-include-find-service-connection-string.md)]
 
 ## <a name="trigger-a-remote-reboot-on-the-device-using-a-direct-method"></a>使用直接方法在设备上触发远程重新启动
-此部分将创建一个 Node.js 控制台应用，此应用直接对设备进行远程重启。 该应用使用设备孪生查询来搜索该设备的上次重新启动时间。
+本部分中会创建一个 Node.js 控制台应用，该应用使用直接方法在设备上初始化远程重启。 该应用使用设备孪生查询来搜索该设备的上次重新启动时间。
 
 1. 创建一个名为 **triggerrebootondevice** 的空文件夹。  在 **triggerrebootondevice** 文件夹的命令提示符处，使用以下命令创建 package.json 文件。  接受所有默认值：
 
@@ -242,7 +243,7 @@ ms.locfileid: "78154502"
     node dmpatterns_getstarted_device.js
     ```
 
-2. 在 **triggerrebootondevice** 文件夹的命令提示符处，运行以下命令以触发远程重新启动并查询设备孪生以查找上次重新启动时间。
+2. 在 **triggerrebootondevice** 文件夹的命令提示符处运行以下命令，以便触发远程重启并查询设备孪生了解上次重启时间。
 
     ```cmd/sh
     node dmpatterns_getstarted_service.js
@@ -258,18 +259,3 @@ ms.locfileid: "78154502"
 
    ![triggerrebootondevice 应用输出](./media/iot-hub-node-node-device-management-get-started/service.png)
 [!INCLUDE [iot-hub-dm-followup](../../includes/iot-hub-dm-followup.md)]
-
-<!-- images and links -->
-[img-output]: ./media/iot-hub-get-started-with-dm/image6.png
-[img-dm-ui]: ./media/iot-hub-get-started-with-dm/dmui.png
-
-[lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md
-
-[lnk-free-trial]: https://www.azure.cn/pricing/1rmb-trial/
-[Azure portal]: https://portal.azure.cn/
-[Using resource groups to manage your Azure resources]: ../azure-portal/resource-group-portal.md
-[lnk-dm-github]: https://github.com/Azure/azure-iot-device-management
-
-[lnk-devtwin]: ./iot-hub-devguide-device-twins.md
-[lnk-c2dmethod]: ./iot-hub-devguide-direct-methods.md
-[lnk-transient-faults]: https://msdn.microsoft.com/zh-cn/library/hh680901(v=pandp.50).aspx

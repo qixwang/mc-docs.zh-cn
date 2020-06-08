@@ -1,26 +1,16 @@
 ---
 title: 使用 Azure Active Directory 对 Azure Batch 服务进行身份验证
 description: Batch 支持 Azure AD 在 Batch 服务中进行身份验证。 了解如何通过两种方式之一进行身份验证。
-services: batch
-documentationcenter: .net
-author: LauraBrenner
-manager: evansma
-editor: ''
-tags: ''
-ms.assetid: ''
-ms.service: batch
 ms.topic: article
-ms.tgt_pltfrm: ''
-ms.workload: big-compute
 origin.date: 01/28/2020
 ms.date: 04/26/2020
 ms.author: v-tawe
-ms.openlocfilehash: cab1752d077cf749ada3c83a93abbd51ff51f246
-ms.sourcegitcommit: 1fbdefdace8a1d3412900c6c3f89678d8a9b29bc
+ms.openlocfilehash: 520429d3a3063b97faf989b7adab1c238ad0ef96
+ms.sourcegitcommit: cbaa1aef101f67bd094f6ad0b4be274bbc2d2537
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82886915"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84126711"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>使用 Active Directory 对 Batch 服务解决方案进行身份验证
 
@@ -28,8 +18,8 @@ Azure Batch 支持使用 [Azure Active Directory][aad_about] (Azure AD) 进行�
 
 在使用 Azure Batch 对 Azure AD 进行身份验证时，可以通过以下两种方式之一进行身份验证：
 
-- 使用集成身份验证  对与应用程序交互的用户进行身份验证。 使用集成身份验证的应用程序收集用户的凭据，并使用这些凭据对 Batch 资源访问进行身份验证。
-- 使用服务主体  对无人参与的应用程序进行身份验证。 服务主体定义应用程序的策略和权限，使其能够在运行时访问资源时代表应用程序。
+- 使用集成身份验证对与应用程序交互的用户进行身份验证。 使用集成身份验证的应用程序收集用户的凭据，并使用这些凭据对 Batch 资源访问进行身份验证。
+- 使用服务主体对无人参与的应用程序进行身份验证。 服务主体定义应用程序的策略和权限，使其能够在运行时访问资源时代表应用程序。
 
 有关 Azure AD 的详细信息，请阅读 [Azure Active Directory 文档](/active-directory/)。
 
@@ -47,9 +37,9 @@ Azure Batch 支持使用 [Azure Active Directory][aad_about] (Azure AD) 进行�
 
 `https://login.chinacloudapi.cn/<tenant-id>`
 
-> [!NOTE] 
-> 使用服务主体进行验证时，需要特定于租户的终结点。 
-> 
+> [!NOTE]
+> 使用服务主体进行验证时，需要特定于租户的终结点。
+>
 > 使用集成身份验证进行验证时，虽然特定于租户的终结点为可选，但仍推荐。 然而，还可以使用 Azure AD 常用终结点。 未提供特定租户时，该常用终结点可提供泛型凭据收集接口。 常用终结点为 `https://login.chinacloudapi.cn/common`。
 >
 >
@@ -58,7 +48,7 @@ Azure Batch 支持使用 [Azure Active Directory][aad_about] (Azure AD) 进行�
 
 ### <a name="batch-resource-endpoint"></a>Batch 资源终结点
 
-Azure Batch 资源终结点  用于获取对 Batch 服务的请求进行身份验证的令牌：
+Azure Batch 资源终结点用于获取对 Batch 服务的请求进行身份验证的令牌：
 
 `https://batch.core.chinacloudapi.cn/`
 
@@ -66,9 +56,9 @@ Azure Batch 资源终结点  用于获取对 Batch 服务的请求进行身份�
 
 使用 Azure AD 进行验证的第一步是在 Azure AD 租户中注册应用程序。 通过注册应用程序，可以从代码中调用 Azure [Active Directory 身份验证库][aad_adal] (ADAL)。 ADAL 提供了一个 API，用于从应用程序中使用 Azure AD 进行身份验证。 无论是计划使用集成身份验证还是服务主体，都必须注册应用程序。
 
-注册应用程序时，需要向 Azure AD 提供关于应用程序的信息。 然后，Azure AD 将提供一个应用程序 ID（也称为“客户端 ID”  ），在运行时，可以使用该 ID 将应用程序与 Azure AD 相关联。 若要详细信息应用程序 ID，请参阅 [Azure Active Directory 中的应用程序对象和服务主体对象](../active-directory/develop/app-objects-and-service-principals.md)。
+注册应用程序时，需要向 Azure AD 提供关于应用程序的信息。 然后，Azure AD 将提供一个应用程序 ID（也称为“客户端 ID”），在运行时，可以使用该 ID 将应用程序与 Azure AD 相关联。 若要详细信息应用程序 ID，请参阅 [Azure Active Directory 中的应用程序对象和服务主体对象](../active-directory/develop/app-objects-and-service-principals.md)。
 
-若要注册 Batch 应用程序，请按照[将应用程序与 Azure Active Directory 集成][aad_integrate]的[添加应用程序](../active-directory/develop/quickstart-register-app.md)部分中的步骤操作。 如果将应用程序注册为本机应用程序，可以为重定向 URI  指定任何有效 URI。 它不需要是实际的终结点。
+若要注册 Batch 应用程序，请按照[将应用程序与 Azure Active Directory 集成][aad_integrate]的[添加应用程序](../active-directory/develop/quickstart-register-app.md)部分中的步骤操作。 如果将应用程序注册为本机应用程序，可以为重定向 URI 指定任何有效 URI。 它不需要是实际的终结点。
 
 注册应用程序后，会看到应用程序 ID：
 
@@ -81,8 +71,8 @@ Azure Batch 资源终结点  用于获取对 Batch 服务的请求进行身份�
 租户 ID 用于标识向应用程序提供身份验证服务的 Azure AD 租户。 若要获取租户 ID，请按照以下步骤操作：
 
 1. 在 Azure 门户中，选择 Active Directory。
-1. 选择“属性”  。
-1. 复制为“目录 ID”提供的 GUID 值。  该值也称为租户 ID。
+1. 选择“属性”。
+1. 复制为“目录 ID”提供的 GUID 值。 该值也称为租户 ID。
 
 ![复制目录 ID](./media/batch-aad-auth/aad-directory-id.png)
 
@@ -92,20 +82,20 @@ Azure Batch 资源终结点  用于获取对 Batch 服务的请求进行身份�
 
 注册了应用程序后，请按照 Azure 门户中的以下步骤来向其授予对 Batch 服务的访问权限：
 
-1. 在 Azure 门户的左侧导航窗格中，选择“所有服务”  。 选择“应用注册”  。
+1. 在 Azure 门户的左侧导航窗格中，选择“所有服务”。 选择“应用注册”。
 1. 在应用注册列表中搜索应用程序名称：
 
     ![搜索应用程序名称](./media/batch-aad-auth/search-app-registration.png)
 
-1. 请选择应用程序，然后选择“API 权限”  。
-1. 在“API 权限”  部分，选择“添加权限”  。
-1. 在“选择 API”  中，搜索 Batch API。 搜索每一条字符串，直到找到此 API：
+1. 请选择应用程序，然后选择“API 权限”。
+1. 在“API 权限”部分，选择“添加权限”。
+1. 在“选择 API”中，搜索 Batch API。 搜索每一条字符串，直到找到此 API：
     1. **Microsoft Azure Batch**
-    1. ddbf3205-c6bd-46ae-8127-60eb93363864 是此 Batch API 的 ID  。
-1. 找到此 Batch API 后，将其选中，然后选择“选择”。 
-1. 在“选择权限”中，选中“访问 Azure Batch 服务”旁边的复选框，然后选择“添加权限”。   
+    1. ddbf3205-c6bd-46ae-8127-60eb93363864 是此 Batch API 的 ID。
+1. 找到此 Batch API 后，将其选中，然后选择“选择”。
+1. 在“选择权限”中，选中“访问 Azure Batch 服务”旁边的复选框，然后选择“添加权限”。  
 
-现在，“API 权限”部分会显示你的 Azure AD 应用程序有权访问 Microsoft Graph 和 Batch 服务 API。  首次向 Azure AD 注册应用时，系统会自动授予对 Microsoft Graph 的权限。
+现在，“API 权限”部分会显示你的 Azure AD 应用程序有权访问 Microsoft Graph 和 Batch 服务 API。 首次向 Azure AD 注册应用时，系统会自动授予对 Microsoft Graph 的权限。
 
 ![授予 API 权限](./media/batch-aad-auth/required-permissions-data-plane.png)
 
@@ -122,11 +112,11 @@ Azure Batch 资源终结点  用于获取对 Batch 服务的请求进行身份�
 
 在 Azure 门户中执行以下步骤：
 
-1. 在 Azure 门户的左侧导航窗格中，选择“所有服务”  。 选择“应用注册”  。
+1. 在 Azure 门户的左侧导航窗格中，选择“所有服务”。 选择“应用注册”。
 1. 从应用注册列表中选择你的应用程序。
-1. 选择应用程序，然后选择“证书和机密”。  在“客户端机密”部分选择“新建客户端机密”。  
+1. 选择应用程序，然后选择“证书和机密”。 在“客户端机密”部分选择“新建客户端机密”。 
 1. 若要创建机密，请提供机密的说明。 然后，选择机密的过期时间：一年、两年或不过期。
-1. 选择“添加”  ，创建并显示机密。 将机密值复制到安全的位置，因为离开该页面后将无法再次访问它。
+1. 选择“添加”，创建并显示机密。 将机密值复制到安全的位置，因为离开该页面后将无法再次访问它。
 
     ![创建密钥](./media/batch-aad-auth/secret-key.png)
 
@@ -135,11 +125,11 @@ Azure Batch 资源终结点  用于获取对 Batch 服务的请求进行身份�
 若要使用服务主体进行验证，需要向应用程序分配 RBAC。 执行以下步骤：
 
 1. 在 Azure 门户中，导航到应用程序使用的 Batch 帐户。
-1. 在 Batch 帐户的“设置”  部分，选择“访问控制(标识和访问管理)”  。
-1. 选择“角色分配”选项卡  。
-1. 选择“添加角色分配”  。
-1. 在“角色”  下拉列表中，为应用程序选择参与者  或读者  角色。 有关这些角色的详细信息，请参阅 [Azure 门户中基于角色的访问控制入门](../role-based-access-control/overview.md)。  
-1. 在“选择”  字段中，输入应用程序的名称。 从列表中选择你的应用程序，然后选择“保存”  。
+1. 在 Batch 帐户的“设置”部分，选择“访问控制(标识和访问管理)”。
+1. 选择“角色分配”选项卡。
+1. 选择“添加角色分配”。
+1. 在“角色”下拉列表中，为应用程序选择参与者或读者角色。 有关这些角色的详细信息，请参阅 [Azure 门户中基于角色的访问控制入门](../role-based-access-control/overview.md)。
+1. 在“选择”字段中，输入应用程序的名称。 从列表中选择你的应用程序，然后选择“保存”。
 
 现在，应用程序应出现在访问控制设置中，同时已分配有 RBAC 角色。
 
@@ -211,8 +201,8 @@ Azure Batch 资源终结点  用于获取对 Batch 服务的请求进行身份�
 租户 ID 用于标识向应用程序提供身份验证服务的 Azure AD 租户。 若要获取租户 ID，请按照以下步骤操作：
 
 1. 在 Azure 门户中，选择 Active Directory。
-1. 选择“属性”  。
-1. 复制为“目录 ID”提供的 GUID 值。  该值也称为租户 ID。
+1. 选择“属性”。
+1. 复制为“目录 ID”提供的 GUID 值。 该值也称为租户 ID。
 
 ![复制目录 ID](./media/batch-aad-auth/aad-directory-id.png)
 
@@ -221,7 +211,7 @@ Azure Batch 资源终结点  用于获取对 Batch 服务的请求进行身份�
 此部分中的代码示例演示如何使用集成身份验证和服务主体通过 Azure AD 进行验证。 这些代码示例大多使用了 .NET，但概念与其他语言类似。
 
 > [!NOTE]
-> Azure AD 身份验证令牌在一小时后过期。 使用生存期较长的 **BatchClient** 对象时，我们建议每次发出请求都从 ADAL 中检索令牌，确保始终获得有效的令牌。 
+> Azure AD 身份验证令牌在一小时后过期。 使用生存期较长的 **BatchClient** 对象时，我们建议每次发出请求都从 ADAL 中检索令牌，确保始终获得有效的令牌。
 >
 >
 > 如果要在 .NET 中实现此目的，可编写一个方法从 Azure AD 中检索令牌，并将该方法作为委派传递给 **BatchTokenCredentials** 对象。 这样，每次批处理服务发出请求都会调用该委派方法，确保提供有效的令牌。 默认情况下，ADAL 会缓存令牌，以便只在必要时，才从 Azure AD 中检索新令牌。 有关 Azure AD 中的令牌的详细信息，请参阅 [Azure AD 的身份验证方案][aad_auth_scenarios]。
@@ -270,7 +260,7 @@ private const string ClientId = "<application-id>";
 private const string RedirectUri = "http://mybatchdatasample";
 ```
 
-编写一个回调方法从 Azure AD 获取身份验证令牌。 此处所示的 GetAuthenticationTokenAsync  回调方法调用 ADAL 对与应用程序交互的用户进行验证。 ADAL 提供的 AcquireTokenAsync  方法提示用户输入其凭据，用户提供凭据后，应用程序可继续工作（除非已有缓存凭据）：
+编写一个回调方法从 Azure AD 获取身份验证令牌。 此处所示的 GetAuthenticationTokenAsync 回调方法调用 ADAL 对与应用程序交互的用户进行验证。 ADAL 提供的 AcquireTokenAsync 方法提示用户输入其凭据，用户提供凭据后，应用程序可继续工作（除非已有缓存凭据）：
 
 ```csharp
 public static async Task<string> GetAuthenticationTokenAsync()
@@ -278,16 +268,16 @@ public static async Task<string> GetAuthenticationTokenAsync()
     var authContext = new AuthenticationContext(AuthorityUri);
 
     // Acquire the authentication token from Azure AD.
-    var authResult = await authContext.AcquireTokenAsync(BatchResourceUri, 
-                                                        ClientId, 
-                                                        new Uri(RedirectUri), 
+    var authResult = await authContext.AcquireTokenAsync(BatchResourceUri,
+                                                        ClientId,
+                                                        new Uri(RedirectUri),
                                                         new PlatformParameters(PromptBehavior.Auto));
 
     return authResult.AccessToken;
 }
 ```
 
-构造使用委派作为参数的 **BatchTokenCredentials** 对象。 使用这些凭据打开 **BatchClient** 对象。 可以使用该 BatchClient  对象针对 Batch 服务执行后续操作：
+构造使用委派作为参数的 **BatchTokenCredentials** 对象。 使用这些凭据打开 **BatchClient** 对象。 可以使用该 BatchClient 对象针对 Batch 服务执行后续操作：
 
 ```csharp
 public static async Task PerformBatchOperations()
@@ -343,7 +333,7 @@ private const string ClientId = "<application-id>";
 private const string ClientKey = "<secret-key>";
 ```
 
-编写一个回调方法从 Azure AD 获取身份验证令牌。 此处显示的 GetAuthenticationTokenAsync  回调方法调用 ADAL 进行无人参与的身份验证：
+编写一个回调方法从 Azure AD 获取身份验证令牌。 此处显示的 GetAuthenticationTokenAsync 回调方法调用 ADAL 进行无人参与的身份验证：
 
 ```csharp
 public static async Task<string> GetAuthenticationTokenAsync()
@@ -368,6 +358,7 @@ public static async Task PerformBatchOperations()
     }
 }
 ```
+
 ### <a name="code-example-using-an-azure-ad-service-principal-with-batch-python"></a>代码示例：将 Azure AD 服务主体与 Batch Python 一起使用
 
 若要在 Batch Python 中使用服务主体进行身份验证，请安装并引用 [azure-batch](https://pypi.org/project/azure-batch/) 和 [azure-common](https://pypi.org/project/azure-common/) 模块。
@@ -383,7 +374,7 @@ from azure.common.credentials import ServicePrincipalCredentials
 TENANT_ID = "<tenant-id>"
 ```
 
-引用 Batch 服务资源终结点：  
+引用 Batch 服务资源终结点：
 
 ```python
 RESOURCE = "https://batch.core.chinacloudapi.cn/";
@@ -429,7 +420,7 @@ credentials = ServicePrincipalCredentials(
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关 Azure AD 的详细信息，请阅读 [Azure Active Directory 文档](/active-directory/)。 演示如何使用 [Azure 代码示例](https://azure.microsoft.com/resources/samples/?service=active-directory)库中提供的 ADAL 的深度讲解示例。
+- 有关 Azure AD 的详细信息，请阅读 [Azure Active Directory 文档](https://docs.azure.cn/active-directory/)。 演示如何使用 [Azure 代码示例](https://azure.microsoft.com/resources/samples/?service=active-directory)库中提供的 ADAL 的深度讲解示例。
 
 - 若要了解关于服务主体的详细信息，请参阅 [Azure Active Directory 中的应用程序和服务主体对象](../active-directory/develop/app-objects-and-service-principals.md)。 若要使用 Azure 门户创建服务主体，请参阅[使用门户创建可访问资源的 Active Directory 应用程序和服务主体](../active-directory/develop/howto-create-service-principal-portal.md)。 也可使用 PowerShell 或 Azure CLI 创建服务主体。
 
@@ -437,9 +428,10 @@ credentials = ServicePrincipalCredentials(
 
 - 有关如何创建使用 Azure AD 令牌进行身份验证的 Batch 客户端的 Python 示例，请参阅[使用 Python 脚本部署 Azure Batch 自定义映像](https://github.com/azurebigcompute/recipes/blob/master/Azure%20Batch/CustomImages/CustomImagePython.md)示例。
 
-[aad_about]:../active-directory/fundamentals/active-directory-whatis.md
+[aad_about]:../active-directory/fundamentals/active-directory-whatis.md "什么是 Azure Active Directory？"
 [aad_adal]: ../active-directory/develop/active-directory-authentication-libraries.md
-[aad_auth_scenarios]: ../active-directory/develop/authentication-scenarios.md
-[azure_portal]: http://portal.azure.cn
+[aad_auth_scenarios]: ../active-directory/develop/authentication-scenarios.md "Azure AD 的身份验证方案"
+[aad_integrate]: https://docs.azure.cn/active-directory/develop/quickstart-register-app "将应用程序与 Azure Active Directory 集成"
+[azure_portal]: https://portal.azure.cn
 
 <!-- Update_Description: link update -->

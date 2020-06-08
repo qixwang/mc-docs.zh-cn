@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 04/21/2020
+ms.date: 05/28/2020
 ms.author: v-junlch
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 27bb39a81a18ed63aa2f33e2e9a7bef2dde6977f
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.openlocfilehash: b77ae341d4386fc068fd94e1fe2d60bc3fdbb79c
+ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82127188"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84186862"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-angular-single-page-application"></a>教程：从 Angular 单页应用程序将用户登录并调用 Microsoft Graph API
 
@@ -27,7 +27,7 @@ ms.locfileid: "82127188"
 本教程演示了 Angular 单页应用程序 (SPA) 如何执行以下操作：
 - 登录工作帐户或学校帐户。
 - 获取访问令牌。
-- 从 Microsoft 标识平台终结点调用需要访问令牌的 Microsoft Graph API 或其他 API。 
+- 从 Microsoft 标识平台终结点调用需要访问令牌的 Microsoft Graph API 或其他 API。
 
 >[!NOTE]
 >本教程引导你使用 Microsoft 身份验证库 (MSAL) 创建新的 Angular SPA。 若要下载示例应用，请参阅[快速入门](quickstart-v2-angular.md)。
@@ -36,16 +36,12 @@ ms.locfileid: "82127188"
 
 ![示意图，展示了本教程中生成的示例应用的工作原理](./media/active-directory-develop-guidedsetup-javascriptspa-introduction/javascriptspa-intro.svg)
 
-<!--start-collapse-->
 ### <a name="more-information"></a>详细信息
 
 本教程中创建的示例应用程序是一个 Angular SPA，它能够查询 Microsoft Graph API 或 Web API，而该 API 接受来自 Microsoft 标识平台终结点的令牌。 适用于 Angular 的 MSAL 库是核心 MSAL.js 库的包装器。 它可以让 Angular (6+) 应用程序使用 Azure Active Directory 和社交标识用户（例如 LinkedIn）对企业用户进行身份验证。 使用此库，应用程序还可以获取对 Azure 云服务或 Microsoft Graph 的访问权限。
 
 在此方案中，用户登录后请求了访问令牌，并通过授权标头将其添加到 HTTP 请求。 令牌获取和续订通过 MSAL 处理。
 
-<!--end-collapse-->
-
-<!--start-collapse-->
 ### <a name="libraries"></a>库
 
 本教程使用以下库：
@@ -54,14 +50,7 @@ ms.locfileid: "82127188"
 |---|---|
 |[msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|适用于 JavaScript Angular 的 Microsoft 身份验证库包装器|
 
-> [!NOTE]
-> Msal.js  面向 Microsoft 标识平台终结点，工作帐户和学校帐户可通过该终结点登录并获取令牌。 Microsoft 标识平台终结点有[一些限制](../azuread-dev/azure-ad-endpoint-comparison.md#limitations)。
-> 若要了解 v1.0 和 v2.0 终结点之间的差异，请参阅[终结点比较指南](../azuread-dev/azure-ad-endpoint-comparison.md)。
-
 可以在 GitHub 上的 [AzureAD/microsoft-authentication-library-for-js](https://github.com/AzureAD/microsoft-authentication-library-for-js) 存储库中找到 MSAL.js 库的源代码。
-
-<!--end-collapse-->
-
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -86,13 +75,13 @@ ng generate component page-name                  # To add a new page (such as a 
 
 按照说明在 Azure 门户中[注册单页应用程序](/active-directory/develop/scenario-spa-app-registration)。
 
-在注册的应用“概述”页上，记下“应用程序(客户端) ID”值供稍后使用。  
+在注册的应用“概述”页上，记下“应用程序(客户端) ID”值供稍后使用。 
 
-注册 **http://localhost:4200/** 作为“重定向 URI”，并启用隐式授权设置。 
+注册 **http://localhost:4200/** 作为“重定向 URI”，并启用隐式授权设置。
 
 ## <a name="configure-the-application"></a>配置应用程序
 
-1. 在 src/app 文件夹中，编辑 app.module.ts，将 `MSALModule` 添加到 `imports` 并添加 `isIE` 常量：  
+1. 在 src/app 文件夹中，编辑 app.module.ts，将 `MSALModule` 添加到 `imports` 并添加 `isIE` 常量： 
 
     ```javascript
     const isIE = window.navigator.userAgent.indexOf('MSIE ') > -1 || window.navigator.userAgent.indexOf('Trident/') > -1;
@@ -136,9 +125,9 @@ ng generate component page-name                  # To add a new page (such as a 
 
     |值名称|关于|
     |---------|---------|
-    |Enter_the_Application_Id_Here|在应用程序注册的“概览”页中，这是你的“应用程序(客户端) ID”值。   |
+    |Enter_the_Application_Id_Here|在应用程序注册的“概览”页中，这是你的“应用程序(客户端) ID”值。  |
     |Enter_the_Cloud_Instance_Id_Here|这是 Azure 云的实例。 对于主要云或全球 Azure 云，请输入 **https://login.partner.microsoftonline.cn** 。 对于国家/地区云（例如中国云），请参阅[国家/地区云](/active-directory/develop/authentication-national-cloud)。|
-    |Enter_the_Tenant_Info_Here| 设置为以下选项之一：如果应用程序支持此组织目录中的帐户，请将此值替换为目录（租户）ID 或租户名称（例如 contoso.microsoft.com）。   如果应用程序支持“任何组织目录中的帐户”，请将此值替换为 **organizations**  。 如果应用程序支持“任何组织目录中的帐户”，请将此值替换为“common”   |
+    |Enter_the_Tenant_Info_Here| 设置为以下选项之一：如果应用程序支持此组织目录中的帐户，请将此值替换为目录（租户）ID 或租户名称（例如 contoso.microsoft.com）。 如果应用程序支持“任何组织目录中的帐户”，请将此值替换为 **organizations**。 如果应用程序支持“任何组织目录中的帐户”，请将此值替换为“common” |
     |Enter_the_Redirect_Uri_Here|替换为 **http://localhost:4200** 。|
 
     有关可用的可配置选项的详细信息，请阅读[初始化客户端应用程序](msal-js-initializing-client-applications.md)。
@@ -330,7 +319,7 @@ logout() {
     npm install
     npm start
     ```
-1. 在浏览器中输入 **http://localhost:4200** 或 **http://localhost:{port}** ，其中，port 是 Web 服务器正在侦听的端口。 
+1. 在浏览器中输入 **http://localhost:4200** 或 **http://localhost:{port}** ，其中，port 是 Web 服务器正在侦听的端口。
 
 
 ### <a name="provide-consent-for-application-access"></a>许可应用程序访问
@@ -339,12 +328,9 @@ logout() {
 
 ![“请求的权限”窗口](./media/active-directory-develop-guidedsetup-javascriptspa-test/javascriptspaconsent.png)
 
+## <a name="add-scopes-and-delegated-permissions"></a>添加范围和委托的权限
 
-
-<!--start-collapse-->
-### <a name="add-scopes-and-delegated-permissions"></a>添加范围和委托的权限
-
-Microsoft Graph API 需要 *user.read* 作用域来读取用户的个人资料。 默认情况下，在注册门户上注册的每个应用程序中，都会自动添加此范围。 Microsoft Graph 的其他 API 以及后端服务器的自定义 API 可能需要其他作用域。 例如，Microsoft Graph API 需要使用 Calendars.Read 作用域才能列出用户的日历。 
+Microsoft Graph API 需要 *user.read* 作用域来读取用户的个人资料。 默认情况下，在注册门户上注册的每个应用程序中，都会自动添加此范围。 Microsoft Graph 的其他 API 以及后端服务器的自定义 API 可能需要其他作用域。 例如，Microsoft Graph API 需要使用 Calendars.Read 作用域才能列出用户的日历。
 
 若要在应用程序上下文中访问用户的日历，请将 *Calendars.Read* 委派权限添加到应用程序注册信息。 然后，将 *Calendars.Read* 作用域添加到 `acquireTokenSilent` 调用。
 
@@ -353,14 +339,11 @@ Microsoft Graph API 需要 *user.read* 作用域来读取用户的个人资料�
 
 如果后端 API 不需要范围（不建议），则你可以将 *clientId* 用作调用中的范围来获取令牌。
 
-<!--end-collapse-->
-
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
 ## <a name="next-steps"></a>后续步骤
 
-接下来，在 Angular 教程中了解如何将用户登录和获取令牌：
+如果不熟悉标识和访问管理，可以参阅我们提供的几篇文章（从[身份验证与授权](authentication-vs-authorization.md)开始），以便学习新式身份验证概念。
 
-> [!div class="nextstepaction"]
-> [Angular 教程](/active-directory/develop/tutorial-v2-angular)
+若要更深入地了解 Microsoft 标识平台上的单页应用程序开发，可以参阅由多部分组成的[方案：单页应用程序](scenario-spa-overview.md)系列文章，了解如何入门。
 

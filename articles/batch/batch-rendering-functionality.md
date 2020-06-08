@@ -1,19 +1,17 @@
 ---
-title: 渲染功能 - Azure Batch
+title: 渲染功能
 description: 标准 Azure Batch 功能用于运行渲染工作负荷和应用。 Batch 包含用于支持渲染工作负荷的特定功能。
-services: batch
-ms.service: batch
 author: lingliw
 ms.author: v-lingwu
 origin.date: 08/02/2018
 ms.date: 09/07/2018
 ms.topic: conceptual
-ms.openlocfilehash: 741c481695a05f89911d168954c5998a5becc666
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 9209a30e10857ccf588884ad2145269b8597fd77
+ms.sourcegitcommit: cbaa1aef101f67bd094f6ad0b4be274bbc2d2537
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75858108"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84126599"
 ---
 # <a name="azure-batch-rendering-capabilities"></a>Azure Batch 的渲染功能
 
@@ -33,8 +31,8 @@ ms.locfileid: "75858108"
 
 | 发布者 | 产品/服务 | SKU | 版本 |
 |---------|---------|---------|--------|
-| 批处理 | rendering-centos73 | 呈现 | 最新 |
-| 批处理 | rendering-windows2016 | 呈现 | 最新 |
+| 或批处理 | rendering-centos73 | 呈现 | 最新 |
+| 或批处理 | rendering-windows2016 | 呈现 | 最新 |
 
 如果池 VM 上需要其他应用程序，则可以使用其他选项：
 

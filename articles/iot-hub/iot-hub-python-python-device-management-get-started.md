@@ -11,12 +11,12 @@ ms.workload: na
 origin.date: 01/17/2020
 ms.date: 03/09/2020
 ms.author: v-yiso
-ms.openlocfilehash: d2d65c6a749a09d7ff34b0bf06ee820226fe512c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 51868f598f1f1e8e880f230d29c54597d7f52da2
+ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78155002"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84186913"
 ---
 # <a name="get-started-with-device-management-python"></a>设备管理入门 (Python)
 
@@ -36,7 +36,7 @@ ms.locfileid: "78155002"
 
 [!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-v2-installation-notes.md)]
 
@@ -56,7 +56,7 @@ ms.locfileid: "78155002"
 
 * 创建一个 Python 控制台应用，用于响应通过云调用的直接方法
 * 模拟设备重新启动
-* 通过报告的属性，设备孪生查询可标识设备及设备上次重新启动的时间
+* 使用报告属性，允许通过设备孪生查询标识设备及其上次重启的时间
 
 1. 在命令提示符处，运行以下命令以安装 **azure-iot-device** 包：
 
@@ -139,7 +139,7 @@ ms.locfileid: "78155002"
 1. 保存并关闭 **dmpatterns_getstarted_device.py** 文件。
 
 > [!NOTE]
-> 为简单起见，本教程不实现任何重试策略。 在生产代码中，应该按文章 [Transient Fault Handling][lnk-transient-faults]（暂时性故障处理）中所述实施重试策略（例如指数退避）。
+> 为简单起见，本教程不实现任何重试策略。 在生产代码中，应该按文章[暂时性故障处理][lnk-transient-faults]中所述实施重试策略（例如指数退避）。
 
 ## <a name="get-the-iot-hub-connection-string"></a>获取 IoT 中心连接字符串
 
@@ -262,22 +262,3 @@ ms.locfileid: "78155002"
    ![触发重新启动服务输出](./media/iot-hub-python-python-device-management-get-started/service.png)
 
 [!INCLUDE [iot-hub-dm-followup](../../includes/iot-hub-dm-followup.md)]
-
-<!-- images and links -->
-[lnk-python-download]: https://www.python.org/downloads/
-[lnk-visual-c-redist]: http://www.microsoft.com/download/confirmation.aspx?id=48145
-[lnk-install-pip]: https://pip.pypa.io/en/stable/installing/
-
-[img-output]: media/iot-hub-get-started-with-dm/image6.png
-[img-dm-ui]: media/iot-hub-get-started-with-dm/dmui.png
-
-[lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md
-
-[lnk-free-trial]: https://www.azure.cn/pricing/1rmb-trial/
-[Azure portal]: https://portal.azure.cn/
-[Using resource groups to manage your Azure resources]: ../azure-portal/resource-group-portal.md
-[lnk-dm-github]: https://github.com/Azure/azure-iot-device-management
-
-[lnk-devtwin]: iot-hub-devguide-device-twins.md
-[lnk-c2dmethod]: iot-hub-devguide-direct-methods.md
-[lnk-transient-faults]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx

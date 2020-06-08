@@ -6,18 +6,18 @@ services: storage
 author: WenJason
 ms.service: storage
 ms.topic: tutorial
-origin.date: 02/10/2020
-ms.date: 03/09/2020
+origin.date: 04/16/2020
+ms.date: 06/01/2020
 ms.author: v-jay
 ms.reviewer: artek
 ms.custom: mvc
 ms.subservice: blobs
-ms.openlocfilehash: ee9dd17b7a0d0295ecd619bfde02e6435f0823e6
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 250dcbf4962ab1e89dfcaabb2a8e375b2039353c
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78411953"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199747"
 ---
 # <a name="tutorial-build-a-highly-available-application-with-blob-storage"></a>教程：使用 Blob 存储构建高度可用的应用程序
 
@@ -25,7 +25,7 @@ ms.locfileid: "78411953"
 
 完成本教程后，将会生成一个控制台应用程序，用于上传 Blob 并从[读取访问异地冗余](../common/storage-redundancy.md) (RA-GRS) 存储帐户检索它。
 
-RA-GRS 的工作方式是将事务从主要区域复制到次要区域。 此复制过程可确保次要区域中的数据最终一致。 应用程序使用[断路器](https://docs.microsoft.com/azure/architecture/patterns/circuit-breaker)模式来确定要连接到的终结点，在模拟故障和恢复时在终结点之间自动切换。
+Azure 存储中的异地冗余会将事务从主要区域异步复制到数百英里外的次要区域。 此复制过程可确保次要区域中的数据最终一致。 控制台应用程序使用[断路器](https://docs.microsoft.com/azure/architecture/patterns/circuit-breaker)模式确定要连接到的终结点，在模拟故障和恢复时在终结点之间自动切换。
 
 如果没有 Azure 订阅，可在开始前创建一个 [1 元人民币试用帐户](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth)。
 
@@ -67,23 +67,22 @@ RA-GRS 的工作方式是将事务从主要区域复制到次要区域。 此复
 
 按以下步骤创建读取访问异地冗余存储帐户：
 
-1. 选择 Azure 门户左上角的“创建资源”按钮。 
-2. 从“新建”页面中选择“存储”。  
-3. 在“特色”下选择“存储帐户 - Blob、文件、表、队列”。  
-4.  使用以下信息填充存储帐户窗体（如下图所示），然后选择“创建”：
+1. 在 Azure 门户中选择“创建资源”按钮。
+2. 从“新建”页中选择“存储帐户 - blob、文件、表、队列”。
+4. 使用以下信息填充存储帐户窗体（如下图所示），然后选择“创建”：
 
-   | 设置       | 建议的值 | 说明 |
+   | 设置       | 示例值 | 说明 |
    | ------------ | ------------------ | ------------------------------------------------- |
-   | **名称** | mystorageaccount | 存储帐户的唯一值 |
-   | 部署模型  | Resource Manager  | 资源管理器包含最新功能。|
-   |  帐户类型 | StorageV2 | 有关帐户类型的详细信息，请参阅[存储帐户的类型](../common/storage-introduction.md#types-of-storage-accounts) |
-   | **“性能”** | 标准 | 对于示例方案，“标准”已足够。 |
-   | **复制**| 读取访问异地冗余存储 (RA-GRS) | 这是运行示例所必需的。 |
-   |**订阅** | 你的订阅 |有关订阅的详细信息，请参阅[订阅](https://account.windowsazure.cn/Subscriptions)。 |
-   |**ResourceGroup** | MyResourceGroup |有关有效的资源组名称，请参阅 [Naming rules and restrictions](https://docs.microsoft.com/azure/architecture/best-practices/resource-naming)（命名规则和限制）。 |
-   |**位置** | 中国东部 | 选择一个位置。 |
+   | **订阅** | 我的订阅 | 有关订阅的详细信息，请参阅[订阅](https://account.windowsazure.cn/Subscriptions)。 |
+   | **ResourceGroup** | *myResourceGroup* | 有关有效的资源组名称，请参阅 [Naming rules and restrictions](https://docs.microsoft.com/azure/architecture/best-practices/resource-naming)（命名规则和限制）。 |
+   | **名称** | mystorageaccount | 存储帐户的唯一名称。 |
+   | **位置** | *中国东部 2* | 选择一个位置。 |
+   | **“性能”** | *标准* | 对于示例方案，“标准”性能是一个不错的选项。 |
+   | 帐户类型 | StorageV2 | 建议使用常规用途 v2 存储帐户。 有关 Azure 存储帐户类型的详细信息，请参阅[存储帐户概述](../common/storage-account-overview.md)。 |
+   | **复制**| *读取访问异地冗余存储 (RA-GRS)* | 主要区域是异地冗余区域，将在启用了对次要区域的读取访问权限的情况下复制到次要区域。 |
+   | **访问层**| *热访问层* | 将热访问层用于经常访问的数据。 |
 
-![创建存储帐户](media/storage-create-geo-redundant-storage/createragrsstracct.png)
+    ![创建存储帐户](media/storage-create-geo-redundant-storage/createragrsstracct.png)
 
 ## <a name="download-the-sample"></a>下载示例
 
@@ -119,7 +118,7 @@ git clone https://github.com/Azure-Samples/storage-node-v10-ha-ra-grs
 
 在应用程序中，必须为存储帐户提供连接字符串。 可以将此连接字符串存储在运行应用程序的本地计算机的环境变量中。 根据你的操作系统，按照下面的某个示例创建环境变量。
 
-在 Azure 门户中导航到存储帐户。 在存储帐户中选择“设置”下的“访问密钥”。   复制主密钥或辅助密钥中的**连接字符串**。 根据操作系统运行以下命令之一，将 \<yourconnectionstring\> 替换为实际的连接字符串。 此命令将一个环境变量保存到本地计算机。 在 Windows 中，必须重载正在使用的**命令提示符**或 shell，该环境变量才可用。
+在 Azure 门户中导航到存储帐户。 在存储帐户中选择“设置”下的“访问密钥”。  复制主密钥或辅助密钥中的**连接字符串**。 根据操作系统运行以下命令之一（将 \<yourconnectionstring\> 替换为实际的连接字符串）。 此命令将一个环境变量保存到本地计算机。 在 Windows 中，必须重载正在使用的**命令提示符**或 shell，该环境变量才可用。
 
 ### <a name="linux"></a>Linux
 
@@ -137,7 +136,7 @@ setx storageconnectionstring "<yourconnectionstring>"
 
 在应用程序中，必须提供存储帐户凭据。 可以将此信息存储在运行应用程序的本地计算机的环境变量中。 根据操作系统，按照下面的某个示例创建环境变量。
 
-在 Azure 门户中导航到存储帐户。 在存储帐户中选择“设置”下的“访问密钥”。   将“存储帐户名称”和“密钥”值粘贴到以下命令中，   替换 \<youraccountname\> 和 \<youraccountkey\> 占位符。 此命令将环境变量保存到本地计算机。 在 Windows 中，必须重载正在使用的**命令提示符**或 shell，该环境变量才可用。
+在 Azure 门户中导航到存储帐户。 在存储帐户中选择“设置”下的“访问密钥”。  将“存储帐户名称”和“密钥”值粘贴到以下命令中 （替换 \<youraccountname\> 和 \<youraccountkey\> 占位符）。 此命令将环境变量保存到本地计算机。 在 Windows 中，必须重载正在使用的**命令提示符**或 shell，该环境变量才可用。
 
 ### <a name="linux"></a>Linux
 
@@ -162,7 +161,7 @@ AZURE_STORAGE_ACCOUNT_NAME=<replace with your storage account name>
 AZURE_STORAGE_ACCOUNT_ACCESS_KEY=<replace with your storage account access key>
 ```
 
-导航到存储帐户并在“设置”部分选择“访问密钥”，即可找到 Azure 门户中的此信息。  
+导航到存储帐户并在“设置”部分选择“访问密钥”，即可找到 Azure 门户中的此信息。 
 
 安装必需的依赖项。 为此，请打开命令提示符，导航到示例文件夹，然后输入 `npm install`。
 
@@ -172,9 +171,9 @@ AZURE_STORAGE_ACCOUNT_ACCESS_KEY=<replace with your storage account access key>
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
-在 Visual Studio 中，按 F5  或选择“启动”  ，开始调试应用程序。 Visual Studio 会自动还原缺少的 NuGet 包（若已配置）。若要了解详情，请参阅[通过包还原安装和重新安装包](https://docs.microsoft.com/nuget/consume-packages/package-restore#package-restore-overview)。
+在 Visual Studio 中，按 F5 或选择“启动”，开始调试应用程序。 Visual Studio 会自动还原缺少的 NuGet 包（若已配置）。若要了解详情，请参阅[通过包还原安装和重新安装包](https://docs.microsoft.com/nuget/consume-packages/package-restore#package-restore-overview)。
 
-此时会启动一个控制台窗口，应用程序开始运行。 应用程序将  HelloWorld.png 图像从解决方案上传到存储帐户。 应用程序会进行检查，确保图像已复制到辅助 RA-GRS 终结点， 然后开始下载图像（最多 999 次）。 每次读取由 **P** 或 **S** 表示。其中，  P 表示主终结点，  S 表示辅助终结点。
+此时会启动一个控制台窗口，应用程序开始运行。 应用程序将 HelloWorld.png 图像从解决方案上传到存储帐户。 应用程序会进行检查，确保图像已复制到辅助 RA-GRS 终结点， 然后开始下载图像（最多 999 次）。 每次读取由 **P** 或 **S** 表示。其中，P 表示主终结点，S 表示辅助终结点。
 
 ![正在运行的控制台应用](media/storage-create-geo-redundant-storage/figure3.png)
 
@@ -182,15 +181,15 @@ AZURE_STORAGE_ACCOUNT_ACCESS_KEY=<replace with your storage account access key>
 
 # <a name="python"></a>[Python](#tab/python)
 
-若要在终端或命令提示符处运行应用程序，请转到 **circuitbreaker.py** 目录，然后输入 `python circuitbreaker.py`。 应用程序将  HelloWorld.png 图像从解决方案上传到存储帐户。 应用程序会进行检查，确保图像已复制到辅助 RA-GRS 终结点， 然后开始下载图像（最多 999 次）。 每次读取由 **P** 或 **S** 表示。其中，  P 表示主终结点，  S 表示辅助终结点。
+若要在终端或命令提示符处运行应用程序，请转到 **circuitbreaker.py** 目录，然后输入 `python circuitbreaker.py`。 应用程序将 HelloWorld.png 图像从解决方案上传到存储帐户。 应用程序会进行检查，确保图像已复制到辅助 RA-GRS 终结点， 然后开始下载图像（最多 999 次）。 每次读取由 **P** 或 **S** 表示。其中，P 表示主终结点，S 表示辅助终结点。
 
 ![正在运行的控制台应用](media/storage-create-geo-redundant-storage/figure3.png)
 
-在示例代码中，使用了 `circuitbreaker.py` 文件中的 `run_circuit_breaker` 方法通过 [get_blob_to_path](https://azure.github.io/azure-storage-python/ref/azure.storage.blob.baseblobservice.html) 方法来下载存储帐户中的映像。
+在示例代码中，使用了 `circuitbreaker.py` 文件中的 `run_circuit_breaker` 方法通过 [get_blob_to_path](https://docs.microsoft.com/python/api/azure-storage-blob/azure.storage.blob.baseblobservice.baseblobservice?view=azure-python-previous#get-blob-to-path-container-name--blob-name--file-path--open-mode--wb---snapshot-none--start-range-none--end-range-none--validate-content-false--progress-callback-none--max-connections-2--lease-id-none--if-modified-since-none--if-unmodified-since-none--if-match-none--if-none-match-none--timeout-none-) 方法来下载存储帐户中的映像。
 
 存储对象重试函数设置为线性重试策略。 重试函数决定了是否重试某个请求，并指定了在重试该请求之前需要等待的秒数。 如果应该在针对主终结点的初始请求失败以后重试针对次要终结点的请求，请将 **retry\_to\_secondary** 值设置为 true。 在示例应用程序的存储对象的 `retry_callback` 函数中，定义了自定义重试策略。
 
-在下载之前，定义了服务对象的 [retry_callback](https://docs.microsoft.com/python/api/azure.storage.common.storageclient.storageclient?view=azure-python) 和 [response_callback](https://docs.microsoft.com/python/api/azure.storage.common.storageclient.storageclient?view=azure-python) 函数。 这些函数定义了在下载成功完成或下载失败并重试时触发的事件处理程序。
+在下载之前，定义了服务对象的 [retry_callback](https://docs.microsoft.com/python/api/azure-storage-common/azure.storage.common.storageclient.storageclient?view=azure-python) 和 [response_callback](https://docs.microsoft.com/python/api/azure-storage-common/azure.storage.common.storageclient.storageclient?view=azure-python) 函数。 这些函数定义了在下载成功完成或下载失败并重试时触发的事件处理程序。
 
 # <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
@@ -278,7 +277,7 @@ private static void OperationContextRequestCompleted(object sender, RequestEvent
 
 ### <a name="retry-event-handler"></a>Retry 事件处理程序
 
-当映像下载失败并设置为重试时，将调用 `retry_callback` 事件处理程序。 如果达到应用程序中定义的重试次数上限，请求的 [LocationMode](https://docs.microsoft.com/python/api/azure.storage.common.models.locationmode?view=azure-python) 会变为 `SECONDARY`。 此设置强制应用程序从辅助终结点尝试下载该图像。 此配置可减少请求图像所花的时间，因为不会无限重试主终结点。
+当映像下载失败并设置为重试时，将调用 `retry_callback` 事件处理程序。 如果达到应用程序中定义的重试次数上限，请求的 [LocationMode](https://docs.microsoft.com/python/api/azure-storage-common/azure.storage.common.models.locationmode?view=azure-python) 会变为 `SECONDARY`。 此设置强制应用程序从辅助终结点尝试下载该图像。 此配置可减少请求图像所花的时间，因为不会无限重试主终结点。
 
 ```python
 def retry_callback(retry_context):
@@ -302,7 +301,7 @@ def retry_callback(retry_context):
 
 ### <a name="request-completed-event-handler"></a>RequestCompleted 事件处理程序
 
-当图像下载成功时，会调用 `response_callback` 事件处理程序。 如果应用程序使用的是辅助终结点，则应用程序会继续使用该终结点，最多 20 次。 20 次以后，应用程序会将 [LocationMode](https://docs.microsoft.com/python/api/azure.storage.common.models.locationmode?view=azure-python) 重新设置为 `PRIMARY` 并重试主终结点。 如果请求成功，应用程序会继续从主终结点读取。
+当图像下载成功时，会调用 `response_callback` 事件处理程序。 如果应用程序使用的是辅助终结点，则应用程序会继续使用该终结点，最多 20 次。 20 次以后，应用程序会将 [LocationMode](https://docs.microsoft.com/python/api/azure-storage-common/azure.storage.common.models.locationmode?view=azure-python) 重新设置为 `PRIMARY` 并重试主终结点。 如果请求成功，应用程序会继续从主终结点读取。
 
 ```python
 def response_callback(response):
@@ -349,4 +348,4 @@ const pipeline = StorageURL.newPipeline(sharedKeyCredential, {
 若要了解如何模拟故障并强制应用程序使用辅助 RA-GRS 终结点，请转到此系列的第二部分。
 
 > [!div class="nextstepaction"]
-> [模拟从主要区域读取数据时出现的故障](storage-simulate-failure-ragrs-account-app.md)
+> [模拟从主要区域读取数据时出现的故障](simulate-primary-region-failure.md)

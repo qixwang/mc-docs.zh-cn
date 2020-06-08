@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 03/10/2020
+ms.date: 05/29/2020
 ms.author: v-junlch
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6fbc4f7150353bf3050a24cb51dae6ae8864efd
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 88977b0c2c3aa71a68262d708a69fcedc878cc80
+ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79291093"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84186664"
 ---
 # <a name="conditional-access-conditions"></a>条件访问：Conditions
 
@@ -40,6 +40,9 @@ Azure AD 条件访问支持以下设备平台：
 - Windows
 - macOS
 
+> [!WARNING]
+> Microsoft 察觉到条件访问策略和基于 macOS 10.15.4 的设备存在问题。 有关详细信息，可参阅博客文章：[已知问题：条件访问意外阻止了 macOS 10.15.4 本机邮件客户端/其他应用](https://techcommunity.microsoft.com/t5/intune-customer-success/known-issue-conditional-access-unexpectedly-blocking-macos-10-15/ba-p/1322283)。
+
 如果使用**其他客户端**条件来阻止旧身份验证，还可以设置设备平台条件。
 
 ## <a name="locations"></a>位置
@@ -62,7 +65,7 @@ Azure AD 条件访问支持以下设备平台：
    - 新式身份验证客户端
       - 此选项包括 Office 桌面和手机应用程序等应用程序。
    - Exchange ActiveSync 客户端
-      - 默认情况下，这包括 Exchange ActiveSync (EAS) 协议的所有使用。 选择“仅将策略应用于受支持的平台”  会将平台限制为受支持的平台（如 iOS、Android 和 Windows）。
+      - 默认情况下，这包括 Exchange ActiveSync (EAS) 协议的所有使用。 选择“仅将策略应用于受支持的平台”会将平台限制为受支持的平台（如 iOS、Android 和 Windows）。
       - 当策略阻止使用 Exchange ActiveSync 时，受影响的用户将收到一封隔离电子邮件。 此电子邮件将提供受阻原因，并提供修正说明（如果可以修正）。
    - 其他客户端
       - 此选项包括使用那些不支持新式身份验证的基本/旧式身份验证协议的客户端。
@@ -104,7 +107,7 @@ Azure AD 条件访问支持以下设备平台：
 
 #### <a name="chrome-support"></a>Chrome 支持
 
-如需在 Windows 10 创意者更新（版本 1703）或更高版本中获得 Chrome 支持，请安装 Windows 10 Accounts 扩展  。 当条件访问策略需要特定于设备的详细信息时，此扩展是必需的。
+对于 Windows 10 Creators Update（版本 1703）或更高版本中的 Chrome 支持，请安装 `Windows 10 Accounts extension`。 当条件访问策略需要特定于设备的详细信息时，此扩展是必需的。
 
 若要自动将此扩展部署到 Chrome 浏览器，请创建以下注册表项：
 
@@ -115,7 +118,7 @@ Azure AD 条件访问支持以下设备平台：
 | 类型 | REG_SZ (String) |
 | 数据 | ppnbnpeolgkicgegkbkbjmhlideopiji;https\://clients2.google.com/service/update2/crx |
 
-对于 Windows 8.1 和 7  中的 Chrome 支持，请创建以下注册表项：
+对于 Windows 8.1 和 7 中的 Chrome 支持，请创建以下注册表项：
 
 |    |    |
 | --- | --- |
@@ -154,11 +157,11 @@ Azure AD 条件访问支持以下设备平台：
 
 ### <a name="exchange-activesync-clients"></a>Exchange ActiveSync 客户端
 
-- 组织在将策略分配给用户或组时，只能选择 Exchange ActiveSync 客户端。 选择“所有用户”、“所有来宾和外部用户”或“目录角色”会导致所有用户遭到阻止。   
+- 组织在将策略分配给用户或组时，只能选择 Exchange ActiveSync 客户端。 选择“所有用户”、“所有来宾和外部用户”或“目录角色”会导致所有用户遭到阻止。  
 - 创建分配给 Exchange ActiveSync 客户端的策略时，**Office 365 Exchange Online** 是唯一可分配给该策略的云应用程序。 
-- 组织可以使用“设备平台”条件将此策略的范围缩小为特定的平台。 
+- 组织可以使用“设备平台”条件将此策略的范围缩小为特定的平台。
 
-如果分配给策略的访问控制使用“需要已批准的客户端应用”，则会将用户定向到相应的位置让他们安装并使用 Outlook 移动客户端。  如果需要**多重身份验证**，受影响的用户将被阻止，因为基本身份验证不支持多重身份验证。
+如果分配给策略的访问控制使用“需要已批准的客户端应用”，则会将用户定向到相应的位置让他们安装并使用 Outlook 移动客户端。 如果需要**多重身份验证**，受影响的用户将被阻止，因为基本身份验证不支持多重身份验证。
 
 有关详细信息，请参阅以下文章：
 
@@ -167,13 +170,13 @@ Azure AD 条件访问支持以下设备平台：
 
 ### <a name="other-clients"></a>其他客户端
 
-通过选择“其他客户端”  ，可以指定一个条件，该条件会影响通过邮件协议（如 IMAP、MAPI、POP、SMTP）使用基本身份验证的应用和不使用新式身份验证的旧版 Office 应用。
+通过选择“其他客户端”，可以指定一个条件，该条件会影响通过邮件协议（如 IMAP、MAPI、POP、SMTP）使用基本身份验证的应用和不使用新式身份验证的旧版 Office 应用。
 
 ## <a name="device-state-preview"></a>设备状态（预览）
 
 设备状态条件可用于在组织的条件访问策略中，排除已加入混合 Azure AD 的设备和/或标记为符合 Microsoft Intune 合规策略的设备。
 
-例如，访问“Azure 管理”云应用的“所有用户”，包括“所有设备状态”，排除“已加入混合 Azure AD 的设备”和“标记为合规的设备”，“访问控制”为“阻止”。        
+例如，访问“Azure 管理”云应用的“所有用户”，包括“所有设备状态”，排除“已加入混合 Azure AD 的设备”和“标记为合规的设备”，“访问控制”为“阻止”。    
    - 此示例将创建一个仅允许从已加入混合 Azure AD 的设备和/或标记为合规的设备访问 Azure 管理的策略。
 
 ## <a name="next-steps"></a>后续步骤

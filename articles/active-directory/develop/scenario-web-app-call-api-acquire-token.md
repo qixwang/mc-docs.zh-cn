@@ -8,21 +8,21 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 04/22/2020
+ms.date: 05/28/2020
 ms.author: v-junlch
 ms.custom: aaddev
-ms.openlocfilehash: ba1c7c52b2d429c99ca4bc25f99ae8256e82dbcc
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.openlocfilehash: 7ba5230bb347069aeda9b9c7c2b4564605197e14
+ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82126440"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84186869"
 ---
 # <a name="a-web-app-that-calls-web-apis-acquire-a-token-for-the-app"></a>调用 Web API 的 Web 应用：获取应用的令牌
 
 你已构建了客户端应用程序对象。 现在，你将使用它获取令牌来调用 Web API。 在 ASP.NET 或 ASP.NET Core 中，调用 Web API 是在控制器中完成的。
 
-- 使用令牌缓存获取 Web API 的令牌。 若要获取此令牌，请调用 `AcquireTokenSilent` 方法。
+- 使用令牌缓存获取 Web API 的令牌。 若要获取此令牌，请调用 MSAL `AcquireTokenSilent` 方法（或 Microsoft.Identity.Web 中的等效方法）。
 - 调用受保护的 API，将访问令牌作为参数传递给它。
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
@@ -54,7 +54,7 @@ public async Task<IActionResult> Profile()
 {
  // Acquire the access token.
  string[] scopes = new string[]{"https://microsoftgraph.chinacloudapi.cn/user.read"};
- string accessToken = await tokenAcquisition.GetAccessTokenOnBehalfOfUserAsync(scopes);
+ string accessToken = await tokenAcquisition.GetAccessTokenForUserAsync(scopes);
 
  // Use the access token to call a protected web API.
  HttpClient client = new HttpClient();
@@ -160,6 +160,8 @@ def graphcall():
         ).json()
     return render_template('display.html', result=graph_data)
 ```
+
+---
 
 ## <a name="next-steps"></a>后续步骤
 

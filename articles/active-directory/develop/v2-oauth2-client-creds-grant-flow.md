@@ -2,35 +2,32 @@
 title: Microsoft 标识平台中的 OAuth 2.0 客户端凭据流 | Azure
 description: 使用 OAuth 2.0 身份验证协议的 Microsoft 标识平台实现生成 Web 应用程序。
 services: active-directory
-author: rwike77
+author: hpsin
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/23/2020
+ms.date: 05/28/2020
 ms.author: v-junlch
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: ea07f98fa79af3b4fb1eed99ef217b6cf4c44948
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.openlocfilehash: bfe144098c7aa356531d155cbeac2667e7a52913
+ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82126403"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84186850"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Microsoft 标识平台和 OAuth 2.0 客户端凭据流
 
-可通过 RFC 6749 中指定的 [OAuth 2.0 客户端凭据授予](https://tools.ietf.org/html/rfc6749#section-4.4)（有时称为“双重 OAuth”  ），使用应用程序标识来访问 Web 托管的资源。 这种授予通常用于必须在后台运行的服务器间交互，不需要立即与用户交互。 此类应用程序通常称为守护程序  或服务帐户  。
+可通过 RFC 6749 中指定的 [OAuth 2.0 客户端凭据授予](https://tools.ietf.org/html/rfc6749#section-4.4)（有时称为“双重 OAuth”），使用应用程序标识来访问 Web 托管的资源。 这种授予通常用于必须在后台运行的服务器间交互，不需要立即与用户交互。 此类应用程序通常称为守护程序或服务帐户。
 
 本文介绍如何在应用程序中直接针对协议进行编程。 如果可能，建议你改用受支持的 Microsoft 身份验证库 (MSAL) 来[获取令牌并调用受保护的 Web API](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows)。  另请参阅[使用 MSAL 的示例应用](sample-v2-code.md)。
 
 OAuth 2.0 客户端凭据授权流允许 Web 服务（机密客户端）在调用其他 Web 服务时使用它自己的凭据（而不是模拟用户）进行身份验证。 在这种情况下，客户端通常是中间层 Web 服务、后台程序服务或网站。 为了进行更高级别的保证，Microsoft 标识平台还允许调用服务将证书（而不是共享机密）用作凭据。
 
-> [!NOTE]
-> Microsoft 标识平台终结点并非支持所有 Azure AD 方案和功能。 若要确定是否应使用 Microsoft 标识平台终结点，请阅读 [Microsoft 标识平台限制](azure-ad-endpoint-comparison.md)。
-
-在较典型的 *三重 OAuth*中，客户端应用程序有权代表特定用户访问资源。 该权限通常在[许可](v2-permissions-and-consent.md)过程中由用户委托给应用程序。 但是，在客户端凭据（双重 OAuth  ）流中，权限直接授予应用程序本身。 应用向资源出示令牌时，该资源强制要求应用本身而不是用户拥有执行操作的授权。
+在较典型的 *三重 OAuth*中，客户端应用程序有权代表特定用户访问资源。 该权限通常在[许可](v2-permissions-and-consent.md)过程中由用户委托给应用程序。 但是，在客户端凭据（双重 OAuth）流中，权限直接授予应用程序本身。 应用向资源出示令牌时，该资源强制要求应用本身而不是用户拥有执行操作的授权。
 
 ## <a name="protocol-diagram"></a>协议图
 
@@ -57,7 +54,7 @@ OAuth 2.0 客户端凭据授权流允许 Web 服务（机密客户端）在调�
 
 ### <a name="application-permissions"></a>应用程序权限
 
-可使用 API 公开一组应用程序权限，而不是使用 ACL  。 应用程序权限由组织管理员向应用程序授予，并且只可用于访问该组织与其员工所拥有的数据。 例如，Microsoft Graph 公开多个应用程序权限来执行以下操作：
+可使用 API 公开一组应用程序权限，而不是使用 ACL。 应用程序权限由组织管理员向应用程序授予，并且只可用于访问该组织与其员工所拥有的数据。 例如，Microsoft Graph 公开多个应用程序权限来执行以下操作：
 
 * 读取所有邮箱中的邮件
 * 在所有邮箱中读取和写入邮件
@@ -76,8 +73,8 @@ OAuth 2.0 客户端凭据授权流允许 Web 服务（机密客户端）在调�
 #### <a name="request-the-permissions-in-the-app-registration-portal"></a>在应用注册门户中请求权限
 
 1. 通过新的[应用注册（预览版）体验](quickstart-register-app.md)注册和创建应用。
-2. 在应用注册（预览版）体验中转到你的应用程序。 导航到“证书和机密”部分，并添加一个**新的客户端机密**，因为至少需要使用一个客户端机密来请求令牌。 
-3. 找到“API 权限”  部分，然后添加应用所需的**应用程序权限**。
+2. 在应用注册（预览版）体验中转到你的应用程序。 导航到“证书和机密”部分，并添加一个**新的客户端机密**，因为至少需要使用一个客户端机密来请求令牌。
+3. 找到“API 权限”部分，然后添加应用所需的**应用程序权限**。
 4. **保存** 应用注册。
 
 #### <a name="recommended-sign-the-user-into-your-app"></a>建议：让用户登录到应用
@@ -93,7 +90,7 @@ OAuth 2.0 客户端凭据授权流允许 Web 服务（机密客户端）在调�
 > [!TIP]
 > 尝试在 Postman 中执行此请求！ （为获得最佳效果，请使用自己的应用 ID - 教程应用程序不会请求有用的权限。）[![尝试在 Postman 中运行此请求](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 
-```
+```HTTP
 // Line breaks are for legibility only.
 
 GET https://login.partner.microsoftonline.cn/{tenant}/adminconsent?
@@ -102,9 +99,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &redirect_uri=http://localhost/myapp/permissions
 ```
 
-```
-// Pro tip: Try pasting the following request in a browser.
-```
+专业提示：请尝试将以下请求粘贴到浏览器中。
 
 ```
 https://login.partner.microsoftonline.cn/common/adminconsent?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&state=12345&redirect_uri=http://localhost/myapp/permissions
@@ -112,9 +107,9 @@ https://login.partner.microsoftonline.cn/common/adminconsent?client_id=6731de76-
 
 | 参数 | 条件 | 说明 |
 | --- | --- | --- |
-| `tenant` | 必需 | 要向其请求权限的目录租户。 此参数可采用 GUID 或友好名称格式。 如果不知道用户属于哪个租户并想让他们登录到任一租户，请使用 `common`。 |
-| `client_id` | 必需 | [Azure 门户 - 应用注册](https://portal.azure.cn/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)体验分配给应用的**应用程序（客户端）ID**。 |
-| `redirect_uri` | 必需 | 要向其发送响应，供应用处理的重定向 URI。 它必须与门户中注册的其中一个重定向 URI 完全匹配，否则必须经过 URL 编码并可包含其他路径段。 |
+| `tenant` | 必须 | 要向其请求权限的目录租户。 此参数可采用 GUID 或友好名称格式。 如果不知道用户属于哪个租户并想让他们登录到任一租户，请使用 `common`。 |
+| `client_id` | 必须 | [Azure 门户 - 应用注册](https://portal.azure.cn/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)体验分配给应用的**应用程序（客户端）ID**。 |
+| `redirect_uri` | 必须 | 要向其发送响应，供应用处理的重定向 URI。 它必须与门户中注册的其中一个重定向 URI 完全匹配，否则必须经过 URL 编码并可包含其他路径段。 |
 | `state` | 建议 | 同时随令牌响应返回的请求中所包含的值。 可以是所需的任何内容的字符串。 该 state 用于在身份验证请求出现之前，于应用中编码用户的状态信息，例如之前所在的页面或视图。 |
 
 此时，Azure AD 强制要求只有租户管理员可以登录来完成请求。 系统会要求管理员批准在应用注册门户中针对应用请求的所有直接应用程序权限。
@@ -123,7 +118,7 @@ https://login.partner.microsoftonline.cn/common/adminconsent?client_id=6731de76-
 
 如果管理员批准了应用程序的权限，成功响应如下所示：
 
-```
+```HTTP
 GET http://localhost/myapp/permissions?tenant=a8990e1f-ff32-408a-9f8e-78d3b9139b95&state=state=12345&admin_consent=True
 ```
 
@@ -137,7 +132,7 @@ GET http://localhost/myapp/permissions?tenant=a8990e1f-ff32-408a-9f8e-78d3b9139b
 
 如果管理员未批准应用程序的权限，失败响应如下所示：
 
-```
+```HTTP
 GET http://localhost/myapp/permissions?error=permission_denied&error_description=The+admin+canceled+the+request
 ```
 
@@ -157,7 +152,7 @@ GET http://localhost/myapp/permissions?error=permission_denied&error_description
 
 ### <a name="first-case-access-token-request-with-a-shared-secret"></a>第一种情况：使用共享机密访问令牌请求
 
-```
+```HTTP
 POST /{tenant}/oauth2/v2.0/token HTTP/1.1           //Line breaks for clarity
 Host: login.partner.microsoftonline.cn
 Content-Type: application/x-www-form-urlencoded
@@ -168,22 +163,22 @@ client_id=535fb089-9ff3-47b6-9bfb-4f1264799865
 &grant_type=client_credentials
 ```
 
-```
-// Replace {tenant} with your tenant!
+```Bash
+# Replace {tenant} with your tenant!
 curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=535fb089-9ff3-47b6-9bfb-4f1264799865&scope=https%3A%2F%2Fmicrosoftgraph.chinacloudapi.cn%2F.default&client_secret=qWgdYAmab0YSkuL1qKv5bPX&grant_type=client_credentials' 'https://login.partner.microsoftonline.cn/{tenant}/oauth2/v2.0/token'
 ```
 
 | 参数 | 条件 | 说明 |
 | --- | --- | --- |
-| `tenant` | 必需 | 应用程序计划对其进行操作的目录租户，采用 GUID 或域名格式。 |
-| `client_id` | 必需 | 分配给应用的应用程序 ID。 可以在注册应用的门户中找到此信息。 |
-| `scope` | 必需 | 在此请求中针对 `scope` 参数传递的值应该是所需资源的资源标识符（应用程序 ID URI），并附有 `.default` 后缀。 在 Microsoft Graph 示例中，该值为 `https://microsoftgraph.chinacloudapi.cn/.default`。 <br/>此值告知 Microsoft 标识平台终结点：在为应用配置的所有直接应用程序权限中，终结点应该为与要使用的资源关联的权限颁发令牌。 若要了解有关 `/.default` 范围的详细信息，请参阅[许可文档](v2-permissions-and-consent.md#the-default-scope)。 |
-| `client_secret` | 必需 | 在应用注册门户中为应用生成的客户端机密。 在发送客户端密码之前必须对其进行 URL 编码。 |
-| `grant_type` | 必需 | 必须设置为 `client_credentials`。 |
+| `tenant` | 必须 | 应用程序计划对其进行操作的目录租户，采用 GUID 或域名格式。 |
+| `client_id` | 必须 | 分配给应用的应用程序 ID。 可以在注册应用的门户中找到此信息。 |
+| `scope` | 必须 | 在此请求中针对 `scope` 参数传递的值应该是所需资源的资源标识符（应用程序 ID URI），并附有 `.default` 后缀。 在 Microsoft Graph 示例中，该值为 `https://microsoftgraph.chinacloudapi.cn/.default`。 <br/>此值告知 Microsoft 标识平台终结点：在为应用配置的所有直接应用程序权限中，终结点应该为与要使用的资源关联的权限颁发令牌。 若要了解有关 `/.default` 范围的详细信息，请参阅[许可文档](v2-permissions-and-consent.md#the-default-scope)。 |
+| `client_secret` | 必须 | 在应用注册门户中为应用生成的客户端机密。 在发送客户端密码之前必须对其进行 URL 编码。 |
+| `grant_type` | 必须 | 必须设置为 `client_credentials`。 |
 
 ### <a name="second-case-access-token-request-with-a-certificate"></a>第二种情况：使用证书访问令牌请求
 
-```
+```HTTP
 POST /{tenant}/oauth2/v2.0/token HTTP/1.1               // Line breaks for clarity
 Host: login.partner.microsoftonline.cn
 Content-Type: application/x-www-form-urlencoded
@@ -197,12 +192,12 @@ scope=https%3A%2F%2Fmicrosoftgraph.chinacloudapi.cn%2F.default
 
 | 参数 | 条件 | 说明 |
 | --- | --- | --- |
-| `tenant` | 必需 | 应用程序计划对其进行操作的目录租户，采用 GUID 或域名格式。 |
-| `client_id` | 必需 |分配给应用的应用程序（客户端）ID。 |
-| `scope` | 必需 | 在此请求中针对 `scope` 参数传递的值应该是所需资源的资源标识符（应用程序 ID URI），并附有 `.default` 后缀。 在 Microsoft Graph 示例中，该值为 `https://microsoftgraph.chinacloudapi.cn/.default`。 <br/>此值告知 Microsoft 标识平台终结点：在为应用配置的所有直接应用程序权限中，终结点应该为与要使用的资源关联的权限颁发令牌。 若要了解有关 `/.default` 范围的详细信息，请参阅[许可文档](v2-permissions-and-consent.md#the-default-scope)。 |
-| `client_assertion_type` | 必需 | 该值必须设置为 `urn:ietf:params:oauth:client-assertion-type:jwt-bearer`。 |
-| `client_assertion` | 必需 | 断言（JSON Web 令牌），需使用作为凭据向应用程序注册的证书进行创建和签名。 有关如何注册证书以及断言的格式，请阅读[证书凭据](active-directory-certificate-credentials.md)的相关信息。|
-| `grant_type` | 必需 | 必须设置为 `client_credentials`。 |
+| `tenant` | 必须 | 应用程序计划对其进行操作的目录租户，采用 GUID 或域名格式。 |
+| `client_id` | 必须 |分配给应用的应用程序（客户端）ID。 |
+| `scope` | 必须 | 在此请求中针对 `scope` 参数传递的值应该是所需资源的资源标识符（应用程序 ID URI），并附有 `.default` 后缀。 在 Microsoft Graph 示例中，该值为 `https://microsoftgraph.chinacloudapi.cn/.default`。 <br/>此值告知 Microsoft 标识平台终结点：在为应用配置的所有直接应用程序权限中，终结点应该为与要使用的资源关联的权限颁发令牌。 若要了解有关 `/.default` 范围的详细信息，请参阅[许可文档](v2-permissions-and-consent.md#the-default-scope)。 |
+| `client_assertion_type` | 必须 | 该值必须设置为 `urn:ietf:params:oauth:client-assertion-type:jwt-bearer`。 |
+| `client_assertion` | 必须 | 断言（JSON Web 令牌），需使用作为凭据向应用程序注册的证书进行创建和签名。 有关如何注册证书以及断言的格式，请阅读[证书凭据](active-directory-certificate-credentials.md)的相关信息。|
+| `grant_type` | 必须 | 必须设置为 `client_credentials`。 |
 
 请注意，参数几乎与共享密钥请求的参数相同，只不过 client_secret 参数替换为两个参数：client_assertion_type 和 client_assertion。
 
@@ -210,7 +205,7 @@ scope=https%3A%2F%2Fmicrosoftgraph.chinacloudapi.cn%2F.default
 
 成功响应如下所示：
 
-```
+```json
 {
   "token_type": "Bearer",
   "expires_in": 3599,
@@ -228,7 +223,7 @@ scope=https%3A%2F%2Fmicrosoftgraph.chinacloudapi.cn%2F.default
 
 错误响应如下所示：
 
-```
+```json
 {
   "error": "invalid_scope",
   "error_description": "AADSTS70011: The provided value for the input parameter 'scope' is not valid. The scope https://foo.microsoft.com/.default is not valid.\r\nTrace ID: 255d1aef-8c98-452f-ac51-23d051240864\r\nCorrelation ID: fb3d2015-bc17-4bb9-bb85-30c5cf1aaaa7\r\nTimestamp: 2016-01-09 02:02:12Z",
@@ -254,17 +249,15 @@ scope=https%3A%2F%2Fmicrosoftgraph.chinacloudapi.cn%2F.default
 
 获取令牌后，使用该令牌对资源发出请求。 令牌过期时，向 `/token` 终结点重复该请求，即可获取全新的访问令牌。
 
-```
+```HTTP
 GET /v1.0/me/messages
 Host: https://microsoftgraph.chinacloudapi.cn
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q...
 ```
 
-```
-// Pro tip: Try the following command! (Replace the token with your own.)
-```
+```bash
+# Pro tip: Try the following command! (Replace the token with your own.)
 
-```
 curl -X GET -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbG...." 'https://microsoftgraph.chinacloudapi.cn/v1.0/me/messages'
 ```
 

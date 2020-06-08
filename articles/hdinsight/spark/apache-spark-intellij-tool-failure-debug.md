@@ -10,23 +10,23 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 origin.date: 07/12/2019
 ms.date: 08/19/2019
-ms.openlocfilehash: 9c6f69008a528f3f931f0e283429bc4e6c0478bd
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 5a49f6dc7db2bdf862e003e6862f248ea2600687
+ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "68886369"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84186452"
 ---
 # <a name="failure-spark-job-debugging-with-azure-toolkit-for-intellij-preview"></a>使用 Azure Toolkit for IntelliJ 进行失败 Spark 作业调试（预览）
 
-本文逐步介绍如何使用 [Azure Toolkit for IntelliJ](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij?view=azure-java-stable) 中的 HDInsight 工具来运行 **Spark 失败调试**应用程序。 
+本文逐步介绍如何使用 [Azure Toolkit for IntelliJ](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij) 中的 HDInsight 工具来运行 **Spark 失败调试**应用程序。
 
 ## <a name="prerequisites"></a>先决条件
 * [Oracle Java 开发工具包](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)。 本教程使用 Java 版本 8.0.202。
   
 * IntelliJ IDEA。 本文使用 [IntelliJ IDEA Community 版本2019.1.3](https://www.jetbrains.com/idea/download/#section=windows)。
   
-* Azure Toolkit for IntelliJ。 请参阅[安装 Azure Toolkit for IntelliJ](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij-installation?view=azure-java-stable)。
+* Azure Toolkit for IntelliJ。 请参阅[安装 Azure Toolkit for IntelliJ](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/installation)。
 
 * 连接到 HDInsight 群集。 请参阅[连接到 HDInsight 群集](apache-spark-intellij-tool-plugin.md)。
 
@@ -36,27 +36,27 @@ ms.locfileid: "68886369"
 
 请创建 spark2.3.2 项目以继续失败调试，并使用此文档中的失败任务调试示例文件。
 
-1. 打开 IntelliJ IDEA。 打开“新建项目”窗口。 
+1. 打开 IntelliJ IDEA。 打开“新建项目”窗口。
 
-   a. 在左窗格中选择“Azure Spark/HDInsight”  。 
+   a. 在左窗格中选择“Azure Spark/HDInsight”。 
 
-   b. 从主窗口中选择“Spark 项目和失败任务调试示例(预览)(Scala)”。 
+   b. 从主窗口中选择“Spark 项目和失败任务调试示例(预览)(Scala)”。
 
      ![创建调试项目](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-projectfor-failure-debug.png)
 
    c. 选择“**下一步**”。     
  
-2. 在“新建项目”  窗口中执行以下步骤：
+2. 在“新建项目”窗口中执行以下步骤：
 
    ![选择 Spark SDK](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-new-project.png)
 
    a. 输入项目名称和项目位置。
 
-   b. 在“项目 SDK”下拉列表中，选择适用于 **Spark 2.3.2** 群集的 **Java 1.8**。 
+   b. 在“项目 SDK”下拉列表中，选择适用于 **Spark 2.3.2** 群集的 **Java 1.8**。
 
-   c. 在“Spark 版本”下拉列表中，选择“Spark 2.3.2(Scala 2.11.8)”。  
+   c. 在“Spark 版本”下拉列表中，选择“Spark 2.3.2(Scala 2.11.8)”。 
 
-   d. 选择“完成”。 
+   d. 选择“完成”。
 
 3. 选择 **src** > **main** > **scala** 打开项目中的代码。 此示例使用 **AgeMean_Div()** 脚本。
 
@@ -64,19 +64,19 @@ ms.locfileid: "68886369"
 
 执行以下步骤，创建一个 spark Scala/Java 应用程序，然后在 Spark 群集中运行该应用程序：
 
-1. 单击“添加配置”，打开“运行/调试配置”窗口。  
+1. 单击“添加配置”，打开“运行/调试配置”窗口。 
 
    ![编辑配置](./media/apache-spark-intellij-tool-failure-debug/hdinsight-add-new-configuration.png) 
 
-2. 在“运行/调试配置”对话框中，选择加号 (+)   。 然后选择“HDInsight 上的 Apache Spark”选项。 
+2. 在“运行/调试配置”对话框中，选择加号 (+) 。 然后选择“HDInsight 上的 Apache Spark”选项。
 
    ![添加新配置](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-new-configuraion-01.png)
 
-3. 切换到“在群集中远程运行”选项卡。  为“名称”  、“Spark 群集”  和“Main 类名”  输入信息。 工具支持使用“执行器”  进行调试。 **numExectors** 的默认值为 5，设置的值最好不要大于 3。 若要减少运行次数，可以将 **spark.yarn.maxAppAttempts** 添加到“作业配置”中并将值设置为 1。  单击“确定”按钮，保存配置。 
+3. 切换到“在群集中远程运行”选项卡。为“名称”、“Spark 群集”  和“Main 类名”输入信息。 工具支持使用“执行器”进行调试。 **numExectors** 的默认值为 5，设置的值最好不要大于 3。 若要减少运行次数，可以将 **spark.yarn.maxAppAttempts** 添加到“作业配置”中并将值设置为 1。 单击“确定”按钮，保存配置。
 
    ![运行调试配置](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-new-configuraion-002.png)
 
-4. 现已使用提供的名称保存配置。 若要查看配置详细信息，请选择配置名称。 若要进行更改，请选择“编辑配置”。  
+4. 现已使用提供的名称保存配置。 若要查看配置详细信息，请选择配置名称。 若要进行更改，请选择“编辑配置”。 
 
 5. 完成配置设置后，可以针对远程群集运行项目。
    
@@ -90,7 +90,7 @@ ms.locfileid: "68886369"
 
 如果作业提交失败，可以将已失败作业的配置文件下载到本地计算机进行进一步的调试。
 
-1. 打开 **Microsoft Azure 存储资源管理器**，找到已失败作业所在群集的 HDInsight 帐户，将已失败作业的资源从相应的位置 ( **\hdp\spark2-events\\.spark-failures\\\<应用程序 ID>** ) 下载到本地文件夹。 “活动”  窗口会显示下载进度。
+1. 打开 Microsoft Azure 存储资源管理器，找到已失败作业所在群集的 HDInsight 帐户，将已失败作业的资源从相应的位置 (\hdp\spark2-events\\.spark-failures\\\<application ID>) 下载到本地文件夹。 “活动”窗口会显示下载进度。
 
    ![下载失败文件](./media/apache-spark-intellij-tool-failure-debug/hdinsight-find-spark-file-001.png)
 
@@ -100,7 +100,7 @@ ms.locfileid: "68886369"
 
 1. 打开原始项目，或者创建一个新项目并将其与原始源代码相关联。 目前仅支持对 spark2.3.2 版本进行失败调试。
 
-2. 在 IntelliJ IDEA 中，创建一个 **Spark 失败调试**配置文件，从以前下载的已失败作业的资源中选择与“Spark 作业失败上下文位置”字段对应的 FTD 文件。 
+2. 在 IntelliJ IDEA 中，创建一个 **Spark 失败调试**配置文件，从以前下载的已失败作业的资源中选择与“Spark 作业失败上下文位置”字段对应的 FTD 文件。
    
    ![远程运行按钮](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-failure-configuration-01.png)
 

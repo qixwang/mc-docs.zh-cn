@@ -1,19 +1,17 @@
 ---
-title: 渲染器管理器支持 - Azure Batch
+title: 渲染器管理器支持
 description: 使用 Azure Batch 渲染管理器集成。 了解常用渲染管理器的内置支持或加载项。
-services: batch
-ms.service: batch
 author: lingliw
 ms.author: v-lingwu
 origin.date: 08/02/2018
 ms.date: 11/26/2018
 ms.topic: conceptual
-ms.openlocfilehash: 0d79b2789cca9100be693bffdfdd30c95d86f150
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: aeff88ce8fefb76c2000bdda7082626ca79226f0
+ms.sourcegitcommit: cbaa1aef101f67bd094f6ad0b4be274bbc2d2537
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75858089"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84126604"
 ---
 # <a name="using-azure-batch-with-render-farm-managers"></a>将 Azure Batch 与渲染器场管理器配合使用
 
@@ -50,4 +48,3 @@ Azure 渲染中心支持流行的渲染管理器，包括 Deadline。  有关部
 ## <a name="next-steps"></a>后续步骤
 
 尝试适用于渲染器管理器的 Azure Batch 集成，根据需要使用 GitHub 上的适当插件和说明。
-

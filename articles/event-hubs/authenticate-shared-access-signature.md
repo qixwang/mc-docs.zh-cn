@@ -7,14 +7,14 @@ documentationcenter: ''
 author: spelluru
 ms.topic: conceptual
 origin.date: 11/26/2019
-ms.date: 12/16/2019
+ms.date: 05/29/2020
 ms.author: v-tawe
-ms.openlocfilehash: 48384f71e6b2d438db49489beabe51d0032369b1
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 5dbd0d4333c25fbd885d09668dc11e7931ad6d05
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75336179"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199452"
 ---
 # <a name="authenticate-access-to-event-hubs-resources-using-shared-access-signatures-sas"></a>使用共享访问签名 (SAS) 对事件中心资源访问进行身份验证
 使用共享访问签名 (SAS) 可以精细控制向具有共享访问签名的客户端授予的访问权限类型。 下面是可以在 SAS 中设置的一些控制措施： 
@@ -34,9 +34,7 @@ ms.locfileid: "75336179"
 
 
 ## <a name="configuring-for-sas-authentication"></a>配置 SAS 身份验证
-
-<!--  (event hub instance or Kafka Topic in an Event Hubs for Kafka enabled namespace) -->
-可以在事件中心命名空间或实体中配置事件中心共享访问授权规则。 目前不支持在使用者组中配置共享访问授权规则，但你可以使用命名空间或实体中配置的规则来保护对使用者组的访问。 
+可以在事件中心命名空间或实体（事件中心实例或事件中心内的 Kafka 主题）中配置事件中心共享访问授权规则。 目前不支持在使用者组中配置共享访问授权规则，但你可以使用命名空间或实体中配置的规则来保护对使用者组的访问。 
 
 下图显示了如何对示例实体应用授权规则。 
 
@@ -70,7 +68,7 @@ SHA-256('https://<yournamespace>.servicebus.chinacloudapi.cn/'+'\n'+ 1438205742)
 
 URI 必须采用百分比编码格式。
 
-用于签名的共享访问授权规则必须在此 URI 指定的实体上，或由其分层父级之一进行配置。 例如，前面的示例中的 `http://contoso.servicebus.chinacloudapi.cn/eventhubs/eh1` 或 `http://contoso.servicebus.chinacloudapi.cn`。
+用于签名的共享访问授权规则必须在此 URI 指定的实体上，或由其分层父级之一进行配置。 例如，之前示例中的 `http://contoso.servicebus.chinacloudapi.cn/eventhubs/eh1` 或 `http://contoso.servicebus.chinacloudapi.cn`。
 
 SAS 令牌对于以 signature-string 中使用的 <resourceURI> 为前缀的所有资源有效。
 
@@ -98,7 +96,7 @@ function createSharedAccessToken(uri, saName, saKey) {
         encodeURIComponent(hash) + '&se=' + ttl + '&skn=' + saName; 
 ```
 
-#### <a name="java"></a>JAVA
+#### <a name="java"></a>Java
 
 ```java
 private static String GetSASToken(String resourceUri, String keyName, String key)
@@ -190,7 +188,7 @@ private static string createToken(string resourceUri, string keyName, string key
 
 为所有令牌分配 SAS 密钥。 通常，所有令牌使用同一密钥进行签名。 客户端不知道密钥，这可以防止客户端制造令牌。 客户端以相同的令牌运行，直到令牌过期。
 
-例如，若要定义范围限定为向事件中心发送/发布消息的授权规则，需要定义发送授权规则。 可以在命名空间级别执行此操作，或者为特定的实体（事件中心实例或主题）分配更精细的范围。 具有此类粒度访问范围的客户端或应用程序称为“事件中心发布者”。 为此，请执行下列步骤：
+例如，若要定义范围限定为向事件中心发送/发布消息的授权规则，需要定义发送授权规则。 可以在命名空间级别执行此操作，或者为特定的实体（事件中心实例或主题）分配更精细的范围。 具有此类粒度访问范围的客户端或应用程序称为“事件中心发布者”。 为此，请执行以下步骤：
 
 1. 在要发布的实体中创建一个 SAS 密钥，以在其上分配**发送**范围。 有关详细信息，请参阅[共享访问授权策略](authorize-access-shared-access-signature.md#shared-access-authorization-policies)。
 2. 使用在步骤 1 中生成的密钥为特定的发布者生成具有过期时间的 SAS 令牌。
@@ -215,7 +213,7 @@ private static string createToken(string resourceUri, string keyName, string key
 > 我们始终建议指定具体的精细范围。
 
 > [!IMPORTANT]
-> 创建令牌后，将为每个客户端设置其自身唯一的令牌。
+> 创建令牌后，会为每个客户端设置其自身唯一的令牌。
 >
 > 当客户端向事件中心发送数据时，客户端会使用令牌标记其请求。 为了防止攻击者窃听和盗取令牌，客户端与事件中心之间的通信必须通过加密通道进行。
 > 

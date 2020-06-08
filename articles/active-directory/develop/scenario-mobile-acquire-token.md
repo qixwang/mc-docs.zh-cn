@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 04/22/2020
+ms.date: 05/28/2020
 ms.author: v-junlch
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 74b95f29ef2e81fbb37750fdefd7ab15d25fec3a
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.openlocfilehash: eef6572cc2353894b25e4512ee09762d76588437
+ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82126456"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84186865"
 ---
 # <a name="get-a-token-for-a-mobile-app-that-calls-web-apis"></a>获取调用 Web API 的移动应用的令牌
 
@@ -209,6 +209,8 @@ catch(MsalUiRequiredException)
 
 `AcquireTokenInteractive` 只有一个必需的参数：`scopes`。 `scopes` 参数枚举用于定义所需令牌范围的字符串。 如果令牌用于 Microsoft Graph，可以在每个 Microsoft Graph API 的 API 参考文档中找到所需的范围。 参阅参考文档中的“权限”部分。
 
+例如，若要[列出用户的联系人](https://docs.microsoft.com/graph/api/user-list-contacts)，请使用范围“User.Read”、“Contacts.Read”。 有关详细信息，请参阅 [Microsoft Graph 权限参考](https://developer.microsoft.com/graph/docs/concepts/permissions_reference)。
+
 在 Android 上，可以在使用 `PublicClientApplicationBuilder` 创建应用时指定父活动。 如果当时未指定父活动，以后可以使用 `.WithParentActivityOrWindow` 来指定，如以下部分中所述。 如果指定了父活动，交互后，令牌将交回给该父活动。 如果未指定父活动，`.ExecuteAsync()` 调用将引发异常。
 
 #### <a name="specific-optional-parameters-in-msalnet"></a>MSAL.NET 中特定的可选参数
@@ -266,7 +268,7 @@ var result = await app.AcquireTokenInteractive(scopesForCustomerApi)
 
 #### <a name="get-an-authorization-code"></a>获取授权代码
 
-```Text
+```
 https://login.partner.microsoftonline.cn/{tenant}/oauth2/v2.0/authorize?
 client_id=<CLIENT_ID>
 &response_type=code
@@ -278,7 +280,7 @@ client_id=<CLIENT_ID>
 
 #### <a name="get-access-and-refresh-the-token"></a>获取访问权限并刷新令牌
 
-```Text
+```HTTP
 POST /{tenant}/oauth2/v2.0/token HTTP/1.1
 Host: https://login.partner.microsoftonline.cn
 Content-Type: application/x-www-form-urlencoded

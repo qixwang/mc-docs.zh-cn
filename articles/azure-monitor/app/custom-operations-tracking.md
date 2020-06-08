@@ -2,17 +2,17 @@
 title: 使用 Azure Application Insights .NET SDK 跟踪自定义操作
 description: 使用 Azure Application Insights .NET SDK 跟踪自定义操作
 ms.topic: conceptual
-author: lingliw
+author: Johnnytechn
 origin.date: 11/26/2019
-ms.date: 12/4/2019
+ms.date: 05/28/2020
 ms.reviewer: sergkanz
-ms.author: v-lingwu
-ms.openlocfilehash: 10715d96f626c975d03f42e0d2939f11c5865f96
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.author: v-johya
+ms.openlocfilehash: 0f0b0774d40e8b9111a815ca19611b9e800c2e7f
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79293473"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199673"
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>使用 Application Insights .NET SDK 跟踪自定义操作
 
@@ -41,7 +41,7 @@ Application Insights Web SDK 自动收集 ASP.NET 应用程序（在 IIS 管道�
 大致而言，此任务旨在创建 `RequestTelemetry` 并设置已知的属性。 在操作完成后，可跟踪遥测数据。 以下示例演示了此任务。
 
 ### <a name="http-request-in-owin-self-hosted-app"></a>Owin 自托管应用中的 HTTP 请求
-在此示例中，跟踪上下文根据 [HTTP 关联协议](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md)进行传播。 用户应该会收到此处所述的标头。
+在此示例中，跟踪上下文根据 [HTTP 关联协议](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md)进行传播。 用户应该会收到此处所述的标头。
 
 ```csharp
 public class ApplicationInsightsMiddleware : OwinMiddleware
@@ -120,14 +120,14 @@ public class ApplicationInsightsMiddleware : OwinMiddleware
 HTTP 关联协议还声明 `Correlation-Context` 标头。 但为了简单起见，此处省略了该标头。
 
 ## <a name="queue-instrumentation"></a>队列检测
-虽然根据 [HTTP 相关协议](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md)使用 HTTP 请求传递关联详细信息，但每个队列协议必须定义如何随队列消息传递相同的详细信息。 某些队列协议（如 AMQP）允许传递附加元数据，而另一些队列协议（如 Azure 存储队列）需要将上下文编码为消息有效负载。
+虽然可以根据 [W3C 跟踪上下文](https://www.w3.org/TR/trace-context/)和 [HTTP 关联协议](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md)使用 HTTP 请求传递关联详细信息，但每个队列协议必须定义如何随队列消息传递相同的详细信息。 某些队列协议（如 AMQP）允许传递附加元数据，而另一些队列协议（如 Azure 存储队列）需要将上下文编码为消息有效负载。
 
 > [!NOTE]
 > * **使用 HTTP 的队列尚不支持跨组件跟踪**，如果生产者和使用者将遥测发送到不同的 Application Insights 资源，则“事务诊断体验”和“应用程序映射”将显示事务和端到端映射。 对于队列，尚不支持此项。 
 
 ### <a name="service-bus-queue"></a>服务总线队列
-Application Insights 使用新的[适用于 .NET 的世纪互联 Azure 服务总线客户端](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus/) 3.0.0 版及更高版本跟踪服务总线消息传送调用。
-如果使用[消息处理程序模式](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.queueclient.registermessagehandler?view=azure-dotnet)来处理消息，则无需执行其他操作，系统会自动跟踪由服务所完成的所有服务总线调用，并将其与其他遥测项关联。 如果手动处理消息，请参阅[使用 Azure Application Insights 跟踪的 Service Bus 客户端](../../service-bus-messaging/service-bus-end-to-end-tracing.md)。
+Application Insights 使用新的[适用于 .NET 的 Azure 服务总线客户端](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus/) 3.0.0 及更高版本跟踪服务总线消息传送调用。
+如果使用[消息处理程序模式](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.queueclient.registermessagehandler)来处理消息，则无需执行其他操作，系统会自动跟踪由服务所完成的所有服务总线调用，并将其与其他遥测项关联。 如果手动处理消息，请参阅[使用 Azure Application Insights 跟踪的 Service Bus 客户端](../../service-bus-messaging/service-bus-end-to-end-tracing.md)。
 
 如果使用 [WindowsAzure.ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) 包，请进一步阅读 - 以下示例演示当服务总线队列使用 AMQP 协议且 Application Insights 不自动跟踪队列操作时，如何跟踪（和关联）对服务总线的调用。
 在消息属性中传递关联标识符。
@@ -172,7 +172,7 @@ public async Task Enqueue(string payload)
 }
 ```
 
-#### <a name="process"></a>进程
+#### <a name="process"></a>过程
 ```csharp
 public async Task Process(BrokeredMessage message)
 {
@@ -216,7 +216,7 @@ public async Task Process(BrokeredMessage message)
 #### <a name="enqueue"></a>排队
 由于存储队列支持 HTTP API，因此 Application Insights 会自动跟踪队列的所有操作。 在多数情况下，此检测已足够。 但是，为了将使用者跟踪与生成者跟踪相关联，必须传递某些关联上下文，方法类似于 HTTP 关联协议中所执行的操作。 
 
-此示例演示如何跟踪 `Enqueue` 操作。 可以：
+此示例演示如何跟踪 `Enqueue` 操作。 方法：
 
  - **关联重试（如果有）** ：它们都有一个共同的父级，即 `Enqueue` 操作。 否则，它们都作为传入请求的子级进行跟踪。 如果有多个对队列的逻辑请求，可能很难发现导致重试的调用。
  - **关联存储日志（如果需要）** ：它们与 Application Insights 遥测相关联。
@@ -303,7 +303,7 @@ public async Task<MessagePayload> Dequeue(CloudQueue queue)
 }
 ```
 
-#### <a name="process"></a>进程
+#### <a name="process"></a>过程
 
 在以下示例中，通过类似于跟踪传入 HTTP 请求的方式跟踪传入消息：
 
@@ -429,6 +429,7 @@ public async Task RunMyTaskAsync()
 释放操作会导致操作停止，因此你可以执行此操作而不用调用 `StopOperation`。
 
 *警告*：在某些情况下，未处理的异常可能会[阻止](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/try-finally)调用 `finally`，因此无法跟踪操作。
+<!-- Correct on link: https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/try-finally -->
 
 ### <a name="parallel-operations-processing-and-tracking"></a>并行处理和跟踪操作
 
@@ -481,11 +482,9 @@ public async Task RunAllTasks()
 ## <a name="next-steps"></a>后续步骤
 
 - 了解 Application Insights 中的[遥测关联](correlation.md)基础知识。
+- 查看相关数据如何支持[应用程序映射](../../azure-monitor/app/app-map.md)。
 - 有关 Application Insights 的类型和数据模型，请参阅[数据模型](../../azure-monitor/app/data-model.md)。
 - 向 Application Insights 报告自定义[事件和指标](../../azure-monitor/app/api-custom-events-metrics.md)。
 - 查看上下文属性集合的标准[配置](configuration-with-applicationinsights-config.md#telemetry-initializers-aspnet)。
-- 查看 [System.Diagnostics.Activity 用户指南](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md)，了解如何关联遥测。
-
-
-
+- 查看 [System.Diagnostics.Activity 用户指南](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md)，了解如何关联遥测。
 

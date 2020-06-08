@@ -2,18 +2,18 @@
 title: 快速入门：使用 Azure Application Insights 进行 Java Web 应用分析
 description: '使用 Application Insights 监视 Java Web 应用的应用程序性能。 '
 ms.topic: conceptual
-author: lingliw
+author: Johnnytechn
 origin.date: 05/24/2019
-ms.date: 11/4/2019
-ms.author: v-lingwu
-ms.openlocfilehash: 56d3c564d48a32e6f4cbeeb44851eedd200ddcdd
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.author: v-johya
+ms.date: 05/28/2020
+ms.openlocfilehash: af4e34015d52341d4734f90ef3255f4ff171fcc9
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78850413"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199674"
 ---
-# <a name="get-started-with-application-insights-in-a-java-web-project"></a>Java Web 项目中的 Application Insights 入门
+# <a name="quickstart-get-started-with-application-insights-in-a-java-web-project"></a>快速入门：Java Web 项目中的 Application Insights 入门
 
 在本快速入门中，你将使用 Application Insights 自动检测请求，跟踪依赖项并收集性能计数器、诊断性能问题和异常，并编写代码以跟踪用户对应用执行的操作。
 
@@ -21,12 +21,13 @@ Application Insights 是面向 Web 开发人员的可扩展分析服务，可帮
 
 ## <a name="prerequisites"></a>先决条件
 
-* 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://wd.azure.cn/zh-cn/pricing/1rmb-trial-full)。
+* 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://www.azure.cn/pricing/1rmb-trial)。
 * 正常运行的 Java 应用程序。
 
-## <a name="1-get-an-application-insights-instrumentation-key"></a>1.获取 Application Insights 检测密钥
-1. 登录到[世纪互联 Azure 门户](https://portal.azure.cn)。
-2. 创建 Application Insights 资源。 将应用程序类型设置为 Java Web 应用程序。
+## <a name="get-an-application-insights-instrumentation-key"></a>获取 Application Insights 检测密钥
+
+1. 登录到 [Azure 门户](https://portal.azure.cn/)。
+2. 在 Azure 门户中，创建 Application Insights 资源。 将应用程序类型设置为 Java Web 应用程序。
 
 3. 查找新资源的检测密钥。 稍后需要将此密钥粘贴到代码项目中。
 
@@ -34,11 +35,11 @@ Application Insights 是面向 Web 开发人员的可扩展分析服务，可帮
 
 ## <a name="add-the-application-insights-sdk-for-java-to-your-project"></a>将用于 Java 的 Application Insights SDK 添加到项目
 
-选择项目类型。 
+选择项目类型。
 
 # <a name="maven"></a>[Maven](#tab/maven)
 
-如果项目已设置为使用 Maven 生成，请将以下代码合并到 pom.xml  文件。
+如果项目已设置为使用 Maven 生成，请将以下代码合并到 pom.xml 文件。
 
 然后刷新项目依赖项，以下载库。
 
@@ -56,7 +57,7 @@ Application Insights 是面向 Web 开发人员的可扩展分析服务，可帮
 
 # <a name="gradle"></a>[Gradle](#tab/gradle)
 
-如果项目已设置为使用 Gradle 生成，请将以下代码合并到 build.gradle  文件。
+如果项目已设置为使用 Gradle 生成，请将以下代码合并到 build.gradle 文件。
 
 然后刷新项目依赖项，以下载库。
 
@@ -75,19 +76,19 @@ Application Insights 是面向 Web 开发人员的可扩展分析服务，可帮
 ---
 
 ### <a name="questions"></a>问题
-* `-web-auto`、`-web` 与 `-core` 组件之间有怎样的关系？ 
+* `-web-auto`、`-web` 与 `-core` 组件之间有怎样的关系？
   * `applicationinsights-web-auto` 通过在运行时自动注册 Application Insights servlet 筛选器，为你提供跟踪 HTTP servlet 请求计数和响应时间的指标。
   * `applicationinsights-web` 也为你提供跟踪 HTTP servlet 请求计数和响应时间的指标，但需要在应用程序中手动注册 Application Insights servlet 筛选器。
   * 例如，如果应用程序不是基于 servlet 的应用程序，则 `applicationinsights-core` 仅提供单纯的 API。
   
-*  应怎样将 SDK 更新到最新版本？
+* 应怎样将 SDK 更新到最新版本？
   * 如果使用的是 Gradle 或 Maven...
     * 更新生成文件以指定最新版本。
   * 如果是手动管理依赖项...
     * 下载最新的 [用于 Java 的 Application Insights SDK](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest) 并替换旧版本。 [SDK release notes](https://github.com/Microsoft/ApplicationInsights-Java#release-notes)（SDK 发行说明）中描述了更改。
 
-## <a name="add-an-applicationinsightsxml-file"></a>添加 ApplicationInsights.xml  文件
-在项目的 resources 文件夹中添加 ApplicationInsights.xml  ，或确保将其添加到项目的部署类路径。 将以下 XML 复制到其中。
+## <a name="add-an-applicationinsightsxml-file"></a>添加 ApplicationInsights.xml 文件
+在项目的 resources 文件夹中添加 ApplicationInsights.xml，或确保将其添加到项目的部署类路径。 将以下 XML 复制到其中。
 
 将检测密钥替换为从 Azure 门户获得的密钥。
 
@@ -118,7 +119,7 @@ Application Insights 是面向 Web 开发人员的可扩展分析服务，可帮
 </ApplicationInsights>
 ```
 
-或者，配置文件可以位于应用程序可访问的任何位置。  系统属性 `-Dapplicationinsights.configurationDirectory` 指定 ApplicationInsights.xml  所在的目录。 例如，位于 `E:\myconfigs\appinsights\ApplicationInsights.xml` 的配置文件可以通过属性 `-Dapplicationinsights.configurationDirectory="E:\myconfigs\appinsights"` 进行配置。
+或者，配置文件可以位于应用程序可访问的任何位置。  系统属性 `-Dapplicationinsights.configurationDirectory` 指定 ApplicationInsights.xml 所在的目录。 例如，位于 `E:\myconfigs\appinsights\ApplicationInsights.xml` 的配置文件可以通过属性 `-Dapplicationinsights.configurationDirectory="E:\myconfigs\appinsights"` 进行配置。
 
 * 检测密钥随遥测的每个项一起发送，并告知 Application Insights 在资源中显示它。
 * HTTP 请求组件是可选的。 它自动将请求和响应时间的遥测数据发送到门户。
@@ -129,7 +130,7 @@ Application Insights SDK 按以下顺序查找密钥：
 
 1. 系统属性：-DAPPINSIGHTS_INSTRUMENTATIONKEY=your_ikey
 2. 环境变量：APPINSIGHTS_INSTRUMENTATIONKEY
-3. 配置文件：ApplicationInsights.xml 
+3. 配置文件：ApplicationInsights.xml
 
 也可以 [在代码中设置方法](../../azure-monitor/app/api-custom-events-metrics.md#ikey)：
 
@@ -150,7 +151,7 @@ Application Insights SDK 按以下顺序查找密钥：
 在开发计算机上以调试模式运行应用程序，或将其发布到服务器。
 
 ## <a name="view-your-telemetry-in-application-insights"></a>在 Application Insights 中查看遥测数据
-返回 [Microsoft Azure 门户](https://portal.azure.com)中的 Application Insights 资源。
+返回到 [Azure 门户](https://portal.azure.cn)中的 Application Insights 资源。
 
 “概述”边栏选项卡中显示了 HTTP 请求数据。 （如果未显示，请稍候片刻，并单击“刷新”。）
 
@@ -173,10 +174,11 @@ Application Insights SDK 按以下顺序查找密钥：
 
 ### <a name="analytics-powerful-query-language"></a>分析：功能强大的查询语言
 随着累积的数据越来越多，可以运行查询来聚合数据以及查找单个实例。  [分析](../../azure-monitor/log-query/log-query-overview.md) 是一个强大的工具，既可用于了解性能和使用情况，也可用于诊断。
+<!--Correct on link: azure-monitor/log-query/log-query-overview.md -->
 
 ![分析示例](./media/java-get-started/0025.png)
 
-## <a name="7-install-your-app-on-the-server"></a>7.在服务器上安装应用
+## <a name="install-your-app-on-the-server"></a>在服务器上安装应用
 现在，将应用程序发布到服务器供用户使用，然后查看门户上显示的遥测数据。
 
 * 请确保防火墙允许应用程序将遥测数据发送到以下端口：
@@ -223,17 +225,17 @@ Application Insights Web 筛选器会自动收集未经处理的异常和请求�
 
 Application Insights Java SDK 现支持 [W3C 分布式跟踪](https://w3c.github.io/trace-context/)。
 
-有关[关联](correlation.md#telemetry-correlation-in-the-java-sdk)的文章中进一步解释了传入的 SDK 配置。
+有关[关联](correlation.md)的文章中进一步解释了传入的 SDK 配置。
 
 [AI-Agent.xml](java-agent.md) 文件中定义了传出 SDK 配置。
 
 ## <a name="performance-counters"></a>性能计数器
-打开“调查”、“指标”，查看一系列性能计数器   。
+打开“调查”、“指标”，查看一系列性能计数器 。
 
 ![已选中进程专用字节的指标窗格的屏幕截图](./media/java-get-started/011-perf-counters.png)
 
 ### <a name="customize-performance-counter-collection"></a>自定义性能计数器收集
-若要禁用收集标准性能计数器集，请将以下代码添加到 ApplicationInsights.xml  文件的根节点下：
+若要禁用收集标准性能计数器集，请将以下代码添加到 ApplicationInsights.xml 文件的根节点下：
 
 ```XML
     <PerformanceCounters>
@@ -255,10 +257,10 @@ Application Insights Java SDK 现支持 [W3C 分布式跟踪](https://w3c.github
     </PerformanceCounters>
 ```
 
-* `displayName` – Application Insights 门户中显示的名称。
-* `objectName` – JMX 对象名称。
-* `attribute` – 提取的 JMX 对象名称属性
-* `type` （可选）- JMX 对象的属性类型：
+* `displayName` - Application Insights 门户中显示的名称。
+* `objectName` - JMX 对象名称。
+* `attribute` - 要提取的 JMX 对象名称属性
+* `type`（可选）- JMX 对象的属性类型：
   * 默认值：简单类型，例如 int 或 long。
   * `composite`：性能计数器数据采用“Attribute.Data”格式
   * `tabular`：性能计数器数据采用表行格式
@@ -275,10 +277,10 @@ Application Insights Java SDK 现支持 [W3C 分布式跟踪](https://w3c.github
     </PerformanceCounters>
 ```
 
-* displayName – Application Insights 门户中显示的名称。
-* categoryName – 与此性能计数器关联的性能计数器类别（性能对象）。
-* counterName – 性能计数器的名称。
-* instanceName – 性能计数器类别实例的名称，如果类别包含单个实例，则为空字符串 ("")。 如果 categoryName 为 Process，而要收集的性能计数器来自应用运行所在的当前 JVM 进程，请指定 `"__SELF__"`。
+* displayName - Application Insights 门户中显示的名称。
+* categoryName - 与此性能计数器关联的性能计数器类别（性能对象）。
+* counterName - 性能计数器的名称。
+* instanceName - 性能计数器类别实例的名称，如果类别包含单个实例，则为空字符串 ("")。 如果 categoryName 为 Process，而要收集的性能计数器来自应用运行所在的当前 JVM 进程，请指定 `"__SELF__"`。
 
 ### <a name="unix-performance-counters"></a>Unix 性能计数器
 * [使用 Application Insights 插件安装 collectd](java-collectd.md) ，获取各种不同的系统和网络数据。
@@ -310,6 +312,7 @@ Application Insights 可以定期测试网站，检查网站是否正常运行�
 * 编写[自定义遥测](../../azure-monitor/app/api-custom-events-metrics.md)来跟踪浏览器或服务器中的使用情况。
 * 使用[分析](../../azure-monitor/log-query/log-query-overview.md)从应用通过遥测执行功能强大的查询
 * 有关详细信息，请访问[面向 Java 开发人员的 Azure](https://docs.azure.cn/java/)。
+<!--Correct on links: azure-monitor/log-query/log-query-overview.md, https://docs.azure.cn/java/-->
 
 <!--Link references-->
 
@@ -318,9 +321,6 @@ Application Insights 可以定期测试网站，检查网站是否正常运行�
 [availability]: ../../azure-monitor/app/monitor-web-app-availability.md
 [diagnostic]: ../../azure-monitor/app/diagnostic-search.md
 [javalogs]: java-trace-logs.md
-[metrics]: ../../azure-monitor/app/metrics-explorer.md
+[metrics]: ../../azure-monitor/platform/metrics-charts.md
 [usage]: javascript.md
-
-
-
 

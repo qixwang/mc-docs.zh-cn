@@ -7,15 +7,15 @@ author: WenJason
 ms.service: storage
 ms.topic: how-to
 origin.date: 12/04/2019
-ms.date: 01/06/2020
+ms.date: 06/01/2020
 ms.author: v-jay
 ms.subservice: common
-ms.openlocfilehash: da0f5a6cba5f2351374a3d3c410ae1ec8025a5a0
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 3c404f16134509dce9d9933227551c8b0e917cc9
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75624121"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199735"
 ---
 # <a name="managing-storage-in-the-azure-independent-clouds-using-powershell"></a>使用 PowerShell 管理 Azure 独立云中的存储
 
@@ -31,7 +31,7 @@ ms.locfileid: "75624121"
 
 若要在某个独立云中使用 Azure 存储，需要连接到该云而不是 Azure 公有云。 若要使用某个独立云而不是 Azure 公有云，需要：
 
-* 指定要连接到的环境。 
+* 指定要连接到的环境。
 * 确定并使用可用的区域。
 * 使用正确的终结点后缀，它不同于 Azure 公有云。
 
@@ -93,7 +93,7 @@ Get-AzEnvironment | select Name, StorageEndpointSuffix
 | AzureGermanCloud | core.cloudapi.de|
 | AzureUSGovernment | core.usgovcloudapi.net |
 
-若要检索指定环境的所有属性，请调用 Get-AzEnvironment 并指定云名称  。 此代码片段返回属性列表；请在列表中查找 **StorageEndpointSuffix**。 以下示例适用于中国云。
+若要检索指定环境的所有属性，请调用 Get-AzEnvironment 并指定云名称。 此代码片段返回属性列表；请在列表中查找 **StorageEndpointSuffix**。 以下示例适用于中国云。
 
 ```powershell
 Get-AzEnvironment -Name AzureChinaCloud 
@@ -101,7 +101,7 @@ Get-AzEnvironment -Name AzureChinaCloud
 
 结果类似于以下值：
 
-|属性名称|值|
+|属性名称|Value|
 |----|----|
 | 名称 | `AzureChinaCloud` |
 | EnableAdfsAuthentication | `False` |
@@ -154,7 +154,7 @@ table endpoint = http://myexistingstorageaccount.table.core.chinacloudapi.cn/
 
 ## <a name="after-setting-the-environment"></a>设置环境之后
 
-从现在起，可以根据[对 Azure 存储使用 Azure PowerShell](storage-powershell-guide-full.md) 一文中所述，使用管理存储帐户时所用的相同 PowerShell 以及访问数据平面。
+现在可以使用 PowerShell 来管理存储帐户并访问 blob、队列、文件和表数据。 有关详细信息，请参阅 [Az.Storage](https://docs.microsoft.com/powershell/module/az.storage)。
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -167,4 +167,4 @@ Remove-AzResourceGroup -Name $resourceGroup
 ## <a name="next-steps"></a>后续步骤
 
 * [在不同的 PowerShell 会话中保留用户登录](https://docs.microsoft.com/powershell/azure/context-persistence)
-* [Azure 中国版应用程序开发人员说明](https://msdn.microsoft.com/library/azure/dn578439.aspx)
+* [Azure 中国世纪互联应用程序的开发人员说明](https://msdn.microsoft.com/library/azure/dn578439.aspx)

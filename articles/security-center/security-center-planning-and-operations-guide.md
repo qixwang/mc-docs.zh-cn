@@ -1,5 +1,5 @@
 ---
-title: 安全中心规划和操作指南 | Azure
+title: 安全中心规划和操作指南
 description: 本文档介绍了如何在采用 Azure 安全中心之前进行规划，并介绍了有关日常操作的注意事项。
 services: security-center
 author: memildin
@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.date: 05/14/2020
 ms.author: v-tawe
 origin.date: 09/10/2019
-ms.openlocfilehash: c8250063fff249e71ab566c86562c691e2915ed5
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.openlocfilehash: 163233c76b410fc1278493dc12bbf5541fbb8c2a
+ms.sourcegitcommit: cbaa1aef101f67bd094f6ad0b4be274bbc2d2537
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83423121"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84126791"
 ---
-# <a name="azure-security-center-planning-and-operations-guide"></a>Azure 安全中心规划和操作指南
+# <a name="planning-and-operations-guide"></a>规划和操作指南
 本指南适用于计划使用 Azure 安全中心的信息技术 (IT) 专业人员、IT 架构师、信息安全分析师和云管理员。
 
 
@@ -132,24 +132,15 @@ Jeff（工作负荷所有者）
 在配置安全策略之前，请查看每项 [安全建议](https://docs.azure.cn/security-center/security-center-recommendations)，确定这些策略是否适合各种订阅和资源组。 此外，请务必了解解决安全建议应采取的行动，以及组织中负责采纳新建议并采取必要措施的人员。
 
 ## <a name="data-collection-and-storage"></a>数据收集和存储
-Azure 安全中心使用 Microsoft Monitoring Agent（Azure Monitor 服务使用同一代理）从虚拟机中收集安全数据。 通过此代理[收集的数据](https://docs.azure.cn/security-center/security-center-enable-data-collection)将存储在 Log Analytics 工作区中。
+Azure 安全中心使用 Log Analytics 代理（Azure Monitor 服务同样使用此代理）从虚拟机中收集安全数据。 通过此代理[收集的数据](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection)将存储在 Log Analytics 工作区中。
 
-### <a name="agent"></a>Agent
-
-在安全策略中启用自动预配后，Microsoft Monitoring Agent（适用于 [Windows](https://docs.azure.cn/log-analytics/log-analytics-windows-agents) 或 [Linux](https://docs.azure.cn/log-analytics/log-analytics-linux-agents)）会安装在所有支持的 Azure VM 和新建的任何 VM 上。 如果 VM 或计算机已安装 Microsoft Monitoring Agent，Azure 安全中心会利用当前的已安装代理。 代理的过程设计为非入侵性，对 VM 性能的影响非常小。
-
-适用于 Windows 的 Microsoft Monitoring Agent 需要使用 TCP 端口 443。 有关其他详细信息，请参阅[故障排除文章](security-center-troubleshooting-guide.md)。
-
-如需在某个时候禁用数据收集功能，可在安全策略中将其关闭。 然而，由于其他 Azure 管理和监视服务可能使用 Microsoft Monitoring Agent，因此关闭安全中心的数据收集功能后不会自动卸载代理。 必要时可手动卸载代理。
-
-> [!NOTE]
-> 若要查找受支持 VM 的列表，请阅读 [Azure 安全中心常见问题解答 (FAQ)](faq-vms.md)。
+<!-- Agent is not available-->
 
 ### <a name="workspace"></a>工作区
 
 工作区是一种 Azure 资源，用作数据容器。 你或组织中的其他成员可以使用多个工作区，管理收集自所有或部分 IT 基础结构的不同数据集。
 
-通过 Microsoft Monitoring Agent（代表 Azure 安全中心）收集的数据存储在与 Azure 订阅关联的现有 Log Analytics 工作区或新工作区中，具体取决于 VM 的地理位置。
+通过 Log Analytics 代理（代表 Azure 安全中心）收集的数据存储在与 Azure 订阅关联的现有 Log Analytics 工作区或新工作区中，具体取决于 VM 的地理位置。
 
 在 Azure 门户中，可浏览查看 Log Analytics 工作区的列表，其中包括 Azure 安全中心创建的任何工作区。 系统会为新工作区创建相关资源组。 二者均遵循此命名约定：
 

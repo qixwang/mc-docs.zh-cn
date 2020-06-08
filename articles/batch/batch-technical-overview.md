@@ -1,30 +1,21 @@
 ---
-title: Azure Batch 在云中运行大型并行作业 | Microsoft Docs
+title: Azure Batch 在云中运行大型并行作业
 description: 了解如何使用 Azure Batch 服务执行大规模并发工作负荷与 HPC 工作负荷
-services: batch
-documentationcenter: ''
-author: mscurrell
-manager: evansma
-editor: ''
-ms.assetid: ''
-ms.service: batch
-ms.workload: big-compute
-ms.tgt_pltfrm: na
 ms.topic: overview
 ms.date: 04/26/2020
 ms.author: v-tawe
 ms.custom: mvc
 origin.date: 01/19/2018
-ms.openlocfilehash: eba109c0ce5dbd8882fac32c4a06a060c6d9d632
-ms.sourcegitcommit: 1fbdefdace8a1d3412900c6c3f89678d8a9b29bc
+ms.openlocfilehash: c69cf1c82fa1d8fcd142d1a2020abe88fdd93ebf
+ms.sourcegitcommit: cbaa1aef101f67bd094f6ad0b4be274bbc2d2537
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82886867"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84126691"
 ---
 # <a name="what-is-azure-batch"></a>什么是 Azure Batch？
 
-使用 Azure Batch 在 Azure 中高效运行大规模并行和高性能计算 (HPC) 批处理作业。 Azure Batch 可创建和管理计算节点（虚拟机）池、安装要运行的应用程序，以及计划要在节点上运行的作业。 没有要安装、管理或缩放的群集或作业计划程序软件。 只需使用 [Batch API 和工具](batch-apis-tools.md)、命令行脚本或 Azure 门户来配置、管理和监视作业即可。 
+使用 Azure Batch 在 Azure 中高效运行大规模并行批处理作业。 Azure Batch 可创建和管理计算节点（虚拟机）池、安装要运行的应用程序，以及计划要在节点上运行的作业。 没有要安装、管理或缩放的群集或作业计划程序软件。 只需使用 [Batch API 和工具](batch-apis-tools.md)、命令行脚本或 Azure 门户来配置、管理和监视作业即可。 
 
 开发人员可以使用 Batch 作为平台服务，在需要大规模执行的情况下生成 SaaS 应用程序或客户端应用。 例如，可以使用 Batch 生成一项服务，以便为某家财务服务公司运行 Monte Carlo 风险模拟，或者生成一项用于处理多个图像的服务。
 

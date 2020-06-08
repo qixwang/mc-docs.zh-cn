@@ -14,12 +14,12 @@ ms.workload: na
 ms.date: 05/14/2020
 ms.author: v-tawe
 origin.date: 02/25/2020
-ms.openlocfilehash: d65f9e03a634eb2dabd5baa0d183424e5d7fc4c0
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.openlocfilehash: 47fa07364ecebaeb3f1631ab90d8d25880de0122
+ms.sourcegitcommit: cbaa1aef101f67bd094f6ad0b4be274bbc2d2537
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83423129"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84126742"
 ---
 # <a name="permissions"></a>权限
 
@@ -35,6 +35,6 @@ Azure 安全中心使用[基于角色的访问控制 (RBAC)](../role-based-acces
 
 ## <a name="who-can-modify-a-security-policy"></a>哪些用户可以修改安全策略？
 
-若要修改安全策略，用户必须是安全管理员或是该订阅的所有者或参与者。
+只有安全管理员或者订阅的所有者或参与者才能修改安全策略。
 
 若要了解如何配置安全策略，请参阅[在 Azure 安全中心设置安全策略](tutorial-security-policy.md)。

@@ -1,21 +1,16 @@
 ---
-title: 使用 Batch 安全地访问 Key Vault - Azure Batch
+title: 使用 Batch 安全地访问 Key Vault
 description: 了解如何使用 Azure Batch 以编程方式访问 Key Vault 中的凭据。
-services: batch
-author: laurenhughes
-manager: gwallace
-ms.service: batch
-ms.workload: big-compute
 ms.topic: article
 ms.date: 04/29/2020
 ms.author: v-tawe
 origin.date: 02/13/2020
-ms.openlocfilehash: 242693e31737ec4e60e399ef6ec5695aae117e86
-ms.sourcegitcommit: 1fbdefdace8a1d3412900c6c3f89678d8a9b29bc
+ms.openlocfilehash: c8b636e70746e243076275d02eea4b6e31f2d3d6
+ms.sourcegitcommit: cbaa1aef101f67bd094f6ad0b4be274bbc2d2537
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82886976"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84126663"
 ---
 # <a name="securely-access-key-vault-with-batch"></a>使用 Batch 安全地访问 Key Vault
 
@@ -88,9 +83,9 @@ Set-AzureRmKeyVaultAccessPolicy -VaultName 'BatchVault' -ServicePrincipalName '"
 
 创建 Batch 池，转到池中的证书选项卡，然后分配创建的证书。 现在，该证书已出现在所有 Batch 节点上。
 
-接下来，需要将该证书分配到 Batch 帐户。 将证书分配到帐户之后，我们就可以将其分配到池，然后分配到节点。 若要执行此操作，最简单的方法是在门户中转到你的 Batch 帐户，导航到“证书”，然后选择“添加”。   上传我们在[获取证书](#obtain-a-certificate)过程中生成的 `.pfx` 文件，并提供密码。 完成后，证书会添加到列表中，然后你就可以验证指纹。
+接下来，需要将该证书分配到 Batch 帐户。 将证书分配到帐户之后，我们就可以将其分配到池，然后分配到节点。 若要执行此操作，最简单的方法是在门户中转到你的 Batch 帐户，导航到“证书”，然后选择“添加”。  上传我们在[获取证书](#obtain-a-certificate)过程中生成的 `.pfx` 文件，并提供密码。 完成后，证书会添加到列表中，然后你就可以验证指纹。
 
-现在，在创建 Batch 池时，可以导航到池中的“证书”，并将创建的证书分配到该池。  执行此操作时，请确保选择“本地计算机”作为存储位置。  证书会加载到池中的所有 Batch 节点上。
+现在，在创建 Batch 池时，可以导航到池中的“证书”，并将创建的证书分配到该池。 执行此操作时，请确保选择“LocalMachine”作为存储位置。 证书会加载到池中的所有 Batch 节点上。
 
 ## <a name="install-azure-powershell"></a>安装 Azure PowerShell
 
@@ -105,7 +100,7 @@ if($psModuleCheck.count -eq 0) {
 
 ## <a name="access-key-vault"></a>访问密钥保管库
 
-现在，我们可以通过在 Batch 节点上运行的脚本访问 Key Vault 了。 若要从脚本访问 Key Vault，只需让脚本使用证书对 Azure AD 进行身份验证即可。 若要在 PowerShell 中执行此操作，请使用以下示例命令。 为“指纹”、“应用 ID”（服务主体的 ID）和“租户 ID”（服务主体所在的租户）指定适当的 GUID。   
+现在，我们可以通过在 Batch 节点上运行的脚本访问 Key Vault 了。 若要从脚本访问 Key Vault，只需让脚本使用证书对 Azure AD 进行身份验证即可。 若要在 PowerShell 中执行此操作，请使用以下示例命令。 为“指纹”、“应用 ID”（服务主体的 ID）和“租户 ID”（服务主体所在的租户）指定适当的 GUID。  
 
 ```powershell
 Add-AzureRmAccount -ServicePrincipal -CertificateThumbprint -ApplicationId

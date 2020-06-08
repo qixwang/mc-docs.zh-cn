@@ -12,13 +12,13 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/14/2020
 ms.author: v-tawe
-origin.date: 09/24/2019
-ms.openlocfilehash: 3f7607638e51e918eb710716414f328d091d1b96
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+origin.date: 04/07/2020
+ms.openlocfilehash: f3295be2da2f80a639f80612cbb70d6928ad37ac
+ms.sourcegitcommit: cbaa1aef101f67bd094f6ad0b4be274bbc2d2537
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83423070"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84126643"
 ---
 # <a name="microsoft-defender-advanced-threat-protection-with-azure-security-center"></a>Microsoft Defender 高级威胁防护与 Azure 安全中心
 
@@ -37,13 +37,9 @@ Azure 安全中心通过与 [Microsoft Defender 高级威胁防护](https://www.
 
 以下功能现已在 Azure 安全中心推出：
 
-- **自动加入**：对于加入 Azure 安全中心的 Windows 服务器，将自动启用 Microsoft Defender ATP 传感器。
+- **自动加入**：对于加入 Azure 安全中心的 Windows 服务器，将自动启用 Microsoft Defender ATP 传感器（运行 Windows Server 2019 的服务器除外）。
 
 - **单一虚拟管理平台**：Azure 安全中心控制台显示 Microsoft Defender ATP 警报。
-
-- **详细的计算机调查**：Azure 安全中心客户可以使用 Microsoft Defender ATP 控制台进行详细调查，以发现入侵的范围。
-
-![Azure 安全中心，其中显示了警报列表以及有关每条警报的一般信息](media/security-center-wdatp/image1.png)
 
 若要进一步调查，请使用 Microsoft Defender ATP。 Microsoft Defender ATP 提供其他信息，例如警报进程树和事件图形。 此外，还可以看到详细的机器时间线，其中显示了最长六个月的历史时段的每种行为。
 
@@ -63,7 +59,7 @@ Azure 安全中心通过与 [Microsoft Defender 高级威胁防护](https://www.
 1. 在“加入”区域中选择或创建用于存储数据的工作区。 <br>
 2. 如果看不到所有工作区，可能是由于缺少权限，请确保已将工作区设置到“Azure 安全标准”层。 有关详细信息，请参阅[升级到安全中心的标准层以增强安全性](security-center-pricing.md)。
     
-3. 选择“添加服务器”以查看有关如何安装 Microsoft Monitoring Agent 的说明。 
+3. 选择“添加服务器”以查看有关如何安装 Log Analytics 代理的说明。 
 
 4. 加入后，可以在“计算和应用”下监视计算机。
 

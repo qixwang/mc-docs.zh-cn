@@ -1,26 +1,17 @@
 ---
-title: 选择池的 VM 大小 - Azure Batch | Azure Docs
+title: 选择池的 VM 大小
 description: 如何选择 Azure Batch 池中计算节点的可用 VM 大小
-services: batch
-documentationcenter: ''
-author: lingliw
-manager: digimobile
-editor: ''
-ms.assetid: ''
-ms.service: batch
-ms.workload: ''
-ms.tgt_pltfrm: na
 ms.topic: article
 origin.date: 09/12/2019
 ms.date: 09/23/2019
 ms.author: v-lingwu
 ms.custom: seodec18
-ms.openlocfilehash: 27c07b07f7a3749e6dc3c7764718dde25d872cda
-ms.sourcegitcommit: 1fbdefdace8a1d3412900c6c3f89678d8a9b29bc
+ms.openlocfilehash: 235fdda9fa2274c76f90cb34beac2f3f4cfbd3d1
+ms.sourcegitcommit: cbaa1aef101f67bd094f6ad0b4be274bbc2d2537
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82886889"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84126568"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>选择 Azure Batch 池中计算节点的 VM 大小
 
@@ -39,8 +30,8 @@ ms.locfileid: "82886889"
 
 | VM 系列  | 支持的大小 |
 |------------|---------|
-| 基本 A | 除 Basic_A0 (A0) 外的所有大小  |
-| A | 除 Standard_A0 外的所有大小  |
+| 基本 A | 除 Basic_A0 (A0) 外的所有大小 |
+| A | 除 Standard_A0 外的所有大小 |
 | Av2 | 所有大小 |
 | B | 无 |
 | DC | 无 |
@@ -56,7 +47,7 @@ ms.locfileid: "82886889"
 | HB<sup>1</sup> | 所有大小 |
 | HBv2<sup>1</sup> | 所有大小 |
 | HC<sup>1</sup> | 所有大小 |
-| LS | 所有大小 |
+| Ls | 所有大小 |
 | Lsv2 | 无（尚不可用） |
 | M<sup>1</sup> | 除 M64、M64m、M128、M128m 之外的所有大小 |
 | Mv2 | 无（尚不可用） |
@@ -83,11 +74,11 @@ ms.locfileid: "82886889"
 
 ## <a name="size-considerations"></a>大小注意事项
 
-* **应用程序要求** - 请考虑要在节点上运行的应用程序的特征和要求。 考虑应用程序是否是多线程的以及其消耗的内存量等因素有助于确定最合适且经济高效的节点大小。 对于多实例 [MPI 工作负荷](batch-mpi.md)或 CUDA 应用程序，请分别考虑使用专用 HPC VM 大小或[启用 GPU](../virtual-machines/linux/sizes-gpu.md) 的 VM 大小。 
+* **应用程序要求** - 请考虑要在节点上运行的应用程序的特征和要求。 考虑应用程序是否是多线程的以及其消耗的内存量等因素有助于确定最合适且经济高效的节点大小。 对于多实例 [MPI 工作负荷](batch-mpi.md)或 CUDA 应用程序，请考虑使用专用[启用了 GPU](../virtual-machines/linux/sizes-gpu.md) 的 VM 大小。 
 
 * **每个节点的任务数** - 通常，选择节点大小时会假设一个任务要在节点上运行一次。 但是，在作业执行期间，让多个任务（因此有多个应用程序实例）在计算节点上[并行运行](batch-parallel-node-tasks.md)可能是很有利的。 在此情况下，往往会选择多核节点大小，以满足更高的并行任务执行需求。
 
-* **不同任务的负载级别** - 池中的所有节点都是相同大小。 如果打算运行具有不同系统要求和/或负载级别的应用程序，建议使用不同的池。 
+* **不同任务的负载级别** - 池中的所有节点都是相同大小。 如果打算运行具有不同系统要求和/或负载级别的应用程序，建议使用不同的池。
 
 * **区域可用性** - 某个 VM 系列或大小在创建 Batch 帐户的区域中可能无法使用。 若要检查大小是否可用，请参阅[可用产品（按区域）](https://status.azure.com/status)。
 
@@ -98,6 +89,4 @@ ms.locfileid: "82886889"
 ## <a name="next-steps"></a>后续步骤
 
 * 有关 Batch 深入概述的信息，请参阅[使用 Batch 开发大规模并行计算解决方案](batch-api-basics.md)。
-
-
-<!-- Update_Description: wording update -->
+* 有关使用计算密集型 VM 大小的信息，请参阅[在 Batch 池中使用支持 RDMA 或启用 GPU 的实例](batch-pool-compute-intensive-sizes.md)。

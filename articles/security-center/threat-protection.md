@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/12/2020
 ms.author: v-tawe
 origin.date: 03/15/2020
-ms.openlocfilehash: 99adbe8ecbfe5cc0f3ecba10ce674aa8ffea1cda
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.openlocfilehash: af8442d275802cbdcd31c28ce7edd790ffed1a71
+ms.sourcegitcommit: cbaa1aef101f67bd094f6ad0b4be274bbc2d2537
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83423071"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84126557"
 ---
 # <a name="threat-protection-in-azure-security-center"></a>Azure 安全中心的威胁防护
 
@@ -74,9 +74,9 @@ Azure 安全中心与 Azure 服务集成，以监视和保护基于 Windows 的�
 
 安全中心通过使用 auditd（最常见的 Linux 审核框架之一）从 Linux 计算机收集审核记录。 auditd 位于主线内核中。 
 
-* **Linux auditd 警报与 Microsoft Monitoring Agent (MMA) 集成** <a name="linux-auditd"></a> - auditd 系统包含内核级别子系统，该子系统负责监视系统调用。 它按指定的规则集筛选调用，并将其消息写入套接字。 安全中心集成了 Microsoft Monitoring Agent (MMA) 中 auditd 包中的功能。 通过这种集成，无需任何先决条件即可在所有受支持的 Linux 发行版中收集 auditd 事件。  
+* **Linux auditd 警报与 Log Analytics 代理集成** <a name="linux-auditd"></a> - auditd 系统包含内核级别子系统，该子系统负责监视系统调用。 它按指定的规则集筛选调用，并将其消息写入套接字。 安全中心集成了 Log Analytics 代理中 auditd 包中的功能。 通过这种集成，无需任何先决条件即可在所有受支持的 Linux 发行版中收集 auditd 事件。
 
-    通过使用 Linux MMA 代理，可收集和扩充 auditd 记录，并将其聚合到事件中。 安全中心会持续添加使用 Linux 信号检测云和本地 Linux 计算机上的恶意行为的新分析。 与 Windows 功能类似，这些分析涵盖可疑进程、可疑登录尝试、内核模块加载以及其他活动。 这些活动可能表明计算机正在受到攻击或已被破坏。  
+    通过使用适用于 Linux 的 Log Analytics 代理，收集和扩充 auditd 记录，并将其聚合到事件中。 安全中心会持续添加使用 Linux 信号检测云和本地 Linux 计算机上的恶意行为的新分析。 与 Windows 功能类似，这些分析涵盖可疑进程、可疑登录尝试、内核模块加载以及其他活动。 这些活动可能表明计算机正在受到攻击或已被破坏。  
 
     有关 Linux 警报的列表，请参阅[警报引用表](alerts-reference.md#alerts-linux)。
 
@@ -162,8 +162,9 @@ Azure SQL 数据库和 SQL 的高级威胁防护是适用于高级 SQL 安全功
 
 ## <a name="threat-protection-for-azure-storage"></a>Azure 存储的威胁防护 <a name="azure-storage"></a>
 
+适用于存储的高级威胁防护可检测到异常的或可能有害的访问或利用存储帐户的尝试。 这一层保护使你无需成为安全专家便可以解决威胁，并可帮助你管理安全监视系统。
 
-适用于存储的高级威胁防护（当前仅 Blob 存储可用）会检测试图访问或利用存储帐户的异常或可能有害的企图。 这一层保护使你无需成为安全专家便可以解决威胁，并可帮助你管理安全监视系统。
+如需定价详细信息（包括 30 天免费试用版的信息），请参阅 [Azure 安全中心定价页](https://www.azure.cn/pricing/details/security-center/)。
 
 有关详细信息，请参阅：
 
@@ -191,6 +192,7 @@ Azure Cosmos DB 警报是因访问或攻击 Azure Cosmos DB 帐户的异常且�
 
 ## <a name="threat-protection-for-azure-network-layer"></a>Azure 网络层的威胁防护 <a name="network-layer"></a>
 
+安全中心网络层分析基于示例 IPFIX 数据（即 Azure 核心路由器收集的数据包标头）。 根据此数据馈送，安全中心将使用机器学习模型来识别和标记恶意流量活动。 安全中心还会使用 Microsoft 威胁情报数据库来扩充 IP 地址。
 
 某些网络配置可能会限制安全中心生成有关可疑网络活动的警报。 若要使安全中心生成网络警报，请确保：
 
@@ -202,6 +204,7 @@ Azure Cosmos DB 警报是因访问或攻击 Azure Cosmos DB 帐户的异常且�
 
 有关 Azure 网络层警报的列表，请参阅[警报引用表](alerts-reference.md#alerts-azurenetlayer)。
 
+若要详细了解安全中心如何使用网络相关信号来应用威胁防护，请参阅[安全中心的启发式 DNS 检测](https://azure.microsoft.com/blog/heuristic-dns-detections-in-azure-security-center/)。
 
 
 
@@ -223,7 +226,7 @@ Azure Cosmos DB 警报是因访问或攻击 Azure Cosmos DB 帐户的异常且�
 > 3. 在“启用集成”下，清除“允许 Microsoft Cloud App Security 访问我的数据”，然后选择“保存”  。
 
 >[!NOTE]
->安全中心会将与安全相关的客户数据存储在与其资源相同的地区中。启用 Cloud App Security 后，此信息将根据 Cloud App Security 的地理位置规则进行存储。 有关详细信息，请参阅[非区域性服务的数据存储](https://azuredatacentermap.azurewebsites.net/)。
+>安全中心会将与安全性相关的客户数据存储在其资源所在的地理区域。 如果 Microsoft 尚未在资源所在的地理区域中部署安全中心，则会将数据存储在美国。 启用 Cloud App Security 后，这些信息将按 Cloud App Security 的地理位置规则存储。 有关详细信息，请参阅[非区域性服务的数据存储](https://azuredatacentermap.azurewebsites.net/)。
 
 
 

@@ -2,24 +2,24 @@
 title: 新建 Azure Application Insights 资源 | Azure Docs
 description: 为新的实时应用程序手动设置 Application Insights 监视。
 ms.topic: conceptual
-author: lingliw
+author: Johnnytechn
 origin.date: 12/02/2019
-ms.date: 12/30/2019
-ms.author: v-lingwu
-ms.openlocfilehash: c06ebab6739271883713239c1bbc9e64b6fb037d
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/28/2020
+ms.author: v-johya
+ms.openlocfilehash: 51618bc381cab094232bd6f784b2a104e786071c
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79293299"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199316"
 ---
 # <a name="create-an-application-insights-resource"></a>创建 Application Insights 资源
 
-Azure Application Insights 在 Microsoft Azure *资源*中显示有关应用程序的数据。 因此，创建新资源是[设置 Application Insights 以监视新应用程序][start]中的一个环节。 创建新资源后，可以获取其检测密钥并使用它来配置 Application Insights SDK。 检测密钥会将遥测链接到资源。
+Azure Application Insights 在 Azure 资源中显示有关应用程序的数据。 因此，创建新资源是[设置 Application Insights 以监视新应用程序][start]中的一个环节。 创建新资源后，可以获取其检测密钥并使用它来配置 Application Insights SDK。 检测密钥会将遥测链接到资源。
 
-## <a name="sign-in-to-microsoft-azure"></a>登录 Microsoft Azure
+## <a name="sign-in-to-azure"></a>登录 Azure
 
-如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth)。
+如果没有 Azure 订阅，请在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。
 
 ## <a name="create-an-application-insights-resource"></a>创建 Application Insights 资源
 
@@ -27,13 +27,17 @@ Azure Application Insights 在 Microsoft Azure *资源*中显示有关应用程�
 
 ![单击左上角的“+”号。 选择开发人员工具，然后选择“Application Insights”](./media/create-new-resource/new-app-insights.png)
 
-   | 设置        |  值           | 说明  |
+   | 设置        |  Value           | 说明  |
    | ------------- |:-------------|:-----|
-   | **名称**      | 唯一值 | 标识所监视的应用的名称。 |
-   | **资源组**     | myResourceGroup      | 用于托管 App Insights 数据的新资源组或现有资源组的名称。 |
-   | **位置** | 中国东部 2 | 选择离你近的位置或离托管应用的位置近的位置。 |
+   | **名称**      | `Unique value` | 名称，用于标识要监视的应用。 |
+   | **资源组**     | `myResourceGroup`      | 用于托管 App Insights 数据的新资源组或现有资源组的名称。 |
+   | **区域** | `China North` | 选择离你近的位置或离托管应用的位置近的位置。 |
+   | **资源模式** | `Classic` 或 `Workspace-based` | 基于工作区的资源当前为公共预览版，用于将 Application Insights 遥测发送到常用 Log Analytics 工作区。
 
-在必填字段中输入适当的值，然后选择“查看 + 创建”  。
+> [!NOTE]
+> 虽然可以在不同资源组中使用相同的资源名称，但使用全局唯一名称会有好处。 如果打算[执行跨资源查询](/azure-monitor/log-query/cross-workspace-query#identifying-an-application)，这将很有用，因为它可以简化所需的语法。
+
+在必填字段中输入适当的值，然后选择“查看 + 创建”。
 
 ![在必填字段中输入值，然后选择“查看 + 创建”。](./media/create-new-resource/review-create.png)
 
@@ -41,7 +45,7 @@ Azure Application Insights 在 Microsoft Azure *资源*中显示有关应用程�
 
 ## <a name="copy-the-instrumentation-key"></a>复制检测密钥
 
-检测密钥标识要将遥测数据与之关联的资源。 需要复制以将检测密钥添加到应用程序的代码中。
+检测密钥用于标识要与遥测数据关联的资源。 你需要复制检测密钥并将其添加到应用程序的代码中。
 
 ![单击并复制检测密钥](./media/create-new-resource/instrumentation-key.png)
 
@@ -67,7 +71,7 @@ New-AzApplicationInsights [-ResourceGroupName] <String> [-Name] <String> [-Locat
 #### <a name="example"></a>示例
 
 ```powershell
-New-AzApplicationInsights -Kind java -ResourceGroupName testgroup -Name test1027 -location 'China East 2'
+New-AzApplicationInsights -Kind java -ResourceGroupName testgroup -Name test1027 -location chinanorth
 ```
 #### <a name="results"></a>结果
 
@@ -76,7 +80,7 @@ Id                 : /subscriptions/{subid}/resourceGroups/testgroup/providers/m
 ResourceGroupName  : testgroup
 Name               : test1027
 Kind               : web
-Location           : China East 2
+Location           : chinanorth
 Type               : microsoft.insights/components
 AppId              : 8323fb13-32aa-46af-b467-8355cf4f8f98
 ApplicationType    : web
@@ -96,13 +100,13 @@ TenantId           : {subid}
 
 ### <a name="azure-cli-preview"></a>Azure CLI（预览版）
 
-若要访问预览版 Application Insights Azure CLI 命令，首先需要运行：
+若要访问预览版 Application Insights Azure CLI 命令，首先需要运行以下命令：
 
 ```azurecli
  az extension add -n application-insights
 ```
 
-如果不运行 `az extension add` 命令，你将看到一条错误消息，指出：`az : ERROR: az monitor: 'app-insights' is not in the 'az monitor' command group. See 'az monitor --help'.`
+如果不运行 `az extension add` 命令，则会看到一条错误消息，指出：`az : ERROR: az monitor: 'app-insights' is not in the 'az monitor' command group. See 'az monitor --help'.`
 
 现在，可以运行以下命令来创建 Application Insights 资源：
 
@@ -118,13 +122,13 @@ az monitor app-insights component create --app
 #### <a name="example"></a>示例
 
 ```azurecli
-az monitor app-insights component create --app demoApp --location 'China East 2' --kind web -g demoRg --application-type web
+az monitor app-insights component create --app demoApp --location chinanorth2 --kind web -g demoRg --application-type web
 ```
 
 #### <a name="results"></a>结果
 
 ```azurecli
-az monitor app-insights component create --app demoApp --location 'China East 2' --kind web -g demoApp  --application-type web
+az monitor app-insights component create --app demoApp --location chinanorth --kind web -g demoApp  --application-type web
 {
   "appId": "87ba512c-e8c9-48d7-b6eb-118d4aee2697",
   "applicationId": "demoApp",
@@ -137,7 +141,7 @@ az monitor app-insights component create --app demoApp --location 'China East 2'
   "id": "/subscriptions/{subid}/resourceGroups/demoApp/providers/microsoft.insights/components/demoApp",
   "instrumentationKey": "00000000-aaaa-bbbb-cccc-dddddddddddd",
   "kind": "web",
-  "location": "China East 2",
+  "location": "chinanorth",
   "name": "demoApp",
   "provisioningState": "Succeeded",
   "requestSource": "rest",
@@ -153,17 +157,13 @@ az monitor app-insights component create --app demoApp --location 'China East 2'
 
 ## <a name="next-steps"></a>后续步骤
 * [诊断搜索](../../azure-monitor/app/diagnostic-search.md)
-* [探索指标](../../azure-monitor/app/metrics-explorer.md)
+* [探索指标](../../azure-monitor/platform/metrics-charts.md)
 * [编写分析查询](../../azure-monitor/log-query/log-query-overview.md)
 
 <!--Link references-->
 
 [api]: ../../azure-monitor/app/api-custom-events-metrics.md
 [diagnostic]: ../../azure-monitor/app/diagnostic-search.md
-[metrics]: ../../azure-monitor/app/metrics-explorer.md
+[metrics]: ../../azure-monitor/platform/metrics-charts.md
 [start]: ../../azure-monitor/app/app-insights-overview.md
-
-
-
-
 

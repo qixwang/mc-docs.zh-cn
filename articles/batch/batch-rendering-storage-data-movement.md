@@ -1,19 +1,19 @@
 ---
-title: 用于渲染的存储和数据移动选项 - Azure Batch
+title: 用于渲染的存储和数据移动
 description: 了解用于渲染资产和输出文件工作负载的多种存储与数据移动选项。
 services: batch
 ms.service: batch
 author: mscurrell
-ms.author: v-lingwu
+ms.author: markscu
 origin.date: 08/02/2019
 ms.date: 09/07/2018
 ms.topic: conceptual
-ms.openlocfilehash: b503ac4efe4e87755f420690659584b631a9fa13
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: f372acec09705b50b7b425e0a7d03e05bf155669
+ms.sourcegitcommit: cbaa1aef101f67bd094f6ad0b4be274bbc2d2537
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75857994"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84126702"
 ---
 # <a name="storage-and-data-movement-options-for-rendering-asset-and-output-files"></a>用于渲染资产和输出文件的存储与数据移动选项
 
@@ -22,7 +22,7 @@ ms.locfileid: "75857994"
 * [Azure Blob 存储](/storage/blobs/storage-blobs-introduction)：
   * 将场景和资产文件从本地文件系统上传到 Blob 存储。 当应用程序由某个任务运行时，会将所需的文件从 Blob 存储复制到 VM，使渲染应用程序能够访问它们。 输出文件由渲染应用程序写入 VM 磁盘，然后复制到 Blob 存储。  如果需要，可将输出文件从 Blob 存储下载到本地文件系统。
   * Azure blob 存储是简单且经济高效的选项，适合小型项目。  由于每个池 VM 上需要所有资产文件，一旦资产文件的数量和大小增加，就需要谨慎确保文件传输尽量高效。  
-* 使用 [blobfuse](/storage/blobs/storage-how-to-mount-container-linux) 且用作文件系统的 Azure 存储：
+* 通过 blobfuse 充当文件系统的 Azure 存储：
   * 对于 Linux VM，使用 blobfuse 虚拟文件系统驱动程序时，可以公开一个存储帐户，并将其用作文件系统。
   * 此选项的优势在于，它极其经济高效，文件系统不需要任何 VM，此外，VM 上的 blobfuse 缓存可避免重复为多个作业和任务下载相同的文件。  数据移动也很简单，因为文件只是一些 Blob，可以使用标准的 API 和工具（例如 azcopy）在本地文件系统与 Azure 存储之间复制文件。
 * 文件系统或文件共享：

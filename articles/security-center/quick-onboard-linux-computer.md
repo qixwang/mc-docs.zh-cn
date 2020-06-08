@@ -15,12 +15,12 @@ ms.workload: na
 origin.date: 12/02/2018
 ms.date: 5/22/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 12d8592df6d3d2647394345c1f524fc0aada19a0
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.openlocfilehash: 3ae56bae44481970edcf5784a78902038ad945b1
+ms.sourcegitcommit: cbaa1aef101f67bd094f6ad0b4be274bbc2d2537
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83422356"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84126794"
 ---
 # <a name="quickstart-onboard-linux-computers-to-azure-security-center"></a>快速入门：将 Linux 计算机载入到安全中心
 载入 Azure 订阅之后，可以通过预配 Linux 代理为在 Azure 外部（例如，在本地或在其他云中）运行的 Linux 资源启用安全中心。
@@ -95,5 +95,3 @@ ms.locfileid: "83422356"
 [5]: ./media/quick-onboard-linux-computer/pgrep-command.png
 [6]: ./media/quick-onboard-linux-computer/logs-for-agent.png
 [7]: ./media/quick-onboard-linux-computer/compute.png
-
-

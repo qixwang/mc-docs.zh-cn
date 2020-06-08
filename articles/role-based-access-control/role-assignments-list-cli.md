@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure RBAC 和 Azure CLI 列出角色分配
-description: 了解如何使用 Azure 基于角色的访问控制 (RBAC) 和 Azure CLI 来确定用户、组、服务主体和托管标识有权访问的资源内容。
+title: 使用 Azure CLI 列出 Azure 角色分配 - Azure RBAC
+description: 了解如何使用 Azure CLI 和 Azure 基于角色的访问控制 (Azure RBAC) 来确定用户、组、服务主体和托管标识有权访问的资源内容。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -11,25 +11,25 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/31/2020
+ms.date: 05/25/2020
 ms.author: v-junlch
 ms.reviewer: bagovind
-ms.openlocfilehash: 28e115fdb0547b0df75ed1721033028781e24245
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 0ee0101538b08bd611eb016a47db3106479e9869
+ms.sourcegitcommit: 7429daf26cff014b040f69cdae75bdeaea4f4e93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80581728"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83991662"
 ---
-# <a name="list-role-assignments-using-azure-rbac-and-azure-cli"></a>使用 Azure RBAC 和 Azure CLI 列出角色分配
+# <a name="list-azure-role-assignments-using-azure-cli"></a>使用 Azure CLI 列出 Azure 角色分配
 
 [!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control-definition-list.md)] 本文介绍如何使用 Azure CLI 列出角色分配。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - [Azure CLI](/cli)
 
-## <a name="list-role-assignments-for-a-user"></a>为用户列出角色分配
+## <a name="list-role-assignments-for-a-user"></a>列出用户的角色分配
 
 若要列出特定用户的角色分配，请使用 [az role assignment list](/cli/role/assignment#az-role-assignment-list)：
 
@@ -89,7 +89,7 @@ az role assignment list --resource-group pharma-sales --output json | jq '.[] | 
 
 ## <a name="list-role-assignments-for-a-subscription"></a>列出订阅的角色分配
 
-若要列出订阅范围内的所有角色分配，请使用 [az role assignment list](/cli/role/assignment#az-role-assignment-list)。 若要获取订阅 ID，可以在 Azure 门户中的“订阅”  边栏选项卡上找到它，也可以使用 [az account list](/cli/account#az-account-list)。
+若要列出订阅范围内的所有角色分配，请使用 [az role assignment list](/cli/role/assignment#az-role-assignment-list)。 若要获取订阅 ID，可以在 Azure 门户中的“订阅”边栏选项卡上找到它，也可以使用 [az account list](/cli/account#az-account-list)。
 
 ```azurecli
 az role assignment list --subscription <subscription_name_or_id>
@@ -103,7 +103,7 @@ az role assignment list --subscription 00000000-0000-0000-0000-000000000000 --ou
 
 ## <a name="list-role-assignments-for-a-management-group"></a>列出管理组的角色分配
 
-若要列出管理组范围内的所有角色分配，请使用 [az role assignment list](/cli/role/assignment#az-role-assignment-list)。 若要获取管理组 ID，可以在 Azure 门户中的“管理组”  边栏选项卡上找到它，也可以使用 [az account management-group list](/cli/account/management-group#az-account-management-group-list)。
+若要列出管理组范围内的所有角色分配，请使用 [az role assignment list](/cli/role/assignment#az-role-assignment-list)。 若要获取管理组 ID，可以在 Azure 门户中的“管理组”边栏选项卡上找到它，也可以使用 [az account management-group list](/cli/account/management-group#az-account-management-group-list)。
 
 ```azurecli
 az role assignment list --scope /providers/Microsoft.Management/managementGroups/<group_id>
@@ -141,5 +141,5 @@ az role assignment list --scope /providers/Microsoft.Management/managementGroups
 
 ## <a name="next-steps"></a>后续步骤
 
-- [使用 Azure RBAC 和 Azure CLI 添加或删除角色分配](role-assignments-cli.md)
+- [使用 Azure CLI 添加或删除 Azure 角色分配](role-assignments-cli.md)
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 origin.date: 06/28/2017
 ms.date: 03/09/2020
 ms.author: v-yiso
-ms.openlocfilehash: 241242dcb55fba333c33d874658ae78484ad421c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 0307c3970d12dba1d5eae82927def056a5436994
+ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78154496"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84186923"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-nodejs"></a>使用 IoT 中心将文件从设备上传到云 (Node.js)
 
@@ -23,9 +23,9 @@ ms.locfileid: "78154496"
 
 本教程的内容基于[使用 IoT 中心发送云到设备的消息](iot-hub-node-node-c2d.md)教程中所述的代码，介绍如何使用 [IoT 中心的文件上传功能](iot-hub-devguide-file-upload.md)将文件上传到 [Azure Blob 存储](../storage/index.yml)。 本教程介绍如何：
 
-* 安全提供具有 Azure blob URI 的设备，用于上传文件。
+* 安全地为设备提供用于上传文件的 Azure Blob URI。
 
-* 使用 IoT 中心文件上传通知触发处理应用后端中的文件。
+* 使用 IoT 中心文件上传通知在应用后端中触发对文件的处理。
 
 [从设备将遥测数据发送到 IoT 中心](quickstart-send-telemetry-node.md)快速入门演示了 IoT 中心基本的设备到云的消息传送功能。 但是，在某些情况下，无法轻松地将设备发送的数据映射为 IoT 中心接受的相对较小的设备到云消息。 例如：
 
@@ -34,7 +34,7 @@ ms.locfileid: "78154496"
 * 以高频率采样的振动数据
 * 某种形式的预处理数据。
 
-通常使用 [Hadoop](../hdinsight/index.yml) 堆栈等工具在云中批处理这些文件。 需要从设备上传文件时，仍可以使用 IoT 中心的安全性和可靠性。
+通常使用 [Azure 数据工厂](../data-factory/introduction.md)或 [Hadoop](../hdinsight/index.yml) 堆栈等工具在云中批处理这些文件。 需要从设备上传文件时，仍可以使用 IoT 中心的安全性和可靠性。
 
 在本教程结束时，会运行两个 Node.js 控制台应用：
 
@@ -44,7 +44,7 @@ ms.locfileid: "78154496"
 > [!NOTE]
 > IoT 中心通过 Azure IoT 设备 SDK 来支持许多设备平台和语言（包括 C、.NET、Javascript、Python 和 Java）。 有关如何将设备连接到 Azure IoT 中心的分步说明，请参阅 [Azure IoT 开发人员中心]。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * Node.js 版本 10.0.x 或更高版本。 [准备开发环境](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md)介绍了如何在 Windows 或 Linux 上安装本教程所用的 Node.js。
 
@@ -58,21 +58,21 @@ ms.locfileid: "78154496"
 
 本部分中操作将会创建可将文件上传到 IoT 中心的设备应用。
 
-1. 创建名为 `simulateddevice` 的空文件夹。  在 `simulateddevice` 文件夹的命令提示符处，使用以下命令创建 package.json 文件。  接受所有默认值：
+1. 创建名为 ```simulateddevice``` 的空文件夹。  在 ```simulateddevice``` 文件夹的命令提示符处，使用以下命令创建 package.json 文件。  接受所有默认值：
 
     ```cmd/sh
     npm init
     ```
 
-1. 在 `simulateddevice` 文件夹的命令提示符处，运行下述命令以安装  azure-iot-device 设备 SDK 包和  azure-iot-device-mqtt 包：
+2. 在 ```simulateddevice``` 文件夹的命令提示符处，运行下述命令以安装 azure-iot-device 设备 SDK 包和 azure-iot-device-mqtt 包：
 
     ```cmd/sh
     npm install azure-iot-device azure-iot-device-mqtt --save
     ```
 
-1. 在 `simulateddevice` 文件夹中，利用文本编辑器创建 SimulatedDevice.js 文件。
+3. 在 ```simulateddevice``` 文件夹中，利用文本编辑器创建 SimulatedDevice.js 文件。
 
-1. 在 **SimulatedDevice.js** 文件的开头添加以下 `require` 语句：
+4. 在 **SimulatedDevice.js** 文件的开头添加以下 ```require``` 语句：
 
     ```javascript
     'use strict';
@@ -82,7 +82,7 @@ ms.locfileid: "78154496"
     var clientFromConnectionString = require('azure-iot-device-mqtt').clientFromConnectionString;
     ```
 
-1. 添加 `deviceconnectionstring` 变量，并使用它创建一个客户端  实例。  将 `{deviceconnectionstring}` 替换为在  “创建 IoT 中心”部分中创建的设备的名称。
+5. 添加 `deviceconnectionstring` 变量，并使用它创建一个客户端实例。  将 `{deviceconnectionstring}` 替换为在“创建 IoT 中心”部分中创建的设备的名称。
 
     ```javascript
     var connectionString = '{deviceconnectionstring}';
@@ -121,7 +121,7 @@ ms.locfileid: "78154496"
 
 ## <a name="get-the-iot-hub-connection-string"></a>获取 IoT 中心连接字符串
 
-在本文中，你将创建一项后端服务，用于从你在[将遥测数据从设备发送到 IoT 中心](quickstart-send-telemetry-node.md)中创建的 IoT 中心接收文件上传通知消息。 若要接收文件上传通知消息，服务需要“服务连接”权限。  默认情况下，每个 IoT 中心都使用名为 **service** 的共享访问策略创建，该策略授予此权限。
+在本文中，你将创建一项后端服务，用于从你在[将遥测数据从设备发送到 IoT 中心](quickstart-send-telemetry-node.md)中创建的 IoT 中心接收文件上传通知消息。 若要接收文件上传通知消息，服务需要“服务连接”权限。 默认情况下，每个 IoT 中心都使用名为 **service** 的共享访问策略创建，该策略授予此权限。
 
 [!INCLUDE [iot-hub-include-find-service-connection-string](../../includes/iot-hub-include-find-service-connection-string.md)]
 
@@ -129,15 +129,15 @@ ms.locfileid: "78154496"
 
 本部分中的操作将会创建一个 Node.js 控制台应用，用于接收来自 IoT 中心的文件上传通知消息。
 
-可以使用 IoT 中心的 **iothubowner** 的连接字符串完成本部分的操作。 可以在 [Azure 门户](https://portal.azure.cn/)上的“共享访问策略”边栏选项卡中找到该连接字符串。 
+可以使用 IoT 中心的 **iothubowner** 的连接字符串完成本部分的操作。 可以在 [Azure 门户](https://portal.azure.cn/)上的“共享访问策略”边栏选项卡中找到该连接字符串。
 
-1. 创建名为 `fileuploadnotification` 的空文件夹。  在 `fileuploadnotification` 文件夹的命令提示符处，使用以下命令创建 package.json 文件。  接受所有默认值：
+1. 创建名为 ```fileuploadnotification``` 的空文件夹。  在 ```fileuploadnotification``` 文件夹的命令提示符处，使用以下命令创建 package.json 文件。  接受所有默认值：
 
     ```cmd/sh
     npm init
     ```
 
-1. 在 `fileuploadnotification` 文件夹中的命令提示符下，运行以下命令安装 **azure-iothub** SDK 包：
+2. 在 ```fileuploadnotification``` 文件夹中的命令提示符下，运行以下命令安装 **azure-iothub** SDK 包：
 
     ```cmd/sh
     npm install azure-iothub --save
@@ -153,7 +153,7 @@ ms.locfileid: "78154496"
     var Client = require('azure-iothub').Client;
     ```
 
-5. 添加 `iothubconnectionstring` 变量，并使用它创建一个客户端  实例。  将 `{iothubconnectionstring}` 占位符值替换为先前在[获取 IoT 中心连接字符串](#get-the-iot-hub-connection-string)中复制的 IoT 中心连接字符串：
+5. 添加 `iothubconnectionstring` 变量，并使用它创建一个客户端实例。  将 `{iothubconnectionstring}` 占位符值替换为先前在[获取 IoT 中心连接字符串](#get-the-iot-hub-connection-string)中复制的 IoT 中心连接字符串：
 
     ```javascript
     var connectionString = '{iothubconnectionstring}';
@@ -222,15 +222,10 @@ node SimulatedDevice.js
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你已学习了如何使用 IoT 中心的文件上传功能来简化从设备进行的文件上传。 可以使用以下文章继续探索 IoT 中心功能和方案：
+在本教程中，已学习了如何使用 IoT 中心的文件上传功能来简化从设备进行的文件上传。 可以使用以下文章继续探索 IoT 中心功能和方案：
 
-* [以编程方式创建 IoT 中心][lnk-create-hub]
-* [C SDK 简介][lnk-c-sdk]
-* [Azure IoT SDK][lnk-sdks]
+* [以编程方式创建 IoT 中心](iot-hub-rm-template-powershell.md)
 
-<!-- Links -->
-[Azure IoT 开发人员中心]: https://docs.azure.cn/zh-cn/develop/iot
+* [C SDK 简介](iot-hub-device-sdk-c-intro.md)
 
-[lnk-create-hub]: iot-hub-rm-template-powershell.md
-[lnk-c-sdk]: iot-hub-device-sdk-c-intro.md
-[lnk-sdks]: iot-hub-devguide-sdks.md
+* [Azure IoT SDK](iot-hub-devguide-sdks.md)

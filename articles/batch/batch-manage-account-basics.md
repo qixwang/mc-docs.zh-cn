@@ -1,26 +1,17 @@
 ---
-title: 管理帐户 - Azure Batch | Microsoft Docs
+title: 管理帐户
 description: 了解 Azure Batch 帐户的组成
-services: batch
-documentationcenter: ''
-author: LauraBrenner
-manager: evansma
-editor: ''
-ms.assetid: 3fbae545-245f-4c66-aee2-e25d7d5d36db
-ms.service: batch
-ms.workload: big-compute
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/28/2020
 ms.author: v-tawe
 ms.custom: H1Hack27Feb2017
 origin.date: 01/28/2020
-ms.openlocfilehash: 8992134d2915db1e4b8d99671ace6a8a31a84cf8
-ms.sourcegitcommit: 1fbdefdace8a1d3412900c6c3f89678d8a9b29bc
+ms.openlocfilehash: de74cd7af3ea8f18d312ecb4b8a22f3715a1b108
+ms.sourcegitcommit: cbaa1aef101f67bd094f6ad0b4be274bbc2d2537
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82886986"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84126706"
 ---
 # <a name="manage-your-batch-account"></a>管理 Batch 帐户
 
@@ -29,9 +20,10 @@ ms.locfileid: "82886986"
 可以通过 [Azure 门户](batch-account-create-portal.md)或编程方式（例如使用[批处理管理 .NET 库](batch-management-dotnet.md)）创建 Azure Batch 帐户。 创建该帐户时，可以关联一个 Azure 存储帐户，用于存储与作业相关的输入和输出数据或应用程序。
 
 可以在单个批处理帐户中运行多个批处理工作负荷，或者在相同订阅的不同 Azure 区域的批处理帐户之间分散工作负荷。
-## <a name="components-of-the-batch-account"></a>Batch 帐户的组件
 
-使用 Batch 帐户可在 Azure 中高效运行大规模并行的高性能计算 (HPC) 批处理作业。 在帐户中，你管理：
+## <a name="components-of-the-batch-account"></a>Batch 帐户的组件
+<!--HPC is not supported -->
+使用 Batch 帐户可在 Azure 中高效运行大规模并行批处理作业。 在帐户中，你管理：
 
 - 正在运行的应用程序
 
@@ -61,3 +53,4 @@ ms.locfileid: "82886986"
 - 以编程方式（例如，使用 [Batch Management .NET 库](batch-management-dotnet.md)）创建 Batch 帐户。
 - [配置或禁用对 Azure Batch 池中计算节点的远程访问](pool-endpoint-configuration.md)。
 - [在 Batch 计算节点上运行作业准备和作业发布任务](batch-job-prep-release.md)
+

@@ -1,30 +1,24 @@
 ---
-title: 适用于 .NET 的 Microsoft 身份验证库中的令牌缓存序列化
+title: 令牌缓存序列化 (MSAL.NET) | Azure
 titleSuffix: Microsoft identity platform
 description: 了解如何使用适用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 对令牌缓存进行序列化和客户序列化。
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-origin.date: 09/16/2019
-ms.date: 11/05/2019
+ms.date: 05/27/2020
 ms.author: v-junlch
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ebe101fabfb91616dd6ef055f035e110ca962b3
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 8a1b0c624b02af0c34cb27293f48233e074deb91
+ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79291070"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84186881"
 ---
 # <a name="token-cache-serialization-in-msalnet"></a>MSAL.NET 中的令牌缓存序列化
 [获取令牌](msal-acquire-cache-tokens.md)后，Microsoft 身份验证库 (MSAL) 会缓存该令牌。  在通过其他方法获取令牌之前，应用程序代码应该先尝试从缓存中获取令牌。  本文介绍 MSAL.NET 中令牌缓存的默认序列化和自定义序列化。
@@ -57,7 +51,7 @@ ms.locfileid: "79291070"
 
 所用的策略会有所不同，具体取决于是针对[公共客户端应用程序](msal-client-applications.md)（桌面）还是[机密客户端应用程序](msal-client-applications.md)（Web 应用/ Web API、守护程序应用程序）编写令牌缓存序列化。
 
-### <a name="token-cache-for-a-public-client"></a>适用于公共客户端的令牌缓存 
+### <a name="token-cache-for-a-public-client"></a>适用于公共客户端的令牌缓存
 
 从 MSAL.NET v2.x 开始，可以使用多个选项来序列化公共客户端的令牌缓存。 只能以 MSAL.NET 格式序列化缓存（统一格式的缓存在不同的 MSAL 和平台中是通用的）。  还可以支持 ADAL V3 的[旧式](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Token-cache-serialization)令牌缓存序列化。
 
@@ -90,7 +84,9 @@ static class TokenCacheHelper
   }
 
   /// <summary>
-  /// Path to the token cache
+  /// Path to the token cache. Note that this could be something different for instance for MSIX applications:
+  /// private static readonly string CacheFilePath =
+  $"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\{AppName}\msalcache.bin";
   /// </summary>
   public static readonly string CacheFilePath = System.Reflection.Assembly.GetExecutingAssembly().Location + ".msalcache.bin3";
 
@@ -128,7 +124,7 @@ static class TokenCacheHelper
  }
 ```
 
-[Microsoft.Identity.Client.Extensions.Msal](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet/tree/master/src/Microsoft.Identity.Client.Extensions.Msal) 开放源代码库中提供了适用于公共客户端应用程序（适用于 Windows、Mac 和 Linux 上运行的桌面应用程序）的基于产品质量令牌缓存文件的序列化程序预览。 可以通过以下 Nuget 包将此程序包含在应用程序中：[Microsoft.Identity.Client.Extensions.Msal](https://www.nuget.org/packages/Microsoft.Identity.Client.Extensions.Msal/)。
+[Microsoft.Identity.Client.Extensions.Msal](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet/tree/master/src/Microsoft.Identity.Client.Extensions.Msal) 开源库中提供了适用于公共客户端应用程序（适用于 Windows、Mac 和 Linux 上运行的桌面应用程序）的基于产品质量令牌缓存文件的序列化程序。 可以通过以下 NuGet 包将此程序包含在应用程序中：[Microsoft.Identity.Client.Extensions.Msal](https://www.nuget.org/packages/Microsoft.Identity.Client.Extensions.Msal/)。
 
 #### <a name="dual-token-cache-serialization-msal-unified-cache-and-adal-v3"></a>双令牌缓存序列化（MSAL 统一缓存和 ADAL v3）
 
@@ -277,16 +273,64 @@ namespace CommonCacheMsalV3
 
 在 Web 应用或 Web API 中，缓存可以利用会话、Redis 缓存或数据库。
 
-在 Web 应用或 Web API 中，为每个帐户保留一个令牌缓存。  对于 Web 应用，令牌缓存应使用帐户 ID 进行键控。  对于 Web API，帐户应使用用于调用该 API 的令牌的哈希值进行键控。 MSAL.NET 在 .NET Framework 和 .NET Core 子平台中提供自定义令牌缓存序列化。 访问缓存时会触发事件，应用可以选择是对缓存进行序列化还是反序列化。 在处理用户的机密客户端应用程序（登录用户并调用 Web API 的 Web 应用程序，以及调用下游 Web API 的 Web API）中，可能会有许多用户，并且会对这些用户进行并行处理。 出于安全和性能方面的原因，我们建议为每个用户序列化一个缓存。 序列化事件基于已处理用户的标识计算缓存密钥，并对该用户的令牌缓存进行序列化/反序列化。
+在 Web 应用或 Web API 中，为每个帐户保留一个令牌缓存。  对于 Web 应用，令牌缓存应使用帐户 ID 进行键控。  对于 Web API，帐户应使用用于调用该 API 的令牌的哈希值进行键控。 MSAL.NET 在 .NET Framework 和 .NET Core 子平台中提供自定义令牌缓存序列化。 访问缓存时会触发事件，应用可以选择是对缓存进行序列化还是反序列化。 在处理用户的机密客户端应用程序（登录用户并调用 Web API 的 Web 应用程序，以及调用下游 Web API 的 Web API）中，可能会有许多用户，并且会对这些用户进行并行处理。 出于安全和性能方面的原因，我们建议为每个用户序列化一个缓存。 序列化事件基于已处理用户的标识来计算缓存密钥，并对该用户的令牌缓存进行序列化/反序列化操作。
 
-[ASP.NET Core Web 应用教程](https://ms-identity-aspnetcore-webapp-tutorial)的阶段 [2-2 令牌缓存](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-2-TokenCache)中提供了有关如何对 Web 应用和 Web API 使用令牌缓存的示例。 有关实现，请查看 [microsoft-authentication-extensions-for-dotnet](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet) 库中的 [TokenCacheProviders](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/Microsoft.Identity.Web/TokenCacheProviders) 文件夹（在 [Microsoft.Identity.Client.Extensions.Web](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet/tree/master/src/Microsoft.Identity.Client.Extensions.Web) 文件夹中）。 
+[Microsoft.Identity.Web](https://github.com/AzureAD/microsoft-identity-web) 库提供了一个预览版 NuGet 包 [Microsoft.Identity.Web](https://www.nuget.org/packages/Microsoft.Identity.Web)，其中包含令牌缓存序列化：
+
+
+| 扩展方法 | Microsoft.Identity.Web 子命名空间 | 说明  |
+| ---------------- | --------- | ------------ |
+| `AddInMemoryTokenCaches` | `TokenCacheProviders.InMemory` | 内存中令牌缓存序列化。 此实现在示例中非常有用。 如果你不介意令牌缓存在 Web 应用重启后会丢失这一情况，那么它也适用于生产应用程序。 `AddInMemoryTokenCaches` 采用类型为 `MsalMemoryTokenCacheOptions` 的可选参数，该参数用于指定缓存项在未使用的情况下过期前的持续时间。
+| `AddSessionTokenCaches` | `TokenCacheProviders.Session` | 令牌缓存将绑定到用户会话。 如果 ID 令牌包含许多声明，则此选项不是理想的选择，因为 Cookie 会变得太大。
+| `AddDistributedTokenCaches` | `TokenCacheProviders.Distributed` | 令牌缓存是针对 ASP.NET Core `IDistributedCache` 实现的适配器，因此允许你在分布式内存缓存、Redis 缓存、分布式 NCache 或 SQL Server 缓存之间进行选择。 有关 `IDistributedCache` 实现的详细信息，请参阅 https://docs.microsoft.com/aspnet/core/performance/caching/distributed#distributed-memory-cache 。
+
+使用内存中缓存的简单案例：
+
+```C#
+// or use a distributed Token Cache by adding
+    services.AddSignIn(Configuration);
+    services.AddWebAppCallsProtectedWebApi(Configuration, new string[] { scopesToRequest })
+            .AddInMemoryTokenCaches();
+```
+
+
+可能的分布式缓存的示例：
+
+```C#
+// or use a distributed Token Cache by adding
+    services.AddSignIn(Configuration);
+    services.AddWebAppCallsProtectedWebApi(Configuration, new string[] { scopesToRequest })
+            .AddDistributedTokenCaches();
+
+// and then choose your implementation
+
+// For instance the distributed in memory cache (not cleared when you stop the app)
+services.AddDistributedMemoryCache()
+
+// Or a Redis cache
+services.AddStackExchangeRedisCache(options =>
+{
+ options.Configuration = "localhost";
+ options.InstanceName = "SampleInstance";
+});
+
+// Or even a SQL Server token cache
+services.AddDistributedSqlServerCache(options =>
+{
+ options.ConnectionString = _config["DistCache_ConnectionString"];
+ options.SchemaName = "dbo";
+ options.TableName = "TestCache";
+});
+```
+
+它们的用法在 [ASP.NET Core Web 应用教程](https://docs.microsoft.com/aspnet/core/tutorials/first-mvc-app/)的 [2-2 令牌缓存](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-2-TokenCache)阶段中进行了说明。
 
 ## <a name="next-steps"></a>后续步骤
+
 以下示例演示了令牌缓存序列化。
 
 | 示例 | 平台 | 说明|
 | ------ | -------- | ----------- |
 |[active-directory-dotnet-desktop-msgraph-v2](https://github.com/azure-samples/active-directory-dotnet-desktop-msgraph-v2) | 桌面 (WPF) | 调用 Microsoft Graph API 的 Windows 桌面 .NET (WPF) 应用程序。 ![拓扑](./media/msal-net-token-cache-serialization/topology.png)|
-|[active-directory-dotnet-v1-to-v2](https://github.com/Azure-Samples/active-directory-dotnet-v1-to-v2) | 桌面（控制台） | 演示如何将使用 ADAL.NET 的 Azure AD v1.0 应用程序迁移到使用 MSAL.NET 的 Azure AD v2.0 应用程序（也称为融合应用程序）的 Visual Studio 解决方案集。具体而言，此功能称为[令牌缓存迁移](https://github.com/Azure-Samples/active-directory-dotnet-v1-to-v2/blob/master/TokenCacheMigration/README.md)|
+|[active-directory-dotnet-v1-to-v2](https://github.com/Azure-Samples/active-directory-dotnet-v1-to-v2) | 桌面（控制台） | 一组 Visual Studio 解决方案，阐释了如何将 Azure AD v1.0 应用程序（使用 ADAL.NET）迁移到 Microsoft 标识平台应用程序（使用 MSAL.NET）。 如需具体信息，请参阅[令牌缓存迁移](https://github.com/Azure-Samples/active-directory-dotnet-v1-to-v2/blob/master/TokenCacheMigration/README.md)|
 
-<!-- Update_Description: wording update -->

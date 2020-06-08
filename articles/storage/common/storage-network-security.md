@@ -6,16 +6,16 @@ author: WenJason
 ms.service: storage
 ms.topic: conceptual
 origin.date: 01/21/2020
-ms.date: 03/30/2020
+ms.date: 06/01/2020
 ms.author: v-jay
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 7ceb3eae602679b78b30f17685822762b7d3d8b0
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 5348541328b96ae5452e88bc542dee703bab776f
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80290433"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199736"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>配置 Azure 存储防火墙和虚拟网络
 
@@ -63,11 +63,11 @@ Azure 存储提供分层安全模型。 使用此模型可以根据所用网络�
 
 1. 转至要保护的存储帐户。
 
-1. 单击名为“防火墙和虚拟网络”  的设置菜单。
+1. 单击名为“防火墙和虚拟网络”的设置菜单。
 
-1. 若要默认拒绝访问，请选择允许从“所选网络”进行访问  。 若要允许来自所有网络的流量，请选择允许从“所有网络”进行访问  。
+1. 若要默认拒绝访问，请选择允许从“所选网络”进行访问。 若要允许来自所有网络的流量，请选择允许从“所有网络”进行访问。
 
-1. 单击“保存”  应用所做的更改。
+1. 单击“保存”应用所做的更改。
 
 #### <a name="powershell"></a>PowerShell
 
@@ -147,20 +147,20 @@ Azure 存储提供分层安全模型。 使用此模型可以根据所用网络�
 
 1. 转至要保护的存储帐户。
 
-1. 单击名为“防火墙和虚拟网络”  的设置菜单。
+1. 单击名为“防火墙和虚拟网络”的设置菜单。
 
-1. 检查并确保已选择允许从“所选网络”进行访问  。
+1. 检查并确保已选择允许从“所选网络”进行访问。
 
-1. 若要使用新的网络规则向虚拟网络授予访问权限，请在“虚拟网络”下，单击“添加现有虚拟网络”，选择“虚拟网络”和“子网”选项，然后单击“添加”      。 若要创建新的虚拟网络并授予其访问权限，请单击“添加新的虚拟网络”  。 提供创建新的虚拟网络所需的信息，然后单击“创建”  。
+1. 若要使用新的网络规则向虚拟网络授予访问权限，请在“虚拟网络”下，单击“添加现有虚拟网络”，选择“虚拟网络”和“子网”选项，然后单击“添加”    。 若要创建新的虚拟网络并授予其访问权限，请单击“添加新的虚拟网络”。 提供创建新的虚拟网络所需的信息，然后单击“创建”。
 
     > [!NOTE]
     > 如果之前没有为所选的虚拟网络和子网配置 Azure 存储的服务终结点，则可在执行此操作时进行配置。
     >
     > 目前，在创建规则期间，只会显示属于同一 Azure Active Directory 租户的虚拟网络供用户选择。 若要对属于其他租户的虚拟网络中的子网授予访问权限，请使用 Powershell、CLI 或 REST API。
 
-1. 若要删除虚拟网络或子网规则，请单击“...”打开虚拟网络或子网的上下文菜单，然后单击“删除”   。
+1. 若要删除虚拟网络或子网规则，请单击“...”打开虚拟网络或子网的上下文菜单，然后单击“删除” 。
 
-1. 单击“保存”  应用所做的更改。
+1. 单击“保存”应用所做的更改。
 
 #### <a name="powershell"></a>PowerShell
 
@@ -196,7 +196,7 @@ Azure 存储提供分层安全模型。 使用此模型可以根据所用网络�
     ```
 
 > [!IMPORTANT]
-> 请务必[将默认规则设置](#change-the-default-network-access-rule)为“拒绝”，否则网络规则不会有任何效果  。
+> 请务必[将默认规则设置](#change-the-default-network-access-rule)为“拒绝”，否则网络规则不会有任何效果。
 
 #### <a name="cliv2"></a>CLIv2
 
@@ -234,7 +234,7 @@ Azure 存储提供分层安全模型。 使用此模型可以根据所用网络�
     ```
 
 > [!IMPORTANT]
-> 请务必[将默认规则设置](#change-the-default-network-access-rule)为“拒绝”，否则网络规则不会有任何效果  。
+> 请务必[将默认规则设置](#change-the-default-network-access-rule)为“拒绝”，否则网络规则不会有任何效果。
 
 ## <a name="grant-access-from-an-internet-ip-range"></a>允许从 Internet IP 范围进行访问
 
@@ -251,7 +251,7 @@ IP 网络规则仅适用于**公共 Internet** IP 地址。 IP 规则不允许�
    > IP 网络规则对源自与存储帐户相同的 Azure 区域的请求不起作用。 请使用[虚拟网络规则](#grant-access-from-a-virtual-network)来允许相同区域的请求。
 
   > [!NOTE]
-  > 在存储帐户所在的同一区域中部署的服务将使用专用 Azure IP 地址进行通信。 因此，无法根据特定 Azure 服务的公共入站 IP 地址范围来限制这些服务的访问。
+  > 在存储帐户所在的同一区域中部署的服务将使用专用 Azure IP 地址进行通信。 因此，无法根据特定 Azure 服务的公共出站 IP 地址范围将访问限制为这些服务。
 
 仅支持使用 IPV4 地址配置存储防火墙规则。
 
@@ -271,15 +271,15 @@ IP 网络规则仅适用于**公共 Internet** IP 地址。 IP 规则不允许�
 
 1. 转至要保护的存储帐户。
 
-1. 单击名为“防火墙和虚拟网络”  的设置菜单。
+1. 单击名为“防火墙和虚拟网络”的设置菜单。
 
-1. 检查并确保已选择允许从“所选网络”进行访问  。
+1. 检查并确保已选择允许从“所选网络”进行访问。
 
-1. 若要向 Internet IP 范围授予访问权限，请在“防火墙” > “地址范围”下输入 IP 地址或地址范围（采用 CIDR 格式）。
+1. 若要向 Internet IP 范围授予访问权限，请在“防火墙” > “地址范围”下输入 IP 地址或地址范围（采用 CIDR 格式） 。
 
 1. 若要删除某个 IP 网络规则，请单击该地址范围旁边的垃圾桶图标。
 
-1. 单击“保存”  应用所做的更改。
+1. 单击“保存”应用所做的更改。
 
 #### <a name="powershell"></a>PowerShell
 
@@ -316,7 +316,7 @@ IP 网络规则仅适用于**公共 Internet** IP 地址。 IP 规则不允许�
     ```
 
 > [!IMPORTANT]
-> 请务必[将默认规则设置](#change-the-default-network-access-rule)为“拒绝”，否则网络规则不会有任何效果  。
+> 请务必[将默认规则设置](#change-the-default-network-access-rule)为“拒绝”，否则网络规则不会有任何效果。
 
 #### <a name="cliv2"></a>CLIv2
 
@@ -353,7 +353,7 @@ IP 网络规则仅适用于**公共 Internet** IP 地址。 IP 规则不允许�
     ```
 
 > [!IMPORTANT]
-> 请务必[将默认规则设置](#change-the-default-network-access-rule)为“拒绝”，否则网络规则不会有任何效果  。
+> 请务必[将默认规则设置](#change-the-default-network-access-rule)为“拒绝”，否则网络规则不会有任何效果。
 
 ## <a name="exceptions"></a>异常
 
@@ -367,7 +367,7 @@ IP 网络规则仅适用于**公共 Internet** IP 地址。 IP 规则不允许�
 - 可通过以下方式向某些服务的资源授予对存储帐户的显式访问权限：**将 RBAC 角色分配**到其系统分配的托管标识。
 
 
-如果启用“允许受信任的 Microsoft 服务...”设置，则会向以下服务的、已注册到存储帐户所在的同一订阅的资源授予对有限一组操作的访问权限，如下所述： 
+如果启用“允许受信任的 Microsoft 服务...”设置，则会向以下服务的、已注册到存储帐户所在的同一订阅的资源授予对有限一组操作的访问权限，如下所述：
 
 | 服务                  | 资源提供程序名称     | 允许的操作                 |
 |:------------------------ |:-------------------------- |:---------------------------------- |
@@ -376,24 +376,24 @@ IP 网络规则仅适用于**公共 Internet** IP 地址。 IP 规则不允许�
 |Azure 事件中心|Microsoft.EventHub|使用事件中心捕获功能存档数据。  [了解详细信息](/event-hubs/event-hubs-capture-overview)。|
 | Azure HDInsight          | Microsoft.HDInsight        | 为新的 HDInsight 群集预配默认文件系统的初始内容。 [了解详细信息](/hdinsight/hdinsight-hadoop-use-blob-storage)。 |
 | Azure 导入导出      | Microsoft.ImportExport     | 允许使用导入/导出服务将数据导入 Azure 以及从 Azure 导出数据。 [了解详细信息](/storage/common/storage-import-export-service)。  |
-| Azure Monitor            | Microsoft.Insights         | 允许将监视数据写入安全存储帐户，包括资源诊断日志、Azure Active Directory 登录和审核日志，以及 Microsoft Intune 日志。 [了解详细信息](/monitoring-and-diagnostics/monitoring-roles-permissions-security)。 |
+| Azure Monitor            | Microsoft.Insights         | 允许向受保护的存储帐户写入监视数据，包括资源日志、Azure Active Directory 登录和审核日志，以及 Microsoft Intune 日志。 [了解详细信息](/monitoring-and-diagnostics/monitoring-roles-permissions-security)。 |
 | Azure 网络         | Microsoft.Network          | 存储和分析网络流量日志。 [了解详细信息](/network-watcher/network-watcher-nsg-flow-logging-overview)。 |
 | Azure Site Recovery      | Microsoft.SiteRecovery     | 使用启用了防火墙的缓存、源或目标存储帐户时，请启用复制，以实现 Azure IaaS 虚拟机的灾难恢复。  [了解详细信息](/site-recovery/azure-to-azure-tutorial-enable-replication)。 |
 
 如果已显式[将 RBAC 角色分配](storage-auth-aad.md#assign-rbac-roles-for-access-rights)到以下服务的特定实例的[系统分配的托管标识](../../active-directory/managed-identities-azure-resources/overview.md)，则“允许受信任的 Microsoft 服务...”设置也允许该资源实例访问存储帐户。 在这种情况下，该实例的访问权限范围对应于分配到托管标识的 RBAC 角色。
 
-| 服务                        | 资源提供程序名称          | 目的            |
-| :----------------------------- | :------------------------------------- | :---------- |
+| 服务                        | 资源提供程序名称                 | 目的            |
+| :----------------------------- | :------------------------------------- | :----------------- |
 | Azure 数据工厂             | Microsoft.DataFactory/factories        | 用于通过 ADF 运行时访问存储帐户。 |
-| Azure 逻辑应用               | Microsoft.Logic/workflows              | 使逻辑应用能够访问存储帐户。 [了解详细信息](/logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity)。 |
-| Azure SQL 数据仓库 | Microsoft.Sql                   | 用于通过 PolyBase 从特定 SQL 数据库实例导入和导出数据。 [了解详细信息](/sql-database/sql-database-vnet-service-endpoint-rule-overview)。 |
+| Azure 逻辑应用               | Microsoft.Logic/workflows              | 使逻辑应用能够访问存储帐户。 [了解详细信息](/logic-apps/create-managed-service-identity#authenticate-access-with-managed-identity)。 |
+| Azure SQL 数据仓库       | Microsoft.Sql                   | 用于通过 PolyBase 从特定 SQL 数据库实例导入和导出数据。 [了解详细信息](/sql-database/sql-database-vnet-service-endpoint-rule-overview)。 |
 | Azure 流分析         | Microsoft.StreamAnalytics             | 用于将流式处理作业中的数据写入 Blob 存储。 此功能目前以预览版提供。 [了解详细信息](/stream-analytics/blob-output-managed-identity)。 |
 | Azure Synapse Analytics        | Microsoft.Synapse/workspaces          | 允许从 Synapse Analytics 访问 Azure 存储中的数据。 |
 
 
 ### <a name="storage-analytics-data-access"></a>存储分析数据访问
 
-在某些情况下，需要从网络边界外访问读取诊断日志和指标。 配置受信任服务对存储帐户的访问权限时，可以允许对日志文件和/或指标表进行读取访问。 [详细了解如何使用存储分析。](/storage/storage-analytics)
+在某些情况下，需要从网络边界外访问读取资源日志和指标。 配置受信任服务对存储帐户的访问权限时，可以允许对日志文件和/或指标表进行读取访问。 [详细了解如何使用存储分析。](/storage/storage-analytics)
 
 ### <a name="managing-exceptions"></a>管理例外
 
@@ -403,13 +403,13 @@ IP 网络规则仅适用于**公共 Internet** IP 地址。 IP 规则不允许�
 
 1. 转至要保护的存储帐户。
 
-1. 单击名为“防火墙和虚拟网络”  的设置菜单。
+1. 单击名为“防火墙和虚拟网络”的设置菜单。
 
-1. 检查并确保已选择允许从“所选网络”进行访问  。
+1. 检查并确保已选择允许从“所选网络”进行访问。
 
-1. 在“例外”下，选择要允许的例外  。
+1. 在“例外”下，选择要允许的例外。
 
-1. 单击“保存”  应用所做的更改。
+1. 单击“保存”应用所做的更改。
 
 #### <a name="powershell"></a>PowerShell
 
@@ -434,7 +434,7 @@ IP 网络规则仅适用于**公共 Internet** IP 地址。 IP 规则不允许�
     ```
 
 > [!IMPORTANT]
-> 请务必[将默认规则设置](#change-the-default-network-access-rule)为“拒绝”，否则，删除例外操作不会有任何效果  。
+> 请务必[将默认规则设置](#change-the-default-network-access-rule)为“拒绝”，否则，删除例外操作不会有任何效果。
 
 #### <a name="cliv2"></a>CLIv2
 
@@ -459,7 +459,7 @@ IP 网络规则仅适用于**公共 Internet** IP 地址。 IP 规则不允许�
     ```
 
 > [!IMPORTANT]
-> 请务必[将默认规则设置](#change-the-default-network-access-rule)为“拒绝”，否则，删除例外操作不会有任何效果  。
+> 请务必[将默认规则设置](#change-the-default-network-access-rule)为“拒绝”，否则，删除例外操作不会有任何效果。
 
 ## <a name="next-steps"></a>后续步骤
 

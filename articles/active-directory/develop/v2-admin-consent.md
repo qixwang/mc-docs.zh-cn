@@ -1,33 +1,27 @@
 ---
-title: Microsoft 标识平台管理员同意协议 | Microsoft Docs
+title: Microsoft 标识平台管理员同意协议
 description: 介绍 Microsoft 标识平台终结点中的授权，包括范围、权限和许可。
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
-ms.assetid: 8f98cbf0-a71d-4e34-babf-e642ad9ff423
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/06/2020
+ms.date: 05/28/2020
 ms.author: v-junlch
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5d155908752e62fbfa4620512c56fe7350338e03
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: e497dff418223bd362e98a99928055a345007de6
+ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75777028"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84186854"
 ---
 # <a name="admin-consent-on-the-microsoft-identity-platform"></a>Microsoft 标识平台中的管理员同意
 
-某些权限需要获得管理员同意才能在租户中授予。  你还可以使用管理员许可终结点向整个租户授予权限。  
+某些权限需要获得管理员同意才能在租户中授予。  你还可以使用管理员许可终结点向整个租户授予权限。
 
 ## <a name="recommended-sign-the-user-into-your-app"></a>建议：让用户登录到应用
 
@@ -39,15 +33,15 @@ ms.locfileid: "75777028"
 
 准备好向组织管理员请求权限时，可将用户重定向到 Microsoft 标识平台*管理员许可终结点*。
 
-```
+```HTTP
 // Line breaks are for legibility only.
-    GET https://login.partner.microsoftonline.cn/{tenant}/v2.0/adminconsent?
-  client_id=6731de76-14a6-49ae-97bc-6eba6914391e
-  &state=12345
-  &redirect_uri=http://localhost/myapp/permissions
-    &scope=
-    https://microsoftgraph.chinacloudapi.cn/calendars.read 
-    https://microsoftgraph.chinacloudapi.cn/mail.send
+GET https://login.partner.microsoftonline.cn/{tenant}/v2.0/adminconsent?
+client_id=6731de76-14a6-49ae-97bc-6eba6914391e
+&state=12345
+&redirect_uri=http://localhost/myapp/permissions
+&scope=
+https://microsoftgraph.chinacloudapi.cn/calendars.read
+https://microsoftgraph.chinacloudapi.cn/mail.send
 ```
 
 
@@ -57,7 +51,7 @@ ms.locfileid: "75777028"
 | `client_id` | 必须 | [Azure 门户 - 应用注册](https://portal.azure.cn/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)体验分配给应用的**应用程序（客户端）ID**。 |
 | `redirect_uri` | 必须 |要向其发送响应，供应用处理的重定向 URI。 必须与在应用注册门户中注册的重定向 URI 之一完全匹配。 |
 | `state` | 建议 | 同样随令牌响应返回的请求中所包含的值。 可以是所需的任何内容的字符串。 使用该状态可在身份验证请求出现之前，在应用中编码用户的状态信息，例如用户过去所在的页面或视图。 |
-|`scope`        | 必须      | 定义应用程序请求的权限集。 这可以是静态范围（使用 /.default）或动态范围。  这可以包括 OIDC 范围（`openid`、`profile`、`email`）。 | 
+|`scope`        | 必须      | 定义应用程序请求的权限集。 这可以是静态范围（使用 /.default）或动态范围。  这可以包括 OIDC 范围（`openid`、`profile`、`email`）。 |
 
 
 此时，Azure AD 要求租户管理员登录，以完成请求。 系统要求管理员批准你在 `scope` 参数中请求的所有权限。  如果你使用了静态 (`/.default`) 值，则其功能将类似于 v1.0 管理员许可终结点，并请求对应用所需权限中找到的所有范围的许可。
@@ -97,4 +91,3 @@ http://localhost/myapp/permissions?admin_consent=True&tenant=fa00d692-e9c7-4460-
 - 了解[多租户应用程序如何使用许可框架](active-directory-devhowto-multi-tenant-overview.md)来实现“用户”许可和“管理员”许可，为更高级的多层应用程序模式提供支持。
 - 了解 [Azure AD 应用程序许可体验](application-consent-experience.md)
 
-<!-- Update_Description: wording update -->

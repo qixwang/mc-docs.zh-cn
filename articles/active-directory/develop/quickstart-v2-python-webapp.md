@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 04/22/2020
+ms.date: 05/28/2020
 ms.author: v-junlch
-ms.custom: aaddev
-ms.openlocfilehash: a8f56c03034541eb28a0cfb68e0d84184959a177
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.custom: aaddev, scenarios:getting-started, languages:Python
+ms.openlocfilehash: 40b2177c234c749ab74aa5f9ae864a631df45c75
+ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82126468"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84186714"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-python-web-app"></a>快速入门：向 Python Web 应用添加 Microsoft 登录功能
 
@@ -30,7 +30,7 @@ ms.locfileid: "82126468"
 若要运行此示例，需要：
 
 - [Python 2.7+](https://www.python.org/downloads/release/python-2713) 或 [Python 3+](https://www.python.org/downloads/release/python-364/)
-- [Flask](http://flask.pocoo.org/)、[Flask-Session](https://pythonhosted.org/Flask-Session/)、[请求](https://requests.kennethreitz.org/en/master/)
+- [Flask](http://flask.pocoo.org/)、Flask-Session、[requests](https://requests.kennethreitz.org/en/master/)
 - [MSAL Python](https://github.com/AzureAD/microsoft-authentication-library-for-python)
 
 > [!div renderon="docs"]
@@ -42,7 +42,7 @@ ms.locfileid: "82126468"
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>选项 1：注册并自动配置应用，然后下载代码示例
 >
 > 1. 访问 [Azure 门户 - 应用注册](https://portal.azure.cn/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/PythonQuickstartPage/sourceType/docs)。
-> 1. 输入应用程序的名称并选择“注册”  。
+> 1. 输入应用程序的名称并选择“注册”。
 > 1. 遵照说明下载内容，系统会自动配置新应用程序。
 >
 > ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>选项 2：注册并手动配置应用程序和代码示例
@@ -54,28 +54,28 @@ ms.locfileid: "82126468"
 > 1. 使用工作或学校帐户登录到 [Azure 门户](https://portal.azure.cn)。
 > 1. 如果你的帐户有权访问多个租户，请在右上角选择该帐户，并将门户会话设置为所需的 Azure AD 租户。
 > 1. 导航到面向开发人员的 Microsoft 标识平台的[应用注册](https://portal.azure.cn/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)页。
-> 1. 选择“新注册”。 
-> 1. “注册应用程序”页出现后，请输入应用程序的注册信息： 
->      - 在“名称”  部分输入一个会显示给应用用户的有意义的应用程序名称，例如 `python-webapp`。
->      - 在“支持的帐户类型”下，选择“任何组织目录中的帐户”。  
->      - 选择“注册”  。
->      - 在应用的“概述”页上，记下“应用程序(客户端) ID”值，供稍后使用   。
-> 1. 从菜单中选择“身份验证”，然后添加以下信息  ：
->    - 添加 **Web** 平台配置。 添加 `http://localhost:5000/getAToken` 作为“重定向 URI”。 
->    - 选择“保存”  。
-> 1. 在左侧菜单中选择“证书和机密”，然后在“客户端机密”部分单击“新建客户端机密”：   
+> 1. 选择“新注册”。
+> 1. “注册应用程序”页出现后，请输入应用程序的注册信息：
+>      - 在“名称”部分输入一个会显示给应用用户的有意义的应用程序名称，例如 `python-webapp`。
+>      - 在“支持的帐户类型”下，选择“任何组织目录中的帐户”。 
+>      - 选择“注册”。
+>      - 在应用的“概述”页上，记下“应用程序(客户端) ID”值，供稍后使用 。
+> 1. 从菜单中选择“身份验证”，然后添加以下信息：
+>    - 添加 **Web** 平台配置。 添加 `http://localhost:5000/getAToken` 作为“重定向 URI”。
+>    - 选择“保存” 。
+> 1. 在左侧菜单中选择“证书和机密”，然后在“客户端机密”部分单击“新建客户端机密”：  
 >
 >      - 键入（实例应用机密）的密钥说明。
->      - 选择密钥持续时间“1 年”。 
->      - 单击“添加”时，将显示密钥值。 
+>      - 选择密钥持续时间“1 年”。
+>      - 单击“添加”时，将显示密钥值。
 >      - 复制密钥的值。 稍后需要用到此值。
-> 1. 选择“API 权限”部分 
+> 1. 选择“API 权限”部分
 >
->      - 单击“添加权限”  按钮，然后
->      - 确保已选中“Microsoft API”选项卡 
->      - 在“常用 Microsoft API”部分中，单击“Microsoft Graph”  
->      - 在“委托的权限”部分中，确保已勾选正确的权限  ：**User.ReadBasic.All**。 如有必要，请使用搜索框。
->      - 选择“添加权限”按钮 
+>      - 单击“添加权限”按钮，然后
+>      - 确保已选中“Microsoft API”选项卡
+>      - 在“常用 Microsoft API”部分中，单击“Microsoft Graph”
+>      - 在“委托的权限”部分中，确保已勾选正确的权限：**User.ReadBasic.All**。 如有必要，请使用搜索框。
+>      - 选择“添加权限”按钮
 >
 > [!div class="sxs-lookup" renderon="portal"]
 >
@@ -120,8 +120,8 @@ ms.locfileid: "82126468"
 > 其中：
 >
 > - `Enter_the_Application_Id_here` - 是已注册应用程序的应用程序 ID。
-> - `Enter_the_Client_Secret_Here` - 是你在“证书和机密”  中为注册的应用程序创建的**客户端密码**。
-> - `Enter_the_Tenant_Name_Here` - 是注册的应用程序的目录（租户）ID 值  。
+> - `Enter_the_Client_Secret_Here` - 是你在“证书和机密”中为注册的应用程序创建的**客户端密码**。
+> - `Enter_the_Tenant_Name_Here` - 是注册的应用程序的目录（租户）ID 值。
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-3-run-the-code-sample"></a>步骤 3：运行代码示例

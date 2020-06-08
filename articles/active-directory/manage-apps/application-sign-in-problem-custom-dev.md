@@ -12,17 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-origin.date: 07/11/2017
-ms.date: 07/04/2019
+ms.date: 05/28/2020
 ms.author: v-junlch
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 956c89da09c57845f066b47e48737ac94a9a22fb
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 1538592fb726d0f9034256708246b72e63f81120
+ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "67568601"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84186454"
 ---
 # <a name="problems-signing-in-to-a-custom-developed-application"></a>登录自定义开发的应用程序时出现的问题
 
@@ -32,7 +31,7 @@ ms.locfileid: "67568601"
 
 * 确认门户中的配置与应用中的配置相匹配。 具体而言，比较客户端/应用程序 ID、回复 URL、客户端密码/密钥和应用 ID URI。
 
-* 将在代码中请求访问的资源与“所需资源”  选项卡中的已配置权限进行比较，确保仅请求已配置的资源。
+* 将在代码中请求访问的资源与“所需资源”选项卡中的已配置权限进行比较，确保仅请求已配置的资源。
 
 * 有关任何类似的错误或问题，请参阅 [Azure AD StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)。
 
@@ -42,6 +41,7 @@ ms.locfileid: "67568601"
 
 [同意并将应用集成到 Azure AD](/active-directory/develop/active-directory-integrating-applications)<br>
 
-[同意并为 Azure AD v2.0 聚合应用授予权限](/active-directory/develop/active-directory-v2-scopes)<br>
+[Microsoft 标识平台终结点中的权限和许可](/active-directory/develop/active-directory-v2-scopes)<br>
 
-<!-- Update_Description: wording update -->
+[Azure AD StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)
+

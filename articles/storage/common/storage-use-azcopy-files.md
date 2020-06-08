@@ -4,16 +4,16 @@ description: 使用 AzCopy 和文件存储传输数据。
 author: WenJason
 ms.service: storage
 ms.topic: conceptual
-origin.date: 10/16/2019
-ms.date: 02/10/2020
+origin.date: 04/10/2020
+ms.date: 06/01/2020
 ms.author: v-jay
 ms.subservice: common
-ms.openlocfilehash: b79ca92c3030d8e5ce92a16685df33f3d256f9ad
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 9a6fd8d7c3d89aa5aeedc977cb67817b6f3166c0
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77028834"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199744"
 ---
 # <a name="transfer-data-with-azcopy-and-file-storage"></a>使用 AzCopy 和文件存储传输数据 
 
@@ -21,12 +21,12 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制 Blob 
 
 在开始之前，请参阅 [AzCopy 入门](storage-use-azcopy-v10.md)一文下载 AzCopy 并熟悉该工具。
 
+> [!TIP]
+> 本文中的示例将路径参数括在单引号 ('') 中。 在除 Windows 命令 Shell (cmd.exe) 以外的所有命令 shell 中，都请使用单引号。 如果使用 Windows 命令 Shell (cmd.exe)，请用双引号 ("") 而不是单引号 ('') 括住路径参数。
+
 ## <a name="create-file-shares"></a>创建文件共享
 
 可以使用 [azcopy make](storage-ref-azcopy-make.md) 命令创建文件共享。 本部分中的示例将创建名为 `myfileshare` 的文件共享。
-
-> [!TIP]
-> 本部分中的示例将路径参数括在单引号 ('') 中。 在除 Windows 命令 Shell (cmd.exe) 以外的所有命令 shell 中，都请使用单引号。 如果使用 Windows 命令 Shell (cmd.exe)，请用双引号 ("") 而不是单引号 ('') 括住路径参数。
 
 |    |     |
 |--------|-----------|
@@ -47,13 +47,20 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制 Blob 
 > * 上传目录的内容
 > * 上传特定的文件
 
+> [!TIP]
+> 可以通过使用可选标志来调整上传操作。 下面是几个示例。
+>
+> |方案|标志|
+> |---|---|
+> |将访问控制列表 (ACL) 与文件一起复制。|**--preserve-smb-permissions**=\[true\|false\]|
+> |将 SMB 属性信息与文件一起复制。|**--preserve-smb-info**=\[true\|false\]|
+> |将文件作为追加 Blob 或页 Blob 上传。|**--blob-type**=\[BlockBlob\|PageBlob\|AppendBlob\]|
+> |上传到特定访问层（如存档层）。|**--block-blob-tier**=\[None\|Hot\|Cool\|Archive\]|
+> 
+> 有关完整列表，请参阅[选项](storage-ref-azcopy-copy.md#options)。
+
 > [!NOTE]
 > AzCopy 不会自动计算和存储文件的 MD5 哈希代码。 如果你希望 AzCopy 执行此操作，请将 `--put-md5` 标志追加到每个 copy 命令。 这样，在下载文件后，AzCopy 将计算已下载的数据的 MD5 哈希，并验证存储在该文件的 `Content-md5` 属性中的 MD5 哈希是否与计算出的哈希相匹配。
-
-有关详细参考文档，请参阅 [azcopy copy](storage-ref-azcopy-copy.md)。
-
-> [!TIP]
-> 本部分中的示例将路径参数括在单引号 ('') 中。 在除 Windows 命令 Shell (cmd.exe) 以外的所有命令 shell 中，都请使用单引号。 如果使用 Windows 命令 Shell (cmd.exe)，请用双引号 ("") 而不是单引号 ('') 括住路径参数。
 
 ### <a name="upload-a-file"></a>上传文件
 
@@ -135,13 +142,19 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制 Blob 
 > * 下载目录的内容
 > * 下载特定的文件
 
+> [!TIP]
+> 可以通过使用可选标志来调整下载操作。 下面是几个示例。
+>
+> |方案|标志|
+> |---|---|
+> |将访问控制列表 (ACL) 与文件一起复制。|**--preserve-smb-permissions**=\[true\|false\]|
+> |将 SMB 属性信息与文件一起复制。|**--preserve-smb-info**=\[true\|false\]|
+> |自动解压缩文件。|**--decompress**|
+> 
+> 有关完整列表，请参阅[选项](storage-ref-azcopy-copy.md#options)。
+
 > [!NOTE]
 > 如果文件的 `Content-md5` 属性值包含哈希，AzCopy 将计算已下载的数据的 MD5 哈希，并验证存储在该文件的 `Content-md5` 属性中的 MD5 哈希是否与计算出的哈希相匹配。 如果这些值不匹配，除非通过将 `--check-md5=NoCheck` 或 `--check-md5=LogOnly` 追加到 copy 命令来重写此行为，否则下载将会失败。
-
-有关详细参考文档，请参阅 [azcopy copy](storage-ref-azcopy-copy.md)。
-
-> [!TIP]
-> 本部分中的示例将路径参数括在单引号 ('') 中。 在除 Windows 命令 Shell (cmd.exe) 以外的所有命令 shell 中，都请使用单引号。 如果使用 Windows 命令 Shell (cmd.exe)，请用双引号 ("") 而不是单引号 ('') 括住路径参数。
 
 ### <a name="download-a-file"></a>下载文件
 
@@ -215,10 +228,17 @@ AzCopy 使用[服务器到服务器](https://docs.microsoft.com/rest/api/storage
 > * 将文件共享复制到另一个存储帐户
 > * 将所有文件共享、目录和文件复制到另一个存储帐户
 
-有关详细参考文档，请参阅 [azcopy copy](storage-ref-azcopy-copy.md)。
-
 > [!TIP]
-> 本部分中的示例将路径参数括在单引号 ('') 中。 在除 Windows 命令 Shell (cmd.exe) 以外的所有命令 shell 中，都请使用单引号。 如果使用 Windows 命令 Shell (cmd.exe)，请用双引号 ("") 而不是单引号 ('') 括住路径参数。
+> 可以通过使用可选标志来调整复制操作。 下面是几个示例。
+>
+> |方案|标志|
+> |---|---|
+> |将访问控制列表 (ACL) 与文件一起复制。|**--preserve-smb-permissions**=\[true\|false\]|
+> |将 SMB 属性信息与文件一起复制。|**--preserve-smb-info**=\[true\|false\]|
+> |将文件复制为追加 Blob 或页 Blob。|**--blob-type**=\[BlockBlob\|PageBlob\|AppendBlob\]|
+> |复制到特定访问层（如存档层）。|**--block-blob-tier**=\[None\|Hot\|Cool\|Archive\]|
+> 
+> 有关完整列表，请参阅[选项](storage-ref-azcopy-copy.md#options)。
 
 ### <a name="copy-a-file-to-another-storage-account"></a>将文件复制到另一个存储帐户
 
@@ -259,14 +279,20 @@ AzCopy 使用[服务器到服务器](https://docs.microsoft.com/rest/api/storage
 
 如果将 `--delete-destination` 标志设置为 `true`，AzCopy 将删除文件且不提供提示。 若要在 AzCopy 删除文件之前显示提示，请将 `--delete-destination` 标志设置为 `prompt`。
 
-有关详细参考文档，请参阅 [azcopy sync](storage-ref-azcopy-sync.md)。
-
 > [!TIP]
-> 本部分中的示例将路径参数括在单引号 ('') 中。 在除 Windows 命令 Shell (cmd.exe) 以外的所有命令 shell 中，都请使用单引号。 如果使用 Windows 命令 Shell (cmd.exe)，请用双引号 ("") 而不是单引号 ('') 括住路径参数。
+> 可以通过使用可选标志来调整同步操作。 下面是几个示例。
+>
+> |方案|标志|
+> |---|---|
+> |指定下载时应验证 MD5 哈希的严格程度。|**--check-md5**=\[NoCheck\|LogOnly\|FailIfDifferent\|FailIfDifferentOrMissing\]|
+> |基于模式排除文件。|**--exclude-path**|
+> |指定你希望与同步相关的日志条目达到何种详细程度。|**--log-level**=\[WARNING\|ERROR\|INFO\|NONE\]|
+> 
+> 有关完整列表，请参阅[选项](storage-ref-azcopy-sync.md#options)。
 
 ### <a name="update-a-file-share-with-changes-to-another-file-share"></a>使用对一个文件共享所做的更改来更新另一个文件共享
 
-此命令中显示的第一个文件共享是源。 第二个是目标。
+此命令中显示的第一个文件共享是源。 第二个文件共享是目标。
 
 |    |     |
 |--------|-----------|
@@ -281,6 +307,17 @@ AzCopy 使用[服务器到服务器](https://docs.microsoft.com/rest/api/storage
 |--------|-----------|
 | **语法** | `azcopy sync 'https://<source-storage-account-name>.file.core.chinacloudapi.cn/<file-share-name>/<directory-name>?<SAS-token>' 'https://<destination-storage-account-name>.file.core.chinacloudapi.cn/<file-share-name>/<directory-name>?<SAS-token>' --recursive` |
 | **示例** | `azcopy sync 'https://mysourceaccount.file.core.chinacloudapi.cn/myFileShare/myDirectory?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.file.core.chinacloudapi.cn/myFileShare/myDirectory?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' --recursive` |
+
+### <a name="update-a-file-share-to-match-the-contents-of-a-share-snapshot"></a>更新文件共享，使之与共享快照的内容匹配
+
+此命令中显示的第一个文件共享是源。 在 URI 的末尾追加字符串 `&sharesnapshot=`，后跟快照的 DateTime 值。 
+
+|    |     |
+|--------|-----------|
+| **语法** | `azcopy sync 'https://<source-storage-account-name>.file.core.chinacloudapi.cn/<file-share-name><SAS-token>&sharesnapsot<snapshot-ID>' 'https://<destination-storage-account-name>.file.core.chinacloudapi.cn/<file-share-name><SAS-token>' --recursive` |
+| **示例** | `azcopy sync 'https://mysourceaccount.file.core.chinacloudapi.cn/myfileShare?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D&sharesnapshot=2020-03-03T20%3A24%3A13.0000000Z' 'https://mydestinationaccount.file.core.chinacloudapi.cn/myfileshare?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' --recursive` |
+
+若要详细了解共享快照，请参阅 [Azure 文件存储的共享快照概述](/storage/files/storage-snapshots-files)。
 
 ## <a name="next-steps"></a>后续步骤
 

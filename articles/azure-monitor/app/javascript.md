@@ -2,17 +2,16 @@
 title: 适用于 JavaScript Web 应用的 Azure Application Insights
 description: 获取页面视图和会话计数、Web 客户端数据、单页应用程序 (SPA)，以及跟踪使用模式。 检测 JavaScript 网页中的异常和性能问题。
 ms.topic: conceptual
-author: lingliw
-manager: digimobile
+author: Johnnytechn
 origin.date: 09/12/2019
-ms.date: 09/20/2019
-ms.author: v-lingwu
-ms.openlocfilehash: 2d439f3dd659af5efdbf6e63fa2b6c7ddbeb8bdf
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/28/2020
+ms.author: v-johya
+ms.openlocfilehash: 9377994d4cbf2469b76a1096f53bb932c7493054
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292426"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199672"
 ---
 # <a name="application-insights-for-web-pages"></a>适用于网页的 Application Insights
 
@@ -53,11 +52,11 @@ appInsights.trackPageView(); // Manually call trackPageView to establish the cur
 
 ```html
 <script type="text/javascript">
-var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=window[sdkInstance],aisdk=window[aiName]||function(e){function n(e){t[e]=function(){var n=arguments;t.queue.push(function(){t[e].apply(t,n)})}}var t={config:e};t.initialize=!0;var i=document,a=window;setTimeout(function(){var n=i.createElement("script");n.src=e.url||"https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js",i.getElementsByTagName("script")[0].parentNode.appendChild(n)});try{t.cookie=i.cookie}catch(e){}t.queue=[],t.version=2;for(var r=["Event","PageView","Exception","Trace","DependencyData","Metric","PageViewPerformance"];r.length;)n("track"+r.pop());n("startTrackPage"),n("stopTrackPage");var s="Track"+r[0];if(n("start"+s),n("stop"+s),n("addTelemetryInitializer"),n("setAuthenticatedUserContext"),n("clearAuthenticatedUserContext"),n("flush"),t.SeverityLevel={Verbose:0,Information:1,Warning:2,Error:3,Critical:4},!(!0===e.disableExceptionTracking||e.extensionConfig&&e.extensionConfig.ApplicationInsightsAnalytics&&!0===e.extensionConfig.ApplicationInsightsAnalytics.disableExceptionTracking)){n("_"+(r="onerror"));var o=a[r];a[r]=function(e,n,i,a,s){var c=o&&o(e,n,i,a,s);return!0!==c&&t["_"+r]({message:e,url:n,lineNumber:i,columnNumber:a,error:s}),c},e.autoExceptionInstrumented=!0}return t}(
+var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=window[sdkInstance],aisdk=window[aiName]||function(n){var o={config:n,initialize:!0},t=document,e=window,i="script";setTimeout(function(){var e=t.createElement(i);e.src=n.url||"https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js",t.getElementsByTagName(i)[0].parentNode.appendChild(e)});try{o.cookie=t.cookie}catch(e){}function a(n){o[n]=function(){var e=arguments;o.queue.push(function(){o[n].apply(o,e)})}}o.queue=[],o.version=2;for(var s=["Event","PageView","Exception","Trace","DependencyData","Metric","PageViewPerformance"];s.length;)a("track"+s.pop());var r="Track",c=r+"Page";a("start"+c),a("stop"+c);var u=r+"Event";if(a("start"+u),a("stop"+u),a("addTelemetryInitializer"),a("setAuthenticatedUserContext"),a("clearAuthenticatedUserContext"),a("flush"),o.SeverityLevel={Verbose:0,Information:1,Warning:2,Error:3,Critical:4},!(!0===n.disableExceptionTracking||n.extensionConfig&&n.extensionConfig.ApplicationInsightsAnalytics&&!0===n.extensionConfig.ApplicationInsightsAnalytics.disableExceptionTracking)){a("_"+(s="onerror"));var p=e[s];e[s]=function(e,n,t,i,a){var r=p&&p(e,n,t,i,a);return!0!==r&&o["_"+s]({message:e,url:n,lineNumber:t,columnNumber:i,error:a}),r},n.autoExceptionInstrumented=!0}return o}(
 {
   instrumentationKey:"INSTRUMENTATION_KEY"
 }
-);window[aiName]=aisdk,aisdk.queue&&0===aisdk.queue.length&&aisdk.trackPageView({});
+);(window[aiName]=aisdk).queue&&0===aisdk.queue.length&&aisdk.trackPageView({});
 </script>
 ```
 
@@ -78,7 +77,7 @@ var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=wi
     - 发出请求的用户的 ID（如果有）
     - 发出请求的关联上下文（如果有）
 - **用户信息**（例如位置、网络、IP）
-- **设备信息**（例如浏览器、OS、版本、语言、分辨率、型号）
+- **设备信息**（例如，浏览器、OS、版本、语言、型号）
 - **会话信息**
 
 ### <a name="telemetry-initializers"></a>遥测初始化表达式
@@ -97,6 +96,7 @@ appInsights.trackTrace({message: 'This message will use a telemetry initializer'
 appInsights.addTelemetryInitializer(() => false); // Nothing is sent after this is executed
 appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 ```
+
 ## <a name="configuration"></a>配置
 大多数配置字段的命名都可默认为 false。 除 `instrumentationKey` 以外的所有字段都是可选的。
 
@@ -146,7 +146,14 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 
 默认情况下，此 SDK **不会**处理单页应用程序中发生的基于状态的路由更改。 若要为单页应用程序启用自动路由更改跟踪，可将 `enableAutoRouteTracking: true` 添加到设置配置。
 
-目前，我们提供了一个可通过此 SDK 初始化的独立 [React 插件](#react-extensions)。 该插件也能为你实现路由更改跟踪，并可收集[其他特定于 React 的遥测数据](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-js/README.md)。
+目前，我们提供了一个单独的 [React 插件](#react-extensions)（可以使用此 SDK 对其进行初始化）。 该插件也能为你实现路由更改跟踪，并可收集[其他特定于 React 的遥测数据](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-js/README.md)。
+
+> [!NOTE]
+> 仅当你不使用 React 插件时，才使用 `enableAutoRouteTracking: true`。 当路由更改时，这两种方法都能发送新的 PageView。 如果这两种方法均已启用，则可能会发送重复的 PageView。
+
+## <a name="configuration-autotrackpagevisittime"></a>配置：autoTrackPageVisitTime
+
+通过设置 `autoTrackPageVisitTime: true`，跟踪用户在每个页面上花费的时间。 在每个新 PageView 上，用户在上一页花费的时间将作为名为 `PageVisitTime` 的[自定义指标](/azure-monitor/platform/metrics-custom-overview)发送。 此自定义指标可在[指标资源管理器](/azure-monitor/platform/metrics-getting-started)中作为“基于日志的指标”查看。
 
 ## <a name="react-extensions"></a>React 扩展
 
@@ -157,17 +164,17 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 
 ## <a name="explore-browserclient-side-data"></a>浏览浏览器/客户端数据
 
-可以转到“指标”并添加你感兴趣的各个指标，来查看浏览器/客户端数据：  
+可以转到“指标”并添加你感兴趣的各个指标，来查看浏览器/客户端数据：
 
 ![](./media/javascript/page-view-load-time.png)
 
 还可以通过门户中的“浏览器”体验查看 JavaScript SDK 中的数据。
 
-选择“浏览器”，然后选择“失败”或“性能”。   
+选择“浏览器”，然后选择“失败”或“性能”。  
 
 ![](./media/javascript/browser.png)
 
-### <a name="performance"></a>性能 
+### <a name="performance"></a>性能
 
 ![](./media/javascript/performance-operations.png)
 
@@ -175,9 +182,9 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 
 ![](./media/javascript/performance-dependencies.png)
 
-### <a name="analytics"></a>分析 
+### <a name="analytics"></a>分析
 
-若要查询 JavaScript SDK 收集的遥测数据，请选择“在日志(分析)中查看”按钮。  如果添加 `client_Type == "Browser"` 的 `where` 语句，则只会看到来自 JavaScript SDK 的数据，而其他 SDK 收集的任何服务器端遥测数据将被排除。
+若要查询 JavaScript SDK 收集的遥测数据，请选择“在日志(分析)中查看”按钮。 如果添加 `client_Type == "Browser"` 的 `where` 语句，则只会看到来自 JavaScript SDK 的数据，而其他 SDK 收集的任何服务器端遥测数据将被排除。
  
 ```kusto
 // average pageView duration by name
@@ -196,7 +203,14 @@ dataset
 
 ### <a name="source-map-support"></a>源映射支持
 
-可以在 Azure 门户中取消缩小异常遥测的已缩小调用堆栈。 “异常详细信息”面板中的所有现有集成将适用于最近取消缩小的调用堆栈。 拖放式源映射取消缩小功能支持所有现有和将来的 JS SDK (+Node.js)，因此你无需升级 SDK 版本。 若要查看已取消缩小的调用堆栈，
+可以在 Azure 门户中取消缩小异常遥测的已缩小调用堆栈。 “异常详细信息”面板中的所有现有集成将适用于最近取消缩小的调用堆栈。
+
+#### <a name="link-to-blob-storage-account"></a>链接到 Blob 存储帐户
+
+可以将 Application Insights 资源链接到自己的 Azure Blob 存储容器，以便自动取消缩小调用堆栈。 若要开始，请参阅[自动源映射支持](./source-map-support.md)。
+
+### <a name="drag-and-drop"></a>拖放
+
 1. 请在 Azure 门户中选择一个异常遥测项，以查看其“端到端事务详细信息”
 2. 确定哪些源映射对应于此调用堆栈。 源映射必须与堆栈帧的源文件相匹配，但后缀为 `.map`
 3. 将源映射拖放到 Azure 门户中的调用堆栈上 ![](https://i.imgur.com/Efue9nU.gif)

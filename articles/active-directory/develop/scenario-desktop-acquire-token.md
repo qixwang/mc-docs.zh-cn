@@ -3,24 +3,21 @@ title: 获取用于调用 Web API 的令牌（桌面应用）| Azure
 titleSuffix: Microsoft identity platform
 description: 了解如何生成调用 Web API 的桌面应用来获取应用的令牌
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/10/2020
+ms.date: 05/28/2020
 ms.author: v-junlch
 ms.custom: aaddev
-ms.openlocfilehash: bcc5cbe22eb06a2d829985756c2789f8eea0d726
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 5ac1c4761312108d47ab161e5c1f5b5b412d80c1
+ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79291048"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84186866"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>用于调用 Web API 的桌面应用：获取令牌
 
@@ -178,7 +175,7 @@ catch(MsalUiRequiredException)
 
 ### <a name="mandatory-parameters"></a>必需参数
 
-`AcquireTokenInteractive` 只有一个必需的参数 ``scopes``，其中包含一个定义需要令牌的范围的字符串枚举。 如果该令牌适用于 Microsoft Graph，可以在名为“权限”的部分中每个 Microsoft Graph API 的 API 参考中找到所需的范围。 例如，若要列出用户的联系人，必须使用范围“User.Read”、“Contacts.Read”。 有关详细信息，请参阅 [Microsoft Graph 权限参考](https://developer.microsoft.com/graph/docs/concepts/permissions_reference)。
+`AcquireTokenInteractive` 只有一个必需的参数 ``scopes``，其中包含一个定义需要令牌的范围的字符串枚举。 如果该令牌适用于 Microsoft Graph，可以在名为“权限”的部分中每个 Microsoft Graph API 的 API 参考中找到所需的范围。 例如，若要[列出用户的联系人](https://docs.microsoft.com/graph/api/user-list-contacts)，必须使用范围“User.Read”、“Contacts.Read”。 有关详细信息，请参阅 [Microsoft Graph 权限参考](https://developer.microsoft.com/graph/docs/concepts/permissions_reference)。
 
 在 Android 上，还需要按如下所示使用 `.WithParentActivityOrWindow` 指定父活动，以便在交互后令牌返回到该父活动。 如果未指定父活动，则调用 `.ExecuteAsync()` 时会引发异常。
 
@@ -420,7 +417,7 @@ application.acquireToken(with: interactiveParameters, completionBlock: { (result
 
 ### <a name="constraints"></a>约束
 
-- Windows 集成身份验证仅适用于“联合+”用户，即，在 Active Directory 中创建的、由 Azure AD 支持的用户。  直接在 Azure AD 中创建的但不是由 Active Directory 支持的用户（称为“托管用户”）不能使用此身份验证流。  此项限制不影响用户名和密码流。
+- Windows 集成身份验证仅适用于“联合+”用户，即，在 Active Directory 中创建的、由 Azure AD 支持的用户。 直接在 Azure AD 中创建的但不是由 Active Directory 支持的用户（称为“托管用户”）不能使用此身份验证流。 此项限制不影响用户名和密码流。
 - IWA 适用于针对 .NET Framework、.NET Core 和通用 Windows 平台 (UWP) 编写的应用。
 - IWA 不会绕过多重身份验证 (MFA)。 如果配置了 MFA，需要 MFA 质询时，IWA 可能会失败，因为 MFA 需要用户交互。
   > [!NOTE]
@@ -434,8 +431,8 @@ application.acquireToken(with: interactiveParameters, completionBlock: { (result
   - 应用程序的用户必须已事先许可使用该应用程序。
   - 或者，租户管理员必须已事先许可租户中的所有用户使用该应用程序。
   - 换言之：
-    - 开发人员已在 Azure 门户中自行选择“授予”按钮。 
-    - 或者，租户管理员已在应用程序注册的“API 权限”选项卡中选择“授予/撤销 {租户域} 的管理员许可”按钮。   有关详细信息，请参阅[添加用于访问 Web API 的权限](/active-directory/develop/quickstart-configure-app-access-web-apis#add-permissions-to-access-web-apis)。
+    - 开发人员已在 Azure 门户中自行选择“授予”按钮。
+    - 或者，租户管理员已在应用程序注册的“API 权限”选项卡中选择“授予/撤销 {租户域} 的管理员许可”按钮。  有关详细信息，请参阅[添加用于访问 Web API 的权限](/active-directory/develop/quickstart-configure-app-access-web-apis#add-permissions-to-access-web-apis)。
     - 或者，你已提供某种方式让用户许可应用程序。 有关详细信息，请参阅[请求单个用户的许可](/active-directory/develop/v2-permissions-and-consent#requesting-individual-user-consent)。
     - 或者，你已提供某种方式让租户管理员许可应用程序。 有关详细信息，请参阅[管理员许可](/active-directory/develop/v2-permissions-and-consent#requesting-consent-for-an-entire-tenant)。
 
@@ -604,7 +601,7 @@ MSAL Python 尚不支持此流。
 
 ### <a name="this-flow-isnt-recommended"></a>不建议使用此流
 
-不建议使用此流，因为要求用户提供其密码的应用程序是不安全的。  有关详细信息，请参阅[如何解决不断增多的密码问题？](https://news.microsoft.com/features/whats-solution-growing-problem-passwords-says-microsoft/)。 在已加入 Windows 域的计算机上以静默方式获取令牌的首选流是 [Windows 集成身份验证](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Integrated-Windows-Authentication)。 也可以使用[设备代码流](https://aka.ms/msal-net-device-code-flow)。
+不建议使用此流，因为要求用户提供其密码的应用程序是不安全的。 有关详细信息，请参阅[如何解决不断增多的密码问题？](https://news.microsoft.com/features/whats-solution-growing-problem-passwords-says-microsoft/)。 在已加入 Windows 域的计算机上以静默方式获取令牌的首选流是 [Windows 集成身份验证](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Integrated-Windows-Authentication)。 也可以使用[设备代码流](https://aka.ms/msal-net-device-code-flow)。
 
 > [!NOTE]
 > 在某些情况下，使用用户名和密码是有效的。 但如果你要在需要提供自己 UI 的交互式方案中使用用户名和密码，请认真考虑如何摆脱此流。 使用用户名和密码意味着会丧失许多功能：
@@ -617,7 +614,7 @@ MSAL Python 尚不支持此流。
 
 以下约束也适用：
 
-- 用户名和密码流与多重身份验证不兼容。 因此，如果应用在 Azure AD 租户中运行，而该租户中的租户管理员需要多重身份验证，则你无法使用此流。 许多组织都会提出这种要求。
+- 用户名和密码流与条件访问和多重身份验证不兼容。 因此，如果应用在 Azure AD 租户中运行，而该租户中的租户管理员需要多重身份验证，则你无法使用此流。 许多组织都会提出这种要求。
 - 它仅适用工作和学校帐户（而不适用于 MSA）。
 - 可在 .NET Desktop 和 .NET Core 中使用该流，但不能在 UWP 中使用。
 
@@ -1158,7 +1155,7 @@ if not result:
 
 ### <a name="serialization-is-customizable-in-windows-desktop-apps-and-web-apps-or-web-apis"></a>在 Windows 桌面应用和 Web 应用或 Web API 中可自定义序列化
 
-对于 .NET Framework 和 .NET Core，如果你不执行任何额外的操作，则内存中令牌缓存的持续时间与应用程序的持续时间相同。 若要了解为何不提供现成的序列化，请回顾一下，MSAL .NET Desktop 或 .NET Core 应用程序不仅可能是控制台或 Windows 应用程序（有权访问文件系统），而且还可能是 Web 应用程序或 Web API。  这些 Web 应用和 Web API 可能会使用一些特定的缓存机制，例如数据库、分布式缓存和 Redis 缓存。 若要在 .NET 桌面或 .NET Core 中使用持久的令牌缓存应用程序，需要自定义序列化。
+对于 .NET Framework 和 .NET Core，如果你不执行任何额外的操作，则内存中令牌缓存的持续时间与应用程序的持续时间相同。 若要了解为何不提供现成的序列化，请回顾一下，MSAL .NET Desktop 或 .NET Core 应用程序不仅可能是控制台或 Windows 应用程序（有权访问文件系统），而且还可能是 Web 应用程序或 Web API。 这些 Web 应用和 Web API 可能会使用一些特定的缓存机制，例如数据库、分布式缓存和 Redis 缓存。 若要在 .NET 桌面或 .NET Core 中使用持久的令牌缓存应用程序，需要自定义序列化。
 
 涉及到令牌缓存序列化的类和接口为以下类型：
 
@@ -1171,7 +1168,7 @@ if not result:
 > [!IMPORTANT]
 > MSAL.NET 将为你创建令牌缓存，当你调用应用程序的 `UserTokenCache` 和 `AppTokenCache` 属性时，它会提供 `IToken` 缓存。 最好是不要自行实现接口。 实现自定义令牌缓存序列化时，你的责任是：
 >
-> - 对 `BeforeAccess` 和 `AfterAccess` 事件（或其异步对应事件）做出反应。  `BeforeAccess` 委托负责反序列化缓存。 `AfterAccess` 委托负责序列化缓存。
+> - 对 `BeforeAccess` 和 `AfterAccess` 事件（或其异步对应事件）做出反应。 `BeforeAccess` 委托负责反序列化缓存。 `AfterAccess` 委托负责序列化缓存。
 > - 需要知道，其中的一部分事件存储或加载 Blob，这些 Blob 将通过事件参数传递到所需的任何存储。
 
 所用的策略会有所不同，具体取决于是针对公共客户端应用程序（例如桌面）还是机密客户端应用程序（例如 Web 应用、Web API 或守护程序应用）编写令牌缓存序列化。
@@ -1393,4 +1390,3 @@ namespace CommonCacheMsalV3
 > [!div class="nextstepaction"]
 > [从桌面应用调用 Web API](scenario-desktop-call-api.md)
 
-<!-- Update_Description: wording update -->

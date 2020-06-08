@@ -3,30 +3,30 @@ title: 响应 Azure Blob 存储事件 | Microsoft Docs
 description: 使用 Azure 事件网格订阅 Blob 存储事件。
 author: WenJason
 ms.author: v-jay
-origin.date: 01/30/2018
-ms.date: 05/18/2020
+origin.date: 04/06/2020
+ms.date: 06/01/2020
 ms.topic: conceptual
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: cbrooks
-ms.openlocfilehash: 5aa63235dd7f77028ed0f0e925c6c6956cfbc82d
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.openlocfilehash: 67bc9439318579d4fb9495b3aa70f1144d334395
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83422350"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199752"
 ---
 # <a name="reacting-to-blob-storage-events"></a>响应 Blob 存储事件
 
-Azure 存储事件允许应用程序响应事件，例如 Blob 的创建和删除。 为此，它无需复杂的代码或高价低效的轮询服务。
+Azure 存储事件允许应用程序响应事件，例如 Blob 的创建和删除。 为此，它无需复杂的代码或高价低效的轮询服务。 最大好处是，使用多少就付多少费用。
 
-通过 [Azure 事件网格](/event-grid/)向订阅者（如 Azure Functions 或 Azure 逻辑应用，甚至是你自己的 HTTP 侦听器）推送事件。 最大好处是，使用多少就付多少费用。
+通过 [Azure 事件网格](/event-grid/)向订阅者（如 Azure Functions 或 Azure 逻辑应用，甚至是你自己的 HTTP 侦听器）推送 Blob 存储事件。 事件网格通过丰富的重试策略和死信向应用程序提供可靠的事件传递。
 
-Blob 存储将事件发送到事件网格，通过丰富的重试策略和死信向应用程序提供可靠的事件传递。
+若要查看 Blob 存储支持的事件的完整列表，请参阅 [Blob 存储事件架构](../../event-grid/event-schema-blob-storage.md?toc=%2fstorage%2fblobs%2ftoc.json)一文。
 
 常见的 Blob 存储事件方案包括图像或视频处理、搜索索引或任何面向文件的工作流。 异步文件上传十分适合事件。 基于事件的体系结构对于鲜少更改，但要求立即响应的情况尤为有效。
 
-如果现在就要进行此尝试，请参阅下述快速入门文章中的任一篇：
+若要尝试 blob 存储事件，请参阅以下任意快速入门文章：
 
 |若要使用此工具：    |请参阅此文： |
 |--|-|
@@ -110,4 +110,5 @@ Blob 存储事件使用者使用的格式：
 了解关于事件网格的详细信息，尝试一下 Blob 存储事件：
 
 - [关于事件网格](../../event-grid/overview.md)
+- [Blob 存储事件架构](../../event-grid/event-schema-blob-storage.md?toc=%2fstorage%2fblobs%2ftoc.json)
 - [将 Blob 存储事件路由到自定义 Web 终结点](storage-blob-event-quickstart.md)

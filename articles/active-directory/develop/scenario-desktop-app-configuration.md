@@ -2,24 +2,21 @@
 title: 配置调用 Web API 的桌面应用 - Microsoft 标识平台 | Azure
 description: 了解如何配置调用 Web API 的桌面应用的代码
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/10/2020
+ms.date: 05/28/2020
 ms.author: v-junlch
 ms.custom: aaddev
-ms.openlocfilehash: a036c18ee5151329ae11ec7df34d2c42d21b3228
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: e46e9a7a7727c9fc7f5f1804262db76ec30d5327
+ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79133813"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84186660"
 ---
 # <a name="desktop-app-that-calls-web-apis-code-configuration"></a>调用 Web API 的桌面应用：代码配置
 
@@ -48,7 +45,7 @@ ms.locfileid: "79133813"
 
 ### <a name="exclusively-by-code"></a>以独占方式通过代码来完成
 
-以下代码实例化公共客户端应用程序，使用工作和学校帐户在 Azure 中国云中登录用户。
+以下代码实例化公共客户端应用程序，使用工作或学校帐户在 Azure 中国云中将用户登录。
 
 ```csharp
 IPublicClientApplication app = PublicClientApplicationBuilder.Create(clientId)
@@ -117,7 +114,7 @@ app = PublicClientApplicationBuilder.Create(clientId)
 
 假设有一个 .NET Core 控制台应用程序，其中包含以下 `appsettings.json` 配置文件：
 
-```JSon
+```json
 {
   "Authentication": {
     "AzureCloudInstance": "AzureChina",
@@ -185,6 +182,7 @@ var app = PublicClientApplicationBuilder.CreateWithApplicationOptions(config.Pub
 
 # <a name="java"></a>[Java](#tab/java)
 
+下面是 MSAL Java 开发示例中用于配置示例的类：[TestData](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/)。
 
 ```Java
 PublicClientApplication pca = PublicClientApplication.builder(CLIENT_ID)
@@ -216,7 +214,7 @@ Objective-C：
 ```objc
 NSError *msalError = nil;
 
-MSALPublicClientApplicationConfig *config = [[MSALPublicClientApplicationConfig alloc] initWithClientId:@"<your-client-id-here>"];    
+MSALPublicClientApplicationConfig *config = [[MSALPublicClientApplicationConfig alloc] initWithClientId:@"<your-client-id-here>"];
 MSALPublicClientApplication *application = [[MSALPublicClientApplication alloc] initWithConfiguration:config error:&msalError];
 ```
 

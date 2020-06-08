@@ -7,14 +7,14 @@ manager: digimobile
 ms.service: storage
 ms.topic: troubleshooting
 origin.date: 06/15/2018
-ms.date: 03/09/2020
+ms.date: 06/01/2020
 ms.author: v-jay
-ms.openlocfilehash: b68a4edbc745adf578643a4c824fa6e2236f6deb
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: b5890e3f782026fcd9e0a6f5255477cad0ba7a76
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78412620"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199693"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure 存储资源管理器故障排除指南
 
@@ -24,7 +24,7 @@ Azure 存储资源管理器是一个独立的应用，使用它可在 Windows、
 
 ## <a name="rbac-permissions-issues"></a>RBAC 权限问题
 
-使用基于角色的访问控制 [(RBAC)](/role-based-access-control/overview) 可以通过将权限集组合成角色，来对 Azure 资源进行精细的访问管理。  下面是在存储资源管理器中以最佳方式使用 RBAC 的一些策略。
+使用基于角色的访问控制 [(RBAC)](/role-based-access-control/overview) 可以通过将权限集组合成角色，来对 Azure 资源进行精细的访问管理。 下面是在存储资源管理器中以最佳方式使用 RBAC 的一些策略。
 
 ### <a name="how-do-i-access-my-resources-in-storage-explorer"></a>如何在存储资源管理器中访问我的资源？
 
@@ -32,22 +32,22 @@ Azure 存储资源管理器是一个独立的应用，使用它可在 Windows、
 
 #### <a name="read-listget-storage-accounts-permissions-issue"></a>“读取：列出/获取存储帐户”权限问题
 
-必须有权列出存储帐户。 若要获取此权限，必须具有“读取者”角色。 
+必须有权列出存储帐户。 若要获取此权限，必须具有“读取者”角色。
 
 #### <a name="list-storage-account-keys"></a>列出存储帐户密钥
 
-存储资源管理器还可以使用帐户密钥对请求进行身份验证。 可以通过权限更高的角色（例如“参与者”角色）来获取帐户密钥的访问权限。 
+存储资源管理器还可以使用帐户密钥对请求进行身份验证。 可以通过权限更高的角色（例如“参与者”角色）来获取帐户密钥的访问权限。
 
 > [!NOTE]
 > 访问密钥向其任何持有者授予不受限制的权限。 因此，我们不建议将这些密钥分发给帐户用户。 如果需要撤销访问密钥，可以通过 [Azure 门户](https://portal.azure.cn/)重新生成访问密钥。
 
 #### <a name="data-roles"></a>数据角色
 
-必须至少拥有一个可以授予对资源中数据的读取访问权限的角色。 例如，如果需要列出或下载 Blob，则至少需要拥有“存储 Blob 数据读取者”角色。 
+必须至少拥有一个可以授予对资源中数据的读取访问权限的角色。 例如，如果需要列出或下载 Blob，则至少需要拥有“存储 Blob 数据读取者”角色。
 
 ### <a name="why-do-i-need-a-management-layer-role-to-see-my-resources-in-storage-explorer"></a>为何需要管理层角色才能在存储资源管理器中查看我的资源？
 
-Azure 存储提供两个访问层：“管理”和“数据”。   订阅和存储帐户是通过管理层访问的。 容器、Blob 和其他数据资源是通过数据层访问的。 例如，若要从 Azure 获取存储帐户的列表，应向管理终结点发送请求。 若要列出帐户中的 Blob 容器，应向相应的服务终结点发送请求。
+Azure 存储提供两个访问层：“管理”和“数据”。  订阅和存储帐户是通过管理层访问的。 容器、Blob 和其他数据资源是通过数据层访问的。 例如，若要从 Azure 获取存储帐户的列表，应向管理终结点发送请求。 若要列出帐户中的 Blob 容器，应向相应的服务终结点发送请求。
 
 RBAC 角色可以包含对管理或数据访问层的权限。 例如，“读取者”角色授予对管理层资源的只读访问权限。
 
@@ -76,13 +76,13 @@ RBAC 角色可以包含对管理或数据访问层的权限。 例如，“读�
 
 如果存在以下情况之一，则往往会发生证书错误：
 
-- 应用通过透明代理进行连接，这意味着一台服务器（例如公司的服务器）正在截取 HTTPS 流量，对其进行解密，然后使用自签名证书对其进行加密  。
-- 正在运行的应用程序正在向收到的 HTTPS 消息注入自签名 SSL 证书。 注入证书的应用程序示例包括防病毒软件和网络流量检查软件。
+- 应用通过透明代理进行连接，这意味着一台服务器（例如公司的服务器）正在截取 HTTPS 流量，对其进行解密，然后使用自签名证书对其进行加密。
+- 正在运行的应用程序正在向收到的 HTTPS 消息注入自签名 TLS/SSL 证书。 注入证书的应用程序示例包括防病毒软件和网络流量检查软件。
 
 当存储资源管理器看到自签名或不受信任的证书时，无法再判断收到的 HTTPS 消息是否被更改。 如果拥有自签名证书的副本，可通过执行以下步骤，让存储资源管理器信任它：
 
 1. 获取证书的 Base-64 编码 X.509 (.cer) 副本。
-2. 转到“编辑” > “SSL 证书” > “导入证书”，然后使用文件选取器查找、选择和打开 .cer 文件   
+2. 转到“编辑” > “SSL 证书” > “导入证书”，然后使用文件选取器查找、选择和打开 .cer 文件  
 
 此问题还有可能是由于存在多个证书（根证书和中间证书）造成的。 若要修复此错误，必须同时添加这两个证书。
 
@@ -92,12 +92,12 @@ RBAC 角色可以包含对管理或数据访问层的权限。 例如，“读�
     * [Windows](https://slproweb.com/products/Win32OpenSSL.html)：任何精简版本均可。
     * Mac 和 Linux：应包含在操作系统中。
 2. 运行 OpenSSL。
-    * Windows:打开安装目录，选择“/bin/”，然后双击“openssl.exe”   。
+    * Windows:打开安装目录，选择“/bin/”，然后双击“openssl.exe” 。
     * Mac 和 Linux：从终端运行 `openssl`。
 3. 运行 `s_client -showcerts -connect microsoft.com:443`。
 4. 查找自签名证书。 如果不确定哪些证书是自签名证书，请记下使用者 `("s:")` 和证书颁发者 `("i:")` 相同的任意位置。
 5. 找到自签名证书后，将每个证书中从 `-----BEGIN CERTIFICATE-----`（含）到 `-----END CERTIFICATE-----`（含）的所有内容复制并粘贴到新的 .cer 文件中。
-6. 打开存储资源管理器，然后转到“编辑”   >   “SSL 证书” >   “导入证书”。 然后使用文件选取器查找、选择并打开创建的 .cer 文件。
+6. 打开存储资源管理器，然后转到“编辑” > “SSL 证书” > “导入证书”。 然后使用文件选取器查找、选择并打开创建的 .cer 文件。
 
 如果通过上述步骤无法找到任何自签名证书，请通过反馈工具联系我们以获取更多帮助。 也可选择通过命令行使用 `--ignore-certificate-errors` 标志打开存储资源管理器。 使用此标志打开后，存储资源管理器将忽略证书错误。
 
@@ -107,10 +107,10 @@ RBAC 角色可以包含对管理或数据访问层的权限。 例如，“读�
 
 出现空白登录对话框的原因往往是 Active Directory 联合身份验证服务 (AD FS) 提示存储资源管理器执行 Electron 不支持的重定向。 若要解决此问题，可以尝试使用设备代码流进行登录。 为此，请执行以下步骤：
 
-1. 在左侧垂直工具栏上，打开“设置”  。 在“设置”面板中，转到“应用程序” > “登录”   。 启用“使用设备代码流登录”  。
-2. 打开“连接”对话框（选择左侧纵栏上的插头图标，或选择帐户面板上的“添加帐户”）   。
+1. 在左侧垂直工具栏上，打开“设置”。 在“设置”面板中，转到“应用程序” > “登录” 。 启用“使用设备代码流登录”。
+2. 打开“连接”对话框（选择左侧纵栏上的插头图标，或选择帐户面板上的“添加帐户”） 。
 3. 选择要登录到的环境。
-4. 选择“登录”  。
+4. 选择“登录”。
 5. 按照下一个面板上的说明进行操作。
 
 如果由于默认浏览器已登录到其他帐户而导致你无法登录到要使用的帐户，请执行以下操作之一：
@@ -138,12 +138,12 @@ RBAC 角色可以包含对管理或数据访问层的权限。 例如，“读�
     ![挂锁图标](./media/storage-explorer-troubleshooting/unlockingkeychain.png)
 
 5. 打开存储资源管理器。
-6. 此时会出现一条类似于“服务中心想要访问 Keychain”的消息。 输入 Mac 管理员帐户密码，然后选择“始终允许”  （如果未显示“始终允许”  ，则选择“允许”  ）。
+6. 此时会出现一条类似于“服务中心想要访问 Keychain”的消息。 输入 Mac 管理员帐户密码，然后选择“始终允许”（如果未显示“始终允许”，则选择“允许”）。
 7. 请尝试登录。
 
 ### <a name="general-sign-in-troubleshooting-steps"></a>常规登录故障排除步骤
 
-* 在 macOS 上操作时，如果登录窗口永远不会出现，而是一直显示“正在等待身份验证”  对话框，请尝试[这些步骤](#mac-keychain-errors)。
+* 在 macOS 上操作时，如果登录窗口永远不会出现，而是一直显示“正在等待身份验证”对话框，请尝试[这些步骤](#mac-keychain-errors)。
 * 重启存储资源管理器。
 * 如果身份验证窗口为空，请等待至少一分钟，然后关闭身份验证对话框。
 * 确保为计算机和存储资源管理器正确配置了代理和证书设置。
@@ -220,7 +220,7 @@ RBAC 角色可以包含对管理或数据访问层的权限。 例如，“读�
 
 ## <a name="connection-string-doesnt-have-complete-configuration-settings"></a>连接字符串没有完整的配置设置
 
-如果收到此错误消息，则表示你可能没有所需的权限来获取你的存储帐户的密钥。 若要确认是否如此，请转到门户并找到你的存储帐户。 可以通过右键单击存储帐户的节点并选择“在门户中打开”来执行此操作  。 然后转到“访问密钥”边栏选项卡  。 如果你无权查看密钥，则会看到“你没有访问权限”消息。 若要解决此问题，可以从其他某人获取帐户密钥并结合名称和密钥附加存储帐户，或者，向某人索要存储帐户的 SAS 并使用它来附加存储帐户。
+如果收到此错误消息，则表示你可能没有所需的权限来获取你的存储帐户的密钥。 若要确认是否如此，请转到门户并找到你的存储帐户。 可以通过右键单击存储帐户的节点并选择“在门户中打开”来执行此操作。 然后转到“访问密钥”边栏选项卡。 如果你无权查看密钥，则会看到“你没有访问权限”消息。 若要解决此问题，可以从其他某人获取帐户密钥并结合名称和密钥附加存储帐户，或者，向某人索要存储帐户的 SAS 并使用它来附加存储帐户。
 
 如果看到了帐户密钥，请在 GitHub 上提出问题，使我们能够帮助你解决问题。
 
@@ -228,8 +228,8 @@ RBAC 角色可以包含对管理或数据访问层的权限。 例如，“读�
 
 如果你在尝试添加自定义连接时收到此错误消息，则可能是本地凭据管理器中存储的连接数据已损坏。 若要解决此问题，请尝试删除已损坏的本地连接，然后重新添加它们：
 
-1. 启动存储资源管理器。 在顶部菜单中，转到“帮助”   > “切换开发人员工具”  。
-2. 在打开的窗口中的“应用程序”选项卡上，转到“本地存储”（左侧）>“file://”。   
+1. 启动存储资源管理器。 在顶部菜单中，转到“帮助” > “切换开发人员工具”。
+2. 在打开的窗口中的“应用程序”选项卡上，转到“本地存储”（左侧）>“file://”。  
 3. 根据遇到问题的连接类型，查找其密钥并将其值复制到文本编辑器。 该值是自定义连接名称的数组，如下所示：
     * 存储帐户
         * `StorageExplorer_CustomConnections_Accounts_v1`
@@ -254,14 +254,14 @@ RBAC 角色可以包含对管理或数据访问层的权限。 例如，“读�
 
 # <a name="windows"></a>[Windows](#tab/Windows)
 
-1. 在“开始”菜单中，搜索“凭据管理器”并将其打开。  
-2. 转到“Windows 凭据”。 
-3. 在“一般凭据”下，找到具有 `<connection_type_key>/<corrupted_connection_name>` 键的条目（例如 `StorageExplorer_CustomConnections_Accounts_v1/account1`）。 
+1. 在“开始”菜单中，搜索“凭据管理器”并将其打开。 
+2. 转到“Windows 凭据”。
+3. 在“一般凭据”下，找到具有 `<connection_type_key>/<corrupted_connection_name>` 键的条目（例如 `StorageExplorer_CustomConnections_Accounts_v1/account1`）。
 4. 删除这些条目并重新添加连接。
 
 # <a name="macos"></a>[macOS](#tab/macOS)
 
-1. 打开“聚焦”（命令键+空格键），搜索“Keychain 访问”。 
+1. 打开“聚焦”（命令键+空格键），搜索“Keychain 访问”。
 2. 找到具有 `<connection_type_key>/<corrupted_connection_name>` 键的条目（例如 `StorageExplorer_CustomConnections_Accounts_v1/account1`）。
 3. 删除这些条目并重新添加连接。
 
@@ -287,7 +287,7 @@ RBAC 角色可以包含对管理或数据访问层的权限。 例如，“读�
 如果意外附加了无效的 SAS URL，并且现在无法分离，请执行以下步骤：
 
 1. 运行存储资源管理器时，按 F12 打开“开发人员工具”窗口。
-2. 在“应用程序”选项卡上，选择左侧树中的“本地存储” > “file://”。   
+2. 在“应用程序”选项卡上，选择左侧树中的“本地存储” > “file://”。  
 3. 查找与有问题的 SAS URI 服务类型关联的键。 例如，如果用于 blob 容器的 SAS URI 错误，请查找名为 `StorageExplorer_AddStorageServiceSAS_v1_blob` 的键。
 4. 键的值应为 JSON 数组。 找到与错误 URI 关联的对象，并将其删除。
 5. 按 Ctrl+R 重新加载存储资源管理器。
@@ -368,7 +368,7 @@ snap connect storage-explorer:password-manager-service :password-manager-service
 
 ## <a name="open-in-explorer-from-the-azure-portal-doesnt-work"></a>Azure 门户中的“在资源管理器中打开”不起作用
 
-如果在 Azure 门户上单击“在资源管理器中打开”按钮不起作用，请确保使用兼容的浏览器  。 以下浏览器已通过兼容性测试：
+如果在 Azure 门户上单击“在资源管理器中打开”按钮不起作用，请确保使用兼容的浏览器。 以下浏览器已通过兼容性测试：
 * Microsoft Edge
 * Mozilla Firefox
 * Google Chrome
@@ -376,6 +376,6 @@ snap connect storage-explorer:password-manager-service :password-manager-service
 
 ## <a name="next-steps"></a>后续步骤
 
-如果上述解决方法均不起作用，请[在 GitHub 上提出问题](https://github.com/Microsoft/AzureStorageExplorer/issues)。 也可以选择左下角的“向 GitHub 报告问题”按钮。 
+如果上述解决方法均不起作用，请[在 GitHub 上提出问题](https://github.com/Microsoft/AzureStorageExplorer/issues)。 也可以选择左下角的“向 GitHub 报告问题”按钮。
 
 ![反馈](./media/storage-explorer-troubleshooting/feedback-button.PNG)
