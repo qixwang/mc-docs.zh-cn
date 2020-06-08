@@ -1,28 +1,28 @@
 ---
 title: 使用 PowerShell 配置客户管理的密钥
 titleSuffix: Azure Storage
-description: 了解如何使用 PowerShell 来配置客户管理的密钥用于 Azure 存储加密。 使用客户管理的密钥可以创建、轮换、禁用和撤销访问控制。
+description: 了解如何使用 PowerShell 来配置客户管理的密钥用于 Azure 存储加密。
 services: storage
 author: WenJason
 ms.service: storage
 ms.topic: how-to
-origin.date: 03/10/2020
-ms.date: 03/30/2020
+origin.date: 04/02/2020
+ms.date: 06/01/2020
 ms.author: v-jay
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 78df450086bb99af07b4ec273ef48e2f641b4dbe
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 333be866c07c681277b07138a8959a48420a5622
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80290389"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199395"
 ---
 # <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-powershell"></a>通过 PowerShell 使用 Azure Key Vault 配置客户管理的密钥
 
 [!INCLUDE [storage-encryption-configure-keys-include](../../../includes/storage-encryption-configure-keys-include.md)]
 
-本文介绍如何使用 PowerShell 配置包含客户管理的密钥的 Azure Key Vault。 要了解如何使用 Azure CLI 创建密钥保管库，请参阅[快速入门：使用 PowerShell 在 Azure Key Vault 中设置和检索机密](../../key-vault/quick-create-powershell.md)。
+本文介绍如何使用 PowerShell 配置包含客户管理的密钥的 Azure Key Vault。 要了解如何使用 Azure CLI 创建密钥保管库，请参阅[快速入门：使用 PowerShell 在 Azure Key Vault 中设置和检索机密](../../key-vault/secrets/quick-create-powershell.md)。
 
 ## <a name="assign-an-identity-to-the-storage-account"></a>将标识分配到存储帐户
 
@@ -40,7 +40,7 @@ $storageAccount = Set-AzStorageAccount -ResourceGroupName <resource_group> `
 
 ## <a name="create-a-new-key-vault"></a>创建新的 Key Vault
 
-若要使用 PowerShell 创建新的 Key Vault，请调用 [New-AzKeyVault](https://docs.microsoft.com/powershell/module/az.keyvault/new-azkeyvault)。 必须为用来存储客户管理的密钥（用于 Azure 存储加密）的 Key Vault 启用两项密钥保护设置：“软删除”和“不要清除”。   
+若要使用 PowerShell 创建新的 Key Vault，请调用 [New-AzKeyVault](https://docs.microsoft.com/powershell/module/az.keyvault/new-azkeyvault)。 必须为用来存储客户管理的密钥（用于 Azure 存储加密）的 Key Vault 启用两项密钥保护设置：“软删除”和“不要清除”。 
 
 请记得将括号中的占位符值替换为你自己的值。
 
@@ -52,7 +52,7 @@ $keyVault = New-AzKeyVault -Name <key-vault> `
     -EnablePurgeProtection
 ```
 
-若要了解如何使用 PowerShell 在现有密钥保管库上启用“软删除”  和“请勿清除”  ，请参阅[如何在 PowerShell 中使用软删除](../../key-vault/key-vault-soft-delete-powershell.md)中标题为“启用软删除”  和“启用清除保护”  的部分。
+若要了解如何使用 PowerShell 在现有密钥保管库上启用“软删除”和“请勿清除”，请参阅[如何在 PowerShell 中使用软删除](../../key-vault/general/soft-delete-powershell.md)中标题为“启用软删除”和“启用清除保护”的部分。
 
 ## <a name="configure-the-key-vault-access-policy"></a>配置 Key Vault 访问策略
 
@@ -64,7 +64,7 @@ $keyVault = New-AzKeyVault -Name <key-vault> `
 Set-AzKeyVaultAccessPolicy `
     -VaultName $keyVault.VaultName `
     -ObjectId $storageAccount.Identity.PrincipalId `
-    -PermissionsToKeys wrapkey,unwrapkey,get,recover
+    -PermissionsToKeys wrapkey,unwrapkey,get
 ```
 
 ## <a name="create-a-new-key"></a>新建密钥
@@ -74,6 +74,8 @@ Set-AzKeyVaultAccessPolicy `
 ```powershell
 $key = Add-AzKeyVaultKey -VaultName $keyVault.VaultName -Name <key> -Destination 'Software'
 ```
+
+Azure 存储加密仅支持 2048 位 RSA 密钥。 有关密钥的详细信息，请参阅[关于 Azure Key Vault 密钥、机密和证书](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys)中的“Key Vault 密钥”。
 
 ## <a name="configure-encryption-with-customer-managed-keys"></a>配置使用客户管理的密钥进行加密
 

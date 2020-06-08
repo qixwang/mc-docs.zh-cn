@@ -1,6 +1,6 @@
 ---
-title: 了解 Azure 资源的拒绝分配
-description: 了解 Azure 资源基于角色的访问控制 (RBAC) 中的拒绝分配。
+title: 了解 Azure 拒绝分配 - Azure RBAC
+description: 了解 Azure 基于角色的访问控制 (Azure RBAC) 中的 Azure 拒绝分配。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -11,18 +11,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/31/2020
+ms.date: 05/25/2020
 ms.author: v-junlch
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: a060fe6c19eb6d107f047853ff78205be20a0b5f
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: caa211df3045112db7335957f2a7d4afd9ded776
+ms.sourcegitcommit: 7429daf26cff014b040f69cdae75bdeaea4f4e93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80581828"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83991633"
 ---
-# <a name="understand-deny-assignments-for-azure-resources"></a>了解 Azure 资源的拒绝分配
+# <a name="understand-azure-deny-assignments"></a>了解 Azure 拒绝分配
 
 *拒绝分配*类似于角色分配，可将一组拒绝操作附加到特定范围内的用户、组或服务主体，以便拒绝访问。 即使角色分配向用户授予了访问权限，拒绝分配也会阻止用户执行特定的 Azure 资源操作。
 
@@ -72,7 +72,7 @@ ms.locfileid: "80581828"
 
 ## <a name="the-all-principals-principal"></a>“所有主体”主体
 
-为了支持拒绝分配，引入了名为“所有主体”的系统定义的主体。  此主体表示 Azure AD 目录中的所有用户、组、服务主体和托管标识。 如果主体 ID 是零 GUID `00000000-0000-0000-0000-000000000000` 且主体类型是 `SystemDefined`，则此主体表示所有主体。 在 Azure PowerShell 输出中，“所有主体”的外观如下所示：
+为了支持拒绝分配，引入了名为“所有主体”的系统定义的主体。 此主体表示 Azure AD 目录中的所有用户、组、服务主体和托管标识。 如果主体 ID 是零 GUID `00000000-0000-0000-0000-000000000000` 且主体类型是 `SystemDefined`，则此主体表示所有主体。 在 Azure PowerShell 输出中，“所有主体”的外观如下所示：
 
 ```azurepowershell
 Principals              : {
@@ -89,5 +89,5 @@ Principals              : {
 
 ## <a name="next-steps"></a>后续步骤
 
-* [使用 Azure 门户列出 Azure 资源的拒绝分配](deny-assignments-portal.md)
+* [使用 Azure 门户列出 Azure 拒绝分配](deny-assignments-portal.md)
 

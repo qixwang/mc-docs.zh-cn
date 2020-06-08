@@ -1,24 +1,21 @@
 ---
-title: 针对任务和节点进行状态计数 - Azure Batch | Azure
+title: 针对任务和节点进行状态计数
 description: 对 Azure Batch 任务和计算节点的状态进行计数，以便管理和监视 Batch 解决方案。
-services: batch
-author: lingliw
-manager: digimobile
-ms.service: batch
 ms.topic: article
 origin.date: 09/07/2018
 ms.date: 11/26/2018
 ms.author: v-lingwu
-ms.openlocfilehash: f0b5bfcbbead08fef11021b5b2f83d1407ff7505
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.custom: seodec18
+ms.openlocfilehash: fc3da42acbcbe1456795e5581aaed71b48c63e0f
+ms.sourcegitcommit: cbaa1aef101f67bd094f6ad0b4be274bbc2d2537
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "63847565"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84126782"
 ---
 # <a name="monitor-batch-solutions-by-counting-tasks-and-nodes-by-state"></a>通过按状态对任务和节点计数来监视 Batch 解决方案
 
-若要监视和管理大规模的 Azure Batch 解决方案，需对各种状态的资源进行准确的计数。 Azure Batch 提供有效的操作来获取 Batch  任务和  计算节点的这些计数。 请使用以下操作而不是可能非常耗时的列表查询来返回大型任务或节点集合的详细信息。
+若要监视和管理大规模的 Azure Batch 解决方案，需对各种状态的资源进行准确的计数。 Azure Batch 提供有效的操作来获取 Batch 任务和计算节点的这些计数。 请使用以下操作而不是可能非常耗时的列表查询来返回大型任务或节点集合的详细信息。
 
 * [获取任务计数][rest_get_task_counts]可以获取一个作业中处于“活动”、“正在运行”和“已完成”状态的任务以及处于“已成功”或“已失败”状态的任务的聚合计数。 
 

@@ -1,48 +1,48 @@
 ---
 title: 使用 Azure 门户配置客户管理的密钥
 titleSuffix: Azure Storage
-description: 了解如何使用 Azure 门户通过 Azure Key Vault 来配置客户管理的密钥用于 Azure 存储加密。 使用客户管理的密钥可以创建、轮换、禁用和撤销访问控制。
+description: 了解如何使用 Azure 门户通过 Azure Key Vault 来配置客户管理的密钥用于 Azure 存储加密。
 services: storage
 author: WenJason
 ms.service: storage
 ms.topic: how-to
-origin.date: 01/02/2020
-ms.date: 03/30/2020
+origin.date: 03/19/2020
+ms.date: 06/01/2020
 ms.author: v-jay
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 4e3e26ff909130a881aa137524b857ab9673e0f4
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: eeee5555d7a9bc5e6bc637456435ffa306928ea3
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80290393"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199402"
 ---
 # <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-the-azure-portal"></a>通过 Azure 门户使用 Azure Key Vault 配置客户管理的密钥
 
 [!INCLUDE [storage-encryption-configure-keys-include](../../../includes/storage-encryption-configure-keys-include.md)]
 
-本文介绍如何使用 [Azure 门户](https://portal.azure.cn/)配置包含客户管理的密钥的 Azure 密钥保管库。 若要了解如何使用 Azure 门户创建 Key Vault，请参阅[快速入门：使用 Azure 门户在 Azure Key Vault 中设置和检索机密](../../key-vault/quick-create-portal.md)。
+本文介绍如何使用 [Azure 门户](https://portal.azure.cn/)配置包含客户管理的密钥的 Azure 密钥保管库。 若要了解如何使用 Azure 门户创建 Key Vault，请参阅[快速入门：使用 Azure 门户在 Azure Key Vault 中设置和检索机密](../../key-vault/secrets/quick-create-portal.md)。
 
 ## <a name="configure-azure-key-vault"></a>配置 Azure Key Vault
 
-使用带有 Azure 存储加密的客户管理密钥需要在密钥保管库上设置两个属性：“软删除”  和“不要清除”  。 默认不会启用这些属性，但可以使用 PowerShell 或 Azure CLI 对新的或现有的 Key Vault 启用。
+使用带有 Azure 存储加密的客户管理密钥需要在密钥保管库上设置两个属性：“软删除”和“不要清除”。 默认不会启用这些属性，但可以使用 PowerShell 或 Azure CLI 对新的或现有的 Key Vault 启用。
 
-若要了解如何在现有密钥保管库上启用这些属性，请参阅以下文章之一中标题为“启用软删除”和“启用清除保护”的部分：  
+若要了解如何在现有密钥保管库上启用这些属性，请参阅以下文章之一中标题为“启用软删除”和“启用清除保护”的部分： 
 
-- [如何通过 PowerShell 使用软删除](../../key-vault/key-vault-soft-delete-powershell.md)。
-- [如何通过 CLI 使用软删除](../../key-vault/key-vault-soft-delete-cli.md)。
+- [如何通过 PowerShell 使用软删除](../../key-vault/general/soft-delete-powershell.md)。
+- [如何通过 CLI 使用软删除](../../key-vault/general/soft-delete-cli.md)。
 
-Azure 存储加密仅支持大小为 2048 的 RSA 密钥。 有关密钥的详细信息，请参阅[关于 Azure Key Vault 密钥、机密和证书](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys)中的“Key Vault 密钥”。 
+Azure 存储加密仅支持 2048 位 RSA 密钥。 有关密钥的详细信息，请参阅[关于 Azure Key Vault 密钥、机密和证书](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys)中的“Key Vault 密钥”。
 
 ## <a name="enable-customer-managed-keys"></a>启用客户管理的密钥
 
 若要在 Azure 门户中启用客户管理的密钥，请执行以下步骤：
 
 1. 导航到存储帐户。
-1. 在存储帐户的“设置”  边栏选项卡上，单击“加密”  。 选择“使用自己的密钥”  选项，如下图所示。
+1. 在存储帐户的“设置”边栏选项卡上，单击“加密”。 选择“客户托管密钥”选项，如下图所示。
 
-    ![显示加密选项的门户屏幕截图](./media/storage-encryption-keys-portal/ssecmk1.png)
+    ![显示加密选项的门户屏幕截图](./media/storage-encryption-keys-portal/portal-configure-encryption-keys.png)
 
 ## <a name="specify-a-key"></a>指定密钥
 
@@ -52,15 +52,15 @@ Azure 存储加密仅支持大小为 2048 的 RSA 密钥。 有关密钥的详�
 
 若要将某个密钥指定为 URI，请执行下列步骤：
 
-1. 若要在 Azure 门户中查找密钥 URI，请导航到 Key Vault，然后选择“密钥”设置。  选择所需的密钥，然后单击该密钥以查看其版本。 选择一个密钥版本，查看该版本的设置。
-1. 复制“密钥标识符”字段的值（提供 URI）。 
+1. 若要在 Azure 门户中查找密钥 URI，请导航到 Key Vault，然后选择“密钥”设置。 选择所需的密钥，然后单击该密钥以查看其版本。 选择一个密钥版本，查看该版本的设置。
+1. 复制“密钥标识符”字段的值（提供 URI）。
 
-    ![显示 Key Vault 密钥 URI 的屏幕截图](media/storage-encryption-keys-portal/key-uri-portal.png)
+    ![显示 Key Vault 密钥 URI 的屏幕截图](media/storage-encryption-keys-portal/portal-copy-key-identifier.png)
 
-1. 在存储帐户的“加密”设置中，选择“输入密钥 URI”选项。  
-1. 将复制的 URI 粘贴到“密钥 URI”  字段中。
+1. 在存储帐户的“加密”设置中，选择“输入密钥 URI”选项。 
+1. 将复制的 URI 粘贴到“密钥 URI”字段中。
 
-   ![显示如何输入密钥 URI 的屏幕截图](./media/storage-encryption-keys-portal/ssecmk2.png)
+   ![显示如何输入密钥 URI 的屏幕截图](./media/storage-encryption-keys-portal/portal-specify-key-uri.png)
 
 1. 指定包含密钥保管库的订阅。
 1. 保存所做更改。
@@ -69,11 +69,11 @@ Azure 存储加密仅支持大小为 2048 的 RSA 密钥。 有关密钥的详�
 
 若要指定 Key Vault 中的密钥，请先请确保有一个包含密钥的 Key Vault。 若要指定 Key Vault 中的密钥，请执行以下步骤：
 
-1. 选择“从 Key Vault 中选择”  选项。
-2. 选择包含要使用的密钥的密钥保管库。
-3. 从密钥保管库中选择密钥。
+1. 选择“从 Key Vault 中选择”选项。
+1. 选择包含要使用的密钥的密钥保管库。
+1. 从密钥保管库中选择密钥。
 
-   ![显示客户管理的密钥选项的屏幕截图](./media/storage-encryption-keys-portal/ssecmk3.png)
+   ![显示客户管理的密钥选项的屏幕截图](./media/storage-encryption-keys-portal/portal-select-key-from-key-vault.png)
 
 1. 保存所做更改。
 
@@ -81,7 +81,7 @@ Azure 存储加密仅支持大小为 2048 的 RSA 密钥。 有关密钥的详�
 
 创建密钥的新版本时，请将存储帐户更新为使用新版本。 执行以下步骤：
 
-1. 导航到你的存储帐户，并显示“加密”设置。 
+1. 导航到你的存储帐户，并显示“加密”设置。
 1. 输入新密钥版本的 URI。 或者，可以再次选择 Key Vault 和密钥以更新版本。
 1. 保存所做更改。
 
@@ -89,7 +89,7 @@ Azure 存储加密仅支持大小为 2048 的 RSA 密钥。 有关密钥的详�
 
 若要更改用于 Azure 存储加密的密钥，请执行以下步骤：
 
-1. 导航到你的存储帐户，并显示“加密”设置。 
+1. 导航到你的存储帐户，并显示“加密”设置。
 1. 输入新密钥的 URI。 也可选择密钥保管库并选择一个新密钥。
 1. 保存所做更改。
 
@@ -97,8 +97,8 @@ Azure 存储加密仅支持大小为 2048 的 RSA 密钥。 有关密钥的详�
 
 禁用客户托管密钥时，将再次使用 Microsoft 托管密钥对存储帐户进行加密。 若要禁用客户托管密钥，请执行以下步骤：
 
-1. 导航到你的存储帐户，并显示“加密”设置。 
-1. 取消选中“使用自己的密钥”设置旁边的复选框。 
+1. 导航到你的存储帐户，并显示“加密”设置。
+1. 取消选中“使用自己的密钥”设置旁边的复选框。
 
 ## <a name="next-steps"></a>后续步骤
 

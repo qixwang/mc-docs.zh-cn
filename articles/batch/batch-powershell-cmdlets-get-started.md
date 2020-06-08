@@ -1,37 +1,27 @@
 ---
-title: PowerShell 入门 - Azure Batch | Azure Docs
+title: PowerShell 入门
 description: 快速介绍可用于管理 Batch 资源的 Azure PowerShell cmdlet。
-services: batch
-documentationcenter: ''
-author: lingliw
-manager: digimobile
-editor: ''
-ms.assetid: ''
-ms.service: batch
-ms.devlang: NA
 ms.topic: conceptual
-ms.tgt_pltfrm: powershell
-ms.workload: big-compute
 origin.date: 01/15/2019
 ms.date: 08/15/2019
 ms.author: v-lingwu
 ms.custom: seodec18
-ms.openlocfilehash: 9f6e6751084c23ff617541ec3b748b3dda6d7d7e
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: bea69183035dc0344d87a051c5fbf47bf50bfd73
+ms.sourcegitcommit: cbaa1aef101f67bd094f6ad0b4be274bbc2d2537
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "71330362"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84126624"
 ---
 # <a name="manage-batch-resources-with-powershell-cmdlets"></a>使用 PowerShell cmdlet 管理 Batch 资源
 
-通过 Azure Batch PowerShell cmdlet，可以执行许多通过 Batch API、Azure 门户和 Azure 命令行界面 (CLI) 执行的任务并为它们编写脚本。 本文将简要介绍可用于管理 Batch 帐户和处理 Batch 资源（例如池、作业和任务）的 cmdlet。
+通过 Azure Batch PowerShell cmdlet，可以执行许多通过 Batch API、Azure 门户和 Azure 命令行接口 (CLI) 执行的任务并为它们编写脚本。 本文简要介绍可用于管理 Batch 帐户和处理 Batch 资源（例如池、作业和任务）的 cmdlet。
 
 如需 Batch cmdlet 的完整列表和详细的 cmdlet 语法，请参阅 [Azure Batch cmdlet 参考](https://docs.microsoft.com/powershell/module/azurerm.batch/#batch)。
 
 本文基于 Az Batch 模块 1.0.0 中的 cmdlet。 建议经常更新 Azure PowerShell 模块以利用服务更新和增强功能。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * [下载并配置 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/overview)。 若要安装特定的 Azure Batch 模块，例如预发行模块，请参阅 [PowerShell 库](https://www.powershellgallery.com/packages/Az.Batch/1.0.0)。
 
@@ -47,10 +37,11 @@ ms.locfileid: "71330362"
   Register-AzResourceProvider -ProviderNamespace Microsoft.Batch
   ```
 
-## <a name="manage-batch-accounts-and-keys"></a>管理批处理帐户和密钥
+## <a name="manage-batch-accounts-and-keys"></a>管理 Batch 帐户和密钥
+
 ### <a name="create-a-batch-account"></a>创建批处理帐户
 
-**New-AzBatchAccount** 可在指定的资源组中创建 Batch 帐户。 如果没有资源组，可以运行 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) cmdlet 创建一个资源组。 在“位置”参数中指定一个 Azure 区域，如“美国中部”。  例如：
+**New-AzBatchAccount** 可在指定的资源组中创建 Batch 帐户。 如果没有资源组，可以运行 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) cmdlet 创建一个资源组。 在 **Location** 参数中指定一个 Azure 区域，例如“中国北部”。 例如：
 
 ```powershell
     New-AzResourceGroup -Name MyBatchResourceGroup -location "China North"
@@ -67,7 +58,7 @@ ms.locfileid: "71330362"
 
 ### <a name="get-account-access-keys"></a>获取帐户访问密钥
 
-**Get-AzBatchAccountKeys** 显示与 Azure Batch 帐户关联的访问密钥。 例如，运行以下命令可获取所创建的帐户的主要密钥和辅助密钥。
+**Get-AzBatchAccountKeys** 显示与 Azure Batch 帐户关联的访问密钥。 例如，运行以下命令可获取你创建的帐户的主要密钥和辅助密钥。
 
  ```powershell
 $Account = Get-AzBatchAccountKeys –AccountName <account_name>
@@ -79,7 +70,7 @@ $Account.SecondaryAccountKey
 
 ### <a name="generate-a-new-access-key"></a>生成新的访问密钥
 
-**New-AzBatchAccountKey** 为 Azure Batch 帐户生成新的主要帐户密钥或辅助帐户密钥。 例如，若要为批处理帐户生成新的主要密钥，请键入：
+**New-AzBatchAccountKey** 为 Azure Batch 帐户生成新的主要帐户密钥或辅助帐户密钥。 例如，若要为 Batch 帐户生成新的主要密钥，请键入：
 
 ```powershell
 New-AzBatchAccountKey -AccountName <account_name> -KeyType Primary
@@ -88,7 +79,7 @@ New-AzBatchAccountKey -AccountName <account_name> -KeyType Primary
 > [!NOTE]
 > 若要生成新的辅助密钥，请为 **KeyType** 参数指定“Secondary”。 必须单独重新生成主要密钥和辅助密钥。
 
-### <a name="delete-a-batch-account"></a>删除批处理帐户
+### <a name="delete-a-batch-account"></a>删除 Batch 帐户
 
 **Remove-AzBatchAccount** 删除 Batch 帐户。 例如：
 
@@ -153,7 +144,7 @@ Get-AzBatchPool -BatchContext $context
 
 ### <a name="use-an-odata-filter"></a>使用 OData 筛选器
 
-可以使用 **Filter** 参数提供一个 OData 筛选器，以便只查找所需的对象。 例如，可以查找 ID 以“myPool”开头的所有池：
+可以使用 Filter 参数提供 OData 筛选器，以便只查找所需的对象。 例如，可以查找 ID 以“myPool”开头的所有池：
 
 ```powershell
 $filter = "startswith(id,'myPool')"
@@ -187,13 +178,13 @@ Get-AzBatchTask -MaxCount 2500 -BatchContext $context
 
 Batch cmdlet 使用 PowerShell 管道在 cmdlet 之间发送数据。 这与指定参数的效果相同，但可以更方便地使用多个实体。
 
-例如，可以查找和显示帐户下的所有任务：
+例如，查找和显示帐户下的所有任务：
 
 ```powershell
 Get-AzBatchJob -BatchContext $context | Get-AzBatchTask -BatchContext $context
 ```
 
-重新启动（重新引导）池中的每个计算节点：
+重新启动（重启）池中每个计算节点：
 
 ```powershell
 Get-AzBatchComputeNode -PoolId "myPool" -BatchContext $context | Restart-AzBatchComputeNode -BatchContext $context
@@ -201,7 +192,7 @@ Get-AzBatchComputeNode -PoolId "myPool" -BatchContext $context | Restart-AzBatch
 
 ## <a name="application-package-management"></a>应用程序包管理
 
-应用程序包提供将应用程序部署到池中计算节点的简化方式。 使用批处理 PowerShell cmdlet，可以上传和管理批处理帐户中的应用程序包，以及将包版本部署到计算节点。
+应用程序包提供将应用程序部署到池中计算节点的简化方式。 使用 Batch PowerShell cmdlet 可以在 Batch 帐户中上传和管理应用程序包，以及将包版本部署到计算节点。
 
 **创建** 应用程序：
 
@@ -215,13 +206,13 @@ New-AzBatchApplication -AccountName <account_name> -ResourceGroupName <res_group
 New-AzBatchApplicationPackage -AccountName <account_name> -ResourceGroupName <res_group_name> -ApplicationId "MyBatchApplication" -ApplicationVersion "1.0" -Format zip -FilePath package001.zip
 ```
 
-设置应用程序的**默认版本**：
+设置应用程序的 **默认版本** ：
 
 ```powershell
 Set-AzBatchApplication -AccountName <account_name> -ResourceGroupName <res_group_name> -ApplicationId "MyBatchApplication" -DefaultVersion "1.0"
 ```
 
-**列出**应用程序的包
+**列出** 应用程序的包
 
 ```powershell
 $application = Get-AzBatchApplication -AccountName <account_name> -ResourceGroupName <res_group_name> -ApplicationId "MyBatchApplication"
@@ -229,26 +220,26 @@ $application = Get-AzBatchApplication -AccountName <account_name> -ResourceGroup
 $application.ApplicationPackages
 ```
 
-**删除**应用程序包
+**删除** 应用程序包
 
 ```powershell
 Remove-AzBatchApplicationPackage -AccountName <account_name> -ResourceGroupName <res_group_name> -ApplicationId "MyBatchApplication" -ApplicationVersion "1.0"
 ```
 
-**删除**应用程序
+**删除** 应用程序
 
 ```powershell
 Remove-AzBatchApplication -AccountName <account_name> -ResourceGroupName <res_group_name> -ApplicationId "MyBatchApplication"
 ```
 
 > [!NOTE]
-> 在删除某个应用程序之前，必须删除该应用程序的所有应用程序包版本。 如果尝试删除当前具有应用程序包的应用程序，会发生“冲突”错误。
+> 在删除应用程序之前，必须删除该应用程序的所有应用程序包版本。 如果尝试删除的应用程序当前存在应用程序包，则会收到“冲突”错误。
 
 ### <a name="deploy-an-application-package"></a>部署应用程序包
 
-在创建池时，可以指定一个或多个要部署的应用程序包。 如果创建池时指定包，该包会在节点加入池时部署到每个节点。 将节点重新启动或重置映像时，也会部署包。
+在创建池时，可以指定一个或多个要部署的应用程序包。 如果创建池时指定包，该包在节点加入池时部署到每个节点。 将节点重新启动或重置映像时，也会部署包。
 
-创建池时，请指定 `-ApplicationPackageReference` 选项，以便在池节点加入该池时，将应用程序包部署到这些节点。 首先，创建 **PSApplicationPackageReference** 对象，并使用应用程序 ID 和要部署到池中计算节点的包版本来配置该对象：
+在创建池时指定 `-ApplicationPackageReference` 选项，以便在节点加入池时将应用程序包部署到这些节点。 首先，创建 **PSApplicationPackageReference** 对象，并使用应用程序 ID 和要部署到池中计算节点的包版本来配置该对象：
 
 ```powershell
 $appPackageReference = New-Object Microsoft.Azure.Commands.Batch.Models.PSApplicationPackageReference
@@ -258,7 +249,7 @@ $appPackageReference.ApplicationId = "MyBatchApplication"
 $appPackageReference.Version = "1.0"
 ```
 
-接下来，请创建池，并将包引用对象指定为 `ApplicationPackageReferences` 选项的参数：
+现在创建池，并将包引用对象指定为 `ApplicationPackageReferences` 选项的参数：
 
 ```powershell
 New-AzBatchPool -Id "PoolWithAppPackage" -VirtualMachineSize "Small" -CloudServiceConfiguration $configuration -BatchContext $context -ApplicationPackageReferences $appPackageReference
@@ -282,7 +273,7 @@ $appPackageReference.Version = "2.0"
 
 ```
 
-接下来，从批处理中获取池，清除所有现有包，添加新的包引用，并使用新的池设置更新批处理服务：
+接下来，从 Batch 获取池，清除任何现有的包，添加新的包引用，并使用新的池设置更新 Batch 服务：
 
 ```powershell
 $pool = Get-AzBatchPool -BatchContext $context -Id "PoolWithAppPackage"
@@ -294,19 +285,18 @@ $pool.ApplicationPackageReferences.Add($appPackageReference)
 Set-AzBatchPool -BatchContext $context -Pool $pool
 ```
 
-现已更新批处理服务中的池属性。 但是，要将新应用程序包真正部署到池中的计算节点，必须将这些节点重新启动或重置映像。 可以使用以下命令重新启动池中的每个节点：
+现在已在 Batch 服务中更新池的属性。 但是，要将新的应用程序包实际部署到池中的计算节点，必须重新启动这些节点，或者重置其映像。 可以使用以下命令重新启动池中的每个节点：
 
 ```powershell
 Get-AzBatchComputeNode -PoolId "PoolWithAppPackage" -BatchContext $context | Restart-AzBatchComputeNode -BatchContext $context
 ```
 
 > [!TIP]
-> 可将多个应用程序包部署到池中的计算节点。 如果想要*添加*应用程序包而不是替换当前部署的包，请省略上面的 `$pool.ApplicationPackageReferences.Clear()` 代码行。
+> 可以将多个应用程序包部署到池中的计算节点。 如果想要*添加*应用程序包而不是替换当前部署的包，请省略上面的 `$pool.ApplicationPackageReferences.Clear()` 代码行。
 
 ## <a name="next-steps"></a>后续步骤
+
 - 有关详细的 cmdlet 语法和示例，请参阅 [Azure Batch cmdlet reference](https://docs.microsoft.com/powershell/module/azurerm.batch/#batch)（Azure Batch cmdlet 参考）。
 - 有关 Batch 中的应用程序和应用程序包的详细信息，请参阅[使用 Batch 应用程序包将应用程序部署到计算节点](batch-application-packages.md)。
 
-[vm_marketplace]: https://azure.microsoft.com/marketplace/virtual-machines/
-
-<!-- Update_Description: wording update -->
+[vm_marketplace]: https://market.azure.cn/marketplace/apps/category/compute?filters=virtual-machine-images&page=1

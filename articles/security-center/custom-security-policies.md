@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 安全中心创建自定义安全策略 | Azure
+title: 在 Azure 安全中心创建自定义安全策略
 description: 通过 Azure 安全中心监视的 Azure 自定义策略定义。
 services: security-center
 author: memildin
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/14/2020
 ms.author: v-tawe
 origin.date: 03/25/2020
-ms.openlocfilehash: 77b28221bd385fe8f897149d2b1392d3eaae8b76
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.openlocfilehash: 5f830b6307fd24e3a3f30c43ad9751cb5efae33e
+ms.sourcegitcommit: cbaa1aef101f67bd094f6ad0b4be274bbc2d2537
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83423136"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84126747"
 ---
 # <a name="using-custom-security-policies"></a>使用自定义安全策略
 
@@ -22,7 +22,7 @@ ms.locfileid: "83423136"
 
 使用此功能，你可以添加自己的自定义计划。 这样一来，如果你的环境不遵循你创建的策略，你就会收到安全建议。 你创建的任何自定义计划都将与内置计划一起显示在[提高合规性](security-center-compliance-dashboard.md)教程所述的合规性仪表板中。
 
-如 Azure Policy 文档的[此处](https://docs.azure.cn/governance/policy/concepts/definition-structure#definition-location)所述，当你为自定义计划指定位置时，该位置必须是管理组或订阅。 
+如 [Azure Policy 文档](https://docs.azure.cn/governance/policy/concepts/definition-structure#definition-location)所述，当你为自定义计划指定位置时，该位置必须是管理组或订阅。 
 
 ## <a name="to-add-a-custom-initiative-to-your-subscription"></a>将自定义计划添加到订阅 
 
@@ -54,7 +54,7 @@ ms.locfileid: "83423136"
     1. 选择要包括的策略，然后单击“添加”。
     1. 输入所需的任何参数。
     1. 单击“保存” 。
-    1. 在“添加自定义计划”页面中，单击“刷新”，新计划将显示为可用。
+    1. 在“添加自定义计划”页面中，单击“刷新”。 新计划将显示为“可用”。
     1. 单击“添加”并将其分配给订阅。
 
     > [!NOTE]
@@ -69,6 +69,75 @@ ms.locfileid: "83423136"
 1. 若要查看针对你的策略生成的建议，请单击边栏中的“建议”，打开建议页面。 建议将显示“自定义”标签，并在大约一小时内可用。
 
     [![自定义建议](media/custom-security-policies/custom-policy-recommendations.png)](media/custom-security-policies/custom-policy-recommendations-in-context.png#lightbox)
+
+## <a name="enhancing-your-custom-recommendations-with-detailed-information"></a>利用详细信息增强你的自定义建议
+
+Azure 安全中心提供的内置建议包括严重性级别和修正说明等详细信息。 如果要将此类型的信息添加到自定义建议，使其显示在 Azure 门户或提供建议的任何位置，则需要使用 REST API。 
+
+可以添加以下两类信息：
+
+- **RemediationDescription** - 字符串
+- **Severity** - 枚举 [Low、Medium、High]
+
+应将元数据添加到策略的策略定义中，该策略应属于自定义计划的一部分。 它应位于“securityCenter”属性中，如下所示：
+
+```json
+ "metadata": {
+    "securityCenter": {
+        "RemediationDescription": "Custom description goes here",
+        "Severity": "High",
+    },
+```
+
+以下是包含 metadata/securityCenter 属性的自定义策略的示例：
+
+  ```json
+  {
+"properties": {
+    "displayName": "Security - ERvNet - AuditRGLock",
+    "policyType": "Custom",
+    "mode": "All",
+    "description": "Audit required resource groups lock",
+    "metadata": {
+        "securityCenter": {
+            "remediationDescription": "Resource Group locks can be set via Azure Portal -> Resource Group -> Locks",
+            "severity": "High",
+        },
+    },
+    "parameters": {
+        "expressRouteLockLevel": {
+            "type": "String",
+            "metadata": {
+                "displayName": "Lock level",
+                "description": "Required lock level for ExpressRoute resource groups."
+            },
+            "allowedValues": [
+                "CanNotDelete",
+                "ReadOnly"
+            ]
+        }
+    },
+    "policyRule": {
+        "if": {
+            "field": "type",
+            "equals": "Microsoft.Resources/subscriptions/resourceGroups"
+        },
+        "then": {
+            "effect": "auditIfNotExists",
+            "details": {
+                "type": "Microsoft.Authorization/locks",
+                "existenceCondition": {
+                    "field": "Microsoft.Authorization/locks/level",
+                    "equals": "[parameters('expressRouteLockLevel')]"
+                }
+            }
+        }
+    }
+}
+}
+  ```
+
+有关使用 securityCenter 属性的另一个示例，请参阅 [REST API 文档的此部分](https://docs.microsoft.com/rest/api/securitycenter/assessmentsmetadata/createinsubscription#examples)。
 
 
 ## <a name="next-steps"></a>后续步骤

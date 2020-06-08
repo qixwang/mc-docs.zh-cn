@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure RBAC 和 Azure PowerShell 列出角色分配
-description: 了解如何使用 Azure 基于角色的访问控制 (RBAC) 和 Azure PowerShell 来确定用户、组、服务主体和托管标识有权访问的资源内容。
+title: 使用 Azure PowerShell 列出 Azure 角色分配 - Azure RBAC
+description: 了解如何使用 Azure PowerShell 和 Azure 基于角色的访问控制 (Azure RBAC) 来确定用户、组、服务主体和托管标识有权访问的资源。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -11,23 +11,23 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/02/2020
+ms.date: 05/25/2020
 ms.author: v-junlch
 ms.reviewer: bagovind
-ms.openlocfilehash: f33449e74f88b4a33e3f13e638e6bd2b5b54c5dd
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 9c35432f6e6d2d882a0d219c1ded0f00b1331665
+ms.sourcegitcommit: 7429daf26cff014b040f69cdae75bdeaea4f4e93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75624405"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83991660"
 ---
-# <a name="list-role-assignments-using-azure-rbac-and-azure-powershell"></a>使用 Azure RBAC 和 Azure PowerShell 列出角色分配
+# <a name="list-azure-role-assignments-using-azure-powershell"></a>使用 Azure PowerShell 列出 Azure 角色分配
 
 [!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control-definition-list.md)] 本文介绍如何使用 Azure PowerShell 列出角色分配。
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps)
 
@@ -67,7 +67,7 @@ CanDelegate        : False
 
 ## <a name="list-role-assignments-for-a-subscription"></a>列出订阅的角色分配
 
-若要列出订阅范围内的所有角色分配，请使用 [Get-AzRoleAssignment](https://docs.microsoft.com/powershell/module/az.resources/get-azroleassignment)。 若要获取订阅 ID，可以在 Azure 门户中的“订阅”  边栏选项卡上找到它，也可以使用 [Get-AzSubscription](https://docs.microsoft.com/powershell/module/Az.Accounts/Get-AzSubscription)。
+若要列出订阅范围内的所有角色分配，请使用 [Get-AzRoleAssignment](https://docs.microsoft.com/powershell/module/az.resources/get-azroleassignment)。 若要获取订阅 ID，可以在 Azure 门户中的“订阅”边栏选项卡上找到它，也可以使用 [Get-AzSubscription](https://docs.microsoft.com/powershell/module/Az.Accounts/Get-AzSubscription)。
 
 ```azurepowershell
 Get-AzRoleAssignment -Scope /subscriptions/<subscription_id>
@@ -77,7 +77,7 @@ Get-AzRoleAssignment -Scope /subscriptions/<subscription_id>
 PS C:\> Get-AzRoleAssignment -Scope /subscriptions/00000000-0000-0000-0000-000000000000
 ```
 
-## <a name="list-role-assignments-for-a-user"></a>为用户列出角色分配
+## <a name="list-role-assignments-for-a-user"></a>列出用户的角色分配
 
 若要列出分配给指定用户的所有角色，请使用 [Get-AzRoleAssignment](https://docs.microsoft.com/powershell/module/az.resources/get-azroleassignment)。
 
@@ -129,7 +129,7 @@ Scope              : /subscriptions/00000000-0000-0000-0000-000000000000/resourc
 
 ## <a name="list-role-assignments-for-a-management-group"></a>列出管理组的角色分配
 
-若要列出管理组范围内的所有角色分配，请使用 [Get-AzRoleAssignment](https://docs.microsoft.com/powershell/module/az.resources/get-azroleassignment)。 若要获取管理组 ID，可以在 Azure 门户中的“管理组”  边栏选项卡上找到它，也可以使用 [Get-AzManagementGroup](https://docs.microsoft.com/powershell/module/az.resources/get-azmanagementgroup)。
+若要列出管理组范围内的所有角色分配，请使用 [Get-AzRoleAssignment](https://docs.microsoft.com/powershell/module/az.resources/get-azroleassignment)。 若要获取管理组 ID，可以在 Azure 门户中的“管理组”边栏选项卡上找到它，也可以使用 [Get-AzManagementGroup](https://docs.microsoft.com/powershell/module/az.resources/get-azmanagementgroup)。
 
 ```azurepowershell
 Get-AzRoleAssignment -Scope /providers/Microsoft.Management/managementGroups/<group_id>
@@ -165,5 +165,5 @@ Get-AzRoleAssignment -IncludeClassicAdministrators
 
 ## <a name="next-steps"></a>后续步骤
 
-- [使用 Azure RBAC 和 Azure PowerShell 添加或删除角色分配](role-assignments-powershell.md)
+- [使用 Azure PowerShell 添加或删除 Azure 角色分配](role-assignments-powershell.md)
 

@@ -1,33 +1,30 @@
 ---
-title: 面向开发人员的 API 和工具 - Azure Batch | Docs
+title: 面向开发人员的 API 和工具
 description: 了解通过 Azure Batch 服务开发解决方案时可以使用的 API 和工具。
-services: batch
-author: lingliw
-manager: digimobile
-ms.service: batch
 ms.topic: conceptual
 origin.date: 12/07/2018
 ms.date: 12/04/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 939fe3056ed805d18df459b1e87e093d48870536
-ms.sourcegitcommit: 1fbdefdace8a1d3412900c6c3f89678d8a9b29bc
+ms.openlocfilehash: 47fdb4a4875a77d14b19c129945c4006cf704464
+ms.sourcegitcommit: cbaa1aef101f67bd094f6ad0b4be274bbc2d2537
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82886909"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84126765"
 ---
 # <a name="overview-of-batch-apis-and-tools"></a>批处理 API 和工具概述
 
 使用 Azure Batch 处理并行工作负荷通常是使用批处理 API 之一以编程方式实现的。 客户端应用程序或服务可使用 Batch API 与 Batch 服务通信。 Batch API 允许用户创建和管理计算节点（虚拟机或云服务）池。 随后可将作业和任务计划为在这些节点上运行。 
 
-可以为组织高效处理大量工作负荷，或提供服务前端给客户，让他们可以在一个、数百个甚至数千个节点上，按需要或按计划运行作业和任务。 
+可以为组织高效处理大量工作负荷，或提供服务前端给客户，让他们可以在一个、数百个甚至数千个节点上，按需要或按计划运行作业和任务。 还可以在 [Azure 数据工厂](../data-factory/transform-data-using-dotnet-custom-activity.md?toc=%2fbatch%2ftoc.json)等工具管理的大型工作流中使用 Azure Batch 。
 
 > [!TIP]
 > 若要深入了解 Batch API 所提供的功能，请参阅 [Batch feature overview for developers](batch-api-basics.md)（面向开发人员的 Batch 功能概述）。
 > 
 > 
 
-<a name="azure-accounts-for-batch-development"></a>## Batch 开发的 Azure帐户。开发 Batch 解决方案时，请在 Azure 订阅中使用以下帐户：
+## <a name="azure-accounts-for-batch-development"></a>用于批处理开发的 Azure 帐户
+开发 Batch 解决方案时，请在 Azure 订阅中使用以下帐户：
 
 * **Batch 帐户** - Azure Batch 资源（包括池、计算节点、作业和任务）与 Azure [Batch 帐户](batch-api-basics.md#account)相关联。 当应用程序针对 Batch 服务提出请求时，会使用 Azure Batch 帐户名称、帐户的 URL 以及访问密钥或 Azure Active Directory 令牌对请求进行身份验证。 可以通过 Azure 门户或编程方式[创建 Batch 帐户](batch-account-create-portal.md)。
 * **存储帐户** - Batch 提供的内置支持允许处理 [Azure 存储][azure_storage]中的文件。 几乎每个 Batch 方案都使用 Azure Blob 存储暂存任务所运行的程序及其处理的数据，以及存储任务生成的输出数据。 有关 Batch 中的存储帐户选项，请参阅 [Batch 功能概述](batch-api-basics.md#azure-storage-account)。
@@ -38,7 +35,7 @@ ms.locfileid: "82886909"
 
 | API | API 参考 | 下载 | 教程 | 代码示例 | 更多信息 |
 | --- | --- | --- | --- | --- | --- |
-| **批处理 REST** |[docs.azure.cn][batch_rest] |不适用 |- |- | [支持的版本](https://docs.microsoft.com/rest/api/batchservice/batch-service-rest-api-versioning) |
+| **批处理 REST** |[docs.azure.cn][batch_rest] |空值 |- |- | [支持的版本](https://docs.microsoft.com/rest/api/batchservice/batch-service-rest-api-versioning) |
 | **Batch .NET** |[docs.azure.cn][api_net] |[NuGet ][api_net_nuget] | 教程 |[GitHub][api_sample_net] | [发行说明](https://aka.ms/batch-net-dataplane-changelog) |
 | **Batch Python** |[docs.azure.cn][api_python] |[PyPI][api_python_pypi] | 教程 |[GitHub][api_sample_python] | [自述文件](https://github.com/Azure/azure-sdk-for-python/blob/master/doc/batch.rst) |
 | **批处理 Node.js** |[docs.azure.cn][api_nodejs] |[npm][api_nodejs_npm] |[教程](batch-nodejs-get-started.md) |- | [自述文件](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/batch) |
@@ -85,7 +82,7 @@ ms.locfileid: "82886909"
 
 
 [azure_storage]: https://www.azure.cn/home/features/storage/
-[api_java]: https://docs.microsoft.com/java/api/overview/batch
+[api_java]: https://docs.microsoft.com/java/api/overview/azure/batch
 [api_java_mgmt]: /java/api/batch/managementapi?view=azure-java-stable
 [api_java_jar]: https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-batch%22
 [api_java_mgmt_jar]: https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-mgmt-batch%22

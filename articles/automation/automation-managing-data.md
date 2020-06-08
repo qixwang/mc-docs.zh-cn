@@ -6,12 +6,12 @@ ms.subservice: shared-capabilities
 origin.date: 03/23/2020
 ms.date: 05/11/2020
 ms.topic: conceptual
-ms.openlocfilehash: 74e1b18b8f00adc8f9e64464bed3aab9bfeb691f
-ms.sourcegitcommit: 7443ff038ea8afe511f7419d9c550d27fb642246
+ms.openlocfilehash: 981c97d30b0ad166bbe7bcb2af8e41203977c531
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "83001610"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199351"
 ---
 # <a name="managing-azure-automation-data"></a>管理 Azure 自动化数据
 
@@ -62,7 +62,7 @@ ms.locfileid: "83001610"
 
 Azure 自动化帐户中标配了异地复制。 在设置帐户时选择主要区域。 内部自动化异地复制服务会自动将一个次要区域分配到帐户。 然后，该服务会将主要区域中的帐户数据持续备份到次要区域。 在以下文章中可以找到主要区域和次要区域的完整列表：[业务连续性和灾难恢复 (BCDR)：Azure 配对区域](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)。 
 
-自动化异地复制服务创建的备份是自动化资产、配置等的完整副本。 如果主要区域发生故障并丢失数据，则可使用此备份。 如果主要区域发生数据丢失（这种情况很少见），Microsoft 会尝试恢复数据。 公司在无法恢复主要数据的情况下，会使用自动故障转移并通过 Azure 订阅将相关情况告知你。 
+自动化异地复制服务创建的备份是自动化资产、配置等的完整副本。 如果主要区域发生故障并丢失数据，则可使用此备份。 如果主要区域发生数据丢失（这种情况很少见），Azure 会尝试恢复数据。 公司在无法恢复主要数据的情况下，会使用自动故障转移并通过 Azure 订阅将相关情况告知你。 
 
 如果发生区域性故障，外部客户将无法直接访问自动化异地复制服务。 若要在发生区域性故障期间保留自动化配置和 Runbook，请执行以下操作：
 

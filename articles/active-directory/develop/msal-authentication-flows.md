@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 04/22/2020
+ms.date: 05/27/2020
 ms.author: v-junlch
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 5b485cbd7e40bf3cf0ba1699e7e9a34def7fa270
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.openlocfilehash: 86721f29691461bd64b644bd4d69890c7af6675a
+ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82126524"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84186729"
 ---
 # <a name="authentication-flows"></a>身份验证流
 
@@ -192,8 +192,8 @@ IWA 不会绕过多重身份验证。 如果配置了多重身份验证，需要
 - 租户管理员必须已事先许可租户中的所有用户使用该应用程序。
 
 这意味着需要符合以下条件之一：
-- 开发人员已在 Azure 门户上自行选择“授权”。 
-- 租户管理员已在应用程序注册的“API 权限”选项卡中选择“授予/撤销 {租户域} 的管理员许可”（请参阅[添加用于访问 Web API 的权限](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis)）。  
+- 开发人员已在 Azure 门户上自行选择“授权”。
+- 租户管理员已在应用程序注册的“API 权限”选项卡中选择“授予/撤销 {租户域} 的管理员许可”（请参阅[添加用于访问 Web API 的权限](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis)）。 
 - 你已提供某种方式让用户许可应用程序（请参阅[请求单个用户的许可](v2-permissions-and-consent.md#requesting-individual-user-consent)）。
 - 你已提供某种方式让租户管理员许可应用程序（请参阅[管理员许可](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant)）。
 
@@ -231,5 +231,5 @@ MSAL 支持 [OAuth 2 资源所有者密码凭据授予](v2-oauth-ropc.md)，后�
 
 ### <a name="azure-ad-b2c-specifics"></a>Azure AD B2C 细节
 
-有关使用 MSAL.NET 和 Azure AD B2C 的详细信息，请参阅[将 ROPC 与 Azure AD B2C (MSAL.NET) 配合使用](msal-net-aad-b2c-considerations.md#resource-owner-password-credentials-ropc-with-azure-ad-b2c)。
+有关使用 MSAL.NET 和 Azure AD B2C 中 ROPC 的详细信息，请参阅[将 ROPC 与 Azure AD B2C 配合使用](msal-net-aad-b2c-considerations.md#resource-owner-password-credentials-ropc)。
 

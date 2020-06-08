@@ -1,26 +1,17 @@
 ---
-title: 面向开发人员的概述 - Azure Batch | Azure Docs
+title: 面向开发人员的概述
 description: 从开发的角度了解 Batch 服务的功能及其 API。
-services: batch
-documentationcenter: .net
-author: lingliw
-manager: digimobile
-editor: ''
-ms.assetid: 416b95f8-2d7b-4111-8012-679b0f60d204
-ms.service: batch
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: big-compute
 origin.date: 08/29/2019
 ms.date: 09/20/2019
 ms.author: v-lingwu
 ms.custom: seodec18
-ms.openlocfilehash: e5691a2b3764294e423bf375b85aa546e3b18a45
-ms.sourcegitcommit: 1fbdefdace8a1d3412900c6c3f89678d8a9b29bc
+ms.openlocfilehash: 5588121f7cfce069ade3eb3fbea92a6d9aca29cb
+ms.sourcegitcommit: cbaa1aef101f67bd094f6ad0b4be274bbc2d2537
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82886913"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84126767"
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>使用 Batch 开发大规模并行计算解决方案
 
@@ -90,9 +81,10 @@ Batch 支持以下类型的 Azure 存储帐户：
 
 有关存储帐户的详细信息，请参阅 [Azure 存储帐户概述](../storage/common/storage-account-overview.md)。
 
-创建 Batch 帐户时可以将存储帐户与 Batch 帐户关联，也可以稍后关联。 选择存储帐户时，请考虑成本和性能要求。 例如，与 GPv1 相比，GPv2 和 Blob 存储帐户选项支持更大的[容量和可伸缩性限制]<!--404-->。 （请联系 Azure 支持以请求提高存储上限。）对于包含大量读取或写入存储帐户的并行任务的 Batch 解决方案，这些帐户选项可以提高其性能。
+创建 Batch 帐户时可以将存储帐户与 Batch 帐户关联，也可以稍后关联。 选择存储帐户时，请考虑成本和性能要求。 例如，与 GPv1 相比，GPv2 和 blob 存储帐户选项支持更大的[容量和可伸缩性限制](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/)。 （请联系 Azure 支持以请求提高存储上限。）对于包含大量读取或写入存储帐户的并行任务的 Batch 解决方案，这些帐户选项可以提高其性能。
 
 ## <a name="compute-node"></a>计算节点
+
 计算节点是专门用于处理一部分应用程序工作负荷的 Azure 虚拟机 (VM) 或云服务 VM。 节点大小确定了 CPU 核心数目、内存容量，以及分配给节点的本地文件系统大小。 可以使用 [Azure 虚拟机市场][vm_marketplace]提供的 Azure 云服务映像或自己准备的自定义映像创建 Windows 或 Linux 节点池。 有关这些选项的详细信息，请参阅下面的 [池](#pool) 部分。
 
 节点可以运行节点操作系统环境支持的任何可执行文件或脚本。 可执行文件或脚本包括适用于 Windows 的 \*.exe、\*.cmd、\*.bat 和 PowerShell 脚本，以及适用于 Linux 的二进制文件、shell 和 Python 脚本。
@@ -104,6 +96,7 @@ Batch 中的所有计算节点还包括：
 * [远程访问](#connecting-to-compute-nodes) Windows（远程桌面协议 (RDP)）和 Linux（安全外壳 (SSH)）节点。
 
 ## <a name="pool"></a>池
+
 池是运行应用程序的节点集合。 可以手动创建池；或者在指定要完成的工作时，由 Batch 服务自动创建池。 可以创建和管理符合应用程序资源要求的池。 池只能由创建它的 Batch 帐户使用。 一个批处理帐户可以有多个池。
 
 Azure Batch 池构建在核心 Azure 计算平台的顶层。 它们提供大规模的分配、应用程序安装、数据分发和运行状况监视，以及在池内灵活调整计算节点数目（[缩放](#scaling-compute-resources)）等功能。
@@ -134,11 +127,11 @@ Azure Batch 池构建在核心 Azure 计算平台的顶层。 它们提供大规
 
 * **虚拟机配置**，它指定池由 Azure 虚拟机组成。 可以从 Linux 或 Windows 映像创建这些 VM。
 
-    基于虚拟机配置创建池时，不仅要指定节点大小和用于创建它们的映像源，还必须指定要安装在节点上的“虚拟机映像引用”  和 Batch“节点代理 SKU”  。 有关指定这些池属性的详细信息，请参阅 [Provision Linux compute nodes in Azure Batch pools](batch-linux-nodes.md)（在 Azure Batch 池中预配 Linux 计算节点）。 可选选择性地将一个或多个空数据磁盘附加到从市场映像创建的池 VM，也可将数据磁盘包括在用于创建 VM 的自定义映像中。 包括数据磁盘时，需要从 VM 中装载和格式化磁盘，然后才能使用它们。
+    基于虚拟机配置创建池时，不仅要指定节点大小和用于创建它们的映像源，还必须指定要安装在节点上的“虚拟机映像引用”和 Batch“节点代理 SKU”。 有关指定这些池属性的详细信息，请参阅 [Provision Linux compute nodes in Azure Batch pools](batch-linux-nodes.md)（在 Azure Batch 池中预配 Linux 计算节点）。 可选选择性地将一个或多个空数据磁盘附加到从市场映像创建的池 VM，也可将数据磁盘包括在用于创建 VM 的自定义映像中。 包括数据磁盘时，需要从 VM 中装载和格式化磁盘，然后才能使用它们。
 
-* **云服务配置**，它指定池由 Azure 云服务节点组成。 云服务只  提供 Windows 计算节点。
+* **云服务配置**，它指定池由 Azure 云服务节点组成。 云服务只提供 Windows 计算节点。
 
-    [Azure Guest OS releases and SDK compatibility matrix](../cloud-services/cloud-services-guestos-update-matrix.md)（Azure 来宾 OS 版本和 SDK 兼容性对照表）中列出了适用于云服务配置池的操作系统。 创建包含云服务节点的池时，需要指定节点大小及其 OS 系列  。 将云服务部署到 Azure 的速度比部署运行 Windows 的虚拟机更快。 如果需要 Windows 计算节点池，可能会发现云服务具有部署时间上的性能优势。
+    [Azure Guest OS releases and SDK compatibility matrix](../cloud-services/cloud-services-guestos-update-matrix.md)（Azure 来宾 OS 版本和 SDK 兼容性对照表）中列出了适用于云服务配置池的操作系统。 创建包含云服务节点的池时，需要指定节点大小及其 OS 系列。 将云服务部署到 Azure 的速度比部署运行 Windows 的虚拟机更快。 如果需要 Windows 计算节点池，可能会发现云服务具有部署时间上的性能优势。
 
     * *OS 系列* 还确定了要与操作系统一起安装哪些版本的 .NET。
     * 与云服务中的辅助角色一样，可以指定 *OS 版本*（有关辅助角色的详细信息，请参阅[云服务概述](../cloud-services/cloud-services-choose-me.md)）。
@@ -155,7 +148,8 @@ Azure Batch 池构建在核心 Azure 计算平台的顶层。 它们提供大规
 #### <a name="container-support-in-virtual-machine-pools"></a>虚拟机池中的容器支持
 
 使用 Batch API 创建虚拟机配置池时，可以将池设置为在 Docker 容器中运行任务。 目前，必须使用支持 Docker 容器的映像创建池。 将 Windows Server 2016 Datacenter 与 Azure 市场中的容器映像配合使用，或者提供自定义 VM 映像（其中包含 Docker Community Edition 或 Enterprise Edition 以及任何必需的驱动程序）。 池设置必须包括[容器配置](https://docs.microsoft.com/rest/api/batchservice/pool/add#definitions_containerconfiguration)，该配置在创建池时将容器映像复制到 VM。 然后，在池中运行的任务即可引用容器映像和容器运行选项。
-<!-- docker is unavailable -->
+
+有关详细信息，请参阅[在 Azure Batch 上运行 Docker 容器应用程序](batch-docker-container-workloads.md)。
 
 ## <a name="compute-node-type-and-target-number-of-nodes"></a>计算节点类型和目标节点数
 
@@ -167,9 +161,8 @@ Azure Batch 池构建在核心 Azure 计算平台的顶层。 它们提供大规
 
     当 Azure 的多余容量不足时，低优先级计算节点可能会被抢占。 如果某个节点在运行任务时被抢占，这些任务会重新排队并在计算节点重新变为可用后，重新运行。 对于作业完成时间很灵活且工作分布在多个节点上的工作负荷来说，低优先级节点是一个很好选择。 在决定为自己的方案使用低优先级节点之前，请确保会因其他资源优先使用而导致丢失的工作是最少的，且这些工作易于重新创建。
 
-    
-在同一池中可同时有低优先级计算节点和专用计算节点。 每种类型的节点 &mdash; 低优先级节点和专用节点 &mdash; 都有其自己的目标设置，可以为其指定所需的节点数。 
-    
+在同一池中可同时有低优先级计算节点和专用计算节点。 每种类型的节点 &mdash; 低优先级节点和专用节点 &mdash; 都有其自己的目标设置，可以为其指定所需的节点数。
+
 计算节点数之所以称为*目标*，是因为在某些情况下，池可能无法达到所需的节点数。 例如，如果池先达到了 Batch 帐户的[核心配额](batch-quota-limit.md)，则该池可能达不到目标。 或者，如果已将限制最大节点数的自动缩放公式应用于池，则该池也可能达不到目标。
 
 有关低优先级计算节点和专用计算节点的定价信息，请参阅 [Batch 定价](https://www.azure.cn/pricing/details/batch/)。
@@ -227,12 +220,12 @@ Azure Batch 池构建在核心 Azure 计算平台的顶层。 它们提供大规
 
     可以设置 **最大挂钟时间**，以便在作业的运行时间超过指定的最大挂钟时间时，终止该作业及其所有关联的任务。
 
-    Batch 可以检测并重试失败的任务。 可以将**任务重试最大次数**指定为约束，包括指定是要始终重试还是永不重试某个任务。   重试某个任务意味着要将任务重新排队以再次运行。
+    Batch 可以检测并重试失败的任务。 可以将**任务重试最大次数**指定为约束，包括指定是要始终重试还是永不重试某个任务。  重试某个任务意味着要将任务重新排队以再次运行。
 
 * 客户端应用程序可将任务添加到作业，或者也可以指定[作业管理器任务](#job-manager-task)。 作业管理器任务包含必要的信息用于为池中某个计算节点上运行的包含作业管理器任务的作业创建所需的任务。 作业管理器任务专门由 Batch 来处理 – 创建作业和重新启动失败的作业后，会立即将任务排队。 *作业计划* 创建的作业 [需要](#scheduled-jobs) 作业管理器任务，因为它是在实例化作业之前定义任务的唯一方式。
 * 默认情况下，当作业内的所有任务都完成时，作业仍保持活动状态。 可以更改此行为，使作业在其中的所有任务完成时自动终止。 将作业的 **onAllTasksComplete** 属性（在 Batch .NET 中为 [OnAllTasksComplete][net_onalltaskscomplete]）设置为 *terminatejob*，可在作业的所有任务处于已完成状态时自动终止该作业。
 
-    Batch 服务将没有任务的作业视为其所有任务都已完成。  因此，此选项往往与 [作业管理器任务](#job-manager-task)配合使用。 如果想要使用自动作业终止而不通过作业管理器终止，首先应该将新作业的 **onAllTasksComplete** 属性设置为 *noaction*，然后只有在完成将任务添加到作业之后才将它设置为 *terminatejob*。
+    Batch 服务将没有任务的作业视为其所有任务都已完成。 因此，此选项往往与 [作业管理器任务](#job-manager-task)配合使用。 如果想要使用自动作业终止而不通过作业管理器终止，首先应该将新作业的 **onAllTasksComplete** 属性设置为 *noaction*，然后只有在完成将任务添加到作业之后才将它设置为 *terminatejob*。
 
 ### <a name="job-priority"></a>作业优先级
 可以向你在 Batch 中创建的作业分配优先级。 Batch 服务使用作业的优先级值来确定帐户中的作业计划顺序（不要与 [计划的作业](#scheduled-jobs)相混淆）。 优先级值的范围为 -1000 到 1000，-1000 表示最低优先级，1000 表示最高优先级。 若要更新作业的优先级，请调用[更新作业的属性][rest_update_job]操作 (Batch REST) 或修改 [CloudJob.Priority][net_cloudjob_priority] 属性 (Batch .NET)。
@@ -390,7 +383,7 @@ Batch 可以处理使用 Azure 存储将应用程序包存储及部署到计算�
 若要了解应用程序包功能的详细信息，请参阅[使用 Batch 应用程序包将应用程序部署到计算节点](batch-application-packages.md)。
 
 > [!NOTE]
-> 如果将池应用程序包添加到现有池，则必须重新启动其计算节点，应用程序包才会应用到节点。 
+> 如果将池应用程序包添加到现有池，则必须重新启动其计算节点，应用程序包才会应用到节点。
 >
 >
 
@@ -423,7 +416,7 @@ Batch 可以处理使用 Azure 存储将应用程序包存储及部署到计算�
 
 * **时间度量值** 基于指定的时数内每隔五分钟收集的统计信息。
 * **资源度量值** 基于 CPU 使用率、带宽使用率、内存使用率和节点的数目。
-* **任务指标**基于任务状态，例如“活动”（已排队）、“正在运行”或“已完成”。   
+* **任务指标**基于任务状态，例如“活动”（已排队）、“正在运行”或“已完成”。  
 
 如果自动缩放会减少池中的计算节点数，则必须考虑如何处理在执行减少操作时运行的任务。 为了满足这一点，Batch 提供可包含在公式中的 *节点解除分配选项* 。 例如，可以指定运行中的任务立即停止，然后重新排入队列，以便在另一个节点上运行，或允许先完成再从池中删除节点。
 
@@ -439,7 +432,7 @@ Batch 可以处理使用 Azure 存储将应用程序包存储及部署到计算�
 
 可以使用[添加证书][rest_add_cert]操作 (Batch REST) 或 [CertificateOperations.CreateCertificate][net_create_cert] 方法 (Batch .NET) 将证书添加到 Batch 帐户。 然后，可以将该证书与新的或现有的池相关联。 将证书与池关联后，Batch 服务将在池中的每个节点上安装该证书。 在启动节点之后、启动任何任务（包括启动任务和作业管理器任务）之前，Batch 服务将安装相应的证书。
 
-如果将证书添加到现有池，必须重新启动其计算节点，证书才会应用到节点。 
+如果将证书添加到现有池，必须重新启动其计算节点，证书才会应用到节点。
 
 ## <a name="error-handling"></a>错误处理。
 有时你可能需要处理 Batch 解决方案中的任务和应用程序失败。
@@ -461,7 +454,7 @@ Batch 可以处理使用 Azure 存储将应用程序包存储及部署到计算�
 
 * **应用程序失败**
 
-    任务命令行指定的进程也可能会失败。 如果任务执行的进程返回非零退出代码，则将该进程视为失败（请参阅下一部分中的“任务退出代码”）。 
+    任务命令行指定的进程也可能会失败。 如果任务执行的进程返回非零退出代码，则将该进程视为失败（请参阅下一部分中的“任务退出代码”）。
 
     对于应用程序失败，可以将 Batch 配置为自动重试任务，并最多重试指定的次数。
 
@@ -469,7 +462,7 @@ Batch 可以处理使用 Azure 存储将应用程序包存储及部署到计算�
 
     可以设置一个约束来指定作业或任务的最大执行持续期间，即 *maxWallClockTime*。 此约束可用于终止未能继续进行的任务。
 
-    如果超出了最长时间，则将任务标记为“已完成”，但退出代码将设置为 `0xC000013A`，*schedulingError* 字段将标记为 `{ category:"ServerError", code="TaskEnded"}`。 
+    如果超出了最长时间，则将任务标记为“已完成”，但退出代码将设置为 `0xC000013A`，*schedulingError* 字段将标记为 `{ category:"ServerError", code="TaskEnded"}`。
 
 ### <a name="debugging-application-failures"></a>调试应用程序失败
 * `stderr` 和 `stdout`
@@ -478,7 +471,7 @@ Batch 可以处理使用 Azure 存储将应用程序包存储及部署到计算�
 
 * **任务退出代码**
 
-    如前所述，如果任务执行的程序返回非零退出代码，则 Batch 服务会将此任务标记为失败。 当任务执行某个进程时，Batch 会使用“进程的返回代码”填充任务的退出代码属性。  请务必注意，任务的退出代码**不是**由 Batch 服务确定， 而是由进程本身或此进程在其上运行的操作系统确定。
+    如前所述，如果任务执行的程序返回非零退出代码，则 Batch 服务会将此任务标记为失败。 当任务执行某个进程时，Batch 会使用“进程的返回代码”填充任务的退出代码属性。 请务必注意，任务的退出代码**不是**由 Batch 服务确定， 而是由进程本身或此进程在其上运行的操作系统确定。
 
 ### <a name="accounting-for-task-failures-or-interruptions"></a>应对任务失败或中断
 任务偶尔会失败或中断。 任务应用程序本身可能会失败，运行任务的节点可能会重新启动，或者在调整大小操作期间，可能会因为池的取消分配策略设置为在不等待任务完成的情况下立即删除节点，而从池中删除节点。 在所有情况下，任务都可以由 Batch 自动排队，并在另一个节点上执行。

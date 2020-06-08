@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 安全中心集成安全解决方案 | Azure
+title: 在 Azure 安全中心集成安全解决方案
 description: 了解如何将 Azure 安全中心与合作伙伴集成，以增强 Azure 资源的总体安全性。
 services: security-center
 documentationcenter: na
@@ -14,16 +14,15 @@ ms.workload: na
 ms.date: 05/13/2020
 ms.author: v-tawe
 origin.date: 03/20/2019
-ms.openlocfilehash: ea56ef90db1a47516ca8290280544c540ba75323
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.openlocfilehash: 47147b1ed2e5c046435952a5b9e66c6889fd18d4
+ms.sourcegitcommit: cbaa1aef101f67bd094f6ad0b4be274bbc2d2537
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83423085"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84126631"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>在 Azure 安全中心集成安全解决方案
 本文档介绍如何管理已连接到 Azure 安全中心的安全解决方案，以及如何添加新的安全解决方案。
-
 
 ## <a name="integrated-azure-security-solutions"></a>集成式 Azure 安全解决方案
 可以通过安全中心轻松地在 Azure 中启用集成式安全解决方案。 优势包括：
@@ -35,53 +34,57 @@ ms.locfileid: "83423085"
 目前，集成安全解决方案包括由 [Qualys](https://www.qualys.com/public-cloud/#azure) 和 [Rapid7](https://www.rapid7.com/products/insightvm/) 提供的漏洞评估以及 Microsoft 应用程序网关 Web 应用程序防火墙。
 
 > [!NOTE]
-> 安全中心不会在合作伙伴虚拟设备上安装 Microsoft Monitoring Agent，因为大多数安全供应商都禁止在其设备上运行外部代理。
->
->
+> 安全中心不会在合作伙伴虚拟设备上安装 Log Analytics 代理，因为大多数安全供应商都禁止在其设备上运行外部代理。
+
+要详细了解如何在 Qualys 中集成漏洞扫描工具（包括可供标准层客户使用的内置扫描程序），请参阅： 
+
+- [用于虚拟机的集成漏洞扫描程序](built-in-vulnerability-assessment.md)。
+- [部署合作伙伴漏洞扫描解决方案](partner-vulnerability-assessment.md)。
+
+安全中心还为以下项提供漏洞分析：
+
+* SQL 数据库 - 请参阅[在漏洞评估仪表板中浏览漏洞评估报告](security-center-iaas-advanced-data.md#explore-vulnerability-assessment-reports)
+* Azure 容器注册表映像 - 请参阅 [Azure 容器注册表与安全中心（预览版）的集成](azure-container-registry-integration.md)
 
 ## <a name="how-security-solutions-are-integrated"></a>安全中心如何集成
 从安全中心部署的 Azure 安全解决方案是自动连接的。 还可以连接其他安全数据源，包括在本地或其他云中运行的计算机。
 
-![合作伙伴解决方案集成](./media/security-center-partner-integration/security-center-partner-integration-fig8.png)
+[![合作伙伴解决方案集成](./media/security-center-partner-integration/security-solutions-page.png)](./media/security-center-partner-integration/security-solutions-page.png#lightbox)
 
 ## <a name="manage-integrated-azure-security-solutions-and-other-data-sources"></a>管理集成式 Azure 安全解决方案和其他数据源
 
-1. 登录到 [Azure 门户](https://portal.azure.cn/)。
+1. 在 [Azure 门户](https://portal.azure.cn/)中，打开“安全中心”。
 
-2. 在 **Microsoft Azure 菜单**上选择“安全中心”。 此时会打开“安全中心 - 概览”。
+1. 从安全中心的菜单中，选择“安全解决方案”。
 
-3. 在“安全中心”菜单下，选择“安全解决方案”。
-
-   ![安全中心概述](./media/security-center-partner-integration/overview.png)
-
-在“安全解决方案”下，可以查看集成式 Azure 安全解决方案的运行状况，并运行基本管理任务。
+从“安全解决方案”页面中，可以查看集成式 Azure 安全解决方案的运行状况，并运行基本管理任务。
 
 ### <a name="connected-solutions"></a>已连接解决方案
 
 “已连接解决方案”部分包括当前连接到安全中心的所有安全解决方案。 它还显示每个解决方案的运行状况。  
 
-![已连接解决方案](./media/security-center-partner-integration/security-center-partner-integration-fig4.png)
+![已连接解决方案](./media/security-center-partner-integration/connected-solutions.png)
 
 合作伙伴解决方案的状态可能为：
 
-* 正常（绿色）- 没有运行状况问题。
-* 不正常（红色）- 存在需要立即关注的运行状况问题。
-* 运行状况问题（橙色）- 解决方案已停止报告其运行状况。
-* 未报告（灰色）- 解决方案尚未报告任何内容，并且没有可用的运行状况数据。 如果解决方案是最近连接的且仍在部署，则其状态可能是“未报告”。
+* **正常**（绿色）- 没有运行状况问题。
+* **不正常**（红色）- 存在需要立即关注的运行状况问题。
+* **停止报告**（橙色）- 解决方案已停止报告其运行状况。
+* **未报告**（灰色）- 解决方案尚未报告任何内容，并且未提供任何运行状况数据。 如果解决方案是最近连接的且仍在部署，则其状态可能是“未报告”。
 
 > [!NOTE]
 > 如果没有运行状况数据可用，则安全中心会显示上次收到事件的日期和时间以指示解决方案是否正在报告。 如果没有运行状况数据可用且在过去 14 天内没有收到警报，则安全中心会指出解决方案不正常或未报告。
 >
 >
 
-1. 选择“查看”以获取其他信息和选项，例如：
+选择“查看”以获取其他信息和选项，例如：
 
-   - **解决方案控制台**。 打开此解决方案的管理体验。
-   - **链接 VM**。 打开“链接应用程序”页。 此处，可将资源连接到合作伙伴解决方案。
-   - **删除解决方案**。
-   - **配置**。
+   - **解决方案控制台** - 打开此解决方案的管理体验。
+   - **链接 VM** - 打开“链接应用程序”页面。 此处，可将资源连接到合作伙伴解决方案。
+   - **删除解决方案**
+   - **配置**
 
-   ![合作伙伴解决方案详细信息](./media/security-center-partner-solutions/partner-solutions-detail.png)
+   ![合作伙伴解决方案详细信息](./media/security-center-partner-integration/partner-solutions-detail.png)
 
 ### <a name="discovered-solutions"></a>已发现解决方案
 
@@ -90,7 +93,6 @@ ms.locfileid: "83423085"
 > [!NOTE]
 > 在订阅级别，安全中心标准层是已发现解决方案功能所必需的。 若要详细了解定价层，请参阅[定价](security-center-pricing.md)。
 >
->
 
 在解决方案下选择“连接”，以便与安全中心集成，并获得安全警报通知。
 
@@ -98,7 +100,7 @@ ms.locfileid: "83423085"
 
 “添加数据源”部分包括其他可以连接的可用数据源。 如需从任何此类源添加数据的说明，请单击“添加”。
 
-![数据源](./media/security-center-partner-integration/security-center-partner-integration-fig7.png)
+![数据源](./media/security-center-partner-integration/add-data-sources.png)
 
 <!-- Exporting data  is not available -->
 

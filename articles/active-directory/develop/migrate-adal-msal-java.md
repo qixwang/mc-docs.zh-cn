@@ -10,16 +10,16 @@ ms.subservice: develop
 ms.topic: conceptual
 ms.tgt_pltfrm: Java
 ms.workload: identity
-ms.date: 04/22/2020
+ms.date: 05/27/2020
 ms.author: v-junlch
 ms.reviewer: nacanuma, twhitney
 ms.custom: aaddev
-ms.openlocfilehash: 6bf322b77ee4a66c1a250b76cd5b9419b699596e
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.openlocfilehash: 6b523d2ed76d8a4cf1216789e02eef936794e2bb
+ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82126521"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84186730"
 ---
 # <a name="adal-to-msal-migration-guide-for-java"></a>适用于 Java 的 ADAL 到 MSAL 迁移指南
 
@@ -42,6 +42,10 @@ MSAL for Java 是我们建议用于 Microsoft 标识平台的身份验证库。 
 ## <a name="scopes-not-resources"></a>范围不是资源
 
 ADAL4J 获取资源的令牌，而 MSAL for Java 则是获取范围的令牌。 许多 MSAL for Java 类需要 scopes 参数。 此参数是一个字符串列表，这些字符串声明所需的权限和请求的资源。 请参阅 [Microsoft Graph 的范围](https://docs.microsoft.com/graph/permissions-reference)查看示例范围。
+
+可以将 `/.default` 作用域后缀添加到资源中，帮助将应用从 v1.0 终结点 (ADAL) 迁移到 Microsoft 标识平台终结点 (MSAL)。 例如，对于 `https://microsoftgraph.chinacloudapi.cn` 的资源值，等效的作用域值为 `https://microsoftgraph.chinacloudapi.cn/.default`。  如果资源未采用 URL 形式，但资源 ID 采用 `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX` 形式，则仍可以使用作用域值 `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX/.default`。
+
+有关不同类型作用域的更多详细信息，请参阅 [Microsoft 标识平台中的权限和许可](/active-directory/develop/v2-permissions-and-consent)以及[接受 v1.0 令牌的 Web API 的作用域](/active-directory/develop/msal-v1-app-scopes)两篇文章。
 
 ## <a name="core-classes"></a>核心类
 

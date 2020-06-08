@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure CLI 为 Azure 资源创建或更新自定义角色 | Microsoft Docs
-description: 了解如何通过 Azure CLI 使用基于角色的访问控制 (RBAC) 为 Azure 资源列出、创建、更新或删除自定义角色。
+title: 使用 Azure CLI 创建或更新 Azure 自定义角色 - Azure RBAC
+description: 了解如何通过 Azure CLI 和 Azure 基于角色的访问控制 (Azure RBAC) 列出、创建、更新或删除自定义角色。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -11,26 +11,24 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/31/2020
+ms.date: 05/25/2020
 ms.author: v-junlch
 ms.reviewer: bagovind
-ms.openlocfilehash: 7815131018bdac664b1e58d1f7079654b7f7f483
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: d07b53d794d94ca72f644354d8eb6d492cd50ad1
+ms.sourcegitcommit: 7429daf26cff014b040f69cdae75bdeaea4f4e93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80581687"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83991593"
 ---
-# <a name="create-or-update-custom-roles-for-azure-resources-using-azure-cli"></a>使用 Azure CLI 为 Azure 资源创建或更新自定义角色
+# <a name="create-or-update-azure-custom-roles-using-azure-cli"></a>使用 Azure CLI 创建或更新 Azure 自定义角色
 
 > [!IMPORTANT]
-> 将管理组添加到 `AssignableScopes` 的功能目前处于预览状态。
+> 将管理组添加到 `AssignableScopes` 的功能目前为预览版。
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
 > 有关详细信息，请参阅[适用于 Azure 预览版的补充使用条款](https://www.azure.cn/support/legal/)。
 
-如果 [Azure 资源的内置角色](built-in-roles.md)不能满足组织的特定需求，则可以创建自定义角色。 本文介绍如何使用 Azure CLI 列出、创建、更新或删除自定义角色。
-
-有关如何创建自定义角色的分步教程，请参阅[教程：使用 Azure CLI 为 Azure 资源创建自定义角色](tutorial-custom-role-cli.md)。
+如果 [Azure 内置角色](built-in-roles.md)不满足组织的特定需求，你可以创建自己的自定义角色。 本文介绍如何使用 Azure CLI 列出、创建、更新或删除自定义角色。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -76,7 +74,7 @@ az role definition list --output json | jq '.[] | if .roleType == "CustomRole" t
 az role definition list --name <role_name>
 ```
 
-以下示例列出了“虚拟机操作员”  角色定义：
+以下示例列出了“虚拟机操作员”角色定义：
 
 ```azurecli
 az role definition list --name "Virtual Machine Operator"
@@ -103,8 +101,7 @@ az role definition list --name "Virtual Machine Operator"
           "Microsoft.ResourceHealth/availabilityStatuses/read",
           "Microsoft.Resources/subscriptions/resourceGroups/read",
           "Microsoft.Insights/alertRules/*",
-          "Microsoft.Insights/diagnosticSettings/*",
-          "Microsoft.Support/*"
+          "Microsoft.Insights/diagnosticSettings/*"
         ],
         "dataActions": [],
         "notActions": [],
@@ -118,7 +115,7 @@ az role definition list --name "Virtual Machine Operator"
 ]
 ```
 
-以下示例仅列出了“虚拟机操作员”角色的 actions： 
+以下示例仅列出了“虚拟机操作员”角色的 actions：
 
 ```azurecli
 az role definition list --name "Virtual Machine Operator" --output json | jq '.[] | .permissions[0].actions'
@@ -135,8 +132,7 @@ az role definition list --name "Virtual Machine Operator" --output json | jq '.[
   "Microsoft.ResourceHealth/availabilityStatuses/read",
   "Microsoft.Resources/subscriptions/resourceGroups/read",
   "Microsoft.Insights/alertRules/*",
-  "Microsoft.Insights/diagnosticSettings/*",
-  "Microsoft.Support/*"
+  "Microsoft.Insights/diagnosticSettings/*"
 ]
 ```
 
@@ -148,7 +144,7 @@ az role definition list --name "Virtual Machine Operator" --output json | jq '.[
 az role definition create --role-definition <role_definition>
 ```
 
-以下示例创建名为“虚拟机操作员”  的自定义角色。 该自定义角色分配访问 *Microsoft.Compute*、*Microsoft.Storage* 和 *Microsoft.Network* 资源提供程序的所有读取操作的权限，并分配访问虚拟机启动、重启和监视操作的权限。 该自定义角色可以在两个订阅中使用。 此示例将 JSON 文件用作输入。
+以下示例创建名为“虚拟机操作员”的自定义角色。 该自定义角色分配访问 *Microsoft.Compute*、*Microsoft.Storage* 和 *Microsoft.Network* 资源提供程序的所有读取操作的权限，并分配访问虚拟机启动、重启和监视操作的权限。 该自定义角色可以在两个订阅中使用。 此示例将 JSON 文件用作输入。
 
 vmoperator.json
 
@@ -166,8 +162,7 @@ vmoperator.json
     "Microsoft.Authorization/*/read",
     "Microsoft.ResourceHealth/availabilityStatuses/read",
     "Microsoft.Resources/subscriptions/resourceGroups/read",
-    "Microsoft.Insights/alertRules/*",
-    "Microsoft.Support/*"
+    "Microsoft.Insights/alertRules/*"
   ],
   "NotActions": [
 
@@ -191,7 +186,7 @@ az role definition create --role-definition ~/roles/vmoperator.json
 az role definition update --role-definition <role_definition>
 ```
 
-以下示例将“Microsoft.Insights/diagnosticSettings/”  操作添加到 `Actions`，并将管理组添加到“虚拟机操作员”  自定义角色的 `AssignableScopes`。 将管理组添加到 `AssignableScopes` 的功能目前处于预览状态。
+以下示例将“Microsoft.Insights/diagnosticSettings/”操作添加到 `Actions`，并将管理组添加到“虚拟机操作员”自定义角色的 `AssignableScopes`。 将管理组添加到 `AssignableScopes` 的功能目前处于预览状态。
 
 vmoperator.json
 
@@ -210,8 +205,7 @@ vmoperator.json
     "Microsoft.ResourceHealth/availabilityStatuses/read",
     "Microsoft.Resources/subscriptions/resourceGroups/read",
     "Microsoft.Insights/alertRules/*",
-    "Microsoft.Insights/diagnosticSettings/*",
-    "Microsoft.Support/*"
+    "Microsoft.Insights/diagnosticSettings/*"
   ],
   "NotActions": [
 
@@ -236,7 +230,7 @@ az role definition update --role-definition ~/roles/vmoperator.json
 az role definition delete --name <role_name or role_id>
 ```
 
-以下示例删除了“虚拟机操作员”  自定义角色。
+以下示例删除了“虚拟机操作员”自定义角色。
 
 ```azurecli
 az role definition delete --name "Virtual Machine Operator"
@@ -244,8 +238,6 @@ az role definition delete --name "Virtual Machine Operator"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [教程：使用 Azure CLI 为 Azure 资源创建自定义角色](tutorial-custom-role-cli.md)
-- [Azure 资源的自定义角色](custom-roles.md)
+- [Azure 自定义角色](custom-roles.md)
 - [Azure 资源管理器资源提供程序操作](resource-provider-operations.md)
 
-<!-- Update_Description: wording update -->

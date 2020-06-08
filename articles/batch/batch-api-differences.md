@@ -1,21 +1,17 @@
 ---
-title: 管理 API 和服务 API 之间的差异 - Azure Batch | Microsoft Docs
+title: 管理 API 和服务 API 之间的差异
 description: API 在 Azure Batch 服务的不同层上工作。
-services: batch
-author: LauraBrenner
-manager: evansma
-ms.service: batch
 ms.topic: conceptual
 ms.date: 04/28/2020
 ms.author: v-tawe
 ms.custom: seodec18
 origin.date: 02/26/2020
-ms.openlocfilehash: c501d67be8dddb05f4aa5d04c527704b889b78e9
-ms.sourcegitcommit: 1fbdefdace8a1d3412900c6c3f89678d8a9b29bc
+ms.openlocfilehash: eceed4c3e36773e340ee8fff131f4604ef3c351f
+ms.sourcegitcommit: cbaa1aef101f67bd094f6ad0b4be274bbc2d2537
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82886999"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84126766"
 ---
 # <a name="service-level-and-management-level-apis"></a>服务级别 API 和管理级别 API
 

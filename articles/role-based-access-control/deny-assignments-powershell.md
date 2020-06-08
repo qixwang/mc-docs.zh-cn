@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure PowerShell 列出 Azure 资源的拒绝分配 | Microsoft Docs
-description: 了解如何通过 Azure PowerShell 列出已被拒绝在特定范围内访问特定 Azure 资源操作的用户、组、服务主体和托管标识。
+title: 使用 Azure PowerShell 列出 Azure 拒绝分配 - Azure RBAC
+description: 了解如何使用 Azure PowerShell 和 Azure 基于角色的访问控制 (Azure RBAC) 列出已被拒绝在特定作用域内访问特定 Azure 资源操作的用户、组、服务主体和托管标识。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -10,28 +10,28 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/03/2020
+ms.date: 05/25/2020
 ms.author: v-junlch
 ms.reviewer: bagovind
-ms.openlocfilehash: 136e26232bd7979caaebad72159925578cd06d20
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 0841154fde1128ee41fafa6171544445c7b79e82
+ms.sourcegitcommit: 7429daf26cff014b040f69cdae75bdeaea4f4e93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75624387"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83991630"
 ---
-# <a name="list-deny-assignments-for-azure-resources-using-azure-powershell"></a>使用 Azure PowerShell 列出 Azure 资源的拒绝分配
+# <a name="list-azure-deny-assignments-using-azure-powershell"></a>使用 Azure PowerShell 列出 Azure 拒绝分配
 
-即使角色分配向用户授予了访问权限，[拒绝分配](deny-assignments.md)也会阻止用户执行特定的 Azure 资源操作。 本文介绍如何使用 Azure PowerShell 列出拒绝分配。
+即使角色分配向用户授予了访问权限，[Azure 拒绝分配](deny-assignments.md)也会阻止用户执行特定的 Azure 资源操作。 本文介绍如何使用 Azure PowerShell 列出拒绝分配。
 
 > [!NOTE]
-> 不能直接创建自己的拒绝分配。 有关如何创建拒绝分配的详细信息，请参阅[拒绝分配](deny-assignments.md)。
+> 不能直接创建自己的拒绝分配。 有关如何创建拒绝分配的信息，请参阅 [Azure 拒绝分配](deny-assignments.md)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 如要获取拒绝分配的相关信息，必须具有：
 
-- `Microsoft.Authorization/denyAssignments/read` 权限，其包括在大多数 [Azure 资源的内置角色](built-in-roles.md)中
+- `Microsoft.Authorization/denyAssignments/read` 权限，大多数 [Azure 内置角色](built-in-roles.md)都包含该权限
 - [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps)
 
 ## <a name="list-deny-assignments"></a>列出拒绝分配
@@ -113,7 +113,7 @@ Principals         : {
 
 ### <a name="list-deny-assignments-at-a-subscription-scope"></a>列出订阅范围内的拒绝分配
 
-若要列出订阅范围内的所有拒绝分配，请使用 [Get-AzDenyAssignment](https://docs.microsoft.com/powershell/module/az.resources/get-azdenyassignment)。 若要获取订阅 ID，可以在 Azure 门户中的“订阅”  边栏选项卡上找到它，也可以使用 [Get-AzSubscription](https://docs.microsoft.com/powershell/module/Az.Accounts/Get-AzSubscription)。
+若要列出订阅范围内的所有拒绝分配，请使用 [Get-AzDenyAssignment](https://docs.microsoft.com/powershell/module/az.resources/get-azdenyassignment)。 若要获取订阅 ID，可以在 Azure 门户中的“订阅”边栏选项卡上找到它，也可以使用 [Get-AzSubscription](https://docs.microsoft.com/powershell/module/Az.Accounts/Get-AzSubscription)。
 
 ```azurepowershell
 Get-AzDenyAssignment -Scope /subscriptions/<subscription_id>
@@ -125,7 +125,7 @@ PS C:\> Get-AzDenyAssignment -Scope /subscriptions/11111111-1111-1111-1111-11111
 
 ## <a name="next-steps"></a>后续步骤
 
-- [了解 Azure 资源的拒绝分配](deny-assignments.md)
-- [使用 Azure 门户列出 Azure 资源的拒绝分配](deny-assignments-portal.md)
-- [使用 REST API 列出 Azure 资源的拒绝分配](deny-assignments-rest.md)
+- [了解 Azure 拒绝分配](deny-assignments.md)
+- [使用 Azure 门户列出 Azure 拒绝分配](deny-assignments-portal.md)
+- [使用 REST API 列出 Azure 拒绝分配](deny-assignments-rest.md)
 

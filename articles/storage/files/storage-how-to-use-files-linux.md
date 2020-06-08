@@ -5,15 +5,15 @@ author: WenJason
 ms.service: storage
 ms.topic: conceptual
 origin.date: 10/19/2019
-ms.date: 03/30/2020
+ms.date: 06/01/2020
 ms.author: v-jay
 ms.subservice: files
-ms.openlocfilehash: a61b1eab45d5fb0a233ff44557caac575215074e
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 6fbda3a4b8922d16b24788dfa4cacd647a1af2e3
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80290341"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199728"
 ---
 # <a name="use-azure-files-with-linux"></a>通过 Linux 使用 Azure 文件
 [Azure 文件](storage-files-introduction.md)是易于使用的云文件系统。 可以使用 [SMB 内核客户端](https://wiki.samba.org/index.php/LinuxCIFS)在 Linux 分发版中装载 Azure 文件共享。 本文介绍装载 Azure 文件共享的两种方法：使用 `mount` 命令按需装载，以及通过在 `/etc/fstab` 中创建一个条目在启动时装载。
@@ -48,13 +48,13 @@ uname -r
     sudo apt install cifs-utils
     ```
 
-    在“Fedora”、“Red Hat Enterprise Linux 8+”和“CentOS 8+”中，请使用 `dnf` 包管理器：   
+    在“Fedora”、“Red Hat Enterprise Linux 8+”和“CentOS 8+”中，请使用 `dnf` 包管理器：  
 
     ```bash
     sudo dnf install cifs-utils
     ```
 
-    在旧版的“Red Hat Enterprise Linux”和“CentOS”中，请使用 `yum` 包管理器：  
+    在旧版的“Red Hat Enterprise Linux”和“CentOS”中，请使用 `yum` 包管理器： 
 
     ```bash
     sudo yum install cifs-utils 
@@ -112,7 +112,7 @@ uname -r
     sudo mkdir -p $mntPath
     ```
 
-1. **使用装载命令来装载 Azure 文件共享**。 在以下示例中，本地 Linux 文件和文件夹权限默认为 0755，表示所有者拥有读取、写入和执行权限（基于文件/目录 Linux 所有者），所有者组中的用户拥有读取和执行权限，系统中的其他用户拥有读取和执行权限。 可以使用 `uid` 和 `gid` 装载选项来设置装入点的用户 ID 和组 ID。 还可根据需要使用 `dir_mode` 和 `file_mode` 来设置自定义权限。 
+1. **使用装载命令来装载 Azure 文件共享**。 在以下示例中，本地 Linux 文件和文件夹权限默认为 0755，表示所有者拥有读取、写入和执行权限（基于文件/目录 Linux 所有者），所有者组中的用户拥有读取和执行权限，系统中的其他用户拥有读取和执行权限。 可以使用 `uid` 和 `gid` 装载选项来设置装入点的用户 ID 和组 ID。 还可根据需要使用 `dir_mode` 和 `file_mode` 来设置自定义权限。 有关如何设置权限的详细信息，请参阅 Wikipedia 上的 [UNIX 数值表示法](https://en.wikipedia.org/wiki/File_system_permissions#Numeric_notation)。 
 
     ```bash
     $httpEndpoint=(az storage account show \
@@ -174,7 +174,7 @@ uname -r
     sudo chmod 600 $smbCredentialFile
     ```
 
-1. **使用以下命令将以下行追加到 `/etc/fstab`** ：在以下示例中，本地 Linux 文件和文件夹权限默认为 0755，表示所有者拥有读取、写入和执行权限（基于文件/目录 Linux 所有者），所有者组中的用户拥有读取和执行权限，系统中的其他用户拥有读取和执行权限。 可以使用 `uid` 和 `gid` 装载选项来设置装入点的用户 ID 和组 ID。 还可根据需要使用 `dir_mode` 和 `file_mode` 来设置自定义权限。 
+1. **使用以下命令将以下行追加到 `/etc/fstab`** ：在以下示例中，本地 Linux 文件和文件夹权限默认为 0755，表示所有者拥有读取、写入和执行权限（基于文件/目录 Linux 所有者），所有者组中的用户拥有读取和执行权限，系统中的其他用户拥有读取和执行权限。 可以使用 `uid` 和 `gid` 装载选项来设置装入点的用户 ID 和组 ID。 还可根据需要使用 `dir_mode` 和 `file_mode` 来设置自定义权限。 有关如何设置权限的详细信息，请参阅 Wikipedia 上的 [UNIX 数值表示法](https://en.wikipedia.org/wiki/File_system_permissions#Numeric_notation)。
 
     ```bash
     $httpEndpoint=(az storage account show \
@@ -195,10 +195,57 @@ uname -r
     > [!Note]  
     > 上述装载命令装载 SMB 3.0。 如果你的 Linux 分发版不支持提供加密功能的 SMB 3.0，或者仅支持 SMB 2.1，则你只能从存储帐户所在的同一区域中的 Azure VM 进行装载。 若要在不支持提供加密功能的 SMB 3.0 的 Linux 分发版上装载 Azure 文件共享，需要[对存储帐户禁用传输中加密](../common/storage-require-secure-transfer.md?toc=%2fstorage%2ffiles%2ftoc.json)。
 
+### <a name="using-autofs-to-automatically-mount-the-azure-file-shares"></a>使用 autofs 自动装载 Azure 文件共享
+
+1. 确保已安装 autofs 包。  
+
+    可在所选的 Linux 分发版上使用包管理器安装 utofs 包。 
+
+    在 **Ubuntu** 和**基于 Debian** 的分发版上，请使用 `apt` 包管理器：
+    ```bash
+    sudo apt update
+    sudo apt install autofs
+    ```
+    在“Fedora”、“Red Hat Enterprise Linux 8+”和“CentOS 8+”中，请使用 `dnf` 包管理器：  
+    ```bash
+    sudo dnf install autofs
+    ```
+    在旧版的“Red Hat Enterprise Linux”和“CentOS”中，请使用 `yum` 包管理器： 
+    ```bash
+    sudo yum install autofs 
+    ```
+    在 **openSUSE** 上，请使用 `zypper` 包管理器：
+    ```bash
+    sudo zypper install autofs
+    ```
+2. 为共享创建装入点：
+   ```bash
+    sudo mkdir /fileshares
+    ```
+3. 创建新的自定义 autofs 配置文件
+    ```bash
+    sudo vi /etc/auto.fileshares
+    ```
+4. 将以下条目添加到 /etc/auto.fileshares
+   ```bash
+   echo "$fileShareName -fstype=cifs,credentials=$smbCredentialFile :$smbPath"" > /etc/auto.fileshares
+   ```
+5. 将以下条目添加到 /etc/auto.master
+   ```bash
+   /fileshares /etc/auto.fileshares --timeout=60
+   ```
+6. 重启 autofs
+    ```bash
+    sudo systemctl restart autofs
+    ```
+7.  访问为共享指定的文件夹
+    ```bash
+    cd /fileshares/$filesharename
+    ```
 ## <a name="securing-linux"></a>保护 Linux
 若要在 Linux 上装载 Azure 文件共享，端口 445 必须可访问。 由于 SMB 1 固有的安全风险，许多组织会阻止端口 445。 SMB 1（也称为通用 Internet 文件系统，简称 CIFS）是许多 Linux 分发版随附的一个传统文件系统协议。 SMB 1 是一个已过时的低效协议，最重要的是，它不安全。 好消息是 Azure 文件存储不支持 SMB 1，并且从 Linux 内核版本 4.18 开始，可在 Linux 中禁用 SMB 1。 我们始终[强烈建议](https://aka.ms/stopusingsmb1)在生产环境中使用 SMB 文件共享之前，禁用 Linux 客户端上的 SMB 1。
 
-从 Linux 内核 4.18 开始，SMB 内核模块（由于历史遗留原因，称作 `cifs`）会公开一个名为 `disable_legacy_dialects` 的新模块参数（在各种外部文档中通常名为 *parm*）。 尽管 Linux 内核 4.18 中已引入此项更改，但某些供应商会将此项更改向后移植到他们支持的旧内核。 为方便起见，下表详细描述了此模块参数在常用 Linux 分发版上的可用性。
+从 Linux 内核 4.18 开始，SMB 内核模块（由于历史遗留原因，称作 `cifs`）会公开一个名为 `disable_legacy_dialects` 的新模块参数（在各种外部文档中通常名为 parm）。 尽管 Linux 内核 4.18 中已引入此项更改，但某些供应商会将此项更改向后移植到他们支持的旧内核。 为方便起见，下表详细描述了此模块参数在常用 Linux 分发版上的可用性。
 
 | 分发 | 可以禁用 SMB 1 |
 |--------------|-------------------|
@@ -227,7 +274,7 @@ sudo modinfo -p cifs | grep disable_legacy_dialects
 
 此命令应输出以下消息：
 
-```Output
+```output
 disable_legacy_dialects: To improve security it may be helpful to restrict the ability to override the default dialects (SMB2.1, SMB3 and SMB3.02) on mount with old dialects (CIFS/SMB1 and SMB2) since vers=1.0 (CIFS/SMB1) and vers=2.0 are weaker and less secure. Default: n/N/0 (bool)
 ```
 
@@ -273,11 +320,6 @@ echo "options cifs disable_legacy_dialects=Y" | sudo tee -a /etc/modprobe.d/loca
 sudo modprobe cifs
 cat /sys/module/cifs/parameters/disable_legacy_dialects
 ```
-
-## <a name="feedback"></a>反馈
-Linux 用户，我们希望倾听意见！
-
-针对 Linux 用户组的 Azure 文件提供了一个论坛，在 Linux 上评估和采用文件存储时，可以在该论坛上共享反馈。 向 [Azure 文件 Linux 用户](mailto:azurefiles@microsoft.com)发送电子邮件可加入该用户组。
 
 ## <a name="next-steps"></a>后续步骤
 请参阅以下链接，获取有关 Azure 文件的更多信息：

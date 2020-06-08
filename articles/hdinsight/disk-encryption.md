@@ -6,14 +6,14 @@ ms.author: v-yiso
 ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
-origin.date: 01/06/2019
-ms.date: 03/23/2020
-ms.openlocfilehash: 79a70d441f10f83162133bbd308646e452fb0e9c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+origin.date: 04/15/2020
+ms.date: 06/08/2020
+ms.openlocfilehash: 05ab2dbc235c216839e8123d89db57cf3dc7c518
+ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79295993"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84186904"
 ---
 # <a name="customer-managed-key-disk-encryption"></a>客户管理的密钥磁盘加密
 
@@ -31,12 +31,12 @@ Azure HDInsight 支持使用客户管理的密钥，来加密附加到 HDInsight
 
 如果在存储磁盘加密密钥的密钥保管库上启用密钥保管库防火墙，则必须将用于部署群集的区域的 HDInsight 区域资源提供程序 IP 地址添加到密钥保管库防火墙配置。 这是必需的，因为 HDInsight 不是受信任的 Azure 密钥保管库服务。
 
-可以使用 Azure 门户或 Azure CLI 安全地旋转密钥保管库中的密钥。 轮换密钥时，HDInsight 群集在几分钟内即可开始使用新密钥。 启用[软删除](../key-vault/key-vault-ovw-soft-delete.md)密钥保护功能可以防范勒索软件和意外删除。 未启用此项保护功能的 Key Vault 不受支持。
+可以使用 Azure 门户或 Azure CLI 安全地旋转密钥保管库中的密钥。 轮换密钥时，HDInsight 群集在几分钟内即可开始使用新密钥。 启用[软删除](../key-vault/general/overview-soft-delete.md)密钥保护功能可以防范勒索软件和意外删除。 未启用此项保护功能的 Key Vault 不受支持。
 
 |群集类型 |OS 磁盘（托管磁盘） |数据磁盘（托管磁盘） |临时数据磁盘（本地 SSD） |
 |---|---|---|---|
-|Kafka、有加速写入的 HBase|SSE 加密|SSE 加密 + 可选 CMK 加密|可选 CMK 加密|
-|所有其他群集（Spark、Interactive、Hadoop、无加速写入的 HBase）|SSE 加密|不适用|可选 CMK 加密|
+|Kafka、有加速写入的 HBase|[SSE 加密](/virtual-machines/windows/managed-disks-overview#encryption)|SSE 加密 + 可选 CMK 加密|可选 CMK 加密|
+|所有其他群集（Spark、Interactive、Hadoop、无加速写入的 HBase）|SSE 加密|空值|可选 CMK 加密|
 
 ## <a name="get-started-with-customer-managed-keys"></a>客户托管密钥入门
 
@@ -57,47 +57,47 @@ Azure HDInsight 支持使用客户管理的密钥，来加密附加到 HDInsight
 
 ## <a name="create-azure-key-vault"></a>创建 Azure Key Vault
 
-创建密钥保管库。 有关具体步骤，请参阅[创建 Azure Key Vault](../key-vault/quick-create-portal.md)。
+创建密钥保管库。 有关具体步骤，请参阅[创建 Azure Key Vault](../key-vault/secrets/quick-create-portal.md)。
 
-HDInsight 仅支持 Azure Key Vault。 如果拥有自己的密钥保管库，则可以将密钥导入 Azure Key Vault。 请记住，密钥保管库必须启用“软删除”  。 有关导入现有密钥的详细信息，请访问[关于密钥、机密和证书](../key-vault/about-keys-secrets-and-certificates.md)。
+HDInsight 仅支持 Azure Key Vault。 如果拥有自己的密钥保管库，则可以将密钥导入 Azure Key Vault。 请记住，密钥保管库必须启用“软删除”。 有关导入现有密钥的详细信息，请访问[关于密钥、机密和证书](../key-vault/about-keys-secrets-and-certificates.md)。
 
 ## <a name="create-key"></a>创建密钥
 
-1. 在新密钥保管库中，导航到“设置” > “密钥” > “生成/导入”。   
+1. 在新密钥保管库中，导航到“设置” > “密钥” > “生成/导入”。  
 
     ![在 Azure Key Vault 中生成新密钥](./media/disk-encryption/create-new-key.png "在 Azure Key Vault 中生成新密钥")
 
-1. 提供名称，然后选择“创建”。  保留默认**密钥类型** **RSA**。
+1. 提供名称，然后选择“创建”。 保留默认**密钥类型** **RSA**。
 
     ![生成密钥名称](./media/disk-encryption/create-key.png "生成密钥名称")
 
-1. 返回到“密钥”  页时，选择创建的密钥。
+1. 返回到“密钥”页时，选择创建的密钥。
 
     ![Key Vault 密钥列表](./media/disk-encryption/key-vault-key-list.png)
 
-1. 选择要打开“密钥版本”  页的版本。 使用自己的密钥加密 HDInsight 群集时，需要提供密钥 URI。 复制“密钥标识符”  并将其保存在某处，直到你准备好创建群集。
+1. 选择要打开“密钥版本”页的版本。 使用自己的密钥加密 HDInsight 群集时，需要提供密钥 URI。 复制“密钥标识符”并将其保存在某处，直到你准备好创建群集。
 
     ![获取密钥标识符](./media/disk-encryption/get-key-identifier.png)
 
 ## <a name="create-access-policy"></a>创建访问策略
 
-1. 在新密钥保管库中，导航到“设置” > “访问策略” > “+ 添加访问策略”。   
+1. 在新密钥保管库中，导航到“设置” > “访问策略” > “+ 添加访问策略”。  
 
     ![创建新的 Azure Key Vault 访问策略](./media/disk-encryption/key-vault-access-policy.png)
 
-1. 在“添加访问策略”页中提供以下信息： 
+1. 在“添加访问策略”页中提供以下信息：
 
     |属性 |说明|
     |---|---|
-    |密钥权限|选择  “获取”  、“解包密钥”  和“包装密钥”。|
-    |机密权限|选择“获取”、“设置”和“删除”。   |
+    |密钥权限|选择“获取”、“解包密钥”和“包装密钥”。|
+    |机密权限|选择“获取”、“设置”和“删除”。  |
     |选择主体|选择前面创建的用户分配的托管标识。|
 
     ![为 Azure Key Vault 访问策略设置“选择主体”](./media/disk-encryption/azure-portal-add-access-policy.png)
 
-1. 选择“添加”   。
+1. 选择“添加”  。
 
-1. 选择“保存”  。
+1. 选择“保存” 。
 
     ![保存 Azure Key Vault 访问策略](./media/disk-encryption/add-key-vault-access-policy-save.png)
 
@@ -107,7 +107,7 @@ HDInsight 仅支持 Azure Key Vault。 如果拥有自己的密钥保管库，�
 
 ### <a name="using-the-azure-portal"></a>使用 Azure 门户
 
-在群集创建期间，提供完整的“密钥标识符”  ，包括密钥版本。 例如，`https://contoso-kv.vault.azure.net/keys/myClusterKey/46ab702136bc4b229f8b10e8c2997fa4`。 还需要将托管标识分配给集群并提供密钥 URI。
+在群集创建期间，提供完整的“密钥标识符”，包括密钥版本。 例如，`https://contoso-kv.vault.azure.net/keys/myClusterKey/46ab702136bc4b229f8b10e8c2997fa4`。 还需要将托管标识分配给集群并提供密钥 URI。
 
 ![创建新群集](./media/disk-encryption/create-cluster-portal.png)
 
@@ -131,7 +131,7 @@ az hdinsight create -t spark -g MyResourceGroup -n MyCluster \
 
 ### <a name="using-the-azure-portal"></a>使用 Azure 门户
 
-若要轮换密钥，需要基密钥保管库 URI。 完成此操作后，转到门户中的“HDInsight 群集属性”部分，单击“磁盘加密密钥 URL”下的“更改密钥”。   输入新密钥的 URL，并提交轮换密钥的操作。
+若要轮换密钥，需要基密钥保管库 URI。 完成此操作后，转到门户中的“HDInsight 群集属性”部分，单击“磁盘加密密钥 URL”下的“更改密钥”。  输入新密钥的 URL，并提交轮换密钥的操作。
 
 ![轮换磁盘加密密钥](./media/disk-encryption/change-key.png)
 
@@ -164,7 +164,7 @@ HDInsight 使用与 HDInsight 群集关联的托管标识来访问 Azure Key Vau
 
 **如果群集失去了对 Key Vault 或密钥的访问权限，会发生什么情况？**
 
-如果群集失去了对密钥的访问权限，Apache Ambari 门户中会显示警告。 在此状态下，“更改密钥”操作将会失败。  恢复密钥访问权限后，Ambari 警告将会消失，密钥轮换等操作可以成功执行。
+如果群集失去了对密钥的访问权限，Apache Ambari 门户中会显示警告。 在此状态下，“更改密钥”操作将会失败。 恢复密钥访问权限后，Ambari 警告将会消失，密钥轮换等操作可以成功执行。
 
 ![密钥访问 Ambari 警报](./media/disk-encryption/ambari-alert.png)
 

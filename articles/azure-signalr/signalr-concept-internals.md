@@ -5,22 +5,20 @@ author: sffamily
 ms.service: signalr
 ms.topic: conceptual
 origin.date: 11/13/2019
-ms.date: 12/16/2019
+ms.date: 05/25/2020
 ms.author: v-tawe
-ms.openlocfilehash: a5a9c25f7c3990272772b2030685f31814a84af1
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: b2969d7f9e9ecf4bc2e36de09f79b074a64c7cf4
+ms.sourcegitcommit: 8b77a146f74ebe2cb287821fe5fc13870f89467a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75600583"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83844168"
 ---
 # <a name="azure-signalr-service-internals"></a>Azure SignalR 服务内部
 
-Azure SignalR 服务构建于 ASP.NET Core SignalR 框架的基础之上。 它还支持预览版功能 ASP.NET SignalR。
+Azure SignalR 服务构建于 ASP.NET Core SignalR 框架的基础之上。 它还通过在 ASP.NET Core 框架之上重新实现 ASP.NET SignalR 的数据协议来支持 ASP.NET SignalR。
 
-> 为了支持 ASP.NET SignalR，Azure SignalR 服务将在 ASP.NET Core 框架的顶层重新实现 ASP.NET SignalR 数据协议
-
-只需更改少量的几行代码，即可轻松迁移本地 ASP.NET Core SignalR 应用程序以使用 SignalR 服务。
+只需更改少量的几行代码，即可轻松迁移本地 ASP.NET Core SignalR 应用程序或 ASP.NET SignalR 应用程序以使用 SignalR 服务。
 
 下图描绘了在应用程序服务器上使用 SignalR 服务时的典型体系结构。
 

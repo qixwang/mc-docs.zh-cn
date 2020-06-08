@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure RBAC 和 Azure PowerShell 添加或删除角色分配
-description: 了解如何使用 Azure 基于角色的访问控制 (RBAC) 和 Azure PowerShell 为用户、组、服务主体或托管标识授予对 Azure 资源的访问权限。
+title: 使用 Azure PowerShell 添加或删除 Azure 角色分配 - Azure RBAC
+description: 了解如何使用 Azure PowerShell 和 Azure 基于角色的访问控制 (Azure RBAC) 为用户、组、服务主体或托管标识授予对 Azure 资源的访问权限。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -11,17 +11,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/10/2020
+ms.date: 05/25/2020
 ms.author: v-junlch
 ms.reviewer: bagovind
-ms.openlocfilehash: bcde9f00f65e3446c356d75a4f9f4209df7a5e0b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: ab0638578d1bbbb31142d922c8f69b074e065484
+ms.sourcegitcommit: 7429daf26cff014b040f69cdae75bdeaea4f4e93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292323"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83991658"
 ---
-# <a name="add-or-remove-role-assignments-using-azure-rbac-and-azure-powershell"></a>使用 Azure RBAC 和 Azure PowerShell 添加或删除角色分配
+# <a name="add-or-remove-azure-role-assignments-using-azure-powershell"></a>使用 Azure PowerShell 添加或删除 Azure 角色分配
 
 [!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)] 本文介绍如何使用 Azure PowerShell 分配角色。
 
@@ -67,7 +67,7 @@ Get-AzADServicePrincipal -SearchString <service_name_in_quotes>
 
 ## <a name="add-a-role-assignment"></a>添加角色分配
 
-在 RBAC 中，若要授予访问权限，请添加角色分配。
+在 Azure RBAC 中，要授予访问权限，请添加角色分配。
 
 ### <a name="user-at-a-resource-group-scope"></a>资源组范围内的用户
 
@@ -98,7 +98,7 @@ CanDelegate        : False
 很多时候角色名称可能会更改，例如：
 
 - 你使用的是自己的自定义角色，你决定更改名称。
-- 你使用的是预览版角色，其名称中有“(预览)”字样。  发布角色时重命名了角色。
+- 你使用的是预览版角色，其名称中有“(预览)”字样。 发布角色时重命名了角色。
 
 > [!IMPORTANT]
 > 预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
@@ -112,7 +112,7 @@ CanDelegate        : False
 New-AzRoleAssignment -ObjectId <object_id> -RoleDefinitionId <role_id> -ResourceGroupName <resource_group_name>
 ```
 
-以下示例将[虚拟机参与者](built-in-roles.md#virtual-machine-contributor)角色分配给 *pharma-sales* 资源组范围内的 alain\@example.com  用户。 若要获取唯一的角色 ID，可以使用 [Get-AzRoleDefinition](https://docs.microsoft.com/powershell/module/az.resources/get-azroledefinition)，也可以参阅 [Azure 资源的内置角色](built-in-roles.md)。
+以下示例将[虚拟机参与者](built-in-roles.md#virtual-machine-contributor)角色分配给 *pharma-sales* 资源组范围内的 alain\@example.com 用户。 要获取唯一角色 ID，可以使用 [Get-AzRoleDefinition](https://docs.microsoft.com/powershell/module/az.resources/get-azroledefinition)，也可以参阅 [Azure 内置角色](built-in-roles.md)。
 
 ```Example
 PS C:\> New-AzRoleAssignment -ObjectId 44444444-4444-4444-4444-444444444444 -RoleDefinitionId 9980e02c-c2be-4d73-94e8-173b1dc7cf3c -Scope /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pharma-sales
@@ -183,7 +183,7 @@ CanDelegate        : False
 
 ### <a name="user-at-a-management-group-scope"></a>管理组范围内的用户
 
-若要为管理组范围内的用户添加角色分配，请使用 [New-AzRoleAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azroleassignment)。 若要获取管理组 ID，可以在 Azure 门户中的“管理组”  边栏选项卡上找到它，也可以使用 [Get-AzManagementGroup](https://docs.microsoft.com/powershell/module/az.resources/get-azmanagementgroup)。
+若要为管理组范围内的用户添加角色分配，请使用 [New-AzRoleAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azroleassignment)。 若要获取管理组 ID，可以在 Azure 门户中的“管理组”边栏选项卡上找到它，也可以使用 [Get-AzManagementGroup](https://docs.microsoft.com/powershell/module/az.resources/get-azmanagementgroup)。
 
 ```azurepowershell
 New-AzRoleAssignment -SignInName <email_or_userprincipalname> -RoleDefinitionName <role_name> -Scope /providers/Microsoft.Management/managementGroups/<group_id>
@@ -205,9 +205,9 @@ CanDelegate        : False
 
 ## <a name="remove-a-role-assignment"></a>删除角色分配
 
-在 RBAC 中，若要删除访问权限，请使用 [Remove-AzRoleAssignment](https://docs.microsoft.com/powershell/module/az.resources/remove-azroleassignment) 删除角色分配。
+在 Azure RBAC 中，要删除访问权限，请使用 [Remove-AzRoleAssignment](https://docs.microsoft.com/powershell/module/az.resources/remove-azroleassignment) 删除角色分配。
 
-以下示例在 pharma-sales  资源组上从 alain\@example.com  用户删除“虚拟机参与者”角色分配  ：
+以下示例在 pharma-sales 资源组上从 alain\@example.com 用户删除“虚拟机参与者”角色分配：
 
 ```Example
 PS C:\> Remove-AzRoleAssignment -SignInName alain@example.com -RoleDefinitionName "Virtual Machine Contributor" -ResourceGroupName pharma-sales
@@ -225,13 +225,11 @@ Remove-AzRoleAssignment -ObjectId <object_id> -RoleDefinitionName <role_name> -S
 Remove-AzRoleAssignment -ObjectId <object_id> -RoleDefinitionName <role_name> -Scope /providers/Microsoft.Management/managementGroups/<group_id>
 ```
 
-如果收到错误消息：“提供的信息未映射到角色分配”，请确保还指定了 `-Scope` 或 `-ResourceGroupName` 参数。 有关详细信息，请参阅[对 Azure 资源的 RBAC 进行故障排除](troubleshooting.md#role-assignments-with-unknown-security-principal)。
+如果收到错误消息：“提供的信息未映射到角色分配”，请确保还指定了 `-Scope` 或 `-ResourceGroupName` 参数。 有关详细信息，请参阅 [Azure RBAC 疑难解答](troubleshooting.md#role-assignments-with-identity-not-found)。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [使用 Azure RBAC 和 Azure PowerShell 列出角色分配](role-assignments-list-powershell.md)
-- [教程：使用 RBAC 和 Azure PowerShell 授予组对 Azure 资源的访问权限](tutorial-role-assignments-group-powershell.md)
-- [教程：使用 Azure PowerShell 为 Azure 资源创建自定义角色](tutorial-custom-role-powershell.md)
+- [使用 Azure PowerShell 列出 Azure 角色分配](role-assignments-list-powershell.md)
+- [教程：使用 Azure PowerShell 向组授予对 Azure 资源的访问权限](tutorial-role-assignments-group-powershell.md)
 - [使用 Azure PowerShell 管理资源](../azure-resource-manager/management/manage-resources-powershell.md)
 
-<!-- Update_Description: link update -->

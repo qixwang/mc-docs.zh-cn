@@ -5,16 +5,16 @@ author: WenJason
 ms.service: storage
 ms.topic: reference
 origin.date: 10/16/2019
-ms.date: 01/06/2020
+ms.date: 06/01/2020
 ms.author: v-jay
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 73b71a1a41ff4a1c8d6846447350f899ec634760
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: dd81fd86e92d944ec647552f3ddc0ceb285ef566
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75624333"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199501"
 ---
 # <a name="azcopy-sync"></a>azcopy sync
 
@@ -67,6 +67,9 @@ azcopy sync <source> <destination> [flags]
 azcopy sync "/path/to/file.txt" "https://[account].blob.core.chinacloudapi.cn/[container]/[path/to/blob]"
 ```
 
+> [!NOTE]
+> 必须存在目标 Blob。 使用 `azcopy copy` 复制目标中没有的单个文件。 否则将发生以下错误：`Cannot perform sync due to error: sync must happen between source and destination of the same type, e.g. either file <-> file, or directory/container <-> directory/container`。
+
 与前面的示例相同，但这一次此命令还会计算文件内容的 MD5 哈希，并将其另存为 Blob 的 Content-MD5 属性：
 
 ```azcopy
@@ -107,8 +110,9 @@ azcopy sync "/path/to/dir" "https://[account].blob.core.chinacloudapi.cn/[contai
 
 ```azcopy
 azcopy sync "https://[account].blob.core.chinacloudapi.cn/[container]/[path/to/blob]?[SAS]" "https://[account].blob.core.chinacloudapi.cn/[container]/[path/to/blob]"
+```
 
-Sync a virtual directory:
+同步虚拟目录：
 
 ```azcopy
 azcopy sync "https://[account].blob.core.chinacloudapi.cn/[container]/[path/to/virtual/dir]?[SAS]" "https://[account].blob.core.chinacloudapi.cn/[container]/[path/to/virtual/dir]" --recursive=true
@@ -141,13 +145,13 @@ azcopy sync "https://[account].file.core.chinacloudapi.cn/[share]/[path/to/dir]?
 
 **--exclude-path** 字符串复制时排除这些路径。 此选项不支持通配符 (*)。 检查相对路径前缀（例如：myFolder;myFolder/subDirName/file.pdf）。 与帐户遍历结合使用时，路径不包含容器名称。
 
-**--exclude-pattern** 字符串      排除名称与模式列表相匹配的文件。 例如： *.jpg;* .pdf;exactName
+**--exclude-pattern** 字符串      排除名称与模式列表相匹配的文件。 例如：\*.jpg;\*.pdf;exactName
 
 **-h、--help**                         sync 命令的帮助
 
 **--include-attributes** 字符串   （仅限 Windows）仅包括其属性与属性列表相匹配的文件。 例如：A;S;R
 
-**--include-pattern** 字符串      仅包括名称与模式列表相匹配的文件。 例如： *.jpg;* .pdf;exactName
+**--include-pattern** 字符串      仅包括名称与模式列表相匹配的文件。 例如：\*.jpg;\*.pdf;exactName
 
 **--log-level** 字符串             定义日志文件的日志详细程度，可用级别：INFO（所有请求和响应）、WARNING（响应缓慢）、ERROR（仅限失败的请求）和 NONE（无输出日志）。 （默认值为 INFO）。 （默认值为“INFO”）
 

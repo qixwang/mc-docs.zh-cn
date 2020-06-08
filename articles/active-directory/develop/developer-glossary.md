@@ -8,17 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 01/06/2020
+ms.date: 05/27/2020
 ms.author: v-junlch
 ms.custom: aaddev
 ms.reviewer: jmprieur, saeeda, jesakowi, nacanuma
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24731d5af43ec92464934ace24b3abbb0f5ebb84
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: cd5e1d788163dccf7e95e67d805d384c2c415550
+ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79291089"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84186742"
 ---
 # <a name="microsoft-identity-platform-developer-glossary"></a>Microsoft 标识平台开发人员术语表
 
@@ -27,6 +26,8 @@ ms.locfileid: "79291089"
 ## <a name="access-token"></a>访问令牌
 
 由[授权服务器](#authorization-server)颁发的一种[安全令牌](#security-token)，可供[客户端应用程序](#client-application)用来访问[受保护的资源服务器](#resource-server)。 通常，该令牌采用 [JSON Web 令牌 (JWT)][JWT] 形式，其中包含由[资源所有者](#resource-owner)授予客户端的授权，用于进行所请求级别的访问。 该令牌包含所有适用的主体相关[声明](#claim)，可让客户端应用程序将其作为某种形式的凭据来访问给定的资源。 并使得资源所有者不必对客户端公开凭据。
+
+访问令牌仅在短时间内有效，且不能撤销。 颁发访问令牌时，授权服务器还可以发布[刷新令牌](#refresh-token)。 刷新令牌通常仅提供给机密客户端应用程序。
 
 根据提供的凭据，访问令牌有时称为“用户+应用”或“仅限应用”。 例如，如果客户端应用程序：
 
@@ -45,7 +46,7 @@ Azure AD 向应用程序注册颁发的唯一标识符，用于标识特定应�
 
 ## <a name="application-object"></a>应用程序对象
 
-当你在 [Azure 门户][AZURE-portal]中注册/更新应用程序时，该门户将为此租户创建/更新应用程序对象和对应的[服务主体对象](#service-principal-object)。 应用程序对象可全局（在其能够访问的所有租户中）定义  应用程序的标识配置，并可提供模板来派生  出其对应的服务主体对象，在运行时于本地（在特定租户中）使用。
+当你在 [Azure 门户][AZURE-portal]中注册/更新应用程序时，该门户将为此租户创建/更新应用程序对象和对应的[服务主体对象](#service-principal-object)。 应用程序对象可全局（在其能够访问的所有租户中）定义应用程序的标识配置，并可提供模板来派生出其对应的服务主体对象，在运行时于本地（在特定租户中）使用。
 
 有关详细信息，请参阅[应用程序和服务主体对象][AAD-App-SP-Objects]。
 
@@ -137,7 +138,13 @@ Microsoft 标识平台是 Azure Active Directory (Azure AD) 标识服务和开�
 
 权限也会在 [同意](#consent) 过程中出现，让管理员或资源所有者有机会允许/拒绝客户端对其租户中的资源进行访问。
 
-权限请求是在 [Azure 门户][AZURE-portal]中用于应用程序的“API 权限”  页上配置的，方法是选择所需的“委托的权限”和“应用程序权限”（后者需要“全局管理员”角色中的成员资格）。 [公共客户端](#client-application)无法安全地维护凭据，因此它只能请求委托的权限，而[机密客户端](#client-application)则可以请求委托的权限和应用程序权限。 客户端的[应用程序对象](#application-object)将声明的权限存储在其 [requiredResourceAccess 属性][Graph-App-Resource]中。
+权限请求是在 [Azure 门户][AZURE-portal]中用于应用程序的“API 权限”页上配置的，方法是选择所需的“委托的权限”和“应用程序权限”（后者需要“全局管理员”角色中的成员资格）。 [公共客户端](#client-application)无法安全地维护凭据，因此它只能请求委托的权限，而[机密客户端](#client-application)则可以请求委托的权限和应用程序权限。 客户端的[应用程序对象](#application-object)将声明的权限存储在其 [requiredResourceAccess 属性][Graph-App-Resource]中。
+
+## <a name="refresh-token"></a>刷新令牌
+
+由[授权服务器](#authorization-server)颁发的一种[安全令牌](#security-token)，可供[客户端应用程序](#client-application)使用，以便在访问令牌到期之前请求新的[访问令牌](#access-token)。 通常采用 [JSON Web 令牌 (JWT)][JWT] 的形式。
+
+与访问令牌不同，刷新令牌可以撤销。 如果客户端应用程序尝试使用已撤销的刷新令牌请求新的访问令牌，授权服务器会拒绝该请求，客户端应用程序不再具有代表[资源所有者](#resource-owner)访问[资源服务器](#resource-server)的权限。
 
 ## <a name="resource-owner"></a>资源所有者
 
@@ -147,7 +154,7 @@ Microsoft 标识平台是 Azure Active Directory (Azure AD) 标识服务和开�
 
 根据 [OAuth2 授权框架][OAuth2-Role-Def]的定义，这是托管受保护资源的服务器，该服务器能够接受并响应出示[访问令牌](#access-token)的[客户端应用程序](#client-application)发出的受保护资源请求。 它也称为受保护的资源服务器或资源应用程序。
 
-资源服务器使用 OAuth 2.0 授权框架公开 API，并通过[范围](#scopes)和[角色](#roles)强制实施其受保护资源的访问权限。 示例包括可访问 Azure AD 租户数据的 [Microsoft Graph API][Microsoft-Graph]，以及可访问邮件和日历等数据的 Office 365 API。 
+资源服务器使用 OAuth 2.0 授权框架公开 API，并通过[范围](#scopes)和[角色](#roles)强制实施其受保护资源的访问权限。 示例包括可访问 Azure AD 租户数据的 [Microsoft Graph API][Microsoft-Graph]，以及可访问邮件和日历等数据的 Office 365 API。
 
 与客户端应用程序一样，资源应用程序的标识配置是通过 Azure AD 租户中的 [注册](#application-registration) 来建立的，可提供应用程序和服务主体对象。 Microsoft 提供的某些 API（例如 Microsoft Graph API）在预配期间将预先注册的服务主体设置为在所有租户中可用。
 
@@ -169,7 +176,7 @@ Microsoft 标识平台是 Azure Active Directory (Azure AD) 标识服务和开�
 
 ## <a name="security-token"></a>安全令牌
 
-包含 OAuth2 令牌或 SAML 2.0 断言等声明的已签名文档。 对于 OAuth2 [授权](#authorization-grant)，[访问令牌](#access-token) (OAuth2) 和 [ID 令牌](https://openid.net/specs/openid-connect-core-1_0.html#IDToken)都是安全令牌类型，并且这两种类型都作为 [JSON Web 令牌 (JWT)][JWT] 实现。
+包含 OAuth2 令牌等声明的已签名文档。 对于 OAuth2 [授权](#authorization-grant)，[访问令牌](#access-token) (OAuth2)、[刷新令牌](#refresh-token)和 [ID 令牌](https://openid.net/specs/openid-connect-core-1_0.html#IDToken)都是安全令牌类型，并且所有这些类型都作为 [JSON Web 令牌 (JWT)][JWT] 实现。
 
 ## <a name="service-principal-object"></a>应用程序对象
 
@@ -251,4 +258,3 @@ Azure AD 目录的实例称为 Azure AD 租户。 它提供的一些功能包括
 [OpenIDConnect-AuthZ-Endpoint]: https://openid.net/specs/openid-connect-core-1_0.html#AuthorizationEndpoint
 [OpenIDConnect-ID-Token]: https://openid.net/specs/openid-connect-core-1_0.html#IDToken
 
-<!-- Update_Description: wording update -->

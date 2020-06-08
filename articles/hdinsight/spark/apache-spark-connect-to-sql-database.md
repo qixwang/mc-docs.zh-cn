@@ -10,18 +10,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 origin.date: 10/03/2019
 ms.date: 11/11/2019
-ms.openlocfilehash: a132af667d6c3bdaf8d7eb93551eb5438e76fe43
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: d8a9adfcbc8e086ef4d36ef6a405e67baa1bb42e
+ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "73426091"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84186457"
 ---
 # <a name="use-hdinsight-spark-cluster-to-read-and-write-data-to-azure-sql-database"></a>使用 HDInsight Spark 群集在 Azure SQL 数据库中读取和写入数据
 
-了解如何将 Azure HDInsight 中的 Apache Spark 群集连接到 Azure SQL 数据库，然后在 SQL 数据库中读取、写入和流式传输数据。 本文中的说明使用 [Jupyter Notebook](https://jupyter.org/) 运行 Scala 代码片段。 但是，可以在 Scala 或 Python 中创建独立的应用程序，然后执行相同的任务。 
+了解如何将 Azure HDInsight 中的 Apache Spark 群集连接到 Azure SQL 数据库。 然后，在 SQL 数据库中读取、写入和流式传输数据。 本文中的说明使用 Jupyter Notebook 运行 Scala 代码片段。 但是，可以在 Scala 或 Python 中创建独立的应用程序，然后执行相同的任务。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * **Azure HDInsight Spark 群集**。  遵照[在 HDInsight 中创建 Apache Spark 群集](apache-spark-jupyter-spark-sql.md)中的说明。
 
@@ -31,15 +31,15 @@ ms.locfileid: "73426091"
     * Azure SQL 数据库名称
     * Azure SQL 数据库管理员用户名/密码
 
-* **SQL Server Management Studio**。 遵照[使用 SSMS 连接和查询数据](../../sql-database/sql-database-connect-query-ssms.md)中的说明。
+* SQL Server Management Studio (SSMS)。 遵照[使用 SSMS 连接和查询数据](../../sql-database/sql-database-connect-query-ssms.md)中的说明。
 
 ## <a name="create-a-jupyter-notebook"></a>创建 Jupyter Notebook 
 
-首先，创建与 Spark 群集关联的 [Jupyter Notebook](https://jupyter.org/)。 到时要使用此 Notebook 来运行本文中所用的代码片段。 
+首先，创建与 Spark 群集关联的 Jupyter Notebook。 到时要使用此 Notebook 来运行本文中所用的代码片段。
 
 1. 从 [Azure 门户网站](https://portal.azure.cn/)打开群集。 
 
-1. 选择右侧**群集仪表板**下方的 **Jupyter notebook**。  如果没有看到“群集仪表板”  ，请从左侧菜单中选择“概述”  。 出现提示时，请输入群集的管理员凭据。
+1. 选择右侧**群集仪表板**下方的 **Jupyter notebook**。  如果没有看到“群集仪表板”，请从左侧菜单中选择“概述”。 出现提示时，请输入群集的管理员凭据。
 
     ![Spark 上的 Jupyter Notebook](./media/apache-spark-connect-to-sql-database/hdinsight-spark-cluster-dashboard-jupyter-notebook.png "Spark 上的 Jupyter Notebook")
    
@@ -50,17 +50,17 @@ ms.locfileid: "73426091"
    > 
    > 
 
-4. 在 Jupyter Notebook 的右上角，依次单击“新建”、“Spark”创建 Scala 笔记本。   HDInsight Spark 群集上的 Jupyter Notebook 还提供适用于 Python2 应用程序的 **PySpark** 内核，以及适用于 Python3 应用程序的 **PySpark3** 内核。 本文将会创建 Scala 笔记本。
+4. 在 Jupyter Notebook 的右上角，依次单击“新建”、“Spark”创建 Scala 笔记本。  HDInsight Spark 群集上的 Jupyter Notebook 还提供适用于 Python2 应用程序的 **PySpark** 内核，以及适用于 Python3 应用程序的 **PySpark3** 内核。 本文将会创建 Scala 笔记本。
    
     ![Spark 上适用于 Jupyter Notebook 的内核](./media/apache-spark-connect-to-sql-database/kernel-jupyter-notebook-on-spark.png "Spark 上适用于 Jupyter Notebook 的内核")
 
-    有关内核的详细信息，请参阅[将 Jupyter Notebook 内核与 HDInsight 中的 Apache Spark 群集配合使用](apache-spark-jupyter-notebook-kernels.md)。
+    要深入了解这些内核，请参阅 [在 HDInsight 中将 Jupyter 笔记本内核与 Apache Spark 群集配合使用](apache-spark-jupyter-notebook-kernels.md)。
 
    > [!NOTE]
    > 本文使用 Spark (Scala) 内核，因为目前只有 Scala 和 Java 才支持将数据从 Spark 流式传输到 SQL 数据库。 尽管可以使用 Python 在 SQL中 读取和写入数据，但为了保持一致，本文将使用 Scala 执行所有三个操作。
    >
 
-5. 这会打开默认名称为“无标题”的新笔记本。  单击笔记本名称，然后输入所选的名称。
+1. 将打开默认名称为“无标题”的新笔记本。 单击笔记本名称，然后输入所选的名称。
 
     ![提供笔记本的名称](./media/apache-spark-connect-to-sql-database/hdinsight-spark-jupyter-notebook-name.png "提供笔记本的名称")
 
@@ -72,44 +72,56 @@ ms.locfileid: "73426091"
 
 1. 在新 Jupyter Notebook 的代码单元中，粘贴以下代码片段，并将占位符值替换为 Azure SQL 数据库的值。
 
-       // Declare the values for your Azure SQL database
+    ```scala
+    // Declare the values for your Azure SQL database
 
-       val jdbcUsername = "<SQL DB ADMIN USER>"
-       val jdbcPassword = "<SQL DB ADMIN PWD>"
-       val jdbcHostname = "<SQL SERVER NAME HOSTING SDL DB>" //typically, this is in the form or servername.database.chinacloudapi.cn
-       val jdbcPort = 1433
-       val jdbcDatabase ="<AZURE SQL DB NAME>"
+    val jdbcUsername = "<SQL DB ADMIN USER>"
+    val jdbcPassword = "<SQL DB ADMIN PWD>"
+    val jdbcHostname = "<SQL SERVER NAME HOSTING SDL DB>" //typically, this is in the form or servername.database.chinacloudapi.cn
+    val jdbcPort = 1433
+    val jdbcDatabase ="<AZURE SQL DB NAME>"
+    ```
 
     按 **SHIFT + ENTER** 运行代码单元。  
 
 1. 使用以下代码片段生成可传递给 Spark 数据帧 API 的 JDBC URL。 此代码创建一个 `Properties` 对象来保存参数。 粘贴代码单元中的代码片段，然后按 **SHIFT + ENTER** 运行。
 
-       import java.util.Properties
+    ```scala
+    import java.util.Properties
 
-       val jdbc_url = s"jdbc:sqlserver://${jdbcHostname}:${jdbcPort};database=${jdbcDatabase};encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.chinacloudapi.cn;loginTimeout=60;"
-       val connectionProperties = new Properties()
-       connectionProperties.put("user", s"${jdbcUsername}")
-       connectionProperties.put("password", s"${jdbcPassword}")         
+    val jdbc_url = s"jdbc:sqlserver://${jdbcHostname}:${jdbcPort};database=${jdbcDatabase};encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.chinacloudapi.cn;loginTimeout=60;"
+    val connectionProperties = new Properties()
+    connectionProperties.put("user", s"${jdbcUsername}")
+    connectionProperties.put("password", s"${jdbcPassword}")         
+    ```
 
-3. 使用以下代码片段创建一个数据帧，其中包含 Azure SQL 数据库的某个表中的数据。 此代码片段使用用作 **AdventureWorksLT** 数据库一部分的 **SalesLT.Address** 表。 粘贴代码单元中的代码片段，然后按 **SHIFT + ENTER** 运行。
+1. 使用以下代码片段创建一个数据帧，其中包含 Azure SQL 数据库内某个表中的数据。 此代码片段使用 AdventureWorksLT 数据库中包含的 `SalesLT.Address` 表。 粘贴代码单元中的代码片段，然后按 **SHIFT + ENTER** 运行。
 
-       val sqlTableDF = spark.read.jdbc(jdbc_url, "SalesLT.Address", connectionProperties)
+    ```scala
+    val sqlTableDF = spark.read.jdbc(jdbc_url, "SalesLT.Address", connectionProperties)
+    ```
 
-4. 现在，可以针对数据帧执行操作，例如，获取数据架构：
+1. 现在，可以对数据帧执行操作，例如，获取数据架构：
 
-       sqlTableDF.printSchema
-   
-    会显示如下所示的输出：
+    ```scala
+    sqlTableDF.printSchema
+    ```
 
-    ![提供笔记本的名称](./media/apache-spark-connect-to-sql-database/read-from-sql-schema-output.png "提供笔记本的名称")
+    会显示如下图所示的输出：
 
-5. 还可以执行其他操作，例如检索前 10 行。
+    ![架构输出](./media/apache-spark-connect-to-sql-database/read-from-sql-schema-output.png "架构输出")
 
-       sqlTableDF.show(10)
+1. 还可以执行其他操作，例如检索前 10 行。
 
-6. 或者，从数据集检索特定的列。
+    ```scala
+    sqlTableDF.show(10)
+    ```
 
-       sqlTableDF.select("AddressLine1", "City").show(10)
+1. 或者，从数据集检索特定的列。
+
+    ```scala
+    sqlTableDF.select("AddressLine1", "City").show(10)
+    ```
 
 ## <a name="write-data-into-azure-sql-database"></a>将数据写入 Azure SQL 数据库
 
@@ -117,50 +129,60 @@ ms.locfileid: "73426091"
 
 1. 在新 Jupyter Notebook 的代码单元中，粘贴以下代码片段，并将占位符值替换为 Azure SQL 数据库的值。
 
-       // Declare the values for your Azure SQL database
+    ```scala
+    // Declare the values for your Azure SQL database
 
-       val jdbcUsername = "<SQL DB ADMIN USER>"
-       val jdbcPassword = "<SQL DB ADMIN PWD>"
-       val jdbcHostname = "<SQL SERVER NAME HOSTING SDL DB>" //typically, this is in the form or servername.database.chinacloudapi.cn
-       val jdbcPort = 1433
-       val jdbcDatabase ="<AZURE SQL DB NAME>"
+    val jdbcUsername = "<SQL DB ADMIN USER>"
+    val jdbcPassword = "<SQL DB ADMIN PWD>"
+    val jdbcHostname = "<SQL SERVER NAME HOSTING SDL DB>" //typically, this is in the form or servername.database.chinacloudapi.cn
+    val jdbcPort = 1433
+    val jdbcDatabase ="<AZURE SQL DB NAME>"
+    ```
 
     按 **SHIFT + ENTER** 运行代码单元。  
 
 1. 以下代码片段生成可传递给 Spark 数据帧 API 的 JDBC URL。 此代码创建一个 `Properties` 对象来保存参数。 粘贴代码单元中的代码片段，然后按 **SHIFT + ENTER** 运行。
 
+    ```scala
        import java.util.Properties
 
        val jdbc_url = s"jdbc:sqlserver://${jdbcHostname}:${jdbcPort};database=${jdbcDatabase};encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.chinacloudapi.cn;loginTimeout=60;"
        val connectionProperties = new Properties()
        connectionProperties.put("user", s"${jdbcUsername}")
        connectionProperties.put("password", s"${jdbcPassword}")
+    ```
 
-3. 使用以下代码片段提取 HVAC.csv 中的数据架构，并使用该架构将 CSV 中的数据载入数据帧 `readDf`。 粘贴代码单元中的代码片段，然后按 **SHIFT + ENTER** 运行。
+1. 使用以下代码片段提取 HVAC.csv 中的数据架构，并使用该架构将 CSV 中的数据载入数据帧 `readDf`。 粘贴代码单元中的代码片段，然后按 **SHIFT + ENTER** 运行。
 
-       val userSchema = spark.read.option("header", "true").csv("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv").schema
-       val readDf = spark.read.format("csv").schema(userSchema).load("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
+    ```scala
+    val userSchema = spark.read.option("header", "true").csv("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv").schema
+    val readDf = spark.read.format("csv").schema(userSchema).load("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
+    ```
 
-4. 使用 `readDf` 数据帧创建临时表 `temphvactable`。 然后使用该临时表创建 Hive 表 `hvactable_hive`。
+1. 使用 `readDf` 数据帧创建临时表 `temphvactable`。 然后使用该临时表创建 Hive 表 `hvactable_hive`。
 
-       readDf.createOrReplaceTempView("temphvactable")
-       spark.sql("create table hvactable_hive as select * from temphvactable")
+    ```scala
+    readDf.createOrReplaceTempView("temphvactable")
+    spark.sql("create table hvactable_hive as select * from temphvactable")
+    ```
 
-5. 最后，使用该 Hive 表在 Azure SQL 数据库中创建一个表。 以下代码片段在 Azure SQL 数据库中创建 `hvactable`。
+1. 最后，使用该 Hive 表在 Azure SQL 数据库中创建一个表。 以下代码片段在 Azure SQL 数据库中创建 `hvactable`。
 
-       spark.table("hvactable_hive").write.jdbc(jdbc_url, "hvactable", connectionProperties)
+    ```scala
+    spark.table("hvactable_hive").write.jdbc(jdbc_url, "hvactable", connectionProperties)
+    ```
 
-6. 使用 SSMS 连接到 Azure SQL 数据库，并确认其中是否显示了 `dbo.hvactable`。
+1. 使用 SSMS 连接到 Azure SQL 数据库，并确认其中是否显示了 `dbo.hvactable`。
 
     a. 启动 SSMS，然后提供以下屏幕截图中所示的连接详细信息，以连接到 Azure SQL 数据库。
 
-    ![使用 SSMS 连接到 SQL 数据库](./media/apache-spark-connect-to-sql-database/connect-to-sql-db-ssms.png "使用 SSMS 连接到 SQL 数据库")
+    ![使用 SSMS1 连接到 SQL 数据库](./media/apache-spark-connect-to-sql-database/connect-to-sql-db-ssms.png "使用 SSMS1 连接到 SQL 数据库")
 
-    b. 在对象资源管理器中，展开 Azure SQL 数据库和“表”节点，查看创建的“dbo.hvactable”。 
+    b. 在对象资源管理器中，展开 Azure SQL 数据库和“表”节点，查看创建的 dbo.hvactable 。
 
-    ![使用 SSMS 连接到 SQL 数据库](./media/apache-spark-connect-to-sql-database/connect-to-sql-db-ssms-locate-table.png "使用 SSMS 连接到 SQL 数据库")
+    ![使用 SSMS2 连接到 SQL 数据库](./media/apache-spark-connect-to-sql-database/connect-to-sql-db-ssms-locate-table.png "使用 SSMS2 连接到 SQL 数据库")
 
-7. 在 SSMS 中运行查询以查看表中的列。
+1. 在 SSMS 中运行查询以查看表中的列。
 
     ```sql
     SELECT * from hvactable
@@ -168,34 +190,39 @@ ms.locfileid: "73426091"
 
 ## <a name="stream-data-into-azure-sql-database"></a>将数据流式传输到 Azure SQL 数据库
 
-在本部分，我们要将数据流式传输到上一部分已在 Azure SQL 数据库中创建的 **hvactable**。
+在本部分，我们要将数据流式传输到上一部分已在 Azure SQL 数据库中创建的 `hvactable`。
 
-1. 首先，请确保 **hvactable** 中没有记录。 使用 SSMS 针对该表运行以下查询。
+1. 首先，请确保 `hvactable` 中没有记录。 使用 SSMS 针对该表运行以下查询。
 
     ```sql
     TRUNCATE TABLE [dbo].[hvactable]
     ```
 
-2. 在 HDInsight Spark 群集上创建一个新的 Jupyter Notebook。 在代码单元中粘贴以下代码片段，然后按 **SHIFT + ENTER**：
+1. 在 HDInsight Spark 群集上创建一个新的 Jupyter Notebook。 在代码单元中粘贴以下代码片段，然后按 **SHIFT + ENTER**：
 
-       import org.apache.spark.sql._
-       import org.apache.spark.sql.types._
-       import org.apache.spark.sql.functions._
-       import org.apache.spark.sql.streaming._
-       import java.sql.{Connection,DriverManager,ResultSet}
+    ```scala
+    import org.apache.spark.sql._
+    import org.apache.spark.sql.types._
+    import org.apache.spark.sql.functions._
+    import org.apache.spark.sql.streaming._
+    import java.sql.{Connection,DriverManager,ResultSet}
+    ```
 
-3. 我们要将数据从 **HVAC.csv** 流式传输到 hvactable。 HVAC.csv 文件已在群集上提供，其路径为 */HdiSamples/HdiSamples/SensorSampleData/HVAC/* 。 在以下代码片段中，我们先获取要流式传输的数据的架构。 然后，使用该架构创建流数据帧。 粘贴代码单元中的代码片段，然后按 **SHIFT + ENTER** 运行。
+1. 我们要将数据从 HVAC.csv 流式传输到 `hvactable`。 HVAC.csv 文件已在群集上提供，其路径为 `/HdiSamples/HdiSamples/SensorSampleData/HVAC/`。 在以下代码片段中，我们先获取要流式传输的数据的架构。 然后，使用该架构创建流数据帧。 粘贴代码单元中的代码片段，然后按 **SHIFT + ENTER** 运行。
 
-       val userSchema = spark.read.option("header", "true").csv("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv").schema
-       val readStreamDf = spark.readStream.schema(userSchema).csv("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/") 
-       readStreamDf.printSchema
+    ```scala
+    val userSchema = spark.read.option("header", "true").csv("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv").schema
+    val readStreamDf = spark.readStream.schema(userSchema).csv("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/") 
+    readStreamDf.printSchema
+    ```
 
-4. 输出显示 **HVAC.csv** 的架构。 **hvactable** 也有相同的架构。 输出列出表中的列。
+1. 输出显示 **HVAC.csv** 的架构。 `hvactable` 也有相同的架构。 输出列出表中的列。
 
-    ![表的架构](./media/apache-spark-connect-to-sql-database/hdinsight-schema-table.png "表的架构")
+    ![HDInsight Apache Spark 架构表](./media/apache-spark-connect-to-sql-database/hdinsight-schema-table.png "表的架构")
 
-5. 最后，使用以下代码片段从 HVAC.csv 读取数据，并将其流式传输到 Azure SQL 数据库中的 **hvactable**。 在代码单元中粘贴该代码片段，并将占位符值替换为 Azure SQL 数据库的值，然后按 **SHIFT + ENTER** 运行。
+1. 最后，使用以下代码片段从 HVAC.csv 读取数据，并将其流式传输到 Azure SQL 数据库中的 `hvactable`。 在代码单元中粘贴该代码片段，并将占位符值替换为 Azure SQL 数据库的值，然后按 Shift+Enter 运行。
 
+    ```scala
        val WriteToSQLQuery  = readStreamDf.writeStream.foreach(new ForeachWriter[Row] {
           var connection:java.sql.Connection = _
           var statement:java.sql.Statement = _
@@ -234,8 +261,9 @@ ms.locfileid: "73426091"
          })
         
          var streamingQuery = WriteToSQLQuery.start()
+    ```
 
-6. 通过在 SQL Server Management Studio (SSMS) 中运行以下查询，验证数据是否正在流式传输到 hvactable  。 每次运行该查询时，它都会显示表中的行数已递增。
+1. 通过在 SQL Server Management Studio (SSMS) 中运行以下查询，验证数据是否正在流式传输到 `hvactable`。 每次运行该查询时，它都会显示表中的行数已递增。
 
     ```sql
     SELECT COUNT(*) FROM hvactable
@@ -244,5 +272,5 @@ ms.locfileid: "73426091"
 ## <a name="next-steps"></a>后续步骤
 
 
-* [使用事件中心处理结构化流事件](apache-spark-streaming-overview.md)
+* [在 Azure HDInsight 中的 Apache Spark 群集上加载数据并运行查询](apache-spark-load-data-run-query.md)
 * [将 Apache Spark 结构化流式处理与 Apache Kafka on HDInsight 配合使用](../hdinsight-apache-kafka-spark-structured-streaming.md)

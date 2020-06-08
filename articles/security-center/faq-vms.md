@@ -14,12 +14,12 @@ ms.workload: na
 ms.date: 05/13/2020
 ms.author: v-tawe
 origin.date: 02/25/2020
-ms.openlocfilehash: 78cb2a940e76d4b00f58b96c82655445ef94bbf4
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.openlocfilehash: 903c2cbd785a6239dba80014b7d1bef3f95de260
+ms.sourcegitcommit: cbaa1aef101f67bd094f6ad0b4be274bbc2d2537
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83423128"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84126741"
 ---
 # <a name="faq---questions-about-virtual-machines"></a>常见问题解答 - 关于虚拟机的问题
 
@@ -52,7 +52,7 @@ Azure 安全中心可识别出通过 Azure 扩展安装的反恶意软件。 例
 安全中心通常每小时扫描一次新数据，并相应地刷新建议。 
 
 > [!NOTE]
-> 安全中心使用 Microsoft Monitoring Agent 来收集和存储数据。 若要了解详细信息，请参阅 [Azure 安全中心平台迁移](security-center-platform-migration.md)。
+> 安全中心使用 Log Analytics 代理来收集和存储数据。 若要了解详细信息，请参阅 [Azure 安全中心平台迁移](security-center-platform-migration.md)。
 
 
 ## <a name="why-do-i-get-the-message-vm-agent-is-missing"></a>为什么会显示消息称“VM 代理缺失”？

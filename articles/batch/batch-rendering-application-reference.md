@@ -1,19 +1,17 @@
 ---
-title: 使用渲染应用程序 - Azure Batch
+title: 使用渲染应用程序
 description: 如何通过 Azure Batch 使用渲染应用程序。 本文简要介绍如何运行每个渲染应用程序。
-services: batch
-ms.service: batch
 author: mscurrell
 ms.author: v-lingwu
 origin.date: 08/02/2018
 ms.date: 09/07/2018
 ms.topic: conceptual
-ms.openlocfilehash: 4ecc8da920ebe15380717211fe04e51c63c13970
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: d08f269aa21c8ceb2119538111a5e4d01d71faa1
+ms.sourcegitcommit: cbaa1aef101f67bd094f6ad0b4be274bbc2d2537
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75858198"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84126618"
 ---
 # <a name="rendering-applications"></a>渲染应用程序
 
@@ -47,7 +45,7 @@ ms.locfileid: "75858198"
 
 ### <a name="batch-explorer-templates"></a>Batch Explorer 模板
 
-可以从 Batch Explorer 中的“库”访问池和作业模板。   [GitHub 上的 Batch Explorer 数据存储库](https://github.com/Azure/BatchExplorer-data/tree/master/ncj/3dsmax)中提供了模板源文件。
+可以从 Batch Explorer 中的“库”访问池和作业模板。  [GitHub 上的 Batch Explorer 数据存储库](https://github.com/Azure/BatchExplorer-data/tree/master/ncj/3dsmax)中提供了模板源文件。
 
 ## <a name="rendering-with-autodesk-maya"></a>使用 Autodesk Maya 进行渲染
 
@@ -82,9 +80,8 @@ render -renderer arnold -proj "%AZ_BATCH_JOB_PREP_WORKING_DIR%" -verb -rd "%AZ_B
 
 ### <a name="batch-explorer-templates"></a>Batch Explorer 模板
 
-可以从 Batch Explorer 中的“库”访问池和作业模板。   [GitHub 上的 Batch Explorer 数据存储库](https://github.com/Azure/BatchExplorer-data/tree/master/ncj/maya)中提供了模板源文件。
+可以从 Batch Explorer 中的“库”访问池和作业模板。  [GitHub 上的 Batch Explorer 数据存储库](https://github.com/Azure/BatchExplorer-data/tree/master/ncj/maya)中提供了模板源文件。
 
 ## <a name="next-steps"></a>后续步骤
 
 通过 Batch Explorer 使用 [GitHub 上的数据存储库](https://github.com/Azure/BatchExplorer-data/tree/master/ncj)中的池和作业模板。  如果需要，请创建新模板，或修改提供的某个模板。
-

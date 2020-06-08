@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 04/24/2020
+ms.date: 05/28/2020
 ms.author: v-junlch
 ms.custom: pim ; H1Hack27Feb2017;oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5a8fe28c782232aab01dccb810f028a4dfdbfc1
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.openlocfilehash: 3c8b62689740d87e1a6e6b0271085c0a3e29407c
+ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82126900"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84186811"
 ---
 # <a name="roles-you-cant-manage-in-privileged-identity-management"></a>无法在 Privileged Identity Management 中管理的角色
 
@@ -40,7 +40,7 @@ ms.locfileid: "82126900"
 我们支持 Azure AD 角色和管理员门户体验中的所有 Office365 角色（如 Exchange 管理员和 SharePoint 管理员），但不支持 Exchange RBAC 或 SharePoint RBAC 中的特定角色。 关于这些 Office 365 服务的详细信息，请参阅 [Office 365 管理员角色](https://docs.microsoft.com/office365/admin/add-users/about-admin-roles)。
 
 > [!NOTE]
-> SharePoint 管理员角色的符合条件用户以及尝试访问 Microsoft 安全与合规中心的任何角色在激活其角色后，可能会遇到最多几小时的延迟。 我们正与这些团队合作解决问题。
+> 符合 SharePoint 管理员角色、设备管理员角色以及尝试访问 Microsoft 安全与合规中心的任何角色条件的用户，激活其角色后可能会遇到最多几小时的延迟。 我们正与这些团队合作解决问题。
 
 ## <a name="next-steps"></a>后续步骤
 

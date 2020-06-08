@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/29/2020
+ms.date: 05/25/2020
 ms.author: v-junlch
 ms.reviewer: bagovind
-ms.openlocfilehash: e441871f3ed6c9264734b28380dcf3a618fdca87
-ms.sourcegitcommit: e3512c5c2bbe61704d5c8cbba74efd56bfe91927
+ms.openlocfilehash: 7fd7fdf0194f6218a22b1088fe182c26bd5a798b
+ms.sourcegitcommit: 7429daf26cff014b040f69cdae75bdeaea4f4e93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82267632"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83991601"
 ---
 # <a name="elevate-access-to-manage-all-azure-subscriptions-and-management-groups"></a>提升访问权限以管理所有 Azure 订阅和管理组
 
@@ -55,24 +55,24 @@ Azure AD 和 Azure 资源彼此独立保护。 也就是说，Azure AD 角色分
 
 1. 以全局管理员的身份登录到 [Azure 门户](https://portal.azure.cn)。
 
-1. 打开“Azure Active Directory”。 
+1. 打开“Azure Active Directory”。
 
-1. 在“管理”下，选择“属性”   。
+1. 在“管理”下，选择“属性” 。
 
    ![选择 Azure Active Directory 属性的“属性” - 屏幕截图](./media/elevate-access-global-admin/azure-active-directory-properties.png)
 
-1. 在“Azure 资源的访问管理”下，将开关设置为“是”   。
+1. 在“Azure 资源的访问管理”下，将开关设置为“是” 。
 
    ![Azure 资源的访问管理 - 屏幕截图](./media/elevate-access-global-admin/aad-properties-global-admin-setting.png)
 
-   将开关设为“是”时，你将分配到 Azure RBAC 中根范围 (/) 的“用户访问管理员”角色  。 这将授予你在与此 Azure AD 目录关联的所有 Azure 订阅和管理组中分配角色的权限。 此开关仅适用于分配到 Azure AD 中全局管理员角色的用户。
+   将开关设为“是”时，你将分配到 Azure RBAC 中根范围 (/) 的“用户访问管理员”角色。 这将授予你在与此 Azure AD 目录关联的所有 Azure 订阅和管理组中分配角色的权限。 此开关仅适用于分配到 Azure AD 中全局管理员角色的用户。
 
-   将开关设为“否”时，会从用户帐户中删除 Azure RBAC 中的用户访问管理员角色。  将无法再分配在与此 Azure AD 目录关联的所有 Azure 订阅和管理组中的角色。 只能查看和管理已获取访问权限的 Azure 订阅和管理组。
+   将开关设为“否”时，会从用户帐户中删除 Azure RBAC 中的用户访问管理员角色。 将无法再分配在与此 Azure AD 目录关联的所有 Azure 订阅和管理组中的角色。 只能查看和管理已获取访问权限的 Azure 订阅和管理组。
 
     > [!NOTE]
-    > 如果使用的是 [Azure AD Privileged Identity Management (PIM)](../active-directory/privileged-identity-management/pim-configure.md)，则停用角色分配不会将此开关更改为“否”  。 为了保持最小特权访问，我们建议你在停用角色分配之前，将此开关设置为“否”  。
+    > 如果使用的是 [Azure AD Privileged Identity Management (PIM)](../active-directory/privileged-identity-management/pim-configure.md)，则停用角色分配不会将此开关更改为“否”。 为了保持最小特权访问，我们建议你在停用角色分配之前，将此开关设置为“否”。
     
-1. 单击“保存”，保存设置  。
+1. 单击“保存”，保存设置。
 
    此设置不是全局属性，仅适用于当前已登录的用户。 无法提升所有全局管理员角色成员的访问权限。
 
@@ -84,7 +84,7 @@ Azure AD 和 Azure 资源彼此独立保护。 也就是说，Azure AD 角色分
 
 1. 以提升的访问权限做出所需的更改。
 
-    有关如何分配角色的信息，请参阅[使用 RBAC 和 Azure 门户管理访问权限](role-assignments-portal.md)。 如果使用 Azure AD Privileged Identity Management (PIM)，请参阅[在 PIM 中发现要管理的 Azure 资源](../active-directory/privileged-identity-management/pim-resource-roles-discover-resources.md)或[在 PIM 中分配 Azure 资源角色](../active-directory/privileged-identity-management/pim-resource-roles-assign-roles.md)。
+    有关角色分配的信息，请参阅[使用 Azure 门户添加或删除 Azure 角色分配](role-assignments-portal.md)。 如果使用 Azure AD Privileged Identity Management (PIM)，请参阅[在 PIM 中发现要管理的 Azure 资源](../active-directory/privileged-identity-management/pim-resource-roles-discover-resources.md)或[在 PIM 中分配 Azure 资源角色](../active-directory/privileged-identity-management/pim-resource-roles-assign-roles.md)。
 
 ### <a name="remove-elevated-access"></a>撤消提升的访问权限
 
@@ -92,11 +92,11 @@ Azure AD 和 Azure 资源彼此独立保护。 也就是说，Azure AD 角色分
 
 1. 以提升访问权限时使用的用户身份登录。
 
-1. 在导航列表中，单击“Azure Active Directory”，然后单击“属性”   。
+1. 在导航列表中，单击“Azure Active Directory”，然后单击“属性” 。
 
-1. 将“Azure 资源的访问管理”切换回“否”   。 由于此设置特定于用户，因此，必须以提升访问权限时所用的同一用户登录。
+1. 将“Azure 资源的访问管理”切换回“否” 。 由于此设置特定于用户，因此，必须以提升访问权限时所用的同一用户登录。
 
-    如果尝试删除“访问控制(IAM)”窗格上的“用户访问管理员”角色分配，将看到以下消息。 若要删除角色分配，必须切换回“否”，或者使用 Azure PowerShell、Azure CLI 或 REST API  。
+    如果尝试删除“访问控制(IAM)”窗格上的“用户访问管理员”角色分配，将看到以下消息。 若要删除角色分配，必须切换回“否”，或者使用 Azure PowerShell、Azure CLI 或 REST API。
 
     ![删除根范围的角色分配](./media/elevate-access-global-admin/iam-root-remove.png)
 
@@ -254,8 +254,7 @@ az role assignment list --role "User Access Administrator" --scope "/"
         {
           "actions": [
             "*/read",
-            "Microsoft.Authorization/*",
-            "Microsoft.Support/*"
+            "Microsoft.Authorization/*"
           ],
           "notActions": []
         }
@@ -321,6 +320,6 @@ az role assignment list --role "User Access Administrator" --scope "/"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [了解 Azure 中的不同角色](rbac-and-directory-admin-roles.md)
-- [使用 RBAC 和 REST API 管理对 Azure 资源的访问权限](role-assignments-rest.md)
+- [了解不同角色](rbac-and-directory-admin-roles.md)
+- [使用 REST API 添加或删除 Azure 角色分配](role-assignments-rest.md)
 

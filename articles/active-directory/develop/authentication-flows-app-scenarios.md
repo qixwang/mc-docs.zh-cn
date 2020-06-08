@@ -9,24 +9,21 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 04/22/2020
+ms.date: 05/27/2020
 ms.author: v-junlch
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: ebca72cf32d7eb7ff66ba7f06f0cea0189a4635f
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.openlocfilehash: 1f7c80c10607194531581aa60f6251bd547fef66
+ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82126263"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84186755"
 ---
 # <a name="authentication-flows-and-application-scenarios"></a>身份验证流和应用程序方案
 
-Microsoft 标识平台 (v2.0) 终结点支持各种新式应用程序体系结构的身份验证。 所有这些体系结构基于行业标准协议 [OAuth 2.0 和 OpenID Connect](active-directory-v2-protocols.md)。  使用 [Microsoft 标识平台身份验证库](reference-v2-libraries.md)，应用程序可以对标识进行身份验证并获得令牌，以便访问受保护的 API。
+Microsoft 标识平台 (v2.0) 终结点支持各种新式应用程序体系结构的身份验证。 所有这些体系结构基于行业标准协议 [OAuth 2.0 和 OpenID Connect](active-directory-v2-protocols.md)。 使用 [Microsoft 标识平台的身份验证库](reference-v2-libraries.md)，应用程序可以对标识进行身份验证并获得令牌，以便访问受保护的 API。
 
-本文介绍身份验证流及其应用方案：
-
-- [应用程序方案和支持的身份验证流](#scenarios-and-supported-authentication-flows)
-- [应用程序方案和支持的平台与语言](#scenarios-and-supported-platforms-and-languages)
+本文介绍身份验证流及其应用方案。
 
 ## <a name="application-categories"></a>应用程序类别
 
@@ -37,23 +34,16 @@ Microsoft 标识平台 (v2.0) 终结点支持各种新式应用程序体系结�
 - 桌面应用
 - Web API
 
-还可以从设备上运行的应用中获取令牌，这些设备没有浏览器或在 IoT 上运行。
+还可以通过设备上运行的应用获取令牌，这些设备没有浏览器或在物联网 (IoT) 上运行。
 
-可按以下列表中所述对应用程序进行分类：
-
-- [受保护的资源与客户端应用程序](#protected-resources-vs-client-applications)：一些方案涉及到保护资源（例如 Web 应用或 Web API）。 还有一些方案涉及到获取安全令牌来调用受保护的 Web API。
-- [涉及或不涉及用户](#with-users-or-without-users)：一些方案涉及到已登录的用户，还有一些方案（例如守护程序方案）不涉及到用户。
-- [单页、公共客户端和机密客户端应用程序](#single-page-public-client-and-confidential-client-applications)：这些类型是三大应用程序类别。 每种应用程序配合不同的库和对象使用。
-- [登录受众](v2-supported-account-types.md#certain-authentication-flows-dont-support-all-the-account-types)：可用的身份验证流因登录受众而异。 允许的受众取决于身份验证流。
-- [支持的 OAuth 2.0 流](#scenarios-and-supported-authentication-flows)：身份验证流用于实现请求令牌的应用程序方案。 应用程序方案和身份验证流之间不存在一对一的映射。
-- [支持的平台](#scenarios-and-supported-platforms-and-languages)：并非所有应用程序方案都适用于每个平台。
+以下部分介绍应用程序的类别。
 
 ### <a name="protected-resources-vs-client-applications"></a>受保护的资源与客户端应用程序
 
 身份验证方案涉及两个活动：
 
-- **获取受保护 Web API 的安全令牌**：我们建议使用 [Microsoft 支持的客户端库](reference-v2-libraries.md#microsoft-supported-client-libraries)来获取令牌，尤其是 Microsoft 身份验证库 (MSAL) 系列。
-- **保护 Web API 或 Web 应用**：保护 Web API 或 Web 应用资源的一大难题是验证安全令牌。 Microsoft 在某些平台上提供[中间件库](reference-v2-libraries.md#microsoft-supported-server-middleware-libraries)。
+- **获取受保护 Web API 的安全令牌**：建议使用 [Microsoft 支持的客户端库](reference-v2-libraries.md#microsoft-supported-client-libraries)来获取令牌。 具体而言，建议使用 Microsoft 身份验证库 (MSAL) 系列。
+- **保护 Web API 或 Web 应用**：保护这些资源的一大难题是验证安全令牌。 Microsoft 在某些平台上提供[中间件库](reference-v2-libraries.md#microsoft-supported-server-middleware-libraries)。
 
 ### <a name="with-users-or-without-users"></a>涉及或不涉及用户
 
@@ -61,33 +51,35 @@ Microsoft 标识平台 (v2.0) 终结点支持各种新式应用程序体系结�
 
 ![涉及用户的方案](./media/scenarios/scenarios-with-users.svg)
 
-不过，在某些守护程序应用方案中，应用程序代表自身获取令牌，而不涉及到用户。
+但是，也有守护程序应用。 在这些方案中，应用程序以自身身份获取令牌，而不涉及到用户。
 
 ![涉及守护程序应用的方案](./media/scenarios/daemon-app.svg)
 
 ### <a name="single-page-public-client-and-confidential-client-applications"></a>单页、公共客户端和机密客户端应用程序
 
-可从多种类型的应用程序获取安全令牌。 这些应用程序往往划分为三种类别：
+可通过多种类型的应用程序获取安全令牌。 这些应用程序往往划分为以下三种类别。 每种应用程序配合不同的库和对象使用。
 
-- **单页应用程序**：简称为 SPA。这些应用是 Web 应用，其中的令牌从浏览器中运行的 JavaScript 或 TypeScript 应用获取。 许多新式应用都有一个单页应用程序前端（主要以 JavaScript 编写）。 该应用程序通常使用 Angular、React 或 Vue 等框架。 MSAL 是唯一支持单页应用程序的 Microsoft 身份验证库。
+- **单页应用程序**：简称为 SPA。它们是一些 Web 应用，其中的令牌是通过浏览器中运行的 JavaScript 或 TypeScript 应用获取的。 许多新式应用的前端都有一个单页应用程序（主要用 JavaScript 编写）。 该应用程序通常使用 Angular、React 或 Vue 等框架。 MSAL 是唯一支持单页应用程序的 Microsoft 身份验证库。
 
-- **公共客户端应用程序**：这些应用程序始终可将用户登录：
-  - 代表已登录用户调用 Web API 的桌面应用
+- **公共客户端应用程序**：此类别中的应用（例如以下类型）始终以用户身份登录：
+  - 以登录的用户身份调用 Web API 的桌面应用
   - 移动应用
-  - 在没有浏览器的设备上运行的应用，例如，在 iOT 上运行的应用
-
-  这些应用由 MSAL [PublicClientApplication ](/dotnet/api/microsoft.identity.client.publicclientapplication) 类表示。 有关详细信息，请参阅[公共客户端和机密客户端应用程序](msal-client-applications.md)。
-
-- **机密客户端应用程序**：
+  - 在没有浏览器的设备上运行的应用，例如，在 IoT 上运行的应用
+  
+- **机密客户端应用程序**：此类别中的应用包括：
   - 调用 Web API 的 Web 应用
   - 调用 Web API 的 Web API
   - 守护程序应用（即使实施为 Linux 守护程序或 Windows 服务等控制台服务）
 
-  此类应用使用 [ConfidentialClientApplication](/dotnet/api/microsoft.identity.client.confidentialclientapplication) 类。 有关详细信息，请参阅[公共客户端和机密客户端应用程序](msal-client-applications.md)。
+### <a name="sign-in-audience"></a>登录受众
+
+可用的身份验证流因登录受众而异。 
+
+有关详细信息，请参阅[支持的帐户类型](v2-supported-account-types.md#account-type-support-in-authentication-flows)。
 
 ## <a name="application-scenarios"></a>应用程序方案
 
-Microsoft 标识平台终结点支持不同应用体系结构的身份验证：
+Microsoft 标识平台终结点支持对以下应用体系结构进行身份验证：
 
 - 单页应用
 - Web 应用
@@ -99,39 +91,39 @@ Microsoft 标识平台终结点支持不同应用体系结构的身份验证：
 
 应用程序使用不同的身份验证流将用户登录和获取令牌，以调用受保护的 API。
 
-### <a name="a-single-page-application"></a>单页应用程序
+### <a name="single-page-application"></a>单页应用程序
 
-许多新式 Web 应用都是作为客户端单页应用程序构建的。 这些应用程序使用 JavaScript 或单页应用程序框架（例如 Angular、Vue.js 和 React.js）。 这些应用程序在 Web 浏览器中运行。
+许多新式 Web 应用都是作为客户端单页应用程序构建的。 这些应用程序使用 JavaScript 或框架（例如 Angular、Vue.js 和 React.js）。 这些应用程序在 Web 浏览器中运行。
 
-其身份验证特征不同于传统的服务器端 Web 应用。 单页应用程序可以使用 Microsoft 标识平台将用户登录，并获取用于访问后端服务或 Web API 的令牌。
+单页应用程序在身份验证特征方面与传统的服务器端 Web 应用不同。 单页应用程序可以使用 Microsoft 标识平台将用户登录，并获取用于访问后端服务或 Web API 的令牌。
 
 ![单页应用程序](./media/scenarios/spa-app.svg)
 
 有关详细信息，请参阅[单页应用程序](scenario-spa-overview.md)。
 
-### <a name="a-web-app-that-is-signing-in-a-user"></a>正在将用户登录的 Web 应用
+### <a name="web-app-that-signs-in-a-user"></a>以用户身份登录的 Web 应用
 
 ![可将用户登录的 Web 应用](./media/scenarios/scenario-webapp-signs-in-users.svg)
 
-若要保护正在将用户登录的 Web 应用：
+为了帮助保护以用户身份登录的 Web 应用：
 
-- 如果在 .NET 中进行开发，请使用包含 ASP.NET Open ID Connect 中间件的 ASP.NET 或 ASP.NET Core。 保护资源涉及到验证安全令牌，为此，可以使用[适用于 .NET 的 IdentityModel 扩展](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki)库，但不能使用 MSAL 库。
+- 如果在 .NET 中进行开发，请使用包含 ASP.NET OpenID Connect 中间件的 ASP.NET 或 ASP.NET Core。 保护资源涉及到验证安全令牌，为此，可以使用[适用于 .NET 的 IdentityModel 扩展](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki)，但不能使用 MSAL 库。
 
 - 如果在 Node.js 中进行开发，将使用 Passport.js。
 
 有关详细信息，请参阅[可将用户登录的 Web 应用](scenario-web-app-sign-user-overview.md)。
 
-### <a name="a-web-app-that-signs-in-a-user-and-calling-a-web-api-on-behalf-of-the-user"></a>可将用户登录并代表用户调用 Web API 的 Web 应用
+### <a name="web-app-that-signs-in-a-user-and-calls-a-web-api-on-behalf-of-the-user"></a>以用户身份登录并以用户身份调用 Web API 的 Web 应用
 
 ![调用 Web API 的 Web 应用](./media/scenarios/web-app.svg)
 
-若要代表用户从 Web 应用调用 Web API，请使用 MSAL **ConfidentialClientApplication** 类。 使用授权代码流，并在令牌缓存中存储获取的令牌。 必要时，MSAL 可刷新令牌，而控制器可从缓存中以无提示方式获取令牌。
+若要以用户身份通过 Web 应用调用 Web API，请使用授权代码流，并在令牌缓存中存储获取的令牌。 必要时，MSAL 可刷新令牌，而控制器可从缓存中以无提示方式获取令牌。
 
 有关详细信息，请参阅[调用 Web API 的 Web 应用](scenario-web-app-call-api-overview.md)。
 
-### <a name="a-desktop-app-calling-a-web-api-on-behalf-of-a-signed-in-user"></a>代表已登录用户调用 Web API 的桌面应用
+### <a name="desktop-app-that-calls-a-web-api-on-behalf-of-a-signed-in-user"></a>以登录用户身份调用 Web API 的桌面应用
 
-要使桌面应用能够调用可将用户登录的 Web API，请使用 MSAL **PublicClientApplication** 类的交互式令牌获取方法。 使用这些交互方法可以控制登录 UI 体验。 MSAL 使用 Web 浏览器进行这种交互。
+要使桌面应用能够以登录用户身份调用 Web API，请使用 MSAL 的交互式令牌获取方法。 使用这些交互方法可以控制登录 UI 体验。 MSAL 使用 Web 浏览器进行这种交互。
 
 ![调用 Web API 的桌面应用](./media/scenarios/desktop-app.svg)
 
@@ -141,25 +133,23 @@ Microsoft 标识平台终结点支持不同应用体系结构的身份验证：
 
 ![设备代码流](./media/scenarios/device-code-flow-app.svg)
 
-可以在公共客户端应用程序中使用[用户名/密码流](https://aka.ms/msal-net-up)，不过我们并不建议使用。 在某些方案中仍需要此流。
+可以在公共客户端应用程序中使用[用户名/密码流](scenario-desktop-acquire-token.md#username-and-password)，不过我们并不建议使用。 在某些方案（例如 DevOps）中仍需要此流。
 
-但是，使用此流会约束应用程序。 例如，应用程序无法将需要使用多重身份验证或条件访问的用户登录。 应用程序也无法受益于单一登录。
+使用用户名/密码流会使应用程序受限。 例如，应用程序无法以需要使用 Azure AD 中的多重身份验证或条件访问的用户身份登录。 应用程序也无法受益于单一登录。 使用用户名/密码流进行身份验证的方式违反新式身份验证的原则，仅仅是出于遗留原因而提供的。
 
-使用用户名/密码流进行身份验证的方式违反新式身份验证的原则，仅仅是出于遗留原因而提供的。
-
-在桌面应用中，如果希望令牌缓存持久，请自定义[令牌缓存序列化](https://aka.ms/msal-net-token-cache-serialization)。 通过实施[双重令牌缓存序列化](https://aka.ms/msal-net-dual-cache-serialization)，可以使用后向兼容和前向兼容的令牌缓存。 这些令牌支持以前代系的身份验证库。 具体的库包括适用于 .NET 的 Azure AD 身份验证库 (ADAL.NET) 版本 3 和 4。
+在桌面应用中，如果希望令牌缓存持久，请自定义[令牌缓存序列化](scenario-desktop-acquire-token.md#file-based-token-cache)。 通过实施[双重令牌缓存序列化](scenario-desktop-acquire-token.md#dual-token-cache-serialization-msal-unified-cache--adal-v3)，可以使用后向兼容和前向兼容的令牌缓存。 这些令牌支持以前代系的身份验证库。 具体的库包括适用于 .NET 的 Azure AD 身份验证库 (ADAL.NET) 版本 3 和 4。
 
 有关详细信息，请参阅[调用 Web API 的桌面应用](scenario-desktop-overview.md)。
 
-### <a name="a-mobile-app-calling-a-web-api-on-behalf-of-an-interactive-user"></a>代表交互式用户调用 Web API 的移动应用
+### <a name="mobile-app-that-calls-a-web-api-on-behalf-of-an-interactive-user"></a>以交互式用户身份调用 Web API 的移动应用
 
-类似于桌面应用，移动应用调用 MSAL **PublicClientApplication** 类的交互式令牌获取方法来获取用于调用 Web API 的令牌。
+类似于桌面应用，移动应用调用 MSAL 的交互式令牌获取方法来获取用于调用 Web API 的令牌。
 
 ![调用 Web API 的移动应用](./media/scenarios/mobile-app.svg)
 
 MSAL iOS 和 MSAL Android 默认使用系统 Web 浏览器。 但是，你可以指示它们改用嵌入式 Web 视图。 根据以下移动平台，存在一些特殊情况：通用 Windows 平台 (UWP)、iOS 或 Android。
 
-某些方案（例如，涉及到与设备 ID 或设备注册相关的条件访问的方案）要求在设备上安装一个中介。 中介的示例包括 Android 上的 Microsoft 公司门户，以及 Android 和 iOS 上的 Microsoft Authenticator。 MSAL 现在可与中介交互。 有关详细信息，请参阅 [Leveraging brokers on Android and iOS](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/leveraging-brokers-on-Android-and-iOS)（利用 Android 和 iOS 上的中介）。
+某些方案（例如，涉及到与设备 ID 或设备注册相关的条件访问的方案）要求在设备上安装一个中介。 中介的示例包括 Android 上的 Microsoft 公司门户，以及 Android 和 iOS 上的 Microsoft Authenticator。 MSAL 现在可与中介交互。 有关中转站的详细信息，请参阅[利用 Android 和 iOS 上的中转站](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/leveraging-brokers-on-Android-and-iOS)。
 
 有关详细信息，请参阅[调用 Web API 的移动应用](scenario-mobile-overview.md)。
 
@@ -168,33 +158,35 @@ MSAL iOS 和 MSAL Android 默认使用系统 Web 浏览器。 但是，你可以
 >
 > [Intune 应用 SDK](https://docs.microsoft.com/intune/app-sdk-get-started) 独立于 MSAL 库，可自行与 Azure AD 交互。
 
-### <a name="a-protected-web-api"></a>受保护的 Web API
+### <a name="protected-web-api"></a>受保护的 Web API
 
-可以使用 Microsoft 标识平台终结点来保护 Web 服务，例如应用的 RESTful Web API。 可以使用访问令牌调用受保护的 Web API。 该令牌保护 API 的数据并对传入请求进行身份验证。 Web API 调用方会在 HTTP 请求的授权标头中追加一个访问令牌。
+可以使用 Microsoft 标识平台终结点来保护 Web 服务，例如应用的 RESTful Web API。 通过访问令牌调用受保护的 Web API。 该令牌帮助保护 API 的数据并对传入请求进行身份验证。 Web API 调用方会在 HTTP 请求的授权标头中追加一个访问令牌。
 
 若要保护 ASP.NET 或 ASP.NET Core Web API，需要验证访问令牌。 可以使用 ASP.NET JWT 中间件进行这种验证。 验证是由[适用于.NET 的 IdentityModel 扩展](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki)库而不是 MSAL.NET 完成的。
 
 有关详细信息，请参阅[受保护的 Web API](scenario-protected-web-api-overview.md)。
 
-### <a name="a-web-api-calling-another-web-api-on-behalf-of-a-user"></a>代表用户调用另一个 Web API 的 Web API
+### <a name="web-api-that-calls-another-web-api-on-behalf-of-a-user"></a>以用户身份调用另一个 Web API 的 Web API
 
-要使受 ASP.NET 或 ASP.NET Core 保护的 Web API 能够代表用户调用另一个 Web API，应用需要获取下游 Web API 的令牌。 应用调用 **ConfidentialClientApplication** 类的 [AcquireTokenOnBehalfOf](https://aka.ms/msal-net-on-behalf-of) 方法即可获取令牌。 此类调用也称为服务到服务调用。  调用其他 Web API 的 Web API 需要提供自定义缓存序列化。
+要使受保护的 Web API 能以用户身份调用另一个 Web API，应用需要获取下游 Web API 的令牌。 此类调用有时称为服务到服务调用。 调用其他 Web API 的 Web API 需要提供自定义缓存序列化。
 
-  ![调用另一个 Web API 的 Web API](./media/scenarios/web-api.svg)
+![调用另一个 Web API 的 Web API](./media/scenarios/web-api.svg)
 
 有关详细信息，请参阅[调用 Web API 的 Web API](scenario-web-api-call-api-overview.md)。
 
-### <a name="a-daemon-app-calling-a-web-api-in-the-daemons-name"></a>在守护程序名称中调用 Web API 的守护程序应用
+### <a name="daemon-app-that-calls-a-web-api-in-the-daemons-name"></a>在守护程序名称中调用 Web API 的守护程序应用
 
 包含长时运行进程或无需用户交互即可运行的应用还需要通过某种方式访问安全的 Web API。 此类应用可以使用应用的标识进行身份验证和获取令牌。 应用将使用客户端机密或证书来证明其身份。
 
-可以编写使用 MSAL **ConfidentialClientApplication** 类的[客户端凭据](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Client-credential-flows)获取方法获取调用方应用令牌的应用。 这些方法要求调用方应用已在 Azure AD 中注册了一个机密。 然后，该应用将与被调用守护程序共享机密。 此类机密的示例包括应用程序密码、证书断言或客户端断言。
+可以编写此类使用 MSAL 中的[客户端凭据](scenario-daemon-acquire-token.md#acquiretokenforclient-api)获取方法获取调用应用令牌的守护程序应用。 这些方法要求将客户端密码添加到 Azure AD 中的应用注册。 然后，该应用将与被调用守护程序共享机密。 此类机密的示例包括应用程序密码、证书断言和客户端断言。
 
 ![由其他应用和 API 调用的守护程序应用](./media/scenarios/daemon-app.svg)
 
 有关详细信息，请参阅[调用 Web API 的守护程序应用程序](scenario-daemon-overview.md)。
 
 ## <a name="scenarios-and-supported-authentication-flows"></a>方案和受支持的身份验证流
+
+使用身份验证流实现请求令牌的应用程序方案。 应用程序方案和身份验证流之间不存在一对一的映射。
 
 涉及到获取令牌的方案还会映射到 OAuth 2.0 身份验证流。 有关详细信息，请参阅 [Microsoft 标识平台上的 OAuth 2.0 和 OpenID Connect 协议](active-directory-v2-protocols.md)。
 
@@ -212,27 +204,27 @@ MSAL iOS 和 MSAL Android 默认使用系统 Web 浏览器。 但是，你可以
 
   <tr>
    <td><a href="scenario-web-app-sign-user-overview.md"><img alt="Web app that signs in users" src="media/scenarios/scenario-webapp-signs-in-users.svg"></a></td>
-   <td><a href="scenario-web-app-sign-user-overview.md">可将用户登录的 Web 应用</a></td>
+   <td><a href="scenario-web-app-sign-user-overview.md">用于登录用户的 Web 应用</a></td>
    <td><a href="v2-oauth2-auth-code-flow.md">授权代码</a></td>
    <td>工作或学校帐户和 Azure AD B2C</td>
  </tr>
 
   <tr>
    <td><a href="scenario-web-app-call-api-overview.md"><img alt="Web app that signs in users" src="media/scenarios/web-app.svg"></a></td>
-   <td><a href="scenario-web-app-call-api-overview.md">调用 Web API 的 Web 应用</a></td>
+   <td><a href="scenario-web-app-call-api-overview.md">用于调用 Web API 的 Web 应用</a></td>
    <td><a href="v2-oauth2-auth-code-flow.md">授权代码</a></td>
    <td>工作或学校帐户和 Azure AD B2C</td>
  </tr>
 
   <tr>
    <td rowspan="3"><a href="scenario-desktop-overview.md"><img alt=Desktop app that calls web APIs" src="media/scenarios/desktop-app.svg"></a></td>
-   <td rowspan="4"><a href="scenario-desktop-overview.md">调用 Web API 的桌面应用</a></td>
+   <td rowspan="4"><a href="scenario-desktop-overview.md">用于调用 Web API 的 桌面应用</a></td>
    <td>使用<a href="v2-oauth2-auth-code-flow.md">授权代码</a>和 PKCE 的交互式方法</td>
    <td>工作或学校帐户和 Azure AD B2C</td>
  </tr>
 
   <tr>
-   <td>集成的 Windows 身份验证</td>
+   <td>Windows 集成身份验证</td>
    <td>工作或学校帐户</td>
  </tr>
 
@@ -249,7 +241,7 @@ MSAL iOS 和 MSAL Android 默认使用系统 Web 浏览器。 但是，你可以
 
  <tr>
    <td rowspan="2"><a href="scenario-mobile-overview.md"><img alt="Mobile app that calls web APIs" src="media/scenarios/mobile-app.svg"></a></td>
-   <td rowspan="2"><a href="scenario-mobile-overview.md">调用 Web API 的移动应用</a></td>
+   <td rowspan="2"><a href="scenario-mobile-overview.md">用于调用 Web API 的移动应用</a></td>
    <td>使用<a href="v2-oauth2-auth-code-flow.md">授权代码</a>和 PKCE 的交互式方法</td>
    <td>工作或学校帐户和 Azure AD B2C</td>
  </tr>
@@ -268,8 +260,8 @@ MSAL iOS 和 MSAL Android 默认使用系统 Web 浏览器。 但是，你可以
 
   <tr>
    <td><a href="scenario-web-api-call-api-overview.md"><img alt="Web API that calls web APIs" src="media/scenarios/web-api.svg"></a></td>
-   <td><a href="scenario-web-api-call-api-overview.md">调用 Web API 的 Web API</a></td>
-   <td><a href="v2-oauth2-on-behalf-of-flow.md">代表</a></td>
+   <td><a href="scenario-web-api-call-api-overview.md">用于调用 Web API 的 Web API</a></td>
+   <td><a href="v2-oauth2-on-behalf-of-flow.md">代理</a></td>
    <td>工作或学校帐户</td>
  </tr>
 
@@ -313,5 +305,5 @@ Microsoft 身份验证库支持多种平台：
 
 ## <a name="next-steps"></a>后续步骤
 
-* 详细了解[身份认证基础知识](authentication-scenarios.md)和 [Microsoft 标识平台访问令牌](access-tokens.md)。
+* 详细了解[身份验证基础知识](authentication-scenarios.md)和 [Microsoft 标识平台中的访问令牌](access-tokens.md)。
 

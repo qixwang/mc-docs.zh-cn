@@ -1,32 +1,32 @@
 ---
 title: Azure IoT 中心的设备配置最佳做法 | Microsoft Docs
-description: 了解有关大规模配置 IoT 设备的最佳做法
+description: 了解有关使用自动设备管理功能来最大程度地减少大规模管理 IoT 设备时所涉及的重复性任务和复杂任务的最佳实践。
 author: chrisgre
 manager: briz
 ms.author: v-yiso
-origin.date: 06/28/2018
-ms.date: 07/15/2019
+origin.date: 06/28/2019
+ms.date: 06/08/2020
 ms.topic: conceptual
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: 432ea37a87b2a0e54887a1be0ceaec4fbc183111
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 2ffce19351a8ac3730cecf1a121b68482dc7a13b
+ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "67570446"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84186890"
 ---
 # <a name="best-practices-for-device-configuration-within-an-iot-solution"></a>IoT 解决方案中设备配置的最佳做法
 
 Azure IoT 中心内的自动设备管理功能可将许多复杂且重复性的任务自动化，包括在大型设备阵列的整个生命周期内对其进行管理。 本文定义在开发和操作 IoT 解决方案时涉及到的各种角色的多种最佳做法。
 
 * **IoT 硬件制造商/集成商：** IoT 硬件的制造商、组装来自各个制造商的硬件的集成商，或针对由其他供应商制造或集成的 IoT 部署提供硬件的供应商。 参与固件、嵌入式操作系统和嵌入式软件的开发与集成。
-* **IoT 解决方案开发人员：** IoT 解决方案的开发通常由解决方案开发人员完成。 此开发人员可能是内部团队成员或专门从事此活动的系统集成商。 IoT 解决方案开发人员可从头开始开发 IoT 解决方案的各个组件、集成各种标准组件或开源组件，或自定义 [IoT 解决方案加速器][lnk-solution]。
+* **IoT 解决方案开发人员：** IoT 解决方案的开发通常由解决方案开发人员完成。 此开发人员可能是内部团队成员或专门从事此活动的系统集成商。 IoT 解决方案开发人员可从头开始开发 IoT 解决方案的各个组件、集成各种标准组件或开源组件。
 * **IoT 解决方案操作员：** 在部署后，IoT 解决方案需要长期的操作、监视、升级和维护。 这些任务可由内部团队来完成，该团队由信息技术专业人员、硬件操作和维护团队，以及负责监督整体 IoT 基础结构行为是否正常的领域专业人员组成。
 
 ## <a name="understand-automatic-device-management-for-configuring-iot-devices-at-scale"></a>了解大规模配置 IoT 设备时的自动设备管理
 
-自动设备管理包括[设备孪生](iot-hub-devguide-device-twins.md)和[模块孪生](iot-hub-devguide-module-twins.md)提供的、在云与设备之间同步所需状态和报告状态的诸多好处。 [自动设备配置][lnk-auto-device-config]会自动更新大量的孪生，并汇总进度与合规性。 以下概要步骤描述如何开发和使用自动设备管理：
+自动设备管理包括[设备孪生](iot-hub-devguide-device-twins.md)和[模块孪生](iot-hub-devguide-module-twins.md)提供的、在云与设备之间同步所需状态和报告状态的诸多好处。 [自动设备配置](iot-hub-auto-device-config.md)会自动更新大量的孪生，并汇总进度与合规性。 以下概要步骤描述如何开发和使用自动设备管理：
 
 * **IoT 硬件制造商/系统集成商**使用[设备孪生](iot-hub-devguide-device-twins.md)在嵌入式应用程序中实施设备管理功能。 这些功能可能包括固件更新、软件安装和更新，以及设置管理。
 
@@ -88,15 +88,4 @@ Azure IoT 中心内的自动设备管理功能可将许多复杂且重复性的�
 
 * 在[大规模配置和监视 IoT 设备](iot-hub-auto-device-config.md)中演练创建、更新或删除自动设备配置的步骤。
 
-* 使用[教程：实施设备固件更新过程](tutorial-firmware-update.md)中的设备孪生和自动设备配置实施固件更新模式。 
-
-<!-- Links -->
-[lnk-device-twins]: iot-hub-devguide-device-twins.md
-[lnk-module-twins]: iot-hub-devguide-module-twins.md
-[lnk-auto-device-config]: iot-hub-auto-device-config.md
-[lnk-firmware-update]: tutorial-firmware-update.md
-[lnk-throttling]: iot-hub-devguide-quotas-throttling.md
-[lnk-queries]: iot-hub-devguide-query-language.md
-[lnk-dps]: ../iot-dps/how-to-manage-enrollments.md
-[lnk-azure-sdk]: https://github.com/Azure/azure-iot-sdks
-[lnk-solution]: https://azure.microsoft.com/features/iot-accelerators/
+* 使用[教程：实施设备固件更新过程](tutorial-firmware-update.md)中的设备孪生和自动设备配置实施固件更新模式。

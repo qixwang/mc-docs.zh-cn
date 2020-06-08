@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure RBAC 和 Azure 资源管理器模板添加角色分配
-description: 了解如何使用 Azure 基于角色的访问控制 (RBAC) 和 Azure 资源管理器模板为用户、组、服务主体或托管标识授予对 Azure 资源的访问权限。
+title: 使用 Azure 资源管理器模板添加 Azure 角色分配 - Azure RBAC
+description: 了解如何使用 Azure 资源管理器模板和 Azure 基于角色的访问控制 (Azure RBAC) 为用户、组、服务主体或托管标识授予对 Azure 资源的访问权限。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -10,17 +10,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/10/2020
+ms.date: 05/25/2020
 ms.author: v-junlch
 ms.reviewer: bagovind
-ms.openlocfilehash: 7a8e1c12bc42cdce6bced7bac3e5538a3ed8f04a
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 8e9b74bcdf46ad4c08d91059fa0d0c896a4bc3c6
+ms.sourcegitcommit: 7429daf26cff014b040f69cdae75bdeaea4f4e93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77128871"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83991648"
 ---
-# <a name="add-role-assignments-using-azure-rbac-and-azure-resource-manager-templates"></a>使用 Azure RBAC 和 Azure 资源管理器模板添加角色分配
+# <a name="add-azure-role-assignments-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板添加 Azure 角色分配
 
 [!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)] 除了使用 Azure PowerShell 或 Azure CLI 之外，还可以使用 [Azure 资源管理器模板](../azure-resource-manager/templates/template-syntax.md)分配角色。 如果需要一致且重复地部署资源，模板会很有用。 本文介绍如何使用模板分配角色。
 
@@ -28,7 +28,7 @@ ms.locfileid: "77128871"
 
 若要分配角色，需要指定要为其分配角色的用户、组或应用程序的 ID。 ID 的格式为：`11111111-1111-1111-1111-111111111111`。 可以使用 Azure 门户、Azure PowerShell 或 Azure CLI 获取 ID。
 
-### <a name="user"></a>用户
+### <a name="user"></a>User
 
 若要获取用户的 ID，可以使用 [Get-AzADUser](https://docs.microsoft.com/powershell/module/az.resources/get-azaduser) 或 [az ad user show](/cli/ad/user#az-ad-user-show) 命令。
 
@@ -66,7 +66,7 @@ objectid=$(az ad sp list --display-name "{name}" --query [].objectId --output ts
 
 ## <a name="add-a-role-assignment"></a>添加角色分配
 
-在 RBAC 中，若要授予访问权限，请添加角色分配。
+在 Azure RBAC 中，要授予访问权限，请添加角色分配。
 
 ### <a name="resource-group-without-parameters"></a>资源组（不带参数）
 
@@ -188,11 +188,11 @@ az group deployment create --resource-group ExampleGroup --template-file rbac-te
 下面是 [New-AzDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azdeployment) 和 [az deployment create](/cli/deployment#az-deployment-create) 命令示例，演示如何在订阅范围启动部署并指定位置。
 
 ```azurepowershell
-New-AzDeployment -Location centralus -TemplateFile rbac-test.json -principalId $objectid -builtInRoleType Reader
+New-AzDeployment -Location chinanorth -TemplateFile rbac-test.json -principalId $objectid -builtInRoleType Reader
 ```
 
 ```azurecli
-az deployment create --location centralus --template-file rbac-test.json --parameters principalId=$objectid builtInRoleType=Reader
+az deployment create --location chinanorth --template-file rbac-test.json --parameters principalId=$objectid builtInRoleType=Reader
 ```
 
 ### <a name="resource"></a>资源
@@ -364,6 +364,5 @@ az group deployment create --resource-group ExampleGroup2 --template-file rbac-t
 - [快速入门：使用 Azure 门户创建和部署 Azure 资源管理器模板](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)
 - [了解 Azure 资源管理器模板的结构和语法](../azure-resource-manager/templates/template-syntax.md)
 - [在订阅级别创建资源组和资源](../azure-resource-manager/templates/deploy-to-subscription.md)
-- [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/?term=rbac)
+- [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/?term=rbac)
 
-<!-- Update_Description: link update -->

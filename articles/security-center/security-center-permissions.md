@@ -1,5 +1,5 @@
 ---
-title: Azure 安全中心内的权限 | Azure
+title: Azure 安全中心的权限
 description: 本文介绍 Azure 安全中心如何使用基于角色的访问控制将权限分配给用户，并辨别每个角色允许的操作。
 services: security-center
 cloud: na
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/15/2020
 ms.author: v-tawe
 origin.date: 10/28/2018
-ms.openlocfilehash: 2140169ce1b9e09d6a058da1bfb3d8f9316c9dff
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.openlocfilehash: a369ddb8e0888ef82fefabb52f7754bb4eb55c4b
+ms.sourcegitcommit: cbaa1aef101f67bd094f6ad0b4be274bbc2d2537
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83423086"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84126626"
 ---
 # <a name="permissions-in-azure-security-center"></a>Azure 安全中心的权限
 

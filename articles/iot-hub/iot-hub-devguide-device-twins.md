@@ -9,22 +9,22 @@ ms.topic: conceptual
 origin.date: 02/01/2020
 ms.date: 04/06/2020
 ms.author: v-yiso
-ms.openlocfilehash: 96af2513f09178b6618558144493f6120eda0713
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: a694aff9896007825e20889d9d97b73cee4fb879
+ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80343577"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84186624"
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>了解并在 IoT 中心内使用设备孪生
 
-设备孪生是存储设备状态信息（例如元数据、配置和条件）的 JSON 文档  。 Azure IoT 中心为连接到 IoT 中心的每台设备保留一个设备孪生。 
+设备孪生是存储设备状态信息（例如元数据、配置和条件）的 JSON 文档。 Azure IoT 中心为连接到 IoT 中心的每台设备保留一个设备孪生。 
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
 本文介绍：
 
-* 设备孪生的结构：标记、所需的属性和报告的属性    。
+* 设备孪生的结构：标记、所需的属性和报告的属性  。
 * 设备应用和后端可在设备孪生上执行的操作。
 
 使用设备孪生可以：
@@ -34,23 +34,29 @@ ms.locfileid: "80343577"
 * 同步设备应用与后端应用之间的长时间运行工作流的状态。 例如，当解决方案后端指定要安装的新固件版本以及设备应用报告更新过程的各个阶段时。
 * 查询设备的元数据、配置或状态。
 
-有关使用报告的属性、设备到云的消息或文件上传的指导，请参阅[设备到云的通信指南][lnk-d2c-guidance]。
-有关使用所需的属性、直接方法或云到设备的消息的指导，请参阅[云到设备的通信指南][lnk-c2d-guidance]。
+有关使用报告的属性、设备到云的消息或文件上传的指导，请参阅[设备到云的通信指南](iot-hub-devguide-d2c-guidance.md)。
+
+有关使用所需的属性、直接方法或云到设备的消息的指导，请参阅[云到设备的通信指南](iot-hub-devguide-c2d-guidance.md)。
 
 ## <a name="device-twins"></a>设备孪生
+
 设备孪生存储具有以下用途的设备相关信息：
 
 * 设备和后端可以使用这些信息来同步设备状态和配置。
+
 * 解决方案后端可以使用这些信息来查询和定位长时间运行的操作。
 
-设备孪生的生命周期链接到相应的[设备标识][lnk-identity]。 在 IoT 中心创建或删除设备标识时，将隐式创建和删除设备孪生。
+设备孪生的生命周期链接到相应的[设备标识](iot-hub-devguide-identity-registry.md)。 在 IoT 中心创建或删除设备标识时，将隐式创建和删除设备孪生。
 
 设备孪生是一个 JSON 文档，其中包含：
 
 * **标记**。 解决方案后端可从中读取和写入数据的 JSON 文档的某个部分。 标记对设备应用不可见。
+
 * **所需的属性**。 与报告的属性结合使用，同步设备配置或状态。 解决方案后端可设置所需的属性，并且设备应用可进行读取。 此外，当所需的属性发生更改时，设备应用可收到通知。
+
 * **报告的属性**。 与所需的属性结合使用，同步设备配置或状态。 设备应用可设置报告的属性，并且解决方案后端可进行读取和查询。
-* **设备标识属性**。 设备孪生 JSON 文档的根包含[标识注册表][lnk-identity]中存储的相应设备标识的只读属性。
+
+* **设备标识属性**。 设备孪生 JSON 文档的根包含[标识注册表](iot-hub-devguide-identity-registry.md)中存储的相应设备标识的只读属性。 不会包含属性 `connectionStateUpdatedTime` 和 `generationId`。
 
 ![设备孪生属性的屏幕截图](./media/iot-hub-devguide-device-twins/twin.png)
 
@@ -100,13 +106,13 @@ ms.locfileid: "80343577"
 }
 ```
 
-根对象中包含设备标识属性，以及 `tags`、`reported` 和 `desired` 属性的容器对象。 `properties` 容器包含一些只读元素（`$metadata`、`$etag` 和 `$version`），[设备孪生元数据][lnk-twin-metadata]和[乐观并发][lnk-concurrency]部分描述了这些元素。
+根对象中包含设备标识属性，以及 `tags`、`reported` 和 `desired` 属性的容器对象。 `properties` 容器包含一些只读元素（`$metadata`、`$etag` 和 `$version`），[设备孪生元数据](iot-hub-devguide-device-twins.md#device-twin-metadata)和[乐观并发](iot-hub-devguide-device-twins.md#optimistic-concurrency)部分描述了这些元素。
 
 ### <a name="reported-property-example"></a>报告属性示例
 在上面的示例中，设备孪生包含设备应用报告的 `batteryLevel` 属性。 使用此属性可以根据上次报告的电池电量水平查询和操作设备。 其他示例包括让设备应用报告设备功能或连接选项。
 
 > [!NOTE]
-> 报告的属性如何简化解决方案后端获取属性最后一个已知值的方案。 如果解决方案后端需要以带时间戳的事件序列（例如时间序列）的形式处理设备遥测数据，可以使用[设备到云的消息][lnk-d2c]。
+> 报告的属性如何简化解决方案后端获取属性最后一个已知值的方案。 如果解决方案后端需要以带时间戳的事件序列（例如时间序列）的形式处理设备遥测数据，可以使用[设备到云的消息](iot-hub-devguide-messages-d2c.md)。
 
 ### <a name="desired-property-example"></a>所需属性示例
 在上面的示例中，解决方案后端和设备应用使用 `telemetryConfig` 设备孪生的所需和报告属性来同步此设备的遥测配置。 例如：
@@ -133,14 +139,13 @@ ms.locfileid: "80343577"
        ...
    }
    ```
-3. 解决方案后端可以通过[查询][lnk-query]设备孪生，跟踪多个设备上的配置操作结果。
+3. 解决方案后端可以通过[查询](iot-hub-devguide-query-language.md)设备孪生，跟踪多个设备上的配置操作结果。
 
 > [!NOTE]
 > 为便于阅读，上述代码片段示例经过优化，演示了为设备配置及其状态进行编码的一种方式。 IoT 中心不会对设备孪生中的所需属性和报告属性施加特定的架构。
 > 
-> 
 
-可以使用孪生来同步长时间运行的操作，例如固件更新。 有关如何使用属性来同步和跟踪各设备中长时间运行的操作的详细信息，请参阅[使用所需的属性来配置设备][lnk-twin-properties]。
+可以使用孪生来同步长时间运行的操作，例如固件更新。 有关如何使用属性来同步和跟踪各设备中长时间运行的操作的详细信息，请参阅[使用所需的属性来配置设备](tutorial-device-twins.md)。
 
 ## <a name="back-end-operations"></a>后端操作
 解决方案后端使用以下通过 HTTPS 公开的原子操作对设备孪生执行操作：
@@ -206,12 +211,13 @@ ms.locfileid: "80343577"
     }
     ``` 
 
-上述所有操作均支持[乐观并发][lnk-concurrency]，并需要[安全性][lnk-security]一文中定义的 **ServiceConnect** 权限。
+上述所有操作均支持[乐观并发](iot-hub-devguide-device-twins.md#optimistic-concurrency)，并且需要[控制对 IoT 中心的访问](iot-hub-devguide-security.md)中定义的 **ServiceConnect** 权限。
 
 除了上述操作以外，解决方案后端还可以：
 
-* 使用类似于 SQL 的 [IoT 中心查询语言][lnk-query]查询设备孪生。
-* 使用[作业][lnk-jobs]针对大型设备孪生集执行操作。
+* 使用类似于 SQL 的 [IoT 中心查询语言](iot-hub-devguide-query-language.md)查询设备孪生。
+
+* 使用[作业](iot-hub-devguide-jobs.md)针对大型设备孪生集执行操作。
 
 ## <a name="device-operations"></a>设备操作
 设备应用使用以下原子操作对设备孪生执行操作：
@@ -223,7 +229,7 @@ ms.locfileid: "80343577"
 
 上述所有操作都需要[控制对 IoT 中心的访问](iot-hub-devguide-security.md)中定义的 **DeviceConnect** 权限。
 
-借助 [Azure IoT 设备 SDK][lnk-sdks]，可通过多种语言和平台轻松使用上述操作。 有关用于同步所需属性的 IoT 中心基元的详细信息，请参阅[设备重新连接流][lnk-reconnection]。
+借助 [Azure IoT 设备 SDK](iot-hub-devguide-sdks.md)，可通过多种语言和平台轻松使用上述操作。 有关用于同步所需属性的 IoT 中心基元的详细信息，请参阅[设备重新连接流](iot-hub-devguide-device-twins.md#device-reconnection-flow)。
 
 ## <a name="tags-and-properties-format"></a>标记和属性格式
 标记、所需的属性和报告的属性是具有以下限制的 JSON 对象：
@@ -357,58 +363,33 @@ IoT 中心不会保留已断开连接设备的所需属性更新通知。 它遵
 设备应用可以忽略 `$version` 小于或等于完全检索文档的版本的所有通知。 之所以能够使用此方法，是因为 IoT 中心保证版本始终是递增的。
 
 > [!NOTE]
-> 此逻辑已在 [Azure IoT 设备 SDK][lnk-sdks] 中实现。 仅当设备应用无法使用任何 Azure IoT 设备 SDK，必须直接为 MQTT 接口编程时，这段说明才有作用。
-> 
+> 此逻辑已在 [Azure IoT 设备 SDK](iot-hub-devguide-sdks.md) 中实现。 仅当设备应用无法使用任何 Azure IoT 设备 SDK，必须直接为 MQTT 接口编程时，这段说明才有作用。
 > 
 
 ## <a name="additional-reference-material"></a>其他参考资料
+
 IoT 中心开发人员指南中的其他参考主题包括：
 
-* [IoT 中心终结点][lnk-endpoints]一文介绍了每个 IoT 中心针对运行时和管理操作公开的各种终结点。
-* [限制和配额][lnk-quotas]一文介绍了适用于 IoT 中心服务的配额，以及使用服务时应会碰到的限制行为。
-* [Azure IoT 设备和服务 SDK][lnk-sdks] 一文列出了开发与 IoT 中心交互的设备和服务应用时可使用的各种语言 SDK。
-* [设备孪生、作业和消息路由的 IoT 中心查询语言][lnk-query]一文介绍了可用于从 IoT 中心检索设备孪生和作业相关信息的 IoT 中心查询语言。
-* [IoT 中心 MQTT 支持][lnk-devguide-mqtt]一文提供有关 IoT 中心对 MQTT 协议的支持的详细信息。
+* [IoT 中心终结点](iot-hub-devguide-endpoints.md)一文介绍了每个 IoT 中心针对运行时和管理操作公开的各种终结点。
+
+* [限制和配额](iot-hub-devguide-quotas-throttling.md)一文介绍了适用于 IoT 中心服务的配额，以及使用服务时应会碰到的限制行为。
+
+* [Azure IoT 设备和服务 SDK](iot-hub-devguide-sdks.md) 一文列出了开发与 IoT 中心交互的设备和服务应用时可使用的各种语言 SDK。
+
+* [设备孪生、作业和消息路由的 IoT 中心查询语言](iot-hub-devguide-query-language.md)一文介绍了可用于从 IoT 中心检索设备孪生和作业相关信息的 IoT 中心查询语言。
+
+* [IoT 中心 MQTT 支持](iot-hub-mqtt-support.md)一文提供有关 IoT 中心对 MQTT 协议的支持的详细信息。
 
 ## <a name="next-steps"></a>后续步骤
+
 了解设备孪生后，可以根据兴趣参阅以下 IoT 中心开发人员指南主题：
 
-* [在 IoT 中心内了解并使用模块孪生][lnk-module-twins]
-* [在设备上调用直接方法][lnk-methods]
-* [在多台设备上计划作业][lnk-jobs]
+* [在 IoT 中心内了解并使用模块孪生](iot-hub-devguide-module-twins.md)
+* [在设备上调用直接方法](iot-hub-devguide-direct-methods.md)
+* [在多台设备上计划作业](iot-hub-devguide-jobs.md)
 
 要尝试本文中介绍的一些概念，请参阅以下 IoT 中心教程：
 
-* [如何使用设备孪生][lnk-twin-tutorial]
-* [如何使用设备孪生属性][lnk-twin-properties]
-* [使用用于 VS Code 的 Azure IoT 工具包进行设备管理][lnk-twin-vscode]
-
-<!-- links and images -->
-
-[lnk-endpoints]: ./iot-hub-devguide-endpoints.md
-[lnk-quotas]: ./iot-hub-devguide-quotas-throttling.md
-[lnk-sdks]: ./iot-hub-devguide-sdks.md
-[lnk-query]: ./iot-hub-devguide-query-language.md
-[lnk-jobs]: ./iot-hub-devguide-jobs.md
-[lnk-identity]: ./iot-hub-devguide-identity-registry.md
-[lnk-d2c]: ./iot-hub-devguide-messages-d2c.md
-[lnk-methods]: ./iot-hub-devguide-direct-methods.md
-[lnk-security]: ./iot-hub-devguide-security.md
-[lnk-c2d-guidance]: ./iot-hub-devguide-c2d-guidance.md
-[lnk-d2c-guidance]: ./iot-hub-devguide-d2c-guidance.md
-
-[ISO8601]: https://en.wikipedia.org/wiki/ISO_8601
-[RFC7232]: https://tools.ietf.org/html/rfc7232
-[lnk-devguide-mqtt]: ./iot-hub-mqtt-support.md
-
-[lnk-devguide-directmethods]: ./iot-hub-devguide-direct-methods.md
-[lnk-devguide-jobs]: ./iot-hub-devguide-jobs.md
-[lnk-twin-tutorial]: ./iot-hub-node-node-twin-getstarted.md
-[lnk-twin-properties]: tutorial-device-twins.md
-[lnk-twin-vscode]: iot-hub-device-management-iot-toolkit.md
-[lnk-twin-metadata]: ./iot-hub-devguide-device-twins.md#device-twin-metadata
-[lnk-concurrency]: ./iot-hub-devguide-device-twins.md#optimistic-concurrency
-[lnk-reconnection]: ./iot-hub-devguide-device-twins.md#device-reconnection-flow
-[lnk-module-twins]:iot-hub-devguide-module-twins.md
-
-[img-twin]: ./media/iot-hub-devguide-device-twins/twin.png
+* [如何使用设备孪生](iot-hub-node-node-twin-getstarted.md)
+* [如何使用设备孪生属性](tutorial-device-twins.md)
+* [使用适用于 VS Code 的 Azure IoT 工具进行设备管理](iot-hub-device-management-iot-toolkit.md)

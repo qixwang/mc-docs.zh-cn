@@ -4,17 +4,17 @@ description: 本文提供有关 azcopy copy 命令的参考信息。
 author: WenJason
 ms.service: storage
 ms.topic: reference
-origin.date: 10/16/2019
-ms.date: 03/30/2020
+origin.date: 04/10/2020
+ms.date: 06/01/2020
 ms.author: v-jay
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: ae1241bedb7a7ba002701dbb822c225670353e60
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 3ef7a32b9ebf39e3662a5c0191f235e40367a70c
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80290428"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199733"
 ---
 # <a name="azcopy-copy"></a>azcopy copy
 
@@ -170,6 +170,8 @@ azcopy copy [source] [destination] [flags]
 
 ## <a name="options"></a>选项
 
+**--backup**                               激活 Windows 用于上传的 SeBackupPrivilege 或用于下载的 SeRestorePrivilege，以允许 AzCopy 查看和读取所有文件（无论其文件系统权限如何），并恢复所有权限。 要求运行 AzCopy 的帐户已经具有这些权限（例如，拥有管理员权限，或者是“备份操作员”组的成员）。 此标志的功能就是激活帐户已经具有的权限。
+
 **--blob-type** 字符串                     定义目标中的 Blob 类型。 此选项用于上传 Blob 以及在帐户之间进行复制（默认值为“Detect”）。 有效值包括“Detect”、“BlockBlob”、“PageBlob”和“AppendBlob”。 在帐户之间复制时，使用值“Detect”会导致 AzCopy 使用源 Blob 的类型来确定目标 Blob 的类型。 上传文件时，“Detect”会根据文件扩展名确定文件是 VHD 文件还是 VHDX 文件。 如果文件是 VHD 或 VHDX 文件，则 AzCopy 会将该文件视为页 Blob。 （默认值为“Detect”）
 
 **--block-blob-tier** 字符串               将块 Blob 直接上传到所选的[访问层](../blobs/storage-blob-storage-tiers.md)。 （默认值为“None”）。 有效值包括“None”、“Hot”、“Cool”和“Archive”。 如果传递“None”或未传递任何层，则 blob 将继承存储帐户的层。
@@ -223,6 +225,12 @@ azcopy copy [source] [destination] [flags]
 **--page-blob-tier** 字符串                使用此 Blob 层将页 Blob 上传到 Azure 存储。 （默认值为“None”）
 
 **--preserve-last-modified-time**          仅当目标为文件系统时才可用。
+
+**--preserve-smb-permissions** 字符串      默认值为 False。 保留感知资源（Windows 和 Azure 文件存储）之间的 SMB ACl。 对于下载操作，还需要使用 `--backup` 标志来恢复权限，其中新所有者将不是运行 AzCopy 的用户。 此标志同时适用于文件和文件夹，除非指定了“仅文件”筛选器（例如 `include-pattern`）。
+
+**--preserve-smb-info** 字符串             默认值为 False。 保留 SMB 感知资源（Windows 和 Azure 文件存储）之间的 SMB 属性信息（上次写入时间、创建时间、属性位）。 只会传输 Azure 文件存储支持的属性位；其他的将被忽略。 此标志同时适用于文件和文件夹，除非指定了“仅文件”筛选器（例如，包含模式）。 为文件夹传输的信息与为文件传输的信息几乎相同，只是“上次写入时间”除外，不会为文件夹保留该信息。
+
+**--preserve-owner**                       仅当下载数据时，且仅当使用 `--preserve-smb-permissions` 时才起作用。 如果为 true（默认值），则下载内容中将保留文件“所有者”和“组”。 如果此标志设置为 false，则 `--preserve-smb-permissions` 仍保留 ACL，但“所有者”和“组”的保留将基于运行 AzCopy 的用户。
 
 **--put-md5**                             创建每个文件的 MD5 哈希，并将该哈希另存为目标 Blob 或文件的 Content-MD5 属性。 （默认不会创建哈希。）仅在上传时可用。
 

@@ -1,28 +1,28 @@
 ---
 title: 使用 Azure CLI 配置客户管理的密钥
 titleSuffix: Azure Storage
-description: 了解如何使用 Azure CLI 通过 Azure Key Vault 来配置客户管理的密钥用于 Azure 存储加密。 使用客户管理的密钥可以创建、轮换、禁用和撤销访问控制。
+description: 了解如何使用 Azure CLI 通过 Azure Key Vault 来配置客户管理的密钥用于 Azure 存储加密。
 services: storage
 author: WenJason
 ms.service: storage
 ms.topic: how-to
-origin.date: 03/10/2020
-ms.date: 03/30/2020
+origin.date: 04/02/2020
+ms.date: 06/01/2020
 ms.author: v-jay
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: a385e8205434f3a3024fbe6266e585a4340bbbc2
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: fa9a914ff5019a1397dfc946db46e0aa4e75574b
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80290391"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199396"
 ---
 # <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-azure-cli"></a>通过 Azure CLI 使用 Azure Key Vault 配置客户管理的密钥
 
 [!INCLUDE [storage-encryption-configure-keys-include](../../../includes/storage-encryption-configure-keys-include.md)]
 
-本文介绍如何使用 Azure CLI 配置包含客户管理的密钥的 Azure Key Vault。 要了解如何使用 Azure CLI 创建密钥保管库，请参阅[快速入门：使用 Azure CLI 在 Azure Key Vault 中设置和检索机密](../../key-vault/quick-create-cli.md)。
+本文介绍如何使用 Azure CLI 配置包含客户管理的密钥的 Azure Key Vault。 要了解如何使用 Azure CLI 创建密钥保管库，请参阅[快速入门：使用 Azure CLI 在 Azure Key Vault 中设置和检索机密](../../key-vault/secrets/quick-create-cli.md)。
 
 ## <a name="assign-an-identity-to-the-storage-account"></a>将标识分配到存储帐户
 
@@ -43,7 +43,7 @@ az storage account update \
 
 ## <a name="create-a-new-key-vault"></a>创建新的 Key Vault
 
-必须为用来存储客户管理的密钥（用于 Azure 存储加密）的 Key Vault 启用两项密钥保护设置：“软删除”和“不要清除”。   若要在启用这些设置的情况下使用 PowerShell 或 Azure CLI 创建新的 Key Vault，请执行以下命令。 请记得将括号中的占位符值替换为你自己的值。
+必须为用来存储客户管理的密钥（用于 Azure 存储加密）的 Key Vault 启用两项密钥保护设置：“软删除”和“不要清除”。  若要在启用这些设置的情况下使用 PowerShell 或 Azure CLI 创建新的 Key Vault，请执行以下命令。 请记得将括号中的占位符值替换为你自己的值。
 
 若要使用 Azure CLI 创建新的 Key Vault，请调用 [az keyvault create](/cli/keyvault#az-keyvault-create)。 请记得将括号中的占位符值替换为你自己的值。
 
@@ -56,7 +56,7 @@ az keyvault create \
     --enable-purge-protection
 ```
 
-若要了解如何使用 Azure CLI 在现有密钥保管库上启用“软删除”  和“请勿清除”  ，请参阅[如何在 CLI 中使用软删除](../../key-vault/key-vault-soft-delete-cli.md)中标题为“启用软删除”  和“启用清除保护”  的部分。
+若要了解如何使用 Azure CLI 在现有密钥保管库上启用“软删除”和“请勿清除”，请参阅[如何在 CLI 中使用软删除](../../key-vault/general/soft-delete-cli.md)中标题为“启用软删除”和“启用清除保护”的部分。
 
 ## <a name="configure-the-key-vault-access-policy"></a>配置 Key Vault 访问策略
 
@@ -74,7 +74,7 @@ az keyvault set-policy \
     --name <key-vault> \
     --resource-group <resource_group>
     --object-id $storage_account_principal \
-    --key-permissions get recover unwrapKey wrapKey
+    --key-permissions get unwrapKey wrapKey
 ```
 
 ## <a name="create-a-new-key"></a>新建密钥
@@ -82,10 +82,12 @@ az keyvault set-policy \
 接下来，在 Key Vault 中创建密钥。 若要创建密钥，请调用 [az keyvault key create](/cli/keyvault/key#az-keyvault-key-create)。 请记得将括号中的占位符值替换为你自己的值。
 
 ```azurecli
-az keyvault key create
+az keyvault key create \
     --name <key> \
     --vault-name <key-vault>
 ```
+
+Azure 存储加密仅支持 2048 位 RSA 密钥。 有关密钥的详细信息，请参阅[关于 Azure Key Vault 密钥、机密和证书](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys)中的“Key Vault 密钥”。
 
 ## <a name="configure-encryption-with-customer-managed-keys"></a>配置使用客户管理的密钥进行加密
 
@@ -133,7 +135,7 @@ az keyvault delete-policy \
 
 ## <a name="disable-customer-managed-keys"></a>禁用客户托管密钥
 
-禁用客户托管密钥后，将使用 Microsoft 托管密钥对存储帐户加密。 若要禁用客户托管密钥，请调用 [az storage account update](/cli/storage/account#az-storage-account-update) 并将 `--encryption-key-source parameter` 设置为 `Microsoft.Storage`，如以下示例所示。 请记得将括号中的占位符值替换为自己的值，并使用前面示例中定义的变量。
+禁用客户托管密钥时，将再次使用 Microsoft 托管密钥对存储帐户进行加密。 若要禁用客户托管密钥，请调用 [az storage account update](/cli/storage/account#az-storage-account-update) 并将 `--encryption-key-source parameter` 设置为 `Microsoft.Storage`，如以下示例所示。 请记得将括号中的占位符值替换为自己的值，并使用前面示例中定义的变量。
 
 ```azurecli
 az storage account update

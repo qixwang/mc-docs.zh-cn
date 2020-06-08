@@ -14,12 +14,12 @@ ms.workload: na
 ms.date: 05/14/2020
 ms.author: v-tawe
 origin.date: 12/29/2019
-ms.openlocfilehash: 965dbef7eaacfe594904b57e495653ee18d3563d
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.openlocfilehash: 789ed5205ecd89450447d881c12b4667a4301acb
+ms.sourcegitcommit: cbaa1aef101f67bd094f6ad0b4be274bbc2d2537
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83423123"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84126763"
 ---
 # <a name="endpoint-protection-assessment-and-recommendations-in-azure-security-center"></a>Azure 安全中心中的 Endpoint Protection 评估和建议
 
@@ -88,6 +88,37 @@ Azure 安全中心提供[支持的](security-center-services.md#endpoint-support
     * 在安装文件夹中找到 dsa_query.cmd 文件
     * 运行 dsa_query.cmd 结果且 Component.AM.mode 为“启用”- 检测到 Trend Micro Deep Security Agent 
 
+## <a name="symantec-endpoint-protection"></a>Symantec 终结点保护
+安全中心建议在不符合以下任何检查时，在虚拟机上安装 Endpoint Protection 解决方案：
+
+* HKLM:\Software\Symantec\Symantec Endpoint Protection\CurrentVersion\PRODUCTNAME = "Symantec Endpoint Protection"
+
+* HKLM:\Software\Symantec\Symantec Endpoint Protection\CurrentVersion\public-opstate\ASRunningStatus = 1
+
+或
+
+* HKLM:\Software\Wow6432Node\Symantec\Symantec Endpoint Protection\CurrentVersion\PRODUCTNAME = "Symantec Endpoint Protection"
+
+* HKLM:\Software\Wow6432Node\Symantec\Symantec Endpoint Protection\CurrentVersion\public-opstate\ASRunningStatus = 1
+
+安全中心建议在不符合以下任何检查时，解决计算机上的 Endpoint Protection 运行状况问题：
+
+* 检查 Symantec 版本  >= 12：注册表位置：HKLM:\Software\Symantec\Symantec Endpoint Protection\CurrentVersion" -Value "PRODUCTVERSION"
+
+* 检查实时保护状态：HKLM:\Software\Wow6432Node\Symantec\Symantec Endpoint Protection\AV\Storages\Filesystem\RealTimeScan\OnOff == 1
+
+* 检查签名更新状态：HKLM\Software\Symantec\Symantec Endpoint Protection\CurrentVersion\public-opstate\LatestVirusDefsDate <= 7 天
+
+* 检查完全扫描状态：HKLM:\Software\Symantec\Symantec Endpoint Protection\CurrentVersion\public-opstate\LastSuccessfulScanDateTime <= 7 天
+
+* 查找 Symantec 12 的签名版本的签名版本号路径：Registry Paths+ "CurrentVersion\SharedDefs" -Value "SRTSP" 
+
+* Symantec 14 的签名版本的路径：Registry Paths+ "CurrentVersion\SharedDefs\SDSDefs" -Value "SRTSP"
+
+注册表路径：
+
+* "HKLM:\Software\Symantec\Symantec Endpoint Protection" + $Path;
+* "HKLM:\Software\Wow6432Node\Symantec\Symantec Endpoint Protection" + $Path
 
 ## <a name="mcafee-endpoint-protection-for-windows"></a>适用于 Windows 的 McAfee Endpoint Protection
 

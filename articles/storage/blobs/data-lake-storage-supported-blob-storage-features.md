@@ -5,27 +5,27 @@ author: WenJason
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-origin.date: 04/03/2020
-ms.date: 04/27/2020
+origin.date: 05/10/2020
+ms.date: 06/01/2020
 ms.author: v-jay
 ms.reviewer: stewu
-ms.openlocfilehash: 46327bfd9b27f241fd31a79f9dd9c86c289f4eb8
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.openlocfilehash: 0afd168dfe0a3f72495b202aac038f90049e258b
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82134987"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199732"
 ---
 # <a name="blob-storage-features-available-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 中可用的 Blob 存储功能
 
 Blob 存储功能（例如[诊断日志记录](../common/storage-analytics-logging.md)、[访问层](storage-blob-storage-tiers.md)和  [Blob 存储生命周期管理策略](storage-lifecycle-management-concepts.md)）现在适用于具有分层命名空间的帐户。 因此，你可以在 Blob 存储帐户上启用分层命名空间，而不会失去对这些功能的访问权限。
 
-下表列出了可用于 Azure Data Lake Storage Gen2 的 Blob 存储功能。 随着支持的不断扩展，这些表中出现的项将随着时间的推移而变化。
+下表列出了可用于 Azure Data Lake Storage Gen2 的 Blob 存储功能。 随着支持的不断扩展，这些表中出现的项将随着时间的推移而变化。 若要详细了解与功能的预览状态相关的特定问题，请参阅[已知问题](data-lake-storage-known-issues.md)一文。
 
 ## <a name="supported-blob-storage-features"></a>支持的 Blob 存储功能
 
 > [!NOTE]
-> 支持级别仅指 Data Lake Storage Gen2 支持该功能的方式。
+> 支持级别仅指 Data Lake Storage Gen2 支持该功能的方式。 
 
 |Blob 存储功能 |支持级别 |相关文章 |
 |---------------|-------------------|---|
@@ -36,9 +36,9 @@ Blob 存储功能（例如[诊断日志记录](../common/storage-analytics-loggi
 |Blob 存储 PowerShell 命令|正式发布|[快速入门：使用 PowerShell 上传、下载和列出 blob](storage-quickstart-blobs-powershell.md)|
 |Blob 存储 Azure CLI 命令|正式发布|[快速入门：使用 Azure CLI 创建、下载和列出 blob](storage-quickstart-blobs-cli.md)|
 |Blob 存储 API|正式发布|[快速入门：适用于 .NET 的 Azure Blob 存储客户端库 v12](storage-quickstart-blobs-dotnet.md)<br>[快速入门：使用 Java v12 SDK 管理 blob](storage-quickstart-blobs-java.md)<br>[快速入门：使用 Python v12 SDK 管理 blob](storage-quickstart-blobs-python.md)<br>[快速入门：在 Node.js 中使用 JavaScript v12 SDK 管理 blob](storage-quickstart-blobs-nodejs.md)|
+|诊断日志|正式发布|[Azure 存储分析日志记录](../common/storage-analytics-logging.md?toc=%2fstorage%2fblobs%2ftoc.json)|
 |存档访问层|预览|[Azure Blob 存储：热、冷、存档访问层](storage-blob-storage-tiers.md)|
 |生命周期管理策略|预览|[管理 Azure Blob 存储生命周期](storage-lifecycle-management-concepts.md)|
-|诊断日志|预览|[Azure 存储分析日志记录](../common/storage-analytics-logging.md?toc=%2fstorage%2fblobs%2ftoc.json)|
 |更改源|尚不支持|[Azure Blob 存储中的更改源支持](storage-blob-change-feed.md)|
 |帐户故障转移|尚不支持|[灾难恢复和帐户故障转移](../common/storage-disaster-recovery-guidance.md?toc=%2fstorage%2fblobs%2ftoc.json)|
 |Blob 容器 ACL|尚不支持|[Set Container ACL](https://docs.microsoft.com/rest/api/storageservices/set-container-acl)|

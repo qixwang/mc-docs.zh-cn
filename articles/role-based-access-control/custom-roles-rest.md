@@ -1,6 +1,6 @@
 ---
-title: 使用 REST API 为 Azure 资源创建或更新自定义角色
-description: 了解如何通过 REST API 使用基于角色的访问控制 (RBAC) 为 Azure 资源列出、创建、更新或删除自定义角色。
+title: 使用 REST API 创建或更新 Azure 自定义角色 - Azure RBAC
+description: 了解如何通过 REST API 和 Azure 基于角色的访问控制 (Azure RBAC) 列出、创建、更新或删除自定义角色。
 services: active-directory
 documentationcenter: na
 author: rolyon
@@ -12,24 +12,24 @@ ms.workload: multiple
 ms.tgt_pltfrm: rest-api
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/31/2020
+ms.date: 05/25/2020
 ms.author: v-junlch
 ms.reviewer: bagovind
-ms.openlocfilehash: 560a9e3f31d3a577bb0378212c1609a03c026643
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 602181c9e189d659a9f2414eebd3ae872197e25b
+ms.sourcegitcommit: 7429daf26cff014b040f69cdae75bdeaea4f4e93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80581678"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83991640"
 ---
-# <a name="create-or-update-custom-roles-for-azure-resources-using-the-rest-api"></a>使用 REST API 为 Azure 资源创建或更新自定义角色
+# <a name="create-or-update-azure-custom-roles-using-the-rest-api"></a>使用 REST API 创建或更新 Azure 自定义角色
 
 > [!IMPORTANT]
-> 将管理组添加到 `AssignableScopes` 的功能目前处于预览状态。
+> 将管理组添加到 `AssignableScopes` 的功能目前为预览版。
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
 > 有关详细信息，请参阅[适用于 Azure 预览版的补充使用条款](https://www.azure.cn/support/legal/)。
 
-如果 [Azure 资源的内置角色](built-in-roles.md)不能满足组织的特定需求，则可以创建自定义角色。 本文介绍如何使用 REST API 列出、创建、更新或删除自定义角色。
+如果 [Azure 内置角色](built-in-roles.md)不满足组织的特定需求，你可以创建自己的自定义角色。 本文介绍如何使用 REST API 列出、创建、更新或删除自定义角色。
 
 ## <a name="list-custom-roles"></a>列出自定义角色
 
@@ -44,7 +44,7 @@ ms.locfileid: "80581678"
 1. 将 *{filter}* 替换为角色类型。
 
     > [!div class="mx-tableFixed"]
-    > | “筛选器” | 说明 |
+    > | 筛选器 | 说明 |
     > | --- | --- |
     > | `$filter=type+eq+'CustomRole'` | 基于 CustomRole 类型的筛选器 |
 
@@ -61,7 +61,7 @@ ms.locfileid: "80581678"
 1. 在 URI 中，将 *{scope}* 替换为要列出角色的范围。
 
     > [!div class="mx-tableFixed"]
-    > | 范围 | 类型 |
+    > | 作用域 | 类型 |
     > | --- | --- |
     > | `subscriptions/{subscriptionId1}` | 订阅 |
     > | `subscriptions/{subscriptionId1}/resourceGroups/{resourceGroup1}` | 资源组 |
@@ -71,7 +71,7 @@ ms.locfileid: "80581678"
 1. 将 *{filter}* 替换为角色类型。
 
     > [!div class="mx-tableFixed"]
-    > | “筛选器” | 说明 |
+    > | 筛选器 | 说明 |
     > | --- | --- |
     > | `$filter=type+eq+'CustomRole'` | 基于 CustomRole 类型的筛选器 |
 
@@ -88,7 +88,7 @@ ms.locfileid: "80581678"
 1. 在 URI 中，将 *{scope}* 替换为要列出角色的范围。
 
     > [!div class="mx-tableFixed"]
-    > | 范围 | 类型 |
+    > | 作用域 | 类型 |
     > | --- | --- |
     > | `subscriptions/{subscriptionId1}` | 订阅 |
     > | `subscriptions/{subscriptionId1}/resourceGroups/{resourceGroup1}` | 资源组 |
@@ -98,9 +98,9 @@ ms.locfileid: "80581678"
 1. 将 *{filter}* 替换为角色的显示名称。
 
     > [!div class="mx-tableFixed"]
-    > | “筛选器” | 说明 |
+    > | 筛选器 | 说明 |
     > | --- | --- |
-    > | `$filter=roleName+eq+'{roleDisplayName}'` | 使用角色的准确显示名称的 URL 编码形式。 例如 `$filter=roleName+eq+'Virtual%20Machine%20Contributor'` |
+    > | `$filter=roleName+eq+'{roleDisplayName}'` | 使用角色的具体显示名称的 URL 编码形式。 例如 `$filter=roleName+eq+'Virtual%20Machine%20Contributor'` |
 
 ## <a name="list-a-custom-role-definition-by-id"></a>按 ID 列出自定义角色定义
 
@@ -117,7 +117,7 @@ ms.locfileid: "80581678"
 1. 在 URI 中，将 *{scope}* 替换为要列出角色的范围。
 
     > [!div class="mx-tableFixed"]
-    > | 范围 | 类型 |
+    > | 作用域 | 类型 |
     > | --- | --- |
     > | `subscriptions/{subscriptionId1}` | 订阅 |
     > | `subscriptions/{subscriptionId1}/resourceGroups/{resourceGroup1}` | 资源组 |
@@ -171,7 +171,7 @@ ms.locfileid: "80581678"
 1. 在 URI 中，将 *{scope}* 替换为自定义角色的第一个 `assignableScopes`。
 
     > [!div class="mx-tableFixed"]
-    > | 范围 | 类型 |
+    > | 作用域 | 类型 |
     > | --- | --- |
     > | `subscriptions/{subscriptionId1}` | 订阅 |
     > | `subscriptions/{subscriptionId1}/resourceGroups/{resourceGroup1}` | 资源组 |
@@ -179,17 +179,17 @@ ms.locfileid: "80581678"
 
 1. 将 *{roleDefinitionId}* 替换为自定义角色的 GUID 标识符。
 
-1. 在请求正文中，将 {roleDefinitionId}  替换为 GUID 标识符。
+1. 在请求正文中，将 {roleDefinitionId} 替换为 GUID 标识符。
 
-1. 如果 `assignableScopes` 是订阅或资源组，请将 {subscriptionId}  或 {resourceGroup}  实例替换为你的标识符。
+1. 如果 `assignableScopes` 是订阅或资源组，请将 {subscriptionId} 或 {resourceGroup} 实例替换为你的标识符。
 
-1. 如果 `assignableScopes` 是管理组，请将 {groupId}  实例替换为你的管理组标识符。 将管理组添加到 `assignableScopes` 的功能目前处于预览状态。
+1. 如果 `assignableScopes` 是管理组，请将 {groupId} 实例替换为你的管理组标识符。 将管理组添加到 `assignableScopes` 的功能目前处于预览状态。
 
 1. 在 `actions` 属性中，添加该角色允许执行的操作。
 
 1. 在 `notActions` 属性中，添加要从允许的 `actions` 中排除的操作。
 
-1. 在 `roleName` 和 `description` 属性中，指定唯一的角色名称和说明。 有关属性的详细信息，请参阅[自定义角色](custom-roles.md)。
+1. 在 `roleName` 和 `description` 属性中，指定唯一的角色名称和说明。 有关属性的详细信息，请参阅 [Azure 自定义角色](custom-roles.md)。
 
     下面显示了请求正文的示例：
 
@@ -211,8 +211,7 @@ ms.locfileid: "80581678"
               "Microsoft.Authorization/*/read",
               "Microsoft.ResourceHealth/availabilityStatuses/read",
               "Microsoft.Resources/subscriptions/resourceGroups/read",
-              "Microsoft.Insights/alertRules/*",
-              "Microsoft.Support/*"
+              "Microsoft.Insights/alertRules/*"
             ],
             "notActions": []
           }
@@ -240,7 +239,7 @@ ms.locfileid: "80581678"
 1. 在 URI 中，将 *{scope}* 替换为自定义角色的第一个 `assignableScopes`。
 
     > [!div class="mx-tableFixed"]
-    > | 范围 | 类型 |
+    > | 作用域 | 类型 |
     > | --- | --- |
     > | `subscriptions/{subscriptionId1}` | 订阅 |
     > | `subscriptions/{subscriptionId1}/resourceGroups/{resourceGroup1}` | 资源组 |
@@ -301,8 +300,7 @@ ms.locfileid: "80581678"
               "Microsoft.ResourceHealth/availabilityStatuses/read",
               "Microsoft.Resources/subscriptions/resourceGroups/read",
               "Microsoft.Insights/alertRules/*",
-              "Microsoft.Insights/diagnosticSettings/*",
-              "Microsoft.Support/*"
+              "Microsoft.Insights/diagnosticSettings/*"
             ],
             "notActions": []
           }
@@ -330,7 +328,7 @@ ms.locfileid: "80581678"
 1. 在 URI 中，将 *{scope}* 替换为要删除自定义角色的范围。
 
     > [!div class="mx-tableFixed"]
-    > | 范围 | 类型 |
+    > | 作用域 | 类型 |
     > | --- | --- |
     > | `subscriptions/{subscriptionId1}` | 订阅 |
     > | `subscriptions/{subscriptionId1}/resourceGroups/{resourceGroup1}` | 资源组 |
@@ -340,8 +338,7 @@ ms.locfileid: "80581678"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Azure 资源的自定义角色](custom-roles.md)
-- [使用 RBAC 和 REST API 管理对 Azure 资源的访问权限](role-assignments-rest.md)
+- [Azure 自定义角色](custom-roles.md)
+- [使用 REST API 添加或删除 Azure 角色分配](role-assignments-rest.md)
 - [Azure REST API 参考](https://docs.microsoft.com/rest/api/azure/)
 
-<!-- Update_Description: wording update -->

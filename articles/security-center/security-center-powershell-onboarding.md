@@ -14,12 +14,12 @@ ms.workload: na
 ms.date: 05/11/2020
 ms.author: v-tawe
 origin.date: 10/02/2018
-ms.openlocfilehash: 8ad31b99d003f62c45308d70b5e7536be859b535
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.openlocfilehash: ea99d0c01f09f170ebf9d7fd1334ad6e8e849d1b
+ms.sourcegitcommit: cbaa1aef101f67bd094f6ad0b4be274bbc2d2537
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83423081"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84126749"
 ---
 # <a name="automate-onboarding-of-azure-security-center-using-powershell"></a>使用 PowerShell 自动载入 Azure 安全中心
 
@@ -34,9 +34,9 @@ ms.locfileid: "83423081"
 
 1. 设置[安全中心标准版保护级别](https://www.azure.cn/pricing/details/security-center/)。 
  
-2. 将 Log Analytics 工作区设置为 Microsoft Monitoring Agent 将发送其在与订阅关联的 VM 上收集的数据位置，在此示例中，是现有用户定义的工作区 (myWorkspace)。
+2. 将 Log Analytics 工作区设置为 Log Analytics 代理将发送其在与订阅关联的 VM 上收集的数据位置，在此示例中，是现有用户定义的工作区 (myWorkspace)。
 
-3. 激活[部署 Microsoft Monitoring Agent](security-center-enable-data-collection.md#auto-provision-mma) 的安全中心的自动代理预配。
+3. 激活[部署 Log Analytics 代理](security-center-enable-data-collection.md#auto-provision-mma)的安全中心的自动代理预配。
 
 5. 将组织的 [CISO 设置为安全中心警报和重要事件的安全联系人](security-center-provide-security-contact-details.md)。
 
@@ -69,7 +69,7 @@ ms.locfileid: "83423081"
         Set-AzSecurityWorkspaceSetting -Name "default" -Scope
         "/subscriptions/d07c0080-170c-4c24-861d-9c817742786c" -WorkspaceId"/subscriptions/d07c0080-170c-4c24-861d-9c817742786c/resourceGroups/myRg/providers/Microsoft.OperationalInsights/workspaces/myWorkspace"
 
-4.  在 Azure 虚拟机上自动预配安装 Microsoft Monitoring Agent：
+4.  在 Azure VM 上自动预配安装 Log Analytics 代理：
     
         Set-AzContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"
     

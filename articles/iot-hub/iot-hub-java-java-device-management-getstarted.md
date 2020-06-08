@@ -8,13 +8,13 @@ ms.devlang: java
 ms.topic: conceptual
 origin.date: 08/20/2019
 ms.author: v-yiso
-ms.date: 09/30/2019
-ms.openlocfilehash: ee274e13b18e303eef8ecb00590ccc15dbf7c7ff
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 06/08/2020
+ms.openlocfilehash: fbf464c3829e6c96f2ca659bb3adf9c91e1e65b8
+ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78155066"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84186908"
 ---
 # <a name="get-started-with-device-management-java"></a>设备管理入门 (Java)
 
@@ -23,30 +23,30 @@ ms.locfileid: "78155066"
 本教程演示如何：
 
 * 使用 Azure 门户创建 IoT 中心，以及如何在 IoT 中心创建设备标识。
-* 创建实现重启设备的直接方法的模拟设备应用。 直接方法是从云中调用的。
-* 创建通过 IoT 中心在模拟设备应用上调用重启直接方法的应用。 之后此应用会监视设备的报告属性，查看重启操作何时完成。
+* 创建模拟设备应用，以便实现重新启动设备的直接方法。 直接方法是从云中调用的。
+* 创建一个应用，其通过 IoT 中心在模拟设备应用上调用重新启动直接方法。 随后，此应用会从设备监视报告属性，从而可查看重新启动操作何时完成。
 
-本教程结束时，将会创建两个 Java 控制台应用：
+本教程结束时，可获得两个 Java 控制台应用：
 
-simulated-device  。 此应用：
+simulated-device。 此应用：
 
 * 使用之前创建的设备标识连接到 IoT 中心。
-* 接收重启直接方法调用。
-* 模拟物理重启。
-* 通过报告属性报告上次重启的时间。
+* 接收重新启动直接方法调用。
+* 模拟物理重新启动。
+* 报告上次通过报告属性重新启动的时间。
 
-trigger-reboot  。 此应用：
+trigger-reboot。 此应用：
 
 * 在模拟设备应用中调用直接方法。
 
 * 显示模拟设备发送的直接方法调用的响应。
 
-* 显示更新的报告属性。
+* 显示已更新的报告属性。
 
 > [!NOTE]
 > 有关 SDK 的信息（可以使用这些 SDK 构建在设备和解决方案后端上运行的应用程序），请参阅 [Azure IoT SDK](iot-hub-devguide-sdks.md)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * [Java SE 开发工具包 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable)。 请确保在“长期支持”下选择“Java 8”以获取 JDK 8 的下载。
 
@@ -79,7 +79,7 @@ trigger-reboot  。 此应用：
 
 3. 轮询设备发送的报告属性，以确定重启的完成时间。
 
-此控制台应用连接到 IoT 中心，以便调用该直接方法并读取报告属性。
+此控制台应用连接到 IoT 中心，调用该直接方法并读取报告属性。
 
 1. 创建名为 **dm-get-started** 的空文件夹。
 
@@ -91,7 +91,7 @@ trigger-reboot  。 此应用：
 
 3. 在命令提示符下，导航到 **trigger-reboot** 文件夹。
 
-4. 使用文本编辑器，打开 **trigger-reboot** 文件夹中的 **pom.xml** 文件，并将以下依赖项添加到 **dependencies** 节点。 此依赖项使得可以使用应用中的 iot-service-client 包来与 IoT 中心进行通信：
+4. 使用文本编辑器，打开 **trigger-reboot** 文件夹中的 **pom.xml** 文件，并将以下依赖项添加到 **dependencies** 节点。 此依赖项使得你可以使用应用中的 iot-service-client 包来与 IoT 中心进行通信：
 
     ```xml
     <dependency>
@@ -123,7 +123,7 @@ trigger-reboot  。 此应用：
     </build>
     ```
 
-6. 保存并关闭 pom.xml 文件  。
+6. 保存并关闭 **pom.xml** 文件。
 
 7. 使用文本编辑器打开 **trigger-reboot\src\main\java\com\mycompany\app\App.java** 源文件。
 
@@ -153,7 +153,7 @@ trigger-reboot  。 此应用：
     private static final Long connectTimeout = TimeUnit.SECONDS.toSeconds(5);
     ```
 
-10. 若要实现每隔 10 秒读取一次设备孪生提供的报告属性的线程，请将以下嵌套类添加到 App 类  ：
+10. 若要实现每隔 10 秒从设备孪生读取报告属性的线程，请将以下嵌套类添加到“App”类：
 
     ```java
     private static class ShowReportedProperties implements Runnable {
@@ -174,7 +174,7 @@ trigger-reboot  。 此应用：
     }
     ```
 
-11. 将 main  方法签名修改为抛出以下异常：
+11. 将 main 方法签名修改为抛出以下异常：
 
     ```java
     public static void main(String[] args) throws IOException
@@ -205,7 +205,7 @@ trigger-reboot  。 此应用：
     }
     ```
 
-1. 若要启动轮询模拟设备提供的报告属性的线程，请将以下代码添加到 main 方法  ：
+1. 若要在模拟设备上启动线程，用以轮询报告属性，请在“main”方法中添加以下代码：
 
     ```java
     ShowReportedProperties showReportedProperties = new ShowReportedProperties();
@@ -213,7 +213,7 @@ trigger-reboot  。 此应用：
     executor.execute(showReportedProperties);
     ```
 
-1. 若要能够停止应用，请将以下代码添加到 main 方法  ：
+1. 若要允许停止应用，请在“main”方法中添加以下代码：
 
     ```java
     System.out.println("Press ENTER to exit.");
@@ -224,7 +224,7 @@ trigger-reboot  。 此应用：
 
 15. 保存并关闭 **trigger-reboot\src\main\java\com\mycompany\app\App.java** 文件。
 
-16. 生成 trigger-reboot 后端应用并更正任何错误  。 在命令提示符下，导航到 **trigger-reboot** 文件夹，并运行以下命令：
+16. 生成 trigger-reboot 后端应用并更正任何错误。 在命令提示符下，导航到 **trigger-reboot** 文件夹，并运行以下命令：
 
     ```cmd/sh
     mvn clean package -DskipTests
@@ -232,7 +232,7 @@ trigger-reboot  。 此应用：
 
 ## <a name="create-a-simulated-device-app"></a>创建模拟设备应用程序
 
-本部分中将创建一个模拟设备的 Java 控制台应用。 该应用侦听 IoT 中心发出的重启直接方法调用并快速响应该调用。 然后该应用会休眠一段时间，以模拟重启过程，之后该应用会使用报告属性通知 trigger-reboot 后端应用重启已完成  。
+本部分介绍如何创建模拟设备的 Java 控制台应用。 此应用侦听来自 IoT 中心的重新启动直接方法调用，并立即对该调用做出响应。 之后，此应用会休眠一段时间，以模拟重新启动过程，然后使用报告属性，通知 trigger-reboot 后端应用重新启动已完成。
 
 1. 在命令提示符下使用以下命令，在 **dm-get-started** 文件夹中创建名为 **simulated-device** 的 Maven 项目：
 
@@ -242,7 +242,7 @@ trigger-reboot  。 此应用：
 
 2. 在命令提示符下，导航到 **simulated-device** 文件夹。
 
-3. 使用文本编辑器，打开 **simulated-device** 文件夹中的 **pom.xml** 文件，并将以下依赖项添加到 **dependencies** 节点。 此依赖项使得可以使用应用中的 iot-service-client 包来与 IoT 中心进行通信：
+3. 使用文本编辑器，打开 **simulated-device** 文件夹中的 **pom.xml** 文件，并将以下依赖项添加到 **dependencies** 节点。 此依赖项使得你可以使用应用中的 iot-service-client 包来与 IoT 中心进行通信：
 
     ```xml
     <dependency>
@@ -283,9 +283,9 @@ trigger-reboot  。 此应用：
     </build>
     ```
 
-1. 保存并关闭 pom.xml 文件。
+6. 保存并关闭 **pom.xml** 文件。
 
-1. 使用文本编辑器打开 simulated-device\src\main\java\com\mycompany\app\App.java 源文件。
+7. 使用文本编辑器打开“simulated-device\src\main\java\com\mycompany\app\App.java”源文件。
 
 1. 在该文件中添加以下 **import** 语句：
 
@@ -301,7 +301,7 @@ trigger-reboot  。 此应用：
     import java.util.HashSet;
     ```
 
-1. 将以下类级变量添加到 **App** 类。 使用“创建设备标识”部分所述的设备连接字符串替换 `{yourdeviceconnectionstring}` ：
+1. 将以下类级变量添加到 **App** 类。 使用“创建设备标识”部分所述的设备连接字符串替换 `{yourdeviceconnectionstring}`：
 
     ```java
     private static final int METHOD_SUCCESS = 200;
@@ -312,7 +312,7 @@ trigger-reboot  。 此应用：
     private static DeviceClient client;
     ```
 
-1. 若要为直接方法状态事件实现回调处理程序，请将以下嵌套类添加到 App 类  ：
+1. 若要实现直接方法状态事件的回调处理程序，请将以下嵌套类添加到“App”类：
 
     ```java
     protected static class DirectMethodStatusCallback implements IotHubEventCallback
@@ -324,7 +324,7 @@ trigger-reboot  。 此应用：
     }
     ```
 
-1. 若要为设备孪生状态事件实现回调处理程序，请将以下嵌套类添加到 App 类  ：
+1. 若要实现设备孪生状态事件的回调处理程序，请将以下嵌套类添加到“App”类：
 
     ```java
     protected static class DeviceTwinStatusCallback implements IotHubEventCallback
@@ -336,7 +336,7 @@ trigger-reboot  。 此应用：
     }
     ```
 
-1. 若要为属性事件实现回调处理程序，请将以下嵌套类添加到 App 类  ：
+1. 若要实现属性事件的回调处理程序，请将以下嵌套类添加到“App”类：
 
     ```java
     protected static class PropertyCallback implements PropertyCallBack<String, String>
@@ -349,7 +349,7 @@ trigger-reboot  。 此应用：
     }
     ```
 
-1. 若要实现一个模拟设备重启的线程，请将以下嵌套类添加到 App 类  。 线程会休眠五秒，然后设置 lastReboot 报告属性  ：
+1. 若要实现模拟设备重新启动的线程，请将以下嵌套类添加到“App”类。 线程会休眠五秒钟，然后设置 lastReboot 报告属性：
 
     ```java
     protected static class RebootDeviceThread implements Runnable {
@@ -370,7 +370,7 @@ trigger-reboot  。 此应用：
     }
     ```
 
-1. 若要在设备上实现直接方法，请将以下嵌套类添加到 App 类  。 模拟应用接收到重启直接方法的调用时，会向调用方返回确认，然后启动处理重启的线程  ：
+1. 若要实现设备上的直接方法，请将以下嵌套类添加到“App”类。 模拟应用收到对重新启动直接方法的调用时，会向调用方返回一个确认，然后启动线程，处理重新启动：
 
     ```java
     protected static class DirectMethodCallback implements com.microsoft.azure.sdk.iot.device.DeviceTwin.DeviceMethodCallback
@@ -402,7 +402,7 @@ trigger-reboot  。 此应用：
     }
     ```
 
-1. 修改 main 方法的签名以引发以下异常  ：
+1. 修改 main 方法的签名，引发以下异常：
 
     ```java
     public static void main(String[] args) throws IOException, URISyntaxException
@@ -415,7 +415,7 @@ trigger-reboot  。 此应用：
     client = new DeviceClient(connString, protocol);
     ```
 
-1. 若要开始侦听直接方法调用，请将以下代码添加到 main 方法  ：
+1. 若要开始侦听直接方法调用，请将以下代码添加到 main 方法：
 
     ```java
     try
@@ -433,7 +433,7 @@ trigger-reboot  。 此应用：
     }
     ```
 
-1. 若要关闭设备模拟器，请将以下代码添加到 main 方法  ：
+1. 若要关闭设备模拟器，请将以下代码添加到 main 方法：
 
     ```java
     System.out.println("Press any key to exit...");
@@ -462,7 +462,7 @@ trigger-reboot  。 此应用：
     mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
     ```
 
-    ![侦听重启直接方法调用的 Java IoT 中心模拟设备应用](./media/iot-hub-java-java-device-management-getstarted/launchsimulator.png)
+    ![Java IoT 中心模拟设备应用，侦听重新启动直接方法调用](./media/iot-hub-java-java-device-management-getstarted/launchsimulator.png)
 
 2. 在 **trigger-reboot** 文件夹的命令提示符下，运行以下命令，从 IoT 中心调用模拟设备上的重新启动方法：
 
@@ -470,27 +470,10 @@ trigger-reboot  。 此应用：
     mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
     ```
 
-    ![调用重启直接方法的 Java IoT 中心服务应用](./media/iot-hub-java-java-device-management-getstarted/triggerreboot.png)
+    ![用于调用重新启动直接方法的 Java IoT 中心服务应用](./media/iot-hub-java-java-device-management-getstarted/triggerreboot.png)
 
-3. 模拟设备对重启直接方法调用做出响应：
+3. 模拟设备对重新启动直接方法调用做出响应：
 
-    ![对直接方法调用进行响应的 Java IoT 中心模拟设备应用](./media/iot-hub-java-java-device-management-getstarted/respondtoreboot.png)
+    ![Java IoT 中心模拟设备应用对直接方法调用进行响应](./media/iot-hub-java-java-device-management-getstarted/respondtoreboot.png)
 
 [!INCLUDE [iot-hub-dm-followup](../../includes/iot-hub-dm-followup.md)]
-
-<!-- images and links -->
-[1]: ./media/iot-hub-java-java-device-management-getstarted/launchsimulator.png
-[2]: ./media/iot-hub-java-java-device-management-getstarted/triggerreboot.png
-[3]: ./media/iot-hub-java-java-device-management-getstarted/respondtoreboot.png
-<!-- Links -->
-
-[lnk-maven]: https://maven.apache.org/what-is-maven.html
-
-[lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-java/blob/master/doc/java-devbox-setup.md
-
-[lnk-hub-sdks]: ./iot-hub-devguide-sdks.md
-
-[lnk-maven-service-search]: http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-service-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22
-[lnk-maven-device-search]: http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-device-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22
-
-<!--Update_Description:update code-->

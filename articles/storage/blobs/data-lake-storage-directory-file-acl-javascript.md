@@ -1,31 +1,28 @@
 ---
-title: 对 Azure Data Lake Storage Gen2（预览版）中的文件和 ACL 使用 JavaScript
+title: 将 JavaScript 用于 Azure Data Lake Storage Gen2 中的文件和 ACL
 description: 使用适用于 JavaScript 的 Azure Storage Data Lake 客户端库在启用了分层命名空间 (HNS) 的存储帐户中管理目录和文件以及目录访问控制列表 (ACL)。
 author: WenJason
 ms.service: storage
-origin.date: 12/18/2019
-ms.date: 03/09/2020
+origin.date: 03/20/2020
+ms.date: 06/01/2020
 ms.author: v-jay
 ms.topic: conceptual
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.openlocfilehash: 94812a468011f3eb0121813e89116421f42ee721
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 22894456622bf8d4824826c0288b2b04be961047
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78412527"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199615"
 ---
-# <a name="use-javascript-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2-preview"></a>使用 JavaScript 管理 Azure Data Lake Storage Gen2（预览版）中的目录、文件和 ACL
+# <a name="use-javascript-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>使用 JavaScript 管理 Azure Data Lake Storage Gen2 中的目录、文件和 ACL
 
 本文介绍了如何使用 JavaScript 在启用了分层命名空间 (HNS) 的存储帐户中创建和管理目录、文件与权限。 
 
-> [!IMPORTANT]
-> 本文中所述的 JavaScript 库目前以公共预览版提供。
-
 “[包(节点包管理器)](https://www.npmjs.com/package/@azure/storage-file-datalake)” | ”[示例](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-file-datalake/samples)” | ”[提供反馈](https://github.com/Azure/azure-sdk-for-java/issues)”
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 > [!div class="checklist"]
 > * Azure 订阅。 请参阅[获取 Azure 1 元人民币的试用订阅](https://wd.azure.cn/zh-cn/pricing/1rmb-trial-full)。
@@ -48,9 +45,13 @@ const AzureStorageDataLake = require("@azure/storage-file-datalake");
 
 ## <a name="connect-to-the-account"></a>连接到帐户 
 
-若要使用本文中的代码片段，需创建一个表示存储帐户的 **DataLakeServiceClient** 实例。 若要获取一个，最简单的方法是使用帐户密钥。 
+若要使用本文中的代码片段，需创建一个表示存储帐户的 **DataLakeServiceClient** 实例。 
 
-此示例使用帐户密钥创建 **DataLakeServiceClient** 的实例。
+### <a name="connect-by-using-an-account-key"></a>使用帐户密钥进行连接
+
+这是连接到帐户的最简单方法。 
+
+此示例使用帐户密钥创建 DataLakeServiceClient 实例。
 
 ```javascript
 
@@ -67,7 +68,28 @@ function GetDataLakeServiceClient(accountName, accountKey) {
 
 ```
 > [!NOTE]
-> 此授权方法仅适用于 Node.js 应用程序。 如果打算在浏览器中运行代码，则可以使用 Azure Active Directory (AD) 进行授权。 有关如何执行该操作的指南，请参阅[适用于 JavaScript 的 Azure Storage File Data Lake 客户端库](https://www.npmjs.com/package/@azure/storage-file-datalake)自述文件。 
+> 此授权方法仅适用于 Node.js 应用程序。 如果打算在浏览器中运行代码，则可以使用 Azure Active Directory (AD) 进行授权。 
+
+### <a name="connect-by-using-azure-active-directory-ad"></a>使用 Azure Active Directory (AD) 进行连接
+
+可以使用[适用于 JS 的 Azure 标识客户端库](https://www.npmjs.com/package/@azure/identity)，通过 Azure AD 对应用程序进行身份验证。
+
+此示例使用客户端 ID、客户端密码和租户 ID 创建 DataLakeServiceClient 实例。  若要获取这些值，请参阅[从 Azure AD 获取用于请求客户端应用程序授权的令牌](../common/storage-auth-aad-app.md)。
+
+```javascript
+function GetDataLakeServiceClientAD(accountName, clientID, clientSecret, tenantID) {
+
+  const credential = new ClientSecretCredential(tenantID, clientID, clientSecret);
+  
+  const datalakeServiceClient = new DataLakeServiceClient(
+      `https://${accountName}.dfs.core.chinacloudapi.cn`, credential);
+
+  return datalakeServiceClient;             
+}
+```
+
+> [!NOTE]
+> 有关更多示例，请参阅[适用于 JS 的 Azure 标识客户端库](https://www.npmjs.com/package/@azure/identity)文档。
 
 ## <a name="create-a-file-system"></a>创建文件系统
 
@@ -107,7 +129,7 @@ async function CreateDirectory(fileSystemClient) {
 
 可以通过调用 **DirectoryClient.rename** 方法来重命名或移动目录。 以参数形式传递所需目录的路径。 
 
-此示例将子目录重命名为 `my-directory-renamed` 的名称。
+此示例将某个子目录重命名为名称 `my-directory-renamed`。
 
 ```javascript
 async function RenameDirectory(fileSystemClient) {

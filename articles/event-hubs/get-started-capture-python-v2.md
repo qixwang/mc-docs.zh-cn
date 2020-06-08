@@ -11,18 +11,18 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
 origin.date: 01/30/2020
-ms.date: 03/09/2020
+ms.date: 05/29/2020
 ms.author: v-tawe
-ms.openlocfilehash: ec3b77d957365ae7d4a642909a62c7d50c55f4be
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 075aa43fd607b2197fb0461c847b8425c8b74c1f
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78155112"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199765"
 ---
 # <a name="capture-event-hubs-data-in-azure-storage-and-read-it-by-using-python-azure-eventhub-version-5"></a>使用 Python 在 Azure 存储中捕获事件中心数据并读取该数据（azure-eventhub 版本 5）
 
-可以配置事件中心，以便在 Azure 存储帐户或 Azure Data Lake Storage Gen 1 或 Gen 2 中捕获发送到事件中心的数据。 本文介绍如何编写 Python 代码，以将事件发送到事件中心，并从 **Azure Blob 存储**读取捕获的数据。 有关此功能的详细信息，请参阅[事件中心捕获功能概述](event-hubs-capture-overview.md)。
+可以配置事件中心，以便在 Azure 存储帐户或 Azure Data Lake Storage Gen 2 中捕获发送到事件中心的数据。 本文介绍如何编写 Python 代码，以将事件发送到事件中心，并从 **Azure Blob 存储**读取捕获的数据。 有关此功能的详细信息，请参阅[事件中心捕获功能概述](event-hubs-capture-overview.md)。
 
 本快速入门使用 [Azure Python SDK](https://docs.azure.cn/develop/python/) 来演示捕获功能。 *sender.py* 以 JSON 格式将模拟的环境遥测数据发送到事件中心。 事件中心配置为使用捕获功能将此数据成批地写入到 Blob 存储。 *capturereader.py* 应用读取这些 Blob，并为每个设备创建一个追加文件。 然后该应用将数据写入 CSV 文件。
 
@@ -38,7 +38,7 @@ ms.locfileid: "78155112"
 > * 使用 Python 脚本将数据发送到事件中心。
 > * 使用另一个 Python 脚本通过事件中心捕获功能读取并处理文件。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - Python 2.7、3.5 或更高版本，已安装 PIP 并已更新。  
 - Azure 订阅。 如果没有订阅，请在开始之前[创建一个试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。  
@@ -47,7 +47,7 @@ ms.locfileid: "78155112"
 - Azure 存储帐户、存储帐户中的 Blob 容器，以及存储帐户的连接字符串。 如果没有这些项，请执行以下操作：  
     1. [创建 Azure 存储帐户](../storage/common/storage-quickstart-create-account.md?tabs=azure-portal)  
     1. [在存储帐户中创建 Blob 容器](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)  
-    1. [获取存储帐户的连接字符串](../storage/common/storage-configure-connection-string.md#view-and-copy-a-connection-string)
+    1. [获取存储帐户的连接字符串](../storage/common/storage-configure-connection-string.md)
 
     请务必记下连接字符串和容器名称，因为稍后在本快速入门中需要用到。  
 - 为事件中心启用捕获功能。 为此，请按照[使用 Azure 门户启用事件中心捕获](event-hubs-capture-enable-through-portal.md)中的说明操作。 选择在前一步骤中创建的存储帐户和 Blob 容器。 也可以在创建事件中心时启用该功能。  
@@ -56,7 +56,7 @@ ms.locfileid: "78155112"
 在本部分，你将创建一个向事件中心发送 200 个事件（10 个设备 * 20 个事件）的 Python 脚本。 这些事件是以 JSON 格式发送的示例环境读数。 
 
 1. 打开常用的 Python 编辑器，如 [Visual Studio Code][Visual Studio Code]。
-2. 创建名为 *sender.py* 的脚本。 
+2. 创建名为 *sender.py*的脚本。 
 3. 将以下代码粘贴到 *sender.py* 中。 
    
     ```python
@@ -93,7 +93,7 @@ ms.locfileid: "78155112"
     * 将 `EVENT HUBS NAMESPACE CONNECTION STRING` 替换为事件中心命名空间的连接字符串。  
     * 将 `EVENT HUB NAME` 替换为事件中心的名称。  
 5. 运行脚本以将事件发送到事件中心。  
-6. 在 Azure 门户中，可以验证事件中心是否已收到消息。 在“指标”部分切换到“消息”视图。   刷新页面以更新图表。 可能需要等待几秒，页面才会显示已收到消息。 
+6. 在 Azure 门户中，可以验证事件中心是否已收到消息。 在“指标”部分切换到“消息”视图。  刷新页面以更新图表。 可能需要等待几秒，页面才会显示已收到消息。 
 
     [![验证事件中心是否已收到消息](./media/get-started-capture-python-v2/messages-portal.png)](./media/get-started-capture-python-v2/messages-portal.png#lightbox)
 

@@ -14,19 +14,19 @@ ms.workload: na
 ms.date: 05/12/2020
 ms.author: v-tawe
 origin.date: 02/25/2020
-ms.openlocfilehash: fa30e64e450b142167ef1ba50eac0f7e6ef3eb67
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.openlocfilehash: f94cefeb503854bcc9be10fe7b7a09ace83939b3
+ms.sourcegitcommit: cbaa1aef101f67bd094f6ad0b4be274bbc2d2537
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83423130"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84126743"
 ---
 # <a name="faq---general-questions-about-azure-security-center"></a>常见问题解答 - 关于 Azure 安全中心的一般问题
 
 ## <a name="what-is-azure-security-center"></a>什么是 Azure 安全中心？
 Azure 安全中心有助于预防、检测和响应威胁，同时增加资源的可见性和安全可控性。 该服务提供订阅之间的集成安全监视和策略管理，帮助检测可能被忽略的威胁，且适用于广泛的安全解决方案生态系统。
 
-安全中心使用 Microsoft Monitoring Agent 来收集和存储数据。 有关详细信息，请参阅 [Azure 安全中心中的数据收集](security-center-enable-data-collection.md)。
+安全中心使用 Log Analytics 代理来收集和存储数据。 有关详细信息，请参阅 [Azure 安全中心中的数据收集](security-center-enable-data-collection.md)。
 
 
 ## <a name="how-do-i-get-azure-security-center"></a>如何获取Azure 安全中心？
@@ -60,7 +60,7 @@ Azure 安全中心中启用的安全策略将使用安全建议和监视。 若�
 
 
 ## <a name="who-can-modify-a-security-policy"></a>哪些用户可以修改安全策略？
-若要修改安全策略，用户必须是安全管理员或是该订阅的所有者或参与者。
+只有安全管理员或者订阅的所有者或参与者才能修改安全策略。
 
 若要了解如何配置安全策略，请参阅[在 Azure 安全中心设置安全策略](tutorial-security-policy.md)。
 

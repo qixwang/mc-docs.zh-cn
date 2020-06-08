@@ -1,20 +1,21 @@
 ---
-title: 启用对 Azure Blob 存储中容器和 blob 的公共读取访问 | Microsoft Docs
+title: 管理容器和 blob 的公共读取访问
+titleSuffix: Azure Storage
 description: 了解如何使容器和 blob 可供匿名访问，以及如何对其进行程序式访问。
 services: storage
 author: WenJason
 ms.service: storage
-ms.topic: conceptual
-origin.date: 09/19/2019
-ms.date: 10/28/2019
+ms.topic: how-to
+origin.date: 05/05/2020
+ms.date: 06/01/2020
 ms.author: v-jay
 ms.reviewer: cbrooks
-ms.openlocfilehash: 32a9721410d9b6ccac232765125e3d39c47aeb4a
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: c32a2b0dcbfe13b06a8cfc580328ec1b9ef51f6e
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79293420"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199660"
 ---
 # <a name="manage-anonymous-read-access-to-containers-and-blobs"></a>管理对容器和 Blob 的匿名读取访问
 
@@ -37,10 +38,10 @@ ms.locfileid: "79293420"
 在 [Azure 门户](https://portal.azure.cn)中，可以更新一个或多个容器的公共访问级别：
 
 1. 在 Azure 门户中导航到存储帐户概述。
-1. 在菜单边栏选项卡上的“Blob 服务”下，选择“Blob”   。
+1. 在菜单边栏选项卡上的“Blob 服务”下，选择“Blob” 。
 1. 选择要对其设置公共访问级别的容器。
-1. 使用“更改访问级别”按钮显示公共访问权限设置。 
-1. 从“公共访问级别”下拉列表中选择所需的公共访问级别，然后单击“确定”按钮应用对选定容器所做的更改。 
+1. 使用“更改访问级别”按钮显示公共访问权限设置。
+1. 从“公共访问级别”下拉列表中选择所需的公共访问级别，然后单击“确定”按钮应用对选定容器所做的更改。
 
 以下屏幕截图显示如何更改选定容器的公共访问级别。
 
@@ -51,19 +52,36 @@ ms.locfileid: "79293420"
 
 ### <a name="set-container-public-access-level-with-net"></a>使用 .NET 设置容器公共访问级别
 
-若要使用适用于 .NET 的 Azure 存储客户端库为容器设置权限，请首先通过调用以下方法之一检索容器的现有权限：
+# <a name="net-v12-sdk"></a>[\.NET v12 SDK](#tab/dotnet)
+
+要设置容器的权限，请调用 [BlobContainerClient.SetAccessPolicy](https://docs.microsoft.com/dotnet/api/azure.storage.blobs.blobcontainerclient.setaccesspolicy?view=azure-dotnet) 方法。 
+
+以下示例将容器的权限设置为完全公共读取访问。 要将权限设置为仅对 blob 进行公共读取访问，请将 PublicAccessType.Blob 字段传递到 [BlobContainerClient.SetAccessPolicy](https://docs.microsoft.com/dotnet/api/azure.storage.blobs.blobcontainerclient.setaccesspolicy?view=azure-dotnet) 方法中。 要删除匿名用户的所有权限，请使用 BlobContainerPublicAccessType.None 字段。
+
+```csharp
+private static void SetPublicContainerPermissions(BlobContainerClient container)
+{
+    container.SetAccessPolicy(PublicAccessType.BlobContainer);
+    Console.WriteLine("Container {0} - permissions set to {1}", 
+        container.Name, container.GetAccessPolicy().Value);
+}
+```
+
+# <a name="net-v11-sdk"></a>[\.NET v11 SDK](#tab/dotnet11)
+
+要使用用于 .NET 的 Azure 存储客户端库为容器设置权限，请首先通过调用以下任一方法检索容器的现有权限：
 
 - [GetPermissions](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer.getpermissions)
 - [GetPermissionsAsync](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer.getpermissionsasync)
 
-接下来，设置 GetPermissions  方法返回的 [BlobContainerPermissions](/dotnet/api/microsoft.windowsazure.storage.blob.blobcontainerpermissions) 对象的 PublicAccess  属性。
+接下来，设置 GetPermissions 方法返回的 [BlobContainerPermissions](/dotnet/api/microsoft.windowsazure.storage.blob.blobcontainerpermissions) 对象的 PublicAccess 属性。
 
 最后，调用以下方法之一更新容器的权限：
 
 - [SetPermissions](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer.setpermissions)
 - [SetPermissionsAsync](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer.setpermissionsasync)
 
-以下示例将容器的权限设置为完全公共读取访问。 若要将权限设置为仅针对 blob 的公共读取访问，请将 PublicAccess  属性设置为 BlobContainerPublicAccessType.Blob  。 要删除匿名用户的所有权限，请将该属性设置为 **BlobContainerPublicAccessType.Off**。
+以下示例将容器的权限设置为完全公共读取访问。 若要将权限设置为仅针对 blob 的公共读取访问，请将 PublicAccess 属性设置为 BlobContainerPublicAccessType.Blob。 要删除匿名用户的所有权限，请将该属性设置为 **BlobContainerPublicAccessType.Off**。
 
 ```csharp
 private static async Task SetPublicContainerPermissions(CloudBlobContainer container)
@@ -76,6 +94,8 @@ private static async Task SetPublicContainerPermissions(CloudBlobContainer conta
 }
 ```
 
+---
+
 ## <a name="access-containers-and-blobs-anonymously"></a>匿名访问容器和 Blob
 
 如果某个客户端需要以匿名方式访问容器和 Blob，该客户端则可以使用不需要凭据的构造函数。 以下示例演示如何通过多种不同的方法以匿名方式引用容器和 Blob。
@@ -83,6 +103,27 @@ private static async Task SetPublicContainerPermissions(CloudBlobContainer conta
 ### <a name="create-an-anonymous-client-object"></a>创建匿名客户端对象
 
 通过提供帐户的 Blob 存储终结点，可以创建一个可匿名访问的新服务客户端对象。 但是，也必须要知道该帐户中允许进行匿名访问的容器的名称。
+
+# <a name="net-v12-sdk"></a>[\.NET v12 SDK](#tab/dotnet)
+
+```csharp
+public static void CreateAnonymousBlobClient()
+{
+    // Create the client object using the Blob storage endpoint for your account.
+    BlobServiceClient blobServiceClient = new BlobServiceClient
+        (new Uri(@"https://storagesamples.blob.core.chinacloudapi.cn/"));
+
+    // Get a reference to a container that's available for anonymous access.
+    BlobContainerClient container = blobServiceClient.GetBlobContainerClient("sample-container");
+
+    // Read the container's properties. 
+    // Note this is only possible when the container supports full public read access.          
+    Console.WriteLine(container.GetProperties().Value.LastModified);
+    Console.WriteLine(container.GetProperties().Value.ETag);
+}
+```
+
+# <a name="net-v11-sdk"></a>[\.NET v11 SDK](#tab/dotnet11)
 
 ```csharp
 public static void CreateAnonymousBlobClient()
@@ -100,11 +141,33 @@ public static void CreateAnonymousBlobClient()
     Console.WriteLine(container.Properties.LastModified);
     Console.WriteLine(container.Properties.ETag);
 }
-```
+``` 
+
+---
 
 ### <a name="reference-a-container-anonymously"></a>以匿名方式引用容器
 
 如果拥有可以通过匿名方式使用的容器的 URL，则可使用该 URL 来直接引用容器。
+
+# <a name="net-v12-sdk"></a>[\.NET v12 SDK](#tab/dotnet)
+
+```csharp
+public static void ListBlobsAnonymously()
+{
+    // Get a reference to a container that's available for anonymous access.
+    BlobContainerClient container = new BlobContainerClient
+        (new Uri(@"https://storagesamples.blob.core.chinacloudapi.cn/sample-container"));
+
+    // List blobs in the container.
+    // Note this is only possible when the container supports full public read access.
+       foreach (BlobItem blobItem in container.GetBlobs())
+        {
+            Console.WriteLine(container.GetBlockBlobClient(blobItem.Name).Uri);
+        }
+}
+```
+
+# <a name="net-v11-sdk"></a>[\.NET v11 SDK](#tab/dotnet11)
 
 ```csharp
 public static void ListBlobsAnonymously()
@@ -120,11 +183,26 @@ public static void ListBlobsAnonymously()
         Console.WriteLine(blobItem.Uri);
     }
 }
-```
+``` 
+
+---
 
 ### <a name="reference-a-blob-anonymously"></a>以匿名方式引用 Blob
 
 如果拥有允许进行匿名访问的 Blob 的 URL，则可使用该 URL 来直接引用 Blob：
+
+# <a name="net-v12-sdk"></a>[\.NET v12 SDK](#tab/dotnet)
+
+```csharp
+public static void DownloadBlobAnonymously()
+{
+    BlockBlobClient blob = new BlockBlobClient
+        (new Uri(@"https://storagesamples.blob.core.chinacloudapi.cn/sample-container/logfile.txt"));
+    blob.DownloadTo(@"C:\Temp\logfile.txt");
+}
+```
+
+# <a name="net-v11-sdk"></a>[\.NET v11 SDK](#tab/dotnet11)
 
 ```csharp
 public static void DownloadBlobAnonymously()
@@ -133,7 +211,9 @@ public static void DownloadBlobAnonymously()
         new Uri(@"https://storagesamples.blob.core.chinacloudapi.cn/sample-container/logfile.txt"));
     blob.DownloadToFile(@"C:\Temp\logfile.txt", FileMode.Create);
 }
-```
+``` 
+
+---
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,25 +1,25 @@
 ---
-title: Azure 存储的安全控制
-description: 用于评估 Azure 存储的安全控制的清单
+title: 安全控件
+titleSuffix: Azure Storage
+description: 用于评估 Azure 存储的安全控制清单。
 services: storage
-documentationcenter: ''
 author: WenJason
-manager: digimobile
-ms.service: storage
-ms.topic: conceptual
-origin.date: 09/04/2019
-ms.date: 03/09/2020
 ms.author: v-jay
-ms.openlocfilehash: 9198be3f8fa89a1e5c9adfe7a5824baeb86488fd
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.service: storage
+ms.subservice: common
+ms.topic: conceptual
+origin.date: 03/11/2020
+ms.date: 06/01/2020
+ms.openlocfilehash: f457242ef95e7ab86d8676fc0b50e19af278588b
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78412245"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199352"
 ---
 # <a name="security-controls-for-azure-storage"></a>Azure 存储的安全控制
 
-本文介绍 Azure 存储中内置的安全控制。 
+本文介绍 Azure 存储中内置的安全控制。
 
 [!INCLUDE [Security controls Header](../../../includes/security-controls-header.md)]
 
@@ -38,7 +38,8 @@ ms.locfileid: "78412245"
 | 安全控制 | Yes/No | 注释 |
 |---|---|--|
 | 服务终结点支持| 是 |  |
-| VNet 注入支持| 不适用 |  |
+| 服务标记支持| 是 | 有关 Azure 存储支持的服务标记的详细信息，请参阅 [Azure 服务标记概述](../../virtual-network/service-tags-overview.md)。 |
+| VNet 注入支持| 空值 |  |
 | 网络隔离和防火墙支持| 是 | |
 | 强制隧道支持| 空值 |  |
 
@@ -47,8 +48,8 @@ ms.locfileid: "78412245"
 | 安全控制 | Yes/No | 注释|
 |---|---|--|
 | Azure 监视支持（Log Analytics、App Insights 等）| 是 | Azure Monitor 指标|
-| 控制和管理平面日志记录和审核 | 是 | Azure 资源管理器活动日志 |
-| 数据平面日志记录和审核| 是 | 服务诊断日志。|
+| 控制和管理平面日志记录和审核 | 是 | Azure 活动日志 |
+| 数据平面日志记录和审核| 是 | Azure Monitor 资源日志 |
 
 ## <a name="identity"></a>标识
 

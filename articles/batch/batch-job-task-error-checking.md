@@ -1,23 +1,21 @@
 ---
-title: 检查作业和任务错误 - Azure Batch | Microsoft Docs
+title: 检查作业和任务错误
 description: 要检查的错误以及对作业和任务进行故障排除
-services: batch
 author: mscurrell
-ms.service: batch
 ms.topic: article
 ms.date: 04/29/2020
-ms.author: markscu
+ms.author: v-tawe
 origin.date: 03/10/2019
-ms.openlocfilehash: 5651f02ac12b5364fd61807d4af5a73fad7db214
-ms.sourcegitcommit: 1fbdefdace8a1d3412900c6c3f89678d8a9b29bc
+ms.openlocfilehash: 9e16ee2ea14d4ec8b3653346b6268b8c6672cb44
+ms.sourcegitcommit: cbaa1aef101f67bd094f6ad0b4be274bbc2d2537
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82886990"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84126778"
 ---
 # <a name="job-and-task-error-checking"></a>作业和任务错误检查
 
-添加作业和任务时，可能会发生各种错误。 检测这些操作的失败非常简单，因为 API、CLI 或 UI 会立即返回任何失败结果。  但是，以后在计划并运行作业和任务时，也可能会发生失败。
+添加作业和任务时，可能会发生各种错误。 检测这些操作的失败非常简单，因为 API、CLI 或 UI 会立即返回任何失败结果。  但是，以后在计划及运行作业和任务时，也可能会发生失败。
 
 本文介绍了在提交作业和任务后可能会发生的错误。 其中列出并解释了需要检查和处理的错误。
 
@@ -78,7 +76,7 @@ ms.locfileid: "82886990"
 
 运行任务命令行时，输出将写入到 `stderr.txt` 和 `stdout.txt`。 此外，应用程序还可以写入到应用程序特定的日志文件。
 
-如果运行任务的池节点仍然存在，则可以获取和查看日志文件。 例如，Azure 门户会列出任务或池节点的日志文件供审查。 多个 API（例如[从任务获取](https://docs.microsoft.com/rest/api/batchservice/file/getfromtask)）还允许列出和获取任务文件。
+如果运行任务的池节点仍然存在，则可以获取和查看日志文件。 例如，Azure 门户会列出任务或池节点的日志文件供查看。 多个 API（例如[从任务获取](https://docs.microsoft.com/rest/api/batchservice/file/getfromtask)）还允许列出和获取任务文件。
 
 由于池和池节点往往是暂时性的，如果需要持续添加和删除节点，则我们建议保留日志文件。 可以通过[任务输出文件](https://docs.azure.cn/batch/batch-task-output-files)方便地将日志文件保存到 Azure 存储。
 

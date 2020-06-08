@@ -2,17 +2,17 @@
 title: Azure Application Insights 中的应用程序映射 | Azure 文档
 description: 使用应用程序映射监视复杂的应用程序拓扑
 ms.topic: conceptual
-author: lingliw
+author: Johnnytechn
 origin.date: 03/15/2019
-ms.date: 08/20/2019
+ms.date: 05/28/2020
 ms.reviewer: sdash
-ms.author: v-lingwu
-ms.openlocfilehash: 13d00be02f83341746340599f4251873329fd231
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.author: v-johya
+ms.openlocfilehash: 45db9dd51ecb9aca751f7afbfdba40d82d9f1cbd
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78850457"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199646"
 ---
 # <a name="application-map-triage-distributed-applications"></a>应用程序映射：会审分布式应用程序
 
@@ -36,59 +36,59 @@ ms.locfileid: "78850457"
 
 如果所有组件都是单个的 Application Insights 资源中的角色，则不需要此发现步骤。 这样的应用程序的初始负载将具有所有组件。
 
-![应用程序映射屏幕截图](media/app-map/app-map-001.png)
+![应用程序映射屏幕截图](./media/app-map/app-map-001.png)
 
 使用此体验的主要目标之一是能够实现可视化效果具有数百个组件的复杂拓扑。
 
 单击以查看相关的见解，转到的性能和失败的该组件的会审体验的任何组件。
 
-![浮出控件](media/app-map/application-map-002.png)
+![浮出控件](./media/app-map/application-map-002.png)
 
 ### <a name="investigate-failures"></a>调查故障
 
-选择“调查故障”  以启动故障窗格。
+选择“调查故障”以启动故障窗格。
 
-![“调查故障”按钮的屏幕截图](media/app-map/investigate-failures.png)
+![“调查故障”按钮的屏幕截图](./media/app-map/investigate-failures.png)
 
-![故障体验的屏幕截图](media/app-map/failures.png)
+![故障体验的屏幕截图](./media/app-map/failures.png)
 
 ### <a name="investigate-performance"></a>调查性能
 
-若要排查性能问题，请选择“调查性能”  。
+若要排查性能问题，请选择“调查性能”。
 
-![“调查性能”按钮的屏幕截图](media/app-map/investigate-performance.png)
+![“调查性能”按钮的屏幕截图](./media/app-map/investigate-performance.png)
 
-![性能体验的屏幕截图](media/app-map/performance.png)
+![性能体验的屏幕截图](./media/app-map/performance.png)
 
 ### <a name="go-to-details"></a>转到详细信息
 
-选择“转到详细信息”可探索端到端事务体验，从而可以深入到调用堆栈级别的信息。 
+选择“转到详细信息”可探索端到端事务体验，从而可以深入到调用堆栈级别的信息。
 
-![“转到详细信息”按钮的屏幕截图](media/app-map/go-to-details.png)
+![“转到详细信息”按钮的屏幕截图](./media/app-map/go-to-details.png)
 
-![端到端事务详细信息的屏幕截图](media/app-map/end-to-end-transaction.png)
+![端到端事务详细信息的屏幕截图](./media/app-map/end-to-end-transaction.png)
 
 ### <a name="view-logs-analytics"></a>查看日志（分析）
 
-若要进一步查询和调查应用程序数据，请单击“在日志(分析)中查看”。 
+若要进一步查询和调查应用程序数据，请单击“在日志(分析)中查看”。
 
-![“在 Analytics 中查看”按钮的屏幕截图](media/app-map/view-logs.png)
+![“在 Analytics 中查看”按钮的屏幕截图](./media/app-map/view-logs.png)
 
-![分析体验的屏幕截图。 汇总过去 12 小时内请求的平均响应持续时间的折线图。](media/app-map/log-analytics.png)
+![分析体验的屏幕截图。 汇总过去 12 小时内请求的平均响应持续时间的折线图。](./media/app-map/log-analytics.png)
 
 ### <a name="alerts"></a>警报
 
-若要查看活动警报和导致警报触发的基础规则，请选择“警报”。 
+若要查看活动警报和导致警报触发的基础规则，请选择“警报”。
 
-![“警报”按钮的屏幕截图](media/app-map/alerts.png)
+![“警报”按钮的屏幕截图](./media/app-map/alerts.png)
 
-![分析体验的屏幕截图](media/app-map/alerts-view.png)
+![分析体验的屏幕截图](./media/app-map/alerts-view.png)
 
 ## <a name="set-cloud-role-name"></a>设置云角色名称
 
 应用程序映射使用**云角色名称**属性来标识映射上的组件。 Application Insights SDK 会自动将云角色名称属性添加到组件发出的遥测数据。 例如，SDK 会将网站名称或服务角色名称添加到云角色名称属性。 但是，在某些情况下，你可能希望替代默认值。 若要替代云角色名称并更改要在应用程序映射上显示的内容，请如下所示进行操作：
 
-### <a name="netnet-core"></a>.NET/.NET Core
+# <a name="netnetcore"></a>[.NET/.NetCore](#tab/net)
 
 **按如下所示编写自定义 TelemetryInitializer。**
 
@@ -156,7 +156,44 @@ ASP.NET Web 应用程序的另一种方法是在代码中（例如在 Global.asp
 }
 ```
 
-### <a name="nodejs"></a>Node.js
+# <a name="java"></a>[Java](#tab/java)
+
+**Java 代理**
+
+对于 [Java 代理 3.0](/azure-monitor/app/java-in-process-agent)，云角色名称设置如下：
+
+```json
+{
+  "instrumentationSettings": {
+    "preview": {
+      "roleName": "my cloud role name"
+    }
+  }
+}
+```
+
+还可以使用环境变量 ```APPLICATIONINSIGHTS_ROLE_NAME``` 设置云角色名称。
+
+**Java SDK**
+
+如果使用的是 SDK，从 Application Insights Java SDK 2.5.0 开始，可以通过将 `<RoleName>` 添加到 `ApplicationInsights.xml` 文件来指定云角色名称，例如
+
+```XML
+<?xml version="1.0" encoding="utf-8"?>
+<ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings" schemaVersion="2014-05-30">
+   <InstrumentationKey>** Your instrumentation key **</InstrumentationKey>
+   <RoleName>** Your role name **</RoleName>
+   ...
+</ApplicationInsights>
+```
+
+如果你通过 Application Insights Spring Boot 入门版使用 Spring Boot，则唯一需要执行的更改是在 application.properties 文件中为应用程序设置自定义名称。
+
+`spring.application.name=<name-of-app>`
+
+Spring Boot 入门版会自动将云角色名称分配给你为 spring.application.name 属性输入的值。
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
 ```javascript
 var appInsights = require("applicationinsights");
@@ -177,26 +214,7 @@ appInsights.defaultClient.addTelemetryProcessor(envelope => {
 });
 ```
 
-### <a name="java"></a>Java
-
-从 Application Insights Java SDK 2.5.0 开始，可以通过将 `<RoleName>` 添加到 `ApplicationInsights.xml` 文件来指定云角色名称，例如
-
-```XML
-<?xml version="1.0" encoding="utf-8"?>
-<ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings" schemaVersion="2014-05-30">
-   <InstrumentationKey>** Your instrumentation key **</InstrumentationKey>
-   <RoleName>** Your role name **</RoleName>
-   ...
-</ApplicationInsights>
-```
-
-如果你通过 Application Insights Spring Boot 入门版使用 Spring Boot，则唯一需要执行的更改是在 application.properties 文件中为应用程序设置自定义名称。
-
-`spring.application.name=<name-of-app>`
-
-Spring Boot 入门版会自动将云角色名称分配给你为 spring.application.name 属性输入的值。
-
-### <a name="clientbrowser-side-javascript"></a>客户端/浏览器端 JavaScript
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 appInsights.queue.push(() => {
@@ -206,12 +224,13 @@ appInsights.addTelemetryInitializer((envelope) => {
 });
 });
 ```
+---
 
 ### <a name="understanding-cloud-role-name-within-the-context-of-the-application-map"></a>了解应用程序映射上下文中的云角色名称
 
 以下包含多个云角色名称的应用程序映射可帮助你加深对**云角色名称**的理解：
 
-![应用程序映射屏幕截图](media/app-map/cloud-rolename.png)
+![应用程序映射屏幕截图](./media/app-map/cloud-rolename.png)
 
 在上面的应用程序映射中，绿框中的每个名称是云角色名称值，它们反映了此特定分布式应用程序的不同方面。 因此，此应用的角色由 `Authentication`、`acmefrontend`、`Inventory Management` 和 `Payment Processing Worker Role` 组成。 
 
@@ -239,6 +258,7 @@ appInsights.addTelemetryInitializer((envelope) => {
 
 如果无法让应用程序映射按预期方式工作，请尝试以下步骤：
 
+<!--Correct in MC: /azure-monitor/app/platforms -->
 ### <a name="general"></a>常规
 
 1. 请确保你使用的是官方支持的 SDK。 不受支持的/社区 SDK 可能不支持关联。
@@ -275,8 +295,7 @@ appInsights.addTelemetryInitializer((envelope) => {
 
 ## <a name="next-steps"></a>后续步骤
 
-* [了解关联](/azure-monitor/app/correlation)
-
-
-
+* 要详细了解关联在 Application Insights 中的工作原理，请参阅[遥测关联文章](correlation.md)。
+* [端到端事务诊断体验](transaction-diagnostics.md)将所有受 Application Insights 监视的组件中的服务器端遥测关联到单个视图中。
+* 对于 ASP.NET Core 和 ASP.NET 中的高级关联方案，请参阅[跟踪自定义操作](custom-operations-tracking.md)一文。
 

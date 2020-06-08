@@ -6,15 +6,15 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 origin.date: 03/11/2019
-ms.date: 03/09/2020
+ms.date: 06/01/2020
 ms.author: v-jay
 ms.reviewer: fryu
-ms.openlocfilehash: 5fdb39f15b28277ea74088c569b20970b49158f7
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: beaded81d074552f76f0a038e3748a6c7201c8d8
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79291413"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199533"
 ---
 # <a name="azure-storage-analytics-logging"></a>Azure 存储分析日志记录
 
@@ -26,8 +26,6 @@ ms.locfileid: "79291413"
 
 > [!NOTE]
 >  存储分析日志记录目前仅适用于 Blob、队列和表服务。 但是，不支持高级存储帐户。
-
-[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 ## <a name="requests-logged-in-logging"></a>在日志记录中记录的请求
 ### <a name="logging-authenticated-requests"></a>记录经过身份验证的请求
@@ -59,7 +57,7 @@ ms.locfileid: "79291413"
 > [!NOTE]
 >  执行容器列出操作（例如“列出容器”操作）时，不会显示 `$logs` 容器。 必须直接访问该容器。 例如，可以使用“列出 Blob”操作访问 `$logs` 容器中的 Blob。
 
-记录请求时，存储分析以块形式上传中间结果。 存储分析会定期提交这些块，并将其作为 Blob 提供。 最长可能需要在一小时后，日志才会显示在 **$logs** 容器中的 Blob 内，具体时间取决于存储服务刷新日志写入器的频率。 在同一小时内创建的日志中可能存在重复的记录。 可以通过检查 RequestId 和操作编号确定记录是否为重复记录。  
+记录请求时，存储分析以块形式上传中间结果。 存储分析会定期提交这些块，并将其作为 Blob 提供。 最长可能需要在一小时后，日志才会显示在 **$logs** 容器中的 Blob 内，具体时间取决于存储服务刷新日志写入器的频率。 在同一小时内创建的日志中可能存在重复的记录。 可以通过检查 RequestId 和操作编号确定记录是否为重复记录。 
 
 如果每小时写入大量的日志数据和多个文件，则你可以使用 Blob 元数据并通过检查 Blob 元数据字段来确定日志包含哪些数据。 这种做法也很有效，因为将数据写入日志文件时，有时会出现延迟：与 Blob 名称相比，Blob 元数据能够更准确地指示 Blob 内容。
 
@@ -133,7 +131,7 @@ ms.locfileid: "79291413"
 
 ### <a name="enable-storage-logging-using-the-azure-portal"></a>使用 Azure 门户启用存储日志记录  
 
-在 Azure 门户中，使用“诊断设置(经典)”边栏选项卡控制存储日志记录。可以通过存储帐户的“菜单”边栏选项卡的“监视(经典)”部分访问该项设置。   
+在 Azure 门户中，使用“诊断设置(经典)”边栏选项卡控制存储日志记录。可以通过存储帐户的“菜单”边栏选项卡的“监视(经典)”部分访问该项设置。  
 
 可以指定要记录的存储服务，以及记录数据的保留期（以天为单位）。  
 
@@ -161,7 +159,28 @@ Set-AzureStorageServiceLoggingProperty -ServiceType Table -LoggingOperations non
 
  除了使用 Azure 门户或 Azure PowerShell cmdlet 来控制存储日志记录以外，还可以使用某个 Azure 存储 API 来实现此目的。 例如，如果使用的是 .NET 语言，则可以使用存储客户端库。  
 
- **CloudBlobClient**、**CloudQueueClient** 和 **CloudTableClient** 类都包含 **SetServiceProperties** 和 **SetServicePropertiesAsync** 等方法，这些方法采用 **ServiceProperties** 对象作为参数。 可以使用 **ServiceProperties** 对象来配置存储日志记录。 例如，以下 C# 代码片段演示如何更改记录的内容以及队列日志的保留期：  
+# <a name="net-v12-sdk"></a>[\.NET v12 SDK](#tab/dotnet)
+
+```csharp
+QueueServiceClient queueServiceClient = new QueueServiceClient(connectionString);
+
+QueueServiceProperties serviceProperties = queueServiceClient.GetProperties().Value;
+
+serviceProperties.Logging.Delete = true;
+
+QueueRetentionPolicy retentionPolicy = new QueueRetentionPolicy();
+retentionPolicy.Enabled = true;
+retentionPolicy.Days = 2;
+serviceProperties.Logging.RetentionPolicy = retentionPolicy;
+
+serviceProperties.HourMetrics = null;
+serviceProperties.MinuteMetrics = null;
+serviceProperties.Cors = null;
+
+queueServiceClient.SetProperties(serviceProperties);
+```
+
+# <a name="net-v11-sdk"></a>[\.NET v11 SDK](#tab/dotnet11)
 
 ```csharp
 var storageAccount = CloudStorageAccount.Parse(connStr);  
@@ -173,6 +192,9 @@ serviceProperties.Logging.RetentionDays = 2;
 
 queueClient.SetServiceProperties(serviceProperties);  
 ```  
+
+---
+
 
  有关使用 .NET 语言配置存储日志记录的详细信息，请参阅[存储客户端库参考](https://docs.azure.cn/zh-cn/dotnet/api/overview/storage?view=azure-dotnet)。  
 

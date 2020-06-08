@@ -2,16 +2,16 @@
 title: 用于处理自定义事件和指标的 Application Insights API | Azure Docs
 description: 在设备、桌面应用、网页或服务中插入几行代码，即可跟踪使用情况和诊断问题。
 ms.topic: conceptual
-author: lingliw
+author: Johnnytechn
 origin.date: 03/27/2019
-ms.date: 08/22/2019
-ms.author: v-lingwu
-ms.openlocfilehash: e8f7d7dcdcb50c67a64d1d3c664f515dc6bbc2de
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/28/2020
+ms.author: v-johya
+ms.openlocfilehash: fbbe7bdc2b519594ded6baf7606cda02caee782f
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79291847"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199648"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>用于处理自定义事件和指标的 Application Insights API
 
@@ -48,25 +48,29 @@ ms.locfileid: "79291847"
   * [每个网页中的 JavaScript](../../azure-monitor/app/javascript.md) 
 * 在设备或 Web 服务器代码中包含以下内容：
 
-    C#：  `using Microsoft.ApplicationInsights;`
+    C#：`using Microsoft.ApplicationInsights;`
 
-    Visual Basic：  `Imports Microsoft.ApplicationInsights`
+    Visual Basic：`Imports Microsoft.ApplicationInsights`
 
-    Java：  `import com.microsoft.applicationinsights.TelemetryClient;`
+    Java：`import com.microsoft.applicationinsights.TelemetryClient;`
 
-    Node.js：  `var applicationInsights = require("applicationinsights");`
+    Node.js：`var applicationInsights = require("applicationinsights");`
 
 ## <a name="get-a-telemetryclient-instance"></a>获取 TelemetryClient 实例
 
 获取 `TelemetryClient` 的实例（网页中的 JavaScript 除外）：
+
+对于 [ASP.NET Core](asp-net-core.md#how-can-i-track-telemetry-thats-not-automatically-collected) 应用和[用于 .NET/.NET Core 的非 HTTP/辅助角色](worker-service.md#how-can-i-track-telemetry-thats-not-automatically-collected)，建议从依赖关系注入容器获取 `TelemetryClient` 的实例，如各自的相关文档中所述。
+<!-- Not available in MC: /azure-functions/functions-monitoring -->
 
 *C#*
 
 ```csharp
 private TelemetryClient telemetry = new TelemetryClient();
 ```
+对于看到“此方法已过时”消息的任何人，请访问 [microsoft/ApplicationInsights-dotnet#1152](https://github.com/microsoft/ApplicationInsights-dotnet/issues/1152) 了解更多详细信息。
 
-Visual Basic 
+Visual Basic
 
 ```vb
 Private Dim telemetry As New TelemetryClient
@@ -86,7 +90,7 @@ var telemetry = applicationInsights.defaultClient;
 
 TelemetryClient 是线程安全的。
 
-对于 ASP.NET 和 Java 项目，可自动捕获传入的 HTTP 请求。 可能需要为应用的其他模块创建 TelemetryClient 的其他实例。 例如，可以在中间件类中使用一个 TelemetryClient 实例报告业务逻辑事件。 可以设置属性（如 UserId 和 DeviceId）来标识计算机。 此信息将附加到实例发送的所有事件中。 
+对于 ASP.NET 和 Java 项目，可自动捕获传入的 HTTP 请求。 可能需要为应用的其他模块创建 TelemetryClient 的其他实例。 例如，可以在中间件类中使用一个 TelemetryClient 实例报告业务逻辑事件。 可以设置属性（如 UserId 和 DeviceId）来标识计算机。 此信息将附加到实例发送的所有事件中。
 
 *C#*
 
@@ -106,7 +110,7 @@ telemetry.getContext().getDevice().setId("...");
 
 ## <a name="trackevent"></a>TrackEvent
 
-在 Application Insights 中，自定义事件  是一个数据点，它可在[指标资源管理器](../../azure-monitor/app/metrics-explorer.md)中显示为聚合计数，在[诊断搜索](../../azure-monitor/app/diagnostic-search.md)中显示为单个事件。 （它与 MVC 或其他框架“事件”不相关。）
+在 Application Insights 中，自定义事件是一个数据点，它可在[指标资源管理器](../../azure-monitor/platform/metrics-charts.md)中显示为聚合计数，在[诊断搜索](../../azure-monitor/app/diagnostic-search.md)中显示为单个事件。 （它与 MVC 或其他框架“事件”不相关。）
 
 在代码中插入 `TrackEvent` 调用来统计各种事件。 用户选择特定功能的频率、实现特定目标的频率，或可能制造特定类型的错误的频率。
 
@@ -124,7 +128,7 @@ appInsights.trackEvent({name:"WinGame"});
 telemetry.TrackEvent("WinGame");
 ```
 
-Visual Basic 
+Visual Basic
 
 ```vb
 telemetry.TrackEvent("WinGame")
@@ -150,92 +154,7 @@ telemetry.trackEvent({name: "WinGame"});
 
 ## <a name="getmetric"></a>GetMetric
 
-### <a name="examples"></a>示例
-
-*C#*
-
-```csharp
-namespace User.Namespace.Example01
-{
-    using System;
-    using Microsoft.ApplicationInsights;
-    using Microsoft.ApplicationInsights.DataContracts;
-
-    /// <summary>
-    /// Most simple cases are one-liners.
-    /// This is all possible without even importing an additional namespace.
-    /// </summary>
-
-    public class Sample01
-    {
-        /// <summary />
-        public static void Exec()
-        {
-            // *** SENDING METRICS ***
-
-            // Recall how you send custom telemetry with Application Insights in other cases, e.g. Events.
-            // The following will result in an EventTelemetry object to be sent to the cloud right away.
-            TelemetryClient client = new TelemetryClient();
-            client.TrackEvent("SomethingInterestingHappened");
-
-            // Metrics work very similar. However, the value is not sent right away.
-            // It is aggregated with other values for the same metric, and the resulting summary (aka "aggregate" is sent automatically every minute.
-            // To mark this difference, we use a pattern that is similar, but different from the established TrackXxx(..) pattern that sends telemetry right away:
-
-            client.GetMetric("CowsSold").TrackValue(42);
-
-            // *** MULTI-DIMENSIONAL METRICS ***
-
-            // The above example shows a zero-dimensional metric.
-            // Metrics can also be multi-dimensional.
-            // In the initial version we are supporting up to 2 dimensions, and we will add support for more in the future as needed.
-            // Here is an example for a one-dimensional metric:
-
-            Metric animalsSold = client.GetMetric("AnimalsSold", "Species");
-
-            animalsSold.TrackValue(42, "Pigs");
-            animalsSold.TrackValue(24, "Horses");
-
-            // The values for Pigs and Horses will be aggregated separately from each other and will result in two distinct aggregates.
-            // You can control the maximum number of number data series per metric (and thus your resource usage and cost).
-            // The default limits are no more than 1000 total data series per metric, and no more than 100 different values per dimension.
-            // We discuss elsewhere how to change them.
-            // We use a common .NET pattern: TryXxx(..) to make sure that the limits are observed.
-            // If the limits are already reached, Metric.TrackValue(..) will return False and the value will not be tracked. Otherwise it will return True.
-            // This is particularly useful if the data for a metric originates from user input, e.g. a file:
-
-            Tuple<int, string> countAndSpecies = ReadSpeciesFromUserInput();
-            int count = countAndSpecies.Item1;
-            string species = countAndSpecies.Item2;
-
-            if (!animalsSold.TrackValue(count, species))
-
-            {
-                client.TrackTrace($"Data series or dimension cap was reached for metric {animalsSold.Identifier.MetricId}.", SeverityLevel.Error);
-            }
-
-            // You can inspect a metric object to reason about its current state. For example:
-            int currentNumberOfSpecies = animalsSold.GetDimensionValues(1).Count;
-        }
-
-        private static void ResetDataStructure()
-        {
-            // Do stuff
-        }
-
-        private static Tuple<int, string> ReadSpeciesFromUserInput()
-        {
-            return Tuple.Create(18, "Cows");
-        }
-
-        private static int AddItemsToDataStructure()
-        {
-            // Do stuff
-            return 5;
-        }
-    }
-}
-```
+若要了解如何有效地使用 GetMetric() 调用捕获 .NET 和 .NET Core 应用程序的本地预聚合指标，请访问 [GetMetric](../../azure-monitor/app/get-metric.md) 文档。
 
 ## <a name="trackmetric"></a>TrackMetric
 
@@ -248,7 +167,7 @@ Application Insights 可绘制未附加到特定事件的指标。 例如，可�
 
 * 单个值。 每次在应用中执行测量时，会发送相应的值到 Application Insights。 例如，假设有个指标用于描述容器中项的数量。 在特定时间段，先将 3 个项放入容器中，再从容器中移除 2 个项。 相应地，将会调用 `TrackMetric` 两次：首先传递值 `3`，然后传递值 `-2`。 Application Insights 会替你存储这两个值。
 
-* 聚合。 使用指标时，每个单次测量几乎无关紧要。 反而特定时间段内发生活动的摘要很重要。 此类摘要名为聚合  。 在上一示例中，该时间段的聚合指标总数为 `1`，同时指标值的计数为 `2`。 使用聚合方法时，每个时间段只调用一次 `TrackMetric` 并发送聚合值。 建议采用此方法是因为它可以通过发送更少的数据点到 Application Insights 同时仍然收集所有相关信息来显著降低成本和性能开销。
+* 聚合。 使用指标时，每个单次测量几乎无关紧要。 反而特定时间段内发生活动的摘要很重要。 此类摘要名为聚合。 在上一示例中，该时间段的聚合指标总数为 `1`，同时指标值的计数为 `2`。 使用聚合方法时，每个时间段只调用一次 `TrackMetric` 并发送聚合值。 建议采用此方法是因为它可以通过发送更少的数据点到 Application Insights 同时仍然收集所有相关信息来显著降低成本和性能开销。
 
 ### <a name="examples"></a>示例
 
@@ -286,6 +205,7 @@ telemetry.trackMetric({name: "queueLength", value: 42.0});
 ### <a name="custom-metrics-in-analytics"></a>分析中的自定义指标
 
 [Application Insights Analytics](../log-query/log-query-overview.md) 的 `customMetrics` 表格提供了遥测。 每行表示对应用中 `trackMetric(..)` 的调用。
+<!-- Correct in MC: log-query/log-query-overview.md -->
 
 * `valueSum` - 这是度量值的总和。 若要获取平均值，请除以 `valueCount`。
 * `valueCount` - 聚合到此 `trackMetric(..)` 调用中的度量值个数。
@@ -310,7 +230,7 @@ appInsights.trackPageView("tab1");
 telemetry.TrackPageView("GameReviewPage");
 ```
 
-Visual Basic 
+Visual Basic
 
 ```vb
 telemetry.TrackPageView("GameReviewPage")
@@ -330,11 +250,11 @@ appInsights.trackPageView("tab1", "http://fabrikam.com/page1.htm");
 
 ### <a name="timing-page-views"></a>计时页面视图
 
-默认情况下，报告为“页面视图加载时间”  的时间测量是从浏览器发送请求开始、调用浏览器的页面加载事件为止的时间。
+默认情况下，报告为“页面视图加载时间”的时间测量是从浏览器发送请求开始、调用浏览器的页面加载事件为止的时间。
 
 可以：
 
-* 在 [trackPageView](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md#trackpageview) 调用中设置显式持续时间：`appInsights.trackPageView("tab1", null, null, null, durationInMilliseconds);`。
+* 在 [trackPageView](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/legacy/API.md#trackpageview) 调用中设置显式持续时间：`appInsights.trackPageView("tab1", null, null, null, durationInMilliseconds);`。
 * 使用页面视图计时调用 `startTrackPage` 和 `stopTrackPage`。
 
 *JavaScript*
@@ -356,6 +276,7 @@ appInsights.stopTrackPage("Page1", url, properties, measurements);
 ### <a name="page-telemetry-in-analytics"></a>Analytics 中的页面遥测
 
 [Analytics](../log-query/log-query-overview.md)中有两个表展示了浏览器操作的数据：
+<!-- Correct in MC: log-query/log-query-overview.md -->
 
 * `pageViews` 表包含关于 URL 和页标题的数据
 * `browserTimings` 表包含关于客户端性能的数据，例如处理传入数据所用的时间
@@ -392,6 +313,7 @@ pageViews
 ## <a name="operation-context"></a>操作上下文
 
 可以通过将遥测项与操作上下文关联来将遥测项关联在一起。 标准的请求跟踪模块针对在处理 HTTP 请求时发送的异常和其他事件执行此操作。 在[搜索](../../azure-monitor/app/diagnostic-search.md)和[分析](../log-query/log-query-overview.md)中，可以使用操作 ID 轻松找到与请求关联的任何事件。
+<!-- Correct in MC: log-query/log-query-overview.md -->
 
 有关关联的更多详细信息，请参阅 [Application Insights 中的遥测关联](../../azure-monitor/app/correlation.md)。
 
@@ -421,7 +343,7 @@ using (var operation = telemetryClient.StartOperation<RequestTelemetry>("operati
 
 在操作范围内报告的遥测项将成为此类操作的“子级”。 操作上下文可以嵌套。
 
-在搜索中，操作上下文可用于创建“相关项”  列表：
+在搜索中，操作上下文可用于创建“相关项”列表：
 
 ![相关项](./media/api-custom-events-metrics/21.png)
 
@@ -430,6 +352,7 @@ using (var operation = telemetryClient.StartOperation<RequestTelemetry>("operati
 ### <a name="requests-in-analytics"></a>Analytics 中的请求
 
 在 [Application Insights Analytics](../log-query/log-query-overview.md) 中，请求出现在 `requests` 表中。
+<!-- Correct in MC: log-query/log-query-overview.md -->
 
 如果正在进行[采样](../../azure-monitor/app/sampling.md)，那么 itemCount 属性将会显示大于 1 的值。 例如，itemCount==10 表明对 trackRequest() 调用了 10 次，采样进程只传输其中一次。 若要按请求名称获取正确的请求数和平均持续时间，请使用如下所示的代码：
 
@@ -442,7 +365,7 @@ requests
 
 将异常发送到 Application Insights：
 
-* 用于[对其计数](../../azure-monitor/app/metrics-explorer.md)，作为问题发生频率的指示。
+* 用于[对其计数](../../azure-monitor/platform/metrics-charts.md)，作为问题发生频率的指示。
 * 用于[检查单个事件](../../azure-monitor/app/diagnostic-search.md)。
 
 报告包含堆栈跟踪。
@@ -512,6 +435,7 @@ SDK 会自动捕获许多异常，因此不一定需要显式调用 TrackExcepti
 ### <a name="exceptions-in-analytics"></a>Analytics 中的异常
 
 在 [Application Insights Analytics](../log-query/log-query-overview.md) 中，异常出现在 `exceptions` 表中。
+<!-- Correct in MC: log-query/log-query-overview.md -->
 
 如果正在进行[采样](../../azure-monitor/app/sampling.md)，那么 `itemCount` 属性将显示大于 1 的值。 例如，itemCount==10 表明对 trackException() 调用了 10 次，采样进程只传输其中一次。 若要按异常类型获取正确的异常数，请使用如下所示的代码：
 
@@ -575,8 +499,8 @@ trackTrace(message: string, properties?: {[string]:string}, severityLevel?: Seve
  参数 | 说明
 ---|---
 `message` | 诊断数据。 可以比名称长很多。
-`properties` | 字符串到字符串的映射：用于在门户中筛选异常的其他数据。 默认为空。
-`severityLevel` | 支持的值：[SeverityLevel.ts](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/JavaScript/JavaScriptSDK.Interfaces/Contracts/Generated/SeverityLevel.ts)
+`properties` | 字符串到字符串的映射：用于在门户中[筛选异常](https://azure.microsoft.com/documentation/articles/app-insights-api-custom-events-metrics/#properties)的其他数据。 默认为空。
+`severityLevel` | 支持的值：[SeverityLevel.ts](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/shared/AppInsightsCommon/src/Interfaces/Contracts/Generated/SeverityLevel.ts)
 
 可以搜索消息内容，但是（不同于属性值）无法在其中进行筛选。
 
@@ -607,6 +531,7 @@ telemetry.trackTrace("Slow Database response", SeverityLevel.Warning, properties
 ### <a name="traces-in-analytics"></a>Analytics 中的跟踪
 
 在 [Application Insights Analytics](../log-query/log-query-overview.md) 中，对 TrackTrace 的调用出现在 `traces` 表中。
+<!-- Correct in MC: log-query/log-query-overview.md -->
 
 如果正在进行[采样](../../azure-monitor/app/sampling.md)，那么 itemCount 属性将显示大于 1 的值。 例如，itemCount==10 表明对 `trackTrace()` 调用了 10 次，采样进程只传输其中一次。 若要获取正确的跟踪调用数，应使用 `traces | summarize sum(itemCount)` 之类的代码。
 
@@ -686,6 +611,7 @@ finally
 ### <a name="dependencies-in-analytics"></a>Analytics 中的依赖项
 
 在 [Application Insights Analytics](../log-query/log-query-overview.md) 中，trackDependency 调用出现在 `dependencies` 表中。
+<!-- Correct in MC: log-query/log-query-overview.md -->
 
 如果正在进行[采样](../../azure-monitor/app/sampling.md)，那么 itemCount 属性将显示大于 1 的值。 例如，itemCount==10 表明对 trackDependency() 调用了 10 次，采样进程只传输其中一次。 若要按目标组件获取正确的依赖项数，请使用如下所示的代码：
 
@@ -733,7 +659,7 @@ telemetry.flush();
 
 ## <a name="authenticated-users"></a>经过身份验证的用户
 
-在 Web 应用中，默认按 Cookie 标识用户。 如果用户从不同的计算机或浏览器访问应用或删除 Cookie，则可能会多次统计它们。
+在 Web 应用中，默认[按 Cookie 标识用户](../../azure-monitor/app/usage-segmentation.md#the-users-sessions-and-events-segmentation-tool)。 如果用户从不同的计算机或浏览器访问应用或删除 Cookie，则可能会多次统计它们。
 
 如果用户登录到应用，可以通过在浏览器代码中设置经过身份验证的用户 ID 来获取更准确的计数：
 
@@ -773,7 +699,7 @@ function Authenticated(signInId) {
 appInsights.setAuthenticatedUserContext(validatedId, accountId);
 ```
 
-在[指标资源管理器](../../azure-monitor/app/metrics-explorer.md)中，可以创建统计“经身份验证的用户”和“用户帐户”的图表。  
+在[指标资源管理器](../../azure-monitor/platform/metrics-charts.md)中，可以创建统计“经身份验证的用户”和“用户帐户”的图表。 
 
 还可以[搜索](../../azure-monitor/app/diagnostic-search.md)具有特定用户名和帐户的客户端数据点。
 
@@ -836,7 +762,7 @@ var metrics = {"Score": currentGame.Score, "Opponents": currentGame.OpponentCoun
 telemetry.trackEvent({name: "WinGame", properties: properties, measurements: metrics});
 ```
 
-Visual Basic 
+Visual Basic
 
 ```vb
 ' Set up some properties:
@@ -896,6 +822,7 @@ telemetry.TrackEvent(event);
 ### <a name="custom-measurements-and-properties-in-analytics"></a>在 Analytics 中自定义度量值和属性
 
 在 [Analytics](../log-query/log-query-overview.md) 中，自定义指标和属性显示在每个遥测记录的 `customMeasurements` 和 `customDimensions` 属性中。
+<!-- Correct in MC: log-query/log-query-overview.md -->
 
 例如，如果已向请求遥测添加名为“game”的属性，此查询将计算“game”不同值的出现次数，同时显示自定义指标“score”的平均值：
 
@@ -969,7 +896,7 @@ gameTelemetry.Context.GlobalProperties["Game"] = currentGame.Name;
 gameTelemetry.TrackEvent("WinGame");
 ```
 
-Visual Basic 
+Visual Basic
 
 ```vb
 Dim gameTelemetry = New TelemetryClient()
@@ -1006,7 +933,7 @@ gameTelemetry.TrackEvent({name: "WinGame"});
 
 *对于 JavaScript Web 客户端*，请使用 JavaScript 遥测初始化表达式。
 
-若要向所有遥测数据（包括来自标准收集模块的数据）添加属性  ，请[实现 `ITelemetryInitializer`](../../azure-monitor/app/api-filtering-sampling.md#add-properties)。
+若要向所有遥测数据（包括来自标准收集模块的数据）添加属性，请[实现 `ITelemetryInitializer`](../../azure-monitor/app/api-filtering-sampling.md#add-properties)。
 
 ## <a name="sampling-filtering-and-processing-telemetry"></a>采样、筛选和处理遥测数据
 
@@ -1071,7 +998,7 @@ applicationInsights.setup()
 TelemetryConfiguration.Active.TelemetryChannel.DeveloperMode = true;
 ```
 
-Visual Basic 
+Visual Basic
 
 ```vb
 TelemetryConfiguration.Active.TelemetryChannel.DeveloperMode = True
@@ -1182,21 +1109,18 @@ telemetry.Context.Operation.Name = "MyOperationName";
 
 ## <a name="reference-docs"></a>参考文档
 
-* [ASP.NET 参考](https://msdn.microsoft.com/library/dn817570.aspx)
-* [Java 参考](https://dl.windowsazure.com/applicationinsights/javadoc/)
+* [ASP.NET 参考](https://docs.azure.cn/zh-cn/dotnet/api/overview/insights?view=azure-dotnet)
+* [Java 参考](https://docs.microsoft.com/java/api/overview/appinsights?view=azure-java-stable/)
 * [JavaScript 参考](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md)
-* [Android SDK](https://github.com/Microsoft/ApplicationInsights-Android)
-* [iOS SDK](https://github.com/Microsoft/ApplicationInsights-iOS)
 
 ## <a name="sdk-code"></a>SDK 代码
 
-* [ASP.NET Core SDK](https://github.com/Microsoft/ApplicationInsights-aspnetcore)
-* [ASP.NET 5](https://github.com/Microsoft/ApplicationInsights-dotnet)
-* [Windows Server 包](https://github.com/Microsoft/applicationInsights-dotnet-server)
+* [ASP.NET Core SDK](https://github.com/Microsoft/ApplicationInsights-dotnet)
+* [ASP.NET](https://github.com/Microsoft/ApplicationInsights-dotnet)
+* [Windows Server 包](https://github.com/Microsoft/ApplicationInsights-dotnet)
 * [Java SDK](https://github.com/Microsoft/ApplicationInsights-Java)
 * [Node.js SDK](https://github.com/Microsoft/ApplicationInsights-Node.js)
 * [JavaScript SDK](https://github.com/Microsoft/ApplicationInsights-JS)
-* [所有平台](https://github.com/Microsoft?utf8=%E2%9C%93&query=applicationInsights)
 
 ## <a name="questions"></a>问题
 
@@ -1205,13 +1129,12 @@ telemetry.Context.Operation.Name = "MyOperationName";
     无。 不需要将它们包装在 try-catch 子句中。 如果 SDK 遇到问题，它会在调试控制台输出中记录消息，如果消息已传入，可在诊断搜索中查看。
 * *是否可以使用某个 REST API 从门户获取数据？*
 
-    是的，可以使用[数据访问 API](https://dev.applicationinsights.io/)。 提取数据的其他方法包括[连续导出](../../azure-monitor/app/export-telemetry.md)。
+    是的，可以使用[数据访问 API](https://dev.applicationinsights.io/)。 提取数据的其他方法包括[从 Analytics 导出到 Power BI](../../azure-monitor/app/export-power-bi.md ) 和[连续导出](../../azure-monitor/app/export-telemetry.md)。
 
 <a name="next"></a>
 ## <a name="next-steps"></a>后续步骤
 
 * [搜索事件和日志](../../azure-monitor/app/diagnostic-search.md)
-
-
-
+* [故障排除](../../azure-monitor/faq.md)
+<!-- Correct in MC: azure-monitor/faq.md -->
 

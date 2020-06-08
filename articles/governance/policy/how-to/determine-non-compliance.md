@@ -3,14 +3,14 @@ title: 确定导致非符合性的原因
 description: 有多种可能的原因会导致资源不合规。 了解如何查明导致不合规的原因。
 ms.author: v-tawe
 origin.date: 04/26/2019
-ms.date: 02/17/2020
+ms.date: 05/29/2020
 ms.topic: how-to
-ms.openlocfilehash: 2a839f0155192a1ba1af7523fc3dc819489ed1b6
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: bfc4b9035a5d0db6a7d71336e468f0f6a075cd93
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79293054"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199720"
 ---
 # <a name="determine-causes-of-non-compliance"></a>确定导致非符合性的原因
 
@@ -24,28 +24,28 @@ ms.locfileid: "79293054"
 
 ## <a name="compliance-details"></a>合规性详细信息
 
-当某个资源不合规时，“策略合规性”页中会提供该资源的合规性详细信息。  合规性详细信息窗格包含以下信息：
+当某个资源不合规时，“策略合规性”页中会提供该资源的合规性详细信息。 合规性详细信息窗格包含以下信息：
 
 - 资源详细信息，例如名称、类型、位置和资源 ID
 - 上次评估当前策略分配时的合规状态和时间戳
-- 资源不合规的原因列表 
+- 资源不合规的原因列表
 
 > [!IMPORTANT]
 > 由于不合规资源的合规性详细信息显示有关该资源的属性的当前值，因此，用户必须对资源**类型**拥有**读取**操作权限。 例如，如果不合规的资源为 **Microsoft.Compute/virtualMachines**，则用户必须拥有 **Microsoft/virtualMachines/read** 操作权限。 如果用户没有所需的操作权限，将显示访问权限错误。
 
 若要查看合规性详细信息，请执行以下步骤：
 
-1. 在 Azure 门户中单击“所有服务”，然后搜索并选择“策略”，启动 Azure Policy 服务。  
+1. 在 Azure 门户中单击“所有服务”，然后搜索并选择“策略”，启动 Azure Policy 服务。 
 
 1. 在“概述”或“合规性”页上，选择**合规性状态**为“不合规”的策略。 
 
-1. 在“策略合规性”页的“资源合规性”选项卡下，右键单击**合规性状态**为“不合规”的资源或选择其对应的省略号。  然后选择“查看合规性详细信息”。 
+1. 在“策略合规性”页的“资源合规性”选项卡下，右键单击**合规性状态**为“不合规”的资源或选择其对应的省略号。  然后选择“查看合规性详细信息”。
 
-   ![“查看合规性详细信息”选项](../media/determine-non-compliance/view-compliance-details.png)
+   :::image type="content" source="../media/determine-non-compliance/view-compliance-details.png" alt-text="“查看合规性详细信息”选项" border="false":::
 
-1. “合规性详细信息”窗格将显示最近评估当前策略分配中的资源时的信息。  在此示例中，**Microsoft.Sql/servers/version** 字段值为 _12.0_，而策略定义预期该值为 _14.0_。 如果资源出于多种原因而不合规，此窗格中会列出每种原因。
+1. “合规性详细信息”窗格将显示最近评估当前策略分配中的资源时的信息。 在此示例中，**Microsoft.Sql/servers/version** 字段值为 _12.0_，而策略定义预期该值为 _14.0_。 如果资源出于多种原因而不合规，此窗格中会列出每种原因。
 
-   ![“合规性详细信息”窗格和不合规的原因](../media/determine-non-compliance/compliance-details-pane.png)
+   :::image type="content" source="../media/determine-non-compliance/compliance-details-pane.png" alt-text="“合规性详细信息”窗格和不合规的原因" border="false":::
 
    对于 **auditIfNotExists** 或 **deployIfNotExists** 策略定义，详细信息包含 **details.type** 属性和所有可选属性。 有关列表，请参阅 [auditIfNotExists 属性](../concepts/effects.md#auditifnotexists-properties)和 [deployIfNotExists 属性](../concepts/effects.md#deployifnotexists-properties)。 “上次评估的资源”是定义的 **details** 节中的相关资源。
 
@@ -74,10 +74,10 @@ ms.locfileid: "79293054"
    }
    ```
 
-   ![“合规性详细信息”窗格 - *ifNotExists](../media/determine-non-compliance/compliance-details-pane-existence.png)
+   :::image type="content" source="../media/determine-non-compliance/compliance-details-pane-existence.png" alt-text="“合规性详细信息”窗格 - *ifNotExists" border="false":::
 
 > [!NOTE]
-> 若要保护数据，当属性值是机密时，当前值将显示星号。 
+> 若要保护数据，当属性值是机密时，当前值将显示星号。
 
 这些详细信息将解释资源当前不合规的原因，但不显示何时对该资源做出了更改，导致它不合规。
 
@@ -111,21 +111,21 @@ ms.locfileid: "79293054"
 
 ## <a name="compliance-details-for-guest-configuration"></a>Guest Configuration 的合规性详细信息
 
-对于 _Guest Configuration_ 类别中的 _auditIfNotExists_ 策略，可能会在 VM 中评估多个设置，而你需要查看每个设置的详细信息。 例如，如果你要审核密码策略列表，而其中只有一个策略的状态为“不合规”，则你需要知道哪个特定的密码策略不合规，以及不合规的原因。 
+对于 _Guest Configuration_ 类别中的 _auditIfNotExists_ 策略，可能会在 VM 中评估多个设置，而你需要查看每个设置的详细信息。 例如，如果你要审核密码策略列表，而其中只有一个策略的状态为“不合规”，则你需要知道哪个特定的密码策略不合规，以及不合规的原因。
 
-此外，你可能无权直接登录到 VM，但需要报告 VM 为何不合规。 
+此外，你可能无权直接登录到 VM，但需要报告 VM 为何不合规。
 
 ### <a name="azure-portal"></a>Azure 门户
 
 首先，遵循前面部分所述的有关查看策略合规性详细信息的相同步骤。
 
-在“合规性详细信息”窗格视图中，单击“上次评估的资源”链接。  
+在“合规性详细信息”窗格视图中，单击“上次评估的资源”链接。 
 
-   ![查看 auditIfNotExists 定义详细信息](../media/determine-non-compliance/guestconfig-auditifnotexists-compliance.png)
+:::image type="content" source="../media/determine-non-compliance/guestconfig-auditifnotexists-compliance.png" alt-text="查看 auditIfNotExists 定义详细信息" border="false":::
 
-“来宾分配”页将显示提供的所有合规性详细信息。  视图中的每一行代表在计算机中执行的一项评估。 “原因”列中会显示一条短语，描述来宾分配为何不合规。   例如，如果你要审核密码策略，则“原因”列将显示包含每项设置的当前值的文本。 
+“来宾分配”页将显示提供的所有合规性详细信息。 视图中的每一行代表在计算机中执行的一项评估。 “原因”列中会显示一条短语，描述来宾分配为何不合规。 例如，如果你要审核密码策略，则“原因”列将显示包含每项设置的当前值的文本。
 
-![查看合规性详细信息](../media/determine-non-compliance/guestconfig-compliance-details.png)
+:::image type="content" source="../media/determine-non-compliance/guestconfig-compliance-details.png" alt-text="查看合规性详细信息" border="false":::
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
@@ -148,7 +148,7 @@ Audit that an application is installed inside Windows VMs                 {[Inst
 Audit that an application is not installed inside Windows VMs.            {[InstalledApplication]NotInstalledApplica...
 ```
 
-如果只想查看描述 VM 为何不合规的原因短语，请仅返回 Reason 子属性。  
+如果只想查看描述 VM 为何不合规的原因短语，请仅返回 Reason 子属性。 
 
 ```powershell
 Get-AzVMGuestPolicyReport -ResourceGroupName <resourcegroupname> -VMName <vmname> | % ComplianceReasons | % Reasons | % Reason

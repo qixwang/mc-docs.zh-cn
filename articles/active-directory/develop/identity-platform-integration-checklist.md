@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 04/22/2020
+ms.date: 05/27/2020
 ms.author: v-junlch
 ms.reviewer: lenalepa, sureshja, jesakowi
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: f3bd221457b92272e36a0caf534415cd1b2c08a4
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.openlocfilehash: 2fa8a337ad182ee43c87c0d5754dae8bacdfdcf9
+ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82126237"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84186736"
 ---
 # <a name="microsoft-identity-platform-best-practices-and-recommendations"></a>Microsoft 标识平台最佳做法和建议
 
@@ -26,6 +26,9 @@ ms.locfileid: "82126237"
 如果你刚刚入门，请查看 [Microsoft 标识平台文档](index.yml)来了解身份验证基础知识、Microsoft 标识平台中的应用方案，等等。
 
 使用以下查检表确保应用程序与 [Microsoft 标识平台](/active-directory/develop/)有效集成。
+
+> [!TIP]
+> Azure 门户中的集成助手可帮助你应用其中许多最佳做法和建议。 选择 Azure 门户中的任何[应用注册](https://portal.azure.cn/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)，然后选择“集成助手(预览版)”菜单项，开始使用助手。
 
 ## <a name="basics"></a>基础知识
 

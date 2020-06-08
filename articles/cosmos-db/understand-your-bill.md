@@ -5,15 +5,15 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 08/01/2019
-ms.date: 04/27/2020
+ms.date: 06/01/2020
 ms.author: v-yeche
 ms.reviewer: sngun
-ms.openlocfilehash: 286b0c400be087cce0a8fb8676b6ba03fbb37d25
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.openlocfilehash: a961b1a0d063c626a97761509fcb51fd9a7e41ab
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82134873"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199370"
 ---
 # <a name="understand-your-azure-cosmos-db-bill"></a>了解 Azure Cosmos DB 帐单
 
@@ -86,6 +86,8 @@ Azure Cosmos DB 是完全托管的云原生数据库服务，仅针对预配的�
 
 * 此时需支付：1,550 * 0.082 元 = 127.10 元/小时。  
 
+    <!--CURRECTLY $2,880 MAP TO CNY29,540-->
+    
 * 假设一个月为 744 小时，如果 300 小时的预配吞吐量为 120K RU/秒，其余 444 小时的预配吞吐量为 155K RU/秒，则月度帐单将显示：300 x 98.4 元/小时 + 444 x 127.10 元/小时 = 29,520 元 + 56,433 元 = 85,953 元/月。 
 
     <!--Not Available on ![Shared throughput bill example](./media/understand-your-bill/bill-example2.png)-->
@@ -106,7 +108,7 @@ Azure Cosmos DB 是完全托管的云原生数据库服务，仅针对预配的�
 |3 个其他区域 - 中国东部、中国北部 2 和中国东部 2 的存储帐单      | 3 * 250 GB    |2\.576 元/GB  |1,932 元|
 |**总计** |     |  |**26,980 元**|
 
-此外，假定每月从中国北部的容器中传出 100 GB 数据，将数据复制到中国东部、中国北部 2 和中国东部 2。  则需要按数据传输速率为导出部分付费。
+此外，假定每月从中国北部的容器中传出 100 GB 数据，将数据复制到中国东部、中国北部 2 和中国东部 2。则需要按数据传输速率为导出部分付费。
 
 ### <a name="billing-example-multi-region-azure-cosmos-account-multi-region-writes"></a>计费示例：多区域 Azure Cosmos 帐户，多个区域写入
 
@@ -122,9 +124,123 @@ Azure Cosmos DB 是完全托管的云原生数据库服务，仅针对预配的�
 |3 个其他区域 - 中国东部、中国北部 2 和中国东部 2 的存储帐单      | 3 * 250 GB    |2\.576 元/GB  |1,932 元|
 |**总计**     |     |  |**40,520.2 元**|
 
-此外，假定每月从中国北部的容器中传出 100 GB 数据，将数据复制到中国东部、中国北部 2 和中国东部 2。  则需要按数据传输速率为导出部分付费。
+此外，假定每月从中国北部的容器中传出 100 GB 数据，将数据复制到中国东部、中国北部 2 和中国东部 2。则需要按数据传输速率为导出部分付费。
 
-<!--Not Available on ### Billing example: Azure Cosmos account with multi-master, database-level throughput including dedicated throughput mode for some containers-->
+<!--Customize-->
+
+### <a name="billing-example-azure-cosmos-account-with-multi-master-database-level-throughput-including-dedicated-throughput-mode-for-some-containers"></a>计费示例：包含多主数据库的 Azure Cosmos 帐户，数据库级别的吞吐量包括某些容器的专用吞吐量模式
+
+我们来看看以下示例，示例中包含一个多区域 Azure Cosmos 帐户，其中所有区域都可写入（多主数据库配置）。 为简单起见，假定存储大小保持不变，且不会更改，此处不考虑存储大小，从而简化示例。 本月的预配吞吐量变化如下（假定一月为 31 天或 744 小时）： 
+
+<!--Region Mapping: West US--China North; East US--China East; North Europe-->中国北部 2-->
+
+[0-100 小时]：  
+
+* 创建了包含 3 个区域的 Azure Cosmos 帐户（中国北部、中国东部和中国北部 2），其中所有区域都可写入 
+
+* 创建共享吞吐量为 10K RU/秒的数据库 (D1) 
+
+* 创建共享吞吐量为 30k RU/秒的数据库 (D2)  
+
+* 创建专用吞吐量为 20K RU/秒的容器 (C1) 
+
+[101-200 小时]：  
+
+* 将数据库 (D1) 纵向扩展到 50K RU/秒 
+
+* 将数据库 (D2) 纵向扩展到 70K RU/秒  
+
+* 删除容器 (C1)  
+
+[201-300 小时]：  
+
+* 再次创建专用吞吐量为 20K RU/秒的容器 (C1) 
+
+[301-400 小时]：  
+
+* 从 Azure Cosmos 帐户中删除 1 个区域（可写入的区域的数量现为 2 个） 
+
+* 将数据库 (D1) 缩小到 10K RU/秒 
+
+* 将数据库 (D2) 纵向扩展到 80K RU/秒  
+
+* 再次删除容器 (C1) 
+
+[401-500 小时]：  
+
+* 将数据库 (D2) 缩小到 10K RU/秒  
+
+* 再次创建专用吞吐量为 20K RU/秒的容器 (C1) 
+
+[501-700 小时]：  
+
+* 将数据库 (D1) 纵向扩展到 20K RU/秒  
+
+* 将数据库 (D2) 纵向扩展到 100K RU/秒  
+
+* 再次删除容器 (C1)  
+
+[701-744 小时]：  
+
+* 将数据库 (D2) 缩小到 50K RU/秒  
+
+下图直观地呈现了本月 744 小时内总预配吞吐量的变化情况： 
+
+![真实示例](./media/understand-your-bill/bill-example3.png)
+
+将按以下方式计算月度总帐单（假定一个月为 31 天/744 小时）：
+
+|**小时数** |**RU/秒** |**项目** |**使用时间（小时）** |**成本** |
+|---------|---------|---------|-------|-------|
+|[0-100] |D1:10K <br/>D2:30K <br/>C1:20K |中国北部容器的吞吐量帐单（所有区域都可写入）  | `D1: 10K RU/sec/100 * CNY0.102 * 100 hours = CNY1,020` <br/>`D2: 30 K RU/sec/100 * CNY0.102 * 100 hours = CNY3,060` <br/>`C1: 20 K RU/sec/100 *CNY0.102 * 100 hours = CNY2,040` |6,120 元  |
+| | |2 个其他区域的吞吐量帐单：中国东部、中国北部2（所有区域均可写入）  |`(2 + 1) * (60 K RU/sec /100 * CNY0.102) * 100 hours = CNY18,360`  |18,360 元  |
+|[101-200] |D1:50K <br/>D2:70K <br/>C1: -- |中国北部容器的吞吐量帐单（所有区域都可写入）  |`D1: 50 K RU/sec/100 * CNY0.102 * 100 hours = CNY5,100` <br/>`D2: 70 K RU/sec/100 * CNY0.102 * 100 hours = CNY7,140` |12,240 元  |
+| | |2 个其他区域的吞吐量帐单：中国东部、中国北部2（所有区域均可写入）  |`(2 + 1) * (120 K RU/sec /100 * CNY0.102) * 100 hours = CNY36,720`  |36,720 元  |
+|[201-300]  |D1:50K <br/>D2:70K <br/>C1:20K |中国北部容器的吞吐量帐单（所有区域都可写入）  |`D1: 50 K RU/sec/100 * CNY0.102 * 100 hours = CNY5,100` <br/>`D2: 70 K RU/sec/100 * CNY0.102 * 100 hours = CNY7,140` <br/>`C1: 20 K RU/sec/100 *CNY0.102 * 100 hours = CNY2,040` |14,280 元  |
+| | |2 个其他区域的吞吐量帐单：中国东部、中国北部2（所有区域均可写入）  |`(2 + 1) * (140 K RU/sec /100 * CNY0.102) * 100 hours = CNY42,840` |42,840 元 |
+|[301-400] |D1:10K <br/>D2:80K <br/>C1: -- |中国北部容器的吞吐量帐单（所有区域都可写入）  |`D1: 10K RU/sec/100 * CNY0.102 * 100 hours = CNY1,020` <br/>`D2: 80 K RU/sec/100 * CNY0.102 * 100 hours = CNY8,160`  |9,180 元   |
+| | |2 个其他区域的吞吐量帐单：中国东部、中国北部2（所有区域均可写入）  |`(1 + 1) * (90 K RU/sec /100 * CNY0.102) * 100 hours = CNY18,360`  |18,360 元  |
+|[401-500] |D1:10K <br />D2:10K <br />C1:20K |中国北部容器的吞吐量帐单（所有区域都可写入）  |`D1: 10K RU/sec/100 * CNY0.102 * 100 hours = CNY1,020` <br />`D2: 10K RU/sec/100 * CNY0.102 * 100 hours = CNY1,020` <br />`C1: 20 K RU/sec/100 *CNY0.102 * 100 hours = CNY2,040` |4,080 元  |
+| | |2 个其他区域的吞吐量帐单：中国东部、中国北部2（所有区域均可写入）  |`(1 + 1) * (40 K RU/sec /100 * CNY0.102) * 100 hours = CNY8,160`  |8,160 元  |
+|[501-700] |D1:20K <br />D2:100K <br />C1: -- |中国北部容器的吞吐量帐单（所有区域都可写入）  |`D1: 20 K RU/sec/100 * CNY0.102 * 200 hours = CNY4,080` <br />`D2: 100 K RU/sec/100 * CNY0.102 * 200 hours = CNY20,400` |24,480 元  |
+| | |2 个其他区域的吞吐量帐单：中国东部、中国北部2（所有区域均可写入）  |`(1 + 1) * (120 K RU/sec /100 * CNY0.102) * 200 hours = CNY8,160`  |8,160 元  |
+|[701-744] |D1:20K <br/>D2:50K <br/>C1: -- |中国北部容器的吞吐量帐单（所有区域都可写入）  |`D1: 20 K RU/sec/100 *CNY0.102 * 44 hours = CNY896.7` <br/>`D2: 50 K RU/sec/100 *CNY0.102 * 44 hours = CNY2,244` |3,140.7 元  |
+| | |2 个其他区域的吞吐量帐单：中国东部、中国北部2（所有区域均可写入）  |`(1 + 1) * (70 K RU/sec /100 * CNY0.102) * 44 hours = CNY6,283.2‬`  |6,283.2‬ 元  |
+|| |**每月总成本** | |**212,403.9 元** |
+
+<a name="billing-examples-with-free-tier-accounts"></a>
+## <a name="billing-examples-with-free-tier-accounts"></a>免费层帐户的计费示例
+使用 Azure Cosmos DB 免费层，你将在帐户中获得前 400 RU/s 免费吞吐量和 5 GB 免费存储，并在帐户级别应用。 超过 400 RU/s 和 5 GB 的任何吞吐量和存储都将按定价页面的常规定价费率计费。 在账单上，你不会看到免费的 400 RU/s 和 5 GB 的费用或行项，而只会看到超过免费层涵盖范围的吞吐量和存储。 400 RU/s 适用于任何类型的吞吐量，包括预配吞吐量、自动缩放吞吐量和多主数据库吞吐量。  
+
+### <a name="billing-example---container-or-database-with-provisioned-throughput"></a>计费示例 - 具有预配吞吐量的容器或数据库
+- 假设我们在免费层帐户中创建一个具有 400 RU/s 吞吐量和 5 GB 存储的数据库或容器。
+- 你的帐单不会显示此资源的任何费用。 你的每小时和每月成本将为 0 元。
+- 现在，假设在同一个帐户中，我们添加了另一个具有 1000 RU/s 吞吐量和 10 GB 存储的数据库或容器。
+- 现在帐单将显示 1000 RU/s 吞吐量和 10 GB 存储的费用。 
+
+### <a name="billing-example---container-with-autoscale-throughput"></a>计费示例 - 具有自动缩放吞吐量的容器
+- 假设在免费层帐户中，我们创建一个启用自动缩放功能的容器，最大吞吐量为 4000 RU/s。 此资源将自动在 400-4000 RU/s 吞吐量之间缩放。 
+- 假设在 1-10 小时内，资源的吞吐量保持在最小值 400 RU/s。 在第 11 小时内，该资源的吞吐量扩展到 1000 RU/s，然后在一小时内回落到 400 RU/s。
+- 在第 1-10 小时内，你需要支付的吞吐量费用为 0 元，因为免费层涵盖 400 RU/s。 
+- 在第 11 小时，你需要支付 1000 RU/s - 400 RU/s = 600 RU/s 的吞吐量费用，因为这是一小时内的最大吞吐量。 该小时内的吞吐量为 6 个单位的 100 RU/s，因此总吞吐量成本为 6 个单位 * 0.123 元 = 0.738 元。 
+- 超出前 5 GB 的任何存储都将按正常存储费率计费。 
+
+### <a name="billing-example---multi-region-single-write-region-account"></a>计费示例 - 多区域单个写入区域帐户
+- 假设我们在免费层帐户中创建一个具有 1200 RU/s 吞吐量和 10 GB 存储的数据库或容器。 我们将帐户复制到 3 个区域，并且有单主数据库（单个写入区域）帐户。
+- 如果不使用免费层，我们共需要支付 3 * 1200 RU/s = 3600 RU/s 吞吐量和 3 * 10 GB = 30 GB 存储的费用。
+- 使用免费层折扣后，在扣除 400 RU/s 吞吐量和 5 GB 存储后，我们需要支付 3200 RU/s（32 个单位）的有效预配吞吐量（按单个写入区域费率计算）和 25 GB 的存储费用。
+- 每月 RU/s 成本为：32 个单位 * 0.082 元 * 24 小时 * 31 天 = 1952.3 元。 每月存储成本为：25 GB * 2.576 / GB = 64.4 元。 总成本将为 1952.3 元 + 64.4 元 = 2016.7 元。
+- 注意：如果各区域的吞吐量或存储单价不同，则免费层的 400 RU/s 吞吐量和 5 GB 存储将反映创建帐户所在区域的费率。
+
+### <a name="billing-example---multi-region-multi-master-multiple-write-region-account"></a>计费示例 - 多区域多主数据库（多写入区域）帐户
+
+此示例反映了在 2019 年 12 月 1 日之后创建的帐户的[多主数据库定价](https://www.azure.cn/pricing/details/cosmos-db/)。 
+- 假设我们在免费层帐户中创建一个具有 1200 RU/s 吞吐量和 10 GB 存储的数据库或容器。 我们将帐户复制到 3 个区域，并且有多主数据库（多写入区域）帐户。 
+- 如果不使用免费层，我们共需要支付 3 * 1200 RU/s = 3600 RU/s 吞吐量和 3 * 10 GB = 30 GB 存储的费用。
+- 使用免费层折扣后，在扣除 400 RU/s 吞吐量和 5 GB 存储后，我们需要支付 3200 RU/s（32 个单位）的有效预配吞吐量（按多个写入区域费率计算）和 25 GB 的存储费用。
+- 每月 RU/s 成本为：32 个单位 * 0.102 元 * 24 小时 * 31 天 = 2,428.5 元。 每月存储成本为：25 GB * 2.576 / GB = 64.4 元。 总成本将为 2,428.5 元 + 64.4 元 = 2,492.9 元。
+
+<!--Customize-->
 
 ## <a name="proactively-estimating-your-monthly-bill"></a>主动估算每月帐单  
 
@@ -152,7 +268,7 @@ Azure Cosmos DB 是完全托管的云原生数据库服务，仅针对预配的�
 
 月度总成本 = 月度存储成本 + 月度吞吐量成本；月度总成本 = 257.6 元 + 549.1 元 = 806.7 元
 
-区域不同定价可能有所不同。  有关最新定价，请参阅[定价页面](https://www.azure.cn/pricing/details/cosmos-db/)。
+区域不同定价可能有所不同。有关最新定价，请参阅[定价页面](https://www.azure.cn/pricing/details/cosmos-db/)。
 
 <!--Not Available on ## Billing with Azure Cosmos DB reserved capacity-->
 

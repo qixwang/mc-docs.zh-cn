@@ -10,15 +10,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/29/2020
+ms.date: 05/25/2020
 ms.author: v-junlch
 ms.reviewer: bagovind
-ms.openlocfilehash: e2333567595a9c8074d6b3a615d122547fd455c9
-ms.sourcegitcommit: e3512c5c2bbe61704d5c8cbba74efd56bfe91927
+ms.openlocfilehash: 8586e14a666263acb362215409ccb61d3aad21bf
+ms.sourcegitcommit: 7429daf26cff014b040f69cdae75bdeaea4f4e93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82272060"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83991636"
 ---
 # <a name="best-practices-for-azure-rbac"></a>Azure RBAC 最佳做法
 
@@ -28,11 +28,11 @@ ms.locfileid: "82272060"
 
 使用 Azure RBAC，可以在团队中实现职责分离，仅向用户授予他们执行作业所需的访问权限。 请勿向每个人授予 Azure 订阅或资源的无限制权限，只能允许他们在特定的范围执行某些操作。
 
-规划访问控制策略时，最佳做法是授予用户完成工作所需的最低权限。 下图显示了与 RBAC 使用有关的建议模式。
+规划访问控制策略时，最佳做法是授予用户完成工作所需的最低权限。 下图显示了与 Azure RBAC 使用有关的建议模式。
 
-![RBAC 和最小特权](./media/best-practices/rbac-least-privilege.png)
+![Azure RBAC 和最低权限](./media/best-practices/rbac-least-privilege.png)
 
-有关如何添加角色分配的信息，请参阅[添加或删除角色分配](role-assignments-portal.md)。
+有关如何添加角色分配的信息，请参阅[使用 Azure 门户添加或删除 Azure 角色分配](role-assignments-portal.md)。
 
 ## <a name="limit-the-number-of-subscription-owners"></a>限制订阅所有者的数量
 

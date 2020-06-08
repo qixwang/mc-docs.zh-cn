@@ -1,26 +1,17 @@
 ---
-title: 与 Azure Policy 集成 - Azure Batch | Microsoft Docs
-description: ''
-services: batch
-documentationcenter: ''
-author: LauraBrenner
-manager: evansma
-editor: ''
-ms.assetid: 28998df4-8693-431d-b6ad-974c2f8db5fb
-ms.service: batch
-ms.workload: big-compute
-ms.tgt_pltfrm: na
+title: 与 Azure 策略集成
+description: Azure Policy 是 Azure 中的一项服务，可用于创建、分配和管理对资源强制执行规则的策略。
 ms.topic: article
-ms.date: 02/24/2020
+ms.date: 04/28/2020
 ms.author: v-tawe
 ms.custom: seodec18
-origin.date: 04/28/2020
-ms.openlocfilehash: 381251fdd1103395595f8a20b5930a0b45b70d93
-ms.sourcegitcommit: 1fbdefdace8a1d3412900c6c3f89678d8a9b29bc
+origin.date: 02/24/2020
+ms.openlocfilehash: 16f13f08ec8c12e1e540bc7ff7c3ec78c3da4071
+ms.sourcegitcommit: cbaa1aef101f67bd094f6ad0b4be274bbc2d2537
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82886991"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84126781"
 ---
 # <a name="integration-with-azure-policy"></a>与 Azure Policy 集成
 
@@ -35,7 +26,7 @@ Azure Batch 提供了两个内置扩展，可帮助你管理策略符合性。
 
 策略定义描述了需要满足的条件。 条件将资源属性与所需的值进行比较。 使用预定义的别名访问资源属性字段。可以使用属性别名访问资源类型的特定属性。 通过别名，可限制允许用于资源属性的值和条件。 每个别名会映射到给定资源类型不同 API 版本的路径。 在策略评估期间，策略引擎会获取该 API 版本的属性路径。
 
-Batch 所需的资源包括：帐户、计算节点、池、作业和任务。 因此，你将使用属性别名来访问这些资源的特定属性。 详细了解[别名](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#aliases)。
+Batch 所需的资源包括：帐户、计算节点、池、作业和任务。 因此，你将使用属性别名来访问这些资源的特定属性。 详细了解[别名](https://docs.azure.cn/governance/policy/concepts/definition-structure#aliases)。
 
 为了确保你知道当前别名并查看你的资源和策略，请使用适用于 Visual Studio Code 的 Azure Policy 扩展。 该扩展可安装在 Visual Studio Code 支持的所有平台上。 支持的平台包括 Windows、Linux 和 macOS。 请参阅[安装准则](https://docs.azure.cn/governance/policy/how-to/extension-for-vscode)。
 

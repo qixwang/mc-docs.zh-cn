@@ -3,14 +3,14 @@ title: 如何创建适用于 Windows 的 Guest Configuration 策略
 description: 了解如何创建适用于 Windows 的 Azure Policy Guest Configuration 策略。
 ms.author: v-tawe
 origin.date: 03/20/2019
-ms.date: 04/20/2020
+ms.date: 05/29/2020
 ms.topic: how-to
-ms.openlocfilehash: dcae4ae1ffd432716630646495df98ac511e12df
-ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
+ms.openlocfilehash: dcb9009a55756ce8dde9a73169cf4576495c6e61
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82588767"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199717"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>如何创建适用于 Windows 的 Guest Configuration 策略
 
@@ -18,8 +18,8 @@ ms.locfileid: "82588767"
  
 若要了解如何创建适用于 Linux 的 Guest Configuration 策略，请参阅[如何创建适用于 Linux 的 Guest Configuration 策略](./guest-configuration-create-linux.md)页
 
-审核 Windows 时，Guest Configuration 将使用 [Desired State Configuration](https://docs.microsoft.com/powershell/scripting/dsc/overview/overview) (DSC) 资源模块和配置文件。 DSC 配置定义计算机的应有状态。
-如果配置评估失败，则会触发策略效应 auditIfNotExists，并将计算机视为不合规。  
+审核 Windows 时，Guest Configuration 使用 [Desired State Configuration](https://docs.microsoft.com/powershell/scripting/dsc/overview/overview) (DSC) 资源模块创建配置文件。 DSC 配置定义计算机的应有状态。
+如果配置评估失败，则会触发策略效应 auditIfNotExists，并将计算机视为不合规。 
 
 [Azure Policy Guest Configuration](../concepts/guest-configuration.md) 只可用于审核计算机内部的设置。 目前尚未提供修正计算机内部设置的功能。
 
@@ -27,6 +27,10 @@ ms.locfileid: "82588767"
 
 > [!IMPORTANT]
 > 使用 Guest Configuration 的自定义策略是一项预览版功能。
+>
+> 在 Azure 虚拟机中执行审核需要 Guest Configuration 扩展。
+> 若要在所有 Windows 计算机上大规模部署该扩展，请分配以下策略定义：
+>   - [部署必备组件以在 Windows VM 上启用 Guest Configuration 策略](https://portal.azure.cn/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0ecd903d-91e7-4726-83d3-a229d7f2e293)
 
 ## <a name="install-the-powershell-module"></a>安装 PowerShell 模块
 
@@ -51,7 +55,7 @@ Guest Configuration 资源模块需要以下软件：
 
 ### <a name="install-the-module"></a>安装模块
 
-若要在 PowerShell 中安装 GuestConfiguration 模块： 
+若要在 PowerShell 中安装 GuestConfiguration 模块：
 
 1. 在 PowerShell 提示符下，运行以下命令：
 
@@ -91,7 +95,7 @@ Guest Configuration 使用 PowerShell Desired State Configuration 作为语言�
 
 当计算机不合规时，服务使用 Reasons 属性来标准化信息的呈现方式。 可将 Reasons 中的每个项视为资源不合规的一个“原因”。 该属性之所以是数组，是因为资源可能出于多种原因而不合规。
 
-服务需要 **Code** 和 **Phrase** 属性。 创作自定义资源时，请将要作为资源不合规原因显示的文本（通常是 stdout）设置为 **Phrase** 的值。 Code 具有特定的格式要求，因此报告可以清楚地显示有关用于执行审核的资源的信息。  此解决方案使得 Guest Configuration 可扩展。 只要能够为 Phrase 属性返回字符串值形式的输出，就可以运行任何命令。 
+服务需要 **Code** 和 **Phrase** 属性。 创作自定义资源时，请将要作为资源不合规原因显示的文本（通常是 stdout）设置为 **Phrase** 的值。 Code 具有特定的格式要求，因此报告可以清楚地显示有关用于执行审核的资源的信息。 此解决方案使得 Guest Configuration 可扩展。 只要能够为 Phrase 属性返回字符串值形式的输出，就可以运行任何命令。
 
 - **Code**（字符串）：资源的名称，重复该名称，后接一个不包含空格的短名称（作为原因标识符）。 这三个值应以冒号分隔，且不包含空格。
   - 例如 `registry:registry:keynotpresent`
@@ -133,7 +137,7 @@ class ResourceName : OMI_BaseResource
 
 ### <a name="scaffolding-a-guest-configuration-project"></a>搭建 Guest Configuration 项目
 
-想要更快入门并参考示例代码的开发人员可以安装一个名为“Guest Configuration 项目”的社区项目。  该项目将安装 [Plaster](https://github.com/powershell/plaster) PowerShell 模块的模板。 此工具可用于搭建项目（包括工作配置和示例资源）以及一组 [Pester](https://github.com/pester/pester) 测试用于验证项目。 该模板还包含适用于 Visual Studio Code 的任务运行程序，可自动生成和验证 Guest Configuration 包。 有关详细信息，请参阅 GitHub 项目 [Guest Configuration 项目](https://github.com/microsoft/guestconfigurationproject)。
+想要更快入门并参考示例代码的开发人员可以安装一个名为“Guest Configuration 项目”的社区项目。 该项目将安装 [Plaster](https://github.com/powershell/plaster) PowerShell 模块的模板。 此工具可用于搭建项目（包括工作配置和示例资源）以及一组 [Pester](https://github.com/pester/pester) 测试用于验证项目。 该模板还包含适用于 Visual Studio Code 的任务运行程序，可自动生成和验证 Guest Configuration 包。 有关详细信息，请参阅 GitHub 项目 [Guest Configuration 项目](https://github.com/microsoft/guestconfigurationproject)。
 
 有关处理配置的一般详细信息，请参阅[编写、编译和应用配置](https://docs.microsoft.com/powershell/scripting/dsc/configurations/write-compile-apply-configuration)。
 
@@ -159,7 +163,7 @@ PowerShell cmdlet 可帮助创建包。
 
 ## <a name="step-by-step-creating-a-custom-guest-configuration-audit-policy-for-windows"></a>逐步创建适用于 Windows 的自定义 Guest Configuration 审核策略
 
-创建 DSC 配置以审核设置。 以下 PowerShell 脚本示例创建名为 AuditBitLocker 的配置，导入 PsDscResources 资源模块，然后使用 `Service` 资源来审核正在运行的服务。   可以从 Windows 或 macOS 计算机执行配置脚本。
+创建 DSC 配置以审核设置。 以下 PowerShell 脚本示例创建名为 AuditBitLocker 的配置，导入 PsDscResources 资源模块，然后使用 `Service` 资源来审核正在运行的服务。  可以从 Windows 或 macOS 计算机执行配置脚本。
 
 ```powershell
 # Define the DSC configuration and import GuestConfiguration
@@ -178,8 +182,10 @@ Configuration AuditBitLocker
 }
 
 # Compile the configuration to create the MOF files
-AuditBitLocker -out ./Config
+AuditBitLocker ./Config
 ```
+
+使用 `config.ps1` 名称将此文件保存在项目文件夹中。 通过在终端中执行 `./config.ps1`，在 PowerShell 中运行它。 随即将创建新的 mof 文件。
 
 从技术上讲，`Node AuditBitlocker` 命令不是必需的，但它会生成名为 `AuditBitlocker.mof` 的文件，而不是默认文件 `localhost.mof`。 使 .mof 文件名遵循配置可以在大规模操作时轻松组织许多文件。
 
@@ -312,9 +318,9 @@ New-GuestConfigurationPolicy `
 
 cmdlet 输出中会返回一个对象，其中包含策略文件的计划显示名称和路径。
 
-最后，使用 `Publish-GuestConfigurationPolicy` cmdlet 发布策略定义。 该 cmdlet 仅包含指向 `New-GuestConfigurationPolicy` 所创建的 JSON 文件的位置的 Path 参数。 
+最后，使用 `Publish-GuestConfigurationPolicy` cmdlet 发布策略定义。 该 cmdlet 仅包含指向 `New-GuestConfigurationPolicy` 所创建的 JSON 文件的位置的 Path 参数。
 
-若要运行 Publish 命令，需要拥有在 Azure 中创建策略的访问权限。 [Azure Policy 概述](../overview.md)页中阐述了具体的授权要求。 最佳内置角色是“资源策略参与者”。 
+若要运行 Publish 命令，需要拥有在 Azure 中创建策略的访问权限。 [Azure Policy 概述](../overview.md)页中阐述了具体的授权要求。 最佳内置角色是“资源策略参与者”。
 
 ```azurepowershell-interactive
 Publish-GuestConfigurationPolicy -Path '.\policyDefinitions'
@@ -336,7 +342,7 @@ New-GuestConfigurationPolicy `
 > [!IMPORTANT]
 > **始终**必须使用结合了 _AuditIfNotExists_ 和 _DeployIfNotExists_ 策略的计划来分配 Guest Configuration 策略。 如果仅分配 _AuditIfNotExists_ 策略，则不会部署必备组件，并且该策略始终显示“0”个服务器合规。
 
-分配包含 DeployIfNotExists 效应的策略定义需要额外的访问权限级别。  若要授予最低特权，可以创建一个用于扩展“资源策略参与者”的自定义角色定义。  以下示例创建名为“资源策略参与者 DINE”的、拥有“Microsoft.Authorization/roleAssignments/write”权限的角色。  
+分配包含 DeployIfNotExists 效应的策略定义需要额外的访问权限级别。 若要授予最低特权，可以创建一个用于扩展“资源策略参与者”的自定义角色定义。 以下示例创建名为“资源策略参与者 DINE”的、拥有“Microsoft.Authorization/roleAssignments/write”权限的角色。
 
 ```azurepowershell-interactive
 $subscriptionid = '00000000-0000-0000-0000-000000000000'
@@ -387,7 +393,7 @@ New-GuestConfigurationPolicy
 若要发布对策略的更新，需要注意两个字段。
 
 - **版本**：运行 `New-GuestConfigurationPolicy` cmdlet 时，必须指定大于当前发布版本的版本号。 该属性更新 Guest Configuration 分配版本，使代理能够识别更新的包。
-- **contentHash**：此属性由 `New-GuestConfigurationPolicy` cmdlet 自动更新。 它是 `New-GuestConfigurationPackage` 创建的包的哈希值。 对于发布的 `.zip` 文件，该属性必须正确。 如果仅更新了 contentUri 属性，扩展不会接受内容包。 
+- **contentHash**：此属性由 `New-GuestConfigurationPolicy` cmdlet 自动更新。 它是 `New-GuestConfigurationPackage` 创建的包的哈希值。 对于发布的 `.zip` 文件，该属性必须正确。 如果仅更新了 contentUri 属性，扩展不会接受内容包。
 
 发布已更新的包的最简单方法是重复本文所述的过程，并提供更新的版本号。 该过程可保证正确更新所有属性。
 

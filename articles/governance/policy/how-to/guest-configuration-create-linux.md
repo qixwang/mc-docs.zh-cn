@@ -2,15 +2,15 @@
 title: 如何创建适用于 Linux 的 Guest Configuration 策略
 description: 了解如何创建适用于 Linux 的 Azure Policy Guest Configuration 策略。
 origin.date: 03/20/2020
-ms.date: 04/20/2020
+ms.date: 05/29/2020
 ms.author: v-tawe
 ms.topic: how-to
-ms.openlocfilehash: abaf65288de87796d96e079af1009257cce4b371
-ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
+ms.openlocfilehash: 77cdcf8ae7c3a4ef3483f9d8dd6769a136732495
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82588768"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199718"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>如何创建适用于 Linux 的 Guest Configuration 策略
 
@@ -18,7 +18,7 @@ ms.locfileid: "82588768"
  
 若要了解如何创建适用于 Windows 的 Guest Configuration 策略，请参阅[如何创建适用于 Windows 的 Guest Configuration 策略](./guest-configuration-create.md)页
 
-审核 Linux 时，Guest Configuration 将使用 [Chef InSpec](https://www.inspec.io/)。 InSpec 配置文件定义计算机应该所处的状态。 如果配置评估失败，则会触发策略效应 auditIfNotExists，并将计算机视为不合规。  
+审核 Linux 时，Guest Configuration 将使用 [Chef InSpec](https://www.inspec.io/)。 InSpec 配置文件定义计算机应该所处的状态。 如果配置评估失败，则会触发策略效应 auditIfNotExists，并将计算机视为不合规。 
 
 [Azure Policy Guest Configuration](../concepts/guest-configuration.md) 只可用于审核计算机内部的设置。 目前尚未提供修正计算机内部设置的功能。
 
@@ -26,6 +26,10 @@ ms.locfileid: "82588768"
 
 > [!IMPORTANT]
 > 使用 Guest Configuration 的自定义策略是一项预览版功能。
+>
+> 在 Azure 虚拟机中执行审核需要 Guest Configuration 扩展。
+> 若要在所有 Linux 计算机上大规模部署扩展，请分配以下策略定义：
+>   - [部署必备组件以在 Linux VM 上启用 Guest Configuration 策略](https://portal.azure.cn/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffb27e9e0-526e-4ae1-89f2-a2a0bf0f8a50)
 
 ## <a name="install-the-powershell-module"></a>安装 PowerShell 模块
 
@@ -50,7 +54,7 @@ Guest Configuration 资源模块需要以下软件：
 
 ### <a name="install-the-module"></a>安装模块
 
-若要在 PowerShell 中安装 GuestConfiguration 模块： 
+若要在 PowerShell 中安装 GuestConfiguration 模块：
 
 1. 在 PowerShell 提示符下，运行以下命令：
 
@@ -103,7 +107,7 @@ end
 
 使用名称 `linux-path.rb` 将此文件保存到 `linux-path` 目录内名为 `controls` 的新文件夹中。
 
-最后，创建配置，导入 GuestConfiguration 资源模块，并使用 `ChefInSpecResource` 资源设置 InSpec 配置文件的名称。 
+最后，创建一个配置，导入“PSDesiredStateConfiguration”资源模块，并编译配置。
 
 ```powershell
 # Define the configuration and import GuestConfiguration
@@ -121,10 +125,15 @@ Configuration AuditFilePathExists
 }
 
 # Compile the configuration to create the MOF files
+import-module PSDesiredStateConfiguration
 AuditFilePathExists -out ./Config
 ```
 
+使用 `config.ps1` 名称将此文件保存在项目文件夹中。 通过在终端中执行 `./config.ps1`，在 PowerShell 中运行它。 随即将创建新的 mof 文件。
+
 从技术上讲，`Node AuditFilePathExists` 命令不是必需的，但它会生成名为 `AuditFilePathExists.mof` 的文件，而不是默认文件 `localhost.mof`。 使 .mof 文件名遵循配置可以在大规模操作时轻松组织许多文件。
+
+
 
 现在，应已获得如下所示的项目结构：
 
@@ -152,8 +161,8 @@ AuditFilePathExists -out ./Config
 ```azurepowershell
 New-GuestConfigurationPackage `
   -Name 'AuditFilePathExists' `
-  -Configuration './Config/AuditFilePathExists.mof'
-  -ChefProfilePath './'
+  -Configuration './Config/AuditFilePathExists.mof' `
+  -ChefInSpecProfilePath './'
 ```
 
 创建配置包之后、将其发布到 Azure 之前，可以从工作站或 CI/CD 环境测试该包。 GuestConfiguration cmdlet `Test-GuestConfigurationPackage` 在开发环境中包含 Azure 计算机中所用的同一代理。 使用此解决方案可以在发布到计费的云环境之前，在本地执行集成测试。
@@ -170,7 +179,7 @@ New-GuestConfigurationPackage `
 
 ```azurepowershell
 Test-GuestConfigurationPackage `
-  -Path ./AuditFilePathExists.zip
+  -Path ./AuditFilePathExists/AuditFilePathExists.zip
 ```
 
 该 cmdlet 还支持来自 PowerShell 管道的输入。 通过管道将 `New-GuestConfigurationPackage` cmdlet 的输出传送到 `Test-GuestConfigurationPackage` cmdlet。
@@ -269,9 +278,9 @@ New-GuestConfigurationPolicy `
 cmdlet 输出中会返回一个对象，其中包含策略文件的计划显示名称和路径。
 
 最后，使用 `Publish-GuestConfigurationPolicy` cmdlet 发布策略定义。
-该 cmdlet 仅包含指向 `New-GuestConfigurationPolicy` 所创建的 JSON 文件的位置的 Path 参数。 
+该 cmdlet 仅包含指向 `New-GuestConfigurationPolicy` 所创建的 JSON 文件的位置的 Path 参数。
 
-若要运行 Publish 命令，需要拥有在 Azure 中创建策略的访问权限。 [Azure Policy 概述](../overview.md)页中阐述了具体的授权要求。 最佳内置角色是“资源策略参与者”。 
+若要运行 Publish 命令，需要拥有在 Azure 中创建策略的访问权限。 [Azure Policy 概述](../overview.md)页中阐述了具体的授权要求。 最佳内置角色是“资源策略参与者”。
 
 ```azurepowershell
 Publish-GuestConfigurationPolicy `
@@ -294,7 +303,7 @@ Publish-GuestConfigurationPolicy `
 > [!IMPORTANT]
 > **始终**必须使用结合了 _AuditIfNotExists_ 和 _DeployIfNotExists_ 策略的计划来分配 Guest Configuration 策略。 如果仅分配 _AuditIfNotExists_ 策略，则不会部署必备组件，并且该策略始终显示“0”个服务器合规。
 
-分配包含 DeployIfNotExists 效应的策略定义需要额外的访问权限级别。  若要授予最低特权，可以创建一个用于扩展“资源策略参与者”的自定义角色定义。  以下示例创建名为“资源策略参与者 DINE”的、拥有“Microsoft.Authorization/roleAssignments/write”权限的角色。  
+分配包含 DeployIfNotExists 效应的策略定义需要额外的访问权限级别。 若要授予最低特权，可以创建一个用于扩展“资源策略参与者”的自定义角色定义。 以下示例创建名为“资源策略参与者 DINE”的、拥有“Microsoft.Authorization/roleAssignments/write”权限的角色。
 
 ```azurepowershell
 $subscriptionid = '00000000-0000-0000-0000-000000000000'
@@ -376,7 +385,7 @@ Configuration AuditFilePathExists
 若要发布对策略定义的更新，需要注意两个字段。
 
 - **版本**：运行 `New-GuestConfigurationPolicy` cmdlet 时，必须指定大于当前发布版本的版本号。 该属性更新 Guest Configuration 分配版本，使代理能够识别更新的包。
-- **contentHash**：此属性由 `New-GuestConfigurationPolicy` cmdlet 自动更新。 它是 `New-GuestConfigurationPackage` 创建的包的哈希值。 对于发布的 `.zip` 文件，该属性必须正确。 如果仅更新了 contentUri 属性，扩展不会接受内容包。 
+- **contentHash**：此属性由 `New-GuestConfigurationPolicy` cmdlet 自动更新。 它是 `New-GuestConfigurationPackage` 创建的包的哈希值。 对于发布的 `.zip` 文件，该属性必须正确。 如果仅更新了 contentUri 属性，扩展不会接受内容包。
 
 发布已更新的包的最简单方法是重复本文所述的过程，并提供更新的版本号。 该过程可保证正确更新所有属性。
 

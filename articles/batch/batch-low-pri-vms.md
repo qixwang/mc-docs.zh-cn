@@ -1,23 +1,18 @@
 ---
-title: 在经济高效低优先级的 VM 上运行工作负荷 - Azure Batch | Microsoft Docs
-description: 了解如何预配低优先级 VM，以降低 Azure Batch 工作负载的成本。
-services: batch
+title: 在经济高效的低优先级 VM 上运行工作负载
+description: 了解如何预配低优先级 VM，以降低 Azure Batch 工作负荷的成本。
 author: mscurrell
-manager: evansma
-ms.assetid: dc6ba151-1718-468a-b455-2da549225ab2
-ms.service: batch
 ms.topic: article
-ms.workload: na
 origin.date: 03/19/2020
 ms.date: 04/27/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: d89258ac3c886f33515c938459e9d6aef447884e
-ms.sourcegitcommit: 1fbdefdace8a1d3412900c6c3f89678d8a9b29bc
+ms.openlocfilehash: f0ead53add4be4740969e854d66c88936f8c93e2
+ms.sourcegitcommit: cbaa1aef101f67bd094f6ad0b4be274bbc2d2537
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82886899"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84126775"
 ---
 # <a name="use-low-priority-vms-with-batch"></a>将低优先级 VM 与 Batch 配合使用
 
@@ -32,7 +27,7 @@ Azure Batch 可提供低优先级虚拟机 (VM) 来降低 Batch 工作负荷的�
 
 ## <a name="use-cases-for-low-priority-vms"></a>低优先级 VM 的用例
 
-根据低优先级 VM 的特征，哪些工作负荷可以和不可以使用它们？ 一般情况下，处理工作负荷很适合使用低优先级 VM，因为作业已分解成多个并行任务，或者许多作业已横向扩展并分散在多个 VM 中。
+根据低优先级 VM 的特征，哪些工作负荷可以和不可以使用它们？ 一般情况下，批处理工作负荷很适合使用低优先级 VM，因为作业已分解成多个并行任务，或者许多作业已横向扩展并分散在多个 VM 中。
 
 -   为了最大程度地利用 Azure 中的多余容量，可以横向扩展适当的作业。
 
@@ -44,11 +39,11 @@ Azure Batch 可提供低优先级虚拟机 (VM) 来降低 Batch 工作负荷的�
 
 适合使用低优先级 VM 的批处理用例示例包括：
 
--    开发和测试：具体而言，开发大规模解决方案时可以实现极大的节省。 所有类型的测试都可以受益，但大规模负载测试和回归测试可以获得极大的好处。
+-   **开发和测试**：具体而言，开发大规模解决方案时可以实现极大的节省。 所有类型的测试都可以受益，但大规模负载测试和回归测试可以获得极大的好处。
 
--    补充按需容量：低优先级 VM 可用于补充普通的专用 VM - 如果有可用的容量，则作业可以扩展，因而能够以更低的成本、更快的速度完成；如果没有可用的容量，则仍可遵循专用 VM 的基准。
+-   **补充按需容量**：低优先级 VM 可用于补充常规的专用 VM - 如果可用，则作业可以扩展，因而能够以更低的成本、更快的速度完成；如果不可用，则仍可遵循专用 VM 的基准。
 
--    灵活的作业执行时间：如果作业必须完成的时间比较灵活，则可以容忍潜在的容量下降；但是，增加的低优先级 VM 作业往往能够以更低的成本、更快的速度运行。
+-   **灵活的作业执行时间**：如果作业必须完成的时间比较灵活，则可以容忍潜在的容量下降；但是，增加的低优先级 VM 作业往往能够以更低的成本、更快的速度运行。
 
 可以根据作业执行时间的灵活度，通过多种方式将 Batch 池配置为使用低优先级 VM。
 
@@ -125,7 +120,7 @@ int? numLowPri = pool1.CurrentLowPriorityComputeNodes;
 bool? isNodeDedicated = poolNode.IsDedicated;
 ```
 
-当池中的一个或多个节点被占用时，池上的列表节点操作仍会返回这些节点。 低优先级节点的当前数量保持不变，但这些节点会将其状态设置为“已占用”  。 Batch 会尝试查找替代 VM，如果成功，节点将依次经历“正在创建”  和“正在启动”  状态，然后才可用于执行任务，就像新的节点一样。
+当池中的一个或多个节点被占用时，池上的列表节点操作仍会返回这些节点。 低优先级节点的当前数量保持不变，但这些节点会将其状态设置为“已占用”。 Batch 会尝试查找替代 VM，如果成功，节点将依次经历“正在创建”和“正在启动”状态，然后才可用于执行任务，就像新的节点一样。
 
 ## <a name="scale-a-pool-containing-low-priority-vms"></a>缩放包含低优先级 VM 的池
 
@@ -159,13 +154,13 @@ pool.Resize(targetDedicatedComputeNodes: 0, targetLowPriorityComputeNodes: 25);
 
 VM 有时会被占用；如果发生占用情况，Batch 将执行以下操作：
 
--   将已取代的 VM 的状态更新为“已取代”。 
+-   将已取代的 VM 的状态更新为“已取代”。
 -   如果已取代的节点 VM 上有运行中的任务，这些任务将重新排队并重新运行。
 -   VM 被实际删除，导致 VM 本地存储的所有数据丢失。
--   池将不断地尝试用完低优先级节点的可用目标数量。 如果找到替代容量，节点将保留其 ID 但会被重新初始化，依次经历“正在创建”  和“正在启动”  状态，然后可供任务计划使用。
--   Azure 门户以指标形式提供取代计数。
+-   池将不断地尝试用完低优先级节点的可用目标数量。 如果找到替代容量，节点将保留其 ID 但会被重新初始化，依次经历“正在创建”和“正在启动”状态，然后可供任务计划使用。
+-   Azure 门户将以指标形式提供取代计数。
 
-## <a name="metrics"></a>度量值
+## <a name="metrics"></a>指标
 
 [Azure 门户](https://portal.azure.cn)提供了低优先级节点的新指标。 这些指标是：
 
@@ -176,8 +171,8 @@ VM 有时会被占用；如果发生占用情况，Batch 将执行以下操作�
 在 Azure 门户中查看指标：
 
 1. 在门户中导航到 Batch 帐户，查看此帐户设置。
-2. 从“监视”部分选择“指标”   。
-3. 从“可用指标”列表选择所需指标  。
+2. 从“监视”部分选择“指标” 。
+3. 从“可用指标”列表选择所需指标。
 
 ![低优先级节点的指标](media/batch-low-pri-vms/low-pri-metrics.png)
 

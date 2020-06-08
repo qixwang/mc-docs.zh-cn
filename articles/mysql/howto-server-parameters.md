@@ -5,14 +5,14 @@ author: WenJason
 ms.author: v-jay
 ms.service: mysql
 ms.topic: conceptual
-origin.date: 4/1/2020
-ms.date: 04/27/2020
-ms.openlocfilehash: 46dc974ddff4e9b97d72fc7ea5b0ca1cf42a7888
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+origin.date: 4/16/2020
+ms.date: 06/01/2020
+ms.openlocfilehash: 2bfa129000e8d2e3f0489487bca7c76d35cc8a1a
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82126831"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199564"
 ---
 # <a name="how-to-configure-server-parameters-in-azure-database-for-mysql-by-using-the-azure-portal"></a>如何使用 Azure 门户在适用于 MySQL 的 Azure 数据库中配置服务器参数
 
@@ -24,13 +24,13 @@ ms.locfileid: "82126831"
 ## <a name="navigate-to-server-parameters-on-azure-portal"></a>在 Azure 门户中导航到“服务器参数”
 
 1. 登录到 Azure 门户，然后定位到适用于 MySQL 服务器的 Azure 数据库。
-2. 在“设置”  部分下，单击“服务器参数”  ，打开 Azure Database for MySQL 服务器的“服务器参数”页。
+2. 在“设置”部分下，单击“服务器参数”，打开 Azure Database for MySQL 服务器的“服务器参数”页。
 ![Azure 门户中的服务器参数页](./media/howto-server-parameters/auzre-portal-server-parameters.png)
-3. 定位需要调整的任何设置。 查看“说明”列  ，了解用途和允许的值。
+3. 定位需要调整的任何设置。 查看“说明”列，了解用途和允许的值。
 ![枚举下拉按钮](./media/howto-server-parameters/3-toggle_parameter.png)
-4. 单击“保存”  ，保存更改。
+4. 单击“保存”，保存更改。
 ![保存或放弃更改](./media/howto-server-parameters/4-save_parameters.png)
-5. 保存参数的新值后，随时可以通过选择“全部重置为默认设置”，将所有设置还原为默认值。 
+5. 保存参数的新值后，随时可以通过选择“全部重置为默认设置”，将所有设置还原为默认值。
 ![全部重置为默认设置](./media/howto-server-parameters/5-reset_parameters.png)
 
 ## <a name="list-of-configurable-server-parameters"></a>可配置的服务器参数列表
@@ -64,7 +64,8 @@ InnoDB 缓冲池大小不可配置，并且与[定价层](concepts-service-tiers
 |基本层中的 innodb_file_per_table|OFF|
 |innodb_flush_log_at_trx_commit|1|
 |sync_binlog|1|
-|innodb_log_file_size|512MB|
+|innodb_log_file_size|256 MB|
+|innodb_log_files_in_group|2|
 
 在版本 [5.7](https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html) 和 [5.6](https://dev.mysql.com/doc/refman/5.6/en/innodb-parameters.html) 中，上表中未列出的其他服务器参数将设置为其 MySQL 现成默认值。
 
@@ -92,13 +93,13 @@ SELECT name FROM mysql.time_zone_name;
 
 ### <a name="setting-the-global-level-time-zone"></a>设置全局级时区
 
-可以从 Azure 门户中的“服务器参数”  页设置全局级时区。 下面将全局时区值设置为“美国/太平洋”。
+可以从 Azure 门户中的“服务器参数”页设置全局级时区。 下面将全局时区值设置为“美国/太平洋”。
 
 ![设置时区参数](./media/howto-server-parameters/timezone.png)
 
 ### <a name="setting-the-session-level-time-zone"></a>设置会话级时区
 
-可以通过从 MySQL 命令行或 MySQL Workbench 等工具运行 `SET time_zone` 命令来设置会话级时区。 以下示例将时区设置为“美国/太平洋”  时区。
+可以通过从 MySQL 命令行或 MySQL Workbench 等工具运行 `SET time_zone` 命令来设置会话级时区。 以下示例将时区设置为“美国/太平洋”时区。
 
 ```sql
 SET time_zone = 'US/Pacific';

@@ -1,19 +1,19 @@
 ---
 title: 适用于虚拟机和虚拟机规模集的 Azure 磁盘加密
 description: 本文概述 Azure 磁盘加密
-author: lingliw
+author: msmbaldwin
 ms.service: security
 ms.topic: article
 ms.author: v-lingwu
 origin.date: 10/15/2019
 ms.date: 03/02/2020
 ms.custom: seodec18
-ms.openlocfilehash: 6d5436ef0d8b7ce4ee652b4590678e3c83c87a6a
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 164461c7aea7d695eb05ee35a4fc8a267a4144c8
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78213793"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199507"
 ---
 # <a name="azure-disk-encryption-for-virtual-machines-and-virtual-machine-scale-sets"></a>适用于虚拟机和虚拟机规模集的 Azure 磁盘加密
 
@@ -25,9 +25,12 @@ Azure 磁盘加密可同时适用于 Linux 和 Windows 虚拟机以及虚拟机�
 
 ### <a name="current-version-of-azure-disk-encryption"></a>Azure 磁盘加密的当前版本
 
+- [Linux 虚拟机的 Azure 磁盘加密概述](../../virtual-machines/linux/disk-encryption-overview.md)
 - [Linux VM 上的 Azure 磁盘加密方案](../../virtual-machines/linux/disk-encryption-linux.md)
 - [使用 Azure CLI 创建和加密 Linux VM](../../virtual-machines/linux/disk-encryption-cli-quickstart.md)
 - [使用 Azure Powershell 创建和加密 Linux VM](../../virtual-machines/linux/disk-encryption-powershell-quickstart.md)
+- [适用于 Linux 的 Azure 磁盘加密扩展架构](../../virtual-machines/extensions/azure-disk-enc-linux.md)
+- [创建和配置用于 Azure 磁盘加密的密钥保管库](../../virtual-machines/linux/disk-encryption-key-vault.md)
 - [Azure 磁盘加密示例脚本](../../virtual-machines/linux/disk-encryption-sample-scripts.md)
 - [Azure 磁盘加密疑难解答](../../virtual-machines/linux/disk-encryption-troubleshooting.md)
 - [Azure 磁盘加密常见问题解答](../../virtual-machines/linux/disk-encryption-faq.md)
@@ -48,6 +51,8 @@ Azure 磁盘加密可同时适用于 Linux 和 Windows 虚拟机以及虚拟机�
 - [Windows VM 上的 Azure 磁盘加密方案](../../virtual-machines/windows/disk-encryption-windows.md)
 - [使用 Azure CLI 创建和加密 Windows VM](../../virtual-machines/windows/disk-encryption-cli-quickstart.md)
 - [使用 Azure PowerShell 创建和加密 Windows VM](../../virtual-machines/windows/disk-encryption-powershell-quickstart.md)
+- [适用于 Windows 的 Azure 磁盘加密扩展架构](../../virtual-machines/extensions/azure-disk-enc-windows.md)
+- [创建和配置用于 Azure 磁盘加密的密钥保管库](../../virtual-machines/windows/disk-encryption-key-vault.md)
 - [Azure 磁盘加密示例脚本](../../virtual-machines/windows/disk-encryption-sample-scripts.md)
 - [Azure 磁盘加密疑难解答](../../virtual-machines/windows/disk-encryption-troubleshooting.md)
 - [Azure 磁盘加密常见问题解答](../../virtual-machines/windows/disk-encryption-faq.md)
@@ -70,4 +75,6 @@ Azure 磁盘加密可同时适用于 Linux 和 Windows 虚拟机以及虚拟机�
 
 ## <a name="next-steps"></a>后续步骤
 
-- [数据安全与加密最佳实践](data-encryption-best-practices.md)
+- [Azure 加密概述](encryption-overview.md)
+- [静态数据加密](encryption-atrest.md)
+- [数据安全与加密最佳做法](data-encryption-best-practices.md)

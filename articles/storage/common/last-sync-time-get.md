@@ -1,22 +1,22 @@
 ---
 title: 检查存储帐户的“上次同步时间”属性
 titleSuffix: Azure Storage
-description: 了解如何检查异地复制存储帐户的“上次同步时间”  属性。 “上次同步时间”  属性表示，最近一次将主要区域中的所有写入数据成功写入到次要区域的时间。
+description: 了解如何检查异地复制存储帐户的“上次同步时间”属性。 “上次同步时间”属性表示，最近一次将主要区域中的所有写入数据成功写入到次要区域的时间。
 services: storage
 author: WenJason
 ms.service: storage
 ms.topic: how-to
-origin.date: 01/16/2019
-ms.date: 03/09/2020
+origin.date: 04/16/2020
+ms.date: 06/01/2020
 ms.author: v-jay
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 4e66b2ba71daf7c086a88b2981152e95c31849d2
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: a3662224ab8e3ace998b3a748259ee7a12bcb12c
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78412538"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199797"
 ---
 # <a name="check-the-last-sync-time-property-for-a-storage-account"></a>检查存储帐户的“上次同步时间”属性
 
@@ -24,24 +24,24 @@ ms.locfileid: "78412538"
 
 异地冗余存储 (GRS) 以异步方式将数据复制到次要区域。 若要对次要区域进行读取访问，请启用读取访问异地冗余存储 (RA-GRS)。 若要详细了解 Azure 存储提供的冗余的各种选项，请参阅 [Azure 存储冗余](storage-redundancy.md)。
 
-本文介绍了如何检查存储帐户的“上次同步时间”  属性，以便评估主要区域与次要区域之间的任何差异。
+本文介绍了如何检查存储帐户的“上次同步时间”属性，以便评估主要区域与次要区域之间的任何差异。
 
 ## <a name="about-the-last-sync-time-property"></a>关于“上次同步时间”属性
 
-因为异地复制是异步的，所以在发生中断时，已写入到主要区域的数据可能尚未写入到次要区域。 “上次同步时间”  属性表示，最近一次将主要区域中的数据成功写入到次要区域的时间。 在上次同步时间之前对主要区域所做的所有写入都可以从次要位置读取。 在上次同步时间之后对主要区域所做的写入尚不一定可供读取。
+因为异地复制是异步的，所以在发生中断时，已写入到主要区域的数据可能尚未写入到次要区域。 “上次同步时间”属性表示，最近一次将主要区域中的数据成功写入到次要区域的时间。 在上次同步时间之前对主要区域所做的所有写入都可以从次要位置读取。 在上次同步时间之后对主要区域所做的写入尚不一定可供读取。
 
-“上次同步时间”  属性是一个 GMT 日期/时间值。
+“上次同步时间”属性是一个 GMT 日期/时间值。
 
 ## <a name="get-the-last-sync-time-property"></a>获取“上次同步时间”属性
 
-可以使用 PowerShell 或 Azure CLI 检索“上次同步时间”  属性的值。
+可以使用 PowerShell 或 Azure CLI 检索“上次同步时间”属性的值。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-若要使用 PowerShell 获取存储帐户的上次同步时间，请安装可支持获取异地复制统计信息的 Azure 存储预览版模块。例如：
+若要使用 PowerShell 获取存储帐户的上次同步时间，请安装可支持获取异地复制统计信息的 Az.Storage 模块。例如：
 
 ```powershell
-Install-Module Az.Storage –Repository PSGallery -RequiredVersion 1.1.1-preview –AllowPrerelease –AllowClobber –Force
+Install-Module Az.Storage –Repository PSGallery -RequiredVersion ??? –AllowPrerelease –AllowClobber –Force
 ```
 
 然后检查存储帐户的 **GeoReplicationStats.LastSyncTime** 属性。 请务必将占位符值替换为你自己的值：
@@ -71,4 +71,4 @@ $lastSyncTime=$(az storage account show \
 
 - [Azure 存储冗余](storage-redundancy.md)
 - [更改存储帐户的冗余选项](redundancy-migration.md)
-- [使用读取访问异地冗余存储设计高度可用的应用程序](storage-designing-ha-apps-with-ragrs.md)
+- [使用异地冗余设计高度可用的应用程序](geo-redundant-design.md)

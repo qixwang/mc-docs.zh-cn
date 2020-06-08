@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 02/12/2020
+ms.date: 05/28/2020
 ms.author: v-junlch
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5b24ce4d149a63aa439c7b1c5d47fcb721fe6f0
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 6cbdba24c3f79854838eea7f2925e5742e670602
+ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77429959"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84186894"
 ---
 # <a name="review-access-to-azure-ad-roles-in-privileged-identity-management"></a>在 Privileged Identity Management 中评审对 Azure AD 角色的访问权限
 
@@ -31,25 +31,24 @@ Privileged Identity Management (PIM) 简化了企业管理以特权身份访问 
 
 ## <a name="add-a-pim-dashboard-tile"></a>添加 PIM 仪表板磁贴
 
-如果未在 Azure 门户中将 Azure AD Privileged Identity Management 固定到仪表板，请按以下步骤开始操作。
+如果未在 Azure 门户中将 Privileged Identity Management 服务固定到仪表板，请按以下步骤开始操作。
 
-1. 登录 [Azure 门户](https://portal.azure.cn/)。
-2. 选择 Azure 门户右上角的用户名，并选择要操作的目录。
-3. 选择“所有服务”  ，并使用“筛选器”文本框搜索“Azure AD Privileged Identity Management”  。
-4. 选中“固定到仪表板”  ，并单击“创建”  。 Privileged Identity Management 应用程序会打开。
+1. 登录到 [Azure 门户](https://portal.azure.cn/)。
+2. 选择 Azure 门户右上角的用户名，并选择要操作的 Azure AD 组织。
+3. 选择“所有服务”，并使用“筛选器”文本框搜索“Azure AD Privileged Identity Management”。
+4. 选中“固定到仪表板”，并单击“创建”。 Privileged Identity Management 应用程序会打开。
 
 ## <a name="approve-or-deny-access"></a>批准或拒绝访问权限
 
-批准或拒绝访问权限时，只是告诉审查人你是否仍要使用此角色。 如果想要继续充当此角色，请选择“批准”；如果不再需要此访问权限，请选择“拒绝”。   状态不会立即更改，只会在审查人应用结果之后才更改。
+批准或拒绝访问权限时，只是告诉审查人你是否仍要使用此角色。 如果想要继续充当此角色，请选择“批准”；如果不再需要此访问权限，请选择“拒绝”。  状态不会立即更改，只会在审查人应用结果之后才更改。
 请遵循以下步骤来查找并完成访问权限审查：
 
-1. 在 Privileged Identity Management 服务中，选择“审查特权访问”  。 如果有任何挂起的访问权限审查，它们会显示在 Azure AD 的“访问权限审查”页中。 
+1. 在 Privileged Identity Management 服务中，选择“审查特权访问”。 如果有任何挂起的访问权限审查，它们会显示在 Azure AD 的“访问权限审查”页中。
 2. 选择想要完成的审查。
 3. 除非该审查是由你创建的，否则你会显示为该审查中的唯一用户。 选中姓名旁边的复选标记。
-4. 选择“批准”或“拒绝”。   可能需要在“提供原因”文本框中提供做出该决定的原因。   
-5. 关闭“审查 Azure AD 角色”边栏选项卡。 
+4. 选择“批准”或“拒绝”。  可能需要在“提供原因”文本框中提供做出该决定的原因。  
+5. 关闭“审查 Azure AD 角色”边栏选项卡。
 
-<!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a name="next-steps"></a>后续步骤
 
 - [在 PIM 中对 Azure 资源角色执行访问评审](pim-resource-roles-perform-access-review.md)

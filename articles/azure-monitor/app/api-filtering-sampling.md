@@ -3,15 +3,15 @@ title: Azure Application Insights SDK 中的筛选和预处理 | Azure Docs
 description: 为 SDK 编写遥测处理器和遥测初始值设定项，以在将遥测发送到 Application Insights 门户之前筛选属性或将其添加到数据。
 ms.topic: conceptual
 origin.date: 11/23/2016
-author: lingliw
-ms.date: 11/18/2019
-ms.author: v-lingwu
-ms.openlocfilehash: fbe24df10ccfb2d7675e372b6ac455dc388baa8f
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+author: Johnnytechn
+ms.date: 05/28/2020
+ms.author: v-johya
+ms.openlocfilehash: 3c999b716fca07e780333916ed5baf0c76f9d4da
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80108508"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199643"
 ---
 # <a name="filtering-and-preprocessing-telemetry-in-the-application-insights-sdk"></a>Application Insights SDK 中的筛选和预处理遥测 | Microsoft Azure
 
@@ -24,7 +24,7 @@ ms.locfileid: "80108508"
 
 开始之前：
 
-* 为应用程序安装相应的 SDK：[ASP.NET](asp-net.md)、[ASP.NET Core](asp-net-core.md)、[用于 .NET/.NET Core 的非 HTTP/辅助角色](worker-service.md)、[Java](../../azure-monitor/app/java-get-started.md) 或 [JavaScript](javascript.md)
+* 为应用程序安装相应的 SDK：[ASP.NET](asp-net.md)、[ASP.NET Core](asp-net-core.md)、[用于 .NET/.NET Core 的非 HTTP/辅助角色](worker-service.md)或 [JavaScript](javascript.md)
 
 <a name="filtering"></a>
 
@@ -206,7 +206,7 @@ public void Process(ITelemetry item)
    ```JS
    var filteringFunction = (envelope) => {
      if (envelope.data.someField === 'tobefilteredout') {
-        return false;
+         return false;
      }
   
      return true;
@@ -310,26 +310,6 @@ protected void Application_Start()
     services.AddSingleton<ITelemetryInitializer, MyTelemetryInitializer>();
 }
 ```
-
-### <a name="java-telemetry-initializers"></a>Java 遥测初始值设定项
-
-[Java SDK 文档](https://docs.microsoft.com/java/api/com.microsoft.applicationinsights.extensibility.telemetryinitializer?view=azure-java-stable)
-
-```Java
-public interface TelemetryInitializer
-{ /** Initializes properties of the specified object. * @param telemetry The {@link com.microsoft.applicationinsights.telemetry.Telemetry} to initialize. */
-
-void initialize(Telemetry telemetry); }
-```
-
-然后在 applicationinsights.xml 文件中注册自定义初始值设定项。
-
-```xml
-<Add type="mypackage.MyConfigurableContextInitializer">
-    <Param name="some_config_property" value="some_value" />
-</Add>
-```
-
 ### <a name="javascript-telemetry-initializers"></a>JavaScript 遥测初始值设定项
 *JavaScript*
 
@@ -381,6 +361,14 @@ void initialize(Telemetry telemetry); }
 ### <a name="opencensus-python-telemetry-processors"></a>OpenCensus Python 遥测处理器
 
 OpenCensus Python 中的遥测处理器是简单的回调函数，在导出遥测之前调用这些函数来处理遥测。 回调函数必须接受[信封](https://github.com/census-instrumentation/opencensus-python/blob/master/contrib/opencensus-ext-azure/opencensus/ext/azure/common/protocol.py#L86)数据类型作为其参数。 若要筛选掉导出的遥测，请确保回调函数返回 `False`。 可在[此处](https://github.com/census-instrumentation/opencensus-python/blob/master/contrib/opencensus-ext-azure/opencensus/ext/azure/common/protocol.py)查看信封中 Azure Monitor 数据类型的架构。
+
+> [!NOTE]
+> 可以通过更改 `tags` 字段中的 `ai.cloud.role` 属性来修改 `cloud_RoleName`。
+
+```python
+def callback_function(envelope):
+    envelope.tags['ai.cloud.role'] = 'new_role_name.py'
+```
 
 ```python
 # Example for log exporter
@@ -489,7 +477,7 @@ if __name__ == "__main__":
 public void Initialize(ITelemetry item)
 {
   var itemProperties = item as ISupportProperties;
-  if(itemProperties != null && !itemProperties.ContainsKey("customProp"))
+  if(itemProperties != null && !itemProperties.Properties.ContainsKey("customProp"))
     {
         itemProperties.Properties["customProp"] = "customValue";
     }
@@ -503,9 +491,37 @@ public void Initialize(ITelemetry item)
 ```csharp
 public void Initialize(ITelemetry telemetry)
 {
-    if(string.IsNullOrEmpty(telemetry.Context.Cloud.RoleName))
+    if (string.IsNullOrEmpty(telemetry.Context.Cloud.RoleName))
     {
         telemetry.Context.Cloud.RoleName = "MyCloudRoleName";
+    }
+}
+```
+
+#### <a name="add-information-from-httpcontext"></a>从 HttpContext 添加信息
+
+下面的示例初始值设定项从 [`HttpContext`](https://docs.microsoft.com/aspnet/core/fundamentals/http-context?view=aspnetcore-3.1) 读取数据并将其附加到 `RequestTelemetry` 实例。 `IHttpContextAccessor` 是通过构造函数依赖项注入自动提供的。
+
+```csharp
+public class HttpContextRequestTelemetryInitializer : ITelemetryInitializer
+{
+    private readonly IHttpContextAccessor httpContextAccessor;
+
+    public HttpContextRequestTelemetryInitializer(IHttpContextAccessor httpContextAccessor)
+    {
+        this.httpContextAccessor =
+            httpContextAccessor ??
+            throw new ArgumentNullException(nameof(httpContextAccessor));
+    }
+
+    public void Initialize(ITelemetry telemetry)
+    {
+        var requestTelemetry = telemetry as RequestTelemetry;
+        if (requestTelemetry == null) return;
+
+        var claims = this.httpContextAccessor.HttpContext.User.Claims;
+        Claim oidClaim = claims.FirstOrDefault(claim => claim.Type == "oid");
+        requestTelemetry.Properties.Add("UserOid", oidClaim?.Value);
     }
 }
 ```
@@ -522,14 +538,17 @@ public void Initialize(ITelemetry telemetry)
 * 通过 TelemetryInitializer 使用其他属性来扩充遥测，或者重写现有的。 使用 TelemetryProcessor 筛选出遥测。
 
 ## <a name="troubleshooting-applicationinsightsconfig"></a>ApplicationInsights.config 故障排除
+
 * 确认完全限定的类型名称和程序集名称是正确的。
 * 确认 applicationinsights.config 文件在输出目录中并且包含所有最新更改。
 
 ## <a name="reference-docs"></a>参考文档
+
 * [API 概述](../../azure-monitor/app/api-custom-events-metrics.md)
 * [ASP.NET 参考](https://msdn.microsoft.com/library/dn817570.aspx)
 
 ## <a name="sdk-code"></a>SDK 代码
+
 * [ASP.NET Core SDK](https://github.com/Microsoft/ApplicationInsights-aspnetcore)
 * [ASP.NET SDK](https://github.com/Microsoft/ApplicationInsights-dotnet)
 * [JavaScript SDK](https://github.com/Microsoft/ApplicationInsights-JS)
@@ -537,7 +556,6 @@ public void Initialize(ITelemetry telemetry)
 ## <a name="next-steps"></a><a name="next"></a>后续步骤
 * [搜索事件和日志](../../azure-monitor/app/diagnostic-search.md)
 * [采样](../../azure-monitor/app/sampling.md)
-
-
-
+* [故障排除](../../azure-monitor/faq.md)
+<!-- Correct in MC: azure-monitor/faq.md -->
 

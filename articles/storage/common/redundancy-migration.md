@@ -6,21 +6,21 @@ services: storage
 author: WenJason
 ms.service: storage
 ms.topic: how-to
-origin.date: 02/10/2020
-ms.date: 03/09/2020
+origin.date: 05/05/2020
+ms.date: 06/01/2020
 ms.author: v-jay
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: e5edf050adfb8ef5b5bfaa8160e6959ff5c4b7ac
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 0f2d2c09bbbe8db1fa2883bb0e8aca5ef8346afc
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78412548"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199548"
 ---
 # <a name="change-how-a-storage-account-is-replicated"></a>更改存储帐户的复制方式
 
-Azure 存储始终会存储数据的多个副本，以防范各种计划内和计划外的事件，包括暂时性的硬件故障、网络中断或断电、大范围自然灾害等。 即使面临故障时，冗余也可确保存储帐户满足 [Azure 存储的服务级别协议 (SLA)](https://www.azure.cn/support/sla/storage/index.html) 的要求。
+Azure 存储始终会存储数据的多个副本，以防范各种计划内和计划外的事件，包括暂时性的硬件故障、网络中断或断电、大范围自然灾害等。 即使面临故障时，冗余也可确保存储帐户满足 [Azure 存储的服务级别协议 (SLA)](https://www.azure.cn/support/sla/storage/index.html)的要求。
 
 Azure 存储提供以下类型的复制：
 
@@ -48,7 +48,7 @@ Azure 存储提供以下类型的复制：
 
 更改存储帐户的复制方式不会导致应用程序停机。
 
-# <a name="portal"></a>[门户](#tab/portal)
+# <a name="portal"></a>[Portal](#tab/portal)
 
 若要在 Azure 门户中更改存储帐户的冗余选项，请执行以下步骤：
 
@@ -85,7 +85,7 @@ az storage account update \
 
 与更改数据复制方式相关的成本取决于你的转换路径。 从最便宜到最昂贵的 Azure 存储冗余产品/服务依次为 LRS、GRS 和 RA-GRS。
 
-例如，从 LRS 转移到任何其他类型的复制会产生额外的费用，因为这是转移到更高级的冗余级别。  迁移到 GRS 或 RA-GRS 会产生出口带宽费用，因为（主要区域中的）数据将复制到远程次要区域。  此费用是在初始设置期间收取的一次性费用。 复制数据后，无需进一步支付迁移费用。 有关带宽费用的详细信息，请参阅 [Azure 存储定价页面](https://azure.cn/pricing/details/storage/blobs/)。
+例如，从 LRS 转移到任何其他类型的复制会产生额外的费用，因为这是转移到更高级的冗余级别。 迁移到 GRS 或 RA-GRS 会产生出口带宽费用，因为（主要区域中的）数据将复制到远程次要区域。 此费用是在初始设置期间收取的一次性费用。 复制数据后，无需进一步支付迁移费用。 有关带宽费用的详细信息，请参阅 [Azure 存储定价页面](https://azure.cn/pricing/details/storage/blobs/)。
 
 如果将存储帐户从 GRS 迁移到 LRS，则不会产生额外的费用，但从次要位置复制的数据将被删除。
 
@@ -96,4 +96,4 @@ az storage account update \
 
 - [Azure 存储冗余](storage-redundancy.md)
 - [检查存储帐户的“上次同步时间”属性](last-sync-time-get.md)
-- [使用读取访问异地冗余存储设计高度可用的应用程序](storage-designing-ha-apps-with-ragrs.md)
+- [使用异地冗余设计高度可用的应用程序](geo-redundant-design.md)

@@ -1,5 +1,5 @@
 ---
-title: 通过 Azure 安全中心监视的 Azure Policy 定义 | Azure
+title: Azure 安全中心监视的 Azure Policy 定义
 description: 本文提供了可在 Azure 安全中心监视的 Azure Policy 定义的列表。
 services: security-center
 author: memildin
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/14/2020
 ms.author: v-tawe
 origin.date: 02/15/2020
-ms.openlocfilehash: 4e5f2c612d07d5a3ba18db49590786e237c2c406
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.openlocfilehash: db67bfa7eb2e182fa157fe24bd26b4ec9051d749
+ms.sourcegitcommit: cbaa1aef101f67bd094f6ad0b4be274bbc2d2537
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83423084"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84126649"
 ---
 # <a name="azure-security-policies-monitored-by-security-center"></a>通过安全中心监视的 Azure 安全策略
 
@@ -24,13 +24,13 @@ ms.locfileid: "83423084"
 
 若要了解通过安全中心监视的内置策略，请参阅下表：
 
-[!INCLUDE [azure-policy-samples-policies-security-center](../../includes/azure-policy-samples-policies-security-center.md)]
+[!INCLUDE [azure-policy-samples-init-asc](../../includes/policy/samples/custom/init-asc.md)]
 
 ## <a name="built-in-policy-initiatives"></a>内置策略计划
 
 若要了解通过安全中心监视的内置计划，请参阅下表：
 
-[!INCLUDE [azure-policy-samples-policyset-security-center](../../includes/azure-policy-samples-policyset-security-center.md)]
+[!INCLUDE [azure-policy-samples-policyset-security-center](../../includes/policy/samples/bycat/policysets-security-center.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

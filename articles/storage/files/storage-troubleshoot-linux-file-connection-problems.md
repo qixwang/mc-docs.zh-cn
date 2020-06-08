@@ -5,15 +5,15 @@ author: WenJason
 ms.service: storage
 ms.topic: conceptual
 origin.date: 10/16/2018
-ms.date: 02/10/2020
+ms.date: 06/01/2020
 ms.author: v-jay
 ms.subservice: files
-ms.openlocfilehash: a01ed0cc1eeb5c95c199450482082278f9a21adb
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: c4d7e4a67b62a18db26be5d81169a4e21f57741d
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79290915"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199808"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>在 Linux 中排查 Azure 文件问题
 
@@ -74,14 +74,14 @@ ms.locfileid: "79290915"
 
 ### <a name="solution-for-cause-2"></a>原因 2 的解决方案
 
-验证是否已在存储帐户上正确配置虚拟网络和防火墙规则。 若要测试虚拟网络或防火墙规则是否导致此问题，请将存储帐户上的设置临时更改为“允许来自所有网络的访问”  。 若要了解详细信息，请参阅[配置 Azure 存储防火墙和虚拟网络](/storage/common/storage-network-security)。
+验证是否已在存储帐户上正确配置虚拟网络和防火墙规则。 若要测试虚拟网络或防火墙规则是否导致此问题，请将存储帐户上的设置临时更改为“允许来自所有网络的访问”。 若要了解详细信息，请参阅[配置 Azure 存储防火墙和虚拟网络](/storage/common/storage-network-security)。
 
 <a id="permissiondenied"></a>
 ## <a name="permission-denied-disk-quota-exceeded-when-you-try-to-open-a-file"></a>尝试打开文件时“[权限被拒绝] 超出了磁盘配额”
 
 在 Linux 中，收到类似下文的错误消息：
 
-**\<文件名> [权限被拒绝] 超出磁盘配额**
+**\<filename> [permission denied] Disk quota exceeded**
 
 ### <a name="cause"></a>原因
 
@@ -142,13 +142,13 @@ ms.locfileid: "79290915"
 
 ### <a name="solution-for-cause-1"></a>原因 1 的解决方案
 
-验证是否已在存储帐户上正确配置虚拟网络和防火墙规则。 若要测试虚拟网络或防火墙规则是否导致此问题，请将存储帐户上的设置临时更改为“允许来自所有网络的访问”  。 若要了解详细信息，请参阅[配置 Azure 存储防火墙和虚拟网络](/storage/common/storage-network-security)。
+验证是否已在存储帐户上正确配置虚拟网络和防火墙规则。 若要测试虚拟网络或防火墙规则是否导致此问题，请将存储帐户上的设置临时更改为“允许来自所有网络的访问”。 若要了解详细信息，请参阅[配置 Azure 存储防火墙和虚拟网络](/storage/common/storage-network-security)。
 
 ### <a name="cause-2-your-user-account-does-not-have-access-to-the-storage-account"></a>原因 2：你的用户帐户无权访问该存储帐户
 
 ### <a name="solution-for-cause-2"></a>原因 2 的解决方案
 
-浏览到Azure文件共享所在的存储帐户，单击“访问控制(IAM)”，确保你的用户帐户有权访问该存储帐户  。 若要了解详细信息，请参阅[如何使用基于角色的访问控制 (RBAC) 来保护存储帐户](/storage/blobs/security-recommendations#data-protection)。
+浏览到Azure文件共享所在的存储帐户，单击“访问控制(IAM)”，确保你的用户帐户有权访问该存储帐户。 若要了解详细信息，请参阅[如何使用基于角色的访问控制 (RBAC) 来保护存储帐户](/storage/blobs/security-recommendations#data-protection)。
 
 <a id="open-handles"></a>
 ## <a name="unable-to-delete-a-file-or-directory-in-an-azure-file-share"></a>无法删除 Azure 文件共享中的文件或目录
@@ -184,13 +184,13 @@ ms.locfileid: "79290915"
 
 `//azureuser.file.core.chinacloudapi.cn/cifs /cifs cifs vers=2.1,serverino,username=xxx,password=xxx,dir_mode=0777,file_mode=0777`
 
-还可以通过运行 sudo mount | grep cifs 命令并检查其输出，检查所用的选项是否正确  。 下面是示例输出：
+还可以通过运行 sudo mount | grep cifs 命令并检查其输出，检查所用的选项是否正确。 下面是示例输出：
 
 ```
 //azureuser.file.core.chinacloudapi.cn/cifs on /cifs type cifs (rw,relatime,vers=2.1,sec=ntlmssp,cache=strict,username=xxx,domain=X,uid=0,noforceuid,gid=0,noforcegid,addr=192.168.10.1,file_mode=0777, dir_mode=0777,persistenthandles,nounix,serverino,mapposix,rsize=1048576,wsize=1048576,actimeo=1)
 ```
 
-如果不存在 cache=strict 或 serverino 选项，请通过运行[文档](../storage-how-to-use-files-linux.md)中的装载命令卸载并再次装载 Azure 文件   。 然后，重新检查 **/etc/fstab** 条目是否具有正确的选项。
+如果不存在 cache=strict 或 serverino 选项，请通过运行[文档](../storage-how-to-use-files-linux.md)中的装载命令卸载并再次装载 Azure 文件 。 然后，重新检查 **/etc/fstab** 条目是否具有正确的选项。
 
 ### <a name="cause-2-throttling"></a>原因 2：限制
 
@@ -203,7 +203,7 @@ ms.locfileid: "79290915"
 <a id="timestampslost"></a>
 ## <a name="time-stamps-were-lost-in-copying-files-from-windows-to-linux"></a>将文件从 Windows 复制到 Linux 时，时间戳丢失
 
-在 Linux/Unix 平台上，如果文件 1 和文件 2 由不同的用户拥有，则 cp-p 命令将失败  。
+在 Linux/Unix 平台上，如果文件 1 和文件 2 由不同的用户拥有，则 cp-p 命令将失败。
 
 ### <a name="cause"></a>原因
 
@@ -288,6 +288,14 @@ Linux 内核中的此重新连接问题现已在以下更改中进行了修复�
 可以通过指定硬装载来解决此问题。 在连接建立或连接明确中断前，硬装载强制客户端等待。 可以借此防止由于网络超时而导致的错误。 但是，此解决方法可能会导致无限期等待。 请准备好根据需要停止连接。
 
 如果无法升级到最新的内核版本，可通过将每隔 30 秒或更少的时间间隔便会对其进行写入操作的文件保留在 Azure 文件共享中来解决此问题。 这必须是一个写入操作，例如在文件上重新写入创建或修改日期。 否则，可能会得到缓存的结果，且操作可能不会触发重新连接。
+
+## <a name="cifs-vfs-error--22-on-ioctl-to-get-interface-list-when-you-mount-an-azure-file-share-by-using-smb-30"></a>使用 SMB 3.0 装载 Azure 文件共享时，收到错误：“CIFS VFS: 用于获取接口列表的 ioctl 上发生错误 -22”
+
+### <a name="cause"></a>原因
+记录此错误的原因是 Azure 文件存储[当前不支持 SMB 多通道](https://docs.microsoft.com/rest/api/storageservices/features-not-supported-by-the-azure-file-service)。
+
+### <a name="solution"></a>解决方案
+可以忽略此错误。
 
 ## <a name="need-help-contact-support"></a>需要帮助？ 请联系支持人员。
 

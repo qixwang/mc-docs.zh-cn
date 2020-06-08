@@ -5,16 +5,16 @@ services: storage
 author: WenJason
 ms.author: v-jay
 origin.date: 08/20/2019
-ms.date: 10/28/2019
+ms.date: 06/01/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
-ms.openlocfilehash: d0ef62a007f633e03910a13f2a94a8d31a542cb9
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 61f0f82545c57262834c519ca40ee131c696f5a0
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "72914628"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199755"
 ---
 # <a name="copy-a-blob-with-net"></a>使用 .NET 复制 Blob
 

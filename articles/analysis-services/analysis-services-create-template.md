@@ -9,12 +9,12 @@ origin.date: 04/14/2020
 ms.date: 05/06/2020
 ms.author: v-yeche
 ms.custom: subject-armqs
-ms.openlocfilehash: 8cbb84e30fc3ed232dcdc20bce60091f2e2cc9d6
-ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
+ms.openlocfilehash: 5a295a823625059ac2e44cf4f2d1725bfdd539ce
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "83002208"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199392"
 ---
 <!--Verified successfully-->
 # <a name="quickstart-create-a-server---azure-resource-manager-template"></a>快速入门：创建服务器 - Azure 资源管理器模板
@@ -129,13 +129,13 @@ ms.locfileid: "83002208"
     除非另行指定，否则请使用默认值。
 
     * **订阅**：选择 Azure 订阅。
-    * **资源组**：单击“新建”  ，然后为新资源组输入唯一名称。
+    * **资源组**：单击“新建”，然后为新资源组输入唯一名称。
     * **位置**：为在资源组中创建的资源选择一个默认位置。
     * **服务器名称**：为服务器资源输入一个名称。 
     * **位置**：对于 Analysis Services，请忽略此项。 位置在“服务器位置”中指定。
-    * **服务器位置**：输入 Analysis Services 服务器的位置。 这通常是为资源组指定的默认位置所在的区域，但不是必需的。 例如，“中国北部”  。 有关支持的区域，请参阅 [Analysis Services 可用性（按区域）](analysis-services-overview.md#availability-by-region)。
-    * **Sku 名称**：输入要创建的 Analysis Services 服务器的 Sku 名称。 从下列项中进行选择：B1、B2、S0、S1、S2、S3、S4、S8v2、S9v2。 Sku 可用性取决于区域。 对于评估和测试，建议使用 S0 或 D1。
-        
+    * **服务器位置**：输入 Analysis Services 服务器的位置。 这通常是为资源组指定的默认位置所在的区域，但不是必需的。 例如，“中国北部”。 有关支持的区域，请参阅 [Analysis Services 可用性（按区域）](analysis-services-overview.md#availability-by-region)。
+    * **Sku 名称**：输入要创建的 Analysis Services 服务器的 Sku 名称。 从下列项中进行选择：B1、B2、S0、S1、S2、S3、S4、S8v2、S9v2。 Sku 可用性取决于区域。 对于评估和测试，建议使用 S0。
+        <!--Not Available on or D1 -->
         <!--Not Available on D1 sku-->
         
     * **容量**：输入查询副本横向扩展实例的总数。 只有一些特选区域支持横向扩展多个实例。
@@ -143,7 +143,7 @@ ms.locfileid: "83002208"
     * **备份 Blob 容器 URI**：输入具有读取、写入和列出权限的专用 Azure Blob 存储容器的 SAS URI。 只有在打算使用[备份/还原](analysis-services-backup.md)的情况下，此项才是必需项。
     * **我同意上述条款和条件**：选中。
 
-3. 选择“购买”。  成功部署服务器后，你会收到通知：
+3. 选择“购买”。 成功部署服务器后，你会收到通知：
 
     ![资源管理器模板，部署门户通知](./media/analysis-services-create-template/notification.png)
 
@@ -181,6 +181,8 @@ $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
 Remove-AzResourceGroup -Name $resourceGroupName
 Write-Host "Press [ENTER] to continue..."
 ```
+
+---
 
 ## <a name="next-steps"></a>后续步骤
 

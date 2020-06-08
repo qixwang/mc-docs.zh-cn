@@ -1,6 +1,6 @@
 ---
-title: 适用于 Azure RBAC 的 Azure 内置角色
-description: 本文介绍适用于 Azure 基于角色的访问控制 (RBAC) 的 Azure 内置角色。 其中列出了 Actions、NotActions、DataActions 和 NotDataActions。
+title: Azure 内置角色 - Azure RBAC
+description: 本文介绍适用于 Azure 基于角色的访问控制 (Azure RBAC) 的 Azure 内置角色。 其中列出了 Actions、NotActions、DataActions 和 NotDataActions。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -11,26 +11,26 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 04/29/2020
+ms.date: 05/25/2020
 ms.author: v-junlch
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: f1a25bd5144a4f837d4c30354e44945332dee96a
-ms.sourcegitcommit: e3512c5c2bbe61704d5c8cbba74efd56bfe91927
+ms.openlocfilehash: 223aae3a49c7062371d123312a4d0b1c8f9aaf9c
+ms.sourcegitcommit: 7429daf26cff014b040f69cdae75bdeaea4f4e93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82267631"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83991634"
 ---
 # <a name="azure-built-in-roles"></a>Azure 内置角色
 
-[Azure 基于角色的访问控制 (RBAC)](overview.md) 有多个 Azure 内置角色，可将其分配给用户、组、服务主体和托管标识。 角色分配是控制对 Azure 资源的访问的方式。 如果内置角色不能满足组织的具体需求，则可创建自己的 [Azure 自定义角色](custom-roles.md)。
+[Azure 基于角色的访问控制 (Azure RBAC)](overview.md) 拥有多个 Azure 内置角色，可将其分配给用户、组、服务主体和托管标识。 角色分配是控制对 Azure 资源的访问的方式。 如果内置角色不能满足组织的具体需求，则可创建自己的 [Azure 自定义角色](custom-roles.md)。
 
-本文列出了 Azure 资源的内置角色，这些角色总是在不断发展。 若要获取最新角色，请使用 [Get-AzRoleDefinition](https://docs.microsoft.com/powershell/module/az.resources/get-azroledefinition) 或 [az role definition list](/cli/role/definition#az-role-definition-list)。 如果你正在查找 Azure Active Directory (Azure AD) 的管理员角色，请参阅 [Azure Active Directory 中的管理员角色权限](../active-directory/users-groups-roles/directory-assign-admin-roles.md)。
+本文列出了 Azure 内置角色，这些角色总是在不断发展。 若要获取最新角色，请使用 [Get-AzRoleDefinition](https://docs.microsoft.com/powershell/module/az.resources/get-azroledefinition) 或 [az role definition list](/cli/role/definition#az-role-definition-list)。 如果你正在查找 Azure Active Directory (Azure AD) 的管理员角色，请参阅 [Azure Active Directory 中的管理员角色权限](../active-directory/users-groups-roles/directory-assign-admin-roles.md)。
 
 ## <a name="all"></a>全部
 
-下表提供了每个内置角色的简短说明和唯一 ID。 选择角色名称可查看每个角色的 `Actions`、`NotActions`、`DataActions` 和 `NotDataActions` 列表。 有关这些操作的含义以及它们如何应用于管理和数据平面的信息，请参阅[了解 Azure 资源的角色定义](role-definitions.md)。
+下表提供了每个内置角色的简短说明和唯一 ID。 选择角色名称可查看每个角色的 `Actions`、`NotActions`、`DataActions` 和 `NotDataActions` 列表。 有关这些操作的含义以及它们如何应用于管理和数据平面的信息，请参阅[了解 Azure 角色定义](role-definitions.md)。
 
 
 > [!div class="mx-tableFixed"]
@@ -81,7 +81,7 @@ ms.locfileid: "82267631"
 > | [存储队列数据消息发送者](#storage-queue-data-message-sender) | 向 Azure 存储队列添加消息。 若要了解需要对给定的数据执行哪些操作，请参阅[用于调用 Blob 和队列数据操作的权限](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 | c6a89b2d-59bc-44d0-9896-0f6e12d7b80a |
 > | [存储队列数据读取者](#storage-queue-data-reader) | 读取和列出 Azure 存储队列与队列消息。 若要了解需要对给定的数据执行哪些操作，请参阅[用于调用 Blob 和队列数据操作的权限](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 | 19e7f393-937e-4f77-808e-94535e297925 |
 > | **Web** |  |  |
-> | [Azure Maps 数据读取器（预览）](#azure-maps-data-reader-preview) | 授予从 Azure Maps 帐户中读取相关数据的权限。 | 423170ca-a8f6-4b0f-8487-9e4eb8f49bfa |
+> | [Azure Maps 数据读取器](#azure-maps-data-reader) | 授予从 Azure Maps 帐户中读取相关数据的权限。 | 423170ca-a8f6-4b0f-8487-9e4eb8f49bfa |
 > | [搜索服务参与者](#search-service-contributor) | 允许管理搜索服务，但不允许访问这些服务。 | 7ca78c08-252a-4471-8644-bb5ff32d4ba0 |
 > | [Web 计划参与者](#web-plan-contributor) | 允许管理网站的 Web 计划，但不允许访问这些计划。 | 2cc479cb-7b4d-49a8-b449-8c00fd0f0a4b |
 > | [网站参与者](#website-contributor) | 允许管理网站（而非 Web 计划），但不允许访问这些网站。 | de139f84-1756-47ae-9be6-808fbbe84772 |
@@ -114,13 +114,13 @@ ms.locfileid: "82267631"
 > | [HDInsight 域服务参与者](#hdinsight-domain-services-contributor) | 可以读取、创建、修改和删除 HDInsight 企业安全性套餐所需的域服务相关操作 | 8d8d5a11-05d3-4bda-a417-a08778121c7c |
 > | [Log Analytics 参与者](#log-analytics-contributor) | Log Analytics 参与者可以读取所有监视数据并编辑监视设置。 编辑监视设置包括向 VM 添加 VM 扩展、读取存储帐户密钥以便能够从 Azure 存储配置日志收集、创建和配置自动化帐户、添加解决方案以及配置所有 Azure 资源上的 Azure 诊断。 | 92aaf0da-9dab-42b6-94a3-d43ce8d16293 |
 > | [Log Analytics 读者](#log-analytics-reader) | Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置，其中包括查看所有 Azure 资源上的 Azure 诊断的配置。 | 73c42c96-874c-492b-b04d-ab87d138a893 |
-> |  区块链 |  |  |
+> | 区块链 |  |  |
 > | [区块链成员节点访问（预览）](#blockchain-member-node-access-preview) | 允许访问区块链成员节点 | 31a002a1-acaf-453e-8a5b-297c9ca1ea24 |
-> |  AI + 机器学习 |  |  |
+> | AI + 机器学习 |  |  |
 > | [认知服务参与者](#cognitive-services-contributor) | 允许创建、读取、更新、删除和管理认知服务的密钥。 | 25fbc0a9-bd7c-42a3-aa1a-3b75d497ee68 |
 > | [认知服务数据读者（预览）](#cognitive-services-data-reader-preview) | 可以读取认知服务数据。 | b59867f0-fa02-499b-be73-45a86b5b3e1c |
 > | [认知服务用户](#cognitive-services-user) | 允许读取和列出认知服务的密钥。 | a97b65f3-24c7-4388-baec-2e87135dc908 |
-> |  混合现实 |  |  |
+> | 混合现实 |  |  |
 > | [空间定位点帐户参与者](#spatial-anchors-account-contributor) | 允许管理帐户中的空间定位点，但不能删除它们 | 8bbe83f1-e2a6-4df7-8cb4-4e04d4e5c827 |
 > | [空间定位点帐户所有者](#spatial-anchors-account-owner) | 允许管理帐户中的空间定位点，包括删除它们 | 70bbe301-9835-447d-afdd-19eb3167307c |
 > | [空间定位点帐户读取者](#spatial-anchors-account-reader) | 允许在帐户中查找和读取空间定位点的属性 | 5d51204f-eb77-4b1c-b86a-2ec626c49413 |
@@ -147,22 +147,22 @@ ms.locfileid: "82267631"
 > | [Azure Sentinel 读取者](#azure-sentinel-reader) | Azure Sentinel 读取者 | 8d289c81-5878-46d4-8554-54e1e3d8b5cb |
 > | [Azure Sentinel 响应方](#azure-sentinel-responder) | Azure Sentinel 响应方 | 3e150937-b8fe-4cfb-8069-0eaf05ecd056 |
 > | [密钥保管库参与者](#key-vault-contributor) | 允许管理密钥保管库，但不允许对其进行访问。 | f25e0fa2-a7c8-4377-a976-54943a77a395 |
-> | [安全管理员](#security-admin) | 可以查看安全策略、查看安全状态、编辑安全策略、查看警报和建议、关闭警报和建议。 | fb1c8493-542b-48eb-b624-b4c8fea62acd |
+> | [安全管理员](#security-admin) | 查看和更新安全中心的权限。 与安全读取者角色具有相同的权限，还可以更新安全策略并关闭警报和建议。 | fb1c8493-542b-48eb-b624-b4c8fea62acd |
 > | [安全评估参与者](#security-assessment-contributor) | 允许你将评估推送到安全中心 | 612c2aa1-cb24-443b-ac28-3ab7272de6f5 |
 > | [安全管理器（旧版）](#security-manager-legacy) | 这是旧角色。 请改用安全管理员。 | e3d13bf0-dd5a-482e-ba6b-9b8433878d10 |
-> | [安全读取者](#security-reader) | 可以查看建议和警报、查看安全策略、查看安全状态，但不能进行更改。 | 39bc4728-0917-49c7-9d2c-d95423bc2eb4 |
+> | [安全读取者](#security-reader) | 查看安全中心的权限。 可以查看但不能更改建议、警报、安全策略和安全状态。 | 39bc4728-0917-49c7-9d2c-d95423bc2eb4 |
 > | **DevOps** |  |  |
 > | [DevTest 实验室用户](#devtest-labs-user) | 允许连接、启动、重启和关闭 Azure 开发测试实验室中的虚拟机。 | 76283e04-6283-4c54-8f91-bcf1374a3c64 |
 > | [实验室创建者](#lab-creator) | 允许在 Azure 实验室帐户下创建、管理、删除托管实验室。 | b97fb8bc-a8b2-4522-a38b-dd33c7e65ead |
 > | **监视** |  |  |
 > | [Application Insights 组件参与者](#application-insights-component-contributor) | 可管理 Application Insights 组件 | ae349356-3a1b-4a5e-921d-050484c6347e |
-> | [Application Insights 快照调试器](#application-insights-snapshot-debugger) | 授予用户查看和下载使用 Application Insights Snapshot Debugger 收集的调试快照的权限。 请注意，[所有者](#owner)或[参与者](#contributor)角色不包括这些权限。 | 08954f03-6346-4c2e-81c0-ec3a5cfae23b |
+> | [Application Insights 快照调试器](#application-insights-snapshot-debugger) | 授予用户查看和下载使用 Application Insights Snapshot Debugger 收集的调试快照的权限。 请注意，[所有者](#owner)或[参与者](#contributor)角色不包括这些权限。 在向用户授予 Application Insights Snapshot Debugger 角色时，必须将该角色直接授予用户。 将角色添加到自定义角色时，无法识别该角色。 | 08954f03-6346-4c2e-81c0-ec3a5cfae23b |
 > | [监视参与者](#monitoring-contributor) | 可以读取所有监视数据和编辑监视设置。 另请参阅 [Azure Monitor 的角色、权限和安全入门](/azure-monitor/platform/roles-permissions-security#built-in-monitoring-roles)。 | 749f88d5-cbae-40b8-bcfc-e573ddc772fa |
 > | [监视指标发布者](#monitoring-metrics-publisher) | 允许针对 Azure 资源发布指标 | 3913510d-42f4-4e42-8a64-420c390055eb |
 > | [监视读取者](#monitoring-reader) | 可以读取所有监视数据（指标、日志等）。 另请参阅 [Azure Monitor 的角色、权限和安全入门](/azure-monitor/platform/roles-permissions-security#built-in-monitoring-roles)。 | 43d0d8ad-25c7-4714-9337-8ba259a9fe05 |
 > | [工作簿参与者](#workbook-contributor) | 可以保存共享的工作簿。 | e8ddcd69-c73f-4f9f-9844-4100522f16ad |
 > | [工作簿读者](#workbook-reader) | 可以读取工作簿。 | b279062a-9be3-42a0-92ae-8b3cf002ec4d |
-> |  管理 + 治理 |  |  |
+> | 管理 + 治理 |  |  |
 > | [自动化作业操作员](#automation-job-operator) | 使用自动化 Runbook 创建和管理作业。 | 4fe576fe-1146-4730-92eb-48519fa6bf9f |
 > | [自动化运算符](#automation-operator) | 自动化操作员能够启动、停止、暂停和恢复作业 | d3881f73-407a-4167-8283-e981cbba0404 |
 > | [自动化 Runbook 操作员](#automation-runbook-operator) | 读取 Runbook 属性 - 以能够创建 runbook 的作业。 | 5fb5aef8-1081-4b8e-bb16-9d5d0385bab5 |
@@ -335,7 +335,7 @@ ms.locfileid: "82267631"
 > | **操作** |  |
 > | */read | 读取除密码外的所有类型的资源。 |
 > | Microsoft.Authorization/* | 管理授权 |
-> | Microsoft.Support/* | 创建和管理支持票证 |
+> | Microsoft.Support/* | 创建和更新支持票证 |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
@@ -392,11 +392,11 @@ ms.locfileid: "82267631"
 > | Microsoft.ClassicStorage/storageAccounts/images/read | 返回存储帐户映像。 （已弃用。 请使用“Microsoft.ClassicStorage/storageAccounts/vmImages”） |
 > | Microsoft.ClassicStorage/storageAccounts/listKeys/action | 列出存储帐户的访问密钥。 |
 > | Microsoft.ClassicStorage/storageAccounts/read | 返回包含给定帐户的存储帐户。 |
-> | Microsoft.Insights/alertRules/* | 创建和管理 Insights 警报规则 |
+> | Microsoft.Insights/alertRules/* | 创建和管理经典指标警报 |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 获取指定范围内所有资源的可用性状态 |
-> | Microsoft.Resources/deployments/* | 创建和管理资源组部署 |
+> | Microsoft.Resources/deployments/* | 创建和管理部署 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
-> | Microsoft.Support/* | 创建和管理支持票证 |
+> | Microsoft.Support/* | 创建和更新支持票证 |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
@@ -513,7 +513,7 @@ ms.locfileid: "82267631"
 > | Microsoft.Compute/disks/read | 获取磁盘的属性 |
 > | Microsoft.Compute/disks/delete | 删除磁盘 |
 > | Microsoft.DevTestLab/schedules/* |  |
-> | Microsoft.Insights/alertRules/* | 创建和管理 Insights 警报规则 |
+> | Microsoft.Insights/alertRules/* | 创建和管理经典指标警报 |
 > | Microsoft.Network/applicationGateways/backendAddressPools/join/action | 加入应用程序网关后端地址池。 不可发出警报。 |
 > | Microsoft.Network/loadBalancers/backendAddressPools/join/action | 加入负载均衡器后端地址池。 不可发出警报。 |
 > | Microsoft.Network/loadBalancers/inboundNatPools/join/action | 加入负载均衡器入站 NAT 池。 不可发出警报。 |
@@ -539,12 +539,12 @@ ms.locfileid: "82267631"
 > | Microsoft.RecoveryServices/Vaults/usages/read | 返回恢复服务保管库的使用情况详细信息。 |
 > | Microsoft.RecoveryServices/Vaults/write | “创建保管库”操作创建“vault”类型的 Azure 资源 |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 获取指定范围内所有资源的可用性状态 |
-> | Microsoft.Resources/deployments/* | 创建和管理资源组部署 |
+> | Microsoft.Resources/deployments/* | 创建和管理部署 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
 > | Microsoft.SqlVirtualMachine/* |  |
 > | Microsoft.Storage/storageAccounts/listKeys/action | 返回指定存储帐户的访问密钥。 |
 > | Microsoft.Storage/storageAccounts/read | 返回存储帐户的列表，或获取指定存储帐户的属性。 |
-> | Microsoft.Support/* | 创建和管理支持票证 |
+> | Microsoft.Support/* | 创建和更新支持票证 |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
@@ -681,10 +681,10 @@ ms.locfileid: "82267631"
 > | Microsoft.Cdn/edgenodes/read |  |
 > | Microsoft.Cdn/operationresults/* |  |
 > | Microsoft.Cdn/profiles/endpoints/* |  |
-> | Microsoft.Insights/alertRules/* | 创建和管理 Insights 警报规则 |
-> | Microsoft.Resources/deployments/* | 创建和管理资源组部署 |
+> | Microsoft.Insights/alertRules/* | 创建和管理经典指标警报 |
+> | Microsoft.Resources/deployments/* | 创建和管理部署 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
-> | Microsoft.Support/* | 创建和管理支持票证 |
+> | Microsoft.Support/* | 创建和更新支持票证 |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
@@ -735,10 +735,10 @@ ms.locfileid: "82267631"
 > | Microsoft.Cdn/edgenodes/read |  |
 > | Microsoft.Cdn/operationresults/* |  |
 > | Microsoft.Cdn/profiles/endpoints/*/read |  |
-> | Microsoft.Insights/alertRules/* | 创建和管理 Insights 警报规则 |
-> | Microsoft.Resources/deployments/* | 创建和管理资源组部署 |
+> | Microsoft.Insights/alertRules/* | 创建和管理经典指标警报 |
+> | Microsoft.Resources/deployments/* | 创建和管理部署 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
-> | Microsoft.Support/* | 创建和管理支持票证 |
+> | Microsoft.Support/* | 创建和更新支持票证 |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
@@ -789,10 +789,10 @@ ms.locfileid: "82267631"
 > | Microsoft.Cdn/edgenodes/read |  |
 > | Microsoft.Cdn/operationresults/* |  |
 > | Microsoft.Cdn/profiles/* |  |
-> | Microsoft.Insights/alertRules/* | 创建和管理 Insights 警报规则 |
-> | Microsoft.Resources/deployments/* | 创建和管理资源组部署 |
+> | Microsoft.Insights/alertRules/* | 创建和管理经典指标警报 |
+> | Microsoft.Resources/deployments/* | 创建和管理部署 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
-> | Microsoft.Support/* | 创建和管理支持票证 |
+> | Microsoft.Support/* | 创建和更新支持票证 |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
@@ -843,10 +843,10 @@ ms.locfileid: "82267631"
 > | Microsoft.Cdn/edgenodes/read |  |
 > | Microsoft.Cdn/operationresults/* |  |
 > | Microsoft.Cdn/profiles/*/read |  |
-> | Microsoft.Insights/alertRules/* | 创建和管理 Insights 警报规则 |
-> | Microsoft.Resources/deployments/* | 创建和管理资源组部署 |
+> | Microsoft.Insights/alertRules/* | 创建和管理经典指标警报 |
+> | Microsoft.Resources/deployments/* | 创建和管理部署 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
-> | Microsoft.Support/* | 创建和管理支持票证 |
+> | Microsoft.Support/* | 创建和更新支持票证 |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
@@ -895,11 +895,11 @@ ms.locfileid: "82267631"
 > | **操作** |  |
 > | Microsoft.Authorization/*/read | 读取角色和角色分配 |
 > | Microsoft.ClassicNetwork/* | 创建和管理经典网络 |
-> | Microsoft.Insights/alertRules/* | 创建和管理 Insights 警报规则 |
+> | Microsoft.Insights/alertRules/* | 创建和管理经典指标警报 |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 获取指定范围内所有资源的可用性状态 |
-> | Microsoft.Resources/deployments/* | 创建和管理资源组部署 |
+> | Microsoft.Resources/deployments/* | 创建和管理部署 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
-> | Microsoft.Support/* | 创建和管理支持票证 |
+> | Microsoft.Support/* | 创建和更新支持票证 |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
@@ -946,12 +946,12 @@ ms.locfileid: "82267631"
 > | --- | --- |
 > | **操作** |  |
 > | Microsoft.Authorization/*/read | 读取角色和角色分配 |
-> | Microsoft.Insights/alertRules/* | 创建和管理 Insights 警报规则 |
+> | Microsoft.Insights/alertRules/* | 创建和管理经典指标警报 |
 > | Microsoft.Network/dnsZones/* | 创建和管理 DNS 区域和记录 |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 获取指定范围内所有资源的可用性状态 |
-> | Microsoft.Resources/deployments/* | 创建和管理资源组部署 |
+> | Microsoft.Resources/deployments/* | 创建和管理部署 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
-> | Microsoft.Support/* | 创建和管理支持票证 |
+> | Microsoft.Support/* | 创建和更新支持票证 |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
@@ -998,12 +998,12 @@ ms.locfileid: "82267631"
 > | --- | --- |
 > | **操作** |  |
 > | Microsoft.Authorization/*/read | 读取角色和角色分配 |
-> | Microsoft.Insights/alertRules/* | 创建和管理 Insights 警报规则 |
+> | Microsoft.Insights/alertRules/* | 创建和管理经典指标警报 |
 > | Microsoft.Network/* | 创建并管理网络 |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 获取指定范围内所有资源的可用性状态 |
-> | Microsoft.Resources/deployments/* | 创建和管理资源组部署 |
+> | Microsoft.Resources/deployments/* | 创建和管理部署 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
-> | Microsoft.Support/* | 创建和管理支持票证 |
+> | Microsoft.Support/* | 创建和更新支持票证 |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
@@ -1050,12 +1050,12 @@ ms.locfileid: "82267631"
 > | --- | --- |
 > | **操作** |  |
 > | Microsoft.Authorization/*/read | 读取角色和角色分配 |
-> | Microsoft.Insights/alertRules/* | 创建和管理 Insights 警报规则 |
+> | Microsoft.Insights/alertRules/* | 创建和管理经典指标警报 |
 > | Microsoft.Network/trafficManagerProfiles/* |  |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 获取指定范围内所有资源的可用性状态 |
-> | Microsoft.Resources/deployments/* | 创建和管理资源组部署 |
+> | Microsoft.Resources/deployments/* | 创建和管理部署 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
-> | Microsoft.Support/* | 创建和管理支持票证 |
+> | Microsoft.Support/* | 创建和更新支持票证 |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
@@ -1116,12 +1116,12 @@ ms.locfileid: "82267631"
 > | Microsoft.Network/virtualNetworks/subnets/join/action | 加入虚拟网络。 不可发出警报。 |
 > | Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action | 将存储帐户或 SQL 数据库等资源加入到子网。 不可发出警报。 |
 > | Microsoft.Network/networkSecurityGroups/join/action | 加入网络安全组。 不可发出警报。 |
-> | Microsoft.Resources/deployments/* | 创建和管理资源组部署 |
-> | Microsoft.Insights/alertRules/* | 创建和管理 Insights 警报规则 |
+> | Microsoft.Resources/deployments/* | 创建和管理部署 |
+> | Microsoft.Insights/alertRules/* | 创建和管理经典指标警报 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
 > | Microsoft.Storage/*/read |  |
 > | Microsoft.Storage/storageAccounts/* | 创建和管理存储帐户 |
-> | Microsoft.Support/* | 创建和管理支持票证 |
+> | Microsoft.Support/* | 创建和更新支持票证 |
 > | Microsoft.Resources/subscriptions/resourceGroups/resources/read | 获取资源组的资源。 |
 > | **不操作** |  |
 > | *无* |  |
@@ -1274,7 +1274,7 @@ ms.locfileid: "82267631"
 > | Microsoft.RecoveryServices/Vaults/read | “获取保管库”操作获取表示“vault”类型的 Azure 资源的对象 |
 > | Microsoft.RecoveryServices/Vaults/registeredIdentities/* | 创建和管理已注册标识 |
 > | Microsoft.RecoveryServices/Vaults/usages/* | 创建和管理恢复服务保管库的使用情况 |
-> | Microsoft.Resources/deployments/* | 创建和管理资源组部署 |
+> | Microsoft.Resources/deployments/* | 创建和管理部署 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
 > | Microsoft.Storage/storageAccounts/read | 返回存储帐户的列表，或获取指定存储帐户的属性。 |
 > | Microsoft.RecoveryServices/Vaults/backupstorageconfig/* |  |
@@ -1292,7 +1292,7 @@ ms.locfileid: "82267631"
 > | Microsoft.RecoveryServices/operations/read | 操作返回资源提供程序的操作列表 |
 > | Microsoft.RecoveryServices/locations/operationStatus/read | 获取给定操作的操作状态 |
 > | Microsoft.RecoveryServices/Vaults/backupProtectionIntents/read | 列出所有备份保护意向 |
-> | Microsoft.Support/* | 创建和管理支持票证 |
+> | Microsoft.Support/* | 创建和更新支持票证 |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
@@ -1406,7 +1406,7 @@ ms.locfileid: "82267631"
 > | Microsoft.RecoveryServices/Vaults/registeredIdentities/read | “获取容器”操作可用于获取针对资源注册的容器。 |
 > | Microsoft.RecoveryServices/Vaults/registeredIdentities/write | “注册服务容器”操作可用于向恢复服务注册容器。 |
 > | Microsoft.RecoveryServices/Vaults/usages/read | 返回恢复服务保管库的使用情况详细信息。 |
-> | Microsoft.Resources/deployments/* | 创建和管理资源组部署 |
+> | Microsoft.Resources/deployments/* | 创建和管理部署 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
 > | Microsoft.Storage/storageAccounts/read | 返回存储帐户的列表，或获取指定存储帐户的属性。 |
 > | Microsoft.RecoveryServices/Vaults/backupstorageconfig/* |  |
@@ -1427,7 +1427,7 @@ ms.locfileid: "82267631"
 > | Microsoft.RecoveryServices/operations/read | 操作返回资源提供程序的操作列表 |
 > | Microsoft.RecoveryServices/locations/operationStatus/read | 获取给定操作的操作状态 |
 > | Microsoft.RecoveryServices/Vaults/backupProtectionIntents/read | 列出所有备份保护意向 |
-> | Microsoft.Support/* | 创建和管理支持票证 |
+> | Microsoft.Support/* | 创建和更新支持票证 |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
@@ -1638,11 +1638,11 @@ ms.locfileid: "82267631"
 > | **操作** |  |
 > | Microsoft.Authorization/*/read | 读取角色和角色分配 |
 > | Microsoft.ClassicStorage/storageAccounts/* | 创建和管理存储帐户 |
-> | Microsoft.Insights/alertRules/* | 创建和管理 Insights 警报规则 |
+> | Microsoft.Insights/alertRules/* | 创建和管理经典指标警报 |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 获取指定范围内所有资源的可用性状态 |
-> | Microsoft.Resources/deployments/* | 创建和管理资源组部署 |
+> | Microsoft.Resources/deployments/* | 创建和管理部署 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
-> | Microsoft.Support/* | 创建和管理支持票证 |
+> | Microsoft.Support/* | 创建和更新支持票证 |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
@@ -1732,9 +1732,9 @@ ms.locfileid: "82267631"
 > | **操作** |  |
 > | Microsoft.Authorization/*/read | 读取角色和角色分配 |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 获取指定范围内所有资源的可用性状态 |
-> | Microsoft.Resources/deployments/* | 创建和管理资源组部署 |
+> | Microsoft.Resources/deployments/* | 创建和管理部署 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
-> | Microsoft.Support/* | 创建和管理支持票证 |
+> | Microsoft.Support/* | 创建和更新支持票证 |
 > | Microsoft.Databox/* |  |
 > | **不操作** |  |
 > | *无* |  |
@@ -1789,7 +1789,7 @@ ms.locfileid: "82267631"
 > | Microsoft.Databox/locations/regionConfiguration/action | 此方法返回区域的配置。 |
 > | Microsoft.Databox/locations/validateAddress/action | 验证送货地址，并提供备用地址（如有）。 |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 获取指定范围内所有资源的可用性状态 |
-> | Microsoft.Support/* | 创建和管理支持票证 |
+> | Microsoft.Support/* | 创建和更新支持票证 |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
@@ -1841,11 +1841,11 @@ ms.locfileid: "82267631"
 > | Microsoft.Authorization/*/read | 读取角色和角色分配 |
 > | Microsoft.BigAnalytics/accounts/* |  |
 > | Microsoft.DataLakeAnalytics/accounts/* |  |
-> | Microsoft.Insights/alertRules/* | 创建和管理 Insights 警报规则 |
+> | Microsoft.Insights/alertRules/* | 创建和管理经典指标警报 |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 获取指定范围内所有资源的可用性状态 |
-> | Microsoft.Resources/deployments/* | 创建和管理资源组部署 |
+> | Microsoft.Resources/deployments/* | 创建和管理部署 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
-> | Microsoft.Support/* | 创建和管理支持票证 |
+> | Microsoft.Support/* | 创建和更新支持票证 |
 > | **不操作** |  |
 > | Microsoft.BigAnalytics/accounts/Delete |  |
 > | Microsoft.BigAnalytics/accounts/TakeOwnership/action |  |
@@ -1965,14 +1965,14 @@ ms.locfileid: "82267631"
 > | --- | --- |
 > | **操作** |  |
 > | Microsoft.Authorization/*/read | 读取角色和角色分配 |
-> | Microsoft.Insights/alertRules/* | 创建和管理 Insights 警报规则 |
+> | Microsoft.Insights/alertRules/* | 创建和管理经典指标警报 |
 > | Microsoft.Insights/diagnosticSettings/* | 创建、更新或读取 Analysis Server 的诊断设置 |
 > | Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action | 将存储帐户或 SQL 数据库等资源加入到子网。 不可发出警报。 |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 获取指定范围内所有资源的可用性状态 |
-> | Microsoft.Resources/deployments/* | 创建和管理资源组部署 |
+> | Microsoft.Resources/deployments/* | 创建和管理部署 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
 > | Microsoft.Storage/storageAccounts/* | 创建和管理存储帐户 |
-> | Microsoft.Support/* | 创建和管理支持票证 |
+> | Microsoft.Support/* | 创建和更新支持票证 |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
@@ -2543,7 +2543,7 @@ ms.locfileid: "82267631"
 ## <a name="web"></a>Web
 
 
-### <a name="azure-maps-data-reader-preview"></a>Azure Maps 数据读取器(预览版)
+### <a name="azure-maps-data-reader"></a>Azure Maps 数据读取器
 
 授予从 Azure Maps 帐户中读取相关数据的权限。
 
@@ -2555,7 +2555,7 @@ ms.locfileid: "82267631"
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
-> | Microsoft.Maps/accounts/data/read | 授予对映射帐户的数据读权限。 |
+> | Microsoft.Maps/accounts/*/read |  |
 > | **NotDataActions** |  |
 > | *无* |  |
 
@@ -2572,12 +2572,12 @@ ms.locfileid: "82267631"
       "actions": [],
       "notActions": [],
       "dataActions": [
-        "Microsoft.Maps/accounts/data/read"
+        "Microsoft.Maps/accounts/*/read"
       ],
       "notDataActions": []
     }
   ],
-  "roleName": "Azure Maps Data Reader (Preview)",
+  "roleName": "Azure Maps Data Reader",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
@@ -2592,12 +2592,12 @@ ms.locfileid: "82267631"
 > | --- | --- |
 > | **操作** |  |
 > | Microsoft.Authorization/*/read | 读取角色和角色分配 |
-> | Microsoft.Insights/alertRules/* | 创建和管理 Insights 警报规则 |
+> | Microsoft.Insights/alertRules/* | 创建和管理经典指标警报 |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 获取指定范围内所有资源的可用性状态 |
-> | Microsoft.Resources/deployments/* | 创建和管理资源组部署 |
+> | Microsoft.Resources/deployments/* | 创建和管理部署 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
 > | Microsoft.Search/searchServices/* | 创建和管理搜索服务 |
-> | Microsoft.Support/* | 创建和管理支持票证 |
+> | Microsoft.Support/* | 创建和更新支持票证 |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
@@ -2644,11 +2644,11 @@ ms.locfileid: "82267631"
 > | --- | --- |
 > | **操作** |  |
 > | Microsoft.Authorization/*/read | 读取角色和角色分配 |
-> | Microsoft.Insights/alertRules/* | 创建和管理 Insights 警报规则 |
+> | Microsoft.Insights/alertRules/* | 创建和管理经典指标警报 |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 获取指定范围内所有资源的可用性状态 |
-> | Microsoft.Resources/deployments/* | 创建和管理资源组部署 |
+> | Microsoft.Resources/deployments/* | 创建和管理部署 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
-> | Microsoft.Support/* | 创建和管理支持票证 |
+> | Microsoft.Support/* | 创建和更新支持票证 |
 > | Microsoft.Web/serverFarms/* | 创建和管理服务器场 |
 > | Microsoft.Web/hostingEnvironments/Join/Action | 加入应用服务环境 |
 > | **不操作** |  |
@@ -2698,12 +2698,12 @@ ms.locfileid: "82267631"
 > | --- | --- |
 > | **操作** |  |
 > | Microsoft.Authorization/*/read | 读取角色和角色分配 |
-> | Microsoft.Insights/alertRules/* | 创建和管理 Insights 警报规则 |
+> | Microsoft.Insights/alertRules/* | 创建和管理经典指标警报 |
 > | Microsoft.Insights/components/* | 创建和管理 Insights 组件 |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 获取指定范围内所有资源的可用性状态 |
-> | Microsoft.Resources/deployments/* | 创建和管理资源组部署 |
+> | Microsoft.Resources/deployments/* | 创建和管理部署 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
-> | Microsoft.Support/* | 创建和管理支持票证 |
+> | Microsoft.Support/* | 创建和更新支持票证 |
 > | Microsoft.Web/certificates/* | 创建和管理网站证书 |
 > | Microsoft.Web/listSitesAssignedToHostName/read | 获取分配给主机名的站点名称。 |
 > | Microsoft.Web/serverFarms/join/action |  |
@@ -3097,7 +3097,7 @@ ACR 隔离数据编写器
 > | Microsoft.Insights/MetricDefinitions/read | 读取指标定义 |
 > | Microsoft.Insights/Metrics/read | 添加指标 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
-> | Microsoft.Support/* | 创建和管理支持票证 |
+> | Microsoft.Support/* | 创建和更新支持票证 |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
@@ -3144,12 +3144,12 @@ ACR 隔离数据编写器
 > | --- | --- |
 > | **操作** |  |
 > | Microsoft.DocumentDb/databaseAccounts/* |  |
-> | Microsoft.Insights/alertRules/* | 创建和管理 Insights 警报规则 |
+> | Microsoft.Insights/alertRules/* | 创建和管理经典指标警报 |
 > | Microsoft.Authorization/*/read | 读取角色和角色分配 |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 获取指定范围内所有资源的可用性状态 |
-> | Microsoft.Resources/deployments/* | 创建和管理资源组部署 |
+> | Microsoft.Resources/deployments/* | 创建和管理部署 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
-> | Microsoft.Support/* | 创建和管理支持票证 |
+> | Microsoft.Support/* | 创建和更新支持票证 |
 > | Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action | 将存储帐户或 SQL 数据库等资源加入到子网。 不可发出警报。 |
 > | **不操作** |  |
 > | Microsoft.DocumentDB/databaseAccounts/readonlyKeys/* |  |
@@ -3249,11 +3249,11 @@ ACR 隔离数据编写器
 > | **操作** |  |
 > | Microsoft.Authorization/*/read | 读取角色和角色分配 |
 > | Microsoft.DocumentDb/databaseAccounts/* | 创建并管理 Azure Cosmos DB 帐户 |
-> | Microsoft.Insights/alertRules/* | 创建和管理 Insights 警报规则 |
+> | Microsoft.Insights/alertRules/* | 创建和管理经典指标警报 |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 获取指定范围内所有资源的可用性状态 |
-> | Microsoft.Resources/deployments/* | 创建和管理资源组部署 |
+> | Microsoft.Resources/deployments/* | 创建和管理部署 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
-> | Microsoft.Support/* | 创建和管理支持票证 |
+> | Microsoft.Support/* | 创建和更新支持票证 |
 > | Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action | 将存储帐户或 SQL 数据库等资源加入到子网。 不可发出警报。 |
 > | **不操作** |  |
 > | *无* |  |
@@ -3303,11 +3303,11 @@ ACR 隔离数据编写器
 > | **操作** |  |
 > | Microsoft.Authorization/*/read | 读取角色和角色分配 |
 > | Microsoft.Cache/redis/* | 创建和管理 Redis 缓存 |
-> | Microsoft.Insights/alertRules/* | 创建和管理 Insights 警报规则 |
+> | Microsoft.Insights/alertRules/* | 创建和管理经典指标警报 |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 获取指定范围内所有资源的可用性状态 |
-> | Microsoft.Resources/deployments/* | 创建和管理资源组部署 |
+> | Microsoft.Resources/deployments/* | 创建和管理部署 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
-> | Microsoft.Support/* | 创建和管理支持票证 |
+> | Microsoft.Support/* | 创建和更新支持票证 |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
@@ -3354,14 +3354,14 @@ ACR 隔离数据编写器
 > | --- | --- |
 > | **操作** |  |
 > | Microsoft.Authorization/*/read | 读取角色和角色分配 |
-> | Microsoft.Insights/alertRules/* | 创建和管理 Insights 警报规则 |
+> | Microsoft.Insights/alertRules/* | 创建和管理经典指标警报 |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 获取指定范围内所有资源的可用性状态 |
-> | Microsoft.Resources/deployments/* | 创建和管理资源组部署 |
+> | Microsoft.Resources/deployments/* | 创建和管理部署 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
 > | Microsoft.Sql/locations/*/read |  |
 > | Microsoft.Sql/servers/databases/* | 创建和管理 SQL 数据库 |
 > | Microsoft.Sql/servers/read | 返回服务器列表，或获取指定服务器的属性。 |
-> | Microsoft.Support/* | 创建和管理支持票证 |
+> | Microsoft.Support/* | 创建和更新支持票证 |
 > | Microsoft.Insights/metrics/read | 添加指标 |
 > | Microsoft.Insights/metricDefinitions/read | 读取指标定义 |
 > | **不操作** |  |
@@ -3462,17 +3462,17 @@ ACR 隔离数据编写器
 > | --- | --- |
 > | **操作** |  |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 获取指定范围内所有资源的可用性状态 |
-> | Microsoft.Resources/deployments/* | 创建和管理资源组部署 |
+> | Microsoft.Resources/deployments/* | 创建和管理部署 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
 > | Microsoft.Network/networkSecurityGroups/* |  |
 > | Microsoft.Network/routeTables/* |  |
 > | Microsoft.Sql/locations/*/read |  |
 > | Microsoft.Sql/managedInstances/* |  |
-> | Microsoft.Support/* | 创建和管理支持票证 |
+> | Microsoft.Support/* | 创建和更新支持票证 |
 > | Microsoft.Network/virtualNetworks/subnets/* |  |
 > | Microsoft.Network/virtualNetworks/* |  |
 > | Microsoft.Authorization/*/read | 读取角色和角色分配 |
-> | Microsoft.Insights/alertRules/* | 创建和管理 Insights 警报规则 |
+> | Microsoft.Insights/alertRules/* | 创建和管理经典指标警报 |
 > | Microsoft.Insights/metrics/read | 添加指标 |
 > | Microsoft.Insights/metricDefinitions/read | 读取指标定义 |
 > | **不操作** |  |
@@ -3528,10 +3528,10 @@ ACR 隔离数据编写器
 > | --- | --- |
 > | **操作** |  |
 > | Microsoft.Authorization/*/read | 读取角色和角色分配 |
-> | Microsoft.Insights/alertRules/* | 创建和管理 Insights 警报规则 |
+> | Microsoft.Insights/alertRules/* | 创建和管理经典指标警报 |
 > | Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action | 将存储帐户或 SQL 数据库等资源加入到子网。 不可发出警报。 |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 获取指定范围内所有资源的可用性状态 |
-> | Microsoft.Resources/deployments/* | 创建和管理资源组部署 |
+> | Microsoft.Resources/deployments/* | 创建和管理部署 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
 > | Microsoft.Sql/managedInstances/databases/currentSensitivityLabels/* |  |
 > | Microsoft.Sql/managedInstances/databases/recommendedSensitivityLabels/* |  |
@@ -3569,7 +3569,7 @@ ACR 隔离数据编写器
 > | Microsoft.Sql/servers/read | 返回服务器列表，或获取指定服务器的属性。 |
 > | Microsoft.Sql/servers/securityAlertPolicies/* | 创建和管理 SQL 服务器安全警报策略 |
 > | Microsoft.Sql/servers/vulnerabilityAssessments/* |  |
-> | Microsoft.Support/* | 创建和管理支持票证 |
+> | Microsoft.Support/* | 创建和更新支持票证 |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
@@ -3652,13 +3652,13 @@ ACR 隔离数据编写器
 > | --- | --- |
 > | **操作** |  |
 > | Microsoft.Authorization/*/read | 读取角色和角色分配 |
-> | Microsoft.Insights/alertRules/* | 创建和管理 Insights 警报规则 |
+> | Microsoft.Insights/alertRules/* | 创建和管理经典指标警报 |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 获取指定范围内所有资源的可用性状态 |
-> | Microsoft.Resources/deployments/* | 创建和管理资源组部署 |
+> | Microsoft.Resources/deployments/* | 创建和管理部署 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
 > | Microsoft.Sql/locations/*/read |  |
 > | Microsoft.Sql/servers/* | 创建和管理 SQL 服务器 |
-> | Microsoft.Support/* | 创建和管理支持票证 |
+> | Microsoft.Support/* | 创建和更新支持票证 |
 > | Microsoft.Insights/metrics/read | 添加指标 |
 > | Microsoft.Insights/metricDefinitions/read | 读取指标定义 |
 > | **不操作** |  |
@@ -3897,11 +3897,11 @@ ACR 隔离数据编写器
 > | Microsoft.Authorization/*/read | 读取角色和角色分配 |
 > | Microsoft.DataFactory/dataFactories/* | 创建和管理数据工厂，以及它们包含的子资源。 |
 > | Microsoft.DataFactory/factories/* | 创建和管理数据工厂，以及它们包含的子资源。 |
-> | Microsoft.Insights/alertRules/* | 创建和管理 Insights 警报规则 |
+> | Microsoft.Insights/alertRules/* | 创建和管理经典指标警报 |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 获取指定范围内所有资源的可用性状态 |
-> | Microsoft.Resources/deployments/* | 创建和管理资源组部署 |
+> | Microsoft.Resources/deployments/* | 创建和管理部署 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
-> | Microsoft.Support/* | 创建和管理支持票证 |
+> | Microsoft.Support/* | 创建和更新支持票证 |
 > | Microsoft.EventGrid/eventSubscriptions/write | 创建或更新事件订阅 |
 > | **不操作** |  |
 > | *无* |  |
@@ -4002,9 +4002,9 @@ ACR 隔离数据编写器
 > | Microsoft.HDInsight/clusters/configurations/* |  |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
 > | Microsoft.Resources/deployments/operations/read | 获取或列出部署操作。 |
-> | Microsoft.Insights/alertRules/* | 创建和管理 Insights 警报规则 |
+> | Microsoft.Insights/alertRules/* | 创建和管理经典指标警报 |
 > | Microsoft.Authorization/*/read | 读取角色和角色分配 |
-> | Microsoft.Support/* | 创建和管理支持票证 |
+> | Microsoft.Support/* | 创建和更新支持票证 |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
@@ -4102,14 +4102,14 @@ Log Analytics 参与者可以读取所有监视数据并编辑监视设置。 �
 > | Microsoft.ClassicStorage/storageAccounts/listKeys/action | 列出存储帐户的访问密钥。 |
 > | Microsoft.Compute/virtualMachines/extensions/* |  |
 > | Microsoft.HybridCompute/machines/extensions/write | 安装或更新 Azure Arc 扩展 |
-> | Microsoft.Insights/alertRules/* | 创建和管理 Insights 警报规则 |
+> | Microsoft.Insights/alertRules/* | 创建和管理经典指标警报 |
 > | Microsoft.Insights/diagnosticSettings/* | 创建、更新或读取 Analysis Server 的诊断设置 |
 > | Microsoft.OperationalInsights/* |  |
 > | Microsoft.OperationsManagement/* |  |
-> | Microsoft.Resources/deployments/* | 创建和管理资源组部署 |
+> | Microsoft.Resources/deployments/* | 创建和管理部署 |
 > | Microsoft.Resources/subscriptions/resourcegroups/deployments/* |  |
 > | Microsoft.Storage/storageAccounts/listKeys/action | 返回指定存储帐户的访问密钥。 |
-> | Microsoft.Support/* | 创建和管理支持票证 |
+> | Microsoft.Support/* | 创建和更新支持票证 |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
@@ -4165,7 +4165,7 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 > | */read | 读取除密码外的所有类型的资源。 |
 > | Microsoft.OperationalInsights/workspaces/analytics/query/action | 使用新引擎进行搜索。 |
 > | Microsoft.OperationalInsights/workspaces/search/action | 执行搜索查询 |
-> | Microsoft.Support/* | 创建和管理支持票证 |
+> | Microsoft.Support/* | 创建和更新支持票证 |
 > | **不操作** |  |
 > | Microsoft.OperationalInsights/workspaces/sharedKeys/read | 检索工作区的共享密钥。 这些密钥用于将 Microsoft Operational Insights 代理连接到工作区。 |
 > | **DataActions** |  |
@@ -4262,19 +4262,19 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 > | Microsoft.CognitiveServices/* |  |
 > | Microsoft.Features/features/read | 获取订阅的功能。 |
 > | Microsoft.Features/providers/features/read | 获取给定资源提供程序中某个订阅的功能。 |
-> | Microsoft.Insights/alertRules/* | 创建和管理 Insights 警报规则 |
+> | Microsoft.Insights/alertRules/* | 创建和管理经典指标警报 |
 > | Microsoft.Insights/diagnosticSettings/* | 创建、更新或读取 Analysis Server 的诊断设置 |
 > | Microsoft.Insights/logDefinitions/read | 读取日志定义 |
 > | Microsoft.Insights/metricdefinitions/read | 读取指标定义 |
 > | Microsoft.Insights/metrics/read | 添加指标 |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 获取指定范围内所有资源的可用性状态 |
-> | Microsoft.Resources/deployments/* | 创建和管理资源组部署 |
+> | Microsoft.Resources/deployments/* | 创建和管理部署 |
 > | Microsoft.Resources/deployments/operations/read | 获取或列出部署操作。 |
 > | Microsoft.Resources/subscriptions/operationresults/read | 获取订阅操作结果。 |
 > | Microsoft.Resources/subscriptions/read | 获取订阅的列表。 |
 > | Microsoft.Resources/subscriptions/resourcegroups/deployments/* |  |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
-> | Microsoft.Support/* | 创建和管理支持票证 |
+> | Microsoft.Support/* | 创建和更新支持票证 |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
@@ -4382,7 +4382,7 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 > | Microsoft.Resources/subscriptions/operationresults/read | 获取订阅操作结果。 |
 > | Microsoft.Resources/subscriptions/read | 获取订阅的列表。 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
-> | Microsoft.Support/* | 创建和管理支持票证 |
+> | Microsoft.Support/* | 创建和更新支持票证 |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
@@ -4592,11 +4592,11 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 > | **操作** |  |
 > | Microsoft.ApiManagement/service/* | 创建和管理 API 管理服务 |
 > | Microsoft.Authorization/*/read | 读取角色和角色分配 |
-> | Microsoft.Insights/alertRules/* | 创建和管理 Insights 警报规则 |
+> | Microsoft.Insights/alertRules/* | 创建和管理经典指标警报 |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 获取指定范围内所有资源的可用性状态 |
-> | Microsoft.Resources/deployments/* | 创建和管理资源组部署 |
+> | Microsoft.Resources/deployments/* | 创建和管理部署 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
-> | Microsoft.Support/* | 创建和管理支持票证 |
+> | Microsoft.Support/* | 创建和更新支持票证 |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
@@ -4652,11 +4652,11 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 > | Microsoft.ApiManagement/service/updatehostname/action | 设置、更新或删除 API 管理服务的自定义域名 |
 > | Microsoft.ApiManagement/service/write | 创建或更新 API 管理服务实例 |
 > | Microsoft.Authorization/*/read | 读取角色和角色分配 |
-> | Microsoft.Insights/alertRules/* | 创建和管理 Insights 警报规则 |
+> | Microsoft.Insights/alertRules/* | 创建和管理经典指标警报 |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 获取指定范围内所有资源的可用性状态 |
-> | Microsoft.Resources/deployments/* | 创建和管理资源组部署 |
+> | Microsoft.Resources/deployments/* | 创建和管理部署 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
-> | Microsoft.Support/* | 创建和管理支持票证 |
+> | Microsoft.Support/* | 创建和更新支持票证 |
 > | **不操作** |  |
 > | Microsoft.ApiManagement/service/users/keys/read | 获取与用户关联的密钥 |
 > | **DataActions** |  |
@@ -4715,11 +4715,11 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 > | Microsoft.ApiManagement/service/*/read | 读取 API 管理服务实例 |
 > | Microsoft.ApiManagement/service/read | 读取 API 管理服务实例的元数据 |
 > | Microsoft.Authorization/*/read | 读取角色和角色分配 |
-> | Microsoft.Insights/alertRules/* | 创建和管理 Insights 警报规则 |
+> | Microsoft.Insights/alertRules/* | 创建和管理经典指标警报 |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 获取指定范围内所有资源的可用性状态 |
-> | Microsoft.Resources/deployments/* | 创建和管理资源组部署 |
+> | Microsoft.Resources/deployments/* | 创建和管理部署 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
-> | Microsoft.Support/* | 创建和管理支持票证 |
+> | Microsoft.Support/* | 创建和更新支持票证 |
 > | **不操作** |  |
 > | Microsoft.ApiManagement/service/users/keys/read | 获取与用户关联的密钥 |
 > | **DataActions** |  |
@@ -5035,10 +5035,10 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 > | Microsoft.EventGrid/topicTypes/eventSubscriptions/read | 按主题类型列出全局事件订阅 |
 > | Microsoft.EventGrid/locations/eventSubscriptions/read | 列出区域事件订阅 |
 > | Microsoft.EventGrid/locations/topicTypes/eventSubscriptions/read | 按主题类型列出区域事件订阅 |
-> | Microsoft.Insights/alertRules/* | 创建和管理 Insights 警报规则 |
-> | Microsoft.Resources/deployments/* | 创建和管理资源组部署 |
+> | Microsoft.Insights/alertRules/* | 创建和管理经典指标警报 |
+> | Microsoft.Resources/deployments/* | 创建和管理部署 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
-> | Microsoft.Support/* | 创建和管理支持票证 |
+> | Microsoft.Support/* | 创建和更新支持票证 |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
@@ -5137,12 +5137,12 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 > | --- | --- |
 > | **操作** |  |
 > | Microsoft.Authorization/*/read | 读取角色和角色分配 |
-> | Microsoft.Insights/alertRules/* | 创建和管理 Insights 警报规则 |
+> | Microsoft.Insights/alertRules/* | 创建和管理经典指标警报 |
 > | Microsoft.IntelligentSystems/accounts/* | 创建和管理智能系统帐户 |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 获取指定范围内所有资源的可用性状态 |
-> | Microsoft.Resources/deployments/* | 创建和管理资源组部署 |
+> | Microsoft.Resources/deployments/* | 创建和管理部署 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
-> | Microsoft.Support/* | 创建和管理支持票证 |
+> | Microsoft.Support/* | 创建和更新支持票证 |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
@@ -5191,18 +5191,18 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 > | Microsoft.Authorization/*/read | 读取角色和角色分配 |
 > | Microsoft.ClassicStorage/storageAccounts/listKeys/action | 列出存储帐户的访问密钥。 |
 > | Microsoft.ClassicStorage/storageAccounts/read | 返回包含给定帐户的存储帐户。 |
-> | Microsoft.Insights/alertRules/* | 创建和管理 Insights 警报规则 |
+> | Microsoft.Insights/alertRules/* | 创建和管理经典指标警报 |
 > | Microsoft.Insights/metricAlerts/* |  |
 > | Microsoft.Insights/diagnosticSettings/* | 创建、更新或读取 Analysis Server 的诊断设置 |
 > | Microsoft.Insights/logdefinitions/* | 此权限对于需要通过门户访问活动日志的用户是必需的。 列出活动日志中的日志类别。 |
 > | Microsoft.Insights/metricDefinitions/* | 读取指标定义（资源的可用指标类型的列表）。 |
 > | Microsoft.Logic/* | 管理逻辑应用资源。 |
-> | Microsoft.Resources/deployments/* | 创建和管理资源组部署 |
+> | Microsoft.Resources/deployments/* | 创建和管理部署 |
 > | Microsoft.Resources/subscriptions/operationresults/read | 获取订阅操作结果。 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
 > | Microsoft.Storage/storageAccounts/listkeys/action | 返回指定存储帐户的访问密钥。 |
 > | Microsoft.Storage/storageAccounts/read | 返回存储帐户的列表，或获取指定存储帐户的属性。 |
-> | Microsoft.Support/* | 创建和管理支持票证 |
+> | Microsoft.Support/* | 创建和更新支持票证 |
 > | Microsoft.Web/connectionGateways/* | 创建和管理连接网关。 |
 > | Microsoft.Web/connections/* | 创建和管理连接。 |
 > | Microsoft.Web/customApis/* | 创建和管理自定义 API。 |
@@ -5280,7 +5280,7 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 > | Microsoft.Resources/deployments/operations/read | 获取或列出部署操作。 |
 > | Microsoft.Resources/subscriptions/operationresults/read | 获取订阅操作结果。 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
-> | Microsoft.Support/* | 创建和管理支持票证 |
+> | Microsoft.Support/* | 创建和更新支持票证 |
 > | Microsoft.Web/connectionGateways/*/read | 读取连接网关。 |
 > | Microsoft.Web/connections/*/read | 读取连接。 |
 > | Microsoft.Web/customApis/*/read | 读取自定义 API。 |
@@ -5347,10 +5347,10 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 > | Microsoft.ManagedIdentity/userAssignedIdentities/write | 创建新的用户分配标识或更新与现有用户分配标识关联的标记 |
 > | Microsoft.ManagedIdentity/userAssignedIdentities/delete | 删除现有用户分配标识 |
 > | Microsoft.Authorization/*/read | 读取角色和角色分配 |
-> | Microsoft.Insights/alertRules/* | 创建和管理 Insights 警报规则 |
+> | Microsoft.Insights/alertRules/* | 创建和管理经典指标警报 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
-> | Microsoft.Resources/deployments/* | 创建和管理资源组部署 |
-> | Microsoft.Support/* | 创建和管理支持票证 |
+> | Microsoft.Resources/deployments/* | 创建和管理部署 |
+> | Microsoft.Support/* | 创建和更新支持票证 |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
@@ -5400,10 +5400,10 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 > | Microsoft.ManagedIdentity/userAssignedIdentities/*/read |  |
 > | Microsoft.ManagedIdentity/userAssignedIdentities/*/assign/action |  |
 > | Microsoft.Authorization/*/read | 读取角色和角色分配 |
-> | Microsoft.Insights/alertRules/* | 创建和管理 Insights 警报规则 |
+> | Microsoft.Insights/alertRules/* | 创建和管理经典指标警报 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
-> | Microsoft.Resources/deployments/* | 创建和管理资源组部署 |
-> | Microsoft.Support/* | 创建和管理支持票证 |
+> | Microsoft.Resources/deployments/* | 创建和管理部署 |
+> | Microsoft.Support/* | 创建和更新支持票证 |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
@@ -5462,10 +5462,10 @@ Azure Sentinel 参与者
 > | Microsoft.OperationalInsights/workspaces/dataSources/read | 获取工作区下面的数据源。 |
 > | Microsoft.Insights/workbooks/* |  |
 > | Microsoft.Authorization/*/read | 读取角色和角色分配 |
-> | Microsoft.Insights/alertRules/* | 创建和管理 Insights 警报规则 |
-> | Microsoft.Resources/deployments/* | 创建和管理资源组部署 |
+> | Microsoft.Insights/alertRules/* | 创建和管理经典指标警报 |
+> | Microsoft.Resources/deployments/* | 创建和管理部署 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
-> | Microsoft.Support/* | 创建和管理支持票证 |
+> | Microsoft.Support/* | 创建和更新支持票证 |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
@@ -5530,10 +5530,10 @@ Azure Sentinel 读取者
 > | Microsoft.OperationalInsights/workspaces/dataSources/read | 获取工作区下面的数据源。 |
 > | Microsoft.Insights/workbooks/read | 读取工作簿 |
 > | Microsoft.Authorization/*/read | 读取角色和角色分配 |
-> | Microsoft.Insights/alertRules/* | 创建和管理 Insights 警报规则 |
-> | Microsoft.Resources/deployments/* | 创建和管理资源组部署 |
+> | Microsoft.Insights/alertRules/* | 创建和管理经典指标警报 |
+> | Microsoft.Resources/deployments/* | 创建和管理部署 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
-> | Microsoft.Support/* | 创建和管理支持票证 |
+> | Microsoft.Support/* | 创建和更新支持票证 |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
@@ -5602,10 +5602,10 @@ Azure Sentinel 响应方
 > | Microsoft.OperationalInsights/workspaces/dataSources/read | 获取工作区下面的数据源。 |
 > | Microsoft.Insights/workbooks/read | 读取工作簿 |
 > | Microsoft.Authorization/*/read | 读取角色和角色分配 |
-> | Microsoft.Insights/alertRules/* | 创建和管理 Insights 警报规则 |
-> | Microsoft.Resources/deployments/* | 创建和管理资源组部署 |
+> | Microsoft.Insights/alertRules/* | 创建和管理经典指标警报 |
+> | Microsoft.Resources/deployments/* | 创建和管理部署 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
-> | Microsoft.Support/* | 创建和管理支持票证 |
+> | Microsoft.Support/* | 创建和更新支持票证 |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
@@ -5663,11 +5663,11 @@ Azure Sentinel 响应方
 > | --- | --- |
 > | **操作** |  |
 > | Microsoft.Authorization/*/read | 读取角色和角色分配 |
-> | Microsoft.Insights/alertRules/* | 创建和管理 Insights 警报规则 |
+> | Microsoft.Insights/alertRules/* | 创建和管理经典指标警报 |
 > | Microsoft.KeyVault/* |  |
-> | Microsoft.Resources/deployments/* | 创建和管理资源组部署 |
+> | Microsoft.Resources/deployments/* | 创建和管理部署 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
-> | Microsoft.Support/* | 创建和管理支持票证 |
+> | Microsoft.Support/* | 创建和更新支持票证 |
 > | **不操作** |  |
 > | Microsoft.KeyVault/locations/deletedVaults/purge/action | 清除软删除的密钥保管库 |
 > | **DataActions** |  |
@@ -5694,7 +5694,7 @@ Azure Sentinel 响应方
         "Microsoft.Support/*"
       ],
       "notActions": [
-        "Microsoft.KeyVault/locations/deletedVaults/purge/action"
+        "Microsoft.KeyVault/locations/deletedVaults/purge/action",
       ],
       "dataActions": [],
       "notDataActions": []
@@ -5708,7 +5708,7 @@ Azure Sentinel 响应方
 
 ### <a name="security-admin"></a>安全管理员
 
-可以查看安全策略、查看安全状态、编辑安全策略、查看警报和建议、关闭警报和建议。
+查看和更新安全中心的权限。 与安全读取者角色具有相同的权限，还可以更新安全策略并关闭警报和建议。
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -5718,13 +5718,13 @@ Azure Sentinel 响应方
 > | Microsoft.Authorization/policyAssignments/* | 创建和管理策略分配 |
 > | Microsoft.Authorization/policyDefinitions/* | 创建和管理策略定义 |
 > | Microsoft.Authorization/policySetDefinitions/* | 创建和管理策略集 |
-> | Microsoft.Insights/alertRules/* | 创建和管理 Insights 警报规则 |
+> | Microsoft.Insights/alertRules/* | 创建和管理经典指标警报 |
 > | Microsoft.Management/managementGroups/read | 列出已通过身份验证的用户的管理组。 |
 > | Microsoft.operationalInsights/workspaces/*/read | 查看日志分析数据 |
-> | Microsoft.Resources/deployments/* | 创建和管理资源组部署 |
+> | Microsoft.Resources/deployments/* | 创建和管理部署 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
 > | Microsoft.Security/* | 创建和管理安全组件和策略 |
-> | Microsoft.Support/* | 创建和管理支持票证 |
+> | Microsoft.Support/* | 创建和更新支持票证 |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
@@ -5818,12 +5818,12 @@ Azure Sentinel 响应方
 > | Microsoft.ClassicCompute/*/read | 读取经典虚拟机的配置信息 |
 > | Microsoft.ClassicCompute/virtualMachines/*/write | 写入经典虚拟机的配置 |
 > | Microsoft.ClassicNetwork/*/read | 读取有关经典网络的配置信息 |
-> | Microsoft.Insights/alertRules/* | 创建和管理 Insights 警报规则 |
+> | Microsoft.Insights/alertRules/* | 创建和管理经典指标警报 |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 获取指定范围内所有资源的可用性状态 |
-> | Microsoft.Resources/deployments/* | 创建和管理资源组部署 |
+> | Microsoft.Resources/deployments/* | 创建和管理部署 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
 > | Microsoft.Security/* | 创建和管理安全组件和策略 |
-> | Microsoft.Support/* | 创建和管理支持票证 |
+> | Microsoft.Support/* | 创建和更新支持票证 |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
@@ -5866,19 +5866,19 @@ Azure Sentinel 响应方
 
 ### <a name="security-reader"></a>安全读取者
 
-可以查看建议和警报、查看安全策略、查看安全状态，但不能进行更改。
+查看安全中心的权限。 可以查看但不能更改建议、警报、安全策略和安全状态。
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **操作** |  |
 > | Microsoft.Authorization/*/read | 读取角色和角色分配 |
-> | Microsoft.Insights/alertRules/* | 创建和管理 Insights 警报规则 |
+> | Microsoft.Insights/alertRules/* | 创建和管理经典指标警报 |
 > | Microsoft.operationalInsights/workspaces/*/read | 查看日志分析数据 |
-> | Microsoft.Resources/deployments/* | 创建和管理资源组部署 |
+> | Microsoft.Resources/deployments/* | 创建和管理部署 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
 > | Microsoft.Security/*/read | 读取安全组件和策略 |
-> | Microsoft.Support/* | 创建和管理支持票证 |
+> | Microsoft.Support/* | 创建和更新支持票证 |
 > | Microsoft.Management/managementGroups/read | 列出已通过身份验证的用户的管理组。 |
 > | **不操作** |  |
 > | *无* |  |
@@ -6041,7 +6041,7 @@ Azure Sentinel 响应方
 > | Microsoft.LabServices/labAccounts/getPricingAndAvailability/action | 获取实验室帐户的大小、地理位置和操作系统组合的定价与可用性。 |
 > | Microsoft.LabServices/labAccounts/getRestrictionsAndUsage/action | 获取此订阅的核心限制和用量 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
-> | Microsoft.Support/* | 创建和管理支持票证 |
+> | Microsoft.Support/* | 创建和更新支持票证 |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
@@ -6098,9 +6098,9 @@ Azure Sentinel 响应方
 > | Microsoft.Insights/components/* | 创建和管理 Insights 组件 |
 > | Microsoft.Insights/webtests/* | 创建和管理 Insights Web 测试 |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 获取指定范围内所有资源的可用性状态 |
-> | Microsoft.Resources/deployments/* | 创建和管理资源组部署 |
+> | Microsoft.Resources/deployments/* | 创建和管理部署 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
-> | Microsoft.Support/* | 创建和管理支持票证 |
+> | Microsoft.Support/* | 创建和更新支持票证 |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
@@ -6142,18 +6142,18 @@ Azure Sentinel 响应方
 
 ### <a name="application-insights-snapshot-debugger"></a>Application Insights 快照调试器
 
-授予用户查看和下载使用 Application Insights Snapshot Debugger 收集的调试快照的权限。 请注意，[所有者](#owner)或[参与者](#contributor)角色不包括这些权限。
+授予用户查看和下载使用 Application Insights Snapshot Debugger 收集的调试快照的权限。 请注意，[所有者](#owner)或[参与者](#contributor)角色不包括这些权限。 在向用户授予 Application Insights Snapshot Debugger 角色时，必须将该角色直接授予用户。 将角色添加到自定义角色时，无法识别该角色。 
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **操作** |  |
 > | Microsoft.Authorization/*/read | 读取角色和角色分配 |
-> | Microsoft.Insights/alertRules/* | 创建和管理 Insights 警报规则 |
+> | Microsoft.Insights/alertRules/* | 创建和管理经典指标警报 |
 > | Microsoft.Insights/components/*/read |  |
-> | Microsoft.Resources/deployments/* | 创建和管理资源组部署 |
+> | Microsoft.Resources/deployments/* | 创建和管理部署 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
-> | Microsoft.Support/* | 创建和管理支持票证 |
+> | Microsoft.Support/* | 创建和更新支持票证 |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
@@ -6203,7 +6203,7 @@ Azure Sentinel 响应方
 > | Microsoft.AlertsManagement/alertsSummary/* |  |
 > | Microsoft.Insights/actiongroups/* |  |
 > | Microsoft.Insights/activityLogAlerts/* |  |
-> | Microsoft.Insights/AlertRules/* | 创建和管理 Insights 警报规则 |
+> | Microsoft.Insights/AlertRules/* | 创建和管理经典指标警报 |
 > | Microsoft.Insights/components/* | 创建和管理 Insights 组件 |
 > | Microsoft.Insights/DiagnosticSettings/* | 创建、更新或读取 Analysis Server 的诊断设置 |
 > | Microsoft.Insights/eventtypes/* | 列出订阅中的活动日志事件（管理事件）。 此权限适用于以编程方式和通过门户访问活动日志。 |
@@ -6215,12 +6215,15 @@ Azure Sentinel 响应方
 > | Microsoft.Insights/scheduledqueryrules/* |  |
 > | Microsoft.Insights/webtests/* | 创建和管理 Insights Web 测试 |
 > | Microsoft.Insights/workbooks/* |  |
+> | Microsoft.Insights/privateLinkScopes/* |  |
+> | Microsoft.Insights/privateLinkScopeOperationStatuses/* |  |
+> | Microsoft.OperationalInsights/workspaces/write | 创建新的工作区，或者通过提供现有工作区中的客户 ID 链接到现有工作区。 |
 > | Microsoft.OperationalInsights/workspaces/intelligencepacks/* | 读取/写入/删除日志分析解决方案包。 |
 > | Microsoft.OperationalInsights/workspaces/savedSearches/* | 读取/写入/删除日志分析保存的搜索。 |
 > | Microsoft.OperationalInsights/workspaces/search/action | 执行搜索查询 |
 > | Microsoft.OperationalInsights/workspaces/sharedKeys/action | 检索工作区的共享密钥。 这些密钥用于将 Microsoft Operational Insights 代理连接到工作区。 |
 > | Microsoft.OperationalInsights/workspaces/storageinsightconfigs/* | 读取/写入/删除日志分析存储见解配置。 |
-> | Microsoft.Support/* | 创建和管理支持票证 |
+> | Microsoft.Support/* | 创建和更新支持票证 |
 > | Microsoft.WorkloadMonitor/monitors/* |  |
 > | Microsoft.WorkloadMonitor/notificationSettings/* |  |
 > | Microsoft.AlertsManagement/smartDetectorAlertRules/* |  |
@@ -6261,6 +6264,9 @@ Azure Sentinel 响应方
         "Microsoft.Insights/scheduledqueryrules/*",
         "Microsoft.Insights/webtests/*",
         "Microsoft.Insights/workbooks/*",
+        "Microsoft.Insights/privateLinkScopes/*",
+        "Microsoft.Insights/privateLinkScopeOperationStatuses/*",
+        "Microsoft.OperationalInsights/workspaces/write",
         "Microsoft.OperationalInsights/workspaces/intelligencepacks/*",
         "Microsoft.OperationalInsights/workspaces/savedSearches/*",
         "Microsoft.OperationalInsights/workspaces/search/action",
@@ -6293,7 +6299,7 @@ Azure Sentinel 响应方
 > | --- | --- |
 > | **操作** |  |
 > | Microsoft.Insights/Register/Action | 注册 Microsoft Insights 提供程序 |
-> | Microsoft.Support/* | 创建和管理支持票证 |
+> | Microsoft.Support/* | 创建和更新支持票证 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
 > | **不操作** |  |
 > | *无* |  |
@@ -6340,7 +6346,7 @@ Azure Sentinel 响应方
 > | **操作** |  |
 > | */read | 读取除密码外的所有类型的资源。 |
 > | Microsoft.OperationalInsights/workspaces/search/action | 执行搜索查询 |
-> | Microsoft.Support/* | 创建和管理支持票证 |
+> | Microsoft.Support/* | 创建和更新支持票证 |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
@@ -6478,10 +6484,10 @@ Azure Sentinel 响应方
 > | Microsoft.Automation/automationAccounts/jobs/suspend/action | 暂停 Azure 自动化作业 |
 > | Microsoft.Automation/automationAccounts/jobs/write | 创建 Azure 自动化作业 |
 > | Microsoft.Automation/automationAccounts/jobs/output/read | 获取作业的输出 |
-> | Microsoft.Insights/alertRules/* | 创建和管理 Insights 警报规则 |
-> | Microsoft.Resources/deployments/* | 创建和管理资源组部署 |
+> | Microsoft.Insights/alertRules/* | 创建和管理经典指标警报 |
+> | Microsoft.Resources/deployments/* | 创建和管理部署 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
-> | Microsoft.Support/* | 创建和管理支持票证 |
+> | Microsoft.Support/* | 创建和更新支持票证 |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
@@ -6548,12 +6554,12 @@ Azure Sentinel 响应方
 > | Microsoft.Automation/automationAccounts/runbooks/read | 获取 Azure 自动化 Runbook |
 > | Microsoft.Automation/automationAccounts/schedules/read | 获取 Azure 自动化计划资产 |
 > | Microsoft.Automation/automationAccounts/schedules/write | 创建或更新 Azure 自动化计划资产 |
-> | Microsoft.Insights/alertRules/* | 创建和管理 Insights 警报规则 |
+> | Microsoft.Insights/alertRules/* | 创建和管理经典指标警报 |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 获取指定范围内所有资源的可用性状态 |
-> | Microsoft.Resources/deployments/* | 创建和管理资源组部署 |
+> | Microsoft.Resources/deployments/* | 创建和管理部署 |
 > | Microsoft.Automation/automationAccounts/jobs/output/read | 获取作业的输出 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
-> | Microsoft.Support/* | 创建和管理支持票证 |
+> | Microsoft.Support/* | 创建和更新支持票证 |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
@@ -6615,10 +6621,10 @@ Azure Sentinel 响应方
 > | **操作** |  |
 > | Microsoft.Authorization/*/read | 读取角色和角色分配 |
 > | Microsoft.Automation/automationAccounts/runbooks/read | 获取 Azure 自动化 Runbook |
-> | Microsoft.Insights/alertRules/* | 创建和管理 Insights 警报规则 |
-> | Microsoft.Resources/deployments/* | 创建和管理资源组部署 |
+> | Microsoft.Insights/alertRules/* | 创建和管理经典指标警报 |
+> | Microsoft.Resources/deployments/* | 创建和管理部署 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
-> | Microsoft.Support/* | 创建和管理支持票证 |
+> | Microsoft.Support/* | 创建和更新支持票证 |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
@@ -6763,7 +6769,7 @@ Azure Sentinel 响应方
 > | Microsoft.Consumption/*/read |  |
 > | Microsoft.Management/managementGroups/read | 列出已通过身份验证的用户的管理组。 |
 > | Microsoft.CostManagement/*/read |  |
-> | Microsoft.Support/* | 创建和管理支持票证 |
+> | Microsoft.Support/* | 创建和更新支持票证 |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
@@ -6812,8 +6818,8 @@ Azure Sentinel 响应方
 > | Microsoft.Authorization/*/read | 读取角色和角色分配 |
 > | Microsoft.Blueprint/blueprints/* | 创建和管理蓝图定义或蓝图项目。 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
-> | Microsoft.Resources/deployments/* | 创建和管理资源组部署 |
-> | Microsoft.Support/* | 创建和管理支持票证 |
+> | Microsoft.Resources/deployments/* | 创建和管理部署 |
+> | Microsoft.Support/* | 创建和更新支持票证 |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
@@ -6860,8 +6866,8 @@ Azure Sentinel 响应方
 > | Microsoft.Authorization/*/read | 读取角色和角色分配 |
 > | Microsoft.Blueprint/blueprintAssignments/* | 创建和管理蓝图分配。 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
-> | Microsoft.Resources/deployments/* | 创建和管理资源组部署 |
-> | Microsoft.Support/* | 创建和管理支持票证 |
+> | Microsoft.Resources/deployments/* | 创建和管理部署 |
+> | Microsoft.Support/* | 创建和更新支持票证 |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
@@ -6910,7 +6916,7 @@ Azure Sentinel 响应方
 > | Microsoft.Billing/billingPeriods/read |  |
 > | Microsoft.Resources/subscriptions/read | 获取订阅的列表。 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
-> | Microsoft.Support/* | 创建和管理支持票证 |
+> | Microsoft.Support/* | 创建和更新支持票证 |
 > | Microsoft.Advisor/configurations/read | 获取配置 |
 > | Microsoft.Advisor/recommendations/read | 读取建议 |
 > | Microsoft.Management/managementGroups/read | 列出已通过身份验证的用户的管理组。 |
@@ -6966,7 +6972,7 @@ Azure Sentinel 响应方
 > | Microsoft.Billing/billingPeriods/read |  |
 > | Microsoft.Resources/subscriptions/read | 获取订阅的列表。 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
-> | Microsoft.Support/* | 创建和管理支持票证 |
+> | Microsoft.Support/* | 创建和更新支持票证 |
 > | Microsoft.Advisor/configurations/read | 获取配置 |
 > | Microsoft.Advisor/recommendations/read | 读取建议 |
 > | Microsoft.Management/managementGroups/read | 列出已通过身份验证的用户的管理组。 |
@@ -7021,7 +7027,7 @@ Azure Sentinel 响应方
 > | Microsoft.Solutions/applications/* |  |
 > | Microsoft.Solutions/register/action | 注册到解决方案。 |
 > | Microsoft.Resources/subscriptions/resourceGroups/* |  |
-> | Microsoft.Resources/deployments/* | 创建和管理资源组部署 |
+> | Microsoft.Resources/deployments/* | 创建和管理部署 |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
@@ -7110,7 +7116,7 @@ Azure Sentinel 响应方
 > | --- | --- |
 > | **操作** |  |
 > | */read | 读取除密码外的所有类型的资源。 |
-> | Microsoft.Resources/deployments/* | 创建和管理资源组部署 |
+> | Microsoft.Resources/deployments/* | 创建和管理部署 |
 > | Microsoft.Solutions/jitRequests/* |  |
 > | **不操作** |  |
 > | *无* |  |
@@ -7286,11 +7292,11 @@ Azure Sentinel 响应方
 > | --- | --- |
 > | **操作** |  |
 > | Microsoft.Authorization/*/read | 读取角色和角色分配 |
-> | Microsoft.Insights/alertRules/* | 创建和管理 Insights 警报规则 |
+> | Microsoft.Insights/alertRules/* | 创建和管理经典指标警报 |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 获取指定范围内所有资源的可用性状态 |
-> | Microsoft.Resources/deployments/* | 创建和管理资源组部署 |
+> | Microsoft.Resources/deployments/* | 创建和管理部署 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
-> | Microsoft.Support/* | 创建和管理支持票证 |
+> | Microsoft.Support/* | 创建和更新支持票证 |
 > | NewRelic.APM/accounts/* |  |
 > | **不操作** |  |
 > | *无* |  |
@@ -7390,7 +7396,7 @@ Azure Sentinel 响应方
 > | Microsoft.Authorization/policydefinitions/* | 创建和管理策略定义 |
 > | Microsoft.Authorization/policysetdefinitions/* | 创建和管理策略集 |
 > | Microsoft.PolicyInsights/* |  |
-> | Microsoft.Support/* | 创建和管理支持票证 |
+> | Microsoft.Support/* | 创建和更新支持票证 |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
@@ -7436,7 +7442,7 @@ Azure Sentinel 响应方
 > | --- | --- |
 > | **操作** |  |
 > | Microsoft.Authorization/*/read | 读取角色和角色分配 |
-> | Microsoft.Insights/alertRules/* | 创建和管理 Insights 警报规则 |
+> | Microsoft.Insights/alertRules/* | 创建和管理经典指标警报 |
 > | Microsoft.Network/virtualNetworks/read | 获取虚拟网络定义 |
 > | Microsoft.RecoveryServices/locations/allocatedStamp/read | GetAllocatedStamp 是服务使用的内部操作 |
 > | Microsoft.RecoveryServices/locations/allocateStamp/action | AllocateStamp 是服务使用的内部操作 |
@@ -7458,11 +7464,11 @@ Azure Sentinel 响应方
 > | Microsoft.RecoveryServices/Vaults/monitoringAlerts/* | 读取恢复服务保管库的警报 |
 > | Microsoft.RecoveryServices/Vaults/monitoringConfigurations/notificationConfiguration/read |  |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 获取指定范围内所有资源的可用性状态 |
-> | Microsoft.Resources/deployments/* | 创建和管理资源组部署 |
+> | Microsoft.Resources/deployments/* | 创建和管理部署 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
 > | Microsoft.Storage/storageAccounts/read | 返回存储帐户的列表，或获取指定存储帐户的属性。 |
 > | Microsoft.RecoveryServices/vaults/replicationOperationStatus/read | 读取任何保管库复制操作状态 |
-> | Microsoft.Support/* | 创建和管理支持票证 |
+> | Microsoft.Support/* | 创建和更新支持票证 |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
@@ -7530,7 +7536,7 @@ Azure Sentinel 响应方
 > | --- | --- |
 > | **操作** |  |
 > | Microsoft.Authorization/*/read | 读取角色和角色分配 |
-> | Microsoft.Insights/alertRules/* | 创建和管理 Insights 警报规则 |
+> | Microsoft.Insights/alertRules/* | 创建和管理经典指标警报 |
 > | Microsoft.Network/virtualNetworks/read | 获取虚拟网络定义 |
 > | Microsoft.RecoveryServices/locations/allocatedStamp/read | GetAllocatedStamp 是服务使用的内部操作 |
 > | Microsoft.RecoveryServices/locations/allocateStamp/action | AllocateStamp 是服务使用的内部操作 |
@@ -7583,10 +7589,10 @@ Azure Sentinel 响应方
 > | Microsoft.RecoveryServices/Vaults/usages/read | 返回恢复服务保管库的使用情况详细信息。 |
 > | Microsoft.RecoveryServices/Vaults/vaultTokens/read | “保管库令牌”操作可用于获取保管库级后端操作的保管库令牌。 |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 获取指定范围内所有资源的可用性状态 |
-> | Microsoft.Resources/deployments/* | 创建和管理资源组部署 |
+> | Microsoft.Resources/deployments/* | 创建和管理部署 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
 > | Microsoft.Storage/storageAccounts/read | 返回存储帐户的列表，或获取指定存储帐户的属性。 |
-> | Microsoft.Support/* | 创建和管理支持票证 |
+> | Microsoft.Support/* | 创建和更新支持票证 |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
@@ -7713,7 +7719,7 @@ Azure Sentinel 响应方
 > | Microsoft.RecoveryServices/Vaults/tokenInfo/read |  |
 > | Microsoft.RecoveryServices/Vaults/usages/read | 返回恢复服务保管库的使用情况详细信息。 |
 > | Microsoft.RecoveryServices/Vaults/vaultTokens/read | “保管库令牌”操作可用于获取保管库级后端操作的保管库令牌。 |
-> | Microsoft.Support/* | 创建和管理支持票证 |
+> | Microsoft.Support/* | 创建和更新支持票证 |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
@@ -7785,7 +7791,7 @@ Azure Sentinel 响应方
 > | **操作** |  |
 > | Microsoft.Authorization/*/read | 读取角色和角色分配 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
-> | Microsoft.Support/* | 创建和管理支持票证 |
+> | Microsoft.Support/* | 创建和更新支持票证 |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
@@ -7831,9 +7837,9 @@ Azure Sentinel 响应方
 > | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
 > | Microsoft.Resources/subscriptions/resourceGroups/resources/read | 获取资源组的资源。 |
 > | Microsoft.Resources/subscriptions/resources/read | 获取订阅的资源。 |
-> | Microsoft.Resources/deployments/* | 创建和管理资源组部署 |
-> | Microsoft.Insights/alertRules/* | 创建和管理 Insights 警报规则 |
-> | Microsoft.Support/* | 创建和管理支持票证 |
+> | Microsoft.Resources/deployments/* | 创建和管理部署 |
+> | Microsoft.Insights/alertRules/* | 创建和管理经典指标警报 |
+> | Microsoft.Support/* | 创建和更新支持票证 |
 > | Microsoft.Resources/tags/* |  |
 > | **不操作** |  |
 > | *无* |  |
@@ -7886,11 +7892,11 @@ Azure Sentinel 响应方
 > | **操作** |  |
 > | Microsoft.Authorization/*/read | 读取角色和角色分配 |
 > | Microsoft.BizTalkServices/BizTalk/* | 创建和管理 BizTalk 服务 |
-> | Microsoft.Insights/alertRules/* | 创建和管理 Insights 警报规则 |
+> | Microsoft.Insights/alertRules/* | 创建和管理经典指标警报 |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 获取指定范围内所有资源的可用性状态 |
-> | Microsoft.Resources/deployments/* | 创建和管理资源组部署 |
+> | Microsoft.Resources/deployments/* | 创建和管理部署 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
-> | Microsoft.Support/* | 创建和管理支持票证 |
+> | Microsoft.Support/* | 创建和更新支持票证 |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
@@ -7937,12 +7943,12 @@ Azure Sentinel 响应方
 > | --- | --- |
 > | **操作** |  |
 > | Microsoft.Authorization/*/read | 读取角色和角色分配 |
-> | Microsoft.Insights/alertRules/* | 创建和管理 Insights 警报规则 |
+> | Microsoft.Insights/alertRules/* | 创建和管理经典指标警报 |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 获取指定范围内所有资源的可用性状态 |
-> | Microsoft.Resources/deployments/* | 创建和管理资源组部署 |
+> | Microsoft.Resources/deployments/* | 创建和管理部署 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
 > | Microsoft.Scheduler/jobcollections/* | 创建和管理作业集合 |
-> | Microsoft.Support/* | 创建和管理支持票证 |
+> | Microsoft.Support/* | 创建和更新支持票证 |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |

@@ -7,13 +7,13 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.author: v-jay
 origin.date: 03/04/2020
-ms.date: 03/30/2020
-ms.openlocfilehash: 3926a8694f500047a21e6e4278468c95f29eef96
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 06/01/2020
+ms.openlocfilehash: a50744b266d99ee205aae44129a85911f5d4b604
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80290343"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199803"
 ---
 # <a name="host-a-static-website-in-azure-storage"></a>在 Azure 存储中托管静态网站
 
@@ -31,19 +31,19 @@ ms.locfileid: "80290343"
 
 2. 找到存储帐户并显示帐户概览。
 
-3. 选择“静态网站”，以显示静态网站的配置页。 
+3. 选择“静态网站”，以显示静态网站的配置页。
 
-4. 选择“启用”，启用针对存储帐户的静态网站托管功能。 
+4. 选择“启用”，启用针对存储帐户的静态网站托管功能。
 
-5. 在“索引文档名称”  字段中，指定一个默认索引页（例如：*index.html*）。 
+5. 在“索引文档名称”字段中，指定一个默认索引页（例如：*index.html*）。 
 
    当用户导航到静态网站的根目录时，会显示默认索引页。  
 
-6. 在“错误文档路径”  字段中，指定一个默认错误页（例如：*404.html*）。 
+6. 在“错误文档路径”字段中，指定一个默认错误页（例如：*404.html*）。 
 
    当用户尝试导航到静态网站中不存在的页面时，会显示默认错误页。
 
-7. 单击“保存”  。 Azure 门户现在会显示静态网站终结点。 
+7. 单击“保存” 。 Azure 门户现在会显示静态网站终结点。 
 
     ![启用针对存储帐户的静态网站托管功能](media/storage-blob-static-website-host/enable-static-website-hosting.png)
 
@@ -135,11 +135,11 @@ ms.locfileid: "80290343"
 
 这些说明展示了如何使用存储资源管理器上传文件。 可以使用 [AzCopy](../common/storage-use-azcopy-v10.md)、PowerShell、CLI 或可将文件上传到帐户的 **$web** 容器的任何自定义应用程序。 有关使用 Visual Studio Code 上传文件的分步教程，请参阅[教程：在 Blob 存储上托管静态网站](/storage/blobs/storage-blob-static-website-host)。
 
-1. 打开存储资源管理器  。
+1. 打开存储资源管理器。
 
-2. 展开“BLOB 容器”  节点，然后选择 **$web** 容器。
+2. 展开“BLOB 容器”节点，然后选择 **$web** 容器。
 
-3. 选择“上传”  按钮来上传文件。
+3. 选择“上传”按钮来上传文件。
 
    ![上传文件](media/storage-blob-static-website/storage-blob-static-website-upload.png)
 
@@ -148,15 +148,18 @@ ms.locfileid: "80290343"
    ![检查内容类型](media/storage-blob-static-website/storage-blob-static-website-content-type.png)
 
    >[!NOTE]
-   > 对于通常可识别的扩展名（例如 `.html`），存储资源管理器会自动将此属性设置为 `text/html`。 但是，在某些情况下，你必须自行设置此项。 如果你没有将此属性设置为 `text/html`，则浏览器将提示用户下载文件而不是呈现内容。 若要设置此属性，请右键单击文件，然后单击“属性”  。
+   > 对于通常可识别的扩展名（例如 `.html`），存储资源管理器会自动将此属性设置为 `text/html`。 但是，在某些情况下，你必须自行设置此项。 如果你没有将此属性设置为 `text/html`，则浏览器将提示用户下载文件而不是呈现内容。 若要设置此属性，请右键单击文件，然后单击“属性”。
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-将对象从源目录上传到 $web 容器  。
+将对象从源目录上传到 $web 容器。
 
 ```azurecli
-az storage blob upload-batch -s <source-path> -d $web --account-name <storage-account-name> --content-type 'text/html; charset=utf-8'
+az storage blob upload-batch -s <source-path> -d $web --account-name <storage-account-name>
 ```
+
+> [!NOTE] 
+> 如果浏览器提示用户下载文件而不是呈现内容，则可以将 `--content-type 'text/html; charset=utf-8'` 追加到命令。 
 
 * 将 `<storage-account-name>` 占位符值替换为存储帐户的名称。
 
@@ -167,16 +170,18 @@ az storage blob upload-batch -s <source-path> -d $web --account-name <storage-ac
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-将对象从源目录上传到 $web 容器  。
+将对象从源目录上传到 $web 容器。
 
 ```powershell
 # upload a file
 set-AzStorageblobcontent -File "<path-to-file>" `
--Properties @{ ContentType = "text/html; charset=utf-8";} `
 -Container `$web `
 -Blob "<blob-name>" `
 -Context $ctx
 ```
+
+> [!NOTE] 
+> 如果浏览器提示用户下载文件而不是呈现内容，则可以将 `-Properties @{ ContentType = "text/html; charset=utf-8";}` 追加到命令。
 
 * 将 `<path-to-file>` 占位符值替换为要上传的文件的完全限定路径（例如：`C:\temp\index.html`）。
 
@@ -192,7 +197,7 @@ set-AzStorageblobcontent -File "<path-to-file>" `
 
 <a id="portal-find-url" />
 
-在存储帐户的帐户概述页旁边显示的窗格中，选择“静态网站”  。 你的站点的 URL 显示在“主终结点”  字段中。
+在存储帐户的帐户概述页旁边显示的窗格中，选择“静态网站”。 你的站点的 URL 显示在“主终结点”字段中。
 
 ![Azure 存储静态网站指标 - 指标](./media/storage-blob-static-website/storage-blob-static-website-url.png)
 
@@ -231,35 +236,42 @@ Write-Output $storageAccount.PrimaryEndpoints.Web
 
 ## <a name="enable-metrics-on-static-website-pages"></a>在静态网站页面上启用指标
 
-启用指标后，指标仪表板会报告有关 $web 容器中的文件的流量统计信息  。
+启用指标后，指标仪表板会报告有关 $web 容器中的文件的流量统计信息。
 
-1. 单击“设置” > “监视” > “指标”。   
+1. 单击“存储帐户”菜单“监视”部分下的“指标” 。
 
-   将通过挂接到不同的指标 API 来生成指标数据。 门户只会显示在给定时间范围内使用的 API 成员，以便重点关注可返回数据的成员。 为确保能够选择所需的 API 成员，第一步是展开时间范围。
+   > [!div class="mx-imgBorder"]
+   > ![指标链接](./media/storage-blob-static-website/metrics-link.png)
 
-2. 单击时间范围按钮，选择“过去 24 小时”，然后单击“应用”   。
+   > [!NOTE]
+   > 将通过挂接到不同的指标 API 来生成指标数据。 门户只会显示在给定时间范围内使用的 API 成员，以便重点关注可返回数据的成员。 为确保能够选择所需的 API 成员，第一步是展开时间范围。
+
+2. 单击“期限”按钮，选择一个期限，然后单击“应用”。
 
    ![Azure 存储静态网站指标 - 时间范围](./media/storage-blob-static-website/storage-blob-static-website-metrics-time-range.png)
 
-3. 从“命名空间”下拉列表中选择“Blob”。  
+3. 从“命名空间”下拉列表中选择“Blob”。
 
    ![Azure 存储静态网站指标 - 命名空间](./media/storage-blob-static-website/storage-blob-static-website-metrics-namespace.png)
 
-4. 然后选择“传出”指标。 
+4. 然后选择“传出”指标。
 
    ![Azure 存储静态网站指标 - 指标](./media/storage-blob-static-website/storage-blob-static-website-metrics-metric.png)
 
-5. 从“聚合”选择器中选择“总和”。  
+5. 从“聚合”选择器中选择“总和”。
 
    ![Azure 存储静态网站指标 - 聚合](./media/storage-blob-static-website/storage-blob-static-website-metrics-aggregation.png)
 
-6. 单击“添加筛选器”按钮，并从“属性”选择器中选择“API 名称”。   
+6. 单击“添加筛选器”按钮，并从“属性”选择器中选择“API 名称”。 
 
    ![Azure 存储静态网站指标 - API 名称](./media/storage-blob-static-website/storage-blob-static-website-metrics-api-name.png)
 
-7. 在“值”选择器中选中“GetWebContent”旁边的复选框，以填充指标报告。  
+7. 在“值”选择器中选中“GetWebContent”旁边的复选框，以填充指标报告。
 
    ![Azure 存储静态网站指标 - GetWebContent](./media/storage-blob-static-website/storage-blob-static-website-metrics-getwebcontent.png)
+
+   >[!NOTE]
+   > 只有在给定的期限内使用该 API 成员时，才会显示 GetWebContent 复选框。 门户只会显示在给定时间范围内使用的 API 成员，以便重点关注可返回数据的成员。 如果在此列表中找不到特定的 API 成员，请展开期限。
 
 ## <a name="next-steps"></a>后续步骤
 

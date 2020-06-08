@@ -8,21 +8,21 @@ manager: timlt
 ms.service: event-hubs
 ms.topic: article
 origin.date: 12/02/2019
-ms.date: 03/30/2020
+ms.date: 05/29/2020
 ms.author: v-tawe
-ms.openlocfilehash: 1f5a634029cde8e1f52156665fdd72050e14ba55
-ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
+ms.openlocfilehash: 17fd32116bce971c99656b709ec16f756e8825c4
+ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82588793"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84275616"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>事件中心常见问题
 
 ## <a name="general"></a>常规
 
 ### <a name="what-is-an-event-hubs-namespace"></a>什么是事件中心命名空间？
-命名空间是事件中心主题的范围容器。 它提供唯一的 FQDN。 命名空间充当容装多个事件中心主题的应用程序容器。 
+命名空间是事件中心/Kafka 主题的范围容器。 它提供唯一的 FQDN。 命名空间充当容装多个事件中心/Kafka 主题的应用程序容器。 
 
 ### <a name="when-do-i-create-a-new-namespace-vs-use-an-existing-namespace"></a>何时创建新的命名空间而不是使用现有的命名空间？
 容量分配（[吞吐量单位 (TU)](#throughput-units)）在命名空间级别进行计费。 命名空间也与区域相关联。
@@ -41,6 +41,7 @@ Azure 事件中心标准层提供的功能超出了基本层中提供的功能�
 * 其他中转连接，对于超出包含的数量的部分收取超额费用
 * 多于单个[使用者组](event-hubs-features.md#consumer-groups)
 * [捕获](event-hubs-capture-overview.md)
+* [Kafka 集成](event-hubs-for-kafka-ecosystem-overview.md)
 
 有关定价层的详细信息（包括专用事件中心），请参阅[事件中心定价详细信息](https://www.azure.cn/pricing/details/event-hubs/)。
 
@@ -56,10 +57,10 @@ Azure 事件中心标准层提供的功能超出了基本层中提供的功能�
 
 事件中心标准版目前支持的最长保留期为七天。 事件中心不应作为永久性的数据存储。 大于 24 小时的保留期适用于将事件流重播到相同系统中的情形；例如，为了基于现有数据来培训或验证新机器学习模型。 如果需要将消息保留七天以上，请启用事件中心的[事件中心捕获](event-hubs-capture-overview.md)功能，将数据从事件中心提取到所选的存储帐户或 Azure Data Lake 服务帐户。 启用捕获功能需要支付费用，具体因购买的吞吐量单位而异。
 
-可以在存储帐户上配置已捕获数据的保留期。 Azure 存储的“生命周期管理”  功能为常规用途 v2 和 blob 存储帐户提供了基于规则的丰富策略。 可使用该策略将数据转移到适当的访问层，或在数据的生命周期结束时使数据过期。 有关详细信息，请参阅[管理 Azure Blob 存储生命周期](../storage/blobs/storage-lifecycle-management-concepts.md)。 
+可以在存储帐户上配置已捕获数据的保留期。 Azure 存储的“生命周期管理”功能为常规用途 v2 和 blob 存储帐户提供了基于规则的丰富策略。 可使用该策略将数据转移到适当的访问层，或在数据的生命周期结束时使数据过期。 有关详细信息，请参阅[管理 Azure Blob 存储生命周期](../storage/blobs/storage-lifecycle-management-concepts.md)。 
 
 ### <a name="how-do-i-monitor-my-event-hubs"></a>如何监视事件中心？
-事件中心向 [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md) 发出详尽指标用于提供资源的状态。 此外，参考指标不仅可以在命名空间级别，而且还能在实体级别评估事件中心服务的总体运行状况。 了解 [Azure 事件中心](event-hubs-metrics-azure-monitor.md)提供哪些监视功能。
+事件中心向 [Azure Monitor](../azure-monitor/overview.md) 发出详尽指标用于提供资源的状态。 此外，参考指标不仅可以在命名空间级别，而且还能在实体级别评估事件中心服务的总体运行状况。 了解 [Azure 事件中心](event-hubs-metrics-azure-monitor.md)提供哪些监视功能。
 
 ### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>我需要在防火墙上打开哪些端口？ 
 可以将以下协议与 Azure 服务总线配合使用，以便发送和接收消息：
@@ -74,6 +75,7 @@ Azure 事件中心标准层提供的功能超出了基本层中提供的功能�
 | -------- | ----- | ------- | 
 | AMQP | 5671 和 5672 | 请参阅 [AMQP 协议指南](../service-bus-messaging/service-bus-amqp-protocol-guide.md) | 
 | HTTP、HTTPS | 80、443 |  |
+| Kafka | 9093 | 请参阅[使用 Kafka 应用程序中的事件中心](event-hubs-for-kafka-ecosystem-overview.md)
 
 ### <a name="what-ip-addresses-do-i-need-to-whitelist"></a>我需要将哪些 IP 地址加入允许列表？
 若要找到适合加入连接的允许列表的 IP 地址，请执行以下步骤：
@@ -92,7 +94,7 @@ Azure 事件中心标准层提供的功能超出了基本层中提供的功能�
     ```
     nslookup <yournamespace>.servicebus.chinacloudapi.cn
     ```
-2. 记下“非权威回答”  部分中的名称，该名称采用下述格式之一： 
+2. 记下“非权威回答”部分中的名称，该名称采用下述格式之一： 
 
     ```
     <name>-s1.servicebus.chinacloudapi.cn
@@ -101,8 +103,24 @@ Azure 事件中心标准层提供的功能超出了基本层中提供的功能�
     ```
 3. 为每一个运行 nslookup，使用后缀 s1、s2 和 s3 获取所有三个在三个可用性区域中运行的实例的 IP 地址。 
 
-<!-- ## Apache Kafka integration -->
+## <a name="apache-kafka-integration"></a>Apache Kafka 集成
 
+### <a name="how-do-i-integrate-my-existing-kafka-application-with-event-hubs"></a>如何将现有的 Kafka 应用程序与事件中心集成？
+事件中心提供可由基于 Apache Kafka 的现有应用程序使用的 Kafka 终结点。 只需完成一项配置更改，即可获得 PaaS Kafka 体验。 使用该体验就如同运行自己的 Kafka 群集。 事件中心支持 Apache Kafka 1.0 和更高版本的客户端，并且适用于现有的 Kafka 应用程序、工具和框架。 有关详细信息，请参阅[适用于 Kafka 的事件中心存储库](https://github.com/Azure/azure-event-hubs-for-kafka)。
+
+### <a name="what-configuration-changes-need-to-be-done-for-my-existing-application-to-talk-to-event-hubs"></a>要使现有的应用程序与事件中心通信，需要完成哪些配置更改？
+要连接到事件中心，需要更新 Kafka 客户端配置。 为此，可以创建事件中心命名空间并获取[连接字符串](event-hubs-get-connection-string.md)。 更改 bootstrap.servers，以将事件中心 FQDN 和端口指向 9093。 更新 sasl.jaas.config，以使用正确的身份验证将 Kafka 客户端定向到事件中心终结点（已获取的连接字符串），如下所示：
+
+bootstrap.servers={YOUR.EVENTHUBS.FQDN}:9093 request.timeout.ms=60000 security.protocol=SASL_SSL sasl.mechanism=PLAIN sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="{YOUR.EVENTHUBS.CONNECTION.STRING}";
+
+示例：
+
+bootstrap.servers=dummynamespace.servicebus.chinacloudapi.cn:9093 request.timeout.ms=60000 security.protocol=SASL_SSL sasl.mechanism=PLAIN sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="Endpoint=sb://dummynamespace.servicebus.chinacloudapi.cn/;SharedAccessKeyName=DummyAccessKeyName;SharedAccessKey=5dOntTRytoC24opYThisAsit3is2B+OGY1US/fuL3ly=";
+
+注意：如果 sasl.jaas.config 不是框架中受支持的配置，请查找用于设置 SASL 用户名和密码的配置，并改为使用这些配置。 将用户名设置为 $ConnectionString，将密码设置为事件中心连接字符串。
+
+### <a name="what-is-the-messageevent-size-for-event-hubs"></a>事件中心的消息/事件大小是多少？
+事件中心允许的最大消息大小为 1 MB。
 
 ## <a name="throughput-units"></a>吞吐量单位
 
@@ -137,7 +155,7 @@ Azure 事件中心标准层提供的功能超出了基本层中提供的功能�
 如果某个命名空间中所有事件中心间的总出口吞吐量或总出口事件率超过了聚合吞吐量单位限额，接收方会受到限制，并会收到指明已超出出口配额的错误信息。 入口和出口配额是分开强制实施的，因此，任何发送方都不会使事件耗用速度减慢，并且接收方也无法阻止事件发送到事件中心。
 
 ### <a name="is-there-a-limit-on-the-number-of-throughput-units-tus-that-can-be-reservedselected"></a>可预留/选择的吞吐量单位 (TU) 数量是否有限制？
-在多租户产品/服务中，吞吐量单位最多可扩展到 40 TU（可在门户中最多选择 20 TU，然后提出支持票证，在同一命名空间中将数目提高到 40 TU）。 如果超出 40 TU，事件中心可提供名为“事件中心专用群集”的基于资源/容量的模型。  专用群集按容量单位 (CU) 销售。
+在多租户产品/服务中，吞吐量单位最多可扩展到 40 TU（可在门户中最多选择 20 TU，然后提出支持票证，在同一命名空间中将数目提高到 40 TU）。 如果超出 40 TU，事件中心可提供名为“事件中心专用群集”的基于资源/容量的模型。 专用群集按容量单位 (CU) 销售。
 
 ## <a name="dedicated-clusters"></a>专用群集
 
@@ -164,7 +182,7 @@ Azure 事件中心标准层提供的功能超出了基本层中提供的功能�
 结果大致反映了一个专用事件中心群集可以实现的处理量。 此外，专用群集还为微批和长期保留方案启用了“事件中心捕获”。
 
 ### <a name="how-do-i-create-an-event-hubs-dedicated-cluster"></a>如何创建事件中心专用群集？
-可以通过提交[提高配额支持请求](https://portal.azure.cn/#create/Microsoft.Support)或联系[事件中心团队](mailto:askeventhubs@microsoft.com)来创建事件中心专用群集。 通常，我们需要花费大约两周时间来部署群集，并将其转交给你使用。 此过程是暂时性的，到时会 Azure 门户或 Azure 资源管理器模板提供完全自助的服务，只需大约两个小时即可部署群集。
+可以通过提交[提高配额支持请求](https://support.azure.cn/support/support-azure/)或联系[事件中心团队](mailto:askeventhubs@microsoft.com)来创建事件中心专用群集。 通常，我们需要花费大约两周时间来部署群集，并将其转交给你使用。 此过程是暂时性的，到时会 Azure 门户或 Azure 资源管理器模板提供完全自助的服务，只需大约两个小时即可部署群集。
 
 ## <a name="best-practices"></a>最佳实践
 
