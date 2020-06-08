@@ -8,12 +8,12 @@ ms.author: v-yiso
 ms.reviewer: jasonh
 origin.date: 08/20/2019
 ms.date: 04/06/2020
-ms.openlocfilehash: 4772865dcd3d6d0e23aa8b3bf129cd70f03c9d9e
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 89c9844854d924f2b57bdb1c816554811fc801f7
+ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80343565"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84186790"
 ---
 # <a name="apache-zookeeper-server-fails-to-form-a-quorum-in-azure-hdinsight"></a>Apache ZooKeeper 服务器无法在 Azure HDInsight 中形成仲裁
 
@@ -41,17 +41,17 @@ java.nio.channels.CancelledKeyException
 
 ## <a name="resolution"></a>解决方法
 
-检查 ZooKeeper 数据目录 `/hadoop/zookeeper/version-2` 和 `/hadoop/hdinsight-zookeepe/version-2`，确定快照文件大小是否过大。 如果存在大的快照，请执行以下步骤：
+检查 ZooKeeper 数据目录 `/hadoop/zookeeper/version-2` 和 `/hadoop/hdinsight-zookeeper/version-2`，确定快照文件大小是否过大。 如果存在大的快照，请执行以下步骤：
 
-1. 在 `/hadoop/zookeeper/version-2` 和 `/hadoop/hdinsight-zookeepe/version-2` 中备份快照。
+1. 检查同一仲裁中其他 ZooKeeper 服务器的状态，以确保它们可以使用命令 �`echo stat | nc {zk_host_ip} 2181 (or 2182)`� 正常运行。  
 
-1. 在 `/hadoop/zookeeper/version-2` 和 `/hadoop/hdinsight-zookeepe/version-2` 中清理快照。
+1. 在 `/hadoop/zookeeper/version-2` 和 `/hadoop/hdinsight-zookeeper/version-2` 中登录有问题的 ZooKeeper 主机、备份快照和事务日志，然后清除这两个目录中的这些文件。 
 
-1. 在 Apache Ambari UI 中重启所有 ZooKeeper 服务器。
+1. 在 Ambari 或 ZooKeeper 主机中重新启动有问题的 ZooKeeper 服务器。 然后重新启动有问题的服务。
 
 ## <a name="next-steps"></a>后续步骤
 
 如果你的问题未在本文中列出，或者无法解决问题，请访问以下渠道以获取更多支持：
 
 
-- 如果需要更多帮助，可以从 [Azure 门户](https://portal.azure.cn/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支持请求。 从菜单栏中选择“支持”  ，或打开“帮助 + 支持”  中心。 有关更多详细信息，请参阅[如何创建 Azure 支持请求](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)。 在 Microsoft Azure 订阅中可以访问订阅管理和计费支持；通过 [Azure 支持计划](https://azure.microsoft.com/support/plans/)之一提供技术支持。
+- 如果需要更多帮助，可以从 [Azure 门户](https://portal.azure.cn/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支持请求。 从菜单栏中选择“支持”，或打开“帮助 + 支持”中心。 有关更多详细信息，请参阅[如何创建 Azure 支持请求](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)。 Microsoft Azure 订阅包含对订阅管理和计费支持的访问权限，并且通过 [Azure 支持计划](https://azure.microsoft.com/support/plans/)之一提供技术支持。

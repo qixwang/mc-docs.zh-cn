@@ -1,5 +1,5 @@
 ---
-title: Azure 安全中心内的数据收集 | Azure
+title: Azure 安全中心内的数据收集
 description: 本文介绍如何安装 Log Analytics 代理以及如何设置 Log Analytics 工作区，以便在其中存储收集的数据。
 services: security-center
 author: memildin
@@ -9,15 +9,15 @@ ms.topic: conceptual
 ms.date: 05/11/2020
 ms.author: v-tawe
 origin.date: 09/10/2019
-ms.openlocfilehash: f591357964e851636327bfa66e8f23402f0132c1
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.openlocfilehash: cced0773ebb11f53bc3718028681197aa25381cd
+ms.sourcegitcommit: cbaa1aef101f67bd094f6ad0b4be274bbc2d2537
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83423026"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84126646"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Azure 安全中心中的数据收集
-安全中心从 Azure 虚拟机 (VM)、虚拟机规模集、IaaS 容器和非 Azure（包括本地）计算机收集数据，以监视安全漏洞和威胁。 数据是使用 Log Analytics 代理收集的，该代理从计算机中读取各种与安全相关的配置和事件日志，然后将数据复制到工作区进行分析。 此类数据的示例包括：操作系统类型和版本、操作系统日志（Windows 事件日志）、正在运行的进程、计算机名称、IP 地址和已登录的用户。 Log Analytics 代理还将故障转储文件复制到工作区。
+安全中心从 Azure 虚拟机 (VM)、虚拟机规模集、IaaS 容器和非 Azure（包括本地）计算机收集数据，以监视安全漏洞和威胁。 数据是使用 Log Analytics 代理收集的，该代理从计算机中读取各种与安全相关的配置和事件日志，然后将数据复制到工作区进行分析。 此类数据的示例包括：操作系统类型和版本、操作系统日志（Windows 事件日志）、正在运行的进程、计算机名称、IP 地址和已登录的用户。 Log Analytics 代理还会将故障转储文件复制到工作区。
 
 必须收集数据才能深入了解缺少的更新、配置不当的 OS 安全设置、Endpoint Protection 状态情况，以及运行状况和威胁防护。 
 
@@ -30,25 +30,23 @@ ms.locfileid: "83423026"
 
 ## <a name="enable-automatic-provisioning-of-the-log-analytics-agent"></a>启用 Log Analytics 代理的自动预配<a name="auto-provision-mma"></a>
 
-若要从计算机收集数据，应安装 Log Analytics 代理。 可以自动安装该代理（建议），也可以手动安装。  
+要从计算机收集数据，应安装 Log Analytics 代理。 可以自动安装该代理（建议），也可以手动安装。 自动预配默认处于关闭状态。
 
->[!NOTE]
-> 默认情况下自动设置处于关闭状态。 若要将安全中心设置为默认安装自动预配，请将自动预配设置为“打开”。
->
-
-启用自动预配后，安全中心可在所有受支持的 Azure VM 以及任何新建的 Azure VM 中预配 Log Analytics 代理。 强烈建议进行自动预配，但也可以手动代理安装。 [了解如何安装 Log Analytics 代理扩展](#manual-agent)。
+启用自动预配后，安全中心可在所有受支持的 Azure VM 以及任何新建的 Azure VM 中部署 Log Analytics 代理。 建议使用自动预配，但如有需要，可以手动安装代理（请参阅[手动安装 Log Analytics 代理](#manual-agent)）。
 
 
-
-启用对 Log Analytics 代理的自动预配：
-1. 在“安全中心”主菜单下，选择“定价和设置”。
-2. 单击适用的订阅
+若要启用对 Log Analytics 代理的自动预配，请执行以下操作：
+1. 在门户的“安全中心”菜单中，选择“定价和设置”。
+2. 选择相关订阅。
 
    ![选择订阅][7]
 
 3. 选择“数据收集”。
 4. 在“自动设置”下，选择“打开”以启用自动设置 。
-5. 选择“保存” 。
+5. 选择“保存” 。 代理将在 15 分钟内部署到所有 VM。 
+
+>[!TIP]
+> 如果需要预配工作区，代理安装最多可能需要 25 分钟时间。
 
    ![启用自动设置][1]
 
@@ -60,7 +58,7 @@ ms.locfileid: "83423026"
 >
 
 ## <a name="workspace-configuration"></a>工作区配置
-安全中心收集的数据存储在 Log Analytics 工作区中。 可以选择从存储在安全中心创建的工作区或创建的现有工作区中的 Azure VM 收集数据。 
+安全中心收集的数据存储在 Log Analytics 工作区中。 可以从存储在安全中心创建的工作区或你创建的现有工作区中的 Azure VM 收集数据。 
 
 工作区配置是按订阅设置的，多个订阅可以使用同一个工作区。
 
@@ -196,18 +194,17 @@ ms.locfileid: "83423026"
 以下用例指定在已安装代理或扩展的情况下如何进行自动预配。 
 
 - Log Analytics 代理已安装在计算机上，但不是作为扩展（直接代理）安装的<br>
-如果直接在 VM 上安装 Log Analytics 代理（而不是作为 Azure 扩展安装），安全中心将会安装 Log Analytics 代理扩展，并可能会将 Log Analytics 代理升级到最新版本。
+如果直接在 VM 上安装 Log Analytics 代理（而不是作为 Azure 扩展安装），安全中心将会安装 Log Analytics 代理扩展，并且可能会将 Log Analytics 代理升级到最新版本。
 安装的代理继续向已配置的工作区报告，此外，还会向安全中心内配置的工作区报告（在 Windows 计算机上支持多宿主功能）。
 如果配置的工作区是用户工作区（而不是安全中心的默认工作区），则需要在其上安装“Security”/“securityFree”解决方案，这样，安全中心才会开始处理向该工作区报告的 VM 和计算机发来的事件。<br>
 <br>
-对于 Linux 计算机，尚不支持代理多宿主，因此，如果检测到现有的代理安装，则不会进行自动配置，也不会更改计算机的配置。
+对于 Linux 计算机，尚不支持代理多宿主，因此，如果检测到现有的代理安装，则不会进行自动预配，也不会更改计算机的配置。
 <br>
 对于在 2019 年 3 月 17 日之前已加入安全中心的订阅中的现有计算机，检测到现有代理时，不会安装 Log Analytics 代理扩展，且计算机不受影响。 对于这些计算机，请参阅“解决计算机上的监视代理运行状况问题”中的建议来解决这些计算机上的代理安装问题。
 
   
 - 计算机上已安装 System Center Operations Manager 代理<br>
-安全中心会安装 Log Analytics 代理扩展，并保留现有的 Operations Manager 代理。 正常情况下，现有的 Operations Manager 代理将继续向 Operations Manager 服务器报告。 请注意，Operations Manager 代理和 Log Analytics 代理共享通用的运行时库，在此过程中，这些库会更新到最新版本。
-请注意，如果已安装 Operations Manager 代理版本 2012，则不会启用自动预配功能。<br>
+安全中心会安装 Log Analytics 代理扩展，并保留现有的 Operations Manager 代理。 正常情况下，现有的 Operations Manager 代理将继续向 Operations Manager 服务器报告。 Operations Manager 代理和 Log Analytics 代理共享通用的运行时库，在此过程中，这些库会更新到最新版本。 如果已安装 Operations Manager 代理版本 2012，则不会启用自动预配功能。<br>
 
 - 存在现有的 VM 扩展<br>
     - 将 Monitoring Agent 作为扩展安装时，扩展配置仅允许向单个工作区报告。 安全中心不会覆盖用户工作区的现有连接。 安全中心会将来自 VM 的安全数据存储在已连接的工作区中，前提是已在该工作区中安装“security”或“securityFree”解决方案。 在此过程中，安全中心可将扩展版本升级到最新版本。  
@@ -220,16 +217,15 @@ ms.locfileid: "83423026"
 
 1. 返回到“安全中心”主菜单，选择“安全策略”。
 2. 单击要禁用其自动预配的订阅行中的“编辑设置”。
-3. 在“安全策略 - 数据收集”边栏选项卡的“自动预配”下，选择“关闭”  。
+3. 在“安全策略 - 数据收集”页面的“自动预配”下，选择“关闭”  。
 4. 选择“保存” 。
 
    ![禁用自动预配][6]
 
 自动预配处于禁用状态（关闭）时，不会显示默认的工作区配置部分。
 
-如果关闭以前已打开的自动预配：
--   不会在新 VM 上预配代理。
--   安全中心会停止从默认工作区收集数据。
+如果关闭以前启用的自动预配，则不会在新 VM 上预配代理。
+
  
 > [!NOTE]
 >  禁用自动预配不会从已预配 Log Analytics 代理的 Azure VM 中删除该代理。 有关删除 OMS 扩展的信息，请参阅[如何删除安全中心安装的 OMS 扩展](faq-data-collection-agents.md#remove-oms)。
@@ -307,13 +303,13 @@ ms.locfileid: "83423026"
 
 - 确定不受监视的 VM 和计算机问题：
 
-    如果某个 VM 或计算机未运行 Microsoft Monitoring Agent 扩展，则它不受安全中心的监视。 计算机上可能已安装了本地代理，例如 OMS 直接代理或 System Center Operations Manager 代理。 装有这些代理的计算机被标识为未受监视，因为安全中心不完全支持这些代理。 若要充分利用安全中心的所有功能，需要使用 Microsoft Monitoring Agent 扩展。
+    如果计算机未运行 Log Analytics 代理扩展，则 VM 或计算机不受安全中心监视。 计算机上可能已安装了本地代理，例如 OMS 直接代理或 System Center Operations Manager 代理。 装有这些代理的计算机被标识为未受监视，因为安全中心不完全支持这些代理。 要充分利用安全中心的所有功能，需要使用 Log Analytics 代理扩展。
 
     请参阅[监视代理运行状况问题](security-center-troubleshooting-guide.md#mon-agent)，详细了解安全中心无法成功监视那些已针对自动预配初始化的 VM 和计算机的原因。
 
 
 ## <a name="next-steps"></a>后续步骤
-本文介绍了数据收集和自动设置在安全中心中的工作方式。 若要了解有关安全中心的详细信息，请参阅以下文章：
+本文介绍了数据收集和自动设置在安全中心中的工作方式。 若要了解有关安全中心的详细信息，请参阅以下页面：
 
 * [Azure 安全中心常见问题解答](faq-general.md)-- 查找有关使用服务的常见问题。
 * [Azure 安全中心的安全性运行状况监视](security-center-monitoring.md) - 了解如何监视 Azure 资源的运行状况。
