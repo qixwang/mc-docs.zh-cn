@@ -16,12 +16,12 @@ ms.workload: na
 origin.date: 10/31/2019
 ms.date: 03/02/2020
 ms.author: v-lingwu
-ms.openlocfilehash: a896d0f00c404149c22029cff49caa8f9479a75a
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+ms.openlocfilehash: b91754908cacf8ba5ec282823ab2b04f37fe27ce
+ms.sourcegitcommit: 79c99a9ea013b3c74706a1038a505f4eea2aaac4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84199502"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84439492"
 ---
 # <a name="security-management-in-azure"></a>Azure 中的安全管理
 Azure 订阅者可从多个设备管理他们的云环境，这些设备包括管理工作站、开发人员电脑，甚至是具有特定于任务的权限的特权最终用户设备。 在某些情况下，可通过基于 Web 的控制台（例如 [Azure 门户](https://azure.microsoft.com/features/azure-portal/)）来执行管理功能。 在其他情况下，可能存在通过虚拟专用网络 (VPN)、终端服务、客户端应用程序协议或（以编程方式）通过 Azure 服务管理 API (SMAPI) 从本地系统直接连接到 Azure。 此外，客户端终结点（例如平板电脑或智能手机）可以加入域或者受到隔离且不受管理。
@@ -108,7 +108,7 @@ Azure 提供了安全机制来帮助管理员管理 Azure 云服务和虚拟机�
 
 远程桌面网关是基于策略的 RDP 代理服务，可强制实施安全要求。 同时实现 RD 网关与 Windows Server 网络访问保护 (NAP)，可帮助确保只有符合 Active Directory 域服务 (AD DS) 组策略对象 (GPO) 创建的特定安全运行状况条件的客户端可以连接。 此外：
 
-* 在 RD 网关上预配 [Azure 管理证书](https://docs.microsoft.com/previous-versions/azure/gg551722(v=azure.100)?redirectedfrom=MSDN)，使它成为可以访问 Azure 门户的唯一主机。
+* 在 RD 网关上预配 [Azure 管理证书](/cloud-services/cloud-services-certs-create)，使它成为可以访问 Azure 门户的唯一主机。
 * 将 RD 网关加入管理员工作站所在的同一个[管理域](https://technet.microsoft.com/library/bb727085.aspx)。 在具有对 Azure AD 的单向信任的域中使用站点到站点 IPsec VPN 或 ExpressRoute 时，或者要联合本地 AD DS 实例与 Azure AD 之间的凭据时，就必须这样做。
 * 配置[客户端连接授权策略](https://technet.microsoft.com/library/cc753324.aspx)，以让 RD 网关验证客户端计算机名称是否有效（已加入域）并可以访问 Azure 门户。
 * 针对 [Azure VPN](/vpn-gateway/) 使用 IPsec 以进一步防止管理流量遭到窃听和令牌失窃，或考虑使用通过 [Azure ExpressRoute](/expressroute/) 隔离的 Internet 链接。

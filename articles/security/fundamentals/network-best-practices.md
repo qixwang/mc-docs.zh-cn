@@ -15,12 +15,12 @@ ms.workload: na
 origin.date: 10/02/2019
 ms.date: 03/02/2020
 ms.author: v-lingwu
-ms.openlocfilehash: fa22d9430632e305f58a46f5d873a670226423ec
-ms.sourcegitcommit: 1578f3feab2805d00156b2afcfac9c69a42837cb
+ms.openlocfilehash: e9292d43b3f9ffb5c0e4eadadef6acad5d05777d
+ms.sourcegitcommit: 79c99a9ea013b3c74706a1038a505f4eea2aaac4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84172846"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84439530"
 ---
 # <a name="azure-best-practices-for-network-security"></a>Azure 网络安全最佳做法
 本文介绍一系列有关增强网络安全性的 Azure 最佳做法。 这些最佳实践衍生自我们的 Azure 网络经验和客户的经验。
@@ -75,7 +75,7 @@ Azure 虚拟网络类似于本地网络上的 LAN。 Azure 虚拟网络背后的
 最佳做法为：
 
 **最佳做法**：基于设备、标识、保障、网络位置等因素授予对资源的条件访问。  
-**详细信息**：[Azure AD 条件访问](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)可让你根据所需的条件实施自动访问控制决策，以此应用适当的访问控制。 
+**详细信息**：[Azure AD 条件访问](/active-directory/conditional-access/overview)可让你根据所需的条件实施自动访问控制决策，以此应用适当的访问控制。 
 
 **最佳做法**：仅在工作流获批准后才启用端口访问。  
 **详细信息**：可以使用 [Azure 安全中心内的适时 VM 访问](../../security-center/security-center-just-in-time.md)来锁定发往 Azure VM 的入站流量，降低遭受攻击的可能性，同时在需要时轻松连接到 VM。

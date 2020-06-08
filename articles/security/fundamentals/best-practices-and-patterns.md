@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 05/29/2020
 ms.author: v-tawe
 origin.date: 05/29/2019
-ms.openlocfilehash: 488bce3628d8cc9d36c754701a9a418f379ff3a1
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+ms.openlocfilehash: fbb703046bf0c0354e99f108fe5ed2ee546d3442
+ms.sourcegitcommit: 79c99a9ea013b3c74706a1038a505f4eea2aaac4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84199959"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84439484"
 ---
 # <a name="azure-security-best-practices-and-patterns"></a>Azure 安全最佳实践和模式
 
@@ -36,14 +36,14 @@ ms.locfileid: "84199959"
 * [Azure 网络安全最佳实践](network-best-practices.md)
 * [Azure 操作安全性最佳做法](operational-best-practices.md)
 * [Azure PaaS 最佳做法](paas-deployments.md)
-<!--not available -->
-<!-- iaas not available-->
+* [Azure Service Fabric 安全性最佳做法](service-fabric-best-practices.md)
+* [Azure VM 安全性最佳做法](iaas.md)
+<!-- not available-->
 <!-- secure hybrid network architecture not available -->
-<!-- Iot not available -->
-<!-- pass app not available -->
-<!-- app service not available-->
-<!-- storage not available -->
-
+* [在 Azure 中保护 PaaS 数据库](paas-applications-using-sql.md)
+* [使用 Azure App Service 保护 PaaS Web 和移动应用程序](paas-applications-using-app-services.md)
+* [使用 Azure 存储保护 PaaS Web 和移动应用程序](paas-applications-using-storage.md)
+* [Azure 中 IaaS 工作负荷的安全性最佳做法](iaas.md)
 
 白皮书“适用于 Azure 解决方案的最佳做法”是上面列出的文章中介绍的安全最佳做法的集合。
 

@@ -1,31 +1,28 @@
 ---
-title: 用于文件和 ACL 的 Azure Data Lake Storage Gen2 .NET SDK（预览版）
+title: 用于文件和 ACL 的 Azure Data Lake Storage Gen2 .NET SDK
 description: 使用 Azure 存储客户端库在启用了分层命名空间 (HNS) 的存储帐户中管理目录和文件以及目录访问控制列表 (ACL)。
 author: WenJason
 ms.service: storage
-origin.date: 01/09/2020
-ms.date: 03/30/2020
+origin.date: 03/20/2020
+ms.date: 06/01/2020
 ms.author: v-jay
 ms.topic: article
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.openlocfilehash: 3dac5dd764c9daab1a6365b76301b3082ea06f76
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 046ceb58909b1ebaf883ac256a45672ae2871945
+ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80290370"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84199623"
 ---
-# <a name="use-net-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2-preview"></a>使用 .NET 管理 Azure Data Lake Storage Gen2（预览版）中的目录、文件和 ACL
+# <a name="use-net-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>使用 .NET 管理 Azure Data Lake Storage Gen2 中的目录、文件和 ACL
 
 本文介绍了如何使用 .NET 在启用了分层命名空间 (HNS) 的存储帐户中创建和管理目录、文件与权限。 
 
-> [!IMPORTANT]
-> 本文中重点介绍的 [Azure.Storage.Files.DataLake](https://www.nuget.org/packages/Azure.Storage.Files.DataLake) NuGet 包目前为公共预览版。
-
 [包 (NuGet)](https://www.nuget.org/packages/Azure.Storage.Files.DataLake) | [示例](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake) | [API 参考](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake) | [提供反馈](https://github.com/Azure/azure-sdk-for-net/issues)
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 > [!div class="checklist"]
 > * Azure 订阅。 请参阅[获取 Azure 1 元人民币的试用订阅](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth)。
@@ -49,9 +46,13 @@ using Azure;
 
 ## <a name="connect-to-the-account"></a>连接到帐户
 
-若要使用本文中的代码片段，需创建一个表示存储帐户的 [DataLakeServiceClient](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakeserviceclient) 实例。 若要获取一个，最简单的方法是使用帐户密钥。 
+若要使用本文中的代码片段，需创建一个表示存储帐户的 [DataLakeServiceClient](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakeserviceclient) 实例。 
 
-此示例使用帐户密钥创建 [DataLakeServiceClient](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakeserviceclient?) 的实例。
+### <a name="connect-by-using-an-account-key"></a>使用帐户密钥进行连接
+
+这是连接到帐户的最简单方法。 
+
+此示例使用帐户密钥创建 [DataLakeServiceClient 实例](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakeserviceclient?)。
 
 ```cs
 public void GetDataLakeServiceClient(ref DataLakeServiceClient dataLakeServiceClient,
@@ -66,6 +67,30 @@ public void GetDataLakeServiceClient(ref DataLakeServiceClient dataLakeServiceCl
         (new Uri(dfsUri), sharedKeyCredential);
 }
 ```
+
+### <a name="connect-by-using-azure-active-directory-ad"></a>使用 Azure Active Directory (AD) 进行连接
+
+可以使用[适用于 .NET 的 Azure 标识客户端库](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/identity/Azure.Identity)，通过 Azure AD 对应用程序进行身份验证。
+
+此示例使用客户端 ID、客户端密码和租户 ID 创建 [DataLakeServiceClient 实例](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakeserviceclient?)。  若要获取这些值，请参阅[从 Azure AD 获取用于请求客户端应用程序授权的令牌](../common/storage-auth-aad-app.md)。
+
+```cs
+public void GetDataLakeServiceClient(ref DataLakeServiceClient dataLakeServiceClient, 
+    String accountName, String clientID, string clientSecret, string tenantID)
+{
+
+    TokenCredential credential = new ClientSecretCredential(
+        tenantID, clientID, clientSecret, new TokenCredentialOptions());
+
+    string dfsUri = "https://" + accountName + ".dfs.core.chinacloudapi.cn";
+
+    dataLakeServiceClient = new DataLakeServiceClient(new Uri(dfsUri), credential);
+}
+
+```
+
+> [!NOTE]
+> 有关更多示例，请参阅[适用于 .NET 的 Azure 标识客户端库](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/identity/Azure.Identity)文档。
 
 ## <a name="create-a-file-system"></a>创建文件系统
 
@@ -105,7 +130,7 @@ public async Task<DataLakeDirectoryClient> CreateDirectory
 
 通过调用 [DataLakeDirectoryClient.RenameAsync](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakedirectoryclient.renameasync) 方法来重命名或移动目录。 以参数形式传递所需目录的路径。 
 
-此示例将子目录重命名为 `my-subdirectory-renamed` 的名称。
+此示例将某个子目录重命名为名称 `my-subdirectory-renamed`。
 
 ```cs
 public async Task<DataLakeDirectoryClient> 
@@ -201,6 +226,32 @@ public async Task UploadFile(DataLakeFileSystemClient fileSystemClient)
     await fileClient.FlushAsync(position: fileSize);
 
 }
+```
+
+> [!TIP]
+> 如果文件很大，则代码必须多次调用 [DataLakeFileClient.AppendAsync](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakefileclient.appendasync) 方法。 请考虑改用 [DataLakeFileClient.UploadAsync](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakefileclient.uploadasync?view=azure-dotnet#Azure_Storage_Files_DataLake_DataLakeFileClient_UploadAsync_System_IO_Stream_) 方法。 这样就可以在单个调用中上传整个文件。 
+>
+> 有关示例，请参阅下一节。
+
+## <a name="upload-a-large-file-to-a-directory"></a>将大型文件上传到目录
+
+使用 [DataLakeFileClient.UploadAsync](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakefileclient.uploadasync?view=azure-dotnet#Azure_Storage_Files_DataLake_DataLakeFileClient_UploadAsync_System_IO_Stream_) 方法上传大型文件，无需多次调用 [DataLakeFileClient.AppendAsync](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakefileclient.appendasync) 方法。
+
+```cs
+public async Task UploadFileBulk(DataLakeFileSystemClient fileSystemClient)
+{
+    DataLakeDirectoryClient directoryClient =
+        fileSystemClient.GetDirectoryClient("my-directory");
+
+    DataLakeFileClient fileClient = directoryClient.GetFileClient("uploaded-file.txt");
+
+    FileStream fileStream =
+        File.OpenRead("C:\\file-to-upload.txt");
+
+    await fileClient.UploadAsync(fileStream);
+
+}
+
 ```
 
 ## <a name="manage-a-file-acl"></a>管理文件 ACL

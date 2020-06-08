@@ -7,20 +7,20 @@ ms.reviewer: jasonh
 keywords: apache storm,apache storm 示例,storm java,storm 拓扑示例
 ms.service: hdinsight
 ms.topic: conceptual
-origin.date: 03/14/2019
-ms.date: 12/09/2019
+origin.date: 04/27/2020
+ms.date: 06/08/2020
 ms.author: v-yiso
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: 5585f4705ecc6647f5b7feb2e312ea7f9370f2b4
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 23508fe74f880e274c968502ebf379a973f5b892
+ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74658096"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84186905"
 ---
 # <a name="create-an-apache-storm-topology-in-java"></a>以 Java 语言创建 Apache Storm 拓扑
 
-了解如何为 [Apache Storm](https://storm.apache.org/) 创建基于 Java 的拓扑。 在此处，我们将创建一个实现单词计数应用程序的 Storm 拓扑。 将使用 [Apache Maven](https://maven.apache.org/) 构建并打包项目。 然后，了解如何使用 [Apache Storm Flux](https://storm.apache.org/releases/2.0.0/flux.html) 框架定义拓扑。
+了解如何为 Apache Storm 创建基于 Java 的拓扑。 将创建一个实现单词计数应用程序的 Storm 拓扑。 将使用 Apache Maven 生成并打包项目。 然后，了解如何使用 Apache Storm Flux 框架定义拓扑。
 
 完成本文档中的步骤之后，便可以将拓扑部署到 Apache Storm on HDInsight。
 
@@ -199,7 +199,7 @@ Maven 插件可用于自定义项目的生成阶段。 例如，如何编译项�
 
 * **Apache Maven Compiler 插件**
 
-    另一个有用的插件是用于更改编译选项的 [Apache Maven Compiler 插件](https://maven.apache.org/plugins/maven-compiler-plugin/)。 更改 Maven 用作应用程序源和目标的 Java 版本。
+    另一个有用的插件是 [`Apache Maven Compiler Plugin`](https://maven.apache.org/plugins/maven-compiler-plugin/)，它用于更改编译选项。 更改 Maven 用作应用程序源和目标的 Java 版本。
     
   * 对于 __HDInsight 3.4 或更早的版本__，请将源和目标 Java 版本设置为 __1.7__。
     
@@ -241,13 +241,13 @@ Maven 插件可用于自定义项目的生成阶段。 例如，如何编译项�
 
 * **Spout**：读取外部源中的数据，并发出进入拓扑的数据流。
 
-* **Bolt**：对 Spout 或其他 Bolt 所发出的数据流执行处理，并发出一个或多个数据流。
+* **Bolt**：对 Spout 或其他 Bolt 发出的数据流进行处理，并发出一个或多个数据流。
 
 * **拓扑**：定义如何排列 Spout 和 Bolt，并提供拓扑的入口点。
 
 ### <a name="create-the-spout"></a>创建 Spout
 
-为了降低设置外部数据源的要求，以下 Spout 只会发出随机句子。 它是 [Storm-Starter 示例](https://github.com/apache/storm/blob/0.10.x-branch/examples/storm-starter/src/jvm/storm/starter)随附的 Spout 的修改版本。  虽然此拓扑只使用一个 Spout，但其他拓扑可能存在将数据从不同源送入拓扑的多个 Spout。
+为了降低设置外部数据源的要求，以下 Spout 只会发出随机句子。 它是 [Storm-Starter 示例](https://github.com/apache/storm/blob/0.10.x-branch/examples/storm-starter/src/jvm/storm/starter)随附的 Spout 的修改版本。  虽然此拓扑使用一个 Spout，但其他拓扑可能存在将数据从不同源送入拓扑的多个 Spout。
 
 输入以下命令，以创建并打开新文件 `RandomSentenceSpout.java`：
 
@@ -485,7 +485,7 @@ public class WordCount extends BaseBasicBolt {
 
 ### <a name="define-the-topology"></a>定义拓扑
 
-拓扑将 Spout 和 Bolt 一起绑定到图形，该图形定义了组件之间的数据流动方式。 它还提供 Storm 在群集内创建组件的实例时使用的并行度提示。
+拓扑将 Spout 和 Bolt 连接在一起，并绘制成图形。 图形定义了数据在组件之间的流动。 它还提供 Storm 在群集内创建组件的实例时使用的并行度提示。
 
 下图是此拓扑的组件的基本原理图。
 
@@ -617,15 +617,15 @@ mvn compile exec:java -Dstorm.topology=com.microsoft.example.WordCountTopology
     17:33:27 [Thread-30-count] INFO  com.microsoft.example.WordCount - Emitting a count of 57 for word dwarfs
     17:33:27 [Thread-12-count] INFO  com.microsoft.example.WordCount - Emitting a count of 57 for word snow
 
-此示例日志指示单词“and”已发出了 113 次。 只要拓扑运行，计数就会持续增加，因为 Spout 会连续发出相同的句子。
+此示例日志指示单词“and”已发出了 113 次。 只要拓扑运行，计数就继续增加。 这种增加是因为 Spout 不断发出相同的句子。
 
 每两次发出单词和句子的间隔为 5 秒。 **WordCount** 组件配置为仅当 tick 元组到达时才发出信息。 它要求仅每五秒钟传送一次 tick 元组。
 
 ## <a name="convert-the-topology-to-flux"></a>将拓扑转换为 Flux
 
-[Flux](https://storm.apache.org/releases/2.0.0/flux.html) 是 Storm 0.10.0 及更高版本随附的一个新框架，可以将配置和实现分离开来。 组件仍然是以 Java 语言定义的，但拓扑是使用 YAML 文件定义的。 可以随项目一起打包默认的拓扑定义，也可以在提交拓扑时使用独立的文件。 将拓扑提交到 Storm 时，可以使用环境变量或配置文件来填充 YAML 拓扑定义中的值。
+[Flux](https://storm.apache.org/releases/2.0.0/flux.html) 是一种新的框架，在 Storm 0.10.0 及更高版本可用。 借助 Flux，你可以将配置与实现分开。 组件仍然是以 Java 语言定义的，但拓扑是使用 YAML 文件定义的。 可以随项目一起打包默认的拓扑定义，也可以在提交拓扑时使用独立的文件。 将拓扑提交到 Storm 时，使用环境变量或配置文件来填充 YAML 拓扑定义值。
 
-YAML 文件定义了要用于拓扑的组件以及它们之间的数据流。 可以包括一个 YAML 文件（作为 jar 文件的一部分），也可以使用外部 YAML 文件。
+YAML 文件定义了要用于拓扑的组件以及它们之间的数据流。 可以将 YAML 文件包含在 jar 文件中。 或者，可以使用外部 YAML 文件。
 
 有关 Flux 的详细信息，请参阅 [Flux 框架 (https://storm.apache.org/releases/current/flux.html)](https://storm.apache.org/releases/current/flux.html)。
 
@@ -771,12 +771,14 @@ YAML 文件定义了要用于拓扑的组件以及它们之间的数据流。 �
 
     运行该命令时，拓扑显示启动信息。 以下文本是输出的示例：
 
-        17:33:27 [Thread-12-count] INFO  com.microsoft.example.WordCount - Emitting a count of 56 for word snow
-        17:33:27 [Thread-12-count] INFO  com.microsoft.example.WordCount - Emitting a count of 56 for word white
-        17:33:27 [Thread-12-count] INFO  com.microsoft.example.WordCount - Emitting a count of 112 for word seven
-        17:33:27 [Thread-16-count] INFO  com.microsoft.example.WordCount - Emitting a count of 195 for word the
-        17:33:27 [Thread-30-count] INFO  com.microsoft.example.WordCount - Emitting a count of 113 for word and
-        17:33:27 [Thread-30-count] INFO  com.microsoft.example.WordCount - Emitting a count of 57 for word dwarfs
+    ```
+    17:33:27 [Thread-12-count] INFO  com.microsoft.example.WordCount - Emitting a count of 56 for word snow
+    17:33:27 [Thread-12-count] INFO  com.microsoft.example.WordCount - Emitting a count of 56 for word white
+    17:33:27 [Thread-12-count] INFO  com.microsoft.example.WordCount - Emitting a count of 112 for word seven
+    17:33:27 [Thread-16-count] INFO  com.microsoft.example.WordCount - Emitting a count of 195 for word the
+    17:33:27 [Thread-30-count] INFO  com.microsoft.example.WordCount - Emitting a count of 113 for word and
+    17:33:27 [Thread-30-count] INFO  com.microsoft.example.WordCount - Emitting a count of 57 for word dwarfs
+    ```
 
     不同批次的日志记录信息之间存在 10 秒的延迟。
 
@@ -820,7 +822,7 @@ YAML 文件定义了要用于拓扑的组件以及它们之间的数据流。 �
 
 ## <a name="trident"></a>Trident
 
-[Trident](https://storm.apache.org/releases/current/Trident-API-Overview.html) 是 Storm 提供的高级抽象。 它支持有状态处理。 Trident 的主要优点在于，它可以保证进入拓扑的每个消息只会处理一次。 如果不使用 Trident，则拓扑只能保证至少将消息处理一次。 两者还有其他方面的差异，例如，可以使用内置组件，而无需创建 Bolt。 事实上，可以使用低泛型组件（例如筛选、投影和函数）来取代 Bolt。
+[Trident](https://storm.apache.org/releases/current/Trident-API-Overview.html) 是 Storm 提供的高级抽象。 它支持有状态处理。 Trident 的主要优点在于，它可以保证进入拓扑的每条消息只会处理一次。 如果不使用 Trident，则拓扑只能保证至少将消息处理一次。 两者还有其他方面的差异，例如，可以使用内置组件，而无需创建 Bolt。 可以使用低泛型组件（例如筛选、投影和函数）来取代 Bolt。
 
 可以使用 Maven 项目来创建 Trident 应用程序。 使用本文前面所述的相同基本步骤 - 只有代码不同。 Trident（目前）还不能与 Flux 框架配合使用。
 
@@ -832,6 +834,6 @@ YAML 文件定义了要用于拓扑的组件以及它们之间的数据流。 �
 
 * [在 HDInsight 上部署和管理 Apache Storm 拓扑](apache-storm-deploy-monitor-topology-linux.md)
 
-* [使用 Visual Studio 开发 Apache Storm on HDInsight 的 C# 拓扑](apache-storm-develop-csharp-visual-studio-topology.md)
+* [使用 Python 开发拓扑](apache-storm-develop-python-topology.md)
 
 如需更多 Apache Storm 拓扑示例，请访问 [Apache Storm on HDInsight 示例拓扑](apache-storm-example-topology.md)。
