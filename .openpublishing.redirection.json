@@ -24517,6 +24517,15 @@
       "redirect_document_id": false
     },
     {
+      "source_path": "articles/search/search-example-adventureworks-modeling.md",
+      "redirect_url": "/search/search-what-is-data-import",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/search/search-example-adventureworks-multilevel-faceting.md",
+      "redirect_url": "/search/search-filters-facets",
+    },
+    {
       "source_path": "articles/security/fundamentals/service-fabric-checklist.md",
       "redirect_url": "/service-fabric/service-fabric-best-practices-security",
       "redirect_document_id": false
@@ -24586,6 +24595,5 @@
       "redirect_url": "/media-services",
       "redirect_document_id": false
     }
-
   ]
 }
