@@ -24594,6 +24594,31 @@
       "source_path": "articles/media-services/previous/media-services-configure-tricaster-live-encoder.md",
       "redirect_url": "/media-services",
       "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/cognitive-services/Content-Moderator/dotnet-sdk-quickstart.md",
+      "redirect_url": "/cognitive-services/Content-Moderator/client-libraries?pivots=programming-language-csharp",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/cognitive-services/Content-Moderator/Review-Tool-User-Guide/tags.md",
+      "redirect_url": "/cognitive-services/content-moderator/review-tool-user-guide/configure#tags",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/cognitive-services/Content-Moderator/image-moderation-quickstart-dotnet.md",
+      "redirect_url": "/cognitive-services/content-moderator/dotnet-sdk-quickstart",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/cognitive-services/Content-Moderator/text-moderation-quickstart-dotnet.md",
+      "redirect_url": "/cognitive-services/content-moderator/dotnet-sdk-quickstart",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/cognitive-services/Content-Moderator/text-moderation-quickstart-python.md",
+      "redirect_url": "/cognitive-services/content-moderator/python-sdk-quickstart",
+      "redirect_document_id": false
     }
   ]
 }
