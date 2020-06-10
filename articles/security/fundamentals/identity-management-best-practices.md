@@ -1,5 +1,5 @@
 ---
-title: Azure 标识和访问安全最佳实践 | Microsoft 文档
+title: Azure 标识和访问安全最佳做法 | Azure Docs
 description: 本文提供一系列有关使用内置 Azure 功能进行标识管理和访问控制的最佳实践。
 services: security
 documentationcenter: na
@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 05/28/2020
 ms.author: v-tawe
 origin.date: 10/28/2019
-ms.openlocfilehash: 40b369bdf589816db4c69f8f98257f9ac29ec5d1
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+ms.openlocfilehash: e38d1c79faedaff81e9f5daddcab13e6f4560ca3
+ms.sourcegitcommit: 79c99a9ea013b3c74706a1038a505f4eea2aaac4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84199957"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84439495"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure 标识管理和访问控制安全最佳实践
 
@@ -125,7 +125,7 @@ ms.locfileid: "84199957"
 
 建议对所有用户要求进行双重验证。 这包括组织中的管理员和其他人员，如果他们的帐户泄露，可能会产生重大影响（例如，财务官员）。
 
-要求双重验证有多种选项。 最佳选项取决于你的目标、正在运行的 Azure AD 版本以及许可计划。 请参阅[如何要求对用户进行双重验证](/azure/active-directory/authentication/howto-mfa-userstates)了解最佳选项。 有关许可和定价的详细信息，请参阅 [Azure AD](https://www.azure.cn/pricing/details/active-directory/) 和 [Azure 多重身份验证](https://www.azure.cn/pricing/details/multi-factor-authentication/)定价页。
+要求双重验证有多种选项。 最佳选项取决于你的目标、正在运行的 Azure AD 版本以及许可计划。 请参阅[如何要求对用户进行双重验证](/active-directory/authentication/howto-mfa-userstates)了解最佳选项。 有关许可和定价的详细信息，请参阅 [Azure AD](https://www.azure.cn/pricing/details/active-directory/) 和 [Azure 多重身份验证](https://www.azure.cn/pricing/details/multi-factor-authentication/)定价页。
 
 以下是启用双重验证的选项和优势：
 

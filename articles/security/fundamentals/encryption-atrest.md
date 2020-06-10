@@ -1,5 +1,5 @@
 ---
-title: Microsoft Azure 静态数据加密 | Microsoft Docs
+title: Microsoft Azure 静态数据加密 | Azure Docs
 description: 本文概述了 Microsoft Azure 静态数据加密及其整体功能和一般注意事项。
 services: security
 documentationcenter: na
@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 05/29/2020
 ms.author: v-tawe
 origin.date: 04/07/2020
-ms.openlocfilehash: 5de37cc3d27802be972edb43ce20c072d0023a5f
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+ms.openlocfilehash: edb34db10c4a3a0c7987e9f5790575b6f1225b18
+ms.sourcegitcommit: 79c99a9ea013b3c74706a1038a505f4eea2aaac4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84199956"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84439532"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure 静态数据加密
 
