@@ -24596,7 +24596,11 @@
       "redirect_document_id": false
     },
     {
-      "source_path": "articles/cognitive-services/Content-Moderator/dotnet-sdk-quickstart.md",
+      "source_path": "articles/virtual-machines/linux/shared-images.md",
+      "redirect_url": "/virtual-machines/shared-images-cli",
+      "redirect_document_id": false
+    },
+	{"source_path": "articles/cognitive-services/Content-Moderator/dotnet-sdk-quickstart.md",
       "redirect_url": "/cognitive-services/Content-Moderator/client-libraries?pivots=programming-language-csharp",
       "redirect_document_id": false
     },
