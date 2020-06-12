@@ -24515,6 +24515,51 @@
       "source_path": "articles/storage/files/storage-how-to-recover-deleted-account.md",
       "redirect_url": "/storage/common/storage-account-create",
       "redirect_document_id": false
+    },    
+    {
+      "source_path": "articles/machine-learning/studio/use-case-excel-studio.md",
+      "redirect_url": "/machine-learning/studio/",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/machine-learning/studio/troubleshooting-creating-ml-workspace.md",
+      "redirect_url": "/machine-learning/studio/",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/machine-learning/studio/text-analytics-module-tutorial.md",
+      "redirect_url": "/machine-learning/studio/",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/machine-learning/studio/extend-your-experiment-with-r.md",
+      "redirect_url": "/machine-learning/studio/",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/machine-learning/studio/dedicated-capacity-for-bes-jobs.md",
+      "redirect_url": "/machine-learning/studio/consume-web-services",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/machine-learning/studio/debug-models.md",
+      "redirect_url": "/machine-learning/studio/",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/machine-learning/studio/convert-training-experiment-to-scoring-experiment.md",
+      "redirect_url": "/machine-learning/studio/deploy-a-machine-learning-web-service",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/machine-learning/studio/basics-infographic-with-algorithm-examples.md",
+      "redirect_url": "/machine-learning/how-to-select-algorithms",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/machine-learning/studio/azure-ml-customer-churn-scenario.md",
+      "redirect_url": "/machine-learning/studio/",
+      "redirect_document_id": false
     },
     {
       "source_path": "articles/search/search-example-adventureworks-modeling.md",
@@ -24524,6 +24569,7 @@
     {
       "source_path": "articles/search/search-example-adventureworks-multilevel-faceting.md",
       "redirect_url": "/search/search-filters-facets",
+      "redirect_document_id": false
     },
     {
       "source_path": "articles/security/fundamentals/service-fabric-checklist.md",
@@ -24600,7 +24646,8 @@
       "redirect_url": "/virtual-machines/shared-images-cli",
       "redirect_document_id": false
     },
-	{"source_path": "articles/cognitive-services/Content-Moderator/dotnet-sdk-quickstart.md",
+	  {
+      "source_path": "articles/cognitive-services/Content-Moderator/dotnet-sdk-quickstart.md",
       "redirect_url": "/cognitive-services/Content-Moderator/client-libraries?pivots=programming-language-csharp",
       "redirect_document_id": false
     },
