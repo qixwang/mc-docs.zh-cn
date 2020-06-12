@@ -11,20 +11,20 @@ ms.tgt_pltfrm: mobile-multiple
 ms.devlang: multiple
 ms.topic: article
 origin.date: 04/07/2020
-ms.date: 04/20/2020
+ms.date: 06/03/2020
 ms.author: v-tawe
 ms.reviewer: jowargo
 ms.lastreviewed: 01/28/2020
-ms.openlocfilehash: f43ce93ef5a3692596855ac04d32340a43668f34
-ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
+ms.openlocfilehash: 0dc829c280d2ca7720a520f9a1454838b67c956e
+ms.sourcegitcommit: 40d1ff17251ab1d2d607845523470f11ce087039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82588649"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84320483"
 ---
 # <a name="transport-layer-security-tls"></a>传输层安全 (TLS) (Transport Layer Security) (TLS)
 
-为了确保更高级别的安全性，通知中心将于 2020 年 5 月 31 日（从 2020 年 4 月 30 日延长）禁用对 TLS 版本 1.0 和 1.1 的支持。 这些较旧的协议提供弱加密，容易遭受 BEAST 和 POODLE 攻击。 在运行 Android 5 或更高版本或 iOS 5 或更高版本的设备上部署的应用程序不受此更改影响，因为那些操作系统支持 TLS 1.2，并且客户端和服务器在连接时将协商双方都支持的最高协议版本。
+为了确保更高级别的安全性，通知中心将于 2020 年 12 月 31 日（从 2020 年 4 月 30 日延长）禁用对 TLS 版本 1.0 和 1.1 的支持。 这些较旧的协议提供弱加密，容易遭受 BEAST 和 POODLE 攻击。 在运行 Android 5 或更高版本或 iOS 5 或更高版本的设备上部署的应用程序不受此更改影响，因为那些操作系统支持 TLS 1.2，并且客户端和服务器在连接时将协商双方都支持的最高协议版本。
 
 我们建议你检查使用 Azure 通知中心的所有应用程序，以确保它们使用最合适的库和支持 TLS 1.2 的 TLS 堆栈。
 

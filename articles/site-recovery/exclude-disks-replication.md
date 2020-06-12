@@ -3,14 +3,14 @@ title: 排除使用 Azure Site Recovery 复制的磁盘
 description: 如何排除使用 Azure Site Recovery 复制到 Azure 的磁盘。
 ms.topic: conceptual
 origin.date: 12/17/2019
-ms.date: 01/13/2020
+ms.date: 06/08/2020
 ms.author: v-yeche
-ms.openlocfilehash: 12ce19e9d76212a78e49b5bfd514c086a729235c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 3e4b2936971bc0c2d922b6a01a708229bf989a3f
+ms.sourcegitcommit: 5ae04a3b8e025986a3a257a6ed251b575dbf60a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292850"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84440717"
 ---
 <!--Verify successfully, It is splited content of released articles(hyper-v-exclude-disk.md)-->
 # <a name="exclude-disks-from-disaster-recovery"></a>排除磁盘的灾难恢复
@@ -28,7 +28,7 @@ ms.locfileid: "79292850"
 
 **Azure 到 Azure** | **VMware 到 Azure** | **Hyper-V 到 Azure** 
 --- | --- | ---
-是（使用 PowerShell） | 是 | 是 
+是 | 是 | 是 
 
 ## <a name="exclude-limitations"></a>排除限制
 
@@ -37,7 +37,7 @@ ms.locfileid: "79292850"
 **磁盘类型** | 可以从复制中排除基本磁盘。<br/><br/> 不能排除操作系统磁盘或动态磁盘。 默认会排除临时磁盘。 | 可以从复制中排除基本磁盘。<br/><br/> 不能排除操作系统磁盘或动态磁盘。 | 可以从复制中排除基本磁盘。<br/><br/> 不能排除操作系统磁盘。 建议不要排除动态磁盘。 Site Recovery 无法识别来宾 VM 上的 VHS 是基本磁盘还是动态磁盘。 如果未排除所有依赖性动态卷磁盘，则受保护的动态磁盘就会成为故障转移 VM 上的故障磁盘，且该磁盘上的数据无法访问。
 **复制磁盘** | 不能排除正在复制的磁盘。<br/><br/> 禁用再重新启用 VM 的复制。 |  不能排除正在复制的磁盘。 |  不能排除正在复制的磁盘。
 **移动服务 (VMware)** | 不相关 | 只能排除已装有移动服务的 VM 上的磁盘。<br/><br/> 这意味着，必须在要排除其磁盘的 VM 上手动安装移动服务。不能使用推送安装机制，因为此机制只会在启用复制后才安装移动服务。 | 不相关。
-**添加/删除** | 可以在包含托管磁盘的 Azure VM 上添加和删除磁盘。 | 启用复制后，无法添加或删除磁盘。 禁用再重新启用复制即可添加磁盘。 | 启用复制后，无法添加或删除磁盘。 禁用再重新启用复制。
+**添加/删除** | 可以在启用复制的具有托管磁盘的 Azure VM 上添加托管磁盘。 无法删除启用复制的 Azure VM 上的磁盘。 | 启用复制后，无法添加或删除磁盘。 禁用再重新启用复制即可添加磁盘。 | 启用复制后，无法添加或删除磁盘。 禁用再重新启用复制。
 **故障转移** | 如果某个应用需要已排除的某个磁盘，则在故障转移后，需要手动创建该磁盘，使复制的应用可以运行。<br/><br/> 或者，可以通过将 Azure 自动化集成到恢复计划中，在 VM 故障转移期间创建磁盘。 | 如果排除应用所需的某个磁盘，请在故障转移后在 Azure 中手动创建该磁盘。 | 如果排除应用所需的某个磁盘，请在故障转移后在 Azure 中手动创建该磁盘。
 **本地故障回复 - 手动创建的磁盘** | 不相关 | **Windows VM**：在 Azure 中手动创建的磁盘不会故障回复。 例如，如果在 Azure VM 中故障转移三个磁盘并直接创建两个磁盘，则只会故障回复完成故障转移的三个磁盘。<br/><br/> **Linux VM**：在 Azure 中手动创建的磁盘会故障回复。 例如，如果要故障转移三个磁盘，并在 Azure VM 上创建两个磁盘，则会故障回复所有五个磁盘。 无法从故障回复中排除手动创建的磁盘。 | 在 Azure 中手动创建的磁盘不会故障回复。 例如，如果在 Azure VM 中故障转移三个磁盘并直接创建两个磁盘，则只会故障回复已故障转移的三个磁盘。
 **本地故障回复 - 已排除的磁盘** | 不相关 | 如果故障回复到原始计算机，则故障回复 VM 磁盘配置不包含已排除的磁盘。 在从 VMware 到 Azure 的复制中排除的磁盘在故障回复 VM 中不可用。 | 故障回复到原始 Hyper-V 位置后，故障回复 VM 磁盘配置与原始源 VM 磁盘的配置保持相同。 在从 Hyper-V 站点到 Azure 的复制中排除的磁盘在故障回复 VM 中可用。
@@ -256,5 +256,4 @@ Azure VM 上的页面文件设置如下：
     - [查看](/virtual-machines/windows/sql/virtual-machines-windows-sql-performance) Azure VM 中 SQL Server 的性能最佳做法。
 - 设置并运行部署后，请[详细了解](failover-failback-overview.md)不同类型的故障转移。
 
-<!-- Update_Description: new article about exclude disks replication -->
-<!--NEW.date: 01/13/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->
