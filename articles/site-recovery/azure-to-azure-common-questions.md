@@ -4,15 +4,15 @@ description: 本文解答有关使用 Azure Site Recovery 进行 Azure VM 灾难
 author: rockboyfor
 manager: digimobile
 origin.date: 04/29/2019
-ms.date: 02/24/2020
+ms.date: 06/08/2020
 ms.author: v-yeche
 ms.topic: conceptual
-ms.openlocfilehash: 823f6897a8ae982cfb7927d8ad76d9f73bd4c329
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: d475c1d7a9541ee978c859335871bfacc5212688
+ms.sourcegitcommit: 5ae04a3b8e025986a3a257a6ed251b575dbf60a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77611258"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84440675"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>常见问题：Azure 到 Azure 的灾难恢复
 
@@ -22,13 +22,15 @@ ms.locfileid: "77611258"
 ## <a name="general"></a>常规
 
 ### <a name="how-is-site-recovery-priced"></a>Site Recovery 如何计费？
-请查看 [Azure Site Recovery 定价详细信息](https://www.azure.cn/pricing/details/site-recovery)。
+请查看 [VM 的 Azure Site Recovery 定价](https://www.azure.cn/pricing/calculator/)。
 
-<!--Price is correct on https://www.azure.cn/pricing/details/site-recovery-->
+<!--Price is correct on https://www.azure.cn/pricing/calculator/-->
 
 ### <a name="how-does-the-free-tier-for-azure-site-recovery-work"></a>Azure Site Recovery 的免费层是如何工作的？
 
 每个使用 Azure Site Recovery 保护的实例在其保护期的前 31 天内均享受免费。 在这段时间后，对每个实例的保护将按 [Azure 虚拟机的 Azure Site Recovery 定价](https://www.azure.cn/pricing/details/site-recovery)计费。
+
+<!--Price is correct on https://www.azure.cn/pricing/details/site-recovery-->
 
 ### <a name="during-the-first-31-days-will-i-incur-any-other-azure-charges"></a>在前 31 天的期限内，会产生其他 Azure 费用吗？
 
@@ -49,12 +51,14 @@ Site Recovery 团队和 Azure 容量管理团队规划了足够的基础结构�
 <a name="replication"></a>
 ## <a name="replication"></a>复制
 
-<!--Pending on verify 
-### Can I replicate VMs enabled through Azure disk encryption?
-Yes, you can replicate them. See the article Replicate Azure disk encryption enabled virtual machines to another Azure region. Currently, Azure Site Recovery supports only Azure VMs that are running a Windows OS and enabled for encryption with Azure Active Directory (Azure AD) apps.
--->
+### <a name="can-i-replicate-vms-enabled-through-azure-disk-encryption"></a>是否可以复制通过 Azure 磁盘加密启用的 VM？
 
-<!--Pending on [Replicate Azure disk encryption enabled virtual machines to another Azure region](azure-to-azure-how-to-enable-replication-ade-vms.md)-->
+是的。 Site Recovery 支持已启用 Azure 磁盘加密的 VM 的灾难恢复。 启用复制后，Azure 会将所有必需的磁盘加密密钥和机密从用户上下文中的源区域复制到目标区域。 如果你没有相应权限，则安全管理员可以使用脚本来复制密钥和机密。
+
+- 运行 Windows 的 Azure VM，Site Recovery 支持 Azure 磁盘加密。
+- Site Recovery 支持 Azure 磁盘加密版本 0.1（包含需要 Azure Active Directory (Azure AD) 的架构）。 Site Recovery 还支持版本 1.1（不需要 Azure AD）。 [详细了解 Azure 磁盘加密的扩展架构](../virtual-machines/extensions/azure-disk-enc-windows.md#extension-schema)。
+  - 对于 Azure 磁盘加密版本 1.1，你必须使用带有托管磁盘的 Windows VM。
+  - [详细了解](azure-to-azure-how-to-enable-replication-ade-vms.md)如何为加密 VM 启用复制。
 
 ### <a name="can-i-replicate-vms-to-another-subscription"></a>是否可将 VM 复制到另一个订阅？
 
@@ -76,7 +80,7 @@ Yes, you can replicate them. See the article Replicate Azure disk encryption ena
 
 - 如果为添加的磁盘启用保护，此警告会在初始复制后消失。
 - 如果没有为磁盘启用复制，则可以消除警告。
-- 如果故障转移某个添加了磁盘并启用了复制的 VM，则会创建复制点。 复制点将显示可恢复的磁盘。 
+- 如果故障转移某个添加了磁盘并启用了复制的 VM，则会创建复制点。 复制点将显示可恢复的磁盘。
 
 例如，假设某个 VM 最初包含单个磁盘，后来你添加了一个新磁盘。 在添加该磁盘之前可能已创建了一个复制点。 此复制点将显示 VM 包括“1 个磁盘，共 2 个”。
 
@@ -96,13 +100,17 @@ Site Recovery 不支持将磁盘从复制的 VM 中“热删除”。 如果删�
 
 ### <a name="does-site-recovery-require-internet-connectivity"></a>Site Recovery 需要建立 Internet 连接？
 
-否，Site Recovery 不需要建立 Internet 连接。 但它确实需要访问 Site Recovery URL 和 IP 范围，如 [Azure VM 灾难恢复中的网络](/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-ip-address-ranges)中所述。
+否，Site Recovery 不需要建立 Internet 连接。 但它确实需要访问 Site Recovery URL 和 IP 范围，如 [Azure VM 灾难恢复中的网络](/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-urls)中所述。
 
 ### <a name="can-i-replicate-an-application-that-has-a-separate-resource-group-for-separate-tiers"></a>是否可以为不同的层复制具有不同资源组的应用程序？
 
 是的，你可以复制应用程序并且也在另一个资源组中保留灾难恢复配置。
 
 例如，如果应用程序的每个应用层、数据库层和 Web 层位于不同的资源组中，则必须选择[复制向导](/site-recovery/azure-to-azure-how-to-enable-replication#enable-replication)三次才能保护所有层。 Site Recovery 会将这三个层复制到三个不同的资源组中。
+
+### <a name="can-i-move-storage-accounts-across-resource-groups"></a>能否跨资源组移动存储帐户？
+
+否，此方案不受支持。 但是，如果你意外地将存储帐户移到不同的资源组并删除了原始资源组，则可以创建一个与旧资源组同名的新资源组，然后将该存储帐户移到此资源组。
 
 <a name="replication-policy"></a>
 ## <a name="replication-policy"></a>复制策略
@@ -163,7 +171,7 @@ Site Recovery 每隔 5 分钟创建崩溃一致性恢复点。 无法更改此�
 
 ### <a name="after-replication-is-enabled-on-a-vm-how-do-i-change-the-replication-policy"></a>在 VM 上启用复制后，如何更改复制策略？
 
-转到“Site Recovery 保管库” > “Site Recovery 基础结构” > “复制策略”。    选择要编辑的策略并保存所做的更改。 任何更改也会应用到现有的所有复制。
+转到“Site Recovery 保管库” > “Site Recovery 基础结构” > “复制策略”。   选择要编辑的策略并保存所做的更改。 任何更改也会应用到现有的所有复制。
 
 ### <a name="are-all-the-recovery-points-a-complete-copy-of-the-vm-or-a-differential"></a>所有恢复点是包含 VM 的完整副本还是差异副本？
 
@@ -181,7 +189,7 @@ Site Recovery 每隔 5 分钟创建崩溃一致性恢复点。 无法更改此�
 
 多 VM 一致性可以确保恢复点在所有复制的虚拟机之间保持一致。
 
-Site Recovery 提供“多 VM 一致性”选项用于创建所有计算机的复制组。 
+Site Recovery 提供“多 VM 一致性”选项用于创建所有计算机的复制组。
 
 故障转移虚拟机时，这些虚拟机将获得共享的崩溃一致性恢复点和应用一致性恢复点。
 
@@ -189,7 +197,7 @@ Site Recovery 提供“多 VM 一致性”选项用于创建所有计算机的�
 
 ### <a name="can-i-fail-over-a-single-virtual-machine-within-a-multi-vm-consistency-replication-group"></a>是否可以故障转移多 VM 一致性复制组中的单个虚拟机？
 
-选择“多 VM 一致性”选项即表明应用程序依赖于组中的所有虚拟机。  不允许故障转移单个虚拟机。
+选择“多 VM 一致性”选项即表明应用程序依赖于组中的所有虚拟机。 不允许故障转移单个虚拟机。
 
 ### <a name="how-many-virtual-machines-can-i-replicate-as-a-part-of-a-multi-vm-consistency-replication-group"></a>可以通过多 VM 一致性复制组复制多少个虚拟机？
 
@@ -198,6 +206,10 @@ Site Recovery 提供“多 VM 一致性”选项用于创建所有计算机的�
 ### <a name="when-should-i-enable-multi-vm-consistency"></a>何时应启用多 VM 一致性？
 
 由于多 VM 一致性的 CPU 消耗量较大，启用此功能可能会影响工作负荷性能。 请仅在计算机运行相同的工作负荷并且你需要在多个计算机之间保持一致时，才使用多 VM 一致性。 例如，如果应用程序中有两个 SQL Server 实例和两个 Web 服务器，则你只应为 SQL Server 实例启用多 VM 一致性。
+
+### <a name="can-you-add-an-already-replicating-vm-to-a-replication-group"></a>是否可以将已在复制的 VM 添加到复制组？
+
+可以在启用复制的同时将 VM 添加到新的复制组。 还可以在启用复制的同时将 VM 添加到现有复制组。 但是，不能将已在复制的 VM 添加到新的复制组或现有复制组。
 
 <a name="failover"></a>
 ## <a name="failover"></a>故障转移
@@ -214,7 +226,7 @@ Site Recovery 团队和 Azure 容量管理团队规划了足够的基础结构�
 
 无法在故障转移后保留生产应用程序的公共 IP 地址。
 
-在故障转移过程中启动某个工作负荷时，需要将 Azure 公共 IP 资源分配到该工作负荷。 该 Azure 公共 IP 资源必须在目标区域中可用。 可以手动分配 Azure 公共 IP 资源，或者使用恢复计划自动分配。 了解如何[设置故障转移后的公共 IP 地址](concepts-public-ip-address-with-site-recovery.md#public-ip-address-assignment-using-recovery-plan)。  
+在故障转移过程中启动某个工作负荷时，需要将 Azure 公共 IP 资源分配到该工作负荷。 该 Azure 公共 IP 资源必须在目标区域中可用。 可以手动分配 Azure 公共 IP 资源，或者使用恢复计划自动分配。 了解如何[设置故障转移后的公共 IP 地址](concepts-public-ip-address-with-site-recovery.md#public-ip-address-assignment-using-recovery-plan)。
 
 ### <a name="can-i-keep-a-private-ip-address-during-a-failover"></a>在故障转移期间是否可以保留专用 IP 地址？
 
@@ -229,15 +241,15 @@ Site Recovery 团队和 Azure 容量管理团队规划了足够的基础结构�
 
 ### <a name="what-are-latest-lowest-rpo-recovery-points"></a>什么是**最新（最低 RPO）** 恢复点？
 
-“最新(最低 RPO)”选项首先处理已发送到 Site Recovery 服务的所有数据。  服务处理数据后，将为每个 VM 创建恢复点，然后故障转移到该 VM。 此选项提供最低的恢复点目标 (RPO)。 故障转移后创建的 VM 包含触发故障转移时复制到 Site Recovery 的所有数据。
+“最新(最低 RPO)”选项首先处理已发送到 Site Recovery 服务的所有数据。 服务处理数据后，将为每个 VM 创建恢复点，然后故障转移到该 VM。 此选项提供最低的恢复点目标 (RPO)。 故障转移后创建的 VM 包含触发故障转移时复制到 Site Recovery 的所有数据。
 
 ### <a name="do-latest-lowest-rpo-recovery-points-have-an-impact-on-failover-rto"></a>**最新（最低 RPO）** 恢复点是否影响故障转移 RTO？
 
 是的。 Site Recovery 在故障转移之前需要处理所有挂起的数据，因此，此选项的恢复时间目标 (RTO) 比其他选项更高。
 
-### <a name="what-does-the-latest-processed-option-in-recovery-points-mean"></a>恢复点中的“最新处理”选项指的是什么？ 
+### <a name="what-does-the-latest-processed-option-in-recovery-points-mean"></a>恢复点中的“最新处理”选项指的是什么？
 
-“最新处理”选项将计划中的所有 VM 故障转移到 Site Recovery 处理的最新恢复点。  若要查看特定 VM 的最新恢复点，请检查 VM 设置中的“最新恢复点”。  此选项提供低的 RTO，因为无需费时处理未经处理的数据。
+“最新处理”选项将计划中的所有 VM 故障转移到 Site Recovery 处理的最新恢复点。 若要查看特定 VM 的最新恢复点，请检查 VM 设置中的“最新恢复点”。 此选项提供低的 RTO，因为无需费时处理未经处理的数据。
 
 ### <a name="what-happens-if-my-primary-region-experiences-an-unexpected-outage"></a>如果主要区域的服务意外中断，会出现什么情况？
 
@@ -266,7 +278,7 @@ Site Recovery 中的恢复计划可以协调 VM 的故障转移恢复。 它有�
 
 ### <a name="how-can-i-find-the-rto-of-a-recovery-plan"></a>如何找到恢复计划的 RTO？
 
-若要检查恢复计划的 RTO，请对恢复计划执行测试故障转移，然后转到“Site Recovery 作业”。 
+若要检查恢复计划的 RTO，请对恢复计划执行测试故障转移，然后转到“Site Recovery 作业”。
 在以下示例中，可以看到作业 **SAPTestRecoveryPlan**。 作业花费了 8 分 59 秒故障转移所有虚拟机并执行指定的操作。
 
 ![Site Recovery 作业列表](./media/azure-to-azure-troubleshoot-errors/recoveryplanrto.PNG)
@@ -304,7 +316,7 @@ Site Recovery 团队和 Azure 容量管理团队规划了足够的基础结构�
 
 ### <a name="is-replication-data-sent-to-the-site-recovery-service"></a>复制数据是否会发送到 Site Recovery 服务？
 
-不会。Site Recovery 不会拦截复制的数据，也没有 VM 上运行的组件的任何相关信息。 只有协调复制与故障转移所需的元数据会发送到站点恢复服务。  
+不会。Site Recovery 不会拦截复制的数据，也没有 VM 上运行的组件的任何相关信息。 只有协调复制与故障转移所需的元数据会发送到站点恢复服务。
 
 Site Recovery 已通过 ISO 27001:2013、27018、HIPAA 和 DPA 认证。 该服务目前正在接受 SOC2 和 FedRAMP JAB 评估。
 

@@ -1,32 +1,33 @@
 ---
-title: Service Fabric 托管标识概述
-description: 本文概述了 Azure Service Fabric 的托管标识及其应用程序。
+title: Azure 的托管标识
+description: 了解如何通过 Service Fabric 使用 Azure 的托管标识。
 ms.topic: conceptual
 origin.date: 12/09/2019
+ms.date: 06/08/2020
 ms.author: v-yeche
-ms.date: 01/06/2020
-ms.openlocfilehash: ad9f19bca284d905a6c057f026dbbdd9bc698e82
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+ms.custom: sfrev
+ms.openlocfilehash: 08267a8d53e205a6814c5073d041c5b4ff2943e9
+ms.sourcegitcommit: 0e178672632f710019eae60cea6a45ac54bb53a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84199497"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84356261"
 ---
 <!--Not Available on MOONCAKE-->
 <!--RELEASE BEFORE CONFIRMATION-->
 <!--https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities#azure-services-that-support-managed-identities-for-azure-resources-->
-# <a name="managed-identity-for-service-fabric-application-preview"></a>Service Fabric 应用程序的托管标识（预览版）
+# <a name="using-managed-identities-for-azure-with-service-fabric"></a>通过 Service Fabric 使用 Azure 的托管标识
 
-生成云应用程序时需要应对的常见挑战是，如何管理代码中用于云服务身份验证的凭据。 保护凭据的安全是一项重要任务，因为凭据从来不会显示在开发人员工作站上，并且不会签入源代码管理中。 Azure Active Directory (Azure AD) 中的 Azure 资源托管标识功能可以解决此问题。 此功能为 Azure 服务提供了 Azure AD 中的自动托管标识。 可以使用此标识向支持 Azure AD 身份验证的任何服务（包括 Key Vault）证明身份，无需在代码中放入任何凭据。
+在构建云应用程序时，一个常见难题是如何安全地管理代码中的凭据，以便向各种服务进行身份验证，而无需将凭据以本地方式保存在开发人员工作站或源代码管理中。 Azure 的托管标识通过在 Azure AD 中为资源提供自动托管的标识，为 Azure Active Directory (Azure AD) 中的所有资源解决了此问题。 可以使用某个服务的标识向支持 Azure AD 身份验证的任何服务（包括 Key Vault）进行身份验证，无需在代码中存储任何凭据。
 
-如果你有 Azure 订阅，Azure AD 中的 Azure 资源托管标识功能是免费的。 没有任何额外费用。
+如果有 Azure 订阅，Azure AD 中的 Azure 资源托管标识是免费的。 不需额外付费。
 
 > [!NOTE]
-> Azure 资源托管标识是以前称为托管服务标识 (MSI) 的服务的新名称。
+> “Azure 托管标识”是以前称为托管服务标识 (MSI) 的服务的新名称。
 
-## <a name="terminology"></a>术语
+## <a name="concepts"></a>概念
 
-Azure 资源托管标识的整个文档集中都使用了以下术语：
+Azure 托管标识基于几个关键概念：
 
 - **客户端 ID** - Azure AD 生成的唯一标识符，在其初始预配期间与应用程序和服务主体绑定（另请参阅[应用程序 ID](/active-directory/develop/developer-glossary#application-id-client-id)。）
 
@@ -34,13 +35,12 @@ Azure 资源托管标识的整个文档集中都使用了以下术语：
 
 - **服务主体** - 一个 Azure Active Directory 对象，表示给定租户中 AAD 应用程序的投影（另请参阅[服务主体](../active-directory/develop/developer-glossary.md#service-principal-object)。）
 
-## <a name="about-managed-identities-in-azure"></a>关于 Azure 中的托管标识
+托管标识分为两种类型：
 
-- [Azure 中的托管标识 (MI) 类型](/active-directory/managed-identities-azure-resources/overview#how-does-the-managed-identities-for-azure-resources-work)
+- 系统分配托管标识直接在 Azure 服务实例上启用。  系统分配标识的生命周期对于启用它的 Azure 服务实例来说是独一无二的。
+- **用户分配托管标识**是作为独立的 Azure 资源创建的。 可以将该标识分配给一个或多个 Azure 服务实例，并独立于这些实例的生命周期对其进行管理。
 
-- [系统分配的托管标识在 Azure 中的工作原理](/active-directory/managed-identities-azure-resources/overview#how-a-system-assigned-managed-identity-works-with-an-azure-vm)
-
-- [用户定义的托管标识 (MI) 在 Azure 中的工作原理](/active-directory/managed-identities-azure-resources/overview#how-a-user-assigned-managed-identity-works-with-an-azure-vm)
+若要进一步了解托管标识类型之间的差异，请参阅 [Azure 资源托管标识如何工作？](../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-work)
 
 ## <a name="supported-scenarios-for-service-fabric-applications"></a>Service Fabric 应用程序支持的方案
 
@@ -50,34 +50,30 @@ Service Fabric 的托管标识仅在 Azure 部署的 Service Fabric 群集中受
 
 2. 在应用程序的定义中，可将分配给应用程序的某个标识映射到构成该应用程序的任意单个服务。
 
-应用程序的系统分配的标识是该应用程序特有的；用户分配的标识是独立的资源，可分配到多个应用程序。 在应用程序中，可将单个标识（无论是系统分配的还是用户分配的）分配到该应用程序的多个服务，但对于每个服务，只能为其分配一个标识。 最后，必须显式为服务分配标识才能访问此功能。 应用程序标识到其构成服务的映射可以有效实现应用程序内部隔离 - 一个服务只能使用映射到其自身的标识（如果未显式分配标识，则该服务根本没有可用的标识。）  
+应用程序的系统分配的标识是该应用程序特有的；用户分配的标识是独立的资源，可分配到多个应用程序。 在应用程序中，可将单个标识（无论是系统分配的还是用户分配的）分配到该应用程序的多个服务，但对于每个服务，只能为其分配一个标识。 最后，必须显式为服务分配标识才能访问此功能。 实际上，应用程序标识到其构成服务的映射可以实现应用程序内隔离 — 一个服务只能使用映射到其自身的标识。  
 
-预览版支持的方案列表如下：
+目前，此功能支持以下方案：
 
-  - 部署包含一个或多个服务以及一个或多个已分配标识的新应用程序
+- 部署包含一个或多个服务以及一个或多个已分配标识的新应用程序
 
-  - 将一个或多个托管标识分配到现有应用程序以访问 Azure 资源；应用程序本身必须部署为 Azure 资源
+- 将一个或多个托管标识分配到现有的（Azure 部署的）应用程序以访问 Azure 资源
 
 不支持，也不建议使用以下方案；请注意，这些操作不一定会遭到阻止，但可能会导致应用程序中断：
 
-  - 删除或更改分配给应用程序的标识；如果必须进行更改，请提交单独的部署，以先添加新的标识分配，然后删除以前分配的标识。 从现有应用程序中删除标识可能会产生不良影响，包括使应用程序处于一种不可升级的状态。 如果有必要删除标识，安全的做法是连同应用程序一起删除；请注意，这会删除与该应用程序关联的系统分配的标识（如果已定义），并会删除与分配给该应用程序的用户分配的标识之间的所有关联。
+- 删除或更改分配给应用程序的标识；如果必须进行更改，请提交单独的部署，以先添加新的标识分配，然后删除以前分配的标识。 从现有应用程序中删除标识可能会产生不良影响，包括使应用程序处于一种不可升级的状态。 如果有必要删除标识，安全的做法是连同应用程序一起删除；请注意，这会删除与该应用程序关联的系统分配的标识（如果已定义），并会删除与分配给该应用程序的用户分配的标识之间的所有关联。
 
-  - SF 对托管标识的支持目前尚未集成到 [AzureServiceTokenProvider](../key-vault/service-to-service-authentication.md) 中；集成的实现需要等到托管标识功能的预览期结束。
-
->
-> [!NOTE]
->
-> 此功能目前为预览版；因此，将来可能会经常更改，并可能不适合用于生产部署。
+- 目前，对托管标识的 Service Fabric 支持未集成到 [AzureServiceTokenProvider](../key-vault/general/service-to-service-authentication.md)。
 
 ## <a name="next-steps"></a>后续步骤
-* [部署支持托管标识的新 Azure Service Fabric 群集](./configure-new-azure-service-fabric-enable-managed-identity.md) 
-* [在现有 Azure Service Fabric 群集中启用托管标识支持](./configure-existing-cluster-enable-managed-identity-token-service.md)
+
+- [部署支持托管标识的新 Azure Service Fabric 群集](./configure-new-azure-service-fabric-enable-managed-identity.md)
+- [在现有 Azure Service Fabric 群集中启用托管标识支持](./configure-existing-cluster-enable-managed-identity-token-service.md)
     
     <!--Not Available on * [Deploy an Azure Service Fabric application with a system-assigned managed identity](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)-->
     <!--Not Available on * [Deploy an Azure Service Fabric application with a user-assigned managed identity](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)-->
     <!--Not Available on * [Leverage the managed identity of a Service Fabric application from service code](./how-to-managed-identity-service-fabric-app-code.md)-->
     
-* [为 Azure Service Fabric 应用程序授予对其他 Azure 资源的访问权限](./how-to-grant-access-other-resources.md)
-* [声明应用程序机密并将其用作 KeyVaultReferences](./service-fabric-keyvault-references.md)
+- [向 Azure Service Fabric 应用程序授予对其他 Azure 资源的访问权限](./how-to-grant-access-other-resources.md)
+- [声明应用程序机密并将其用作 KeyVaultReferences](./service-fabric-keyvault-references.md)
 
 <!-- Update_Description: update meta properties, wording update, update link -->

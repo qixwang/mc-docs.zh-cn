@@ -2,15 +2,15 @@
 title: 高级应用程序升级主题
 description: 本文介绍有关升级 Service Fabric 应用程序的一些高级主题。
 ms.topic: conceptual
-origin.date: 01/28/2020
-ms.date: 02/24/2020
+origin.date: 03/11/2020
+ms.date: 06/08/2020
 ms.author: v-yeche
-ms.openlocfilehash: a006d458d247557ff506a8bbebc8caadd8a7e5f0
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: e2a9578aaae1e228e7e815d56fd327ab9711713a
+ms.sourcegitcommit: 0e178672632f710019eae60cea6a45ac54bb53a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540223"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84356294"
 ---
 # <a name="service-fabric-application-upgrade-advanced-topics"></a>Service Fabric 应用程序升级：高级主题
 
@@ -20,11 +20,11 @@ ms.locfileid: "77540223"
 
 类似地，在升级过程中还可以从应用程序中删除服务类型。 但是，必须删除待删除服务类型的所有服务实例，然后才能继续进行升级（请参阅 [Remove-ServiceFabricService](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricservice?view=azureservicefabricps)）。
 
-## <a name="avoid-connection-drops-during-stateless-service-planned-downtime-preview"></a>在无状态服务的计划停机期间避免连接断开（预览版）
+## <a name="avoid-connection-drops-during-stateless-service-planned-downtime"></a>避免在无状态服务计划内停机期间断开连接
 
-在按计划将无状态实例停机时（例如，应用程序/群集升级或节点停用时），由于关闭该实例后会删除公开的终结点，因此可能会导致连接断开。
+对于计划内无状态实例停机（例如，应用程序/群集升级或节点停用），由于实例关闭后公开的终结点被删除，因此连接可能会断开，从而导致强制关闭连接。
 
-为了避免这种情况，请通过在服务配置中添加一个副本“实例关闭延迟持续时间”，来配置 *RequestDrain*（预览版）功能。  这可以确保在启动关闭实例的延迟计时器之前，删除无状态实例播发的终结点。  此延迟可使现有请求在实例实际关闭之前正常排空。 客户端通过回调函数获取有关终结点发生更改的通知，因此它们可以重新解析终结点，并避免向正在停止的实例发送新请求。
+若要避免此问题，请通过在服务配置中添加“实例关闭延迟持续时间”来配置 RequestDrain（预览）功能，以便在接收来自群集中其他服务的请求时允许排出，并使用反向代理或使用带有通知模型的解析 API 来更新终结点。 这可确保在延迟开始之前删除无状态实例播发的终结点，然后再关闭实例。 此延迟可使现有请求在实例实际关闭之前正常排空。 在开始延迟时，客户端通过回调函数获取有关终结点发生更改的通知，因此它们可以重新解析终结点，并避免向正在停止的实例发送新请求。
 
 ### <a name="service-configuration"></a>服务配置
 
@@ -52,24 +52,8 @@ ms.locfileid: "77540223"
 
 ### <a name="client-configuration"></a>客户端配置
 
-若要在终结点发生更改时收到通知，客户端可以注册如下所示的回调 (`ServiceManager_ServiceNotificationFilterMatched`)： 
-
-```csharp
-    var filterDescription = new ServiceNotificationFilterDescription
-    {
-        Name = new Uri(serviceName),
-        MatchNamePrefix = true
-    };
-    fbClient.ServiceManager.ServiceNotificationFilterMatched += ServiceManager_ServiceNotificationFilterMatched;
-    await fbClient.ServiceManager.RegisterServiceNotificationFilterAsync(filterDescription);
-
-private static void ServiceManager_ServiceNotificationFilterMatched(object sender, EventArgs e)
-{
-      // Resolve service to get a new endpoint list
-}
-```
-
-更改通知指示终结点已更改，客户端应重新解析终结点，而不要使用不再播发的终结点，因为这些终结点即将关闭。
+若要在终结点更改后收到通知，应让客户端注册回调，详见 [ServiceNotificationFilterDescription](https://docs.azure.cn/dotnet/api/system.fabric.description.servicenotificationfilterdescription?view=azure-dotnet)。
+如果收到更改通知，则表明终结点已更改，客户端应重新解析终结点，而不要使用不再播发的终结点，因为这些终结点即将关闭。
 
 ### <a name="optional-upgrade-overrides"></a>可选的升级替代方法
 
@@ -82,6 +66,16 @@ Start-ServiceFabricClusterUpgrade [-CodePackageVersion] <String> [-ClusterManife
 ```
 
 延迟持续时间仅应用于调用的升级实例，而不会更改单个服务延迟配置。 例如，可以使用此方法指定 `0` 延迟，以跳过任何预配置的升级延迟。
+
+> [!NOTE]
+> 用于排出请求的设置不适用于来自 Azure 负载均衡器的请求。 如果调用服务使用基于投诉的解析，则此设置不起作用。
+>
+>
+
+> [!NOTE]
+> 当群集代码版本为 7.1.XXX 或更高版本时，可以如上所述使用 Update-ServiceFabricService cmdlet 在现有服务中配置此功能。
+>
+>
 
 ## <a name="manual-upgrade-mode"></a>手动升级模式
 
@@ -201,4 +195,4 @@ ApplicationParameters  : { "ImportantParameter" = "2"; "NewParameter" = "testAft
 
 参考[对应用程序升级进行故障排除](service-fabric-application-upgrade-troubleshooting.md)中的步骤来解决应用程序升级时的常见问题。
 
-<!--Update_Description: update meta properties, wording update  -->
+<!-- Update_Description: update meta properties, wording update, update link -->
