@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 04/24/2020
+ms.date: 06/01/2020
 ms.author: v-junlch
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b5c19bd9cc1a6c188b59d27d7c44aa205da6101
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.openlocfilehash: 11eeeb356f26bbb08eacd41f2dc0c742fde95625
+ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82126950"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84275523"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>用于配置组设置的 Azure Active Directory cmdlet
 
@@ -160,7 +160,7 @@ Office365 组设置使用 Settings 对象和 SettingsTemplate 对象配置。 �
 |  <ul><li>AllowGuestsToBeGroupOwner<li>键入：布尔<li>默认值：False | 一个布尔值，该值指示来宾用户是否可以作为组的所有者。 |
 |  <ul><li>AllowGuestsToAccessGroups<li>键入：布尔<li>默认值：True | 一个布尔值，指示来宾用户是否可以访问 Office 365 组的内容。  此设置不需要 Azure Active Directory Premium P1 许可证。|
 |  <ul><li>GuestUsageGuidelinesUrl<li>键入：String<li>默认值："" | 指向来宾使用指南的链接的 URL。 |
-|  <ul><li>AllowToAddGuests<li>键入：布尔<li>默认值：True | 一个布尔值，该值指示是否允许将来宾添加到此目录。 <br>如果 *EnableMIPLabels* 设置为 *True* 且某个来宾策略与分配给组的敏感性标签相关联，则此设置可能会被重写，变成只读。<br>如果在租户级别将 AllowToAddGuests 设置设为 False，则会忽略组级别的任何 AllowToAddGuests 设置。 如果希望仅对几个组启用来宾访问，则必须在租户级别将 AllowToAddGuests 设为 true，然后针对特定组有选择地禁用它。 |
+|  <ul><li>AllowToAddGuests<li>键入：布尔<li>默认值：True | 一个布尔值，该值指示是否允许将来宾添加到此目录。 <br>如果 *EnableMIPLabels* 设置为 *True* 且某个来宾策略与分配给组的敏感性标签相关联，则此设置可能会被重写，变成只读。<br>如果在组织级别将 AllowToAddGuests 设置设为 False，则会忽略组级别的任何 AllowToAddGuests 设置。 如果希望仅对几个组启用来宾访问，则必须在组织级别将 AllowToAddGuests 设为 true，然后针对特定组有选择地禁用它。 |
 |  <ul><li>ClassificationList<li>键入：String<li>默认值："" | 一个逗号分隔列表，用于列出可以应用于 Office 365 组的有效分类值。 <br>当 EnableMIPLabels == True 时，此设置不适用。|
 |  <ul><li>EnableMIPLabels<li>键入：布尔<li>默认值：“False” |此标记表明在 Microsoft 365 合规中心发布的敏感性标签是否适用于 Office 365 组。  |
 

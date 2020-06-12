@@ -3,21 +3,25 @@ title: 指定 Service Fabric 服务终结点
 description: 如何在服务清单中描述终结点资源，包括如何设置 HTTPS 终结点
 ms.topic: conceptual
 origin.date: 02/23/2018
-ms.date: 01/13/2020
+ms.date: 06/08/2020
 ms.author: v-yeche
-ms.openlocfilehash: 65c8eb4cc201f0e44195cd6e76406b5212d280dd
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: df1b4b68e1b518cb88707a576ebeab5113b5a885
+ms.sourcegitcommit: 0e178672632f710019eae60cea6a45ac54bb53a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292462"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84356139"
 ---
 # <a name="specify-resources-in-a-service-manifest"></a>在服务清单中指定资源
 ## <a name="overview"></a>概述
-服务清单允许声明/更改服务要使用的资源而无需更改已编译的代码。 Azure Service Fabric 支持对服务的终结点资源进行配置。 可以通过应用程序清单中的 SecurityGroup 控制对服务清单中指定资源的访问。 资源的声明允许在部署时更改这些资源，这意味着服务不需要引入新的配置机制。 ServiceManifest.xml 文件的架构定义随 Service Fabric SDK 和工具一起安装到 *C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd*。
+服务清单允许声明或更改服务要使用的资源而无需更改已编译的代码。 Service Fabric 支持对服务的终结点资源进行配置。 可以通过应用程序清单中的 SecurityGroup 控制对服务清单中指定资源的访问。 资源的声明允许在部署时更改这些资源，这意味着服务不需要引入新的配置机制。 ServiceManifest.xml 文件的架构定义随 Service Fabric SDK 和工具一起安装到 *C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd*。
 
 ## <a name="endpoints"></a>终结点
 在服务清单中定义了终结点资源时，如果未显式指定端口，则 Service Fabric 从保留的应用程序端口范围中分配端口。 例如，可以查看本段落后面提供的清单代码段中指定的终结点 *ServiceEndpoint1* 。 此外，服务还可以请求在资源中使用特定端口。 在不同群集节点上运行的服务副本可以分配不同的端口号，而运行在同一节点上的服务副本共享同一个端口。 之后服务副本可根据需要将这些端口用于复制和侦听客户端请求。
+
+激活指定 https 终结点的服务后，Service Fabric 将设置端口的访问控制项，将指定的服务器证书绑定到端口，还会向证书的私钥授予该服务作为权限运行的标识。 每次启动 Service Fabric 时，或通过升级更改应用程序的证书声明时，都会调用激活流。 还会监视终结点证书的更改/续订，并根据需要定期重新应用相应的权限。
+
+服务终止后，Service Fabric 会清理终结点访问控制条目，并删除证书绑定。 但是，任何应用于证书私钥的权限都不会被清除。
 
 > [!WARNING] 
 > 根据设计，静态端口不应与 ClusterManifest 中指定的应用程序端口范围重叠。 如果指定静态端口，请将其分配到应用程序端口范围外，否则会导致端口冲突。 对于版本 6.5CU2，当我们检测到此类冲突时，我们将发出**运行状况警告**，但让部署继续与已发布的 6.5 行为同步。 但是，我们可能会在下一个主要版本中阻止应用程序部署。
@@ -35,7 +39,7 @@ ms.locfileid: "79292462"
 </Resources>
 ```
 
-如果在单个服务包中有多个代码包，则还需要在“终结点”  部分中引用代码包。  例如，如果 **ServiceEndpoint2a** 和 **ServiceEndpoint2b** 是同一个服务包中引用不同代码包的终结点，则对应于每个终结点的代码包按如下所示说明：
+如果在单个服务包中有多个代码包，则还需要在“终结点”部分中引用代码包。  例如，如果 **ServiceEndpoint2a** 和 **ServiceEndpoint2b** 是同一个服务包中引用不同代码包的终结点，则对应于每个终结点的代码包按如下所示说明：
 
 ```xml
 <Resources>
@@ -87,6 +91,7 @@ HTTP 终结点由 Service Fabric 自动建立 ACL。
       <Endpoint Name="ServiceEndpoint1" Protocol="http"/>
       <Endpoint Name="ServiceEndpoint2" Protocol="http" Port="80"/>
       <Endpoint Name="ServiceEndpoint3" Protocol="https"/>
+      <Endpoint Name="ServiceEndpoint4" Protocol="https" Port="14023"/>
 
       <!-- This endpoint is used by the replicator for replicating the state of your service.
            This endpoint is configured through the ReplicatorSettings config section in the Settings.xml
@@ -108,7 +113,7 @@ HTTPS 协议提供服务器身份验证，用于对客户端-服务器通信进�
 > 使用 HTTPS 时，请勿将同一端口和证书用于已部署到同一节点的不同服务实例（独立于应用程序）。 在不同的应用程序实例中使用相同的端口升级两个不同的服务将导致升级失败。 有关详细信息，请参阅[使用 HTTPS 终结点升级多个应用程序](service-fabric-application-upgrade.md#upgrading-multiple-applications-with-https-endpoints)。
 >
 
-下面是需要为 HTTPS 设置的一个示例 ApplicationManifest。 必须提供证书的指纹。 EndpointRef 是对 ServiceManifest 中 EndpointResource 的引用，为其设置 HTTPS 协议。 可以添加多个 EndpointCertificate。  
+下面是演示 HTTPS 终结点所需配置的示例 ApplicationManifest。 服务器/终结点证书可以通过指纹或主题公用名声明，且必须提供一个值。 EndpointRef 是对 ServiceManifest 中 EndpointResource 的引用，其协议必须设置为“https”协议。 可以添加多个 EndpointCertificate。  
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -129,7 +134,8 @@ HTTPS 协议提供服务器身份验证，用于对客户端-服务器通信进�
     <ServiceManifestRef ServiceManifestName="Stateful1Pkg" ServiceManifestVersion="1.0.0" />
     <ConfigOverrides />
     <Policies>
-      <EndpointBindingPolicy CertificateRef="TestCert1" EndpointRef="ServiceEndpoint3"/>
+      <EndpointBindingPolicy CertificateRef="SslCertByTP" EndpointRef="ServiceEndpoint3"/>
+      <EndpointBindingPolicy CertificateRef="SslCertByCN" EndpointRef="ServiceEndpoint4"/>
     </Policies>
   </ServiceManifestImport>
   <DefaultServices>
@@ -145,7 +151,8 @@ HTTPS 协议提供服务器身份验证，用于对客户端-服务器通信进�
     </Service>
   </DefaultServices>
   <Certificates>
-    <EndpointCertificate Name="TestCert1" X509FindValue="FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF F0" X509StoreName="MY" />  
+    <EndpointCertificate Name="SslCertByTP" X509FindValue="FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF F0" X509StoreName="MY" />  
+    <EndpointCertificate Name="SslCertByCN" X509FindType="FindBySubjectName" X509FindValue="ServiceFabric-EndpointCertificateBinding-Test" X509StoreName="MY" />  
   </Certificates>
 </ApplicationManifest>
 ```
@@ -171,7 +178,7 @@ HTTPS 协议提供服务器身份验证，用于对客户端-服务器通信进�
       </Endpoints>
     </ResourceOverrides>
         <Policies>
-           <EndpointBindingPolicy CertificateRef="TestCert1" EndpointRef="ServiceEndpoint"/>
+           <EndpointBindingPolicy CertificateRef="SslCertByTP" EndpointRef="ServiceEndpoint"/>
         </Policies>
   </ServiceManifestImport>
 ```

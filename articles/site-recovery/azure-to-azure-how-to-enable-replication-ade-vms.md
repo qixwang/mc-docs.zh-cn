@@ -6,21 +6,21 @@ manager: digimobile
 ms.service: site-recovery
 ms.topic: article
 origin.date: 08/08/2019
-ms.date: 02/24/2020
+ms.date: 06/08/2020
 ms.author: v-yeche
-ms.openlocfilehash: 1e1f146e08c787b5e1faee3b7f6345cf9f0629d1
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 794a912bc6fbabbf580888a393417659e24961be
+ms.sourcegitcommit: 5ae04a3b8e025986a3a257a6ed251b575dbf60a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77611234"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84440429"
 ---
 # <a name="replicate-azure-disk-encryption-enabled-virtual-machines-to-another-azure-region"></a>将启用了 Azure 磁盘加密的虚拟机复制到另一个 Azure 区域
 
 本文介绍如何将启用了 Azure 磁盘加密 (ADE) 的 Azure VM 从一个 Azure 区域复制到另一个 Azure 区域。
 
 >[!NOTE]
-> 对于运行 Windows 和 Linux 操作系统的 VM，Site Recovery 当前都支持 ADE（使用或不使用 Azure Active Directory (AAD)）。  对于运行 ADE 1.1（不使用 AAD）的计算机，VM 必须使用托管磁盘。 不支持使用非托管磁盘的 VM。 如果从 ADE 0.1（使用 AAD）切换到 1.1，则需要先为 VM 禁用复制并在启用 1.1 后启用复制。
+> 对于运行 Windows 操作系统的 VM，Site Recovery 当前支持 ADE（无论是否使用 Azure Active Directory (AAD)）。 对于 Linux 操作系统，我们仅支持不使用 AAD 的 ADE。 此外，对于运行 ADE 1.1 （不使用 AAD）的计算机，VM 必须使用托管磁盘。 不支持包含非托管磁盘的 VM。 如果从 ADE 0.1（使用 AAD）切换到 1.1，则需要先为 VM 禁用复制并在启用 1.1 后启用复制。
 
 <a name="required-user-permissions"></a>
 ## <a name="required-user-permissions"></a>所需的用户权限
@@ -43,11 +43,11 @@ Site Recovery 要求用户具有在目标区域中创建密钥保管库以及将
 
 若要管理权限，请在门户中转到 Key Vault 资源。 添加用户所需的权限。 以下示例演示如何启用对源区域中 Key Vault *ContosoWeb2Keyvault* 的权限。
 
-1. 转到“主页” > “Keyvaults” > “ContosoWeb2KeyVault”>“访问策略”。   
+1. 转到“主页” > “Keyvaults” > “ContosoWeb2KeyVault”>“访问策略”。  
 
     ![“Key Vault 权限”窗口](./media/azure-to-azure-how-to-enable-replication-ade-vms/key-vault-permission-1.png)
 
-2. 可以发现目前没有任何用户权限。 选择“添加新订阅”  。 输入用户和权限信息。
+2. 可以发现目前没有任何用户权限。 选择“添加新订阅”。 输入用户和权限信息。
 
     ![keyvault 权限](./media/azure-to-azure-how-to-enable-replication-ade-vms/key-vault-permission-2.png)
 
@@ -69,7 +69,8 @@ Site Recovery 要求用户具有在目标区域中创建密钥保管库以及将
     > 执行此脚本之前，请替换以下项，使之与 Azure 中国云环境匹配。
     > 1. **Get-Authentication** 函数 *请将 `https://vault.azure.net` 替换为 `https://vault.azure.cn`。
     >     *将 `https://login.windows.net` 替换为 `https://login.chinacloudapi.cn`。
-    > 2. **Start-CopyKeys** 函数 *请将 `Login-AzureRmAccount` 替换为 'Login-AzureRmAccount -Environment AzureChinaCloud'。
+    > 2. Start-CopyKeys 函数 *请将 `Login-AzAccount` 替换为“Login-AzAccount -Environment AzureChinaCloud”。
+    >     \* 请将 `vault.azure.net`替换为“vault.azure.cn”。
     
     <!--MOONCAKE: CUSTOMIZE-->
     
@@ -90,7 +91,7 @@ Site Recovery 要求用户具有在目标区域中创建密钥保管库以及将
 
 对于本示例，主要 Azure 区域是“中国东部”，次要区域是“中国北部”。
 
-1. 在保管库中选择“+复制”。 
+1. 在保管库中选择“+复制”。
 2. 注意以下字段。
     - **源**：VM 的起始点，在本例中为 **Azure**。
     - **源位置**：要在其中保护虚拟机的 Azure 区域。 对于本示例中，源位置是“中国东部”。
@@ -98,9 +99,9 @@ Site Recovery 要求用户具有在目标区域中创建密钥保管库以及将
     - **源订阅**：源虚拟机所属的订阅。 它可以是恢复服务保管库所在的同一 Azure Active Directory 租户中的任一订阅。
     - **资源组**：源虚拟机所属的资源组。 所选资源组中要保护的所有 VM 会在下一步骤中列出。
 
-3. 在“虚拟机” > “选择虚拟机”中，选择要复制的每个 VM   。 只能选择可以启用复制的计算机。 选择“确定”。 
+3. 在“虚拟机” > “选择虚拟机”中，选择要复制的每个 VM 。 只能选择可以启用复制的计算机。 选择“确定”。
 
-4. 在“设置”中，可以配置以下目标站点设置。 
+4. 在“设置”中，可以配置以下目标站点设置。
 
     - **目标位置**：要在其中复制源虚拟机数据的位置。 Site Recovery 根据所选计算机的位置提供合适的目标区域列表。 我们建议使用与恢复服务保管库位置相同的位置。
     - **目标订阅**：用于灾难恢复的目标订阅。 默认情况下，目标订阅与源订阅相同。
@@ -108,40 +109,40 @@ Site Recovery 要求用户具有在目标区域中创建密钥保管库以及将
     - **目标虚拟网络**：默认情况下，Site Recovery 会在目标区域中创建一个新的虚拟网络， 其名称带有“asr”后缀。 此虚拟网络会映射到源网络并用于任何将来的保护。 [详细了解](site-recovery-network-mapping-azure-to-azure.md)网络映射。
     - **目标存储帐户（如果源 VM 不使用托管磁盘）** ：默认情况下，Site Recovery 会创建模拟源 VM 存储配置的新目标存储帐户。 如果已存在一个存储帐户，将重复使用它。
     - **副本托管磁盘（如果源 VM 使用托管磁盘）** ：Site Recovery 在目标区域新建托管磁盘副本，以生成和源 VM 的托管磁盘存储类型一致（标准或高级）的镜像磁盘。
-    - **缓存存储帐户**：Site Recovery 需要源区域中称为“缓存存储”的额外存储帐户  。 源 VM 上的所有更改将受到跟踪并发送到缓存存储帐户。 它们随后会复制到目标位置。
+    - **缓存存储帐户**：Site Recovery 需要源区域中称为“缓存存储”的额外存储帐户。 源 VM 上的所有更改将受到跟踪并发送到缓存存储帐户。 它们随后会复制到目标位置。
     - **可用性集**：默认情况下，Site Recovery 会在目标区域中创建一个新的可用性集， 其名称带有“asr”后缀。 如果已存在 Site Recovery 创建的可用性集，将会重复使用它。
     - **磁盘加密 Key Vault**：默认情况下，Site Recovery 会在目标区域中创建新的 Key Vault， 其名称包含基于源 VM 磁盘加密密钥的“asr”后缀。 如果已存在 Azure Site Recovery 创建的 Key Vault，将会重复使用它。
     - **密钥加密 Key Vault**：默认情况下，Site Recovery 会在目标区域中创建新的 Key Vault， 其名称包含基于源 VM 密钥加密密钥的“asr”后缀。 如果已存在 Azure Site Recovery 创建的 Key Vault，将会重复使用它。
-    - **复制策略**：定义恢复点保留期历史记录和应用一致性快照频率的设置。 默认情况下，Site Recovery 会使用恢复点保留期为 24 小时、应用一致性快照频率为 60 分钟的默认设置创建新的复制策略   。
+    - **复制策略**：定义恢复点保留期历史记录和应用一致性快照频率的设置。 默认情况下，Site Recovery 会使用恢复点保留期为 24 小时、应用一致性快照频率为 60 分钟的默认设置创建新的复制策略 。
 
 ## <a name="customize-target-resources"></a>自定义目标资源
 
 遵循以下步骤修改 Site Recovery 默认目标设置。
 
-1. 选择“目标订阅”旁边的“自定义”以修改默认目标订阅  。 从 Azure AD 租户中可用的订阅列表中选择订阅。
+1. 选择“目标订阅”旁边的“自定义”以修改默认目标订阅。 从 Azure AD 租户中可用的订阅列表中选择订阅。
 
-2. 选择“资源组、网络、存储和可用性集”旁边的“自定义”，以修改以下默认设置  ：
-    - 对于“目标资源组”，请从订阅目标位置中的资源组列表中选择资源组。 
-    - 对于“目标虚拟网络”，请从目标位置中的虚拟网络列表中选择网络。 
-    - 对于“可用性集”，可将可用性集设置添加到 VM（如果它们是源区域中可用性集的一部分）。 
-    - 对于“目标存储帐户”，请选择要使用的帐户。 
+2. 选择“资源组、网络、存储和可用性集”旁边的“自定义”，以修改以下默认设置：
+    - 对于“目标资源组”，请从订阅目标位置中的资源组列表中选择资源组。
+    - 对于“目标虚拟网络”，请从目标位置中的虚拟网络列表中选择网络。
+    - 对于“可用性集”，可将可用性集设置添加到 VM（如果它们是源区域中可用性集的一部分）。
+    - 对于“目标存储帐户”，请选择要使用的帐户。
 
-2. 选择“加密设置”旁边的“自定义”，以修改以下默认设置  ：
-   - 对于“目标磁盘加密 Key Vault”，请从订阅的目标位置中的 Key Vault 列表中选择目标磁盘加密 Key Vault  。
-   - 对于“目标加密加密 Key Vault”，请从订阅的目标位置中的 Key Vault 列表中选择目标密钥加密 Key Vault  。
+2. 选择“加密设置”旁边的“自定义”，以修改以下默认设置：
+   - 对于“目标磁盘加密 Key Vault”，请从订阅的目标位置中的 Key Vault 列表中选择目标磁盘加密 Key Vault。
+   - 对于“目标加密加密 Key Vault”，请从订阅的目标位置中的 Key Vault 列表中选择目标密钥加密 Key Vault。
 
-3. 选择“创建目标资源” > “启用复制”。  
-4. 为 VM 启用复制后，可以在“复制的项”下检查 VM 的运行状况  。
+3. 选择“创建目标资源” > “启用复制”。 
+4. 为 VM 启用复制后，可以在“复制的项”下检查 VM 的运行状况。
 
 >[!NOTE]
->在初始复制期间，VM 状态刷新可能需要一段时间，但不显示确切的进度。 单击“刷新”  可查看最新状态。
+>在初始复制期间，VM 状态刷新可能需要一段时间，但不显示确切的进度。 单击“刷新”可查看最新状态。
 
 ## <a name="update-target-vm-encryption-settings"></a>更新目标 VM 加密设置
 在以下情况下，需要更新目标 VM 的加密设置：
   - 你已在 VM 上启用 Site Recovery 复制。 后来，你在源 VM 上启用了磁盘加密。
   - 你已在 VM 上启用 Site Recovery 复制。 后来，你在源 VM 上更改了磁盘加密密钥或密钥加密密钥。
 
-可以使用[一个脚本](#copy-disk-encryption-keys-to-the-dr-region-by-using-the-powershell-script)将加密密钥复制到目标区域，然后在“恢复服务保管库” > “复制的项” > “属性” > “计算和网络”中更新目标加密设置     。
+可以使用[一个脚本](#copy-disk-encryption-keys-to-the-dr-region-by-using-the-powershell-script)将加密密钥复制到目标区域，然后在“恢复服务保管库” > “复制的项” > “属性” > “计算和网络”中更新目标加密设置 。
 
 ![“更新 ADE 设置”对话框窗口](./media/azure-to-azure-how-to-enable-replication-ade-vms/update-ade-settings.png)
 
@@ -153,20 +154,20 @@ Azure Site Recovery 至少需要源区域密钥保管库的读取权限和目标
 **原因 1：** 你没有**源区域密钥保管库**的“GET”权限，无法读取密钥。 <br />
 **如何修复：** 无论你是否是订阅管理员，都必须具有密钥保管库的 get 权限，这一点很重要。
 
-1. 转到源区域密钥保管库，本例中为“ContososourceKeyvault”>“访问策略”  
-2. 在“选择主体”  下添加你的用户名，例如：“dradmin@contoso.com”
-3. 在“密钥权限”  下，选择 GET 
-4. 在“机密权限”  下，选择 GET 
+1. 转到源区域密钥保管库，本例中为“ContososourceKeyvault”>“访问策略” 
+2. 在“选择主体”下添加你的用户名，例如：“dradmin@contoso.com”
+3. 在“密钥权限”下，选择 GET 
+4. 在“机密权限”下，选择 GET 
 5. 保存访问策略
 
 **原因 2：** 你对**目标区域密钥保管库**没有写入密钥所需的权限。 <br />
 
-例如：  你尝试复制源区域中包含 Key Vault *ContososourceKeyvault* 的 VM。
+例如：你尝试复制源区域中包含 Key Vault *ContososourceKeyvault* 的 VM。
 你对源区域中的 Key Vault 拥有所有权限。 但在保护期间，你选择了已创建的、但没有权限的 Key Vault ContosotargetKeyvault。 发生错误。
 
 [目标密钥保管库](#required-user-permissions)所需的权限
 
-**如何修复：** 转到“主页” > “Keyvaults” > “ContosotargetKeyvault” > “访问策略”并添加相应的权限。    
+**如何修复：** 转到“主页” > “Keyvaults” > “ContosotargetKeyvault” > “访问策略”并添加相应的权限。   
 
 ## <a name="next-steps"></a>后续步骤
 

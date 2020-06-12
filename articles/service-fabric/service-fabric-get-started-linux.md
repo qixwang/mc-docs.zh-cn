@@ -3,15 +3,16 @@ title: 在 Linux 上设置开发环境
 description: 在 Linux 上安装运行时和 SDK 并创建本地开发群集。 完成此设置后，便可以开始生成应用程序。
 ms.topic: conceptual
 origin.date: 02/23/2018
-ms.date: 01/13/2020
+ms.date: 06/08/2020
 ms.author: v-yeche
-ms.openlocfilehash: 8e38c964bfe3129d9b1f8408a260d877a38f88bd
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 4bc4cc6a2fdf077683b586f43eccb690434c7bd2
+ms.sourcegitcommit: 0e178672632f710019eae60cea6a45ac54bb53a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292026"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84356228"
 ---
+<!--RHEL SUPPORTED DEVELOPMENT ENVIRONMENT, NOT SERVICE FABRIC NODE OS CATEGORY -->
 # <a name="prepare-your-development-environment-on-linux"></a>在 Linux 上准备开发环境
 > [!div class="op_single_selector"]
 > * [Windows](service-fabric-get-started.md)
@@ -22,7 +23,7 @@ ms.locfileid: "79292026"
 
 若要在 Linux 开发计算机上部署和运行 [Azure Service Fabric 应用程序](service-fabric-application-model.md)，请安装运行时和常用 SDK。 还可以安装用于 Java 和 .NET Core 开发的可选 SDK。 
 
-本文中的步骤假设你在 Linux 上进行本地安装，或者使用 Service Fabric OneBox 容器映像 `microsoft/service-fabric-onebox`。
+本文中的步骤假设你在 Linux 上进行本地安装，或者使用 Service Fabric OneBox 容器映像 `mcr.microsoft.com/service-fabric/onebox:latest`。
 
 不支持在适用于 Linux 的 Windows 子系统上安装 Service Fabric 运行时和 SDK。 可以使用受支持的 Azure Service Fabric 命令行接口 (CLI) 来管理托管在云中或本地其他位置的 Service Fabric 实体。 有关如何安装 CLI 的信息，请参阅[设置 Service Fabric CLI](./service-fabric-cli.md)。
 
@@ -37,15 +38,13 @@ ms.locfileid: "79292026"
     ```bash
     sudo apt-get install apt-transport-https
     ```
-
-<!--Not Available on * Red Hat Enterprise Linux 7.4 (Service Fabric preview support)-->
-<!--MOONCAKE CUSTOMIZATION: Deployment raise error with "PlatformImageNotFound" -->
+* Red Hat Enterprise Linux 7.4（Service Fabric 预览版支持）
 
 ## <a name="installation-methods"></a>安装方法
 
 ### <a name="script-installation-ubuntu"></a>脚本安装 (Ubuntu)
 
-为方便起见，我们提供了一个脚本用于连同 sfctl CLI 一起安装 Service Fabric 运行时和 Service Fabric 通用 SDK  。 在以下部分中执行手动安装步骤。 可以看到正在安装的组件和相关许可证。 运行该脚本即认为你同意所要安装的所有软件的许可条款。
+为方便起见，我们提供了一个脚本用于连同 sfctl CLI 一起安装 Service Fabric 运行时和 Service Fabric 通用 SDK。 在以下部分中执行手动安装步骤。 可以看到正在安装的组件和相关许可证。 运行该脚本即认为你同意所要安装的所有软件的许可条款。
 
 成功运行脚本后，可以跳转到[设置本地群集](#set-up-a-local-cluster)。
 
@@ -107,7 +106,39 @@ sudo curl -s https://raw.githubusercontent.com/Azure/service-fabric-scripts-and-
     sudo apt-get update
     ```
 
-<!-- Not Available on ### Red Hat Enterprise Linux 7.4 (Service Fabric preview support)-->
+### <a name="red-hat-enterprise-linux-74-service-fabric-preview-support"></a>Red Hat Enterprise Linux 7.4（Service Fabric 预览版支持）
+
+1. 打开终端。
+2. 下载并安装 Extra Packages for Enterprise Linux(EPEL)。
+
+    ```bash
+    wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+    sudo yum install epel-release-latest-7.noarch.rpm
+    ```
+3. 将 EfficiOS RHEL7 包存储库添加到系统。
+
+    ```bash
+    sudo wget -P /etc/yum.repos.d/ https://packages.efficios.com/repo.files/EfficiOS-RHEL7-x86-64.repo
+    ```
+
+4. 将 EfficiOS 包签名密钥导入到本地 GPG keyring。
+
+    ```bash
+    sudo rpmkeys --import https://packages.efficios.com/rhel/repo.key
+    ```
+
+5. 将 Azure RHEL 存储库添加到系统。
+
+    ```bash
+    curl https://packages.microsoft.com/config/rhel/7.4/prod.repo > ./microsoft-prod.repo
+    sudo cp ./microsoft-prod.repo /etc/yum.repos.d/
+    ```
+
+6. 安装 .NET SDK。
+
+    ```bash
+    yum install rh-dotnet20 -y
+    ```
 
 ## <a name="install-and-set-up-the-service-fabric-sdk-for-a-local-cluster"></a>为本地群集安装并设置 Service Fabric SDK
 
@@ -126,15 +157,18 @@ sudo apt-get install servicefabricsdkcommon
 >   echo "servicefabricsdkcommon servicefabricsdkcommon/accepted-eula-ga select true" | sudo debconf-set-selections
 >   ```
 
-<!-- Not Available on ### Red Hat Enterprise Linux 7.4 (Service Fabric preview support)-->
+### <a name="red-hat-enterprise-linux-74-service-fabric-preview-support"></a>Red Hat Enterprise Linux 7.4（Service Fabric 预览版支持）
+
+```bash
+sudo yum install servicefabricsdkcommon
+```
 
 SDK 安装随附的 Service Fabric 运行时包含下表中所述的包。 
 
  | | DotNetCore | Java | Python | NodeJS | 
 --- | --- | --- | --- |---
 Ubuntu | 2.0.0 | AzulJDK 1.8 | Implicit from npm | 最新 |
-
-<!-- Not Available on RHEL -->
+RHEL | - | OpenJDK 1.8 | Implicit from npm | 最新 |
 
 ## <a name="set-up-a-local-cluster"></a>设置本地群集
 安装完成后，启动本地群集。
@@ -145,7 +179,7 @@ Ubuntu | 2.0.0 | AzulJDK 1.8 | Implicit from npm | 最新 |
     sudo /opt/microsoft/sdk/servicefabric/common/clustersetup/devclustersetup.sh
     ```
 
-2. 打开 Web 浏览器，转到 [Service Fabric Explorer](http://localhost:19080/Explorer) (`http://localhost:19080/Explorer`)。 群集启动后，可以看到 Service Fabric Explorer 仪表板。 群集完全设置可能需要几分钟时间。 如果浏览器无法打开该 URL 或者 Service Fabric Explorer 未显示系统已准备就绪，请等待几分钟，然后重试。
+2. 打开 Web 浏览器，转到 **Service Fabric Explorer** (`http://localhost:19080/Explorer`)。 群集启动后，可以看到 Service Fabric Explorer 仪表板。 群集完全设置可能需要几分钟时间。 如果浏览器无法打开该 URL 或者 Service Fabric Explorer 未显示系统已准备就绪，请等待几分钟，然后重试。
 
     ![Linux 上的 Service Fabric Explorer][sfx-linux]
 
@@ -200,7 +234,14 @@ Service Fabric 提供基架工具，可以借助此类工具，使用 Yeoman 模
     sdk install gradle 5.1
     ```
 
-<!-- Not Available on * Red Hat Enterprise Linux 7.4 (Service Fabric preview support)-->
+* Red Hat Enterprise Linux 7.4（Service Fabric 预览版支持）
+
+    ```bash
+    sudo yum install java-1.8.0-openjdk-devel
+    curl -s https://get.sdkman.io | bash
+    sdk install gradle
+    ```
+
 还需要为 Java 可执行文件安装 Service Fabric Yeo 生成器。 确保已安装 [Yeoman](#set-up-yeoman-generators-for-containers-and-guest-executables)，然后运行以下命令：
 
   ```bash
@@ -216,21 +257,21 @@ Service Fabric 提供基架工具，可以借助此类工具，使用 Yeoman 模
 > 
 > 在 Ubuntu 上，建议直接从 Eclipse 站点进行安装，而不是使用包安装程序（`apt` 或 `apt-get`）。 这样做可确保获取最新版 Eclipse。 可以安装面向 Java 开发人员或 Java EE 开发人员的 Eclipse IDE。
 
-1. 在 Eclipse 中，请确保已安装 Eclipse Neon 或更高版本，以及 Buildship 2.2.1 版或更高版本。 可以通过选择“帮助” > “关于 Eclipse” > “安装详细信息”查看已安装组件的版本    。 可以按 [Eclipse Buildship：适用于 Gradle 的 Eclipse 插件][buildship-update]中的说明更新 Buildship。
+1. 在 Eclipse 中，请确保已安装 Eclipse Neon 或更高版本，以及 Buildship 2.2.1 版或更高版本。 可以通过选择“帮助” > “关于 Eclipse” > “安装详细信息”查看已安装组件的版本  。 可以按 [Eclipse Buildship：适用于 Gradle 的 Eclipse 插件][buildship-update]中的说明更新 Buildship。
 
-2. 若要安装 Service Fabric 插件，请选择“帮助” > “安装新软件”   。
+2. 若要安装 Service Fabric 插件，请选择“帮助” > “安装新软件” 。
 
-3. 在“使用”框中，输入 **https://dl.microsoft.com/eclipse** 。 
+3. 在“使用”框中，输入 https:\//dl.microsoft.com/eclipse 。
 
-4. 选择“添加”   。
+4. 选择“添加”  。
 
     ![“可用软件”页][sf-eclipse-plugin]
 
-5. 选择 ServiceFabric 插件，然后选择“下一步”   。
+5. 选择 ServiceFabric 插件，然后选择“下一步” 。
 
 6. 执行安装步骤。 然后接受最终用户许可协议。
 
-如果已安装 Service Fabric Eclipse 插件，请确保使用最新版本。 通过选择“帮助” > “关于 Eclipse” > “安装详细信息”查看    。 然后，在已安装插件的列表中搜索 Service Fabric。如果可以使用更新的版本，请选择“更新”  。
+如果已安装 Service Fabric Eclipse 插件，请确保使用最新版本。 通过选择“帮助” > “关于 Eclipse” > “安装详细信息”查看  。 然后，在已安装插件的列表中搜索 Service Fabric。如果可以使用更新的版本，请选择“更新”。
 
 有关详细信息，请参阅[使用适用于 Eclipse 的 Service Fabric 插件开发 Java 应用程序](service-fabric-get-started-eclipse.md)。
 
@@ -259,7 +300,13 @@ sudo apt-get install servicefabric servicefabricsdkcommon
     sudo apt-get install -f
     ```
 
-<!-- Not Available on * Red Hat Enterprise Linux 7.4 (Service Fabric preview support)-->
+* Red Hat Enterprise Linux 7.4（Service Fabric 预览版支持）
+
+    ```bash
+    sudo yum remove servicefabric servicefabicsdkcommon
+    npm uninstall -g generator-azuresfcontainer
+    npm uninstall -g generator-azuresfguest
+    ```
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -283,4 +330,4 @@ sudo apt-get install servicefabric servicefabricsdkcommon
 [sf-eclipse-plugin]: ./media/service-fabric-get-started-linux/service-fabric-eclipse-plugin.png
 [sfx-linux]: ./media/service-fabric-get-started-linux/sfx-linux.png
 
-<!--Update_Description: update meta properties, wording update-->
+<!-- Update_Description: update meta properties, wording update, update link -->

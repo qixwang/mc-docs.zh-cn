@@ -1,19 +1,18 @@
 ---
 title: 管理 Azure Monitor 中的 Log Analytics 工作区 | Microsoft Docs
 description: 可以使用资源、工作区或表级权限来管理对 Azure Monitor 的 Log Analytics 工作区中存储的数据的访问。 本文详细介绍如何完成这些操作。
-author: lingliw
-manager: digimobile
+author: Johnnytechn
 ms.subservice: logs
 ms.topic: conceptual
 origin.date: 10/22/2019
-ms.date: 11/05/2019
-ms.author: v-lingwu
-ms.openlocfilehash: 1615386c2c4ed4178c609cb346b35cefb3817881
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.author: v-johya
+ms.date: 05/28/2020
+ms.openlocfilehash: d3b0bff8c96f780a946f92b3ad8dee57a5d540aa
+ms.sourcegitcommit: 5ae04a3b8e025986a3a257a6ed251b575dbf60a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79452442"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84440693"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>管理对 Azure Monitor 中的日志数据和工作区的访问
 
@@ -25,9 +24,9 @@ Azure Monitor 将[日志](data-platform-logs.md)数据存储在 Log Analytics �
 * 使用 Azure 基于角色的访问控制 (RBAC) 对需要访问特定资源中的日志数据的用户授予访问权限。
 * 使用 Azure RBAC 对需要访问工作区中特定表中的日志数据的用户授予访问权限。
 
-## <a name="configure-access-control-mode"></a>配置访问控制模式 <a name="configure-access-control-mode"></a>
+## <a name="configure-access-control-mode"></a>配置访问控制模式
 
-可以通过 Azure 门户或 Azure PowerShell 来查看对工作区配置的访问控制模式。  可使用以下支持的方法之一更改此设置：
+可以通过 Azure 门户或 Azure PowerShell 查看对工作区配置的[访问控制模式](design-logs-deployment.md)。  可使用以下支持的方法之一更改此设置：
 
 * Azure 门户
 
@@ -35,18 +34,18 @@ Azure Monitor 将[日志](data-platform-logs.md)数据存储在 Log Analytics �
 
 * Azure Resource Manager 模板
 
-### <a name="from-the-azure-portal"></a>从 Azure 门户 <a name="access-modes"></a>
+### <a name="from-the-azure-portal"></a>通过 Azure 门户
 
-可以在工作区“概述”页上的“Log Analytics 工作区”菜单中查看当前的工作区访问控制模式。  
+可以在工作区“概述”页上的“Log Analytics 工作区”菜单中查看当前的工作区访问控制模式。 
 
-![查看工作区访问控制模式](media/manage-access/view-access-control-mode.png)
+![查看工作区访问控制模式](./media/manage-access/view-access-control-mode.png)
 
 1. 在 [https://portal.azure.cn](https://portal.azure.cn) 中登录 Azure 门户。
 1. 在 Azure 门户中，选择“Log Analytics 工作区”> 你的工作区。
 
-可以在工作区的“属性”页中更改此设置。  如果你无权配置工作区，则会禁止更改此设置。
+可以在工作区的“属性”页中更改此设置。 如果你无权配置工作区，则会禁止更改此设置。
 
-![更改工作区访问模式](media/manage-access/change-access-control-mode.png)
+![更改工作区访问模式](./media/manage-access/change-access-control-mode.png)
 
 ### <a name="using-powershell"></a>使用 PowerShell
 
@@ -100,7 +99,7 @@ Set-AzResource -ResourceId $_.ResourceId -Properties $_.Properties -Force
 * **false**：将工作区设置为工作区上下文权限。 如果未设置该标志，则这是默认设置。
 * **true**：将工作区设置为资源上下文权限。
 
-## <a name="manage-access-using-workspace-permissions"></a>使用工作区权限管理访问 <a name="manage-access-using-workspace-permissions"></a>
+## <a name="manage-access-using-workspace-permissions"></a>使用工作区权限管理访问
 
 每个工作区可有多个与其关联的帐户，每个帐户可访问多个工作区。 使用 [Azure 基于角色的访问](../../role-based-access-control/role-assignments-portal.md)来管理访问权限。
 
@@ -120,14 +119,14 @@ Set-AzResource -ResourceId $_.ResourceId -Properties $_.Properties -Force
 
 ## <a name="manage-access-using-azure-permissions"></a>使用 Azure 权限管理访问
 
-若要使用 Azure 权限授予对 Log Analytics 工作区的访问权限，请执行[使用角色分配来管理对 Azure 订阅资源的访问权限](../../role-based-access-control/role-assignments-portal.md)中的步骤。
+若要使用 Azure 权限授予对 Log Analytics 工作区的访问权限，请执行[使用角色分配来管理对 Azure 订阅资源的访问权限](../../role-based-access-control/role-assignments-portal.md)中的步骤。 如需自定义角色的示例，请参阅 [自定义角色示例](#custom-role-examples)
 
 Azure 有两个适用于 Log Analytics 工作区的内置用户角色：
 
 * Log Analytics 读者
 * Log Analytics 参与者
 
- Log Analytics 读者角色的成员可以：
+Log Analytics 读者角色的成员可以：
 
 * 查看和搜索所有监视数据
 * 查看监视设置，包括查看 Azure 诊断在所有 Azure 资源上的配置。
@@ -142,9 +141,9 @@ Log Analytics 读者角色包括以下 Azure 操作：
 | 操作 | `Microsoft.Support/*` | 能够打开支持案例 |
 |非操作 | `Microsoft.OperationalInsights/workspaces/sharedKeys/read` | 防止读取工作区密钥，该密钥是使用数据集合 API 和安装代理所必需的。 这可以防止用户向工作区添加新资源 |
 
- Log Analytics 参与者角色的成员可以：
+Log Analytics 参与者角色的成员可以：
 
-* 包括“Log Analytics 读取者角色”的所有特权，允许用户读取所有监视数据 
+* 包括“Log Analytics 读取者角色”的所有特权，允许用户读取所有监视数据
 * 创建和配置自动化帐户
 * 添加和删除管理解决方案
 
@@ -228,14 +227,14 @@ Log Analytics 参与者角色包括以下 Azure 操作：
 
     * 为用户授予对工作区的以下权限： 
 
-        * `Microsoft.OperationalInsights/workspaces/read` � 必需，以便用户可以枚举工作区并在 Azure 门户中打开工作区边栏选项卡
-        * `Microsoft.OperationalInsights/workspaces/query/read` � 对于每个可以执行查询的用户都是必需的
-        * `Microsoft.OperationalInsights/workspaces/query/SigninLogs/read` � 用于读取 Azure AD 登录日志
-        * `Microsoft.OperationalInsights/workspaces/query/Update/read` � 用于读取更新管理解决方案日志
-        * `Microsoft.OperationalInsights/workspaces/query/UpdateRunProgress/read` � 用于读取更新管理解决方案日志
-        * `Microsoft.OperationalInsights/workspaces/query/UpdateSummary/read` � 用于读取更新管理日志
-        * `Microsoft.OperationalInsights/workspaces/query/Heartbeat/read` � 必需，以便能够使用更新管理解决方案
-        * `Microsoft.OperationalInsights/workspaces/query/ComputerGroup/read` � 必需，以便能够使用更新管理解决方案
+        * `Microsoft.OperationalInsights/workspaces/read` - 需要此权限用户才可以枚举工作区并在 Azure 门户中打开工作区边栏选项卡
+        * `Microsoft.OperationalInsights/workspaces/query/read` - 需要此权限每位用户才可以执行查询
+        * `Microsoft.OperationalInsights/workspaces/query/SigninLogs/read` - 需要此权限以读取 Azure AD 登录日志
+        * `Microsoft.OperationalInsights/workspaces/query/Update/read` - 需要此权限以读取更新管理解决方案日志
+        * `Microsoft.OperationalInsights/workspaces/query/UpdateRunProgress/read` - 需要此权限以读取更新管理解决方案日志
+        * `Microsoft.OperationalInsights/workspaces/query/UpdateSummary/read` - 需要此权限以读取更新管理日志
+        * `Microsoft.OperationalInsights/workspaces/query/Heartbeat/read` - 需要此权限以使用更新管理解决方案
+        * `Microsoft.OperationalInsights/workspaces/query/ComputerGroup/read` - 需要此权限以使用更新管理解决方案
 
     * 为用户授予对其资源的以下权限：分配给“读取者”角色的 `*/read`，或 `Microsoft.Insights/logs/*/read`。 
 
@@ -275,7 +274,7 @@ Log Analytics 参与者角色包括以下 Azure 操作：
 
  自定义日志是基于自定义日志和 HTTP 数据收集器 API 等数据源创建的。 识别日志类型的最简单方法是查看[日志架构中的自定义日志](../log-query/get-started-portal.md#understand-the-schema)下所列的表。
 
- 目前无法授予对单个自定义日志的访问权限，但可以授予对所有自定义日志的访问权限。 若要创建一个有权访问所有自定义日志的角色，请使用以下操作创建自定义角色：
+ 无法授予对单个自定义日志的访问权限，但可以授予对所有自定义日志的访问权限。 若要创建一个有权访问所有自定义日志的角色，请使用以下操作创建自定义角色：
 
 ```
 "Actions":  [
@@ -284,6 +283,9 @@ Log Analytics 参与者角色包括以下 Azure 操作：
     "Microsoft.OperationalInsights/workspaces/query/Tables.Custom/read"
 ],
 ```
+管理对自定义日志访问权限的另一种方法是将其分配给 Azure 资源，然后使用资源上下文范例管理访问权限。 若要使用此方法，必须在通过 [HTTP 数据收集器 API](data-collector-api.md) 将数据引入到 Log Analytics 时，通过在 [x-ms-AzureResourceId](data-collector-api.md#request-headers) 标头中指定资源 ID 来将其包含在内。 资源 ID 必须有效，并且具有适用的访问规则。 如此处所述，引入日志后，对资源具有读取访问权限的用户可对其进行访问。
+
+有时，自定义日志来自与特定资源不直接关联的源。 在这种情况下，只需创建一个资源组来管理对这些日志的访问权限。 资源组不会产生任何费用，但会提供有效的资源 ID 来控制对自定义日志的访问。 例如，如果特定防火墙正在发送自定义日志，创建一个名为“MyFireWallLogs”的资源组，并确保 API 请求中包含资源 ID“MyFireWallLogs”。 然后，仅有权访问 MyFireWallLogs 或具有完整工作区访问权限的用户才能访问防火墙日志记录。          
 
 ### <a name="considerations"></a>注意事项
 
@@ -298,3 +300,4 @@ Log Analytics 参与者角色包括以下 Azure 操作：
 * 请参阅 [Log Analytics 代理概述](../../azure-monitor/platform/log-analytics-agent.md)，以从数据中心或其他云环境中的计算机收集数据。
 
 * 请参阅[收集有关 Azure 虚拟机的数据](../../azure-monitor/learn/quick-collect-azurevm.md)，以配置 Azure VM 的数据收集。
+

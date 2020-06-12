@@ -3,16 +3,16 @@ title: 设置 Windows 开发环境
 description: 安装运行时、SDK 和工具并创建本地开发群集。 完成此设置后，就可以在 Windows 上开始生成应用程序。
 author: rockboyfor
 ms.topic: conceptual
-origin.date: 03/02/2020
-ms.date: 04/13/2020
+origin.date: 04/20/2020
+ms.date: 06/08/2020
 ms.author: v-yeche
 ms.custom: sfrev
-ms.openlocfilehash: 7af8082e2a4e948cba5c914a65af25689c34edaf
-ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
+ms.openlocfilehash: 0e671b5b223bff923b604315a7017eaca46744b6
+ms.sourcegitcommit: 0e178672632f710019eae60cea6a45ac54bb53a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82093448"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84356218"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>在 Windows 上准备开发环境
 
@@ -72,8 +72,8 @@ Service Fabric 工具是 Visual Studio 2017 和 2019 中 Azure 开发工作负�
 
 当前版本包括：
 
-* Service Fabric SDK and Tools 4.0.470
-* Service Fabric 运行时 7.0.470
+* Service Fabric SDK and Tools 4.1.409
+* Service Fabric 运行时 7.1.409
 
 有关支持版本的列表，请参阅 [Service Fabric 版本](service-fabric-versions.md)
 
@@ -90,7 +90,7 @@ Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force -Scope CurrentUser
 
 ## <a name="install-docker-optional"></a>安装 Docker（可选）
 
-[Service Fabric 是容器业务流程协调程序](service-fabric-containers-overview.md)，用于跨计算机群集部署微服务。 若要在本地开发群集上运行 Windows 容器应用程序，必须先安装用于 Windows 的 Docker。 获取[用于 Windows 的 Docker CE (稳定版)](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description)。 安装并启动 Docker 以后，右键单击任务栏图标，并选择“切换到 Windows 容器”。  此步骤是运行基于 Windows 的 Docker 映像所必需的。
+[Service Fabric 是容器业务流程协调程序](service-fabric-containers-overview.md)，用于跨计算机群集部署微服务。 若要在本地开发群集上运行 Windows 容器应用程序，必须先安装用于 Windows 的 Docker。 获取[用于 Windows 的 Docker CE (稳定版)](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description)。 安装并启动 Docker 以后，右键单击任务栏图标，并选择“切换到 Windows 容器”。 此步骤是运行基于 Windows 的 Docker 映像所必需的。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -111,4 +111,4 @@ Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force -Scope CurrentUser
 [core-sdk]: https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-CoreSDK "Core SDK WebPI 链接"
 [powershell5-download]: https://www.microsoft.com/download/details.aspx?id=54616
 
-<!--Update_Description: update meta properties, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

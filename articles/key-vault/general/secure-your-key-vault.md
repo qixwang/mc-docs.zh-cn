@@ -2,21 +2,21 @@
 title: 保护对密钥保管库的访问 - Azure 密钥保管库 | Azure
 description: 管理 Azure Key Vault、密钥和机密的访问权限。 介绍 Key Vault 的身份验证和授权模型以及如何保护 Key Vault。
 services: key-vault
-author: amitbapat
-manager: rkarlin
+author: ShaneBala-keyvault
+manager: ravijan
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-origin.date: 01/07/2019
-ms.date: 04/20/2020
+origin.date: 05/11/2020
+ms.date: 06/02/2020
 ms.author: v-tawe
-ms.openlocfilehash: 4d58d5c6a47cc5fb84917833192b44bb460bf790
-ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
+ms.openlocfilehash: 3a6ba34c173a9d71b45ed05de6d064a83e01e49d
+ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82588946"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84275542"
 ---
 # <a name="secure-access-to-a-key-vault"></a>保护对密钥保管库的访问
 
@@ -39,7 +39,7 @@ Azure 密钥保管库是一种云服务，用于保护加密密钥和机密（�
 - **用户加应用程序访问**：应用程序代表已登录的用户访问密钥保管库。 此类访问的示例包括 Azure PowerShell 和 Azure 门户。 用户访问权限通过两种方式授予。 用户可以从任何应用程序访问密钥保管库，或者用户必须使用特定的应用程序（称为_复合标识_）。
 - **仅限应用程序的访问**：应用程序作为守护程序服务或后台作业运行。 向应用程序标识授予访问密钥保管库的权限。
 
-对于这两种类型的访问，应用程序都使用 Azure AD 进行身份验证。 应用程序根据应用程序类型使用任何[支持的身份验证方法](../../active-directory/develop/authentication-scenarios.md)。 应用程序通过获取平面中资源的令牌来授予访问权限。 资源是管理平面或数据平面中基于 Azure 环境的终结点。 应用程序使用令牌并向密钥保管库发送 REST API 请求。 若要了解详细信息，请查看[整个身份验证流](../../active-directory/develop/v2-oauth2-auth-code-flow.md)。
+对于这两种类型的访问，应用程序都使用 Azure AD 进行身份验证。 应用程序根据应用程序类型使用任何[支持的身份验证方法](/active-directory/develop/authentication-scenarios)。 应用程序通过获取平面中资源的令牌来授予访问权限。 资源是管理平面或数据平面中基于 Azure 环境的终结点。 应用程序使用令牌并向密钥保管库发送 REST API 请求。 若要了解详细信息，请查看[整个身份验证流](../../active-directory/develop/v2-oauth2-auth-code-flow.md)。
 
 对这两种平面使用单一身份验证机制模型具有多个优点：
 
@@ -136,7 +136,7 @@ Azure 密钥保管库是一种云服务，用于保护加密密钥和机密（�
 
 有关如何以编程方式部署证书、访问密钥和机密的详细信息，请参阅以下资源：
 - 了解如何[将证书从客户托管的密钥保管库部署到 VM](https://blogs.technet.microsoft.com/kv/2016/09/14/updated-deploy-certificates-to-vms-from-customer-managed-key-vault/)（博客文章）。
-- 下载 [Azure 密钥保管库客户端示例](https://www.microsoft.com/download/details.aspx?id=45343)。 此内容介绍了如何使用启动证书对 Azure AD 进行身份验证以访问密钥保管库。
+- 查看 [Azure Key Vault 客户端示例](https://docs.microsoft.com/samples/browse/?term=Key%20Vault)。 此内容介绍了如何使用启动证书对 Azure AD 进行身份验证以访问密钥保管库。
 
 可以通过使用 Azure 门户授予大部分访问权限。 若要授予粒度权限，可以使用 Azure PowerShell 或 Azure CLI。
 

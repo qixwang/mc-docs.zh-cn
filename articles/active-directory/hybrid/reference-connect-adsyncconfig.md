@@ -5,17 +5,17 @@ author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-origin.date: 01/24/2019
-ms.date: 02/13/2019
+ms.date: 06/02/2020
 ms.subservice: hybrid
 ms.author: v-junlch
 ms.topic: reference
-ms.openlocfilehash: db72f0e1fdc24d7457375a0cb4107980c4c0621c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: a202d1f42bb66f3b2e3700bb45980a4e82f3bceb
+ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "63827202"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84275313"
 ---
 # <a name="azure-ad-connect--adsyncconfig-powershell-reference"></a>Azure AD Connect：ADSyncConfig PowerShell 参考
 以下文档提供了 Azure AD Connect 附带的 ADSyncConfig.psm1 PowerShell 模块的参考信息。
@@ -59,25 +59,24 @@ Get-ADSyncObjectsWithInheritanceDisabled [-SearchBase] <String> [[-ObjectClass] 
 ### <a name="examples"></a>示例
 
 #### <a name="example-1"></a>示例 1
+在“Contoso”域中查找已禁用继承的对象（默认情况下仅返回“organizationalUnit”对象）
 ```
-Find objects with disabled inheritance in 'Contoso' domain (by default returns 'organizationalUnit' objects only)
-```
-
 Get-ADSyncObjectsWithInheritanceDisabled -SearchBase 'Contoso'
+```
 
 #### <a name="example-2"></a>示例 2
+在“Contoso”域中查找具有禁用继承的“user”对象
 ```
-Find 'user' objects with disabled inheritance in 'Contoso' domain
-```
-
 Get-ADSyncObjectsWithInheritanceDisabled -SearchBase 'Contoso' -ObjectClass 'user'
+```
 
 #### <a name="example-3"></a>示例 3
+在 OU 中查找具有禁用继承的所有类型的对象
 ```
-Find all types of objects with disabled inheritance in a OU
+Get-ADSyncObjectsWithInheritanceDisabled -SearchBase OU=AzureAD,DC=Contoso,DC=com -ObjectClass '*'
 ```
 
-Get-ADSyncObjectsWithInheritanceDisabled -SearchBase OU=AzureAD,DC=Contoso,DC=com -ObjectClass '*'
+
 
 ### <a name="parameters"></a>PARAMETERS
 

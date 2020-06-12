@@ -3,14 +3,14 @@ title: 将群集节点升级为使用 Azure 托管磁盘
 description: 本文介绍了如何在只需群集短暂停机甚至无需其停机的前提下，将现有 Service Fabric 群集升级为使用 Azure 托管磁盘。
 ms.topic: how-to
 origin.date: 04/07/2020
-ms.date: 05/06/2020
+ms.date: 06/08/2020
 ms.author: v-yeche
-ms.openlocfilehash: 8986d2938555feddf0b8a62d7e7093a123f3e3ad
-ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
+ms.openlocfilehash: d17c7f5af4645111ba695fb36d83d7158b91fb80
+ms.sourcegitcommit: 0e178672632f710019eae60cea6a45ac54bb53a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "83002264"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84356148"
 ---
 # <a name="upgrade-cluster-nodes-to-use-azure-managed-disks"></a>将群集节点升级为使用 Azure 托管磁盘
 
@@ -155,7 +155,7 @@ Get-ServiceFabricClusterHealth
 
 ## <a name="deploy-an-upgraded-scale-set-for-the-primary-node-type"></a>为主要节点类型部署升级的规模集
 
-若要升级或纵向缩放某个节点类型，需要部署该节点类型的虚拟机规模集的副本，该副本与原始规模集相同（包括对相同 `nodeTypeRef`、`subnet` 和 `loadBalancerBackendAddressPools` 的引用），只不过，其中还包含所需的升级/更改及其自身的单独子网和入站 NAT 地址池。  由于我们要升级主要节点类型，因此，新规模集将如同原始规模集一样标记为主节点类型 (`isPrimary: true`)。 （对于非主节点类型升级，请省略此项更改。）
+若要升级或纵向缩放某个节点类型，需要部署该节点类型的虚拟机规模集的副本，该副本与原始规模集相同（包括对相同 `nodeTypeRef`、`subnet` 和 `loadBalancerBackendAddressPools` 的引用），只不过，其中还包含所需的升级/更改及其自身的单独子网和入站 NAT 地址池。 由于我们要升级主要节点类型，因此，新规模集将如同原始规模集一样标记为主节点类型 (`isPrimary: true`)。 （对于非主节点类型升级，请省略此项更改。）
 
 为方便起见，*Upgrade-1NodeType-2ScaleSets-ManagedDisks* [模板](https://github.com/erikadoyle/service-fabric-scripts-and-templates/blob/managed-disks/templates/nodetype-upgrade-no-outage/Upgrade-1NodeType-2ScaleSets-ManagedDisks.json) 和 [parameters](https://github.com/erikadoyle/service-fabric-scripts-and-templates/blob/managed-disks/templates/nodetype-upgrade-no-outage/Upgrade-1NodeType-2ScaleSets-ManagedDisks.parameters.json) 文件中已经为你做出了所需的更改。
 
@@ -262,19 +262,19 @@ Get-ServiceFabricClusterHealth
 
 若要部署已更新的配置，首先需要获取对 Key Vault 中存储的群集证书的多个引用。 查找这些值的最简单方法是使用 Azure 门户。 需要：
 
-* **群集证书的 Key Vault URL。** 在 Azure 门户上你的 Key Vault 中，选择“证书” > <所需的证书> > “机密标识符”：   
+* **群集证书的 Key Vault URL。** 在 Azure 门户上你的 Key Vault 中，选择“证书” > <所需的证书> > “机密标识符”：
 
     ```powershell
     $certUrlValue="https://sftestupgradegroup.vault.azure.cn/secrets/sftestupgradegroup20200309235308/dac0e7b7f9d4414984ccaa72bfb2ea39"
     ```
 
-* **群集证书的指纹。** （如果已[连接到初始群集](#connect-to-the-new-cluster-and-check-health-status)来检查其运行状况，则可能已获取此指纹。）在 Azure 门户上的相同证书边栏选项卡中（“证书” > <所需的证书>）中，复制“X.509 SHA-1 指纹(十六进制)”：   
+* **群集证书的指纹。** （如果已[连接到初始群集](#connect-to-the-new-cluster-and-check-health-status)来检查其运行状况，则可能已获取此指纹。）在 Azure 门户上的相同证书边栏选项卡中（“证书” > <所需的证书>）中，复制“X.509 SHA-1 指纹(十六进制)”：
 
     ```powershell
     $thumb = "BB796AA33BD9767E7DA27FE5182CF8FDEE714A70"
     ```
 
-* **Key Vault 的资源 ID。** 在 Azure 门户上你的 Key Vault 中，选择“属性” > “资源 ID”：  
+* **Key Vault 的资源 ID。** 在 Azure 门户上你的 Key Vault 中，选择“属性” > “资源 ID”： 
 
     ```powershell
     $sourceVaultValue = "/subscriptions/########-####-####-####-############/resourceGroups/sftestupgradegroup/providers/Microsoft.KeyVault/vaults/sftestupgradegroup"
@@ -319,7 +319,7 @@ foreach($name in $nodeNames){
 }
 ```
 
-使用 Service Fabric Explorer 来监视将种子节点迁移到新规模集的过程，以及原始规模集中的节点从“正在禁用”到“已禁用”状态的转换进度。  
+使用 Service Fabric Explorer 来监视将种子节点迁移到新规模集的过程，以及原始规模集中的节点从“正在禁用”到“已禁用”状态的转换进度。 
 
 ![显示已禁用节点状态的 Service Fabric Explorer](./media/upgrade-managed-disks/service-fabric-explorer-node-status.png)
 
@@ -342,11 +342,11 @@ Remove-AzVmss `
 Write-Host "Removed scale set $scaleSetName"
 ```
 
-在 Service Fabric Explorer 中，已删除的节点（因此也包括“群集运行状况”）现在会显示为“错误”状态。  
+在 Service Fabric Explorer 中，已删除的节点（因此也包括“群集运行状况”）现在会显示为“错误”状态。 
 
 ![显示处于“错误”状态的已禁用节点的 Service Fabric Explorer](./media/upgrade-managed-disks/service-fabric-explorer-disabled-nodes-error-state.png)
 
-从 Service Fabric 群集中删除已过时的节点可将“群集运行状况”还原为“正常”。 
+从 Service Fabric 群集中删除已过时的节点可将“群集运行状况”还原为“正常”。
 
 ```powershell
 # Remove node states for the deleted scale set
@@ -356,7 +356,7 @@ foreach($name in $nodeNames){
 }
 ```
 
-![Service Fabric Explorer，其中包含处于“错误”状态的已删除节点](./media/upgrade-managed-disks/service-fabric-explorer-healthy-cluster.png)
+![Service Fabric Explorer，其中包含处于“错误”状态的已关闭节点](./media/upgrade-managed-disks/service-fabric-explorer-healthy-cluster.png)
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -376,5 +376,4 @@ foreach($name in $nodeNames){
 
 * [纵向缩放注意事项](service-fabric-best-practices-capacity-scaling.md#vertical-scaling-considerations)
 
-<!-- Update_Description: new article about upgrade managed disks -->
-<!--NEW.date: 05/06/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

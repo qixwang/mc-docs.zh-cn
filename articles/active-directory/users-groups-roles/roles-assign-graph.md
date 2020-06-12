@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 03/11/2020
+ms.date: 06/01/2020
 ms.author: v-junlch
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f8b539ad54b0290fc3a113cc357b481a8d42576c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 0ca8d53abdeb974fca5081d9f9a200db9f593d9e
+ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79133973"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84275593"
 ---
 # <a name="assign-custom-admin-roles-using-the-microsoft-graph-api-in-azure-active-directory"></a>使用 Microsoft Graph API 在 Azure Active Directory 中分配自定义管理员角色 
 
@@ -26,7 +26,7 @@ ms.locfileid: "79133973"
 
 ## <a name="required-permissions"></a>所需的权限
 
-连接到 Azure AD 租户，使用全局管理员帐户或特权标识管理员分配或删除角色。
+使用全局管理员帐户或特权身份管理员连接到 Azure AD 组织，以分配或删除角色。
 
 ## <a name="post-operations-on-roleassignment"></a>在 RoleAssignment 上进行的 POST 操作
 
@@ -39,7 +39,7 @@ POST https://microsoftgraph.chinacloudapi.cn/beta/roleManagement/directory/roleA
 Content-type: application/json
 ```
 
-Body
+正文
 
 ``` HTTP
 {
@@ -63,7 +63,7 @@ POST
 https://microsoftgraph.chinacloudapi.cn/beta/roleManagement/directory/roleAssignments
 ```
 
-Body
+正文
 
 ``` HTTP
 {
@@ -90,7 +90,7 @@ POST
 https://microsoftgraph.chinacloudapi.cn/beta/roleManagement/directory/roleAssignments
 ```
 
-Body
+正文
 
 ``` HTTP
 {

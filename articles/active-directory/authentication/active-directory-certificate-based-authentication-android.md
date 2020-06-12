@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 04/24/2020
+ms.date: 06/02/2020
 ms.author: v-junlch
 author: iainfoulds
 manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 282c2aff2f32cf7065a39c8649a86420437aea86
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.openlocfilehash: 684036f921c156ed2ec700f8bb2d57f50d5756a3
+ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82126233"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84275385"
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-android"></a>Android 上 Azure Active Directory 基于证书的身份验证
 
@@ -27,7 +27,7 @@ ms.locfileid: "82126233"
 
 如果配置了此功能，就无需在移动设备上的某些邮件和 Microsoft Office 应用程序中输入用户名和密码组合。
 
-本主题提供了在 iOS(Android) 设备上为 Office 365 企业版、商业版、教育版和中国版租户的用户配置 CBA 时的要求和支持的方案。
+本主题提供了在 Android 设备上为 Office 365 企业版、商业版、教育版和中国版租户的用户配置 CBA 时的要求和支持的方案。
 
 
 ## <a name="microsoft-mobile-applications-support"></a>Microsoft 移动应用程序支持
@@ -65,7 +65,7 @@ ms.locfileid: "82126233"
 
 有关详细信息，请参阅[自定义 AD FS 登录页](https://technet.microsoft.com/library/dn280950.aspx)。
 
-某些 Office 应用（启用了新式身份验证）在请求中向 Azure AD 发送“prompt=login”  。 默认情况下，Azure AD 会将向 ADFS 发出的请求中的“prompt=login”转换为“wauth=usernamepassworduri”（要求 ADFS 执行 U/P 身份验证）和“wfresh=0”（要求 ADFS 忽略 SSO 状态并执行全新的身份验证）    。 如果想要为这些应用启用基于证书的身份验证，需要修改默认 Azure AD 行为。 将联盟域设置中的“PromptLoginBehavior”设置为“已禁用”。  
+某些 Office 应用（启用了新式身份验证）在请求中向 Azure AD 发送“prompt=login”。 默认情况下，Azure AD 会将向 ADFS 发出的请求中的“prompt=login”转换为“wauth=usernamepassworduri”（要求 ADFS 执行 U/P 身份验证）和“wfresh=0”（要求 ADFS 忽略 SSO 状态并执行全新的身份验证）  。 如果想要为这些应用启用基于证书的身份验证，需要修改默认 Azure AD 行为。 将联盟域设置中的“PromptLoginBehavior”设置为“已禁用”。 
 可使用 [MSOLDomainFederationSettings](https://docs.microsoft.com/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0) cmdlet 执行此任务：
 
 `Set-MSOLDomainFederationSettings -domainname <domain> -PromptLoginBehavior Disabled`

@@ -1,5 +1,5 @@
 ---
-title: Azure 网络安全的概念和要求 | Microsoft Docs
+title: Azure 网络安全的概念和要求 | Azure Docs
 description: 本文提供了关于核心网络安全概念和要求的基本说明，以及 Azure 在每个方面提供的内容的相关信息。
 services: security
 documentationcenter: na
@@ -16,12 +16,12 @@ ms.workload: na
 origin.date: 10/29/2018
 ms.date: 03/02/2020
 ms.author: v-lingwu
-ms.openlocfilehash: 66468948db1618180af6569864c65d6935e5f857
-ms.sourcegitcommit: 1578f3feab2805d00156b2afcfac9c69a42837cb
+ms.openlocfilehash: 19715195e03d99762bfcaa6c02e3312bc7493e59
+ms.sourcegitcommit: 79c99a9ea013b3c74706a1038a505f4eea2aaac4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84172840"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84439506"
 ---
 # <a name="azure-network-security-overview"></a>Azure 网络安全概述
 
@@ -68,7 +68,7 @@ Azure 支持多种类型的网络访问控制，例如：
 如果需要基本的网络级别访问控制（基于 IP 地址和 TCP 或 UDP 协议），可使用网络安全组 (NSG)。 NSG 是基本的静态数据包筛选防火墙，你可使用它来基于 [5 元组](https://www.techopedia.com/definition/28190/5-tuple)控制访问。 NSG 包含的功能可以简化管理，并减少配置错误的可能性：
 
 * **扩充式安全规则**简化了 NSG 规则定义，并允许创建复杂规则，而无需创建多个简单规则来实现相同的结果。
-* **服务标记**是 Microsoft 创建的标签，表示一组 IP 地址。 这些标记会动态更新，以包含符合在标签中定义包含项的条件的 IP 范围。 例如，如果你要创建一个应用到东部区域的所有 Azure 存储的规则，可以使用 Storage.EastUS
+* **服务标记**是 Microsoft 创建的标签，表示一组 IP 地址。 这些标记会动态更新，以包含符合在标签中定义包含项的条件的 IP 范围。 例如，如果你要创建一个应用到东部区域的所有 Azure 存储的规则，可以使用 Storage.ChinaEast
 * **应用程序安全组**可用于将资源部署到应用程序组，并通过创建使用这些应用程序组的规则来控制对这些资源的访问。 例如，如果 Web 服务器已部署到“Webservers”应用程序组，则你可以创建一个规则，以便将允许来自 Internet 的 443 流量的 NSG 应用到“Webservers”应用程序组中的所有系统。
 
 NSG 不提供应用程序层检查或经过身份验证的访问控制。

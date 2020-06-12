@@ -2,15 +2,15 @@
 title: Azure Service Fabric 中支持的群集版本
 description: 了解 Azure Service Fabric 中的群集版本，包括指向 Service Fabric 团队博客中最新版本的链接。
 ms.topic: troubleshooting
-origin.date: 03/02/2020
-ms.date: 04/13/2020
+origin.date: 05/06/2020
+ms.date: 06/08/2020
 ms.author: v-yeche
-ms.openlocfilehash: f4101ef105f4d4d43525980627c5a702e67d2450
-ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
+ms.openlocfilehash: 38866e91ac812b26986b52c0378258fe1d7cf8af
+ms.sourcegitcommit: 0e178672632f710019eae60cea6a45ac54bb53a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82093487"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84356260"
 ---
 # <a name="supported-service-fabric-versions"></a>支持的 Service Fabric 版本
 
@@ -41,9 +41,11 @@ ms.locfileid: "82093487"
 | 6.3.* | 6.1.480.* |版本 3.2 或更低版本 |2019 年 3 月 31 日  |
 | 6.4.* | 6.2.301.* |版本 3.3 或更低版本 |2019 年 9 月 15 日 |
 | 6.5.* | 6.4.617.* |低于或等于版本 3.4 |2020 年 8 月 1 日 |
-| 7.0.466.* | 6.4.664.* |低于或等于版本 4.0|当前版本，因此无结束日期 |
-| 7.0.466.* | 6.5.* |低于或等于版本 4.0|当前版本，因此无结束日期 |
-| 7.0.470.* | 7.0.466.* |低于或等于版本 4.0 |当前版本，因此无结束日期 |
+| 7.0.466.* | 6.4.664.* |低于或等于版本 4.0|2020 年 8 月 1 日  |
+| 7.0.466.* | 6.5.* |低于或等于版本 4.0|2020 年 8 月 1 日 |
+| 7.0.470.* | 7.0.466.* |低于或等于版本 4.0 |2020 年 8 月 1 日  |
+| 7.0.472.* | 7.0.466.* |低于或等于版本 4.0 |2020 年 8 月 1 日  |
+| 7.1.409.* | 7.0.466.* |低于或等于版本 4.0 |当前版本，因此无结束日期 |
 
 ## <a name="supported-operating-systems"></a>支持的操作系统
 
@@ -55,10 +57,10 @@ ms.locfileid: "82093487"
 | Windows Server 2016 | 所有版本 |
 | Windows Server 1709 | 6.0 |
 | Windows Server 1803 | 6.4 |
+| Windows Server 1809 | 6.4.654.9590 |
+| Windows Server 2019 | 6.4.654.9590 |
 | Linux Ubuntu 16.04 | 6.0 |
-
-<!--Not Available on | Windows Server 1809 | 6.4.654.9590 |-->
-<!--Not Available on | Windows Server 2019 | 6.4.654.9590 |-->
+| Linux Ubuntu 18.04 | 7.1 |
 
 ## <a name="supported-version-names"></a>支持的版本名称
 
@@ -111,5 +113,7 @@ ms.locfileid: "82093487"
 | 7.0 CU2 | 7.0.464.9590 | 7.0.464.1 |
 | 7.0 CU3 | 7.0.466.9590 | 7.0.465.1 |
 | 7.0 CU4 | 7.0.470.9590 | 7.0.469.1 |
+| 7.0 CU6 | 7.0.472.9590 | 7.0.471.1 |
+| 7.1 RTO | 7.1.409.9590 | 7.1.410.1 |
 
 <!-- Update_Description: update meta properties, wording update, update link -->

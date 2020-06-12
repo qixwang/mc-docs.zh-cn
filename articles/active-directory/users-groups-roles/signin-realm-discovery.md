@@ -8,18 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-origin.date: 11/08/2019
-ms.date: 11/26/2019
+ms.date: 06/01/2020
 ms.author: v-junlch
 ms.reviewer: kexia
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd9b37a8d4d0fe2e044bf666d0459ba83c2ee61d
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: bd0ede1942190a4d0fda0e2e80a58b08c8653b9f
+ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74655427"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84275621"
 ---
 # <a name="home-realm-discovery-for-azure-active-directory-sign-in-pages"></a>Azure Active Directory 登录页的主领域发现
 
@@ -29,7 +28,7 @@ ms.locfileid: "74655427"
 
 一直以来，主领域发现都是由登录时提供的域调控的，或者由某些传统应用程序的主领域发现策略调控的。 例如，在采用我们的发现行为时，Azure Active Directory 用户可能在键入错误的用户名后，仍能打开其组织的凭据收集屏幕。 当用户正确提供组织的域名“contoso.com”时，就会发生这种情况。 此行为不允许对个人用户的体验进行精细的自定义。
 
-为了支持更多样化的凭据并提高可用性，现已更新登录期间的 Azure Active Directory 用户名查找行为。 新的行为可以根据登录页上输入的用户名，通过读取租户和用户级别的设置来做出明智的决策。 为了实现此目的，Azure Active Directory 将检查登录页上输入的用户名是否在用户的指定域中存在，或者将用户重定向到可输入凭据的位置。
+为了支持更多样化的凭据并提高可用性，现已更新登录期间的 Azure Active Directory 用户名查找行为。 新的行为可以根据登录页面上输入的用户名，通过读取组织级别和用户级别的设置来做出明智的决策。 为了实现此目的，Azure Active Directory 将检查登录页上输入的用户名是否在用户的指定域中存在，或者将用户重定向到可输入凭据的位置。
 
 此项工作的另一个好处是改进了错误消息。 下面是登录到仅支持 Azure Active Directory 用户的应用程序时，显示的一些经过改进的错误消息示例。
 
@@ -54,10 +53,9 @@ ms.locfileid: "74655427"
 >
 > 如果你或你的组织在实践中依赖于旧行为，则组织管理员必须更新员工登录与身份验证文档，并为员工提供培训，让他们使用其 Azure Active Directory 用户名登录。
   
-如果你对新的行为存有疑虑，请在本文的“反馈”部分留言。   
+如果你对新的行为存有疑虑，请在本文的“反馈”部分留言。  
 
 ## <a name="next-steps"></a>后续步骤
 
 [自定义登录品牌](../fundamentals/add-custom-domain.md)
 
-<!-- Update_Description: wording update -->

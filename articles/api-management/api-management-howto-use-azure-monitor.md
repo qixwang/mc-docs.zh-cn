@@ -2,25 +2,21 @@
 title: 在 Azure API 管理中监视已发布的 API
 description: 遵循本教程的步骤了解如何在 Azure API 管理中监视 API。
 services: api-management
-documentationcenter: ''
-author: vladvino
 manager: cfowler
-editor: ''
 ms.service: api-management
 ms.workload: mobile
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.custom: mvc
 ms.topic: tutorial
 origin.date: 06/15/2018
-ms.date: 02/24/2020
-ms.author: apimpm
-ms.openlocfilehash: 79d7a11d9e94f44a0adabdd1d4acf36eb124036b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+author: Johnnytechn
+ms.date: 06/04/2020
+ms.author: v-johya
+ms.openlocfilehash: b4180357b7b91dd8ad71cddc74f71fd9647aa1ba
+ms.sourcegitcommit: 5ae04a3b8e025986a3a257a6ed251b575dbf60a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292302"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84440550"
 ---
 # <a name="monitor-published-apis"></a>监视已发布的 API
 
@@ -30,10 +26,15 @@ ms.locfileid: "79292302"
 
 > [!div class="checklist"]
 > * 查看活动日志
-> * 查看诊断日志
+> * 查看资源日志
 > * 查看 API 的指标 
 > * 针对 API 收到的未经授权的调用设置警报规则
->   ## <a name="prerequisites"></a>先决条件
+
+下方视频介绍如何使用 Azure Monitor 监视 API 管理。 
+
+> [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Monitor-API-Management-with-Azure-Monitor/player]
+
+## <a name="prerequisites"></a>先决条件
 
 + 了解 [Azure API 管理术语](api-management-terminology.md)。
 + 完成以下快速入门：[创建一个 Azure API 管理实例](get-started-create-service-instance.md)。
@@ -99,7 +100,7 @@ API 管理每分钟发出一次指标，几乎可让你实时了解 API 的状�
 
 ## <a name="activity-logs"></a>活动日志
 
-活动日志提供有关对 API 管理服务执行的操作的见解。 通过活动日志，可确定对 API 管理服务执行的任何写入操作 (PUT、POST、DELETE) 的“操作内容、操作人员和操作时间”。 
+活动日志提供有关对 API 管理服务执行的操作的见解。 通过活动日志，可确定对 API 管理服务执行的任何写入操作 (PUT、POST、DELETE) 的“操作内容、操作人员和操作时间”。
 
 > [!NOTE]
 > 活动日志不包括读取 (GET) 操作或者通过 Azure 门户或原始管理 API 执行的操作。
@@ -117,20 +118,20 @@ API 管理每分钟发出一次指标，几乎可让你实时了解 API 的状�
 
 3. 选择所需的筛选范围，然后单击“应用”。
 
-## <a name="diagnostic-logs"></a>诊断日志
+## <a name="resource-logs"></a>资源日志
 
-诊断日志提供大量有关操作和错误的信息，这些信息对审核和故障排除非常重要。 诊断日志不同于活动日志。 活动日志提供有关对 Azure 资源执行的操作的见解。 诊断日志提供资源执行的操作的深入信息。
+资源日志提供了大量有关操作和错误的信息，这些信息对于审核和故障排除非常重要。 资源日志不同于活动日志。 活动日志提供对在 Azure 资源上执行的操作的见解。 资源日志提供对资源执行的操作的见解。
 
-若要配置诊断日志，请执行以下操作：
+若要配置资源日志，请执行以下操作：
 
 1. 选择 APIM 服务实例。
 2. 单击“诊断设置”。
 
-    ![诊断日志](./media/api-management-azure-monitor/api-management-diagnostic-logs-blade.png)
+    ![资源日志](./media/api-management-azure-monitor/api-management-diagnostic-logs-blade.png)
 
-3. 单击“启用诊断”。 可以将诊断日志与指标一起存档到存储帐户，将其流式传输到事件中心，或者将其发送到 Azure Monitor 日志。 
+3. 单击“启用诊断”。 可以将资源日志与指标一起存档到存储帐户，将其流式传输到事件中心，或者将其发送到 Azure Monitor 日志。 
 
-“API 管理”当前提供有关单个 API 请求的诊断日志（每小时进行批处理），其中每个条目具有以下架构：
+“API 管理”当前提供有关单个 API 请求的资源日志（每小时进行批处理），其中每个条目具有以下架构：
 
 ```json
 {  
@@ -177,47 +178,46 @@ API 管理每分钟发出一次指标，几乎可让你实时了解 API 的状�
 }  
 ```
 
-
-|        属性        |   类型    |                                                                       说明                                                                        |
+| 属性  | 类型 | 说明 |
 | ------------- | ------------- | ------------- |
-|    isRequestSuccess    |  boolean  |                                   如果 HTTP 请求完成时，响应状态代码在 2xx 或 3xx 范围内，则为 true                                   |
+| isRequestSuccess | boolean | 如果 HTTP 请求完成时，响应状态代码在 2xx 或 3xx 范围内，则为 true |
 | time | 日期时间 | 网关开始处理请求的时间戳 |
-|     operationName      |  string   |                                                   常量值“'Microsoft.ApiManagement/GatewayLogs”                                                   |
-|        category        |  string   |                                                               常量值“GatewayLogs”                                                               |
+| operationName | string | 常量值“'Microsoft.ApiManagement/GatewayLogs” |
+| category | string | 常量值“GatewayLogs” |
 | durationMs | integer | 从网关收到请求到响应全部发送出去经过的时间（毫秒）。 它包括 clienTime、cacheTime 和 backendTime。 |
-|    callerIpAddress     |  string   |                                             直接网关调用方（可以是中介）的 IP 地址                                              |
-|     correlationId      |  string   |                                                由 API 管理分配的唯一 http 请求标识符                                                 |
-|        location        |  string   |                                    处理请求的网关所在 Azure 区域的名称                                     |
-| httpStatusCodeCategory |  string   | Http 响应状态代码的类别：成功（301 或以下，或者 304 或 307）、未授权（401、403、429）、错误（400、500 到 600）、其他 |
-| ResourceId | string | API 管理资源 /SUBSCRIPTIONS/\<subscription>/RESOURCEGROUPS/\<resource-group>/PROVIDERS/MICROSOFT.APIMANAGEMENT/SERVICE/\<name> 的 ID |
-|       properties       |  object   |                                                            当前请求的属性                                                             |
-|         method         |  string   |                                                           传入请求的 HTTP 方法                                                            |
-|          url           |  string   |                                                               传入请求的 URL                                                                |
-|     clientProtocol     |  string   |                                                      传入请求的 HTTP 协议版本                                                       |
-|      responseCode      |  integer  |                                                    发送到客户端的 HTTP 响应的状态代码                                                     |
-|     backendMethod      |  string   |                                                       发送到后端的请求的 HTTP 方法                                                       |
-|       backendUrl       |  string   |                                                           发送到后端的请求的 URL                                                           |
-|  backendResponseCode   |  integer  |                                                    从后端收到的 HTTP 响应代码                                                     |
-|    backendProtocol     |  string   |                                                  发送到后端的请求的 HTTP 协议版本                                                  |
-|      requestSize       |  integer  |                                             在请求处理过程中从客户端接收的字节数                                             |
-|      responseSize      |  integer  |                                                在请求处理过程中发送到客户端的字节数                                                |
-|         cache          |  string   |                                 在请求处理过程中涉及的 API 管理缓存的状态（即命中、未命中、无）                                 |
-|       cacheTime        |  integer  |                        花在整个 API 管理缓存 IO（连接、发送和接收字节）上的时间（毫秒）                        |
-|      backendTime       |  integer  |                               花在整个后端 IO（连接、发送和接收字节）上的时间（毫秒）                               |
-|       clientTime       |  integer  |                               花在整个客户端 IO（连接、发送和接收字节）上的时间（毫秒）                                |
-|         apiId          |  string   |                                                        当前请求的 API 实体标识符                                                         |
-|      operationId       |  string   |                                                     当前请求的操作实体标识符                                                      |
-|       productId        |  string   |                                                      当前请求的产品实体标识符                                                       |
-|         userId         |  string   |                                                        当前请求的用户实体标识符                                                        |
-|   apimSubscriptionId   |  string   |                                                    当前请求的订阅实体标识符                                                    |
-|       backendId        |  string   |                                                      当前请求的后端实体标识符                                                       |
-|       LastError        |  object   |                                                              上一个请求处理错误                                                               |
+| callerIpAddress | string | 直接网关调用方（可以是中介）的 IP 地址 |
+| correlationId | string | 由 API 管理分配的唯一 http 请求标识符 |
+| location | string | 处理请求的网关所在 Azure 区域的名称 |
+| httpStatusCodeCategory | string | Http 响应状态代码的类别：成功（301 或以下，或者 304 或 307）、未授权（401、403、429）、错误（400、500 到 600）、其他 |
+| ResourceId | string | API 管理资源 //SUBSCRIPTIONS/\<subscription>/RESOURCEGROUPS/\<resource-group>/PROVIDERS/MICROSOFT.APIMANAGEMENT/SERVICE/\<name> 的 ID |
+| properties | object | 当前请求的属性 |
+| method | string | 传入请求的 HTTP 方法 |
+| url | string | 传入请求的 URL |
+| clientProtocol | string | 传入请求的 HTTP 协议版本 |
+| responseCode | integer | 发送到客户端的 HTTP 响应的状态代码 |
+| backendMethod | string | 发送到后端的请求的 HTTP 方法 |
+| backendUrl | string | 发送到后端的请求的 URL |
+| backendResponseCode | integer | 从后端收到的 HTTP 响应代码 |
+| backendProtocol | string | 发送到后端的请求的 HTTP 协议版本 | 
+| requestSize | integer | 在请求处理过程中从客户端接收的字节数 | 
+| responseSize | integer | 在请求处理过程中发送到客户端的字节数 | 
+| cache | string | 在请求处理过程中涉及的 API 管理缓存的状态（即命中、未命中、无） | 
+| cacheTime | integer | 花在整个 API 管理缓存 IO（连接、发送和接收字节）上的时间（毫秒） | 
+| backendTime | integer | 花在整个后端 IO（连接、发送和接收字节）上的时间（毫秒） | 
+| clientTime | integer | 花在整个客户端 IO（连接、发送和接收字节）上的时间（毫秒） | 
+| apiId | string | 当前请求的 API 实体标识符 | 
+| operationId | string | 当前请求的操作实体标识符 | 
+| productId | string | 当前请求的产品实体标识符 | 
+| userId | string | 当前请求的用户实体标识符 | 
+| apimSubscriptionId | string | 当前请求的订阅实体标识符 | 
+| backendId | string | 当前请求的后端实体标识符 | 
+| LastError | object | 上一个请求处理错误 | 
 | elapsed | integer | 从网关收到请求到发生错误经过的时间（毫秒） | 
-|         source         |  string   |                                            导致错误的策略或内部处理程序的名称                                            |
-|         scope          |  string   |                                         导致错误的策略所在策略文档的范围                                         |
-|        section         |  string   |                                        导致错误的策略所在策略文档的节                                        |
-|         reason         |  string   |                                                                       错误原因                                                                       |
-|        message         |  string   |                                                                      错误消息                                                                       |
+| source | string | 导致错误的策略或内部处理程序的名称 | 
+| scope | string | 导致错误的策略所在策略文档的范围 | 
+| section | string | 导致错误的策略所在策略文档的节 | 
+| reason | string | 错误原因 | 
+| message | string | 错误消息 | 
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -225,11 +225,12 @@ API 管理每分钟发出一次指标，几乎可让你实时了解 API 的状�
 
 > [!div class="checklist"]
 > * 查看活动日志
-> * 查看诊断日志
-> * 查看 API 的指标 
+> * 查看资源日志
+> * 查看 API 的指标
 > * 针对 API 收到的未经授权的调用设置警报规则
 
 进入下一教程：
 
 > [!div class="nextstepaction"]
 > [跟踪调用](api-management-howto-api-inspector.md)
+

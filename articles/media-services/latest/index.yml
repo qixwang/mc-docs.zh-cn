@@ -1,9 +1,9 @@
 ### YamlMime:Landing
 title: Azure 媒体服务 v3 基于云的平台文档
-summary: 了解如何使用媒体服务 v3 来编码和打包内容、进行视频点播流式处理、实时广播和视频分析。 教程、API 参考和其他文档介绍了如何安全地向数百万用户传送可缩放的点播和直播视频或音频流。
+summary: 了解如何使用媒体服务 v3 来编码和打包内容、进行视频点播流式处理、实时广播。 教程、API 参考和其他文档介绍了如何安全地向数百万用户传送可缩放的点播和直播视频或音频流。
 metadata:
   title: Azure 媒体服务 v3 基于云的平台文档
-  description: 了解如何使用媒体服务 v3 来编码和打包内容、进行视频点播流式处理、实时广播和视频分析。
+  description: 了解如何使用媒体服务 v3 来编码和打包内容、进行视频点播流式处理、实时广播。
   services: media-services
   ms.service: media-services
   ms.subservice: 
@@ -13,12 +13,12 @@ metadata:
   ms.author: v-jay
   origin.date: 21/16/2020
   ms.date: 04/06/2020
-  ms.openlocfilehash: 7adae2aa95fe9909aa75d05958fcd2c73acf1fcc
-  ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+  ms.openlocfilehash: 07e928393c1d20bfac2eefc8f6b400bd90bf216e
+  ms.sourcegitcommit: 1f890a4085e184cc678485d05f08dd6de8dc973f
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 04/17/2020
-  ms.locfileid: "80625791"
+  ms.lasthandoff: 06/05/2020
+  ms.locfileid: "84438966"
 landingContent:
 - title: 关于媒体服务
   linkLists:
@@ -102,15 +102,3 @@ landingContent:
       url: protect-with-aes128.md
     - text: 通过 DRM 进行动态加密
       url: protect-with-drm.md
-- title: 分析内容
-  linkLists:
-  - linkListType: concept
-    links:
-    - text: 媒体分析
-      url: analyzing-video-audio-files-concept.md
-    - text: 符合性、隐私和安全性
-      url: analyzing-video-audio-files-concept.md#compliance-privacy-and-security
-  - linkListType: tutorial
-    links:
-    - text: 分析视频
-      url: analyze-videos-tutorial-with-api.md

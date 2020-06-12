@@ -1,56 +1,56 @@
 ---
-title: SSL - Azure Database for PostgreSQL（单一服务器）
-description: 有关如何为 Azure Database for PostgreSQL（单一服务器）配置 SSL 连接的说明和信息。
+title: TLS - Azure Database for PostgreSQL - 单一服务器
+description: 有关如何为 Azure Database for PostgreSQL（单一服务器）配置 TLS 连接的说明和信息。
 author: WenJason
 ms.author: v-jay
 ms.service: postgresql
 ms.topic: conceptual
 origin.date: 03/10/2020
-ms.date: 04/27/2020
-ms.openlocfilehash: 0b02cdcaa1b510134c2c48eb3ef116d8106e0b8c
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.date: 06/08/2020
+ms.openlocfilehash: bab41e6bf1a6c4f3245e9f6bbc3204475852608b
+ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82126878"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84275603"
 ---
-# <a name="configure-ssl-connectivity-in-azure-database-for-postgresql---single-server"></a>在 Azure Database for PostgreSQL - 单一服务器中配置 SSL 连接
+# <a name="configure-tls-connectivity-in-azure-database-for-postgresql---single-server"></a>在 Azure Database for PostgreSQL（单一服务器）中配置 TLS 连接
 
-Azure Database for PostgreSQL 倾向于使用安全套接字层 (SSL) 将客户端应用程序连接到 PostgreSQL 服务。 通过在数据库服务器与客户端应用程序之间强制实施 SSL 连接，可以加密服务器与应用程序之间的数据流，有助于防止“中间人”攻击。
+Azure Database for PostgreSQL 倾向于使用传输层安全性 (TLS)（以前成为安全套接字层 (SSL)）将客户端应用程序连接到 PostgreSQL 服务。 通过在数据库服务器与客户端应用程序之间强制实施 TLS 连接，可以加密服务器与应用程序之间的数据流，这有助于防止“中间人”攻击。
 
-默认情况下，PostgreSQL 数据库服务配置为需要 SSL 连接。 如果客户端应用程序不支持 SSL 连接，则可以选择禁用 SSL。
+默认情况下，PostgreSQL 数据库服务配置为需要 TLS 连接。 如果客户端应用程序不支持 TLS 连接，则可以选择禁用 TLS。
 
-## <a name="enforcing-ssl-connections"></a>强制实施 SSL 连接
+## <a name="enforcing-tls-connections"></a>强制实施 TLS 连接
 
-对于通过 Azure 门户或 CLI 预配的所有 Azure Database for PostgreSQL 服务器，强制实施 SSL 连接是默认启用的。 
+对于通过 Azure 门户或 CLI 预配的所有 Azure Database for PostgreSQL 服务器，默认会强制实施 TLS 连接。 
 
-同样，在 Azure 门户中，用户服务器的“连接字符串”设置中预定义了连接字符串，该字符串中包含以通用语言使用 SSL 连接到数据库服务器所需的参数。 SSL 参数因连接器而异，例如“ssl=true”、“sslmode=require”或“sslmode=required”，以及其他变体。
+同样，在 Azure 门户中，用户服务器的“连接字符串”设置中预定义了连接字符串，该字符串中包含以通用语言使用 TLS 连接到数据库服务器所需的参数。 TLS 参数因连接器而异，例如“ssl=true”、“sslmode=require”或“sslmode=required”，以及其他变体。
 
-## <a name="configure-enforcement-of-ssl"></a>配置强制实施 SSL
+## <a name="configure-enforcement-of-tls"></a>配置强制实施 TLS
 
-（可选）可以禁用强制实施 SSL 连接。 Azure 建议你始终启用“强制实施 SSL 连接”设置，以增强安全性  。
+（可选）可以禁用强制实施 TLS 连接。 Azure 建议你始终启用“强制实施 SSL 连接”设置，以增强安全性。
 
 ### <a name="using-the-azure-portal"></a>使用 Azure 门户
 
-访问 Azure Database for PostgreSQL 服务器，并单击“连接安全性”  。 使用切换按钮来启用或禁用“强制实施 SSL 连接”  设置。 然后单击“保存”  。
+访问 Azure Database for PostgreSQL 服务器，并单击“连接安全性”。 使用切换按钮来启用或禁用“强制实施 SSL 连接”设置。 然后单击“保存” 。
 
-![连接安全性 - 禁用强制实施 SSL](./media/concepts-ssl-connection-security/1-disable-ssl.png)
+![连接安全性 - 禁用强制实施 TLS/SSL](./media/concepts-ssl-connection-security/1-disable-ssl.png)
 
-可以通过在“概述”  页中查看“SSL 强制实施状态”  指示器来确认设置。
+可以通过在“概述”页中查看“SSL 强制实施状态”指示器来确认设置。
 
 ### <a name="using-azure-cli"></a>使用 Azure CLI
 
-可以通过在 Azure CLI 中分别使用 `Enabled` 或 `Disabled` 值来启用或禁用“ssl-enforcement”  参数。
+可以通过在 Azure CLI 中分别使用 `Enabled` 或 `Disabled` 值来启用或禁用“ssl-enforcement”参数。
 
 ```azurecli
 az postgres server update --resource-group myresourcegroup --name mydemoserver --ssl-enforcement Enabled
 ```
 
-## <a name="ensure-your-application-or-framework-supports-ssl-connections"></a>确保应用程序或框架支持 SSL 连接
+## <a name="ensure-your-application-or-framework-supports-tls-connections"></a>确保应用程序或框架支持 TLS 连接
 
-某些使用 PostgreSQL 作为其数据库服务的应用程序框架在安装期间默认不启用 SSL。 如果 PostgreSQL 服务器强制实施 SSL 连接，但应用程序未配置 SSL，则应用程序可能无法连接到数据库服务器。 请查阅应用程序文档，了解如何启用 SSL 连接。
+某些使用 PostgreSQL 作为其数据库服务的应用程序框架在安装期间默认不启用 TLS。 如果 PostgreSQL 服务器强制实施 TLS 连接，但应用程序未配置 TLS，则应用程序可能无法连接到数据库服务器。 请查阅应用程序文档，了解如何启用 TLS 连接。
 
-## <a name="applications-that-require-certificate-verification-for-ssl-connectivity"></a>需要证书验证才可启用 SSL 连接性的应用程序
+## <a name="applications-that-require-certificate-verification-for-tls-connectivity"></a>需要证书验证才可启用 TLS 连接性的应用程序
 在某些情况下，应用程序需要具备从受信任的证书颁发机构 (CA) 证书文件 (.cer) 生成的本地证书文件才能实现安全连接。 请参阅以下步骤获取 .cer 文件，解码证书并将其绑定到应用程序。
 
 ### <a name="download-the-certificate-file-from-the-certificate-authority-ca"></a>从证书颁发机构 (CA) 下载证书文件 
@@ -67,15 +67,14 @@ az postgres server update --resource-group myresourcegroup --name mydemoserver -
 openssl x509 -inform DER -in DigiCertGlobalRootCA.crt -text -out root.crt
 ```
 
-### <a name="connecting-to-azure-database-for-postgresql-with-ssl-certificate-authentication"></a>连接到具有 SSL 证书身份验证的 Azure Database for PostgreSQL
-现已成功解码证书，可通过 SSL 安全连接到数据库服务器。 要允许服务器证书验证，必须将证书放在用户主目录中的 ~/.postgresql/root.crt 文件中。 （在 Microsoft Windows 上，该文件的名称是 %APPDATA%\postgresql\root.crt.）。 
+### <a name="connect-using-psql"></a>使用 psql 进行连接
 
-#### <a name="connect-using-psql"></a>使用 psql 进行连接
-以下示例演示如何使用 psql 命令行实用程序成功连接到 PostgreSQL 服务器。 使用创建的 `root.crt` 文件和 `sslmode=verify-ca` 或 `sslmode=verify-full` 选项。
+以下示例演示如何使用 psql 命令行实用程序连接到 PostgreSQL 服务器。 使用 `sslmode=verify-full` 连接字符串设置强制实施 TLS/SSL 证书验证。 将本地证书文件路径传递给 `sslrootcert` 参数。
 
-使用 PostgreSQL 命令行接口执行以下命令：
-```bash
-psql "sslmode=verify-full sslrootcert=root.crt host=mydemoserver.postgres.database.chinacloudapi.cn dbname=postgres user=mylogin@mydemoserver"
+以下命令是 psql 连接字符串的示例：
+
+```shell
+psql "sslmode=verify-full sslrootcert=root.crt host=mydemoserver.postgres.database.chinacloudapi.cn dbname=postgres user=myusern@mydemoserver"
 ```
 
 > [!TIP]

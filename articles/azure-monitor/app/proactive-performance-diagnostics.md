@@ -2,17 +2,17 @@
 title: 智能检测 - 性能异常 | Azure Docs
 description: Application Insights 执行应用遥测的智能分析，并在有潜在问题时发出警告。 此功能不需要任何设置。
 ms.topic: conceptual
-author: lingliw
+author: Johnnytechn
 origin.date: 05/04/2017
-ms.date: 6/4/2019
+ms.date: 05/28/2020
 ms.reviewer: antonfr
-ms.author: v-lingwu
-ms.openlocfilehash: 578a7e0db8f6980972b244bf0ac0347e6f717180
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.author: v-johya
+ms.openlocfilehash: 90fa346e9d17dc7227addec06dd4f15107fe2e49
+ms.sourcegitcommit: 5ae04a3b8e025986a3a257a6ed251b575dbf60a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78850386"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84440726"
 ---
 # <a name="smart-detection---performance-anomalies"></a>智能检测 - 性能异常
 
@@ -40,23 +40,23 @@ Application Insights 已根据以下依据之一检测到应用程序出现性�
 通知包含诊断信息。 下面是一个示例：
 
 
-![下面是“服务器响应时间延长”检测的示例](media/proactive-performance-diagnostics/server_response_time_degradation.png)
+![下面是“服务器响应时间延长”检测的示例](./media/proactive-performance-diagnostics/server_response_time_degradation.png)
 
 1. **会审**。 通知会显示有多少用户或多少操作受到影响。 这可以帮助你对问题分配优先级。
 2. **范围**。 该问题是影响所有流量，还是只影响某些页面？ 它是否只出现在特定的浏览器或位置中？ 可以从通知中获取此信息。
 3. **诊断**。 通常，通知的诊断信息会提示问题的性质。 例如，如果请求率较高时响应速度变慢，则表示服务器或依赖项过载。 
 
-否则，可在 Application Insights 中打开“性能”边栏选项卡，
+    否则，可在 Application Insights 中打开“性能”边栏选项卡， 在其中可以找到[探查器](profiler.md)数据。 如果引发了异常，还可以尝试[快照调试器](../../azure-monitor/app/snapshot-debugger.md)。
 
 
 
 ## <a name="configure-email-notifications"></a>配置电子邮件通知
 
-智能检测通知默认已启用，将发送到[对 Application Insights 资源拥有所有者、参与者和读取者访问权限](../../azure-monitor/app/resources-roles-access-control.md)的用户。 若要更改此配置，请在电子邮件通知中单击“配置”，或者在 Application Insights 中打开“智能检测”设置。  
+默认情况下已启用智能检测通知，并发送给对 Application Insights 资源所在的订阅具有[监视读取者](/role-based-access-control/built-in-roles#monitoring-reader)和[监视参与者](/role-based-access-control/built-in-roles#monitoring-contributor)访问权限的用户。 若要更改此配置，请在电子邮件通知中单击“配置”，或者在 Application Insights 中打开“智能检测”设置。 
   
-  ![智能检测设置](media/proactive-performance-diagnostics/smart_detection_configuration.png)
+  ![智能检测设置](./media/proactive-performance-diagnostics/smart_detection_configuration.png)
   
-  * 可使用“智能检测”电子邮件中的“取消订阅”链接来停止接收电子邮件通知。 
+  * 可使用“智能检测”电子邮件中的“取消订阅”链接来停止接收电子邮件通知。
 
 每天只会针对每个 Application Insights 资源发送一封有关智能检测性能异常的电子邮件。 只有当天至少检测到一个新问题时，才会发送电子邮件。 将不会收到任何重复的消息。 
 
@@ -74,6 +74,7 @@ Application Insights 已根据以下依据之一检测到应用程序出现性�
 
   * 目前不可以，但可以：
     * [设置警报](../../azure-monitor/app/alerts.md)，以便在指标超出阈值时告知用户。
+    * [将遥测导出到](../../azure-monitor/app/export-telemetry.md)[数据库](../../azure-monitor/app/code-sample-export-sql-stream-analytics.md)或 [Power BI](../../azure-monitor/app/export-power-bi.md )，可自行在其中进行分析。
 * *执行分析的频率是多少？*
 
   * 我们每天针对前一天（UTC 时区整天）的遥测数据运行分析。
@@ -84,7 +85,7 @@ Application Insights 已根据以下依据之一检测到应用程序出现性�
 * *如果不执行任何操作来响应通知，是否会收到提醒？*
   * 否，仅会收到关于每个问题的消息一次。 如果问题持续出现，它会在“智能检测源”边栏选项卡中更新。
 * *我丢失了电子邮件。在哪里可以找到门户中的通知？*
-  * 在应用的 Application Insights 概述中，单击“智能检测”  磁贴。 在该磁贴中可以找到过去最长 90 天的所有通知。
+  * 在应用的 Application Insights 概述中，单击“智能检测”磁贴。 在该磁贴中可以找到过去最长 90 天的所有通知。
 
 ## <a name="how-can-i-improve-performance"></a>如何提高性能？
 正如你从自己的经验所知，缓慢和失败的响应对于网站用户而言是最大的困扰之一。 因此，必须解决问题。
@@ -127,7 +128,7 @@ Application Insights 已根据以下依据之一检测到应用程序出现性�
   * 帮助你查看哪些地方需要花费操作时间的探查器跟踪（如果在检测期间已收集此操作的探查器跟踪示例，则会提供链接）。 
   * 指标资源管理器中的性能报告，可在其中分解此操作的时间范围/筛选器。
   * 搜索此调用以查看特定调用属性。
-  * 失败报告 - 如果计数大于 1，则表示此操作可能由于性能下降而发生失败。
+  * 故障报告 - 如果计数大于 1，则表示此操作中出现故障，并可能已导致性能降低。
 
 ## <a name="dependency-duration-degradation"></a>依赖项持续时间延长
 
@@ -135,7 +136,7 @@ Application Insights 已根据以下依据之一检测到应用程序出现性�
 
 依赖项降级通知的示例：
 
-![下面是“依赖项持续时间延长”检测的示例](media/proactive-performance-diagnostics/dependency_duration_degradation.png)
+![下面是“依赖项持续时间延长”检测的示例](./media/proactive-performance-diagnostics/dependency_duration_degradation.png)
 
 请注意，它会指示：
 
@@ -175,15 +176,14 @@ Application Insights 可以找到只会影响一部分用户，或者只会在�
 ## <a name="next-steps"></a>后续步骤
 这些诊断工具可帮助检查应用中的遥测数据：
 
+* [探查器](profiler.md) 
 * [快照调试器](../../azure-monitor/app/snapshot-debugger.md)
 * [分析](../../azure-monitor/log-query/get-started-portal.md)
 * [分析智能诊断](../../azure-monitor/log-query/log-query-overview.md)
+<!--Correct on link: ../../azure-monitor/log-query/log-query-overview.md -->
 
 智能检测是完全自动执行的。 但是或许你想要设置更多的警报？
 
 * [手动配置的指标警报](../../azure-monitor/app/alerts.md)
 * [可用性 Web 测试](../../azure-monitor/app/monitor-web-app-availability.md)
-
-
-
 

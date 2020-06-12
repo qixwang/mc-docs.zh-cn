@@ -1,17 +1,16 @@
 ---
 title: Azure Site Recovery 中的 VMware/物理灾难恢复支持列表
 description: 汇总了使用 Azure Site Recovery 将 VMware VM 和物理服务器灾难恢复到 Azure 的支持。
-ms.service: site-recovery
 ms.topic: conceptual
 origin.date: 02/24/2020
-ms.date: 04/13/2020
+ms.date: 06/08/2020
 ms.author: v-yeche
-ms.openlocfilehash: 063de7cc5d8efd9c43278cf3fd21ec8336da6930
-ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
+ms.openlocfilehash: bdfa79d2cc7fdfdde52bb1ef0e83d092d98d578f
+ms.sourcegitcommit: 30826266a01540cc2f74af22054923f77f3d30b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82093480"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84273959"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>将 VMware VM 和物理服务器灾难恢复到 Azure 时的支持矩阵
 
@@ -50,8 +49,8 @@ RAM | 16 GB
 磁盘可用空间 | 为保留驱动器提供 600 GB 空间。
 操作系统  | Windows Server 2012 R2，或具有桌面体验的 Windows Server 2016 <br/><br /> 如果计划使用此设备的内置主目标进行故障回复，请确保操作系统版本与复制的项相同或为更高版本。|
 操作系统区域设置 | 英语 (en-us)
-[PowerCLI](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1) | 在配置服务器版本 [9.14](https://support.microsoft.com/help/4091311/update-rollup-23-for-azure-site-recovery) 或更高版本中不需要。 
-Windows Server 角色 | 不要启用 Active Directory 域服务、Internet Information Services (IIS) 或 Hyper-V。 
+[PowerCLI](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1) | 在配置服务器版本 [9.14](https://support.microsoft.com/help/4091311/update-rollup-23-for-azure-site-recovery) 或更高版本中不需要。
+Windows Server 角色 | 不要启用 Active Directory 域服务、Internet Information Services (IIS) 或 Hyper-V。
 组策略| - 阻止访问命令提示符。 <br/> - 阻止访问注册表编辑工具。 <br/> - 信任文件附件的逻辑。 <br/> - 打开脚本执行。 <br/> - [了解详细信息](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)|
 IIS | 确保：<br/><br/> - 无预先存在的默认网站 <br/> - 启用[匿名身份验证](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br/> - 启用 [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) 设置  <br/> - 端口 443 上没有预先存在的网站/应用侦听<br/>
 NIC 类型 | VMXNET3（部署为 VMware VM 时）
@@ -69,15 +68,16 @@ Site Recovery 支持复制在支持的计算机上运行的任何工作负荷。
 --- | ---
 计算机设置 | 复制到 Azure 的计算机必须满足 [Azure 要求](#azure-vm-requirements)。
 计算机工作负载 | Site Recovery 支持复制在支持的计算机上运行的任何工作负荷。 [了解详细信息](../site-recovery/site-recovery-workload.md)。
+计算机名称 | 确保计算机的显示名称不属于 [Azure 保留的资源名称](/azure-resource-manager/templates/error-reserved-resource-name)<br/><br/> 逻辑卷名称不区分大小写。 请确保设备上不存在两个卷具有相同名称的情况。 例如：无法通过 Azure Site Recovery 保护名称为“voLUME1”、“volume1”的卷。
 Windows Server 2019 | 从[更新汇总 34](https://support.microsoft.com/help/4490016) 开始受支持（移动服务版本 9.22 和更高版本）。
 Windows Server 2016 64 位 | 支持服务器核心、带桌面体验的服务器。
 Windows Server 2012 R2/Windows Server 2012 | 。
 Windows Server 2008 R2 SP1 及更高版本。 | 。<br/><br/> 在移动服务代理的 [9.30](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery) 版本中，需要在运行 Windows 2008 R2 SP1 或更高版本的计算机上安装[服务堆栈更新 (SSU)](https://support.microsoft.com/help/4490628) 和 [SHA-2 更新](https://support.microsoft.com/help/4474419)。 从 2019 年 9 月开始不再支持 SHA-1，如果未启用 SHA-2 代码签名，则无法按预期方式安装/升级代理扩展。 详细了解 [SHA-2 升级和要求](https://aka.ms/SHA-2KB)。
-Windows Server 2008 SP2 或更高版本（64 位/32 位） |  仅支持迁移。 [了解详细信息](migrate-tutorial-windows-server-2008.md)。<br/><br/> 在移动服务代理的 [9.30](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery) 版本中，需要在 Windows 2008 SP2 计算机上安装[服务堆栈更新 (SSU)](https://support.microsoft.com/help/4493730) 和 [SHA-2 更新](hhttps://support.microsoft.com/help/4474419)。 从 2019 年 9 月开始不再支持 SHA-1，如果未启用 SHA-2 代码签名，则无法按预期方式安装/升级代理扩展。 详细了解 [SHA-2 升级和要求](https://aka.ms/SHA-2KB)。
+Windows Server 2008 SP2 或更高版本（64 位/32 位） |  仅支持迁移。 [了解详细信息](migrate-tutorial-windows-server-2008.md)。<br/><br/> 在移动服务代理的 [9.30](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery) 版本中，需要在 Windows 2008 SP2 计算机上安装[服务堆栈更新 (SSU)](https://support.microsoft.com/help/4493730) 和 [SHA-2 更新](https://support.microsoft.com/help/4474419)。 从 2019 年 9 月开始不再支持 SHA-1，如果未启用 SHA-2 代码签名，则无法按预期方式安装/升级代理扩展。 详细了解 [SHA-2 升级和要求](https://support.microsoft.com/help/4472027/2019-sha-2-code-signing-support-requirement-for-windows-and-wsus)。
 Windows 10、Windows 8.1 和 Windows 8 | 。
-包含 SP1 的 Windows 7 64 位 | 从[更新汇总 36](https://support.microsoft.com/help/4503156) 开始受支持（移动服务版本 9.22 和更高版本）。 <br /><br /> 在移动服务代理的 [9.30](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery) 中，需要在 Windows 7 SP1 计算机上安装[服务堆栈更新 (SSU)](https://support.microsoft.com/help/4490628) 和 [SHA-2 更新](https://support.microsoft.com/help/4474419)。  从 2019 年 9 月开始不再支持 SHA-1，如果未启用 SHA-2 代码签名，则无法按预期方式安装/升级代理扩展。 详细了解 [SHA-2 升级和要求](https://aka.ms/SHA-2KB)。
-Linux | 仅支持 64 位系统。 不支持 32 位系统。<br/><br/>每个 Linux 服务器上应该装有 [Linux Integration Services (LIS) 组件](https://www.microsoft.com/download/details.aspx?id=55106)。 测试故障转移/故障转移后，需要在 Azure 中启动该服务器。 如果缺少 LIS 组件，请确保在启用复制之前安装这些[组件](https://www.microsoft.com/download/details.aspx?id=55106)，使计算机在 Azure 中启动。 <br/><br/> Site Recovery 会协调故障转移，以在 Azure 中运行 Linux 服务器。 但是，Linux 供应商可能会限制仅支持尚未达到使用寿命的分发版本。<br/><br/> 在 Linux 发行版中，仅支持属于分发次要版本/更新的原版内核。<br/><br/> 不支持跨主要 Linux 发行版升级受保护的计算机。 若要升级，请禁用复制，升级操作系统，然后再重新启用复制。<br/><br/> [详细了解](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure) Azure 中的 Linux 和开源技术支持。
-Linux：CentOS | 5.2 到 5.11</b><br/> 6.1 到 6.10</b><br/> 7.0 到 7.6<br/> <br/> 8.0 到 8.1<br/><br/> 运行 CentOS 5.2-5.11 和 6.1-6.10 的服务器未预装 [Linux Integration Services (LIS) 组件](https://www.microsoft.com/download/details.aspx?id=55106)。 请确保在启用复制之前安装这些[组件](https://www.microsoft.com/download/details.aspx?id=55106)，使计算机在 Azure 中启动。
+包含 SP1 的 Windows 7 64 位 | 从[更新汇总 36](https://support.microsoft.com/help/4503156) 开始受支持（移动服务版本 9.22 和更高版本）。 <br /><br /> 在移动服务代理的 [9.30](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery) 中，需要在 Windows 7 SP1 计算机上安装[服务堆栈更新 (SSU)](https://support.microsoft.com/help/4490628) 和 [SHA-2 更新](https://support.microsoft.com/help/4474419)。  从 2019 年 9 月开始不再支持 SHA-1，如果未启用 SHA-2 代码签名，则无法按预期方式安装/升级代理扩展。 详细了解 [SHA-2 升级和要求](https://support.microsoft.com/help/4472027/2019-sha-2-code-signing-support-requirement-for-windows-and-wsus)。
+Linux | 仅支持 64 位系统。 不支持 32 位系统。<br/><br/>每个 Linux 服务器上应该装有 [Linux Integration Services (LIS) 组件](https://www.microsoft.com/download/details.aspx?id=55106)。 测试故障转移/故障转移后，需要在 Azure 中启动该服务器。 如果缺少内置 LIS 组件，请确保在启用复制之前安装这些[组件](https://www.microsoft.com/download/details.aspx?id=55106)，使计算机在 Azure 中启动。 <br/><br/> Site Recovery 会协调故障转移，以在 Azure 中运行 Linux 服务器。 但是，Linux 供应商可能会限制仅支持尚未达到使用寿命的分发版本。<br/><br/> 在 Linux 发行版中，仅支持属于分发次要版本/更新的原版内核。<br/><br/> 不支持跨主要 Linux 发行版升级受保护的计算机。 若要升级，请禁用复制，升级操作系统，然后再重新启用复制。<br/><br/> [详细了解](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure) Azure 中的 Linux 和开源技术支持。
+Linux：CentOS | 5.2 到 5.11</b><br/> 6.1 到 6.10</b><br/> 7.0 到 7.6<br/> <br/> 8.0 到 8.1<br/><br/> 运行 CentOS 5.2-5.11 和 6.1-6.10 的服务器上较旧的内核基本都预装了 [Linux Integration Services (LIS) 组件](https://www.microsoft.com/download/details.aspx?id=55106)。 如果缺少内置 LIS 组件，请确保在启用复制之前安装这些[组件](https://www.microsoft.com/download/details.aspx?id=55106)，使计算机在 Azure 中启动。
 Ubuntu | Ubuntu 14.04 LTS 服务器[（查看支持的内核版本）](#ubuntu-kernel-versions)<br/><br/>Ubuntu 16.04 LTS 服务器[（查看支持的内核版本）](#ubuntu-kernel-versions) <br /> Ubuntu 18.04 LTS 服务器[（查看支持的内核版本）](#ubuntu-kernel-versions)
 Debian | Debian 7/Debian 8[（查看支持的内核版本）](#debian-kernel-versions)
 SUSE Linux | SUSE Linux Enterprise Server 12 SP1、SP2、SP3、SP4 [（支持的内核版本）](#suse-linux-enterprise-server-12-supported-kernel-versions) <br/> SUSE Linux Enterprise Server 15、15 SP1 [（查看支持的内核版本）](#suse-linux-enterprise-server-15-supported-kernel-versions)<br/> SUSE Linux Enterprise Server 11 SP3、SUSE Linux Enterprise Server 11 SP4<br/> 不支持将复制计算机从 SUSE Linux Enterprise Server 11 SP3 升级到 SP4。 若要升级，请禁用复制并在升级后重新启用它。
@@ -121,22 +121,23 @@ Debian 8 | [9.29][9.29 UR] | 3.16.0-4-amd64 到 3.16.0-10-amd64、4.9.0-0.bpo.4-
 
 **版本** | **移动服务版本** | **内核版本** |
 --- | --- | --- |
-SUSE Linux Enterprise Server 12（SP1、SP2、SP3、SP4） | [9.32][9.32 UR] | 支持所有[库存 SUSE 12 SP1、SP2、SP3、SP4 内核](https://wiki.microfocus.com/index.php/SUSE/SLES/Kernel_versions#SUSE_Linux_Enterprise_Server_12)。<br /><br /> 4.4.138-4.7-azure 到 4.4.180-4.31-azure、<br />4.12.14-6.3-azure 到 4.12.14-6.34-azure  |
-SUSE Linux Enterprise Server 12（SP1、SP2、SP3、SP4） | [9.31][9.31 UR] | 支持所有[库存 SUSE 12 SP1、SP2、SP3、SP4 内核](https://wiki.microfocus.com/index.php/SUSE/SLES/Kernel_versions#SUSE_Linux_Enterprise_Server_12)。<br /><br /> 4.4.138-4.7-azure 到 4.4.180-4.31-azure、<br />4.12.14-6.3-azure 到 4.12.14-6.29-azure  |
-SUSE Linux Enterprise Server 12（SP1、SP2、SP3、SP4） | [9.30][9.30 UR] | 支持所有[库存 SUSE 12 SP1、SP2、SP3、SP4 内核](https://wiki.microfocus.com/index.php/SUSE/SLES/Kernel_versions#SUSE_Linux_Enterprise_Server_12)。<br /><br /> 4.4.138-4.7-azure 到 4.4.180-4.31-azure、<br />4.12.14-6.3-azure 到 4.12.14-6.26-azure  |
-SUSE Linux Enterprise Server 12（SP1、SP2、SP3、SP4） | [9.29][9.29 UR] | 支持所有[库存 SUSE 12 SP1、SP2、SP3、SP4 内核](https://wiki.microfocus.com/index.php/SUSE/SLES/Kernel_versions#SUSE_Linux_Enterprise_Server_12)。<br /><br /> 4.4.138-4.7-azure 到 4.4.180-4.31-azure、<br />4.12.14-6.3-azure 到 4.12.14-6.23-azure  |
+SUSE Linux Enterprise Server 12（SP1、SP2、SP3、SP4） | [9.28][9.28 UR] | SP1 3.12.49-11-default 到 3.12.74-60.64.40-default<br /><br /> SP1(LTSS) 3.12.74-60.64.45-default 到 3.12.74-60.64.118-default<br /><br /> SP2 4.4.21-69-default 到 4.4.120-92.70-default<br /><br />SP2(LTSS) 4.4.121-92.73-default 到 4.4.121-92.117-default<br /><br />SP3 4.4.73-5-default 到 4.4.180-94.100-default<br /><br />SP3 4.4.138-4.7-azure 到 4.4.180-4.31-azure<br /><br />SP4 4.12.14-94.41-default 到 4.12.14-95.29-default<br />SP4 4.12.14-6.3-azure 到 4.12.14-6.23-azure |
+SUSE Linux Enterprise Server 12（SP1、SP2、SP3、SP4） | [9.27][9.27 UR] | SP1 3.12.49-11-default 到 3.12.74-60.64.40-default<br /><br /> SP1(LTSS) 3.12.74-60.64.45-default 到 3.12.74-60.64.115-default<br /><br /> SP2 4.4.21-69-default 到 4.4.120-92.70-default<br /><br />SP2(LTSS) 4.4.121-92.73-default 到 4.4.121-92.114-default<br /><br />SP3 4.4.73-5-default 到 4.4.180-94.97-default<br /><br />SP3 4.4.138-4.7-azure 到 4.4.180-4.31-azure<br /><br />SP4 4.12.14-94.41-default 到 4.12.14-95.19-default<br />SP4 4.12.14-6.3-azure 到 4.12.14-6.15-azure |
+SUSE Linux Enterprise Server 12（SP1、SP2、SP3、SP4） | [9.26][9.26 UR] | SP1 3.12.49-11-default 到 3.12.74-60.64.40-default<br /><br /> SP1(LTSS) 3.12.74-60.64.45-default 到 3.12.74-60.64.110-default<br /><br /> SP2 4.4.21-69-default 到 4.4.120-92.70-default<br /><br />SP2(LTSS) 4.4.121-92.73-default 到 4.4.121-92.109-default<br /><br />SP3 4.4.73-5-default 到 4.4.178-94.91-default<br /><br />SP3 4.4.138-4.7-azure 到 4.4.178-4.28-azure<br /><br />SP4 4.12.14-94.41-default 到 4.12.14-95.16-default<br />SP4 4.12.14-6.3-azure 到 4.12.14-6.9-azure |
+SUSE Linux Enterprise Server 12（SP1、SP2、SP3、SP4） | [9.25][9.25 UR] | SP1 3.12.49-11-default 到 3.12.74-60.64.40-default<br /><br /> SP1(LTSS) 3.12.74-60.64.45-default 到 3.12.74-60.64.107-default<br /><br /> SP2 4.4.21-69-default 到 4.4.120-92.70-default<br /><br />SP2(LTSS) 4.4.121-92.73-default 到 4.4.121-92.104-default<br /><br />SP3 4.4.73-5-default 到 4.4.176-94.88-default<br /><br />SP3 4.4.138-4.7-azure 到 4.4.176-4.25-azure<br /><br />SP4 4.12.14-94.41-default 到 4.12.14-95.13-default<br />SP4 4.12.14-6.3-azure 到 4.12.14-6.9-azure |
 
 ### <a name="suse-linux-enterprise-server-15-supported-kernel-versions"></a>SUSE Linux Enterprise Server 15 支持的内核版本
 
 **版本** | **移动服务版本** | **内核版本** |
 --- | --- | --- |
-SUSE Linux Enterprise Server 15 和 15 SP1 | 9.32 | 支持所有[库存 SUSE 15 和 15 SP1 内核](https://wiki.microfocus.com/index.php/SUSE/SLES/Kernel_versions#SUSE_Linux_Enterprise_Server_15)。<br /><br /> 4.12.14-5.5-azure 到 4.12.14-8.22-azure |
+SUSE Linux Enterprise Server 15 和 15 SP1 | [9.32](https://support.microsoft.com/help/4550047/) | 默认情况下，支持所有[库存 SUSE 15 和 15 SP1 内核](https://www.suse.com/support/kb/doc/?id=000019587)。 <br /><br /> 4.12.14-5.5-azure 到 4.12.14-8.22-azure
 
 ## <a name="linux-file-systemsguest-storage"></a>Linux 文件系统/来宾存储
 
 **组件** | **支持**
 --- | ---
 文件系统 | ext3、ext4、XFS、BTRFS（适用条件如本表所述）
+逻辑卷管理 (LVM) 预配| 复杂预配 - 是 <br /> 精简预配 - 否
 卷管理器 | - 支持 LVM。<br/> - 从[更新汇总 31](https://support.microsoft.com/help/4478871/)（移动服务版本 9.20）开始支持 LVM 上的 /boot。 早期移动的服务版本不支持它。<br/> - 不支持多个 OS 磁盘。
 半虚拟化存储设备 | 不支持半虚拟化驱动程序导出的设备。
 多队列块 IO 设备 | 不支持。
@@ -187,7 +188,6 @@ Azure 虚拟网络服务终结点<br/> | 是
 
 <a name="support-for-storage"></a>
 ## <a name="storage"></a>存储
-
 **组件** | **支持**
 --- | ---
 动态磁盘 | OS 磁盘必须是基本磁盘。 <br/><br/>数据磁盘可以是动态磁盘
@@ -207,14 +207,15 @@ Docker 磁盘配置 | 否
 > 1 TB 的来宾/服务器磁盘 | 是，磁盘必须大于 1024 MB<br/><br/>复制到托管磁盘时高达 8,192 GB（9.26 版及更高版本）<br /> 复制到存储帐户时高达 4,095 GB
 逻辑和物理扇区大小均为 4K 的来宾/服务器磁盘 | 否
 逻辑扇区大小为 4K 且物理扇区大小为 512 字节的来宾/服务器磁盘 | 否
-包含 > 4 TB 的条带化磁盘的来宾/服务器卷 <br/><br/>逻辑卷管理 (LVM)| 是
+包含 > 4 TB 的条带化磁盘的来宾/服务器卷 | 是
+逻辑卷管理 (LVM)| 复杂预配 - 是 <br /> 精简预配 - 否
 来宾/服务器 - 存储空间 | 否
 来宾/服务器热添加/删除磁盘 | 否
 来宾/服务器 - 排除磁盘 | 是
 来宾/服务器多路径 (MPIO) | 否
 来宾/服务器 GPT 分区 | 从[更新汇总 37](https://support.microsoft.com/help/4508614/)（移动服务版本 9.25）开始支持五个分区。 以前支持四个。
 ReFS | 出行服务版本 9.23 或更高版本支持可复原文件系统
-来宾/服务器 EFI/UEFI 启动 | - 支持的版本包括 Windows Server 2012 或更高版本、SLES 12 SP4 和 RHEL 8.0（包含移动代理 9.30 及更高版本）<br/> - 不支持安全 UEFI 启动类型。 
+来宾/服务器 EFI/UEFI 启动 | - 支持的版本包括 Windows Server 2012 或更高版本、SLES 12 SP4 和 RHEL 8.0（包含移动代理 9.30 及更高版本）<br/> - 不支持安全 UEFI 启动类型。
 
 ## <a name="replication-channels"></a>复制通道
 
@@ -235,7 +236,7 @@ ReFS | 出行服务版本 9.23 或更高版本支持可复原文件系统
 热存储| 否
 块 Blob | 否
 静态加密 (SSE)| 是
-静态加密 (CMK)| 是（通过 Powershell Az 3.3.0 及更高版本模块）
+静态加密 (CMK)| 是（通过 PowerShell Az 3.3.0 及更高版本模块）
 高级存储 | 是
 导入/导出服务 | 否
 VNet 的 Azure 存储防火墙 | 是的。<br/> 在目标存储/缓存存储帐户上配置（用于存储复制的数据）。
@@ -272,20 +273,20 @@ VM 名称 | 1 到 63 个字符。<br/><br/> 限制为字母、数字和连字符
 
 ## <a name="resource-group-limits"></a>资源组限制
 
-若要了解可以在单个资源组下保护的虚拟机数量，请参阅有关[订阅限制和配额](/azure-resource-manager/management/azure-subscription-service-limits#resource-group-limits)的文章
+若要了解可以在单个资源组下保护的虚拟机数量，请参阅有关[订阅限制和配额](/azure-resource-manager/management/azure-subscription-service-limits#resource-group-limits)的文章。
 
 ## <a name="churn-limits"></a>变动率限制
 
-下表提供了 Azure Site Recovery 限制。 
+下表提供了 Azure Site Recovery 限制。
 - 这些限制基于我们的测试，但不涵盖所有可能的应用 I/O 组合。
 - 实际结果可能因应用程序 I/O 组合而异。
 - 为了获得最佳结果，我们强烈建议[运行部署规划器工具](site-recovery-deployment-planner.md)并通过使用测试性故障转移命令来执行广泛的应用程序测试，以获得应用的真实性能图。
 
 **复制目标** | **平均源磁盘 I/O 大小** |**平均源磁盘数据变动量** | **每天的总源磁盘数据变动量**
 ---|---|---|---
-标准存储 | 8 KB | 2 MB/秒 | 每个磁盘 168 GB
-高级 P10 或 P15 磁盘 | 8 KB  | 2 MB/秒 | 每个磁盘 168 GB
-高级 P10 或 P15 磁盘 | 16 KB | 4 MB/秒 |  每个磁盘 336 GB
+标准存储 | 8 KB    | 2 MB/秒 | 每个磁盘 168 GB
+高级 P10 或 P15 磁盘 | 8 KB    | 2 MB/秒 | 每个磁盘 168 GB
+高级 P10 或 P15 磁盘 | 16 KB | 4 MB/秒 |    每个磁盘 336 GB
 高级 P10 或 P15 磁盘 | 至少 32 KB | 8 MB/秒 | 每个磁盘 672 GB
 高级 P20、P30、P40 或 P50 磁盘 | 8 KB    | 5 MB/秒 | 每个磁盘 421 GB
 高级 P20、P30、P40 或 P50 磁盘 | 至少 16 KB |20 MB/秒 | 每个磁盘 1684 GB
@@ -312,9 +313,9 @@ VM 上所有磁盘的峰值数据变动量 | 54 MB/秒
 
 **名称** | **说明** | **详细信息**
 --- | --- | ---
-配置服务器 | 在本地安装。<br/> 协调本地 VMware 服务器或物理机与 Azure 之间的通信。 | - [了解](vmware-physical-azure-config-process-server-overview.md)配置服务器。<br/> - [了解](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server)如何升级到最新版本。<br/> - [了解](vmware-azure-deploy-configuration-server.md)如何设置配置服务器。 
+配置服务器 | 在本地安装。<br/> 协调本地 VMware 服务器或物理机与 Azure 之间的通信。 | - [了解](vmware-physical-azure-config-process-server-overview.md)配置服务器。<br/> - [了解](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server)如何升级到最新版本。<br/> - [了解](vmware-azure-deploy-configuration-server.md)如何设置配置服务器。
 进程服务器 | 默认安装在配置服务器上。<br/> 接收复制数据，通过缓存、压缩和加密对其进行优化，然后将数据发送到 Azure。<br/> 随着部署扩大，可以另外添加进程服务器来处理更大的复制流量。 | - [了解](vmware-physical-azure-config-process-server-overview.md)进程服务器。<br/> - [了解](vmware-azure-manage-process-server.md#upgrade-a-process-server)如何升级到最新版本。<br/> - [了解](vmware-physical-large-deployment.md#set-up-a-process-server)如何设置横向扩展进程服务器。
-移动服务 | 在想要复制的 VMware VM 或物理服务器上安装。<br/> 协调本地 VMware 服务器/物理服务器与 Azure 之间的复制。| - [了解](vmware-physical-mobility-service-overview.md)移动服务。<br/> - [了解](vmware-physical-manage-mobility-service.md#update-mobility-service-from-azure-portal)如何升级到最新版本。<br/> 
+移动服务 | 在想要复制的 VMware VM 或物理服务器上安装。<br/> 协调本地 VMware 服务器/物理服务器与 Azure 之间的复制。| - [了解](vmware-physical-mobility-service-overview.md)移动服务。<br/> - [了解](vmware-physical-manage-mobility-service.md#update-mobility-service-from-azure-portal)如何升级到最新版本。<br/>
 
 ## <a name="next-steps"></a>后续步骤
 [了解如何](tutorial-prepare-azure.md)为 VMware VM 的灾难恢复准备 Azure。

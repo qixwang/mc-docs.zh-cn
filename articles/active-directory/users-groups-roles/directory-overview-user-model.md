@@ -6,7 +6,7 @@ author: curtand
 manager: daveba
 ms.author: v-junlch
 ms.reviewer: vincesm
-ms.date: 02/26/2020
+ms.date: 06/01/2020
 ms.topic: overview
 ms.service: active-directory
 ms.subservice: users-groups-roles
@@ -14,12 +14,12 @@ ms.workload: identity
 services: active-directory
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: daf26c152c712567c093969fb0c18529c2f277e6
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 049dcd45e2bb3a46e7a94cc6a3d49e3033523dfd
+ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77653464"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84275599"
 ---
 # <a name="users-groups-licensing-and-roles-for-large-organizations"></a>大型组织的用户、组、许可和角色
 
@@ -31,7 +31,7 @@ ms.locfileid: "77653464"
 
 ## <a name="assign-users-to-groups"></a>将用户分配到组
 
-可以使用 Azure AD 中的组将许可证分配给大量用户，或者为用户分配已部署企业应用的访问权限。 可以在 Azure AD 中使用组分配除全局管理员以外的所有管理员角色，也可以授予对外部资源（例如 SaaS 应用程序或 SharePoint 站点）的访问权限。
+可以使用 Azure AD 中的组将许可证分配给大量用户，或者为用户分配已部署企业应用的访问权限。 可以在 Azure AD 中使用组分配除全局管理员以外的所有管理员角色，也可以授予对外部资源（例如 SharePoint 站点）的访问权限。
 
 ## <a name="assign-licenses-to-groups"></a>将许可证分配到组
 
@@ -51,8 +51,8 @@ ms.locfileid: "77653464"
  角色名称 | 权限摘要
  --------- | -------------------
  **应用程序管理员** | 可以添加和管理企业应用程序与应用程序注册。 
- **云应用程序管理员** | 可以添加和管理企业应用程序与企业应用注册。 此角色拥有应用程序管理员的所有权限，但不能管理应用程序代理设置。
-**应用程序开发人员** | 可以添加和更新应用程序注册，但不能管理企业应用程序或配置应用程序代理。
+ **云应用程序管理员** | 可以添加和管理企业应用程序与企业应用注册。 此角色具有应用程序管理员的所有权限。
+**应用程序开发人员** | 可以添加和更新应用程序注册，但不能管理企业应用程序。
 
 我们正在添加新的 Azure AD 管理员角色。 请查看 Azure 门户或[管理员角色权限参考](directory-assign-admin-roles.md)来了解当前可用的角色。
 
@@ -60,13 +60,13 @@ ms.locfileid: "77653464"
 
 可以使用 Azure AD 为组分配对 [Azure AD 租户中部署的企业应用](/active-directory/manage-apps/methods-for-assigning-users-and-groups)的访问权限。 
 
-在 Azure AD 中，还可以精细控制你有权访问的应用和组之间流动的数据。 在[企业应用程序](https://portal.azure.cn/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps)中打开一个应用，并选择“预配”以执行以下操作： 
+在 Azure AD 中，还可以精细控制你有权访问的应用和组之间流动的数据。 在[企业应用程序](https://portal.azure.cn/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps)中打开一个应用，并选择“预配”以执行以下操作：
 
 * 为支持自动预配的应用设置自动预配
 * 提供凭据以连接到应用的用户管理 API
 * 设置映射，用于在预配或更新用户帐户时，控制对 Azure AD 与应用之间的流产生影响的用户
 * 启动和停止应用的 Azure AD 预配服务、清除预配缓存，或重启服务
-* 查看“预配活动报告”，其中提供了在 Azure AD 与应用之间创建、更新和删除的所有用户与组的日志；以及查看“预配错误报告”，其中提供了更详细的错误消息  
+* 查看“预配活动报告”，其中提供了在 Azure AD 与应用之间创建、更新和删除的所有用户与组的日志；以及查看“预配错误报告”，其中提供了更详细的错误消息 
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -4,16 +4,17 @@ description: 如何将 Azure IoT Edge 运行时和所有面向 Internet 的 IoT 
 author: kgremban
 ms.author: v-tawe
 origin.date: 03/10/2020
-ms.date: 03/30/2020
+ms.date: 06/01/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 92eaf433f7e012551e851f7c5b0c03b408432320
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.custom: amqp
+ms.openlocfilehash: 720e8f2f173151e00fd31cc9345ebf03d42d0445
+ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80586761"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84275579"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>将 IoT Edge 设备配置为通过代理服务器进行通信
 
@@ -122,7 +123,7 @@ IoT Edge 守护程序始终使用 HTTPS 将请求发送到 IoT 中心。
 sudo systemctl edit iotedge
 ```
 
-输入以下文本，将 **\<代理 URL>** 替换为代理服务器地址和端口。 然后，保存并退出。
+输入以下文本，将 \<proxy URL> 替换为代理服务器地址和端口。 然后，保存并退出。
 
 ```ini
 [Service]
@@ -149,7 +150,7 @@ systemctl show --property=Environment iotedge
 
 #### <a name="windows"></a>Windows
 
-以管理员身份打开 PowerShell 窗口，运行以下命令来使用新的环境变量编辑注册表。 将 **\<代理 URL>** 替换为代理服务器地址和端口。
+以管理员身份打开 PowerShell 窗口，运行以下命令来使用新的环境变量编辑注册表。 将 \<proxy url> 替换为代理服务器地址和端口。
 
 ```powershell
 reg add HKLM\SYSTEM\CurrentControlSet\Services\iotedge /v Environment /t REG_MULTI_SZ /d https_proxy=<proxy URL>
@@ -167,9 +168,9 @@ IoT Edge 代理是在任意 IoT Edge 设备上启动的第一个模块。 该代
 
 需在最初设置设备期间，在 IoT Edge 设备上执行此步骤一次。
 
-1. 打开 IoT Edge 设备上的 config.yaml 文件。 在 Linux 系统上，此文件位于 /etc/iotedge/config.yaml  。 在 Windows 系统上，此文件位于 C:\ProgramData\iotedge\config.yaml  。 配置文件是受保护的，因此，你需要管理权限才能对其进行访问。 在 Linux 系统上，请使用 `sudo` 命令，然后在偏好的文本编辑器中打开该文件。 在 Windows 上，请以管理员身份打开记事本之类的文本编辑器，然后打开该文件。
+1. 打开 IoT Edge 设备上的 config.yaml 文件。 在 Linux 系统上，此文件位于 /etc/iotedge/config.yaml。 在 Windows 系统上，此文件位于 C:\ProgramData\iotedge\config.yaml。 配置文件是受保护的，因此，你需要管理权限才能对其进行访问。 在 Linux 系统上，请使用 `sudo` 命令，然后在偏好的文本编辑器中打开该文件。 在 Windows 上，请以管理员身份打开记事本之类的文本编辑器，然后打开该文件。
 
-2. 在 config.yaml 文件中，找到“Edge 代理模块规范”  部分。 IoT Edge 代理定义包括可以在其中添加环境变量的 **env** 参数。
+2. 在 config.yaml 文件中，找到“Edge 代理模块规范”部分。 IoT Edge 代理定义包括可以在其中添加环境变量的 **env** 参数。
 
 3. 删除作为 env 参数占位符的大括号，并在新行上添加新变量。 请记住，YAML 中的缩进为两个空格。
 
@@ -193,7 +194,7 @@ IoT Edge 代理是在任意 IoT Edge 设备上启动的第一个模块。 该代
       sudo systemctl restart iotedge
       ```
 
-   * Windows：
+   * Windows:
 
       ```powershell
       Restart-Service iotedge
@@ -211,9 +212,9 @@ IoT Edge 代理是在任意 IoT Edge 设备上启动的第一个模块。 该代
 
 ### <a name="azure-portal"></a>Azure 门户
 
-使用“设置模块”  向导为 IoT Edge 设备创建部署时，每个模块都有可用于配置代理服务器连接的“环境变量”  部分。
+使用“设置模块”向导为 IoT Edge 设备创建部署时，每个模块都有可用于配置代理服务器连接的“环境变量”部分。
 
-若要配置 IoT Edge 代理和 IoT Edge 中心模块，请在向导的第一步中选择“运行时设置”  。
+若要配置 IoT Edge 代理和 IoT Edge 中心模块，请在向导的第一步中选择“运行时设置”。
 
 ![配置 Edge 运行时高级设置](./media/how-to-configure-proxy-support/configure-runtime.png)
 

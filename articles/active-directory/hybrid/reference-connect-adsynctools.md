@@ -5,21 +5,36 @@ author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-origin.date: 10/19/2018
-ms.date: 03/15/2019
+ms.date: 06/02/2020
 ms.subservice: hybrid
 ms.author: v-junlch
 ms.topic: reference
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3247ffa56547cbd4d5107c97e68f952d05ab4f7f
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: d8c7510838ec87ccc3477df0bde50cd11fabe5b0
+ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "63829127"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84275314"
 ---
 # <a name="azure-ad-connect--adsynctools-powershell-reference"></a>Azure AD Connect：ADSyncTools PowerShell 参考
 以下文档提供了 Azure AD Connect 随附的 ADSyncTools.psm1 PowerShell 模块的参考信息。
+
+## <a name="install-the-adsynctools-powershell-module"></a>安装 ADSyncTools PowerShell 模块
+若要安装 ADSyncTools PowerShell 模块，请执行以下操作：
+
+1.  使用管理权限打开 Windows PowerShell
+2.  键入或复制并粘贴以下内容： 
+    ``` powershell
+    Import-module -Name "C:\Program Files\Azure Active Directory Connect\Tools\AdSyncTools"
+    ```
+3.  按 Enter。
+4.  若要验证模块是否已安装，请输入或复制并粘贴以下内容“
+    ```powershell
+    Get-module AdSyncTools
+    ```
+5.  现在应会看到有关模块的信息。
+
 
 ## <a name="clear-adsynctoolsconsistencyguid"></a>Clear-ADSyncToolsConsistencyGuid
 

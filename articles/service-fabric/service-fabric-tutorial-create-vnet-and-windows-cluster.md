@@ -3,15 +3,15 @@ title: 在 Azure 中创建运行 Windows 的 Service Fabric 群集
 description: 本教程介绍如何通过使用 PowerShell 将 Windows Service Fabric 群集部署到 Azure 虚拟网络和网络安全组。
 ms.topic: tutorial
 origin.date: 07/22/2019
-ms.date: 02/24/2020
+ms.date: 06/08/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 670d8fa6e405f3d144ca882bd545ca58295039c2
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 2c4c6dd741a4b49846e39503d7e8c3f8d88a926b
+ms.sourcegitcommit: 0e178672632f710019eae60cea6a45ac54bb53a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540569"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84356145"
 ---
 <!--Verify successfully-->
 # <a name="tutorial-deploy-a-service-fabric-cluster-running-windows-into-an-azure-virtual-network"></a>教程：将运行 Windows 的 Service Fabric 群集部署到 Azure 虚拟网络
@@ -28,12 +28,11 @@ ms.locfileid: "77540569"
 > * 设置 Azure Active Directory 身份验证
 > * 配置诊断集合
 > * 设置 EventStore 服务
+> * 设置 Azure Monitor 日志
 > * 在 Azure PowerShell 中创建安全的 Service Fabric 群集
 > * 使用 X.509 证书保护群集
 > * 使用 PowerShell 连接到群集
 > * 删除群集
-
-<!--Not Available on > * Set up Azure Monitor logs-->
 
 在此系列教程中，你将学习如何：
 > [!div class="checklist"]
@@ -75,7 +74,7 @@ ms.locfileid: "77540569"
 > 对于本文，在成功下载相应的文件后，我们应当替换以下配置来满足 Azure 中国环境：
 > * 在 [azuredeploy.json][template] 中三次替换 storageAccountEndPoint。
 >     * 将 `"storageAccountEndPoint": "https://core.windows.net/"` 替换为 `"storageAccountEndPoint": "https://core.chinacloudapi.cn/"`。
-> * 替换 [azuredeploy.parameters.json][parameters] 中的 clusterLocation。
+> * 替换 [azuredeploy.parameters.json][parameters] 和 [azuredeploy.json][template] 中的 clusterLocation。
 >     * 将 `westus` 替换为 `chinanorth`。
 > * 替换 [New-ServiceFabricClusterCertificate.ps1](https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/New-ServiceFabricClusterCertificate.ps1) 中的 Location。
 >     * 将 `WestUS` 替换为 `chinanorth`。
@@ -101,7 +100,7 @@ ms.locfileid: "77540569"
 
 ### <a name="azure-load-balancer"></a>Azure 负载均衡器
 
-在 Microsoft.Network/loadBalancers  资源中配置负载均衡器。 为以下端口设置探测和规则：
+在 Microsoft.Network/loadBalancers 资源中配置负载均衡器。 为以下端口设置探测和规则：
 
 * 客户端连接终结点：19000
 * HTTP 网关终结点：19080
@@ -109,7 +108,7 @@ ms.locfileid: "77540569"
 * 应用程序端口：443
 * Service Fabric 反向代理：19081
 
-如需其他应用程序端口，则需要调整 Microsoft.Network/loadBalancers 资源和 Microsoft.Network/networkSecurityGroups 资源，以允许传入流量   。
+如需其他应用程序端口，则需要调整 Microsoft.Network/loadBalancers 资源和 Microsoft.Network/networkSecurityGroups 资源，以允许传入流量 。
 
 ### <a name="virtual-network-subnet-and-network-security-group"></a>虚拟网络、子网和网络安全组
 
@@ -129,7 +128,7 @@ ms.locfileid: "77540569"
 * 应用程序端口范围：49152 到 65534（用于测试服务间的通信。 其他端口不会在负载平衡器上打开）。
 * 阻止其他所有端口
 
-如需其他应用程序端口，则需要调整 Microsoft.Network/loadBalancers 资源和 Microsoft.Network/networkSecurityGroups 资源，以允许传入流量   。
+如需其他应用程序端口，则需要调整 Microsoft.Network/loadBalancers 资源和 Microsoft.Network/networkSecurityGroups 资源，以允许传入流量 。
 
 ### <a name="windows-defender"></a>Windows Defender
 默认情况下，[Windows Defender 防病毒程序](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-on-windows-server-2016)已安装在 Windows Server 2016 上并在其上运行。 用户界面默认安装在一些 SKU 上，但不是必需的。 对于在模板中声明的每个节点类型/VM 规模集，将会使用 [Azure VM 防病毒扩展](/virtual-machines/extensions/iaas-antimalware-windows)排除 Service Fabric 目录和进程：
@@ -177,7 +176,7 @@ ms.locfileid: "77540569"
 ## <a name="set-up-azure-active-directory-client-authentication"></a>设置 Azure Active Directory 客户端身份验证
 如果将 Service Fabric 群集部署在某个公共网络中，而该网络托管在 Azure 上，则对于客户端到节点型相互身份验证，建议如下：
 * 对客户端标识使用 Azure Active Directory。
-* 对服务器标识使用证书，并对 HTTP 通信进行 SSL 加密。
+* 对服务器标识使用证书，并对 HTTP 通信使用 TLS 加密。
 
 必须在[创建群集](#createvaultandcert)之前设置 Azure Active Directory (Azure AD)，以便针对 Service Fabric 群集对客户端进行身份验证。 通过 Azure AD，组织（称为租户）可管理用户对应用程序的访问。 
 
@@ -208,11 +207,11 @@ $Configobj = .\SetupApplications.ps1 -TenantId '<MyTenantID>' -ClusterName 'mysf
 > [!NOTE]
 > 对于 Azure 中国云，指定 `-Location` 参数。
 
-可在 [Azure 门户](https://portal.azure.cn)中找到 *TenantId* 或目录 ID。 选择“Azure Active Directory” > “属性”并复制“目录 ID”值    。
+可在 [Azure 门户](https://portal.azure.cn)中找到 *TenantId* 或目录 ID。 选择“Azure Active Directory” > “属性”并复制“目录 ID”值  。
 
-将 ClusterName 用作脚本创建的 Azure AD 应用程序的前缀  。 无需完全匹配实际的群集名称。 只是为了操作更加简便，可将 Azure AD 项目映射到正在使用的 Service Fabric 群集。
+将 ClusterName 用作脚本创建的 Azure AD 应用程序的前缀。 无需完全匹配实际的群集名称。 只是为了操作更加简便，可将 Azure AD 项目映射到正在使用的 Service Fabric 群集。
 
-WebApplicationReplyUrl 是 Azure AD 在完成登录过程之后返回给用户的默认终结点  。 将此终结点设置为群集的 Service Fabric Explorer 的终结点，默认值为：
+WebApplicationReplyUrl 是 Azure AD 在完成登录过程之后返回给用户的默认终结点。 将此终结点设置为群集的 Service Fabric Explorer 的终结点，默认值为：
 
 https://&lt;cluster_domain&gt;:19080/Explorer
 
@@ -348,7 +347,7 @@ https://&lt;cluster_domain&gt;:19080/Explorer
 }
 ```
 
-下一步，将 IaaSDiagnostics 扩展名添加到群集中每个 Microsoft.Compute/virtualMachineScaleSets 资源的 VirtualMachineProfile 属性的扩展数组中    。  如果使用的是[示例模板][template]，则有三个虚拟机规模集（群集中的每个节点类型对应一个规模集）。
+下一步，将 IaaSDiagnostics 扩展名添加到群集中每个 Microsoft.Compute/virtualMachineScaleSets 资源的 VirtualMachineProfile 属性的扩展数组中  。  如果使用的是[示例模板][template]，则有三个虚拟机规模集（群集中的每个节点类型对应一个规模集）。
 
 ```json
 "apiVersion": "2018-10-01",
@@ -428,7 +427,7 @@ EventStore 服务是 Service Fabric 中的监视选项。 EventStore 提供了�
 * 确认正在正确处理对群集执行的管理操作
 * 获取 Service Fabric 如何与特定实体进行交互的“快照”
 
-要在群集上启用 EventStore 服务，请将以下内容添加到 Microsoft.ServiceFabric/clusters 资源的 fabricSettings 属性中   ：
+要在群集上启用 EventStore 服务，请将以下内容添加到 Microsoft.ServiceFabric/clusters 资源的 fabricSettings 属性中 ：
 
 ```json
 "apiVersion": "2018-02-01",
@@ -456,11 +455,171 @@ EventStore 服务是 Service Fabric 中的监视选项。 EventStore 提供了�
 ```
 <a name="configureloganalytics" name="configureloganalytics_anchor"></a>
 
-<!--Not Available on ## Set up Azure Monitor logs for the cluster-->
+## <a name="set-up-azure-monitor-logs-for-the-cluster"></a>为群集设置 Azure Monitor 日志
 
+要监视群集级别的事件，建议使用 Azure Monitor 日志。 要设置 Azure Monitor 日志来监视群集，需要[启用诊断功能以查看群集级别事件](#configure-diagnostics-collection-on-the-cluster)。  
 
-<a name="createvaultandcert"></a>
-<a name="createvaultandcert_anchor"></a>
+需要将工作区连接到来自群集的诊断数据。  此日志数据存储在 applicationDiagnosticsStorageAccountName 存储帐户、WADServiceFabric*EventTable、WADWindowsEventLogsTable 和 WADETWEventTable 表中。
+
+添加 Azure Log Analytics 工作区并将解决方案添加到该工作区：
+
+```json
+"resources": [
+    ...
+    {
+        "apiVersion": "2015-11-01-preview",
+        "location": "[parameters('omsRegion')]",
+        "name": "[parameters('omsWorkspacename')]",
+        "type": "Microsoft.OperationalInsights/workspaces",
+        "properties": {
+            "sku": {
+                "name": "Free"
+            }
+        },
+        "resources": [
+            {
+                "apiVersion": "2015-11-01-preview",
+                "name": "[concat(variables('applicationDiagnosticsStorageAccountName'),parameters('omsWorkspacename'))]",
+                "type": "storageinsightconfigs",
+                "dependsOn": [
+                    "[concat('Microsoft.OperationalInsights/workspaces/', parameters('omsWorkspacename'))]",
+                    "[concat('Microsoft.Storage/storageAccounts/', variables('applicationDiagnosticsStorageAccountName'))]"
+                ],
+                "properties": {
+                    "containers": [],
+                    "tables": [
+                        "WADServiceFabric*EventTable",
+                        "WADWindowsEventLogsTable",
+                        "WADETWEventTable"
+                    ],
+                    "storageAccount": {
+                        "id": "[resourceId('Microsoft.Storage/storageaccounts/', variables('applicationDiagnosticsStorageAccountName'))]",
+                        "key": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('applicationDiagnosticsStorageAccountName')),'2015-06-15').key1]"
+                    }
+                }
+            },
+            {
+                "apiVersion": "2015-11-01-preview",
+                "type": "datasources",
+                "name": "sampleWindowsPerfCounter",
+                "dependsOn": [
+                    "[concat('Microsoft.OperationalInsights/workspaces/', parameters('omsWorkspacename'))]"
+                ],
+                "kind": "WindowsPerformanceCounter",
+                "properties": {
+                    "objectName": "Memory",
+                    "instanceName": "*",
+                    "intervalSeconds": 10,
+                    "counterName": "Available MBytes"
+                }
+            },
+            {
+                "apiVersion": "2015-11-01-preview",
+                "type": "datasources",
+                "name": "sampleWindowsPerfCounter2",
+                "dependsOn": [
+                    "[concat('Microsoft.OperationalInsights/workspaces/', parameters('omsWorkspacename'))]"
+                ],
+                "kind": "WindowsPerformanceCounter",
+                "properties": {
+                    "objectName": "Service Fabric Service",
+                    "instanceName": "*",
+                    "intervalSeconds": 10,
+                    "counterName": "Average milliseconds per request"
+                }
+            }
+        ]
+    },
+    {
+        "apiVersion": "2015-11-01-preview",
+        "location": "[parameters('omsRegion')]",
+        "name": "[variables('solution')]",
+        "type": "Microsoft.OperationsManagement/solutions",
+        "dependsOn": [
+            "[concat('Microsoft.OperationalInsights/workspaces/', parameters('omsWorkspacename'))]"
+        ],
+        "properties": {
+            "workspaceResourceId": "[resourceId('Microsoft.OperationalInsights/workspaces/', parameters('omsWorkspacename'))]"
+        },
+        "plan": {
+            "name": "[variables('solution')]",
+            "publisher": "Microsoft",
+            "product": "[Concat('OMSGallery/', variables('solutionName'))]",
+            "promotionCode": ""
+        }
+    }
+]
+```
+
+下一步，添加参数
+```json
+"parameters": {
+    ...
+    "omsWorkspacename": {
+        "type": "string",
+        "defaultValue": "mysfomsworkspace",
+        "metadata": {
+            "description": "Name of your OMS Log Analytics Workspace"
+        }
+    },
+    "omsRegion": {
+        "type": "string",
+        "defaultValue": "China North",
+        "allowedValues": [
+            "China North",
+            "China East",
+            "China East"
+        ],
+        "metadata": {
+            "description": "Specify the Azure Region for your OMS workspace"
+        }
+    }
+}
+```
+
+下一步，添加变量：
+```json
+"variables": {
+    ...
+    "solution": "[Concat('ServiceFabric', '(', parameters('omsWorkspacename'), ')')]",
+    "solutionName": "ServiceFabric"
+}
+```
+
+将 Log Analytics 代理扩展添加到群集中的每个虚拟机规模集，并将代理连接到 Log Analytics 工作区。 这可收集关于容器、应用程序和性能监视的诊断数据。 通过将其作为扩展添加到虚拟机规模集资源，Azure 资源管理器可确保它安装在每个节点上，即使在缩放群集时也是如此。
+
+```json
+"apiVersion": "2018-10-01",
+"type": "Microsoft.Compute/virtualMachineScaleSets",
+"name": "[variables('vmNodeType1Name')]",
+"properties": {
+    ...
+    "virtualMachineProfile": {
+        "extensionProfile": {
+            "extensions": [
+                {
+                    "name": "[concat(variables('vmNodeType0Name'),'OMS')]",
+                    "properties": {
+                        "publisher": "Microsoft.EnterpriseCloud.Monitoring",
+                        "type": "MicrosoftMonitoringAgent",
+                        "typeHandlerVersion": "1.0",
+                        "autoUpgradeMinorVersion": true,
+                        "settings": {
+                            "workspaceId": "[reference(resourceId('Microsoft.OperationalInsights/workspaces/', parameters('omsWorkspacename')), '2015-11-01-preview').customerId]"
+                        },
+                        "protectedSettings": {
+                            "workspaceKey": "[listKeys(resourceId('Microsoft.OperationalInsights/workspaces/', parameters('omsWorkspacename')),'2015-11-01-preview').primarySharedKey]"
+                        }
+                    }
+                }
+            ...
+            ]
+        }
+    }
+}
+```
+
+<a name="createvaultandcert" name="createvaultandcert_anchor"></a>
 
 ## <a name="deploy-the-virtual-network-and-cluster"></a>部署虚拟网络和群集
 
@@ -582,18 +741,17 @@ Get-ServiceFabricClusterHealth
 > * 设置 Azure Active Directory 身份验证
 > * 配置诊断集合
 > * 设置 EventStore 服务
+> * 设置 Azure Monitor 日志
 > * 在 Azure PowerShell 中创建安全的 Service Fabric 群集
 > * 使用 X.509 证书保护群集
 > * 使用 PowerShell 连接到群集
 > * 删除群集
 
-<!--Not Avaialble on > * Set up Azure Monitor logs-->
-
 下一步，请转到以下教程了解如何监视群集。
 > [!div class="nextstepaction"]
 > [监视群集](service-fabric-tutorial-monitor-cluster.md)
 
-[template]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.json
-[parameters]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.Parameters.json
+[template]: https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.json
+[parameters]: https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.Parameters.json
 
-<!--Update_Description: update meta properties, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

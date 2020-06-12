@@ -12,12 +12,12 @@ ms.topic: article
 origin.date: 02/03/2020
 ms.date: 04/13/2020
 ms.author: v-jay
-ms.openlocfilehash: a558c442ff865432c41baec2b2e678b148309cf9
-ms.sourcegitcommit: 95efd248f5ee3701f671dbd5cfe0aec9c9959a24
+ms.openlocfilehash: fa7e47ab68ea3df79d5808e9dc7283073ec42104
+ms.sourcegitcommit: 1f890a4085e184cc678485d05f08dd6de8dc973f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82507730"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84438936"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure 媒体服务 v3 发行说明
 
@@ -41,13 +41,12 @@ ms.locfileid: "82507730"
 
 ### <a name="improvements-in-media-processors"></a>媒体处理器中的改进
 
-- 改进对视频分析中的隔行扫描源的支持 – 在发送到推理引擎之前，此类内容现在已正确取消隔行扫描。
 - 使用“最佳”模式生成缩略图时，编码器现在会搜索超过 30 秒的时间，以选择不是单色的帧。
 
 
 ### <a name="content-protection"></a>内容保护
 
-9 月份在有限区域发布的“令牌重放防护”功能现在已在所有区域提供。 
+9 月份在有限区域发布的“令牌重放防护”功能现在已在所有区域提供。
 媒体服务客户现在可以对同一令牌用于请求密钥或许可证的次数设置限制。 有关详细信息，请参阅[令牌重放防护](content-protection-overview.md#token-replay-prevention)。
 
 ### <a name="new-recommended-live-encoder-partners"></a>新推荐的实时编码器合作伙伴
@@ -78,7 +77,7 @@ ms.locfileid: "82507730"
 
 #### <a name="deprecation-of-media-processors"></a>弃用媒体处理器
 
-我们宣布弃用 Windows Azure 媒体编码器  (WAME) 和 Azure 媒体编码器  (AME) 媒体处理器，这两个处理器将停用。 有关停用日期，请参阅此[旧组件](../previous/legacy-components.md)主题。
+我们宣布弃用 Windows Azure 媒体编码器 (WAME) 和 Azure 媒体编码器 (AME) 媒体处理器，这两个处理器将停用。 有关停用日期，请参阅此[旧组件](../previous/legacy-components.md)主题。
 
 有关详细信息，请参阅[将 WAME 迁移到 Media Encoder Standard](/media-services/previous/migrate-windows-azure-media-encoder) 和[将 AME 迁移到 Media Encoder Standard](/media-services/previous/migrate-windows-azure-media-encoder)。
  
@@ -121,7 +120,6 @@ ms.locfileid: "82507730"
 
 ### <a name="new-presets"></a>新增预设
 
-* 向内置分析器预设添加了 [FaceDetectorPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#facedetectorpreset)。
 * 向内置编码器预设添加了 [ContentAwareEncodingExperimental](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#encodernamedpreset)。 有关详细信息，请参阅[内容感知型编码](content-aware-encoding.md)。 
 
 ## <a name="march-2019"></a>2019 年 3 月
@@ -223,7 +221,7 @@ CLI 2.0 模块现在可用于 [Azure 媒体服务 v3 正式版](https://docs.mic
 
 #### <a name="new-transform-object"></a>新转换对象
 
-新转换对象简化编码模型  。 通过新对象，可以轻松创建和共享编码资源管理器模板和预设。 
+新转换对象简化编码模型。 通过新对象，可以轻松创建和共享编码资源管理器模板和预设。 
 
 #### <a name="azure-active-directory-authentication-and-rbac"></a>Azure Active Directory 身份验证和 RBAC
 
@@ -267,11 +265,11 @@ CMAF 和“cbcs”加密支持 Apple HLS (iOS 11+) 以及支持 CMAF 的 MPEG-DA
 
 .NET SDK 中提供了以下功能：
 
-* 转换和作业，用于对媒体内容来进行编码或分析   。 有关示例，请参阅[流式传输文件](stream-files-tutorial-with-api.md)和[分析](analyze-videos-tutorial-with-api.md)。
+* 转换和作业，用于对媒体内容进行编码 。 有关示例，请参阅[流式传输文件](stream-files-tutorial-with-api.md)。
 * **流式处理定位符**，用于发布内容并将其流式传输到最终用户设备
 * **流式处理策略**和**内容密钥策略**，用于在传送内容时配置密钥传递和内容保护 (DRM)。
 * **直播活动**和**实时输出**，用于配置实时传送视频流内容的引入和归档。
-* 资产，用于在 Azure 存储中存储和发布媒体内容  。 
+* 资产，用于在 Azure 存储中存储和发布媒体内容。 
 * **流式处理终结点**，用于配置和缩放实时和点播媒体内容的动态打包、加密和流式处理。
 
 ### <a name="known-issues"></a>已知问题

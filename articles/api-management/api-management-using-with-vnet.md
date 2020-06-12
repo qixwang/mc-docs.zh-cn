@@ -10,14 +10,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 05/09/2020
+ms.date: 06/04/2020
 ms.author: v-johya
-ms.openlocfilehash: e5bd7ca5a7e85fb21d1da46a77f1e83c42c1b4ed
-ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
+ms.openlocfilehash: 17e990939e4ba9db8cc6afcc9356af256bd081e6
+ms.sourcegitcommit: 5ae04a3b8e025986a3a257a6ed251b575dbf60a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "83001947"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84440420"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>如何将 Azure API 管理与虚拟网络配合使用
 使用 Azure 虚拟网络 (VNET) 可将你的任何 Azure 资源置于可以控制其访问权限但无法通过 Internet 路由的网络中。 然后，可以使用各种 VPN 技术将这些网络连接到本地网络。 若要了解有关 Azure 虚拟网络的详细信息，请先了解以下信息：[Azure 虚拟网络概述](../virtual-network/virtual-networks-overview.md)。
@@ -45,11 +45,11 @@ ms.locfileid: "83001947"
 
 ### <a name="enable-vnet-connectivity-using-the-azure-portal"></a>使用 Azure 门户启用 VNET 连接
 
-1. 转到 [Azure 门户](https://portal.azure.cn)，查找 API 管理实例。 搜索并选择“API 管理服务”  。
+1. 转到 [Azure 门户](https://portal.azure.cn)，查找 API 管理实例。 搜索并选择“API 管理服务”。
 
 2. 选择你的 API 管理实例。
 
-3. 选择“虚拟网络”  。
+3. 选择“虚拟网络”。
 4. 配置要在虚拟网络内部署的 API 管理实例。
 
     ![API 管理的虚拟网络菜单][api-management-using-vnet-menu]
@@ -65,16 +65,16 @@ ms.locfileid: "83001947"
 
         ![专用对等互连][api-management-vnet-private]
 
-6. 如果选择了“外部”或“内部”，则会看到一个列表，其中包含预配了 API 管理服务的所有区域。   选择一个**位置**，然后选取其**虚拟网络**和**子网**。 虚拟网络列表中填充了所配置区域中设置的 Azure 订阅中可用的经典虚拟网络和资源管理器虚拟网络。
+6. 如果选择了“外部”或“内部”，则会看到一个列表，其中包含预配了 API 管理服务的所有区域。  选择一个**位置**，然后选取其**虚拟网络**和**子网**。 虚拟网络列表中填充了所配置区域中设置的 Azure 订阅中可用的经典虚拟网络和资源管理器虚拟网络。
 
     > [!IMPORTANT]
     > 将 Azure API 管理实例部署到 资源管理器 VNET 时，该服务必须位于一个除了 Azure API 管理实例之外不包含其他资源的专用子网中。 如果尝试将 Azure API 管理实例部署到包含其他资源的资源管理器 VNET 子网，则部署会失败。
 
-    然后，选择“应用”  。 API 管理实例的“虚拟网络”  页通过新的虚拟网络和子网选项进行更新。
+    然后，选择“应用”。 API 管理实例的“虚拟网络”页通过新的虚拟网络和子网选项进行更新。
 
     ![选择 VPN][api-management-setup-vpn-select]
 
-7. 在顶部导航栏中选择“保存”  ，然后选择“应用网络配置”  。
+7. 在顶部导航栏中选择“保存”，然后选择“应用网络配置”。
 
 > [!NOTE]
 > 每次启用或禁用 VNET 时，API 管理实例的 VIP 地址都会更改。
@@ -92,7 +92,7 @@ ms.locfileid: "83001947"
 * **在 VNET 内部署现有 API 管理服务**：使用 cmdlet [Update-AzApiManagementRegion](https://docs.microsoft.com/powershell/module/az.apimanagement/update-azapimanagementregion) 将现有 Azure API 管理服务移到虚拟网络内。
 
 ## <a name="connect-to-a-web-service-hosted-within-a-virtual-network"></a><a name="connect-vnet"></a>连接到虚拟网络中托管的 Web 服务
-将 API 管理服务连接到 VNET 后，访问 VNET 中的后端服务与访问公共服务无异。 在创建新的 API 或编辑现有 API 时，只需将 Web 服务的本地 IP 地址或主机名（如果为 VNET 配置了 DNS 服务器）键入到“Web 服务 URL”字段。 
+将 API 管理服务连接到 VNET 后，访问 VNET 中的后端服务与访问公共服务无异。 在创建新的 API 或编辑现有 API 时，只需将 Web 服务的本地 IP 地址或主机名（如果为 VNET 配置了 DNS 服务器）键入到“Web 服务 URL”字段。
 
 ![从 VPN 添加 API][api-management-setup-vpn-add-api]
 
@@ -108,10 +108,10 @@ ms.locfileid: "83001947"
 
 <a name="required-ports"> </a>在 VNET 中托管 API 管理服务实例时，将使用下表中的端口。
 
-| 源/目标端口 | 方向          | 传输协议 |   [服务标记](../virtual-network/security-overview.md#service-tags) <br> 源/目标   | 用途 ( * )                                                 | 虚拟网络类型 |
+| 源/目标端口 | 方向          | 传输协议 |   [服务标记](../virtual-network/security-overview.md#service-tags) <br> 源/目标   | 目的 (\*)                                                 | 虚拟网络类型 |
 |------------------------------|--------------------|--------------------|---------------------------------------|-------------------------------------------------------------|----------------------|
 | * / [80], 443                  | 入站            | TCP                | INTERNET/VIRTUAL_NETWORK            | 客户端与 API 管理的通信                      | 外部             |
-| * / 3443                     | 入站            | TCP                | ApiManagement / VIRTUAL_NETWORK       | Azure 门户和 Powershell 的管理终结点         | 外部和内部  |
+| * / 3443                     | 入站            | TCP                | ApiManagement / VIRTUAL_NETWORK       | Azure 门户和 PowerShell 的管理终结点         | 外部和内部  |
 | * / 443                  | 出站           | TCP                | VIRTUAL_NETWORK / Storage             | **与 Azure 存储的依赖关系**                             | 外部和内部  |
 | * / 443                  | 出站           | TCP                | VIRTUAL_NETWORK / AzureActiveDirectory | [Azure Active Directory](api-management-howto-aad.md)（如果适用）                   | 外部和内部  |
 | * / 1433                     | 出站           | TCP                | VIRTUAL_NETWORK / SQL                 | **访问 Azure SQL 终结点**                           | 外部和内部  |
@@ -126,30 +126,30 @@ ms.locfileid: "83001947"
 | * / *                        | 入站            | TCP                | AZURE_LOAD_BALANCER/VIRTUAL_NETWORK | Azure 基础结构负载均衡器                          | 外部和内部  |
 
 >[!IMPORTANT]
-> “用途”为**粗体**的端口是成功部署 API 管理服务所必需的。  不过，阻止其他端口将导致使用和监视运行中服务的能力降级。
+> “用途”为**粗体**的端口是成功部署 API 管理服务所必需的。 不过，阻止其他端口将导致使用和监视运行中服务的能力降级。
 
 + **TLS 功能**：若要启用 TLS/SSL 证书链生成和验证，API 管理服务需要到 ocsp.msocsp.com、mscrl.microsoft.com 和 crl.microsoft.com 的出站网络连接。 如果上传到 API 管理的任何证书包含指向 CA 根的完整链，则此依赖项不是必需的。
 
 + **DNS 访问**：需要端口 53 上的出站访问权限才能与 DNS 服务器通信。 如果 VPN 网关的另一端存在自定义 DNS 服务器，则该 DNS 服务器必须可从承载 API 管理的子网访问。
 
-+ **指标和运行状况监视**：到 Azure Monitor 终结点的出站网络连接，可在以下域中解析：
-
-+ **区域服务标记**：允许与存储、SQL 和 EventHubs 服务标记建立出站连接的 NSG 规则可以使用与 API 管理实例所在区域相对应的那些标记的区域版本（例如，“中国北部”区域中 API 管理实例的对应区域版本为 Storage.ChinaNorth）。 在多区域部署中，每个区域中的 NSG 应该允许发送到该区域的服务标记的流量。
++ **指标和运行状况监视**：到 Azure 监视终结点的出站网络连接，可在以下域中解析。 如表所示，这些 URL 在 AzureMonitor 服务标记下表示，用于网络安全组。
 
     | Azure 环境 | 终结点                                                                                                                                                                                                                                                                                                                                                              |
     |-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-    | Azure Public      | <ul><li>gcs.prod.monitoring.core.chinacloudapi.cn（新  ）</li><li>prod.warmpath.msftcloudes.com（即将弃用） </li><li>shoebox2.metrics.microsoftmetrics.com（新） </li><li>shoebox2.metrics.nsatc.net（即将弃用） </li><li>prod3.metrics.microsoftmetrics.com（新） </li><li>prod3.metrics.nsatc.net（即将弃用） </li><li>prod3-black.prod3.metrics.microsoftmetrics.com（新） </li><li>prod3-black.prod3.metrics.nsatc.net（即将弃用） </li><li>prod3-red.prod3.metrics.microsoftmetrics.com（新） </li><li>prod3-red.prod3.metrics.nsatc.net（即将弃用） </li><li>prod.warm.ingestion.msftcloudes.com</li><li>`azure region`.warm.ingestion.msftcloudes.com，其中 `China North 2` 是 chinanorth2.warm.ingestion.msftcloudes.com</li></ul> |
-    | Azure Government  | <ul><li>fairfax.warmpath.usgovcloudapi.net</li><li>shoebox2.metrics.microsoftmetrics.com（新） </li><li>shoebox2.metrics.nsatc.net（即将弃用） </li><li>prod3.metrics.microsoftmetrics.com（新） </li><li>prod3.metrics.nsatc.net（即将弃用） </li><li>prod5.prod.microsoftmetrics.com</li></ul>                                                                                                                                                                                                                                                |
-    | Azure 中国世纪互联     | <ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>shoebox2.metrics.microsoftmetrics.com（新） </li><li>shoebox2.metrics.nsatc.net（即将弃用） </li><li>prod3.metrics.microsoftmetrics.com（新） </li><li>prod3.metrics.nsatc.net（即将弃用） </li><li>prod5.prod.microsoftmetrics.com</li></ul>                                                                                                                                                                                                                                                |
+    | Azure 中国世纪互联     | <ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>shoebox2.metrics.microsoftmetrics.com（新）</li><li>shoebox2.metrics.nsatc.net（即将弃用）</li><li>prod3.metrics.microsoftmetrics.com（新）</li><li>prod3.metrics.nsatc.net（即将弃用）</li><li>prod5.prod.microsoftmetrics.com</li><li>prod5-black.prod.metrics.microsoftmetrics.com</li><li>prod5-red.prod.metrics.microsoftmetrics.com</li><li>gcs.prod.warm.ingestion.monitoring.azure.cn</li></ul>                                                                                                                                                                                                                                                |
 
->[!IMPORTANT]
-> 上面的 dns 区域从“.nsatc.net”  到“.microsoftmetrics.com”  的群集更改主要是 DNS 更改。 群集的 IP 地址不会更改。
+  >[!IMPORTANT]
+  > 上面的 dns 区域从“.nsatc.net”到“.microsoftmetrics.com”的群集更改主要是 DNS 更改。 群集的 IP 地址不会更改。
+
++ **区域服务标记**：允许与存储、SQL 和事件中心服务标记建立出站连接的 NSG 规则可以使用与 API 管理实例所在区域相对应的那些标记的区域版本（例如，“中国北部”区域中 API 管理实例的对应区域版本为 Storage.ChinaNorth）。 在多区域部署中，每个区域中的 NSG 应该允许发送到该区域或主要区域的服务标记的流量。
 
 + **SMTP 中继**：在主机 `smtpi-co1.msn.com`、`smtpi-ch1.msn.com`、`smtpi-db3.msn.com`、`smtpi-sin.msn.com`、`ies.global.microsoft.com` 下解析的 SMTP 中继的出站网络连接
 
 + **开发人员门户 CAPTCHA**：在主机 `client.hip.live.com` 和 `partner.hip.live.com` 下解析的开发人员门户 CAPTCHA 的出站网络连接。
 
 + **Azure 门户诊断**：若要在从虚拟网络内部使用 API 管理扩展时从 Azure 门户启用诊断日志流，需要允许在端口 443 上对 `dc.services.visualstudio.com` 进行出站访问。 这有助于排查使用扩展时可能遇到的问题。
+
++ **Azure 负载均衡器**：`Developer` SKU 不要求允许来自服务标记 `AZURE_LOAD_BALANCER` 的入站请求，因为我们只在其后部署一个计算单元。 但当扩展到更高级的 SKU（如 `Premium`）时，来自 [168.63.129.16](../virtual-network/what-is-ip-address-168-63-129-16.md) 的入站请求变得至关重要，因为负载均衡器的运行状况探测失败将导致部署失败。
 
 + **使用 Express Route 或网络虚拟设备强制隧道流量发往本地防火墙**：客户的常用配置是定义自己的默认路由 (0.0.0.0/0)，强制来自 API 管理所委托子网的所有流量流经本地防火墙或流向网络虚拟设备。 此流量流一定会中断与 Azure API 管理的连接，因为出站流量会在本地被阻止，或者通过“网络地址转换”功能发送到不再与各种 Azure 终结点一起工作的一组无法识别的地址。 此解决方案要求你执行多项操作：
 

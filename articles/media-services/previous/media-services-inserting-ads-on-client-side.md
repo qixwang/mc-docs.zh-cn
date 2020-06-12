@@ -1,6 +1,6 @@
 ---
 title: 在客户端上插入广告 | Microsoft Docs
-description: 本主题说明如何在客户端上插入广告。
+description: 本文演示如何在客户端将广告插入媒体。
 services: media-services
 documentationcenter: ''
 author: WenJason
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 origin.date: 03/18/2019
-ms.date: 11/18/2019
+ms.date: 06/08/2020
 ms.author: v-jay
-ms.openlocfilehash: 3ee8dd04ce25686ee7a307c8b6118ddcdc28c1b0
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 4b55005f584a21d9f26b71c2c0650d002cd5b5f2
+ms.sourcegitcommit: 79c99a9ea013b3c74706a1038a505f4eea2aaac4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74116245"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84439538"
 ---
 # <a name="inserting-ads-on-the-client-side"></a>在客户端上插入广告
 本文包含有关如何在客户端上插入各种类型的广告的信息。
@@ -165,7 +165,7 @@ VAST 文件指定要显示的广告。 以下 XML 是线性广告 VAST 文件的
 
 Image/gif、image/jpeg、image/png - 资源显示在 HTML <**img**> 标记中。
 
-应用程序/x-javascript - 资源显示在 HTML <脚本  > 标记中。
+应用程序/x-javascript - 资源显示在 HTML <脚本> 标记中。
 
 Application/x-shockwave-flash – 资源显示在 Flash Player 中。
 
@@ -232,13 +232,13 @@ VMAP 文件以 `<VMAP>` 元素开头，该元素包含一个或多个 `<AdBreak>
 3. 开始/结束 - 指定应在播放视频之前或之后显示广告
 4. 位置 - 指定广告中断的计时未知时（例如，实时流式处理过程中）的广告中断顺序。 采用 #n 格式指定每次广告中断的顺序，其中 n 为整数 1 或更大整数。 1 表示应在第一个机会时播放广告，2 表示应在第二个机会时播放广告，以此类推。
 
-`<AdBreak>` 元素中可以有一个 <**AdSource**> 元素。 <AdSource  > 元素包含以下属性：
+`<AdBreak>` 元素中可以有一个 <**AdSource**> 元素。 <AdSource> 元素包含以下属性：
 
 1. Id - 指定广告源的标识符
 2. allowMultipleAds – 一个布尔值，指定是否可以在广告中断期间显示多个广告
 3. followRedirects – 一个可选布尔值，指定视频播放器是否应遵循广告响应中的重定向
 
-<AdSource  > 元素为播放器提供内联的广告响应或对广告响应的引用。 它可包含以下元素之一：
+<AdSource> 元素为播放器提供内联的广告响应或对广告响应的引用。 它可包含以下元素之一：
 
 * `<VASTAdData>` 表示 VMAP 文件中嵌入了一个 VAST 广告响应
 * `<AdTagURI>` 引用另一个系统中的广告响应的 URI
@@ -246,7 +246,7 @@ VMAP 文件以 `<VMAP>` 元素开头，该元素包含一个或多个 `<AdBreak>
 
 在此示例中，线内广告响应是使用包含 VAST 广告响应的 `<VASTAdData>` 元素指定的。 有关其他元素的详细信息，请参阅 [VMAP](https://www.iab.net/guidelines/508676/digitalvideo/vsuite/vmap)。
 
-<AdBreak  > 元素还可以包含一个 <TrackingEvents  > 元素。 <TrackingEvents  > 元素允许跟踪广告中断的开始或结束时间，或广告中断期间是否发生了错误。 <TrackingEvents  > 元素包含一个或多个 <Tracking  > 元素，其中每一个均指定一个跟踪事件和一个跟踪 URI。 可能的跟踪事件是：
+<AdBreak> 元素还可以包含一个 <TrackingEvents> 元素。 <TrackingEvents> 元素允许跟踪广告中断的开始或结束时间，或广告中断期间是否发生了错误。 <TrackingEvents> 元素包含一个或多个 <Tracking> 元素，其中每一个均指定一个跟踪事件和一个跟踪 URI。 可能的跟踪事件是：
 
 1. breakStart - 跟踪广告中断的开始
 2. breakEnd - 跟踪广告中断的完成
@@ -587,7 +587,7 @@ ProgrammaticAdPage.xaml.cs 文件创建 AdHandlerPlugin，添加 TimelineMarker 
 ```
 
 ## <a name="implementing-an-ios-video-player-with-ad-support"></a>实现带有广告支持的 iOS 视频播放器
-Microsoft 媒体平台：适用于 iOS 的播放器框架包含示例应用程序集合，这些示例应用程序展示如何使用该框架来实现视频播放器应用程序。 可以从 [Azure 媒体播放器框架](https://github.com/Azure/azure-media-player-framework)下载播放器框架和示例。 GitHub 页面具有指向 Wiki（含有关播放器框架的其他信息和播放器示例简介）的链接：[Azure Media Player Wiki](https://github.com/Azure/azure-media-player-framework/wiki/How-to-use-Azure-media-player-framework)。
+Microsoft 媒体平台：适用于 iOS 的播放器框架包含示例应用程序集合，这些示例应用程序展示如何使用该框架来实现视频播放器应用程序。 可以从 [Azure 媒体播放器框架](https://github.com/CloudMetal/azure-media-player-framework)下载播放器框架和示例。 GitHub 页面具有指向 Wiki（含有关播放器框架的其他信息和播放器示例简介）的链接：[Azure Media Player Wiki](https://github.com/CloudMetal/azure-media-player-framework/wiki/How-to-use-Azure-media-player-framework)。
 
 ### <a name="scheduling-ads-with-vmap"></a>使用 VMAP 安排广告
 以下示例演示如何使用 VMAP 文件安排广告。
@@ -846,7 +846,4 @@ Microsoft 媒体平台：适用于 iOS 的播放器框架包含示例应用程�
 
 ## <a name="media-services-learning-paths"></a>媒体服务学习路径
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
-
-## <a name="see-also"></a>另请参阅
-[开发视频播放器应用程序](media-services-develop-video-players.md)
 

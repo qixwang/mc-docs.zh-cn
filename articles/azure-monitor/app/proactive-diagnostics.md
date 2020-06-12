@@ -2,16 +2,16 @@
 title: Azure Application Insights 中的智能检测 | Azure Docs
 description: Application Insights 执行应用遥测的自动深入分析，并在有潜在问题时发出警告。
 ms.topic: conceptual
-author: lingliw
+author: Johnnytechn
 origin.date: 02/07/2019
-ms.date: 6/4/2019
-ms.author: v-lingwu
-ms.openlocfilehash: 8961e434700cf8cb302032a1343578f396513d3a
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+ms.date: 05/28/2020
+ms.author: v-johya
+ms.openlocfilehash: 52013c9938a774fd04d5df0d8e612bb00018ed1a
+ms.sourcegitcommit: 5ae04a3b8e025986a3a257a6ed251b575dbf60a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84199470"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84440734"
 ---
 # <a name="smart-detection-in-application-insights"></a>Application Insights 中的智能检测
  当 Web 应用程序中存在潜在性能问题和故障异常时，智能检测会自动向你发出警告。 它会对应用发送至 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 的遥测数据执行主动分析。 如果失败率中存在骤升或者客户端或服务器性能中存在异常模式，将收到警报。 此功能不需要任何配置。 它会在应用程序发送足够的遥测时运行。
@@ -45,7 +45,7 @@ ms.locfileid: "84199470"
 
 除了标为_预览版_的规则以外，所有智能检测规则都默认配置为在发现检测时发送电子邮件通知。
 
-可以通过打开智能检测“设置”  边栏选项卡并选择规则（这将打开“编辑规则”  边栏选项卡）来为特定的智能检测规则配置电子邮件通知。
+可以通过打开智能检测“设置”边栏选项卡并选择规则（这将打开“编辑规则”边栏选项卡）来为特定的智能检测规则配置电子邮件通知。
 
 另外，还可以使用 Azure 资源管理器模板来更改配置。 有关更多详细信息，请参阅[使用 Azure 资源管理器模板管理 Application Insights 智能检测规则](/azure-monitor/app/proactive-arm-config)。
 
@@ -61,8 +61,5 @@ ms.locfileid: "84199470"
 
 * [手动配置的指标警报](../../azure-monitor/app/alerts.md)
 * [可用性 Web 测试](../../azure-monitor/app/monitor-web-app-availability.md) 
-
-
-
 
 

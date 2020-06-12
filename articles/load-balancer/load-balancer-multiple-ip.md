@@ -12,19 +12,19 @@ ms.custom: se0dec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 09/25/2017
-ms.date: 12/02/2019
+ms.date: 06/08/2020
 ms.author: v-jay
-ms.openlocfilehash: 677b2ccab6df21b531d6a27dcf47acd459de1a43
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 6594010d28a76aa6f8571be39de50efb62c65882
+ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74530646"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84275569"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-by-using-the-azure-portal"></a>使用 Azure 门户对多个 IP 配置进行负载均衡
 
 > [!div class="op_single_selector"]
-> * [门户](load-balancer-multiple-ip.md)
+> * [Portal](load-balancer-multiple-ip.md)
 > * [PowerShell](load-balancer-multiple-ip-powershell.md)
 > * [CLI](load-balancer-multiple-ip-cli.md)
 
@@ -43,7 +43,7 @@ ms.locfileid: "74530646"
 - Azure 负载均衡器用于公开两个前端 IP 地址，每个地址对应于一个网站。 前端地址用于将流量分配到每个网站的相应 IP 配置。
 - 前端 IP 地址和后端池 IP 地址使用相同的端口号。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 方案示例假设已创建名为 **contosofabrikam** 的资源组，该资源组的配置如下：
 
@@ -65,23 +65,23 @@ ms.locfileid: "74530646"
 
 1. 浏览到 Azure 门户： https://portal.azure.cn 。 使用 Azure 帐户登录。
 
-2. 在屏幕左上方，选择“资源组”图标。  然后选择 VM 所在的资源组（例如 **contosofabrikam**）。 “资源组”窗格中显示了 VM 的所有资源和 NIC。 
+2. 在屏幕左上方，选择“资源组”图标。 然后选择 VM 所在的资源组（例如 **contosofabrikam**）。 “资源组”窗格中显示了 VM 的所有资源和 NIC。
 
 3. 针对每个 VM 的辅助 NIC，请添加 IP 配置：
 
     1. 选择要配置的辅助 NIC。
     
-    2. 选择“IP 配置”  。 在下一个窗格中的顶部附近，选择“添加”。 
+    2. 选择“IP 配置”。 在下一个窗格中的顶部附近，选择“添加”。
 
-    3. 在“添加 IP 配置”下，将第二个 IP 配置添加到 NIC：  
+    3. 在“添加 IP 配置”下，将第二个 IP 配置添加到 NIC： 
 
         1. 输入辅助 IP 配置的名称。 （例如，对于 VM1 和 VM2，分别将 IP 配置命名为 **VM1NIC2-ipconfig2** 和 **VM2NIC2-ipconfig2**）。
 
-        2. 对于“专用 IP 地址”>“分配”设置，请选择“静态”。   
+        2. 对于“专用 IP 地址”>“分配”设置，请选择“静态”。  
 
-        3. 选择“确定”  。
+        3. 选择“确定” 。
 
-完成辅助 NIC 的第二个 IP 配置后，它会显示在给定 NIC 的“IP 配置”设置下。 
+完成辅助 NIC 的第二个 IP 配置后，它会显示在给定 NIC 的“IP 配置”设置下。
 
 ### <a name="step-2-create-the-load-balancer"></a>步骤 2：创建负载均衡器
 
@@ -89,13 +89,13 @@ ms.locfileid: "74530646"
 
 1. 浏览到 Azure 门户： https://portal.azure.cn 。 使用 Azure 帐户登录。
 
-2. 在屏幕的左上方，选择“创建资源”   > “网络”   > “负载均衡器”  。 接下来，选择“创建”。 
+2. 在屏幕的左上方，选择“创建资源” > “网络” > “负载均衡器”。 接下来，选择“创建”。
 
-3. 在“创建负载均衡器”  下，为负载均衡器键入一个名称。 此方案使用名称 **mylb**。
+3. 在“创建负载均衡器”下，为负载均衡器键入一个名称。 此方案使用名称 **mylb**。
 
 4. 在“公共 IP 地址”下，创建名为 **PublicIP1** 的新公共 IP。
 
-5. 在“资源组”下，选择 VM 的现有资源组（例如 **contosofabrikam**）。 选择负载均衡器要部署到的位置，再选择“确定”。 
+5. 在“资源组”下，选择 VM 的现有资源组（例如 **contosofabrikam**）。 选择负载均衡器要部署到的位置，再选择“确定”。
 
 负载均衡器随即开始部署。 部署可能需要几分钟才能成功完成。 部署完成后，负载均衡器将作为资源显示在资源组中。
 
@@ -103,7 +103,7 @@ ms.locfileid: "74530646"
 
 针对每个网站（contoso.com 和 fabrikam.com），请在负载均衡器上配置前端 IP 池：
 
-1. 在门户中选择“更多服务”。  在筛选框中键入“公共 IP 地址”，选择“公共 IP 地址”。   在下一个窗格中的顶部附近，选择“添加”。 
+1. 在门户中选择“更多服务”。 在筛选框中键入“公共 IP 地址”，选择“公共 IP 地址”。  在下一个窗格中的顶部附近，选择“添加”。
 
 2. 为两个网站（contoso.com 和 fabrikam.com）配置两个公共 IP 地址（**PublicIP1** 和 **PublicIP2**）：
 
@@ -111,39 +111,39 @@ ms.locfileid: "74530646"
 
    2. 对于“资源组”，请选择 VM 的现有资源组（例如 **contosofabrikam**）。
 
-   3. 对于“位置”，请选择 VM 所在的同一位置。 
+   3. 对于“位置”，请选择 VM 所在的同一位置。
 
-   4. 选择“确定”  。
+   4. 选择“确定” 。
 
-      创建公共 IP 地址后，它们会显示在“公共 IP 地址”下。 
+      创建公共 IP 地址后，它们会显示在“公共 IP 地址”下。
 
-3. <a name="step3-3"></a>在门户中选择“更多服务”。  在筛选框中键入“负载均衡器”，选择“负载均衡器”。   
+3. <a name="step3-3"></a>在门户中选择“更多服务”。 在筛选框中键入“负载均衡器”，选择“负载均衡器”。  
 
 4. 选择要将前端 IP 池添加到的负载均衡器 (**mylb**)。
 
-5. 在“设置”下，选择“前端 IP 配置”。   在下一个窗格中的顶部附近，选择“添加”。 
+5. 在“设置”下，选择“前端 IP 配置”。  在下一个窗格中的顶部附近，选择“添加”。
 
 6. 键入前端 IP 地址的名称（例如 **contosofe** 或 **fabrikamfe**）。
 
-7. <a name="step3-7"></a>选择“IP 地址”。  在“选择公共 IP 地址”下选择前端的 IP 地址（**PublicIP1** 或 **PublicIP2**）。
+7. <a name="step3-7"></a>选择“IP 地址”。 在“选择公共 IP 地址”下选择前端的 IP 地址（**PublicIP1** 或 **PublicIP2**）。
 
 8. 重复本部分中的<a href="#step3-3">步骤 3</a> 至<a href="#step3-7">步骤 7</a>，创建第二个前端 IP 地址。
 
-配置前端池后，IP 地址会显示在负载均衡器的“前端 IP 配置”设置下。  
+配置前端池后，IP 地址会显示在负载均衡器的“前端 IP 配置”设置下。 
     
 ### <a name="step-4-configure-the-back-end-pool"></a>步骤 4：配置后端池
 
 针对每个网站（contoso.com 和 fabrikam.com），请在负载均衡器上配置后端地址池：
         
-1. 在门户中选择“更多服务”。  在筛选框中键入“负载均衡器”，选择“负载均衡器”。  
+1. 在门户中选择“更多服务”。 在筛选框中键入“负载均衡器”，选择“负载均衡器”。 
 
 2. 选择要将后端池添加到的负载均衡器 (**mylb**)。
 
-3. 在“设置”下，选择“后端池”。   键入后端池的名称（例如 **contosopool** 或 **fabrikampool**）。 在下一个窗格中的顶部附近，选择“添加”。  
+3. 在“设置”下，选择“后端池”。  键入后端池的名称（例如 **contosopool** 或 **fabrikampool**）。 在下一个窗格中的顶部附近，选择“添加”。 
 
-4. 对于“关联到”，请选择“可用性集”。  
+4. 对于“关联到”，请选择“可用性集”。 
 
-5. 对于“可用性集”，请选择“myAvailset”。  
+5. 对于“可用性集”，请选择“myAvailset”。 
 
 6. 为两个 VM 添加目标网络 IP 配置： 
 
@@ -153,27 +153,27 @@ ms.locfileid: "74530646"
 
     2. 对于“网络 IP 配置”，请选择在前一步骤中为 VM 的辅助 NIC 选择的 IP 配置（例如 **VM1NIC2-ipconfig2** 或 **VM2NIC2-ipconfig2**）。
 
-7. 选择“确定”  。
+7. 选择“确定” 。
 
-配置后端池后，地址会显示在负载均衡器的“后端池”设置下。 
+配置后端池后，地址会显示在负载均衡器的“后端池”设置下。
 
 ### <a name="step-5-configure-the-health-probe"></a>步骤 5：配置运行状况探测
 
 为负载均衡器配置运行状况探测
 
-1. 在门户中选择“更多服务”。  在筛选框中键入“负载均衡器”，选择“负载均衡器”。  
+1. 在门户中选择“更多服务”。 在筛选框中键入“负载均衡器”，选择“负载均衡器”。 
 
 2. 选择要将运行状况探测添加到的负载均衡器 (**mylb**)。
 
-3. 在“设置”下，选择“运行状况探测”。   在下一个窗格中的顶部附近，选择“添加”。  
+3. 在“设置”下，选择“运行状况探测”。  在下一个窗格中的顶部附近，选择“添加”。 
 
-4. 键入运行状况探测的名称（例如 **HTTP**）。 选择“确定”  。
+4. 键入运行状况探测的名称（例如 **HTTP**）。 选择“确定” 。
 
 ### <a name="step-6-configure-load-balancing-rules"></a>步骤 6：配置负载均衡规则
 
 针对每个网站（contoso.com 和 fabrikam.com），请配置负载均衡规则：
     
-1. <a name="step6-1"></a>在“设置”  下，选择“负载均衡规则”  。 在下一个窗格中的顶部附近，选择“添加”。  
+1. <a name="step6-1"></a>在“设置”下，选择“负载均衡规则” 。 在下一个窗格中的顶部附近，选择“添加”。 
 
 2. 对于“名称”，请键入负载均衡规则的名称（例如，为 contoso.com 键入 **HTTPc**，为 fabrikam.com 键入 **HTTPf**）。
 
@@ -181,13 +181,13 @@ ms.locfileid: "74530646"
 
 4. 对于“端口”和“后端端口”，请保留默认值 **80**。 
 
-5. 对于“浮动 IP (直接服务器返回)”  ，选择“已禁用”  。
+5. 对于“浮动 IP (直接服务器返回)”，选择“已禁用”。
 
-6. <a name="step6-6"></a>选择“确定”。 
+6. <a name="step6-6"></a>选择“确定”。
 
 7. 重复本部分中的<a href="#step6-1">步骤 1</a> 至<a href="#step6-6">步骤 6</a>，创建第二个负载均衡器规则。
 
-配置规则后，它们会显示在负载均衡器的“负载均衡规则”设置下。 
+配置规则后，它们会显示在负载均衡器的“负载均衡规则”设置下。
 
 ### <a name="step-7-configure-dns-records"></a>步骤 7：配置 DNS 记录
 
@@ -195,3 +195,4 @@ ms.locfileid: "74530646"
 
 ## <a name="next-steps"></a>后续步骤
 - 若要深入了解如何在 Azure 中结合使用负载均衡服务，请参阅[在 Azure 中使用负载均衡服务](../traffic-manager/traffic-manager-load-balancing-azure.md)。
+- 若要了解如何使用不同类型的日志对负载均衡器进行管理和故障排除，请参阅[用于 Azure 负载均衡器的 Azure Monitor 日志](../load-balancer/load-balancer-monitor-log.md)。

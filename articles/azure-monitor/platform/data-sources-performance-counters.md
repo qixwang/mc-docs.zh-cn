@@ -1,24 +1,23 @@
 ---
 title: 在 Azure Monitor 中收集和分析性能计数器 | Microsoft Docs
 description: 性能计数器由 Azure Monitor 收集，用于分析 Windows 和 Linux 代理的性能。  本文介绍了如何为 Windows 和 Linux 代理配置性能计数器收集、这些性能计数器在工作区中的存储详情和如何在 Azure 门户中对其进行分析。
-author: lingliw
-manager: digimobile
+origin.date: 11/28/2018
 ms.subservice: logs
 ms.topic: conceptual
-origin.date: 11/28/2018
-ms.date: 07/03/2019
-ms.author: v-lingwu
-ms.openlocfilehash: 7ec87dab5b711d78975d738d24d54ce9b192120f
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+author: Johnnytechn
+ms.author: v-johya
+ms.date: 05/28/2020
+ms.openlocfilehash: 7cae11d11ffaeabe168c76d1971ef981a8ec1721
+ms.sourcegitcommit: 5ae04a3b8e025986a3a257a6ed251b575dbf60a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79452293"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84440606"
 ---
 # <a name="windows-and-linux-performance-data-sources-in-azure-monitor"></a>Azure Monitor 中的 Windows 和 Linux 性能数据源
 Windows 和 Linux 中的性能计数器提供对硬件组件、操作系统和应用程序性能的见解。  除聚合性能数据以用于长期分析和报告外，Azure Monitor 还可以定期收集性能计数器以进行近实时 (NRT) 分析。
 
-![性能计数器](media/data-sources-performance-counters/overview.png)
+![性能计数器](./media/data-sources-performance-counters/overview.png)
 
 ## <a name="configuring-performance-counters"></a>配置性能计数器
 通过[“高级设置”中的“数据”菜单](agent-data-sources.md#configuring-data-sources)配置性能计数器。
@@ -35,13 +34,13 @@ Windows 和 Linux 中的性能计数器提供对硬件组件、操作系统和�
 
 ### <a name="windows-performance-counters"></a>Windows 性能计数器
 
-![配置 Windows 性能计数器](media/data-sources-performance-counters/configure-windows.png)
+![配置 Windows 性能计数器](./media/data-sources-performance-counters/configure-windows.png)
 
 遵循以下步骤添加要收集的新 Windows 性能计数器。
 
 1. 按照 *object(instance)\counter* 格式在文本框中键入计数器的名称。  开始键入时，会显示通用计数器的匹配列表。  可以选择列表中的计数器或者键入自己的计数器。  还可以通过指定 *object\counter* 返回特定计数器的所有实例。  
 
-    在从命名实例中收集 SQL Server 性能计数器时，所有命名实例计数器以 MSSQL$  开头，并且后面接实例的名称。  例如，若要从命名 SQL 实例 INST2 的数据库性能对象收集所有数据库的“日志缓存命中率”计数器，请指定 `MSSQL$INST2:Databases(*)\Log Cache Hit Ratio`。
+    在从命名实例中收集 SQL Server 性能计数器时，所有命名实例计数器以 MSSQL$ 开头，并且后面接实例的名称。  例如，若要从命名 SQL 实例 INST2 的数据库性能对象收集所有数据库的“日志缓存命中率”计数器，请指定 `MSSQL$INST2:Databases(*)\Log Cache Hit Ratio`。
 
 2. 单击 **+** 或按 **Enter** 将计数器添加到列表中。
 3. 添加计数器后，计数器将把 10 秒作为“**采样间隔**”的默认时间。  如果想要降低收集的性能数据的存储要求，可以将此值更改为更高值，最高可达 1800 秒（30 分钟）。
@@ -49,18 +48,18 @@ Windows 和 Linux 中的性能计数器提供对硬件组件、操作系统和�
 
 ### <a name="linux-performance-counters"></a>Linux 性能计数器
 
-![配置 Linux 性能计数器](media/data-sources-performance-counters/configure-linux.png)
+![配置 Linux 性能计数器](./media/data-sources-performance-counters/configure-linux.png)
 
 遵循以下步骤添加要收集的新 Linux 性能计数器。
 
-1. 默认情况下，所有配置更改均会自动推送到所有代理。  对于 Linux 代理，配置文件会发送到 Fluentd 数据收集器。  如果想在每个 Linux 代理上手动修改此文件，请取消选中“将下面的配置应用到我的 Linux 计算机”框并遵循下面的指南。 
+1. 默认情况下，所有配置更改均会自动推送到所有代理。  对于 Linux 代理，配置文件会发送到 Fluentd 数据收集器。  如果想在每个 Linux 代理上手动修改此文件，请取消选中“将下面的配置应用到我的 Linux 计算机”框并遵循下面的指南。
 2. 按照 *object(instance)\counter* 格式在文本框中键入计数器的名称。  开始键入时，会显示通用计数器的匹配列表。  可以选择列表中的计数器或者键入自己的计数器。  
 3. 单击 **+** 或按 **Enter** 将计数器添加到此对象的其他计数器列表中。
 4. 一个对象的所有计数器使用相同的“**采样间隔**”。  默认为 10 秒。  如果想要降低收集的性能数据的存储要求，可以将此值更改为更高值，最高可达 1800 秒（30 分钟）。
 5. 添加完计数器后，单击屏幕顶部的“**保存**”按钮保存配置。
 
 #### <a name="configure-linux-performance-counters-in-configuration-file"></a>在配置文件中配置 Linux 性能计数器
-可以不使用 Azure 门户配置 Linux 性能计数器，而是在 Linux 代理上编辑配置文件。  要收集的性能指标由 **/etc/opt/microsoft/omsagent/\<workspace id\>/conf/omsagent.conf** 中的配置进行控制。
+可以不使用 Azure 门户配置 Linux 性能计数器，而是在 Linux 代理上编辑配置文件。  要收集的性能指标由 /etc/opt/microsoft/omsagent/\<workspace id\>/conf/omsagent.conf 中的配置控制。
 
 要收集的性能指标的每个对象或类别应在配置文件中作为单个 `<source>` 元素进行定义。 语法遵循下面的模式。
 
@@ -177,7 +176,7 @@ Windows 和 Linux 中的性能计数器提供对硬件组件、操作系统和�
     </source>
 
 ## <a name="data-collection"></a>数据收集
-Azure Monitor 以指定的采样间隔在已安装相应计数器的所有代理上收集所有指定的性能计数器。  数据未聚合，原始数据在订阅指定的持续时间内在所有日志查询视图中提供。
+Azure Monitor 以指定的采样间隔在已安装相应计数器的所有代理上收集所有指定的性能计数器。  数据未聚合，可在日志分析工作区指定的持续时间内，在所有日志查询视图中获取原始数据。
 
 ## <a name="performance-record-properties"></a>性能记录属性
 性能记录具有 **Perf** 类型，并且具有下表中的属性。
@@ -190,7 +189,7 @@ Azure Monitor 以指定的采样间隔在已安装相应计数器的所有代理
 | CounterValue |计数器的数值。 |
 | InstanceName |事件实例的名称。  无实例时为空。 |
 | ObjectName |性能对象的名称 |
-| SourceSystem |从中收集数据的代理类型。 <br><br>OpsManager – Windows 代理，直接连接或通过 SCOM 连接 <br> Linux - 所有 Linux 代理  <br> AzureStorage – Azure 诊断 |
+| SourceSystem |从中收集数据的代理类型。 <br><br>OpsManager - Windows 代理，直接连接或通过 SCOM 连接 <br> Linux - 所有 Linux 代理  <br> AzureStorage - Azure 诊断 |
 | TimeGenerated |对数据进行采样的日期和时间。 |
 
 ## <a name="sizing-estimates"></a>大小估计值
@@ -221,3 +220,5 @@ Azure Monitor 以指定的采样间隔在已安装相应计数器的所有代理
 ## <a name="next-steps"></a>后续步骤
 * [从 Linux 应用程序收集性能计数器](data-sources-linux-applications.md)，包括 MySQL 和 Apache HTTP Server。
 * 了解[日志查询](../log-query/log-query-overview.md)以便分析从数据源和解决方案中收集的数据。  
+* 将收集的数据导出到 [Power BI](powerbi.md) 以进行其他可视化操作和分析。
+

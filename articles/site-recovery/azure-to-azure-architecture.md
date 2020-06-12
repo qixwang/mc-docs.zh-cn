@@ -7,14 +7,14 @@ manager: digimobile
 ms.service: site-recovery
 ms.topic: conceptual
 origin.date: 03/13/2020
-ms.date: 04/13/2020
+ms.date: 06/08/2020
 ms.author: v-yeche
-ms.openlocfilehash: 0d9bd660849ef72180fcec15f71e2b03954b1b76
-ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
+ms.openlocfilehash: 64e736575a70a56aba2543789b5ebae09d599ff3
+ms.sourcegitcommit: 5ae04a3b8e025986a3a257a6ed251b575dbf60a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82093387"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84440676"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Azure 到 Azure 的灾难恢复体系结构
 
@@ -41,11 +41,11 @@ ms.locfileid: "82093387"
 **目标资源** | **默认设置**
 --- | ---
 **目标订阅** | 与源订阅相同。
-目标资源组  | VM 在故障转移后所属的资源组。<br/><br/> 该组可以位于除源区域以外的其他任何 Azure 区域。<br/><br/> Site Recovery 将在目标区域中创建一个带有“asr”后缀的新资源组。<br/><br/>
+目标资源组 | VM 在故障转移后所属的资源组。<br/><br/> 该组可以位于除源区域以外的其他任何 Azure 区域。<br/><br/> Site Recovery 将在目标区域中创建一个带有“asr”后缀的新资源组。<br/><br/>
 **目标 VNet** | 复制的 VM 在故障转移后所处的虚拟网络 (VNet)。 创建源虚拟网络与目标虚拟网络之间的网络映射，反之亦然。<br/><br/> Site Recovery 将创建带有“asr”后缀的新 VNet 和子网。
 **目标存储帐户** |  如果 VM 不使用托管磁盘，则会将数据复制到此存储帐户。<br/><br/> Site Recovery 将在目标区域中创建新的存储帐户，以镜像源存储帐户。
 **副本托管磁盘** | 如果 VM 使用托管磁盘，则会将数据复制到此副本托管磁盘。<br/><br/> Site Recovery 将在存储区域中创建副本托管磁盘用于镜像源。
-目标可用性集  |  复制的 VM 在故障转移后所处的可用性集。<br/><br/> 对于源位置中某个可用性集内的 VM，Site Recovery 将在目标区域中创建一个带有“asr”后缀的可用性集。 如果存在某个可用性集，则会使用该可用性集，而不会新建。
+目标可用性集 |  复制的 VM 在故障转移后所处的可用性集。<br/><br/> 对于源位置中某个可用性集内的 VM，Site Recovery 将在目标区域中创建一个带有“asr”后缀的可用性集。 如果存在某个可用性集，则会使用该可用性集，而不会新建。
 
 <!--Not Available on **Target availability zones** | If the target region supports availability zones, Site Recovery assigns the same zone number as that used in the source region-->
 
@@ -54,8 +54,10 @@ ms.locfileid: "82093387"
 可按如下所述管理目标资源：
 
 - 启用复制时可以修改目标设置。
-- 已开始复制后可以修改目标设置。 但可用性类型（单一实例、集或区域）除外。 若要更改此设置，需要禁用复制、修改设置，然后重新启用复制。
+- 已开始复制后可以修改目标设置。 请注意，目标区域 VM 的默认 SKU 与源 VM 的 SKU（或仅次于源 VM SKU 的最佳可用 SKU）相同。 与目标资源组、目标名称和其他资源类似，目标区域 VM SKU 也可以在复制期间进行更新。 可用性类型（单一实例或集）是无法更新的资源。 若要更改此设置，需要禁用复制、修改设置，然后重新启用复制。 
 
+    <!--Not Availabl on or zone-->
+    
 ## <a name="replication-policy"></a>复制策略 
 
 启用 Azure VM 复制时，Site Recovery 默认会使用下表中汇总的默认设置创建新的复制策略。
@@ -92,13 +94,13 @@ Site Recovery 按如下所述创建快照：
 
 ### <a name="crash-consistent"></a>崩溃一致性
 
-**说明** | **详细信息** | 建议 
+**说明** | **详细信息** | 建议
 --- | --- | ---
 崩溃一致性快照捕获创建快照时磁盘上的数据。 它不包括内存中的任何数据。<br/><br/> 崩溃一致性快照包含在 VM 发生崩溃或者在创建快照的那一刻从服务器上拔下电源线时，磁盘上的等量数据。<br/><br/> 崩溃一致性不能保证操作系统或 VM 上的应用中的数据一致性。 | 默认情况下，Site Recovery 每隔五分钟创建崩溃一致性恢复点。 此设置不可修改。<br/><br/>  | 目前，大多数应用都可以从崩溃一致性恢复点正常恢复。<br/><br/> 对于操作系统以及 DHCP 服务器和打印服务器等应用而言，崩溃一致性恢复点通常已足够。
 
 ### <a name="app-consistent"></a>应用一致性
 
-**说明** | **详细信息** | 建议 
+**说明** | **详细信息** | 建议
 --- | --- | ---
 应用一致性恢复点是基于应用一致性快照创建的。<br/><br/> 应用一致性快照包含崩溃一致性快照中的所有信息，此外加上内存中的数据，以及正在进行的事务中的数据。 | 应用一致性快照使用卷影复制服务 (VSS)：<br/><br/>   1) 启动快照时，VSS 会在卷上执行写入时复制 (COW) 操作。<br/><br/>   2) 执行 COW 之前，VSS 会告知计算机上的每个应用它需要将内存中的数据刷新到磁盘。<br/><br/>   3) 然后，VSS 允许备份/灾难恢复应用（在本例中为 Site Recovery）读取快照数据并继续处理。 | 应用一致性快照是按指定的频率创建的。 此频率始终应小于为保留恢复点设置的频率。 例如，如果使用默认设置 24 小时保留恢复点，则应将频率设置为小于 24 小时。<br/><br/>应用一致性快照比崩溃一致性快照更复杂，且完成时间更长。<br/><br/> 应用一致性快照会影响已启用复制的 VM 上运行的应用的性能。 
 
@@ -147,11 +149,11 @@ Site Recovery 按如下所述创建快照：
 允许 HTTPS 出站通信：端口 443 | 允许对应于源区域中存储帐户的范围 | 存储
 允许 HTTPS 出站通信：端口 443 | 允许对应于 Azure Active Directory (Azure AD) 的范围 | AzureActiveDirectory
 允许 HTTPS 出站通信：端口 443 | 允许与目标区域中的事件中心对应的范围。 | EventsHub
-允许 HTTPS 出站通信：端口 443 | 允许访问对应于目标位置的 [Site Recovery 终结点](/site-recovery/azure-to-azure-about-networking#site-recovery-ip-in-china)。 
+允许 HTTPS 出站通信：端口 443 | 允许与 Azure Site Recovery 对应的范围  | AzureSiteRecovery
 允许 HTTPS 出站通信：端口 443 | 允许与 Azure Key Vault 对应的范围（仅在通过门户为支持 ADE 的虚拟机启用复制时才需要这样做） | AzureKeyVault
+允许 HTTPS 出站通信：端口 443 | 允许与 Azure 自动化控制器对应的范围（仅在通过门户为复制项启用移动代理自动升级时才需要这样做） | GuestAndHybridManagement
 
 <!--MOONCAKE: Not Available on .<region-name>-->
-<!--MOONCAKE: Not Avaialble on [Site Recovery endpoints](https://aka.ms/site-recovery-public-ips)-->
 
 #### <a name="target-region-rules"></a>目标区域规则
 
@@ -160,11 +162,11 @@ Site Recovery 按如下所述创建快照：
 允许 HTTPS 出站通信：端口 443 | 允许对应于目标区域中存储帐户的范围。 | 存储
 允许 HTTPS 出站通信：端口 443 | 允许对应于 Azure AD 的范围| AzureActiveDirectory
 允许 HTTPS 出站通信：端口 443 | 允许与源区域中的事件中心对应的范围。 | EventsHub
-允许 HTTPS 出站通信：端口 443 | 允许访问对应于源位置的 [Site Recovery 终结点](/site-recovery/azure-to-azure-about-networking#site-recovery-ip-in-china)。 
+允许 HTTPS 出站通信：端口 443 | 允许与 Azure Site Recovery 对应的范围  | AzureSiteRecovery
 允许 HTTPS 出站通信：端口 443 | 允许与 Azure Key Vault 对应的范围（仅在通过门户为支持 ADE 的虚拟机启用复制时才需要这样做） | AzureKeyVault
+允许 HTTPS 出站通信：端口 443 | 允许与 Azure 自动化控制器对应的范围（仅在通过门户为复制项启用移动代理自动升级时才需要这样做） | GuestAndHybridManagement
 
 <!--MOONCAKE: Not Available on .<region-name>-->
-<!--MOONCAKE: Not Avaialble on [Site Recovery endpoints](https://aka.ms/site-recovery-public-ips)-->
 
 #### <a name="control-access-with-nsg-rules"></a>使用 NSG 规则控制访问
 
@@ -194,5 +196,4 @@ Site Recovery 按如下所述创建快照：
 
 将 Azure VM [快速复制](azure-to-azure-quickstart.md)到次要区域。
 
-<!-- Update_Description: update meta properties, wording update -->
-
+<!-- Update_Description: update meta properties, wording update, update link -->

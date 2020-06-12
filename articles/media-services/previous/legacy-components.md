@@ -14,12 +14,12 @@ ms.topic: article
 origin.date: 02/27/2020
 ms.date: 04/06/2020
 ms.author: v-jay
-ms.openlocfilehash: 6ff7a2202427153686ea423aed574febbae48a23
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 7c1211ea63295f6f6edcaafa7b293cba181badce
+ms.sourcegitcommit: 1f890a4085e184cc678485d05f08dd6de8dc973f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80625746"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84438955"
 ---
 # <a name="azure-media-services-legacy-components"></a>Azure 媒体服务旧组件
 
@@ -27,7 +27,7 @@ ms.locfileid: "80625746"
  
 ## <a name="retirement-plans-of-legacy-components-and-migration-guidance"></a>旧组件的停用计划和迁移指南
 
-我们宣布弃用 Windows Azure 媒体编码器  (WAME) 和 Azure 媒体编码器  (AME) 媒体处理器。 这些处理器将于 2020 年 3 月 31 日停用。
+我们宣布弃用 Windows Azure 媒体编码器 (WAME) 和 Azure 媒体编码器 (AME) 媒体处理器。 这些处理器将于 2020 年 3 月 31 日停用。
 
 * [从 Windows Azure 媒体编码器迁移到 Media Encoder Standard](migrate-windows-azure-media-encoder.md)
 * [从 Azure 媒体编码器迁移到 Media Encoder Standard](migrate-azure-media-encoder.md)
@@ -39,9 +39,9 @@ ms.locfileid: "80625746"
 |[Azure Media Indexer](media-services-index-content.md)|2023 年 3 月 1 日|此媒体处理器将被 Azure 媒体服务视频索引器替换。|
 |[动作检测](media-services-motion-detection.md)|2020 年 6 月 1 日|目前无替换计划。|
 |[视频摘要](media-services-video-summarization.md)|2020 年 6 月 1 日|目前无替换计划。|
-|[视频光学字符识别](media-services-video-optical-character-recognition.md)|2020 年 6 月 1 日|此媒体处理器将被 Azure 媒体服务视频索引器替换。 另外，请考虑使用 [Azure 媒体服务 v3 API](/media-services/latest/analyzing-video-audio-files-concept)。|
-|[面部检测器](media-services-face-and-emotion-detection.md)|2020 年 6 月 1 日|此媒体处理器将被 Azure 媒体服务视频索引器替换。 另外，请考虑使用 [Azure 媒体服务 v3 API](/media-services/latest/analyzing-video-audio-files-concept)。|
-|[内容审查器](media-services-content-moderation.md)|2020 年 6 月 1 日|此媒体处理器将被 Azure 媒体服务视频索引器替换。 另外，请考虑使用 [Azure 媒体服务 v3 API](/media-services/latest/analyzing-video-audio-files-concept)。|
+|[视频光学字符识别](media-services-video-optical-character-recognition.md)|2020 年 6 月 1 日|此媒体处理器将被 Azure 媒体服务视频索引器替换。 另外，请考虑使用 Azure 媒体服务 v3 API。|
+|[面部检测器](media-services-face-and-emotion-detection.md)|2020 年 6 月 1 日|此媒体处理器将被 Azure 媒体服务视频索引器替换。 另外，请考虑使用 Azure 媒体服务 v3 API。|
+|[内容审查器](media-services-content-moderation.md)|2020 年 6 月 1 日|此媒体处理器将被 Azure 媒体服务视频索引器替换。 另外，请考虑使用 Azure 媒体服务 v3 API。|
 
 ## <a name="next-steps"></a>后续步骤
 

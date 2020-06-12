@@ -2,17 +2,17 @@
 title: Azure Application Insights 中基于日志的指标和预先聚合的指标 | Azure Docs
 description: 为何要在 Azure Application Insights 中使用基于日志的指标或预先聚合的指标
 ms.topic: conceptual
-author: lingliw
-ms.author: v-lingwu
+author: Johnnytechn
+ms.author: v-johya
 origin.date: 09/18/2018
-ms.date: 6/4/2019
+ms.date: 05/28/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: e2b67943704868077c5cc789cdabb1e259b69d68
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: f7d1fd04fc4b1a272e768eb910a87023ba4379eb
+ms.sourcegitcommit: 5ae04a3b8e025986a3a257a6ed251b575dbf60a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79291710"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84440735"
 ---
 # <a name="log-based-and-pre-aggregated-metrics-in-application-insights"></a>Application Insights 中基于日志的指标和预先聚合的指标
 
@@ -22,7 +22,7 @@ ms.locfileid: "79291710"
 
 最近，Application Insights 中的应用程序监视遥测数据模型只是基于少量的预定义类型的事件，例如请求、异常、依赖项调用、页面视图，等等。开发人员可以使用 SDK 手动发出这些事件（编写显式调用该 SDK 的代码），或者依赖于自动检测产品中的自动事件收集功能。 在任一情况下，Application Insights 后端都会将所有收集的事件存储为日志。可以使用 Azure 门户中的 Application Insights 边栏选项卡作为分析和诊断工具来可视化日志中基于事件的数据。
 
-使用日志保留完整事件集能够为分析和诊断带来很大的帮助。 例如，可以获取对特定 URL 发出的确切请求计数，以及发出这些调用的非重复用户数。 或者，可以获取详细的诊断跟踪，包括任何用户会话的异常和依赖项调用。 获取此类信息能够明显提高应用程序运行状况和使用情况的可见性，从而可以缩短诊断应用问题所需的时间。 
+使用日志保留完整事件集能够为分析和诊断带来很大的帮助。 例如，可以获取对特定 URL 发出的确切请求计数，以及发出这些调用的非重复用户数。 或者，可以获取详细的诊断跟踪，包括任何用户会话的异常和依赖项调用。 获取此类信息能够明显提高应用程序运行状况和使用情况的可见性，从而可以缩短诊断应用问题所需的时间。
 
 同时，对于生成大量遥测数据的应用程序而言，收集完整事件集可能不切实际（甚至不可能）。 如果事件量过高，Application Insights 会实施多种遥测数据量缩减技术（例如[采样](/azure-monitor/app/sampling)和[筛选](/azure-monitor/app/api-filtering-sampling)），以减少收集和存储的事件数量。 遗憾的是，降低存储事件数量也会降低指标的准确性，因此，在幕后必须对日志中存储的事件执行查询时聚合。
 
@@ -31,7 +31,7 @@ ms.locfileid: "79291710"
 
 ## <a name="pre-aggregated-metrics"></a>预先聚合的指标
 
-除了基于日志的指标以外，在 2018 年秋季，Application Insights 团队交付了存储在专用存储库（已针对时序进行优化）中的指标的公共预览版。 新指标不再作为包含大量属性的单个事件进行保存。 它们存储为预先聚合的时序，并且仅包含键维度。 这使得新指标在查询时间方面非常出色：检索数据的速度要快得多，而且所需的计算能力更低。 因此，可以实现[针对指标维度发出近实时警报](../../azure-monitor/platform/alerts-metric-near-real-time.md)、响应能力更强的[仪表板](overview-dashboard.md)等方案。
+除了基于日志的指标以外，在 2018 年年底，Application Insights 团队交付了存储在专用存储库（已针对时序进行优化）中的指标的公共预览版。 新指标不再作为包含大量属性的单个事件进行保存。 它们存储为预先聚合的时序，并且仅包含键维度。 这使得新指标在查询时间方面非常出色：检索数据的速度要快得多，而且所需的计算能力更低。 因此，可以实现[针对指标维度发出近实时警报](../../azure-monitor/platform/alerts-metric-near-real-time.md)、响应能力更强的[仪表板](overview-dashboard.md)等方案。
 
 > [!IMPORTANT]
 > 基于日志的指标和预先聚合的指标可在 Application Insights 中共存。 为了区分两者，在 Application Insights UX 中，预先聚合的指标现在称为“标准指标(预览版)”，而事件中的传统指标已重命名为“基于日志的指标”。
@@ -64,10 +64,14 @@ ms.locfileid: "79291710"
 
 ![指标命名空间](./media/pre-aggregated-metrics-log-metrics/002-metric-namespace.png)
 
+## <a name="pricing-models-for-application-insights-metrics"></a>Application Insights 指标的定价模型
+
+如果将指标引入 Application Insights（无论是基于日志的还是预聚合的），将产生基于引入数据的大小的成本，如[此处](/azure-monitor/app/pricing#pricing-model)所述。 自定义指标（包括其所有维度）始终存储在 Application Insights 日志存储中；此外，默认情况下，会将自定义指标（不包含维度）的预聚合版本转发到指标存储。
+
+如果为了在指标存储中存储预聚合指标的所有维度而选择[在自定义指标维度上启用警报](#custom-metrics-dimensions-and-pre-aggregation)选项，会产生基于[自定义指标定价](https://www.azure.cn/pricing/details/monitor/)的额外成本。
+
 ## <a name="next-steps"></a>后续步骤
 
 * [近实时警报](../../azure-monitor/platform/alerts-metric-near-real-time.md)
 * [GetMetric 和 TrackValue](/azure-monitor/app/api-custom-events-metrics#getmetric)
-
-
 

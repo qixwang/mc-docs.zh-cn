@@ -13,20 +13,20 @@ ms.topic: article
 origin.date: 07/01/2019
 ms.date: 04/06/2020
 ms.author: v-jay
-ms.openlocfilehash: feb6e1f0ddc2180a8700ef8de0eb16b0d9d3e61d
-ms.sourcegitcommit: 95efd248f5ee3701f671dbd5cfe0aec9c9959a24
+ms.openlocfilehash: 187735a6b814987aed5b04a5a3c27c478cccea4c
+ms.sourcegitcommit: 1f890a4085e184cc678485d05f08dd6de8dc973f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82507615"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84438924"
 ---
 # <a name="azure-storage-accounts"></a>Azure 存储帐户
 
-若要开始管理、加密、编码、分析和流式处理 Azure 中的媒体内容，需要创建媒体服务帐户。 创建媒体服务帐户时，需要提供 Azure 存储帐户资源的名称。 指定存储帐户会附加到媒体服务帐户。
+若要开始管理、加密、编码和流式处理 Azure 中的媒体内容，需要创建媒体服务帐户。 创建媒体服务帐户时，需要提供 Azure 存储帐户资源的名称。 指定存储帐户会附加到媒体服务帐户。
 
 媒体服务帐户和所有关联的存储帐户必须位于同一 Azure 订阅中。 强烈建议在媒体服务帐户所在的位置使用存储帐户，避免额外的延迟和数据出口成本。
 
-必须具有一个主存储帐户，并且可以拥有任意数量的与媒体服务帐户关联的辅助存储帐户   。 媒体服务支持常规用途 v2 (GPv2) 或常规用途 v1 (GPv1) 帐户   。 不允许将仅限 Blob 的帐户作为主帐户  。
+必须具有一个主存储帐户，并且可以拥有任意数量的与媒体服务帐户关联的辅助存储帐户 。 媒体服务支持常规用途 v2 (GPv2) 或常规用途 v1 (GPv1) 帐户 。 不允许将仅限 Blob 的帐户作为主帐户。
 
 我们建议你使用 GPv2，以便可以利用最新的功能和性能。 若要了解存储帐户的详细信息，请参阅 [Azure 存储帐户概述](../../storage/common/storage-account-overview.md)。
 

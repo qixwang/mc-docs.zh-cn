@@ -1,21 +1,20 @@
 ---
 title: 删除和恢复 Azure Log Analytics 工作区 | Microsoft Docs
 description: 了解在个人订阅中创建 Log Analytics 工作区后如何删除它，以及如何重构工作区模型。
-author: lingliw
-manager: digimobile
+origin.date: 01/14/2020
 ms.subservice: logs
 ms.topic: conceptual
-origin.date: 01/14/2020
-ms.date: 02/19/2020
-ms.author: v-lingwu
-ms.openlocfilehash: 7ea481addcdd9b527997a00e195ecc17998daccb
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+author: Johnnytechn
+ms.author: v-johya
+ms.date: 05/28/2020
+ms.openlocfilehash: 13d14d4a70f41a5442662ab1fb4040a7964c2330
+ms.sourcegitcommit: 5ae04a3b8e025986a3a257a6ed251b575dbf60a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79452322"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84440603"
 ---
-# <a name="delete-and-restore-azure-log-analytics-workspace"></a>删除和还原 Azure Log Analytics 工作区
+# <a name="delete-and-recover-azure-log-analytics-workspace"></a>删除和恢复 Azure Log Analytics 工作区
 
 本文介绍 Azure Log Analytics 工作区软删除的概念以及如何恢复已删除的工作区。 
 
@@ -48,19 +47,29 @@ ms.locfileid: "79452322"
 ### <a name="azure-portal"></a>Azure 门户
 
 1. 若要登录，请转到 [Azure 门户](https://portal.azure.cn)。 
-2. 在 Azure 门户中，选择“所有服务”。  在资源列表中，键入“Log Analytics”  。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics 工作区”  。
-3. 在 Log Analytics 工作区列表中选择一个工作区，然后从中间窗格的顶端单击“删除”。 
-   ![从工作区属性窗格中删除选项](media/delete-workspace/log-analytics-delete-workspace.png)
-4. 显示询问是否确实要删除工作区的确认消息窗口时，单击“是”。 
-   ![确认删除工作区](media/delete-workspace/log-analytics-delete-workspace-confirm.png)
+2. 在 Azure 门户中，选择“所有服务”。 在资源列表中，键入“Log Analytics”。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics 工作区”。
+3. 在 Log Analytics 工作区列表中选择一个工作区，然后从中间窗格的顶端单击“删除”。
+   ![从工作区属性窗格中删除选项](./media/delete-workspace/log-analytics-delete-workspace.png)
+4. 显示询问是否确实要删除工作区的确认消息窗口时，单击“是”。
+   ![确认删除工作区](./media/delete-workspace/log-analytics-delete-workspace-confirm.png)
 
 ### <a name="powershell"></a>PowerShell
 ```PowerShell
 PS C:\>Remove-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-name" -Name "workspace-name"
 ```
 
+### <a name="troubleshooting"></a>故障排除
+
+必须至少拥有“Log Analytics 参与者”权限才能删除工作区。<br>
+如果在创建工作区时收到一条错误消息“此工作区名称已在使用中”或“冲突”，则可能是由于以下原因 ：
+* 工作区名称不可用，组织中的某个用户或其他客户正在使用该名称。
+* 该工作区已在过去 14 天内删除，其名称在软删除期间保留。 若要替代软删除并永久删除工作区以创建同名的新工作区，请按照以下步骤首先恢复工作区并执行永久删除：<br>
+   1. [恢复](/azure-monitor/platform/delete-workspace#recover-workspace)工作区。
+   2. [永久删除](/azure-monitor/platform/delete-workspace#permanent-workspace-delete)工作区。
+   3. 使用相同的工作区名称创建新的工作区。
+
 ## <a name="permanent-workspace-delete"></a>永久删除工作区
-在某些情况下（例如开发和测试），你需要使用相同的设置和工作区名称重复某个部署，软删除方法可能不适合。 在这种情况下，你可以永久删除你的工作区，并“替代”软删除期间。 永久删除工作区操作将释放工作区名称，并且你可以使用相同的名称创建新的工作区。
+在某些情况下（例如开发和测试），你需要使用相同的设置和工作区名称重复某个部署，软删除方法可能不适合。 在这种情况下，可以永久删除你的工作区，并“替代”软删除期间。 永久删除工作区操作将释放工作区名称，并且可以使用相同的名称创建新的工作区。
 
 
 > [!IMPORTANT]
@@ -74,7 +83,7 @@ PS C:\>Remove-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-
 > 可以使用以下方式来获取令牌：
 > - [应用注册](https://docs.microsoft.com/graph/auth/auth-concepts#access-tokens)
 > - 在浏览器中使用开发者的控制台 (F12) 导航到 Azure 门户。 在其中一个 **batch?** 实例中在**请求标头**下查找身份验证字符串。 它将采用模式 *authorization:Bearer <token>* 。 如示例中所示，将此复制并添加到你的 API 调用。
-> - 导航到 Azure REST 文档站点。 按任何 API 上的“试用”  ，复制持有者令牌，并将其添加到你的 API 调用。
+> - 导航到 Azure REST 文档站点。 按任何 API 上的“试用”，复制持有者令牌，并将其添加到你的 API 调用。
 若要永久删除你的工作区，请使用[工作区 - 删除 REST]( https://docs.microsoft.com/rest/api/loganalytics/workspaces/delete) API 调用和 force 标记：
 >
 > ```rst
@@ -87,12 +96,7 @@ PS C:\>Remove-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-
 
 如果你有订阅和资源组（其中的工作区在软删除操作之前已进行关联）的“参与者”权限，则可在软删除期间恢复它（包括其数据、配置和连接的代理）。 软删除期过后，工作区将不可恢复，会被系统指定进行永久删除。 已删除工作区的名称会在软删除期间保留，不能用于创建新工作区。  
 
-若要恢复工作区，可以使用工作区创建方法（[PowerShell](https://docs.microsoft.com/powershell/module/az.operationalinsights/New-AzOperationalInsightsWorkspace) 或 [REST API]( https://docs.microsoft.com/rest/api/loganalytics/workspaces/createorupdate)）重新创建工作区，只需在以下属性中填充已删除工作区的详细信息即可：
-
-* 订阅 ID
-* 资源组名称
-* 工作区名称
-* 区域
+可以通过创建包含已删除工作区详细信息的工作区来恢复工作区，这些详细信息包括“订阅 ID”、“资源组名称”、“工作区名称”和“区域”   。 如果资源组也已删除且不存在，请使用与删除前使用的名称相同的名称创建资源组，然后使用以下任一方法创建工作区：[Azure 门户](/azure-monitor/learn/quick-create-workspace)、[PowerShell](https://docs.microsoft.com/powershell/module/az.operationalinsights/New-AzOperationalInsightsWorkspace) 或 [REST API](https://docs.microsoft.com/rest/api/loganalytics/workspaces/createorupdate)。
 
 ### <a name="powershell"></a>PowerShell
 ```PowerShell
@@ -106,3 +110,4 @@ PS C:\>New-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-nam
 > * 不支持在 [Azure 门户](https://portal.azure.cn)中恢复工作区。 
 > * 在软删除期间重新创建工作区表明该工作区名称已进入使用状态。 
 > 
+

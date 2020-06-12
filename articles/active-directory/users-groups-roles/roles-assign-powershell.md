@@ -1,25 +1,24 @@
 ---
-title: 使用 Azure PowerShell 分配具有资源范围的自定义角色 - Azure Active Directory | Microsoft Docs
+title: 使用 Azure PowerShell 分配自定义角色 - Azure AD | Microsoft Docs
 description: 使用 Azure PowerShell 管理 Azure AD 管理员自定义角色的成员。
 services: active-directory
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-origin.date: 08/05/2019
-ms.date: 08/28/2019
+ms.date: 06/01/2020
 ms.author: v-junlch
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ded96f4b7f1495493d0edcc320c471e86a1e50c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: e34eda996a009fee25a21de713b3507b248ecbc4
+ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "70134343"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84275591"
 ---
 # <a name="assign-custom-roles-with-resource-scope-using-powershell-in-azure-active-directory"></a>在 Azure Active Directory 中使用 PowerShell 分配具有资源范围的自定义角色
 
@@ -29,7 +28,7 @@ ms.locfileid: "70134343"
 
 ## <a name="required-permissions"></a>所需的权限
 
-连接到 Azure AD 租户，使用全局管理员帐户分配或删除角色。
+连接到 Azure AD 组织，使用全局管理员帐户分配或删除角色。
 
 ## <a name="prepare-powershell"></a>准备 PowerShell
 
@@ -167,4 +166,3 @@ Remove-AzureADMSRoleAssignment -Id 'qiho4WOb9UKKgng_LbPV7tvKaKRCD61PkJeKMh7Y458-
 - 有关角色以及 Azure AD 管理员角色分配的详细信息，请参阅[分配管理员角色](directory-assign-admin-roles.md)。
 - 有关默认用户权限，请参阅[默认来宾和成员用户权限的比较](../fundamentals/users-default-permissions.md)。
 
-<!-- Update_Description: wording update -->

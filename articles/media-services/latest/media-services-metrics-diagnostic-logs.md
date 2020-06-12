@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 origin.date: 07/08/2019
-ms.date: 05/11/2020
+ms.date: 06/08/2020
 ms.author: v-jay
-ms.openlocfilehash: 01f3be2991127c91f07e836c1bfefc0502af5780
-ms.sourcegitcommit: 95efd248f5ee3701f671dbd5cfe0aec9c9959a24
+ms.openlocfilehash: f3aa8ecd636bdc7e8727479103d0a6001b35a207
+ms.sourcegitcommit: 79c99a9ea013b3c74706a1038a505f4eea2aaac4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82507699"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84439477"
 ---
 # <a name="monitor-media-services-metrics-and-diagnostic-logs-via-azure-monitor"></a>通过 Azure Monitor 监视媒体服务指标和诊断日志
 
@@ -64,7 +64,7 @@ ms.locfileid: "82507699"
 |指标名称|Display name|说明|
 |---|---|---|
 |请求|请求|提供由流式处理终结点提供服务的 HTTP 请求总数。|
-|流出量|流出量|出口字节总数。 例如，流式处理终结点流式处理的字节数。|
+|流出量|流出量|每个流式处理终结点每分钟流出的字节总数。|
 |SuccessE2ELatency|成功端到端延迟|从流式处理终结点收到请求，到发送最后一个响应字节的持续时间。|
 
 ### <a name="why-would-i-want-to-use-metrics"></a>为何使用指标？

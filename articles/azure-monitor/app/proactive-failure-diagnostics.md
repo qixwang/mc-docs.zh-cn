@@ -2,17 +2,17 @@
 title: 智能检测 - Application Insights 中的失败异常 | Azure Docs
 description: 将针对到 Web 应用的失败请求速率的异常变化向用户发出警报，并提供诊断分析。 无需进行配置。
 ms.topic: conceptual
-author: lingliw
+author: Johnnytechn
 origin.date: 12/18/2018
-ms.date: 6/4/2019
+ms.date: 05/28/2020
 ms.reviewer: yalavi
-ms.author: v-lingwu
-ms.openlocfilehash: 879e260042ac5a82f65ec444277790fc7de1441b
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+ms.author: v-johya
+ms.openlocfilehash: 70b4992b809b5443a9279bfffa178dd0e6820657
+ms.sourcegitcommit: 5ae04a3b8e025986a3a257a6ed251b575dbf60a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84199469"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84440736"
 ---
 # <a name="smart-detection---failure-anomalies"></a>智能检测 - 失败异常
 如果 Web 应用的失败请求速率出现异常上升，[Application Insights](../../azure-monitor/app/app-insights-overview.md) 会几乎实时地自动向你发出警报。 它会对 HTTP 请求速率或报告为失败的依赖项调用的异常上升进行检测。 对于请求而言，失败请求的响应代码通常为 400 或更大的数字。 为了帮助会审和诊断问题，警报详细信息中会提供失败及相关应用程序数据的特征分析。 还提供指向 Application Insights 门户的链接，以供进一步诊断。 该功能不需要任何设置或配置，因为它使用机器学习算法来预测正常的失败率。
@@ -63,7 +63,15 @@ ms.locfileid: "84199469"
 * 如果在 8-24 小时内不再检测到问题，则有逻辑可以自动解决已触发的警报监视条件。
 
 ## <a name="configure-alerts"></a>配置警报
-可以禁用智能检测、更改电子邮件收件人、创建 webhook，或者选择启用更详细的警报消息。
+
+可以从门户或使用 Azure 资源管理器禁用智能检测警报规则（[请参阅模板示例](/azure-monitor/app/proactive-arm-config)）。
+
+警报规则使用包含电子邮件和 Webhook 操作的关联[操作组](/azure-monitor/platform/action-groups)（名为“Application Insights 智能检测”）创建，可进行扩展以在警报引发时触发其他操作。
+
+> [!NOTE]
+> 从此警报规则发送的电子邮件通知现在默认发送给与订阅的“监视阅读者”和“监视参与者”角色关联的用户。 [此处](/azure-monitor/app/proactive-email-notification)提供了与此内容相关的详细信息。
+> 从此警报规则发送的通知遵循[常见警报架构](/azure-monitor/platform/alerts-common-schema)。
+>
 
 打开“警报”页。 其中包括失败异常警报规则以及你已手动设置的任何警报，并可以查看其当前是否处于警报状态。
 
@@ -184,7 +192,7 @@ ms.locfileid: "84199469"
             50]],
             "ArmSystemEventsRequest": "/subscriptions/4f9b81be-fa32-4f96-aeb3-fc5c3f678df9/resourceGroups/test-group/providers/microsoft.insights/components/test-rule/query?query=%0d%0a++++++++++++++++systemEvents%0d%0a++++++++++++++++%7c+where+timestamp+%3e%3d+datetime(%272019-10-30T17%3a20%3a00.0000000Z%27)+%0d%0a++++++++++++++++%7c+where+itemType+%3d%3d+%27systemEvent%27+and+name+%3d%3d+%27ProactiveDetectionInsight%27+%0d%0a++++++++++++++++%7c+where+dimensions.InsightType+in+(%275%27%2c+%277%27)+%0d%0a++++++++++++++++%7c+where+dimensions.InsightDocumentId+%3d%3d+%27718fb0c3-425b-4185-be33-4311dfb4deeb%27+%0d%0a++++++++++++++++%7c+project+dimensions.InsightOneClassTable%2c+%0d%0a++++++++++++++++++++++++++dimensions.InsightExceptionCorrelationTable%2c+%0d%0a++++++++++++++++++++++++++dimensions.InsightDependencyCorrelationTable%2c+%0d%0a++++++++++++++++++++++++++dimensions.InsightRequestCorrelationTable%2c+%0d%0a++++++++++++++++++++++++++dimensions.InsightTraceCorrelationTable%0d%0a++++++++++++&api-version=2018-04-20",
             "LinksTable": [{
-                "Link": "<a href=\"https://portal.azure.com/#blade/AppInsightsExtension/ProactiveDetectionFeedBlade/ComponentId/{\"SubscriptionId\":\"4f9b81be-fa32-4f96-aeb3-fc5c3f678df9\",\"ResourceGroup\":\"test-group\",\"Name\":\"test-rule\"}/SelectedItemGroup/718fb0c3-425b-4185-be33-4311dfb4deeb/SelectedItemTime/2019-10-30T17:50:00Z/InsightType/5\" target=\"_blank\">View full details in Application Insights</a>"
+                "Link": "<a href=\"https://portal.azure.cn/#blade/AppInsightsExtension/ProactiveDetectionFeedBlade/ComponentId/{\"SubscriptionId\":\"4f9b81be-fa32-4f96-aeb3-fc5c3f678df9\",\"ResourceGroup\":\"test-group\",\"Name\":\"test-rule\"}/SelectedItemGroup/718fb0c3-425b-4185-be33-4311dfb4deeb/SelectedItemTime/2019-10-30T17:50:00Z/InsightType/5\" target=\"_blank\">View full details in Application Insights</a>"
             }],
             "SmartDetectorId": "FailureAnomaliesDetector",
             "SmartDetectorName": "Failure Anomalies",
@@ -305,7 +313,7 @@ ms.locfileid: "84199469"
 
 ## <a name="review-recent-alerts"></a>查看最近的警报
 
-单击 Application Insights 资源页中的“警报”  ，以获取最新触发的警报：
+单击 Application Insights 资源页中的“警报”，以获取最新触发的警报：
 
 [![](./media/proactive-failure-diagnostics/070.png "Alerts summary")](./media/proactive-failure-diagnostics/070.png#lightbox)
 
@@ -343,7 +351,7 @@ ms.locfileid: "84199469"
 
 *一些警报关于已知问题，我不希望接收它们。*
 
-* 我们对积压工作会有警报抑制。
+* 可以使用[警报操作规则](/azure-monitor/platform/alerts-action-rules)抑制功能。
 
 ## <a name="next-steps"></a>后续步骤
 这些诊断工具可帮助检查来自你的应用的数据：
@@ -356,7 +364,4 @@ ms.locfileid: "84199469"
 
 * [手动配置的指标警报](../../azure-monitor/app/alerts.md)
 * [可用性 Web 测试](../../azure-monitor/app/monitor-web-app-availability.md)
-
-
-
 

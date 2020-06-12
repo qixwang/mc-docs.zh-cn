@@ -5,16 +5,16 @@ author: kgremban
 manager: philmea
 ms.author: v-tawe
 origin.date: 04/14/2020
-ms.date: 04/20/2020
+ms.date: 06/01/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: d2ddb830ebdb3af4e5f3fc901f4fb5b27f8e617c
-ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
+ms.openlocfilehash: 92607abe7d32722872dc3ac7848d9d00b53c6bb9
+ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82588784"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84275577"
 ---
 # <a name="create-demo-certificates-to-test-iot-edge-device-features"></a>创建演示证书用于测试 IoT Edge 设备功能
 
@@ -85,7 +85,7 @@ Azure IoT Edge Git 存储库包含可用于生成测试证书的脚本。
    git clone https://github.com/Azure/iotedge.git
    ```
 
-3. 导航到要在其中工作的目录。 整篇文章将此目录称为 *\<WRKDIR>* 。 所有证书和密钥将此工作目录中创建。
+3. 导航到要在其中工作的目录。 整篇文章将此目录称为 \<WRKDIR>。 所有证书和密钥将此工作目录中创建。
 
 4. 将克隆的存储库中的配置文件和脚本文件复制到该工作目录。
 
@@ -126,7 +126,7 @@ Azure IoT Edge Git 存储库包含可用于生成测试证书的脚本。
    git clone https://github.com/Azure/iotedge.git
    ```
 
-2. 导航到要在其中工作的目录。 在整篇文章中，此目录称为 *\<WRKDIR>* 。 所有证书和密钥文件都将在此目录中创建。
+2. 导航到要在其中工作的目录。 在整篇文章中，此目录称为 \<WRKDIR>。 所有证书和密钥文件都将在此目录中创建。
   
 3. 将克隆的 IoT Edge 存储库中的配置文件和脚本文件复制到该工作目录。
 
@@ -314,7 +314,7 @@ IoT 设备还需要其设备证书的副本，以便可以在 IoT 中心进行�
 3. 从每个证书中检索 SHA1 指纹（在 IoT 中心上下文中称为“指纹”）。 指纹是由 40 个十六进制字符组成的字符串。 使用以下 openssl 命令查看证书并查找指纹：
 
    ```PowerShell
-   openssl x509 -in <WRKDIR>\certs\iot-device-<device name>-primary.cert.pem -text -fingerprint | sed 's/[:]//g'
+   openssl x509 -in <WRKDIR>\certs\iot-device-<device name>-primary.cert.pem -text -fingerprint
    ```
 
    运行此命令两次，一次针对主要证书，另一次针对辅助证书。 使用自签名的 X.509 证书注册新 IoT 设备时，为这两个证书提供指纹。

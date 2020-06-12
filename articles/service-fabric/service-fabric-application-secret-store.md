@@ -3,14 +3,14 @@ title: Azure Service Fabric 中心机密存储
 description: 本文介绍如何使用 Azure Service Fabric 中的中心机密存储。
 ms.topic: conceptual
 origin.date: 07/25/2019
-ms.date: 04/13/2020
+ms.date: 06/08/2020
 ms.author: v-yeche
-ms.openlocfilehash: 481cef92c4a09462494e42992e669dded60b3d3f
-ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
+ms.openlocfilehash: e86bd0a473823c51982cd0ac7b99c63e3b9beae9
+ms.sourcegitcommit: 0e178672632f710019eae60cea6a45ac54bb53a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82093329"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84356286"
 ---
 # <a name="central-secrets-store-in-azure-service-fabric"></a>Azure Service Fabric 中的中心机密存储 
 本文介绍如何使用 Azure Service Fabric 中的中心机密存储 (CSS) 在 Service Fabric 应用程序中创建机密。 CSS 是一个本地机密存储缓存，用于保存敏感数据，例如，已在内存中加密的密码、令牌和密钥。
@@ -30,7 +30,7 @@ ms.locfileid: "82093329"
             },
             {
                 "name":  "MinReplicaSetSize",
-                "value":  "3"
+                "value":  "1"
             },
             {
                 "name":  "TargetReplicaSetSize",
@@ -46,30 +46,10 @@ ms.locfileid: "82093329"
 ]
 ```
 ## <a name="declare-a-secret-resource"></a>声明机密资源
-可以使用 Azure 资源管理器模板或 REST API 创建机密资源。
+可以使用 REST API 创建机密资源。
 
-### <a name="use-resource-manager"></a>使用资源管理器
-
-使用以下资源管理器模板创建机密资源。 该模板将创建 `supersecret` 机密资源，但不会为机密资源设置任何值。
-
-```json
-"resources": [
-    {
-        "apiVersion": "2018-07-01-preview",
-        "name": "supersecret",
-        "type": "Microsoft.ServiceFabricMesh/secrets",
-        "location": "[parameters('location')]", 
-        "dependsOn": [],
-        "properties": {
-          "kind": "inlinedValue",
-            "description": "Application Secret",
-            "contentType": "text/plain",
-          }
-    }
-]
-```
-
-### <a name="use-the-rest-api"></a>使用 REST API
+> [!NOTE] 
+> 如果群集使用 Windows 身份验证，则 REST 请求会通过不安全的 HTTP 通道发送。 建议使用具有安全终结点的基于 X509 的群集。
 
 若要使用 REST API 创建 `supersecret` 机密资源，请向 `https://<clusterfqdn>:19080/Resources/Secrets/supersecret?api-version=6.4-preview` 发出 PUT 请求。 需要提供群集证书或管理客户端证书来创建机密资源。
 
@@ -79,48 +59,6 @@ Invoke-WebRequest  -Uri https://<clusterfqdn>:19080/Resources/Secrets/supersecre
 ```
 
 ## <a name="set-the-secret-value"></a>设置机密值
-
-### <a name="use-the-resource-manager-template"></a>使用资源管理器模板
-
-使用以下资源管理器模板创建和设置机密值。 此模板将 `supersecret` 机密资源的机密值设置为版本 `ver1`。
-```json
-  {
-  "parameters": {
-  "supersecret": {
-      "type": "string",
-      "metadata": {
-        "description": "supersecret value"
-      }
-   }
-  },
-  "resources": [
-    {
-      "apiVersion": "2018-07-01-preview",
-        "name": "supersecret",
-        "type": "Microsoft.ServiceFabricMesh/secrets",
-        "location": "[parameters('location')]", 
-        "dependsOn": [],
-        "properties": {
-          "kind": "inlinedValue",
-            "description": "Application Secret",
-            "contentType": "text/plain"
-        }
-    },
-    {
-      "apiVersion": "2018-07-01-preview",
-      "name": "supersecret/ver1",
-      "type": "Microsoft.ServiceFabricMesh/secrets/values",
-      "location": "[parameters('location')]",
-      "dependsOn": [
-        "Microsoft.ServiceFabricMesh/secrets/supersecret"
-      ],
-      "properties": {
-        "value": "[parameters('supersecret')]"
-      }
-    }
-  ],
-```
-### <a name="use-the-rest-api"></a>使用 REST API
 
 使用以下 REST API 脚本设置机密值。
 ```powershell

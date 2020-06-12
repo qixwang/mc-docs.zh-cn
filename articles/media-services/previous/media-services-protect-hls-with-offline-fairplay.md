@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-origin.date: 04/16/2019
-ms.date: 03/04/2020
+origin.date: 05/07/2020
+ms.date: 06/08/2020
 ms.author: v-jay
 ms.reviewer: dwgeo
-ms.openlocfilehash: 79b4587284432db14d2a1d58099a08ad70d48a37
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 4ceb31cdd192cc031e12e85cdc46830cd7709f3f
+ms.sourcegitcommit: 79c99a9ea013b3c74706a1038a505f4eea2aaac4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78850463"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84439481"
 ---
 # <a name="offline-fairplay-streaming-for-ios"></a>适用于 iOS 的脱机 FairPlay Streaming 
 
@@ -213,7 +213,7 @@ func requestApplicationCertificate() throws -> Data {
 - **FPS 脱机模式的以下 API 中最后一个参数代表什么？** 
 `Microsoft.WindowsAzure.MediaServices.Client.FairPlay.FairPlayConfiguration.CreateSerializedFairPlayOptionConfiguration(objX509Certificate2, pfxPassword, pfxPasswordId, askId, iv, RentalAndLeaseKeyType.PersistentUnlimited, 0x9999);`
 
-    有关此 API 的文档，请参阅 [FairPlayConfiguration.CreateSerializedFairPlayOptionConfiguration 方法](https://docs.azure.cn/zh-cn/dotnet/api/microsoft.windowsazure.mediaservices.client.FairPlay.FairPlayconfiguration.createserializedFairPlayoptionconfiguration?view=azure-dotnet)。 该参数代表脱机租赁的持续时间（以小时为单位）。
+    有关此 API 的文档，请参阅 [FairPlayConfiguration.CreateSerializedFairPlayOptionConfiguration 方法](https://docs.azure.cn/dotnet/api/microsoft.windowsazure.mediaservices.client.FairPlay.FairPlayconfiguration.createserializedFairPlayoptionconfiguration?view=azure-dotnet)。 该参数代表脱机租赁的持续时间（秒）。
 - **iOS 设备上的已下载/脱机文件结构是什么？** iOS 设备上的已下载文件结构如下屏幕截图所示。 `_keys` 文件夹存储已下载的 FPS 许可证，每个许可证服务主机一个存储文件。 `.movpkg` 文件夹存储音频和视频内容。 第一个文件夹（文件名以破折号加数字结尾）包含视频内容。 数值是“PeakBandwidth”视频呈现形式。 第二个文件夹（文件名以破折号加 0 结尾）包含音频内容。 第三个文件夹（文件名为“Data”）包含 FPS 内容的主播放列表。 最后，boot.xml 提供 `.movpkg` 文件夹内容的完整说明。 
 
 ![脱机 FairPlay iOS 示例应用文件结构](media/media-services-protect-hls-with-offline-FairPlay/media-services-offline-FairPlay-file-structure.png)
@@ -254,3 +254,7 @@ func requestApplicationCertificate() throws -> Data {
 * 基于 FPS Server SDK 中的示例的 iOS 播放器设置可以在联机流式处理模式或脱机模式中播放 FPS 内容的 iOS 播放器。
 * 用于测试脱机模式和联机流式处理的示例 FPS 视频。
 * 有关 FPS 脱机模式的常见问题解答。
+
+## <a name="next-steps"></a>后续步骤
+
+[!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

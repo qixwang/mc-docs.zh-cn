@@ -1,19 +1,16 @@
 ---
 title: 有关使用 Azure Site Recovery 进行 VMware 灾难恢复的常见问题
 description: 获取使用 Azure Site Recovery 将本地 VMware VM 灾难恢复到 Azure 时出现的常见问题的解答。
-author: rockboyfor
-manager: digimobile
-ms.service: site-recovery
 origin.date: 11/14/2019
-ms.date: 02/24/2020
-ms.topic: conceptual
+ms.date: 06/08/2020
 ms.author: v-yeche
-ms.openlocfilehash: 5070c651cf14959f92d0f984c619305eb6ad66bd
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.topic: conceptual
+ms.openlocfilehash: 9267f59e2f5dfdc29d7fa0c753a7fdd3ba8fc9d1
+ms.sourcegitcommit: 5ae04a3b8e025986a3a257a6ed251b575dbf60a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79291128"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84440698"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>有关 VMware 到 Azure 的复制的常见问题
 
@@ -70,7 +67,7 @@ Site Recovery 需要访问 VMware 服务器，才能够：
 
 ### <a name="is-replication-data-sent-to-site-recovery"></a>复制数据是否会发送到 Site Recovery？
 
-不会。Site Recovery 不会拦截复制的数据，也没有 VM 上运行的组件的任何相关信息。 复制数据在 VMware 虚拟机监控程序与 Azure 存储之间交换。 站点恢复并不具有拦截该数据的能力。 只有协调复制与故障转移所需的元数据将发送到站点恢复服务。  
+不会。Site Recovery 不会拦截复制的数据，也没有 VM 上运行的组件的任何相关信息。 复制数据在 VMware 虚拟机监控程序与 Azure 存储之间交换。 站点恢复并不具有拦截该数据的能力。 只有协调复制与故障转移所需的元数据会发送到站点恢复服务。
 
 Site Recovery 已通过 ISO 27001:2013、27018、HIPAA 和 DPA 认证， 目前正在接受 SOC2 和 FedRAMP JAB 评估。
 
@@ -84,11 +81,11 @@ Site Recovery 已通过 ISO 27001:2013、27018、HIPAA 和 DPA 认证， 目前�
 
 ### <a name="is-there-any-difference-in-cost-between-replicating-to-storage-or-directly-to-managed-disks"></a>复制到存储的费用与直接复制到托管磁盘的费用是否有任何差别？
 
-托管磁盘的收费与存储帐户略有不同。 [详细了解](https://www.azure.cn/pricing/details/storage/)托管磁盘的定价。
+托管磁盘的收费与存储帐户略有不同。 [详细了解](https://www.azure.cn/pricing/details/storage/managed-disks/)托管磁盘的定价。
 
 ### <a name="is-there-any-difference-in-cost-when-replicating-to-general-purpose-v2-storage-account"></a>复制到常规用途 v2 存储帐户时，开销是否有什么不同？
 
-你通常会发现 GPv2 存储帐户产生的事务成本增加，因为 Azure Site Recovery 的事务量很大。 [阅读更多信息](../storage/common/storage-account-upgrade.md#pricing-and-billing)以估计更改。
+你通常会发现 GPv2 存储帐户产生的事务成本增加，因为 Azure Site Recovery 的事务量很大。 [详细了解](../storage/common/storage-account-upgrade.md#pricing-and-billing)如何估算费用。
 
 ## <a name="mobility-service"></a>移动服务
 
@@ -101,7 +98,7 @@ Site Recovery 已通过 ISO 27001:2013、27018、HIPAA 和 DPA 认证， 目前�
 在要复制的每个 VM 上，使用以下多种方法之一安装该服务：
 
 - [推送安装](vmware-physical-mobility-service-overview.md#push-installation)
-- 从 UI 或 PowerShell [手动安装](vmware-physical-mobility-service-overview.md#install-mobility-agent-through-ui)
+- 从 UI 或 PowerShell [手动安装](vmware-physical-mobility-service-overview.md#install-the-mobility-service-using-ui)
 - 使用 [Configuration Manager](vmware-azure-mobility-install-configuration-mgr.md) 等部署工具进行部署
 
 ## <a name="managed-disks"></a>托管磁盘
@@ -117,7 +114,7 @@ Site Recovery 将本地 VMware VM 和物理服务器复制到 Azure 中的托管
 
 ### <a name="can-i-replicate-new-machines-to-storage-accounts"></a>是否可将新计算机复制到存储帐户？
 
-不是。 从 2019 年 3 月开始，在 Azure 门户中只能复制到 Azure 托管磁盘。
+否。 从 2019 年 3 月开始，在 Azure 门户中只能复制到 Azure 托管磁盘。
 
 只能使用 PowerShell 或 REST API（版本 2018-01-10 或 2016-08-10）将新 VM 复制到存储帐户。
 
@@ -129,14 +126,14 @@ Site Recovery 将本地 VMware VM 和物理服务器复制到 Azure 中的托管
 
 是的，可以轻松针对正在进行的复制[更改托管磁盘的类型](/virtual-machines/windows/convert-disk-storage)。 在更改类型之前，请确保未在托管磁盘上生成任何共享访问签名 URL：
 
-1. 在 Azure 门户中转到“托管磁盘”资源，并检查“概述”边栏选项卡上是否出现了共享访问签名 URL 横幅。  
+1. 在 Azure 门户中转到“托管磁盘”资源，并检查“概述”边栏选项卡上是否出现了共享访问签名 URL 横幅。 
 1. 如果出现了横幅，请选择它以取消正在进行的导出。
 1. 在接下来的几分钟内更改磁盘类型。 如果更改了托管磁盘类型，需要等待 Azure Site Recovery 生成全新的恢复点。
 1. 对将来的任何测试故障转移或故障转移使用新恢复点。
 
 ### <a name="can-i-switch-replication-from-managed-disks-to-unmanaged-disks"></a>是否可将复制目标从托管磁盘切换为非托管磁盘？
 
-不是。 不支持从托管磁盘切换为非托管磁盘。
+否。 不支持从托管磁盘切换为非托管磁盘。
 
 ## <a name="replication"></a>复制
 
@@ -170,7 +167,7 @@ Site Recovery 将本地 VMware VM 和物理服务器复制到 Azure 中的托管
 
 ### <a name="can-i-replicate-vms-that-have-dynamic-disks"></a>是否可以复制包含动态磁盘的 VM？
 
-可以复制动态磁盘。 操作系统磁盘必须为基本磁盘。
+可以复制动态磁盘。 操作系统磁盘必须是基本磁盘。
 
 ### <a name="if-i-use-replication-groups-for-multi-vm-consistency-can-i-add-a-new-vm-to-an-existing-replication-group"></a>如果我使用复制组实现多 VM 一致性，是否可以将新 VM 添加到现有复制组？
 
@@ -185,7 +182,7 @@ Site Recovery 将本地 VMware VM 和物理服务器复制到 Azure 中的托管
 
 ### <a name="can-i-migrate-on-premises-machines-to-a-new-vcenter-server-without-impacting-ongoing-replication"></a>是否可以在不影响进行中复制的情况下将本地计算机迁移到新的 vCenter Server？
 
-不是。 更改 VMware Vcenter 或迁移将影响正在进行的复制。 对新的 vCenter Server 设置 Site Recovery，并为计算机重新启用复制。
+否。 更改 VMware Vcenter 或迁移将影响正在进行的复制。 对新的 vCenter Server 设置 Site Recovery，并为计算机重新启用复制。
 
 ### <a name="can-i-replicate-to-a-cache-or-target-storage-account-that-has-a-virtual-network-with-azure-firewalls-configured-on-it"></a>是否可以复制到在其上配置了虚拟网络（具有 Azure 防火墙）的缓存或目标存储帐户？
 
@@ -240,7 +237,7 @@ Site Recovery 遵循 N-4 支持模型。 [详细了解](../site-recovery/service
 
 ### <a name="can-a-configuration-server-replicate-to-more-than-one-region"></a>是否可将配置服务器复制到多个区域？
 
-不是。 若要复制到多个区域，需在每个区域中设置一个配置服务器。
+否。 若要复制到多个区域，需在每个区域中设置一个配置服务器。
 
 ### <a name="can-i-host-a-configuration-server-in-azure"></a>是否可以在 Azure 中托管配置服务器？
 
@@ -264,23 +261,23 @@ Site Recovery 遵循 N-4 支持模型。 [详细了解](../site-recovery/service
 
 ### <a name="when-im-setting-up-the-configuration-server-can-i-download-and-install-mysql-manually"></a>设置配置服务器时，是否可以手动下载并安装 MySQL？
 
-是的。 请下载 MySQL 并将其置于 C:\Temp\ASRSetup 文件夹中。 然后手动安装它。 设置配置服务器 VM 并接受条款后，MySQL 在“下载并安装”中将列出为“已安装”。  
+是的。 请下载 MySQL 并将其置于 C:\Temp\ASRSetup 文件夹中。 然后手动安装它。 设置配置服务器 VM 并接受条款后，MySQL 在“下载并安装”中将列出为“已安装”。 
 
 ### <a name="can-i-avoid-downloading-mysql-but-let-site-recovery-install-it"></a>我是否可以避免下载 MySQL 但让 Site Recovery 安装它？
 
-是的。 请下载 MySQL 安装程序并将其置于 C:\Temp\ASRSetup 文件夹中。 设置配置服务器 VM 时，请接受条款，然后选择“下载并安装”。  门户将使用你添加的安装程序来安装 MySQL。
+是的。 请下载 MySQL 安装程序并将其置于 C:\Temp\ASRSetup 文件夹中。 设置配置服务器 VM 时，请接受条款，然后选择“下载并安装”。 门户将使用你添加的安装程序来安装 MySQL。
 
 ### <a name="can-i-use-the-configuration-server-vm-for-anything-else"></a>是否可以将配置服务器 VM 用于任何其他项？
 
-不是。 请仅将 VM 用于配置服务器。
+否。 请仅将 VM 用于配置服务器。
 
 ### <a name="can-i-clone-a-configuration-server-and-use-it-for-orchestration"></a>是否可以克隆配置服务器并将其用于业务流程？
 
-不是。 请设置新配置服务器以避免注册问题。
+否。 请设置新配置服务器以避免注册问题。
 
 ### <a name="can-i-change-the-vault-in-which-the-configuration-server-is-registered"></a>是否可以更改配置服务器注册到的保管库？
 
-不是。 将某个保管库关联到配置服务器后，无法更改该保管库。 [了解](vmware-azure-manage-configuration-server.md#register-a-configuration-server-with-a-different-vault)如何将配置服务器注册到不同的保管库。
+否。 将某个保管库关联到配置服务器后，无法更改该保管库。 [了解](vmware-azure-manage-configuration-server.md#register-a-configuration-server-with-a-different-vault)如何将配置服务器注册到不同的保管库。
 
 ### <a name="can-i-use-the-same-configuration-server-for-disaster-recovery-of-both-vmware-vms-and-physical-servers"></a>是否可以将同一配置服务器同时用于 VMware VM 和物理服务器的灾难恢复？
 
@@ -292,7 +289,7 @@ Site Recovery 遵循 N-4 支持模型。 [详细了解](../site-recovery/service
 
 ### <a name="where-can-i-download-vault-registration-keys"></a>在哪里可以下载保管库注册密钥？
 
-在“恢复服务保管库”中，选择“Site Recovery 基础结构” > “管理”中的“配置服务器”。 然后在“服务器”中，选择“下载注册密钥”以下载保管库凭据文件。  
+在“恢复服务保管库”中，选择“Site Recovery 基础结构” > “管理”中的“配置服务器”。   然后在“服务器”中，选择“下载注册密钥”以下载保管库凭据文件。 
 
 ### <a name="can-a-single-configuration-server-be-used-to-protect-multiple-vcenter-instances"></a>是否可以使用单个配置服务器来保护多个 vCenter 实例？
 
@@ -312,6 +309,10 @@ Site Recovery 遵循 N-4 支持模型。 [详细了解](../site-recovery/service
 
 从[版本 9.24](service-updates-how-to.md#links-to-currently-supported-update-rollups) 开始添加了更多警报来指示进程服务器的运行状况。 [将 Site Recovery 组件更新到 9.24 或更高版本](service-updates-how-to.md#links-to-currently-supported-update-rollups)，以生成所有警报。
 
+### <a name="how-can-i-ensure-high-availability-of-the-process-server"></a>如何确保进程服务器的高可用性？
+
+通过配置多个进程服务器，可以灵活地将受保护的计算机从运行不正常的进程服务器移动到正常工作的进程服务器。 若要将计算机从一个进程服务器移动到另一个进程服务器，则必须通过此处定义的步骤显式/手动启动：[在进程服务器之间移动 VM](vmware-azure-manage-process-server.md#move-vms-to-balance-the-process-server-load)。
+
 ## <a name="failover-and-failback"></a>故障转移和故障回复
 
 ### <a name="can-i-use-the-on-premises-process-server-for-failback"></a>是否可以使用本地进程服务器进行故障回复？
@@ -320,11 +321,11 @@ Site Recovery 遵循 N-4 支持模型。 [详细了解](../site-recovery/service
 
 ### <a name="can-i-keep-the-ip-address-on-failover"></a>是否可以在故障转移之后保留 IP 地址？
 
-是的，可以在故障转移之后保留 IP 地址。 在故障转移之前，请确保在 VM 的“计算和网络”设置中指定目标 IP 地址。  此外，故障转移时请关闭计算机，以免故障回复期间发生 IP 地址冲突。
+是的，可以在故障转移之后保留 IP 地址。 在故障转移之前，请确保在 VM 的“计算和网络”设置中指定目标 IP 地址。 此外，故障转移时请关闭计算机，以免故障回复期间发生 IP 地址冲突。
 
 ### <a name="can-i-change-the-target-vm-size-or-vm-type-before-failover"></a>在故障转移之前是否可以更改目标 VM 大小或 VM 类型？
 
-是的，在故障转移之前的任何时间，都可以更改 VM 的类型或大小。 在门户中使用已复制的 VM 的“计算和网络”设置即可。 
+是的，在故障转移之前的任何时间，都可以更改 VM 的类型或大小。 在门户中使用已复制的 VM 的“计算和网络”设置即可。
 
 ### <a name="how-far-back-can-i-recover"></a>可以恢复到哪个最早的时间点？
 

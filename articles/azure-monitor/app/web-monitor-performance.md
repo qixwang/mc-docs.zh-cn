@@ -2,25 +2,24 @@
 title: 使用 Application Insights 监视应用的运行状况和使用情况
 description: Application Insights 入门。 分析本地或 Microsoft Azure 应用程序的使用情况、可用性和性能。
 ms.topic: conceptual
-author: lingliw
-manager: digimobile
+author: Johnnytechn
 origin.date: 05/10/2018
-ms.date: 6/4/2019
+ms.date: 05/28/2020
 ms.reviewer: sdash
-ms.author: v-lingwu
-ms.openlocfilehash: 7a42888728e9248030557227c94ba30bdd643e74
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.author: v-johya
+ms.openlocfilehash: b5e24eee4f5f0bed5946b3b91690cc20cd5bf9c4
+ms.sourcegitcommit: 5ae04a3b8e025986a3a257a6ed251b575dbf60a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79293022"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84440724"
 ---
 # <a name="monitor-performance-in-web-applications"></a>在 Web 应用程序中监视性能
 
 
 确保应用程序性能良好，并快速查明任何故障。 [Application Insights][start]将告知任何性能问题和异常，并帮助查找并诊断根本原因。
 
-Application Insights 可监视 Java 和 ASP.NET Web 应用程序和服务、WCF 服务。 可在本地、虚拟机上或作为世纪互联 Azure 网站托管它们。 
+Application Insights 可监视 Java 和 ASP.NET Web 应用程序和服务、WCF 服务。 可在本地、虚拟机上或作为 Azure 网站托管它们。 
 
 在客户端，Application Insights 可从网页和各种设备（包括 iOS、Android 和 Windows 应用商店应用）获取遥测。
 
@@ -31,8 +30,7 @@ Application Insights 可监视 Java 和 ASP.NET Web 应用程序和服务、WCF 
 * [ASP.NET Web 应用](../../azure-monitor/app/asp-net.md)
   * [添加异常监视](../../azure-monitor/app/asp-net-exceptions.md)
   * [添加依赖项监视](../../azure-monitor/app/monitor-performance-live-website-now.md)
-* [Java EE Web 应用](../../azure-monitor/app/java-get-started.md)
-  * [添加依赖项监视](../../azure-monitor/app/java-agent.md)
+* [Java EE Web 应用](/azure-monitor/app/java-in-process-agent)
 
 <a name="view"></a>
 ## <a name="exploring-performance-metrics"></a>探索性能指标
@@ -53,7 +51,7 @@ Application Insights 可监视 Java 和 ASP.NET Web 应用程序和服务、WCF 
 ## <a name="what-does-it-all-mean-performance-tiles-and-reports"></a>这一切意味着什么？ 性能磁贴和报表
 有多个性能指标可供获取。 让我们先从默认在应用程序边栏选项卡上显示的指标开始。
 
-### <a name="requests"></a>Requests
+### <a name="requests"></a>请求
 指定时间段内收到的 HTTP 请求数。 将此结果与其他报表中的结果比较，查看应用行为如何因负载而异。
 
 HTTP 请求包括对页面、数据和图像的所有 GET 或 POST 请求。
@@ -161,9 +159,6 @@ HTTP 请求包括对页面、数据和图像的所有 GET 或 POST 请求。
 [usage]: usage-overview.md
 [livestream]: ../../azure-monitor/app/live-stream.md
 [snapshot]: ../../azure-monitor/app/snapshot-debugger.md
-
-
-
 
 
 

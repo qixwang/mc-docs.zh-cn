@@ -6,15 +6,15 @@ author: WenJason
 ms.service: vpn-gateway
 ms.topic: article
 origin.date: 07/24/2018
-ms.date: 04/06/2020
+ms.date: 06/08/2020
 ms.author: v-jay
 ms.reviewer: cherylmc
-ms.openlocfilehash: 303d43973b2d160fe49884439cd9b2a7b7cc4ec7
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: a6bd55391431f6367f897de624564a3681bda8c9
+ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80634545"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84275466"
 ---
 # <a name="configure-active-active-s2s-vpn-connections-with-azure-vpn-gateways"></a>配置与 Azure VPN 网关的主动-主动 S2S VPN 连接
 
@@ -37,9 +37,7 @@ ms.locfileid: "80634545"
 可以将这些选项结合起来，构建符合要求的更复杂、高度可用的网络拓扑。
 
 > [!IMPORTANT]
-> 主动-主动模式仅使用以下 SKU： 
->   * VpnGw1、VpnGw2、VpnGw3
->   * HighPerformance（适用于旧的传统 SKU）
+> 主动-主动模式适用于除 Basic 之外的所有 SKU。
 
 ## <a name="part-1---create-and-configure-active-active-vpn-gateways"></a><a name ="aagateway"></a>第 1 部分 - 创建并设置主动-主动 VPN 网关
 以下步骤将 Azure VPN 网关配置为主动-主动模式。 主动-主动与主机-待机网关之间的重要差异：

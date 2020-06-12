@@ -1,23 +1,23 @@
 ---
-title: 使用系统分配的托管标识部署 Azure Service Fabric 应用程序
+title: 使用系统分配的 MI 部署 Service Fabric 应用
 description: 本文介绍如何将系统分配的托管标识分配给 Azure Service Fabric 应用程序
 ms.topic: article
 origin.date: 07/25/2019
+ms.date: 06/08/2020
 ms.author: v-yeche
-ms.date: 01/06/2020
-ms.openlocfilehash: 8d727f085b0539b36b41ae2a0e61ef7ccb277daf
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+ms.openlocfilehash: c80323f7e32f256845eb4a5e9d8213378e54b238
+ms.sourcegitcommit: 0e178672632f710019eae60cea6a45ac54bb53a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84199496"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84356166"
 ---
 <!--Not Available on MOONCAKE-->
 <!--RELEASE BEFORE CONFIRMATION-->
 <!--https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities#azure-services-that-support-managed-identities-for-azure-resources-->
-# <a name="deploy-service-fabric-application-with-system-assigned-managed-identity-preview"></a>使用系统分配的托管标识部署 Service Fabric 应用程序（预览）
+# <a name="deploy-service-fabric-application-with-system-assigned-managed-identity"></a>使用系统分配的托管标识部署 Service Fabric 应用程序
 
-若要访问 Azure Service Fabric 应用程序的托管标识功能，必须先在群集上启用托管标识令牌服务。 此服务负责使用 Service Fabric 应用程序的托管标识对这些应用程序进行身份验证，以及代表它们获取访问令牌。 启用此服务以后，即可在 Service Fabric Explorer 中左侧窗格的“系统”部分  看到它，它在其他系统服务旁边以 **fabric:/System/ManagedIdentityTokenService** 名称运行。
+若要访问 Azure Service Fabric 应用程序的托管标识功能，必须先在群集上启用托管标识令牌服务。 此服务负责使用 Service Fabric 应用程序的托管标识对这些应用程序进行身份验证，以及代表它们获取访问令牌。 启用此服务以后，即可在 Service Fabric Explorer 中左侧窗格的“系统”部分看到它，它在其他系统服务旁边以 **fabric:/System/ManagedIdentityTokenService** 名称运行。
 
 > [!NOTE] 
 > 从 API 版本 `"2019-06-01-preview"` 开始，我们就支持使用托管标识部署 Service Fabric 应用程序。 另外，不管应用程序类型、应用程序类型版本和服务资源如何，你都可以使用同一 API 版本。 支持的最低 Service Fabric 运行时为 6.5 CU2。 此外，生成/包环境还应具有 SF .NET SDK CU2 或更高版本
@@ -103,5 +103,4 @@ ms.locfileid: "84199496"
 
 <!--Not Available on "apiVersion": "2019-06-01-preview" on 12/12/2019 -->
 <!--RELEASE BEFORE CONFIRMATION-->
-<!--Update_Description: new articles on service fabric how to deploy applicaton with system assigned managed identity -->
-<!--new.date: 09/02/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

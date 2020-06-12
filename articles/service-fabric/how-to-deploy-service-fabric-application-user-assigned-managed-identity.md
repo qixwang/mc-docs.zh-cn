@@ -1,21 +1,21 @@
 ---
-title: 部署具有用户分配的托管标识的应用程序
+title: 部署具有用户分配的托管标识的应用
 description: 本文介绍如何使用用户分配的托管标识部署 Service Fabric 应用程序
 ms.topic: article
 origin.date: 12/09/2019
+ms.date: 06/08/2020
 ms.author: v-yeche
-ms.date: 01/06/2020
-ms.openlocfilehash: 72e55605710f151f50f9b13af15403b120213ab4
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+ms.openlocfilehash: 14e0e5e1d856fb605a67fdbc8d9cc9e95c157810
+ms.sourcegitcommit: 0e178672632f710019eae60cea6a45ac54bb53a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84199486"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84356171"
 ---
 <!--Not Available on MOONCAKE-->
 <!--RELEASE BEFORE CONFIRMATION-->
 <!--https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities#azure-services-that-support-managed-identities-for-azure-resources-->
-# <a name="deploy-service-fabric-application-with-a-user-assigned-managed-identity-preview"></a>使用用户分配的托管标识部署 Service Fabric 应用程序（预览）
+# <a name="deploy-service-fabric-application-with-a-user-assigned-managed-identity"></a>使用用户分配的托管标识部署 Service Fabric 应用程序
 
 若要使用托管标识部署 Service Fabric 应用程序，需通过 Azure 资源管理器部署应用程序，通常需要使用 Azure 资源管理器模板。 若要详细了解如何通过 Azure 资源管理器部署 Service Fabric 应用程序，请参阅[将应用程序和服务作为 Azure 资源管理器资源进行管理](service-fabric-application-arm-resource.md)。
 
@@ -111,5 +111,4 @@ ms.locfileid: "84199486"
 
 <!--Not Available on "apiVersion": "2019-06-01-preview"-->
 <!--RELEAASE BEFORE CONFIRM-->
-<!--Update_Description: new articles on service fabric how to deploy applicaton with user assigned managed identity -->
-<!--new.date: 09/02/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

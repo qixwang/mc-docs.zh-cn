@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 03/11/2020
+ms.date: 06/01/2020
 ms.author: v-junlch
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9a973c25bc8d9ec9d08c4dd7047322b7a603f5b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: dc653e3fccddf627c1ec960a82585af6d2d8a058
+ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79133950"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84275587"
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>管理 Azure Active Directory 中的自定义域名
 
@@ -30,18 +30,18 @@ ms.locfileid: "79133950"
 创建目录时，初始域名（例如“contoso.partner.onmschina.cn”）也是主域名。 创建新用户时，主域名是新用户的默认域名。 设置主域名简化了管理员在门户中创建新用户的过程。 若要更改主域名，请执行以下操作：
 
 1. 使用目录全局管理员的帐户登录到 [Azure 门户](https://portal.azure.cn)。
-2. 选择“Azure Active Directory”  。
-3. 选择“自定义域名”  。
+2. 选择“Azure Active Directory” 。
+3. 选择“自定义域名”。
   
    ![打开用户管理页面](./media/domains-manage/add-custom-domain.png)
 4. 选择你希望设为主域的域名。
-5. 选择“设置主域”  命令。 出现提示时确认所做的选择。
+5. 选择“设置主域”命令。 出现提示时确认所做的选择。
   
    ![将域名设为主域名](./media/domains-manage/make-primary-domain.png)
 
 可以将目录的主域名更改为任何未联合的已验证自定义域。 更改目录的主域不会更改任何现有用户的用户名。
 
-## <a name="add-custom-domain-names-to-your-azure-ad-tenant"></a>将自定义域名添加到 Azure AD 租户
+## <a name="add-custom-domain-names-to-your-azure-ad-organization"></a>将自定义域名添加到 Azure AD 组织
 
 最多可以添加 900 个托管域名。 若要配置所有域以便与本地 Active Directory 联合，最多可在每个目录中添加 450 个域名。
 
@@ -70,7 +70,7 @@ ms.locfileid: "79133950"
 若要在 Azure 门户中调用 **ForceDelete**，必须确保对该域名的引用少于 1000 个，并且必须在 [Exchange 管理中心](https://outlook.office365.com/ecp/)更新或删除预配服务是 Exchange 的所有引用。 这包括支持 Exchange 邮件的安全组和分发列表；有关详细信息，请参阅[删除支持邮件的安全组](https://technet.microsoft.com/library/bb123521(v=exchg.160).aspx#Remove%20mail-enabled%20security%20groups)。 此外，如果存在以下任一情况，则 **ForceDelete** 操作不会成功：
 
 * 通过 Office 365 域订阅服务购买了域
-* 你是代表另一客户租户的合作伙伴管理员
+* 你是代表另一客户组织的合作伙伴管理员
 
 在执行 **ForceDelete** 操作过程中，将执行以下操作：
 

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 04/24/2020
+ms.date: 06/02/2020
 ms.author: v-junlch
 author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee497a97278660688996cd789d5928e199e4f4c5
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.openlocfilehash: 2de3536f5c2fc09a9cbe08496ce959159537b28f
+ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82126218"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84275360"
 ---
 # <a name="authentication-methods-usage--insights-preview"></a>身份验证方法的使用情况和见解（预览版）
 
@@ -38,8 +38,8 @@ ms.locfileid: "82126218"
 若要访问身份验证方法使用情况和见解：
 
 1. 浏览到 [Azure 门户](https://portal.azure.cn)。
-1. 浏览到“Azure Active Directory” > “密码重置” > “使用情况和见解”。   
-1. 在“注册”或“使用情况”概述中，可以选择打开预先筛选的报告，以根据需要进行筛选。  
+1. 浏览到“Azure Active Directory” > “密码重置” > “使用情况和见解”。  
+1. 在“注册”或“使用情况”概述中，可以选择打开预先筛选的报告，以根据需要进行筛选。 
 
 ![使用情况和见解概述](./media/howto-authentication-methods-usage-insights/usage-insights-overview.png)
 
@@ -53,7 +53,7 @@ ms.locfileid: "82126218"
 
 单击其中的任一磁贴或磁贴中显示的见解会转到注册详细信息的预筛选列表。
 
-“注册”选项卡上的“注册”图表按身份验证方法显示成功和失败的身份验证方法注册数。   “使用情况”选项卡上的“重置”图表按身份验证方法显示执行密码重置流期间成功和失败的身份验证数。  
+“注册”选项卡上的“注册”图表按身份验证方法显示成功和失败的身份验证方法注册数。  “使用情况”选项卡上的“重置”图表按身份验证方法显示执行密码重置流期间成功和失败的身份验证数。 
 
 单击其中的任一图表会转到注册或重置事件的预筛选列表。
 
@@ -61,7 +61,7 @@ ms.locfileid: "82126218"
 
 ### <a name="registration-details"></a>注册详细信息
 
-单击“已注册用户”、“已启用用户”或“已赋能用户”磁贴或见解会转到注册详细信息。   
+单击“已注册用户”、“已启用用户”或“已赋能用户”磁贴或见解会转到注册详细信息。  
 
 注册详细信息报告显示每个用户的以下信息：
 
@@ -93,6 +93,8 @@ ms.locfileid: "82126218"
 这些报告中显示的数据最长会延迟 60 分钟。 Azure 门户中存在一个“上次刷新时间”字段，用于标识数据的更新程度。
 
 使用情况和见解数据不能取代 Azure 多重身份验证活动报告，也不能取代 Azure AD 登录报告中包含的信息。
+
+当前无法筛选报表并排除外部用户。
 
 ## <a name="next-steps"></a>后续步骤
 

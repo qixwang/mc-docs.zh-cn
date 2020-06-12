@@ -2,18 +2,17 @@
 title: 排查 Azure Application Insights 可用性测试问题 | Microsoft Docs
 description: 排查 Azure Application Insights 中的 Web 测试问题。 当网站不可用或响应速度缓慢时接收警报。
 ms.topic: conceptual
-author: lingliw
-manager: digimobile
+author: Johnnytechn
+ms.author: v-johya
 origin.date: 09/19/2019
-ms.date: 09/20/2019
+ms.date: 05/28/2020
 ms.reviewer: sdash
-ms.author: v-lingwu
-ms.openlocfilehash: 634618c2e7cd2aceb760066243823f4e0cd17beb
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: f2897c8ede64ad3a2c5dcb1a6e7aab05e0002451
+ms.sourcegitcommit: 5ae04a3b8e025986a3a257a6ed251b575dbf60a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78850353"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84440719"
 ---
 # <a name="troubleshooting"></a>故障排除
 
@@ -29,7 +28,7 @@ ms.locfileid: "78850353"
 
 ### <a name="possible-workaround"></a>可能的解决方法
 
-* 如果遇到问题的 URL 始终指向依赖资源，建议对 Web 测试禁用“分析从属请求”  。
+* 如果遇到问题的 URL 始终指向依赖资源，建议对 Web 测试禁用“分析从属请求”。
 
 ## <a name="test-fails-only-from-certain-locations"></a>测试仅在某些位置失败
 
@@ -52,7 +51,7 @@ ms.locfileid: "78850353"
 
 ### <a name="site-looks-okay-but-i-see-test-failures-why-is-application-insights-alerting-me"></a>站点看似正常，但我看见测试失败了？ 为何 Application Insights 会向我发出警报？
 
-   * 你的测试是否启用了“分析从属请求”  ？ 这会导致严格检查脚本、图像等资源。这类故障在浏览器上可能不明显。 检查所有图像、脚本、样式表和页面加载的任何其他文件。 如果其中有任何一个失败，即使 HTML 主页正常加载，测试也会报告为失败。 若要使测试对此类资源故障不再敏感，只需在测试配置中取消选中“分析从属请求”即可。
+   * 你的测试是否启用了“分析从属请求”？ 这会导致严格检查脚本、图像等资源。这类故障在浏览器上可能不明显。 检查所有图像、脚本、样式表和页面加载的任何其他文件。 如果其中有任何一个失败，即使 HTML 主页正常加载，测试也会报告为失败。 若要使测试对此类资源故障不再敏感，只需在测试配置中取消选中“分析从属请求”即可。
 
    * 若要降低暂时性网络问题等各方面因素导致的干扰，请确保选中“测试故障时允许重试”配置。 也可从多个位置进行测试并对警报规则阈值进行相应的管理，防止在出现特定于位置的问题时引发不必要的警报。
 
@@ -69,6 +68,10 @@ ms.locfileid: "78850353"
 ### <a name="i-did-not-receive-the-webhook-notification"></a>我尚未收到 Webhook 通知？
 
 检查以确保接收 Webhook 通知的应用程序可用并成功处理 Webhook 请求。 有关详细信息，请参阅[此文](/azure-monitor/platform/alerts-log-webhook)。
+
+### <a name="i-am-getting--403-forbidden-errors-what-does-this-mean"></a>我收到了 403 禁止访问的错误，这是什么意思？
+
+此错误表示你需要添加防火墙例外以允许可用性代理测试目标 URL。 有关要允许的代理 IP 地址的完整列表，请参阅 [IP 异常文章](/azure-monitor/app/ip-addresses#availability-tests)。
 
 ### <a name="intermittent-test-failure-with-a-protocol-violation-error"></a>间歇性测试失败，出现违反协议错误？
 
@@ -119,12 +122,12 @@ ms.locfileid: "78850353"
 
 * 建议将经典警报通知用于特定接收人。
 
-* 对于 Y 个位置中 X 个位置的失败相关警报，如已启用“批/组”  复选框选项，会向具有管理员/共同管理员角色的用户发送相关通知。  实质上是_订阅_的_所有_管理员均会收到通知。
+* 对于 Y 个位置中 X 个位置的失败相关警报，如已启用“批/组”复选框选项，会向具有管理员/共同管理员角色的用户发送相关通知。  实质上是_订阅_的_所有_管理员均会收到通知。
 
-* 对于可用性指标警报，“批量/组”复选框选项（如果已启用）将发送给订阅中具有所有者、参与者或阅读者角色的用户  。 实际上，可以访问包含 Application Insights 资源在内的订阅的所有用户均会收到通知  。 
+* 对于可用性指标警报，“批量/组”复选框选项（如果已启用）将发送给订阅中具有所有者、参与者或阅读者角色的用户。 实际上，可以访问包含 Application Insights 资源在内的订阅的所有用户均会收到通知。 
 
 > [!NOTE]
-> 如果当前使用“批/组”复选框选项并禁用它，则无法还原更改  。
+> 如果当前使用“批/组”复选框选项并禁用它，则无法还原更改。
 
 如果需要根据用户角色通知用户，请使用新的警报体验/近实时警报。 使用[操作组](../platform/action-groups.md)，可以为具有任何参与者/所有者/读者角色（未融合为单一选项）的用户配置电子邮件通知。
 
@@ -132,3 +135,4 @@ ms.locfileid: "78850353"
 
 * [多步骤 Web 测试](availability-multistep.md)
 * [URL ping 测试](monitor-web-app-availability.md)
+

@@ -4,16 +4,16 @@ description: 解答有关 Azure Monitor 的常见问题。
 services: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: lingliw
-ms.author: v-lingwu
+author: Johnnytechn
+ms.author: v-johya
 origin.date: 01/23/2020
-ms.date: 03/06/2020
-ms.openlocfilehash: a63546213747d35dbc59ab64491b757192235f22
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/28/2020
+ms.openlocfilehash: b74f8728e6468908b393b14d400afb96195db66d
+ms.sourcegitcommit: 5ae04a3b8e025986a3a257a6ed251b575dbf60a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78850484"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84440729"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor 常见问题解答
 
@@ -28,22 +28,19 @@ ms.locfileid: "78850484"
 2018 年 9 月，Microsoft 将 Azure Monitor、Log Analytics 和 Application Insights 整合到了单个服务中，以针对应用程序及其依赖的组件提供强有力的端到端监视功能。 Log Analytics 和 Application Insights 中的功能未有变化，不过，某些功能以采用 Azure Monitor 这一名称的方式重新推出，以便更好地反映其新的应用范围。 Log Analytics 的日志数据引擎和查询语言现在称为 Azure Monitor 日志。 请参阅 [Azure Monitor 术语更新](terminology.md)。
 
 ### <a name="what-does-azure-monitor-cost"></a>Azure Monitor 如何收费？
-自动启用的 Azure Monitor 功能（例如指标和活动日志的收集）是免费提供的。 日志查询和警报等其他功能会产生相关的费用。 有关详细定价信息，请参阅 [Azure Monitor 定价页](https://www.azure.cn/pricing/details/monitor/index.html)。
+自动启用的 Azure Monitor 功能（例如指标和活动日志的收集）是免费提供的。 日志查询和警报等其他功能会产生相关的费用。 有关详细定价信息，请参阅 [Azure Monitor 定价页](https://www.azure.cn/pricing/details/monitor/)。
 
 ### <a name="how-do-i-enable-azure-monitor"></a>如何启用 Azure Monitor？
 在创建新的 Azure 订阅时即会启用 Azure Monitor，然后会自动收集[活动日志](platform/activity-logs-overview.md)和平台[指标](platform/data-platform-metrics.md)。 创建[诊断设置](platform/diagnostic-settings.md)可以收集有关 Azure 资源操作的更多详细信息，添加[监视解决方案](insights/solutions.md)和[见解](insights/insights-overview.md)可以针对收集的特定服务数据提供额外的分析。 
 
 ### <a name="how-do-i-access-azure-monitor"></a>如何访问 Azure Monitor？
-可以通过 Azure 门户中的“监视”菜单访问所有 Azure Monitor 功能和数据。  可以通过不同 Azure 服务的“监视”菜单部分访问相同的工具，在这种情况下，会按照特定的资源筛选数据。  对于多种使用 CLI、PowerShell 和 REST API 的方案，Azure Monitor 数据也是可访问的。
+可以通过 Azure 门户中的“监视”菜单访问所有 Azure Monitor 功能和数据。 可以通过不同 Azure 服务的“监视”菜单部分访问相同的工具，在这种情况下，会按照特定的资源筛选数据。 对于多种使用 CLI、PowerShell 和 REST API 的方案，Azure Monitor 数据也是可访问的。
 
 ### <a name="is-there-an-on-premises-version-of-azure-monitor"></a>Azure Monitor 是否有本地版本？
 否。 Azure Monitor 是可以处理和存储大量数据的可缩放云服务，不过，Azure Monitor 还可以监视本地和其他云中的资源。
 
 ### <a name="can-azure-monitor-monitor-on-premises-resources"></a>Azure Monitor 是否可以监视本地资源？
 是的，除了从 Azure 资源收集监视数据以外，Azure Monitor 还可以从其他云中和本地的虚拟机与应用程序收集数据。 请参阅 [Azure Monitor 的监视数据源](platform/data-sources.md)。
-
-### <a name="does-azure-monitor-integrate-with-system-center-operations-manager"></a>Azure Monitor 是否与 System Center Operations Manager 集成？
-可将现有的 System Center Operations Manager 管理组连接到 Azure Monitor，以将代理中的数据收集到 Azure Monitor 日志中。 这样，就可以使用日志查询和解决方案来分析从代理收集的数据。 还可以将现有的 System Center Operations Manager 代理配置为直接向 Azure Monitor 发送数据。 请参阅[将 Operations Manager 连接到 Azure Monitor](platform/om-agents.md)。
 
 ### <a name="what-ip-addresses-does-azure-monitor-use"></a>Azure Monitor 使用哪些 IP 地址？
 有关代理和其他外部资源访问 Azure Monitor 所需的 IP 地址与端口的列表，请参阅 [Application Insights 和 Log Analytics 使用的 IP 地址](app/ip-addresses.md)。 
@@ -57,31 +54,22 @@ Azure Monitor 从各种源（包括来自 Azure 平台和资源、自定义应�
 Azure Monitor 将各种源的数据收集到[日志](platform/data-platform-logs.md)或[指标](platform/data-platform-metrics.md)中。 每种数据类型具有自身的相对优势，每种类型支持 Azure Monitor 中特定的一组功能。 每个 Azure 订阅有一个指标数据库，同时，你可以根据需要创建多个 Log Analytics 工作区来收集日志。 请参阅 [Azure Monitor 数据平台](platform/data-platform.md)。
 
 ### <a name="is-there-a-maximum-amount-of-data-that-i-can-collect-in-azure-monitor"></a>在 Azure Monitor 中可以收集的数据量是否有上限？
-可收集的指标数据量没有限制，但这些数据最多只能存储 93 天。 请参阅[指标的保留期](platform/data-platform-metrics.md#retention-of-metrics)。 可收集的日志数据量没有限制，但你为 Log Analytics 工作区选择的定价层可能会影响你可以收集的数据量。 请参阅[定价详细信息](https://azure.microsoft.com/pricing/details/monitor/)。
+可收集的指标数据量没有限制，但这些数据最多只能存储 93 天。 请参阅[指标的保留期](platform/data-platform-metrics.md#retention-of-metrics)。 可收集的日志数据量没有限制，但你为 Log Analytics 工作区选择的定价层可能会影响你可以收集的数据量。 请参阅[定价详细信息](https://www.azure.cn/pricing/details/monitor/)。
 
 ### <a name="how-do-i-access-data-collected-by-azure-monitor"></a>如何访问 Azure Monitor 收集的数据？
 见解和解决方案提供自定义的体验用于处理 Azure Monitor 中存储的数据。 可以使用以 Kusto 查询语言 (KQL) 编写的日志查询直接处理日志数据。 在 Azure 门户中，可以编写和运行查询，并使用 Log Analytics 以交互方式分析数据。 在 Azure 门户中使用指标资源管理器分析指标。 请参阅[在 Azure Monitor 中分析日志数据](log-query/log-query-overview.md)和 [Azure 指标资源管理器入门](platform/metrics-getting-started.md)。
-
-
-
-
 
 ## <a name="solutions-and-insights"></a>解决方案和见解
 
 ### <a name="what-is-an-insight-in-azure-monitor"></a>Azure Monitor 中的见解是什么？
 见解针对特定的 Azure 服务提供自定义的监视体验。 它们使用的指标和日志与 Azure Monitor 中的其他功能相同，但可以收集更多数据，并在 Azure 门户中提供独特的体验。 请参阅 [Azure Monitor 中的见解](insights/insights-overview.md)。
 
-若要在 Azure 门户中查看见解，请查看“监视”菜单的“见解”部分，或查看服务菜单的“监视”部分。   
+若要在 Azure 门户中查看见解，请查看“监视”菜单的“见解”部分，或查看服务菜单的“监视”部分。  
 
 ### <a name="what-is-a-solution-in-azure-monitor"></a>Azure Monitor 中的解决方案是什么？
 监视解决方案是打包的逻辑集，用于根据 Azure Monitor 功能监视特定的应用程序或服务。 它们在 Azure Monitor 中收集日志数据，并使用 Azure 门户中的常用体验为它们的分析提供日志查询和视图。 请参阅 [Azure Monitor 中的监视解决方案](insights/solutions.md)。
 
-若要在 Azure 门户中查看解决方案，请在“监视”菜单的“见解”部分单击“更多”。    单击“添加”可将更多解决方案添加到工作区中。 
-
-
-
-
-
+若要在 Azure 门户中查看解决方案，请在“监视”菜单的“见解”部分单击“更多”。   单击“添加”可将更多解决方案添加到工作区中。
 
 ## <a name="logs"></a>日志
 
@@ -99,16 +87,13 @@ Azure Monitor 收集的所有日志数据存储在 Log Analytics 工作区中。
 
 ### <a name="why-cant-i-see-query-explorer-and-save-buttons-in-log-analytics"></a>Log Analytics 中为何不显示“查询资源管理器”和“保存”按钮？
 
-当[查询范围](log-query/scope.md)设置为特定的资源时，不会显示“查询资源管理器”、“保存”和“新建警报规则”按钮。    若要创建警报，或者要保存或加载查询，Log Analytics 的范围必须限定于某个工作区。 若要在工作区上下文中打开 Log Analytics，请从“Azure Monitor”菜单中选择“日志”。   选择的是上次使用的工作区，但可以选择任何其他的工作区。 请参阅 [Azure Monitor Log Analytics 中的日志查询范围和时间范围](log-query/scope.md)
+当[查询范围](log-query/scope.md)设置为特定的资源时，不会显示“查询资源管理器”、“保存”和“新建警报规则”按钮。   若要创建警报，或者要保存或加载查询，Log Analytics 的范围必须限定于某个工作区。 若要在工作区上下文中打开 Log Analytics，请从“Azure Monitor”菜单中选择“日志”。  选择的是上次使用的工作区，但可以选择任何其他的工作区。 请参阅 [Azure Monitor Log Analytics 中的日志查询范围和时间范围](log-query/scope.md)
 
 ### <a name="why-am-i-getting-the-error-register-resource-provider-microsoftinsights-for-this-subscription-to-enable-this-query-when-opening-log-analytics-from-a-vm"></a>为什么从 VM 钻取进去后，我会在日志中发现以下错误：从 VM 打开 Log Analytics 时，为何显示“请为此订阅注册资源提供程序 'Microsoft.Insights' 以启用此查询”？ 
 许多资源提供程序会自动注册，但某些资源提供程序可能需要手动注册。 注册的作用域始终是订阅。 有关详细信息，请参阅[资源提供程序和类型](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)。
 
 ### <a name="why-am-i-am-getting-no-access-error-message-when-opening-log-analytics-from-a-vm"></a>从 VM 打开 Log Analytics 时，为何出现“无访问权限”错误消息？ 
 若要查看 VM 日志，需获得存储 VM 日志的工作区的读取权限。 在这些示例中，管理员必须在 Azure 中为你授予相关权限。
-
-
-
 
 ## <a name="alerts"></a>警报
 
@@ -121,7 +106,7 @@ Azure Monitor 收集的所有日志数据存储在 Log Analytics 工作区中。
 - Web 测试 - 可用性测试的结果与定义的条件相匹配。
 
 
-请参阅 [Microsoft Azure 中的警报概述](platform/alerts-overview.md)。
+请查看 [Azure 中的警报概述](platform/alerts-overview.md)。
 
 
 ### <a name="what-is-an-action-group"></a>什么是操作组？
@@ -130,7 +115,6 @@ Azure Monitor 收集的所有日志数据存储在 Log Analytics 工作区中。
 
 ### <a name="what-is-an-action-rule"></a>什么是操作规则？
 操作规则可让你修改与特定条件匹配的一组警报的行为。 这样，你便可以在维护时段履行诸如禁用警报操作之类的要求。 还可以将操作组应用到一组警报，而不是将其直接应用到警报规则。 请参阅[操作规则](platform/alerts-action-rules.md)。
-
 
 ## <a name="agents"></a>代理
 
@@ -146,10 +130,10 @@ Azure 诊断扩展适用于 Azure 虚拟机，它将数据收集到 Azure Monito
 发往 Azure Monitor 的流量使用 Microsoft 对等互连 ExpressRoute 线路。 有关不同类型的 ExpressRoute 流量的说明，请参阅 [ExpressRoute 文档](../expressroute/expressroute-faqs.md#supported-services)。 
 
 ### <a name="how-can-i-confirm-that-the-log-analytics-agent-is-able-to-communicate-with-azure-monitor"></a>如何确认 Log Analytics 代理能够与 Azure Monitor 通信？
-在代理计算机上的控制面板中，选择“安全性和设置”>“Microsoft Monitoring Agent”。   在“Azure Log Analytics (OMS)”选项卡下，出现绿色的复选标记图标即表示代理能够与 Azure Monitor 通信。  黄色警告图标表示代理有问题。 一个常见原因是 **Microsoft Monitoring Agent** 服务已停止。 请使用服务控制管理器重启该服务。
+在代理计算机上的控制面板中，选择“安全性和设置”>“Microsoft Monitoring Agent”。  在“Azure Log Analytics (OMS)”选项卡下，出现绿色的复选标记图标即表示代理能够与 Azure Monitor 通信。 黄色警告图标表示代理有问题。 一个常见原因是 **Microsoft Monitoring Agent** 服务已停止。 请使用服务控制管理器重启该服务。
 
 ### <a name="how-do-i-stop-the-log-analytics-agent-from-communicating-with-azure-monitor"></a>如何阻止 Log Analytics 代理与 Azure Monitor 通信？
-对于已直接连接到 Log Analytics 的代理，请打开控制面板，并选择“安全性和设置”>“Microsoft Monitoring Agent”。   在“Azure Log Analytics (OMS)”选项卡下，删除列出的所有工作区。  在 System Center Operations Manager 中，从 Log Analytics 托管的计算机列表中删除该计算机。 Operations Manager 会更新该代理的配置以便不再向 Log Analytics 进行报告。 
+对于已直接连接到 Log Analytics 的代理，请打开控制面板，并选择“安全性和设置”>“Microsoft Monitoring Agent”。  在“Azure Log Analytics (OMS)”选项卡下，删除列出的所有工作区。 在 System Center Operations Manager 中，从 Log Analytics 托管的计算机列表中删除该计算机。 Operations Manager 会更新该代理的配置以便不再向 Log Analytics 进行报告。 
 
 ### <a name="how-much-data-is-sent-per-agent"></a>每个代理发送多少数据？
 每个代理发送的数据量取决于：
@@ -181,25 +165,24 @@ WireData
 - **警报条件** 
    - **信号名称**：*自定义日志搜索*
    - **搜索查询**：`Heartbeat | summarize LastCall = max(TimeGenerated) by Computer | where LastCall < ago(15m)`
-   - **警报逻辑**：**基于**  结果数，**条件**  大于，**阈值**  0
-   - **评估依据**：**期限（分钟）**  30，**频率（分钟）**  10
+   - **警报逻辑**：**基于** 结果数，**条件** 大于，**阈值** 0
+   - **评估依据**：**期限（分钟）** 30，**频率（分钟）** 10
 - **定义警报详细信息** 
-   - **名称**：“数据收集已停止” 
+   - **名称**：“数据收集已停止”
    - **严重性**：*警告*
 
 指定现有或新的[操作组](platform/action-groups.md)，以便当日志警报与条件匹配时可以收到通知（如果检测信号丢失时间超过 15 分钟）。
 
 
 ### <a name="what-are-the-firewall-requirements-for-azure-monitor-agents"></a>Azure Monitor 代理的防火墙要求是什么？
-有关防火墙要求的详细信息，请参阅[网络防火墙要求](platform/log-analytics-agent.md#network-firewall-requirements)。
+有关防火墙要求的详细信息，请参阅[网络防火墙要求](platform/log-analytics-agent.md#network-requirements)。
 
 
 ## <a name="visualizations"></a>可视化效果
 
-### <a name="why-cant-i-cant-see-view-designer"></a>为何看不到视图设计器？
+### <a name="why-cant-i-see-view-designer"></a>我为何看不到视图设计器？
 
 只有在 Log Analytics 工作区中分配有“参与者”权限或更高权限的用户才能看到视图设计器。
-
 
 ## <a name="application-insights"></a>Application Insights
 
@@ -211,11 +194,15 @@ WireData
 * [Azure 诊断](platform/diagnostics-extension-to-application-insights.md)
 * [Java Web 应用](app/java-troubleshoot.md)
 
-*我无法从服务器获取任何数据*
+*我无法从服务器获取任何数据：*
 
 * [设置防火墙异常](app/ip-addresses.md)
 * [设置 ASP.NET 服务器](app/monitor-performance-live-website-now.md)
 * [设置 Java 服务器](app/java-agent.md)
+
+*我应该部署多少 Application Insights：*
+
+* [如何设计 Application Insights 部署：一个还是多个 Application Insights 资源？](app/separate-resources.md)
 
 ### <a name="can-i-use-application-insights-with-"></a>是否可以将 Application Insights 用于...？
 
@@ -226,7 +213,6 @@ WireData
 * [Azure 上的 Web 应用](app/azure-web-apps.md)
 * [Azure 上的云服务](app/cloudservices.md)
 * [单页 Web 应用](app/javascript.md)
-* [SharePoint](app/sharepoint.md)
 * [Windows 桌面应用](app/windows-desktop.md)
 * [其他平台](app/platforms.md)
 
@@ -242,7 +228,7 @@ WireData
 
 ### <a name="how-much-does-it-cost"></a>它的成本是多少？
 
-* 在 Application Insights 资源中打开“使用情况和估算成本”页面。  此处提供了一个最近使用情况的图表。 如果愿意，可以设置数据上限。
+* 在 Application Insights 资源中打开“使用情况和估算成本”页面。 此处提供了一个最近使用情况的图表。 如果愿意，可以设置数据上限。
 * 打开 [Azure 计费边栏选项卡](https://portal.azure.cn/#blade/Microsoft_Azure_Billing/BillingBlade/Overview)查看所有资源的帐单。
 
 ### <a name="what-does-application-insights-modify-in-my-project"></a><a name="q14"></a>Application Insights 在我的项目中修改哪些内容？
@@ -267,7 +253,11 @@ WireData
 请参阅[发行说明](app/release-notes.md)了解对应于应用程序类型的 SDK。
 
 ### <a name="how-can-i-change-which-azure-resource-my-project-sends-data-to"></a><a name="update"></a>如何更改项目向哪个 Azure 资源发送数据？
-在解决方案资源管理器中，右键单击 `ApplicationInsights.config` 并选择“更新 Application Insights”  。 可在 Azure 中将数据发送到现有或新资源。 更新向导更改 ApplicationInsights.config 中的检测密钥，该密钥确定服务器 SDK 将数据发送到何处。 除非取消选中“更新全部”，否则它还将在网页中出现密钥的位置更改密钥。
+在解决方案资源管理器中，右键单击 `ApplicationInsights.config` 并选择“更新 Application Insights”。 可在 Azure 中将数据发送到现有或新资源。 更新向导更改 ApplicationInsights.config 中的检测密钥，该密钥确定服务器 SDK 将数据发送到何处。 除非取消选中“更新全部”，否则它还将在网页中出现密钥的位置更改密钥。
+
+### <a name="can-i-use-providersmicrosoftinsights-componentsapiversions0-in-my-azure-resource-manager-deployments"></a>可以在 Azure 资源管理器部署中使用 `providers('Microsoft.Insights', 'components').apiVersions[0]` 吗？
+
+不建议使用此方法来填充 API 版本。 最新版本可以表示预览版本，该版本可能包含重大更改。 即使使用较新的非预览版本，API 版本也并不总是向后兼容现有的模板，或者在某些情况下，API 版本可能不适用于所有订阅。
 
 ### <a name="what-is-status-monitor"></a>什么是状态监视器？
 
@@ -321,13 +311,15 @@ WireData
 
 可以配置 `ClientIpHeaderTelemetryInitializer`，从不同的标头获取 IP 地址。 例如，在某些系统中，代理、负载均衡器或 CDN 会将其移动到 `X-Originating-IP`。 [了解详细信息](https://apmtips.com/blog/2016/07/05/client-ip-address/)。
 
+可以[使用 Power BI](app/export-power-bi.md ) 在映射中显示请求遥测。
+
 
 ### <a name="how-long-is-data-retained-in-the-portal-is-it-secure"></a><a name="data"></a>数据在门户中保留多长时间？ 是否安全？
 请参阅[数据保留和隐私][data]。
 
 ### <a name="what-happens-to-application-insights-telemetry-when-a-server-or-device-loses-connection-with-azure"></a>当服务器或设备与 Azure 断开连接时，Application Insights 的遥测数据会发生什么情况？
 
-所有 SDK（包括 Web SDK）都提供“可靠传输”或“稳健传输”。 当服务器或设备与 Azure 断开连接时，遥测数据将[存储在文件系统本地](https://docs.microsoft.com/azure/azure-monitor/app/data-retention-privacy#does-the-sdk-create-temporary-local-storage)（服务器 SDK）或存储在 HTML5 会话存储中 (Web SDK)。 SDK 会定期重试发送此遥测数据，直到引入服务将此数据视为“已过时”（对于日志，为 48 小时；对于指标，为 30 分钟）。 过时的遥测数据将被删除。 在某些情况下（例如本地存储已满时），将不会重试。
+所有 SDK（包括 Web SDK）都提供“可靠传输”或“稳健传输”。 当服务器或设备与 Azure 断开连接时，遥测数据将[存储在文件系统本地](/azure-monitor/app/data-retention-privacy#does-the-sdk-create-temporary-local-storage)（服务器 SDK）或存储在 HTML5 会话存储中 (Web SDK)。 SDK 会定期重试发送此遥测数据，直到引入服务将此数据视为“已过时”（对于日志，为 48 小时；对于指标，为 30 分钟）。 过时的遥测数据将被删除。 在某些情况下（例如本地存储已满时），将不会重试。
 
 
 ### <a name="could-personal-data-be-sent-in-the-telemetry"></a>是否可能会在遥测中发送个人数据？
@@ -409,7 +401,7 @@ WireData
 
 #### <a name="querying-the-telemetry"></a>查询遥测
 
-使用 [REST API](https://dev.applicationinsights.io/) 运行 Analytics 查询。
+使用 [REST API](https://dev.applicationinsights.io/) 运行 [Analytics](log-query/log-query-overview.md) 查询。
 
 ### <a name="how-can-i-set-an-alert-on-an-event"></a>如何设置事件警报？
 
@@ -418,13 +410,13 @@ Azure 警报仅出现在指标上。 创建一个每当事件发生时都跨越�
 ### <a name="are-there-data-transfer-charges-between-an-azure-web-app-and-application-insights"></a>Azure Web 应用和 Application Insights 之间是否有数据传输费用？
 
 * 如果 Azure Web 应用托管在具有 Application Insights 集合终结点的数据中心内，则不收取费用。 
-
+* 如果主机数据中心没有集合终结点，那么应用的遥测会产生 [ Azure 传出费用](https://www.azure.cn/pricing/details/bandwidth/)。
 
 这与 Application Insights 资源的托管位置无关。 它只取决于终结点的分布情况。
 
 ### <a name="can-i-send-telemetry-to-the-application-insights-portal"></a>是否可以将遥测数据发送到 Application Insights 门户？
 
-建议使用我们的 SDK 并使用 [SDK API](app/api-custom-events-metrics.md)。 为各种[平台](app/platforms.md)提供了相应的 SDK 变体。 这些 SDK 可处理缓冲、压缩、限制以及重试等。 但是，[引入架构](https://github.com/Microsoft/ApplicationInsights-dotnet/tree/develop/Schema/PublicSchema)和[终结点协议](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/EndpointSpecs/ENDPOINT-PROTOCOL.md)是公共的。
+建议使用我们的 SDK 并使用 [SDK API](app/api-custom-events-metrics.md)。 为各种[平台](app/platforms.md)提供了相应的 SDK 变体。 这些 SDK 可处理缓冲、压缩、限制以及重试等。 但是，[引入架构](https://github.com/microsoft/ApplicationInsights-dotnet/tree/master/BASE/Schema/PublicSchema)和[终结点协议](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/EndpointSpecs/ENDPOINT-PROTOCOL.md)是公共的。
 
 ### <a name="can-i-monitor-an-intranet-web-server"></a>是否可以监视 Intranet Web 服务器？
 
@@ -497,7 +489,7 @@ Azure 警报仅出现在指标上。 创建一个每当事件发生时都跨越�
 
 ### <a name="how-long-does-it-take-for-telemetry-to-be-collected"></a>收集遥测数据需要多长时间？
 
-大多数 Application Insights 数据的延迟小于 5 分钟。 有些数据可能需要更长的时间，通常是较大的日志文件。 有关详细信息，请参阅 [Application Insights SLA](https://azure.microsoft.com/support/legal/sla/application-insights/v1_2/)。
+大多数 Application Insights 数据的延迟小于 5 分钟。 有些数据可能需要更长的时间，通常是较大的日志文件。
 
 
 
@@ -506,13 +498,35 @@ Azure 警报仅出现在指标上。 创建一个每当事件发生时都跨越�
 [data]: app/data-retention-privacy.md
 [platforms]: app/platforms.md
 [start]: app/app-insights-overview.md
-[windows]: app/app-insights-windows-get-started.md
-
 
 
 ## <a name="azure-monitor-for-containers"></a>用于容器的 Azure Monitor
 
 本 Microsoft 常见问题解答列出了用于容器的 Azure Monitor 的常见问题。 如果对该解决方案还有其他任何问题，请访问 [support-azure](https://support.azure.cn/zh-cn/support/support-azure/) 并发布问题。 当某个问题经常被问到时，我们会将该问题添加到本文中，以便可以轻松快捷地找到该问题。
+
+### <a name="what-does-other-processes-represent-under-the-node-view"></a>*其他进程* 在节点视图下表示什么？
+
+“其他进程”旨在帮助你清楚了解节点上资源使用率较高的根本原因。 让你可以区分容器化进程与非容器化进程之间的使用情况。
+
+这些“其他进程”是什么？ 
+
+这些是运行在节点上的非容器化进程。  
+
+如何对其进行计算？
+
+其他进程  = CAdvisor 中的总用量  -  容器化进程的用量 
+
+“其他进程”包括：
+
+- 自行托管的或托管 Kubernetes 非容器化进程 
+
+- 容器运行时进程  
+
+- Kubelet  
+
+- 节点上运行的系统进程 
+
+- 其他在节点硬件或 VM 上运行的非 Kubernetes 工作负载 
 
 ### <a name="i-dont-see-image-and-name-property-values-populated-when-i-query-the-containerlog-table"></a>我看不到在查询 ContainerLog 表时填充的图像和名称属性值。
 
@@ -571,9 +585,9 @@ ContainerLog
 
 ContainerInventory 表包含已停止和正在运行的容器的信息。 此表由代理中的一个工作流进行填充，该工作流查询 Docker 中的所有容器（正在运行的和已停止的），并将该数据转发到 Log Analytics 工作区。
  
-### <a name="how-do-i-resolve-missing-subscription-registration-error"></a>如何解决“缺少订阅注册”  错误？
+### <a name="how-do-i-resolve-missing-subscription-registration-error"></a>如何解决“缺少订阅注册”错误？
 
-如果收到“缺少 Microsoft.OperationsManagement 的订阅注册”  错误，则可以通过在定义了工作区的订阅中注册资源提供程序 **Microsoft.OperationsManagement** 来解决该错误。 可以在[此处](../azure-resource-manager/templates/error-register-resource-provider.md)找到介绍如何执行此操作的文档。
+如果收到“缺少 Microsoft.OperationsManagement 的订阅注册”错误，则可以通过在定义了工作区的订阅中注册资源提供程序 **Microsoft.OperationsManagement** 来解决该错误。 可以在[此处](../azure-resource-manager/templates/error-register-resource-provider.md)找到介绍如何执行此操作的文档。
 
 ### <a name="is-there-support-for-rbac-enabled-aks-clusters"></a>是否支持启用了 RBAC 的 AKS 群集？
 
@@ -605,7 +619,7 @@ console.log(json.stringify({
 在你查询时，此数据将类似于用于日志的 Azure Monitor 中的以下示例：
 
 ```
-LogEntry : ({“Hello": "This example has multiple lines:","Docker/Moby": "will not break this into multiple lines", "and you will receive":"all of them in log analytics", "as one": "log entry"}
+LogEntry : ({"Hello": "This example has multiple lines:","Docker/Moby": "will not break this into multiple lines", "and you will receive":"all of them in log analytics", "as one": "log entry"}
 
 ```
 
@@ -623,13 +637,11 @@ LogEntry : ({“Hello": "This example has multiple lines:","Docker/Moby": "will 
 
 有关 Azure 云、Azure 美国政府云和 Azure 中国世纪互联云的容器化代理所需的代理和防火墙配置信息，请参阅[网络防火墙要求](insights/container-insights-onboard.md#network-firewall-requirements)。
 
-## <a name="azure-monitor-for-vms-preview"></a>用于 VM 的 Azure Monitor（预览版）
-本 Microsoft 常见问题解答列出了用于 VM 的 Azure Monitor 的常见问题。 如果对该解决方案还有其他任何问题，请访问 [support-azure](https://support.azure.cn/zh-cn/support/support-azure/) 并发布问题。 当某个问题经常被问到时，我们会将该问题添加到本文中，以便可以轻松快捷地找到该问题。
+## <a name="azure-monitor-for-vms"></a>用于 VM 的 Azure Monitor
+本 Microsoft 常见问题解答列出了用于 VM 的 Azure Monitor 的常见问题。 如果对该解决方案还有其他任何问题，请访问[论坛](https://feedback.azure.com/forums/34192--general-feedback)并发布问题。 当某个问题经常被问到时，我们会将该问题添加到本文中，以便可以轻松快捷地找到该问题。
 
 ### <a name="can-i-onboard-to-an-existing-workspace"></a>是否可以载入到现有工作区？
-如果虚拟机已连接到 Log Analytics 工作区，在将它们载入到用于 VM 的 Azure Monitor 时，可以继续使用该工作区。
-
-载入时，我们将配置该工作区的性能计数器，使得向该工作区报告数据的所有 VM 都会开始收集此信息，以便在用于 VM 的 Azure Monitor 中进行显示和分析。  因此，你会看到与所选工作区连接的所有 VM 发出的性能数据。  只会为指定载入的 VM 启用“运行状况”和“映射”功能。
+如果虚拟机已连接到 Log Analytics 工作区，则在载入到用于 VM 的 Azure Monitor 时，可以继续使用该工作区，前提是该工作区位于某个受支持区域中。
 
 
 ### <a name="can-i-onboard-to-a-new-workspace"></a>是否可以载入到新工作区？ 
@@ -640,48 +652,20 @@ LogEntry : ({“Hello": "This example has multiple lines:","Docker/Moby": "will 
 如果你已开始从虚拟机收集数据，则可能已将虚拟机配置为向现有的 Log Analytics 工作区报告数据。  只要该工作区在某个受支持区域中，就可以在该现有工作区中启用用于 VM 的 Azure Monitor。  如果使用的工作区不在受支持的区域中，则目前无法载入到用于 VM 的 Azure Monitor。  我们将力求支持更多的区域。
 
 
-在载入过程中，我们会检查上述每个步骤的状态，并在门户中返回通知状态。 配置工作区和安装代理通常需要 5 到 10 分钟。 在门户中查看监视和运行状况数据需要额外的 5 到 10 分钟时间。  
+### <a name="why-did-my-vm-fail-to-onboard"></a>为何我的 VM 无法载入？
+从 Azure 门户载入 Azure VM 时，将执行以下步骤：
+
+* 创建默认的 Log Analytics 工作区（如果已选择该选项）。
+* 使用 VM 扩展在 Azure VM 上安装 Log Analytics 代理（如果确定有必要）。  
+* 使用某个扩展在 Azure VM 上安装用于 VM 的 Azure Monitor 映射依赖项代理（如果确定有必要）。 
+
+在载入过程中，我们会检查上述每个步骤的状态，并在门户中返回通知状态。 配置工作区和安装代理通常需要 5 到 10 分钟。 在门户中查看监视数据需要额外 5 到 10 分钟的时间。  
 
 如果在启动载入后有消息指出 VM 需要载入，则 VM 最长需要花费 30 分钟来完成该过程。 
 
-### <a name="i-only-enabled-azure-monitor-for-vms-why-do-i-see-all-my-vms-monitored-by-the-health-feature"></a>我只启用了用于 VM 的 Azure Monitor，为什么发现所有 VM 都受运行状况功能监视？
-即使只对单个 VM 启动了该操作，也会为连接到 Log Analytics 工作区的所有 VM 启用该功能。
 
-### <a name="can-i-modify-the-schedule-for-when-health-criteria-evaluates-a-condition"></a>能否修改运行状况条件执行状况评估的时间计划？
-不能，在此版本中，无法修改运行状况条件执行任务的时间段和频率。 
-
-### <a name="can-i-disable-health-criteria-for-a-condition-i-dont-need-to-monitor"></a>能否对不需要监视的状况禁用运行状况条件？
-此版本中无法禁用运行状况条件。
-
-### <a name="are-the-health-alert-severities-configurable"></a>能否配置运行状况警报严重级别？  
-运行状况警报严重性不能修改，只能启用或禁用。 另外，某些警报严重级别会根据运行状况条件的状态进行更新。 
-
-### <a name="if-i-reconfigure-the-settings-of-a-particular-health-criteria-can-it-be-scoped-to-a-specific-instance"></a>如果对特定运行状况条件的设置进行了重新配置，此配置能否作用于特定实例？  
-如果修改某个运行状况条件实例的任何设置，则会修改 Azure VM 上相同类型的所有运行状况条件实例。 例如，如果修改对应于逻辑磁盘 C: 的磁盘可用空间运行状况条件实例的阈值，则该阈值会应用到在同一 VM 中发现和监视的其他所有逻辑磁盘。
-
-### <a name="does-the-health-feature-monitor-logical-processors-and-cores"></a>运行状况功能是否会监视逻辑处理器和核心？
-不会，Windows 不包含单个处理器和逻辑处理器级别运行状况条件，仅默认监视 CPU 的总使用率，以根据 Azure VM 可用的逻辑 CPU 总数评估 CPU 压力。 
-
-### <a name="are-all-health-criteria-thresholds-configurable"></a>是否所有运行状况条件阈值均可配置？  
-针对 Windows VM 的运行状况条件的阈值不可修改，因为其运行状况状态已设置为“正在运行”或“可用”   。 从[工作负荷监视器 API](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components) 查询运行状态时，如果出现以下情况，则会服务或实例的 **LessThan** 或 **GreaterThan** 的 *comparisonOperator* 值，以及阈值 **4**： 
-   - DNS 客户端服务运行状况 - 服务未运行。 
-   - DHCP 客户端服务运行状况 - 服务未运行。 
-   - RPC 服务运行状况 - 服务未运行。 
-   - Windows 防火墙服务运行状况 - 服务未运行。
-   - Windows 事件日志服务运行状况 - 服务未运行。 
-   - 服务器服务运行状况 - 服务未运行。 
-   - Windows 远程管理服务运行状况 - 服务未运行。 
-   - 文件系统错误或损坏 - 逻辑磁盘不可用。
-
-以下 Linux 运行状况条件的阈值不可修改，因为其运行状态已设置为 *true*。 从实体的工作负荷监视 API 查询时，运行状态会显示带有值 **LessThan** 的 *comparisonOperator* 以及阈值 **1**，具体取决于上下文： 
-   - 逻辑磁盘状态 - 逻辑磁盘未联机/不可用
-   - 磁盘状态 - 磁盘未联机/不可用
-   - 网络适配器状态 - 网络适配器已禁用
-
-### <a name="how-do-i-modify-alerts-that-are-included-with-the-health-feature"></a>如何修改运行状况功能附带的警报？
-为每个运行状况条件定义的警报规则不会在 Azure 门户中显示。 只能在[工作负荷监视器 API](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components) 中启用或禁用运行状况警报规则。 此外，也无法在 Azure 门户中为运行状况警报分配 [Azure Monitor 操作组](platform/action-groups.md)。 只能使用通知设置 API 来配置在任何时候触发运行状况警报时要触发的操作组。 目前，可以针对 VM 分配操作组，以便针对 VM 激发的所有运行状况警报都会触发相同的操作组  。 如传统的 Azure 警报不同，每个运行状况警报规则没有单独的操作组概念。 此外，触发运行状况警报时，仅支持配置为提供电子邮件或短信通知的操作组。 
-
-
+### <a name="i-dont-see-some-or-any-data-in-the-performance-charts-for-my-vm"></a>我的 VM 性能图表中未显示某些或任何数据
+已对性能图表进行更新以使用存储在 InsightsMetrics 表中的数据。  若要查看这些图表中的数据，需要升级才能使用新的 VM Insights 解决方案。
 
 
 ### <a name="how-is-azure-monitor-for-vms-map-feature-different-from-service-map"></a>用于 VM 的 Azure Monitor 映射功能与服务映射有何不同？
@@ -704,7 +688,7 @@ LogEntry : ({“Hello": "This example has multiple lines:","Docker/Moby": "will 
 是，一旦安装依赖项代理，我们就会从 VM 中收集信息，以根据订阅、资源组、虚拟机规模集和云服务显示组。  如果你一直在使用服务映射并创建了计算机组，则也会显示这些组。  如果你为正在查看的工作区创建了计算机组，那么这些组也会显示在组筛选器中。 
 
 ### <a name="how-do-i-see-the-details-for-what-is-driving-the-95th-percentile-line-in-the-aggregate-performance-charts"></a>如何查看聚合性能图表中驱动第 95 百分位线条的详细信息？
-默认情况下，列表已经过排序，会显示所选指标的第 95 百分位值最大的 VM，但“可用内存”图表除外，其中显示第 5 百分位值最小的计算机。  单击图表会打开“前 N 项列表”视图，其中已选择相应的指标。 
+默认情况下，列表已经过排序，会显示所选指标的第 95 百分位值最大的 VM，但“可用内存”图表除外，其中显示第 5 百分位值最小的计算机。  单击图表会打开“前 N 项列表”视图，其中已选择相应的指标。
 
 ### <a name="how-does-the-map-feature-handle-duplicate-ips-across-different-vnets-and-subnets"></a>“映射”功能如何处理不同 VNet 和子网中的重复 IP？
 如果跨子网和 VNet 复制 VM 或 Azure 虚拟机规模集的 IP 范围，可能导致用于 VM 的 Azure Monitor 映射显示错误的信息。 这是一个已知问题，我们正在研究可改进此体验的选项。
@@ -728,7 +712,7 @@ Azure VM 的概述页基于来宾 VM 中的活动的主机度量值显示图表�
 ### <a name="are-their-limitations-if-i-am-on-the-log-analytics-free-pricing-plan"></a>如果我使用的是 Log Analytics 免费定价计划，它们有何限制？
 如果已经为 Azure Monitor 配置了使用*免费*定价层的 Log Analytics 工作区，则用于 VM 的 Azure Monitor 的映射功能将仅支持已连接到工作区的五台计算机。 如果已有五台 VM 连接到免费工作区，你断开了其中一台 VM 的连接，然后连接到一台新的 VM，则新的 VM 将不受监视并且不会反映在“映射”页上。  
 
-在这种情况下，在你打开 VM 并从左侧窗格中选择“见解(预览版)”  时，甚至在 VM 上安装它后，都将通过“立即尝试”  选项向你发出提示。  但是，如果此 VM 未加入到用于 VM 的 Azure Monitor，则不会像通常情况下那样通过选项向你发出提示。 
+在这种情况下，当打开 VM 并从左侧窗格中选择“见解”时（甚至已在 VM 上安装后），系统都会通过“立即尝试”选项进行提示。   但是，如果此 VM 未加入到用于 VM 的 Azure Monitor，则不会像通常情况下那样通过选项向你发出提示。 
 
 
 ## <a name="next-steps"></a>后续步骤
@@ -738,3 +722,4 @@ Azure VM 的概述页基于来宾 VM 中的活动的主机度量值显示图表�
 - [Application Insights](https://social.msdn.microsoft.com/Forums/vstudio/home?forum=ApplicationInsights)
 
 有关 Azure Monitor 的一般反馈，请访问[反馈论坛](https://support.azure.cn/zh-cn/support/support-azure/)。
+

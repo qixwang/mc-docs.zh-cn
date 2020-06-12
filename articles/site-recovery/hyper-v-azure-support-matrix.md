@@ -6,14 +6,14 @@ manager: digimobile
 ms.service: site-recovery
 ms.topic: conceptual
 origin.date: 01/27/2020
-ms.date: 02/24/2020
+ms.date: 06/08/2020
 ms.author: v-yeche
-ms.openlocfilehash: d9c9133c30af2cc9119a8e0a439c1eb3361fc056
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 136bf0fdca3d3c75262db1a49257110aff871d57
+ms.sourcegitcommit: 5ae04a3b8e025986a3a257a6ed251b575dbf60a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79291379"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84440715"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>将本地 Hyper-V VM 灾难恢复到 Azure 时的支持矩阵
 
@@ -63,6 +63,7 @@ VM 配置 | 复制到 Azure 的 VM 必须满足 [Azure 要求](#azure-vm-require
 来宾 VM 网络：静态 IP (Windows) | 是 | 是
 来宾 VM 网络：静态 IP (Linux) | 否 | 否
 来宾 VM 网络：多 NIC | 是 | 是
+Https Proxy | 否 | 否
 
 ## <a name="azure-vm-network-configuration-after-failover"></a>Azure VM 网络配置（故障转移后）
 

@@ -1,24 +1,25 @@
 ---
 title: Azure 指标资源管理器的高级功能
 description: 了解 Azure Monitor 指标资源管理器的高级功能
-author: lingliw
+author: Johnnytechn
 services: azure-monitor
 ms.topic: conceptual
 origin.date: 01/29/2019
-ms.date: 6/4/2019
-ms.author: v-lingwu
+ms.date: 05/28/2020
+ms.author: v-johya
 ms.subservice: metrics
-ms.openlocfilehash: e1c51fc17c91e1b92bfa837cc13a78d6eb870edd
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 2c1e50b0969a2af31cd028750de3ad23f7e7e4c1
+ms.sourcegitcommit: 5ae04a3b8e025986a3a257a6ed251b575dbf60a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79452405"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84440672"
 ---
 # <a name="advanced-features-of-azure-metrics-explorer"></a>Azure 指标资源管理器的高级功能
 
 > [!NOTE]
 > 本文假定使用者熟悉指标资源管理器的基本功能。 如果你是新用户，希望了解如何创建第一个指标图表，请参阅 [Azure 指标资源管理器入门](metrics-getting-started.md)。
+
 ## <a name="metrics-in-azure"></a>Azure 中的指标
 
 [Azure Monitor 中的指标](data-platform-metrics.md)是随着时间的推移收集和存储的一系列测量值和计数。 有标准（或“平台”）指标和自定义指标。 标准指标由 Azure 平台本身提供。 标准指标反映 Azure 资源的运行状况和使用情况统计信息。 而自定义指标是由应用程序通过[用于自定义事件和指标的 Application Insights API](/azure-monitor/app/api-custom-events-metrics)、[Windows Azure 诊断 (WAD) 扩展](/azure-monitor/platform/diagnostics-extension-overview)或 [Azure Monitor REST API](/azure-monitor/platform/metrics-store-custom-rest-api) 发送给 Azure 的。
@@ -35,18 +36,37 @@ ms.locfileid: "79452405"
 
 ### <a name="multiple-metrics-on-the-same-chart"></a>同一图表上的多个指标
 
-首先，[创建新图表](metrics-getting-started.md#create-your-first-metric-chart)。 单击“添加指标”，然后通过同样的步骤在同一图表上添加另一指标。 
+首先，[创建新图表](metrics-getting-started.md#create-your-first-metric-chart)。 单击“添加指标”，然后通过同样的步骤在同一图表上添加另一指标。
 
    > [!NOTE]
    > 通常情况下，你不会想要在一个图表上拥有度量单位不同（即“毫秒”和“千字节”）或刻度差异显著的多个指标。 此时，可考虑使用多个图表。 单击“添加图表”按钮，即可在指标资源管理器中创建多个图表。
 
 ### <a name="multiple-charts"></a>多个图表
 
-单击“添加图表”，使用另一指标创建另一图表。 
+单击“添加图表”，使用另一指标创建另一图表。
 
 ### <a name="order-or-delete-multiple-charts"></a>将多个图表排序或将其删除
 
 若要将多个图表排序或将其删除，请单击省略号 ( **...** )，以便打开图表菜单并选择适当的菜单项：**向上移动**、**向下移动**或**删除**。
+
+## <a name="changing-aggregation"></a>更改聚合
+
+将指标添加到图表时，指标资源管理器会自动预先选择其默认聚合。 默认值在基本方案中适用，但可以使用不同的聚合来获得有关指标的其他见解。 查看图表上的不同聚合时需要了解指标资源管理器处理它们的方式。 
+
+指标是在一段时间内捕获的一系列度量（或“度量值”）。 绘制图表时，所选指标的值将基于时间粒度进行单独聚合。 [使用指标资源管理器时间选取器面板](metrics-getting-started.md#select-a-time-range)选择时间粒度的大小。 如果没有显式选择时间粒度，则会根据当前选择的时间范围自动选择时间粒度。 确定时间粒度后，在每个时间粒度间隔期间捕获的指标值将聚合并放置在图表上 - 每个时间粒度一个数据点。
+
+例如，假设图表针对“过去 24 小时”时间跨度使用“Average”聚合来显示“服务器响应时间”指标  ：
+
+- 如果时间粒度设置为 30 分钟，则从 48 个聚合数据点绘制图表（例如，折线图连接图表绘图区域中的 48 个点）。 即 24 小时 x 每小时 2 个数据点。 每个数据点表示在每个相关的 30 分钟时间段内发生的服务器请求的所有捕获响应时间的平均值。
+- 如果将时间粒度切换到 15 分钟，将获得 96 个聚合数据点。  即 24 小时 x 每小时 4 个数据点。
+
+指标资源管理器中提供了五种基本的统计信息聚合类型：Sum、Count、Min、Max 和 Average    。 “Sum”聚合有时称为“Total”聚合 。 对于许多指标，指标资源管理器将隐藏完全不相关且无法使用的聚合。
+
+- **Sum** - 在聚合间隔内捕获的所有值的总和
+- **Count** - 在聚合间隔内捕获的度量的数目。 请注意，在捕获的指标值始终为 1 的情况下，“Count”将等于“Sum” 。 当指标跟踪不同事件的计数，并且每个度量表示一个事件时（即每次新请求传入时，代码都会触发指标记录），这种情况很常见
+- **Average** - 在聚合间隔内捕获的指标值的平均值
+- **Min** - 在聚合间隔内捕获的最小值
+- **Max** - 在聚合间隔内捕获的最大值
 
 ## <a name="apply-filters-to-charts"></a>向图表应用筛选器
 
@@ -54,7 +74,7 @@ ms.locfileid: "79452405"
 
 ### <a name="to-add-a-filter"></a>添加筛选器
 
-1. 选择图表上方的“添加筛选器” 
+1. 选择图表上方的“添加筛选器”
 
 2. 选择想要筛选的维度（属性）
 
@@ -78,7 +98,7 @@ ms.locfileid: "79452405"
 
 ### <a name="apply-splitting"></a>应用拆分
 
-1. 单击图表上方的“应用拆分”  。
+1. 单击图表上方的“应用拆分”。
  
    > [!NOTE]
    > 不能对包含多个指标的图表使用拆分。 另外，你可以有多个筛选器，但只能对任何单个图表应用一个拆分维度。
@@ -91,7 +111,7 @@ ms.locfileid: "79452405"
 
    ![图表上的](./media/metrics-charts/00012.png)
 
-3. 在“分组选择器”  之外单击以将其关闭。
+3. 在“分组选择器”之外单击以将其关闭。
 
    > [!NOTE]
    > 在同一个维度上同时使用筛选和拆分，可以隐藏与你的方案无关的部分，使图表更易读取。
@@ -104,12 +124,22 @@ ms.locfileid: "79452405"
 
 另一个示例是可用内存的波动，其中的值在技术上永远不会达到 0。 将范围固定到一个较高的值可以使可用内存的降低更容易被发现。 
 
-若要控制 y 轴范围，请使用 “…” 图表菜单，并选择“编辑图表”  以访问高级图表设置。 修改“Y 轴范围”部分中的值，或者使用“自动”  按钮恢复为默认值。
+若要控制 y 轴范围，请使用 “…” 图表菜单，并选择“编辑图表”以访问高级图表设置。 修改“Y 轴范围”部分中的值，或者使用“自动”按钮恢复为默认值。
 
 ![图表上的](./media/metrics-charts/00014-manually-set-granularity.png)
 
 > [!WARNING]
 > 如果图表用于跟踪一段时间内的各种计数或合计（并因此使用计数、求和、最小值或最大值聚合），要锁定这类图表的 y 轴边界，通常需要指定一个固定的时间粒度，而不是依赖于自动默认值。 这是必要的，因为当用户通过调整浏览器窗口大小或者通过更改屏幕分辨率来自动修改时间粒度时，图表上的值也会发生更改。 时间粒度发生的更改会影响图表的外观，导致当前选择的 y 轴范围失效。
+
+## <a name="change-colors-of-chart-lines"></a>更改图表线条的颜色
+
+配置图表后，将从默认调色板自动为图表线条分配颜色。 可以更改这些颜色。
+
+若要更改图表线条的颜色，请单击与图表相对应的图例中的彩色条。 这将打开“颜色选取器”对话框。 使用颜色选取器配置线条的颜色。
+
+配置图表颜色后，将图表固定到仪表板时，它们将保持此配置。 以下部分说明如何固定图表。
+
+![图表上的](./media/metrics-charts/018.png)
 
 ## <a name="pin-charts-to-dashboards"></a>将图表固定到仪表板
 
@@ -117,7 +147,7 @@ ms.locfileid: "79452405"
 
 将配置的图表固定到仪表板：
 
-配置图表后，单击图表右上角的“图表操作”  菜单，然后单击“固定到仪表板”  。
+配置图表后，单击图表右上角的“图表操作”菜单，然后单击“固定到仪表板”。
 
 ![图表上的](./media/metrics-charts/00013.png)
 
@@ -125,7 +155,7 @@ ms.locfileid: "79452405"
 
 可以使用设置的条件将指标可视化为基于指标的警报规则的基础。 新的警报规则将包括图表的目标资源、指标、拆分和筛选器维度。 稍后将能够在警报规则创建窗格上修改这些设置。
 
-### <a name="to-create-a-new-alert-rule-click-new-alert-rule"></a>单击“新建警报规则”，创建新的警报规则 
+### <a name="to-create-a-new-alert-rule-click-new-alert-rule"></a>单击“新建警报规则”，创建新的警报规则
 
 ![以红色突出显示的“新建警报规则”按钮](./media/metrics-charts/015.png)
 

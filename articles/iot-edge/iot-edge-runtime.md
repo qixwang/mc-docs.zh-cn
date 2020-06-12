@@ -5,16 +5,19 @@ author: kgremban
 manager: philmea
 ms.author: v-tawe
 origin.date: 11/01/2019
-ms.date: 03/02/2020
+ms.date: 06/01/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: f4ba271b39df7c8539327733a0ecae11b334a335
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.custom:
+- amqp
+- mqtt
+ms.openlocfilehash: 9532f46ca364147c16ae11d74395f285d12d9eff
+ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79293233"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84275572"
 ---
 # <a name="understand-the-azure-iot-edge-runtime-and-its-architecture"></a>了解 Azure IoT Edge 运行时及其体系结构
 
@@ -32,9 +35,9 @@ IoT Edge 运行时负责 IoT Edge 设备上的以下功能：
 
 ![运行时向 IoT 中心传达见解和模块运行状况](./media/iot-edge-runtime/Pipeline.png)
 
-IoT Edge 运行时的职责分为两类：通信和模块管理。 这两个角色由作为 IoT Edge 运行时一部分的两个组件执行。 IoT Edge 中心  负责通信，而 IoT Edge 代理  则负责部署和监视模块。
+IoT Edge 运行时的职责分为两类：通信和模块管理。 这两个角色由作为 IoT Edge 运行时一部分的两个组件执行。 IoT Edge 中心负责通信，而 IoT Edge 代理则负责部署和监视模块。
 
-IoT Edge 中心和 IoT Edge 代理都是模块，就像 IoT Edge 设备上运行的其他任何模块一样。 有时将它们称为“运行时模块”。 
+IoT Edge 中心和 IoT Edge 代理都是模块，就像 IoT Edge 设备上运行的其他任何模块一样。 有时将它们称为“运行时模块”。
 
 ## <a name="iot-edge-hub"></a>IoT Edge 中心
 
@@ -83,11 +86,11 @@ IoT Edge 代理是构成 Azure IoT Edge 运行时的其他模块。 它负责实
 
 [IoT Edge 安全守护程序](iot-edge-security-manager.md)在设备启动时启动 IoT Edge 代理。 该代理从 IoT 中心检索其模块孪生并检查部署清单。 部署清单是一个 JSON 文件，它声明了需要启动的模块。
 
-部署清单中的每个项都包含有关模块的特定信息，并由 IoT Edge 代理用于控制模块的生命周期。 下面是一些更有趣的属性：
+部署清单中的每项都包含有关模块的特定信息，并由 IoT Edge 代理用于控制模块的生命周期。 下面是一些更有趣的属性：
 
 * **settings.image** - IoT Edge 代理用来启动模块的容器映像。 如果该映像受密码保护，则必须为 IoT Edge 代理配置容器注册表的凭据。 可以使用部署清单远程配置容器注册表的凭据，也可以在 IoT Edge 设备本身上通过更新 IoT Edge 程序文件夹中的 `config.yaml` 文件进行配置。
-* **settings.createOptions** - 在启动模块的容器时直接传递到 Moby 容器守护程序的一个字符串。 在此属性中添加选项可实现高级配置，如端口转发或将卷装载到模块的容器中。  
-* **status** - IoT Edge 代理放置的模块的状态。 通常，此值设置为“正在运行”  ，因为大多数人都希望 IoT Edge 代理立即启动设备上的所有模块。 但是，可以将模块的初始状态指定为“已停止”，等待一定时间后再告知 IoT Edge 代理启动模块。 IoT Edge 代理会向报告的属性中的云报告每个模块的状态。 所需属性和报告的属性之间存在差异指示了设备运行状况不正常。 支持的状态为：
+* **settings.createOptions** - 在启动模块的容器时直接传递到 Moby 容器守护程序的一个字符串。 允许在此属性中为高级配置添加以下选项，如端口转发或附加数据量到模块的容器中。  
+* **status** - IoT Edge 代理放置的模块的状态。 通常，此值设置为“正在运行”，因为大多数人都希望 IoT Edge 代理立即启动设备上的所有模块。 但是，可以将模块的初始状态指定为“已停止”，等待一定时间后再告知 IoT Edge 代理启动模块。 IoT Edge 代理会向报告的属性中的云报告每个模块的状态。 所需属性和报告的属性之间存在差异指示了设备运行状况不正常。 支持的状态为：
 
   * 正在下载
   * 正在运行
@@ -120,7 +123,7 @@ IoT Edge 代理会将运行时响应发送到 IoT 中心。 下面是可能的�
 
 ### <a name="security"></a>安全性
 
-IoT Edge 代理在 IoT Edge 设备的安全性中起着关键作用。 例如，它会执行某些操作，如在启动之前验证模块的映像。
+IoT Edge 代理在 IoT Edge 设备的安全性中起着关键作用。 例如，它会执行某些操作，如启动之前验证模块的映像。
 
 有关 Azure IoT Edge 安全框架的详细信息，请阅读有关 [IoT Edge 安全管理器](iot-edge-security-manager.md)的内容。
 

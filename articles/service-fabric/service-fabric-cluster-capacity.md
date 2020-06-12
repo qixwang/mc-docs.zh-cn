@@ -3,14 +3,14 @@ title: 规划 Service Fabric 群集容量
 description: Service Fabric 群集容量规划注意事项。 节点类型、操作、耐久性和可靠性层
 ms.topic: conceptual
 origin.date: 07/09/2019
-ms.date: 01/06/2020
+ms.date: 06/08/2020
 ms.author: v-yeche
-ms.openlocfilehash: 1b77e101026943971e35f61fb5a7b31880047251
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 6d93e9c9b8553ac8039a66238a35512f04cc8bda
+ms.sourcegitcommit: 0e178672632f710019eae60cea6a45ac54bb53a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292638"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84356270"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Service Fabric 群集容量规划注意事项
 对于任何生产部署，容量规划都是一个重要的步骤。 下面是在规划过程中必须注意的一些事项。
@@ -20,7 +20,7 @@ ms.locfileid: "79292638"
 * 群集的可靠性和持久性特征
 
 > [!NOTE]
-> 规划期间至少应该查看所有“不允许的”升级策略值  。 这样可以确保正确设置值，并且可以减少不可更改的系统配置设置所导致的群集使用。 
+> 规划期间至少应该查看所有“不允许的”升级策略值。 这样可以确保正确设置值，并且可以减少不可更改的系统配置设置所导致的群集使用。 
 > 
 
 让我们简单地了解其中每一项。
@@ -61,8 +61,8 @@ Service Fabric 系统服务（例如，群集管理器服务或图像存储服�
 
 包含多个节点类型的群集有一个主节点类型，剩余的是非主节点类型。
 
-* 非主节点类型的“VM 大小下限”取决于你选择的“持续性层”   。 默认持续性层为“青铜”。 有关详细信息，请参阅[群集的持续性特征](/service-fabric/service-fabric-cluster-capacity#the-durability-characteristics-of-the-cluster)。  
-* 非主节点类型的“VM 数量下限”为一  。 但是，应该根据想要在此节点类型中运行的应用程序/服务的副本数目选择此数目。 部署群集之后，节点类型中的 VM 数目可能会增加。
+* 非主节点类型的“VM 大小下限”取决于你选择的“持续性层” 。 默认持续性层为“青铜”。 有关详细信息，请参阅[群集的持续性特征](/service-fabric/service-fabric-cluster-capacity#the-durability-characteristics-of-the-cluster)。  
+* 非主节点类型的“VM 数量下限”为一。 但是，应该根据想要在此节点类型中运行的应用程序/服务的副本数目选择此数目。 部署群集之后，节点类型中的 VM 数目可能会增加。
 
 ## <a name="the-durability-characteristics-of-the-cluster"></a>群集的持久性特征
 持久性层用于向系统指示 VM 对于基本 Azure 基础结构拥有的权限。 在主节点类型中，此权限可让 Service Fabric 暂停影响系统服务及有状态服务的仲裁要求的任何 VM 级别基础结构请求（例如，VM 重启、VM 重置映像或 VM 迁移）。 在非主节点类型中，此特权可让 Service Fabric 暂停影响其中运行的有状态服务的仲裁要求的任何 VM 级别基础结构请求，例如，VM 重新启动、VM 重置映像、VM 迁移，等等。
@@ -76,7 +76,7 @@ Service Fabric 系统服务（例如，群集管理器服务或图像存储服�
 <!-- Not Avaible on L series, GS series, G series (L32s, GS5, G5,) -->
 
 > [!WARNING]
-> 以铜级持续性运行的节点类型不具有任何特权  。 这意味着，不会停止或延迟对有状态工作负荷产生影响的基础结构作业，这可能影响工作负荷。 对仅运行无状态工作负荷的节点类型仅使用“青铜”。 对于生产工作负荷，建议运行“白银”或以上级别。 
+> 以青铜级持续性运行的节点类型不具有任何特权。 这意味着，不会停止或延迟对有状态工作负荷产生影响的基础结构作业，这可能影响工作负荷。 对仅运行无状态工作负荷的节点类型仅使用“青铜”。 对于生产工作负荷，建议运行“白银”或以上级别。 
 > 
 > 无论任何持续性级别，VM 规模集上的[释放](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/deallocate)操作都将破坏群集
 
@@ -109,7 +109,7 @@ Service Fabric 系统服务（例如，群集管理器服务或图像存储服�
 
 - 为任何已启用“黄金”或“白银”耐久性级别的虚拟机规模集保留至少五个节点。
 - 持续性级别为“白银”或“黄金”的每个虚拟机规模集，在 Service Fabric 群集中都必须映射到其自己的节点类型。 将多个虚拟机规模集映射到单个节点类型，将阻碍 Service Fabric 群集和 Azure 基础结构间的协调正常工作。
-- 不要删除随机 VM 实例，请始终使用虚拟机规模集纵向缩减功能。 删除随机 VM 实例可能会造成分布在 UD 和 FD 的 VM 实例失衡。 这一失衡可能会对系统在服务实例/服务副本之间进行适当负载均衡的能力产生负面影响。
+- 不要删除随机 VM 实例，请始终使用虚拟机规模集横向缩减功能。 删除随机 VM 实例可能会造成分布在 UD 和 FD 的 VM 实例失衡。 这一失衡可能会对系统在服务实例/服务副本之间进行适当负载均衡的能力产生负面影响。
 - 如果使用自动缩放，请设置规则，以便一次只有一个节点执行“缩小规模”操作（删除 VM 实例）。 一次减少多个实例是不安全的。
 - 删除或解除分配主节点类型上的 VM 时，决不应当将已分配的 VM 的数量降低到可靠性层需要的数量之下。 在耐久性级别为“白银”或“黄金”的规模集中，这些操作会被无限期阻止。
 

@@ -2,15 +2,15 @@
 title: 使用可靠集合
 description: 了解有关在 Azure Service Fabric 应用程序中使用可靠集合的最佳做法。
 ms.topic: conceptual
-origin.date: 02/22/2019
-ms.date: 02/24/2020
+origin.date: 03/10/2020
+ms.date: 06/08/2020
 ms.author: v-yeche
-ms.openlocfilehash: d1c55d340f4f8fa8b0055bbb148b61bb97a56902
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: f7f3f1905c546faf87bd8889d60c8a0326b83f4a
+ms.sourcegitcommit: 0e178672632f710019eae60cea6a45ac54bb53a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540721"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84356165"
 ---
 # <a name="working-with-reliable-collections"></a>使用可靠集合
 Service Fabric 通过可靠集合向 .NET 开发人员提供有状态的编程模型。 具体而言，Service Fabric 提供可靠字典和可靠队列类。 在使用这些类时，状态是分区的（实现伸缩性）、复制的（实现可用性），并在分区内进行事务处理（实现 ACID 语义）。 让我们看一下可靠字典对象的典型用法，并看一看它究竟在做些什么。
@@ -51,6 +51,19 @@ catch (TimeoutException)
 在上述代码中，调用 CommitAsync 会提交所有事务操作。 具体而言，它将提交信息附加到本地节点的日志文件，同时将提交记录发送给所有辅助副本。 回复副本的仲裁（多数）后，所有数据更改将被视为永久性，并释放通过 ITransaction 对象操作的任何键关联锁，使其他线程/事务可以操作相同的键及其值。
 
 如果未调用 CommitAsync（通常是因为引发了异常），则会释放 ITransaction 对象。 在释放未提交的 ITransaction 对象时，Service Fabric 会将中止信息追加到本地节点的日志文件，且不需要将任何信息发送到任何辅助副本。 然后将释放通过事务操作的任何与键关联的锁。
+
+## <a name="volatile-reliable-collections"></a>易失可靠集合 
+在某些工作负载中，例如复制缓存，可以容忍偶尔的数据丢失。 将数据写入可靠字典时，避免将其保存到磁盘可以提高延迟和吞吐量。 缺乏持久性的代价是，如果发生仲裁丢失，则将发生完全数据丢失。 由于仲裁丢失很少发生，因此对于这些工作负载来说，性能提高值得极小概率的数据丢失可能性。
+
+目前，易失性支持仅适用于可靠字典和可靠队列，而不适用于 ReliableConcurrentQueues。 请参阅[注意事项](service-fabric-reliable-services-reliable-collections-guidelines.md#volatile-reliable-collections)列表，决定是否使用易失性集合。
+
+若要在服务中启用易失性支持，请将服务类型声明中的 ```HasPersistedState``` 标志设置为 ```false```，如下所示：
+```xml
+<StatefulServiceType ServiceTypeName="MyServiceType" HasPersistedState="false" />
+```
+
+>[!NOTE]
+>现有的持久化服务不可变得不稳定，反之亦然。 如果要这样做，则需要删除现有服务，然后使用更新的标志部署服务。 这意味着，如果要更改 ```HasPersistedState``` 标志，则必须自愿接受完全数据丢失。 
 
 ## <a name="common-pitfalls-and-how-to-avoid-them"></a>常见陷阱及其规避方法
 现在你已了解可靠集合在内部的工作原理，让我们了解一些常见的误用。 参阅以下代码：
@@ -210,4 +223,4 @@ public struct ItemId
 
 若要了解如何提供可跨多个版本互操作的数据结构，请参阅 [IExtensibleDataObject](https://msdn.microsoft.com/library/system.runtime.serialization.iextensibledataobject.aspx)
 
-<!-- Update_Description: update meta properties, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

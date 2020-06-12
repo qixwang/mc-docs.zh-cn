@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 origin.date: 03/18/2019
-ms.date: 05/11/2020
+ms.date: 06/08/2020
 ms.author: v-jay
 ms.reviewer: juliako
-ms.openlocfilehash: db8a0ca7785ed476f32ea40a951218048b17a472
-ms.sourcegitcommit: 95efd248f5ee3701f671dbd5cfe0aec9c9959a24
+ms.openlocfilehash: f53f15812e804aaf998e9e85c4a64a4ae9d92b9e
+ms.sourcegitcommit: 79c99a9ea013b3c74706a1038a505f4eea2aaac4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82507679"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84439535"
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>使用 Azure 媒体服务执行实时流式处理以创建多比特率流
 
@@ -29,10 +29,10 @@ ms.locfileid: "82507679"
 > 自 2018 年 5 月 12 日起，实时频道将不再支持 RTP/MPEG-2 传输流引入协议。 请从 RTP/MPEG-2 迁移到 RTMP 或分段 MP4（平滑流式处理）引入协议。
 
 ## <a name="overview"></a>概述
-在 Azure 媒体服务 (AMS) 中，频道表示用于处理实时传送视频流内容的管道  。 **通道** 采用以下两种方式之一接收实时输入流：
+在 Azure 媒体服务 (AMS) 中，频道表示用于处理实时传送视频流内容的管道。 **通道** 采用以下两种方式之一接收实时输入流：
 
 * 本地实时编码器采用以下格式之一将单比特率流发送至能够使用媒体服务执行实时编码的频道：RTMP 或平滑流式处理（分片 MP4）。 然后，频道将对传入的单比特率流执行实时编码，使之转换为多比特率（自适应）视频流。 收到请求时，媒体服务会将该流传送给客户。
-* 本地实时编码器将多比特率 RTMP 或平滑流式处理（分片 MP4）发送到无法通过 AMS 进行实时编码的频道   。 引入流会通过 “通道”  ，但不会进行任何进一步处理。 这种方法称为 **直通**。 可以使用以下输出多比特率平滑流的实时编码器：MediaExcel、Ateme、Imagine Communications、Envivio、Cisco 和 Elemental。 以下实时编码器输出 RTMP：[Telestream Wirecast](media-services-configure-wirecast-live-encoder.md)、Haivision、Teradek 和 Tricaster 编码器。  实时编码器也可将单比特率流发送到并未启用实时编码的通道，但不建议这样做。 收到请求时，媒体服务会将该流传送给客户。
+* 本地实时编码器将多比特率 RTMP 或平滑流式处理（分片 MP4）发送到无法通过 AMS 进行实时编码的频道 。 引入流会通过 “通道”，但不会进行任何进一步处理。 这种方法称为 **直通**。 可以使用以下输出多比特率平滑流的实时编码器：MediaExcel、Ateme、Imagine Communications、Envivio、Cisco 和 Elemental。 以下实时编码器输出 RTMP：[Telestream Wirecast](media-services-configure-wirecast-live-encoder.md)、Haivision 和 Teradek 编码器。  实时编码器也可将单比特率流发送到并未启用实时编码的通道，但不建议这样做。 收到请求时，媒体服务会将该流传送给客户。
 
   > [!NOTE]
   > 实时传送视频流时，使用直通方法是最经济的。
@@ -45,7 +45,7 @@ ms.locfileid: "82507679"
 * **标准** - 如果打算使用媒体服务将单比特率实时流编码为多比特率流，请选择此值。 请注意，实时编码会影响计费，应记住，将实时编码通道保持为“正在运行”状态会产生费用。  建议在实时流式处理事件完成之后立即停止正在运行的通道，以避免产生额外的小时费用。
 
 > [!NOTE]
-> 本主题讨论为执行实时编码（标准编码类型）启用的频道的属性  。 若要了解如何使用无法执行实时编码的频道，请参阅[使用创建多比特率流的本地编码器执行实时传送视频流](media-services-live-streaming-with-onprem-encoders.md)。
+> 本主题讨论为执行实时编码（标准编码类型）启用的频道的属性。 若要了解如何使用无法执行实时编码的频道，请参阅[使用创建多比特率流的本地编码器执行实时传送视频流](media-services-live-streaming-with-onprem-encoders.md)。
 > 
 > 请务必仔细阅读 [注意事项](media-services-manage-live-encoder-enabled-channels.md#Considerations) 部分。
 > 
@@ -94,7 +94,7 @@ ms.locfileid: "82507679"
 >
 > 实时编码会影响计费，应该记住，将实时编码通道保持为“正在运行”状态会产生按小时计算的费用。 建议在实时流式处理事件完成之后立即停止正在运行的通道，以避免产生额外的小时费用。 
 
-1. 将视频摄像机连接到计算机。 启动并配置一个可通过以下协议之一输出  单比特率流的本地实时编码器：RTMP 或平滑流式处理。 
+1. 将视频摄像机连接到计算机。 启动并配置一个可通过以下协议之一输出单比特率流的本地实时编码器：RTMP 或平滑流式处理。 
 
     此步骤也可以在创建频道后执行。
 2. 创建并启动通道。 
@@ -112,7 +112,7 @@ ms.locfileid: "82507679"
 6. 发布与节目关联的资源。   
 
     >[!NOTE]
-    >创建 AMS 帐户后，会将一个处于“已停止”状态的**默认**流式处理终结点添加到帐户。  要从中流式传输内容的流式处理终结点必须处于“正在运行”状态。  
+    >创建 AMS 帐户后，会将一个处于“已停止”状态的**默认**流式处理终结点添加到帐户。 要从中流式传输内容的流式处理终结点必须处于“正在运行”状态。 
 
 7. 准备好开始流式传输和存档后，启动节目。
 8. （可选）可以向实时编码器发信号，以启动广告。 将广告插入到输出流中。
@@ -126,10 +126,10 @@ ms.locfileid: "82507679"
 
 ## <a name="channels-input-ingest-configurations"></a><a id="channel"></a>频道输入（引入）配置
 ### <a name="ingest-streaming-protocol"></a><a id="Ingest_Protocols"></a>引入流式传输协议
-如果“编码器类型”设为“标准”，则有效选项为   ：
+如果“编码器类型”设为“标准”，则有效选项为 ：
 
 * 单比特率 **RTMP**
-* 单比特率分片 MP4（平滑流式处理） 
+* 单比特率分片 MP4（平滑流式处理）
 
 #### <a name="single-bitrate-rtmp"></a><a id="single_bitrate_RTMP"></a>单比特率 RTMP
 注意事项：
@@ -166,7 +166,7 @@ ms.locfileid: "82507679"
 ### <a name="ingest-urls-endpoints"></a>摄取 URL（终结点）
 频道提供用户在实时编码器中指定的输入终结点（引入 URL），因此编码器可以将流推送到用户的频道。
 
-创建通道后，可以获得引入 URL。 若要获取这些 URL，通道不一定要处于“正在运行”  状态。 准备好开始将数据推送到通道时，通道必须处于“正在运行”  状态。 通道开始引入数据后，可通过预览 URL 来预览流。
+创建通道后，可以获得引入 URL。 若要获取这些 URL，通道不一定要处于“正在运行”  状态。 准备好开始将数据推送到通道时，通道必须处于“正在运行”状态。 通道开始引入数据后，可通过预览 URL 来预览流。
 
 可以选择通过 TLS 连接引入分片 MP4（平滑流式处理）实时流。 要通过 TLS 进行引入，请确保将引入 URL 更新为 HTTPS。 目前，AMS 对自定义域不支持 TLS。  
 
@@ -192,7 +192,7 @@ ms.locfileid: "82507679"
 可以定义允许连接到预览终结点的 IP 地址。 如果未指定 IP 地址，则允许任何 IP 地址。 允许的 IP 地址可以指定为单个 IP 地址（例如“10.0.0.1”）、使用一个 IP 地址和 CIDR 子网掩码的 IP 范围（例如“10.0.0.1/22”）或使用一个 IP 地址和点分十进制子网掩码的 IP 范围（例如“10.0.0.1(255.255.252.0)”）。
 
 ## <a name="live-encoding-settings"></a>实时编码设置
-本部分介绍当频道的“编码类型”设为“标准”时，如何调整频道内的实时编码器的设置   。
+本部分介绍当频道的“编码类型”设为“标准”时，如何调整频道内的实时编码器的设置 。
 
 > [!NOTE]
 > 你的贡献源只能包含单个音频曲目 – 当前不支持引入多个音频曲目。 使用[本地实时编码](media-services-live-streaming-with-onprem-encoders.md)进行实时编码时，可以通过平滑流式处理协议发送包含多个音频曲目的贡献源。
@@ -200,7 +200,7 @@ ms.locfileid: "82507679"
 > 
 
 ### <a name="ad-marker-source"></a>Ad 标记源
-可以指定 Ad 标记信号的源。 默认值是 Api，它指示频道内的实时编码器应侦听异步 Ad 标记 API   。
+可以指定 Ad 标记信号的源。 默认值是 Api，它指示频道内的实时编码器应侦听异步 Ad 标记 API 。
 
 ### <a name="cea-708-closed-captions"></a>CEA 708 隐藏字幕
 可选标志，它指示实时编码器忽略传入视频中嵌入的任何 CEA 708 字幕数据。 当该标志设为 false（默认值）时，编码器将检测 CEA 708 数据并将该数据重新插入到输出视频流中。
@@ -212,9 +212,9 @@ ms.locfileid: "82507679"
 音频流的语言标识符符合 ISO 639-2 标准，如 ENG。 如果不存在，则默认为 UND（未定义）。
 
 ### <a name="system-preset"></a><a id="preset"></a>系统预设
-指定此通道内的实时编码器要使用的预设。 目前，唯一允许的值是 Default720p（默认值）  。
+指定此通道内的实时编码器要使用的预设。 目前，唯一允许的值是 Default720p（默认值）。
 
- Default720p 会将视频编码为以下 6 层。
+Default720p 会将视频编码为以下 6 层。
 
 #### <a name="output-video-stream"></a>输出视频流
 
@@ -276,7 +276,7 @@ ms.locfileid: "82507679"
 * 文件名必须具有 *.jpg 扩展名。
 * 必须将该图像作为资产中的唯一 AssetFile 上传到资产，并应将此 AssetFile 标记为主文件。 资产不能加密存储。
 
-如果未指定“默认盖板资产 Id”，并且“在 ad 标记上插入盖板”设为 true，则将使用默认 Azure 媒体服务图像隐藏输入视频流    。 插入静态图像期间音频也会静音。 
+如果未指定“默认盖板资产 Id”，并且“在 ad 标记上插入盖板”设为 true，则将使用默认 Azure 媒体服务图像隐藏输入视频流  。 插入静态图像期间音频也会静音。 
 
 ## <a name="channels-programs"></a>通道的节目
 通道与节目相关联，使用节目，可以控制实时流中片段的发布和存储。 通道管理节目。 通道和节目的关系非常类似于传统媒体，通道具有恒定的内容流，而节目的范围限定为该通道上的一些定时事件。
@@ -332,7 +332,7 @@ ms.locfileid: "82507679"
 * 通道或其关联的节目正在运行时，无法更改输入协议。 如果需要不同的协议，应当针对每个输入协议创建单独的频道。
 * 仅当通道处于“正在运行”  状态时才会收取费用。 有关详细信息，请参阅[此](media-services-manage-live-encoder-enabled-channels.md#states)部分。
 * 目前，直播活动的最大建议持续时间为 8 小时。 
-* 确保使要从中流式传输内容的流式处理终结点处于“正在运行”状态  。
+* 确保使要从中流式传输内容的流式处理终结点处于“正在运行”状态。
 * 编码预设使用“最大帧速率”30 fps 的思路。 因此，如果输入为 60fps/59.94i，则输入帧将修剪/反交错为 30/29.97 fps。 如果输入为 50fps/50i，则输入帧将修剪/反交错为 25 fps。 如果输入为 25 fps，则输出将保持为 25 fps。
 * 完成后请不要忘记关闭通道。 否则会继续计费。
 

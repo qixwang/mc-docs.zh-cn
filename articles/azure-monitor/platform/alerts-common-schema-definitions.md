@@ -1,18 +1,18 @@
 ---
-title: Azure Monitor 的通用警报架构定义
+title: Azure Monitor 中的警报架构定义
 description: 了解 Azure Monitor 的通用警报架构定义
-services: azure-monitor
+author: Johnnytechn
 ms.topic: conceptual
-author: lingliw
+ms.subservice: alerts
 origin.date: 03/14/2019
-ms.date: 04/14/2019
-ms.author: anantr
-ms.openlocfilehash: 6c4c523ee2593eb35f245df65ecf2c1cd7e6334f
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/28/2020
+ms.author: v-johya
+ms.openlocfilehash: d72e4dcd4337e88bb19e7fab19bc968b7fbc509d
+ms.sourcegitcommit: 5ae04a3b8e025986a3a257a6ed251b575dbf60a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79452578"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84440716"
 ---
 # <a name="common-alert-schema-definitions"></a>常见警报架构定义
 
@@ -22,7 +22,7 @@ ms.locfileid: "79452578"
 * **概要**：一组通用于所有警报类型的标准化字段，描述对什么资源发出警报，此外还有其他通用警报元数据（例如，严重性或说明）。 
 * **警报上下文**：一组用于描述警报原因的字段，此外还有因警报类型而异的字段。 例如，指标警报在警报上下文中包含指标名称和指标值之类的字段，而活动日志警报会包含生成警报的事件的相关信息。 
 
-**示例警报有效负载** <a name="sample-alert-payload"></a>
+**示例警报有效负载**
 ```json
 {
   "schemaId": "azureMonitorCommonAlertSchema",
@@ -79,12 +79,12 @@ ms.locfileid: "79452578"
 | alertRule | 已生成警报实例的警报规则的名称。 |
 | severity | 警报的严重性。 可能的值：Sev0、Sev1、Sev2、Sev3 或 Sev4。 |
 | signalType | 标识在其上定义了警报规则的信号。 可能的值：Metric、Log 或 Activity Log。 |
-| monitorCondition | 当警报触发后，警报的监视条件设置为“已触发”。  当导致警报触发的基础条件解除后，监视条件会设置为“已解决”。    |
+| monitorCondition | 当警报触发后，警报的监视条件设置为“已触发”。 当导致警报触发的基础条件解除后，监视条件会设置为“已解决”。   |
 | monitoringService | 已生成警报的监视服务或解决方案。 警报上下文的字段由监视服务规定。 |
 | alertTargetIds | 一系列 Azure 资源管理器 ID，都是某个警报的受影响目标。 对于在 Log Analytics 工作区或 Application Insights 实例上定义的日志警报，它是相应的工作区或应用程序。 |
 | originAlertId | 警报实例的 ID，由生成它的监视服务生成。 |
 | firedDateTime | 触发警报实例时的协调世界时 (UTC) 日期和时间。 |
-| resolvedDateTime | 将警报实例的监视条件设置为“已解决”时的 UTC 日期和时间。  当前仅适用于指标警报。|
+| resolvedDateTime | 将警报实例的监视条件设置为“已解决”时的 UTC 日期和时间。 当前仅适用于指标警报。|
 | description | 警报规则中定义的说明。 |
 |essentialsVersion| 概要部分的版本号。|
 |alertContextVersion | `alertContext` 部分的版本号。 |
@@ -151,7 +151,7 @@ ms.locfileid: "79452578"
 ### <a name="log-alerts"></a>日志警报
 
 > [!NOTE]
-> 对于定义了自定义电子邮件主题和/或 JSON 有效负载的日志警报，启用通用架构会将电子邮件主题和/或有效负载架构还原为如下所述的架构。 启用通用架构的警报的大小上限为每个警报 256 KB。 如果搜索结果导致警报大小超出此阈值，则不会将搜索结果嵌入日志警报有效负载中。 可通过检查标记 `IncludeSearchResults` 来确定这一点。 在不包括搜索结果时，应将搜索查询与 [Log Analytics API](https://docs.microsoft.com/rest/api/loganalytics/query/get) 配合使用。 
+> 对于定义了自定义电子邮件主题和/或 JSON 有效负载的日志警报，启用通用架构会将电子邮件主题和/或有效负载架构还原为如下所述的架构。 启用通用架构的警报的大小上限为每个警报 256 KB。 如果搜索结果导致警报大小超出此阈值，则不会将搜索结果嵌入日志警报有效负载中。 可通过检查标记 `IncludeSearchResults` 来确定这一点。 在不包括搜索结果时，应将搜索查询与 [Log Analytics API](https://docs.microsoft.com/rest/api/loganalytics/) 配合使用。 
 
 #### <a name="monitoringservice--log-analytics"></a>`monitoringService` = `Log Analytics`
 
@@ -162,7 +162,7 @@ ms.locfileid: "79452578"
     "SearchQuery": "search * \n| where Type == \"Heartbeat\" \n| where Category == \"Direct Agent\" \n| where TimeGenerated > ago(30m) ",
     "SearchIntervalStartTimeUtc": "3/22/2019 1:36:31 PM",
     "SearchIntervalEndtimeUtc": "3/22/2019 1:51:31 PM",
-    "ResultCount": 15,
+    "ResultCount": 2,
     "LinkToSearchResults": "https://portal.azure.cn#@72f988bf-86f1-41af-91ab-2d7cd011db47/blade/Microsoft_OperationsManagementSuite_Workspace/AnalyticsBlade/initiator/AnalyticsShareLinkToQuery/isQueryEditorVisible/true/scope/%7B%22resources%22%3A%5B%7B%22resourceId%22%3A%22%2Fsubscriptions%<subscription ID>%2FresourceGroups%2Fpipelinealertrg%2Fproviders%2FMicrosoft.OperationalInsights%2Fworkspaces%2FINC-OmsAlertRunner%22%7D%5D%7D/query/search%20%2A%20%0A%7C%20where%20Type%20%3D%3D%20%22Heartbeat%22%20%0A%7C%20where%20Category%20%3D%3D%20%22Direct%20Agent%22%20%0A%7C%20where%20TimeGenerated%20%3E%20%28datetime%282019-03-22T13%3A51%3A31.0000000%29%20-%2030m%29%20%20/isQuerybase64Compressed/false/timespanInIsoFormat/2019-03-22T13%3a36%3a31.0000000Z%2f2019-03-22T13%3a51%3a31.0000000Z",
     "SeverityDescription": "Warning",
     "WorkspaceId": "2a1f50a7-ef97-420c-9d14-938e77c2a929",
@@ -173,7 +173,7 @@ ms.locfileid: "79452578"
     "SearchIntervalInMinutes": "15",
     "Threshold": 10000,
     "Operator": "Less Than",
-    "SearchResult": {
+    "SearchResults": {
       "tables": [
         {
           "name": "PrimaryResult",
@@ -229,14 +229,14 @@ ms.locfileid: "79452578"
     "SearchQuery": "search *",
     "SearchIntervalStartTimeUtc": "3/22/2019 1:36:33 PM",
     "SearchIntervalEndtimeUtc": "3/22/2019 1:51:33 PM",
-    "ResultCount": 0,
+    "ResultCount": 2,
     "LinkToSearchResults": "https://portal.azure.cn#@72f988bf-86f1-41af-91ab-2d7cd011db47/blade/Microsoft_OperationsManagementSuite_Workspace/AnalyticsBlade/initiator/AnalyticsShareLinkToQuery/isQueryEditorVisible/true/scope/%7B%22resources%22%3A%5B%7B%22resourceId%22%3A%22%2Fsubscriptions%<subscription ID>%2FresourceGroups%2FPipeLineAlertRG%2Fproviders%2Fmicrosoft.insights%2Fcomponents%2FWEU-AIRunner%22%7D%5D%7D/query/search%20%2A/isQuerybase64Compressed/false/timespanInIsoFormat/2019-03-22T13%3a36%3a33.0000000Z%2f2019-03-22T13%3a51%3a33.0000000Z",
     "SearchIntervalDurationMin": "15",
     "SearchIntervalInMinutes": "15",
     "Threshold": 10000,
     "Operator": "Less Than",
     "ApplicationId": "8e20151d-75b2-4d66-b965-153fb69d65a6",
-    "SearchResult": {
+    "SearchResults": {
       "tables": [
         {
           "name": "PrimaryResult",
@@ -296,7 +296,7 @@ ms.locfileid: "79452578"
         "scope": "/subscriptions/<subscription ID>/resourceGroups/PipeLineAlertRG/providers/Microsoft.Compute/virtualMachines/WCUS-R2-ActLog"
       },
       "channels": "Operation",
-      "claims": "{\"aud\":\"https://management.core.windows.net/\",\"iss\":\"https://sts.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db47/\",\"iat\":\"1553260826\",\"nbf\":\"1553260826\",\"exp\":\"1553264726\",\"aio\":\"42JgYNjdt+rr+3j/dx68v018XhuFAwA=\",\"appid\":\"e9a02282-074f-45cf-93b0-50568e0e7e50\",\"appidacr\":\"2\",\"http://schemas.microsoft.com/identity/claims/identityprovider\":\"https://sts.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db47/\",\"http://schemas.microsoft.com/identity/claims/objectidentifier\":\"9778283b-b94c-4ac6-8a41-d5b493d03aa3\",\"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier\":\"9778283b-b94c-4ac6-8a41-d5b493d03aa3\",\"http://schemas.microsoft.com/identity/claims/tenantid\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"uti\":\"v5wYC9t9ekuA2rkZSVZbAA\",\"ver\":\"1.0\"}",
+      "claims": "{\"aud\":\"https://management.core.chinacloudapi.cn/\",\"iss\":\"https://sts.chinacloudapi.cn/72f988bf-86f1-41af-91ab-2d7cd011db47/\",\"iat\":\"1553260826\",\"nbf\":\"1553260826\",\"exp\":\"1553264726\",\"aio\":\"42JgYNjdt+rr+3j/dx68v018XhuFAwA=\",\"appid\":\"e9a02282-074f-45cf-93b0-50568e0e7e50\",\"appidacr\":\"2\",\"http://schemas.microsoft.com/identity/claims/identityprovider\":\"https://sts.chinacloudapi.cn/72f988bf-86f1-41af-91ab-2d7cd011db47/\",\"http://schemas.microsoft.com/identity/claims/objectidentifier\":\"9778283b-b94c-4ac6-8a41-d5b493d03aa3\",\"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier\":\"9778283b-b94c-4ac6-8a41-d5b493d03aa3\",\"http://schemas.microsoft.com/identity/claims/tenantid\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"uti\":\"v5wYC9t9ekuA2rkZSVZbAA\",\"ver\":\"1.0\"}",
       "caller": "9778283b-b94c-4ac6-8a41-d5b493d03aa3",
       "correlationId": "8ee9c32a-92a1-4a8f-989c-b0ba09292a91",
       "eventSource": "Administrative",
@@ -323,7 +323,7 @@ ms.locfileid: "79452578"
       "scope": "/subscriptions/<GUID>"
     },
     "channels": "Operation",
-    "claims": "{\"aud\":\"https://management.azure.com/\",\"iss\":\"https://sts.windows.net/<GUID>/\",\"iat\":\"1566711059\",\"nbf\":\"1566711059\",\"exp\":\"1566740159\",\"aio\":\"42FgYOhynHNw0scy3T/bL71+xLyqEwA=\",\"appid\":\"<GUID>\",\"appidacr\":\"2\",\"http://schemas.microsoft.com/identity/claims/identityprovider\":\"https://sts.windows.net/<GUID>/\",\"http://schemas.microsoft.com/identity/claims/objectidentifier\":\"<GUID>\",\"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier\":\"<GUID>\",\"http://schemas.microsoft.com/identity/claims/tenantid\":\"<GUID>\",\"uti\":\"Miy1GzoAG0Scu_l3m1aIAA\",\"ver\":\"1.0\"}",
+    "claims": "{\"aud\":\"https://management.chinacloudapi.cn/\",\"iss\":\"https://sts.chinacloudapi.cn/<GUID>/\",\"iat\":\"1566711059\",\"nbf\":\"1566711059\",\"exp\":\"1566740159\",\"aio\":\"42FgYOhynHNw0scy3T/bL71+xLyqEwA=\",\"appid\":\"<GUID>\",\"appidacr\":\"2\",\"http://schemas.microsoft.com/identity/claims/identityprovider\":\"https://sts.chinacloudapi.cn/<GUID>/\",\"http://schemas.microsoft.com/identity/claims/objectidentifier\":\"<GUID>\",\"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier\":\"<GUID>\",\"http://schemas.microsoft.com/identity/claims/tenantid\":\"<GUID>\",\"uti\":\"Miy1GzoAG0Scu_l3m1aIAA\",\"ver\":\"1.0\"}",
     "caller": "<GUID>",
     "correlationId": "<GUID>",
     "eventSource": "Policy",
@@ -334,7 +334,7 @@ ms.locfileid: "79452578"
     "operationId": "<GUID>",
     "properties": {
       "isComplianceCheck": "True",
-      "resourceLocation": "China East 2",
+      "resourceLocation": "chinanorth2",
       "ancestors": "<GUID>",
       "policies": "[{\"policyDefinitionId\":\"/providers/Microsoft.Authorization/policyDefinitions/<GUID>/\",\"policySetDefinitionId\":\"/providers/Microsoft.Authorization/policySetDefinitions/<GUID>/\",\"policyDefinitionReferenceId\":\"vulnerabilityAssessmentMonitoring\",\"policySetDefinitionName\":\"<GUID>\",\"policyDefinitionName\":\"<GUID>\",\"policyDefinitionEffect\":\"AuditIfNotExists\",\"policyAssignmentId\":\"/subscriptions/<GUID>/providers/Microsoft.Authorization/policyAssignments/SecurityCenterBuiltIn/\",\"policyAssignmentName\":\"SecurityCenterBuiltIn\",\"policyAssignmentScope\":\"/subscriptions/<GUID>\",\"policyAssignmentSku\":{\"name\":\"A1\",\"tier\":\"Standard\"},\"policyAssignmentParameters\":{}}]"
     },
@@ -366,7 +366,7 @@ ms.locfileid: "79452578"
       "resourceName": "/subscriptions/<GUID>/resourceGroups/voiceassistancedemo/providers/Microsoft.Compute/virtualMachineScaleSets/alexademo",
       "oldInstancesCount": "9",
       "newInstancesCount": "10",
-      "activeAutoscaleProfile": "{\r\n  \"Name\": \"Auto created scale condition\",\r\n  \"Capacity\": {\r\n    \"Minimum\": \"1\",\r\n    \"Maximum\": \"10\",\r\n    \"Default\": \"1\"\r\n  },\r\n  \"Rules\": [\r\n    {\r\n      \"MetricTrigger\": {\r\n        \"Name\": \"Percentage CPU\",\r\n        \"Namespace\": \"microsoft.compute/virtualmachinescalesets\",\r\n        \"Resource\": \"/subscriptions/<GUID>/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachineScaleSets/testVMSS\",\r\n        \"ResourceLocation\": \"eastus\",\r\n        \"TimeGrain\": \"PT1M\",\r\n        \"Statistic\": \"Average\",\r\n        \"TimeWindow\": \"PT5M\",\r\n        \"TimeAggregation\": \"Average\",\r\n        \"Operator\": \"GreaterThan\",\r\n        \"Threshold\": 0.0,\r\n        \"Source\": \"/subscriptions/<GUID>/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachineScaleSets/testVMSS\",\r\n        \"MetricType\": \"MDM\",\r\n        \"Dimensions\": [],\r\n        \"DividePerInstance\": false\r\n      },\r\n      \"ScaleAction\": {\r\n        \"Direction\": \"Increase\",\r\n        \"Type\": \"ChangeCount\",\r\n        \"Value\": \"1\",\r\n        \"Cooldown\": \"PT1M\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "activeAutoscaleProfile": "{\r\n  \"Name\": \"Auto created scale condition\",\r\n  \"Capacity\": {\r\n    \"Minimum\": \"1\",\r\n    \"Maximum\": \"10\",\r\n    \"Default\": \"1\"\r\n  },\r\n  \"Rules\": [\r\n    {\r\n      \"MetricTrigger\": {\r\n        \"Name\": \"Percentage CPU\",\r\n        \"Namespace\": \"microsoft.compute/virtualmachinescalesets\",\r\n        \"Resource\": \"/subscriptions/<GUID>/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachineScaleSets/testVMSS\",\r\n        \"ResourceLocation\": \"chinanorth\",\r\n        \"TimeGrain\": \"PT1M\",\r\n        \"Statistic\": \"Average\",\r\n        \"TimeWindow\": \"PT5M\",\r\n        \"TimeAggregation\": \"Average\",\r\n        \"Operator\": \"GreaterThan\",\r\n        \"Threshold\": 0.0,\r\n        \"Source\": \"/subscriptions/<GUID>/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachineScaleSets/testVMSS\",\r\n        \"MetricType\": \"MDM\",\r\n        \"Dimensions\": [],\r\n        \"DividePerInstance\": false\r\n      },\r\n      \"ScaleAction\": {\r\n        \"Direction\": \"Increase\",\r\n        \"Type\": \"ChangeCount\",\r\n        \"Value\": \"1\",\r\n        \"Cooldown\": \"PT1M\"\r\n      }\r\n    }\r\n  ]\r\n}",
       "lastScaleActionTime": "Wed, 21 Aug 2019 16:17:47 GMT"
     },
     "status": "Succeeded",
@@ -429,14 +429,14 @@ ms.locfileid: "79452578"
     "properties": {
       "title": "Azure SQL DW Scheduled Maintenance Pending",
       "service": "SQL Data Warehouse",
-      "region": "China East",
+      "region": "China North",
       "communication": "<MESSAGE>",
       "incidentType": "Maintenance",
       "trackingId": "<GUID>",
       "impactStartTime": "2019-06-26T04:00:00Z",
       "impactMitigationTime": "2019-06-26T12:00:00Z",
-      "impactedServices": "[{\"ImpactedRegions\":[{\"RegionName\":\"China East\"}],\"ServiceName\":\"SQL Data Warehouse\"}]",
-      "impactedServicesTableRows": "<tr>\r\n<td align='center' style='padding: 5px 10px; border-right:1px solid black; border-bottom:1px solid black'>SQL Data Warehouse</td>\r\n<td align='center' style='padding: 5px 10px; border-bottom:1px solid black'>China East<br></td>\r\n</tr>\r\n",
+      "impactedServices": "[{\"ImpactedRegions\":[{\"RegionName\":\"China North\"}],\"ServiceName\":\"SQL Data Warehouse\"}]",
+      "impactedServicesTableRows": "<tr>\r\n<td align='center' style='padding: 5px 10px; border-right:1px solid black; border-bottom:1px solid black'>SQL Data Warehouse</td>\r\n<td align='center' style='padding: 5px 10px; border-bottom:1px solid black'>China North<br></td>\r\n</tr>\r\n",
       "defaultLanguageTitle": "Azure SQL DW Scheduled Maintenance Pending",
       "defaultLanguageContent": "<MESSAGE>",
       "stage": "Planned",
@@ -483,6 +483,7 @@ ms.locfileid: "79452578"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [详细了解通用警报架构](https://aka.ms/commonAlertSchemaDocs)
-- [了解如何创建一个逻辑应用，利用通用警报架构来处理所有警报。](/azure-monitor/platform/alerts-common-schema-integrations) 
+- 了解[通用警报架构](https://aka.ms/commonAlertSchemaDocs)的详细信息。
+- 了解[如何创建使用通用警报架构来处理所有警报逻辑应用](/azure-monitor/platform/alerts-common-schema-integrations)。 
+
 

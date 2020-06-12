@@ -1,18 +1,17 @@
 ---
 title: 适用于辅助角色服务应用（非 HTTP 应用）的 Application Insights
 description: 使用 Azure Monitor Application Insights 监视 .NET Core/.NET Framework 非 HTTP 应用。
-author: lingliw
-manager: digimobile
+author: Johnnytechn
 ms.topic: conceptual
 origin.date: 12/16/2019
-ms.date: 12/30/2019
-ms.author: v-lingwu
-ms.openlocfilehash: 159a0f62838a7d95757fbf4d1c03beb2d1061960
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/28/2020
+ms.author: v-johya
+ms.openlocfilehash: 8c53eb5625d47733ef9572e1ba2845f712c00c8f
+ms.sourcegitcommit: 5ae04a3b8e025986a3a257a6ed251b575dbf60a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78850455"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84440686"
 ---
 # <a name="application-insights-for-worker-service-applications-non-http-applications"></a>适用于辅助角色服务应用程序（非 HTTP 应用）的 Application Insights
 
@@ -35,7 +34,7 @@ Application Insights 正在发布名为 `Microsoft.ApplicationInsights.WorkerSer
 
 ```xml
     <ItemGroup>
-        <PackageReference Include="Microsoft.ApplicationInsights.WorkerService" Version="2.12.0" />
+        <PackageReference Include="Microsoft.ApplicationInsights.WorkerService" Version="2.13.1" />
     </ItemGroup>
 ```
 
@@ -211,9 +210,9 @@ Application Insights 正在发布名为 `Microsoft.ApplicationInsights.WorkerSer
             {
                 _logger.LogWarning("A sample warning message. By default, logs with severity Warning or higher is captured by Application Insights");
                 _logger.LogInformation("Calling bing.com");
-                var res = await httpClient.GetAsync("https://bing.com");
+                var res = httpClient.GetAsync("https://bing.com").GetAwaiter().GetResult();
                 _logger.LogInformation("Calling bing completed with status:" + res.StatusCode);
-                telemetryClient.TrackEvent("Bing call event completed");
+                _telemetryClient.TrackEvent("Bing call event completed");
             }
         }
     }
@@ -316,7 +315,7 @@ Application Insights 正在发布名为 `Microsoft.ApplicationInsights.WorkerSer
 
 ### <a name="eventcounter"></a>EventCounter
 
-`EventCounterCollectionModule` 默认已启用，它会从 .NET Core 3.0 应用收集默认的计数器集。 它还包含有关自定义列表的说明。
+`EventCounterCollectionModule` 默认已启用，它会从 .NET Core 3.0 应用收集默认的计数器集。 [EventCounter](eventcounters.md) 教程列出了收集的默认计数器集。 它还包含有关自定义列表的说明。
 
 ### <a name="manually-tracking-additional-telemetry"></a>手动跟踪附加遥测数据
 
@@ -370,7 +369,7 @@ Application Insights 正在发布名为 `Microsoft.ApplicationInsights.WorkerSer
 
 ### <a name="adding-telemetryinitializers"></a>添加 TelemetryInitializer
 
-若要定义连同所有遥测数据一起发送的属性，请使用[遥测初始化表达式](/azure-monitor/app/api-filtering-sampling#add-properties-itelemetryinitializer)。
+若要定义连同所有遥测数据一起发送的属性，请使用[遥测初始化表达式](/azure-monitor/app/api-filtering-sampling#addmodify-properties-itelemetryinitializer)。
 
 将任何新的 `TelemetryInitializer` 添加到 `DependencyInjection` 容器，SDK 会自动将其添加到 `TelemetryConfiguration`。
 
@@ -386,7 +385,7 @@ Application Insights 正在发布名为 `Microsoft.ApplicationInsights.WorkerSer
 
 ### <a name="removing-telemetryinitializers"></a>删除 TelemetryInitializer
 
-默认已提供遥测初始化表达式。 若要删除所有或特定的遥测初始化表达式，请在调用 `AddApplicationInsightsTelemetryWorkerService()` 之后使用以下示例代码。 
+默认已提供遥测初始化表达式。 若要删除所有或特定的遥测初始化表达式，请在调用 `AddApplicationInsightsTelemetryWorkerService()` 之后使用以下示例代码。
 
 ```csharp
    public void ConfigureServices(IServiceCollection services)
@@ -429,7 +428,8 @@ Application Insights 使用遥测模块自动收集有关特定工作负荷的�
 * `DependencyTrackingTelemetryModule`
 * `PerformanceCollectorModule`
 * `QuickPulseTelemetryModule`
-* `AppServicesHeartbeatTelemetryModule`
+* `AppServicesHeartbeatTelemetryModule` -（关于此遥测模块，目前存在问题。 有关临时解决方法，请参阅 [GitHub 问题 1689](https://github.com/microsoft/ApplicationInsights-dotnet/issues/1689
+)。）
 * `AzureInstanceMetadataTelemetryModule`
 
 若要配置任何默认的 `TelemetryModule`，请按以下示例中所示使用 `IServiceCollection` 中的扩展方法 `ConfigureTelemetryModule<T>`。
@@ -549,3 +549,4 @@ using Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel;
 * [跟踪系统不会自动跟踪的附加依赖项](../../azure-monitor/app/auto-collect-dependencies.md)。
 * [扩充或筛选自动收集的遥测数据](../../azure-monitor/app/api-filtering-sampling.md)。
 * [ASP.NET Core 中的依赖项注入](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection)。
+

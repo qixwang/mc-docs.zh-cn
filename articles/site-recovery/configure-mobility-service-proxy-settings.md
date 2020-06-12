@@ -1,5 +1,5 @@
 ---
-title: 配置 Azure 到 Azure 灾难恢复的移动服务代理设置 | Azure Docs
+title: 配置 Azure 到 Azure 灾难恢复的移动服务代理设置 | Azure
 description: 详细介绍了当客户在其源环境中使用代理时如何配置移动服务。
 services: site-recovery
 author: rockboyfor
@@ -7,14 +7,14 @@ manager: digimobile
 ms.service: site-recovery
 ms.topic: article
 origin.date: 03/18/2020
-ms.date: 05/06/2020
+ms.date: 06/08/2020
 ms.author: v-yeche
-ms.openlocfilehash: 6e60f7d4deb3ed558b760c5131f683c1a4e49eb7
-ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
+ms.openlocfilehash: 830696cd7d3987a620f84945f1a1f24be6437236
+ms.sourcegitcommit: 5ae04a3b8e025986a3a257a6ed251b575dbf60a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "83002310"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84440441"
 ---
 # <a name="configure-mobility-service-proxy-settings-for-azure-to-azure-disaster-recovery"></a>配置 Azure 到 Azure 灾难恢复的移动服务代理设置
 
@@ -51,11 +51,10 @@ ms.locfileid: "83002310"
 在这种情况下，客户会在移动服务配置文件 ProxyInfo.conf 中提供自定义应用程序代理设置。 使用此方法时，客户可以只为移动服务提供代理，或者为 Azure Site Recovery 移动服务提供不同于计算机上其他应用程序的代理（或者根本不为其他应用程序提供代理）。
 
 ## <a name="proxy-template"></a>代理模板
-ProxyInfo.conf 包含以下模板：[proxy] Address=http://1.2.3.4 Port=5678 BypassList=hypervrecoverymanager.windowsazure.cn,login.partner.microsoftonline.cn,blob.core.chinacloudapi.cn。 BypassList 不支持通配符（例如“*.chinacloudapi.cn”），但提供 chinacloudapi.cn 就足以跳过了。 
+ProxyInfo.conf 包含以下模板：[proxy] Address=http://1.2.3.4 Port=5678 BypassList=hypervrecoverymanager.windowsazure.cn,login.chinacloudapi.cn,blob.core.chinacloudapi.cn。 BypassList 不支持通配符（例如“*.chinacloudapi.cn”），但提供 chinacloudapi.cn 就足以跳过了。 
 
 ## <a name="next-steps"></a>后续步骤：
 - 请参阅有关复制 Azure VM 复制的[网络指南](site-recovery-azure-to-azure-networking-guidance.md)。
 - 通过[复制 Azure VM](site-recovery-azure-to-azure.md) 来部署灾难恢复。
 
-<!-- Update_Description: new article about configure mobility service proxy settings -->
-<!--NEW.date: 05/06/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

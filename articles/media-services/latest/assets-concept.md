@@ -14,12 +14,12 @@ origin.date: 03/09/2020
 ms.date: 04/06/2020
 ms.author: v-jay
 ms.custom: seodec18
-ms.openlocfilehash: 5074466444682e2d5136bde901959f837cf33631
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 9cafc30497bea0451f6f6174b6481bee6b4d8c77
+ms.sourcegitcommit: 1f890a4085e184cc678485d05f08dd6de8dc973f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80625775"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84438962"
 ---
 # <a name="assets-in-azure-media-services-v3"></a>Azure 媒体服务 v3 中的资产
 
@@ -29,7 +29,7 @@ ms.locfileid: "80625775"
 
 当帐户使用常规用途 v2 (GPv2) 存储时，媒体服务支持 Blob 层。 使用 GPv2 可将文件移到[冷存储或存档存储](/storage/blobs/storage-blob-storage-tiers)。 **存档**存储适合存档不再需要的源文件（例如，编码后的源文件）。
 
-建议仅将**存档**存储用于已编码的，并且其编码作业输出已放入输出 Blob 容器中的极大型源文件。 要与资产关联的、用于流式传输或分析内容的输出容器中的 Blob 必须位于**热**或**冷**存储层中。
+建议仅将**存档**存储用于已编码的，并且其编码作业输出已放入输出 Blob 容器中的极大型源文件。 要与资产关联的、用于流式传输内容的输出容器中的 Blob 必须位于热或冷存储层中 。
 
 ## <a name="naming"></a>命名 
 

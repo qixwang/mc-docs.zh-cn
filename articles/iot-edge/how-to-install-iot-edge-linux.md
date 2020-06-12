@@ -8,14 +8,14 @@ ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
 origin.date: 03/21/2020
-ms.date: 03/30/2020
+ms.date: 06/01/2020
 ms.author: v-tawe
-ms.openlocfilehash: bb3467b3c591362ecfbee0f547d5251139ad0589
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 4a96df58fd3dd85da8e708aa3265e3f360562c01
+ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80586685"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84275460"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-debian-based-linux-systems"></a>在基于 Debian 的 Linux 系统上安装 Azure IoT Edge 运行时
 
@@ -120,7 +120,7 @@ IoT Edge 成功安装以后，输出会提示你更新配置文件。 执行[配
 
 1. 导航到 [Azure IoT Edge 版本](https://github.com/Azure/azure-iotedge/releases)，找到需要将其作为目标的发行版。
 
-2. 展开该版本的“资产”部分。 
+2. 展开该版本的“资产”部分。
 
 3. 任何给定版本中的 Moby 引擎不一定有更新。 如果看到以 **moby-engine** 和 **moby-cli** 开头的文件，请使用以下命令更新这些组件。 如果没有看到任何 Moby 文件，则请回到较低版资产，直至找到最新版本。
 
@@ -178,7 +178,7 @@ IoT Edge 成功安装以后，输出会提示你更新配置文件。 执行下�
 sudo nano /etc/iotedge/config.yaml
 ```
 
-找到文件的预配配置，并取消注释“手动预配配置”  节。 使用 IoT Edge 设备的连接字符串更新 **device_connection_string** 的值。 请确保注释掉任何其他预配部分。请确保 **provisioning:** 行前面没有空格，并且嵌套项缩进了两个空格。
+找到文件的预配配置，并取消注释“手动预配配置”节。 使用 IoT Edge 设备的连接字符串更新 **device_connection_string** 的值。 请确保注释掉任何其他预配部分。请确保 **provisioning:** 行前面没有空格，并且嵌套项缩进了两个空格。
 
 ```yml
 # Manual provisioning configuration
@@ -285,7 +285,7 @@ systemctl status iotedge
 journalctl -u iotedge --no-pager --no-full
 ```
 
-运行自动检查以查找最常见的配置和网络错误：
+运行[排故障除工具](troubleshoot.md#run-the-check-command)检查最常见的配置和网络错误：
 
 ```bash
 sudo iotedge check

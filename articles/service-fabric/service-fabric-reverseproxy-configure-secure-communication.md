@@ -1,29 +1,28 @@
 ---
 title: Azure Service Fabric 反向代理安全通信
 description: 在 Azure Service Fabric 应用程序中配置反向代理以启用安全的端到端通信。
-author: rockboyfor
 ms.topic: conceptual
 origin.date: 08/10/2017
-ms.date: 02/24/2020
+ms.date: 06/08/2020
 ms.author: v-yeche
-ms.openlocfilehash: 9715d58c0aeffec9edd7abd1bd45a33bf7318f27
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: aa458648ea83cbf622fb4ac01b7e8d92e863fcbb
+ms.sourcegitcommit: 0e178672632f710019eae60cea6a45ac54bb53a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292466"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84356246"
 ---
 # <a name="connect-to-a-secure-service-with-the-reverse-proxy"></a>使用反向代理连接到安全服务
 
 本文介绍如何在反向代理与服务之间建立安全连接，从而启用端到端的安全通道。 若要了解有关反向代理的详细信息，请参阅 [Azure Service Fabric 中的反向代理](service-fabric-reverseproxy.md)
 
-仅当反向代理配置为侦听 HTTPS 时，才支持连接到安全服务。 本文假定现为这种情况。
-请参阅[在 Azure Service Fabric 中设置反向代理](service-fabric-reverseproxy-setup.md)，在 Service Fabric 中配置反向代理。
+> [!IMPORTANT]
+> 仅当反向代理配置为侦听 HTTPS 时，才支持连接到安全服务。 本文假定现为这种情况。 请参阅[在 Azure Service Fabric 中设置反向代理](service-fabric-reverseproxy-setup.md)，在 Service Fabric 中配置反向代理。
 
 ## <a name="secure-connection-establishment-between-the-reverse-proxy-and-services"></a>在反向代理与服务之间建立安全连接 
 
 ### <a name="reverse-proxy-authenticating-to-services"></a>反向代理在服务中进行身份验证：
-反向代理使用其证书向服务标识自己。 对于 Azure 群集，证书使用资源管理器模板的 [**Microsoft.ServiceFabric/clusters**](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/clusters) [资源类型部分](../azure-resource-manager/templates/template-syntax.md)中的 reverseProxyCertificate 属性指定。 对于独立群集，证书使用 ClusterConfig.json“安全”部分中的 ReverseProxyCertificate 或 ReverseProxyCertificateCommonNames 属性指定  。 若要了解详细信息，请参阅[在独立群集上启用反向代理](service-fabric-reverseproxy-setup.md#enable-reverse-proxy-on-standalone-clusters)。 
+反向代理使用其证书向服务标识自己。 对于 Azure 群集，证书使用资源管理器模板的 [**Microsoft.ServiceFabric/clusters**](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/clusters) [资源类型部分](../azure-resource-manager/templates/template-syntax.md)中的 reverseProxyCertificate 属性指定。 对于独立群集，证书使用 ClusterConfig.json“安全”部分中的 ReverseProxyCertificate 或 ReverseProxyCertificateCommonNames 属性指定。 若要了解详细信息，请参阅[在独立群集上启用反向代理](service-fabric-reverseproxy-setup.md#enable-reverse-proxy-on-standalone-clusters)。 
 
 服务可以实现逻辑来验证反向代理提供的证书。 服务可以在配置包中将已接受的客户端证书详细信息指定为配置设置。 此设置可在运行时读取，并用于验证反向代理提供的证书。 请参阅[管理应用程序参数](service-fabric-manage-multiple-environment-app-configuration.md)来添加配置设置。 
 
@@ -78,7 +77,7 @@ ms.locfileid: "79292466"
 
     若要指定服务公用名称和颁发者指纹，请在 **fabricSettings** 下添加 [**ApplicationGateway/Http/ServiceCommonNameAndIssuer**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttpservicecommonnameandissuer) 节，如下所示。 可在 **parameters** 数组中添加多个证书公用名称和颁发者指纹对。 
 
-    如果反向代理要连接的终结点所提供的证书的公用名和颁发者指纹与此处指定的任何值匹配，则会建立 SSL 通道。 
+    如果反向代理要连接的终结点所提供的证书的公用名和颁发者指纹与此处指定的任何值匹配，则会建立 TLS 通道。
     如果无法匹配证书详细信息，则反向代理将无法处理该客户端的请求并返回 502（错误的网关）状态代码。 HTTP 状态行也会包含短语“Invalid SSL Certificate”。 
 
     ```json
@@ -144,7 +143,7 @@ ms.locfileid: "79292466"
     }
     ```
 
-    如果此配置条目中列出了服务器证书的指纹，则反向代理可成功建立 SSL 连接。 否则，它会终止连接，无法处理客户端的请求并返回 502（错误的网关）。 HTTP 状态行也会包含短语“Invalid SSL Certificate”。
+    如果此配置条目中列出了服务器证书的指纹，则反向代理可成功建立 TLS 连接。 否则，它会终止连接，无法处理客户端的请求并返回 502（错误的网关）。 HTTP 状态行也会包含短语“Invalid SSL Certificate”。
 
 ## <a name="endpoint-selection-logic-when-services-expose-secure-as-well-as-unsecured-endpoints"></a>服务公开安全和不安全终结点时使用的终结点选择逻辑
 Service Fabric 支持为服务配置多个终结点。 有关详细信息，请参阅[在服务清单中指定资源](service-fabric-service-manifest-resources.md)。
@@ -174,17 +173,17 @@ Service Fabric 支持为服务配置多个终结点。 有关详细信息，请�
 > 在 **SecureOnlyMode** 下运行时，如果客户端已指定对应于 HTTP（不安全）终结点的 **ListenerName**，则反向代理拒绝请求，并显示 404 (Not Found) HTTP 状态代码。
 
 ## <a name="setting-up-client-certificate-authentication-through-the-reverse-proxy"></a>通过反向代理设置客户端证书身份验证
-反向代理会发生 SSL 终止，并且所有客户端证书数据都会丢失。 若要让服务执行客户端证书身份验证，请在 [**ApplicationGateway/Http**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) 节中指定 **ForwardClientCertificate** 设置。
+反向代理会发生 TLS 终止，并且所有客户端证书数据都会丢失。 若要让服务执行客户端证书身份验证，请在 [**ApplicationGateway/Http**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) 节中指定 **ForwardClientCertificate** 设置。
 
-1. 如果将 **ForwardClientCertificate** 设置为 **false**，在反向代理与客户端执行 SSL 握手期间，反向代理不会请求客户端证书。
+1. 如果将“ForwardClientCertificate”设置为“false” ，在反向代理与客户端执行 TLS 握手期间，反向代理不会请求客户端证书。
 这是默认行为。
 
-2. 如果将 **ForwardClientCertificate** 设置为 **true**，在反向代理与客户端执行 SSL 握手期间，反向代理会请求客户端的证书。
+2. 如果将“ForwardClientCertificate”设置为“true” ，在反向代理与客户端执行 TLS 握手期间，反向代理会请求客户端的证书。
 然后，将会转发名为 **X-Client-Certificate** 的自定义 HTTP 标头中的客户端证书数据。 标头值是客户端证书的 base64 编码 PEM 格式字符串。 检查证书数据后，服务可能会成功/无法处理请求并返回相应的状态代码。
 如果客户端未提供证书，反向代理将转发空标头，并让服务处理这种情况。
 
 > [!NOTE]
-> 反向代理只是一个转发器。 它不会对客户端的证书执行任何验证。
+> 反向代理仅用作转发服务。 它不会对客户端的证书执行任何验证。
 
 ## <a name="next-steps"></a>后续步骤
 * [在群集上设置和配置反向代理](service-fabric-reverseproxy-setup.md)。

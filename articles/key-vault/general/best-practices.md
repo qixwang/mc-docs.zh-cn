@@ -9,14 +9,14 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
 origin.date: 03/07/2019
-ms.date: 04/20/2020
+ms.date: 06/02/2020
 ms.author: v-tawe
-ms.openlocfilehash: 45bd113a5f9a034072437a57b1a31965afa04926
-ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
+ms.openlocfilehash: 5c825660bc8528aae36a213bc2bd39fe05cc76b0
+ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82588864"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84275556"
 ---
 # <a name="best-practices-to-use-key-vault"></a>使用密钥保管库的最佳做法
 
@@ -36,7 +36,7 @@ Azure 密钥保管库是一种云服务，用于保护加密密钥和机密（�
 
 ## <a name="backup"></a>Backup
 
-确保在保管库中更新/删除/创建对象时定期执行[保管库](https://blogs.technet.microsoft.com/kv/2018/07/20/announcing-backup-and-restore-of-keys-secrets-and-certificates/)的备份。
+在保管库中更新/删除/创建对象时确保定期执行保管库的备份。
 
 ## <a name="turn-on-logging"></a>启用日志记录
 

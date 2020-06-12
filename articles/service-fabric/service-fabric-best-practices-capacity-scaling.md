@@ -4,14 +4,14 @@ description: 有关规划和缩放 Service Fabric 群集与应用程序的最佳
 author: rockboyfor
 ms.topic: conceptual
 origin.date: 04/25/2019
-ms.date: 01/13/2020
+ms.date: 06/08/2020
 ms.author: v-yeche
-ms.openlocfilehash: 27f0dc7907b8275359b538436975b353610b9f17
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 98059cf43462413bcd8fff0740fce2b5f3d28dac
+ms.sourcegitcommit: 0e178672632f710019eae60cea6a45ac54bb53a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75742442"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84356292"
 ---
 # <a name="capacity-planning-and-scaling-for-azure-service-fabric"></a>Azure Service Fabric 的容量规划和缩放
 
@@ -71,7 +71,7 @@ ms.locfileid: "75742442"
 1. 在 PowerShell 中，结合意图 `RemoveNode` 来运行 `Disable-ServiceFabricNode`，以禁用要删除的节点。 删除编号最大的节点类型。 例如，如果你有一个六节点群集，请删除“MyNodeType_5”虚拟机实例。
 2. 运行 `Get-ServiceFabricNode` 以确保该节点已转换为禁用状态。 如果没有，请等到节点已禁用。 对于每个节点，此过程可能需要花费几个小时。 在节点转换为禁用状态之前，请不要继续操作。
 3. 将该节点类型的 VM 数目减少一个。 现在，将会删除编号最大的 VM 实例。
-4. 根据需要重复步骤 1 到 3，但切勿将主节点类型的实例数目缩减到少于可靠性层所需的数目。 有关建议实例的列表，请参阅[规划 Service Fabric 群集容量](/service-fabric/service-fabric-cluster-capacity)。
+4. 根据需要重复步骤 1 到 3，但切勿将主节点类型的实例数目横向缩减到少于可靠性层所需的数目。 有关建议实例的列表，请参阅[规划 Service Fabric 群集容量](/service-fabric/service-fabric-cluster-capacity)。
 5. 所有 VM 都消失（表示为“关闭”）后，fabric:/System/InfrastructureService/[node name] 将显示错误状态。 然后，可以更新群集资源以删除节点类型。 可以使用 ARM 模板部署。 这将启动群集升级，从而删除处于错误状态的 fabric:/System/InfrastructureService/[node type] 服务。
     
     <!--Not Available on or edit the cluster resource through the Azure resource manager-->
@@ -110,7 +110,7 @@ scaleSet.Update().WithCapacity(newCapacity).Apply();
 
 横向缩减的考虑因素比横向扩展要多一些。例如：
 
-* Service Fabric 系统服务在群集的主节点类型中运行。 切勿关闭该节点类型的实例，或者将其实例数目纵向缩减到少于可靠性层保证的数目。 
+* Service Fabric 系统服务在群集的主节点类型中运行。 切勿关闭该节点类型的实例，或者将其实例数目横向缩减到少于可靠性层所需的数目。 
 * 对于有状态服务，需要一些始终启动的节点来保持可用性，以及保持服务的状态。 至少需要与分区或服务的目标副本集计数相等的节点数目。
 
 若要手动横向缩减，请执行以下步骤：
@@ -118,7 +118,7 @@ scaleSet.Update().WithCapacity(newCapacity).Apply();
 1. 在 PowerShell 中，结合意图 `RemoveNode` 来运行 `Disable-ServiceFabricNode`，以禁用要删除的节点。 删除编号最大的节点类型。 例如，如果你有一个六节点群集，请删除“MyNodeType_5”虚拟机实例。
 2. 运行 `Get-ServiceFabricNode` 以确保该节点已转换为禁用状态。 如果没有，请等到节点已禁用。 对于每个节点，此过程可能需要花费几个小时。 在节点转换为禁用状态之前，请不要继续操作。
 3. 将该节点类型的 VM 数目减少一个。 现在，将会删除编号最大的 VM 实例。
-4. 视需要重复步骤 1 到 3，直到预配了所需的容量。 请勿将主节点类型的实例数目纵向缩减到少于可靠性层保证的数目。 有关建议实例的列表，请参阅[规划 Service Fabric 群集容量](/service-fabric/service-fabric-cluster-capacity)。
+4. 视需要重复步骤 1 到 3，直到预配了所需的容量。 请勿将主节点类型的实例数目横向缩减到少于可靠性层所需的数目。 有关建议实例的列表，请参阅[规划 Service Fabric 群集容量](/service-fabric/service-fabric-cluster-capacity)。
 
 若要手动横向缩减，请在所需[虚拟机规模集](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/createorupdate#virtualmachinescalesetosprofile)资源的 SKU 属性中更新容量。
 
@@ -173,7 +173,7 @@ scaleSet.Update().WithCapacity(newCapacity).Apply();
 ```
 
 > [!NOTE]
-> 缩减群集时，你会发现已删除的节点/VM 实例以不正常状态显示在 Service Fabric Explorer 中。 有关此行为的说明，请参阅[可能会在 Service Fabric Explorer 中观察到的行为](/service-fabric/service-fabric-cluster-scale-up-down#behaviors-you-may-observe-in-service-fabric-explorer)。 方法：
+> 横向缩减群集时，你会发现已删除的节点/VM 实例以不正常状态显示在 Service Fabric Explorer 中。 有关此行为的说明，请参阅[可能会在 Service Fabric Explorer 中观察到的行为](/service-fabric/service-fabric-cluster-scale-in-out#behaviors-you-may-observe-in-service-fabric-explorer)。 方法：
 > * 结合相应的节点名称调用 [Remove-ServiceFabricNodeState 命令](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps)。
 > * 在群集上部署 [Service Fabric 自动缩放帮助应用程序](https://github.com/Azure/service-fabric-autoscale-helper/)。 此应用程序可确保从 Service Fabric Explorer 中清除已缩减的节点。
 
@@ -201,7 +201,7 @@ scaleSet.Update().WithCapacity(newCapacity).Apply();
 ## <a name="durability-levels"></a>持久性级别
 
 > [!WARNING]
-> 以铜级持续性运行的节点类型不具有任何特权  。 不会停止或延迟对无状态工作负荷产生影响的基础结构作业，这可能影响工作负荷。 
+> 以青铜级持续性运行的节点类型不具有任何特权。 不会停止或延迟对无状态工作负荷产生影响的基础结构作业，这可能影响工作负荷。 
 >
 > 铜级持久性仅用于运行无状态工作负荷的节点类型。 对于生产工作负荷，运行银级或更高级别可确保状态一致性。 请根据[容量规划文档](/service-fabric/service-fabric-cluster-capacity)中的指导选择适当的可靠性级别。
 
@@ -241,4 +241,4 @@ scaleSet.Update().WithCapacity(newCapacity).Apply();
 
 [Image1]: ./media/service-fabric-best-practices/generate-common-name-cert-portal.png
 
-<!-- Update_Description: update meta properties, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

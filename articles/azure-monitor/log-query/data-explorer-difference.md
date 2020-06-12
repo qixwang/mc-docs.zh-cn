@@ -3,18 +3,16 @@ title: Azure Monitor 日志查询语言差异 | Microsoft Docs
 description: Azure Monitor 使用的 Kusto 查询语言的参考信息。 包括特定于 Azure Monitor 的附加元素以及 Azure Monitor 日志查询中不支持的元素。
 ms.subservice: logs
 ms.topic: conceptual
-author: lingliw
-manager: digimobile
-ms.workload: na
+author: Johnnytechn
+ms.author: v-johya
+ms.date: 05/28/2020
 origin.date: 08/22/2019
-ms.date: 08/13/2019
-ms.author: v-lingwu
-ms.openlocfilehash: 4dc534c4fb43cf3ef0273a80ed88a12ef90bf157
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 8c826cf537a200b87fd449293aa4cf91d20dc51c
+ms.sourcegitcommit: 5ae04a3b8e025986a3a257a6ed251b575dbf60a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78850279"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84440626"
 ---
 # <a name="azure-monitor-log-query-language-differences"></a>Azure Monitor 日志查询语言差异
 
@@ -48,6 +46,7 @@ ms.locfileid: "78850279"
 
 ### <a name="plugins-not-supported-in-azure-monitor"></a>Azure Monitor 中不支持的插件
 
+* [Python 插件](https://docs.microsoft.com/azure/kusto/query/pythonplugin)
 * [sql_request 插件](https://docs.microsoft.com/azure/kusto/query/sqlrequestplugin)
 
 
@@ -61,3 +60,4 @@ ms.locfileid: "78850279"
 
 - 获取[用于编写 Azure Monitor 日志查询的不同资源](query-language.md)的参考信息。
 - 访问完整的 [Kusto 查询语言的参考文档](https://docs.microsoft.com/azure/kusto/query/)。
+

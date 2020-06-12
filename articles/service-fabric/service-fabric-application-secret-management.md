@@ -1,17 +1,16 @@
 ---
 title: 管理 Azure Service Fabric 应用程序机密
 description: 了解如何保护 Service Fabric 应用程序中的机密值（与平台无关）。
-author: rockboyfor
 ms.topic: conceptual
 origin.date: 01/04/2019
-ms.date: 01/06/2020
+ms.date: 06/08/2020
 ms.author: v-yeche
-ms.openlocfilehash: 0f83fe6bb77d313b1fc22210a125851e08638f17
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 7b61897c50474bff8baccd4fcf0c2f30968701f6
+ms.sourcegitcommit: 0e178672632f710019eae60cea6a45ac54bb53a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79291603"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84356287"
 ---
 # <a name="manage-encrypted-secrets-in-service-fabric-applications"></a>管理 Service Fabric 应用程序中的已加密机密
 本指南逐步讲解管理 Service Fabric 应用程序中的机密的步骤。 机密可以是任何敏感信息，例如存储连接字符串、密码或其他不应以明文形式处理的值。
@@ -58,8 +57,13 @@ ms.locfileid: "79291603"
   </Certificates>
 </ApplicationManifest>
 ```
+> [!NOTE]
+> 激活可指定 SecretsCertificate 的应用程序后，Service Fabric 将查找匹配的的证书，并向该证书的私钥授予应用程序在完全权限下运行的标识。 Service Fabric 还会监视证书的更改，并重新应用相应的权限。 若要检测由公用名称声明的证书更改，Service Fabric 会运行定期任务，该任务查找所有匹配的证书，并将其与缓存的指纹列表进行对比。 如果检测到新指纹，表示该主题的证书已续订。 该任务每分钟在群集的每个节点上运行一次。
+>
+> 尽管 SecretsCertificate 确实允许使用基于主题的声明，但请注意，加密的设置会绑定到用于对客户端上的设置进行加密的密钥对。 需要确保原始加密证书（或等效证书）与基于主题的声明相匹配，并确保在可承载应用程序的群集的每个节点上安装该证书（包括其相应的私钥）。 与基于主题的声明匹配的且是通过与原始加密证书相同的密钥对生成的所有时间有效的证书均视为等效证书。
+>
 
-### <a name="inject-application-secrets-into-application-instances"></a>将应用程序机密插入应用程序实例
+### <a name="inject-application-secrets-into-application-instances"></a>将应用程序机密注入应用程序实例
 理想情况下，部署到不同环境的过程应尽可能自动化。 这可以通过在生成环境中执行机密加密，并在创建应用程序实例时提供加密机密作为参数来实现。
 
 #### <a name="use-overridable-parameters-in-settingsxml"></a>在 Settings.xml 中使用可重写参数
@@ -95,15 +99,15 @@ Settings.xml 配置文件允许使用可在创建应用程序时提供的可重�
   </ServiceManifestImport>
 ```
 
-现在，可以在创建应用程序实例时会值指定为*应用程序参数*。 可以使用 PowerShell 或 C# 编写用于创建应用程序实例的脚本，方便在生成过程中轻松集成。
+现在，可以在创建应用程序实例时将值指定为*应用程序参数* 。 可以使用 PowerShell 或 C# 编写用于创建应用程序实例的脚本，方便在生成过程中轻松集成。
 
-使用 PowerShell 时，参数以[哈希表](https://technet.microsoft.com/library/ee692803.aspx)的形式提供给 `New-ServiceFabricApplication`：
+使用 PowerShell 时，参数将以[哈希表](https://technet.microsoft.com/library/ee692803.aspx)的形式提供给 `New-ServiceFabricApplication`：
 
 ```powershell
 New-ServiceFabricApplication -ApplicationName fabric:/MyApp -ApplicationTypeName MyAppType -ApplicationTypeVersion 1.0.0 -ApplicationParameter @{"MySecret" = "I6jCCAeYCAxgFhBXABFxzAt ... gNBRyeWFXl2VydmjZNwJIM="}
 ```
 
-使用 C# 时，应用程序参数以 `NameValueCollection` 的形式在 `ApplicationDescription` 中指定：
+使用 C# 时，应用程序参数将以 `NameValueCollection` 的形式在 `ApplicationDescription` 中指定：
 
 ```csharp
 FabricClient fabricClient = new FabricClient();

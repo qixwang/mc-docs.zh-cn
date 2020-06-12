@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 origin.date: 03/14/2019
-ms.date: 05/11/2020
+ms.date: 06/08/2020
 ms.author: v-jay
-ms.openlocfilehash: b27293c325445ccd84df6bdc1163dfb413af07c2
-ms.sourcegitcommit: 95efd248f5ee3701f671dbd5cfe0aec9c9959a24
+ms.openlocfilehash: 7aeeffebf5e1fc052acaa1ddf9c732f796f517f5
+ms.sourcegitcommit: 79c99a9ea013b3c74706a1038a505f4eea2aaac4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82507695"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84439517"
 ---
 # <a name="azure-media-services-concepts"></a>Azure 媒体服务概念 
 
@@ -115,7 +115,7 @@ Azure 媒体服务提供了多个用于在云中对媒体进行编码的选项�
 ## <a name="live-streaming"></a>实时流式处理
 在 Azure 媒体服务中，频道表示用于处理实时流内容的管道。 频道通过以下两种方式之一接收实时输入流：
 
-* 本地实时编码器将多比特率 RTMP 或平滑流（分片 MP4）发送到频道。 可以使用以下输出多比特率平滑流的实时编码器：MediaExcel、Ateme、Imagine Communications、Envivio、Cisco 和 Elemental。 以下实时编码器输出 RTMP：Adobe Flash Live Encoder、[Telestream Wirecast](media-services-configure-wirecast-live-encoder.md)、Teradek、Haivision 和 Tricaster 编码器。 引入流会通过通道，但不会进行任何进一步的转码和编码操作。 收到请求时，媒体服务会将该流传送给客户。
+* 本地实时编码器将多比特率 RTMP 或平滑流（分片 MP4）发送到频道。 可以使用以下输出多比特率平滑流的实时编码器：MediaExcel、Ateme、Imagine Communications、Envivio、Cisco 和 Elemental。 以下实时编码器输出 RTMP：Adobe Flash 实时编码器、[Telestream Wirecast](media-services-configure-wirecast-live-encoder.md)、Teradek、Haivision 编码器。 引入流会通过通道，但不会进行任何进一步的转码和编码操作。 收到请求时，媒体服务会将该流传送给客户。
 * 将单比特率流（采用以下某种格式：RTMP 或平滑流式处理（分片 MP4））发送到能够使用媒体服务执行实时编码的通道。 然后，频道将对传入的单比特率流执行实时编码，使之转换为多比特率（自适应）视频流。 收到请求时，媒体服务会将该流传送给客户。
 
 ### <a name="channel"></a>频道
@@ -168,14 +168,14 @@ ArchiveWindowLength 还决定了客户端能够从当前实时位置按时间向
 使用媒体服务时，建议始终将夹层文件编码为自适应比特率 MP4 集，并使用[动态打包](media-services-dynamic-packaging-overview.md)将该集转换为所需格式。
 
 ### <a name="streaming-endpoint"></a>流式处理终结点
-流式处理终结点代表一个流服务，它可以直接将内容分发给客户端播放器应用程序。 流式处理终结点服务的出站流可以是实时流，也可以是媒体服务帐户中的视频点播资产。 媒体服务客户可以根据自身需要，选择标准流式处理终结点或者一个或多个高级流式处理终结点   。 标准流式处理终结点适用于最消耗流的工作负荷。 
+流式处理终结点代表一个流服务，它可以直接将内容分发给客户端播放器应用程序。 流式处理终结点服务的出站流可以是实时流，也可以是媒体服务帐户中的视频点播资产。 媒体服务客户可以根据自身需要，选择标准流式处理终结点或者一个或多个高级流式处理终结点 。 标准流式处理终结点适用于最消耗流的工作负荷。 
 
 标准流式处理终结点适用于最消耗流的工作负荷。 标准流式处理终结点可以动态地将内容打包成 HLS、MPEG-DASH 和平滑流式处理，并针对 Microsoft PlayReady、Apple Fairplay 和 AES128 进行动态加密，从而灵活地将内容传送到几乎所有设备。 如果有高级工作负荷或者流式处理容量要求无法适应标准流式处理终结点吞吐量目标，或者希望控制 StreamingEndpoint 服务的容量，以便处理不断增长的带宽需求，则我们建议分配缩放单元（也称为高级流单元）。
 
 建议使用动态打包和/或动态加密。
 
 >[!NOTE]
->创建 AMS 帐户后，会将一个处于“已停止”状态的**默认**流式处理终结点添加到帐户。   若要开始对内容进行流式处理并利用动态打包和动态加密功能，必须确保要从其流式获取内容的流式处理终结点处于“正在运行”状态。 
+>创建 AMS 帐户后，会将一个处于“已停止”状态的**默认**流式处理终结点添加到帐户。  若要开始对内容进行流式处理并利用动态打包和动态加密功能，必须确保要从其流式获取内容的流式处理终结点处于“正在运行”状态。 
 
 有关详细信息，请参阅[此](media-services-portal-manage-streaming-endpoints.md)主题。
 

@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/23/2020
+ms.date: 06/02/2020
 ms.subservice: hybrid
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c77f217a1a528098d38146b763a1f1c2ff7ecb2
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.openlocfilehash: 5520d96b4d83b052d2d54289b3d973fe59cb3ab4
+ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82126580"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84275325"
 ---
 # <a name="multiple-domain-support-for-federating-with-azure-ad"></a>与 Azure AD 联合的多域支持
 以下文档提供了有关与 Office 365 或 Azure AD 域联合时如何使用多个顶级域和子域的指导。
@@ -100,9 +100,9 @@ ms.locfileid: "82126580"
 
 请使用以下步骤来删除 Microsoft Online 信任，并更新原始域。
 
-1. 在 AD FS 联合身份验证服务器上，打开“AD FS 管理”  。
-2. 展开左侧的“信任关系”和“信赖方信任”  
-3. 删除右侧的“Microsoft Office 365 标识平台”项。 
+1. 在 AD FS 联合身份验证服务器上，打开“AD FS 管理”。
+2. 展开左侧的“信任关系”和“信赖方信任” 
+3. 删除右侧的“Microsoft Office 365 标识平台”项。
    ![删除 Microsoft Online](./media/how-to-connect-install-multiple-domains/trust4.png)
 4. 在已安装[适用于 Windows PowerShell 的 Azure Active Directory 模块](https://msdn.microsoft.com/library/azure/jj151815.aspx)的计算机上运行以下命令：`$cred=Get-Credential`。  
 5. 输入要联合的 Azure AD 域的全局管理员用户名和密码。
@@ -137,7 +137,7 @@ ms.locfileid: "82126580"
 ## <a name="support-for-subdomains"></a>对子域的支持
 添加子域时，因为 Azure AD 处理域的方式，导致子域继承父项的设置。  因此，IssuerUri 需要与父项匹配。
 
-例如，假设我有 bmcontoso.com，后来又添加了 corp.bmcontoso.com。  corp.bmcontoso.com 中的用户的 IssuerUri 将需要是 **http://bmcontoso.com/adfs/services/trust 。**  但是，为 Azure AD 实现的上述标准规则将生成颁发者为 **http://corp.bmcontoso.com/adfs/services/trust 的令牌。** 这与域的所需值不匹配，身份验证将失败。
+例如，假设我有 bmcontoso.com，后来又添加了 corp.bmcontoso.com。  corp.bmcontoso.com 中用户的 IssuerUri 必须是 `http://bmcontoso.com/adfs/services/trust`。  但是，针对 Azure AD 执行的上述标准规则将生成颁发者为 `http://corp.bmcontoso.com/adfs/services/trust` 的令牌。 这与域的所需值不匹配，身份验证将失败。
 
 ### <a name="how-to-enable-support-for-subdomains"></a>如何启用对子域的支持
 若要避免此行为，需要更新 Microsoft Online 的 AD FS 信赖方信任。  为此，必须配置自定义声明规则，使其在构造自定义 Issuer 值时能够从用户的 UPN 后缀中删除任何子域。

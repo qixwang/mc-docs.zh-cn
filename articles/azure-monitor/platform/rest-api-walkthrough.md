@@ -1,33 +1,34 @@
 ---
 title: Azure 监视 REST API 演练
 description: 如何对请求进行身份验证，以及如何使用 Azure Monitor REST API 检索可用的指标定义和指标值。
-author: lingliw
+author: Johnnytechn
 ms.subservice: metrics
 ms.topic: conceptual
 origin.date: 03/19/2018
-ms.date: 05/19/2019
-ms.author: v-lingwu
-ms.openlocfilehash: 21285ae072f41a3cb1dac8478327fa8463c49ad6
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/28/2020
+ms.author: v-johya
+ms.openlocfilehash: 339021569dcc80b091e5c2730c0403724147c078
+ms.sourcegitcommit: 5ae04a3b8e025986a3a257a6ed251b575dbf60a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79452553"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84440681"
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Azure 监视 REST API 演练
+
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-本文说明如何执行身份验证，使代码能够遵循[世纪互联 Azure Monitor REST API 参考](https://docs.microsoft.com/rest/api/monitor/)。
+本文说明如何执行身份验证，使代码能够遵循 [Azure Monitor REST API 参考](https://docs.microsoft.com/rest/api/monitor/)。
 
 使用 Azure Monitor API 能够以编程方式检索可用的默认指标定义、粒度和指标值。 可将数据保存在独立的数据存储（例如 Azure SQL 数据库、Azure Cosmos DB 或 Azure Data Lake）中。 然后，可以根据需要从该处执行其他分析。
 
-除了处理各种指标数据点以外，使用监视 API 还可以列出警报规则、查看活动日志以及执行其他许多操作。 有关可用操作的完整列表，请参阅[世纪互联 Azure Monitor REST API 参考](https://msdn.microsoft.com/library/azure/dn931943.aspx)。
+除了处理各种指标数据点以外，使用监视 API 还可以列出警报规则、查看活动日志以及执行其他许多操作。 有关可用操作的完整列表，请参阅 [Azure Monitor REST API 参考](https://docs.microsoft.com/rest/api/monitor/)。
 
 ## <a name="authenticating-azure-monitor-requests"></a>对 Azure Monitor 请求进行身份验证
 
 第一步是对请求进行身份验证。
 
-针对 Azure 监视器 API 执行的所有任务都使用 Azure 资源管理器身份验证模型。 因此，所有请求必须使用 Azure Active Directory (Azure AD) 进行身份验证。 对客户端应用程序进行身份验证的方法之一是创建 Azure AD 服务主体，并检索身份验证 (JWT) 令牌。 以下示例脚本演示如何通过 PowerShell 创建 Azure AD 服务主体。 有关更详细的演练，请参阅有关[使用 Azure PowerShell 创建用于访问资源的服务主体](https://docs.microsoft.com/powershell/azure/create-azure-service-principal-azureps)的文档。 还可以[通过 Azure 门户创建服务主体](../../active-directory/develop/howto-create-service-principal-portal.md)。
+针对 Azure 监视器 API 执行的所有任务都使用 Azure Resource Manager 身份验证模型。 因此，所有请求必须使用 Azure Active Directory (Azure AD) 进行身份验证。 对客户端应用程序进行身份验证的方法之一是创建 Azure AD 服务主体，并检索身份验证 (JWT) 令牌。 以下示例脚本演示如何通过 PowerShell 创建 Azure AD 服务主体。 有关更详细的演练，请参阅有关[使用 Azure PowerShell 创建用于访问资源的服务主体](https://docs.microsoft.com/powershell/azure/create-azure-service-principal-azureps)的文档。 还可以[通过 Azure 门户创建服务主体](../../active-directory/develop/howto-create-service-principal-portal.md)。
 
 ```powershell
 $subscriptionId = "{azure-subscription-id}"
@@ -56,7 +57,7 @@ New-AzRoleAssignment -RoleDefinitionName Reader `
 
 ```
 
-若要查询 Azure 监视器 API，客户端应用程序应使用事先创建的服务主体进行身份验证。 以下示例 PowerShell 脚本演示了一种使用 [Active Directory 身份验证库](../../active-directory/azuread-dev/active-directory-authentication-libraries.md) (ADAL) 来获取 JWT 身份验证令牌的方法。 JWT 令牌作为请求中 HTTP 授权参数的一部分传递给 Azure 监视器 REST API。
+若要查询 Azure 监视器 API，客户端应用程序应使用事先创建的服务主体进行身份验证。 以下示例 PowerShell 脚本演示了一种使用 [Active Directory 身份验证库](../../active-directory/azuread-dev/active-directory-authentication-libraries.md) (ADAL) 来获取 JWT 身份验证令牌的方法。 JWT 令牌作为请求中 HTTP 授权参数的一部分传递给 Azure Monitor REST API。
 
 ```powershell
 $azureAdApplication = Get-AzADApplication -IdentifierUri "https://localhost/azure-monitor"
@@ -92,15 +93,15 @@ $authHeader = @{
 
 ## <a name="retrieve-metric-definitions-multi-dimensional-api"></a>检索指标定义（多维 API）
 
-使用[Azure 监视器指标定义 REST API](https://docs.microsoft.com/rest/api/monitor/metricdefinitions)访问服务可用的指标列表。
+使用 [Azure Monitor 指标定义 REST API](https://docs.microsoft.com/rest/api/monitor/metricdefinitions) 可以访问服务可用的指标列表。
 
 **方法**：GET
 
-**Request URI**: https://management.chinacloudapi.cn/subscriptions/{subscriptionId}/resourceGroups/ *{resourceGroupName}* /providers/ *{resourceProviderNamespace}* / *{resourceType}* / *{resourceName}* /providers/microsoft.insights/metricDefinitions?api-version= *{apiVersion}*
+**请求 URI**：https:\/\/management.chinacloudapi.cn/subscriptions/ *{subscriptionId}* /resourceGroups/ *{resourceGroupName}* /providers/ *{resourceProviderNamespace}* / *{resourceType}* / *{resourceName}* /providers/microsoft.insights/metricDefinitions?api-version= *{apiVersion}*
 
 例如，若要检索 Azure 存储帐户的指标定义，请求将如下所示：
 
-```PowerShell
+```powershell
 $request = "https://management.chinacloudapi.cn/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Storage/storageAccounts/ContosoStorage/providers/microsoft.insights/metricDefinitions?api-version=2018-01-01"
 
 Invoke-RestMethod -Uri $request `
@@ -108,15 +109,17 @@ Invoke-RestMethod -Uri $request `
                   -Method Get `
                   -OutFile ".\contosostorage-metricdef-results.json" `
                   -Verbose
+
 ```
+
 > [!NOTE]
 > 若要使用多维 Azure Monitor 指标 REST API 检索指标定义，请使用“2018-01-01”作为 API 版本。
 >
 >
 
-生成的 JSON 响应正文将类似于以下示例：（请注意，第二个指标具有维）
+生成的 JSON 响应正文将类似于以下示例：（请注意第二个指标具有维度）
 
-```JSON
+```json
 {
     "value": [
         {
@@ -226,9 +229,10 @@ Invoke-RestMethod -Uri $request `
 ```
 
 ## <a name="retrieve-dimension-values-multi-dimensional-api"></a>检索维值（多维 API）
+
 了解可用的指标定义后，可能会发现一些指标具有多个维。 在查询指标前，可能需要查明某个维具有的值的范围。 然后，根据这些维值，在查询指标时，可以选择根据维值对指标进行筛选或分段。  为此，请使用 [Azure Monitor 指标 REST API](https://docs.microsoft.com/rest/api/monitor/metrics)。
 
-对于任何筛选请求，请使用指标的名称“value”（而非“localizedValue”）。 如果未指定筛选器，将返回默认指标。 使用此 API 仅允许一个维度具有通配符筛选器。
+对于任何筛选请求，请使用指标的名称“value”（而非“localizedValue”）。 如果未指定筛选器，则返回默认指标。 使用此 API 仅允许一个维度具有通配符筛选器。
 
 > [!NOTE]
 > 若要使用 Azure Monitor REST API 检索维度值，请使用“2018-01-01”作为 API 版本。
@@ -237,11 +241,11 @@ Invoke-RestMethod -Uri $request `
 
 **方法**：GET
 
-**Request URI**: https://management.chinacloudapi.cn/subscriptions/{subscription-id}/resourceGroups/ *{resource-group-name}* /providers/ *{resource-provider-namespace}* / *{resource-type}* / *{resource-name}* /providers/microsoft.insights/metrics?metricnames={metric}&timespan={starttime/endtime}&$filter={filter}&resultType=metadata&api-version= *{apiVersion}*
+**请求 URI**：https\://management.chinacloudapi.cn/subscriptions/ *{subscription-id}* /resourceGroups/ *{resource-group-name}* /providers/ *{resource-provider-namespace}* / *{resource-type}* / *{resource-name}* /providers/microsoft.insights/metrics?metricnames= *{metric}* &timespan= *{starttime/endtime}* &$filter= *{filter}* &resultType=metadata&api-version= *{apiVersion}*
 
 例如，若要检索为“事务”指标的“API 名称维度”发出的维度值列表，其中在指定时间范围内 GeoType 维度为“Primary”，则请求将如下所示：
 
-```PowerShell
+```powershell
 $filter = "APIName eq '*' and GeoType eq 'Primary'"
 $request = "https://management.chinacloudapi.cn/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Storage/storageAccounts/ContosoStorage/providers/microsoft.insights/metrics?metricnames=Transactions&timespan=2018-03-01T00:00:00Z/2018-03-02T00:00:00Z&resultType=metadata&`$filter=${filter}&api-version=2018-01-01"
 Invoke-RestMethod -Uri $request `
@@ -293,7 +297,7 @@ Invoke-RestMethod -Uri $request `
     }
   ],
   "namespace": "Microsoft.Storage/storageAccounts",
-  "resourceregion": "China East"
+  "resourceregion": "chinanorth"
 }
 ```
 
@@ -310,7 +314,7 @@ Invoke-RestMethod -Uri $request `
 
 **方法**：GET
 
-**Request URI**: https://management.chinacloudapi.cn/subscriptions/{subscription-id}/resourceGroups/ *{resource-group-name}* /providers/ *{resource-provider-namespace}* / *{resource-type}* / *{resource-name}* /providers/microsoft.insights/metrics?metricnames={metric}&timespan={starttime/endtime}&$filter={filter}&interval={timeGrain}&aggregation={aggreation}&api-version= *{apiVersion}*
+**请求 URI**https:\//management.chinacloudapi.cn/subscriptions/ *{subscription-id}* /resourceGroups/ *{resource-group-name}* /providers/ *{resource-provider-namespace}* / *{resource-type}* / *{resource-name}* /providers/microsoft.insights/metrics?metricnames= *{metric}* &timespan= *{starttime/endtime}* &$filter= *{filter}* &interval= *{timeGrain}* &aggregation= *{aggreation}* &api-version= *{apiVersion}*
 
 例如，若要在 5 分钟时间范围内按“事务”数降序值检索前 3 个 API，其中 GeotType 为 “Primary”，则请求将如下所示：
 
@@ -379,20 +383,21 @@ Invoke-RestMethod -Uri $request `
     }
   ],
   "namespace": "Microsoft.Storage/storageAccounts",
-  "resourceregion": "China East"
+  "resourceregion": "chinanorth"
 }
 ```
 
 ## <a name="retrieve-metric-definitions"></a>检索指标定义
-使用[Azure 监视器指标定义 REST API](https://msdn.microsoft.com/library/mt743621.aspx)访问服务可用的指标列表。
+
+使用 [Azure Monitor 指标定义 REST API](https://msdn.microsoft.com/library/mt743621.aspx) 可以访问服务可用的指标列表。
 
 **方法**：GET
 
-**Request URI**: https://management.chinacloudapi.cn/subscriptions/{subscriptionId}/resourceGroups/ *{resourceGroupName}* /providers/ *{resourceProviderNamespace}* / *{resourceType}* / *{resourceName}* /providers/microsoft.insights/metricDefinitions?api-version= *{apiVersion}*
+**请求 URI**：https:\/\/management.chinacloudapi.cn/subscriptions/ *{subscriptionId}* /resourceGroups/ *{resourceGroupName}* /providers/ *{resourceProviderNamespace}* / *{resourceType}* / *{resourceName}* /providers/microsoft.insights/metricDefinitions?api-version= *{apiVersion}*
 
 例如，若要检索某个 Azure 逻辑应用的指标定义，请求将如下所示：
 
-```PowerShell
+```powershell
 $request = "https://management.chinacloudapi.cn/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Logic/workflows/ContosoTweets/providers/microsoft.insights/metricDefinitions?api-version=2016-03-01"
 
 Invoke-RestMethod -Uri $request `
@@ -448,11 +453,11 @@ Invoke-RestMethod -Uri $request `
 }
 ```
 
-有关详细信息，请参阅 [List the metric definitions for a resource in Azure Monitor REST API](https://msdn.microsoft.com/library/azure/mt743621.aspx)（在 Azure 监视器 REST API 中列出资源的指标定义）文档。
+有关详细信息，请参阅 [List the metric definitions for a resource in Azure Monitor REST API](https://msdn.microsoft.com/library/azure/mt743621.aspx)（在 Azure Monitor REST API 中列出资源的指标定义）文档。
 
 ## <a name="retrieve-metric-values"></a>检索指标值
 
-知道可用的指标定义后，即可检索相关的指标值。 将指标的名称“value”（而不是“localizedValue”）用于任何筛选请求（例如，检索“CpuTime”和“Requests”指标数据点）。 如果未指定筛选器，将返回默认指标。
+知道可用的指标定义后，即可检索相关的指标值。 将指标的名称“value”（而不是“localizedValue”）用于任何筛选请求（例如，检索“CpuTime”和“Requests”指标数据点）。 如果未指定筛选器，则返回默认指标。
 
 > [!NOTE]
 > 若要使用 Azure Monitor REST API 检索指标值，请使用“2016-09-01”作为 API 版本。
@@ -461,7 +466,7 @@ Invoke-RestMethod -Uri $request `
 
 **方法**：GET
 
-**Request URI**: https://management.chinacloudapi.cn/subscriptions/{subscription-id}/resourceGroups/ *{resource-group-name}* /providers/ *{resource-provider-namespace}* / *{resource-type}* / *{resource-name}* /providers/microsoft.insights/metrics?$filter={filter}&api-version= *{apiVersion}*
+**请求 URI**：`https:\//management.chinacloudapi.cn/subscriptions/\*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/*{resource-provider-namespace}*/*{resource-type}*/*{resource-name}*/providers/microsoft.insights/metrics?$filter=*{filter}*&api-version=*{apiVersion}*`
 
 例如，要检索给定时间范围内时间粒度为 1 小时的 RunsSucceeded 指标数据点，请求将如下所示：
 
@@ -576,7 +581,7 @@ Invoke-RestMethod -Uri $request `
 
 ### <a name="use-armclient"></a>使用 ARMClient
 
-另一种方法是使用 Windows 计算机上的 [ARMClient](https://github.com/projectkudu/armclient)。 ARMClient 会自动处理 Azure AD 身份验证（及生成的 JWT 令牌）。 以下步骤概述如何使用 ARMClient 检索指标数据：
+另一种方法是使用 Windows 计算机上的 [ARMClient](https://github.com/projectkudu/armclient)。 ARMClient 将自动处理 Azure AD 身份验证（及生成的 JWT 令牌）。 以下步骤概述如何使用 ARMClient 检索指标数据：
 
 1. 安装 [Chocolatey](https://chocolatey.org/) 和 [ARMClient](https://github.com/projectkudu/armclient)。
 2. 在终端窗口中，键入 *armclient.exe login*。 这样做会提示登录到 Azure。
@@ -590,6 +595,7 @@ armclient GET /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups
 ```
 
 ## <a name="retrieve-the-resource-id"></a>检索资源 ID
+
 使用 REST API 确实有助于了解可用的指标定义、粒度和相关值。 使用 [Azure 管理库](https://msdn.microsoft.com/library/azure/mt417623.aspx)时，这些信息很有用。
 
 对于上述代码，要使用的资源 ID 是所需 Azure 资源的完整路径。 例如，要针对某个 Azure Web 应用执行查询，资源 ID 将是：
@@ -610,7 +616,7 @@ armclient GET /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups
 
 ### <a name="azure-resource-explorer"></a>Azure 资源浏览器
 
-若要查找所需资源的资源 ID，一种有效的方法是使用 [Azure 资源浏览器](https://resources.azure.com)工具。 导航到所需的资源，并查看如以下屏幕截图中所示的 ID：
+若要查找所需资源的资源 ID，一种有效的方法是使用 [Azure 资源浏览器](https://portal.azure.cn/#blade/HubsExtension/ArmExplorerBlade)工具。 导航到所需的资源，并查看如以下屏幕截图中所示的 ID：
 
 ![Alt "Azure 资源浏览器"](./media/rest-api-walkthrough/azure_resource_explorer.png)
 
@@ -634,10 +640,10 @@ Get-AzLogicApp -ResourceGroupName azmon-rest-api-walkthrough -Name contosotweets
 Id             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Logic/workflows/ContosoTweets
 Name           : ContosoTweets
 Type           : Microsoft.Logic/workflows
-Location       : China East
+Location       : centralus
 ChangedTime    : 8/21/2017 6:58:57 PM
 CreatedTime    : 8/18/2017 7:54:21 PM
-AccessEndpoint : https://prod-08.chinaeast.logic.chinacloudapi.cn:443/workflows/f3a91b352fcc47e6bff989b85446c5db
+AccessEndpoint : https://prod-08.chinanorth.logic.chinacloudapi.cn:443/workflows/f3a91b352fcc47e6bff989b85446c5db
 State          : Enabled
 Definition     : {$schema, contentVersion, parameters, triggers...}
 Parameters     : {[$connections, Microsoft.Azure.Management.Logic.Models.WorkflowParameter]}
@@ -669,7 +675,7 @@ az storage account show -g azmon-rest-api-walkthrough -n contosotweets2017
   "identity": null,
   "kind": "Storage",
   "lastGeoFailoverTime": null,
-  "location": "China East",
+  "location": "chinanorth",
   "name": "contosotweets2017",
   "networkAcls": null,
   "primaryEndpoints": {
@@ -678,11 +684,11 @@ az storage account show -g azmon-rest-api-walkthrough -n contosotweets2017
     "queue": "https://contosotweets2017.queue.core.chinacloudapi.cn/",
     "table": "https://contosotweets2017.table.core.chinacloudapi.cn/"
   },
-  "primaryLocation": "China East",
+  "primaryLocation": "chinanorth",
   "provisioningState": "Succeeded",
   "resourceGroup": "azmon-rest-api-walkthrough",
   "secondaryEndpoints": null,
-  "secondaryLocation": "China East 2",
+  "secondaryLocation": "chinanorth2",
   "sku": {
     "name": "Standard_GRS",
     "tier": "Standard"
@@ -715,7 +721,8 @@ Invoke-RestMethod -Uri $request `
 
 ## <a name="next-steps"></a>后续步骤
 
-* 查看[监视概述](../../azure-monitor/overview.md)。
+* 查看 [监视概述](../../azure-monitor/overview.md)。
 * 查看 [Azure 监视器支持的指标](metrics-supported.md)。
-* 查看[世纪互联 Azure Monitor REST API 参考](https://msdn.microsoft.com/library/azure/dn931943.aspx)。
+* 请参阅 [Azure Monitor REST API 参考](https://msdn.microsoft.com/library/azure/dn931943.aspx)。
 * 查看 [Azure 管理库](https://msdn.microsoft.com/library/azure/mt417623.aspx)。
+

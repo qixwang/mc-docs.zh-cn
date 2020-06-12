@@ -1,7 +1,7 @@
 ---
 title: 多租户交互的特征 - Azure AD | Microsoft Docs
-description: 了解作为完全独立组织的 Azure Active Directory 租户
-services: active-tenant
+description: 了解 Azure Active Directory 组织的数据独立性
+services: active-directory
 documentationcenter: ''
 author: curtand
 manager: daveba
@@ -9,21 +9,21 @@ ms.service: active-directory
 ms.topic: article
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.date: 04/24/2020
+ms.date: 06/01/2020
 ms.author: v-junlch
 ms.custom: it-pro
 ms.reviewer: sumitp
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee9be718fea46a485b87502e834cad8bf2a8c5aa
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.openlocfilehash: 15a11e9031367497659e17b539b29f02d7a11554
+ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82126945"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84275517"
 ---
 # <a name="understand-how-multiple-azure-active-directory-organizations-interact"></a>了解多个 Azure Active Directory 组织如何交互
 
-在 Azure Active Directory (Azure AD) 中，每个租户都是完全独立的组织：也就是说，对等租户与你管理的其他 Azure AD 组织在逻辑上相互独立。 组织之间的这种独立性包括资源独立性、管理独立性和同步独立性。 组织之间不存在父子关系。
+在 Azure Active Directory (Azure AD) 中，每个 Azure AD 组织都是完全独立的：也就是说，对等租户与你管理的其他 Azure AD 组织在逻辑上相互独立。 组织之间的这种独立性包括资源独立性、管理独立性和同步独立性。 组织之间不存在父子关系。
 
 ## <a name="resource-independence"></a>资源独立性
 
@@ -47,7 +47,7 @@ ms.locfileid: "82126945"
 
 ## <a name="add-an-azure-ad-organization"></a>添加 Azure AD 组织
 
-若要在 Azure 门户中添加 Azure AD 组织，请使用作为 Azure AD 全局管理员的帐户登录到 [Azure 门户](https://portal.azure.cn)，然后选择“新建”  。
+若要在 Azure 门户中添加 Azure AD 组织，请使用作为 Azure AD 全局管理员的帐户登录到 [Azure 门户](https://portal.azure.cn)，然后选择“新建”。
 
 > [!NOTE]
 > 与其他 Azure 资源不同，你的 Azure AD 组织不是 Azure 订阅的子资源。 如果 Azure 订阅已取消或已过期，你仍可以使用 Azure PowerShell、Microsoft Graph API 或 Microsoft 365 管理中心来访问你的 Azure AD 组织的数据。 还可以[将其他订阅与组织相关联](../fundamentals/active-directory-how-subscriptions-associated-directory.md)。

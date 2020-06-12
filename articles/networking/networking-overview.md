@@ -1,6 +1,6 @@
 ---
-title: Azure 网络 | Azure
-description: 了解 Azure 中的网络服务及其功能。
+title: Azure 网络服务概述
+description: 了解 Azure 中的网络服务及其功能 - 连接服务、应用程序保护服务、应用程序交付服务和网络监视。
 services: networking
 documentationcenter: na
 author: KumudD
@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: article
 ms.workload: infrastructure-services
 origin.date: 03/12/2020
-ms.date: 04/20/2020
+ms.date: 06/03/2020
 ms.author: v-tawe
-ms.openlocfilehash: a61ad4286c667aed5ed560e19a340e68193b2b33
-ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
+ms.openlocfilehash: 22d2c592d8ea10e0d6437ac3c22db2a83c651f23
+ms.sourcegitcommit: 40d1ff17251ab1d2d607845523470f11ce087039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82588512"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84320487"
 ---
 # <a name="azure-networking-services-overview"></a>Azure 网络服务概述
 
@@ -210,7 +210,7 @@ Azure 应用程序网关是一种 Web 流量负载均衡器，可用于管理 We
 ### <a name="network-watcher"></a><a name="networkwatcher"></a>网络观察程序
 Azure 网络观察程序提供所需的工具用于监视、诊断 Azure 虚拟网络中的资源、查看其指标，以及为其启用或禁用日志。 有关详细信息，请参阅[什么是网络观察程序？](../network-watcher/network-watcher-monitoring-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### <a name="expressroute-monitor"></a><a name="expressroutemonitor"></a>ExpressRoute Monitor
-若要了解如何查看 ExpressRoute 线路指标、诊断日志和警报，请参阅 [ExpressRoute 监视、指标和警报](../expressroute/expressroute-monitoring-metrics-alerts.md?toc=%2fazure%2fnetworking%2ftoc.json)。
+若要了解如何查看 ExpressRoute 线路指标、资源日志和警报，请参阅 [ExpressRoute 监视、指标和警报](../expressroute/expressroute-monitoring-metrics-alerts.md?toc=%2fazure%2fnetworking%2ftoc.json)。
 ### <a name="azure-monitor"></a><a name="azuremonitor"></a>Azure Monitor
 Azure Monitor 提供用于收集、分析和处理来自云与本地环境的遥测数据的综合解决方案，可将应用程序的可用性和性能最大化。 它可以帮助你了解应用程序的性能，并主动识别影响应用程序及其所依赖资源的问题。 有关详细信息，请参阅 [Azure Monitor 概述](../azure-monitor/overview.md?toc=%2fazure%2fnetworking%2ftoc.json)。
 

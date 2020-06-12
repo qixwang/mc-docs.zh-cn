@@ -3,21 +3,21 @@ title: 在 Azure 中创建 Linux Service Fabric 群集
 description: 了解如何使用 Azure CLI 将 Linux Service Fabric 群集部署到现有 Azure 虚拟网络。
 ms.topic: conceptual
 origin.date: 02/14/2019
-ms.date: 04/13/2020
+ms.date: 06/08/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 0afbc83809db121bd246f7f93be90d2051f14acb
-ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
+ms.openlocfilehash: a82447efd280c6817393dc5aa9e02d728c70adac
+ms.sourcegitcommit: 0e178672632f710019eae60cea6a45ac54bb53a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82093506"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84356147"
 ---
 # <a name="deploy-a-linux-service-fabric-cluster-into-an-azure-virtual-network"></a>将 Linux Service Fabric 群集部署到 Azure 虚拟网络
 
 本文介绍了如何使用 Azure CLI 和模板将 Linux Service Fabric 群集部署到 [Azure 虚拟网络 (VNET)](../virtual-network/virtual-networks-overview.md) 中。 完成本教程后，云中会运行一个可在其中部署应用程序的群集。 若要使用 PowerShell 创建 Windows 群集，请参阅[在 Azure 上创建安全的 Windows 群集](service-fabric-tutorial-create-vnet-and-windows-cluster.md)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 开始之前：
 
@@ -33,8 +33,17 @@ ms.locfileid: "82093506"
 
 下载以下资源管理器模板文件：
 
+对于 Ubuntu 16.04 LTS：
+
 * [AzureDeploy.json][template]
 * [AzureDeploy.Parameters.json][parameters]
+
+对于 Ubuntu 18.04 LTS：
+
+* [AzureDeploy.json][template2]
+* [AzureDeploy.Parameters.json][parameters2]
+
+这两个模板之间的区别在于“vmImageSku”属性设置为“18.04-LTS”，每个节点的“typeHandlerVersion”设置为 1.1 。
 
 <!--MOONCAKE: CUSTOMIZE-->
 
@@ -44,10 +53,10 @@ ms.locfileid: "82093506"
 <!--Notice: Change storageAccountEndPoint as https://core.chinacloudapi.cn/-->
 
 > [!NOTE]
-> 对于本文，在成功下载相应的文件后，我们应当替换以下配置来满足 Azure 中国环境：
-> * 在 [AzureDeploy.json][template] 中三次替换 storageAccountEndPoint。
+> 对于本文，在成功下载相应的文件后，我们应当替换以下配置来满足 Azure 中国云环境：
+> * 在 **AzureDeploy.json** 中三次替换 storageAccountEndPoint。
 >     * 将 `"storageAccountEndPoint": "https://core.windows.net/"` 替换为 `"storageAccountEndPoint": "https://core.chinacloudapi.cn/"`。
-> * 替换 [AzureDeploy.Parameters.json][parameters] 中的 clusterLocation。
+> * 替换 AzureDeploy.Parameters.json 和 AzureDeploy.json 中的 clusterLocation 。
 >     * 将 `westus` 替换为 `chinanorth`。
 > * 替换 [New-ServiceFabricClusterCertificate.ps1](https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Ubuntu-3-NodeTypes-Secure/New-ServiceFabricClusterCertificate.ps1) 中的 Location。
 >     * 将 `WestUS` 替换为 `chinanorth`。
@@ -62,7 +71,7 @@ ms.locfileid: "82093506"
 
 * 三个节点类型
 * 主节点类型包含五个节点（可在模板参数中配置），其他节点类型各包含一个节点
-* OS：Ubuntu 16.04 LTS（可在模板参数中配置）
+* OS：(Ubuntu 16.04 LTS / Ubuntu 18.04 LTS)（可在模板参数中配置）
 * 证书保护（可在模板参数中配置）
 * 已启用 [DNS 服务](service-fabric-dnsservice.md)
 * 铜级[持久性级别](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster)（可在模板参数中配置）
@@ -74,7 +83,7 @@ ms.locfileid: "82093506"
 
 在 **Microsoft.Network/loadBalancers** 资源中，配置了负载均衡器，并为以下端口设置了探测和规则：
 
-* 连接终结点:19000
+* 客户端连接终结点：19000
 * HTTP 网关终结点：19080
 * 应用程序端口：80
 * 应用程序端口：443
@@ -90,9 +99,9 @@ ms.locfileid: "82093506"
 
 ## <a name="set-template-parameters"></a>设置模板参数
 
-[AzureDeploy.Parameters][parameters] 参数文件声明用于部署群集和关联资源的多个值。 可能需要使用某些参数来修改部署：
+AzureDeploy.Parameters 文件声明用于部署群集和关联资源的多个值。 可能需要使用某些参数来修改部署：
 
-|参数|示例值|说明|
+|参数|示例值|注释|
 |---|---||
 |adminUserName|vmadmin| 群集 VM 的管理员用户名。 |
 |adminPassword|Password#1234| 群集 VM 的管理员密码。|
@@ -106,7 +115,7 @@ ms.locfileid: "82093506"
 
 ## <a name="deploy-the-virtual-network-and-cluster"></a>部署虚拟网络和群集
 
-接下来，设置网络拓扑并部署 Service Fabric 群集。 [AzureDeploy.json][template] 资源管理器模板为 Service Fabric 创建虚拟网络 (VNET) 和子网。 该模板还会部署一个已启用证书安全性的群集。  对于生产群集，请使用证书颁发机构 (CA) 提供的证书作为群集证书。 可以使用自签名证书来保护测试群集。
+接下来，设置网络拓扑并部署 Service Fabric 群集。 **AzureDeploy.json** 资源管理器模板为 Service Fabric 创建虚拟网络 (VNET) 和子网。 该模板还会部署一个已启用证书安全性的群集。  对于生产群集，请使用证书颁发机构 (CA) 提供的证书作为群集证书。 可以使用自签名证书来保护测试群集。
 
 本文中的模板部署一个群集，该群集使用证书指纹来标识群集证书。  两个证书不能有相同的指纹，否则会增加证书管理的难度。 将已部署的群集从使用证书指纹切换为使用证书公用名称会使证书管理更加简单。  若要了解如何更新群集，以便使用证书公用名称进行证书管理，请阅读[将群集更改为使用证书公用名称进行管理](service-fabric-cluster-change-cert-thumbprint-to-cn.md)。
 
@@ -181,7 +190,9 @@ sfctl cluster health
 
 本文中的模板部署一个群集，该群集使用证书指纹来标识群集证书。  两个证书不能有相同的指纹，否则会增加证书管理的难度。 将已部署的群集从使用证书指纹切换为使用证书公用名称会使证书管理更加简单。  若要了解如何更新群集，以便使用证书公用名称进行证书管理，请阅读[将群集更改为使用证书公用名称进行管理](service-fabric-cluster-change-cert-thumbprint-to-cn.md)。
 
-[template]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Ubuntu-3-NodeTypes-Secure/AzureDeploy.json
-[parameters]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Ubuntu-3-NodeTypes-Secure/AzureDeploy.Parameters.json
+[template]: https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Ubuntu-3-NodeTypes-Secure/AzureDeploy.json
+[parameters]: https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Ubuntu-3-NodeTypes-Secure/AzureDeploy.Parameters.json
+[template2]: https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Ubuntu-1804-3-NodeTypes-Secure/AzureDeploy.json
+[parameters2]: https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Ubuntu-1804-3-NodeTypes-Secure/AzureDeploy.Parameters.json
 
 <!-- Update_Description: update meta properties, wording update, update link -->

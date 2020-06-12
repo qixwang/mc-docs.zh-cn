@@ -1,19 +1,19 @@
 ---
-title: Microsoft Azure 和 Azure Monitor 中的经典警报概述
+title: Azure Monitor 中的经典警报概述
 description: 经典警报将被弃用。 使用警报可以监视 Azure 资源指标、事件或日志，并在符合指定的条件时接收通知。
-author: lingliw
+author: Johnnytechn
 ms.topic: conceptual
 origin.date: 05/19/2018
-ms.date: 04/12/2019
-ms.author: v-lingwu
-ms.openlocfilehash: edfe0cc22e52128989d0fa745b783762e77e4275
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/28/2020
+ms.author: v-johya
+ms.openlocfilehash: 7679bae475aa58a450e3e695ab0e5678cc335458
+ms.sourcegitcommit: 5ae04a3b8e025986a3a257a6ed251b575dbf60a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79452561"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84440453"
 ---
-# <a name="what-are-classic-alerts-in-21vianet-azure"></a>什么是世纪互联 Azure 中的经典警报？
+# <a name="what-are-classic-alerts-in-azure"></a>Azure 中的经典警报是什么？
 
 > [!NOTE]
 > 本文介绍了如何创建旧式经典指标警报。 Azure Monitor 现在支持[较新的近实时指标警报和新的警报体验](../../azure-monitor/platform/alerts-overview.md)。 
@@ -25,25 +25,25 @@ ms.locfileid: "79452561"
 
 在过去的 Azure Monitor 中，Application Insights，Log Analytics 和服务运行状况都有单独的警报功能。 随着时间推移，Azure 改进并组合了用户界面和不同的警报方法。 整合仍在进行中。
 
-只能在 Azure 门户中的经典警报用户屏幕中查看经典警报。 可以通过警报屏幕上的“查看经典警报”  按钮访问此屏幕。 
+只能在 Azure 门户中的经典警报用户屏幕中查看经典警报。 可以通过警报屏幕上的“查看经典警报”按钮访问此屏幕。 
 
- ![Azure 门户中的警报选项](media/alerts-classic.overview/monitor-alert-screen2.png)
+ ![Azure 门户中的警报选项](./media/alerts-classic.overview/monitor-alert-screen2.png)
 
 与经典警报体验相比，新式警报用户体验具有以下优点：
--   **更好的通知系统** - 所有新式警报均使用操作组，这些组是命名的通知和操作组，可以在多个警报中重复使用。 经典指标警报和旧版 Log Analytics 警报不使用操作组。
--   **统一的创作体验** - 针对 Azure Monitor、Log Analytics 和 Application Insights 中的指标、日志和活动日志的所有警报创建均在一个位置进行。
--   **在 Azure 门户中查看触发的 Log Analytics 警报** - 现在还可以在订阅中查看触发的 Log Analytics 警报。 以前这些警报在单独的门户中。
--   **分开触发的警报和警报规则** - 对警报规则（定义触发警报的条件）和触发的警报（警报规则触发实例）进行了区分，因此操作视图和配置视图是分开的。
--   **更好的工作流** - 全新警报创作体验引导用户完成警报规则配置过程，因此发现需要发出警报的事项变得更容易了。
--   **智能警报整合**和**设置警报状态** - 新式警报包括了自动分组功能，它将类似的警报显示在一起以降低用户界面中的开销。 
+- **更好的通知系统** - 所有新式警报均使用操作组，这些组是命名的通知和操作组，可以在多个警报中重复使用。 经典指标警报和旧版 Log Analytics 警报不使用操作组。
+- **统一的创作体验** - 针对 Azure Monitor、Log Analytics 和 Application Insights 中的指标、日志和活动日志的所有警报创建均在一个位置进行。
+- **在 Azure 门户中查看触发的 Log Analytics 警报** - 现在还可以在订阅中查看触发的 Log Analytics 警报。 以前这些警报在单独的门户中。
+- **分开触发的警报和警报规则** - 对警报规则（定义触发警报的条件）和触发的警报（警报规则触发实例）进行了区分，因此操作视图和配置视图是分开的。
+- **更好的工作流** - 全新警报创作体验引导用户完成警报规则配置过程，因此发现需要发出警报的事项变得更容易了。
+- **智能警报整合**和**设置警报状态** - 新式警报包括了自动分组功能，它将类似的警报显示在一起以降低用户界面中的开销。 
 
 与经典指标警报相比，新式指标警报具有以下优点：
--   **延迟降低**：新型指标警报的运行频率可达每分钟一次。 旧式指标警报每 5 分钟方可运行 1 次。 新式警报从问题发生到发出通知或采取操作的延迟更小（3 到 5 分钟）。 旧式警报需要 5 到 15 分组，具体取决于类型。  由于要花费时间来引入日志，日志警报通常有 10 到 15 分钟的延迟，但新式处理方法缩短了该时间。 
--   **支持多维指标**：支持对维度指标发出警报，从而可监视受关注的指标段。
--   **更好地控制指标条件**：可以定义更丰富的警报规则。 新型警报支持监视指标的最大值、最小值、平均值和总值。
--   **综合监视多个指标**：可以使用单个规则监视多个指标（目前最多为两个指标）。 如果两个指标在指定时间段内违反其各自的阈值，则会触发警报。
--   **更好的通知系统**：所有新型警报均使用[操作组](../../azure-monitor/platform/action-groups.md)，这些组是命名的通知和操作组，可以在多个警报中重复使用。  经典指标警报和旧版 Log Analytics 警报不使用操作组。 
--   **日志中的指标**（公共预览版）：进入 Log Analytics 的日志数据现在可以提取并转换为 Azure Monitor 指标，然后就像其他指标一样，基于其发出警报。 有关特定于经典警报的术语，请参阅[警报（经典）](alerts-classic.overview.md)。 
+- **延迟降低**：新型指标警报的运行频率可达每分钟一次。 旧式指标警报每 5 分钟方可运行 1 次。 新式警报从问题发生到发出通知或采取操作的延迟更小（3 到 5 分钟）。 旧式警报需要 5 到 15 分组，具体取决于类型。  由于要花费时间来引入日志，日志警报通常有 10 到 15 分钟的延迟，但新式处理方法缩短了该时间。 
+- **支持多维指标**：支持对维度指标发出警报，从而可监视所关注的指标段。
+- **更好地控制指标条件**：可以定义更丰富的警报规则。 新型警报支持监视指标的最大值、最小值、平均值和总值。
+- **综合监视多个指标**：可以使用单个规则监视多个指标（目前最多为两个指标）。 如果两个指标在指定时间段内违反其各自的阈值，则会触发警报。
+- **更好的通知系统**：所有新式警报均使用[操作组](../../azure-monitor/platform/action-groups.md)，这些组是命名的通知和操作组，可以在多个警报中重复使用。  经典指标警报和旧版 Log Analytics 警报不使用操作组。 
+- **日志中的指标**（公共预览版）：进入 Log Analytics 的日志数据现在可以提取并转换为 Azure Monitor 指标，然后就像其他指标一样，基于其发出警报。 有关特定于经典警报的术语，请参阅[警报（经典）](alerts-classic.overview.md)。 
 
 
 ## <a name="classic-alerts-on-azure-monitor-data"></a>关于 Azure Monitor 数据的经典警报
@@ -57,7 +57,7 @@ ms.locfileid: "79452561"
 
 下图总结了 Azure Monitor 中的数据源，从概念上总结了从数据取消警报的方法。
 
-![警报介绍](media/alerts-classic.overview/Alerts_Overview_Resource_v5.png)
+![警报介绍](./media/alerts-classic.overview/Alerts_Overview_Resource_v5.png)
 
 ## <a name="taxonomy-of-alerts-classic"></a>警报的分类（经典）
 Azure 使用以下术语来描述经典警报和及其功能：
@@ -70,7 +70,7 @@ Azure 使用以下术语来描述经典警报和及其功能：
 ## <a name="how-do-i-receive-a-notification-from-an-azure-monitor-classic-alert"></a>如何接收来自 Azure Monitor 经典警报的通知？
 从历史上来看，来自不同服务的 Azure 警报使用自己的内置通知方法。 
 
-Azure Monitor 创建了一个称为“操作组”的可重复使用的通知组  。 操作组指定一组接收通知的接收方。 每当引用操作组的一个警报被激活时，所有接收方都会收到该通知。 操作组允许在多个警报对象中重复使用一组接收方（例如，在线工程师列表）。 除了电子邮件地址、短信号码和大量其他操作外，操作组还通过发布到 Webhook URL 来支持通知。  有关详细信息，请参阅[操作组](../../azure-monitor/platform/action-groups.md)。 
+Azure Monitor 创建了一个称为“操作组”的可重复使用的通知组。 操作组指定一组接收通知的接收方。 每当引用操作组的一个警报被激活时，所有接收方都会收到该通知。 操作组允许在多个警报对象中重复使用一组接收方（例如，在线工程师列表）。 除了电子邮件地址、短信号码和大量其他操作外，操作组还通过发布到 Webhook URL 来支持通知。  有关详细信息，请参阅[操作组](../../azure-monitor/platform/action-groups.md)。 
 
 旧式经典活动日志警报使用操作组。
 
@@ -98,6 +98,4 @@ Webhook 可实现自动化和修复，例如使用：
 * 查看[活动日志警报 webhook 架构](activity-log-alerts-webhook.md)
 * 详细了解[操作组](action-groups.md)
 * 配置[较新的警报](alerts-metric.md)
-
-
 

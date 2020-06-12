@@ -4,14 +4,14 @@ description: 放置约束对均衡的影响以及如何处理这种影响
 author: rockboyfor
 ms.topic: conceptual
 origin.date: 03/15/2020
-ms.date: 05/06/2020
+ms.date: 06/08/2020
 ms.author: v-yeche
-ms.openlocfilehash: b2eacf2820c1ce73b1351046f87cd09438deacb6
-ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
+ms.openlocfilehash: 1d7c19b1757ba789fa953cc1ac082be53cb44792
+ms.sourcegitcommit: 0e178672632f710019eae60cea6a45ac54bb53a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "83002308"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84356297"
 ---
 # <a name="balancing-of-subclustered-metrics"></a>子聚类化指标的均衡
 
@@ -23,13 +23,13 @@ ms.locfileid: "83002308"
 
 如果不同节点上的服务报告的负载存在明显的差异，则看似可能存在很大的不均衡性，但实际上并没有。 此外，如果子聚类化导致的虚假不均衡性超过了实际的不均衡性，可能会给资源管理器均衡算法造成混淆，使群集中的均衡性欠佳。
 
-例如，假设我们有四个服务，它们全都报告某个负载的指标 Metric1：
+例如，假设有四个服务，它们全都报告负载的指标 Metric1：
 
-* 服务 A - 放置约束为“NodeType==Type1”，报告的负载指标为 10
-* 服务 B - 放置约束为“NodeType==Type1”，报告的负载指标为 10
-* 服务 C - 放置约束为“NodeType==Type2”，报告的负载指标为 100
-* 服务 D - 放置约束为“NodeType==Type2”，报告的负载指标为 100
-* 另外，我们有四个节点。 其中两个节点的 NodeType 设置为“Type1”，另两个节点的 NodeType 设置为“Type2”
+* 服务 A - 放置约束为“NodeType==Frontend”，报告的负载指标为 10
+* 服务 B - 放置约束为“NodeType==Frontend”，报告的负载指标为 10
+* 服务 C - 放置约束为“NodeType==Backend”，报告的负载指标为 100
+* 服务 D - 放置约束为“NodeType==Backend”，报告的负载指标为 100
+* 另外，我们有四个节点。 其中两个节点的 NodeType 设置为“Frontend”，另两个节点的 NodeType 设置为“Backend”
 
 放置约束如下：
 
@@ -49,21 +49,21 @@ ms.locfileid: "83002308"
 
 子聚类化情况可以分为三种不同的类别。 特定子聚类化情况的类别决定了资源管理器对它的处理方式。
 
-### <a name="first-category--flat-subclustering-with-disjoint-node-groups"></a>第一种类别 – 包含分离节点组的平缓子聚类化
+### <a name="first-category---flat-subclustering-with-disjoint-node-groups"></a>第一种类别 - 包含分离节点组的平缓子聚类化
 
 此类别是最简单的子聚类化形式，其中的节点可以划分为不同的组，并且每个服务只能放置到其中一个组中的节点上。 每个节点仅属于一个组。 上述情况就是属于此类别，而大多数子聚类化情况也都属于此类别。 
 
 对于此类别中的情况，资源管理器可以产生最佳均衡，且无需进一步的干预。
 
-### <a name="second-category--subclustering-with-hierarchical-node-groups"></a>第二种类别 – 包含分层节点组的子聚类化
+### <a name="second-category---subclustering-with-hierarchical-node-groups"></a>第二种类别 - 包含分层节点组的子聚类化
 
 如果一个服务允许的节点组是另一个服务允许的节点组的子集，则会发生这种情况。 这种情况最常见的示例是，某个服务有一个定义的放置约束，但另一个服务没有放置约束，因此后者可以放置在任何节点上。
 
 示例：
 
 * 服务 A：无放置约束
-* 服务 B：放置约束“NodeType==Type1”
-* 服务 C：放置约束“NodeType==Type2”
+* 服务 B：放置约束“NodeType==Frontend”
+* 服务 C：放置约束“NodeType==Backend”
 
 此配置将在不同服务的节点组之间创建子集-超集关系。
 
@@ -75,7 +75,7 @@ ms.locfileid: "83002308"
 
 在此情况下，有可能会产生欠佳的均衡。
 
-资源管理器会识别这种情况，并生成运行状况报告，建议将服务 A 拆分为两个服务 - 可放置在 Type1 节点上的服务 A1，以及可放置在 Type2 节点上的服务 A2。 这样，我们就会重新遇到能够实现最佳均衡的第一种类别的情况。
+资源管理器会识别这种情况，并生成运行状况报告，建议将服务 A 拆分为两个服务 - 可放置在 Frontend 节点上的服务 A1，以及可放置在 Backend 节点上的服务 A2。 这样，我们就会重新遇到能够实现最佳均衡的第一种类别的情况。
 
 ### <a name="third-category---subclustering-with-partial-overlap-between-node-sets"></a>第三种类别 - 节点集之间部分重叠的子聚类化
 
@@ -85,7 +85,7 @@ ms.locfileid: "83002308"
 
 * 节点 1：NodeColor=Red
 * 节点 2：NodeColor=Blue
-* 节点 3：NodeColor=Green
+* 节点 2：NodeColor=Green
 
 此外有两个服务：
 
@@ -109,10 +109,10 @@ ms.locfileid: "83002308"
 ClusterManifest.xml：
 
 ```xml
-        <Section Name="PlacementAndLoadBalancing">
-            <Parameter Name="SubclusteringEnabled" Value="true" />
-            <Parameter Name="SubclusteringReportingPolicy" Value="1" />
-        </Section>
+<Section Name="PlacementAndLoadBalancing">
+    <Parameter Name="SubclusteringEnabled" Value="true" />
+    <Parameter Name="SubclusteringReportingPolicy" Value="1" />
+</Section>
 ```
 
 通过用于独立部署的 ClusterConfig.json 或用于 Azure 托管群集的 Template.json：
@@ -142,5 +142,4 @@ ClusterManifest.xml：
 [Image1]: ./media/cluster-resource-manager-subclustering/subclustered-placement.png
 [Image2]: ./media/cluster-resource-manager-subclustering/subset-superset-nodes.png
 
-<!-- Update_Description: new article about cluster resource manager subclustering -->
-<!--NEW.date: 05/06/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

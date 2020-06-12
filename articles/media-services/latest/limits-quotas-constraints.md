@@ -10,14 +10,14 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: article
 origin.date: 04/01/2020
-ms.date: 05/11/2020
+ms.date: 06/08/2020
 ms.author: v-jay
-ms.openlocfilehash: 11e12da75dabcb08a05e9d30544564144c635b2b
-ms.sourcegitcommit: 95efd248f5ee3701f671dbd5cfe0aec9c9959a24
+ms.openlocfilehash: dd61ea923b1b8536f62792866aeedaddd73a13cb
+ms.sourcegitcommit: 79c99a9ea013b3c74706a1038a505f4eea2aaac4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82507701"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84439522"
 ---
 <!-- If you update limits in this topic, make sure to also update https://docs.azure.cn/azure-resource-manager/management/azure-subscription-service-limits#media-services-limits -->
 # <a name="azure-media-services-quotas-and-limits"></a>Azure 媒体服务的配额和限制
@@ -46,7 +46,7 @@ ms.locfileid: "82507701"
 | 文件大小| 在某些情况下，支持在媒体服务中处理的最大文件大小存在限制。 <sup>(1)</sup> |
 | [存储帐户](storage-account-concept.md) | 100<sup>(2)</sup>（固定） |
 
-<sup>1</sup> 在 Azure Blob 存储中，单个 Blob 目前支持的最大大小为 5 TB。 媒体服务会根据服务使用的 VM 大小应用其他限制。 大小限制适用于你上传的文件，也适用于由于媒体服务处理（编码或分析）而生成的文件。 如果源文件大于 260 GB，作业可能会失败。 
+<sup>1</sup> 在 Azure Blob 存储中，单个 Blob 目前支持的最大大小为 5 TB。 媒体服务会根据服务使用的 VM 大小应用其他限制。 大小限制适用于你上传的文件，也适用于由于媒体服务处理（编码）而生成的文件。 如果源文件大于 260 GB，作业可能会失败。 
 
 下表显示了媒体保留单位（S1、S2 和 S3）的限制。 如果源文件大于表中定义的限制，则编码作业将失败。 编码持续时间较长的 4K 分辨率源时，需要使用 S3 媒体保留单位才能达到所需的性能。 如果 S3 媒体保留单位上的 4K 内容大于 260-GB 限制，请开具支持票证。
 
@@ -58,7 +58,7 @@ ms.locfileid: "82507701"
 
 <sup>2</sup> 存储帐户必须来自同一 Azure 订阅。
 
-## <a name="jobs-encoding--analyzing-limits"></a>作业（编码和分析）限制
+## <a name="jobs-encoding-limits"></a>作业（编码）限制
 
 | 资源 | 默认限制 | 
 | --- | --- | 
@@ -79,7 +79,7 @@ ms.locfileid: "82507701"
 | --- | --- | 
 | 每个媒体服务帐户的[直播活动数](live-events-outputs-concept.md) <sup>(4)</sup> |5|
 | 每个直播活动的实时输出 |3 <sup>(5)</sup> |
-| 最长实时输出持续时间 | 25 小时 |
+| 最长实时输出持续时间 | [DVR 窗口的大小](live-event-cloud-dvr.md) |
 
 <sup>4</sup> 有关直播活动限制的详细信息，请参阅[直播活动类型比较和限制](live-event-types-comparison.md)。
 

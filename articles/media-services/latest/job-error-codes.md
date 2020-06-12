@@ -1,5 +1,5 @@
 ---
-title: Azure 媒体服务作业（编码和分析）错误代码 | Microsoft Docs
+title: Azure 媒体服务作业（编码）错误代码 | Microsoft Docs
 description: 本文会链接到作业错误代码参考主题，并提供指向相关主题的有用链接。
 author: WenJason
 manager: digimobile
@@ -14,12 +14,12 @@ ms.topic: article
 origin.date: 04/28/2019
 ms.date: 05/11/2020
 ms.author: v-jay
-ms.openlocfilehash: e6cd6f25933dc16daaaeb8aa9fddd5e4d357a0c5
-ms.sourcegitcommit: 95efd248f5ee3701f671dbd5cfe0aec9c9959a24
+ms.openlocfilehash: 8ba2626c573b0c12959cf18166aa28c152fe7a30
+ms.sourcegitcommit: 1f890a4085e184cc678485d05f08dd6de8dc973f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82507702"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84438965"
 ---
 # <a name="media-services-job-error-codes"></a>媒体服务作业错误代码
 

@@ -9,19 +9,20 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
 origin.date: 01/07/2019
-ms.date: 04/20/2020
+ms.date: 06/02/2020
 ms.author: v-tawe
-ms.openlocfilehash: 5f93533dd192bfc4acaad3f37e32f9177852064c
-ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
+ms.openlocfilehash: 5ebfbf9aca185b2bc56ba889a4716dc5d2c8a4a5
+ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82588863"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84275557"
 ---
 # <a name="common-parameters-and-headers"></a>常见参数和标头
 
 以下信息常见于与 Key Vault 资源相关的所有操作：
 
+- HTTP `Host` 标头必须始终存在并且必须指定保管库主机名。 示例：`Host: contoso.vault.azure.cn`。 请注意，大多数客户端技术将从 URI 填充 `Host` 标头。 例如，`GET https://contoso.vault.azure.cn/secrets/mysecret{...}` 会将 `Host` 设置为 `contoso.vault.azure.cn`。 这意味着，如果使用 `GET https://10.0.0.23/secrets/mysecret{...}` 等原始 IP 地址访问 Key Vault，`Host` 标头的自动值将是错误的，并且必须手动确保 `Host` 标头包含保管库主机名。
 - 将 `{api-version}` 替换为 URI 中的 API 版本。
 - 将 `{subscription-id}` 替换为 URI 中的订阅标识符
 - 将 `{resource-group-name}` 替换为资源组。 有关详细信息，请参阅“使用资源组管理 Azure 资源”。
@@ -43,8 +44,8 @@ ms.locfileid: "82588863"
 
 |元素名称 | 类型 | 说明 |
 |---|---|---|
-| 代码 | 字符串 | 发生的错误类型。|
-| message | 字符串 | 错误原因说明。 |
+| code | string | 发生的错误类型。|
+| message | string | 错误原因说明。 |
 
 
 

@@ -6,12 +6,12 @@ author: Johnnytechn
 origin.date: 04/03/2019
 ms.date: 05/11/2020
 ms.author: v-johya
-ms.openlocfilehash: e55fbbe2a095e5fefff4574530b309bb4a03fb00
-ms.sourcegitcommit: 08b42258a48d96d754244064d065e4d5703f1cfb
+ms.openlocfilehash: 842dcc46b320ef9fa8ce0d6fd2cf25323d6b2838
+ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/18/2020
-ms.locfileid: "83445193"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84275547"
 ---
 # <a name="back-up-and-restore-encrypted-azure-vm"></a>备份和还原已加密的 Azure VM
 
@@ -33,7 +33,7 @@ Azure 备份可以在使用或者不使用 Azure AD 应用的情况下，通过 
 **非托管** | 是 | 是
 **托管**  | 是 | 是
 
-- 详细了解 [ADE](../security/azure-security-disk-encryption-overview.md)、[Key Vault](../key-vault/general/overview.md) 和 [KEK](/virtual-machine-scale-sets/disk-encryption-key-vault#set-up-a-key-encryption-key-kek)。
+- 详细了解 [ADE](../security/azure-security-disk-encryption-overview.md)、[Key Vault](../key-vault/general/overview.md)。
 
 ### <a name="limitations"></a>限制
 

@@ -12,17 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-origin.date: 04/25/2019
-ms.date: 08/27/2019
+ms.date: 06/02/2020
 ms.subservice: hybrid
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 80e9187443c17d7aa1447d27c71a4bfe60ef51fc
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.custom: has-adal-ref
+ms.openlocfilehash: 2408968f446d7cff69fedfc8ba4f417b9f3fa7b3
+ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "70134071"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84275344"
 ---
 # <a name="change-the-azure-ad-connector-account-password"></a>更改 Azure AD 连接器帐户密码
 Azure AD 连接器帐户应该是免费服务。 但如果需要重置其凭据，则可以参阅本主题。 例如，全局管理员错误地使用 PowerShell 对帐户重置了密码。
@@ -31,7 +31,7 @@ Azure AD 连接器帐户应该是免费服务。 但如果需要重置其凭据�
 如果 Azure AD 连接器帐户由于身份验证问题无法联系 Azure AD，则可以重置密码。
 
 1. 登录到 Azure AD Connect 同步服务器并启动 PowerShell。
-2. 运行 `Add-ADSyncAADServiceAccount`。  
+2. 运行 `Add-ADSyncAADServiceAccount`。
    ![PowerShell cmdlet addadsyncaadserviceaccount](./media/how-to-connect-azureadaccount/addadsyncaadserviceaccount.png)
 3. 提供 Azure AD 全局管理员凭据。
 
@@ -41,14 +41,10 @@ Azure AD 连接器帐户应该是免费服务。 但如果需要重置其凭据�
 本部分列出了客户报告的可以通过重置 Azure AD 连接器帐户凭据解决的错误。
 
 ---
-事件 6900  
-服务器在处理密码更改通知时遇到意外的错误：  
-AADSTS70002: 验证凭据时出错。 AADSTS50054: 使用旧密码进行身份验证。
+事件 6900 服务器在处理密码更改通知时遇到意外的错误：AADSTS70002：验证凭据时出错。 AADSTS50054：使用了旧密码进行身份验证。
 
 ---
-事件 659  
-检索密码策略同步配置时出错。 Microsoft.IdentityModel.Clients.ActiveDirectory.AdalServiceException：  
-AADSTS70002: 验证凭据时出错。 AADSTS50054: 使用旧密码进行身份验证。
+事件 659 检索密码策略同步配置时出错。 Microsoft.IdentityModel.Clients.ActiveDirectory.AdalServiceException：AADSTS70002：验证凭据时出错。 AADSTS50054：使用了旧密码进行身份验证。
 
 ## <a name="next-steps"></a>后续步骤
 **概述主题**
@@ -56,5 +52,3 @@ AADSTS70002: 验证凭据时出错。 AADSTS50054: 使用旧密码进行身份�
 * [Azure AD Connect 同步：理解和自定义同步](how-to-connect-sync-whatis.md)
 * [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)
 
-
-<!-- Update_Description: wording update -->

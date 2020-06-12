@@ -5,14 +5,14 @@ author: WenJason
 ms.author: v-jay
 ms.service: mariadb
 ms.topic: conceptual
-origin.date: 01/16/2020
-ms.date: 02/17/2020
-ms.openlocfilehash: b0db54d9053809b0af7a6b01b4c8501d2e154151
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+origin.date: 5/4/2020
+ms.date: 06/08/2020
+ms.openlocfilehash: f372bf1e8383d20722e7c39d343b08b2233eb3a0
+ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82126895"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84275563"
 ---
 # <a name="read-replicas-in-azure-database-for-mariadb"></a>Azure Database for MariaDB 中的只读副本
 
@@ -35,9 +35,6 @@ ms.locfileid: "82126895"
 ## <a name="cross-region-replication"></a>跨区域复制
 可以在与主服务器不同的区域中创建只读副本。 跨区域复制对于灾难恢复规划或使数据更接近用户等方案非常有用。
 
-> [!NOTE]
-> 跨区域复制处于预览状态。
-
 可以在任何 [Azure Database for MariaDB 区域](https://azure.microsoft.com/global-infrastructure/services/?regions=china-non-regional,china-east,china-east-2,china-north,china-north-2&products=mysql)中设置主服务器。  主服务器可以在其配对区域中有一个副本。
 
 ### <a name="paired-regions"></a>配对区域
@@ -57,7 +54,7 @@ ms.locfileid: "82126895"
 
 ## <a name="connect-to-a-replica"></a>连接到副本
 
-创建时，副本会继承主服务器的防火墙规则或 VNet 服务终结点。 之后，这些规则将独立于主服务器。
+创建时，副本会继承主服务器的防火墙规则。 之后，这些规则将独立于主服务器。
 
 副本从主服务器继承其管理员帐户。 主服务器上的所有用户帐户将复制到只读副本。 只能使用主服务器上可用的用户帐户连接到只读副本。
 
@@ -71,7 +68,7 @@ mysql -h myreplica.mariadb.database.chinacloudapi.cn -u myadmin@myreplica -p
 
 ## <a name="monitor-replication"></a>监视复制
 
-Azure Database for MariaDB 在 Azure Monitor 中提供“复制滞后时间(秒)”指标。  此指标仅适用于副本。
+Azure Database for MariaDB 在 Azure Monitor 中提供“复制滞后时间(秒)”指标。 此指标仅适用于副本。
 
 此指标是使用 MariaDB 的 `SHOW SLAVE STATUS` 命令中提供的 `seconds_behind_master` 指标计算得出的。
 
@@ -110,7 +107,7 @@ Azure Database for MariaDB 在 Azure Monitor 中提供“复制滞后时间(秒)
 > [!IMPORTANT]
 > 将主服务器的配置更新为新值之前，请将副本配置更新为与这些新值相等或更大的值。 此操作可确保副本与主服务器发生的任何更改保持同步。
 
-创建副本服务器时，防火墙规则、虚拟网络规则和参数设置会从主服务器继承到副本服务器。 之后，副本服务器的规则将独立。
+创建副本服务器时，防火墙规则和参数设置会从主服务器继承到副本服务器。 之后，副本服务器的规则将独立。
 
 ### <a name="stopped-replicas"></a>停止的副本
 
@@ -133,6 +130,8 @@ Azure Database for MariaDB 在 Azure Monitor 中提供“复制滞后时间(秒)
 - [`log_bin_trust_function_creators`](https://mariadb.com/kb/en/library/replication-and-binary-log-system-variables/#log_bin_trust_function_creators)
 
 将在副本服务器上锁定 [`event_scheduler`](https://mariadb.com/kb/en/library/server-system-variables/#event_scheduler) 参数。
+
+若要更新主服务器上的上述参数之一，请删除副本服务器，更新主服务器上的参数值，然后重新创建副本。
 
 ### <a name="other"></a>其他
 

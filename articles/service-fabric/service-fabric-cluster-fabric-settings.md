@@ -3,17 +3,17 @@ title: 更改 Azure Service Fabric 群集设置
 description: 本文介绍可以自定义的结构设置和结构升级策略。
 ms.topic: reference
 origin.date: 08/30/2019
-ms.date: 04/13/2020
+ms.date: 06/08/2020
 ms.author: v-yeche
-ms.openlocfilehash: e08b42f378043e25b4777f328bb816cf4e0c16c3
-ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
+ms.openlocfilehash: eec30e500be4edd56e1295c0652d65313f851179
+ms.sourcegitcommit: 0e178672632f710019eae60cea6a45ac54bb53a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82093457"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84356197"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>自定义 Service Fabric 群集设置
-本文介绍可以自定义的 Service Fabric 群集的各种结构设置。 对于 Azure 中托管的群集，可以通过 [Azure 门户](https://portal.azure.cn)或使用 Azure 资源管理器模板自定义设置。 对于独立群集，可通过更新 ClusterConfig.json  文件并对群集执行配置升级来自定义设置。 有关详细信息，请参阅[升级独立群集的配置](service-fabric-cluster-config-upgrade-windows-server.md)。
+本文介绍可以自定义的 Service Fabric 群集的各种结构设置。 对于 Azure 中托管的群集，可以通过 [Azure 门户](https://portal.azure.cn)或使用 Azure 资源管理器模板自定义设置。 对于独立群集，可通过更新 ClusterConfig.json 文件并对群集执行配置升级来自定义设置。 有关详细信息，请参阅[升级独立群集的配置](service-fabric-cluster-config-upgrade-windows-server.md)。
 
 <!--Not Available on [Upgrade the configuration of an Azure cluster](service-fabric-cluster-config-upgrade-azure.md)-->
 <!--Reason: Not Available on (https://resource.azure.com/)-->
@@ -34,7 +34,7 @@ ms.locfileid: "82093457"
 |BodyChunkSize |Uint，默认值为 16384 |动态| 提供用于读取正文的区块大小（以字节为单位）。 |
 |CrlCheckingFlag|uint，默认值为 0x40000000 |动态| 应用程序/服务证书链验证的标记；例如 CRL 检查 0x10000000 CERT_CHAIN_REVOCATION_CHECK_END_CERT 0x20000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN 0x40000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT 0x80000000 CERT_CHAIN_REVOCATION_CHECK_CACHE_ONLY 设置为 0 会禁用 CRL 检查，支持值的完整列表由 CertGetCertificateChain 的 dwFlags 记录： https://msdn.microsoft.com/library/windows/desktop/aa376078(v=vs.85).aspx  |
 |DefaultHttpRequestTimeout |以秒为单位的时间。 默认值为 120 |动态|指定以秒为单位的时间跨度。  提供用于 http 应用网关中正在处理的 http 请求的默认请求超时时间。 |
-|ForwardClientCertificate|bool，默认值为 FALSE|动态|如果设置为 false，反向代理不会请求客户端证书。如果设置为 true，反向代理将在 SSL 握手期间请求客户端证书，并将 base64 编码的 PEM 格式字符串转发到名为 X-Client-Certificate 的标头中的服务。检查证书数据后，服务可能无法处理请求，并返回相应的状态代码。 如果此参数为 true 并且客户端不提供证书，反向代理将转发空标头，并让服务处理该情况。 反向代理将充当透明层。 若要了解详细信息，请参阅[设置客户端证书身份验证](service-fabric-reverseproxy-configure-secure-communication.md#setting-up-client-certificate-authentication-through-the-reverse-proxy)。 |
+|ForwardClientCertificate|bool，默认值为 FALSE|动态|设置为 false 时，反向代理不会请求客户端证书。设置为 true 时，反向代理将在 TLS 握手期间请求客户端证书，并会将 base64 编码的 PEM 格式字符串转发到名为 X-Client-Certificate 的标头中的服务。检查证书数据后，服务可以让请求失败，并返回相应的状态代码。 如果此参数为 true 并且客户端不提供证书，反向代理将转发空标头，并让服务处理该情况。 反向代理将充当透明层。 若要了解详细信息，请参阅[设置客户端证书身份验证](service-fabric-reverseproxy-configure-secure-communication.md#setting-up-client-certificate-authentication-through-the-reverse-proxy)。 |
 |GatewayAuthCredentialType |string，默认值为“None” |静态| 指示在 http 应用网关终结点处使用的安全凭据的类型，有效值为“None/X509”。 |
 |GatewayX509CertificateFindType |string，默认值为“FindByThumbprint” |动态| 指示如何在由 GatewayX509CertificateStoreName 支持的值指定的存储中搜索证书：FindByThumbprint；FindBySubjectName。 |
 |GatewayX509CertificateFindValue | string，默认值为“” |动态| 用于查找 http 应用网关证书的搜索筛选器值。 此证书在 https 终结点上配置，并且如果服务需要，还可用于验证应用的标识。 首先查找 FindValue；如果其不存在，再查找 FindValueSecondary。 |
@@ -275,7 +275,7 @@ ms.locfileid: "82093457"
 |CommonNameNtlmPasswordSecret|SecureString，默认值为 Common::SecureString("")| 静态|密码，用于在使用 NTLM 身份验证时用作种子以生成相同密码 |
 |DiskSpaceHealthReportingIntervalWhenCloseToOutOfDiskSpace |TimeSpan，默认值为 Common::TimeSpan::FromMinutes(5)|动态|指定以秒为单位的时间跨度。 在磁盘空间即将耗尽时检查磁盘空间以报告运行状况事件的时间间隔。 |
 |DiskSpaceHealthReportingIntervalWhenEnoughDiskSpace |TimeSpan，默认值为 Common::TimeSpan::FromMinutes(15)|动态|指定以秒为单位的时间跨度。 在磁盘空间足够时检查磁盘空间以报告运行状况事件的时间间隔。 |
-|EnableImageStoreHealthReporting |bool，默认值为 TRUE |静态|用于确定文件存储服务是否应报告其运行状况的配置。 |
+|EnableImageStoreHealthReporting |bool，默认值为 TRUE    |静态|用于确定文件存储服务是否应报告其运行状况的配置。 |
 |FreeDiskSpaceNotificationSizeInKB|int64，默认值为 25\*1024 |动态|可用磁盘空间的大小，低于此大小可能会出现运行状况警告。 此配置的最小值和 FreeDiskSpaceNotificationThresholdPercentage 配置用于确定是否发送运行状况警告。 |
 |FreeDiskSpaceNotificationThresholdPercentage|double，默认值为 0.02 |动态|可用磁盘空间的百分比，低于此值可能会发生运行状况警告。 此配置的最小值和 FreeDiskSpaceNotificationInMB 配置用于确定是否发送运行状况警告。 |
 |GenerateV1CommonNameAccount| bool，默认值为 TRUE|静态|指定是否要使用用户名 V1 生成算法生成帐户。 从 Service Fabric 6.1 版开始，始终创建具有 v2 生成的帐户。 从/到不支持 V2 生成的版本升级需要 V1 帐户（6.1 版以前）。|
@@ -565,15 +565,15 @@ ms.locfileid: "82093457"
 |PreventTransientOvercommit | Bool，默认值为 false | 动态|确定 PLB 是否应该立即对由启动的移动所释放的资源进行计数。 默认情况下，PLB 可以在同一节点上发起移出和移入操作，这会造成暂时性过载。 将此参数设置为 true 可防止这种过载，并可禁用按需碎片整理（也称为 placementWithMove）。 |
 |ScaleoutCountConstraintPriority | Int，默认值为 0 |动态| 确定横向扩展计数约束的优先级：0：硬；1：软；负值：忽略。 |
 |SubclusteringEnabled|布尔值，默认为 FALSE | 动态 |在计算用于平衡的标准偏差时确认子群集 |
-|SubclusteringReportingPolicy| Int，默认值为 1 |动态|定义如何以及是否发送子群集运行状况报告：0：不报告；1：警告；2：正常 |
+|SubclusteringReportingPolicy| Int，默认值为 1 |动态|定义如何以及是否发送子群集运行状况报告：0：不报告；1：警告；2：OK |
 |SwapPrimaryThrottlingAssociatedMetric | string，默认值为“”|静态| 此限制的关联指标名称。 |
 |SwapPrimaryThrottlingEnabled | Bool，默认值为 false|动态| 确定是否启用交换主限制。 |
 |SwapPrimaryThrottlingGlobalMaxValue | Int，默认值为 0 |动态| 全局范围内所允许的最大交换主副本数。 |
 |TraceCRMReasons |Bool，默认值为 true |动态|指定是否要寻找向操作事件通道移动（CRM 发出的移动）的原因。 |
 |UpgradeDomainConstraintPriority | Int，默认值为 1| 动态|确定升级域约束的优先级：0：硬；1：软；负值：忽略。 |
 |UseMoveCostReports | Bool，默认值为 false | 动态|指示 LB 忽略评分函数的成本元素，从而可能产生大量可优化均衡放置的移动。 |
-|UseSeparateSecondaryLoad | Bool，默认值为 true | 动态|该设置确定是否使用不同的辅助负载。 |
-|UseSeparateSecondaryMoveCost|布尔值，默认为 FALSE | 动态|此设置确定 PLB 是否应当为每个节点上的辅助负载使用不同的移动成本。如果关闭了 UseSeparateSecondaryMoveCost：为一个节点上的辅助负载报告的移动成本将覆盖（所有其他节点上）每个辅助负载的移动成本。如果开启了 UseSeparateSecondaryMoveCost：为一个节点上的辅助负载报告的移动成本将仅在该辅助负载上生效（不影响其他节点上的辅助负载）。如果副本发生故障，则会使用在服务级别上指定的默认移动成本创建新副本。如果 PLB 移动现有副本，则移动成本与之匹配。 |
+|UseSeparateSecondaryLoad | Bool，默认值为 true | 动态|用于确定是否应将单独的负载用于次要副本的设置。 |
+|UseSeparateSecondaryMoveCost | Bool，默认值为 false | 动态|用于确定是否应将单独的移动成本用于次要副本的设置。 |
 |ValidatePlacementConstraint | Bool，默认值为 true |动态| 指定更新服务的 ServiceDescription 时，是否验证服务的 PlacementConstraint 表达式。 |
 |ValidatePrimaryPlacementConstraintOnPromote| Bool，默认值为 TRUE |动态|指定在故障转移时是否评估主要首选项的服务 PlacementConstraint 表达式。 |
 |VerboseHealthReportLimit | Int，默认值为 20 | 动态|定义副本进入未放置状态的次数超过多少次后，便报告副本运行状况警告（如果已启用详细运行状况报告）。 |

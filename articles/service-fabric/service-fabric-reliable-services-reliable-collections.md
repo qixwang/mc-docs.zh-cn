@@ -2,15 +2,15 @@
 title: 可靠集合简介
 description: Service Fabric 有状态服务提供可靠集合让你编写高度可用、可缩放且低延迟的云应用程序。
 ms.topic: conceptual
-origin.date: 01/03/2019
-ms.date: 02/24/2020
+origin.date: 03/10/2020
+ms.date: 06/08/2020
 ms.author: v-yeche
-ms.openlocfilehash: 5a5f291ab23217cf8febd9aa24ca1e29b24dc712
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 42060bb9d72c46b835462fe7f8ffe458db9cf1be
+ms.sourcegitcommit: 0e178672632f710019eae60cea6a45ac54bb53a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77541059"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84356255"
 ---
 # <a name="introduction-to-reliable-collections-in-azure-service-fabric-stateful-services"></a>Azure Service Fabric 有状态服务中的可靠集合简介
 
@@ -26,10 +26,9 @@ Reliable Collections 与其他高可用性技术（如 Redis、Azure 表服务�
 可以将可靠集合视作 **System.Collections** 类的自然演变：它们是一组新的集合，专为云应用程序和多计算机应用程序设计，且不会为开发人员增加复杂性。 因此，可靠集合的特性如下：
 
 * 可复制：复制状态更改以实现高可用性。
-* 可保存：数据会保存至磁盘，可在发生大规模中断（例如，数据中心断电）时保障持续性。
-* 由于写入是持久化和复制的，因此无法创建易失性 ReliableDictionary、ReliableQueue 或其他仅在内存中保留数据的可靠集合。
 * 异步：API 采用异步模式，以确保在产生 IO 时不会阻止线程。
 * 事务性：API 利用事务抽象方法，让可以在某个服务内轻松管理多个可靠集合。
+* 持久化或易失性：数据会保存至磁盘，可在发生大规模中断（例如，数据中心断电）时保障持续性。 某些可靠集合还支持易失性模式（带[警告](service-fabric-reliable-services-reliable-collections-guidelines.md#volatile-reliable-collections)），在这种模式下，所有数据都保留在内存中，例如复制的内存中缓存。
 
 Reliable Collections 提供全新的非常一致保证，使应用程序状态推断变得更轻松。
 非常一致通过以下方法实现：确保仅对副本的多数仲裁（包括主副本）记录整个事务后，才完成事务提交。

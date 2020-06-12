@@ -17,12 +17,12 @@ ms.date: 03/02/2020
 ms.author: v-tawe
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 709db986af24c3e8cdf3fcdb9709c194d61ddcec
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: d7572f5163f6222729ae0c16753488283c188dcf
+ms.sourcegitcommit: 40d1ff17251ab1d2d607845523470f11ce087039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77501432"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84320482"
 ---
 # <a name="deploy-and-manage-notification-hubs-using-powershell"></a>使用 PowerShell 部署和管理通知中心
 
@@ -37,10 +37,10 @@ ms.locfileid: "77501432"
 
 不支持直接使用 Azure PowerShell 随附的 cmdlet 来管理通知中心。 在 PowerShell 中，最佳方法是引用 Microsoft.Azure.NotificationHubs.dll 程序集。 该程序集是随 [Microsoft Azure 通知中心 NuGet 包](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)一起分发的。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
-- Azure 订阅。 Azure 是基于订阅的平台。 若要详细了解如何获取订阅，请参阅 [1 元试用]。
-- 配备 Azure PowerShell 的计算机。 有关说明，请参阅[安装和配置 Azure PowerShell]。
+- Azure 订阅。 Azure 是基于订阅的平台。 有关如何获取订阅的详细信息，请参阅[购买选项]或 [1 元人民币的试用订阅]。
+- 配备 Azure PowerShell 的计算机。 有关说明，请参阅 [安装和配置 Azure PowerShell]。
 - 大致了解 PowerShell 脚本、NuGet 包和 .NET Framework。
 
 ## <a name="including-a-reference-to-the-net-assembly-for-service-bus"></a>包含对适用于服务总线的 .NET 程序集的引用
@@ -50,7 +50,7 @@ Azure PowerShell 中的 PowerShell cmdlet 尚不支持管理 Azure 通知中心�
 首先，请确保脚本可以找到 **Microsoft.Azure.NotificationHubs.dll** 程序集，该程序集在 Visual Studio 项目中以 NuGet 包的形式安装。 为了灵活起见，该脚本执行以下步骤：
 
 1. 确定调用它的路径。
-2. 遍历路径直到找到名为 `packages` 的文件夹为止。 此文件夹是在为 Visual Studio 项目安装 NuGet 包时创建的。
+2. 遍历路径直到找到名为 `packages`的文件夹为止。 此文件夹是在为 Visual Studio 项目安装 NuGet 包时创建的。
 3. 以递归方式在 `packages` 文件夹中搜索名为 `Microsoft.Azure.NotificationHubs.dll` 的程序集。
 4. 引用该程序集，以便类型可供以后使用。
 
@@ -77,9 +77,9 @@ catch [System.Exception]
 
 ## <a name="create-the-namespacemanager-class"></a>创建 `NamespaceManager` 类
 
-若要预配通知中心，请从 SDK 创建 [NamespaceManager](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.namespacemanager?view=azure-dotnet) 类的实例。 
+若要预配通知中心，请从 SDK 创建 [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager?view=azure-dotnet) 类的实例。
 
-可以使用 Azure PowerShell 随附的 [Get-AzureSBAuthorizationRule] cmdlet 检索用于提供连接字符串的授权规则。 对 `NamespaceManager` 实例的引用存储于 `$NamespaceManager` 变量中。 `$NamespaceManager` 用于设置通知中心。
+可以使用 Azure PowerShell 随附的 [Get-AzureSBAuthorizationRule] cmdlet 来检索用于提供连接字符串的授权规则。 对 `NamespaceManager` 实例的引用存储于 `$NamespaceManager` 变量中。 `$NamespaceManager` 用于设置通知中心。
 
 ``` powershell
 $sbr = Get-AzureSBAuthorizationRule -Namespace $Namespace
@@ -91,7 +91,7 @@ Write-Output "NamespaceManager object for the [$Namespace] namespace has been su
 
 ## <a name="provisioning-a-new-notification-hub"></a>设置新通知中心
 
-若要预配新的通知中心，请使用[通知中心的 .NET API]。
+若要预配新的通知中心，请使用 [通知中心的 .NET API]。
 
 该脚本的此部分会设置四个本地变量。
 
@@ -150,15 +150,16 @@ else
 ## <a name="additional-resources"></a>其他资源
 
 - [使用 PowerShell 管理服务总线](../service-bus-messaging/service-bus-manage-with-ps.md)
-- [How to create Service Bus queues, topics and subscriptions using a PowerShell script](https://blogs.msdn.com/b/paolos/archive/2014/12/02/how-to-create-a-service-bus-queues-topics-and-subscriptions-using-a-powershell-script.aspx)（如何使用 PowerShell 脚本创建服务总线队列、主题和订阅）
-- [How to create a Service Bus Namespace and an Event Hub using a PowerShell script](https://blogs.msdn.com/b/paolos/archive/2014/12/01/how-to-create-a-service-bus-namespace-and-an-event-hub-using-a-powershell-script.aspx)（如何使用 PowerShell 脚本创建服务总线命名空间和事件中心）
+- [如何使用 PowerShell 脚本创建 Service Bus 队列、主题和订阅](https://blogs.msdn.com/b/paolos/archive/2014/12/02/how-to-create-a-service-bus-queues-topics-and-subscriptions-using-a-powershell-script.aspx)
+- [如何使用 PowerShell 脚本创建 Service Bus 命名空间和事件中心](https://blogs.msdn.com/b/paolos/archive/2014/12/01/how-to-create-a-service-bus-namespace-and-an-event-hub-using-a-powershell-script.aspx)
 
 一些现成的脚本也可供下载：
 
 - [服务总线 PowerShell 脚本](https://code.msdn.microsoft.com/windowsazure/Service-Bus-PowerShell-a46b7059)
 
+[购买选项]: https://wd.azure.cn/pricing/pia-waiting-list/?form-type=identityauth
 [Member Offers]: https://www.azure.cn/pricing/
-[1 元试用]: https://www.azure.cn/pricing/1rmb-trial/
+[1rmb-trial]: https://www.azure.cn/pricing/1rmb-trial/
 [安装和配置 Azure PowerShell]: /powershell-install-configure
 [通知中心的 .NET API]: https://docs.azure.cndotnet/api/overview/notification-hubs?view=azure-dotnet
 [Get-AzureSBNamespace]: https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azuresbnamespace

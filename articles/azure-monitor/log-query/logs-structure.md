@@ -1,19 +1,18 @@
 ---
 title: Azure Monitor 日志的结构 | Microsoft Docs
 description: 需要执行日志查询来检索 Azure Monitor 提供的日志数据。  本文介绍新的日志查询在 Azure Monitor 中的用法以及创建搜索之前需要了解的概念。
-author: lingliw
-manager: digimobile
+origin.date: 08/22/2019
 ms.subservice: logs
 ms.topic: conceptual
-origin.date: 08/22/2019
-ms.date: 08/23/2019
-ms.author: v-lingwu
-ms.openlocfilehash: b851bd709b6ea3692062341806e5531916e0b32a
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+author: Johnnytechn
+ms.author: v-johya
+ms.date: 05/28/2020
+ms.openlocfilehash: 7066943c15beab56d158e38152fd58b37e010cc7
+ms.sourcegitcommit: 5ae04a3b8e025986a3a257a6ed251b575dbf60a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78850270"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84440443"
 ---
 # <a name="structure-of-azure-monitor-logs"></a>Azure Monitor 日志的结构
 使用[日志查询](log-query-overview.md)快速洞察数据是 Azure Monitor 提供的一项强大功能。 若要创建高效且有用的查询，应该了解一些基本概念，例如，所需数据的位置及其构建方式。 本文将会介绍可帮助你入门的基本概念。
@@ -25,16 +24,16 @@ Azure Monitor 日志中的数据存储在 Log Analytics 工作区或 Application
 
 下图显示了写入到示例查询中使用的不同表的数据源示例。
 
-![表](media/logs-structure/queries-tables.png)
+![表](./media/logs-structure/queries-tables.png)
 
 ## <a name="log-analytics-workspace"></a>Log Analytics 工作区
-Azure Monitor 日志收集的所有数据（Application Insights 数据除外）存储在 [Log Analytics 工作区](../platform/manage-access.md)中。 你可以根据特定的要求创建一个或多个工作区。 [数据源](../platform/data-sources.md)（例如 Azure 资源中的活动日志和诊断日志、虚拟机上的代理以及见解和监视解决方案中的数据）会将数据写入到在加入过程中配置的一个或多个工作区。 其他服务（例如 [Azure 安全中心](/security-center/)）会使用 Log Analytics 工作区来存储其数据，以便使用日志查询以及来自其他源的监视数据对其进行分析。
+Azure Monitor 日志收集的所有数据（Application Insights 数据除外）存储在 [Log Analytics 工作区](../platform/manage-access.md)中。 可以根据特定要求创建一个或多个工作区。 [数据源](../platform/data-sources.md)（例如来自 Azure 资源的活动日志和资源日志、虚拟机上的代理，以及来自见解和监视解决方案的数据）会将数据写入你配置为其载入一部分的一个或多个工作区。 其他服务（例如 [Azure 安全中心](/security-center/)）会使用 Log Analytics 工作区来存储其数据，以便使用日志查询以及来自其他源的监视数据对其进行分析。
 
 不同类型的数据存储在工作区中的不同表内，每个表具有独特的属性集。 创建工作区后，会将一组标准表添加到其中；加入不同的数据源、解决方案和服务后，将添加其新表。 还可以使用[数据收集器 API](../platform/data-collector-api.md) 创建自定义表。
 
-可以在工作区的 Log Analytics 中的“架构”选项卡上浏览工作区中的表及其架构。 
+可以在工作区的 Log Analytics 中的“架构”选项卡上浏览工作区中的表及其架构。
 
-![工作区架构](media/scope/workspace-schema.png)
+![工作区架构](./media/scope/workspace-schema.png)
 
 使用以下查询列出工作区中的表，以及在前一天收集到每个表中的记录数。 
 
@@ -44,10 +43,10 @@ union withsource = table *
 | summarize count() by table
 | sort by table asc
 ```
-有关每个数据源创建的表的详细信息，请参阅相应数据源的文档。 例如，参阅有关[代理数据源](../platform/agent-data-sources.md)、[资源日志](../platform/diagnostic-logs-schema.md)和[监视解决方案](../insights/solutions-inventory.md)的文章。
+有关创建的表的详细信息，请参阅每个数据源的文档。 例如，参阅有关[代理数据源](../platform/agent-data-sources.md)、[资源日志](../platform/diagnostic-logs-schema.md)和[监视解决方案](../insights/solutions-inventory.md)的文章。
 
 ### <a name="workspace-permissions"></a>工作区权限
-请参阅[设计 Azure Monitor 日志部署](../platform/design-logs-deployment.md)，以了解访问控制策略和提供对工作区中数据的访问的建议。 除了授予对工作区本身的访问权限以外，还可以使用[表级别 RBAC](../platform/manage-access.md#table-level-rbac) 限制对单个表的访问。
+请参阅[设计 Azure Monitor 日志部署](../platform/design-logs-deployment.md)，以了解访问控制策略和提供对工作区中数据的访问的建议。 除了授予对工作区本身的访问权限外，还可以使用[表级 RBAC](../platform/manage-access.md#table-level-rbac) 限制对单个表的访问。
 
 ## <a name="application-insights-application"></a>Application Insights 应用程序
 在 Application Insights 中创建应用程序时，会自动在 Azure Monitor 日志中创建相应的应用程序。 无需进行任何配置即可收集数据，应用程序会自动写入页面查看次数、请求和异常等监视数据。
@@ -60,16 +59,16 @@ union withsource = table *
 | browserTimings      | 有关客户端性能的数据，例如处理传入数据所用的时间。 |
 | customEvents        | 应用程序创建的自定义事件。 |
 | customMetrics       | 应用程序创建的自定义指标。 |
-| dependencies        | 从应用程序对外部组件发出的调用。 |
-| exceptions          | 应用程序运行时引发的异常。 |
+| dependencies        | 从应用程序到通过 TrackDependency() 记录的其他组件（包括外部组件）的调用 - 例如，对 REST API、数据库或文件系统的调用。 |
+| exceptions          | 应用程序运行时引发的异常捕获服务器端和客户端（浏览器）异常。|
 | pageViews           | 每个网站的浏览情况数据，以及浏览器信息。 |
-| performanceCounters | 支持该应用程序的计算资源的性能度量值。 |
-| 请求            | 每个应用程序请求的详细信息。  |
-| traces              | 分布式跟踪的结果。 |
+| performanceCounters | 支持应用程序的计算资源的性能度量，例如 Windows 性能计数器。 |
+| 请求            | 应用程序收到的请求。 例如，为 Web 应用接收到的每个 HTTP 请求记录一条单独的请求记录。  |
+| traces              | 通过 TrackTrace () 记录的应用程序代码/日志记录框架发出的详细日志（跟踪）。 |
 
-可以在应用程序的 Log Analytics 中的“架构”选项卡上查看每个表的架构。 
+可以在应用程序的 Log Analytics 的“架构”选项卡中查看每个表的架构。
 
-![应用程序架构](media/scope/application-schema.png)
+![应用程序架构](./media/scope/application-schema.png)
 
 ## <a name="standard-properties"></a>标准属性
 尽管 Azure Monitor 日志中的每个表具有自身的架构，但所有表共享某些标准属性。 有关详细信息，请参阅 [Azure Monitor 日志中的标准属性](../platform/log-standard-properties.md)。
@@ -85,3 +84,4 @@ union withsource = table *
 ## <a name="next-steps"></a>后续步骤
 - 了解如何使用 [Log Analytics 来创建并编辑日志搜索](../log-query/log-query-overview.md)。
 - 查看使用新查询语言的[查询编写教程](../log-query/get-started-queries.md)。
+

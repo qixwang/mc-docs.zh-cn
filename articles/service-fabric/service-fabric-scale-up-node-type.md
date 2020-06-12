@@ -3,17 +3,17 @@ title: 纵向扩展 Azure Service Fabric 节点类型
 description: 了解如何通过添加虚拟机规模集缩放 Service Fabric 群集。
 ms.topic: article
 origin.date: 02/13/2019
-ms.date: 01/13/2020
+ms.date: 06/08/2020
 ms.author: v-yeche
-ms.openlocfilehash: 103712342e3eaaed919df967fe17f65a67d96690
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 2a8e0a78dc1236f48eed5c8d817bada574f1f348
+ms.sourcegitcommit: 0e178672632f710019eae60cea6a45ac54bb53a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75742422"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84356281"
 ---
 # <a name="scale-up-a-service-fabric-cluster-primary-node-type"></a>纵向扩展 Service Fabric 群集主节点类型
-本文介绍如何通过增加虚拟机资源来纵向扩展 Service Fabric 群集主节点类型。 Service Fabric 群集是一组通过网络连接在一起的虚拟机或物理计算机，微服务会在其中部署和管理。 属于群集一部分的计算机或 VM 称为节点。 虚拟机规模集是一种 Azure 计算资源，用于将一组 VM 作为一个集进行部署和管理。 Azure 群集中定义的每个节点类型[设置为独立的规模集](service-fabric-cluster-nodetypes.md)。 然后可以单独管理每个节点类型。 创建 Service Fabric 群集后，可以纵向缩放群集节点类型（更改节点的资源）或升级节点类型 VM 的操作系统。  随时可以缩放群集，即使该群集上正在运行工作负荷。  在缩放群集的同时，应用程序也会随之自动缩放。
+本文介绍如何通过增加虚拟机资源来纵向扩展 Service Fabric 群集主节点类型。 Service Fabric 群集是通过网络连接在一起的一组虚拟机或物理机，可在其中部署和管理微服务。 属于群集一部分的计算机或 VM 称为节点。 虚拟机规模集是一种 Azure 计算资源，用于将一组 VM 作为一个集进行部署和管理。 Azure 群集中定义的每个节点类型[设置为独立的规模集](service-fabric-cluster-nodetypes.md)。 然后可以单独管理每个节点类型。 创建 Service Fabric 群集后，可以纵向缩放群集节点类型（更改节点的资源）或升级节点类型 VM 的操作系统。  随时可以缩放群集，即使该群集上正在运行工作负荷。  在缩放群集的同时，应用程序也会随之自动缩放。
 
 > [!WARNING]
 > 如果群集运行状况不正常，请勿开始更改主节点类型 VM SKU。 群集运行状况不正常时，如果尝试更改 VM SKU，只会进一步破坏群集的稳定性。
@@ -35,7 +35,7 @@ ms.locfileid: "75742422"
     若要在模板中查找新的规模集，请搜索由 *vmNodeType2Name* 参数命名的“Microsoft.Compute/virtualMachineScaleSets”资源。  系统使用 properties->virtualMachineProfile->extensionProfile->extensions->properties->settings->nodeTypeRef 设置将新的规模集添加到主节点类型中。
 4. 检查群集运行状况并验证所有节点是否都处于正常状态。
 5. 禁用主节点类型的旧规模集中的节点，以便删除节点。 可以一次禁用所有节点，并且这些操作会排入队列。 等到所有节点都被禁用，这可能需要一些时间。  由于禁用了节点类型中较旧的节点，因此，系统服务和种子节点会迁移到主节点类型中新规模集的 VM。
-6. 从主节点类型中删除较旧的规模集。
+6. 从主节点类型中删除较旧的规模集。 （如步骤 5 所示禁用节点后，在 Azure 门户中的虚拟机规模集边栏选项卡中，从旧节点类型中逐个取消分配节点。）
 7. 删除与旧规模集关联的负载均衡器。 在为新规模集配置新的公共 IP 地址和负载均衡器时，群集不可用。  
 8. 将与旧的主节点类型规模集关联的公共 IP 地址的 DNS 设置存储在变量中，并删除该公共 IP 地址。
 9. 将与新的主节点类型规模集关联的公共 IP 地址的 DNS 设置替换为已删除的公共 IP 地址的 DNS 设置。  现在可以再次访问群集。

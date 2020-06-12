@@ -6,15 +6,15 @@ manager: digimobile
 ms.service: site-recovery
 services: site-recovery
 origin.date: 07/31/2019
-ms.date: 08/26/2019
+ms.date: 06/08/2020
 ms.topic: conceptual
 ms.author: v-yeche
-ms.openlocfilehash: e8946f338cae312d92c39cb2ad2ab546bdb3e6c5
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 2def082d8f35867ebad79e4aa02379667e864388
+ms.sourcegitcommit: 5ae04a3b8e025986a3a257a6ed251b575dbf60a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "70134545"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84440642"
 ---
 # <a name="common-questions-about-site-recovery-monitoring"></a>有关 Site Recovery 监视的常见问题
 
@@ -48,7 +48,7 @@ Site Recovery 使用多步骤异步过程将计算机复制到 Azure。
 
 ## <a name="azure-monitor-logging"></a>Azure Monitor 日志记录
 
-### <a name="how-often-does-site-recovery-send-diagnostic-logs-to-azure-monitor-log"></a>Site Recovery 每隔多久将诊断日志发送到 Azure Monitor 日志？ 
+### <a name="how-often-does-site-recovery-send-resource-logs-to-azure-monitor-log"></a>Site Recovery 每隔多久将资源日志发送到 Azure Monitor 日志？ 
 
 - AzureSiteRecoveryReplicationStats 和 AzureSiteRecoveryRecoveryPoints 每 15 分钟发送一次。  
 - AzureSiteRecoveryReplicationDataUploadRate 和AzureSiteRecoveryProtectedDiskDataChurn 每五分钟发送一次。 
@@ -58,9 +58,9 @@ Site Recovery 使用多步骤异步过程将计算机复制到 Azure。
 
 ### <a name="how-long-is-data-kept-in-azure-monitor-logs"></a>数据保留在 Azure Monitor 日志中多长时间？ 
 
-默认情况下，保留期为 31 天。  可以在 Log Analytics 工作区的“使用情况和估计成本”部分延长该期限。 单击“数据保留期”，然后选择范围。 
+默认情况下，保留期为 31 天。 可以在 Log Analytics 工作区的“使用情况和估计成本”部分延长该期限。 单击“数据保留期”，然后选择范围。
 
-### <a name="whats-the-size-of-the-diagnostic-logs"></a>诊断日志的大小是多少？ 
+### <a name="whats-the-size-of-the-resource-logs"></a>资源日志的大小是多少？ 
 
 日志大小通常为 15-20 KB。 
 
@@ -68,5 +68,4 @@ Site Recovery 使用多步骤异步过程将计算机复制到 Azure。
 
 了解如何使用 [Site Recovery 内置监视功能](site-recovery-monitor-and-troubleshoot.md)或 [Azure Monitor](monitor-log-analytics.md) 进行监视。
 
-<!-- Update_Description: new article about site recovery monitoring common questions -->
-<!--ms.date: 09/02/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->
