@@ -7,17 +7,17 @@ ms.reviewer: adieldar
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 04/29/2019
-ms.date: 05/09/2020
-ms.openlocfilehash: 03cf5568e20a459f056fe330b6c919ec3999f2e6
-ms.sourcegitcommit: bfbd6694da33f703481386f2a3f16850c4e94bfa
+ms.date: 06/09/2020
+ms.openlocfilehash: ad1a183de54d2d6f5803de666c78e2221c013e8b
+ms.sourcegitcommit: 73697fa9c19a40d235df033400c74741e7d0f3f4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83417612"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84574882"
 ---
 # <a name="machine-learning-capability-in-azure-data-explorer"></a>Azure 数据资源管理器中的机器学习功能
 
-Azure 数据资源管理器是一个大数据分析平台，它可以使用内置的[异常情况检测和预测](/data-explorer/anomaly-detection)函数监视服务运行状况、QoS 或故障设备的异常行为。 一旦检测到异常模式，就会执行根本原因分析 (RCA) 来缓解或解决异常情况。
+Azure 数据资源管理器是一个大数据分析平台，它可以使用内置的[异常情况检测和预测](anomaly-detection.md)函数监视服务运行状况、QoS 或故障设备的异常行为。 一旦检测到异常模式，就会执行根本原因分析 (RCA) 来缓解或解决异常情况。
 
 诊断过程比较复杂且冗长，需由领域专家完成。 该过程包括提取和联接不同的源在相同时间范围内的附加数据，查找多个维度上的值的分布变化，绘制附加变量的图表，并根据领域知识和直觉应用其他技术。 由于这些诊断方案在 Azure 数据资源管理器中很常用，其中提供了机器学习插件来简化诊断过程及缩短 RCA 的持续时间。
 
@@ -39,7 +39,7 @@ demo_clustering1
 
 ![服务异常时间图表](media/machine-learning-clustering/service-exceptions-timechart.png)
 
-服务异常计数与服务总流量相关联。 在工作日星期一到星期五的每日模式中可以清晰地看到，午间的服务异常计数出现提升，而夜间的计数出现下降。 在周末，计数平稳地保持较低水平。 可以使用 Azure 数据资源管理器中的[时序异常情况检测](/data-explorer/anomaly-detection?#time-series-anomaly-detection)来检测异常高峰。
+服务异常计数与服务总流量相关联。 在工作日星期一到星期五的每日模式中可以清晰地看到，午间的服务异常计数出现提升，而夜间的计数出现下降。 在周末，计数平稳地保持较低水平。 可以使用 Azure 数据资源管理器中的[时序异常情况检测](anomaly-detection.md#time-series-anomaly-detection)来检测异常高峰。
 
 数据中的第二个高峰发生在星期二下午。 以下查询用于进一步诊断此高峰。 使用该查询以更高的分辨率（以一分钟箱为单位，绘制八个小时的数据）围绕峰值重绘图表，以验证它是否为尖峰，并查看其边界。
 

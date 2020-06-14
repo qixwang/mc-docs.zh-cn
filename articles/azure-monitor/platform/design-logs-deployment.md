@@ -8,12 +8,12 @@ ms.topic: conceptual
 origin.date: 09/20/2019
 ms.date: 11/04/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 4ba7b9cc9ee2bd1f85b46e4313f239f4b74c359a
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 50071fb32e58e9ee54f4891ee40790fabbd8e523
+ms.sourcegitcommit: 5ae04a3b8e025986a3a257a6ed251b575dbf60a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79452496"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84440594"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>设计 Azure Monitor 日志部署
 
@@ -27,9 +27,11 @@ Log Analytics 工作区可提供：
 
 * 数据存储的地理位置。
 * 遵循建议的设计策略之一授予不同的用户访问权限，以实现数据隔离。
-* 设置配置的范围，例如[定价层级](/azure-monitor/platform/manage-cost-storage#changing-pricing-tier)、[保留期](/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)和[数据上限](/azure-monitor/platform/manage-cost-storage#daily-cap)。
+* 设置配置的范围，例如[定价层级](/azure-monitor/platform/manage-cost-storage#changing-pricing-tier)、[保留期](/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)和[数据上限](/azure-monitor/platform/manage-cost-storage#manage-your-maximum-daily-data-volume)。
 
 本文提供设计和迁移注意事项的详细概述、访问控制概述，我们为 IT 组织推荐的设计实施方案的介绍。
+
+
 
 ## <a name="important-considerations-for-an-access-control-strategy"></a>访问控制策略的重要注意事项
 
@@ -47,14 +49,10 @@ Log Analytics 工作区可提供：
 
 使用 Log Analytics 代理收集数据时，需要了解以下各项以规划代理部署：
 
-* 若要从 Windows 代理收集数据，可[将每个代理配置为向一个或多个工作区报告](../../azure-monitor/platform/agent-windows.md)，即使它目前正在向 System Center Operations Manager 管理组报告。 Windows 代理最多可向四个工作区报告。
+* 若要从 Windows 代理收集数据，可[将每个代理配置为向一个或多个工作区报告](../../azure-monitor/platform/agent-windows.md)。 Windows 代理最多可向四个工作区报告。
 * Linux 代理不支持多宿主，只能向一个工作区报告。
 
-如果使用 System Center Operations Manager 2012 R2 或更高版本：
-
-* 向管理组报告的 Linux 计算机必须配置为直接向 Log Analytics 工作区报告。 如果 Linux 计算机已直接向工作区报告，而你想要使用 Operations Manager 来监视这些计算机，请遵循[向 Operations Manager 管理组报告](agent-manage.md#configure-agent-to-report-to-an-operations-manager-management-group)的步骤。 
-* 可以在 Windows 计算机上安装 Log Analytics Windows 代理，并使其向与某个工作区集成的 Operations Manager 以及另一个工作区报告。
-
+<!-- Not available in MC: System Center Operations Manager -->
 ## <a name="access-control-overview"></a>访问控制概述
 
 使用基于角色的访问控制 (RBAC)，可以仅向用户和组授予其在工作区中处理监视数据所需的访问级别。 这样，便可以使用单个工作区来存储对所有资源启用的收集数据，从而符合 IT 组织的操作模型。 例如，可向负责管理 Azure 虚拟机 (VM) 上托管的基础结构服务的团队授予访问权限，因此，他们只能访问这些 VM 生成的日志。 此方案遵循我们的新资源上下文日志模型。 此模型的基础适用于 Azure 资源发出的每条日志记录，自动与此资源相关联。 日志将根据资源转发到与范围和 RBAC 相符的中心工作区。
@@ -70,15 +68,15 @@ Log Analytics 工作区可提供：
 
 ## <a name="access-mode"></a>访问模式
 
-访问模式是指用户如何访问 Log Analytics 工作区，并定义他们有权访问的数据范围  。 
+访问模式是指用户如何访问 Log Analytics 工作区，并定义他们有权访问的数据范围。 
 
 用户可通过两个选项访问数据：
 
-* **工作区上下文**：你可以查看你有权访问的工作区中的所有日志。 在此模式下，只能查询该工作区中所有表内的所有数据。 使用工作区作为范围来访问日志时（例如，在 Azure 门户上的“Azure Monitor”菜单中选择“日志”时），将使用此访问模式   。
+* **工作区上下文**：你可以查看你有权访问的工作区中的所有日志。 在此模式下，只能查询该工作区中所有表内的所有数据。 使用工作区作为范围来访问日志时（例如，在 Azure 门户上的“Azure Monitor”菜单中选择“日志”时），将使用此访问模式 。
 
     ![工作区中的 Log Analytics 上下文](./media/design-logs-deployment/query-from-workspace.png)
 
-* **资源上下文**：访问特定资源、资源组或订阅的工作区时（例如，在 Azure 门户上的资源菜单中选择“日志”时），只能查看所有表中你有权访问的资源的日志  。 在此模式下，只能查询与该资源关联的数据。 此模式还支持粒度 RBAC。
+* **资源上下文**：访问特定资源、资源组或订阅的工作区时（例如，在 Azure 门户上的资源菜单中选择“日志”时），只能查看所有表中你有权访问的资源的日志。 在此模式下，只能查询与该资源关联的数据。 此模式还支持粒度 RBAC。
 
     ![资源中的 Log Analytics 上下文](./media/design-logs-deployment/query-from-resource.png)
 
@@ -101,11 +99,11 @@ Azure Monitor 根据执行日志搜索时所在的上下文自动确定正确的
 | 每种模式适合哪类用户？ | 集中管理。 需要配置数据收集的管理员，以及需要访问各种资源的用户。 此外，需要访问 Azure 外部资源的日志的用户目前也需要使用此模式。 | 应用程序团队。 受监视 Azure 资源的管理员。 |
 | 用户需要哪些权限才能查看日志？ | 对工作区的权限。 请参阅[使用工作区权限管理访问权限](manage-access.md#manage-access-using-workspace-permissions)中的**工作区权限**。 | 对资源的读取访问权限。 请参阅[使用 Azure 权限管理访问权限](manage-access.md#manage-access-using-azure-permissions)中的**资源权限**。 权限可以继承（例如，从包含资源组继承），也可以直接分配给资源。 系统会自动分配对资源日志的权限。 |
 | 权限范围是什么？ | 工作区。 有权访问工作区的用户可以通过他们有权访问的表查询该工作区中的所有日志。 请参阅[表访问控制](manage-access.md#table-level-rbac) | Azure 资源。 用户可以通过任何工作区查询他们有权访问的资源、资源组或订阅的日志，但无法查询其他资源的日志。 |
-| 用户如何访问日志？ | <ul><li>从“Azure Monitor”菜单启动“日志”。  </li></ul> <ul><li>从“Log Analytics 工作区”启动“日志”。  </li></ul> <ul><li>从 Azure Monitor [工作簿](../visualizations.md#workbooks)。</li></ul> | <ul><li>从 Azure 资源的菜单启动“日志” </li></ul> <ul><li>从“Azure Monitor”菜单启动“日志”。  </li></ul> <ul><li>从“Log Analytics 工作区”启动“日志”。  </li></ul> <ul><li>从 Azure Monitor [工作簿](../visualizations.md#workbooks)。</li></ul> |
+| 用户如何访问日志？ | <ul><li>从“Azure Monitor”菜单启动“日志”。 </li></ul> <ul><li>从“Log Analytics 工作区”启动“日志”。 </li></ul> <ul><li>从 Azure Monitor [工作簿](../visualizations.md#workbooks)。</li></ul> | <ul><li>从 Azure 资源的菜单启动“日志”</li></ul> <ul><li>从“Azure Monitor”菜单启动“日志”。 </li></ul> <ul><li>从“Log Analytics 工作区”启动“日志”。 </li></ul> <ul><li>从 Azure Monitor [工作簿](../visualizations.md#workbooks)。</li></ul> |
 
 ## <a name="access-control-mode"></a>访问控制模式
 
-访问控制模式是每个工作区中的一项设置，定义如何确定该工作区的权限。 
+访问控制模式是每个工作区中的一项设置，定义如何确定该工作区的权限。
 
 * **需要工作区权限**：此控制模式不允许精细的 RBAC。 用户若要访问工作区，必须获得对该工作区或特定表的权限。
 
@@ -120,7 +118,7 @@ Azure Monitor 根据执行日志搜索时所在的上下文自动确定正确的
     这是在 2019 年 3 月之后创建的所有工作区的默认设置。
 
     > [!NOTE]
-    > 如果用户只对工作区拥有资源权限，则他们只能使用资源上下文模式访问工作区（假设工作区访问模式设置为“使用资源或工作区权限”）。 
+    > 如果用户只对工作区拥有资源权限，则他们只能使用资源上下文模式访问工作区（假设工作区访问模式设置为“使用资源或工作区权限”）。
 
 若要了解如何使用门户、PowerShell 或资源管理器模板更改访问控制模式，请参阅[配置访问控制模式](manage-access.md#configure-access-control-mode)。
 
@@ -128,7 +126,7 @@ Azure Monitor 根据执行日志搜索时所在的上下文自动确定正确的
 
 Azure Monitor 是一种大规模数据服务，每月为成千上万的客户发送数 TB 的数据，并且此数据仍在不断增长。 每个工作区的默认引入速率阈值设置为 **6 GB/分钟**。 这是一个近似值，因为实际大小在数据类型之间可能会有所不同，具体取决于日志长度及其压缩率。 此限制不适用于从代理或[数据收集器 API](data-collector-api.md) 发送的数据。
 
-如果以更高速率将数据发送到单个工作区，则某些数据将丢弃，并且在继续超过阈值的情况下，每 6 小时将向工作区中的“操作”  表发送一个事件。 如果引入量继续超过速率限制，或者希望很快达到该限制，则可以通过建立支持请求来请求增加工作区。
+如果以更高速率将数据发送到单个工作区，则某些数据将丢弃，并且在继续超过阈值的情况下，每 6 小时将向工作区中的“操作”表发送一个事件。 如果引入量继续超过速率限制，或者希望很快达到该限制，则可以通过向 LAIngestionRate@microsoft.com 发送电子邮件或提交支持请求来请求增加工作区。
  
 若要在工作区中收到此类事件的通知，请根据大于零的结果数，使用以下具有警报逻辑的查询创建[日志警报规则](alerts-log.md)。
 
@@ -158,10 +156,11 @@ Operation
 * 了解必须遵守的有关数据保留的行业法规和内部政策。
 * 确保应用程序团队可在现有的资源上下文功能范围内工作。
 * 确定为应用程序团队授予的资源访问权限，并先在开发环境中进行测试，然后在生产环境中实施。
-* 将工作区配置为启用“使用资源或工作区权限”。 
+* 将工作区配置为启用“使用资源或工作区权限”。
 * 删除应用程序团队的工作区读取和查询权限。
 * 启用并配置原始工作区中部署的任何监视解决方案、见解（例如用于容器的 Azure Monitor 和/或用于 VM 的 Azure Monitor）、自动化帐户和管理解决方案（例如更新管理、启动/停止 VM 等）。
 
 ## <a name="next-steps"></a>后续步骤
 
 若要实施本指南中建议的安全权限和控制措施，请查看[管理对日志的访问权限](manage-access.md)。
+

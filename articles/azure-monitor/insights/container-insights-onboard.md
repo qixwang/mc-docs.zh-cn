@@ -2,22 +2,25 @@
 title: 如何为容器启用 Azure Monitor | Microsoft Docs
 description: 本文介绍如何为容器启用和配置 Azure Monitor，以便了解容器的性能以及已识别的性能相关问题。
 ms.topic: conceptual
-author: lingliw
-ms.author: v-lingwu
+author: Johnnytechn
+ms.author: v-johya
 origin.date: 11/18/2019
-ms.date: 12/30/2019
-ms.openlocfilehash: ab74b0eac2aedcc0e0d14e2ccd81451046f2bca4
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/28/2020
+ms.openlocfilehash: 7b673b94f330beaf0c5df87e36395a580ad73d2b
+ms.sourcegitcommit: 5ae04a3b8e025986a3a257a6ed251b575dbf60a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79290896"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84440463"
 ---
-# <a name="how-to-enable-azure-monitor-for-containers"></a>如何为容器启用 Azure Monitor  
+# <a name="how-to-enable-azure-monitor-for-containers"></a>如何为容器启用 Azure Monitor
 
 本文概述了可用于为容器设置 Azure Monitor 的选项，这些选项用于监视部署到 Kubernetes 环境并托管在以下位置上的工作负荷的性能：
 
-- [Azure Kubernetes 服务](/aks/) (AKS) 可以使用以下支持的方法为新的或一个或多个现有的 Kubernetes 部署启用用于容器的 Azure Monitor：
+- [Azure Kubernetes 服务](/aks/) (AKS)
+
+- 使用 [AKS 引擎](https://github.com/Azure/aks-engine)在 Azure 上托管的自托管 Kubernetes 群集。
+可使用以下支持的方法为 Kubernetes 的新部署或是一个或多个现有部署启用用于容器的 Azure Monitor：
 
 - 借助 Azure 门户、Azure PowerShell 或 Azure CLI
 
@@ -25,6 +28,7 @@ ms.locfileid: "79290896"
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>先决条件
+
 在开始之前，请确保做好以下准备：
 
 - **Log Analytics 工作区。**
@@ -56,13 +60,12 @@ ms.locfileid: "79290896"
 |--------------|------|-------------|
 | *.ods.opinsights.azure.cn | 443 | 数据引入 |
 | *.oms.opinsights.azure.cn | 443 | OMS 载入 |
-| \* .blob.core.windows.net | 443 | 用于监视出站连接。 |
 | microsoft.com | 80 | 用于网络连接。 仅当代理映像版本为 ciprod09262019 或更低版本时，才需要此项。 |
 | dc.services.visualstudio.com | 443 | 用于使用 Azure 公有云 Application Insights 进行代理遥测。 |
 
 ## <a name="components"></a>组件
 
-监视性能的能力依赖于专门为用于容器的 Azure Monitor 开发的用于 Linux 的容器化 Log Analytics 代理。 此专用代理可从群集中的所有节点处收集性能和事件数据，并且在部署期间，会自动部署该代理，并注册指定 Log Analytics 工作区。 该代理的版本为 microsoft/oms:ciprod04202018 或更高版本，并由采用以下格式的日期表示：mmddyyyy  。
+监视性能的能力依赖于专门为用于容器的 Azure Monitor 开发的用于 Linux 的容器化 Log Analytics 代理。 此专用代理可从群集中的所有节点处收集性能和事件数据，并且在部署期间，会自动部署该代理，并注册指定 Log Analytics 工作区。 该代理的版本为 microsoft/oms:ciprod04202018 或更高版本，并由采用以下格式的日期表示：mmddyyyy。
 
 >[!NOTE]
 >随着 Windows Server 预览版对 AKS 的支持，带有 Windows Server 节点的 AKS 群集没有安装代理即可收集数据并将数据转发到 Azure Monitor。 但是，在标准部署过程中，自动部署在群集中的 Linux 节点会代表群集中的所有 Windows 节点收集数据并将数据转发到 Azure Monitor。  
@@ -89,3 +92,4 @@ ms.locfileid: "79290896"
 ## <a name="next-steps"></a>后续步骤
 
 - 启用监视后，可以开始分析 Azure Kubernetes 服务 (AKS)、Azure Stack 或其他环境中托管的 Kubernetes 群集的性能。 若要了解如何使用用于容器的 Azure Monitor，请参阅[查看 Kubernetes 群集性能](container-insights-analyze.md)。
+

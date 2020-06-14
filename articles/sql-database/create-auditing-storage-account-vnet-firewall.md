@@ -9,18 +9,18 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: vanto
 origin.date: 03/19/2020
-ms.date: 04/27/2020
+ms.date: 06/15/2020
 ms.custom: azure-synapse
-ms.openlocfilehash: 38d680e895ef39e9e9c01dd25a83d3bce123f2e4
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.openlocfilehash: e870b6db2070978552fa5e44ed79f1782f126c64
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82127214"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723273"
 ---
 # <a name="write-audit-to-a-storage-account-behind-vnet-and-firewall"></a>将审核内容写入到 VNet 和防火墙后面的存储帐户
 
-对 [Azure SQL 数据库](sql-database-technical-overview.md)和 [Azure Synapse Analytics](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) 的审核支持将数据库事件写入到虚拟网络和防火墙后面的 [Azure 存储帐户](../storage/common/storage-account-overview.md)。 
+对 [Azure SQL 数据库](sql-database-technical-overview.md)和 [Azure Synapse Analytics](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) 的审核支持将数据库事件写入到虚拟网络和防火墙后面的 [Azure 存储帐户](../storage/common/storage-account-overview.md)。 
 
 本文介绍了为此选项配置 Azure SQL Server 和 Azure 存储帐户的两种方法。 第一种方法使用 Azure 门户，第二种方法使用 REST。
 
@@ -55,7 +55,7 @@ ms.locfileid: "82127214"
   > [!NOTE]
   > 如果所选的存储帐户位于 VNet 后面，你将看到以下消息：
   >
-  >`You have selected a storage account that is behind a firewall or in a virtual network. Using this storage: requires an Active Directory admin on the server; enables 'Allow trusted Microsoft services to access this storage account' on the storage account; and creates a server managed identity with 'storage blob data contributor' RBAC.`
+  >`You have selected a storage account that is behind a firewall or in a virtual network. Using this storage requires to enable 'Allow trusted Microsoft services to access this storage account' on the storage account and creates a server managed identity with 'storage blob data contributor' RBAC.`
   >
   >如果未看到此消息，则表示存储帐户不在 VNet 后面。
 

@@ -5,15 +5,15 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: sample
-origin.date: 05/18/2019
-ms.date: 01/20/2020
+origin.date: 05/01/2020
+ms.date: 06/15/2020
 ms.author: v-yeche
-ms.openlocfilehash: 8f8828976f61f10243bbe06ad225afc210a64d5c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 06d0c10db33b0ff02015fecfe056850dd520a917
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "76270095"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723139"
 ---
 # <a name="list-and-get-databases-and-graphs-for-azure-cosmos-db---gremlin-api"></a>列出和获取 Azure Cosmos DB 的数据库和图 - Gremlin API
 
@@ -24,42 +24,41 @@ ms.locfileid: "76270095"
 ## <a name="sample-script"></a>示例脚本
 
 ```powershell
-# List and Get operations for Azure Cosmos Gremlin API
+# Reference: Az.CosmosDB | https://docs.microsoft.com/powershell/module/az.cosmosdb
+# --------------------------------------------------
+# Purpose
+# List and get operations for accounts, databases, and graphs
+# --------------------------------------------------
+# Variables - ***** SUBSTITUTE YOUR VALUES *****
+$resourceGroupName = "myResourceGroup" # Resource Group must already exist
+$accountName = "myaccount" # Must be all lower case
+$databaseName = "myDatabase"
+$graphName = "myGraph"
+# --------------------------------------------------
 
-$apiVersion = "2015-04-08"
-$resourceGroupName = "myResourceGroup"
-$accountName = "mycosmosaccount"
-$databaseName = "database1"
-$graphName = "graph1"
-$accountResourceName = $accountName + "/gremlin/"
-$databaseResourceName = $accountName + "/gremlin/" + $databaseName
-$databaseResourceType = "Microsoft.DocumentDb/databaseAccounts/apis/databases"
-$graphResourceName = $accountName + "/gremlin/" + $databaseName + "/" + $graphName
-$graphResourceType = "Microsoft.DocumentDb/databaseAccounts/apis/databases/graphs"
+Write-Host "List all accounts in a resource group"
+Get-AzCosmosDBAccount -ResourceGroupName $resourceGroupName
 
-Read-Host -Prompt "List all databases in an account. Press Enter to continue"
+Write-Host "Get an account in a resource group"
+Get-AzCosmosDBAccount -ResourceGroupName $resourceGroupName `
+    -Name $accountName
 
-Get-AzResource -ResourceType $databaseResourceType `
-    -ApiVersion $apiVersion -ResourceGroupName $resourceGroupName `
-    -Name $accountResourceName  | Select-Object Properties
+Write-Host "List all databases in an account"
+Get-AzCosmosDBGremlinDatabase -ResourceGroupName $resourceGroupName `
+    -AccountName $accountName
 
-Read-Host -Prompt "Get a database in an account. Press Enter to continue"
+Write-Host "Get a database in an account"
+Get-AzCosmosDBGremlinDatabase -ResourceGroupName $resourceGroupName `
+    -AccountName $accountName -Name $databaseName
 
-Get-AzResource -ResourceType $databaseResourceType `
-    -ApiVersion $apiVersion -ResourceGroupName $resourceGroupName `
-    -Name $databaseResourceName | Select-Object Properties
+Write-Host "List all graphs in a database"
+Get-AzCosmosDBGremlinGraph -ResourceGroupName $resourceGroupName `
+    -AccountName $accountName -DatabaseName $databaseName 
 
-Read-Host -Prompt "List all graphs in a database. Press Enter to continue"
-
-Get-AzResource -ResourceType $graphResourceType `
-    -ApiVersion $apiVersion -ResourceGroupName $resourceGroupName `
-    -Name $databaseResourceName | Select-Object Properties
-
-Read-Host -Prompt "Get a graph in a database. Press Enter to continue"
-
-Get-AzResource -ResourceType $graphResourceType `
-    -ApiVersion $apiVersion -ResourceGroupName $resourceGroupName `
-    -Name $graphResourceName | Select-Object Properties
+Write-Host "Get a graph in a database"
+Get-AzCosmosDBGremlinGraph -ResourceGroupName $resourceGroupName `
+    -AccountName $accountName -DatabaseName $databaseName `
+    -Name $graphName
 
 ```
 
@@ -77,8 +76,10 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 
 | Command | 说明 |
 |---|---|
-|**Azure 资源**| |
-| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | 创建资源。 |
+|**Azure Cosmos DB**| |
+| [Get-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbaccount) | 列出 Cosmos DB 帐户或获取指定的 Cosmos DB 帐户。 |
+| [Get-AzCosmosDBGremlinDatabase](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbgremlindatabase) | 列出帐户中的 Gremlin API 数据库，或在帐户中获取指定的 Gremlin API 数据库。 |
+| [Get-AzCosmosDBGremlinGraph](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbgremlingraph) | 列出数据库中的 Gremlin API 图，或在数据库中获取指定的 Gremlin API 表。 |
 |**Azure 资源组**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | 删除资源组，包括所有嵌套的资源。 |
 |||
@@ -89,4 +90,4 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 
 可以在 [Azure Cosmos DB PowerShell 脚本](../../../powershell-samples.md)中找到其他 Azure Cosmos DB PowerShell 脚本示例。
 
-<!--Update_Description: update meta properties -->
+<!-- Update_Description: update meta properties, wording update, update link -->

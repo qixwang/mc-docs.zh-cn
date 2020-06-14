@@ -6,23 +6,22 @@ author: WenJason
 ms.service: load-balancer
 ms.topic: article
 origin.date: 01/23/2020
-ms.date: 04/06/2020
+ms.date: 06/08/2020
 ms.author: v-jay
-ms.openlocfilehash: 867d6519832b632a28ee596dc5b953c6c7460192
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 717c43c2f880f2c3fb57c4b266121825e645bbc9
+ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80625670"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84275490"
 ---
 # <a name="upgrade-azure-public-load-balancer"></a>升级 Azure 公共负载均衡器
-[Azure 标准负载均衡器](load-balancer-overview.md)提供丰富的功能和高可用性。 有关负载均衡器 SKU 的详细信息，请参阅[比较表](/load-balancer/concepts-limitations#skus)。
+[Azure 标准负载均衡器](load-balancer-overview.md)提供丰富的功能和高可用性。 有关负载均衡器 SKU 的详细信息，请参阅[比较表](/load-balancer/skus#skus)。
 
 升级分为三个阶段：
 
 1. 迁移配置
 2. 将 VM 添加到标准负载均衡器的后端池
-3. 在负载均衡器上为出站连接创建出站规则
 
 本文介绍配置迁移。 根据特定的环境，将 VM 添加到后端池的过程可能有所不同。 不过，本文提供了一些概要性的普通[建议](#add-vms-to-backend-pools-of-standard-load-balancer)。
 
@@ -32,17 +31,18 @@ ms.locfileid: "80625670"
 
 * 在指定的资源组和位置中创建标准 SKU 负载均衡器。
 * 将基本 SKU 负载均衡器的配置无缝复制到新建的标准负载均衡器。
+* 创建允许出站连接的默认出站规则。
 
 ### <a name="caveatslimitations"></a>注意事项/限制
 
-* 脚本仅支持公共负载均衡器升级。 对于内部基本负载均衡器升级，如果不需要出站连接，请创建标准内部负载均衡器；如果需要出站连接，请创建标准内部负载均衡器和标准公共负载均衡器。
+* 脚本仅支持公共负载均衡器升级。 若要进行内部基本负载均衡器升级，请参阅[此页](/load-balancer/upgrade-basicinternal-standard)以获取说明。
 * 标准负载均衡器使用新的公共地址。 无法将与现有基本负载均衡器关联的 IP 地址无缝移动到标准负载均衡器，因为两者的 SKU 不同。
 * 如果标准负载均衡器是在不同的区域中创建的，则无法将旧区域中的 VM 关联到新建的标准负载均衡器。 若要克服此限制，请确保在新区域中创建新的 VM。
 * 如果负载均衡器没有任何前端 IP 配置或后端池，则运行脚本时可能会遇到错误。 请确保负载均衡器不是空的。
 
 ## <a name="download-the-script"></a>下载脚本
 
-从 [PowerShell 库](https://www.powershellgallery.com/packages/AzurePublicLBUpgrade/1.0)下载迁移脚本。
+从 [PowerShell 库](https://www.powershellgallery.com/packages/AzurePublicLBUpgrade/2.0)下载迁移脚本。
 ## <a name="use-the-script"></a>使用脚本
 
 根据本地 PowerShell 环境的设置和首选项，可以使用两个选项：
@@ -64,7 +64,7 @@ ms.locfileid: "80625670"
 
 ### <a name="install-using-the-script-directly"></a>直接使用脚本安装
 
-如果已安装某些 Azure Az 模块并且无法卸载它们（或者不想卸载），可以使用脚本下载链接中的“手动下载”选项卡手动下载该脚本。  此脚本将作为原始 nupkg 文件下载。 若要安装此 nupkg 文件中的脚本，请参阅[手动下载包](https://docs.microsoft.com/powershell/scripting/gallery/how-to/working-with-packages/manual-download)。
+如果已安装某些 Azure Az 模块并且无法卸载它们（或者不想卸载），可以使用脚本下载链接中的“手动下载”选项卡手动下载该脚本。 此脚本将作为原始 nupkg 文件下载。 若要安装此 nupkg 文件中的脚本，请参阅[手动下载包](https://docs.microsoft.com/powershell/scripting/gallery/how-to/working-with-packages/manual-download)。
 
 若要运行该脚本，请执行以下操作：
 
@@ -74,7 +74,7 @@ ms.locfileid: "80625670"
 
 1. 检查所需的参数：
 
-   * **oldRgName: [String]:必需** – 这是要升级的现有基本负载均衡器的资源组。 若要查找此字符串值，请导航到 Azure 门户，选择你的基本负载均衡器源，然后单击该负载均衡器的“概览”。  资源组位于该页上。
+   * **oldRgName: [String]:必需** – 这是要升级的现有基本负载均衡器的资源组。 若要查找此字符串值，请导航到 Azure 门户，选择你的基本负载均衡器源，然后单击该负载均衡器的“概览”。 资源组位于该页上。
    * **oldLBName: [String]:必需** – 这是要升级的现有基本负载均衡器的名称。 
    * **newrgName: [String]:必需** – 这是要在其中创建标准负载均衡器的资源组。 它可以是新资源组，也可以是现有资源组。 如果选择现有资源组，请注意，负载均衡器的名称在资源组中必须是唯一的。 
    * **newlocation: [String]:必需** – 这是要在其中创建标准负载均衡器的位置。 建议将所选基本负载均衡器的相同位置继承到标准负载均衡器，以方便与其他现有资源相关联。
@@ -98,13 +98,13 @@ ms.locfileid: "80625670"
 * **将现有 VM 从旧基本公共负载均衡器的后端池移到新建标准公共负载均衡器的后端池**。
     1. 若要执行本快速入门中的任务，请登录 [Azure 门户](https://portal.azure.cn)。
  
-    1. 在左侧菜单中选择“所有资源”，然后从资源列表中选择“新建的标准负载均衡器”。  
+    1. 在左侧菜单中选择“所有资源”，然后从资源列表中选择“新建的标准负载均衡器”。 
    
-    1. 在“设置”下，选择“后端池”。  
+    1. 在“设置”下，选择“后端池”。 
    
     1. 选择与基本负载均衡器的后端池匹配的后端池，然后选择以下值： 
       - **虚拟机**：单击下拉控件，从基本负载均衡器的匹配后端池中选择 VM。
-    1. 选择“保存”  。
+    1. 选择“保存” 。
     >[!NOTE]
     >对于使用公共 IP 的 VM，在不保证 IP 地址相同的情况下，需要先创建标准 IP 地址。 将 VM 与基本 IP 取消关联，并将 VM 关联到新建的标准 IP 地址。 然后，即可按照说明将 VM 添加到标准负载均衡器的后端池。 
 

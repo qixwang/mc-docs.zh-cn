@@ -5,15 +5,15 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: sample
-origin.date: 12/02/2019
-ms.date: 01/20/2020
+origin.date: 05/01/2020
+ms.date: 06/15/2020
 ms.author: v-yeche
-ms.openlocfilehash: 74cda88bb1139a7ad9f40f579a8e3d542f8c1ef6
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: c89dbf326f1098f6b86a0b5bd29ee362ece0a36f
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "76270080"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723619"
 ---
 # <a name="update-rus-for-a-table-for-azure-cosmos-db---table-api"></a>更新 Azure Cosmos DB 的表的 RU/秒 - 表 API
 
@@ -24,22 +24,43 @@ ms.locfileid: "76270080"
 ## <a name="sample-script"></a>示例脚本
 
 ```powershell
-# Update RU for an Azure Cosmos Table API table
+# Reference: Az.CosmosDB | https://docs.microsoft.com/powershell/module/az.cosmosdb
+# --------------------------------------------------
+# Purpose
+# Update Table throughput
+# --------------------------------------------------
+# Variables - ***** SUBSTITUTE YOUR VALUES *****
+$resourceGroupName = "myResourceGroup" # Resource Group must already exist
+$accountName = "myaccount" # Must be all lower case
+$tableName = "myTable"
+$newRUs = 500
+# --------------------------------------------------
 
-$apiVersion = "2015-04-08"
-$resourceGroupName = "myResourceGroup"
-$accountName = "mycosmosaccount"
-$tableName = "table1"
-$tableThroughputResourceName = $accountName + "/table/" + $tableName + "/throughput"
-$tableThroughputResourceType = "Microsoft.DocumentDb/databaseAccounts/apis/tables/settings"
-$throughput = 500
+$throughput = Get-AzCosmosDBTableThroughput -ResourceGroupName $resourceGroupName `
+    -AccountName $accountName -Name $tableName
 
-$tableProperties = @{
-    "resource"=@{"throughput"=$throughput}
-} 
-Set-AzResource -ResourceType $tableThroughputResourceType `
-    -ApiVersion $apiVersion -ResourceGroupName $resourceGroupName `
-    -Name $tableThroughputResourceName -PropertyObject $tableProperties
+$currentRUs = $throughput.Throughput
+$minimumRUs = $throughput.MinimumThroughput
+
+Write-Host "Current throughput is $currentRUs. Minimum allowed throughput is $minimumRUs."
+
+if ([int]$newRUs -lt [int]$minimumRUs) {
+    Write-Host "Requested new throughput of $newRUs is less than minimum allowed throughput of $minimumRUs."
+    Write-Host "Using minimum allowed throughput of $minimumRUs instead."
+    $newRUs = $minimumRUs
+}
+
+if ([int]$newRUs -eq [int]$currentRUs) {
+    Write-Host "New throughput is the same as current throughput. No change needed."
+}
+else {
+    Write-Host "Updating throughput to $newRUs."
+
+    Update-AzCosmosDBTableThroughput -ResourceGroupName $resourceGroupName `
+        -AccountName $accountName -Name $tableName `
+        -Throughput $newRUs
+}
+
 ```
 
 ## <a name="clean-up-deployment"></a>清理部署
@@ -56,8 +77,9 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 
 | Command | 说明 |
 |---|---|
-|**Azure 资源**| |
-| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | 创建资源。 |
+|**Azure Cosmos DB**| |
+| [Get-AzCosmosDBTableThroughput](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbtablethroughput) | 获取表 API 表的吞吐量值。 |
+| [Update-AzCosmosDBMongoDBCollectionThroughput](https://docs.microsoft.com/powershell/module/az.cosmosdb/update-azcosmosdbsqldatabasethroughput) | 更新表 API 表的吞吐量值。 |
 |**Azure 资源组**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | 删除资源组，包括所有嵌套的资源。 |
 |||
@@ -68,4 +90,4 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 
 可以在 [Azure Cosmos DB PowerShell 脚本](../../../powershell-samples.md)中找到其他 Azure Cosmos DB PowerShell 脚本示例。
 
-<!-- Update_Description: update meta properties -->
+<!-- Update_Description: update meta properties, wording update, update link -->

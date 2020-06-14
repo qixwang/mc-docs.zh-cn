@@ -6,14 +6,14 @@ author: rockboyfor
 ms.service: virtual-wan
 ms.topic: conceptual
 origin.date: 02/12/2020
-ms.date: 02/24/2020
+ms.date: 06/15/2020
 ms.author: v-yeche
-ms.openlocfilehash: 77a10b9d88116ec7ee319e7bbc52f91f52b0e7d5
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 9715cf4b2a1cba17c6fee49035ccfbafebcceac9
+ms.sourcegitcommit: 8dae792aefbe44e8388f961b813e3da6564423ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80291302"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84654876"
 ---
 # <a name="automation-guidelines-for-virtual-wan-partners"></a>适用于虚拟 WAN 合作伙伴的自动化指南
 
@@ -76,8 +76,8 @@ ms.locfileid: "80291302"
 
 **配置说明**
 
-* 如果 Azure VNet 附加到虚拟中心，它们将显示为 ConnectedSubnets。
-* VPN 连接使用基于路由的配置，并支持 IKEv1 和 IKEv2 协议。
+  * 如果 Azure VNet 附加到虚拟中心，它们将显示为 ConnectedSubnets。
+  * VPN 连接使用基于路由的配置，并支持 IKEv1 和 IKEv2 协议。
 
 <a name="devicefile"></a>
 ## <a name="device-configuration-file"></a>设备配置文件

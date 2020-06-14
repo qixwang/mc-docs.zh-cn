@@ -6,16 +6,17 @@ author: rockboyfor
 ms.service: storage
 ms.topic: include
 origin.date: 09/15/2018
-ms.date: 05/18/2020
+ms.date: 06/15/2020
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: 88136e95b34679901b11a16fb0d6782f522792ab
-ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
+ms.openlocfilehash: 878e907d617333d43104ba95f4e9620f09e73fd0
+ms.sourcegitcommit: c4fc01b7451951ef7a9616fca494e1baf29db714
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83392381"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84564349"
 ---
+<!--Verified successfully by PG team-->
 ## <a name="overview"></a>概述
 Azure 存储提供创建 Blob 快照的功能。 快照将捕获该时间点的 Blob 状态。 本文介绍有关如何使用快照维护虚拟机磁盘备份的方案。 如果选择不使用 Azure 备份和恢复服务，但想要为虚拟机磁盘创建自定义备份策略，则可以使用此方法。
 
@@ -115,4 +116,4 @@ Blob 快照是在某个时间点捕获的 Blob 只读版本。 在创建快照�
 * [创建 Blob 的快照](https://docs.microsoft.com/rest/api/storageservices/Creating-a-Snapshot-of-a-Blob)
 * [规划 VM 备份基础结构](../articles/backup/backup-azure-vms-introduction.md)
 
-<!-- Update_Description: update meta properties, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

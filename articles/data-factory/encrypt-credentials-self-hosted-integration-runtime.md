@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 origin.date: 01/15/2018
-ms.date: 05/11/2020
+ms.date: 06/15/2020
 ms.author: v-jay
-ms.openlocfilehash: 0d762a951f9c5496468450723c1c038bc16b4797
-ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
+ms.openlocfilehash: a3ac2626d89d6714aa28a78727b1c4a44a5f0a9f
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82197799"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723363"
 ---
 # <a name="encrypt-credentials-for-on-premises-data-stores-in-azure-data-factory"></a>在 Azure 数据工厂中加密本地数据存储的凭据
 
@@ -26,7 +26,6 @@ ms.locfileid: "82197799"
 可以在装有自承载集成运行时的计算机上加密和存储本地数据存储（包含敏感信息的链接服务）的凭据。 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 将包含凭据的 JSON 定义文件传递到 <br/>[**New-AzDataFactoryV2LinkedServiceEncryptedCredential**](https://docs.microsoft.com/powershell/module/az.datafactory/New-AzDataFactoryV2LinkedServiceEncryptedCredential) cmdlet，以生成包含已加密凭据的输出 JSON 定义文件。 然后，使用更新的 JSON 定义来创建链接服务。
 

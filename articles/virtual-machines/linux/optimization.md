@@ -1,26 +1,19 @@
 ---
 title: 在 Azure 上优化 Linux VM
 description: 了解一些优化提示，以确保正确设置 Linux VM，从而在 Azure 上获得最佳性能
-keywords: linux 虚拟机,虚拟机 linux,ubuntu 虚拟机
-services: virtual-machines-linux
-documentationcenter: ''
 author: Johnnytechn
-manager: gwallace
-tags: azure-resource-manager
-ms.assetid: 8baa30c8-d40e-41ac-93d0-74e96fe18d4c
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
 ms.topic: article
-ms.date: 04/20/2020
+ms.date: 06/05/2020
 ms.author: v-johya
 ms.subservice: disks
-ms.openlocfilehash: 6700fc4c051f0960d1886c0d696ee6e57a164bc9
-ms.sourcegitcommit: ebedf9e489f5218d4dda7468b669a601b3c02ae5
+ms.openlocfilehash: be90f08306160cd63512035c25b6682b75dcba30
+ms.sourcegitcommit: 285649db9b21169f3136729c041e4d04d323229a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82159087"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84683987"
 ---
 # <a name="optimize-your-linux-vm-on-azure"></a>在 Azure 上优化 Linux VM
 通过命令行或门户创建运行 Linux 虚拟机 (VM) 是一项很简单的操作。 本教程说明如何在 Azure 平台上设置 VM 以确保优化其性能。 本主题使用 Ubuntu Server VM，不过也可以[将自己的映像作为模板](create-upload-generic.md?toc=%2fvirtual-machines%2flinux%2ftoc.json)来创建 Linux 虚拟机。  
@@ -50,6 +43,7 @@ ms.locfileid: "82159087"
 如果使用非托管磁盘创建 VM，请务必从区域与 VM 相同的存储帐户附加磁盘，以确保高度邻近性并降低网络延迟。  每个标准存储帐户最多有 20k IOps 和 500 TB 大小的容量。  此限制大约相当于 40 个重度使用的磁盘，包括 OS 磁盘和用户创建的任何数据磁盘。 高级存储帐户没有 IOps 上限，但有 32 TB 的大小限制。 
 
 在处理 IOps 很高的工作负荷时，如果为磁盘选择了标准存储，则可能需要将磁盘拆分到多个存储帐户才能避免达到标准存储帐户 20,000 IOps 的限制。 VM 中可以混合来自不同存储帐户和不同存储帐户类型的磁盘，以实现最佳配置。
+ 
 
 ## <a name="your-vm-temporary-drive"></a>VM 临时驱动器
 默认情况下，创建 VM 时，Azure 会提供 OS 磁盘 ( **/dev/sda**) 和临时磁盘 ( **/dev/sdb**)。  额外添加的所有磁盘显示为 **/dev/sdc**、 **/dev/sdd**、 **/dev/sde**，依此类推。 临时磁盘 ( **/dev/sdb**) 上的所有数据均不具有持久性，因此当发生 VM 调整大小、重新部署或维护等特定事件，从而迫使 VM 重新启动时，数据可能会丢失。  临时磁盘的类型和大小与在部署时选择的 VM 大小相关。 所有高级大小的 VM（DS、G 和 DS_V2 系列），临时驱动器均由本地 SSD 提供支持，因此可以实现最高 48k IOps 的附加性能。 

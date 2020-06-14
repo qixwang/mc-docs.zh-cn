@@ -4,15 +4,15 @@ ms.service: sql-database
 ms.subservice: single-database
 ms.topic: include
 origin.date: 03/10/2020
-ms.date: 04/27/2020
+ms.date: 06/15/2020
 ms.author: v-jay
 ms.reviewer: vanto
-ms.openlocfilehash: 909921efe40cb29a58c1f4dd850d2acaed156133
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.openlocfilehash: 5831f58ced7915197a431bca5dd3540c6c1c8a0d
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83435444"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723588"
 ---
 在此步骤中，你将创建一个 Azure SQL 数据库服务器和一个使用 AdventureWorksLT 示例数据的数据库。 可以通过使用 Azure 门户菜单和屏幕，或通过使用 Azure CLI 或 PowerShell 脚本来创建数据库。
 
@@ -23,53 +23,53 @@ ms.locfileid: "83435444"
 若要在 Azure 门户中创建资源组、SQL 服务器和单一数据库，请执行以下操作：
 
 1. 登录[门户](https://portal.azure.cn)。
-1. 在搜索栏中，搜索并选择“SQL 数据库”  。
-1. 选择“创建”  。
+1. 在搜索栏中，搜索并选择“SQL 数据库”。
+1. 选择“创建” 。
    
    ![创建单一数据库](../media/sql-database-single-database-get-started/create-single-database.png)
    
-1. 在“创建 SQL 数据库”  窗体的“基本信息”  选项卡上的“项目详细信息”  下，选择正确的 Azure订阅  （如果尚未选择）。
-1. 在“资源组”下选择“新建”，输入“MyResourceGroup”，然后选择“确定”     。
-1. 在“数据库详细信息”  下，为“数据库名称”  输入“mySampleDatabase”  。
-1. 对于“服务器”  ，选择“新建”  ，并按如下所示在“新服务器”  窗体中填写信息：
-   - **服务器名称**：输入“mysqlserver”  和一些字符以实现唯一性。
-   - **服务器管理员登录名**：输入“azureuser”  。
-   - **密码**：输入符合要求的密码，然后在“确认密码”  字段中再次输入该密码。
-   - **位置**：单击下拉箭头并选择一个位置，例如“中国东部 2”  。
+1. 在“创建 SQL 数据库”窗体的“基本信息”选项卡上的“项目详细信息”下，选择正确的 Azure订阅（如果尚未选择）。
+1. 在“资源组”下选择“新建”，输入“MyResourceGroup”，然后选择“确定” 。
+1. 在“数据库详细信息”下，为“数据库名称”输入“mySampleDatabase”。
+1. 对于“服务器”，选择“新建”，并按如下所示在“新服务器”窗体中填写信息：
+   - **服务器名称**：输入“mysqlserver”和一些字符以实现唯一性。
+   - **服务器管理员登录名**：输入“azureuser”。
+   - **密码**：输入符合要求的密码，然后在“确认密码”字段中再次输入该密码。
+   - **位置**：单击下拉箭头并选择一个位置，例如“中国东部 2”。
    
-   选择“确定”  。
+   选择“确定” 。
    
    ![新建服务器](../media/sql-database-single-database-get-started/new-server.png)
    
-   请记录服务器管理员登录名和密码，以便可以登录服务器和数据库。 如果忘记了登录名或密码，那么在数据库创建之后，可在“SQL 服务器”页上获取登录名或重置密码  。 若要打开“SQL 服务器”页，请在数据库“概述”页上选择服务器名称   。
+   请记录服务器管理员登录名和密码，以便可以登录服务器和数据库。 如果忘记了登录名或密码，那么在数据库创建之后，可在“SQL 服务器”页上获取登录名或重置密码。 若要打开“SQL 服务器”页，请在数据库“概述”页上选择服务器名称 。
    
-1. 在“计算 + 存储”  下，若要重新配置默认值，请选择“配置数据库”  。
+1. 在“计算 + 存储”下，若要重新配置默认值，请选择“配置数据库”。
    
-   在“配置”  页上，可以选择：
-   - 将“计算层”  从“预配”  更改为“无服务器”  。
-   - 查看并更改“Vcore”和“数据最大大小”设置   。
-   - 选择“更改配置”来更改硬件代系  。
+   在“配置”页上，可以选择：
+   - 将“计算层”从“预配”更改为“无服务器”。
+   - 查看并更改“Vcore”和“数据最大大小”设置 。
+   - 选择“更改配置”来更改硬件代系。
    
-   进行更改后，请选择“应用”  。
+   进行更改后，请选择“应用”。
    
-1. 在完成时选择“下一步:  网络”。
+1. 在完成时选择“下一步:网络”。
    
    ![新建 SQL 数据库 -“基本信息”选项卡](../media/sql-database-single-database-get-started/new-sql-database-basics.png)
    
-1. 在“网络”  选项卡上的“连接方法”  下，选择“公共终结点”  。 
-1. 在  “防火墙规则”下，将“添加当前客户端 IP 地址”  设置为“是”  。
-1. 在完成时选择“下一步:  其他设置”。
+1. 在“网络”选项卡上的“连接方法”下，选择“公共终结点”。 
+1. 在“防火墙规则”下，将“添加当前客户端 IP 地址”设置为“是”。
+1. 在完成时选择“下一步:其他设置”。
    
    ![“网络”选项卡](../media/sql-database-single-database-get-started/networking.png)
    
    有关防火墙设置的详细信息，请参阅[允许 Azure 服务和资源访问此服务器](../sql-database-networkaccess-overview.md)。
    
-1. 在“其他设置”  选项卡上的“数据源”  部分中，对于“使用现有数据”  ，请选择“示例”  。
-1. 在页面底部选择“查看 + 创建”  。
+1. 在“其他设置”选项卡上的“数据源”部分中，对于“使用现有数据”，请选择“示例”。
+1. 在页面底部选择“查看 + 创建”。
    
    ![“其他设置”选项卡](../media/sql-database-single-database-get-started/additional-settings.png)
    
-1. 查看设置后，选择“创建”  。
+1. 查看设置后，选择“创建”。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -92,7 +92,7 @@ location=chinaeast2
 adminlogin=azureuser
 password=Azure1234567
 
-# Set a logical server name that is unique in the system
+# Set a logical server name that is unique to Azure DNS (<server_name>.database.chinacloudapi.cn)
 servername=server-$RANDOM
 
 # Set the ip address range that can access your database

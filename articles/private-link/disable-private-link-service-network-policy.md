@@ -1,19 +1,19 @@
 ---
-title: '对 Azure 专用链接服务源 IP 地址禁用网络策略 '
+title: 对 Azure 专用链接服务源 IP 地址禁用网络策略
 description: 了解如何对 Azure 专用链接禁用网络策略。
 services: private-link
 author: rockboyfor
 ms.service: private-link
 ms.topic: article
 origin.date: 09/16/2019
-ms.date: 01/06/2020
+ms.date: 06/15/2020
 ms.author: v-yeche
-ms.openlocfilehash: b9389027cba278cf7111f969753f3f5a7cf4bc6d
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: ac8652d76881fabfba14079cf805f454b3fa94a5
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75631660"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723326"
 ---
 # <a name="disable-network-policies-for-private-link-service-source-ip"></a>对专用链接服务源 IP 禁用网络策略
 

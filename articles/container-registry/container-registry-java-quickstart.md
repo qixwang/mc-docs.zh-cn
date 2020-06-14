@@ -4,14 +4,14 @@ description: 使用 Maven Jib 插件生成容器化 Java 应用并将其推送�
 author: rockboyfor
 ms.topic: quickstart
 origin.date: 02/26/2020
-ms.date: 05/08/2020
+ms.date: 06/08/2020
 ms.author: v-yeche
-ms.openlocfilehash: 888dbde9f23641fd50a1e926d766bd9d89c2f198
-ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
+ms.openlocfilehash: 0acb17916aaed54e0021fa087d09cd22ee53cc5e
+ms.sourcegitcommit: 8dae792aefbe44e8388f961b813e3da6564423ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "83001999"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84654895"
 ---
 <!--No exception in Prerequistes on Azure China Cloud-->
 # <a name="quickstart-build-and-push-java-container-images-to-azure-container-registry"></a>快速入门：生成 Java 容器映像并将其推送到 Azure 容器注册表
@@ -20,7 +20,7 @@ ms.locfileid: "83001999"
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅；如果没有 Azure 订阅，可激活 [MSDN 订阅者权益](https://www.azure.cn/offers/ms-mc-arz-msdn/index.html)或注册 [Azure 试用帐户](https://www.azure.cn/pricing/free-trial)。
+* Azure 订阅；如果没有 Azure 订阅，可激活 [MSDN 订阅者权益](https://www.azure.cn/offers/ms-mc-arz-msdn/index.html)或注册 [Azure 试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 * [Azure 命令行接口 (CLI)](https://docs.azure.cn/cli/overview?view=azure-cli-latest)。
 * 一个受支持的 Java 开发工具包 (JDK)。 有关在 Azure 上进行开发时可供使用的 JDK 的详细信息，请参阅 <https://docs.azure.cn/java/java-supported-jdk-runtime?view=azure-java-stable>。
 * Apache 的 [Maven](http://maven.apache.org) 生成工具（版本 3 或以上）。
@@ -96,6 +96,9 @@ ms.locfileid: "83001999"
 
 最后，请更新项目配置，使用命令提示符生成并部署映像。
 
+> [!NOTE]
+> 若要登录到刚刚创建的 Azure 容器注册表，需要运行 Docker 守护程序。 若要在计算机上安装 Docker，请阅读[官方 Docker 文档](https://docs.docker.com/install/)。
+
 1. 在 Azure CLI 中使用以下命令登录到 Azure 容器注册表。 请务必将占位符替换为自己的注册表名称。
 
     ```azurecli
@@ -107,13 +110,13 @@ ms.locfileid: "83001999"
 
 1. 导航到 Spring Boot 应用程序的完整项目目录（例如，“C:\SpringBoot\gs-spring-boot-docker\complete”或“/users/robert/SpringBoot/gs-spring-boot-docker/complete”），并使用文本编辑器打开 pom.xml 文件    。
 
-1. 使用以下 XML 更新 *pom.xml* 文件中的 `<properties>` 集合。 请将占位符替换为自己的注册表名称，并使用最新的 [jib-maven-plugin](https://github.com/GoogleContainerTools/jib/tree/master/jib-maven-plugin) 版本更新 `<jib-maven-plugin.version>` 值。
+1. 使用以下 XML 更新 *pom.xml* 文件中的 `<properties>` 集合。 将占位符替换为注册表名，并添加值为 `2.2.0` 的 `<jib-maven-plugin.version>` 属性，或添加较新版本的 [jib-maven-plugin](https://github.com/GoogleContainerTools/jib/tree/master/jib-maven-plugin)。
 
     ```xml
     <properties>
       <docker.image.prefix><your registry name>.azurecr.cn</docker.image.prefix>
-      <jib-maven-plugin.version>1.8.0</jib-maven-plugin.version>
       <java.version>1.8</java.version>
+      <jib-maven-plugin.version>2.2.0</jib-maven-plugin.version>
     </properties>
     ```
 
@@ -140,7 +143,7 @@ ms.locfileid: "83001999"
 1. 导航到 Spring Boot 应用程序的完成项目目录，然后运行以下命令以生成映像并将映像推送到注册表：
 
     ```bash
-    mvn compile jib:build
+    az acr login && mvn compile jib:build
     ```
 
 > [!NOTE]
@@ -152,7 +155,7 @@ ms.locfileid: "83001999"
 祝贺你！ 现已在 Azure 支持的 JDK 中生成了容器化 Java 应用，并已将其推送到 ACR。 接下来可通过以下方式测试映像：将其部署到 Azure 应用服务，或使用以下命令（请替换占位符）将其提取到本地：
 
 ```bash
-docker pull <your registry name>.azurecr.cn/gs-spring-boot-docker:v1
+docker pull <your registry name>.azurecr.cn/gs-spring-boot-docker
 ```
 
 ## <a name="next-steps"></a>后续步骤
@@ -179,9 +182,8 @@ docker pull <your registry name>.azurecr.cn/gs-spring-boot-docker:v1
     
 * [Docker 上的 Spring Boot 入门](https://spring.io/guides/gs/spring-boot-docker)
 * [Spring Initializr](https://start.spring.io)
-* [将 Spring Boot 应用程序部署到 Azure 应用服务](https://docs.microsoft.com/azure/java/spring-framework/deploy-spring-boot-java-app-from-container-registry-using-maven-plugin)
-
+* [将 Spring Boot 应用程序部署到 Azure 应用服务](https://docs.microsoft.com/azure/developer/java/spring-framework/deploy-spring-boot-java-app-from-container-registry-using-maven-plugin)
+                                                                
     <!--Not Available on * [Using a custom Docker image for Azure Web App on Linux](/app-service-web/app-service-linux-using-custom-docker-image)-->
 
-<!-- Update_Description: new article about container registry java quickstart -->
-<!--NEW.date: 03/09/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

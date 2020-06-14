@@ -3,14 +3,14 @@ title: Durable Functions 中的 HTTP 功能 - Azure Functions
 description: 了解 Azure Functions 的 Durable Functions 扩展中的集成式 HTTP 功能。
 author: cgillum
 ms.topic: conceptual
-ms.date: 03/31/2020
+ms.date: 06/09/2020
 ms.author: v-junlch
-ms.openlocfilehash: f9c779f0d240a52e895cd52063ed9ebb0f3cf4e1
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 98678ea2b6a2d9b8233e94c5f014f4e1e35cf090
+ms.sourcegitcommit: f1a76ee3242698123a3d77f44c860db040b48f70
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80581810"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84563730"
 ---
 # <a name="http-features"></a>HTTP 功能
 
@@ -42,7 +42,8 @@ Durable Functions 扩展自动将一组 HTTP API 添加到 Azure Functions 宿�
 [业务流程客户端绑定](durable-functions-bindings.md#orchestration-client)公开可以生成便捷 HTTP 响应有效负载的 API。 例如，它可以创建一个响应，其中包含特定业务流程实例的管理 API 的链接。 以下 HTTP 触发器函数示例演示如何对新的业务流程实例使用此 API：
 
 # <a name="c"></a>[C#](#tab/csharp)
-```C#
+
+```csharp
 // Copyright (c) .NET Foundation. All rights reserved.
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
@@ -80,7 +81,7 @@ namespace VSSample
 
 **index.js**
 
-```JavaScript
+```javascript
 const df = require("durable-functions");
 
 module.exports = async function (context, req) {
@@ -95,8 +96,7 @@ module.exports = async function (context, req) {
 
 **function.json**
 
-```JavaScript
-
+```json
 {
   "bindings": [
     {
@@ -120,6 +120,8 @@ module.exports = async function (context, req) {
   ]
 }
 ```
+
+---
 
 可以通过任何 HTTP 客户端启动使用上面所示 HTTP 触发器函数的业务流程协调程序函数。 以下 cURL 命令启动名为 `DoWork` 的业务流程协调程序函数：
 
@@ -153,7 +155,7 @@ Retry-After: 10
 
 ### <a name="async-operation-tracking"></a>异步操作跟踪
 
-前面提到的 HTTP 响应旨在通过 Durable Functions 实现长时间运行的 HTTP 异步 API。 此模式有时称为“轮询使用者模式”。  客户端/服务器流工作方式如下：
+前面提到的 HTTP 响应旨在通过 Durable Functions 实现长时间运行的 HTTP 异步 API。 此模式有时称为“轮询使用者模式”。 客户端/服务器流工作方式如下：
 
 1. 客户端发出 HTTP 请求，以启动长时间运行的进程，例如业务流程协调程序函数。
 1. 目标 HTTP 触发器返回 HTTP 202 响应，其中包含值为“statusQueryGetUri”的 Location 标头。
@@ -205,7 +207,7 @@ const df = require("durable-functions");
 
 module.exports = df.orchestrator(function*(context){
     const url = context.df.getInput();
-    const response = context.df.callHttp("GET", url)
+    const response = yield context.df.callHttp("GET", url)
 
     if (response.statusCode >= 400) {
         // handling of error codes goes here
@@ -296,6 +298,7 @@ module.exports = df.orchestrator(function*(context) {
 * 永远不会以持久性业务流程状态存储令牌。
 * 无需编写任何代码即可管理令牌获取。
 
+可以在[预编译的 C# RestartVMs 示例](https://github.com/Azure/azure-functions-durable-extension/blob/dev/samples/precompiled/RestartVMs.cs)中找到更完整的示例。
 
 托管标识并不局限于 Azure 资源管理。 可以使用托管标识来访问接受 Azure AD 持有者令牌的任何 API，包括 Microsoft 提供的 Azure 服务，以及合作伙伴提供的 Web 应用。 合作伙伴的 Web 应用甚至可以是其他函数应用。 有关支持使用 Azure AD 进行身份验证的 Microsoft Azure 服务的列表，请参阅[支持 Azure AD 身份验证的 Azure 服务](../../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)。
 
@@ -354,4 +357,3 @@ public class MyDurableHttpMessageHandlerFactory : IDurableHttpMessageHandlerFact
 > [!div class="nextstepaction"]
 > [了解持久实体](durable-functions-entities.md)
 
-<!-- Update_Description: wording update -->

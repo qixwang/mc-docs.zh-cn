@@ -6,6 +6,8 @@
       href: sql-data-warehouse-overview-what-is.md
     - name: Azure Synapse Analytics 体系结构
       href: massively-parallel-processing-mpp-architecture.md
+    - name: 数据仓库单位数
+      href: what-is-a-data-warehouse-unit-dwu-cdwu.md
     - name: 备忘单
       href: cheat-sheet.md
     - name: 最佳实践
@@ -31,6 +33,8 @@
       items:
         - name: COPY 语句
           href: quickstart-bulk-load-copy-tsql.md
+        - name: COPY 语句示例
+          href: quickstart-bulk-load-copy-tsql-examples.md
     - name: 缩放
       items:
         - name: 门户
@@ -43,10 +47,14 @@
       items:
         - name: 创建工作负荷分类器
           items:
+            - name: 门户
+              href: quickstart-create-a-workload-classifier-portal.md
             - name: T-SQL
               href: quickstart-create-a-workload-classifier-tsql.md
         - name: 创建工作负荷隔离
           items:
+            - name: 门户
+              href: quickstart-configure-workload-isolation-portal.md
             - name: T-SQL
               href: quickstart-configure-workload-isolation-tsql.md
     - name: 暂停和恢复

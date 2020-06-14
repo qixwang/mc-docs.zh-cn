@@ -3,20 +3,20 @@ title: 用于创建第一个应用的 C# 教程
 titleSuffix: Azure Cognitive Search
 description: 了解如何逐步构建第一个 C# 搜索应用。 本教程提供了 GitHub 上工作应用的链接以及从头开始构建应用的完整过程。 了解有关 Azure 认知搜索的基本组件。
 manager: nitinme
-author: tchristiani
+author: HeidiSteen
 ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: tutorial
 origin.date: 02/10/2020
-ms.date: 03/02/2020
-ms.openlocfilehash: 520181742fb7bd8f00b5bbbc13488c844ebb08eb
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 06/09/2020
+ms.openlocfilehash: 528a25453f80967bc896b552d89ffce2deeebe07
+ms.sourcegitcommit: c4fc01b7451951ef7a9616fca494e1baf29db714
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78850544"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84564274"
 ---
-# <a name="c-tutorial-create-your-first-app---azure-cognitive-search"></a>C# 教程：创建第一个应用 - Azure 认知搜索
+# <a name="tutorial-create-your-first-search-app-using-the-net-sdk"></a>教程：使用 .NET SDK 创建你的第一个搜索应用
 
 了解如何使用 Azure 认知搜索来创建查询和呈现索引搜索结果的 Web 界面。 本教程从现有的托管索引开始，以便你可以专注于构建搜索页。 索引包含虚构的酒店数据。 有了基本页面后，可以在后续课程中对其进行增强，以添加分页、facet 和提前键入体验。
 

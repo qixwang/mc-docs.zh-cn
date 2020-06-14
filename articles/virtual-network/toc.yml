@@ -31,8 +31,9 @@
       href: powershell-samples.md
     - name: Resource Manager 模板
       href: template-samples.md
-    - name: Azure Policy 模板
-      href: policy-samples.md
+    - name: Azure Policy 内置策略定义
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: 概念
   items:
     - name: 业务连续性
@@ -55,7 +56,11 @@
           href: container-networking-overview.md
         - name: 对等互连
           href: virtual-network-peering-overview.md
-        - name: Azure 服务的虚拟网络
+    - name: Azure 服务集成
+      items:
+        - name: 服务终结点
+          href: virtual-network-service-endpoints-overview.md
+        - name: 部署专用服务
           href: virtual-network-for-azure-services.md
     - name: IP 服务
       items:
@@ -75,8 +80,8 @@
           href: application-security-groups.md
         - name: 服务标记
           href: service-tags-overview.md
-        - name: 服务终结点
-          href: virtual-network-service-endpoints-overview.md
+        - name: Kubernetes 网络策略
+          href: kubernetes-network-policies.md
     - name: 子网
       items:
         - name: 子网扩展
@@ -189,16 +194,6 @@
               href: virtual-network-network-interface-addresses.md
     - name: 安全性
       items:
-        - name: 使用网络安全组限制访问权限
-          items:
-            - name: Azure 门户
-              href: tutorial-restrict-network-access-to-resources.md
-            - name: Azure PowerShell
-              href: tutorial-restrict-network-access-to-resources-powershell.md
-            - name: Azure CLI
-              href: tutorial-restrict-network-access-to-resources-cli.md
-            - name: 管理网络安全组
-              href: manage-network-security-group.md
         - name: 筛选网络流量
           items:
             - name: Azure 门户
@@ -217,6 +212,8 @@
                   href: tutorial-restrict-network-access-to-resources-powershell.md
                 - name: Azure CLI
                   href: tutorial-restrict-network-access-to-resources-cli.md
+        - name: 管理网络安全组
+          href: manage-network-security-group.md
         - name: 安全方案
           items:
             - name: 使用虚拟设备保护网络

@@ -1,7 +1,7 @@
 ---
 title: 在多个 IP 配置上进行负载均衡 - Azure CLI
-titlesuffix: Azure Load Balancer
-description: 在主要和辅助 IP 配置间进行负载均衡。
+titleSuffix: Azure Load Balancer
+description: 本文介绍如何使用 Azure CLI 对主要和辅助 IP 配置进行负载均衡。
 services: load-balancer
 documentationcenter: na
 author: WenJason
@@ -12,19 +12,19 @@ ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 09/25/2017
-ms.date: 03/04/2019
+ms.date: 06/08/2020
 ms.author: v-jay
-ms.openlocfilehash: dba8288ed2d17f0c99ff781cd1a50334f2a7fb8b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 4c74841e3505c13447d11b81f7b682a179477be0
+ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "63858185"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84275625"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-using-powershell"></a>使用 PowerShell 在多个 IP 配置上进行负载均衡
 
 > [!div class="op_single_selector"]
-> * [门户](load-balancer-multiple-ip.md)
+> * [Portal](load-balancer-multiple-ip.md)
 > * [CLI](load-balancer-multiple-ip-cli.md)
 > * [PowerShell](load-balancer-multiple-ip-powershell.md)
 
@@ -39,7 +39,7 @@ ms.locfileid: "63858185"
 
 按照以下步骤来实现本文所概述的场景：
 
-1. 安装 Azure PowerShell 中的说明进行操作。 有关安装最新版 Azure PowerShell、选择订阅和登录到帐户的信息，请参阅[如何安装和配置 Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)。
+1. 安装 Azure PowerShell 中的说明进行操作。 有关安装最新版本的 Azure PowerShell、选择订阅和登录帐户的信息，请参阅 [如何安装和配置 Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) 。
 2. 使用以下设置创建资源组：
 
     ```powershell
@@ -123,7 +123,7 @@ ms.locfileid: "63858185"
     Add-AzLoadBalancerRuleConfig -Name HTTP -LoadBalancer $mylb -FrontendIpConfiguration $frontendIP2 -BackendAddressPool $beaddresspool2 -Probe $healthProbe -Protocol Tcp -FrontendPort 80 -BackendPort 80 | Set-AzLoadBalancer
     ```
 
-12. 下面的命令获取 NIC，然后将每个辅助 NIC 的两个 IP 配置添加到负载均衡器的后端地址池：
+12. 下面的命令获取 NIC，并将每个辅助 NIC 的两个 IP 配置添加到负载均衡器的后端地址池：
 
     ```powershell
     $nic1 = Get-AzNetworkInterface -Name "VM1-NIC2" -ResourceGroupName "MyResourcegroup";
@@ -144,6 +144,4 @@ ms.locfileid: "63858185"
 
 ## <a name="next-steps"></a>后续步骤
 - 若要深入了解如何在 Azure 中结合使用负载均衡服务，请参阅[在 Azure 中使用负载均衡服务](../traffic-manager/traffic-manager-load-balancing-azure.md)。
-<!-- Not Avaible [Log analytics for Azure Load Balancer](../load-balancer/load-balancer-monitor-log.md) -->
-
-<!--Update_Description: update meta properties, wording update -->
+- 若要了解如何在 Azure 中使用不同类型的日志对负载均衡器进行管理和故障排除，请参阅[用于 Azure 负载均衡器的 Azure Monitor 日志](../load-balancer/load-balancer-monitor-log.md)。

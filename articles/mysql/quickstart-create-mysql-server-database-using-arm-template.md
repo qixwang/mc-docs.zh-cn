@@ -9,12 +9,12 @@ ms.custom: subject-armqs
 ms.author: v-jay
 origin.date: 04/27/2020
 ms.date: 06/01/2020
-ms.openlocfilehash: 904eb976e6037e81774aeca2de3ee9d35bb7d373
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+ms.openlocfilehash: c9587d47ea6f54a3ed1565ea07bcec0e6bb7ea5c
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84200060"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723279"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-server-by-using-the-arm-template"></a>快速入门：使用 ARM 模板创建 Azure Database for MySQL 服务器
 
@@ -338,7 +338,7 @@ Azure Database for MySQL 是一种托管服务，可用于在云中运行、管�
 ```azurepowershell
 $serverName = Read-Host -Prompt "Enter a name for the new Azure Database for MySQL server"
 $resourceGroupName = Read-Host -Prompt "Enter a name for the new resource group where the server will exist"
-$location = Read-Host -Prompt "Enter an Azure region (for example, centralus) for the resource group"
+$location = Read-Host -Prompt "Enter an Azure region (for example, chinaeast2) for the resource group"
 $adminUser = Read-Host -Prompt "Enter the Azure Database for MySQL server's administrator account name"
 $adminPassword = Read-Host -Prompt "Enter the administrator password" -AsSecureString
 
@@ -361,7 +361,7 @@ echo "Enter a name for the new Azure Database for MySQL server:" &&
 read serverName &&
 echo "Enter a name for the new resource group where the server will exist:" &&
 read resourceGroupName &&
-echo "Enter an Azure region (for example, centralus) for the resource group:" &&
+echo "Enter an Azure region (for example, chinaeast2) for the resource group:" &&
 read location &&
 echo "Enter the Azure Database for MySQL server's administrator account name:" &&
 read adminUser &&

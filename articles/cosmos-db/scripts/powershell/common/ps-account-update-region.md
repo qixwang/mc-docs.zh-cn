@@ -4,14 +4,15 @@ description: Azure PowerShell 脚本示例 - 更新 Azure Cosmos 帐户的区域
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 05/06/2020
+origin.date: 05/01/2020
+ms.date: 06/15/2020
 ms.author: v-yeche
-ms.openlocfilehash: d93070a5872c9510b4de19adc48d8072318b4db4
-ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
+ms.openlocfilehash: 8b28a84ef44f6d3eabdbfb10be69e6f5d4001736
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "83002231"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723486"
 ---
 # <a name="update-an-azure-cosmos-accounts-regions-using-powershell"></a>使用 PowerShell 更新 Azure Cosmos 帐户的区域
 
@@ -38,15 +39,14 @@ ms.locfileid: "83002231"
 # occurring. Check the account or Resource Group's activity log for status.
 # --------------------------------------------------
 # Variables - ***** SUBSTITUTE YOUR VALUES *****
-$resourceGroupName = "cosmos" # Resource Group must already exist
+$resourceGroupName = "myResourceGroup" # Resource Group must already exist
 $accountName = "myaccount" # Must be all lower case
 
 # Regions ordered by failover priority, with each indicating whether AZ-enabled
 # Region AZ status can be checked at https://azure.microsoft.com/global-infrastructure/regions/
 $locations = @(
-    @{name = "China North"; azEnabled = $false};
     @{name = "China East"; azEnabled = $true};
-    @{name = "China East 2"; azEnabled = $false};
+    @{name = "China North"; azEnabled = $false};
 )
 # --------------------------------------------------
 
@@ -62,6 +62,7 @@ ForEach ($location in $locations) {
 
 Write-Host "Update Cosmos DB account region(s)"
 Update-AzCosmosDBAccountRegion -InputObject $account -LocationObject $locationObjects
+
 ```
 
 ## <a name="clean-up-deployment"></a>清理部署
@@ -78,8 +79,10 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 
 | 命令 | 注释 |
 |---|---|
-|**Azure 资源**| |
-| [Set-AzResource](https://docs.microsoft.com/powershell/module/az.resources/set-azresource) | 更新资源。 |
+|**Azure Cosmos DB**| |
+| [Get-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbaccount) | 列出 Cosmos DB 帐户或获取指定的 Cosmos DB 帐户。 |
+| [New-AzCosmosDBLocationObject](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdblocationobject) | 创建一个 PSLocation 类型对象，用作 Update-AzCosmosDBAccountRegion 的参数。 |
+| [Update-AzCosmosDBAccountRegion](https://docs.microsoft.com/powershell/module/az.cosmosdb/update-azcosmosdbaccountregion) | 更新 Cosmos DB 帐户的区域。 |
 |**Azure 资源组**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | 删除资源组，包括所有嵌套的资源。 |
 |||
@@ -90,6 +93,4 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 
 可以在 [Azure Cosmos DB PowerShell 脚本](../../../powershell-samples.md)中找到其他 Azure Cosmos DB PowerShell 脚本示例。
 
-
-<!-- Update_Description: new article about ps account update region -->
-<!--NEW.date: 05/06/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

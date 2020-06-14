@@ -7,15 +7,15 @@ ms.service: databox
 ms.subservice: heavy
 ms.topic: tutorial
 origin.date: 08/29/2019
-ms.date: 12/09/2019
+ms.date: 06/08/2020
 ms.author: v-jay
 ms.localizationpriority: high
-ms.openlocfilehash: 2c06de62c6e470900f552d0ccf66c6760f703a98
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 7f507f00dc1c5c45a5a90daf5bf8495511b32d4d
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79293371"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723583"
 ---
 ::: zone target = "docs"
 
@@ -25,7 +25,7 @@ ms.locfileid: "79293371"
 
 ::: zone target = "chromeless"
 
-# <a name="copy-data-to-azure-data-box-heavy"></a>将数据复制到 Azure Data Box Heavy
+## <a name="copy-data-to-azure-data-box-heavy"></a>将数据复制到 Azure Data Box Heavy
 
 ::: zone-end
 

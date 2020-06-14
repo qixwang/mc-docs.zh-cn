@@ -3,14 +3,14 @@ title: 通过模板实现快速任务运行
 description: 将 ACR 任务运行排入队列，以使用 Azure 资源管理器模板生成映像
 ms.topic: article
 origin.date: 04/22/2020
-ms.date: 06/01/2020
+ms.date: 06/08/2020
 ms.author: v-yeche
-ms.openlocfilehash: 2ba38b63e94d2d81ff6ca7cd69ac1127abb01b60
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+ms.openlocfilehash: ea9d910a8fc853420170d724e47178c2f77efbc0
+ms.sourcegitcommit: 8dae792aefbe44e8388f961b813e3da6564423ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84200115"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84654872"
 ---
 <!--Verified successfully-->
 # <a name="run-acr-tasks-using-resource-manager-templates"></a>使用资源管理器模板运行 ACR 任务
@@ -133,12 +133,12 @@ az acr task logs \
 1. 创建第二个容器注册表（例如 mybaseregistry），用于存储基础映像。
 1. 从 Docker Hub 中拉取 `node:9-alpine` 映像，将其标记为基础映像，然后推送到基础注册表：
 
-  ```azurecli
-  docker pull node:9-alpine
-  docker tag node:9-alpine mybaseregistry.azurecr.cn/baseimages/node:9-alpine
-  az acr login -n mybaseregistry
-  docker push mybaseregistry.azurecr.cn/baseimages/node:9-alpine
-  ```
+    ```azurecli
+    docker pull node:9-alpine
+    docker tag node:9-alpine mybaseregistry.azurecr.cn/baseimages/node:9-alpine
+    az acr login -n mybaseregistry
+    docker push mybaseregistry.azurecr.cn/baseimages/node:9-alpine
+    ```
 
 ### <a name="create-new-dockerfile"></a>创建新的 Dockerfile
 
@@ -153,7 +153,7 @@ az acr task logs \
     EXPOSE 80
     CMD ["node", "/src/server.js"]
     ```
- 1. 选择“提交新文件”。
+1. 选择“提交新文件”。
 
 [!INCLUDE [container-registry-tasks-user-assigned-id](../../includes/container-registry-tasks-user-assigned-id.md)]
 

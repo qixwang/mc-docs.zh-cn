@@ -13,12 +13,12 @@ ms.topic: article
 origin.date: 08/19/2019
 ms.date: 12/09/2019
 ms.author: v-jay
-ms.openlocfilehash: 276e1a89eed743110a231d6835928a7d3b74d5d9
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 638ff657f77d6e584c5d177681585acb6b738614
+ms.sourcegitcommit: 1f890a4085e184cc678485d05f08dd6de8dc973f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77494464"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84438944"
 ---
 # <a name="transforms-and-jobs-in-media-services"></a>媒体服务中的转换和作业
 
@@ -51,11 +51,11 @@ ms.locfileid: "77494464"
 **转换**可帮助你一次性创建脚本（步骤 1），然后使用该脚本提交作业（步骤 2）。
 
 > [!NOTE]
-> 属于日期/时间类型的转换  和作业  的属性始终采用 UTC 格式。
+> 属于日期/时间类型的转换和作业的属性始终采用 UTC 格式。
 
 ## <a name="transforms"></a>转换
 
-**转换**可用来配置对视频进行编码或分析的常见任务。 每个**转换**描述了用于处理视频或音频文件的脚本或任务工作流。 单个转换可以应用多个规则。 例如，转换可以指定以给定的比特率将每个视频编码成 MP4 文件，并从该视频的第一帧生成缩略图。 针对要包含在转换中的每个规则，请添加一个 TransformOutput 条目。 使用预设来告知转换要如何处理输入媒体文件。
+**转换**可用来配置对视频进行编码的常见任务。 每个**转换**描述了用于处理视频或音频文件的脚本或任务工作流。 单个转换可以应用多个规则。 例如，转换可以指定以给定的比特率将每个视频编码成 MP4 文件，并从该视频的第一帧生成缩略图。 针对要包含在转换中的每个规则，请添加一个 TransformOutput 条目。 使用预设来告知转换要如何处理输入媒体文件。
 
 ### <a name="viewing-schema"></a>查看架构
 
@@ -67,7 +67,7 @@ ms.locfileid: "77494464"
 
 ### <a name="updating-transforms"></a>更新转换
 
-如果需要更新[转换](https://docs.microsoft.com/rest/api/media/transforms)，请使用“更新”操作。  此操作旨在对底层 TransformOutputs 的说明或优先级进行更改。 建议在所有正在进行的作业都完成后执行这类更新。 如果你想要重写脚本，则需要创建新的转换。
+如果需要更新[转换](https://docs.microsoft.com/rest/api/media/transforms)，请使用“更新”操作。 此操作旨在对底层 TransformOutputs 的说明或优先级进行更改。 建议在所有正在进行的作业都完成后执行这类更新。 如果你想要重写脚本，则需要创建新的转换。
 
 ### <a name="transform-object-diagram"></a>转换对象关系图
 
@@ -79,7 +79,7 @@ ms.locfileid: "77494464"
 
 ## <a name="jobs"></a>作业
 
-**作业**是针对媒体服务的实际请求，目的是将**转换**应用到给定的输入视频或音频内容。 创建转换后，可以使用媒体服务 API 或任何已发布的 SDK 来提交作业。 Job 指定输入视频位置和输出位置等信息  。 可以使用以下各项指定输入视频的位置：HTTPS URL、SAS URL 或[资产](https://docs.microsoft.com/rest/api/media/assets)。  
+**作业**是针对媒体服务的实际请求，目的是将**转换**应用到给定的输入视频或音频内容。 创建转换后，可以使用媒体服务 API 或任何已发布的 SDK 来提交作业。 Job 指定输入视频位置和输出位置等信息。 可以使用以下各项指定输入视频的位置：HTTPS URL、SAS URL 或[资产](https://docs.microsoft.com/rest/api/media/assets)。  
 
 ### <a name="job-input-from-https"></a>来自 HTTPS 的作业输入
 
@@ -91,7 +91,7 @@ ms.locfileid: "77494464"
 
 ### <a name="updating-jobs"></a>更新作业
 
-对[作业](https://docs.microsoft.com/rest/api/media/jobs)实体进行的更新操作可以用于在作业提交之后修改说明  或优先级  。 仅当作业仍处于排队状态时，对优先级  属性所做的更改才有效。 如果作业已开始处理或已完成，则更改优先级不起作用。
+对[作业](https://docs.microsoft.com/rest/api/media/jobs)实体进行的更新操作可以用于在作业提交之后修改说明或优先级。 仅当作业仍处于排队状态时，对优先级属性所做的更改才有效。 如果作业已开始处理或已完成，则更改优先级不起作用。
 
 ### <a name="job-object-diagram"></a>作业对象关系图
 
@@ -102,8 +102,6 @@ ms.locfileid: "77494464"
 <a href="./media/api-diagrams/job-large.png" target="_blank"><img src="./media/api-diagrams/job-small.png"></a>
 
 ## <a name="configure-media-reserved-units"></a>配置媒体预留单位
-
-对于由媒体服务 v3 或视频索引器触发的音频分析和视频分析作业，强烈建议为你的帐户预配 10 个 S3 媒体预留单位 (MRU)。 如果需要超过 10 S3 MRU 的数量，请使用 [Azure 门户](https://portal.azure.cn/)打开一个支持票证。
 
 有关详细信息，请参阅[使用 CLI 调整媒体处理的规模](media-reserved-units-cli-how-to.md)。
 
@@ -119,4 +117,3 @@ ms.locfileid: "77494464"
 
     - [教程：基于 URL 对远程文件进行编码并流式传输视频](stream-files-tutorial-with-rest.md)
     - [教程：上传、编码和流式传输视频](stream-files-tutorial-with-api.md)
-    - [教程：使用媒体服务 v3 分析视频](analyze-videos-tutorial-with-api.md)

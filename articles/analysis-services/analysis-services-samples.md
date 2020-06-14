@@ -5,15 +5,15 @@ author: rockboyfor
 ms.service: azure-analysis-services
 ms.topic: conceptual
 origin.date: 10/30/2019
-ms.date: 03/23/2020
+ms.date: 06/08/2020
 ms.author: v-yeche
 ms.reviewer: minewiskan
-ms.openlocfilehash: 78390658157f80c481a894418eeb0bad642df563
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 59f108d1dc9d0334eb185b2b00b60fdb74616ef4
+ms.sourcegitcommit: c4fc01b7451951ef7a9616fca494e1baf29db714
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79543745"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84564310"
 ---
 # <a name="azure-analysis-services-samples"></a>Azure Analysis Services 示例
 
@@ -35,7 +35,7 @@ Azure Synapse Analytics（SQL 数据仓库）提供了一个示例 AdventureWork
 
 GitHub 上的这些示例数据库可用于创建和测试自己的模型。 
 
-[Adventure Works 示例数据库](https://github.com/Microsoft/sql-server-samples/releases/tag/adventureworks2014)
+[Adventure Works 示例数据库](https://github.com/Microsoft/sql-server-samples/releases/tag/adventureworks)
 
 [Wide World Importers 示例数据库](https://github.com/Microsoft/sql-server-samples/releases/tag/wide-world-importers-v1.0)
 

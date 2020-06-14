@@ -7,13 +7,13 @@ ms.reviewer: gabilehner
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 11/07/2019
-ms.date: 05/09/2020
-ms.openlocfilehash: 4e246de7fd407ac2ebb6ce6c53e2c4a216834a6a
-ms.sourcegitcommit: bfbd6694da33f703481386f2a3f16850c4e94bfa
+ms.date: 06/09/2020
+ms.openlocfilehash: e62bebd3af370a108898a8e58789f540fa793e33
+ms.sourcegitcommit: 73697fa9c19a40d235df033400c74741e7d0f3f4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83417624"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84574898"
 ---
 # <a name="use-follower-database-to-attach-databases-in-azure-data-explorer"></a>在 Azure 数据资源管理器中使用后继数据库来附加数据库
 
@@ -30,8 +30,8 @@ ms.locfileid: "83417624"
 ## <a name="prerequisites"></a>先决条件
 
 1. 如果没有 Azure 订阅，请在开始前[创建一个试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。
-1. 为先导和后继数据库[创建群集和数据库](/data-explorer/create-cluster-database-portal)。
-1. 使用[引入概述](/data-explorer/ingest-data-overview)中所述的多种方法之一将[数据引入](/data-explorer/ingest-sample-data)先导数据库。
+1. 为先导和后继数据库[创建群集和数据库](create-cluster-database-portal.md)。
+1. 使用[引入概述](/data-explorer/ingest-data-overview)中所述的多种方法之一将[数据引入](ingest-sample-data.md)先导数据库。
 
 ## <a name="attach-a-database"></a>附加数据库
 
@@ -371,7 +371,7 @@ poller = kusto_management_client.clusters.detach_follower_databases(resource_gro
 
 ### <a name="manage-permissions"></a>管理权限
 
-所有只读数据库类型的权限管理方式都是相同的。 请参阅[在 Azure 门户中管理权限](/data-explorer/manage-database-permissions#manage-permissions-in-the-azure-portal)。
+所有只读数据库类型的权限管理方式都是相同的。 请参阅[在 Azure 门户中管理权限](manage-database-permissions.md#manage-permissions-in-the-azure-portal)。
 
 ### <a name="configure-caching-policy"></a>配置缓存策略
 
@@ -379,9 +379,10 @@ poller = kusto_management_client.clusters.detach_follower_databases(resource_gro
 
 ## <a name="limitations"></a>限制
 
-<!-- * Data encryption using [customer managed keys](/data-explorer/security#customer-managed-keys-with-azure-key-vault) is not supported on both leader and follower clusters. -->
+<!-- * Data encryption using [customer managed keys](security.md#customer-managed-keys-with-azure-key-vault) is not supported on both leader and follower clusters.  -->
+
 * 后继和先导群集必须位于同一区域。
-* [流式引入](/data-explorer/ingest-data-streaming)不能用于先导数据库。
+* [流式引入](ingest-data-streaming.md)不能用于先导数据库。
 * 在分离已附加到其他群集的数据库之前，无法删除该数据库。
 * 在分离包含已附加到其他群集的数据库的群集之前，无法删除该群集。
 * 无法停止附加了后继数据库或先导数据库的群集。 

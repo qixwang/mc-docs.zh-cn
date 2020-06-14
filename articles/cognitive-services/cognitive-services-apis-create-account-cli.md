@@ -10,12 +10,12 @@ ms.topic: conceptual
 origin.date: 10/04/2019
 ms.date: 03/16/2020
 ms.author: v-tawe
-ms.openlocfilehash: 061c2d839811cd040465c0cf53b58d3ad7c3adb6
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: beb5aa75beae63f66590de3d1d2d7bf814e43811
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80342380"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723302"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>使用 Azure 命令行接口 (CLI) 创建认知服务资源
 
@@ -26,7 +26,7 @@ ms.locfileid: "80342380"
 
 [!INCLUDE [cognitive-services-subscription-types](../../includes/cognitive-services-subscription-types.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 有效的 Azure 订阅 - [创建 1 元人民币试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。
 * [Azure 命令行接口 (CLI)](/cli/install-azure-cli?view=azure-cli-latest)
@@ -40,7 +40,7 @@ az cloud set -n AzureChinaCloud
 az login
 ```
 
-也可以使用绿色的“尝试”按钮在浏览器中运行这些命令。 
+也可以使用绿色的“尝试”按钮在浏览器中运行这些命令。
  
 ## <a name="create-a-new-azure-cognitive-services-resource-group"></a>创建新的 Azure 认知服务资源组
 
@@ -187,7 +187,7 @@ az group delete --name cognitive-services-resource-group
 
 ## <a name="see-also"></a>另请参阅
 
-<!-- * [Authenticate requests to Azure Cognitive Services](authentication.md) -->
+* [对 Azure 认知服务的请求进行身份验证](authentication.md)
 
 * [什么是 Azure 认知服务？](Welcome.md)
 * [自然语言支持](language-support.md)

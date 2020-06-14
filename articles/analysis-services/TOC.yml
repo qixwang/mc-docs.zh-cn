@@ -31,7 +31,7 @@
       href: analysis-services-service-principal.md
     - name: 客户端库
       href: analysis-services-data-providers.md
-    - name: 兼容级别
+    - name: 兼容性级别
       href: 'https://docs.microsoft.com/analysis-services/tabular-models/compatibility-level-for-tabular-models-in-analysis-services'
     - name: 连接到本地数据源
       href: analysis-services-gateway.md
@@ -43,6 +43,8 @@
       href: analysis-services-long-operations.md
     - name: 支持的数据源
       href: analysis-services-datasource.md
+    - name: 网络连接常见问题解答
+      href: analysis-services-network-faq.md
 - name: 操作说明
   items:
     - name: 服务器

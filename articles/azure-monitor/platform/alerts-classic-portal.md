@@ -1,18 +1,17 @@
 ---
-title: 使用 Azure Monitor 创建、查看和管理经典指标警报
+title: 使用 Azure Monitor 创建和管理经典指标警报
 description: 了解如何使用 Azure 门户、CLI 或 Powershell 来创建、查看和管理经典指标警报规则。
-author: lingliw
-ms.service: azure-monitor
+author: Johnnytechn
+ms.author: v-johya
 ms.topic: conceptual
 origin.date: 09/18/2018
-ms.date: 04/12/2019
-ms.author: v-lingwu
-ms.openlocfilehash: a52c8b2a3b8a4e47a035e4694b13212dcf1d74d5
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/28/2020
+ms.openlocfilehash: 328e070f62338585e0179fbe0406c5f5d1b08e42
+ms.sourcegitcommit: 5ae04a3b8e025986a3a257a6ed251b575dbf60a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79452562"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84440455"
 ---
 # <a name="create-view-and-manage-classic-metric-alerts-using-azure-monitor"></a>使用 Azure Monitor 创建、查看和管理经典指标警报
 
@@ -22,29 +21,29 @@ Azure Monitor 中的经典指标警报提供了一种在指标超出阈值时获
 
 1. 在[门户](https://portal.azure.cn/)中，找到要监视的资源，然后选择它。
 
-2. 在“监视”部分中，选择“警报(经典)”   。 对于不同的资源，文本和图标可能会略有不同。 如果在此处未找到“警报(经典)”，则它可能位于“警报”或“警报规则”中    。
+2. 在“监视”部分中，选择“警报(经典)” 。 对于不同的资源，文本和图标可能会略有不同。 如果在此处未找到“警报(经典)”，则它可能位于“警报”或“警报规则”中  。
 
-    ![监视](media/alerts-classic-portal/AlertRulesButton.png)
+    ![监视](./media/alerts-classic-portal/AlertRulesButton.png)
 
-3. 选择“添加指标警报(经典)”  命令，并填写字段。
+3. 选择“添加指标警报(经典)”命令，并填写字段。
 
-    ![添加警报](media/alerts-classic-portal/AddAlertOnlyParamsPage.png)
+    ![添加警报](./media/alerts-classic-portal/AddAlertOnlyParamsPage.png)
 
-4. **命名**警报规则。 然后选择也在通知电子邮件中显示的“说明”  。
+4. **命名**警报规则。 然后选择也在通知电子邮件中显示的“说明”。
 
-5. 选择要监视的指标  。 然后为该指标选择“条件”和“阈值”值   。 还选择触发警报前指标规则必须满足的时间段。  例如，如果使用时间段“过去 5 分钟”，且警报针对 CPU 高于 80% 的情况，则 CPU 持续高于 80% 达到 5 分钟时将触发警报。 第一次触发后，CPU 5 分钟内持续低于 80% 时会再次触发警报。 CPU 指标度量每分钟进行一次。
+5. 选择要监视的指标。 然后为该指标选择“条件”和“阈值”值 。 还选择触发警报前指标规则必须满足的时间段。 例如，如果使用时间段“过去 5 分钟”，且警报针对 CPU 高于 80% 的情况，则 CPU 持续高于 80% 达到 5 分钟时将触发警报。 第一次触发后，CPU 5 分钟内持续低于 80% 时会再次触发警报。 CPU 指标度量每分钟进行一次。
 
-6. 如果希望在触发警报时管理员和共同管理员收到电子邮件通知，则选择“向所有者发送电子邮件...”  。
+6. 如果希望在触发警报时管理员和共同管理员收到电子邮件通知，则选择“向所有者发送电子邮件...”。
 
 7. 如果有任何问题，请联系[支持团队](https://www.azure.cn/zh-cn/support/contact/)
 
-8. 如果希望在触发警报时调用有效的 URI，请将其放入“Webhook”  字段中。
+8. 如果希望在触发警报时调用有效的 URI，请将其放入“Webhook”字段中。
 
 9. 如果使用 Azure 自动化时，则可选择在触发警报时要运行的 Runbook。
 
-10. 选择“确定”  以创建警报。
+10. 选择“确定”以创建警报。
 
-几分钟后，警报将处于活动状态，并按前面所述进行触发。
+在几分钟后，警报将如前所述激活并触发。
 
 创建警报后，可以选择它并执行以下任务之一：
 
@@ -55,6 +54,8 @@ Azure Monitor 中的经典指标警报提供了一种在指标超出阈值时获
 ## <a name="with-azure-cli"></a>使用 Azure CLI
 
 前面几个部分介绍了如何使用 Azure 门户创建、查看和管理指标警报规则。 本部分将介绍如何使用跨平台 [Azure CLI](/cli/get-started-with-azure-cli?view=azure-cli-latest) 实现相同的结果。
+<!--Correct in MC-->
+
 ### <a name="get-all-classic-metric-alert-rules-in-a-resource-group"></a>获取某个资源组中的所有经典指标警报规则
 
 ```azurecli
@@ -89,7 +90,7 @@ az monitor alert delete --name <alert name> --resource-group <group name>
 
 本部分展示了如何使用 PowerShell 命令创建、查看和管理经典指标警报。本文中的示例展示了如何将 Azure Monitor cmdlet 用于经典指标警报。
 
-1. 如果尚未安装，请在计算机上安装要运行的 PowerShell。 有关详细信息，请参阅[如何安装和配置 PowerShell](https://docs.microsoft.com/powershell/azure/overview)。 还可以在 [Azure 监视器 (Insights) Cmdlet](https://docs.microsoft.com/powershell/module/az.applicationinsights) 上查看 Azure 监视器 PowerShell cmdlet 的完整列表。
+1. 如果尚未安装，请在计算机上安装要运行的 PowerShell。 有关详细信息，请参阅[如何安装和配置 PowerShell](https://docs.microsoft.com/powershell/azure/overview)。 还可以在 [Azure Monitor (Insights) Cmdlet](https://docs.microsoft.com/powershell/module/az.applicationinsights) 上查看 Azure Monitor PowerShell cmdlet 的完整列表。
 
 2. 首先，登录到 Azure 订阅。
 
@@ -97,7 +98,7 @@ az monitor alert delete --name <alert name> --resource-group <group name>
     Connect-AzAccount -Environment AzureChinaCloud
     ```
 
-3. 会出现登录界面。 登录帐户后，会出现 TenantID 和默认订阅 ID。 所有 Azure cmdlets 都在默认订阅的上下文中工作。 若要查看有权访问的订阅的列表，请使用以下命令：
+3. 会出现登录界面。 登录帐户后，会出现 TenantID 和默认订阅 ID。 所有 Azure cmdlet 都可用于默认订阅的上下文。 若要查看有权访问的订阅的列表，请使用以下命令：
 
     ```powershell
     Get-AzSubscription

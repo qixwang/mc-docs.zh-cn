@@ -5,15 +5,15 @@ services: firewall
 author: rockboyfor
 ms.service: firewall
 ms.topic: article
-origin.date: 11/19/2019
-ms.date: 12/09/2019
+origin.date: 04/24/2020
+ms.date: 06/15/2020
 ms.author: v-yeche
-ms.openlocfilehash: 9351480342a5d30f4ec05bfe70dd4b96dea7274f
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 423887075c963a88f4099469c6b8dbf9fe692e57
+ms.sourcegitcommit: 285649db9b21169f3136729c041e4d04d323229a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75335004"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84684048"
 ---
 # <a name="fqdn-tags-overview"></a>FQDN 标记概述
 
@@ -37,6 +37,8 @@ FQDN 标记表示与已知的 Azure 服务关联的一组完全限定的域名 (
 |应用服务环境 (ASE)|允许出站访问 ASE 平台流量。 此标记未涵盖特定于客户的存储和由 ASE 创建的 SQL 终结点。 这些应通过[服务终结点](../virtual-network/tutorial-restrict-network-access-to-resources.md)启用或手动添加。<br /><br />有关将 Azure 防火墙与 ASE 集成的详细信息，请参阅[锁定应用服务环境](../app-service/environment/firewall-integration.md#configuring-azure-firewall-with-your-ase)。|
 |Azure 备份|允许对 Azure 备份服务进行出站访问。|
 |Azure HDInsight|允许出站访问 HDInsight 平台流量。 此标记未涵盖特定于客户的存储和来自 HDInsight 的 SQL 流量。 使用[服务终结点](../virtual-network/tutorial-restrict-network-access-to-resources.md)启用这些项或手动添加它们。|
+
+<!--Not Available on |WindowsVirtualDesktop (WVD)|Allows outbound Windows Virtual Desktop platform traffic. This tag doesn't cover deployment-specific Storage and Service Bus endpoints created by WVD. Additionally, DNS and KMS network rules are required. For more information about integrating Azure Firewall with WVD, see [Use Azure Firewall to protect Window Virtual Desktop deployments](protect-windows-virtual-desktop.md)-->
 
 > [!NOTE]
 > 在应用程序规则中选择 FQDN 标记时，“协议:端口”字段必须设置为 **https**。

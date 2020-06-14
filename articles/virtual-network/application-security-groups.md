@@ -11,15 +11,15 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 02/27/2020
-ms.date: 05/06/2020
+ms.date: 06/15/2020
 ms.author: v-yeche
 ms.reviewer: kumud
-ms.openlocfilehash: 1fed11d28b9c0dac78d492666665316924251034
-ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
+ms.openlocfilehash: 9d550e9ebea0629df12ef671a7738dd5c6cbce09
+ms.sourcegitcommit: ff67734e01c004be575782b4812cfe857e435f4d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "83002074"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84486985"
 ---
 <!--Verified successfully-->
 # <a name="application-security-groups"></a>应用程序安全组
@@ -70,5 +70,4 @@ ms.locfileid: "83002074"
 
 * 连接如何[创建网络安全组](tutorial-filter-network-traffic.md)。
 
-<!-- Update_Description: new article about application security groups -->
-<!--NEW.date: 04/13/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

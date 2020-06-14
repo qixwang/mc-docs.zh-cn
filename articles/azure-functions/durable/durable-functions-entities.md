@@ -3,18 +3,18 @@ title: 持久实体 - Azure Functions
 description: 了解持久实体的概念，以及如何在 Azure Functions 的 Durable Functions 扩展中使用持久实体。
 author: cgillum
 ms.topic: overview
-ms.date: 03/31/2020
+ms.date: 06/09/2020
 ms.author: v-junlch
-ms.openlocfilehash: 3a5282be60558b73fdb385eea9a1848293330201
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 96669676a9b793cd5d0a256f21c3b65cface10b0
+ms.sourcegitcommit: f1a76ee3242698123a3d77f44c860db040b48f70
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80581590"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84563739"
 ---
 # <a name="entity-functions"></a>实体函数
 
-实体函数定义用于读取和更新较小状态片段（称为“持久实体”）的操作。  与业务流程协调程序函数一样，实体函数是具有特殊触发器类型“实体触发器”的函数。  与业务流程协调程序函数不同，实体函数会显式管理实体状态，而不是通过控制流隐式表示状态。
+实体函数定义读取和更新较小状态片段（称为“持久实体”）的操作。  与业务流程协调程序函数一样，实体函数是具有特殊触发器类型“实体触发器”的函数。  与业务流程协调程序函数不同，实体函数会显式管理实体状态，而不是通过控制流隐式表示状态。
 实体提供了一种横向扩展应用程序的方式，即，将工作分散到多个实体，而每个实体具有适度大小的状态。
 
 > [!NOTE]
@@ -27,7 +27,7 @@ ms.locfileid: "80581590"
 为了防止冲突，系统会保证针对单个实体的所有操作按顺序执行，即，一个接一个地执行。 
 
 ### <a name="entity-id"></a>实体 ID
-可通过唯一标识符（实体 ID）访问实体。  实体 ID 只是用于唯一标识实体实例的字符串对。 它包括：
+可通过唯一标识符（实体 ID）访问实体。  实体 ID 只是用于唯一标识实体实例的一对字符串。 它包括：
 
 * 实体名称，用于标识实体类型的名称  。 例如“Counter”。 此名称必须与实现该实体的实体函数的名称相匹配。 此名称不区分大小写。
 * 实体键，用于在所有其他同名实体中唯一标识该实体的字符串  。 例如一个 GUID。
@@ -41,7 +41,7 @@ ms.locfileid: "80581590"
 * 目标实体的实体 ID  。
 * 操作名称，用于指定要执行的操作的字符串。  例如，`Counter` 实体可以支持 `add`、`get` 或 `reset` 操作。
 * 操作输入，操作的可选输入参数。  例如，add 操作可以采用整数数量作为输入。
-* **计划时间**，这是用于指定操作交付时间的可选参数。 例如，可以可靠地将一项操作计划为在未来几天运行。
+* **计划时间**，这是用于指定操作交付时间的可选参数。 例如，可以可靠地计划一项操作在将来的几天运行。
 
 操作可以返回结果值或错误结果，例如 JavaScript 错误或 .NET 异常。 调用操作的业务流程可以观察到此结果或错误。
 
@@ -231,7 +231,7 @@ const df = require("durable-functions");
 module.exports = async function (context) {
     const client = df.getClient(context);
     const entityId = new df.EntityId("Counter", "myCounter");
-    const stateResponse = await context.df.readEntityState(entityId);
+    const stateResponse = await client.readEntityState(entityId);
     return stateResponse.entityState;
 };
 ```
@@ -406,12 +406,12 @@ public static async Task<bool> TransferFundsAsync(
 
 ## <a name="comparison-with-virtual-actors"></a>与虚拟执行组件的比较
 
-许多持久实体功能来源于执行组件模型的灵感。 如果你熟悉执行组件，则你可能会理解本文中所述的许多概念。 持久实体非常类似于[虚拟执行组件](https://research.microsoft.com/projects/orleans/)，或 [Orleans 项目](http://dotnet.github.io/orleans/)中普遍存在的“粒度”。 例如：
+许多持久实体功能来源于[执行组件模型](https://en.wikipedia.org/wiki/Actor_model)的灵感。 如果你熟悉执行组件，则你可能会理解本文中所述的许多概念。 持久实体非常类似于[虚拟执行组件](https://research.microsoft.com/projects/orleans/)，或 [Orleans 项目](http://dotnet.github.io/orleans/)中普遍存在的“粒度”。 例如：
 
 * 可通过实体 ID 对持久实体寻址。
-* 持久实体操作按顺序执行，每次只执行一个，以防止出现争用状态。
+* 持久实体操作按顺序逐个执行，以防止出现争用情况。
 * 持久实体是在被调用或发送信号时隐式创建的。
-* 未执行操作时，持久实体将以静默方式从内存中卸载。
+* 不执行操作时，将以静默方式从内存中卸载持久实体。
 
 有一些重要的差别值得注意：
 
@@ -431,4 +431,3 @@ public static async Task<bool> TransferFundsAsync(
 > [!div class="nextstepaction"]
 > [了解任务中心](durable-functions-task-hubs.md)
 
-<!-- Update_Description: wording update -->

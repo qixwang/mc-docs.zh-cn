@@ -10,12 +10,12 @@ ms.topic: conceptual
 origin.date: 07/24/2019
 ms.date: 10/11/2019
 ms.author: v-tawe
-ms.openlocfilehash: 69f87093789455a823a57b5c180ae013f18fb46f
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: f228693b790b4d7f1ca9287f1e89dd893761e797
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74658113"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723396"
 ---
 # <a name="custom-subdomain-names-for-cognitive-services"></a>认知服务的自定义子域名
 
@@ -78,4 +78,4 @@ ms.locfileid: "74658113"
 
 * [什么是认知服务？](Welcome.md)
 
-<!-- * [Authentication](authentication.md) -->
+* [身份验证](authentication.md)

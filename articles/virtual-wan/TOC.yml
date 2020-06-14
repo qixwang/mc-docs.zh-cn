@@ -6,8 +6,14 @@
       href: virtual-wan-about.md
     - name: 体系结构
       items:
+        - name: 迁移到虚拟 WAN
+          href: migrate-from-hub-spoke-topology.md
         - name: 全球传输网络体系结构
           href: virtual-wan-global-transit-network-architecture.md
+        - name: SD-WAN 连接体系结构
+          href: sd-wan-connectivity-architecture.md
+        - name: 与中国互联
+          href: interconnect-china.md
 - name: 教程
   items:
     - name: 创建站点到站点连接
@@ -18,6 +24,10 @@
       href: virtual-wan-expressroute-portal.md
 - name: 概念
   items:
+    - name: 远程工作
+      items:
+        - name: 利用虚拟 WAN
+          href: work-remotely-support.md
     - name: 位置与合作伙伴
       items:
         - name: 中心位置和合作伙伴
@@ -26,37 +36,51 @@
           href: virtual-wan-configure-automation-providers.md
     - name: IPsec 策略
       href: virtual-wan-ipsec.md
-    - name: 点到站点 VPN 概述
-      href: ../vpn-gateway/point-to-site-about.md?toc=%2fvirtual-wan%2ftoc.json
 - name: 操作指南
   items:
+    - name: 将虚拟网络网关连接到虚拟 WAN
+      href: connect-virtual-network-gateway-vwan.md
     - name: 升级虚拟 WAN SKU
       href: upgrade-virtual-wan.md
+    - name: 配置自定义 IPsec 策略
+      href: virtual-wan-custom-ipsec-portal.md
+    - name: ExpressRoute
+      items:
+        - name: 创建 ExpressRoute 连接
+          href: virtual-wan-expressroute-portal.md
+        - name: 配置 ExpressRoute 加密
+          href: vpn-over-expressroute.md
     - name: 站点到站点
       items:
         - name: 创建站点到站点连接
           href: virtual-wan-site-to-site-portal.md
     - name: 用户 VPN（点到站点）
       items:
-        - name: 创建用户 VPN（点到站点）连接
+        - name: 创建用户 VPN 连接
           href: virtual-wan-point-to-site-portal.md
-        - name: 为用户 VPN 配置证书
+        - name: 生成证书
           href: certificates-point-to-site.md
-        - name: 为用户 VPN 配置 Azure AD 租户
+        - name: 配置 Azure AD 租户
           href: openvpn-azure-ad-tenant.md
-        - name: 配置 Always On VPN 用户隧道
-          href: ../vpn-gateway/vpn-gateway-howto-always-on-user-tunnel.md?toc=%2fvirtual-wan%2ftoc.json
-        - name: 配置 Always On VPN 设备隧道
-          href: ../vpn-gateway/vpn-gateway-howto-always-on-device-tunnel.md?toc=%2fvirtual-wan%2ftoc.json
-        - name: 为用户 VPN 启用多重身份验证 (MFA)
-          href: openvpn-azure-ad-mfa.md
-        - name: 为用户 VPN 配置 Azure AD 身份验证
-          href: virtual-wan-point-to-site-azure-ad.md
-        - name: 为用户 VPN 配置多应用程序 Azure AD 身份验证
-          href: openvpn-azure-ad-tenant-multi-app.md
-        - name: 下载全局 VPN 配置文件和基于中心的用户 VPN 配置文件
+        - name: 客户端配置文件
+          href: about-vpn-profile-download.md
+        - name: 全局和基于中心的配置文件
           href: global-hub-profile.md
-    - name: 配置路由
+        - name: 配置 OpenVPN 客户端
+          href: howto-openvpn-clients.md
+        - name: 配置 Always On VPN 用户隧道
+          href: howto-always-on-user-tunnel.md
+        - name: 配置 Always On VPN 设备隧道
+          href: howto-always-on-device-tunnel.md
+        - name: 启用多重身份验证 (MFA)
+          href: openvpn-azure-ad-mfa.md
+        - name: 配置 Azure AD 身份验证
+          href: virtual-wan-point-to-site-azure-ad.md
+        - name: 配置适用于 Windows 10 的 Azure VPN 客户端
+          href: openvpn-azure-ad-client.md
+        - name: 配置多应用程序 Azure AD 身份验证
+          href: openvpn-azure-ad-tenant-multi-app.md
+    - name: 路由
       items:
         - name: 将流量从虚拟中心路由到 NVA
           items:
@@ -74,6 +98,8 @@
       href: 'https://docs.microsoft.com/rest/api/azure'
     - name: Azure CLI
       href: 'https://docs.microsoft.com/cli/azure/ext/virtual-wan?view=azure-cli-latest'
+    - name: Python SDK
+      href: 'https://azuresdkdocs.blob.core.windows.net/$web/python/azure-mgmt-network/10.0.0/azure.mgmt.network.v2019_02_01.operations.html#azure.mgmt.network.v2019_02_01.operations.VirtualWansOperations'
 - name: 资源
   items:
     - name: 常见问题

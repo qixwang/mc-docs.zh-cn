@@ -14,14 +14,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 08/08/2018
-ms.date: 02/24/2020
+ms.date: 06/15/2020
 ms.author: v-yeche
-ms.openlocfilehash: 3c4ed50d13be324de65d36c32d0dd0326cd968b2
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 467f62bafd6f559695476c7cc8e11e5a7ba570b1
+ms.sourcegitcommit: ff67734e01c004be575782b4812cfe857e435f4d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80109744"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84487084"
 ---
 # <a name="create-a-virtual-machine-with-a-static-public-ip-address-using-the-azure-cli"></a>使用 Azure CLI 创建具有静态公共 IP 地址的虚拟机
 
@@ -70,6 +70,8 @@ ms.locfileid: "80109744"
 
     Azure 从你在其中创建虚拟机的区域使用的地址中分配了一个公共 IP 地址。 可以下载 Azure [中国](https://www.microsoft.com/download/confirmation.aspx?id=57062)云的范围（前缀）列表。
 
+    <!--CORRECT ON [China](https://www.microsoft.com/download/confirmation.aspx?id=57062)-->
+    
 > [!WARNING]
 > 不要修改虚拟机操作系统中的 IP 地址设置。 操作系统不知道 Azure 公共 IP 地址。 虽然可以向操作系统添加专用 IP 地址设置，但除非必要，否则我们建议不要这样做，而只能阅读[向操作系统添加专用 IP 地址](virtual-network-network-interface-addresses.md#private)之后才执行此操作。
 

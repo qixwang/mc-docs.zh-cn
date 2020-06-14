@@ -8,13 +8,13 @@ ms.reviewer: jasonh
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 04/15/2019
-ms.date: 05/09/2020
-ms.openlocfilehash: 5f9a78272862bcdf1271dd8f8a2af82d4703e277
-ms.sourcegitcommit: bfbd6694da33f703481386f2a3f16850c4e94bfa
+ms.date: 06/09/2020
+ms.openlocfilehash: bd69831037f0c6097213bb5f88b167836f064912
+ms.sourcegitcommit: 73697fa9c19a40d235df033400c74741e7d0f3f4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83417655"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84574906"
 ---
 # <a name="copy-data-to-azure-data-explorer-by-using-azure-data-factory"></a>使用 Azure 数据工厂将数据复制到 Azure 数据资源管理器 
 
@@ -246,4 +246,4 @@ Azure 数据工厂是一个完全托管的基于云的数据集成服务。 可�
 
 * 了解 Azure 数据工厂中的 [Azure 数据资源管理器连接器](/data-factory/connector-azure-data-explorer)。
 * 详细了解如何在[数据工厂 UI](/data-factory/quickstart-create-data-factory-portal) 中编辑链接服务、数据集和管道。
-* 了解用于查询数据的 [Azure 数据资源管理器查询](/data-explorer/web-query-data)。
+* 了解用于查询数据的 [Azure 数据资源管理器查询](web-query-data.md)。

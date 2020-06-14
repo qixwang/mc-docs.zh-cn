@@ -3,14 +3,14 @@ title: 使用 Azure Policy 实现合规性
 description: 分配 Azure Policy 中的内置策略来审核 Azure 容器注册表的合规性
 ms.topic: article
 origin.date: 02/26/2020
-ms.date: 05/06/2020
+ms.date: 06/08/2020
 ms.author: v-yeche
-ms.openlocfilehash: 366e985a0fa68825bd719469c12050c6d5aa2222
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+ms.openlocfilehash: 24363965f2b36717d1a8cf04fa92df9eb09b4a26
+ms.sourcegitcommit: c4fc01b7451951ef7a9616fca494e1baf29db714
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84199580"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84564363"
 ---
 <!--Verified successfully-->
 # <a name="audit-compliance-of-azure-container-registries-using-azure-policy"></a>使用 Azure Policy 审核 Azure 容器注册表的合规性

@@ -3,14 +3,14 @@ title: 配置服务防火墙规则
 description: 配置 IP 规则以允许从选定的公共 IP 地址或地址范围访问 Azure 容器注册表。
 ms.topic: article
 origin.date: 05/04/2020
-ms.date: 06/01/2020
+ms.date: 06/08/2020
 ms.author: v-yeche
-ms.openlocfilehash: bf565e72ecbaa92007a090f1cb3b230cfe1c3f19
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+ms.openlocfilehash: 5fbb78ec05d14ca83721503792b2e01872b8c076
+ms.sourcegitcommit: c4fc01b7451951ef7a9616fca494e1baf29db714
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84199902"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84564362"
 ---
 <!--Verified successfully on Portal and CLI-->
 # <a name="configure-public-ip-network-rules"></a>配置公共 IP 网络规则
@@ -104,5 +104,4 @@ az acr network-rule add \
 [acr-access-disabled]: ./media/container-registry-access-selected-networks/acr-access-disabled.png
 [acr-access-all-networks]: ./media/container-registry-access-selected-networks/acr-access-all-networks.png
 
-<!-- Update_Description: new article about container registry access selected networks -->
-<!--NEW.date: 06/01/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

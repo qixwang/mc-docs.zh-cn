@@ -4,14 +4,14 @@ description: 确保 Azure Service Fabric 群集和应用程序安全的最佳做
 author: rockboyfor
 ms.topic: conceptual
 origin.date: 01/23/2019
-ms.date: 02/24/2020
+ms.date: 06/08/2020
 ms.author: v-yeche
-ms.openlocfilehash: 91842eabb1c7e76a5b9d9c214c4b46e033f2327b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 6d5ef1be7d4439d7bc4712b20a33fbd315929f8a
+ms.sourcegitcommit: 0e178672632f710019eae60cea6a45ac54bb53a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292641"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84356291"
 ---
 # <a name="azure-service-fabric-security"></a>Azure Service Fabric 安全 
 
@@ -91,7 +91,7 @@ ms.locfileid: "79292641"
 > [!NOTE]
 > Service Fabric 群集将使用它在主机的证书存储中找到的第一个有效证书。 在 Windows 上，该证书将是具有最晚到期日期且与公用名和颁发者指纹匹配的证书。
 
-Azure 域（例如 *\<你的子域\>.cloudapp.chinacloudapi.cn 或 \<你的子域\>.trafficmanager.cn）由 Microsoft 拥有。 证书颁发机构不会将域的证书颁发给未授权的用户。 大多数用户需要从注册机构购买域，或者需要是经授权的域管理员，否则证书颁发机构不会向其颁发具有该公用名的证书。
+Azure 域（例如 *\<YOUR SUBDOMAIN\>.cloudapp.chinacloudapi.cn 或 \<YOUR SUBDOMAIN\>.trafficmanager.cn）由 Microsoft 拥有。 证书颁发机构不会将域的证书颁发给未授权的用户。 大多数用户需要从注册机构购买域，或者需要是经授权的域管理员，否则证书颁发机构不会向其颁发具有该公用名的证书。
 
 若要更详细地确定如何配置 DNS 服务，以便将域解析为 Azure IP 地址，请了解如何配置[用于托管域的 Azure DNS](/dns/dns-delegate-domain-azure-dns)。
 
@@ -211,7 +211,7 @@ cosmos_db_password=$(curl 'https://management.chinacloudapi.cn/subscriptions/<YO
 [我们建议实现广为人知且经过充分测试的业界标准配置，如 Azure 安全基线，而不是自行创建基线](https://docs.microsoft.com/windows/security/threat-protection/windows-security-baselines)；用于在虚拟机规模集上预配这些基线的一个选项是，使用 Azure Desired State Configuration (DSC) 扩展处理程序，以在 VM 处于联机状态时对其进行配置，以便其运行生产软件。
 
 ## <a name="azure-firewall"></a>Azure 防火墙
-[Azure 防火墙是托管的基于云的网络安全服务，可保护 Azure 虚拟网络资源。它是一个服务形式的完全有状态防火墙，具有内置的高可用性和不受限制的云可伸缩性。](/firewall/overview)；这样就可以将出站 HTTP/S 流量限制为指定的完全限定域名 (FQDN) 列表，包括通配符域名。 此功能不需要 SSL 终止。 建议利用 Windows 更新的 [Azure 防火墙 FQDN 标记](/firewall/fqdn-tags)，并允许到 Microsoft Windows 更新终结点的网络流量流经防火墙。 常用于 Service Fabric 应用程序的防火墙规则是为群集虚拟网络启用以下站点：
+[Azure 防火墙是托管的基于云的网络安全服务，可保护 Azure 虚拟网络资源。它是一个服务形式的完全有状态防火墙，具有内置的高可用性和不受限制的云可伸缩性。](/firewall/overview)；这样就可以将出站 HTTP/S 流量限制为指定的完全限定域名 (FQDN) 列表，包括通配符域名。 此功能不需要 TLS/SSL 终止。 建议利用 Windows 更新的 [Azure 防火墙 FQDN 标记](/firewall/fqdn-tags)，并允许到 Microsoft Windows 更新终结点的网络流量流经防火墙。 常用于 Service Fabric 应用程序的防火墙规则是为群集虚拟网络启用以下站点：
 
 <!--Not Avaible on [Deploy Azure Firewall using a template](/firewall/deploy-template)-->
 
@@ -279,4 +279,4 @@ cosmos_db_password=$(curl 'https://management.chinacloudapi.cn/subscriptions/<YO
 
 [Image1]: ./media/service-fabric-best-practices/generate-common-name-cert-portal.png
 
-<!-- Update_Description: update meta properties -->
+<!-- Update_Description: update meta properties, wording update, update link -->

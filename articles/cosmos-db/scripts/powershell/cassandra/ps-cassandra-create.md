@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: sample
 origin.date: 03/18/2020
-ms.date: 04/27/2020
+ms.date: 06/15/2020
 ms.author: v-yeche
-ms.openlocfilehash: 84a77ae42cd7f1f215cf42e6ec4bc868ebfe6c20
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.openlocfilehash: 05249855a126edda3cd056d197ca5e7cdb50080f
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82134579"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723730"
 ---
 <!--Verify successfully-->
 # <a name="create-a-keyspace-and-table-for-azure-cosmos-db---cassandra-api"></a>创建 Azure Cosmos DB 的密钥空间和表 - Cassandra API
@@ -62,50 +62,16 @@ $columns = @(
     @{ name = "duration"; type = "float" }
 )
 # --------------------------------------------------
-# Account
 Write-Host "Creating account $accountName"
-# Cassandra not yet supported in New-AzCosmosDBAccount
-# $account = New-AzCosmosDBAccount -ResourceGroupName $resourceGroupName `
-    # -Location $locations -Name $accountName -ApiKind $apiKind -Tag $tags `
-    # -DefaultConsistencyLevel $consistencyLevel `
-    # -MaxStalenessIntervalInSeconds $maxStalenessInterval `
-    # -MaxStalenessPrefix $maxStalenessPrefix `
-    # -EnableAutomaticFailover:$true
-# Account creation: use New-AzResource with property object
-# --------------------------------------------------
-$azAccountResourceType = "Microsoft.DocumentDb/databaseAccounts"
-$azApiVersion = "2020-03-01"
-$azApiType = "EnableCassandra"
-
-$azLocations = @()
-$i = 0
-ForEach ($location in $locations) {
-    $azLocations += @{ locationName = "$location"; failoverPriority = $i++ }
-}
-
-$azConsistencyPolicy = @{
-    defaultConsistencyLevel = $consistencyLevel;
-    maxIntervalInSeconds = $maxStalenessInterval;
-    maxStalenessPrefix = $maxStalenessPrefix;
-}
-
-$azAccountProperties = @{
-    capabilities = @( @{ name = $azApiType; } );
-    databaseAccountOfferType = "Standard";
-    locations = $azLocations;
-    consistencyPolicy = $azConsistencyPolicy;
-    enableAutomaticFailover = "true";
-}
-
-New-AzResource -ResourceType $azAccountResourceType -ApiVersion $azApiVersion `
-    -ResourceGroupName $resourceGroupName -Location $locations[0] `
-    -Name $accountName -PropertyObject $azAccountProperties `
-    -Tag $tags -Force
-
-$account = Get-AzCosmosDBAccount -ResourceGroupName $resourceGroupName -Name $accountName
+$account = New-AzCosmosDBAccount -ResourceGroupName $resourceGroupName `
+    -Location $locations -Name $accountName -ApiKind $apiKind -Tag $tags `
+    -DefaultConsistencyLevel $consistencyLevel `
+    -MaxStalenessIntervalInSeconds $maxStalenessInterval `
+    -MaxStalenessPrefix $maxStalenessPrefix `
+    -EnableAutomaticFailover:$true
 
 Write-Host "Creating keyspace $keyspaceName"
-$keyspace = Set-AzCosmosDBCassandraKeyspace -InputObject $account `
+$keyspace = New-AzCosmosDBCassandraKeyspace -ParentObject $account `
     -Name $keyspaceName
 
 # Table Schema
@@ -125,7 +91,7 @@ $schema = New-AzCosmosDBCassandraSchema `
     -Column $psColumns
 
 Write-Host "Creating table $tableName"
-$table = Set-AzCosmosDBCassandraTable -InputObject $keyspace `
+$table = New-AzCosmosDBCassandraTable -ParentObject $keyspace `
     -Name $tableName -Schema $schema -Throughput $tableRUs 
 
 ```
@@ -144,9 +110,8 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 
 | Command | 说明 |
 |---|---|
-|**Azure 资源**| |
-| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | 创建资源。 |
 |**Azure Cosmos DB**| |
+| [New-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbaccount) | 新建 Cosmos DB 帐户。 |
 | [Set-AzCosmosDBCassandraKeyspace](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbcassandrakeyspace) | 创建或更新 Cosmos DB Cassandra API 密钥空间。 |
 | [New-AzCosmosDBCassandraClusterKey](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbcassandraclusterkey) | 新建 CosmosDB Cassandra 群集密钥。 |
 | [New-AzCosmosDBCassandraColumn](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbcassandracolumn) | 新建 CosmosDB Cassandra 列。 |

@@ -12,12 +12,12 @@ ms.topic: article
 origin.date: 04/07/2020
 ms.date: 05/11/2020
 ms.author: v-jay
-ms.openlocfilehash: 239526edb66dc35393550f73be98f0f9632d2af5
-ms.sourcegitcommit: 95efd248f5ee3701f671dbd5cfe0aec9c9959a24
+ms.openlocfilehash: 2e95410cc1570b13a493867fdb804e98c356ade6
+ms.sourcegitcommit: 1f890a4085e184cc678485d05f08dd6de8dc973f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82507704"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84438967"
 ---
 # <a name="media-services-v3-frequently-asked-questions"></a>媒体服务 v3 常见问题解答
 
@@ -34,17 +34,15 @@ ms.locfileid: "82507704"
 
 ### <a name="how-do-i-stream-to-apple-ios-devices"></a>如何流式传输到 Apple iOS 设备？
 
-确保在路径的末尾（在 URL 的“/manifest”部分之后）有“(format=m3u8-aapl)”，目的是告知流式处理源服务器返回 HTTP Live Streaming (HLS) 内容，以便在 Apple iOS 本机设备上使用   。 有关详细信息，请参阅[传送内容](dynamic-packaging-overview.md)。
+确保在路径的末尾（在 URL 的“/manifest”部分之后）有“(format=m3u8-aapl)”，目的是告知流式处理源服务器返回 HTTP Live Streaming (HLS) 内容，以便在 Apple iOS 本机设备上使用 。 有关详细信息，请参阅[传送内容](dynamic-packaging-overview.md)。
 
 ### <a name="how-do-i-configure-media-reserved-units"></a>如何配置媒体预留单位？
-
-对于由媒体服务 v3 或视频索引器触发的音频分析和视频分析作业，建议为你的帐户预配 10 个 S3 媒体预留单位 (MRU)。 如果需要超过 10 S3 MRU 的数量，请使用 [Azure 门户](https://portal.azure.cn/)创建支持票证。
 
 有关详细信息，请参阅[调整媒体处理的规模](media-reserved-units-cli-how-to.md)。
 
 ### <a name="what-is-the-recommended-method-to-process-videos"></a>什么是处理视频的建议方法？
 
-[转换](https://docs.microsoft.com/rest/api/media/transforms)可用来配置对视频进行编码或分析的常见任务。 每个转换描述了用于处理视频或音频文件的脚本或任务工作流。 [作业](https://docs.microsoft.com/rest/api/media/jobs)是针对媒体服务的实际请求，目的是将转换应用到输入视频或音频内容。 创建转换后，可以使用媒体服务 API 或任何已发布的 SDK 来提交作业。 有关详细信息，请参阅[转换和作业](transforms-jobs-concept.md)。
+[转换](https://docs.microsoft.com/rest/api/media/transforms)可用来配置对视频进行编码的常见任务。 每个转换描述了用于处理视频或音频文件的脚本或任务工作流。 [作业](https://docs.microsoft.com/rest/api/media/jobs)是针对媒体服务的实际请求，目的是将转换应用到输入视频或音频内容。 创建转换后，可以使用媒体服务 API 或任何已发布的 SDK 来提交作业。 有关详细信息，请参阅[转换和作业](transforms-jobs-concept.md)。
 
 ### <a name="i-uploaded-encoded-and-published-a-video-why-wont-the-video-play-when-i-try-to-stream-it"></a>我已经上传、编码并发布了视频。 为什么在我尝试对视频进行流式处理时，它不播放？
 
@@ -92,7 +90,7 @@ ms.locfileid: "82507704"
 
 对用户进行身份验证后，播放器会向 STS 发出请求以获取此类令牌，并将其分配为令牌的值。 可以使用 [Azure Media Player API](https://amp.azure.net/libs/amp/latest/docs/)。
 
-有关使用对称密钥或非对称密钥运行 STS 的示例，请参阅 [JWT 工具](https://aka.ms/jwt)。 有关使用此类 JWT 令牌的基于 Azure Media Player 的播放器示例，请参阅 [Azure 媒体测试工具](https://aka.ms/amtest)。 （展开“player_settings”链接可查看令牌输入。） 
+有关使用对称密钥或非对称密钥运行 STS 的示例，请参阅 [JWT 工具](https://aka.ms/jwt)。 有关使用此类 JWT 令牌的基于 Azure Media Player 的播放器示例，请参阅 [Azure 媒体测试工具](https://aka.ms/amtest)。 （展开“player_settings”链接可查看令牌输入。）
 
 ### <a name="how-do-i-authorize-requests-to-stream-videos-with-aes-encryption"></a>如何授权使用 AES 加密流式传输视频的请求？
 
@@ -159,7 +157,7 @@ ms.locfileid: "82507704"
 
 #### <a name="why-does-only-audio-play-but-not-video-during-offline-mode"></a>为什么在脱机模式期间只播放音频而不播放视频？
 
-此行为似乎是示例应用专门设计的。 存在备用音频曲目时（这适用于 HLS），在脱机模式期间，iOS 10 和 iOS 11 都默认播放备用音频曲目。为了补偿 FPS 脱机模式的此行为，需要从流删除备用音频曲目。 若要在媒体服务中完成此操作，请添加动态清单筛选器 audio-only=false  。 换言之，HLS URL 将以 .ism/manifest(format=m3u8-aapl,audio-only=false) 结尾  。 
+此行为似乎是示例应用专门设计的。 存在备用音频曲目时（这适用于 HLS），在脱机模式期间，iOS 10 和 iOS 11 都默认播放备用音频曲目。为了补偿 FPS 脱机模式的此行为，需要从流删除备用音频曲目。 若要在媒体服务中完成此操作，请添加动态清单筛选器 audio-only=false。 换言之，HLS URL 将以 .ism/manifest(format=m3u8-aapl,audio-only=false) 结尾。 
 
 #### <a name="why-does-it-still-play-audio-only-without-video-during-offline-mode-after-i-add-audio-onlyfalse"></a>为什么添加 audio-only=false 之后，在脱机模式期间仍只播放音频而不播放视频？
 

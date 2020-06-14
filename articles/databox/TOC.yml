@@ -48,7 +48,7 @@
               href: data-box-limits.md
             - name: 检查安全性
               href: data-box-security.md
-            - name: 常见问题解答
+            - name: 常见问题
               href: data-box-faq.md
         - name: 如何
           items:
@@ -56,6 +56,8 @@
               href: data-box-portal-admin.md
             - name: 通过本地 Web UI 进行管理
               href: data-box-local-web-ui-admin.md
+            - name: 启用客户管理的密钥
+              href: data-box-customer-managed-encryption-key-portal.md
             - name: 将数据移到 blob 层
               href: data-box-how-to-set-data-tier.md
             - name: 为设备布线
@@ -101,7 +103,7 @@
               href: data-box-disk-limits.md
             - name: 检查安全性
               href: data-box-disk-security.md
-            - name: 常见问题解答
+            - name: 常见问题
               href: data-box-disk-faq.md
         - name: 如何
           items:
@@ -163,6 +165,8 @@
               href: data-box-portal-admin.md
             - name: 通过本地 Web UI 进行管理
               href: data-box-local-web-ui-admin.md
+            - name: 启用客户管理的密钥
+              href: data-box-customer-managed-encryption-key-portal.md
             - name: 排查设备问题
               href: data-box-troubleshoot.md
             - name: 将数据移到 blob 层

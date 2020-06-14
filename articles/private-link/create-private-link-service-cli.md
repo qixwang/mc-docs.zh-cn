@@ -6,14 +6,14 @@ author: rockboyfor
 ms.service: private-link
 ms.topic: article
 origin.date: 09/16/2019
-ms.date: 01/06/2020
+ms.date: 06/15/2020
 ms.author: v-yeche
-ms.openlocfilehash: bbd7dede0475b72db5dc45eeb15ef299812c8f08
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 3c121d2ed4d27b2d98cf8705efca9ce1d6fbf81d
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75631428"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723705"
 ---
 # <a name="create-a-private-link-service-using-azure-cli"></a>使用 Azure CLI 创建专用链接服务
 本文介绍了如何使用 Azure CLI 在 Azure 中创建专用链接服务。
@@ -100,7 +100,7 @@ az network private-link-service create \
 --subnet mySubnet \
 --lb-name myILB \
 --lb-frontend-ip-configs myFrontEnd \
---location chinaeast2 
+--location chinaeast2
 ```
 在创建后，记下专用链接服务 ID。 稍后，你将需要请求连接到此服务。  
 

@@ -1,19 +1,18 @@
 ---
-title: Azure Monitor 日志查询中的 app() 表达式 | Docs
+title: Azure Monitor 日志查询中的 app() 表达式
 description: 在 Azure Monitor 日志查询中使用 app 表达式从同一资源组、另一个资源组或另一个订阅中的特定 Application Insights 应用检索数据。
 ms.subservice: logs
 ms.topic: conceptual
-author: lingliw
-manager: digimobile
+author: Johnnytechn
+ms.author: v-johya
+ms.date: 05/28/2020
 origin.date: 01/25/2019
-ms.date: 11/04/2019
-ms.author: v-lingwu
-ms.openlocfilehash: 6298093a64b74d8c204ad21a6499447280a32f09
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: d6f566303b968da5906ba8967da097b1562bad13
+ms.sourcegitcommit: 5ae04a3b8e025986a3a257a6ed251b575dbf60a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78850281"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84440630"
 ---
 # <a name="app-expression-in-azure-monitor-query"></a>Azure Monitor 查询中的 app() 表达式
 
@@ -23,22 +22,22 @@ ms.locfileid: "78850281"
 
 ## <a name="syntax"></a>语法
 
-`app(`标识符  `)`
+`app(`标识符`)`
 
 
 ## <a name="arguments"></a>参数
 
-- 标识符：使用下表中的某种格式标识应用  。
+- 标识符：使用下表中的某种格式标识应用。
 
 | 标识符 | 说明 | 示例
 |:---|:---|:---|
-| 资源名称 | 人工可读的应用名称（又称“组件名称”） | app("fabrikamapp") |
+| 资源名称 | 人工可读的应用名称（也称为“组件名称”） | app("fabrikamapp") |
 | 限定的名称 | 窗体中应用的完整名称：“subscriptionName/resourceGroup/componentName” | app('AI-Prototype/Fabrikam/fabrikamapp') |
 | ID | 应用的 GUID | app("988ba129-363e-4415-8fe7-8cbab5447518") |
 | Azure 资源 ID | Azure 资源的标识符 |app("/subscriptions/7293b69-db12-44fc-9a66-9c2005c3051d/resourcegroups/Fabrikam/providers/microsoft.insights/components/fabrikamapp") |
 
 
-## <a name="notes"></a>说明
+## <a name="notes"></a>注释
 
 * 必须具有该应用程序的读取权限。
 * 按应用程序的名称来标识应用程序，即假定该名称在所有可访问订阅中唯一。 如果拥有多个采用指定名称的应用程序，查询将因多义性而失败。 在这种情况下，必须使用一个其他的标识符。
@@ -76,6 +75,4 @@ union
 - 参阅 [workspace 表达式](workspace-expression.md)，以引用 Log Analytics 工作区。
 - 了解 [Azure Monitor 数据是如何存储的](../../azure-monitor/log-query/log-query-overview.md)。
 - 访问有关 [Kusto 查询语言](https://docs.microsoft.com/azure/kusto/query/)的完整文档。
-
-
 

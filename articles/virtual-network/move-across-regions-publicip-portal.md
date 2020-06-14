@@ -3,16 +3,17 @@ title: 使用 Azure 门户将 Azure 公共 IP 移到另一个 Azure 区域
 description: 使用 Azure 资源管理器模板，通过 Azure 门户将 Azure 公共 IP 从一个 Azure 区域移到另一个 Azure 区域。
 author: rockboyfor
 ms.service: virtual-network
+ms.subservice: ip-services
 ms.topic: article
 origin.date: 08/29/2019
-ms.date: 04/13/2020
+ms.date: 06/15/2020
 ms.author: v-yeche
-ms.openlocfilehash: d59e1c316bbac5d156d256a489ebb9024c508c1b
-ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
+ms.openlocfilehash: b374620e359db58394616e82092344b836195eab
+ms.sourcegitcommit: ff67734e01c004be575782b4812cfe857e435f4d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82093287"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84486983"
 ---
 # <a name="move-azure-public-ip-to-another-region-using-the-azure-portal"></a>使用 Azure 门户将 Azure 公共 IP 移到另一个区域
 

@@ -2,13 +2,13 @@
 title: Azure Functions 1.x 的 host.json 参考
 description: 使用 v1 运行时的 Azure Functions host.json 文件的参考文档。
 ms.topic: conceptual
-ms.date: 01/13/2020
-ms.openlocfilehash: 54d53476b96bb30b12ce172021d534e88ed2bd74
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 06/08/2020
+ms.openlocfilehash: 6c9e1a1f23628ce1b0bd1b2750a3e244f6916223
+ms.sourcegitcommit: f1a76ee3242698123a3d77f44c860db040b48f70
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292981"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84563768"
 ---
 # <a name="hostjson-reference-for-azure-functions-1x"></a>Azure Functions 1.x 的 host.json 参考
 
@@ -120,9 +120,7 @@ ms.locfileid: "79292981"
 
 ## <a name="eventhub"></a>eventHub
 
-[事件中心触发器和绑定](functions-bindings-event-hubs.md)的配置设置。
-
-[!INCLUDE [functions-host-json-event-hubs](../../includes/functions-host-json-event-hubs.md)]
+[事件中心触发器和绑定](functions-bindings-event-hubs-trigger.md#functions-1x)的配置设置。
 
 ## <a name="functions"></a>functions
 
@@ -324,4 +322,3 @@ ms.locfileid: "79292981"
 > [!div class="nextstepaction"]
 > [查看环境变量中的全局设置](functions-app-settings.md)
 
-<!-- Update_Description: wording update -->

@@ -566,6 +566,10 @@
           href: disks-use-storage-explorer-managed-disks.md
         - name: 拍摄磁盘快照
           href: snapshot-copy-managed-disk.md
+        - name: 创建增量快照 - PowerShell
+          href: disks-incremental-snapshots.md
+        - name: 创建增量快照 - 门户
+          href: disks-incremental-snapshots-portal.md
         - name: 备份非托管磁盘
           href: incremental-snapshots.md
         - name: 迁移和转换

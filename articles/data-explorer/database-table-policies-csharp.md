@@ -7,13 +7,13 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 09/24/2019
-ms.date: 05/09/2020
-ms.openlocfilehash: ab300ca3b2dcb2e43de18f6026e8f7575e184200
-ms.sourcegitcommit: bfbd6694da33f703481386f2a3f16850c4e94bfa
+ms.date: 06/09/2020
+ms.openlocfilehash: a42a3800b94101cab56c5dae34801e4d1bee6701
+ms.sourcegitcommit: 73697fa9c19a40d235df033400c74741e7d0f3f4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83417765"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84574899"
 ---
 # <a name="create-database-and-table-policies-for-azure-data-explorer-by-using-c"></a>使用 C# 为 Azure 数据资源管理器创建数据库和表策略
 
@@ -38,7 +38,7 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
 * 安装 [Microsoft.IdentityModel.Clients.ActiveDirectory NuGet 包](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/)以进行身份验证。
 
 ## <a name="authentication"></a>Authentication
-若要运行本文中的示例，需要可以访问资源的 Azure Active Directory (Azure AD) 应用程序和服务主体。 可以使用相同的 Azure AD 应用程序通过[测试群集和数据库](create-cluster-database-csharp.md#authentication)进行身份验证。 如果要使用其他 Azure AD 应用程序，请参阅[创建 Azure AD 应用程序](/active-directory/develop/howto-create-service-principal-portal)以创建免费的 Azure AD 应用程序并在订阅范围内添加角色分配。 本文还演示如何获取 `Directory (tenant) ID`、`Application ID` 和 `Client secret`。 可能需要将新的 Azure AD 应用程序添加为数据库中的主体。 有关详细信息，请参阅[管理 Azure 数据资源管理器数据库权限](https://docs.azure.cn/data-explorer/manage-database-permissions)。
+若要运行本文中的示例，需要可以访问资源的 Azure Active Directory (Azure AD) 应用程序和服务主体。 可以使用相同的 Azure AD 应用程序通过[测试群集和数据库](create-cluster-database-csharp.md#authentication)进行身份验证。 如果要使用其他 Azure AD 应用程序，请参阅[创建 Azure AD 应用程序](/active-directory/develop/howto-create-service-principal-portal)以创建免费的 Azure AD 应用程序并在订阅范围内添加角色分配。 本文还演示如何获取 `Directory (tenant) ID`、`Application ID` 和 `Client secret`。 可能需要将新的 Azure AD 应用程序添加为数据库中的主体。 有关详细信息，请参阅[管理 Azure 数据资源管理器数据库权限](manage-database-permissions.md)。
 
 ## <a name="alter-database-retention-policy"></a>更改数据库保留策略
 使用 10 天的软删除期设置保留策略。

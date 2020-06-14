@@ -5,15 +5,15 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: sample
-origin.date: 12/05/2019
-ms.date: 01/20/2020
+origin.date: 05/01/2020
+ms.date: 06/15/2020
 ms.author: v-yeche
-ms.openlocfilehash: bbb319ea5b310164ea71a0e657ee91961cc067d4
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: d6efd589c4e19fdc31fbcf3eeb0d572517c66fa5
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "76270083"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723621"
 ---
 # <a name="create-a-table-for-azure-cosmos-db---table-api"></a>为 Azure Cosmos DB 创建表 - 表 API
 
@@ -24,50 +24,34 @@ ms.locfileid: "76270083"
 ## <a name="sample-script"></a>示例脚本
 
 ```powershell
-# Create an Azure Cosmos account for Table API and a table 
+# Reference: Az.CosmosDB | https://docs.microsoft.com/powershell/module/az.cosmosdb
+# --------------------------------------------------
+# Purpose
+# Create Cosmos Table API account and a Table
+# --------------------------------------------------
+Function New-RandomString{Param ([Int]$Length = 10) return $(-join ((97..122) + (48..57) | Get-Random -Count $Length | ForEach-Object {[char]$_}))}
+# --------------------------------------------------
+$uniqueId = New-RandomString -Length 7 # Random alphanumeric string for unique resource names
+$apiKind = "Table"
+# --------------------------------------------------
+# Variables - ***** SUBSTITUTE YOUR VALUES *****
+$locations = @("China East", "China North") # Regions ordered by failover priority
+$resourceGroupName = "myResourceGroup" # Resource Group must already exist
+$accountName = "cosmos-$uniqueId" # Must be all lower case
+$consistencyLevel = "Session"
+$tags = @{Tag1 = "MyTag1"; Tag2 = "MyTag2"; Tag3 = "MyTag3"}
+$tableName = "myTable"
+$tableRUs = 400
+# --------------------------------------------------
+Write-Host "Creating account $accountName"
+$account = New-AzCosmosDBAccount -ResourceGroupName $resourceGroupName `
+    -Location $locations -Name $accountName -ApiKind $apiKind -Tag $tags `
+    -DefaultConsistencyLevel $consistencyLevel `
+    -EnableAutomaticFailover:$true
 
-#generate a random 10 character alphanumeric string to ensure unique resource names
-$uniqueId=$(-join ((97..122) + (48..57) | Get-Random -Count 15 | % {[char]$_}))
-
-$apiVersion = "2015-04-08"
-$location = "China North 2"
-$resourceGroupName = "mjbArmTest"
-$accountName = "mycosmosaccount-$uniqueId" # must be lower case.
-$apiType = "EnableTable"
-$accountResourceType = "Microsoft.DocumentDb/databaseAccounts"
-$tableName = "table1"
-$tableResourceName = $accountName + "/table/" + $tableName
-$tableResourceType = "Microsoft.DocumentDb/databaseAccounts/apis/tables"
-$throughput = 400
-
-# Create account
-$locations = @(
-    @{ "locationName"="China North 2"; "failoverPriority"=0 },
-    @{ "locationName"="China East 2"; "failoverPriority"=1 }
-)
-
-$consistencyPolicy = @{ "defaultConsistencyLevel"="Session" }
-
-$accountProperties = @{
-    "capabilities"= @( @{ "name"=$apiType } );
-    "databaseAccountOfferType"="Standard";
-    "locations"=$locations;
-    "consistencyPolicy"=$consistencyPolicy;
-    "enableMultipleWriteLocations"="false"
-}
-
-New-AzResource -ResourceType $accountResourceType `
-    -ApiVersion $apiVersion -ResourceGroupName $resourceGroupName -Location $location `
-    -Name $accountName -PropertyObject $accountProperties -Force
-
-# Create table
-$tableProperties = @{
-    "resource"=@{ "id"=$tableName };
-    "options"=@{ "Throughput"= $throughput }
-}
-New-AzResource -ResourceType $tableResourceType `
-    -ApiVersion $apiVersion -ResourceGroupName $resourceGroupName `
-    -Name $tableResourceName -PropertyObject $tableProperties -Force
+Write-Host "Creating Table $tableName"
+New-AzCosmosDBTable -ParentObject $account `
+    -Name $tableName -Throughput $tableRUs
 
 ```
 
@@ -85,8 +69,9 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 
 | Command | 说明 |
 |---|---|
-|**Azure 资源**| |
-| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | 创建资源。 |
+|**Azure Cosmos DB**| |
+| [New-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbaccount) | 新建 Cosmos DB 帐户。 |
+| [Set-AzCosmosDBTable](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbtable) | 创建或更新表 API 表。 |
 |**Azure 资源组**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | 删除资源组，包括所有嵌套的资源。 |
 |||

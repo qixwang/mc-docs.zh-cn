@@ -5,12 +5,12 @@ ms.topic: conceptual
 origin.date: 03/31/2020
 ms.date: 04/30/2020
 ms.author: v-yeche
-ms.openlocfilehash: a7abbda82917d44de728c0292a2d778eadf24fa4
-ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
+ms.openlocfilehash: 5bef51b43ee1522d6464c14d354da290756d1346
+ms.sourcegitcommit: 285649db9b21169f3136729c041e4d04d323229a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83392222"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84683852"
 ---
 # <a name="move-guidance-for-virtual-machines"></a>针对虚拟机的移动指南
 
@@ -34,7 +34,7 @@ ms.locfileid: "83392222"
 
 若要移动配置了 Azure 备份的虚拟机，必须从保管库中删除还原点。
 
-如果为虚拟机启用了[软删除](../../../backup/backup-azure-security-feature-cloud.md)，则在保留这些还原点的情况下，你将无法移动虚拟机。 请[禁用软删除](../../../backup/backup-azure-security-feature-cloud.md#disabling-soft-delete)，或在删除还原点后等待 14 天。
+如果为虚拟机启用了[软删除](../../../backup/backup-azure-security-feature-cloud.md)，则在保留这些还原点的情况下，你将无法移动虚拟机。 请[禁用软删除](../../../backup/backup-azure-security-feature-cloud.md)，或在删除还原点后等待 14 天。
 
 ### <a name="portal"></a>门户
 

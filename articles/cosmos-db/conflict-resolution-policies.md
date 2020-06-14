@@ -4,16 +4,16 @@ description: 本文介绍 Azure Cosmos DB 中的冲突类别和冲突解决策�
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
-origin.date: 08/05/2019
-ms.date: 01/20/2020
+origin.date: 04/20/2020
+ms.date: 06/15/2020
 ms.author: v-yeche
 ms.reviewer: sngun
-ms.openlocfilehash: 77b7d77bc825a504c03d580988cf491017c0feb9
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 8984dacdd29d77f6cd1392d7b852458c7bc02ac1
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "76270013"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723594"
 ---
 # <a name="conflict-types-and-resolution-policies"></a>冲突类型和解决策略
 

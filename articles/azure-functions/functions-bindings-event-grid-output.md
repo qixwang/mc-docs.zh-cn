@@ -3,19 +3,19 @@ title: Azure Functions 的 Azure 事件网格输出绑定
 description: 了解如何在 Azure Functions 中发送事件网格事件。
 author: craigshoemaker
 ms.topic: reference
-ms.date: 02/17/2020
+ms.date: 06/05/2020
 ms.author: v-junlch
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 1769fcd0892faac6d8fb140dc61ba3619333c050
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 32e38437746fc4cfa60e00a07e45e0d1c447f56d
+ms.sourcegitcommit: f1a76ee3242698123a3d77f44c860db040b48f70
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77494603"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84563816"
 ---
 # <a name="azure-event-grid-output-binding-for-azure-functions"></a>Azure Functions 的 Azure 事件网格输出绑定
 
-使用事件网格输出绑定将事件写入到自定义主题。 必须具有有效的[自定义主题访问密钥](../event-grid/security-authentication.md#custom-topic-publishing)。
+使用事件网格输出绑定将事件写入到自定义主题。 必须具有有效的[自定义主题访问密钥](../event-grid/security-authentication.md#authenticate-publishing-clients-using-sas-or-key)。
 
 若要了解设置和配置详细信息，请参阅[概述](./functions-bindings-event-grid.md)。
 

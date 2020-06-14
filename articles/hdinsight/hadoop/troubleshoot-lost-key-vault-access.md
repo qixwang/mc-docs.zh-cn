@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 origin.date: 01/30/2020
 ms.date: 03/02/2020
-ms.openlocfilehash: 629fdc0995019d8bf0f0b5cb84143475a30ce5f7
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 193313d56aba0d11613ed526a2fb71e57223f70f
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77563605"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723121"
 ---
 # <a name="scenario-azure-hdinsight-clusters-with-disk-encryption-lose-key-vault-access"></a>方案：已启用磁盘加密的 Azure HDInsight 群集失去 Key Vault 访问权限
 
@@ -33,7 +33,7 @@ ms.locfileid: "77563605"
 
 ### <a name="kvaad-outage"></a>KV/AAD 中断
 
-查看 [Azure Key Vault 可用性和冗余](../../key-vault/key-vault-disaster-recovery-guidance.md)以及 Azure 状态页了解更多详细信息 https://status.azure.com/
+查看 [Azure Key Vault 可用性和冗余](../../key-vault/general/disaster-recovery-guidance.md)以及 Azure 状态页了解更多详细信息 https://status.azure.com/
 
 ### <a name="kv-accidental-deletion"></a>KV 意外删除
 

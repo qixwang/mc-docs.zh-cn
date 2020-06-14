@@ -13,12 +13,12 @@ ms.author: v-jay
 ms.reviewer: ''
 origin.date: 03/12/2019
 ms.date: 12/16/2019
-ms.openlocfilehash: ba24c345285f92a0993ea129aa6aaf18a1bfa126
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.openlocfilehash: 3fdc9aa21420b120a2d5990210c6e71c3edfa495
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82126632"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723269"
 ---
 # <a name="always-encrypted-protect-sensitive-data-and-store-encryption-keys-in-azure-key-vault"></a>Always Encrypted：保护敏感数据并将加密密钥存储在 Azure 密钥保管库中
 
@@ -56,7 +56,7 @@ ms.locfileid: "82126632"
 
 至此，已配置客户端应用并且已拥有应用程序 ID，接下来，可以创建密钥保管库并配置其访问策略，以便你和你的应用程序可以访问保管库的机密（Always Encrypted 密钥）。 *create*、*get*、*list*、*sign*、*verify*、*wrapKey* 和 *unwrapKey* 权限是用于创建新的列主密钥以及通过 SQL Server Management Studio 设置加密所必需的。
 
-通过运行以下脚本，可以快速创建密钥保管库。 有关这些命令的详细说明以及有关创建和配置密钥保管库的详细信息，请参阅[什么是 Azure 密钥保管库？](../key-vault/key-vault-overview.md)。
+通过运行以下脚本，可以快速创建密钥保管库。 有关这些命令的详细说明以及有关创建和配置密钥保管库的详细信息，请参阅[什么是 Azure 密钥保管库？](../key-vault/general/overview.md)。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -622,4 +622,4 @@ SELECT FirstName, LastName, SSN, BirthDate FROM Patients;
 - [透明数据加密](https://msdn.microsoft.com/library/bb934049.aspx)
 - [SQL Server 加密](https://msdn.microsoft.com/library/bb510663.aspx)
 - [始终加密向导](https://msdn.microsoft.com/library/mt459280.aspx)
-- [始终加密博客](https://blogs.msdn.com/b/sqlsecurity/archive/tags/always-encrypted/)
+- [始终加密博客](https://docs.microsoft.com/archive/blogs/sqlsecurity/always-encrypted-key-metadata)

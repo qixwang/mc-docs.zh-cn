@@ -10,12 +10,12 @@ ms.topic: conceptual
 origin.date: 10/23/2019
 ms.date: 01/27/2020
 ms.author: v-tawe
-ms.openlocfilehash: 31ae4e458cb716e84bbafeed4b75816eb2d663bb
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: a3636eaf5f8433eca286fe3208b686ca5c4942f1
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79291838"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723584"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-portal"></a>使用 Azure 门户创建认知服务资源
 
@@ -24,7 +24,7 @@ ms.locfileid: "79291838"
 
 [!INCLUDE [cognitive-services-subscription-types](../../includes/cognitive-services-subscription-types.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 有效的 Azure 订阅 - [创建 1 元人民币试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。
 
@@ -34,7 +34,7 @@ ms.locfileid: "79291838"
 
     #### <a name="multi-service-resource"></a>[多服务资源](#tab/multiservice)
     
-    多服务资源在门户中名为“认知服务”  。 [创建认知服务资源](https://portal.azure.cn/#create/Microsoft.CognitiveServices)。
+    多服务资源在门户中名为“认知服务”。 [创建认知服务资源](https://portal.azure.cn/#create/Microsoft.CognitiveServices)。
     
     此时，多服务资源允许访问以下认知服务：
     
@@ -68,7 +68,7 @@ ms.locfileid: "79291838"
 
     ![“创建资源”屏幕](media/cognitive-services-apis-create-account/resource_create_screen-multi.png)
 
-    单击“创建”。 
+    单击**创建**。
 
     #### <a name="single-service-resource"></a>[单服务资源](#tab/singleservice)
 
@@ -82,7 +82,7 @@ ms.locfileid: "79291838"
 
     ![“创建资源”屏幕](media/cognitive-services-apis-create-account/resource_create_screen.png)
 
-    单击“创建”。 
+    单击**创建**。
 
     ***
 
@@ -103,13 +103,13 @@ ms.locfileid: "79291838"
 
 如果想要清理并删除认知服务订阅，可以删除资源或资源组。 删除资源组也会删除该组中包含的任何其他资源。
 
-1. 在 Azure 门户中展开左侧的菜单，打开服务菜单，然后选择“资源组”以显示资源组的列表。 
+1. 在 Azure 门户中展开左侧的菜单，打开服务菜单，然后选择“资源组”以显示资源组的列表。
 2. 找到包含要删除的资源的资源组
-3. 右键单击资源组列表。 选择“删除资源组”并进行确认。 
+3. 右键单击资源组列表。 选择“删除资源组”并进行确认。
 
 ## <a name="see-also"></a>另请参阅
 
-<!-- * [Authenticate requests to Azure Cognitive Services](authentication.md) -->
+* [对 Azure 认知服务的请求进行身份验证](authentication.md)
 
 * [什么是 Azure 认知服务？](Welcome.md)
 * [自然语言支持](language-support.md)

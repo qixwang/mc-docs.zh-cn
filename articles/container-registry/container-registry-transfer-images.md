@@ -3,17 +3,18 @@ title: 传输项目
 description: 使用 Azure 存储帐户创建传输管道，将映像集合或其他项目从一个容器注册表传输到另一个注册表
 ms.topic: article
 origin.date: 05/08/2020
-ms.date: 06/01/2020
+ms.date: 06/08/2020
 ms.author: v-yeche
 ms.custom: ''
-ms.openlocfilehash: 2940d5cf3c9cb17e5c18d4f984e2de2605f8a467
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+ms.openlocfilehash: 11d7788a14a4055f72f6d49d082124169e7060e5
+ms.sourcegitcommit: 8dae792aefbe44e8388f961b813e3da6564423ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84200031"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84654894"
 ---
 <!--Verified successfuly, ONLY CHARACTERS CONTENT-->
+<!--Parameter Value have been change in content-->
 # <a name="transfer-artifacts-to-another-registry"></a>将项目传输到另一个注册表
 
 本文介绍如何将映像集合或其他注册表项目从一个 Azure 容器注册表传输到另一个注册表。 源和目标注册表可存在于相同或不同的订阅、Active Directory 租户、Azure 云或相互独立的云中。 

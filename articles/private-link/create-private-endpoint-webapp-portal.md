@@ -5,25 +5,27 @@ author: rockboyfor
 ms.assetid: b8c5c7f8-5e90-440e-bc50-38c990ca9f14
 ms.topic: article
 origin.date: 03/12/2020
-ms.date: 04/13/2020
+ms.date: 06/15/2020
 ms.author: v-yeche
 ms.service: app-service
 ms.workload: web
-ms.openlocfilehash: 066f0703bae5214b3c24ee1da14b55a164d1572a
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 64e67e10033b6eea9aac9d04d504e4e35a5a0c2d
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80517004"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723713"
 ---
+<!--Available on US WEST 2 AND US EAST-->
 <!--RELEASE BEFORE CONFIRM-->
-<!--CURRENTLY THIS FEATURE AVAILABLE ON -->
+<!--CURRENTLY THIS FEATURE AVAILABLE ON US WEST 2 AND US EAST-->
 # <a name="connect-privately-to-a-web-app-using-azure-private-endpoint-preview"></a>使用 Azure 专用终结点以私密方式连接到 Web 应用（预览版）
 
 Azure 专用终结点是 Azure 中专用链接的构建基块。 它可以让你以私密方式连接到 Web 应用。
 本快速入门介绍如何使用专用终结点部署一个 Web 应用，然后从虚拟机连接到此 Web 应用。
 
 <!--NOT AVAILABLE ON [Using Private Endpoints for Azure Web App][privatenedpointwebapp]-->
+<!--Available on US WEST 2 AND US EAST-->
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
 通过 https://portal.azure.cn 登录到 Azure 门户。

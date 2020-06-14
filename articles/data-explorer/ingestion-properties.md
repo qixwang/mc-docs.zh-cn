@@ -7,13 +7,13 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 03/19/2020
-ms.date: 05/09/2020
-ms.openlocfilehash: 5dbbe333842b339f445ee054bd2e7db143ddbeb7
-ms.sourcegitcommit: bfbd6694da33f703481386f2a3f16850c4e94bfa
+ms.date: 06/09/2020
+ms.openlocfilehash: a411a3423a81f7ec20215c9faf03c475804822b7
+ms.sourcegitcommit: 73697fa9c19a40d235df033400c74741e7d0f3f4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83417745"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84574893"
 ---
 # <a name="azure-data-explorer-data-ingestion-properties"></a>Azure 数据资源管理器的数据引入属性 
 
@@ -42,5 +42,5 @@ ms.locfileid: "83417745"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 详细了解[数据引入](/data-explorer/ingest-data-overview)
+* 详细了解[数据引入](ingest-data-overview.md)
 * 详细了解[支持的数据格式](ingestion-supported-formats.md)

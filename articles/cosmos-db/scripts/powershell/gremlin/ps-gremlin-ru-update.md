@@ -5,15 +5,15 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: sample
-origin.date: 05/18/2019
-ms.date: 01/20/2020
+origin.date: 05/01/2020
+ms.date: 06/15/2020
 ms.author: v-yeche
-ms.openlocfilehash: 817cd1216293ef6e9994a947172d5fbc01ba468b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 75ba3541b3f2f3bdd2456d727ba8a466ff578e49
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "76270093"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723728"
 ---
 # <a name="update-rus-for-a-database-or-graph-for-azure-cosmos-db---gremlin-api"></a>更新 Azure Cosmos DB 的数据库或图的 RU/秒 - Gremlin API
 
@@ -24,37 +24,46 @@ ms.locfileid: "76270093"
 ## <a name="sample-script"></a>示例脚本
 
 ```powershell
-# Update RU for an Azure Cosmos SQL Gremlin API database or graph
+# Reference: Az.CosmosDB | https://docs.microsoft.com/powershell/module/az.cosmosdb
+# --------------------------------------------------
+# Purpose
+# Update graph throughput
+# --------------------------------------------------
+# Variables - ***** SUBSTITUTE YOUR VALUES *****
+$resourceGroupName = "myResourceGroup" # Resource Group must already exist
+$accountName = "myaccount" # Must be all lower case
+$databaseName = "myDatabase"
+$graphName = "myGraph"
+$newRUs = 500
+# --------------------------------------------------
 
-$apiVersion = "2015-04-08"
-$resourceGroupName = "myResourceGroup"
-$accountName = "mycosmosaccount"
-$databaseName = "database1"
-$databaseThroughputResourceName = $accountName + "/gremlin/" + $databaseName + "/throughput"
-$databaseThroughputResourceType = "Microsoft.DocumentDb/databaseAccounts/apis/databases/settings"
-$graphName = "graph1"
-$graphThroughputResourceName = $accountName + "/gremlin/" + $databaseName + "/" + $graphName + "/throughput"
-$graphThroughputResourceType = "Microsoft.DocumentDb/databaseAccounts/apis/databases/graphs/settings"
-$throughput = 500
-$updateResource = "database" # or "graph"
+$throughput = Get-AzCosmosDBGremlinGraphThroughput `
+    -ResourceGroupName $resourceGroupName `
+    -AccountName $accountName -DatabaseName $databaseName `
+    -Name $graphName
 
-$properties = @{
-    "resource"=@{"throughput"=$throughput}
+$currentRUs = $throughput.Throughput
+$minimumRUs = $throughput.MinimumThroughput
+
+Write-Host "Current throughput is $currentRUs. Minimum allowed throughput is $minimumRUs."
+
+if ([int]$newRUs -lt [int]$minimumRUs) {
+    Write-Host "Requested new throughput of $newRUs is less than minimum allowed throughput of $minimumRUs."
+    Write-Host "Using minimum allowed throughput of $minimumRUs instead."
+    $newRUs = $minimumRUs
 }
 
-if($updateResource -eq "database"){
-Set-AzResource -ResourceType $databaseThroughputResourceType `
-    -ApiVersion $apiVersion -ResourceGroupName $resourceGroupName `
-    -Name $databaseThroughputResourceName -PropertyObject $properties
-}
-elseif($updateResource -eq "graph"){
-Set-AzResource -ResourceType $graphThroughputResourceType `
-    -ApiVersion $apiVersion -ResourceGroupName $resourceGroupName `
-    -Name $graphThroughputResourceName -PropertyObject $properties
+if ([int]$newRUs -eq [int]$currentRUs) {
+    Write-Host "New throughput is the same as current throughput. No change needed."
 }
 else {
-    Write-Host("Must select database or graph")    
+    Write-Host "Updating throughput to $newRUs."
+
+    Update-AzCosmosDBGremlinGraphThroughput -ResourceGroupName $resourceGroupName `
+        -AccountName $accountName -DatabaseName $databaseName `
+        -Name $graphName -Throughput $newRUs
 }
+
 ```
 
 ## <a name="clean-up-deployment"></a>清理部署
@@ -71,8 +80,9 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 
 | Command | 说明 |
 |---|---|
-|**Azure 资源**| |
-| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | 创建资源。 |
+|**Azure Cosmos DB**| |
+| [Get-AzCosmosDBGremlinGraphThroughput](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbgremlingraphthroughput) | 获取 Gremlin API 图的吞吐量值。 |
+| [Update-AzCosmosDBGremlinGraphThroughput](https://docs.microsoft.com/powershell/module/az.cosmosdb/update-azcosmosdbgremlingraphthroughput) | 更新 Gremlin API 图的吞吐量值。 |
 |**Azure 资源组**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | 删除资源组，包括所有嵌套的资源。 |
 |||
@@ -83,4 +93,4 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 
 可以在 [Azure Cosmos DB PowerShell 脚本](../../../powershell-samples.md)中找到其他 Azure Cosmos DB PowerShell 脚本示例。
 
-<!--Update_Description: update meta properties -->
+<!-- Update_Description: update meta properties, wording update, update link -->

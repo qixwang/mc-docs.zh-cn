@@ -9,18 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-origin.date: 11/08/2019
-ms.date: 11/26/2019
+ms.date: 06/01/2020
 ms.author: v-junlch
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c07e97ecae1c2da239801272464d3879441da11e
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: bed0e314b18e8b138dcd6ec627b99a5f4694bfc0
+ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74655422"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84275521"
 ---
 # <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>用于组管理的 Azure Active Directory 版本 2 cmdlet
 
@@ -53,6 +52,10 @@ ms.locfileid: "74655422"
 
 现在可以开始使用模块中的 cmdlet 了。 有关 Azure AD 模块中 cmdlet 的完整说明，请参阅 [Azure Active Directory PowerShell 版本 2](https://docs.microsoft.com/powershell/azure/install-adv2?view=azureadps-2.0) 的联机参考文档。
 
+> [!NOTE]
+> Azure AD PowerShell cmdlet 不适用于新版 Powershell 7，因为它基于 .Net Core。 我们意识到这一点，此 cmdlet 正在更新过程中。 从现在开始，我们建议使用 Windows Powershell 5.x 模块来执行 Azure AD PowerShell 操作。 
+
+
 ## <a name="connect-to-the-directory"></a>连接到目录
 
 在开始使用 Azure AD PowerShell cmdlet 管理组之前，必须将 PowerShell 会话连接到要管理的目录。 请使用以下命令：
@@ -64,8 +67,8 @@ ms.locfileid: "74655422"
 该 cmdlet 会提示用户输入访问目录时需要使用的凭据。 在此示例中，我们将使用 karen@drumkit.partner.onmschina.cn 访问演示目录。 该 cmdlet 会返回一个确认，表明会话已成功连接到目录：
 
 ```powershell
-    Account                       Environment Tenant
-    -------                       ----------- ------
+    Account                       Environment Tenant ID
+    -------                       ----------- ---------
     Karen@drumkit.partner.onmschina.cn AzureChinaCloud  85b5ff1e-0402-400c-9e3c-0f…
 ```
 
@@ -131,7 +134,7 @@ ms.locfileid: "74655422"
 ```
 
 > [!NOTE]
-> Azure AD PowerShell cmdlet 实现 OData 查询标准。 有关详细信息，请参阅[使用 OData 终结点的 OData 系统查询选项](https://msdn.microsoft.com/library/gg309461.aspx#BKMK_filter)中的 $filter  。
+> Azure AD PowerShell cmdlet 实现 OData 查询标准。 有关详细信息，请参阅[使用 OData 终结点的 OData 系统查询选项](https://msdn.microsoft.com/library/gg309461.aspx#BKMK_filter)中的 $filter。
 
 ## <a name="create-groups"></a>创建组
 
@@ -330,4 +333,3 @@ ObjectId 参数是要将成员添加到的组的 ObjectID，-RefObjectId 是要�
 * [使用 Azure Active Directory 组管理对资源的访问](../fundamentals/active-directory-manage-groups.md?context=azure/active-directory/users-groups-roles/context/ugr-context)
 * [将本地标识与 Azure Active Directory 集成](../hybrid/whatis-hybrid-identity.md?context=azure/active-directory/users-groups-roles/context/ugr-context)
 
-<!-- Update_Description: wording update -->

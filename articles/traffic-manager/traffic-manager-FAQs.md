@@ -10,14 +10,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 02/26/2019
-ms.date: 04/13/2020
+ms.date: 06/15/2020
 ms.author: v-yeche
-ms.openlocfilehash: 5c11300c5dfb1d46424d1591518f5bcf5ed1a814
-ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
+ms.openlocfilehash: 4d71c2c84ce1b06444f5a1d1fa0757a9aa392741
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82093275"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723305"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>流量管理器常见问题解答 (FAQ)
 
@@ -260,25 +260,25 @@ Azure Resource Manager 要求所有资源组指定一个位置，这决定了部
 
 对于使用多值路由以外的任何路由方法的配置文件：
 
-|传入的查询请求|    终结点类型|  提供的响应|
+|传入的查询请求|     终结点类型|     提供的响应|
 |--|--|--|
-|ANY |  A/AAAA/CNAME |  目标终结点| 
-|A |    A/CNAME | 目标终结点|
-|A |    AAAA |  无数据 |
-|AAAA | AAAA/CNAME |  目标终结点|
-|AAAA | A | 无数据 |
-|CNAME |    CNAME | 目标终结点|
-|CNAME  |A/AAAA | 无数据 |
+|ANY |    A/AAAA/CNAME |    目标终结点| 
+|A |    A/CNAME |    目标终结点|
+|A |    AAAA |    无数据 |
+|AAAA |    AAAA/CNAME |    目标终结点|
+|AAAA |    A |    无数据 |
+|CNAME |    CNAME |    目标终结点|
+|CNAME     |A/AAAA |    无数据 |
 |
 
 对于将路由方法设置为多值路由的配置文件：
 
-|传入的查询请求|    终结点类型 | 提供的响应|
+|传入的查询请求|     终结点类型 |    提供的响应|
 |--|--|--|
-|ANY |  混合 A 和 AAAA | 目标终结点|
-|A |    混合 A 和 AAAA | 仅 A 类型的目标终结点|
-|AAAA   |混合 A 和 AAAA|     仅 AAAA 类型的目标终结点|
-|CNAME |    混合 A 和 AAAA | 无数据 |
+|ANY |    混合 A 和 AAAA |    目标终结点|
+|A |    混合 A 和 AAAA |    仅 A 类型的目标终结点|
+|AAAA    |混合 A 和 AAAA|     仅 AAAA 类型的目标终结点|
+|CNAME |    混合 A 和 AAAA |    无数据 |
 
 ### <a name="can-i-use-a-profile-with-ipv4--ipv6-addressed-endpoints-in-a-nested-profile"></a>可以在嵌套配置文件中使用终结点采用 IPv4/IPv6 地址的配置文件吗？
 

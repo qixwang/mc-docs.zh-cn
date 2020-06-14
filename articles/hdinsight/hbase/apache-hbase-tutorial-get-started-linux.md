@@ -12,15 +12,15 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.devlang: na
 ms.topic: conceptual
-origin.date: 06/25/2019
-ms.date: 10/28/2019
+origin.date: 04/14/2020
+ms.date: 06/22/2020
 ms.author: v-yiso
-ms.openlocfilehash: 9bf66cc25929ecd2655201e2046fae873a8f4d18
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: b461580b5ccdacb7146f5281fa625867bb130045
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "72583850"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723115"
 ---
 # <a name="tutorial-use-apache-hbase-in-azure-hdinsight"></a>教程：在 Azure HDInsight 中使用 Apache HBase
 
@@ -39,18 +39,18 @@ ms.locfileid: "72583850"
 
 * SSH 客户端。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md)。
 
-* Bash。 本文中的示例使用 Windows 10 上的 Bash shell 来执行 curl 命令。 有关安装步骤，请参阅[适用于 Linux 的 Windows 子系统安装指南 - Windows 10](https://docs.microsoft.com/windows/wsl/install-win10)。  也可以使用其他 [Unix shell](https://www.gnu.org/software/bash/)。  这些 curl 示例在经过轻微的修改后，可在 Windows 命令提示符下运行。  或者，可以使用 Windows PowerShell cmdlet [Invoke-RestMethod](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-restmethod)。
+* Bash。 本文中的示例使用 Windows 10 上的 Bash shell 来执行 curl 命令。 有关安装步骤，请参阅[适用于 Linux 的 Windows 子系统安装指南 - Windows 10](https://docs.microsoft.com/windows/wsl/install-win10)。  也可以使用其他 [Unix shell](https://www.gnu.org/software/bash/)。  这些 curl 示例在经过轻微的修改后，可在 Windows 命令提示符下运行。  也可使用 Windows PowerShell cmdlet [Invoke-RestMethod](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-restmethod)。
 
 
 ## <a name="create-apache-hbase-cluster"></a>创建 Apache HBase 群集
 
-以下过程使用 Azure 资源管理器模板创建 HBase 群集，以及相关的默认 Azure 存储帐户。 若要了解该过程与其他群集创建方法中使用的参数，请参阅 [在 HDInsight 中创建基于 Linux 的 Hadoop 群集](../hdinsight-hadoop-provision-linux-clusters.md)。
+以下过程使用 Azure 资源管理器模板创建 HBase 群集。 该模板还创建相关的默认 Azure 存储帐户。 若要了解该过程与其他群集创建方法中使用的参数，请参阅 [在 HDInsight 中创建基于 Linux 的 Hadoop 群集](../hdinsight-hadoop-provision-linux-clusters.md)。
 
 1. 选择下面的图像可在 Azure 门户中打开模板。 模板位于 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/)中。
 
     <a href="https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-linux%2Fazuredeploy.json" target="_blank"><img src="./media/apache-hbase-tutorial-get-started-linux/hdi-deploy-to-azure1.png" alt="Deploy to Azure"></a>
 
-2. 在“自定义部署”  边栏选项卡中，输入以下信息：
+2. 在“自定义部署”对话框中输入以下值：
 
     |属性 |说明 |
     |---|---|
@@ -58,14 +58,14 @@ ms.locfileid: "72583850"
     |资源组|创建 Azure 资源管理组，或使用现有的组。|
     |位置|指定资源组的位置。 |
     |ClusterName|输入 HBase 群集的名称。|
-    |群集登录名和密码|默认登录名为“admin”  。|
-    |SSH 用户名和密码|默认用户名为“sshuser”  。|
+    |群集登录名和密码|默认登录名为“admin”。|
+    |SSH 用户名和密码|默认用户名为“sshuser”。|
 
      其他参数是可选的。  
 
-    每个群集都有一个 Azure 存储帐户依赖项。 删除群集后，数据将保留在存储帐户中。 群集的默认存储帐户名为群集名称后接“store”。 该名称已在模板 variables 节中硬编码。
+    每个群集都有一个 Azure 存储帐户依赖项。 删除群集后，数据保留在存储帐户中。 群集的默认存储帐户名为群集名称后接“store”。 该名称已在模板 variables 节中硬编码。
 
-3. 选择“我同意上述条款和条件”，并选择“购买”。   创建群集大约需要 20 分钟时间。
+3. 选择“我同意上述条款和条件”，并选择“购买”。  创建群集大约需要 20 分钟时间。
 
 > [!NOTE]
 > 删除 HBase 群集后，可使用同一默认 Blob 容器创建另一 HBase 群集。 新群集会选取在原始群集中创建的 HBase 表。 为了避免不一致，建议在删除群集之前先禁用 HBase 表。
@@ -213,7 +213,7 @@ HBase 提供了多种方法用于将数据载入表中。  有关详细信息，
 
 REST API 通过 [基本身份验证](https://en.wikipedia.org/wiki/Basic_access_authentication)进行保护。 始终应该使用安全 HTTP (HTTPS) 来发出请求，确保安全地将凭据发送到服务器。
 
-1. 启动环境变量以便于使用。 通过将 `MYPASSWORD` 替换为群集登录密码来编辑以下命令。 将 `MYCLUSTERNAME` 替换为 HBase 群集的名称。 然后输入命令。
+1. 为便于使用，请设置环境变量。 通过将 `MYPASSWORD` 替换为群集登录密码来编辑以下命令。 将 `MYCLUSTERNAME` 替换为 HBase 群集的名称。 然后输入命令。
 
     ```bash
     export password='MYPASSWORD'
@@ -250,7 +250,7 @@ REST API 通过 [基本身份验证](https://en.wikipedia.org/wiki/Basic_access_
     -v
     ```
 
-    必须使用 base64 来为 -d 参数中指定的值编码。 在此示例中：
+    对 -d 开关中指定的值进行 Base64 编码。 在此示例中：
 
    * MTAwMA==:1000
    * UGVyc29uYWw6TmFtZQ==:Personal:Name
@@ -289,9 +289,9 @@ HDInsight 中的 HBase 随附了一个 Web UI 用于监视群集。 使用该 We
 
 1. 登录到 Ambari Web UI（网址是 `https://CLUSTERNAME.azurehdinsight.cn`，其中，`CLUSTERNAME` 是 HBase 群集的名称）。
 
-1. 从左侧菜单中选择“HBase”  。
+1. 从左侧菜单中选择“HBase”。
 
-1. 选择页面顶部的“快速链接”  ，指向活动的 Zookeeper 节点链接，然后选择“HBase Master UI”  。  该 UI 会在另一个浏览器标签页中打开：
+1. 选择页面顶部的“快速链接”，指向活动的 Zookeeper 节点链接，然后选择“HBase Master UI”。  该 UI 会在另一个浏览器标签页中打开：
 
    ![HDInsight HBase HMaster UI](./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-hmaster-ui.png)
 
@@ -308,10 +308,10 @@ HDInsight 中的 HBase 随附了一个 Web UI 用于监视群集。 使用该 We
 为了避免不一致，建议在删除群集之前先禁用 HBase 表。 可以使用 HBase 命令 `disable 'Contacts'`。 如果不打算继续使用此应用程序，请使用以下步骤删除创建的 HBase 群集：
 
 1. 登录到 [Azure 门户](https://portal.azure.cn/)。
-1. 在顶部的“搜索”框中，键入 **HDInsight**。 
-1. 选择“服务”下的“HDInsight 群集”   。
-1. 在显示的 HDInsight 群集列表中，单击为本教程创建的群集旁边的“...”。 
-1. 单击“删除”  。 单击 **“是”** 。
+1. 在顶部的“搜索”框中，键入 **HDInsight**。
+1. 选择“服务”下的“HDInsight 群集” 。
+1. 在显示的 HDInsight 群集列表中，单击为本教程创建的群集旁边的“...”。
+1. 单击“删除” 。 单击 **“是”** 。
 
 ## <a name="next-steps"></a>后续步骤
 

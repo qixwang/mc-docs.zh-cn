@@ -8,15 +8,17 @@ ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 02/20/2020
-ms.date: 03/16/2020
-ms.openlocfilehash: 282ed96bbc448e5b957e1103983549dd0de09d7e
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 06/09/2020
+ms.openlocfilehash: 97b3242efb1d8334e54d8e20c67b97b659ddaf98
+ms.sourcegitcommit: c4fc01b7451951ef7a9616fca494e1baf29db714
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79497196"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84564329"
 ---
 # <a name="how-to-add-a-custom-skill-to-an-azure-cognitive-search-enrichment-pipeline"></a>如何向 Azure 认知搜索扩充管道添加自定义技能
+
+<!-- > [!VIDEO https://www.youtube.com/embed/fHLCE-NZeb4?version=3&start=172&end=221] -->
 
 Azure 认知搜索中的[扩充管道](cognitive-search-concept-intro.md)可以从[内置认知技能](cognitive-search-predefined-skills.md)和你自己创建并添加到管道中的[自定义技能](cognitive-search-custom-skill-web-api.md)进行装配。 在本文中，你将了解如何创建自定义技能并使其公开某个接口，用以将该技能包括在 AI 扩充管道中。 
 
@@ -40,6 +42,10 @@ Azure 认知搜索中的[扩充管道](cognitive-search-concept-intro.md)可以�
 目前，与自定义技能交互的唯一机制是通过 Web API 接口。 Web API 需求必须满足本节中所述的要求。
 
 ### <a name="1--web-api-input-format"></a>1.Web API 输入格式
+
+
+<!-- > [!VIDEO https://www.youtube.com/embed/fHLCE-NZeb4?version=3&start=294&end=340] -->
+
 
 Web API 必须接受要处理的一组记录。 每条记录都必须包含一个“属性包”，该属性包是提供给 Web API 的输入。 
 

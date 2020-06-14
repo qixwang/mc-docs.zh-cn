@@ -5,14 +5,14 @@ services: event-grid
 author: Johnnytechn
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 05/06/2020
+ms.date: 06/12/2020
 ms.author: v-johya
-ms.openlocfilehash: d64a4bff02b5344d7075450327918c1325777af7
-ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
+ms.openlocfilehash: da405a91dcb8514b47c956f965af64c842b370e1
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "83001964"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723580"
 ---
 # <a name="azure-machine-learning-as-an-event-grid-source"></a>作为事件网格源的 Azure 机器学习
 
@@ -267,6 +267,6 @@ Azure 机器学习发出以下事件类型：
 
 * 有关 Azure 事件网格的简介，请参阅[什么是事件网格？](overview.md)
 * 有关创建 Azure 事件网格订阅的详细信息，请参阅[事件网格订阅架构](subscription-creation-schema.md)
-* 有关如何将 Azure 事件网格与 Azure 机器学习配合使用的简介，请参阅[使用 Azure 机器学习事件](/machine-learning/service/concept-event-grid-integration)
-* 若要通过示例来了解如何将 Azure 事件网格与 Azure 机器学习配合使用，请参阅[创建事件驱动的机器学习工作流](/machine-learning/service/how-to-use-event-grid)
+* 有关如何将 Azure 事件网格与 Azure 机器学习配合使用的简介，请参阅[使用 Azure 机器学习事件](/machine-learning/concept-event-grid-integration)
+* 若要通过示例来了解如何将 Azure 事件网格与 Azure 机器学习配合使用，请参阅[创建事件驱动的机器学习工作流](/machine-learning/how-to-use-event-grid)
 

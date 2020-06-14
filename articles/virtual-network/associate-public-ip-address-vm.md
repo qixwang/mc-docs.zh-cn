@@ -6,19 +6,20 @@ services: virtual-network
 documentationcenter: ''
 author: rockboyfor
 ms.service: virtual-network
+ms.subservice: ip-services
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 02/21/2019
-ms.date: 04/13/2020
+ms.date: 06/15/2020
 ms.author: v-yeche
-ms.openlocfilehash: ca94d0efdb7ff6b9a843e12e827c26e6e52fa7e2
-ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
+ms.openlocfilehash: ec51c126c18bc754e0f04cbdd35faf3593895cff
+ms.sourcegitcommit: ff67734e01c004be575782b4812cfe857e435f4d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82093364"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84486989"
 ---
 <!--Verified successfully-->
 # <a name="associate-a-public-ip-address-to-a-virtual-machine"></a>将公共 IP 地址关联到虚拟机

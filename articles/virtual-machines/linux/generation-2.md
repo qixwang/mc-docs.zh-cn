@@ -1,18 +1,18 @@
 ---
 title: Azure 对第 2 代 VM 的支持
-description: 第 2 代 VM 的 Azure 支持概述
+description: Azure 对第 2 代 VM 的支持概述
 author: Johnnytechn
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.topic: article
-ms.date: 04/20/2020
+ms.date: 06/05/2020
 ms.author: v-johya
-ms.openlocfilehash: 57b0d2da59905bb222869c488375894ef94d4aa5
-ms.sourcegitcommit: ebedf9e489f5218d4dda7468b669a601b3c02ae5
+ms.openlocfilehash: a9ff15d598558fa53be077190240d725c46848d6
+ms.sourcegitcommit: 285649db9b21169f3136729c041e4d04d323229a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82159159"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84684052"
 ---
 <!--Verify sucessfully-->
 # <a name="support-for-generation-2-vms-on-azure"></a>Azure 对第 2 代 VM 的支持
@@ -43,10 +43,7 @@ Azure 中的所有 VM 大小都支持第 1 代 VM（Mv2 系列 VM 除外）。 A
     <!--Not Available on * [HB-series](../hb-series.md)-->
     <!--Not Available on * [HC-series](../hc-series.md)-->
     <!--Not Available on * [Ls-series](/virtual-machines/linux/sizes-previous-gen#ls-series) and [Lsv2-series](../lsv2-series.md)-->
-    <!--Not Available on * [Mv2-series](../mv2-series.md)-->
-    
-* [NCv3 系列](../ncv3-series.md)
-    
+    <!--Not Available on * [Mv2-series](../mv2-series.md)-->      
     <!--Not Available on * [NCv2-series](../ncv2-series.md)-->
     <!--Not Available on * [ND-series](../nd-series.md)-->
     <!--Not Available on * [NVv3-series](../nvv3-series.md)-->
@@ -56,20 +53,12 @@ Azure 中的所有 VM 大小都支持第 1 代 VM（Mv2 系列 VM 除外）。 A
 第 2 代 VM 支持以下市场映像：
 
 * Windows Server 2019、2016、2012 R2、2012
+* Windows 10
+* SUSE Linux Enterprise Server 15 SP1
+* SUSE Linux Enterprise Server 12 SP4
+* Ubuntu Server 16.04、18.04、19.04、19.10 
+    
 
-    <!--Not Available on * Windows 10 -->
-    <!--Not Available on * SUSE Linux Enterprise Server -->
-    
-* Ubuntu Server 16.04、18.04
-    
-    <!--Not Available on * Ubuntu Server 19.04, 19.10  -->
-    
-<!--MOONCAKE: Not Available on SUSE till on 03/09/2020-->
-<!--MOONCAKE: CUSTOMIZED-->
-
-> [!NOTE]
-> 可将 Windows Server 上的 `(Gen2)` 后缀或 Linux 的 `(Generation 2 VM)` 追加到映像说明，然后在市场中搜索相应的映像。<br />
-> 例如：`Windows Server 2019 Datacenter (Gen2)` 和 `Ubuntu Server 16.04 LTS (Generation 2 VM)`
 
 <!--MOONCAKE: CUSTOMIZED-->
 
@@ -118,16 +107,16 @@ Azure 目前不支持本地 Hyper-V 对第 2 代 VM 所支持的某些特性。
 下面是在 Azure 门户中创建第 2 代 (Gen2) VM 的步骤。
 
 1. 通过 https://portal.azure.cn 登录到 Azure 门户。
-1. 选择“创建资源”。 
-1. 在左侧的“Azure 市场”中单击“查看全部”  。
+1. 选择“创建资源”。
+1. 在左侧的“Azure 市场”中单击“查看全部”。
 1. 选择支持 Gen2 的映像。
 1. 单击**创建**。
-1. 在“高级”  选项卡的“VM 代系”  部分下，选择“Gen 2”  选项。
-1. 在“基本信息”  选项卡的“实例详细信息”  下，转到“大小”  并打开“选择 VM 大小”  边栏选项卡。
+1. 在“高级”选项卡的“VM 代系”部分下，选择“Gen 2”选项。
+1. 在“基本信息”选项卡的“实例详细信息”下，转到“大小”并打开“选择 VM 大小”边栏选项卡。
 1. 选择[支持的第 2 代 VM](#generation-2-vm-sizes)。
 1. 通过 [Azure 门户创建流](quick-create-portal.md)完成 VM 的创建。
 
-![选择“第 1 代”或“第 2 代”VM](./media/generation-2/gen1-gen2-select.png)
+![选择第 1 代或第 2 代 VM](./media/generation-2/gen1-gen2-select.png)
 
 #### <a name="powershell"></a>PowerShell
 
@@ -173,7 +162,7 @@ az vm image list --publisher Canonical --sku gen2 --output table --all
 * **我有一个来自本地第 2 代 VM 的 .vhd 文件。我可以使用该 .vhd 文件在 Azure 中创建第 2 代 VM 吗？**
   是的，你可以将第 2 代 .vhd 文件带到 Azure，并使用该文件创建第 2 代 VM。 请使用以下步骤来执行该操作：
     1. 将 .vhd 上传到你要创建 VM 的同一区域中的存储帐户。
-    1. 从 .vhd 文件创建托管磁盘。 将“Hyper-V Generation”属性设置为 V2。 以下 PowerShell 命令在创建托管磁盘时设置“Hyper-V Generation”属性。
+    1. 从该 .vhd 文件创建托管磁盘。 将“Hyper-V Generation”属性设置为 V2。 以下 PowerShell 命令在创建托管磁盘时设置“Hyper-V Generation”属性。
 
         ```powershell
         $sourceUri = 'https://xyzstorage.blob.core.chinacloudapi.cn/vhd/abcd.vhd'. #<Provide location to your uploaded .vhd file>
@@ -191,12 +180,12 @@ az vm image list --publisher Canonical --sku gen2 --output table --all
   若要在 Azure 门户中增大 OS 磁盘大小：
 
   1. 在 Azure 门户中，转到 VM 属性页。
-  1. 若要关闭并解除分配 VM，请选择“停止”按钮。 
-  1. 在“磁盘”部分，选择要增大的 OS 磁盘。 
-  1. 在“磁盘”部分，选择“配置”并将“大小”更新为所需的值。   
+  1. 若要关闭并解除分配 VM，请选择“停止”按钮。
+  1. 在“磁盘”部分，选择要增大的 OS 磁盘。
+  1. 在“磁盘”部分，选择“配置”并将“大小”更新为所需的值。  
   1. 返回到 VM 属性页并**启动** VM。
 
-  你可能会看到一条警告，指出 OS 磁盘大于 2 TB。 该警告不适用于第 2 代 VM。 但是，不建议使用大于 4 TB 的 OS 磁盘大小。 
+  你可能会看到一条警告，指出 OS 磁盘大于 2 TB。 该警告不适用于第 2 代 VM。 但是，不建议使用大于 4 TB 的 OS 磁盘大小。
 
 * **第 2 代 VM 是否支持加速网络？**  
     是的。 有关详细信息，请参阅[创建具有加速网络的 VM](../../virtual-network/create-vm-accelerated-networking-cli.md)。
@@ -214,7 +203,7 @@ az vm image list --publisher Canonical --sku gen2 --output table --all
 
     可以通过执行以下操作来解决此问题：
 
-    1. 确认“高级”  选项卡中的“VM 代系”  属性已设为“Gen 2”  。
+    1. 确认“高级”选项卡中的“VM 代系”属性已设为“Gen 2”。
     1. 验证是否正在搜索[支持 Gen2 VM 的 VM 大小](#generation-2-vm-sizes)。
 
 ## <a name="next-steps"></a>后续步骤

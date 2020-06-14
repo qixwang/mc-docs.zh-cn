@@ -1,18 +1,18 @@
 ---
-title: 在 Azure Database for MariaDB 中创建和管理只读副本 - AZURE CLI、REST API
+title: 管理只读副本 - Azure CLI、REST API - Azure Database for MariaDB
 description: 本文介绍如何使用 Azure CLI 和 REST API 在 Azure Database for MariaDB 中设置和管理只读副本。
 author: WenJason
 ms.author: v-jay
 ms.service: mariadb
 ms.topic: conceptual
-origin.date: 3/18/2020
-ms.date: 04/13/2020
-ms.openlocfilehash: b50a4f2cf8f0808473999e0727390e001a65b694
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+origin.date: 4/21/2020
+ms.date: 06/08/2020
+ms.openlocfilehash: 665600c5b05b5ec4925c00026dcf1ce2ebcab7ef
+ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82127050"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84275605"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-the-azure-cli-and-rest-api"></a>如何使用 Azure CLI 和 REST API 在 Azure Database for MariaDB 中创建和管理只读副本
 
@@ -46,9 +46,6 @@ az mariadb server replica create --name mydemoreplicaserver --source-server myde
 | source-server | mydemoserver | 要从中进行复制的现有主服务器的名称或 ID。 |
 
 若要创建跨区域只读副本，请使用 `--location` 参数。 
-
-> [!NOTE]
-> 跨区域复制处于预览状态。
 
 下面的 CLI 示例在中国北部 2 创建副本。
 

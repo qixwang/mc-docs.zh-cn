@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 origin.date: 02/18/2020
-ms.date: 05/11/2020
-ms.openlocfilehash: 08a714bc0959a638a3ab999ed7e2545b3428f6ae
-ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
+ms.date: 06/15/2020
+ms.openlocfilehash: 571e0ee0ead4a9d0b4dd7e4ee358f955b8152c1b
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82197867"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723255"
 ---
 # <a name="copy-data-to-or-from-azure-data-explorer-by-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure 数据资源管理器复制数据
 
@@ -197,7 +197,7 @@ Azure 数据资源管理器链接服务支持以下属性：
 |:--- |:--- |:--- |
 | type | 复制活动接收器的 **type** 属性必须设置为：**AzureDataExplorerSink**。 | 是 |
 | ingestionMappingName | 基于 Kusto 表预先创建的[映射](https://docs.microsoft.com/azure/kusto/management/mappings#csv-mapping)的名称。 若要将源中的列映射到 Azure 数据资源管理器（适用于[所有支持的源存储和格式](copy-activity-overview.md#supported-data-stores-and-formats)，包括 CSV/JSON/Avro 格式），可以使用复制活动[列映射](copy-activity-schema-and-type-mapping.md)（按名称隐式映射或按配置显式映射）和/或 Azure 数据资源管理器映射。 | 否 |
-| additionalProperties | 一个属性包，可用于指定 Azure 数据资源管理器接收器尚未设置的任何引入属性。 具体来说，它可用于指定引入标记。 从 [Azure 数据资源管理器数据引入文档](https://kusto.azurewebsites.net/docs/management/data-ingestion/index.html)了解更多信息。 | 否 |
+| additionalProperties | 一个属性包，可用于指定 Azure 数据资源管理器接收器尚未设置的任何引入属性。 具体来说，它可用于指定引入标记。 从 [Azure 数据资源管理器数据引入文档](/data-explorer/ingestion-properties)了解更多信息。 | 否 |
 
 **示例：**
 

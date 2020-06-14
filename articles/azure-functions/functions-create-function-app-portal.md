@@ -1,15 +1,15 @@
 ---
-title: 通过 Azure 门户创建函数应用
+title: 通过 Azure 门户创建 Function App
 description: 通过门户在 Azure 中创建新的函数应用。
-ms.topic: conceptual
-ms.date: 03/19/2020
+ms.topic: how-to
+ms.date: 06/08/2020
 ms.custom: mvc
-ms.openlocfilehash: cdb19a24453390dbc955793c392405a7675ba68b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 21456784afd2ff07095d7061494ca3c89c0f26d6
+ms.sourcegitcommit: f1a76ee3242698123a3d77f44c860db040b48f70
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79546881"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84563776"
 ---
 # <a name="create-a-function-app-from-the-azure-portal"></a>通过 Azure 门户创建 Function App
 
@@ -36,7 +36,7 @@ Azure Functions 有两个不同的服务计划：消耗计划和专用（应用�
 >[!NOTE]
 >使用消耗托管计划时，函数代码和绑定配置文件存储在主存储帐户的 Azure 文件存储中。 删除主存储帐户时，此内容将随之删除且无法恢复。
 
-若要了解有关存储帐户类型的详细信息，请参阅 [Azure 存储服务简介](../storage/common/storage-introduction.md#azure-storage-services)。 
+若要了解有关存储帐户类型的详细信息，请参阅 [Azure 存储服务简介](../storage/common/storage-introduction.md#core-storage-services)。 
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -45,4 +45,3 @@ Azure Functions 有两个不同的服务计划：消耗计划和专用（应用�
 > [!div class="nextstepaction"]
 > [添加 HTTP 触发的函数](functions-create-first-azure-function.md#create-function)
 
-<!-- Update_Description: wording update -->

@@ -11,14 +11,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 11/20/2019
-ms.date: 05/06/2020
+ms.date: 06/15/2020
 ms.author: v-yeche
-ms.openlocfilehash: fc624c6909e0c8e4d2d7fb0320c85d0d2ef99d2d
-ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
+ms.openlocfilehash: a81228c4603100f05c941c339e2593cda77acd47
+ms.sourcegitcommit: ff67734e01c004be575782b4812cfe857e435f4d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "83001993"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84486984"
 ---
 <!--Verified successfully-->
 <!--Correct on Powershell cmdlet-->
@@ -68,5 +68,4 @@ ms.locfileid: "83001993"
 
 - [委托子网](manage-subnet-delegation.md)
 
-<!-- Update_Description: new article about subnet delegation overview -->
-<!--NEW.date: 01/13/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

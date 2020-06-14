@@ -9,15 +9,15 @@ ms.workload: infrastructure-services
 origin.date: 04/17/2019
 ms.date: 5/18/2020
 ms.author: v-yeche
-ms.openlocfilehash: d445553f5b88adb09ca681f2312db476e587fdc4
-ms.sourcegitcommit: f6d0bd7958e0720367022e68dc1824448c866882
+ms.openlocfilehash: 73bc93ba58dfaa7ecf360ab53e7d5f2e93f2edb9
+ms.sourcegitcommit: c4fc01b7451951ef7a9616fca494e1baf29db714
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83417255"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84564219"
 ---
 <!--CHECK THE BURSTING FEATHER BEFORE RELEASE-->
-<!--Verified successfully-->
+<!--Not Available on MOONCAKE-->
 # <a name="optimize-performance-on-the-lsv2-series-virtual-machines"></a>优化 Lsv2 系列虚拟机上的性能
 
 Lsv2 系列虚拟机在广泛的应用程序和行业中支持需要在本地存储上实现高 I/O 和高吞吐量的各种工作负荷。  Lsv2 系列最适用于大数据、SQL、NoSQL 数据库、数据仓库和大型事务数据库，其中包括 Cassandra、MongoDB、Cloudera 和 Redis。

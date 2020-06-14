@@ -5,15 +5,15 @@ services: virtual-wan
 author: rockboyfor
 ms.service: virtual-wan
 ms.topic: article
-origin.date: 02/18/2020
-ms.date: 03/30/2020
+origin.date: 03/19/2020
+ms.date: 06/15/2020
 ms.author: v-yeche
-ms.openlocfilehash: 5b012af16076a2615dccde6480be85485eec01e3
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: ab294e13cc04cbf6bb7ce66591adfa965ae56f31
+ms.sourcegitcommit: 8dae792aefbe44e8388f961b813e3da6564423ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80291283"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84654877"
 ---
 # <a name="expressroute-encryption-ipsec-over-expressroute-for-virtual-wan"></a>ExpressRoute 加密：虚拟 WAN 的基于 ExpressRoute 的 IPsec
 
@@ -37,7 +37,7 @@ ms.locfileid: "80291283"
 对于从本地网络发往 Azure 的流量，Azure 前缀（包括虚拟中心以及连接到中心的所有辐射虚拟网络）通过 ExpressRoute 专用对等互连 BGP 和 VPN BGP 进行播发。 这会建立从本地网络到 Azure 的两个网络路由（路径）：
 
 - 一个路由是通过受 IPsec 保护的路径建立的
-- 一个路由是通过不受 IPsec 保护的 ExpressRoute 直接建立的  
+- 一个路由是通过不受 IPsec 保护的 ExpressRoute 直接建立的 
 
 若要将加密应用于通信，必须确保对于图中所示的已连接 VPN 的网络，优先使用通过本地 VPN 网关建立的 Azure 路由，而不是通过直接 ExpressRoute 路径建立的路由。
 
@@ -52,7 +52,7 @@ ms.locfileid: "80291283"
 在这两个示例中，Azure 将通过 VPN 连接将流量发送到 10.0.1.0/24，而不是直接通过不受 VPN 保护的 ExpressRoute 发送。
 
 > [!WARNING]
-> 如果通过 ExpressRoute 和 VPN 连接播发相同的前缀，Azure 将直接使用不受 VPN 保护的 ExpressRoute 路径。 
+> 如果通过 ExpressRoute 和 VPN 连接播发相同的前缀，Azure 将直接使用不受 VPN 保护的 ExpressRoute 路径。
 >
 
 ## <a name="before-you-begin"></a>准备阶段
@@ -75,13 +75,13 @@ ms.locfileid: "80291283"
 站点资源与虚拟 WAN 的非 ExpressRoute VPN 站点相同。 本地 VPN 设备的 IP 地址现在可以是专用 IP 地址，或者是可通过步骤 1 中创建的 ExpressRoute 专用对等互连访问的本地网络中的公共 IP 地址。
 
 > [!NOTE]
-> 本地 VPN 设备的 IP 地址必须是通过 Azure ExpressRoute 专用对等互连播发到虚拟 WAN 中心的地址前缀的一部分。 
+> 本地 VPN 设备的 IP 地址必须是通过 Azure ExpressRoute 专用对等互连播发到虚拟 WAN 中心的地址前缀的一部分。
 >
 
 1. 在浏览器中转到 Azure 门户。 
-1. 选择创建的 WAN。 在“WAN”页上的“连接”下，选择“VPN 站点”。  
-1. 在“VPN 站点”页上，选择“+创建站点”。  
-1. 在“创建站点”页上填写以下字段： 
+1. 选择创建的 WAN。 在“WAN”页上的“连接”下，选择“VPN 站点”。 
+1. 在“VPN 站点”页上，选择“+创建站点”。 
+1. 在“创建站点”页上填写以下字段：
     * **订阅**：验证订阅。
     * **资源组**：选择或创建要使用的资源组。
     * **区域**：输入 VPN 站点资源的 Azure 区域。
@@ -90,7 +90,7 @@ ms.locfileid: "80291283"
     * **边界网关协议**：如果本地网络使用 BGP，请选择“启用”。
     * **专用地址空间**：输入位于本地站点上的 IP 地址空间。 发往此地址空间的流量将通过 VPN 网关路由到本地网络。
     * **中心**：选择要连接此 VPN 站点的一个或多个中心。 选定的中心必须已创建了 VPN 网关。
-1. 在完成时选择“下一步:  链接 >”完成 VPN 链接设置：
+1. 在完成时选择“下一步:链接 >”完成 VPN 链接设置：
     * **链接名称**：用于指代此连接的名称。
     * **提供商名称**：此站点的 Internet 服务提供商的名称。 对于 ExpressRoute 本地网络，该名称是 ExpressRoute 服务提供商的名称。
     * **速度**：Internet 服务链接或 ExpressRoute 线路的速度。
@@ -98,9 +98,9 @@ ms.locfileid: "80291283"
 
     如果启用了 BGP，BGP 将应用到在 Azure 中为此站点创建的所有连接。 在虚拟 WAN 上配置 BGP 等同于在 Azure VPN 网关上配置 BGP。 
 
-    本地 BGP 对等方地址不能与连接到设备的 VPN 的 IP 地址或 VPN 站点的虚拟网络地址空间相同。  在 VPN 设备上对 BGP 对等节点 IP 使用不同的 IP 地址。 它可以是分配给该设备上环回接口的地址。 但是，该地址不能是 APIPA (169.254.*x*.*x*) 地址。  在代表该位置的相应本地网关中指定此地址。 有关 BGP 先决条件，请参阅[关于 Azure VPN 网关的 BGP](../vpn-gateway/vpn-gateway-bgp-overview.md)。
+    本地 BGP 对等方地址不能与连接到设备的 VPN 的 IP 地址或 VPN 站点的虚拟网络地址空间相同。 在 VPN 设备上对 BGP 对等节点 IP 使用不同的 IP 地址。 它可以是分配给该设备上环回接口的地址。 但是，该地址不能是 APIPA (169.254.*x*.*x*) 地址。 在代表该位置的相应本地网关中指定此地址。 有关 BGP 先决条件，请参阅[关于 Azure VPN 网关的 BGP](../vpn-gateway/vpn-gateway-bgp-overview.md)。
 
-1. 在完成时选择“下一步:  查看 + 创建 >”检查设置值并创建 VPN 站点。 如果选择了要连接的**中心**，则连接将在本地网络与中心 VPN 网关之间建立。
+1. 在完成时选择“下一步:查看 + 创建 >”检查设置值并创建 VPN 站点。 如果选择了要连接的**中心**，则连接将在本地网络与中心 VPN 网关之间建立。
 
 <a name="hub"></a>
 ## <a name="3-update-the-vpn-connection-setting-to-use-expressroute"></a>3.将 VPN 连接设置更新为使用 ExpressRoute
@@ -108,13 +108,13 @@ ms.locfileid: "80291283"
 创建 VPN 站点并连接到中心后，使用以下步骤将连接配置为使用 ExpressRoute 专用对等互连：
 
 1. 返回到虚拟 WAN 资源页，选择中心资源。 或者从 VPN 站点导航到已连接的中心。
-1. 在“连接”下，选择“VPN (站点到站点)”。  
-1. 选择通过 ExpressRoute 连接的 VPN 站点对应的省略号 ( **...** )，然后选择“编辑指向此中心的 VPN 连接”。 
-1. 对于“使用 Azure 专用 IP 地址”，请选择“是”。   此设置将中心 VPN 网关配置为对此连接使用网关上的中心地址范围内的专用 IP 地址，而不是使用公共 IP 地址。 这将确保来自本地网络的流量通过 ExpressRoute 专用对等互连路径，而不是对此 VPN 连接使用公共 Internet。 以下屏幕截图显示了该设置。
+1. 在“连接”下，选择“VPN (站点到站点)”。 
+1. 选择通过 ExpressRoute 连接的 VPN 站点对应的省略号 ( **...** )，然后选择“编辑指向此中心的 VPN 连接”。
+1. 对于“使用 Azure 专用 IP 地址”，请选择“是”。  此设置将中心 VPN 网关配置为对此连接使用网关上的中心地址范围内的专用 IP 地址，而不是使用公共 IP 地址。 这将确保来自本地网络的流量通过 ExpressRoute 专用对等互连路径，而不是对此 VPN 连接使用公共 Internet。 以下屏幕截图显示了该设置。
 
     ![将专用 IP 地址用于 VPN 连接的设置](./media/vpn-over-expressroute/vpn-link-configuration.png)
 
-1. 选择“保存”  。
+1. 选择“保存” 。
 
 保存更改后，中心 VPN 网关将使用 VPN 网关上的专用 IP 地址，通过 ExpressRoute 来与本地 VPN 设备建立 IPsec/IKE 连接。
 
@@ -123,8 +123,8 @@ ms.locfileid: "80291283"
 
 下载 VPN 设备配置，以获取中心 VPN 网关的专用 IP 地址。 需要使用这些地址来配置本地 VPN 设备。
 
-1. 在中心的页面上，选择“连接”下的“VPN (站点到站点)”。  
-1. 在“概述”页的顶部，选择“下载 VPN 配置”。   
+1. 在中心的页面上，选择“连接”下的“VPN (站点到站点)”。 
+1. 在“概述”页的顶部，选择“下载 VPN 配置”。  
 
     Azure 将在资源组“microsoft-network-[location]”中创建一个存储帐户，其中，*location* 是 WAN 的位置。 将配置应用到 VPN 设备后，可以删除此存储帐户。
 1. 创建文件后，选择相应的链接下载该文件。
@@ -138,19 +138,19 @@ ms.locfileid: "80291283"
 * **vpnSiteConnections**：此节提供有关以下设置的信息：
 
     * 虚拟中心的虚拟网络的地址空间。<br/>示例：
-           ```
-           "AddressSpace":"10.51.230.0/24"
-           ```
+        ```
+        "AddressSpace":"10.51.230.0/24"
+        ```
     * 已连接到中心的虚拟网络的地址空间。<br />示例：
-           ```
-           "ConnectedSubnets":["10.51.231.0/24"]
-            ```
+        ```
+        "ConnectedSubnets":["10.51.231.0/24"]
+        ```
     * 虚拟中心 VPN 网关的 IP 地址。 由于 VPN 网关的每个连接由采用“主动 - 主动”配置的 2 个隧道构成，因此，此文件中列出了这两个 IP 地址。 在此示例中，你会看到每个站点的 `Instance0` 和 `Instance1`，它们是专用 IP 地址而不是公共 IP 地址。<br />示例：
-           ``` 
-           "Instance0":"10.51.230.4"
-           "Instance1":"10.51.230.5"
-           ```
-    * VPN 网关连接的配置详细信息，例如 BGP 和预共享密钥。 预共享密钥是系统自动生成的。 始终可以在自定义预共享密钥的“概述”页上编辑连接。 
+        ``` 
+        "Instance0":"10.51.230.4"
+        "Instance1":"10.51.230.5"
+        ```
+    * VPN 网关连接的配置详细信息，例如 BGP 和预共享密钥。 预共享密钥是系统自动生成的。 始终可以在自定义预共享密钥的“概述”页上编辑连接。
 
 ### <a name="example-device-configuration-file"></a>示例设备配置文件
 
@@ -228,14 +228,8 @@ ms.locfileid: "80291283"
 ## <a name="5-view-your-virtual-wan"></a>5.查看虚拟 WAN
 
 1. 转到虚拟 WAN。
-1. 在“概述”  页上，地图中的每个点表示一个中心。 将鼠标悬停在任一点上可以查看中心的运行状况摘要。
-1. 在“中心和连接”部分，可以查看中心、站点、区域和 VPN 连接状态。  还可以查看传入与传出的字节数。
-
-<a name="viewhealth"></a>
-## <a name="6-view-your-resource-health"></a>6.查看资源运行状况
-
-1. 转到你的 WAN。
-1. 在“支持 + 故障排除”部分，选择“运行状况”并查看你的资源。  
+1. 在“概述”页上，地图中的每个点表示一个中心。
+1. 在“中心和连接”部分，可以查看中心、站点、区域和 VPN 连接状态。 还可以查看传入与传出的字节数。
 
 <a name="connectmon"></a>
 ## <a name="7-monitor-a-connection"></a>7.监视连接
@@ -255,5 +249,4 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 
 本文帮助你使用虚拟 WAN 通过 ExpressRoute 专用对等互连创建 VPN 连接。 若要详细了解虚拟 WAN 和相关功能，请参阅[虚拟 WAN 概述](virtual-wan-about.md)。
 
-<!-- Update_Description: new article about vpn over expressroute -->
-<!--NEW.date: 02/24/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

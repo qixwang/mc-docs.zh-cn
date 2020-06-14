@@ -2,18 +2,18 @@
 title: 在 Azure 数据资源管理器中进行时序异常情况检测和预测
 description: 了解如何使用 Azure 数据资源管理器分析时序数据以检测和预测异常情况。
 author: orspod
-ms.date: 05/15/2020
 ms.author: v-tawe
 ms.reviewer: adieldar
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 04/24/2019
-ms.openlocfilehash: 155d38ac1dc9998462d203a42358f305627c24eb
-ms.sourcegitcommit: bfbd6694da33f703481386f2a3f16850c4e94bfa
+ms.date: 06/09/2020
+ms.openlocfilehash: f806e71c6352001469cdeb3bb07704a6f34b2b43
+ms.sourcegitcommit: 73697fa9c19a40d235df033400c74741e7d0f3f4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83417692"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84574904"
 ---
 # <a name="anomaly-detection-and-forecasting-in-azure-data-explorer"></a>在 Azure 数据资源管理器中进行异常情况检测和预测
 
@@ -23,7 +23,7 @@ Azure 数据资源管理器持续从云服务或 IoT 设备收集遥测数据。
 
 ## <a name="prerequisites"></a>先决条件
 
-有关时序功能的概述，请参阅 [Azure 数据资源管理器中的时序分析](/data-explorer/time-series-analysis)。
+有关时序功能的概述，请参阅 [Azure 数据资源管理器中的时序分析](time-series-analysis.md)。
 
 ## <a name="time-series-decomposition-model"></a>时序分解模型
 
@@ -132,4 +132,4 @@ demo_make_series2
 
 ## <a name="next-steps"></a>后续步骤
 
-了解 Azure 数据资源管理器中的[机器学习功能](/data-explorer/machine-learning-clustering)。
+了解 Azure 数据资源管理器中的[机器学习功能](machine-learning-clustering.md)。

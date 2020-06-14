@@ -14,17 +14,17 @@ ms.reviewer: douglasl
 manager: digimobile
 ms.custom: seo-lt-2019
 origin.date: 11/14/2019
-ms.date: 05/11/2020
-ms.openlocfilehash: 2bc7e2a74deb8ef194b102ce25baf0fa6061a9ac
-ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
+ms.date: 06/15/2020
+ms.openlocfilehash: e955a39c9a0877e8c96d2b81ce0b600329e196d7
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82198067"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723450"
 ---
 # <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用“执行 SSIS 包”活动运行 SSIS 包
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文介绍如何使用“执行 SSIS 包”活动在 Azure 数据工厂管道中运行 SQL Server Integration Services (SSIS) 包。 
 

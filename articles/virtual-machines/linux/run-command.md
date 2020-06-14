@@ -1,20 +1,19 @@
 ---
-title: 使用“运行命令”在 Linux VM 中运行 shell 脚本 | Azure
+title: 在 Azure 上的 Linux VM 中运行 shell 脚本
 description: 本主题介绍如何使用“运行命令”功能在 Azure Linux 虚拟机中运行脚本
 services: automation
-ms.service: automation
-author: rockboyfor
-ms.author: v-yeche
-origin.date: 04/26/2019
-ms.date: 11/11/2019
+ms.service: virtual-machines
+author: Johnnytechn
+ms.author: v-johya
+ms.date: 06/05/2020
 ms.topic: article
-manager: digimobile
-ms.openlocfilehash: c9e6bfb6e464541456bc844fbd693f180a41a306
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+manager: carmonm
+ms.openlocfilehash: a011d210653b2e74f01aa70e22c4830240743c83
+ms.sourcegitcommit: 285649db9b21169f3136729c041e4d04d323229a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "73831448"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84684037"
 ---
 <!--Verify sccessfully-->
 # <a name="run-shell-scripts-in-your-linux-vm-by-using-run-command"></a>使用“运行命令”在 Linux VM 中运行 shell 脚本
@@ -43,7 +42,7 @@ ms.locfileid: "73831448"
 > [!NOTE]
 > 若要正常工作，“运行命令”需要连接（通过端口 443）到 Azure 公共 IP 地址。 如果扩展无法访问这些终结点，则脚本可能会成功运行，但不会返回结果。 如果要阻止虚拟机上的流量，可以使用[服务标记](../../virtual-network/security-overview.md#service-tags)以通过 `AzureChinaCloud` 标记允许流量发往 Azure 公共 IP 地址。
 
-## <a name="available-commands"></a>可用命令
+## <a name="available-commands"></a>可用的命令
 
 下表显示了可用于 Linux VM 的命令的列表。 可以使用 **RunShellScript** 命令运行所需的任何自定义脚本。 使用 Azure CLI 或 PowerShell 运行命令时，为 `--command-id` 或 `-CommandId` 参数提供的值必须是下面列出的值之一。 如果指定的值不是可用的命令，将会收到以下错误：
 
@@ -70,7 +69,7 @@ az vm run-command invoke -g myResourceGroup -n myVm --command-id RunShellScript 
 <!--Not Available on ## Azure portal-->
 <!--MOONCAKE: CORRECT on ##-->
 
-## <a name="powershell"></a>PowerShell
+### <a name="powershell"></a>PowerShell
 
 以下示例使用 [Invoke-AzVMRunCommand](https://docs.microsoft.com/powershell/module/az.compute/invoke-azvmruncommand) cmdlet 在 Azure VM 上运行 PowerShell 脚本。 该 cmdlet 需要 `-ScriptPath` 参数中引用的脚本位于运行该 cmdlet 的位置本地。
 

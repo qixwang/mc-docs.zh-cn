@@ -7,15 +7,15 @@ ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
 origin.date: 09/03/2019
-ms.date: 12/09/2019
+ms.date: 06/08/2020
 ms.author: v-jay
 ms.localizationpriority: high
-ms.openlocfilehash: a8db5fc9f4c987254ca02b288fb6d11723c8797e
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 000c98a4ab3f90baccfe67861a6d178808159938
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74884008"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723643"
 ---
 ::: zone target="docs"
 
@@ -25,7 +25,7 @@ ms.locfileid: "74884008"
 
 ::: zone target="chromeless"
 
-# <a name="cable-and-connect-to-your-device"></a>为设备连接电缆并连接到它
+## <a name="cable-and-connect-to-your-device"></a>为设备连接电缆并连接到它
 
 ::: zone-end
 

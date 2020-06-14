@@ -3,14 +3,14 @@ title: 规划 Azure Service Fabric 群集部署
 description: 了解如何规划和准备 Azure 中的生产 Service Fabric 群集部署。
 ms.topic: conceptual
 origin.date: 03/20/2019
-ms.date: 04/13/2020
+ms.date: 06/08/2020
 ms.author: v-yeche
-ms.openlocfilehash: bcc69a35115c5ae0e4300da3d3aa2d9e73e41d2e
-ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
+ms.openlocfilehash: 670d6e4aaf0877dddadb855029bbc684dfd3e01e
+ms.sourcegitcommit: 0e178672632f710019eae60cea6a45ac54bb53a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82093473"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84356290"
 ---
 # <a name="plan-and-prepare-for-a-cluster-deployment"></a>规划和准备群集部署
 
@@ -45,13 +45,13 @@ ms.locfileid: "82093473"
 
 #### <a name="use-ephemeral-os-disks-for-virtual-machine-scale-sets"></a>将临时 OS 磁盘用于虚拟机规模集
 
-“临时 OS 磁盘”  是在本地虚拟机 (VM) 上创建的存储，不保存到远程 Azure 存储。 建议将它们用于所有 Service Fabric 节点类型（主要和次要），因为与传统的持久 OS 磁盘相比，临时 OS 磁盘：
+“临时 OS 磁盘”是在本地虚拟机 (VM) 上创建的存储，不保存到远程 Azure 存储。 建议将它们用于所有 Service Fabric 节点类型（主要和次要），因为与传统的持久 OS 磁盘相比，临时 OS 磁盘：
 
 * 降低了到 OS 磁盘的读/写延迟
 * 可实现更快的重置/重置节点映像管理操作
 * 降低了总体成本（磁盘免费，不会产生额外的存储成本）
 
-临时 OS 磁盘不是特定的 Service Fabric 功能，而是映射到 Service Fabric 节点类型的 Azure“虚拟机规模集”  的功能。 将它们与 Service Fabric 一起使用需要在群集 Azure 资源管理器模板中执行以下操作：
+临时 OS 磁盘不是特定的 Service Fabric 功能，而是映射到 Service Fabric 节点类型的 Azure“虚拟机规模集”的功能。 将它们与 Service Fabric 一起使用需要在群集 Azure 资源管理器模板中执行以下操作：
 
 1. 确保你的节点类型为临时 OS 磁盘指定[支持的 Azure VM 大小](../virtual-machines/windows/ephemeral-os-disks.md)，并且 VM 大小有足够的缓存大小来支持其 OS 磁盘大小（请参阅下文中的*注释*。）例如：
 
@@ -88,6 +88,16 @@ ms.locfileid: "82093473"
             }
         }
     ```
+
+> [!NOTE]
+> 用户应用程序不应在 OS 磁盘上有任何依赖项/文件/项目，因为 OS 升级时 OS 磁盘会丢失。
+> 因此，建议不要在临时磁盘上使用 [PatchOrchestrationApplication](https://github.com/microsoft/Service-Fabric-POA)。
+>
+
+> [!NOTE]
+> 现有的非临时 VMSS 无法就地升级，因此无法使用临时磁盘。
+> 若要进行迁移，用户必须使用临时磁盘[添加](./virtual-machine-scale-set-scale-node-type-scale-out.md)新的 nodeType，将工作负荷移至新的 nodeType 并[删除](./service-fabric-how-to-remove-node-type.md)现有 nodeType。
+>
 
 有关详细信息和更多配置选项，请参阅 [Azure VM 的临时 OS 磁盘](../virtual-machines/windows/ephemeral-os-disks.md) 
 

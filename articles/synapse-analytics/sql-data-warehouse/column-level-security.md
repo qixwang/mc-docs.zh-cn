@@ -7,18 +7,18 @@ manager: digimobile
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: ''
-origin.date: 02/05/2020
-ms.date: 05/11/2020
+origin.date: 04/19/2020
+ms.date: 06/15/2020
 ms.author: v-jay
 ms.reviewer: igorstan, carlrab
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 6c02c04a95f445dc2fc7216ccd30aa7bea978bd6
-ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
+ms.openlocfilehash: 037e49fc2734ce454217ddf5fdfe4495be7c1d30
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82198533"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723732"
 ---
 # <a name="column-level-security"></a>列级别安全性
 
@@ -34,7 +34,7 @@ Azure Synapse 可使用[行级别安全性](https://docs.microsoft.com/sql/relat
 
 ## <a name="syntax"></a>语法
 
-```sql
+```syntaxsql
 GRANT <permission> [ ,...n ] ON
     [ OBJECT :: ][ schema_name ]. object_name [ ( column [ ,...n ] ) ]
     TO <database_principal> [ ,...n ]
@@ -77,8 +77,8 @@ GRANT SELECT ON Membership(MemberID, FirstName, LastName, Phone, Email) TO TestU
 ```sql
 SELECT * FROM Membership;
 
-Msg 230, Level 14, State 1, Line 12
-The SELECT permission was denied on the column 'SSN' of the object 'Membership', database 'CLS_TestDW', schema 'dbo'.
+-- Msg 230, Level 14, State 1, Line 12
+-- The SELECT permission was denied on the column 'SSN' of the object 'Membership', database 'CLS_TestDW', schema 'dbo'.
 ```
 
 ## <a name="use-cases"></a>用例

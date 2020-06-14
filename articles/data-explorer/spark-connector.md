@@ -7,13 +7,13 @@ ms.reviewer: michazag
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 01/14/2020
-ms.date: 05/09/2020
-ms.openlocfilehash: c386500fc7494a5ccd05129f899530251912bbb4
-ms.sourcegitcommit: bfbd6694da33f703481386f2a3f16850c4e94bfa
+ms.date: 06/09/2020
+ms.openlocfilehash: 445d636a09ce9d31cd36b953163fdfd3436961ea
+ms.sourcegitcommit: 73697fa9c19a40d235df033400c74741e7d0f3f4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83417562"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84574875"
 ---
 # <a name="azure-data-explorer-connector-for-apache-spark"></a>适用于 Apache Spark 的 Azure 数据资源管理器连接器
 
@@ -30,7 +30,7 @@ ms.locfileid: "83417562"
 
 ## <a name="prerequisites"></a>先决条件
 
-* [创建 Azure 数据资源管理器群集和数据库](/data-explorer/create-cluster-database-portal) 
+* [创建 Azure 数据资源管理器群集和数据库](create-cluster-database-portal.md) 
 * 创建 Spark 群集
 * 安装 Azure 数据资源管理器连接器库：
     * [Spark 2.4、Scala 2.11](https://github.com/Azure/azure-kusto-spark/releases) 的预生成库 

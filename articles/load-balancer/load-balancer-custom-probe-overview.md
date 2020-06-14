@@ -13,14 +13,14 @@ ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 09/17/2019
-ms.date: 05/11/2020
+ms.date: 06/08/2020
 ms.author: v-jay
-ms.openlocfilehash: 4e11ffd2a0b3fcd3bde4189831205064d96e95c7
-ms.sourcegitcommit: 95efd248f5ee3701f671dbd5cfe0aec9c9959a24
+ms.openlocfilehash: e3106d280c969604e1afe5f477c792874b58c482
+ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82507656"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84275386"
 ---
 # <a name="load-balancer-health-probes"></a>负载均衡器运行状况探测
 
@@ -228,7 +228,7 @@ AzureLoadBalancer 服务标记在[网络安全组](../virtual-network/security-o
 
 运行状况探测使服务具有复原能力，并使其可缩放。 错误的配置或不当的设计模式可能会影响服务的可用性与可伸缩性。 请通篇阅读本文档，并考虑在将此探测响应标记为停机或运行时对方案造成的影响，以及对应用程序方案可用性造成的影响。
 
-为应用程序设计运行状况模型时，应该探测后端终结点上可以反映该实例以及所提供应用程序服务的运行状况的端口。   应用程序端口和探测端口不必相同。  在某些方案中，探测端口可能需要不同于应用程序提供服务所用的端口。  
+为应用程序设计运行状况模型时，应该探测后端终结点上可以反映该实例以及所提供应用程序服务的运行状况的端口。  应用程序端口和探测端口不必相同。  在某些方案中，探测端口可能需要不同于应用程序提供服务所用的端口。  
 
 有时，有效的方案是让应用程序生成运行状况探测响应，以便不仅检测应用程序的运行状况，而且还直接让负载均衡器知道实例是否要接收新流。  可以通过使运行状况探测发生故障来操控探测响应，使应用程序能够创建反压并限制向某个实例传送新流；或者，可以准备维护应用程序并开始清理方案。  使用标准负载均衡器时，[探测停止](#probedown)信号始终允许继续处理 TCP 流，直到达到空闲超时或连接关闭为止。 
 
@@ -253,6 +253,8 @@ AzureLoadBalancer 服务标记在[网络安全组](../virtual-network/security-o
 ## <a name="monitoring"></a>监视
 
 公共和内部[标准负载均衡器](load-balancer-standard-overview.md)通过 Azure Monitor 将每个终结点和后端终结点运行状况探测状态公开为多维指标。 这些指标可由其他 Azure 服务或合作伙伴应用程序使用。 
+
+基本公共负载均衡器通过 Azure Monitor 日志公开针对每个后端池汇总的运行状况探测状态。  Azure Monitor 日志不适用于内部基本负载均衡器。  可以使用 [Azure Monitor 日志](load-balancer-monitor-log.md)来检查公共负载均衡器探测运行状况和探测计数。 可以配合 Power BI 或 Azure Operation Insights 使用日志记录，以提供有关负载均衡器运行状况的统计信息。
 
 ## <a name="limitations"></a>限制
 

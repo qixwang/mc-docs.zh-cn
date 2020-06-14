@@ -9,12 +9,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: 31ce2f78423edb650c1e32214d85668f5f3167e4
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+ms.openlocfilehash: 97f79713b8a95a42574fa40145b0b56a9b183630
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84199750"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723659"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-access-tiers"></a>Azure Blob 存储：热、冷、存档访问层
 
@@ -78,7 +78,7 @@ Blob 存储和 GPv2 帐户在帐户级别公开“访问层”属性  。 使用
 
 ## <a name="blob-level-tiering"></a>Blob 级别分层
 
-有了 Blob 级别分层，就可以使用 [Put Blob](/rest/api/storageservices/put-blob) 或 [Put 块列表](/rest/api/storageservices/put-block-list)操作将数据上传到所选的访问层，并使用[设置 Blob 层](/rest/api/storageservices/set-blob-tier)操作或[生命周期管理](#blob-lifecycle-management)功能在对象级别更改数据的层。 可以将数据上传到所需的访问层，然后在使用模式更改时轻松地在热、冷或存档层之间更改 Blob 访问层，不需在帐户之间移动数据。 所有层更改请求会立即发生，热和冷之间的层更改是即时的。 但是，从存档层中解除冻结 blob 可能需要几个小时。
+有了 Blob 级别分层，就可以使用 [Put Blob](https://docs.microsoft.com/rest/api/storageservices/put-blob) 或 [Put 块列表](https://docs.microsoft.com/rest/api/storageservices/put-block-list)操作将数据上传到所选的访问层，并使用[设置 Blob 层](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier)操作或[生命周期管理](#blob-lifecycle-management)功能在对象级别更改数据的层。 可以将数据上传到所需的访问层，然后在使用模式更改时轻松地在热、冷或存档层之间更改 Blob 访问层，不需在帐户之间移动数据。 所有层更改请求会立即发生，热和冷之间的层更改是即时的。 但是，从存档层中解除冻结 blob 可能需要几个小时。
 
 上次 Blob 层更改的时间通过 Blob 属性“访问层更改时间”  公开。 覆盖热层或冷层中的 blob 时，除非在创建时显式设置了新的 blob 访问层，否则新创建的 blob 将继承被覆盖的 blob 的层的属性。 如果 Blob 位于存档层中，则无法被覆盖，因此在这种情况下，不允许上传相同的 Blob。 
 

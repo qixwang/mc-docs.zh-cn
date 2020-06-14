@@ -7,13 +7,13 @@ ms.reviewer: adieldar
 ms.service: data-explorer
 ms.topic: conceptual
 origin.data: 04/07/2019
-ms.date: 05/09/2020
-ms.openlocfilehash: 7893b19ebefb79218d68ab74b9d99976c807d829
-ms.sourcegitcommit: bfbd6694da33f703481386f2a3f16850c4e94bfa
+ms.date: 06/09/2020
+ms.openlocfilehash: b81059a51ac4ff0701c396f534803c197f36b99b
+ms.sourcegitcommit: 73697fa9c19a40d235df033400c74741e7d0f3f4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83417561"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84574886"
 ---
 # <a name="time-series-analysis-in-azure-data-explorer"></a>Azure 数据资源管理器中的时序分析
 
@@ -290,5 +290,5 @@ demo_many_series1
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解如何在 Azure 数据资源管理器中进行[时序异常情况检测和预测](/data-explorer/anomaly-detection)。
-* 了解 Azure 数据资源管理器中的[机器学习功能](/data-explorer/machine-learning-clustering)。
+* 了解如何在 Azure 数据资源管理器中进行[时序异常情况检测和预测](anomaly-detection.md)。
+* 了解 Azure 数据资源管理器中的[机器学习功能](machine-learning-clustering.md)。

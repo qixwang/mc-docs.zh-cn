@@ -1,25 +1,15 @@
 ---
-title: 使用 Azure Cosmos DB 和 Azure Functions 存储非结构化数据 | Microsoft Docs
+title: 使用 Azure Cosmos DB 和 Azure Functions 存储非结构化数据
 description: 使用 Azure Functions 和 Cosmos DB 存储非结构化数据
-services: functions
-documentationcenter: functions
-author: ggailey777
-manager: jeconnoc
-keywords: Azure Functions, Functions, 事件处理, Cosmos DB, 动态计算, 无服务器体系结构
-ms.assetid: ''
-ms.service: azure-functions
-ms.devlang: csharp
 ms.topic: quickstart
-origin.date: 10/01/2018
-ms.date: 02/22/2019
-ms.author: v-junlch
+ms.date: 06/08/2020
 ms.custom: mvc
-ms.openlocfilehash: dce07b93d6766e5c81c57b5e126cf80c1c150a30
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: d2be4de10a87d2cee3984f178d92693b50b39d91
+ms.sourcegitcommit: f1a76ee3242698123a3d77f44c860db040b48f70
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "63828703"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84563635"
 ---
 # <a name="store-unstructured-data-using-azure-functions-and-azure-cosmos-db"></a>使用 Azure Functions 和 Azure Cosmos DB 存储非结构化数据
 
@@ -30,11 +20,9 @@ ms.locfileid: "63828703"
 
 在 Azure Functions 中，输入和输出绑定提供从函数连接到外部服务数据的声明性方式。 本文介绍了如何更新现有的函数，以便添加输出绑定，在 Azure Cosmos DB 文档中存储非结构化数据。
 
-![Cosmos DB](./media/functions-integrate-store-unstructured-data-cosmosdb/functions-cosmosdb.png)
+## <a name="prerequisites"></a>先决条件
 
-## <a name="prerequisites"></a>必备条件
-
-完成本教程：
+为完成此教程：
 
 [!INCLUDE [Previous quickstart note](../../includes/functions-quickstart-previous-topics.md)]
 
@@ -46,30 +34,30 @@ ms.locfileid: "63828703"
 
 ## <a name="add-an-output-binding"></a>添加输出绑定
 
-1. 在门户中，导航到前面创建的函数应用，并展开你的函数应用和函数。
+1. 在 Azure 门户中，导航到之前创建的函数应用并选择它。
 
-1. 在页面右上角选择“集成”和  “+ 新建输出”。  选择“Azure Cosmos DB”，然后单击“选择”。  
+1. 选择“函数”，然后选择 HttpTrigger 函数。
 
-    ![添加 Azure Cosmos DB 输出绑定](./media/functions-integrate-store-unstructured-data-cosmosdb/functions-integrate-tab-add-new-output-binding.png)
+    :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-select-http-function.png" alt-text="在 Azure 门户中选择 Http 函数。" border="true":::
 
-1. 如果收到“扩展未安装”  消息，请选择“安装”  以在函数应用中安装 Azure Cosmos DB 绑定扩展。 安装可能需要花费一到两分钟。
+1. 选择“集成”和“+ 添加输出”。
 
-    ![安装 Azure Cosmos DB 绑定扩展](./media/functions-integrate-store-unstructured-data-cosmosdb/functions-integrate-install-binding-extension.png)
+     :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-add-output-binding.png" alt-text="添加 Azure Cosmos DB 输出绑定。" border="true":::
 
-1. 根据表中的指定使用“Azure Cosmos DB 输出”设置： 
+1. 根据表中的指定使用“创建输出”设置：
 
-    ![配置 Cosmos DB 输出绑定](./media/functions-integrate-store-unstructured-data-cosmosdb/functions-integrate-tab-configure-cosmosdb-binding.png)
+     :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-configure-cosmosdb-binding.png" alt-text="配置 Azure Cosmos DB 输出绑定。" border="true":::
 
     | 设置      | 建议的值  | 说明                                |
     | ------------ | ---------------- | ------------------------------------------ |
-    | 文档参数名称  | taskDocument | 引用代码中的 Cosmos DB 对象的名称。 |
+    | **绑定类型** | Azure Cosmos DB | 要选择的绑定类型的名称，用于创建到 Azure Cosmos DB 的输出绑定。 |
+    | 文档参数名称 | taskDocument | 引用代码中的 Cosmos DB 对象的名称。 |
     | **数据库名称** | taskDatabase | 用于保存文档的数据库的名称。 |
-    | 集合名称  | TaskCollection | 数据库集合的名称。 |
-    | 如果为 true，则创建 Cosmos DB 数据库和集合  | 已选中 | 集合不存在，因此创建集合。 |
-    | **Azure Cosmos DB 帐户连接** | 新设置 | 选择“新建”  ，选择你的**订阅**、你之前创建的**数据库帐户**，然后选择“选择”。  为帐户连接创建应用程序设置。 此设置由数据库连接的绑定使用。 |
-    | **集合吞吐量** |400 RU| 如果想要减少延迟，以后可以增加吞吐量。 |
+    | 集合名称 | taskCollection | 数据库集合的名称。 |
+    | 如果为 true，则创建 Cosmos DB 数据库和集合 | 是 | 集合不存在，因此创建集合。 |
+    | Cosmos DB 帐户连接 | 新设置 | 选择“新建”，然后选择前面创建的 Azure Cosmos DB 帐户和数据库帐户，然后选择“确定”。 为帐户连接创建应用程序设置。 此设置由数据库连接的绑定使用。 |
 
-1. 选择“保存”以创建绑定  。
+1. 选择“确定”以创建绑定。
 
 ## <a name="update-the-function-code"></a>更新函数代码
 
@@ -144,25 +132,29 @@ module.exports = async function (context, req) {
 
 ## <a name="test-the-function-and-database"></a>测试函数和数据库
 
-1. 展开右侧窗口，然后选择“测试”  。 在“查询”下单击“+ 添加参数”，然后将以下参数添加到查询字符串：  
+1. 选择“测试”。 在“查询”下选择“+ 添加参数”，然后将以下参数添加到查询字符串： 
 
     + `name`
     + `task`
     + `duedate`
 
-1. 单击“运行”  并验证是否返回 200 状态。
+    :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-test-function.png" alt-text="测试函数。" border="true":::
 
-    ![配置 Cosmos DB 输出绑定](./media/functions-integrate-store-unstructured-data-cosmosdb/functions-test-function.png)
 
-1. 在 Azure 门户左侧展开图标栏，在搜索字段中键入 `cosmos`，然后选择“Azure Cosmos DB”  。
+1. 选择“运行”并验证是否返回了 200 状态。
 
-    ![搜索 Cosmos DB 服务](./media/functions-integrate-store-unstructured-data-cosmosdb/functions-search-cosmos-db.png)
+    :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-test-function-output.png" alt-text="测试函数。" border="true":::
 
-1. 选择你的 Azure Cosmos DB 帐户，然后选择“数据资源管理器”  。
 
-1. 展开“集合”  节点，选择新的文档，并确认该文档包含查询字符串值，以及一些其他的元数据。
+1. 在 Azure 门户中，搜索并选择“Azure Cosmos DB”。
 
-    ![验证 Cosmos DB 项](./media/functions-integrate-store-unstructured-data-cosmosdb/functions-verify-cosmosdb-output.png)
+    :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-search-cosmos-db.png" alt-text="搜索 Cosmos DB 服务。" border="true":::
+
+1. 选择 Azure Cosmos DB 帐户，然后选择“数据资源管理器”。
+
+1. 展开“TaskCollection”节点，选择新的文档，确认该文档包含查询字符串值以及一些其他的元数据。
+
+    :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-data-explorer-check-document.png" alt-text="验证文档中的字符串值。" border="true":::
 
 你已成功地将绑定添加到 HTTP 触发器，用以在 Azure Cosmos DB 中存储非结构化数据。
 
@@ -174,4 +166,3 @@ module.exports = async function (context, req) {
 
 [!INCLUDE [functions-quickstart-next-steps](../../includes/functions-quickstart-next-steps-2.md)]
 
-<!-- Update_Description: wording update -->

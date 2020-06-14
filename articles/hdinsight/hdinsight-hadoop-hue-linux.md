@@ -17,12 +17,12 @@ ms.topic: article
 origin.date: 11/28/2019
 ms.date: 02/24/2020
 ms.author: v-yiso
-ms.openlocfilehash: 4499fa89260fc647aef470f7c76346666fc1ba7a
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 6409db70ffb132ef62870b86bec99454ba01503e
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79295934"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723236"
 ---
 # <a name="install-and-use-hue-on-hdinsight-hadoop-clusters"></a>在 HDInsight Hadoop 群集上安装并使用 Hue
 
@@ -138,7 +138,3 @@ Hue 是一组 Web 应用程序，用来与 Apache Hadoop 群集交互。 可以�
 
 ## <a name="next-steps"></a>后续步骤
 * [在 HDInsight 群集上安装 R](hdinsight-hadoop-r-scripts-linux.md)。 使用群集自定义在 HDInsight Hadoop 群集上安装 R。 R 是一种用于统计计算的开放源代码语言和环境。 它提供了数百个内置统计函数及其自己的编程语言，可结合各方面的函数编程和面向对象的编程。 它还提供了各种图形功能。
-
-[powershell-install-configure]: install-configure-powershell-linux.md
-[hdinsight-provision]: hdinsight-provision-clusters-linux.md
-[hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster-linux.md

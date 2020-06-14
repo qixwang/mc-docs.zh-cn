@@ -7,19 +7,17 @@ documentationcenter: na
 author: rockboyfor
 manager: digimobile
 ms.service: virtual-network
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 06/04/2018
-ms.date: 02/24/2020
+ms.date: 06/15/2020
 ms.author: v-yeche
-ms.openlocfilehash: 084ba81c5e9d1a5526acb3d7e62044f6355f63f3
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 140a7fe2148eddcf94abf05f4495b384e0a75d71
+ms.sourcegitcommit: ff67734e01c004be575782b4812cfe857e435f4d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77653478"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84487045"
 ---
 <!--NOT SUITABLE TO AZURE CHINA CLOUD-->
 <!--UPDATE CAREFULLY-->

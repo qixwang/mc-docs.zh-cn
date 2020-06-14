@@ -9,14 +9,14 @@ ms.service: key-vault
 ms.subservice: certificates
 ms.topic: conceptual
 origin.date: 01/07/2019
-ms.date: 04/20/2020
+ms.date: 06/02/2020
 ms.author: v-tawe
-ms.openlocfilehash: 20abe36d411a0f57305e4e61a03d085dcf71cb04
-ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
+ms.openlocfilehash: cb2aa246c7799210a1ef0e035e3c98e8b0c995b4
+ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82588891"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84275554"
 ---
 # <a name="certificate-creation-methods"></a>证书创建方法
 
@@ -81,10 +81,10 @@ KV 证书创建是一个异步过程。 此操作会创建 KV 证书请求并返
 ## <a name="partnered-ca-providers"></a>配合使用的 CA 提供程序
 可手动完成或使用“Self”证书颁发者来完成证书创建过程。 Key Vault 也可以与某些证书颁发者提供者配合使用，从而简化证书创建过程。 可为具有这些合作伙伴证书颁发者提供者的密钥保管库订购以下类型的证书。  
 
-|提供程序|证书类型|  
-|--------------|----------------------|  
-|DigiCert|Key Vault 提供 DigiCert 的 OV 或 EV SSL 证书|
-|GlobalSign|Key Vault 提供 GlobalSign 的 OV 或 EV SSL 证书|
+|提供程序|证书类型|配置设置  
+|--------------|----------------------|------------------|  
+|DigiCert|Key Vault 提供 DigiCert 的 OV 或 EV SSL 证书| [集成指南](https://docs.digicert.com/certificate-tools/azure-key-vault-integration-guide/)
+|GlobalSign|Key Vault 提供 GlobalSign 的 OV 或 EV SSL 证书| [集成指南](https://support.globalsign.com/digital-certificates/digital-certificate-installation/generating-and-importing-certificate-microsoft-azure-key-vault)
 
  证书颁发者是 Azure Key Vault (KV) 中表示为 CertificateIssuer 资源的实体。 它用于提供有关 KV 证书来源的信息，例如颁发者名称、提供者、凭据和其他管理详细信息。
 

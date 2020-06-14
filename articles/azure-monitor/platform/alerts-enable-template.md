@@ -1,33 +1,33 @@
 ---
-title: 在 Azure 中使用资源管理器模板创建经典指标警报
+title: 资源管理器模板 - 创建指标警报
 description: 了解如何使用资源管理器模板创建经典指标警报，以便通过电子邮件或 Webhook 接收通知。
-author: lingliw
-services: azure-monitor
+author: Johnnytechn
+ms.author: v-johya
 ms.topic: conceptual
 origin.date: 03/09/2020
-ms.date: 03/13/2020
-ms.author: v-lingwu
+ms.date: 05/28/2020
 ms.subservice: alerts
-ms.openlocfilehash: f8ea1e2a22952ad71799d1e488ac3f25a90b3465
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 7a659c02958fd94288f16d33ae26634125632a91
+ms.sourcegitcommit: 5ae04a3b8e025986a3a257a6ed251b575dbf60a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79452575"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84440655"
 ---
 # <a name="create-a-classic-metric-alert-with-a-resource-manager-template"></a>使用资源管理器模板创建经典指标警报
 > [!WARNING]
 > 
-> 本文介绍如何使用资源管理器模板创建经典指标警报  。 经典警报已于 2019 年 8 月停用，并将于 2020 年 6 月完全弃用。 你不能在公共 Azure 上新建经典警报。 Azure 的某些区域版本可能仍然有这个选项，但我们建议你尽可能改用模板创建[较新的指标警报](../../azure-monitor/platform/alerts-metric-near-real-time.md)。 [此文](alerts-metric-create-templates.md)提供了详细信息。
+> 本文介绍如何使用资源管理器模板创建经典指标警报。 经典警报已于 2019 年 8 月停用，并将于 2020 年 6 月完全弃用。 你不能在公共 Azure 上新建经典警报。 Azure 的某些区域版本可能仍然有这个选项，但我们建议你尽可能改用模板创建[较新的指标警报](../../azure-monitor/platform/alerts-metric-near-real-time.md)。 [此文](alerts-metric-create-templates.md)提供了详细信息。
 >
 
+本文说明如何使用 [Azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)配置 Azure 经典指标警报。 这样，便可以在创建资源时自动对资源设置警报，确保正确监视所有资源。
 
-基本步骤如下所述：
+基本步骤如下所示：
 
 1. 创建一个描述如何创建警报的 JSON 文件作为模板。
 2. [使用任意部署方法部署模板](../../azure-resource-manager/templates/deploy-powershell.md)。
 
-下面我们先单独针对警报，然后针对创建其他资源期间的警报，说明如何创建资源管理器模板。
+下面我们先单独针对警报，然后针对创建其他资源期间的警报，描述如何创建 Resource Manager 模板。
 
 ## <a name="resource-manager-template-for-a-classic-metric-alert"></a>经典指标警报的资源管理器模板
 若要使用 Resource Manager 模板创建警报，需要创建 `Microsoft.Insights/alertRules` 类型的资源，并填充所有相关属性。 下面是用于创建警报规则的模板。
@@ -401,5 +401,7 @@ ms.locfileid: "79452575"
 
 ## <a name="next-steps"></a>后续步骤
 * [详细了解警报](alerts-overview.md)
-* [将诊断设置添加](../../azure-monitor/platform/diagnostic-settings-template.md)到 Resource Manager 模板
+* [将诊断设置添加](../../azure-monitor/platform/diagnostic-settings-template.md) 到 Resource Manager 模板
+* 有关 JSON 语法和属性，请参阅 [Microsoft.Insights/alertrules](https://docs.microsoft.com/azure/templates/microsoft.insights/alertrules) 模板参考。
+
 

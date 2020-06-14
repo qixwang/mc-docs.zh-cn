@@ -52,6 +52,11 @@
       href: sql-database-single-database-quickstart-guide.md
     - name: SQL 托管实例
       href: sql-database-managed-instance-quickstart-guide.md
+- name: 示例
+  items:
+    - name: Azure Policy 内置策略定义
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: 概念
   items:
     - name: 功能比较
@@ -102,7 +107,7 @@
           items:
             - name: Azure SQL 审核
               href: sql-database-auditing.md
-            - name: 到 VNet 或防火墙后面的存储
+            - name: 配置审核以写入到 VNet 或防火墙后面的存储帐户
               href: create-auditing-storage-account-vnet-firewall.md
             - name: 审核日志格式
               href: sql-database-audit-log-format.md
@@ -113,7 +118,13 @@
             - name: 数据发现和分类
               href: sql-database-data-discovery-and-classification.md
             - name: 漏洞评估
-              href: sql-vulnerability-assessment.md
+              items:
+                - name: 漏洞评估
+                  href: sql-vulnerability-assessment.md
+                - name: 漏洞评估规则
+                  href: sql-database-vulnerability-assessment-rules.md
+                - name: 将 VA 扫描存储在防火墙和 VNet 后面
+                  href: sql-database-vulnerability-assessment-storage.md
             - name: 高级威胁防护
               href: sql-database-threat-detection-overview.md
             - name: 安全属性
@@ -570,12 +581,16 @@
               href: scripts/sql-database-create-configure-managed-instance-powershell.md
         - name: 配置
           items:
+            - name: 服务辅助子网配置
+              href: sql-database-managed-instance-enabling-service-aided-subnet-configuration.md
             - name: 公共终结点
               href: sql-database-managed-instance-public-endpoint-configure.md
             - name: 客户端 VM 连接
               href: sql-database-managed-instance-configure-vm.md
             - name: 点到站点连接
               href: sql-database-managed-instance-configure-p2s.md
+            - name: 长期备份保留
+              href: sql-database-managed-instance-long-term-backup-retention-configure.md
         - name: 加载数据
           items:
             - name: 还原数据库备份

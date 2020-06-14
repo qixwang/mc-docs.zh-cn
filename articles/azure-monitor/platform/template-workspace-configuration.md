@@ -1,19 +1,18 @@
 ---
-title: 使用 Azure 资源管理器模板创建和配置 Log Analytics 工作区 | Azure Docs
+title: 用于 Log Analytics 工作区的 Azure 资源管理器模板
 description: 可以使用 Azure 资源管理器模板创建和配置 Log Analytics 工作区。
-author: lingliw
-manager: digimobile
+author: Johnnytechn
 ms.subservice: logs
 ms.topic: conceptual
 origin.date: 01/09/2020
-ms.date: 2/18/2020
-ms.author: v-lingwu
-ms.openlocfilehash: c235eaa7e0aa83a52cd223f4bff1ee99ccf6b690
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.author: v-johya
+ms.date: 05/28/2020
+ms.openlocfilehash: 47cac928d1f7fb69d701e4a1c1958469d0c5fa91
+ms.sourcegitcommit: 5ae04a3b8e025986a3a257a6ed251b575dbf60a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79452549"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84440677"
 ---
 # <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板管理 Log Analytics 工作区
 
@@ -50,6 +49,9 @@ ms.locfileid: "79452549"
 
 以下示例将使用本地计算机上的模板创建一个工作区。 JSON 模板配置为仅需要新工作区的名称和位置。 它使用为其他工作区参数指定的值，例如[访问控制模式](design-logs-deployment.md#access-control-mode)、定价层、保留期和产能预留级别。
 
+> [!WARNING]
+> 以下模板将创建一个 Log Analytics 工作区并配置数据收集。 这可能会更改计费设置。 查看[使用 Azure Monitor 日志管理使用情况和成本](manage-cost-storage.md)，以了解在 Azure 环境中应用计费设置之前在 Log Analytics 工作区中收集的数据的计费方式。
+
 对于产能预留，你可以通过指定 SKU `CapacityReservation` 并以 GB 为单位指定属性 `capacityReservationLevel` 的值来定义用于引入数据的选定产能预留。 以下列表详细说明了在配置该功能时支持的值和行为。
 
 - 设置预留限制后，在 31 天内你不能更改为其他 SKU。
@@ -77,31 +79,53 @@ ms.locfileid: "79452549"
               "description": "Specifies the name of the workspace."
             }
         },
-      "pricingTier": {
-      "type": "string",
-      "allowedValues": [
-        "pergb2018",
-        "Free",
-        "Standalone",
-        "PerNode",
-        "Standard",
-        "Premium"
-      ],
-      "defaultValue": "pergb2018",
-      "metadata": {
+      "sku": {
+        "type": "string",
+        "allowedValues": [
+          "pergb2018",
+          "Free",
+          "Standalone",
+          "PerNode",
+          "Standard",
+          "Premium"
+          ],
+        "defaultValue": "pergb2018",
+        "metadata": {
         "description": "Pricing tier: PerGB2018 or legacy tiers (Free, Standalone, PerNode, Standard or Premium) which are not available to all customers."
-           }
-       },
-        "location": {
-            "type": "String",
-            "allowedValues": [
-              "China East",
-              "China North"
-            ],
-            "metadata": {
-              "description": "Specifies the location in which to create the workspace."
-            }
         }
+      },
+      "location": {
+        "type": "String",
+        "allowedValues": [
+        "australiacentral", 
+        "australiaeast", 
+        "australiasoutheast", 
+        "brazilsouth",
+        "canadacentral", 
+        "centralindia", 
+        "centralus", 
+        "eastasia", 
+        "chinanorth", 
+        "chinanorth2", 
+        "francecentral", 
+        "japaneast", 
+        "koreacentral", 
+        "northcentralus", 
+        "northeurope", 
+        "southafricanorth", 
+        "southcentralus", 
+        "southeastasia", 
+        "uksouth", 
+        "ukwest", 
+        "westcentralus", 
+        "chinanorth", 
+        "chinanorth", 
+        "chinanorth2" 
+        ],
+      "metadata": {
+        "description": "Specifies the location in which to create the workspace."
+        }
+      }
     },
     "resources": [
         {
@@ -111,7 +135,7 @@ ms.locfileid: "79452549"
             "location": "[parameters('location')]",
             "properties": {
                 "sku": {
-          "name": "[parameters('pricingTier')]"
+                    "name": "[parameters('sku')]"
                 },
                 "retentionInDays": 120,
                 "features": {
@@ -125,15 +149,15 @@ ms.locfileid: "79452549"
     }
     ```
 
-> [Information] 对于产能预留设置，请在“sku”下使用以下属性：
+   >[!NOTE]
+   >对于产能预留设置，请在“sku”下使用以下属性：
+   >* "name":"CapacityReservation",
+   >* "capacityReservationLevel":100
 
->   "name":"CapacityReservation",
+2. 按要求编辑模板。 请考虑创建[资源管理器参数文件](../../azure-resource-manager/templates/parameter-files.md)，而不是将参数作为内联值传递。 查看 [Microsoft.OperationalInsights/workspaces 模板](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/2015-11-01-preview/workspaces)参考，了解支持的属性和值。 
 
->   "capacityReservationLevel":100
-
-
-2. 按要求编辑模板。 查看 [Microsoft.OperationalInsights/workspaces 模板](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/workspaces)参考，了解支持的属性和值。 
 3. 在本地文件夹中将此文件另存为 **deploylaworkspacetemplate.json**。
+
 4. 已做好部署此模板的准备。 使用 PowerShell 或命令行创建工作区，并在命令中指定工作区名称和位置。 工作区名称在所有 Azure 订阅中必须全局唯一。
 
    * 对于 PowerShell，请在包含模板的文件夹中使用以下命令：
@@ -156,15 +180,16 @@ ms.locfileid: "79452549"
 以下模板示例演示了如何：
 
 1. 向工作区添加解决方案
-2. 创建保存的搜索
-3. 创建计算机组
-4. 从装有 Windows 代理的计算机启用 IIS 日志收集
-5. 从 Linux 计算机中收集逻辑磁盘性能计数器 (% Used Inodes; Free Megabytes; % Used Space; Disk Transfers/sec; Disk Reads/sec; Disk Writes/sec)
-6. 从 Linux 计算机中收集 syslog 事件
-7. 从 Windows 计算机的应用程序事件日志中收集错误和警告事件
-8. 从 Windows 计算机中收集可用内存 (MB) 性能计数器
-9. 收集由 Azure 诊断写入存储帐户的 IIS 日志和 Windows 事件日志
-10. 从 Windows 计算机收集自定义日志
+2. 创建已保存搜索。 若要确保部署不会意外地替代已保存搜索，应在“savedSearches”资源中添加 eTag 属性，以替代和保持已保存搜索的幂等性。
+3. 创建已保存函数。 应添加 eTag 以重写函数和保持幂等性。
+4. 创建计算机组
+5. 从装有 Windows 代理的计算机启用 IIS 日志收集
+6. 从 Linux 计算机中收集逻辑磁盘性能计数器 (% Used Inodes; Free Megabytes; % Used Space; Disk Transfers/sec; Disk Reads/sec; Disk Writes/sec)
+7. 从 Linux 计算机中收集 syslog 事件
+8. 从 Windows 计算机的应用程序事件日志中收集错误和警告事件
+9. 从 Windows 计算机中收集可用内存 (MB) 性能计数器
+10. 收集由 Azure 诊断写入存储帐户的 IIS 日志和 Windows 事件日志
+11. 从 Windows 计算机收集自定义日志
 
 ```json
 {
@@ -177,7 +202,7 @@ ms.locfileid: "79452549"
         "description": "Workspace name"
       }
     },
-    "pricingTier": {
+    "sku": {
       "type": "string",
       "allowedValues": [
         "PerGB2018",
@@ -205,52 +230,74 @@ ms.locfileid: "79452549"
       "type": "bool",
       "defaultValue": "[bool('false')]",
       "metadata": {
-        "description": "If set to true when changing retention to 30 days, older data will be immediately deleted. Use this with extreme caution. This only applies when retention is being set to 30 days."
+        "description": "If set to true, changing retention to 30 days will immediately delete older data. Use this with extreme caution. This only applies when retention is being set to 30 days."
       }
     },
     "location": {
       "type": "string",
       "allowedValues": [
-        "China East 2",
-
+        "australiacentral",
+        "australiaeast",
+        "australiasoutheast",
+        "brazilsouth",
+        "canadacentral",
+        "centralindia",
+        "centralus",
+        "eastasia",
+        "chinanorth",
+        "chinanorth2",
+        "francecentral",
+        "japaneast",
+        "koreacentral",
+        "northcentralus",
+        "northeurope",
+        "southafricanorth",
+        "southcentralus",
+        "southeastasia",
+        "uksouth",
+        "ukwest",
+        "westcentralus",
+        "chinanorth",
+        "chinanorth",
+        "chinanorth2"
       ],
       "metadata": {
         "description": "Specifies the location in which to create the workspace."
       }
     },
     "applicationDiagnosticsStorageAccountName": {
-        "type": "string",
-        "metadata": {
-          "description": "Name of the storage account with Azure diagnostics output"
-        }
+      "type": "string",
+      "metadata": {
+        "description": "Name of the storage account with Azure diagnostics output"
+      }
     },
     "applicationDiagnosticsStorageAccountResourceGroup": {
-        "type": "string",
-        "metadata": {
-          "description": "The resource group name containing the storage account with Azure diagnostics output"
-        }
+      "type": "string",
+      "metadata": {
+        "description": "The resource group name containing the storage account with Azure diagnostics output"
+      }
     },
     "customLogName": {
-    "type": "string",
-    "metadata": {
-      "description": "The custom log name"
+      "type": "string",
+      "metadata": {
+        "description": "The custom log name"
       }
-     }
+    }
+  },
+  "variables": {
+    "Updates": {
+      "Name": "[Concat('Updates', '(', parameters('workspaceName'), ')')]",
+      "GalleryName": "Updates"
     },
-    "variables": {
-      "Updates": {
-        "Name": "[Concat('Updates', '(', parameters('workspaceName'), ')')]",
-        "GalleryName": "Updates"
-      },
-      "AntiMalware": {
-        "Name": "[concat('AntiMalware', '(', parameters('workspaceName'), ')')]",
-        "GalleryName": "AntiMalware"
-      },
-      "SQLAssessment": {
-        "Name": "[Concat('SQLAssessment', '(', parameters('workspaceName'), ')')]",
-        "GalleryName": "SQLAssessment"
-      },
-      "diagnosticsStorageAccount": "[resourceId(parameters('applicationDiagnosticsStorageAccountResourceGroup'), 'Microsoft.Storage/storageAccounts', parameters('applicationDiagnosticsStorageAccountName'))]"
+    "AntiMalware": {
+      "Name": "[concat('AntiMalware', '(', parameters('workspaceName'), ')')]",
+      "GalleryName": "AntiMalware"
+    },
+    "SQLAssessment": {
+      "Name": "[Concat('SQLAssessment', '(', parameters('workspaceName'), ')')]",
+      "GalleryName": "SQLAssessment"
+    },
+    "diagnosticsStorageAccount": "[resourceId(parameters('applicationDiagnosticsStorageAccountResourceGroup'), 'Microsoft.Storage/storageAccounts', parameters('applicationDiagnosticsStorageAccountName'))]"
   },
   "resources": [
     {
@@ -264,7 +311,7 @@ ms.locfileid: "79452549"
           "immediatePurgeDataOn30Days": "[parameters('immediatePurgeDataOn30Days')]"
         },
         "sku": {
-          "name": "[parameters('pricingTier')]"
+          "name": "[parameters('sku')]"
         }
       },
       "resources": [
@@ -276,11 +323,31 @@ ms.locfileid: "79452549"
             "[concat('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'))]"
           ],
           "properties": {
-            "Category": "VMSS",
-            "ETag": "*",
-            "DisplayName": "VMSS Instance Count",
-            "Query": "Event | where Source == \"ServiceFabricNodeBootstrapAgent\" | summarize AggregatedValue = count() by Computer",
-            "Version": 1
+            "eTag": "*",
+            "category": "VMSS",
+            "displayName": "VMSS Instance Count",
+            "query": "Event | where Source == \"ServiceFabricNodeBootstrapAgent\" | summarize AggregatedValue = count() by Computer",
+            "version": 1
+          }
+        },
+        {
+          "apiVersion": "2017-04-26-preview",
+          "name": "Cross workspace function",
+          "type": "savedSearches",
+            "dependsOn": [
+             "[concat('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'))]"
+            ],
+            "properties": {
+              "etag": "*",
+              "displayName": "failedLogOnEvents",
+              "category": "Security",
+              "FunctionAlias": "failedlogonsecurityevents",
+              "query": "
+                union withsource=SourceWorkspace
+                workspace('workspace1').SecurityEvent,
+                workspace('workspace2').SecurityEvent,
+                workspace('workspace3').SecurityEvent,
+                | where EventID == 4625"
           }
         },
         {
@@ -474,8 +541,8 @@ ms.locfileid: "79452549"
             "[concat('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'))]"
           ],
           "properties": {
-            "containers": [ 
-              "wad-iis-logfiles" 
+            "containers": [
+              "wad-iis-logfiles"
             ],
             "tables": [
               "WADWindowsEventLogsTable"
@@ -563,7 +630,7 @@ ms.locfileid: "79452549"
       "type": "string",
       "value": "[reference(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName')), '2015-11-01-preview').customerId]"
     },
-    "pricingTier": {
+    "sku": {
       "type": "string",
       "value": "[reference(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName')), '2015-11-01-preview').sku.name]"
     },
@@ -571,7 +638,7 @@ ms.locfileid: "79452549"
       "type": "int",
       "value": "[reference(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName')), '2015-11-01-preview').retentionInDays]"
     },
-    "immediatePurgeDataOn30Days": {  
+    "immediatePurgeDataOn30Days": {
       "type": "bool",
       "value": "[reference(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName')), '2015-11-01-preview').features.immediatePurgeDataOn30Days]"
     },
@@ -614,9 +681,9 @@ Azure 快速入门模板库包含 Log Analytics 的多个模板，其中包括�
 * [使用现有的 Log Analytics 工作区监视 Azure Web 应用](https://azure.microsoft.com/documentation/templates/101-webappazure-oms-monitoring/)
 * [将现有存储帐户添加到 Log Analytics](https://azure.microsoft.com/resources/templates/oms-existing-storage-account/)
 
+## <a name="next-steps"></a>后续步骤
 
+* [使用资源管理器模板将 Windows 代理部署到 Azure VM](../../virtual-machines/extensions/oms-windows.md)。
 
-
-
-
+* [使用资源管理器模板将 Linux 代理部署到 Azure VM](../../virtual-machines/extensions/oms-linux.md)。
 

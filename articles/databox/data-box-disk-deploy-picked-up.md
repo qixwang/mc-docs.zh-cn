@@ -6,23 +6,17 @@ author: WenJason
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-origin.date: 03/03/2020
-ms.date: 04/06/2020
+origin.date: 05/08/2020
+ms.date: 06/08/2020
 ms.author: v-jay
 ms.localizationpriority: high
-ms.openlocfilehash: 265b228d401db42ce4d93eb643148e9ff4a5b3eb
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 304ae5be38f3a0316d6e47d6166d6ae5195b2cf0
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80634463"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723618"
 ---
-::: zone target="chromeless"
-
-## <a name="return-azure-data-box-disk"></a>退回 Azure Data Box Disk 
-
-::: zone-end
-
 ::: zone target="docs"
 
 # <a name="tutorial-return-azure-data-box-disk"></a>教程：退回 Azure Data Box Disk 
@@ -44,6 +38,12 @@ ms.locfileid: "80634463"
 
 ::: zone-end
 
+::: zone target="chromeless"
+
+## <a name="return-azure-data-box-disk"></a>退回 Azure Data Box Disk 
+
+::: zone-end
+
 1. 数据验证完成后，请取出磁盘。 拔下连接线。
 2. 将磁盘和连接线包装在汽泡袋中，并在其放入包装箱。 如果缺少附件，我们可能会收取费用。
     - 重复使用最初的发货包装。  
@@ -57,7 +57,7 @@ ms.locfileid: "80634463"
 如果在美国或加拿大退回设备，请执行以下步骤。
 
 1. 使用粘贴在包装箱上的透明塑料套管中提供的退件发货标签。 如果标签受损或丢失：
-    - 转至“概述”>“下载发货标签”  并下载退件发货标签。
+    - 转至“概述”>“下载发货标签”并下载退件发货标签。
     - 将标签粘贴在设备上。
 
 2. 密封包装箱，并确保退件发货标签可见。
@@ -73,13 +73,13 @@ ms.locfileid: "80634463"
 如果在欧洲退回设备，请执行以下步骤。
 
 1. 使用粘贴在包装箱上的透明塑料套管中提供的退件发货标签。 如果标签受损或丢失：
-    - 转至“概述”>“下载发货标签”  并下载退件发货标签。
+    - 转至“概述”>“下载发货标签”并下载退件发货标签。
     - 将标签粘贴在设备上。
 
 2. 密封包装箱，并确保退件发货标签可见。
 3. 如果在欧洲使用 DHL 退回设备，请访问 DHL 网站并指定航空运单号，请求 DHL 提货。
-4. 转到 DHL Express 运营国家/地区的网站，选择“Book a Courier Collection > eReturn Shipment”（“预订快递取件”>“eReturn 发货”）。     
-3. 指定运单号，然后单击“Schedule Pickup”（安排提货）以安排提货。 
+4. 转到 DHL Express 运营国家/地区的网站，选择“Book a Courier Collection > eReturn Shipment”（“预订快递取件”>“eReturn 发货”）。    
+3. 指定运单号，然后单击“Schedule Pickup”（安排提货）以安排提货。
 
 ### <a name="in-australia"></a>[在澳大利亚](#tab/in-australia)
 
@@ -120,13 +120,13 @@ ms.locfileid: "80634463"
 
 1. 请务必附上退还托运单。
 2. 若要在提供有托运单的情况下请求取件，请执行以下操作：
-    1. 在办公时间（星期一到星期五的上午 10 点到下午 5 点）拨打 *Quantium Solutions International* 热线 070-8231-1418。 请注明“Microsoft Azure 取件”  和服务请求编号，以便安排收件。  
-    2. 如果热线繁忙，请向 `microsoft@rocketparcel.com` 发送电子邮件，并附上电子邮件主题“Microsoft Azure 取件”  和服务请求编号作为参考。
+    1. 在办公时间（星期一到星期五的上午 10 点到下午 5 点）拨打 *Quantium Solutions International* 热线 070-8231-1418。 请注明“Microsoft Azure 取件”和服务请求编号，以便安排收件。  
+    2. 如果热线繁忙，请向 `microsoft@rocketparcel.com` 发送电子邮件，并附上电子邮件主题“Microsoft Azure 取件”和服务请求编号作为参考。
     3. 如果快递公司未前来收件，请拨打 *Quantium Solutions International* 热线安排其他快递公司。 
     4. 你将会收到取件安排的电子邮件确认函。
 3. 仅当托运单未提供时，才执行此步骤。 请求取件：
-    1. 在办公时间（星期一到星期五的上午 10 点到下午 5 点）拨打 *Quantium Solutions International* 热线 070-8231-1418。 请注明“Microsoft Azure 取件”  和服务请求编号，以便安排收件。 指明你需要新的托运单，以便安排收件。 请提供发件人（客户）、收件人信息（Azure 数据中心）以及参考编号（服务请求编号）。 
-    2. 如果热线繁忙，请向 `microsoft@rocketparcel.com` 发送电子邮件，并附上电子邮件主题“Microsoft Azure 取件”  和服务请求编号作为参考。
+    1. 在办公时间（星期一到星期五的上午 10 点到下午 5 点）拨打 *Quantium Solutions International* 热线 070-8231-1418。 请注明“Microsoft Azure 取件”和服务请求编号，以便安排收件。 指明你需要新的托运单，以便安排收件。 请提供发件人（客户）、收件人信息（Azure 数据中心）以及参考编号（服务请求编号）。 
+    2. 如果热线繁忙，请向 `microsoft@rocketparcel.com` 发送电子邮件，并附上电子邮件主题“Microsoft Azure 取件”和服务请求编号作为参考。
     3. 如果快递公司未前来收件，请拨打 *Quantium Solutions International* 热线安排其他快递公司。 
     4. 如果请求是通过电话进行的，你会收到口头确认。
 
@@ -134,7 +134,7 @@ ms.locfileid: "80634463"
 ### <a name="in-singapore"></a>[在新加坡](#tab/in-singapore)
 
 1. 打印发货标签并将其贴在盒子上。 如果标签受损或丢失：
-    - 转至“概述”>“下载发货标签”  并获取退件发货标签。
+    - 转至“概述”>“下载发货标签”并获取退件发货标签。
     - 将标签粘贴在设备上。 请确保该标签是可见的。
 
 2. 若要请求分拣，请使用以下模板和跟踪号（跟踪号可在送达的包裹中提供的退货标签上找到），向 SingPost 客户服务发送电子邮件。
@@ -162,7 +162,7 @@ ms.locfileid: "80634463"
 
 如果在日本、新加坡、韩国和西欧使用 Data Box Disk，并在创建订单时选择了自托管寄送选项，请按以下说明操作。 
 
-1. 在 Azure 门户中转到订单的“概览”边栏选项卡  。 如果选择“安排提货”  ，请查看显示的说明。 应会看到在进行订单送货时使用的授权代码。
+1. 在 Azure 门户中转到订单的“概览”边栏选项卡。 如果选择“安排提货”，请查看显示的说明。 应会看到在进行订单送货时使用的授权代码。
 
 2. 准备好返回设备时，请使用以下模板将电子邮件发送到 Azure Data Box 运营团队。
 

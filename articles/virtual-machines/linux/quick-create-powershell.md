@@ -1,25 +1,19 @@
 ---
-title: 快速入门 - 使用 PowerShell 在 Azure 中创建 Linux 虚拟机
+title: 快速入门 - 使用 Azure PowerShell 创建 Linux VM
 description: 本快速入门介绍如何使用 Azure PowerShell 创建 Linux 虚拟机
-services: virtual-machines-linux
-documentationcenter: virtual-machines
 author: Johnnytechn
-manager: gwallace
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.topic: quickstart
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 04/20/2020
+ms.date: 06/05/2020
 ms.author: v-johya
 ms.custom: mvc
-ms.openlocfilehash: 9b165018a24292b72d3b8452c9e989a16dd5e724
-ms.sourcegitcommit: ebedf9e489f5218d4dda7468b669a601b3c02ae5
+ms.openlocfilehash: fee442fd0be6d58ece2b58088ee0d57446164176
+ms.sourcegitcommit: 285649db9b21169f3136729c041e4d04d323229a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82159192"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84683850"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-in-azure-with-powershell"></a>快速入门：使用 PowerShell 在 Azure 中创建 Linux 虚拟机
 
@@ -27,7 +21,6 @@ Azure PowerShell 模块用于从 PowerShell 命令行或脚本创建和管理 Az
 
 如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 
-<a name="launch-azure-cloud-shell"></a>
 ## <a name="launch-azure-local-shell"></a>启动 Azure 本地 Shell
 
 若要在本地安装和使用 PowerShell，请运行 `Get-Module -ListAvailable Az.*` 以查找版本。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount -Environment AzureChinaCloud` 来创建与 Azure 的连接。

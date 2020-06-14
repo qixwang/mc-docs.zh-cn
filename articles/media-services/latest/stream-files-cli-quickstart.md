@@ -14,12 +14,12 @@ ms.custom: ''
 origin.date: 08/19/2019
 ms.date: 04/06/2020
 ms.author: v-jay
-ms.openlocfilehash: 834a96004ca51dbbbc2bc992b84a69bb551d9eb7
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: c0a215e8a6d1dcb1847deeb74a3e9eadee4e9fdd
+ms.sourcegitcommit: 1f890a4085e184cc678485d05f08dd6de8dc973f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80625765"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84438931"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---azure-cli"></a>教程：基于 URL 对远程文件进行编码并流式传输视频 - Azure CLI
 
@@ -35,7 +35,7 @@ ms.locfileid: "80625765"
 
 ## <a name="create-a-media-services-account"></a>创建媒体服务帐户
 
-在加密、编码、分析、管理和流式传输 Azure 中的媒体内容之前，需要创建一个媒体服务帐户。 该帐户必须与一个或多个存储帐户相关联。
+在加密、编码、管理和流式传输 Azure 中的媒体内容之前，需要创建一个媒体服务帐户。 该帐户必须与一个或多个存储帐户相关联。
 
 媒体服务帐户和所有关联的存储帐户必须位于同一 Azure 订阅中。 我们建议在媒体服务帐户所在的同一位置使用存储帐户，以限制延迟和数据传出费用。
 
@@ -124,7 +124,7 @@ az ams streaming-endpoint start  -n default -a amsaccount -g amsResourceGroup
 
 ## <a name="create-a-transform-for-adaptive-bitrate-encoding"></a>创建适用于自适应比特率编码的转换
 
-创建一个**转换**，以便配置对视频进行编码或分析的常见任务。 本示例执行自适应比特率编码。 然后，在创建的转换下提交某个作业。 该作业是向媒体服务发出的请求，目的是将转换应用到给定的视频或音频内容输入。
+创建一个转换，以便配置对视频进行编码的常见任务。 本示例执行自适应比特率编码。 然后，在创建的转换下提交某个作业。 该作业是向媒体服务发出的请求，目的是将转换应用到给定的视频或音频内容输入。
 
 ```azurecli
 az ams transform create --name testEncodingTransform --preset AdaptiveStreaming --description 'a simple Transform for Adaptive Bitrate Encoding' -g amsResourceGroup -a amsaccount
@@ -332,8 +332,8 @@ az ams streaming-endpoint list -a amsaccount -g amsResourceGroup -n default
 > 如果播放器托管在 HTTPS 站点上，请确保在 URL 的开头添加“https”。
 
 1. 打开 Web 浏览器并转到 [https://aka.ms/azuremediaplayer/](https://aka.ms/azuremediaplayer/)。
-2. 在“URL”框中，粘贴在上一部分生成的 URL。  可以粘贴 HLS、Dash 或 Smooth 格式的 URL。 Azure Media Player 将自动使用相应的流协议在设备上播放。
-3. 选择“更新播放器”。 
+2. 在“URL”框中，粘贴在上一部分生成的 URL。 可以粘贴 HLS、Dash 或 Smooth 格式的 URL。 Azure Media Player 将自动使用相应的流协议在设备上播放。
+3. 选择“更新播放器”。
 
 >[!NOTE]
 >Azure Media Player 可用于测试，但不可在生产环境中使用。

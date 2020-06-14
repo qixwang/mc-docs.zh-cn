@@ -11,14 +11,14 @@ ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 11/20/2018
-ms.date: 11/25/2019
+ms.date: 06/15/2020
 ms.author: v-yeche
-ms.openlocfilehash: 40da890160e7a632eb1b0de0de287bcbbcfe345f
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: c88579539f50a6f8c5547c3d7ece44bc13b11df2
+ms.sourcegitcommit: ff67734e01c004be575782b4812cfe857e435f4d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74658058"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84487077"
 ---
 # <a name="troubleshoot-outbound-smtp-connectivity-issues-in-azure"></a>在 Azure 中排查出站 SMTP 连接问题
 

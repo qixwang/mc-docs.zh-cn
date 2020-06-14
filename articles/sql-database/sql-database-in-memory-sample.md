@@ -1,5 +1,5 @@
 ---
-title: Azure SQL 数据库内存中示例 | Microsoft Docs
+title: 内存中示例
 description: 尝试将 Azure SQL 数据库内存中技术用于 OLTP 和列存储示例。
 services: sql-database
 ms.service: sql-database
@@ -11,13 +11,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: ''
 origin.date: 12/18/2018
-ms.date: 11/04/2019
-ms.openlocfilehash: e07dd6d431e99a1b4090618e921a403d8802913d
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.date: 06/15/2020
+ms.openlocfilehash: cd2e9006a93d7a4298287152ce62523f27879323
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82126665"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723675"
 ---
 # <a name="in-memory-sample"></a>内存中示例
 
@@ -46,7 +46,7 @@ ms.locfileid: "82126665"
 
 #### <a name="installation-steps"></a>安装步骤
 
-1. 通过 [Azure 门户](https://portal.azure.cn/)，在服务器上创建一个高级或业务关键数据库。 将“源”  设置为 AdventureWorksLT 示例数据库。 有关详细说明，请参阅[创建第一个 Azure SQL 数据库](sql-database-single-database-get-started.md)。
+1. 通过 [Azure 门户](https://portal.azure.cn/)，在服务器上创建一个高级或业务关键数据库。 将“源”设置为 AdventureWorksLT 示例数据库。 有关详细说明，请参阅[创建第一个 Azure SQL 数据库](sql-database-single-database-get-started.md)。
 
 2. 使用 SQL Server Management Studio [(SSMS.exe)](https://msdn.microsoft.com/library/mt238290.aspx) 连接到该数据库。
 
@@ -74,7 +74,7 @@ SELECT DatabasePropertyEx(DB_Name(), 'IsXTPSupported');
 ```
 
 
-结果“0”  表示不支持内存中，结果“1”  表示支持。 若要诊断问题，请确保数据库位于“高级”服务层级。
+结果“0”表示不支持内存中，结果“1”表示支持。 若要诊断问题，请确保数据库位于“高级”服务层级。
 
 
 #### <a name="about-the-created-memory-optimized-items"></a>关于创建的内存优化项
@@ -88,7 +88,7 @@ SELECT DatabasePropertyEx(DB_Name(), 'IsXTPSupported');
 - Demo.DemoSalesOrderDetailSeed
 
 
-可以通过 SSMS 中的“对象资源管理器”  检查内存优化表。 右键单击“表”   > “筛选器”   > “筛选器设置”   > “内存优化”  。 值等于 1。
+可以通过 SSMS 中的“对象资源管理器”检查内存优化表。 右键单击“表” > “筛选器” > “筛选器设置” > “内存优化”。 值等于 1。
 
 
 或者可以查询目录视图，例如：
@@ -117,8 +117,8 @@ SELECT uses_native_compilation, OBJECT_NAME(object_id), definition
 
 以下两个 *存储过程* 的唯一差别在于，第一个过程使用内存优化表版本，而第二个过程使用普通磁盘表：
 
-- SalesLT.  usp_InsertSalesOrder_inmem 
-- SalesLT.  usp_InsertSalesOrder_ondisk 
+- SalesLT.usp_InsertSalesOrder_inmem
+- SalesLT.usp_InsertSalesOrder_ondisk
 
 
 本部分介绍如何使用便利的 **ostress.exe** 实用程序在压力级别执行两个存储过程。 可以比较完成两个压力回合所需的时间。
@@ -183,9 +183,9 @@ end
 有关详细信息，请参阅：
 - [内存中 OLTP 的示例数据库](https://msdn.microsoft.com/library/mt465764.aspx)中的 ostress.exe 介绍。
 - [内存中 OLTP 的示例数据库](https://msdn.microsoft.com/library/mt465764.aspx)。
-- [有关安装 ostress.exe 的博客](https://blogs.msdn.com/b/psssql/archive/20../../cumulative-update-2-to-the-rml-utilities-for-microsoft-sql-server-released.aspx)。
+- [有关安装 ostress.exe 的博客](https://techcommunity.microsoft.com/t5/sql-server-support/cumulative-update-2-to-the-rml-utilities-for-microsoft-sql/ba-p/317910)。
 
-### <a name="run-the-_inmem-stress-workload-first"></a>首先运行 _inmem  压力工作负荷
+### <a name="run-the-_inmem-stress-workload-first"></a>首先运行 _inmem 压力工作负荷
 
 
 可以使用 *RML 命令提示符* 窗口来运行 ostress.exe 命令行。 命令行参数指示 `ostress`：
@@ -223,10 +223,10 @@ ostress.exe -n100 -r50 -S<servername>.database.chinacloudapi.cn -U<login> -P<pas
 `11/12/15 00:35:00.873 [0x000030A8] OSTRESS exiting normally, elapsed time: 00:01:31.867`
 
 
-#### <a name="reset-edit-for-_ondisk-then-rerun"></a>重置，编辑 _ondisk  ，然后重新运行
+#### <a name="reset-edit-for-_ondisk-then-rerun"></a>重置，编辑 _ondisk，然后重新运行
 
 
-在获得 _inmem  运行结果之后，请针对 _ondisk  运行执行以下步骤：
+在获得 _inmem 运行结果之后，请针对 _ondisk 运行执行以下步骤：
 
 
 1. 在 SSMS 中运行以下命令重置数据库，删除前面运行的命令所插入的所有数据：
@@ -234,7 +234,7 @@ ostress.exe -n100 -r50 -S<servername>.database.chinacloudapi.cn -U<login> -P<pas
    EXECUTE Demo.usp_DemoReset;
    ```
 
-2. 编辑 ostress.exe 命令行，将所有的 _inmem  替换为 _ondisk  。
+2. 编辑 ostress.exe 命令行，将所有的 _inmem 替换为 _ondisk。
 
 3. 再次重新运行 ostress.exe，并捕获持续时间结果。
 
@@ -243,7 +243,7 @@ ostress.exe -n100 -r50 -S<servername>.database.chinacloudapi.cn -U<login> -P<pas
 
 #### <a name="expected-comparison-results"></a>预期比较结果
 
-在与数据库处于同一 Azure 区域的 Azure VM 上运行 `ostress` 时，内存中测试已显示此简化工作负荷大约有 9 倍  的性能改善。
+在与数据库处于同一 Azure 区域的 Azure VM 上运行 `ostress` 时，内存中测试已显示此简化工作负荷大约有 9 倍的性能改善。
 
 <a id="install_analytics_manuallink" name="install_analytics_manuallink"></a>
 
@@ -271,7 +271,7 @@ ostress.exe -n100 -r50 -S<servername>.database.chinacloudapi.cn -U<login> -P<pas
    - 该脚本将创建维度表和两个事实表。 每个事实表中填充了 350 万行。
    - 该脚本可能需要 15 分钟才能完成。
 
-3. 将 T-SQL 脚本粘贴到 SSMS，并执行该脚本。 CREATE INDEX  语句中的 COLUMNSTORE  关键字至关重要，如下所示：<br/>`CREATE NONCLUSTERED COLUMNSTORE INDEX ...;`
+3. 将 T-SQL 脚本粘贴到 SSMS，并执行该脚本。 CREATE INDEX 语句中的 COLUMNSTORE 关键字至关重要，如下所示：<br/>`CREATE NONCLUSTERED COLUMNSTORE INDEX ...;`
 
 4. 将 AdventureWorksLT 设置为兼容级别 130：<br/>`ALTER DATABASE AdventureworksLT SET compatibility_level = 130;`
 
@@ -281,9 +281,9 @@ ostress.exe -n100 -r50 -S<servername>.database.chinacloudapi.cn -U<login> -P<pas
 #### <a name="key-tables-and-columnstore-indexes"></a>关键表和列存储索引
 
 
-- dbo.FactResellerSalesXL_CCI 是具有群集列存储索引的表，已在数据  级别进一步压缩。
+- dbo.FactResellerSalesXL_CCI 是具有群集列存储索引的表，已在数据级别进一步压缩。
 
-- dbo.FactResellerSalesXL_PageCompressed 是具有等效常规群集索引的表，只在页面  级别压缩。
+- dbo.FactResellerSalesXL_PageCompressed 是具有等效常规群集索引的表，只在页面级别压缩。
 
 
 #### <a name="key-queries-to-compare-the-columnstore-index"></a>用于比较列存储索引的关键查询

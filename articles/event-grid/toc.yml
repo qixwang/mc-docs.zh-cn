@@ -84,12 +84,18 @@
       href: 'https://docs.microsoft.com/samples/browse/?term=Event%20Grid'
 - name: 概念
   items:
+    - name: 事件网格术语
+      href: concepts.md
     - name: 自定义主题
       href: custom-topics.md
     - name: 系统主题
       items:
+        - name: 系统主题概述
+          href: system-topics.md
         - name: 事件源
           items:
+            - name: Azure 应用服务
+              href: event-schema-app-service.md
             - name: Azure Blob 存储
               href: event-schema-blob-storage.md
             - name: Azure 容器注册表
@@ -129,6 +135,8 @@
           href: event-filtering.md
         - name: 传递和重试
           href: delivery-and-retry.md
+        - name: Webhook 事件传送
+          href: webhook-event-delivery.md
     - name: 灾难恢复
       items:
         - name: 异地灾难恢复
@@ -137,14 +145,22 @@
       items:
         - name: 身份验证
           href: security-authentication.md
+        - name: 授权
+          href: security-authorization.md
+        - name: 网络安全性
+          href: network-security.md
+    - name: 监视和故障排除
+      items:
+        - name: 诊断日志
+          href: diagnostic-logs.md
+        - name: 指标
+          href: metrics.md
 - name: 操作指南
   items:
     - name: 发布到自定义主题
       href: post-to-custom-topic.md
     - name: 在 HTTP 终结点接收事件
       href: receive-events.md
-    - name: 通过 AAD 保护 WebHook
-      href: secure-webhook-delivery.md
     - name: 死信与重试
       href: manage-event-delivery.md
     - name: 筛选事件
@@ -163,10 +179,12 @@
       href: custom-disaster-recovery.md
     - name: 故障排除
       items:
-        - name: 为主题启用诊断日志
+        - name: 启用诊断日志
           href: enable-diagnostic-logs-topic.md
         - name: 排查错误
           href: troubleshoot-errors.md
+        - name: 排查订阅验证问题
+          href: troubleshoot-subscription-validation.md
         - name: 监视事件传送
           href: monitor-event-delivery.md
 - name: 参考

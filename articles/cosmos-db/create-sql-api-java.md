@@ -7,15 +7,15 @@ ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: quickstart
 origin.date: 10/31/2019
-ms.date: 04/27/2020
+ms.date: 06/15/2020
 ms.author: v-yeche
 ms.custom: seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: bfe3dd7b1e0d8b3be13b3c489c0ad9d6d1160751
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.openlocfilehash: 2735ebf4b2603fa6e58a159bbf90a60962f48a1f
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82134957"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723315"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-sql-api-data"></a>快速入门：生成 Java 应用以管理 Azure Cosmos DB SQL API 数据
 
@@ -41,15 +41,15 @@ ms.locfileid: "82134957"
 
 ## <a name="introductory-notes"></a>介绍性说明
 
-Cosmos DB 帐户的结构。  不管使用 API 还是编程语言，都具有以下特点：一个 Cosmos DB 帐户  包含零个或零个以上的数据库  ，一个数据库  (DB) 包含零个或零个以上的容器  ，一个容器  包含零个或零个以上的项，如下图所示：
+Cosmos DB 帐户的结构。 不管使用 API 还是编程语言，都具有以下特点：一个 Cosmos DB 帐户包含零个或零个以上的数据库，一个数据库 (DB) 包含零个或零个以上的容器，一个容器包含零个或零个以上的项，如下图所示：
 
 ![Azure Cosmos 帐户实体](./media/databases-containers-items/cosmos-entities.png)
 
-可在[此处](databases-containers-items.md)阅读有关数据库、容器和项的详细信息。 几个重要属性在容器级别定义，其中包括预配吞吐量  和分区键  。 
+可在[此处](databases-containers-items.md)阅读有关数据库、容器和项的详细信息。 几个重要属性在容器级别定义，其中包括预配吞吐量和分区键。 
 
 预配吞吐量以具有货币价格的请求单位 (*RU*) 度量，是帐户运营成本中重要的确定性因素。 可以按单容器粒度或单数据库粒度选择预配吞吐量，但通常首选容器级别吞吐量规范。 可在[此处](set-throughput.md)阅读有关吞吐量预配的详细信息。
 
-将项插入 Cosmos DB 容器时，数据库会添加更多的存储和计算来处理请求，以水平方式增长。 存储和计算容量添加到称为分区  的离散单元中，你必须在文档中选择一个字段作为分区键，以便将每个文档映射到分区。 分区的管理方式是从分区键值的范围内为每个分区分配一个大致相等的切片；因此，建议选择相对随机或均匀分布的分区键。 否则，某些分区看到的请求数会多得多（热分区  ），而其他分区看到的请求数会少得多（冷分区  ），这是应该避免的。 可以在[此处](partitioning-overview.md)详细了解分区。
+将项插入 Cosmos DB 容器时，数据库会添加更多的存储和计算来处理请求，以水平方式增长。 存储和计算容量添加到称为分区的离散单元中，你必须在文档中选择一个字段作为分区键，以便将每个文档映射到分区。 分区的管理方式是从分区键值的范围内为每个分区分配一个大致相等的切片；因此，建议选择相对随机或均匀分布的分区键。 否则，某些分区看到的请求数会多得多（热分区），而其他分区看到的请求数会少得多（冷分区），这是应该避免的。 可以在[此处](partitioning-overview.md)详细了解分区。
 
 ## <a name="create-a-database-account"></a>创建数据库帐户
 
@@ -84,16 +84,18 @@ git clone https://github.com/Azure-Samples/azure-cosmos-java-getting-started.git
 
 此步骤是可选的。 如果有意了解如何使用代码创建数据库资源，可以查看以下代码片段。 否则，可以跳到[运行应用](#run-the-app)。 
 
+# <a name="sync-api"></a>[同步 API](#tab/sync)
+
 ### <a name="managing-database-resources-using-the-synchronous-sync-api"></a>使用同步 (sync) API 管理数据库资源
 
 * `CosmosClient` 初始化。 `CosmosClient` 为 Azure Cosmos 数据库服务提供客户端逻辑表示形式。 此客户端用于对服务配置和执行请求。
 
     ```java
     client = new CosmosClientBuilder()
-        .setEndpoint(AccountSettings.HOST)
-        .setKey(AccountSettings.MASTER_KEY)
-        .setConnectionPolicy(defaultPolicy)
-        .setConsistencyLevel(ConsistencyLevel.EVENTUAL)
+        .endpoint(AccountSettings.HOST)
+        .key(AccountSettings.MASTER_KEY)
+        .connectionPolicy(defaultPolicy)
+        .consistencyLevel(ConsistencyLevel.EVENTUAL)
         .buildClient();
 
     ```
@@ -136,7 +138,7 @@ git clone https://github.com/Azure-Samples/azure-cosmos-java-getting-started.git
         double requestCharge = item.getRequestCharge();
         Duration requestLatency = item.getRequestLatency();
         System.out.println(String.format("Item successfully read with id %s with a charge of %.2f and within duration %s",
-            item.getResource().getId(), requestCharge, requestLatency));
+            item.getItem().getId(), requestCharge, requestLatency));
     } catch (CosmosClientException e) {
         e.printStackTrace();
         System.err.println(String.format("Read Item failed with %s", e));
@@ -170,6 +172,8 @@ git clone https://github.com/Azure-Samples/azure-cosmos-java-getting-started.git
 
     ```
 
+# <a name="async-api"></a>[异步 API](#tab/async)
+
 ### <a name="managing-database-resources-using-the-asynchronous-async-api"></a>使用异步 (async) API 管理数据库资源
 
 * 异步 API 调用立即返回，而不等待服务器的响应。 对于这种情况，以下代码片段演示了通过异步 API 完成上述所有管理任务时可用的正确设计模式。
@@ -178,10 +182,10 @@ git clone https://github.com/Azure-Samples/azure-cosmos-java-getting-started.git
 
     ```java
     client = new CosmosClientBuilder()
-        .setEndpoint(AccountSettings.HOST)
-        .setKey(AccountSettings.MASTER_KEY)
-        .setConnectionPolicy(defaultPolicy)
-        .setConsistencyLevel(ConsistencyLevel.EVENTUAL)
+        .endpoint(AccountSettings.HOST)
+        .key(AccountSettings.MASTER_KEY)
+        .connectionPolicy(defaultPolicy)
+        .consistencyLevel(ConsistencyLevel.EVENTUAL)
         .buildAsyncClient();
 
     ```
@@ -343,6 +347,8 @@ git clone https://github.com/Azure-Samples/azure-cosmos-java-getting-started.git
     }
 
     ```
+
+---
 
 ## <a name="run-the-app"></a>运行应用程序
 

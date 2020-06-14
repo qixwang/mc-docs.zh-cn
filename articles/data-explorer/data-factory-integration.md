@@ -8,13 +8,13 @@ ms.reviewer: tomersh26
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 01/20/2020
-ms.date: 05/09/2020
-ms.openlocfilehash: d7e85996363b90266ed67a2f3d9eeb230043b1f7
-ms.sourcegitcommit: bfbd6694da33f703481386f2a3f16850c4e94bfa
+ms.date: 06/09/2020
+ms.openlocfilehash: 6ca3fd5aa3a78a5b6d6b4b96dfdd23e5bbeb21d5
+ms.sourcegitcommit: 73697fa9c19a40d235df033400c74741e7d0f3f4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83417639"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84574902"
 ---
 # <a name="integrate-azure-data-explorer-with-azure-data-factory"></a>将 Azure 数据资源管理器与 Azure 数据工厂集成
 
@@ -211,7 +211,7 @@ static void Main(string[] args)
 * 了解如何[使用 Azure 数据工厂将数据复制到 Azure 数据资源管理器](data-factory-load-data.md)。
 * 了解如何[使用 Azure 数据工厂模板从数据库批量复制到 Azure 数据资源管理器](data-factory-template.md)。
 * 了解如何[使用 Azure 数据工厂命令活动运行 Azure 数据资源管理器控制命令](data-factory-command-activity.md)。
-* 了解用于查询数据的 [Azure 数据资源管理器查询](/data-explorer/web-query-data)。
+* 了解用于查询数据的 [Azure 数据资源管理器查询](web-query-data.md)。
 
 
 

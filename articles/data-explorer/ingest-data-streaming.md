@@ -7,19 +7,19 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 08/30/2019
-ms.date: 05/09/2020
-ms.openlocfilehash: e3c5c0462705e4eca875c4de27b38debcc3bb9cb
-ms.sourcegitcommit: bfbd6694da33f703481386f2a3f16850c4e94bfa
+ms.date: 06/09/2020
+ms.openlocfilehash: f24d376f42baab2f070ca1f6c8c4c562c630c45b
+ms.sourcegitcommit: 73697fa9c19a40d235df033400c74741e7d0f3f4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83417613"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84574895"
 ---
 # <a name="streaming-ingestion-preview"></a>流式引入（预览版）
 
 对于不同的量级数据，当需要低延迟且引入时间小于 10 秒时，请使用流式引入。 它用于优化一个或多个数据库中多个表的操作处理，其中进入每个表的数据流相对较小（每秒很少条记录），但总体数据引入量较高（每秒数千条记录）。 
 
-当每个表的数据量增大到每秒 1 MB 以上时，请使用批量引入而不是流式引入。 请阅读[数据引入概述](/data-explorer/ingest-data-overview)来详细了解各种引入方法。
+当每个表的数据量增大到每秒 1 MB 以上时，请使用批量引入而不是流式引入。 请阅读[数据引入概述](ingest-data-overview.md)来详细了解各种引入方法。
 
 ## <a name="prerequisites"></a>必备条件
 
@@ -49,7 +49,7 @@ ms.locfileid: "83417613"
 支持两种流式引入类型：
 
 
-* 用作数据源的[事件中心  ](/data-explorer/ingest-data-event-hub)
+* 用作数据源的[事件中心  ](ingest-data-event-hub.md)
 * **自定义引入**需要编写使用某个 Azure 数据资源管理器客户端库的应用程序。 有关示例应用程序，请参阅[流式引入示例](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/client/StreamingIngestionSample)。
 
 ### <a name="choose-the-appropriate-streaming-ingestion-type"></a>选择适当的流式引入类型

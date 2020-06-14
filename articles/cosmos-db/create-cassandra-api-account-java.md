@@ -7,16 +7,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: tutorial
 origin.date: 12/06/2018
-ms.date: 04/27/2020
+ms.date: 06/15/2020
 ms.author: v-yeche
 ms.custom: seodec18
-Customer intent: As a developer, I want to build a Java application to access and manage Azure Cosmos DB resources so that customers can store key/value data and utilize the multiple-region distribution, elastic scaling, multi-master, and other capabilities offered by Azure Cosmos DB.
-ms.openlocfilehash: f52c72b04a89ca0f6a0600078935010b9895445c
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.openlocfilehash: 701e9260d7c39fee4d9069ad7eceda7bba9945f7
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82134489"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723715"
 ---
 <!--Verify sucessfully-->
 # <a name="tutorial-create-a-cassandra-api-account-in-azure-cosmos-db-by-using-a-java-application-to-store-keyvalue-data"></a>教程：使用 Java 应用程序在 Azure Cosmos DB 中创建 Cassandra API 帐户，以便存储键/值数据
@@ -30,7 +29,7 @@ ms.locfileid: "82134489"
 > * 获取帐户连接字符串
 > * 创建 Maven 项目和依赖项
 > * 添加数据库和表
-> * 运行应用程序
+> * 运行应用
 
 ## <a name="prerequisites"></a>先决条件 
 
@@ -43,7 +42,7 @@ ms.locfileid: "82134489"
 
 ## <a name="create-a-database-account"></a>创建数据库帐户 
 
-1. 登录到 [Azure 门户](https://portal.azure.cn/)。 
+1. 登录 [Azure 门户](https://portal.azure.cn/)。 
 
 2. 选择“创建资源”   >   “数据库” >   “Azure Cosmos DB”。 
 
@@ -53,7 +52,7 @@ ms.locfileid: "82134489"
     |---------|---------|---------|
     |ID   |   输入唯一的名称    | 输入标识此 Azure Cosmos 帐户的唯一名称。 <br/><br/>由于 cassandra.cosmos.azure.cn 将追加到所提供的用于创建接触点的 ID 后面，因此，请使用唯一但可识别的 ID。         |
     |API    |  Cassandra   |  API 确定要创建的帐户的类型。 <br/> 选择“Cassandra”，因为在本文中，你将创建可使用 Cassandra 查询语言 (CQL) 语法查询的宽列数据库  。  |
-    |订阅    |  你的订阅        |  选择要用于此 Azure Cosmos 帐户的 Azure 订阅。        |
+    |订阅    |  订阅        |  选择要用于此 Azure Cosmos 帐户的 Azure 订阅。        |
     |资源组   | 输入名称    |  选择“新建”，然后输入帐户的新资源组名称  。 为简单起见，可以使用与 ID 相同的名称。    |
     |位置    |  选择离用户最近的区域    |  选择要在其中托管 Azure Cosmos 帐户的地理位置。 使用离用户最近的位置，使他们能够以最快的速度访问数据。    |
 
@@ -94,21 +93,21 @@ cassandra_password=<FILLME_with_PRIMARY PASSWORD>
 
 2. 找到 `cassandra-demo` 文件夹。 使用文本编辑器打开已生成的 `pom.xml` 文件。 
 
-    添加 Cassandra 依赖项并生成项目所需的插件，如 [pom.xml](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/java-examples/pom.xml) 文件中所示。  
+    添加 Cassandra 依赖项并生成项目所需的插件，如 [pom.xml](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/pom.xml) 文件中所示。  
 
 3. 在 `cassandra-demo\src\main` 文件夹下，创建名为 `resources` 的新文件夹。  在资源文件夹下，添加 config.properties 和 log4j.properties 文件：
 
-    - [Config.properties](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/java-examples/src/main/resources/config.properties) 文件存储 Cassandra API 帐户的连接终结点和键值。 
+    - [Config.properties](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/src/main/resources/config.properties) 文件存储 Cassandra API 帐户的连接终结点和键值。 
 
-    - [log4j.properties](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/java-examples/src/main/resources/log4j.properties) 文件定义与 Cassandra API 交互所需的日志记录级别。  
+    - [log4j.properties](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/src/main/resources/log4j.properties) 文件定义与 Cassandra API 交互所需的日志记录级别。  
 
 4. 浏览到 `src/main/java/com/azure/cosmosdb/cassandra/` 文件夹。 在 cassandra 文件夹中，另创建一个名为 `utils` 的文件夹。 新的文件夹存储连接到 Cassandra API 帐户所需的实用程序类。 
 
-    添加 [CassandraUtils](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/java-examples/src/main/java/com/azure/cosmosdb/cassandra/util/CassandraUtils.java) 类来创建群集并打开和关闭 Cassandra 会话。 群集将连接到 Azure Cosmos DB 中的 Cassandra API 帐户并返回可供访问的会话。 使用 [Configurations](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/java-examples/src/main/java/com/azure/cosmosdb/cassandra/util/Configurations.java) 类从 config.properties 文件中读取连接字符串信息。 
+    添加 [CassandraUtils](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/src/main/java/com/azure/cosmosdb/cassandra/util/CassandraUtils.java) 类来创建群集并打开和关闭 Cassandra 会话。 群集将连接到 Azure Cosmos DB 中的 Cassandra API 帐户并返回可供访问的会话。 使用 [Configurations](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/src/main/java/com/azure/cosmosdb/cassandra/util/Configurations.java) 类从 config.properties 文件中读取连接字符串信息。 
 
 5. Java 示例使用用户信息（如用户名、用户ID、用户城市）创建数据库。 你需要定义 get 和 set 方法以访问主函数中的用户详细信息。
 
-    使用 get 和 set 方法在 `src/main/java/com/azure/cosmosdb/cassandra/` 文件夹下创建 [User.java](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/java-examples/src/main/java/com/azure/cosmosdb/cassandra/User.java) 类。 
+    使用 get 和 set 方法在 `src/main/java/com/azure/cosmosdb/cassandra/` 文件夹下创建 [User.java](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/src/main/java/com/azure/cosmosdb/cassandra/examples/UserProfile.java) 类。 
 
 ## <a name="add-a-database-and-a-table"></a>添加数据库和表  
 
@@ -206,7 +205,7 @@ cassandra_password=<FILLME_with_PRIMARY PASSWORD>
     } 
     ```
 
-## <a name="run-the-app"></a>运行应用程序 
+## <a name="run-the-app"></a>运行应用 
 
 1. 打开命令提示符或终端窗口。 粘贴以下代码块。 
 

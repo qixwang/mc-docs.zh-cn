@@ -10,17 +10,15 @@ ms.author: v-jay
 manager: digimobile
 ms.custom: seo-lt-2019
 origin.date: 07/31/2018
-ms.date: 05/11/2020
-ms.openlocfilehash: 8303dcd5bfeab9c16a3cd422a1032859a1d1ea79
-ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
+ms.date: 06/15/2020
+ms.openlocfilehash: 7469658d3e27d5cefe10a06f792d67a072d3bcd7
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82198196"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723685"
 ---
 # <a name="transform-data-in-azure-data-factory"></a>在 Azure 数据工厂中转换数据
-
-[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 > [!div class="op_single_selector"]
 > * [Hive](transform-data-using-hadoop-hive.md)  
@@ -30,7 +28,9 @@ ms.locfileid: "82198196"
 > * [HDInsight Spark](transform-data-using-spark.md)
 > * [存储过程](transform-data-using-stored-procedure.md)
 > * [.NET 自定义](transform-data-using-dotnet-custom-activity.md)
+
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 ## <a name="overview"></a>概述
 本文介绍了 Azure 数据工厂中的数据转换活动，可利用这些活动将原始数据转换和处理为大规模预测和见解。 转换活动在计算环境（例如 Azure HDInsight 群集或 Azure Batch）中执行。 其提供了相关文章链接，内附各转换活动的详细信息。
 

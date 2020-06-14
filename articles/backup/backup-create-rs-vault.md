@@ -5,14 +5,14 @@ ms.reviewer: sogup
 author: Johnnytechn
 ms.topic: conceptual
 origin.date: 08/30/2019
-ms.date: 05/11/2020
+ms.date: 06/09/2020
 ms.author: v-johya
-ms.openlocfilehash: ce377758e8446a12cd7810b259e0d8d6f5267a4b
-ms.sourcegitcommit: 08b42258a48d96d754244064d065e4d5703f1cfb
+ms.openlocfilehash: a3aec099bc60c5774c6dcbe1001c8b2cbbcff04e
+ms.sourcegitcommit: 285649db9b21169f3136729c041e4d04d323229a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/18/2020
-ms.locfileid: "83445187"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84683869"
 ---
 # <a name="create-a-recovery-services-vault"></a>创建恢复服务保管库
 
@@ -124,7 +124,7 @@ Azure 备份会自动处理保管库的存储。 需要指定如何复制该存�
 
 - “存储复制类型”默认设置为“异地冗余”。  配置备份后，将禁用修改选项。 请遵循[这些步骤](/backup/backup-create-rs-vault#set-storage-redundancy)检查和修改设置。
 
-- “软删除”对新建的保管库默认为“已启用”，旨在防止意外或恶意删除备份数据。  请遵循[这些步骤](/backup/backup-azure-security-feature-cloud#disabling-soft-delete)检查和修改设置。
+- “软删除”对新建的保管库默认为“已启用”，旨在防止意外或恶意删除备份数据。  请遵循[这些步骤](/backup/backup-azure-security-feature-cloud#enabling-and-disabling-soft-delete)检查和修改设置。
 
 ## <a name="next-steps"></a>后续步骤
 

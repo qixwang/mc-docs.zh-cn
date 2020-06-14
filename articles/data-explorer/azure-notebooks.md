@@ -2,25 +2,25 @@
 title: 使用 Azure Notebooks 分析 Azure 数据资源管理器中的数据
 description: 本主题说明如何使用 Azure Notebook 创建查询
 author: orspod
-ms.date: 05/15/2020
 ms.author: v-tawe
 ms.reviewer: adieldar
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 04/01/2020
-ms.openlocfilehash: d74f3673232f734bde491e1c1eca1c0ff7feb097
-ms.sourcegitcommit: bfbd6694da33f703481386f2a3f16850c4e94bfa
+ms.date: 06/09/2020
+ms.openlocfilehash: dc278e83f78df4e058de1487623e5b7d53b3e116
+ms.sourcegitcommit: 73697fa9c19a40d235df033400c74741e7d0f3f4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83418122"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84574905"
 ---
 # <a name="use-azure-notebooks-to-analyze-data-in-azure-data-explorer"></a>使用 Azure Notebooks 分析 Azure 数据资源管理器中的数据
 
 [Azure Notebooks](https://notebooks.azure.com/) 是一种 Azure 云服务，可简化 [Jupyter Notebook](https://jupyter.org/) 的创建和共享。 使用 Azure Notebooks 可轻松合并文档、代码和运行代码的结果。
 
 > [!Note]
-> * 以下过程在 Azure Notebooks 环境中使用 Python 客户端查询 Azure 数据资源管理器。 不过，也可以使用 [KQLmagic](https://docs.azure.cn/data-explorer/kqlmagic) 来查询 Azure 数据资源管理器。
+> * 以下过程在 Azure Notebooks 环境中使用 Python 客户端查询 Azure 数据资源管理器。 不过，也可以使用 [KQLmagic](kqlmagic.md) 来查询 Azure 数据资源管理器。
 > * 某些用户报告使用 Edge 进行身份验证时出现问题；在这些问题得到解决之前，请使用其他浏览器。
 
 ## <a name="create-a-project"></a>创建一个项目

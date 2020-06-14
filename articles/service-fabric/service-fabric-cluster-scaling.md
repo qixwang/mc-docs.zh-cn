@@ -3,14 +3,14 @@ title: Azure Service Fabric 群集缩放
 description: 了解如何横向或纵向扩展、放大或缩减 Azure Service Fabric 群集。 随着应用程序需求变化，Service Fabric 群集也会发生变化。
 ms.topic: conceptual
 origin.date: 11/13/2018
-ms.date: 02/24/2020
+ms.date: 06/08/2020
 ms.author: v-yeche
-ms.openlocfilehash: 75d66e9c39f5e9246334f332af68495ace1e50cd
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 72380b72d92c245db16b849a89bfb97fbe9d84b3
+ms.sourcegitcommit: 0e178672632f710019eae60cea6a45ac54bb53a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292565"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84356273"
 ---
 # <a name="scaling-azure-service-fabric-clusters"></a>缩放 Azure Service Fabric 群集
 Service Fabric 群集是通过网络连接在一起的一组虚拟机或物理机，可在其中部署和管理微服务。 属于群集一部分的计算机或 VM 称为节点。 群集可以包含数千个节点。 创建 Service Fabric 群集后，可以群集横向缩放（更改节点数）或纵向缩放（更改节点资源）该群集。  随时可以缩放群集，即使该群集上正在运行工作负荷。  在缩放群集的同时，应用程序也会随之自动缩放。
@@ -30,13 +30,13 @@ Service Fabric 群集是通过网络连接在一起的一组虚拟机或物理�
 - 运行有状态生产工作负荷的非主节点类型应始终具有五个或更多个节点。
 - 运行无状态生产工作负荷的非主节点类型应始终具有两个或更多个节点。
 - [持久性级别](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster)为金级或银级的任何节点类型应始终具有五个或更多个节点。
-- 不要从节点类型中删除随机 VM 实例/节点，始终使用虚拟机规模集缩减功能。 删除随机 VM 实例可能会对系统正确进行负载均衡造成负面影响。
+- 请勿从节点类型中删除随机 VM 实例/节点，应始终使用虚拟机规模集横向缩减功能。 删除随机 VM 实例可能会对系统正确进行负载均衡造成负面影响。
 - 如果使用自动缩放规则，请将规则设置为每次对一个节点执行缩减（删除 VM 实例）。 一次减少多个实例是不安全的。
 
-由于群集中的 Service Fabric 节点类型由后端的虚拟机规模集构成，因此可以[设置自动缩放规则，或手动缩放](service-fabric-cluster-scale-up-down.md)每个节点类型/虚拟机规模集。
+由于群集中的 Service Fabric 节点类型由后端的虚拟机规模集构成，因此可以[设置自动缩放规则，或手动缩放](service-fabric-cluster-scale-in-out.md)每个节点类型/虚拟机规模集。
 
 ### <a name="programmatic-scaling"></a>编程缩放
-在许多方案中，[手动或使用自动缩放规则缩放群集](service-fabric-cluster-scale-up-down.md)是合理的解决方案。 但是，对于更高级的方案，这种缩放方法可能不合适。 这些方法的潜在缺点包括：
+在许多方案中，[手动或使用自动缩放规则缩放群集](service-fabric-cluster-scale-in-out.md)是合理的解决方案。 但是，对于更高级的方案，这种缩放方法可能不合适。 这些方法的潜在缺点包括：
 
 - 手动缩放要求登录并显式请求缩放操作。 如果经常需要执行缩放操作或者执行该操作的时间不可预测，则这种缩放方法可能不是一个很好的解决方案。
 - 当自动缩放规则从虚拟机规模集中删除某个实例时，它们不会从关联的 Service Fabric 群集中自动删除该节点的信息，除非节点类型的持久性级别达到了银级或金级。 由于自动缩放规则在规模集级别（而不是 Service Fabric 级别）工作，因此，自动缩放规则可能会在未正常关闭 Service Fabric 节点的情况下将其删除。 在执行缩减操作后，这种强行删除节点的方式会使 Service Fabric 节点保持“虚幻”状态。 个人（或服务）需要定期清理 Service Fabric 群集中已删除节点的状态。
@@ -85,4 +85,4 @@ Azure API 可让应用程序以编程方式使用虚拟机规模集和 Service F
 * 使用 fluent Azure 计算 SDK [以编程方式缩放 Azure 群集](service-fabric-cluster-programmatic-scaling.md)。
 * [横向扩展或缩减独立群集](service-fabric-cluster-windows-server-add-remove-nodes.md)。
 
-<!-- Update_Description: update meta properties  -->
+<!-- Update_Description: update meta properties, wording update, update link -->

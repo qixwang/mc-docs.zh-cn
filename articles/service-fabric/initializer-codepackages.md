@@ -4,14 +4,14 @@ description: 介绍了 Service Fabric 中的 Initializer CodePackage。
 author: rockboyfor
 ms.topic: conceptual
 origin.date: 03/10/2020
-ms.date: 05/06/2020
+ms.date: 06/08/2020
 ms.author: v-yeche
-ms.openlocfilehash: 1a2ef43e2385a0a3df5d921b389e41bdd641df4b
-ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
+ms.openlocfilehash: 5fe968002298ec996144b357c78eaaf2602ba86f
+ms.sourcegitcommit: 0e178672632f710019eae60cea6a45ac54bb53a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "83002228"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84356282"
 ---
 # <a name="initializer-codepackages"></a>Initializer CodePackage
 
@@ -24,12 +24,12 @@ ms.locfileid: "83002228"
 
 ## <a name="semantics"></a>语义
 
-正常情况下，Initializer CodePackage 在运行后会成功完成（退出代码为 0）  。 失败的 Initializer CodePackage 会重启，直至成功完成。 在 ServicePackage 中的其他 CodePackage 开始执行之前，允许多个 Initializer CodePackage 顺序执行（按指定的顺序），直至成功完成。   
+正常情况下，Initializer CodePackage 在运行后会成功完成（退出代码为 0）。 失败的 Initializer CodePackage 会重启，直至成功完成。 在 ServicePackage 中的其他 CodePackage 开始执行之前，允许多个 Initializer CodePackage 顺序执行（按指定的顺序），直至成功完成。  
 
 ## <a name="specifying-initializer-codepackages"></a>指定 Initializer CodePackage
 可以将 CodePackage 标记为 Initializer，方法是在 ServiceManifest 中将 **Initializer** 属性设置为 **true**。 如果有多个 Initializer CodePackage，则可通过 **ExecOrder** 属性指定其执行顺序。 **ExecOrder** 必须为非负整数，仅对 Initializer CodePackage 有效。 **ExecOrder** 值较小的 Initializer CodePackage 先执行。 如果没有为 Initializer CodePackage 指定 **ExecOrder**，则会采用默认值 0。 未指定 **ExecOrder** 值相同的 Initializer CodePackage 的相对执行顺序。
 
-以下 ServiceManifest 代码片段描述了三个 CodePackage，其中的两个标记为 Initializer。 激活此 ServicePackage 时，*InitCodePackage0* 先执行，因为它的 **ExecOrder** 值最小。 *InitCodePackage0* 成功完成（退出代码为 0）后，系统会执行 *InitCodePackage1*。 最后，在成功完成 *InitCodePackage1* 后，会执行 *WorkloadCodePackage*。
+以下 ServiceManifest 代码片段描述了三个 CodePackage，其中的两个标记为 Initializer。 激活此 ServicePackage 时，*InitCodePackage0* 先执行，因为它的 **ExecOrder** 值最小。 InitCodePackage0 成功完成（退出代码为 0）后，系统会执行 InitCodePackage1。 最后，在成功完成 InitCodePackage1 后，会执行 WorkloadCodePackage。
 
 ```xml
 <CodePackage Name="InitCodePackage0" Version="1.0" Initializer="true" ExecOrder="0">
@@ -51,7 +51,7 @@ ms.locfileid: "83002228"
 > [!IMPORTANT]
 > 以下示例假定你熟悉如何创建[使用 Service Fabric 和 Docker 的 Windows 容器应用程序][containers-getting-started-link]。
 >
-> 该示例引用 mcr.microsoft.com/windows/nanoserver:1809。 Windows Server 容器并非在所有主机 OS 版本间都兼容。 若要了解详细信息，请参阅 [Windows 容器版本兼容性](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility)。
+> 此示例引用了 mcr.microsoft.com/windows/nanoserver:1809。 Windows Server 容器并非在所有主机 OS 版本间都兼容。 若要了解详细信息，请参阅 [Windows 容器版本兼容性](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility)。
 
 以下 ServiceManifest.xml 在前述 ServiceManifest 代码片段基础上构建。 *InitCodePackage0*、*InitCodePackage1* 和 *WorkloadCodePackage* 是表示容器的 CodePackage。 激活后，*InitCodePackage0* 先执行。 它将一条消息记录到一个文件中，然后退出。 接下来执行 *InitCodePackage1*，它也将一条消息记录到一个文件中，然后退出。 最后，*WorkloadCodePackage* 开始执行。 它也将一条消息记录到一个文件中，将文件内容输出到 **stdout**，然后一直 ping 下去。
 
@@ -94,7 +94,7 @@ ms.locfileid: "83002228"
 </ServiceManifest>
 ```
 
-以下 ApplicationManifest.xml 描述了一个基于上述 ServiceManifest.xml 的应用程序。 请注意，它为所有容器指定同一个卷  装载。也就是说，在所有三个容器中，**C:\WorkspaceOnHost** 都装载在 **C:\WorkspaceOnContainer** 中。 最终效果是，所有容器都按其激活顺序将内容写入同一日志文件。
+以下 ApplicationManifest.xml 描述了一个基于上述 ServiceManifest.xml 的应用程序。 请注意，它为所有容器指定同一个卷装载。也就是说，在所有三个容器中，**C:\WorkspaceOnHost** 都装载在 **C:\WorkspaceOnContainer** 中。 最终效果是，所有容器都按其激活顺序将内容写入同一日志文件。
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -154,5 +154,4 @@ Hi from WorkloadCodePackage.
 [hosting-model-link]: service-fabric-hosting-model.md
 [setup-entry-point-link]: service-fabric-run-script-at-service-startup.md
 
-<!-- Update_Description: new article about initializer codepackages -->
-<!--NEW.date: 05/06/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

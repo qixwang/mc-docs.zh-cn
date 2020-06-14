@@ -1,21 +1,21 @@
 ---
-title: 用于更新 RU/秒的 PowerShell 脚本 - Azure Cosmos DB SQL (Core) API
-description: 使用 PowerShell 脚本- SQL (Core) API 更新 Azure Cosmos 数据库或容器的吞吐量
+title: PowerShell 脚本：更新 Azure Cosmos DB SQL API 数据库或容器的吞吐量（RU/秒）
+description: PowerShell 脚本：更新 Azure Cosmos DB SQL API 数据库或容器的吞吐量（RU/秒）
 author: rockboyfor
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: sample
-origin.date: 12/02/2019
-ms.date: 01/20/2020
+origin.date: 05/01/2020
+ms.date: 06/15/2020
 ms.author: v-yeche
-ms.openlocfilehash: 475aa19a622ac901dcb32f2a574776d66e3f3654
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: ac3a683c9d03d74bd50e11592278f0ffbb73af0d
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "76270084"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723622"
 ---
-# <a name="update-rus-for-a-database-or-container-for-azure-cosmos-db---sql-core-api"></a>更新 Azure Cosmos DB 的数据库或容器的 RU/秒 - SQL (Core) API
+# <a name="update-throughput-rus-for-an-azure-cosmos-db-sql-api-database-or-container"></a>更新 Azure Cosmos DB SQL API 数据库或容器的吞吐量（RU/秒）
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -24,37 +24,42 @@ ms.locfileid: "76270084"
 ## <a name="sample-script"></a>示例脚本
 
 ```powershell
-# Update RU for an Azure Cosmos DB SQL (Core) API database or container
+# Reference: Az.CosmosDB | https://docs.microsoft.com/powershell/module/az.cosmosdb
+# --------------------------------------------------
+# Purpose
+# Update container throughput
+# --------------------------------------------------
+# Variables - ***** SUBSTITUTE YOUR VALUES *****
+$resourceGroupName = "myResourceGroup" # Resource Group must already exist
+$accountName = "myaccount" # Must be all lower case
+$databaseName = "myDatabase"
+$containerName = "myContainer"
+$newRUs = 500
+# --------------------------------------------------
 
-$apiVersion = "2015-04-08"
-$resourceGroupName = "myResourceGroup"
-$accountName = "mycosmosaccount"
-$databaseName = "database1"
-$containerName = "container1"
-$databaseThroughputResourceName = $accountName + "/sql/" + $databaseName + "/throughput"
-$databaseThroughputResourceType = "Microsoft.DocumentDb/databaseAccounts/apis/databases/settings"
-$containerThroughputResourceName = $accountName + "/sql/" + $databaseName + "/" + $containerName + "/throughput"
-$containerThroughputResourceType = "Microsoft.DocumentDb/databaseAccounts/apis/databases/containers/settings"
-$throughput = 500
-$updateResource = "container" # or "database"
+$throughput = Get-AzCosmosDBSqlContainerThroughput -ResourceGroupName $resourceGroupName `
+    -AccountName $accountName -DatabaseName $databaseName -Name $containerName
 
-$properties = @{
-    "resource"=@{"throughput"=$throughput}
+$currentRUs = $throughput.Throughput
+$minimumRUs = $throughput.MinimumThroughput
+
+Write-Host "Current throughput is $currentRUs. Minimum allowed throughput is $minimumRUs."
+
+if ([int]$newRUs -lt [int]$minimumRUs) {
+    Write-Host "Requested new throughput of $newRUs is less than minimum allowed throughput of $minimumRUs."
+    Write-Host "Using minimum allowed throughput of $minimumRUs instead."
+    $newRUs = $minimumRUs
 }
 
-# Note: if the database or container does not have throughput set the operation will return a "Not Found" error
-if($updateResource -eq "database"){
-Set-AzResource -ResourceType $databaseThroughputResourceType `
-    -ApiVersion $apiVersion -ResourceGroupName $resourceGroupName `
-    -Name $databaseThroughputResourceName -PropertyObject $properties
-}
-elseif($updateResource -eq "container"){
-Set-AzResource -ResourceType $containerThroughputResourceType `
-    -ApiVersion $apiVersion -ResourceGroupName $resourceGroupName `
-    -Name $containerThroughputResourceName -PropertyObject $properties
+if ([int]$newRUs -eq [int]$currentRUs) {
+    Write-Host "New throughput is the same as current throughput. No change needed."
 }
 else {
-    Write-Host("Must select database or container")
+    Write-Host "Updating throughput to $newRUs."
+
+    Update-AzCosmosDBSqlContainerThroughput -ResourceGroupName $resourceGroupName `
+        -AccountName $accountName -DatabaseName $databaseName `
+        -Name $containerName -Throughput $newRUs
 }
 
 ```
@@ -73,8 +78,9 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 
 | Command | 说明 |
 |---|---|
-|**Azure 资源**| |
-| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | 创建资源。 |
+|**Azure Cosmos DB**| |
+| [Get-AzCosmosDBSqlContainerThroughput](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbsqlcontainerthroughput) | 获取 SQL 容器的吞吐量值。 |
+| [Update-AzCosmosDBSqlContainerThroughput](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbsqlcontainer) | 更新 SQL 容器的吞吐量值。 |
 |**Azure 资源组**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | 删除资源组，包括所有嵌套的资源。 |
 |||
@@ -85,4 +91,4 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 
 可以在 [Azure Cosmos DB PowerShell 脚本](../../../powershell-samples.md)中找到其他 Azure Cosmos DB PowerShell 脚本示例。
 
-<!--Update_Description: update meta properties -->
+<!-- Update_Description: update meta properties, wording update, update link -->

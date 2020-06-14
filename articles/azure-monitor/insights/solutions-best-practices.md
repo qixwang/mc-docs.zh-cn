@@ -1,18 +1,18 @@
 ---
 title: Azure 中管理解决方案的最佳做法 | Azure Docs
-description: ''
+description: 本文介绍创建管理解决方案文件的技巧。 请参阅“如何使用数据源、runbook、视图和警报”。
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 origin.date: 07/02/2019
-ms.date: 07/12/2019
-ms.author: v-lingwu
-ms.openlocfilehash: d110fd2517f9269a39a626790d752d4de17df8cf
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.author: v-johya
+ms.date: 05/28/2020
+ms.openlocfilehash: 05c5cf90888b72f584f8d4937a610e83be42f528
+ms.sourcegitcommit: 5ae04a3b8e025986a3a257a6ed251b575dbf60a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78850315"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84440592"
 ---
 # <a name="best-practices-for-creating-management-solutions-in-azure-preview"></a>在 Azure 中创建管理解决方案的最佳做法（预览版）
 > [!NOTE]
@@ -48,8 +48,5 @@ ms.locfileid: "78850315"
 * [已保存的搜索和警报](solutions-resources-searches-alerts.md)到管理解决方案。
 * [将视图](solutions-resources-views.md)添加到管理解决方案。
 * [将自动化 runbook 和其他资源添加](solutions-resources-automation.md)到管理解决方案。
-
-
-
 
 

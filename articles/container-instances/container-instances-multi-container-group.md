@@ -6,13 +6,14 @@ origin.date: 04/03/2019
 ms.date: 01/15/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 2f1dac413fc57683ffcfba90024b3ad836277088
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 0fa580ddb9f06f74ff6529a8eeed7e616332b0ab
+ms.sourcegitcommit: c4fc01b7451951ef7a9616fca494e1baf29db714
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75965090"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84564359"
 ---
+<!--Verified successfully-->
 # <a name="tutorial-deploy-a-multi-container-group-using-a-resource-manager-template"></a>教程：使用资源管理器模板部署多容器组
 
 > [!div class="op_single_selector"]

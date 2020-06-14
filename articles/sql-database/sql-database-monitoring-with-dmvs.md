@@ -12,12 +12,12 @@ ms.author: v-jay
 ms.reviewer: carlrab
 origin.date: 03/10/2020
 ms.date: 03/30/2020
-ms.openlocfilehash: b1d64d68b7d60080b1d7118f8f854b6803c96fbd
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 50157c913ca76b0eac9188345a323b8c179afa8a
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80341808"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723739"
 ---
 # <a name="monitoring-performance-azure-sql-database-using-dynamic-management-views"></a>使用动态管理视图监视性能 Azure SQL 数据库
 
@@ -605,7 +605,7 @@ ORDER BY start_time DESC
 
 3. 使用每个资源指标的平均值和最大值信息，可以评估工作负荷与所选计算大小的适合程度。 通常情况下，**sys.resource_stats** 中的平均值提供了一个用于目标大小的良好基准。 它应该是主要测量标杆。 例如，你可能正在使用 S2 计算大小的“标准”服务层级。 CPU 和 IO 读写的平均使用百分比低于 40%，平均辅助角色数低于 50，平均会话数低于 200。 工作负荷可能适合 S1 计算大小。 很容易查看数据库是否在辅助角色和会话限制内。 若要查看数据库是否适合 CPU 和读写数等更小的计算大小，请将更小计算大小的 DTU 数除以当前计算大小的 DTU 数，并将结果乘以 100：
 
-    ```S1 DTU / S2 DTU * 100 = 20 / 50 * 100 = 40```
+    `S1 DTU / S2 DTU * 100 = 20 / 50 * 100 = 40`
 
     结果是以百分比表示的两个计算大小之间的相对性能差异。 如果资源使用不超出此量，则工作负荷可能适合更低的计算大小。 但是，需要查看资源用量值的所有范围，并按百分比确定数据库工作负荷适合更小计算大小的频率。 以下查询会根据此示例中计算得出的 40% 阈值，输出每个资源维度的适合百分比：
 

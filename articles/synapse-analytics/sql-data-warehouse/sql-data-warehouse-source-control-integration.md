@@ -8,15 +8,15 @@ ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: ''
 origin.date: 08/23/2019
-ms.date: 05/11/2020
+ms.date: 06/15/2020
 ms.author: v-jay
 ms.reviewer: igorstan
-ms.openlocfilehash: efbcae5d3edf6f940aa5bd439563d6312518ec8c
-ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
+ms.openlocfilehash: 8ddca57b7e8b2e5d9f0cbaafcb66b52f808d6648
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82198449"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723587"
 ---
 # <a name="source-control-integration-for-sql-pool"></a>SQL 池的源代码管理集成
 

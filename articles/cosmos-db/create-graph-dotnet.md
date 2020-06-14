@@ -7,20 +7,20 @@ ms.subservice: cosmosdb-graph
 ms.devlang: dotnet
 ms.topic: quickstart
 origin.date: 02/21/2020
-ms.date: 04/30/2020
+ms.date: 06/15/2020
 ms.author: v-yeche
-ms.openlocfilehash: d6d95beb5dc5f3a43edaed4fcea9d1e9f300c394
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.openlocfilehash: 4d56884cfe5dd2da733e6d26f8bdc7c19f014c14
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82134783"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723314"
 ---
 <!--Verify sucessfully-->
 # <a name="quickstart-build-a-net-framework-or-core-application-using-the-azure-cosmos-db-gremlin-api-account"></a>快速入门：使用 Azure Cosmos DB Gremlin API 帐户生成 .NET Framework 或 Core 应用程序
 
 > [!div class="op_single_selector"]
-> * [Gremlin console](create-graph-gremlin-console.md)（Gremlin 控制台）
+> * [Gremlin 控制台](create-graph-gremlin-console.md)
 > * [.NET](create-graph-dotnet.md)
 > * [Java](create-graph-java.md)
 > * [Node.js](create-graph-nodejs.md)
@@ -62,7 +62,7 @@ Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服�
     cd "C:\git-samples"
     ```
 
-3. 运行下列命令，克隆示例存储库。 此命令在计算机上创建示例应用程序的副本。
+3. 运行下列命令以克隆示例存储库。 此命令在计算机上创建示例应用程序的副本。
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-graph-gremlindotnet-getting-started.git
@@ -184,7 +184,7 @@ Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服�
 1. 复制帐户的 URI 和主键以后，请将其保存到运行应用程序的本地计算机的新环境变量中。 若要设置环境变量，请打开命令提示符窗口，并运行以下命令。 确保替换 <Your_Azure_Cosmos_account_URI> 和 <Your_Azure_Cosmos_account_PRIMARY_KEY> 值。
 
     ```console
-    setx EndpointUrl "https://<your cosmos db account name>.gremlin.cosmos.azure.cn"
+    setx EndpointUrl "<your Azure Cosmos account name>.gremlin.cosmos.azure.cn"
     setx PrimaryKey "<Your_Azure_Cosmos_account_PRIMARY_KEY>"
     ```
 
@@ -200,7 +200,7 @@ Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服�
 
 单击 Ctrl+F5 运行应用程序。 应用程序会在控制台中列显 Gremlin 查询命令和结果。
 
-控制台窗口显示所添加到图形的顶点及边缘。 完成脚本后，按 ENTER 关闭控制台窗口。
+控制台窗口会显示所添加到图形的顶点及边缘。 完成脚本后，按 ENTER 关闭控制台窗口。
 
 ## <a name="browse-using-the-data-explorer"></a>使用数据资源管理器浏览
 
@@ -224,7 +224,7 @@ Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服�
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门教程中，已了解如何创建 Azure Cosmos DB 帐户、使用数据资源管理器创建图形和运行应用。 现可使用 Gremlin 构建更复杂的查询，实现功能强大的图形遍历逻辑。 
+在本快速入门教程中，已了解如何创建 Azure Cosmos DB 帐户、使用数据资源管理器创建图形和运行应用。 现在可以使用 Gremlin 构建更复杂的查询，实现功能强大的图形遍历逻辑。 
 
 > [!div class="nextstepaction"]
 > [使用 Gremlin 查询](tutorial-query-graph.md)

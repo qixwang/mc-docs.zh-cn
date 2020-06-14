@@ -8,12 +8,12 @@ origin.date: 01/09/2018
 ms.date: 01/21/2019
 ms.author: v-lingwu
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2c20fd567e95bf05dc13b2d2bd870717f6d8a994
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: ca8caa7d37c3d40f117586ae23bf4dca94fe046e
+ms.sourcegitcommit: 5ae04a3b8e025986a3a257a6ed251b575dbf60a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292908"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84440454"
 ---
 # <a name="creating-a-management-solution-file-in-azure-preview"></a>在 Azure 中创建管理解决方案文件（预览版）
 > [!NOTE]
@@ -47,7 +47,7 @@ Azure 中的管理解决方案作为[资源管理器模板](../../azure-resource
 ## <a name="parameters"></a>parameters
 [parameters](../../azure-resource-manager/templates/template-syntax.md#parameters) 是你在用户安装管理解决方案时从用户请求的值。  存在所有解决方案均具有的标准参数，你也可以根据特定解决方案的需要添加其他参数。  用户安装解决方案时提供参数值的方式取决于特定参数和解决方案安装方式。
 
-用户通过 Azure 市场或 Azure 快速入门模板[安装管理解决方案](solutions.md#install-a-monitoring-solution)时，系统会提示他们选择 [Log Analytics 工作区和自动化帐户](solutions.md#log-analytics-workspace-and-automation-account)。  这些用于填充每个标准参数的值。  系统不提示用户直接提供标准参数的值，但会提示他们提供任何其他参数的值。
+用户通过 Azure 市场或 Azure 快速入门模板[安装管理解决方案](solutions.md)时，系统会提示他们选择 [Log Analytics 工作区和自动化帐户](solutions.md#log-analytics-workspace-and-automation-account)。  这些用于填充每个标准参数的值。  系统不提示用户直接提供标准参数的值，但会提示他们提供任何其他参数的值。
 
 
 下面显示了一个示例参数。  
@@ -62,7 +62,7 @@ Azure 中的管理解决方案作为[资源管理器模板](../../azure-resource
 
 下表描述了参数属性。
 
-| Attribute | 说明 |
+| 属性 | 说明 |
 |:--- |:--- |
 | type |参数的数据类型。 向用户显示的输入控件取决于数据类型。<br><br>bool - 下拉框<br>string - 文本框<br>int - 文本框<br>securestring - 密码字段<br> |
 | category |参数的可选类别。  相同类别中的参数分到一组。 |
@@ -79,12 +79,12 @@ Azure 中的管理解决方案作为[资源管理器模板](../../azure-resource
 
 | 参数 | 类型 | 说明 |
 |:--- |:--- |:--- |
-| accountName |字符串 |Azure 自动化帐户名称。 |
-| pricingTier |字符串 |Log Analytics 工作区和 Azure 自动化帐户的定价层。 |
-| regionId |字符串 |Azure 自动化帐户的区域。 |
-| solutionName |字符串 |解决方案名称。  如果要通过快速入门模板部署解决方案，则应将 solutionName 定义为参数，以便能够定义字符串，而无需用户指定一个字符串。 |
-| workspaceName |字符串 |Log Analytics 工作区名称。 |
-| workspaceRegionId |字符串 |Log Analytics 工作区的区域。 |
+| accountName |string |Azure 自动化帐户名称。 |
+| pricingTier |string |Log Analytics 工作区和 Azure 自动化帐户的定价层。 |
+| regionId |string |Azure 自动化帐户的区域。 |
+| solutionName |string |解决方案名称。  如果要通过快速入门模板部署解决方案，则应将 solutionName 定义为参数，以便能够定义字符串，而无需用户指定一个字符串。 |
+| workspaceName |string |Log Analytics 工作区名称。 |
+| workspaceRegionId |string |Log Analytics 工作区的区域。 |
 
 
 以下是可以复制并粘贴到解决方案文件的标准参数的结构。  
@@ -205,9 +205,9 @@ Azure 中的管理解决方案作为[资源管理器模板](../../azure-resource
 ### <a name="properties"></a>属性
 解决方案资源具有下表中的属性。  这包括由用于定义安装解决方案后如何管理资源的解决方案引用和包含的资源。  解决方案中的每个资源应在 **referencedResources** 或 **containedResources** 属性中列出。
 
-| properties | 说明 |
+| 属性 | 说明 |
 |:--- |:--- |
-| workspaceResourceId |格式为 *\<Resource Group ID>/providers/Microsoft.OperationalInsights/workspaces/\<Workspace Name\>* 的 Log Analytics 工作区的 ID。 |
+| workspaceResourceId |格式为 \<Resource Group ID>/providers/Microsoft.OperationalInsights/workspaces/\<Workspace Name\> 的 Log Analytics 工作区的 ID。 |
 | referencedResources |解决方案中不应随解决方案一起删除的资源的列表。 |
 | containedResources |解决方案中应随解决方案一起删除的资源的列表。 |
 
@@ -216,12 +216,12 @@ Azure 中的管理解决方案作为[资源管理器模板](../../azure-resource
 ### <a name="plan"></a>计划
 解决方案资源的 **plan** 实体具有下表中的属性。
 
-| properties | 说明 |
+| 属性 | 说明 |
 |:--- |:--- |
 | name |解决方案名称。 |
 | 版本 |由作者确定的解决方案版本。 |
 | product |标识解决方案的唯一字符串。 |
-| 发布者 |解决方案发布者。 |
+| publisher |解决方案发布者。 |
 
 
 

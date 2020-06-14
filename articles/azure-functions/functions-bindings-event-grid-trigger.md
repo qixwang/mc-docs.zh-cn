@@ -3,15 +3,15 @@ title: Azure Functions 的 Azure 事件网格触发器
 description: 了解如何在调度 Azure Functions 中的事件网格事件时运行代码。
 author: craigshoemaker
 ms.topic: reference
-ms.date: 02/17/2020
+ms.date: 06/05/2020
 ms.author: v-junlch
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 839c1fcbdef15637b3c360ffea21a8ac56eac620
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 78ec580947efe05d15b752f9282121fb49acf033
+ms.sourcegitcommit: f1a76ee3242698123a3d77f44c860db040b48f70
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77494602"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84563817"
 ---
 # <a name="azure-event-grid-trigger-for-azure-functions"></a>Azure Functions 的 Azure 事件网格触发器
 
@@ -521,5 +521,5 @@ http://{functionappname}.chinacloudsites.cn/admin/host/systemkeys/eventgridexten
 
 ## <a name="next-steps"></a>后续步骤
 
-* [调度事件网格事件](./functions-bindings-event-grid-trigger.md)
+* [调度事件网格事件](./functions-bindings-event-grid-output.md)
 

@@ -5,17 +5,17 @@ services: storage
 author: WenJason
 ms.author: v-jay
 origin.date: 04/08/2020
-ms.date: 06/01/2020
+ms.date: 06/15/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: hux
-ms.openlocfilehash: c294e5cde828aeefbd8f62074102e707144b5b60
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+ms.openlocfilehash: cc44d77b563449d65b0c7903e9fa8d64f95aa407
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84199267"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723699"
 ---
 # <a name="rehydrate-blob-data-from-the-archive-tier"></a>从存档层解冻 Blob 数据
 
@@ -97,7 +97,7 @@ $ctx = $storageAccount.Context
 #Select the blob from a container
 $blobs = Get-AzStorageBlob -Container $containerName -Blob $blobName -Context $context
 
-#Change the blob�s access tier to Hot using Standard priority rehydrate
+#Change the blob's access tier to Hot using Standard priority rehydrate
 $blob.ICloudBlob.SetStandardBlobTier("Hot", "Standard")
 ```
 ---

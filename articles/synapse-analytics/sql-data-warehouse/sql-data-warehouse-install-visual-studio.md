@@ -9,16 +9,16 @@ manager: digimobile
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: ''
-origin.date: 02/04/2020
-ms.date: 05/11/2020
+origin.date: 05/11/2020
+ms.date: 06/15/2020
 ms.author: v-jay
 ms.reviewer: igorstan
-ms.openlocfilehash: 8063d9e5665aae9006ed03e9349bb1ae2ab1e11a
-ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
+ms.openlocfilehash: bb1a35c85d9ae31e0743b57fa7222c3b08b8c253
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82198629"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723624"
 ---
 # <a name="getting-started-with-visual-studio-2019"></a>Visual Studio 2019 入门
 
@@ -39,13 +39,10 @@ Visual Studio **2019** SQL Server Data Tools (SSDT) 是一个工具，可用于�
 
 有时，Synapse SQL 的功能版可能不包括对 SSDT 的支持。 目前不支持以下功能：
 
-- [具体化视图](https://docs.microsoft.com/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [有序聚集列存储索引](https://docs.microsoft.com/sql/t-sql/statements/create-columnstore-index-transact-sql?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest#examples--and-)
-- [COPY 语句](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+
 - [工作负荷管理](sql-data-warehouse-workload-management.md) - 工作负荷组和分类器
 - [行级安全](https://docs.microsoft.com/sql/relational-databases/security/row-level-security?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 - [动态数据屏蔽](https://docs.microsoft.com/sql/relational-databases/security/dynamic-data-masking?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest#defining-a-dynamic-data-mask)
-- [带约束的表](sql-data-warehouse-table-constraints.md#table-constraints)不受支持。 对于这些表对象，请将生成操作设为“无”。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -8,13 +8,13 @@ ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 04/09/2020
-ms.date: 04/20/2020
-ms.openlocfilehash: d55c117b4b12992bcc5f08ae13e1d82354f7aa0c
-ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
+ms.date: 06/09/2020
+ms.openlocfilehash: 092c3510923bd6003a99b90fa4b060e6e5c01e97
+ms.sourcegitcommit: c4fc01b7451951ef7a9616fca494e1baf29db714
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82588711"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84564224"
 ---
 # <a name="partial-term-search-and-patterns-with-special-characters-wildcard-regex-patterns"></a>部分字词搜索和包含特殊字符（通配符、正则表达式、模式）的模式
 
@@ -25,7 +25,7 @@ ms.locfileid: "82588711"
 解决方法是调用一个分析器来保留完整的字符串（在必要的情况下包括空格和特殊字符），以便能够与部分字词和模式匹配。 为原有字符串创建附加的字段并使用内容保留分析器是该解决方法的基础。
 
 > [!TIP]
-> 是否熟悉 Postman 和 REST API？ [下载查询示例集合](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/full-syntax-examples)以查询本文中所述的部分字词和特殊字符。
+> 是否熟悉 Postman 和 REST API？ [下载查询示例集合](https://github.com/Azure-Samples/azure-search-postman-samples/)以查询本文中所述的部分字词和特殊字符。
 
 ## <a name="what-is-partial-search-in-azure-cognitive-search"></a>Azure 认知搜索中的部分搜索是什么
 
@@ -170,7 +170,6 @@ ms.locfileid: "82588711"
       "analyzer": "whitespace"
     }
 ```
-有关所有可用内置分析器的详细信息，请参阅[预定义分析器列表](https://docs.azure.cn/search/index-add-custom-analyzers#predefined-analyzers-reference)。 
 
 ### <a name="use-custom-analyzers"></a>使用自定义分析器
 

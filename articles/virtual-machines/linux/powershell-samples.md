@@ -1,26 +1,18 @@
 ---
-title: Azure 虚拟机 PowerShell 示例 | Azure
+title: Azure 虚拟机 PowerShell 示例
 description: Azure 虚拟机 PowerShell 示例
-services: virtual-machines-linux
-documentationcenter: virtual-machines
-author: rockboyfor
-manager: digimobile
-editor: tysonn
-tags: azure-service-management
-ms.assetid: ''
-ms.service: virtual-machines-linux
+author: Johnnytechn
+ms.service: virtual-machines
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-origin.date: 03/01/2019
-ms.date: 10/14/2019
-ms.author: v-yeche
-ms.openlocfilehash: 0749528b69f137067e345bab510edad8b0da1fac
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 06/05/2020
+ms.author: v-johya
+ms.openlocfilehash: a3cccbd6aabc747a36c51e5352359925a5b3229c
+ms.sourcegitcommit: 285649db9b21169f3136729c041e4d04d323229a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "72272735"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84684050"
 ---
 # <a name="azure-virtual-machine-powershell-samples"></a>Azure 虚拟机 PowerShell 示例
 

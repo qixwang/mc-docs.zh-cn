@@ -3,19 +3,19 @@ title: Azure Monitor 中的监视解决方案 | Azure Docs
 description: Azure Monitor 中的监视解决方案是逻辑、可视化效果和数据采集规则的集合，提供围绕特定问题领域制定的指标。  本文提供了有关安装和使用监视解决方案的信息。
 ms.subservice: logs
 ms.topic: conceptual
-author: lingliw
-manager: digimobile
+author: Johnnytechn
+ms.author: v-johya
 origin.date: 08/13/2019
-ms.date: 08/23/2019
-ms.author: v-lingwu
-ms.openlocfilehash: db7f687c65129f0610584c666ff611e16785bd76
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/28/2020
+ms.openlocfilehash: 92ae4c09ff5d8dc0fdf1dde53656f6e76c669163
+ms.sourcegitcommit: 5ae04a3b8e025986a3a257a6ed251b575dbf60a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292909"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84440720"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>Azure Monitor 中的监视解决方案
+
 监视解决方案利用 Azure 中的服务来提供特定应用程序或服务的更多操作见解。 本文简要概述了 Azure 中的监视解决方案，并详细介绍如何了使用和安装这些解决方案。
 
 > [!NOTE]
@@ -27,86 +27,73 @@ ms.locfileid: "79292909"
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="use-monitoring-solutions"></a>使用监视解决方案
-打开 Azure Monitor 的“概述”页来为该工作区中安装的每个解决方案显示一个磁贴  。 
+<!-- Not available in MC: Open the **Overview** page in Azure Monitor to display a tile for each solution installed in the workspace.
+Monitoring solutions can contain multiple types of Azure resources, and you can view any resources included with a solution just like any other resource. For example, any log queries included in the solution are listed under **Solution Queries** in [Query explorer](../log-query/get-started-portal.md#load-queries) You can use those queries when performing ad hoc analysis with [log queries](../log-query/log-query-overview.md).
 
-1. 转到 [Azure 门户](https://portal.azure.cn)。 搜索并选择“监视器”  。
-1. 在“见解”菜单下选择“更多”   。
-1. 使用屏幕顶部的下拉框更改工作区或用于磁贴的时间范围。
-1. 单击解决方案的磁贴会打开其视图，其中包含该解决方案收集的数据的更详细分析。
+## List installed monitoring solutions
 
-![概述](media/solutions/overview.png)
+Use the following procedure to list the monitoring solutions installed in your subscription.
 
-监视解决方案可以包含多种类型的 Azure 资源。可以像查看其他任何资源一样查看解决方案包含的任何资源。 例如，解决方案中包含的任何日志查询都列在[查询资源管理器](../log-query/get-started-portal.md#load-queries)中的“解决方案查询”下，可在使用[日志查询](../log-query/log-query-overview.md)执行临时分析时使用这些查询。
-
-## <a name="list-installed-monitoring-solutions"></a>列出已安装的监视解决方案 
-使用以下过程列出订阅中安装的监视解决方案。
-
-1. 转到 [Azure 门户](https://portal.azure.cn)。 搜索并选择“解决方案”  。
-1. 将列出所有工作区中安装的解决方案。 解决方案名称的后面是在其中安装该解决方案的工作区的名称。
-1. 使用屏幕顶部的下拉框可按订阅或资源组进行筛选。
+1. Go to the [Azure portal](https://portal.azure.cn). Search for and select **Solutions**.
+1. Solutions installed in all your workspaces are listed. The name of the solution is followed by the name of the workspace it's installed in.
+1. Use the dropdown boxes at the top of the screen to filter by subscription or resource group.
 
 
-![列出所有解决方案](media/solutions/list-solutions-all.png)
+![List all solutions](./media/solutions/list-solutions-all.png)
 
-单击某个解决方案的名称打开其摘要页。 此页显示解决方案中包含的所有视图，并提供解决方案本身及其工作区的不同选项。 使用上述过程之一查看解决方案的摘要页以列出解决方案，然后单击解决方案的名称。
+Click on the name of a solution to open its summary page. This page displays any views included in the solution and provides different options for the solution itself and its workspace. View the summary page for a solution by using one of the procedures above to list solutions and then click on the name of the solution.
 
-![解决方案属性](media/solutions/solution-properties.png)
+![Solution properties](./media/solutions/solution-properties.png)
 
+## Install a monitoring solution
+Monitoring solutions from Azure and partners are available from the [Azure Marketplace](https://market.azure.cn). You can search available solutions and install them using the following procedure. When you install a solution, you must select a [Log Analytics workspace](../platform/manage-access.md) where the solution will be installed and where its data will be collected.
 
+1. From the list of solutions for your subscription, click **Add**.
+1. Browse or search for a solution. You can also browse solutions from [this search link](https://market.azure.cn/zh-cn/marketplace/apps/category/monitoring-management?page=1&subcategories=management-solutions).
+1. Locate the monitoring solution you want and read through its description.
+1. Click **Create** to start the installation process.
+1. When the installation process starts, you're prompted to specify the Log Analytics workspace and provide any required configuration for the solution.
+<!--Correct in MC: https://market.azure.cn/zh-cn/marketplace/apps/category/monitoring-management?page=1&subcategories=management-solutions -->
 
-## <a name="install-a-monitoring-solution"></a>安装监视解决方案
-[Azure 市场](https://market.azure.cn/zh-cn)中提供了 Azure 和合作伙伴提供的监视解决方案。 可以搜索可用的解决方案，并使用以下过程进行安装。 安装解决方案时，必须选择要在其中安装该解决方案的 [Log Analytics 工作区](../platform/manage-access.md)，以及要将解决方案数据收集到的位置。
-
-1. 在[订阅的解决方案列表](#list-installed-monitoring-solutions)中，单击“添加”。  
-1. 在“管理解决方案”的右侧，单击“更多”。   
-1. 找到所需的监视解决方案并阅读其说明。
-1. 单击“创建”  以启动安装进程。
-1. 安装过程开始时，系统会提示你指定 Log Analytics 工作区，并提供解决方案所需的任何配置。
-
-![安装解决方案](media/solutions/install-solution.png)
+![安装解决方案](./media/solutions/install-solution.png)
 
 ### <a name="install-a-solution-from-the-community"></a>从社区安装解决方案
+
 社区成员可以将管理解决方案提交到 Azure 快速入门模板。 可以直接安装这些解决方案，或者下载模板，以便今后安装。
 
 1. 请遵循 [Log Analytics 工作区和自动化帐户](#log-analytics-workspace-and-automation-account)中所述的过程来链接工作区和帐户。
 2. 转到 [Azure 快速入门模板](https://azure.microsoft.com/documentation/templates/)。 
 3. 搜索感兴趣的解决方案。
 4. 从结果中选择解决方案以查看其详细信息。
-5. 单击“部署到 Azure”按钮。 
+5. 单击“部署到 Azure”按钮。
 6. 除了解决方案中任何参数的值，系统还会提示提供资源组和位置等信息。
 7. 单击“**购买**”可安装解决方案。
 
-
 ## <a name="log-analytics-workspace-and-automation-account"></a>Log Analytics 工作区和自动化帐户
+
 所有监视解决方案都需要使用一个 [Log Analytics 工作区](../platform/manage-access.md)来存储解决方案收集的数据，以及托管其日志搜索和视图。 某些解决方案还需要使用一个[自动化帐户](../../automation/automation-security-overview.md#automation-account-overview)来包含 Runbook 和相关资源。 工作区和帐户必须满足以下要求。
 
 * 解决方案的每项安装只能使用一个 Log Analytics 工作区和一个自动化帐户。 可将解决方案单独安装到多个工作区。
 * 如果解决方案需要自动化帐户，则必须将 Log Analytics 工作区和自动化帐户相互链接。 一个 Log Analytics 工作区只能链接到一个自动化帐户，而一个自动化帐户也只能链接到一个 Log Analytics 工作区。
-* 若要进行链接，Log Analytics 工作区和自动化帐户必须位于相同的资源组和区域中。 中国东部区域的工作区以及中国东部的自动化帐户例外。
+* 若要进行链接，Log Analytics 工作区和自动化帐户必须位于同一订阅中，但可以位于部署到同一区域的不同资源组中。
+<!-- Correct in MC： To be linked... -->
 
-### <a name="create-a-link-between-a-log-analytics-workspace-and-automation-account"></a>在 Log Analytics 工作区和自动化帐户之间创建链接
-如何指定 Log Analytics 工作区和自动化帐户取决于解决方案的安装方法。
-
-* 通过 Azure 市场安装解决方案时，系统会提示提供一个工作区和自动化帐户。 如果工作区与自动化帐户之间尚未建立链接，则系统会创建这种链接。
-* 对于 Azure 市场外的解决方案，必须在安装解决方案之前链接 Log Analytics 工作区和自动化帐户。 为此，可以在 Azure 市场中选择任何解决方案，并选择 Log Analytics 工作区和自动化帐户。 无需实际安装解决方案，因为只要选择了 Log Analytics 工作区和自动化帐户，就会创建链接。 创建链接后，可以对任何解决方案使用该 Log Analytics 工作区和自动化帐户。
+通过 Azure 市场安装解决方案时，系统会提示提供一个工作区和自动化帐户。 如果工作区与自动化帐户之间尚未建立链接，则系统会创建这种链接。
 
 ### <a name="verify-the-link-between-a-log-analytics-workspace-and-automation-account"></a>验证 Log Analytics 工作区和自动化帐户之间的链接
+
 可以使用以下过程验证 Log Analytics 工作区和自动化帐户之间的链接。
 
 1. 在 Azure 门户中选择自动化帐户。
-1. 滚动到菜单的“相关资源”部分。 
-1. 如果“工作区”设置已启用，则此帐户将链接到 Log Analytics 工作区。  可单击“工作区”  查看工作区的详细信息。
+1. 滚动到菜单的“相关资源”部分，然后选择“链接的工作区”。
+1. 如果“工作区”已链接到自动化帐户，则此页会列出它链接到的工作区。 如果选择列出的工作区的名称，则会重定向到该工作区的概览页。
 
 ## <a name="remove-a-monitoring-solution"></a>删除监视解决方案
-若要删除已安装的解决方案，请在[已安装的解决方案列表](#list-installed-monitoring-solutions)中找到它。 单击解决方案的名称打开其摘要页，然后单击“删除”。 
 
+若要删除已安装的解决方案，请在已安装的解决方案列表中找到它。 单击解决方案的名称打开其摘要页，然后单击“删除”。
 
 ## <a name="next-steps"></a>后续步骤
+
 * 获取 [Microsoft 提供的监视解决方案的列表](solutions-inventory.md)。
 * 了解如何[创建查询](../log-query/log-query-overview.md)来分析监视解决方案收集的数据。
-
-
-
-
 

@@ -6,14 +6,14 @@ author: rockboyfor
 ms.service: private-link
 ms.topic: article
 origin.date: 09/16/2019
-ms.date: 01/06/2020
+ms.date: 06/15/2020
 ms.author: v-yeche
-ms.openlocfilehash: 64cc8d0261a7e8cd564d7cbbd0314b6f9361022b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 3cce5ab8c05d4a73c30bcaea67e53589becec66b
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75631427"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723327"
 ---
 # <a name="disable-network-policies-for-private-endpoints"></a>对专用终结点禁用网络策略
 

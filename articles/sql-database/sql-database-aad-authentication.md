@@ -11,17 +11,17 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: vanto, carlrab
 origin.date: 03/27/2020
-ms.date: 04/27/2020
-ms.openlocfilehash: 4d75b9a9b19a5cc183c5cf84ac56d76acdc00ef7
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.date: 06/15/2020
+ms.openlocfilehash: 3899e3b84dc53e3666d8fd939bb737f654cf1c0c
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82126638"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723648"
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-sql"></a>使用 Azure Active Directory 身份验证进行 SQL 身份验证
 
-Azure Active Directory 身份验证是使用 Azure Active Directory (Azure AD) 中的标识连接到 Azure [SQL 数据库](sql-database-technical-overview.md)、[托管实例](sql-database-managed-instance.md)和 [Azure Synapse Analytics](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)（以前称为 Azure SQL 数据仓库）的一种机制。 
+Azure Active Directory 身份验证是使用 Azure Active Directory (Azure AD) 中的标识连接到 Azure [SQL 数据库](sql-database-technical-overview.md)、[托管实例](sql-database-managed-instance.md)和 [Azure Synapse Analytics](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)（以前称为 Azure SQL 数据仓库）的一种机制。 
 
 > [!NOTE]
 > 本文适用于 Azure SQL 服务器，同时也适用于 SQL 数据库和 Azure Synapse。 为简单起见，在提到 SQL 数据库和 Azure Synapse 时，本文统称 SQL 数据库。

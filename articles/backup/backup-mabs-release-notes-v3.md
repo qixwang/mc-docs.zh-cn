@@ -2,21 +2,23 @@
 title: Microsoft Azure 备份服务器 v3 发行说明
 description: 本文介绍 Microsoft Azure 备份服务器 (MABS) v3 的已知问题和解决方法。
 ms.topic: conceptual
-author: lingliw
+author: Johnnytechn
 origin.date: 11/22/2018
-ms.date: 11/20/2019
-ms.author: v-lingwu
-ms.openlocfilehash: 18b9c6aecd6ccea5a72560bd876e274f34265bc5
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 06/09/2020
+ms.asset: 0c4127f2-d936-48ef-b430-a9198e425d81
+ms.author: v-johya
+ms.openlocfilehash: ec171eccf29f0fd4a97f47a89df00d73766edb7d
+ms.sourcegitcommit: 285649db9b21169f3136729c041e4d04d323229a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79290794"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84684021"
 ---
 # <a name="release-notes-for-microsoft-azure-backup-server"></a>Microsoft Azure 备份服务器发行说明
+
 本文提供了 Microsoft Azure 备份服务器 (MABS) V3 的已知的问题和解决方法。
 
-##  <a name="backup-and-recovery-fails-for-clustered-workloads"></a>群集化工作负荷的备份和恢复失败
+## <a name="backup-and-recovery-fails-for-clustered-workloads"></a>群集化工作负荷的备份和恢复失败
 
 **说明：** 将 MABS V2 升级到 MABS V3 之后，群集化数据源（例如数据库可用性组 (DAG)中的 Hyper-V 群集或 SQL 群集 (SQL Always On) 或 Exchange）的备份/还原失败。
 
@@ -61,17 +63,18 @@ ms.locfileid: "79290794"
 4. [安装](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) SQL Server Management Studio (SSMS)。
 5. 如[使用 SQL 2017 时的 SSRS 配置](/backup/backup-azure-microsoft-azure-backup#upgrade-mabs)中所述使用参数配置报告功能。
 6. [安装](backup-azure-microsoft-azure-backup.md) MABS V3。
-7. 使用 SSMS [还原](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-a-database-backup-using-ssms?view=sql-server-2017) SQL 并如[此处](https://docs.microsoft.com/previous-versions/system-center/data-protection-manager-2010/ff634215(v=technet.10))所述运行 DPM-Sync 工具。
+7. 使用 SSMS [还原](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-a-database-backup-using-ssms?view=sql-server-2017) SQL 并如[此处](https://docs.microsoft.com/system-center/dpm/back-up-the-dpm-server?view=sc-dpm-2019#using-dpmsync)所述运行 DPM-Sync 工具。
 8. 使用以下命令更新 dbo.tbl_DLS_GlobalSetting 表中的“DataBaseVersion”属性：
 
-```sql
-        UPDATE dbo.tbl_DLS_GlobalSetting
-        set PropertyValue = '13.0.415.0'
-        where PropertyName = 'DatabaseVersion'
-```
+    ```sql
+            UPDATE dbo.tbl_DLS_GlobalSetting
+            set PropertyValue = '13.0.415.0'
+            where PropertyName = 'DatabaseVersion'
+    ```
 
 9. 启动 MSDPM 服务。
 
 ## <a name="next-steps"></a>后续步骤
 
 [MABS V3 中的新增功能](backup-mabs-whats-new-mabs.md)
+

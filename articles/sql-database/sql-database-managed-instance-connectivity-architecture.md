@@ -11,13 +11,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: sstein, bonova, carlrab
 origin.date: 03/17/2020
-ms.date: 04/27/2020
-ms.openlocfilehash: 5b0e4fb53e59c0f44c68bc9fc4305f83fb8e4501
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.date: 06/15/2020
+ms.openlocfilehash: 31751da15d32d6125d613af52c95e96df64eb7af
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82127064"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723097"
 ---
 # <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>Azure SQL 数据库中托管实例的连接体系结构
 
@@ -86,17 +86,19 @@ Azure 使用一个管理终结点来管理托管实例。 此终结点位于该�
 
 为了满足客户的安全性和管理性要求，托管实例即将从手动配置过渡到服务辅助的子网配置。
 
-使用服务辅助的子网配置时，用户可以完全控制数据 (TDS) 流量，而托管实例将负责确保管理流量不间断流动，以满足 SLA 的规定。
+使用服务辅助子网配置，用户能完全控制数据 (TDS) 流量，而托管实例负责确保管理流量不间断传输以满足 SLA。
+
+服务辅助子网配置以虚拟网络[子网委派](../virtual-network/subnet-delegation-overview.md)功能为基础，可提供自动网络配置管理和启用服务终结点。 服务终结点可用于对保存备份/审核日志的存储帐户配置虚拟网络防火墙规则。
 
 ### <a name="network-requirements"></a>网络要求 
 
 在虚拟网络中的专用子网内部署托管实例。 该子网必须具有以下特征：
 
-- **专用子网：** 托管实例的子网不能包含其他任何关联的云服务，且不能是网关子网。 该子网不能包含除该托管实例以外的其他任何资源，以后无法在该子网中添加其他类型的资源。
+- **专用子网：** 托管实例的子网不能包含与它关联的任何其他云服务，并且不能是网关子网。 子网不能包含除托管实例以外的任何资源，你不能随后在该子网中添加其他类型的资源。
 - **子网委派**：需将托管实例的子网委托给 `Microsoft.Sql/managedInstances` 资源提供程序。
-- **网络安全组 (NSG)** ：NSG 需与托管实例的子网相关联。 当托管实例配置为使用重定向连接时，可以使用某个 NSG 通过筛选端口 1433 和端口 11000-11999 上的流量，来控制对托管实例数据终结点的访问。 服务会自动预配并保留当前的[规则](#mandatory-inbound-security-rules-with-service-aided-subnet-configuration)，使管理流量能够不间断地流动。
-- **用户定义的路由 (UDR) 表：** UDR 表需与托管实例的子网相关联。 可将条目添加到路由表，以通过虚拟网络网关或虚拟网络设备 (NVA) 路由发往本地专用 IP 范围的流量。 服务会自动预配并保留当前的[条目](#user-defined-routes-with-service-aided-subnet-configuration)，使管理流量能够不间断地流动。
-- **足够的 IP 地址：** 托管实例子网必须至少有 16 个 IP 地址。 建议的最少数目为 32 个 IP 地址。 有关详细信息，请参阅[确定托管实例的子网大小](sql-database-managed-instance-determine-size-vnet-subnet.md)。 根据[托管实例的网络要求](#network-requirements)配置托管实例后，可将其部署在[现有网络](sql-database-managed-instance-configure-vnet-subnet.md)中。 否则，请创建[新的网络和子网](sql-database-managed-instance-create-vnet-subnet.md)。
+- **网络安全组 (NSG)** ：NSG 需与托管实例的子网相关联。 为重定向连接配置了托管实例时，可以通过筛选端口 1433 以及端口 11000-11999 上的流量，使用 NSG 来控制对托管实例的数据终结点的访问。 服务会自动预配并保留当前的[规则](#mandatory-inbound-security-rules-with-service-aided-subnet-configuration)，使管理流量能够不间断地流动。
+- **用户定义的路由 (UDR) 表：** UDR 表需与托管实例的子网相关联。 可以向该路由表添加项，用以通过虚拟网络网关或虚拟网络设备 (NVA) 来路由以本地专用 IP 范围为目标的流量。 服务会自动预配并保留当前的[条目](#user-defined-routes-with-service-aided-subnet-configuration)，使管理流量能够不间断地流动。
+- **充足的 IP 地址：** 托管实例子网必须至少有 16 个 IP 地址。 建议的最少数目为 32 个 IP 地址。 有关详细信息，请参阅[确定托管实例的子网大小](sql-database-managed-instance-determine-size-vnet-subnet.md)。 根据[托管实例的网络要求](#network-requirements)配置托管实例后，可将其部署在[现有网络](sql-database-managed-instance-configure-vnet-subnet.md)中。 否则，请创建[新的网络和子网](sql-database-managed-instance-create-vnet-subnet.md)。
 
 > [!IMPORTANT]
 > 创建托管实例时，将会针对子网应用网络意向策略，以防止对网络设置进行不合规的更改。 从子网中删除最后一个实例后，网络意向策略也会一并删除。
@@ -310,7 +312,7 @@ Azure 使用一个管理终结点来管理托管实例。 此终结点位于该�
 
 在虚拟网络中的专用子网内部署托管实例。 该子网必须具有以下特征：
 
-- **专用子网：** 托管实例的子网不能包含其他任何关联的云服务，且不能是网关子网。 该子网不能包含除该托管实例以外的其他任何资源，以后无法在该子网中添加其他类型的资源。
+- **专用子网：** 托管实例的子网不能包含与它关联的任何其他云服务，并且不能是网关子网。 该子网不能包含除该托管实例以外的其他任何资源，以后无法在该子网中添加其他类型的资源。
 - **网络安全组 (NSG)** ：与虚拟网络关联的 NSG 必须在其他任何规则的前面定义[入站安全规则](#mandatory-inbound-security-rules)和[出站安全规则](#mandatory-outbound-security-rules)。 当托管实例配置为使用重定向连接时，可以使用某个 NSG 通过筛选端口 1433 和端口 11000-11999 上的流量，来控制对托管实例数据终结点的访问。
 - **用户定义的路由 (UDR) 表：** 与虚拟网络关联的 UDR 表必须包含特定的[条目](#user-defined-routes)。
 - **没有服务终结点：** 不应将任何服务终结点与托管实例的子网相关联。 创建虚拟网络时，请务必禁用“服务终结点”选项。
@@ -321,7 +323,7 @@ Azure 使用一个管理终结点来管理托管实例。 此终结点位于该�
 
 ### <a name="mandatory-inbound-security-rules"></a>强制性入站安全规则
 
-| 名称       |端口                        |协议|源           |目标|操作|
+| 名称       |端口                        |协议|Source           |目标|操作|
 |------------|----------------------------|--------|-----------------|-----------|------|
 |管理  |9000、9003、1438、1440、1452|TCP     |任意              |MI SUBNET  |允许 |
 |mi_subnet   |任意                         |任意     |MI SUBNET        |MI SUBNET  |允许 |
@@ -340,7 +342,7 @@ Azure 使用一个管理终结点来管理托管实例。 此终结点位于该�
 \* MI SUBNET 是指子网的 IP 地址范围，采用 x.x.x.x/y 格式。 可以在 Azure 门户上的子网属性中找到此信息。
 
 > [!IMPORTANT]
-> 尽管所需的入站安全规则允许来自端口 9000、9003、1438、1440 和 1452 上的任意资源的流量，但这些端口受内置防火墙的保护  。 有关详细信息，请参阅[确定管理终结点地址](sql-database-managed-instance-find-management-endpoint-ip-address.md)。
+> 尽管所需的入站安全规则允许来自端口 9000、9003、1438、1440 和 1452 上的任意资源的流量，但这些端口受内置防火墙的保护。 有关详细信息，请参阅[确定管理终结点地址](sql-database-managed-instance-find-management-endpoint-ip-address.md)。
 
 > [!NOTE]
 > 如果在托管实例中使用事务复制，并使用任何实例数据库作为发布方或分发方，请在子网的安全规则中打开端口 445（TCP 出站）。 此端口允许访问 Azure 文件共享。
@@ -526,5 +528,5 @@ Azure 使用一个管理终结点来管理托管实例。 此终结点位于该�
 - 了解如何通过以下方式创建托管实例：
   - 通过 [Azure 门户](sql-database-managed-instance-get-started.md)。
   - 使用 [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md)。
-  - 使用 [Azure 资源管理器模板](https://azure.microsoft.com/resources/templates/101-sqlmi-new-vnet/)。
-  - 使用 [Azure 资源管理器模板（使用包含 SSMS 的 JumpBox）](https://portal.azure.cn/)。
+  - 使用 [Azure 资源管理器模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sqlmi-new-vnet/)。
+  - 使用 [Azure 资源管理器模板（使用包含 SSMS 的 JumpBox）](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sqlmi-new-vnet-w-jumpbox/)。

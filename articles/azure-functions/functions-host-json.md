@@ -2,13 +2,13 @@
 title: Azure Functions 2.x 的 host.json 参考
 description: 使用 v2 运行时的 Azure Functions host.json 文件的参考文档。
 ms.topic: conceptual
-ms.date: 03/03/2020
-ms.openlocfilehash: 72047f78508ba7bc679daeed10efaf6eea9738aa
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 06/08/2020
+ms.openlocfilehash: 98679ee44e44079879f0e5f811f51024b2841c85
+ms.sourcegitcommit: f1a76ee3242698123a3d77f44c860db040b48f70
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292952"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84563747"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Azure Functions 2.x 及更高版本的 host.json 参考 
 
@@ -80,7 +80,7 @@ host.json 中与绑定相关的配置将同样地应用于函数应用中的每�
 
 ## <a name="eventhub"></a>eventHub
 
-可在[事件中心触发器和绑定](functions-bindings-event-hubs-output.md#host-json)中查找配置设置。 
+可在[事件中心触发器和绑定](functions-bindings-event-hubs-trigger.md#host-json)中查找配置设置。 
 
 ## <a name="extensions"></a>扩展
 
@@ -213,4 +213,3 @@ host.json 中与绑定相关的配置将同样地应用于函数应用中的每�
 > [!div class="nextstepaction"]
 > [查看环境变量中的全局设置](functions-app-settings.md)
 
-<!-- Update_Description: link update -->

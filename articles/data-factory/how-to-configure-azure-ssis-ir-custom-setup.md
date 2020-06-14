@@ -12,17 +12,17 @@ manager: digimobile
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 origin.date: 04/15/2020
-ms.date: 05/11/2020
-ms.openlocfilehash: a0f0f73c8a2435d3cf895a5c9339a906ebaa0c42
-ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
+ms.date: 06/15/2020
+ms.openlocfilehash: 0887f7222dd5a94f6ce06685446cb98defe64aa6
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82198094"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723477"
 ---
 # <a name="customize-the-setup-for-an-azure-ssis-integration-runtime"></a>自定义 Azure-SSIS Integration Runtime 的安装
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Azure-SQL Server Integration Services Integration Runtime (Azure-SSIS IR) 的自定义安装程序提供了一个界面，用于在安装或重新配置 Azure-SSIS IR 期间添加自己的步骤。 
 

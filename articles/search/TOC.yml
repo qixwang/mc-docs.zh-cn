@@ -60,6 +60,8 @@
           href: search-semi-structured-data.md
         - name: 为多个 Azure 数据源编制索引
           href: tutorial-multiple-data-sources.md
+    - name: 为任意数据编制索引
+      href: tutorial-optimize-indexing-push-api.md
     - name: 使用 AI 创建内容
       items:
         - name: 'C#'
@@ -68,6 +70,8 @@
           href: cognitive-search-tutorial-blob.md
         - name: Python
           href: cognitive-search-tutorial-blob-python.md
+    - name: 从 Power Apps 查询
+      href: search-howto-powerapps.md
 - name: 示例
   items:
     - name: 'C# 示例'
@@ -80,6 +84,9 @@
       href: 'https://docs.microsoft.com/samples/browse/?products=azure-cognitive-search&languages=python'
     - name: REST 示例
       href: 'https://docs.microsoft.com/samples/browse/?products=azure-cognitive-search&languages=rest'
+    - name: Azure Policy 内置策略定义
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: 概念
   items:
     - name: 全文搜索
@@ -232,8 +239,6 @@
               href: index-add-suggesters.md
             - name: 添加自动完成和建议
               href: search-autocomplete-tutorial.md
-        - name: 从 Power Apps 查询
-          href: search-howto-powerapps.md
         - name: 语法参考
           items:
             - name: 简化的查询语法
@@ -254,15 +259,17 @@
           href: search-query-troubleshoot-collection-filters.md
         - name: 了解集合筛选器
           href: search-query-understand-collection-filters.md
-        - name: 多层 facet 的示例
-          href: search-example-adventureworks-multilevel-faceting.md
+        - name: 按语言筛选
+          href: search-filters-language.md
     - name: 结果
       items:
         - name: 处理结果
           href: search-pagination-page-layout.md
-        - name: 相关性调整（计分配置文件）
+        - name: 相关性评分
+          href: index-similarity-and-scoring.md
+        - name: 为配置文件评分
           href: index-add-scoring-profiles.md
-        - name: 相关性优化（相似性算法）
+        - name: 相似性算法
           href: index-ranking-similarity.md
     - name: 计划
       items:
@@ -356,7 +363,7 @@
           href: 'https://docs.microsoft.com/rest/api/searchservice'
         - name: 搜索 2019-05-06-Preview
           href: 'https://docs.microsoft.com/rest/api/searchservice/index-2019-05-06-preview'
-        - name: 管理 2015-08-15
+        - name: 管理 2020-03-13
           href: 'https://docs.microsoft.com/rest/api/searchmanagement'
         - name: 管理 2019-10-01-Preview
           href: 'https://docs.microsoft.com/rest/api/searchmanagement/index-2019-10-01-preview'
@@ -447,10 +454,6 @@
           href: 'https://wolterskluwereap.azurewebsites.net/'
         - name: JFK 文件演示
           href: 'https://aka.ms/jfkfiles'
-        - name: NYC 作业演示
-          href: 'https://aka.ms/azjobsdemo'
-        - name: 搜索用例
-          href: 'https://searchsamples.azurewebsites.net/'
     - name: 培训
       items:
         - name: 将搜索添加到应用 (Pluralsight)

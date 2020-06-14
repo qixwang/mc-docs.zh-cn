@@ -9,16 +9,16 @@ origin.date: 07/02/2019
 ms.date: 08/19/2019
 ms.author: v-yiso
 ms.custom: hdinsightactive,mvc
-ms.openlocfilehash: 139f1ec386dd69c4bd3a7077ef690a11669bcdca
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 86def21beffadd0b1b8b26ac99eea06d220b6c78
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "68886367"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723162"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-interactive-query-in-azure-hdinsight"></a>教程：在 Azure HDInsight 中使用交互式查询提取、转换和加载数据
 
-在此教程中，你将获取公开可用的航班数据的原始 CSV 数据文件，将其导入 HDInsight 群集存储，然后在 Azure HDInsight 中使用交互式查询转换数据。 数据转换完毕后，使用 [Apache Sqoop](https://sqoop.apache.org/) 将数据加载到 Azure SQL 数据库。
+在本教程中，我们将下载公开发布的航班数据的原始 CSV 数据文件。 将该文件导入 HDInsight 群集存储，然后使用 Azure HDInsight 中的 Interactive Query 来转换数据。 数据转换完毕后，使用 [Apache Sqoop](https://sqoop.apache.org/) 将数据加载到 Azure SQL 数据库。
 
 本教程涵盖以下任务：
 
@@ -31,7 +31,7 @@ ms.locfileid: "68886367"
 
 ## <a name="prerequisites"></a>先决条件
 
-* HDInsight 上的一个交互式查询群集。 请参阅[使用 Azure 门户创建 Apache Hadoop 群集](../hdinsight-hadoop-create-linux-clusters-portal.md)，并选择“交互式查询”  作为**群集类型**。
+* HDInsight 上的一个交互式查询群集。 请参阅[使用 Azure 门户创建 Apache Hadoop 群集](../hdinsight-hadoop-create-linux-clusters-portal.md)，并选择“交互式查询”作为**群集类型**。
 
 * Azure SQL 数据库。 使用 Azure SQL 数据库作为目标数据存储。 如果没有 SQL 数据库，请参阅[在 Azure 门户中创建 Azure SQL 数据库](/sql-database/sql-database-single-database-get-started)。
 
@@ -49,7 +49,7 @@ ms.locfileid: "68886367"
    | 筛选期间 |1 月 |
    | 字段 |Year、FlightDate、Reporting_Airline、DOT_ID_Reporting_Airline、Flight_Number_Reporting_Airline、OriginAirportID、Origin、OriginCityName、OriginState、DestAirportID、Dest、DestCityName、DestState、DepDelayMinutes、ArrDelay、ArrDelayMinutes、CarrierDelay、WeatherDelay、NASDelay、SecurityDelay、LateAircraftDelay。 |
 
-3. 选择“下载”  。 你将得到一个具有所选数据字段的 zip 文件。
+3. 选择“下载”。 你将得到一个具有所选数据字段的 zip 文件。
 
 ## <a name="upload-data-to-an-hdinsight-cluster"></a>将数据上传到 HDInsight 群集
 
@@ -61,7 +61,7 @@ ms.locfileid: "68886367"
     scp FILENAME.zip sshuser@CLUSTERNAME-ssh.azurehdinsight.cn:FILENAME.zip
     ```
 
-    如果要求你输入“yes”或“no”以继续，请在命令提示符下键入“yes”，然后按 Enter。 键入时，文本在窗口中不可见。
+    如果出现提示，请输入“yes”或“no”以继续。 键入时，文本在窗口中不可见。
 
 2. 上传完成后，使用 SSH 连接到群集。 通过将 `CLUSTERNAME` 替换为 HDInsight 群集的名称来编辑以下命令。 然后输入以下命令：
 
@@ -96,9 +96,9 @@ ms.locfileid: "68886367"
 
 可通过多种方式在 HDInsight 群集上运行 Hive 作业。 本部分使用 [Beeline](https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients#HiveServer2Clients-Beeline%E2%80%93CommandLineShell) 运行 Hive 作业。 有关以其他方式运行 Hive 作业的信息，请参阅[在 HDInsight 上使用 Apache Hive](../hadoop/hdinsight-use-hive.md)。
 
-在 Hive 作业运行期间，请将 .csv 文件中的数据导入到名为“Delays”的 Hive 表中  。
+在 Hive 作业运行期间，请将 .csv 文件中的数据导入到名为“Delays”的 Hive 表中。
 
-1. 在 HDInsight 群集已有的 SSH 提示符中，使用以下命令创建并编辑名为“flightdelays.hql”的新文件  ：
+1. 在 HDInsight 群集已有的 SSH 提示符中，使用以下命令创建并编辑名为“flightdelays.hql”的新文件：
 
     ```bash
     nano flightdelays.hql
@@ -166,7 +166,7 @@ ms.locfileid: "68886367"
     FROM delays_raw;
     ```
 
-3. 若要保存该文件，请按“Ctrl + X”，然后按“y”，然后输入   。
+3. 若要保存该文件，请按“Ctrl + X”，然后按“y”，然后输入 。
 
 4. 若要启动 Hive 并运行 **flightdelays.hql** 文件，请使用以下命令：
 
@@ -174,7 +174,7 @@ ms.locfileid: "68886367"
     beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http' -f flightdelays.hql
     ```
 
-5. flightdelays.hql 脚本完成运行后，使用以下命令打开交互式 Beeline 会话  ：
+5. flightdelays.hql 脚本完成运行后，使用以下命令打开交互式 Beeline 会话：
 
     ```bash
     beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http'
@@ -233,7 +233,7 @@ ms.locfileid: "68886367"
     GO
     ```
 
-    输入 `GO` 语句后，会评估前面的语句。 此语句会创建一个名为“delays”且具有聚集索引的表  。
+    输入 `GO` 语句后，会评估前面的语句。 此语句会创建一个名为“delays”且具有聚集索引的表。
 
     使用以下查询验证是否已创建该表：
 

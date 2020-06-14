@@ -1,5 +1,5 @@
 ---
-title: PowerShell 示例 - 在 Azure SQL 数据库中创建托管实例 | Microsoft Docs
+title: PowerShell 示例 - 在 Azure SQL 数据库中创建托管实例
 description: Azure PowerShell 示例脚本，用于在 Azure SQL 数据库中创建托管实例
 services: sql-database
 ms.service: sql-database
@@ -10,15 +10,14 @@ ms.topic: sample
 author: WenJason
 ms.author: v-jay
 ms.reviewer: carlrab
-manager: digimobile
 origin.date: 03/25/2019
-ms.date: 08/19/2019
-ms.openlocfilehash: a23cb86ed41878e4a9fbdd4380beff7526dab8a2
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.date: 06/15/2020
+ms.openlocfilehash: 5b74984459587b06bff2836c0aa81e4ff2d7de12
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82127076"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723649"
 ---
 # <a name="use-powershell-to-create-an-azure-sql-database-managed-instance"></a>使用 PowerShell 创建 Azure SQL 数据库托管实例
 
@@ -27,7 +26,7 @@ ms.locfileid: "82127076"
 > [!IMPORTANT]
 > 有关限制，请参阅[支持的区域](../sql-database-managed-instance-resource-limits.md#supported-regions)。
 
-本教程需要 AZ PowerShell 1.4.0 或更高版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](https://docs.microsoft.com/powershell/azure/install-az-ps)（安装 Azure PowerShell 模块）。 需要运行 `Connect-AzAccount -Environment AzureChinaCloud` 以创建与 Azure 的连接。
+本教程需要 AZ PowerShell 1.4.0 或更高版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)。 需要运行 `Connect-AzAccount -Environment AzureChinaCloud` 以创建与 Azure 的连接。
 
 ## <a name="sample-script"></a>示例脚本
 
@@ -235,9 +234,9 @@ Remove-AzResourceGroup -ResourceGroupName $resourcegroupname
 
 ## <a name="script-explanation"></a>脚本说明
 
-此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
+此脚本使用以下命令中的某些命令。 有关下表中使用的命令和其他命令的详细信息，请单击命令特定文档的链接。
 
-| 命令 | 注释 |
+| Command | 说明 |
 |---|---|
 | [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) | 创建用于存储所有资源的资源组。
 | [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork) | 创建虚拟网络 |

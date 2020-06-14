@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 04/24/2020
+ms.date: 06/02/2020
 ms.author: v-junlch
 author: iainfoulds
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a9009e98be6bee50f57989be60d4720bea7e4de
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.openlocfilehash: 49fab1ca70282b929a19e9c376df8c29667db0a7
+ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82126229"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84275371"
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-ios"></a>iOS 上 Azure Active Directory 基于证书的身份验证
 
@@ -35,6 +35,7 @@ ms.locfileid: "82126229"
 | Azure 信息保护应用 |![对号，表示支持此应用程序][1] |
 | Intune 公司门户 |![对号，表示支持此应用程序][1] |
 | Microsoft Teams |![对号，表示支持此应用程序][1] |
+| Office（移动） |![对号，表示支持此应用程序][1] |
 | OneNote |![对号，表示支持此应用程序][1] |
 | OneDrive |![对号，表示支持此应用程序][1] |
 | Outlook |![对号，表示支持此应用程序][1] |
@@ -54,7 +55,7 @@ ms.locfileid: "82126229"
 存在以下 Active Directory 联合身份验证服务 (ADFS) 要求和注意事项：
 
 * ADFS 服务器必须启用证书身份验证并使用联合身份验证。
-* 证书需要采用增强型密钥使用 (EKU) 功能并在“使用者替代名称（NT 主体名称）”  中包含用户的 UPN。
+* 证书需要采用增强型密钥使用 (EKU) 功能并在“使用者替代名称（NT 主体名称）”中包含用户的 UPN。
 
 ## <a name="configure-adfs"></a>配置 ADFS
 
@@ -74,7 +75,7 @@ ms.locfileid: "82126229"
 
 某些启用了新式身份验证的 Office 应用在请求中向 Azure AD 发送 `prompt=login`。 默认情况下，Azure AD 会将向 ADFS 发出的请求中的 `prompt=login` 转换为 `wauth=usernamepassworduri`（要求 ADFS 执行 U/P 身份验证）和 `wfresh=0`（要求 ADFS 忽略 SSO 状态并执行全新的身份验证）。 如果想要为这些应用启用基于证书的身份验证，请修改默认 Azure AD 行为。
 
-若要更新默认行为，请将联合域设置中的“PromptLoginBehavior”设置为“Disabled”。   可以使用 [MSOLDomainFederationSettings](https://docs.microsoft.com/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0) cmdlet 执行此任务，如以下示例中所示：
+若要更新默认行为，请将联合域设置中的“PromptLoginBehavior”设置为“Disabled”。  可以使用 [MSOLDomainFederationSettings](https://docs.microsoft.com/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0) cmdlet 执行此任务，如以下示例中所示：
 
 ```powershell
 Set-MSOLDomainFederationSettings -domainname <domain> -PromptLoginBehavior Disabled

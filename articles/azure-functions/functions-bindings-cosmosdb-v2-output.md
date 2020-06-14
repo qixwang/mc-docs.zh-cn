@@ -3,20 +3,20 @@ title: 适用于 Functions 2.x 的 Azure Cosmos DB 输出绑定
 description: 了解如何在 Azure Functions 中使用 Azure Cosmos DB 输出绑定。
 author: craigshoemaker
 ms.topic: reference
-ms.date: 03/18/2020
+ms.date: 06/05/2020
 ms.author: v-junlch
-ms.openlocfilehash: f536b956ecdc2d4fc443cb43c4288c9a2d1b7e66
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 2656ae581cdde4fb804797266f4521bdc43a0b2b
+ms.sourcegitcommit: f1a76ee3242698123a3d77f44c860db040b48f70
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79546888"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84563647"
 ---
 # <a name="azure-cosmos-db-output-binding-for-azure-functions-2x"></a>适用于 Azure Functions 2.x 的 Azure Cosmos DB 输出绑定
 
 Azure Cosmos DB 输出绑定允许使用 SQL API 将新文档写入 Azure Cosmos DB 数据库。
 
-若要了解设置和配置详细信息，请参阅[概述](./functions-bindings-cosmosdb-v2.md)。
+有关设置和配置详细信息，请参阅[概述](./functions-bindings-cosmosdb-v2.md)。
 
 <a id="example" name="example"></a>
 
@@ -145,7 +145,7 @@ namespace CosmosDBSamplesV2
 }
 ```
 
-下面是 function.json  文件中的绑定数据：
+下面是 function.json 文件中的绑定数据：
 
 ```json
 {
@@ -270,7 +270,7 @@ public static async Task Run(ToDoItem[] toDoItemsIn, IAsyncCollector<ToDoItem> t
 }
 ```
 
-下面是 function.json  文件中的绑定数据：
+下面是 function.json 文件中的绑定数据：
 
 ```json
 {
@@ -475,7 +475,7 @@ public String cosmosDbQueryById(
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-在 [C# 类库](functions-dotnet-class-library.md)中，使用 CosmosDB 特性。
+在 [C# 类库](functions-dotnet-class-library.md)中，使用 [CosmosDB](https://github.com/Azure/azure-webjobs-sdk-extensions/tree/dev/test/WebJobs.Extensions.CosmosDB.Tests) 特性。
 
 该特性的构造函数采用数据库名称和集合名称。 有关这些设置以及可以配置的其他属性的信息，请参阅[输出 - 配置](#configuration)。 下面是某个方法签名中的 `CosmosDB` 特性示例：
 
@@ -505,13 +505,13 @@ JavaScript 不支持特性。
 
 ## <a name="configuration"></a>配置
 
-下表解释了在 function.json  文件和 `CosmosDB` 特性中设置的绑定配置属性。
+下表解释了在 function.json 文件和 `CosmosDB` 特性中设置的绑定配置属性。
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|type      | 不适用 | 必须设置为 `cosmosDB`。        |
-|direction      | 不适用 | 必须设置为 `out`。         |
-|name      | 不适用 | 表示函数中的文档的绑定参数的名称。  |
+|**type**     | 不适用 | 必须设置为 `cosmosDB`。        |
+|**direction**     | 不适用 | 必须设置为 `out`。         |
+|**name**     | 不适用 | 表示函数中的文档的绑定参数的名称。  |
 |**databaseName** | **DatabaseName**|包含在其中创建文档的集合的数据库。     |
 |**collectionName** |**CollectionName**  | 包含在其中创建文档的集合的名称。 |
 |**createIfNotExists**  |**CreateIfNotExists**    | 一个用于指示是否创建集合（如果不存在）的布尔值。 默认值为 *false*，因为新集合是使用保留的吞吐量创建的，具有成本方面的隐含意义。 有关详细信息，请参阅[定价页](https://www.azure.cn/pricing/details/cosmos-db/)。  |
@@ -557,7 +557,7 @@ JavaScript 不支持特性。
 }
 ```
 
-|properties  |默认 | 说明 |
+|属性  |默认 | 说明 |
 |---------|---------|---------|
 |GatewayMode|网关|连接到 Azure Cosmos DB 服务时该函数使用的连接模式。 选项为 `Direct` 和 `Gateway`|
 |协议|Https|连接到 Azure Cosmos DB 服务时该函数使用的连接协议。  参阅[此处，了解两种模式的说明](../cosmos-db/performance-tips.md#networking)|

@@ -6,16 +6,16 @@ ms.suite: integration
 author: rockboyfor
 ms.reviewer: estfan, logicappspm
 ms.topic: article
-origin.date: 04/13/2020
-ms.date: 04/30/2020
+origin.date: 05/06/2020
+ms.date: 06/08/2020
 ms.author: v-yeche
 tags: connectors
-ms.openlocfilehash: f9112e62a55a5ec8135f81d97f3b4cd58f8ce035
-ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
+ms.openlocfilehash: 76632a202f0347e407e41e420d616aa161914a09
+ms.sourcegitcommit: c4fc01b7451951ef7a9616fca494e1baf29db714
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83392429"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84564264"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>使用 SSH 和 Azure 逻辑应用监视、创建和管理 SFTP 文件
 
@@ -75,7 +75,7 @@ ms.locfileid: "83392429"
 
 * 提供“重命名文件”操作，用于在 SFTP 服务器上重命名文件。
 
-* 将 SFTP 服务器连接缓存最长 1 小时，这可以提高性能，并减少服务器的连接尝试次数。 若要设置此缓存行为的持续时间，请在 SFTP 服务器上编辑 SSH 配置中的 [**ClientAliveInterval**](https://man.openbsd.org/sshd_config#ClientAliveInterval) 属性。
+* 将 SFTP 服务器连接缓存最长 1 小时，这可以提高性能，并减少服务器的连接尝试次数。** 若要设置此缓存行为的持续时间，请在 SFTP 服务器上编辑 SSH 配置中的 [**ClientAliveInterval**](https://man.openbsd.org/sshd_config#ClientAliveInterval) 属性。
 
 ## <a name="prerequisites"></a>先决条件
 

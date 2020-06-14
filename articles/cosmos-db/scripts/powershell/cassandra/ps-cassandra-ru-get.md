@@ -5,15 +5,15 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: sample
-origin.date: 07/03/2019
-ms.date: 01/20/2020
+origin.date: 03/18/2020
+ms.date: 06/15/2020
 ms.author: v-yeche
-ms.openlocfilehash: 3362956104db932d128f4e18750694b73953c99e
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 400d13cc375b7610f365c7d881425e89dcba89cb
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "76270102"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723625"
 ---
 # <a name="get-throughput-rus-for-a-keyspace-or-table-for-azure-cosmos-db---cassandra-api"></a>获取 Azure Cosmos DB 的密钥空间或表的吞吐量（RU/秒）- Cassandra API
 
@@ -24,26 +24,26 @@ ms.locfileid: "76270102"
 ## <a name="sample-script"></a>示例脚本
 
 ```powershell
-# Get RU for an Azure Cosmos Cassandra API keyspace or table
-$apiVersion = "2015-04-08"
-$resourceGroupName = "myResourceGroup"
-$accountName = "mycosmosaccount"
-$keyspaceName = "keyspace1"
-$tableName = "table1"
-$keyspaceThroughputResourceType = "Microsoft.DocumentDb/databaseAccounts/apis/keyspaces/settings"
-$keyspaceThroughputResourceName = $accountName + "/cassandra/" + $keyspaceName + "/throughput"
-$tableThroughputResourceName = $accountName + "/cassandra/" + $keyspaceName + "/" + $tableName + "/throughput"
-$tableThroughputResourceType = "Microsoft.DocumentDb/databaseAccounts/apis/keyspaces/tables/settings"
+# Reference: Az.CosmosDB | https://docs.microsoft.com/powershell/module/az.cosmosdb
+# --------------------------------------------------
+# Purpose
+# Get keyspace or table throughput
+# --------------------------------------------------
+# Variables - ***** SUBSTITUTE YOUR VALUES *****
+$resourceGroupName = "myResourceGroup" # Resource Group must already exist
+$accountName = "myaccount" # Must be all lower case
+$keyspaceName = "mykeyspace" # Keyspace with shared throughput
+$tableName = "mytable" # Table with dedicated throughput
+# --------------------------------------------------
 
-# Get the throughput for a keyspace (returns RU/s or error)
-Get-AzResource -ResourceType $keyspaceThroughputResourceType `
-    -ApiVersion $apiVersion -ResourceGroupName $resourceGroupName `
-    -Name $keyspaceThroughputResourceName | Select-Object Properties
+Write-Host "Get keyspace shared throughput"
+Get-AzCosmosDBCassandraKeyspaceThroughput -ResourceGroupName $resourceGroupName `
+    -AccountName $accountName -Name $keyspaceName
 
-# Get the throughput for a table (returns RU/s or error)
-Get-AzResource -ResourceType $tableThroughputResourceType `
-    -ApiVersion $apiVersion -ResourceGroupName $resourceGroupName `
-    -Name $tableThroughputResourceName | Select-Object Properties
+Write-Host "Get table dedicated throughput"
+Get-AzCosmosDBCassandraTableThroughput -ResourceGroupName $resourceGroupName `
+    -AccountName $accountName -KeyspaceName $keyspaceName `
+    -Name $tableName
 
 ```
 
@@ -61,8 +61,9 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 
 | Command | 说明 |
 |---|---|
-|**Azure 资源**| |
-| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | 创建资源。 |
+|**Azure Cosmos DB**| |
+| [Get-AzCosmosDBCassandraKeyspaceThroughput](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbcassandrakeyspacethroughput) | 获取 Cassandra API 密钥空间的吞吐量值。 |
+| [Get-AzCosmosDBCassandraTableThroughput](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbcassandratablethroughput) | 获取 Cassandra API 表的吞吐量值。 |
 |**Azure 资源组**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | 删除资源组，包括所有嵌套的资源。 |
 |||
@@ -73,4 +74,4 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 
 可以在 [Azure Cosmos DB PowerShell 脚本](../../../powershell-samples.md)中找到其他 Azure Cosmos DB PowerShell 脚本示例。
 
-<!-- Update_Description: wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

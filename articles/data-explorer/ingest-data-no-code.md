@@ -7,13 +7,13 @@ ms.reviewer: kerend
 ms.service: data-explorer
 ms.topic: tutorial
 origin.date: 01/29/2020
-ms.date: 05/09/2020
-ms.openlocfilehash: 7237f86dac9fda57be9f8ed079111a7daa799a27
-ms.sourcegitcommit: bfbd6694da33f703481386f2a3f16850c4e94bfa
+ms.date: 06/09/2020
+ms.openlocfilehash: 308ac7f1116b24d023bb8151f96096f3a71aec7c
+ms.sourcegitcommit: 73697fa9c19a40d235df033400c74741e7d0f3f4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83417617"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84574900"
 ---
 # <a name="tutorial-ingest-and-query-monitoring-data-in-azure-data-explorer"></a>教程：在 Azure 数据资源管理器中引入和查询监视数据 
 
@@ -197,7 +197,7 @@ Azure 活动日志是订阅级日志，提供对订阅中的资源执行的操�
 
 ## <a name="set-up-an-ingestion-pipeline-in-azure-data-explorer"></a>在 Azure 数据资源管理器中设置引入管道
 
-设置 Azure 数据资源管理器管道需要执行若干步骤，如[表创建和数据引入](/data-explorer/ingest-sample-data#ingest-data)。 此外，你可以处理、映射和更新数据。
+设置 Azure 数据资源管理器管道需要执行若干步骤，如[表创建和数据引入](ingest-sample-data.md#ingest-data)。 此外，你可以处理、映射和更新数据。
 
 ### <a name="connect-to-the-azure-data-explorer-web-ui"></a>连接到 Azure 数据资源管理器 Web UI
 

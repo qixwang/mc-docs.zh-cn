@@ -1,15 +1,15 @@
 ---
 title: 使用 Visual Studio Code 将 Azure Functions 连接到 Azure 存储
 description: 了解如何通过将输出绑定添加到 Visual Studio Code 项目将 Azure Functions 连接到 Azure 存储队列。
-ms.date: 03/02/2020
+ms.date: 06/03/2020
 ms.topic: quickstart
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 16b4b3a72cb1ec92b4ff1f4e173a1af2a315a98b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 522826a7c199763bc73bf2584c8281115f97ac0c
+ms.sourcegitcommit: f1a76ee3242698123a3d77f44c860db040b48f70
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79291884"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84563710"
 ---
 # <a name="connect-azure-functions-to-azure-storage-using-visual-studio-code"></a>使用 Visual Studio Code 将 Azure Functions 连接到 Azure 存储
 
@@ -41,7 +41,7 @@ ms.locfileid: "79291884"
 
 1. 按 F1 键打开命令面板，然后搜索并运行命令 `Azure Functions: Download Remote Settings....`。 
 
-1. 选择你在前一篇文章中创建的函数应用。 选择“全是”覆盖现有本地设置  。 
+1. 选择你在前一篇文章中创建的函数应用。 选择“全是”覆盖现有本地设置。 
 
     > [!IMPORTANT]  
     > 由于 local.settings.json 文件包含机密，因此请勿发布，应将其从源代码管理中排除。
@@ -52,9 +52,21 @@ ms.locfileid: "79291884"
 
 由于你使用队列存储输出绑定，因此在运行项目之前，必须安装存储绑定扩展。 
 
-::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-powershell"
+::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-java"
 
-[!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
+项目已配置为使用[扩展捆绑包](functions-bindings-register.md#extension-bundles)，因此会自动安装一组预定义的扩展包。 
+
+在项目根目录下的 host.json 文件中启用扩展捆绑包，如下所示：
+
+```json
+{
+  "version": "2.0",
+  "extensionBundle": {
+    "id": "Microsoft.Azure.Functions.ExtensionBundle",
+    "version": "[1.*, 2.0.0)"
+  } 
+}
+```
 
 ::: zone-end
 
@@ -74,7 +86,7 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 
 在 Functions 中，每种类型的绑定都需要一个 `direction`、`type`，以及要在 function.json 文件中定义的唯一 `name`。 定义这些属性的方式取决于函数应用的语言。
 
-::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-powershell"
+::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-java"
 
 [!INCLUDE [functions-add-output-binding-json](../../includes/functions-add-output-binding-json.md)]
 
@@ -83,6 +95,12 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 ::: zone pivot="programming-language-csharp"
 
 [!INCLUDE [functions-add-storage-binding-csharp-library](../../includes/functions-add-storage-binding-csharp-library.md)]
+
+::: zone-end
+
+::: zone pivot="programming-language-java"
+
+[!INCLUDE [functions-add-output-binding-java](../../includes/functions-add-output-binding-java.md)]
 
 ::: zone-end
 
@@ -106,8 +124,20 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 
 
 ::: zone pivot="programming-language-csharp"  
+
 [!INCLUDE [functions-add-storage-binding-csharp-library-code](../../includes/functions-add-storage-binding-csharp-library-code.md)]
+
 ::: zone-end  
+
+::: zone pivot="programming-language-java"  
+
+[!INCLUDE [functions-add-storage-binding-java-code](../../includes/functions-add-storage-binding-java-code.md)]
+
+[!INCLUDE [functions-add-output-binding-java-test](../../includes/functions-add-output-binding-java-test.md)]
+
+::: zone-end  
+
+<!--- Local testing section --->
 
 ::: zone pivot="programming-language-csharp,programming-language-javascript"
 
@@ -123,15 +153,21 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 
 首次使用输出绑定时，Functions 运行时会在存储帐户中创建名为 **outqueue** 的新队列。 将使用存储资源管理器来验证队列是否与新消息一起创建。
 
+::: zone pivot="programming-language-java"  
+
+[!INCLUDE [functions-add-output-binding-java-test](../../includes/functions-add-output-binding-java-test.md)]
+
+::: zone-end
+
 ### <a name="connect-storage-explorer-to-your-account"></a>将存储资源管理器连接到帐户
 
 如果已安装 Azure 存储资源管理器并已将其连接到 Azure 帐户，请跳过此部分。
 
-1. 运行 [Azure存储资源管理器] 工具，选择左侧的“连接”图标，然后选择“添加帐户”  。
+1. 运行 [Azure存储资源管理器] 工具，选择左侧的“连接”图标，然后选择“添加帐户”。
 
     ![将 Azure 帐户添加到 Azure 存储资源管理器](./media/functions-add-output-binding-storage-queue-vs-code/storage-explorer-add-account.png)
 
-1. 在“连接”对话框中，依次选择“添加 Azure 帐户”、你的“Azure 环境”和“登录...”     。 
+1. 在“连接”对话框中，依次选择“添加 Azure 帐户”、你的“Azure 环境”和“登录...”   。 
 
     ![登录到 Azure 帐户](./media/functions-add-output-binding-storage-queue-vs-code/storage-explorer-connect-azure-account.png)
 
@@ -143,7 +179,7 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 
 1. 展开“队列”节点，然后选择名为 **outqueue** 的队列。 
 
-   此队列包含在运行 HTTP 触发的函数时队列输出绑定创建的消息。 如果使用默认的 `name` 值 *Azure* 调用了此函数，则队列消息为“传递给函数的名称: Azure”。 
+   此队列包含在运行 HTTP 触发的函数时队列输出绑定创建的消息。 如果使用 Azure 的默认 `name` 值调用了此函数，则队列消息为“传递给函数的名称： Azure”。
 
     ![Azure 存储资源管理器中显示的队列消息](./media/functions-add-output-binding-storage-queue-vs-code/function-queue-storage-output-view-queue.png)
 
@@ -155,7 +191,7 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 
 1. 在 Visual Studio Code 中，按 F1 键打开命令面板。 在命令面板中，搜索并选择 `Azure Functions: Deploy to function app...`。
 
-1. 选择你在第一篇文章中创建的函数应用。 由于你要将项目重新部署到同一个应用，因此请选择“部署”关闭覆盖文件的警告  。
+1. 选择你在第一篇文章中创建的函数应用。 由于你要将项目重新部署到同一个应用，因此请选择“部署”以关闭关于覆盖文件的警告。
 
 1. 部署完成后，可以再次使用 cURL 或浏览器测试重新部署的函数。 与前面一样，请将查询字符串 `&name=<yourname>` 追加到 URL，如以下示例所示：
 
@@ -167,7 +203,7 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 
 ## <a name="clean-up-resources"></a>清理资源
 
- Azure 中的资源是指函数应用、函数、存储帐户等。 这些资源可以组合到资源组  中，删除该组即可删除组中的所有内容。
+在 Azure 中，“资源”是指函数应用、函数、存储帐户等。 这些资源可以组合到资源组中，删除该组即可删除组中的所有内容。
 
 已创建完成这些快速入门所需的资源。 这些资源可能需要付费，具体取决于[帐户状态](https://azure.microsoft.com/account/)和[服务定价](https://www.azure.cn/pricing/)。 如果不再需要这些资源，请参阅下面介绍的资源删除方法：
 

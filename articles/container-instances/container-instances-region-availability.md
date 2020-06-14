@@ -2,15 +2,15 @@
 title: 资源可用性（按区域）
 description: Azure 容器实例服务的计算和内存资源在不同 Azure 区域的可用性。
 ms.topic: article
-origin.date: 02/19/2020
-ms.date: 04/30/2020
+origin.date: 04/27/2020
+ms.date: 06/08/2020
 ms.author: v-yeche
-ms.openlocfilehash: aefa33959ff53f026bd17f978ada7215cea7881a
-ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
+ms.openlocfilehash: fd02b4f13fc82b490f9548fe1a7cdff69b7d28f0
+ms.sourcegitcommit: c4fc01b7451951ef7a9616fca494e1baf29db714
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83392427"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84564360"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Azure 容器实例在 Azure 区域的资源可用性
 
@@ -28,12 +28,12 @@ ms.locfileid: "83392427"
 以下区域和最大资源可供包含 Linux 容器的容器组使用。
 
 <!--Not Available on [supported](container-instances-faq.md#what-windows-base-os-images-are-supported) Windows Server 2016-based-->
-<!--CUSTOMIZE ON MOONCAKE CPU/4 AND MEMORY/14GB-->
+<!--CUSTOMIZE ON MOONCAKE CPU/2 AND MEMORY/8GB based on 06/08/2020-->
 
 | 区域 | 操作系统 | 最大 CPU | 最大内存 (GB) | 存储器 (GB) |
 | -------- | -- | :---: | :-----------: | :---: |
-| 中国东部 2 | Linux | 4 | 14 | 50 |
-| 中国北部 2 | Linux | 4 | 14 | 50 |
+| 中国东部 2 | Linux | 2 | 8 | 50 |
+| 中国北部 2 | Linux | 2 | 8 | 50 |
 
 <!--CORRECT ON China East/North 2 for Linux container-->
 <!--Not Available on | China East 2, China North 2 | Windows | 2 | 3.5 |-->

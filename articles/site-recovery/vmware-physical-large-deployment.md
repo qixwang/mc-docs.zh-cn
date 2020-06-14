@@ -6,14 +6,14 @@ manager: digimobile
 ms.service: site-recovery
 ms.topic: conceptual
 origin.date: 11/14/2019
-ms.date: 02/24/2020
+ms.date: 06/08/2020
 ms.author: v-yeche
-ms.openlocfilehash: 3a0d425517eb8563c66887cb2f824a0d317554c1
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: f7ada98e5dff4fa1a8435dde2b9ce2ba546031d1
+ms.sourcegitcommit: 5ae04a3b8e025986a3a257a6ed251b575dbf60a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292527"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84440560"
 ---
 # <a name="set-up-disaster-recovery-at-scale-for-vmware-vmsphysical-servers"></a>为 VMware VM/物理服务器设置大规模灾难恢复
 
@@ -83,7 +83,7 @@ ms.locfileid: "79292527"
 
 **Task** | **详细信息** | **操作**
 --- | --- | ---
-**检查核心数** | 如果可用配额中的核心数少于故障转移时的目标总数，故障转移将会失败。 | 对于 VMware VM，请检查目标订阅中是否有足够的核心，与部署规划器的核心建议相符。<br/><br/> 对于物理服务器，请检查 Azure 核心数是否符合人工估算结果。<br/><br/> 若要检查配额，请在 Azure 门户中依次单击“订阅”、“用量 + 配额”。  <br/><br/> [详细了解](https://support.azure.cn/support/support-azure/)如何提高配额。
+**检查核心数** | 如果可用配额中的核心数少于故障转移时的目标总数，故障转移将会失败。 | 对于 VMware VM，请检查目标订阅中是否有足够的核心，与部署规划器的核心建议相符。<br/><br/> 对于物理服务器，请检查 Azure 核心数是否符合人工估算结果。<br/><br/> 若要检查配额，请在 Azure 门户中依次单击“订阅”、“用量 + 配额”。 <br/><br/> [详细了解](https://support.azure.cn/support/support-azure/)如何提高配额。
 **检查故障转移限制** | 故障转移次数不得超过 Site Recovery 的故障转移限制。 |  如果故障转移次数超过限制，你可以添加订阅并故障转移到多个订阅，或者提高订阅的配额。 
 
 <!--MOONCAKE: CORRECT ON https://support.azure.cn/zh-cn/support/support-azure/-->
@@ -125,7 +125,7 @@ ms.locfileid: "79292527"
 
 配置服务器容量受启用复制的计算机数目的影响，而不受数据变动率的影响。 若要确定是否需要更多的配置服务器，请参考定义的这些 VM 限制。
 
-**CPU** | **内存** | 缓存磁盘  | **复制的计算机限制**
+**CPU** | **内存** | 缓存磁盘 | **复制的计算机限制**
  --- | --- | --- | ---
 8 个 vCPU<br /> 2 个插槽 * 4 个核心 @ 2.5 GHz | 16 GB | 600 GB | 最多 550 台计算机<br /> 假设每台计算机有 3 个 100 GB 的磁盘。
 
@@ -150,7 +150,7 @@ ms.locfileid: "79292527"
 - 若要确定是否需要更多的服务器，请参考下表。
 - 我们建议添加最高规格的服务器。 
 
-**CPU** | **内存** | 缓存磁盘  | **变动率**
+**CPU** | **内存** | 缓存磁盘 | **变动率**
  --- | --- | --- | --- 
 12 个 vCPU<br /> 2 个插槽 * 6 个核心 @ 2.5 GHz | 24 GB | 1 GB | 每天最大 2 TB
 
@@ -204,7 +204,7 @@ ms.locfileid: "79292527"
 若要运行大规模故障转移，我们建议：
 
 1. 为工作负荷故障转移创建恢复计划。
-    - 每个恢复计划最多可以触发 50 台计算机的故障转移。
+    - 每个恢复计划最多可以触发 100 台计算机的故障转移。
     - [详细了解](recovery-plan-overview.md)恢复计划。
 2. 将 Azure 自动化 Runbook 脚本添加到恢复计划，以将 Azure 上的任何手动任务自动化。 典型的任务包括配置负载均衡器、更新 DNS，等等。 [了解详细信息](site-recovery-runbook-automation.md)
 2. 在故障转移之前，请准备好 Windows 计算机，使之符合 Azure 环境的条件。 符合条件的计算机的[故障转移限制](#plan-azure-subscriptions-and-quotas)更高。 [详细了解](site-recovery-failover-to-azure-troubleshoot.md#failover-failed-with-error-id-170010) Runbook。

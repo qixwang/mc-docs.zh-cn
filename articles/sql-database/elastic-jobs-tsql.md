@@ -11,13 +11,13 @@ ms.author: v-jay
 author: WenJason
 ms.reviewer: sstein
 origin.date: 02/07/2020
-ms.date: 03/16/2020
-ms.openlocfilehash: a8487da8fb69531ebaaeda9f5ff007bf08a75c9d
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 06/15/2020
+ms.openlocfilehash: 67c18f4171e87c82d54bc029d6bef243b30287a6
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79293835"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723272"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>使用 Transact-SQL (T-SQL) 创建和管理弹性数据库作业
 
@@ -436,7 +436,7 @@ EXEC jobs.sp_delete_job @job_name='ResultsPoolsJob'
 #### <a name="syntax"></a>语法  
   
 
-```sql
+```syntaxsql
 [jobs].sp_add_job [ @job_name = ] 'job_name'  
     [ , [ @description = ] 'description' ]   
     [ , [ @enabled = ] enabled ]
@@ -501,7 +501,7 @@ sp_add_job 必须从创建作业代理时指定的作业代理数据库运行。
 
 #### <a name="syntax"></a>语法
 
-```sql
+```syntaxsql
 [jobs].sp_update_job [ @job_name = ] 'job_name'  
     [ , [ @new_name = ] 'new_name' ]
     [ , [ @description = ] 'description' ]   
@@ -597,7 +597,7 @@ sp_add_job 必须从创建作业代理时指定的作业代理数据库运行。
 #### <a name="syntax"></a>语法
 
 
-```sql
+```syntaxsql
 [jobs].sp_add_jobstep [ @job_name = ] 'job_name'   
      [ , [ @step_id = ] step_id ]   
      [ , [ @step_name = ] step_name ]   
@@ -722,7 +722,7 @@ sp_add_job 必须从创建作业代理时指定的作业代理数据库运行。
 
 #### <a name="syntax"></a>语法
 
-```sql
+```syntaxsql
 [jobs].sp_update_jobstep [ @job_name = ] 'job_name'   
      [ , [ @step_id = ] step_id ]   
      [ , [ @step_name = ] 'step_name' ]   
@@ -848,7 +848,7 @@ sp_add_job 必须从创建作业代理时指定的作业代理数据库运行。
 #### <a name="syntax"></a>语法
 
 
-```sql
+```syntaxsql
 [jobs].sp_delete_jobstep [ @job_name = ] 'job_name'   
      [ , [ @step_id = ] step_id ]
      [ , [ @step_name = ] 'step_name' ]   
@@ -894,7 +894,7 @@ sp_add_job 必须从创建作业代理时指定的作业代理数据库运行。
 #### <a name="syntax"></a>语法
 
 
-```sql
+```syntaxsql
 [jobs].sp_start_job [ @job_name = ] 'job_name'   
      [ , [ @job_execution_id = ] job_execution_id OUTPUT ]   
 ```
@@ -925,7 +925,7 @@ sp_add_job 必须从创建作业代理时指定的作业代理数据库运行。
 #### <a name="syntax"></a>语法
 
 
-```sql
+```syntaxsql
 [jobs].sp_stop_job [ @job_execution_id = ] ' job_execution_id '
 ```
 
@@ -954,7 +954,7 @@ sp_add_job 必须从创建作业代理时指定的作业代理数据库运行。
 #### <a name="syntax"></a>语法
 
 
-```sql
+```syntaxsql
 [jobs].sp_add_target_group [ @target_group_name = ] 'target_group_name'   
      [ , [ @target_group_id = ] target_group_id OUTPUT ]
 ```
@@ -985,7 +985,7 @@ sp_add_job 必须从创建作业代理时指定的作业代理数据库运行。
 #### <a name="syntax"></a>语法
 
 
-```sql
+```syntaxsql
 [jobs].sp_delete_target_group [ @target_group_name = ] 'target_group_name'
 ```
 
@@ -1012,7 +1012,7 @@ sp_add_job 必须从创建作业代理时指定的作业代理数据库运行。
 
 #### <a name="syntax"></a>语法
 
-```sql
+```syntaxsql
 [jobs].sp_add_target_group_member [ @target_group_name = ] 'target_group_name'
          [ @membership_type = ] 'membership_type' ]   
         [ , [ @target_type = ] 'target_type' ]   
@@ -1102,7 +1102,7 @@ GO
 #### <a name="syntax"></a>语法
 
 
-```sql
+```syntaxsql
 [jobs].sp_delete_target_group_member [ @target_group_name = ] 'target_group_name'
         [ , [ @target_id = ] 'target_id']
 ```
@@ -1153,7 +1153,7 @@ GO
 #### <a name="syntax"></a>语法
 
 
-```sql
+```syntaxsql
 [jobs].sp_purge_jobhistory [ @job_name = ] 'job_name'   
       [ , [ @job_id = ] job_id ]
       [ , [ @oldest_date = ] oldest_date []

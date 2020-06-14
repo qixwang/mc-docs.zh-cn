@@ -1,27 +1,25 @@
 ---
 title: 在 Azure Monitor 中通过 CollectD 收集数据 | Azure Docs
 description: CollectD 是一个开源 Linux 守护程序，它定期从应用程序级和系统级信息中收集数据。  本文介绍了如何在 Azure Monitor 中通过 CollectD 收集数据。
-author: lingliw
-manager: digimobile
+origin.date: 11/27/2018
 ms.subservice: logs
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-origin.date: 11/27/2018
-ms.date: 04/12/2019
-ms.author: v-lingwu
-ms.openlocfilehash: 100a30fe1e57b671abc19253acfde6c758f938a6
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+author: Johnnytechn
+ms.author: v-johya
+ms.date: 05/28/2020
+ms.openlocfilehash: 8ee8704c422b868097ae3040599cc9652d2a4d12
+ms.sourcegitcommit: 5ae04a3b8e025986a3a257a6ed251b575dbf60a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79452282"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84440609"
 ---
 # <a name="collect-data-from-collectd-on-linux-agents-in-azure-monitor"></a>Azure Monitor 中的 Linux 代理上通过 CollectD 收集数据
 [CollectD](https://collectd.org/) 是一个开源 Linux 守护程序，它定期从应用程序级和系统级信息中收集性能指标。 示例应用程序包括 Java 虚拟机 (JVM)、MySQL Server 和 Nginx。 本文介绍了如何在 Azure Monitor 中通过 CollectD 收集性能数据。
 
 可以在[插件表](https://collectd.org/wiki/index.php/Table_of_Plugins)中找到可用插件的完整列表。
 
-![CollectD 概述](media/data-sources-collectd/overview.png)
+![CollectD 概述](./media/data-sources-collectd/overview.png)
 
 Log Analytics Linux 代理中包括了以下 CollectD 配置，用以将 CollectD 数据路由到 Log Analytics Linux 代理。
 
@@ -65,6 +63,8 @@ CollectD 配置使用默认的 `write_http` 插件通过端口 26000 将性能�
       type filter_collectd
     </filter>
 
+> [!NOTE]
+> 默认情况下，CollectD 设置为以 10 秒的[间隔](https://collectd.org/wiki/index.php/Interval)读取值。 由于这会直接影响发送到 Azure Monitor 日志的数据量，因此你可能需要在 CollectD 配置中调整此时间间隔，以便在监视要求与 Azure Monitor 日志的相关成本和使用量之间取得良好的平衡。
 
 ## <a name="versions-supported"></a>支持的版本
 - Azure Monitor 当前支持 CollectD 4.8 版及更高版本。
@@ -101,7 +101,8 @@ CollectD 配置使用默认的 `write_http` 插件通过端口 26000 将性能�
 
 3. 使用以下命令重新启动 CollectD 和 Log Analytics Linux 代理。
 
-    sudo service collectd restart  sudo /opt/microsoft/omsagent/bin/service_control restart
+        sudo service collectd restart
+        sudo /opt/microsoft/omsagent/bin/service_control restart
 
 ## <a name="collectd-metrics-to-azure-monitor-schema-conversion"></a>CollectD 指标到 Azure Monitor 架构的转换
 为了在 Log Analytics Linux 代理已收集的基础结构指标与 CollectD 收集的新指标之间维护一个熟悉的模型，将使用以下架构映射：
@@ -110,9 +111,9 @@ CollectD 配置使用默认的 `write_http` 插件通过端口 26000 将性能�
 |:--|:--|
 | `host` | Computer |
 | `plugin` | 无 |
-| `plugin_instance` | Instance Name<br>如果 **plugin_instance** 为 null  ，则 InstanceName="_Total"  |
+| `plugin_instance` | Instance Name<br>如果 **plugin_instance** 为 null，则 InstanceName="_Total" |
 | `type` | ObjectName |
-| `type_instance` | CounterName<br>如果 **type_instance** 为 null  ，则 CounterName=**空白** |
+| `type_instance` | CounterName<br>如果 **type_instance** 为 null，则 CounterName=**空白** |
 | `dsnames[]` | CounterName |
 | `dstypes` | 无 |
 | `values[]` | CounterValue |
@@ -120,6 +121,4 @@ CollectD 配置使用默认的 `write_http` 插件通过端口 26000 将性能�
 ## <a name="next-steps"></a>后续步骤
 * 了解[日志查询](../log-query/log-query-overview.md)以便分析从数据源和解决方案中收集的数据。 
 * 使用[自定义字段](custom-fields.md)将来自 syslog 记录的数据解析为单个字段。
-
-
 

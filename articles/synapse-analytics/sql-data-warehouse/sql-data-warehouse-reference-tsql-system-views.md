@@ -1,6 +1,6 @@
 ---
 title: 系统视图
-description: 指向 Synapse SQL 池支持的系统视图文档的链接。
+description: 有关 Synapse SQL 池中支持的系统视图的文档链接。
 services: synapse-analytics
 author: WenJason
 manager: digimobile
@@ -8,20 +8,20 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: ''
 origin.date: 01/06/2020
-ms.date: 05/11/2020
+ms.date: 06/15/2020
 ms.author: v-jay
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 696b978f90c3aba0e5afabf1c2e6152d36f887ab
-ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
+ms.openlocfilehash: 268c3dff5f7c6764adc6b12196e617b15070f763
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82198771"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723697"
 ---
 # <a name="system-views-supported-in-synapse-sql-pool"></a>Synapse SQL 池中支持的系统视图
 
-指向 Synapse SQL 池支持的 T-SQL 语句文档的链接。
+有关 Synapse SQL 池中支持的 T-SQL 语句的文档链接。
 
 ## <a name="synapse-sql-pool-catalog-views"></a>Synapse SQL 池目录视图
 
@@ -46,8 +46,9 @@ ms.locfileid: "82198771"
 * [sys.pdw_table_mappings](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-pdw-table-mappings-transact-sql?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [sys.workload_management_workload_classifier_details](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifier-details-transact-sql?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [sys.workload_management_workload_classifiers](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifiers-transact-sql?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+* [sys.workload_management_workload_groups](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-workload-management-workload-groups-transact-sql?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
-## <a name="sql-data-warehouse-dynamic-management-views-dmvs"></a>SQL 数据仓库动态管理视图 (DMV)
+## <a name="synapse-sql-pool-dynamic-management-views-dmvs"></a>Synapse SQL 池动态管理视图 (DMV)
 
 * [sys.dm_pdw_dms_cores](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-dms-cores-transact-sql?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [sys.dm_pdw_dms_external_work](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-dms-external-work-transact-sql?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
@@ -71,7 +72,7 @@ ms.locfileid: "82198771"
 
 ## <a name="sql-server-dmvs-applicable-to-synapse-sql-pool"></a>适用于 Synapse SQL 池的 SQL Server DMV
 
-以下 DMV 适用于 Synapse SQL 池，但必须在连接到 master  数据库后才能执行。
+以下 DMV 适用于 Synapse SQL 池，但必须在连接到 master 数据库后才能执行。
 
 * [sys.database_service_objectives](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [sys.dm_operation_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
@@ -153,7 +154,7 @@ ms.locfileid: "82198771"
 
 ## <a name="sql-server-dmvs-available-in-sql-pool"></a>SQL 池中提供的 SQL Server DMV
 
-SQL 池公开了许多 SQL Server 动态管理视图 (DMV)。 在 SQL 池中查询这些视图时，它们会报告分布区上运行的 SQL 数据库的状态。
+SQL 池公开了许多 SQL Server 动态管理视图 (DMV)。 在 SQL 池中查询这些视图时，它们将报告分布区上运行的 SQL 数据库的状态。
 
 Synapse SQL 池和并行数据仓库 (PDW) 使用相同的系统视图。 每个 DMV 都有名为 pdw_node_id（它是计算节点的标识符）的列。
 
@@ -224,7 +225,7 @@ Synapse SQL 池和并行数据仓库 (PDW) 使用相同的系统视图。 每个
 
 ## <a name="sql-server-2016-polybase-dmvs-available-in-sql-pool"></a>SQL 池中提供的 SQL Server 2016 PolyBase DMV
 
-以下 DMV 适用于 SQL 池，但必须在连接到 master  数据库后才能执行。
+以下 DMV 适用于 SQL 池，但必须在连接到 master 数据库后才能执行。
 
 * [sys.dm_exec_compute_node_errors](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-compute-node-errors-transact-sql?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [sys.dm_exec_compute_node_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-compute-node-status-transact-sql?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
@@ -240,7 +241,7 @@ Synapse SQL 池和并行数据仓库 (PDW) 使用相同的系统视图。 每个
 ## <a name="sql-server-information_schema-views"></a>SQL Server INFORMATION_SCHEMA 视图
 
 * [CHECK_CONSTRAINTS](https://docs.microsoft.com/sql/relational-databases/system-information-schema-views/check-constraints-transact-sql?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
-* [列](https://docs.microsoft.com/sql/relational-databases/system-information-schema-views/columns-transact-sql?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+* [COLUMNS](https://docs.microsoft.com/sql/relational-databases/system-information-schema-views/columns-transact-sql?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [PARAMETERS](https://docs.microsoft.com/sql/relational-databases/system-information-schema-views/parameters-transact-sql?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [ROUTINES](https://docs.microsoft.com/sql/relational-databases/system-information-schema-views/routines-transact-sql?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [SCHEMATA](https://docs.microsoft.com/sql/relational-databases/system-information-schema-views/schemata-transact-sql?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
@@ -251,4 +252,4 @@ Synapse SQL 池和并行数据仓库 (PDW) 使用相同的系统视图。 每个
 
 ## <a name="next-steps"></a>后续步骤
 
-有关更多参考信息，请参阅 [Synapse SQL 池中的 T-SQL 语句](sql-data-warehouse-reference-tsql-statements.md)和 [Synapse SQL 池中的 T-SQL 语言元素](sql-data-warehouse-reference-tsql-language-elements.md)。
+有关更多参考信息，请参阅 [Synapse SQL 池中的 T-SQL 语句](sql-data-warehouse-reference-tsql-statements.md)以及 [Synapse SQL 池中的 T-SQL 语言元素](sql-data-warehouse-reference-tsql-language-elements.md)。

@@ -1,28 +1,20 @@
 ---
-title: 教程：使用 Azure CLI 在 Linux 上创建虚拟机规模集和部署高度可用的应用
+title: 教程：创建 Linux 虚拟机规模集
 description: 了解如何通过 Azure CLI 使用虚拟机规模集在 Linux VM 上创建和部署高度可用的应用程序
-services: virtual-machine-scale-sets
-documentationcenter: ''
-author: rockboyfor
-manager: digimobile
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: virtual-machine-scale-sets
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: na
-ms.devlang: azurecli
+author: Johnnytechn
+ms.author: v-johya
 ms.topic: tutorial
-origin.date: 06/01/2018
-ms.date: 02/10/2020
-ms.author: v-yeche
-ms.custom: mvc
-ms.openlocfilehash: 2e7cb81a81e5438319aeb0bec234a1459954b41a
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.service: virtual-machine-scale-sets
+ms.subservice: linux
+ms.date: 06/05/2020
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: 3edf0342ae349e61bafcd5f7710d0ff80cb7d6af
+ms.sourcegitcommit: 285649db9b21169f3136729c041e4d04d323229a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79293036"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84684032"
 ---
 # <a name="tutorial-create-a-virtual-machine-scale-set-and-deploy-a-highly-available-app-on-linux-with-the-azure-cli"></a>教程：使用 Azure CLI 在 Linux 上创建虚拟机规模集和部署高度可用的应用
 
@@ -46,6 +38,7 @@ ms.locfileid: "79293036"
 可以根据需要在规模集中创建 VM。 定义自动缩放规则，以控制如何以及何时在规模集中添加或删除 VM。 这些规则基于 CPU 负载、内存用量或网络流量等指标触发。
 
 使用 Azure 平台映像时，规模集最多支持 1,000 个 VM。 对于有重要安装或 VM 自定义要求的工作负荷，可能需要[创建自定义 VM 映像](tutorial-custom-images.md)。 使用自定义映像时，在规模集中最多可以创建 300 个 VM。
+
 
 ## <a name="create-an-app-to-scale"></a>创建用于缩放的应用
 对于生产用途，可能需要[创建自定义 VM 映像](tutorial-custom-images.md)，其中包含已安装和配置的应用程序。 在本教程中，我们会在首次启动时自定义 VM，以便快速了解规模集的运作方式。
@@ -98,6 +91,7 @@ runcmd:
   - nodejs index.js
 ```
 
+
 ## <a name="create-a-scale-set"></a>创建规模集
 使用 [az group create](https://docs.azure.cn/cli/group?view=azure-cli-latest#az-group-create) 创建资源组，才能创建规模集。 以下示例在“chinaeast”位置创建名为“myResourceGroupScaleSet”的资源组：
 
@@ -119,6 +113,7 @@ az vmss create \
 ```
 
 创建和配置所有的规模集资源和 VM 需要几分钟时间。 在 Azure CLI 向你返回提示之后，仍然存在继续运行的后台任务。 可能还需等待几分钟才能访问应用。
+
 
 ## <a name="allow-web-traffic"></a>允许 Web 流量
 已自动创建一个负载均衡器，作为虚拟机规模集的一部分。 负载均衡器使用负载均衡器规则将流量分配到一组定义的 VM。 可以在下一篇教程[如何对 Azure 中的虚拟机进行负载均衡](tutorial-load-balancer.md)中详细了解负载均衡器的概念和配置。
@@ -154,6 +149,7 @@ az network public-ip show \
 
 若要查看规模集的运作方式，可以强制刷新 Web 浏览器，以查看负载均衡器如何在运行应用的所有 VM 之间分配流量。
 
+
 ## <a name="management-tasks"></a>管理任务
 在规模集的整个生命周期内，可能需要运行一个或多个管理任务。 此外，可能还需要创建自动执行各种生命周期任务的脚本。 Azure CLI 提供一种用于执行这些任务的快速方法。 以下是一些常见任务。
 
@@ -175,6 +171,7 @@ az vmss list-instances \
            1  True                  chinaeast      myScaleSet_1  Succeeded            MYRESOURCEGROUPSCALESET  c72ddc34-6c41-4a53-b89e-dd24f27b30ab
            3  True                  chinaeast      myScaleSet_3  Succeeded            MYRESOURCEGROUPSCALESET  44266022-65c3-49c5-92dd-88ffa64f95da
 ```
+
 
 ### <a name="manually-increase-or-decrease-vm-instances"></a>手动增加或减少 VM 实例
 若要查看规模集中当前包含的实例数，请使用 [az vmss show](https://docs.azure.cn/cli/vmss?view=azure-cli-latest#az-vmss-show) 并查询 sku.capacity  ：
@@ -204,6 +201,7 @@ az vmss list-instance-connection-info \
     --resource-group myResourceGroupScaleSet \
     --name myScaleSet
 ```
+
 
 ## <a name="use-data-disks-with-scale-sets"></a>将数据磁盘与规模集配合使用
 可以创建数据磁盘并与规模集配合使用。 前面的教程介绍了如何[管理 Azure 磁盘](tutorial-manage-disks.md)，其中概述了在数据磁盘而非 OS 磁盘上生成应用的最佳做法和性能改进。
@@ -245,6 +243,7 @@ az vmss disk detach \
     --name myScaleSet \
     --lun 2
 ```
+
 
 ## <a name="next-steps"></a>后续步骤
 在本教程中，已创建虚拟机规模集。 你已了解如何执行以下操作：

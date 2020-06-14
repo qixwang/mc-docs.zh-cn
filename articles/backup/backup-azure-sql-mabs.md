@@ -2,16 +2,16 @@
 title: 使用 Azure 备份服务器备份 SQL Server
 description: 本文介绍使用 Microsoft Azure 备份服务器 (MABS) 备份 SQL Server 数据库所需的配置。
 ms.topic: conceptual
-author: lingliw
+author: Johnnytechn
 origin.date: 03/24/2017
-ms.date: 03/06/2020
-ms.author: v-lingwu
-ms.openlocfilehash: 6091f674a1e68f5e6ad51dfde36490698f9ae82a
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 06/09/2020
+ms.author: v-johya
+ms.openlocfilehash: 56430fe892ac750ce73951fde727a34380857b9d
+ms.sourcegitcommit: 285649db9b21169f3136729c041e4d04d323229a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78850256"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84683984"
 ---
 # <a name="back-up-sql-server-to-azure-by-using-azure-backup-server"></a>使用 Azure 备份服务器将 SQL Server 备份到 Azure
 
@@ -27,7 +27,7 @@ ms.locfileid: "78850256"
 
 在开始之前，请确保[已安装并准备好 Azure 备份服务器](backup-azure-microsoft-azure-backup.md)。
 
-## <a name="create-a-backup-policy"></a>创建备份策略 
+## <a name="create-a-backup-policy"></a>创建备份策略
 
 若要在 Azure 中保护 SQL Server 数据库，请先创建一个备份策略：
 
@@ -90,7 +90,6 @@ ms.locfileid: "78850256"
     > 使用 Data Protection Manager (DPM) 将 Azure 备份安排在本地磁盘备份完成之后进行。 如果遵循此做法，最新的磁盘备份将复制到 Azure。
     >
 
-
 1. 选择保留策略计划。 有关保留策略工作原理的详细信息，请参阅[使用 Azure 备份来取代磁带基础结构](backup-azure-backup-cloud-as-tape.md)。
 
     ![在 MABS 中选择保留策略](./media/backup-azure-backup-sql/pg-retentionschedule.png)
@@ -125,7 +124,7 @@ ms.locfileid: "78850256"
 1. 在下拉菜单中选择“在线保护”。  然后选择“确定”开始在 Azure 中创建恢复点。 
 
     ![开始在 Azure 中创建恢复点](./media/backup-azure-backup-sql/sqlbackup-azure.png)
-1. 可以在“监视”工作区中查看作业进度。  
+1. 可以在“监视”工作区中查看作业进度。 
 
     ![在监视控制台中查看作业进度](./media/backup-azure-backup-sql/sqlbackup-monitoring.png)
 
@@ -156,3 +155,4 @@ ms.locfileid: "78850256"
 ### <a name="next-steps"></a>后续步骤
 
 有关详细信息，请参阅 [Azure 备份常见问题解答](backup-azure-backup-faq.md)。
+

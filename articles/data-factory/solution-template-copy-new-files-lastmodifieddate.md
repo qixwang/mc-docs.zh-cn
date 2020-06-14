@@ -11,16 +11,17 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 origin.date: 3/8/2019
-ms.date: 05/11/2020
-ms.openlocfilehash: 0d88d7dd34526a5e2dcb160437c57a9189b23ef1
-ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
+ms.date: 06/15/2020
+ms.openlocfilehash: fe5c27ca89697948d4e29dbe7c15ae0879345292
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82198007"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723644"
 ---
 # <a name="copy-new-and-changed-files-by-lastmodifieddate-with-azure-data-factory"></a>使用 Azure 数据工厂根据 LastModifiedDate 复制新的和已更改的文件
-[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 本文介绍一个解决方案模板。使用该模板可以根据 LastModifiedDate，仅将新的和已更改的文件从基于文件的存储复制到目标存储。 
 

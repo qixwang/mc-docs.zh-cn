@@ -5,15 +5,15 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: sample
-origin.date: 12/05/2019
-ms.date: 01/20/2020
+origin.date: 05/01/2020
+ms.date: 06/15/2020
 ms.author: v-yeche
-ms.openlocfilehash: ff491775b1846ec38df1f4d6e641a36be9a492ef
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 80c8a151f01b44ad853b7b89d901b8e2d68cae31
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "76270101"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723729"
 ---
 # <a name="update-rus-for-a-keyspace-or-table-for-azure-cosmos-db---cassandra-api"></a>更新 Azure Cosmos DB 的密钥空间或表的 RU/秒 - Cassandra API
 
@@ -24,36 +24,41 @@ ms.locfileid: "76270101"
 ## <a name="sample-script"></a>示例脚本
 
 ```powershell
-# Update RU for an Azure Cosmos Cassandra API keyspace or table
+# Reference: Az.CosmosDB | https://docs.microsoft.com/powershell/module/az.cosmosdb
+# --------------------------------------------------
+# Purpose
+# Update table throughput
+# --------------------------------------------------
+# Variables - ***** SUBSTITUTE YOUR VALUES *****
+$resourceGroupName = "myResourceGroup" # Resource Group must already exist
+$accountName = "myaccount" # Must be all lower case
+$keyspaceName = "mykeyspace"
+$tableName = "mytable"
+$newRUs = 500
+# --------------------------------------------------
+$throughput = Get-AzCosmosDBCassandraTableThroughput -ResourceGroupName $resourceGroupName `
+    -AccountName $accountName -KeyspaceName $keyspaceName -Name $tableName
 
-$apiVersion = "2015-04-08"
-$resourceGroupName = "myResourceGroup"
-$accountName = "mycosmosaccount"
-$keyspaceName = "keyspace1"
-$tableName = "table1"
-$keyspaceThroughputResourceName = $accountName + "/cassandra/" + $keyspaceName + "/throughput"
-$keyspaceThroughputResourceType = "Microsoft.DocumentDb/databaseAccounts/apis/keyspaces/settings"
-$tableThroughputResourceName = $accountName + "/cassandra/" + $keyspaceName + "/" + $tableName + "/throughput"
-$tableThroughputResourceType = "Microsoft.DocumentDb/databaseAccounts/apis/keyspaces/tables/settings"
-$throughput = 500
-$updateResource = "keyspace" # or "table"
+$currentRUs = $throughput.Throughput
+$minimumRUs = $throughput.MinimumThroughput
 
-$properties = @{
-    "resource"=@{"throughput"=$throughput}
+Write-Host "Current throughput is $currentRUs. Minimum allowed throughput is $minimumRUs."
+
+if ([int]$newRUs -lt [int]$minimumRUs) {
+    Write-Host "Requested new throughput of $newRUs is less than minimum allowed throughput of $minimumRUs."
+    Write-Host "Using minimum allowed throughput of $minimumRUs instead."
+    $newRUs = $minimumRUs
 }
 
-if($updateResource -eq "keyspace"){
-    Set-AzResource -ResourceType $keyspaceThroughputResourceType `
-    -ApiVersion $apiVersion -ResourceGroupName $resourceGroupName `
-    -Name $keyspaceThroughputResourceName -PropertyObject $properties
-}
-elseif($updateResource -eq "table"){
-Set-AzResource -ResourceType $tableThroughputResourceType `
-    -ApiVersion $apiVersion -ResourceGroupName $resourceGroupName `
-    -Name $tableThroughputResourceName -PropertyObject $tableProperties
+if ([int]$newRUs -eq [int]$currentRUs) {
+    Write-Host "New throughput is the same as current throughput. No change needed."
 }
 else {
-    Write-Host("Must select keyspace or table")    
+    Write-Host "Updating throughput to $newRUs."
+
+    Update-AzCosmosDBCassandraTableThroughput -ResourceGroupName $resourceGroupName `
+        -AccountName $accountName -KeyspaceName $keyspaceName `
+        -Name $tableName -Throughput $newRUs
 }
 
 ```
@@ -72,8 +77,9 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 
 | Command | 说明 |
 |---|---|
-|**Azure 资源**| |
-| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | 创建资源。 |
+|**Azure Cosmos DB**| |
+| [Get-AzCosmosDBCassandraTableThroughput](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbcassandratablethroughput) | 获取 Cassandra API 表的吞吐量值。 |
+| [Update-AzCosmosDBCassandraTableThroughput](https://docs.microsoft.com/powershell/module/az.cosmosdb/update-azcosmosdbcassandratablethroughput) | 更新 Cassandra API 表的吞吐量值。 |
 |**Azure 资源组**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | 删除资源组，包括所有嵌套的资源。 |
 |||
@@ -84,4 +90,4 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 
 可以在 [Azure Cosmos DB PowerShell 脚本](../../../powershell-samples.md)中找到其他 Azure Cosmos DB PowerShell 脚本示例。
 
-<!--Update_Description: update meta properties -->
+<!-- Update_Description: update meta properties, wording update, update link -->

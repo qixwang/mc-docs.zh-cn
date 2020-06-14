@@ -6,13 +6,13 @@ ms.author: v-jay
 ms.service: postgresql
 ms.topic: conceptual
 origin.date: 01/28/2020
-ms.date: 02/10/2020
-ms.openlocfilehash: 1813254adc60bc52f825279b8be0d517fba1f787
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 06/08/2020
+ms.openlocfilehash: 9034a569cefd9d981a5394738462490ce9edea72
+ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77068370"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84275548"
 ---
 # <a name="audit-logging-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL（单一服务器）中的审核日志记录
 
@@ -27,14 +27,14 @@ Azure Database for PostgreSQL（单一服务器）中数据库活动的审核日
 ## <a name="usage-considerations"></a>使用注意事项
 默认情况下，使用 Postgres 的标准日志记录设备将 pgAudit 日志语句与常规日志语句一起发出。 在 Azure Database for PostgreSQL 中，这些 .log 文件可以通过 Azure 门户或 CLI 下载。 文件集合的最大存储为 1 GB，每个文件的可用时间最长为七天（默认为三天）。 此服务是一个短期存储选项。
 
-也可将所有日志配置为发出到 Azure Monitor 的诊断日志服务。 如果启用 Azure Monitor 诊断日志记录，系统会将日志（以 JSON 格式）自动发送到 Azure 存储、事件中心和/或 Azure Monitor 日志，具体取决于你的选择。
+也可将所有日志配置为发送到 Azure Monitor 日志存储后在 Log Analytics 中进行分析。 如果启用 Azure Monitor 资源日志记录，系统会将日志（以 JSON 格式）自动发送到 Azure 存储、事件中心和/或 Azure Monitor 日志，具体取决于你的选择。
 
-启用 pgAudit 会在服务器上生成大量日志记录，影响性能和日志存储。 建议使用 Azure 诊断日志服务，该服务提供较长期的存储选项以及分析和警报功能。 建议关闭标准日志记录，降低额外的日志记录带来的性能影响：
+启用 pgAudit 会在服务器上生成大量日志记录，影响性能和日志存储。 建议使用 Azure Monitor 日志，它提供较长期的存储选项以及分析和警报功能。 建议关闭标准日志记录，降低额外的日志记录带来的性能影响：
 
    1. 将参数 `logging_collector` 设置为 OFF。 
    2. 重启服务器以应用该更改。
 
-若要了解如何设置将数据记录到 Azure 存储、事件中心或 Azure Monitor 日志的功能，请访问[服务器日志文章](concepts-server-logs.md)的诊断日志部分。
+若要了解如何设置将日志记录到 Azure 存储、事件中心或 Azure Monitor 日志的功能，请访问[服务器日志文章](concepts-server-logs.md)的资源日志部分。
 
 ## <a name="installing-pgaudit"></a>安装 pgAudit
 
@@ -43,7 +43,7 @@ Azure Database for PostgreSQL（单一服务器）中数据库活动的审核日
 使用 [Azure 门户](https://portal.azure.cn)：
 
    1. 选择你的 Azure Database for PostgreSQL 服务器。
-   2. 在侧栏中选择“服务器参数”。 
+   2. 在侧栏中选择“服务器参数”。
    3. 搜索 `shared_preload_libraries` 参数。
    4. 选择 **pgaudit**。
    5. 重启服务器以应用更改。
@@ -89,7 +89,7 @@ t=%m u=%u db=%d pid=[%p]:
 ## <a name="viewing-audit-logs"></a>查看审核日志
 如果使用的是 .log 文件，则审核日志将与 PostgreSQL 错误日志包含在同一文件中。 可以从 Azure [门户](howto-configure-server-logs-in-portal.md)或 [CLI](howto-configure-server-logs-using-cli.md) 下载日志文件。 
 
-如果使用的是 Azure 诊断日志记录，则访问日志的方式取决于所选的终结点。 有关 Azure 存储，请参阅[日志存储帐户](../azure-monitor/platform/resource-logs-collect-storage.md)一文。 有关事件中心，请参阅[流式传输 Azure 日志](../azure-monitor/platform/resource-logs-stream-event-hubs.md)一文。
+如果使用的是 Azure 资源日志记录，则访问日志的方式取决于所选的终结点。 有关 Azure 存储，请参阅[日志存储帐户](../azure-monitor/platform/resource-logs-collect-storage.md)一文。 有关事件中心，请参阅[流式传输 Azure 日志](../azure-monitor/platform/resource-logs-stream-event-hubs.md)一文。
 
 Azure Monitor 日志将发送到所选的工作区。 Postgres 日志使用 **AzureDiagnostics** 收集模式，因此可以从 AzureDiagnostics 表查询它们。 下面描述了该表中的字段。 在 [Azure Monitor 日志查询](../azure-monitor/log-query/log-query-overview.md)概述中详细了解查询和警报。
 

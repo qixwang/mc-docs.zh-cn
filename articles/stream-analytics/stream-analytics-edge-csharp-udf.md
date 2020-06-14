@@ -10,12 +10,12 @@ ms.service: stream-analytics
 ms.topic: tutorial
 origin.date: 12/06/2018
 ms.date: 08/06/2019
-ms.openlocfilehash: 826d4039fc53490c84af1bc47b3b7bfabff44733
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 4e5a953e1999fc4829bf724dcc52a3acafdfd3c4
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78155051"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723761"
 ---
 # <a name="tutorial-write-a-c-user-defined-function-for-azure-stream-analytics-job-preview"></a>教程：为 Azure 流分析作业编写 C# 用户定义函数（预览）
 
@@ -33,7 +33,7 @@ ms.locfileid: "78155051"
 在开始之前，请确保已完成以下先决条件：
 
 * 如果没有 Azure 订阅，请创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
-* 安装[适用于 Visual Studio 的流分析工具](stream-analytics-tools-for-visual-studio-install.md)以及“Azure 开发”或“数据存储或处理”工作负荷   。
+* 安装[适用于 Visual Studio 的流分析工具](stream-analytics-tools-for-visual-studio-install.md)以及“Azure 开发”或“数据存储或处理”工作负荷 。
 * 浏览现有的[流分析 Edge 开发指南](stream-analytics-tools-for-visual-studio-edge-jobs.md)。
 
 ## <a name="create-a-container-in-your-azure-storage-account"></a>在 Azure 存储帐户中创建容器
@@ -44,23 +44,23 @@ ms.locfileid: "78155051"
 
 1. 启动 Visual Studio。
 
-2. 选择“文件”>“新建”>“项目”  。
+2. 选择“文件”>“新建”>“项目”。
 
-3. 在左侧的模板列表中，选择“流分析”，然后选择“Azure 流分析 Edge 应用程序”或“Azure 流分析应用程序”    。
+3. 在左侧的模板列表中，选择“流分析”，然后选择“Azure 流分析 Edge 应用程序”或“Azure 流分析应用程序”  。
 
-4.  输入项目的**名称**、**位置**和**解决方案名称**，然后选择“确定”  。
+4.  输入项目的**名称**、**位置**和**解决方案名称**，然后选择“确定”。
 
     ![在 Visual Studio 中创建 Azure 流分析 Edge 项目](./media/stream-analytics-edge-csharp-udf/stream-analytics-create-edge-app.png)
 
 ## <a name="configure-assembly-package-path"></a>配置程序集包路径
 
-1. 打开 Visual Studio 并导航到“解决方案资源管理器”  。
+1. 打开 Visual Studio 并导航到“解决方案资源管理器”。
 
 2. 双击作业配置文件 `EdgeJobConfig.json`。
 
-3. 展开“用户定义的代码配置”部分，并使用以下建议值填写配置  ：
+3. 展开“用户定义的代码配置”部分，并使用以下建议值填写配置：
 
-   |**设置**|建议的值 |
+   |**设置**|建议的值|
    |-------|---------------|
    |全局存储设置资源|选择当前帐户中的数据源|
    |全局存储设置订阅| <你的订阅>|
@@ -71,9 +71,9 @@ ms.locfileid: "78155051"
 
 
 ## <a name="write-a-c-udf-with-codebehind"></a>使用 CodeBehind 编写 C# UDF
-CodeBehind 文件是与单个 ASA 查询脚本关联的 C# 文件。 Visual Studio 工具会自动压缩 CodeBehind 文件并在提交后将其上传到 Azure 存储帐户。 必须将所有类定义为公共，并且必须将所有对象定义为静态公共   。
+CodeBehind 文件是与单个 ASA 查询脚本关联的 C# 文件。 Visual Studio 工具会自动压缩 CodeBehind 文件并在提交后将其上传到 Azure 存储帐户。 必须将所有类定义为公共，并且必须将所有对象定义为静态公共 。
 
-1. 在“解决方案资源管理器”中，展开 Script.asql 以查找 Script.asaql.cs CodeBehind 文件    。
+1. 在“解决方案资源管理器”中，展开 Script.asql 以查找 Script.asaql.cs CodeBehind 文件  。
 
 2. 将此代码替换为以下示例：
 
@@ -99,7 +99,7 @@ CodeBehind 文件是与单个 ASA 查询脚本关联的 C# 文件。 Visual Stud
 
 ## <a name="implement-the-udf"></a>实现 UDF
 
-1. 在“解决方案资源管理器”中，打开 Script.asaql 文件   。
+1. 在“解决方案资源管理器”中，打开 Script.asaql 文件 。
 
 2. 将现有查询替换为以下内容：
 
@@ -113,19 +113,19 @@ CodeBehind 文件是与单个 ASA 查询脚本关联的 C# 文件。 Visual Stud
 
 1. 下载[温度模拟器示例数据文件](https://raw.githubusercontent.com/Azure/azure-stream-analytics/master/Sample%20Data/TemperatureSampleData.json)。
 
-2. 在“解决方案资源管理器”中，展开“输入”，右键单击 Input.json，然后选择“添加本地输入”     。
+2. 在“解决方案资源管理器”中，展开“输入”，右键单击 Input.json，然后选择“添加本地输入”   。
 
    ![在 Visual Studio 中向流分析作业添加本地输入](./media/stream-analytics-edge-csharp-udf/stream-analytics-add-local-input.png)
 
-3. 为下载的示例数据指定本地输入文件路径，然后单击“保存”  。
+3. 为下载的示例数据指定本地输入文件路径，然后单击“保存”。
 
     ![Visual Studio 中流分析作业的本地输入配置](./media/stream-analytics-edge-csharp-udf/stream-analytics-local-input-config.png)
 
-4. 在脚本编辑器中单击“本地运行”  。 本地运行成功保存输出结果后，按任意键即可以表格形式查看结果。 
+4. 在脚本编辑器中单击“本地运行”。 本地运行成功保存输出结果后，按任意键即可以表格形式查看结果。 
 
     ![使用 Visual Studio 在本地运行 Azure 流分析作业](./media/stream-analytics-edge-csharp-udf/stream-analytics-run-locally.png)
 
-5. 还可选择“打开结果文件夹”，查看 JSON 和 CSV 格式的原始文件  。
+5. 还可选择“打开结果文件夹”，查看 JSON 和 CSV 格式的原始文件。
 
     ![使用 Visual Studio 查看本地 Azure 流分析作业的结果](./media/stream-analytics-edge-csharp-udf/stream-analytics-view-local-results.png)
 
@@ -141,19 +141,11 @@ CodeBehind 文件是与单个 ASA 查询脚本关联的 C# 文件。 Visual Stud
     ![查看流分析用户定义的函数调试结果](./media/stream-analytics-edge-csharp-udf/stream-analytics-udf-debug.png)
 
 ## <a name="publish-your-job-to-azure"></a>将作业发布到 Azure
-在本地测试查询后，选择脚本编辑器中的“提交到 Azure”，将作业发布到 Azure  。
+在本地测试查询后，选择脚本编辑器中的“提交到 Azure”，将作业发布到 Azure。
 
 ![将流分析 Edge 作业从 Visual Studio 中提交到 Azure](./media/stream-analytics-edge-csharp-udf/stream-analytics-udf-submit-job.png)
 
 ## <a name="deploy-to-iot-edge-devices"></a>部署到 IoT Edge 设备
 如果选择构建流分析 Edge 作业，现可将其部署为 IoT Edge 模块。 请按照 [IoT Edge 快速入门](/iot-edge/quickstart)创建 IoT 中心、注册 IoT Edge 设备并在设备上安装和启动 IoT Edge 运行时。 然后按照[部署作业](/iot-edge/tutorial-deploy-stream-analytics#deploy-the-job)教程进行操作，将流分析作业部署为 IoT Edge 模块。 
 
-## <a name="next-steps"></a>后续步骤
-
-在本教程中，你使用 CodeBehind 创建了一个简单的 C# 用户定义函数、将作业发布到了 Azure，并将作业部署到了 Azure 或 IoT Edge 设备。 
-
-若要详细了解对流分析作业使用 C# 用户定义函数的不同方法，请继续阅读此文：
-
-> [!div class="nextstepaction"]
-> [为 Azure 流分析编写 C# 函数](stream-analytics-edge-csharp-udf-methods.md)
 <!--Update_Description: Update meta properties-->

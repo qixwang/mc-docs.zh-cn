@@ -5,15 +5,15 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: sample
-origin.date: 05/18/2019
-ms.date: 01/20/2020
+origin.date: 05/01/2020
+ms.date: 06/15/2020
 ms.author: v-yeche
-ms.openlocfilehash: d9c3b0ad67a1620fbea4c9a72deaa1437dbde3df
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: f6b092392a34af6d6ec7e9f8835348bed537f482
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "76270082"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723620"
 ---
 # <a name="list-and-get-tables-for-azure-cosmos-db---table-api"></a>列出和获取 Azure Cosmos DB 的表 - 表 API
 
@@ -24,27 +24,32 @@ ms.locfileid: "76270082"
 ## <a name="sample-script"></a>示例脚本
 
 ```powershell
-# List and Get operations for Azure Cosmos Table API
+# Reference: Az.CosmosDB | https://docs.microsoft.com/powershell/module/az.cosmosdb
+# --------------------------------------------------
+# Purpose
+# Show list and get operations for Azure Cosmos DB Table API
+# --------------------------------------------------
+# Variables - ***** SUBSTITUTE YOUR VALUES *****
+$resourceGroupName = "myResourceGroup" # Resource Group must already exist
+$accountName = "myaccount" # Must be all lower case
+$tableName = "myTable"
+# --------------------------------------------------
 
-$apiVersion = "2015-04-08"
-$resourceGroupName = "myResourceGroup"
-$accountName = "mycosmosaccount" # must be lower case.
-$tableName = "table1"
-$accountResourceName = $accountName + "/table/"
-$tableResourceName = $accountName + "/table/" + $tableName
-$tableResourceType = "Microsoft.DocumentDb/databaseAccounts/apis/tables"
+Write-Host "List all accounts in a resource group"
+Get-AzCosmosDBAccount -ResourceGroupName $resourceGroupName
 
-Read-Host -Prompt "List all tables in an account. Press Enter to continue"
+Write-Host "Get an account in a resource group"
+Get-AzCosmosDBAccount -ResourceGroupName $resourceGroupName `
+    -Name $accountName
 
-Get-AzResource -ResourceType $tableResourceType `
-    -ApiVersion $apiVersion -ResourceGroupName $resourceGroupName `
-    -Name $accountResourceName  | Select-Object Properties
+Write-Host "List all tables in an account"
+Get-AzCosmosDBTable -ResourceGroupName $resourceGroupName `
+    -AccountName $accountName
 
-Read-Host -Prompt "Get a table in an account. Press Enter to continue"
+Write-Host "Get a table in an account including throughput"
+Get-AzCosmosDBTable -ResourceGroupName $resourceGroupName `
+    -AccountName $accountName -Name $tableName
 
-Get-AzResource -ResourceType $tableResourceType `
-    -ApiVersion $apiVersion -ResourceGroupName $resourceGroupName `
-    -Name $tableResourceName | Select-Object Properties
 ```
 
 ## <a name="clean-up-deployment"></a>清理部署
@@ -61,8 +66,9 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 
 | Command | 说明 |
 |---|---|
-|**Azure 资源**| |
-| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | 创建资源。 |
+|**Azure Cosmos DB**| |
+| [Get-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbaccount) | 列出 Cosmos DB 帐户或获取指定的 Cosmos DB 帐户。 |
+| [Get-AzCosmosDBTable](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbtable) | 列出帐户中的表 API 表，或在帐户中获取指定的表 API 表。 |
 |**Azure 资源组**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | 删除资源组，包括所有嵌套的资源。 |
 |||
@@ -73,4 +79,4 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 
 可以在 [Azure Cosmos DB PowerShell 脚本](../../../powershell-samples.md)中找到其他 Azure Cosmos DB PowerShell 脚本示例。
 
-<!--Update_Description: wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

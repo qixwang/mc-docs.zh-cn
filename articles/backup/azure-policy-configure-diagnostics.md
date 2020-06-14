@@ -3,20 +3,20 @@ title: 大规模配置保管库诊断设置
 description: 使用 Azure Policy 为给定范围内的所有保管库配置 Log Analytics 诊断设置
 ms.topic: conceptual
 author: Johnnytechn
-ms.date: 05/15/2020
+ms.date: 06/09/2020
 ms.author: v-johya
-ms.openlocfilehash: efe10ca6b58056d79be6651e16fdc5994b95d489
-ms.sourcegitcommit: 08b42258a48d96d754244064d065e4d5703f1cfb
+ms.openlocfilehash: 42a675f26c2085287b27de37df551c13c1c8b4cb
+ms.sourcegitcommit: 285649db9b21169f3136729c041e4d04d323229a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/18/2020
-ms.locfileid: "83445243"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84683997"
 ---
 # <a name="configure-vault-diagnostics-settings-at-scale"></a>大规模配置保管库诊断设置
 
 Azure 备份提供的报告解决方案利用了 Log Analytics (LA)。 为了将任何给定保管库的数据发送到 LA，需要为该保管库创建[诊断设置](/backup/backup-azure-diagnostic-events)。
 
-通常，为每个保管库手动添加诊断设置是一项繁琐的任务。 此外，创建的任何新保管库也需要启用诊断设置才能查看此保管库的报表。 
+通常，为每个保管库手动添加诊断设置是一项繁琐的任务。 此外，创建的任何新保管库也需要启用诊断设置才能查看此保管库的报表。
 
 为了简化大规模创建诊断设置的过程（以 LA 为目标），Azure 备份提供了内置 [Azure Policy](/governance/policy/)。 此策略可为给定订阅或资源组中的所有保管库添加 LA 诊断设置。 以下部分介绍了如何使用此策略。
 
@@ -38,30 +38,30 @@ Azure 备份提供的报告解决方案利用了 Log Analytics (LA)。 为了将
 2. 在左边的菜单中选择“定义”以获取跨 Azure 资源的所有内置策略的列表。
 3. 筛选“类别=监视”的列表。 找到名为“[预览]：将恢复服务保管库的诊断设置部署到资源专有类别的 Log Analytics 工作区”的策略。
 
-![策略定义边栏选项卡](./media/backup-azure-policy-configure-diagnostics/policy-definition-blade.png)
+    ![策略定义边栏选项卡](./media/backup-azure-policy-configure-diagnostics/policy-definition-blade.png)
 
 4. 单击该策略的名称。 随后会重定向到此策略的详细定义。
 
-![详细的策略定义](./media/backup-azure-policy-configure-diagnostics/detailed-policy-definition.png)
+    ![详细的策略定义](./media/backup-azure-policy-configure-diagnostics/detailed-policy-definition.png)
 
 5. 单击边栏选项卡顶部的“分配”按钮。 随后会重定向到“分配策略”边栏选项卡。
 
 6. 在“基础”下，单击“范围”字段旁边的三个点 。 随即在右侧打开一个上下文边栏选项卡，可以在其中选择要应用策略的订阅。 你还可以选择资源组，以便该策略仅应用于特定资源组中的保管库。
 
-![策略分配基础知识](./media/backup-azure-policy-configure-diagnostics/policy-assignment-basics.png)
+    ![策略分配基础知识](./media/backup-azure-policy-configure-diagnostics/policy-assignment-basics.png)
 
 7. 在“参数”下输入以下信息：
 
-* **配置文件名称** - 将分配给策略创建的诊断设置的名称。
-* **Log Analytics 工作区** - 应与诊断设置关联的 Log Analytics 工作区。 策略分配范围内的所有保管库的诊断数据都将被推送到指定的 LA 工作区。
+    * **配置文件名称** - 将分配给策略创建的诊断设置的名称。
+    * **Log Analytics 工作区** - 应与诊断设置关联的 Log Analytics 工作区。 策略分配范围内的所有保管库的诊断数据都将被推送到指定的 LA 工作区。
 
-* **排除标记名称（可选）和排除标记值（可选）** - 可以选择从策略分配中排除包含特定标记名称和值的保管库。 例如，如果不希望将诊断设置添加到将标记“isTest”设置为“yes”值的保管库中，则必须在“排除标记名称”字段中输入“isTest”，并在“排除标记值”字段中输入“yes”  。 如果这两个字段中的任何一个（或两个）为空，则策略将应用到所有相关的保管库，而不考虑它们包含的标记。
+    * **排除标记名称（可选）和排除标记值（可选）** - 可以选择从策略分配中排除包含特定标记名称和值的保管库。 例如，如果不希望将诊断设置添加到将标记“isTest”设置为“yes”值的保管库中，则必须在“排除标记名称”字段中输入“isTest”，并在“排除标记值”字段中输入“yes”  。 如果这两个字段中的任何一个（或两个）为空，则策略将应用到所有相关的保管库，而不考虑它们包含的标记。
 
-![策略分配参数](./media/backup-azure-policy-configure-diagnostics/policy-assignment-parameters.png)
+    ![策略分配参数](./media/backup-azure-policy-configure-diagnostics/policy-assignment-parameters.png)
 
-8. **创建修正任务** - 将策略分配到某个范围后，在该范围内创建的任何新保管库都会自动配置 LA 诊断设置（在创建保管库后的 30 分钟内）。 若要将诊断设置添加到范围内的现有保管库，可以在策略分配时触发修正任务。 若要触发修正任务，请选择“创建修正任务”复选框。 
+8. **创建修正任务** - 将策略分配到某个范围后，在该范围内创建的任何新保管库都会自动配置 LA 诊断设置（在创建保管库后的 30 分钟内）。 若要将诊断设置添加到范围内的现有保管库，可以在策略分配时触发修正任务。 若要触发修正任务，请选择“创建修正任务”复选框。
 
-![策略分配修正](./media/backup-azure-policy-configure-diagnostics/policy-assignment-remediation.png)
+    ![策略分配修正](./media/backup-azure-policy-configure-diagnostics/policy-assignment-remediation.png)
 
 9. 导航到“查看 + 创建”选项卡，然后单击“创建” 。
 
@@ -70,7 +70,7 @@ Azure 备份提供的报告解决方案利用了 Log Analytics (LA)。 为了将
 根据策略的定义，如果保管库不符合要求，就会对其应用修正任务。 保管库满足以下任一条件将被视为不符合要求：
 
 * 保管库没有诊断设置。
-* 保管库具有诊断设置，但是没有一个设置启用了将 LA 作为目标的所有资源特定事件，并且在切换中选择了“资源特定”事件 。 
+* 保管库具有诊断设置，但是没有一个设置启用了将 LA 作为目标的所有资源特定事件，并且在切换中选择了“资源特定”事件 。
 
 因此，即使用户的保管库在 AzureDiagnostics 模式下启用了 AzureBackupReport 事件（由备份报告提供支持），也将对此保管库应用修正任务，因为该资源特定模式是[今后](/backup/backup-azure-diagnostic-events#legacy-event)创建诊断设置的建议方法。
 
@@ -78,7 +78,7 @@ Azure 备份提供的报告解决方案利用了 Log Analytics (LA)。 为了将
 
 > [!NOTE]
 >
-> 如果保管库具有已启用资源特定子集的类别的现有诊断设置，并配置为将数据发送到特定的 LA 工作区（例如“工作区 X”），则当策略分配中提供的目标 LA 工作区与“工作区 X”相同时，修正任务将失败（仅针对该保管库） 。 
+> 如果保管库具有已启用资源特定子集的类别的现有诊断设置，并配置为将数据发送到特定的 LA 工作区（例如“工作区 X”），则当策略分配中提供的目标 LA 工作区与“工作区 X”相同时，修正任务将失败（仅针对该保管库） 。
 >
 >这是因为，如果在同一资源上由两个不同诊断设置启用的事件以某种形式重叠，则这些设置不能具有与目标相同的 LA 工作区。 你将需要手动解决此故障，方法是导航到相关保管库并使用不同的 LA 工作区作为目标来配置诊断设置。
 >

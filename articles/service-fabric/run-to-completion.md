@@ -4,18 +4,18 @@ description: 介绍 Service Fabric 中的 RunToCompletion 语义。
 author: rockboyfor
 ms.topic: conceptual
 origin.date: 03/11/2020
-ms.date: 05/06/2020
+ms.date: 06/08/2020
 ms.author: v-yeche
-ms.openlocfilehash: b6af2d97526453b232afd4124c0ff7b036fa7d81
-ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
+ms.openlocfilehash: df0a30bc880e5d2313f4bcfc7c8d9594d627ce28
+ms.sourcegitcommit: 0e178672632f710019eae60cea6a45ac54bb53a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "83002160"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84356259"
 ---
 # <a name="runtocompletion"></a>RunToCompletion
 
-从 7.1 版开始，Service Fabric 支持适用于[容器][containers-introduction-link]应用程序和[来宾可执行文件][guest-executables-introduction-link]应用程序的 RunToCompletion  语义。 这些语义使应用程序和服务一完成任务就退出，不需始终运行应用程序和服务。
+从 7.1 版开始，Service Fabric 支持适用于[容器][containers-introduction-link]应用程序和[来宾可执行文件][guest-executables-introduction-link]应用程序的 RunToCompletion 语义。 这些语义使应用程序和服务一完成任务就退出，不需始终运行应用程序和服务。
 
 继续阅读本文之前，建议先熟悉 [Service Fabric 应用程序模型][application-model-link]和 [Service Fabric 托管模型][hosting-model-link]。
 
@@ -23,7 +23,7 @@ ms.locfileid: "83002160"
 > 使用 [Reliable Services][reliable-services-link] 编程模型编写的服务目前不支持 RunToCompletion 语义。
 
 ## <a name="runtocompletion-semantics-and-specification"></a>RunToCompletion 语义和规范
-[导入 ServiceManifest][application-and-service-manifests-link]时，可以将 RunToCompletion 语义指定为 ExecutionPolicy  。 指定的策略由构成该 ServiceManifest 的所有 CodePackage 继承。 以下 ApplicationManifest.xml 代码片段提供了一个示例。
+[导入 ServiceManifest][application-and-service-manifests-link]时，可以将 RunToCompletion 语义指定为 ExecutionPolicy。 指定的策略由构成该 ServiceManifest 的所有 CodePackage 继承。 以下 ApplicationManifest.xml 代码片段提供了一个示例。
 
 ```xml
 <ServiceManifestImport>
@@ -33,11 +33,11 @@ ms.locfileid: "83002160"
   </Policies>
 </ServiceManifestImport>
 ```
-ExecutionPolicy  允许以下两个属性：
-* **类型：** RunToCompletion  当前是此属性的唯一允许值。
-* **Restart:** 此属性指定在失败时应用于构成该 ServicePackage 的 Codepackage 的重启策略。 以“非零退出代码”  退出的 CodePackage 被视为已失败。 此属性的允许值为 **OnFailure** 和 **Never**，默认值为 **OnFailure**。
+ExecutionPolicy 允许以下两个属性：
+* **类型：** RunToCompletion 当前是此属性的唯一允许值。
+* **Restart:** 此属性指定在失败时应用于构成该 ServicePackage 的 Codepackage 的重启策略。 以“非零退出代码”退出的 CodePackage 被视为已失败。 此属性的允许值为 **OnFailure** 和 **Never**，默认值为 **OnFailure**。
 
-当重启策略设置为 **OnFailure** 时，如果有任何 CodePackage 失败 **（退出代码为非零值）** ，则会重启，在反复失败的情况下会进行回退。 当重启策略设置为 **Never** 时，如果有任何 CodePackage 失败，则 DeployedServicePackage 的部署状态会被标记为“失败”  ，但其他 CodePackage 可以继续执行。 如果构成该 ServicePackage 的所有 CodePackage 都运行至成功完成 **（退出代码为 0）** ，则 DeployedServicePackage 的部署状态会被标记为“RanToCompletion”  。 
+当重启策略设置为 **OnFailure** 时，如果有任何 CodePackage 失败 **（退出代码为非零值）** ，则会重启，在反复失败的情况下会进行回退。 当重启策略设置为 **Never** 时，如果有任何 CodePackage 失败，则 DeployedServicePackage 的部署状态会被标记为“失败”，但其他 CodePackage 可以继续执行。 如果构成该 ServicePackage 的所有 CodePackage 都运行至成功完成 **（退出代码为 0）** ，则 DeployedServicePackage 的部署状态会被标记为“RanToCompletion”。 
 
 ## <a name="complete-example-using-runtocompletion-semantics"></a>使用了 RunToCompletion 语义的完整示例
 
@@ -48,7 +48,7 @@ ExecutionPolicy  允许以下两个属性：
 >
 > 此示例引用了 mcr.microsoft.com/windows/nanoserver:1809。 Windows Server 容器并非在所有主机 OS 版本间都兼容。 若要了解详细信息，请参阅 [Windows 容器版本兼容性](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility)。
 
-以下 ServiceManifest.xml 描述了一个 ServicePackage，其中包含表示容器的两个 Codepackage。 RunToCompletionCodePackage1  直接将消息记录到 stdout  并退出。 RunToCompletionCodePackage2  将在一段时间内对环回地址执行 ping 操作，然后以退出代码 **0**、**1** 或 **2** 退出。
+以下 ServiceManifest.xml 描述了一个 ServicePackage，其中包含表示容器的两个 Codepackage。 RunToCompletionCodePackage1 直接将消息记录到 stdout 并退出。 RunToCompletionCodePackage2 将在一段时间内对环回地址执行 ping 操作，然后以退出代码 **0**、**1** 或 **2** 退出。
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -79,7 +79,7 @@ ExecutionPolicy  允许以下两个属性：
 </ServiceManifest>
 ```
 
-下面的 ApplicationManifest.xml 描述了一个基于上述 ServiceManifest.xml 的应用程序。 它为 WindowsRunToCompletionServicePackage  指定了 **RunToCompletion** **ExecutionPolicy**，使用的重启策略为 **OnFailure**。 当激活 WindowsRunToCompletionServicePackage  时，构成它的那些 CodePackage 会启动。 RunToCompletionCodePackage1  在首次激活时应该会成功退出。 但是，RunToCompletionCodePackage2  可能会失败 **（退出代码为非零值）** 。在这种情况下，它会重启，因为重启策略为 **OnFailure**。
+下面的 ApplicationManifest.xml 描述了一个基于上述 ServiceManifest.xml 的应用程序。 它为 WindowsRunToCompletionServicePackage 指定了 **RunToCompletion** **ExecutionPolicy**，使用的重启策略为 **OnFailure**。 当激活 WindowsRunToCompletionServicePackage 时，构成它的那些 CodePackage 会启动。 RunToCompletionCodePackage1 在首次激活时应该会成功退出。 但是，RunToCompletionCodePackage2 可能会失败 **（退出代码为非零值）** 。在这种情况下，它会重启，因为重启策略为 **OnFailure**。
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -136,5 +136,4 @@ ExecutionPolicy  允许以下两个属性：
 [fabric-client-link]: https://docs.azure.cn/dotnet/api/system.fabric.fabricclient
 [deployed-service-package-fabricclient-link]: https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getdeployedservicepackagelistasync
 
-<!-- Update_Description: new article about run to completion -->
-<!--NEW.date: 05/06/2020-->
+<!-- Update_Description: update meta properties, wording update, update link?view=azure-dotnet -->

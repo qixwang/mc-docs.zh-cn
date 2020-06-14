@@ -10,12 +10,12 @@ ms.custom: hdinsightactive
 ms.topic: tutorial
 origin.date: 10/08/2019
 ms.date: 12/09/2019
-ms.openlocfilehash: 42cda2cfa4df4965eb1b408ae72a6692c499dc1c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: b75cd33a512eb5ff59840f54de3c204aa49cbca2
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80634502"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723694"
 ---
 # <a name="tutorial-use-apache-kafka-streams-api-in-azure-hdinsight"></a>教程：在 Azure HDInsight 中使用 Apache Kafka Streams API
 
@@ -269,7 +269,13 @@ public class Stream
 
 若要使用 Azure 门户删除资源组，请执行以下操作：
 
-1. 在 Azure 门户中展开左侧的菜单，打开服务菜单，然后选择“资源组”以显示资源组的列表。 
-2. 找到要删除的资源组，然后右键单击列表右侧的“更多”按钮 (...)。 
-3. 选择“删除资源组”，然后进行确认。 
+1. 在 Azure 门户中展开左侧的菜单，打开服务菜单，然后选择“资源组”以显示资源组的列表。
+2. 找到要删除的资源组，然后右键单击列表右侧的“更多”按钮 (...)。
+3. 选择“删除资源组”，然后进行确认。
 
+## <a name="next-steps"></a>后续步骤
+
+本文档介绍了如何将 Apache Kafka Streams API 与 Kafka on HDInsight 配合使用。 使用以下内容，详细了解如何使用 Kafka。
+
+> [!div class="nextstepaction"]
+> [分析 Apache Kafka 日志](apache-kafka-log-analytics-operations-management.md)

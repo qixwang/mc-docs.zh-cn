@@ -5,15 +5,15 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: sample
-origin.date: 05/18/2019
-ms.date: 01/20/2020
+origin.date: 05/01/2020
+ms.date: 06/15/2020
 ms.author: v-yeche
-ms.openlocfilehash: 61dc84416e92811ac60a6683e683ff4a9f2fbf00
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: a467fbd45d07395229afb337e2465dd7e44bbfda
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "76270091"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723544"
 ---
 # <a name="list-and-get-databases-and-graphs-for-azure-cosmos-db---mongodb-api"></a>列出和获取 Azure Cosmos DB 的数据库和图 - MongoDB API
 
@@ -24,41 +24,41 @@ ms.locfileid: "76270091"
 ## <a name="sample-script"></a>示例脚本
 
 ```powershell
-# List and Get operations for Azure Cosmos MongoDB API
-$apiVersion = "2015-04-08"
-$resourceGroupName = "myResourceGroup"
-$accountName = "mycosmosaccount" # must be lower case.
-$databaseName = "database1"
-$collectionName = "collection1"
-$accountResourceName = $accountName + "/mongodb/"
-$databaseResourceName = $accountName + "/mongodb/" + $databaseName
-$databaseResourceType = "Microsoft.DocumentDb/databaseAccounts/apis/databases"
-$collectionResourceName = $accountName + "/mongodb/" + $databaseName + "/" + $collectionName
-$collectionResourceType = "Microsoft.DocumentDb/databaseAccounts/apis/databases/collections"
+# Reference: Az.CosmosDB | https://docs.microsoft.com/powershell/module/az.cosmosdb
+# --------------------------------------------------
+# Purpose
+# Show list and get operations for accounts, databases, and collections
+# --------------------------------------------------
+# Variables - ***** SUBSTITUTE YOUR VALUES *****
+$resourceGroupName = "myResourceGroup" # Resource Group must already exist
+$accountName = "myaccount" # Must be all lower case
+$databaseName = "myDatabase"
+$collectionName = "myCollection"
+# --------------------------------------------------
 
-Read-Host -Prompt "List all databases in an account. Press Enter to continue"
+Write-Host "List all accounts in a resource group"
+Get-AzCosmosDBAccount -ResourceGroupName $resourceGroupName
 
-Get-AzResource -ResourceType $databaseResourceType `
-    -ApiVersion $apiVersion -ResourceGroupName $resourceGroupName `
-    -Name $accountResourceName  | Select-Object Properties
+Write-Host "Get an account in a resource group"
+Get-AzCosmosDBAccount -ResourceGroupName $resourceGroupName `
+    -Name $accountName
 
-Read-Host -Prompt "Get a database in an account. Press Enter to continue"
+Write-Host "List all databases in an account"
+Get-AzCosmosDBMongoDBDatabase -ResourceGroupName $resourceGroupName `
+    -AccountName $accountName
 
-Get-AzResource -ResourceType $databaseResourceType `
-    -ApiVersion $apiVersion -ResourceGroupName $resourceGroupName `
-    -Name $databaseResourceName | Select-Object Properties
+Write-Host "Get a database in an account"
+Get-AzCosmosDBMongoDBDatabase -ResourceGroupName $resourceGroupName `
+    -AccountName $accountName -Name $databaseName
 
-Read-Host -Prompt "List all collections in a database. Press Enter to continue"
+Write-Host "List all collections in a database"
+Get-AzCosmosDBMongoDBCollection -ResourceGroupName $resourceGroupName `
+    -AccountName $accountName -DatabaseName $databaseName 
 
-Get-AzResource -ResourceType $collectionResourceType `
-    -ApiVersion $apiVersion -ResourceGroupName $resourceGroupName `
-    -Name $databaseResourceName | Select-Object Properties
-
-Read-Host -Prompt "Get a collection in a database. Press Enter to continue"
-
-Get-AzResource -ResourceType $collectionResourceType `
-    -ApiVersion $apiVersion -ResourceGroupName $resourceGroupName `
-    -Name $collectionResourceName | Select-Object Properties
+Write-Host "Get a collection in a database"
+Get-AzCosmosDBMongoDBCollection -ResourceGroupName $resourceGroupName `
+    -AccountName $accountName -DatabaseName $databaseName `
+    -Name $collectionName
 
 ```
 
@@ -76,8 +76,10 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 
 | Command | 说明 |
 |---|---|
-|**Azure 资源**| |
-| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | 创建资源。 |
+|**Azure Cosmos DB**| |
+| [Get-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbaccount) | 列出 Cosmos DB 帐户或获取指定的 Cosmos DB 帐户。 |
+| [Get-AzCosmosDBMongoDBDatabase](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbmongodbdatabase) | 列出帐户中的 MongoDB API 数据库，或在帐户中获取指定的 MogoDB API 数据库。 |
+| [Get-AzCosmosDBMongoDBCollection](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbmongodbcollection) | 列出 MongoDB API 集合，或在数据库中获取指定的 MongoDB API 集合 |
 |**Azure 资源组**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | 删除资源组，包括所有嵌套的资源。 |
 |||
@@ -88,4 +90,4 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 
 可以在 [Azure Cosmos DB PowerShell 脚本](../../../powershell-samples.md)中找到其他 Azure Cosmos DB PowerShell 脚本示例。
 
-<!--Update_Description: update meta properties -->
+<!-- Update_Description: update meta properties, wording update, update link -->

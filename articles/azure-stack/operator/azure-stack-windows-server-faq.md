@@ -9,12 +9,12 @@ ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: avishwan
 ms.lastreviewed: 08/29/2019
-ms.openlocfilehash: ae18dd6d84f617c7570bee59518cc1a79671f3f2
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.openlocfilehash: 1cb566665308470cb8939ac2f6afc8adea67ca8e
+ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83422430"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84275402"
 ---
 # <a name="azure-stack-hub-marketplace-faq"></a>Azure Stack Hub 市场常见问题解答
 
@@ -73,7 +73,7 @@ Update-AzureRmVM -ResourceGroupName "<your RG>" -VM $vm
 
 ### <a name="what-about-other-vms-that-use-windows-server-such-as-sql-or-machine-learning-server"></a>对于使用 Windows Server 的其他 VM （例如 SQL 或 Machine Learning Server），该如何处理？
 
-这些映像应用 licenseType 参数，因此它们采用即用即付模式。 可以设置此参数（请参阅以前的常见问题解答）。 这只适用于 Windows Server 软件，而不适用于 SQL 等分层产品（需要自带许可证）。 即付即付许可不适用于分层软件产品。
+这些映像应用 licenseType 参数，因此它们采用预付费模式。 可以设置此参数（请参阅以前的常见问题解答）。 这只适用于 Windows Server 软件，而不适用于 SQL 等分层产品（需要自带许可证）。 “预付费”许可不适用于分层软件产品。
 
 如果版本为 XX.X.20190410 或更高版本，则只能更改 Azure Stack Hub 市场中 SQL Server 映像的 **licenseType** 属性。 如果正在运行来自 Azure Stack Hub 市场的 SQL Server 映像的旧版本，则不能更改 **licenseType** 属性，并且必须使用 Azure Stack Hub 市场中的最新 SQL Server 映像重新部署。
 

@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/23/2020
-ms.openlocfilehash: 2828792ba3e3d53604f46d80a4a896cef968f994
-ms.sourcegitcommit: ebedf9e489f5218d4dda7468b669a601b3c02ae5
+ms.openlocfilehash: 8d703eea00a88eae042a64727c183d0d743371f1
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82159211"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723312"
 ---
 # <a name="azure-stream-analytics-preview-features"></a>Azure 流分析预览功能
 
@@ -24,32 +24,24 @@ ms.locfileid: "82159211"
 
 ### <a name="online-scaling"></a>联机缩放
 
-进行联机缩放时，在需要更改 SU 分配的情况下无需停止作业。 可以增加或减少正在运行的作业的 SU 容量，但无需停止它。 这基于流分析目前提供的针对长时间运行的关键管道的客户承诺。 有关详细信息，请参阅[配置 Azure 流分析流式处理单元](stream-analytics-streaming-unit-consumption.md#configure-stream-analytics-streaming-units-sus)。
-
-### <a name="c-custom-de-serializers"></a>C# 自定义反序列化程序
-开发人员可以利用 Azure 流分析的强大功能来处理 Protobuf 格式、XML 格式或任何自定义格式的数据。 可以在 C# 中实现[自定义反序列化程序](custom-deserializer-examples.md)，然后使用它对 Azure 流分析接收的事件进行反序列化。
-
-### <a name="extensibility-with-c-custom-code"></a>使用 C# 自定义代码的可扩展性
-
-在云中或 IoT Edge 上创建流分析模块的开发人员可以编写或重复使用自定义 C# 函数，并在查询中通过 [用户定义函数](stream-analytics-edge-csharp-udf-methods.md)直接调用这些函数。
-
+通过联机缩放，如果需要更改 SU 分配，无需停止作业。 可以增加或减少正在运行的作业的 SU 容量，而无需将其停止。 这基于客户对流分析目前提供的长时间运行的任务关键管道的承诺。 有关详细信息，请参阅[配置 Azure 流分析流式处理单元](stream-analytics-streaming-unit-consumption.md#configure-stream-analytics-streaming-units-sus)。
 
 ### <a name="debug-query-steps-in-visual-studio"></a>在 Visual Studio 中调试查询步骤
 
 在适用于 Visual Studio 的 Azure 流分析工具中执行本地测试时，可以轻松预览数据关系图上的中间行集。 
 
-### <a name="local-testing-with-live-data-in-visual-studio-code"></a>针对 Visual Studio Code 中的实时数据进行本地测试
+### <a name="local-testing-with-live-data-in-visual-studio-code"></a>在 Visual Studio Code 中使用实时数据进行本地测试
 
-将作业提交到 Azure 之前，可以针对本地计算机上的实时数据测试查询。 每个测试迭代平均使用不到 2 到 3 秒的时间，因此开发过程非常高效。
+将作业提交到 Azure 之前，可以针对本地计算机上的实时数据测试查询。 每个测试迭代平均花费不到 2 到 3 秒，这会使开发过程非常高效。
 
 ### <a name="visual-studio-code-for-azure-stream-analytics"></a>适用于 Azure 流分析的 Visual Studio Code
 
 可以在 Visual Studio Code 中创建 Azure 流分析作业。 请参阅我们的 [VS Code 入门教程](https://docs.azure.cn/zh-cn/stream-analytics/quick-create-vs-code)。
 
 
-### <a name="real-time-high-performance-scoring-with-custom-ml-models-managed-by-azure-machine-learning"></a>通过 Azure 机器学习管理的自定义 ML 模型提供实时高性能评分
+### <a name="real-time-high-performance-scoring-with-custom-ml-models-managed-by-azure-machine-learning"></a>通过 Azure 机器学习管理的自定义 ML 模型进行实时高性能评分
 
-Azure 流分析利用预先训练的自定义机器学习模型来支持高性能实时评分，这些模型通过 Azure 机器学习进行管理，在 Azure Kubernetes 服务 (AKS) 或 Azure 容器实例 (ACI) 中进行托管，不需编写代码。 [注册](https://aka.ms/asapreview1)即可获取预览版
+Azure 流分析通过利用自定义预先训练的机器学习模型（由 Azure 机器学习管理，并在 Azure Kubernetes 服务 (AKS) 或 Azure 容器实例 (ACI) 中托管），并使用不需要编写代码的工作流，来支持高性能实时评分。 [注册](https://aka.ms/asapreview1)即可获取预览版
 
 
 ### <a name="live-data-testing-in-visual-studio"></a>Visual Studio 中的实时数据测试
@@ -59,12 +51,12 @@ Azure 流分析利用预先训练的自定义机器学习模型来支持高性�
 
 ### <a name="net-user-defined-functions-on-iot-edge"></a>IoT Edge 上的 .NET 用户定义函数
 
-使用 .NET Standard 用户定义函数，可以将 .NET Standard 代码作为流式管道的一部分运行。 可以创建简单的 C# 类或导入完整的项目和库。 Visual Studio 支持完整的创作和调试体验。 有关详细信息，请访问[为 Azure 流分析 Edge 作业开发 .NET Standard 用户定义函数](stream-analytics-edge-csharp-udf-methods.md)。
+使用 .NET Standard 用户定义函数，可以将 .NET Standard 代码作为流式管道的一部分运行。 可以创建简单的 C# 类或导入完整的项目和库。 Visual Studio 支持完整的创作和调试体验。
 
-## <a name="other-previews"></a>其他预览版功能
+## <a name="other-previews"></a>其他预览
 
-以下功能也可根据要求在预览版中使用。
+如若请求，还可以使用以下预览功能。
 
 ### <a name="support-for-azure-stack"></a>支持 Azure Stack
-此功能在 Azure IoT Edge 运行时上启用，可利用自定义 Azure Stack 功能，例如对在 Azure Stack 上运行的本地输入和输出的本机支持（例如，事件中心、IoT 中心、Blob 存储）。 利用这一新的集成，可以构建混合体系结构，可以在数据生成位置附近分析数据，从而降低延迟并最大限度地提高见解。
-使用此功能，可以构建混合体系结构，可以在数据生成位置附近分析数据，从而降低延迟并最大限度地获取见解。 必须[注册](https://aka.ms/asapreview1)才能获取此预览版。
+此功能在 Azure IoT Edge 运行时启用，利用自定义 Azure Stack 功能，比如以原生方式支持在 Azure Stack 上运行的本地输入和输出（例如事件中心、IoT 中心、Blob 存储）。 利用这一新的集成，你可以构建混合体系结构，该体系结构可以在数据生成的位置附近分析数据，从而降低延迟并最大程度增加见解。
+可以通过此功能构建混合体系结构，该体系结构可以在数据生成的位置附近分析数据，从而降低延迟并最大程度增加见解。 必须[注册](https://aka.ms/asapreview1)才能获取此预览版。

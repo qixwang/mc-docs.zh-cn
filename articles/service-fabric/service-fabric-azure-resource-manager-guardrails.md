@@ -6,14 +6,14 @@ documentationcenter: .net
 author: rockboyfor
 ms.topic: conceptual
 origin.date: 02/13/2020
-ms.date: 05/06/2020
+ms.date: 06/08/2020
 ms.author: v-yeche
-ms.openlocfilehash: 695a3d669a2442f4193b73d245e79b510966fd20
-ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
+ms.openlocfilehash: ae23d7b1491c23af52ac35c8a1c3243e3cf6b83d
+ms.sourcegitcommit: 0e178672632f710019eae60cea6a45ac54bb53a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "83002014"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84356253"
 ---
 <!--Verified successfully-->
 # <a name="service-fabric-guardrails"></a>Service Fabric 准则 
@@ -80,7 +80,7 @@ Service Fabric 群集提供一个[可靠性层](/service-fabric/service-fabric-c
 确保主节点类型具有足够的虚拟机，以实现群集中指定的可靠性。 如果删除某个虚拟机会导致虚拟机规模集的节点数小于给定可靠性层的最小节点数，将无法执行此删除操作。
 * 如果正确指定了可靠性层，请确保在主节点类型中提供可靠性层所需的足够节点。 
 * 如果可靠性层不正确，请在 Service Fabric 资源中发起更改以便先降低可靠性级别，然后启动任何虚拟机规模集操作并等待操作完成。
-* 如果可靠性层为“铜级”，请遵循[这些步骤](/service-fabric/service-fabric-cluster-scale-up-down#manually-remove-vms-from-a-node-typevirtual-machine-scale-set)适度缩减群集。
+* 如果可靠性层为“铜级”，请按照[这些步骤](/service-fabric/service-fabric-cluster-scale-in-out#manually-remove-vms-from-a-node-typevirtual-machine-scale-set)适度横向缩减群集。
 
 ## <a name="next-steps"></a>后续步骤
 * 在运行 Windows Server 的 VM 或计算机上创建群集：[创建适用于 Windows Server 的 Service Fabric 群集](service-fabric-cluster-creation-for-windows-server.md)

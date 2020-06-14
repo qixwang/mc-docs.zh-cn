@@ -6,15 +6,15 @@ author: rockboyfor
 ms.service: virtual-wan
 ms.topic: overview
 origin.date: 02/05/2020
-ms.date: 05/18/2020
+ms.date: 06/15/2020
 ms.author: v-yeche
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
-ms.openlocfilehash: f63ede5036028692eb1fa84d00c96da2a4ca4a26
-ms.sourcegitcommit: 436a5dd9a446fe7b6d3c4d5bc76b652f7848c1ba
+ms.openlocfilehash: a6658938badb175a7ba05d0d9300a6d0168d7ef6
+ms.sourcegitcommit: 6c1e5be9f310adf5b6740ad3284b7582fca9de86
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83393114"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84683578"
 ---
 # <a name="about-azure-virtual-wan"></a>关于 Azure 虚拟 WAN
 
@@ -26,9 +26,9 @@ Azure 区域充当可供连接的中心。 所有中心均在标准虚拟 WAN �
 
 本文提供 Azure 虚拟 WAN 中网络连接的快速视图。 虚拟 WAN 提供以下优势：
 
-* **中心和辐射中的集成式连接解决方案：** 在本地站点与 Azure 中心之间自动建立站点到站点配置和连接。
-* **自动化的辐射设置和配置：** 将虚拟网络和工作负载无缝连接到 Azure 中心。
-* **直观的疑难解答：** 可以查看 Azure 中的端到端流，并使用此信息来执行所需的操作。
+* 中心和辐射中的集成式连接解决方案：在本地站点与 Azure 中心之间自动建立站点到站点配置和连接。
+* 自动化的辐射设置和配置：将虚拟网络和工作负载无缝连接到 Azure 中心。
+* 直观的疑难解答：可以查看 Azure 中的端到端流，并使用此信息来执行所需的操作。
 
 <a name="basicstandard"></a>
 ## <a name="basic-and-standard-virtual-wans"></a>基本和标准虚拟 WAN
@@ -37,15 +37,14 @@ Azure 区域充当可供连接的中心。 所有中心均在标准虚拟 WAN �
 
 [!INCLUDE [Basic and Standard SKUs](../../includes/virtual-wan-standard-basic-include.md)]
 
-有关升级虚拟 WAN 的步骤，请参阅 [Upgrade a virtual WAN from Basic to Standard](upgrade-virtual-wan.md)（从基本虚拟 WAN 升级到标准虚拟 WAN）。
+有关升级虚拟 WAN 的步骤，请参阅[从基本虚拟 WAN 升级到标准虚拟 WAN](upgrade-virtual-wan.md)。
 
 <a name="architecture"></a>
 ## <a name="architecture"></a>体系结构
 
 有关虚拟 WAN 体系结构以及如何迁移到虚拟 WAN 的信息，请参阅以下文章：
 
-<!--Not Available on * [Virtual WAN architecture](migrate-from-hub-spoke-topology.md)-->
-
+* [虚拟 WAN 体系结构](migrate-from-hub-spoke-topology.md)
 * [全局传输网络体系结构](virtual-wan-global-transit-network-architecture.md)
 
 <a name="resources"></a>
@@ -53,21 +52,21 @@ Azure 区域充当可供连接的中心。 所有中心均在标准虚拟 WAN �
 
 若要配置端到端虚拟 WAN，请创建以下资源：
 
-* **virtualWAN：** virtualWAN 资源表示 Azure 网络的虚拟覆盖，并且是多个资源的集合。 它包含要部署到虚拟 WAN 中的所有虚拟中心的链接。 虚拟 WAN 资源相互隔离，不能包含公用中心。 跨虚拟 WAN 的虚拟中心不会相互通信。
+* virtualWAN：virtualWAN 资源表示 Azure 网络的虚拟覆盖，并且是多个资源的集合。 它包含要部署到虚拟 WAN 中的所有虚拟中心的链接。 虚拟 WAN 资源相互隔离，不能包含公用中心。 跨虚拟 WAN 的虚拟中心不会相互通信。
 
-* **中心：** 虚拟中心是 Azure 托管的虚拟网络。 中心包含用于建立连接的不同服务终结点。 从本地网络 (vpnsite)，你可以连接到虚拟中心内的 VPN 网关，将 ExpressRoute 线路连接到虚拟中心，甚至可以将移动用户连接到虚拟中心中的点到站点网关。 中心是区域中网络的核心。 每个 Azure 区域只能有一个中心。
+* 中心：虚拟中心是 Azure 托管的虚拟网络。 中心包含用于建立连接的不同服务终结点。 从本地网络 (vpnsite)，你可以连接到虚拟中心内的 VPN 网关，将 ExpressRoute 线路连接到虚拟中心，甚至可以将移动用户连接到虚拟中心中的点到站点网关。 中心是区域中网络的核心。 每个 Azure 区域只能有一个中心。
 
     中心网关与用于 ExpressRoute 和 VPN 网关的虚拟网络网关不同。 例如，使用虚拟 WAN 时，不要直接从本地站点创建与 VNet 的站点到站点连接。 而应与中心建立站点到站点连接。 流量始终通过中心网关。 这意味着，VNet 不需要自身的虚拟网络网关。 虚拟 WAN 可让 VNet 通过虚拟中心和虚拟中心网关轻松利用缩放功能。
 
-* **中心虚拟网络连接：** 中心虚拟网络连接资源用于将中心无缝连接到虚拟网络。
+* 中心虚拟网络连接：中心虚拟网络连接资源用于将中心无缝连接到虚拟网络。
 
-* **（预览）中心到中心连接** - 中心都在虚拟 WAN 中彼此连接。 这意味着连接到本地中心的分支、用户或 VNet 可以使用连接中心的完整网格体系结构与另一个分支或 VNet 通信。 还可以使用中心到中心连接框架连接通过虚拟中心传输的中心内的 VNet，以及跨中心的 VNet。
+* （预览）中心到中心连接 - 中心都在虚拟 WAN 中彼此连接。 这意味着连接到本地中心的分支、用户或 VNet 可以使用连接中心的完整网格体系结构与另一个分支或 VNet 通信。 还可以使用中心到中心连接框架连接通过虚拟中心传输的中心内的 VNet，以及跨中心的 VNet。
 
-* **中心路由表：** 可以创建一个虚拟中心路由，并将该路由应用于虚拟中心路由表。 可以将多个路由应用于虚拟中心路由表。
+* 中心路由表：可以创建一个虚拟中心路由，并将该路由应用于虚拟中心路由表。 可以将多个路由应用于虚拟中心路由表。
 
-**其他虚拟 WAN 资源**
+其他虚拟 WAN 资源
 
-* **站点：** 此资源仅用于站点到站点连接。 站点资源为 vpnsite。 它表示本地 VPN 设备及其设置。 可以通过与虚拟 WAN 合作伙伴合作，使用一个内置的解决方案自动将此信息导出到 Azure。
+    * 站点：此资源仅用于站点到站点连接。 站点资源为 vpnsite。 它表示本地 VPN 设备及其设置。 可以通过与虚拟 WAN 合作伙伴合作，使用一个内置的解决方案自动将此信息导出到 Azure。
 
 <a name="connectivity"></a>
 ## <a name="types-of-connectivity"></a>连接类型

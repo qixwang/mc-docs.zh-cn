@@ -2,24 +2,24 @@
 title: 优化 Azure Lsv2 系列虚拟机上的性能 - 存储
 description: 了解如何为 Lsv2 系列虚拟机上的解决方案优化性能。
 services: virtual-machines-linux
-author: rockboyfor
+author: Johnnytechn
 ms.service: virtual-machines-linux
 ms-subservice: sizes
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 origin.date: 08/05/2019
-ms.date: 5/18/2020
-ms.author: v-yeche
-ms.openlocfilehash: 2329e830ee4a465298fd4db91ca7b2c29aa2eedb
-ms.sourcegitcommit: f6d0bd7958e0720367022e68dc1824448c866882
+ms.date: 06/05/2020
+ms.author: v-johya
+ms.openlocfilehash: 1533a2c70acbdf153ed59097030f9748d45de9f4
+ms.sourcegitcommit: 285649db9b21169f3136729c041e4d04d323229a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83417254"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84684034"
 ---
-<!--CHECK THE BURSTING FEATHER BEFORE RELEASE-->
-<!--Verified successfully-->
+<!--CHECK THE BURSTING FEATHER ON VIRTUAL MACHINE BEFORE RELEASE-->
+<!--Not Available on MOONCAKE-->
 # <a name="optimize-performance-on-the-lsv2-series-virtual-machines"></a>优化 Lsv2 系列虚拟机上的性能
 
 Lsv2 系列虚拟机在广泛的应用程序和行业中支持需要在本地存储上实现高 I/O 和高吞吐量的各种工作负荷。  Lsv2 系列最适用于大数据、SQL、NoSQL 数据库、数据仓库和大型事务数据库，其中包括 Cassandra、MongoDB、Cloudera 和 Redis。

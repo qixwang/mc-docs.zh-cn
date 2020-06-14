@@ -3,14 +3,14 @@ title: 在 Durable Functions 中管理实例 - Azure
 description: 了解如何在 Azure Functions 的 Durable Functions 扩展中管理实例。
 author: cgillum
 ms.topic: conceptual
-ms.date: 03/03/2020
+ms.date: 06/09/2020
 ms.author: v-junlch
-ms.openlocfilehash: 531827257115f40432de56ef52317f0de968efb8
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 28e80279cf2133c630a16241e7b94e36503067c8
+ms.sourcegitcommit: f1a76ee3242698123a3d77f44c860db040b48f70
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79290939"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84563724"
 ---
 # <a name="manage-instances-in-durable-functions-in-azure"></a>在 Azure 中管理 Durable Functions 中的实例
 
@@ -42,9 +42,9 @@ ms.locfileid: "79290939"
 # <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
-[FunctionName("HelloWorldManualStart")]
+[FunctionName("HelloWorldQueueTrigger")]
 public static async Task Run(
-    [ManualTrigger] string input,
+    [QueueTrigger("start-queue")] string input,
     [DurableClient] IDurableOrchestrationClient starter,
     ILogger log)
 {
@@ -161,7 +161,7 @@ func durable start-new --function-name HelloWorld --input @counter-data.json --t
 [FunctionName("GetStatus")]
 public static async Task Run(
     [DurableClient] IDurableOrchestrationClient client,
-    [ManualTrigger] string instanceId)
+    [QueueTrigger("check-status-queue")] string instanceId)
 {
     DurableOrchestrationStatus status = await client.GetStatusAsync(instanceId);
     // do something based on the current status.
@@ -363,7 +363,7 @@ func durable get-instances --created-after 2018-03-10T13:57:31Z --created-before
 [FunctionName("TerminateInstance")]
 public static Task Run(
     [DurableClient] IDurableOrchestrationClient client,
-    [ManualTrigger] string instanceId)
+    [QueueTrigger("terminate-queue")] string instanceId)
 {
     string reason = "It was time to be done.";
     return client.TerminateAsync(instanceId, reason);
@@ -428,7 +428,7 @@ func durable terminate --id 0ab8c55a66644d68a3a8b220b12d209c --reason "It was ti
 [FunctionName("RaiseEvent")]
 public static Task Run(
     [DurableClient] IDurableOrchestrationClient client,
-    [ManualTrigger] string instanceId)
+    [QueueTrigger("event-queue")] string instanceId)
 {
     int[] eventData = new int[] { 1, 2, 3 };
     return client.RaiseEventAsync(instanceId, "MyEvent", eventData);
@@ -485,7 +485,8 @@ func durable raise-event --id 1234567 --event-name MyOtherEvent --event-data 3
 下面的 HTTP 触发型函数示例演示了如何使用此 API：
 
 # <a name="c"></a>[C#](#tab/csharp)
-```C#
+
+```csharp
 // Copyright (c) .NET Foundation. All rights reserved.
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
@@ -544,7 +545,7 @@ namespace VSSample
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-```Javascript
+```javascript
 const df = require("durable-functions");
 
 const timeout = "timeout";
@@ -704,7 +705,7 @@ modules.exports = async function(context, ctx) {
 [FunctionName("RewindInstance")]
 public static Task Run(
     [DurableClient] IDurableOrchestrationClient client,
-    [ManualTrigger] string instanceId)
+    [QueueTrigger("rewind-queue")] string instanceId)
 {
     string reason = "Orchestrator failed and needs to be revived.";
     return client.RewindAsync(instanceId, reason);
@@ -756,7 +757,7 @@ func durable rewind --id 0ab8c55a66644d68a3a8b220b12d209c --reason "Orchestrator
 [FunctionName("PurgeInstanceHistory")]
 public static Task Run(
     [DurableClient] IDurableOrchestrationClient client,
-    [ManualTrigger] string instanceId)
+    [QueueTrigger("purge-queue")] string instanceId)
 {
     return client.PurgeInstanceHistoryAsync(instanceId);
 }
@@ -884,4 +885,3 @@ func durable delete-task-hub --task-hub-name UserTest
 > [!div class="nextstepaction"]
 > [用于实例管理的内置 HTTP API 参考](durable-functions-http-api.md)
 
-<!-- Update_Description: wording update -->

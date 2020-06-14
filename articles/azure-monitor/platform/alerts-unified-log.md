@@ -9,12 +9,12 @@ origin.date: 5/31/2019
 ms.date: 6/4/2019
 ms.author: v-lingwu
 ms.subservice: alerts
-ms.openlocfilehash: 9183565614a63d0e791fa9e213c4091549b89bdc
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 543a515cfc3f9315a42c616561dc8d17b841d7e3
+ms.sourcegitcommit: 5ae04a3b8e025986a3a257a6ed251b575dbf60a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74838602"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84440452"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Azure Monitor 中的日志警报
 本文提供日志警报的详细信息，该警报是 [Azure 警报](../platform/alerts-overview.md)中支持的警报类型之一，允许用户使用 Azure 分析平台作为警报的基础。
@@ -46,12 +46,12 @@ ms.locfileid: "74838602"
 
 警报规则类型之间的差异如下所示。
 
-- “结果数”警报规则始终创建单个警报，而“指标度量”预警规则将为超出阈值的每个对象创建一个警报。  
-- “结果数”预警规则会在超出阈值一次时创建一个警报。  当阈值在特定的时间间隔内超出特定的次数时，“指标度量”警报规则即可创建一个警报。 
+- “结果数”警报规则始终创建单个警报，而“指标度量”预警规则将为超出阈值的每个对象创建一个警报。 
+- “结果数”预警规则会在超出阈值一次时创建一个警报。 当阈值在特定的时间间隔内超出特定的次数时，“指标度量”警报规则即可创建一个警报。
 
 ### <a name="number-of-results-alert-rules"></a>“结果数”警报规则
 
-当搜索查询返回的记录数超出指定的阈值时，“结果数”警报规则将创建一个警报。  此类警报规则适用于处理 Windows 事件日志、Syslog、WebApp Response 和自定义日志等事件。  生成特定错误事件时，或在特定时间段内生成多个错误事件时，就可能需要创建警报。
+当搜索查询返回的记录数超出指定的阈值时，“结果数”警报规则将创建一个警报。 此类警报规则适用于处理 Windows 事件日志、Syslog、WebApp Response 和自定义日志等事件。  生成特定错误事件时，或在特定时间段内生成多个错误事件时，就可能需要创建警报。
 
 **阈值**：“结果数”警报规则的阈值要么超出某个特定值，要么低于该值。  如果日志搜索返回的记录数与此条件匹配，则创建警报。
 
@@ -72,16 +72,13 @@ ms.locfileid: "74838602"
 
 ### <a name="metric-measurement-alert-rules"></a>指标度量警报规则
 
-“指标度量”警报规则为查询中其值超出指定阈值和指定触发条件的每个对象创建一个警报。  与“结果数”警报规则不同，当分析结果提供了时序时，“指标度量”警报规则将会运行。   这些规则具有下述不同于“结果数”警报规则的差异。 
+“指标度量”警报规则为查询中其值超出指定阈值和指定触发条件的每个对象创建一个警报。 与“结果数”警报规则不同，当分析结果提供了时序时，“指标度量”警报规则将会运行。  这些规则具有下述不同于“结果数”警报规则的差异。
 
 - **聚合函数**：确定要执行的计算以及可能要聚合的数字字段。  例如，**count()** 返回查询中的记录数，**avg(CounterValue)** 返回 CounterValue 字段在特定时间间隔内的平均值。 查询中的聚合函数必须名为：AggregatedValue 并提供数值。 
 
-- **分组字段**：将为此字段的每个实例创建包含聚合值的记录，并可为每个实例生成警报。  例如，如果需要为每台计算机生成一个警报，则可使用“按计算机”。  如果在警报查询中指定了多个分组字段，则用户可以使用**聚合依据** (metricColumn) 参数指定要使用哪个字段对结果进行排序。
+- **分组字段**：将为此字段的每个实例创建包含聚合值的记录，并可为每个实例生成警报。  例如，如果需要为每台计算机生成一个警报，则可使用“按计算机”。 如果在警报查询中指定了多个分组字段，则用户可以使用**聚合依据** (metricColumn) 参数指定要使用哪个字段对结果进行排序。
 
-    > [!NOTE]
-    > *聚合依据* (metricColumn) 选项仅适用于 Application Insights 的指标度量类型日志警报和[使用 scheduledQueryRules API 配置的 Log Analytics](../../azure-monitor/platform/alerts-log-api-switch.md) 的日志警报。
-
-- **时间间隔**：定义一个时间间隔，在该间隔内对数据进行聚合。  例如，如果指定“五分钟”，则会在为警报指定的时间段内，为分组字段（按 5 分钟间隔进行聚合）的每个实例创建一个记录。 
+- **时间间隔**：定义一个时间间隔，在该间隔内对数据进行聚合。  例如，如果指定“五分钟”，则会在为警报指定的时间段内，为分组字段（按 5 分钟间隔进行聚合）的每个实例创建一个记录。
 
     > [!NOTE]
     > 必须在查询中使用 Bin 函数来指定间隔。 由于 Bin() 可能生成不相等的时间间隔，警报会在运行时使用相应的时间自动将 bin 命令转换为 bin_at 命令，以确保结果包含固定点。 日志警报的指标度量类型设计为用于最多具有三个 bin() 命令实例的查询
@@ -119,7 +116,7 @@ ms.locfileid: "74838602"
 ![示例查询结果](media/alerts-unified-log/metrics-measurement-sample-graph.png)
 
 在此示例中，我们看到的是三台计算机中的每台计算机在 5 分钟的时间范围内计算出来的平均处理器利用率。 srv01 只有一次（在 1:25 处）超出了阈值 90。 如果进行比较，则会发现 srv02 在 1:10、1:15 和 1:25 处超出了阈值 90，而 srv03 则在 1:10、1:15、1:20 和 1:30 处超出了阈值 90。
-由于已将警报配置为超出阈值两次以上才触发，因此我们看到只有 srv02 和 srv03 符合此标准。 因此，会为 srv02 和 srv03 创建单独的警报，因为它们在多个时间段内超出了 90% 这个阈值两次。如果为“连续超出阈值”选项配置了“触发警报的标准:”参数，   ，则只会为  srv03 触发警报，因为在从 1:10 到 1:20 这个时间范围内，只有它连续三个时间段超出阈值。 不会为 srv02 触发警报，因为它只在从 1:10 到 1:15 这个时间范围内连续两个时间段超出阈值。 
+由于已将警报配置为超出阈值两次以上才触发，因此我们看到只有 srv02 和 srv03 符合此标准。 因此，会为 srv02 和 srv03 创建单独的警报，因为它们在多个时间段内超出了 90% 这个阈值两次。如果为“连续超出阈值”选项配置了“触发警报的标准:”参数， ，则只会为 srv03 触发警报，因为在从 1:10 到 1:20 这个时间范围内，只有它连续三个时间段超出阈值。 不会为 srv02 触发警报，因为它只在从 1:10 到 1:15 这个时间范围内连续两个时间段超出阈值。
 
 ## <a name="log-search-alert-rule---firing-and-state"></a>日志搜索警报规则 - 触发和状态
 
@@ -141,7 +138,7 @@ Azure 警报系统按下面的每个时间间隔评估 *Contoso-Log-Alert* 的�
 
 在下午 1:15，Azure 警报无法确定在 1:10 出现的根本问题是否仍然存在，以及记录是存在新的故障，还是下午 1:10 出现的旧故障的重复。 用户提供的查询可能考虑到了（也可能未考虑到）以前的记录，但系统不知道。 Azure 警报系统必须谨慎，因此在下午 1:15 再次触发警报和关联的操作。 
 
-在下午 1:20，当出现 0 条包含 500 结果代码的记录时，Azure 警报无法确定在下午 1:10 和 1:15 出现 500 结果代码的原因现在是否已得到解决。 它不知道 500 错误问题是否会再次出于相同的原因而发生。 因此 *Contoso-Log-Alert* 的状态不会在 Azure 警报仪表板中更改为“已解决”，并且/或者不会发出表明警报已解决的通知。  只有你了解分析查询中嵌入逻辑的确切条件或原因，因此可以根据需要[将警报标记为已关闭](alerts-managing-alert-states.md)。
+在下午 1:20，当出现 0 条包含 500 结果代码的记录时，Azure 警报无法确定在下午 1:10 和 1:15 出现 500 结果代码的原因现在是否已得到解决。 它不知道 500 错误问题是否会再次出于相同的原因而发生。 因此 *Contoso-Log-Alert* 的状态不会在 Azure 警报仪表板中更改为“已解决”，并且/或者不会发出表明警报已解决的通知。 只有你了解分析查询中嵌入逻辑的确切条件或原因，因此可以根据需要[将警报标记为已关闭](alerts-managing-alert-states.md)。
 
 ## <a name="pricing-and-billing-of-log-alerts"></a>日志警报的定价和计费
 
@@ -150,7 +147,7 @@ Azure 警报系统按下面的每个时间间隔评估 *Contoso-Log-Alert* 的�
 - Application Insights 上的日志警报显示确切的警报名称以及资源组和警报属性
 - 如果是使用 [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) 创建的，则 Log Analytics 上的日志警报显示确切的警报名称以及资源组和警报属性
 
-[旧 Log Analytics API](../../azure-monitor/platform/api-alerts.md) 将警报操作和计划作为 Log Analytics 保存的搜索的一部分，而不是相应 [Azure 资源](../../azure-resource-manager/resource-group-overview.md)的一部分。 因此，为了对使用 Azure 门户（未[切换到新的 API](../../azure-monitor/platform/alerts-log-api-switch.md)）或通过[旧 Log Analytics API](../../azure-monitor/platform/api-alerts.md) 为 Log Analytics 创建的此类旧日志警报启用计费 - `microsoft.insights/scheduledqueryrules` 上会创建用于在 Azure 上计费的隐藏伪警报规则  。 在 `microsoft.insights/scheduledqueryrules` 上创建的用于计费的隐藏伪警报规则将随资源组和警报属性一起显示，格式为 `<WorkspaceName>|<savedSearchId>|<scheduleId>|<ActionId>`。
+[旧 Log Analytics API](../../azure-monitor/platform/api-alerts.md) 将警报操作和计划作为 Log Analytics 保存的搜索的一部分，而不是相应 [Azure 资源](../../azure-resource-manager/resource-group-overview.md)的一部分。 因此，为了对使用 Azure 门户（未切换到新的 API）或通过[旧 Log Analytics API](../../azure-monitor/platform/api-alerts.md) 为 Log Analytics 创建的此类旧日志警报启用计费，`microsoft.insights/scheduledqueryrules` 上会创建用于在 Azure 上计费的隐藏伪警报规则。 在 `microsoft.insights/scheduledqueryrules` 上创建的用于计费的隐藏伪警报规则将随资源组和警报属性一起显示，格式为 `<WorkspaceName>|<savedSearchId>|<scheduleId>|<ActionId>`。
 
 > [!NOTE]
 > 如果存在无效字符（例如 `<, >, %, &, \, ?, /`），则它们在隐藏的伪警报规则名称以及 Azure 帐单中会被替换为 `_`。

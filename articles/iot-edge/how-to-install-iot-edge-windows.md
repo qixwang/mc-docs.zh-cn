@@ -8,14 +8,14 @@ ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
 origin.date: 04/09/2020
-ms.date: 04/20/2020
+ms.date: 06/01/2020
 ms.author: v-tawe
-ms.openlocfilehash: cc6cfe1183037e3be8479cbedb1cedf2a1924fc9
-ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
+ms.openlocfilehash: 5b9c58ea8d4928bf694b3442aa470809a92cadac
+ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82588780"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84275461"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-windows"></a>在 Windows 上安装 Azure IoT Edge 运行时
 
@@ -51,7 +51,7 @@ IoT Core 设备必须包含 IoT Core Windows 容器可选功能才能支持 IoT 
 Get-Service vmcompute
 ```
 
-如果存在该服务，则应该会收到成功的响应，其中服务状态列为“正在运行”  。 如果找不到 `vmcompute` 服务，则设备不满足 IoT Edge 的要求。 请与硬件提供商联系，询问此功能是否支持。
+如果存在该服务，则应该会收到成功的响应，其中服务状态列为“正在运行”。 如果找不到 `vmcompute` 服务，则设备不满足 IoT Edge 的要求。 请与硬件提供商联系，询问此功能是否支持。
 
 ### <a name="prepare-for-a-container-engine"></a>为容器引擎做好准备
 
@@ -101,7 +101,7 @@ Azure IoT Edge 依赖于 [OCI 兼容的](https://www.opencontainers.org/)容器�
 
 4. 此时，IoT Core 设备可能会自动重启。 其他 Windows 10 或 Windows Server 设备可能会提示你重启。 如果是这样，请立即重启设备。 设备准备就绪后，再次以管理员身份运行 PowerShell。
 
-5. Initialize-IoTEdge 命令在计算机上配置 IoT Edge 运行时  。 该命令默认为使用 Windows 容器手动预配。
+5. Initialize-IoTEdge 命令在计算机上配置 IoT Edge 运行时。 该命令默认为使用 Windows 容器手动预配。
 
    ```powershell
    . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
@@ -152,7 +152,7 @@ Azure IoT Edge 依赖于 [OCI 兼容的](https://www.opencontainers.org/)容器�
 
 1. 有关最新的 IoT Edge 安装文件以及旧版本，请参阅 [Azure IoT Edge 版本](https://github.com/Azure/azure-iotedge/releases)。
 
-2. 找到要安装的版本，然后从发行说明的“资产”  部分将以下文件下载到 IoT 设备上：
+2. 找到要安装的版本，然后从发行说明的“资产”部分将以下文件下载到 IoT 设备上：
 
    * IoTEdgeSecurityDaemon.ps1
    * 1\.0.9 或更高版本中的 Microsoft-Azure-IoTEdge-amd64.cab，或者 1.0.8 或更低版本中的 Microsoft-Azure-IoTEdge.cab。
@@ -161,7 +161,7 @@ Azure IoT Edge 依赖于 [OCI 兼容的](https://www.opencontainers.org/)容器�
 
    请务必使用与所用 .cab 文件版本相同的 PowerShell 脚本，因为功能会进行更改以支持每个版本中的特性。
 
-3. 如果下载的 .cab 文件在其上有体系结构后缀，则只需将该文件重命名为“Microsoft-Azure-IoTEdge.cab”即可  。
+3. 如果下载的 .cab 文件在其上有体系结构后缀，则只需将该文件重命名为“Microsoft-Azure-IoTEdge.cab”即可。
 
 4. （可选）下载 Visual C++ Redistributable 的安装程序。 例如，PowerShell 脚本使用此版本：[vc_redist.x64.exe](https://download.microsoft.com/download/0/6/4/064F84EA-D1DB-4EAA-9A5C-CC2F0FF6A638/vc_redist.x64.exe)。 将安装程序保存到 IoT 设备上 IoT Edge 文件所在的文件夹中。
 
@@ -194,17 +194,21 @@ Get-Service iotedge
 . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog
 ```
 
-运行自动检查以查找最常见的配置和网络错误。
+运行[故障排除工具](troubleshoot.md#run-the-check-command)，检查最常见的配置和网络错误。
 
 ```powershell
 iotedge check
 ```
 
-列出正在运行的模块。 完成新的安装后，应会看到唯一运行的模块是 **edgeAgent**。 首次[部署 IoT Edge 模块](how-to-deploy-modules-portal.md)后，其他系统模块 **edgeHub** 也会在设备上启动。
+在将第一个模块部署到设备上的 IoT Edge 之前， **$edgeHub** 系统模块不会部署到设备。 因此，自动检查会返回一个针对 `Edge Hub can bind to ports on host` 连接性检查的错误。 此错误可以忽略，除非它是在将模块部署到设备后发生的。
+
+最后，列出正在运行的模块：
 
 ```powershell
 iotedge list
 ```
+
+完成新的安装后，应会看到唯一运行的模块是 **edgeAgent**。 首次[部署 IoT Edge 模块](how-to-deploy-modules-portal.md)后，其他系统模块 **edgeHub** 也会在设备上启动。
 
 ## <a name="manage-module-containers"></a>管理模块容器
 
@@ -255,7 +259,7 @@ Uninstall-IoTEdge 命令在 Windows IoT Core 中无法运行。 若要从 Window
 Get-AuthenticodeSignature "C:\<path>\IotEdgeSecurityDaemon.ps1"
 ```
 
-如果签名获得验证，则输出状态为“有效”  。
+如果签名获得验证，则输出状态为“有效”。
 
 ## <a name="all-installation-parameters"></a>所有安装参数
 
@@ -281,12 +285,12 @@ Initialize-IoTEdge 命令使用设备连接字符串和操作详细信息配置 
 | --------- | --------------- | -------- |
 | **手动** | 无 | **开关参数**。 如果未指定预配类型，则 manual 是默认值。<br><br>声明你要提供设备连接字符串来手动预配设备 |
 | **Dps** | 无 | **开关参数**。 如果未指定预配类型，则 manual 是默认值。<br><br>声明你要提供设备预配服务 (DPS) 范围 ID 和设备的注册 ID，以通过 DPS 进行预配。  |
-| **DeviceConnectionString** | 已在 IoT 中心注册的 IoT Edge 设备中的连接字符串，括在单引号中 | 进行手动预配所需  。 如果未在脚本参数中提供连接字符串，系统会提示你提供一个。 |
-| **ScopeId** | 与 IoT 中心关联的设备预配服务实例中的范围 ID。 | 进行 DPS 预配所需。  如果未在脚本参数中提供范围 ID，系统会提示你提供一个。 |
-| **RegistrationId** | 设备生成的注册 ID | 如果使用 TPM 或对称密钥证明，则为 DPS 预配所需。  如果使用 X.509 证书证明，则为可选。  |
-| **X509IdentityCertificate** | 设备上的 X.509 设备标识证书的 URI 路径。 | 如果使用 X.509 证书证明，则为 DPS 预配所需。  |
-| **X509IdentityPrivateKey** | 设备上的 X.509 设备标识证书密钥的 URI 路径。 | 如果使用 X.509 证书证明，则为 DPS 预配所需。  |
-| **SymmetricKey** | 使用 DPS 时用于预配 IoT Edge 设备标识的对称密钥 | 如果使用对称密钥证明，则为 DPS 预配所需。  |
+| **DeviceConnectionString** | 已在 IoT 中心注册的 IoT Edge 设备中的连接字符串，括在单引号中 | 进行手动预配所需。 如果未在脚本参数中提供连接字符串，系统会提示你提供一个。 |
+| **ScopeId** | 与 IoT 中心关联的设备预配服务实例中的范围 ID。 | 进行 DPS 预配所需。 如果未在脚本参数中提供范围 ID，系统会提示你提供一个。 |
+| **RegistrationId** | 设备生成的注册 ID | 如果使用 TPM 或对称密钥证明，则为 DPS 预配所需。 如果使用 X.509 证书证明，则为可选。 |
+| **X509IdentityCertificate** | 设备上的 X.509 设备标识证书的 URI 路径。 | 如果使用 X.509 证书证明，则为 DPS 预配所需。 |
+| **X509IdentityPrivateKey** | 设备上的 X.509 设备标识证书密钥的 URI 路径。 | 如果使用 X.509 证书证明，则为 DPS 预配所需。 |
+| **SymmetricKey** | 使用 DPS 时用于预配 IoT Edge 设备标识的对称密钥 | 如果使用对称密钥证明，则为 DPS 预配所需。 |
 | **ContainerOs** | **Windows** 或 **Linux** | 如果未指定容器操作系统，则 Windows 是默认值。<br><br>对于 Windows 容器，IoT Edge 使用安装中包含的 moby 容器引擎。 对于 Linux 容器，需要在开始安装之前安装容器引擎。 |
 | **InvokeWebRequestParameters** | 参数和值的哈希表 | 在安装期间，会发出多个 Web 请求。 请使用此字段来设置这些 Web 请求的参数。 此参数可用于配置代理服务器的凭据。 有关详细信息，请参阅[将 IoT Edge 设备配置为通过代理服务器进行通信](how-to-configure-proxy-support.md)。 |
 | **AgentImage** | IoT Edge 代理映像 URI | 默认情况下，新的 IoT Edge 安装使用 IoT Edge 代理映像的最新滚动标记。 使用此参数可为映像版本设置特定的标记，或者提供自己的代理映像。 有关详细信息，请参阅[了解 IoT Edge 标记](how-to-update-iot-edge.md#understand-iot-edge-tags)。 |

@@ -12,12 +12,12 @@ ms.workload: big-data
 origin.date: 06/17/2019
 ms.date: 03/02/2020
 ms.author: v-yiso
-ms.openlocfilehash: 9579101c348fef20d5d048286cea539c183aa54f
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: ccb9e2624162db6aa2498dab4283151f834026d1
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79291227"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723617"
 ---
 # <a name="install-third-party-apache-hadoop-applications-on-azure-hdinsight"></a>在 Azure HDInsight 上安装第三方 Apache Hadoop 应用程序
 
@@ -29,7 +29,7 @@ HDInsight 应用程序是用户可以在 HDInsight 群集上安装的应用程�
 
 |应用程序 |群集类型 | 说明 |
 |---|---|---|
-|[AtScale 智能平台](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/atscale.atscale) |Hadoop |AtScale 可将 HDInsight 群集转换成 OLAP 横向扩展服务器，使你能够使用熟悉的、自有的或偏好的 BI 工具（从 Microsoft Excel、Power BI、Tableau Software 到 QlikView）以交互方式查询数十亿行数据。 |
+|[AtScale 智能平台](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/atscaleinc.atscale) |Hadoop |AtScale 可将 HDInsight 群集转换成 OLAP 横向扩展服务器，使你能够使用熟悉的、自有的或偏好的 BI 工具（从 Microsoft Excel、Power BI、Tableau Software 到 QlikView）以交互方式查询数十亿行数据。 |
 |[适用于 HDInsight 的 CDAP](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/cask.cdap-for-hdinsight) |HBase |CDAP 是第一款用于处理大数据的统一集成平台，可以加速的 Hadoop 的价值实现，使 IT 人员能够提供自助服务数据。 CDAP 采用开源设计并且可扩展，消除了创新所面临的障碍。 要求：4 个区域节点，至少需要安装 D3 v2。 |
 |[Datameer](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/datameer.datameer) |Hadoop |Datameer 是一个可缩放的自助服务平台，用于准备、浏览和管理要分析的数据，可以加速将复杂多源数据转变为随时可在业务中使用的宝贵信息，以企业规模提供更快、更智能的见解。 |
 |[HDInsight 上的 Dataiku DSS](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/dataiku.dss-on-hdi) |Hadoop、Spark |企业数据科学平台中的 Dataiku DSS，可让数据科学家和数据分析师更有效地协作设计和运行新的数据产品与服务，将原始数据转变为有影响力的预测结果。 |

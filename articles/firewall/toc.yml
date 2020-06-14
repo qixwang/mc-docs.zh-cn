@@ -58,10 +58,12 @@
       href: integrate-lb.md
     - name: 带有 SQL FQDN 的应用程序规则
       href: sql-fqdn-filtering.md
+    - name: SNAT 专用范围
+      href: snat-private-range.md
 - name: 参考
   items:
     - name: Azure CLI
-      href: 'https://docs.microsoft.com/zh-cn/cli/azure/ext/azure-firewall/network/firewall?view=azure-cli-latest'
+      href: 'https://docs.microsoft.com/cli/azure/ext/azure-firewall/network/firewall?view=azure-cli-latest'
     - name: Azure PowerShell
       href: 'https://docs.microsoft.com/powershell/module/az.network/new-azfirewall'
     - name: .NET

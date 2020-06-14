@@ -7,15 +7,15 @@ ms.service: databox
 ms.subservice: heavy
 ms.topic: tutorial
 origin.date: 09/03/2019
-ms.date: 12/09/2019
+ms.date: 06/08/2020
 ms.author: v-jay
 ms.localizationpriority: high
-ms.openlocfilehash: 24dbcbd07baae08879058ad1c611aad0356f016d
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: c514455d1cbf3808c7516a8d69a1520eb311e859
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80634458"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723352"
 ---
 ::: zone target = "docs"
 
@@ -25,7 +25,7 @@ ms.locfileid: "80634458"
 
 ::: zone target = "chromeless"
 
-# <a name="get-started-with-azure-data-box-heavy"></a>Azure Data Box Heavy 入门
+## <a name="get-started-with-azure-data-box-heavy"></a>Azure Data Box Heavy 入门
 
 ::: zone-end
 
@@ -70,7 +70,7 @@ ms.locfileid: "80634458"
 
 执行以下步骤为设备布线。
 
-1. 检查设备是否有任何改动的痕迹或任何明显的损坏。 如果设备已被篡改或严重损坏，请不要继续操作。 请立即[联系 Azure 支持部门](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth)，让他们帮助评估设备是否正常，或者是否需要寄送更换设备。
+1. 检查设备是否有任何改动的痕迹或任何明显的损坏。 如果设备已被篡改或严重损坏，请不要继续操作。 请立即[联系 Azure 支持部门](https://support.azure.cn/support/contact/)，让他们帮助评估设备是否正常，或者是否需要寄送更换设备。
 2. 将设备转移到安装场地。
 
     ![Data Box Heavy 设备安装场地](media/data-box-heavy-deploy-set-up/data-box-heavy-install-site.png)

@@ -11,16 +11,17 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 origin.date: 11/1/2018
-ms.date: 05/11/2020
-ms.openlocfilehash: aaee26400c1a9794a7add876f5bde3e0e846b992
-ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
+ms.date: 06/15/2020
+ms.openlocfilehash: 79825e6599f6cfbc770d973869f5da7d8cf28b40
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82198006"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723134"
 ---
 # <a name="copy-files-from-multiple-containers-with-azure-data-factory"></a>使用 Azure 数据工厂复制多个容器中的文件
-[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 本文介绍一种解决方案模板，可用于从文件存储之间的多个容器复制文件。 例如，可以使用模板将一个 Azure Blob 存储帐户中的所有内容复制到另一个 Azure Blob 存储帐户。
 

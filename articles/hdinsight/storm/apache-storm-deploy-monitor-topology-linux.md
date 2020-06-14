@@ -9,12 +9,12 @@ ms.topic: conceptual
 origin.date: 12/18/2019
 ms.date: 01/13/2020
 ms.author: v-yiso
-ms.openlocfilehash: 3b565cb415833c66f3eadd56f2e77c02cf5d6cc3
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 3b2a4621adad6eebfe0bfa267dd2d5bd8c9d0e20
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79293165"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723641"
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-azure-hdinsight"></a>在 Azure HDInsight 中部署和管理 Apache Storm 拓扑 
 
@@ -164,7 +164,7 @@ storm rebalance TOPOLOGYNAME
 
 ## <a name="monitor-and-manage-a-topology-using-the-storm-ui"></a>使用 Storm UI 监视和管理拓扑
 
-Storm UI 提供一个 Web 界面用于处理正在运行的拓扑，HDInsight 群集随附了此界面。 若要查看 Storm UI，请使用 Web 浏览器打开 `https://CLUSTERNAME.azurehdinsight.net/stormui`，其中 *CLUSTERNAME* 是群集的名称。
+Storm UI 提供一个 Web 界面用于处理正在运行的拓扑，HDInsight 群集随附了此界面。 若要查看 Storm UI，请使用 Web 浏览器打开 `https://CLUSTERNAME.azurehdinsight.cn/stormui`，其中 *CLUSTERNAME* 是群集的名称。
 
 > [!NOTE]  
 > 如果系统要求提供用户名和密码，请输入创建群集时使用的群集管理员用户名和密码。
@@ -253,8 +253,8 @@ Storm UI 是以 REST API 为基础生成的，因此，可以使用 API 执行�
 | FQDN 发现方法 | 说明 |
 | --- | --- |
 | SSH 会话 | 通过与群集建立的 SSH 会话使用 `headnode -f` 命令。 |
-| Ambari Web | 在 Ambari 群集网页 (`https://CLUSTERNAME.azurehdinsight.net`) 的顶部选择“服务”，然后选择“Storm”。   在“摘要”  选项卡中，选择“Storm UI 服务器”  。 页面顶部会显示承载 Storm UI 和 REST API 的节点的 FQDN。 |
-| Ambari REST API | 使用 `curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/STORM/components/STORM_UI_SERVER"` 命令来检索有关 Storm UI 和 REST API 正在其上运行的节点的信息。 请将两处出现的 *CLUSTERNAME* 替换为群集名称。 出现提示时，输入用户 (admin) 帐户的密码。 在响应中，JSON 输出的“host_name”条目包含节点的 FQDN。 |
+| Ambari Web | 在 Ambari 群集网页 (`https://CLUSTERNAME.azurehdinsight.cn`) 的顶部选择“服务”，然后选择“Storm”。   在“摘要”  选项卡中，选择“Storm UI 服务器”  。 页面顶部会显示承载 Storm UI 和 REST API 的节点的 FQDN。 |
+| Ambari REST API | 使用 `curl -u admin -G "https://CLUSTERNAME.azurehdinsight.cn/api/v1/clusters/CLUSTERNAME/services/STORM/components/STORM_UI_SERVER"` 命令来检索有关 Storm UI 和 REST API 正在其上运行的节点的信息。 请将两处出现的 *CLUSTERNAME* 替换为群集名称。 出现提示时，输入用户 (admin) 帐户的密码。 在响应中，JSON 输出的“host_name”条目包含节点的 FQDN。 |
 
 ### <a name="authentication"></a>Authentication
 

@@ -11,18 +11,18 @@ ms.topic: article
 ms.date: 10/20/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: c3f0c9d73618a8fd111fb3a66b5625e22245a6de
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 0f8d501850f09886fb64d9ddffebabb30c972980
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75599698"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723651"
 ---
 # <a name="what-is-the-team-data-science-process"></a>什么是团队数据科学过程？
 
-Team Data Science Process (TDSP) 是一种敏捷的迭代式数据科学方法，可有效交付预测分析解决方案和智能应用程序。 TDSP 有助于改进团队协作和学习。 它包含来自 Microsoft 及本行业中其他企业的最佳做法与结构精华，能够促进数据科学方案的成功实现。 其目标是帮助公司完全实现其分析程序的优势。
+Team Data Science Process (TDSP) 是一种敏捷的迭代式数据科学方法，可有效交付预测分析解决方案和智能应用程序。 TDSP 通过建议团队角色如何最好地协同工作来帮助改进团队协作和学习。 TDSP 包含 Microsoft 和其他行业领导者的最佳做法和结构，以帮助成功实施数据科学计划。 其目标是帮助公司完全实现其分析程序的优势。
 
-本文提供 TDSP 及其主要组件的概述。 我们将提供可以通过各种工具实现的过程的一般说明。 其他链接主题中提供了过程生命周期所涉及的项目任务和角色的更详细说明。 此外，还提供了有关如何使用一套具体 Microsoft 工具和基础结构实现 TDSP 的指导（我们的团队就是使用这些工具和基础结构来实现 TDSP）。
+本文提供 TDSP 及其主要组件的概述。 我们在这里提供了可以使用各种工具实现的过程的一般说明。 其他链接主题中提供了过程生命周期所涉及的项目任务和角色的更详细说明。 此外，还提供了有关如何使用一套具体 Microsoft 工具和基础结构实现 TDSP 的指导（我们的团队就是使用这些工具和基础结构来实现 TDSP）。
 
 ## <a name="key-components-of-the-tdsp"></a>TDSP 的关键组件
 
@@ -36,11 +36,11 @@ TDSP 包括以下关键组件：
 
 ## <a name="data-science-lifecycle"></a>数据科学生命周期
 
-Team Data Science Process (TDSP) 提供用于构建数据科学项目开发的生命周期。 生命周期概述了执行项目时，其从开始到结束所遵循的步骤。
+Team Data Science Process (TDSP) 提供用于构建数据科学项目开发的生命周期。 该生命周期概述了成功的项目所遵循的完整步骤。
 
-如果使用其他的数据科学生命周期，如 [CRISP-DM](https://wikipedia.org/wiki/Cross_Industry_Standard_Process_for_Data_Mining)、[KDD](https://wikipedia.org/wiki/Data_mining#Process) 或组织自己的自定义过程，仍可在这些开发生命周期的上下文中使用基于任务的 TDSP。 从较高层面讲，这些不同的方法具有很多共性。 
+如果使用其他数据科学生命周期，如 [CRISP-DM](https://wikipedia.org/wiki/Cross_Industry_Standard_Process_for_Data_Mining)、[KDD](https://wikipedia.org/wiki/Data_mining#Process) 或组织自己的自定义过程，仍可在这些开发生命周期的上下文中使用基于任务的 TDSP。 从较高层面讲，这些不同的方法具有很多共性。 
 
-此生命周期面向作为智能应用程序一部分交付的数据科学项目。 这些应用程序部署机器学习或人工智能模型以进行预测分析。 探索数据科学项目或即席分析项目也可从使用此过程获益。 但在这种情况下可能不需要某些所述的步骤。    
+此生命周期面向作为智能应用程序一部分交付的数据科学项目。 这些应用程序部署机器学习或人工智能模型以进行预测分析。 探索性数据科学项目或即席分析项目也可以从使用此过程获益。 但在这种情况下可能不需要某些所述的步骤。    
 
 该生命周期概述了项目通常执行的主要阶段（通常以迭代方式进行）：
 
@@ -90,7 +90,7 @@ TDSP 提供有关管理共享分析和存储基础结构的建议，例如：
 - 大数据（Hadoop 或 Spark）群集 
 - 机器学习服务 
 
-分析和存储基础结构可以在云中或本地。 这是原始数据集和已处理数据集的存储位置。 此基础结构实现重现的分析。 它还可以避免重复，防止产生不一致情况和不必要的基础结构成本。 TDSP 提供了工具用于预配和跟踪共享资源，并让每位团队成员安全连接到这些资源。 让项目成员创建一致的计算环境也是一种不错的做法。 然后，不同的团队成员可以复制和验证试验。
+存储原始数据集和已处理数据集的分析和存储基础结构可能位于云中或本地。 此基础结构实现重现的分析。 它还可以避免重复，防止产生不一致情况和不必要的基础结构成本。 TDSP 提供了工具用于预配和跟踪共享资源，并让每位团队成员安全连接到这些资源。 让项目成员创建一致的计算环境也是一种不错的做法。 然后，不同的团队成员可以复制和验证试验。
 
 下面是团队处理多个项目和共享各个云分析基础结构组件的示例。
 

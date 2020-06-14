@@ -5,15 +5,15 @@ author: WenJason
 ms.service: storage
 ms.topic: conceptual
 origin.date: 1/3/2020
-ms.date: 06/01/2020
+ms.date: 06/15/2020
 ms.author: v-jay
 ms.subservice: files
-ms.openlocfilehash: 144aa5073ce7d0bae9eb74ed816814c6c58b8880
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+ms.openlocfilehash: 2f5c2e748a2016e114aafdf69d9b79c0801c7320
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84199487"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723570"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>规划 Azure 文件部署
 可通过以下主要方式部署 [Azure 文件存储](storage-files-introduction.md)：直接装载无服务器 Azure 文件共享。

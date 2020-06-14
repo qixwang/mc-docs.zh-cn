@@ -6,15 +6,15 @@ author: rockboyfor
 ms.service: virtual-wan
 ms.topic: conceptual
 origin.date: 10/17/2019
-ms.date: 03/30/2020
+ms.date: 06/15/2020
 ms.author: v-yeche
 Customer intent: As someone with a networking background, I want to read more details about Virtual WAN in a FAQ format.
-ms.openlocfilehash: fd4d3b8af64903e076e373c4daa7c40f1772aefc
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: ea47c7bfc912ad1fa659309f8323419c2ade29b6
+ms.sourcegitcommit: 6c1e5be9f310adf5b6740ad3284b7582fca9de86
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80291273"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84683574"
 ---
 # <a name="virtual-wan-faq"></a>虚拟 WAN 常见问题解答
 

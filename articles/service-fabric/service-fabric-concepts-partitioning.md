@@ -3,14 +3,14 @@ title: Service Fabric 服务分区
 description: 介绍如何对 Service Fabric 有状态服务进行分区。 使用分区可以将数据存储在本地计算机上，以便数据和计算可以一起扩展。
 ms.topic: conceptual
 origin.date: 06/30/2017
+ms.date: 06/08/2020
 ms.author: v-yeche
-ms.date: 01/06/2020
-ms.openlocfilehash: 36975f1990c61e95d1d143345268192697381028
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: e5423f137e9e90a3033d5aeed5b3c76a49377893
+ms.sourcegitcommit: 0e178672632f710019eae60cea6a45ac54bb53a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79291423"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84356276"
 ---
 # <a name="partition-service-fabric-reliable-services"></a>Service Fabric Reliable Services 分区
 本文介绍 Azure Service Fabric Reliable Services 分区的基本概念。 本文中使用的源代码也可以在 [GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions)上获取。
@@ -54,11 +54,13 @@ ms.locfileid: "79291423"
 
 ![简单分区](./media/service-fabric-concepts-partitioning/cities.png)
 
-因为城市的人口差别很大，所以最后可能出现一些分区包含大量数据而另一些分区包含非常少的数据这样一种状态。 那么分区具有不均匀的状态数量会有什么影响呢？
+<!--MOONCAKE: CUSTOMIZE WITH `Seattle` AND `Kirkland`-->
 
-<!-- Not Available on Seattle and Kirkland-->
+因为城市的人口差别很大，所以最后可能出现这样的状态：一些分区包含大量数据（例如 `Seattle`），而其他分区包含的数据非常少（例如 `Kirkland`）。 那么分区具有不均匀的状态数量会有什么影响呢？
 
-如果再次考虑该示例，便可以很容易地发现为西雅图保存投票的分区获得的流量会多于柯克兰的相应分区。 默认情况下，Service Fabric 可确保每个节点上的主副本和辅助副本数量大致相同。 因此，最后可能节点容纳的一些副本处理较多流量，而其他副本处理较少流量。 会倾向于避免群集中出现类似于这种情况的热点和冷点。
+如果再次考虑该示例，便可以很容易地发现为`Seattle`保存投票的分区获得的流量会多于`Kirkland`的相应分区。 默认情况下，Service Fabric 可确保每个节点上的主副本和辅助副本数量大致相同。 因此，最后可能节点容纳的一些副本处理较多流量，而其他副本处理较少流量。 会倾向于避免群集中出现类似于这种情况的热点和冷点。
+
+<!--MOONCAKE: CUSTOMIZE WITH `Seattle` AND `Kirkland`-->
 
 为避免出现这种情况，从分区的角度来看，应做两件事：
 
@@ -119,10 +121,10 @@ Service Fabric 提供了三个分区方案可供选择：
 > 
 > 
 
-1. 打开“Visual Studio” > “文件” > “新建” > “项目”     。
-2. 在“新建项目”对话框中，选择 Service Fabric 应用程序  。
+1. 打开“Visual Studio” > “文件” > “新建” > “项目”   。
+2. 在“新建项目”对话框中，选择 Service Fabric 应用程序。
 3. 将项目命名为“AlphabetPartitions”。
-4. 在“创建服务”  对话框中，选择“有状态”  服务并将它称为“Alphabet.Processing”。
+4. 在“创建服务”对话框中，选择“有状态”服务并将它称为“Alphabet.Processing”。
 5. 设置分区数。 打开 AlphabetPartitions 项目的 ApplicationPackageRoot 文件夹中的 Applicationmanifest.xml 文件，然后将参数 Processing_PartitionCount 更新为 26，如下所示。
 
     ```xml
@@ -232,7 +234,7 @@ Service Fabric 提供了三个分区方案可供选择：
 10. 让我们将一个无状态服务添加到项目，以查看如何调用特定分区。
 
     此服务可用作简单 Web 界面，它接受姓氏作为查询字符串参数，确定分区键，并将它发送到 Alphabet.Processing 服务进行处理。
-11. 在“创建服务”对话框中，选择“无状态”服务并将它称为“Alphabet.Web”，如下所示   。
+11. 在“创建服务”对话框中，选择“无状态”服务并将它称为“Alphabet.Web”，如下所示 。
 
     ![无状态服务屏幕截图](./media/service-fabric-concepts-partitioning/createnewstateless.png)上获取。
 12. 在 Alphabet.WebApi 服务的 ServiceManifest.xml 中更新终结点信息，以打开端口，如下所示。
@@ -352,9 +354,6 @@ Service Fabric 提供了三个分区方案可供选择：
     ![浏览器屏幕截图](./media/service-fabric-concepts-partitioning/samplerunning.png)
 
 该示例的完整源代码位于 [GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions)。
-
-## <a name="reliable-services-and-actor-forking-subprocesses"></a>Reliable Services 和执行组件分支子进程
-服务结构不支持 Reliable Services，因此也不支持 Reliable Actors 分支子进程。 这里举例说明其不受支持的原因：[CodePackageActivationContext](https://docs.azure.cn/dotnet/api/system.fabric.codepackageactivationcontext?view=azure-dotnet) 不能用于注册不受支持的子过程，并且取消令牌仅发送到已注册过程；若子过程在父过程收到取消令牌后未关闭，会导致各种问题，例如升级失败。 
 
 ## <a name="next-steps"></a>后续步骤
 有关 Service Fabric 概念的信息，请参阅以下内容：

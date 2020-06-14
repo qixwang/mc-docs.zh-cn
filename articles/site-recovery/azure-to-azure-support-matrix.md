@@ -3,14 +3,14 @@ title: 使用 Azure Site Recovery 的 Azure VM 灾难恢复的支持矩阵
 description: 总结对使用 Azure Site Recovery 将 Azure VM 灾难恢复到次要区域的支持。
 ms.topic: article
 origin.date: 01/10/2020
-ms.date: 04/13/2020
+ms.date: 06/08/2020
 ms.author: v-yeche
-ms.openlocfilehash: 40bc99aa3fe7463cafc0c5506254a04c619cbe0a
-ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
+ms.openlocfilehash: 0b7c12d7bd242f36614bfa64e2f58b7a54b81c75
+ms.sourcegitcommit: 5ae04a3b8e025986a3a257a6ed251b575dbf60a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82093517"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84440575"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>在 Azure 区域之间进行 Azure VM 灾难恢复的支持矩阵
 
@@ -39,7 +39,7 @@ ms.locfileid: "82093517"
 
 可在同一地理群集中的任意两个区域之间复制和恢复 VM。 在定义地理群集时请注意数据延迟和主权。
 
-地理群集  | **Azure 区域**
+地理群集 | **Azure 区域**
 -- | --
 中国 | 中国东部、中国北部、中国东部 2、中国北部 2
 
@@ -69,18 +69,19 @@ Site Recovery 支持复制那些运行本节中所列操作系统的 Azure VM。
 
 ### <a name="windows"></a>Windows
 
-**操作系统** | **详细信息**
---- | ---
-Windows Server 2019 | 支持服务器核心、带桌面体验的服务器。
-Windows Server 2016  | 支持服务器核心、带桌面体验的服务器。
-Windows Server 2012 R2 | 。
-Windows Server 2012 | 。
-Windows Server 2008 R2 SP1/SP2 | 。<br/><br/> 从适用于 Azure VM 的移动服务扩展版本 [9.30](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery) 开始，需要在运行 Windows Server 2008 R2 SP1/SP2 的计算机上安装 Windows [服务堆栈更新 (SSU)](https://support.microsoft.com/help/4490628) 和 [SHA-2 更新](https://support.microsoft.com/help/4474419)。 从 2019 年 9 月开始不再支持 SHA-1，如果未启用 SHA-2 代码签名，则无法按预期方式安装/升级代理扩展。 详细了解 [SHA-2 升级和要求](https://aka.ms/SHA-2KB)。
-Windows 10 (x64) | 。
+|**操作系统** | **详细信息** |
+|--- | --- |
+|Windows Server 2019 | 支持服务器核心、带桌面体验的服务器。|
+|Windows Server 2016  | 支持服务器核心、带桌面体验的服务器。|
+|Windows Server 2012 R2 | 。|
+|Windows Server 2012 | 。|
+|Windows Server 2008 R2 SP1/SP2 | 。<br/><br/> 从适用于 Azure VM 的移动服务扩展版本 [9.30](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery) 开始，需要在运行 Windows Server 2008 R2 SP1/SP2 的计算机上安装 Windows [服务堆栈更新 (SSU)](https://support.microsoft.com/help/4490628) 和 [SHA-2 更新](https://support.microsoft.com/help/4474419)。 从 2019 年 9 月开始不再支持 SHA-1，如果未启用 SHA-2 代码签名，则无法按预期方式安装/升级代理扩展。 详细了解 [SHA-2 升级和要求](https://aka.ms/SHA-2KB)。 |
+|Windows 10 (x64) | 。 |
+Windows 7 (x64) SP1 及更高版本 | 从适用于 Azure VM 的移动服务扩展版本 [9.30](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery) 开始，需要在运行 Windows 7 SP1 的计算机上安装 Windows [服务堆栈更新 (SSU)](https://support.microsoft.com/help/4490628) 和 [SHA-2 更新](https://support.microsoft.com/help/4474419)。 从 2019 年 9 月开始不再支持 SHA-1。如果未启用 SHA-2 代码签名，则无法按预期方式安装/升级代理扩展。 详细了解 [SHA-2 升级和要求](https://aka.ms/SHA-2KB)。
 
 <!--Not Available on Windows 8.1 (x64) -->
 <!--Not Available on Windows 8 (x64) -->
-<!--Not Available on Windows 7 (x64) -->
+
 
 #### <a name="linux"></a>Linux
 
@@ -132,16 +133,16 @@ Debian 8 | 9.28 | 3.16.0-4-amd64 到 3.16.0-10-amd64、4.9.0-0.bpo.4-amd64 到 4
 
 **版本** | **移动服务版本** | **内核版本** |
 --- | --- | --- |
-SUSE Linux Enterprise Server 12（SP1、SP2、SP3、SP4） | 9.32 | 支持所有[库存 SUSE 12 SP1、SP2、SP3、SP4 内核](https://wiki.microfocus.com/index.php/SUSE/SLES/Kernel_versions#SUSE_Linux_Enterprise_Server_12)。<br /><br /> 4.4.138-4.7-azure 到 4.4.180-4.31-azure、<br />4.12.14-6.3-azure 到 4.12.14-6.34-azure  |
-SUSE Linux Enterprise Server 12（SP1、SP2、SP3、SP4） | 9.31 | 支持所有[库存 SUSE 12 SP1、SP2、SP3、SP4 内核](https://wiki.microfocus.com/index.php/SUSE/SLES/Kernel_versions#SUSE_Linux_Enterprise_Server_12)。<br /><br /> 4.4.138-4.7-azure 到 4.4.180-4.31-azure、<br />4.12.14-6.3-azure 到 4.12.14-6.29-azure  |
-SUSE Linux Enterprise Server 12（SP1、SP2、SP3、SP4） | 9.30 | 支持所有[库存 SUSE 12 SP1、SP2、SP3、SP4 内核](https://wiki.microfocus.com/index.php/SUSE/SLES/Kernel_versions#SUSE_Linux_Enterprise_Server_12)。<br /><br /> 4.4.138-4.7-azure 到 4.4.180-4.31-azure、<br />4.12.14-6.3-azure 到 4.12.14-6.29-azure  |
-SUSE Linux Enterprise Server 12（SP1、SP2、SP3、SP4） | 9.29 | 支持所有[库存 SUSE 12 SP1、SP2、SP3、SP4 内核](https://wiki.microfocus.com/index.php/SUSE/SLES/Kernel_versions#SUSE_Linux_Enterprise_Server_12)。<br /><br /> 4.4.138-4.7-azure 到 4.4.180-4.31-azure、<br />4.12.14-6.3-azure 到 4.12.14-6.23-azure  |
+SUSE Linux Enterprise Server 12（SP1、SP2、SP3、SP4） | 9.32 | 支持所有库存 SUSE 12 SP1、SP2、SP3、SP4 内核。<br /><br /> 4.4.138-4.7-azure 到 4.4.180-4.31-azure、<br />4.12.14-6.3-azure 到 4.12.14-6.34-azure  |
+SUSE Linux Enterprise Server 12（SP1、SP2、SP3、SP4） | 9.31 | 支持所有库存 SUSE 12 SP1、SP2、SP3、SP4 内核。<br /><br /> 4.4.138-4.7-azure 到 4.4.180-4.31-azure、<br />4.12.14-6.3-azure 到 4.12.14-6.29-azure  |
+SUSE Linux Enterprise Server 12（SP1、SP2、SP3、SP4） | 9.30 | 支持所有库存 SUSE 12 SP1、SP2、SP3、SP4 内核。<br /><br /> 4.4.138-4.7-azure 到 4.4.180-4.31-azure、<br />4.12.14-6.3-azure 到 4.12.14-6.29-azure  |
+SUSE Linux Enterprise Server 12（SP1、SP2、SP3、SP4） | 9.29 | 支持所有库存 SUSE 12 SP1、SP2、SP3、SP4 内核。<br /><br /> 4.4.138-4.7-azure 到 4.4.180-4.31-azure、<br />4.12.14-6.3-azure 到 4.12.14-6.23-azure  |
 
 #### <a name="supported-suse-linux-enterprise-server-15-kernel-versions-for-azure-virtual-machines"></a>Azure 虚拟机支持的 SUSE Linux Enterprise Server 15 内核版本
 
 **版本** | **移动服务版本** | **内核版本** |
 --- | --- | --- |
-SUSE Linux Enterprise Server 15 和 15 SP1 | 9.32 | 支持所有[库存 SUSE 15 和 15 SP1 内核](https://wiki.microfocus.com/index.php/SUSE/SLES/Kernel_versions#SUSE_Linux_Enterprise_Server_15)。<br /><br /> 4.12.14-5.5-azure 到 4.12.14-8.22-azure |
+SUSE Linux Enterprise Server 15 和 15 SP1 | 9.32 | 默认情况下，支持所有[库存 SUSE 15 和 15 SP1 内核](https://www.suse.com/support/kb/doc/?id=000019587)。<br /><br /> 4.12.14-5.5-azure 到 4.12.14-8.22-azure |
 
 ## <a name="replicated-machines---linux-file-systemguest-storage"></a>复制的计算机 - Linux 文件系统/来宾存储
 
@@ -163,6 +164,7 @@ Azure 库映像 - 由第三方发布 | 支持 | 如果 VM 在受支持的操作�
 使用 Site Recovery 迁移 VM | 支持 | 如果使用 Site Recovery 将 VMware VM 或物理计算机迁移到 Azure，则需要卸载计算机上运行的旧版移动服务，并在重启计算机后将该计算机复制到另一个 Azure 区域。
 RBAC 策略 | 不支持 | VM 上的基于角色的访问控制 (RBAC) 策略不会复制到目标区域中的故障转移 VM。
 扩展 | 不支持 | 扩展不会复制到目标区域中的故障转移 VM。 需要在故障转移后手动安装。
+邻近放置组 | 不支持 | 无法使用 Site Recovery 保护位于邻近放置组内的虚拟机。
 
 <!--Not Available on Availability zones | Supported |-->
 
@@ -199,9 +201,9 @@ OS 磁盘的最大大小 | 2048 GB | [深入了解 ](../virtual-machines/windows
 存储空间 | 支持 |
 静态加密 (SSE) | 支持 | SSE 是存储帐户的默认设置。
 静态加密 (CMK) | 支持 | 托管磁盘支持软件密钥
-适用于 Windows OS 的 Azure 磁盘加密 (ADE) | 支持具有托管磁盘的 VM。 | 不支持使用非托管磁盘的 VM。 |
-适用于 Linux OS 的 Azure 磁盘加密 (ADE) | 支持具有托管磁盘的 VM。 | 不支持使用非托管磁盘的 VM。 |
-热添加    | 支持 | 使用托管磁盘的 VM 支持对添加到已复制 Azure VM 的数据磁盘启用复制。
+适用于 Windows OS 的 Azure 磁盘加密 (ADE) | 支持具有托管磁盘的 VM。 | 不支持使用非托管磁盘的 VM。 <br/><br/> 不支持对单个磁盘上的单个卷进行加密。|
+适用于 Linux OS 的 Azure 磁盘加密 (ADE) | 支持具有托管磁盘的 VM。 | 不支持使用非托管磁盘的 VM。 <br/><br/> 不支持对单个磁盘上的单个卷进行加密。|
+热添加    | 支持 | 使用托管磁盘的 VM 支持对添加到已复制 Azure VM 的数据磁盘启用复制。 <br/><br/> 一次只能将一个磁盘热添加到 Azure VM。 不支持并行添加多个磁盘。 |
 热删除磁盘    | 不支持 | 如果在 VM 上删除数据磁盘，需要先禁用复制然后重新为 VM 启用复制。
 排除磁盘 | 支持。 必须使用 [PowerShell](azure-to-azure-exclude-disks.md) 进行配置。 |    默认会排除临时磁盘。
 存储空间直通  | 崩溃一致恢复点支持。 不支持应用程序一致恢复点。 |
@@ -215,7 +217,8 @@ RA-GRS | 支持 |
 常规用途 V2 存储帐户（包括热存储层和冷存储层） | 支持 | 与常规用途 V1 存储帐户相比，事务成本大幅增加
 第 2 代（UEFI 启动） | 支持
 
-<!--Not Avaiable on Line 198,  HSM Encryption at rest (CMK) | HSM keys -->
+<!--Not Avaiable on Line 198-200,  HSM Encryption at rest (CMK) | HSM keys -->
+<!--Not Avaiable on Line 209+1,  ZRS -->
 
 >[!IMPORTANT]
 > 为了避免出现性能问题，请务必遵守 [Linux](../virtual-machines/linux/disk-scalability-targets.md) 或 [Windows](../virtual-machines/windows/disk-scalability-targets.md) VM 的 VM 磁盘可伸缩性和性能目标。 如果使用默认设置，Site Recovery 会基于源配置创建所需的磁盘和存储帐户。 如果自定义和选择自己的设置，请遵守源 VM 的磁盘可伸缩性和性能目标。
@@ -246,7 +249,7 @@ Internet 负载均衡器 | 支持 | 在恢复计划中使用 Azure 自动化脚�
 公共 IP 地址 | 支持 | 将现有的公共 IP 地址与 NIC 关联。 或者，在恢复计划中使用 Azure 自动化脚本创建公共 IP 地址并将其与 NIC 关联。
 NIC 上的 NSG | 支持 | 在恢复计划中使用 Azure 自动化脚本将 NSG 与 NIC 关联。
 子网上的 NSG | 支持 | 在恢复计划中使用 Azure 自动化脚本将 NSG 与子网关联。
-保留（静态）IP 地址 | 支持 | 如果源 VM 上的 NIC 具有静态 IP 地址，并且目标子网具有相同的可用 IP 地址，则会将它分配给故障转移 VM。<br/><br/> 如果目标子网没有相同的可用 IP 地址，则为 VM 保留子网中的某个可用 IP 地址。<br/><br/> 此外可以在“复制的项” > “设置” > “计算和网络” > “网络接口”     中指定固定的 IP 地址和子网。
+保留（静态）IP 地址 | 支持 | 如果源 VM 上的 NIC 具有静态 IP 地址，并且目标子网具有相同的可用 IP 地址，则会将它分配给故障转移 VM。<br/><br/> 如果目标子网没有相同的可用 IP 地址，则为 VM 保留子网中的某个可用 IP 地址。<br/><br/> 此外可以在“复制的项” > “设置” > “计算和网络” > “网络接口”   中指定固定的 IP 地址和子网。
 动态 IP 地址 | 支持 | 如果源上的 NIC 具有动态 IP 地址，故障转移 VM 上的 NIC 也默认为动态。<br/><br/> 如果有需要，可以将其修改为固定的 IP 地址。
 多个 IP 地址 | 不支持 | 如果故障转移的 VM 包含采用多个 IP 地址的 NIC，则只会保留源区域中 NIC 的主要 IP 地址。 若要分配多个 IP 地址，可将 VM 添加到 [恢复计划](recovery-plan-overview.md)，并附加一个脚本用于将其他 IP 地址分配到该计划，或者，可以手动进行更改，或故障转移后使用脚本进行更改。
 流量管理器     | 支持 | 可以预配置流量管理器，这样在正常情况下，流量路由到源区域中的终结点；发生故障转移时，流量路由到目标区域中的终结点。

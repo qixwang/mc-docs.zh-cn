@@ -108,14 +108,6 @@
               href: ../m-series.md?toc=/virtual-machines/linux/toc.json&bc=/virtual-machines/linux/breadcrumb/toc.json
             - name: 约束的 vCPU
               href: constrained-vcpu.md
-        - name: 存储优化
-          items:
-            - name: 概述
-              href: ../sizes-storage.md?toc=/virtual-machines/linux/toc.json&bc=/virtual-machines/linux/breadcrumb/toc.json
-            - name: Lsv2 系列
-              href: ../lsv2-series.md?toc=/virtual-machines/linux/toc.json&bc=/virtual-machines/linux/breadcrumb/toc.json
-            - name: 优化性能
-              href: storage-performance.md
         - name: GPU - 加速计算
           items:
             - name: 概述
@@ -522,6 +514,10 @@
           href: disks-use-storage-explorer-managed-disks.md
         - name: 拍摄磁盘快照
           href: snapshot-copy-managed-disk.md
+        - name: 创建增量快照 - CLI
+          href: disks-incremental-snapshots.md
+        - name: 创建增量快照 - 门户
+          href: disks-incremental-snapshots-portal.md
         - name: 备份非托管磁盘
           href: incremental-snapshots.md
         - name: 迁移和转换

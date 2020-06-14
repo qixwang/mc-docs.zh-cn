@@ -12,13 +12,13 @@ metadata:
   author: WenJason
   ms.author: v-jay
   origin.date: 04/15/2020
-  ms.date: 05/11/2020
-  ms.openlocfilehash: c4378cb890b6007d31306799fe87011c789cdd1e
-  ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
+  ms.date: 06/15/2020
+  ms.openlocfilehash: dc46282361683a305055e1c27720cd9df8397535
+  ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 04/28/2020
-  ms.locfileid: "82198643"
+  ms.lasthandoff: 06/12/2020
+  ms.locfileid: "84723410"
 landingContent:
 - title: 关于 Azure Synapse Analytics（以前称为 Azure SQL 数据仓库）
   linkLists:
@@ -40,6 +40,12 @@ landingContent:
       url: create-data-warehouse-portal.md
 - title: 加载数据
   linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 使用 COPY 语句快速引入数据
+      url: quickstart-bulk-load-copy-tsql.md
+    - text: COPY 语句示例
+      url: quickstart-bulk-load-copy-tsql-examples.md
   - linkListType: concept
     links:
     - text: 设计数据加载策略

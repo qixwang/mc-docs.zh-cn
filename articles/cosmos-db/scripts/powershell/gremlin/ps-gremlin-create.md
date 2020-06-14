@@ -5,15 +5,15 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: sample
-origin.date: 05/18/2019
-ms.date: 01/20/2020
+origin.date: 05/01/2020
+ms.date: 06/15/2020
 ms.author: v-yeche
-ms.openlocfilehash: f014ddaede9089f0ebae8a8649535583891c5e98
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: bc12e28fe43016a3a6e05be2a9226f95408e02df
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "76270096"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723145"
 ---
 # <a name="create-a-database-and-graph-for-azure-cosmos-db---gremlin-api"></a>创建 Azure Cosmos DB 的数据库和图 - Gremlin API
 
@@ -24,72 +24,50 @@ ms.locfileid: "76270096"
 ## <a name="sample-script"></a>示例脚本
 
 ```powershell
-# Create an Azure Cosmos Account for Gremlin API with multi-master enabled, shared database throughput,'
-# dedicated graph throughput with last writer wins conflict policy and custom resolution path
+# Reference: Az.CosmosDB | https://docs.microsoft.com/powershell/module/az.cosmosdb
+# --------------------------------------------------
+# Purpose
+# Create Cosmos Gremlin API account, database, and graph
+# with dedicated throughput and conflict resolution policy
+# with last writer wins and custom resolver path
+# --------------------------------------------------
+Function New-RandomString{Param ([Int]$Length = 10) return $(-join ((97..122) + (48..57) | Get-Random -Count $Length | ForEach-Object {[char]$_}))}
+# --------------------------------------------------
+$uniqueId = New-RandomString -Length 7 # Random alphanumeric string for unique resource names
+$apiKind = "Gremlin"
+# --------------------------------------------------
+# Variables - ***** SUBSTITUTE YOUR VALUES *****
+$locations = @("China East", "China North") # Regions ordered by failover priority
+$resourceGroupName = "myResourceGroup" # Resource Group must already exist
+$accountName = "cosmos-$uniqueId" # Must be all lower case
+$consistencyLevel = "Session"
+$tags = @{Tag1 = "MyTag1"; Tag2 = "MyTag2"; Tag3 = "MyTag3"}
+$databaseName = "myDatabase"
+$graphName = "myGraph"
+$graphRUs = 400
+$partitionKeys = @("/myPartitionKey")
+# --------------------------------------------------
+$conflictResolutionPath = "/_ts"
+# --------------------------------------------------
+Write-Host "Creating account $accountName"
+$account = New-AzCosmosDBAccount -ResourceGroupName $resourceGroupName `
+    -Location $locations -Name $accountName -ApiKind $apiKind -Tag $tags `
+    -DefaultConsistencyLevel $consistencyLevel `
+    -EnableAutomaticFailover:$true
 
-#generate a random 10 character alphanumeric string to ensure unique resource names
-$uniqueId=$(-join ((97..122) + (48..57) | Get-Random -Count 15 | % {[char]$_}))
+Write-Host "Creating database $databaseName"
+$database = New-AzCosmosDBGremlinDatabase -ParentObject $account `
+    -Name $databaseName
 
-$apiVersion = "2015-04-08"
-$location = "China North 2"
-$resourceGroupName = "MyResourceGroup"
-$accountName = "mycosmosaccount-$uniqueId" # must be lower case.
-$apiType = "EnableGremlin"
-$accountResourceType = "Microsoft.DocumentDb/databaseAccounts"
-$databaseName = "database1"
-$databaseResourceName = $accountName + "/gremlin/" + $databaseName
-$databaseResourceType = "Microsoft.DocumentDb/databaseAccounts/apis/databases"
-$graphName = "graph1"
-$graphResourceName = $accountName + "/gremlin/" + $databaseName + "/" + $graphName
-$graphResourceType = "Microsoft.DocumentDb/databaseAccounts/apis/databases/graphs"
+# Prepare conflict resolution policy object for graph
+$conflictResolutionPolicy = New-AzCosmosDBGremlinConflictResolutionPolicy `
+    -Type LastWriterWins -Path $conflictResolutionPath
 
-# Create account
-$locations = @(
-    @{ "locationName"="China North 2"; "failoverPriority"=0 },
-    @{ "locationName"="China East 2"; "failoverPriority"=1 }
-)
-
-$consistencyPolicy = @{ "defaultConsistencyLevel"="Session" }
-
-$accountProperties = @{
-    "capabilities"= @( @{ "name"=$apiType } );
-    "databaseAccountOfferType"="Standard";
-    "locations"=$locations;
-    "consistencyPolicy"=$consistencyPolicy;
-    "enableMultipleWriteLocations"="true"
-}
-
-New-AzResource -ResourceType $accountResourceType `
-    -ApiVersion $apiVersion -ResourceGroupName $resourceGroupName -Location $location `
-    -Name $accountName -PropertyObject $accountProperties -Force
-
-# Create database with shared throughput
-$databaseProperties = @{
-    "resource"=@{ "id"=$databaseName };
-    "options"=@{ "Throughput"= 400 }
-}
-New-AzResource -ResourceType $databaseResourceType `
-    -ApiVersion $apiVersion -ResourceGroupName $resourceGroupName `
-    -Name $databaseResourceName -PropertyObject $databaseProperties -Force
-
-# Create a graph with a partition key, last writer wins conflict policy and custom conflict resolution path
-$graphProperties = @{
-    "resource"=@{
-        "id"=$graphName; 
-        "partitionKey"=@{
-            "paths"=@("/myPartitionKey"); 
-            "kind"="Hash"
-        };
-        "conflictResolutionPolicy"=@{
-            "mode"="lastWriterWins"; 
-            "conflictResolutionPath"="/myResolutionPath"
-        }
-    };
-    "options"=@{ "Throughput"= 400 }
-}
-New-AzResource -ResourceType $graphResourceType `
-    -ApiVersion $apiVersion -ResourceGroupName $resourceGroupName `
-    -Name $graphResourceName -PropertyObject $graphProperties  -Force
+Write-Host "Creating graph $graphName"
+$graph = New-AzCosmosDBGremlinGraph -ParentObject $database `
+    -Name $graphName -Throughput $graphRUs `
+    -PartitionKeyKind Hash -PartitionKeyPath $partitionKeys `
+    -ConflictResolutionPolicy $conflictResolutionPolicy
 
 ```
 
@@ -107,8 +85,11 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 
 | Command | 说明 |
 |---|---|
-|**Azure 资源**| |
-| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | 创建资源。 |
+|**Azure Cosmos DB**| |
+| [New-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbaccount) | 新建 Cosmos DB 帐户。 |
+| [Set-AzCosmosDBGremlinDatabase](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbgremlindatabase) | 创建或更新 Gremlin API 数据库。 |
+| [New-AzCosmosDBGremlinConflictResolutionPolicy](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbgremlinconflictresolutionpolicy) | 创建 Gremlin API 写入冲突解决策略。 |
+| [Set-AzCosmosDBGremlinGraph](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbgremlingraph) | 创建或更新 Gremlin API 图。 |
 |**Azure 资源组**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | 删除资源组，包括所有嵌套的资源。 |
 |||
@@ -119,4 +100,4 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 
 可以在 [Azure Cosmos DB PowerShell 脚本](../../../powershell-samples.md)中找到其他 Azure Cosmos DB PowerShell 脚本示例。
 
-<!--Update_Description: update meta properties -->
+<!-- Update_Description: update meta properties, wording update, update link -->

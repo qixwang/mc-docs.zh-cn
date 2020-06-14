@@ -7,15 +7,15 @@ ms.service: databox
 ms.subservice: heavy
 ms.topic: tutorial
 origin.date: 09/03/2019
-ms.date: 12/09/2019
+ms.date: 06/08/2020
 ms.author: v-jay
 ms.localizationpriority: high
-ms.openlocfilehash: 8c8757dc19850dc80752411900a73f086b00c8e3
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 8a3cc46fc024f00674cd6025d316f083df388384
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79293368"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723351"
 ---
 ::: zone target = "docs"
 
@@ -25,7 +25,7 @@ ms.locfileid: "79293368"
 
 ::: zone target = "chromeless"
 
-# <a name="return-azure-data-box-heavy-and-verify-data-upload-to-azure"></a>退回 Azure Data Box Heavy 并验证上传到 Azure 的数据
+## <a name="return-azure-data-box-heavy-and-verify-data-upload-to-azure"></a>退回 Azure Data Box Heavy 并验证上传到 Azure 的数据
 
 ::: zone-end
 
@@ -78,17 +78,17 @@ ms.locfileid: "79293368"
     2. 拨打货运公司的本地号码以安排取件。
     3. 请确保发货标签显眼地显示在货件的外部。
     4. 确保已从设备中删除上次发货的旧发货标签。
-3. 承运人提取 Data Box Heavy 并进行扫描后，门户中的订单状态将更新为“已提货”。  此外还会显示一个跟踪 ID。
+3. 承运人提取 Data Box Heavy 并进行扫描后，门户中的订单状态将更新为“已提货”。 此外还会显示一个跟踪 ID。
 
 ::: zone target = "docs"
 
 ## <a name="verify-data-upload-to-azure"></a>验证 Azure 中的数据上传
 
-当 Azure 收到并扫描该设备时，订单状态将更新为“已接收”。  然后，该设备将经受物理验证，以确定是否存在损坏或篡改迹象。
+当 Azure 收到并扫描该设备时，订单状态将更新为“已接收”。 然后，该设备将经受物理验证，以确定是否存在损坏或篡改迹象。
 
 验证完成后，Data Box Heavy 将连接到 Azure 数据中心的网络。 数据复制将自动开始。 根据数据大小，复制操作可能需要几小时到几天的时间才能完成。 可以在门户中监视复制作业的进度。
 
-复制完成后，订单状态将更新为“已完成”。 
+复制完成后，订单状态将更新为“已完成”。
 
 从源中删除数据之前，请验证数据是否已上传到 Azure。 数据可能位于以下位置：
 
@@ -101,7 +101,7 @@ ms.locfileid: "79293368"
 
 - 托管磁盘资源组。 创建托管磁盘时，会将 VHD 作为页 Blob 上传，然后将其转换为托管磁盘。 托管磁盘会附加到在创建订单时指定的资源组。 
 
-    - 如果已成功复制到 Azure 中的托管磁盘，则可转到  Azure 门户中的“订单详细信息”，记下为托管磁盘指定的资源组。
+    - 如果已成功复制到 Azure 中的托管磁盘，则可转到 Azure 门户中的“订单详细信息”，记下为托管磁盘指定的资源组。
 
         ![标识托管磁盘资源组](media/data-box-deploy-copy-data-from-vhds/order-details-managed-disk-resource-groups.png)
 
@@ -109,7 +109,7 @@ ms.locfileid: "79293368"
 
         ![附加到资源组的托管磁盘](media/data-box-deploy-copy-data-from-vhds/managed-disks-resource-group.png)
 
-    - 如果复制了 VHDX 或动态/差分 VHD，则可以将 VHDX/VHD 作为页 Blob 上传到临时存储帐户，但无法将 VHD 转换为托管磁盘。 转到临时存储帐户 >“Blob”，然后选择适当的容器 - 标准 SSD、标准 HDD 或高级 SSD。  VHD 会作为页 Blob 上传到临时存储帐户中。
+    - 如果复制了 VHDX 或动态/差分 VHD，则可以将 VHDX/VHD 作为页 Blob 上传到临时存储帐户，但无法将 VHD 转换为托管磁盘。 转到临时存储帐户 >“Blob”，然后选择适当的容器 - 标准 SSD、标准 HDD 或高级 SSD。 VHD 会作为页 Blob 上传到临时存储帐户中。
     
 ::: zone-end
 

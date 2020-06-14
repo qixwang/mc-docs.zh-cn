@@ -1,5 +1,5 @@
 ---
-title: '教程：在 C# 中为 Azure SQL 数据库中的数据编制索引 '
+title: C# 教程：为 Azure SQL 数据编制索引
 titleSuffix: Azure Cognitive Search
 description: 在本 C# 教程中，连接到 Azure SQL 数据库、提取可搜索的数据，并将其加载到 Azure 认知搜索索引。
 manager: nitinme
@@ -7,16 +7,16 @@ author: HeidiSteen
 ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: tutorial
-origin.date: 11/04/2019
-ms.date: 03/16/2020
-ms.openlocfilehash: 01de93811a677e33d22453e6de73bf6eea4122eb
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+origin.date: 02/28/2020
+ms.date: 06/09/2020
+ms.openlocfilehash: ab7d46b77c80c175395ba76b0936f7bc79329b00
+ms.sourcegitcommit: c4fc01b7451951ef7a9616fca494e1baf29db714
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78850240"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84564371"
 ---
-# <a name="tutorial-use-c-to-index-data-from-sql-databases-in-azure-cognitive-search"></a>教程：在 Azure 认知搜索中使用 C# 为 SQL 数据库中的数据编制索引
+# <a name="tutorial-index-azure-sql-data-using-the-net-sdk"></a>教程：使用 .NET SDK 为 Azure SQL 数据编制索引
 
 配置一个[索引器](search-indexer-overview.md)，用于从 Azure SQL 数据库提取可搜索的数据，并将其发送到 Azure 认知搜索中的搜索索引。 
 

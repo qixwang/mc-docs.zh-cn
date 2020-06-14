@@ -7,14 +7,14 @@ ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: quickstart
 origin.date: 06/25/2019
-ms.date: 02/10/2020
+ms.date: 06/08/2020
 ms.custom: mvc
-ms.openlocfilehash: 3db275ccad843a3ba968b569e863c875966075f7
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 4622cfe2c6f7cae4021cd07c1a717df0e051b897
+ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77068113"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84275609"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql---single-server-using-the-azure-cli"></a>快速入门：使用 Azure CLI 创建 Azure Database for PostgreSQL - 单一服务器
 
@@ -27,21 +27,21 @@ ms.locfileid: "77068113"
 
 本文要求运行 Azure CLI 2.0 或更高版本。 若要查看安装的版本，请运行 `az --version` 命令。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/install-azure-cli)。 
 
-要本地运行 CLI，需要使用 [az login](/cli/authenticate-azure-cli?view=interactive-log-in) 命令登录你的帐户。 记下命令行输出中相应订阅名称的 ID 属性  。
-```cli
+要本地运行 CLI，需要使用 [az login](/cli/authenticate-azure-cli?view=interactive-log-in) 命令登录你的帐户。 记下命令行输出中相应订阅名称的 ID 属性。
+```azurecli
 az login
 ```
 
-如果有多个订阅，请选择应计费的资源所在的相应订阅。 使用 [az account set](/cli/account) 命令选择帐户下的特定订阅 ID。 将 az login 输出中你的订阅的 ID 属性替换到订阅 ID 占位符中   。
-```cli
+如果有多个订阅，请选择应计费的资源所在的相应订阅。 使用 [az account set](/cli/account) 命令选择帐户下的特定订阅 ID。 将 az login 输出中你的订阅的 ID 属性替换到订阅 ID 占位符中 。
+```azurecli
 az account set --subscription <subscription id>
 ```
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-使用 [az group create](/cli/group) 命令创建 [Azure 资源组](../azure-resource-manager/management/overview.md)。 资源组是在其中以组的形式部署和管理 Azure 资源的逻辑容器。 应提供唯一名称。 以下示例在 `chinaeast` 位置创建名为 `myresourcegroup` 的资源组。
-```cli
-az group create --name myresourcegroup --location chinaeast
+使用 [az group create](/cli/group) 命令创建 [Azure 资源组](../azure-resource-manager/management/overview.md)。 资源组是在其中以组的形式部署和管理 Azure 资源的逻辑容器。 应提供唯一名称。 以下示例在 `chinaeast2` 位置创建名为 `myresourcegroup` 的资源组。
+```azurecli
+az group create --name myresourcegroup --location chinaeast2
 ```
 
 ## <a name="create-an-azure-database-for-postgresql-server"></a>创建 Azure Database for PostgreSQL 服务器
@@ -53,11 +53,11 @@ az group create --name myresourcegroup --location chinaeast
 ---|---|---
 name | mydemoserver | 选择用于标识 Azure Database for PostgreSQL 服务器的唯一名称。 服务器名称只能包含小写字母、数字和连字符 (-) 字符。 必须包含 3 到 63 个字符。
 resource-group | myresourcegroup | 提供 Azure 资源组的名称。
-sku-name | GP_Gen4_2 | SKU 的名称。 遵循约定“{定价层}\_{计算代系}\_{vCores}”的简写形式。 参阅下表详细了解 sku-name 参数。
+sku-name | GP_Gen5_2 | SKU 的名称。 遵循约定“{定价层}\_{计算代系}\_{vCores}”的简写形式。 参阅下表详细了解 sku-name 参数。
 backup-retention | 7 | 备份保留时间。 单位为天。 范围为 7-35。 
 geo-redundant-backup | 已禁用 | 是否应为此服务器启用异地冗余备份。 允许的值：“Enabled”、“Disabled”。
-location | chinaeast | 服务器的 Azure 位置。
-ssl-enforcement | Enabled | 是否应为此服务器启用 SSL。 允许的值：“Enabled”、“Disabled”。
+location | chinaeast2 | 服务器的 Azure 位置。
+ssl-enforcement | Enabled | 是否应该为此服务器启用 TLS/SSL。 允许的值：“Enabled”、“Disabled”。
 storage-size | 51200 | 服务器的存储容量（以 MB 为单位）。 有效的 storage-size 最小为 5120MB，以 1024MB 为增量递增。 有关存储大小限制的详细信息，请参阅[定价层](./concepts-pricing-tiers.md)文档。 
 版本 | 9.6 | PostgreSQL 主版本。
 admin-user | myadmin | 管理员的登录用户名。 不能是 **azure_superuser**、**admin**、**administrator**、**root**、**guest** 或 **public**。
@@ -65,15 +65,15 @@ admin-password | *安全密码* | 管理员用户的密码。 该密码必须包
 
 
 sku-name 参数值遵循 {定价层}\_{计算层代}\_{vCore 数} 约定，如以下示例中所示：
-+ `--sku-name B_Gen4_1` 映射到基本、第 4 代和 1 个 vCore。 此选项是可用的最小 SKU。
++ `--sku-name B_Gen5_1` 映射到基本、第 5 代和 1 个 vCore。 此选项是可用的最小 SKU。
 + `--sku-name GP_Gen5_32` 映射到常规用途、第 5 层和 32 个 vCore。
 + `--sku-name MO_Gen5_2` 映射到内存优化、第 5 层和 2 个 vCore。
 
 请参阅[定价层](./concepts-pricing-tiers.md)文档来了解适用于每个区域和每个层的有效值。
 
-下面的示例使用服务器管理员登录名 `myadmin` 在资源组 `myresourcegroup` 中创建位于“中国东部”区域的名为 `mydemoserver` 的 PostgreSQL 9.6 服务器。 这是第 4 代常规用途服务器，带有 2 个 vCore    。 用自己的值替换 `<server_admin_password>`。
-```cli
-az postgres server create --resource-group myresourcegroup --name mydemoserver  --location chinaeast --admin-user myadmin --admin-password <server_admin_password> --sku-name GP_Gen4_2 --version 9.6
+下面的示例使用服务器管理员登录名 `myadmin` 在资源组 `myresourcegroup` 中创建位于“中国东部 2”区域的名为 `mydemoserver` 的 PostgreSQL 9.6 服务器。 这是**第 5 代** **常规用途**服务器，带有 **2 个 vCore**。 用自己的值替换 `<server_admin_password>`。
+```azurecli
+az postgres server create --resource-group myresourcegroup --name mydemoserver  --location chinaeast2 --admin-user myadmin --admin-password <server_admin_password> --sku-name GP_Gen5_2 --version 9.6
 ```
 
 > [!NOTE]
@@ -85,7 +85,7 @@ az postgres server create --resource-group myresourcegroup --name mydemoserver  
 使用 [az postgres server firewall-rule create](/cli/postgres/server/firewall-rule) 命令创建 Azure PostgreSQL 服务器级防火墙规则。 服务器级防火墙规则允许外部应用程序（如 [psql](https://www.postgresql.org/docs/9.2/static/app-psql.html) 或 [PgAdmin](https://www.pgadmin.org/)）通过 Azure PostgreSQL 服务防火墙连接到服务器。 
 
 可以设置涵盖某个 IP 范围的防火墙规则，以便通过网络进行连接。 下面的示例使用 [az postgres server firewall-rule create](/cli/postgres/server/firewall-rule) 为单个 IP 地址创建防火墙规则 `AllowMyIP`。
-```cli
+```azurecli
 az postgres server firewall-rule create --resource-group myresourcegroup --server mydemoserver --name AllowMyIP --start-ip-address 192.168.0.1 --end-ip-address 192.168.0.1
 ```
 
@@ -95,24 +95,24 @@ az postgres server firewall-rule create --resource-group myresourcegroup --serve
 ## <a name="get-the-connection-information"></a>获取连接信息
 
 若要连接到服务器，需要提供主机信息和访问凭据。
-```cli
+```azurecli
 az postgres server show --resource-group myresourcegroup --name mydemoserver
 ```
 
-结果采用 JSON 格式。 记下 administratorLogin  和 fullyQualifiedDomainName  。
+结果采用 JSON 格式。 记下 administratorLogin 和 fullyQualifiedDomainName。
 ```json
 {
   "administratorLogin": "myadmin",
   "earliestRestoreDate": null,
   "fullyQualifiedDomainName": "mydemoserver.postgres.database.chinacloudapi.cn",
   "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.DBforPostgreSQL/servers/mydemoserver",
-  "location": "chinaeast",
+  "location": "chinaeast2",
   "name": "mydemoserver",
   "resourceGroup": "myresourcegroup",
   "sku": {
     "capacity": 2,
-    "family": "Gen4",
-    "name": "GP_Gen4_2",
+    "family": "Gen5",
+    "name": "GP_Gen5_2",
     "size": null,
     "tier": "GeneralPurpose"
   },
@@ -138,7 +138,7 @@ az postgres server show --resource-group myresourcegroup --name mydemoserver
    psql --host=<servername> --port=<port> --username=<user@servername> --dbname=<dbname>
    ```
 
-   例如，以下命令使用访问凭据连接到 PostgreSQL 服务器 **mydemoserver.postgres.database.chinacloudapi.cn** 上名为“postgres”  的默认数据库。 提示输入密码时，输入之前选择的 `<server_admin_password>`。
+   例如，以下命令使用访问凭据连接到 PostgreSQL 服务器 **mydemoserver.postgres.database.chinacloudapi.cn** 上名为“postgres”的默认数据库。 提示输入密码时，输入之前选择的 `<server_admin_password>`。
   
    ```bash
    psql --host=mydemoserver.postgres.database.chinacloudapi.cn --port=5432 --username=myadmin@mydemoserver --dbname=postgres
@@ -156,7 +156,7 @@ az postgres server show --resource-group myresourcegroup --name mydemoserver
    CREATE DATABASE mypgsqldb;
    ```
 
-3. 出现提示时，请执行以下命令，将连接切换到新建的数据库 mypgsqldb  ：
+3. 出现提示时，请执行以下命令，将连接切换到新建的数据库 mypgsqldb：
    ```sql
    \c mypgsqldb
    ```
@@ -167,13 +167,13 @@ pgAdmin 是用于 PostgreSQL 的开源工具。 可以从 [pgAdmin 网站](https
 
 1. 在客户端计算机上打开 pgAdmin 应用程序。
 
-2. 从工具栏转到“对象”  ，将鼠标指针悬停在“创建”  上，然后选择“服务器”  。
+2. 从工具栏转到“对象”，将鼠标指针悬停在“创建”上，然后选择“服务器”。
 
-3. 在“创建 - 服务器”对话框中的“常规”选项卡上，为服务器输入唯一的友好名称，例如 **mydemoserver**。  
+3. 在“创建 - 服务器”对话框中的“常规”选项卡上，为服务器输入唯一的友好名称，例如 **mydemoserver**。 
 
    ![“常规”选项卡](./media/quickstart-create-server-database-azure-cli/9-pgadmin-create-server.png)
 
-4. 在“创建 - 服务器”对话框中的“连接”选项卡上，填写设置表。  
+4. 在“创建 - 服务器”对话框中的“连接”选项卡上，填写设置表。 
 
    ![“连接”选项卡](./media/quickstart-create-server-database-azure-cli/10-pgadmin-create-server.png)
 
@@ -181,29 +181,29 @@ pgAdmin 是用于 PostgreSQL 的开源工具。 可以从 [pgAdmin 网站](https
     ---|---|---
     主机名/地址 | 服务器名称 | 此前在创建用于 PostgreSQL 的 Azure 数据库服务器时使用过的服务器名称值。 示例服务器为 **mydemoserver.postgres.database.chinacloudapi.cn**。 请使用完全限定的域名 ( **\*.postgres.database.chinacloudapi.cn**)，如示例中所示。 如果不记得服务器名称，请按上一部分的步骤操作，以便获取连接信息。 
     端口 | 5432 | 连接到用于 PostgreSQL 的 Azure 数据库服务器时使用的端口。 
-    维护数据库 |  postgres | 系统生成的默认数据库名称。
-    用户名 | 服务器管理员登录名 | 此前在创建用于 PostgreSQL 的 Azure 数据库服务器时提供的服务器管理员登录用户名。 如果不记得用户名，请按上一部分的步骤操作，以便获取连接信息。 格式为 username\@servername  。
+    维护数据库 | postgres | 系统生成的默认数据库名称。
+    用户名 | 服务器管理员登录名 | 此前在创建用于 PostgreSQL 的 Azure 数据库服务器时提供的服务器管理员登录用户名。 如果不记得用户名，请按上一部分的步骤操作，以便获取连接信息。 格式为 username\@servername。
     密码 | 管理员密码 | 之前在此快速入门中创建服务器时选择的密码。
     角色 | 留空 | 此时无需提供角色名称。 此字段留空。
-    SSL 模式 | *必需* | 可以在 pgAdmin 的 SSL 选项卡中设置 SSL 模式。默认情况下，所有 Azure Database for PostgreSQL 服务器在创建时都会启用“SSL 强制实施”。 若要关闭“SSL 强制实施”，请参阅 [SSL 强制实施](./concepts-ssl-connection-security.md)。
+    SSL 模式 | *必需* | 可以在 pgAdmin 的 SSL 选项卡中设置 TLS/SSL 模式。默认情况下，所有 Azure Database for PostgreSQL 服务器在创建时都会启用“强制实施 TLS”。 若要禁用“强制实施 TLS”，请参阅[配置 TLS 的强制实施](./concepts-ssl-connection-security.md#configure-enforcement-of-tls)。
     
-5. 选择“保存”  。
+5. 选择“保存” 。
 
-6. 在左侧的“浏览器”窗格中，展开“服务器”节点   。 选择服务器，例如 **mydemoserver**。 单击该服务器与它建立连接。
+6. 在左侧的“浏览器”窗格中，展开“服务器”节点 。 选择服务器，例如 **mydemoserver**。 单击该服务器与它建立连接。
 
-7. 展开服务器节点，然后展开其下的“数据库”。  此列表应包括现有 *postgres* 数据库和已创建的任何其他数据库。 可以使用 Azure Database for PostgreSQL 为每个服务器创建多个数据库。
+7. 展开服务器节点，然后展开其下的“数据库”。 此列表应包括现有 *postgres* 数据库和已创建的任何其他数据库。 可以使用 Azure Database for PostgreSQL 为每个服务器创建多个数据库。
 
-8. 右键单击“数据库”，选择“创建”菜单，并选择“数据库”。   
+8. 右键单击“数据库”，选择“创建”菜单，并选择“数据库”。  
 
-9. 在“数据库”字段中键入所选的数据库名称，例如“mypgsqldb2”。  
+9. 在“数据库”字段中键入所选的数据库名称，例如“mypgsqldb2”。 
 
-10. 从列表框中选择数据库的“所有者”。  选择服务器管理员登录名，例如“my admin”  。
+10. 从列表框中选择数据库的“所有者”。 选择服务器管理员登录名，例如“my admin”。
 
     ![在 pgadmin 中创建数据库](./media/quickstart-create-server-database-azure-cli/11-pgadmin-database.png)
 
-11. 选择“保存”创建新的空白数据库。 
+11. 选择“保存”创建新的空白数据库。
 
-12. 在“浏览器”窗格中，可以在服务器名称下的数据库列表中看到创建的数据库。 
+12. 在“浏览器”窗格中，可以在服务器名称下的数据库列表中看到创建的数据库。
 
 
 
@@ -215,12 +215,12 @@ pgAdmin 是用于 PostgreSQL 的开源工具。 可以从 [pgAdmin 网站](https
 > [!TIP]
 > 本教程系列中的其他快速入门教程是在本文的基础上制作的。 如果打算继续使用后续的快速入门，请不要清除在本快速入门中创建的资源。 如果不打算继续，请在 Azure CLI 中执行以下步骤，删除通过此快速入门创建的所有资源。
 
-```cli
+```azurecli
 az group delete --name myresourcegroup
 ```
 
 若要删除新创建的服务器，可运行 [az postgres server delete](/cli/postgres/server) 命令。
-```cli
+```azurecli
 az postgres server delete --resource-group myresourcegroup --name mydemoserver
 ```
 

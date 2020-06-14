@@ -2,25 +2,26 @@
 title: 将来自 Azure 事件网格的事件接收到 HTTP 终结点中
 description: 描述如何验证 HTTP 终结点，以及随后如何接收和反序列化来自 Azure 事件网格的事件
 services: event-grid
-author: banisadr
+author: Johnnytechn
 manager: darosa
 ms.service: event-grid
 ms.topic: conceptual
 origin.date: 01/01/2019
-ms.date: 06/03/2019
-ms.author: v-yiso
-ms.openlocfilehash: 8f078090bb43cf3017ac62e1a3727ec831c1673b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 06/12/2020
+ms.author: v-johya
+ms.openlocfilehash: e856098bb4ef6275a26756f4317b85f5ed47240d
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "66195084"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723414"
 ---
 # <a name="receive-events-to-an-http-endpoint"></a>将事件接收到 HTTP 终结点
 
-本文介绍如何[验证 HTTP 终结点](security-authentication.md#webhook-event-delivery)以接收来自事件订阅的事件并随后接收和反序列化事件。 本文使用 Azure 函数进行演示，但无论应用程序托管在何处，这些概念都适用。
+本文介绍如何[验证 HTTP 终结点](webhook-event-delivery.md)以接收来自事件订阅的事件并随后接收和反序列化事件。 本文使用 Azure 函数进行演示，但无论应用程序托管在何处，这些概念都适用。
 
-
+> [!NOTE]
+> 强烈推荐在通过事件网格触发 Azure 函数时使用[事件网格触发器](../azure-functions/functions-bindings-event-grid.md)。 此处使用泛型 WebHook 触发器进行演示。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -28,7 +29,7 @@ ms.locfileid: "66195084"
 
 ## <a name="add-dependencies"></a>添加依赖项
 
-若要使用 .NET 进行开发，请向函数添加 `Microsoft.Azure.EventGrid` [Nuget 包](https://www.nuget.org/packages/Microsoft.Azure.EventGrid)的[依赖项](../azure-functions/functions-reference-csharp.md#referencing-custom-assemblies)。 本文中的示例需要使用版本 1.4.0 或更高版本。
+若要使用 .NET 进行开发，请向 `Microsoft.Azure.EventGrid` [Nuget 包](https://www.nuget.org/packages/Microsoft.Azure.EventGrid)的函数[添加依赖项](../azure-functions/functions-reference-csharp.md#referencing-custom-assemblies)。 本文中的示例需要使用版本 1.4.0 或更高版本。
 
 可通过[发布 SDKs](./sdk-overview.md#data-plane-sdks) 引用将 SDK 用于其他语言。 这些包中有用于本机事件类型（如 `EventGridEvent`、`StorageBlobCreatedEventData` 和 `EventHubCaptureFileCreatedEventData`）的模型。
 
@@ -50,7 +51,7 @@ ms.locfileid: "66195084"
 
 ## <a name="endpoint-validation"></a>终结点验证
 
-首先需要处理 `Microsoft.EventGrid.SubscriptionValidationEvent` 事件。 每次有人订阅某个事件时，事件网格都会在数据有效负载中通过 `validationCode` 向终结点发送一个验证事件。 终结点必须回显到响应正文中才能[证明此终结点有效且被你所拥有](security-authentication.md#webhook-event-delivery)。 如果使用第三方 API 服务（例如 [Zapier](https://zapier.com) 或 [IFTTT](https://ifttt.com/)），可能无法以编程方式回显验证码。 对于这些服务，可以使用订阅验证事件中发送的验证 URL 手动验证订阅。 在 `validationUrl` 属性中复制该 URL 并通过 REST 客户端或 Web 浏览器发送 GET 请求。
+首先需要处理 `Microsoft.EventGrid.SubscriptionValidationEvent` 事件。 每次有人订阅某个事件时，事件网格都会在数据有效负载中通过 `validationCode` 向终结点发送一个验证事件。 终结点必须回显到响应正文中才能[证明此终结点有效且被你所拥有](webhook-event-delivery.md)。 如果你使用的是[事件网格触发器](../azure-functions/functions-bindings-event-grid.md)（而不是 Webhook 触发函数），系统会为你执行终结点验证。 如果使用第三方 API 服务（例如 [Zapier](https://zapier.com/home) 或 [IFTTT](https://ifttt.com/)），可能无法以编程方式回显验证码。 对于这些服务，可以使用订阅验证事件中发送的验证 URL 手动验证订阅。 在 `validationUrl` 属性中复制该 URL 并通过 REST 客户端或 Web 浏览器发送 GET 请求。
 
 在 C# 中，`DeserializeEventGridEvents()` 函数会反序列化事件网格事件。 它将事件数据反序列化为适当的类型（如 StorageBlobCreatedEventData）。 `Microsoft.Azure.EventGrid.EventTypes` 类可用于获取受支持的事件类型和名称。
 
@@ -232,7 +233,7 @@ module.exports = function (context, req) {
     "contentType": "text/plain",
     "contentLength": 524288,
     "blobType": "BlockBlob",
-    "url": "https://example.blob.core.windows.net/testcontainer/testfile.txt",
+    "url": "https://example.blob.core.chinacloudapi.cn/testcontainer/testfile.txt",
     "sequencer": "00000000000004420000000000028963",
     "storageDiagnostics": {
       "batchId": "b68529f3-68cd-4744-baa4-3c0498ec19f0"
@@ -247,7 +248,7 @@ module.exports = function (context, req) {
 
 ![输出日志](./media/receive-events/blob-event-response.png)
 
-还可以通过以下方式进行测试：创建一个 Blob 存储帐户或通用版 V2 (GPv2) 存储帐户，添加事件订阅，然后将终结点设置为函数 URL：
+还可以通过以下方式进行测试：创建一个 Blob 存储帐户或通用版 V2 (GPv2) 存储帐户，[添加事件订阅](../storage/blobs/storage-blob-event-quickstart.md)，然后将终结点设置为函数 URL：
 
 ![函数 URL](./media/receive-events/function-url.png)
 
@@ -371,3 +372,4 @@ module.exports = function (context, req) {
 * 浏览 [Azure 事件网格管理和发布 SDK](./sdk-overview.md)
 * 了解如何[发布到自定义主题](./post-to-custom-topic.md)
 * 请在实践中运用其中一个详尽“事件网格和函数”教程，例如[对上传到 Blob 存储的图像的大小进行调整](resize-images-on-storage-blob-upload-event.md)
+

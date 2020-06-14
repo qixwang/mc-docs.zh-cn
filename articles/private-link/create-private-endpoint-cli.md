@@ -6,14 +6,14 @@ author: rockboyfor
 ms.service: private-link
 ms.topic: quickstart
 origin.date: 09/16/2019
-ms.date: 01/06/2020
+ms.date: 06/15/2020
 ms.author: v-yeche
-ms.openlocfilehash: 1c5cc47870f7d0d843e35f25d272bbeba040ad1f
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: d2421f72441875af04f3fac2ee1fded490abe9c7
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75631400"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723750"
 ---
 # <a name="quickstart-create-a-private-endpoint-using-azure-cli"></a>快速入门：使用 Azure CLI 创建专用终结点
 专用终结点是 Azure 中专用链接的构建基块。 它使 Azure 资源（例如虚拟机 (VM)）能够以私密方式来与专用链接资源通信。 在本快速入门中，你将了解如何使用 Azure CLI 在虚拟网络中创建一个 VM，以及一个包含专用终结点的 SQL 数据库服务器。 然后，可以访问该 VM，并安全地访问专用链接资源（本示例中的专用 Azure SQL 数据库服务器）。 
@@ -24,7 +24,7 @@ ms.locfileid: "75631400"
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-在创建任何资源之前，必须创建一个资源组以托管虚拟网络。 使用 [az group create](https://docs.azure.cn/cli/group?view=azure-cli-latest#az-group-create) 创建资源组。 此示例在 chinaeast2 位置创建一个名为 myResourceGroup 的资源组   ：
+在创建任何资源之前，必须创建一个资源组以托管虚拟网络。 使用 [az group create](https://docs.azure.cn/cli/group?view=azure-cli-latest#az-group-create) 创建资源组。 此示例在 chinaeast2 位置创建一个名为 myResourceGroup 的资源组 ：
 
 ```azurecli
 az group create --name myResourceGroup --location chinaeast2
@@ -124,22 +124,22 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
 
 1. 在门户的搜索栏中，输入 *myVm*。
 
-1. 选择“连接”按钮。  选择“连接”按钮后，“连接到虚拟机”随即打开   。
+1. 选择“连接”按钮。 选择“连接”按钮后，“连接到虚拟机”随即打开 。
 
-1. 选择“下载 RDP 文件”  。 Azure 会创建远程桌面协议 ( *.rdp*) 文件，并将其下载到计算机。
+1. 选择“下载 RDP 文件”。 Azure 会创建远程桌面协议 ( *.rdp*) 文件，并将其下载到计算机。
 
 1. 打开下载的 .rdp* 文件。
 
-    1. 出现提示时，选择“连接”  。
+    1. 出现提示时，选择“连接”。
 
     1. 输入在创建 VM 时指定的用户名和密码。
 
         > [!NOTE]
-        > 可能需要选择“更多选择” > “使用其他帐户”，以指定在创建 VM 时输入的凭据   。
+        > 可能需要选择“更多选择” > “使用其他帐户”，以指定在创建 VM 时输入的凭据 。
 
-1. 选择“确定”  。
+1. 选择“确定” 。
 
-1. 你可能会在登录过程中收到证书警告。 如果收到证书警告，请选择“确定”或“继续”   。
+1. 你可能会在登录过程中收到证书警告。 如果收到证书警告，请选择“确定”或“继续” 。
 
 1. VM 桌面出现后，将其最小化以返回到本地桌面。  
 
@@ -167,8 +167,8 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
     - 密码：输入在创建过程中提供的密码。
     - 记住密码：选择“是”。
 
-5. 选择“连接”  。
-6. 浏览左侧菜单中的“数据库”  。
+5. 选择“连接” 。
+6. 浏览左侧菜单中的“数据库”。
 7. （可选）创建或查询 *mydatabase* 中的信息
 8. 关闭与 *myVm* 的远程桌面连接。
 

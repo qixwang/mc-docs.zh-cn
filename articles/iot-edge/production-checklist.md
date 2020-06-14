@@ -5,28 +5,31 @@ author: kgremban
 manager: philmea
 ms.author: v-tawe
 origin.date: 04/02/2020
-ms.date: 04/20/2020
+ms.date: 06/01/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a9ca4fe30e8023bd5a134051612a7842418d60b3
-ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
+ms.custom:
+- amqp
+- mqtt
+ms.openlocfilehash: 4c1c86c831970879a0eb0b25c94f6c267dff9ed3
+ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82588511"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84275619"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>准备在生产环境中部署 IoT Edge 解决方案
 
 如果已准备好将 IoT Edge 解决方案从开发环境转移到生产环境，请确保对其进行适当的配置，使其持续保持良好的性能。
 
-本文中提供的信息并非面面俱到。 为帮助你优先处理某些任务，每个部分首先会提供一些列表，将准备工作划分为两个部分：转移到生产环境之前要实施的“重要说明”，以及需要知道的“有用提示”。  
+本文中提供的信息并非面面俱到。 为帮助你优先处理某些任务，每个部分首先会提供一些列表，将准备工作划分为两个部分：转移到生产环境之前要实施的“重要说明”，以及需要知道的“有用提示”。 
 
 ## <a name="device-configuration"></a>设备配置
 
 IoT Edge 设备的类型多种多样，其中包括 Raspberry Pi、便携式计算机、服务器上运行的虚拟机，等等。 可通过物理方式或虚拟连接来访问设备，而设备也有可能长时间处于隔离状态。 不管通过什么方式进行访问，都需要确保它在配置后能够正常使用。
 
-* 重要说明 
+* 重要说明
   * 安装生产证书
   * 创建设备管理计划
   * 使用 Moby 作为容器引擎
@@ -105,7 +108,7 @@ IoT Edge 中心默认已进行性能优化，因此它会尝试分配较大的�
 
 当 **OptimizeForPerformance** 设置为 **true** 时，MQTT 协议标头将使用 PooledByteBufferAllocator（具有更佳性能，但会分配更多内存）。 分配器在 32 位操作系统或内存不足的设备上不能很好地工作。 此外，如果针对性能进行了优化，RocksDb 会为其作为本地存储提供程序的角色分配更多内存。
 
-有关详细信息，请参阅[资源受限设备的稳定性问题](troubleshoot.md#stability-issues-on-resource-constrained-devices)。
+有关详细信息，请参阅[小型设备的稳定性问题](troubleshoot-common-errors.md#stability-issues-on-smaller-devices)。
 
 #### <a name="disable-unused-protocols"></a>禁用未使用的协议
 
@@ -117,7 +120,7 @@ IoT Edge 中心默认已进行性能优化，因此它会尝试分配较大的�
 * **mqttSettings__enabled**
 * **httpSettings__enabled**
 
-所有三个变量都带有两条下划线，可设置为 true 或 false。 
+所有三个变量都带有两条下划线，可设置为 true 或 false。
 
 #### <a name="reduce-storage-time-for-messages"></a>减少消息的存储时间
 
@@ -131,9 +134,11 @@ timeToLiveSecs 参数的默认值为 7200 秒，即 2 小时。
 
 ## <a name="container-management"></a>容器管理
 
-* 重要说明 
+* 重要说明
   * 管理对容器注册表的访问
   * 使用标记管理版本
+* **有用提示**
+  * 将运行时容器存储在专用注册表中
 
 ### <a name="manage-access-to-your-container-registry"></a>管理对容器注册表的访问
 
@@ -147,7 +152,7 @@ timeToLiveSecs 参数的默认值为 7200 秒，即 2 小时。
 
 * 第一个脚本创建服务主体。 它输出服务主体 ID 和服务主体密码。 将这些值安全地存储在记录中。
 
-* 第二个脚本创建要向服务主体授予的角色分配，以后可以根据需要运行这些角色分配。 对于 `role` 参数，建议应用 acrPull  用户角色。 有关角色列表，请参阅 [Azure 容器注册表角色和权限](../container-registry/container-registry-roles.md)。
+* 第二个脚本创建要向服务主体授予的角色分配，以后可以根据需要运行这些角色分配。 对于 `role` 参数，建议应用 acrPull 用户角色。 有关角色列表，请参阅 [Azure 容器注册表角色和权限](../container-registry/container-registry-roles.md)。
 
 若要使用服务主体进行身份验证，请提供你通过第一个脚本获取的服务主体 ID 和密码。 在部署清单中指定这些凭据。
 
@@ -156,7 +161,7 @@ timeToLiveSecs 参数的默认值为 7200 秒，即 2 小时。
 * 对于密码或客户端机密，请指定服务主体密码。
 
 > [!NOTE]
-> 实现增强的安全身份验证后，请禁用“管理员用户”  设置，以便不再提供默认的用户名/密码访问权限。 在 Azure 门户的容器注册表中，从左窗格菜单的“设置”  下选择“访问密钥”  。
+> 实现增强的安全身份验证后，请禁用“管理员用户”设置，以便不再提供默认的用户名/密码访问权限。 在 Azure 门户的容器注册表中，从左窗格菜单的“设置”下选择“访问密钥”。
 
 ### <a name="use-tags-to-manage-versions"></a>使用标记管理版本
 
@@ -175,7 +180,7 @@ timeToLiveSecs 参数的默认值为 7200 秒，即 2 小时。
 
 ### <a name="review-outboundinbound-configuration"></a>检查出站/入站配置
 
-Azure IoT 中心与 IoT Edge 之间的信道始终配置为出站。 对于大多数 IoT Edge 方案，只需建立三个连接。 容器引擎需要连接到保存模块映像的一个或多个容器注册表。 IoT Edge 运行时需要连接到 IoT 中心，以检索设备配置信息，以及发送消息和遥测数据。 如果使用自动预配，则 IoT Edge 守护程序需要连接到设备预配服务。 有关详细信息，请参阅[防火墙和端口配置规则](troubleshoot.md#firewall-and-port-configuration-rules-for-iot-edge-deployment)。
+Azure IoT 中心与 IoT Edge 之间的信道始终配置为出站。 对于大多数 IoT Edge 方案，只需建立三个连接。 容器引擎需要连接到保存模块映像的一个或多个容器注册表。 IoT Edge 运行时需要连接到 IoT 中心，以检索设备配置信息，以及发送消息和遥测数据。 如果使用自动预配，则 IoT Edge 守护程序需要连接到设备预配服务。 有关详细信息，请参阅[防火墙和端口配置规则](troubleshoot.md#check-your-firewall-and-port-configuration-rules)。
 
 ### <a name="allow-connections-from-iot-edge-devices"></a>允许从 IoT Edge 设备进行连接
 

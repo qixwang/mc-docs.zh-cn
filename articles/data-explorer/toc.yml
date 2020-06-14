@@ -194,6 +194,8 @@
                   href: database-table-policies-python.md
         - name: 数据
           items:
+            - name: 清除数据 - Azure 门户
+              href: data-purge-portal.md
             - name: 删除数据
               href: delete-data.md
             - name: 处理重复数据
@@ -253,7 +255,7 @@
         - name: Microsoft 技术社区
           href: 'https://techcommunity.microsoft.com/t5/Azure-Data-Explorer/bd-p/Kusto'
         - name: MSDN 论坛
-          href: 'https://social.msdn.microsoft.com/Forums/zh-CN/home?forum=windowsazurezhchs'
+          href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureKusto'
     - name: 产品反馈
       href: 'https://feedback.azure.com/forums/915733-azure-data-explorer'
     - name: 定价和计费

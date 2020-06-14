@@ -7,17 +7,17 @@ ms.reviewer: kerend
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 01/27/2020
-ms.date: 05/09/2020
-ms.openlocfilehash: d98810f9843d6cb8523549dd775debd68395dfd7
-ms.sourcegitcommit: bfbd6694da33f703481386f2a3f16850c4e94bfa
+ms.date: 06/09/2020
+ms.openlocfilehash: 042d712759021002b2c97c493954d9d9c2146be9
+ms.sourcegitcommit: 73697fa9c19a40d235df033400c74741e7d0f3f4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83417746"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84574894"
 ---
 # <a name="ingest-json-formatted-sample-data-into-azure-data-explorer"></a>将 JSON 格式的示例数据引入 Azure 数据资源管理器
 
-本文介绍如何将 JSON 格式的数据引入 Azure 数据资源管理器数据库。 首先你将引入简单的原始映射 JSON 示例，再引入多行 JSON，然后处理包含数组和字典的更复杂 JSON 架构。  这些示例详细演示了使用 Kusto 查询语言 (KQL)、C# 或 Python 引入 JSON 格式数据的过程。 Kusto 查询语言 `ingest` 控制命令是直接对引擎终结点执行的。 在生产方案中，引入是使用客户端库或数据连接对数据管理服务执行的。 有关使用这些客户端库引入数据的演练，请阅读[使用 Azure 数据资源管理器 Python 库引入数据](/data-explorer/python-ingest-data)和[使用 Azure 数据资源管理器 .NET Standard SDK 引入数据](/data-explorer/net-standard-ingest-data)。
+本文介绍如何将 JSON 格式的数据引入 Azure 数据资源管理器数据库。 首先你将引入简单的原始映射 JSON 示例，再引入多行 JSON，然后处理包含数组和字典的更复杂 JSON 架构。  这些示例详细演示了使用 Kusto 查询语言 (KQL)、C# 或 Python 引入 JSON 格式数据的过程。 Kusto 查询语言 `ingest` 控制命令是直接对引擎终结点执行的。 在生产方案中，引入是使用客户端库或数据连接对数据管理服务执行的。 有关使用这些客户端库引入数据的演练，请阅读[使用 Azure 数据资源管理器 Python 库引入数据](python-ingest-data.md)和[使用 Azure 数据资源管理器 .NET Standard SDK 引入数据](net-standard-ingest-data.md)。
 
 ## <a name="prerequisites"></a>先决条件
 

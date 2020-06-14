@@ -6,14 +6,14 @@ ms.service: azure-resource-manager
 ms.topic: quickstart
 ms.custom: subject-armqs
 origin.date: 04/30/2020
-ms.date: 06/01/2020
+ms.date: 06/08/2020
 ms.author: v-yeche
-ms.openlocfilehash: 176accebf62319011ee97755b50bc4750c4cea14
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+ms.openlocfilehash: 25b98a3ea5317d67abcba9d90b5b21aabf6d8bc3
+ms.sourcegitcommit: c4fc01b7451951ef7a9616fca494e1baf29db714
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84200003"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84564372"
 ---
 <!--Verified successfully-->
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-a-resource-manager-template"></a>快速入门：使用资源管理器模板在 Azure 中部署容器实例
@@ -218,5 +218,4 @@ ms.locfileid: "84200003"
 > [!div class="nextstepaction"]
 > [教程：创建和部署你的第一个 Azure 资源管理器模板](../azure-resource-manager/templates/template-tutorial-create-first-template.md)
 
-<!-- Update_Description: new article about container instances quickstart template -->
-<!--NEW.date: 06/01/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

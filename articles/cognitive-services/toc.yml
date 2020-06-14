@@ -17,6 +17,12 @@
       href: cognitive-services-apis-create-account-cli.md
     - name: 诊断日志记录
       href: diagnostic-logging.md
+- name: 安全性
+  items:
+    - name: 认知服务的安全性
+      href: cognitive-services-security.md
+    - name: 对认知服务的请求进行身份验证
+      href: authentication.md
 - name: 资源
   items:
     - name: 定价

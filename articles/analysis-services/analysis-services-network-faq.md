@@ -5,15 +5,15 @@ author: rockboyfor
 ms.service: azure-analysis-services
 ms.topic: conceptual
 origin.date: 05/05/2020
-ms.date: 06/01/2020
+ms.date: 06/08/2020
 ms.author: v-yeche
 ms.reviewer: minewiskan
-ms.openlocfilehash: 04820c800705ff444f5376802def8fa797f85231
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+ms.openlocfilehash: 4ae079d4282c216707009e8f6c9c939846eedf9b
+ms.sourcegitcommit: c4fc01b7451951ef7a9616fca494e1baf29db714
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84199907"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84564262"
 ---
 <!--Verified only Character content-->
 # <a name="frequently-asked-questions-about-analysis-services-network-connectivity"></a>有关 Analysis Services 网络连接的常见问题解答
@@ -50,5 +50,4 @@ ms.locfileid: "84199907"
 [使用本地数据网关连接到本地数据源](analysis-services-gateway.md)   
 [对 Azure 虚拟网络 (VNet) 上的数据源使用网关](analysis-services-vnet-gateway.md)
 
-<!-- Update_Description: new article about analysis services network faq -->
-<!--NEW.date: 06/01/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

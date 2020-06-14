@@ -1,22 +1,22 @@
 ---
-title: C# 教程：索引多个数据源
+title: C# 教程：为多个 Azure 数据源编制索引
 titleSuffix: Azure Cognitive Search
-description: 了解如何使用索引器将多个数据源的数据导入到单个 Azure 认知搜索索引中。 本教程和示例代码以 C# 编写。
+description: 了解如何使用索引器将多个数据源的数据导入单个 Azure 认知搜索索引。 本教程和示例代码以 C# 编写。
 manager: nitinme
 author: HeidiSteen
 ms.author: v-tawe
 ms.service: cognitive-search
-ms.topic: conceptual
+ms.topic: tutorial
 origin.date: 02/28/2020
-ms.date: 03/16/2020
-ms.openlocfilehash: 996e6dc67acfa59cda45fdf3d8709d201a4c8f0d
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 06/09/2020
+ms.openlocfilehash: 06afdc542f9f385dd22f8be82801a154804e0b5e
+ms.sourcegitcommit: c4fc01b7451951ef7a9616fca494e1baf29db714
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78850610"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84564373"
 ---
-# <a name="tutorial-index-data-from-multiple-data-sources-in-c"></a>教程：在 C# 中为多个数据源的数据编制索引
+# <a name="tutorial-index-from-multiple-data-sources-using-the-net-sdk"></a>教程：使用 .NET SDK 从多个数据源编制索引
 
 Azure 认知搜索可以导入、分析多个数据源的数据，并将其编制成单个合并的搜索索引。 这适合以下情况：其中结构化数据是使用来自文本、HTML 或 JSON 文档等其他源的结构化程度较低或甚至纯文本数据来聚合的。
 
@@ -59,19 +59,19 @@ Azure 认知搜索可以导入、分析多个数据源的数据，并将其编�
 
 1. 登录到 [Azure 门户](https://portal.azure.cn)，然后导航到自己的 Azure Cosmos DB 帐户的“概述”页。
 
-1. 选择“数据资源管理器”，然后选择“新建数据库”   。
+1. 依次选择“数据资源管理器”、“新建数据库”。  
 
-   ![新建数据库](media/tutorial-multiple-data-sources/cosmos-newdb.png "新建数据库")
+   ![创建新数据库](media/tutorial-multiple-data-sources/cosmos-newdb.png "新建数据库")
 
-1. 输入名称 **hotel-rooms-db**。 接受其余设置的默认值。
+1. 输入名称 **hotel-rooms-db**。 对于剩余的设置，请接受默认值。
 
    ![配置数据库](media/tutorial-multiple-data-sources/cosmos-dbname.png "配置数据库")
 
-1. 创建新容器。 使用刚创建的现有数据库。 输入“hotels”  作为容器名称，并使用“/HotelId”  作为分区键。
+1. 创建新容器。 使用刚刚创建的现有数据库。 输入**hotels** 作为容器名称，输入 **/HotelId** 作为分区键。
 
    ![添加容器](media/tutorial-multiple-data-sources/cosmos-add-container.png "添加容器")
 
-1. 选择 **hotels** 下的“项”  ，然后单击命令栏上的“上传项”。  导航到项目文件夹中的 **cosmosdb/HotelsDataSubset_CosmosDb.json** 文件，然后将其选中。
+1. 选择“hotels”下的“项”，然后单击命令栏上的“上传项”。    导航到项目文件夹中的 **cosmosdb/HotelsDataSubset_CosmosDb.json** 文件并将其选中。
 
    ![上传到 Azure Cosmos DB 集合](media/tutorial-multiple-data-sources/cosmos-upload.png "上传到 Cosmos DB 集合")
 
@@ -159,11 +159,11 @@ Azure 认知搜索可以导入、分析多个数据源的数据，并将其编�
 
 此简单的 C#/.NET 控制台应用程序执行以下任务：
 
-* 基于 C# 酒店类的数据结构（该类还引用“地址”和“房间”类）创建新的索引。
-* 创建一个新数据源和一个可将 Azure Cosmos DB 数据映射到索引字段的索引器。 这两个都是 Azure 认知搜索中的对象。
-* 运行索引器以加载 Cosmos DB 中的“酒店”数据。
-* 创建另一个数据源和一个可将 JSON blob 数据映射到索引字段的索引器。
-* 运行第二个索引器，从 Blob 存储加载“房间”数据。
+* 基于 C# Hotel 类的数据结构（该类还引用 Address 和 Room 类）创建新索引。
+* 创建新的数据源以及用于将 Azure Cosmos DB 数据映射到索引字段的索引器。 该数据源和索引器都是 Azure 认知搜索中的对象。
+* 运行该索引器以从 Cosmos DB 加载酒店数据。
+* 创建另一个数据源以及用于将 JSON Blob 数据映射到索引字段的索引器。
+* 运行第二个索引器以从 Blob 存储加载客房数据。
 
  运行该程序之前，请抽时间研究此示例的代码、索引和索引器定义。 相关代码在两个文件中：
 
@@ -316,7 +316,7 @@ private static async Task CreateAndRunBlobIndexer(string indexName, SearchServic
     await searchService.Indexers.CreateOrUpdateAsync(blobIndexer);
 ```
 
-JSON blob 包含一个名为 **`Id`** 而不是 **`HotelId`** 的键字段。 该代码使用 `FieldMapping` 类来指示索引器将 **`Id`** 字段值定向到索引中的 **`HotelId`** 文档键。
+JSON Blob 包含名为 **`Id`** 而不是 **`HotelId`** 的键字段。 该代码使用 `FieldMapping` 类来指示索引器将 **`Id`** 字段值定向到索引中的 **`HotelId`** 文档键。
 
 Blob 存储索引器可使用能标识要使用的分析模式的参数。 该分析模式不同于 blob，后者表示单个文档或相同 blob 中的多个文档。 在此示例中，每个 blob 表示单个索引文档，因此代码使用 `IndexingParameters.ParseJson()` 参数。
 

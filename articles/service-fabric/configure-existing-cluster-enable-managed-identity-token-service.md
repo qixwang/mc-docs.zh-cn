@@ -1,32 +1,34 @@
 ---
-title: Azure Service Fabric - 将现有的 Azure Service Fabric 群集配置为启用托管标识支持
-description: 本文介绍如何将现有的 Azure Service Fabric 群集配置为启用托管标识支持
+title: 在现有 Service Fabric 群集中配置托管标识支持
+description: 下面介绍如何在现有 Azure Service Fabric 群集中启用托管标识支持
 ms.topic: article
-origin.date: 12/09/2019
+origin.date: 03/11/2019
+ms.date: 06/08/2020
 ms.author: v-yeche
-ms.date: 01/06/2020
-ms.openlocfilehash: b62ca9e623b00e4f9033e1768fea80bc349475a5
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.custom: sfrev
+ms.openlocfilehash: bbfd0aaf6c438f85115a9f84b9c3bf4d75ea98a3
+ms.sourcegitcommit: 0e178672632f710019eae60cea6a45ac54bb53a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "76508761"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84356141"
 ---
 <!--Pending for Verify-->
 <!--Verify successfully with New Deployment-->
+# <a name="configure-managed-identity-support-in-an-existing-service-fabric-cluster"></a>在现有 Service Fabric 群集中配置托管标识支持
 
-# <a name="configure-an-existing-azure-service-fabric-cluster-to-enable-managed-identity-support-preview"></a>将现有的 Azure Service Fabric 群集配置为启用托管标识支持（预览版）
-若要访问 Azure Service Fabric 应用程序的托管标识功能，必须先在群集上启用**托管标识令牌服务**。 此服务负责使用 Service Fabric 应用程序的托管标识对这些应用程序进行身份验证，以及代表它们获取访问令牌。 启用此服务以后，即可在 Service Fabric Explorer 中左侧窗格的“系统”部分  看到它，它以 **fabric:/System/ManagedIdentityTokenService** 名称运行。
+若要在 Service Fabric 应用程序中使用 [Azure 资源托管标识](../active-directory/managed-identities-azure-resources/overview.md)，请首先在群集上启用“托管标识令牌服务”。 此服务负责使用 Service Fabric 应用程序的托管标识对这些应用程序进行身份验证，以及代表它们获取访问令牌。 启用此服务以后，即可在 Service Fabric Explorer 中左侧窗格的“系统”部分看到它，它以 **fabric:/System/ManagedIdentityTokenService** 名称运行。
 
 > [!NOTE]
 > 若要启用**托管标识令牌服务**，必须使用 Service Fabric 运行时 6.5.658.9590 或更高版本。  
 > 
-> 可以在 Azure 门户中查找 Service Fabric 版群集，方法是：打开群集资源，然后在“基本信息”部分查找“Service Fabric 版本”属性。  
+> 可以在 Azure 门户中查找 Service Fabric 版群集，方法是：打开群集资源，然后在“基本信息”部分查找“Service Fabric 版本”属性。 
 > 
-> 如果群集处于“手动”升级模式，则需先将其升级到  6.5.658.9590 或更高版本。
+> 如果群集处于“手动”升级模式，则需先将其升级到 6.5.658.9590 或更高版本。
 
-## <a name="enable-the-managed-identity-token-service-in-an-existing-cluster"></a>在现有群集中启用托管标识令牌服务
-若要在现有群集中启用托管标识令牌服务，需启动群集升级并指定两项更改：启用托管标识令牌服务，以及请求重启每个节点。 为此，请在 Azure 资源管理器模板中添加下述两个代码片段：
+## <a name="enable-managed-identity-token-service-in-an-existing-cluster"></a>在现有群集中启用“托管标识令牌服务”
+
+若要在现有群集中启用托管标识令牌服务，需启动群集升级并指定两项更改：(1) 启用托管标识令牌服务，以及 (2) 请求重启每个节点。 首先，将以下代码片段添加到群集 Azure 资源管理器模板：
 
 ```json
 "fabricSettings": [
@@ -42,7 +44,7 @@ ms.locfileid: "76508761"
 ]
 ```
 
-若要让更改生效，还需更改升级策略，指定在升级进展到群集时，在每个节点上以强制方式重启 Service Fabric 运行时。 此重启确保新启用的系统服务在每个节点上启动并运行。 在下面的代码片段中，`forceRestart` 是基本设置；请对余下设置使用现有值。  
+若要让更改生效，还需更改升级策略，指定在升级进展到群集时，在每个节点上以强制方式重启 Service Fabric 运行时。 此重启确保新启用的系统服务在每个节点上启动并运行。 在下面的代码片段中，`forceRestart` 是启用重启功能的必要设置。 对于其余参数，请使用下面所述的值或使用已为群集资源指定的现有自定义值。 通过在 Service Fabric 资源或 resources.azure.com 上选择“结构升级”选项，可以从 Azure 门户查看结构升级策略 ('upgradeDescription') 的自定义设置。 无法从 powershell 或 resources.azure.com 查看升级策略 ('upgradeDescription') 的默认选项。 有关其他信息，请参阅 [ClusterUpgradePolicy](https://docs.azure.cn/dotnet/api/microsoft.azure.management.servicefabric.models.clusterupgradepolicy?view=azure-dotnet)。  
 
 ```json
 "upgradeDescription": {
@@ -76,7 +78,6 @@ ms.locfileid: "76508761"
 <!--Not Avaiable on * [Deploy an Azure Service Fabric application with a user-assigned managed identity](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)-->
 <!--Not Avaiable on * [Leverage the managed identity of a Service Fabric application from service code](./how-to-managed-identity-service-fabric-app-code.md)-->
 
-* [为 Azure Service Fabric 应用程序授予对其他 Azure 资源的访问权限](./how-to-grant-access-other-resources.md)
+* [向 Azure Service Fabric 应用程序授予对其他 Azure 资源的访问权限](./how-to-grant-access-other-resources.md)
 
-<!--Update_Description: new articles on configure existing cluster enalbed managed identity token service-->
-<!--new.date: 09/02/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

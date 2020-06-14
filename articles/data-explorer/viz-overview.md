@@ -8,13 +8,13 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 01/30/2020
-ms.date: 03/16/2020
-ms.openlocfilehash: e032013ad8922f8f88972a99e1a4c5d38d873eab
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 06/09/2020
+ms.openlocfilehash: afa5a8e5d3b697d8bf64f0cb396779f978593c56
+ms.sourcegitcommit: 73697fa9c19a40d235df033400c74741e7d0f3f4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80243944"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84574868"
 ---
 # <a name="data-visualization-with-azure-data-explorer"></a>使用 Azure 数据资源管理器进行数据可视化 
 
@@ -24,17 +24,17 @@ Azure 数据资源管理器是一项适用于日志和遥测数据的快速且�
 
 ## <a name="kusto-query-language-visualizations"></a>Kusto 查询语言可视化
 
-Kusto 查询语言 [`render operator`](https://docs.microsoft.com/azure/kusto/query/renderoperator) 提供各种可视化效果（如表格、饼图和条形图）来描述查询结果。 查询可视化用于异常情况检测和预测、机器学习等。
+Kusto 查询语言 [`render operator`](https://docs.microsoft.com/azure/data-explorer/kusto/query/renderoperator) 提供各种可视化效果（如表格、饼图和条形图）来描述查询结果。 查询可视化用于异常情况检测和预测、机器学习等。
 
 ## <a name="power-bi"></a>Power BI
 
 Azure 数据资源管理器提供使用各种方法连接到 [Power BI](https://powerbi.microsoft.com) 的功能： 
 
-  * [内置的本机 Power BI 连接器](/data-explorer/power-bi-connector)
+  * [内置的本机 Power BI 连接器](power-bi-connector.md)
 
-  * [将查询从 Azure 数据资源管理器导入 Power BI](/data-explorer/power-bi-imported-query)
+  * [将查询从 Azure 数据资源管理器导入 Power BI](power-bi-imported-query.md)
  
-  * [SQL 查询](/data-explorer/power-bi-sql-query)。
+  * [SQL 查询](power-bi-sql-query.md)
 
 ## <a name="microsoft-excel"></a>Microsoft Excel
 
@@ -50,17 +50,18 @@ Azure 数据资源管理器提供了[开放式数据库连接 (ODBC) 连接器](
 
 ## <a name="tableau"></a>Tableau
 
-Azure 数据资源管理器提供使用 [ODBC 连接器](/data-explorer/connect-odbc)连接到 [Tableau](https://www.tableau.com) 的功能，然后可[在 Tableau 中直观显示数据](tableau.md)。
+Azure 数据资源管理器提供使用 [ODBC 连接器](connect-odbc.md)连接到 [Tableau](https://www.tableau.com) 的功能，然后可[在 Tableau 中直观显示数据](tableau.md)。
 
 ## <a name="qlik"></a>Qlik
 
-Azure 数据资源管理器提供使用 [ODBC 连接器](/data-explorer/connect-odbc)连接到 [Qlik](https://www.qlik.com) 的功能，然后可创建 Qlik Sense 仪表板并直观显示数据。
+Azure 数据资源管理器提供使用 [ODBC 连接器](connect-odbc.md)连接到 [Qlik](https://www.qlik.com) 的功能，然后可创建 Qlik Sense 仪表板并直观显示数据。
 
+<!-- > [!VIDEO https://www.youtube.com/embed/nhWIiBwxjjU]  -->
 
 ## <a name="sisense"></a>Sisense
 
-Azure 数据资源管理器提供使用 JDBC 连接器连接到 [Sisense](https://www.sisense.com) 的功能。 请[将 Azure 数据资源管理器设置为 Sisense 的数据源，然后将数据可视化](/data-explorer/sisense)。
+Azure 数据资源管理器提供使用 JDBC 连接器连接到 [Sisense](https://www.sisense.com) 的功能。 请[将 Azure 数据资源管理器设置为 Sisense 的数据源，然后将数据可视化](sisense.md)。
 
 ## <a name="redash"></a>Redash
 
-可以使用 [Redash](https://redash.io/) 来构建仪表板以及将数据可视化。 [将 Azure 数据资源管理器设置为 Redash 的数据源，然后将数据可视化](/data-explorer/redash)。
+可以使用 [Redash](https://redash.io/) 来构建仪表板以及将数据可视化。 [将 Azure 数据资源管理器设置为 Redash 的数据源，然后将数据可视化](redash.md)。

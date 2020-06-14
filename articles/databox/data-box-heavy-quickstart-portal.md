@@ -7,15 +7,15 @@ ms.service: databox
 ms.subservice: heavy
 ms.topic: quickstart
 origin.date: 09/03/2019
-ms.date: 12/09/2019
+ms.date: 06/08/2020
 ms.author: v-jay
 ms.localizationpriority: high
-ms.openlocfilehash: 73455ed9ee5df24b314a56a531bf90725a4572bd
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 7b77b7c07fdedccdccb12a810befab5a40c79b86
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74884044"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723723"
 ---
 ::: zone target = "docs"
 
@@ -40,11 +40,7 @@ ms.locfileid: "74884044"
 
 ### <a name="for-service"></a>对于服务
 
-在开始之前，请确保：
-
-- 具有 Microsoft Azure 存储帐户和访问凭据。
-- Data Box 服务使用的订阅是 [Microsoft 企业协议 (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)、[云解决方案提供商 (CSP)](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview) 或 [Microsoft Azure 赞助](https://azure.microsoft.com/offers/ms-azr-0036p/)。
-- 必须拥有该订阅的所有者或参与者访问权限才能创建 Data Box Heavy 订单。
+[!INCLUDE [Data Box service prerequisites](../../includes/data-box-supported-subscriptions.md)]
 
 ### <a name="for-device"></a>对于设备
 
@@ -59,7 +55,6 @@ ms.locfileid: "74884044"
     - 对于 10-Gbps 线缆，需要使用 SFP+ 线缆，其一端插入 10-G 交换机，插入设备的另一端配备 QSFP+ 转 SFP+ 适配器（或 QSA 适配器）。
 - 设备背面的托盘中提供了电源线。
 
-
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
 在 [https://portal.azure.cn](https://portal.azure.cn) 中登录 Azure 门户。
@@ -69,8 +64,8 @@ ms.locfileid: "74884044"
 此步骤大约需要 5 分钟。
 
 1. 在 Azure 门户中创建新的 Azure Data Box 资源。
-2. 选择为此服务启用的现有订阅，然后选择“导入”作为传输类型。  提供数据所在的**来源国家/地区**，以及数据要传输到的 **Azure 目标区域**。
-3. 选择“Data Box Heavy”。  最大可用容量为 770 TB；如果数据大小更大，可创建多个订单。
+2. 选择为此服务启用的现有订阅，然后选择“导入”作为传输类型。 提供数据所在的**来源国家/地区**，以及数据要传输到的 **Azure 目标区域**。
+3. 选择“Data Box Heavy”。 最大可用容量为 770 TB；如果数据大小更大，可创建多个订单。
 4. 输入订单详细信息和发货信息。 如果该服务在你所在的区域中可用，请提供通知电子邮件地址、查看摘要，然后创建订单。
 
 创建订单后，Microsoft 会准备需发货的设备。
@@ -79,7 +74,7 @@ ms.locfileid: "74884044"
 
 ::: zone target = "chromeless"
 
-# <a name="cable-and-connect-to-your-device"></a>为设备连接电缆并连接到它
+## <a name="cable-and-connect-to-your-device"></a>为设备连接电缆并连接到它
 
 检查先决条件后，为设备连接电缆并连接到设备。
 
@@ -110,7 +105,7 @@ ms.locfileid: "74884044"
 
 此步骤大约需要 5-7 分钟才能完成。
 
-1. 若要获取设备密码，请在 [Azure 门户](https://portal.azure.cn)中转到“常规”>“设备详细信息”。  在设备的两个节点中使用的密码相同。
+1. 若要获取设备密码，请在 [Azure 门户](https://portal.azure.cn)中转到“常规”>“设备详细信息”。 在设备的两个节点中使用的密码相同。
 2. 在用于连接到 Data Box Heavy 的计算机上，将静态 IP 地址 192.168.100.5 和子网 255.255.255.0 分配给以太网适配器。 通过 `https://192.168.100.10` 访问设备的本地 Web UI。 打开设备后，进行连接可能需要长达 5 分钟的时间。
 3. 从 Azure 门户使用密码登录。 此时会出现一个错误，指出网站的安全证书有问题。 按照特定于浏览器的说明转到该网页。
 4. 默认情况下，接口（不包括 MGMT）的网络设置配置为 DHCP。 如果需要，可将这些接口配置为静态，并提供一个 IP 地址。
@@ -132,15 +127,15 @@ ms.locfileid: "74884044"
 
     - 如果使用 Windows 主机，请使用 SMB 兼容的文件复制工具，例如 [Robocopy](https://technet.microsoft.com/library/ee851678.aspx)。
     - 对于 NFS 主机，请使用 `cp` 命令或 `rsync` 来复制数据。
-2. 使用路径 `\\<IP address of your device>\ShareName` 连接到设备上的共享。 若要获取共享访问凭据，请在 Data Box Heavy 的本地 Web UI 中转到“连接和复制”页面。 
+2. 使用路径 `\\<IP address of your device>\ShareName` 连接到设备上的共享。 若要获取共享访问凭据，请在 Data Box Heavy 的本地 Web UI 中转到“连接和复制”页面。
 3. 请确保共享和文件夹名称以及数据遵循 [Azure 存储和 Data Box Heavy 服务限制](data-box-heavy-limits.md)中所述的准则。
 
 ## <a name="prepare-to-ship"></a>准备交付
 
 完成此操作所需的时间取决于数据大小。
 
-1. 正常完成数据复制后，在本地 Web UI 中转到“准备交付”页面，并开始准备交付。 
-2. 在两个节点上成功完成“准备交付”后，通过本地 Web UI 关闭设备。 
+1. 正常完成数据复制后，在本地 Web UI 中转到“准备交付”页面，并开始准备交付。
+2. 在两个节点上成功完成“准备交付”后，通过本地 Web UI 关闭设备。
 
 ## <a name="ship-to-azure"></a>寄送到 Azure
 
@@ -165,9 +160,9 @@ ms.locfileid: "74884044"
 
 此步骤需要 2-3 分钟才能完成。
 
-- 在订单尚未处理的情况下，可以在 Azure 门户中取消 Data Box Heavy 订单。 订单处理后，无法取消订单。 订单处理会不断进行，直到完成。 若要取消订单，请转到“概况”，然后在命令栏中单击“取消”。  
+- 在订单尚未处理的情况下，可以在 Azure 门户中取消 Data Box Heavy 订单。 订单处理后，无法取消订单。 订单处理会不断进行，直到完成。 若要取消订单，请转到“概况”，然后在命令栏中单击“取消”。 
 
-- 在 Azure 门户中的状态显示为“已完成”或“已取消”后，即可删除订单。   若要删除订单，请转到“概况”，然后在命令栏中单击“删除”。  
+- 在 Azure 门户中的状态显示为“已完成”或“已取消”后，即可删除订单。  若要删除订单，请转到“概况”，然后在命令栏中单击“删除”。 
 
 ## <a name="next-steps"></a>后续步骤
 

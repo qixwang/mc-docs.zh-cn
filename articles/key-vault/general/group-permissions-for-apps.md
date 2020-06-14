@@ -9,14 +9,14 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: tutorial
 origin.date: 09/27/2019
-ms.date: 04/20/2020
+ms.date: 06/02/2020
 ms.author: v-tawe
-ms.openlocfilehash: bfa2150afffd2e056332f8fc4e94d1baaa675a7f
-ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
+ms.openlocfilehash: 55b783796f93cf9fe42c03561362bd39e16601bf
+ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82588974"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84275551"
 ---
 # <a name="provide-key-vault-authentication-with-an-access-control-policy"></a>使用访问控制策略提供 Key Vault 身份验证
 
@@ -61,10 +61,10 @@ Key Vault 最多支持 1024 个访问策略条目，每个条目可向“主体�
 
 可通过两种方式获取应用程序的 objectId。  第一种方式是将应用程序注册到 Azure Active Directory。 为此，请遵循快速入门[将应用程序注册到 Microsoft 标识平台](../../active-directory/develop/quickstart-register-app.md)中的步骤。 完成注册后，objectID 将作为“应用程序(客户端) ID”列出。
 
-第二种方式是在终端窗口中创建服务主体。 在 Azure CLI 中使用 [az ad sp create-for-rbac](/cli/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) 命令。
+第二种方式是在终端窗口中创建服务主体。 在 Azure CLI 中，使用 [az ad sp create-for-rbac](/cli/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) 命令，并以“http://&lt;my-unique-service-principle-name&gt;”的格式为 -n 标志提供唯一服务主体名称。
 
 ```azurecli
-az ad sp create-for-rbac -n "http://mySP"
+az ad sp create-for-rbac -n "http://<my-unique-service-principle-name"
 ```
 
 objectId 将在输出中作为 `clientID` 列出。
@@ -73,7 +73,7 @@ objectId 将在输出中作为 `clientID` 列出。
 
 
 ```azurepowershell
-New-AzADServicePrincipal -DisplayName mySP
+New-AzADServicePrincipal -DisplayName <my-unique-service-principle-name>
 ```
 
 objectId 将在输出中作为 `Id`（而不是 `ApplicationId`）列出。
@@ -85,7 +85,7 @@ objectId 将在输出中作为 `Id`（而不是 `ApplicationId`）列出。
 若要使用 Azure CLI 查找 Azure AD 组的 objectId，请使用 [az ad group list](/cli/ad/group?view=azure-cli-latest#az-ad-group-list) 命令。 由于组织中可能存在大量的组，因此还应在 `--display-name` 参数中提供一个搜索字符串。
 
 ```azurecli
-az ad group list --displayname <search-string>
+az ad group list --display-name <search-string>
 ```
 objectId 将在 JSON 中返回：
 
@@ -108,6 +108,9 @@ Get-AzADGroup -SearchString <search-string>
 Id                    : 1cef38c4-388c-45a9-b5ae-3d88375e166a
 ...
 ```
+
+> [!WARNING]
+> 具有托管标识的 Azure AD 组最多需要 8 小时才能刷新令牌并生效。
 
 #### <a name="users"></a>用户
 
@@ -156,7 +159,7 @@ az keyvault set-policy -n <your-unique-keyvault-name> --spn <ApplicationID-of-yo
 在 Azure PowerShell 中，可以通过将 objectId 传递到 [Set-AzKeyVaultAccessPolicy](https://docs.microsoft.com/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy?view=azps-2.7.0) cmdlet 来实现此目的。 
 
 ```azurepowershell
-Set-AzKeyVaultAccessPolicy –VaultName <your-key-vault-name> -PermissionsToKeys create,decrypt,delete,encrypt,get,list,unwrapKey,wrapKey -PermissionsToSecrets get,list,set,delete -ApplicationId <Id>
+Set-AzKeyVaultAccessPolicy –VaultName <your-key-vault-name> -PermissionsToKeys create,decrypt,delete,encrypt,get,list,unwrapKey,wrapKey -PermissionsToSecrets get,list,set,delete -ObjectId <Id>
 
 ```
 

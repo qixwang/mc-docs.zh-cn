@@ -11,13 +11,13 @@ metadata:
   author: HeidiSteen
   ms.author: v-tawe
   origin.date: 02/25/2020
-  ms.date: 03/16/2020
-  ms.openlocfilehash: 259bd9a31379ca85d19f870962594c45cb42db0b
-  ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+  ms.date: 06/09/2020
+  ms.openlocfilehash: 3efe7d26bbb0bcae618893e7cb12068871830b28
+  ms.sourcegitcommit: c4fc01b7451951ef7a9616fca494e1baf29db714
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 04/17/2020
-  ms.locfileid: "80243737"
+  ms.lasthandoff: 06/09/2020
+  ms.locfileid: "84564236"
 landingContent:
 - title: 关于认知搜索
   linkLists:
@@ -121,7 +121,5 @@ landingContent:
       url: search-faq-frequently-asked-questions.md
     - text: 在 Stack Overflow 上提出问题
       url: https://stackoverflow.com/questions/tagged/azure-search
-    - text: 在 MSDN 论坛上提问
-      url: https://social.msdn.microsoft.com/Forums/zh-CN/home?forum=windowsazurezhchs
     - text: 请求功能
       url: https://feedback.azure.com/forums/263029-azure-search

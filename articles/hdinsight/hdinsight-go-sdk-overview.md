@@ -7,13 +7,13 @@ ms.service: hdinsight
 ms.topic: conceptual
 origin.date: 01/03/2020
 ms.author: v-yiso
-ms.date: 03/02/2020
-ms.openlocfilehash: 69d2eddb44da35c8497ecc82a7b04bdcce896d22
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 06/22/2020
+ms.openlocfilehash: 3691dba8e3a88c499bd673ace69c3f6afdac6013
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80634556"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723293"
 ---
 # <a name="hdinsight-sdk-for-go-preview"></a>用于 Go 的 HDInsight SDK（预览版）
 
@@ -23,7 +23,9 @@ ms.locfileid: "80634556"
 > [!NOTE]
 >还可以[从此处获得](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight)适用于此 SDK 的GoDoc 参考资料。
 
-## <a name="prerequisites"></a>必备条件
+如果没有 Azure 订阅，请在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
+
+## <a name="prerequisites"></a>先决条件
 
 * [`go get` 工具](https://github.com/golang/go/wiki/GoGetTools)。
 * [Go](https://golang.org/dl/)。
@@ -32,7 +34,7 @@ ms.locfileid: "80634556"
 
 从 GOPATH 位置中，运行 `go get github.com/Azure/azure-sdk-for-go/tree/master/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight`
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>身份验证
 
 首先需要使用 Azure 订阅对该 SDK 进行身份验证。  请遵循以下示例创建服务主体，然后使用该服务主体进行身份验证。 完成此操作后，将会获得 `ClustersClient` 的实例，其中包含可用于执行管理操作的许多函数（以下部分将概述这些函数）。
 
@@ -41,9 +43,9 @@ ms.locfileid: "80634556"
 
 ### <a name="authentication-example-using-a-service-principal"></a>使用服务主体的身份验证示例
 
-首先登录到 [Azure Cloud Shell](https://shell.azure.com/bash)。 验证当前使用的是要在其中创建服务主体的订阅。 
+验证当前使用的是要在其中创建服务主体的订阅。 
 
-```azurecli-interactive
+```azurecli
 az account show
 ```
 
@@ -51,7 +53,7 @@ az account show
 
 ```json
 {
-  "environmentName": "AzureCloud",
+  "environmentName": "AzureChinaCloud",
   "id": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
   "isDefault": true,
   "name": "XXXXXXX",
@@ -66,19 +68,19 @@ az account show
 ```
 
 如果尚未登录到正确的订阅，请运行以下命令选择正确的订阅： 
-```azurecli-interactive
+```azurecli
 az account set -s <name or ID of subscription>
 ```
 
 > [!IMPORTANT]
 > 如果尚未通过其他功能（例如，通过 Azure 门户创建 HDInsight 群集）注册 HDInsight 资源提供程序，则需要先执行一次此操作，然后才能进行身份验证。 可以在 [Azure Cloud Shell](https://shell.azure.com/bash) 中运行以下命令来完成此操作：
->```azurecli-interactive
+>```azurecli
 >az provider register --namespace Microsoft.HDInsight
 >```
 
 接下来，选择服务主体的名称，然后使用以下命令创建服务主体：
 
-```azurecli-interactive
+```azurecli
 az ad sp create-for-rbac --name <Service Principal Name> --sdk-auth
 ```
 
@@ -350,7 +352,7 @@ extClient.Authorizer, _ = credentials.Authorizer()
 ### <a name="enable-oms-monitoring"></a>启用 OMS 监视
 
 > [!NOTE]
-> 若要启用 OMS 监视，必须已有一个 Log Analytics 工作区。 如果尚未创建此工作区，可以参阅[在 Azure 门户中创建 Log Analytics 工作区](/log-analytics/log-analytics-quick-create-workspace)了解相关操作。
+> 若要启用 OMS 监视，必须已有一个 Log Analytics 工作区。 如果尚未创建工作区，可在此了解创建方法：[在 Azure 门户中创建 Log Analytics 工作区](/log-analytics/log-analytics-quick-create-workspace)。
 
 在群集上启用 OMS 监视：
 
@@ -378,7 +380,7 @@ extClient.DisableMonitoring(context.Background(), "<Resource Group Name", "Clust
 
 HDInsight 提供了一个称为“脚本操作”的配置函数，用以调用自定义脚本来自定义群集。
 > [!NOTE]
-> 有关如何使用脚本操作的详细信息，请参阅[使用脚本操作自定义基于 Linux 的 HDInsight 群集](/hdinsight/hdinsight-hadoop-customize-cluster-linux)
+> 有关如何使用脚本操作的详细信息见此处：[使用脚本操作自定义基于 Linux 的 HDInsight 群集](/hdinsight/hdinsight-hadoop-customize-cluster-linux)
 
 ### <a name="execute-script-actions"></a>执行脚本操作
 

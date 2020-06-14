@@ -10,12 +10,12 @@ origin.date: 05/11/2020
 ms.date: 06/01/2020
 ms.author: v-jay
 ms.reviewer: prishet
-ms.openlocfilehash: 7757aea6c19eb904f45414812af8f415b4f404e7
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+ms.openlocfilehash: f898ae6271b1887d4f589fe80d50700268be5d62
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84200028"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723086"
 ---
 # <a name="use-azure-cli-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>使用 Azure CLI 管理 Azure Data Lake Storage Gen2 中的目录、文件和 ACL
 
@@ -32,7 +32,7 @@ ms.locfileid: "84200028"
 
 ## <a name="ensure-that-you-have-the-correct-version-of-azure-cli-installed"></a>确保安装正确版本的 Azure CLI
 
-1. 如果在本地[安装了](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) Azure CLI，请打开命令控制台应用程序，例如 Windows PowerShell。
+1. 如果在本地[安装了](/cli/install-azure-cli?view=azure-cli-latest) Azure CLI，请打开命令控制台应用程序，例如 Windows PowerShell。
 
 2. 使用以下命令验证安装的 Azure CLI 版本是否为 `2.5.1` 或以上。
 

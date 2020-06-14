@@ -2,18 +2,18 @@
 title: 将内置分析与 Azure Cosmos DB 配合使用的用例。
 description: 了解如何在不同用例中将内置分析与 Azure Cosmos DB 配合使用。
 author: rockboyfor
-ms.author: v-yeche
 ms.topic: conceptual
 ms.service: cosmos-db
-origin.date: 09/26/2019
-ms.date: 10/28/2019
+origin.date: 04/20/2020
+ms.date: 06/15/2020
+ms.author: v-yeche
 ms.reviewer: sngun
-ms.openlocfilehash: d028de63bc0a140d81a06cf87e1f2df17943cee8
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 34dab88821d8b120c801ae875cc48a8e9003b684
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "72970292"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723758"
 ---
 # <a name="use-cases-for-built-in-analytics-with-azure-cosmos-db"></a>将内置分析与 Azure Cosmos DB 配合使用的用例
 
@@ -38,7 +38,7 @@ Azure Cosmos DB 使用本机内置的 Apache Spark 提供快速、简单且可�
 
 在某些情况下，你可能需要根据过去完成的事件中特定时间点的数据来解答问题。 例如，要获取特定日期的 CRM 活动状态计数。 如果你在一周前运行了报告，则状态计数是根据该时间点的每个活动的状态计算的。 如果今天运行相同的报告，将会得到处于今天的状态的活动计数，而这些状态可能与过去一周的状态不同，因为这些活动经历了从开始到结束的生命周期。 因此，需要根据案例生命周期的每个阶段的快照提供报告。
 
-在传统的数据仓库方案中，无法实现“快照”的概念，因为数据仓库在设计上无法整合快照，而数据只会提供正在发生的活动的当前视图。 使用 Azure Cosmos DB，用户可以实现“按时间顺序查看”的概念，可以追溯的方式针对数据查询和运行分析，并询问在特定的历史时间点查看数据的方式。 这意味着，用户可以轻松查看数据的当前视图和历史视图，并对其运行分析。
+使用 Azure Cosmos DB，用户可以实现“按时间顺序查看”的概念，可以追溯的方式针对数据查询和运行分析，并询问在特定的历史时间点查看数据的方式。 这意味着，用户可以轻松查看数据的当前视图和历史视图，并对其运行分析。
 
 ## <a name="multiple-regionally-distributed-machine-learning-and-ai"></a>多区域分布式机器学习和 AI
 
@@ -77,3 +77,5 @@ Power BI 提供交互式可视化和自助式商业智能功能，使最终用�
 <!--Not Available on * [Built-in Jupyter notebooks in Azure Cosmos DB](cosmosdb-jupyter-notebooks.md)-->
 <!--Not Available on * [How to enable notebooks for Azure Cosmos accounts](enable-notebooks.md)-->
 <!--Not Available on * [Create a notebook to analyze and visualize data](create-notebook-visualize-data.md)-->
+
+<!-- Update_Description: update meta properties, wording update, update link -->

@@ -8,13 +8,13 @@ author: msmbaldwin
 ms.author: v-tawe
 manager: rkarlin
 origin.date: 09/10/2019
-ms.date: 04/30/2020
-ms.openlocfilehash: 2181f8e0633f15606af809072c214144e8363583
-ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
+ms.date: 06/02/2020
+ms.openlocfilehash: 68679cb53bfc99b3237cf265a5beb35e0a86d77e
+ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82588840"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84275436"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-azure-powershell"></a>使用 Key Vault 和 Azure PowerShell 管理存储帐户密钥
 
@@ -91,10 +91,13 @@ $userId = (Get-AzContext).Account.Id
 # Get a reference to your Azure storage account
 $storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -StorageAccountName $storageAccountName
 ```
+>[!Note]
+> 对于经典存储帐户，请使用“primary”和“secondary”作为 $storageAccountKey <br>
+> 对于经典存储帐户，请使用 'Get-AzResource -Name "ClassicStorageAccountName" -ResourceGroupName $resourceGroupName' 而不是 'Get-AzStorageAccount'
 
 ### <a name="give-key-vault-access-to-your-storage-account"></a>向 Key Vault 授予对你的存储帐户的访问权限
 
-只有在授权 Key Vault 访问你的存储帐户之后，它才可以访问和管理存储帐户密钥。 Key Vault 应用程序标识需要有权列出  和重新生成  存储帐户的密钥。 可通过内置的 RBAC 角色[存储帐户密钥操作员服务角色](/role-based-access-control/built-in-roles#storage-account-key-operator-service-role)启用这些权限。 
+只有在授权 Key Vault 访问你的存储帐户之后，它才可以访问和管理存储帐户密钥。 Key Vault 应用程序标识需要有权列出和重新生成存储帐户的密钥。 可通过内置的 RBAC 角色[存储帐户密钥操作员服务角色](/role-based-access-control/built-in-roles#storage-account-key-operator-service-role)启用这些权限。 
 
 使用 Azure PowerShell [New-AzRoleAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azroleassignment?view=azps-2.6.0) cmdlet 将此角色分配到 Key Vault 服务主体，以将范围限定为你的存储帐户。
 
@@ -117,7 +120,7 @@ ObjectType         : ServicePrincipal
 CanDelegate        : False
 ```
 
-如果 Key Vault 已添加到存储帐户中的角色，则你会收到“角色分配已存在”  ”错误。 还可以使用 Azure 门户中存储帐户的“访问控制(IAM)”页验证角色分配。  
+如果 Key Vault 已添加到存储帐户中的角色，则你会收到“角色分配已存在” ”错误。 还可以使用 Azure 门户中存储帐户的“访问控制(IAM)”页验证角色分配。  
 
 ### <a name="give-your-user-account-permission-to-managed-storage-accounts"></a>向托管存储帐户授予用户帐户权限
 

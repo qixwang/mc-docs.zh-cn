@@ -8,13 +8,13 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 09/08/2019
-ms.date: 02/17/2019
-ms.openlocfilehash: 84169b9b0d75c9658e95c898bb09045768b10dc0
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 06/09/2020
+ms.openlocfilehash: 04bc9c42ca1a491ac10e7d44eaef7b0bb79e2724
+ms.sourcegitcommit: 73697fa9c19a40d235df033400c74741e7d0f3f4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77037927"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84574901"
 ---
 # <a name="copy-in-bulk-from-a-database-to-azure-data-explorer-by-using-the-azure-data-factory-template"></a>使用 Azure 数据工厂模板从数据库批量复制到 Azure 数据资源管理器 
 
@@ -114,7 +114,7 @@ ADXTableName varchar(255)
 
 * 了解如何[使用 Azure 数据工厂将数据复制到 Azure 数据资源管理器](data-factory-load-data.md)。
 * 了解 Azure 数据工厂中的 [Azure 数据资源管理器连接器](/data-factory/connector-azure-data-explorer)。
-* 了解用于查询数据的 [Azure 数据资源管理器查询](/data-explorer/web-query-data)。
+* 了解用于查询数据的 [Azure 数据资源管理器查询](web-query-data.md)。
 
 
 

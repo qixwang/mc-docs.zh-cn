@@ -5,15 +5,17 @@ author: rajeevmv
 ms.service: iot-dps
 services: iot-dps
 ms.topic: conceptual
-origin.date: 10/16/2019
-ms.date: 03/02/2020
-ms.author: v-tawe
-ms.openlocfilehash: 805167ddd58900ffd0304bbfc608cfaead256219
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 10/16/2019
+ms.author: ravokkar
+ms.custom:
+- amqp
+- mqtt
+ms.openlocfilehash: 2031fd5551e013687d1f48845a9f14b90ca4da92
+ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77494098"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84275617"
 ---
 # <a name="communicate-with-your-dps-using-the-mqtt-protocol"></a>使用 MQTT 协议与 DPS 通信
 
@@ -38,13 +40,13 @@ DPS 不是功能完备的 MQTT 中转站，并未支持 MQTT v3.1.1 标准中指
 
 ## <a name="using-the-mqtt-protocol-directly-as-a-device"></a>直接使用 MQTT 协议（作为设备）
 
-如果设备无法使用设备 SDK，仍可在 8883 端口使用 MQTT 协议连接到公共设备终结点。 在 **CONNECT** 数据包中，设备应使用以下值：
+如果设备无法使用设备 SDK，仍可使用端口 8883 上的 MQTT 协议连接到公共设备终结点。 在 **CONNECT** 数据包中，设备应使用以下值：
 
 * 对于 **ClientId** 字段，使用 **registrationId**。
 
 * 对于 **Username** 字段，使用 `{idScope}/registrations/{registration_id}/api-version=2019-03-31`，其中 `{idScope}` 是 DPS 的 [idScope](/iot-dps/concepts-device#id-scope)。
 
-* “**密码**”字段使用 SAS 令牌。 对于 HTTPS 和 AMQP 协议，SAS 令牌的格式是相同的：
+* “密码”  字段使用 SAS 令牌。 对于 HTTPS 和 AMQP 协议，SAS 令牌的格式是相同的：
 
   `SharedAccessSignature sr={URL-encoded-resourceURI}&sig={signature-string}&se={expiry}&skn=registration` resourceURI 应采用 `{idScope}/registrations/{registration_id}` 格式。 策略名称应是 `registration`。
 
@@ -61,7 +63,7 @@ DPS 不是功能完备的 MQTT 中转站，并未支持 MQTT v3.1.1 标准中指
 
 ## <a name="tlsssl-configuration"></a>TLS/SSL 配置
 
-若要直接使用 MQTT 协议，客户端必须通过 TLS 1.2 进行连接。  尝试跳过此步骤失败并显示连接错误。
+若要直接使用 MQTT 协议，客户端必须通过 TLS 1.2 进行连接。 尝试跳过此步骤失败并显示连接错误。
 
 
 ## <a name="registering-a-device"></a>注册设备

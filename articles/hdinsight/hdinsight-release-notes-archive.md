@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 origin.date: 01/08/2019
 ms.date: 02/24/2020
-ms.openlocfilehash: e750314d20b406dd29bc1eb0936ace8ac37d9299
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: bfcbd2a0820ab9c4adc49d0d0b9e6dd277a20543
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77428703"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723230"
 ---
 # <a name="archived-release-notes"></a>已存档的发行说明
 
@@ -32,7 +32,7 @@ Azure HDInsight 是 Azure 中最受企业客户青睐的开源 Apache Hadoop 和
 ### <a name="new-features"></a>新增功能
 
 #### <a name="service-tags"></a>服务标记
-服务标记通过使你轻松限制 Azure 服务的网络访问，以此简化 Azure 虚拟机和 Azure 虚拟网络的安全性。 你可在网络安全组 (NSG) 规则中使用服务标记，允许或拒绝全局或每个 Azure 区域的特定 Azure 服务流量。 Azure 会对每个标记下面的 IP 地址进行维护。 网络安全组 (NSG) 的 HDInsight 服务标记是运行状况和管理服务的 IP 地址组。 这些组有助于尽量降低创建安全规则时的复杂性。 HDInsight 客户可通过 Azure 门户、PowerShell 和 REST API 启用服务标记。 有关详细信息，请参阅 [Azure HDInsight 的网络安全组 (NSG) 服务标记](https://docs.microsoft.com/azure/hdinsight/hdinsight-service-tags)。
+服务标记通过使你轻松限制 Azure 服务的网络访问，以此简化 Azure 虚拟机和 Azure 虚拟网络的安全性。 你可在网络安全组 (NSG) 规则中使用服务标记，允许或拒绝全局或每个 Azure 区域的特定 Azure 服务流量。 Azure 会对每个标记下面的 IP 地址进行维护。 网络安全组 (NSG) 的 HDInsight 服务标记是运行状况和管理服务的 IP 地址组。 这些组有助于尽量降低创建安全规则时的复杂性。 HDInsight 客户可通过 Azure 门户、PowerShell 和 REST API 启用服务标记。 有关详细信息，请参阅 [Azure HDInsight 的网络安全组 (NSG) 服务标记](/hdinsight/hdinsight-service-tags)。
 
 #### <a name="custom-ambari-db"></a>自定义 Ambari DB
 通过 HDInsight，你现在可将自己的 SQL DB 用于 Apache Ambari。 你可通过 Azure 门户或资源管理器模板配置此自定义 Ambari DB。  此功能可让你为处理和容量需求选择合适的 SQL DB。 你还可轻松升级以匹配业务增长需求。 有关详细信息，请参阅[使用自定义 Ambari 数据库设置 HDInsight 群集](hdinsight-custom-ambari-db.md)。
@@ -56,7 +56,7 @@ Azure HDInsight 是 Azure 中最受企业客户青睐的开源 Apache Hadoop 和
 今年晚些时候，预计从 2020/6/30 开始，Azure HDInsight 将为所有 HTTPS 连接强制实行 TLS 2.1 或更高版本。 我们建议你确保所有客户端都已准备好处理 TLS 1.2 或更高版本。
 
 #### <a name="moving-to-azure-virtual-machine-scale-sets"></a>迁移到 Azure 虚拟机规模集
-HDInsight 目前使用 Azure 虚拟机来预配群集。 从 2020 年 2 月开始（将在稍后传达确切日期），HDInsight 将改为使用 Azure 虚拟机规模集。 详细了解 [Azure 虚拟机规模集](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview)。
+HDInsight 目前使用 Azure 虚拟机来预配群集。 从 2020 年 2 月开始（将在稍后传达确切日期），HDInsight 将改为使用 Azure 虚拟机规模集。 详细了解 [Azure 虚拟机规模集](/virtual-machine-scale-sets/overview)。
 
 #### <a name="esp-spark-cluster-node-size-change"></a>ESP Spark 群集节点大小变更 
 在即将推出的版本中：
@@ -76,7 +76,7 @@ HDInsight 4.0 无组件版本变更。
 
 HDInsight 3.6 上的 Apache Zeppelin：0.7.0-->0.7.3. 
 
-可以在[此文档](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#apache-hadoop-components-available-with-different-hdinsight-versions)中获取最新的组件版本。
+可以在[此文档](/hdinsight/hdinsight-component-versioning#apache-hadoop-components-available-with-different-hdinsight-versions)中获取最新的组件版本。
 
 ### <a name="new-regions"></a>新区域
 
@@ -104,19 +104,19 @@ Kafka Rest API 代理通过受保护的 AAD 授权和 OAuth 协议，为 Kafka �
 
 可以根据要求，在基于负载和基于计划的自动缩放之间进行选择。 基于负载的自动缩放可根据当前资源需求增大和缩小群集大小，而基于计划的自动缩放可根据预定义的计划更改群集大小。 
 
-适用于 HBase 和 LLAP 工作负荷的自动缩放支持也推出了公共预览版。 有关详细信息，请参阅[自动缩放 Azure HDInsight 群集](https://docs.microsoft.com/azure/hdinsight/hdinsight-autoscale-clusters)。
+适用于 HBase 和 LLAP 工作负荷的自动缩放支持也推出了公共预览版。 有关详细信息，请参阅[自动缩放 Azure HDInsight 群集](/hdinsight/hdinsight-autoscale-clusters)。
 
 #### <a name="hdinsight-accelerated-writes-for-apache-hbase"></a>适用于 Apache HBase 的 HDInsight 加速写入 
 
-加速写入使用 Azure 高级 SSD 托管磁盘，可以改善 Apache HBase 预写日志 (WAL) 的性能。 有关详细信息，请参阅[面向 Apache HBase 的 Azure HDInsight 加速写入](https://docs.microsoft.com/azure/hdinsight/hbase/apache-hbase-accelerated-writes)。
+加速写入使用 Azure 高级 SSD 托管磁盘，可以改善 Apache HBase 预写日志 (WAL) 的性能。 有关详细信息，请参阅[面向 Apache HBase 的 Azure HDInsight 加速写入](/hdinsight/hbase/apache-hbase-accelerated-writes)。
 
 #### <a name="custom-ambari-db"></a>自定义 Ambari DB
 
-HDInsight 现在提供新的容量，使客户能够使用自己的适用于 Ambari 的 SQL 数据库。 现在，客户可以选择适当的用于 Ambari 的 SQL 数据库，并根据自己的业务增长需求轻松对其进行升级。 部署是使用 Azure 资源管理器模板完成的。 有关详细信息，请参阅[使用自定义 Ambari 数据库设置 HDInsight 群集](https://docs.microsoft.com/azure/hdinsight/hdinsight-custom-ambari-db)。
+HDInsight 现在提供新的容量，使客户能够使用自己的适用于 Ambari 的 SQL 数据库。 现在，客户可以选择适当的用于 Ambari 的 SQL 数据库，并根据自己的业务增长需求轻松对其进行升级。 部署是使用 Azure 资源管理器模板完成的。 有关详细信息，请参阅[使用自定义 Ambari 数据库设置 HDInsight 群集](/hdinsight/hdinsight-custom-ambari-db)。
 
 #### <a name="f-series-virtual-machines-are-now-available-with-hdinsight"></a>现已推出适用于 HDInsight 的 F 系列虚拟机
 
-F 系列虚拟机 (VM) 非常适合用于体验处理要求很低的 HDInsight。 根据每个 vCPU 的 Azure 计算单位 (ACU)，F 系列以较低的小时定价，在 Azure 产品组合中具有最高性价比。 有关详细信息，请参阅[为 Azure HDInsight 群集选择适当的 VM 大小](https://docs.microsoft.com/azure/hdinsight/hdinsight-selecting-vm-size)。
+F 系列虚拟机 (VM) 非常适合用于体验处理要求很低的 HDInsight。 根据每个 vCPU 的 Azure 计算单位 (ACU)，F 系列以较低的小时定价，在 Azure 产品组合中具有最高性价比。 有关详细信息，请参阅[为 Azure HDInsight 群集选择适当的 VM 大小](/hdinsight/hdinsight-selecting-vm-size)。
 
 ### <a name="deprecation"></a>弃用
 
@@ -135,7 +135,7 @@ HDInsight 在群集中提供托管磁盘空间。 从此发行版开始，新建
 即将发布的版本中将发生以下更改。 
 
 #### <a name="moving-to-azure-virtual-machine-scale-sets"></a>迁移到 Azure 虚拟机规模集
-HDInsight 目前使用 Azure 虚拟机来预配群集。 从 12 月开始，HDInsight 将改用 Azure 虚拟机规模集。 详细了解 [Azure 虚拟机规模集](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview)。
+HDInsight 目前使用 Azure 虚拟机来预配群集。 从 12 月开始，HDInsight 将改用 Azure 虚拟机规模集。 详细了解 [Azure 虚拟机规模集](/virtual-machine-scale-sets/overview)。
 
 #### <a name="hbase-20-to-21"></a>HBase 2.0 到 2.1
 在即将推出的 HDInsight 4.0 版本中，HBase 版本将从 2.0 升级到 2.1。
@@ -147,7 +147,7 @@ HDInsight 目前使用 Azure 虚拟机来预配群集。 从 12 月开始，HDIn
 HDInsight 会持续改善群集的可靠性和性能。 
 
 ### <a name="component-version-change"></a>组件版本更改
-此版本未发生组件版本更改。 可在[此处](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning)查找 HDInsight 4.0 和 HDInsight 3.6 的当前组件版本。
+此版本未发生组件版本更改。 可在[此处](/hdinsight/hdinsight-component-versioning)查找 HDInsight 4.0 和 HDInsight 3.6 的当前组件版本。
 
 
 ## <a name="release-date-08072019"></a>发布日期：2019/08/07

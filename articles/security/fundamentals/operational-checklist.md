@@ -1,0 +1,59 @@
+---
+title: Azure 操作安全性清单 | Azure Docs
+description: 本文提供有关 Azure 操作安全性的一组清单。
+services: security
+documentationcenter: na
+author: unifycloud
+manager: barbkess
+editor: tomsh
+ms.assetid: ''
+ms.service: security
+ms.subservice: security-fundamentals
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 06/02/2020
+ms.author: v-tawe
+origin.date: 11/21/2017
+ms.openlocfilehash: 8de27097d7adf7596eb4a3a19a240108cd41dc28
+ms.sourcegitcommit: 79c99a9ea013b3c74706a1038a505f4eea2aaac4
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84439686"
+---
+# <a name="azure-operational-security-checklist"></a>Azure 操作安全性清单
+在 Azure 上部署应用程序的过程快速、轻松且经济高效。 在生产环境中部署云应用程序之前，准备好一个清单会很有用，这样可以根据一份必要和建议的操作安全措施列表来评估应用程序。
+
+## <a name="introduction"></a>简介
+
+Azure 提供一套可用于部署应用程序的基础结构服务。 Azure 操作安全性是指用户可用于在世纪互联 Azure 中保护其数据、应用程序和其他资产的服务、控件和功能。
+
+-   为了最大程度地发挥云平台的优势，我们建议利用 Azure 服务并遵循本清单的建议。
+-   在推出应用程序之前投入时间和资源评估应用程序操作就绪性的组织，比不采取这些措施的组织最终收获的满意度要高得多。 在执行这项工作时，清单可以充当一个极其有效的机制，确保以一致且整体的方式评估应用程序。
+-   操作评估的级别因组织的云利用成熟度、应用程序的开发阶段、可用性需求和数据敏感度要求而异。
+
+## <a name="checklist"></a>清单
+
+此清单的目的是帮助企业在 Azure 上部署复杂的企业应用程序时全盘考虑各种操作安全因素。 此外，它还有助于为组织构建安全的云迁移和操作策略。
+
+|清单类别| 说明|
+| ------------ | -------- |
+| [<br>安全角色和访问控制](/security-center/security-center-planning-and-operations-guide.md)|<ul><li>使用[基于角色的访问控制 (RBAC)](/role-based-access-control/role-assignments-portal.md) 向特定范围的用户、组和应用程序分配权限。</li></ul> |
+| [<br>数据收集和存储](/storage/blobs/security-recommendations.md)|<ul><li>使用[基于角色的访问控制 (RBAC)](/role-based-access-control/role-assignments-portal.md) 通过管理平面安全性来保护存储帐户。</li><li>使用[共享访问签名 (SAS)](/storage/common/storage-dotnet-shared-access-signature-part-1.md) 和存储访问策略通过数据平面安全性来保护对数据的访问。</li><li>使用传输级加密 – 使用 [SMB（服务器消息块协议）3.0](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) 对 [Azure 文件共享](/storage/files/storage-dotnet-how-to-use-files.md)所用的 HTTPS 和加密。</li><li>需要专门控制加密密钥时，使用[客户端加密](/storage/common/storage-client-side-encryption.md)来保护发送到存储帐户的数据。 </li><li>使用[存储服务加密 (SSE)](/storage/common/storage-service-encryption.md) 可以自动加密 Azure 存储中的数据 <!-- Disk Encryption not available-->上获取。</li><li>使用 Azure [存储分析](https://docs.microsoft.com/rest/api/storageservices/storage-analytics)监视授权类型；像使用 Blob 存储时一样，可以查看用户使用的是共享访问签名还是存储帐户密钥。</li><li>使用[跨域资源共享 (CORS)](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) 访问不同域中的存储资源。</li></ul> |
+|[<br>安全策略和建议](/security-center/security-center-planning-and-operations-guide.md)|<ul><li>使用 [Azure 安全中心](/security-center/security-center-install-endpoint-protection.md)部署终结点解决方案。</li><li>添加 [Web 应用程序防火墙 (WAF)](/application-gateway/waf-overview.md) 来保护 Web 应用程序。</li> <!-- not available--> <li>为 Azure 订阅应用安全联系人详细信息；如果 [Microsoft 安全响应中心 (MSRC)](https://technet.microsoft.com/security/dn528958.aspx) 发现客户数据被非法或未授权的一方访问，MSRC 会联系你。</li></ul> |
+| [<br>标识和访问管理](identity-management-best-practices.md)|<ul><li>[使用 Azure AD 将本地目录与云目录同步](/active-directory/hybrid/whatis-hybrid-identity.md)。</li><!--Single Sign-On not avialable--><li>使用[密码重置注册活动](/active-directory/active-directory-passwords-reporting.md)报告来监视正在注册的用户。</li><li>为用户启用[多重身份验证 (MFA)](/active-directory/authentication/multi-factor-authentication.md)。</li><li>开发人员可对应用使用安全标识功能，例如 [Microsoft 安全开发生命周期 (SDL)](https://www.microsoft.com/download/details.aspx?id=12379)。</li><!--Azure AD Premium  not available--></ul> |
+|[<br>持续安全监视](/security-center/security-center-planning-and-operations-guide.md)|<ul><li>使用恶意软件评估解决方案 [Azure Monitor 日志](/log-analytics/log-analytics-queries.md)来报告基础结构中的反恶意软件保护状态。</li><li>使用[更新评估](/automation/automation-update-management.md)确定潜在安全问题的总体风险，以及这些更新对环境是否重要、有多重要。</li><li>[标识和访问](/security-center/security-center-monitoring.md)提供用户的概述，具体信息包括： </li><ul><li>用户标识状态；</li><li>登录尝试失败次数、</li><li> 尝试登录期间使用的用户帐户、已锁定的帐户；</li> <li>密码已更改或重置的帐户； </li><li>当前已登录的帐户数目。</li></ul></ul> |
+| [<br>Azure 安全中心检测功能](/security-center/security-center-alerts-overview.md#detect-threats)|<ul><li>使用[检测功能](/security-center/security-center-alerts-overview.md#detect-threats)识别针对 Microsoft Azure 资源的现行威胁。</li><li>使用[集成威胁情报](https://blogs.msdn.microsoft.com/azuresecurity/2016/12/19/get-threat-intelligence-reports-with-azure-security-center/)，利用 Microsoft 产品和服务、[Microsoft 反数字犯罪部门 (DCU)](https://www.microsoft.com/trustcenter/security/cybercrime)、[Microsoft 安全响应中心 (MSRC)](https://www.microsoft.com/msrc/mission?rtc=1) 以及外部源提供的全球威胁情报，搜寻已知的行为不端的攻击者。</li><li>使用[行为分析](https://blogs.technet.microsoft.com/enterprisemobility/2016/06/30/ata-behavior-analysis-monitoring/)，运用已知模式发现恶意行为。 </li><li>使用[异常检测](https://msdn.microsoft.com/library/azure/dn913096.aspx)，利用统计分析构建历史基线。</li></ul> |
+<!-- DevOps is not available-->
+
+
+## <a name="conclusion"></a>结论
+许多组织已在 Azure 中成功部署并运行其云应用程序。 提供的清单强调了几项必备要点，可帮助提高成功部署和顺畅运营的几率。 我们强烈建议针对 Azure 上的现有应用程序部署和新的部署实施这些操作性和策略性事项。
+
+## <a name="next-steps"></a>后续步骤
+若要了解有关安全性的详细信息，请参阅以下文章：
+
+- [设计和操作安全性](https://www.microsoft.com/trustcenter/security/designopsecurity)
+- [Azure 安全中心规划和操作](/security-center/security-center-planning-and-operations-guide.md)

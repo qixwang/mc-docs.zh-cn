@@ -1,26 +1,20 @@
 ---
 title: 在 Azure 中创建 VHD 的快照 | Azure
 description: 了解如何在 Azure 中创建 VHD 的副本作为备份或用于解决问题。
-documentationcenter: ''
-author: rockboyfor
-manager: digimobile
-editor: ''
-tags: azure-resource-manager
-ms.service: virtual-machines-linux
+author: Johnnytechn
+manager: twooley
+ms.service: virtual-machines
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.devlang: azurecli
 ms.topic: article
-origin.date: 07/11/2018
-ms.date: 05/20/2019
-ms.author: v-yeche
+ms.date: 06/05/2020
+ms.author: v-johya
 ms.subservice: disks
-ms.openlocfilehash: fadd3839a3a13a4fffc203a8130ec147e834de5b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: c7d474d8d1f6f378b21d398a0e0095c7e2f85ee2
+ms.sourcegitcommit: 285649db9b21169f3136729c041e4d04d323229a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "66004286"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84683937"
 ---
 # <a name="create-a-snapshot"></a>创建快照 
 
@@ -62,7 +56,6 @@ az snapshot list \
    -g myResourceGroup \
    -o table
 ```
-
 <!--Notice: global cmdlet missing -o-->
 
 ## <a name="use-azure-portal"></a>使用 Azure 门户 
@@ -75,6 +68,7 @@ az snapshot list \
 7. 对于**源磁盘**，选择要获取其快照的托管磁盘。
 8. 选择用于存储快照的“帐户类型”  。 使用 **Standard HDD**，除非需要将其存储在高性能 SSD 上。
 9. 单击“创建”。 
+
 
 ## <a name="next-steps"></a>后续步骤
 
