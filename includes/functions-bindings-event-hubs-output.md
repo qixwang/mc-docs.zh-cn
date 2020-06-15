@@ -2,14 +2,14 @@
 author: craigshoemaker
 ms.service: azure-functions
 ms.topic: include
-ms.date: 03/02/2020
+ms.date: 06/05/2020
 ms.author: v-junlch
-ms.openlocfilehash: 7287efc731ac8dc7518915952c30878d78cb9e7f
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: e057228e231b0c1a3536c5eb3d2807fd942fb624
+ms.sourcegitcommit: f1a76ee3242698123a3d77f44c860db040b48f70
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78266120"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84574660"
 ---
 使用事件中心输出绑定将事件写入到事件流。 必须具有事件中心的发送权限才可将事件写入到其中。
 
@@ -207,7 +207,7 @@ JavaScript 不支持特性。
 
 ## <a name="configuration"></a>配置
 
-下表解释了在 function.json  文件和 `EventHub` 特性中设置的绑定配置属性。
+下表解释了在 function.json 文件和 `EventHub` 特性中设置的绑定配置属性。
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
@@ -216,7 +216,7 @@ JavaScript 不支持特性。
 |**name** | 不适用 | 函数代码中使用的表示事件的变量名称。 |
 |**路径** |**EventHubName** | 仅适用于 Functions 1.x。 事件中心的名称。 当事件中心名称也出现在连接字符串中时，该值会在运行时覆盖此属性。 |
 |**eventHubName** |**EventHubName** | Functions 2.x 及更高版本。 事件中心的名称。 当事件中心名称也出现在连接字符串中时，该值会在运行时覆盖此属性。 |
-|连接  |**Connection** | 应用设置的名称，该名称中包含事件中心命名空间的连接字符串。 单击 *命名空间* （而不是事件中心本身）  的“连接信息”按钮，以复制此连接字符串。 此连接字符串必须具有发送权限才可将消息发送到事件流。|
+|连接 |**Connection** | 应用设置的名称，该名称中包含事件中心命名空间的连接字符串。 单击 *命名空间* （而不是事件中心本身）的“连接信息”按钮，以复制此连接字符串。 此连接字符串必须具有发送权限才可将消息发送到事件流。|
 
 [!INCLUDE [app settings to local.settings.json](../articles/azure-functions/../../includes/functions-app-settings-local.md)]
 
@@ -249,34 +249,4 @@ JavaScript 不支持特性。
 | 绑定 | 参考 |
 |---|---|
 | 事件中心 | [操作指南](https://docs.microsoft.com/rest/api/eventhub/publisher-policy-operations) |
-
-<a name="host-json"></a>  
-
-## <a name="hostjson-settings"></a>host.json 设置
-
-本部分介绍版本 2.x 及更高版本中可用于此绑定的全局配置设置。 下面的示例 host.json 文件仅包含此绑定的 2.x 版及更高版本设置。 若要详细了解 2.x 版及更高版本中的全局配置设置，请参阅 [Azure Functions 的 host.json 参考](../articles/azure-functions/functions-host-json.md)。
-
-> [!NOTE]
-> 有关 Functions 1.x 中 host.json 的参考，请参阅 [Azure Functions 1.x 的 host.json 参考](../articles/azure-functions/functions-host-json-v1.md)。
-
-```json
-{
-    "version": "2.0",
-    "extensions": {
-        "eventHubs": {
-            "batchCheckpointFrequency": 5,
-            "eventProcessorOptions": {
-                "maxBatchSize": 256,
-                "prefetchCount": 512
-            }
-        }
-    }
-}  
-```
-
-|属性  |默认 | 说明 |
-|---------|---------|---------|
-|`maxBatchSize`|10 个|每个接收循环收到的最大事件计数。|
-|`prefetchCount`|300|基础 `EventProcessorHost` 使用的默认预提取计数。|
-|`batchCheckpointFrequency`|1|创建 EventHub 游标检查点之前要处理的事件批数。|
 
