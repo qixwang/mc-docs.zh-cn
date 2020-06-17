@@ -8,14 +8,14 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-origin.date: 03/13/2020
-ms.date: 04/06/2020
-ms.openlocfilehash: 733838bf573a81f55239085c6c71a2f7acf0078c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+origin.date: 05/08/2020
+ms.date: 06/22/2020
+ms.openlocfilehash: 1cc6d59adfd27b02ee1a3db01085d7fa3dcb409a
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80343612"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723221"
 ---
 # <a name="release-notes"></a>发行说明
 
@@ -36,7 +36,7 @@ Azure HDInsight 是 Azure 中最受企业客户青睐的开源分析服务之一
 ### <a name="tls-12-enforcement"></a>强制执行 TLS 1.2
 传输层安全性 (TLS) 和安全套接字层 (SSL) 是提供计算机网络通信安全的加密协议。 详细了解 [TLS](https://en.wikipedia.org/wiki/Transport_Layer_Security#SSL_1.0.2C_2.0_and_3.0)。 HDInsight 在公共 HTTPs 终结点上使用 TLS 1.2，但仍支持使用 TLS 1.1 以实现后向兼容。 
 
-在此发行版中，客户只能为通过公共群集终结点建立的所有连接启用 TLS 1.2。 为了支持此方案，我们引入了新属性 **minSupportedTlsVersion**，在创建群集期间可以指定此属性。 如果不设置该属性，群集仍支持 TLS 1.0、1.1 和 1.2，这与当前的行为相同。 客户可将此属性的值设置为“1.2”，这意味着，群集仅支持 TLS 1.2 和更高版本。 有关详细信息，请参阅[规划虚拟网络 - 传输层安全性](/hdinsight/hdinsight-plan-virtual-network-deployment#transport-layer-security)。
+在此发行版中，客户只能为通过公共群集终结点建立的所有连接启用 TLS 1.2。 为了支持此方案，我们引入了新属性 **minSupportedTlsVersion**，在创建群集期间可以指定此属性。 如果不设置该属性，群集仍支持 TLS 1.0、1.1 和 1.2，这与当前的行为相同。 客户可将此属性的值设置为“1.2”，这意味着，群集仅支持 TLS 1.2 和更高版本。 有关详细信息，请参阅[传输层安全性](./transport-layer-security.md)。
 
 ### <a name="bring-your-own-key-for-disk-encryption"></a>创建自己的密钥进行磁盘加密
 通过 Azure 存储服务加密 (SSE) 保护 HDInsight 中的所有托管磁盘。 这些磁盘上的数据默认已使用 Microsoft 托管的密钥进行加密。 从此发行版开始，可以创建自己的密钥 (BYOK) 进行磁盘加密，并使用 Azure Key Vault 管理该密钥。 BYOK 加密是创建群集期间完成的单步配置，不额外收费。 只需将 HDInsight 作为托管标识注册到 Azure Key Vault，并在创建群集时添加加密密钥。 有关详细信息，请参阅[客户管理的密钥磁盘加密](/hdinsight/disk-encryption)。
@@ -50,15 +50,27 @@ Azure HDInsight 是 Azure 中最受企业客户青睐的开源分析服务之一
 ## <a name="upcoming-changes"></a>即将推出的更改
 即将发布的版本中将推出以下变更。 
 
+### <a name="deprecate-spark-21-and-22-in-hdinsight-36-spark-cluster"></a>弃用 HDInsight 3.6 Spark 群集中的 Spark 2.1 和 2.2
+从 2020 年 7 月 1 日开始，客户将无法使用 HDInsight 3.6 上的 Spark 2.1 和 2.2 创建新的 Spark 群集。 现有群集将在没有 Microsoft 支持的情况下按原样运行。 为避免系统/支持可能中断，请考虑在 2020 年 6 月 30 日之前移到 HDInsight 3.6 上的 Spark 2.3。
+
+### <a name="deprecate-spark-23-in-hdinsight-40-spark-cluster"></a>弃用 HDInsight 4.0 Spark 群集中的 Spark 2.3
+从 2020 年 7 月 1 日开始，客户将无法使用 HDInsight 4.0 上的 Spark 2.3 创建新的 Spark 群集。 现有群集将在没有 Microsoft 支持的情况下按原样运行。 请考虑在 2020 年 6 月 30 日之前转移到 HDInsight 4.0 上的 Spark 2.4，避免出现潜在的系统/支持中断。
+
+### <a name="deprecate-kafka-11-in-hdinsight-40-kafka-cluster"></a>弃用 HDInsight 4.0 Kafka 群集中的 Kafka 1.1
+从 2020 年 7 月 1 日开始，客户将无法使用 HDInsight 4.0 上的 Kafka 1.1 创建新的 Kafka 群集。 现有群集将在没有 Microsoft 支持的情况下按原样运行。 请考虑在 2020 年 6 月 30 日之前转移到 HDInsight 4.0 上的 Spark 2.1，避免出现潜在的系统/支持中断。
+
+### <a name="hbase-20-to-216"></a>HBase 2.0 到 2.1.6
+在即将推出的 HDInsight 4.0 版本中，HBase 版本将从 2.0 升级到 2.1.6
+
+### <a name="spark-240-to-244"></a>Spark 2.4.0 到 2.4.4
+在即将推出的 HDInsight 4.0 版本中，Spark 版本将从 2.4.0 升级到 2.4.4
+
 ### <a name="a-minimum-4-core-vm-is-required-for-head-node"></a>提供至少有 4 个核心的 VM 作为头节点 
 提供至少有 4 个核心的 VM 作为头节点是为了确保 HDInsight 群集的高可用性和可靠性。 从 2020 年 4 月 6 日开始，客户只能选择至少有 4 个核心的 VM 作为新 HDInsight 群集的头节点。 现有群集将继续按预期方式运行。 
 
 
 ### <a name="moving-to-azure-virtual-machine-scale-sets"></a>迁移到 Azure 虚拟机规模集
 HDInsight 目前使用 Azure 虚拟机来预配群集。 在即将推出的发行版中，HDInsight 将改用 Azure 虚拟机规模集。 详细了解 Azure 虚拟机规模集。
-
-### <a name="hbase-20-to-21"></a>HBase 2.0 到 2.1
-在即将推出的 HDInsight 4.0 版本中，HBase 版本将从 2.0 升级到 2.1。
 
 ## <a name="bug-fixes"></a>Bug 修复
 HDInsight 会持续改善群集的可靠性和性能。 
