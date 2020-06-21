@@ -7,12 +7,12 @@ ms.topic: conceptual
 origin.date: 01/09/2020
 ms.author: v-johya
 ms.date: 05/28/2020
-ms.openlocfilehash: 47cac928d1f7fb69d701e4a1c1958469d0c5fa91
-ms.sourcegitcommit: 5ae04a3b8e025986a3a257a6ed251b575dbf60a1
+ms.openlocfilehash: 9cc32265c02d5bf4ca901b18c79b6d4349f59095
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84440677"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097267"
 ---
 # <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板管理 Log Analytics 工作区
 
@@ -97,30 +97,7 @@ ms.locfileid: "84440677"
       "location": {
         "type": "String",
         "allowedValues": [
-        "australiacentral", 
-        "australiaeast", 
-        "australiasoutheast", 
-        "brazilsouth",
-        "canadacentral", 
-        "centralindia", 
-        "centralus", 
-        "eastasia", 
-        "chinanorth", 
-        "chinanorth2", 
-        "francecentral", 
-        "japaneast", 
-        "koreacentral", 
-        "northcentralus", 
-        "northeurope", 
-        "southafricanorth", 
-        "southcentralus", 
-        "southeastasia", 
-        "uksouth", 
-        "ukwest", 
-        "westcentralus", 
-        "chinanorth", 
-        "chinanorth", 
-        "chinanorth2" 
+        "chinaeast2" 
         ],
       "metadata": {
         "description": "Specifies the location in which to create the workspace."
@@ -236,30 +213,7 @@ ms.locfileid: "84440677"
     "location": {
       "type": "string",
       "allowedValues": [
-        "australiacentral",
-        "australiaeast",
-        "australiasoutheast",
-        "brazilsouth",
-        "canadacentral",
-        "centralindia",
-        "centralus",
-        "eastasia",
-        "chinanorth",
-        "chinanorth2",
-        "francecentral",
-        "japaneast",
-        "koreacentral",
-        "northcentralus",
-        "northeurope",
-        "southafricanorth",
-        "southcentralus",
-        "southeastasia",
-        "uksouth",
-        "ukwest",
-        "westcentralus",
-        "chinanorth",
-        "chinanorth",
-        "chinanorth2"
+        "chinaeast2"
       ],
       "metadata": {
         "description": "Specifies the location in which to create the workspace."

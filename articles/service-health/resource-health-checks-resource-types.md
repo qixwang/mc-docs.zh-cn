@@ -2,13 +2,13 @@
 title: 通过 Azure 资源运行状况支持的资源类型 | Microsoft Docs
 description: 通过 Azure 资源运行状况支持的资源类型
 ms.topic: conceptual
-ms.date: 04/28/2020
-ms.openlocfilehash: 682170236468194d1138dc6b09a3088124b1bea4
-ms.sourcegitcommit: e3512c5c2bbe61704d5c8cbba74efd56bfe91927
+ms.date: 06/16/2020
+ms.openlocfilehash: c49d69cde6b1d59c9994838a9e98f2e6df034d0f
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82267700"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097528"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Azure 资源运行状况中的资源类型和运行状况检查
 下面是通过资源运行状况执行的所有检查（按资源类型）的完整列表。
@@ -26,7 +26,7 @@ ms.locfileid: "82267700"
 ## <a name="microsoftbatchbatchaccounts"></a>Microsoft.Batch/batchAccounts
 |执行的检查|
 |---|
-|<ul><li>Batch 帐户是否已启动并正在运行？</li><li>此 Batch 帐户是否超出了池配额？</li></ul>|
+|<ul><li>Batch 帐户是否已启动并正在运行？</li><li>是否已超出此批处理帐户的池配额？</li></ul>|
 
 ## <a name="microsoftcacheredis"></a>Microsoft.Cache/Redis
 |执行的检查|
@@ -62,17 +62,6 @@ ms.locfileid: "82267700"
 |执行的检查|
 |---|
 |<ul><li>是否有管道运行失败？</li><li>托管数据工厂的群集是否正常？</li></ul>|
-
-## <a name="microsoftdatalakeanalyticsaccounts"></a>Microsoft.datalakeanalytics/accounts
-|执行的检查|
-|---|
-|<ul><li>是否有用户无法提交或列出 Data Lake Analytics 作业？</li><li>是否因系统错误而无法完成 Data Lake Analytics 作业？</li></ul>|
-
-
-## <a name="microsoftdatalakestoreaccounts"></a>Microsoft.datalakestore/accounts
-|执行的检查|
-|---|
-|<ul><li>是否有用户无法将数据上传到 Data Lake Store？</li><li>是否有用户无法从 Data Lake Store 下载数据？</li></ul>|
 
 ## <a name="microsoftdatamigrationservices"></a>Microsoft.datamigration/services
 |执行的检查|
@@ -152,7 +141,7 @@ ms.locfileid: "82267700"
 ## <a name="microsoftnetworkfrontdoors"></a>Microsoft.network/frontdoors
 |执行的检查|
 |---|
-|<ul><li>Front Door 后端是否以错误向运行状况探测做出响应？</li><li>配置更改是否延迟了？</li></ul>|
+|<ul><li>Front Door 后端是否以错误向运行状况探测做出响应？</li><li>配置更改是否已延迟？</li></ul>|
 
 ## <a name="microsoftnetworkloadbalancers"></a>Microsoft.network/LoadBalancers
 |执行的检查|
@@ -204,7 +193,7 @@ ms.locfileid: "82267700"
 |---|
 |<ul><li>数据库是否已启动并正在运行？</li></ul>|
 
-## <a name="microsoftsqlserverdatabases"></a>Microsoft.SQL/Server/databases
+## <a name="microsoftsqlserversdatabases"></a>Microsoft.SQL/servers/databases
 |执行的检查|
 |---|
 |<ul><li>是否存在到数据库的登录？</li></ul>|

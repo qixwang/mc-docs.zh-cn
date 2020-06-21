@@ -31,9 +31,9 @@
           items:
             - name: 身份验证和授权
               href: time-series-insights-authentication-and-authorization.md
-            - name: '使用 C# 查询数据'
+            - name: 使用 C# 查询数据
               href: time-series-insights-query-data-csharp.md
-            - name: '使用 C# 管理参考数据'
+            - name: 使用 C# 管理参考数据
               href: time-series-insights-manage-reference-data-csharp.md
             - name: 共享自定义视图
               href: time-series-insights-parameterized-urls.md
@@ -53,9 +53,9 @@
           items:
             - name: 身份验证和授权
               href: time-series-insights-authentication-and-authorization.md
-            - name: '使用 C# 查询数据'
+            - name: 使用 C# 查询数据
               href: time-series-insights-update-query-data-csharp.md
-- name: 操作方法指南
+- name: 操作指南
   items:
     - name: 授予数据访问权限
       href: time-series-insights-data-access.md
@@ -138,20 +138,6 @@
           href: 'https://www.azure.cn/pricing/calculator/'
         - name: 上市区域
           href: 'https://azure.microsoft.com/regions/services/'
-    - name: 支持和帮助选项
-      items:
-        - name: Azure 支持选项
-          href: 'https://www.azure.cn/support/contact/'
-        - name: 堆栈溢出
-          href: 'https://stackoverflow.com/questions/tagged/azure-timeseries-insights'
-        - name: MSDN 论坛
-          href: 'https://social.msdn.microsoft.com/Forums/home?forum=AzureTimeSeriesInsights'
-    - name: 反馈和论坛
-      items:
-        - name: MSDN 论坛
-          href: 'https://social.msdn.microsoft.com/Forums/home?forum=AzureTimeSeriesInsights'
-        - name: 产品请求和建议
-          href: 'https://feedback.azure.com/forums/906859-azure-time-series-insights'
     - name: Azure 视频
       href: 'https://azure.microsoft.com/resources/videos/index/?services=time-series-insights'
     - name: Channel 9 视频

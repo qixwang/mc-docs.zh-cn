@@ -2,16 +2,16 @@
 title: 在模板中使用条件
 description: 了解如何根据条件部署 Azure 资源。 演示如何部署新资源或使用现有资源。
 author: rockboyfor
-origin.date: 05/21/2019
-ms.date: 04/30/2020
+origin.date: 04/23/2020
+ms.date: 06/22/2020
 ms.topic: tutorial
 ms.author: v-yeche
-ms.openlocfilehash: 3c8d748d0f1d9b84c3459c7cbb9efe224c13d802
-ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
+ms.openlocfilehash: e7f190b3de87d4f36e7e61dcd18f81e0449cc245
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82596112"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098715"
 ---
 <!--Verify sucessfully-->
 # <a name="tutorial-use-condition-in-arm-templates"></a>教程：在 ARM 模板中使用条件

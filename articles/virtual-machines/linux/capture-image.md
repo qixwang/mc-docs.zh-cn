@@ -1,33 +1,27 @@
 ---
-title: 如何创建虚拟机或 VHD 的映像 | Azure
-description: 使用 Azure CLI 捕获 Azure VM 的映像以用于批量部署。
-services: virtual-machines-linux
-documentationcenter: ''
-author: rockboyfor
-manager: digimobile
-editor: ''
-tags: azure-resource-manager
-ms.assetid: e608116f-f478-41be-b787-c2ad91b5a802
-ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.devlang: azurecli
-ms.topic: article
-origin.date: 10/08/2018
-ms.date: 11/11/2019
-ms.author: v-yeche
-ms.openlocfilehash: efb45c751de3c5e9ef196b6e5421a11bbf409993
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+title: 使用 Azure CLI 捕获 Linux VM 的托管映像
+description: 使用 Azure CLI 捕获 Azure VM 的托管映像以用于批量部署。
+author: Johnnytechn
+ms.service: virtual-machines
+ms.subservice: imaging
+ms.topic: how-to
+ms.date: 06/17/2020
+ms.author: v-johya
+ms.custom: legacy
+ms.openlocfilehash: a50413ca35fc26803dbf97e9e47b7a1a71cd8be5
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "73831393"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097500"
 ---
-# <a name="how-to-create-an-image-of-a-virtual-machine-or-vhd"></a>如何创建虚拟机或 VHD 的映像
+# <a name="how-to-create-a-managed-image-of-a-virtual-machine-or-vhd"></a>如何创建虚拟机或 VHD 的托管映像
 
-<!-- generalize, image - extended version of the tutorial-->
+若要创建虚拟机 (VM) 的多个副本以便在 Azure 中用于开发和测试，请捕获 VM 或 OS VHD 的托管映像。 若要大规模创建、存储和共享映像，请参阅[共享映像库](../shared-images-cli.md)。
 
-若要创建虚拟机 (VM) 的多个副本以便在 Azure 中使用，请捕获 VM 或 OS VHD 的映像。 若要创建用于部署的映像，需要删除个人帐户信息。 执行下列步骤可取消预配现有 VM、将其解除分配，然后创建映像。 可以使用此映像，在订阅内的任何资源组中创建 VM。
+一个托管映像最多支持 20 个同时部署。 尝试从同一托管映像同时创建超过 20 个 VM 可能会由于单个 VHD 的存储性能限制而导致预配超时。 若要同时创建超过 20 个 VM，请使用通过 1 个副本为每 20 个并发 VM 部署配置的[共享映像库](shared-image-galleries.md)映像。
+
+若要创建托管映像，需要删除个人帐户信息。 执行下列步骤可取消预配现有 VM、将其解除分配，然后创建映像。 可以使用此映像，在订阅内的任何资源组中创建 VM。
 
 若要创建一份现有 Linux VM 的副本以用于备份或调试，或从本地 VM 上传专用 Linux VHD，请参阅[上传自定义磁盘映像并根据该映像创建 Linux VM](upload-vhd.md)。  
 
@@ -43,9 +37,10 @@ ms.locfileid: "73831393"
 
 ## <a name="prefer-a-tutorial-instead"></a>要改用教程吗？
 
-有关本文的用于测试、评估或了解 Azure 中的 VM 的简化版本，请参阅[使用 CLI 创建 Azure VM 的自定义映像](tutorial-custom-images.md)。  否则，请继续阅读本文以获得完整的信息。
+有关本文的用于测试、评估或了解 Azure 中的 VM 的简化版本，请参阅[使用 CLI 创建 Azure VM 的自定义映像](tutorial-custom-images.md)。  否则，请继续阅读此处以获取完整的图片。
 
-## <a name="step-1-deprovision-the-vm"></a>步骤 1：取消预配 VM
+
+## <a name="step-1-deprovision-the-vm"></a>步骤 1：取消设置 VM
 首先，使用 Azure VM 代理取消预配 VM 以删除计算机特定文件和数据。 在源 Linux VM 上，使用带 `-deprovision+user` 参数的 `waagent` 命令。 有关详细信息，请参阅 [Azure Linux 代理用户指南](../extensions/agent-linux.md)。
 
 1. 使用 SSH 客户端连接到 Linux VM。
@@ -54,16 +49,16 @@ ms.locfileid: "73831393"
     ```bash
     sudo waagent -deprovision+user
     ```
-    > [!NOTE]
-    > 仅在将捕获为映像的 VM 上运行此命令。 此命令无法保证映像中的所有敏感信息均已清除，或该映像适合再分发。 `+user` 参数还会删除上次预配的用户帐户。 要保留 VM 中的用户帐户凭据，请仅使用 `-deprovision`。
-
+   > [!NOTE]
+   > 仅在将捕获为映像的 VM 上运行此命令。 此命令无法保证映像中的所有敏感信息均已清除，或该映像适合再分发。 `+user` 参数还会删除上次预配的用户帐户。 要保留 VM 中的用户帐户凭据，请仅使用 `-deprovision`。
+ 
 3. 按 **y** 继续。 添加 `-force` 参数即可免除此确认步骤。
-4. 该命令完成后，请输入“退出”以关闭 SSH 客户端  。  此时 VM 仍将运行。
+4. 该命令完成后，请输入“退出”以关闭 SSH 客户端。  VM 在此时仍会运行。
 
 ## <a name="step-2-create-vm-image"></a>步骤 2：创建 VM 映像
 使用 Azure CLI 将 VM 标记为通用化并捕获映像。 在以下示例中，请将示例参数名称替换为自己的值。 示例参数名称包括 *myResourceGroup*、*myVnet* 和 *myVM*。
 
-1. 对使用 [az vm deallocate](https://docs.azure.cn/cli/vm?view=azure-cli-latest#az-vm-deallocate) 取消设置的 VM 解除分配。 以下示例在名为 *myResourceGroup* 的资源组中解除分配名为 *myVM* 的 VM。  
+1. 对使用 [az vm deallocate](https://docs.azure.cn/cli/vm?view=azure-cli-latest#az-vm-deallocate) 取消设置的 VM 解除分配。 以下示例在名为 myResourceGroup 的资源组中释放名为 myVM 的 VM 。  
 
     ```azurecli
     az vm deallocate \
@@ -71,9 +66,9 @@ ms.locfileid: "73831393"
       --name myVM
     ```
 
-    等待 VM 完全解除分配，然后再继续。 完成此命令可能需要几分钟。  VM 在解除分配期间将关闭。
+    等待 VM 完全解除分配，然后继续。 完成此命令可能需要几分钟。  VM 在解除分配期间关闭。
 
-2. 使用 [az vm generalize](https://docs.azure.cn/cli/vm?view=azure-cli-latest#az-vm-generalize) 将 VM 标记为通用化。 以下示例将名为 *myResourceGroup* 的资源组中名为 *myVM* 的 VM 标记为通用化的。
+2. 使用 [az vm generalize](https://docs.azure.cn/cli/vm?view=azure-cli-latest#az-vm-generalize) 将 VM 标记为通用化。 以下示例将名为 myResourceGroup 的资源组中名为 myVM 的 VM 标记为通用化 。
 
     ```azurecli
     az vm generalize \
@@ -81,9 +76,9 @@ ms.locfileid: "73831393"
       --name myVM
     ```
 
-    已通用化的 VM 无法再重启。
+    已通用化的 VM 无法再重新启动。
 
-3. 使用 [az image create](https://docs.azure.cn/cli/image?view=azure-cli-latest#az-image-create) 创建 VM 资源的映像。 以下示例使用名为 *myVM* 的 VM 资源在名为 *myResourceGroup* 的资源组中创建名为 *myImage* 的映像。
+3. 使用 [az image create](https://docs.azure.cn/cli/image?view=azure-cli-latest#az-image-create) 创建 VM 资源的映像。 以下示例使用名为 myVM 的 VM 资源在名为 myResourceGroup 的资源组中创建名为 myImage 的映像  。
 
     ```azurecli
     az image create \
@@ -91,15 +86,15 @@ ms.locfileid: "73831393"
       --name myImage --source myVM
     ```
 
-    > [!NOTE]
-    > 该映像在与源 VM 相同的资源组中创建。 可以在订阅内的任何资源组中从此映像创建虚拟机。 从管理角度来看，你可能希望为 VM 资源和映像创建特定的资源组。
+   > [!NOTE]
+   > 该映像在与源 VM 相同的资源组中创建。 可以在订阅内的任何资源组中从此映像创建虚拟机。 从管理角度来看，你可能希望为 VM 资源和映像创建特定的资源组。
 
     <!-- Not Available on availability zones -->
     
-此命令返回描述 VM 映像的 JSON。 保存此输出以供以后参考。
+此命令返回描述 VM 映像的 JSON。 保存此输出以供日后参考。
 
 ## <a name="step-3-create-a-vm-from-the-captured-image"></a>步骤 3：从捕获的映像创建 VM
-使用通过 [az vm create](https://docs.azure.cn/cli/vm?view=azure-cli-latest#az-vm-create) 创建的映像来创建 VM。 以下示例基于名为 *myImage* 的映像创建名为 *myVMDeployed* 的 VM。
+使用通过 [az vm create](https://docs.azure.cn/cli/vm?view=azure-cli-latest#az-vm-create) 创建的映像来创建 VM。 以下示例从名为 myImage 的映像创建名为 myVMDeployed 的 VM 。
 
 ```azurecli
 az vm create \
@@ -131,6 +126,7 @@ az vm create \
    --ssh-key-value ~/.ssh/id_rsa.pub
 ```
 
+
 ## <a name="step-4-verify-the-deployment"></a>步骤 4：验证部署
 
 将 SSH 连接到创建的虚拟机以验证部署并开始使用新的 VM。 要通过 SSH 连接，请使用 [az vm show](https://docs.azure.cn/cli/vm?view=azure-cli-latest#az-vm-show) 查找 VM 的 IP 地址或 FQDN。
@@ -143,13 +139,6 @@ az vm show \
 ```
 
 ## <a name="next-steps"></a>后续步骤
-可以从源 VM 映像创建多个 VM。 更改映像： 
-
-- 从映像创建 VM。
-- 进行任何更新或配置更改。
-- 再次执行相关步骤，对 VM 执行取消预配、解除分配、通用化和创建操作。
-- 将此新映像用于将来的部署。 可以删除原始映像。
-
-有关使用 CLI 管理 VM 的详细信息，请参阅 [Azure CLI](https://docs.azure.cn/cli/index?view=azure-cli-latest)。
+若要大规模创建、存储和共享映像，请参阅[共享映像库](shared-images.md)。
 
 <!-- Update_Description: update meta properties, wording update -->

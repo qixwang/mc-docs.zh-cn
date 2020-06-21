@@ -11,12 +11,12 @@ ms.topic: conceptual
 origin.date: 03/23/2020
 ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: 3eee4d0b947a2cacfec461260af51e9be2e8b1d7
-ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
+ms.openlocfilehash: 3f51455cd2299cf4ecda0eca48a64d87da770e7d
+ms.sourcegitcommit: 304d3ef3c9e65c3e85977b3afb9985fbc0f908d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82588775"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85095951"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>通过语音合成标记语言 (SSML) 改善合成
 
@@ -30,9 +30,6 @@ SSML 的语音服务实现基于万维网联合会的[语音合成标记语言�
 <!-- custom voices not supported -->
 
 ## <a name="standard-and-neural-voices"></a>标准语音和神经语音
-
-> [!NOTE]
-> 目前，神经语音以免费预览版提供。
 
 请从标准语音和神经语音中进行选择，50 多种标准语音已在 10 种以上的语言和区域设置中提供，5 种神经语音已在 4 种语言和区域设置中提供。 有关支持的语言、区域设置和语音（神经和标准）的完整列表，请参阅[语言支持](language-support.md)。
 
@@ -479,7 +476,7 @@ Could you help leave a message to Robert Benigni for me?
 | `range` | 表示文本音节范围的值。 可以使用用于描述 `pitch` 的相同绝对值、相对值或枚举值表示 `range`。 | 可选 |
 | `rate` | 指示文本的讲出速率。 可将 `rate` 表述为：<ul><li>以充当默认值倍数的数字表示的相对值。 例如，如果值为 *1*，则速率不会变化。 如果值为 *0.5*，则速率会减慢一半。 如果值为 *3*，则速率为三倍。</li><li>常量值：<ul><li>x-slow</li><li>slow</li><li>中</li><li>fast</li><li>x-fast</li><li>默认值</li></ul></li></ul> | 可选 |
 | `duration` | 语音合成 (TTS) 服务读取文本时应该消逝的时长，以秒或毫秒为单位。 例如 *2s* 或 *1800ms*。 | 可选 |
-| `volume` | 指示语音的音量级别。 可将音量表述为：<ul><li>以从 0.0 到 100.0（从最安静到最大声）的数字表示的绝对值。   例如 75。 默认值为 100.0。</li><li>以前面带有“+”或“-”的数字表示的相对值，指定音量的变化量。 例如，+10 或 -5.5。</li><li>常量值：<ul><li>silent</li><li>x-soft</li><li>soft</li><li>中</li><li>loud</li><li>x-loud</li><li>默认值</li></ul></li></ul> | 可选 |
+| `volume` | 指示语音的音量级别。 可将音量表述为：<ul><li>以从 0.0 到 100.0（从最安静到最大声）的数字表示的绝对值。  例如 75。 默认值为 100.0。</li><li>以前面带有“+”或“-”的数字表示的相对值，指定音量的变化量。 例如，+10 或 -5.5。</li><li>常量值：<ul><li>silent</li><li>x-soft</li><li>soft</li><li>中</li><li>loud</li><li>x-loud</li><li>默认值</li></ul></li></ul> | 可选 |
 
 ### <a name="change-speaking-rate"></a>更改语速
 

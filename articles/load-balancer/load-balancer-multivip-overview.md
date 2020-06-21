@@ -11,14 +11,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 08/07/2019
-ms.date: 02/24/2020
+ms.date: 06/22/2020
 ms.author: v-jay
-ms.openlocfilehash: 9a9a5ee3b89c381a0b57c4a140d6b9d9912f916e
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: c9fbf35e2f102ae1a0addaf731d2bab693e4492c
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540975"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098698"
 ---
 # <a name="multiple-frontends-for-azure-load-balancer"></a>Azure 负载均衡器的多个前端
 
@@ -147,7 +147,7 @@ DIP 是入站流量的目标。 在后端池中，每个 VM 公开 DIP 上唯一
 
 请注意，本示例未更改目标端口。 这是一个浮动 IP 方案，不过 Azure 负载均衡器也支持定义规则来重写后端的目标端口，使其与前端的目标端口不同。
 
-浮动 IP 规则类型是多种负载均衡器配置模式的基础。 [具有多个侦听器的 SQL AlwaysOn](../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md) 配置是目前提供的示例之一。 一段时间后，我们会介绍更多此类方案。
+浮动 IP 规则类型是多种负载均衡器配置模式的基础。 [具有多个侦听器的 SQL AlwaysOn](/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-ps-alwayson-int-listener) 配置是目前提供的示例之一。 一段时间后，我们会介绍更多此类方案。
 
 ## <a name="limitations"></a>限制
 

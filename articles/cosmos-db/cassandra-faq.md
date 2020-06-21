@@ -5,14 +5,14 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 04/09/2020
-ms.date: 06/15/2020
+ms.date: 06/22/2020
 ms.author: v-yeche
-ms.openlocfilehash: 2460f38ecc4d8322d7d44074b084203c69ae1d95
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+ms.openlocfilehash: a25154c9c5429086cd64a2f1f05aded301e35d09
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84200029"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098319"
 ---
 # <a name="frequently-asked-questions-about-the-cassandra-api-in-azure-cosmos-db"></a>有关 Azure Cosmos DB 中 Cassandra API 的常见问题解答。
 
@@ -160,7 +160,7 @@ Apache Cassandra SDK 的使用 CQLv3 的客户端驱动程序用于客户端程�
 
 Azure Cosmos DB 的所有 API 都提供间隔四小时的两个免费完整备份。 因此，无需设置备份计划。 
 
-如果想要修改保留期和频率，请发送电子邮件到 [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) 或提交支持案例。 [Azure Cosmos DB 的自动联机备份和还原](../synapse-analytics/sql-data-warehouse/backup-and-restore.md)一文中提供了有关备份功能的信息。
+如果想要修改保留期和频率，请发送电子邮件到 [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) 或提交支持案例。 [Azure Cosmos DB 的自动联机备份和还原](online-backup-and-restore.md)一文中提供了有关备份功能的信息。
 
 ### <a name="how-does-the-cassandra-api-account-handle-failover-if-a-region-goes-down"></a>当某个区域出现故障时，Cassandra API 帐户如何处理故障转移？
 
@@ -191,5 +191,4 @@ Cassandra API 借助 Azure Cosmos DB 的多区域分布式平台。 为了确保
 
 - 开始使用[弹性缩放 Azure Cosmos DB Cassandra API 帐户](manage-scale-cassandra.md)。
 
-<!-- Update_Description: new article about cassandra faq -->
-<!--NEW.date: 06/15/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

@@ -5,15 +5,15 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: overview
-origin.date: 06/24/2019
-ms.date: 04/27/2020
+origin.date: 04/23/2020
+ms.date: 06/22/2020
 ms.author: v-yeche
-ms.openlocfilehash: b439f48756d8781d5e7d4053dc87291d02fbfa64
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.openlocfilehash: d86cecf8492ef34c27a79cedba88b5be1db491f0
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82134929"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098650"
 ---
 <!--Verify sucessfully-->
 # <a name="azure-cosmos-db-gremlin-graph-support"></a>Azure Cosmos DB Gremlin 图形支持

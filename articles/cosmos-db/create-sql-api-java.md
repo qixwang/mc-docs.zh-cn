@@ -6,28 +6,32 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: quickstart
-origin.date: 10/31/2019
-ms.date: 06/15/2020
+origin.date: 05/11/2020
+ms.date: 06/22/2020
 ms.author: v-yeche
 ms.custom: seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 2735ebf4b2603fa6e58a159bbf90a60962f48a1f
-ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
+ms.openlocfilehash: 90dd538cd4fb1130f07cbcc84b4b165cc6bcc0e8
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84723315"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098661"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-sql-api-data"></a>快速入门：生成 Java 应用以管理 Azure Cosmos DB SQL API 数据
 
 > [!div class="op_single_selector"]
 > * [.NET V3](create-sql-api-dotnet.md)
 > * [.NET V4](create-sql-api-dotnet-V4.md)
-> * [Java](create-sql-api-java.md)
+> * [Java SDK v4](create-sql-api-java.md)
 > * [Node.js](create-sql-api-nodejs.md)
 > * [Python](create-sql-api-python.md)
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
 
 在本快速入门中，你将通过 Azure 门户并使用从 GitHub 克隆的 Java 应用来创建和管理 Azure Cosmos DB SQL API 帐户。 首先，请使用 Azure 门户创建 Azure Cosmos DB SQL API 帐户，使用 SQL Java SDK 创建 Java 应用，然后使用 Java 应用程序将资源添加到 Cosmos DB 帐户。 Azure Cosmos DB 是一种多模型数据库服务，可让你通过多区域分布和水平缩放功能快速创建和查询文档、表、键/值和图数据库。
+
+> [!IMPORTANT]  
+> 本快速入门仅适用于 Azure Cosmos DB Java SDK v4。 请查看 Azure Cosmos DB Java SDK v4 [发行说明](sql-api-sdk-java-v4.md)、[Maven 存储库](https://mvnrepository.com/artifact/com.azure/azure-cosmos)、Azure Cosmos DB Java SDK v4 [性能提示](performance-tips-java-sdk-v4-sql.md)和 Azure Cosmos DB Java SDK v4 [故障排除指南](troubleshoot-java-sdk-v4-sql.md)了解详细信息。 如果你当前使用的是早于 v4 的版本，请参阅[迁移到 Azure Cosmos DB Java SDK v4](migrate-java-v4-sdk.md) 指南，获取升级到 v4 的相关帮助。
+>
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -94,7 +98,9 @@ git clone https://github.com/Azure-Samples/azure-cosmos-java-getting-started.git
     client = new CosmosClientBuilder()
         .endpoint(AccountSettings.HOST)
         .key(AccountSettings.MASTER_KEY)
-        .connectionPolicy(defaultPolicy)
+        //  Setting the preferred location to Cosmos DB Account region
+        //  China North is just an example. User should set preferred location to the Cosmos DB region closest to the application
+        .preferredRegions(Collections.singletonList("China North"))
         .consistencyLevel(ConsistencyLevel.EVENTUAL)
         .buildClient();
 
@@ -103,7 +109,8 @@ git clone https://github.com/Azure-Samples/azure-cosmos-java-getting-started.git
 * `CosmosDatabase` 的创建。
 
     ```java
-    database = client.createDatabaseIfNotExists(databaseName).getDatabase();
+    CosmosDatabaseResponse cosmosDatabaseResponse = client.createDatabaseIfNotExists(databaseName);
+    database = client.getDatabase(cosmosDatabaseResponse.getProperties().getId());
 
     ```
 
@@ -114,7 +121,9 @@ git clone https://github.com/Azure-Samples/azure-cosmos-java-getting-started.git
         new CosmosContainerProperties(containerName, "/lastName");
 
     //  Create container with 400 RU/s
-    container = database.createContainerIfNotExists(containerProperties, 400).getContainer();
+    CosmosContainerResponse cosmosContainerResponse =
+        database.createContainerIfNotExists(containerProperties, ThroughputProperties.createManualThroughput(400));
+    container = database.getContainer(cosmosContainerResponse.getProperties().getId());
 
     ```
 
@@ -136,10 +145,10 @@ git clone https://github.com/Azure-Samples/azure-cosmos-java-getting-started.git
     try {
         CosmosItemResponse<Family> item = container.readItem(family.getId(), new PartitionKey(family.getLastName()), Family.class);
         double requestCharge = item.getRequestCharge();
-        Duration requestLatency = item.getRequestLatency();
+        Duration requestLatency = item.getDuration();
         System.out.println(String.format("Item successfully read with id %s with a charge of %.2f and within duration %s",
             item.getItem().getId(), requestCharge, requestLatency));
-    } catch (CosmosClientException e) {
+    } catch (CosmosException e) {
         e.printStackTrace();
         System.err.println(String.format("Read Item failed with %s", e));
     }
@@ -150,13 +159,13 @@ git clone https://github.com/Azure-Samples/azure-cosmos-java-getting-started.git
 
     ```java
     // Set some common query options
-    FeedOptions queryOptions = new FeedOptions();
+    CosmosQueryRequestOptions queryOptions = new CosmosQueryRequestOptions();
     //queryOptions.setEnableCrossPartitionQuery(true); //No longer necessary in SDK v4
-    //  Set populate query metrics to get metrics around query executions
-    queryOptions.setPopulateQueryMetrics(true);
+    //  Set query metrics enabled to get metrics around query executions
+    queryOptions.setQueryMetricsEnabled(true);
 
     CosmosPagedIterable<Family> familiesPagedIterable = container.queryItems(
-        "SELECT * FROM Family WHfERE Family.lastName IN ('Andersen', 'Wakefield', 'Johnson')", queryOptions, Family.class);
+        "SELECT * FROM Family WHERE Family.lastName IN ('Andersen', 'Wakefield', 'Johnson')", queryOptions, Family.class);
 
     familiesPagedIterable.iterableByPage(10).forEach(cosmosItemPropertiesFeedResponse -> {
         System.out.println("Got a page of query result with " +
@@ -184,8 +193,12 @@ git clone https://github.com/Azure-Samples/azure-cosmos-java-getting-started.git
     client = new CosmosClientBuilder()
         .endpoint(AccountSettings.HOST)
         .key(AccountSettings.MASTER_KEY)
-        .connectionPolicy(defaultPolicy)
+        //  Setting the preferred location to Cosmos DB Account region
+        //  China North is just an example. User should set preferred location to the Cosmos DB region closest to the application
+        .preferredRegions(Collections.singletonList("China North"))
         .consistencyLevel(ConsistencyLevel.EVENTUAL)
+        //  Setting content response on write enabled, which enables the SDK to return response on write operations.
+        .contentResponseOnWriteEnabled(true)
         .buildAsyncClient();
 
     ```
@@ -193,7 +206,8 @@ git clone https://github.com/Azure-Samples/azure-cosmos-java-getting-started.git
 * `CosmosAsyncDatabase` 的创建。
 
     ```java
-    database = client.createDatabaseIfNotExists(databaseName).getDatabase();
+    CosmosDatabaseResponse cosmosDatabaseResponse = client.createDatabaseIfNotExists(databaseName);
+    database = client.getDatabase(cosmosDatabaseResponse.getProperties().getId());
 
     ```
 
@@ -204,7 +218,9 @@ git clone https://github.com/Azure-Samples/azure-cosmos-java-getting-started.git
         new CosmosContainerProperties(containerName, "/lastName");
 
     //  Create container with 400 RU/s
-    container = database.createContainerIfNotExists(containerProperties, 400).getContainer();
+    CosmosContainerResponse cosmosContainerResponse =
+        database.createContainerIfNotExists(containerProperties, ThroughputProperties.createManualThroughput(400));
+    container = database.getContainer(cosmosContainerResponse.getProperties().getId());
 
     ```
 
@@ -221,7 +237,7 @@ git clone https://github.com/Azure-Samples/azure-cosmos-java-getting-started.git
         .flatMap(itemResponse -> {
             System.out.println(String.format("Created item with request charge of %.2f within" +
                 " duration %s",
-                itemResponse.getRequestCharge(), itemResponse.getRequestLatency()));
+                itemResponse.getRequestCharge(), itemResponse.getDuration()));
             System.out.println(String.format("Item ID: %s\n", itemResponse.getItem().getId()));
             return Mono.just(itemResponse.getRequestCharge());
         }) //Flux of request charges
@@ -233,9 +249,9 @@ git clone https://github.com/Azure-Samples/azure-cosmos-java-getting-started.git
             charge));         
         }, 
             err -> {
-                if (err instanceof CosmosClientException) {
+                if (err instanceof CosmosException) {
                     //Client-specific errors
-                    CosmosClientException cerr = (CosmosClientException)err;
+                    CosmosException cerr = (CosmosException)err;
                     cerr.printStackTrace();
                     System.err.println(String.format("Read Item failed with %s\n", cerr));
                 } else {
@@ -263,20 +279,20 @@ git clone https://github.com/Azure-Samples/azure-cosmos-java-getting-started.git
     final CountDownLatch completionLatch = new CountDownLatch(1);
 
     familiesToCreate.flatMap(family -> {
-                        Mono<CosmosAsyncItemResponse<Family>> asyncItemResponseMono = container.readItem(family.getId(), new PartitionKey(family.getLastName()), Family.class);
+                        Mono<CosmosItemResponse<Family>> asyncItemResponseMono = container.readItem(family.getId(), new PartitionKey(family.getLastName()), Family.class);
                         return asyncItemResponseMono;
                     })
                     .subscribe(
                         itemResponse -> {
                             double requestCharge = itemResponse.getRequestCharge();
-                            Duration requestLatency = itemResponse.getRequestLatency();
+                            Duration requestLatency = itemResponse.getDuration();
                             System.out.println(String.format("Item successfully read with id %s with a charge of %.2f and within duration %s",
                                 itemResponse.getItem().getId(), requestCharge, requestLatency));
                         },
                         err -> {
-                            if (err instanceof CosmosClientException) {
+                            if (err instanceof CosmosException) {
                                 //Client-specific errors
-                                CosmosClientException cerr = (CosmosClientException)err;
+                                CosmosException cerr = (CosmosException)err;
                                 cerr.printStackTrace();
                                 System.err.println(String.format("Read Item failed with %s\n", cerr));
                             } else {
@@ -302,10 +318,9 @@ git clone https://github.com/Azure-Samples/azure-cosmos-java-getting-started.git
     ```java
     // Set some common query options
 
-    FeedOptions queryOptions = new FeedOptions();
-    //queryOptions.setEnableCrossPartitionQuery(true); //No longer needed in SDK v4
-    //  Set populate query metrics to get metrics around query executions
-    queryOptions.setPopulateQueryMetrics(true);
+    CosmosQueryRequestOptions queryOptions = new CosmosQueryRequestOptions();
+    //  Set query metrics enabled to get metrics around query executions
+    queryOptions.setQueryMetricsEnabled(true);
 
     CosmosPagedFlux<Family> pagedFluxResponse = container.queryItems(
         "SELECT * FROM Family WHERE Family.lastName IN ('Andersen', 'Wakefield', 'Johnson')", queryOptions, Family.class);
@@ -325,9 +340,9 @@ git clone https://github.com/Azure-Samples/azure-cosmos-java-getting-started.git
                 .collect(Collectors.toList()));
         },
         err -> {
-            if (err instanceof CosmosClientException) {
+            if (err instanceof CosmosException) {
                 //Client-specific errors
-                CosmosClientException cerr = (CosmosClientException)err;
+                CosmosException cerr = (CosmosException)err;
                 cerr.printStackTrace();
                 System.err.println(String.format("Read Item failed with %s\n", cerr));
             } else {

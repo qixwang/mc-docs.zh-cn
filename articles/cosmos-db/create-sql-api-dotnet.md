@@ -2,26 +2,26 @@
 title: 快速入门 - 生成 .NET 控制台应用以管理 Azure Cosmos DB SQL API 资源
 description: 本快速入门介绍如何生成 .NET 控制台应用以管理 Azure Cosmos DB SQL API 帐户资源。
 author: rockboyfor
-ms.author: v-yeche
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
-origin.date: 07/12/2019
-ms.date: 02/10/2020
-ms.openlocfilehash: df530025ea5d5d6701a2f55fee4afc18ae2370ab
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+origin.date: 05/11/2020
+ms.date: 06/22/2020
+ms.author: v-yeche
+ms.openlocfilehash: edf20e614c4206bcd02435674b687839a7c6c847
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292935"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098656"
 ---
 # <a name="quickstart-build-a-net-console-app-to-manage-azure-cosmos-db-sql-api-resources"></a>快速入门：生成 .NET 控制台应用以管理 Azure Cosmos DB SQL API 资源
 
 > [!div class="op_single_selector"]
 > * [.NET V3](create-sql-api-dotnet.md)
 > * [.NET V4](create-sql-api-dotnet-V4.md)
-> * [Java](create-sql-api-java.md)
+> * [Java SDK v4](create-sql-api-java.md)
 > * [Node.js](create-sql-api-nodejs.md)
 > * [Python](create-sql-api-python.md)
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
@@ -52,6 +52,9 @@ Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服�
 <a name="create-account"></a>
 <a name="create-a-database-account"></a>
 ### <a name="create-an-azure-cosmos-account"></a>创建 Azure Cosmos 帐户
+
+<!--Not Available on [Try Azure Cosmos DB for free](https://www.azure.cn/try/cosmosdb/)-->
+<!--REMOVE THE CORRESPONDING CONTENT OF [Try Azure Cosmos DB for free](https://www.azure.cn/try/cosmosdb/)-->
 
 如果你有自己的 Azure 订阅或者免费创建了订阅，则应显式创建 Azure Cosmos 帐户。 以下代码将创建具有会话一致性的 Azure Cosmos 帐户。 该帐户在 `China East` 和 `China North` 中复制。  
 
@@ -131,15 +134,15 @@ dotnet add package Microsoft.Azure.Cosmos
 
 此示例应用程序需对 Azure Cosmos 帐户进行身份验证。 为了进行身份验证，应将 Azure Cosmos 帐户凭据传递给应用程序。 按照以下步骤获取 Azure Cosmos 帐户凭据：
 
-1. 登录到 [Azure 门户](https://portal.azure.cn/)。
+1. 登录 [Azure 门户](https://portal.azure.cn/)。
 
 1. 导航到 Azure Cosmos 帐户。
 
-1. 打开“键”窗格，复制帐户的 URI 和主键    。 下一步需将 URI 和键值添加到某个环境变量。
+1. 打开“键”窗格，复制帐户的 URI 和主键  。 下一步需将 URI 和键值添加到某个环境变量。
 
 ### <a name="set-the-environment-variables"></a>设置环境变量
 
-复制帐户的 URI 和主键以后，请将其保存到运行应用程序的本地计算机的新环境变量中   。 若要设置环境变量，请打开控制台窗口，并运行以下命令。 请确保替换 `<Your_Azure_Cosmos_account_URI>` 和 `<Your_Azure_Cosmos_account_PRIMARY_KEY>` 值。
+复制帐户的 URI 和主键以后，请将其保存到运行应用程序的本地计算机的新环境变量中 。 若要设置环境变量，请打开控制台窗口，并运行以下命令。 请确保替换 `<Your_Azure_Cosmos_account_URI>` 和 `<Your_Azure_Cosmos_account_PRIMARY_KEY>` 值。
 
 **Windows**
 
@@ -155,7 +158,7 @@ export EndpointUrl = "<Your_Azure_Cosmos_account_URI>"
 export PrimaryKey = "<Your_Azure_Cosmos_account_PRIMARY_KEY>"
 ```
 
-**MacOS**
+**macOS**
 
 ```bash
 export EndpointUrl = "<Your_Azure_Cosmos_account_URI>"

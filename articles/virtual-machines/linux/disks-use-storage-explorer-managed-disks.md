@@ -1,20 +1,19 @@
 ---
 title: 使用 Azure 存储资源管理器管理 Azure 托管磁盘
 description: 了解如何使用 Azure 存储资源管理器跨区域上传、下载和迁移 Azure 托管磁盘并创建托管磁盘的快照。
-author: rockboyfor
-ms.author: v-yeche
+author: Johnnytechn
+ms.author: v-johya
 origin.date: 09/25/2019
-ms.date: 05/20/2020
-ms.topic: article
-ms.service: virtual-machines-linux
-ms.tgt_pltfrm: linux
+ms.date: 06/17/2020
+ms.topic: how-to
+ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: f0578f58cfa3792bf23dd9231bc326401e4d10f9
-ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
+ms.openlocfilehash: 3feda25f5b44413e5327ef6358d25b3e61900663
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83392477"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097035"
 ---
 # <a name="use-azure-storage-explorer-to-manage-azure-managed-disks"></a>使用 Azure 存储资源管理器管理 Azure 托管磁盘
 [!INCLUDE [disks-upload-vhd-to-managed-disk-storage-explorer](../../../includes/disks-upload-vhd-to-managed-disk-storage-explorer.md)]

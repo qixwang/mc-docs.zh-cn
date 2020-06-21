@@ -3,14 +3,14 @@ title: 模板示例
 description: Azure 资源管理器模板示例，用于部署管理功能，例如角色和锁。
 ms.topic: sample
 origin.date: 11/16/2018
+ms.date: 06/22/2020
 ms.author: v-yeche
-ms.date: 01/06/2020
-ms.openlocfilehash: 89bb949bf86c25e9f46aba649066b280f164a1fc
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 254b87424852014236a8d62cafbe2db42e4883e3
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75631624"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098600"
 ---
 # <a name="azure-resource-manager-templates-for-management-features"></a>适用于管理功能的 Azure 资源管理器模板
 
@@ -26,11 +26,11 @@ ms.locfileid: "75631624"
 | [为资源组分配角色](https://github.com/Azure/azure-quickstart-templates/tree/master/101-rbac-builtinrole-resourcegroup)| 将内置角色分配到现有资源组的用户。 |
 | [为现有虚拟机分配角色](https://github.com/Azure/azure-quickstart-templates/tree/master/101-rbac-builtinrole-virtualmachine)| 将内置角色分配到现有 VM 的用户。 |
 | [为多个虚拟机分配角色](https://github.com/Azure/azure-quickstart-templates/tree/master/201-rbac-builtinrole-multipleVMs)| 将内置角色分配到多个虚拟机的用户。 |
-| [为 Azure 订阅分配角色](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-level-deployments/subscription-role-assigment)| 为 Azure 订阅的用户分配角色。 |
+| [为 Azure 订阅分配角色](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-deployments/subscription-role-assignment)| 为 Azure 订阅的用户分配角色。 |
 |**角色定义**||
-| [创建自定义角色定义](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-level-deployments/create-role-def)| 在 Azure 订阅中创建新的角色定义。 |
+| [创建自定义角色定义](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-deployments/create-role-def)| 在 Azure 订阅中创建新的角色定义。 |
 |**资源锁**||
-| [锁定资源组](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-level-deployments/create-rg-lock-role-assignment)| 创建一个资源组，并将 **DoNotDelete** 锁定应用到资源组。 将参与者角色分配给用户。 |
+| [锁定资源组](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-deployments/create-rg-lock-role-assignment)| 创建一个资源组，并将 **DoNotDelete** 锁定应用到资源组。 将参与者角色分配给用户。 |
 | | |
 
 <!-- Update_Description: update meta properties, wording update, update link -->

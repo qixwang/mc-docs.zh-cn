@@ -11,13 +11,13 @@ metadata:
   author: WenJason
   ms.author: v-jay
   origin.date: 05/07/2020
-  ms.date: 06/08/2020
-  ms.openlocfilehash: 68ffb9ecae5db62fef1a49e5b4a3c9dcf998fc5a
-  ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
+  ms.date: 06/22/2020
+  ms.openlocfilehash: f4df0dec9ff802ad321c4ad2361f2ffebd6a2d04
+  ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 06/02/2020
-  ms.locfileid: "84275438"
+  ms.lasthandoff: 06/19/2020
+  ms.locfileid: "85098652"
 landingContent:
 - title: 关于负载均衡器
   linkLists:
@@ -73,16 +73,18 @@ landingContent:
     links:
     - text: 在多个 IP 配置上进行负载均衡
       url: load-balancer-multiple-ip.md
-- title: 故障排除
+- title: 疑难解答
   linkLists:
   - linkListType: concept
     links:
     - text: 通过指标、警报和资源运行状况进行标准负载均衡器诊断
       url: load-balancer-standard-diagnostics.md
-    - text: 对 Azure 负载均衡器进行故障排除
+    - text: 排查 Azure 负载均衡器问题
       url: load-balancer-troubleshoot.md
     - text: 常见的 Azure 负载均衡器错误
       url: load-balancer-common-deployment-errors.md
+    - text: 解决常见的出站连接问题
+      url: troubleshoot-outbound-connection.md
 - title: 参考
   linkLists:
   - linkListType: reference

@@ -5,15 +5,15 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 09/04/2019
-ms.date: 03/09/2020
+ms.date: 06/22/2020
 ms.author: v-yeche
 ms.reviewer: sngun
-ms.openlocfilehash: b8f4ca7d1473fe2c7ce14e796894e5bfa367643d
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: f54411c8f9a78ca73303e0f9025934a0a43bde4a
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78850537"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098663"
 ---
 # <a name="create-a-real-time-dashboard-using-azure-cosmos-db-and-power-bi"></a>使用 Azure Cosmos DB 和 Power BI 创建实时仪表板
 
@@ -167,5 +167,4 @@ Azure Analysis Services 提供一个完全托管的平台即服务，用于在�
 
 * [将 Qlik Sense 连接到 Azure Cosmos DB 并可视化数据](visualize-qlik-sense.md)
 
-<!-- Update_Description: new article about create real time weather dashboard powerbi -->
-<!--NEW.date: 03/09/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

@@ -13,12 +13,12 @@ origin.date: 07/12/2019
 author: Johnnytechn
 ms.date: 06/04/2020
 ms.author: v-johya
-ms.openlocfilehash: 28ce39fc788dcb3366e8fffe32fab40d88d29bf6
-ms.sourcegitcommit: 5ae04a3b8e025986a3a257a6ed251b575dbf60a1
+ms.openlocfilehash: c9e788b2935ff5ef41ef2e384a6f0d08d0c85783
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84440740"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097318"
 ---
 # <a name="import-an-openapi-specification"></a>导入 OpenAPI 规范
 
@@ -43,7 +43,7 @@ ms.locfileid: "84440740"
 2. 从“添加新的 API”列表中选择“OpenAPI 规范” 。
 
     ![OpenAPI 规范](./media/import-api-from-oas/oas-api.png)
-3. 输入 API 设置。 可以在创建过程中设置这些值，也可以稍后转到“设置”选项卡来配置这些值。在[导入和发布第一个 API](import-and-publish.md#-import-and-publish-a-backend-api) 教程中对这些设置进行了说明。
+3. 输入 API 设置。 可以在创建过程中设置这些值，也可以稍后转到“设置”选项卡来配置这些值。在[导入和发布第一个 API](import-and-publish.md) 教程中对这些设置进行了说明。
 4. 选择“创建” 。
 
 > [!NOTE]

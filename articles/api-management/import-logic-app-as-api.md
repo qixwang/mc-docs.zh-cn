@@ -13,12 +13,12 @@ ms.topic: tutorial
 author: Johnnytechn
 ms.date: 06/04/2020
 ms.author: v-johya
-ms.openlocfilehash: 82556d961f09d4a9c39d0a4fa78d07181138c9a5
-ms.sourcegitcommit: 5ae04a3b8e025986a3a257a6ed251b575dbf60a1
+ms.openlocfilehash: c2644c6be4c79df7f6e56bf4745ea0a5f5246d1e
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84440738"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097316"
 ---
 # <a name="import-a-logic-app-as-an-api"></a>将逻辑应用导入为 API
 
@@ -58,7 +58,7 @@ ms.locfileid: "84440738"
     - **入门**
     - **不受限制**
 
-7. 输入其他 API 设置。 可以在创建过程中设置这些值，也可以稍后转到“设置”  选项卡来配置这些值。在[导入和发布第一个 API](import-and-publish.md#-import-and-publish-a-backend-api) 教程中对这些设置进行了说明。
+7. 输入其他 API 设置。 可以在创建过程中设置这些值，也可以稍后转到“设置”  选项卡来配置这些值。在[导入和发布第一个 API](import-and-publish.md) 教程中对这些设置进行了说明。
 8. 选择“创建”  。
 
 ## <a name="test-the-api-in-the-azure-portal"></a>在 Azure 门户中测试 API

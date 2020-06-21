@@ -10,12 +10,12 @@ author: likebupt
 ms.author: v-yiso
 origin.date: 10/22/2019
 ms.date: 03/09/2020
-ms.openlocfilehash: 0b8cb6e4b68e7a1e6e622ec3b433b49ea6936918
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: f98ba8c5f6c6cd62b00f9b40e9346bfb724b8576
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78154948"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097391"
 ---
 # <a name="convert-to-csv-module"></a>“转换为 CSV”模块
 
@@ -42,7 +42,7 @@ CSV 格式（代表“逗号分隔值”）是许多外部机器学习工具使�
 
 2. 将它连接到可以输出数据集的任何模块。   
   
-3.  运行管道。
+3.  提交管道。
 
 ### <a name="results"></a>结果
   

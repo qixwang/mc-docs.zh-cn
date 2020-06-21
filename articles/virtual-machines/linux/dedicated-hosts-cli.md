@@ -1,29 +1,31 @@
 ---
 title: 使用 CLI 将 Linux VM 部署到专用主机
 description: 使用 Azure CLI 将 VM 部署到专用主机。
-author: rockboyfor
+author: Johnnytechn
 ms.service: virtual-machines-linux
 ms.topic: article
 origin.date: 01/09/2020
-ms.date: 05/01/2020
-ms.author: v-yeche
-ms.openlocfilehash: 751cba45c0d83cb824781c74613463f840dae6a1
-ms.sourcegitcommit: bfbd6694da33f703481386f2a3f16850c4e94bfa
+ms.date: 06/17/2020
+ms.author: v-johya
+ms.openlocfilehash: f62d90dc5dcd06886abda2730a3572f39dd02a62
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83417778"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097340"
 ---
 <!--Verified successfully-->
 # <a name="deploy-vms-to-dedicated-hosts-using-the-azure-cli"></a>使用 Azure CLI 将 VM 部署到专用主机
+ 
 
-本文介绍了如何创建 Azure [专用主机](dedicated-hosts.md)来托管虚拟机 (VM)。 
+本文介绍如何创建 Azure [专用主机](dedicated-hosts.md)来托管虚拟机 (VM)。 
 
-确保已安装了 Azure CLI 2.0.70 或更高版本，并已使用 `az login` 登录到 Azure 帐户。 
+确保已安装了 Azure CLI 版本 2.0.70 或更高版本，并已使用 `az login` 登录 Azure 帐户。 
+
 
 ## <a name="limitations"></a>限制
 
-- 专用主机上目前不支持虚拟机规模集。
+- 虚拟机规模集目前在专用主机上不受支持。
 - 专用主机可用的大小和硬件类型因区域而异。 请参阅主机[定价页](https://www.azure.cn/pricing/details/virtual-machines/)来了解详细信息。
 
 ## <a name="create-resource-group"></a>创建资源组 
@@ -32,10 +34,19 @@ Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 使用
 ```bash
 az group create --name myDHResourceGroup --location chinaeast2 
 ```
+ 
+## <a name="list-available-host-skus-in-a-region"></a>列出区域中的可用主机 SKU
+并非所有主机 SKU 都适用于所有区域和可用性区域。 
 
+在开始预配专用主机之前，列出主机可用性和任何套餐限制。 
+
+```bash
+az vm list-skus -l chinaeast2  -r hostGroups/hosts  -o table  
+```
+ 
 ## <a name="create-a-host-group"></a>创建主机组 
 
-主机组  是表示专用主机集合的资源。 你在某个区域中创建主机组，并向其中添加主机。 规划高可用性时，有其他选项可供选择。 你可以将以下一个或两个选项与专用主机一起使用： 
+主机组是表示专用主机集合的资源。 你在某个区域中创建主机组，并向其中添加主机。 规划高可用性时，有其他选项可供选择。 你可以将以下一个或两个选项与专用主机一起使用： 
 
 <!--Not Available on and an availability zone-->
 
@@ -71,7 +82,7 @@ az vm host group create \
 
 有关主机 SKU 和定价的详细信息，请参阅 [Azure 专用主机定价](https://www.azure.cn/pricing/details/virtual-machines/)。
 
-使用 [az vm host create](https://docs.microsoft.com/cli/azure/vm/host#az-vm-host-create) 创建主机。 如果为主机组设置了容错域计数，则系统会要求你为主机指定容错域。  
+使用 [az vm host create](https://docs.microsoft.com/cli/azure/vm/host#az-vm-host-create) 可创建主机。 如果为主机组设置了容错域计数，则系统会要求你为主机指定容错域。  
 
 ```bash
 az vm host create \
@@ -82,6 +93,8 @@ az vm host create \
    -g myDHResourceGroup
 ```
 
+
+ 
 ## <a name="create-a-virtual-machine"></a>创建虚拟机 
 使用 [az vm create](https://docs.azure.cn/cli/vm?view=azure-cli-latest#az-vm-create) 在专用主机中创建虚拟机。 
 
@@ -105,9 +118,10 @@ az vm create \
 > [!WARNING]
 > 如果在没有足够资源的主机上创建虚拟机，则虚拟机将创建为“失败”状态。 
 
+
 ## <a name="check-the-status-of-the-host"></a>检查主机的状态
 
-可以使用 [az vm host get-instance-view](https://docs.microsoft.com/cli/azure/vm/host#az-vm-host-get-instance-view) 来查看主机运行状况以及还可以将多少虚拟机部署到主机。
+可以使用 [az vm host get-instance-view](https://docs.microsoft.com/cli/azure/vm/host#az-vm-host-get-instance-view) 查看主机运行状况以及仍可部署到主机的虚拟机数。
 
 ```bash
 az vm host get-instance-view \
@@ -115,7 +129,7 @@ az vm host get-instance-view \
    --host-group myHostGroup \
    --name myHost
 ```
-输出类似于以下内容：
+输出与此类似：
 
 ```json
 {
@@ -214,7 +228,7 @@ az vm host get-instance-view \
 ```
 
 ## <a name="export-as-a-template"></a>作为模板导出 
-如果现在要使用相同参数创建额外的开发环境或与其匹配的生产环境，则可以导出模板。 Resource Manager 使用定义了所有环境参数的 JSON 模板。 通过引用此 JSON 模板构建出整个环境。 可以手动构建 JSON 模板，也可以通过导出现有环境来替你创建 JSON 模板。 使用 [az group export](https://docs.azure.cn/cli/group?view=azure-cli-latest#az-group-export) 导出资源组。
+如果现在要使用相同参数创建额外的开发环境或与其匹配的生产环境，则可以导出模板。 Resource Manager 使用定义了所有环境参数的 JSON 模板。 通过引用此 JSON 模板构建出整个环境。 可以手动构建 JSON 模板，也可以通过导出现有环境来为自己创建 JSON 模板。 使用 [az group export](https://docs.azure.cn/cli/group?view=azure-cli-latest#az-group-export) 导出资源组。
 
 ```bash
 az group export --name myDHResourceGroup > myDHResourceGroup.json 
@@ -222,7 +236,7 @@ az group export --name myDHResourceGroup > myDHResourceGroup.json
 
 此命令在当前工作目录中创建 `myDHResourceGroup.json` 文件。 从此模板创建环境时，系统会提示输入所有资源名称。 可以通过将 `--include-parameter-default-value` 参数添加到 `az group export` 命令在模板文件中填充这些名称。 请编辑 JSON 模板以指定资源名称，或创建 parameters.json 文件来指定资源名称。
 
-若要通过模板创建环境，请使用 [az group deployment create](https://docs.azure.cn/cli/group/deployment?view=azure-cli-latest#az-group-deployment-create)。
+若要基于模板创建环境，请使用 [az group deployment create](https://docs.azure.cn/cli/group/deployment?view=azure-cli-latest#az-group-deployment-create)。
 
 ```bash
 az group deployment create \ 
@@ -230,17 +244,18 @@ az group deployment create \
     --template-file myDHResourceGroup.json 
 ```
 
-## <a name="clean-up"></a>清理 
 
-即使没有部署虚拟机，也会对专用主机收费。 你应删除当前未使用的任何主机以节省成本。  
+## <a name="clean-up"></a>清除 
 
-只有当不再有虚拟机使用主机时，才能删除该主机。 使用 [az vm delete](https://docs.azure.cn/cli/vm?view=azure-cli-latest#az-vm-delete) 删除 VM。
+即使没有部署虚拟机，你也需要为专用主机付费。 应删除当前未使用的任何主机以节省成本。  
+
+仅当不再有虚拟机使用主机时，才能删除该主机。 使用 [az vm delete](https://docs.azure.cn/cli/vm?view=azure-cli-latest#az-vm-delete) 删除 VM。
 
 ```bash
 az vm delete -n myVM -g myDHResourceGroup
 ```
 
-删除 VM 后，可以使用 [az vm host delete](https://docs.microsoft.com/cli/azure/vm/host#az-vm-host-delete) 删除主机。
+删除 VM 之后，可以使用 [az vm host delete](https://docs.microsoft.com/cli/azure/vm/host#az-vm-host-delete) 删除主机。
 
 ```bash
 az vm host delete -g myDHResourceGroup --host-group myHostGroup --name myHost 
@@ -252,7 +267,7 @@ az vm host delete -g myDHResourceGroup --host-group myHostGroup --name myHost
 az vm host group delete -g myDHResourceGroup --host-group myHostGroup  
 ```
 
-也可以通过单个命令删除整个资源组。 这会删除在组中创建的所有资源，包括所有 VM、主机和主机组。
+还可以在单个命令中删除整个资源组。 这会删除在组中创建的所有资源，包括所有 VM、主机和主机组。
 
 ```bash
 az group delete -n myDHResourceGroup 
@@ -262,7 +277,7 @@ az group delete -n myDHResourceGroup
 
 - 有关详细信息，请参阅[专用主机](dedicated-hosts.md)概述。
 
-<!--Not Available on [Azure portal](dedicated-hosts-portal.md)-->
+- 也可以使用 [Azure 门户](dedicated-hosts-portal.md)创建专用主机。
 
 <!--Not Available on [here](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-dedicated-hosts/README.md)-->
 <!-- Update_Description: update meta properties, wording update, update link -->

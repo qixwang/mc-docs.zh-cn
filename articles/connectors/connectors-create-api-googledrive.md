@@ -17,13 +17,14 @@ ms.workload: na
 origin.date: 11/07/2016
 ms.author: v-yiso
 ms.date: 03/26/2018
-ms.openlocfilehash: ab5da515e9292e35da75393191c0acc973b35d0a
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: c2d3aa5afa5e4df36d2d3ea8d51d80e1f3eb71ea
+ms.sourcegitcommit: 4d824957213536e79cf097fd29bd0bd0f8306066
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78304697"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84901932"
 ---
+<!--Not Available on Mooncake-->
 # <a name="get-started-with-the-google-drive-connector"></a>Google Drive 连接器入门
 连接到 Google Drive，创建文件、获取行等。 通过 Google Drive，可以： 
 

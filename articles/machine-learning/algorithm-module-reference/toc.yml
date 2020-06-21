@@ -26,10 +26,14 @@
       href: convert-to-csv.md
     - name: 转换为数据集
       href: convert-to-dataset.md
+    - name: 转换为指示器值
+      href: convert-to-indicator-values.md
     - name: 清理缺失数据
       href: clean-missing-data.md
     - name: 编辑元数据
       href: edit-metadata.md
+    - name: 将数据分组到箱中
+      href: group-data-into-bins.md
     - name: 联接数据
       href: join-data.md
     - name: 规范化数据
@@ -44,6 +48,8 @@
       href: select-columns-transform.md
     - name: 在数据集中选择列
       href: select-columns-in-dataset.md
+    - name: 拆分数据
+      href: split-data.md
 - name: 特征选择
   items:
     - name: 基于筛选器的特征选择
@@ -66,7 +72,7 @@
           href: linear-regression.md
         - name: 神经网络回归
           href: neural-network-regression.md
-    - name: 群集
+    - name: 群集功能
       items:
         - name: K 平均值聚类
           href: k-means-clustering.md
@@ -100,6 +106,8 @@
       href: train-clustering-model.md
     - name: 训练模型
       href: train-model.md
+    - name: 训练 PyTorch 模型
+      href: train-pytorch-model.md
     - name: 优化模型超参数
       href: tune-model-hyperparameters.md
 - name: 模型评分和评估
@@ -112,6 +120,8 @@
       href: cross-validate-model.md
     - name: 评估模型
       href: evaluate-model.md
+    - name: 为图像模型评分
+      href: score-image-model.md
     - name: 评分模型
       href: score-model.md
 - name: Python 语言
@@ -126,19 +136,51 @@
       href: execute-r-script.md
 - name: 文本分析
   items:
+    - name: 将单词转换为矢量
+      href: convert-word-to-vector.md
     - name: 从文本中提取 N 元语法特征
       href: extract-n-gram-features-from-text.md
     - name: 特征哈希
       href: feature-hashing.md
     - name: 预处理文本
       href: preprocess-text.md
+    - name: 隐性 Dirichlet 分配
+      href: latent-dirichlet-allocation.md
+- name: 计算机视觉
+  items:
+    - name: 应用图像转换
+      href: apply-image-transformation.md
+    - name: 转换为图像目录
+      href: convert-to-image-directory.md
+    - name: 初始化图像转换
+      href: init-image-transformation.md
+    - name: 拆分图像目录
+      href: split-to-image-directory.md
+    - name: DenseNet
+      href: densenet.md
+    - name: ResNet
+      href: resnet.md
 - name: 建议
   items:
     - name: 评估推荐器
       href: evaluate-recommender.md
     - name: 为 SVD 推荐器评分
       href: score-svd-recommender.md
+    - name: 为 Wide and Deep 推荐器评分
+      href: score-wide-and-deep-recommender.md
     - name: 训练 SVD 推荐器
       href: train-svd-recommender.md
+    - name: 训练 Wide and Deep 推荐器
+      href: train-wide-and-deep-recommender.md
+- name: 异常检测
+  items:
+    - name: 基于 PCA 的异常情况检测
+      href: pca-based-anomaly-detection.md
+    - name: 训练异常情况检测模型
+      href: train-anomaly-detection-model.md
+- name: Web 服务
+  items:
+    - name: Web 服务输入/输出
+      href: web-service-input-output.md
 - name: 模块错误和故障排除
   href: designer-error-codes.md

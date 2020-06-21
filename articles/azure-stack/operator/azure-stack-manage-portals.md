@@ -4,16 +4,16 @@ description: 了解如何在 Azure Stack Hub 中使用管理员门户。
 author: WenJason
 ms.topic: quickstart
 origin.date: 06/07/2019
-ms.date: 02/24/2020
+ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: efemmano
 ms.lastreviewed: 06/07/2019
-ms.openlocfilehash: e364e61c87569cf4403f62cd9cd0e54f2de494da
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: d055f529e710d537fbe274d8c0e223b14c40260f
+ms.sourcegitcommit: d86e169edf5affd28a1c1a4476d72b01a7fb421d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540914"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85096297"
 ---
 # <a name="use-the-administrator-portal-in-azure-stack-hub"></a>在 Azure Stack Hub 中使用管理员门户
 
@@ -25,7 +25,7 @@ Azure Stack Hub 中有两种门户：管理员门户和用户门户。 Azure Sta
 
 | 环境 | 管理员门户 URL |   
 | -- | -- | 
-| ASDK| https://adminportal.local.azurestack.external  |
+| ASDK| `https://adminportal.local.azurestack.external`  |
 | 集成系统 | https://adminportal.&lt;*region*&gt;.&lt;*FQDN*&gt; | 
 | | |
 

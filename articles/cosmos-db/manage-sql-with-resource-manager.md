@@ -5,14 +5,14 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 05/19/2020
-ms.date: 06/08/2020
+ms.date: 06/22/2020
 ms.author: v-yeche
-ms.openlocfilehash: 67d535434e5783421f6916330c5f99107e3ef954
-ms.sourcegitcommit: 8a2fbc0eae8d8f7297f5334f508ff868b4077f32
+ms.openlocfilehash: 99824cda1681e7dafa924e7775df13bc2d4087aa
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84320999"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098458"
 ---
 <!--Verify successfully-->
 # <a name="manage-azure-cosmos-db-core-sql-api-resources-with-azure-resource-manager-templates"></a>利用 Azure 资源管理器模板管理 Azure Cosmos DB Core (SQL) API 资源

@@ -4,14 +4,14 @@ description: 演示如何创建适用于组织中成员的 Azure 托管应用程
 author: rockboyfor
 ms.topic: quickstart
 origin.date: 04/14/2020
-ms.date: 04/30/2020
+ms.date: 06/22/2020
 ms.author: v-yeche
-ms.openlocfilehash: c67c7d27d09ccfc981f19bae2dcdf63ea8f7e532
-ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
+ms.openlocfilehash: 3d95069d97f09438d31d8ab91cc8737b369ec585
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82596093"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098610"
 ---
 # <a name="quickstart-create-and-publish-a-managed-application-definition"></a>快速入门：创建并发布托管应用程序定义
 
@@ -50,6 +50,7 @@ ms.locfileid: "82596093"
         }
     },
     "variables": {
+        "storageAccountEndPoint": "https://core.chinacloudapi.cn/",
         "storageAccountName": "[concat(parameters('storageAccountNamePrefix'), uniqueString(resourceGroup().id))]"
     },
     "resources": [
@@ -291,7 +292,7 @@ az managedapp definition create \
 
 * **资源组**：在其中创建托管应用程序定义的资源组的名称。
 * **锁定级别**：在托管资源组上放置的锁的类型。 它防止客户对此资源组执行不良操作。 当前，ReadOnly 是唯一受支持的锁级别。 当指定了 ReadOnly 时，客户只能读取托管资源组中存在的资源。 授予对托管资源组的访问权限的发布者标识不受该锁控制。
-* **authorizations**：描述用于授予对托管资源组权限的主体 ID 和角色定义 ID。 它是以 `<principalId>:<roleDefinitionId>` 格式指定的。 如果需要多个值，请以 `<principalId1>:<roleDefinitionId1> <principalId2>:<roleDefinitionId2>` 格式指定它们。 请以空格分隔这些值。
+* **authorizations**：描述用于授予对托管资源组权限的主体 ID 和角色定义 ID。 它是以 `<principalId>:<roleDefinitionId>` 格式指定的。 如果需要多个值，请以 `<principalId1>:<roleDefinitionId1>,<principalId2>:<roleDefinitionId2>` 格式指定它们。 请用逗号分隔这些值。
 * **包文件 URI**：包含所需文件的 .zip 包的位置。
 
 ## <a name="bring-your-own-storage-for-the-managed-application-definition"></a>自带符合托管应用程序定义的存储
@@ -409,5 +410,4 @@ az managedapp definition create \
 > [!div class="nextstepaction"]
 > [快速入门：部署服务目录应用](deploy-service-catalog-quickstart.md)
 
-<!-- Update_Description: new article about publish service catalog app -->
-<!--NEW.date: 01/20/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

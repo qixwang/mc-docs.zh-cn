@@ -5,12 +5,12 @@ ms.topic: include
 origin.date: 03/27/2020
 ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: 9dfeee7443e2bb73df2e8ba07c6e90c993a8f704
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.openlocfilehash: 9c9241016d1c936645c0f548e7d2a09fd8091857
+ms.sourcegitcommit: 304d3ef3c9e65c3e85977b3afb9985fbc0f908d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82126957"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85095960"
 ---
 :::row:::
     :::column span="3":::
@@ -51,7 +51,7 @@ platform :ios, '9.3'
 use_frameworks!
 
 target 'AppName' do
-  pod 'MicrosoftCognitiveServicesSpeech', '~> 1.10.0'
+  pod 'MicrosoftCognitiveServicesSpeech', '~> 1.11.0'
 end
 ```
 

@@ -9,20 +9,21 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 12/04/2019
-ms.openlocfilehash: 886e3f9ee2ad9f8e3c4b1df4ac499e6abee63666
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 97217d80f690cfb9b49fb3e8bf78002f12dcdaa0
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78849856"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097075"
 ---
-**计算目标的重复使用可以从一个训练作业延续到下一个训练作业**。 例如，将远程 VM 附加到你的工作区后，可以将其重复用于多个作业。  对于机器学习管道，请为每个计算目标使用适当的[管道步骤](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps?view=azure-ml-py)。
+**一个训练作业的计算目标可以在下一个训练作业中重复使用**。 例如，将远程 VM 附加到你的工作区后，可以将其重复用于多个作业。  对于机器学习管道，请对每个计算目标使用适当的[管道步骤](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps?view=azure-ml-py)。
 
-|训练&nbsp;目标|[自动化机器学习](../articles/machine-learning/concept-automated-ml.md) | [机器学习管道](../articles/machine-learning/concept-ml-pipelines.md) | [Azure 机器学习设计器](../articles/machine-learning/concept-designer.md)
+|训练目标|[自动化 ML](../articles/machine-learning/concept-automated-ml.md) | [ML 管道](../articles/machine-learning/concept-ml-pipelines.md) | [Azure 机器学习设计器](../articles/machine-learning/concept-designer.md)
 |----|:----:|:----:|:----:|
 |[本地计算机](../articles/machine-learning/how-to-set-up-training-targets.md#local)| 是 | &nbsp; | &nbsp; |
-|[Azure 机器学习计算群集](../articles/machine-learning/how-to-set-up-training-targets.md#amlcompute)| 是 & <br/>超参数&nbsp;优化 | 是 | 是 |
-|[远程 VM](../articles/machine-learning/how-to-set-up-training-targets.md#vm) | 是 & <br/>超参数优化 | 是 | &nbsp; |
+|[Azure 机器学习计算群集](../articles/machine-learning/how-to-set-up-training-targets.md#amlcompute)| 是且 <br/>超参数优化 | 是 | 是 |
+|[Azure 机器学习计算实例](../articles/machine-learning/concept-compute-instance.md) | 是且 <br/>超参数优化 | 是 |  |
+|[远程 VM](../articles/machine-learning/how-to-set-up-training-targets.md#vm) | 是且 <br/>超参数优化 | 是 | &nbsp; |
 |[Azure&nbsp;Databricks](../articles/machine-learning/how-to-create-your-first-pipeline.md#databricks)| 是（仅限 SDK 本地模式） | 是 | &nbsp; |
 |[Azure Data Lake Analytics](../articles/machine-learning/how-to-create-your-first-pipeline.md#adla) | &nbsp; | 是 | &nbsp; |
 |[Azure HDInsight](../articles/machine-learning/how-to-set-up-training-targets.md#hdinsight) | &nbsp; | 是 | &nbsp; |

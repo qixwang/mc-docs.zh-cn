@@ -1,27 +1,19 @@
 ---
 title: 将数据磁盘附加到 Linux VM
 description: 使用门户将新的或现有数据磁盘附加到 Linux VM。
-services: virtual-machines-linux
-documentationcenter: ''
 author: Johnnytechn
-manager: digimobile
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 5e1c6212-976c-4962-a297-177942f90907
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.topic: article
+ms.topic: how-to
 origin.date: 07/12/2018
-ms.date: 04/13/2020
+ms.date: 06/17/2020
 ms.author: v-johya
 ms.subservice: disks
-ms.openlocfilehash: 0961fb5c3282f7bf6550bd1b0f71f07bf21db7f1
-ms.sourcegitcommit: ebedf9e489f5218d4dda7468b669a601b3c02ae5
+ms.openlocfilehash: ed43b71fb17563d3f8ed7a2e439202fbaefa75f5
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82159164"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097503"
 ---
 # <a name="use-the-portal-to-attach-a-data-disk-to-a-linux-vm"></a>使用门户将数据磁盘附加到 Linux VM 
 本文介绍如何通过 Azure 门户将新磁盘和现有磁盘附加到 Linux 虚拟机。 也可以[在 Azure 门户中将数据磁盘附加到 Windows VM](../windows/attach-managed-disk-portal.md?toc=%2fvirtual-machines%2fwindows%2ftoc.json)。 
@@ -32,12 +24,14 @@ ms.locfileid: "82159164"
 * 附加到虚拟机的磁盘实际上是存储在 Azure 中的 .vhd 文件。 有关详细信息，请查看[托管磁盘简介](managed-disks-overview.md?toc=%2fvirtual-machines%2flinux%2ftoc.json)。
 * 附加磁盘后，需要[连接到 Linux VM 以装载新磁盘](#connect-to-the-linux-vm-to-mount-the-new-disk)。
 
+
 ## <a name="find-the-virtual-machine"></a>查找虚拟机
 1. 若要查找 VM，请转到 [Azure 门户](https://portal.azure.cn/)。 搜索并选择“虚拟机”。
 2. 从列表中选择 VM。
 3. 在“虚拟机”页面边栏的“设置”下，选择“磁盘”。 
 
     ![打开磁盘设置](./media/attach-disk-portal/find-disk-settings.png)
+
 
 ## <a name="attach-a-new-disk"></a>附加新磁盘
 
@@ -101,7 +95,7 @@ dmesg | grep SCSI
 如果使用包含数据的现有磁盘，请跳到装载磁盘。 如果附加新磁盘，需要对磁盘进行分区。
 
 > [!NOTE]
-> 建议你使用适用于你的发行版的最新版 fdisk 或 parted。
+> 建议使用可用于你的 distro 的最新版本 fdisk 或 parted。
 
 使用 `fdisk` 对磁盘进行分区。 如果磁盘大小为 2 太字节 (TiB) 或更大，则必须使用 GPT 分区；可以使用 `parted` 来执行 GPT 分区。 如果磁盘大小在 2 TiB 以下，则可以使用 MBR 或 GPT 分区。 将其设置为分区 1 中的主磁盘，并接受其他默认值。 以下示例在 */dev/sdc* 上启动 `fdisk` 进程：
 
@@ -188,6 +182,7 @@ Writing superblocks and filesystem accounting information: done
 fdisk 实用程序需要交互式输入，因此不适合在自动化脚本中使用。 不过，[parted](https://www.gnu.org/software/parted/) 实用程序可以编写脚本，因此在自动化方案中更适合。 parted 实用程序可用于对数据磁盘进行分区和格式化。 在下面的演练中，我们将使用新的数据磁盘 /dev/sdc，并使用 [XFS](https://xfs.wiki.kernel.org/) 文件系统将其格式化。
 ```bash
 sudo parted /dev/sdc --script mklabel gpt mkpart xfspart xfs 0% 100%
+sudo mkfs.xfs /dev/sdc1
 partprobe /dev/sdc1
 ```
 如上所示，我们使用 [partprobe](https://linux.die.net/man/8/partprobe) 实用程序来确保内核即时了解新的分区和文件系统。 无法使用 partprobe 可能导致 blkid 或 lslbk 命令不即时返回新文件系统的 UUID。

@@ -3,14 +3,14 @@ title: 模板中的用户定义函数
 description: 介绍如何在 Azure 资源管理器模板中定义和使用用户定义函数。
 ms.topic: conceptual
 origin.date: 03/09/2020
-ms.date: 03/23/2020
+ms.date: 06/22/2020
 ms.author: v-yeche
-ms.openlocfilehash: 890c9a141e2ef054859d5f6a8c1fd8b777e2637a
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 3d212bdd8c0b196f68393284cf9b5d3f6b1c7df9
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79543919"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098713"
 ---
 # <a name="user-defined-functions-in-azure-resource-manager-template"></a>Azure 资源管理器模板中的用户定义函数
 
@@ -50,7 +50,7 @@ ms.locfileid: "79543919"
 
 ```json
 {
- "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+ "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
  "contentVersion": "1.0.0.0",
  "parameters": {
    "storageNamePrefix": {
@@ -76,7 +76,7 @@ ms.locfileid: "79543919"
       }
     }
   }
- ],
+],
  "resources": [
    {
      "type": "Microsoft.Storage/storageAccounts",

@@ -16,13 +16,14 @@ ms.workload: integration
 origin.date: 08/18/2016
 ms.author: v-yiso
 ms.date: 03/26/2018
-ms.openlocfilehash: 0170358bf4fe53da0d9fe054a1668a72ab78f61a
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: f19ebcd9e32b152a4c49a03ad4c0ee3f29e0a769
+ms.sourcegitcommit: 4d824957213536e79cf097fd29bd0bd0f8306066
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78304695"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84901929"
 ---
+<!--Not Available the MailChimp on Mooncake-->
 # <a name="get-started-with-the-mailchimp-connector"></a>MailChimp 连接器入门
 MailChimp 是 SaaS 服务，允许企业管理和自动化电子邮件市场营销活动，包括发送市场营销电子邮件、自动化消息和有针对性的市场活动。
 
@@ -31,9 +32,9 @@ MailChimp 是 SaaS 服务，允许企业管理和自动化电子邮件市场营�
 ## <a name="create-a-connection-to-mailchimp"></a>创建到 MailChimp 的连接
 要使用 MailChimp 创建逻辑应用，必须先创建**连接**，然后提供以下属性的详细信息：
 
-| properties | 必选 | 说明 |
+| 属性 | 必须 | 说明 |
 | --- | --- | --- |
-| 标记 |是 |提供 MailChimp 凭据 |
+| 令牌 |是 |提供 MailChimp 凭据 |
 
 > [!INCLUDE [Steps to create a connection to MailChimp](../../includes/connectors-create-api-mailchimp.md)]
 > 

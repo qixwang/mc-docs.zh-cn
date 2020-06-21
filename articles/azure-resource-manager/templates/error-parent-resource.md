@@ -3,14 +3,14 @@ title: 父资源错误
 description: 说明如何解决在 Azure 资源管理器模板中使用父资源时出现的错误。
 ms.topic: troubleshooting
 origin.date: 08/01/2018
-ms.date: 03/23/2020
+ms.date: 06/22/2020
 ms.author: v-yeche
-ms.openlocfilehash: 225393b85639283016ebd54922d2fe2a9e29bb3a
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 11974b492df2e780c71def2400b4fecb2aecd56f
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79543909"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098410"
 ---
 # <a name="resolve-errors-for-parent-resources"></a>解决父资源的错误
 
@@ -54,7 +54,7 @@ Message=Can not perform requested operation on nested resource. Parent resource 
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "sqlServerName": {

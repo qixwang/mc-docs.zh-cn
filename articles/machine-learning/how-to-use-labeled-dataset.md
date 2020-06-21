@@ -3,17 +3,16 @@ title: 创建和浏览带标签的数据集
 titleSuffix: Azure Machine Learning
 description: 了解如何从 Azure 机器学习标记项目中导出数据标签，并将其用于机器学习任务。
 author: nibaccam
-ms.author: v-yiso
+ms.author: nibaccam
 ms.service: machine-learning
 ms.topic: how-to
-origin.date: 01/21/2020
-ms.date: 03/16/2020
-ms.openlocfilehash: 320de13a0e15521dfc21dde89ed1d357a95806f1
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/14/2020
+ms.openlocfilehash: dcbead6cba3b1f9185bb588cae93760359b3c132
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78934882"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097356"
 ---
 # <a name="create-and-explore-azure-machine-learning-dataset-with-labels"></a>创建和浏览带标签的 Azure 机器学习数据集
 
@@ -25,7 +24,7 @@ ms.locfileid: "78934882"
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅。 如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://aka.ms/AMLFree)。
+* Azure 订阅。 如果没有 Azure 订阅，请在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 * [适用于 Python 的 Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)，或 [Azure 机器学习工作室](https://ml.azure.com/)的访问权限。
     * 安装 [azure-contrib-dataset](https://docs.microsoft.com/python/api/azureml-contrib-dataset/?view=azure-ml-py) 包
 * 机器学习工作区。 请参阅[创建 Azure 机器学习工作区](how-to-manage-workspace.md)。
@@ -33,7 +32,7 @@ ms.locfileid: "78934882"
 
 ## <a name="export-data-labels"></a>导出数据标签 
 
-完成数据标记项目后，可以从标记项目中导出标签数据。 这样，便可以捕获对数据及其标签的引用，并将其导出为 [COCO 格式](http://cocodataset.org/#format-data)或 Azure 机器学习数据集。 使用标记项目的“项目详细信息”页上的“导出”按钮。  
+完成数据标记项目后，可以从标记项目中导出标签数据。 这样，便可以捕获对数据及其标签的引用，并将其导出为 [COCO 格式](http://cocodataset.org/#format-data)或 Azure 机器学习数据集。 使用标记项目的“项目详细信息”页上的“导出”按钮。 
 
 ### <a name="coco"></a>COCO 
 
@@ -41,7 +40,7 @@ ms.locfileid: "78934882"
 
 ### <a name="azure-machine-learning-dataset"></a>Azure 机器学习数据集
 
-可以在 Azure 机器学习工作室的“数据集”部分中访问导出的 Azure 机器学习数据集。  数据集“详细信息”  页还提供了演示如何从 Python 访问标签的示例代码。
+可以在 Azure 机器学习工作室的“数据集”部分中访问导出的 Azure 机器学习数据集。 数据集“详细信息”页还提供了演示如何从 Python 访问标签的示例代码。
 
 ![导出的数据集](./media/how-to-create-labeling-projects/exported-dataset.png)
 

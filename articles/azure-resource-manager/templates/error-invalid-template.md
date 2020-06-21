@@ -2,15 +2,15 @@
 title: 无效模板错误
 description: 说明如何在部署 Azure 资源管理器模板时解决无效模板错误。
 ms.topic: troubleshooting
-origin.date: 03/08/2018
-ms.date: 03/23/2020
+origin.date: 05/22/2020
+ms.date: 06/22/2020
 ms.author: v-yeche
-ms.openlocfilehash: c39de53affac6e8033f5850c937cd36aa41d4dbf
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 083c0dde2acd56b59eb6e77c807a8bbfc13b1ec8
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79543817"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098415"
 ---
 # <a name="resolve-errors-for-invalid-template"></a>解决无效模板错误
 
@@ -29,13 +29,13 @@ Message=<varies>
 
 ## <a name="cause"></a>原因
 
-此错误可能由几种不同类型的错误导致。 它们通常涉及模板中的语法或结构错误。
+此错误可由多种不同类型的错误导致。 它们通常涉及模板中的语法或结构错误。
 
 <a name="syntax-error"></a>
 
 ## <a name="solution-1---syntax-error"></a>解决方案 1 - 语法错误
 
-如果收到指示模板验证失败的错误消息，则说明模板中可能存在语法问题。
+如果有错误消息指出模板验证失败，则可能是模板中存在语法问题。
 
 ```
 Code=InvalidTemplate
@@ -64,7 +64,7 @@ Message=Deployment template validation failed: 'The template resource {resource-
 for type {resource-type} has incorrect segment lengths.
 ```
 
-根级别的资源其名称中的段必须比资源类型中的段少一个。 段之间用斜杠隔开。 在下面的示例中，类型有两个段，名称有一个段，因此为有效名称  。
+根级别的资源其名称中的段必须比资源类型中的段少一个。 段之间用斜杠隔开。 在下面的示例中，类型有两个段，名称有一个段，因此为有效名称。
 
 ```json
 {
@@ -74,7 +74,7 @@ for type {resource-type} has incorrect segment lengths.
 }
 ```
 
-但下一个示例**不是有效名称**，因为其段数与类型的段数相同。
+但下一个示例 **不是有效名称** ，因为其段数与类型的段数相同。
 
 ```json
 {
@@ -84,7 +84,7 @@ for type {resource-type} has incorrect segment lengths.
 }
 ```
 
-对于子资源来说，类型和名称的段数相同。 此段数是有意义的，因为子资源的全名和类型包括父名称和类型。 因此，全名仍然比完整类型少一个段。
+对于子资源来说，类型和名称的段数必须相同。 之所以必须这样，是因为子资源的完整名称和类型包含父名称和类型。 因此，完整名称的段仍比完整类型的段少一个。
 
 ```json
 "resources": [
@@ -132,7 +132,7 @@ part of the allowed values
 
 ## <a name="solution-4---too-many-target-resource-groups"></a>解决方案 4 - 太多目标资源组
 
-如果在单个部署中指定的目标资源组超过五个，则会收到此错误。 请考虑合并部署中的资源组数，或者部署某些模板作为单独的部署。 有关详细信息，[将 Azure 资源部署到多个订阅或资源组](cross-resource-group-deployment.md)。
+你可能在之前的部署中看到此错误，原因是你被限制为一个部署使用 5 个目标资源组。 在 2020 年 5 月，此限额被上调到了 800 个资源组。 有关详细信息，[将 Azure 资源部署到多个订阅或资源组](cross-resource-group-deployment.md)。
 
 <a name="circular-dependency"></a>
 

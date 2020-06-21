@@ -5,12 +5,12 @@ ms.topic: include
 origin.date: 03/25/2020
 ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: 56a029f1b72afffedeaa70301b3922bc0e588083
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.openlocfilehash: 9ae9154a3765f8920debf37af8efb6f29b1bb30a
+ms.sourcegitcommit: 304d3ef3c9e65c3e85977b3afb9985fbc0f908d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82127221"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098045"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -227,7 +227,7 @@ void synthesizeSpeech()
 
 神经语音是立足于深度神经网络的语音合成算法。 使用神经语音时，几乎无法将合成的语音与人类录音区分开来。 随着类人的自然韵律和字词的清晰发音，用户在与 AI 系统交互时，神经语音显著减轻了听力疲劳。
 
-若要切换到某种神经语音，请将 `name` 更改为[神经语音选项](https://docs.azure.cn/cognitive-services/speech-service/language-support#neural-voices-free-preview)之一。 然后，为 `mstts` 添加 XML 命名空间，并在 `<mstts:express-as>` 标记中包装文本。 使用 `style` 参数自定义讲话风格。 此示例使用 `cheerful`，但请尝试将其设置为 `customerservice` 或 `chat`，以了解讲话风格的差别。
+若要切换到某种神经语音，请将 `name` 更改为[神经语音选项](https://docs.azure.cn/cognitive-services/speech-service/language-support#neural-voices)之一。 然后，为 `mstts` 添加 XML 命名空间，并在 `<mstts:express-as>` 标记中包装文本。 使用 `style` 参数自定义讲话风格。 此示例使用 `cheerful`，但请尝试将其设置为 `customerservice` 或 `chat`，以了解讲话风格的差别。
 
 <!-- > [!IMPORTANT]
 > Neural voices are **only** supported for Speech resources created in *East US*, *South East Asia*, and *West Europe* regions. -->

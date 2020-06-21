@@ -1,7 +1,7 @@
 ---
 title: 语言支持 - 语音服务
 titleSuffix: Azure Cognitive Services
-description: 语音服务支持多种语言，可用于语音到文本和文本到语音转换，以及语音翻译。 本文提供按服务功能分类的语言支持的完整列表。
+description: 语音服务支持多种语言，可用于语音到文本和文本到语音转换，以及语音翻译。 本文提供了按服务功能列出的语言支持的完整列表。
 services: cognitive-services
 author: trevorbye
 manager: nitinme
@@ -12,12 +12,12 @@ origin.date: 03/26/2020
 ms.date: 04/20/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: adf0adbee932e2961a5eec73a961674e73f52b4b
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.openlocfilehash: 7ea6e5d7a03859b2b80650a6fbb1f2eacaf557d1
+ms.sourcegitcommit: 304d3ef3c9e65c3e85977b3afb9985fbc0f908d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82126693"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85095921"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>语音服务的语言和语音支持
 
@@ -37,7 +37,7 @@ https://cris.azure.cn -> Click on Adaptation Data -> scroll down to section "Pro
 
 | Locale  | 语言                          | 支持 | 自定义                                    |
 |---------|-----------------------------------|-----------|---------------------------------------------------|
-| `ar-AE` | 阿拉伯语(阿拉伯联合酋长国)                      | 是       | 否                                                |
+| `ar-AE` | 阿拉伯语（阿拉伯联合酋长国）                      | 是       | 否                                                |
 | `ar-BH` | 阿拉伯语(巴林)，现代标准 | 是       | 语言模型                                    |
 | `ar-EG` | 阿拉伯语（埃及）                    | 是       | 语言模型                                    |
 | `ar-KW` | 阿拉伯语(科威特)                   | 是       | 否                                                |
@@ -76,7 +76,7 @@ https://cris.azure.cn -> Click on Adaptation Data -> scroll down to section "Pro
 | `th-TH` | 泰语（泰国）                   | 否        | 否                                                |
 | `tr-TR` | 土耳其语（土耳其）                  | 否        | 否                                                |
 | `zh-CN` | 中文(普通话，简体)    | 是       | 声学模型<br>语言模型                  |
-| `zh-HK` | 中文(粤语，繁体)  | 是       | 语言模型                                    |
+| `zh-HK` | 中文（粤语，繁体）  | 是       | 语言模型                                    |
 | `zh-TW` | 中文(台湾普通话)      | 是       | 语言模型                                    |
 
 ## <a name="text-to-speech"></a>文本转语音
@@ -86,10 +86,7 @@ Microsoft Speech SDK 和 REST API 均支持这些语音，每种语音支持区�
 > [!IMPORTANT]
 > 标准语音和神经语音的定价各不相同。 有关其他信息，请访问[定价](https://www.azure.cn/pricing/details/cognitive-services/)页。
 
-### <a name="neural-voices-free-preview"></a>神经语音（免费预览版）
-
-> [!NOTE]
-> 目前，神经语音以免费预览版提供。
+### <a name="neural-voices"></a>神经语音
 
 神经文本到语音转换是由深度神经网络提供支持的新型语音合成。 使用神经语音时，几乎无法将合成的语音与人类录音区分开来。
 
@@ -201,7 +198,7 @@ Microsoft Speech SDK 和 REST API 均支持这些语音，每种语音支持区�
 |  |  | 是 | 女 | "Microsoft Server Speech Text to Speech Voice (zh-TW, HanHanRUS)" | "zh-TW-HanHanRUS" |
 |  |  | 是 | 男 | "Microsoft Server Speech Text to Speech Voice (zh-TW, Zhiwei, Apollo)" | "zh-TW-Zhiwei-Apollo" |
 
-**1** ar-EG 支持现代标准阿拉伯语 (MSA)。 
+**1** ar-EG 支持现代标准阿拉伯语 (MSA)。
 
 > [!IMPORTANT]
 > `en-US-Jessa` 语音已更改为 `en-US-Aria`。 如果以前使用的是“Jessa”，请转换为“Aria”。

@@ -6,16 +6,16 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: java
 ms.topic: quickstart
-origin.date: 04/10/2018
-ms.date: 04/27/2020
+origin.date: 05/28/2020
+ms.date: 06/22/2020
 ms.author: v-yeche
 ms.custom: seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 0777f6f111b7738dc12773be4fc2fb0ff4edaffe
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.openlocfilehash: bca6dffb0f6b46ab721ad7f4f534d45f19fc954c
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82134949"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098657"
 ---
 <!--Verify sucessfully-->
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-table-api-data"></a>快速入门：生成 Java 应用以管理 Azure Cosmos DB 表 API 数据
@@ -42,7 +42,7 @@ ms.locfileid: "82134949"
 ## <a name="create-a-database-account"></a>创建数据库帐户
 
 > [!IMPORTANT] 
-> 需创建新的适用于公开发表版表 API SDK 的表 API 帐户。 在预览期间创建的表 API 帐户不受公开发布版 SDK 的支持。
+> 必须新建表 API 帐户，才能使用正式发布的表 API SDK。 正式发布的 SDK 不支持在预览期间创建的表 API 帐户。
 >
 
 [!INCLUDE [cosmos-db-create-dbaccount-table](../../includes/cosmos-db-create-dbaccount-table.md)]
@@ -57,7 +57,7 @@ ms.locfileid: "82134949"
 
 ## <a name="clone-the-sample-application"></a>克隆示例应用程序
 
-现在让我们从 GitHub 克隆表应用，设置连接字符串，然后运行该应用。 会看到以编程方式处理数据是多么容易。 
+现在让我们从 GitHub 克隆表应用，设置连接字符串，然后运行该应用。 会看到以编程方式处理数据是多么容易。
 
 1. 打开命令提示符，新建一个名为“git-samples”的文件夹，然后关闭命令提示符。
 
@@ -77,17 +77,98 @@ ms.locfileid: "82134949"
     git clone https://github.com/Azure-Samples/storage-table-java-getting-started.git 
     ```
 
+    > [!TIP]
+    > 有关类似代码的更详细演练，请参阅 [Cosmos DB 表 API 示例](table-storage-how-to-use-java.md)一文。 
+
+## <a name="review-the-code"></a>查看代码
+
+此步骤是可选的。 如果有意了解如何使用代码创建数据库资源，可以查看以下代码片段。 否则，可以直接跳转到本文档的[更新连接字符串](#update-your-connection-string)部分。
+
+* 下面的代码演示如何在 Azure 存储中创建表：
+
+    ```java
+    private static CloudTable createTable(CloudTableClient tableClient, String tableName) throws StorageException, RuntimeException, IOException, InvalidKeyException,   IllegalArgumentException, URISyntaxException, IllegalStateException {
+
+        // Create a new table
+        CloudTable table = tableClient.getTableReference(tableName);
+        try {
+            if (table.createIfNotExists() == false) {
+                throw new IllegalStateException(String.format("Table with name \"%s\" already exists.", tableName));
+            }
+        }
+        catch (StorageException s) {
+            if (s.getCause() instanceof java.net.ConnectException) {
+                System.out.println("Caught connection exception from the client. If running with the default configuration please make sure you have started the storage emulator.");
+            }
+            throw s;
+        }
+
+        return table;
+    }
+    ```
+
+* 以下代码演示了如何在表中插入数据：
+
+    ```javascript
+    private static void batchInsertOfCustomerEntities(CloudTable table) throws StorageException {
+
+        // Create the batch operation
+        TableBatchOperation batchOperation1 = new TableBatchOperation();
+        for (int i = 1; i <= 50; i++) {
+          CustomerEntity entity = new CustomerEntity("Smith", String.format("%04d", i));
+          entity.setEmail(String.format("smith%04d@contoso.com", i));
+          entity.setHomePhoneNumber(String.format("425-555-%04d", i));
+          entity.setWorkPhoneNumber(String.format("425-556-%04d", i));
+          batchOperation1.insertOrMerge(entity);
+        }
+
+        // Execute the batch operation
+        table.execute(batchOperation1);
+    }
+    ```
+
+* 以下代码演示了如何查询表中的数据：
+
+    ```java
+    private static void partitionScan(CloudTable table, String partitionKey) throws StorageException {
+
+        // Create the partition scan query
+        TableQuery<CustomerEntity> partitionScanQuery = TableQuery.from(CustomerEntity.class).where(
+          (TableQuery.generateFilterCondition("PartitionKey", QueryComparisons.EQUAL, partitionKey)));
+
+        // Iterate through the results
+        for (CustomerEntity entity : table.execute(partitionScanQuery)) {
+          System.out.println(String.format("\tCustomer: %s,%s\t%s\t%s\t%s", entity.getPartitionKey(), entity.getRowKey(), entity.getEmail(), entity.getHomePhoneNumber(), entity.  getWorkPhoneNumber()));
+        }
+    }
+    ```
+
+* 以下代码演示了如何删除表中的数据：
+
+    ```java
+
+    System.out.print("\nDelete any tables that were created.");
+
+    if (table1 != null && table1.deleteIfExists() == true) {
+      System.out.println(String.format("\tSuccessfully deleted the table: %s", table1.getName()));
+    }
+
+    if (table2 != null && table2.deleteIfExists() == true) {
+      System.out.println(String.format("\tSuccessfully deleted the table: %s", table2.getName()));
+    }
+    ```
+
 ## <a name="update-your-connection-string"></a>更新连接字符串
 
 现在返回到 Azure 门户，获取连接字符串信息，并将其复制到应用。 这样，应用程序就可以与托管的数据库进行通信。 
 
-1. 在 [Azure 门户](https://portal.azure.cn/)中，选择“连接字符串”  。 
+1. 在 [Azure 门户](https://portal.azure.cn/)的 Azure Cosmos DB 帐户中，选择“连接字符串”。 
 
     ![在“连接字符串”窗格中查看连接字符串信息](./media/create-table-java/cosmos-db-quickstart-connection-string.png)
 
 2. 使用右侧的复制按钮，复制主连接字符串。
 
-3. 打开 C:\git-samples\storage-table-java-getting-started\src\main\resources 文件夹中的 config.properties。 
+3. 打开 *C:\git-samples\storage-table-java-getting-started\src\main\resources* 文件夹中的 *config.properties*。 
 
 5. 注释掉第 1 行，并取消注释掉第 2 行。 前两行现在应如下所示。
     
@@ -110,7 +191,7 @@ ms.locfileid: "82134949"
 
 现已使用与 Azure Cosmos DB 进行通信所需的所有信息更新应用。 
 
-## <a name="run-the-app"></a>运行应用程序
+## <a name="run-the-app"></a>运行应用
 
 1. 在 git 终端窗口中，运行 `cd` 切换到 storage-table-java-getting-started 文件夹。
 
@@ -118,7 +199,7 @@ ms.locfileid: "82134949"
     cd "C:\git-samples\storage-table-java-getting-started"
     ```
 
-2. 在 git 终端窗口中，运行以下命令启动 Java 应用程序。
+2. 在 git 终端窗口中运行以下命令，以便运行 Java 应用程序。
 
     ```git
     mvn compile exec:java 
@@ -138,11 +219,9 @@ ms.locfileid: "82134949"
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门教程中，已了解如何创建 Azure Cosmos DB 帐户、使用数据资源管理器创建表和运行应用。  现在可以使用表 API 进行数据查询了。  
+在本快速入门中，你了解了如何创建 Azure Cosmos DB 帐户、如何使用数据资源管理器创建表，以及如何运行 Java 应用来添加表数据。  现在可以使用表 API 进行数据查询了。  
 
 > [!div class="nextstepaction"]
 > [将表数据导入表 API](table-import.md)
 
-<!--Update_Description: wording update -->
-
-
+<!-- Update_Description: update meta properties, wording update, update link -->

@@ -1,22 +1,22 @@
 ---
-title: 创建和配置用于 Azure 磁盘加密的 Key Vault
-description: 本文介绍如何创建和配置用于 Azure 磁盘加密的 Key Vault
+title: 创建和配置用于 Azure 磁盘加密的密钥保管库
+description: 本文介绍创建和配置用于 Azure 磁盘加密的密钥保管库的步骤
 ms.service: virtual-machines-linux
 ms.topic: article
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 04/20/2020
+ms.date: 06/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: ec6ac695d62f39858667a56fa6d14938959120ae
-ms.sourcegitcommit: 08b42258a48d96d754244064d065e4d5703f1cfb
+ms.openlocfilehash: 7cd5aa34a783a20deb9481476a4d2931dff81e03
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/18/2020
-ms.locfileid: "83445144"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097339"
 ---
-# <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption"></a>创建和配置用于 Azure 磁盘加密的 Key Vault
+# <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption"></a>创建和配置用于 Azure 磁盘加密的密钥保管库
 
-Azure 磁盘加密使用 Azure Key Vault 来控制和管理磁盘加密密钥和机密。  有关 Key Vault 的详细信息，请参阅 [Azure Key Vault 入门](../../key-vault/key-vault-get-started.md)和[保护 Key Vault](../../key-vault/key-vault-secure-your-key-vault.md)。 
+Azure Disk Encryption 使用 Azure Key Vault 来控制和管理磁盘加密密钥和机密。  有关 Key Vault 的详细信息，请参阅 [Azure Key Vault 入门](../../key-vault/key-vault-get-started.md)和[保护 Key Vault](../../key-vault/general/secure-your-key-vault.md)。 
 
 > [!WARNING]
 > - 如果之前是使用 Azure 磁盘加密与 Azure AD 来加密 VM，则必须继续使用此选项来加密 VM。 有关详细信息，请参阅[使用 Azure AD 创建和配置用于 Azure 磁盘加密的 Key Vault（以前版本）](disk-encryption-key-vault-aad.md)。
@@ -24,8 +24,8 @@ Azure 磁盘加密使用 Azure Key Vault 来控制和管理磁盘加密密钥和
 创建和配置用于 Azure 磁盘加密的 Key Vault 需要三个步骤：
 
 1. 创建资源组（如果需要）。
-2. 创建 Key Vault。 
-3. 设置 Key Vault 高级访问策略。
+2. 创建密钥保管库。 
+3. 设置密钥保管库高级访问策略。
 
 以下快速入门说明了这些步骤：
 
@@ -56,7 +56,8 @@ Connect-AzAccount -Environment AzureChinaCloud
 ```
 
 [!INCLUDE [disk-encryption-key-vault](../../../includes/disk-encryption-key-vault.md)]
-
+ 
+ 
 ## <a name="next-steps"></a>后续步骤
 
 - [Azure 磁盘加密先决条件 CLI 脚本](https://github.com/ejarvi/ade-cli-getting-started)

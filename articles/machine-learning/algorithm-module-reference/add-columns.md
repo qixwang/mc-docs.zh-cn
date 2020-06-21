@@ -10,12 +10,12 @@ author: likebupt
 ms.author: v-yiso
 origin.date: 10/22/2019
 ms.date: 03/09/2020
-ms.openlocfilehash: caf2a1a833e2f2b1c0302c60a73a1af8c8fa2bab
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 7477704e8fd45fb09c66e69e28885dac46dea30d
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78155039"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097454"
 ---
 # <a name="add-columns-module"></a>“添加列”模块
 
@@ -34,7 +34,7 @@ ms.locfileid: "78155039"
 
     - 不能选择要添加的单个列。 使用“添加列”时，将连接每个数据集中的所有列。  因此，如果只想添加列的一个子集，请使用“选择数据集中的列”来创建包含所需列的数据集。
 
-3. 运行管道。
+3. 提交管道。
 
 ### <a name="results"></a>结果
 管道运行后：

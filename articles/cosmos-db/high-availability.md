@@ -4,16 +4,16 @@ description: 本文介绍 Azure Cosmos DB 如何提供高可用性
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
-origin.date: 12/06/2019
-ms.date: 04/27/2020
+origin.date: 04/20/2020
+ms.date: 06/22/2020
 ms.author: v-yeche
 ms.reviewer: sngun
-ms.openlocfilehash: bc0b45e9af053e42765de13cc4c6a3cde935be15
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.openlocfilehash: 9a2e1d9cf22b3e4d19734c0a5006c45444995ac0
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82134928"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098584"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>使用 Azure Cosmos DB 实现高可用性
 

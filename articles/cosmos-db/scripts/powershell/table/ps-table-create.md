@@ -5,15 +5,15 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: sample
-origin.date: 05/01/2020
-ms.date: 06/15/2020
+origin.date: 05/13/2020
+ms.date: 06/22/2020
 ms.author: v-yeche
-ms.openlocfilehash: d6efd589c4e19fdc31fbcf3eeb0d572517c66fa5
-ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
+ms.openlocfilehash: a1139ac599c81d7b3f6cfbae6c44b3ed4038a278
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84723621"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098336"
 ---
 # <a name="create-a-table-for-azure-cosmos-db---table-api"></a>为 Azure Cosmos DB 创建表 - 表 API
 
@@ -70,8 +70,8 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 | Command | 说明 |
 |---|---|
 |**Azure Cosmos DB**| |
-| [New-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbaccount) | 新建 Cosmos DB 帐户。 |
-| [Set-AzCosmosDBTable](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbtable) | 创建或更新表 API 表。 |
+| [New-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbaccount) | 创建 Cosmos DB 帐户。 |
+| [New-AzCosmosDBTable](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbtable) | 创建表 API 表。 |
 |**Azure 资源组**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | 删除资源组，包括所有嵌套的资源。 |
 |||

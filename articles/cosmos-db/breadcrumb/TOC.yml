@@ -72,3 +72,10 @@
     - name: Cosmos DB
       tocHref: /azure-monitor/insights
       topicHref: /cosmos-db/index
+- name: Azure
+  tocHref: /
+  topicHref: /index
+  items:
+    - name: Cosmos DB
+      tocHref: /synapse-analytics/
+      topicHref: /cosmos-db/index

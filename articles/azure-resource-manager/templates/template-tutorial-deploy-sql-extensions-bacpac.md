@@ -3,15 +3,15 @@ title: 使用模板导入 SQL BACPAC 文件
 description: 了解如何使用 Azure SQL 数据库扩展，以通过 Azure 资源管理器模板导入 SQL BACPAC 文件。
 author: rockboyfor
 origin.date: 12/09/2019
-ms.date: 04/30/2020
+ms.date: 06/22/2020
 ms.topic: tutorial
 ms.author: v-yeche
-ms.openlocfilehash: 8135f500691f7e6ed8d887051a6a19a2f956e9bf
-ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
+ms.openlocfilehash: 686a7dd720152156b3a6aa1d99c7fd83aa436771
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82596071"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098606"
 ---
 <!--Verify successfully-->
 # <a name="tutorial-import-sql-bacpac-files-with-arm-templates"></a>教程：使用 ARM 模板导入 SQL BACPAC 文件
@@ -36,7 +36,7 @@ ms.locfileid: "82596071"
 若要完成本文，需要做好以下准备：
 
 * 包含资源管理器工具扩展的 Visual Studio Code。 请参阅[使用 Visual Studio Code 创建 ARM 模板](./use-vs-code-to-create-template.md)。
-* 若要增强安全性，请使用为 Azure SQL Server 管理员帐户生成的密码。 下面是一个可用于生成密码的示例：
+* 若要增强安全性，请使用为服务器管理员帐户生成的密码。 下面是一个可用于生成密码的示例：
 
     ```console
     openssl rand -base64 32
@@ -105,14 +105,14 @@ BACPAC 文件在 [GitHub](https://github.com/Azure/azure-docs-json-samples/raw/m
 
 本教程中使用的模板存储在 [GitHub](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-sql-extension/azuredeploy.json) 中。
 
-1. 在 Visual Studio Code 中，选择“文件” > “打开文件”。  
-1. 在“文件名”中粘贴以下 URL： 
+1. 在 Visual Studio Code 中，选择“文件” > “打开文件”。 
+1. 在“文件名”中粘贴以下 URL：
 
     ```url
     https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-sql-extension/azuredeploy.json
     ```
 
-1. 选择“打开”以打开该文件。 
+1. 选择“打开”以打开该文件。
 
     模板中定义了两个资源：
 
@@ -123,11 +123,11 @@ BACPAC 文件在 [GitHub](https://github.com/Azure/azure-docs-json-samples/raw/m
     <!--Not Available on [template reference](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/databases)-->
     
         It's helpful to get some basic understanding of the template before you customize it.
-1. 选择“文件” > “另存为”，将该文件的副本保存到名为 *azuredeploy.json* 的本地计算机。  
+1. 选择“文件” > “另存为”，将该文件的副本保存到名为 *azuredeploy.json* 的本地计算机。 
 
 ## <a name="edit-the-template"></a>编辑模板
 
-1. 在“parameters”节的末尾再添加两个参数，以设置存储帐户密钥和 BACPAC URL  。
+1. 在“parameters”节的末尾再添加两个参数，以设置存储帐户密钥和 BACPAC URL。
 
     ```json
     "storageAccountKey": {
@@ -144,13 +144,13 @@ BACPAC 文件在 [GitHub](https://github.com/Azure/azure-docs-json-samples/raw/m
     }
     ```
 
-    在“adminPassword”后面添加一个逗号  。 若要从 Visual Studio Code 设置 JSON 文件的格式，请选择 Shift+Alt+F。
+    在“adminPassword”后面添加一个逗号。 若要从 Visual Studio Code 设置 JSON 文件的格式，请选择 Shift+Alt+F。
 
     若要获取这两个值，请参阅[准备 BACPAC 文件](#prepare-a-bacpac-file)。
 
 1. 向模板添加两个其他资源。
 
-    * 若要允许 SQL 数据库扩展导入 BACPAC 文件，需允许来自 Azure 服务的流量通过。 在 SQL Server 定义下添加以下防火墙规则定义：
+    * 若要允许 SQL 数据库扩展导入 BACPAC 文件，需允许来自 Azure 服务的流量通过。 在服务器定义下添加以下防火墙规则定义：
 
         ```json
         "resources": [
@@ -353,9 +353,9 @@ Write-Host "Press [ENTER] to continue ..."
 
 ## <a name="verify-the-deployment"></a>验证部署
 
-若要从客户端计算机访问 SQL Server，需要添加其他防火墙规则。 有关详细信息，请参阅[创建和管理 IP 防火墙规则](../../sql-database/sql-database-firewall-configure.md#create-and-manage-ip-firewall-rules)。
+若要从客户端计算机访问服务器，需要添加其他防火墙规则。 有关详细信息，请参阅[创建和管理 IP 防火墙规则](../../sql-database/sql-database-firewall-configure.md#create-and-manage-ip-firewall-rules)。
 
-在 Azure 门户中，从新部署的资源组中选择 SQL 数据库。 选择“查询编辑器(预览)”，然后输入管理员凭据。  此时会看到两个表导入到数据库中。
+在 Azure 门户中，从新部署的资源组中选择 SQL 数据库。 选择“查询编辑器(预览)”，然后输入管理员凭据。 此时会看到两个表导入到数据库中。
 
 ![查询编辑器（预览版）](./media/template-tutorial-deploy-sql-extensions-bacpac/resource-manager-tutorial-deploy-sql-extensions-bacpac-query-editor.png)
 
@@ -363,14 +363,14 @@ Write-Host "Press [ENTER] to continue ..."
 
 不再需要 Azure 资源时，请通过删除资源组来清理部署的资源。
 
-1. 在 Azure 门户上的左侧菜单中选择“资源组”  。
-1. 在“按名称筛选”字段中输入资源组名称。 
+1. 在 Azure 门户上的左侧菜单中选择“资源组”。
+1. 在“按名称筛选”字段中输入资源组名称。
 1. 选择资源组名称。 应会看到，该资源组中总共有六个资源。
-1. 在顶部菜单中选择“删除资源组”。 
+1. 在顶部菜单中选择“删除资源组”。
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你部署了 SQL Server 和 SQL 数据库并导入了 BACPAC 文件。 若要了解如何排查模板部署问题，请参阅：
+在本教程中，你部署了服务器和数据库，并导入了 BACPAC 文件。 若要了解如何排查模板部署问题，请参阅：
 
 > [!div class="nextstepaction"]
 > [排查 ARM 模板部署问题](./template-tutorial-troubleshoot.md)

@@ -5,17 +5,16 @@ description: 设置 VS Code Remote，使用 Azure 机器学习对代码进行交
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
-ms.author: v-yiso
+ms.topic: how-to
+ms.author: jmartens
 author: j-martens
-origin.date: 12/09/2019
-ms.date: 03/16/2020
-ms.openlocfilehash: da38b2240c4da8d0caef5cc4ad7ebdac3cfefe3c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 12/09/2019
+ms.openlocfilehash: b1ad41aad23acd8de7772ed1fe92e0f59902603e
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78850202"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097133"
 ---
 # <a name="debug-interactively-on-an-azure-machine-learning-compute-instance-with-vs-code-remote"></a>使用 VS Code Remote 对 Azure 机器学习计算实例进行交互式调试
 

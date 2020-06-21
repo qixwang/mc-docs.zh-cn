@@ -9,14 +9,14 @@ metadata:
   ms.topic: landing-page
   ms.collection: collection
   author: rockboyfor
-  ms.date: 04/27/2020
+  ms.date: 06/22/2020
   ms.author: v-yeche
-  ms.openlocfilehash: 5bb8ee7b048dfbdc4ea7ccb0f6170428a74aa5a9
-  ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+  ms.openlocfilehash: d4b45eb14b1b3f8d3cef557e6533a765e51c01a3
+  ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 04/24/2020
-  ms.locfileid: "82134627"
+  ms.lasthandoff: 06/19/2020
+  ms.locfileid: "85098568"
 landingContent:
 - title: 关于 Azure Cosmos DB
   linkLists:
@@ -134,6 +134,8 @@ landingContent:
       url: set-throughput.md
   - linkListType: how-to-guide
     links:
+    - text: 估算所需吞吐量
+      url: estimate-ru-with-capacity-planner.md
     - text: 预配数据库吞吐量
       url: how-to-provision-database-throughput.md
     - text: 预配容器吞吐量
@@ -162,6 +164,8 @@ landingContent:
       url: sql-api-dotnet-application.md
     - text: 使用异步 SDK 开发 Java 应用
       url: sql-api-async-java-get-started.md
+    - text: 使用更改源的 Java 应用示例
+      url: create-sql-api-java-changefeed.md
     - text: 使用 SQL 查询来查询数据
       url: tutorial-query-sql-api.md
   - linkListType: how-to-guide
@@ -244,8 +248,12 @@ landingContent:
     links:
     - text: .NET
       url: create-cassandra-dotnet.md
-    - text: Java
+    - text: .NET Core
+      url: create-cassandra-dotnet-core.md
+    - text: Java v3
       url: create-cassandra-java.md
+    - text: Java v4
+      url: create-cassandra-java-v4.md
     - text: Node.js
       url: create-cassandra-nodejs.md
     - text: Python

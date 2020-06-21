@@ -2,16 +2,16 @@
 title: 创建多个资源实例
 description: 了解如何创建 Azure 资源管理器模板用于创建多个 Azure 资源实例。
 author: rockboyfor
-origin.date: 04/08/2020
-ms.date: 04/30/2020
+origin.date: 04/23/2020
+ms.date: 06/22/2020
 ms.topic: tutorial
 ms.author: v-yeche
-ms.openlocfilehash: cce23fdfaa0327999840969f578109dc4bc30c4c
-ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
+ms.openlocfilehash: 86227de3fa4f6f08389372657150b1d1eb73f971
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82596067"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098635"
 ---
 # <a name="tutorial-create-multiple-resource-instances-with-arm-templates"></a>教程：使用 ARM 模板创建多个资源实例
 

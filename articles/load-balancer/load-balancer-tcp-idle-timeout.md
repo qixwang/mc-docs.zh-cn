@@ -12,35 +12,39 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 01/09/2020
-ms.date: 04/06/2020
+ms.date: 06/22/2020
 ms.author: v-jay
-ms.openlocfilehash: 815aee7b7d55b1460f2092b0ba72b718c1512a66
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 8bbcbede718785dae93b39c3f8b3648751c9bae2
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80625633"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098613"
 ---
 # <a name="configure-tcp-idle-timeout-settings-for-azure-load-balancer"></a>为 Azure 负载均衡器配置 TCP 空闲超时设置
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-本文需要 Azure PowerShell 模块 5.4.1 或更高版本。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-Az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount -Environment AzureChinaCloud` 以创建与 Azure 的连接。
+本文需要 Azure PowerShell 模块 5.4.1 或更高版本。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](https://docs.microsoft.com/powershell/azure/install-Az-ps)（安装 Azure PowerShell 模块）。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount -Environment AzureChinaCloud` 以创建与 Azure 的连接。
 
 ## <a name="tcp-idle-timeout"></a>TCP 空闲超时
 Azure 负载均衡器的空闲超时设置为 4 分钟到 30 分钟。 默认情况下，它设置为 4 分钟。 如果处于非活动状态的时间超过超时值，则不能保证在客户端和云服务之间保持 TCP 或 HTTP 会话。
 
-当连接关闭时，客户端应用程序可能收到以下错误消息：“基础连接已关闭: 应保持连接状态的连接已由服务器关闭”。
+当连接关闭时，客户端应用程序可能会收到以下错误消息：“The underlying connection was closed:A connection that was expected to be kept alive was closed by the server.”（基础连接已关闭: 服务器关闭了应保持连接状态的连接。）
 
-常见的做法是使用 TCP 保持连接状态。 这种做法可以将连接状态保持更长时间。 有关详细信息，请参阅 [.NET 示例](https://msdn.microsoft.com/library/system.net.servicepoint.settcpkeepalive.aspx)。 在启用保持连接状态的情况下，在连接处于非活动状态时发送数据包。 用于保持连接状态的数据包将确保不会达到空闲超时值，并且连接会维持很长时间。
+常见的做法是使用 TCP 保持连接状态。 这种做法可以使连接状态保持更长时间。 有关详细信息，请参阅 [.NET 示例](https://msdn.microsoft.com/library/system.net.servicepoint.settcpkeepalive.aspx)。 在启用保持连接状态的情况下，在连接处于非活动状态时发送数据包。 用于保持连接状态的数据包将确保不会达到空闲超时值，并且连接会维持很长时间。
 
-此设置仅适用于入站连接。 为了避免断开连接，请将 TCP 保持连接的时间间隔配置为小于空闲超时设置，或者提高空闲超时值。 为支持这些方案，已添加对可配置空闲超时的支持。
+此设置仅适用于入站连接。 为了避免断开连接，请将 TCP 保持连接的时间间隔配置为小于空闲超时设置，或者提高空闲超时值。 为了支持这些方案，我们添加了可配置空闲超时支持。
 
-TCP 保持连接状态适用于不受电池使用时间约束的情况。 不建议将其用于移动应用程序。 在移动应用程序中使用 TCP 保持连接状态可能会加快设备电池的耗尽速度。
+TCP 保持连接状态适用于电池续航时间不受限制的情况。 不建议将其用于移动应用程序。 在移动应用程序中使用 TCP 保持连接状态可能会加快设备电池的耗尽速度。
 
 ![TCP 超时](./media/load-balancer-tcp-idle-timeout/image1.png)
 
-以下章节介绍了如何更改公共 IP 和负载均衡器资源的空闲超时设置。
+以下部分介绍如何更改公共 IP 和负载均衡器资源的空闲超时设置。
+
+>[!NOTE]
+> TCP 空闲超时不影响 UDP 协议的负载均衡规则。
+
 
 ## <a name="configure-the-tcp-timeout-for-your-instance-level-public-ip-to-15-minutes"></a>将实例级公共 IP 的 TCP 超时值配置为 15 分钟
 

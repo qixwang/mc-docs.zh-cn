@@ -2,19 +2,19 @@
 title: 使用 Azure Cosmos DB 帐户
 description: 本文介绍如何创建和使用 Azure Cosmos 帐户。 它还显示了 Azure Cosmos 帐户中的元素层次结构
 author: rockboyfor
-ms.author: v-yeche
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-origin.date: 07/23/2019
-ms.date: 01/20/2020
+origin.date: 06/09/2020
+ms.date: 06/22/2020
+ms.author: v-yeche
 ms.reviewer: sngun
-ms.openlocfilehash: b0980f931aff78ba8e05029462fa858db9925268
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 57e77a58484e6cbd74c755280841c874ee8716b7
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292975"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098673"
 ---
 # <a name="work-with-azure-cosmos-account"></a>使用 Azure Cosmos 帐户
 

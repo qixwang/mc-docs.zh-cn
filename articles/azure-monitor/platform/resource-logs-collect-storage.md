@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/15/2019
 ms.author: v-johya
 ms.subservice: logs
-ms.openlocfilehash: 8ce65e8aac5900ee067dae8b289c2c123806e620
-ms.sourcegitcommit: 5ae04a3b8e025986a3a257a6ed251b575dbf60a1
+ms.openlocfilehash: 964a8b32595b3f5de132d3101f494f7e77391147
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84440679"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097016"
 ---
 # <a name="archive-azure-resource-logs-to-storage-account"></a>将 Azure 资源日志存档到存储帐户
 Azure 中的[平台日志](platform-logs-overview.md)（包括 Azure 活动日志和资源日志）提供 Azure 资源及其所依赖的 Azure 平台的详细诊断和审核信息。  本文介绍如何将平台日志收集到到 Azure 存储帐户，以便保留要存档的数据。
@@ -67,5 +67,4 @@ insights-logs-networksecuritygrouprulecounter/resourceId=/SUBSCRIPTIONS/xxxxxxxx
 * [详细阅读资源日志](platform-logs-overview.md)。
 * [创建诊断设置以收集 Azure 中的日志和指标](diagnostic-settings.md)。
 * [下载 blob 进行分析](../../storage/blobs/storage-quickstart-blobs-dotnet.md)。
-* [使用 Azure Monitor 存档 Azure Active Directory 日志](../../active-directory/reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account.md)。
 

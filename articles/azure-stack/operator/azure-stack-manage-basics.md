@@ -5,16 +5,16 @@ description: 了解 Azure Stack Hub 管理基础知识。
 author: WenJason
 ms.topic: article
 origin.date: 04/03/2020
-ms.date: 05/18/2020
+ms.date: 06/22/2020
 ms.author: v-jay
 ms.reviewer: thoroet
 ms.lastreviewed: 04/03/2020
-ms.openlocfilehash: d8f7cd2a48829327e246d13830b001a0c9ce7cf0
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.openlocfilehash: faa0a3b6a4dd9c2f49f0478919825ea4432c0bd4
+ms.sourcegitcommit: d86e169edf5affd28a1c1a4476d72b01a7fb421d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83422606"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85096404"
 ---
 # <a name="azure-stack-hub-administration-basics"></a>Azure Stack Hub 管理基础知识
 
@@ -22,7 +22,7 @@ ms.locfileid: "83422606"
 
 ## <a name="understand-the-builds"></a>了解版本
 
-如果使用 Azure Stack Hub 集成系统，则通过更新包分发更新版 Azure Stack Hub。 可以通过管理员门户中的“更新”磁贴导入并应用这些包  。
+如果使用 Azure Stack Hub 集成系统，则通过更新包分发更新版 Azure Stack Hub。 可以通过管理员门户中的“更新”磁贴导入并应用这些包。
 
 ## <a name="learn-about-available-services"></a>了解可用的服务
 
@@ -46,10 +46,11 @@ ms.locfileid: "83422606"
 - 应用服务
 - Azure Functions
 - SQL 和 MySQL 数据库
+- kubernetes
 - IoT 中心
 - 事件中心
 
-这些服务在提供给用户之前，需要进行额外的配置。 有关详细信息，请参阅 [Azure Stack Hub 操作员文档](/azure-stack/operator/)中的“教程”和“操作指南” > “套餐服务”。   
+这些服务在提供给用户之前，需要进行额外的配置。 有关详细信息，请参阅 [Azure Stack Hub 操作员文档](/azure-stack/operator/)中的“教程”和“操作指南” > “套餐服务”。  
 
 ### <a name="service-roadmap"></a>服务路线图
 
@@ -86,12 +87,12 @@ Azure Stack Hub 使用 Azure 资源管理器作为其基础的部署、管理和
 - [使用基于角色的访问控制设置访问权限](/azure-stack/operator/azure-stack-manage-permissions)。 （此任务并不限于管理员。）
 - [监视基础结构运行状况](/azure-stack/operator/azure-stack-monitor-health)。
 - 管理[网络](/azure-stack/operator/azure-stack-viewing-public-ip-address-consumption)和[存储](/azure-stack/operator/azure-stack-manage-storage-accounts)资源。
-- [启动和停止 Azure Stack Hub](/azure-stack/operator/azure-stack-start-and-stop&branch=release-tzl)。
-- [运行扩展的存储](/azure-stack/tdc/extended-storage-operator-guide&branch=release-tzl)。
-- [管理 IoT 中心](/azure-stack/operator/iot-hub-rp-overview?toc=%2Fazure-stack%2Ftdc%2Ftoc.json&.bc=%2Fazure-stack%2Fbreadcrumb%2Ftoc.json&view=azs-2002&branch=release-tzl)。
+- [启动和停止 Azure Stack Hub](azure-stack-start-and-stop.md)。
+- [运行扩展的存储](../user/azure-stack-network-howto-extend-datacenter.md)。
+- [管理 IoT 中心](/iot-hub/about-iot-hub)。
 - [管理事件中心](/azure-stack/operator/event-hubs-rp-overview?toc=%2Fazure-stack%2Ftdc%2Ftoc.json&bc=%2Fazure-stack%2Fbreadcrumb%2Ftoc.json&view=azs-2002&branch=release-tzl)。
 - [管理应用服务](/azure-stack/operator/azure-stack-app-service-overview?toc=%2Fazure-stack%2Ftdc%2Ftoc.json&bc=%2Fazure-stack%2Fbreadcrumb%2Ftoc.json&view=azs-2002&branch=release-tzl)。
-- 更换损坏的硬件。 下面是[可替换部件](/azure-stack/tdc/cru-replaceable-parts&branch=release-tzl)的列表。
+- 更换损坏的硬件。 下面是[可替换部件](azure-stack-replace-component.md)的列表。
 - [获取支持](/azure-stack/operator/azure-stack-help-and-support-overview?toc=%2Fazure-stack%2Ftdc%2Ftoc.json&bc=%2Fazure-stack%2Fbreadcrumb%2Ftoc.json&view=azs-2002&branch=release-tzl)。
 
 ## <a name="operator-tasks"></a>操作员任务
@@ -163,7 +164,7 @@ Azure Stack Hub 使用 Azure 资源管理器作为其基础的部署、管理和
 
 对于集成系统，Azure 和我们的原始设备制造商 (OEM) 硬件合作伙伴之间已经建立了协作的问题升级和解决流程。
 
-如果存在云服务问题，请通过 Azure 客户支持服务 (CSS) 寻求支持。 若要创建支持请求，请选择管理员门户右上角的帮助和支持图标（问号）。 接着选择“帮助 + 支持”，然后选择“支持”部分下面的“新建支持请求”。   
+如果存在云服务问题，请通过 Azure 客户支持服务 (CSS) 寻求支持。 若要创建支持请求，请选择管理员门户右上角的帮助和支持图标（问号）。 接着选择“帮助 + 支持”，然后选择“支持”部分下面的“新建支持请求”。  
 
 如果存在部署问题、修补和更新问题、硬件（包括现场可更换部件）问题，或任何硬件品牌软件（例如在硬件生命周期主机上运行的软件）问题，请首先联系 OEM 硬件供应商。
 

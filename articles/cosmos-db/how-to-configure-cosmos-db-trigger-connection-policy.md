@@ -3,16 +3,16 @@ title: 适用于 Cosmos DB 的 Azure Functions 触发器的连接策略
 description: 了解如何配置适用于 Cosmos DB 的 Azure Functions 触发器使用的连接策略
 author: rockboyfor
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 origin.date: 07/17/2019
-ms.date: 04/27/2020
+ms.date: 06/22/2020
 ms.author: v-yeche
-ms.openlocfilehash: 02b1f487a946991d3732b1c4098af198f9d24088
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.openlocfilehash: e546ab7b5805f03b8eb178aced80ef6b89143a7f
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82134923"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098300"
 ---
 # <a name="how-to-configure-the-connection-policy-used-by-azure-functions-trigger-for-cosmos-db"></a>如何配置适用于 Cosmos DB 的 Azure Functions 触发器使用的连接策略
 
@@ -55,6 +55,6 @@ ms.locfileid: "82134923"
 
 * [Azure Functions 中的连接限制](../azure-functions/manage-connections.md#connection-limit)
 * [Azure Cosmos DB 性能提示](./performance-tips.md)
-* [示例代码](https://github.com/ealsur/serverless-recipes/tree/master/connectionmode)
+* [代码示例](https://github.com/ealsur/serverless-recipes/tree/master/connectionmode)
 
 <!-- Update_Description: update meta properties, wording update, update link -->

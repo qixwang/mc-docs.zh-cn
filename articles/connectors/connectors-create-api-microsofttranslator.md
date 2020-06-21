@@ -17,13 +17,14 @@ ms.workload: na
 origin.date: 11/07/2016
 ms.author: v-yiso
 ms.date: 03/26/2018
-ms.openlocfilehash: 4e1ce34177c2a0f7b44c4eb5eefa289630d81f11
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: fae2f98470a813d59d82ddc064351ad55b14e637
+ms.sourcegitcommit: 4d824957213536e79cf097fd29bd0bd0f8306066
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78304693"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84901928"
 ---
+<!--Not Available the Microsoft Translator on Mooncake-->
 # <a name="get-started-with-the-microsoft-translator-connector"></a>Microsoft Translator 连接器入门
 连接到 Microsoft Translator，翻译文本、检测语言等。 通过 Microsoft Translator，可以： 
 

@@ -1,44 +1,44 @@
 ---
 title: 在 Azure Cosmos DB 中预配自动缩放吞吐量
-description: 了解如何使用 Azure 门户、CLI、PowerShell 和各种其他 SDK 在 Azure Cosmos DB 中预配容器和数据库级别的自动缩放吞吐量。
+description: 了解如何使用 Azure 门户、CLI、PowerShell 以及其他各种 SDK 在 Azure Cosmos DB 中的容器和数据库级别预配自动缩放吞吐量。
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: how-to
 origin.date: 05/10/2020
-ms.date: 06/01/2020
+ms.date: 06/22/2020
 ms.author: v-yeche
-ms.openlocfilehash: 8738c67fee0412125eee530d0ed4079b727809a8
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+ms.openlocfilehash: d7586c0678511e40fbab9aec8b4b5bcc711f2754
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84199940"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098477"
 ---
 # <a name="provision-autoscale-throughput-on-database-or-container-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中的数据库或容器上预配自动缩放吞吐量
 
-本文介绍如何在 Azure Cosmos DB 中的数据库或容器（集合、图或表）上预配自动缩放吞吐量。 可以在单个容器上启用自动缩放，也可以在数据库上预配自动缩放吞吐量，并在数据库中的所有容器之间共享。 
+本文介绍了如何为 Azure Cosmos DB 中的数据库或容器（集合、图形或表）预配自动缩放吞吐量。 可以为单个容器启用自动缩放，也可以为某个数据库预配自动缩放吞吐量，然后在该数据库中的所有容器之间共享此吞吐量。 
 
 ## <a name="azure-portal"></a>Azure 门户
 
-### <a name="create-new-database-or-container-with-autoscale"></a>使用自动缩放创建新的数据库或容器
+### <a name="create-new-database-or-container-with-autoscale"></a>创建支持自动缩放的新数据库或容器
 1. 登录到 [Azure 门户](https://portal.azure.cn)。
 
     <!--Not Available on [Azure Cosmos DB explorer.](https://cosmos.azure.com/)-->
 
 1. 导航到你的 Azure Cosmos DB 帐户，打开“数据资源管理器”选项卡。
 
-1. 选择“新建容器”。 为数据库、容器和分区键输入一个名称。 在“吞吐量”下，选择“自动缩放”选项，并设置希望数据库或容器缩放到的[最大吞吐量(RU/秒)](provision-throughput-autoscale.md#how-autoscale-provisioned-throughput-works)。
+1. 选择“新建容器”。 为你的数据库、容器输入一个名称并输入分区键。 在“吞吐量”下选择“自动缩放”选项，并设置希望数据库或容器缩放到的[最大吞吐量（RU/秒）](provision-throughput-autoscale.md#how-autoscale-provisioned-throughput-works)。 
 
     ![创建容器并配置自动缩放预配吞吐量](./media/how-to-provision-autoscale-throughput/create-new-autoscale-container.png)
 
-1. 选择“确定” 。
+1. 选择“确定”。
 
-若要在共享的吞吐量数据库上预配自动缩放，请在创建新数据库时选择“预配数据库吞吐量”选项。 
+若要在共享吞吐量数据库上预配自动缩放，请在创建新数据库时选择“预配数据库吞吐量”选项。 
 
-### <a name="enable-autoscale-on-existing-database-or-container"></a>对现有数据库或容器启用自动缩放
+### <a name="enable-autoscale-on-existing-database-or-container"></a>在现有的数据库或容器上启用自动缩放
 
 > [!IMPORTANT]
-> 在当前版本中，Azure 门户是在自动缩放和标准（手动）预配吞吐量之间迁移的唯一方法。 
+> 在当前版本中，只能通过 Azure 门户在自动缩放与标准（手动）预配吞吐量之间进行迁移。 
 
 1. 登录到 [Azure 门户](https://portal.azure.cn)。
     
@@ -46,26 +46,26 @@ ms.locfileid: "84199940"
 
 1. 导航到你的 Azure Cosmos DB 帐户，打开“数据资源管理器”选项卡。
 
-1. 为容器选择“缩放和设置”，或为数据库选择“缩放”。
+1. 为你的容器选择“缩放和设置”，或者为你的数据库选择“缩放”。 
 
-1. 在“缩放”下，选择“自动缩放”选项和“保存”。
+1. 在“缩放”下，依次选择“自动缩放”选项、“保存”。  
 
-    ![对现有容器启用自动缩放](./media/how-to-provision-autoscale-throughput/autoscale-scale-and-settings.png)
+    ![在现有容器上启用自动缩放](./media/how-to-provision-autoscale-throughput/autoscale-scale-and-settings.png)
 
 > [!NOTE]
-> 在现有数据库或容器上启用自动缩放时，“最大 RU/秒”的起始值由系统根据当前手动预配吞吐量设置和存储确定。 操作完成后，可以根据需要更改“最大 RU/秒”。 [了解详细信息。](autoscale-faq.md#how-does-the-migration-between-autoscale-and-standard-manual-provisioned-throughput-work) 
+> 在现有数据库或容器上启用自动缩放时，最大 RU/秒的起始值由系统根据当前手动预配的吞吐量设置和存储确定。 在操作完成后，你可以根据需要更改最大 RU/秒。 [了解详细信息。](autoscale-faq.md#how-does-the-migration-between-autoscale-and-standard-manual-provisioned-throughput-work) 
 
 ## <a name="azure-cosmos-db-net-v3-sdk-for-sql-api"></a>适用于 SQL API 的 Azure Cosmos DB .NET V3 SDK
-使用 [3.9 或更高版本](https://www.nuget.org/packages/Microsoft.Azure.Cosmos)的适用于 SQL API 的 Azure Cosmos DB .NET SDK 来管理自动缩放资源。 
+可以使用适用于 SQL API 的 Azure Cosmos DB .NET SDK [3.9 或更高版本](https://www.nuget.org/packages/Microsoft.Azure.Cosmos)来管理自动缩放资源。 
 
 > [!IMPORTANT]
-> 可以使用 .NET SDK 来新建自动缩放资源。 SDK 不支持在自动缩放和标准（手动）吞吐量之间迁移。 目前只有 Azure 门户支持迁移方案。 
+> 可以使用该 .NET SDK 创建新的自动缩放资源。 该 SDK 不支持在自动缩放与标准（手动）吞吐量之间迁移。 目前只有 Azure 门户支持迁移方案。 
 
 ### <a name="create-database-with-shared-throughput"></a>创建具有共享吞吐量的数据库
 ```csharp
 // Create instance of CosmosClient
 CosmosClient cosmosClient = new CosmosClient(Endpoint, PrimaryKey);
- 
+
 // Autoscale throughput settings
 ThroughputProperties autoscaleThroughputProperties = ThroughputProperties.CreateAutoscaleThroughput(4000); //Set autoscale max RU/s
 
@@ -108,10 +108,10 @@ await container.ReplaceThroughputAsync(ThroughputProperties.CreateAutoscaleThrou
 ```
 
 ## <a name="azure-cosmos-db-java-v4-sdk-for-sql-api"></a>适用于 SQL API 的 Azure Cosmos DB Java V4 SDK
-可使用 [4.0 或更高版本](https://mvnrepository.com/artifact/com.azure/azure-cosmos)的适用于 SQL API 的 Azure Cosmos DB Java SDK 来管理自动缩放资源。 
+可以使用适用于 SQL API 的 Azure Cosmos DB Java SDK [4.0 或更高版本](https://mvnrepository.com/artifact/com.azure/azure-cosmos)来管理自动缩放资源。 
 
 > [!IMPORTANT]
-> 可以使用 Java SDK 来新建自动缩放资源。 SDK 不支持在自动缩放和标准（手动）吞吐量之间迁移。 目前只有 Azure 门户支持迁移方案。 
+> 可以使用该 Java SDK 创建新的自动缩放资源。 该 SDK 不支持在自动缩放与标准（手动）吞吐量之间迁移。 目前只有 Azure 门户支持迁移方案。 
 
 ### <a name="create-database-with-shared-throughput"></a>创建具有共享吞吐量的数据库
 
@@ -241,17 +241,17 @@ container.replaceThroughput(ThroughputProperties.createAutoscaledThroughput(newA
 --- 
 
 ## <a name="cassandra-api"></a>Cassandra API 
-请参阅此文，了解[如何使用 CQL 命令](manage-scale-cassandra.md)启用自动缩放。
+请参阅有关[如何使用 CQL 命令](manage-scale-cassandra.md#use-autoscale)的此文章来启用自动缩放。
 
 ## <a name="azure-cosmos-db-api-for-mongodb"></a>用于 MongoDB 的 Azure Cosmos DB API 
-请参阅此文，了解[如何使用 MongoDB 扩展命令](mongodb-custom-commands.md)启用自动缩放。
+请参阅有关[如何使用 MongoDB 扩展命令](mongodb-custom-commands.md)的此文章来启用自动缩放。
 
-## <a name="azure-resource-manager"></a>Azure Resource Manager
-可以使用资源管理器模板为任何 API 预配数据库或容器的自动缩放吞吐量。 有关示例，请参阅[此文](manage-sql-with-resource-manager.md)。
+## <a name="azure-resource-manager"></a>Azure 资源管理器
+对于任何 API，你都可以使用资源管理器模板来为数据库或容器预配自动缩放吞吐量。 有关示例，请参阅[此文章](manage-sql-with-resource-manager.md#azure-cosmos-account-with-autoscale-throughput)。
 
 ## <a name="next-steps"></a>后续步骤
-* 了解[使用自动缩放预配吞吐量的优势](provision-throughput-autoscale.md#benefits-of-autoscale)。
-* 了解如何[在手动和自动缩放吞吐量之间进行选择](how-to-choose-offer.md)。
+* 了解[自动缩放预配吞吐量的优势](provision-throughput-autoscale.md#benefits-of-autoscale)。
+* 了解如何[在手动与自动缩放吞吐量之间进行选择](how-to-choose-offer.md)。
 * 查看[自动缩放常见问题解答](autoscale-faq.md)。
 
 <!-- Update_Description: new article about how to provision autoscale throughput -->

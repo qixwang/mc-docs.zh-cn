@@ -2,15 +2,16 @@
 title: Azure 订阅限制和配额
 description: 提供常见的 Azure 订阅和服务限制、配额和约束的列表。 本文包括有关如何增加限制以及最大值的信息。
 ms.topic: conceptual
-origin.date: 04/03/2020
-ms.date: 05/18/2020
+author: rockboyfor
+origin.date: 06/04/2020
+ms.date: 06/22/2020
 ms.author: v-yeche
-ms.openlocfilehash: fec1196464f10beab769aceadfe1cfcc9c0b7d1d
-ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
+ms.openlocfilehash: 16fadbccc765459ff428a4a944b4dc083a1cc84f
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83392375"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098693"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure 订阅和服务限制、配额和约束
 
@@ -137,6 +138,7 @@ ms.locfileid: "83392375"
 
 可在[“Azure 机器学习配额”页](../../machine-learning/how-to-manage-quotas.md)中找到 Azure 机器学习计算配额的最新值
 
+
 <!--Not Available on ## Azure Maps limits-->
 
 <a name="azure-monitor-limits"></a>
@@ -203,8 +205,15 @@ ms.locfileid: "83392375"
 [!INCLUDE [azure-data-factory-limits](../../../includes/azure-data-factory-limits.md)]
 
 <!--Not Available on ## Data Lake Analytics limits-->
-<!--Not Available on ## Data Lake Store limits-->
+
+
+
+<!--Not Available on azure-data-lake-store-limits.md->
+
+
+
 <!--Not Available on ## Data Share limits-->
+
 
 ## <a name="database-migration-service-limits"></a>数据库迁移服务限制
 
@@ -314,7 +323,7 @@ ms.locfileid: "83392375"
 ## <a name="sql-database-limits"></a>SQL 数据库限制
 
 有关 SQL 数据库的限制，请参阅[单一数据库的 SQL 数据库资源限制](../../sql-database/sql-database-vcore-resource-limits-single-databases.md)、[弹性池和共用数据库的 SQL 数据库资源限制](../../sql-database/sql-database-vcore-resource-limits-elastic-pools.md)以及[托管实例的 SQL 数据库资源限制](../../sql-database/sql-database-managed-instance-resource-limits.md)。
-
+<!-- There is not such a file in the directory by 06/18/20020-->
 ## <a name="sql-data-warehouse-limits"></a>SQL 数据仓库限制
 
 有关 SQL 数据仓库限制，请参阅 [SQL 数据仓库资源限制](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md)。

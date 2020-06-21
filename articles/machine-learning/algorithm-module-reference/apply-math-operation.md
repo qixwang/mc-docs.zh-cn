@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: 1f0b85c9be299a88bfa8b4dd02f5aeecdd6b88c0
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 325a03f026b2cdb71aeb5a468d84292558a06f2b
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75598591"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097400"
 ---
 # <a name="apply-math-operation"></a>应用数学运算
 
@@ -86,7 +86,7 @@ ms.locfileid: "75598591"
     - **Inplace**。 用作输入的列中的值将替换为新的计算值。 
     - **ResultOnly**。 返回一列，其中包含数学运算的结果。
   
-1.  运行管道。  
+1.  提交管道。  
   
 ## <a name="results"></a>结果
 

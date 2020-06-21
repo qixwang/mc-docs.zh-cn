@@ -3,25 +3,25 @@ title: DatetimeV2 预生成实体 - LUIS
 titleSuffix: Azure Cognitive Services
 description: 本文包含语言理解 (LUIS) 中的 datetimeV2 预生成实体信息。
 services: cognitive-services
-author: lingliw
-manager: digimobile
+author: diberry
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
-origin.date: 01/07/2020
-ms.date: 01/15/2020
-ms.author: v-lingwu
-ms.openlocfilehash: d18c7f5173e590c67645d3bba049c69c4446fbc1
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.topic: reference
+origin.date: 04/13/2020
+ms.date: 06/19/2020
+ms.author: v-tawe
+ms.openlocfilehash: 9d6f428a5bde371d9331baba65a203daa339f068
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77028832"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098519"
 ---
 # <a name="datetimev2-prebuilt-entity-for-a-luis-app"></a>LUIS 应用的 DatetimeV2 预生成实体
 
-**datetimeV2** 预生成实体提取日期和时间值。 将以标准化格式解析这些值，使客户端程序能够使用它们。 当某条陈述包含不完整的日期或时间时，LUIS 会在终结点响应中包含过去的值和未来的值。  由于此实体已经过训练，因此不需要将包含 datetimeV2 的陈述示例添加到应用程序意向中。 
+**datetimeV2** 预生成实体提取日期和时间值。 将以标准化格式解析这些值，使客户端程序能够使用它们。 当某条陈述包含不完整的日期或时间时，LUIS 会在终结点响应中包含过去的值和未来的值。 由于此实体已经过训练，因此不需要将包含 datetimeV2 的陈述示例添加到应用程序意向中。 
 
 ## <a name="types-of-datetimev2"></a>datetimeV2 的类型
 通过 [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-DateTime.yaml) GitHub 存储库管理 DatetimeV2。
@@ -146,10 +146,10 @@ ms.locfileid: "77028832"
 
 |属性名称|属性说明|
 |--|--|
-|timex|遵循 [ISO 8601 标准](https://en.wikipedia.org/wiki/ISO_8601)的、以 TIMEX 格式表示的时间、日期或日期范围，以及使用 TimeML 语言的注释的 TIMEX3 属性。 [TIMEX 准则](http://www.timeml.org/tempeval2/tempeval2-trial/guidelines/timex3guidelines-072009.pdf)中描述了此注释。|
+|timex|遵循 [ISO 8601 标准](https://en.wikipedia.org/wiki/ISO_8601)的、以 TIMEX 格式表示的时间、日期或日期范围，以及使用 TimeML 语言的注释的 TIMEX3 属性。|
 |mod|术语，用于说明如何使用 `before`、`after` 等值。|
 |type|子类型，可以是下述项目之一：`datetime`、`date`、`time`、`daterange`、`timerange`、`datetimerange`、`duration`、`set`。|
-|值|**可选。** 采用 yyyy-MM-dd（日期）、HH:mm:ss（时间）、yyyy-MM-dd HH:mm:ss（日期/时间）格式的日期/时间对象。 如果 `type` 为 `duration`，则值是秒数（持续时间） <br/> 仅当 `type` 为 `datetime`、`date`、`time` 或 `duration 时才使用。|
+|value|**可选。** 采用 yyyy-MM-dd（日期）、HH:mm:ss（时间）、yyyy-MM-dd HH:mm:ss（日期/时间）格式的日期/时间对象。 如果 `type` 为 `duration`，则值是秒数（持续时间） <br/> 仅当 `type` 为 `datetime`、`date`、`time` 或 `duration 时才使用。|
 
 ## <a name="valid-date-values"></a>有效日期值
 
@@ -672,14 +672,14 @@ DatetimeV2 JSON 响应在 API V3 中已更改。 以下示例演示 LUIS 如何�
 
 ## <a name="deprecated-prebuilt-datetime"></a>已弃用的预生成日期时间
 
-`datetime` 预生成实体已弃用，已由 datetimeV2 取代  。
+`datetime` 预生成实体已弃用，已由 datetimeV2 取代。
 
 若要在 LUIS 应用中将 `datetime` 替换为 `datetimeV2`，请完成以下步骤：
 
-1. 打开 LUIS Web 界面的“实体”窗格。 
+1. 打开 LUIS Web 界面的“实体”窗格。
 2. 删除 **datetime** 预生成实体。
-3. 单击“添加预生成实体” 
-4. 选择“datetimeV2”并单击“保存”。  
+3. 单击“添加预生成实体”
+4. 选择“datetimeV2”并单击“保存”。 
 
 ## <a name="next-steps"></a>后续步骤
 

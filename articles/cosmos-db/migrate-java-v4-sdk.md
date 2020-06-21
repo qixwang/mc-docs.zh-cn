@@ -4,28 +4,25 @@ description: 了解如何将现有 Java 应用程序从使用较旧的 Azure Cos
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
-origin.date: 05/08/2020
-ms.date: 06/15/2020
+origin.date: 06/11/2020
+ms.date: 06/22/2020
 ms.author: v-yeche
 ms.reviewer: sngun
-ms.openlocfilehash: 4c9136234bea9812a2238029bb180158ef704e4b
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+ms.openlocfilehash: 58c20fa59bf2b4547362072b0426ec6566d72e8d
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84200132"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098685"
 ---
 <!--Verified successfully-->
 # <a name="migrate-your-application-to-use-the-azure-cosmos-db-java-sdk-v4"></a>迁移应用程序以使用 Azure Cosmos DB Java SDK v4
 
 > [!IMPORTANT]  
-> 要详细了解此 SDK，请查看 Azure Cosmos DB Java SDK v4 发行说明、[Maven 存储库](https://mvnrepository.com/artifact/com.azure/azure-cosmos)、Azure Cosmos DB Java SDK v4 性能提示和 Azure Cosmos DB Java SDK v4 故障排除指南。
+> 有关此 SDK 的详细信息，请查看 Azure Cosmos DB Java SDK v4 [发行说明](sql-api-sdk-java-v4.md)、[Maven 存储库](https://mvnrepository.com/artifact/com.azure/azure-cosmos)、Azure Cosmos DB Java SDK v4 [性能提示](performance-tips-java-sdk-v4-sql.md)和 Azure Cosmos DB Java SDK v4 [故障排除指南](troubleshoot-java-sdk-v4-sql.md)。
 >
 
-<!--Not Available on [performance tips](performance-tips-java-sdk-v4-sql.md)-->
-<!--Not Available on [troubleshooting guide](troubleshoot-java-sdk-v4-sql.md)-->
-
-本文介绍如何将使用较旧 Azure Cosmos DB Java SDK 的现有 Java 应用程序升级到用于 Core (SQL) API 的较新的 Azure Cosmos DB Java SDK 4.0。 Azure Cosmos DB Java SDK v4 对应于 `com.azure.cosmos` 包。 如果要从以下任何 Azure Cosmos DB Java SDK 迁移应用程序，则可以使用此文档中的说明： 
+本文介绍如何将使用较旧 Azure Cosmos DB Java SDK 的现有 Java 应用程序升级为使用较新的适用于 Core (SQL) API 的 Azure Cosmos DB Java SDK 4.0。 Azure Cosmos DB Java SDK v4 对应于 `com.azure.cosmos` 包。 如果要从以下任何 Azure Cosmos DB Java SDK 迁移应用程序，则可以使用此文档中的说明： 
 
 * Sync Java SDK 2.x.x
 * Async Java SDK 2.x.x
@@ -40,7 +37,7 @@ ms.locfileid: "84200132"
 | Async 2.x.x  | 2018 年 6 月    | Async(RxJava)  | `com.microsoft.azure::azure-cosmosdb` | `com.microsoft.azure.cosmosdb.rx` | [API](https://azure.github.io/azure-cosmosdb-java/2.0.0/) | [发行说明](sql-api-sdk-async-java.md) |
 | Sync 2.x.x     | 2018 年 9 月    | 同步   | `com.microsoft.azure::azure-documentdb` | `com.microsoft.azure.cosmosdb` | [API](https://azure.github.io/azure-cosmosdb-java/2.0.0/) | [发行说明](sql-api-sdk-java.md)  |
 | 3.x.x    | 2019 年 7 月    | Async(Reactor)/Sync  | `com.microsoft.azure::azure-cosmos`  | `com.azure.data.cosmos` | [API](https://azure.github.io/azure-cosmosdb-java/3.0.0/) | - |
-| 4.0   | 2020 年 4 月   | Async(Reactor)/Sync  | `com.azure::azure-cosmos` | `com.azure.cosmos`   | - | - |
+| 4.0   | 2020 年 6 月   | Async(Reactor)/Sync  | `com.azure::azure-cosmos` | `com.azure.cosmos`   | - | [API](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-cosmos/4.0.1/index.html)  |
 
 ## <a name="sdk-level-implementation-changes"></a>SDK 级别实现更改
 
@@ -77,7 +74,7 @@ ms.locfileid: "84200132"
 Azure Cosmos DB Java SDK 4.0 和 3.x.x 引入了分层 API 结构，该结构以嵌套方式组织客户端、数据库和容器，如以下 4.0 SDK 代码片段所示：
 
 ```java
-CosmosContainer = client.getDatabase("MyDatabaseName").getContainer("MyContainerName");
+CosmosContainer container = client.getDatabase("MyDatabaseName").getContainer("MyContainerName");
 ```
 
 在 Azure Cosmos DB Java SDK 版本 2.x.x 中，对资源和文档执行的所有操作都通过客户端实例执行。
@@ -120,40 +117,38 @@ Azure Cosmos DB Java SDK 4.0 公开了访问实例成员 `get` 和 `set` 方法�
 # <a name="java-sdk-40-async-api"></a>[Java SDK 4.0 异步 API](#tab/java-v4-async)
 
 ```java
-ConnectionPolicy defaultPolicy = ConnectionPolicy.getDefaultPolicy();
-//  Setting the preferred location to Cosmos DB Account region
-defaultPolicy.setPreferredLocations(Lists.newArrayList("Your Account Location"));
-// Use Direct Mode for best performance
-defaultPolicy.setConnectionMode(ConnectionMode.DIRECT);
 
 // Create Async client.
 // Building an async client is still a sync operation.
-client = new CosmosClientBuilder()
-        .setEndpoint("your.hostname")
-        .setKey("yourmasterkey")
-        .setConnectionPolicy(ConnectionPolicy.getDefaultPolicy())
-        .setConsistencyLevel(ConsistencyLevel.EVENTUAL)
+CosmosAsyncClient client = new CosmosClientBuilder()
+        .endpoint("your.hostname")
+        .key("yourmasterkey")
+        .consistencyLevel(ConsistencyLevel.EVENTUAL)
         .buildAsyncClient();
 
 // Create database with specified name
 client.createDatabaseIfNotExists("YourDatabaseName")
-      .flatMap(databas'Response -> {
-        database = databaseResponse.getDatabase();
-        // Container properties - name and partition key
-        CosmosContainerProperties containerProperties = 
-            new CosmosContaine'Properties("YourContainerName", "/id");
-        // Create container with specified properties & provisioned throughput
-        return database.createContainerIfNotExists(containerProperties, 400);
-    }).flatMap(containerResponse -> {
-        container = containerResponse.getContainer();
-        return Mono.empty();
+        .flatMap(databaseResponse -> {
+            testDatabaseAsync = client.getDatabase("YourDatabaseName");
+            // Container properties - name and partition key
+            CosmosContainerProperties containerProperties =
+                    new CosmosContainerProperties("YourContainerName", "/id");
+
+            // Provision manual throughput
+            ThroughputProperties throughputProperties = ThroughputProperties.createManualThroughput(400);
+
+            // Create container
+            return database.createContainerIfNotExists(containerProperties, throughputProperties);
+        }).flatMap(containerResponse -> {
+    testContainerAsync = database.getContainer("YourContainerName");
+    return Mono.empty();
 }).subscribe();
 ```
 
 # <a name="java-sdk-3xx-async-api"></a>[Java SDK 3.x.x 异步 API](#tab/java-v3-async)
 
 ```java
-ConnectionPolicy defaultPolicy = ConnectionPolicy.defaultPo"ic"();
+ConnectionPolicy defaultPolicy = ConnectionPolicy.defaultPolicy();
 //  Setting the preferred location to Cosmos DB Account region
 defaultPolicy.preferredLocations(Lists.newArrayList("Your Account Location"));
 
@@ -195,8 +190,8 @@ ArrayList<JsonNode> docs = generateManyDocs(number_of_docs);
 
 // Insert many docs into container...
 Flux.fromIterable(docs)
-    .flatMap(doc -> container.createItem(doc))
-    .subscribe(); // ...Subscribing triggers stream execution.
+        .flatMap(doc -> testContainerAsync.createItem(doc))
+        .subscribe(); // ...Subscribing triggers stream execution.
 ```
 
 # <a name="java-sdk-3xx-async-api"></a>[Java SDK 3.x.x 异步 API](#tab/java-v3-async)
@@ -224,27 +219,25 @@ CosmosContainerProperties containerProperties = new CosmosContainerProperties(co
 
 // Custom indexing policy
 IndexingPolicy indexingPolicy = new IndexingPolicy();
-indexingPolicy.setIndexingMode(IndexingMode.CONSISTENT); 
+indexingPolicy.setIndexingMode(IndexingMode.CONSISTENT);
 
 // Included paths
 List<IncludedPath> includedPaths = new ArrayList<>();
-IncludedPath includedPath = new IncludedPath();
-includedPath.setPath("/*");
-includedPaths.add(includedPath);
+includedPaths.add(new IncludedPath("/*"));
 indexingPolicy.setIncludedPaths(includedPaths);
 
 // Excluded paths
 List<ExcludedPath> excludedPaths = new ArrayList<>();
-ExcludedPath excludedPath = new ExcludedPath();
-excludedPath.setPath("/name/*");
-excludedPaths.add(excludedPath);
+excludedPaths.add(new ExcludedPath("/name/*"));
 indexingPolicy.setExcludedPaths(excludedPaths);
 
 containerProperties.setIndexingPolicy(indexingPolicy);
 
-CosmosAsyncContainer containerIfNotExists = database.createContainerIfNotExists(containerProperties, 400)
-                                                    .block()
-                                                    .getContainer();
+ThroughputProperties throughputProperties = ThroughputProperties.createManualThroughput(400);
+
+database.createContainerIfNotExists(containerProperties, throughputProperties);
+CosmosAsyncContainer containerIfNotExists = database.getContainer(containerName);
+
 ```
 
 # <a name="java-sdk-3xx-async-api"></a>[Java SDK 3.x.x 异步 API](#tab/java-v3-async)
@@ -285,9 +278,11 @@ CosmosContainer containerIfNotExists = database.createContainerIfNotExists(conta
 # <a name="java-sdk-40-async-api"></a>[Java SDK 4.0 异步 API](#tab/java-v4-async)
 
 ```java
+
 logger.info("Creating stored procedure...\n");
 
-sprocId = "createMyDocument";
+String sprocId = "createMyDocument";
+
 String sprocBody = "function createMyDocument() {\n" +
         "var documentToCreate = {\"id\":\"test_doc\"}\n" +
         "var context = getContext();\n" +
@@ -299,6 +294,7 @@ String sprocBody = "function createMyDocument() {\n" +
         "});\n" +
         "if (!accepted) return;\n" +
         "}";
+
 CosmosStoredProcedureProperties storedProcedureDef = new CosmosStoredProcedureProperties(sprocId, sprocBody);
 container.getScripts()
         .createStoredProcedure(storedProcedureDef,
@@ -322,6 +318,7 @@ container.getScripts()
                     executeResponse.getRequestCharge()));
             return Mono.empty();
         }).block();
+
 ```
 
 # <a name="java-sdk-3xx-async-api"></a>[Java SDK 3.x.x 异步 API](#tab/java-v3-async)
@@ -374,42 +371,44 @@ container.getScripts()
 # <a name="java-sdk-40-async-api"></a>[Java SDK 4.0 异步 API](#tab/java-v4-async)
 
 ```java
-ChangeFeedProcessor changeFeedProcessorInstance = 
-ChangeFeedProcessor.changeFeedProcessorBuilder()
-    .setHostName(hostName)
-    .setFeedContainer(feedContainer)
-    .setLeaseContainer(leaseContainer)
-    .setHandleChanges((List<JsonNode> docs) -> {
-        logger.info("--->setHandleChanges() START");
 
-        for (JsonNode document : docs) {
-            try {
-                //Change Feed hands the document to you in the form of a JsonNode
-                //As a developer you have two options for handling the JsonNode document provided to you by Change Feed
-                //One option is to operate on the document in the form of a JsonNode, as shown below. This is great
-                //especially if you do not have a single uniform data model for all documents.
-                logger.info("---->DOCUMENT RECEIVED: " + OBJECT_MAPPER.writerWithDefaultPrettyPrinter()
-                        .writeValueAsString(document));
+ChangeFeedProcessor changeFeedProcessorInstance =
+        new ChangeFeedProcessorBuilder()
+                .hostName(hostName)
+                .feedContainer(feedContainer)
+                .leaseContainer(leaseContainer)
+                .handleChanges((List<JsonNode> docs) -> {
+                    logger.info("--->setHandleChanges() START");
 
-                //You can also transform the JsonNode to a POJO having the same structure as the JsonNode,
-                //as shown below. Then you can operate on the POJO.
-                CustomPOJO pojo_doc = OBJECT_MAPPER.treeToValue(document, CustomPOJO.class);
-                logger.info("----=>id: " + pojo_doc.getId());
+                    for (JsonNode document : docs) {
+                        try {
+                            //Change Feed hands the document to you in the form of a JsonNode
+                            //As a developer you have two options for handling the JsonNode document provided to you by Change Feed
+                            //One option is to operate on the document in the form of a JsonNode, as shown below. This is great
+                            //especially if you do not have a single uniform data model for all documents.
+                            logger.info("---->DOCUMENT RECEIVED: " + OBJECT_MAPPER.writerWithDefaultPrettyPrinter()
+                                    .writeValueAsString(document));
 
-            } catch (JsonProcessingException e) {
-                e.printStackTrace();
-            }
-        }
-        logger.info("--->handleChanges() END");
+                            //You can also transform the JsonNode to a POJO having the same structure as the JsonNode,
+                            //as shown below. Then you can operate on the POJO.
+                            CustomPOJO pojo_doc = OBJECT_MAPPER.treeToValue(document, CustomPOJO.class);
+                            logger.info("----=>id: " + pojo_doc.getId());
 
-    })
-    .build();
+                        } catch (JsonProcessingException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    logger.info("--->handleChanges() END");
+
+                })
+                .buildChangeFeedProcessor();
 
 // ...
 
- changeFeedProcessorInstance.start()
-                            .subscribeOn(Schedulers.elastic())
-                            .subscribe();
+changeFeedProcessorInstance.start()
+        .subscribeOn(Schedulers.elastic())
+        .subscribe();
+
 ```
 
 # <a name="java-sdk-3xx-async-api"></a>[Java SDK 3.x.x 异步 API](#tab/java-v3-async)
@@ -455,12 +454,16 @@ ChangeFeedProcessor.Builder()
 # <a name="java-sdk-40-async-api"></a>[Java SDK 4.0 异步 API](#tab/java-v4-async)
 
 ```java
+
 CosmosAsyncContainer container;
 
 // Create a new container with TTL enabled with default expiration value
 CosmosContainerProperties containerProperties = new CosmosContainerProperties("myContainer", "/myPartitionKey");
 containerProperties.setDefaultTimeToLiveInSeconds(90 * 60 * 60 * 24);
-container = database.createContainerIfNotExists(containerProperties, 400).block().getContainer();
+ThroughputProperties throughputProperties = ThroughputProperties.createManualThroughput(400);
+database.createContainerIfNotExists(containerProperties, throughputProperties).block();
+container = database.getContainer("myContainer");
+
 ```
 
 # <a name="java-sdk-3xx-async-api"></a>[Java SDK 3.x.x 异步 API](#tab/java-v3-async)
@@ -482,8 +485,9 @@ container = database.createContainerIfNotExists(containerProperties, 400).block(
 # <a name="java-sdk-40-async-api"></a>[Java SDK 4.0 异步 API](#tab/java-v4-async)
 
 ```java
+
 // Include a property that serializes to "ttl" in JSON
-public class SalesOrder
+class SalesOrder
 {
     private String id;
     private String customerId;
@@ -505,12 +509,17 @@ public class SalesOrder
     //...
 }
 
+```
+
+```java
+
 // Set the value to the expiration in seconds
 SalesOrder salesOrder = new SalesOrder(
-    "SO05",
-    "CO18009186470",
-    60 * 60 * 24 * 30  // Expire sales orders in 30 days
+        "SO05",
+        "CO18009186470",
+        60 * 60 * 24 * 30  // Expire sales orders in 30 days
 );
+
 ```
 
 # <a name="java-sdk-3xx-async-api"></a>[Java SDK 3.x.x 异步 API](#tab/java-v3-async)
@@ -554,5 +563,4 @@ SalesOrder salesOrder = new SalesOrder(
 * 了解[基于 Reactor 的 Java SDK](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-pattern-guide.md)
 * 了解如何通过 [Reactor 与 RxJava 指南](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-rxjava-guide.md)将 RxJava 异步代码转换为 Reactor 异步代码
 
-<!-- Update_Description: new article about migrate java v4 sdk -->
-<!--NEW.date: 06/15/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

@@ -5,15 +5,15 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 04/20/2020
-ms.date: 06/15/2020
+ms.date: 06/22/2020
 ms.author: v-yeche
 ms.reviewer: sngun
-ms.openlocfilehash: 8984dacdd29d77f6cd1392d7b852458c7bc02ac1
-ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
+ms.openlocfilehash: 131c2738f29fe36b5231e283d7ab79a54f8b2056
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84723594"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098667"
 ---
 # <a name="conflict-types-and-resolution-policies"></a>冲突类型和解决策略
 

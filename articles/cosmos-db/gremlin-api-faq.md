@@ -5,14 +5,14 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 04/28/2020
-ms.date: 06/15/2020
+ms.date: 06/22/2020
 ms.author: v-yeche
-ms.openlocfilehash: fb8e907f238b57fb380046a4b3df6b18b63bf789
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+ms.openlocfilehash: 9c6c7d387feebe8611c30354aa605f2203d059c6
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84200241"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098399"
 ---
 <!--Verified successfully, ONLY CHARACTERS CONTENT-->
 # <a name="frequently-asked-questions-about-the-gremlin-api-in-azure-cosmos-db"></a>有关 Azure Cosmos DB 中 Gremlin API 的常见问题解答
@@ -151,5 +151,4 @@ Fluent API 调用尚不受 Azure Cosmos DB Gremlin API 支持。 Fluent API 调�
 * [Azure Cosmos DB Gremlin 线路协议支持](gremlin-support.md)
 * 使用 [Gremlin 控制台](create-graph-gremlin-console.md)创建、查询和遍历 Azure Cosmos DB 图形数据库
 
-<!-- Update_Description: new article about gremlin api faq -->
-<!--NEW.date: 06/15/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

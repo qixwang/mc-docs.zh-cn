@@ -8,12 +8,12 @@ origin.date: 11/15/2019
 ms.date: 05/28/2020
 ms.author: v-johya
 ms.subservice: ''
-ms.openlocfilehash: a95d501ffa237caa910d0414b1213590d10e19be
-ms.sourcegitcommit: 5ae04a3b8e025986a3a257a6ed251b575dbf60a1
+ms.openlocfilehash: 4adaa1c36733b12fcc59afdac5ba813a7216a164
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84440678"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097011"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub"></a>将 Azure 监视数据流式传输到事件中心
 Azure Monitor 为 Azure、其他云和本地的应用程序与服务提供全堆栈监视解决方案。 除了使用 Azure Monitor 分析数据并将数据用于不同的监视方案以外，可能还需要将其发送到环境中的其他监视工具。 在大多数情况下，将监视数据流式传输到外部工具的最有效方法是使用 [Azure 事件中心](/event-hubs/)。 本文简要介绍了如何将不同源中的监视数据流式传输到事件中心，并提供详细指南的链接。
@@ -35,7 +35,6 @@ Azure Monitor 为 Azure、其他云和本地的应用程序与服务提供全堆
 
 | 层 | 数据 | 方法 |
 |:---|:---|:---|
-| [Azure 租户](data-sources.md#azure-tenant) | Azure Active Directory 审核日志 | 在 AAD 租户上配置租户诊断设置。 有关详细信息，请参阅[教程：将 Azure Active Directory 日志流式传输到 Azure 事件中心](../../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md)。 |
 | [Azure 订阅](data-sources.md#azure-subscription) | Azure 活动日志 | 创建日志配置文件，以将活动日志事件导出到事件中心。  有关详细信息，请参阅[将 Azure 平台日志流式传输到 Azure 事件中心](resource-logs-stream-event-hubs.md)。 |
 | [Azure 资源](data-sources.md#azure-resources) | 平台指标<br> 资源日志 |使用资源诊断设置将两种类型的数据发送到事件中心。 有关详细信息，请参阅[将 Azure 资源日志流式传输到事件中心](resource-logs-stream-event-hubs.md)。 |
 | [操作系统（来宾）](data-sources.md#operating-system-guest) | Azure 虚拟机 | 在 Azure 中的 Windows 和 Linux 虚拟机上安装 [Azure 诊断扩展](diagnostics-extension-overview.md)。 有关 Windows VM 的详细信息，请参阅[使用事件中心流式传输热路径中的 Azure 诊断数据](diagnostics-extension-stream-event-hubs.md)；有关 Linux VM 的详细信息，请参阅[使用 Linux 诊断扩展监视指标和日志](../../virtual-machines/extensions/diagnostics-linux.md#protected-settings)。 |

@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 09/01/2019
-ms.openlocfilehash: 7378e6246c0419d93f9d93f9edfb0d4ccb1d49e6
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 401e6be0ff272c551bf156d97881e78fde514bf0
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75599588"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097486"
 ---
 # <a name="feature-hashing-module-reference"></a>“特征哈希处理”模块参考
 
@@ -94,7 +94,7 @@ ms.locfileid: "75599588"
 
     例如，如果输入 3，则将创建一元语法、双元语法和三元语法。
 
-1. 运行管道。
+1. 提交管道。
 
 ## <a name="results"></a>结果
 
@@ -111,7 +111,7 @@ ms.locfileid: "75599588"
 
 创建转换的数据集后，可将其用作“训练模型”模块的输入。
  
-### <a name="best-practices"></a>最佳做法
+## <a name="best-practices"></a>最佳做法
 
 以下最佳做法可帮助你充分利用“特征哈希处理”模块：
 

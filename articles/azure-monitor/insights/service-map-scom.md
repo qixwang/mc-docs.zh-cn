@@ -7,12 +7,12 @@ author: Johnnytechn
 ms.author: v-johya
 ms.date: 05/28/2020
 origin.date: 07/12/2019
-ms.openlocfilehash: 009c2924f4c45cab0f0dd63fe75783183f1d5f08
-ms.sourcegitcommit: 5ae04a3b8e025986a3a257a6ed251b575dbf60a1
+ms.openlocfilehash: 9059ef708234366941d5f1210c1483f6c67acc40
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84440701"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097022"
 ---
 # <a name="integrate-system-center-operations-manager-with-azure-monitor-for-vms-map-feature"></a>将 System Center Operations Manager 与用于 VM 的 Azure Monitor 的映射功能集成
 
@@ -42,7 +42,7 @@ ms.locfileid: "84440701"
 安装服务映射管理包后，将在 Operations Manager Operations 控制台的“管理”窗格中的“Operations Management Suite”下显示新节点“服务映射”。
 
 >[!NOTE]
->[Operations Management Suite 是一组服务](../terminology.md#april-2018---retirement-of-operations-management-suite-brand)，其中包括 Log Analytics（现在是 [Azure Monitor](../overview.md) 的一部分）。
+>[Operations Management Suite 是一组服务](../terminology.md)，其中包括 Log Analytics（现在是 [Azure Monitor](../overview.md) 的一部分）。
 
 若要配置用于 VM 的 Azure Monitor 的映射集成，请执行以下操作：
 
@@ -110,7 +110,7 @@ ms.locfileid: "84440701"
 可以通过“服务映射概述”窗格编辑或删除配置的工作区（“管理”窗格 >“Operations Management Suite” > “服务映射”）。   
 
 > [!NOTE]
-> [Operations Management Suite 是一组服务](../terminology.md#april-2018---retirement-of-operations-management-suite-brand)，其中包括 Log Analytics，后者现在是 [Azure Monitor](../overview.md) 的一部分。
+> [Operations Management Suite 是一组服务](../terminology.md)，其中包括 Log Analytics，后者现在是 [Azure Monitor](../overview.md) 的一部分。
 
 在当前这个版本中，只能配置一个 Log Analytics 工作区。
 

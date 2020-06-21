@@ -12,12 +12,12 @@ ms.topic: conceptual
 origin.date: 11/08/2019
 ms.date: 12/05/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 6320c0f8c01b828743f23a63c95b664fab4a0d04
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 5e29db2a97a7ac1bc8389647054e7b253a4b2a8c
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79291425"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098518"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>语言理解常见问题解答 (FAQ)
 
@@ -96,7 +96,7 @@ Cortana 预构建应用已于 2017 年弃用。 它们不再受支持。
 
 此错误的解决方法包括：
 
-* 在 [Azure 门户](https://portal.azure.cn)中你的语言理解资源的“资源管理”->“定价层”  上，将定价层更改为更高的 TPS 层。 如果资源已分配给语言理解应用，则无需在语言理解门户中执行任何操作。
+* 在 [Azure 门户](https://portal.azure.cn)中你的语言理解资源的“资源管理”->“定价层”上，将定价层更改为更高的 TPS 层。 如果资源已分配给语言理解应用，则无需在语言理解门户中执行任何操作。
 *  如果使用量超过了最高定价层相应的使用量，请添加更多的语言理解资源，并在这些资源前面放置一个负载均衡器。 带有 Kubernetes 或 Docker Compose 的[“语言理解”容器](luis-container-howto.md)可以帮助解决此问题。
 
 ### <a name="i-received-an-http-429-error-status-code-how-do-i-fix-it"></a>我收到了一个 HTTP 429 错误状态代码。 如何解决问题？
@@ -123,7 +123,7 @@ Cortana 预构建应用已于 2017 年弃用。 它们不再受支持。
 LUIS 根据[区域性](luis-language-support.md#tokenization)将表述[标记化](luis-glossary.md#token)。 原始值和标记化值均可用于[数据提取](luis-concept-data-extraction.md#tokenized-entity-returned)。
 
 ### <a name="how-do-i-create-and-assign-a-luis-endpoint-key"></a>如何创建并分配 LUIS 终结点密钥？
-根据[服务](https://www.azure.cn/pricing/details/cognitive-services/)级别在 Azure 中[创建终结点密钥](luis-how-to-azure-subscription.md)。 在**[密钥和终结点](luis-how-to-azure-subscription.md)** 页上[分配密钥](luis-how-to-azure-subscription.md)。 此操作没有相应的 API。 然后，必须更改针对此终结点的 HTTP 请求才能[使用新终结点密钥](luis-concept-keys.md#use-endpoint-key-in-query)。
+根据[服务](https://www.azure.cn/pricing/details/cognitive-services/)级别在 Azure 中[创建终结点密钥](luis-how-to-azure-subscription.md)。 在 **[密钥和终结点](luis-how-to-azure-subscription.md)** 页上[分配密钥](luis-how-to-azure-subscription.md)。 此操作没有相应的 API。 然后，必须更改针对此终结点的 HTTP 请求才能[使用新终结点密钥](luis-concept-keys.md#use-endpoint-key-in-query)。
 
 ### <a name="how-do-i-interpret-luis-scores"></a>如何解释 LUIS 分数？
 系统应该使用最高得分意向，不管其值如何。 例如，分数低于 0.5（不到 50%）不一定意味着 LUIS 的置信度低。 提供更多训练数据有助于提高最可能意向的[分数](luis-concept-prediction-score.md)。
@@ -131,7 +131,7 @@ LUIS 根据[区域性](luis-language-support.md#tokenization)将表述[标记化
 ### <a name="why-dont-i-see-my-endpoint-hits-in-my-apps-dashboard"></a>为何在应用的“仪表板”中看不到终结点命中数？
 应用的“仪表板”中的终结点总命中数会定期更新，但 Azure 门户中与 LUIS 终结点密钥相关联的指标的更新频率更高。
 
-如果在“仪表板”中看不到更新的终结点命中数，请登录到 Azure 门户，找到与 LUIS 终结点密钥相关联的资源，然后打开“指标”以选择“总调用数”指标   。 如果将终结点密钥用于多个 LUIS 应用，则 Azure 门户中的指标会显示使用该密钥的所有 LUIS 应用进行的调用的聚合数。
+如果在“仪表板”中看不到更新的终结点命中数，请登录到 Azure 门户，找到与 LUIS 终结点密钥相关联的资源，然后打开“指标”以选择“总调用数”指标 。 如果将终结点密钥用于多个 LUIS 应用，则 Azure 门户中的指标会显示使用该密钥的所有 LUIS 应用进行的调用的聚合数。
 
 ### <a name="is-there-a-powershell-command-get-to-the-endpoint-quota"></a>是否有 PowerShell 命令进入终结点？
 
@@ -186,7 +186,7 @@ Get-AzCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Na
 ## <a name="app-publishing"></a>应用发布
 
 ### <a name="what-is-the-tenant-id-in-the-add-a-key-to-your-app-window"></a>“向应用添加密钥”窗口中的租户 ID 是什么？
-在 Azure 中，租户代表与服务关联的客户或组织。 若要在 Azure 门户的“目录 ID”框中查找租户 ID，  请选择“Azure Active Directory”   > “管理”   >   “属性”。
+在 Azure 中，租户代表与服务关联的客户或组织。 若要在 Azure 门户的“目录 ID”框中查找租户 ID，请选择“Azure Active Directory” > “管理” > “属性”。
 
 ![Azure 门户中的租户 ID](./media/luis-manage-keys/luis-assign-key-tenant-id.png)
 
@@ -218,7 +218,7 @@ Get-AzCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Na
 ## <a name="app-management"></a>应用管理
 
 ### <a name="how-do-i-download-a-log-of-user-utterances"></a>如何下载用户表述的日志？
-默认情况下，LUIS 应用会记录用户提供的表述。 若要下载用户发送至 LUIS 应用的表述的日志，请转到“我的应用”  ，然后选择此应用。 在上下文工具栏中，选择“导出终结点日志”  。 日志格式化为逗号分隔值 (CSV) 文件。
+默认情况下，LUIS 应用会记录用户提供的表述。 若要下载用户发送至 LUIS 应用的表述的日志，请转到“我的应用”，然后选择此应用。 在上下文工具栏中，选择“导出终结点日志”。 日志格式化为逗号分隔值 (CSV) 文件。
 
 ### <a name="how-can-i-disable-the-logging-of-utterances"></a>如何禁用表述的日志记录？
 若要关闭用户表述的日志记录，可以在客户端应用程序用来查询 LUIS 的终结点 URL 中设置 `log=false`。 但是，关闭日志记录会禁用 LUIS 应用提供表述建议或改进基于[主动学习](luis-concept-review-endpoint-utterances.md#what-is-active-learning)的性能的功能。 如果因为数据隐私顾虑而设置 `log=false`，则不能从 LUIS 下载这些用户表述的记录，也不能使用这些表述来改进应用。
@@ -233,7 +233,7 @@ Get-AzCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Na
 ### <a name="can-i-delete-data-from-luis"></a>能否从 LUIS 中删除数据？
 
 * 可以随意删除用于训练 LUIS 的示例表述。 如果从 LUIS 应用中删除某个示例陈述，则会将其从 LUIS Web 服务中删除，导致其无法导出。
-* 可以从 LUIS 在“查看终结点表述”页中建议的用户表述列表中删除表述。  从此列表中删除表述可以防止系统再将其作为建议提出来，但不会将其从日志中删除。
+* 可以从 LUIS 在“查看终结点表述”页中建议的用户表述列表中删除表述。 从此列表中删除表述可以防止系统再将其作为建议提出来，但不会将其从日志中删除。
 * 如果删除某个帐户，则会删除所有应用及其示例表述和日志。 数据可以保留在服务器上 60 天，然后就会被永久删除。
 
 ### <a name="how-does-azure-manage-data-i-send-to-luis"></a>Azure 如何管理我发送给 LUIS 的数据？
@@ -268,11 +268,11 @@ Get-AzCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Na
 
 如果在使用 Azure 机器人服务时遇到“网上聊天中的测试”返回 `Sorry, my bot code is having an issue` 问题，请查看日志：
 
-1. 在 Azure 门户中，对于机器人，从“机器人管理”部分选择“生成”   。
+1. 在 Azure 门户中，对于机器人，从“机器人管理”部分选择“生成” 。
 1. 打开联机代码编辑器。 
 1. 在顶部的蓝色导航栏中，选择智能机器人名称（从右起的第二项）。
-1. 在生成的下拉列表中，选择“打开 Kudu 控制台”  。
-1. 选择“LogFiles”，然后选择“应用程序”   。 查看所有日志文件。 如果应用程序文件夹中没有错误，请查看“LogFiles”下的所有日志文件  。 
+1. 在生成的下拉列表中，选择“打开 Kudu 控制台”。
+1. 选择“LogFiles”，然后选择“应用程序” 。 查看所有日志文件。 如果应用程序文件夹中没有错误，请查看“LogFiles”下的所有日志文件。 
 1. 如果使用经过编译的语言（如 C#），请记住重新生成项目。
 
 > [!Tip] 
@@ -285,7 +285,7 @@ Get-AzCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Na
 ## <a name="integrating-luis"></a>集成 LUIS
 
 ### <a name="where-is-my-luis-app-created-during-the-azure-web-app-bot-subscription-process"></a>在 Azure Web 应用机器人订阅过程中创建的 LUIS 应用位于何处？
-如果选择一个 LUIS 模板，然后在模板窗格中选择“选择”按钮，  则左侧窗格在更改后会包括模板类型，并询问在什么区域创建 LUIS 模板。 不过，Web 应用机器人过程不会创建 LUIS 订阅。
+如果选择一个 LUIS 模板，然后在模板窗格中选择“选择”按钮，则左侧窗格在更改后会包括模板类型，并询问在什么区域创建 LUIS 模板。 不过，Web 应用机器人过程不会创建 LUIS 订阅。
 
 ![LUIS 模板 Web 应用机器人区域](./media/luis-faq/web-app-bot-location.png)
 
@@ -314,7 +314,7 @@ Get-AzCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Na
 * [V3 API 预览版迁移指南](luis-migration-api-v3.md)
 * [改进的分析仪表板](luis-how-to-use-dashboard.md)
 * [改进的预生成域](luis-reference-prebuilt-domains.md) 
-* [动态列表实体](luis-migration-api-v3.md#dynamic-lists-passed-in-at-prediction-time)
+* [动态列表实体](schema-change-prediction-runtime.md#dynamic-lists-passed-in-at-prediction-time)
 * [外部实体](luis-migration-api-v3.md#external-entities-passed-in-at-prediction-time)
 
 ## <a name="next-steps"></a>后续步骤

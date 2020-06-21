@@ -4,16 +4,16 @@ description: 了解如何转换 Azure Stack Hub 上的 Azure 应用服务使用�
 author: WenJason
 ms.topic: article
 origin.date: 04/09/2020
-ms.date: 05/18/2020
+ms.date: 06/22/2020
 ms.author: v-jay
 ms.reviewer: anwestg
 ms.lastreviewed: 04/09/2020
-ms.openlocfilehash: 13754821fcf0e7d6d04673474b01c5dc437f9da0
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.openlocfilehash: aaa3d3d67abb7322b039f91e84c2100b320246df
+ms.sourcegitcommit: d86e169edf5affd28a1c1a4476d72b01a7fb421d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83422154"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85096498"
 ---
 # <a name="rotate-app-service-on-azure-stack-hub-secrets-and-certificates"></a>轮换 Azure Stack Hub 上的应用服务的机密和证书
 

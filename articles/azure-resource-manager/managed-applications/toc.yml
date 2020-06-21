@@ -23,6 +23,9 @@
       href: powershell-samples.md
     - name: 托管应用程序解决方案
       href: sample-projects.md
+    - name: Azure Policy 内置策略定义
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: 概念
   items:
     - name: 视图定义项目
@@ -41,6 +44,8 @@
           href: test-createuidefinition.md
         - name: 请求实时访问
           href: request-just-in-time-access.md
+        - name: 使用现有虚拟网络
+          href: existing-vnet-integration.md
         - name: 更新托管资源
           href: update-managed-resources.md
         - name: 使用门户发布应用程序定义

@@ -3,17 +3,17 @@ title: 在 Azure Stack Hub 中将 API 版本配置文件与 Node.js 配合使用
 description: 了解如何在 Azure Stack Hub 中将 API 版本配置文件与 Node.js 配合使用。
 author: WenJason
 ms.topic: article
-origin.date: 04/20/2020
-ms.date: 05/18/2020
+origin.date: 04/30/2020
+ms.date: 06/22/2020
 ms.author: v-jay
 ms.reviewer: sijuman
-ms.lastreviewed: 11/11/2019
-ms.openlocfilehash: df0ec61eec74526380cb52a402c38b3dd3d5e779
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.lastreviewed: 04/30/2020
+ms.openlocfilehash: 4ab74c81330ba28a3038d819652c52edf3cfae44
+ms.sourcegitcommit: d86e169edf5affd28a1c1a4476d72b01a7fb421d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83422589"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85096518"
 ---
 # <a name="use-api-version-profiles-with-nodejs-software-development-kit-sdk-in-azure-stack-hub"></a>在 Azure Stack Hub 中将 API 版本配置文件与 Node.js 软件开发工具包 (SDK) 配合使用
 
@@ -210,9 +210,9 @@ function main() {
 
 可以参考以下示例使用 Node.js 和 Azure Stack Hub API 配置文件来创建解决方案。 可从 GitHub 上的以下存储库中获取示例：
 
-- [存储节点资源提供程序入门](https://github.com/sijuman/storage-node-resource-provider-getting-started)
-- [计算节点管理](https://github.com/sijuman/compute-node-manage-vm)
-- [资源管理器节点资源和组](https://github.com/sijuman/resource-manager-node-resources-and-groups)
+- [存储节点资源提供程序入门](https://github.com/Azure-Samples/hybrid-storage-nodejs-create-storageaccount)
+- [计算节点管理](https://github.com/Azure-Samples/Hybrid-compute-nodejs-create-vm)
+- [资源管理器节点资源和组](https://github.com/Azure-Samples/Hybrid-resourcegroups-nodejs-manageresources)
 
 ### <a name="sample-create-storage-account"></a>示例 - 创建存储帐户 
 

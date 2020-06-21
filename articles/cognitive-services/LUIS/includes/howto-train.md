@@ -6,22 +6,20 @@ author: diberry
 manager: nitinme
 ms.custom: include file
 ms.service: cognitive-services
-ms.subservice: luis
+origin.date: 02/14/2020
+ms.subservice: language-understanding
 ms.topic: include
-ms.date: 11/04/2019
-ms.author: diberry
-ms.openlocfilehash: 39ae4b40e26ffd68bf0f4e867d5ad0ba4ecb09ba
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 06/18/2020
+ms.author: v-tawe
+ms.openlocfilehash: 2f5cf6ab20e60a44bb381aa66668c64972e60f45
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74884472"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098355"
 ---
-1. 在 LUIS 网站的右上方，选择“训练”按钮  。 
+1. 在 LUIS 网站的右上方，选择“训练”按钮。
 
     ![“训练”按钮](../media/train-button-preview.png)
 
-2. 当你看到确认成功的状态时，训练已完成。
-
-    > [!Tip]
-    > “通知”  在右上方导航中提供，并包含历史记录。
+1. 当“训练”按钮上的状态指示器为绿色时，即表示训练完成。

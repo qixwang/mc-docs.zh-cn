@@ -3,21 +3,20 @@ title: 对 Application Insights 中的机器学习管道进行调试和故障排
 titleSuffix: Azure Machine Learning
 description: 将日志记录添加到训练和批量评分管道，并在 Application Insights 中查看记录的结果。
 services: machine-learning
-author: aburek
-ms.author: v-yiso
+author: sanpil
+ms.author: sanpil
 ms.service: machine-learning
 ms.subservice: core
 ms.workload: data-services
-ms.topic: conceptual
-origin.date: 01/16/2020
-ms.date: 03/09/2020
-ms.custom: seodec18
-ms.openlocfilehash: 17457ce0b803eb46588a84df2a10aafba4c48ecd
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.topic: how-to
+ms.date: 01/16/2020
+ms.custom: seodec18, tracking-python
+ms.openlocfilehash: f3724767eb7bbae3e46a409af6dcdcb25f84ae1f
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78155349"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097138"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines-in-application-insights"></a>对 Application Insights 中的机器学习管道进行调试和故障排除
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -155,7 +154,7 @@ Application Insights 中的结果将显示日志消息和级别、文件路径�
 
 ### <a name="additional-helpful-queries"></a>其他有用查询
 
-以下某些查询使用“customDimensions.Level”。 这些严重性级别对应于最初发送 Python 日志时所用的级别。 有关其他查询信息，请参阅 [Azure Monitor 日志查询](/azure-monitor/log-query/query-language)。
+以下某些查询使用“customDimensions.Level”。 这些严重性级别对应于最初发送 Python 日志时所用的级别。 有关其他查询信息，请参阅 [Azure Monitor 日志查询](https://docs.microsoft.com/azure/azure-monitor/log-query/query-language)。
 
 | 用例                                                               | 查询                                                                                              |
 |------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------|
@@ -168,4 +167,4 @@ Application Insights 中的结果将显示日志消息和级别、文件路径�
 
 在 Application Insights 实例中启用日志后，可以使用这些日志基于查询结果设置 [Azure Monitor 警报](../azure-monitor/platform/alerts-overview.md#what-you-can-alert-on)。
 
-还可以将查询结果添加到 [Azure 仪表板](/azure-monitor/learn/tutorial-app-dashboards#add-logs-analytics-query)以获取更多见解。
+还可以将查询结果添加到 [Azure 仪表板](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-app-dashboards#add-logs-analytics-query)以获取更多见解。

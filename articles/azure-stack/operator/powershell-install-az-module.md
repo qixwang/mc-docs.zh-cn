@@ -4,16 +4,16 @@ description: 了解如何安装适用于 Azure Stack Hub 的 PowerShell。
 author: WenJason
 ms.topic: article
 origin.date: 04/14/2020
-ms.date: 05/18/2020
+ms.date: 06/22/2020
 ms.author: v-jay
 ms.reviewer: sijuman
 ms.lastreviewed: 04/14/2020
-ms.openlocfilehash: 7d24ab190b36745f407a0264528de09c27e001c9
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.openlocfilehash: 06f82f94c4c4ef5569d62827e1c9357a051efc06
+ms.sourcegitcommit: d86e169edf5affd28a1c1a4476d72b01a7fb421d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83423117"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85096279"
 ---
 # <a name="install-powershell-az-preview-module-for-azure-stack-hub"></a>安装适用于 Azure Stack Hub 的 PowerShell Az 预览版模块
 
@@ -76,7 +76,7 @@ Azure Stack Az 模块将在 Azure Stack Hub 2002 或更高版本上运行。 此
 
 ```powershell  
 Install-Module -Name Az.BootStrapper -Force -AllowPrerelease
-Use-AzProfile -Profile 2019-03-01-hybrid -Force
+Install-AzProfile -Profile 2019-03-01-hybrid -Force
 Install-Module -Name AzureStack -RequiredVersion 2.0.0-preview -AllowPrerelease
 ```
 
@@ -149,7 +149,7 @@ Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v
 
    Set-BootstrapRepo -Repo $RepoName
 
-   Use-AzProfile -Profile '2019-03-01-hybrid' -Force -Scope AllUsers
+   Install-AzProfile -Profile '2019-03-01-hybrid' -Force -Scope AllUsers
 
    Install-Module -Name AzureStack -Repository $RepoName -RequiredVersion 2.0.0-preview -AllowPrerelease -Scope AllUsers
    ```

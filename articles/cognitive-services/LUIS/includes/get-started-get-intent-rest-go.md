@@ -6,16 +6,19 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 11/20/2019
+ms.date: 06/19/2020
+origin.date: 06/03/2020
 ms.author: diberry
-ms.openlocfilehash: 19f22ab3fafc03c5aa02460a693a8e247caa0b15
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 0e2d4301e90215e2d496a34c46da70f8b14c8129
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74982159"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85112072"
 ---
-## <a name="prerequisites"></a>必备条件
+[参考文档](https://dev.cognitive.azure.cn/docs/services/luis-programmatic-apis-v3-0-preview/operations/5890b47c39e2bb052c5b9c08) | [示例](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/go/LUIS/go-rest-predict/predict.go)
+
+## <a name="prerequisites"></a>先决条件
 
 * [Go](https://golang.org/) 编程语言  
 * [Visual Studio Code](https://code.visualstudio.com/)
@@ -86,7 +89,7 @@ ms.locfileid: "74982159"
 1. 请替换以下值：
 
     * 将 `YOUR-KEY` 替换为初学者密钥。
-    * 将 `YOUR-ENDPOINT` 替换为终结点。 例如，`chinaeast2.api.cognitive.azure.cn` 。
+    * 将 `YOUR-ENDPOINT` 替换为终结点。 例如，`chinaeast2.api.cognitive.azure.cn`。
 
 1. 在创建该文件的同一目录中，在命令提示符下输入以下命令来编译 Go 文件：
 

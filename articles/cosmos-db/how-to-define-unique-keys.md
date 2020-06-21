@@ -5,14 +5,15 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 12/02/2019
-ms.date: 02/10/2020
+ms.date: 06/22/2020
 ms.author: v-yeche
-ms.openlocfilehash: faa546955af21cac0a91d15b5c1bf7aa79c277da
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.custom: tracking-python
+ms.openlocfilehash: 72327990b3039f2b7f711ef84f76d4c05c6261af
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "76980518"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098488"
 ---
 # <a name="define-unique-keys-for-an-azure-cosmos-container"></a>为 Azure Cosmos 容器定义唯一键
 
@@ -20,19 +21,19 @@ ms.locfileid: "76980518"
 
 ## <a name="use-the-azure-portal"></a>使用 Azure 门户
 
-1. 登录 [Azure 门户](https://portal.azure.cn/)。
+1. 登录到 [Azure 门户](https://portal.azure.cn/)。
 
 1. [创建新的 Azure Cosmos 帐户](create-sql-api-dotnet.md#create-account)或选择现有帐户。
 
-1. 打开“数据资源管理器”窗格，选择要使用的容器。 
+1. 打开“数据资源管理器”窗格，选择要使用的容器。
 
-1. 单击“新建容器”  。
+1. 单击“新建容器”。
 
-1. 在“添加容器”对话框中，单击“+ 添加唯一键”，添加唯一键条目   。
+1. 在“添加容器”对话框中，单击“+ 添加唯一键”，添加唯一键条目 。
 
 1. 输入唯一键约束的路径
 
-1. 如果需要，可通过单击“+ 添加唯一键”，添加更多唯一键条目 
+1. 如果需要，可通过单击“+ 添加唯一键”，添加更多唯一键条目
 
     ![Azure 门户中唯一键约束条目的屏幕截图](./media/how-to-define-unique-keys/unique-keys-portal.png)
 
@@ -40,7 +41,9 @@ ms.locfileid: "76980518"
 
 要创建具有唯一键的容器，请参阅[创建具有唯一键和 TTL 的 Azure Cosmos 容器](manage-with-powershell.md#create-container-unique-key-ttl)
 
-## <a name="use-the-net-sdk-v2"></a>使用 .NET SDK V2
+## <a name="use-the-net-sdk"></a>使用 .NET SDK
+
+# <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
 
 使用 [.NET SDK v2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/) 创建新的容器时，可使用 `UniqueKeyPolicy` 对象定义唯一键约束。
 
@@ -60,7 +63,7 @@ client.CreateDocumentCollectionAsync(UriFactory.CreateDatabaseUri("database"), n
 });
 ```
 
-## <a name="use-the-net-sdk-v3"></a>使用 .NET SDK V3
+# <a name="net-sdk-v3"></a>[.NET SDK V3](#tab/dotnetv3)
 
 使用 [.NET SDK v3](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) 创建新容器时，请使用 SDK 的 Fluent API 以简洁且可读的方式声明唯一键。
 
@@ -76,6 +79,7 @@ await client.GetDatabase("database").DefineContainer(name: "container", partitio
     .Attach()
     .CreateIfNotExistsAsync();
 ```
+---
 
 ## <a name="use-the-java-sdk"></a>使用 Java SDK
 
@@ -151,5 +155,4 @@ client.CreateContainer('dbs/' + config['DATABASE'], {
 - 了解有关[分区](partition-data.md)的详细信息
 - 探索[索引编制的工作原理](index-overview.md)
 
-<!--Update_Description: wording update, wording update -->
-
+<!-- Update_Description: update meta properties, wording update, update link -->

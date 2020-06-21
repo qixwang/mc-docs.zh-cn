@@ -5,16 +5,16 @@ description: 了解如何创建自定义角色，以避免使用全局管理员�
 author: WenJason
 ms.topic: article
 origin.date: 03/27/2020
-ms.date: 05/18/2020
+ms.date: 06/22/2020
 ms.author: v-jay
 ms.reviewer: rtiberiu
 ms.lastreviewed: 06/10/2019
-ms.openlocfilehash: de5a2dfccb642d83cd7372d20d12975009e3a0c9
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.openlocfilehash: 8f61e15faec61b8685031fa7ac87a6d1130e94ba
+ms.sourcegitcommit: d86e169edf5affd28a1c1a4476d72b01a7fb421d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83422382"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85096525"
 ---
 # <a name="create-a-custom-role-for-azure-stack-hub-registration"></a>为 Azure Stack Hub 注册创建自定义角色
 
@@ -52,7 +52,9 @@ ms.locfileid: "83422382"
         "Microsoft.Authorization/roleAssignments/read",
         "Microsoft.Authorization/roleAssignments/write",
         "Microsoft.Authorization/roleAssignments/delete",
-        "Microsoft.Authorization/permissions/read"
+        "Microsoft.Authorization/permissions/read",
+        "Microsoft.Authorization/locks/read",
+        "Microsoft.Authorization/locks/write
       ],
       "NotActions": [
       ],

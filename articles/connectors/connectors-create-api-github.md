@@ -16,13 +16,15 @@ ms.workload: integration
 origin.date: 03/02/2018
 ms.author: v-yiso
 ms.date: 10/08/2018
-ms.openlocfilehash: 5f10636862d1da804e182e55b0c598a981831487
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: fe2e3dd00835babb1103d1ba270abca9461f01fc
+ms.sourcegitcommit: 4d824957213536e79cf097fd29bd0bd0f8306066
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78304694"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84901931"
 ---
+<!--Not Available on Mooncake-->
+<!--Github connectors is not existist in Azure Portal-->
 # <a name="connect-to-github-from-azure-logic-apps"></a>从 Azure 逻辑应用连接到 GitHub
 
 GitHub 是基于 Web 的 Git 存储库托管服务，它提供 Git 的所有分布式修订控制和源代码管理 (SCM) 功能以及其他功能。
@@ -33,9 +35,9 @@ GitHub 是基于 Web 的 Git 存储库托管服务，它提供 Git 的所有分�
 
 若要在逻辑应用中使用 GitHub 连接器，必须先创建*连接*，然后提供以下属性的详细信息： 
 
-| properties | 必选 | 说明 | 
+| 属性 | 必须 | 说明 | 
 | -------- | -------- | ----------- | 
-| 标记 | 是 | 提供 GitHub 凭据。 |
+| 令牌 | 是 | 提供 GitHub 凭据。 |
 
 创建连接后，可执行操作并侦听触发器，如本文所述。
 

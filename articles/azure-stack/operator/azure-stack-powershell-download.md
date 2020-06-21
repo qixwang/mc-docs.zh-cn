@@ -3,17 +3,17 @@ title: 从 GitHub 下载 Azure Stack Hub 工具
 description: 了解如何下载操作 Azure Stack Hub 时所需的工具。
 author: WenJason
 ms.topic: article
-origin.date: 4/22/2020
-ms.date: 05/18/2020
+origin.date: 6/13/2020
+ms.date: 06/22/2020
 ms.author: v-jay
 ms.reviewer: thoroet
-ms.lastreviewed: 4/22/2020
-ms.openlocfilehash: 03f1b35dc9a253fcc648cf3442125402a66781b5
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.lastreviewed: 6/13/2020
+ms.openlocfilehash: 132d3e7cedc088be032d8056685507b5f9302449
+ms.sourcegitcommit: d86e169edf5affd28a1c1a4476d72b01a7fb421d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83422481"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85096278"
 ---
 # <a name="download-azure-stack-hub-tools-from-github"></a>从 GitHub 下载 Azure Stack Hub 工具
 
@@ -53,18 +53,18 @@ cd AzureStack-Tools-master
 cd \
 
 # Download the tools archive.
-[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12 
 invoke-webrequest `
   https://github.com/Azure/AzureStack-Tools/archive/az.zip `
-  -OutFile az.zip
+  -OutFile master.zip
 
 # Expand the downloaded files.
-expand-archive az.zip `
+expand-archive master.zip `
   -DestinationPath . `
   -Force
 
 # Change to the tools directory.
- cd AzureStack-Tools-az
+cd AzureStack-Tools-az
 
 ```
 

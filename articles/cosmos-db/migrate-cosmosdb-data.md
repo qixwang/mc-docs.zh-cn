@@ -7,13 +7,13 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 origin.date: 10/23/2019
 ms.author: v-yeche
-ms.date: 12/16/2019
-ms.openlocfilehash: 165bd07fb836041fafbad2bc68dc4de83fcc098d
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 06/22/2020
+ms.openlocfilehash: 791b444bbc1c5a61f2f67d7432a44f9741f5805c
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75348507"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098649"
 ---
 # <a name="migrate-hundreds-of-terabytes-of-data-into-azure-cosmos-db"></a>将数百 TB 的数据迁移到 Azure Cosmos DB 
 
@@ -143,5 +143,4 @@ Azure 数据工厂、Azure 数据迁移服务之类的工具正在修复上述�
 
     <!--Not Available on General Advisory-->
     
-<!-- Update_Description: new article about migrate cosmosdb data -->
-<!--NEW.date: 12/09/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

@@ -11,12 +11,12 @@ ms.topic: reference
 origin.date: 10/25/2019
 ms.date: 12/04/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 803c4f20be8458d7758db7c66787e99d2f792669
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: b9969648a7517a0133c946993d357f9b41d1e2ad
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292141"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098279"
 ---
 # <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>对包含常见词汇和概念的术语表进行语言理解
 语言理解 (LUIS) 术语表解释使用 LUIS API 服务时可能遇到的术语。
@@ -92,7 +92,7 @@ LUIS 应用是用于自然语言处理的语言模型的集合，包括[意向](
 
 ## <a name="phrase-list"></a><a name="phrase-list"></a>短语列表
 
-[短语列表](luis-concept-feature.md)包括一组值（词或短语），它们属于同一个类，并且必须以同样的方式处理它们（例如城市或产品名称）。 可互换的列表被视为同义词。
+短语列表包括一组值（词或短语），它们属于同一个类，并且必须同样对待（例如城市或产品名称）。 可互换的列表被视为同义词。
 
 预生成域是为特定域配置的 LUIS 应用，例如家庭自动化 (HomeAutomation) 或餐厅订位 (RestaurantReservation)。 已为此域配置意向、话语和实体。
 

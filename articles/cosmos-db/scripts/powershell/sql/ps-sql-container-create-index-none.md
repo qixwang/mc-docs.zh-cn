@@ -1,21 +1,21 @@
 ---
-title: 用于在 Azure Cosmos 帐户中创建没有索引的容器的 PowerShell 脚本
-description: Azure PowerShell 脚本示例 - 在 Azure Cosmos 帐户中创建一个关闭索引的容器
+title: PowerShell 脚本：在 Azure Cosmos DB 帐户中创建一个索引关闭的容器
+description: Azure PowerShell 脚本示例 - 在 Azure Cosmos DB 帐户中创建一个索引关闭的容器
 author: rockboyfor
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: sample
-origin.date: 05/06/2019
-ms.date: 01/20/2020
+origin.date: 05/13/2020
+ms.date: 06/22/2020
 ms.author: v-yeche
-ms.openlocfilehash: dfae80439e21cb670e2dbe0f99ca4759803dfc44
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 9a13f78f401e91f3ae1847ee629539e256a4058a
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "76270088"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098346"
 ---
-# <a name="create-a-container-indexing-turned-off-in-an-azure-cosmos-account-using-powershell"></a>使用 PowerShell 在 Azure Cosmos 帐户中创建一个关闭索引的容器
+# <a name="create-a-container-with-indexing-turned-off-in-an-azure-cosmos-db-account-using-powershell"></a>使用 PowerShell 在 Azure Cosmos DB 帐户中创建一个索引关闭的容器
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -24,68 +24,43 @@ ms.locfileid: "76270088"
 ## <a name="sample-script"></a>示例脚本
 
 ```powershell
-# Create a SQL API account with a database and a container with dedicated through put and no indexing policy
+# Reference: Az.CosmosDB | https://docs.microsoft.com/powershell/module/az.cosmosdb
+# --------------------------------------------------
+# Purpose
+# Create Cosmos SQL API account, database, and container with dedicated throughput and no indexing policy
+# --------------------------------------------------
+Function New-RandomString{Param ([Int]$Length = 10) return $(-join ((97..122) + (48..57) | Get-Random -Count $Length | ForEach-Object {[char]$_}))}
+# --------------------------------------------------
+$uniqueId = New-RandomString -Length 7 # Random alphanumeric string for unique resource names
+$apiKind = "Sql"
+# --------------------------------------------------
+# Variables - ***** SUBSTITUTE YOUR VALUES *****
+$locations = @("China East", "China North") # Regions ordered by failover priority
+$resourceGroupName = "myResourceGroup" # Resource Group must already exist
+$accountName = "cosmos-$uniqueId" # Must be all lower case
+$consistencyLevel = "Session"
+$tags = @{Tag1 = "MyTag1"; Tag2 = "MyTag2"; Tag3 = "MyTag3"}
+$databaseName = "myDatabase"
+$containerName = "myContainer"
+$containerRUs = 400
+$partitionKeyPath = "/myPartitionKey"
+# --------------------------------------------------
+Write-Host "Creating account $accountName"
+$account = New-AzCosmosDBAccount -ResourceGroupName $resourceGroupName `
+    -Location $locations -Name $accountName -ApiKind $apiKind -Tag $tags `
+    -DefaultConsistencyLevel $consistencyLevel `
+    -EnableAutomaticFailover:$true
 
-#generate a random 10 character alphanumeric string to ensure unique resource names
-$uniqueId=$(-join ((97..122) + (48..57) | Get-Random -Count 10 | % {[char]$_}))
+Write-Host "Creating database $databaseName"
+$database = New-AzCosmosDBSqlDatabase -ParentObject $account -Name $databaseName
 
-$apiVersion = "2015-04-08"
-$location = "China North 2"
-$resourceGroupName = "myResourceGroup"
-$accountName = "mycosmosaccount-$uniqueId" # must be lower case.
-$accountResourceType = "Microsoft.DocumentDb/databaseAccounts"
-$databaseResourceType = "Microsoft.DocumentDb/databaseAccounts/apis/databases"
-$containerResourceType = "Microsoft.DocumentDb/databaseAccounts/apis/databases/containers"
-$databaseName = "database1"
-$containerName = "container1"
-$databaseResourceName = $accountName + "/sql/" + $databaseName
-$containerResourceName = $accountName + "/sql/" + $databaseName + "/" + $containerName
+$indexingPolicy = New-AzCosmosDBSqlIndexingPolicy -IndexingMode None
 
-$locations = @(
-    @{ "locationName"="China North 2"; "failoverPriority"=0 },
-    @{ "locationName"="China East 2"; "failoverPriority"=1 }
-)
-
-$consistencyPolicy = @{
-    "defaultConsistencyLevel"="Session";
-}
-
-$accountProperties = @{
-    "databaseAccountOfferType"="Standard";
-    "locations"=$locations;
-    "consistencyPolicy"=$consistencyPolicy;
-    "enableMultipleWriteLocations"="false"
-}
-
-New-AzResource -ResourceType $accountResourceType -ApiVersion $apiVersion `
-    -ResourceGroupName $resourceGroupName -Location $location `
-    -Name $accountName -PropertyObject $accountProperties
-
-#Database
-$databaseProperties = @{
-    "resource"=@{ "id"=$databaseName }
-} 
-New-AzResource -ResourceType $databaseResourceType `
-    -ApiVersion $apiVersion -ResourceGroupName $resourceGroupName `
-    -Name $databaseResourceName -PropertyObject $databaseProperties
-
-$containerProperties = @{
-    "resource"=@{
-        "id"=$containerName; 
-        "partitionKey"=@{
-            "paths"=@("/myPartitionKey"); 
-            "kind"="Hash"
-        }; 
-        "indexingPolicy"=@{
-            "indexingMode"="none"
-        }
-    };
-    "options"=@{ "Throughput"= 400 }
-} 
-
-New-AzResource -ResourceType $containerResourceType `
-    -ApiVersion $apiVersion -ResourceGroupName $resourceGroupName `
-    -Name $containerResourceName -PropertyObject $containerProperties
+Write-Host "Creating container $containerName"
+$container = New-AzCosmosDBSqlContainer `
+    -ParentObject $database -Name $containerName `
+    -Throughput $containerRUs -IndexingPolicy $indexingPolicy `
+    -PartitionKeyKind Hash -PartitionKeyPath $partitionKeyPath
 
 ```
 
@@ -103,8 +78,11 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 
 | Command | 说明 |
 |---|---|
-|**Azure 资源**| |
-| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | 创建资源。 |
+|**Azure Cosmos DB**| |
+| [New-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbaccount) | 创建 Cosmos DB 帐户。 |
+| [New-AzCosmosDBSqlDatabase](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbsqldatabase) | 创建 Cosmos DB SQL 数据库。 |
+| [New-AzCosmosDBSqlIndexingPolicy](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbsqlindexingpolicy) | 创建一个 PSSqlIndexingPolicy 对象，用作 New-AzCosmosDBSqlContainer 的参数。 |
+| [New-AzCosmosDBSqlContainer](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbsqlcontainer) | 创建 Cosmos DB SQL 容器。 |
 |**Azure 资源组**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | 删除资源组，包括所有嵌套的资源。 |
 |||

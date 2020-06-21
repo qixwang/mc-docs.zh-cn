@@ -8,13 +8,14 @@ ms.workload: infrastructure
 origin.date: 03/10/2020
 ms.date: 06/08/2020
 ms.author: v-yeche
-ms.openlocfilehash: a298a2ce5756d86144e8fe59d4746d71511ce7e5
-ms.sourcegitcommit: 8a2fbc0eae8d8f7297f5334f508ff868b4077f32
+ms.openlocfilehash: 29059eaf273162717989ba6acde693b967dc4b2b
+ms.sourcegitcommit: 4d824957213536e79cf097fd29bd0bd0f8306066
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84326258"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84901930"
 ---
+<!--Verified successfully from Peter Gu's session-->
 # <a name="deploy-vms-to-dedicated-hosts-using-the-portal"></a>使用门户将 VM 部署到专用主机
 
 本文介绍了如何创建 Azure [专用主机](dedicated-hosts.md)来托管虚拟机 (VM)。 

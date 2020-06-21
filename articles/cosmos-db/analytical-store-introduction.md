@@ -5,14 +5,14 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 05/19/2020
-ms.date: 06/08/2020
+ms.date: 06/22/2020
 ms.author: v-yeche
-ms.openlocfilehash: 5d42a0e6ea2e70a0af151563ed685ed3ff525876
-ms.sourcegitcommit: 8a2fbc0eae8d8f7297f5334f508ff868b4077f32
+ms.openlocfilehash: a81fa8236d7f1af3502492e9a8086799a68a9912
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84326273"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098674"
 ---
 <!--Verified successfully-->
 # <a name="what-is-azure-cosmos-db-analytical-store-preview"></a>Azure Cosmos DB 分析存储（预览版）是什么？
@@ -179,5 +179,4 @@ Azure Cosmos DB 事务性存储架构不可知，因此你能够迭代事务性�
 
 * [Azure Synapse Link for Azure Cosmos DB 用例](synapse-link-use-cases.md)
 
-<!-- Update_Description: new article about analytical store introduction -->
-<!--NEW.date: 06/08/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

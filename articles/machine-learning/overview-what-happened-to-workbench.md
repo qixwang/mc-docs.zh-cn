@@ -5,18 +5,17 @@ description: 了解如何克服没有 Workbench 应用程序的局面，以及 W
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: overview
+ms.topic: how-to
 ms.reviewer: jmartens
 author: j-martens
 ms.author: jmartens
-ms.date: 11/05/2019
-ms.custom: seodec18
-ms.openlocfilehash: 8cec9702d4ec74481528af1986ac6c3f46143911
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 03/05/2020
+ms.openlocfilehash: fca0687469e3ae9ec28cab8739e498da6790cfd7
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80343215"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097428"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Azure Machine Learning Workbench 有何遭遇？
 

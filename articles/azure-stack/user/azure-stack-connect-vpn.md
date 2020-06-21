@@ -8,12 +8,12 @@ ms.date: 05/18/2020
 ms.author: v-jay
 ms.reviewer: scottnap
 ms.lastreviewed: 10/24/2019
-ms.openlocfilehash: ace0de2d483399bc283b712e76a26df4acb47372
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.openlocfilehash: 3365b3bd2762d12cca4c6141db4228951d884911
+ms.sourcegitcommit: d86e169edf5affd28a1c1a4476d72b01a7fb421d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83422458"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85096324"
 ---
 # <a name="connect-azure-stack-hub-to-azure-using-vpn"></a>使用 VPN 将 Azure Stack Hub 连接到 Azure
 
@@ -30,7 +30,7 @@ ms.locfileid: "83422458"
 
 下图显示了完成后的连接配置示意图：
 
-![站点到站点 VPN 连接配置](media/azure-stack-connect-vpn/image2.png)
+![站点到站点 VPN 连接配置](media/azure-stack-connect-vpn/azure-stack-connect-vpn-image2.svg)
 
 ### <a name="network-configuration-example-values"></a>网络配置示例值
 
@@ -51,7 +51,6 @@ ms.locfileid: "83422458"
 ### <a name="create-the-virtual-network-and-virtual-machine-vm-subnet"></a>创建虚拟网络和虚拟机 (VM) 子网
 
 1. 使用 Azure 帐户登录到 [Azure 门户](https://portal.azure.cn/)。
-
 2. 在用户门户中，选择“+ 创建资源”。
 3. 转到**市场**，然后选择“网络”。
 4. 选择“虚拟网络”。

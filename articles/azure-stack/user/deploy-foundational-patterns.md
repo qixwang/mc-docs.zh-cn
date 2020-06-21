@@ -4,16 +4,16 @@ description: 了解如何部署 Azure Stack Hub 的基础模式。
 author: WenJason
 ms.topic: how-to
 origin.date: 04/20/2020
-ms.date: 05/18/2020
+ms.date: 06/22/2020
 ms.author: v-jay
 ms.reviewer: sijuman
 ms.lastreviewed: 11/06/2019
-ms.openlocfilehash: cff17d3d9c7d8e99023fb520ce28d87f2855e650
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.openlocfilehash: 8810677bd0a28a005ead71e295268a8f26920b5f
+ms.sourcegitcommit: d86e169edf5affd28a1c1a4476d72b01a7fb421d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83422578"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85096293"
 ---
 # <a name="deploy-foundational-patterns-overview"></a>部署基础模式的概述
 
@@ -64,4 +64,4 @@ ms.locfileid: "83422578"
 
 ## <a name="next-steps"></a>后续步骤
 
-[Azure 混合模式和解决方案文档](/azure-stack/hybrid/)
+[Azure 混合模式和解决方案文档](\hybrid\app-solutions)

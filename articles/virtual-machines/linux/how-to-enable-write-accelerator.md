@@ -1,21 +1,21 @@
 ---
 title: Azure 写入加速器 | Azure
 description: 有关如何启用和使用写入加速器的文档
-author: rockboyfor
-manager: digimobile
+author: Johnnytechn
+manager: markkie
 ms.service: virtual-machines
-ms.topic: article
+ms.topic: how-to
 ms.workload: infrastructure
 origin.date: 02/20/2019
-ms.date: 10/14/2019
-ms.author: v-yeche
+ms.date: 06/17/2020
+ms.author: v-johya
 ms.subservice: disks
-ms.openlocfilehash: 459c601ae8ec8932de6f132bd5dd2262f481eda0
-ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
+ms.openlocfilehash: b358abafbab4236b08f7461c62e47ff4100a5355
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83392240"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097499"
 ---
 # <a name="enable-write-accelerator"></a>启用写入加速器
 [!INCLUDE [how-to-enable-write-accelerator](../../../includes/virtual-machines-common-how-to-enable-write-accelerator.md)]

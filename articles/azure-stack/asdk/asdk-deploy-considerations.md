@@ -4,16 +4,16 @@ description: 了解 Azure Stack 开发工具包 (ASDK) 的硬件、软件和环�
 author: WenJason
 ms.topic: article
 origin.date: 05/13/2019
-ms.date: 05/18/2020
+ms.date: 06/22/2020
 ms.author: v-jay
 ms.reviewer: misainat
 ms.lastreviewed: 05/13/2019
-ms.openlocfilehash: e88190ad612fc79465b5a933d77e481005adfc3a
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.openlocfilehash: d15151816a334c131c3753e67efff5650e90d1fb
+ms.sourcegitcommit: d86e169edf5affd28a1c1a4476d72b01a7fb421d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83422421"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85096259"
 ---
 # <a name="asdk-requirements-and-considerations"></a>ASDK 要求和注意事项
 
@@ -29,7 +29,9 @@ ms.locfileid: "83422421"
 | 计算：内存 |192-GB RAM。 |256-GB RAM。 |
 | 计算：BIOS |Hyper-V 已启用（提供 SLAT 支持）。 |Hyper-V 已启用（提供 SLAT 支持）。 |
 | 网络：NIC |Windows Server 2012 R2 认知。 不要求使用专用功能。 | Windows Server 2012 R2 认知。 不要求使用专用功能。 |
-| 硬件徽标认证 |[针对 Windows Server 2012 R2 的认证](https://windowsservercatalog.com/results.aspx?&chtext=&cstext=&csttext=&chbtext=&bCatID=1333&cpID=0&avc=79&ava=0&avq=0&OR=1&PGS=25&ready=0)。 |[Windows Server 2016 认证](https://windowsservercatalog.com/results.aspx?&chtext=&cstext=&csttext=&chbtext=&bCatID=1333&cpID=0&avc=79&ava=0&avq=0&OR=1&PGS=25&ready=0)。 |
+| 硬件徽标认证 |[针对 Windows Server 2012 R2 的认证](https://www.windowsservercatalog.com/content.aspx?ctf=logo.htm)。 
+|[Windows Server 2016 认证](https://www.windowsservercatalog.com/content.aspx?ctf=logo.htm)。 
+|
 
 <sup>*</sup>如果计划从 Azure 添加多个[市场项](../operator/azure-stack-create-and-publish-marketplace-item.md)，则需要的容量比这个建议的容量要大。
 
@@ -94,7 +96,7 @@ ASDK 是一种单节点系统，设计用于验证 Azure Stack 集成系统的�
 ### <a name="azure-active-directory-accounts"></a>Azure Active Directory 帐户
 若要使用 Azure AD 帐户来部署 Azure Stack，必须先准备 Azure AD 帐户，然后再运行 PowerShell 部署脚本。 此帐户成为 Azure AD 租户的全局管理员。 对于所有与 Azure AD 和图形 API 交互的 Azure Stack 服务，可以使用它来预配和委托应用和服务主体。 也可将它用作默认提供商订阅（可以稍后更改）的所有者。 可以使用此帐户登录到 Azure Stack 系统的管理员门户。
 
-1. 创建一个 Azure AD 帐户，该帐户是至少一个 Azure AD 的目录管理员。 如果已经有一个这样的帐户，则可以使用该帐户。 否则，可以通过 [https://www.azure.cn/pricing/1rmb-trial/](https://www.azure.cn/pricing/1rmb-trial/) 创建一个试用帐户。 如果打算以后[将 Azure Stack 注册到 Azure](asdk-register.md)，则还必须在这个新创建的帐户中有一个订阅。
+1. 创建一个 Azure AD 帐户，该帐户是至少一个 Azure AD 的目录管理员。 如果已经有一个这样的帐户，则可以使用该帐户。 否则，可以通过 [https://go.microsoft.com/fwlink/?LinkID=717821](https://go.microsoft.com/fwlink/?LinkID=717821) 创建一个试用帐户。 如果打算以后[将 Azure Stack 注册到 Azure](asdk-register.md)，则还必须在这个新创建的帐户中有一个订阅。
    
     保存这些以服务管理员身份使用的凭据。此帐户可以配置和管理资源云、用户帐户、租户计划、配额和定价。 在门户中，该帐户可以创建网站云和 VM 私有云、创建计划，以及管理用户订阅。
 1. 在 Azure AD 中至少创建一个测试用户帐户，以便以租户身份登录到 ASDK。

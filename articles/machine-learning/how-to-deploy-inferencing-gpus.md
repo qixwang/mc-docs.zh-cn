@@ -5,17 +5,18 @@ description: 本文介绍如何使用 Azure 机器学习将启用 GPU 的 Tensor
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: vaidyas
 author: csteegz
 ms.reviewer: larryfr
-ms.date: 10/25/2019
-ms.openlocfilehash: bbc94c222fd1c3833d36b57f052acd2730b22ed9
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 03/05/2020
+ms.custom: tracking-python
+ms.openlocfilehash: d550b2af1a5a119a2a344874caca5e1159046931
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78850235"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097537"
 ---
 # <a name="deploy-a-deep-learning-model-for-inference-with-gpu"></a>使用 GPU 为推理部署深度学习模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -25,7 +26,7 @@ ms.locfileid: "78850235"
 推理（模型评分）是使用部署的模型进行预测的阶段。 使用 GPU 代替 CPU 可为高度并行化的计算提供性能优势。
 
 > [!IMPORTANT]
-> 对于 Web 服务部署，只有 Azure Kubernetes 服务支持 GPU 推理。 对于使用机器学习管道进行的推理，只有 Azure 机器学习计算支持 GPU  。 有关使用机器学习管道的详细信息，请参阅[运行批量预测](how-to-use-parallel-run-step.md)。 
+> 对于 Web 服务部署，只有 Azure Kubernetes 服务支持 GPU 推理。 对于使用机器学习管道进行的推理，只有 Azure 机器学习计算支持 GPU。 有关使用机器学习管道的详细信息，请参阅[运行批量预测](how-to-use-parallel-run-step.md)。 
 
 > [!TIP]
 > 尽管本文中的代码片段使用了 TensorFlow 模型，但你可以将这些信息应用于任何支持 GPU 的机器学习框架。
@@ -33,7 +34,7 @@ ms.locfileid: "78850235"
 > [!NOTE]
 > 本文中的信息基于[如何部署到 Azure Kubernetes 服务](how-to-deploy-azure-kubernetes-service.md)一文中的信息。 那篇文章总体上说的是在 AKS 上部署，本文介绍的是特定于 GPU 的部署。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * Azure 机器学习工作区。 有关详细信息，请参阅[创建 Azure 机器学习工作区](how-to-manage-workspace.md)。
 
@@ -63,7 +64,7 @@ ws = Workspace.from_config()
 
 ## <a name="create-a-kubernetes-cluster-with-gpus"></a>使用 GPU 创建 Kubernetes 群集
 
-Azure Kubernetes 服务提供了许多不同的 GPU 选项。 可以将其中任何一个用于模型推理。 若要全面了解其功能和成本，请参阅 [N 系列 VM 列表](https://www.azure.cn/pricing/details/virtual-machines/linux/#n-series)。
+Azure Kubernetes 服务提供了许多不同的 GPU 选项。 可以将其中任何一个用于模型推理。 若要全面了解其功能和成本，请参阅 [N 系列 VM 列表](https://azure.microsoft.com/pricing/details/virtual-machines/linux/#n-series)。
 
 以下代码演示如何为工作区创建新的 AKS 群集：
 
@@ -172,7 +173,7 @@ gpu_aks_config = AksWebservice.deploy_configuration(autoscale_enabled=False,
                                                     memory_gb=4)
 ```
 
-有关详细信息，请参阅 [AksService.deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py#deploy-configuration-autoscale-enabled-none--autoscale-min-replicas-none--autoscale-max-replicas-none--autoscale-refresh-seconds-none--autoscale-target-utilization-none--collect-model-data-none--auth-enabled-none--cpu-cores-none--memory-gb-none--enable-app-insights-none--scoring-timeout-ms-none--replica-max-concurrent-requests-none--max-request-wait-time-none--num-replicas-none--primary-key-none--secondary-key-none--tags-none--properties-none--description-none--gpu-cores-none--period-seconds-none--initial-delay-seconds-none--timeout-seconds-none--success-threshold-none--failure-threshold-none--namespace-none--token-auth-enabled-none--compute-target-name-none-) 的参考文档。
+有关详细信息，请参阅 [AksService.deploy_configuration](/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py#deploy-configuration-autoscale-enabled-none--autoscale-min-replicas-none--autoscale-max-replicas-none--autoscale-refresh-seconds-none--autoscale-target-utilization-none--collect-model-data-none--auth-enabled-none--cpu-cores-none--memory-gb-none--enable-app-insights-none--scoring-timeout-ms-none--replica-max-concurrent-requests-none--max-request-wait-time-none--num-replicas-none--primary-key-none--secondary-key-none--tags-none--properties-none--description-none--gpu-cores-none--period-seconds-none--initial-delay-seconds-none--timeout-seconds-none--success-threshold-none--failure-threshold-none--namespace-none--token-auth-enabled-none--compute-target-name-none-) 的参考文档。
 
 ## <a name="define-the-inference-configuration"></a>定义推理配置
 
@@ -289,6 +290,6 @@ aks_target.delete()
 
 ## <a name="next-steps"></a>后续步骤
 
-
+* [在 FPGA 上部署模型](how-to-deploy-fpga-web-service.md)
 * [用 ONNX 部署模型](concept-onnx.md#deploy-onnx-models-in-azure)
 * [训练 Tensorflow DNN 模型](how-to-train-tensorflow.md)

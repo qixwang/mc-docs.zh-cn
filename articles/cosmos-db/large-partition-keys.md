@@ -5,14 +5,14 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 09/28/2019
-ms.date: 02/10/2020
+ms.date: 06/22/2020
 ms.author: v-yeche
-ms.openlocfilehash: d025abc19f818d931e1f8f22376c676fbb9c8ce4
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: cebe95497fef96ce240049ec53125425e4ac3775
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "76980440"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098563"
 ---
 # <a name="create-containers-with-large-partition-key"></a>使用大分区键创建容器
 
@@ -22,7 +22,7 @@ Azure Cosmos DB 使用基于哈希的分区方案实现数据的水平缩放。 
 
 ## <a name="create-a-large-partition-key-azure-portal"></a>创建大分区键（Azure 门户）
 
-若要在使用 Azure 门户创建新容器时创建大分区键，请选中“我的分区键大于 100 字节”选项。  如果不需要大分区键，或者应用程序在 1.18 之前的 SDK 版本上运行，请取消选中该复选框。
+若要在使用 Azure 门户创建新容器时创建大分区键，请选中“我的分区键大于 100 字节”选项。 如果不需要大分区键，或者应用程序在 1.18 之前的 SDK 版本上运行，请取消选中该复选框。
 
 ![使用 Azure 门户创建大分区键](./media/large-partition-keys/large-partition-key-with-portal.png)
 
@@ -36,7 +36,7 @@ Azure Cosmos DB 使用基于哈希的分区方案实现数据的水平缩放。 
 
 若要使用 .NET SDK 创建具有大分区键的容器，请指定 `PartitionKeyDefinitionVersion.V2` 属性。 以下示例说明如何在 PartitionKeyDefinition 对象中指定 Version 属性，以及如何将其设置为 PartitionKeyDefinitionVersion.V2。
 
-### <a name="v3-net-sdk"></a>v3 .NET SDK
+# <a name="net-sdk-v3"></a>[.NET SDK V3](#tab/dotnetv3)
 
 ```csharp
 await database.CreateContainerAsync(
@@ -46,7 +46,7 @@ await database.CreateContainerAsync(
     })
 ```
 
-### <a name="v2-net-sdk"></a>v2 .NET SDK
+# <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
 
 ```csharp
 DocumentCollection collection = await newClient.CreateDocumentCollectionAsync(
@@ -62,6 +62,7 @@ database,
          },
       new RequestOptions { OfferThroughput = 400 });
 ```
+---
 
 ## <a name="supported-sdk-versions"></a>支持的 SDK 版本
 
@@ -73,7 +74,7 @@ database,
 |Java 同步     |   2.4.0      |
 |Java 异步   |  2.5.0        |
 | REST API | 使用 `x-ms-version` 请求标头时版本高于 `2017-05-03`。|
-| 资源管理器模板 | 版本 2（通过使用 `partitionKey` 对象中的 `"version":2` 属性）。 |
+| Resource Manager 模板 | 版本 2（通过使用 `partitionKey` 对象中的 `"version":2` 属性）。 |
 
 目前不能在 Power BI 和 Azure Logic Apps 中将容器与大分区键配合使用。 在这些应用程序中，可以在没有大分区键的情况下使用容器。
 
@@ -84,5 +85,4 @@ database,
 * [在容器和数据库上预配吞吐量](set-throughput.md)
 * [使用 Azure Cosmos 帐户](account-overview.md)
 
-<!--Update_Description: wording update -->
-
+<!-- Update_Description: update meta properties, wording update, update link -->

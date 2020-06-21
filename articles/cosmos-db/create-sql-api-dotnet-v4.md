@@ -6,22 +6,22 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
-origin.date: 01/10/2020
-ms.date: 04/27/2020
+origin.date: 05/11/2020
+ms.date: 06/22/2020
 ms.author: v-yeche
-ms.openlocfilehash: c347b6ce719bbb9b2aa10c6894f250d74e21f927
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.openlocfilehash: 6746c8dbdc200bfd63cd6e0466c4651af54d062a
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82134956"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098655"
 ---
 # <a name="quickstart-build-a-console-app-using-the-net-v4-sdk-to-manage-azure-cosmos-db-sql-api-account-resources"></a>快速入门：使用 .NET V4 SDK 生成控制台应用以管理 Azure Cosmos DB SQL API 帐户资源。
 
 > [!div class="op_single_selector"]
 > * [.NET V3](create-sql-api-dotnet.md)
 > * [.NET V4](create-sql-api-dotnet-V4.md)
-> * [Java](create-sql-api-java.md)
+> * [Java SDK v4](create-sql-api-java.md)
 > * [Node.js](create-sql-api-nodejs.md)
 > * [Python](create-sql-api-python.md)
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
@@ -57,7 +57,6 @@ Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服�
 如果你有自己的 Azure 订阅或者免费创建了订阅，则应显式创建 Azure Cosmos 帐户。 以下代码将创建具有会话一致性的 Azure Cosmos 帐户。 该帐户在 `China East` 和 `China North` 中复制。  
 
 <!--Not Available on Azure Cloud Shell-->
-
 <!--CORRECT ON globlly unique-->
 
 Azure Cosmos 帐户名必须是全局唯一的，请确保在运行该命令之前更新 `mysqlapicosmosdb` 值。
@@ -133,11 +132,11 @@ Time Elapsed 00:00:34.17
 
 此示例应用程序需对 Azure Cosmos 帐户进行身份验证。 为了进行身份验证，应将 Azure Cosmos 帐户凭据传递给应用程序。 按照以下步骤获取 Azure Cosmos 帐户凭据：
 
-1. 登录到 [Azure 门户](https://portal.azure.cn/)。
+1. 登录 [Azure 门户](https://portal.azure.cn/)。
 
 1. 导航到 Azure Cosmos 帐户。
 
-1. 打开“键”窗格，复制帐户的 URI 和主键    。 下一步需将 URI 和键值添加到某个环境变量。
+1. 打开“键”窗格，复制帐户的 URI 和主键  。 下一步需将 URI 和键值添加到某个环境变量。
 
 <a name="object-model"></a>
 ## <a name="object-model"></a>对象模型

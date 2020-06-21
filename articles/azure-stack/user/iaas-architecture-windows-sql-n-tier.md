@@ -4,16 +4,16 @@ description: 了解如何在 Azure Stack Hub 上运行使用 SQL Server 的 Wind
 author: WenJason
 ms.topic: how-to
 origin.date: 04/20/2020
-ms.dtae: 05/18/2020
+ms.dtae: 06/22/2020
 ms.author: v-jay
 ms.reviewer: kivenkat
 ms.lastreviewed: 11/01/2019
-ms.openlocfilehash: f4d775d7e357a7e9314cca657ff82bcc4d8b78f5
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.openlocfilehash: a4d5ddbb17e5f2e62fa4b16ea71169008d2840cc
+ms.sourcegitcommit: d86e169edf5affd28a1c1a4476d72b01a7fb421d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83422012"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85096344"
 ---
 # <a name="windows-n-tier-application-on-azure-stack-hub-with-sql-server"></a>Azure Stack Hub 上使用 SQL Server 的 Windows N 层应用程序
 
@@ -81,7 +81,7 @@ ms.locfileid: "83422012"
 
 不要将 VM 直接向 Internet 公开，而是改为给每个 VM 提供专用 IP 地址。 客户端使用与第 7 层负载均衡器相关联的公共 IP 地址进行连接。
 
-定义用于将网络流量定向到 VM 的负载均衡器规则。 例如，若要启用 HTTP 流量，请将前端配置中的端口 80 映射到后端地址池上的端口 80。 当客户端将 HTTP 请求发送到端口 80 时，负载均衡器会通过使用包括源 IP 地址的[哈希算法](/load-balancer/concepts-limitations#load-balancer-concepts)选择后端 IP 地址。 客户端请求将在后端地址池中的所有 VM 之间分配。
+定义用于将网络流量定向到 VM 的负载均衡器规则。 例如，若要启用 HTTP 流量，请将前端配置中的端口 80 映射到后端地址池上的端口 80。 当客户端将 HTTP 请求发送到端口 80 时，负载均衡器会通过使用包括源 IP 地址的[哈希算法](/load-balancer/concepts#limitations)选择后端 IP 地址。 客户端请求将在后端地址池中的所有 VM 之间分配。
 
 ### <a name="network-security-groups"></a>网络安全组
 

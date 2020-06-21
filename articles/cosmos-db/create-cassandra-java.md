@@ -6,28 +6,30 @@ author: rockboyfor
 ms.subservice: cosmosdb-cassandra
 ms.devlang: java
 ms.topic: quickstart
-origin.date: 09/24/2018
-ms.date: 04/27/2020
+origin.date: 05/18/2020
+ms.date: 06/22/2020
 ms.author: v-yeche
 ms.custom: seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: af8fb53943975449bf3106e2db8bb5d7c67295e3
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.openlocfilehash: 1cccd252cc68018692ebc4ecc3023521da8ab453
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82134509"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098690"
 ---
 <!--Verify sucessfully-->
-# <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-cassandra-api-data"></a>快速入门：生成 Java 应用以管理 Azure Cosmos DB Cassandra API 数据
+# <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-cassandra-api-data-v3-driver"></a>快速入门：生成 Java 应用以管理 Azure Cosmos DB Cassandra API 数据（v3 驱动程序）
 
 > [!div class="op_single_selector"]
 > * [.NET](create-cassandra-dotnet.md)
-> * [Java](create-cassandra-java.md)
+> * [.NET Core](create-cassandra-dotnet-core.md)
+> * [Java v3](create-cassandra-java.md)
+> * [Java v4](create-cassandra-java-v4.md)
 > * [Node.js](create-cassandra-nodejs.md)
 > * [Python](create-cassandra-python.md)
 >  
 
-在本快速入门中，你将创建一个 Azure Cosmos DB Cassandra API 帐户，并使用从 GitHub 克隆的 Cassandra Java 应用创建一个 Cassandra 数据库和一个容器。 Azure Cosmos DB 是一种多模型数据库服务，可让你通过多区域分布和水平缩放功能快速创建和查询文档、表、键/值和图数据库。
+在本快速入门中，你将创建一个 Azure Cosmos DB Cassandra API 帐户，并使用从 GitHub 克隆的 Cassandra Java 应用通过 Java 的 [v3.x Apache Cassandra 驱动程序](https://github.com/datastax/java-driver/tree/3.x)创建一个 Cassandra 数据库和一个容器。 Azure Cosmos DB 是一种多模型数据库服务，可让你通过多区域分布和水平缩放功能快速创建和查询文档、表、键/值和图数据库。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -69,7 +71,7 @@ ms.locfileid: "82134509"
 
 ## <a name="review-the-code"></a>查看代码
 
-此步骤是可选的。 如果有意了解如何通过代码创建数据库资源，可以查看以下代码片段。 否则，可以直接跳转到[更新连接字符串](#update-your-connection-string)。 这些代码片段全部摘自 src/main/java/com/azure/cosmosdb/cassandra/util/CassandraUtils.java  文件。  
+此步骤是可选的。 如果有意了解如何通过代码创建数据库资源，可以查看以下代码片段。 否则，可以直接跳转到[更新连接字符串](#update-your-connection-string)。 这些代码片段全部摘自 src/main/java/com/azure/cosmosdb/cassandra/util/CassandraUtils.java 文件。  
 
 * 已设置 Cassandra 主机、端口、用户名、密码和 TLS/SSL 选项。 连接字符串信息来自 Azure 门户中的连接字符串页。
 
@@ -83,7 +85,7 @@ ms.locfileid: "82134509"
     return cluster.connect();
     ```
 
-    以下代码片段来自 src/main/java/com/azure/cosmosdb/cassandra/repository/UserRepository.java  文件。
+    以下代码片段来自 src/main/java/com/azure/cosmosdb/cassandra/repository/UserRepository.java 文件。
 
 * 创建新密钥空间。
 
@@ -147,29 +149,29 @@ ms.locfileid: "82134509"
 
 现在返回到 Azure 门户，获取连接字符串信息，并将其复制到应用。 连接字符串详细信息使应用能够与托管数据库进行通信。
 
-1. 在 [Azure 门户](https://portal.azure.cn/)的 Azure Cosmos DB 帐户中，选择“连接字符串”  。 
+1. 在 [Azure 门户](https://portal.azure.cn/)的 Azure Cosmos DB 帐户中，选择“连接字符串”。 
 
     ![在 Azure 门户的“连接字符串”页面中查看并复制用户名](./media/create-cassandra-java/copy-username-connection-string-azure-portal.png)
 
 2. 使用 ![“复制”按钮](./media/create-cassandra-java/copy-button-azure-portal.png) 复制“联系点”值。
 
-3. 打开 C:\git-samples\azure-cosmosdb-cassandra-java-getting-started\java-examples\src\main\resources  文件夹中的 config.properties  文件。 
+3. 打开 C:\git-samples\azure-cosmosdb-cassandra-java-getting-started\java-examples\src\main\resources 文件夹中的 config.properties 文件。 
 
 3. 粘贴门户中的“联系点”值，并覆盖第 2 行中的 `<Cassandra endpoint host>`。
 
-    config.properties  的第 2 行现在应类似于 
+    config.properties 的第 2 行现在应类似于 
 
     `cassandra_host=cosmos-db-quickstart.cassandra.cosmos.azure.cn`
 
 3. 返回到门户，并复制“用户名”值。 粘贴门户中的“用户名”值，并覆盖第 4 行中的 `<cassandra endpoint username>`。
 
-    config.properties  的第 4 行现在应类似于 
+    config.properties 的第 4 行现在应类似于 
 
     `cassandra_username=cosmos-db-quickstart`
 
 4. 返回到门户，并复制“密码”值。 粘贴门户中的“密码”值，并覆盖第 5 行中的 `<cassandra endpoint password>`。
 
-    config.properties  的第 5 行现在应类似于 
+    config.properties 的第 5 行现在应类似于 
 
     `cassandra_password=2Ggkr662ifxz2Mg...==`
 
@@ -177,7 +179,7 @@ ms.locfileid: "82134509"
 
 6. 如果将第 6 行更改为使用特定的 TLS/SSL 证书，请将第 7 行更新为对该证书使用密码。 
 
-7. 保存 config.properties  文件。
+7. 保存 config.properties 文件。
 
 ## <a name="run-the-java-app"></a>运行 Java 应用
 
@@ -203,7 +205,7 @@ ms.locfileid: "82134509"
 
     按 Ctrl+C 停止执行程序并关闭控制台窗口。
 
-4. 在 Azure 门户中，打开数据资源管理器  ，以查询、修改和处理这些新数据。 
+4. 在 Azure 门户中，打开数据资源管理器，以查询、修改和处理这些新数据。 
 
     ![在数据资源管理器中查看数据 - Azure Cosmos DB](./media/create-cassandra-java/view-data-explorer-java-app.png)
 

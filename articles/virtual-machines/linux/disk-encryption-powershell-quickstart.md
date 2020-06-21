@@ -1,18 +1,19 @@
 ---
 title: 使用 Azure Powershell 创建和加密 Linux VM
 description: 本快速入门介绍如何使用 Azure Powershell 创建和加密 Linux 虚拟机
-author: rockboyfor
-ms.author: v-yeche
-ms.service: security
+author: Johnnytechn
+ms.author: v-johya
+ms.service: virtual-machines-linux
+ms.subservice: security
 ms.topic: quickstart
 origin.date: 05/17/2019
-ms.date: 11/11/2019
-ms.openlocfilehash: 5c905083164889a6afa9f7d8f4d79db9e711fc00
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 06/17/2020
+ms.openlocfilehash: ce3bd76f0d94fa3d1e9d56b331ff9940ce7f8e48
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "73730616"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097010"
 ---
 <!--Verified successfully-->
 # <a name="quickstart-create-and-encrypt-a-linux-vm-in-azure-with-azure-powershell"></a>快速入门：在 Azure 中使用 Azure PowerShell 创建和加密 Linux VM
@@ -25,7 +26,7 @@ Azure PowerShell 模块用于从 PowerShell 命令行或脚本创建和管理 Az
 
 使用 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) 创建 Azure 资源组。 资源组是在其中部署和管理 Azure 资源的逻辑容器：
 
-```powershell
+```azurepowershell
 New-AzResourceGroup -Name "myResourceGroup" -Location "ChinaEast"
 ```
 
@@ -34,9 +35,9 @@ New-AzResourceGroup -Name "myResourceGroup" -Location "ChinaEast"
 使用 [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) 创建 Azure 虚拟机，并将前面创建的 VM 配置对象传递给它。
 
 ```powershell
-$cred = = Get-Credential
+$cred = Get-Credential
 
-New-AzVM -Name MyVm -Credential $cred -ResourceGroupName MyResourceGroup -Image Canonical:UbuntuServer:16.04-LTS:latest -Size Standard_D2S_V3
+New-AzVM -Name MyVm -Credential $cred -ResourceGroupName MyResourceGroup -Image Canonical:UbuntuServer:18.04-LTS:latest -Size Standard_D2S_V3
 ```
 
 部署 VM 需要数分钟。 
@@ -48,7 +49,7 @@ Azure 磁盘加密将其加密密钥存储在 Azure 密钥保管库中。 使用
 > [!Important]
 > 每个密钥保管库必须有一个在 Azure 中唯一的名称。 在下面的示例中，将 <your-unique-keyvault-name> 替换为你选择的名称。
 
-```powershell
+```azurepowershell
 New-AzKeyvault -name "<your-unique-keyvault-name>" -ResourceGroupName "myResourceGroup" -Location ChinaEast -EnabledForDiskEncryption
 ```
 
@@ -58,7 +59,7 @@ New-AzKeyvault -name "<your-unique-keyvault-name>" -ResourceGroupName "myResourc
 
 Set-AzVmDiskEncryptionExtension 需要密钥保管库对象中的一些值。 可以通过将密钥保管库的唯一名称传递给 [Get-AzKeyvault](https://docs.microsoft.com/powershell/module/az.keyvault/get-azkeyvault) 来获取这些值。
 
-```powershell
+```azurepowershell
 $KeyVault = Get-AzKeyVault -VaultName "<your-unique-keyvault-name>" -ResourceGroupName "MyResourceGroup"
 
 Set-AzVMDiskEncryptionExtension -ResourceGroupName MyResourceGroup -VMName "MyVM" -DiskEncryptionKeyVaultUrl $KeyVault.VaultUri -DiskEncryptionKeyVaultId $KeyVault.ResourceId -SkipVmBackup -VolumeType All
@@ -74,7 +75,7 @@ RequestId IsSuccessStatusCode StatusCode ReasonPhrase
 
 可以通过运行 [Get-AzVmDiskEncryptionStatus](https://docs.microsoft.com/powershell/module/az.compute/Get-AzVMDiskEncryptionStatus) 来验证加密过程。
 
-```powershell
+```azurepowershell
 Get-AzVmDiskEncryptionStatus -VMName MyVM -ResourceGroupName MyResourceGroup
 ```
 
@@ -91,7 +92,7 @@ ProgressMessage            : OS disk encryption started
 
 不再需要时，可以使用 [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) cmdlet 删除资源组、VM 和所有相关资源：
 
-```powershell
+```azurepowershell
 Remove-AzResourceGroup -Name "myResourceGroup"
 ```
 

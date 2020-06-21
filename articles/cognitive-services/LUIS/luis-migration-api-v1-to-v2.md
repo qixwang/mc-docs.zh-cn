@@ -12,12 +12,12 @@ ms.topic: conceptual
 origin.date: 09/04/2019
 ms.date: 04/02/2019
 ms.author: v-lingwu
-ms.openlocfilehash: eb22104c589392f6490176cc587e319699c2c9c1
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: e3f2addb66d25631c7384089c3b42519e5f5702e
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74884582"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098352"
 ---
 # <a name="api-v1-to-v2-migration-guide-for-luis-apps"></a>LUIS 应用的 API v1 到 v2 迁移指南
 第 1 版[终结点](https://aka.ms/v1-endpoint-api-docs)和[创作](https://aka.ms/v1-authoring-api-docs) API 已弃用。 使用此指南学习如何迁移至第 2 版[终结点](https://aka.ms/luis-endpoint-apis)和[创作](https://aka.ms/luis-authoring-apis) API。 
@@ -170,10 +170,6 @@ V1 允许标记的话语在字词或短语的开头或末尾包含空格。 删�
 
 ## <a name="next-steps"></a>后续步骤
 
-使用 v2 API 文档更新对 LUIS [终结点](https://aka.ms/luis-endpoint-apis)和[创作](https://aka.ms/luis-authoring-apis) API 的现有 REST 调用。 
+使用 v2 API 文档更新对 LUIS [终结点](https://dev.cognitive.azure.cn/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78)和[创作](https://dev.cognitive.azure.cn/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f) API 的现有 REST 调用。 
 
 [LUIS]: https://docs.azure.cn/cognitive-services/LUIS/luis-reference-regions
-
-
-
-

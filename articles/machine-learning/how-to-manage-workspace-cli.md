@@ -5,17 +5,16 @@ description: 了解如何使用 Azure CLI 创建新的 Azure 机器学习工作�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
-ms.author: v-yiso
+ms.topic: how-to
+ms.author: larryfr
 author: Blackmist
-origin.date: 11/05/2019
-ms.date: 03/16/2020
-ms.openlocfilehash: 2714872c04d3c9ac560a4c940f5656493ea05882
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 03/05/2020
+ms.openlocfilehash: b3a38b5dde51bd6221924c34ee43bf0babe5aede
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78850222"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097504"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>使用 Azure CLI 创建 Azure 机器学习工作区
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -24,11 +23,14 @@ ms.locfileid: "78850222"
 
 ## <a name="prerequisites"></a>必备条件
 
-* 一个 **Azure 订阅**。 如果没有订阅，可试用 [Azure 机器学习免费版或付费版](https://aka.ms/AMLFree)。
+* 一个 **Azure 订阅**。 如果没有订阅，可试用 [Azure 机器学习免费版或付费版](https://www.azure.cn/pricing/1rmb-trial)。
 
-* 若要在**本地环境**中使用本文档所述的 CLI 命令，需要安装 [Azure CLI](/cli/install-azure-cli?view=azure-cli-latest)。
+* 若要在**本地环境**中使用本文档所述的 CLI 命令，需要安装 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
+
+
 
 ## <a name="connect-the-cli-to-your-azure-subscription"></a>将 CLI 连接到 Azure 订阅
+
 
 
 可通过多种方法从 CLI 对 Azure 订阅进行身份验证。 最基本的方法是使用浏览器进行交互式身份验证。 若要以交互方式进行身份验证，请打开命令行或终端，然后使用以下命令：
@@ -39,7 +41,9 @@ az login
 
 如果 CLI 可以打开默认的浏览器，则它会打开该浏览器并加载登录页。 否则，需要打开浏览器并按照命令行中的说明操作。 按说明操作时，需要浏览到 [https://aka.ms/devicelogin](https://aka.ms/devicelogin) 并输入授权代码。
 
-有关其他身份验证方法，请参阅[使用 Azure CLI 登录](/cli/authenticate-azure-cli?view=azure-cli-latest)。
+[!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)] 
+
+有关其他身份验证方法，请参阅[使用 Azure CLI 登录](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest)。
 
 ## <a name="install-the-machine-learning-extension"></a>安装机器学习扩展
 
@@ -91,7 +95,7 @@ az group create --name <resource-group-name> --location <location>
 }
 ```
 
-有关使用资源组的详细信息，请参阅 [az group](/cli/group?view=azure-cli-latest)。
+有关使用资源组的详细信息，请参阅 [az group](https://docs.microsoft.com//cli/azure/group?view=azure-cli-latest)。
 
 ### <a name="automatically-create-required-resources"></a>自动创建所需的资源
 
@@ -147,13 +151,13 @@ az ml workspace create -w <workspace-name> -g <resource-group-name>
 
     1. 安装 Application Insights 扩展：
 
-        ```bash
+        ```azurecli
         az extension add -n application-insights
         ```
 
     2. 获取 Application Insights 服务的 ID：
 
-        ```bash
+        ```azurecli
         az monitor app-insights component show --app <application-insight-name> -g <resource-group-name> --query "id"
         ```
 
@@ -174,7 +178,7 @@ az ml workspace create -w <workspace-name> -g <resource-group-name>
     `"/subscriptions/<service-GUID>/resourceGroups/<resource-group-name>/providers/Microsoft.ContainerRegistry/registries/<acr-name>"`
 
     > [!IMPORTANT]
-    > 必须先为容器注册表启用[管理员帐户](/container-registry/container-registry-authentication#admin-account)，然后才能将其用于 Azure 机器学习工作区。
+    > 必须先为容器注册表启用[管理员帐户](/azure/container-registry/container-registry-authentication#admin-account)，然后才能将其用于 Azure 机器学习工作区。
 
 获取要用于工作区的资源的 ID 后，请使用基础 `az workspace create -w <workspace-name> -g <resource-group-name>` 命令，并添加现有资源的参数和 ID。 例如，以下命令创建一个使用现有容器注册表的工作区：
 

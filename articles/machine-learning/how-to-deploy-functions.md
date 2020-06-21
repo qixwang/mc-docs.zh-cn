@@ -5,18 +5,18 @@ description: 了解如何使用 Azure 机器学习将模型部署到 Azure Funct
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
-ms.author: v-yiso
+ms.topic: how-to
+ms.author: vaidyas
 author: vaidyas
 ms.reviewer: larryfr
-origin.date: 03/06/2020
-ms.date: 03/09/2020
-ms.openlocfilehash: 4393048e85c3cf60f23f3d79a46a15695aae7dd0
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 03/06/2020
+ms.custom: tracking-python
+ms.openlocfilehash: abb1d2b0b978b0ea7c2ecdda27ad2dab485ca17a
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80343569"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097538"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-preview"></a>将机器学习模型部署到 Azure Functions（预览版）
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -26,12 +26,12 @@ ms.locfileid: "80343569"
 > [!IMPORTANT]
 > 虽然 Azure 机器学习和 Azure Functions 都已正式发布，但将模型从机器学习服务部署到 Functions 的功能目前处于预览阶段。
 
-使用 Azure 机器学习，可通过经过训练的机器学习模型创建 Docker 映像。 Azure 机器学习现在提供了将这些机器学习模型生成到函数应用中的预览功能，而这些函数应用可[部署到 Azure Functions](/azure-functions/functions-deployment-technologies#docker-container) 中。
+使用 Azure 机器学习，可通过经过训练的机器学习模型创建 Docker 映像。 Azure 机器学习现在提供了将这些机器学习模型生成到函数应用中的预览功能，而这些函数应用可[部署到 Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-deployment-technologies#docker-container) 中。
 
 ## <a name="prerequisites"></a>必备条件
 
 * Azure 机器学习工作区。 有关详细信息，请参阅[创建工作区](how-to-manage-workspace.md)一文。
-* [Azure CLI](/cli/install-azure-cli?view=azure-cli-latest)。
+* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
 * 工作区中注册的已训练的机器学习模型。 如果没有模型，请使用[图像分类教程：训练模型](tutorial-train-models-with-aml.md)来训练和注册模型。
 
     > [!IMPORTANT]
@@ -54,7 +54,7 @@ ms.locfileid: "80343569"
     >
     > 如果请求数据的格式对模型不可用，则该脚本可以将其转换为可接受的格式。 在将响应返回给客户端之前，它还可以对响应进行转换。
     >
-    > 默认情况下，在为函数打包时，输入被视为文本。 如果想使用输入的原始字节（例如用于 Blob 触发器），则应使用 [AMLRequest 接受原始数据](/machine-learning/how-to-deploy-and-where#binary-data)。
+    > 默认情况下，在为函数打包时，输入被视为文本。 如果想使用输入的原始字节（例如用于 Blob 触发器），则应使用 [AMLRequest 接受原始数据](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where#binary-data)。
 
 
 * 依赖项，如运行入口脚本或模型所需的帮助程序脚本或 Python/Conda 包 
@@ -109,10 +109,10 @@ blob.wait_for_creation(show_output=True)
 print(blob.location)
 ```
 
-当 `show_output=True` 时，将显示 Docker 生成过程的输出。 此过程完成后，即在 Azure 容器注册表中为工作区创建了映像。 映像生成后，会显示其在 Azure 容器注册表中的位置。 返回的位置采用 `<acrinstance>.azurecr.io/package@sha256:<hash>` 格式。
+当 `show_output=True` 时，将显示 Docker 生成过程的输出。 此过程完成后，即在 Azure 容器注册表中为工作区创建了映像。 映像生成后，会显示其在 Azure 容器注册表中的位置。 返回的位置采用 `<acrinstance>.azurecr.io/package@sha256:<imagename>` 格式。
 
 > [!NOTE]
-> 函数打包当前支持 HTTP 触发器、Blob 触发器和服务总线触发器。 有关触发器的详细信息，请参阅 [Azure Functions 绑定](/azure-functions/functions-bindings-storage-blob?tabs=csharp#trigger---blob-name-patterns)。
+> 函数打包当前支持 HTTP 触发器、Blob 触发器和服务总线触发器。 有关触发器的详细信息，请参阅 [Azure Functions 绑定](https://docs.microsoft.com/azure/azure-functions/functions-bindings-storage-blob-trigger#blob-name-patterns)。
 
 > [!IMPORTANT]
 > 保存位置信息，因为会在部署映像时使用。
@@ -180,7 +180,7 @@ print(blob.location)
     ```azurecli
     az storage account create --name <triggerStorage> --location westeurope --resource-group myresourcegroup --sku Standard_LRS
     ```
-    ```azurecli
+    ```azurecli-interactiv
     az storage account show-connection-string --resource-group myresourcegroup --name <triggerStorage> --query connectionString --output tsv
     ```
     记录要提供给函数应用的此连接字符串。 稍后在要求提供 `<triggerConnectionString>` 时会用到该字符串
@@ -296,8 +296,8 @@ print(blob.location)
 
 ## <a name="next-steps"></a>后续步骤
 
-* 通过 [Functions](/azure-functions/functions-create-function-linux-custom-image) 文档，了解如何配置 Functions 应用。
-* 请参阅 [Azure Blob 存储绑定](/azure-functions/functions-bindings-storage-blob)，详细了解 Blob 存储触发器。
+* 通过 [Functions](/azure/azure-functions/functions-create-function-linux-custom-image) 文档，了解如何配置 Functions 应用。
+* 请参阅 [Azure Blob 存储绑定](https://docs.microsoft.com/azure/azure-functions/functions-bindings-storage-blob)，详细了解 Blob 存储触发器。
 * [将模型部署到 Azure 应用服务](how-to-deploy-app-service.md)。
 * [使用部署为 Web 服务的机器学习模型](how-to-consume-web-service.md)
 * [API 参考](https://docs.microsoft.com/python/api/azureml-contrib-functions/azureml.contrib.functions?view=azure-ml-py)

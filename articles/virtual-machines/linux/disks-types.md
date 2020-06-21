@@ -1,22 +1,21 @@
 ---
 title: 选择 Azure IaaS Linux VM 的磁盘类型 - 托管磁盘
 description: 了解 Linux 虚拟机的可用 Azure 磁盘类型，包括超级磁盘、高级 SSD、标准 SSD 和标准 HDD。
-author: rockboyfor
-ms.author: v-yeche
+author: Johnnytechn
+ms.author: v-johya
 origin.date: 11/04/2019
-ms.date: 02/10/2020
+ms.date: 06/17/2020
 ms.topic: conceptual
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: 1620ea99792033715fa25f85a958ba53da0730fb
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: c8b862953db2bcba7c27acd64014d2fab4b787d5
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292149"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097221"
 ---
 # <a name="what-disk-types-are-available-in-azure"></a>Azure 有哪些可用的磁盘类型？
-
 [!INCLUDE [virtual-machines-disk-types](../../../includes/virtual-machines-managed-disks-types-overview.md)]
 
 <!--Not Avaialble on [Enabling Azure ultra SSDs](disks-enable-ultra-ssd.md)-->

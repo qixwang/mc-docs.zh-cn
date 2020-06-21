@@ -10,12 +10,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: overview
 ms.date: 05/08/2018
-ms.openlocfilehash: 450379443478cb8f077ca9f41b6f7ffc43f3c2b7
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 83695335e6a815519b0bb1430e0a30e9af466863
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75599041"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097443"
 ---
 # <a name="data-science-virtual-machine-based-team-analytics-and-ai-environment"></a>基于数据科学虚拟机的团队分析和 AI 环境 
 [Data Science Virtual Machine](overview.md) (DSVM) 在 Azure 平台上提供了一个丰富的环境，其中包含为人工智能 (AI) 和数据分析预建的软件。
@@ -43,7 +43,7 @@ ms.locfileid: "75599041"
 * [基于角色的访问控制](/role-based-access-control/overview)
 * [策略设置和执行](../../governance/policy/overview.md)
 * [反恶意软件](/security/fundamentals/antimalware)
-* [加密](/virtual-machines/windows/encrypt-disks)
+* [加密](/virtual-machines/windows/disk-encryption-overview)
 * [数据发现和管理](https://docs.microsoft.com/azure/data-catalog/)
 
 最后，[Azure 体系结构中心](https://docs.microsoft.com/azure/architecture/)为构建和管理基于云的分析基础结构提供了详细的端到端体系结构和模型。

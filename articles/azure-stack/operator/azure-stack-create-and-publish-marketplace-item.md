@@ -3,17 +3,17 @@ title: 在 Azure Stack Hub 中创建和发布市场项
 description: 了解如何创建并发布 Azure Stack Hub 市场项。
 author: WenJason
 ms.topic: article
-origin.date: 04/20/2020
-ms.date: 05/18/2020
+origin.date: 06/11/2020
+ms.date: 06/22/2020
 ms.author: v-jay
 ms.reviewer: avishwan
 ms.lastreviewed: 05/07/2019
-ms.openlocfilehash: 4ab3f9eb58cef3ad110e6445bdc6eab645904a0d
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.openlocfilehash: 9942b54f82acb76ea3371dced98e3740674e978d
+ms.sourcegitcommit: d86e169edf5affd28a1c1a4476d72b01a7fb421d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83422396"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85096238"
 ---
 # <a name="create-and-publish-a-custom-azure-stack-hub-marketplace-item"></a>创建并发布自定义 Azure Stack Hub 市场项
 
@@ -179,9 +179,9 @@ ms.locfileid: "83422396"
     https://sample.blob.core.chinacloudapi.cn/<temporary blob name>/<offerName.publisherName.version>.azpkg -Verbose
     ```
 
-5. 确认是否可以提供一个有效的存储帐户来存储项。 可以从 Azure Stack Hub 管理员门户获取 `GalleryItemURI` 值。 选择“存储帐户”>“Blob 属性”->“URL”，扩展名为 .azpkg。  存储帐户仅供暂时使用，以便能够发布到市场。
+5. 确认是否可以提供一个有效的存储帐户来存储项。 可以从 Azure Stack Hub 管理员门户获取 `GalleryItemURI` 值。 选择“存储帐户”>“Blob 属性”->“URL”，扩展名为 .azpkg。 存储帐户仅供暂时使用，以便能够发布到市场。
 
-   完成库包并使用 **Add-AzsGalleryItem** 将其上传之后，自定义 VM 现在应会显示在市场中以及“创建资源”视图中。  请注意，“市场管理”中不显示自定义库包。 
+   完成库包并使用 **Add-AzsGalleryItem** 将其上传之后，自定义 VM 现在应会显示在市场中以及“创建资源”视图中。 请注意，“市场管理”中不显示自定义库包。
 
    [![已上传自定义市场项](media/azure-stack-create-and-publish-marketplace-item/pkg6sm.png "已上传自定义市场项")](media/azure-stack-create-and-publish-marketplace-item/pkg6.png#lightbox)
 
@@ -199,7 +199,7 @@ ms.locfileid: "83422396"
    ```
 
    > [!NOTE]
-   > 删除某个项后，市场 UI 可能会显示错误。 若要修复此错误，请在门户中单击“设置”  。 然后，在“门户自定义”下选择“放弃修改”。  
+   > 删除某个项后，市场 UI 可能会显示错误。 若要修复此错误，请在门户中单击“设置”。 然后，在“门户自定义”下选择“放弃修改”。 
    >
    >
 
@@ -234,11 +234,11 @@ ms.locfileid: "83422396"
 | 大型 |115 px |115 px |始终必需 |
 | 中型 |90 px |90 px |始终必需 |
 | 小型 |40 px |40 px |始终必需 |
-| 屏幕快照 |533 px |324 px |始终必需 |
+| 屏幕快照 |533 px |324 px |可选 |
 
 ### <a name="categories"></a>Categories
 
-应当为每个市场项标记一个类别，该类别标识在门户 UI 中的何处显示该项。 可以选择 Azure Stack Hub 中的现有类别之一（“计算”、“数据 + 存储”等），也可以选择新建一个。  
+应当为每个市场项标记一个类别，该类别标识在门户 UI 中的何处显示该项。 可以选择 Azure Stack Hub 中的现有类别之一（“计算”、“数据 + 存储”等），也可以选择新建一个。 
 
 ### <a name="links"></a>链接
 

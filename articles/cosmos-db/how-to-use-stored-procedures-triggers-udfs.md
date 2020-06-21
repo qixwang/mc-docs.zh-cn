@@ -4,15 +4,16 @@ description: 了解如何使用 Azure Cosmos DB SDK 注册和调用存储过程�
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
-origin.date: 02/24/2020
-ms.date: 04/27/2020
+origin.date: 05/07/2020
+ms.date: 06/22/2020
 ms.author: v-yeche
-ms.openlocfilehash: d083b4334ab26337ff973eb84199a9c0b7791b11
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.custom: tracking-python
+ms.openlocfilehash: 2c6137e6a2d27cac7cb1ddfb2ce8576dd113dafb
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82134637"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098578"
 ---
 # <a name="how-to-register-and-use-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>如何在 Azure Cosmos DB 中注册和使用存储过程、触发器与用户定义的函数
 

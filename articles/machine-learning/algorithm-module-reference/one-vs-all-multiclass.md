@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/16/2019
-ms.openlocfilehash: 1746938c15ba20e37272fe25370d1f004bff6a2a
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: ae764a7eca31bd63d2c2963dfa9cdab1726884fa
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75598419"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097472"
 ---
 # <a name="one-vs-all-multiclass"></a>“一对多”多类分类
 
@@ -50,7 +50,7 @@ ms.locfileid: "75598419"
 
 4. 在[训练模型](train-model.md)的其他输入上，连接包含多个类值的带标记的训练数据集。
 
-5. 运行管道。
+5. 提交管道。
 
 ## <a name="results"></a>结果
 

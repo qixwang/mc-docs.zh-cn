@@ -6,12 +6,12 @@ origin.date: 07/23/2018
 ms.date: 05/28/2020
 ms.author: v-johya
 author: Johnnytechn
-ms.openlocfilehash: 50a5485e414df45d6b4a505920f5bf5852cd2683
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+ms.openlocfilehash: 00833cf6e8a534f59ee4c7223c6aa675700bf0a7
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84199261"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097285"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>排查无数据问题 - 用于 .NET/.NET Core 的 Application Insights
 
@@ -21,15 +21,15 @@ ms.locfileid: "84199261"
 * 如果持续看到同一个部分，可能是由于自适应[采样](../../azure-monitor/app/sampling.md)所导致。 要确认这一点，请打开“搜索”（通过“概述”边栏选项卡），并查看请求或其他事件的实例。 单击“属性”部分底部的“...”，获取完整的属性详细信息。 如果请求计数 > 1，则表示采样正在进行。
 * 否则，有可能是已达到定价计划的[数据率限制](../../azure-monitor/app/pricing.md#limits-summary)。 系统每隔一分钟应用这些限制。
 
-*我随机遇到数据丢失。*
+我不时地遇到数据丢失问题。
 
-* 检查是否在[遥测通道](telemetry-channels.md#does-the-application-insights-channel-guarantee-telemetry-delivery-if-not-what-are-the-scenarios-in-which-telemetry-can-be-lost)遇到数据丢失
+* 检查是否在[遥测通道](telemetry-channels.md#does-the-application-insights-channel-guarantee-telemetry-delivery-if-not-what-are-the-scenarios-in-which-telemetry-can-be-lost)中发生了数据丢失问题
 
-* 检查遥测通道 [GitHub 存储库](https://github.com/Microsoft/ApplicationInsights-dotnet/issues)中是否存在任何已知问题
+* 检查是否发生了遥测通道 [GitHub 存储库](https://github.com/Microsoft/ApplicationInsights-dotnet/issues)中所述的任何已知问题
 
-*当应用程序即将停止时，我在控制台应用或 Web 应用中遇到数据丢失。*
+当应用即将停止时，控制台应用或 Web 应用中出现了数据丢失问题。
 
-* SDK 通道将遥测数据保存在缓冲区中，并分批发送。 如果应用程序正在关闭，你可能需要显式调用 [Flush()](api-custom-events-metrics.md#flushing-data)。 `Flush()` 的行为取决于实际使用的[通道](telemetry-channels.md#built-in-telemetry-channels)。
+* SDK 通道在缓冲区中保留遥测数据，并分批发送这些数据。 如果应用程序正在关闭，则你可能需要显式调用 [Flush()](api-custom-events-metrics.md#flushing-data)。 `Flush()` 的行为取决于使用的实际[通道](telemetry-channels.md)。
 
 ## <a name="no-data-from-my-server"></a>服务器未提供数据
 *我已在 Web 服务器上安装应用，但未看到服务器提供任何遥测数据。服务器在开发计算机上正常运行。*
@@ -48,7 +48,7 @@ ms.locfileid: "84199261"
 * 工具并非支持所有类型的 .NET 项目。 支持 Web 和 WCF 项目。 对于其他项目类型，例如桌面或服务应用程序，仍可以[手动将 Application Insights SDK 添加到项目](../../azure-monitor/app/windows-desktop.md)。
 * 请务必使用 [Visual Studio 2013 Update 3 或更高版本](https://docs.microsoft.com/visualstudio/releasenotes/vs2013-update3-rtm-vs)。 该软件预装了开发人员分析工具，其中提供了 Application Insights SDK。
 * 选择“工具”、“扩展和更新”，检查“开发人员分析工具”是否已安装并启用。   如果是，请单击“更新”查看是否有可用的更新。
-* 打开“新建项目”对话框，选择“ASP.NET Web 应用程序”。 如果看到了 Application Insights 选项，则表示工具已安装。 否则，请尝试卸载再重新安装 Developer Analytics Tools。
+* 打开“新建项目”对话框，选择“ASP.NET Web 应用程序”。 如果看到了 Application Insights 选项，则表示工具已安装。 如果未看到，请尝试卸载并重新安装 Developer Analytics Tools。
 
 <a name="q02"></a>
 ## <a name="adding-application-insights-failed"></a>添加 Application Insights 失败
@@ -93,7 +93,7 @@ ms.locfileid: "84199261"
 * 选择“工具”、“扩展和更新”，检查“开发人员分析工具”是否已安装并启用。   如果是，请单击“更新”查看是否有可用的更新。
 * 在解决方案资源管理器中右键单击项目。 如果看到命令“Application Insights”>“配置 Application Insights”，请使用它将项目连接到 Application Insights 服务中的资源。
 
-否则，Developer Analytics Tools 不会直接支持项目类型。 要查看遥测数据，请登录到 [Azure 门户](https://portal.azure.cn)，在左侧导航栏中选择“Application Insights”，然后选择应用程序。
+否则，Developer Analytics Tools 不会直接支持你的项目类型。 要查看遥测数据，请登录到 [Azure 门户](https://portal.azure.cn)，在左侧导航栏中选择“Application Insights”，然后选择应用程序。
 
 ## <a name="access-denied-on-opening-application-insights-from-visual-studio"></a>从 Visual Studio 打开 Application Insights 时出现“拒绝访问”
 *使用“打开 Application Insights”菜单命令时转到了 Azure 门户，但同时出现“拒绝访问”错误。*
@@ -117,7 +117,7 @@ ApplicationInsights.config 中的检测密钥控制遥测数据发送到的位�
 
 解决方法：
 
-* 在解决方案资源管理器中右键单击项目，并依次选择“Application Insights”、“配置 Application Insights”。 在对话框中，可以选择将遥测数据发送到现有资源，或创建新资源。 或者：
+* 在解决方案资源管理器中右键单击项目，并依次选择“Application Insights”、“配置 Application Insights”。 在对话框中，可以选择将遥测数据发送到现有资源，或创建新资源。 或：
 * 直接打开资源。 登录到 [Azure 门户](https://portal.azure.cn)，在左侧导航栏中单击“Application Insights”，然后选择应用。
 
 ## <a name="where-do-i-find-my-telemetry"></a>在哪里可以找到我的遥测数据？
@@ -195,7 +195,7 @@ ApplicationInsights.config 中的检测密钥控制遥测数据发送到的位�
 
 按照这些说明来捕获框架的故障排除日志。
 
-### <a name="net-framework"></a>.NET framework
+### <a name="net-framework"></a>.NET Framework
 
 1. 从 NuGet 安装 [Microsoft.AspNet.ApplicationInsights.HostingStartup](https://www.nuget.org/packages/Microsoft.AspNet.ApplicationInsights.HostingStartup) 包。 安装的版本必须与当前安装的 `Microsoft.ApplicationInsighs` 版本匹配
 
@@ -220,7 +220,7 @@ ApplicationInsights.config 中的检测密钥控制遥测数据发送到的位�
 
 1. 从 NuGet 安装 [Microsoft.AspNet.ApplicationInsights.HostingStartup](https://www.nuget.org/packages/Microsoft.AspNet.ApplicationInsights.HostingStartup) 包。 安装的版本必须与当前安装的 `Microsoft.ApplicationInsights` 版本匹配
 
-Microsoft.ApplicationInsights.AspNetCore 的最新版本为 2.8.2，它引用 Microsoft.ApplicationInsights 版本 2.11.2。 因此，要安装的 Microsoft.AspNet.ApplicationInsights.HostingStartup 版本应该是 2.11.2
+Microsoft.ApplicationInsights.AspNetCore 的最新版本为 2.8.2，它引用 Microsoft.ApplicationInsights 版本 2.11.2。 因此，要安装的 Microsoft.AspNet.ApplicationInsights.HostingStartup 版本应是 2.11.2。
 
 2. 修改 `Startup.cs` 类中的 `ConfigureServices` 方法：
 
@@ -240,28 +240,28 @@ Microsoft.ApplicationInsights.AspNetCore 的最新版本为 2.8.2，它引用 Mi
 
 
 ## <a name="collect-logs-with-perfview"></a><a name="PerfView"></a> 使用 PerfView 收集日志
-[PerfView](https://github.com/Microsoft/perfview) 是一款免费的诊断和性能分析工具，可通过收集和可视化来自多个源的诊断信息来帮助确定 CPU、内存和其他问题。
+[PerfView](https://github.com/Microsoft/perfview) 是一个免费的诊断和性能分析工具，它可以从许多源收集诊断信息并将其可视化，从而帮助你查明 CPU、内存和其他问题。
 
-Application Insights SDK 记录可由 PerfView 捕获的 EventSource 自我故障排除日志。
+PerfView 可以捕获 Application Insights SDK 日志和 EventSource 自我故障排除日志。
 
 若要收集日志，请下载 PerfView 并运行以下命令：
 ```cmd
 PerfView.exe collect -MaxCollectSec:300 -NoGui /onlyProviders=*Microsoft-ApplicationInsights-Core,*Microsoft-ApplicationInsights-Data,*Microsoft-ApplicationInsights-WindowsServer-TelemetryChannel,*Microsoft-ApplicationInsights-Extensibility-AppMapCorrelation-Dependency,*Microsoft-ApplicationInsights-Extensibility-AppMapCorrelation-Web,*Microsoft-ApplicationInsights-Extensibility-DependencyCollector,*Microsoft-ApplicationInsights-Extensibility-HostingStartup,*Microsoft-ApplicationInsights-Extensibility-PerformanceCollector,*Microsoft-ApplicationInsights-Extensibility-EventCounterCollector,*Microsoft-ApplicationInsights-Extensibility-PerformanceCollector-QuickPulse,*Microsoft-ApplicationInsights-Extensibility-Web,*Microsoft-ApplicationInsights-Extensibility-WindowsServer,*Microsoft-ApplicationInsights-WindowsServer-Core,*Microsoft-ApplicationInsights-Extensibility-EventSourceListener,*Microsoft-ApplicationInsights-AspNetCore
 ```
 
-可以根据需要修改以下参数：
+可根据需要修改这些参数：
 - **MaxCollectSec**。 设置此参数可防止 PerfView 无限期运行并影响服务器的性能。
-- **OnlyProviders**。 设置此参数可仅从 SDK 收集日志。 可以基于特定调查自定义此列表。 
-- **NoGui**。 设置此参数可收集不包含 GUI 的日志。
+- **OnlyProviders**。 设置此参数可以仅从 SDK 收集日志。 可根据自己的具体调查自定义此列表。 
+- **NoGui**。 设置此参数可以在不使用 GUI 的情况下收集日志。
 
 
-有关详细信息，请参阅
+有关详细信息，请参阅：
 - [使用 PerfView 记录性能跟踪](https://github.com/dotnet/roslyn/wiki/Recording-performance-traces-with-PerfView)。
 - [Application Insights 事件源](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/ETW)
 
 ## <a name="how-to-remove-application-insights"></a>如何删除 Application Insights
 
-请按照与删除操作相关的[文章](../../azure-monitor/app/remove-application-insights.md)中提供的步骤操作，了解如何在 Visual Studio 中删除 Application Insights。
+按照[此文](../../azure-monitor/app/remove-application-insights.md)中提供的步骤，了解如何在 Visual Studio 中删除 Application Insights。
 
 ## <a name="still-not-working"></a>仍然无法解决问题...
 * [Application Insights 论坛](https://social.msdn.microsoft.com/Forums/vstudio/en-US/home?forum=ApplicationInsights)

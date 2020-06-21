@@ -7,12 +7,12 @@ author: Johnnytechn
 ms.author: v-johya
 ms.date: 05/28/2020
 origin.date: 10/22/2019
-ms.openlocfilehash: b6bf3b27a2cb2227cda896dc2bcef289b09f7ddd
-ms.sourcegitcommit: 5ae04a3b8e025986a3a257a6ed251b575dbf60a1
+ms.openlocfilehash: 4762c2ac6b54f2f9caec6824ef70b7a34fdf84c6
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84440577"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097264"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-resource-logs"></a>Azure 资源日志支持的服务、架构和类别
 
@@ -54,7 +54,7 @@ ms.locfileid: "84440577"
 | Azure 自动化 |[适用于 Azure 自动化的 Log Analytics](../../automation/automation-manage-send-joblogs-log-analytics.md) |
 | Azure Batch |[Azure Batch 日志记录](../../batch/batch-diagnostics.md) |
 | Azure Database for MySQL | [Azure Database for MySQL 诊断日志](../../mysql/concepts-server-logs.md#diagnostic-logs) |
-| Azure Database for PostgreSQL | [Azure Database for PostgreSQL 日志](../../postgresql/concepts-server-logs.md#resource-logs) |
+| Azure Database for PostgreSQL | [Azure Database for PostgreSQL 日志](../../postgresql/concepts-server-logs.md) |
 | Azure 数据资源管理器 | [Azure 数据资源管理器日志](/data-explorer/using-diagnostic-logs) |
 | 认知服务 | [Azure 认知服务的日志记录](../../cognitive-services/diagnostic-logging.md) |
 | 容器注册表 | [Azure 容器注册表的日志记录](../../container-registry/container-registry-diagnostics-audit-logs.md) |
@@ -66,9 +66,7 @@ ms.locfileid: "84440577"
 | IoT 中心 | [IoT 中心操作](../../iot-hub/iot-hub-monitor-resource-health.md#use-azure-monitor) |
 | 密钥保管库 |[Azure 密钥保管库日志记录](../../key-vault/general/logging.md) |
 | Kubernetes 服务 |[Azure Kubernetes 日志记录](../../aks/view-master-logs.md#log-event-schema) |
-| 负载均衡器 |[Azure 负载均衡器的 Log Analytics](../../load-balancer/load-balancer-monitor-log.md) |
 | 逻辑应用 |[逻辑应用 B2B 自定义跟踪架构](../../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md) |
-| 网络安全组 |[网络安全组 (NSG) 的 Log Analytics](../../virtual-network/virtual-network-nsg-manage-log.md) |
 | Power BI 专用 | [Azure 中 Power BI Embedded 的日志记录](https://docs.microsoft.com/power-bi/developer/azure-pbie-diag-logs) |
 | 搜索 |[允许并使用搜索流量分析](../../search/search-traffic-analytics.md) |
 | 服务总线 |[Azure 服务总线日志](../../service-bus-messaging/service-bus-diagnostic-logs.md) |

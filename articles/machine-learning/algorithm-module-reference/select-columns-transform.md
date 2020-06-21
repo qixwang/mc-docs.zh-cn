@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: 1ad119458fde424ccec468a796138490db46c9ea
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: f851c24e2bb37883b16a3d70c270fab519558e3b
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75598389"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097459"
 ---
 # <a name="select-columns-transform"></a>选择列转换
 
@@ -48,7 +48,7 @@ ms.locfileid: "75598389"
 
    > [!IMPORTANT]
    > 不能期望将[基于筛选器的特征选择](filter-based-feature-selection.md)应用于评分数据集并获得相同的结果。 由于特征选择基于值，因此它可能会选择一个不同的列集，这将导致评分操作失败。
-7. 运行管道。
+7. 提交管道。
 
 保存然后应用列选择的这一过程可以确保使用相同的数据架构进行训练和评分。
 

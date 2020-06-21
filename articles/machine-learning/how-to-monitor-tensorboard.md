@@ -5,17 +5,16 @@ description: 启动 TensorBoard 以可视化试验运行历史记录，并识别
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 author: maxluk
-ms.author: v-yiso
-origin.date: 02/27/2020
-ms.date: 03/16/2020
-ms.openlocfilehash: 634b0da8c8b43e3a3101163ef5292653ca53e7fc
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.author: maxluk
+ms.date: 02/27/2020
+ms.openlocfilehash: 8c72964abefbab192a1d56344c2e76ef27885512
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78850216"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097502"
 ---
 # <a name="visualize-experiment-runs-and-metrics-with-tensorboard-and-azure-machine-learning"></a>使用 TensorBoard 和 Azure 机器学习可视化试验运行与指标
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -199,7 +198,7 @@ tb.stop()
 
 ```python
 from azureml.core import Workspace, Experiment
-import azuremml.core
+import azureml.core
 
 # set experiment name and run name
 ws = Workspace.from_config()
@@ -234,7 +233,7 @@ alphas = [.1, .2, .3, .4, .5, .6 , .7]
 # try a bunch of alpha values in a Linear Regression (aka Ridge regression) mode
 for alpha in tqdm(alphas):
   # create child runs and fit lines for the resulting models
-  with root_run.child_run("alpha" + str(alpha)) as run
+  with root_run.child_run("alpha" + str(alpha)) as run:
  
    reg = Ridge(alpha=alpha)
    reg.fit(data["train"]["x"], data["train"]["y"])    

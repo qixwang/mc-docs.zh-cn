@@ -1,27 +1,19 @@
 ---
 title: 在运行 Linux 的虚拟机上配置 LVM
 description: 了解如何在 Azure 中的 Linux 上配置 LVM。
-services: virtual-machines-linux
-documentationcenter: na
-author: rockboyfor
-manager: digimobile
-editor: tysonn
-tag: azure-service-management,azure-resource-manager
-ms.assetid: 7f533725-1484-479d-9472-6b3098d0aecc
+author: Johnnytechn
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.topic: article
+ms.topic: how-to
 origin.date: 09/27/2018
-ms.date: 02/10/2020
-ms.author: v-yeche
+ms.date: 06/17/2020
+ms.author: v-johya
 ms.subservice: disks
-ms.openlocfilehash: 39c243e656d228e615ee65b4fbf55c05d3cfb441
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: bb33458f9e739010bbbce262811fadae0b99c5c5
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77428860"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097030"
 ---
 # <a name="configure-lvm-on-a-linux-vm-in-azure"></a>在 Azure 中的 Linux VM 上配置 LVM
 本文介绍如何在 Azure 虚拟机中配置逻辑卷管理器 (LVM)。 LVM 可以在 Azure VM 中的 OS 磁盘或数据磁盘上使用，但是，默认情况下，大多数云映像都不会在 OS 磁盘上配置 LVM。 以下步骤将重点介绍如何为数据磁盘配置 LVM。
@@ -102,7 +94,6 @@ LVM 可用于将多个物理磁盘合并成单个存储卷。 默认情况下，
    > 在 SLES11 上，请使用 `-t ext3` 而不是 ext4。 SLES11 仅支持对 ext4 文件系统进行只读访问。
 
 ## <a name="add-the-new-file-system-to-etcfstab"></a>将新文件系统添加到 /etc/fstab
-
 > [!IMPORTANT]
 > 错误地编辑 `/etc/fstab` 文件可能会导致系统无法引导。 如果没有把握，请参考分发的文档来获取有关如何正确编辑该文件的信息。 另外，建议在编辑之前创建 `/etc/fstab` 文件的备份。
 

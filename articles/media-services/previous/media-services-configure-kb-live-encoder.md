@@ -15,12 +15,12 @@ ms.topic: article
 origin.date: 03/14/2019
 ms.date: 06/08/2020
 ms.author: v-jay
-ms.openlocfilehash: c00c52d342584122a3cb3a64f34cd49e787ac916
-ms.sourcegitcommit: 79c99a9ea013b3c74706a1038a505f4eea2aaac4
+ms.openlocfilehash: d24a1d9322578f5e05c50137db994a3d334f2770
+ms.sourcegitcommit: d86e169edf5affd28a1c1a4476d72b01a7fb421d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84439523"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85096248"
 ---
 # <a name="use-the-haivision-kb-live-encoder-to-send-a-single-bitrate-live-stream"></a>使用 Haivision KB 实时编码器发送单比特率实时流  
 > [!div class="op_single_selector"]
@@ -45,10 +45,10 @@ ms.locfileid: "84439523"
 
 ## <a name="create-a-channel"></a>创建频道
 1. 在 AMSE 工具中，导航到“实时”选项卡，并右键单击频道区域。 从菜单中选择“创建频道…”  。
-[Haivision](./media/media-services-configure-kb-live-encoder/channel.png)
+   ![Haivision](./media/media-services-configure-kb-live-encoder/channel.png)
 2. 指定频道名称，说明字段为选填字段。 在“频道设置”下针对“实时编码”选项选择“标准”，将“输入协议”设置为“RTMP”。 所有其他设置可保留原样。 确保选中“立即启动新频道”  。
 3. 单击“创建频道” 。
-[Haivision](./media/media-services-configure-kb-live-encoder/livechannel.png)
+   ![Haivision](./media/media-services-configure-kb-live-encoder/livechannel.png)
 
 > [!NOTE]
 > 启动频道可能需要长达 20 分钟的时间。
@@ -95,7 +95,7 @@ ms.locfileid: "84439523"
 
 ## <a name="create-a-program"></a>创建节目
 1.  确认频道可以播放后，即可创建节目。 在 AMSE 工具的“实时”选项卡下，右键单击节目区域，并选择“创建新节目”。
-[Haivision](./media/media-services-configure-kb-live-encoder/program.png)
+    ![Haivision](./media/media-services-configure-kb-live-encoder/program.png)
 1.  为节目命名，并根据需要调整“存档时段长度”（默认为 4 小时）。 还可以指定存储位置，也可以将其保留为默认值。
 2.  选中“立即启动节目”框。
 3.  单击“创建节目”。

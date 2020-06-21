@@ -5,19 +5,18 @@ description: 了解如何使用 Azure 机器学习训练和注册在 TensorFlow 
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
-ms.author: v-yiso
+ms.topic: how-to
+ms.author: maxluk
 author: maxluk
 ms.reviewer: peterlu
-origin.date: 08/01/2019
-ms.date: 03/16/2020
+ms.date: 08/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6103d8dca21f5fae4145e8a1d6856640d87a8f3e
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 227c947c9966c8b73e3f76ceeb916dd31f48d852
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292904"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097126"
 ---
 # <a name="train-and-register-a-keras-classification-model-with-azure-machine-learning"></a>使用 Azure 机器学习训练和注册 Keras 分类模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -85,7 +84,7 @@ exp = Experiment(workspace=ws, name='keras-mnist')
 <a name="data-upload"></a>
 ### <a name="create-a-file-dataset"></a>创建文件数据集
 
-`FileDataset` 对象引用工作区数据存储或公共 URL 中的一个或多个文件。 文件可以是任何格式，该类提供将文件下载或装载到计算机的功能。 通过创建 `FileDataset`，可以创建对数据源位置的引用。 如果将任何转换应用于数据集，则它们也会存储在数据集中。 数据会保留在其现有位置，因此不会产生额外的存储成本。 有关详细信息，请参阅 `Dataset` 包中的[操作](/machine-learning/how-to-create-register-datasets)指南。
+`FileDataset` 对象引用工作区数据存储或公共 URL 中的一个或多个文件。 文件可以是任何格式，该类提供将文件下载或装载到计算机的功能。 通过创建 `FileDataset`，可以创建对数据源位置的引用。 如果将任何转换应用于数据集，则它们也会存储在数据集中。 数据会保留在其现有位置，因此不会产生额外的存储成本。 有关详细信息，请参阅 `Dataset` 包中的[操作](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets)指南。
 
 ```python
 from azureml.core.dataset import Dataset
@@ -216,4 +215,4 @@ for f in run.get_file_names():
 * [在训练期间跟踪运行指标](how-to-track-experiments.md)
 * [优化超参数](how-to-tune-hyperparameters.md)
 * [部署定型的模型](how-to-deploy-and-where.md)
-* [Azure 中分布式深度学习训练的参考体系结构](https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/ai/training-deep-learning)
+* [Azure 中分布式深度学习训练的参考体系结构](/azure/architecture/reference-architectures/ai/training-deep-learning)

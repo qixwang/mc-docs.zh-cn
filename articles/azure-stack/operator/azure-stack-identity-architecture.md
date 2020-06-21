@@ -4,16 +4,16 @@ description: 了解 Azure Stack Hub 的标识体系结构，以及 Azure AD 和 
 author: WenJason
 ms.topic: conceptual
 origin.date: 04/10/2020
-ms.date: 05/18/2020
+ms.date: 06/22/2020
 ms.author: v-jay
 ms.reviewer: fiseraci
 ms.lastreviewed: 05/09/2019
-ms.openlocfilehash: 1c04faf249af3ae29baa2b8b8daf10051154afb2
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.openlocfilehash: 14255905e7b580087051eb533d66313a521d4dcc
+ms.sourcegitcommit: d86e169edf5affd28a1c1a4476d72b01a7fb421d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83422496"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85096467"
 ---
 # <a name="identity-architecture-for-azure-stack-hub"></a>Azure Stack Hub 的标识体系结构
 
@@ -27,7 +27,7 @@ ms.locfileid: "83422496"
 |------------------------------|----------|-------|
 |连接到 Internet     |是       |可选|
 |对多租户的支持     |是       |否      |
-|在市场中提供商品 |是       |是（需要使用[脱机市场联合](azure-stack-download-azure-marketplace-item.md#disconnected-or-a-partially-connected-scenario)工具）|
+|在市场中提供商品 |是       |是（需要使用[脱机市场联合](azure-stack-download-azure-marketplace-item.md?pivots=state-disconnected)工具）|
 |对 Active Directory 身份验证库 (ADAL) 的支持 |是 |是|
 |支持 Azure CLI、Visual Studio 和 PowerShell 等工具  |是 |是|
 |通过 Azure 门户创建服务主体     |是 |否|

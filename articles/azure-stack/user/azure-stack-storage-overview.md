@@ -3,16 +3,16 @@ title: Azure Stack Hub 存储简介
 description: 了解 Azure Stack Hub 存储服务。
 author: WenJason
 ms.topic: conceptual
-origin.date: 1/22/2020
-ms.date: 05/08/2020
+origin.date: 5/27/2020
+ms.date: 06/22/2020
 ms.author: v-jay
 ms.lastreviewed: 01/14/2020
-ms.openlocfilehash: 17efcf4892f585a56f3fd44953d48512ce5434a0
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.openlocfilehash: 43707b3245b029dd9f2968229a1051cdcc57bbf2
+ms.sourcegitcommit: d86e169edf5affd28a1c1a4476d72b01a7fb421d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83422358"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85096389"
 ---
 # <a name="introduction-to-azure-stack-hub-storage"></a>Azure Stack Hub 存储简介
 
@@ -38,7 +38,7 @@ Azure Stack Hub 存储提供以下三个服务：
 
 Azure Stack Hub 存储帐户是可让你访问 Azure Stack Hub 存储的安全帐户。 存储帐户为存储资源提供唯一的命名空间。 下图显示了存储帐户中 Azure Stack Hub 存储资源之间的关系：
 
-![Azure Stack Hub 存储概述](media/azure-stack-storage-overview/AzureStackStorageOverview.png)
+![Azure Stack Hub 存储概述](media/azure-stack-storage-overview/azurestackstorageoverview.svg)
 
 ### <a name="blob-storage"></a>Blob 存储
 

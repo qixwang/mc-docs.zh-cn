@@ -14,12 +14,20 @@
       items:
         - name: AKS
           href: ../../aks/kubernetes-walkthrough-rm-template.md?toc=/azure-resource-manager/templates/toc.json
+        - name: Analysis Services - 创建服务器
+          href: ../../analysis-services/analysis-services-create-template.md?toc=/azure-resource-manager/templates/toc.json
         - name: 应用程序网关
           href: ../../application-gateway/quick-create-template.md?toc=/azure-resource-manager/templates/toc.json
         - name: Backup
           href: ../../backup/quick-backup-vm-template.md?toc=/azure-resource-manager/templates/toc.json
+        - name: 认知搜索
+          href: ../../search/search-get-started-arm.md?toc=/azure-resource-manager/templates/toc.json
+        - name: 容器实例
+          href: ../../container-instances/container-instances-quickstart-template.md?toc=/azure-resource-manager/templates/toc.json
         - name: Cosmos DB
           href: ../../cosmos-db/quick-create-template.md?toc=/azure-resource-manager/templates/toc.json
+        - name: Database for MySQL
+          href: ../../mysql/quickstart-create-mysql-server-database-using-arm-template.md?toc=/azure-resource-manager/templates/toc.json
         - name: 事件网格
           href: ../../event-grid/blob-event-quickstart-template.md?toc=/azure-resource-manager/templates/toc.json
         - name: 事件中心
@@ -40,8 +48,14 @@
           href: ../managed-applications/publish-service-catalog-app.md?toc=/azure-resource-manager/templates/toc.json
         - name: 策略
           href: ../../governance/policy/assign-policy-template.md?toc=/azure-resource-manager/templates/toc.json
+        - name: Resource Graph
+          href: ../../governance/resource-graph/shared-query-template.md?toc=/azure-resource-manager/templates/toc.json
         - name: 服务总线消息传送
           href: ../../service-bus-messaging/service-bus-resource-manager-namespace-queue.md?toc=/azure-resource-manager/templates/toc.json
+        - name: Service Fabric
+          href: ../../service-fabric/quickstart-cluster-template.md?toc=/azure-resource-manager/templates/toc.json
+        - name: 站点恢复
+          href: ../../site-recovery/quickstart-create-vault-template.md?toc=/azure-resource-manager/templates/toc.json
         - name: SQL 数据库
           href: ../../sql-database/sql-database-single-database-get-started-template.md?toc=/azure-resource-manager/templates/toc.json
         - name: 虚拟机规模集 - Linux
@@ -115,10 +129,14 @@
   items:
     - name: 模板最佳实践
       href: template-best-practices.md
+    - name: 常见问题
+      href: frequently-asked-questions.md
     - name: 用于提供云一致性的模板
       href: templates-cloud-consistency.md
     - name: 部署模式
       href: deployment-modes.md
+    - name: 部署历史记录删除
+      href: deployment-history-deletions.md
     - name: 完整模式删除
       href: complete-mode-deletion.md
 - name: 如何
@@ -150,6 +168,9 @@
               href: add-resource-extensions.md
         - name: Outputs
           href: template-outputs.md
+        - name: 部署脚本
+          displayName: custom script
+          href: deployment-script-template.md
         - name: 将模板模块化
           displayName: 'linked templates, nested templates'
           href: linked-templates.md
@@ -177,6 +198,12 @@
           href: update-visual-studio-deployment-script.md
         - name: IntelliJ IDEA
           href: create-templates-use-intellij.md
+    - name: 发现模板属性
+      items:
+        - name: 导出模板
+          href: export-template-portal.md
+        - name: 发现资源
+          href: view-resources.md
     - name: 部署模板
       items:
         - name: 部署 - 门户
@@ -193,6 +220,8 @@
           href: deploy-rest.md
         - name: 从 GitHub 进行部署
           href: deploy-to-azure-button.md
+        - name: 模拟部署
+          href: template-deploy-what-if.md
         - name: 出错时重新部署
           displayName: rollback
           href: rollback-on-error.md
@@ -206,7 +235,7 @@
           href: deploy-to-management-group.md
         - name: 租户
           href: deploy-to-tenant.md
-        - name: 多个资源组或订阅
+        - name: 跨资源组
           href: cross-resource-group-deployment.md
     - name: 提供参数
       items:
@@ -219,8 +248,8 @@
       items:
         - name: 使用管道的 VS 项目
           href: add-template-to-azure-pipelines.md
-    - name: 导出模板
-      href: export-template-portal.md
+        - name: 部署 - GitHub Actions
+          href: deploy-github-actions.md
     - name: 查看部署历史记录
       href: deployment-history.md
     - name: 对部署进行故障排除
@@ -257,11 +286,13 @@
           href: ../../virtual-machines/troubleshooting/troubleshoot-deploy-vm-windows.md
 - name: 参考
   items:
+    - name: 模板参考
+      href: /templates/
     - name: 模板函数
       items:
         - name: 所有函数
           href: template-functions.md
-        - name: 数组和对象函数
+        - name: 数组函数
           href: template-functions-array.md
         - name: 比较函数
           href: template-functions-comparison.md
@@ -273,6 +304,8 @@
           href: template-functions-logical.md
         - name: 数值函数
           href: template-functions-numeric.md
+        - name: 对象函数
+          href: template-functions-object.md
         - name: Resource functions
           href: template-functions-resource.md
         - name: 字符串函数
@@ -294,6 +327,6 @@
     - name: 定价计算器
       href: 'https://www.azure.cn/pricing/calculator/'
     - name: 服务更新
-      href: 'https://www.azure.cn/what-is-new/'
+      href: 'https://updates.azure.cn/'
     - name: 视频
       href: 'https://www.azure.cn/video-center/'

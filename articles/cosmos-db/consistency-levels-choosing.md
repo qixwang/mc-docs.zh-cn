@@ -5,15 +5,15 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 04/23/2020
-ms.date: 06/15/2020
+ms.date: 06/22/2020
 ms.author: v-yeche
 ms.reviewer: sngun
-ms.openlocfilehash: 9bec30f9461196fb588d957d2a3c6b8fd228d2fb
-ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
+ms.openlocfilehash: bb59598c383a4f259a6225c5c722694443c613dd
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84723714"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098318"
 ---
 # <a name="choose-the-right-consistency-level"></a>选择适当的一致性级别 
 

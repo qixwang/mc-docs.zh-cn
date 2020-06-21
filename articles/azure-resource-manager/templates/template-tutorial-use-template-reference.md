@@ -2,17 +2,17 @@
 title: 使用模板参考
 description: 使用 Azure 资源管理器模板参考来创建模板。
 author: rockboyfor
-origin.date: 03/27/2020
-ms.date: 05/08/2020
+origin.date: 04/23/2020
+ms.date: 06/22/2020
 ms.topic: tutorial
 ms.author: v-yeche
 ms.custom: seodec18
-ms.openlocfilehash: f9f5ed59d7428c9d8ae60291d213b36428ee8298
-ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
+ms.openlocfilehash: 98853e6df737c2a2a618e603d3c93298c6ca08d5
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "83002028"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098714"
 ---
 # <a name="tutorial-utilize-the-resource-manager-template-reference"></a>教程：利用资源管理器模板参考
 
@@ -76,7 +76,6 @@ ms.locfileid: "83002028"
 
 <!--Not Available on ## Find the template reference-->
 <!--Not Available on ## Edit the template-->
-
 ## <a name="deploy-the-template"></a>部署模板
 
 有关部署过程，请参阅 Visual Studio Code 快速入门中的[部署模板](quickstart-create-templates-use-visual-studio-code.md#deploy-the-template)部分。 部署模板时，请使用新添加的值指定 **storageAccountType** 参数，例如 **Premium_ZRS**。 如果使用原始快速入门模板，部署会失败，因为 Premium_ZRS  在Azure 中国云上是不允许使用的值。  若要传递参数值，请将以下开关添加到部署命令：
@@ -113,4 +112,4 @@ ms.locfileid: "83002028"
 > [创建多个实例](./template-tutorial-create-multiple-instances.md)
 
 <!-- Update_Description: new article about template tutorial use template reference -->
-<!--NEW.date: 04/30/2020-->
+<!--NEW.date: 06/16/2020-->

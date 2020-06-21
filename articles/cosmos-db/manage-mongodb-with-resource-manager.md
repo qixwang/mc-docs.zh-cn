@@ -1,34 +1,305 @@
 ---
-title: Azure Cosmos DB API for MongoDB 的资源管理器模板
+title: 用于 Azure Cosmos DB API for MongoDB 的资源管理器模板
 description: 使用 Azure 资源管理器模板创建和配置 Azure Cosmos DB API for MongoDB。
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
-origin.date: 11/12/2019
-ms.date: 04/27/2020
+origin.date: 05/19/2020
+ms.date: 06/22/2020
 ms.author: v-yeche
-ms.openlocfilehash: 949398596a41b800c61dbe584f88ab7263dba367
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.openlocfilehash: c279cc45995cf77fb1edd4223fb7f01c9ce3464f
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82134658"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098697"
 ---
 <!--Verify successfully-->
 # <a name="manage-azure-cosmos-db-mongodb-api-resources-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板管理 Azure Cosmos DB MongoDB API 资源
 
-本文介绍如何使用 Azure 资源管理器模板执行不同的操作来自动管理 Azure Cosmos DB 帐户、数据库和容器。 本文的示例仅适用于 Azure Cosmos DB 的 MongoDB API。若要查找适用于其他 API 类型帐户的示例，请参阅将 Azure 资源管理器模板与 Azure Cosmos DB 的 [Cassandra](manage-cassandra-with-resource-manager.md)、[Gremlin](manage-gremlin-with-resource-manager.md)、[SQL](manage-sql-with-resource-manager.md)、[表](manage-table-with-resource-manager.md) API 配合使用的相关文章。
+本文介绍如何使用 Azure 资源管理器模板来帮助部署和管理 Azure Cosmos DB for MongoDB API 帐户、数据库和集合。
 
-<a name="create-resource"></a>
-## <a name="create-azure-cosmos-db-api-for-mongodb-account-database-and-collection"></a>创建 Azure Cosmos DB API for MongoDB 帐户、数据库和集合
+本文仅提供 Azure Cosmos DB API for MongoDB 的示例，若要查找其他 API 类型帐户的示例，请参阅以下文章：将 Azure 资源管理器模板与适用于 [Cassandra](manage-cassandra-with-resource-manager.md)、[Gremlin](manage-gremlin-with-resource-manager.md)、[SQL](manage-sql-with-resource-manager.md)、[表](manage-table-with-resource-manager.md)的 Azure Cosmos DB API 配合使用。
 
-使用 Azure 资源管理器模板创建 Azure Cosmos DB 资源。 此模板将创建 MongoDB API 的 Azure Cosmos 帐户，所使用的两个集合在数据库级别共享 400 RU/秒的吞吐量。 复制模板并按如下所示进行部署，或者访问 [Azure 快速入门库](https://github.com/Azure/azure-quickstart-templates/tree/master/101-cosmosdb-mongodb/)，然后从 Azure 门户进行部署。 还可以将模板下载到本地计算机，或者创建新模板并使用 `--template-file` 参数指定本地路径。
-
-> [!NOTE]
-> 帐户名称必须为小写且不超过 44 个字符。
-> 若要更新 RU/秒，请重新提交包含已更新吞吐量属性值的模板。
+> [!IMPORTANT]
 >
-> 目前，使用 PowerShell 和 CLI 只能创建 3.2 版的 Azure Cosmos DB API for MongoDB 帐户（即，使用格式为 `*.documents.azure.cn` 的终结点的帐户）。 若要创建 3.6 版的帐户，请改用资源管理器模板（如下所示）或 Azure 门户。
+> * 帐户名称限制为 44 个字符，全部小写。
+> * 若要更改吞吐量值，请用更新的 RU/s 重新部署模板。
+> * 当你在 Azure Cosmos 帐户中添加或删除位置时，无法同时修改其他属性。 必须单独执行这些操作。
+
+若要创建以下任何 Azure Cosmos DB 资源，请将下列示例模板复制到新的 json 文件中。 在部署具有不同名称和值的同一资源的多个实例时，可以选择创建要使用的参数 json 文件。 可以通过多种方式部署 Azure 资源管理器模板，包括 [Azure 门户](../azure-resource-manager/templates/deploy-portal.md)、[Azure CLI](../azure-resource-manager/templates/deploy-cli.md)、[Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md) 和 [GitHub](../azure-resource-manager/templates/deploy-to-azure-button.md)。
+
+<a name="create-autoscale"></a>
+
+## <a name="azure-cosmos-account-for-mongodb-with-autoscale-provisioned-throughput"></a>预配了自动缩放吞吐量的 Azure Cosmos for MongoDB 帐户
+
+此模板将创建一个 Azure Cosmos for MongoDB API 帐户（3.2 或 3.6），其中包含两个在数据库级别共享自动缩放吞吐量的集合。 此模板还支持从 Azure 快速入门模板库进行一键部署。
+
+[![部署到 Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-mongodb-autoscale%2Fazuredeploy.json)
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+       "accountName": {
+          "type": "string",
+          "defaultValue": "[concat('mongodb-', uniqueString(resourceGroup().id))]",
+          "metadata": {
+             "description": "Cosmos DB account name"
+          }
+       },
+       "location": {
+          "type": "string",
+          "defaultValue": "[resourceGroup().location]",
+          "metadata": {
+             "description": "Location for the Cosmos DB account."
+          }
+       },
+       "primaryRegion":{
+          "type":"string",
+          "metadata": {
+             "description": "The primary replica region for the Cosmos DB account."
+          }
+       },
+       "secondaryRegion":{
+          "type":"string",
+          "metadata": {
+            "description": "The secondary replica region for the Cosmos DB account."
+         }
+       },
+       "serverVersion": {
+          "defaultValue": "3.6",
+          "allowedValues": [
+             "3.2",
+             "3.6"
+          ],
+          "type": "String",
+          "metadata": {
+             "description": "Specifies the MongoDB server version to use."
+          }
+       },
+       "defaultConsistencyLevel": {
+          "type": "string",
+          "defaultValue": "Session",
+          "allowedValues": [ 
+               "Eventual", 
+               "ConsistentPrefix", 
+               "Session", 
+               "BoundedStaleness", 
+               "Strong" 
+            ],
+          "metadata": {
+             "description": "The default consistency level of the Cosmos DB account."
+          }
+       },
+       "maxStalenessPrefix": {
+          "type": "int",
+          "defaultValue": 100000,
+          "minValue": 10,
+          "maxValue": 2147483647,
+          "metadata": {
+             "description": "Max stale requests. Required for BoundedStaleness. Valid ranges, Single Region: 10 to 1000000. Multi Region: 100000 to 1000000."
+          }
+       },
+       "maxIntervalInSeconds": {
+          "type": "int",
+          "defaultValue": 300,
+          "minValue": 5,
+          "maxValue": 86400,
+          "metadata": {
+             "description": "Max lag time (seconds). Required for BoundedStaleness. Valid ranges, Single Region: 5 to 84600. Multi Region: 300 to 86400."
+          }
+       },
+       "databaseName": {
+          "type": "string",
+          "metadata": {
+             "description": "The name for the Mongo DB database"
+          }
+       },
+       "collection1Name": {
+          "type": "string",
+          "metadata": {
+             "description": "The name for the first Mongo DB collection"
+          }
+       },
+       "collection2Name": {
+          "type": "string",
+          "metadata": {
+             "description": "The name for the second Mongo DB collection"
+          }
+       },
+       "throughputPolicy":{
+            "type": "string",
+            "defaultValue": "Autoscale",
+            "allowedValues": [ 
+               "Manual", 
+               "Autoscale" 
+            ],
+            "metadata": {
+                "description": "The throughput policy for the Database"
+            }
+        },
+        "manualProvisionedThroughput": {
+            "type": "int",
+            "defaultValue": 400,
+            "minValue": 400,
+            "maxValue": 1000000,
+            "metadata": {
+                "description": "Throughput value when using Provisioned Throughput Policy for the Database"
+            }
+        },
+        "autoscaleMaxThroughput": {
+            "type": "int",
+            "defaultValue": 4000,
+            "minValue": 4000,
+            "maxValue": 1000000,
+            "metadata": {
+                "description": "Maximum throughput when using Autoscale Throughput Policy for the Database"
+            }
+        }
+    },
+    "variables": {
+       "accountName": "[toLower(parameters('accountName'))]",
+       "consistencyPolicy": {
+          "Eventual": {
+             "defaultConsistencyLevel": "Eventual"
+          },
+          "ConsistentPrefix": {
+             "defaultConsistencyLevel": "ConsistentPrefix"
+          },
+          "Session": {
+             "defaultConsistencyLevel": "Session"
+          },
+          "BoundedStaleness": {
+             "defaultConsistencyLevel": "BoundedStaleness",
+             "maxStalenessPrefix": "[parameters('maxStalenessPrefix')]",
+             "maxIntervalInSeconds": "[parameters('maxIntervalInSeconds')]"
+          },
+          "Strong": {
+             "defaultConsistencyLevel": "Strong"
+          }
+       },
+       "locations": [
+          {
+             "locationName": "[parameters('primaryRegion')]",
+             "failoverPriority": 0,
+             "isZoneRedundant": false
+          },
+          {
+             "locationName": "[parameters('secondaryRegion')]",
+             "failoverPriority": 1,
+             "isZoneRedundant": false
+          }
+       ],
+       "throughputPolicy": {
+            "Manual": {
+                  "throughput": "[parameters('manualProvisionedThroughput')]"
+            },
+            "Autoscale": {
+                  "autoscaleSettings": { "maxThroughput": "[parameters('autoscaleMaxThroughput')]" }
+            }
+        },
+        "throughputPolicyToUse": "[if(equals(parameters('throughputPolicy'), 'Manual'), variables('throughputPolicy').Manual, variables('throughputPolicy').Autoscale)]"
+    },
+    "resources": [
+         {
+          "type": "Microsoft.DocumentDB/databaseAccounts",
+          "name": "[variables('accountName')]",
+          "apiVersion": "2020-04-01",
+          "location": "[parameters('location')]",
+          "kind": "MongoDB",
+          "properties": {
+             "consistencyPolicy": "[variables('consistencyPolicy')[parameters('defaultConsistencyLevel')]]",
+             "locations": "[variables('locations')]",
+             "databaseAccountOfferType": "Standard",
+             "apiProperties": {
+                "serverVersion": "[parameters('serverVersion')]"
+             }
+          }
+       },
+       {
+          "type": "Microsoft.DocumentDB/databaseAccounts/mongodbDatabases",
+          "name": "[concat(variables('accountName'), '/', parameters('databaseName'))]",
+          "apiVersion": "2020-04-01",
+          "dependsOn": [ 
+             "[resourceId('Microsoft.DocumentDB/databaseAccounts/', variables('accountName'))]" 
+            ],
+          "properties":{
+             "resource":{
+                "id": "[parameters('databaseName')]"
+             },
+             "options": "[variables('throughputPolicyToUse')]"
+          }
+       },
+       {
+          "type": "Microsoft.DocumentDb/databaseAccounts/mongodbDatabases/collections",
+          "name": "[concat(variables('accountName'), '/', parameters('databaseName'), '/', parameters('collection1Name'))]",
+          "apiVersion": "2020-04-01",
+          "dependsOn": [ 
+             "[resourceId('Microsoft.DocumentDB/databaseAccounts/mongodbDatabases', variables('accountName'), parameters('databaseName'))]" 
+            ],
+          "properties":
+          {
+             "resource":{
+                "id":  "[parameters('collection1Name')]",
+                "shardKey": { "user_id": "Hash" },
+                "indexes": [
+                   {
+                      "key": { "keys":["user_id", "user_address"] },
+                      "options": { "unique": "true" }
+                   },
+                   {
+                      "key": { "keys":["_ts"] },
+                      "options": { "expireAfterSeconds": "2629746" }
+                   }
+                ],
+                "options": {
+                   "If-Match": "<ETag>"
+                }
+             }
+          }
+       },
+       {
+          "type": "Microsoft.DocumentDb/databaseAccounts/mongodbDatabases/collections",
+          "name": "[concat(variables('accountName'), '/', parameters('databaseName'), '/', parameters('collection2Name'))]",
+          "apiVersion": "2020-04-01",
+          "dependsOn": [ 
+             "[resourceId('Microsoft.DocumentDB/databaseAccounts/mongodbDatabases', variables('accountName'),  parameters('databaseName'))]" 
+            ],
+          "properties":
+          {
+             "resource":{
+                "id":  "[parameters('collection2Name')]",
+                "shardKey": { "company_id": "Hash" },
+                "indexes": [
+                   {
+                      "key": { "keys":["company_id", "company_address"] },
+                      "options": { "unique": "true" }
+                   },
+                   {
+                      "key": { "keys":["_ts"] },
+                      "options": { "expireAfterSeconds": "2629746" }
+                   }
+                ],
+                "options": {
+                   "If-Match": "<ETag>"
+                }
+             }
+          }
+       }
+    ]
+ }
+
+```
+
+<a name="create-manual"></a>
+
+## <a name="azure-cosmos-account-for-mongodb-with-standard-provisioned-throughput"></a>预配了标准吞吐量的 Azure Cosmos for MongoDB 帐户
+
+此模板将创建一个 Azure Cosmos for MongoDB API 帐户（3.2 或 3.6），其中包含两个在数据库级别共享 400 RU/s 标准（手动）吞吐量的集合。 此模板还支持从 Azure 快速入门模板库进行一键部署。
+
+[![部署到 Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-mongodb%2Fazuredeploy.json)
 
 ```json
 {
@@ -96,14 +367,6 @@ ms.locfileid: "82134658"
             "maxValue": 86400,
             "metadata": {
                 "description": "Max lag time (seconds). Required for BoundedStaleness. Valid ranges, Single Region: 5 to 84600. Multi Region: 300 to 86400."
-            }
-        },  
-        "multipleWriteLocations": {
-            "type": "bool",
-            "defaultValue": false,
-            "allowedValues": [ true, false ],
-            "metadata": {
-                "description": "Enable multi-master to make all regions writable."
             }
         },
         "databaseName": {
@@ -174,7 +437,7 @@ ms.locfileid: "82134658"
         {
             "type": "Microsoft.DocumentDB/databaseAccounts",
             "name": "[variables('accountName')]",
-            "apiVersion": "2019-08-01",
+            "apiVersion": "2020-03-01",
             "location": "[parameters('location')]",
             "kind": "MongoDB",
             "properties": {
@@ -183,14 +446,13 @@ ms.locfileid: "82134658"
                 "databaseAccountOfferType": "Standard",
                 "apiProperties": {
                     "serverVersion": "[parameters('serverVersion')]"
-                },
-                "enableMultipleWriteLocations": "[parameters('multipleWriteLocations')]"
+                }
             }
         },
         {
             "type": "Microsoft.DocumentDB/databaseAccounts/mongodbDatabases",
             "name": "[concat(variables('accountName'), '/', parameters('databaseName'))]",
-            "apiVersion": "2019-08-01",
+            "apiVersion": "2020-03-01",
             "dependsOn": [ "[resourceId('Microsoft.DocumentDB/databaseAccounts/', variables('accountName'))]" ],
             "properties":{
                 "resource":{
@@ -202,7 +464,7 @@ ms.locfileid: "82134658"
         {
             "type": "Microsoft.DocumentDb/databaseAccounts/mongodbDatabases/collections",
             "name": "[concat(variables('accountName'), '/', parameters('databaseName'), '/', parameters('collection1Name'))]",
-            "apiVersion": "2019-08-01",
+            "apiVersion": "2020-03-01",
             "dependsOn": [ "[resourceId('Microsoft.DocumentDB/databaseAccounts/mongodbDatabases', variables('accountName'), parameters('databaseName'))]" ],
             "properties":
             {
@@ -228,7 +490,7 @@ ms.locfileid: "82134658"
         {
             "type": "Microsoft.DocumentDb/databaseAccounts/mongodbDatabases/collections",
             "name": "[concat(variables('accountName'), '/', parameters('databaseName'), '/', parameters('collection2Name'))]",
-            "apiVersion": "2019-08-01",
+            "apiVersion": "2020-03-01",
             "dependsOn": [ "[resourceId('Microsoft.DocumentDB/databaseAccounts/mongodbDatabases', variables('accountName'),  parameters('databaseName'))]" ],
             "properties":
             {
@@ -253,52 +515,17 @@ ms.locfileid: "82134658"
         }
     ]
 }
-
 ```
-
-### <a name="deploy-via-the-azure-cli"></a>通过 Azure CLI 部署
-
-使用以下脚本通过 Azure Local CLI 部署资源管理器模板。
-
-[!INCLUDE [azure-cli-2-azurechinacloud-environment-parameter](../../includes/azure-cli-2-azurechinacloud-environment-parameter.md)]
-
-<!--Not Available on **Copy** the script and select **Try it** to open the Azure Cloud shell. To paste the script, right-click the shell, and then select **Paste**:-->
-
-<!--MOONCAKE: parameter correct on --name $accountName-->
-
-```azurecli
-
-read -p 'Enter the Resource Group name: ' resourceGroupName
-read -p 'Enter the location (i.e. chinanorth2): ' location
-read -p 'Enter the account name: ' accountName
-read -p 'Enter the primary region (i.e. chinanorth2): ' primaryRegion
-read -p 'Enter the secondary region (i.e. chinaeast2): ' secondaryRegion
-read -p 'Enter the database name: ' databaseName
-read -p 'Enter the first collection name: ' collection1Name
-read -p 'Enter the second collection name: ' collection2Name
-
-az group create --name $resourceGroupName --location $location
-az group deployment create --resource-group $resourceGroupName \
-  --template-uri https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-cosmosdb-mongodb/azuredeploy.json \
-  --parameters accountName=$accountName primaryRegion=$primaryRegion secondaryRegion=$secondaryRegion \
-  databaseName=$databaseName collection1Name=$collection1Name collection2Name=$collection2Name
-
-az cosmosdb show --resource-group $resourceGroupName --name $accountName --output tsv
-```
-
-`az cosmosdb show` 命令显示预配后的新建 Azure Cosmos 帐户。 
-
-<!--Not Available on If you choose to use a locally installed version of Azure CLI instead of using CloudShell, see [Azure Command-Line Interface (CLI)](/cli/azure/) article.-->
 
 ## <a name="next-steps"></a>后续步骤
 
 下面是一些其他资源：
 
-- [Azure 资源管理器文档](/azure-resource-manager/)
+* [Azure 资源管理器文档](/azure-resource-manager/)
 
     <!--Not Available on - [Azure Cosmos DB resource provider schema](https://docs.microsoft.com/azure/templates/microsoft.documentdb/allversions)-->
     
-- [Azure Cosmos DB 快速入门模板](https://github.com/Azure/azure-quickstart-templates/?resourceType=Microsoft.DocumentDB&pageNumber=1&sort=Popular)
-- [排查常见的 Azure 资源管理器部署错误](../azure-resource-manager/templates/common-deployment-errors.md)
+* [Azure Cosmos DB 快速入门模板](https://github.com/Azure/azure-quickstart-templates/?resourceType=Microsoft.DocumentDB&pageNumber=1&sort=Popular)
+* [排查常见 Azure 资源管理器部署错误](../azure-resource-manager/templates/common-deployment-errors.md)
 
 <!-- Update_Description: update meta properties, wording update, update link -->

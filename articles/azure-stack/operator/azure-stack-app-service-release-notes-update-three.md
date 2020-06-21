@@ -5,16 +5,16 @@ author: WenJason
 manager: digimobile
 ms.topic: article
 origin.date: 03/25/2019
-ms.date: 05/18/2020
+ms.date: 06/22/2020
 ms.author: v-jay
 ms.reviewer: anwestg
 ms.lastreviewed: 08/20/2019
-ms.openlocfilehash: c2453543398261382222e1b1d7e7211521badd72
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.openlocfilehash: d9ab1768148de80c5d89cc9367e8a58fabb1051a
+ms.sourcegitcommit: d86e169edf5affd28a1c1a4476d72b01a7fb421d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83422503"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85096485"
 ---
 # <a name="app-service-on-azure-stack-hub-update-3-release-notes"></a>Azure Stack Hub 上的应用服务 Update 3 发行说明
 
@@ -27,7 +27,7 @@ ms.locfileid: "83422503"
 
 Azure Stack Hub 上的应用服务 Update 3 的内部版本号为 **74.0.13698.31**。
 
-### <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>先决条件
 
 在开始部署之前，请参阅[在 Azure Stack Hub 上部署应用服务的先决条件](azure-stack-app-service-before-you-get-started.md)。
 
@@ -35,7 +35,7 @@ Azure Stack Hub 上的应用服务 Update 3 的内部版本号为 **74.0.13698.3
 
 ![应用服务角色状态](media/azure-stack-app-service-release-notes-update-three/image01.png)
 
-### <a name="new-features-and-fixes"></a>新功能和修复
+## <a name="new-features-and-fixes"></a>新功能和修复
 
 Azure Stack Hub 上的 Azure 应用服务 Update 3 包含以下改进和修复：
 
@@ -67,7 +67,7 @@ Azure Stack Hub 上的 Azure 应用服务 Update 3 包含以下改进和修复�
   - [适用于基于 x64 的系统的 Windows Server 2016 的服务堆栈更新 (KB4132216)](https://support.microsoft.com/help/4132216/servicing-stack-update-for-windows-10-1607-may-17-2018)
   - [适用于基于 x64 的系统的 Windows Server 2016 的 2018-07 累积更新 (KB4338822)](https://support.microsoft.com/help/4338822/windows-10-update-kb4338822)
 
-### <a name="post-update-steps-optional"></a>更新后步骤（可选）
+## <a name="post-update-steps-optional"></a>更新后步骤（可选）
 
 对于希望为基于 Azure Stack Hub 的现有 Azure 应用服务部署迁移到包含的数据库的客户，请在完成基于 Azure Stack Hub 的 Azure 应用服务 1.3 更新后执行以下步骤：
 
@@ -171,7 +171,7 @@ Azure Stack Hub 上的 Azure 应用服务 Update 3 包含以下改进和修复�
         SELECT containment FROM sys.databases WHERE NAME LIKE (SELECT DB_NAME())
     ```
 
-### <a name="known-issues-post-installation"></a>已知问题（安装后）
+## <a name="known-issues-post-installation"></a>已知问题（安装后）
 
 - 当应用服务部署在现有虚拟网络中并且文件服务器仅在专用网络上可用时，工作人员将无法访问文件服务器。 在 Azure Stack Hub 部署文档的 Azure 应用服务中也提到了此问题。
 
@@ -187,7 +187,7 @@ Azure Stack Hub 上的 Azure 应用服务 Update 3 包含以下改进和修复�
  * 优先级：700
  * 姓名：Outbound_Allow_SMB445
 
-### <a name="known-issues-for-cloud-admins-operating-azure-app-service-on-azure-stack-hub"></a>云管理员在操作基于 Azure Stack Hub 的 Azure 应用服务时的已知问题
+## <a name="known-issues-for-cloud-admins-operating-azure-app-service-on-azure-stack-hub"></a>云管理员在操作基于 Azure Stack Hub 的 Azure 应用服务时的已知问题
 
 请参阅“Azure Stack Hub 1807 发行说明”中的文档。
 

@@ -10,12 +10,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 05/08/2018
-ms.openlocfilehash: 7fe84a8745a8d43ce7631840ac76719333dd29dc
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 3cb9764771d25341bb22f4fb08e948c36408313a
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75599018"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097438"
 ---
 # <a name="store-access-credentials-securely-on-an-azure-data-science-virtual-machine"></a>在 Azure Data Science Virtual Machine 上安全存储访问凭据
 
@@ -62,7 +62,7 @@ curl https://<Vault Name>.vault.azure.net/secrets/SQLPasswd?api-version=2016-10-
 ## <a name="access-storage-keys-from-the-dsvm"></a>从 DSVM 访问存储密钥
 
 ```
-# Prerequisite: You have granted your VMs MSI access to use storage account access keys based on instructions at /active-directory/managed-service-identity/tutorial-linux-vm-access-storage. This article describes the process in more detail.
+# Prerequisite: You have granted your VMs MSI access to use storage account access keys based on instructions at https://docs.azure.cn/active-directory/managed-service-identity/tutorial-linux-vm-access-storage. This article describes the process in more detail.
 
 y=`curl http://localhost:50342/oauth2/token --data "resource=https://management.azure.com/" -H Metadata:true`
 ytoken=`echo $y | python -c "import sys, json; print(json.load(sys.stdin)['access_token'])"`

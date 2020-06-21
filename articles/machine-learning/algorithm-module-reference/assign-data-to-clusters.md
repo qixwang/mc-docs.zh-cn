@@ -10,12 +10,12 @@ author: likebupt
 ms.author: v-yiso
 origin.date: 11/19/2019
 ms.date: 03/09/2020
-ms.openlocfilehash: 5eaf0c194d4e75431acdae6fb7ac85ad8148475f
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: b40fb26f8436db8d992d879d4f99be3897db0ebf
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78154951"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097393"
 ---
 # <a name="module-assign-data-to-clusters"></a>模块：将数据分配到聚类
 
@@ -44,7 +44,7 @@ ms.locfileid: "78154951"
   
     如果清除此复选框，则仅返回结果。 将预测作为 Web 服务的一部分创建时，可以使用此选项。
   
-5.  运行管道。  
+5.  提交管道。  
   
 ### <a name="results"></a>结果
 

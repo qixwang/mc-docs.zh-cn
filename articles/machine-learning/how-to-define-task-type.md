@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
 ms.date: 11/04/2019
-ms.openlocfilehash: 58dadd36d8a9bf951ba6763b64edf715c2466cdf
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: b86eec516fff9bfaedb5054621b7fff046b68ab3
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75599600"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097136"
 ---
 # <a name="how-to-define-a-machine-learning-task"></a>如何定义机器学习任务 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -76,6 +76,6 @@ automl_config = AutoMLConfig(task="classification")
 
 + 详细了解 Azure 机器学习中的[自动化机器学习](concept-automated-ml.md)。
 + 详细了解如何在 Azure 机器学习中[自动训练时序预测模型](how-to-auto-train-forecast.md)
-+ 尝试[自动化机器学习分类](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/model-explanation)教程。
-+ 尝试[自动化机器学习回归](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/model-explanation)示例笔记本。
++ 尝试[自动化机器学习分类](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-credit-card-fraud/auto-ml-classification-credit-card-fraud.ipynb)教程。
++ 尝试[自动化机器学习回归](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/regression-explanation-featurization/auto-ml-regression-explanation-featurization.ipynb)示例笔记本。
 

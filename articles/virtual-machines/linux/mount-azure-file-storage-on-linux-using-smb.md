@@ -1,25 +1,19 @@
 ---
 title: 使用 SMB 在 Linux VM 上装载 Azure 文件存储
 description: 如何通过 Azure CLI 使用 SMB 在 Linux VM 上装载 Azure 文件存储
-services: virtual-machines-linux
-documentationcenter: virtual-machines-linux
 author: Johnnytechn
-manager: digimobile
-editor: ''
-ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.topic: article
-ms.tgt_pltfrm: vm-linux
+ms.topic: how-to
 ms.workload: infrastructure
 origin.date: 06/28/2018
-ms.date: 04/13/2020
+ms.date: 06/17/2020
 ms.author: v-johya
-ms.openlocfilehash: 9f0fb99aad53c074c9f6dfe5a268ff6ac26703e7
-ms.sourcegitcommit: ebedf9e489f5218d4dda7468b669a601b3c02ae5
+ms.openlocfilehash: c6441ee499acf1c03cc876cce95f6c615d934ba2
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82159095"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097409"
 ---
 <!--Notice: Verify successfully on bash cmdlet-->
 # <a name="mount-azure-file-storage-on-linux-vms-using-smb"></a>使用 SMB 在 Linux VM 上装载 Azure 文件存储
@@ -32,9 +26,10 @@ ms.locfileid: "82159095"
 
 本指南需要运行 Azure CLI 2.0.4 或更高版本。 若要查找版本，请运行 **az --version**。 如需进行安装或升级，请参阅[安装 Azure CLI](https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest)。 
 
+
 ## <a name="create-a-resource-group"></a>创建资源组
 
-在“中国东部”位置创建名为 *myResourceGroup* 的资源组。 
+在“中国东部”位置创建名为 *myResourceGroup* 的资源组。
 
 ```azurecli
 az group create --name myResourceGroup --location chinaeast
@@ -42,7 +37,7 @@ az group create --name myResourceGroup --location chinaeast
 
 ## <a name="create-a-storage-account"></a>创建存储帐户
 
-使用 [az storage account create](https://docs.azure.cn/cli/storage/account?view=azure-cli-latest#az-storage-account-create) 在创建的资源组中创建一个新存储帐户。 此示例创建一个名为 *mySTORAGEACCT\<random number>* 的存储帐户，然后将该存储帐户的名称置于变量 **STORAGEACCT** 中。 存储帐户名称必须唯一，请使用 `$RANDOM` 将一个数字追加到名称末尾，使之变得唯一。
+使用 [az storage account create](https://docs.azure.cn/cli/storage/account?view=azure-cli-latest#az-storage-account-create) 在创建的资源组中创建一个新存储帐户。 此示例创建名为 *mySTORAGEACCT\<random number>* 的存储帐户，然后将该存储帐户的名称置于变量 **STORAGEACCT** 中。 存储帐户名称必须唯一，请使用 `$RANDOM` 将一个数字追加到名称末尾，使之变得唯一。
 
 ```azurecli
 STORAGEACCT=$(az storage account create \
@@ -87,6 +82,7 @@ az storage share create --name myshare \
 
 Azure 文件使用通过 TCP 端口 445 进行通信的 SMB 协议。 如果无法装载 Azure 文件共享，请确保防火墙未阻止 TCP 端口 445。
 
+
 ```bash
 mkdir -p /mnt/MyAzureFileShare
 ```
@@ -101,6 +97,7 @@ sudo mount -t cifs //$STORAGEACCT.file.core.chinacloudapi.cn/myshare /mnt/MyAzur
 
 以上命令使用 [mount](https://linux.die.net/man/8/mount) 命令装载特定于 [cifs](https://linux.die.net/man/8/mount.cifs) 的 Azure 文件共享和选项。 具体来说，file_mode 和 dir_mode 选项将文件和目录设置为权限 `0777`。 `0777` 权限为所有用户提供读取、写入和执行权限。 可以通过将值替换为其他 [chmod 权限](https://en.wikipedia.org/wiki/Chmod)来更改这些权限。 还可以使用其他 [cifs](https://linux.die.net/man/8/mount.cifs) 选项，例如 gid 或 uid。 
 
+
 ## <a name="persist-the-mount"></a>持久保留装载
 
 重新启动 Linux VM 后，已装载的 SMB 共享会在关闭过程中卸载。 若要在启动时重新装载 SMB 共享，请向 Linux /etc/fstab 添加一行。 Linux 使用 fstab 文件列出在启动过程中需要装载的文件系统。 添加 SMB 共享可确保文件存储共享是 Linux VM 的永久装载文件系统。 使用 cloud-init 可以将文件存储 SMB 共享添加到新的 VM。
@@ -108,6 +105,7 @@ sudo mount -t cifs //$STORAGEACCT.file.core.chinacloudapi.cn/myshare /mnt/MyAzur
 ```bash
 //myaccountname.file.core.chinacloudapi.cn/mystorageshare /mnt/mymountpoint cifs vers=3.0,username=mystorageaccount,password=myStorageAccountKeyEndingIn==,dir_mode=0777,file_mode=0777
 ```
+
 为了提高生产环境的安全性，应将凭据存储在 fstab 之外。
 
 ## <a name="next-steps"></a>后续步骤

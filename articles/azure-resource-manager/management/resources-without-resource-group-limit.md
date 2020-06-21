@@ -2,15 +2,16 @@
 title: 没有 800 计数限制的资源
 description: 列出可以在一个资源组中有 800 多个实例的 Azure 资源类型。
 ms.topic: conceptual
-origin.date: 04/06/2020
-ms.date: 04/30/2020
+author: rockboyfor
+origin.date: 05/04/2020
+ms.date: 06/22/2020
 ms.author: v-yeche
-ms.openlocfilehash: 68f3089ac7ae76a400814082d3e840d6ead74684
-ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
+ms.openlocfilehash: 4aea958b1c793c001236a8839ccb373279887959
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82596248"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098626"
 ---
 # <a name="resources-not-limited-to-800-instances-per-resource-group"></a>没有每个资源组 800 个实例限制的资源
 
@@ -156,6 +157,15 @@ ms.locfileid: "82596248"
 ## <a name="microsoftservicebus"></a>Microsoft.ServiceBus
 
 * namespaces
+
+## <a name="microsoftservicefabricmesh"></a>Microsoft.ServiceFabricMesh
+
+* applications
+* containerGroups
+* gateways
+* networks
+* secrets
+* volumes
 
 ## <a name="microsoftstorage"></a>Microsoft.Storage
 

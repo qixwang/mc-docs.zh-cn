@@ -5,15 +5,15 @@ author: yegu-ms
 ms.service: cache
 ms.devlang: java
 ms.topic: quickstart
-ms.date: 04/26/2020
+ms.date: 06/16/2020
 ms.author: v-junlch
 ms.custom: mvc, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 9b58b5e384c757dcccb45e1970760315115382d9
-ms.sourcegitcommit: e3512c5c2bbe61704d5c8cbba74efd56bfe91927
+ms.openlocfilehash: ce6d537e55a0d5cd71c979f43f2fc49e2cb77d82
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82267610"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097307"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-java"></a>快速入门：将 Azure Redis 缓存与 Java 配合使用
 
@@ -53,7 +53,7 @@ mvn archetype:generate -DarchetypeGroupId=org.apache.maven.archetypes -Darchetyp
     <dependency>
         <groupId>redis.clients</groupId>
         <artifactId>jedis</artifactId>
-        <version>2.9.0</version>
+        <version>3.2.0</version>
         <type>jar</type>
         <scope>compile</scope>
     </dependency>

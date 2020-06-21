@@ -13,12 +13,12 @@ origin.date: 11/22/2017
 author: Johnnytechn
 ms.date: 06/04/2020
 ms.author: v-johya
-ms.openlocfilehash: 837d7a900a08eda270333a6da812c3e6aca4fd31
-ms.sourcegitcommit: 5ae04a3b8e025986a3a257a6ed251b575dbf60a1
+ms.openlocfilehash: c807335aa292d1902a43083342b4a59b220d3420
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84440739"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097107"
 ---
 # <a name="import-soap-api"></a>导入 SOAP API
 
@@ -59,7 +59,7 @@ ms.locfileid: "84440739"
 
     * **初学者**
     * **无限制**   
-8. 输入其他 API 设置。 可以在创建过程中设置这些值，也可以稍后转到“设置”选项卡来配置这些值。在[导入和发布第一个 API](import-and-publish.md#-import-and-publish-a-backend-api) 教程中对这些设置进行了说明。
+8. 输入其他 API 设置。 可以在创建过程中设置这些值，也可以稍后转到“设置”选项卡来配置这些值。在[导入和发布第一个 API](import-and-publish.md) 教程中对这些设置进行了说明。
 9. 选择“创建” 。
 
 ### <a name="test-the-new-api-in-the-administrative-portal"></a>在管理门户中测试新的 API

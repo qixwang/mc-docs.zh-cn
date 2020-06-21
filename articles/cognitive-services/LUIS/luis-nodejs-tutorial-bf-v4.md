@@ -7,12 +7,12 @@ ms.topic: tutorial
 origin.date: 10/14/2019
 ms.date: 12/05/2019
 ms.author: v-lingwu
-ms.openlocfilehash: a2fd1fdb2c515735eb149874a907e48411b6350e
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: d4a870afbf9570ce935b5cb5006c96c221a453bb
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78154549"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098618"
 ---
 # <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-nodejs"></a>教程：通过 Node.js 使用启用了语言理解的 Web 应用机器人
 
@@ -65,7 +65,7 @@ ms.locfileid: "78154549"
 1. 选择“创建”  。 随即会创建机器人服务并将其部署到 Azure。 在此过程中，会创建名为 `luis-nodejs-bot-XXXX` 的 LUIS 应用。 此名称基于 Azure 机器人服务应用名称。
 
     > [!div class="mx-imgBorder"]
-    > [![创建 Web 应用机器人](./media/bfv4-nodejs/create-web-app-service.png)](./media/bfv4-nodejs/create-web-app-service.png)
+    > [![创建 Web 应用机器人](./media/bfv4-nodejs/create-web-app-service.png)](./media/bfv4-nodejs/create-web-app-service.png#lightbox)
 
     请等到创建机器人服务后再继续操作。
 
@@ -218,3 +218,10 @@ ms.locfileid: "78154549"
 
 
 [!INCLUDE [Bot Information](../../../includes/cognitive-services-qnamaker-luis-bot-info.md)]
+
+## <a name="next-steps"></a>后续步骤
+
+查看更多使用聊天机器人的[示例](https://github.com/microsoft/botframework-solutions)。
+
+> [!div class="nextstepaction"]
+> [构建包含自定义使用者域的语言理解应用](luis-quickstart-intents-only.md)

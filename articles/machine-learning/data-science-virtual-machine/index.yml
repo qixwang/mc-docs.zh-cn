@@ -11,36 +11,30 @@ metadata:
   author: gvashishtha
   ms.author: gopalv
   ms.date: 09/13/2019
-  ms.openlocfilehash: eb74f77bd60f2f61a66cec9ce3a2ed32518855c7
-  ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+  ms.openlocfilehash: 54544287da2cb74251b2bf6a9ab90af2b0d0078c
+  ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 04/17/2020
-  ms.locfileid: "75598999"
+  ms.lasthandoff: 06/19/2020
+  ms.locfileid: "85097467"
 landingContent:
-- title: 开始使用 DSVM
+- title: Data Science Virtual Machine 入门
   linkLists:
   - linkListType: overview
     links:
-    - text: 什么是 DSVM？
+    - text: 什么是 Data Science Virtual Machine？
       url: overview.md
-    - text: 什么是 Geo AI DSVM？
-      url: geo-ai-dsvm-overview.md
-    - text: DSVM 中包含的工具
+    - text: Data Science Virtual Machine 包含的工具
       url: tools-included.md
     - text: 发行说明
       url: release-notes.md
   - linkListType: get-started
     links:
-    - text: 创建 Windows DSVM
+    - text: 创建 Windows Data Science Virtual Machine
       url: provision-vm.md
-    - text: 创建 Ubuntu DSVM
+    - text: 创建 Ubuntu Data Science Virtual Machine
       url: dsvm-ubuntu-intro.md
-    - text: 创建 CentOS DSVM
-      url: linux-dsvm-intro.md
-    - text: 创建地理 AI DSVM
-      url: provision-geo-ai-dsvm.md
-- title: 管理 DSVM
+- title: 管理 Data Science Virtual Machine
   linkLists:
   - linkListType: architecture
     links:
@@ -48,7 +42,7 @@ landingContent:
       url: dsvm-enterprise-overview.md
   - linkListType: how-to-guide
     links:
-    - text: 创建自动缩放的 DSVM 池
+    - text: 创建自动缩放的 Data Science Virtual Machine 池
       url: dsvm-pools.md
     - text: 与 Azure Active Directory 集成
       url: dsvm-common-identity.md
@@ -61,4 +55,4 @@ landingContent:
     - text: Azure 机器学习
       url: /machine-learning/
     - text: 比较我们的 ML 产品
-      url: /architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure/machine-learning/studio/context/ml-context
+      url: https://docs.microsoft.com/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure/machine-learning/studio/context/ml-context

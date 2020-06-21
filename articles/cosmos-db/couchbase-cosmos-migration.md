@@ -4,15 +4,15 @@ description: 有关从 CouchBase 迁移到 Azure Cosmos DB SQL API 的分步指�
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 02/11/2020
-ms.date: 04/27/2020
+ms.date: 06/22/2020
 ms.author: v-yeche
 author: rockboyfor
-ms.openlocfilehash: 79f23018a79aef6d14628db9795d107de7bf1d02
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.openlocfilehash: e3f0d9a3fbdb837852af46a68e2a8cb0ff08a0f0
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82134518"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098309"
 ---
 # <a name="migrate-from-couchbase-to-azure-cosmos-db-sql-api"></a>从 CouchBase 迁移到 Azure Cosmos DB SQL API
 
@@ -313,41 +313,22 @@ Mono<CosmosItemResponse> objMono = objItem.delete(ro);
 
 1. 考虑使用“/ID”作为主键，以确保可以直接在特定的分区中执行查找操作。 创建一个集合，并指定“/ID”作为分区键。
 
-1. 完全关闭索引功能。 由于执行的是查找操作，因此不会带来任何索引开销。 若要禁用索引功能，请登录到 Azure 门户并转到“Azure Cosmos DB 帐户”。 打开“数据资源管理器”，选择你的**数据库**和**容器**。  打开“规模和设置”选项卡，然后选择“索引策略”。   索引策略目前如下所示：
+1. 完全关闭索引功能。 由于执行的是查找操作，因此不会带来任何索引开销。 若要禁用索引功能，请登录到 Azure 门户并转到“Azure Cosmos DB 帐户”。 打开“数据资源管理器”，选择你的**数据库**和**容器**。 打开“规模和设置”选项卡，然后选择“索引策略”。  索引策略目前如下所示：
 
     ```json
     {
-       "indexingMode": "consistent",
-       "includedPaths": 
-       [
-           {
-            "path": "/*",
-            "indexes": 
-             [
-                {
-                  "kind": "Range",
-                  "dataType": "Number"
-                },
-                {
-                  "kind": "Range",
-                  "dataType": "String"
-                },
-                {
-                   "kind": "Spatial",
-                   "dataType": "Point"
-                }
-             ]
-          }
-       ],
-       "excludedPaths": 
-       [
-         {
-             "path": "/path/to/single/excluded/property/?"
-         },
-         {
-             "path": "/path/to/root/of/multiple/excluded/properties/*"
-         }
-      ]
+        "indexingMode": "consistent",
+        "automatic": true,
+        "includedPaths": [
+            {
+                "path": "/*"
+            }
+        ],
+        "excludedPaths": [
+            {
+                "path": "/\"_etag\"/?"
+            }
+        ]
     }
     ````
 
@@ -355,7 +336,10 @@ Mono<CosmosItemResponse> objMono = objItem.delete(ro);
 
     ```json
     {
-       "indexingMode": "none"
+        "indexingMode": "none",
+        "automatic": false,
+        "includedPaths": [],
+        "excludedPaths": []
     }
     ```
 

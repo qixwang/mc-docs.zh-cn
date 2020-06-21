@@ -3,16 +3,16 @@ title: 使用适用于 Cosmos DB 的 Azure Functions 触发器配置和读取日
 description: 了解如何在使用适用于 Cosmos DB 的 Azure Functions 触发器时向 Azure Functions 日志记录管道公开日志
 author: rockboyfor
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 origin.date: 07/17/2019
-ms.date: 02/10/2020
+ms.date: 06/22/2020
 ms.author: v-yeche
-ms.openlocfilehash: bf1880190a81a57e78405773adc235d754abc7f9
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: bbf46682cf693403ef4480854be75915fb9228af
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "76980524"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098507"
 ---
 # <a name="how-to-configure-and-read-the-logs-when-using-azure-functions-trigger-for-cosmos-db"></a>如何在使用适用于 Cosmos DB 的 Azure Functions 触发器时配置和读取日志
 

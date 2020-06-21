@@ -4,19 +4,18 @@ titleSuffix: Azure Machine Learning
 description: 对 Azure Kubernetes 服务中的 Web 服务使用 AAD 标识，以便在评分期间访问云资源。
 services: machine-learning
 author: trevorbye
-ms.author: v-yiso
+ms.author: trbye
 ms.reviewer: aashishb
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
-origin.date: 02/10/2020
-ms.date: 03/16/2020
-ms.openlocfilehash: 44d6190b4ab9c4e1c81bd13dc93d9687156ba7b0
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.topic: how-to
+ms.date: 02/10/2020
+ms.openlocfilehash: 7c36524d7e253980b6c6c4e84433166d1d02c23b
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78934875"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097357"
 ---
 # <a name="use-azure-ad-identity-with-your-machine-learning-web-service-in-azure-kubernetes-service"></a>对 Azure Kubernetes 服务中的机器学习 Web 服务使用 Azure AD 标识
 
@@ -26,7 +25,7 @@ ms.locfileid: "78934875"
 
 - [机器学习服务的 Azure CLI 扩展](reference-azure-machine-learning-cli.md)、[用于 Python 的 Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) 或 [Azure 机器学习 Visual Studio Code 扩展](tutorial-setup-vscode-extension.md)。
 
-- 使用 `kubectl` 命令访问 AKS 群集。 有关详细信息，请参阅[连接到群集](/aks/kubernetes-walkthrough#connect-to-the-cluster)
+- 使用 `kubectl` 命令访问 AKS 群集。 有关详细信息，请参阅[连接到群集](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough#connect-to-the-cluster)
 
 - 已部署到 AKS 群集的 Azure 机器学习 Web 服务。
 
@@ -79,7 +78,7 @@ ms.locfileid: "78934875"
 
 首先，在要将 Azure 标识分配到的 AKS 群集中，确定部署的名称和命名空间。 可运行以下命令获取此信息。 命名空间应是 Azure 机器学习工作区名称，部署名称应是门户中所示的终结点名称。
 
-```azurecli-interactive
+```azurecli
 kubectl get deployment --selector=isazuremlapp=true --all-namespaces --show-labels
 ```
 
@@ -97,7 +96,7 @@ spec:
 
 编辑部署以添加 Azure 标识选择器标签。 转到 `/spec/template/metadata/labels` 下面的以下节。 应会看到类似于 `isazuremlapp: “true”` 的值。 按如下所示添加 aad-pod-identity 标签。
 
-```azurecli-interactive
+```azurecli
     kubectl edit deployment/<name of deployment> -n azureml-<name of workspace>
 ```
 
@@ -112,13 +111,13 @@ spec:
 
 若要验证是否正确添加了该标签，请运行以下命令。
 
-```azurecli-interactive
+```azurecli
    kubectl get deployment <name of deployment> -n azureml-<name of workspace> --show-labels
 ```
 
 若要查看所有 Pod 状态，请运行以下命令。
 
-```azurecli-interactive
+```azurecli
     kubectl get pods -n azureml-<name of workspace>
 ```
 
@@ -126,7 +125,7 @@ spec:
 
 ## <a name="assign-the-appropriate-roles-to-your-azure-identity"></a>将适当的角色分配到 Azure 标识
 
-[为 Azure 托管标识分配适当的角色](/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal)，以访问其他 Azure 资源。 确保分配的角色具有正确的**数据操作**。 例如，[存储 Blob 数据读取者角色](/role-based-access-control/built-in-roles#storage-blob-data-reader)对存储 Blob 拥有读取权限，而普通的[读取者角色](/role-based-access-control/built-in-roles#reader)可能没有这些权限。
+[为 Azure 托管标识分配适当的角色](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal)，以访问其他 Azure 资源。 确保分配的角色具有正确的**数据操作**。 例如，[存储 Blob 数据读取者角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader)对存储 Blob 拥有读取权限，而普通的[读取者角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader)可能没有这些权限。
 
 ## <a name="use-azure-identity-with-your-machine-learning-web-service"></a>对机器学习 Web 服务使用 Azure 标识
 

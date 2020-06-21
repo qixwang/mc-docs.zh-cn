@@ -7,14 +7,14 @@ ms.subservice: cosmosdb-mongo
 ms.devlang: dotnet
 ms.topic: quickstart
 origin.date: 05/21/2019
-ms.date: 04/27/2020
+ms.date: 06/22/2020
 ms.author: v-yeche
-ms.openlocfilehash: f812e81a0665c714a64a796e51d76d76b59a559c
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.openlocfilehash: 5263f19a6da4a90b36864191c97c2270e19755cd
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82134962"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098668"
 ---
 # <a name="quickstart-build-a-net-web-app-using-azure-cosmos-dbs-api-for-mongodb"></a>快速入门：使用 Azure Cosmos DB 的 API for MongoDB 构建 .NET Web 应用 
 
@@ -24,7 +24,7 @@ ms.locfileid: "82134962"
 > * [Node.js](create-mongodb-nodejs.md)
 > * [Python](create-mongodb-flask.md)
 > * [Xamarin](create-mongodb-xamarin.md)
-> * [Golang](create-mongodb-golang.md)
+> * [Golang](create-mongodb-go.md)
 >  
 
 Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服务。 可快速创建和查询文档、键/值和图形数据库，所有这些都受益于 Cosmos DB 核心的多区域分布和水平缩放功能。 
@@ -62,7 +62,7 @@ Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服�
     cd "C:\git-samples"
     ```
 
-3. 运行下列命令，克隆示例存储库。 此命令在计算机上创建示例应用程序的副本。 
+3. 运行下列命令以克隆示例存储库。 此命令在计算机上创建示例应用程序的副本。 
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-mongodb-dotnet-getting-started.git
@@ -131,29 +131,29 @@ Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服�
 
 现在返回到 Azure 门户，获取连接字符串信息，并将其复制到应用。
 
-1. 在 [Azure 门户](https://portal.azure.cn/)上的 Cosmos 帐户中，在左侧导航栏中单击“连接字符串”  ，然后单击“读写密钥”  。 使用屏幕右侧的复制按钮将用户名、密码和主机复制到下一步的 Dal.cs 文件中。
+1. 在 [Azure 门户](https://portal.azure.cn/)上的 Cosmos 帐户中，在左侧导航栏中单击“连接字符串”，然后单击“读写密钥”。 使用屏幕右侧的复制按钮将用户名、密码和主机复制到下一步的 Dal.cs 文件中。
 
 2. 打开 **DAL** 目录中的 **Dal.cs** 文件。 
 
-3. 从门户中复制“用户名”  值（使用“复制”按钮），并在 **Dal.cs** 文件中将其设为“用户名”  的值。 
+3. 从门户中复制“用户名”值（使用复制按钮），并在 **Dal.cs** 文件中将其设为“用户名”的值。 
 
-4. 然后从门户复制“主机”  值，并在 **Dal.cs** 文件中将其设为“主机”  的值。 
+4. 然后从门户复制“主机”值，并在 **Dal.cs** 文件中将其设为“主机”的值。 
 
-5. 最后从门户复制“密码”  值，并在 **Dal.cs** 文件中将其设为“密码”  的值。 
+5. 最后从门户复制“密码”值，并在 **Dal.cs** 文件中将其设为“密码”的值。 
 
 现在，你已在应用中更新了全部所需信息，它可以与 Cosmos DB 进行通信。 
 
 ## <a name="run-the-web-app"></a>运行 Web 应用
 
-1. 在 Visual Studio 中，右键单击解决方案资源管理器  中的项目，并单击“管理 NuGet 包”  。 
+1. 在 Visual Studio 中，右键单击解决方案资源管理器中的项目，并单击“管理 NuGet 包”。 
 
-2. 在 NuGet“浏览”  框中，键入 *MongoDB.Driver*。
+2. 在 NuGet“浏览”框中，键入 *MongoDB.Driver*。
 
-3. 从结果中安装“MongoDB.Driver”  库。 这会安装 MongoDB.Driver 包以及所有依赖项。
+3. 从结果中安装“MongoDB.Driver”库。 这会安装 MongoDB.Driver 包以及所有依赖项。
 
-4. 单击 Ctrl+F5 运行应用程序。 你的应用会显示在浏览器中。 
+4. 单击 Ctrl+F5 运行应用程序。 应用会显示在浏览器中。 
 
-5. 在浏览器中单击“创建”  ，并在“任务列表”应用中创建一些新任务。
+5. 在浏览器中单击“创建”，并在“任务列表”应用中创建一些新任务。
 
 ## <a name="review-slas-in-the-azure-portal"></a>在 Azure 门户中查看 SLA
 

@@ -1,21 +1,21 @@
 ---
 title: 有关选择时序 ID 的最佳做法 - Azure 时序见解 | Microsoft Docs
 description: 了解在 Azure 时序见解预览版中选择时序 ID 时的最佳做法。
-author: deepakpalled
+author: shipramishra
 ms.author: v-junlch
-manager: cshankar
+manager: diviso
 ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 05/20/2020
+ms.date: 06/16/2020
 ms.custom: seodec18
-ms.openlocfilehash: ae658aa500fd034439f74650f355b8cb117ba61d
-ms.sourcegitcommit: a04b0b1009b0c62f2deb7c7acee75a1304d98f87
+ms.openlocfilehash: e268aa124b76d81f906a643a57e4b794ec8f953f
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83796843"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097243"
 ---
 # <a name="best-practices-for-choosing-a-time-series-id"></a>选择时序 ID 的最佳做法
 
@@ -28,8 +28,8 @@ ms.locfileid: "83796843"
 > [!IMPORTANT]
 > 时序 ID 如下：
 >
-> * 区分大小写的属性  ：搜索、比较和更新以及分区都会用到字母和字符的大小写。
-> * 不可变属性  ：一旦创建，无法更改。
+> * 区分大小写的属性：搜索、比较和更新以及分区都会用到字母和字符的大小写。
+> * 不可变属性：一旦创建，无法更改。
 
 > [!TIP]
 > 如果事件源是 IoT 中心，则时序 ID 可能是 iothub-connection-device-id。
@@ -40,7 +40,7 @@ ms.locfileid: "83796843"
 * 在[时序模型](./time-series-insights-update-tsm.md)的叶节点级别，时序 ID 应是唯一的。
 * 时序 ID 属性名称字符串的字符数限制为 128 个。 时序 ID 属性值的字符数限制为 1024 个。
 * 如果时序 ID 的某个唯一属性值缺失，该值将被视为 null 值，并遵循相同的唯一性约束规则。
-* 此外，最多可以选择三个键属性作为时序 ID。  这些属性的组合将是表示时序 ID 的组合键。  
+* 此外，最多可以选择三个键属性作为时序 ID。 这些属性的组合将是表示时序 ID 的组合键。  
   > [!NOTE]
   > 三个键属性必须是字符串。
   > 必须针对此组合键运行查询，而不能每次查询一个属性。
@@ -75,9 +75,7 @@ ms.locfileid: "83796843"
 
 然后，可在 Azure 门户中输入组合键，如下所示：
 
-```JSON
-[{"name":"sensorId","type":"String"},{"name":"flrRm","type":"String"},{"name":"location","type":"string"}]
-```
+[![配置环境的时序 ID。](./media/v2-how-to-tsid/configure-environment-key.png)](./media/v2-how-to-tsid/configure-environment-key.png#lightbox)
 
 ## <a name="next-steps"></a>后续步骤
 

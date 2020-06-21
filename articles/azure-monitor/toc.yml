@@ -516,7 +516,7 @@
             - name: 代理概述
               href: platform/agents-overview.md
             - name: 常见问题
-              href: 'faq.md#agents'
+              href: faq.md#agents
             - name: Azure 诊断扩展
               items:
                 - name: 概述
@@ -614,7 +614,7 @@
             - name: 概述
               href: insights/container-insights-overview.md
             - name: 常见问题
-              href: 'faq.md#azure-monitor-for-containers'
+              href: faq.md#azure-monitor-for-containers
             - name: 启用监视
               items:
                 - name: 启用监视概述
@@ -724,8 +724,6 @@
               href: platform/metrics-charts.md
             - name: 指标图表示例
               href: platform/metric-chart-samples.md
-            - name: 排查指标图表问题
-              href: platform/metrics-troubleshoot.md
         - name: 日志
           items:
             - name: 日志查询概述
@@ -980,8 +978,6 @@
               href: platform/autoscale-common-scale-patterns.md
             - name: 使用自定义指标缩放
               href: platform/autoscale-custom-metric.md
-            - name: 缩放 VM 规模集
-              href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md?toc=/azure/azure-monitor/toc.json
             - name: 使用资源管理器模板缩放 VM 规模集
               href: platform/autoscale-virtual-machine-scale-sets.md
             - name: 使用 Webhook 和电子邮件通知

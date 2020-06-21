@@ -7,12 +7,12 @@ ms.topic: conceptual
 origin.date: 07/23/2019
 ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: 115e3aaa40891d776db6e486b8c217713e816172
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.openlocfilehash: 0cd323057cbcdac513cad212dc111aff60a08cdd
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82134941"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098404"
 ---
 # <a name="multiple-region-data-distribution-with-azure-cosmos-db---overview"></a>使用 Azure Cosmos DB 多区域分配数据 - 概述
 
@@ -32,6 +32,7 @@ Azure Cosmos DB 是一个多区域分布式数据库服务，旨在提供低延�
 
 <!--MOONCAKE: CORRECT ON (./media/distribute-data-globally/deployment-topology.png)-->
 
+<a name="key-benefits-of-global-distribution"></a>
 ## <a name="key-benefits-of-multiple-region-distribution"></a>多区域分布的主要优点
 
 **构建多区域主动-主动应用。** 使用新式多主数据库复制协议，每个区域都支持写入和读取。 多主数据库功能还可以实现：

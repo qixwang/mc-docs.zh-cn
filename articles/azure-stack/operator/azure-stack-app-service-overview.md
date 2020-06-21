@@ -3,17 +3,17 @@ title: Azure Stack 上的 Azure 应用服务概述
 description: Azure Stack Hub 上的 Azure 应用服务和 Azure Functions 概述。
 author: WenJason
 ms.topic: article
-origin.date: 01/13/2020
-ms.date: 05/18/2020
+origin.date: 05/05/2020
+ms.date: 06/22/2020
 ms.author: v-jay
 ms.reviewer: anwestg
 ms.lastreviewed: 01/13/2019
-ms.openlocfilehash: 4e3865032661cd40dba1bae7de59b269e486db52
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.openlocfilehash: ee67d091ad69abff33d3ae2ccddc92d7657d888e
+ms.sourcegitcommit: d86e169edf5affd28a1c1a4476d72b01a7fb421d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83422412"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85096234"
 ---
 # <a name="azure-app-service-and-azure-functions-on-azure-stack-hub-overview"></a>Azure Stack Hub 上的 Azure 应用服务和 Azure Functions 概述
 
@@ -53,7 +53,6 @@ Azure Stack Hub 上的 Azure 应用服务是 Azure 的一种可用于 Azure Stac
 在 Azure 中，有共享辅助角色和专用辅助角色。 共享辅助角色支持高密度的多租户应用托管，并且只有一组共享辅助角色。 专用服务器只由一个租户使用，有三种大小：小型、中型和大型。 使用这些术语并非总是能够描述本地客户需求。 在 Azure Stack Hub 上的应用服务中，资源提供程序管理员会定义他们想要提供的辅助角色层。 根据自己的独特托管需求，你可以定义多组共享辅助角色或不同组的专用辅助角色。 使用这些辅助角色层定义，他们随后可以定义自己的定价 SKU。
 
 ## <a name="portal-features"></a>门户功能
-
 
 Azure Stack Hub 上的 Azure 应用服务使用 Azure 应用服务所用的相同用户界面， 这同样适用于后端。 但是，某些功能在 Azure Stack Hub 中已禁用。 目前，Azure 特定的预期或这些功能需要的服务在 Azure Stack Hub 中尚不可用。
 

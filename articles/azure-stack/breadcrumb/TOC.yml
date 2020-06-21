@@ -9,9 +9,6 @@
         - name: 中心 ASDK
           tocHref: /azure-stack/asdk/
           topicHref: /azure-stack/asdk/index
-        - name: 混合
-          tocHref: /azure-stack/hybrid/
-          topicHref: /azure-stack/hybrid/index
         - name: 中心操作员
           tocHref: /azure-stack/operator/
           topicHref: /azure-stack/operator/index

@@ -53,8 +53,6 @@
       href: load-balancer-multivip-overview.md
     - name: 出站连接
       href: load-balancer-outbound-connections.md
-    - name: 出站规则
-      href: load-balancer-outbound-rules-overview.md
     - name: 在空闲超时的情况下重置 TCP
       href: load-balancer-tcp-reset.md
     - name: 内置安全控件
@@ -126,12 +124,14 @@
           href: move-across-regions-internal-load-balancer-portal.md
         - name: 内部负载均衡器 - PowerShell
           href: move-across-regions-internal-load-balancer-powershell.md
-    - name: 故障排除
-      items:
-        - name: 对 Azure 负载均衡器进行故障排除
-          href: load-balancer-troubleshoot.md
-        - name: 排查常见部署错误
-          href: load-balancer-common-deployment-errors.md
+- name: 故障排除
+  items:
+    - name: 对 Azure 负载均衡器进行故障排除
+      href: load-balancer-troubleshoot.md
+    - name: 排查常见部署错误
+      href: load-balancer-common-deployment-errors.md
+    - name: 解决常见的出站连接问题
+      href: troubleshoot-outbound-connection.md
 - name: 参考
   items:
     - name: 代码示例
@@ -139,17 +139,17 @@
     - name: Azure PowerShell
       href: 'https://docs.microsoft.com/powershell/module/az.network'
     - name: Azure CLI
-      href: 'https://docs.azure.cn/zh-cn/cli/network/lb'
+      href: /cli/network/lb
     - name: .NET
-      href: 'https://docs.azure.cn/zh-cn/dotnet/api/microsoft.azure.management.network.models'
+      href: /dotnet/api/microsoft.azure.management.network.models
     - name: Java
-      href: 'https://docs.azure.cn/zh-cn/java/api/com.microsoft.azure.management.network'
+      href: /java/api/com.microsoft.azure.management.network
     - name: Node.js
-      href: 'http://azure.github.io/azure-sdk-for-node/azure-arm-network/latest/LoadBalancers.html'
+      href: 'https://docs.microsoft.com/javascript/api/@azure/arm-network/loadbalancers'
     - name: Ruby
-      href: 'http://www.rubydoc.info/gems/azure_mgmt_network/Azure/ARM/Network/LoadBalancers'
+      href: 'https://www.rubydoc.info/gems/azure_mgmt_network/Azure/Network/Mgmt/V2020_03_01/LoadBalancers'
     - name: Python
-      href: 'http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.network.operations.html#azure.mgmt.network.operations.LoadBalancersOperations'
+      href: 'https://docs.microsoft.com/python/api/azure-mgmt-network/azure.mgmt.network.v2019_02_01.operations.loadbalancersoperations'
     - name: REST
       href: 'https://msdn.microsoft.com/library/azure/mt163651.aspx'
     - name: Resource Manager 模板

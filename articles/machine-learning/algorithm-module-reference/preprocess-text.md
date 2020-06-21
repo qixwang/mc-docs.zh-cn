@@ -9,18 +9,18 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 09/01/2019
-ms.openlocfilehash: d166dc8c576b30265c3b760b6e9cffa09b11f7fa
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: a7aa50aaaaa92ea60c07385bcbd0caa66a0067e8
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75598406"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097280"
 ---
 # <a name="preprocess-text"></a>预处理文本
 
 本文介绍 Azure 机器学习设计器（预览版）中的一个模块。
 
-使用“预处理文本”  模块来清理和简化文本。 它支持以下常见文本处理操作：
+使用“预处理文本”模块来清理和简化文本。 它支持以下常见文本处理操作：
 
 * 删除非索引字词
 * 使用正则表达式搜索并替换特定目标字符串
@@ -29,15 +29,15 @@ ms.locfileid: "75598406"
 * 删除某些特定类别的字符，如数字、特殊字符和重复字符序列（如 "aaaa"）
 * 标识和删除电子邮件和 URL
 
-“预处理文本”  模块当前仅支持英语。
+“预处理文本”模块当前仅支持英语。
 
 ## <a name="configure-text-preprocessing"></a>配置文本预处理  
 
-1.  将“预处理文本”  模块添加到 Azure 机器学习中的管道。 可以在“文本分析”  下找到此模块。
+1.  将“预处理文本”模块添加到 Azure 机器学习中的管道。 可以在“文本分析”下找到此模块。
 
 1. 连接一个数据集，其中至少有一个列包含文本。
 
-1. 从“语言”  下拉列表中选择语言。
+1. 从“语言”下拉列表中选择语言。
 
 1. **要清理的文本列**：选择要预处理的列。
 
@@ -75,7 +75,7 @@ ms.locfileid: "75598406"
     
 1. **展开谓词缩写形式**：此选项仅适用于使用谓词缩写形式的语言；目前仅限英语。 
 
-    例如，选择此选项后，可以将短语 "wouldn't stay there"（不会留在那里）  替换为 "would not stay there"  。
+    例如，选择此选项后，可以将短语 "wouldn't stay there"（不会留在那里）替换为 "would not stay there"。
 
 1. **将反斜杠规范化为斜杠**：选择此选项可将 `\\` 的所有实例映射到 `/`。
 
@@ -83,7 +83,7 @@ ms.locfileid: "75598406"
 
     例如，字符串 `MS---WORD` 将拆分成三个标记，`MS`、`-` 和 `WORD`。
 
-1. 运行管道。
+1. 提交管道。
 
 ## <a name="next-steps"></a>后续步骤
 

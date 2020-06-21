@@ -5,14 +5,14 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 04/30/2020
-ms.date: 06/15/2020
+ms.date: 06/22/2020
 ms.author: v-yeche
-ms.openlocfilehash: f62caa84ec5e952a71372e85e1db82bf53785c21
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+ms.openlocfilehash: d1eb8752fdf3f2b09ade0aebdaa14dad8cf119f3
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84200223"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098498"
 ---
 <!--Verified successfully-->
 # <a name="convert-session-token-formats-in-net-sdk"></a>在 .NET SDK 中转换会话令牌格式

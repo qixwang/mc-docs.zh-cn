@@ -3,20 +3,20 @@ title: 对部署进行故障排除
 description: 了解如何监视和排查 Azure 资源管理器模板部署问题。 显示活动日志和部署历史记录。
 author: rockboyfor
 origin.date: 01/15/2019
-ms.date: 01/06/2020
+ms.date: 06/22/2020
 ms.topic: tutorial
 ms.author: v-yeche
-ms.openlocfilehash: 21e3a854e68e5b994ef6615b486ac0146e6346f2
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: c4e5bde5b93fe7cf2dcc1aef1352524463506091
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75631646"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098718"
 ---
 <!--Verify Succesfully-->
-# <a name="tutorial-troubleshoot-resource-manager-template-deployments"></a>教程：排查资源管理器模板部署问题
+# <a name="tutorial-troubleshoot-arm-template-deployments"></a>教程：排查 ARM 模板部署问题
 
-了解如何排查资源管理器模板部署错误。 在本教程中，请先在模板中设置两个错误，然后了解如何使用活动日志和部署历史记录来解决问题。
+了解如何排查 Azure 资源管理器 (ARM) 模板部署错误。 在本教程中，请先在模板中设置两个错误，然后了解如何使用活动日志和部署历史记录来解决问题。
 
 有两种类型的错误与模板部署相关：
 
@@ -28,10 +28,10 @@ ms.locfileid: "75631646"
 本教程涵盖以下任务：
 
 > [!div class="checklist"]
-> * 创建有问题的模板
-> * 排查验证错误
-> * 排查部署错误
-> * 清理资源
+> - 创建有问题的模板
+> - 排查验证错误
+> - 排查部署错误
+> - 清理资源
 
 如果没有 Azure 订阅，请在开始前[创建一个试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。
 
@@ -41,19 +41,19 @@ ms.locfileid: "75631646"
 
 若要完成本文，需要做好以下准备：
 
-* 包含资源管理器工具扩展的 Visual Studio Code。 请参阅[使用 Visual Studio Code 创建 Azure 资源管理器模板](use-vs-code-to-create-template.md)。
+- 包含资源管理器工具扩展的 Visual Studio Code。 请参阅[使用 Visual Studio Code 创建 ARM 模板](use-vs-code-to-create-template.md)。
 
 ## <a name="create-a-problematic-template"></a>创建有问题的模板
 
 打开 [Azure 快速入门模板](https://github.com/Azure/azure-quickstart-templates/)中名为[创建标准存储帐户](https://github.com/Azure/azure-quickstart-templates/tree/master/101-storage-account-create/)的模板，设置两个模板问题。
 
-1. 在 Visual Studio Code 中，选择“文件”>“打开文件”。  
-2. 在“文件名”中粘贴以下 URL： 
+1. 在 Visual Studio Code 中，选择“文件”>“打开文件”。 
+2. 在“文件名”中粘贴以下 URL：
 
     ```url
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
     ```
-3. 选择“打开”以打开该文件。 
+3. 选择“打开”以打开该文件。
 4. 将 **apiVersion** 行更改为以下行：
 
     ```json
@@ -62,11 +62,11 @@ ms.locfileid: "75631646"
     - **apiVersion1** 是无效的元素名称。 它是验证错误。
     - API 版本应该是“2018-07-01”。  它是部署错误。
 
-5. 选择“文件”>“另存为”，将该文件作为 **azuredeploy.json** 保存到本地计算机。  
+5. 选择“文件”>“另存为”，将该文件作为 **azuredeploy.json** 保存到本地计算机。 
 
 ## <a name="troubleshoot-the-validation-error"></a>排查验证错误
 
-请参阅[部署模板](quickstart-create-templates-use-visual-studio-code.md#deploy-the-template)部分，了解如何部署模板。
+请参阅[部署模板](template-tutorial-create-multiple-instances.md#deploy-the-template)部分，了解如何部署模板。
 
 你会从 shell 获得类似于以下内容的错误：
 
@@ -80,7 +80,7 @@ New-AzResourceGroupDeployment : 4:29:24 PM - Error: Code=InvalidRequestContent; 
 
 ## <a name="troubleshoot-the-deployment-error"></a>排查部署错误
 
-请参阅[部署模板](quickstart-create-templates-use-visual-studio-code.md#deploy-the-template)部分，了解如何部署模板。
+请参阅[部署模板](template-tutorial-create-multiple-instances.md#deploy-the-template)部分，了解如何部署模板。
 
 你会从 shell 获得类似于以下内容的错误：
 
@@ -92,14 +92,14 @@ New-AzResourceGroupDeployment : 4:48:50 PM - Resource Microsoft.Storage/storageA
   }
 }'
 ```
-
+<!--MoonCake Correct on the mistake of changing the US to China. It's right now and skip this next time-->
 可通过以下过程从 Azure 门户找出部署错误：
 
 1. 登录到 [Azure 门户](https://portal.azure.cn)。
-2. 打开资源组，方法是：选择“资源组”，然后选择资源组名称。  此时会看到“部署”下显示“1 个失败”   。
+2. 打开资源组，方法是：选择“资源组”，然后选择资源组名称。 此时会看到“部署”下显示“1 个失败” 。
 
     ![资源管理器教程故障排除](./media/template-tutorial-troubleshoot/resource-manager-template-deployment-error.png)
-3. 选择“错误详细信息”。 
+3. 选择“错误详细信息”。
 
     ![资源管理器教程故障排除](./media/template-tutorial-troubleshoot/resource-manager-template-deployment-error-details.png)
 
@@ -110,7 +110,7 @@ New-AzResourceGroupDeployment : 4:48:50 PM - Resource Microsoft.Storage/storageA
 也可在活动日志中查找错误：
 
 1. 登录到 [Azure 门户](https://portal.azure.cn)。
-2. 选择“Monitor” > “活动日志”。  
+2. 选择“Monitor” > “活动日志”。 
 3. 使用筛选器查找日志。
 
     ![资源管理器教程故障排除](./media/template-tutorial-troubleshoot/resource-manager-template-deployment-activity-log.png)
@@ -123,13 +123,13 @@ New-AzResourceGroupDeployment : 4:48:50 PM - Resource Microsoft.Storage/storageA
 
 不再需要 Azure 资源时，请通过删除资源组来清理部署的资源。
 
-1. 在 Azure 门户上的左侧菜单中选择“资源组”  。
-2. 在“按名称筛选”字段中输入资源组名称。 
+1. 在 Azure 门户上的左侧菜单中选择“资源组”。
+2. 在“按名称筛选”字段中输入资源组名称。
 3. 选择资源组名称。  应会看到，该资源组中总共有六个资源。
-4. 在顶部菜单中选择“删除资源组”。 
+4. 在顶部菜单中选择“删除资源组”。
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何排查资源管理器模板部署错误。  有关详细信息，请参阅[排查使用 Azure 资源管理器时的常见 Azure 部署错误](common-deployment-errors.md)。
+本教程介绍了如何排查 ARM 模板部署错误。  有关详细信息，请参阅[排查使用 Azure 资源管理器时的常见 Azure 部署错误](common-deployment-errors.md)。
 
 <!-- Update_Description: update meta properties, wording update, update link -->

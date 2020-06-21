@@ -4,16 +4,16 @@ description: 本文介绍了有关使用 JavaScript 语言集成式查询 API �
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
-origin.date: 08/01/2019
-ms.date: 02/10/2020
+origin.date: 05/07/2020
+ms.date: 06/22/2020
 ms.author: v-yeche
 ms.reviewer: sngun
-ms.openlocfilehash: 2ee0a190c42ee9e161f841320a47846273805922
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 5972c5edad9e33ad2172bd1d80dfa23c896ce824
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "76980444"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098564"
 ---
 # <a name="javascript-query-api-in-azure-cosmos-db"></a>Azure Cosmos DB 中的 JavaScript 查询 API
 

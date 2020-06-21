@@ -12,12 +12,12 @@ metadata:
   origin.date: 03/10/2020
   ms.date: 04/20/2020
   ms.author: v-tawe
-  ms.openlocfilehash: 65be0f1e0fcf187705d6cc264150a5a6d5fab22f
-  ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+  ms.openlocfilehash: bf9f9e2bc56571eb97e4bcec0631e8d24f72817d
+  ms.sourcegitcommit: 304d3ef3c9e65c3e85977b3afb9985fbc0f908d6
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 04/24/2020
-  ms.locfileid: "82126790"
+  ms.lasthandoff: 06/19/2020
+  ms.locfileid: "85095958"
 landingContent:
 - title: 关于文本转语音
   linkLists:
@@ -50,7 +50,7 @@ landingContent:
     - text: 标准语音支持
       url: language-support.md#standard-voices
     - text: 神经语音支持
-      url: language-support.md#neural-voices-free-preview
+      url: language-support.md#neural-voices
     - text: SSML 语音集
       url: speech-ssml-phonetic-sets.md
     - text: 文本转语音定价

@@ -1,25 +1,27 @@
 ---
 title: 将机器学习试验代码转换为生产代码
 titleSuffix: Azure Machine Learning
-description: 了解如何使用 MLOpsPython 代码模板将机器学习试验代码转换为生产代码。
+description: 使用 MLOpsPython 代码模板将机器学习试验笔记本转换为生产就绪代码。 然后，可以测试、部署和自动执行该代码。
 author: bjcmit
 ms.author: v-yiso
 ms.service: machine-learning
 ms.topic: tutorial
 origin.date: 03/13/2020
 ms.date: 05/11/2020
-ms.openlocfilehash: 6ab1a513822e72c2ca91f1f0ab35a39008f2bf37
-ms.sourcegitcommit: d210eb03ed6432aeefd3e9b1c77d2c92a6a8dbca
+ms.openlocfilehash: 7b84a6e33771325de701a76ea717f0f4cd8b982e
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82591445"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097121"
 ---
-# <a name="tutorial-convert-ml-experimental-code-to-production-code"></a>教程：将机器学习试验代码转换为生产代码
+# <a name="tutorial-convert-ml-experiments-to-production-python-code"></a>教程：将 ML 试验转换为生产 Python 代码
+
+本教程介绍如何使用 MLOpsPython 代码模板和 Azure 机器学习，将 Juptyer 笔记本转换为 Python 脚本，更方便地进行测试和自动化操作。 通常，此过程用于从 Juptyer 笔记本获取试验/训练代码，并将其转换为 Python 脚本。 然后，可以在生产环境中使用这些脚本进行测试和 CI/CD 自动化。 
 
 机器学习项目要求提供试验，在其中可以使用真实数据集通过 Jupyter Notebook 等灵活工具测试假设条件。 准备好将模型投入生产后，应将模型代码放在生产代码存储库中。 在某些情况下，模型代码必须转换为 Python 脚本才能放到生产代码存储库中。 本教程提供有关如何将试验代码导出到 Python 脚本的建议方法。  
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 清理不必要的代码

@@ -5,19 +5,18 @@ description: 了解如何使用 Azure 机器学习 PyTorch 估算器类在企业
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
-ms.author: v-yiso
+ms.topic: how-to
+ms.author: peterlu
 author: peterclu
 ms.reviewer: peterlu
-origin.date: 08/01/2019
-ms.date: 03/16/2020
+ms.date: 08/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: debcd068c5fdb2a38fc0fcb6aaafe77b259e2148
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 45957cb3d770131a85ff64a24cc61a7521f08fd8
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78850207"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097042"
 ---
 # <a name="train-pytorch-deep-learning-models-at-scale-with-azure-machine-learning"></a>使用 Azure 机器学习大规模训练 Pytorch 深度学习模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -236,4 +235,5 @@ import horovod
 * [在训练期间跟踪运行指标](how-to-track-experiments.md)
 * [优化超参数](how-to-tune-hyperparameters.md)
 * [部署定型的模型](how-to-deploy-and-where.md)
-* [Azure 中分布式深度学习训练的参考体系结构](https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/ai/training-deep-learning)
+* [Azure 中分布式深度学习训练的参考体系结构](/azure/architecture/reference-architectures/ai/training-deep-learning)
+
