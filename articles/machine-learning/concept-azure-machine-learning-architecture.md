@@ -11,12 +11,12 @@ author: Blackmist
 origin.date: 12/27/2019
 ms.date: 03/09/2020
 ms.custom: seodec18
-ms.openlocfilehash: 47105c1c49b5b4563a22267c675c04bc1074fca7
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 5af2e9cdde861ef38d691b42792c20f0b9d58425
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80343571"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097082"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Azure 机器学习的工作原理：体系结构和概念
 
@@ -47,7 +47,7 @@ ms.locfileid: "80343571"
 
 +  使用[适用于 Python 的 Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) 来与任何 Python 环境中的服务交互。
 + 使用[适用于 R 的 Azure 机器学习 SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html) 来与任何 R 环境中的服务交互。
-+ 使用 [Azure 机器学习 CLI](/machine-learning/reference-azure-machine-learning-cli) 自动化机器学习活动。
++ 使用 [Azure 机器学习 CLI](/machine-learning/reference-azure-machine-learning-cli) 自动执行机器学习活动。
 + 使用 [Azure 机器学习设计器（预览版）](concept-designer.md)执行工作流步骤且无需编写任何代码。
 
 
@@ -86,7 +86,7 @@ ms.locfileid: "80343571"
 
 ### <a name="workspaces"></a>工作区
 
-[工作区](concept-workspace.md)是 Azure 机器学习的顶级资源。 它提供一个中心位置来处理使用 Azure 机器学习时创建的所有项目。 可与其他人共享工作区。 有关工作区的详细介绍，请参阅[什么是 Azure 机器学习工作区？](concept-workspace.md)。
+[工作区](concept-workspace.md)是 Azure 机器学习的顶级资源。 它提供一个中心位置来处理使用 Azure 机器学习时创建的所有项目。 可与其他人共享工作区。 有关工作区的详细说明，请参阅[什么是 Azure 机器学习工作区](concept-workspace.md)。
 
 ### <a name="experiments"></a>试验
 
@@ -96,7 +96,7 @@ ms.locfileid: "80343571"
 
 ### <a name="runs"></a>运行次数
 
-运行是训练脚本的单次执行。 试验通常包含多个运行。
+一次运行就是执行一次训练脚本。 试验通常包含多个运行。
 
 Azure 机器学习在试验中记录所有运行并存储以下信息：
 
@@ -120,7 +120,7 @@ Azure 机器学习在试验中记录所有运行并存储以下信息：
 提交运行时，Azure 机器学习会将包含该脚本的目录压缩为 zip 文件并将其发送到计算目标。 然后解压缩 zip 文件并运行脚本。 Azure 机器学习还将该 zip 文件存储为快照，作为运行记录的一部分。 有权限访问工作区的任何用户都可以浏览运行记录并下载快照。
 
 > [!NOTE]
-> 为了防止在快照中包含不必要的文件，请使用 ignore 文件（.gitignore 或 .amlignore）。 将此文件放在 Snapshot 目录中，并在其中添加要忽略的文件名。 .amlignore 文件使用的[语法和模式与 .gitignore 文件相同](https://git-scm.com/docs/gitignore)。 如果这两个文件都存在，则 .amlignore 文件的优先级更高。
+> [!INCLUDE [amlinclude-info](../../includes/machine-learning-amlignore-gitignore.md)]
 
 ### <a name="github-tracking-and-integration"></a>GitHub 跟踪与集成
 
@@ -136,7 +136,7 @@ Azure 机器学习在试验中记录所有运行并存储以下信息：
 
 使用机器学习管道可以创建和管理将各个机器学习阶段整合到一起的工作流。 例如，管道可以包括数据准备、模型训练、模型部署以及推理/评分阶段。 每个阶段可以包含多个步骤，每个步骤都能够以无人参与方式在各种计算目标中运行。 
 
-管道步骤可重用，如果这些步骤的输出没有更改，则无需重新运行前面的步骤即可运行。 例如，如果数据未更改，则无需重新运行高开销的数据准备步骤，即可重新训练模型。 管道还使数据科学家能够展开协作，同时可以处理机器学习工作流的不同环节。
+管道步骤可重用，如果这些步骤的输出没有更改，则无需重新运行前面的步骤即可运行。 例如，如果数据未更改，你可以重新训练模型，不需要重新运行成本高昂的数据准备步骤。 管道还使数据科学家能够展开协作，同时可以处理机器学习工作流的不同环节。
 
 有关机器学习管道与此服务的详细信息，请参阅[管道和 Azure 机器学习](concept-ml-pipelines.md)。
 
@@ -169,7 +169,7 @@ Azure ML 环境用于指定在为数据准备、模型训练和模型服务创�
 
 可以在本地计算上使用环境对象来开发训练脚本、在 Azure 机器学习计算上重复使用同一环境进行大规模的模型训练，甚至可以使用相同的环境部署模型。 
 
-了解[如何创建和管理用于训练与推理的可重用 ML 环境](how-to-use-environments.md)。
+了解[如何创建和管理可重用的 ML 环境](how-to-use-environments.md)进行训练和推理。
 
 ### <a name="training-scripts"></a>定型脚本
 
@@ -188,7 +188,7 @@ Azure ML 环境用于指定在为数据准备、模型训练和模型服务创�
 * [使用估算器训练 ML 模型](how-to-train-ml-models.md)。
 * [使用 Azure 机器学习大规模训练 Pytorch 深度学习模型](how-to-train-pytorch.md)
 * [使用 Azure 机器学习大规模训练并注册 TensorFlow 模型](how-to-train-tensorflow.md)
-* [使用 Azure 机器学习大规模训练并注册 Chainer 模型](how-to-train-chainer.md)
+* [使用 Azure 机器学习大规模训练和注册 Chainer 模型](how-to-train-ml-models.md)。
 
 ### <a name="endpoints"></a>终结点
 
@@ -215,7 +215,7 @@ Azure IoT Edge 将确保模块正在运行并且监视托管它的设备。
 
 ### <a name="compute-instance-preview"></a><a name="compute-instance"></a>计算实例（预览版）
 
-**Azure 机器学习计算实例**（前称为 Notebook VM）是完全托管式的基于云的工作站，其中包含为机器学习安装的多个工具和环境。 可将计算实例用作训练和推理作业的计算目标。 对于大型任务，具有多节点缩放功能的 [Azure 机器学习计算群集](how-to-set-up-training-targets.md#amlcompute)是更好的计算目标选项。
+Azure 机器学习计算实例（以前称为 Notebook VM）是一种完全托管的基于云的工作站，其中包括为机器学习安装的多个工具和环境。 可将计算实例用作训练和推理作业的计算目标。 对于大型任务，具有多节点缩放功能的 [Azure 机器学习计算群集](how-to-set-up-training-targets.md#amlcompute)是更好的计算目标选项。
 
 详细了解[计算实例](concept-compute-instance.md)。
 
@@ -233,7 +233,7 @@ Azure IoT Edge 将确保模块正在运行并且监视托管它的设备。
 
 在[计算目标](concept-compute-target.md)上，可以指定用于运行训练脚本或托管服务部署的计算资源。 此位置可以是你的本地计算机，也可以是基于云的计算资源。
 
-详细了解[可用于训练和部署的计算目标](concept-compute-target.md)。
+详细了解[训练和部署的可用计算资源](concept-compute-target.md)。
 
 ### <a name="next-steps"></a>后续步骤
 
