@@ -4,16 +4,16 @@ description: 了解如何使用 Commvault 在 Azure Stack Hub 上备份 VM。
 author: WenJason
 ms.topic: how-to
 origin.date: 04/20/2020
-ms.date: 05/18/2020
+ms.date: 06/22/2020
 ms.author: v-jay
 ms.reviewer: sijuman
 ms.lastreviewed: 10/30/2019
-ms.openlocfilehash: e2979086ac66cfab0601f23a98b42abf6462d8b9
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.openlocfilehash: f5f02d4e117af277389f93152e6e345b10914d89
+ms.sourcegitcommit: d86e169edf5affd28a1c1a4476d72b01a7fb421d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83422052"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85096503"
 ---
 # <a name="back-up-your-vm-on-azure-stack-hub-with-commvault"></a>使用 Commvault 在 Azure Stack Hub 上备份 VM
 
@@ -39,24 +39,24 @@ ms.locfileid: "83422052"
 
 此方法的拓扑如下图所示：
 
-![](./media/azure-stack-network-howto-backup-commvault/backup-vm-commvault-diagram.png)
+![](./media/azure-stack-network-howto-backup-commvault/backup-vm-commvault-diagram.svg)
 
 ## <a name="create-the-commvault-vm-form-the-commvault-marketplace-item"></a>从 Commvault 市场项创建 Commvault VM
 
 1. 打开 Azure Stack Hub 用户门户。
 
-2. 选择“创建资源” > “计算” > “Commvault”。   
+2. 选择“创建资源” > “计算” > “Commvault”。  
 
     > [!Note]  
     > 如果 Commvault 不可用，请与云操作员联系。
 
-    ![](./media/azure-stack-network-howto-backup-commvault/commvault-create-vm-01.png)
+    ![创建 VM](./media/azure-stack-network-howto-backup-commvault/commvault-create-vm-01.png)
 
-3. 在“创建虚拟机，1 基本信息”中配置基本设置： 
+3. 在“创建虚拟机，1 基本信息”中配置基本设置：
 
-    a. 输入“名称”  。
+    a. 输入“名称”。
 
-    b. 选择“标准 HHD”。 
+    b. 选择“标准 HHD”。
     
     c. 输入**用户名**。
     
@@ -68,9 +68,9 @@ ms.locfileid: "83422052"
     
     g. 选择一个**资源组**。
     
-    h.如果该值不存在，请单击“添加行”。 选择 Azure Stack Hub 的**位置**。 如果使用的是 ASDK，请选择“本地”。 
+    h.如果该值不存在，请单击“添加行”。 选择 Azure Stack Hub 的**位置**。 如果使用的是 ASDK，请选择“本地”。
     
-    i. 选择“确定”  。
+    i. 选择“确定” 。
 
     ![](./media/azure-stack-network-howto-backup-commvault/commvault-create-vm-02.png)
 
@@ -80,31 +80,31 @@ ms.locfileid: "83422052"
 
 5. 选择 Commvault VM 的设置。
 
-    a. 将可用性设置为“无”。 
+    a. 将可用性设置为“无”。
     
-    b. 对于“使用托管磁盘”，请选择“是”。 
+    b. 对于“使用托管磁盘”，请选择“是”。
     
-    c. 在“虚拟网络”中选择默认的 VNet。 
+    c. 在“虚拟网络”中选择默认的 VNet。
     
-    d. 选择默认的“子网”。 
+    d. 选择默认的“子网”。
     
-    e. 选择默认的“公共 IP 地址”。 
+    e. 选择默认的“公共 IP 地址”。
     
-    f. 将 VM 保留在“基本”网络安全组中。 
+    f. 将 VM 保留在“基本”网络安全组中。
     
     g. 打开 HTTP (80)、HTTPS (443)、SSH (22) 和 RDP (3389) 端口。
     
-    h.如果该值不存在，请单击“添加行”。 选择“无扩展”。 
+    h.如果该值不存在，请单击“添加行”。 选择“无扩展”。
     
-    i. 对于“启动诊断”，请选择“已启用”。  
+    i. 对于“启动诊断”，请选择“已启用”。 
     
-    j. 将“来宾 OS 诊断”保持设置为“已禁用”。  
+    j. 将“来宾 OS 诊断”保持设置为“已禁用”。 
     
-    k. 保留默认的“诊断存储帐户”。 
+    k. 保留默认的“诊断存储帐户”。
     
-    l. 选择“确定”  。
+    l. 选择“确定” 。
 
-6. 在 Commvault VM 通过验证后，查看其摘要。 选择“确定”  。
+6. 在 Commvault VM 通过验证后，查看其摘要。 选择“确定” 。
 
 ## <a name="get-your-service-principal"></a>获取服务主体
 
@@ -128,15 +128,15 @@ ms.locfileid: "83422052"
     a. 有关安装 Azure Stack Hub PowerShell 的说明，请参阅[安装适用于 Azure Stack Hub 的 PowerShell](/azure-stack/operator/azure-stack-powershell-install)。  
     b. 有关安装 Azure Stack Hub 工具的说明，请参阅[从 GitHub 下载 Azure Stack Hub 工具](/azure-stack/operator/azure-stack-powershell-download)。
 
-3. 在 Commvault 安装到 Commvault VM 后，打开 Commcell 控制台。 在“开始”中，选择“Commvault” > “Commvault Commcell 控制台”。  
+3. 在 Commvault 安装到 Commvault VM 后，打开 Commcell 控制台。 在“开始”中，选择“Commvault” > “Commvault Commcell 控制台”。 
 
     ![](./media/azure-stack-network-howto-backup-commvault/commcell-console.png)
 
-4. 在 Commvault Commcell 控制台中，将备份存储库配置为使用 Azure Stack Hub 外部的存储。 在 CommCell 浏览器中，选择“存储资源”>“存储池”。 单击右键并选择“添加存储池”。  选择“云”。 
+4. 在 Commvault Commcell 控制台中，将备份存储库配置为使用 Azure Stack Hub 外部的存储。 在 CommCell 浏览器中，选择“存储资源”>“存储池”。 单击右键并选择“添加存储池”。 选择“云”。
 
 5. 添加存储池的名称。 选择“**下一步**”。
 
-6. 选择“创建” > “云存储”。  
+6. 选择“创建” > “云存储”。 
 
     ![](./media/azure-stack-network-howto-backup-commvault/commcell-storage-add-storage-device.png)
 
@@ -184,7 +184,7 @@ ms.locfileid: "83422052"
 
     ![](./media/azure-stack-network-howto-backup-commvault/live-sync-3.png)
 
-5. 还可以选择每个 VM 旁边的“配置”，来更改 VM 大小和配置网络设置。 
+5. 还可以选择每个 VM 旁边的“配置”，来更改 VM 大小和配置网络设置。
 
 6. 设置复制到目标 Azure Stack Hub 的频率
 

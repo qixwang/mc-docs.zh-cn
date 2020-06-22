@@ -10,12 +10,12 @@ ms.author: v-yiso
 author: sdgilley
 origin.date: 12/13/2019
 ms.date: 03/09/2020
-ms.openlocfilehash: 944c25ebd2f8ddbeaad413fa83740f29bf05ec9c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 0f5dcbb9cd2fe6e1d3fe6c6598fe83ad729873ac
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292401"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097078"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>什么是 Azure 机器学习计算实例？
 
@@ -25,10 +25,10 @@ Azure 机器学习计算实例（预览版）是面向数据科学家的完全�
 
 可将计算实例用作云中的完全配置、完全托管的开发环境。
 
-计算实例通常用作开发环境。  它们还可用作训练和推断的计算目标来实现开发和测试目的。  对于大型任务，具有多节点缩放功能的 [Azure 机器学习计算群集](how-to-set-up-training-targets.md#amlcompute)是更好的计算目标选项。
+计算实例通常用作开发环境。  它们还可用作训练和推断的计算目标来实现开发和测试目的。  对于大型任务，具有多节点缩放功能的 [Azure 机器学习计算群集](how-to-set-up-training-targets.md#amlcompute)是更好的计算目标选择。
 
 
-## <a name="why-use-a-compute-instance"></a>为何使用计算实例？
+## <a name="why-use-a-compute-instance"></a>为什么要使用计算实例？
 
 计算实例是完全托管式基于云的工作站，已针对机器学习开发环境进行优化。 它提供以下优势：
 
@@ -69,9 +69,8 @@ Azure 机器学习计算实例（预览版）是面向数据科学家的完全�
 |Anaconda Python||
 |Jupyter 和扩展||
 |Jupyterlab 和扩展||
-|Visual Studio Code ||
-[适用于 Python 的 Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)</br>从 PyPI|`azureml-sdk[notebooks,contrib,automl,explain]`</br>`azureml-contrib-datadrift`</br>`azureml-telemetry`</br>`azureml-tensorboard`</br>`azureml-contrib-opendatasets`</br>`azureml-opendatasets`</br>`azureml-contrib-reinforcementlearning`</br>`azureml-mlflow`</br>`azureml-contrib-interpret` |
-|其他 PyPI 包|`jupytext`</br>`jupyterlab-git`</br>`tensorboard`</br>`nbconvert`</br>`notebook`</br>`Pillow`|
+[适用于 Python 的 Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)</br>（来自 PyPI）|包括大多数 azureml 额外包。  若要查看完整列表，请[打开计算实例上的终端窗口](how-to-run-jupyter-notebooks.md#terminal)并运行 <br/> `conda list -n azureml_py36 azureml*` |
+|其他 PyPI 包|`jupytext`</br>`tensorboard`</br>`nbconvert`</br>`notebook`</br>`Pillow`|
 |Conda 包|`cython`</br>`numpy`</br>`ipykernel`</br>`scikit-learn`</br>`matplotlib`</br>`tqdm`</br>`joblib`</br>`nodejs`</br>`nb_conda_kernels`|
 |深度学习包|`PyTorch`</br>`TensorFlow`</br>`Keras`</br>`Horovod`</br>`MLFlow`</br>`pandas-ml`</br>`scrapbook`|
 |ONNX 包|`keras2onnx`</br>`onnx`</br>`onnxconverter-common`</br>`skl2onnx`</br>`onnxmltools`|                           
@@ -79,20 +78,20 @@ Azure 机器学习计算实例（预览版）是面向数据科学家的完全�
 
 Python 包都安装在 **Python 3.6 - AzureML** 环境中。  
 
-计算实例通常用作开发环境。  它们还可用作训练和推断的计算目标来实现开发和测试目的。  对于大型任务，具有多节点缩放功能的 [Azure 机器学习计算群集](how-to-set-up-training-targets.md#amlcompute)是更好的计算目标选项。
+计算实例通常用作开发环境。  它们还可用作训练和推断的计算目标来实现开发和测试目的。  对于大型任务，具有多节点缩放功能的 [Azure 机器学习计算群集](how-to-set-up-training-targets.md#amlcompute)是更好的计算目标选择。
 
 ### <a name="installing-packages"></a>安装包
 
 可以直接在 Jupyter 笔记本或 Rstudio 中安装包：
 
-* RStudio 使用右下的“包”  选项卡或左上的“控制台”  选项卡。  
+* RStudio 使用右下的“包”选项卡或左上的“控制台”选项卡。  
 * Python:添加安装代码并在 Jupyter 笔记本单元中执行它。
 
 也可通过以下任一方式访问终端窗口：
 
-* RStudio：选择左上的“终端”选项卡  。
-* Jupyter 实验室：选择“启动器”选项卡中“其他”  标题下的“终端”  磁贴。
-* Jupyter：在“文件”选项卡的右上方选择“新建>“终端”  。
+* RStudio：选择左上的“终端”选项卡。
+* Jupyter 实验室：选择“启动器”选项卡中“其他”标题下的“终端”磁贴。
+* Jupyter：在“文件”选项卡的右上方选择“新建>“终端”。
 * 通过 SSH 连接到计算机。  然后，将 Python 包安装到 **Python 3.6 - AzureML** 环境中。  将 R 包安装到 **R** 环境中。
 
 ## <a name="accessing-files"></a>访问文件
@@ -109,15 +108,15 @@ Python 包都安装在 **Python 3.6 - AzureML** 环境中。
 
 ## <a name="managing-a-compute-instance"></a>管理计算实例
 
-在 Azure 机器学习工作室中的工作区内选择“计算”，然后在顶部选择“计算实例”。  
+在 Azure 机器学习工作室中的工作区内选择“计算”，然后在顶部选择“计算实例”。 
 
 ![管理计算实例](./media/concept-compute-instance/manage-compute-instance.png)
 
 可执行以下操作：
 
-* 创建计算实例。 指定名称、包括 GPU 在内的 Azure VM 类型（请注意，VM 类型在创建后不能更改）、启用/禁用 SSH 访问，以及配置虚拟网络设置（可选）。 也可以直接从集成的笔记本、Azure 门户、资源管理器模板或 Azure 机器学习 SDK 创建实例。 创建计算实例时应用的“每个区域的专用核心数”配额是统一的，并与 Azure 机器学习计算群集配额共享。
+* 创建计算实例。 指定名称、包括 GPU 在内的 Azure VM 类型（请注意，VM 类型在创建后不能更改）、启用/禁用 SSH 访问，以及配置虚拟网络设置（可选）。 也可直接从集成笔记本、Azure 门户、资源管理器模板或 Azure 机器学习 SDK 创建实例。 创建计算实例时应用的“每个区域的专用核心数”配额是统一的，并与 Azure 机器学习计算群集配额共享。
 * 刷新“计算实例”选项卡
-* 启动、停止和重启计算实例
+* 启动、停止和重启计算实例。 不使用 VM 时，请将其停止，以便降低成本。 然后在需要时重启。
 * 删除计算实例
 
 对于工作区中的每个计算实例，可以：
@@ -144,9 +143,9 @@ Python 包都安装在 **Python 3.6 - AzureML** 环境中。
 
 计算实例即将取代 Notebook VM。  
 
-可从计算实例访问存储在工作区文件共享中的任何笔记本文件，以及工作区数据存储中的数据。 但是，以前安装在 Notebook VM 上的任何自定义包都需要在计算实例上重新安装。 创建计算群集时适用的配额限制在创建计算实例时同样适用。 
+任何存储在工作区文件共享中的笔记本文件和工作区数据存储中的数据都可以从计算实例访问。 但是，以前安装在 Notebook VM 上的任何自定义包都需要在计算实例上重新安装。 创建计算群集时适用的配额限制在创建计算实例时同样适用。 
 
-不能创建新的 Notebook VM。 不过，仍然可以访问和使用已创建的 Notebook VM 及其完整功能。 可以在现有 Notebook VM 所在的同一工作区中创建计算实例。 
+不能创建新的 Notebook VM。 但你仍然可以访问和使用已创建的 Notebook VM 及其完整功能。 可以在现有 Notebook VM 所在的同一工作区中创建计算实例。 
 
 
 ## <a name="next-steps"></a>后续步骤

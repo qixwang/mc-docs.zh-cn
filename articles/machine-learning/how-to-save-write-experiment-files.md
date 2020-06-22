@@ -10,14 +10,14 @@ ms.reviewer: nibaccam
 ms.service: machine-learning
 ms.subservice: core
 ms.workload: data-services
-ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 80547945a2a3fb0b031ad495d6628330518d5b87
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.topic: how-to
+ms.date: 03/10/2020
+ms.openlocfilehash: c26067983f955da7fa0642cb1b7c655d62acc8c9
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75598118"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097530"
 ---
 # <a name="where-to-save-and-write-files-for-azure-machine-learning-experiments"></a>保存和写入 Azure 机器学习试验文件的位置
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -36,7 +36,7 @@ Azure 机器学习通过将整个脚本文件夹复制到目标计算上下文�
 
 * 将文件存储在 Azure 机器学习[数据存储](https://docs.microsoft.com/python/api/azureml-core/azureml.data?view=azure-ml-py)中。 这样能防止出现试验延迟问题，并具有从远程计算目标访问数据的优点，这意味着身份验证和装载工作都由 Azure 机器学习管理。 请参阅[访问数据存储中的数据](how-to-access-data.md)一文，详细了解如何将数据存储指定为源目录，以及如何将文件上传到数据存储。
 
-* 如果只需要几个数据文件和依赖项脚本且无法使用数据存储，请将文件放在与训练脚本相同的文件夹目录中  。 在训练脚本或者调用训练脚本的代码中直接将此文件夹指定为 `source_directory`。
+* 如果只需要几个数据文件和依赖项脚本且无法使用数据存储，请将文件放在与训练脚本相同的文件夹目录中。 在训练脚本或者调用训练脚本的代码中直接将此文件夹指定为 `source_directory`。
 
 <a name="limits"></a>
 
@@ -54,7 +54,7 @@ Your total snapshot size exceeds the limit of 300.0 MB
 试验说明|存储空间上限解决方案
 ---|---
 上限低于 2000 个文件且无法使用数据存储| 使用该方法重写快照大小限制 <br> `azureml._restclient.snapshots_client.SNAPSHOT_MAX_SIZE_BYTES = 'insert_desired_size'`<br> 这可能需要数分钟的时间，具体取决于文件的数量和大小。
-必须使用特定的脚本目录| 创建一个 `.amlignore` 文件，将不属于源代码的实验快照中的文件排除在外。 将文件名添加到 `.amlignore` 文件中，并将其放在与训练脚本一样的目录中。 `.amlignore` 文件使用的[语法和模式](https://git-scm.com/docs/gitignore)与 `.gitignore` 文件相同。
+必须使用特定的脚本目录| [!INCLUDE [amlinclude-info](../../includes/machine-learning-amlignore-gitignore.md)]
 管道|在每个步骤中使用不同的子目录
 Jupyter 笔记本| 创建 `.amlignore` 文件或将笔记本移动到新的空子目录，然后再次运行代码。
 
@@ -67,7 +67,7 @@ Jupyter 笔记本| 创建 `.amlignore` 文件或将笔记本移动到新的空�
 如果不需要使用数据存储，请将文件写入 `./outputs` 和/或 `./logs` 文件夹。
 
 >[!Important]
-> “outputs”和“logs”两个文件夹接收 Azure 机器学习的特殊处理   。 在训练期间，如果将文件写入 `./outputs` 和 `./logs` 文件夹，则会将这些文件自动上传到运行历史记录，以便在完成运行后对其具有访问权限。
+> “outputs”和“logs”两个文件夹接收 Azure 机器学习的特殊处理 。 在训练期间，如果将文件写入 `./outputs` 和 `./logs` 文件夹，则会将这些文件自动上传到运行历史记录，以便在完成运行后对其具有访问权限。
 
 * 对于诸如状态消息或评分结果这样的输出，请将文件写入 `./outputs` 文件夹，以便将它们作为项目持久保存在运行历史记录中。 请注意写入到此文件夹中的文件数量和文件大小，因为在将内容上传到运行历史记录时可能会出现延迟。 如果需要考虑延迟，则建议将文件写入数据存储。
 
