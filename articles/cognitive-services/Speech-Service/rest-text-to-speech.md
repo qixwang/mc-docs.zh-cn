@@ -11,12 +11,12 @@ ms.topic: conceptual
 origin.date: 12/09/2019
 ms.date: 03/01/2020
 ms.author: v-tawe
-ms.openlocfilehash: f5958c950a0f6b7d9cd6466a81442ea38b43d7ba
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.openlocfilehash: 075bd9ddea19449712f5bf79fb37401ba47f5ea2
+ms.sourcegitcommit: 304d3ef3c9e65c3e85977b3afb9985fbc0f908d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82126776"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85095922"
 ---
 # <a name="text-to-speech-rest-api"></a>文本转语音 REST API
 
@@ -28,7 +28,7 @@ ms.locfileid: "82126776"
 * 有关区域可用性的信息，请参阅[区域](regions.md#text-to-speech)。
 
 > [!IMPORTANT]
-> 费用因标准语音和神经语音（免费预览版）而异。 有关详细信息，请参阅[定价](https://www.azure.cn/pricing/details/cognitive-services/)。
+> 标准语音和神经语音的费用各不相同。 有关详细信息，请参阅[定价](https://www.azure.cn/pricing/details/cognitive-services/)。
 
 使用此 API 之前，请了解：
 
@@ -52,7 +52,7 @@ ms.locfileid: "82126776"
 
 | 标头 | 说明 | 必需/可选 |
 |--------|-------------|---------------------|
-| `Authorization` | 前面带有单词 `Bearer` 的授权令牌。 有关详细信息，请参阅[身份验证](#authentication)。 | 必需 |
+| `Authorization` | 前面带有单词 `Bearer` 的授权令牌。 有关详细信息，请参阅[身份验证](#authentication)。 | 必须 |
 
 ### <a name="request-body"></a>请求正文
 
@@ -152,10 +152,10 @@ Authorization: Bearer [Base64 access_token]
 
 | 标头 | 说明 | 必需/可选 |
 |--------|-------------|---------------------|
-| `Authorization` | 前面带有单词 `Bearer` 的授权令牌。 有关详细信息，请参阅[身份验证](#authentication)。 | 必需 |
-| `Content-Type` | 指定所提供的文本的内容类型。 接受的值：`application/ssml+xml`。 | 必需 |
-| `X-Microsoft-OutputFormat` | 指定音频输出格式。 有关接受值的完整列表，请参阅[音频输出](#audio-outputs)。 | 必需 |
-| `User-Agent` | 应用程序名称。 提供的值必须少于 255 个字符。 | 必需 |
+| `Authorization` | 前面带有单词 `Bearer` 的授权令牌。 有关详细信息，请参阅[身份验证](#authentication)。 | 必须 |
+| `Content-Type` | 指定所提供的文本的内容类型。 接受的值：`application/ssml+xml`。 | 必须 |
+| `X-Microsoft-OutputFormat` | 指定音频输出格式。 有关接受值的完整列表，请参阅[音频输出](#audio-outputs)。 | 必须 |
+| `User-Agent` | 应用程序名称。 提供的值必须少于 255 个字符。 | 必须 |
 
 ### <a name="audio-outputs"></a>音频输出
 
