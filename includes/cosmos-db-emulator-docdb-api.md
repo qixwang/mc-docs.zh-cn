@@ -24,7 +24,7 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 04/24/2020
 ms.locfileid: "82134495"
 ---
-可以使用 URI 为 [ 的 ](/cosmos-db/local-emulator)Azure Cosmos DB 模拟器`https://localhost:8081`。 有关在模拟器中使用的密钥，请参阅[对请求进行身份验证](../articles/cosmos-db/local-emulator.md#authenticating-requests)。
+可以使用 URI 为 `https://localhost:8081` 的 [Azure Cosmos DB 模拟器](/cosmos-db/local-emulator)。 有关在模拟器中使用的密钥，请参阅[对请求进行身份验证](../articles/cosmos-db/local-emulator.md#authenticating-requests)。
 
 <!--Not Available on [Try Azure Cosmos DB for free](https://www.azure.cn/try/cosmosdb/)-->
 <!-- Update_Description: update meta properties, wording update, update link -->
