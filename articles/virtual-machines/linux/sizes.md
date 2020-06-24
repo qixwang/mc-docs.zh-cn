@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/05/2020
 ms.author: v-johya
-ms.openlocfilehash: 1dab4e0e5f1c38e9f6f5e0c63c95e2f243824344
-ms.sourcegitcommit: 285649db9b21169f3136729c041e4d04d323229a
+ms.openlocfilehash: 959c95f57e67e3a77a214b4e1143482daf90836b
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84683942"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097269"
 ---
 # <a name="sizes-for-linux-virtual-machines-in-azure"></a>Azure 中 Linux 虚拟机的大小
 
@@ -68,7 +68,7 @@ ms.locfileid: "84683942"
 
     <!--Not Available- [High performance compute](sizes-hpc.md)-->
     
-- 查看[上一代](sizes-previous-gen.md)页，了解 A Standard、Dv1（D1-4 和 D11-14 v1）系列。
+- 查看[上一代](../sizes-previous-gen.md)页，了解 A Standard、Dv1（D1-4 和 D11-14 v1）系列。
 
 <!--Not Available on A8-A11, G/GS, Lsv1, and NVv2 series-->
 <!--Update_Description: update meta properties, wording update, update link -->

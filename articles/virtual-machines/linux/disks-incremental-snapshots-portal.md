@@ -1,19 +1,19 @@
 ---
 title: 创建增量快照 - Azure 门户
 description: 了解托管磁盘的增量快照，包括如何使用 Azure 门户创建增量快照。
-author: rockboyfor
+author: Johnnytechn
 ms.service: virtual-machines-linux
-ms.topic: conceptual
+ms.topic: how-to
 origin.date: 04/02/2020
-ms.date: 06/15/2020
-ms.author: v-yeche
+ms.date: 06/17/2020
+ms.author: v-johya
 ms.subservice: disks
-ms.openlocfilehash: f69b742719dfe881148589817cdfb3b972fd86c3
-ms.sourcegitcommit: c4fc01b7451951ef7a9616fca494e1baf29db714
+ms.openlocfilehash: 965dd5f269d96a4719883c8ca5777baa183bbf5d
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84574632"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097233"
 ---
 <!--Verified successfully by PG team-->
 # <a name="creating-an-incremental-snapshot-for-managed-disks-in-the-azure-portal"></a>在 Azure 门户中为托管磁盘创建增量快照

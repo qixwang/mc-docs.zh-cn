@@ -6,14 +6,14 @@ ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.workload: infrastructure-services
 ms.topic: article
-ms.date: 06/05/2020
+ms.date: 06/17/2020
 ms.author: v-johya
-ms.openlocfilehash: d2f473daa5c431a91042a304562b4bd6f314d1e2
-ms.sourcegitcommit: 285649db9b21169f3136729c041e4d04d323229a
+ms.openlocfilehash: edfbd18c99eda645338c35103edfea16965aa6ec
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84684033"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097497"
 ---
 # <a name="prepare-a-sles-or-opensuse-virtual-machine-for-azure"></a>为 Azure 准备 SLES 或 openSUSE 虚拟机
 
@@ -28,13 +28,13 @@ ms.locfileid: "84684033"
 * Azure 上的所有 VHD 必须已将虚拟大小调整为 1MB。 从原始磁盘转换为 VHD 时，必须确保在转换前原始磁盘大小是 1MB 的倍数。 有关详细信息，请参阅 [Linux 安装说明](create-upload-generic.md#general-linux-installation-notes)。
 
 ## <a name="use-suse-studio"></a>使用 SUSE Studio
-[SUSE Studio](http://www.susestudio.com) 可以轻松地创建和管理 Azure 和 Hyper-V 的 SLES 和 openSUSE 映像。 这是自定义用户自己的 SUSE 和 openSUSE 映像的推荐方法。
+[SUSE Studio](https://studioexpress.opensuse.org/) 可以轻松地创建和管理 Azure 和 Hyper-V 的 SLES 和 openSUSE 映像。 这是自定义用户自己的 SUSE 和 openSUSE 映像的推荐方法。
 
 作为构建用户自己的 VHD 的替代方法，SUSE 也会为 [VMDepot](https://www.microsoft.com/en-us/research/wp-content/uploads/2016/04/using-and-contributing-vms-to-vm-depot.pdf) 中的 SLES 发布 BYOS（自带订阅）映像。
 
 ## <a name="prepare-suse-linux-enterprise-server-11-sp4"></a>准备 SUSE Linux Enterprise Server 11 SP4
 1. 在 Hyper-V 管理器的中间窗格中，选择虚拟机。
-2. 单击“连接”  打开虚拟机窗口。
+2. 单击“连接” **** 打开虚拟机窗口。
 3. 注册 SUSE Linux Enterprise 系统以允许其下载更新并安装程序包。
 4. 使用最新修补程序更新系统：
 
@@ -98,7 +98,7 @@ ms.locfileid: "84684033"
         # export HISTSIZE=0
         # logout
         
-16. 在 Hyper-V 管理器中单击“操作”->“关闭”。 现在，准备将 Linux VHD 上传到 Azure。
+16. 在 Hyper-V 管理器中单击“操作”->“关闭”****。 现在，准备将 Linux VHD 上传到 Azure。
 
 ---
 ## <a name="prepare-opensuse-131"></a>准备 openSUSE 13.1+
@@ -171,7 +171,7 @@ ms.locfileid: "84684033"
 
         # sudo systemctl enable waagent.service
         
-13. 在 Hyper-V 管理器中单击“操作”->“关闭”。 Linux VHD 现已准备好上传到 Azure。
+13. 在 Hyper-V 管理器中单击“操作”->“关闭”。**** Linux VHD 现已准备好上传到 Azure。
 
 ## <a name="next-steps"></a>后续步骤
 现在，可以使用 SUSE Linux 虚拟硬盘在 Azure 中创建新的 Azure 虚拟机了。 如果是首次将 .vhd 文件上传到 Azure，请参阅[从自定义磁盘创建 Linux VM](upload-vhd.md#option-1-upload-a-vhd)。

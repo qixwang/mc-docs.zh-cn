@@ -12,15 +12,15 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.devlang: dotnet
 ms.topic: conceptual
-origin.date: 11/22/2019
-ms.date: 12/23/2019
+origin.date: 04/28/2020
+ms.date: 06/22/2020
 ms.author: v-yiso
-ms.openlocfilehash: 3642dcd98038b7b3a9fed60128cadbc3fe94b8d3
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 363c93e1ddd6fa35d5bdecd1bd5b20283a99995c
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75335965"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723049"
 ---
 # <a name="use-c-with-mapreduce-streaming-on-apache-hadoop-in-hdinsight"></a>在 HDInsight 中的 Apache Hadoop 上将 C# 与 MapReduce 流式处理配合使用
 
@@ -28,7 +28,7 @@ ms.locfileid: "75335965"
 
 了解如何在 HDInsight 上使用 C# 创建 MapReduce 解决方案。
 
-Apache Hadoop 流式处理是一个实用工具，通过它可以使用脚本或可执行文件运行 MapReduce 作业。 在本示例中，.NET 用于为单词计数解决方案实现映射器和化简器。
+Apache Hadoop 流式处理使你能够使用脚本或可执行文件运行 MapReduce 作业。 此处，.NET 用于为单词计数解决方案实现映射器和化简器。
 
 ## <a name="net-on-hdinsight"></a>HDInsight 上的 .NET
 
@@ -58,12 +58,9 @@ HDInsight 群集使用 [Mono (https://mono-project.com)](https://mono-project.co
 
 * 如果使用 PowerShell，需要安装 [Az 模块](https://docs.microsoft.com/powershell/azure/overview)。
 
-* SSH 客户端（可选）。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md)。
-
 * HDInsight 中的 Apache Hadoop 群集。 请参阅 [Linux 上的 HDInsight 入门](../hadoop/apache-hadoop-linux-tutorial-get-started.md)。
 
-* 群集主存储的 [URI 方案](../hdinsight-hadoop-linux-information.md#URI-and-scheme)。 对于 Azure 存储，此值为 `wasb://`；对于Azure Data Lake Storage Gen2，此值为 `abfs://`；对于 Azure Data Lake Storage Gen1，此值为 `adl://`。 如果为 Azure 存储或 Data Lake Storage Gen2 启用了安全传输，则 URI 将是 `wasbs://` 或 `abfss://`。另请参阅[安全传输](../../storage/common/storage-require-secure-transfer.md)。
-
+* 群集主存储的 URI 方案。 对于 Azure 存储，此架构为 `wasb://`；对于Azure Data Lake Storage Gen2，此架构为 `abfs://`；对于 Azure Data Lake Storage Gen1，此架构为 `adl://`。 如果为 Azure 存储或 Data Lake Storage Gen2 启用了安全传输，则 URI 分别是 `wasbs://` 或 `abfss://`。
 
 ## <a name="create-the-mapper"></a>创建映射器
 
@@ -159,29 +156,29 @@ namespace reducer
 
 接下来，需要将 *mapper* 和 *reducer* 应用程序上传到 HDInsight 存储。
 
-1. 在 Visual Studio 中，选择“视图” > “服务器资源管理器”。  
+1. 在 Visual Studio 中，选择“视图” > “服务器资源管理器”。 
 
-1. 右键单击“Azure”并选择“连接到 Microsoft Azure 订阅...”，然后完成登录过程。  
+1. 右键单击“Azure”并选择“连接到 Microsoft Azure 订阅...”，然后完成登录过程。 
 
-1. 展开要将此应用程序部署到的 HDInsight 群集。 列出带有文本“（默认存储帐户）”  的条目。
+1. 展开要将此应用程序部署到的 HDInsight 群集。 列出带有文本“（默认存储帐户）”的条目。
 
    ![存储帐户，HDInsight 群集，服务器资源管理器，Visual Studio](./media/apache-hadoop-dotnet-csharp-mapreduce-streaming/hdinsight-storage-account.png)
 
-   * 如果可以展开“(默认存储帐户)”项，则表示你正在使用 **Azure 存储帐户**作为群集的默认存储。  若要查看群集的默认存储中的文件，请展开该项，然后双击“(默认容器)”。 
+   * 如果可以展开“(默认存储帐户)”项，则表示你正在使用 **Azure 存储帐户**作为群集的默认存储。 若要查看群集的默认存储中的文件，请展开该项，然后双击“(默认容器)”。
 
-   * 如果无法展开“(默认存储帐户)”项，则表示你正在使用 **Azure Data Lake Storage** 作为群集的默认存储。  若要查看该群集的默认存储上的文件，请双击“（默认存储帐户）”  条目。
+   * 如果无法展开“(默认存储帐户)”项，则表示你正在使用 **Azure Data Lake Storage** 作为群集的默认存储。 若要查看该群集的默认存储上的文件，请双击“（默认存储帐户）”条目。
 
 1. 若要上传 .exe 文件，请使用以下方法之一：
 
-    * 如果使用的是 **Azure 存储帐户**，请选择“上传 Blob”图标。 
+    * 如果使用的是 **Azure 存储帐户**，请选择“上传 Blob”图标。
 
         ![mapper 的 HDInsight 上传图标，Visual Studio](./media/apache-hadoop-dotnet-csharp-mapreduce-streaming/hdinsight-upload-icon.png)
 
-        在“上传新文件”对话框中的“文件名”下，选择“浏览”。    在“上传 Blob”对话框中，转到“mapper”项目的“bin\debug”文件夹，然后选择“mapper.exe”文件。     最后，依次选择“打开”、“确定”完成上传。  
+        在“上传新文件”对话框中的“文件名”下，选择“浏览”。   在“上传 Blob”对话框中，转到“mapper”项目的“bin\debug”文件夹，然后选择“mapper.exe”文件。   最后，依次选择“打开”、“确定”完成上传。 
 
-    * 对于“Azure Data Lake Storage”，请右键单击文件列表中的空白区域，然后选择“上传”。   最后，依次选择“mapper.exe”文件、“打开”。  
+    * 对于“Azure Data Lake Storage”，请右键单击文件列表中的空白区域，然后选择“上传”。  最后，依次选择“mapper.exe”文件、“打开”。
 
-    上传“mapper.exe”  完成后，请为“reducer.exe”  文件重复该上传过程。
+    上传“mapper.exe”完成后，请为“reducer.exe”文件重复该上传过程。
 
 ## <a name="run-a-job-using-an-ssh-session"></a>运行作业：使用 SSH 会话
 
@@ -206,6 +203,7 @@ namespace reducer
             -output /example/wordcountout
         ```
 
+
    * 如果默认存储为 **Data Lake Storage Gen2**：
 
         ```bash
@@ -219,12 +217,14 @@ namespace reducer
 
    以下列表描述了每个参数和选项的含义：
 
-   * *hadoop-streaming.jar*：指定包含流式处理 MapReduce 功能的 jar 文件。
-   * `-files`：为此作业指定 *mapper.exe* 和 *reducer.exe* 文件。 每个文件前的 `wasbs:///`、`adl:///` 或 `abfs:///` 协议声明是群集默认存储的根目录的路径。
-   * `-mapper`：指定实现映射器的文件。
-   * `-reducer`：指定实现化简器的文件。
-   * `-input`：指定输入数据。
-   * `-output`：指定输出目录。
+   |参数 | 说明 |
+   |---|---|
+   |hadoop-streaming.jar|指定包含流式处理 MapReduce 功能的 jar 文件。|
+   |-files|为此作业指定 *mapper.exe* 和 *reducer.exe* 文件。 每个文件前的 `wasbs:///`、`adl:///` 或 `abfs:///` 协议声明是群集默认存储的根目录的路径。|
+   |-mapper|指定实现映射器的文件。|
+   |-reducer|指定实现化简器的文件。|
+   |-input|指定输入数据。|
+   |-output|指定输出目录。|
 
 3. 完成 MapReduce 作业后，使用以下命令查看结果：
 
@@ -342,8 +342,6 @@ youth   17
 
 ## <a name="next-steps"></a>后续步骤
 
-有关将 MapReduce 与 HDInsight 配合使用的详细信息，请参阅[在 HDInsight 上的 Apache Hadoop 中使用 MapReduce](hdinsight-use-mapreduce.md)。
-
-有关将 C# 与 Hive 和 Pig 配合使用的信息，请参阅[将 C# 用户定义函数与 Apache Hive 和 Apache Pig 配合使用](apache-hadoop-hive-pig-udf-dotnet-csharp.md)。
-
-有关在 HDInsight 上将 C# 与 Storm 配合使用的信息，请参阅[为 HDInsight 上的 Apache Storm 开发 C# 拓扑](../storm/apache-storm-develop-csharp-visual-studio-topology.md)。
+* [在 Apache Hadoop on HDInsight 中使用 MapReduce](hdinsight-use-mapreduce.md)。
+* [将 C# 用户定义函数与 Apache Hive 和 Apache Pig 配合使用](apache-hadoop-hive-pig-udf-dotnet-csharp.md)。
+* [开发 Java MapReduce 程序](apache-hadoop-develop-deploy-java-mapreduce-linux.md)

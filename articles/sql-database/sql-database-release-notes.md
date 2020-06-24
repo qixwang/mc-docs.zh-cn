@@ -7,15 +7,15 @@ ms.service: sql-database
 ms.subservice: service
 ms.devlang: ''
 ms.topic: conceptual
-origin.date: 04/14/2020
-ms.date: 04/27/2020
+origin.date: 05/04/2020
+ms.date: 06/15/2020
 ms.author: v-jay
-ms.openlocfilehash: 2a8ffc777871ca15129f809e139a3900956e50cd
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.openlocfilehash: ebe0bc399739896f8679aae279b6ce914b4ca1de
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82126201"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723662"
 ---
 # <a name="sql-database-release-notes"></a>SQL 数据库发行说明
 
@@ -66,7 +66,7 @@ ms.locfileid: "82126201"
   - 支持 <a href="https://docs.microsoft.com/sharepoint/administration/deploy-azure-sql-managed-instance-with-sharepoint-servers-2016-2019"> SharePoint 2016 和 SharePoint 2019 </a> 以及 <a href="https://docs.microsoft.com/business-applications-release-notes/october18/dynamics365-business-central/support-for-azure-sql-database-managed-instance"> Dynamics 365 Business Central </a>
   - 使用所选<a href="/sql-database/scripts/sql-managed-instance-create-powershell-azure-resource-manager-template">服务器级排序规则</a>和<a href="/sql-database/sql-database-managed-instance-timezone">时区</a>创建实例。
   - 托管实例现在使用<a href="sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md">内置防火墙</a>进行保护。
-  - 配置实例以使用[公共终结点](sql-database-managed-instance-public-endpoint-configure.md)、[代理覆盖](sql-database-connectivity-architecture.md#connection-policy)连接以获得更好的网络性能，<a href="https://aka.ms/four-cores-sql-mi-update">Gen5 硬件代次上有 4 个 vCore</a> 或<a href="/sql-database/sql-database-automated-backups#how-to-change-the-pitr-backup-retention-period">将备份保留期配置为最多 35 天</a>以便进行时间点还原。 长期备份保留（最长 10 年）仍未启用，因此可以使用<a href="https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server">仅复制备份</a>作为替代方法。
+  - 配置实例以使用[公共终结点](sql-database-managed-instance-public-endpoint-configure.md)、[代理覆盖](sql-database-connectivity-architecture.md#connection-policy)连接以获得更好的网络性能，<a href="https://aka.ms/four-cores-sql-mi-update">Gen5 硬件代次上有 4 个 vCore</a> 或<a href="/sql-database/sql-database-automated-backups#how-to-change-the-pitr-backup-retention-period">将备份保留期配置为最多 35 天</a>以便进行时间点还原。 [长期备份保留](sql-database-long-term-retention.md#managed-instance-support)（最长 10 年）目前处于有限公共预览版状态。  
   - 利用新功能，可以<a href="/sql-database/scripts/sql-managed-instance-restore-geo-backup">使用 PowerShell 将数据库异地还原到另一个数据中心</a>、[重命名数据库](https://azure.microsoft.com/updates/azure-sql-database-managed-instance-database-rename-is-supported/)、[删除虚拟群集](sql-database-managed-instance-delete-virtual-cluster.md)。
   - 新的内置[实例参与者角色](/role-based-access-control/built-in-roles#sql-managed-instance-contributor)使职责分离 (SoD) 遵从安全原则并符合企业标准。
 
@@ -74,29 +74,34 @@ ms.locfileid: "82126201"
 
 |问题  |发现日期  |状态  |解决日期  |
 |---------|---------|---------|---------|
-|[资源组上的权限不应用于托管实例](#permissions-on-resource-group-not-applied-to-managed-instance)|2020 年 2 月|具有解决方法||
-|[通过门户对故障转移组进行手动故障转移的限制](#limitation-of-manual-failover-via-portal-for-failover-groups)|2020 年 1 月|具有解决方法||
-|[SQL 代理角色需要拥有对非 sysadmin 登录名的显式 EXECUTE 权限](#in-memory-oltp-memory-limits-are-not-applied)|2019 年 12 月|具有解决方法||
-|[重启代理进程可能会中断 SQL 代理作业](#sql-agent-jobs-can-be-interrupted-by-agent-process-restart)|2019 年 12 月|无解决方法|2020 年 3 月|
-|[SSDT 不支持 AAD 登录名和用户](#aad-logins-and-users-are-not-supported-in-ssdt)|2019 年 11 月|无解决方法||
-|[内存中 OLTP 内存限制不适用](#in-memory-oltp-memory-limits-are-not-applied)|2019 年 10 月|具有解决方法||
-|[尝试删除不为空的文件时，返回了错误的错误](#wrong-error-returned-while-trying-to-remove-a-file-that-is-not-empty)|2019 年 10 月|具有解决方法||
-|[更改服务层级和创建实例的操作会被正在进行的数据库还原操作阻止](#change-service-tier-and-create-instance-operations-are-blocked-by-ongoing-database-restore)|2019 年 9 月|具有解决方法||
-|[升级服务层级后必须重新初始化跨数据库 Service Broker 对话](#cross-database-service-broker-dialogs-must-be-re-initialized-after-service-tier-upgrade)|2019 年 8 月|具有解决方法||
-|[不支持模拟 Azure AD 登录类型](#impersonification-of-azure-ad-login-types-is-not-supported)|2019 年 7 月|无解决方法||
-|[sp_send_db_mail 中不支持 @query 参数](#-parameter-not-supported-in-sp_send_db_mail)|2019 年 4 月|无解决方法||
-|[异地故障转移之后，必须重新配置事务复制](#transactional-replication-must-be-reconfigured-after-geo-failover)|2019 年 3 月|无解决方法||
-|[在还原操作过程中使用临时数据库](#temporary-database-is-used-during-restore-operation)||具有解决方法||
-|[将重新创建 TEMPDB 结构和内容](#tempdb-structure-and-content-is-re-created)||无解决方法||
-|[小型数据库文件超出存储空间](#exceeding-storage-space-with-small-database-files)||具有解决方法||
-|[显示 GUID 值而不是数据库名称](#guid-values-shown-instead-of-database-names)||具有解决方法||
-|[不保留错误日志](#error-logs-arent-persisted)||无解决方法||
-|[跨同一实例中的两个数据库的事务范围不受支持](#transaction-scope-on-two-databases-within-the-same-instance-isnt-supported)||具有解决方法||
-|[CLR 模块和链接的服务器有时无法引用本地 IP 地址](#clr-modules-and-linked-servers-sometimes-cant-reference-a-local-ip-address)||具有解决方法||
-|从 Azure Blob 存储还原数据库后未使用 DBCC CHECKDB 验证数据库一致性。||已解决|2019 年 11 月|
-|如果源数据库包含内存中 OLTP 对象，则从“业务关键”层级到“常规用途”层级的时间点数据库还原将不会成功。||已解决|2019 年 10 月|
-|使用具有安全连接的外部（非 Azure）邮件服务器时出现数据库邮件功能问题||已解决|2019 年 10 月|
-|托管实例不支持包含的数据库||已解决|2019 年 8 月|
+|[在修改、禁用或启用现有作业后代理无响应](#agent-becomes-unresponsive-upon-modifying-disabling-or-enabling-existing-jobs)|2020 年 5 月|已自动缓解| |
+|[资源组上的权限不应用于托管实例](#permissions-on-resource-group-not-applied-to-managed-instance)|2020 年 2 月|具有解决方法| |
+|[通过门户对故障转移组进行手动故障转移的限制](#limitation-of-manual-failover-via-portal-for-failover-groups)|2020 年 1 月|具有解决方法| |
+|[SQL 代理角色需要拥有对非 sysadmin 登录名的显式 EXECUTE 权限](#in-memory-oltp-memory-limits-are-not-applied)|2019 年 12 月|具有解决方法| |
+|[重启代理进程可能会中断 SQL 代理作业](#sql-agent-jobs-can-be-interrupted-by-agent-process-restart)|2019 年 12 月|已解决|2020 年 3 月|
+|[SSDT 不支持 AAD 登录名和用户](#aad-logins-and-users-are-not-supported-in-ssdt)|2019 年 11 月|无解决方法| |
+|[内存中 OLTP 内存限制不适用](#in-memory-oltp-memory-limits-are-not-applied)|2019 年 10 月|具有解决方法| |
+|[尝试删除不为空的文件时，返回了错误的错误](#wrong-error-returned-while-trying-to-remove-a-file-that-is-not-empty)|2019 年 10 月|具有解决方法| |
+|[更改服务层级和创建实例的操作会被正在进行的数据库还原操作阻止](#change-service-tier-and-create-instance-operations-are-blocked-by-ongoing-database-restore)|2019 年 9 月|具有解决方法| |
+|[升级服务层级后必须重新初始化跨数据库 Service Broker 对话](#cross-database-service-broker-dialogs-must-be-re-initialized-after-service-tier-upgrade)|2019 年 8 月|具有解决方法| |
+|[不支持模拟 Azure AD 登录类型](#impersonification-of-azure-ad-login-types-is-not-supported)|2019 年 7 月|无解决方法| |
+|[sp_send_db_mail 中不支持 @query 参数](#-parameter-not-supported-in-sp_send_db_mail)|2019 年 4 月|无解决方法| |
+|[异地故障转移之后，必须重新配置事务复制](#transactional-replication-must-be-reconfigured-after-geo-failover)|2019 年 3 月|无解决方法| |
+|[在还原操作过程中使用临时数据库](#temporary-database-is-used-during-restore-operation)||具有解决方法| |
+|[将重新创建 TEMPDB 结构和内容](#tempdb-structure-and-content-is-re-created)| |无解决方法| |
+|[小型数据库文件超出存储空间](#exceeding-storage-space-with-small-database-files)| |具有解决方法| |
+|[显示 GUID 值而不是数据库名称](#guid-values-shown-instead-of-database-names) ||具有解决方法| |
+|[不保留错误日志](#error-logs-arent-persisted)||无解决方法| |
+|[CLR 模块和链接的服务器有时无法引用本地 IP 地址](#clr-modules-and-linked-servers-sometimes-cant-reference-a-local-ip-address)| |具有解决方法| |
+|[跨同一实例中的两个数据库的事务范围不受支持](#transaction-scope-on-two-databases-within-the-same-instance-isnt-supported)| |已解决|2020 年 3 月|
+|从 Azure Blob 存储还原数据库后未使用 DBCC CHECKDB 验证数据库一致性。| |已解决|2019 年 11 月|
+|如果源数据库包含内存中 OLTP 对象，则从“业务关键”层级到“常规用途”层级的时间点数据库还原将不会成功。| |已解决|2019 年 10 月|
+|使用具有安全连接的外部（非 Azure）邮件服务器时出现数据库邮件功能问题| |已解决|2019 年 10 月|
+|托管实例不支持包含的数据库| |已解决|2019 年 8 月|
+
+### <a name="agent-becomes-unresponsive-upon-modifying-disabling-or-enabling-existing-jobs"></a>在修改、禁用或启用现有作业后代理无响应
+
+在某些情况下，修改、禁用或启用现有作业可能会导致代理无响应。 此问题在被检测到后自动缓解，导致代理进程重启。
 
 ### <a name="permissions-on-resource-group-not-applied-to-managed-instance"></a>资源组上的权限不应用于托管实例
 
@@ -128,13 +133,13 @@ GRANT EXECUTE ON master.dbo.xp_sqlagent_notify TO [login_name]
 
 ### <a name="sql-agent-jobs-can-be-interrupted-by-agent-process-restart"></a>重启代理进程可能会中断 SQL 代理作业
 
-每次启动一个作业，SQL 代理就会创建一个新会话，这会逐渐增大内存消耗量。 为了避免达到内部内存限制，从而阻止已计划作业的执行，一旦代理的内存消耗量达到阈值，就会重启代理进程。 这可能会中断重启时正在运行的作业的执行。
+（2020 年 3 月已解决）SQL 代理在每次启动作业时都会新建一个会话，从而逐渐增加内存消耗。 为了避免达到内部内存限制，从而阻止已计划作业的执行，一旦代理的内存消耗量达到阈值，就会重启代理进程。 这可能会中断重启时正在运行的作业的执行。
 
 ### <a name="in-memory-oltp-memory-limits-are-not-applied"></a>内存中 OLTP 内存限制不适用
 
 在某些情况下，业务关键型服务层级不会正确应用[内存优化对象的最大内存限制](sql-database-managed-instance-resource-limits.md#in-memory-oltp-available-space)。 托管实例可以让工作负荷使用更多的内存进行内存中 OLTP 操作，这可能影响实例的可用性和稳定性。 达到限制的内存中 OLTP 查询可能不会立即失败。 此问题即将得到解决。 使用较多内存中 OLTP 内存的查询在达到[限制](sql-database-managed-instance-resource-limits.md#in-memory-oltp-available-space)的情况下会更快地失败。
 
-**解决方法：** 使用 [SQL Server Management Studio](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/monitor-and-troubleshoot-memory-usage#bkmk_Monitoring) [监视内存中 OLTP 存储使用情况](/sql-database/sql-database-in-memory-oltp-monitoring)，确保工作负荷不会使用比提供的内存更多的内存。 提高基于 vCore 数的内存限制，或者优化工作负荷，让其使用较少的内存。
+**解决方法：** 使用 [SQL Server Management Studio](/sql-database/sql-database-in-memory-oltp-monitoring)[监视内存中 OLTP 存储使用情况](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/monitor-and-troubleshoot-memory-usage#bkmk_Monitoring)，确保工作负荷不会使用比提供的内存更多的内存。 提高基于 vCore 数的内存限制，或者优化工作负荷，让其使用较少的内存。
 
 ### <a name="wrong-error-returned-while-trying-to-remove-a-file-that-is-not-empty"></a>尝试删除不为空的文件时，返回了错误的错误
 
@@ -174,7 +179,7 @@ SQL Server Data Tools 不完全支持 Azure Active Directory 登录名和用户�
 
 ### <a name="temporary-database-is-used-during-restore-operation"></a>在还原操作过程中使用临时数据库
 
-在托管实例上还原某个数据库时，还原服务首先会使用所需的名称创建一个空数据库，以便在实例上分配该名称。 一段时间后，将会删除此数据库，并启动实际数据库的还原。 处于“正在还原”状态的数据库将临时使用随机 GUID 值而不是名称。  还原过程完成后，临时名称将更改为 `RESTORE` 语句中指定的所需名称。 在初始阶段，用户可以访问空数据库，甚至可以在此数据库中创建表或加载数据。 当还原服务启动第二个阶段时，将删除此临时数据库。
+在托管实例上还原某个数据库时，还原服务首先会使用所需的名称创建一个空数据库，以便在实例上分配该名称。 一段时间后，将会删除此数据库，并启动实际数据库的还原。 处于“正在还原”状态的数据库将临时使用随机 GUID 值而不是名称。 还原过程完成后，临时名称将更改为 `RESTORE` 语句中指定的所需名称。 在初始阶段，用户可以访问空数据库，甚至可以在此数据库中创建表或加载数据。 当还原服务启动第二个阶段时，将删除此临时数据库。
 
 **解决方法**：在看到还原完成之前，请不要访问正在还原的数据库。
 
@@ -217,7 +222,7 @@ WHERE database_id > 4
 
 ### <a name="transaction-scope-on-two-databases-within-the-same-instance-isnt-supported"></a>跨同一实例中的两个数据库的事务范围不受支持
 
-如果在同一事务范围中将两个查询发送到了同一实例内的两个数据库，则 .NET 中的 `TransactionScope` 类不会工作。
+（2020 年 3 月已解决）如果两个查询被发送到同一事务范围下相同实例内的两个数据库，那么 .Net 中的 `TransactionScope` 类就无法正常运行：
 
 ```csharp
 using (var scope = new TransactionScope())
@@ -242,9 +247,7 @@ using (var scope = new TransactionScope())
 
 ```
 
-虽然此代码处理同一实例内的数据，但它需要 MSDTC。
-
-**解决方法：** 使用 [SqlConnection.ChangeDatabase(String)](https://docs.microsoft.com/dotnet/api/system.data.sqlclient.sqlconnection.changedatabase) 在连接上下文中使用其他数据库，而非使用两个连接。
+解决方法（自 2020 年 3 月起不再需要）：使用 [SqlConnection.ChangeDatabase(String)](https://docs.microsoft.com/dotnet/api/system.data.sqlclient.sqlconnection.changedatabase) 在连接上下文中使用其他数据库，而非使用两个连接。
 
 ### <a name="clr-modules-and-linked-servers-sometimes-cant-reference-a-local-ip-address"></a>CLR 模块和链接的服务器有时无法引用本地 IP 地址
 

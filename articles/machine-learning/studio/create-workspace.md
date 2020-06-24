@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 12/07/2017
-ms.openlocfilehash: 231308225f67c2b84824a6c67040d60fa90e323e
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 88ce57c6426dff9cddc317669771c4196cf60170
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80343083"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723720"
 ---
 # <a name="create-and-share-an-azure-machine-learning-studio-classic-workspace"></a>创建并共享 Azure 机器学习工作室（经典）工作区
 
@@ -25,6 +25,8 @@ ms.locfileid: "80343083"
 
 ## <a name="create-a-studio-classic-workspace"></a>创建工作室（经典）工作区
 
+若要在机器学习工作室（经典版）中打开工作区，则必须登录到用于创建工作区的 Microsoft 帐户，或者需要收到所有者发出的邀请以加入工作区。 在 Azure 门户中可以管理工作区，包括配置访问权限。
+
 1. 登录到 [Azure 门户](https://portal.azure.cn/)
 
     > [!NOTE]
@@ -32,9 +34,9 @@ ms.locfileid: "80343083"
     >
     > 
 
-2. 单击“+新建” 
+2. 单击“+新建”
 
-3. 在搜索框中，键入“机器学习工作室（经典）工作区”，并选择匹配项  。 然后在页面底部选择单击“创建”  。
+3. 在搜索框中，键入“机器学习工作室（经典）工作区”，并选择匹配项。 然后在页面底部选择单击“创建”。
 
 4. 输入工作区信息：
 
@@ -44,6 +46,9 @@ ms.locfileid: "80343083"
      ![创建新的工作室（经典）工作区](./media/create-workspace/create-new-workspace.png)
 
 5. 单击**创建**。
+
+   机器学习当前只允许有限数量的区域。 如果订阅不包括这些区域之一，可能会看到错误消息，“你在允许的区域中没有订阅。”  要请求将某区域添加到订阅，可从 Azure 门户创建新的 Microsoft 支持请求，将“计费”选为问题类型，然后按照提示提交请求。
+
 
 > [!NOTE]
 > 机器学习工作室（经典）执行工作流时，依赖你提供的 Azure 存储帐户来保存中间数据。 创建工作区后，如果删除了存储帐户或如果更改了访问密钥，工作区将停止运行，该工作区中的所有试验会失败。
@@ -57,7 +62,7 @@ ms.locfileid: "80343083"
 
     ![选择工作区](./media/create-workspace/open-workspace.png)
 
-3. 单击“我的试验”  。
+3. 单击“我的试验”。
 
     ![打开试验](./media/create-workspace/my-experiments.png)
 
@@ -80,11 +85,11 @@ ms.locfileid: "80343083"
 
 1. 在 [https://studio.azureml.net/Home](https://studio.azureml.net/Home) 登录机器学习工作室（经典）
 
-2. 在左面板中，单击“设置” 
+2. 在左面板中，单击“设置”
 
-3. 单击“用户”  选项卡
+3. 单击“用户”选项卡
 
-4. 单击页面底部的“邀请更多用户” 
+4. 单击页面底部的“邀请更多用户”
 
     ![工作室设置](./media/create-workspace/settings.png)
 
@@ -92,12 +97,39 @@ ms.locfileid: "80343083"
 
 6. 选择是要将用户添加为“所有者”还是“用户”。
 
-7. 单击“确定”  复选标记按钮。
+7. 单击“确定”复选标记按钮。
 
 添加的每个用户都将收到一封电子邮件，其中包含如何登录共享工作区的说明。
 
 > [!NOTE]
 > 要使用户能够在此工作区中部署或管理 Web 服务，这些用户必须是 Azure 订阅中的参与者或管理员。 
 
+## <a name="troubleshoot-storage-accounts"></a>排查存储帐户问题
 
 
+机器学习服务需要存储帐户以存储数据。 可以使用现有存储帐户，或者可以在创建新的机器学习工作室（经典版）工作区时创建新的存储帐户（如果有创建新的存储帐户的配额）。
+
+创建新的机器学习工作室（经典版）工作区之后，可以使用用于创建工作区的 Microsoft 帐户登录到机器学习工作室（经典版）。 如果遇到错误消息，“未找到工作区”（类似于下面的屏幕截图），请使用以下步骤删除浏览器 cookie。
+
+![未找到工作区](media/troubleshooting-creating-ml-workspace/screen3.png)
+
+**删除浏览器 cookie**
+
+1. 如果使用 Internet Explorer，请单击右上角的“工具”按钮，并选择“Internet 选项”。  
+
+   ![Internet 选项](media/troubleshooting-creating-ml-workspace/screen4.png)
+
+2. 在“常规”选项卡下，单击“删除�” 
+
+   ![“常规”选项卡](media/troubleshooting-creating-ml-workspace/screen5.png)
+
+3. 在“删除浏览历史记录”对话框中，确保已选中“Cookie 和网站数据”，并单击“删除”。
+
+   ![删除 Cookie](media/troubleshooting-creating-ml-workspace/screen6.png)
+
+删除 Cookie 之后，重启浏览器，并转到 [Microsoft Azure 机器学习工作室（经典版）](https://studio.ml.azure.cn/)页。 如果系统提示输入用户名和密码，请输入用于创建工作区的同一个 Microsoft 帐户。
+
+
+## <a name="next-steps"></a>后续步骤
+
+有关管理工作区的详细信息，请参阅[管理 Azure 机器学习工作室（经典版）工作区](manage-workspace.md)。

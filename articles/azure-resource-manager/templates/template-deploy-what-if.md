@@ -3,39 +3,43 @@ title: 模板部署 what-if（预览版）
 description: 在部署 Azure 资源管理器模板之前确定资源将会发生的更改。
 author: rockboyfor
 ms.topic: conceptual
-ms.date: 04/30/2020
+ms.date: 06/22/2020
 ms.author: v-yeche
-ms.openlocfilehash: 404984828963ae1755a66e27b2dce4037a155969
-ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
+ms.openlocfilehash: d7836ace728530f65e0f0f429271816d557f973d
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82596084"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098642"
 ---
-<!--PRIVATE VIEW NOT SUIT FOR OUTSIDE OF MICROSOFT-->
+<!--PRIVATE PREVIEW NOT SUIT FOR OUTSIDE OF MICROSOFT-->
 <!--RELEASE BEFORE CONFIRM-->
 <!--MOONCAKE: We submit the private preview request on https://aka.ms/armtemplatepreviews-->
 <!--Wait for reply-->
 # <a name="arm-template-deployment-what-if-operation-preview"></a>ARM 模板部署 what-if 操作（预览版）
 
-在部署 Azure 资源管理器 (ARM) 模板之前，可能需要预览将要进行的更改。 Azure 资源管理器提供 what-if（假设）操作，让你在部署模板时了解资源发生的更改。 what-if 操作不会对现有资源进行任何更改， 而是预测在部署指定的模板时发生的更改。
+在部署 Azure 资源管理器 (ARM) 模板之前，可以预览将要进行的更改。 Azure 资源管理器提供 what-if（假设）操作，让你在部署模板时了解资源发生的更改。 what-if 操作不会对现有资源进行任何更改， 而是预测在部署指定的模板时发生的更改。
 
 > [!NOTE]
 > what-if 操作目前以预览版提供。 在预览版中，结果有时可能会显示资源将发生更改，但实际上并不会发生更改。 我们正在努力减少这些问题，但需要大家的帮助。 请在 [https://aka.ms/whatifissues](https://aka.ms/whatifissues) 上报告这些问题。
 
-可将 what-if 操作与 PowerShell 命令或 REST API 操作配合使用。
+可将 what-if 操作与 Azure PowerShell、Azure CLI 或 REST API 操作配合使用。 资源组和订阅级部署支持 What-if。
 
-## <a name="install-powershell-module"></a>安装 PowerShell 模块
+## <a name="install-azure-powershell-module"></a>安装 Azure PowerShell 模块
 
-若要在 PowerShell 中使用 what-if，请从 PowerShell 库安装 Az.Resources 模块预览版。
+若要在 PowerShell 中使用 what-if，则必须安装 Az 模块 4.2 或更高版本。
 
-### <a name="install-preview-version"></a>安装预览版
+但在安装所需模块之前，请确保安装了 PowerShell Core（6.x 或 7.x）。 如果安装了 PowerShell 5.x 或更早版本，请[更新 PowerShell 版本](https://docs.microsoft.com/powershell/scripting/install/installing-powershell)。 无法在 PowerShell 5.x 或更早版本上安装所需模块。
 
-若要安装预览版模块，请使用以下命令：
+### <a name="install-latest-version"></a>安装最新版本
+
+若要安装该模块，请使用：
 
 ```powershell
-Install-Module Az.Resources -RequiredVersion 1.12.1-preview -AllowPrerelease
+Install-Module -Name Az -Force
 ```
+
+若要详细了解如何安装模块，请参阅[安装 Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps)。
 
 ### <a name="uninstall-alpha-version"></a>卸载 alpha 版本
 
@@ -48,7 +52,7 @@ Install-Module Az.Resources -RequiredVersion 1.12.1-preview -AllowPrerelease
    Get-InstalledModule -Name Az.Resources -AllVersions | select Name,Version
    ```
 
-1. 如果已安装版本的版本号格式为 2.x.x-alpha，请卸载该版本  。
+1. 如果已安装版本的版本号格式为 2.x.x-alpha，请卸载该版本。
 
    ```powershell
    Uninstall-Module Az.Resources -RequiredVersion 2.0.1-alpha5 -AllowPrerelease
@@ -62,9 +66,13 @@ Install-Module Az.Resources -RequiredVersion 1.12.1-preview -AllowPrerelease
 
 现在可以使用 what-if 了。
 
+## <a name="install-azure-cli-module"></a>安装 Azure CLI 模块
+
+若要在 Azure CLI 中使用 what-if，则必须安装 Azure CLI 2.5.0 或更高版本。 如果需要，请[安装 Azure CLI 的最新版本](https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest)。
+
 ## <a name="see-results"></a>查看结果
 
-在 PowerShell 中，输出的结果进行了颜色编码，方便你查看不同类型的更改。
+在 PowerShell 或 Azure CLI 中使用 what-if 时，输出包含进行了颜色编码的结果，方便你查看不同类型的更改。
 
 ![资源管理器模板部署 what-if 操作 fullresourcepayloads 和更改类型](./media/template-deploy-what-if/resource-manager-deployment-whatif-change-types.png)
 
@@ -99,24 +107,41 @@ Resource changes: 1 to modify.
 
 ## <a name="what-if-commands"></a>what-if 命令
 
-可以使用 Azure PowerShell 或 Azure REST API 执行 what-if 操作。
-
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-若要在部署模板之前预览一下所做的更改，请将 `-Whatif` 开关参数添加到部署命令。
+若要在部署模板前预览更改，请使用 [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment) 或 [New-AzSubscriptionDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azdeployment)。 将 `-Whatif` 开关参数添加到部署命令。
 
 * 对于资源组部署，请使用 `New-AzResourceGroupDeployment -Whatif`
 * 对于订阅级别的部署，请使用 `New-AzSubscriptionDeployment -Whatif` 和 `New-AzDeployment -Whatif`
 
-也可使用 `-Confirm` 开关参数来预览所做的更改，让系统显示是否继续部署的提示。
+可使用 `-Confirm` 开关参数来预览所做的更改，让系统显示是否继续部署的提示。
 
 * 对于资源组部署，请使用 `New-AzResourceGroupDeployment -Confirm`
 * 对于订阅级别的部署，请使用 `New-AzSubscriptionDeployment -Confirm` 和 `New-AzDeployment -Confirm`
 
-上述命令返回适用于手动检查的文本摘要。 若要获取一个适用于以编程方式在其中检查更改的对象，请使用以下命令：
+上述命令返回适用于手动检查的文本摘要。 若要获取可通过编程方式检查更改的对象，请使用 [Get-AzResourceGroupDeploymentWhatIfResult](https://docs.microsoft.com/powershell/module/az.resources/get-azresourcegroupdeploymentwhatifresult) 或 [Get-AzSubscriptionDeploymentWhatIfResult](https://docs.microsoft.com/powershell/module/az.resources/get-azdeploymentwhatifresult)。
 
 * 对于资源组部署，请使用 `$results = Get-AzResourceGroupDeploymentWhatIfResult`
 * 对于订阅级别的部署，请使用 `$results = Get-AzSubscriptionDeploymentWhatIfResult` 或 `$results = Get-AzDeploymentWhatIfResult`
+
+### <a name="azure-cli"></a>Azure CLI
+
+若要在部署模板前预览更改，请使用 [az deployment group what-if](https://docs.microsoft.com/cli/azure/deployment/group?view=azure-cli-latest#az-deployment-group-what-if) 或 [az deployment sub what-if](https://docs.azure.cn/cli/deployment/sub?view=azure-cli-latest#az-deployment-sub-what-if)。
+
+* 对于资源组部署，请使用 `az deployment group what-if`
+* 对于订阅级别部署，请使用 `az deployment sub what-if`
+
+可以使用 `--confirm-with-what-if` 开关（或其缩写形式 `-c`）预览更改，并让系统显示是否继续部署的提示。 将此开关添加到 [az deployment group create](https://docs.microsoft.com/cli/azure/deployment/group?view=azure-cli-latest#az-deployment-group-create) 或 [az deployment sub create](https://docs.azure.cn/cli/deployment/sub?view=azure-cli-latest#az-deployment-sub-create)。
+
+* 对于资源组部署，请使用 `az deployment group create --confirm-with-what-if` 或 `-c`
+* 对于订阅级别的部署，请使用 `az deployment sub create --confirm-with-what-if` 或 `-c`
+
+上述命令返回适用于手动检查的文本摘要。 若要获取可通过编程方式检查更改的 JSON 对象，请使用：
+
+* 对于资源组部署，请使用 `az deployment group what-if --no-pretty-print`
+* 对于订阅级别部署，请使用 `az deployment sub what-if --no-pretty-print`
+
+若要返回没有颜色的结果，请打开 [Azure CLI 配置](https://docs.azure.cn/cli/azure-cli-configuration?view=azure-cli-latest)文件。 将“no_color”设置为“yes”。
 
 ### <a name="azure-rest-api"></a>Azure REST API
 
@@ -143,10 +168,17 @@ what-if 操作列出六种不同的更改类型：
 
 ## <a name="result-format"></a>结果格式
 
-可以控制返回的有关所预测更改的详细级别。 在部署命令 (`New-Az*Deployment`) 中，请使用 -WhatIfResultFormat 参数  。 在编程对象命令 (`Get-Az*DeploymentWhatIf`) 中，请使用 ResultFormat 参数  。
+控制返回的有关预测更改的详细信息级别。 可以使用两个选项：
 
-将 format 参数设置为 FullResourcePayloads 可获取将会更改的资源的列表，以及将会更改的属性的详细信息  。 将 format 参数设置为 ResourceIdOnly 可获取将会更改的资源的列表  。 默认值为 FullResourcePayloads  。  
+* **FullResourcePayloads** - 返回将会更改的资源的列表，以及将会更改的属性的相关详细信息。
+* **ResourceIdOnly** - 返回将会更改的资源列表
 
+默认值为 FullResourcePayloads。
+
+对于 PowerShell 部署命令，请使用 `-WhatIfResultFormat` 参数。 在编程对象命令中，使用 `ResultFormat` 参数。
+
+对于 Azure CLI，请使用 `--result-format` 参数。
+ 
 以下结果显示了两种不同的输出格式：
 
 - 完整资源有效负载
@@ -199,6 +231,8 @@ what-if 操作列出六种不同的更改类型：
 
 为了了解 what-if 的工作原理，让我们运行一些测试。 首先，部署一个[用于创建虚拟网络的模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/what-if/what-if-before.json)。 将使用此虚拟网络来测试 what-if 如何报告更改。
 
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
 ```azurepowershell
 New-AzResourceGroup `
   -Name ExampleGroup `
@@ -208,9 +242,24 @@ New-AzResourceGroupDeployment `
   -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/what-if/what-if-before.json"
 ```
 
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli
+az group create \
+  --name ExampleGroup \
+  --location "Central US"
+az deployment group create \
+  --resource-group ExampleGroup \
+  --template-uri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/what-if/what-if-before.json"
+```
+
+---
+
 ### <a name="test-modification"></a>测试修改
 
-部署完成后，即可测试 what-if 操作。 这一次，请部署一个[用于更改虚拟网络的模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/what-if/what-if-after.json)。 该模板中缺少一个原始标记，已删除了一个子网，并且已更改了地址前缀。
+部署完成后，即可测试 what-if 操作。 这一次，将部署一个[用于更改虚拟网络的模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/what-if/what-if-after.json)。 该模板中缺少一个原始标记，已删除了一个子网，并且已更改了地址前缀。
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -218,6 +267,16 @@ New-AzResourceGroupDeployment `
   -ResourceGroupName ExampleGroup `
   -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/what-if/what-if-after.json"
 ```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli
+az deployment group what-if \
+  --resource-group ExampleGroup \
+  --template-uri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/what-if/what-if-after.json"
+```
+
+---
 
 what-if 输出类似于：
 
@@ -262,6 +321,8 @@ Resource changes: 1 to modify.
 
 现在，让我们将命令设置为变量，以编程方式评估 what-if 结果。
 
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
 ```azurepowershell
 $results = Get-AzResourceGroupDeploymentWhatIfResult `
   -ResourceGroupName ExampleGroup `
@@ -277,19 +338,41 @@ foreach ($change in $results.Changes)
 }
 ```
 
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli
+results=$(az deployment group what-if --resource-group ExampleGroup --template-uri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/what-if/what-if-after.json" --no-pretty-print)
+```
+
+---
+
 ## <a name="confirm-deletion"></a>确认删除
 
 what-if 操作支持使用[部署模式](deployment-modes.md)。 设置为完整模式时，将删除不在模板中的资源。 以下示例部署一个处于完整模式的[未定义任何资源的模板](https://github.com/Azure/azure-docs-json-samples/blob/master/empty-template/azuredeploy.json)。
 
-若要在部署模板之前预览所做的更改，请在部署命令中使用 `-Confirm` 开关参数。 如果更改符合预期，请确认你想要完成此部署。
+若要在部署模板之前预览所做的更改，请在部署命令中使用 confirm 开关参数。 如果更改符合预期，请确认你想要完成此部署。
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
-  -Confirm `
   -ResourceGroupName ExampleGroup `
-  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/empty-template/azuredeploy.json" `
-  -Mode Complete
+  -Mode Complete `
+  -Confirm `
+  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/empty-template/azuredeploy.json"
 ```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli
+az deployment group create \
+  --resource-group ExampleGroup \
+  --mode Complete \
+  --confirm-with-what-if \
+  --template-uri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/empty-template/azuredeploy.json"
+```
+
+---
 
 由于该模板中未定义任何资源，且部署模式设置为完成，因此会删除虚拟网络。
 
@@ -324,10 +407,12 @@ Are you sure you want to execute the deployment?
 
 你会看到预期的更改，并且可以确认你想要运行此部署。
 
+<!--Not available on SDKs-->
 ## <a name="next-steps"></a>后续步骤
 
 - 如果发现 what-if 预览版提供了错误的结果，请在 [https://aka.ms/whatifissues](https://aka.ms/whatifissues) 上报告问题。
 - 若要使用 Azure PowerShell 来部署模板，请参阅[使用 ARM 模板和 Azure PowerShell 来部署资源](deploy-powershell.md)。
+- 若要使用 Azure CLI 部署模板，请参阅[使用 ARM 模板和 Azure CLI 部署资源](deploy-cli.md)。
 - 若要使用 REST 来部署模板，请参阅[使用 ARM 模板和资源管理器 REST API 来部署资源](deploy-rest.md)。
 
 

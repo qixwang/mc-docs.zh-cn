@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: big-data
-origin.date: 06/03/2019
-ms.date: 11/11/2019
+origin.date: 04/20/2020
+ms.date: 06/22/2020
 ms.author: v-yiso
-ms.openlocfilehash: 73506f5b973f2ddeb37b796f4242930e85e70f1d
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 1680dac3db57d19fd3dd1e2a7f0de11f096be9bd
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "73426073"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723123"
 ---
 # <a name="process-and-analyze-json-documents-by-using-apache-hive-in-azure-hdinsight"></a>使用 Azure HDInsight 中的 Apache Hive 分析和处理 JSON 文档
 
@@ -68,8 +68,12 @@ ms.locfileid: "73426073"
 
 在本文中，将使用 Apache Hive 控制台。 有关如何打开 Hive 控制台的说明，请参阅[在 HDInsight 中将 Apache Ambari Hive 视图与 Apache Hadoop 配合使用](apache-hadoop-use-hive-ambari-view.md)。
 
+> [!NOTE]  
+> HDInsight 4.0 中不再提供 Hive 视图。
+
 ## <a name="flatten-json-documents"></a>平展 JSON 文档
-下一部分中所列的方法需要 JSON 文档在单一行中。 因此，必须将 JSON 文档平展成字符串。 如果 JSON 文档已平展，则可以跳过此步骤，直接转到有关分析 JSON 数据的下一部分。 若要平展 JSON 文档，请运行以下脚本：
+
+下一部分中所列的方法需要 JSON 文档在单个行中。 因此，必须将 JSON 文档平展成字符串。 如果 JSON 文档已平展，则可以跳过此步骤，直接转到有关分析 JSON 数据的下一部分。 若要平展 JSON 文档，请运行以下脚本：
 
 ```sql
     DROP TABLE IF EXISTS StudentsRaw;
@@ -108,10 +112,11 @@ Hive 提供了三种不同的机制用于对 JSON 文档运行查询，你也可
 * 使用 get_json_object 用户定义的函数 (UDF)。
 * 使用 json_tuple UDF。
 * 使用自定义序列化程序/反序列化程序 (SerDe)。
-* 使用 Python 或其他语言编写自己的 UDF。 有关如何使用 Hive 运行自己的 Python 代码的详细信息，请参阅[使用 Apache Hive 和 Apache Pig 运行 Python UDF][hdinsight-python]。
+* 使用 Python 或其他语言编写自己的 UDF。 有关如何使用 Hive 运行自己的 Python 代码的详细信息，请参阅[使用 Apache Hive 和 Apache Pig 运行 Python UDF](./python-udf-hdinsight.md)。
 
 ### <a name="use-the-get_json_object-udf"></a>使用 get_json_object UDF
-Hive 提供名为 [get_json_object](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-get_json_object) 的内置 UDF，它可以在运行时执行 JSON 查询。 此方法采用两个参数 - 表名称和方法名称，具有平展的 JSON 文档和需要进行分析的 JSON 字段。 让我们探讨一个示例，了解此 UDF 的工作原理。
+
+Hive 提供名为 [get_json_object](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-get_json_object) 的内置 UDF，它在运行时查询 JSON。 此方法采用两个参数：表名和方法名。 方法名具有平展 JSON 文档和需要分析的 JSON 字段。 让我们探讨一个示例，了解此 UDF 的工作原理。
 
 以下查询返回每个学生的名字和姓氏：
 
@@ -131,10 +136,11 @@ get_json_object UDF 有限制：
 * 由于查询中的每个字段都需要重新分析查询，因此会影响性能。
 * **GET\_JSON_OBJECT()** 返回数组的字符串表示形式。 要将此数组转换为 Hive 数组，必须使用正则表达式来替换方括号“[”和“]”，然后调用拆分来获取数组。
 
-正因如此，Hive wiki 建议使用 json_tuple。  
+此转换是 Hive Wiki 建议使用 json_tuple 的原因。  
 
 ### <a name="use-the-json_tuple-udf"></a>使用 json_tuple UDF
-Hive 提供的另一个 UDF 称为 [json_tuple](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-json_tuple)，其性能比 [get_ json _object](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-get_json_object) 要高。 此方法采用一组键和一个 JSON 字符串，并使用一个函数返回值的元组。 以下查询将从 JSON 文档返回学生 ID 和年级：
+
+Hive 提供的另一个 UDF 名为 [json_tuple](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-json_tuple)，其性能比 [get_json_object](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-get_json_object) 要高。 此方法采用一组键和一个 JSON 字符串， 然后返回值的元组。 以下查询将从 JSON 文档返回学生 ID 和年级：
 
 ```sql
 SELECT q1.StudentId, q1.Grade
@@ -153,7 +159,8 @@ json_tuple UDF 在 Hive 中使用了[横向视图](https://cwiki.apache.org/conf
 SerDe 是用于分析嵌套 JSON 文档的最佳选择。 使用它可以定义 JSON 架构，然后使用该架构来分析文档。 有关说明，请参阅[如何将自定义 JSON SerDe 与 Microsoft Azure HDInsight 配合使用](https://web.archive.org/web/20190217104719/https://blogs.msdn.microsoft.com/bigdatasupport/2014/06/18/how-to-use-a-custom-json-serde-with-microsoft-azure-hdinsight/)。
 
 ## <a name="summary"></a>摘要
-总之，在 Hive 中选择 JSON 运算符类型取决于方案。 如果有一个简单的 JSON 文档，并只有一个要查找的字段，可以选择使用 Hive UDF get_json_object。 如果有多个键用于查找，则可以使用 json_tuple。 如果拥有嵌套文档，应该使用 JSON SerDe。
+
+在 Hive 中选择的 JSON 运算符的类型取决于方案。 使用一个简单的 JSON 文档并拥有一个要查找的字段时，请选择 Hive UDF get_json_object。 如果有多个要查找的键，则可以使用 json_tuple。 对于嵌套文档，请使用 JSON SerDe。
 
 ## <a name="next-steps"></a>后续步骤
 

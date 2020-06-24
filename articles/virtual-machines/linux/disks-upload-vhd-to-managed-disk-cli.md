@@ -4,16 +4,16 @@ description: 了解如何使用 Azure CLI 通过直接上传将 VHD 上传到 Az
 services: virtual-machines,storage
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 06/05/2020
-ms.topic: article
+ms.date: 06/17/2020
+ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: 93758fb1054c149a0f226a0b816039a2c2af4057
-ms.sourcegitcommit: 285649db9b21169f3136729c041e4d04d323229a
+ms.openlocfilehash: 44416ad7c1dc51afced5cbdd36e21d38652a571a
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84684002"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097216"
 ---
 # <a name="upload-a-vhd-to-azure-or-copy-a-managed-disk-to-another-region---azure-cli"></a>将 VHD 上传到 Azure，或将托管磁盘复制到其他区域 - Azure CLI
 

@@ -5,14 +5,15 @@ author: rockboyfor
 services: cosmos-db
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 06/15/2020
+origin.date: 05/05/2020
+ms.date: 06/22/2020
 ms.author: v-yeche
-ms.openlocfilehash: fd4983ff69469a7ddc6f4924f56cf3cd06caba6e
-ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
+ms.openlocfilehash: ea74d945adcad50ea76e62f9b6fa91e081b65022
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84723771"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098311"
 ---
 <!--Verified successfully on 06/12/2020-->
 # <a name="monitor-azure-cosmos-db-data-by-using-diagnostic-settings-in-azure"></a>使用 Azure 中的诊断设置监视 Azure Cosmos DB 数据
@@ -23,13 +24,13 @@ Azure 中的诊断设置用于收集资源日志。 Azure 资源日志由资源�
 
 1. 登录到 [Azure 门户](https://portal.azure.cn)。
 
-1. 导航到 Azure Cosmos 帐户。 打开“诊断设置”窗格，然后选择“添加诊断设置”选项。 
+1. 导航到 Azure Cosmos 帐户。 打开“诊断设置”窗格，然后选择“添加诊断设置”选项。**** ****
 
-1. 在“诊断设置”窗格的表单中填充以下详细信息： 
+1. 在“诊断设置”窗格的表单中填充以下详细信息：**** 
 
     * **名称**：为要创建的日志输入名称。
 
-    * 可以存储日志以执行“存档到存储帐户”、“流式传输到事件中心”或“发送到 Log Analytics”的操作  
+    * 可以存储日志以执行“存档到存储帐户”、“流式传输到事件中心”或“发送到 Log Analytics”的操作**** **** ****
 
 1. 创建诊断设置时，请指定要收集的日志类别。 下面列出了 Azure Cosmos DB 支持的日志类别，以及收集的示例日志：
 
@@ -45,7 +46,7 @@ Azure 中的诊断设置用于收集资源日志。 Azure 资源日志由资源�
     { "time": "2019-04-10T15:10:46.7820998Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "MongoRequests", "operationName": "ping", "properties": {"activityId": "823cae64-0000-0000-0000-000000000000","opCode": "MongoOpCode_OP_QUERY","errorCode": "0","duration": "0","requestCharge": "0.000000","databaseName": "admin","collectionName": "$cmd","retryCount": "0"}}
     ```
 
-* CassandraRequests：选择此选项可记录用户从前端发起的请求，这些请求的内容是要求处理发送给 Azure Cosmos DB API for Cassandra 的请求。 此日志类型不适用于其他 API 帐户。 要记录的关键属性为 `operationName`、`requestCharge`、`piiCommandText`。 在诊断日志中启用 CassandraRequests 时，请务必禁用 DataPlaneRequests。 对于在 API 上发出的每个请求，都会看到一个日志。
+* CassandraRequests****：选择此选项可记录用户从前端发起的请求，这些请求的内容是要求处理发送给 Azure Cosmos DB API for Cassandra 的请求。 此日志类型不适用于其他 API 帐户。 要记录的关键属性为 `operationName`、`requestCharge`、`piiCommandText`。 在诊断日志中启用 CassandraRequests 时，请务必禁用 DataPlaneRequests。 对于在 API 上发出的每个请求，都会看到一个日志。
 
    ```json
    { "time": "2020-03-30T23:55:10.9579593Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "CassandraRequests", "operationName": "QuerySelect", "properties": {"activityId": "6b33771c-baec-408a-b305-3127c17465b6","opCode": "<empty>","errorCode": "-1","duration": "0.311900","requestCharge": "1.589237","databaseName": "system","collectionName": "local","retryCount": "<empty>","authorizationTokenType": "PrimaryMasterKey","address": "104.42.195.92","piiCommandText": "{"request":"SELECT key from system.local"}","userAgent": """"}}
@@ -132,7 +133,7 @@ Azure 中的诊断设置用于收集资源日志。 Azure 资源日志由资源�
     | summarize max(responseLength_s), max(requestLength_s), max(requestCharge_s), count = count() by OperationName, requestResourceType_s, userAgent_s, collectionRid_s, bin(TimeGenerated, 1h)
     ```
 
-1. 如何获取与 DataPlaneRequests 和 QueryRunTimeStatistics 中的数据联接时消耗超过 100 RU/s 的所有查询 。
+1. 如何获取与 DataPlaneRequests 和 QueryRunTimeStatistics 中的数据联接时消耗超过 100 RU/s 的所有查询**** ****。
 
     ```Kusto
     AzureDiagnostics

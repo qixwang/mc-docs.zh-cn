@@ -6,16 +6,16 @@ ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.topic: tutorial
 ms.workload: infrastructure
-ms.date: 06/05/2020
+ms.date: 06/17/2020
 ms.author: v-johya
 ms.custom: mvc
 ms.reviewer: akjosh
-ms.openlocfilehash: 9674914c8d4d67962b0d2498b17c209c2ab8a004
-ms.sourcegitcommit: 285649db9b21169f3136729c041e4d04d323229a
+ms.openlocfilehash: 66b1be97702a2cf56e4dc36ce8d9f06e84bfb6d2
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84684029"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097410"
 ---
 # <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-the-azure-cli"></a>教程：使用 Azure CLI 创建 Azure VM 的自定义映像
 
@@ -56,14 +56,14 @@ ms.locfileid: "84684029"
 
 允许用于库名称的字符为大写或小写字母、数字、点和句点。 库名称不能包含短划线。   库名称在你的订阅中必须唯一。 
 
-使用 [az sig create](https://docs.microsoft.com/cli/sig#az-sig-create) 创建一个映像库。 以下示例在“中国北部”创建一个名为“myGalleryRG”的资源组命名库，以及一个名为“myGallery”的库  。
+使用 [az sig create](https://docs.microsoft.com/cli/sig#az-sig-create) 创建一个映像库。 以下示例在“中国北部”创建一个名为“myGalleryRG”的资源组命名库，以及一个名为“myGallery”的库** ** **。
 
 ```azurecli
 az group create --name myGalleryRG --location chinanorth
 az sig create --resource-group myGalleryRG --gallery-name myGallery
 ```
 
-## <a name="get-infornation-about-the-vm"></a>获取有关 VM 的信息
+## <a name="get-information-about-the-vm"></a>获取有关 VM 的信息
 
 可以使用 [az vm list](/cli/vm#az-vm-list) 查看可用 VM 的列表。 
 
@@ -89,7 +89,7 @@ az vm get-instance-view -g MyResourceGroup -n MyVm --query id
 
 使用 [az sig image-definition create](https://docs.microsoft.com/cli/sig/image-definition#az-sig-image-definition-create) 在库中创建一个映像定义。 
 
-在此示例中，映像定义名为 myImageDefinition，适用于[专用化](/virtual-machines/linux/shared-image-galleries#generalized-and-specialized-images) Linux OS 映像。 
+在此示例中，映像定义名为 myImageDefinition，适用于[专用化](/virtual-machines/linux/shared-image-galleries#generalized-and-specialized-images) Linux OS 映像**。 
 
 ```azurecli 
 az sig image-definition create \
@@ -111,7 +111,7 @@ az sig image-definition create \
 
 允许用于映像版本的字符为数字和句点。 数字必须在 32 位整数范围内。 格式：*MajorVersion*.*MinorVersion*.*Patch*。
 
-在此示例中，映像的版本为 1.0.0，并且我们打算使用区域冗余存储在“中国北部”区域创建 2 个副本，在“中国东部区域”创建 1 个副本，在“中国东部 2”区域创建 1 个副本   。 复制区域必须包含源 VM 所在的区域。
+在此示例中，映像的版本为 1.0.0，并且我们打算使用区域冗余存储在“中国北部”区域创建 2 个副本，在“中国东部区域”创建 1 个副本，在“中国东部 2”区域创建 1 个副本** ** ** **。 复制区域必须包含源 VM 所在的区域。
 
 请将此示例中的 `--managed-image` 值替换为上一步的 VM ID。
 
@@ -140,7 +140,7 @@ az sig image-version create \
 
 使用 `--image` 的映像定义 ID 从可用的最新映像版本创建 VM。 还可以通过为 `--image` 提供映像版本 ID 从特定版本创建 VM。 
 
-在此示例中，我们将从 myImageDefinition 映像的最新版本创建 VM。
+在此示例中，我们将从 myImageDefinition 映像的最新版本创建 VM**。
 
 ```azurecli
 az group create --name myResourceGroup --location chinanorth
@@ -174,6 +174,7 @@ az role assignment create \
 
 有关如何使用 RBAC 共享资源的详细信息，请参阅[使用 RBAC 和 Azure CLI 管理访问权限](/role-based-access-control/role-assignments-cli)。
 
+<!--Not available in MC currently-->
 ## <a name="next-steps"></a>后续步骤
 
 在本教程中，你已创建了一个自定义 VM 映像。 你已了解如何：
@@ -188,6 +189,6 @@ az role assignment create \
 请转到下一教程，了解高度可用的虚拟机。
 
 > [!div class="nextstepaction"]
-> [创建高度可用的 VM](tutorial-availability-sets.md)。
+> [创建高度可用的 VM](tutorial-availability-sets.md)
 
 

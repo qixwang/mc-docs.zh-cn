@@ -2,14 +2,14 @@
 author: craigshoemaker
 ms.service: azure-functions
 ms.topic: include
-ms.date: 03/02/2020
+ms.date: 06/05/2020
 ms.author: v-junlch
-ms.openlocfilehash: 1cbaadcd77c16f2bc664c177f52f816b1cff5635
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: c76eec5f9190bdb0ef8f9038edb6f1541b92cd57
+ms.sourcegitcommit: f1a76ee3242698123a3d77f44c860db040b48f70
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78266125"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84574661"
 ---
 使用函数触发器来响应发送到事件中心事件流的事件。 若要设置触发器，必须具有基础事件中心的读取访问权限。 触发函数时，传递给函数的消息充当字符串类型。
 
@@ -212,7 +212,7 @@ module.exports = function (context, myEventHubMessage) {
 };
 ```
 
-若要批量接收事件，请将 function.json 文件中的 `cardinality` 设为 `many` ，如以下示例所示。
+若要批量接收事件，请将 function.json 文件中的 `cardinality` 设为 `many`，如以下示例所示。
 
 ### <a name="version-2x-and-higher"></a>版本 2.x 及更高版本
 
@@ -311,7 +311,7 @@ JavaScript 不支持特性。
 
 ## <a name="configuration"></a>配置
 
-下表解释了在 function.json  文件和 `EventHubTrigger` 特性中设置的绑定配置属性。
+下表解释了在 function.json 文件和 `EventHubTrigger` 特性中设置的绑定配置属性。
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
@@ -322,7 +322,7 @@ JavaScript 不支持特性。
 |**eventHubName** |**EventHubName** | Functions 2.x 及更高版本。 事件中心的名称。 当事件中心名称也出现在连接字符串中时，该值会在运行时覆盖此属性。 可以通过应用设置 %eventHubName% 引用 |
 |**consumerGroup** |**ConsumerGroup** | 一个可选属性，用于设置[使用者组](../articles/event-hubs/event-hubs-features.md#event-consumers)，该组用于订阅事件中心中的事件。 如果将其省略，则会使用 `$Default` 使用者组。 |
 |**基数** | 不适用 | 适用于 JavaScript。 设为 `many` 以启用批处理。  如果省略或设为 `one`，将向函数传递一条消息。 |
-|连接  |**Connection** | 应用设置的名称，该名称中包含事件中心命名空间的连接字符串。 单击 [命名空间](../articles/event-hubs/event-hubs-create.md#create-an-event-hubs-namespace) （而不是事件中心本身）  的“连接信息”按钮，以复制此连接字符串。 此连接字符串必须至少具有读取权限才可激活触发器。|
+|连接 |**Connection** | 应用设置的名称，该名称中包含事件中心命名空间的连接字符串。 单击 [命名空间](../articles/event-hubs/event-hubs-create.md#create-an-event-hubs-namespace) （而不是事件中心本身）的“连接信息”按钮，以复制此连接字符串。 此连接字符串必须至少具有读取权限才可激活触发器。|
 
 [!INCLUDE [app settings to local.settings.json](../articles/azure-functions/../../includes/functions-app-settings-local.md)]
 
@@ -343,8 +343,9 @@ JavaScript 不支持特性。
 请参阅在本文的前面部分使用这些属性的[代码示例](#example)。
 
 ## <a name="hostjson-properties"></a>host.json 属性
+<a name="host-json"></a>
 
-[host.json](../articles/azure-functions/functions-host-json.md#eventhub) 文件包含控制事件中心触发器行为的设置。
+[host.json](../articles/azure-functions/functions-host-json.md#eventhub) 文件包含控制事件中心触发器行为的设置。 配置因 Azure Functions 版本而异。
 
 [!INCLUDE [functions-host-json-event-hubs](../articles/azure-functions/../../includes/functions-host-json-event-hubs.md)]
 
