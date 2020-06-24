@@ -24884,7 +24884,18 @@
       "source_path": "articles/load-balancer/load-balancer-outbound-rules-overview.md",
       "redirect_url": "/load-balancer/load-balancer-outbound-connections#outboundrules",
       "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/cognitive-services/translator/translator-text-how-to-signup.md",
+      "redirect_url": "/cognitive-services/translator/translator-how-to-signup",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/data-factory/connector-azure-sql-database-managed-instance.md",
+      "redirect_url": "/data-factory/connector-azure-sql-managed-instance",
+      "redirect_document_id": true
     }
+
 
 
   ]
