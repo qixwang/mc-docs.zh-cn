@@ -11,13 +11,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: douglas, carlrab
 origin.date: 07/11/2019
-ms.date: 03/30/2020
-ms.openlocfilehash: 273ff586bcdbbfd7e72b3c1070b3947eeca8ccfd
-ms.sourcegitcommit: 4aeecfcc59cb42ba0b712a729d278d03bffc719a
+ms.date: 06/15/2020
+ms.openlocfilehash: d32c7297e8883a468d46c5121b683fa91b712e39
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81791032"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723704"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>将 SQL Server 实例迁移到 Azure SQL 数据库托管实例
 
@@ -31,7 +31,7 @@ ms.locfileid: "81791032"
 ![迁移过程](./media/sql-database-managed-instance-migration/migration-process.png)
 
 - [评估托管实例兼容性](#assess-managed-instance-compatibility)，应确保不存在可能阻止迁移的阻碍性问题。
-  - 此步骤还包括创建[性能基线](#create-performance-baseline)来确定源 SQL Server 实例上的资源用量。 若要部署大小适当的托管实例并验证迁移之后的性能是否受影响，需要执行此步骤。
+  - 此步骤还包括创建[性能基线](#create-performance-baseline)来确定源 SQL Server 实例上的资源用量。 若要部署大小合适的托管实例并验证迁移之后的性能是否未受影响，则需要执行此步骤。
 - [选择应用连接选项](sql-database-managed-instance-connect-app.md)
 - [部署到优化大小的托管实例](#deploy-to-an-optimally-sized-managed-instance)，选择托管实例的技术特征（vCore 数目、内存量）和性能层（“业务关键”、“常规用途”）。
 - [选择迁移方法并迁移](#select-migration-method-and-migrate)，使用脱机迁移（本机备份/还原、数据库导入/导出）或联机迁移（数据迁移服务、事务复制）迁移数据库。
@@ -42,11 +42,9 @@ ms.locfileid: "81791032"
 
 ## <a name="assess-managed-instance-compatibility"></a>评估托管实例兼容性
 
-首先，确定托管实例是否与应用程序的数据库要求相符。 托管实例部署选项旨在，方便直接迁移大多数在本地或在虚拟机中使用 SQL Server 的现有应用程序。 但是，我们有时可能需要用到一些目前尚不支持的功能，而实施某种解决方法的成本过高。
+首先，确定托管实例是否与应用程序的数据库要求相符。 托管实例部署选项旨在，方便直接迁移大多数在本地或在虚拟机中使用 SQL Server 的现有应用程序。 但是，有时可能需要用到一些目前尚不支持的功能，而实现某种解决方法的成本过高。
 
-使用[数据迁移助手 (DMA)](https://docs.microsoft.com/sql/dma/dma-overview) 可以检测影响 Azure SQL 数据库功能的潜在兼容性问题。 虽然 DMA 尚不支持将托管实例用作迁移目标，但建议针对 Azure SQL 数据库运行评估，并根据产品文档仔细查看报告的功能奇偶一致性和兼容性问题列表。 请参阅 [Azure SQL 数据库功能](sql-database-features.md)，以检查托管实例中是否不存在报告的一些阻塞性问题，因为大多数阻止迁移到 Azure SQL 数据库的阻塞性问题已通过托管实例进行删除。 例如，托管实例中提供跨数据库查询、同一实例中的跨数据库事务、链接到到其他 SQL 源的链接服务器、CLR、全局临时表、实例级视图、Service Broker 等功能。
-
-如果报告的一些阻塞性问题未通过托管实例部署选项进行删除，可能需要考虑备用选项，如 [Azure 虚拟机上的 SQL Server](https://www.azure.cn/home/features/virtual-machines/)。 下面是一些示例：
+使用[数据迁移助手 (DMA)](https://docs.microsoft.com/sql/dma/dma-overview) 可以检测影响 Azure SQL 数据库功能的潜在兼容性问题。 如果报告了某些拦截问题，则可能需要考虑替代选项，例如 [Azure 虚拟机上的 SQL Server](/virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview)。 下面是一些示例：
 
 - 需要直接访问操作系统或文件系统（例如，为了在装有 SQL Server 的同一个虚拟机上安装第三方代理或自定义代理）。
 - 严重依赖于目前尚不支持的功能，例如 FileStream/FileTable、PolyBase 和跨实例事务。
@@ -54,6 +52,7 @@ ms.locfileid: "81791032"
 - 计算要求比托管实例的要求低得多（例如，只需一个 vCore），并且数据库整合不可接受。
 
 如果已解决所有已识别的迁移阻碍并继续迁移到托管实例，请注意，某些更改可能会影响工作负荷的性能：
+
 - 如果你定期使用简单/批量记录的模型或按需停止备份，则强制性完整恢复模型和定期自动备份计划可能会影响工作负荷或维护/ETL 操作的性能。
 - 不同的服务器或数据库级别配置，例如跟踪标志或兼容性级别
 - 使用的新功能（例如透明数据库加密 (TDE) 或自动故障转移组）可能会影响 CPU 和 IO 使用率。
@@ -120,7 +119,7 @@ ms.locfileid: "81791032"
 
 ### <a name="native-restore-from-url"></a>从 URL 本机还原
 
-托管实例部署选项的重要功能之一是，还原取自本地 SQL Server 或[虚拟机上的 SQL Server](https://www.azure.cn/home/features/virtual-machines/)、且在 [Azure 存储](/storage/)中可用的本机备份（.bak 文件），可便于快速轻松地执行脱机数据库迁移。
+托管实例部署选项的重要功能之一是，还原取自本地 SQL Server 或[虚拟机上的 SQL Server](/virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview)、且在 [Azure 存储](/storage/)中可用的本机备份（.bak 文件），可便于快速轻松地执行脱机数据库迁移。
 
 下图高度概括了该过程：
 

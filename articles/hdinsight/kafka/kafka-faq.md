@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 origin.date: 08/14/2019
 ms.date: 03/23/2020
-ms.openlocfilehash: 947b47c490527bc1ee85cf087fb246a209affc6a
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: bb3f54fa227809f2c86030062b0a66fd2cc91fcd
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79295949"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723692"
 ---
 # <a name="frequently-asked-questions-about-apache-kafka-in-azure-hdinsight"></a>有关 Azure HDInsight 中的 Apache Kafka 的常见问题解答
 
@@ -43,12 +43,12 @@ HDInsight Kafka 群集包含以下资源：
 
 ## <a name="can-i-change-cluster-configurations"></a>是否可以更改群集配置？
 
-是的，可通过 Ambari 门户更改。 门户中的每个组件都附带一个“配置”部分，可在该部分更改组件配置。  某些更改可能需要重启代理。
+是的，可通过 Ambari 门户更改。 门户中的每个组件都附带一个“配置”部分，可在该部分更改组件配置。**** 某些更改可能需要重启代理。
 
 
 ## <a name="is-my-data-encrypted-can-i-use-my-own-keys"></a>我的数据是否已加密？ 是否可以使用我自己的密钥？
 
-托管磁盘上的所有 Kafka 消息都已通过 [Azure 存储服务加密 (SSE)](../../storage/common/storage-service-encryption.md) 进行加密。 传输中的数据（例如，在客户端与代理之间来回传输的数据）默认不会加密。 可以通过[自行设置 SSL](./apache-kafka-ssl-encryption-authentication.md) 来加密此类流量。 此外，HDInsight 允许管理其自身的密钥来加密静态数据。 有关详细信息，请参阅[客户管理的密钥磁盘加密](../disk-encryption.md)。
+托管磁盘上的所有 Kafka 消息都已通过 [Azure 存储服务加密 (SSE)](../../storage/common/storage-service-encryption.md) 进行加密。 传输中的数据（例如，在客户端与代理之间来回传输的数据）默认不会加密。 可以通过[自行设置 TLS](./apache-kafka-ssl-encryption-authentication.md) 来加密此类流量。 此外，HDInsight 允许管理其自身的密钥来加密静态数据。 有关详细信息，请参阅[客户管理的密钥磁盘加密](../disk-encryption.md)。
 
 ## <a name="how-do-i-connect-clients-to-my-cluster"></a>如何将客户端连接到群集？
 
@@ -88,8 +88,11 @@ HDInsight Kafka 群集包含以下资源：
 
 目前不支持就地升级群集版本。 若要将群集更新到更高的 Kafka 版本，请使用所需的版本创建新群集，然后迁移 Kafka 客户端以使用新群集。
 
+## <a name="how-do-i-monitor-my-kafka-cluster"></a>如何监视 Kafka 群集？
+
+使用 Azure monitor 分析 [Kafka 日志](./apache-kafka-log-analytics-operations-management.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-* [为 Azure HDInsight 中的 Apache Kafka 设置安全套接字层 (SSL) 加密和身份验证](./apache-kafka-ssl-encryption-authentication.md)
+* [为 Azure HDInsight 中的 Apache Kafka 设置 TLS 加密和身份验证](./apache-kafka-ssl-encryption-authentication.md)
 * [使用 MirrorMaker 通过 Kafka on HDInsight 复制 Apache Kafka 主题](./apache-kafka-mirroring.md)

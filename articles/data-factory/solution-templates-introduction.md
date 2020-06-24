@@ -11,16 +11,17 @@ author: WenJason
 manager: digimobile
 ms.custom: seo-lt-2019
 origin.date: 01/04/2019
-ms.date: 05/11/2020
-ms.openlocfilehash: cda62608aca0b561c007a394b14e0101bee891f1
-ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
+ms.date: 06/15/2020
+ms.openlocfilehash: 986e92dc5a1884ff3514dc9d001280684764d94c
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82197994"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723726"
 ---
 # <a name="templates"></a>模板
-[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 模板是预定义的 Azure 数据工厂管道，可让你快速开始使用数据工厂。 如果你是数据工厂的新手并想要快速入门，则模板很有帮助。 这些模板减少了生成数据集成项目所需的开发时间，从而提高了开发人员的工作效率。
 
@@ -28,11 +29,11 @@ ms.locfileid: "82197994"
 
 可通过以下两种方式，开始从模板创建数据工厂管道：
 
-1.  在“概述”页上选择“从模板创建管道”打开模板库。 
+1.  在“概述”页上选择“从模板创建管道”打开模板库。****
 
     ![从“概述”页打开模板库](media/solution-templates-introduction/templates-intro-image1.png)
 
-1.  在资源浏览器中的“创作”选项卡上选择 **+** ，然后选择“模板中的管道”打开模板库。 
+1.  在资源浏览器中的“创作”选项卡上选择 **+** ，然后选择“模板中的管道”打开模板库。****
 
     ![从“创作”页打开模板库](media/solution-templates-introduction/templates-intro-image2.png)
 
@@ -56,7 +57,7 @@ ms.locfileid: "82197994"
 
     -   [从数据库进行增量复制](solution-template-delta-copy-with-control-table.md)
 
-    -   从 \<源\> 复制到 \<目标\>
+    -   从 \<source\> 复制到 \<destination\>
 
         -   [从 Amazon S3 复制到 Azure Data Lake Store Gen 2](solution-template-migration-s3-azure.md)
 
@@ -76,11 +77,11 @@ ms.locfileid: "82197994"
 
 ### <a name="my-templates"></a>我的模板
 
-还可以通过在“管道”选项卡上选择“另存为模板”，将管道另存为模板。 
+还可以通过在“管道”选项卡上选择“另存为模板”，将管道另存为模板。****
 
 ![将管道另存为模板](media/solution-templates-introduction/templates-intro-image4.png)
 
-可以在模板库的“我的模板”部分查看另存为模板的管道。  也可以在资源浏览器的“模板”部分查看这些管道。 
+可以在模板库的“我的模板”部分查看另存为模板的管道。**** 也可以在资源浏览器的“模板”部分查看这些管道。****
 
 ![我的模板](media/solution-templates-introduction/templates-intro-image5.png)
 

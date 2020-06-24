@@ -1,22 +1,18 @@
 ---
-title: 对 Linux VM 使用邻近放置组
-description: 了解如何针对 Azure 中的 Linux 虚拟机创建和使用邻近放置组。
-services: virtual-machines-linux
-author: rockboyfor
-manager: digimobile
-ms.service: virtual-machines-linux
+title: 使用邻近放置组
+description: 了解如何针对 Azure 中的虚拟机创建和使用邻近放置组。
+author: Johnnytechn
+ms.service: virtual-machines
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-origin.date: 10/30/2019
-ms.date: 04/30/2020
-ms.author: v-yeche
-ms.openlocfilehash: ad3d813b99becc1265f20288a48a1e4635b5140f
-ms.sourcegitcommit: 275203d0f144aa809792f2c570fd64797f405c80
+ms.date: 06/05/2020
+ms.author: v-johya
+ms.openlocfilehash: 33b0e0ecf0edbae4925ae61e538044f560cac152
+ms.sourcegitcommit: 285649db9b21169f3136729c041e4d04d323229a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82125799"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84684000"
 ---
 <!--Verified successfully-->
 # <a name="deploy-vms-to-proximity-placement-groups-using-azure-cli"></a>使用 Azure CLI 将 VM 部署到邻近放置组
@@ -24,6 +20,7 @@ ms.locfileid: "82125799"
 若要让 VM 尽可能靠近，将延迟尽可能降至最低，应将 VM 部署到一个[邻近放置组](co-location.md#proximity-placement-groups)中。
 
 邻近放置组是一种逻辑分组，用于确保 Azure 计算资源在物理上彼此靠近。 邻近放置组用于要求低延迟的工作负荷。
+
 
 ## <a name="create-the-proximity-placement-group"></a>创建邻近放置组
 使用 [`az ppg create`](https://docs.microsoft.com/cli/azure/ppg?view=azure-cli-latest#az-ppg-create) 创建邻近放置组。 

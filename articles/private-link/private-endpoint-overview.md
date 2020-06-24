@@ -6,14 +6,14 @@ author: rockboyfor
 ms.service: private-link
 ms.topic: conceptual
 origin.date: 01/09/2020
-ms.date: 02/24/2020
+ms.date: 06/15/2020
 ms.author: v-yeche
-ms.openlocfilehash: 99c65c0cd773c4a8b0d8ee8d8386be85d009dd5b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: a34367487cbdc350154fefef5db46b6b60485548
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540649"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723747"
 ---
 # <a name="what-is-azure-private-endpoint"></a>什么是 Azure 专用终结点？
 
@@ -35,7 +35,7 @@ Azure 专用终结点是一个网络接口，可以将你通过专用且安全�
 下面是有关专用终结点的一些重要详细信息： 
 - 专用终结点使用 [VPN](https://www.azure.cn/home/features/vpn-gateway/) 或 [Express Route](https://www.azure.cn/home/features/expressroute/) 以及专用链接驱动的服务，在同一 VNet、区域对等互连的 VNet、全球对等互连的 VNet 和本地的使用者之间实现连接。
 
-- 创建专用终结点时，也会为资源的生命周期创建一个网络接口。 为该接口分配了子网中映射到专用链接服务的专用 IP 地址。
+- 创建专用终结点时，还会创建一个在资源的生命周期内有效的只读网络接口。 系统会为该接口分配子网中映射到专用链接资源的专用 IP 地址。
 
 - 专用终结点必须部署在与虚拟网络相同的区域中。 
 
@@ -55,11 +55,23 @@ Azure 专用终结点是一个网络接口，可以将你通过专用且安全�
 |**Azure Synapse Analytics** | Microsoft.Sql/servers    |  Sql Server (sqlServer)        |
 |**Azure 存储** | Microsoft.Storage/storageAccounts    |  Blob（blob、blob_secondary）<br /> 表（table、table_secondary）<br /> 队列（queue、queue_secondary）<br /> 文件（file、file_secondary）<br /> Web（web、web_secondary）        |
 |**Azure Data Lake Storage Gen2** | Microsoft.Storage/storageAccounts    |  Blob（blob、blob_secondary）<br /> Data Lake File System Gen2（dfs、dfs_secondary）       |
-|**Azure Cosmos DB** | Microsoft.AzureCosmosDB/databaseAccounts | SQL、MongoDB、Cassandra、Gremlin、表|
-|**Azure Database for PostgreSQL - 单一服务器** | Microsoft.DBforPostgreSQL/servers   | postgresqlServer |
+|**Azure Cosmos DB** | Microsoft.AzureCosmosDB/databaseAccounts    | SQL、MongoDB、Cassandra、Gremlin、表|
+|**Azure Database for PostgreSQL - 单一服务器** | Microsoft.DBforPostgreSQL/servers    | postgresqlServer |
 |**Azure Database for MySQL** | Microsoft.DBforMySQL/servers    | mysqlServer |
 |**Azure Database for MariaDB** | Microsoft.DBforMariaDB/servers    | mariadbServer |
 |**Azure 密钥保管库** | Microsoft.KeyVault/vaults    | 保管库 |
+|**Azure Kubernetes 服务 - Kubernetes API** | Microsoft.ContainerService/managedClusters    | managedCluster |
+|**Azure 搜索** | Microsoft.Search/searchService| searchService|  
+|**Azure 容器注册表** | Microsoft.ContainerRegistry/registries    | 注册表 |
+|**Azure 应用配置** | Microsoft.Appconfiguration/configurationStores    | configurationStore |
+|**Azure 备份** | Microsoft.RecoveryServices/vaults    | 保管库 |
+|**Azure 事件中心** | Microsoft.EventHub/namespaces    | 命名空间 |
+|**Azure 服务总线** | Microsoft.ServiceBus/namespaces | 命名空间 |
+|**Azure 中继** | Microsoft.Relay/namespaces | 命名空间 |
+|**Azure 事件网格** | Microsoft.EventGrid/topics    | 主题 |
+|**Azure 事件网格** | Microsoft.EventGrid/domains    | 域 |
+|**Azure WebApps** | Microsoft.Web/sites    | site |
+|**Azure 机器学习** | Microsoft.MachineLearningServices/workspaces    | 工作区 |
 
 ## <a name="network-security-of-private-endpoints"></a>专用终结点的网络安全性 
 使用 Azure 服务的专用终结点时，流量将受到特定专用链接资源的保护。 平台会执行访问控制，以验证网络连接是否仅抵达指定的专用链接资源。 若要访问同一 Azure 服务中的其他资源，需要附加的专用终结点。 
@@ -90,39 +102,7 @@ Azure 专用终结点是一个网络接口，可以将你通过专用且安全�
 
 与专用终结点关联的网络接口包含配置 DNS 所需的完整信息，其中包括为给定专用链接资源分配的 FQDN 和专用 IP 地址。 
 
-可使用以下选项来配置专用终结点的 DNS 设置： 
-- **使用主机文件（仅建议用于测试）** 。 可以使用虚拟机上的主机文件来替代 DNS。  
-- **使用专用 DNS 区域**。 可以使用专用 DNS 区域来替代给定专用终结点的 DNS 解析。 可将专用 DNS 区域链接到虚拟网络，以解析特定的域。
-- **使用自定义 DNS 服务器**。 可以使用自己的 DNS 服务器来替代给定专用链接资源的 DNS 解析。 如果 [DNS 服务器](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)托管在虚拟网络上，可以创建 DNS 转发规则，以使用专用 DNS 区域来简化所有专用链接资源的配置。
-
-> [!IMPORTANT]
-> 不建议替代正在用于解析公共终结点的区域。 在不 DNS 转发到公共 DNS 的情况下，与资源的连接无法正确解析。 若要避免出现问题，请创建不同的域名，或对以下每个服务采用建议的名称。 
-
-对于 Azure 服务，请根据下表中所述使用建议的区域名称：
-
-|专用链接资源类型   |子资源  |区域名称  |
-|---------|---------|---------|
-|SQL 数据库/数据仓库 (Microsoft.Sql/servers)    |  Sql Server (sqlServer)        |   privatelink.database.chinacloudapi.cn       |
-|存储帐户 (Microsoft.Storage/storageAccounts)    |  Blob（blob、blob_secondary）        |    privatelink.blob.core.chinacloudapi.cn      |
-|存储帐户 (Microsoft.Storage/storageAccounts)    |    表（table、table_secondary）      |   privatelink.table.core.chinacloudapi.cn       |
-|存储帐户 (Microsoft.Storage/storageAccounts)    |    队列（queue、queue_secondary）     |   privatelink.queue.core.chinacloudapi.cn       |
-|存储帐户 (Microsoft.Storage/storageAccounts)   |    文件（file、file_secondary）      |    privatelink.file.core.chinacloudapi.cn      |
-|存储帐户 (Microsoft.Storage/storageAccounts)     |  Web（web、web_secondary）        |    privatelink.web.core.chinacloudapi.cn      |
-|Azure Cosmos DB (Microsoft.AzureCosmosDB/databaseAccounts)|SQL |privatelink.documents.azure.cn|
-|Azure Cosmos DB (Microsoft.AzureCosmosDB/databaseAccounts)|MongoDB |privatelink.mongo.cosmos.azure.cn|
-|Azure Cosmos DB (Microsoft.AzureCosmosDB/databaseAccounts)|Cassandra|privatelink.cassandra.cosmos.azure.cn|
-|Azure Cosmos DB (Microsoft.AzureCosmosDB/databaseAccounts)|Gremlin |privatelink.gremlin.cosmos.azure.cn|
-|Azure Cosmos DB (Microsoft.AzureCosmosDB/databaseAccounts)|表|privatelink.table.cosmos.azure.cn|
-|Azure Database for PostgreSQL - 单一服务器 (Microsoft.DBforPostgreSQL/servers)|postgresqlServer|privatelink.postgres.database.chinacloudapi.cn|
-|Azure Database for MySQL (Microsoft.DBforMySQL/servers)|mysqlServer|privatelink.mysql.database.chinacloudapi.cn|
-|Azure Database for MariaDB (Microsoft.DBforMariaDB/servers)|mariadbServer|privatelink.mariadb.database.chinacloudapi.cn|
-|Azure Key Vault (Microsoft.KeyVault/vaults)|保管库|privatelink.vaultcore.chinacloudapi.cn|
-
-<!--Not Available on |Data Lake File System Gen2 (Microsoft.Storage/storageAccounts)  |  Data Lake File System Gen2 (dfs, dfs_secondary)        |     privatelink.dfs.core.chinacloudapi.cn     |-->
-
-Azure 将在公共 DNS 中创建规范名称 DNS 记录 (CNAME)，以将解析重定向到建议的域名。 可以使用专用终结点的专用 IP 地址替代解析。 
-
-应用程序无需更改连接 URL。 尝试使用公共 DNS 进行解析时，DNS 服务器现将解析为专用终结点。 此过程不影响应用程序。 
+有关为专用终结点配置 DNS 的最佳做法和建议的完整详细信息，请查看[专用终结点 DNS 配置文章](private-endpoint-dns.md)。
 
 ## <a name="limitations"></a>限制
 

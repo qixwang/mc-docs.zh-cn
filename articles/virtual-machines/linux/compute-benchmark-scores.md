@@ -1,27 +1,19 @@
 ---
-title: Linux VM 的计算基准测试分数 | Azure
+title: Azure Linux VM 的计算基准测试分数
 description: 比较运行 Linux 的 Azure VM 的 CoreMark 计算基准测试分数。
-services: virtual-machines-linux
-documentationcenter: ''
-author: Johnnytechn
-manager: digimobile
-editor: ''
-tags: azure-resource-manager,azure-service-management
-ms.assetid: 93e812c1-79dd-40c5-b97b-aa79f5cd7d76
 ms.service: virtual-machines-linux
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
+author: Johnnytechn
 origin.date: 04/09/2018
-ms.date: 04/13/2020
+ms.date: 06/05/2020
 ms.author: v-johya
 ms.reviewer: davberg
-ms.openlocfilehash: 8bfff028fea25cb89fe64c44351b71ee5272d3e2
-ms.sourcegitcommit: ebedf9e489f5218d4dda7468b669a601b3c02ae5
+ms.openlocfilehash: 841cfbd98eb8686647bb09e6979d1c714e3662a3
+ms.sourcegitcommit: 285649db9b21169f3136729c041e4d04d323229a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82159115"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84683905"
 ---
 # <a name="compute-benchmark-scores-for-linux-vms"></a>Linux VM 的计算基准测试分数
 以下 CoreMark 基准测试分数显示运行 Ubuntu 的 Azure 高性能 VM 产品阵容的计算性能。 此外，还提供了 [Windows VM](../windows/compute-benchmark-scores.md?toc=%2fvirtual-machines%2fwindows%2ftoc.json)的计算基准测试分数。
@@ -29,7 +21,7 @@ ms.locfileid: "82159115"
 ## <a name="av2---general-compute"></a>Av2 - 常规计算
 (3/15/2019 12:06:55 AM pbi 3897709)
 
-| VM 大小 | CPU | vCPU | NUMA 节点 | Memory(GiB) | 平均分数 | 标准偏差 | StdDev% | 运行次数 |
+| VM 大小 | CPU | vCPU | NUMA 节点 | 内存 (GiB) | 平均分数 | 标准偏差 | 标准偏差百分比 | 运行次数 |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_A1_v2 | Intel(R) Xeon(R) CPU E5-2660 0 @ 2.20GHz | 1 | 1 | 1.9 | 6,483 | 120 | 1.85% | 273 |
 | Standard_A1_v2 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 1 | 1 | 1.9 | 6,059 | 208 | 3.43% | 217 |
@@ -53,12 +45,13 @@ ms.locfileid: "82159115"
 | Standard_A8m_v2 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 8 | 1 | 62.9 | 49,838 | 633 | 1.27% | 182 |
 | Standard_A8m_v2 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 8 | 1 | 62.9 | 49,123 | 2,483 | 5.05% | 259 |
 
-注意：Av2 系列 VM 可以部署在各种不同的硬件类型和处理器上（如上所示）。 Av2 系列 VM 的 CPU 性能和内存配置非常适合部署和测试等入门级工作负荷。 其大小受到限制，以便为正在运行的实例提供相对一致的处理器性能，而不管它部署在什么硬件上；但是，利用特定的较新处理器优化的软件可能会在不同的处理器类型之间看到更显著差异。
+> [!NOTE]
+> Av2 系列 VM 可以部署在各种不同的硬件类型和处理器上（如上所示）。 Av2 系列 VM 的 CPU 性能和内存配置非常适合部署和测试等入门级工作负荷。 其大小受到限制，以便为正在运行的实例提供相对一致的处理器性能，而不管它部署在什么硬件上；但是，利用特定的较新处理器优化的软件可能会在不同的处理器类型之间看到更显著差异。
 
 ## <a name="b---burstable"></a>B - 可迸发
-(3/15/2019 12:27:08 AM pbi 3897709)
+（2019/3/15 上午 12:27:08 pbi 3897709）（更新时间：2019/6/14 上午 7:09:29 pbi 4777081）
 
-| VM 大小 | CPU | vCPU | NUMA 节点 | Memory(GiB) | 平均分数 | 标准偏差 | StdDev% | 运行次数 |
+| VM 大小 | CPU | vCPU | NUMA 节点 | 内存 (GiB) | 平均分数 | 标准偏差 | 标准偏差百分比 | 运行次数 |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_B1ms | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 1 | 1 | 1.9 | 13,593 | 307 | 2.26% | 28 |
 | Standard_B1ms | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 1 | 1 | 1.9 | 14,069 | 495 | 3.52% | 672 |
@@ -72,15 +65,23 @@ ms.locfileid: "82159115"
 | Standard_B4ms | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 4 | 1 | 15.7 | 54,051 | 1,260 | 2.33% | 672 |
 | Standard_B8ms | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 8 | 1 | 31.4 | 111,929 | 1,562 | 1.40% | 35 |
 | Standard_B8ms | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 8 | 1 | 31.4 | 109,537 | 1,354 | 1.24% | 665 |
+| Standard_B12ms | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 12 | 1 | 47.1 | 170,777 | 3,421 | 2.00% | 70 |
+| Standard_B12ms | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 12 | 1 | 47.1 | 166,676 | 1,368 | 0.82% | 70 |
+| Standard_B16ms | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 16 | 1 | 62.9 | 208,373 | 30,383 | 14.58% | 63 |
+| Standard_B16ms | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 16 | 1 | 62.9 | 223,203 | 1,232 | 0.55% | 70 |
+| Standard_B20ms | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 20 个 | 1 | 78.6 | 269,561 | 25,095 | 9.31% | 77 |
+| Standard_B20ms | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 20 个 | 1 | 78.6 | 274,007 | 3,669 | 1.34% | 70 |
 
-注意：B 系列 VM 适用于具有可突发性能要求的工作负载。 当使用量小于其基线时，VM 实例会累积额度。 在累积了额度的情况下，VM 可以突发到基线之上，全力满足短暂的 CPU 突发需求。 突发时间取决于可用额度，这些额度是 VM 大小和时间的函数。  
 
-CoreMark 是一个短时间运行的测试，通常在可用的突发额度内完成。  因此，上面的数字通常代表 VM 的突发性能，反映了短暂突发的工作负载（在 B 系列上常见）性能。
+> [!NOTE]
+> B 系列 VM 适用于具有可突发性能要求的工作负载。 当使用量小于其基线时，VM 实例会累积额度。 在累积了额度的情况下，VM 可以突发到基线之上，全力满足短暂的 CPU 突发需求。 突发时间取决于可用额度，这些额度是 VM 大小和时间的函数。  
+>
+> CoreMark 是一个短时间运行的测试，通常在可用的突发额度内完成。  因此，上面的数字通常代表 VM 的突发性能，反映了短暂突发的工作负载（在 B 系列上常见）性能。
 
 ## <a name="dsv3---general-compute--premium-storage"></a>DSv3 - 通用计算 + 高级存储
 (3/12/2019 6:52:03 PM pbi 3897709)
 
-| VM 大小 | CPU | vCPU | NUMA 节点 | Memory(GiB) | 平均分数 | 标准偏差 | StdDev% | 运行次数 |
+| VM 大小 | CPU | vCPU | NUMA 节点 | 内存 (GiB) | 平均分数 | 标准偏差 | 标准偏差百分比 | 运行次数 |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_D2s_v3 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 2 | 1 | 7.8 | 20,153 | 838 | 4.16% | 147 |
 | Standard_D2s_v3 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 2 | 1 | 7.8 | 20,903 | 1,324 | 6.33% | 553 |
@@ -97,7 +98,7 @@ CoreMark 是一个短时间运行的测试，通常在可用的突发额度内�
 ## <a name="dv3---general-compute"></a>Dv3 - 通用计算
 (3/12/2019 6:54:27 PM pbi 3897709)
 
-| VM 大小 | CPU | vCPU | NUMA 节点 | Memory(GiB) | 平均分数 | 标准偏差 | StdDev% | 运行次数 |
+| VM 大小 | CPU | vCPU | NUMA 节点 | 内存 (GiB) | 平均分数 | 标准偏差 | 标准偏差百分比 | 运行次数 |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_D2_v3 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 2 | 1 | 7.8 | 20,359 | 799 | 3.93% | 154 |
 | Standard_D2_v3 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 2 | 1 | 7.8 | 20,737 | 1,422 | 6.86% | 546 |
@@ -114,7 +115,7 @@ CoreMark 是一个短时间运行的测试，通常在可用的突发额度内�
 ## <a name="dsv2---storage-optimized"></a>DSv2 - 存储优化
 (3/15/2019 12:53:13 AM pbi 3897709)
 
-| VM 大小 | CPU | vCPU | NUMA 节点 | Memory(GiB) | 平均分数 | 标准偏差 | StdDev% | 运行次数 |
+| VM 大小 | CPU | vCPU | NUMA 节点 | 内存 (GiB) | 平均分数 | 标准偏差 | 标准偏差百分比 | 运行次数 |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_DS1_v2 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 1 | 1 | 3.4 | 14,642 | 600 | 4.10% | 259 |
 | Standard_DS1_v2 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 1 | 1 | 3.4 | 14,808 | 904 | 6.10% | 434 |
@@ -154,7 +155,7 @@ CoreMark 是一个短时间运行的测试，通常在可用的突发额度内�
 ## <a name="dv2---general-compute"></a>Dv2 - 常规计算
 (3/12/2019 6:53:48 PM pbi 3897709)
 
-| VM 大小 | CPU | vCPU | NUMA 节点 | Memory(GiB) | 平均分数 | 标准偏差 | StdDev% | 运行次数 |
+| VM 大小 | CPU | vCPU | NUMA 节点 | 内存 (GiB) | 平均分数 | 标准偏差 | 标准偏差百分比 | 运行次数 |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_D1_v2 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 1 | 1 | 3.4 | 14,730 | 663 | 4.50% | 385 |
 | Standard_D1_v2 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 1 | 1 | 3.4 | 15,057 | 1,319 | 8.76% | 322 |
@@ -180,7 +181,7 @@ CoreMark 是一个短时间运行的测试，通常在可用的突发额度内�
 ## <a name="esv3---memory-optimized--premium-storage"></a>Esv3 - 内存优化 + 高级存储
 (3/12/2019 7:17:33 PM pbi 3897709)
 
-| VM 大小 | CPU | vCPU | NUMA 节点 | Memory(GiB) | 平均分数 | 标准偏差 | StdDev% | 运行次数 |
+| VM 大小 | CPU | vCPU | NUMA 节点 | 内存 (GiB) | 平均分数 | 标准偏差 | 标准偏差百分比 | 运行次数 |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_E2s_v3 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 2 | 1 | 15.7 | 20,957 | 1,200 | 5.73% | 672 |
 | Standard_E4s_v3 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 4 | 1 | 31.4 | 40,420 | 1,993 | 4.93% | 672 |
@@ -202,14 +203,14 @@ CoreMark 是一个短时间运行的测试，通常在可用的突发额度内�
 ## <a name="eisv3---memory-opt--premium-storage-isolated"></a>Eisv3 - 内存优化 + 高级存储（独立）
 (4/11/2019 10:07:29 PM pbi 3897709)
 
-| VM 大小 | CPU | vCPU | NUMA 节点 | Memory(GiB) | 平均分数 | 标准偏差 | StdDev% | 运行次数 |
+| VM 大小 | CPU | vCPU | NUMA 节点 | 内存 (GiB) | 平均分数 | 标准偏差 | 标准偏差百分比 | 运行次数 |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_E64is_v3 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 64 | 2 | 425.2 | 627,745 | 4,062 | 0.65% | 196 |
 
 ## <a name="ev3---memory-optimized"></a>Ev3 - 内存优化
 (3/12/2019 6:52:13 PM pbi 3897709)
 
-| VM 大小 | CPU | vCPU | NUMA 节点 | Memory(GiB) | 平均分数 | 标准偏差 | StdDev% | 运行次数 |
+| VM 大小 | CPU | vCPU | NUMA 节点 | 内存 (GiB) | 平均分数 | 标准偏差 | 标准偏差百分比 | 运行次数 |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_E2_v3 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 2 | 1 | 15.7 | 21,171 | 1,772 | 8.37% | 693 |
 | Standard_E4_v3 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 4 | 1 | 31.4 | 41,181 | 3,148 | 7.64% | 700 |
@@ -222,7 +223,7 @@ CoreMark 是一个短时间运行的测试，通常在可用的突发额度内�
 ## <a name="eiv3---memory-optimized-isolated"></a>Eiv3 - 内存优化（独立）
 (3/12/2019 6:57:51 PM pbi 3897709)
 
-| VM 大小 | CPU | vCPU | NUMA 节点 | Memory(GiB) | 平均分数 | 标准偏差 | StdDev% | 运行次数 |
+| VM 大小 | CPU | vCPU | NUMA 节点 | 内存 (GiB) | 平均分数 | 标准偏差 | 标准偏差百分比 | 运行次数 |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_E64i_v3 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 64 | 2 | 425.2 | 625,855 | 4,881 | 0.78% | 7 |
 | Standard_E64i_v3 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 64 | 2 | 425.2 | 629,151 | 9,756 | 1.55% | 217 |
@@ -230,7 +231,7 @@ CoreMark 是一个短时间运行的测试，通常在可用的突发额度内�
 ## <a name="fsv2---compute--storage-optimized"></a>Fsv2 - 计算 + 存储优化
 (3/12/2019 6:51:35 PM pbi 3897709)
 
-| VM 大小 | CPU | vCPU | NUMA 节点 | Memory(GiB) | 平均分数 | 标准偏差 | StdDev% | 运行次数 |
+| VM 大小 | CPU | vCPU | NUMA 节点 | 内存 (GiB) | 平均分数 | 标准偏差 | 标准偏差百分比 | 运行次数 |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_F2s_v2 | Intel(R) Xeon(R) Platinum 8168 CPU @ 2.70GHz | 2 | 1 | 3.9 | 28,219 | 1,843 | 6.53% | 700 |
 | Standard_F4s_v2 | Intel(R) Xeon(R) Platinum 8168 CPU @ 2.70GHz | 4 | 1 | 7.8 | 53,911 | 1,002 | 1.86% | 707 |
@@ -243,7 +244,7 @@ CoreMark 是一个短时间运行的测试，通常在可用的突发额度内�
 ## <a name="fs---compute-and-storage-optimized"></a>Fs - 计算和存储优化
 (3/15/2019 12:12:51 AM pbi 3897709)
 
-| VM 大小 | CPU | vCPU | NUMA 节点 | Memory(GiB) | 平均分数 | 标准偏差 | StdDev% | 运行次数 |
+| VM 大小 | CPU | vCPU | NUMA 节点 | 内存 (GiB) | 平均分数 | 标准偏差 | 标准偏差百分比 | 运行次数 |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_F1s | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 1 | 1 | 1.9 | 14,552 | 504 | 3.46% | 350 |
 | Standard_F1s | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 1 | 1 | 1.9 | 14,784 | 858 | 5.80% | 357 |
@@ -260,7 +261,7 @@ CoreMark 是一个短时间运行的测试，通常在可用的突发额度内�
 ## <a name="f---compute-optimized"></a>F - 计算优化
 (3/12/2019 6:53:59 PM pbi 3897709)
 
-| VM 大小 | CPU | vCPU | NUMA 节点 | Memory(GiB) | 平均分数 | 标准偏差 | StdDev% | 运行次数 |
+| VM 大小 | CPU | vCPU | NUMA 节点 | 内存 (GiB) | 平均分数 | 标准偏差 | 标准偏差百分比 | 运行次数 |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_F1 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 1 | 1 | 1.9 | 14,937 | 593 | 3.97% | 350 |
 | Standard_F1 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 1 | 1 | 1.9 | 15,460 | 1,326 | 8.58% | 350 |
@@ -283,7 +284,7 @@ CoreMark 是一个短时间运行的测试，通常在可用的突发额度内�
 ## <a name="m---memory-optimized"></a>M - 内存优化
 (4/11/2019 7:30:39 PM pbi 3897709)
 
-| VM 大小 | CPU | vCPU | NUMA 节点 | Memory(GiB) | 平均分数 | 标准偏差 | StdDev% | 运行次数 |
+| VM 大小 | CPU | vCPU | NUMA 节点 | 内存 (GiB) | 平均分数 | 标准偏差 | 标准偏差百分比 | 运行次数 |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_M8-2ms | Intel(R) Xeon(R) CPU E7-8890 v3 @ 2.50GHz | 2 | 1 | 215.2 | 22,605 | 29 | 0.13% | 42 |
 | Standard_M8-4ms | Intel(R) Xeon(R) CPU E7-8890 v3 @ 2.50GHz | 4 | 1 | 215.2 | 44,488 | 183 | 0.41% | 42 |
@@ -314,7 +315,7 @@ CoreMark 是一个短时间运行的测试，通常在可用的突发额度内�
 ## <a name="ncsv3---gpu-enabled"></a>NCSv3 - 支持 GPU
 (3/21/2019 5:48:37 PM pbi 3897709)
 
-| VM 大小 | CPU | vCPU | NUMA 节点 | Memory(GiB) | 平均分数 | 标准偏差 | StdDev% | 运行次数 |
+| VM 大小 | CPU | vCPU | NUMA 节点 | 内存 (GiB) | 平均分数 | 标准偏差 | 标准偏差百分比 | 运行次数 |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_NC6s_v3 | Intel(R) Xeon(R) CPU E5-2690 v4 @ 2.60GHz | 6 | 1 | 110.2 | 106,929 | 353 | 0.33% | 49 |
 | Standard_NC12s_v3 | Intel(R) Xeon(R) CPU E5-2690 v4 @ 2.60GHz | 12 | 1 | 220.4 | 213,585 | 875 | 0.41% | 42 |

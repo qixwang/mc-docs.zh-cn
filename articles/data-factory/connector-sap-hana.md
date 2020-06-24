@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-origin.date: 02/17/2020
-ms.date: 05/11/2020
-ms.openlocfilehash: 0dea3b7c4b75d815560853236dfe6210a20552fc
-ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
+origin.date: 04/22/2020
+ms.date: 06/15/2020
+ms.openlocfilehash: 59b1152a7862a2be389d642b68b0ec4a3e5ee5fe
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82197820"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723652"
 ---
 # <a name="copy-data-from-sap-hana-using-azure-data-factory"></a>使用 Azure 数据工厂从 SAP HANA 复制数据
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -44,7 +44,7 @@ ms.locfileid: "82197820"
 - 从 SAP HANA 源进行并行复制。 有关详细信息，请参阅[从 SAP HANA 进行并行复制](#parallel-copy-from-sap-hana)部分。
 
 > [!TIP]
-> 要将数据复制到  SAP HANA 数据存储，请使用泛型 ODBC 连接器。 有关详细信息，请参阅 [SAP HANA 接收器](connector-odbc.md#sap-hana-sink)。 注意：适用于 SAP HANA 连接器和 ODBC 连接器的链接服务采用不同的类型，因此不能重用。
+> 要将数据复制到**** SAP HANA 数据存储，请使用泛型 ODBC 连接器。 有关详细信息，请参阅 [SAP HANA 接收器](#sap-hana-sink)部分。 注意：适用于 SAP HANA 连接器和 ODBC 连接器的链接服务采用不同的类型，因此不能重用。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -228,7 +228,7 @@ SAP HANA 链接的服务支持以下属性：
 
 ## <a name="parallel-copy-from-sap-hana"></a>从 SAP HANA 进行并行复制
 
-数据工厂 SAP HANA 连接器提供内置的数据分区，用于从 SAP HANA 并行复制数据。 可以在复制活动的“源”表中找到数据分区选项。 
+数据工厂 SAP HANA 连接器提供内置的数据分区，用于从 SAP HANA 并行复制数据。 可以在复制活动的“源”表中找到数据分区选项。****
 
 ![分区选项的屏幕截图](./media/connector-sap-hana/connector-sap-hana-partition-options.png)
 
@@ -297,7 +297,35 @@ SAP HANA 链接的服务支持以下属性：
 | TIMESTAMP          | DateTime                       |
 | VARBINARY          | Byte[]                         |
 
-## <a name="lookup-activity-properties"></a>Lookup 活动属性
+### <a name="sap-hana-sink"></a>SAP HANA 接收器
+
+目前，不支持将 SAP HANA 连接器用作接收器，你可以将通用 ODBC 连接器与 SAP HANA 驱动程序结合使用，以将数据写入 SAP HANA。 
+
+按照[先决条件](#prerequisites)来设置自承载集成运行时，并首先安装 SAP HANA ODBC 驱动程序。 如以下示例所示，创建 ODBC 链接服务以连接到 SAP HANA 数据存储，然后相应地使用 ODBC 类型创建数据集和复制活动接收器。 若要了解详细信息，请参阅 [ODBC 连接器](connector-odbc.md)一文。
+
+```json
+{
+    "name": "SAPHANAViaODBCLinkedService",
+    "properties": {
+        "type": "Odbc",
+        "typeProperties": {
+            "connectionString": "Driver={HDBODBC};servernode=<HANA server>.clouddatahub-int.net:30015",
+            "authenticationType": "Basic",
+            "userName": "<username>",
+            "password": {
+                "type": "SecureString",
+                "value": "<password>"
+            }
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+## <a name="lookup-activity-properties"></a>查找活动属性
 
 若要了解有关属性的详细信息，请查看 [Lookup 活动](control-flow-lookup-activity.md)。
 

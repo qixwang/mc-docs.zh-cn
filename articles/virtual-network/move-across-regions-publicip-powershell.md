@@ -3,16 +3,17 @@ title: 使用 Azure PowerShell 将 Azure 公共 IP 移到另一个 Azure 区域
 description: 使用 Azure 资源管理器模板，通过 Azure PowerShell 将 Azure 公共 IP 从一个 Azure 区域移到另一个 Azure 区域。
 author: rockboyfor
 ms.service: virtual-network
+ms.subservice: ip-services
 ms.topic: article
 origin.date: 08/29/2019
-ms.date: 04/13/2020
+ms.date: 06/15/2020
 ms.author: v-yeche
-ms.openlocfilehash: d9de72f779343218a76d5c4d95622f29d46f6c44
-ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
+ms.openlocfilehash: f77073ba988f6dd4ea25057028538f7297b49ea9
+ms.sourcegitcommit: ff67734e01c004be575782b4812cfe857e435f4d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82093282"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84487015"
 ---
 <!--Pending Verify-->
 # <a name="move-azure-public-ip-to-another-region-using-azure-powershell"></a>使用 Azure PowerShell 将 Azure 公共 IP 移到另一个区域
@@ -60,7 +61,7 @@ Azure 公共 IP 特定于区域，不能从一个区域移到另一个区域。 
     Export-AzResourceGroup -ResourceGroupName <source-resource-group-name> -Resource $sourceVNETID -IncludeParameterDefaultValue
     ```
 
-4. 已下载的文件将根据从其导出了资源的资源组来命名。  找到通过名为 **\<resource-group-name>.json** 的命令导出的文件，在所选编辑器中将其打开：
+4. 已下载的文件将根据从其导出了资源的资源组来命名。  找到通过名为“\<resource-group-name>.json”的命令导出的文件，在所选编辑器中将其打开****：
 
     ```azurepowershell
     notepad <source-resource-group-name>.json
@@ -116,7 +117,7 @@ Azure 公共 IP 特定于区域，不能从一个区域移到另一个区域。 
     ```
 8. 也可选择更改模板中的其他参数，这些参数是可选的，具体取决于你的要求：
 
-    * **Sku** - 可以在配置中将公共 IP 的 sku 从“标准”更改为“基本”或从“基本”更改为“标准”，只需在 **\<resource-group-name>.json** 文件中更改 **sku** > **name** 属性即可：
+    * **SKU** - 可以在配置中将公共 IP 的 SKU 从 standard 更改为 basic 或从 basic 更改为 standard，只需更改 \<resource-group-name>.json 文件中的“sku > name”属性即可**** **** ****：
 
     ```json
     "resources": [
@@ -160,14 +161,14 @@ Azure 公共 IP 特定于区域，不能从一个区域移到另一个区域。 
 
         若要详细了解分配方法和空闲超时值，请参阅[创建、更改或删除公共 IP 地址](/virtual-network/virtual-network-public-ip-address)。
 
-9. 保存 **\<resource-group-name>.json** 文件。
+9. 保存 \<resource-group-name>.json 文件****。
 
 10. 使用 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=azps-2.6.0) 在目标区域创建资源组，以便部署目标公共 IP。
     
     ```powershell
     New-AzResourceGroup -Name <target-resource-group-name> -location <target-region>
     ```
-11. 使用 [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0) 将编辑的 **\<resource-group-name>.json** 文件部署到在上一步创建的资源组：
+11. 使用 [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0) 将经编辑的 \<resource-group-name>.json 文件部署到在上一步中创建的资源组****：
     
     ```powershell
 
@@ -208,7 +209,7 @@ Remove-AzResourceGroup -Name <source-resource-group-name>
 
 ```
 
-``` azurepowershell-interactive
+```azurepowershell
 
 Remove-AzPublicIpAddress -Name <source-publicip-name> -ResourceGroupName <resource-group-name>
 

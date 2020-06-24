@@ -9,13 +9,13 @@ ms.service: sql-database
 ms.workload: data-services
 ms.topic: article
 origin.date: 01/08/2020
-ms.date: 02/17/2020
-ms.openlocfilehash: 9a15619469e403181e66b45c66a951cb43c44fba
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 06/15/2020
+ms.openlocfilehash: b571a4bb6f9c770ebbdb99d01fb79f5421145e35
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77156813"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723090"
 ---
 # <a name="how-to-migrate-your-sqlite-database-to-azure-sql-database-serverless"></a>如何将 SQLite 数据库迁移到 Azure SQL 数据库无服务器
 许多人在 SQLite 中首次体验了数据库和 SQL 编程。 SQLite 包含在许多操作系统和热门应用程序中，是世界上最广泛部署和使用的数据库引擎之一。 此外，它可能是许多人首次使用的数据库引擎，因此往往成为项目或应用程序的核心组成部分。 当项目或应用程序超过最初的 SQLite 实施规模时，开发人员可能需要将其数据迁移到可靠的集中式数据存储。
@@ -51,7 +51,7 @@ Azure SQL 数据库无服务器计算层是适用于单一数据库的计算层�
     - 启动 ADF（在 Azure 门户上的服务中选择“创作和监视”）
     - 单击左侧的“创作”选项卡（蓝色铅笔图标）
     - 单击“连接”（左下角）并选择“集成运行时”
-    - 添加新的自承载集成运行时，为其命名，然后选择“选项 2”。 
+    - 添加新的自承载集成运行时，为其命名，然后选择“选项 2”。**
 
 5. 为数据工厂中的源 SQLite 数据库创建新的链接服务。
 

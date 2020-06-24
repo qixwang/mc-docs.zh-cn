@@ -12,14 +12,14 @@ ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 01/31/2020
-ms.date: 04/13/2020
+ms.date: 06/15/2020
 ms.author: v-yeche
-ms.openlocfilehash: 9ec4393c6f6b1875602b6fe3caac7c0ce3b8c7d7
-ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
+ms.openlocfilehash: 5b08e31995f186fe8cc8efd3b105d2099241f8f2
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82093489"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723743"
 ---
 # <a name="troubleshoot-azure-private-endpoint-connectivity-problems"></a>排查 Azure 专用终结点连接问题
 
@@ -40,18 +40,18 @@ Azure 专用终结点是一个网络接口，可以通过私密且安全的方�
 
 1. 通过浏览资源来查看专用终结点配置。
 
-    a. 转到“专用链接中心”  。
+    a. 转到“专用链接中心”****。
 
         ![Private Link Center](./media/private-endpoint-tsg/private-link-center.png)
 
-    b. 在左侧窗格中，选择“专用终结点”。 
+    b. 在左侧窗格中，选择“专用终结点”。****
 
         ![Private endpoints](./media/private-endpoint-tsg/private-endpoints.png)
 
     c. 筛选并选择要诊断的专用终结点。
 
     d. 查看虚拟网络和 DNS 信息。
-        - 验证连接状态是否为“已批准”  。
+        - 验证连接状态是否为“已批准”****。
         - 确保 VM 已连接到托管专用终结点的虚拟网络。
         - 检查是否分配了 FQDN 信息（复制）和专用 IP 地址。
 
@@ -59,28 +59,28 @@ Azure 专用终结点是一个网络接口，可以通过私密且安全的方�
 
 1. 使用 [Azure Monitor](/azure-monitor/overview) 查看是否有数据在流动。
 
-    a. 在“专用终结点”资源中，选择“监视”  。
-        - 选择“传入数据”  或“传出数据”  - 查看在尝试连接到专用终结点时是否有数据在流动。 预计延迟大约为 10 分钟。
+    a. 在“专用终结点”资源中，选择“监视”****。
+        - 选择“传入数据”**** 或“传出数据”**** - 查看在尝试连接到专用终结点时是否有数据在流动。 预计延迟大约为 10 分钟。
 
             ![Verify private endpoint telemetry](./media/private-endpoint-tsg/private-endpoint-monitor.png)
 
-1. 使用 Azure 网络观察程序中的“VM 连接故障排除”  。
+1. 使用 Azure 网络观察程序中的“VM 连接故障排除”****。
 
     a. 选择客户端 VM。
 
-    b. 选择“连接故障排除”  ，然后选择“出站连接”  选项卡。
+    b. 选择“连接故障排除”****，然后选择“出站连接”**** 选项卡。
 
         ![Network Watcher - Test outbound connections](./media/private-endpoint-tsg/network-watcher-outbound-connection.png)
 
-    c. 选择“使用网络观察程序进行详细的连接跟踪”  。
+    c. 选择“使用网络观察程序进行详细的连接跟踪”****。
 
         ![Network Watcher - Connection troubleshoot](./media/private-endpoint-tsg/network-watcher-connection-troubleshoot.png)
 
-    d. 选择“按 FQDN 进行测试”  。
+    d. 选择“按 FQDN 进行测试”****。
         - 从专用终结点资源粘贴 FQDN。
         - 提供一个端口。 通常，对于 Azure 存储或 Azure Cosmos DB，请使用 443；对于 SQL，请使用 1336。
 
-    e. 选择“测试”，验证测试结果  。
+    e. 选择“测试”，验证测试结果****。
 
         ![Network Watcher - Test results](./media/private-endpoint-tsg/network-watcher-test-results.png)
 

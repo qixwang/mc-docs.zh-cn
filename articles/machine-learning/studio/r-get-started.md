@@ -1,7 +1,6 @@
 ---
-title: R 入门
-titleSuffix: ML Studio (classic) - Azure
-description: 通过本 R 编程教程，在 Azure 机器学习工作室（经典版）中使用 R 语言创建预测解决方案。
+title: 在机器学习工作室（经典版）中使用 R - Azure
+description: 通过本 R 编程教程，在 Azure 机器学习工作室（经典版）中使用 R 创建预测解决方案。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,44 +9,37 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2019
-ms.openlocfilehash: 7f598349855fba4ea9b30dd8bfb498d7dfae1169
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 13415edff52b94ff9bb4a9ead3838967997baae3
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80343360"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723686"
 ---
-# <a name="getting-started-with-the-r-programming-language-in-azure-machine-learning-studio-classic"></a>Azure 机器学习工作室（经典版）中的 R 编程语言入门
+# <a name="get-started-with-azure-machine-learning-studio-classic-in-r"></a>在 Azure 机器学习工作室（经典版）中使用 R
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 <!-- Stephen F Elston, Ph.D. -->
+本教程介绍如何使用机器学习工作室（经典版）创建、测试和执行 R 代码。 最后，你将获得一个完整的预测解决方案。  
 
-## <a name="introduction"></a>简介
+> [!div class="checklist"]
+> * 创建用于数据清理和转换的代码。
+> * 分析数据集中几个变量之间的相关性。
+> * 创建牛奶生产的季节性时序预测模型。
 
-本教程有助于开始使用 R 编程语言扩展 Azure 机器学习工作室（经典版）。 按照此 R 编程教程在工作室（经典版）中创建、测试和执行 R 代码。 在完成本教程的过程中，你会在工作室（经典版）中使用 R 语言创建完整的预测解决方案。  
 
-Azure 机器学习工作室（经典版）包含许多功能强大的机器学习和数据操作模块。 功能强大的 R 语言已被描述为分析通用语言。 幸运的是，可使用 R 扩展工作室（经典版）中的分析和数据操作。依靠 R 的灵活性和深入分析，这种组合为工作室（经典版）提供了可伸缩性和易于部署的特征。
+Azure 机器学习工作室（经典版）包含许多功能强大的机器学习和数据操作模块。 借助 R 编程语言，依靠 R 的灵活性和深入分析，这种组合为工作室（经典版）提供了可伸缩性和易于部署的特征。
 
-### <a name="forecasting-and-the-dataset"></a>预测和数据集
+预测是一种被广泛采用且非常有用的分析方法。 常见的用途包括预测季节性商品的销售、确定最优的库存级别和预测宏观经济变量。 通常使用时序模型进行预测。 时序数据是其中的值具有时间索引的数据。 时间索引可以是定期的，例如每月或每分钟，也可以是不定期的。 时序模型基于时序数据。 R 编程语言包含针对时序数据的灵活框架和广泛分析。
 
-预测是一种被广泛采用且非常有用的分析方法。 常见的用途包括预测季节性商品的销售、确定最优的库存级别和预测宏观经济变量。 通常使用时序模型进行预测。
+## <a name="get-the-data"></a>获取数据
 
-时序数据是其中的值具有时间索引的数据。 时间索引可以是定期的，例如每月或每分钟，也可以是不定期的。 时序模型基于时序数据。 R 编程语言包含针对时序数据的灵活框架和广泛分析。
-
-在本快速入门指南中我们将使用加利福尼亚州的乳品生产和价格数据。 该数据包括几种乳品的生产和基准商品乳脂的价格的月度信息。
+在本教程中，你将使用加利福尼亚州的乳制品生产和定价数据，其中包括几种乳品的生产和基准商品乳脂的价格的月度信息。
 
 本文中使用的数据和 R 脚本可以从 [MachineLearningSamples-Notebooks/studio-samples](https://github.com/Azure-Samples/MachineLearningSamples-Notebooks/tree/master/studio-samples) 下载。 文件 `cadairydata.csv` 中的数据最初是从威斯康星州大学提供的信息中合成的，网址为 [https://dairymarkets.com](https://dairymarkets.com)。
 
-### <a name="organization"></a>组织
 
-我们将通过几个步骤来了解如何在 Azure 机器学习工作室（经典版）环境中创建、测试并执行分析和数据操作 R 代码。  
-
-* 首先我们探讨在 Azure 机器学习工作室（经典版）环境中使用 R 语言的基础知识。
-* 然后，我们会讨论 Azure 机器学习工作室（经典版）环境中数据 I/O、R 代码和图形的各个方面。
-* 接着我们通过创建用于数据清理和转换的代码来构建预测解决方案的第一部分。
-* 准备好数据之后，在数据集的几个变量之间执行相关性分析。
-* 最后，我们创建牛奶生产的季节性时序预测模型。
 
 ## <a name="interact-with-r-language-in-machine-learning-studio-classic"></a><a id="mlstudio"></a>在机器学习工作室（经典版）中与 R 语言交互
 
@@ -75,7 +67,7 @@ Azure 机器学习工作室（经典版）包含许多功能强大的机器学�
 
 #### <a name="execute-r-code"></a>执行 R 代码
 
-选择“运行”按钮运行此试验时，将执行[执行 R 脚本][execute-r-script]模块中的任何 R 代码。  执行完成后，在[执行 R 脚本][execute-r-script]图标上会显示一个对勾。
+选择“运行”按钮运行此试验时，将执行[执行 R 脚本][execute-r-script]模块中的任何 R 代码。**** 执行完成后，在[执行 R 脚本][execute-r-script]图标上会显示一个对勾。
 
 #### <a name="defensive-r-coding-for-azure-machine-learning"></a>适用于 Azure 机器学习的防御性 R 编码
 
@@ -89,7 +81,7 @@ Azure 机器学习工作室（经典版）包含许多功能强大的机器学�
 
 在 Azure 机器学习工作室（经典版）平台上执行 R 代码的输出结果主要位于 output.log 文件中。 其他一些信息可在 error.log 中看到。  
 
-如果运行 R 代码时机器学习工作室（经典版）发生错误，那么首先应该做的是查看 error.log 文件。 此文件包含有用的错误消息，可帮助你了解和纠正错误。 若要查看 error.log 文件，请选择包含错误的[执行 R 脚本][execute-r-script]的“属性”窗格上的“查看错误日志”。  
+如果运行 R 代码时机器学习工作室（经典版）发生错误，那么首先应该做的是查看 error.log 文件。 此文件包含有用的错误消息，可帮助你了解和纠正错误。 若要查看 error.log 文件，请选择包含错误的[执行 R 脚本][execute-r-script]的“属性”窗格上的“查看错误日志”。**** ****
 
 例如，我在[执行 R 脚本][execute-r-script]模块中运行下面的 R 代码，其中 y 为未定义变量：
 
@@ -98,13 +90,13 @@ x <- 1.0
 z <- x + y
 ```
 
-此代码无法执行，导致出现错误。 选择“属性”窗格上的“查看错误日志”，弹出图 2 中显示的内容。  
+此代码无法执行，导致出现错误。 选择“属性”窗格上的“查看错误日志”，弹出图 2 中显示的内容。**** ****
 
   ![弹出错误消息](./media/r-quickstart/fig2.png)
 
 *图 2.弹出错误消息*
 
-看来我们需要打开 output.log 文件查看此 R 错误消息。 选择[执行 R 脚本][execute-r-script]后，选择右侧的“属性”窗格上的“查看 output.log”。   打开了新的浏览器窗口，我看到以下内容。
+看来我们需要打开 output.log 文件查看此 R 错误消息。 选择[执行 R 脚本][execute-r-script]后，选择右侧的“属性”窗格上的“查看 output.log”。**** **** 打开了新的浏览器窗口，我看到以下内容。
 
     [Critical]     Error: Error 0063: The following error occurred during evaluation of R script:
     ---------- Start of error message from R ----------
@@ -147,28 +139,28 @@ RStudio 是广泛使用的针对 R 语言的集成开发环境 (IDE)。我会使
 
 [MachineLearningSamples-Notebooks/studio-samples](https://github.com/Azure-Samples/MachineLearningSamples-Notebooks/tree/master/studio-samples) 中提供了本部分的完整代码。
 
-### <a name="load-and-check-data-in-machine-learning-studio-classic"></a>在机器学习工作室（经典版）中加载和检查数据
+### <a name="load-and-check-data"></a>加载和检查数据 
 
 #### <a name="load-the-dataset"></a><a id="loading"></a>加载数据集
 
 我们首先将 **csdairydata.csv** 文件载入 Azure 机器学习工作室（经典版）。
 
 1. 启动 Azure 机器学习工作室（经典版）环境。
-1. 选择屏幕左下方的“+ 新建”  ，并选择“数据集”  。
-1. 选择“从本地文件”  ，并单击“浏览”  以选择文件。
+1. 选择屏幕左下方的“+ 新建”****，并选择“数据集”****。
+1. 选择“从本地文件”****，并单击“浏览”**** 以选择文件。
 1. 请确保选择了**具有标题 (.csv) 的通用 CSV 文件**作为数据集的类型。
 1. 选择勾选标记。
-1. 上传数据集后，可选择“数据集”选项卡查看新数据集。   
+1. 上传数据集后，可选择“数据集”选项卡查看新数据集。****  
 
 #### <a name="create-an-experiment"></a>创建试验
 
 现在，机器学习工作室（经典版）中已有一些数据，我们需要创建一个试验来执行分析。  
 
-1. 选择左下方的“+ 新建”  ，并依次选择“试验”  和“空白试验”  。
-1. 可以命名试验，方法是选择和修改页面顶部的“在...创建的试验”  标题。 例如，将其改为“CA 乳品分析”  。
-1. 在试验页面的左侧，展开“保存的数据集”  ，并选择“我的数据集”  。 可看到之前上传的 **cadairydata.csv**。
+1. 选择左下方的“+ 新建”****，并依次选择“试验”**** 和“空白试验”****。
+1. 可以命名试验，方法是选择和修改页面顶部的“在...创建的试验”**** 标题。 例如，将其改为“CA 乳品分析”****。
+1. 在试验页面的左侧，展开“保存的数据集”****，并选择“我的数据集”****。 可看到之前上传的 **cadairydata.csv**。
 1. 将 **csdairydata.csv 数据集**拖放到试验。
-1. 在左窗格顶部的“搜索试验项”  框中，键入[执行 R 脚本][execute-r-script]。 可以看到模块在搜索列表中显示。
+1. 在左窗格顶部的“搜索试验项”**** 框中，键入[执行 R 脚本][execute-r-script]。 可以看到模块在搜索列表中显示。
 1. 将[执行 R 脚本][execute-r-script]模块拖放到托盘上。  
 1. 将 **csdairydata.csv 数据集**的输出连接到[执行 R 脚本][execute-r-script]最左侧输入 (**Dataset1**)。
 1. **别忘了选择“保存”！**  
@@ -181,7 +173,7 @@ RStudio 是广泛使用的针对 R 语言的集成开发环境 (IDE)。我会使
 
 #### <a name="check-on-the-data"></a>查看数据
 
-让我们看看已加载到试验中的数据。 在该试验中，选择 **cadairydata.csv 数据集**的输出，并选择“可视化”  。 可看到类似图 4 的内容。  
+让我们看看已加载到试验中的数据。 在该试验中，选择 **cadairydata.csv 数据集**的输出，并选择“可视化”****。 可看到类似图 4 的内容。  
 
 ![cadairydata.csv 数据集摘要](./media/r-quickstart/fig4.png)
 
@@ -245,7 +237,7 @@ load("src/yourData.rdata") # Reads a zipped R data file
    maml.mapOutputPort('cadairydata')
    ```
 
-1. 创建一个 zip 文件，并将脚本复制到此 zip 文件。 在 Windows 上，右键单击该文件并选择“发送到”  ，并选择“压缩文件夹”  。 此时将创建包含"simpleplot.R"文件的新的 zip 文件。
+1. 创建一个 zip 文件，并将脚本复制到此 zip 文件。 在 Windows 上，右键单击该文件并选择“发送到”****，并选择“压缩文件夹”****。 此时将创建包含"simpleplot.R"文件的新的 zip 文件。
 
 1. 将文件添加到 Azure 机器学习工作室（经典版）中的**数据集**，并指定类型为 **zip**。 现在可在数据集中看到此 zip 文件。
 
@@ -255,7 +247,7 @@ load("src/yourData.rdata") # Reads a zipped R data file
 
 1. 在[执行 R 脚本][execute-r-script]模块的代码窗口中键入具有 zip 文件名的 `source()` 函数。 在本例中我键入 `source("src/simpleplot.R")`。  
 
-1. 请务必选择“保存”。 
+1. 请务必选择“保存”。****
 
 这些步骤完成后，运行试验时，[执行 R 脚本][execute-r-script]模块将执行 zip 文件中的 R 脚本。 此时试验如图 5 所示。
 
@@ -271,7 +263,7 @@ load("src/yourData.rdata") # Reads a zipped R data file
 cadairydata <- maml.mapInputPort(1)
 ```
 
-选择“运行”按钮执行试验。  执行完成后，选择[执行 R 脚本][execute-r-script]模块，并选择“属性”窗格上的“查看 output.log”。  浏览器中打开新的页面，其中显示 output.log 文件的内容。 向下滚动页面时会看到类似下面的内容：
+选择“运行”按钮执行试验。**** 执行完成后，选择[执行 R 脚本][execute-r-script]模块，并选择“属性”窗格上的“查看 output.log”。**** 浏览器中打开新的页面，其中显示 output.log 文件的内容。 向下滚动页面时会看到类似下面的内容：
 
     [ModuleOutput] InputDataStructure
     [ModuleOutput]
@@ -325,7 +317,7 @@ Dataset2 的输入行为与 Dataset1 相同。 使用此输入可以将另一个
 maml.mapOutputPort('cadairydata')
 ```
 
-运行试验之后，选择结果 Dataset1 输出端口，并选择“可视化”  。 可看到类似图 6 的内容。
+运行试验之后，选择结果 Dataset1 输出端口，并选择“可视化”****。 可看到类似图 6 的内容。
 
 ![加利福尼亚州乳品数据输出的可视化](./media/r-quickstart/fig7.png)
 
@@ -337,7 +329,7 @@ maml.mapOutputPort('cadairydata')
 
 [执行 R 脚本][execute-r-script]模块的设备输出包含消息和图形输出。 R 的标准输出和标准错误消息都会发送到 R 设备输出端口。  
 
-要查看 R 设备输出，请选择该端口，并选择“可视化”  。 在图 7 中可看到 R 脚本的标准输出和标准错误。
+要查看 R 设备输出，请选择该端口，并选择“可视化”****。 在图 7 中可看到 R 脚本的标准输出和标准错误。
 
 ![来自 R 设备端口的标准输出和标准错误](./media/r-quickstart/fig8.png)
 
@@ -422,7 +414,7 @@ maml.mapOutputPort('cadairydata')
 
 *图 9.具有因子变量的数据框摘要*
 
-现在 Month 的类型显示为**具有 14 个级别的因子**。 由于一年只有 12 个月，因此这是一个问题。 还可以查看该类型在结果数据集端口的“可视化”  中为“分类”  。
+现在 Month 的类型显示为**具有 14 个级别的因子**。 由于一年只有 12 个月，因此这是一个问题。 还可以查看该类型在结果数据集端口的“可视化”**** 中为“分类”****。
 
 问题在于“Month”列未系统地进行编码。 在某些情况下一个月份称为 April，但在其他情况下，它缩写为 Apr。可通过将字符串剪裁到 3 个字符来解决此问题。 现在代码行如下所示：
 
@@ -659,7 +651,7 @@ cadairydata <- na.omit(cadairydata)
 
 ### <a name="time-series-object-example"></a>时序对象示例
 
-让我们开始使用示例。 将新的[执行 R 脚本][execute-r-script]模块拖放到试验中  。 将现有的[执行 R 脚本][execute-r-script]模块的结果 Dataset1 输出端口连接到新的[执行 R 脚本][execute-r-script]模块的 Dataset1 输入端口。
+让我们开始使用示例。 将新的[执行 R 脚本][execute-r-script]模块拖放到试验中****。 将现有的[执行 R 脚本][execute-r-script]模块的结果 Dataset1 输出端口连接到新的[执行 R 脚本][execute-r-script]模块的 Dataset1 输入端口。
 
 正如第一个示例中所演示的，在完成示例中的步骤时，在某些时候我只展示每个步骤中 R 代码的附加行。  
 
@@ -954,7 +946,7 @@ outframe
 
 ### <a name="creating-the-dataframe-for-analysis"></a>创建用于分析的数据框
 
-首先将新的[执行 R 脚本][execute-r-script]模块添加到试验中  。 将现有的[执行 R 脚本][execute-r-script]模块的**结果数据集**输出连接到新的模块的 **Dataset1** 输入。 结果如图 20 所示。
+首先将新的[执行 R 脚本][execute-r-script]模块添加到试验中****。 将现有的[执行 R 脚本][execute-r-script]模块的**结果数据集**输出连接到新的模块的 **Dataset1** 输入。 结果如图 20 所示。
 
 ![已添加新执行 R 脚本模块的实验](./media/r-quickstart/fig21.png)
 

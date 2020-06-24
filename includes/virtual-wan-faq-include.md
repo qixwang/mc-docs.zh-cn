@@ -6,15 +6,15 @@ author: rockboyfor
 ms.service: virtual-wan
 ms.topic: include
 origin.date: 03/24/2020
-ms.date: 05/18/2020
+ms.date: 06/15/2020
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: 0df2d1f1f04863c8892708a6fed5201694d94ecf
-ms.sourcegitcommit: 8d56bc6baeb42d675695ecef1909d76f5c4a6ae3
+ms.openlocfilehash: deac35db6eee0286c24be350a450770da6da9d23
+ms.sourcegitcommit: 8dae792aefbe44e8388f961b813e3da6564423ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83406207"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84655110"
 ---
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>用户是否需要将中心辐射型拓扑与 SD-WAN/VPN 设备配合使用才能使用 Azure 虚拟 WAN？
 
@@ -33,24 +33,24 @@ ms.locfileid: "83406207"
 可以通过两个选项为 P2S 客户端添加 DNS 服务器。
 
 1. 使用 Azure 打开支持票证，并用其将你的 DNS 服务器添加到中心
-2. 或者，如果你使用的是适用于 Windows 10 的 Azure VPN 客户端，则可修改下载的 XML 配置文件，在导入该文件之前添加 **\<dnsservers>\<dnsserver> \</dnsserver>\</dnsservers>** 标记。
+2. 或者，如果你使用的是适用于 Windows 10 的 Azure VPN 客户端，则可修改下载的 XML 配置文件，在导入该文件之前添加 \<dnsservers>\<dnsserver> \</dnsserver>\</dnsservers> 标记****。
 
-```
-<azvpnprofile>
-<clientconfig>
+    ```
+    <azvpnprofile>
+    <clientconfig>
 
-    <dnsservers>
-        <dnsserver>x.x.x.x</dnsserver>
-        <dnsserver>y.y.y.y</dnsserver>
-    </dnsservers>
+        <dnsservers>
+            <dnsserver>x.x.x.x</dnsserver>
+            <dnsserver>y.y.y.y</dnsserver>
+        </dnsservers>
 
-</clientconfig>
-</azvpnprofile>
-```
+    </clientconfig>
+    </azvpnprofile>
+    ```
 
 ### <a name="for-user-vpn-point-to-site--how-many-clients-are-supported"></a>就用户 VPN（点到站点）来说，支持多少个客户端？
 
-每个用户 VPN P2S 网关都有两个实例，每个实例支持的用户数会随缩放单元的变化而变化，并有一个上限。 缩放单元 1-3 支持 500 个连接，缩放单元 4-6 支持 1000 个连接，缩放单元 7-10 支持 5000 个连接，缩放单元 11+ 支持最多 10,000 个连接。 例如，假设用户选择 1 个缩放单元。 每个缩放单元的存在都意味着已部署主动-主动网关，并且这些实例（在本例中为 2 个实例）中的每一个都支持最多 500 个连接。 每个网关可以获得 500 * 2 个连接，但这并不意味着你要为此缩放单元的 1000 个（而不是 500 个）连接做规划，因为系统可能需要为实例提供服务，而在服务期间，当你超过建议的连接数时，系统可能会中断这额外的 500 个连接。
+每个用户 VPN P2S 网关都有两个实例，每个实例支持的用户数会随缩放单元的变化而变化，并有一个上限。 缩放单元 1-3 支持 500 个连接，缩放单元 4-6 支持 1000 个连接，缩放单元 7-12 支持 5000 个连接，缩放单元 13-20 支持最多 10,000 个连接。 例如，假设用户选择 1 个缩放单元。 每个缩放单元的存在都意味着已部署主动-主动网关，并且这些实例（在本例中为 2 个实例）中的每一个都支持最多 500 个连接。 每个网关可以获得 500 * 2 个连接，但这并不意味着你要为此缩放单元的 1000 个（而不是 500 个）连接做规划，因为系统可能需要为实例提供服务，而在服务期间，当你超过建议的连接数时，系统可能会中断这额外的 500 个连接。 此外，如果决定在缩放单元上纵向扩展或缩减，或者在 VPN 网关上更改点到站点配置，请确保计划停机时间。
 
 ### <a name="what-is-the-difference-between-an-azure-virtual-network-gateway-vpn-gateway-and-an-azure-virtual-wan-vpn-gateway"></a>Azure 虚拟网络网关（VPN 网关）和 Azure 虚拟 WAN VPN 网关之间有什么区别？
 
@@ -193,8 +193,7 @@ ms.locfileid: "83406207"
 导航到门户上中心内的 VPN 网关，并单击缩放单元，将其更改为适当的设置。
 
 ### <a name="does-virtual-wan-allow-the-on-premises-device-to-utilize-multiple-isps-in-parallel-or-is-it-always-a-single-vpn-tunnel"></a>虚拟 WAN 是否允许本地设备并行利用多个 ISP？亦或它始终为单个 VPN 隧道？
-
-使用分支提供的链路与建立虚拟 WAN VPN 连接始终是主动-主动隧道（在同一中心/区域具有复原能力）。 此链接可以是本地分支的 ISP 链接。 虚拟 WAN“VPNSite”提供将链路信息添加到站点的能力。 如果分支有多个 ISP，并且每个 ISP 提供了一条链路，则可在 Azure 中的 VPN 站点信息中设置该信息。 但是，在分支机构之间管理跨 ISP 的故障转移完全是以分支为中心的路由操作。
+本地设备解决方案可以应用流量策略来跨多个隧道将流量传输到 Azure。
 
 ### <a name="what-is-global-transit-architecture"></a>什么是全局传输体系结构？
 
@@ -215,9 +214,13 @@ ms.locfileid: "83406207"
 ### <a name="how-does-the-virtual-hub-in-a-virtual-wan-select-the-best-path-for-a-route-from-multiple-hubs"></a>虚拟 WAN 中的虚拟中心如何从多个中心选择路由的最佳路径
 
 如果某个虚拟中心从多个远程中心获知同一路由，则其决定顺序如下所示
-1) 路由源  a) 网络路由 - 虚拟中心网关直接获知的 VNET 前缀  b) BGP  c) 中心 RouteTable（静态配置的路由）  d) 中心间路由
+1) 路由源  a) 网络路由 - 虚拟中心网关直接获知的 VNET 前缀  b) 中心路由表（静态配置的路由）  c) BGP  d) 中心间路由
 2)  路由指标：虚拟 WAN 首选 ExpressRoute，而不是 VPN。 与 VPN 对等机相比，ExpressRoute 对等机具有更高的权重
 3)  AS 路径长度
+
+### <a name="is-there-support-for-ipv6-in-virtual-wan"></a>虚拟 WAN 是否支持 IPv6？
+
+虚拟 WAN 中心及其网关不支持 IPv6。 如果你有一个支持 IPv6 的 VNET，并且想要将该 VNET 连接到虚拟 WAN，那么此方案也不受支持。 
 
 ### <a name="what-are-the-differences-between-the-virtual-wan-types-basic-and-standard"></a>虚拟 WAN 类型（基本和标准）之间的区别是什么？
 

@@ -1,17 +1,17 @@
 ---
 title: MABS 和 System Center DPM 支持矩阵
 description: 本文汇总了使用 Microsoft Azure 备份服务器 (MABS) 或 System Center DPM 备份本地和 Azure VM 资源时的 Azure 备份支持。
-author: lingliw
+author: Johnnytechn
 origin.date: 02/17/2019
-ms.date: 11/20/2019
+ms.date: 06/09/2020
 ms.topic: conceptual
-ms.author: v-lingwu
-ms.openlocfilehash: 1c2fae74bb4ca013a1475ec03e53b49f8e0d6a52
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.author: v-johya
+ms.openlocfilehash: 8aacbab134579759586d700696ce91d8111408f5
+ms.sourcegitcommit: 285649db9b21169f3136729c041e4d04d323229a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79290793"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84684015"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>使用 Microsoft Azure 备份服务器或 System Center DPM 进行备份时的支持矩阵
 
@@ -116,11 +116,34 @@ Azure 备份可以备份运行以下任何操作系统的 DPM/MABS 实例。 操
 
 DPM 服务器/MABS 需要以下 URL 的访问权限：
 
-- http://www.msftncsi.com/ncsi.txt
+- `http://www.msftncsi.com/ncsi.txt`
 - *.Microsoft.com
 - *.WindowsAzure.com
-- *.microsoftonline.com
-- *.windows.net
+- *.partner.microsoftonline.cn
+- *.chinacloudapi.cn
+
+### <a name="azure-expressroute-support"></a>Azure ExpressRoute 支持
+
+可以使用公共对等互连（适用于旧线路）和 Microsoft 对等互连通过 Azure ExpressRoute 备份数据。 不支持通过专用对等互连进行备份。
+
+使用公共对等互连：确保访问以下域/地址：
+
+- `http://www.msftncsi.com/ncsi.txt`
+- `microsoft.com`
+- `.WindowsAzure.com`
+- `.partner.microsoftonline.cn`
+- `.chinacloudapi.cn`
+
+如果使用 Microsoft 对等互连，请选择以下服务/区域和相关社区值：
+
+- Azure Active Directory (12076:5060)
+- Azure 区域（取决于恢复服务保管库的位置）
+- Azure 存储（根据恢复服务保管库的位置）
+
+有关更多详细信息，请参阅 [ExpressRoute 路由要求](/expressroute/expressroute-routing)。
+
+>[!NOTE]
+>对于新线路，公共对等互连已弃用。
 
 ### <a name="dpmmabs-connectivity-to-azure-backup"></a>DPM/MABS 与 Azure 备份的连接
 
@@ -169,3 +192,4 @@ DPM 服务器/MABS 需要以下 URL 的访问权限：
 - [查看](backup-support-matrix-mars-agent.md) MARS 代理支持的操作。
 - [设置](backup-azure-microsoft-azure-backup.md) MABS 服务器。
 - [设置 DPM](https://docs.microsoft.com/system-center/dpm/install-dpm?view=sc-dpm-180)。
+

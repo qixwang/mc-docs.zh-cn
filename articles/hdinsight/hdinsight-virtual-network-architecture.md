@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-origin.date: 10/31/2020
-ms.date: 02/24/2020
+origin.date: 04/14/2020
+ms.date: 06/22/2020
 ms.author: v-yiso
-ms.openlocfilehash: 43a2f16d639a7d3866270dccd88631e110a39a8b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: d06645941b02a93ae5d0deeb25b96d6fd5978b41
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79290912"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723184"
 ---
 # <a name="azure-hdinsight-virtual-network-architecture"></a>Azure HDInsight 虚拟网络体系结构
 
@@ -31,15 +31,15 @@ Azure HDInsight 群集包含不同类型的虚拟机（或节点）。 每个节
 | R Server 边缘节点 | R Server 边缘节点是可以通过 SSH 连接到其中并执行应用程序的节点。连接后，系统会协调这些应用程序，使其可在不同的群集资源上运行。 边缘节点不参与群集内部的数据分析。 此节点还托管 R Studio Server，使你能够使用浏览器运行 R 应用程序。 |
 | 区域节点 | 对于 HBase 群集类型，区域节点（也称为数据节点）将运行区域服务器。 区域服务器为 HBase 管理的一部分数据提供服务，并对其进行管理。 可以在群集中添加或删除区域节点，以缩放计算能力和控制成本。|
 | Nimbus 节点 | 对于 Storm 群集类型，Nimbus 节点提供类似于头节点的功能。 Nimbus 节点通过 Zookeeper 将任务分配给群集中的其他节点，Zookeeper 协调 Storm 拓扑的运行。 |
-| 监督器节点 | 对于 Storm 群集类型，监督器节点执行 Nimbus 节点所提供的、执行所需处理的指令。 |
+| 监督器节点 | 对于 Storm 群集类型，监督器节点执行 Nimbus 节点所提供的指令以进行处理。 |
 
 ## <a name="resource-naming-conventions"></a>资源命名约定
 
-在对群集中的节点进行寻址时，请使用完全限定域名 (FQDN)。 可以使用 [Ambari API](hdinsight-hadoop-manage-ambari-rest-api.md) 获取群集中各种节点类型的 FQDN。 
+在对群集中的节点进行寻址时，使用完全限定的域名 (FQDN)。 可以使用 [Ambari API](hdinsight-hadoop-manage-ambari-rest-api.md) 获取群集中各种节点类型的 FQDN。
 
 这些 FQDN 的格式为 `<node-type-prefix><instance-number>-<abbreviated-clustername>.<unique-identifier>.cx.internal.chinacloudapp.cn`。
 
-对于头节点，`<node-type-prefix>` 为“hn”  ，对于工作节点为“wn”  ，对于 zookeeper 节点为“zn”  。
+对于头节点，`<node-type-prefix>` 为“hn”**，对于工作节点为“wn”**，对于 zookeeper 节点为“zn”**。
 
 如果只需要主机名，则仅使用 FQDN 的第一部分：`<node-type-prefix><instance-number>-<abbreviated-clustername>`
 
@@ -49,7 +49,7 @@ Azure HDInsight 群集包含不同类型的虚拟机（或节点）。 每个节
 
 ![在 Azure 自定义 VNET 中创建的 HDInsight 实体示意图](./media/hdinsight-virtual-network-architecture/hdinsight-vnet-diagram.png)
 
-将 HDInsight 部署到 Azure 虚拟网络时提供的默认资源包括上表中所述的群集节点类型，以及用于支持在虚拟网络与外部网络之间进行通信的网络设备。
+Azure 虚拟网络中的默认资源包括上表中提到的群集节点类型。 同时包括支持虚拟网络和外部网络之间的通信的网络设备。
 
 下表汇总了将 HDInsight 部署到自定义 Azure 虚拟网络时创建的 9 个群集节点。
 

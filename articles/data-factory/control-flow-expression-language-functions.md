@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 origin.date: 11/25/2019
-ms.date: 05/11/2020
-ms.openlocfilehash: e9054953b3c07ba7e83ed2e85817b614f2efb1ea
-ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
+ms.date: 06/15/2020
+ms.openlocfilehash: 8cb9a13abd5e8f1d3da5d43d8c1f31032b2ee8bc
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82198258"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723483"
 ---
 # <a name="expressions-and-functions-in-azure-data-factory"></a>Azure 数据工厂中的表达式和函数
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -46,7 +46,7 @@ ms.locfileid: "82198258"
 |"\@\@"|返回包含“\@”的、由 1 个字符构成的字符串。|  
 |" \@"|返回包含“\@”的、由 2 个字符构成的字符串。|  
   
- 如果使用称为字符串内插  的功能（其中表达式封装在 `@{ ... }` 内），表达式还可以显示在字符串内。 例如： `"name" : "First Name: @{pipeline().parameters.firstName} Last Name: @{pipeline().parameters.lastName}"`  
+ 如果使用称为字符串内插** 的功能（其中表达式封装在 `@{ ... }` 内），表达式还可以显示在字符串内。 例如： `"name" : "First Name: @{pipeline().parameters.firstName} Last Name: @{pipeline().parameters.lastName}"`  
   
  使用字符串内插，结果始终是字符串。 假设我将 `myNumber` 定义为 `42`，将 `myString` 定义为 `foo`：  
   
@@ -173,13 +173,13 @@ ms.locfileid: "82198258"
 | [contains](control-flow-expression-language-functions.md#contains) | 检查集合是否包含某个特定项。 |
 | [empty](control-flow-expression-language-functions.md#empty) | 检查集合是否为空。 |
 | [first](control-flow-expression-language-functions.md#first) | 返回集合中的第一个项。 |
-| [intersection](control-flow-expression-language-functions.md#intersection) | 返回其中仅包含指定集合的共有项的一个集合。  |
-| [join](control-flow-expression-language-functions.md#join) | 返回一个字符串，其中包含某个数组中的所有项并以指定的分隔符分隔每个项。  |
+| [intersection](control-flow-expression-language-functions.md#intersection) | 返回其中仅包含指定集合的共有项的一个集合。** |
+| [join](control-flow-expression-language-functions.md#join) | 返回一个字符串，其中包含某个数组中的所有项并以指定的分隔符分隔每个项。** |
 | [last](control-flow-expression-language-functions.md#last) | 返回集合中的最后一个项。 |
 | [length](control-flow-expression-language-functions.md#length) | 返回字符串或数组中的项数。 |
-| [skip](control-flow-expression-language-functions.md#skip) | 删除集合开头的项，并返回所有其他项。  |
+| [skip](control-flow-expression-language-functions.md#skip) | 删除集合开头的项，并返回所有其他项。** |
 | [take](control-flow-expression-language-functions.md#take) | 返回集合开头的项。 |
-| [union](control-flow-expression-language-functions.md#union) | 返回一个集合，其中包含指定集合中的所有项。  | 
+| [union](control-flow-expression-language-functions.md#union) | 返回一个集合，其中包含指定集合中的所有项。** | 
 
 ## <a name="logical-functions"></a>逻辑函数  
 
@@ -264,7 +264,7 @@ ms.locfileid: "82198258"
 | [dayOfMonth](control-flow-expression-language-functions.md#dayOfMonth) | 返回时间戳中月份组成部分的日期。 |
 | [dayOfWeek](control-flow-expression-language-functions.md#dayOfWeek) | 返回时间戳中周组成部分的星期日期。 |
 | [dayOfYear](control-flow-expression-language-functions.md#dayOfYear) | 返回时间戳中年组成部分的日期。 |
-| [formatDateTime](control-flow-expression-language-functions.md#formatDateTime) | 返回时间戳中的日期。 |
+| [formatDateTime](control-flow-expression-language-functions.md#formatDateTime) | 以可选格式返回字符串形式的时间戳。 |
 | [getFutureTime](control-flow-expression-language-functions.md#getFutureTime) | 返回当前时间戳加上指定的时间单位。 另请参阅 [addToTime](control-flow-expression-language-functions.md#addToTime)。 |
 | [getPastTime](control-flow-expression-language-functions.md#getPastTime) | 返回当前时间戳减去指定的时间单位。 另请参阅 [subtractFromTime](control-flow-expression-language-functions.md#subtractFromTime)。 |
 | [startOfDay](control-flow-expression-language-functions.md#startOfDay) | 返回时间戳中的天的开始时间。 |
@@ -491,7 +491,7 @@ addToTime('<timestamp>', <interval>, '<timeUnit>', '<format>'?)
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | 是 | String | 包含时间戳的字符串 |
 | <*间隔*> | 是 | Integer | 要添加的指定时间单位数 |
-| <*timeUnit*> | 是 | String | 间隔  使用的时间单位：“秒”、“分钟”、“小时”、“日”、“周”、“月”、“年” |
+| <*timeUnit*> | 是 | String | 间隔** 使用的时间单位：“秒”、“分钟”、“小时”、“日”、“周”、“月”、“年” |
 | <*format*> | 否 | String | [单一格式的说明符](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式的模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 时间戳的默认格式为[“o”](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)(yyyy-MM-ddT:mm:ss:fffffffK)，这符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 标准并保留了时区信息。 |
 |||||
 
@@ -846,9 +846,9 @@ contains([<collection>], '<value>')
 
 具体而言，此函数对以下集合类型起作用：
 
-* 字符串  ，在其中查找子字符串 
-* 数组  ，在其中查找值 
-* 字典  ，在其中查找键 
+* 字符串**，在其中查找子字符串**
+* 数组**，在其中查找值**
+* 字典**，在其中查找键**
 
 | 参数 | 必须 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
@@ -1609,7 +1609,7 @@ getFutureTime(<interval>, <timeUnit>, <format>?)
 | 参数 | 必须 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*间隔*> | 是 | Integer | 要添加的指定时间单位数 |
-| <*timeUnit*> | 是 | String | 间隔  使用的时间单位：“秒”、“分钟”、“小时”、“日”、“周”、“月”、“年” |
+| <*timeUnit*> | 是 | String | 间隔** 使用的时间单位：“秒”、“分钟”、“小时”、“日”、“周”、“月”、“年” |
 | <*format*> | 否 | String | [单一格式的说明符](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式的模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 时间戳的默认格式为[“o”](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)(yyyy-MM-ddT:mm:ss:fffffffK)，这符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 标准并保留了时区信息。 |
 |||||
 
@@ -1653,7 +1653,7 @@ getPastTime(<interval>, <timeUnit>, <format>?)
 | 参数 | 必须 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*间隔*> | 是 | Integer | 要减去的指定时间单位数 |
-| <*timeUnit*> | 是 | String | 间隔  使用的时间单位：“秒”、“分钟”、“小时”、“日”、“周”、“月”、“年” |
+| <*timeUnit*> | 是 | String | 间隔** 使用的时间单位：“秒”、“分钟”、“小时”、“日”、“周”、“月”、“年” |
 | <*format*> | 否 | String | [单一格式的说明符](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式的模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 时间戳的默认格式为[“o”](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)(yyyy-MM-ddT:mm:ss:fffffffK)，这符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 标准并保留了时区信息。 |
 |||||
 
@@ -1961,7 +1961,7 @@ json(xml('<?xml version="1.0"?> <root> <person id='1'> <name>Sophia Owen</name> 
 
 ### <a name="intersection"></a>intersection
 
-返回其中仅包含指定集合的共有项的一个集合。 
+返回其中仅包含指定集合的共有项的一个集合。**
 某个项必须出现在传递给此函数的所有集合中才会出现在结果中。
 如果一个或多个项具有相同的名称，则具有该名称的最后一项将出现在结果中。
 
@@ -1972,7 +1972,7 @@ intersection('<collection1>', '<collection2>', ...)
 
 | 参数 | 必须 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*collection1*>, <*collection2*>, ... | 是 | 数组或对象，但不能为两者 | 仅需从中获取共有项的各个集合  |
+| <*collection1*>, <*collection2*>, ... | 是 | 数组或对象，但不能为两者 | 仅需从中获取共有项的各个集合** |
 |||||
 
 | 返回值 | 类型 | 说明 |
@@ -1988,13 +1988,13 @@ intersection('<collection1>', '<collection2>', ...)
 intersection(createArray(1, 2, 3), createArray(101, 2, 1, 10), createArray(6, 8, 1, 2))
 ```
 
-并返回“仅”  包含这些项的数组：`[1, 2]`
+并返回“仅”** 包含这些项的数组：`[1, 2]`
 
 <a name="join"></a>
 
 ### <a name="join"></a>join
 
-返回一个字符串，它包含某个数组中的所有项并且以分隔符分隔每个字符。 
+返回一个字符串，它包含某个数组中的所有项并且以分隔符分隔每个字符。**
 
 ```
 join([<collection>], '<delimiter>')
@@ -2523,7 +2523,7 @@ replace('the old string', 'old', 'new')
 
 ### <a name="skip"></a>skip
 
-删除集合开头的项，并返回所有其他项。 
+删除集合开头的项，并返回所有其他项。**
 
 ```
 skip([<collection>], <count>)
@@ -2836,7 +2836,7 @@ subtractFromTime('<timestamp>', <interval>, '<timeUnit>', '<format>'?)
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | 是 | String | 包含时间戳的字符串 |
 | <*间隔*> | 是 | Integer | 要减去的指定时间单位数 |
-| <*timeUnit*> | 是 | String | 间隔  使用的时间单位：“秒”、“分钟”、“小时”、“日”、“周”、“月”、“年” |
+| <*timeUnit*> | 是 | String | 间隔** 使用的时间单位：“秒”、“分钟”、“小时”、“日”、“周”、“月”、“年” |
 | <*format*> | 否 | String | [单一格式的说明符](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式的模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 时间戳的默认格式为[“o”](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)(yyyy-MM-ddT:mm:ss:fffffffK)，这符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 标准并保留了时区信息。 |
 |||||
 
@@ -2906,7 +2906,7 @@ take(createArray(0, 1, 2, 3, 4), 3)
 ### <a name="ticks"></a>ticks
 
 返回指定时间戳的 `ticks` 属性值。
-一个“时钟周期”  是 100 纳秒时间间隔。
+一个“时钟周期”** 是 100 纳秒时间间隔。
 
 ```
 ticks('<timestamp>')
@@ -3016,7 +3016,7 @@ trim(' Hello World  ')
 
 ### <a name="union"></a>union
 
-返回一个集合，其中包含指定集合中的所有项。 
+返回一个集合，其中包含指定集合中的所有项。**
 某个项只要出现在传递给此函数的任一集合中便会出现在结果中。 如果一个或多个项具有相同的名称，则具有该名称的最后一项将出现在结果中。
 
 ```
@@ -3026,7 +3026,7 @@ union([<collection1>], [<collection2>], ...)
 
 | 参数 | 必须 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*collection1*>, <*collection2*>, ...  | 是 | 数组或对象，但不能为两者 | 需要从中获取所有项的各个集合  |
+| <*collection1*>, <*collection2*>, ...  | 是 | 数组或对象，但不能为两者 | 需要从中获取所有项的各个集合** |
 |||||
 
 | 返回值 | 类型 | 说明 |
@@ -3036,7 +3036,7 @@ union([<collection1>], [<collection2>], ...)
 
 *示例*
 
-此示例获取以下集合中的“所有”  项：
+此示例获取以下集合中的“所有”** 项：
 
 ```
 union(createArray(1, 2, 3), createArray(1, 2, 10, 101))

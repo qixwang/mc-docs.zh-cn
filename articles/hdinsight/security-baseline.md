@@ -5,15 +5,16 @@ author: msmbaldwin
 manager: rkarlin
 ms.service: security
 ms.topic: conceptual
-ms.date: 02/28/2020
-ms.author: mbaldwin
+origin.date: 04/09/2020
+ms.date: 06/22/2020
+ms.author: v-yiso
 ms.custom: security-benchmark
-ms.openlocfilehash: 215abe29a8f452a7cd92c910df30d3f28916af2d
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 2b74c0775d94172da4ad586d555226ac31937270
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80634683"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723503"
 ---
 # <a name="azure-security-baseline-for-hdinsight"></a>HDInsight 的 Azure 安全基线
 
@@ -25,16 +26,17 @@ HDInsight 的 Azure 安全基线包含可帮助你改善部署安全态势的建
 
 ## <a name="network-security"></a>网络安全
 
-有关详细信息，请参阅[安全控制：  网络安全性](https://docs.azure.cn/security/benchmarks/security-control-network-security)。
+有关详细信息，请参阅[安全控制：** 网络安全性](https://docs.azure.cn/security/benchmarks/security-control-network-security)。
 
 ### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1.1：在虚拟网络中使用网络安全组或 Azure 防火墙保护资源
 
 **指导**：Azure HDInsight 中的外围安全性是通过虚拟网络实现的。 企业管理员可在虚拟网络中创建群集，并使用网络安全组 (NSG) 限制对虚拟网络的访问。 只有入站网络安全组规则中允许的 IP 地址才能与 Azure HDInsight 群集通信。 此配置可实现外围安全性。 部署在虚拟网络中的所有群集还有一个专用终结点，该终结点解析为虚拟网络中的专用 IP 地址，可对群集网关进行专用 HTTP 访问。
 
+为了减少通过渗透丢失数据的风险，请使用 Azure 防火墙限制 Azure HDInsight 群集的出站网络流量。
 
-如何在虚拟网络中部署 Azure HDInsight 并使用网络安全组进行保护：
+如何在虚拟网络中部署 Azure HDInsight 并使用网络安全组进行保护：“https://docs.azure.cn/hdinsight/hdinsight-create-virtual-network ”
 
-https://docs.microsoft.com/azure/hdinsight/hdinsight-create-virtual-network
+如何使用 Azure 防火墙限制 Azure HDInsight 群集的出站流量：“https://docs.azure.cn/hdinsight/hdinsight-restrict-outbound-traffic ”
 
 **Azure 安全中心监视**：是
 
@@ -113,9 +115,11 @@ https://docs.microsoft.com/azure/network-watcher/network-watcher-create
 
 Azure HDInsight 有多个依赖项需要入站流量。 不能通过防火墙设备发送入站管理流量。 所需管理流量的源地址是已知且已发布的。 使用此信息创建网络安全组规则，以便仅允许来自受信任位置的流量，从而保护群集的入站流量。
 
-如何在虚拟网络中部署 HDInsight 并使用网络安全组进行保护： https://docs.microsoft.com/azure/hdinsight/hdinsight-create-virtual-network
+为了减少通过渗透丢失数据的风险，请使用 Azure 防火墙限制 Azure HDInsight 群集的出站网络流量。
 
-了解 HDInsight 依赖项和防火墙用法： https://docs.microsoft.com/azure/hdinsight/hdinsight-restrict-outbound-traffic
+如何在虚拟网络中部署 HDInsight 并使用网络安全组进行保护：“https://docs.azure.cn/hdinsight/hdinsight-create-virtual-network ”
+
+了解 HDInsight 依赖项和防火墙用法：“https://docs.azure.cn/hdinsight/hdinsight-restrict-outbound-traffic ”
 
 HDInsight 管理 IP 地址： https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses
 
@@ -217,7 +221,7 @@ https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view
 
 ## <a name="logging-and-monitoring"></a>日志记录和监视
 
-有关详细信息，请参阅[安全控制：  日志记录和监视](https://docs.azure.cn/security/benchmarks/security-control-logging-monitoring)。
+有关详细信息，请参阅[安全控制：** 日志记录和监视](https://docs.azure.cn/security/benchmarks/security-control-logging-monitoring)。
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2.1：使用批准的时间同步源
 
@@ -366,7 +370,7 @@ https://docs.microsoft.com/azure/hdinsight/hdinsight-faq#security-and-certificat
 
 ## <a name="identity-and-access-control"></a>标识和访问控制
 
-有关详细信息，请参阅[安全控制：  标识和访问控制](https://docs.azure.cn/security/benchmarks/security-control-identity-access-control)。
+有关详细信息，请参阅[安全控制：** 标识和访问控制](https://docs.azure.cn/security/benchmarks/security-control-identity-access-control)。
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1：维护管理帐户的清单
 
@@ -588,7 +592,7 @@ https://docs.microsoft.com/azure/active-directory/identity-protection/howto-iden
 
 ## <a name="data-protection"></a>数据保护
 
-有关详细信息，请参阅[安全控制：  数据保护](https://docs.azure.cn/security/benchmarks/security-control-data-protection)。
+有关详细信息，请参阅[安全控制：** 数据保护](https://docs.azure.cn/security/benchmarks/security-control-data-protection)。
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1：维护敏感信息的清单
 
@@ -767,7 +771,7 @@ https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-diagnos
 
 ## <a name="vulnerability-management"></a>漏洞管理
 
-有关详细信息，请参阅[安全控制：  漏洞管理。](https://docs.azure.cn/security/benchmarks/security-control-vulnerability-management)
+有关详细信息，请参阅[安全控制：** 漏洞管理。](https://docs.azure.cn/security/benchmarks/security-control-vulnerability-management)
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5.1：运行自动漏洞扫描工具
 
@@ -847,7 +851,7 @@ https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-li
 
 ## <a name="inventory-and-asset-management"></a>清单和资产管理
 
-有关详细信息，请参阅[安全控制：  清单和资产管理](https://docs.azure.cn/security/benchmarks/security-control-inventory-asset-management)。
+有关详细信息，请参阅[安全控制：** 清单和资产管理](https://docs.azure.cn/security/benchmarks/security-control-inventory-asset-management)。
 
 ### <a name="61-use-azure-asset-discovery"></a>6.1：使用 Azure 资产发现
 
@@ -1020,7 +1024,7 @@ https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
 ## <a name="secure-configuration"></a>安全配置
 
-有关详细信息，请参阅[安全控制：  安全配置](https://docs.azure.cn/security/benchmarks/security-control-secure-configuration)。
+有关详细信息，请参阅[安全控制：** 安全配置](https://docs.azure.cn/security/benchmarks/security-control-secure-configuration)。
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1：为所有 Azure 资源建立安全配置
 
@@ -1202,7 +1206,7 @@ https://secdevtools.azurewebsites.net/helpcredscan.html
 
 ## <a name="malware-defense"></a>恶意软件防护
 
-有关详细信息，请参阅[安全控制：  恶意软件防护](https://docs.azure.cn/security/benchmarks/security-control-malware-defense)。
+有关详细信息，请参阅[安全控制：** 恶意软件防护](https://docs.azure.cn/security/benchmarks/security-control-malware-defense)。
 
 ### <a name="81-use-centrally-managed-anti-malware-software"></a>8.1：使用集中管理的反恶意软件
 
@@ -1248,7 +1252,7 @@ https://docs.microsoft.com/azure/hdinsight/hdinsight-faq#security-and-certificat
 
 ## <a name="data-recovery"></a>数据恢复
 
-有关详细信息，请参阅[安全控制：  数据恢复](https://docs.azure.cn/security/benchmarks/security-control-data-recovery)。
+有关详细信息，请参阅[安全控制：** 数据恢复](https://docs.azure.cn/security/benchmarks/security-control-data-recovery)。
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9.1：确保定期执行自动备份
 
@@ -1324,7 +1328,7 @@ https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azu
 
 ## <a name="incident-response"></a>事件响应
 
-有关详细信息，请参阅[安全控制：  事件响应](https://docs.azure.cn/security/benchmarks/security-control-incident-response)。
+有关详细信息，请参阅[安全控制：** 事件响应](https://docs.azure.cn/security/benchmarks/security-control-incident-response)。
 
 ### <a name="101-create-an-incident-response-guide"></a>10.1：创建事件响应指导
 
@@ -1406,7 +1410,7 @@ https://docs.microsoft.com/azure/security-center/workflow-automation
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>渗透测试和红队练习
 
-有关详细信息，请参阅[安全控制：  渗透测试和红队演练](https://docs.azure.cn/security/benchmarks/security-control-penetration-tests-red-team-exercises)。
+有关详细信息，请参阅[安全控制：** 渗透测试和红队演练](https://docs.azure.cn/security/benchmarks/security-control-penetration-tests-red-team-exercises)。
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings-within-60-days"></a>11.1：定期对 Azure 资源执行渗透测试，确保在 60 天内修正所有发现的关键安全问题
 

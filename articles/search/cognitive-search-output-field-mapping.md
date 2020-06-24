@@ -8,13 +8,13 @@ ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 11/04/2019
-ms.date: 03/16/2020
-ms.openlocfilehash: 8f491c4e61b8ed096acda21f1a0add80a7d84716
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 06/09/2020
+ms.openlocfilehash: d0b09f23115a9980fd34a11a6721e01f159bac9e
+ms.sourcegitcommit: c4fc01b7451951ef7a9616fca494e1baf29db714
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78934862"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84564298"
 ---
 # <a name="how-to-map-ai-enriched-fields-to-a-searchable-index"></a>如何将 AI 扩充字段映射到可搜索索引
 
@@ -22,6 +22,8 @@ ms.locfileid: "78934862"
 
 将内容从扩充文档移动到索引中必须进行输出字段映射。  扩充的文档实际上是一个信息树，虽然索引中支持复杂类型，但有时你可能需要将扩充的树中的信息转换为更简单的类型（例如字符串数组）。 使用输出字段映射，可以通过平展信息来执行数据形状转换。
 
+> [!NOTE]
+> 我们最近在输出字段映射上启用了映射函数的功能。 有关映射函数的更多详细信息，请参阅[字段映射函数](https://docs.azure.cn/search/search-indexer-field-mappings#field-mapping-functions)
 ## <a name="use-outputfieldmappings"></a>使用 outputFieldMappings
 要映射字段，请按如下所示将 `outputFieldMappings` 添加到索引器定义：
 
@@ -73,7 +75,7 @@ sourceFieldName 中的路径可以表示一个元素或多个元素。 在上述
 
 如果有多个元素，它们将“平展”成包含每个元素的数组。 
 
-更具体地说，对于 ```/document/content/organizations/*/description``` 示例，  “描述”字段中的数据在编制索引之前将类似于说明的平面数组：
+更具体地说，对于 ```/document/content/organizations/*/description``` 示例，**“描述”字段中的数据在编制索引之前将类似于说明的平面数组：
 
 ```
  ["Microsoft is a company in Seattle","LinkedIn's office is in San Francisco"]

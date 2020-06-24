@@ -10,16 +10,16 @@ ms.topic: article
 ms.date: 11/28/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 34a6dbd5f1481bbc689c562c3afaeee5127dcf35
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: a664bdef71677d92f7fd360b4863e7c8ac257026
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75598984"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723605"
 ---
 # <a name="execute-data-science-tasks-exploration-modeling-and-deployment"></a>执行数据科学任务：探索、建模和部署
 
-典型的数据科学任务包括数据探索、建模和部署。 本文介绍如何使用**交互式数据探索、分析和报告 (IDEAR)** 与**自动建模和报告 (AMAR)** 实用工具来完成多个常见数据科学任务，例如交互式数据探索、数据分析、报告和建模。 此外，还概述了用于通过如下所述的各种工具包和数据平台在生产环境中部署模型的选项：
+典型的数据科学任务包括数据探索、建模和部署。 本文介绍如何使用**交互式数据探索、分析和报告 (IDEAR)** 与**自动建模和报告 (AMAR)** 实用工具来完成多个常见数据科学任务，例如交互式数据探索、数据分析、报告和建模。 若要将模型部署到生产环境，可使用以下方法：
 
 - [Azure 机器学习](../index.yml)
 - [包含机器学习服务的 SQL-Server](https://docs.microsoft.com/sql/advanced-analytics/r/r-services)
@@ -30,7 +30,7 @@ ms.locfileid: "75598984"
 
 数据科学家可通过各种方法执行探索和报告：使用适用于 Python 的库和包（例如 matplotlib）或使用 R（例如 ggplot 或 lattice）。 数据科学家可以自定义此类代码，以满足特定方案中数据探索的需要。 结构化数据与非结构化数据（例如文本或图像）的处理需求有所不同。 
 
-Azure 机器学习等产品还提供了[高级数据准备](../service/how-to-transform-data.md)用于数据整理和探索，包括特征创建。 用户应确定哪种工具、库和包最适合其需要。 
+Azure 机器学习等产品还提供了[高级数据准备](../how-to-create-register-datasets.md)用于数据整理和探索，包括特征创建。 用户应确定哪种工具、库和包最适合其需要。 
 
 完成此阶段后，交付件是一份数据探索报告。 该报告应提供相当全面的数据视图用于建模，并评估这些数据是否适合继续在建模步骤中使用。 以下部分所述的，用于半自动化探索、建模和报告的 Team Data Science Process (TDSP) 实用工具也提供标准化的数据探索和建模报告。 
 
@@ -74,7 +74,7 @@ YAML 文件用于指定：
 生成多个模型后，往往需要配置一个系统来注册和管理这些模型。 通常，需要创建脚本或 API 的组合，以及后端数据库或版本控制系统。 可考虑用于这些管理任务的几个选项包括：
 
 1. [Azure 机器学习 - 模型管理服务](../index.yml)
-2. [MIT 提供的 ModelDB](https://mitdbg.github.io/modeldb/) 
+2. [MIT 提供的 ModelDB](http://modeldb.csail.mit.edu:3000/projects) 
 3. [用作模型管理系统的 SQL-Server](https://blogs.technet.microsoft.com/dataplatforminsider/2016/10/17/sql-server-as-a-machine-learning-model-management-system/)
 4. [Microsoft Machine Learning Server](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)
 

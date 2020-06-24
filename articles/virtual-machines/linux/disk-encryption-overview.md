@@ -6,14 +6,14 @@ ms.service: virtual-machines-linux
 ms.subservice: security
 ms.topic: article
 ms.author: v-johya
-ms.date: 04/20/2020
+ms.date: 06/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: 7568d8b1bcb16ec39f6cc55a1856e5b0ca3bebc0
-ms.sourcegitcommit: ebedf9e489f5218d4dda7468b669a601b3c02ae5
+ms.openlocfilehash: d125f730e5063ffd2dd195611181daff1c6c43ec
+ms.sourcegitcommit: 285649db9b21169f3136729c041e4d04d323229a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82159032"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84684044"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>适用于 Linux VM 的 Azure 磁盘加密 
 
@@ -59,26 +59,15 @@ Azure 磁盘加密在[第 2 代 VM](generation-2.md#generation-1-vs-generation-2
 
 未经 Azure 认可的 Linux 服务器发行版不支持 Azure 磁盘加密；在认可的发行版中，只有以下发行版和版本支持 Azure 磁盘加密：
 
-| Linux 分发版 | 版本 | 支持加密的卷类型|
-| --- | --- |--- |
-| Ubuntu | 18.04| OS 和数据磁盘 |
-| Ubuntu | 16.04| OS 和数据磁盘 |
-| Ubuntu | 14.04.5</br>[其 Azure 优化内核更新到 4.15 或更高版本](disk-encryption-troubleshooting.md) | OS 和数据磁盘 |
-| CentOS | 7.7 | OS 和数据磁盘 |
-| CentOS | 7.6 | OS 和数据磁盘 |
-| CentOS | 7.5 | OS 和数据磁盘 |
-| CentOS | 7.4 | OS 和数据磁盘 |
-| CentOS | 7.3 | OS 和数据磁盘 |
-| CentOS | 7.2n | OS 和数据磁盘 |
-| CentOS | 6.8 | 数据磁盘 |
-| openSUSE | 42.3 | 数据磁盘 |
-| SLES | 12-SP4 | 数据磁盘 |
-| SLES | 12-SP3 | 数据磁盘 |
+| 发布者 | 产品/服务 | SKU | URN | 支持加密的卷类型 |
+| --- | --- |--- | --- |
+| Canonical | Ubuntu | 18.04-LTS | Canonical:UbuntuServer:18.04-LTS:latest | OS 和数据磁盘 |
+| Canonical | Ubuntu 18.04 | 18.04-DAILY-LTS | Canonical:UbuntuServer:18.04-DAILY-LTS:latest | OS 和数据磁盘 |
+| Canonical | Ubuntu 16.04 | 16.04-DAILY-LTS | Canonical:UbuntuServer:16.04-DAILY-LTS:latest | OS 和数据磁盘 |
+| Canonical | Ubuntu 14.04.5</br>[其 Azure 优化内核更新到 4.15 或更高版本](disk-encryption-troubleshooting.md) | 14.04.5-LTS | Canonical:UbuntuServer:14.04.5-LTS:latest | OS 和数据磁盘 |
+| Canonical | Ubuntu 14.04.5</br>[其 Azure 优化内核更新到 4.15 或更高版本](disk-encryption-troubleshooting.md) | 14.04.5-DAILY-LTS | Canonical:UbuntuServer:14.04.5-DAILY-LTS:latest | OS 和数据磁盘 |
 
-<!--Not Available on | RHEL | 7.7 -->
-
-> [!NOTE]
-> RHEL OS 以及 RHEL7 标准预付费套餐映像的数据磁盘支持新的 Azure 磁盘加密实现。  
+| OpenLogic | CentOS 7.7 | 7.7 | OpenLogic:CentOS:7.7:latest | OS and data disk | | OpenLogic | CentOS 7.7 | 7-LVM | OpenLogic:CentOS:7-LVM:latest | OS and data disk | | OpenLogic | CentOS 7.6 | 7.6 | OpenLogic:CentOS:7.6:latest | OS and data disk | | OpenLogic | CentOS 7.5 | 7.5 | OpenLogic:CentOS:7.5:latest | OS and data disk | | OpenLogic | CentOS 7.4 | 7.4 | OpenLogic:CentOS:7.4:latest | OS and data disk | | OpenLogic | CentOS 7.3 | 7.3 | OpenLogic:CentOS:7.3:latest | OS and data disk | | OpenLogic | CentOS 7.2n | 7.2n | OpenLogic:CentOS:7.2n:latest | OS and data disk | | OpenLogic | CentOS 7.1 | 7.1 | OpenLogic:CentOS:7.1:latest | Data disk only | | OpenLogic | CentOS 7.0 | 7.0 | OpenLogic:CentOS:7.0:latest | Data disk only | | OpenLogic | CentOS 6.8 | 6.8 | OpenLogic:CentOS:6.8:latest | Data disk only |
 
 ## <a name="additional-vm-requirements"></a>其他 VM 要求
 
@@ -100,7 +89,7 @@ Azure 磁盘加密要求系统上存在 dm-dm-crypt 和 vfat 模块。 在默认
   - Linux VM 必须能够连接到 Azure Active Directory 终结点 \[login.partner.microsoftonline.cn\]，以获取用于连接密钥保管库的令牌。
   - 若要将加密密钥写入密钥保管库，Linux VM 必须能够连接到密钥保管库终结点。
   - Linux VM 必须能够连接到托管 Azure 扩展存储库的 Azure 存储终结点和托管 VHD 文件的 Azure 存储帐户。
-  -  如果安全策略限制从 Azure VM 到 Internet 的访问，可以解析上述 URI，并配置特定的规则以允许与这些 IP 建立出站连接。 有关详细信息，请参阅[防火墙后的 Azure Key Vault](../../key-vault/key-vault-access-behind-firewall.md)。  
+  -  如果安全策略限制从 Azure VM 到 Internet 的访问，可以解析上述 URI，并配置特定的规则以允许与这些 IP 建立出站连接。 有关详细信息，请参阅[防火墙后的 Azure Key Vault](../../key-vault/general/access-behind-firewall.md)。  
 
 ## <a name="encryption-key-storage-requirements"></a>加密密钥存储要求  
 

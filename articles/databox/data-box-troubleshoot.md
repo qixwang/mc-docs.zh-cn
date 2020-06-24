@@ -1,20 +1,20 @@
 ---
-title: 排查 Azure Data Box 和 Azure Data Box Heavy 的问题 | Microsoft Docs
+title: 排查 Azure Data Box 和 Azure Data Box Heavy 的问题
 description: 介绍如何排查在将数据复制到 Azure Data Box 和 Azure Data Box Heavy 时这些设备出现的问题。
 services: databox
 author: WenJason
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-origin.date: 06/24/2019
-ms.date: 12/02/2019
+origin.date: 04/30/2020
+ms.date: 06/08/2020
 ms.author: v-jay
-ms.openlocfilehash: 3a47812dca3a7b11396be237c917afe118868b71
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 52ab62a4516566cde36929ff825818fe5bc112ad
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74530594"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723527"
 ---
 # <a name="troubleshoot-issues-related-to-azure-data-box-and-azure-data-box-heavy"></a>排查 Azure Data Box 和 Azure Data Box Heavy 的相关问题
 
@@ -41,11 +41,11 @@ Data Box 和 Data Box Heavy 中的错误概括如下：
 
 ### <a name="error_container_or_share_name_length"></a>ERROR_CONTAINER_OR_SHARE_NAME_LENGTH     
 
- 错误说明：容器或共享名称必须包含 3 到 63 个字符。 
+**** 错误说明：容器或共享名称必须包含 3 到 63 个字符。 
 
 **建议的解决方法：** Data Box 或 Data Box Heavy 共享 (SMB/NFS) 中的、将数据复制到的文件夹会成为存储帐户中的一个 Azure 容器。 
 
-- 在设备本地 Web UI 的“连接和复制”页上，下载并查看错误文件，以找出有问题的文件夹名称。 
+- 在设备本地 Web UI 的“连接和复制”页上，下载并查看错误文件，以找出有问题的文件夹名称。****
 - 更改 Data Box 或 Data Box Heavy 共享中的文件夹名称，以确保：
 
     - 名称包含 3 到 63 个字符。
@@ -60,11 +60,11 @@ Data Box 和 Data Box Heavy 中的错误概括如下：
 
 ### <a name="error_container_or_share_name_alpha_numeric_dash"></a>ERROR_CONTAINER_OR_SHARE_NAME_ALPHA_NUMERIC_DASH
 
- 错误说明：容器或共享名称只能包含字母、数字或连字符。
+**** 错误说明：容器或共享名称只能包含字母、数字或连字符。
 
 **建议的解决方法：** Data Box 或 Data Box Heavy 共享 (SMB/NFS) 中的、将数据复制到的文件夹会成为存储帐户中的一个 Azure 容器。 
 
-- 在设备本地 Web UI 的“连接和复制”页上，下载并查看错误文件，以找出有问题的文件夹名称。 
+- 在设备本地 Web UI 的“连接和复制”页上，下载并查看错误文件，以找出有问题的文件夹名称。****
 - 更改 Data Box 或 Data Box Heavy 共享中的文件夹名称，以确保：
 
     - 名称包含 3 到 63 个字符。
@@ -78,11 +78,11 @@ Data Box 和 Data Box Heavy 中的错误概括如下：
 
 ### <a name="error_container_or_share_name_improper_dash"></a>ERROR_CONTAINER_OR_SHARE_NAME_IMPROPER_DASH
 
- 错误说明：容器名称和共享名称不能以连字符开头或结尾，并且不能包含连续的连字符。
+**** 错误说明：容器名称和共享名称不能以连字符开头或结尾，并且不能包含连续的连字符。
 
 **建议的解决方法：** Data Box 或 Data Box Heavy 共享 (SMB/NFS) 中的、将数据复制到的文件夹会成为存储帐户中的一个 Azure 容器。 
 
-- 在设备本地 Web UI 的“连接和复制”页上，下载并查看错误文件，以找出有问题的文件夹名称。 
+- 在设备本地 Web UI 的“连接和复制”页上，下载并查看错误文件，以找出有问题的文件夹名称。****
 - 更改 Data Box 或 Data Box Heavy 共享中的文件夹名称，以确保：
 
     - 名称包含 3 到 63 个字符。
@@ -93,6 +93,17 @@ Data Box 和 Data Box Heavy 中的错误概括如下：
     - 无效名称的示例：`my-folder_1`、`my`、`--myfolder`、`myfolder--`、`myfolder!`
 
     有关详细信息，请参阅[容器名称](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names)和[共享名称](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names)的 Azure 命名约定。
+    
+### <a name="error_file_or_directory_name_illegal"></a>ERROR_FILE_OR_DIRECTORY_NAME_ILLEGAL
+
+**错误说明**： 目录或容器名称包含非法字符。
+
+**建议的解决方法**： 复制的目录或容器名称包含不受支持的字符。
+
+- 在本地 Web UI 的“连接和复制”页上，下载并查看错误文件，以找出有问题的文件夹名称。 
+- 为目录或容器重命名，确保它们符合 Azure 命名约定。
+
+有关详细信息，请参阅 [目录](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names) 和[容器](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names)的 Azure 命名约定。
 
 ## <a name="container-or-share-size-limit-errors"></a>容器或共享大小限制错误
 
@@ -100,9 +111,9 @@ Data Box 和 Data Box Heavy 中的错误概括如下：
 
 ### <a name="error_container_or_share_capacity_exceeded"></a>ERROR_CONTAINER_OR_SHARE_CAPACITY_EXCEEDED
 
- 错误说明：Azure 文件共享将单个共享限制为 5 TB 数据。 某些共享已超过此限制。
+**** 错误说明：Azure 文件共享将单个共享限制为 5 TB 数据。 某些共享已超过此限制。
 
-**建议的解决方法：** 在本地 Web UI 的“连接和复制”页上，下载并查看错误文件。 
+**建议的解决方法：** 在本地 Web UI 的“连接和复制”页上，下载并查看错误文件。****
 
 在错误日志中找到存在此问题的文件夹，并确保该文件夹中的文件小于 5 TB。
 
@@ -113,11 +124,11 @@ Data Box 和 Data Box Heavy 中的错误概括如下：
 
 ### <a name="error_blob_or_file_size_limit"></a>ERROR_BLOB_OR_FILE_SIZE_LIMIT
 
- 错误说明：文件大小超过了最大上传文件大小。
+**** 错误说明：文件大小超过了最大上传文件大小。
 
 **建议的解决方法：** Blob 或文件大小超过了允许的最大上传限制。
 
-- 在本地 Web UI 的“连接和复制”页上，下载并查看错误文件。 
+- 在本地 Web UI 的“连接和复制”页上，下载并查看错误文件。****
 - 确保 Blob 和文件大小不超过 Azure 对象大小限制。
 
 ## <a name="data-or-file-type-errors"></a>数据或文件类型错误
@@ -126,7 +137,7 @@ Data Box 和 Data Box Heavy 中的错误概括如下：
 
 ### <a name="error_blob_or_file_size_alignment"></a>ERROR_BLOB_OR_FILE_SIZE_ALIGNMENT
 
- 错误说明：Blob 或文件未正确对齐。
+**** 错误说明：Blob 或文件未正确对齐。
 
 **建议的解决方法：** Data Box 或 Data Box Heavy 上的页 Blob 共享仅支持经过 512 字节对齐的文件（例如 VHD/VHDX）。 复制到页 Blob 共享的任何数据将作为页 Blob 上传到 Azure。
 
@@ -136,7 +147,7 @@ Data Box 和 Data Box Heavy 中的错误概括如下：
 
 ### <a name="error_blob_or_file_type_unsupported"></a>ERROR_BLOB_OR_FILE_TYPE_UNSUPPORTED
 
- 错误说明：托管磁盘共享中存在不受支持的文件类型。 只允许固定的 VHD。
+**** 错误说明：托管磁盘共享中存在不受支持的文件类型。 只允许固定的 VHD。
 
 **建议的解决方法：**
 
@@ -145,7 +156,7 @@ Data Box 和 Data Box Heavy 中的错误概括如下：
 
 ### <a name="error_directory_disallowed_for_type"></a>ERROR_DIRECTORY_DISALLOWED_FOR_TYPE
 
- 错误说明：托管磁盘的任何现有文件夹中不允许某个目录。 这些文件夹中只允许固定的 VHD。
+**** 错误说明：托管磁盘的任何现有文件夹中不允许某个目录。 这些文件夹中只允许固定的 VHD。
 
 **建议的解决方法：** 对于托管磁盘，会在每个共享中创建对应于存储帐户中的容器的以下三个文件夹：高级 SSD、标准 HDD 和标准 SSD。 这些文件夹对应于托管磁盘的性能层。
 
@@ -156,33 +167,33 @@ Data Box 和 Data Box Heavy 中的错误概括如下：
 
 ### <a name="reparse_point_error"></a>REPARSE_POINT_ERROR
 
- 错误说明：不允许在 Linux 中使用符号链接。 
+**** 错误说明：不允许在 Linux 中使用符号链接。 
 
 **建议的解决方法：** 符号链接通常是链接、竖线和文件等其他元素。 请删除链接，或解决链接错误并复制数据。
 
 
 ## <a name="non-critical-blob-or-file-errors"></a>非关键 Blob 或文件错误
 
-以下部分总结了与在数据复制期间看到的 blob、文件或容器的名称有关的所有非关键错误。 如果出现这些错误，则会修改名称，使其符合 Azure 命名约定。 数据上传的相应订单状态将为“已完成，但出现警告”  。  
+以下部分总结了与在数据复制期间看到的 blob、文件或容器的名称有关的所有非关键错误。 如果出现这些错误，则会修改名称，使其符合 Azure 命名约定。 数据上传的相应订单状态将为“已完成，但出现警告”****。  
 
 ### <a name="error_blob_or_file_name_character_control"></a>ERROR_BLOB_OR_FILE_NAME_CHARACTER_CONTROL
 
- 错误说明：Blob 或文件的名称包含不受支持的控制字符。
+**** 错误说明：Blob 或文件的名称包含不受支持的控制字符。
 
 **建议的解决方法：** 复制的 Blob 或文件的名称包含不受支持的字符。
 
-在本地 Web UI 的“连接和复制”页上，下载并查看错误文件。 
+在本地 Web UI 的“连接和复制”页上，下载并查看错误文件。****
 删除或重命名这些文件，以删除不受支持的字符。
 
 有关详细信息，请参阅 [Blob 名称](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names)和[文件名](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names)的 Azure 命名约定。
 
 ### <a name="error_blob_or_file_name_character_illegal"></a>ERROR_BLOB_OR_FILE_NAME_CHARACTER_ILLEGAL
 
- 错误说明：Blob 或文件的名称包含非法字符。
+**** 错误说明：Blob 或文件的名称包含非法字符。
 
 **建议的解决方法：** 复制的 Blob 或文件的名称包含不受支持的字符。
 
-在本地 Web UI 的“连接和复制”页上，下载并查看错误文件。 
+在本地 Web UI 的“连接和复制”页上，下载并查看错误文件。****
 删除或重命名这些文件，以删除不受支持的字符。
 
 有关详细信息，请参阅 [Blob 名称](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names)和[文件名](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names)的 Azure 命名约定。
@@ -190,11 +201,11 @@ Data Box 和 Data Box Heavy 中的错误概括如下：
 
 ### <a name="error_blob_or_file_name_ending"></a>ERROR_BLOB_OR_FILE_NAME_ENDING
 
- 错误说明：Blob 或文件的名称以错误的字符结尾。
+**** 错误说明：Blob 或文件的名称以错误的字符结尾。
 
 **建议的解决方法：** 复制的 Blob 或文件的名称包含不受支持的字符。
 
-在本地 Web UI 的“连接和复制”页上，下载并查看错误文件。 
+在本地 Web UI 的“连接和复制”页上，下载并查看错误文件。****
 删除或重命名这些文件，以删除不受支持的字符。
 
 有关详细信息，请参阅 [Blob 名称](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names)和[文件名](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names)的 Azure 命名约定。
@@ -202,20 +213,20 @@ Data Box 和 Data Box Heavy 中的错误概括如下：
 
 ### <a name="error_blob_or_file_name_segment_count"></a>ERROR_BLOB_OR_FILE_NAME_SEGMENT_COUNT
 
- 错误说明：Blob 或文件的名称包含过多的路径段。
+**** 错误说明：Blob 或文件的名称包含过多的路径段。
 
 **建议的解决方法：** 复制的文件或 Blob 超过了最大路径段数。 路径段是指连续分隔符（例如正斜杠 /）之间的字符串。
 
-- 在本地 Web UI 的“连接和复制”页上，下载并查看错误文件。 
+- 在本地 Web UI 的“连接和复制”页上，下载并查看错误文件。****
 - 确保 [Blob 名称](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names)和[文件名](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names)符合 Azure 命名约定。
 
 ### <a name="error_blob_or_file_name_aggregate_length"></a>ERROR_BLOB_OR_FILE_NAME_AGGREGATE_LENGTH
 
- 错误说明：Blob 或文件名太长。
+**** 错误说明：Blob 或文件名太长。
 
 **建议的解决方法：** Blob 或文件的名称超过了最大长度。
 
-- 在本地 Web UI 的“连接和复制”页上，下载并查看错误文件。 
+- 在本地 Web UI 的“连接和复制”页上，下载并查看错误文件。****
 - Blob 名称不得超过 1,024 个字符。
 - 删除或者重命名 Blob 或文件，使其名称不超过 1,024 个字符。
 
@@ -223,17 +234,17 @@ Data Box 和 Data Box Heavy 中的错误概括如下：
 
 ### <a name="error_blob_or_file_name_component_length"></a>ERROR_BLOB_OR_FILE_NAME_COMPONENT_LENGTH
 
- 错误说明：Blob 或文件名中的某个段太长。
+**** 错误说明：Blob 或文件名中的某个段太长。
 
 **建议的解决方法：** Blob 或文件名称中的某个路径段超过了最大字符数。 路径段是指连续分隔符（例如正斜杠 /）之间的字符串。
 
-- 在本地 Web UI 的“连接和复制”页上，下载并查看错误文件。 
+- 在本地 Web UI 的“连接和复制”页上，下载并查看错误文件。****
 - 确保 [Blob 名称](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names)和[文件名](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names)符合 Azure 命名约定。
 
 
 ### <a name="error_container_or_share_name_disallowed_for_type"></a>ERROR_CONTAINER_OR_SHARE_NAME_DISALLOWED_FOR_TYPE
 
- 错误说明：为托管磁盘共享指定的容器名称不正确。
+**** 错误说明：为托管磁盘共享指定的容器名称不正确。
 
 **建议的解决方法：** 对于托管磁盘，会在每个共享中创建对应于存储帐户中的容器的以下文件夹：高级 SSD、标准 HDD 和标准 SSD。 这些文件夹对应于托管磁盘的性能层。
 

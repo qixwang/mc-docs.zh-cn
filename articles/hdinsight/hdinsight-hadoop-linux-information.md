@@ -9,15 +9,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: big-data
-origin.date: 11/14/2019
-ms.date: 03/02/2020
+origin.date: 04/29/2020
+ms.date: 06/22/2020
 ms.author: v-yiso
-ms.openlocfilehash: 6c2f1c7e15e400fdae256f2bb668a13cf2b6ea1d
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 3496bb382458732a3d7cb76f4198b74bb3f2ed3b
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292075"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723232"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>有关在 Linux 上使用 HDInsight 的信息
 
@@ -87,35 +87,35 @@ Azure HDInsight 群集提供了基于熟悉的 Linux 环境并在 Azure 云中�
 
 Hadoop 相关文件可在群集节点上的 `/usr/hdp`中找到。 此目录包含以下子目录：
 
-* **2.6.5.3006-29**：目录名称是 HDInsight 使用的 Hadoop 平台版本。 群集上的数字可能与这里列出的有所不同。
-* **current**：此目录包含 **2.6.5.3006-29** 目录下的子目录的链接。 由于该目录存在，因此无需记住版本号。
+* **2.6.5.3009-43**：目录名称是 HDInsight 使用的 Hadoop 平台版本。 群集上的数字可能与这里列出的有所不同。
+* **current**：此目录包含 2.6.5.3009-43 目录下的子目录的链接。 由于该目录存在，因此无需记住版本号。
 
 可以在 Hadoop 分布式文件系统上的 `/example` 和 `/HdiSamples` 处找到示例数据和 JAR 文件。
 
 ## <a name="hdfs-azure-storage-and-data-lake-storage"></a>HDFS、Azure 存储和 Data Lake Storage
 
-在大部分 Hadoop 发行版中，数据都存储在 HDFS 中，HDFS 由群集中计算机上的本地存储提供支持。 对基于云的解决方案使用本地存储可能费用高昂，因为计算资源以小时或分钟为单位来计费。
+在大多数 Hadoop 分发版中，数据存储在 HDFS 中。 HDFS 受群集中计算机上的本地存储的支持。 为基于云的解决方案使用本地存储可能费用高昂，因为计算资源以小时或分钟为单位来计费。
 
-使用 HDInsight 时，数据文件使用 Azure Blob 存储以可缩放和复原的方式存储在云中。 这些服务提供以下优势：
+使用 HDInsight 时，数据文件使用 Azure Blob 存储以及可选的 Azure Data Lake Storage 以自适应且可复原的方式存储在云中。 这些服务提供以下优势：
 
 * 成本低廉的长期存储。
 * 可从外部服务访问，例如网站、文件上传/下载实用程序、各种语言 SDK 和 Web 浏览器。
-* 大型文件容量和大型可缩放存储。
+* 大型文件容量和大型自适应存储。
 
 有关详细信息，请参阅[了解 Blob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)。
 
-使用 Azure 存储时，不需要从 HDInsight 执行任何特殊操作即可访问数据。 例如，以下命令列出 `/example/data` 文件夹中的文件：
+使用 Azure 存储或 Data Lake Storage 时，不需要从 HDInsight 进行任何特殊操作即可访问数据。 例如，以下命令将列出 `/example/data` 文件夹中的文件，而无论它是存储在 Azure 存储还是 Data Lake Storage 上：
 
     hdfs dfs -ls /example/data
 
-在 HDInsight 中，从计算资源中分离数据存储资源。 因此，你可以根据需要创建 HDInsight 群集来执行计算，然后在工作完成后删除该群集，同时，在云存储中安全地将数据文件持久保存所需的任意时长。
+在 HDInsight 中，数据存储资源（Azure Blob 存储和 Azure Data Lake Storage）与计算资源相分离。 可以根据需要创建 HDInsight 群集用于执行计算，然后在工作完成后将其删除。 另外，如有需要，可以将数据文件安全持久地保存在云存储空间中。
 
 
 ### <a name="uri-and-scheme"></a><a name="URI-and-scheme"></a>URI 和方案
 
 在访问文件时，一些命令可能需要用户将方案指定为 URI 的一部分。 例如，Storm-HDFS 组件需要用户指定方案。 使用非默认存储（作为“附加”存储添加到群集的存储）时，必须始终将方案作为 URI 的一部分来使用。
 
-使用 __Azure 存储__时，可以使用以下 URI 方案之一：
+使用 [Azure 存储](./hdinsight-hadoop-use-blob-storage.md)时，可以使用以下 URI 方案之一：
 
 * `wasb:///`：使用未加密的通信访问默认存储。
 
@@ -123,13 +123,12 @@ Hadoop 相关文件可在群集节点上的 `/usr/hdp`中找到。 此目录包�
 
 * `wasb://<container-name>@<account-name>.blob.core.chinacloudapi.cn/`：与非默认存储帐户通信时使用。 例如，具有其他存储帐户或访问可公开访问的存储帐户中存储的数据时。
 
-使用 __Azure Data Lake Storage Gen2__ 时，可以使用以下 URI 方案之一：
+使用 [Azure Data Lake Storage Gen2](./hdinsight-hadoop-use-data-lake-storage-gen2.md) 时，可以使用以下 URI 方案：
 
-* `abfs:///`：使用未加密的通信访问默认存储。
-
-* `abfss:///`：使用加密的通信访问默认存储。  仅 HDInsight 3.6 及以上版本支持 abfss 方案。
+* `abfs://`：使用加密的通信访问默认存储。
 
 * `abfs://<container-name>@<account-name>.dfs.core.chinacloudapi.cn/`：与非默认存储帐户通信时使用。 例如，具有其他存储帐户或访问可公开访问的存储帐户中存储的数据时。
+
 > [!IMPORTANT]  
 > 使用 Data Lake Storage 作为 HDInsight 的默认存储时，必须在存储中指定一个用作 HDInsight 存储根目录的路径。 默认路径为 `/clusters/<cluster-name>/`。
 >
@@ -155,7 +154,7 @@ curl -u admin -G "https://CLUSTERNAME.azurehdinsight.cn/api/v1/clusters/CLUSTERN
 
 1. 在 [Azure 门户](https://portal.azure.cn/)中，选择 HDInsight 群集。
 
-2. 在“属性”  部分中，选择“存储帐户”  。 会显示群集的存储信息。
+2. 在“属性”部分中，选择“存储帐户”。 会显示群集的存储信息。
 
 ### <a name="how-do-i-access-files-from-outside-hdinsight"></a>如何从 HDInsight 外部访问文件
 
@@ -177,46 +176,11 @@ curl -u admin -G "https://CLUSTERNAME.azurehdinsight.cn/api/v1/clusters/CLUSTERN
 
 ## <a name="scaling-your-cluster"></a><a name="scaling"></a>缩放你的群集
 
-使用群集缩放功能可动态更改群集使用的数据节点数。 可以在其他作业或进程正在群集上运行时执行缩放操作。  另请参阅[缩放 HDInsight 群集](./hdinsight-scaling-best-practices.md)
-
-不同的群集类型会受缩放操作影响，如下所示：
-
-* **Hadoop**：减少群集中的节点数时，群集中的某些服务将重新启动。 缩放操作会导致正在运行或挂起的作业在缩放操作完成时失败。 可以在操作完成后重新提交这些作业。
-* **HBase**：在完成缩放操作后的几分钟内，区域服务器会自动进行平衡。 若要手动平衡区域服务器，请使用以下步骤：
-
-    1. 使用 SSH 连接到 HDInsight 群集。 有关详细信息，请参阅 [将 SSH 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)。
-
-    2. 使用以下命令来启动 HBase shell：
-
-            hbase shell
-
-    3. 加载 HBase shell 后，使用以下方法来手动平衡区域服务器：
-
-            balancer
-
-* **Storm**：你应在执行缩放操作后重新平衡任何正在运行的 Storm 拓扑。 重新平衡允许拓扑根据群集中的新节点数重新调整并行度设置。 若要重新平衡正在运行的拓扑，请使用下列选项之一：
-
-    * **SSH**：连接到服务器并使用以下命令来重新平衡拓扑：
-
-            storm rebalance TOPOLOGYNAME
-
-        还可以指定参数来替代拓扑原来提供的并行度提示。 例如，`storm rebalance mytopology -n 5 -e blue-spout=3 -e yellow-bolt=10` 会将拓扑重新配置为 5 个辅助角色进程，蓝色的 BlueSpout 组件有 3 个 executor，黄色 YellowBolt 组件有 10 个 executor。
-
-    * **Storm UI**：使用以下步骤来重新平衡使用 Storm UI 的拓扑。
-
-        1. 在 Web 浏览器中打开 **https://CLUSTERNAME.azurehdinsight.cn/stormui** ，其中 CLUSTERNAME 是 Storm 群集的名称。 如果出现提示，请输入在创建 HDInsight 群集时指定的群集管理员用户名和密码。
-        2. 选择要重新平衡的拓扑，并选择“重新平衡”  按钮。 输入执行重新平衡操作前的延迟。
-
-* **Kafka**：执行缩放操作后，应重新均衡分区副本。 有关详细信息，请参阅[通过 Apache Kafka on HDInsight 实现数据的高可用性](./kafka/apache-kafka-high-availability.md)文档。
-
-有关缩放 HDInsight 群集的特定信息，请参阅：
-
-* [使用 Azure 门户管理 HDInsight 中的 Apache Hadoop 群集](hdinsight-administer-use-portal-linux.md#scale-clusters)
-* [使用 Azure CLI 管理 HDInsight 中的 Apache Hadoop 群集](hdinsight-administer-use-command-line.md#scale-clusters)
+使用群集缩放功能可动态更改群集使用的数据节点数。 可以在其他作业或进程在群集上运行时执行缩放操作。  请参阅[缩放 HDInsight 群集](./hdinsight-scaling-best-practices.md)
 
 ## <a name="how-do-i-install-hue-or-other-hadoop-component"></a>如何安装 Hue（或其他 Hadoop 组件）？
 
-HDInsight 是托管服务。 如果 Azure 检测到群集存在问题，则可能会删除故障节点，再创建一个节点来代替。 如果在群集节点上手动安装组件，则发生此操作时，这些组件不会保留。 应该改用 [HDInsight 脚本操作](hdinsight-hadoop-customize-cluster-linux.md)。 脚本操作可用于进行以下更改：
+HDInsight 是托管服务。 如果 Azure 检测到群集存在问题，则可能会删除故障节点，再创建一个节点来代替。 在群集上手动安装节点时，这些节点在发生此操作时不会保留。 应该改用 [HDInsight 脚本操作](hdinsight-hadoop-customize-cluster-linux.md)。 脚本操作可用于进行以下更改：
 
 * 安装并配置服务或网站。
 * 安装和配置需要在群集的多个节点上进行配置更改的组件。
@@ -225,7 +189,7 @@ HDInsight 是托管服务。 如果 Azure 检测到群集存在问题，则可�
 
 ### <a name="jar-files"></a>Jar 文件
 
-某些 Hadoop 技术以自包含 jar 文件形式提供，这些文件包含某些函数，这些函数用作 MapReduce 作业的一部分，或来自 Pig 或 Hive 内部。 它们通常不需要进行任何设置，并可以在创建后上传到群集和直接使用。 如需确保组件在群集重置映像后仍存在，可将 jar 文件存储在群集的默认存储（WASB 或 ADL）中。
+一些 Hadoop 方法提供独立的 jar 文件。 这些文件包含作为 MapReduce 作业的一部分使用的函数，或包含 Pig 或 Hive 内部的函数。 它们通常不需要进行任何设置，并可以在创建后上传到群集和直接使用。 如需确保组件在群集重置映像后仍存在，请将 jar 文件存储在群集的默认存储中。
 
 例如，如果要使用 [Apache DataFu](https://datafu.incubator.apache.org/) 的最新版本，可以下载包含项目的 jar，并将其上传到 HDInsight 群集。 然后按照 DataFu 文档的说明通过 Pig 或 Hive 使用它。
 
@@ -247,5 +211,4 @@ HDInsight 是托管服务。 如果 Azure 检测到群集存在问题，则可�
 
 * [使用 Apache Ambari REST API 管理 HDInsight 群集](./hdinsight-hadoop-manage-ambari-rest-api.md)
 * [将 Apache Hive 和 HDInsight 配合使用](hadoop/hdinsight-use-hive.md)
-* [将 Apache Pig 和 HDInsight 配合使用](hadoop/hdinsight-use-pig.md)
 * [将 MapReduce 作业与 HDInsight 配合使用](hadoop/hdinsight-use-mapreduce.md)

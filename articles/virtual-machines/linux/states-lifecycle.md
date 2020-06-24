@@ -1,25 +1,19 @@
 ---
-title: 虚拟机生命周期和状态 | Azure
-description: 概述了 Azure 中的 Linux VM 的生命周期，并介绍了 VM 在任意时刻可能处于的各种状态。
-services: virtual-machines-linux
-documentationcenter: ''
-author: rockboyfor
-manager: digimobile
-editor: ''
-tags: azure-resource-manager,azure-service-management
-ms.service: virtual-machines-linux
+title: Azure 中 Linux VM 的生命周期和状态 | Azure
+description: 概述了 Azure 中的 VM 的生命周期，并介绍了 VM 在任意时刻可能处于的各种状态。
+services: virtual-machines
+author: Johnnytechn
+ms.service: virtual-machines
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-origin.date: 08/09/2018
-ms.date: 10/14/2019
-ms.author: v-yeche
-ms.openlocfilehash: 99bb09c6bbb91814c804792b1e2b39941cefa347
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 06/05/2020
+ms.author: v-johya
+ms.openlocfilehash: c2ac0a61bfa53d72db817427c5c86ee0c52c0169
+ms.sourcegitcommit: 285649db9b21169f3136729c041e4d04d323229a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "72272799"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84684036"
 ---
 # <a name="virtual-machines-lifecycle-and-states"></a>虚拟机生命周期和状态
 

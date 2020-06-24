@@ -5,20 +5,20 @@ services: synapse-analytics
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: ''
-origin.date: 3/26/2020
-ms.date: 05/11/2020
+origin.date: 4/30/2020
+ms.date: 06/15/2020
 author: WenJason
 ms.author: v-jay
 ms.reviewer: jrasnick
 manager: digimobile
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 6036cf8249c938d4a8e80dbcedb37ff267ad546a
-ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
+ms.openlocfilehash: 4072c97d768fa72d2a3c171b3f3faf1bb37436a7
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82198421"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723491"
 ---
 # <a name="azure-synapse-analytics-release-notes"></a>Azure Synapse Analytics 发行说明
 
@@ -26,9 +26,10 @@ ms.locfileid: "82198421"
 
 ## <a name="check-your-azure-synapse-version"></a>检查 Azure Synapse 版本
 
-虽然我们已向所有区域推出新功能，但请检查部署到实例的版本以及最新的发行说明，以了解功能可用性。 若要检查版本，请通过 SQL Server Management Studio (SSMS) 连接到 SQL 池，并运行 `SELECT @@VERSION;` 以返回当前版本。
+虽然我们已向所有区域推出新功能，但请检查部署到实例的版本以及最新的发行说明，以了解功能可用性。 若要检查版本，请通过 SQL Server Management Studio (SSMS) 连接到 SQL 池，并运行 `SELECT @@VERSION;` 以返回当前版本。 使用此版本来确认已应用于 SQL 池的发行版。 输出中的日期用于标识该版本应用于 SQL 池的月份。 这只适用于服务级别改进。 
 
-使用标识的版本确认已将哪个版本应用到 SQL 池。 输出中的日期用于标识该版本应用于 SQL 池的月份。
+对于工具改进，请确保安装了发行说明中指定的正确版本。 
+
 
 > [!NOTE]
 > 通过 SELECT @@VERSION 返回的产品名称会从“Azure SQL 数据仓库”改为“Azure Synapse Analytics”。 在做出更改之前，我们会提前发送通知。 对于在应用程序代码中根据 SELECT @@VERSION 的结果分析产品名称的客户来说，此更改是相关的。 若要避免由于产品品牌重塑而导致应用程序代码更改，请使用以下命令在 SERVERPROPERTY 中查询数据库产品名称和版本：若要返回版本号 XX.X.XXXXX.X（无产品名称），请使用以下命令：
@@ -41,13 +42,24 @@ ms.locfileid: "82198421"
 > SELECT SERVERPROPERTY('EngineEdition')
 > ```
 
+
+
 ## <a name="april-2020"></a>2020 年 4 月
 
 | 服务改进 | 详细信息 |
 | --- | --- |
 |**数据库兼容性级别（预览版）**| 在此版本中，用户现在可以设置数据库的兼容性级别，以获取 Synapse SQL 引擎的特定版本的 Transact-SQL 语言和查询处理行为。 有关详细信息，请参阅 [sys.database_scoped_configurations](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-database-scoped-configurations-transact-sql?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 和[更改数据库范围的配置](https://docs.microsoft.com/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。 |
-|**Sp_describe_undeclared_parameters**| 可让用户查看有关 Transact-SQL 批中未声明的参数的元数据。 有关详细信息，请参阅 [sp_describe_undeclared_parameters](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-describe-undeclared-parameters-transact-sql?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。|
-|**[Visual Studio 16.6 Preview 2](https://docs.microsoft.com/visualstudio/releases/2019/release-notes-preview) - SQL Server Data Tools (SSDT)** | 此版本包含下述针对 SSDT 的改进和修复： </br> </br> - 解决了以下问题：更改具体化视图 (MV) 引用的表会导致生成 MV 不支持的 Alter View 语句<br/><br/> - 实现了一项更改，以确保当数据库或项目中存在行级安全性对象时“架构比较”操作不会失败。 SSDT 目前不支持行级安全对象。  <br/><br/> - 增大了 SQL Server 对象资源管理器的超时阈值，以避免在列出数据库中的大量对象时发生超时<br/><br/> - 优化了 SQL Server 对象资源管理器检索数据库对象列表的方式，以便在填充对象资源管理器时降低不稳定性并提高性能 |
+|**Sp_describe_undeclared_parameters**| 可让用户查看有关 Transact-SQL 批中未声明的参数的元数据。 有关详细信息，请参阅 [sp_describe_undeclared_parameters](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-describe-undeclared-parameters-transact-sql?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。| <br/><br/><br/>
+
+| 工具改进                                         | 详细信息                                                      |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| **[Visual Studio 16.6 Preview 5](https://docs.microsoft.com/visualstudio/releases/2019/release-notes-preview#--visual-studio-2019-version-166-preview-5-) - SQL Server Data Tools (SSDT)** | 此版本包含以下针对 SSDT 的改进： </br> </br> - 数据发现和分类<br/> - COPY 语句 <br/> - 包含唯一约束的表<br/> - 包含有序聚集列存储索引的表<br/> <br/>此版本包含以下针对 SSDT 的修复： </br></br>  - 当你更改分布列的数据类型时，由 SSDT 生成的更新脚本会执行 CTAS 和 RENAME 操作，而不是删除表并重新创建。 </br> |
+
+## <a name="march-2020"></a>2020 年 3 月
+
+| 工具改进                                         | 详细信息                                                      |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| **[Visual Studio 16.6 Preview 2](https://docs.microsoft.com/visualstudio/releases/2019/release-notes-preview#whats-new-in-visual-studio-2019) - SQL Server Data Tools (SSDT)** | 此版本包含下述针对 SSDT 的改进和修复： </br> </br> - 解决了以下问题：更改具体化视图 (MV) 引用的表会导致生成 MV 不支持的 Alter View 语句<br/><br/> - 实现了一项更改，以确保当数据库或项目中存在行级安全性对象时“架构比较”操作不会失败。 SSDT 目前不支持行级安全对象。  <br/><br/> - 增大了 SQL Server 对象资源管理器的超时阈值，以避免在列出数据库中的大量对象时发生超时<br/><br/> - 优化了 SQL Server 对象资源管理器检索数据库对象列表的方式，以便在填充对象资源管理器时降低不稳定性并提高性能 |
 
 ## <a name="january-2020"></a>2020 年 1 月
 
@@ -143,7 +155,7 @@ ms.locfileid: "82198421"
 | --- | --- |
 |**虚拟网络服务终结点正式版**|此版本包括公开发布的虚拟网络 (VNet) 服务终结点，适用于所有 Azure 区域内的 Azure Synapse 中的 SQL Analytics。 使用 VNet 服务终结点，可从虚拟网络中的给定子网或子网集隔离与逻辑服务器的连接。 从 VNet 到 Azure Synapse 的流量将始终保留在 Azure 主干网络内。 这种直接路由将优先于通过虚拟设备或本地访问 Internet 流量的任何特定路由。 通过服务终结点访问虚拟网络无需额外付费。 [Azure Synapse](https://azure.cn/pricing/details/sql-data-warehouse/) 的当前定价模型按原样应用。<br/><br/>在此版本中，我们还允许使用 [Azure Blob 文件系统](../../storage/blobs/data-lake-storage-abfs-driver.md?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) (ABFS) 驱动程序通过 PolyBase 连接到 [Azure Data Lake Storage Gen2](../../storage/blobs/data-lake-storage-introduction.md?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) (ADLS)。 Azure Data Lake Storage Gen2 为 Azure 存储提供了分析数据的整个生命周期所需的所有特性。<br/><br/>使用 Polybase 时，也可将数据从以安全方式连接到 VNet 的 Azure 存储导入到 Azure Synapse 中的 SQL Analytics。 同样，也可通过 Polybase 将数据从 Azure Synapse 导出到以安全方式连接到 VNet 的 Azure 存储。<br/><br/>有关 Azure Synapse 中 VNet 服务终结点的详细信息，请参阅[博客文章](https://azure.microsoft.com/blog/general-availability-of-vnet-service-endpoints-for-azure-sql-data-warehouse/)或[文档](../../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。|
 |**自动性能监视（预览版）**|[查询存储](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)现已在 Azure Synapse 中的 SQL Analytics 中以预览版推出。 查询存储旨在帮助你进行查询性能故障诊断，可以通过跟踪查询、查询计划、运行时统计信息和查询历史记录来监视数据仓库的活动和性能。 查询存储是一组内部存储和动态管理视图 (DMV)，用于执行以下操作：<br/><br/>&bull; &nbsp; 确定和优化排名靠前的资源占用查询<br/>&bull; &nbsp; 识别并改进计划外的工作负荷<br/>&bull; &nbsp; 按统计信息、索引或系统大小（DWU 设置）方面的变化评估查询性能以及对计划的影响<br/>&bull; &nbsp; 查看所有已执行查询的完整查询文本<br/><br/>查询存储包含三个实际的存储：<br/>&bull; &nbsp; 一个计划存储，用于持久保存执行计划信息<br/>&bull; &nbsp; 一个运行时统计信息存储，用于持久保存执行统计信息<br/>&bull; &nbsp; 一个等待统计信息存储，用于持久保存等待统计信息<br/><br/>Azure Synapse 中的 SQL Analytics 自动管理这些存储，并提供过去七天存储的查询，不限数量且不额外收费。 启用查询存储很简单，只需运行 ALTER DATABASE T-SQL 语句即可： <br/>sql ----ALTER DATABASE [DatabaseName] SET QUERY_STORE = ON;-------若要详细了解查询存储，请参阅[使用查询存储监视性能](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store)一文和查询存储 DMV（例如 [sys.query_store_query](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-query-store-query-transact-sql?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)）。 这是宣告发布情况的[博客文章](https://azure.microsoft.com/blog/automatic-performance-monitoring-in-azure-sql-data-warehouse-with-query-store/)。|
-|**列存储后台合并**|默认情况下，Azure SQL 数据仓库使用称为[行组](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)的微分区以列格式存储数据。 有时候，由于构建索引或加载数据时的内存约束，行组可能会被压缩为小于最佳大小 100 万行。 行组还可能会由于删除而产生碎片。 小的或碎片化的行组会导致较高的内存消耗以及低效的查询执行。 使用此版本时，列存储后台维护任务会将较小的压缩行组进行合并以创建较大的行组，更好地利用内存并提高查询执行速度。
+|**列存储后台合并**|默认情况下，Azure SQL Data 使用称为[行组](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)的微分区以列格式存储数据。 有时候，由于构建索引或加载数据时的内存约束，行组可能会被压缩为小于最佳大小 100 万行。 行组还可能会由于删除而产生碎片。 小的或碎片化的行组会导致较高的内存消耗以及低效的查询执行。 使用此版本时，列存储后台维护任务会将较小的压缩行组进行合并以创建较大的行组，更好地利用内存并提高查询执行速度。
 | | |
 
 ## <a name="october-2018"></a>2018 年 10 月
@@ -156,7 +168,7 @@ ms.locfileid: "82198421"
 |**高级顾问**|其他数据仓库建议和指标使 Azure Synapse 中的 Synapse SQL 的高级优化变得更加简单。 Azure 顾问还提供其他高级性能建议供你参考，包括：<br/><br/>1.自适应缓存 - 在应进行缩放以优化缓存利用率时通知用户。<br/>2.表分配 - 确定何时复制表，以减少数据移动，提高工作负载性能。<br/>3.Tempdb - 了解何时缩放和配置资源类，以减少 tempdb 争用。<br/><br/>数据仓库指标与 [Azure Monitor](https://azure.microsoft.com/blog/enhanced-capabilities-to-monitor-manage-and-integrate-sql-data-warehouse-in-the-azure-portal/) 深度集成，包括增强的可自定义监视图表，以在概览边栏选项卡中实现近实时指标。 监视使用情况或验证和应用数据仓库建议时，无需离开数据仓库概览边栏选项卡即可访问 Azure Monitor 指标。 此外，推出了新的指标（例如 tempdb 和自适应缓存使用率）作为性能建议的补充。|
 |**使用集成顾问进行高级优化**|通过其他数据仓库建议和指标，以及重新设计的提供 Azure 顾问和 Azure Monitor 的集成体验的门户概览边栏选项卡，Azure Synapse 的高级优化变得更加简单了。|
 |**加速的数据库恢复 (ADR)**|Azure Synapse 加速的数据库恢复 (ADR) 现在为公共预览版。 ADR 是一项新的 SQL Server 引擎功能，通过完全从头开始重新设计当前的恢复过程，极大地提高了数据库可用性（尤其是在存在长时间运行事务的情况下）。 ADR 的主要优点是快速且一致的数据库恢复和即时事务回滚。|
-|**Azure Monitor 诊断日志**|Azure Synapse 现可通过直接与 Azure Monitor 诊断日志集成来增强对分析工作负载的见解。 这项新功能使开发者可分析长时段内的工作负载行为，并针对查询优化或容量管理作出明智决策。 我们现在通过 [Azure Monitor 诊断日志](../../azure-monitor/platform/data-platform.md?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#logs)引入了外部日志记录过程，这些日志提供了有关数据仓库工作负载的其他见解。 只需单击一下按钮，即可使用 [Log Analytics](../../azure-monitor/log-query/log-query-overview.md?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 为历史查询性能故障排除功能配置诊断日志。 Azure Monitor 诊断日志支持通过将日志保存到存储帐户以进行审核来自定义保留期，将日志流式传输到事件中心以获得近实时遥测见解，以及通过日志查询使用 Log Analytics 来分析日志。 诊断日志由数据仓库的遥测视图组成，等效于 Azure Synapse 中的 SQL Analytics 最常用的性能故障排除 DMV。 对于此初始版本，我们为以下系统动态管理视图启用了视图：<br/><br/>&bull; &nbsp; [sys.dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)<br/>&bull; &nbsp; [sys.dm_pdw_request_steps](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)<br/>&bull; &nbsp; [sys.dm_pdw_dms_workers](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-dms-workers-transact-sql?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)<br/>&bull; &nbsp; [sys.dm_pdw_waits](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)<br/>&bull; &nbsp; [sys.dm_pdw_sql_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-sql-requests-transact-sql?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)|
+|**Azure Monitor 资源日志**|Azure Synapse 现可通过直接与 Azure Monitor 资源日志集成，增强对分析工作负载的见解。 这项新功能使开发者可分析长时段内的工作负载行为，并针对查询优化或容量管理作出明智决策。 我们现在通过 [Azure Monitor 资源日志](../../azure-monitor/platform/data-platform.md?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#logs)引入了外部日志记录过程，这些日志提供了有关数据仓库工作负载的其他见解。 现在，只需单击一下按钮，即可使用 [Log Analytics](../../azure-monitor/log-query/log-query-overview.md?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 为历史查询性能故障排除功能配置资源日志。 Azure Monitor 资源日志支持通过将日志保存到存储帐户以进行审核来自定义保留期，将日志流式传输到事件中心以获得近实时遥测见解，以及通过日志查询使用 Log Analytics 来分析日志。 诊断日志由数据仓库的遥测视图组成，等效于 Azure Synapse 中的 SQL Analytics 最常用的性能故障排除 DMV。 对于此初始版本，我们为以下系统动态管理视图启用了视图：<br/><br/>&bull; &nbsp; [sys.dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)<br/>&bull; &nbsp; [sys.dm_pdw_request_steps](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)<br/>&bull; &nbsp; [sys.dm_pdw_dms_workers](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-dms-workers-transact-sql?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)<br/>&bull; &nbsp; [sys.dm_pdw_waits](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)<br/>&bull; &nbsp; [sys.dm_pdw_sql_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-sql-requests-transact-sql?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)|
 |**列存储内存管理**|随着压缩列存储行组数量的增加，管理这些行组的内部列段元数据所需的内存也会增加。  因此，针对某些列存储动态管理视图 (DMV) 执行的查询和查询性能可能会降级。  此版本中的改进旨在优化这些情况下的内部元数据大小，从而改善此类查询的体验并提高此类查询的性能。|
 |**Azure Data Lake Storage Gen2 集成 (GA)**|Synapse Analytics 现在与 Azure Data Lake Storage Gen2 本机集成。 客户现在可以使用外部表将数据从 ABFS 加载到 Synapse SQL 池。 此功能使客户能够与 Data Lake Storage Gen2 中的 data lake 集成。|
 |**值得注意的 Bug**|在 DW2000 等数据仓库上的小资源类中执行到 Parquet 的 CETAS 时发生失败 - 此项修复可正确识别 Create External Table As to Parquet 代码路径中的 null 引用。<br/><br/>在某些 CTAS 操作中可能会丢失标识列值 - CTAS 到另一个表后，可能不会保留标识列的值。 已在[博客](https://blog.westmonroepartners.com/azure-sql-dw-identity-column-bugs/)中报告。<br/><br/>在某些情况下，当查询仍在运行时终止会话会发生内部失败 - 如果在查询仍在运行时终止会话，此项修复会触发 InvalidOperationException。<br/><br/>（部署于 2018 年 11 月）尝试使用 Polybase 从 ADLS (Gen1) 加载多个小文件时，客户体验的性能不佳。 在 AAD 安全令牌验证期间，系统性能出现瓶颈。 通过启用安全令牌的缓存来缓解性能问题。 |

@@ -6,15 +6,15 @@ author: rockboyfor
 ms.service: virtual-wan
 ms.topic: include
 origin.date: 10/07/2019
-ms.date: 03/30/2020
+ms.date: 06/15/2020
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: 193790fd9530c68c8415fa8038d3876ba1b07dee
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: afc076f413a64d5469142e1a7a98b3a378990a2e
+ms.sourcegitcommit: 8dae792aefbe44e8388f961b813e3da6564423ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80291280"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84654875"
 ---
 使用自定义 IPsec 策略时，请记住以下要求：
 
@@ -29,12 +29,12 @@ ms.locfileid: "80291280"
 
 | 设置 | parameters |
 |--- |--- |
-| IKE 加密 | AES256、AES192、AES128 |
-| IKE 完整性 | SHA384、SHA256、SHA1 |
-| DH 组 | DHGroup24、ECP384、ECP256、DHGroup14、DHGroup2048、DHGroup2 |
-| IPsec 加密 | GCMAES256、GCMAES192、GCMAES128、AES256、AES192、AES128 |
-| IPsec 完整性 | GCMASE256、GCMAES192、GCMAES128、SHA256、SHA1 |
-| PFS 组 | PFS24、ECP384、ECP256、PFS2048、PFS2 |
+| IKE 加密 | GCMAES256、GCMAES128、AES256、AES128 |
+| IKE 完整性 | SHA384、SHA256 |
+| DH 组 | ECP384、ECP256、DHGroup24、DHGroup14 |
+| IPsec 加密 | GCMAES256、GCMAES128、AES256、AES128、None |
+| IPsec 完整性 | GCMAES256、GCMAES128、SHA256 |
+| PFS 组 | ECP384、ECP256、PFS24、PFS14、None |
 
 <!-- Update_Description: new article about virtual wan ipsec custom include -->
 <!--NEW.date: 03/02/2020-->

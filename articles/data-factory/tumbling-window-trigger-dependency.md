@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 origin.date: 07/29/2019
-ms.date: 05/11/2020
-ms.openlocfilehash: 4b731c0176f36940fdd51812d39b7e8c405da1d8
-ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
+ms.date: 06/15/2020
+ms.openlocfilehash: 204d78150249a0f767862d19fa01e448d7c6eed8
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82198197"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723687"
 ---
 # <a name="create-a-tumbling-window-trigger-dependency"></a>创建翻转窗口触发器依赖项
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -28,7 +28,7 @@ ms.locfileid: "82198197"
 
 ## <a name="create-a-dependency-in-the-data-factory-ui"></a>在数据工厂 UI 中创建依赖项
 
-若要在触发器上创建依赖项，请选择“触发器”>“高级”>“新建”，然后选择要依赖的、具有相应偏移量和大小的触发器。  选择“完成”并发布数据工厂更改，使依赖项生效。 
+若要在触发器上创建依赖项，请选择“触发器”>“高级”>“新建”，然后选择要依赖的、具有相应偏移量和大小的触发器。**** 选择“完成”并发布数据工厂更改，使依赖项生效。****
 
 ![依赖项创建](media/tumbling-window-trigger-dependency/tumbling-window-dependency01.png "依赖项创建")
 
@@ -83,11 +83,14 @@ ms.locfileid: "82198197"
 | 大小 | 依赖项翻转窗口的大小。 提供正的 timespan 值。 此属性是可选的。 | Timespan<br/>(hh:mm:ss) | 否  |
 
 > [!NOTE]
-> 翻转窗口触发器最多可以依赖于两个其他触发器。
+> 翻转窗口触发器最多可以依赖其他五个触发器。
 
 ## <a name="tumbling-window-self-dependency-properties"></a>翻转窗口自我依赖项属性
 
-对于在上一个窗口成功完成之前触发器不应转到下一个窗口的情况，请生成自我依赖项。 依赖于前一小时内自身运行是否成功的自我依赖项触发器将具有以下属性：
+对于在上一个窗口成功完成之前触发器不应转到下一个窗口的情况，请生成自我依赖项。 依赖于前一小时内自身运行是否成功的自我依赖项触发器将具有以下代码中所示的属性。
+
+> [!NOTE]
+> 如果触发的管道依赖于先前触发的窗口中管道的输出，则建议仅使用翻转窗口触发器自我依赖项。 若要限制并行触发器运行，请设置最大触发器并发。
 
 ```json
 {
@@ -151,7 +154,7 @@ ms.locfileid: "82198197"
 
 ## <a name="monitor-dependencies"></a>监视依赖项
 
-可以从“触发器运行监视”页面监视依赖链和相应的窗口。 导航到“监视”>“触发器运行”。  在“操作”列下，可以重新运行触发器或查看其依赖项。
+可以从“触发器运行监视”页面监视依赖链和相应的窗口。 导航到“监视”>“触发器运行”。**** 在“操作”列下，可以重新运行触发器或查看其依赖项。
 
 ![监视触发器运行](media/tumbling-window-trigger-dependency/tumbling-window-dependency07.png "监视触发器运行")
 

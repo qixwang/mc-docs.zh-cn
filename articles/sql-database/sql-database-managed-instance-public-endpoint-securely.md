@@ -1,5 +1,5 @@
 ---
-title: 保护托管实例公共终结点 - Azure SQL 数据库托管实例 | Microsoft Docs
+title: 保护托管实例公共终结点
 description: 在 Azure 中安全使用包含托管实例的公共终结点
 services: sql-database
 ms.service: sql-database
@@ -9,15 +9,14 @@ ms.topic: conceptual
 author: WenJason
 ms.author: v-jay
 ms.reviewer: vanto, carlrab
-manager: digimobile
 origin.date: 05/08/2019
-ms.date: 05/20/2019
-ms.openlocfilehash: 8f0e4819c93a36d7acbc382651acdb5d94c5bc67
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 06/15/2020
+ms.openlocfilehash: eea1813d8e2fb06f19dabe17dbc5cbdff2bb11ec
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "67277015"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723703"
 ---
 # <a name="use-an-azure-sql-database-managed-instance-securely-with-public-endpoints"></a>在公共终结点中安全使用 Azure SQL 数据库托管实例
 
@@ -37,7 +36,7 @@ SQL 数据库托管实例提供专用终结点用于从其虚拟网络内部启�
 
 ## <a name="secure-data-in-motion"></a>保护动态数据
 
-如果客户端驱动程序支持加密，则始终加密托管实例数据流量。 在托管实例与其他 Azure 虚拟机或 Azure 服务之间发送的数据永远不会离开 Azure 主干网络。 如果托管实例与本地网络之间已建立连接，则我们建议配合使用 Azure ExpressRoute 和 Azure 对等互连。 ExpressRoute 有助于避免通过公共 Internet 移动数据。 对于托管实例专用连接，只能使用专用对等互连。
+如果客户端驱动程序支持加密，则始终加密托管实例数据流量。 在托管实例与其他 Azure 虚拟机或 Azure 服务之间发送的数据永远不会离开 Azure 主干网络。 如果托管实例与本地网络之间已建立连接，则我们建议使用 Azure ExpressRoute。 ExpressRoute 有助于避免通过公共 Internet 移动数据。 对于托管实例专用连接，只能使用专用对等互连。
 
 ## <a name="lock-down-inbound-and-outbound-connectivity"></a>锁定入站和出站连接
 

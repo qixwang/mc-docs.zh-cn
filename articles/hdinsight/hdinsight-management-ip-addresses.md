@@ -7,13 +7,13 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 origin.date: 03/03/2020
-ms.date: 04/06/2020
-ms.openlocfilehash: 585f93e0c5c866879df1f25b91e54a7c30427cf4
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 06/22/2020
+ms.openlocfilehash: d9a30db9f9b26c7cc5031129ffb182ee4bb0512c
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80343567"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723608"
 ---
 # <a name="hdinsight-management-ip-addresses"></a>HDInsight 管理 IP 地址
 
@@ -82,9 +82,9 @@ ms.locfileid: "80343567"
 
 若要获取用于 Azure 政府版的 IP 地址的信息，请参阅 [Azure 政府智能 + 分析](https://docs.microsoft.com/azure/azure-government/documentation-government-services-intelligenceandanalytics)文档。
 
-有关详细信息，请参阅[控制网络流量](hdinsight-plan-virtual-network-deployment.md#networktraffic)部分。
+有关详细信息，请参阅[控制网络流量](./control-network-traffic.md)。
 
-如果使用用户定义的路由 (UDR)，则应当指定一个路由并允许来自 VNET 的出站流量到达下一跃点设置为“Internet”的上述 IP。
+如果使用用户定义的路由 (UDR)，则应当指定一个路由并允许来自虚拟网络的出站流量到达下一跃点设置为“Internet”的上述 IP。
 
 ## <a name="next-steps"></a>后续步骤
 

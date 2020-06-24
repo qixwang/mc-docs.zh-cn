@@ -6,21 +6,23 @@ author: rockboyfor
 ms.service: virtual-wan
 ms.topic: include
 origin.date: 03/19/2020
-ms.date: 05/18/2020
+ms.date: 06/15/2020
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: 579cae197d0539c73d04ca776b9147eb24da1294
-ms.sourcegitcommit: 8d56bc6baeb42d675695ecef1909d76f5c4a6ae3
+ms.openlocfilehash: 5dbcf1995410d739403fe895acf79f2467d4259e
+ms.sourcegitcommit: 8dae792aefbe44e8388f961b813e3da6564423ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83406204"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84655109"
 ---
 <!--Not Available on ### Azure regions within a geopolitical region-->
 
 ### <a name="azure-regions-and-geopolitical-boundaries-for-national-clouds"></a>国家云的 Azure 区域和地缘政治边界
 
-基于站点到站点的 VPN 连接和虚拟 WAN 体系结构可用于以下区域：
+虚拟 WAN 适用于以下区域：
+
+<!--Virtual WAN can be created both 4 regions of China -->
 
 |地缘政治区域 | Azure 区域|
 |---|---|

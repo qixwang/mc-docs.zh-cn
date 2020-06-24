@@ -11,22 +11,22 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 03/12/2020
-ms.date: 04/13/2020
+ms.date: 06/15/2020
 ms.author: v-yeche
 ms.reviewer: kumud
-ms.openlocfilehash: 6feef1beb910df2e8f22161ad308522015d88dac
-ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
+ms.openlocfilehash: bd936b46f88cd09410c68d46a1da52550c30c252
+ms.sourcegitcommit: ff67734e01c004be575782b4812cfe857e435f4d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82093519"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84487078"
 ---
 # <a name="virtual-network-service-tags"></a>虚拟网络服务标记
 <a name="network-service-tags"></a>
 
 服务标记代表给定 Azure 服务中的一组 IP 地址前缀。 Azure 会管理服务标记包含的地址前缀，并会在地址发生更改时自动更新服务标记，最大限度地降低频繁更新网络安全规则的复杂性。
 
-可以在[网络安全组](/virtual-network/security-overview#security-rules) 或  [Azure 防火墙](/firewall/service-tags)中使用服务标记来定义网络访问控制。 创建安全规则时，请使用服务标记代替特定 IP 地址。 在规则的相应源或目标字段中指定服务标记名称（例如 **ApiManagement**），即可允许或拒绝相应服务的流量。    **  
+可以在[网络安全组](/virtual-network/security-overview#security-rules) 或  [Azure 防火墙](/firewall/service-tags)中使用服务标记来定义网络访问控制。 创建安全规则时，请使用服务标记代替特定 IP 地址。 在规则的相应源或目标字段中指定服务标记名称（例如 **ApiManagement**），即可允许或拒绝相应服务的流量。**  **  
 
 可以使用服务标记来实现网络隔离，防止用户在访问具有公共终结点的 Azure 服务时通过常规 Internet 访问你的 Azure 资源。 创建入站/出站网络安全组规则，以拒绝进出 **Internet** 的流量，并允许进出 **AzureChinaCloud** 或特定 Azure 服务的其他[可用服务标记](#available-service-tags)的流量。
 
@@ -39,12 +39,13 @@ ms.locfileid: "82093519"
 - 支持[区域](https://status.azure.com/status/)范围。
 - 可在 [Azure 防火墙](/firewall/service-tags)规则中使用。
 
-默认情况下，服务标记反映整个云的范围。 某些服务标记还可以通过将相应 IP 范围限制为指定的区域，来实现更精细的控制。 例如，服务标记 Storage 代表整个云的 Azure 存储，而 Storage.ChinaNorth 将范围局限于 ChinaNorth 区域中的存储 IP 地址范围   。 下表指示每个服务标记是否支持此区域范围。  
+默认情况下，服务标记反映整个云的范围。 某些服务标记还可以通过将相应 IP 范围限制为指定的区域，来实现更精细的控制。 例如，服务标记 Storage 代表整个云的 Azure 存储，而 Storage.ChinaNorth 将范围局限于 ChinaNorth 区域中的存储 IP 地址范围**** ****。 下表指示每个服务标记是否支持此区域范围。  
 
 | 标记 | 目的 | 可以使用入站还是出站连接？ | 可以支持区域范围？ | 是否可在 Azure 防火墙中使用？ |
 | --- | -------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | **ActionGroup** | 操作组。 | 入站 | 否 | 否 |
 | **ApiManagement** | Azure API 管理的管理流量 - 专用部署。 <br/><br/>*注意：* 此标记表示每个区域的控制平面的 Azure API 管理服务终结点。 这使得客户可以对在 API 管理服务中配置的 API、操作、策略和 NamedValues 执行管理操作。  | 入站 | 是 | 是 |
+| **ApplicationInsightsAvailability** | Application Insights 可用性。 | 入站 | 否 | 否 |
 | **AppConfiguration** | 应用配置。 | 出站 | 否 | 否 |
 | **AppService** | Azure 应用服务。 建议将此标记用于 Web 应用前端的出站安全规则。 | 出站 | 是 | 是 |
 | **AppServiceManagement** | 应用服务环境专用部署的管理流量。 | 推送、请求和匿名 | 否 | 是 |
@@ -64,7 +65,7 @@ ms.locfileid: "82093519"
 | **AzureKeyVault** | Azure Key Vault。<br/><br/>*注意：* 此标记依赖于 **AzureActiveDirectory** 标记。 | 出站 | 是 | 是 |
 | **AzureLoadBalancer** | Azure 基础结构负载均衡器。 此标记将转换为[主机的虚拟 IP 地址](security-overview.md#azure-platform-considerations) (168.63.129.16)，Azure 的运行状况探测源于该 IP。 这不包括到 Azure 负载均衡器资源的流量。 如果不使用 Azure 负载均衡器，则可替代此规则。 | 推送、请求和匿名 | 否 | 否 |
 | **AzureMachineLearning** | Azure 机器学习。 | 推送、请求和匿名 | 否 | 是 |
-| **AzureMonitor** | Log Analytics、Application Insights、AzMon 和自定义指标（GiG 终结点）。<br/><br/>*注意：* 对于 Log Analytics，此标记依赖于 Storage 标记  。 | 出站 | 否 | 是 |
+| **AzureMonitor** | Log Analytics、Application Insights、AzMon 和自定义指标（GiG 终结点）。<br/><br/>*注意：* 对于 Log Analytics，此标记依赖于 Storage 标记****。 | 出站 | 否 | 是 |
 | **AzurePlatformDNS** | 基本基础结构（默认）DNS 服务。<br/><br />可以使用此标记来禁用默认 DNS。 使用此标记时要格外小心。 建议你阅读 [Azure 平台注意事项](/virtual-network/security-overview#azure-platform-considerations)。 我们还建议你在使用此标记之前执行测试。 | 出站 | 否 | 否 |
 | **AzurePlatformIMDS** | Azure 实例元数据服务 (IMDS)，它是一个基本基础结构服务。<br/><br/>可以使用此标记来禁用默认 IMDS。 使用此标记时要格外小心。 建议你阅读 [Azure 平台注意事项](/virtual-network/security-overview#azure-platform-considerations)。 我们还建议你在使用此标记之前执行测试。 | 出站 | 否 | 否 |
 | **AzurePlatformLKM** | Windows 授权或密钥管理服务。<br/><br/>可以使用此标记来禁用授权默认值。 使用此标记时要格外小心。 建议你阅读 [Azure 平台注意事项](/virtual-network/security-overview#azure-platform-considerations)。  我们还建议你在使用此标记之前执行测试。 | 出站 | 否 | 否 |
@@ -73,7 +74,7 @@ ms.locfileid: "82093519"
 | **AzureSiteRecovery** | Azure Site Recovery。<br/><br/>*注意：* 此标记依赖于 **AzureActiveDirectory**、**AzureKeyVault**、**EventHub**、**GuestAndHybridManagement** 和 **Storage** 标记。 | 出站 | 否 | 否 |
 | **AzureTrafficManager** | Azure 流量管理器探测 IP 地址。<br/><br/>有关流量管理器探测 IP 地址的详细信息，请参阅 [Azure 流量管理器常见问题解答](/traffic-manager/traffic-manager-faqs)。 | 入站 | 否 | 是 |  
 | **BatchNodeManagement** | Azure Batch 专用部署的管理流量。 | 推送、请求和匿名 | 否 | 是 |
-| **CognitiveServicesManagement** | Azure 认知服务的流量的地址范围。 | 出站 | 否 | 否 |
+| **CognitiveServicesManagement** | Azure 认知服务的流量的地址范围。 | 推送、请求和匿名 | 否 | 否 |
 | **DataFactory** | Azure 数据工厂 | 推送、请求和匿名 | 否 | 否 |
 | **DataFactoryManagement** | Azure 数据工厂的管理流量。 | 出站 | 否 | 否 |
 | **Dynamics365ForMarketingEmail** | Dynamics 365 的营销电子邮件服务的地址范围。 | 出站 | 是 | 否 |
@@ -83,6 +84,8 @@ ms.locfileid: "82093519"
 | **HDInsight** | Azure HDInsight。 | 入站 | 是 | 否 |
 | **Internet** | 虚拟网络外部的 IP 地址空间，可以通过公共 Internet 进行访问。<br/><br/>此地址范围包括 [Azure 拥有的公共 IP 地址空间](https://www.microsoft.com/download/confirmation.aspx?id=57062)。 | 推送、请求和匿名 | 否 | 否 |
 | **LogicApps** | 逻辑应用。 | 推送、请求和匿名 | 否 | 否 |
+| **LogicAppsManagement** | 逻辑应用的管理流量。 | 入站 | 否 | 否 |
+| **MicrosoftCloudAppSecurity** | Azure Cloud App Security。 | 出站 | 否 | 否 |
 | **MicrosoftContainerRegistry** | Azure 容器映像的容器注册表。 <br/><br/>*注意：* 此标记依赖于 **AzureFrontDoor.FirstParty** 标记。 | 出站 | 是 | 是 |
 | **服务总线** | 使用高级服务层级的 Azure 服务总线流量。 | 出站 | 是 | 是 |
 | **ServiceFabric** | Azure Service Fabric。<br/><br/>*注意：* 此标记表示每个区域的控制平面的 Service Fabric 服务终结点。 这使得客户能够从其 VNET（例如终结点： https:// chinanorth.servicefabric.azure.com）对其 Service Fabric 群集执行管理操作。 | 推送、请求和匿名 | 否 | 否 |
@@ -92,7 +95,7 @@ ms.locfileid: "82093519"
 | **VirtualNetwork** | 虚拟网络地址空间（为虚拟网络定义的所有 IP 地址范围）、所有连接的本地地址空间、[对等互连](virtual-network-peering-overview.md)的虚拟网络、已连接到[虚拟网络网关](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fvirtual-network%3ftoc.json)的虚拟网络、[主机的虚拟 IP 地址](security-overview.md#azure-platform-considerations)以及在[用户定义的路由](virtual-networks-udr-overview.md)上使用的地址前缀。 此标记还可能包含默认路由。 | 推送、请求和匿名 | 否 | 否 |
 
 <!--Not Available on Line 42 for ApplicationInsightsAvailability -->
-<!--MOONCAKE: CORRECT ON Line 48 AzureCloud-->
+<!--MOONCAKE: CORRECT ON Line 50 AzureCloud-->
 <!--Not Available on Line 45+1 for AzureAdvancedThreatProtection -->
 <!--Not Available on Line 46+1 for AzureDataLake -->
 
@@ -107,7 +110,7 @@ ms.locfileid: "82093519"
 > | VIRTUAL_NETWORK | VirtualNetwork |
 
 > [!NOTE]
-> Azure 服务的服务标记表示来自所使用的特定云的地址前缀。 例如，与 Azure 公有云上的 Sql 标记值对应的基础 IP 范围将不同于 Azure 中国云上的基础范围  。
+> Azure 服务的服务标记表示来自所使用的特定云的地址前缀。 例如，与 Azure 公有云上的 Sql 标记值对应的基础 IP 范围将不同于 Azure 中国云上的基础范围****。
 
 > [!NOTE]
 > 如果为某个服务（例如 Azure 存储或 Azure SQL 数据库）实现了[虚拟网络服务终结点](virtual-network-service-endpoints-overview.md)，Azure 会将[路由](virtual-networks-udr-overview.md#optional-default-routes)添加到该服务的虚拟网络子网。 路由中的地址前缀与相应服务标记的地址前缀或 CIDR 范围相同。
@@ -143,7 +146,7 @@ ms.locfileid: "82093519"
 <!--MOONCAKE: CUSTOMIZED ON THE URL 41653, 42064, 54770-->
 
 ### <a name="tips"></a>提示 
-- 可以通过增大 JSON 文件中的 changeNumber  值，检测各个发布的更新。 每个子节（例如 Storage.ChinaNorth  ）都包含自身的 changeNumber，发生更改后，该编号会递增  。 当任意子节发生更改时，文件的顶级 changeNumber 将会递增  。
+- 可以通过增大 JSON 文件中的 changeNumber** 值，检测各个发布的更新。 每个子节（例如 Storage.ChinaNorth****）都包含自身的 changeNumber，发生更改后，该编号会递增**。 当任意子节发生更改时，文件的顶级 changeNumber 将会递增**。
 - 有关如何分析服务标记信息的示例（例如，获取 ChinaNorth 中的存储的所有地址范围），请参阅[服务标记发现 API PowerShell](https://aka.ms/discoveryapi_powershell) 文档。
 
 ## <a name="next-steps"></a>后续步骤

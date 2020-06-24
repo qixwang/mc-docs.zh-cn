@@ -10,14 +10,14 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 03/20/2017
-ms.openlocfilehash: daabe8c432bd8b42f5e72aa7f8d832897ab73b40
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: c93c095f4a99777fbd70c90d73d71a0d793b4384
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80343364"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723050"
 ---
-# <a name="manage-experiment-iterations-in-azure-machine-learning-studio-classic"></a>在 Azure 机器学习工作室（经典）中管理试验迭代
+# <a name="manage-experiment-runs-in-azure-machine-learning-studio-classic"></a>在 Azure 机器学习工作室（经典）中管理试验运行
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
@@ -32,15 +32,15 @@ ms.locfileid: "80343364"
 > 
 > 
 
-## <a name="viewing-the-prior-run"></a>查看前一次运行
+## <a name="view-the-prior-run"></a>查看前一次运行
 如果有一个你至少运行过一次的试验处于打开状态，可以通过单击属性窗格中的“**前一次运行**”来查看之前运行的试验。
 
 例如，假设创建了一个试验，并在 11:23、11:42 和 11:55 分别运行了该试验版本。 如果打开了最后一次运行的试验 (11:55)，则可以单击“**前一次运行**”打开在 11:42 运行的版本。
 
-## <a name="viewing-the-run-history"></a>查看运行历史记录
+## <a name="view-the-run-history"></a>查看运行历史记录
 可以通过单击已打开试验中的“**查看运行历史记录**”来查看该试验的所有以前的版本。
 
-例如，假设使用[线性回归][linear-regression]模块创建了一个试验，并且要观察在更改了试验结果的“学习率”值后的效果  。 可以为此参数使用不同的值多次运行此试验，如下所示：
+例如，假设使用[线性回归][linear-regression]模块创建了一个试验，并且要观察在更改了试验结果的“学习率”值后的效果****。 可以为此参数使用不同的值多次运行此试验，如下所示：
 
 | 学习速率值 | 运行开始时间 |
 | --- | --- |
@@ -60,12 +60,12 @@ ms.locfileid: "80343364"
 > 
 > 
 
-在机器学习工作室（经典）中，位于“试验”选项卡中的实验列表将始终显示实验的最新版本  。 如果打开了前一次运行的试验（使用“**前一次运行**”或“**查看运行历史记录**”），可以通过单击“**查看运行历史记录**”并选择“**状态**”为“**可编辑**”的迭代返回草稿版本。
+在机器学习工作室（经典）中，位于“试验”选项卡中的实验列表将始终显示实验的最新版本****。 如果打开了前一次运行的试验（使用“**前一次运行**”或“**查看运行历史记录**”），可以通过单击“**查看运行历史记录**”并选择“**状态**”为“**可编辑**”的迭代返回草稿版本。
 
-## <a name="iterating-on-a-previous-run"></a>前一次运行的迭代
+## <a name="run-a-previous-experiment"></a>运行前一次试验
 在单击“**前一次运行**”或“**查看运行历史记录**”打开前一次运行后，可以在只读模式下查看已完成的试验。
 
-如果想要从为前一次运行配置迭代的方式开始试验的迭代，可以通过打开运行并单击“**另存为**”来进行。 这会创建一个新的试验，包含新的标题、空的运行历史记录以及前一次运行的所有组件和参数值。 此新试验将列在机器学习工作室（经典）主页的“试验”选项卡中，可以修改和运行它，为此试验迭代启动一个新的运行历史记录  。 
+如果想要从为前一次运行配置迭代的方式开始试验的迭代，可以通过打开运行并单击“**另存为**”来进行。 这会创建一个新的试验，包含新的标题、空的运行历史记录以及前一次运行的所有组件和参数值。 此新试验将列在机器学习工作室（经典）主页的“试验”选项卡中，可以修改和运行它，为此试验迭代启动一个新的运行历史记录****。 
 
 例如，假设有上一部分中所示的试验运行历史记录。 想要观察在将”**学习率**“设置为 0.4 以及为”**培训时期数**”参数尝试不同的值时会发生的情况。
 

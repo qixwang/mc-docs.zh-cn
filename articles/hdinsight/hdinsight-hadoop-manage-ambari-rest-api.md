@@ -10,12 +10,12 @@ ms.topic: conceptual
 origin.date: 06/07/2019
 ms.date: 11/11/2019
 ms.author: v-yiso
-ms.openlocfilehash: c51cb99e90ceecdfeeb8a80d885bb200c934311e
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: f9c1521214bb613c9959c2dcc52436f7fc10b728
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292072"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723231"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-rest-api"></a>使用 Apache Ambari REST API 管理 HDInsight 群集
 
@@ -33,9 +33,9 @@ ms.locfileid: "79292072"
 
 * 命令行 JSON 处理程序 **jq**。  请参阅 [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/)。
 
-* **Windows PowerShell**。  或者，可以使用 [Bash](https://www.gnu.org/software/bash/)。
+* Windows PowerShell。  或者可以使用 Bash。
 
-## <a name="base-uri-for-ambari-rest-api"></a>用于 Ambari Rest API 的基 URI
+## <a name="base-uniform-resource-identifier-for-ambari-rest-api"></a>Ambari Rest API 的基本统一资源标识符
 
  HDInsight 上 Ambari REST API 的基本统一资源标识符 (URI) 为 `https://CLUSTERNAME.azurehdinsight.cn/api/v1/clusters/CLUSTERNAME`，其中 `CLUSTERNAME` 是群集的名称。  URI 中的群集名称**区分大小写**。  虽然 URI (`CLUSTERNAME.azurehdinsight.cn`) 的完全限定域名 (FQDN) 部分中的群集名称不区分大小写，但 URI 中的其他部分是区分大小写的。
 
@@ -62,7 +62,8 @@ $creds = Get-Credential -UserName "admin" -Message "Enter the HDInsight login"
 ```
 
 ### <a name="identify-correctly-cased-cluster-name"></a>识别大小写正确的群集名称
-群集名称的实际大小写可能不符合预期，具体取决于群集的创建方式。  此处的步骤将显示实际大小写，然后将其存储在某个变量中，以便在后续示例中使用。
+
+群集名称的实际大小写可能不符合预期。  此处的步骤将显示实际大小写，然后将其存储在某个变量中，以便在后续示例中使用。
 
 编辑以下脚本，将 `CLUSTERNAME` 替换为群集名称。 然后输入该命令。 （FQDN 的群集名称不区分大小写。）
 
@@ -99,7 +100,7 @@ $respObj.Clusters.health_report
 
 ### <a name="get-the-fqdn-of-cluster-nodes"></a><a name="example-get-the-fqdn-of-cluster-nodes"></a>获取群集节点的 FQDN
 
-使用 HDInsight 时，可能需要知道群集节点的完全限定域名 (FQDN)。 可使用以下示例轻松检索群集中各个节点的 FQDN：
+可能需要知道群集节点的完全限定域名 (FQDN)。 可使用以下示例轻松检索群集中各个节点的 FQDN：
 
 **所有节点**  
 
@@ -163,7 +164,7 @@ $respObj.host_components.HostRoles.host_name
 
 有关使用 HDInsight 和虚拟网络的详细信息，请参阅[为 HDInsight 规划虚拟网络](hdinsight-plan-virtual-network-deployment.md)。
 
-要查找 IP 地址，必须知道群集节点的内部完全限定的域名 (FQDN)。 拥有 FQDN 后即可获取主机的 IP 地址。 下面的示例首先会向 Ambari 查询所有主机节点的 FQDN，再向 Ambari 查询每个主机的 IP 地址。
+要查找 IP 地址，必须知道群集节点的内部完全限定的域名 (FQDN)。 拥有 FQDN 后即可获取主机的 IP 地址。 下面的示例首先从 Ambari 查询所有主机节点的 FQDN。 然后从 Ambari 查询每个主机的 IP 地址。
 
 ```bash
 for HOSTNAME in $(curl -u admin:$password -sS -G "https://$clusterName.azurehdinsight.cn/api/v1/clusters/$clusterName/hosts" | jq -r '.items[].Hosts.host_name')
@@ -189,7 +190,7 @@ foreach($item in $respObj.items) {
 
 ### <a name="get-the-default-storage"></a>获取默认存储
 
-创建 HDInsight 群集时，必须使用 Azure 存储帐户或 Data Lake Storage 作为群集的默认存储。 创建群集后，可以使用 Ambari 来检索此信息。 例如，如果要从 HDInsight 外部的容器读取数据或向其写入数据。
+HDInsight 群集必须使用 Azure 存储帐户或 Data Lake Storage 作为群集的默认存储。 创建群集后，可以使用 Ambari 来检索此信息。 例如，如果要从 HDInsight 外部的容器读取数据或向其写入数据。
 
 以下示例从群集检索默认存储配置：
 
@@ -266,8 +267,8 @@ $respObj = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.cn/api/v1
 $respObj.Content
 ```
 
-此示例将返回一个 JSON 文档，其中包含群集上安装的组件的当前配置（由 *tag* 值标识）。 下面的示例是从 Spark 群集类型返回的数据摘录。
-   
+此示例返回的 JSON 文档包含已安装组件的当前配置。 请参阅标记值**。 下面的示例是从 Spark 群集类型返回的数据摘录。
+
 ```json
 "jupyter-site" : {
   "tag" : "INITIAL",
@@ -304,7 +305,7 @@ $resp.Content
 1. 创建 `newconfig.json`。  
    进行修改，然后输入以下命令：
 
-   * 请将 `livy2-conf` 替换为所需的组件。
+   * 将 `livy2-conf` 替换为新组件。
    * 请将 `INITIAL` 替换为在[获取所有配置](#get-all-configurations)中检索到的 `tag` 实际值。
 
      **A.Bash**  
@@ -330,7 +331,7 @@ $resp.Content
 
    * 创建一个包含字符串“version”和日期并存储在 `newtag`中的唯一值。
 
-   * 为新的所需配置创建根文档。
+   * 为新配置创建根文档。
 
    * 获取 `.items[]` 数组的内容，并将其添加在 **desired_config** 元素下。
 
@@ -382,11 +383,11 @@ $resp.Content
     $resp.Content
     ```  
 
-    这些命令会将 **newconfig.json** 文件的内容提交到群集作为所需的新配置。 该请求会返回一个 JSON 文档。 此文档中的 **versionTag** 元素应该与提交的版本相匹配，并且 **configs** 对象包含你请求的配置更改。
+    这些命令会将 newconfig.json 文件的内容提交到群集作为新配置****。 该请求会返回一个 JSON 文档。 此文档中的 **versionTag** 元素应该与提交的版本相匹配，并且 **configs** 对象包含你请求的配置更改。
 
 ### <a name="restart-a-service-component"></a>重启服务组件
 
-此时，如果查看 Ambari Web UI，会发现 Spark 服务指出需要将它重新启动才能使新配置生效。 使用以下步骤重新启动该服务。
+此时，Ambari Web UI 指示需要重启 Spark 服务才能使新配置生效。 使用以下步骤重新启动该服务。
 
 1. 使用以下命令启用 Spark2 服务的维护模式：
 
@@ -511,5 +512,4 @@ $resp.Content
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 REST API 的完整参考，请参阅 [Apache Ambari API 参考 V1](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)。
-
+有关 REST API 的完整参考，请参阅 [Apache Ambari API 参考 V1](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)。  另请参阅[授权用户访问 Apache Ambari 视图](./hdinsight-authorize-users-to-ambari.md)

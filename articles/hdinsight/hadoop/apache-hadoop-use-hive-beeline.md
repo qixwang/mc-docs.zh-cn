@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: big-data
-origin.date: 02/25/2020
-ms.date: 03/23/2020
+origin.date: 04/17/2020
+ms.date: 06/22/2020
 ms.author: v-yiso
-ms.openlocfilehash: 33556d294bb2ac673f20a61e81bfc42b638103c9
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: cb81645e5c320812b26e29b6122e5e4dc48a2da9
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80343580"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723039"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>将 Apache Beeline 客户端与 Apache Hive 配合使用
 
@@ -59,6 +59,8 @@ beeline -u 'jdbc:hive2://<headnode-FQDN>:10001/;transportMode=http'
 
 使用公共或专用终结点连接到群集时，必须提供群集登录帐户名（默认值为 `admin`）和密码。 例如，使用 Beeline 从客户端系统连接到 `<clustername>.azurehdinsight.cn` 地址。 此连接通过端口 `443` 建立，并使用 SSL 进行加密：
 
+将 `clustername` 替换为 HDInsight 群集的名称。 将 `admin` 替换为群集的群集登录帐户。 对于 ESP 群集，请使用完整的 UPN（例如 user@domain.com）。 将 `password` 替换为群集登录帐户的密码。
+
 ```bash
 beeline -u 'jdbc:hive2://clustername.azurehdinsight.cn:443/;ssl=true;transportMode=http;httpPath=/hive2' -n admin -p password
 ```
@@ -79,16 +81,16 @@ Apache Spark 提供自己的 HiveServer2 实现（有时称为 Spark Thrift 服�
 
 #### <a name="through-public-or-private-endpoints"></a>通过公共或专用终结点
 
-使用的连接字符串略有不同。 它是 `httpPath/sparkhive2`，不包含 `httpPath=/hive2`。 将 `clustername` 替换为 HDInsight 群集的名称。 将 `admin` 替换为群集的群集登录帐户。 对于 ESP 群集，请使用完整的 UPN（例如 user@domain.com）。 将 `password` 替换为群集登录帐户的密码。
+使用的连接字符串略有不同。 它使用 `httpPath/sparkhive2`，而不包含 `httpPath=/hive2`。 将 `clustername` 替换为 HDInsight 群集的名称。 将 `admin` 替换为群集的群集登录帐户。 对于 ESP 群集，请使用完整的 UPN（例如 user@domain.com）。 将 `password` 替换为群集登录帐户的密码。
 
 ```bash 
-beeline -u 'jdbc:hive2://clustername.azurehdinsight.cn:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n admin -p password
+beeline -u 'jdbc:hive2://clustername.azurehdinsight.cn:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n admin -p 'password'
 ```
 
 或对于专用终结点：
 
 ```bash 
-beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.cn:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n admin -p password
+beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.cn:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n admin -p 'password'
 ```
 
 专用终结点指向一个基本的负载均衡器，后者只能从在同一区域中进行对等互连的 VNET 访问。 有关详细信息，请参阅[对全局 VNet 对等互连和负载均衡器的约束](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)。 在使用 beeline 之前，可以将 `curl` 命令与 `-v` 选项配合使用，以便排查公共或专用终结点的任何连接问题。
@@ -109,7 +111,7 @@ beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.cn:443/;ssl=true;transpo
 
 * HDInsight 上的 Hadoop 群集。 请参阅 [Linux 上的 HDInsight 入门](./apache-hadoop-linux-tutorial-get-started.md)。
 
-* 请记下群集主存储的 [URI 方案](../hdinsight-hadoop-linux-information.md#URI-and-scheme)。 例如，对于 Azure 存储，此值为 `wasb://`；对于Azure Data Lake Storage Gen2，此值为 `abfs://`；对于 Azure Data Lake Storage Gen1，此值为 `adl://`。 如果为 Azure 存储启用了安全传输，则 URI 将为 `wasbs://`。 有关详细信息，请参阅[安全传输](../../storage/common/storage-require-secure-transfer.md)。
+* 请记下群集主存储的 URI 方案。 例如，对于 Azure 存储，此方案为 `wasb://`；对于 Azure Data Lake Storage Gen2，此方案为 `abfs://`。 如果为 Azure 存储启用了安全传输，则 URI 将为 `wasbs://`。 有关详细信息，请参阅[安全传输](../../storage/common/storage-require-secure-transfer.md)。
 
 
 * 选项 1：SSH 客户端。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md)。 本文档中的大多数步骤都假定从与群集的 SSH 会话使用 Beeline。
@@ -170,7 +172,7 @@ beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.cn:443/;ssl=true;transpo
 
     此信息描述表中的列。
 
-5. 输入以下语句，以使用 HDInsight 群集随附的示例数据来创建名为 **log4jLogs** 的表：（基于 [URI 方案](../hdinsight-hadoop-linux-information.md#URI-and-scheme)根据需要进行修改。）
+5. 输入以下语句，以使用 HDInsight 群集随附的示例数据来创建名为 **log4jLogs** 的表：（基于 URI 方案根据需要进行修改。）
 
     ```hiveql
     DROP TABLE log4jLogs;
@@ -240,7 +242,7 @@ beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.cn:443/;ssl=true;transpo
 
 ## <a name="run-a-hiveql-file"></a><a id="file"></a>运行 HiveQL 文件
 
-这是上一示例的继续。 使用以下步骤创建文件，并使用 Beeline 运行该文件。
+本示例是上一示例的延续部分。 使用以下步骤创建文件，并使用 Beeline 运行该文件。
 
 1. 使用以下命令创建一个名为 **query.hql** 的文件：
 
@@ -296,7 +298,7 @@ beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.cn:443/;ssl=true;transpo
 
 ## <a name="install-beeline-client"></a><a name="install-beeline-client"/>安装 beeline 客户端
 
-尽管 HDInsight 群集的头节点上包含 Beeline，但你可能需要将其安装在本地计算机上。  用于在本地计算机上安装 Beeline 的步骤基于[用于 Linux 的 Windows 子系统](https://docs.microsoft.com/windows/wsl/install-win10)。
+虽然头节点上包含 Beeline，但建议将其安装在本地。  本地计算机的安装步骤基于[适用于 Linux 的 Windows 子系统](https://docs.microsoft.com/windows/wsl/install-win10)。
 
 1. 更新包列表。 在 bash shell 中输入以下命令：
 
@@ -312,7 +314,7 @@ beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.cn:443/;ssl=true;transpo
         sudo apt install openjdk-11-jre-headless
         ```
 
-    1. 打开 bashrc 文件（通常在 ~/.bashrc 中找到）：`nano ~/.bashrc`。
+    1. 打开 bashrc 文件（通常位于 ~/.bashrc 中）：`nano ~/.bashrc`。
 
     1. 修改 bashrc 文件。 在该文件的末尾添加以下行：
 

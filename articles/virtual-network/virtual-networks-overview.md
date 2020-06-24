@@ -12,14 +12,14 @@ ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 06/19/2019
-ms.date: 04/13/2020
+ms.date: 06/15/2020
 ms.author: v-yeche
-ms.openlocfilehash: a060d6df30d1980b4ff666d7efc7f285fceeddc2
-ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
+ms.openlocfilehash: efdc7f978398d55bc17fa0544b34a96a928e0792
+ms.sourcegitcommit: ff67734e01c004be575782b4812cfe857e435f4d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82093467"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84486982"
 ---
 # <a name="what-is-azure-virtual-network"></a>什么是 Azure 虚拟网络？
 
@@ -86,6 +86,17 @@ Azure 资源采用下述某种方式安全地相互通信：
 
 - **路由表：** 可创建自定义路由表，其中包含可对每个子网控制流量路由到位置的路由。 详细了解[路由表](virtual-networks-udr-overview.md#user-defined)。
 - **边界网关协议 (BGP) 路由：** 如果使用 Azure VPN 网关或 ExpressRoute 连接将虚拟网络连接到本地网络，则可将本地 BGP 路由传播到虚拟网络。 详细了解如何将 BGP 与 [Azure VPN 网关](../vpn-gateway/vpn-gateway-bgp-overview.md?toc=%2fvirtual-network%2ftoc.json)和 [ExpressRoute](../expressroute/expressroute-routing.md?toc=%2fvirtual-network%2ftoc.json#dynamic-route-exchange) 配合使用。
+
+## <a name="virtual-network-integration-for-azure-services"></a>Azure 服务的虚拟网络集成
+
+通过将 Azure 服务集成到 Azure 虚拟网络，可从虚拟机或虚拟网络中的计算资源私密访问服务。
+可通过以下选项在虚拟网络中集成 Azure 服务：
+- 将[服务的专用实例](virtual-network-for-azure-services.md)部署到虚拟网络中。 随后即可在虚拟网络内以及从本地网络私密访问这些服务。
+- 使用专用链接以专用方式从你的虚拟网络和本地网络访问服务的特定实例。
+
+    <!--MOONCAKE: Not Available on link - Private Link-->
+
+- 还可以通过[服务终结点](virtual-network-service-endpoints-overview.md)将虚拟网络扩展到服务，从而使用公共终结点访问服务。 服务终结点可使服务资源在虚拟网络中得到保护。
 
 ## <a name="azure-vnet-limits"></a>Azure VNet 的限制
 

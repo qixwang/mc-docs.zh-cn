@@ -1,5 +1,5 @@
 ---
-title: 使用 Spark 读取和写入 HBase 数据 - Azure HDInsight
+title: 使用 Spark 来读写 HBase 数据 - Azure HDInsight
 description: 使用 Spark HBase 连接器将 Spark 群集中的数据读写到 HBase 群集。
 services: hdinsight
 documentationcenter: ''
@@ -11,26 +11,26 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: article
-origin.date: 02/24/2020
+origin.date: 04/20/2020
 ms.author: v-yiso
-ms.date: 03/23/2020
-ms.openlocfilehash: a93304ecc4407f333d83dc9a861805ecb6757310
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 06/22/2020
+ms.openlocfilehash: a717de3ab153266e28a97ba21ceb3d1e53b6cd7c
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79295982"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723183"
 ---
 # <a name="use-apache-spark-to-read-and-write-apache-hbase-data"></a>使用 Apache Spark 读取和写入 Apache HBase 数据
 
 通常使用 Apache HBase 的低级别 API（扫描、获取和放置）或者通过 Apache Phoenix 使用 SQL 语法来查询 Apache HBase。 Apache 还提供 Apache Spark HBase 连接器，这是一个查询并修改 HBase 存储的数据的方便且高效的替代方案。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 部署在同一[虚拟网络](./hdinsight-plan-virtual-network-deployment.md)中的两个单独的 HDInsight 群集。 一个HBase 和一个至少安装了 Spark 2.1 (HDInsight 3.6) 的 Spark。 有关详细信息，请参阅[使用 Azure 门户在 HDInsight 中创建基于 Linux 的群集](hdinsight-hadoop-create-linux-clusters-portal.md)。
 
 * SSH 客户端。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight (Apache Hadoop)](hdinsight-hadoop-linux-use-ssh-unix.md)。
-* 群集主存储的 [URI 方案](hdinsight-hadoop-linux-information.md#URI-and-scheme)。 对于 Azure Blob 存储，此方案为 wasb://；对于 Azure Data Lake Storage Gen2，此方案为 abfs://。 如果为 Blob 存储或 Data Lake Storage Gen2 启用了安全传输，则 URI 分别是 wasbs:// 或 abfss://。另请参阅[安全传输](../storage/common/storage-require-secure-transfer.md)。
+* 群集主存储的 URI 方案。 对于 Azure Blob 存储，此方案为 wasb://；对于 Azure Data Lake Storage Gen2，此方案为 `abfs://`。 如果为 Blob 存储启用了安全传输，则 URI 将为 `wasbs://`。  另请参阅[安全传输](../storage/common/storage-require-secure-transfer.md)。
 
 
 ## <a name="overall-process"></a>整体进程
@@ -157,7 +157,7 @@ exit
     |}""".stripMargin
     ```
 
-    代码将执行以下操作：  
+    代码执行以下操作：  
 
      a. 定义名为 `Contacts` 的 HBase 表的目录架构。  
      b. 将 rowkey 标识为 `key`，并将 Spark 中使用的列名映射到 HBase 中使用的列族、列名和列类型。  

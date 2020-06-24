@@ -5,15 +5,15 @@ author: rockboyfor
 ms.service: security
 ms.topic: conceptual
 origin.date: 03/16/2020
-ms.date: 06/01/2020
+ms.date: 06/08/2020
 ms.author: v-yeche
 ms.custom: security-benchmark
-ms.openlocfilehash: e0ffe5bdae08ae9a8bd5697cb5a17f5fdb977893
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+ms.openlocfilehash: 65384617cb9fcd8679b20069e446b40a35b5417e
+ms.sourcegitcommit: 8dae792aefbe44e8388f961b813e3da6564423ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84200032"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84654884"
 ---
 <!--Verified successfully-->
 # <a name="azure-security-baseline-for-azure-container-registry"></a>Azure 容器注册表的 Azure 安全基线
@@ -22,11 +22,11 @@ Azure 容器注册表的 Azure 安全基线包含可帮助你改善部署安全�
 
 此服务的基线摘自 [Azure 安全基准版本 1.0](/security/benchmarks/overview)，其中提供了有关如何根据我们的最佳做法指导保护 Azure 上的云解决方案的建议。
 
-<!--Not Available on [Azure Security Baselines overview](/security/benchmarks/security-baselines-overview)-->
+有关详细信息，请参阅 [Azure 安全基线概述](/security/benchmarks/security-baselines-overview)。
 
 ## <a name="network-security"></a>网络安全
 
-<!--Not Available on [Security Control: Network Security](/security/benchmarks/security-control-network-security)-->
+有关详细信息，请参阅[安全控制：** 网络安全性](/security/benchmarks/security-control-network-security)。
 
 ### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1.1：在虚拟网络中使用网络安全组或 Azure 防火墙保护资源
 
@@ -164,7 +164,7 @@ Azure 市场： https://market.azure.cn/marketplace/?term=Firewall
 
 ## <a name="logging-and-monitoring"></a>日志记录和监视
 
-<!--Not Available on [Security Control: Logging and Monitoring](/security/benchmarks/security-control-logging-monitoring)-->
+有关详细信息，请参阅[安全控制：** 日志记录和监视](/security/benchmarks/security-control-logging-monitoring)。
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2.1：使用批准的时间同步源
 
@@ -266,7 +266,7 @@ Azure 市场： https://market.azure.cn/marketplace/?term=Firewall
 
 ## <a name="identity-and-access-control"></a>标识和访问控制
 
-<!--Not Available on [Security Control: Identity and Access Control](/security/benchmarks/security-control-identity-access-control)-->
+有关详细信息，请参阅[安全控制：** 标识和访问控制](/security/benchmarks/security-control-identity-access-control)。
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1：维护管理帐户的清单
 
@@ -384,7 +384,7 @@ Azure 容器注册表管理员帐户： https://docs.azure.cn/container-registry
 
 **指导**：Azure Active Directory (Azure AD) 提供日志来帮助发现过时的帐户。 此外，请使用 Azure 标识访问评审来有效管理组成员身份、对企业应用程序的访问和角色分配。 可以定期评审用户的访问权限，确保只有适当的用户才持续拥有访问权限。
 
-<!--Not Available on https://docs.azure.cn/active-directory/reports-monitoring/-->
+了解 Azure AD 报告： https://docs.azure.cn/active-directory/reports-monitoring/
 
 如何使用 Azure 标识访问评审： https://docs.azure.cn/active-directory/governance/access-reviews-overview
 
@@ -428,7 +428,7 @@ Azure 容器注册表管理员帐户： https://docs.azure.cn/container-registry
 
 ## <a name="data-protection"></a>数据保护
 
-<!--Not Available on [Security Control: Data Protection](/security/benchmarks/security-control-data-protection)-->
+有关详细信息，请参阅[安全控制：** 数据保护](/security/benchmarks/security-control-data-protection)。
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1：维护敏感信息的清单
 
@@ -480,7 +480,7 @@ https://docs.azure.cn/firewall/threat-intel
 
 对于 Microsoft 管理的底层平台，Azure 会将所有客户内容视为敏感数据，并会全方位地防范客户数据丢失和泄露。 为了确保 Azure 中的客户数据保持安全，Azure 已实施并维护一套可靠的数据保护控制机制和功能。
 
-<!--Not Available on [](https://docs.azure.cn/security/fundamentals/protection-customer-data)-->
+了解 Azure 中的客户数据保护： https://docs.azure.cn/security/fundamentals/protection-customer-data
 
 **Azure 安全中心监视**：目前不可用
 
@@ -492,7 +492,7 @@ https://docs.azure.cn/firewall/threat-intel
 
 请按照 Azure 安全中心的建议，了解静态加密和传输中加密（如果适用）。
 
-<!--Not Available on [](https://docs.azure.cn/security/fundamentals/encryption-overview#encryption-of-data-in-transit)-->
+了解 Azure 的传输中加密： https://docs.azure.cn/security/fundamentals/encryption-overview#encryption-of-data-in-transit
 
 **Azure 安全中心监视**：是
 
@@ -538,7 +538,7 @@ Azure 容器注册表角色和权限： https://docs.azure.cn/container-registry
 
 **指导**：在所有 Azure 资源上使用静态加密。 默认情况下，Azure 容器注册表中的所有数据都使用 Azure 托管密钥进行静态加密。
 
-<!--Not Available on [](https://docs.azure.cn/security/fundamentals/encryption-atrest)-->
+了解 Azure 中的静态加密： https://docs.azure.cn/security/fundamentals/encryption-atrest
 
 Azure 容器注册表中客户管理的密钥： https://aka.ms/acr/cmk
 
@@ -558,7 +558,7 @@ Azure 容器注册表中客户管理的密钥： https://aka.ms/acr/cmk
 
 ## <a name="vulnerability-management"></a>漏洞管理
 
-<!--Not Available on [Security Control: Vulnerability Management](/security/benchmarks/security-control-vulnerability-management)-->
+有关详细信息，请参阅[安全控制：** 漏洞管理。](/security/benchmarks/security-control-vulnerability-management)
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5.1：运行自动漏洞扫描工具
 
@@ -616,7 +616,7 @@ Azure 容器注册表与安全中心的集成（预览版）： https://docs.azu
 
 ## <a name="inventory-and-asset-management"></a>清单和资产管理
 
-<!--Not Available on [Security Control: Inventory and Asset Management](/security/benchmarks/security-control-inventory-asset-management)-->
+有关详细信息，请参阅[安全控制：** 清单和资产管理](/security/benchmarks/security-control-inventory-asset-management)。
 
 ### <a name="61-use-azure-asset-discovery"></a>6.1：使用 Azure 资产发现
 
@@ -670,7 +670,7 @@ Azure 容器注册表与安全中心的集成（预览版）： https://docs.azu
 
 **指导**：使用 Azure Policy 对可以在订阅中创建的资源类型施加限制。
 
-使用 Azure Resource Graph 查询/发现其订阅中的资源。  确保环境中存在的所有 Azure 资源已获得批准。
+使用 Azure Resource Graph 查询/发现订阅中的资源。  确保环境中存在的所有 Azure 资源已获得批准。
 
 使用 Azure Policy 审核 Azure 容器注册表的合规性： https://docs.azure.cn/container-registry/container-registry-azure-policy
 
@@ -738,7 +738,7 @@ Azure 容器注册表与安全中心的集成（预览版）： https://docs.azu
 
 **指导**：使用特定于操作系统的配置或第三方资源来限制用户在 Azure 计算资源中执行脚本的能力。
 
-<!--Not Avaialble on [](https://docs.azure.cn/role-based-access-control/conditional-access-azure-management)-->
+如何配置条件访问以阻止访问 Azure 资源管理器： https://docs.azure.cn/role-based-access-control/conditional-access-azure-management
 
 **Azure 安全中心监视**：不适用
 
@@ -768,7 +768,7 @@ Azure 容器注册表与安全中心的集成（预览版）： https://docs.azu
 
 ## <a name="secure-configuration"></a>安全配置
 
-<!--Not Available on [Security Control: Secure Configuration](/security/benchmarks/security-control-secure-configuration)-->
+有关详细信息，请参阅[安全控制：** 安全配置](/security/benchmarks/security-control-secure-configuration)。
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1：为所有 Azure 资源建立安全配置
 
@@ -900,7 +900,7 @@ Azure 容器注册表与安全中心的集成（预览版）： https://docs.azu
 
 **指导**：实施凭据扫描程序来识别代码中的凭据。 凭据扫描程序还会建议将发现的凭据转移到更安全的位置，例如 Azure Key Vault。
 
-如何设置凭据扫描程序： https://secdevtools.chinacloudsites.cn/helpcredscan.html
+如何设置凭据扫描程序： https://secdevtools.azurewebsites.net/helpcredscan.html
 
 **Azure 安全中心监视**：不适用
 
@@ -908,7 +908,7 @@ Azure 容器注册表与安全中心的集成（预览版）： https://docs.azu
 
 ## <a name="malware-defense"></a>恶意软件防护
 
-<!--Not Available on [Security Control: Malware Defense](/security/benchmarks/security-control-malware-defense)-->
+有关详细信息，请参阅[安全控制：** 恶意软件防护](/security/benchmarks/security-control-malware-defense)。
 
 ### <a name="81-use-centrally-managed-anti-malware-software"></a>8.1：使用集中管理的反恶意软件
 
@@ -940,7 +940,7 @@ Azure 容器注册表与安全中心的集成（预览版）： https://docs.azu
 
 ## <a name="data-recovery"></a>数据恢复
 
-<!--Not Available on [Security Control: Data Recovery](/security/benchmarks/security-control-data-recovery)-->
+有关详细信息，请参阅[安全控制：** 数据恢复](/security/benchmarks/security-control-data-recovery)。
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9.1：确保定期执行自动备份
 
@@ -990,7 +990,7 @@ Azure 容器注册表中的异地复制： https://docs.azure.cn/container-regis
 
 ## <a name="incident-response"></a>事件响应
 
-<!--Not Available on [Security Control: Incident Response](/security/benchmarks/security-control-incident-response)-->
+有关详细信息，请参阅[安全控制：** 事件响应](/security/benchmarks/security-control-incident-response)。
 
 ### <a name="101-create-an-incident-response-guide"></a>10.1：创建事件响应指导
 
@@ -1047,7 +1047,7 @@ Azure 安全响应中心事件分析： https://msrc-blog.microsoft.com/2019/07/
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>渗透测试和红队练习
 
-<!--Not Available on [Security Control: Penetration Tests and Red Team Exercises](/security/benchmarks/security-control-penetration-tests-red-team-exercises)-->
+有关详细信息，请参阅[安全控制：** 渗透测试和红队演练](/security/benchmarks/security-control-penetration-tests-red-team-exercises)。
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings-within-60-days"></a>11.1：定期对 Azure 资源执行渗透测试，确保在 60 天内修正所有发现的关键安全问题
 
@@ -1064,6 +1064,4 @@ Azure 安全响应中心事件分析： https://msrc-blog.microsoft.com/2019/07/
 - 参阅 [Azure 安全基准](/security/benchmarks/overview)
 - 详细了解 [Azure 安全基线](/security/benchmarks/security-baselines-overview)
 
-<!-- Update_Description: new article about security baseline -->
-<!--NEW.date: 06/01/2020-->
-
+<!-- Update_Description: update meta properties, wording update, update link -->

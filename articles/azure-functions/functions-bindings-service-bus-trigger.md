@@ -4,20 +4,20 @@ description: 了解如何在创建 Azure 服务总线消息时运行 Azure Funct
 author: craigshoemaker
 ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
 ms.topic: reference
-ms.date: 03/18/2020
+ms.date: 06/05/2020
 ms.author: v-junlch
-ms.openlocfilehash: 9c45965ad8c225eb2d2a27cb8cf17d2cacfb059d
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: b499b0cff12fdcd6f35c39b72256fe1c50ea737e
+ms.sourcegitcommit: f1a76ee3242698123a3d77f44c860db040b48f70
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79546885"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84563814"
 ---
 # <a name="azure-service-bus-trigger-for-azure-functions"></a>Azure Functions 的 Azure 服务总线触发器
 
-使用服务总线触发器响应来自服务总线队列或主题的消息。
+使用服务总线触发器响应来自服务总线队列或主题的消息。 从扩展版本 3.1.0 开始，可以在启用会话的队列或主题上触发。
 
-若要了解设置和配置详细信息，请参阅[概述](functions-bindings-service-bus-output.md)。
+有关设置和配置详细信息，请参阅[概述](functions-bindings-service-bus-output.md)。
 
 ## <a name="example"></a>示例
 
@@ -46,7 +46,7 @@ public static void Run(
 
 以下示例演示 *function.json* 文件中的一个服务总线触发器绑定以及使用该绑定的 [C# 脚本函数](functions-reference-csharp.md)。 此函数将读取[消息元数据](#message-metadata)并记录服务总线队列消息。
 
-下面是 function.json  文件中的绑定数据：
+下面是 function.json 文件中的绑定数据：
 
 ```json
 {
@@ -86,7 +86,7 @@ public static void Run(string myQueueItem,
 
 以下示例演示 *function.json* 文件中的一个服务总线触发器绑定以及使用该绑定的 [JavaScript 函数](functions-reference-node.md)。 此函数将读取[消息元数据](#message-metadata)并记录服务总线队列消息。 
 
-下面是 function.json  文件中的绑定数据：
+下面是 function.json 文件中的绑定数据：
 
 ```json
 {
@@ -171,7 +171,7 @@ module.exports = function(context, myQueueItem) {
   }
   ```
 
-  可以设置 `Connection` 属性来指定应用设置（其中包含要使用的服务总线连接字符串）的名称，如以下示例中所示：
+  由于未定义 `Connection` 属性，因此 Azure Functions 将查找名为 `AzureWebJobsServiceBus` 的应用设置，这是服务总线连接字符串的默认名称。 还可以设置 `Connection` 属性来指定应用程序设置（其中包含要使用的服务总线连接字符串）的名称，如以下示例中所示：
 
   ```csharp
   [FunctionName("ServiceBusQueueTriggerCSharp")]                    
@@ -231,18 +231,18 @@ JavaScript 不支持特性。
 
 ## <a name="configuration"></a>配置
 
-下表解释了在 function.json  文件和 `ServiceBusTrigger` 特性中设置的绑定配置属性。
+下表解释了在 function.json 文件和 `ServiceBusTrigger` 特性中设置的绑定配置属性。
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|type  | 不适用 | 必须设置为“serviceBusTrigger”。 在 Azure 门户中创建触发器时，会自动设置此属性。|
-|direction  | 不适用 | 必须设置为“in”。 在 Azure 门户中创建触发器时，会自动设置此属性。 |
-|name  | 不适用 | 变量的名称，表示函数代码中的队列或主题消息。 |
+|**type** | 不适用 | 必须设置为“serviceBusTrigger”。 在 Azure 门户中创建触发器时，会自动设置此属性。|
+|**direction** | 不适用 | 必须设置为“in”。 在 Azure 门户中创建触发器时，会自动设置此属性。 |
+|**name** | 不适用 | 变量的名称，表示函数代码中的队列或主题消息。 |
 |**queueName**|**QueueName**|要监视的队列的名称。  仅在监视队列的情况下设置，不为主题设置。
 |**topicName**|**TopicName**|要监视的主题的名称。 仅在监视主题的情况下设置，不为队列设置。|
 |**subscriptionName**|**SubscriptionName**|要监视的订阅的名称。 仅在监视主题的情况下设置，不为队列设置。|
-|连接 |**Connection**|应用设置的名称，包含要用于此绑定的服务总线连接字符串。 如果应用设置名称以“AzureWebJobs”开头，则只能指定该名称的余下部分。 例如，如果将 `connection` 设为“MyServiceBus”，Functions 运行时会查找名为“AzureWebJobsMyServiceBus”的应用设置。 如果将 `connection` 留空，函数运行时将使用名为“AzureWebJobsServiceBus”的应用设置中的默认服务总线连接字符串。<br><br>若要获取连接字符串，请执行[获取管理凭据](../service-bus-messaging/service-bus-quickstart-portal.md#get-the-connection-string)中显示的步骤。 必须是服务总线命名空间的连接字符串，不限于特定的队列或主题。 |
-|**accessRights**|**Access**|连接字符串的访问权限。 可用值为 `manage` 和 `listen`。 默认值是 `manage`，其指示 `connection` 具有“管理”  权限。 如果使用不具有“管理”  权限的连接字符串，请将 `accessRights` 设置为“listen”。 否则，Functions 运行时可能会在尝试执行需要管理权限的操作时失败。 在 Azure Functions 版本 2.x 及更高版本中，此属性不可用，因为最新版本的服务总线 SDK 不支持管理操作。|
+|连接|**Connection**|应用设置的名称，包含要用于此绑定的服务总线连接字符串。 如果应用设置名称以“AzureWebJobs”开头，则只能指定该名称的余下部分。 例如，如果将 `connection` 设为“MyServiceBus”，Functions 运行时会查找名为“AzureWebJobsMyServiceBus”的应用设置。 如果将 `connection` 留空，函数运行时将使用名为“AzureWebJobsServiceBus”的应用设置中的默认服务总线连接字符串。<br><br>若要获取连接字符串，请执行[获取管理凭据](../service-bus-messaging/service-bus-quickstart-portal.md#get-the-connection-string)中显示的步骤。 必须是服务总线命名空间的连接字符串，不限于特定的队列或主题。 |
+|**accessRights**|**Access**|连接字符串的访问权限。 可用值为 `manage` 和 `listen`。 默认值是 `manage`，其指示 `connection` 具有“管理”权限。 如果使用不具有“管理”权限的连接字符串，请将 `accessRights` 设置为“listen”。 否则，Functions 运行时可能会在尝试执行需要管理权限的操作时失败。 在 Azure Functions 版本 2.x 及更高版本中，此属性不可用，因为最新版本的服务总线 SDK 不支持管理操作。|
 |**isSessionsEnabled**|**IsSessionsEnabled**|如果连接到[会话感知](../service-bus-messaging/message-sessions.md)队列或订阅，则为 `true`。 否则为 `false`（默认值）。|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
@@ -256,7 +256,7 @@ JavaScript 不支持特性。
 * `string` - 如果消息是文本。
 * `byte[]` - 适用于二进制数据。
 * 自定义类型 - 如果消息包含 JSON，Azure Functions 会尝试反序列化 JSON 数据。
-* `BrokeredMessage` - 使用 [BrokeredMessage.GetBody\<T>()](https://docs.azure.cn/zh-cn/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) 方法提供反序列化消息。
+* `BrokeredMessage` - 提供带 [BrokeredMessage.GetBody\<T>()](https://docs.azure.cn/zh-cn/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) 方法的反序列化消息。
 
 这些参数类型适用于 Azure Functions 版本 1.x；对于 2.x 及更高版本，请使用 [`Message`](https://docs.azure.cn/zh-cn/dotnet/api/microsoft.azure.servicebus.message) 而非 `BrokeredMessage`。
 
@@ -267,7 +267,7 @@ JavaScript 不支持特性。
 * `string` - 如果消息是文本。
 * `byte[]` - 适用于二进制数据。
 * 自定义类型 - 如果消息包含 JSON，Azure Functions 会尝试反序列化 JSON 数据。
-* `BrokeredMessage` - 使用 [BrokeredMessage.GetBody\<T>()](https://docs.azure.cn/zh-cn/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) 方法提供反序列化消息。
+* `BrokeredMessage` - 提供带 [BrokeredMessage.GetBody\<T>()](https://docs.azure.cn/zh-cn/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) 方法的反序列化消息。
 
 这些参数仅适用于 Azure Functions 版本 1.x；对于 2.x 及更高版本，请使用 [`Message`](https://docs.azure.cn/zh-cn/dotnet/api/microsoft.azure.servicebus.message) 而非 `BrokeredMessage`。
 
@@ -295,21 +295,24 @@ Functions 运行时以 [PeekLock 模式](../service-bus-messaging/service-bus-pe
 
 ## <a name="message-metadata"></a>消息元数据
 
-服务总线触发器提供了几个[元数据属性](./functions-bindings-expressions-patterns.md#trigger-metadata)。 这些属性可在其他绑定中用作绑定表达式的一部分，或者用作代码中的参数。 以下属性是 [BrokeredMessage](https://docs.azure.cn/zh-cn/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) 类的成员。
+服务总线触发器提供了几个[元数据属性](./functions-bindings-expressions-patterns.md#trigger-metadata)。 这些属性可在其他绑定中用作绑定表达式的一部分，或者用作代码中的参数。 以下属性是 [Message](/dotnet/api/microsoft.azure.servicebus.message?view=azure-dotnet) 类的成员。
 
-|properties|类型|说明|
+|属性|类型|说明|
 |--------|----|-----------|
-|`DeliveryCount`|`Int32`|传递次数。|
-|`DeadLetterSource`|`string`|死信源。|
-|`ExpiresAtUtc`|`DateTime`|到期时间 (UTC)。|
-|`EnqueuedTimeUtc`|`DateTime`|排队时间 (UTC)。|
-|`MessageId`|`string`|服务总线可用于标识重复消息的用户定义值（如果启用）。|
 |`ContentType`|`string`|发送方和接收方用于实现应用程序特定逻辑的内容类型标识符。|
-|`ReplyTo`|`string`|对队列地址的回复。|
-|`SequenceNumber`|`Int64`|服务总线分配给消息的唯一编号。|
-|`To`|`string`|发送到地址。|
-|`Label`|`string`|应用程序特定的标签。|
 |`CorrelationId`|`string`|相关 ID。|
+|`DeadLetterSource`|`string`|死信源。|
+|`DeliveryCount`|`Int32`|传递次数。|
+|`EnqueuedTimeUtc`|`DateTime`|排队时间 (UTC)。|
+|`ExpiresAtUtc`|`DateTime`|到期时间 (UTC)。|
+|`Label`|`string`|应用程序特定的标签。|
+|`MessageId`|`string`|服务总线可用于标识重复消息的用户定义值（如果启用）。|
+|`MessageReceiver`|`MessageReceiver`|服务总线消息接收器。 可以用于放弃、完成消息或将消息放入死信队列。|
+|`MessageSession`|`MessageSession`|专用于已启用会话的队列和主题的消息接收器。|
+|`ReplyTo`|`string`|对队列地址的回复。|
+|`SequenceNumber`|`long`|服务总线分配给消息的唯一编号。|
+|`To`|`string`|发送到地址。|
+|`UserProperties`|`IDictionary<string, object>`|由发送方设置的属性。|
 
 请参阅在本文的前面部分使用这些属性的[代码示例](#example)。
 

@@ -11,13 +11,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: ''
 origin.date: 06/20/2019
-ms.date: 03/16/2020
-ms.openlocfilehash: ca20b853bfb9b38d1134105340b19f772578fbb4
-ms.sourcegitcommit: 4aeecfcc59cb42ba0b712a729d278d03bffc719a
+ms.date: 06/15/2020
+ms.openlocfilehash: 156e46de230aebc3adf52d66989cbb927e9db8b9
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81791007"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723677"
 ---
 # <a name="quickstart-import-a-bacpac-file-to-a-database-in-azure-sql-database"></a>快速入门：将 BACPAC 文件导入 Azure SQL 数据库中的数据库
 
@@ -31,14 +31,14 @@ ms.locfileid: "81791007"
 
 ## <a name="using-azure-portal"></a>使用 Azure 门户
 
-[Azure 门户](https://portal.azure.cn)仅支持在 Azure SQL 数据库中创建单个数据库，并且仅从存储在 Azure Blob 存储中的 BACPAC 文件中创建   。
+[Azure 门户](https://portal.azure.cn)仅支持在 Azure SQL 数据库中创建单个数据库，并且仅从存储在 Azure Blob 存储中的 BACPAC 文件中创建** **。
 
 目前不支持使用 Azure PowerShell 将数据库从 BACPAC 文件迁移到[托管实例](sql-database-managed-instance.md)中。 请改用 SQL Server Management Studio 或 SQLPackage。
 
 > [!NOTE]
 > 处理通过 Azure 门户或 PowerShell 提交的导入/导出请求的计算机需要存储 BACPAC 文件以及数据层应用程序框架 (DacFX) 生成的临时文件。 相同大小的数据库之间所需的磁盘空间差异很大，所需的磁盘空间最多可能是数据库大小的 3 倍。 运行导入/导出请求的计算机只有 450GB 的本地磁盘空间。 因此，某些请求可能会失败，并显示错误 `There is not enough space on the disk`。 在这种情况下，解决方法是在具有足够本地磁盘空间的计算机上运行 sqlpackage.exe。 我们建议使用 SqlPackage 导入/导出大于 150GB 的数据库以避免此问题。
 
-1. 若要使用 Azure 门户从 BACPAC 文件导入新的单个数据库，请打开相应的数据库服务器页面，然后在工具栏上选择“导入数据库”  。  
+1. 若要使用 Azure 门户从 BACPAC 文件导入新的单个数据库，请打开相应的数据库服务器页面，然后在工具栏上选择“导入数据库”****。  
 
    ![数据库 import1](./media/sql-database-import/sql-server-import-database.png)
 
@@ -50,19 +50,19 @@ ms.locfileid: "81791007"
 
 1. 单击 **“确定”** 。
 
-1. 若要监视导入的进度，请打开数据库的服务器页，然后在“设置”  下，选择“导入/导出历史记录”  。 成功导入后，状态为“已完成”  。
+1. 若要监视导入的进度，请打开数据库的服务器页，然后在“设置”**** 下，选择“导入/导出历史记录”****。 成功导入后，状态为“已完成”****。
 
    ![数据库导入状态](./media/sql-database-import/sql-server-import-database-history.png)
 
-1. 若要验证数据库在数据库服务器上是否处于活动状态，请选择“SQL 数据库”  并验证新数据库是否为“联机”  。
+1. 若要验证数据库在数据库服务器上是否处于活动状态，请选择“SQL 数据库”**** 并验证新数据库是否为“联机”****。
 
 ## <a name="using-sqlpackage"></a>使用 SqlPackage
 
-若要使用 [SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage) 命令行实用程序导入 SQL Server 数据库，请参阅[导入参数和属性](https://docs.microsoft.com/sql/tools/sqlpackage#import-parameters-and-properties)。 SqlPackage 具有最新的 [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) 和 [SQL Server Data Tools for Visual Studio](https://msdn.microsoft.com/library/mt204009.aspx)。 还可以从 Microsoft 下载中心下载最新的 [SqlPackage](https://www.microsoft.com/download/details.aspx?id=53876)。
+若要使用 [SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage) 命令行实用程序导入 SQL Server 数据库，请参阅[导入参数和属性](https://docs.microsoft.com/sql/tools/sqlpackage#import-parameters-and-properties)。 [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) 和 [SQL Server Data Tools for Visual Studio](https://msdn.microsoft.com/library/mt204009.aspx) 包括 SqlPackage。 还可以从 Microsoft 下载中心下载最新的 [SqlPackage](https://www.microsoft.com/download/details.aspx?id=53876)。
 
 在大多数生产环境中，建议使用 SqlPackage 而不是 Azure 门户来实现缩放和性能。 有关 SQL Server 客户咨询团队使用 `BACPAC` 文件进行迁移的博客，请参阅[使用 BACPAC 文件从 SQL Server 迁移到 Azure SQL 数据库](https://blogs.msdn.microsoft.com/sqlcat/2016/10/20/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/)。
 
-以下 SqlPackage 命令可将 AdventureWorks2008R2  数据库从本地存储导入到名为 mynewserver20170403  的 Azure SQL 数据库服务器。 它将创建名为 myMigratedDatabase  的新数据库，其中包含  “高级”服务层级和 P6  服务目标。 根据你的环境更改这些值。
+以下 SqlPackage 命令可将 AdventureWorks2008R2**** 数据库从本地存储导入到名为 mynewserver20170403**** 的 Azure SQL 数据库服务器。 它将创建名为 myMigratedDatabase**** 的新数据库，其中包含****“高级”服务层级和 P6**** 服务目标。 根据你的环境更改这些值。
 
 ```cmd
 sqlpackage.exe /a:import /tcs:"Data Source=<serverName>.database.chinacloudapi.cn;Initial Catalog=<migratedDatabase>;User Id=<userId>;Password=<password>" /sf:AdventureWorks2008R2.bacpac /p:DatabaseEdition=Premium /p:DatabaseServiceObjective=P6
@@ -141,7 +141,8 @@ az sql db import --resource-group "<resourceGroup>" --server "<server>" --name "
 
 ## <a name="limitations"></a>限制
 
-不支持导入到弹性池中的数据库。 可以将数据导入到单一数据库，然后将数据库移到弹性池。
+- 不支持导入到弹性池中的数据库。 可以将数据导入到单一数据库，然后将数据库移到弹性池。
+- 当“允许访问 Azure 服务”设置为“关闭”时，导入/导出服务无法正常工作。 不过，可通过以下方式解决此问题：在 Azure VM 中手动运行 sqlpackage.exe，或者直接在代码中使用 DACFx API 执行导出。
 
 ## <a name="import-using-wizards"></a>使用向导导入
 

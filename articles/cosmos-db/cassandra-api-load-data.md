@@ -1,21 +1,20 @@
 ---
-title: 教程：Java 应用：将示例数据加载到 Azure Cosmos DB 的 Cassandra API 表中
+title: 教程 - 用于将示例数据加载到 Azure Cosmos DB 的 Cassandra API 表中的 Java 应用
 description: 本教程展示了如何使用 Java 应用程序将示例用户数据加载到 Azure Cosmos DB 中的 Cassandra API 表。
 author: rockboyfor
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: tutorial
 origin.date: 05/20/2019
-ms.date: 01/20/2020
+ms.date: 06/15/2020
 ms.author: v-yeche
 ms.reviewer: sngun
-Customer intent: As a developer, I want to build a Java application to load data to a Cassandra API table in Azure Cosmos DB so that customers can store and manage the key/value data and utilize the multiple-region distribution, elastic scaling, multi-master, and other capabilities offered by Azure Cosmos DB.
-ms.openlocfilehash: 4380a176e8beaa3c3341951d8c4dfbb2792364dd
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 53972b27d4f9237fd6cf20de1bd5778f16db66c5
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "76270068"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723757"
 ---
 <!--Verify sucessfully-->
 # <a name="tutorial-load-sample-data-into-a-cassandra-api-table-in-azure-cosmos-db"></a>教程：将示例数据加载到 Azure Cosmos DB 中的 Cassandra API 表

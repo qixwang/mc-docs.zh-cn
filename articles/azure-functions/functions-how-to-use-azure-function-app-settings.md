@@ -1,21 +1,16 @@
 ---
 title: 在 Azure 中配置函数应用设置
 description: 了解如何配置 Azure Function App 设置。
-author: ggailey777
-manager: gwallace
 ms.assetid: 81eb04f8-9a27-45bb-bf24-9ab6c30d205c
-ms.service: azure-functions
 ms.topic: conceptual
-origin.date: 08/14/2019
-ms.date: 09/29/2019
-ms.author: v-junlch
+ms.date: 06/08/2020
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: e3408d094767d9098223c6bca6369372fde1173f
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 6ac68dcb8b2d91ce0e196544957f5529997706a3
+ms.sourcegitcommit: f1a76ee3242698123a3d77f44c860db040b48f70
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292967"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84563750"
 ---
 # <a name="manage-your-function-app"></a>管理函数应用 
 
@@ -32,19 +27,21 @@ ms.locfileid: "79292967"
 
 ## <a name="get-started-in-the-azure-portal"></a>在 Azure 门户中开始
 
-要开始，请转到 [Azure 门户]，并使用 Azure 帐户登录。 在门户顶端的搜索栏中，键入函数应用的名称，并从列表中将其选中。 选择 Function App 后，将看到以下页面：
+1. 要开始，请转到 [Azure 门户]，并使用 Azure 帐户登录。 在门户顶端的搜索栏中，输入函数应用的名称，并从列表中将其选中。 
 
-![Azure 门户中 Function App 的概述](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-main.png)
+2. 在左窗格的“配置”下，选择“配置”**** ****。
+
+    :::image type="content" source="./media/functions-how-to-use-azure-function-app-settings/azure-function-app-main.png" alt-text="Azure 门户中的函数应用概述":::
 
 可以从概述页导航到管理函数应用所需的所有内容，特别是 **[应用程序设置](#settings)** 和 **[平台功能](#platform-features)** 。
 
 ## <a name="application-settings"></a><a name="settings"></a>应用程序设置
 
-“应用程序设置”  选项卡维护函数应用使用的设置。 这些设置是加密存储的，必须选择“显示值”  才能查看门户中的值。 也可使用 Azure CLI 访问应用程序设置。
+“应用程序设置”选项卡维护函数应用使用的设置****。 这些设置是加密存储的，必须选择“显示值”**** 才能查看门户中的值。 也可使用 Azure CLI 访问应用程序设置。
 
 ### <a name="portal"></a>门户
 
-若要在门户中添加设置，请选择“新建应用程序设置”  并添加新的键值对。
+若要在门户中添加设置，请选择“新建应用程序设置”**** 并添加新的键值对。
 
 ![Azure 门户中的函数应用设置。](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-settings-tab.png)
 
@@ -74,9 +71,7 @@ az functionapp config appsettings set --name <FUNCTION_APP_NAME> \
 
 ## <a name="platform-features"></a>平台功能
 
-![Function App 平台功能选项卡。](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-features-tab.png)
-
-Function App 运行于 Azure 应用服务平台，并由该平台维护。 在这种情况下，Function App 有权访问 Azure 核心 Web 托管平台的大多数功能。 可在“平台功能”  选项卡中访问应用服务平台中许多可用于 Function App 的功能。 
+函数应用在 Azure 应用服务平台中运行，并由该平台维护。 在这种情况下，Function App 有权访问 Azure 核心 Web 托管平台的大多数功能。 可在左侧窗格中访问可用于函数应用的应用服务平台中的许多功能。 
 
 > [!NOTE]
 > Function App 运行于消耗托管计划中时，并非所有应用服务功能均可用。
@@ -112,7 +107,7 @@ Function App 运行于 Azure 应用服务平台，并由该平台维护。 在�
 
 ![配置 Kudu](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-kudu.png)
 
-应用服务的高级工具（也称为 Kudu）提供对 Function App 高级管理功能的访问。 从 Kudu 中，可以管理系统信息、应用设置、环境变量、站点扩展、HTTP 头和服务器变量。 也可以通过浏览到 Function App 的 SCM 终结点（如 `https://<myfunctionapp>.scm.chinacloudsites.cn/`），启动 Kudu 
+应用服务的高级工具（也称为 Kudu）提供对 Function App 高级管理功能的访问。 从 Kudu 中，可以管理系统信息、应用设置、环境变量、站点扩展、HTTP 头和服务器变量。 也可以通过浏览到 Function App 的 SCM 终结点（如 `https://<myfunctionapp>.scm.chinacloudsites.cn/`），启动 Kudu**** 
 
 
 ### <a name="deployment-center"></a><a name="deployment"></a>部署中心
@@ -125,7 +120,7 @@ Function App 运行于 Azure 应用服务平台，并由该平台维护。 在�
 
 #### <a name="portal"></a>门户
 
-配置函数应用的“允许的域”列表时，  `Access-Control-Allow-Origin` 标头会自动添加到函数应用中 HTTP 终结点发出的所有响应。 
+配置函数应用的“允许的域”列表时，****`Access-Control-Allow-Origin` 标头会自动添加到函数应用中 HTTP 终结点发出的所有响应。 
 
 ![配置函数应用的 CORS 列表](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-cors.png)
 

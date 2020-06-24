@@ -4,14 +4,14 @@ description: 提供有关在使用 Azure 备份服务备份 Azure VM 时的支�
 ms.topic: conceptual
 author: Johnnytechn
 origin.date: 09/13/2019
-ms.date: 05/11/2020
+ms.date: 06/09/2020
 ms.author: v-johya
-ms.openlocfilehash: a95f183ecb120f1addfe1fa7fa53cf9de06ec88f
-ms.sourcegitcommit: 08b42258a48d96d754244064d065e4d5703f1cfb
+ms.openlocfilehash: 53494dffd621beaecbfb06274509f34d67b583f2
+ms.sourcegitcommit: 285649db9b21169f3136729c041e4d04d323229a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/18/2020
-ms.locfileid: "83445176"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84684016"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM 备份的支持矩阵
 
@@ -146,7 +146,6 @@ DPM/MABS 磁盘上的恢复点数 | 文件服务器为 64 个，应用服务器�
 **计算** | **支持**
 --- | ---
 VM 大小 |至少有 2 个 CPU 核心和 1-GB RAM 的任意 Azure VM 大小。<br/><br/> [了解详细信息。](/virtual-machines/windows/sizes)
-备份[可用性集](/virtual-machine-scale-sets/availability#availability-sets)中的 VM | 。<br/><br/> 无法使用快速创建 VM 的选项来还原可用性集中的 VM。 还原 VM 时，需要还原磁盘并使用它来部署 VM，或者还原磁盘并使用它来替换现有磁盘。
 备份使用[混合使用权益 (HUB)](/virtual-machines/windows/hybrid-use-benefit-licensing) 部署的 VM | 。
 备份[规模集](/virtual-machine-scale-sets/overview)中部署的 VM |不支持。
 备份从 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps?filters=virtual-machine-images)部署的 VM<br/><br/> （由 Microsoft 或第三方发布） |。<br/><br/> VM 必须运行受支持的操作系统。<br/><br/> 恢复 VM 上的文件时，可以仅还原到兼容的 OS（不是早期版本或更高版本的 OS）。 我们不会将 Azure 市场 VM 作为 VM 还原（因为这需要订单信息），而只会作为磁盘还原。
@@ -161,7 +160,7 @@ Gen2 VM | 支持 <br> Azure 备份支持备份和还原 [Gen2 VM](https://azure.
 
 **组件** | **支持**
 --- | ---
-Azure VM 数据磁盘 | 备份数据磁盘不超过 16 个的 VM。<BR> 若要注册获取包含 16 个以上磁盘（最多 32 个磁盘）的个人预览版 VM，请向我们发送电子邮件：AskAzureBackupTeam@microsoft.com
+Azure VM 数据磁盘 | 对最多包含 32 个磁盘的 Azure VM 的备份支持在部分区域提供公共预览版。<br><br> 备份包含非托管磁盘的 Azure VM 或经典 VM 时，最多支持 16 个磁盘。
 数据磁盘大小 | 对于 VM 中的所有磁盘，单个磁盘大小最大为 32 TB，组合磁盘大小最大为 256 TB。
 存储类型 | 标准 HDD、标准 SSD、高级 SSD。
 托管磁盘 | 。
@@ -171,7 +170,6 @@ Azure VM 数据磁盘 | 备份数据磁盘不超过 16 个的 VM。<BR> 若要�
 将磁盘添加到受保护的 VM | 。
 调整受保护 VM 上的磁盘大小 | 。
 共享存储| 不支持使用群集共享卷 (CSV) 或横向扩展文件服务器备份 VM。 在备份期间，CSV 写入器可能会失败。 还原时，包含 CSV 卷的磁盘可能不会启动。
-[共享磁盘](/virtual-machines/windows/disks-shared-enable) | 不支持。
 
 ## <a name="vm-network-support"></a>VM 网络支持
 
@@ -207,7 +205,7 @@ Azure 备份支持针对传输中数据和静态数据的加密：
 
 数据安全：
 
-- 备份 Azure VM 时，需要在虚拟机内部设置加密。
+- 备份 Azure VM 时，需要在虚拟机内部设置加密。**
 - Azure 备份支持 Azure 磁盘加密，后者在 Windows 虚拟机上使用 BitLocker，在 Linux 虚拟机上使用 **dm-crypt**。
 - 在后端，Azure 备份使用 [Azure 存储服务加密](../storage/common/storage-service-encryption.md)来保护静态数据。
 

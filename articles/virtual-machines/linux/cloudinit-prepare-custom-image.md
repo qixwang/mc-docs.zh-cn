@@ -1,26 +1,18 @@
 ---
-title: 准备与 cloud-init 配合使用的 Azure VM 映像 | Azure
+title: 准备与 cloud-init 配合使用的 Azure VM 映像
 description: 如何准备一个与 cloud-init 配合用来完成部署的现有 Azure VM 映像
-services: virtual-machines-linux
-documentationcenter: ''
 author: Johnnytechn
-manager: digimobile
-editor: ''
-tags: azure-resource-manager
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.devlang: azurecli
+ms.subservice: imaging
 ms.topic: article
-origin.date: 06/24/2019
-ms.date: 04/13/2020
+ms.date: 06/05/2020
 ms.author: v-johya
-ms.openlocfilehash: c7cb64a4f1bc28d67ed26dd720d21ff519094f88
-ms.sourcegitcommit: ebedf9e489f5218d4dda7468b669a601b3c02ae5
+ms.openlocfilehash: 76986d1751e92737e461982a18c15d32b27d0077
+ms.sourcegitcommit: 285649db9b21169f3136729c041e4d04d323229a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82159116"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84683996"
 ---
 # <a name="prepare-an-existing-linux-azure-vm-image-for-use-with-cloud-init"></a>准备与 cloud-init 配合使用的现有 Linux Azure VM 映像
 本文介绍如何选择一个现有的 Azure 虚拟机，使其准备好重新部署并可使用 cloud-init。 生成的映像可用于部署新的虚拟机或虚拟机规模集 - 然后，可以在部署时通过 cloud-init 进一步对其进行自定义。  Azure 预配资源后，这些 cloud-init 脚本即会在第一次启动时运行。 有关 cloud-init 如何在 Azure 以及受支持的 Linux 发行版中本机工作的详细信息，请参阅 [cloud-init 概述](using-cloud-init.md)
@@ -41,12 +33,14 @@ sudo yum install - y cloud-init
 ```
 
 更新 `/etc/cloud/cloud.cfg` 中的 `cloud_init_modules` 节以包含以下模块：
+
 ```bash
 - disk_setup
 - mounts
 ```
 
 以下示例显示某个通用 `cloud_init_modules` 节的大致内容。
+
 ```bash
 cloud_init_modules:
  - migrator
@@ -86,6 +80,7 @@ datasource_list: [ Azure ]
 <!-- Not Available on  [remove the swap file](https://access.redhat.com/documentation/red_hat_enterprise_linux/6/html/storage_administration_guide/swap-removing-file)-->
 
 对于已启用交换文件的 CentOS 映像，可运行以下命令来关闭交换文件：
+
 ```bash
 sudo swapoff /mnt/resource/swapfile
 ```

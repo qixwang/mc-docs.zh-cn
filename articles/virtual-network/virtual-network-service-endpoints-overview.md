@@ -11,33 +11,33 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 11/08/2019
-ms.date: 04/30/2020
+ms.date: 06/15/2020
 ms.author: v-yeche
 ms.custom: ''
-ms.openlocfilehash: 31b547264b6fb6281435f4369e62e2c161f3e7fb
-ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
+ms.openlocfilehash: 6eb4ed7cddf860e8a9b7f8bbeb5748d4d0093a79
+ms.sourcegitcommit: ff67734e01c004be575782b4812cfe857e435f4d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82093403"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84487069"
 ---
 # <a name="virtual-network-service-endpoints"></a>虚拟网络服务终结点
 
 虚拟网络 (VNet) 服务终结点可以扩展虚拟网络专用地址空间。 这些终结点还可以通过直接连接将 VNet 的标识扩展到 Azure 服务。 使用终结点可以保护关键的 Azure 服务资源，只允许在客户自己的虚拟网络中对其进行访问。 从 VNet 发往 Azure 服务的流量始终保留在 Azure 主干网络中。
 
-此功能适用于以下 Azure 服务和区域。 括号中是 Microsoft.\* 资源。  在为服务配置服务终结点时，请从子网端启用此资源：
+此功能适用于以下 Azure 服务和区域。 括号中是 Microsoft.\* 资源。** 在为服务配置服务终结点时，请从子网端启用此资源：
 
 **正式发布版**
 
-- **[Azure 存储](../storage/common/storage-network-security.md?toc=%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network)** (Microsoft.Storage)：  在所有 Azure 区域已推出正式版。
-- **[Azure SQL 数据库](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fvirtual-network%2ftoc.json)** (Microsoft.Sql)：  在所有 Azure 区域已推出正式版。
-- **[Azure SQL 数据仓库](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fvirtual-network%2ftoc.json)** (Microsoft.Sql)：  在所有 Azure 区域已推出正式版。
-- **[Azure Database for PostgreSQL 服务器](../postgresql/howto-manage-vnet-using-portal.md?toc=%2fvirtual-network%2ftoc.json)** (Microsoft.Sql)：  在可以使用数据库服务的 Azure 区域中通常可用。
-- **[Azure Database for MySQL 服务器](../mysql/howto-manage-vnet-using-portal.md?toc=%2fvirtual-network%2ftoc.json)** (Microsoft.Sql)：  在可以使用数据库服务的 Azure 区域中通常可用。
-- **[Azure Database for MariaDB](/mariadb/concepts-data-access-security-vnet)** (Microsoft.Sql)：  在可以使用数据库服务的 Azure 区域中通常可用。
-- **[Azure Cosmos DB](../cosmos-db/vnet-service-endpoint.md?toc=%2fvirtual-network%2ftoc.json)** (Microsoft.AzureCosmosDB)：  在所有 Azure 区域已推出正式版。
-- **[Azure Key Vault](../key-vault/key-vault-overview-vnet-service-endpoints.md)** (Microsoft.KeyVault)：  在所有 Azure 区域已推出正式版。
-- **[Azure 服务总线](../service-bus-messaging/service-bus-service-endpoints.md?toc=%2fvirtual-network%2ftoc.json)** (Microsoft.ServiceBus)：  在所有 Azure 区域已推出正式版。
+- **[Azure 存储](../storage/common/storage-network-security.md?toc=%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network)** (Microsoft.Storage)：** 在所有 Azure 区域已推出正式版。
+- **[Azure SQL 数据库](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fvirtual-network%2ftoc.json)** (Microsoft.Sql)：** 在所有 Azure 区域已推出正式版。
+- **[Azure SQL 数据仓库](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fvirtual-network%2ftoc.json)** (Microsoft.Sql)：** 在所有 Azure 区域已推出正式版。
+- **[Azure Database for PostgreSQL 服务器](../postgresql/howto-manage-vnet-using-portal.md?toc=%2fvirtual-network%2ftoc.json)** (Microsoft.Sql)：** 在可以使用数据库服务的 Azure 区域中通常可用。
+- **[Azure Database for MySQL 服务器](../mysql/howto-manage-vnet-using-portal.md?toc=%2fvirtual-network%2ftoc.json)** (Microsoft.Sql)：** 在可以使用数据库服务的 Azure 区域中通常可用。
+- **[Azure Database for MariaDB](/mariadb/concepts-data-access-security-vnet)** (Microsoft.Sql)：** 在可以使用数据库服务的 Azure 区域中通常可用。
+- **[Azure Cosmos DB](../cosmos-db/vnet-service-endpoint.md?toc=%2fvirtual-network%2ftoc.json)** (Microsoft.AzureCosmosDB)：** 在所有 Azure 区域已推出正式版。
+- **[Azure Key Vault](../key-vault/general/overview-vnet-service-endpoints.md)** (Microsoft.KeyVault)：** 在所有 Azure 区域已推出正式版。
+- **[Azure 服务总线](../service-bus-messaging/service-bus-service-endpoints.md?toc=%2fvirtual-network%2ftoc.json)** (Microsoft.ServiceBus)：** 在所有 Azure 区域已推出正式版。
 
     <!--Not Available on - **[Azure Event Hubs](../event-hubs/event-hubs-service-endpoints.md?toc=%2fvirtual-network%2ftoc.json)** (*Microsoft.EventHub*): Generally available in all Azure regions.-->
     <!--Not Available on - **Azure Event Hubs**: Generally available in all Azure regions.-->
@@ -85,11 +85,9 @@ ms.locfileid: "82093403"
 
 ## <a name="secure-azure-service-access-from-on-premises"></a>保护从本地进行的 Azure 服务访问
 
-    By default, Azure service resources secured to virtual networks are not reachable from on-premises networks. If you want to allow traffic from on-premises, you must also allow public (typically, NAT) IP addresses from your on-premises or ExpressRoute. These IP addresses can be added through the IP firewall configuration for Azure service resources.
+默认情况下，无法从本地网络访问在虚拟网络中保护的 Azure 服务资源。 要允许来自本地的流量，还必须允许来自本地或 ExpressRoute 的公共（通常为 NAT）IP 地址。 可通过 Azure 服务资源的 IP 防火墙配置添加这些 IP 地址。
 
-    ExpressRoute: If you are using [ExpressRoute](../expressroute/expressroute-introduction.md?toc=%2fvirtual-network%2ftoc.json) from your premises, for public peering or Azure peering, you will need to identify the NAT IP addresses that are used. For public peering, each ExpressRoute circuit by default uses two NAT IP addresses applied to Azure service traffic when the traffic enters the Azure network backbone. For Azure peering, the NAT IP address(es) that are used are either customer provided or are provided by the service provider. To allow access to your service resources, you must allow these public IP addresses in the resource IP firewall setting. To find your public peering ExpressRoute circuit IP addresses, [open a support ticket with ExpressRoute](https://support.azure.cn/zh-cn/support/support-azure/) via the Azure portal.
-  
-    <!-- Not Available on [NAT for ExpressRoute public and Azure peering.](../expressroute/expressroute-nat.md?toc=%2fvirtual-network%2ftoc.json#nat-requirements-for-azure-public-peering)-->
+ExpressRoute：如果在本地使用 [ExpressRoute](../expressroute/expressroute-introduction.md?toc=%2fvirtual-network%2ftoc.json) 进行公共对等互连或 Azure 对等互连，则需标识所用的 NAT IP 地址。 进行公共对等互连时，每条 ExpressRoute 线路默认情况下会使用两个 NAT IP 地址。当流量进入 Azure 网络主干时，会向 Azure 服务流量应用这些地址。 进行 Azure 对等互连时，NAT IP 地址由客户或服务提供商提供。 若要允许访问服务资源，必须在资源 IP 防火墙设置中允许这些公共 IP 地址。 若要查找公共对等互连 ExpressRoute 线路 IP 地址，请通过 Azure 门户[开具 ExpressRoute 支持票证](https://support.azure.cn/support/support-azure/)。 若要详细了解 ExpressRoute 公共对等互连和 Azure 对等互连的 NAT，请参阅 [ExpressRoute NAT 要求](../expressroute/expressroute-nat.md?toc=%2fvirtual-network%2ftoc.json#nat-requirements-for-azure-public-peering)。
 
 ![在虚拟网络中保护 Azure 服务](./media/virtual-network-service-endpoints-overview/VNet_Service_Endpoints_Overview.png)
 
@@ -120,7 +118,7 @@ ms.locfileid: "82093403"
     <!--Not Available on [egress with network virtual appliances](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/nva-ha)-->
 
 - **在直接部署到虚拟网络的服务中保护 Azure 资源**：可将各种 Azure 服务直接部署到虚拟网络中的特定子网。 可以通过在托管服务子网上设置服务终结点，在[托管服务](virtual-network-for-azure-services.md)子网中保护 Azure 服务资源。
-- **来自 Azure 虚拟机的磁盘流量**：托管和非托管磁盘的虚拟机磁盘流量不受 Azure 存储的服务终结点路由更改的影响。 此流量包括 diskIO 以及装载和卸载。 可以通过服务终结点和 [Azure 存储网络规则](../storage/common/storage-network-security.md?toc=%2fvirtual-network%2ftoc.json)将对页 Blob 的 REST 访问权限限制给选定的网络。 
+- **来自 Azure 虚拟机的磁盘流量**：托管和非托管磁盘的虚拟机磁盘流量不受 Azure 存储的服务终结点路由更改的影响。 此流量包括 diskIO 以及装载和卸载。 可以通过服务终结点和 [Azure 存储网络规则](../storage/common/storage-network-security.md?toc=%2fvirtual-network%2ftoc.json)限制对页 blob 的 REST 访问以选择网络。 
 
 ### <a name="logging-and-troubleshooting"></a>日志记录和故障排除
 
@@ -137,7 +135,7 @@ ms.locfileid: "82093403"
 
 ## <a name="provisioning"></a>设置
 
-对虚拟网络拥有写入访问权限的用户可在虚拟网络上独立配置服务终结点。 若要在 VNet 中保护 Azure 服务资源，用户必须对所添加的子网拥有“Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action”权限  。 内置的服务管理员角色默认包括此权限。 可以通过创建自定义角色来修改权限。
+对虚拟网络拥有写入访问权限的用户可在虚拟网络上独立配置服务终结点。 若要在 VNet 中保护 Azure 服务资源，用户必须对所添加的子网拥有“Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action”权限**。 内置的服务管理员角色默认包括此权限。 可以通过创建自定义角色来修改权限。
 
 有关内置角色的详细信息，请参阅 [Azure 资源的内置角色](../role-based-access-control/built-in-roles.md?toc=%2fvirtual-network%2ftoc.json)。 有关将特定权限分配给自定义角色的详细信息，请参阅 [Azure 资源的自定义角色](../role-based-access-control/custom-roles.md?toc=%2fvirtual-network%2ftoc.json)。
 

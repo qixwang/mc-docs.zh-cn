@@ -8,20 +8,20 @@ ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 01/30/2020
-ms.date: 03/16/2020
-ms.openlocfilehash: 0e83ef6fce15b84fb196c8d9aff19e00205e90a8
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 06/09/2020
+ms.openlocfilehash: ebf86d531711eb5e33ff5f9f047e74f895fef34a
+ms.sourcegitcommit: c4fc01b7451951ef7a9616fca494e1baf29db714
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80243738"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84564276"
 ---
 #     <a name="custom-entity-lookup-cognitive-skill-preview"></a>自定义实体查找认知技能（预览版）
 
 > [!IMPORTANT] 
 > 此技能目前以公共预览版提供。 提供的预览版功能不附带服务级别协议，我们不建议将其用于生产工作负荷。目前不提供门户或 .NET SDK 支持。
 
-“自定义实体查找”技能可在用户自定义的单词和短语列表中查找文本。  它使用此列表为包含任何匹配实体的所有文档加上标签。 该技能还支持一定程度的模糊匹配，应用此匹配方法可以查找类似但不完全相同的匹配项。  
+“自定义实体查找”技能可在用户自定义的单词和短语列表中查找文本。**** 它使用此列表为包含任何匹配实体的所有文档加上标签。 该技能还支持一定程度的模糊匹配，应用此匹配方法可以查找类似但不完全相同的匹配项。  
 
 此技能未绑定到认知服务 API，在预览期可免费使用。 但是，仍然应该[附加一个认知服务资源](https://docs.azure.cn/search/cognitive-search-attach-cognitive-services)，以覆盖每日扩充限制。 每日限制适用于通过 Azure 认知搜索免费访问认知服务的情况。
 
@@ -30,7 +30,7 @@ Microsoft.Skills.Text.CustomEntityLookupSkill
 
 ## <a name="data-limits"></a>数据限制
 + 支持的最大输入记录大小为 256 MB。 如果在将数据发送到自定义实体查找技能之前需要将其拆分，请考虑使用[文本拆分技能](cognitive-search-skill-textsplit.md)。
-+ 如果使用 *entitiesDefitionUri* 参数提供实体定义表，则支持的最大表大小为 10 MB。 
++ 如果使用 entitiesDefinitionUri** 参数提供实体定义表，则支持的最大表大小为 10 MB。 
 + 如果使用 *inlineEntitiesDefinition* 参数以内联方式定义实体，则支持的最大大小为 10 KB。
 
 ## <a name="skill-parameters"></a>技能参数
@@ -64,13 +64,13 @@ Microsoft.Skills.Text.CustomEntityLookupSkill
 
 可通过 3 种不同的方式向自定义实体查找技能提供自定义实体列表。 可以在 .CSV 文件、.JSON 文件中提供列表，或者以内联定义的形式在技能定义中提供列表。  
 
-如果定义文件是 .CSV 或 .JSON 文件，则需要提供该文件的路径作为 *entitiesDefitionUri* 参数的一部分。 在这种情况下，将在每次开始运行索引器时下载该文件一次。 每次想要运行索引器时，都必须能够访问该文件。 此外，该文件必须采用 UTF-8 编码。
+如果定义文件是 .CSV 或 .JSON 文件，则需要提供该文件的路径作为 entitiesDefinitionUri** 参数的一部分。 在这种情况下，将在每次开始运行索引器时下载该文件一次。 每次想要运行索引器时，都必须能够访问该文件。 此外，该文件必须采用 UTF-8 编码。
 
 如果以内联方式提供定义，应将其作为 *inlineEntitiesDefinition* 技能参数的内容提供。 
 
 ### <a name="csv-format"></a>CSV 格式
 
-可以提供自定义实体的定义来查找逗号分隔值 (CSV) 文件中的内容，方法是提供该文件的路径并在 *entitiesDefitionUri* 技能参数中设置该路径。 该路径应位于 https 位置。 定义文件的最大大小为 10 MB。
+可以提供自定义实体的定义来查找逗号分隔值 (CSV) 文件中的内容，方法是提供该文件的路径并在 entitiesDefinitionUri** 技能参数中设置该路径。 该路径应位于 https 位置。 定义文件的最大大小为 10 MB。
 
 CSV 格式很简单。 每行代表一个唯一实体，如下所示：
 
@@ -86,7 +86,7 @@ Satya Nadella
 
 还可以提供自定义实体的定义，以查找 JSON 文件中的内容。 JSON 格式提供的灵活性要大一些，因为它允许按字词定义匹配规则。 例如，可为每个字词指定模糊匹配距离（Damerau-Levenshtein 距离），或者匹配是否要区分大小写。 
 
- 与 CSV 文件一样，需要提供 JSON 文件的路径，并在 *entitiesDefitionUri* 技能参数中设置该路径。 该路径应位于 https 位置。 定义文件的最大大小为 10 MB。
+ 与 CSV 文件一样，需要提供 JSON 文件的路径，并在 entitiesDefinitionUri** 技能参数中设置该路径。 该路径应位于 https 位置。 定义文件的最大大小为 10 MB。
 
 最基本的 JSON 自定义实体列表定义可以是要匹配的实体列表：
 
@@ -104,7 +104,7 @@ Satya Nadella
 ]
 ```
 
-更复杂的 JSON 定义示例可以选择性地提供每个实体的 ID、说明、类型和子类型，以及其他别名。  如果匹配了某个别名字词，则也会返回该实体：
+更复杂的 JSON 定义示例可以选择性地提供每个实体的 ID、说明、类型和子类型，以及其他别名。** 如果匹配了某个别名字词，则也会返回该实体：
 
 ```json
 [ 

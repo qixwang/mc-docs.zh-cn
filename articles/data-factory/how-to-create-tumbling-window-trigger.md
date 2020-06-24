@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 origin.date: 09/11/2019
-ms.date: 05/11/2020
-ms.openlocfilehash: 15a13123c4077053c7381ee42f94dbfdf2b4faf8
-ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
+ms.date: 06/15/2020
+ms.openlocfilehash: d961df3ba469b99b0f232a0efa96e98682a23c76
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82198249"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723445"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-tumbling-window"></a>创建按翻转窗口运行管道的触发器
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -28,9 +28,9 @@ ms.locfileid: "82198249"
 
 ## <a name="data-factory-ui"></a>数据工厂 UI
 
-1. 若要在数据工厂 UI 中创建翻转窗口触发器，请选择“触发器”  选项卡，然后选择“新建”  。 
-1. 在触发器配置窗格打开后，选择“翻转窗口”  ，然后定义翻转窗口触发器属性。 
-1. 完成后，选择“保存”  。
+1. 若要在数据工厂 UI 中创建翻转窗口触发器，请选择“触发器”**** 选项卡，然后选择“新建”****。 
+1. 在触发器配置窗格打开后，选择“翻转窗口”****，然后定义翻转窗口触发器属性。 
+1. 完成后，选择“保存”****。
 
 ![在 Azure 门户中创建翻转窗口触发器](media/how-to-create-tumbling-window-trigger/create-tumbling-window-trigger.png)
 
@@ -111,6 +111,9 @@ ms.locfileid: "82198249"
 | **dependsOn: size** | 依赖项翻转窗口的大小。 | Timespan<br/>(hh:mm:ss)  | 一个正的时间跨度值，其中默认值为子触发器的窗口大小  | 否 |
 | **dependsOn: offset** | 依赖项触发器的偏移量。 | Timespan<br/>(hh:mm:ss) |  在自我依赖项中必须为负的时间跨度值。 如果未指定任何值，则该窗口与触发器本身相同。 | 自我依赖项：是<br/>其他：否  |
 
+> [!NOTE]
+> 发布翻转窗口触发器后，无法编辑“间隔”和“频率”**** ****。
+
 ### <a name="windowstart-and-windowend-system-variables"></a>WindowStart 和 WindowEnd 系统变量
 
 可以在**管道**定义中（即，作为查询的一部分），使用翻转窗口触发器的 **WindowStart** 和 **WindowEnd** 系统变量。 **触发器**定义中将系统变量作为参数传递给管道。 下面的示例演示如何将这些变量作为参数传递：
@@ -149,8 +152,8 @@ ms.locfileid: "82198249"
 ### <a name="existing-triggerresource-elements"></a>现有 TriggerResource 元素
 以下各点适用于现有 **TriggerResource** 元素：
 
-* 如果触发器的 **frequency** 元素（或窗口大小）的值更改，则已处理窗口的状态不会  重置。 触发器会根据新的窗口大小继续触发一段时间（从上次执行开始计算）。
-* 如果触发器的 **endTime** 元素的值更改（添加或更新），则已处理窗口的状态不会  重置。 触发器会遵循新的 **endTime** 值。 如果新的 **endTime** 值在已执行的窗口之前，则触发器会停止。 否则，触发器会在遇到新的 **endTime** 值停止。
+* 如果触发器的 **frequency** 元素（或窗口大小）的值更改，则已处理窗口的状态不会** 重置。 触发器会根据新的窗口大小继续触发一段时间（从上次执行开始计算）。
+* 如果触发器的 **endTime** 元素的值更改（添加或更新），则已处理窗口的状态不会** 重置。 触发器会遵循新的 **endTime** 值。 如果新的 **endTime** 值在已执行的窗口之前，则触发器会停止。 否则，触发器会在遇到新的 **endTime** 值停止。
 
 ### <a name="tumbling-window-trigger-dependency"></a>翻转窗口触发器依赖项
 

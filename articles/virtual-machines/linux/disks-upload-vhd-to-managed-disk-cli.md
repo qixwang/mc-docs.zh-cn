@@ -1,19 +1,19 @@
 ---
-title: 将 VHD 上传到 Azure，或将托管磁盘复制到其他区域 - Azure CLI
+title: 将 VHD 上传到 Azure 或跨区域复制磁盘 - Azure CLI
 description: 了解如何使用 Azure CLI 通过直接上传将 VHD 上传到 Azure 托管磁盘，以及如何跨区域复制托管磁盘。
 services: virtual-machines,storage
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 05/18/2020
+ms.date: 06/05/2020
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: a5127f3566f1609ac72d26a21e0850b66403d46e
-ms.sourcegitcommit: 436a5dd9a446fe7b6d3c4d5bc76b652f7848c1ba
+ms.openlocfilehash: 93758fb1054c149a0f226a0b816039a2c2af4057
+ms.sourcegitcommit: 285649db9b21169f3136729c041e4d04d323229a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83393121"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84684002"
 ---
 # <a name="upload-a-vhd-to-azure-or-copy-a-managed-disk-to-another-region---azure-cli"></a>将 VHD 上传到 Azure，或将托管磁盘复制到其他区域 - Azure CLI
 
@@ -114,7 +114,7 @@ targetDiskName = <targetDiskNameHere>
 targetRG = <targetResourceGroupHere>
 targetLocale = <yourTargetLocationHere>
 
-sourceDiskSizeBytes= $(az disk show -g $sourceRG -n $sourceDiskName --query '[uniqueId]' -o tsv)
+sourceDiskSizeBytes= $(az disk show -g $sourceRG -n $sourceDiskName --query '[diskSizeBytes]' -o tsv)
 
 az disk create -g $targetRG -n $targetDiskName -l $targetLocale --for-upload --upload-size-bytes $(($sourceDiskSizeBytes+512)) --sku standard_lrs
 

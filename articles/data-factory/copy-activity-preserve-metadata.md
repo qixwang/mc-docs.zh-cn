@@ -9,15 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-origin.date: 03/24/2020
-ms.date: 05/11/2020
+origin.date: 05/06/2020
+ms.date: 06/15/2020
 ms.author: v-jay
-ms.openlocfilehash: e2b7a6b4d01e124ddcbb7763c9ff698f358eab72
-ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
+ms.openlocfilehash: 3b073a73e56bc457ab6e97cb50af4338555b47d8
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82198267"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723473"
 ---
 #  <a name="preserve-metadata-and-acls-using-copy-activity-in-azure-data-factory"></a>使用 Azure 数据工厂中的复制活动保留元数据和 ACL
 
@@ -32,9 +32,11 @@ ms.locfileid: "82198267"
 复制活动支持在数据复制期间保留以下属性：
 
 - **所有客户指定的元数据** 
-- 以及以下五个数据存储内置系统属性：`contentType`、`contentLanguage`（Amazon S3 除外）、`contentEncoding`、`contentDisposition`、`cacheControl`。
+- 以及以下五个数据存储内置系统属性：`contentType`、`contentLanguage`（Amazon S3 除外）、`contentEncoding`、`contentDisposition`、`cacheControl`****。
 
-按原样将文件从 Amazon S3/Azure Data Lake Storage Gen2/Azure Blob 复制到二进制格式的 Azure Data Lake Storage Gen2/Azure Blob 时，可以在用于活动创作的“复制活动” > “设置”选项卡或复制数据工具的“设置”页上找到“保留”选项   。
+**处理元数据的差异：** Amazon S3 和 Azure 存储允许在客户指定的元数据键中使用不同的字符集。 当你选择使用复制活动保留元数据时，ADF 会自动将无效字符替换为“_”。
+
+按原样将文件从 Amazon S3/Azure Data Lake Storage Gen2/Azure Blob 复制到二进制格式的 Azure Data Lake Storage Gen2/Azure Blob 时，可以在用于活动创作的“复制活动” > “设置”选项卡或复制数据工具的“设置”页上找到“保留”选项**** **** **** ****。
 
 ![复制活动保留元数据](./media/copy-activity-preserve-metadata/copy-activity-preserve-metadata.png)
 

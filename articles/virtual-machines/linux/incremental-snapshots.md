@@ -1,26 +1,23 @@
 ---
-title: 使用增量快照备份和恢复非托管 Azure Linux VM 磁盘
-description: 创建自定义解决方案，使用增量快照备份和恢复 Azure Linux 虚拟机磁盘。
-services: virtual-machines-linux
-documentationcenter: na
+title: 使用增量快照备份和恢复非托管磁盘
+description: 创建自定义解决方案，以使用增量快照备份和恢复 Azure 虚拟机磁盘。
 author: rockboyfor
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.subservice: disks
 ms.workload: storage
-ms.tgt_pltfrm: vm-linux
 ms.topic: article
 origin.date: 09/15/2018
-ms.date: 02/10/2020
+ms.date: 06/15/2020
 ms.author: v-yeche
-ms.openlocfilehash: 9ecd353cc122f433286d87d2275c74c19b28e25f
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: b52a7a730d81e81e06ebca7a1c750ba77ee197ce
+ms.sourcegitcommit: c4fc01b7451951ef7a9616fca494e1baf29db714
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77428811"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84564350"
 ---
-# <a name="back-up-azure-unmanaged-vm-disks-with-incremental-snapshots"></a>使用递增快照备份 Azure 非托管 VM 磁盘
-
+<!--Verified successfully by PG team-->
+# <a name="back-up-azure-unmanaged-vm-disks-with-incremental-snapshots"></a>通过递增快照备份 Azure 非托管 VM 磁盘
 [!INCLUDE [virtual-machines-incremental-snapshots](../../../includes/virtual-machines-incremental-snapshots.md)]
 
-<!-- Update_Description: update meta properties -->
+<!-- Update_Description: update meta properties, wording update, update link -->

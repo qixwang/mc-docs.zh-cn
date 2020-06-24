@@ -3,14 +3,14 @@ title: 适用于 Azure Functions 的 Azure Blob 存储触发器
 description: 了解如何在 Azure Blob 存储数据更改时运行 Azure 函数。
 author: craigshoemaker
 ms.topic: reference
-ms.date: 03/30/2020
+ms.date: 06/05/2020
 ms.author: v-junlch
-ms.openlocfilehash: 140bc1b8e6ce4b07325bca9116bb436fca36fe71
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 60e57e2d6794feb8f0591182e186288e3b054f2d
+ms.sourcegitcommit: f1a76ee3242698123a3d77f44c860db040b48f70
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80581791"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84563812"
 ---
 # <a name="azure-blob-storage-trigger-for-azure-functions"></a>适用于 Azure Functions 的 Azure Blob 存储触发器
 
@@ -60,7 +60,7 @@ blob 触发器路径 `samples-workitems/{name}` 中的字符串 `{name}` 会创�
 
 以下示例显示了 *function.json* 文件中的一个 blob 触发器绑定以及使用该绑定的代码。 在 `samples-workitems` [容器](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources)中添加或更新 Blob 时，该函数会写入一条日志。
 
-下面是 function.json  文件中的绑定数据：
+下面是 function.json** 文件中的绑定数据：
 
 ```json
 {
@@ -107,7 +107,7 @@ public static void Run(CloudBlockBlob myBlob, string name, ILogger log)
 
 以下示例显示了 *function.json* 文件中的一个 Blob 触发器绑定以及使用该绑定的 [JavaScript 代码](functions-reference-node.md)。 在 `samples-workitems` 容器中添加或更新 Blob 时，该函数会写入日志。
 
-function.json  文件如下所示：
+function.json** 文件如下所示：
 
 ```json
 {
@@ -231,7 +231,7 @@ JavaScript 不支持特性。
 
 ## <a name="configuration"></a>配置
 
-下表解释了在 function.json  文件和 `BlobTrigger` 特性中设置的绑定配置属性。
+下表解释了在 function.json** 文件和 `BlobTrigger` 特性中设置的绑定配置属性。
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
@@ -239,7 +239,7 @@ JavaScript 不支持特性。
 |**direction** | 不适用 | 必须设置为 `in`。 在 Azure 门户中创建触发器时，会自动设置此属性。 [用法](#usage)部分中已阐述异常。 |
 |**name** | 不适用 | 表示函数代码中的 Blob 的变量的名称。 |
 |**路径** | **BlobPath** |要监视的[容器](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources)。  可以是某种 [Blob 名称模式](#blob-name-patterns)。 |
-|连接  | **Connection** | 包含要用于此绑定的存储连接字符串的应用设置的名称。 如果应用设置名称以“AzureWebJobs”开始，则只能在此处指定该名称的余下部分。 例如，如果将 `connection` 设置为“MyStorage”，函数运行时将会查找名为“AzureWebJobsMyStorage”的应用设置。 如果将 `connection` 留空，函数运行时将使用名为 `AzureWebJobsStorage` 的应用设置中的默认存储连接字符串。<br><br>连接字符串必须属于某个常规用途存储帐户，而不能属于[Blob 存储帐户](../storage/common/storage-account-overview.md#types-of-storage-accounts)。|
+|连接**** | **Connection** | 包含要用于此绑定的存储连接字符串的应用设置的名称。 如果应用设置名称以“AzureWebJobs”开始，则只能在此处指定该名称的余下部分。 例如，如果将 `connection` 设置为“MyStorage”，函数运行时将会查找名为“AzureWebJobsMyStorage”的应用设置。 如果将 `connection` 留空，函数运行时将使用名为 `AzureWebJobsStorage` 的应用设置中的默认存储连接字符串。<br><br>连接字符串必须属于某个常规用途存储帐户，而不能属于[Blob 存储帐户](../storage/common/storage-account-overview.md#types-of-storage-accounts)。|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -255,7 +255,7 @@ JavaScript 不支持特性。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-使用 `context.bindings.<NAME>` 访问 blob 数据，其中 `<NAME>` 与 function.json  中定义的值匹配。
+使用 `context.bindings.<NAME>` 访问 blob 数据，其中 `<NAME>` 与 function.json** 中定义的值匹配。
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -334,23 +334,23 @@ module.exports = function (context, myBlob) {
 
 Azure Functions 运行时确保没有为相同的新 blob 或更新 blob 多次调用 blob 触发器函数。 为了确定是否已处理给定的 blob 版本，它会维护 *blob 回执*。
 
-Azure Functions 将 Blob 回执存储在函数应用的 Azure 存储帐户中名为 azure-webjobs-hosts  的容器中（由 `AzureWebJobsStorage` 应用设置定义）。 Blob 回执包含以下信息：
+Azure Functions 将 Blob 回执存储在函数应用的 Azure 存储帐户中名为 azure-webjobs-hosts** 的容器中（由 `AzureWebJobsStorage` 应用设置定义）。 Blob 回执包含以下信息：
 
-* 触发的函数（"&lt;function app name>.Functions.&lt;function name>   "，例如："MyFunctionApp.Functions.CopyBlob"）
+* 触发的函数（"&lt;function app name>.Functions.&lt;function name>** **"，例如："MyFunctionApp.Functions.CopyBlob"）
 * 容器名称
 * Blob 类型（"BlockBlob" 或 "PageBlob"）
 * Blob 名称
 * ETag（blob 版本标识符，例如："0x8D1DC6E70A277EF"）
 
-若要强制重新处理某个 blob，可从 azure-webjobs-hosts  容器中手动删除该 blob 的 blob 回执。 虽然重新处理可能不会立即发生，但它肯定会在稍后的时间点发生。
+若要强制重新处理某个 blob，可从 azure-webjobs-hosts** 容器中手动删除该 blob 的 blob 回执。 虽然重新处理可能不会立即发生，但它肯定会在稍后的时间点发生。 若要立即重新处理，可以更新 azure-webjobs-hosts/blobscaninfo 中的 scaninfo Blob** **。 将再次扫描 `LatestScan` 属性后具有上次修改时间戳的任何 Blob。
 
 ## <a name="poison-blobs"></a>有害 Blob
 
 当给定 blob 的 blob 触发函数失败时，Azure Functions 将默认重试该函数共计 5 次。
 
-如果 5 次尝试全部失败，Azure Functions 会将消息添加到名为 webjobs-blobtrigger-poison  的存储队列。 最大尝试次数可配置。 使用相同的 MaxDequeueCount 设置处理有害 Blob 和有害队列消息。 有害 Blob 的队列消息是包含以下属性的 JSON 对象：
+如果 5 次尝试全部失败，Azure Functions 会将消息添加到名为 webjobs-blobtrigger-poison** 的存储队列。 最大尝试次数可配置。 使用相同的 MaxDequeueCount 设置处理有害 Blob 和有害队列消息。 有害 Blob 的队列消息是包含以下属性的 JSON 对象：
 
-* FunctionId（格式为 &lt;function app name>.Functions.&lt;function name>   ）
+* FunctionId（格式为 &lt;function app name>.Functions.&lt;function name>** **）
 * BlobType（"BlockBlob" 或 "PageBlob"）
 * ContainerName
 * BlobName

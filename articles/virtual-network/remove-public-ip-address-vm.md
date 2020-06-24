@@ -6,19 +6,20 @@ services: virtual-network
 documentationcenter: ''
 author: rockboyfor
 ms.service: virtual-network
+ms.subservice: ip-services
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 12/04/2019
-ms.date: 05/06/2020
+ms.date: 06/15/2020
 ms.author: v-yeche
-ms.openlocfilehash: e015e1ef5381f9a9ebb3a4cf7e5125f75df001dd
-ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
+ms.openlocfilehash: 2c12ca419b82f4f103ec87e2b87c5a6da8ecf950
+ms.sourcegitcommit: ff67734e01c004be575782b4812cfe857e435f4d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "83002023"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84487087"
 ---
 <!--Verified successfully on portal-->
 # <a name="dissociate-a-public-ip-address-from-an-azure-vm"></a>将公共 IP 地址与 Azure VM 取消关联 
@@ -31,15 +32,15 @@ ms.locfileid: "83002023"
 
 1. 登录到 [Azure 门户](https://portal.azure.cn)。
 2. 浏览或搜索要将公共 IP 地址与之取消关联的虚拟机，然后将其选中。
-3. 在“VM”页中选择“概览”  ，然后选择公共 IP 地址，如下图所示：
+3. 在“VM”页中选择“概览”****，然后选择公共 IP 地址，如下图所示：
 
     ![选择公共 IP](./media/remove-public-ip-address/remove-public-ip-address-2.png)
 
-4. 在公共 IP 地址页中选择“概览”  ，然后选择“取消关联”，如下图所示： 
+4. 在公共 IP 地址页中选择“概览”****，然后选择“取消关联”，如下图所示：****
 
     ![取消关联公共 IP](./media/remove-public-ip-address/remove-public-ip-address-3.png)
 
-5. 在“取消关联公共 IP 地址”中，选择“是”。  
+5. 在“取消关联公共 IP 地址”中，选择“是”。**** ****
 
 ## <a name="azure-cli"></a>Azure CLI
 
@@ -138,5 +139,4 @@ ms.locfileid: "83002023"
 
 - 了解如何[将公共 IP 地址关联到 VM](associate-public-ip-address-vm.md)。
 
-<!-- Update_Description: new article about remove public ip address vm -->
-<!--NEW.date: 01/13/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

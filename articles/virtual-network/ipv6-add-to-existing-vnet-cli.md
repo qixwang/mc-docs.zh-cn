@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-origin.date: 10/23/2019
-ms.date: 11/25/2019
+origin.date: 03/31/2020
+ms.date: 06/15/2020
 ms.author: v-yeche
-ms.openlocfilehash: 9548bca2e1c5029df127214f7d3a93b01df63bb3
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 8d5c271c19fdcfc49ba65e232aa9a55f68005a62
+ms.sourcegitcommit: ff67734e01c004be575782b4812cfe857e435f4d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74203728"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84487036"
 ---
 # <a name="add-ipv6-to-an-ipv4-application-in-azure-virtual-network---azure-cli"></a>将 IPv6 添加到 Azure 虚拟网络中的 IPv4 应用程序 - Azure CLI
 
@@ -31,19 +31,12 @@ ms.locfileid: "74203728"
 
 [!INCLUDE [azure-cli-2-azurechinacloud-environment-parameter](../../includes/azure-cli-2-azurechinacloud-environment-parameter.md)]
 
-如果决定在本地安装并使用 Azure CLI，本快速入门要求使用 Azure CLI 2.0.28 或更高版本。 若要查找已安装的版本，请运行 `az --version`。 有关安装或升级信息，请参阅[安装 Azure CLI](https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest)。
+本快速入门需要使用 Azure CLI 版本 2.0.28 或更高版本。 若要查找已安装的版本，请运行 `az --version`。 有关安装或升级信息，请参阅[安装 Azure CLI](https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest)。
+
+<!--Not Available on If you decide to install and use Azure CLI locally instead,-->
 
 ## <a name="prerequisites"></a>先决条件
 
-### <a name="register-the-service"></a>注册服务
-
-在 Azure 中部署双堆栈应用程序之前，必须先使用以下 Azure CLI 为此功能配置订阅：
-
-```azurelci
-az provider register --namespace Microsoft.Network
-```
-
-### <a name="create-a-standard-load-balancer"></a>创建标准负载均衡器
 本文假设已根据以下文章所述部署了一个标准负载均衡器：[快速入门：创建标准负载均衡器 - Azure CLI](../load-balancer/quickstart-load-balancer-standard-public-cli.md)。
 
 ## <a name="create-ipv6-addresses"></a>创建 IPv6 地址
@@ -157,14 +150,9 @@ az network nic ip-config create \
 ## <a name="view-ipv6-dual-stack-virtual-network-in-azure-portal"></a>在 Azure 门户中查看 IPv6 双堆栈虚拟网络
 可以在 Azure 门户中查看 IPv6 双堆栈虚拟网络，如下所示：
 1. 在门户的搜索栏中输入 *myVnet*。
-2. 当“myVnet”出现在搜索结果中时，将其选中。  此时会启动名为 *myVNet* 的双堆栈虚拟网络的“概述”页。  该双堆栈虚拟网络显示了位于 *mySubnet* 双堆栈子网中的三个 NIC，这些 NIC 采用 IPv4 和 IPv6 配置。
+2. 当“myVnet”出现在搜索结果中时，将其选中。**** 此时会启动名为 *myVNet* 的双堆栈虚拟网络的“概述”页。**** 该双堆栈虚拟网络显示了位于 *mySubnet* 双堆栈子网中的三个 NIC，这些 NIC 采用 IPv4 和 IPv6 配置。
 
     ![Azure 中的 IPv6 双堆栈虚拟网络](./media/ipv6-add-to-existing-vnet-powershell/ipv6-dual-stack-vnet.png)
-
-> [!NOTE]
-> 当前版本的 Azure 虚拟网络 IPv6 在 Azure 门户中以只读的形式提供。
-
-<!--MOONCAKE: REMOVE preview-->
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -178,5 +166,4 @@ Remove-AzResourceGroup -Name MyAzureResourceGroupSLB
 
 在本文中，你已将采用 IPv4 前端 IP 配置的现有标准负载均衡器更新为双堆栈（IPv4 和 IPv6）配置。 你还将 IPv6 配置添加到了后端池中 VM 的 NIC。 若要详细了解 Azure 虚拟网络中的 IPv6 支持，请参阅 [Azure 虚拟网络 IPv6 是什么？](ipv6-overview.md)
 
-<!-- Update_Description: new article about ipv6 add to existing vnet cli -->
-<!--NEW.date: 11/25/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

@@ -10,18 +10,21 @@ ms.topic: conceptual
 author: WenJason
 ms.author: v-jay
 ms.reviewer: mathoma
-origin.date: 02/07/2019
-ms.date: 03/30/2020
-ms.openlocfilehash: 20e8ea13a4c07da69326deb6d83a0b51138d29a1
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+origin.date: 04/28/2020
+ms.date: 06/15/2020
+ms.openlocfilehash: 41dfc18feed7a1d9f607493c04d44db7ce72ca92
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80341843"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723636"
 ---
 # <a name="configure-replication-in-an-azure-sql-database-managed-instance-database"></a>在 Azure SQL 数据库托管实例数据库中配置复制
 
-使用事务复制，可将数据从 SQL Server 数据库或其他实例数据库复制到 Azure SQL 数据库托管实例数据库中。 
+使用事务复制，可将数据从 SQL Server 数据库或其他实例数据库复制到 Azure SQL 数据库托管实例数据库中。
+
+> [!NOTE]
+> 本文介绍了如何在 Azure SQL 托管实例中使用[事务复制](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication)。 它与活动异地复制或[故障转移组](/sql-database/sql-database-auto-failover-group)无关，这是一个 Azure SQL 托管实例功能，可用于创建单个实例的完整可读副本。
 
 本文介绍如何在托管实例发布服务器/分发服务器和托管实例订阅服务器之间配置复制。 
 
@@ -46,7 +49,7 @@ ms.locfileid: "80341843"
 - 发布服务器托管实例位于分发服务器和订阅服务器所在的同一个虚拟网络中，或者已在所有三个实体的虚拟网络之间建立 [vNet 对等互连](../virtual-network/tutorial-connect-virtual-networks-powershell.md)。 
 - 连接时，在复制参与者之间使用 SQL 身份验证。
 - 适用于复制工作目录的 Azure 存储帐户共享。
-- 需要在托管实例的 NSG 安全规则中打开端口 445（TCP 出站）才能访问 Azure 文件共享。  如果遇到错误“无法连接到 azure 存储\<存储帐户名称>，出现 os 错误53”，则需要将出站规则添加到相应 SQL 托管实例子网的 NSG。
+- 需要在托管实例的 NSG 安全规则中打开端口 445（TCP 出站）才能访问 Azure 文件共享。  如果遇到错误“无法连接到 azure 存储 \<storage account name>，出现 os 错误53”，则需要将出站规则添加到相应 SQL 托管实例子网的 NSG。
 
 
  > [!NOTE]

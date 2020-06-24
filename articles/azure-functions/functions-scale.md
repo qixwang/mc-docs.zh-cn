@@ -1,16 +1,16 @@
 ---
 title: Azure Functions 的缩放和托管
-description: 了解如何在 Azure Functions 消耗计划和高级计划之间进行选择。
+description: 了解如何在 Azure Functions 消耗计划之间进行选择。
 ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
-ms.date: 03/19/2020
+ms.date: 06/08/2020
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5d1b73c9c4d44917cecf61dad327c0e5350e22ab
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: c3bcb623c34ab5cafc391d02aabcc61e7ab08b6d
+ms.sourcegitcommit: f1a76ee3242698123a3d77f44c860db040b48f70
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79546875"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84563605"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Functions 的缩放和托管
 
@@ -30,15 +30,14 @@ ms.locfileid: "79546875"
 
 功能支持划分为以下两个类别：
 
-* 正式版 (GA)：完全受支持并获批在生产中使用。 
-* 预览版：尚未完全受支持，也未获批用于生产。 
+* 正式版 (GA)：完全受支持并获批在生产中使用。__
+* 预览版：尚未完全受支持，也未获批用于生产。__
 
-下表指出了在 Windows 或 Linux 上运行应用时，目前对三个托管计划的支持级别：
+下表指出了在 Windows 上运行应用时，目前对三个托管计划的支持级别：
 
 | | 消耗计划 | 专用计划 |
 |-|:----------------:|:------------:|:----------------:|
 | Windows | GA | GA |
-| Linux | GA | GA |
 
 ## <a name="consumption-plan"></a>消耗计划
 
@@ -73,7 +72,7 @@ ms.locfileid: "79546875"
 
 ### <a name="always-on"></a><a name="always-on"></a> Always On
 
-如果在应用服务计划上运行，应启用 AlwaysOn 设置，使函数应用能正常运行  。 在应用服务计划中，如果函数运行时处于不活动状态，几分钟后就会进入空闲状态，因此只有 HTTP 触发器才能“唤醒”函数。 只能对应用服务计划使用始终可用。 在消耗计划中，平台会自动激活函数应用。
+如果在应用服务计划上运行，应启用 AlwaysOn 设置，使函数应用能正常运行****。 在应用服务计划中，如果函数运行时处于不活动状态，几分钟后就会进入空闲状态，因此只有 HTTP 触发器才能“唤醒”函数。 只能对应用服务计划使用始终可用。 在消耗计划中，平台会自动激活函数应用。
 
 [!INCLUDE [Timeout Duration section](../../includes/functions-timeout-duration.md)]
 
@@ -82,7 +81,7 @@ ms.locfileid: "79546875"
 
 ## <a name="determine-the-hosting-plan-of-an-existing-application"></a>确定现有应用程序的托管计划
 
-要确定你的函数应用所使用的托管计划，请在 [Azure 门户](https://portal.azure.cn)中参阅函数应用的“概览”选项卡中的“应用服务计划/定价层”   。 对于应用服务计划，还指明了定价层。
+要确定你的函数应用所使用的托管计划，请在 [Azure 门户](https://portal.azure.cn)中参阅函数应用的“概览”选项卡中的“应用服务计划”**** ****。 若要查看定价层，请选择“应用服务计划”的名称，然后从左侧窗格中选择“属性”**** ****。
 
 ![在门户中查看缩放计划](./media/functions-scale/function-app-overview-portal.png)
 
@@ -97,7 +96,7 @@ az appservice plan list --query "[?id=='$appServicePlanId'].sku.tier" --output t
 
 ## <a name="storage-account-requirements"></a>存储帐户要求
 
-在任何计划中，函数应用需要一个支持 Azure Blob、队列、文件和表存储的常规 Azure 存储帐户。 这是因为 Functions 依赖 Azure 存储来执行管理触发器和记录函数执行等操作，但某些存储帐户不支持队列和表。 这些帐户包括仅限 blob 的存储帐户（包括高级存储）和使用区域冗余存储空间复制的常规用途存储帐户，已在创建函数应用时将从现有的“存储帐户”选项中过滤掉  。
+在任何计划中，函数应用需要一个支持 Azure Blob、队列、文件和表存储的常规 Azure 存储帐户。 这是因为 Azure Functions 依赖 Azure 存储来执行管理触发器和记录函数执行等操作，但某些存储帐户不支持队列和表。 这些帐户包括仅限 blob 的存储帐户（包括高级存储）和使用区域冗余存储空间复制的常规用途存储帐户，已在创建函数应用时将从现有的“存储帐户”选项中过滤掉****。
 
 触发器和绑定也可以使用函数应用使用的相同存储帐户来存储应用程序数据。 但是，对于存储密集型操作，应使用单独的存储帐户。  
 
@@ -105,7 +104,7 @@ az appservice plan list --query "[?id=='$appServicePlanId'].sku.tier" --output t
 
 <!-- JH: Does using a Premium Storage account improve perf? -->
 
-若要了解有关存储帐户类型的详细信息，请参阅 [Azure 存储服务简介](../storage/common/storage-introduction.md#azure-storage-services)。
+若要了解有关存储帐户类型的详细信息，请参阅 [Azure 存储服务简介](../storage/common/storage-introduction.md#core-storage-services)。
 
 ## <a name="how-the-consumption-plans-work"></a>消耗计划的工作原理
 
@@ -115,7 +114,7 @@ az appservice plan list --query "[?id=='$appServicePlanId'].sku.tier" --output t
 
 ### <a name="runtime-scaling"></a>运行时缩放
 
-Azure Functions 使用名为“缩放控制器”的组件来监视事件率以及确定是要横向扩展还是横向缩减。  缩放控制器针对每种触发器类型使用试探法。 例如，使用 Azure 队列存储触发器时，它会根据队列长度和最旧队列消息的期限进行缩放。
+Azure Functions 使用名为“缩放控制器”的组件来监视事件率以及确定是要横向扩展还是横向缩减。** 缩放控制器针对每种触发器类型使用试探法。 例如，使用 Azure 队列存储触发器时，它会根据队列长度和最旧队列消息的期限进行缩放。
 
 Azure Functions 的缩放单位为函数应用。 横向扩展函数应用时，将分配额外的资源来运行 Azure Functions 主机的多个实例。 相反，计算需求下降时，扩展控制器将删除函数主机实例。 当函数应用中没有运行函数时，实例数最终会*缩减*为零。
 
@@ -141,7 +140,7 @@ Azure Functions 的缩放单位为函数应用。 横向扩展函数应用时，
 
 不同计划的计费在 [Azure Functions 定价页](https://www.azure.cn/pricing/details/azure-functions/)中有详细介绍。 使用量在 Function App 级别聚合，只会统计函数代码的执行时间。 以下是计费单位：
 
-* 以千兆字节/秒 (GB-s) 计量的资源消耗量  。 根据内存大小和函数应用中所有函数的执行时间组合计算得出。 
+* 以千兆字节/秒 (GB-s) 计量的资源消耗量****。 根据内存大小和函数应用中所有函数的执行时间组合计算得出。 
 * **执行**。 每次为响应事件触发而执行函数时记为一次。
 
 在[帐单常见问题解答](https://github.com/Azure/Azure-Functions/wiki/Consumption-Plan-Cost-Billing-FAQ)中可以找到有关如何了解消费帐单的有用查询和信息。

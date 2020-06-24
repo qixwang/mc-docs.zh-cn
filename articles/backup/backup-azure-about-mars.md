@@ -4,14 +4,14 @@ description: 了解 MARS 代理如何支持备份方案
 ms.reviewer: srinathv
 ms.topic: conceptual
 author: Johnnytechn
-ms.date: 05/15/2020
+ms.date: 06/09/2020
 ms.author: v-johya
-ms.openlocfilehash: d1b31af809e7ee992ed986b281239ba9116b8757
-ms.sourcegitcommit: 08b42258a48d96d754244064d065e4d5703f1cfb
+ms.openlocfilehash: 9d414a6562abdf19f69a03e7b543bad4f3bfff2d
+ms.sourcegitcommit: 285649db9b21169f3136729c041e4d04d323229a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/18/2020
-ms.locfileid: "83445252"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84683930"
 ---
 # <a name="about-the-azure-recovery-services-mars-agent"></a>关于 Azure 恢复服务 (MARS) 代理
 
@@ -41,25 +41,28 @@ MARS 代理支持以下还原方案：
 
 ## <a name="backup-process"></a>备份过程
 
-1. 在 Azure 门户中创建[恢复服务保管库](install-mars-agent.md#create-a-recovery-services-vault)，并从备份目标中选择文件、文件夹和系统状态。
+1. 在 Azure 门户中创建[恢复服务保管库](install-mars-agent.md#create-a-recovery-services-vault)，并从“备份目标”中选择文件、文件夹和系统状态****。
 2. [将恢复服务保管库凭据和代理安装程序下载](/backup/install-mars-agent#download-the-mars-agent)到本地计算机。
 
-    若要通过选择“备份”选项来保护本地计算机，请选择文件、文件夹和系统状态，然后下载 MARS 代理。
-
-3. 准备基础结构：
-
-    a. 运行安装程序以[安装代理](/backup/install-mars-agent#install-and-register-the-agent)。
-
-    b. 使用下载的保管库凭据将计算机注册到恢复服务保管库。
-4. 在客户端上的代理控制台中[配置备份](/backup/backup-windows-with-mars-agent#create-a-backup-policy)。 指定备份数据的保留策略以开始保护数据。
+3. [安装代理](/backup/install-mars-agent#install-and-register-the-agent)并使用下载的保管库凭据将计算机注册到恢复服务保管库。
+4. 从客户端上的代理控制台中，[配置备份](/backup/backup-windows-with-mars-agent#create-a-backup-policy)，指定要备份的内容、何时备份（计划）、备份应在 Azure 中保留多长时间（保留策略）并开始保护。
 
 ![Azure 备份代理示意图](./media/backup-try-azure-backup-in-10-mins/backup-process.png)
+
+### <a name="additional-information"></a>其他信息
+
+- “初始备份”（首个备份）根据备份设置运行****。  MARS 代理使用 VSS 来创建选择进行备份的卷的时间点快照。 代理仅使用 Windows 系统写入器操作来捕获快照。 不使用任何应用程序 VSS 写入器，并且不会捕获应用一致性快照。 使用 VSS 创建快照后，MARS 代理将在配置备份时指定的缓存文件夹中创建一个虚拟硬盘 (VHD)。 该代理还会存储每个数据块的校验和。
+
+- “增量备份”（后续备份）根据指定的计划运行****。 在增量备份期间，将会标识已更改的文件，并创建新的 VHD。 该 VHD 经过压缩和加密，然后发送到保管库。 增量备份完成后，新 VHD 将与初始复制后创建的 VHD 合并。 此合并的 VHD 提供最新状态，用于对现行备份进行比较。
+
+- MARS 代理可以使用 USN（更新序列号）变更日志在优化模式下运行备份作业，也可以通过扫描整个卷来检查目录或文件的更改，在未优化模式下运行备份作业**** ****。 未优化模式的速度较慢，因为代理必须扫描卷上的每个文件，并与元数据进行比较以确定更改的文件。  “初始备份”始终在未优化模式下运行****。 如果上一个备份失败，则下一个计划的备份作业将在未优化模式下运行。
 
 ### <a name="additional-scenarios"></a>其他方案
 
 - **备份 Azure 虚拟机中的特定文件和文件夹**：备份 Azure 虚拟机 (VM) 的主要方法是在 VM 上使用 Azure 备份扩展。 该扩展可备份整个 VM。 若要备份 VM 中的特定文件和文件夹，可在 Azure VM 中安装 MARS 代理。 有关详细信息，请参阅[体系结构：内置 Azure VM 备份](/backup/backup-architecture#architecture-built-in-azure-vm-backup)。
 
-- **脱机种子设定**：最初在 Azure 中创建完整数据备份时，通常会传输大量的数据，并会占用更多的网络带宽。 后续的备份只会传输差异数量（增量）的数据。 Azure 备份可压缩初始备份。 通过脱机种子设定过程，Azure 备份可以使用磁盘将压缩后的初始备份数据脱机上传到 Azure。
+- **脱机种子设定**：最初在 Azure 中创建完整数据备份时，通常会传输大量的数据，并会占用更多的网络带宽。 后续的备份只会传输差异数量（增量）的数据。 Azure 备份可压缩初始备份。 通过脱机种子设定过程，Azure 备份可以使用磁盘将压缩后的初始备份数据脱机上传到 Azure。**
+<!--Not available in MC: offline-backup-azure-data-box.md-->
 
 ## <a name="next-steps"></a>后续步骤
 

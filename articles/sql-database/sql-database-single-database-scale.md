@@ -10,14 +10,14 @@ ms.topic: conceptual
 author: WenJason
 ms.author: v-jay
 ms.reviewer: carlrab
-origin.date: 03/10/2020
-ms.date: 04/27/2020
-ms.openlocfilehash: a2c7a656edcc68174f4b6fbe8402a56a0640f65c
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+origin.date: 04/30/2020
+ms.date: 06/15/2020
+ms.openlocfilehash: c673f98d0dc079f08f16a5dbd0c4e81e4663fc66
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82127087"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723661"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>在 Azure SQL 数据库中缩放单一数据库资源
 
@@ -45,7 +45,7 @@ ms.locfileid: "82127087"
 
 ## <a name="latency"></a>延迟 
 
-可根据如下所述，将更改服务层级或者重新缩放单一数据库或弹性池的计算大小所造成的估计延迟参数化：
+更改服务层、缩放单个数据库或弹性池的计算大小、将数据库移入/移出弹性池或在弹性池之间移动数据库的预计延迟的参数设置如下：
 
 |服务层|基本单一数据库，</br>标准 (S0-S1)|基本弹性池，</br>标准 (S2-S12)， </br>超大规模， </br>常规用途单一数据库或弹性池|高级或业务关键型单一数据库或弹性池|
 |:---|:---|:---|:---|
@@ -62,11 +62,11 @@ ms.locfileid: "82127087"
 
 #### <a name="azure-portal"></a>Azure 门户
 
-在数据库概述边栏选项卡中，导航到“通知”  并单击指示有正在进行的操作的磁贴：
+在数据库概述边栏选项卡中，导航到“通知”**** 并单击指示有正在进行的操作的磁贴：
 
 ![正在进行的操作](media/sql-database-single-database-scale/ongoing-operations.png)
 
-接下来，单击标签为“取消此操作”  的按钮。
+接下来，单击标签为“取消此操作”**** 的按钮。
 
 ![取消正在进行的操作](media/sql-database-single-database-scale/cancel-ongoing-operation.png)
 
@@ -89,10 +89,10 @@ else {
 
 - 如果要升级到更高的服务层级或计算大小，除非显式指定了更大的大小（最大），否则，最大数据库大小不会增大。
 - 若要对数据库进行降级，数据库所用空间必须小于目标服务层级和计算大小允许的最大大小。
-- 从“高级”层级降级至“标准”层级时，如果同时满足 (1) 目标计算大小支持该数据库的最大大小，(2) 最大大小超出目标计算大小包括的存储量，那么将产生额外存储费用   。 例如，如果将最大大小为 500 GB 的 P1 数据库缩小至 S3，那么将产生额外的存储费用，因为 S3 支持的最大大小为 1 TB，而它的附送存储量仅为 250 GB。 因此，额外的存储量为 500 GB - 250 GB = 250 GB。 有关额外存储定价的信息，请参阅 [SQL 数据库定价](https://azure.cn/pricing/details/sql-database/)。 如果实际使用的空间量小于附送的存储量，只要将数据库最大大小减少到附送的量，就能避免此项额外费用。
+- 从“高级”层级降级至“标准”层级时，如果同时满足 (1) 目标计算大小支持该数据库的最大大小，(2) 最大大小超出目标计算大小包括的存储量，那么将产生额外存储费用**** ****。 例如，如果将最大大小为 500 GB 的 P1 数据库缩小至 S3，那么将产生额外的存储费用，因为 S3 支持的最大大小为 1 TB，而它的附送存储量仅为 250 GB。 因此，额外的存储量为 500 GB - 250 GB = 250 GB。 有关额外存储定价的信息，请参阅 [SQL 数据库定价](https://azure.cn/pricing/details/sql-database/)。 如果实际使用的空间量小于附送的存储量，只要将数据库最大大小减少到附送的量，就能避免此项额外费用。
 - 在启用了[异地复制](sql-database-geo-replication-portal.md)的情况下升级数据库时，请先将其辅助数据库升级到所需的服务层级和计算大小，然后再升级主数据库（用于实现最佳性能的常规指南）。 升级到另一版本时，需要先升级辅助数据库。
 - 在启用了[异地复制](sql-database-geo-replication-portal.md)的情况下降级数据库时，请先将其主数据库降级到所需的服务层级和计算大小，然后再降级辅助数据库（用于实现最佳性能的常规指南）。 降级到另一版本时，需要先降级主数据库。
-- 各服务层级的还原服务不同。 如果要降级到基本层，则备份保持期也将缩短  。 请参阅 [Azure SQL 数据库备份](sql-database-automated-backups.md)。
+- 各服务层级的还原服务不同。 如果要降级到基本层，则备份保持期也将缩短****。 请参阅 [Azure SQL 数据库备份](sql-database-automated-backups.md)。
 - 更改完成前不会应用数据库的新属性。
 
 ## <a name="billing"></a>计费 

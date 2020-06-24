@@ -11,25 +11,25 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 origin.date: 07/05/2018
-ms.date: 05/11/2020
-ms.openlocfilehash: 767fc377491577cd9d46e44a0d501d3e47ddee74
-ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
+ms.date: 06/15/2020
+ms.openlocfilehash: a6aa8beb19fa203995aeb9e68a29f3a998ef6877
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82198277"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723487"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Azure 数据工厂中的管道执行和触发器
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
- Azure 数据工厂中的“管道运行”用于定义管道执行实例。 例如，假设你有一个管道，分别在上午 8:00、9:00 和 10:00 点执行。 在这种情况下，将分三次单独运行管道，也即有三次管道运行。 每次管道运行都有唯一的管道运行 ID。 运行 ID 是一个 GUID，用于对该特定的管道运行进行唯一定义。
+__ Azure 数据工厂中的“管道运行”用于定义管道执行实例。 例如，假设你有一个管道，分别在上午 8:00、9:00 和 10:00 点执行。 在这种情况下，将分三次单独运行管道，也即有三次管道运行。 每次管道运行都有唯一的管道运行 ID。 运行 ID 是一个 GUID，用于对该特定的管道运行进行唯一定义。
 
-管道运行通常通过将自变量传递给管道中定义的参数进行实例化。 执行管道时，可以手动，也可以  使用触发器。 本文提供了有关执行管道的两种方式的详细信息。
+管道运行通常通过将自变量传递给管道中定义的参数进行实例化。 执行管道时，可以手动，也可以__ 使用触发器。 本文提供了有关执行管道的两种方式的详细信息。
 
 ## <a name="manual-execution-on-demand"></a>手动执行（按需）
 
-管道的手动执行也称为按需执行。 
+管道的手动执行也称为按需执行。__
 
 例如，假设有一个需要执行的名为 **copyPipeline** 的基本管道。 该管道有一项活动，可以将数据从 Azure Blob 存储源文件夹复制到同一存储中的目标文件夹。 下面的 JSON 定义显示此示例管道：
 
@@ -146,7 +146,7 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 
 - 基于事件的触发器：响应某个事件的触发器。
 
-管道和触发器具有多对多关系（翻转窗口触发器除外）。多个触发器可以启动单个管道，或者单个触发器可以启动多个管道。 在以下触发器定义中，pipelines  属性是指一系列由特定的触发器触发的管道。 属性定义包括管道参数的值。
+管道和触发器具有多对多关系（翻转窗口触发器除外）。多个触发器可以启动单个管道，或者单个触发器可以启动多个管道。 在以下触发器定义中，pipelines**** 属性是指一系列由特定的触发器触发的管道。 属性定义包括管道参数的值。
 ### <a name="basic-trigger-definition"></a>基本的触发器定义
 
 ```json
@@ -292,8 +292,8 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 
 | startTime 值 | 不按计划循环 | 按计划循环 |
 |:--- |:--- |:--- |
-| **开始时间在过去** | 计算开始时间后的第一个将来执行时间，并在该时间运行。<br /><br />根据上次执行时间进行计算后，运行后续执行。<br /><br />请参阅此表后面的示例。 | 触发器不会早于指定的开始时间  启动。 第一次循环基于从开始时间计算的计划。<br /><br />后续执行的运行取决于定期触发计划。 |
-| **开始时间在将来或当前** | 在指定的开始时间运行一次。<br /><br />根据上次执行时间进行计算后，运行后续执行。 | 触发器不会早于指定的开始时间  启动。 第一次循环基于从开始时间计算的计划。<br /><br />后续执行的运行取决于定期触发计划。 |
+| **开始时间在过去** | 计算开始时间后的第一个将来执行时间，并在该时间运行。<br /><br />根据上次执行时间进行计算后，运行后续执行。<br /><br />请参阅此表后面的示例。 | 触发器不会早于指定的开始时间__ 启动。 第一次循环基于从开始时间计算的计划。<br /><br />后续执行的运行取决于定期触发计划。 |
+| **开始时间在将来或当前** | 在指定的开始时间运行一次。<br /><br />根据上次执行时间进行计算后，运行后续执行。 | 触发器不会早于指定的开始时间__ 启动。 第一次循环基于从开始时间计算的计划。<br /><br />后续执行的运行取决于定期触发计划。 |
 
 让我们查看一个示例，了解在开始时间是过去的时间，并且指定了定期触发但未指定计划的情况下，会发生什么事情。 假设当前时间为 2017-04-08 13:00，开始时间为 2017-04-07 14:00，定期触发为每两天触发一次。 （定义 **recurrence** 值时，可将 **frequency** 属性设置为 "day"，**interval** 属性设置为 2。）请注意，**startTime** 值为过去的时间，发生在当前时间之前。
 
@@ -304,11 +304,11 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 最后，如果没有在触发器的计划中设置小时或分钟，则会将第一次执行时对应的小时或分钟值用作默认值。
 
 ### <a name="schedule-property"></a>schedule 属性
-可以使用 **schedule** 来限制触发器执行的次数。  例如，如果触发器的频率为按月，根据计划仅在第 31 天运行，则该触发器仅在有 31 日的月份运行。
+可以使用 **schedule** 来限制触发器执行的次数。** 例如，如果触发器的频率为按月，根据计划仅在第 31 天运行，则该触发器仅在有 31 日的月份运行。
 
-还可以使用 **schedule** 来扩展触发器执行的次数。  例如，如果触发器的频率为按月，根据计划在每月的第 1 天和第 2 天运行，则该触发器会在当月的第 1 天和第 2 天运行，而不是每月运行一次。
+还可以使用 **schedule** 来扩展触发器执行的次数。** 例如，如果触发器的频率为按月，根据计划在每月的第 1 天和第 2 天运行，则该触发器会在当月的第 1 天和第 2 天运行，而不是每月运行一次。
 
-如果指定了多个 schedule  元素，则求值顺序为从大到小的计划设置：周次、月份日期、星期、小时、分钟。
+如果指定了多个 schedule**** 元素，则求值顺序为从大到小的计划设置：周次、月份日期、星期、小时、分钟。
 
 下表详细描述了 **schedule** 元素：
 
@@ -325,6 +325,9 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 
 如需翻转窗口触发器的详细信息和示例，请参阅[创建翻转窗口触发器](how-to-create-tumbling-window-trigger.md)。
 
+> [!NOTE]
+> 翻转窗口触发器运行等待触发的管道运行** 完成。 它的运行状态反映了触发的管道运行的状态。 例如，如果取消了触发的管道运行，相应的翻转窗口触发器运行就会标记为已取消。 这与计划触发器的“即发即弃”行为不同：只要启动管道运行，计划触发器就会标记为成功。
+
 ## <a name="event-based-trigger"></a>基于事件的触发器
 
 基于事件的触发器在 Azure Blob 存储中通过运行管道来响应某个事件，例如某个文件已到达，或者某个文件已删除。
@@ -334,7 +337,7 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 ## <a name="examples-of-trigger-recurrence-schedules"></a>触发器定期触发计划示例
 此部分提供定期触发计划的示例， 重点介绍 **schedule** 对象及其元素。
 
-这些示例假定 interval  值为 1，且根据计划定义，frequency  值是正确的。 例如，不能在 **frequency** 值为 "day" 的同时，在 **schedule** 对象中有一个 **monthDays** 修改项。 这些类型的限制在上一部分的表中已说明过。
+这些示例假定 interval**** 值为 1，且根据计划定义，frequency**** 值是正确的。 例如，不能在 **frequency** 值为 "day" 的同时，在 **schedule** 对象中有一个 **monthDays** 修改项。 这些类型的限制在上一部分的表中已说明过。
 
 | 示例 | 说明 |
 |:--- |:--- |

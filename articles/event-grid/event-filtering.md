@@ -2,18 +2,18 @@
 title: Azure 事件网格事件筛选
 description: 介绍如何在创建 Azure 事件网格订阅时筛选事件。
 services: event-grid
-author: spelluru
+author: Johnnytechn
 ms.service: event-grid
 ms.topic: conceptual
 origin.date: 01/21/2019
-ms.date: 09/30/2019
-ms.author: v-yiso
-ms.openlocfilehash: 05901ee4f6f7797e22febb71700c2d1c1f73b1d7
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 06/12/2020
+ms.author: v-johya
+ms.openlocfilehash: 4f2e28201667c507a23c017db8e1f876df74be55
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "71156079"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723722"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>了解事件网格订阅的事件筛选
 
@@ -98,9 +98,9 @@ ms.locfileid: "71156079"
 ]
 ```
 
-### <a name="operator"></a>操作员
+### <a name="operators"></a>运算符
 
-可用的数字运算符为：
+可用的数字**** 运算符为：
 
 * NumberGreaterThan
 * NumberGreaterThanOrEquals
@@ -109,9 +109,10 @@ ms.locfileid: "71156079"
 * NumberIn
 * NumberNotIn
 
-可用的布尔值运算符为：BoolEquals
+可用的布尔值**** 运算符为： 
+- BoolEquals
 
-可用的字符串运算符为：
+可用的字符串**** 运算符为：
 
 * StringContains
 * StringBeginsWith
@@ -119,15 +120,15 @@ ms.locfileid: "71156079"
 * StringIn
 * StringNotIn
 
-所有字符串比较都不区分大小写。
+所有字符串比较均不**** 区分大小写。
 
-### <a name="key"></a>密钥
+### <a name="key"></a>键
 
 对于事件网格架构中的事件，请使用以下键值：
 
 * ID
 * 主题
-* 主题
+* 使用者
 * EventType
 * DataVersion
 * 事件数据（如 Data.key1）
@@ -135,7 +136,7 @@ ms.locfileid: "71156079"
 对于云事件架构中的事件，请使用以下键值：
 
 * EventId
-* 源
+* Source
 * EventType
 * EventTypeVersion
 * 事件数据（如 Data.key1）
@@ -146,8 +147,8 @@ ms.locfileid: "71156079"
 
 值可以是：
 
-* 数字
-* 字符串
+* number
+* string
 * boolean
 * array
 
@@ -157,11 +158,162 @@ ms.locfileid: "71156079"
 
 * 每个事件网格订阅有五个高级筛选器
 * 每个字符串值有 512 个字符
-* “in”和“not in”运算符有 5 个值  
+* “in”和“not in”运算符有 5 个值**** ****
+* 具有 `.`（点）**** 字符的键。 例如： `http://schemas.microsoft.com/claims/authnclassreference` 或 `john.doe@contoso.com` 。 目前不支持键中使用转义字符。 
 
 可以在多个筛选器中使用相同的键。
+
+### <a name="examples"></a>示例
+
+### <a name="stringcontains"></a>StringContains
+
+```json
+"advancedFilters": [{
+    "operatorType": "StringContains",
+    "key": "data.key1",
+    "values": [
+        "microsoft", 
+        "azure"
+    ]
+}]
+```
+
+### <a name="stringbeginswith"></a>StringBeginsWith
+
+```json
+"advancedFilters": [{
+    "operatorType": "StringBeginsWith",
+    "key": "data.key1",
+    "values": [
+        "event", 
+        "grid"
+    ]
+}]
+```
+
+### <a name="stringendswith"></a>StringEndsWith
+
+```json
+"advancedFilters": [{
+    "operatorType": "StringEndsWith",
+    "key": "data.key1",
+    "values": [
+        "jpg", 
+        "jpeg", 
+        "png"
+    ]
+}]
+```
+
+### <a name="stringin"></a>StringIn
+
+```json
+"advancedFilters": [{
+    "operatorType": "StringIn",
+    "key": "data.key1",
+    "values": [
+        "exact", 
+        "string", 
+        "matches"
+    ]
+}]
+```
+
+### <a name="stringnotin"></a>StringNotIn
+
+```json
+"advancedFilters": [{
+    "operatorType": "StringNotIn",
+    "key": "data.key1",
+    "values": [
+        "aws", 
+        "bridge"
+    ]
+}]
+```
+
+### <a name="numberin"></a>NumberIn
+
+```json
+
+"advancedFilters": [{
+    "operatorType": "NumberIn",
+    "key": "data.counter",
+    "values": [
+        5,
+        1
+    ]
+}]
+
+```
+
+### <a name="numbernotin"></a>NumberNotIn
+
+```json
+"advancedFilters": [{
+    "operatorType": "NumberNotIn",
+    "key": "data.counter",
+    "values": [
+        41,
+        0,
+        0
+    ]
+}]
+```
+
+### <a name="numberlessthan"></a>NumberLessThan
+
+```json
+"advancedFilters": [{
+    "operatorType": "NumberLessThan",
+    "key": "data.counter",
+    "value": 100
+}]
+```
+
+### <a name="numbergreaterthan"></a>NumberGreaterThan
+
+```json
+"advancedFilters": [{
+    "operatorType": "NumberGreaterThan",
+    "key": "data.counter",
+    "value": 20
+}]
+```
+
+### <a name="numberlessthanorequals"></a>NumberLessThanOrEquals
+
+```json
+"advancedFilters": [{
+    "operatorType": "NumberLessThanOrEquals",
+    "key": "data.counter",
+    "value": 100
+}]
+```
+
+### <a name="numbergreaterthanorequals"></a>NumberGreaterThanOrEquals
+
+```json
+"advancedFilters": [{
+    "operatorType": "NumberGreaterThanOrEquals",
+    "key": "data.counter",
+    "value": 30
+}]
+```
+
+### <a name="boolequals"></a>BoolEquals
+
+```json
+"advancedFilters": [{
+    "operatorType": "BoolEquals",
+    "key": "data.isEnabled",
+    "value": true
+}]
+```
+
 
 ## <a name="next-steps"></a>后续步骤
 
 * 要了解有关使用 PowerShell 和 Azure CLI 筛选事件的详细信息，请参阅[筛选事件网格的事件](how-to-filter-events.md)。
 * 若要快速开始使用事件网格，请参阅[使用 Azure 事件网格创建和路由自定义事件](custom-event-quickstart.md)。
+

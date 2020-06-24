@@ -4,15 +4,17 @@ description: 了解如何使用虚拟网络中的专用 IP 地址设置 Azure �
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/27/2020
+origin.date: 04/13/2020
+ms.date: 06/15/2020
 ms.author: v-yeche
-ms.openlocfilehash: 87f85aefe5adaec25a3ba26e39bba17f0f03a652
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.openlocfilehash: 756ef13e6c64208ade839c6ebce69d60d1c89bb8
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82134911"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723654"
 ---
+<!-- NEED VERIFIED CAREFULLY AFTER PRIVATE LINK LAUNCED-->
 <!-- EDIT THE ENDPOINT OF PRIVATE LINK BEFORE RELEASE -->
 <!-- RELEASED CAREFULLY -->
 # <a name="configure-azure-private-link-for-an-azure-cosmos-account"></a>为 Azure Cosmos 帐户配置 Azure 专用链接
@@ -32,13 +34,13 @@ ms.locfileid: "82134911"
 
 在 Azure 门户中使用以下步骤为现有的 Azure Cosmos 帐户创建专用终结点：
 
-1. 在“所有资源”窗格中，选择一个 Azure Cosmos 帐户。 
+1. 在“所有资源”窗格中，选择一个 Azure Cosmos 帐户。
 
-1. 在设置列表中选择“专用终结点连接”，然后选择“专用终结点”：  
+1. 在设置列表中选择“专用终结点连接”，然后选择“专用终结点”： 
 
     ![用于在 Azure 门户中创建专用终结点的选项](./media/how-to-configure-private-endpoints/create-private-endpoint-portal.png)
 
-1. 在“创建专用终结点 - 基本信息”窗格中，输入或选择以下详细信息： 
+1. 在“创建专用终结点 - 基本信息”窗格中，输入或选择以下详细信息：
 
     | 设置 | Value |
     | ------- | ----- |
@@ -49,20 +51,20 @@ ms.locfileid: "82134911"
     | 名称 | 为专用终结点输入任意名称。 如果此名称已被使用，请创建唯一的名称。 |
     |区域| 选择要在其中部署专用链接的区域。 在虚拟网络所在的位置创建专用终结点。|
     |||
-1. 在完成时选择“下一步:  资源”。
-1. 在“创建专用终结点 - 资源”中，输入或选择以下信息： 
+1. 在完成时选择“下一步:资源”。
+1. 在“创建专用终结点 - 资源”中，输入或选择以下信息：
 
     | 设置 | Value |
     | ------- | ----- |
-    |连接方法  | 选择“连接到我的目录中的 Azure 资源”。  <br/><br/> 然后，可以选择一个资源来设置专用链接。 或者，可以使用他人与你共享的资源 ID 或别名连接到其资源。|
+    |连接方法  | 选择“连接到我的目录中的 Azure 资源”。 <br/><br/> 然后，可以选择一个资源来设置专用链接。 或者，可以使用他人与你共享的资源 ID 或别名连接到其资源。|
     | 订阅| 选择订阅。 |
-    | 资源类型 | 选择“Microsoft.AzureCosmosDB/databaseAccounts”。  |
+    | 资源类型 | 选择“Microsoft.AzureCosmosDB/databaseAccounts”。 |
     | 资源 |选择你的 Azure Cosmos 帐户。 |
-    |目标子资源 |选择要映射的 Azure Cosmos DB API 类型。 默认情况下，此字段仅提供 SQL、MongoDB 和 Cassandra API 所对应的一个选项。 对于 Gremlin 和表 API，还可以选择“SQL”，因为这些 API 可与 SQL API 互操作。  |
+    |目标子资源 |选择要映射的 Azure Cosmos DB API 类型。 默认情况下，此字段仅提供 SQL、MongoDB 和 Cassandra API 所对应的一个选项。 对于 Gremlin 和表 API，还可以选择“SQL”，因为这些 API 可与 SQL API 互操作。 |
     |||
 
-1. 在完成时选择“下一步:  配置”。
-1. 在“创建专用终结点 - 配置”中，输入或选择以下信息： 
+1. 在完成时选择“下一步:配置”。
+1. 在“创建专用终结点 - 配置”中，输入或选择以下信息：
 
     | 设置 | Value |
     | ------- | ----- |
@@ -70,14 +72,14 @@ ms.locfileid: "82134911"
     | 虚拟网络| 选择你的虚拟网络。 |
     | 子网 | 选择你的子网。 |
     |**专用 DNS 集成**||
-    |与专用 DNS 区域集成 |请选择“是”。  <br /><br/> 若要以私密方式连接到专用终结点，需有一条 DNS 记录。 建议将专用终结点与专用 DNS 区域集成。 你也可以使用自己的 DNS 服务器，或者使用虚拟机上的主机文件创建 DNS 记录。 |
-    |专用 DNS 区域 |选择“privatelink.documents.azure.cn”。  <br /><br/> 系统会自动确定专用 DNS 区域。 无法使用 Azure 门户更改此区域。|
+    |与专用 DNS 区域集成 |请选择“是”。 <br /><br/> 若要以私密方式连接到专用终结点，需有一条 DNS 记录。 建议将专用终结点与专用 DNS 区域集成。 你也可以使用自己的 DNS 服务器，或者使用虚拟机上的主机文件创建 DNS 记录。 |
+    |专用 DNS 区域 |选择“privatelink.documents.azure.cn”。 <br /><br/> 系统会自动确定专用 DNS 区域。 无法使用 Azure 门户更改此区域。|
     |||
 
-1. 选择“查看 + 创建”  。 在“查看 + 创建”页上，Azure 会验证你的配置。 
-1. 看到“验证通过”消息时，选择“创建”   。
+1. 选择“查看 + 创建”。 在“查看 + 创建”页上，Azure 会验证你的配置。
+1. 看到“验证通过”消息时，选择“创建” 。
 
-如果已批准 Azure Cosmos 帐户的专用链接，则 Azure 门户上“防火墙和虚拟网络”窗格中的“所有网络”选项将不可用。  
+如果已批准 Azure Cosmos 帐户的专用链接，则 Azure 门户上“防火墙和虚拟网络”窗格中的“所有网络”选项将不可用。 
 
 下表显示了不同的 Azure Cosmos 帐户 API 类型、支持的子资源与相应的专用区域名称之间的映射。 还可以通过 SQL API 访问 Gremlin 和表 API 帐户，因此这些 API 有两个条目。
 
@@ -95,9 +97,9 @@ ms.locfileid: "82134911"
 
 预配专用终结点后，可以查询 IP 地址。 若要在 Azure 门户中查看 IP 地址，请执行以下操作：
 
-1. 选择“所有资源”， 
-1. 搜索前面创建的专用终结点。 在本例中，该终结点为 cdbPrivateEndpoint3。 
-1. 选择“概览”选项卡，查看 DNS 设置和 IP 地址。 
+1. 选择“所有资源”，
+1. 搜索前面创建的专用终结点。 在本例中，该终结点为 cdbPrivateEndpoint3。
+1. 选择“概览”选项卡，查看 DNS 设置和 IP 地址。
 
 ![Azure 门户中的专用 IP 地址](./media/how-to-configure-private-endpoints/private-ip-addresses-portal.png)
 
@@ -126,17 +128,17 @@ $SubnetName = "mySubnet"
 # Name of the private endpoint to create
 $PrivateEndpointName = "MyPrivateEndpoint"
 # Location where the private endpoint can be created. The private endpoint should be created in the same location where your subnet or the virtual network exists
-$Location = "westcentralus"
+$Location = "chinaeast2"
 
 $cosmosDbResourceId = "/subscriptions/$($SubscriptionId)/resourceGroups/$($ResourceGroupName)/providers/Microsoft.DocumentDB/databaseAccounts/$($CosmosDbAccountName)"
 
 $privateEndpointConnection = New-AzPrivateLinkServiceConnection -Name "myConnectionPS" -PrivateLinkServiceId $cosmosDbResourceId -GroupId $CosmosDbApiType
- 
+
 $virtualNetwork = Get-AzVirtualNetwork -ResourceGroupName  $ResourceGroupName -Name $VNetName  
- 
+
 $subnet = $virtualNetwork | Select -ExpandProperty subnets | Where-Object  {$_.Name -eq $SubnetName}  
- 
-$privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName $ResourceGroupName -Name $PrivateEndpointName -Location "westcentralus" -Subnet  $subnet -PrivateLinkServiceConnection $privateEndpointConnection
+
+$privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName $ResourceGroupName -Name $PrivateEndpointName -Location "chinaeast2" -Subnet  $subnet -PrivateLinkServiceConnection $privateEndpointConnection
 ```
 
 ### <a name="integrate-the-private-endpoint-with-a-private-dns-zone"></a>将专用终结点与专用 DNS 区域集成
@@ -153,13 +155,13 @@ $link  = New-AzPrivateDnsVirtualNetworkLink -ResourceGroupName $ResourceGroupNam
   -ZoneName $zoneName `
   -Name "myzonelink" `
   -VirtualNetworkId $virtualNetwork.Id  
- 
+
 $pe = Get-AzPrivateEndpoint -Name $PrivateEndpointName `
   -ResourceGroupName $ResourceGroupName
 
 $networkInterface = Get-AzResource -ResourceId $pe.NetworkInterfaces[0].Id `
   -ApiVersion "2019-04-01"
- 
+
 foreach ($ipconfig in $networkInterface.properties.ipConfigurations) { 
 foreach ($fqdn in $ipconfig.properties.privateLinkConnectionProperties.fqdns) { 
 Write-Host "$($ipconfig.properties.privateIPAddress) $($fqdn)"  
@@ -255,10 +257,10 @@ az network private-dns link vnet create --resource-group $ResourceGroupName \
 
 #Query for the network interface ID  
 networkInterfaceId=$(az network private-endpoint show --name $PrivateEndpointName --resource-group $ResourceGroupName --query 'networkInterfaces[0].id' -o tsv)
- 
+
 # Copy the content for privateIPAddress and FQDN matching the Azure Cosmos account 
 az resource show --ids $networkInterfaceId --api-version 2019-04-01 -o json 
- 
+
 #Create DNS records 
 az network private-dns record-set a create --name recordSet1 --zone-name privatelink.documents.azure.cn --resource-group $ResourceGroupName
 az network private-dns record-set a add-record --record-set-name recordSet2 --zone-name privatelink.documents.azure.cn --resource-group $ResourceGroupName -a <Private IP Address>
@@ -629,15 +631,15 @@ foreach ($ipconfig in $networkInterface.properties.ipConfigurations) {
 
 ## <a name="blocking-public-network-access-during-account-creation"></a>在创建帐户期间阻止公共网络访问
 
-如前一部分中所述，除非设置了特定的防火墙规则，否则，在添加专用终结点后，只能通过专用终结点访问 Azure Cosmos 帐户。 这意味着，在创建专用终结点之后到添加该专用终结点之前这段时间，可以通过公共流量访问 Azure Cosmos 帐户。 为了确保即使在创建专用终结点之前也会禁用公共网络访问，可在创建帐户期间将 `publicNetworkAccess` 标志设置为 `Disabled`。 有关演示如何使用此标志的示例，请参阅[此 Azure 资源管理器模板](https://www.azure.cn/resources/templates/101-cosmosdb-private-endpoint/)。
+如前一部分中所述，除非设置了特定的防火墙规则，否则，在添加专用终结点后，只能通过专用终结点访问 Azure Cosmos 帐户。 这意味着，在创建 Azure Cosmos 帐户之后、添加专用终结点之前，可以通过公共流量访问该帐户。 为了确保即使在创建专用终结点之前也会禁用公共网络访问，可在创建帐户期间将 `publicNetworkAccess` 标志设置为 `Disabled`。 有关演示如何使用此标志的示例，请参阅[此 Azure 资源管理器模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-cosmosdb-private-endpoint/)。
 
 ## <a name="update-a-private-endpoint-when-you-add-or-remove-a-region"></a>在添加或删除区域时更新专用终结点
 
 在 Azure Cosmos 帐户中添加或删除区域需要添加或删除该帐户的 DNS 条目。 添加或删除区域后，可以更新子网的专用 DNS 区域，使之反映已添加或删除的 DNS 条目及其相应的专用 IP 地址。
 
-例如，假设你要在以下三个区域中部署 Azure Cosmos 帐户：“美国西部”、“美国中部”和“西欧”。 为帐户创建专用终结点时，子网中会保留四个专用 IP。 这三个区域中的每个区域都有一个 IP，而全局终结点/与区域无关的终结点有一个 IP。
+例如，假设你要在以下三个区域中部署 Azure Cosmos 帐户：“中国东部 2”、“中国北部”和“中国北部 2”。 为帐户创建专用终结点时，子网中会保留四个专用 IP。 这三个区域中的每个区域都有一个 IP，而全局终结点/与区域无关的终结点有一个 IP。
 
-以后，可将新的区域（例如“美国东部”）添加到 Azure Cosmos 帐户。 添加新区域后，需要将相应的 DNS 记录添加到专用 DNS 区域或自定义 DNS。
+以后，可将新的区域（例如“中国东部”）添加到 Azure Cosmos 帐户。 添加新区域后，需要将相应的 DNS 记录添加到专用 DNS 区域或自定义 DNS。
 
 删除区域时可以使用相同的步骤。 删除区域后，需要从专用 DNS 区域或自定义 DNS 中删除相应的 DNS 记录。
 

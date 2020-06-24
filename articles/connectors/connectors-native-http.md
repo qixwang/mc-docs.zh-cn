@@ -3,18 +3,18 @@ title: 使用 HTTP 或 HTTPS 调用服务终结点
 description: 从 Azure 逻辑应用向服务终结点发送出站 HTTP 或 HTTPS 请求
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 origin.date: 03/12/2020
-ms.date: 04/30/2020
+ms.date: 06/08/2020
 ms.author: v-yeche
 tags: connectors
-ms.openlocfilehash: 1813868dc70001af37da83fde16c9145bb085b47
-ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
+ms.openlocfilehash: 753f344900dada0b964cba5334820f5f7c37c492
+ms.sourcegitcommit: c4fc01b7451951ef7a9616fca494e1baf29db714
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83392231"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84564277"
 ---
 # <a name="call-service-endpoints-over-http-or-https-from-azure-logic-apps"></a>从 Azure 逻辑应用通过 HTTP 或 HTTPS 调用服务终结点
 
@@ -22,8 +22,10 @@ ms.locfileid: "83392231"
 
 > [!NOTE]
 > 根据目标终结点的功能，HTTP 连接器支持传输层安全性 (TLS) 版本 1.0、1.1 和 1.2。 逻辑应用通过使用可能支持的最高版本与终结点协商。 例如，如果终结点支持 1.2 版，则连接器首先使用 1.2 版。 否则，连接器将使用下一个受支持的最高版本。
+>
+> HTTP 连接器不支持使用中间 TLS/SSL 证书进行身份验证。
 
-若要按定期计划检查或轮询某个终结点，可[添加 HTTP 触发器](#http-trigger)作为工作流中的第一个步骤。 每次触发器检查终结点时，触发器都会调用该终结点或向该终结点发送请求。 该终结点的响应确定了逻辑应用的工作流是否运行。 触发器将终结点响应中的任何内容传递到逻辑应用中的操作。
+若要按定期计划检查或轮询某个终结点，可[添加 HTTP 触发器](#http-trigger)作为工作流中的第一个步骤**。 每次触发器检查终结点时，触发器都会调用该终结点或向该终结点发送请求**。 该终结点的响应确定了逻辑应用的工作流是否运行。 触发器将终结点响应中的任何内容传递到逻辑应用中的操作。
 
 若要从工作流中的任何其他位置调用终结点，请[添加 HTTP 操作](#http-action)。 该终结点的响应确定了工作流剩余操作的运行方式。
 
@@ -63,7 +65,7 @@ ms.locfileid: "83392231"
 
 1. 登录到 [Azure 门户](https://portal.azure.cn)。 在逻辑应用设计器中打开空白逻辑应用。
 
-1. 在设计器的搜索框下，选择“内置”。 在搜索框中，输入 `http` 作为筛选器。 在“触发器”列表中，选择“HTTP”触发器。 
+1. 在设计器的搜索框下，选择“内置”****。 在搜索框中，输入 `http` 作为筛选器。 在“触发器”列表中，选择“HTTP”触发器。**** ****
 
     ![选择 HTTP 触发器](./media/connectors-native-http/select-http-trigger.png)
 
@@ -73,19 +75,17 @@ ms.locfileid: "83392231"
 
     ![输入 HTTP 触发器参数](./media/connectors-native-http/http-trigger-parameters.png)
 
-    如果选择的身份验证类型不是“None”，则身份验证设置将根据你的选择而有所不同。 有关 HTTP 可用的身份验证类型的详细信息，请参阅以下主题：
+    如果选择的身份验证类型不是“None”****，则身份验证设置将根据你的选择而有所不同。 有关 HTTP 可用的身份验证类型的详细信息，请参阅以下主题：
 
     * [向出站调用添加身份验证](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)
     
-    * 使用托管标识对资源访问者进行身份验证
-    
-    <!--Not Available on [Authenticate access to resources with managed identities](../logic-apps/create-managed-service-identity.md)-->
+    * [使用托管标识对资源访问者进行身份验证](../logic-apps/create-managed-service-identity.md)
 
-1. 若要添加其他可用参数，请打开“添加新参数”列表，并选择所需的参数。
+1. 若要添加其他可用参数，请打开“添加新参数”列表，并选择所需的参数。****
 
 1. 继续使用触发器激发时运行的操作生成逻辑应用的工作流。
 
-1. 完成后，请记得保存逻辑应用。 在设计器工具栏上选择“保存”。
+1. 完成后，请记得保存逻辑应用。 在设计器工具栏上选择“保存”。****
 
 <a name="http-action"></a>
 
@@ -97,11 +97,11 @@ ms.locfileid: "83392231"
 
     此示例的第一步是使用 HTTP 触发器。
 
-1. 在要添加 HTTP 操作的步骤下，选择“新建步骤”。
+1. 在要添加 HTTP 操作的步骤下，选择“新建步骤”。****
 
-    若要在步骤之间添加操作，请将鼠标指针移到步骤之间的箭头上。 选择出现的加号 ( **+** )，然后选择“添加操作”。
+    若要在步骤之间添加操作，请将鼠标指针移到步骤之间的箭头上。 选择出现的加号 ( **+** )，然后选择“添加操作”。****
 
-1. 在“选择操作”下，选择“内置”。  在搜索框中，输入 `http` 作为筛选器。 在“操作”列表中，选择“HTTP”操作。 
+1. 在“选择操作”下，选择“内置”。**** **** 在搜索框中，输入 `http` 作为筛选器。 在“操作”列表中，选择“HTTP”操作。**** ****
 
     ![选择“HTTP”操作](./media/connectors-native-http/select-http-action.png)
 
@@ -111,17 +111,15 @@ ms.locfileid: "83392231"
 
     ![输入 HTTP 操作参数](./media/connectors-native-http/http-action-parameters.png)
 
-    如果选择的身份验证类型不是“None”，则身份验证设置将根据你的选择而有所不同。 有关 HTTP 可用的身份验证类型的详细信息，请参阅以下主题：
+    如果选择的身份验证类型不是“None”****，则身份验证设置将根据你的选择而有所不同。 有关 HTTP 可用的身份验证类型的详细信息，请参阅以下主题：
 
     * [向出站调用添加身份验证](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)
     
-    * 使用托管标识对资源访问者进行身份验证
-    
-    <!--Not Available on [Authenticate access to resources with managed identities](../logic-apps/create-managed-service-identity.md)-->
+    * [使用托管标识对资源访问者进行身份验证](../logic-apps/create-managed-service-identity.md)
 
-1. 若要添加其他可用参数，请打开“添加新参数”列表，并选择所需的参数。
+1. 若要添加其他可用参数，请打开“添加新参数”列表，并选择所需的参数。****
 
-1. 完成后，请记得保存逻辑应用。 在设计器工具栏上选择“保存”。
+1. 完成后，请记得保存逻辑应用。 在设计器工具栏上选择“保存”。****
 
 ## <a name="content-with-multipartform-data-type"></a>具有多部分/表单数据类型的内容
 

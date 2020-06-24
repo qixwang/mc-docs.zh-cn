@@ -9,19 +9,19 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: conceptual
-origin.date: 10/25/2019
-ms.date: 12/09/2019
+origin.date: 04/28/2020
+ms.date: 06/22/2020
 ms.author: v-yiso
-ms.openlocfilehash: 08346409f03773d48964968c982ee8f159ab819d
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: de79b55d40e75d20c35d356b4aa143d8b8fb2b70
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74657948"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723342"
 ---
 # <a name="how-to-configure-apache-kafka-on-hdinsight-to-automatically-create-topics"></a>如何将 Apache Kafka on HDInsight 配置为自动创建主题
 
-默认情况下，HDInsight 上的 [Apache Kafka](https://kafka.apache.org/) 不允许自动创建主题。 可以使用 [Apache Ambari](https://ambari.apache.org/) 针对现有群集自动创建主题。 也可以允许使用 Azure 资源管理器模板在创建新的 Kafka 群集时自动创建主题。
+默认情况下，Apache Kafka on HDInsight 不允许自动创建主题。 可以使用 Apache Ambari 针对现有群集自动创建主题。 也可以允许使用 Azure 资源管理器模板在创建新的 Kafka 群集时自动创建主题。
 
 ## <a name="apache-ambari-web-ui"></a>Apache Ambari Web UI
 
@@ -29,11 +29,11 @@ ms.locfileid: "74657948"
 
 1. 从 [Azure 门户](https://portal.azure.cn)选择 Kafka 群集。
 
-1. 从**群集仪表板**中，选择“Ambari 主页”  。
+1. 从**群集仪表板**中，选择“Ambari 主页”****。
 
     ![群集仪表板处于选中状态的门户的图像](./media/apache-kafka-auto-create-topics/azure-portal-cluster-dashboard-ambari.png)
 
-    出现提示时，进行身份验证使用群集的登录名 (admin) 凭据。 或者，可以直接从 `https://CLUSTERNAME.azurehdinsight.cn/` 连接到 Amabri，其中 `CLUSTERNAME` 是 Kafka 群集的名称。
+    出现提示时，进行身份验证使用群集的登录名 (admin) 凭据。 相反，可以直接从 `https://CLUSTERNAME.azurehdinsight.cn/` 连接到 Amabri，其中 `CLUSTERNAME` 是 Kafka 群集的名称。
 
 3. 从页面左侧的列表选择 Kafka 服务。
 
@@ -49,11 +49,11 @@ ms.locfileid: "74657948"
 
     这将筛选的属性，并显示列表`auto.create.topics.enable`设置。
 
-1. 将 `auto.create.topics.enable` 的值更改为 `true`，然后选择“保存”  。 添加注释，然后选择**保存**。
+1. 将 `auto.create.topics.enable` 的值更改为 `true`，然后选择“保存”****。 添加注释，然后选择**保存**。
 
     ![auto.create.topics.enable 条目的图像](./media/apache-kafka-auto-create-topics/auto-create-topics-enable.png)
 
-7. 依次选择 Kafka 服务、“重启”、“重启所有受影响的项”。   出现提示时，选择“确认全部重启”  。
+7. 依次选择 Kafka 服务、“重启”、“重启所有受影响的项”。____ ____ 出现提示时，选择“确认全部重启”____。
 
     ![重启选择的图像](./media/apache-kafka-auto-create-topics/restart-all-affected.png)
 
@@ -83,4 +83,5 @@ ms.locfileid: "74657948"
 
 本文档介绍了如何为 HDInsight 上的 Apache Kafka 启用自动创建主题功能。 若要详细了解如何使用 Kafka，请参阅以下链接：
 
+* [分析 Apache Kafka 日志](apache-kafka-log-analytics-operations-management.md)
 * [在 Apache Kafka 集群之间复制数据](apache-kafka-mirroring.md)

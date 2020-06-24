@@ -4,14 +4,14 @@ description: 有关 Azure 容器注册表服务的常见问题的解答
 author: rockboyfor
 ms.topic: article
 origin.date: 03/18/2020
-ms.date: 04/30/2020
+ms.date: 06/08/2020
 ms.author: v-yeche
-ms.openlocfilehash: 61deabd7234492fc930f4bd397a649f0e1805347
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+ms.openlocfilehash: 105e91b66dda5c1aa457485a7ccf976d42f158f8
+ms.sourcegitcommit: c4fc01b7451951ef7a9616fca494e1baf29db714
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84199700"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84564280"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>有关 Azure 容器注册表的常见问题解答
 
@@ -39,9 +39,13 @@ ms.locfileid: "84199700"
 
 <!--MOONCAKE: CORRECT THE DEPLOYMENT-->
 
-<!--Not Available on ### Is there security vulnerability scanning for images in ACR?-->
-<!--Not Available on [Azure Security Center](/security-center/azure-container-registry-integration)-->
+### <a name="is-there-security-vulnerability-scanning-for-images-in-acr"></a>是否会对 ACR 中的映像执行安全漏洞扫描？
+
+是的。 请参阅 [Azure 安全中心](/security-center/azure-container-registry-integration)的文档。
+
+<!--Twistlock Not Available on Mooncake portal-->
 <!--Not Available on [Twistlock](https://www.twistlock.com/2016/11/07/twistlock-supports-azure-container-registry/)-->
+<!--blog.aquasec.com Blocked by China Great Wall-->
 <!--Not Available on [Aqua](https://blog.aquasec.com/image-vulnerability-scanning-in-azure-container-registry)-->
 
 ### <a name="how-do-i-configure-kubernetes-with-azure-container-registry"></a>如何使用 Azure 容器注册表配置 Kubernetes？
@@ -113,6 +117,7 @@ az role assignment create --role "Reader" --assignee user@contoso.com --scope /s
 - [Azure 容器注册表是否支持内容信任？](#does-azure-container-registry-support-content-trust)
 - [在无权管理注册表资源的情况下如何授予提取或推送映像的访问权限？](#how-do-i-grant-access-to-pull-or-push-images-without-permission-to-manage-the-registry-resource)
 - [如何为注册表启用自动映像隔离？](#how-do-i-enable-automatic-image-quarantine-for-a-registry)
+- [如何启用匿名拉取访问？](#how-do-i-enable-anonymous-pull-access)
 
 ### <a name="how-do-i-access-docker-registry-http-api-v2"></a>如何访问 Docker 注册表 HTTP API V2？
 
@@ -261,7 +266,7 @@ ACR 支持提供不同权限级别的[自定义角色](container-registry-roles.
 <a name="how-do-i-enable-anonymous-pull-access"></a>
 ### <a name="how-do-i-enable-anonymous-pull-access"></a>如何实现匿名提取访问？
 
-为匿名（公共）提取访问设置 Azure 容器注册表目前是一项预览功能。 若要实现公共访问，请在 https://support.azure.cn/support/support-azure/ 中创建支持工单。 有关详细信息，请参阅 [Azure 反馈论坛](https://support.azure.cn/support/contact/)。
+为匿名（公共）提取访问设置 Azure 容器注册表目前是一项预览功能。 若要启用公共访问，请在 https://support.azure.cn/support/support-azure/ 中开具支持票证。 有关详细信息，请参阅 [Azure 反馈论坛](https://support.azure.cn/support/contact/)。
 
 <!--CORRECT ON https://support.azure.cn/support/support-azure/-->
 
@@ -271,7 +276,7 @@ ACR 支持提供不同权限级别的[自定义角色](container-registry-roles.
 - [Docker 提取失败并出现错误：net/http: 等待连接时取消了请求(等待标头时超过了 Client.Timeout)](#docker-pull-fails-with-error-nethttp-request-canceled-while-waiting-for-connection-clienttimeout-exceeded-while-awaiting-headers)
 - [Docker 推送成功，但 Docker 提取失败并出现错误：未授权: 需要身份验证](#docker-push-succeeds-but-docker-pull-fails-with-error-unauthorized-authentication-required)
 - [`az acr login` 成功，但 Docker 命令失败并出现错误：未授权: 需要身份验证](#az-acr-login-succeeds-but-docker-fails-with-error-unauthorized-authentication-required)
-- [启用和获取 Docker 守护程序的调试日志](#enable-and-get-the-debug-logs-of-the-docker-daemon)
+- [启用和获取 Docker 守护程序的调试日志](#enable-and-get-the-debug-logs-of-the-docker-daemon)    
 - [新用户权限在更新后可能不会立即生效](#new-user-permissions-may-not-be-effective-immediately-after-updating)
 - [未在 REST API 调用中以正确的格式指定身份验证信息](#authentication-information-is-not-given-in-the-correct-format-on-direct-rest-api-calls)
 - [为何 Azure 门户不列出我的所有存储库或标记？](#why-does-the-azure-portal-not-list-all-my-repositories-or-tags)
@@ -500,10 +505,10 @@ az acr task list-runs -r $myregistry --run-status Running --query '[].runId' -o 
 
 | Git 服务 | 源上下文 | 手动生成 | 通过“提交”触发器自动生成 |
 |---|---|---|---|
-| GitHub | https://github.com/user/myapp-repo.git#mybranch:myfolder | 是 | 是 |
-| Azure Repos | https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder | 是 | 是 |
-| GitLab | https://gitlab.com/user/myapp-repo.git#mybranch:myfolder | 是 | 否 |
-| BitBucket | https://user@bitbucket.org/user/mayapp-repo.git#mybranch:myfolder | 是 | 否 |
+| GitHub | `https://github.com/user/myapp-repo.git#mybranch:myfolder` | 是 | 是 |
+| Azure Repos | `https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder` | 是 | 是 |
+| GitLab | `https://gitlab.com/user/myapp-repo.git#mybranch:myfolder` | 是 | 否 |
+| BitBucket | `https://user@bitbucket.org/user/mayapp-repo.git#mybranch:myfolder` | 是 | 否 |
 
 ## <a name="run-error-message-troubleshooting"></a>运行错误消息故障排除操作
 

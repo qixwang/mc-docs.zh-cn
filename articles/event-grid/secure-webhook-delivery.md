@@ -2,18 +2,18 @@
 title: 在 Azure 事件网格中使用 Azure AD 进行安全的 WebHook 传递
 description: 介绍如何将事件传递到受到 Azure Active Directory 通过 Azure 事件网格进行保护的 HTTPS 终结点
 services: event-grid
-author: banisadr
+author: Johnnytechn
 ms.service: event-grid
 ms.topic: conceptual
 origin.date: 11/18/2019
-ms.date: 12/23/2019
-ms.author: v-yiso
-ms.openlocfilehash: 5547fbcd7da7050fae4983898f9f35e96f3ded8b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 06/12/2020
+ms.author: v-johya
+ms.openlocfilehash: d33afd0b8a8b4906c67b41bb2042ed3e8dc2c60b
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75348565"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723525"
 ---
 # <a name="publish-events-to-azure-active-directory-protected-endpoints"></a>将事件发布到受 Azure Active Directory 保护的终结点
 
@@ -23,17 +23,17 @@ ms.locfileid: "75348565"
 
 [!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
 
-## <a name="create-and-azure-ad-application"></a>创建 Azure AD 应用程序
+## <a name="create-an-azure-ad-application"></a>创建 Azure AD 应用程序
 
-从为受保护的终结点创建 Azure AD 应用程序着手。 请参阅 https://docs.azure.cn/active-directory/develop/scenario-protected-web-api-overview 。
+从为受保护的终结点创建 Azure AD 应用程序着手。 请参阅 /active-directory/develop/scenario-protected-web-api-overview。
     - 将受保护的 API 配置为通过守护程序应用进行调用。
     
 ## <a name="enable-event-grid-to-use-your-azure-ad-application"></a>允许事件网格使用 Azure AD 应用程序
 
 使用下面的 PowerShell 脚本在 Azure AD 应用程序中创建角色和服务主体。 需要来自 Azure AD 应用程序的租户 ID 和对象 ID：
 
-    > [!NOTE]
-    > You must be a member of the [Azure AD Application Administrator role](https://docs.azure.cn/active-directory/users-groups-roles/directory-assign-admin-roles#available-roles) to execute this script.
+   > [!NOTE]
+   > 你必须是 [Azure AD 应用程序管理员角色](/active-directory/users-groups-roles/directory-assign-admin-roles#available-roles)的成员才能执行此脚本。
     
 1. 修改 PowerShell 脚本的 $myTenantId，以便使用 Azure AD 租户 ID。
 1. 修改 PowerShell 脚本的 $myAzureADApplicationObjectId，以便使用 Azure AD 应用程序的对象 ID。
@@ -104,10 +104,10 @@ else
     
 New-AzureADServiceAppRoleAssignment -Id $myApp.AppRoles[0].Id -ResourceId $myServicePrincipal.ObjectId -ObjectId $eventGridSP.ObjectId -PrincipalId $eventGridSP.ObjectId
     
-Write-Host "My Azure AD Tenant Id" + $myTenantId
-Write-Host "My Azure AD Application Id" + $myAzureADApplicationObjectId
-Write-Host "My Azure AD Application ($myApp.ObjectId): " + $myApp.ObjectId
-Write-Host "My Azure AD Application's Roles"
+Write-Host "My Azure AD Tenant Id: $myTenantId"
+Write-Host "My Azure AD Application Id: $($myApp.AppId)"
+Write-Host "My Azure AD Application ObjectId: $($myApp.ObjectId)"
+Write-Host "My Azure AD Application's Roles: "
 Write-Host $myApp.AppRoles
 ```
     
@@ -129,3 +129,4 @@ Write-Host $myApp.AppRoles
 * 有关监视事件传送的信息，请参阅[监视事件网格消息传送](monitor-event-delivery.md)。
 * 有关身份验证密钥的详细信息，请参阅[事件网格安全性和身份验证](security-authentication.md)。
 * 有关创建 Azure 事件网格订阅的详细信息，请参阅[事件网格订阅架构](subscription-creation-schema.md)。
+

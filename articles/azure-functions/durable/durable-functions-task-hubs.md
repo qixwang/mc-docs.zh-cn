@@ -3,20 +3,20 @@ title: Durable Functions 中的任务中心 - Azure
 description: 了解在 Azure Functions 的 Durable Functions 扩展中什么是任务中心。 了解如何任务中心。
 author: cgillum
 ms.topic: conceptual
-ms.date: 02/14/2020
+ms.date: 06/09/2020
 ms.author: v-junlch
-ms.openlocfilehash: 1692d38ab8703266ba8364e699e5319f72ed218f
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: d2ea349469b561c3b2617d722c39990cfb067d26
+ms.sourcegitcommit: f1a76ee3242698123a3d77f44c860db040b48f70
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77428057"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84563716"
 ---
 # <a name="task-hubs-in-durable-functions-azure-functions"></a>Durable Functions 中的任务中心 (Azure Functions)
 
 [Durable Functions](durable-functions-overview.md) 中的*任务中心*是用于业务流程的 Azure 存储资源的逻辑容器。 只有当业务流程协调程序函数与活动函数属于同一任务中心时，它们才能彼此进行交互。
 
-如果多个函数应用共享存储帐户，则必须使用单独的任务中心名称配置每个函数应用  。 一个存储帐户可以包含多个任务中心。 下图说明了在共享和专用存储帐户中每个函数应用有一个任务中心。
+如果多个函数应用共享存储帐户，则必须使用单独的任务中心名称配置每个函数应用**。 一个存储帐户可以包含多个任务中心。 下图说明了在共享和专用存储帐户中每个函数应用有一个任务中心。
 
 ![说明共享和专用存储帐户的关系图。](./media/durable-functions-task-hubs/task-hubs-storage.png)
 
@@ -35,7 +35,13 @@ ms.locfileid: "77428057"
 
 ## <a name="task-hub-names"></a>任务中心名称
 
-任务中心由 *host.json* 文件中声明的名称标识，如以下示例所示：
+任务中心由符合以下规则的名称标识：
+
+* 仅包含字母数字字符
+* 以字母开头
+* 最小长度为 3 个字符，最大长度为 45 个字符
+
+任务中心名称在 host.json 文件中声明，如以下示例所示**：
 
 ### <a name="hostjson-functions-20"></a>host.json (Functions 2.0)
 
@@ -140,13 +146,13 @@ public static async Task<HttpResponseMessage> Run(
 
 | Durable 扩展版本 | 默认的任务中心名称 |
 | - | - |
-| 2.x | 在 Azure 中部署时，任务中心名称派生自函数应用  的名称。 在 Azure 外部运行时，默认的任务中心名称为 `TestHubName`。 |
+| 2.x | 在 Azure 中部署时，任务中心名称派生自函数应用__ 的名称。 在 Azure 外部运行时，默认的任务中心名称为 `TestHubName`。 |
 | 1.x | 所有环境的默认任务中心名称为 `DurableFunctionsHub`。 |
 
 有关扩展版本之间差异的详细信息，请参阅 [Durable Functions 版本](durable-functions-versions.md)一文。
 
 > [!NOTE]
-> 当共享存储帐户中有多个任务中心时，名称用于将一个任务中心与其他任务中心区分开来。 如果有多个函数应用共享一个共享存储帐户，则必须在 host.json  文件中为每个任务中心显式配置不同的名称。 否则多个函数应用会相互竞争消息，这可能会导致未定义的行为，例如业务流程意外“卡”在 `Pending` 或 `Running` 状态。
+> 当共享存储帐户中有多个任务中心时，名称用于将一个任务中心与其他任务中心区分开来。 如果有多个函数应用共享一个共享存储帐户，则必须在 host.json** 文件中为每个任务中心显式配置不同的名称。 否则多个函数应用会相互竞争消息，这可能会导致未定义的行为，例如业务流程意外“卡”在 `Pending` 或 `Running` 状态。
 
 ## <a name="next-steps"></a>后续步骤
 

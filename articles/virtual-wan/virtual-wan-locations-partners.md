@@ -6,15 +6,15 @@ author: rockboyfor
 ms.service: virtual-wan
 ms.topic: conceptual
 origin.date: 02/12/2020
-ms.date: 05/18/2020
+ms.date: 06/08/2020
 ms.author: v-yeche
 Customer intent: As someone with a networking background, I want to find a Virtual WAN partner
-ms.openlocfilehash: 989674761f91eaddef587d3344489557027c1b63
-ms.sourcegitcommit: 436a5dd9a446fe7b6d3c4d5bc76b652f7848c1ba
+ms.openlocfilehash: e7bb2f1b9ad702edcdacac333d4c152caaed1ae8
+ms.sourcegitcommit: 6c1e5be9f310adf5b6740ad3284b7582fca9de86
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83393108"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84683576"
 ---
 # <a name="virtual-wan-partners-and-virtual-hub-locations"></a>虚拟 WAN 合作伙伴和虚拟中心位置
 
@@ -23,6 +23,8 @@ ms.locfileid: "83393108"
 Azure Virtual WAN 是一种网络服务，它通过 Azure 提供经优化、自动的分支到分支连接。 使用虚拟 WAN 可以连接分支设备，并将其配置为与 Azure 通信。 可以手动完成此操作，也可以通过虚拟 WAN 合作伙伴使用提供商设备完成此操作。 使用合作伙伴设备可以降低操作难度、简化连接和进行配置管理。
 
 本地设备到虚拟中心的连接将自动建立。 虚拟中心是 Azure 托管的虚拟网络。 中心包含不同的服务终结点，可从本地网络 (vpnsite) 建立连接。 每个区域只能有一个中心。
+
+<!--CORRECT ON an Azure managed-->
 
 <a name="automation"></a>
 ## <a name="automation-from-connectivity-partners"></a>连接合作伙伴提供的自动化
@@ -43,7 +45,9 @@ Azure Virtual WAN 是一种网络服务，它通过 Azure 提供经优化、自�
 
 [!INCLUDE [partners](../../includes/virtual-wan-partners-include.md)]
 
-在不久的将来，我们的路线图中将列出以下合作伙伴：128 Technologies、Arista、Aruba HPE、Cisco Systems、F5 Networks、Open Systems、Oracle SD-WAN、SharpLink 和 VMWare Velocloud。
+在不久的将来，我们的路线图中将列出以下合作伙伴：128 Technologies、Arista、Aruba HPE、Cisco Systems、F5 Networks、Open Systems、Oracle SD-WAN 和 SharpLink。
+
+<!--Correct on , and -->
 
 <a name="locations"></a>
 ## <a name="locations"></a>位置

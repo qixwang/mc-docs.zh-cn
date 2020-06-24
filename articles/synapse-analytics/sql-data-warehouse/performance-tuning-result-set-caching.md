@@ -8,16 +8,16 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: ''
 origin.date: 10/10/2019
-ms.date: 05/11/2020
+ms.date: 06/15/2020
 ms.author: v-jay
 ms.reviewer: nidejaco;
 ms.custom: azure-synapse
-ms.openlocfilehash: 2a2ab282921260eb536c74a816ae46b627f1b63d
-ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
+ms.openlocfilehash: a21aaeb422033d43b66b1f97d43bf18553a9d672
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82198477"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723148"
 ---
 # <a name="performance-tuning-with-result-set-caching"></a>使用结果集缓存优化性能
 
@@ -41,10 +41,11 @@ ms.locfileid: "82198477"
 - 使用用户定义的函数的查询
 - 使用启用了行级安全性或列级安全性的表的查询
 - 其返回数据中的行大小超过 64KB 的查询
+- 返回大数据（大于 10 GB）的查询 
 
 > [!IMPORTANT]
 > 创建结果集缓存以及从缓存中检索数据的操作在 Synapse SQL 池实例的控制节点上进行。
-> 如果已启用结果集缓存，运行返回较大结果集（例如，超过 100 万行）的查询可能会导致控制节点上的 CPU 使用率过高，并减慢实例上的总体查询响应。  这些查询通常在数据探索或 ETL 操作期间使用。 为了避免控制节点压力过大并出现性能问题，用户在运行此类查询之前应该对数据库禁用结果集缓存。  
+> 当结果集缓存处于打开状态时，运行返回大型结果集（例如，超过 1 GB）的查询可能会导致控制节点上带宽限制较高，并降低实例上的整体查询响应速度。  这些查询通常在数据探索或 ETL 操作期间使用。 为了避免控制节点压力过大并出现性能问题，用户在运行此类查询之前应该对数据库禁用结果集缓存。  
 
 此查询的运行持续时间以针对某个查询执行结果集缓存操作所需的时间为宜：
 

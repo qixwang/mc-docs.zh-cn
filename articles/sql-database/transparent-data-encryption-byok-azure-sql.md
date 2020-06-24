@@ -11,13 +11,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: vanto
 origin.date: 03/18/2020
-ms.date: 04/27/2020
-ms.openlocfilehash: eddcc507cc3c59d8adbc9882c8a1e239e15aadd9
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.date: 06/15/2020
+ms.openlocfilehash: 0a38ee2951abab4ab2af84fd1885ff893110e554
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82126849"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723735"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>使用客户管理的密钥进行 Azure SQL 透明数据加密
 
@@ -25,7 +25,7 @@ Azure SQL [透明数据加密 (TDE)](https://docs.microsoft.com/sql/relational-d
 
 在此方案中，用于加密数据库加密密钥 (DEK) 的密钥（称作 TDE 保护器）是客户管理的非对称密钥，该密钥存储在客户自有的且由其管理的 [Azure Key Vault (AKV)](/key-vault/key-vault-secure-your-key-vault)（一个基于云的外部密钥管理系统）中。 Key Vault 是用于存储 RSA 加密密钥的高度可用且可缩放的安全存储。 它不允许直接访问存储的密钥，但会向已获授权的实体提供使用该密钥进行加密/解密的服务。 密钥可由密钥保管库生成。
 
-对于 Azure SQL 数据库和 Azure Synapse，TDE 保护器在逻辑服务器级别设置，并由该服务器关联的所有已加密数据库继承。 对于 Azure SQL 托管实例，TDE 保护器是在实例级别设置的，并由该实例上所有加密的数据库继承。 除非另有说明，否则术语“服务器”在整个文档中指的是 SQL 数据库逻辑服务器和托管实例。 
+对于 Azure SQL 数据库和 Azure Synapse，TDE 保护器在逻辑服务器级别设置，并由该服务器关联的所有已加密数据库继承。 对于 Azure SQL 托管实例，TDE 保护器是在实例级别设置的，并由该实例上所有加密的数据库继承。 除非另有说明，否则术语“服务器”在整个文档中指的是 SQL 数据库逻辑服务器和托管实例。**
 
 > [!IMPORTANT]
 > 对于当前正在使用服务托管的 TDE 并想要开始使用客户管理的 TDE 的用户，在切换过程中数据将保持加密状态，且不会造成停机，也不需要重新加密数据库文件。 从服务托管的密钥切换到客户管理的密钥只需重新加密 DEK，此操作非常快捷且可在线完成。
@@ -74,19 +74,19 @@ Key Vault 管理员还可以[启用 Key Vault 审核事件的日志记录](/azur
 
 - Key Vault 和 SQL 数据库/托管实例必须属于同一个 Azure Active Directory 租户。 不支持 Key Vault 与服务器进行跨租户的交互。 以后若要移动资源，必须重新配置 TDE 和 AKV。 详细了解如何[移动资源](/azure-resource-manager/resource-group-move-resources)。
 
-- 必须对 Key Vault 启用[软删除](/key-vault/key-vault-ovw-soft-delete)功能，以防止意外删除密钥（或 Key Vault）时发生数据丢失。 软删除的资源将保留 90 天，除非客户在此期间恢复或清除这些资源。 “恢复”和“清除”操作在 Key Vault 访问策略中各自具有相关联的权限   。 软删除功能默认情况下处于禁用状态，可通过 [PowerShell](/key-vault/key-vault-soft-delete-powershell#enabling-soft-delete) 或 [CLI](/key-vault/key-vault-soft-delete-cli#enabling-soft-delete) 将其启用。 无法通过 Azure 门户启用此功能。  
+- 必须对 Key Vault 启用[软删除](/key-vault/key-vault-ovw-soft-delete)功能，以防止意外删除密钥（或 Key Vault）时发生数据丢失。 软删除的资源将保留 90 天，除非客户在此期间恢复或清除这些资源。 “恢复”和“清除”操作在 Key Vault 访问策略中各自具有相关联的权限** **。 软删除功能默认情况下处于禁用状态，可通过 [PowerShell](/key-vault/key-vault-soft-delete-powershell#enabling-soft-delete) 或 [CLI](/key-vault/key-vault-soft-delete-cli#enabling-soft-delete) 将其启用。 无法通过 Azure 门户启用此功能。  
 
 - 使用 SQL 数据库服务器或托管实例的 Azure Active Directory 标识向其授予对 Key Vault 的访问权限（get、wrapKey、unwrapKey）。 使用 Azure 门户时，会自动创建 Azure AD 标识。 使用 PowerShell 或 CLI 时，必须显式创建 Azure AD 标识，并且应验证创建是否完成。 有关使用 PowerShell 进行配置的详细分步说明，请参阅[配置支持 BYOK 的 TDE](transparent-data-encryption-byok-azure-sql-configure.md) 和[配置支持托管实例 BYOK 的 TDE](/sql-database/scripts/transparent-data-encryption-byok-sql-managed-instance-powershell)。
 
-- 将防火墙与 AKV 配合使用时，必须启用“允许信任的 Microsoft 服务绕过防火墙”选项。 
+- 将防火墙与 AKV 配合使用时，必须启用“允许信任的 Microsoft 服务绕过防火墙”选项。**
 
 ### <a name="requirements-for-configuring-tde-protector"></a>配置 TDE 保护器的要求
 
-- TDE 保护器只能是非对称的 RSA 2048 密钥。
+- TDE 保护器只能是非对称的 RSA 密钥。 支持的密钥长度为 2048 到 3072 个字节。
 
 - 密钥激活日期（如果已设置）必须是过去的日期和时间。 过期日期（如果已设置）必须是将来的日期和时间。
 
-- 密钥必须处于“已启用”状态。 
+- 密钥必须处于“已启用”状态。**
 
 - 如果将现有的密钥导入 Key Vault，请确保以支持的文件格式（.pfx、.byok 或 .backup）提供该密钥。
 
@@ -94,7 +94,7 @@ Key Vault 管理员还可以[启用 Key Vault 审核事件的日志记录](/azur
 
 ### <a name="recommendations-when-configuring-akv"></a>配置 AKV 时的建议
 
-- 将最多 500 个“常规用途”或 200 个“业务关键”数据库关联到单个订阅中的一个 Key Vault，以确保在服务器访问 Key Vault 中的 TDE 保护器时实现高可用性。 这些数字是根据经验以及 [Key Vault 服务限制](/key-vault/key-vault-service-limits)中的描述得出的。 此项建议旨在防止服务器故障转移后出现问题，因为故障转移过程对保管库触发的密钥操作数目与该服务器中的数据库数目相同。 
+- 将最多 500 个“常规用途”或 200 个“业务关键”数据库关联到单个订阅中的一个 Key Vault，以确保在服务器访问 Key Vault 中的 TDE 保护器时实现高可用性。 这些数字是根据经验以及 [Key Vault 服务限制](/key-vault/general/service-limits)中的描述得出的。 此项建议旨在防止服务器故障转移后出现问题，因为故障转移过程对保管库触发的密钥操作数目与该服务器中的数据库数目相同。
 
 - 在 Key Vault 中设置资源锁可以控制谁能删除此关键资源，并防止意外或未经授权的删除。 详细了解[资源锁](/azure-resource-manager/resource-group-lock-resources)。
 
@@ -117,7 +117,7 @@ Key Vault 管理员还可以[启用 Key Vault 审核事件的日志记录](/azur
 
 ## <a name="inaccessible-tde-protector"></a>不可访问的 TDE 保护器
 
-如果将透明数据加密配置为使用客户管理的密钥，必须持续访问 TDE 保护器才能使数据库保持联机状态。 如果服务器失去了对 AKV 中客户管理的 TDE 保护器的访问权限，则在最长 10 分钟后，数据库将开始拒绝所有连接，同时显示相应的错误消息，并将其状态更改为“不可访问”。  对于处于“不可访问”状态的数据库，唯一允许的操作是将其删除。
+如果将透明数据加密配置为使用客户管理的密钥，必须持续访问 TDE 保护器才能使数据库保持联机状态。 如果服务器失去了对 AKV 中客户管理的 TDE 保护器的访问权限，则在最长 10 分钟后，数据库将开始拒绝所有连接，同时显示相应的错误消息，并将其状态更改为“不可访问”。** 对于处于“不可访问”状态的数据库，唯一允许的操作是将其删除。
 
 > [!NOTE]
 > 如果数据库由于间歇性网络中断而不可访问，则无需采取任何措施，数据库即可自动恢复联机状态。
@@ -160,11 +160,11 @@ Key Vault 管理员还可以[启用 Key Vault 审核事件的日志记录](/azur
 > [!IMPORTANT]
 > 无论何时，为服务器设置的 TDE 保护器都不能超过一个。 此保护器在 Azure 门户边栏选项卡中标记为“使该密钥成为默认的 TDE 保护器”。 但是，可将其他多个密钥链接到服务器，而无需将其标记为 TDE 保护器。 这些密钥不是用于保护 DEK，而是在从备份还原期间使用（如果备份文件是使用具有相应指纹的密钥加密的）。
 
-如果还原备份所需的密钥不再可供目标服务器使用，则尝试还原时会返回以下错误消息：“目标服务器 `<Servername>` 无权访问在 \<时间戳 #1> 与 \<时间戳 #2> 之间创建的所有 AKV URI。 请在还原所有 AKV URI 之后重试操作。”
+如果还原备份所需的密钥不再可供目标服务器使用，则尝试还原时会返回以下错误消息：“目标服务器 `<Servername>` 无权访问在 \<Timestamp #1> 与 \<Timestamp #2> 之间创建的所有 AKV URI。 请在还原所有 AKV URI 之后重试操作。”
 
 若要缓解此问题，请对目标 SQL 数据库逻辑服务器运行 [Get-AzSqlServerKeyVaultKey](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlserverkeyvaultkey) cmdlet，或对目标托管实例运行 [Get-AzSqlInstanceKeyVaultKey](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstancekeyvaultkey)，以返回可用密钥的列表并标识缺少的密钥。 为了确保可以还原所有备份，请确保要还原的目标服务器有权访问全部所需的密钥。 这些密钥无需标记为 TDE 保护器。
 
-若要详细了解 SQL 数据库的备份恢复，请参阅[恢复 Azure SQL 数据库](sql-database-recovery-using-backups.md)。 若要详细了解 SQL 池的备份恢复，请参阅[恢复 SQL 池](../sql-data-warehouse/backup-and-restore.md)。 有关 SQL Server 托管实例的本机备份/还原，请参阅[快速入门：将数据库还原到托管实例](/sql-database/sql-database-managed-instance-get-started-restore) 
+若要详细了解 SQL 数据库的备份恢复，请参阅[恢复 Azure SQL 数据库](sql-database-recovery-using-backups.md)。 若要详细了解 SQL 池的备份恢复，请参阅[恢复 SQL 池](../synapse-analytics/sql-data-warehouse/backup-and-restore.md)。 有关 SQL Server 托管实例的本机备份/还原，请参阅[快速入门：将数据库还原到托管实例](/sql-database/sql-database-managed-instance-get-started-restore) 
 
 有关日志文件的其他注意事项：备份的日志文件仍会使用原始 TDE 保护器保持加密，即使 TDE 保护器已轮换，并且数据库正在使用新的 TDE 保护器。  还原时，需要使用这两个密钥来还原数据库。  如果日志文件使用 Azure Key Vault 中存储的 TDE 保护器，则还原时需要此密钥，即使数据库同时已改用服务托管的 TDE。
 

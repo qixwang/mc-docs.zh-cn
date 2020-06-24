@@ -6,14 +6,14 @@ ms.author: v-yiso
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-origin.date: 08/22/2019
-ms.date: 02/24/2020
-ms.openlocfilehash: f7121ae8990720115a97e49aa2c0478d36459416
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+origin.date: 04/20/2020
+ms.date: 06/22/2020
+ms.openlocfilehash: 809336211f71762b3101411510b9b3b9c65ddc14
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77428482"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723284"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a><a name="Migrate-to-granular-role-based-access-for-cluster-configurations"></a> 迁移到群集配置的基于角色的细化访问权限
 
@@ -26,12 +26,12 @@ ms.locfileid: "77428482"
 
 另外，我们正在引入新的 [HDInisght 群集操作员](/role-based-access-control/built-in-roles#hdinsight-cluster-operator)角色，无需向此角色授予“参与者”或“所有者”的管理权限，即可让他们检索机密。 总结：
 
-| 角色                                  | 以前                                                                                       | Now       |
+| 角色                                  | 以前                                                                                       | 今后       |
 |---------------------------------------|--------------------------------------------------------------------------------------------------|-----------|
-| 读取器                                | - 读取访问权限，包括机密                                                                   | - 读取访问权限，**不**包括机密 |           |   |   |
-| HDInsight 群集操作员<br>（新角色） | 不适用                                                                                              | - 读/写访问权限，包括机密         |   |   |
-| 参与者                           | - 读/写访问权限，包括机密<br>- 创建和管理所有类型的 Azure 资源。     | 没有变化 |
-| 所有者                                 | - 读/写访问权限，包括机密<br>- 对所有资源的完全访问权限<br>- 将访问权限委托给其他人 | 没有变化 |
+| 读取器                                | - 读取访问权限，包括机密。                                                                   | - 读取访问权限，**不**包括机密 |           |   |   |
+| HDInsight 群集操作员<br>（新角色） | 空值                                                                                              | - 读/写访问权限，包括机密         |   |   |
+| 参与者                           | - 读/写访问权限，包括机密。<br>- 创建和管理所有类型的 Azure 资源。<br>- 执行脚本操作。     | 没有变化 |
+| 所有者                                 | - 读/写访问权限，包括机密。<br>- 对所有资源的完全访问权限<br>- 将访问权限委托给其他人。<br>- 执行脚本操作。 | 没有变化 |
 
 了解如何向用户添加 HDInsight 群集操作员角色分配，以授予其对群集机密的读/写访问权限的信息，请参阅以下部分[将 HDInsight 群集操作员角色分配添加到用户](#add-the-hdinsight-cluster-operator-role-assignment-to-a-user)。
 

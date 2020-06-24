@@ -8,13 +8,13 @@ ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 03/18/2020
-ms.date: 04/20/2020
-ms.openlocfilehash: 9873d220527bed84927417c163de7c8c8918fcd4
-ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
+ms.date: 06/09/2020
+ms.openlocfilehash: f9f56ec7a052ace9dfb616ac539fd935921e8f8d
+ms.sourcegitcommit: c4fc01b7451951ef7a9616fca494e1baf29db714
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82588705"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84564348"
 ---
 # <a name="collect-telemetry-data-for-search-traffic-analytics"></a>收集遥测数据以用于分析搜索流量
 
@@ -23,7 +23,7 @@ ms.locfileid: "82588705"
 此模式依赖于 [Application Insights](https://docs.azure.cn/azure-monitor/app/app-insights-overview)（[Azure Monitor](https://docs.azure.cn/azure-monitor/) 的一项功能）来收集用户数据。 你还需要向客户端代码中添加检测机制，如本文中所述。 最后，你将需要一个报告机制来分析数据。 建议使用 Power BI，但你可以使用应用程序仪表板或可连接到 Application Insights 的任何工具。
 
 > [!NOTE]
-> 本文中所述的模式适用于你添加到客户端的代码生成的高级方案和点击流数据。 相比之下，服务日志易于设置，提供各种指标，且无需编写任何代码即可在门户中操作。 建议对所有方案启用诊断日志记录。 有关详细信息，请参阅[收集和分析日志数据](search-monitor-logs.md)。
+> 本文中所述的模式适用于你添加到客户端的代码生成的高级方案和点击流数据。 相比之下，服务日志易于设置，提供各种指标，且无需编写任何代码即可在门户中操作。 建议对所有方案启用日志记录。 有关详细信息，请参阅[收集和分析日志数据](search-monitor-logs.md)。
 
 ## <a name="identify-relevant-search-data"></a>标识相关的搜索数据
 
@@ -49,11 +49,11 @@ ms.locfileid: "82588705"
 
 以下步骤反映了适用于某些 Visual Studio 项目类型的快捷方式。 只需单击几下鼠标，即可创建资源并注册应用。
 
-1. 对于 Visual Studio 和 ASP.NET 开发，请打开你的解决方案，并选择“项目” > “添加 Application Insights 遥测”   。
+1. 对于 Visual Studio 和 ASP.NET 开发，请打开你的解决方案，并选择“项目” > “添加 Application Insights 遥测”**** ****。
 
-1. 单击“开始”。 
+1. 单击“开始”。****
 
-1. 通过提供 Microsoft 帐户、Azure 订阅和 Application Insights 资源（某个新资源是默认资源）来注册你的应用。 单击“注册”  。
+1. 通过提供 Microsoft 帐户、Azure 订阅和 Application Insights 资源（某个新资源是默认资源）来注册你的应用。 单击“注册”****。
 
 此时，你已经为应用程序设置了应用程序监视，这意味着，将使用默认指标跟踪所有页面加载。 有关上述步骤的详细信息，请参阅[启用 Application Insights 服务器端遥测](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core#enable-application-insights-server-side-telemetry-visual-studio)。
 
@@ -71,7 +71,7 @@ ms.locfileid: "82588705"
 
 **使用 C#**
 
-对于 C#，如果项目是 ASP.NET，则可以在应用程序配置（例如 appsettings.json）中找到 InstrumentationKey  。 如果你不确定密钥的位置，请再次参考注册说明。
+对于 C#，如果项目是 ASP.NET，则可以在应用程序配置（例如 appsettings.json）中找到 InstrumentationKey****。 如果你不确定密钥的位置，请再次参考注册说明。
 
 ```csharp
 private static TelemetryClient _telemetryClient;
@@ -206,19 +206,19 @@ appInsights.trackEvent("Click", {
 
 检测到应用并确认应用程序已正确连接到 Application Insights 后，下载一个预定义的报表模板以在 Power BI Desktop 中分析数据。 该报告包含预定义的图表和表，它们可用于分析为搜索流量分析捕获的其他数据。
 
-1. 在 Azure 认知搜索仪表板左侧导航窗格中，在“设置”  下，单击“搜索流量分析”  。
+1. 在 Azure 认知搜索仪表板左侧导航窗格中，在“设置”**** 下，单击“搜索流量分析”****。
 
-1. 在“搜索流量分析”  页面上，在步骤 3 中，单击“获取 Power BI Desktop”  以安装 Power BI。
+1. 在“搜索流量分析”**** 页面上，在步骤 3 中，单击“获取 Power BI Desktop”**** 以安装 Power BI。
 
    ![获取 Power BI 报表](./media/search-traffic-analytics/get-use-power-bi.png "获取 Power BI 报表")
 
-1. 在同一页面上，单击“下载 Power BI 报表”  。
+1. 在同一页面上，单击“下载 Power BI 报表”****。
 
 1. 该报表将在 Power BI Desktop 中打开，并且会提示你连接到 Application Insights 并提供凭据。 可以在你的 Application Insights 资源的 Azure 门户页面中找到连接信息。 对于凭据，请提供用于门户登录的相同用户名和密码。
 
    ![连接到 Application Insights](./media/search-traffic-analytics/connect-to-app-insights.png "连接到 Application Insights")
 
-1. 单击“加载”。 
+1. 单击“加载”。****
 
 该报表包含图表和表，可帮助你做出更明智的决策来提高搜索性能和相关性。
 

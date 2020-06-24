@@ -14,15 +14,15 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-origin.date: 11/21/2019
-ms.date: 02/24/2020
+origin.date: 04/01/2020
+ms.date: 06/22/2020
 ms.author: v-yiso
-ms.openlocfilehash: 16c0628b5446e9a69b1108b9cf7bbacfddc9bffa
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: d8e160c0313390df3060b4c6e416bfedfd892564
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292081"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723754"
 ---
 # <a name="customize-hdinsight-clusters-using-bootstrap"></a>使用 Bootstrap 自定义 HDInsight 群集
 
@@ -32,7 +32,7 @@ Bootstrap 脚本允许你以编程方式在 Azure HDInsight 中安装和配置�
 
 * 使用 Azure PowerShell
 * 使用 .NET SDK
-* 使用 Azure 资源管理器模板
+* 使用 Azure Resource Manager 模板
 
 例如，使用这些编程方法，你可以在以下文件中配置选项：
 
@@ -55,7 +55,7 @@ Bootstrap 脚本允许你以编程方式在 Azure HDInsight 中安装和配置�
 
 有关在创建时在 HDInsight 群集上安装其他组件的信息，请参阅[使用脚本操作自定义 HDInsight 群集 (Linux)](hdinsight-hadoop-customize-cluster-linux.md)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 如果使用 PowerShell，你将需要 [Az 模块](https://docs.microsoft.com/powershell/azure/overview)。
 
@@ -92,11 +92,11 @@ New-AzHDInsightCluster `
 
 可在[附录](#appendix-powershell-sample)中找到完整的有效 PowerShell 脚本。
 
-**验证更改：**
+**若要验证更改，请执行以下操作：**
 
 1. 导航至 `https://CLUSTERNAME.azurehdinsight.cn/`，其中 `CLUSTERNAME` 是群集的名称。
-1. 从左侧菜单中，导航到“Hive”   > “配置”   > “高级”  。
-1. 展开“高级 hive-site”  。
+1. 从左侧菜单中，导航到“Hive”**** > “配置”**** > “高级”****。
+1. 展开“高级 hive-site”****。
 1. 找到 **hive.metastore.client.socket.timeout** 并确认该值为 **90s**。
 
 下面是有关自定义其他配置文件的更多示例：
@@ -120,7 +120,7 @@ $OozieConfigValues = @{ "oozie.service.coord.normal.default.timeout"="150" }  # 
 请参阅[用于 .NET 的 Azure HDInsight SDK](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet)。
 
 ## <a name="use-resource-manager-template"></a>使用 Resource Manager 模板
-可在 Resource Manager 模板中使用 Bootstrap：
+可以在 Resource Manager 模板中使用 bootstrap：
 
 ```json
 "configurations": {
@@ -132,21 +132,26 @@ $OozieConfigValues = @{ "oozie.service.coord.normal.default.timeout"="150" }  # 
 }
 ```
 
-![HDInsight Hadoop 自定义群集 Bootstrap Azure 资源管理器模板](./media/hdinsight-hadoop-customize-cluster-bootstrap/hdinsight-customize-cluster-bootstrap-arm.png)
+![HDInsight Hadoop, 自定义群集, bootstrap, Azure Resource Manager 模板](./media/hdinsight-hadoop-customize-cluster-bootstrap/hdinsight-customize-cluster-bootstrap-arm.png)
+
+spark2-defaults 中用于切换配置的示例资源管理器模板代码片段会定期清除存储中的事件日志。  
+
+```json
+"configurations": {
+    "spark2-defaults": {
+        "spark.history.fs.cleaner.enabled": "true",
+        "spark.history.fs.cleaner.interval": "7d",
+        "spark.history.fs.cleaner.maxAge": "90d"
+    }
+}
+```
 
 ## <a name="see-also"></a>另请参阅
-* [在 HDInsight 中创建 Apache Hadoop 群集][hdinsight-provision-cluster]提供了有关如何使用其他自定义选项创建 HDInsight 群集的说明。
-* [为 HDInsight 开发脚本操作脚本][hdinsight-write-script]
-* [在 HDInsight 群集上安装并使用 Apache Spark][hdinsight-install-spark]
+
+* [在 HDInsight 中创建 Apache Hadoop 群集](hdinsight-hadoop-provision-linux-clusters.md)提供了有关如何使用其他自定义选项创建 HDInsight 群集的说明。
+* [为 HDInsight 开发脚本操作脚本](hdinsight-hadoop-script-actions-linux.md)
+* [在 HDInsight 群集上安装并使用 Apache Spark](spark/apache-spark-jupyter-spark-sql-use-portal.md)
 * [在 HDInsight 群集上安装并使用 Apache Giraph](hdinsight-hadoop-giraph-install.md)。
-
-[hdinsight-install-spark]: hdinsight-hadoop-spark-install.md
-[hdinsight-write-script]: hdinsight-hadoop-script-actions-linux.md
-[hdinsight-provision-cluster]: hdinsight-hadoop-provision-linux-clusters.md
-[powershell-install-configure]: /powershell/azureps-cmdlets-docs
-
-
-[img-hdi-cluster-states]: ./media/hdinsight-hadoop-customize-cluster/HDI-Cluster-state.png "群集创建期间的阶段"
 
 ## <a name="appendix-powershell-sample"></a>附录：PowerShell 示例
 

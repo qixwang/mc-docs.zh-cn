@@ -10,20 +10,23 @@ ms.topic: conceptual
 author: WenJason
 ms.author: v-jay
 ms.reviewer: mathoma
-origin.date: 01/25/2019
-ms.date: 02/17/2020
-ms.openlocfilehash: 44c712c9942b260b2b2d00c49c65479e5944c3f2
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+origin.date: 04/28/2020
+ms.date: 06/15/2020
+ms.openlocfilehash: 6b61d28dabd6a700d3021672d68c083240636597
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292264"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723592"
 ---
 # <a name="replication-to-sql-database-single-and-pooled-databases"></a>复制到 SQL 数据库的单一数据库和共用数据库
 
 可以对 SQL Server 复制进行配置，以便复制到 Azure SQL 数据库中 [SQL 数据库服务器](sql-database-servers.md)上的单一数据库和共用数据库。  
 
-## <a name="supported-configurations"></a>**支持的配置：**
+> [!NOTE]
+> 本文介绍如何在 Azure SQL 数据库中使用[事务复制](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication)。 它与[活动异地复制](/sql-database/sql-database-active-geo-replication)无关，后者是一项 Azure SQL 数据库功能，可用于创建单个数据库的完全可读副本。
+
+## <a name="supported-configurations"></a>支持的配置
   
 - SQL Server 可以是在本地运行的 SQL Server 实例，也可以是在云端的 Azure 虚拟机中运行的 SQL Server 实例。 有关详细信息，请参阅 [Azure 虚拟机上的 SQL Server 概述](/virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview)。  
 - Azure SQL 数据库必须是 SQL Server 发布服务器的推送订阅者。  
@@ -40,7 +43,7 @@ ms.locfileid: "79292264"
 - SQL Server 2012 [SP2 CU8 (11.0.5634.1)](https://support.microsoft.com/help/3082561/cumulative-update-8-for-sql-server-2012-sp2) 或 [SP3 (11.0.6020.0)](https://www.microsoft.com/download/details.aspx?id=49996)
 
 > [!NOTE]
-> 尝试使用不受支持的版本来配置复制可能导致错误 MSSQL_REPL20084（过程无法连接到订阅服务器）和 MSSQL_REPL40532（无法打开登录名所请求的服务器 \<name>。 登录失败）。  
+> 尝试使用不受支持的版本来配置复制可能导致错误编号 MSSQL_REPL20084（进程无法连接到订阅服务器）和 MSSQL_REPL40532（无法打开登录名所请求的服务器 \<name>。 登录失败）。  
 
 若要使用 Azure SQL 数据库的所有功能，必须使用最新版的 [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) 和 [SQL Server Data Tools](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)。  
 

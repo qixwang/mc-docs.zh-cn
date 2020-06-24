@@ -1,26 +1,19 @@
 ---
-title: 在 Azure 中保护和使用虚拟机上的策略 | Azure
-description: 了解适用于 Azure 中 Linux 和虚拟机的安全性和策略。
-services: virtual-machines-linux
-documentationcenter: ''
-author: rockboyfor
-manager: digimobile
-editor: tysonn
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: virtual-machines-linux
+title: 保护和使用策略
+description: 了解适用于 Azure 中的虚拟机的安全性和策略。
+author: Johnnytechn
+ms.service: virtual-machines
+ms.subservice: security
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-origin.date: 11/27/2018
-ms.date: 11/11/2019
-ms.author: v-yeche
+ms.date: 06/05/2020
+ms.author: v-johya
 ms.topic: conceptual
-ms.openlocfilehash: e9d43bb9594300c1bb1cff036e973a22cd2a9d1b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 190a12c57cd0edbb1624dd132931343c4f595877
+ms.sourcegitcommit: 285649db9b21169f3136729c041e4d04d323229a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "73831435"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84683953"
 ---
 # <a name="secure-and-use-policies-on-virtual-machines-in-azure"></a>在 Azure 中保护和使用虚拟机上的策略
 

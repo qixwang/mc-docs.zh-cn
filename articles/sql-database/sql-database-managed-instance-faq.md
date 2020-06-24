@@ -11,13 +11,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: sstein, carlrab
 origin.date: 03/17/2020
-ms.date: 04/27/2020
-ms.openlocfilehash: 98418dbda73b662afeb2757f114c505a305ef708
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.date: 06/15/2020
+ms.openlocfilehash: 321cdfa1fcb111e1f613360301e5fbe0318a8676
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82126684"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723633"
 ---
 # <a name="sql-database-managed-instance-frequently-asked-questions-faq"></a>SQL 数据库托管实例常见问题解答 (FAQ)
 
@@ -63,9 +63,9 @@ ms.locfileid: "82126684"
 
 不支持更改托管实例名称。
 
-可以更改托管实例默认 DNS 区域“.database.chinacloudapi.cn”  。 
+可以更改托管实例默认 DNS 区域“.database.chinacloudapi.cn”**。 
 
-若要使用其他 DNS 区域而不是默认区域（例如“.contoso.com”  ），请执行以下操作： 
+若要使用其他 DNS 区域而不是默认区域（例如“.contoso.com”**），请执行以下操作： 
 - 使用 CliConfig 定义别名。 该工具只是一个注册表设置包装器，因此也可以使用组策略或脚本完成此操作
 - 将 *CNAME* 与 *TrustServerCertificate=true* 选项一起使用。
 
@@ -95,7 +95,9 @@ ms.locfileid: "82126684"
 
 这是一个长时间运行的操作，因为新托管实例将在后台预配，数据库将在旧实例与新实例之间自动转移，该过程结束时，可以快速故障转移。 
 
-如果同一区域不能同时支持这两种硬件代系，可以更改硬件代系，但必须手动完成该操作。 这需要在所需硬件代系可用的区域中预配一个新实例，并在旧实例与新实例之间手动备份和还原数据。
+**如果没有足够的 IP 地址来执行更新操作怎么办？**
+
+如果预配托管实例的子网中没有足够的 IP 地址，需要创建一个新的子网并在其中创建新的托管实例。 同时建议在创建新的子网时分配更多 IP 地址，以免在将来的更新操作中遇到类似情况（对于合适的子网大小，请查看[如何确定 VNet 子网大小](sql-database-managed-instance-determine-size-vnet-subnet.md)）。 预配新实例后，可以在新旧实例之间手动备份和还原数据，或执行跨实例的[时间点还原](sql-database-managed-instance-point-in-time-restore.md?tabs=azure-powershell)。 
 
 
 ## <a name="tune-performance"></a>调整性能
@@ -215,8 +217,8 @@ DNS 配置最终会刷新：
 
 可以，无需解密数据库即可将其还原到托管实例。 需将一个在源系统中用作加密密钥保护器的证书/密钥提供给托管实例，才能从加密的备份文件中读取数据。 要运行此操作有两个可行的方式：
 
-- 将证书保护器上传到托管实例。  只能使用 PowerShell 执行此操作。 [示例脚本](/sql-database/sql-database-managed-instance-migrate-tde-certificate)描述了整个过程。
-- 将非对称密钥保护器上传到 Azure Key Vault (AKV)，并将托管实例指向该保护器。  此方法类似于自带密钥 (BYOK) TDE 用例，该用例也使用 AKV 集成来存储加密密钥。 如果你只是想要将该密钥用作加密密钥保护器，让托管实例用来还原加密的数据库，请按照有关[设置 BYOK TDE](/sql-database/transparent-data-encryption-azure-sql#manage-transparent-data-encryption) 的说明操作，且不要选中“将所选密钥设为默认 TDE 保护器”。 
+- 将证书保护器上传到托管实例。** 只能使用 PowerShell 执行此操作。 [示例脚本](/sql-database/sql-database-managed-instance-migrate-tde-certificate)描述了整个过程。
+- 将非对称密钥保护器上传到 Azure Key Vault (AKV)，并将托管实例指向该保护器。** 此方法类似于自带密钥 (BYOK) TDE 用例，该用例也使用 AKV 集成来存储加密密钥。 如果你只是想要将该密钥用作加密密钥保护器，让托管实例用来还原加密的数据库，请按照有关[设置 BYOK TDE](/sql-database/transparent-data-encryption-azure-sql#manage-transparent-data-encryption) 的说明操作，且不要选中“将所选密钥设为默认 TDE 保护器”。**
 
 将加密保护器提供给托管实例使用后，可以继续执行标准的数据库还原过程。
 

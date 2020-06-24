@@ -2,44 +2,95 @@
 title: 使用内置索引器为大型数据集编制索引
 titleSuffix: Azure Cognitive Search
 description: 通过计划、并行和分布式索引的批处理模式、资源处理和技术，为大型数据编制索引或进行计算密集型索引编制的策略。
-manager: nitinme
-author: HeidiSteen
+manager: liamca
+author: dereklegenzoff
 ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
-origin.date: 12/17/2019
-ms.date: 03/02/2020
-ms.openlocfilehash: 2e74bd3a6620baf1bb38c366565e11733f8ecec4
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+origin.date: 05/05/2020
+ms.date: 06/09/2020
+ms.openlocfilehash: e560de6db6399cce04e18ff91d41559c71fb7222
+ms.sourcegitcommit: c4fc01b7451951ef7a9616fca494e1baf29db714
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78850571"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84564291"
 ---
 # <a name="how-to-index-large-data-sets-in-azure-cognitive-search"></a>如何在 Azure 认知搜索中为大型数据集编制索引
+
+Azure 认知搜索支持采用[两种基本方法](search-what-is-data-import.md)将数据导入到搜索索引中：一种方法是以编程方式将数据** 推送到索引中；另一种方法是将 [Azure 认知搜索索引器](search-indexer-overview.md)指向受支持的数据源来拉取数据。**
 
 随着数据量的增长或处理需求的变化，你可能发现，简单或默认的索引编制策略不再实用。 在 Azure 认知搜索中，可通过多种方法来适应较大的数据集，包括构建数据上传请求、对计划和分布式工作负荷使用特定于源的索引器，等等。
 
 这些相同的技术也适用于长时间运行的进程。 具体而言，[并行索引编制](#parallel-indexing)中所述的步骤有助于完成计算密集型编制索引，例如 [AI 扩充管道](cognitive-search-concept-intro.md)中的图像分析或自然语言处理。
 
-以下部分探讨的三种技术适用于对大量数据进行索引编制。
+以下部分探讨使用推送 API 和索引器对大量数据进行索引编制的方法。
 
-## <a name="option-1-pass-multiple-documents"></a>选项 1：传递多个文档
+## <a name="push-api"></a>推送 API
 
-为较大数据集编制索引的最简单机制之一是在单个请求中提交多个文档或记录。 只要整个有效负载小于 16 MB，则请求就可以在一个批量上传操作中最多处理 1000 个文档。 不管你在 .NET SDK 中使用[添加文档 REST API](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) 还是[索引方法](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.index?view=azure-dotnet)，这些限制均适用。 不管什么 API，你都会在每个请求的正文中打包 1000 个文档。
+将数据推送到索引中时，有多个重要注意事项会影响推送 API 的索引编制速度。 以下部分概要介绍这些因素。 
 
-批处理索引编制是使用 REST 或 .NET 或通过索引器针对单个请求实现的。 有几个索引器根据不同的限制运行。 具体而言，当平均文档大小较大时，Azure Blob 索引编制会将批大小设置为 10 个文档。 对于基于[创建索引器 REST API](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer) 的索引器，可以设置 `BatchSize` 参数来自定义此设置，以便与数据特征更相符。 
+除本文中的信息外，还可利用[优化索引编制速度教程](tutorial-optimize-indexing-push-api.md)中的代码示例来了解详细信息。
+
+### <a name="service-tier-and-number-of-partitionsreplicas"></a>服务层级和分区/副本数
+
+添加分区或提高搜索服务层级都将提高索引编制速度。
+
+添加其他副本也可能会提高索引编制速度，但无法保证提高。 另一方面，其他副本将增加搜索服务可以处理的查询量。 副本也是获取 [SLA](https://azure.microsoft.com/support/legal/sla/search/v1_0/) 的关键组件。
+
+在添加分区/副本或升级到更高层级前，请考虑金钱成本和分配时间。 添加分区可以显著提高索引编制速度，但添加/删除分区可能需要 15 分钟到几个小时不等。 有关详细信息，请参阅关于[调整容量](search-capacity-planning.md)的文档。
+
+### <a name="index-schema"></a>索引架构
+
+索引架构在编制数据索引方面扮演重要角色。 添加字段和向字段添加其他属性（例如“可搜索”**、“可分面”** 或“可筛选”**）都会降低索引编制速度。
+
+一般而言，建议仅在打算使用其他属性时才将其添加到字段中。
 
 > [!NOTE]
 > 若要保持较小的文档大小，请避免向索引添加不可查询的数据。 图像和其他二进制数据不可直接搜索，不应存储在索引中。 若要将不可查询的数据集成到搜索结果中，应定义用于存储资源的 URL 引用的不可搜索字段。
 
-## <a name="option-2-add-resources"></a>选项 2：添加资源
+### <a name="batch-size"></a>批大小
 
-在某个[标准定价层](search-sku-tier.md)中预配的服务为存储和工作负荷（查询或索引）提供的容量往往利用不足，因此，绝对需要[增加分区和副本计数](search-capacity-planning.md)才能适应较大的数据集。 为获得最佳效果，需要提供存储分区和副本，使数据引入能够正常工作。
+为较大数据集编制索引的最简单机制之一是在单个请求中提交多个文档或记录。 只要整个有效负载小于 16 MB，则请求就可以在一个批量上传操作中最多处理 1000 个文档。 不管你在 .NET SDK 中使用[添加文档 REST API](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) 还是[索引方法](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.index?view=azure-dotnet)，这些限制均适用。 不管什么 API，你都会在每个请求的正文中打包 1000 个文档。
 
-增加副本和分区是计费的事件，会增大成本，但是，除非你要在最大负载状态下持续编制索引，否则，可以在编制索引的持续时间内添加缩放功能，然后在完成索引编制后重新下调资源级别。
+使用批处理为文档编制索引可显著提高索引编制性能。 确定数据的最佳批大小是优化索引编制速度的关键。 影响最佳批大小的两个主要因素是：
++ 索引的架构
++ 数据的大小
 
-## <a name="option-3-use-indexers"></a>选项 3：使用索引器
+因为最佳批大小取决于你的索引和数据，所以最好的方法是测试不同的批大小，以确定可为你的方案实现最快索引编制速度的批大小。 本[教程](tutorial-optimize-indexing-push-api.md)提供使用 .NET SDK 测试批大小的示例代码。 
+
+### <a name="number-of-threadsworkers"></a>线程/辅助角色数
+
+若要充分利用 Azure 认知搜索的索引编制速度，你可能需要使用多个线程将许多批量编制索引请求并发发送到该服务。  
+
+最佳线程数取决于：
+
++ 搜索服务层级
++ 分区数
++ 批大小
++ 索引的架构
+
+你可以修改此示例并测试不同的线程数，以确定适合你的方案的最佳线程数。 但是，只要有多个线程并发运行，就应该能够利用大部分提升的效率。 
+
+> [!NOTE]
+> 提高搜索服务层级或增加分区时，还应增加并发线程数。
+
+当你增加命中搜索服务的请求时，可能会遇到表示请求没有完全成功的 [HTTP 状态代码](https://docs.microsoft.com/rest/api/searchservice/http-status-codes)。 在编制索引期间，有两个常见的 HTTP 状态代码：
+
++ **503 服务不可用** - 此错误表示系统负载过重，当前无法处理请求。
++ **207 多状态** - 此错误意味着某些文档成功，但至少一个文档失败。
+
+### <a name="retry-strategy"></a>重试策略 
+
+如果失败，则应使用[指数回退重试策略](https://docs.microsoft.com/dotnet/architecture/microservices/implement-resilient-applications/implement-retries-exponential-backoff)来重试请求。
+
+Azure 认知搜索的 .NET SDK 会自动重试 503 和其他失败的请求，但你需要实现自己的逻辑来重试 207。 还可以使用 [Polly](https://github.com/App-vNext/Polly) 等开源工具来实现重试策略。
+
+### <a name="network-data-transfer-speeds"></a>网络数据传输速度
+
+编制数据索引时，网络数据传输速度可能是一个限制因素。 在 Azure 环境中为数据编制索引是加快索引编制的一种简便方法。
+
+## <a name="indexers"></a>索引器
 
 [索引器](search-indexer-overview.md)用于在支持的 Azure 数据源中通过爬网找到可搜索的内容。 有几项索引器功能尽管并非专门用于大规模索引编制，但它们特别能够适应较大的数据集：
 
@@ -49,6 +100,12 @@ ms.locfileid: "78850571"
 
 > [!NOTE]
 > 索引器特定于数据源，因此，使用索引器方法仅对 Azure 上的选定数据源可行：[SQL 数据库](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)、[Blob 存储](search-howto-indexing-azure-blob-storage.md)、[表存储](search-howto-indexing-azure-tables.md)和 [Cosmos DB](search-howto-index-cosmosdb.md)。
+
+### <a name="batch-size"></a>批大小
+
+与推送 API 一样，索引器允许配置每个批处理的项数。 对于基于[创建索引器 REST API](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer) 的索引器，可以设置 `batchSize` 参数来自定义此设置，以便与数据特征更相符。 
+
+默认批大小特定于数据源。 Azure SQL 数据库和 Azure Cosmos DB 的默认批大小为 1000。 相反，当平均文档大小较大时，Azure Blob 索引编制会将批大小设置为 10 个文档。 
 
 ### <a name="scheduled-indexing"></a>计划的索引
 
@@ -81,9 +138,9 @@ ms.locfileid: "78850571"
 
 对于索引器，处理能力并不严格依赖于搜索服务所用每个服务单位 (SU) 的一个索引器子系统。 可以在基本或标准层上预配的、至少包含两个副本的 Azure 认知搜索服务中创建多个并发索引器。 
 
-1. 在 [Azure 门户](https://portal.azure.cn)中，在搜索服务仪表板的“概述”页上，选中“定价层”以确认它能够适应并行索引。   基本和标准层提供多个副本。
+1. 在 [Azure 门户](https://portal.azure.cn)中，在搜索服务仪表板的“概述”页上，选中“定价层”以确认它能够适应并行索引。**** **** 基本和标准层提供多个副本。
 
-2. 在“设置” > “缩放”中，为并行处理[增加副本](search-capacity-planning.md)：为每个索引器工作负荷额外添加一个副本。   保留足够数量的现有查询卷。 为索引牺牲查询工作负荷并不是一个很好的折衷方法。
+2. 在“设置” > “缩放”中，为并行处理[增加副本](search-capacity-planning.md)：为每个索引器工作负荷额外添加一个副本。**** **** 保留足够数量的现有查询卷。 为索引牺牲查询工作负荷并不是一个很好的折衷方法。
 
 3. 在 Azure 认知搜索索引器可以访问的级别，将数据分配到多个容器。 这可能是 Azure SQL 数据库中的多个表、Azure Blob 存储中的多个容器，或多个集合。 为每个表或容器定义一个数据源对象。
 

@@ -1,6 +1,6 @@
 ---
-title: 使用 SQL 数据仓库生成和部署模型 - Team Data Science Process
-description: 使用 SQL 数据仓库和公开提供的数据集生成和部署机器学习模型。
+title: 使用 Azure Synapse Analytics 生成和部署模型 - Team Data Science Process
+description: 使用 Azure Synapse Analytics 和公开提供的数据集生成和部署机器学习模型。
 services: machine-learning
 author: marktab
 manager: cgronlun
@@ -8,20 +8,20 @@ editor: cgronlun
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/24/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 605ba38ce4058725289a8b9a3c59f73d65c7e115
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 54fad3327e4eb5fe09f9ccdbb08b65da5e9e5b72
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75599228"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723639"
 ---
-# <a name="the-team-data-science-process-in-action-using-sql-data-warehouse"></a>团队数据科学过程实务：使用 SQL 数据仓库
-在本教程中，我们指导为某个公开提供的数据集（[NYC 出租车车程](https://www.andresmh.com/nyctaxitrips/)数据集）完成以下过程：使用 SQL 数据仓库 (SQL DW) 构建和部署机器学习模型。 构建的二元分类模型可预测是否为某段旅程支付了小费；而且还会讨论用于多类分类和回归的模型，这些模型可预测支付的小费金额的分布。
+# <a name="the-team-data-science-process-in-action-using-azure-synapse-analytics"></a>Team Data Science Process 实务：使用 Azure Synapse Analytics
+本教程逐步介绍如何使用 Azure Synapse Analytics 为某个公开提供的数据集（[纽约市出租车行程](https://www.andresmh.com/nyctaxitrips/)数据集）生成和部署机器学习模型。 构造的二元分类模型可预测是否为某个行程支付了小费。  模型包括多类分类（是否有小费）和回归（已付小费金额的分布）。
 
-该过程遵循[团队数据科学过程 (TDSP)](/machine-learning/team-data-science-process/) 工作流。 我们会介绍如何设置数据科学环境，如何将数据载入 SQL DW，以及如何使用 SQL 数据仓库或 IPython Notebook 来浏览要构建的数据和工程功能。 然后，我们会介绍如何使用 Azure 机器学习来构建和部署模型。
+该过程遵循[团队数据科学过程 (TDSP)](/machine-learning/team-data-science-process/) 工作流。 我们会介绍如何设置数据科学环境，如何将数据载入 Azure Synapse Analytics，以及如何使用 Azure Synapse Analytics 或 IPython Notebook 来浏览要建模的数据和工程特征。 然后，我们会介绍如何使用 Azure 机器学习来构建和部署模型。
 
 ## <a name="the-nyc-taxi-trips-dataset"></a><a name="dataset"></a>NYC 出租车行程数据集
 NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩 CSV 文件，记录了超过 1.73 亿个单独车程及每个车程支付的费用。 每个行程记录都包括上车和下车的位置和时间、匿名出租车司机的驾驶证号和车牌号（出租车的唯一 ID）。 数据涵盖  2013 年的所有行程，并在每个月的以下两个数据集中提供：
@@ -52,7 +52,7 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
 ## <a name="address-three-types-of-prediction-tasks"></a><a name="mltasks"></a>解决三种类型的预测任务
 我们根据 *tip\_amount* 编写了三个预测问题的公式，来阐明三种类型的建模任务︰
 
-1. **二元分类**：预测是否已支付某个行程的小费，即大于 $0 的 tip\_amount 是正例，等于 $0 的 tip\_amount 是反例   。
+1. **二元分类**：预测是否为某个行程支付了小费，即大于 $0 的 tip\_amount 是正例，等于 $0 的 tip\_amount 是反例 。
 2. **多类分类**：预测为行程支付的小费的范围。 我们将 *tip\_amount* 划分五个分类收纳组或类别：
 
         Class 0 : tip_amount = $0
@@ -74,20 +74,20 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
   * **存储帐户密钥**
   * **容器名称**（希望在 Azure Blob 存储中存储数据的容器的名称）
 
-**设置 Azure SQL DW 实例。**
-请按照[创建 SQL 数据仓库](../../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)处的文档设置 SQL 数据仓库实例。 请务必记下以下 SQL 数据仓库凭据，稍后的步骤中会使用它们。
+**预配 Azure Synapse Analytics 实例。**
+按照[在 Azure 门户中创建和查询 Azure SQL 数据仓库](../../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md)中的文档预配 Azure Synapse Analytics 实例。 请务必记下以下 Azure Synapse Analytics 凭据，稍后的步骤中会使用它们。
 
-* **服务器名称**：\<服务器名称>.database.windows.net
+* **服务器名称**：\<server Name>.database.windows.net
 * **SQLDW（数据库）名称**
 * **用户名**
 * **密码**
 
-**安装 Visual Studio 和 SQL Server Data Tools。** 有关说明，请参阅[为 SQL 数据仓库安装 Visual Studio 2015 和/或 SSDT (SQL Server Data Tools) ](../../sql-data-warehouse/sql-data-warehouse-install-visual-studio.md)。
+**安装 Visual Studio 和 SQL Server Data Tools。** 有关说明，请参阅[适用于 SQL 数据仓库的 Visual Studio 2019 入门](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-install-visual-studio.md)。
 
-**使用 Visual Studio 连接到 Azure SQL DW。** 有关说明，请参阅[使用 Visual Studio 连接到 Azure SQL 数据仓库](../../sql-data-warehouse/sql-data-warehouse-connect-overview.md)中的步骤 1 和 2。
+**使用 Visual Studio 连接到 Azure Synapse Analytics。** 有关说明，请参阅[连接到 Azure Synapse Analytics 中的 SQL Analytics](../../synapse-analytics/sql/connect-overview.md) 中的步骤 1 和 2。
 
 > [!NOTE]
-> 在 SQL 数据仓库中创建的数据库上运行下面的 SQL 查询（而不是在连接主题的步骤 3 中提供的查询）来**创建一个主密钥**。
+> 在 Azure Synapse Analytics 中创建的数据库上运行下面的 SQL 查询（而不是在连接主题的步骤 3 中提供的查询）来创建一个主密钥。
 >
 >
 
@@ -101,7 +101,7 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
 
 **在 Azure 订阅下创建一个 Azure 机器学习工作区。** 有关说明，请参阅[创建 Azure 机器学习工作区](../studio/create-workspace.md)。
 
-## <a name="load-the-data-into-sql-data-warehouse"></a><a name="getdata"></a>将数据载入 SQL 数据仓库
+## <a name="load-the-data-into-azure-synapse-analytics"></a><a name="getdata"></a>将数据加载到 Azure Synapse Analytics 中
 打开 Windows PowerShell 命令控制台。 运行以下 PowerShell 命令将我们在 GitHub 上与你共享的示例 SQL 脚本文件下载到使用参数 *-DestDir* 指定的本地目录中。 可以将参数 *-DestDir* 的值更改为任何本地目录。 如果 *-DestDir* 不存在，PowerShell 脚本将创建它。
 
 > [!NOTE]
@@ -123,10 +123,10 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
 
     ./SQLDW_Data_Import.ps1
 
-首次运行 PowerShell 脚本时，会要求输入 Azure SQL DW 和 Azure Blob 存储帐户中的信息。 此 PowerShell 脚本完成首次运行之后，输入的凭据那时已经写入到现有工作目录中的一个名为 SQLDW.conf 的配置文件中。 以后运行此 PowerShell 脚本文件时，可以选择从此配置文件中读取所有需要的参数。 如果需要更改某些参数，可以选择通过删除此配置文件并按提示输入参数值，根据提示在屏幕上输入参数，或者通过编辑 *-DestDir* 目录中的 SQLDW.conf 文件更改参数值。
+首次运行 PowerShell 脚本时，系统会要求你输入 Azure Synapse Analytics 和 Azure Blob 存储帐户中的信息。 此 PowerShell 脚本完成首次运行之后，输入的凭据那时已经写入到现有工作目录中的一个名为 SQLDW.conf 的配置文件中。 以后运行此 PowerShell 脚本文件时，可以选择从此配置文件中读取所有需要的参数。 如果需要更改某些参数，可以选择通过删除此配置文件并按提示输入参数值，根据提示在屏幕上输入参数，或者通过编辑 *-DestDir* 目录中的 SQLDW.conf 文件更改参数值。
 
 > [!NOTE]
-> 为了避免架构名称与 Azure SQL DW 中的现有名称发生冲突，在直接从 SQLDW.conf 文件读取参数时，会将一个 3 位随机数字添加到 SQLDW.conf 文件中的架构名称，并将其作为每次运行的默认架构名称。 PowerShell 脚本可能会提示输入架构名称︰该名称可以由用户自行指定。
+> 为了避免架构名称与 Azure Synapse Analytics 中的现有名称发生冲突，在直接从 SQLDW.conf 文件读取参数时，会向 SQLDW.conf 文件中的架构名称添加一个 3 位随机数字，并将其作为每次运行的默认架构名称。 PowerShell 脚本可能会提示输入架构名称︰该名称可以由用户自行指定。
 >
 >
 
@@ -163,7 +163,7 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
         $total_seconds = [math]::Round($time_span.TotalSeconds,2)
         Write-Host "AzCopy finished copying data. Please check your storage account to verify." -ForegroundColor "Yellow"
         Write-Host "This step (copying data from public blob to your storage account) takes $total_seconds seconds." -ForegroundColor "Green"
-* 通过使用以下命令**使用 Polybase（通过执行 LoadDataToSQLDW.sql）将数据从专用 blob 存储帐户载入 Azure SQL DW**。
+* 通过以下命令**使用 Polybase（通过执行 LoadDataToSQLDW.sql）将数据从专用 blob 存储帐户载入 Azure Synapse Analytics**。
 
   * 创建架构
 
@@ -254,7 +254,7 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
                 REJECT_VALUE = 12
             )
 
-    - 将数据从 Azure Blob 存储中的外部表载入 SQL 数据仓库
+    - 将数据从 Azure blob 存储中的外部表载入 Azure Synapse Analytics
 
             CREATE TABLE {schemaname}.{nyctaxi_fare}
             WITH
@@ -310,7 +310,7 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
 存储帐户的地理位置会影响加载时间。
 
 > [!NOTE]
-> 具体取决于专用 blob 存储帐户的地理位置，将数据从公共 blob 复制到专用存储帐户的过程可能需要大约 15 分钟，或者甚至更长时间，而将数据从存储帐户中载入 Azure SQL 数据仓库的过程可能需要 20 分钟或更长时间。
+> 根据专用 blob 存储帐户地理位置的不同，将数据从公共 blob 复制到专用存储帐户的过程可能需要大约 15 分钟，甚至更长的时间，而将数据从存储帐户载入 Azure Synapse Analytics 的过程可能需要 20 分钟或更长时间。
 >
 >
 
@@ -326,27 +326,27 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
 可以使用自己的数据。 如果数据位于本地计算机上的实际应用程序中，仍然可以使用 AzCopy 将本地数据上传到专用 Azure blob 存储。 仅需要将 PowerShell 脚本文件的 AzCopy 命令中的**源**位置 `$Source = "http://getgoing.blob.core.windows.net/public/nyctaxidataset"` 更改为包含数据的本地目录。
 
 > [!TIP]
-> 如果你的数据是现实生活应用程序中的，已经处于你的专用 Azure blob 存储中，那么你可以在 PowerShell 脚本中跳过 AzCopy 步骤，并直接将数据上传到 Azure SQL DW。 这会需要对脚本进行额外的编辑，使其适合数据的格式。
+> 如果数据已在现实应用程序的专用 Azure blob 存储中，则可以跳过 PowerShell 脚本中的 AzCopy 步骤，直接将数据上传到 Azure Synapse Analytics。 这会需要对脚本进行额外的编辑，使其适合数据的格式。
 >
 >
 
-此 Powershell 脚本还可将 Azure SQL DW 信息插入到数据浏览示例文件 SQLDW_Explorations.sql、SQLDW_Explorations.ipynb 和 SQLDW_Explorations_Scripts.py 中，以便在 PowerShell 脚本完成之后可以立即尝试这三个文件。
+此 PowerShell 脚本还可将 Azure Synapse Analytics 信息插入到数据浏览示例文件 SQLDW_Explorations.sql、SQLDW_Explorations.ipynb 和 SQLDW_Explorations_Scripts.py 中，以便在 PowerShell 脚本完成之后可以立即尝试这三个文件。
 
 在成功执行之后，看到的屏幕与下面类似︰
 
 ![成功执行脚本的输出][20]
 
-## <a name="data-exploration-and-feature-engineering-in-azure-sql-data-warehouse"></a><a name="dbexplore"></a>Azure SQL 数据仓库中的数据浏览和功能设计
-在本部分中，我们会通过直接使用 **Visual Studio Data Tools** 针对 Azure SQL DW 运行 SQL 查询，执行数据浏览和功能生成。 本部分中使用的所有 SQL 查询都可以在名为 *SQLDW_Explorations.sql* 的示例脚本中找到。 此文件已经由 PowerShell 脚本下载到本地目录。 也可以从 [GitHub](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/SQLDW/SQLDW_Explorations.sql) 检索它。 但 GitHub 中的文件并未插入 Azure SQL DW 信息。
+## <a name="data-exploration-and-feature-engineering-in-azure-synapse-analytics"></a><a name="dbexplore"></a>Azure Synapse Analytics 中的数据浏览和特征工程
+在本部分中，我们会通过直接使用 Visual Studio Data Tools 针对 Azure Synapse Analytics 运行 SQL 查询，来执行数据浏览和特征生成。 本部分中使用的所有 SQL 查询都可以在名为 *SQLDW_Explorations.sql* 的示例脚本中找到。 此文件已经由 PowerShell 脚本下载到本地目录。 也可以从 [GitHub](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/SQLDW/SQLDW_Explorations.sql) 检索它。 但 GitHub 中的文件并未插入 Azure Synapse Analytics 信息。
 
-使用 Visual Studio 用 SQL DW 登录名和密码连接到 Azure SQL DW，并打开 **SQL 对象资源管理器**以确认已导入数据库和表。 检索 *SQLDW_Explorations.sql* 文件。
+使用 Visual Studio 以及 Azure Synapse Analytics 登录名和密码连接到 Azure Synapse Analytics，并打开 SQL 对象资源管理器以确认已导入数据库和表。 检索 *SQLDW_Explorations.sql* 文件。
 
 > [!NOTE]
 > 要打开并行数据仓库 (PDW) 查询编辑器，请使用 **New Query** 命令，同时保持 PDW 在 **SQL 对象资源管理器**中处于选中状态。 PDW 不支持标准 SQL 查询编辑器。
 >
 >
 
-下面是在本部分中执行的数据探索和功能生成任务的类型︰
+下面是在本部分中执行的数据浏览和特征生成任务的类型：
 
 * 在不同的时间范围中探索几个字段的数据分布。
 * 调查经度和纬度字段的数据质量。
@@ -374,7 +374,7 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
     GROUP BY medallion
     HAVING COUNT(*) > 100
 
-**输出：** 查询应返回一个表，表中的行指定 13,369 个徽章（出租车）和它们在 2013 年完成的行程数。 最后一列包含已完成的行程数量的计算。
+**输出：** 查询应返回一个表，表中的行指定 13,369 个徽章（出租车）和 2013 年完成的行程数。 最后一列包含已完成的行程数量的计算。
 
 ### <a name="exploration-trip-distribution-by-medallion-and-hack_license"></a>浏览：依据徽章和 hack_license 的行程分布
 此示例标识在指定的时间段内完成超过 100 个行程的徽章（出租车编号）和 hack_license 编号（驾驶员）。
@@ -531,7 +531,7 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
     AND CAST(dropoff_latitude AS float) BETWEEN -90 AND 90
     AND pickup_longitude != '0' AND dropoff_longitude != '0'
 
-**输出：** 此查询生成一个表（包含 2,803,538 行），其中包含上下车的经纬度以及相应的直接距离（以英里计）。 下面是前 3 行的结果︰
+**输出：** 此查询生成一个表（包含 2,803,538 行），其中包含上下车的经纬度以及相应的直接距离（以英里计）。 下面是前三行的结果：
 
 |  | pickup_latitude | pickup_longitude | dropoff_latitude | dropoff_longitude | DirectDistance |
 | --- | --- | --- | --- | --- | --- |
@@ -540,7 +540,7 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
 | 3 |40.761456 |-73.999886 |40.766544 |-73.988228 |0.7037227967 |
 
 ### <a name="prepare-data-for-model-building"></a>准备建模的数据
-下面的查询联接 **nyctaxi\_trip** 和 **nyctaxi\_fare** 表，生成一个二元分类标签 **tipped**，多类分类标签 **tip\_class**，并从完整联接的数据集中提取样本。 采样是通过检索基于提取时间的行程的子集来完成的。  可以复制此查询，然后将其直接粘贴到 [Azure 机器学习工作室（经典版）](https://studio.azureml.net)的“[导入数据][import-data]”模块中，以便从 Azure 中的 SQL 数据库实例进行直接数据引入。 此查询将排除具有不正确（0，0）坐标的记录。
+下面的查询联接 **nyctaxi\_trip** 和 **nyctaxi\_fare** 表，生成一个二元分类标签 **tipped**，多类分类标签 **tip\_class**，并从完整联接的数据集中提取样本。 采样是通过检索基于提取时间的行程的子集来完成的。  可以复制此查询，然后将其直接粘贴到 [Azure 机器学习工作室（经典）](https://studio.azureml.net)的[导入数据][import-data]模块中，以便从 Azure 中的 SQL 数据库实例直接引入数据。 此查询将排除具有不正确（0，0）坐标的记录。
 
     SELECT t.*, f.payment_type, f.fare_amount, f.surcharge, f.mta_tax, f.tolls_amount,     f.total_amount, f.tip_amount,
         CASE WHEN (tip_amount > 0) THEN 1 ELSE 0 END AS tipped,
@@ -559,26 +559,26 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
 
 准备好进行 Azure 机器学习后，也可以：
 
-1. 保存最终的 SQL 查询，以提取和采样数据，并直接将查询复制和粘贴到 Azure 机器学习中的“[导入数据][import-data]”模块，或者
-2. 保留计划用于在新 SQL DW 表中进行建模的抽样和工程数据，并使用 Azure 机器学习的“[导入数据][import-data]”模块中的新表。 前面步骤中的 PowerShell 脚本已经完成此操作。 可以直接从“导入数据”模块中的此表读取。
+1. 保存最终的 SQL 查询，以提取数据并对其采样，然后直接将查询复制粘贴到 Azure 机器学习的导入数据][import-data]模块中，或者
+2. 保留计划用于在新 Azure Synapse Analytics 表中进行建模的抽样和工程数据，并使用 Azure 机器学习的[导入数据][import-data]模块中的新表。 前面步骤中的 PowerShell 脚本已经完成此任务。 可以直接从“导入数据”模块中的此表读取。
 
 ## <a name="data-exploration-and-feature-engineering-in-ipython-notebook"></a><a name="ipnb"></a>IPython Notebook 中的数据浏览和功能设计
-在此部分中，我们将对之前创建的 SQL DW 使用 Python 和 SQL 查询，执行数据浏览和功能生成。 名为 **SQLDW_Explorations.ipynb** 的 IPython Notebook 示例和名为 **SQLDW_Explorations_Scripts.py** 的 Python 脚本文件已下载到本地目录。 [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/SQLDW) 上也有提供。 这两个文件在 Python 脚本中相同。 提供 Python 脚本文件用于应对没有 IPython Notebook 服务器的情况。 这两个示例 Python 文件在 **Python 2.7** 下开发。
+在本部分中，我们将对之前创建的 Azure Synapse Analytics 使用 Python 和 SQL 查询，以执行数据浏览和特征生成。 名为 **SQLDW_Explorations.ipynb** 的 IPython Notebook 示例和名为 **SQLDW_Explorations_Scripts.py** 的 Python 脚本文件已下载到本地目录。 [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/SQLDW) 上也有提供。 这两个文件在 Python 脚本中相同。 提供 Python 脚本文件用于应对没有 IPython Notebook 服务器的情况。 这两个示例 Python 文件在 **Python 2.7** 下开发。
 
-已下载到本地计算机的示例 IPython Notebook 和 Python 脚本文件中所需的 Azure SQL DW 信息此前已通过 PowerShell 脚本接入。 它们是可执行文件，无需任何修改。
+已下载到本地计算机的示例 IPython Notebook 和 Python 脚本文件中所需的 Azure Synapse Analytics 信息此前已通过 PowerShell 脚本插入。 它们是可执行文件，无需任何修改。
 
 如果已设置好 Azure 机器学习工作区，可以直接将示例 IPython Notebook 上传到 AzureML IPython Notebook 服务，并开始运行。 下面是上传到 AzureML IPython Notebook 服务的步骤：
 
-1. 登录 Azure 机器学习工作区、单击顶部的“工作室”，并单击网页左侧的“NOTEBOOKS”。  
+1. 登录 Azure 机器学习工作区、单击顶部的“工作室”，并单击网页左侧的“NOTEBOOKS”。 
 
     ![依次单击“Studio”和“笔记本”][22]
-2. 单击网页左下角的“新建”，并选择“Python 2”。   然后，为笔记本提供名称，并单击复选标记以创建新的空白 IPython Notebook。
+2. 单击网页左下角的“新建”，并选择“Python 2”。  然后，为笔记本提供名称，并单击复选标记以创建新的空白 IPython Notebook。
 
     ![单击“新建”，然后选择“Python 2”][23]
 3. 单击新 IPython Notebook 左上角的 **Jupyter** 符号。
 
     ![单击 Jupyter 符号][24]
-4. 将示例 IPython Notebook 拖放到 AzureML IPython Notebook 服务的“树”  页面，然后单击“上传”  。 然后，示例 IPython Notebook 将上传到 AzureML IPython Notebook 服务。
+4. 将示例 IPython Notebook 拖放到 AzureML IPython Notebook 服务的“树”页面，然后单击“上传”。 然后，示例 IPython Notebook 将上传到 AzureML IPython Notebook 服务。
 
     ![单击“上传”][25]
 
@@ -595,7 +595,7 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
 * 将小型数据示例读入到内存中的数据帧。
 * 使用抽样数据执行一些可视化效果和浏览。
 * 使用抽样数据进行功能设计实验。
-* 对于大型数据浏览、数据操作和功能设计，请使用 Python 直接针对 SQL DW 发出 SQL 查询。
+* 对于大型数据浏览、数据操作和特征工程，请使用 Python 直接对 Azure Synapse Analytics 发出 SQL 查询。
 * 决定适用于 Azure 机器学习建模的样本大小。
 
 以下是几个数据浏览、数据可视化和功能设计示例。 示例 IPython Notebook 和示例 Python 脚本文件中包含更多数据浏览。
@@ -651,7 +651,7 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
 * 总行数 = 173179759
 * 总列数 = 11
 
-### <a name="read-in-a-small-data-sample-from-the-sql-data-warehouse-database"></a>从 SQL 数据仓库数据库读入小型数据样本
+### <a name="read-in-a-small-data-sample-from-the-azure-synapse-analytics-database"></a>从 Azure Synapse Analytics 数据库读入小型数据样本
     t0 = time.time()
 
     query = '''
@@ -731,7 +731,7 @@ and
 ![代码和距离之间的关系的散点图输出][8]
 
 ### <a name="data-exploration-on-sampled-data-using-sql-queries-in-ipython-notebook"></a>在 IPython Notebook 中使用 SQL 查询对抽样数据进行数据浏览
-在本部分中，我们将使用之前创建的新表中保存的抽样数据来浏览数据分布。 请注意，可以使用原始表执行类似浏览。
+在本部分中，我们将使用之前创建的新表中保存的抽样数据来浏览数据分布。 可以使用原始表执行类似浏览。
 
 #### <a name="exploration-report-number-of-rows-and-columns-in-the-sampled-table"></a>浏览：报告抽样表中的行数和列数
     nrows = pd.read_sql('''SELECT SUM(rows) FROM sys.partitions WHERE object_id = OBJECT_ID('<schemaname>.<nyctaxi_sample>')''', conn)
@@ -826,20 +826,20 @@ and
 7. 使用定型数据集训练一个或多个模型。
 8. 使用定型模型对验证数据集评分。
 9. 评估模型来计算针对学习问题的相关指标。
-10. 微调模型，并选择最佳模型进行部署。
+10. 调整模型，并选择最佳模型进行部署。
 
-在此练习中，我们已经探讨和设计了 SQL 数据仓库中的数据，并确定了要引入 Azure 机器学习工作室（经典版）中的样本大小。 下面是构建一个或多个预测模型的过程：
+在此练习中，我们已经探讨和设计了 Azure Synapse Analytics 中的数据，并确定了要引入 Azure 机器学习工作室（经典）的样本大小。 下面是构建一个或多个预测模型的过程：
 
-1. 使用“数据输入和输出”部分的“[导入数据][import-data]”模块，将数据导入 Azure 机器学习工作室（经典版）。 有关详细信息，请参阅[导入数据][import-data]模块参考页。
+1. 使用“数据输入和输出”部分中可用的[导入数据][import-data]模块，将数据导入 Azure 机器学习工作室（经典）。 有关详细信息，请参阅[导入数据][import-data]模块参考页。
 
     ![Azure ML 导入数据][17]
 2. 在“**属性**”面板中，选择“**Azure SQL 数据库**”作为**数据源**。
 3. 在“**数据库服务器名称**”字段中输入数据库 DNS 名称。 格式：`tcp:<your_virtual_machine_DNS_name>,1433`
 4. 在相应字段中输入**数据库名称**。
 5. 在“服务器用户帐户名”中输入 *SQL 用户名*，在“服务器用户帐户密码”中输入*密码*。
-7. 在**数据库查询**编辑文本区域，粘贴提取必要数据库字段（包括任何计算的字段，例如标签）的查询，并向下采样数据至所需样本大小。
+7. 在“数据库查询”编辑文本区域中，粘贴提取必要数据库字段（包括任何计算字段，例如标签）的查询，并对数据向下采样至所需样本大小。
 
-下图是二元分类实验直接从 SQL 数据仓库数据库读取数据的一个示例（建议按演练中所用的架构名称和表名称替换表名称 nyctaxi_trip 和 nyctaxi_fare）。 可以针对多类分类和回归问题构建类似实验。
+下图是二元分类实验直接从 Azure Synapse Analytics 数据库读取数据的一个示例（请记住，将表名称 nyctaxi_trip 和 nyctaxi_fare 替换为你在演练中使用的架构名称和表名称）。 可以针对多类分类和回归问题构建类似实验。
 
 ![Azure ML 训练][10]
 
@@ -868,7 +868,7 @@ Azure 机器学习将尝试根据训练实验的组件创建评分实验。 特�
 2. 标识逻辑**输入端口**，以表示预期输入数据架构。
 3. 标识逻辑**输出端口**，以表示预期 Web 服务输出架构。
 
-创建评分实验后，请检查并根据需要进行调整。 典型调整是将输入数据集和/或查询替换为排除标签字段的数据集和/或查询，因为这些数据集和/或查询在调用该服务时不可用。 如果将输入数据集和/或查询大小减少到几个记录，刚好能够表示输入架构，这也是一个非常好的做法。 对于输出端口，通常会使用[选择数据集中的列][select-columns]模块在输出中排除所有输入字段，仅包括“评分标签”和“评分概率”。
+创建评分实验后，请检查结果并根据需要进行调整。 典型调整方式为：将输入数据集或查询替换为排除标签字段的数据集或查询，因为调用服务时，这些标签字段不会映射到架构。 如果将输入数据集和/或查询大小减少到几个记录，刚好能够表示输入架构，这也是一个非常好的做法。 对于输出端口，通常会使用[选择数据集中的列][select-columns]模块在输出中排除所有输入字段，仅包括“评分标签”和“评分概率”。
 
 下图提供评分实验示例。 准备部署时，请单击下方操作栏中的“**发布 WEB 服务**”按钮。
 
@@ -882,7 +882,7 @@ Azure 机器学习将尝试根据训练实验的组件创建评分实验。 特�
 
 ## <a name="references"></a>参考
 - [Andrés Monroy NYC 出租车行程下载页](https://www.andresmh.com/nyctaxitrips/)
-- [由 Chris Whong 提供的 FOILing NYC 出租车行程数据](https://chriswhong.com/open-data/foil_nyc_taxi/)
+- [由 Chris Whong 提供的 FOILing 纽约市出租车行程数据](https://chriswhong.com/open-data/foil_nyc_taxi/)
 - [NYC 出租车和礼车委员会研究和统计信息](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page)
 
 [1]: ./media/sqldw-walkthrough/sql-walkthrough_26_1.png

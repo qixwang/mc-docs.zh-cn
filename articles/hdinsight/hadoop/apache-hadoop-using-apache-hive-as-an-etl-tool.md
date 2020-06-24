@@ -17,20 +17,20 @@ ms.workload: big-data
 origin.date: 11/22/2019
 ms.date: 03/23/2020
 ms.author: v-yiso
-ms.openlocfilehash: 12ae64542306b3df4dcc6d544882d98aeef05495
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 208b9471d14c1bf11e0cafc5c8a4ce425d0dd0ae
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79295988"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723298"
 ---
 # <a name="use-apache-hive-as-an-extract-transform-and-load-etl-tool"></a>将 Apache Hive 用作提取、转换和加载 (ETL) 工具
 
-通常需要先将传入的数据清理并转换，才能将它载入适合用于分析的目标。 提取、转换和加载 (ETL) 操作可用于准备数据并将其载入数据目标。  HDInsight 上的 Hive 可以读入非结构化数据、根据需要处理该数据，然后将该数据载入关系数据仓库，供决策支持系统使用。 此方法从源提取数据并将其存储在可缩放的存储（例如 Azure 存储 Blob）中。 然后，使用一系列 Hive 查询来转换该数据，最后将其暂存在 Hive 中，为批量载入目标数据存储做好准备。
+通常需要先将传入的数据清理并转换，才能将它载入适合用于分析的目标。 提取、转换和加载 (ETL) 操作可用于准备数据并将其载入数据目标。  HDInsight 上的 Apache Hive 可以读入非结构化数据、根据需要处理该数据，然后将该数据载入关系数据仓库，供决策支持系统使用。 在此方法中，从源中提取数据。 数据存储在自适应存储中，例如 Azure 存储 blob 或 Azure Data Lake Storage。 然后，使用一系列 Hive 查询对数据进行转换。 接下来，将数据暂存在 Hive 中，为批量载入到目标数据存储中做好准备。
 
 ## <a name="use-case-and-model-overview"></a>用例和模型概述
 
-下图提供 ETL 自动化用例和模型的概述。 将转换输入数据以生成适当的输出。  在转换期间，数据可以更改形状、数据类型甚至语言。  ETL 过程可将英制转换为公制、更改时区和提高精确度，以便与目标中现有的数据相符。  ETL 过程还可将新数据与现有数据相结合来更新报告，或者提供现有数据的更深入见解。  然后，应用程序（例如报告工具和服务）能以所需的格式使用此数据。
+下图提供 ETL 自动化用例和模型的概述。 将转换输入数据以生成适当的输出。  在转换期间，数据会更改形状、数据类型甚至语言。  ETL 过程可将英制转换为公制、更改时区和提高精确度，以便与目标中现有的数据相符。 ETL 过程还可将新数据与现有数据相结合来更新报告，或者提供现有数据的更深入见解。 然后，应用程序（例如报告工具和服务）能以所需的格式使用此数据。
 
 ![将 Apache Hive 用作 ETL](./media/apache-hadoop-using-apache-hive-as-an-etl-tool/hdinsight-etl-architecture.png)
 
@@ -43,7 +43,7 @@ ms.locfileid: "79295988"
 3. 创建 HDInsight 群集并连接数据存储。
 4. 定义要在读取阶段应用到数据存储中的数据的架构：
 
-    ```
+    ```hql
     DROP TABLE IF EXISTS hvac;
 
     --create the hvac table on comma-separated sensor data stored in Azure Storage blobs
@@ -75,7 +75,7 @@ ms.locfileid: "79295988"
 
 ## <a name="output-targets"></a>输出目标
 
-可以使用 Hive 将数据输出到各种目标，包括：
+可以使用 Hive 将数据输出到不同种类的目标，其中包括：
 
 * 关系数据库，例如 SQL Server 或 Azure SQL 数据库。
 * 数据仓库，例如 Azure SQL 数据仓库。
@@ -94,10 +94,10 @@ ms.locfileid: "79295988"
 
 如果数据目标不是数据库，可以在查询中以相应格式（例如 CSV）生成文件。 然后，可将此文件导入 Excel 或 Power BI。
 
-如果需要在 ETL 过程中对数据执行多个操作，请考虑如何管理这些操作。 如果操作由外部程序而不是解决方案中的工作流控制，则需要确定某些操作是否可以并行运行，并检测每项操作何时完成。 与使用外部脚本或自定义程序来尝试协调一系列操作相比，使用工作流机制（例如 Hadoop 中的 Oozie）可能更方便。 有关 Oozie 的详细信息，请参阅[工作流和作业业务流程](https://msdn.microsoft.com/library/dn749829.aspx)。
+如果需要在 ETL 过程中对数据执行多个操作，请考虑如何管理这些操作。 由于操作由外部程序而不是解决方案中的工作流控制，因此需确定某些操作是否可以并行执行。 还应检测每项作业何时完成。 与使用外部脚本或自定义程序来尝试协调一系列操作相比，使用工作流机制（例如 Hadoop 中的 Oozie）可能更方便。
 
 ## <a name="next-steps"></a>后续步骤
 
 * [大规模 ETL](apache-hadoop-etl-at-scale.md)
 * [使数据管道可操作化](../hdinsight-operationalize-data-pipeline.md)
-<!-- * [ETL Deep Dive](../hdinsight-etl-deep-dive.md) -->
+

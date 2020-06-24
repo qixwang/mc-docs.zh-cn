@@ -1,21 +1,20 @@
 ---
-title: 教程：从 Azure Cosmos DB 中的 Cassandra API 帐户查询数据
+title: 教程 - 从 Azure Cosmos DB 中的 Cassandra API 帐户查询数据
 description: 本教程介绍如何使用 Java 应用程序从 Azure Cosmos DB Cassandra API 帐户查询用户数据。
 ms.service: cosmos-db
 author: rockboyfor
-ms.author: v-yeche
 ms.reviewer: sngun
 ms.subservice: cosmosdb-cassandra
 ms.topic: tutorial
 origin.date: 09/24/2018
-ms.date: 03/18/2019
-Customer intent: As a developer, I want to build a Java application to query data stored in a Cassandra API account of Azure Cosmos DB so that customers can manage the key/value data and utilize the multiple-region distribution, elastic scaling, multi-master, and other capabilities offered by Azure Cosmos DB.
-ms.openlocfilehash: 7ac38de928aaa7ddfb05759d6a8713aa7ee8f1eb
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 06/15/2020
+ms.author: v-yeche
+ms.openlocfilehash: 9edf6582b8783ab8988f1163c03842479d304f78
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "63856958"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723755"
 ---
 # <a name="tutorial-query-data-from-a-cassandra-api-account-in-azure-cosmos-db"></a>教程：从 Azure Cosmos DB 中的 Cassandra API 帐户查询数据
 
@@ -25,11 +24,11 @@ ms.locfileid: "63856958"
 
 > [!div class="checklist"]
 > * 从 Cassandra 表查询数据
-> * 运行应用
+> * 运行应用程序
 
-如果没有 Azure 订阅，可在开始前创建一个 [试用帐户](https://www.azure.cn/pricing/1rmb-trial) 。
+如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 本文是由多个部分组成的教程。 在开始之前，请务必完成前面的步骤以创建 Cassandra API 帐户、密钥空间、表并[将示例数据加载到表](cassandra-api-load-data.md)。 
 
@@ -39,15 +38,15 @@ ms.locfileid: "63856958"
 
 1. 打开 `src\main\java\com\azure\cosmosdb\cassandra` 文件夹下的 `UserRepository.java` 文件。 追加以下代码块。 此代码提供三种方法： 
 
-   * 查询数据库中的所有用户
-   * 查询按用户 ID 筛选的特定用户
-   * 删除表
+    * 查询数据库中的所有用户
+    * 查询按用户 ID 筛选的特定用户
+    * 删除表
 
-   ```java
-   /**
-   * Select all rows from user table
-   */
-   public void selectAllUsers() {
+    ```java
+    /**
+    * Select all rows from user table
+    */
+    public void selectAllUsers() {
 
      final String query = "SELECT * FROM uprofile.user";
      List<Row> rows = session.execute(query).all();
@@ -55,60 +54,60 @@ ms.locfileid: "63856958"
      for (Row row : rows) {
         LOGGER.info("Obtained row: {} | {} | {} ", row.getInt("user_id"), row.getString("user_name"), row.getString("user_bcity"));
      }
-   }
+    }
 
-   /**
-   * Select a row from user table
-   *
-   * @param id user_id
-   */
-   public void selectUser(int id) {
+    /**
+    * Select a row from user table
+    *
+    * @param id user_id
+    */
+    public void selectUser(int id) {
       final String query = "SELECT * FROM uprofile.user where user_id = 3";
       Row row = session.execute(query).one();
 
       LOGGER.info("Obtained row: {} | {} | {} ", row.getInt("user_id"), row.getString("user_name"), row.getString("user_bcity"));
-   }
+    }
 
-   /**
-   * Delete user table.
-   */
-   public void deleteTable() {
+    /**
+    * Delete user table.
+    */
+    public void deleteTable() {
      final String query = "DROP TABLE IF EXISTS uprofile.user";
      session.execute(query);
-   }
-   ```
+    }
+    ```
 
 2. 打开 `src\main\java\com\azure\cosmosdb\cassandra` 文件夹下的 `UserProfile.java` 文件。 此类包含调用你以前定义的插入数据方法 createKeyspace 和 createTable 的主方法。 现在追加查询所有用户或特定用户的以下代码：
 
-   ```java
-   LOGGER.info("Select all users");
-   repository.selectAllUsers();
+    ```java
+    LOGGER.info("Select all users");
+    repository.selectAllUsers();
 
-   LOGGER.info("Select a user by id (3)");
-   repository.selectUser(3);
+    LOGGER.info("Select a user by id (3)");
+    repository.selectUser(3);
 
-   LOGGER.info("Delete the users profile table");
-   repository.deleteTable();
-   ```
+    LOGGER.info("Delete the users profile table");
+    repository.deleteTable();
+    ```
 
 ## <a name="run-the-java-app"></a>运行 Java 应用
 1. 打开命令提示符或终端窗口。 粘贴以下代码块。 
 
-   此代码将目录 (cd) 更改为在其中创建项目的文件夹路径。 接着，它将运行 `mvn clean install` 命令以在目标文件夹中生成 `cosmosdb-cassandra-examples.jar` 文件。 最后，它运行 Java 应用程序。
+    此代码将目录 (cd) 更改为在其中创建项目的文件夹路径。 接着，它将运行 `mvn clean install` 命令以在目标文件夹中生成 `cosmosdb-cassandra-examples.jar` 文件。 最后，它运行 Java 应用程序。
 
-   ```bash
-   cd "cassandra-demo"
+    ```bash
+    cd "cassandra-demo"
 
-   mvn clean install
+    mvn clean install
 
-   java -cp target/cosmosdb-cassandra-examples.jar com.azure.cosmosdb.cassandra.examples.UserProfile
-   ```
+    java -cp target/cosmosdb-cassandra-examples.jar com.azure.cosmosdb.cassandra.examples.UserProfile
+    ```
 
-2. 现在，在 Azure 门户中，打开“数据资源管理器”  并确认用户表已删除。
+2. 现在，在 Azure 门户中，打开“数据资源管理器”**** 并确认用户表已删除。
 
 ## <a name="clean-up-resources"></a>清理资源
 
-不再需要资源组、Azure Cosmos 帐户和所有相关的资源时，可将其删除。 为此，请选择虚拟机的资源组，选择“删除”  ，然后确认要删除的资源组的名称。
+不再需要资源组、Azure Cosmos 帐户和所有相关的资源时，可将其删除。 为此，请选择虚拟机的资源组，选择“删除”****，然后确认要删除的资源组的名称。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -117,5 +116,4 @@ ms.locfileid: "63856958"
 > [!div class="nextstepaction"]
 > [将数据迁移到 Cassandra API 帐户](cassandra-import-data.md)
 
-<!--Update_Description: new articles on cassandra api query data -->
-<!--ms.date: 03/18/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

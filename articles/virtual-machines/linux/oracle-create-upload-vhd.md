@@ -1,24 +1,18 @@
 ---
-title: 为 Azure 准备 Oracle Linux 虚拟机
+title: 创建和上传 Oracle Linux VHD
 description: 了解如何创建和上传包含 Oracle Linux 操作系统的 Azure 虚拟硬盘 (VHD)。
-services: virtual-machines-linux
-documentationcenter: ''
 author: Johnnytechn
-manager: gwallace
-tags: azure-service-management,azure-resource-manager
-ms.assetid: dd96f771-26eb-4391-9a89-8c8b6d691822
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
 ms.topic: article
-ms.date: 04/20/2020
+ms.date: 06/05/2020
 ms.author: v-johya
-ms.openlocfilehash: a92e358143bc67718c65ee6394cedc0492b498e3
-ms.sourcegitcommit: ebedf9e489f5218d4dda7468b669a601b3c02ae5
+ms.openlocfilehash: 60974916e3c5f0d5eecfc191bb34dae5b3eb0629
+ms.sourcegitcommit: 285649db9b21169f3136729c041e4d04d323229a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82159086"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84684020"
 ---
 # <a name="prepare-an-oracle-linux-virtual-machine-for-azure"></a>为 Azure 准备 Oracle Linux 虚拟机
 
@@ -39,7 +33,7 @@ ms.locfileid: "82159086"
 你必须在操作系统中完成特定的配置步骤才能使虚拟机在 Azure 中运行。
 
 1. 在 Hyper-V 管理器的中间窗格中，选择虚拟机。
-2. 单击“连接”  打开虚拟机窗口。
+2. 单击“连接” **** 打开虚拟机窗口。
 3. 通过运行以下命令卸载 NetworkManager：
 
         # sudo rpm -e --nodeps NetworkManager
@@ -101,7 +95,7 @@ ms.locfileid: "82159086"
         # sudo waagent -force -deprovision
         # export HISTSIZE=0
         # logout
-14. 在 Hyper-V 管理器中单击“操作”->“关闭”。 现在，准备将 Linux VHD 上传到 Azure。
+14. 在 Hyper-V 管理器中单击“操作”->“关闭”****。 现在，准备将 Linux VHD 上传到 Azure。
 
 ---
 ## <a name="oracle-linux-70-and-later"></a>Oracle Linux 7.0 及更高版本
@@ -117,7 +111,7 @@ ms.locfileid: "82159086"
 **配置步骤**
 
 1. 在 Hyper-V 管理器中，选择虚拟机。
-2. 单击“连接”  以打开该虚拟机的控制台窗口。
+2. 单击“连接” **** 以打开该虚拟机的控制台窗口。
 3. 在包含以下文本的 `/etc/sysconfig/` 目录中创建一个名为 **network** 的文件：
 
         NETWORKING=yes
@@ -177,7 +171,7 @@ ms.locfileid: "82159086"
         # sudo waagent -force -deprovision
         # export HISTSIZE=0
         # logout
-15. 在 Hyper-V 管理器中单击“操作”->“关闭”。 Linux VHD 现已准备好上传到 Azure。
+15. 在 Hyper-V 管理器中单击“操作”->“关闭”****。 Linux VHD 现已准备好上传到 Azure。
 
 ## <a name="next-steps"></a>后续步骤
 现在，你已准备就绪，可以使用 Oracle Linux .vhd 在 Azure 中创建新的虚拟机了。 如果是首次将 .vhd 文件上传到 Azure，请参阅[从自定义磁盘创建 Linux VM](upload-vhd.md#option-1-upload-a-vhd)。

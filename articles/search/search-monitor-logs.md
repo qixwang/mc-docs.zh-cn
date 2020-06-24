@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
-origin.date: 02/118/2020
-ms.date: 03/16/2020
-ms.openlocfilehash: b15f02eb955bcf9a5da455d6fedeb50170e4ffc8
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+origin.date: 02/18/2020
+ms.date: 06/09/2020
+ms.openlocfilehash: 170bb9e3b37b1303f785469f5c16e650c9ccd0b8
+ms.sourcegitcommit: c4fc01b7451951ef7a9616fca494e1baf29db714
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78850174"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84564353"
 ---
 # <a name="collect-and-analyze-log-data-for-azure-cognitive-search"></a>收集和分析 Azure 认知搜索的日志数据
 
@@ -44,13 +44,13 @@ Azure Monitor 日志和 Blob 存储均以免费服务的形式提供，让你可
 
 诊断设置指定如何收集记录的事件和指标。
 
-1. 在“监视”下，选择“诊断设置”   。
+1. 在“监视”下，选择“诊断设置”**** ****。
 
    ![诊断设置](./media/search-monitor-usage/diagnostic-settings.png "诊断设置")
 
-1. 选择“+ 添加诊断设置” 
+1. 选择“+ 添加诊断设置”****
 
-1. 选中“Log Analytics”，选择你的工作区，然后选择“OperationLogs”和“AllMetrics”。   
+1. 选中“Log Analytics”，选择你的工作区，然后选择“OperationLogs”和“AllMetrics”。**** **** ****
 
    ![配置数据收集](./media/search-monitor-usage/configure-storage.png "配置数据收集")
 
@@ -67,9 +67,9 @@ Azure Monitor 日志和 Blob 存储均以免费服务的形式提供，让你可
 
 ## <a name="query-log-information"></a>查询日志信息
 
-在诊断日志中，有两个表包含 Azure 认知搜索的日志和指标：**AzureDiagnostics** 和 **AzureMetrics**。
+两个表包含 Azure 认知搜索的日志和指标：**AzureDiagnostics** 和 **AzureMetrics**。
 
-1. 在“监视”下选择“日志”。  
+1. 在“监视”下选择“日志”。**** ****
 
 1. 在查询窗口中输入 **AzureMetrics**。 请运行此简单查询来熟悉此表中收集的数据。 滚动浏览整个表以查看指标和值。 请注意顶部的记录计数。如果服务已收集了一段时间的指标，你可以调整时间间隔以获取可管理的数据集。
 
@@ -98,7 +98,7 @@ Azure Monitor 日志和 Blob 存储均以免费服务的形式提供，让你可
 
 对于 Blob 存储，每个 Blob 都有一个名为 **records** 的根对象，其中包含一系列日志对象。 每个 Blob 包含同一小时内发生的所有操作的记录。
 
-下表是诊断日志记录常用字段的部分列表。
+下表是资源日志记录常用字段的部分列表。
 
 | 名称 | 类型 | 示例 | 注释 |
 | --- | --- | --- | --- |
@@ -141,9 +141,9 @@ Azure Monitor 日志和 Blob 存储均以免费服务的形式提供，让你可
 
 查询往往在若干毫秒内即可完成执行，因此，指标中仅显示以秒度量的查询，例如 QPS。
 
-对于“每秒搜索查询数”指标，最小值是该分钟内已注册的每秒搜索查询次数最低值。  最大值也是如此。 平均值是一分钟内的聚合值。 例如，在一分钟内可能出现如下所述的模式：有 1 秒出现高负载（这是 SearchQueriesPerSecond 的最大值），紧接着有 58 秒的平均负载，最后 1 秒只有 1 个查询（这是最小值）。
+对于“每秒搜索查询数”指标，最小值是该分钟内已注册的每秒搜索查询次数最低值。**** 最大值也是如此。 平均值是一分钟内的聚合值。 例如，在一分钟内可能出现如下所述的模式：有 1 秒出现高负载（这是 SearchQueriesPerSecond 的最大值），紧接着有 58 秒的平均负载，最后 1 秒只有 1 个查询（这是最小值）。
 
-对于“受限制的搜索查询百分比”、最小值、最大值、平均值和总计，全都具有相同的值：在一分钟内的搜索查询总数中，已限制搜索查询百分比  。
+对于“受限制的搜索查询百分比”、最小值、最大值、平均值和总计，全都具有相同的值：在一分钟内的搜索查询总数中，已限制搜索查询百分比****。
 
 ## <a name="view-raw-log-files"></a>查看原始日志文件
 
@@ -151,7 +151,7 @@ Blob 存储用于存档日志文件。 可以使用任何 JSON 编辑器来查�
 
 1. 在 Azure 门户中打开存储帐户。 
 
-2. 在左侧导航窗格中，单击“Blob”  。 此时会看到 **insights-logs-operationlogs** 和 **insights-metrics-pt1m**。 这些容器是在将日志数据导出到 Blob 存储时由 Azure 认知搜索创建的。
+2. 在左侧导航窗格中，单击“Blob”****。 此时会看到 **insights-logs-operationlogs** 和 **insights-metrics-pt1m**。 这些容器是在将日志数据导出到 Blob 存储时由 Azure 认知搜索创建的。
 
 3. 单击文件夹层次结构，直至找到 .json 文件。  通过上下文菜单来下载文件。
 

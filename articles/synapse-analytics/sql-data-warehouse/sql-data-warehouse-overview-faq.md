@@ -8,15 +8,15 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: ''
 origin.date: 11/04/2019
-ms.date: 05/11/2020
+ms.date: 06/15/2020
 ms.author: v-jay
 ms.reviewer: igorstan
-ms.openlocfilehash: d3510d5f0d12f815ae7cbec1a6d26980a3b197cf
-ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
+ms.openlocfilehash: b922089cc4b035bc4e9a04e7ee47c7b1c12274ce
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82198601"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723689"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-frequently-asked-questions"></a>Azure Synapse Analytics（前称为 SQL 数据仓库）常见问题解答
 
@@ -24,11 +24,11 @@ ms.locfileid: "82198601"
 
 问： 什么是 Azure Synapse？
 
-A. Azure Synapse 是一种无限制的分析服务，它将数据仓库和大数据分析结合在一起。 它让你可以根据自己的条件自由查询数据，无论是使用无服务器的按需资源还是使用大规模预配的资源。 Azure Synapse 将这两个领域结合在一起，提供统一的体验来引入、准备、管理和处理数据。 有关详细信息，请参阅[什么是 Azure Synapse Analytics](sql-data-warehouse-overview-what-is.md)。
+A. Azure Synapse 是一种分析服务，它将数据仓库和大数据分析结合在一起。 Azure Synapse 将这两个领域结合在一起，提供统一的体验来引入、准备、管理和处理数据。 有关详细信息，请参阅[什么是 Azure Synapse Analytics](sql-data-warehouse-overview-what-is.md)。
 
 问： Azure SQL 数据仓库有什么变化？
 
-A. Azure Synapse 是 Azure SQL 数据仓库 (SQL DW) 的演进。 我们将同一个行业领先的数据仓库提升到了一个全新的性能和功能级别。 你可以继续使用 Azure Synapse 在生产环境中运行现有的数据仓库工作负荷，并自动从预览版的新功能中获益。 有关详细信息，请参阅[什么是 Azure Synapse Analytics](sql-data-warehouse-overview-what-is.md)。
+A. Azure Synapse 是 Azure SQL 数据仓库 (SQL DW) 的演进。 我们将同一个行业领先的数据仓库提升到了一个全新的性能和功能级别。 你可以继续使用 Azure Synapse 在生产环境中运行现有的数据仓库工作负荷。 有关详细信息，请参阅[什么是 Azure Synapse Analytics](sql-data-warehouse-overview-what-is.md)。
 
 问： 什么是 Synapse SQL 池？
 
@@ -88,19 +88,19 @@ A. 可在[连接字符串](sql-data-warehouse-connection-strings.md)页上找到
 
 问：PolyBase 支持哪些文件格式？
 
-A:Orc、RC、Parquet 和带分隔符的平面文本
+答：Orc、RC、Parquet 和带分隔符的平面文本
 
 问：使用 PolyBase 可以连接到哪些数据源？
 
-A:[Azure 存储 Blob](sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md)
+答：[Azure 存储 Blob](sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md)
 
 问：连接 Azure 存储 Blob 或 ADLS 时能否进行计算下推？
 
-A:不能，PolyBase 仅与存储组件交互。
+答：不能，PolyBase 仅与存储组件交互。
 
 问：能否连接到 HDI？
 
-A:HDI 可使用 ADLS 或 WASB 作为 HDFS 层。 如果将两者中任意一种作为 HDFS 层，则可将该数据加载到 Synapse SQL 池中。 但是，无法生成 HDI 实例的下推计算。
+答：HDI 可使用 ADLS 或 WASB 作为 HDFS 层。 如果将两者中任意一种作为 HDFS 层，则可将该数据加载到 Synapse SQL 池中。 但是，无法生成 HDI 实例的下推计算。
 
 ## <a name="next-steps"></a>后续步骤
 

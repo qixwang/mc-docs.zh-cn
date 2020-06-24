@@ -1,10 +1,10 @@
 ---
 title: 网络访问控件
-description: 用于管理访问及配置单一数据库或共用数据库的 Azure SQL 数据库和数据仓库网络访问控制的概述。
+description: 用于管理访问权限以及配置单一数据库或共用数据库的 Azure SQL 数据库和 Azure Synapse Analytics 网络访问控制的概述。
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-titleSuffix: Azure SQL Database and SQL Data Warehouse
+titleSuffix: Azure SQL Database and Azure Synapse Analytics
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,23 +12,23 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: vanto
 origin.date: 03/09/2020
-ms.date: 04/27/2020
-ms.openlocfilehash: c8c1e27784c05fc6fa1032219a0ca3e8c08651ec
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.date: 06/15/2020
+ms.openlocfilehash: 82704a59d5d237165f7f25df82e5643fc34865e7
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82127030"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723738"
 ---
-# <a name="azure-sql-database-and-data-warehouse-network-access-controls"></a>Azure SQL 数据库和数据仓库网络访问控制
+# <a name="azure-sql-database-and-azure-synapse-analytics-network-access-controls"></a>Azure SQL 数据库和 Azure Synapse Analytics 网络访问控制
 
 > [!NOTE]
-> 本文适用于 Azure SQL 服务器，同时也适用于在 Azure SQL 服务器中创建的 SQL 数据库和 SQL 数据仓库数据库。 为简单起见，在提到 SQL 数据库和 SQL 数据仓库时，本文统称 SQL 数据库。
+> 本文适用于 Azure SQL 服务器，同时也适用于在 Azure SQL 服务器中创建的 SQL 数据库和 Azure Synapse Analytics 数据库。 为简单起见，在提到 SQL 数据库和 Azure Synapse Analytics 时，本文将二者统称为 SQL 数据库。
 
 > [!IMPORTANT]
-> 本文不  适用于 **Azure SQL 数据库托管实例**。 有关网络配置的详细信息，请参阅[连接到托管实例](sql-database-managed-instance-connect-app.md)。
+> 本文不** 适用于 **Azure SQL 数据库托管实例**。 有关网络配置的详细信息，请参阅[连接到托管实例](sql-database-managed-instance-connect-app.md)。
 
-从 [Azure 门户](sql-database-single-database-get-started.md)新建 Azure SQL Server 时，结果是格式为“yourservername.database.chinacloudapi.cn”  的公共终结点。
+从 [Azure 门户](sql-database-single-database-get-started.md)新建 Azure SQL Server 时，结果是格式为“yourservername.database.chinacloudapi.cn”** 的公共终结点。
 
 你可以使用以下网络访问控制来有选择地允许通过公共终结点访问 SQL 数据库：
 - 允许 Azure 服务：设置为“打开”时，Azure 边界内的其他资源（例如 Azure 虚拟机）可以访问 SQL 数据库
@@ -47,15 +47,15 @@ ms.locfileid: "82127030"
   
  ![管理服务器防火墙的屏幕截图][2]
 
-设置为“打开”时，Azure SQL Server 将允许 Azure 边界范围内的所有资源（不一定是订阅的一部分）发起的通信。 
+设置为“打开”时，Azure SQL Server 将允许 Azure 边界范围内的所有资源（不一定是订阅的一部分）发起的通信。****
 
-在许多情况下，“打开”设置的访问权限宽松度会超过大多数客户的需要。他们可能希望将此设置指定为“关闭”，并将其替换为限制性更强的 IP 防火墙规则或虚拟网络防火墙规则。   这样做会影响 Azure 中的 VM 上运行的以下功能，这些 VM 不在你的 VNet 中，因此会通过 Azure IP 地址连接到 SQL 数据库。
+在许多情况下，“打开”设置的访问权限宽松度会超过大多数客户的需要****。 他们可能希望将此设置设为“关闭”，并将其替换为限制性更强的 IP 防火墙规则或虚拟网络防火墙规则****。 这样做会影响 Azure 中的 VM 上运行的以下功能，这些 VM 不在你的 VNet 中，因此会通过 Azure IP 地址连接到 SQL 数据库。
 
 ### <a name="import-export-service"></a>导入/导出服务
-当“允许访问 Azure 服务”设置为“关闭”时，导入/导出服务无法正常工作。   不过，可通过以下方式解决此问题：[在 Azure VM 中手动运行 sqlpackage.exe，或者直接在代码中使用 DACFx API 执行导出](/sql-database/import-export-from-vm)。
+当“允许访问 Azure 服务”设置为“关闭”时，导入/导出服务无法正常工作。**** **** 不过，可通过以下方式解决此问题：[在 Azure VM 中手动运行 sqlpackage.exe，或者直接在代码中使用 DACFx API 执行导出](/sql-database/import-export-from-vm)。
 
 ### <a name="data-sync"></a>数据同步
-若要在“允许访问 Azure 服务”设置为“关闭”的情况下使用数据同步功能，需要创建单个防火墙规则条目，以便从托管中心  数据库的区域的 SQL 服务标记  [添加 IP 地址](sql-database-server-level-firewall-rule.md)。  
+若要在“允许访问 Azure 服务”设置为“关闭”的情况下使用数据同步功能，需要创建单个防火墙规则条目，以便从托管中心**** 数据库的区域的 SQL 服务标记****[添加 IP 地址](sql-database-server-level-firewall-rule.md)。**** ****
 将这些服务器级防火墙规则添加到同时托管**中心**数据库和**成员**数据库（可能位于不同的区域）的逻辑服务器
 
 使用以下 PowerShell 脚本生成与中国东部 2 区域的 SQL 服务标记对应的 IP 地址
@@ -91,7 +91,7 @@ start          end
 13.86.216.128  13.86.216.191
 13.86.216.192  13.86.216.223
 ```
-现在，可将其添加为不同的防火墙规则，然后将“允许 Azure 服务访问服务器”设置为“关闭”。 
+现在，可将其添加为不同的防火墙规则，然后将“允许 Azure 服务访问服务器”设置为“关闭”。****
 
 
 ## <a name="ip-firewall-rules"></a>IP 防火墙规则
@@ -100,7 +100,7 @@ start          end
 
 ## <a name="virtual-network-firewall-rules"></a>虚拟网络防火墙规则
 
-除了 IP 规则以外，Azure SQL Server 防火墙还允许定义虚拟网络规则。   
+除了 IP 规则以外，Azure SQL Server 防火墙还允许定义虚拟网络规则。**  
 若要了解详细信息，请参阅[虚拟网络服务终结点和 Azure SQL 数据库规则](sql-database-vnet-service-endpoint-rule-overview.md)。
 
  ### <a name="azure-networking-terminology"></a>Azure 网络术语  
@@ -112,14 +112,14 @@ start          end
 
 **虚拟网络服务终结点：** [虚拟网络服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)是一个子网，其属性值包括一个或多个正式的 Azure 服务类型名称。 本文介绍 **Microsoft.Sql** 的类型名称，即名为“SQL 数据库”的 Azure 服务。
 
-**虚拟网络规则：** 适用于 SQL 数据库服务器的虚拟网络规则是一个子网，列在 SQL 数据库服务器的访问控制列表 (ACL) 中。 子网必须包含“Microsoft.Sql”  类型名称才会将其列在 SQL 数据库的 ACL 中。 虚拟网络规则要求 SQL 数据库服务器接受来自子网上所有节点的通信。
+**虚拟网络规则：** 适用于 SQL 数据库服务器的虚拟网络规则是一个子网，列在 SQL 数据库服务器的访问控制列表 (ACL) 中。 子网必须包含“Microsoft.Sql”**** 类型名称才会将其列在 SQL 数据库的 ACL 中。 虚拟网络规则要求 SQL 数据库服务器接受来自子网上所有节点的通信。
 
 
 ## <a name="ip-vs-virtual-network-firewall-rules"></a>IP 与虚拟网络防火墙规则
 
-在 Azure SQL Server 防火墙中可以指定 IP 地址范围，处于该范围内的通信可以进入 SQL 数据库。 此方法适用于 Azure 专用网络外部的稳定 IP 地址。 但是，对于 Azure 专用网络中的虚拟机 (VM)，将为其配置动态 IP 地址。  当 VM 重启时，动态 IP 地址可能会更改，从而使得基于 IP 的防火墙规则失效。 处于生产环境中时，在防火墙规则中指定一个动态 IP 地址并不明智。
+在 Azure SQL Server 防火墙中可以指定 IP 地址范围，处于该范围内的通信可以进入 SQL 数据库。 此方法适用于 Azure 专用网络外部的稳定 IP 地址。 但是，对于 Azure 专用网络中的虚拟机 (VM)，将为其配置动态 IP 地址。** 当 VM 重启时，动态 IP 地址可能会更改，从而使得基于 IP 的防火墙规则失效。 处于生产环境中时，在防火墙规则中指定一个动态 IP 地址并不明智。
 
-可以通过获取 VM 的静态 IP 地址来解决此限制。  有关详细信息，请参阅[使用 Azure 门户为虚拟机配置专用 IP 地址](../virtual-network/virtual-networks-static-private-ip-arm-pportal.md)。 但是，静态 IP 方法可能会变得难以管理，在规模大时操作成本高。 
+可以通过获取 VM 的静态 IP 地址来解决此限制。** 有关详细信息，请参阅[使用 Azure 门户为虚拟机配置专用 IP 地址](../virtual-network/virtual-networks-static-private-ip-arm-pportal.md)。 但是，静态 IP 方法可能会变得难以管理，在规模大时操作成本高。 
 
 虚拟网络规则更容易建立，使用此类规则可以更轻松地管理从包含你的 VM 的特定子网进行的访问。
 

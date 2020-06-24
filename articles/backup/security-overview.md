@@ -5,13 +5,13 @@ ms.topic: conceptual
 author: Johnnytechn
 origin.date: 13/05/2020
 ms.author: v-johya
-ms.date: 05/13/2020
-ms.openlocfilehash: 534adaad5619b430255dcab23e94e4bda7836c0c
-ms.sourcegitcommit: 08b42258a48d96d754244064d065e4d5703f1cfb
+ms.date: 06/09/2020
+ms.openlocfilehash: 34165d0571ee09f2b129edfac2b6aac71ac80c4b
+ms.sourcegitcommit: 285649db9b21169f3136729c041e4d04d323229a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/18/2020
-ms.locfileid: "83445233"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84683864"
 ---
 # <a name="overview-of-security-features-in-azure-backup"></a>Azure 备份中的安全功能概述
 
@@ -19,9 +19,9 @@ ms.locfileid: "83445233"
 
 ## <a name="management-and-control-of-identity-and-user-access"></a>管理和控制标识与用户访问
 
-Azure 备份可让你使用 [Azure 基于角色的访问控制 (RBAC)](/role-based-access-control/built-in-roles) 来管理精细粒度的访问权限。 RBAC 可以在团队内部实现职责分离，仅向用户授予其履行自己的职责所需的访问权限级别。
+恢复服务保管库使用的存储帐户是隔离的，恶意用户无法对其进行访问。 仅允许通过 Azure 备份管理操作（例如还原）进行访问。 借助 Azure 备份，可使用 [Azure 基于角色的访问控制 (RBAC)](/backup/backup-rbac-rs-vault) 通过精细访问权限来控制托管的操作。 RBAC 可以在团队内部实现职责分离，仅向用户授予其履行自己的职责所需的访问权限级别。
 
-Azure 备份提供三个用于控制备份管理操作的内置角色：
+Azure 备份提供了三个[内置角色](/role-based-access-control/built-in-roles)来控制备份管理操作：
 
 * 备份参与者 - 可以创建和管理备份，但无法删除恢复服务保管库，也不能授予他人访问权限
 * 备份操作员 - 拥有参与者的所有权限，但无法删除备份，也不能管理备份策略
@@ -44,13 +44,13 @@ Azure 备份服务中内置了多个安全控制机制，用于防止、检测�
 
 加密可以保护数据，并帮助组织履行在安全性与合规性方面做出的承诺。 在 Azure 中，Azure 存储与保管库之间传输的数据受 HTTPS 保护。 此数据保留在 Azure 主干网络上。
 
-* 使用 Microsoft 托管的密钥自动加密备份数据。 还可以使用 Azure Key Vault 中存储的[客户管理的密钥](/backup/backup-azure-security-feature-cloud#encryption-of-backup-data-using-customer-managed-keys)来加密恢复服务保管库中备份的托管磁盘 VM。 无需执行任何显式操作即可启用这种加密。 这种加密适用于要备份到恢复服务保管库的所有工作负荷。
+* 使用 Microsoft 托管的密钥自动加密备份数据。 还可以使用 Azure Key Vault 中存储的[客户管理的密钥](backup-encryption.md#encryption-of-backup-data-using-customer-managed-keys)来加密恢复服务保管库中备份的托管磁盘 VM。 无需执行任何显式操作即可启用这种加密。 这种加密适用于要备份到恢复服务保管库的所有工作负荷。
 
 * Azure 备份支持备份和还原已使用 Azure 磁盘加密 (ADE) 功能加密了其 OS/数据磁盘的 Azure VM。 [详细了解加密的 Azure VM 和 Azure 备份](/backup/backup-azure-vms-encryption)。
 
 ## <a name="protection-of-backup-data-from-unintentional-deletes"></a>防止意外删除备份数据
 
-Azure 备份提供安全功能来帮助保护备份数据，即使是删除了备份数据，也能予以恢复。 启用软删除后，如果用户删除了 VM 的备份，备份数据将额外保留 14 天，因此可以恢复该备份项，而不会丢失数据。 以“软删除”状态将备份数据额外保留 14 天不会向客户收取任何费用。 [详细了解软删除](/backup/backup-azure-security-feature-cloud#soft-delete)。
+Azure 备份提供安全功能来帮助保护备份数据，即使是删除了备份数据，也能予以恢复。 启用软删除后，如果用户删除了 VM 的备份，备份数据将额外保留 14 天，因此可以恢复该备份项，而不会丢失数据。 以“软删除”状态将备份数据额外保留 14 天不会向客户收取任何费用。 [详细了解软删除](backup-azure-security-feature-cloud.md)。
 
 ## <a name="monitoring-and-alerts-of-suspicious-activity"></a>可疑活动的监视和警报
 

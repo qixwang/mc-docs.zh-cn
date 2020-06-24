@@ -5,14 +5,14 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 04/03/2020
-ms.date: 04/27/2020
+ms.date: 06/15/2020
 ms.author: v-yeche
-ms.openlocfilehash: eb372bef73bb4086127c2b79bcf5408041a86ea1
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.openlocfilehash: 17b2782cc4930ea182931bb5e5038aad5bd44a4c
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82134972"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723716"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB 服务配额
 
@@ -67,8 +67,6 @@ Cosmos DB 支持通过 SDK 或门户弹性缩放每个容器或数据库的吞�
 | --- | --- |
 | 每个订阅的最大数据库帐户数 | 默认为 50。 可以通过[开具 Azure 支持票证](https://support.azure.cn/support/support-azure/)来提高此限制|
 | 最大区域故障转移次数 | 默认为每小时 1 次。 可以通过[开具 Azure 支持票证](https://support.azure.cn/support/support-azure/)来提高此限制|
-
-<!--MOONCAKE: Not Available on [filing an Azure support ticket](/azure-supportability/how-to-create-azure-support-request)-->
 
 > [!NOTE]
 > 区域故障转移仅适用于单区域写入帐户。 多区域写入帐户不需要，也不会对更改写入区域施加任何限制。
@@ -141,9 +139,9 @@ Cosmos DB 使用 HMAC 进行授权。 可以使用主密钥或[资源令牌](sec
 
 Cosmos DB 支持在写入期间执行触发器。 对于每个写入操作，服务最多支持一个前触发器和一个后触发器。 
 
-## <a name="autopilot-mode-limits"></a>Autopilot 模式限制
+## <a name="limits-for-autoscale-provisioned-throughput"></a>自动缩放预配吞吐量限制
 
-有关 Autopilot 模式下的吞吐量和存储限制，请参阅 [Autopilot](provision-throughput-autopilot.md#autopilot-limits) 一文。
+有关自动缩放的吞吐量和存储限制，请参阅[自动缩放](provision-throughput-autoscale.md#autoscale-limits)一文。
 
 ## <a name="sql-query-limits"></a>SQL 查询限制
 
@@ -177,6 +175,19 @@ Cosmos DB 支持针为 MongoDB 编写的应用程序使用 MongoDB 线路协议�
 
 <!--Not Available on ## Try Cosmos DB Free limits-->
 
+## <a name="free-tier-account-limits"></a>免费层帐户限制
+下表列出了 [Azure Cosmos DB 免费层帐户](optimize-dev-test.md#azure-cosmos-db-free-tier)的限制。
+
+| 资源 | 默认限制 |
+| --- | --- |
+| 每个 Azure 订阅的免费层帐户数 | 1 |
+| 免费层折扣持续时间 | 帐户的生存期。 必须在创建帐户期间选择加入。 |
+| 免费层的最大 RU/s | 400 RU/s |
+| 免费层的最大存储量 | 5 GB |
+| 最大共享吞吐量数据库数 | 5 |
+| 共享吞吐量数据库中的最大容器数 | 25 <br />在免费层帐户中，最多包含 25 个容器的共享吞吐量数据库的最小 RU/s 为 400 RU/s。 |
+
+  除上述限制外，[每个帐户的限制](#per-account-limits)也适用于免费层帐户。
 
 ## <a name="next-steps"></a>后续步骤
 

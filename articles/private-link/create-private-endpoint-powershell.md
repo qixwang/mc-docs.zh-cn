@@ -6,14 +6,14 @@ author: rockboyfor
 ms.service: private-link
 ms.topic: article
 origin.date: 09/16/2019
-ms.date: 01/06/2020
+ms.date: 06/15/2020
 ms.author: v-yeche
-ms.openlocfilehash: 912fc5375afc8aa9ac97bbab8d9fd6342023ea19
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: f42cb3b1463859f021ab3c6a098c92dea07b9708
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75631271"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723708"
 ---
 # <a name="create-a-private-endpoint-using-azure-powershell"></a>使用 Azure PowerShell 创建专用终结点
 专用终结点是 Azure 中专用链接的构建基块。 它使 Azure 资源（例如虚拟机 (VM)）能够以私密方式来与专用链接资源通信。 
@@ -24,7 +24,7 @@ ms.locfileid: "75631271"
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-创建资源之前，必须先创建一个资源组，该资源组使用 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) 托管虚拟网络和专用终结点。 以下示例在“chinaeast2”  位置创建名为“myResourceGroup”  的资源组：
+创建资源之前，必须先创建一个资源组，该资源组使用 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) 托管虚拟网络和专用终结点。 以下示例在“chinaeast2”** 位置创建名为“myResourceGroup”** 的资源组：
 
 ```azurepowershell
 
@@ -51,7 +51,7 @@ $virtualNetwork = New-AzVirtualNetwork `
 
 ### <a name="add-a-subnet"></a>添加子网
 
-Azure 将资源部署到虚拟网络中的子网，因此需要创建子网。 使用 [Add-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/add-azvirtualnetworksubnetconfig) 创建名为“mySubnet”  的子网配置。 以下示例创建一个名为 *mySubnet* 的子网，并将专用终结点网络策略标志设置为“禁用”  。
+Azure 将资源部署到虚拟网络中的子网，因此需要创建子网。 使用 [Add-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/add-azvirtualnetworksubnetconfig) 创建名为“mySubnet”** 的子网配置。 以下示例创建一个名为 *mySubnet* 的子网，并将专用终结点网络策略标志设置为“禁用”****。
 
 ```azurepowershell
 $subnetConfig = Add-AzVirtualNetworkSubnetConfig `
@@ -171,7 +171,7 @@ New-AzPrivateDnsRecordSet -Name $recordName -RecordType A -ZoneName "privatelink
 
 ## <a name="connect-to-a-vm-from-the-internet"></a>从 Internet 连接到 VM
 
-使用 [Get-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/Get-AzPublicIpAddress) 返回 VM 的公共 IP 地址。 此示例返回 myVM  VM 的公共 IP 地址：
+使用 [Get-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/Get-AzPublicIpAddress) 返回 VM 的公共 IP 地址。 此示例返回 myVM** VM 的公共 IP 地址：
 
 ```azurepowershell
 Get-AzPublicIpAddress `
@@ -187,20 +187,21 @@ Get-AzPublicIpAddress `
 mstsc /v:<publicIpAddress>
 ```
 
-1. 出现提示时，选择“连接”  。 
+1. 出现提示时，选择“连接”****。 
 2. 输入在创建 VM 时指定的用户名和密码。
     > [!NOTE]
     > 可能需要选择“更多选择”>“使用其他帐户”，以指定在创建 VM 时输入的凭据。 
 
-3. 选择“确定”  。 
-4. 可能会收到证书警告。 如果收到证书警告，选择“确定”或“继续”   。 
+3. 选择“确定” ****。 
+4. 可能会收到证书警告。 如果收到证书警告，选择“确定”或“继续”**** ****。 
 
 ## <a name="access-sql-database-server-privately-from-the-vm"></a>以私密方式从 VM 访问 SQL 数据库服务器
 
 1. 在 myVM 的远程桌面中，打开 PowerShell。
-2. 输入 `nslookup myserver.database.chinacloudapi.cn`。 
+2. 输入 `nslookup myserver.database.chinacloudapi.cn`。 切记将 `myserver` 替换为你的 SQL Server 名称。
 
     将收到类似于下面的消息：
+
     ```azurepowershell
     Server:  UnKnown
     Address:  168.63.129.16
@@ -209,16 +210,21 @@ mstsc /v:<publicIpAddress>
     Address:  10.0.0.5
     Aliases:   myserver.database.chinacloudapi.cn
     ```
-3. 安装 SQL Server Management Studio
-4. 在“连接到服务器”中，输入或选择以下信息：设置值
-    - 服务器类型   选择数据库引擎。
-    - 服务器名称   选择 myserver.database.chinacloudapi.cn
-    - 用户名  输入在创建过程中提供的用户名。
-    - 密码  输入在创建过程中提供的密码。
-    - 记住密码 选择“是”。
-5. 选择“连接”。
-6. 浏览左侧菜单中的“数据库”。 
-7. （可选）创建或查询 mydatabase 中的信息
+
+3. 安装 SQL Server Management Studio。
+4. 在“连接服务器”中，输入或选择以下信息****：
+
+    | 设置 | Value |
+    | --- | --- |
+    | 服务器类型 | 数据库引擎 |
+    | 服务器名称 | myserver.database.chinacloudapi.cn |
+    | 用户名 | 输入在创建过程中提供的用户名 |
+    | 密码 | 输入在创建过程中提供的密码 |
+    | 记住密码 | 是 |
+
+5. 选择“连接” ****。
+6. 浏览左侧菜单中的“数据库”****。 
+7. （可选）创建或查询 mydatabase 中的信息。
 8. 关闭与 *myVM* 的远程桌面连接。 
 
 ## <a name="clean-up-resources"></a>清理资源 

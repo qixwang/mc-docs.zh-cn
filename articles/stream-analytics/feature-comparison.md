@@ -1,22 +1,25 @@
 ---
 title: Azure 流分析功能比较
 description: 本文比较了 Azure 流分析云和 IoT Edge 作业在 Azure 门户、Visual Studio 和 Visual Studio Code 中支持的功能。
-author: lingliw
-ms.author: v-lingwu
+author: Johnnytechn
+ms.author: v-johya
 ms.service: stream-analytics
 ms.topic: conceptual
 origin.date: 06/27/2019
-ms.date: 07/12/2019
-ms.openlocfilehash: e981785fbae78537f1362c265970ed8a51732d8f
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 06/12/2020
+ms.openlocfilehash: 95002e69f0b8571887f4563d0894c9af783b14b0
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75858407"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723562"
 ---
 # <a name="azure-stream-analytics-feature-comparison"></a>Azure 流分析功能比较
 
 借助 Azure 流分析，可以使用 [Azure 门户](stream-analytics-quick-create-portal.md)，[Visual Studio](stream-analytics-quick-create-vs.md) 和 [Visual Studio Code](quick-create-vs-code.md) 在云端和 IoT Edge 中创建流式处理解决方案。 本文中的表显示了每种平台支持这两种作业类型的哪些功能。
+
+> [!NOTE]
+> Visual Studio 和 Visual Studio Code 工具不支持中国东部和中国北部区域中的作业。
 
 ## <a name="cloud-job-features"></a>云作业功能
 
@@ -37,13 +40,13 @@ ms.locfileid: "75858407"
 |提交、启动和停止作业     |是         |是         |是         |
 |查看作业指标和关系图     |是         |是         |在门户中打开         |
 |查看作业运行时错误     |是         |是         |否         |
-|诊断日志     |是         |否         |否         |
+|资源日志     |是         |否         |否         |
 |自定义消息属性     |是         |是         |否       |
 |C# 自定义代码函数和反序列化程序|只读模式|是|否|
 |JavaScript UDF 和 UDA     |是         |是         |仅限 Windows         |
-|机器学习服务     |是，但无法测试查询        |是         |否         |
+|机器学习服务     |是        |是         |否         |
 |机器学习工作室     |是，但无法测试查询        |是 |否         |
-|兼容级别     |1.0</br>1.1</br>1.2（默认值）         |1.0</br>1.1</br>1.2（默认值）           |1.0</br>1.1</br>1.2（默认值）           |
+|兼容性级别     |1.0</br>1.1</br>1.2（默认值）         |1.0</br>1.1</br>1.2（默认值）           |1.0</br>1.1</br>1.2（默认值）           |
 |基于 ML 的内置异常情况检测函数     |是         |是         |是         |
 |内置地理空间函数     |是         |是         |是         |
 
@@ -72,5 +75,7 @@ ms.locfileid: "75858407"
 * [教程：为 Azure 流分析 IoT Edge 作业编写 C# 用户定义函数（预览）](stream-analytics-edge-csharp-udf.md)
 * [使用 Visual Studio 工具开发流分析 IoT Edge 作业](stream-analytics-tools-for-visual-studio-edge-jobs.md)
 * [使用 Visual Studio 查看 Azure 流分析作业](stream-analytics-vs-tools.md)
+* [使用 Visual Studio Code（预览版）浏览 Azure 流分析](visual-studio-code-explore-jobs.md)
+
 
 

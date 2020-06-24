@@ -1,30 +1,22 @@
 ---
-title: 使用 Azure CLI 和托管磁盘创建 Azure Linux VM 的副本
+title: 使用 Azure CLI 复制 Linux VM
 description: 了解如何使用 Azure CLI 和托管磁盘创建 Azure Linux VM 的副本。
-services: virtual-machines-linux
-documentationcenter: ''
 author: Johnnytechn
-manager: digimobile
-tags: azure-resource-manager
-ms.assetid: 770569d2-23c1-4a5b-801e-cddcd1375164
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.devlang: azurecli
 ms.topic: article
-origin.date: 10/17/2018
-ms.date: 04/13/2020
+ms.date: 06/05/2020
 ms.author: v-johya
-ms.openlocfilehash: 4c09508f5d9a2015901d8bc38fdfc5379991b615
-ms.sourcegitcommit: ebedf9e489f5218d4dda7468b669a601b3c02ae5
+ms.custom: legacy
+ms.openlocfilehash: 73fbe585ec03a713e80b3103ac0f910820478351
+ms.sourcegitcommit: 285649db9b21169f3136729c041e4d04d323229a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82159105"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84683902"
 ---
 # <a name="create-a-copy-of-a-linux-vm-by-using-azure-cli-and-managed-disks"></a>使用 Azure CLI 和托管磁盘创建 Azure Linux VM 的副本
 
-本文介绍如何使用 Azure CLI 和 Azure 资源管理器部署模型创建运行 Linux 的 Azure 虚拟机 (VM) 的副本。 
+本文说明如何使用 Azure CLI 创建运行 Linux 的 Azure 虚拟机 (VM) 副本。 若要大规模复制、创建、存储和共享 VM 映像，请参阅[共享映像库](shared-images.md)。
 
 还可以[上传 VHD 并从中创建 VM](upload-vhd.md?toc=%2fvirtual-machines%2flinux%2ftoc.json)。
 
@@ -135,6 +127,5 @@ az vm create --resource-group myResourceGroup \
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解如何使用 Azure CLI 管理新 VM，请参阅 [Azure Resource Manager 的 Azure CLI 命令](../azure-cli-arm-commands.md)。
+了解如何使用[共享映像库](shared-images.md)管理 VM 映像。
 
-<!--Update_Description: update meta properties, wording update -->

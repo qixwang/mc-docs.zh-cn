@@ -7,18 +7,18 @@ author: HeidiSteen
 ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
-origin.date: 04/14/2020
-ms.date: 04/20/2020
-ms.openlocfilehash: 16241084023d4ac69013f457f3b40502b0d9f6e1
-ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
+origin.date: 04/21/2020
+ms.date: 06/09/2020
+ms.openlocfilehash: d0007c0eae8a1528fe5e160d3d7d1607aae368bc
+ms.sourcegitcommit: c4fc01b7451951ef7a9616fca494e1baf29db714
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82588794"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84564239"
 ---
 # <a name="create-a-suggester-to-enable-autocomplete-and-suggested-results-in-a-query"></a>创建建议器，以在查询中启用“自动完成”和“建议结果”功能
 
-在 Azure 认知搜索中，“键入时搜索”是通过添加到[搜索索引](search-what-is-an-index.md)的建议器构造启用的  。 建议器支持两种体验：自动完成 - 完成字词或短语；建议 - 返回匹配文档的简短列表。    
+在 Azure 认知搜索中，“键入时搜索”是通过添加到[搜索索引](search-what-is-an-index.md)的建议器构造启用的****。 建议器支持两种体验：“自动完成”，它将整个术语查询的一部分输入补充完整，和“建议”，它邀请执行指向特定匹配的一系列单击操作** **。 “自动完成”生成查询。 “建议”生成匹配的文档。
 
 取自[在 C# 中创建第一个应用](tutorial-csharp-type-ahead-and-suggestions.md)的以下屏幕截图演示了这两种体验。 自动完成可预测潜在字词，并使用“in”来补充“tw”。 建议是极其精简的搜索结果，其中的字段（例如酒店名称）表示索引中匹配的酒店搜索文档。 对于建议，可以呈现任何提供描述性信息的字段。
 
@@ -30,31 +30,40 @@ ms.locfileid: "82588794"
 
 + 在查询请求中，调用[下面列出的 API](#how-to-use-a-suggester) 之一。
 
-对于字符串字段，可按字段启用“键入时搜索”支持。 若要获得屏幕截图中所示的类似体验，可以在同一搜索解决方案中实现这两种自动提示行为。 这两个请求针对特定索引的文档集合，在用户提供至少包含三个字符的输入字符串后，将返回响应。 
+对于字符串字段，可按字段启用“键入时搜索”支持。 若要获得屏幕截图中所示的类似体验，可以在同一搜索解决方案中实现这两种自动提示行为。 这两个请求针对特定索引的文档集合，在用户提供至少包含三个字符的输入字符串后，将返回响应。**
 
 ## <a name="what-is-a-suggester"></a>什么是建议器？
 
-建议器是一种数据结构，它通过存储用于匹配部分查询的前缀来支持“键入时搜索”行为。 类似于标记化字词，前缀存储在倒排索引中，建议器字段集合中指定的每个字段都有一个倒排索引。
-
-创建前缀时，建议器具有自己的分析链，类似于用于全文搜索的分析链。 但是，与全文搜索中的分析不同，建议器只能对使用标准 Lucene 分析器（默认）或[语言分析器](index-add-language-analyzers.md)的字段运行。 使用[自定义分析器](index-add-custom-analyzers.md)或[预定义分析器](index-add-custom-analyzers.md#predefined-analyzers-reference)（标准 Lucene 除外）的字段被明确禁止，这样是为了防止结果不佳。
-
-> [!NOTE]
-> 如果需要绕开分析器约束，请对相同的内容使用两个不同的字段。 这样，就可以在其中一个字段中使用建议器，并使用自定义分析器配置来设置其他字段。
+建议器是一种内部数据结构，它通过存储用于匹配部分查询的前缀来支持“键入时搜索”行为。 与标记化字词一样，前缀存储在倒排索引中，建议器字段集合中指定的每个字段都有一个倒排索引。
 
 ## <a name="define-a-suggester"></a>定义建议器
 
-若要创建建议器，请将一个建议器添加到[索引架构](https://docs.microsoft.com/rest/api/searchservice/create-index)并[设置每个属性](#property-reference)。 在索引中只能包含一个建议器（具体说来，建议器集合中只能有一个建议器）。 创建建议器的最佳时间是还要定义使用建议器的字段时。
+若要创建建议器，请将一个建议器添加到[索引架构](https://docs.microsoft.com/rest/api/searchservice/create-index)并[设置每个属性](#property-reference)。 创建建议器的最佳时间是还要定义使用建议器的字段时。
+
++ 仅使用字符串字段
+
++ 使用字段上默认的标准 Lucene 分析器 (`"analyzer": null`) 或[语言分析器](index-add-language-analyzers.md)（例如 `"analyzer": "en.Microsoft"`）
 
 ### <a name="choose-fields"></a>选择字段
 
-虽然建议器有多个属性，但它主要是需要为其启用“键入时搜索”体验的字段集合。 具体对于建议而言，请选择最能代表单个结果的字段。 用于区分多个匹配项的名称、标题或其他唯一字段最合适。 如果字段包含重复值，则建议会包含相同的结果，因此用户不知道要单击哪条建议。
+虽然建议器有多个属性，但它主要是需要为其启用“键入时搜索”体验的字符串字段集合。 每个索引都有一个建议器，因此建议器列表必须包含所有为“建议”和“自动完成”贡献内容的字段。
 
-确保每个字段使用在编制索引期间执行词法分析的分析器。 可以使用默认的标准 Lucene 分析器 (`"analyzer": null`) 或[语言分析器](index-add-language-analyzers.md)（例如 `"analyzer": "en.Microsoft"`）。 
+自动完成可获益于更大的字段池，因为额外的内容可更好地帮助补充和形成完整词语。
 
-所选的分析器决定了如何标记化字段并随后指定其前缀。 例如，对于带连字符的字符串（例如“context-sensitive”），使用语言分析器会生成以下标记组合：“context”、“sensitive”、“context-sensitive”。 如果使用的是标准 Lucene 分析器，则带连字符的字符串不存在。
+另一方面，当字段为可选时，“建议”能生成更好的结果。 请记住，“建议”是搜索文档的代理，因此需要最能代表单个结果的字段。 用于区分多个匹配项的名称、标题或其他唯一字段最合适。 如果字段包含重复值，则建议会包含相同的结果，因此用户不知道要单击哪条建议。
 
-> [!TIP]
-> 考虑使用[分析文本 API](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) 来深入了解如何标记化字词并随后指定其前缀。 生成索引后，可以尝试对字符串运行各种分析器，以查看分析器发出的标记。
+为实现“边键入边搜索”的体验，请添加“自动完成”所需的所有字段，然后使用 $select、$top、$filter 和 searchFields 来控制建议的结果**** **** **** ****。
+
+### <a name="choose-analyzers"></a>选择分析器
+
+所选的分析器决定了如何标记化字段并随后指定其前缀。 例如，对于带连字符的字符串（例如“context-sensitive”），使用语言分析器会生成以下标记组合：“context”、“sensitive”、“context-sensitive”。 如果使用的是标准 Lucene 分析器，则带连字符的字符串不存在。 
+
+评估分析器时，考虑使用[分析文本 API](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) 来深入了解如何标记化字词并随后指定其前缀。 生成索引后，可以尝试对字符串运行各种分析器，以查看标记输出。
+
+使用[自定义分析器](index-add-custom-analyzers.md)或[预定义分析器](index-add-custom-analyzers.md#predefined-analyzers-reference)（标准 Lucene 除外）的字段被明确禁止，这样是为了防止结果不佳。
+
+> [!NOTE]
+> 如果需要解决分析器约束，例如，如果需要为某些查询方案使用某个关键字或 ngram 分析器，应对同一内容使用两个单独的字段。 这样，就可以在其中一个字段中使用建议器，并使用自定义分析器配置来设置其他字段。
 
 ### <a name="when-to-create-a-suggester"></a>何时创建建议器
 
@@ -144,7 +153,7 @@ private static void CreateHotelsIndex(SearchServiceClient serviceClient)
 
 在搜索应用程序中，客户端代码应利用 [jQuery UI Autocomplete](https://jqueryui.com/autocomplete/) 之类的库来收集部分查询并提供匹配项。 有关此任务的详细信息，请参阅[将“自动完成”或“建议结果”功能添加到客户端代码](search-autocomplete-tutorial.md)。
 
-以下对自动完成 REST API 的调用演示了 API 的用法。 此示例有两个要点。 首先，与所有查询一样，操作是针对索引的文档集合执行的，查询包含一个 search 参数，在本例中该参数提供部分查询  。 其次，必须将 suggesterName 添加到请求  。 如果未在索引中定义建议器，对自动完成或建议的调用将会失败。
+以下对自动完成 REST API 的调用演示了 API 的用法。 此示例有两个要点。 首先，与所有查询一样，操作是针对索引的文档集合执行的，查询包含一个 search 参数，在本例中该参数提供部分查询****。 其次，必须将 suggesterName 添加到请求****。 如果未在索引中定义建议器，对自动完成或建议的调用将会失败。
 
 ```http
 POST /indexes/myxboxgames/docs/autocomplete?search&api-version=2019-05-06
@@ -162,7 +171,7 @@ POST /indexes/myxboxgames/docs/autocomplete?search&api-version=2019-05-06
 
 ## <a name="next-steps"></a>后续步骤
 
-建议查看以下示例来了解如何构建请求。
+建议参阅以下文章来详细了解如何请求表述。
 
 > [!div class="nextstepaction"]
 > [向客户端代码添加“自动完成”和“建议”功能](search-autocomplete-tutorial.md) 

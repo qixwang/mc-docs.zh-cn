@@ -3,21 +3,21 @@ title: 在 .NET Azure Functions 中使用依赖项注入
 description: 了解如何使用依赖项注入在 .NET 函数中注册和使用服务
 author: craigshoemaker
 ms.topic: reference
-ms.date: 03/30/2020
+ms.date: 06/08/2020
 ms.author: v-junlch
 ms.reviewer: jehollan
-ms.openlocfilehash: 4c05135ca8cef90540db835be0a152d4de32884b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 02f4d898d0920ec6749ad21ae7d80d596bd62fb5
+ms.sourcegitcommit: f1a76ee3242698123a3d77f44c860db040b48f70
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80581710"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84563769"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>在 .NET Azure Functions 中使用依赖项注入
 
 Azure Functions 支持依赖项注入 (DI) 软件设计模式，这是在类及其依赖项之间实现[控制反转 (IoC)](https://docs.microsoft.com/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#dependency-inversion) 的一种技术。
 
-- Azure Functions 中的依赖项注入基于 .NET Core 依赖项注入功能。 建议熟悉 [.NET Core 依赖项注入](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection)。 但是，在使用 Azure Functions 按消耗计划重写依赖项以及读取配置值的方式上存在差异。
+- Azure Functions 中的依赖项注入基于 .NET Core 依赖项注入功能。 建议熟悉 [.NET Core 依赖项注入](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection)。 两者在如何替代依赖项以及如何使用 Azure Functions 对消耗计划读取配置值方面存在差异。
 
 - 对依赖项注入的支持始于 Azure Functions 2.x。
 
@@ -66,9 +66,9 @@ namespace MyNamespace
 
 在运行时处理启动类之前和之后，会运行一系列注册步骤。 因此，请注意以下事项：
 
-- 启动类只能用于设置和注册。  避免使用在启动时注册的服务。 例如，请勿尝试在记录器中记录在启动过程中注册的消息。 此注册过程点对你的服务来说太早，因此无法使用。 在运行 `Configure` 方法以后，Functions 运行时会继续注册其他依赖项，这可能影响服务的运行。
+- 启动类只能用于设置和注册。** 避免使用在启动时注册的服务。 例如，请勿尝试在记录器中记录在启动过程中注册的消息。 此注册过程点对你的服务来说太早，因此无法使用。 在运行 `Configure` 方法以后，Functions 运行时会继续注册其他依赖项，这可能影响服务的运行。
 
-- 依赖项注入容器仅存储显式注册的类型  。 能够用作可注入类型的服务仅限在 `Configure` 方法中设置的服务。 因此，特定于 Functions 的类型（例如 `BindingContext` 和 `ExecutionContext`）在设置中不可用，也不能用作可注入类型。
+- 依赖项注入容器仅存储显式注册的类型**。 能够用作可注入类型的服务仅限在 `Configure` 方法中设置的服务。 因此，特定于 Functions 的类型（例如 `BindingContext` 和 `ExecutionContext`）在设置中不可用，也不能用作可注入类型。
 
 ## <a name="use-injected-dependencies"></a>使用注入的依赖项
 
@@ -197,7 +197,7 @@ public class HttpTrigger
 请参阅 [ASP.NET Core 中的选项模式](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/options)，更详细地了解如何使用选项。
 
 > [!WARNING]
-> 请避免尝试从有关消耗计划的 local.settings.json  或 appsettings.{environment}.json  等文件中读取值。 从与触发器连接相关的这些文件中读取的值在应用缩放时不可用，因为托管基础结构无法访问配置信息。
+> 请避免尝试从有关消耗计划的 local.settings.json** 或 appsettings.{environment}.json** 等文件中读取值。 从与触发器连接相关的这些文件中读取的值在应用缩放时不可用，因为托管基础结构无法访问配置信息。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -205,4 +205,3 @@ public class HttpTrigger
 
 - [适用于函数的最佳做法](functions-best-practices.md)
 
-<!-- Update_Description: wording update -->

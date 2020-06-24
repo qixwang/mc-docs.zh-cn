@@ -10,12 +10,12 @@ ms.topic: conceptual
 origin.date: 12/10/2019
 ms.date: 03/02/2020
 ms.author: v-yiso
-ms.openlocfilehash: bf733687f85f7e84b42d7fe5b34752a5d23059f4
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 82c777c183f48e80c7fca0ac3a2451b3b89a4073
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77563507"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723038"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight"></a>将本地 Apache Hadoop 群集迁移到 Azure HDInsight
 
@@ -54,7 +54,7 @@ Azure 存储现提供 [Blob 对象软删除](../../storage/blobs/storage-blob-so
 
 可以使用以下方法将证书导入 Java 信任存储区：
 
-将 Azure Blob SSL 证书下载到文件
+将 Azure Blob TLS/SSL 证书下载到文件
 
 ```bash
 echo -n | openssl s_client -connect <storage-account>.blob.core.chinacloudapi.cn:443 | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' > Azure_Storage.cer
@@ -210,8 +210,7 @@ hadoop distcp -D hadoop.security.credential.provider.path=jceks://hdfs@headnode
 > [!Note]
 > 在有效的用例中，可以通过向  [Azure 支持](https://azure.microsoft.com/support/faq/)发出的请求来增加对 Azure 存储的限制。
 
-有关详细信息，请参阅以下文章：
-- [将其他存储帐户添加到 HDInsight](../hdinsight-hadoop-add-storage.md)
+有关详细信息，请参阅[将其他存储帐户添加到 HDInsight](../hdinsight-hadoop-add-storage.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

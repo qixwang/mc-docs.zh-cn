@@ -1,26 +1,20 @@
 ---
-title: Azure 中 Linux 虚拟机的大小
+title: Azure 中的 Linux VM 大小
 description: 列出 Azure 中 Linux 虚拟机的不同可用大小。
-services: virtual-machines-linux
-documentationcenter: ''
 author: Johnnytechn
-manager: digimobile
-editor: ''
-tags: azure-resource-manager,azure-service-management
-ms.assetid: da681171-f045-4c80-a5a9-d8bd47964673
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.subservice: sizes
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-origin.date: 11/06/2019
-ms.date: 04/13/2020
+ms.date: 06/05/2020
 ms.author: v-johya
-ms.openlocfilehash: b442c54fe8841655a705f1919fb7ed89d791b039
-ms.sourcegitcommit: ebedf9e489f5218d4dda7468b669a601b3c02ae5
+ms.openlocfilehash: 1dab4e0e5f1c38e9f6f5e0c63c95e2f243824344
+ms.sourcegitcommit: 285649db9b21169f3136729c041e4d04d323229a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82159029"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84683942"
 ---
 # <a name="sizes-for-linux-virtual-machines-in-azure"></a>Azure 中 Linux 虚拟机的大小
 
@@ -40,10 +34,10 @@ ms.locfileid: "82159029"
 <!--Not Available [High performance compute](sizes-hpc.md) HB, HC, H -->
 
 
-- 有关不同大小的定价信息，请参阅[虚拟机定价](https://www.azure.cn/pricing/details/virtual-machines/)。 
-- 如需了解 Azure 区域中各种 VM 大小的可用性，请参阅 [可用产品（按区域）](https://status.azure.com/status/)。
-- 若要查看 Azure VM 的一般限制，请参阅 [Azure 订阅和服务限制、配额与约束](../../azure-resource-manager/management/azure-subscription-service-limits.md)。
-- 了解有关 [Azure 计算单元 (ACU)](acu.md) 如何帮助跨 Azure SKU 比较计算性能的详细信息。
+- 有关不同大小的定价信息，请参阅[虚拟机定价](https://www.azure.cn/pricing/details/virtual-machines/#Linux)。 
+- 如需了解 Azure 区域中各种 VM 大小的可用性，请参阅 [可用产品（按区域）](https://azure.microsoft.com/regions/services/)。
+- 若要查看 Azure VM 的一般限制，请参阅 [Azure 订阅和服务限制、配额与约束](../../azure-subscription-service-limits.md)。
+- 了解有关 [Azure 计算单元 (ACU)](../acu.md) 如何帮助跨 Azure SKU 比较计算性能的详细信息。
 
 ## <a name="rest-api"></a>REST API
 
@@ -64,13 +58,13 @@ ms.locfileid: "82159029"
 ## <a name="next-steps"></a>后续步骤
 
 了解关于可用的各种 VM 大小的详细信息：
-- [常规用途](sizes-general.md)
-- [计算优化](sizes-compute.md)
-- [内存优化](sizes-memory.md)
 
+- [常规用途](../sizes-general.md)
+- [计算优化](../sizes-compute.md)
+- [内存优化](../sizes-memory.md)
     <!--Not Available- [Storage optimized](sizes-storage.md) -->
     
-- [GPU](sizes-gpu.md)
+- [GPU](../sizes-gpu.md)
 
     <!--Not Available- [High performance compute](sizes-hpc.md)-->
     

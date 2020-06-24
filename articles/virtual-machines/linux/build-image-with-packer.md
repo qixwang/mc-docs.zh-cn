@@ -1,27 +1,19 @@
 ---
-title: 如何使用 Packer 在 Azure 中创建 Linux 虚拟机映像 | Azure
+title: 使用 Packer 创建 Linux Azure VM 映像
 description: 了解如何使用 Packer 在 Azure 中创建 Linux 虚拟机映像
-services: virtual-machines-linux
-documentationcenter: virtual-machines
 author: Johnnytechn
-manager: digimobile
-editor: tysonn
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: azurecli
+ms.subservice: imaging
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-origin.date: 05/07/2019
-ms.date: 04/13/2020
+ms.date: 06/05/2020
 ms.author: v-johya
-ms.openlocfilehash: 8d14fd9eef9357c0df9820089fcdccf37b14b77f
-ms.sourcegitcommit: ebedf9e489f5218d4dda7468b669a601b3c02ae5
+ms.openlocfilehash: 03e2f67b8e8986a4e81c1dd1fef88b2ff5e3874d
+ms.sourcegitcommit: 285649db9b21169f3136729c041e4d04d323229a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82159166"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84683860"
 ---
 # <a name="how-to-use-packer-to-create-linux-virtual-machine-images-in-azure"></a>如何使用 Packer 在 Azure 中创建 Linux 虚拟机映像
 从定义 Linux 分发版和操作系统版本的映像创建 Azure 中的每个虚拟机 (VM)。 映像可以包括预安装的应用程序和配置。 Azure 市场为最常见的分发和应用程序环境提供许多第一和第三方映像，或者也可创建满足自身需求的自定义映像。 本文详细介绍如何使用开源工具 [Packer](https://www.packer.io/) 在 Azure 中定义和生成自定义映像。
@@ -31,13 +23,14 @@ ms.locfileid: "82159166"
 ## <a name="create-azure-resource-group"></a>创建 Azure 资源组
 生成过程中，Packer 将在生成源 VM 时创建临时 Azure 资源。 要捕获该源 VM 用作映像，必须定义资源组。 Packer 生成过程的输出存储在此资源组中。
 
-使用 [az group create](https://docs.azure.cn/cli/group?view=azure-cli-latest#az-group-create) 创建资源组。 以下示例在“chinaeast”位置创建名为“myResourceGroup”的资源组：
+使用 [az group create](https://docs.azure.cn/cli/group?view=azure-cli-latest#az-group-create) 创建资源组。 以下示例在“chinaeast”** 位置创建名为“myResourceGroup”** 的资源组：
 
 [!INCLUDE [azure-cli-2-azurechinacloud-environment-parameter](../../../includes/azure-cli-2-azurechinacloud-environment-parameter.md)]
 
 ```azurecli
 az group create -n myResourceGroup -l chinaeast
 ```
+
 
 ## <a name="create-azure-credentials"></a>创建 Azure 凭据
 使用服务主体通过 Azure 对 Packer 进行身份验证。 Azure 服务主体是可与应用、服务和自动化工具（如 Packer）结合使用的安全性标识。 用户控制和定义服务主体可在 Azure 中执行的操作的权限。
@@ -66,17 +59,18 @@ az account show --query "{ subscription_id: id }"
 
 在下一步中使用这两个命令的输出。
 
+
 ## <a name="define-packer-template"></a>定义 Packer 模板
 若要生成映像，请创建一个模板作为 JSON 文件。 在模板中，定义执行实际生成过程的生成器和设置程序。 Packer 具有 [Azure 设置程序](https://www.packer.io/docs/builders/azure.html)，允许定义 Azure 资源，如在前一步骤中创建的服务主体凭据。
 
-创建名为 ubuntu.json 的文件并粘贴以下内容。 为以下内容输入自己的值：
+创建名为 ubuntu.json** 的文件并粘贴以下内容。 为以下内容输入自己的值：
 
 | 参数                           | 获取位置 |
 |-------------------------------------|----------------------------------------------------|
-| client_id                         | `az ad sp` 创建命令的第一行输出 - appId |
-| client_secret                     | `az ad sp` 创建命令的第二行输出 - password |
-| tenant_id                         | `az ad sp` 创建命令的第三行输出 - tenant |
-| subscription_id                   | `az account show` 命令的输出 |
+| client_id**                         | `az ad sp` 创建命令的第一行输出 - appId** |
+| client_secret**                     | `az ad sp` 创建命令的第二行输出 - password** |
+| tenant_id**                         | `az ad sp` 创建命令的第三行输出 - tenant** |
+| subscription_id**                   | `az account show` 命令的输出 |
 | *managed_image_resource_group_name* | 在第一步中创建的资源组的名称 |
 | *managed_image_name*                | 创建的托管磁盘映像的名称 |
 
@@ -131,6 +125,7 @@ az account show --query "{ subscription_id: id }"
 > [!NOTE]
 > 如果在此模板上进行扩展以便设置用户凭据，请将取消设置 Azure 代理的设置程序命令调整为读取 `-deprovision` 而非 `deprovision+user`。
 > `+user` 标志从源 VM 中删除所有用户帐户。
+
 
 ## <a name="build-packer-image"></a>生成 Packer 映像
 如果本地计算机上尚未安装 Packer，请[按照 Packer 安装说明](https://www.packer.io/docs/install/index.html)进行安装。
@@ -204,8 +199,9 @@ ManagedImageLocation: chinaeast
 
 Packer 需要几分钟时间来生成 VM、运行设置程序并清理部署。
 
+
 ## <a name="create-vm-from-azure-image"></a>从 Azure 映像创建 VM
-现在可以通过 [az vm create](https://docs.azure.cn/cli/vm?view=azure-cli-latest#az-vm-create) 从映像创建 VM。 指定通过 `--image` 参数创建的映像。 以下示例从 myPackerImage 创建一个名为 myVM 的 VM，并生成 SSH 密钥（如果它们尚不存在）：
+现在可以通过 [az vm create](https://docs.azure.cn/cli/vm?view=azure-cli-latest#az-vm-create) 从映像创建 VM。 指定通过 `--image` 参数创建的映像。 以下示例从 myPackerImage** 创建一个名为 myVM** 的 VM，并生成 SSH 密钥（如果它们尚不存在）：
 
 ```azurecli
 az vm create \

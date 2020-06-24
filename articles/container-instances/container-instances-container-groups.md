@@ -1,21 +1,22 @@
 ---
 title: 容器组简介
-description: 了解 Azure 容器实例中的容器组 - 共享生命周期和资源（例如存储和网络）的实例集合。
+description: 了解 Azure 容器实例中的容器组 - 共享生命周期和资源（例如 CPU、存储和网络）的实例集合
 ms.topic: article
 origin.date: 11/01/2019
-ms.date: 01/15/2020
+ms.date: 06/08/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 9627bf503c1f90bd5d2b1746f88a7d012a80f531
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: d749b6c26caac334f33d6307cec6e141930402b7
+ms.sourcegitcommit: c4fc01b7451951ef7a9616fca494e1baf29db714
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79290910"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84564337"
 ---
+<!--Verified successfully-->
 # <a name="container-groups-in-azure-container-instances"></a>Azure 容器实例中的容器组
 
-Azure 容器实例中的顶层资源是容器组。  本文介绍容器组的定义和它们支持的方案类型。
+Azure 容器实例中的顶层资源是容器组。** 本文介绍容器组的定义和它们支持的方案类型。
 
 ## <a name="what-is-a-container-group"></a>什么是容器组？
 
@@ -58,7 +59,10 @@ Azure 容器实例通过添加组中实例的[资源请求][resource-requests]�
 
 例如，在包含两个容器实例的组中（每个实例请求 1 个 CPU），一个容器运行的工作负荷可能需要运行比其他实例更多的 CPU。
 
-在这种情况下，可将容器实例的资源限制设置为 2 个 CPU。 此配置允许该容器实例最多使用整整 2 个 CPU（如果可用）。
+在这种情况下，可将容器实例的资源限制设置为最多 2 个 CPU。 此配置允许该容器实例最多使用 2 个 CPU（如果可用）。
+
+> [!NOTE]
+> 服务的底层基础结构使用了容器组的少量资源。 你的容器将能够访问分配给该组的大部分而不是全部资源。 因此，为组中的容器请求资源时，请规划一个小型资源缓冲区。
 
 ### <a name="minimum-and-maximum-allocation"></a>最小和最大分配
 
@@ -68,7 +72,7 @@ Azure 容器实例通过添加组中实例的[资源请求][resource-requests]�
 
 ## <a name="networking"></a>网络
 
-容器组可以共享面向外部的 IP 地址、该 IP 地址上的一个或多个端口，以及具有完全限定域名 (FQDN) 的 DNS 标签。 若要启用外部客户端来访问组内的容器，必须从该容器公开 IP 地址上的端口。 由于组中的容器共享一个端口命名空间，因此不支持端口映射。 删除容器组后，将释放该容器组的 IP 地址和 FQDN。 
+容器组可以共享面向外部的 IP 地址、该 IP 地址上的一个或多个端口，以及具有完全限定域名 (FQDN) 的 DNS 标签。 若要启用外部客户端来访问组内的容器，必须从该容器公开 IP 地址上的端口。 删除容器组后，将释放该容器组的 IP 地址和 FQDN。 
 
 在容器组中，容器实例可以通过任何端口上的本地主机相互访问，即使这些端口未在组的 IP 地址对外公开，或者未从容器公开。
 
@@ -129,5 +133,4 @@ Azure 容器实例通过添加组中实例的[资源请求][resource-requests]�
 [empty-directory]: container-instances-volume-emptydir.md
 [az-container-export]: https://docs.microsoft.com/cli/azure/container?view=azure-cli-latest#az-container-export
 
-<!-- Update_Description: new article about container instances container groups -->
-<!--NEW.date: 01/15/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

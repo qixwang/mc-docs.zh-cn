@@ -11,19 +11,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-origin.date: 10/21/2019
-ms.date: 04/13/2020
+origin.date: 03/31/2020
+ms.date: 06/15/2020
 ms.author: v-yeche
-ms.openlocfilehash: 1b72493dfb68c961c70b3ade4d2c04ceda8bad91
-ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
+ms.openlocfilehash: 645e55e54b9c0cd83b2f11c7ce4d6bc0ab822d0b
+ms.sourcegitcommit: ff67734e01c004be575782b4812cfe857e435f4d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82093353"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84487035"
 ---
 # <a name="upgrade-an-ipv4-application-to-ipv6-in-azure-virtual-network---powershell"></a>在 Azure 虚拟网络中将 IPv4 应用程序升级到 IPv6 - PowerShell
-
-<!--MOONCAKE: REMOVE preview -->
 
 本文介绍如何将 IPv6 连接添加到 Azure 虚拟网络中使用标准负载均衡器和公共 IP 的现有 IPv4 应用程序。 就地升级涉及到：
 - 虚拟网络和子网的 IPv6 地址空间
@@ -31,25 +29,14 @@ ms.locfileid: "82093353"
 - 包含采用 IPv4 + IPv6 配置的 NIC 的 VM
 - IPv6 公共 IP，使负载均衡器能够建立面向 Internet 的 IPv6 连接
 
-<!--MOONCAKE: REMOVE preview tag of [!Important]-->
-
 [!INCLUDE [updated-for-az.md](../../includes/updated-for-az.md)]
 
-如果你选择在本地安装和使用 PowerShell，本文要求使用 Azure PowerShell 模块 6.9.0 或更高版本。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](https://docs.microsoft.com/powershell/azure/install-Az-ps)（安装 Azure PowerShell 模块）。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount -Environment AzureChinaCloud` 来创建与 Azure 的连接。
+本文需要 Azure PowerShell 模块 6.9.0 或更高版本。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](https://docs.microsoft.com/powershell/azure/install-Az-ps)（安装 Azure PowerShell 模块）。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount -Environment AzureChinaCloud` 来创建与 Azure 的连接。
+
+<!--Not Available on If you choose to install and use PowerShell locally, -->
 
 ## <a name="prerequisites"></a>先决条件
 
-### <a name="register-the-service"></a>注册服务
-
-在 Azure 中部署双堆栈应用程序之前，必须先使用以下 Azure PowerShell 为此功能配置订阅：
-
-<!--MOONCAKE: REMOVE preview -->
-
-```azurepowershell
-Register-AzResourceProvider -ProviderNamespace Microsoft.Network
-```
-
-### <a name="create-a-standard-load-balancer"></a>创建标准负载均衡器
 本文假设已根据以下文章所述部署了一个标准负载均衡器：[快速入门：创建标准负载均衡器 - Azure PowerShell](../load-balancer/quickstart-create-standard-load-balancer-powershell.md)。
 
 ## <a name="retrieve-the-resource-group"></a>检索资源组
@@ -164,14 +151,9 @@ $NIC_3 | Set-AzNetworkInterface
 ## <a name="view-ipv6-dual-stack-virtual-network-in-azure-portal"></a>在 Azure 门户中查看 IPv6 双堆栈虚拟网络
 可以在 Azure 门户中查看 IPv6 双堆栈虚拟网络，如下所示：
 1. 在门户的搜索栏中输入 *myVnet*。
-2. 当“myVnet”出现在搜索结果中时，将其选中。  此时会启动名为 *myVNet* 的双堆栈虚拟网络的“概述”页。  该双堆栈虚拟网络显示了位于 *mySubnet* 双堆栈子网中的三个 NIC，这些 NIC 采用 IPv4 和 IPv6 配置。
+2. 当“myVnet”出现在搜索结果中时，将其选中。**** 此时会启动名为 *myVNet* 的双堆栈虚拟网络的“概述”页。**** 该双堆栈虚拟网络显示了位于 *mySubnet* 双堆栈子网中的三个 NIC，这些 NIC 采用 IPv4 和 IPv6 配置。
 
-  ![Azure 中的 IPv6 双堆栈虚拟网络](./media/ipv6-add-to-existing-vnet-powershell/ipv6-dual-stack-vnet.png)
-
-> [!NOTE]
-> 当前版本的 Azure 虚拟网络 IPv6 在 Azure 门户中以只读的形式提供。
-
-<!--MOONCAKE: REMOVE preview-->
+    ![Azure 中的 IPv6 双堆栈虚拟网络](./media/ipv6-add-to-existing-vnet-powershell/ipv6-dual-stack-vnet.png)
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -185,5 +167,4 @@ Remove-AzResourceGroup -Name MyAzureResourceGroupSLB
 
 在本文中，你已将采用 IPv4 前端 IP 配置的现有标准负载均衡器更新为双堆栈（IPv4 和 IPv6）配置。 你还将 IPv6 配置添加到了后端池中 VM 的 NIC，并添加到了托管这些 VM 的虚拟网络。 若要详细了解 Azure 虚拟网络中的 IPv6 支持，请参阅 [Azure 虚拟网络 IPv6 是什么？](ipv6-overview.md)
 
-<!-- Update_Description: new article about ipv6 add to existing vnet powershell -->
-<!--NEW.date: 11/25/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

@@ -12,13 +12,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: carlrab
 origin.date: 04/08/2019
-ms.date: 04/27/2020
-ms.openlocfilehash: 7846a883137445e18e09df73ddde1e716f62c373
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.date: 06/15/2020
+ms.openlocfilehash: ed1453f560ae54059bdcfdd051665f2297120261
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82126911"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723701"
 ---
 # <a name="what-is-the-azure-sql-database-service"></a>什么是 Azure SQL 数据库服务？
 
@@ -57,7 +57,7 @@ SQL 数据库通过多个资源类型、服务层级和计算大小提供可预�
 
 可以在小型单一数据库中构建第一个应用，每个月只需在常规用途服务层级中花费少量资金。 然后可以根据解决方案的需要，随时手动或以编程方式将服务层级更改为业务关键服务层级。 可在不给应用或客户造成停机的情况下调整性能。 动态可伸缩性使得数据库能够以透明方式对不断变化的资源需求做出响应。 只需在需要资源时为需要的资源付费。
 
-动态可伸缩性不同于自动缩放。   自动缩放是指服务根据条件自动缩放，而动态可伸缩性允许在无停机时间的情况下进行手动缩放。 单一数据库选项支持手动动态可伸缩性，但不支持自动缩放。 若要获得更多自动体验，请考虑使用弹性池，它允许数据库根据各个数据库需求共享池中的资源。 另一个选项是使用脚本来帮助自动执行单一数据库的可伸缩性。 有关示例，请参阅[使用 PowerShell 监视和缩放单个数据库](scripts/sql-database-monitor-and-scale-database-powershell.md)。
+动态可伸缩性不同于自动缩放。** ** 自动缩放是指服务根据条件自动缩放，而动态可伸缩性允许在无停机时间的情况下进行手动缩放。 单一数据库选项支持手动动态可伸缩性，但不支持自动缩放。 若要获得更多自动体验，请考虑使用弹性池，它允许数据库根据各个数据库需求共享池中的资源。 另一个选项是使用脚本来帮助自动执行单一数据库的可伸缩性。 有关示例，请参阅[使用 PowerShell 监视和缩放单个数据库](scripts/sql-database-monitor-and-scale-database-powershell.md)。
 
 ### <a name="purchasing-models"></a>购买模型
 
@@ -71,7 +71,7 @@ SQL 数据库提供以下购买模型：
 Azure SQL 数据库提供了三个专为不同类型的应用程序设计的服务层级：
 - [常规用途/标准](sql-database-service-tier-general-purpose.md)服务层级设计用于常见工作负荷。 它提供以预算导向的、均衡的计算和存储选项。
 - [业务关键型/高级](sql-database-service-tier-business-critical.md)服务层级专为事务率较高、I/O 延迟最低的 OLTP 应用程序而设计。 它使用多个独立副本，提供最高级别的故障恢复能力。
-- [超大规模](sql-database-service-tier-hyperscale.md)服务层级专为超大型 OLTP 数据库设计，能够自动缩放存储和流畅地缩放计算。
+- [超大规模](sql-database-service-tier-hyperscale.md)服务层级专为超大型 OLTP 数据库设计，能够自动缩放存储和流畅地缩放计算。    
 
 ### <a name="elastic-pools-to-maximize-resource-utilization"></a>弹性池可以最大化资源利用率
 
@@ -100,7 +100,7 @@ Azure SQL 数据库提供高级监视和故障排除功能，可帮助你更深�
 
 [查询存储](https://docs.microsoft.com/sql/relational-databases/performance/best-practice-with-the-query-store) - 内置的 SQL Server 监视功能，它可以实时记录查询性能，并使你能够识别潜在的性能问题和排名靠前的资源使用者。 自动优化和建议提供有关性能退化以及存在缺失或重复索引的查询的建议。 使用 Azure SQL 数据库中的自动优化可以手动应用脚本来解决问题，或者让 Azure SQL 数据库应用修复措施。 SQL 数据库还可以测试并验证该修复措施是否起了作用，并根据结果保留或还原更改。 除了查询存储和自动优化功能外，还可以使用标准的 [DMV 和 XEvent](sql-database-monitoring-with-dmvs.md) 来监视工作负荷性能。
 
-Azure 提供[内置的性能监视](sql-database-performance-guidance.md)和[警报](sql-database-insights-alerts-portal.md)工具，将它们与性能评分相结合，可以监视数千个数据库的状态。 使用这些工具，可以根据当前的或预计的性能需求，快速评估纵向扩展或纵向缩减产生的影响。 此外，SQL 数据库可[发出指标和诊断日志](sql-database-metrics-diag-logging.md)，以便更轻松地监视。 可配置 SQL 数据库，将资源使用情况、辅助角色和会话以及连接性存储到以下 Azure 资源之一：
+Azure 提供[内置的性能监视](sql-database-performance-guidance.md)和[警报](sql-database-insights-alerts-portal.md)工具，将它们与性能评分相结合，可以监视数千个数据库的状态。 使用这些工具，可以根据当前的或预计的性能需求，快速评估纵向扩展或纵向缩减产生的影响。 此外，SQL 数据库可[发出指标和资源日志](sql-database-metrics-diag-logging.md)，以便于监视。 可配置 SQL 数据库，将资源使用情况、辅助角色和会话以及连接性存储到以下 Azure 资源之一：
 
 - **Azure 存储**：用于低价存档大量遥测数据。
 - **Azure 事件中心**：用于将 SQL 数据库遥测与自定义监视解决方案或热门管道集成。

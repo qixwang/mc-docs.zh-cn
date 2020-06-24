@@ -8,15 +8,15 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: ''
 origin.date: 02/04/2020
-ms.date: 05/11/2020
+ms.date: 06/15/2020
 ms.author: v-jay
 ms.reviewer: jrasnick
-ms.openlocfilehash: e28786a788da0149ac5b6709c7efad156c78615b
-ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
+ms.openlocfilehash: 5f50e5bfd7de69677135451eb01d6667b22f1f4f
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82198603"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723691"
 ---
 # <a name="monitor-workload---azure-portal"></a>监视工作负荷 - Azure 门户
 
@@ -39,7 +39,7 @@ ms.locfileid: "82198603"
 
 有关工作区的更多详细信息，请访问以下[文档](../../azure-monitor/learn/quick-create-workspace.md?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.jsond#create-a-workspace)。
 
-## <a name="turn-on-diagnostic-logs"></a>启用诊断日志
+## <a name="turn-on-resource-logs"></a>启用资源日志
 
 配置诊断设置，以便从 SQL 池发出日志。 日志包含与最常用的性能故障排除 DMV 等效的遥测视图。 目前支持以下视图：
 
@@ -49,7 +49,7 @@ ms.locfileid: "82198603"
 - [sys.dm_pdw_waits](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 - [sys.dm_pdw_sql_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-sql-requests-transact-sql?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
-![启用诊断日志](./media/sql-data-warehouse-monitor-workload-portal/enable_diagnostic_logs.png)
+![启用资源日志](./media/sql-data-warehouse-monitor-workload-portal/enable_diagnostic_logs.png)
 
 可将日志发送到 Azure 存储、流分析或 Log Analytics。 本教程选择了“Log Analytics”。
 

@@ -8,13 +8,13 @@ ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 11/04/2019
-ms.date: 03/16/2020
-ms.openlocfilehash: d7d9a3d09879faf3cdb303c4769c00e556873c25
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 06/09/2020
+ms.openlocfilehash: 9e740629bc2ce94aaba108e678dcac502869f96d
+ms.sourcegitcommit: c4fc01b7451951ef7a9616fca494e1baf29db714
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80243741"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84564376"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>排查 Azure 认知搜索中的常见索引器错误和警告
 
@@ -77,6 +77,11 @@ ms.locfileid: "80243741"
 | 无法将字段映射应用到某个字段 | 无法将映射函数 `'functionName'` 应用到字段 `'fieldName'`。 数组不能为 null。 参数名称: bytes | 请反复检查索引器中定义的[字段映射](search-indexer-field-mappings.md)，并与失败文档的指定字段的数据进行比较。 可能需要修改字段映射或文档数据。 |
 | 无法读取字段值 | 无法读取列 `'fieldName'` 在索引 `'fieldIndex'` 处的值。 在接收来自服务器的结果时发生传输级错误。 （提供程序：TCP 提供程序，错误:0 - 远程主机强行关闭了现有连接。 | 这些错误的常见原因是数据源的底层服务出现了意外的连接问题。 稍后再次尝试通过索引器运行文档。 |
 
+<a name="Could not map output field '`xyz`' to search index due to deserialization problem while applying mapping function '`abc`'"/>
+
+## <a name="error-could-not-map-output-field-xyz-to-search-index-due-to-deserialization-problem-while-applying-mapping-function-abc"></a>错误：应用映射函数“`abc`”时，由于反序列化问题，无法将输出字段“`xyz`”映射到搜索索引
+输出映射可能已失败，因为输出数据的格式与你使用的映射函数不兼容。 例如，对二进制数据应用 Base64Encode 映射函数就会生成此错误。 若要解决此问题，请重新运行索引器而不指定映射函数，或者确保映射函数与输出字段的数据类型兼容。 有关详细信息，请参阅[输出字段映射](cognitive-search-output-field-mapping.md)。
+
 <a name="could-not-execute-skill"/>
 
 ## <a name="error-could-not-execute-skill"></a>错误：无法执行技能
@@ -92,6 +97,8 @@ ms.locfileid: "80243741"
 
 ## <a name="error-could-not-execute-skill-because-the-web-api-request-failed"></a>错误：由于 Web API 请求失败，无法执行技能
 由于对 Web API 的调用失败，未能执行技能。 通常，此类失败是在使用自定义技能时发生的，在这种情况下，需要调试自定义代码才能解决问题。 如果失败来源于某个内置技能，请参考错误消息获得解决问题的帮助。
+
+在调试此问题时，请务必注意此技能的所有[技能输入警告](#warning-skill-input-was-invalid)。 你的 Web API 终结点可能会失败，因为索引器正在向它传递意外的输入。
 
 <a name="could-not-execute-skill-because-web-api-skill-response-is-invalid"/>
 
@@ -310,7 +317,12 @@ ms.locfileid: "80243741"
 <a name="could-not-map-output-field-x-to-search-index"/>
 
 ## <a name="warning-could-not-map-output-field-x-to-search-index"></a>警告：无法将输出字段“X”映射到搜索索引
-引用不存在的数据/null 数据的输出字段映射会针对每个文档生成警告，并生成空索引字段。 若要解决此问题，请反复检查输出字段映射源路径是否存在拼写错误，或使用[条件技能](cognitive-search-skill-conditional.md#sample-skill-definition-2-set-a-default-value-for-a-value-that-doesnt-exist)设置默认值。
+引用不存在的数据/null 数据的输出字段映射会针对每个文档生成警告，并生成空索引字段。 若要解决此问题，请反复检查输出字段映射源路径是否存在拼写错误，或使用[条件技能](cognitive-search-skill-conditional.md#sample-skill-definition-2-set-a-default-value-for-a-value-that-doesnt-exist)设置默认值。 有关详细信息，请参阅[输出字段映射](cognitive-search-output-field-mapping.md)。
+
+| Reason | 详细信息/示例 | 解决方法 |
+| --- | --- | --- |
+| 无法循环访问非数组 | “无法迭代非数组 `/document/normalized_images/0/imageCelebrities/0/detail/celebrities`。” | 当输出不是数组时，将发生此错误。 如果你认为输出应该是数组，请检查指示的输出源字段路径是否有误。 例如，源字段名称中可能缺少或有多余的 `*`。 也有可能是因为此技能的输入为 null，从而导致数组为空。 请在[技能输入无效](cognitive-search-common-errors-warnings.md#warning-skill-input-was-invalid)部分中查找类似的详细信息。    |
+| 无法选择非数组中的 `0` | “无法选择非数组 `/document/pages` 中的 `0`。” | 如果技能输出未生成数组，但输出源字段名称的路径中有数组索引或 `*`，则可能会发生这种情况。 请仔细检查输出源字段名称中提供的路径以及指示的字段名称的字段值。 请在[技能输入无效](cognitive-search-common-errors-warnings.md#warning-skill-input-was-invalid)部分中查找类似的详细信息。  |
 
 <a name="the-data-change-detection-policy-is-configured-to-use-key-column-x"/>
 

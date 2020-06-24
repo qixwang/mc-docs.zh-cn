@@ -1,26 +1,18 @@
 ---
-title: Azure 元数据服务 - 适用于 Linux VM 的计划事件
+title: Azure 中适用于 Linux VM 的 Scheduled Events
 description: 使用 Azure 元数据服务为 Linux 虚拟机计划事件。
-services: virtual-machines-windows, virtual-machines-linux, cloud-services
-documentationcenter: ''
 author: Johnnytechn
-manager: digimobile
-editor: ''
-tags: ''
-ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-origin.date: 02/22/2018
-ms.date: 04/13/2020
+ms.date: 06/05/2020
 ms.author: v-johya
-ms.openlocfilehash: 0c8ec8dab2e3a6ebcdb8c27eae6b81d88e01a1d9
-ms.sourcegitcommit: ebedf9e489f5218d4dda7468b669a601b3c02ae5
+ms.openlocfilehash: 1a7b2962080d1eca7e07e49440ea79a4cf72253f
+ms.sourcegitcommit: 285649db9b21169f3136729c041e4d04d323229a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82159187"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84683956"
 ---
 <!--MOONCAKE: "Preempt" equal to low priority which not support on China-->
 
@@ -51,13 +43,12 @@ ms.locfileid: "82159187"
 - [平台启动的维护](/virtual-machines/linux/maintenance-and-updates)（例如 VM 重启、主机的实时迁移或内存保留更新）
 - 虚拟机正在根据预测很快会出现故障的[降级主机硬件](https://azure.microsoft.com/blog/find-out-when-your-virtual-machine-hardware-is-degraded-with-scheduled-events)上运行
 - 用户启动的维护（例如，用户重启或重新部署 VM）
-
 <!--Not Available on [Spot VM](spot-vms.md) -->
 <!--Not Available on [Spot scale set](../../virtual-machine-scale-sets/use-spot.md)-->
 
 ## <a name="the-basics"></a>基础知识  
 
-元数据服务公开在 VM 中使用可访问的 REST 终结点运行 VM 的相关信息。 该信息通过不可路由的 IP 提供，因此不会在 VM 外部公开。
+  元数据服务公开在 VM 中使用可访问的 REST 终结点运行 VM 的相关信息。 该信息通过不可路由的 IP 提供，因此不会在 VM 外部公开。
 
 ### <a name="scope"></a>作用域
 计划的事件传送到：
@@ -81,8 +72,8 @@ ms.locfileid: "82159187"
 
 | 版本 | 发布类型 | 区域 | 发行说明 | 
 | - | - | - | - | 
-| 2017-08-01 | 正式版 | 全部 | <li> 已从 IaaS VM 的资源名称中删除前置下划线<br /><li>针对所有请求强制执行元数据标头要求 | 
-| 2017-03-01 | 预览 | 全部 | <li>初始版本
+| 2017-08-01 | 正式版 | 全部 | <li> 已从 IaaS VM 的资源名称中删除前置下划线<br><li>针对所有请求强制执行元数据标头要求 | 
+| 2017-03-01 | 预览 | 全部 | <li>初始版本 |
 
 <!--Not Available on | 2017-11-01 | General Availability | All | <li> Added support for Spot VM eviction EventType 'Preempt'<br /> |-->
 
@@ -143,7 +134,6 @@ curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-versio
 | NotBefore| 在可以启动此事件之前所要经过的时间。 <br /><br /> 示例： <br /><ul><li> 2016 年 9 月 19 日星期一 18:29:47 GMT  |
 
 <!--Not Available on `Preempt`: The Low-priority Virtual Machine is being deleted (ephemeral disks are lost).-->
-
 ### <a name="event-scheduling"></a>事件计划
 将根据事件类型为每个事件计划将来的最小量时间。 此时间反映在某个事件的 `NotBefore` 属性上。 
 

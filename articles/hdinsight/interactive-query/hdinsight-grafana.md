@@ -8,24 +8,24 @@ ms.service: hdinsight
 ms.topic: conceptual
 origin.date: 12/27/2019
 ms.date: 04/06/2020
-ms.openlocfilehash: 9e31af7dd9b35615884da757f29711cf6739bebd
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: a267be805af826eef17aad0d2dfe02e18ad7b57d
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80343597"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723169"
 ---
 # <a name="access-grafana-in-azure-hdinsight"></a>在 Azure HDInsight 中访问 Grafana
 
 [Grafana](https://grafana.com/) 是一个受欢迎的开源图形和仪表板生成器。 Grafana 功能丰富；它不仅可以让用户创建可自定义和可共享的仪表板，还可提供模板化/脚本化仪表板、LDAP 集成、多个数据源等。
 
-目前，在 Azure HDInsight 中，HBase、Kafka 和 Interactive Query 群集类型支持 Grafana。 启用了企业安全包的群集不支持它。
+目前，在 Azure HDInsight 中，Spark、HBase、Kafka 和 Interactive Query 群集类型支持 Grafana。 启用了企业安全包的群集不支持它。
 
 如果没有 Azure 订阅，请在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 
 ## <a name="create-an-apache-hadoop-cluster"></a>创建 Apache Hadoop 群集
 
-请参阅[使用 Azure 门户创建 Apache Hadoop 群集](../hdinsight-hadoop-create-linux-clusters-portal.md)。 对于“群集类型”  ，请选择“Spark”  、“Kafka”  、“HBase”  或“Interactive Query”  。
+请参阅[使用 Azure 门户创建 Apache Hadoop 群集](../hdinsight-hadoop-create-linux-clusters-portal.md)。 对于“群集类型”****，请选择“Spark”****、“Kafka”****、“HBase”**** 或“Interactive Query”****。
 
 ## <a name="access-the-grafana-dashboard"></a>访问 Grafana 仪表板
 
@@ -41,15 +41,15 @@ ms.locfileid: "80343597"
 
 如果不打算继续使用此应用程序，请使用以下步骤删除创建的群集：
 
-1. 登录 [Azure 门户](https://portal.azure.cn/)。
+1. 登录到 [Azure 门户](https://portal.azure.cn/)。
 
-1. 在顶部的“搜索”框中，键入 **HDInsight**。
+1. 在顶部的“搜索”框中，键入 **HDInsight**。****
 
-1. 选择“服务”下的“HDInsight 群集”   。
+1. 选择“服务”下的“HDInsight 群集”**** ****。
 
-1. 在显示的 HDInsight 群集列表中，选择你创建的群集旁边的“...”。 
+1. 在显示的 HDInsight 群集列表中，选择你创建的群集旁边的“...”。****
 
-1. 选择“删除”。  请选择“是”。 
+1. 选择“删除” ****。 请选择“是”。****
 
 ## <a name="next-steps"></a>后续步骤
 

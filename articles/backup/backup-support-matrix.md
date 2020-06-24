@@ -4,14 +4,14 @@ description: 汇总 Azure 备份服务的支持设置和限制。
 ms.topic: conceptual
 author: Johnnytechn
 origin.date: 02/17/2019
-ms.date: 05/11/2020
+ms.date: 06/09/2020
 ms.author: v-johya
-ms.openlocfilehash: f66d6b820b2f67e6251c0e0217aca373e0e27776
-ms.sourcegitcommit: 08b42258a48d96d754244064d065e4d5703f1cfb
+ms.openlocfilehash: 6fd25f870733fb8f81560b2f743a12d8febbf010
+ms.sourcegitcommit: 285649db9b21169f3136729c041e4d04d323229a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/18/2020
-ms.locfileid: "83445154"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84684013"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure 备份的支持矩阵
 
@@ -58,7 +58,7 @@ Azure 备份使用恢复服务保管库来安排和管理备份。 它还使用�
 
 **限制** | **详细信息**
 --- | ---
-**Azure VM 数据磁盘** | 限制为 16 个 <br> 若要注册获取包含 16 个以上磁盘（最多 32 个磁盘）的个人预览版 VM，请向我们发送电子邮件：AskAzureBackupTeam@microsoft.com
+**Azure VM 数据磁盘** | 限制为 16 个 <br> 若要注册获取包含 16 个以上磁盘（最多 32 个磁盘）的有限预览版 VM，请向我们发送电子邮件：AskAzureBackupTeam@microsoft.com
 **Azure VM 数据磁盘大小** | 对于 VM 中的所有磁盘，单个磁盘大小最大为 32 TB，组合磁盘大小最大为 256 TB。
 
 ### <a name="azure-vm-backup-options"></a>Azure VM 备份选项
@@ -111,7 +111,7 @@ Azure 备份支持针对传输中数据和静态数据的加密。
 
 ### <a name="data-security"></a>数据安全性
 
-- 备份 Azure VM 时，需要在虚拟机内部设置加密。
+- 备份 Azure VM 时，需要在虚拟机内部** 设置加密。
 - Azure 备份支持 Azure 磁盘加密，后者在 Windows 虚拟机上使用 BitLocker，在 Linux 虚拟机上使用 **dm-crypt**。
 - 在后端，Azure 备份使用 [Azure 存储服务加密](../storage/common/storage-service-encryption.md)来保护静态数据。
 

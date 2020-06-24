@@ -1,19 +1,19 @@
 ---
-title: 使用 Azure AD 进行 Azure 磁盘加密（以前版本）
+title: 使用 Azure AD 应用进行 Azure 磁盘加密的先决条件（早期版本）
 description: 本文提供了对 IaaS VM 使用 Azure 磁盘加密所要满足的先决条件。
 author: Johnnytechn
 ms.service: virtual-machines-linux
 ms.subservice: security
 ms.topic: article
 ms.author: v-johya
-ms.date: 04/20/2020
+ms.date: 06/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: 6191bfdee30f88a251c8082dadd36e3bd0ca550c
-ms.sourcegitcommit: ebedf9e489f5218d4dda7468b669a601b3c02ae5
+ms.openlocfilehash: 907377b7ab42aee8040448f68db939a4483ffb8d
+ms.sourcegitcommit: 285649db9b21169f3136729c041e4d04d323229a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82159038"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84684046"
 ---
 # <a name="azure-disk-encryption-with-azure-ad-previous-release"></a>使用 Azure AD 进行 Azure 磁盘加密（以前版本）
 
@@ -27,15 +27,13 @@ ms.locfileid: "82159038"
 - [其他 VM 要求](disk-encryption-overview.md#additional-vm-requirements)
 
 
- 
-
 ## <a name="networking-and-group-policy"></a>网络和组策略
 
 若要使用旧的 AAD 参数语法来启用 Azure 磁盘加密功能，基础结构即服务 (IaaS) VM 必须符合以下网络终结点配置要求： 
   - 若要获取用于连接到密钥保管库的令牌，IaaS VM 必须能够连接到 Azure AD 终结点 login.partner.microsoftonline.cn\[\]。
   - IaaS VM 必须能够连接到 Key Vault 终结点，以将加密密钥写入 Key Vault。
   - IaaS VM 必须能够连接到托管 Azure 扩展存储库的 Azure 存储终结点和托管 VHD 文件的 Azure 存储帐户。
-  -  如果安全策略限制从 Azure VM 到 Internet 的访问，可以解析上述 URI，并配置特定的规则，允许与这些 IP 建立出站连接。 有关详细信息，请参阅[防火墙后的 Azure Key Vault](../../key-vault/key-vault-access-behind-firewall.md)。
+  -  如果安全策略限制从 Azure VM 到 Internet 的访问，可以解析上述 URI，并配置特定的规则，允许与这些 IP 建立出站连接。 有关详细信息，请参阅[防火墙后的 Azure Key Vault](../../key-vault/general/access-behind-firewall.md)。
   - 在 Windows 中，如果显式禁用了 TLS 1.0 且 .NET 版本未更新到 4.6 或更高版本，则下面的注册表更改将使 Azure 磁盘加密能够选择较新的 TLS 版本：
     
             [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319]
@@ -48,7 +46,7 @@ ms.locfileid: "82159038"
          
     
 ### <a name="group-policy"></a>组策略
- - Azure 磁盘加密解决方案对 Windows IaaS VM 使用 BitLocker 外部密钥保护程序。 对于已加入域的 VM，请不要推送会强制执行 TPM 保护程序的任何组策略。 有关“在没有兼容 TPM 的情况下允许 BitLocker”  选项的组策略信息，请参阅 [BitLocker 组策略参考](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings#bkmk-unlockpol1)。
+ - Azure 磁盘加密解决方案对 Windows IaaS VM 使用 BitLocker 外部密钥保护程序。 对于已加入域的 VM，请不要推送会强制执行 TPM 保护程序的任何组策略。 有关“在没有兼容 TPM 的情况下允许 BitLocker”**** 选项的组策略信息，请参阅 [BitLocker 组策略参考](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings#bkmk-unlockpol1)。
 
 - 具有自定义组策略的已加入域虚拟机上的 BitLocker 策略必须包含以下设置：[配置 BitLocker 恢复信息的用户存储 -> 允许 256 位恢复密钥](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings)。 如果 BitLocker 的自定义组策略设置不兼容，Azure 磁盘加密会失败。 在没有正确的策略设置的计算机上应用新策略，强制更新新策略 (gpupdate.exe /force)，然后根据需要重启。 
 

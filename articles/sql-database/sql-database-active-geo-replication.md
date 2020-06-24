@@ -10,14 +10,14 @@ ms.topic: conceptual
 author: WenJason
 ms.author: v-jay
 ms.reviewer: mathoma, carlrab
-origin.date: 04/06/2020
-ms.date: 04/27/2020
-ms.openlocfilehash: 676d0fd900acd50cca6d9784a4c5ded31c852f93
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+origin.date: 04/28/2020
+ms.date: 06/15/2020
+ms.openlocfilehash: 6ccb3c2314e7946fbc2febcb1ff7feef64b91fa9
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82126636"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723267"
 ---
 # <a name="creating-and-using-active-geo-replication"></a>创建并使用活动异地复制
 
@@ -26,7 +26,12 @@ ms.locfileid: "82126636"
 > [!NOTE]
 > 托管实例不支持活动异地复制。 对于托管实例的地理故障转移，请使用[自动故障转移组](sql-database-auto-failover-group.md)。
 
-活动异地复制旨在充当业务连续性解决方案，允许应用程序在发生区域性灾难或大规模中断时执行各个数据库的快速灾难恢复。 如果启用了异地复制，则应用程序可以向其他 Azure 区域中的辅助数据库启动故障转移。 在相同或不同的区域中最多支持四个辅助数据库，并且辅助数据库也可以用于只读访问查询。 故障转移必须由应用程序或用户手动启动。 故障转移后，新的主数据库具有不同的连接终结点。 下图演示了使用活动异地复制的异地冗余云应用程序的典型配置。
+活动异地复制旨在充当业务连续性解决方案，允许应用程序在发生区域性灾难或大规模中断时执行各个数据库的快速灾难恢复。 如果启用了异地复制，则应用程序可以向其他 Azure 区域中的辅助数据库启动故障转移。 在相同或不同的区域中最多支持四个辅助数据库，并且辅助数据库也可以用于只读访问查询。 故障转移必须由应用程序或用户手动启动。 故障转移后，新的主数据库具有不同的连接终结点。 
+
+> [!NOTE]
+> 活动异地复制通过流式处理数据库事务日志来复制更改。 它与[事务复制](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication)无关，后者通过执行 DML (INSERT, UPDATE, DELETE) 命令复制更改。
+
+下图演示了使用活动异地复制的异地冗余云应用程序的典型配置。
 
 ![活动异地复制](./media/sql-database-active-geo-replication/geo-replication.png )
 

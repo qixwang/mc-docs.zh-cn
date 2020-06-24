@@ -6,14 +6,14 @@ ms.author: v-tawe
 ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
-origin.date: 03/17/2020
-ms.date: 05/09/2020
-ms.openlocfilehash: 0c29446215738fab2b78e8909406a223b8092066
-ms.sourcegitcommit: bfbd6694da33f703481386f2a3f16850c4e94bfa
+origin.date: 04/01/2020
+ms.date: 06/09/2020
+ms.openlocfilehash: 9d2686f959def91f91743a885eb4b710cd19fc1d
+ms.sourcegitcommit: 73697fa9c19a40d235df033400c74741e7d0f3f4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83417740"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84574884"
 ---
 # <a name="install-and-use-lightingest"></a>安装和使用 LightIngest
 
@@ -31,16 +31,16 @@ LightIngest 是用于将即席数据引入 Azure 数据资源管理器的命令�
 ## <a name="install-lightingest"></a>安装 LightIngest
 
 1. 在计算机上导航到 LightIngest 所下载到的位置。 
-1. 使用 WinRAR 将 tools 目录解压缩到计算机上。
+1. 使用 WinRAR 将 tools 目录解压缩到计算机上。**
 
 ## <a name="run-lightingest"></a>运行 LightIngest
 
-1. 在计算机上导航到解压缩的 tools 目录。
+1. 在计算机上导航到解压缩的 tools 目录。**
 1. 从位置栏中删除现有的位置信息。
     
       ![删除位置信息](media/lightingest/lightingest-location-bar.png)
 
-1. 输入 `cmd`，然后按 Enter。
+1. 输入 `cmd`，然后按 Enter。****
 1. 在命令提示符下，输入 `LightIngest.exe`，后接相关的命令行参数。
 
     > [!Tip]
@@ -56,7 +56,7 @@ LightIngest 是用于将即席数据引入 Azure 数据资源管理器的命令�
     ingest-{Cluster name and region}.kusto.chinacloudapi.cn;AAD Federated Security=True"  -db:{Database} -table:Trips -source:"https://{Account}.blob.core.chinacloudapi.cn/{ROOT_CONTAINER};{StorageAccountKey}" -pattern:"*.csv.gz" -format:csv -limit:2 -ignoreFirst:true -cr:10.0 -dontWait:true
     ```
 
-* 建议的方法是让 `LightIngest` 使用 `https://ingest-{yourClusterNameAndRegion}.kusto.chinacloudapi.cn` 上的引入终结点。 这样，Azure 数据资源管理器服务就可以管理引入负载，而你可以在发生暂时性错误时轻松恢复。 不过，也可以将 `LightIngest` 配置为直接使用引擎终结点 (`https://{yourClusterNameAndRegion}.kusto.chinacloudapi.cn`)。
+* 建议的方法是让 LightIngest 使用 `https://ingest-{yourClusterNameAndRegion}.kusto.chinacloudapi.cn` 上的引入终结点。 这样，Azure 数据资源管理器服务就可以管理引入负载，而你可以在发生暂时性错误时轻松恢复。 不过，也可以将 `LightIngest` 配置为直接使用引擎终结点 (`https://{yourClusterNameAndRegion}.kusto.chinacloudapi.cn`)。
 
 > [!Note]
 > 如果直接通过引擎终结点引入，则不需要包含 `ingest-`，但不会有 DM 功能来保护引擎并提高引入成功率。
@@ -74,7 +74,7 @@ LightIngest 是用于将即席数据引入 Azure 数据资源管理器的命令�
 |-prefix               |             |string  |可选  |当要引入的源数据驻留在 Blob 存储中时，此 URL 前缀（不包括容器名称）将由所有 Blob 共享。 <br>例如，如果数据位于 `MyContainer/Dir1/Dir2` 中，则前缀应是 `Dir1/Dir2`。 建议括在双引号中 |
 |-pattern              |             |string  |可选  |提取源文件/Blob 时所遵循的模式。 支持通配符。 例如，`"*.csv"`。 建议括在双引号中 |
 |-zipPattern           |             |string  |可选  |选择要引入 ZIP 存档中的哪些文件时要使用的正则表达式。<br>该存档中的所有其他文件将被忽略。例如 `"*.csv"`。 建议括在双引号中 |
-|-format               |-f           |string  |可选  |源数据格式。 必须是[支持的格式](https://docs.azure.cn/data-explorer/ingestion-supported-formats)之一 |
+|-format               |-f           |string  |可选  |源数据格式。 必须是[支持的格式](ingestion-supported-formats.md)之一 |
 |-ingestionMappingPath |-mappingPath |string  |可选  |引入列映射文件的路径（对于 Json 和 Avro 格式是必需的）。 请参阅[数据映射](https://docs.microsoft.com/azure/data-explorer/kusto/management/mappings) |
 |-ingestionMappingRef  |-mappingRef  |string  |可选  |预先创建的引入列映射的名称（对于 Json 和 Avro 格式是必需的）。 请参阅[数据映射](https://docs.microsoft.com/azure/kusto/management/mappings) |
 |-creationTimePattern  |             |string  |可选  |如果设置此参数，它将用于从文件或 Blob 路径中提取 CreationTime 属性。 请参阅[使用 CreationTimePattern 参数](#using-creationtimepattern-argument) |

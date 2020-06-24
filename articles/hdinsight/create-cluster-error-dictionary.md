@@ -8,12 +8,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: troubleshooting
 origin.date: 11/19/2019
 ms.date: 03/23/2020
-ms.openlocfilehash: fd9aba5a49cce4d63eb89bc801e8a39eb5109214
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: cf4f7e5c2c4fc92224432706d69aafc1b17f0b7d
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79295990"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723064"
 ---
 # <a name="azure-hdinsight-cluster-creation-errors"></a>Azure HDInsight：群集创建错误
 
@@ -26,7 +26,7 @@ ms.locfileid: "79295990"
 
 ### <a name="error"></a>错误
 
-“无法通过 URI:\<脚本操作 URL\> 访问脚本操作位置”
+“无法通过 URI:\<SCRIPT ACTION URL\>”
 
 #### <a name="error-message"></a>错误消息
 
@@ -48,11 +48,11 @@ HDInsight 服务无法访问作为“创建群集”请求的一部分提供的�
 
 ### <a name="error"></a>错误
 
-“无法通过 URI:\<脚本操作 URL\> 访问脚本操作位置”
+“无法通过 URI:\<SCRIPT_ACTION_URL\>”
 
 #### <a name="error-message"></a>错误消息
 
-“给定的脚本 URI \<脚本 URI\> 在 ADLS 中，但此群集没有 Data Lake Storage 主体”
+“给定的脚本 URI \<SCRIPT_URI\> 在 ADLS 中，但此群集没有 Data Lake Storage 主体”
 
 ### <a name="cause"></a>原因
 
@@ -68,7 +68,7 @@ HDInsight 服务无法访问作为“创建群集”请求的一部分提供的�
 
 ### <a name="error"></a>错误
 
-“请求中提供的 VM 大小‘\<客户指定的 VM 大小\>’无效或不受角色‘\<角色\>’的支持。 有效值是：\<角色的有效 VM 大小\>。”
+“请求中提供的 VM 大小 \<CUSTOMER_SPECIFIED_VM_SIZE\> 无效，或者不支持 \<ROLE\> 角色。 有效值是：\<VALID_VM_SIZE_FOR_ROLE\>”
 
 ### <a name="cause"></a>原因
 
@@ -84,7 +84,7 @@ HDInsight 服务无法访问作为“创建群集”请求的一部分提供的�
 
 ### <a name="error"></a>错误
 
-“VirtualNetworkId 无效。 VirtualNetworkId‘\<用户虚拟网络 ID\>’*”
+“VirtualNetworkId 无效。 VirtualNetworkId '\<USER_VIRTUALNETWORKID\>'*”
 
 ### <a name="cause"></a>原因
 
@@ -96,7 +96,7 @@ HDInsight 服务无法访问作为“创建群集”请求的一部分提供的�
 
 1. 转到 Azure 门户。
 1. 选择你的虚拟网络。
-1. 选择“属性”菜单项。  **ResourceID** 属性值即为 **VirtualNetworkId** 值。
+1. 选择“属性”菜单项。**** **ResourceID** 属性值即为 **VirtualNetworkId** 值。
 
 下面是虚拟网络 ID 的示例：
 
@@ -108,7 +108,7 @@ HDInsight 服务无法访问作为“创建群集”请求的一部分提供的�
 
 ### <a name="error"></a>错误
 
-“群集部署因自定义脚本操作出错而失败。 失败的操作:\<SCRIPT_NAME\>，请转到 Ambari UI 以进一步调试错误。”
+“群集部署因自定义脚本操作出错而失败。 失败的操作：\<SCRIPT_NAME\>请转到 Ambari UI 以进一步调试错误。”
 
 ### <a name="cause"></a>原因
 
@@ -116,7 +116,7 @@ HDInsight 服务无法访问作为“创建群集”请求的一部分提供的�
 
 ### <a name="resolution"></a>解决方法
 
-由于这是你的自定义脚本，因此我们建议排查问题，并根据需要重新运行该脚本。 若要排查脚本错误，请检查 /var/lib/ambari-agent/* 文件夹中的日志。 或者，在 Ambari UI 中打开“操作”页，然后选择“run_customscriptaction”操作查看错误详细信息。  
+由于这是你的自定义脚本，因此我们建议排查问题，并根据需要重新运行该脚本。 若要排查脚本错误，请检查 /var/lib/ambari-agent/* 文件夹中的日志。 或者，在 Ambari UI 中打开“操作”页，然后选择“run_customscriptaction”操作查看错误详细信息。**** ****
 
 ---
 
@@ -151,7 +151,7 @@ HDInsight 服务无法访问作为“创建群集”请求的一部分提供的�
 如果你打算使用网络安全组来控制网络流量，请在安装HDInsight 之前执行以下操作：
 
 - 确定计划用于 HDInsight 的 Azure 区域。
-- 确定 HDInsight 所需的 IP 地址。 有关详细信息，请参阅 [HDInsight 管理 IP 地址](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses)。
+- 确定 HDInsight 所需的 IP 地址。 有关详细信息，请参阅 [HDInsight 管理 IP 地址](/hdinsight/hdinsight-management-ip-addresses)。
   - 为计划将 HDInsight 安装到其中的子网创建或修改网络安全组。
   - 对于网络安全组，请在端口 443 上允许来自 IP 地址的入站流量。 此配置确保 HDInsight 管理服务可以从虚拟网络外部访问群集。
 
@@ -161,7 +161,7 @@ HDInsight 服务无法访问作为“创建群集”请求的一部分提供的�
 
 ### <a name="error"></a>错误
 
-“托管标识对存储帐户没有权限。 请验证是否已将“存储 Blob 数据所有者”角色分配给存储帐户的托管标识。 存储：/subscriptions/\<订阅 ID\>/resourceGroups/\<资源组名称\>/providers/Microsoft.Storage/storageAccounts/\<存储帐户名称\>；托管标识：/subscriptions/\<订阅 ID\>/resourceGroups//\<资源组名称\>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/\<用户托管标识名称\>”
+“托管标识对存储帐户没有权限。 请验证是否已将“存储 Blob 数据所有者”角色分配给存储帐户的托管标识。 存储：/subscriptions/ \<Subscription ID\> /resourceGroups/\< Resource Group Name\> /providers/Microsoft.Storage/storageAccounts/ \<Storage Account Name\>，托管标识：/subscriptions/ \<Subscription ID\> /resourceGroups/ /\< Resource Group Name\> /providers/Microsoft.ManagedIdentity/userAssignedIdentities/ \<User Managed Identity Name\>”
 
 ### <a name="cause"></a>原因
 
@@ -171,7 +171,7 @@ HDInsight 服务无法访问作为“创建群集”请求的一部分提供的�
 
 1. 打开 Azure 门户。
 1. 转到存储帐户。
-1. 查看“访问控制(IAM)”。 
+1. 查看“访问控制(IAM)”。****
 1. 确保为该用户分配了“存储 Blob 数据参与者”角色或“存储 Blob 数据所有者”角色。
 
 有关详细信息，请参阅[在 Data Lake Storage Gen2 帐户中设置托管标识的权限](hdinsight-hadoop-use-data-lake-storage-gen2.md)。
@@ -182,7 +182,7 @@ HDInsight 服务无法访问作为“创建群集”请求的一部分提供的�
 
 ### <a name="error"></a>错误
 
-“配置了子网 /subscriptions/\<订阅 ID\>/resourceGroups/\<资源组名称\> RG-westeurope-vnet-tomtom-default/providers/Microsoft.Network/virtualNetworks/\<虚拟网络名称\>/subnets/\<子网名称\> 的网络安全组 /subscriptions/\<订阅 ID\>/resourceGroups/<资源组名称\> default/providers/Microsoft.Network/networkSecurityGroups/\<网络安全组名称\> 中的安全规则不允许建立所需的入站和/或出站连接。 有关详细信息，请访问[规划 Azure HDInsight 的虚拟网络](/hdinsight-plan-virtual-network-deployment)，或联系支持人员。”
+“配置了子网 /subscriptions/\<SubscriptionID\>/resourceGroups/\<Resource Group name\> RG-westeurope-vnet-tomtom-default/providers/Microsoft.Network/virtualNetworks/\<Virtual Network Name\>/subnets/\<Subnet Name\> 的网络安全组 /subscriptions/\<SubscriptionID\>/resourceGroups/<Resource Group name\> default/providers/Microsoft.Network/networkSecurityGroups/\<Network Security Group Name\> 中的安全规则不允许建立所需的入站和/或出站连接。 有关详细信息，请访问[规划 Azure HDInsight 的虚拟网络](/hdinsight-plan-virtual-network-deployment)，或联系支持人员。”
 
 ### <a name="cause"></a>原因
 
@@ -192,8 +192,8 @@ HDInsight 服务无法访问作为“创建群集”请求的一部分提供的�
 
 如果你打算使用网络安全组来控制网络流量，请在安装HDInsight 之前执行以下操作：
 
-- 确定要用于 HDInsight 的 Azure 区域，并为该区域创建安全的 IP 地址列表。 有关详细信息，请参阅[运行状况和管理服务：特定区域](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses#health-and-management-services-specific-regions)。
-- 确定 HDInsight 所需的 IP 地址。 有关详细信息，请参阅  [HDInsight 管理 IP 地址](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses)。
+- 确定要用于 HDInsight 的 Azure 区域，并为该区域创建安全的 IP 地址列表。 有关详细信息，请参阅[运行状况和管理服务：特定区域](/hdinsight/hdinsight-management-ip-addresses#health-and-management-services-specific-regions)。
+- 确定 HDInsight 所需的 IP 地址。 有关详细信息，请参阅  [HDInsight 管理 IP 地址](/hdinsight/hdinsight-management-ip-addresses)。
 - 为计划将 HDInsight 安装到其中的子网创建或修改网络安全组。 对于网络安全组，请在端口 443 上允许来自 IP 地址的入站流量。 此配置确保 HDInsight 管理服务可以从虚拟网络外部访问群集。
   
 ---
@@ -212,6 +212,42 @@ HDInsight 服务无法访问作为“创建群集”请求的一部分提供的�
 
 有关可能影响群集部署的任何 Azure 服务中断，请查看 [Azure 状态](https://status.azure.com)页。 如果未发生服务中断，请重试群集部署。
 
+---
+
+## <a name="error-code-failedtoconnectwithclustererrorcode"></a>错误代码：FailedToConnectWithClusterErrorCode
+
+### <a name="error"></a>错误
+
+无法连接到群集管理终结点。 请稍后重试。
+
+### <a name="cause"></a>原因
+
+尝试创建群集时，HDInsight 服务无法连接到群集
+
+### <a name="resolution"></a>解决方法
+
+如果使用了自定义 VNet 网络安全组 (NSG) 和用户定义路由 (UDR)，请确保群集可以与 HDInsight 管理服务通信。 有关其他信息，请参阅 [HDInsight 管理 IP 地址](/hdinsight/hdinsight-management-ip-addresses)。
+
+---
+
+## <a name="error-code-deployments-failed-due-to-policy-violation-resource-resource-uri-was-disallowed-by-policy-policy-identifiers-policyassignmentnamepolicy-name-idprovidersmicrosoftmanagementmanagementgroupsmanagement-group-name-providersmicrosoftauthorizationpolicyassignmentspolicy-namepolicydefinition-policy-definition"></a>错误代码：由于违反策略导致部署失败：策略禁止使用资源“<Resource URI>”。 策略标识符：'[{"policyAssignment":{"name":"<Policy Name> ","id":"/providers/Microsoft.Management/managementGroups/<Management Group Name> providers/Microsoft.Authorization/policyAssignments/<Policy Name>"},"policyDefinition": <Policy Definition>
+
+### <a name="cause"></a>原因
+
+基于订阅的 Azure 策略可能会拒绝创建公共 IP 地址。 创建 HDInsight 群集需要两个公共 IP。
+
+以下策略通常会影响群集创建：
+
+* 阻止在订阅中创建 IP 地址或负载均衡器的策略。
+* 阻止创建存储帐户的策略。
+* 阻止删除网络资源（如 IP 地址或负载均衡器）的策略。
+
+### <a name="resolution"></a>解决方法
+
+创建 HDInsight 群集时删除或禁用基于订阅的 Azure Policy 分配。
+
+---
+
 ## <a name="next-steps"></a>后续步骤
 
-若要详细了解如何排查群集创建问题，请参阅[排查 Azure HDInsight 中的群集创建失败问题](https://docs.microsoft.com/azure/hdinsight/hadoop/hdinsight-troubleshoot-cluster-creation-fails)。
+若要详细了解如何排查群集创建问题，请参阅[排查 Azure HDInsight 中的群集创建失败问题](/hdinsight/hadoop/hdinsight-troubleshoot-cluster-creation-fails)。

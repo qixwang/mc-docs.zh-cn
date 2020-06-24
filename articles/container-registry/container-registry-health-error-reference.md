@@ -1,20 +1,16 @@
 ---
-title: 运行状况检查的错误参考 - Azure 容器注册表
+title: 运行状况检查的错误参考信息
 description: 在 Azure 容器注册表中运行 az acr check-health 命令时出现的问题的错误代码及可能的解决方法
-services: container-registry
-author: rockboyfor
-manager: digimobile
-ms.service: container-registry
 ms.topic: article
 origin.date: 07/02/2019
-ms.date: 08/26/2019
+ms.date: 06/08/2020
 ms.author: v-yeche
-ms.openlocfilehash: 9dc6394b0508f803801e65eb85fb3fee941ddea1
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 4ff85b4f7c9a26a862fb339d0825d1c929916bf9
+ms.sourcegitcommit: 8dae792aefbe44e8388f961b813e3da6564423ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "70134500"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84654898"
 ---
 # <a name="health-check-error-reference"></a>运行状况检查错误参考
 
@@ -64,7 +60,7 @@ ms.locfileid: "70134500"
 
 ## <a name="connectivity_forbidden_error"></a>CONNECTIVITY_FORBIDDEN_ERROR
 
-此错误表示给定注册表的质询终结点响应了“403 禁止”HTTP 状态。 此错误表示用户无权访问注册表，原因很可能是虚拟网络配置有问题。 若要查看当前配置的防火墙规则，请运行 `az acr show --query networkRuleSet --name <registry>`。
+此错误表示给定注册表的质询终结点响应了“403 禁止”HTTP 状态。 此错误表示用户无权访问注册表，原因很可能是虚拟网络配置有问题或不允许访问注册表的公共终结点。 若要查看当前配置的防火墙规则，请运行 `az acr show --query networkRuleSet --name <registry>`。
 
 *可能的解决方法*：删除虚拟网络规则，或将当前的客户端 IP 地址添加到允许列表。
 
@@ -104,6 +100,10 @@ ms.locfileid: "70134500"
 
 *可能的解决方法*：验证拼写是否正确，注册表是否存在；验证用户是否对注册表拥有适当的权限，注册表和 CLI 环境的云是否匹配；将 Azure CLI 更新到最新版本。
 
+## <a name="notary_version_error"></a>NOTARY_VERSION_ERROR
+
+此错误表示 CLI 与当前安装的 Docker/Notary 版本不兼容。 通过手动替换 Docker 安装的公证客户端，尝试将你的 notary.exe 版本降级到 0.6.0 之前的版本来解决此问题。
+
 ## <a name="next-steps"></a>后续步骤
 
 有关用于检查注册表运行状况的选项，请参阅[检查 Azure 容器注册表的运行状况](container-registry-check-health.md)。
@@ -114,5 +114,4 @@ ms.locfileid: "70134500"
 
 [az-acr-check-health]: https://docs.azure.cn/cli/acr?view=azure-cli-latest#az-acr-check-health
 
-<!--Update_Description: new articles on container registry health error -->
-<!--ms.date: 09/02/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

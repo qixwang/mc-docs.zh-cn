@@ -8,14 +8,14 @@ author: WenJason
 ms.author: v-jay
 ms.topic: article
 origin.date: 02/20/2020
-ms.date: 04/27/2020
+ms.date: 06/15/2020
 ms.reviewer: ''
-ms.openlocfilehash: f3e8a8ba17866eb4d6202c1baeaa6386688c5f24
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.openlocfilehash: 99acb39da7899dcc978d4ae94f5858f17d425698
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82126721"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723632"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database"></a>用于解决 Azure SQL 数据库常见安全要求的 playbook
 
@@ -314,7 +314,7 @@ SQL 身份验证是指使用用户名和密码连接到 Azure SQL 数据库时�
 
 - 还可以在 T-SQL 的 SQL 代理作业步骤中或使用适用于 RBAC 角色的 Azure PIM，暂时执行角色分配（也称为动态职责分离 (DSD)）。 
 
-- 确保 DBA 无权访问加密密钥或密钥存储，而有权访问密钥的安全管理员却又无权访问数据库。 
+- 确保 DBA 无权访问加密密钥或密钥存储，而有权访问密钥的安全管理员无权访问数据库。 
 
 - 始终确保针对安全相关的操作提供审核线索。 
 
@@ -435,7 +435,7 @@ SQL 身份验证是指使用用户名和密码连接到 Azure SQL 数据库时�
 
 - Always Encrypted 无法轻松支持授予对密钥（和受保护数据）的临时访问权限。 例如，如果需要与 DBA 共享密钥，使 DBA 能够对敏感数据和加密的数据执行一些清理操作。 可靠撤销 DBA 的数据访问权限的唯一方法是，同时轮换用于保护数据的列加密密钥和列主密钥，而这是一项开销较高的操作。 
 
-- 若要访问已加密列中的纯文本值，用户需要有权访问用于保护列的列主密钥 (CMK)（在保存 CMK 的密钥存储中进行配置）。 用户还需要拥有“查看任何列主密钥定义”和“查看任何列加密密钥定义”数据库权限。  
+- 若要访问已加密列中的纯文本值，用户需要有权访问用于保护列的列主密钥 (CMK)（在保存 CMK 的密钥存储中进行配置）。 用户还需要拥有“查看任何列主密钥定义”和“查看任何列加密密钥定义”数据库权限。**** ****
 
 ### <a name="control-access-of-application-users-to-sensitive-data-through-encryption"></a>通过加密控制应用程序用户对敏感数据的访问
 
@@ -506,7 +506,7 @@ SQL 身份验证是指使用用户名和密码连接到 Azure SQL 数据库时�
 
 - 检查客户端上的密码套件：[TLS/SSL (Schannel SSP) 中的密码套件](https://docs.microsoft.com/windows/desktop/SecAuthN/cipher-suites-in-schannel)。 具体而言，根据[配置 TLS 密码套件顺序](https://docs.microsoft.com/windows-server/security/tls/manage-tls#configuring-tls-cipher-suite-order)禁用 3DES。 
 
-- 对于 Azure SQL 数据库，将对“代理”和“重定向”连接类型强制加密。 如果使用的是托管实例，请使用“代理”连接类型（默认设置），因为这可以强制在服务器端加密。  “重定向”连接类型目前不支持加密强制，仅在专用 IP 连接上可用。  
+- 对于 Azure SQL 数据库，将对“代理”和“重定向”连接类型强制加密。 如果使用的是托管实例，请使用“代理”连接类型（默认设置），因为这可以强制在服务器端加密。**** “重定向”连接类型目前不支持加密强制，仅在专用 IP 连接上可用。**** 
 
 - 有关详细信息，请参阅 [Azure SQL 连接体系结构 - 连接策略](sql-database-connectivity-architecture.md#connection-policy)。
 
@@ -558,11 +558,11 @@ SQL 身份验证是指使用用户名和密码连接到 Azure SQL 数据库时�
 
 **最佳做法**：
 
-- 对于简单的 Web 应用，通过公共终结点进行连接需要将“允许 Azure 服务”设置为“打开”。  
+- 对于简单的 Web 应用，通过公共终结点进行连接需要将“允许 Azure 服务”设置为“打开”。**** 
 
 - [将应用与 Azure 虚拟网络集成](../app-service/web-sites-integrate-with-vnet.md)，以通过专用数据路径连接到托管实例。 （可选）还可以部署采用[应用服务环境 (ASE)](../app-service/environment/intro.md) 的 Web 应用。 
 
-- 对于连接到 SQL 数据库服务器中的数据库的、采用 ASE 的 Web 应用或者与 VNet 集成的 Web 应用，可以使用 [VNet 服务终结点和 VNet 防火墙规则](sql-database-vnet-service-endpoint-rule-overview.md)来限制从特定 VNet 和子网的访问。 然后，将“允许 Azure 服务”设置为“关闭”。  还可以通过专用数据路径将 ASE 连接到托管实例。  
+- 对于连接到 SQL 数据库服务器中的数据库的、采用 ASE 的 Web 应用或者与 VNet 集成的 Web 应用，可以使用 [VNet 服务终结点和 VNet 防火墙规则](sql-database-vnet-service-endpoint-rule-overview.md)来限制从特定 VNet 和子网的访问。 然后，将“允许 Azure 服务”设置为“关闭”。**** 还可以通过专用数据路径将 ASE 连接到托管实例。  
 
 - 安装 [Web 应用程序防火墙 (WAF)](../application-gateway/waf-overview.md)，以防止 Web 应用遭到常见的恶意利用和出现漏洞。
 
@@ -656,7 +656,7 @@ SQL 身份验证是指使用用户名和密码连接到 Azure SQL 数据库时�
 
 **最佳做法**：
 
-- 对数据库运行首次 VA，在补救不符合安全最佳做法的失败检查后反复运行 VA。 设置可接受配置的基线，直到扫描结果全部正常，或所有检查均已通过。   
+- 对数据库运行首次 VA，在补救不符合安全最佳做法的失败检查后反复运行 VA。 设置可接受配置的基线，直到扫描结果全部正常，或所有检查均已通过。__  
 
 - 将定期的重复扫描配置为每周运行一次，并配置相关人员来接收摘要电子邮件。 
 
@@ -692,7 +692,7 @@ SQL 身份验证是指使用用户名和密码连接到 Azure SQL 数据库时�
 **如何实现**：
 
 - 结合使用 SQL 审核和数据分类。 
-  - 在 [SQL 数据库审核](sql-database-auditing.md)日志中，可以专门跟踪对敏感数据的访问。 还可以查看访问的数据及其敏感性标签等信息。 有关详细信息，请参阅[审核对敏感数据的访问](sql-database-data-discovery-and-classification.md#audit-sensitive-data)。 
+  - 在 [SQL 数据库审核](sql-database-auditing.md)日志中，可以专门跟踪对敏感数据的访问。 还可以查看访问的数据及其敏感性标签等信息。 有关详细信息，请参阅[数据发现和分类](sql-database-data-discovery-and-classification.md)和[审核对敏感数据的访问](sql-database-data-discovery-and-classification.md#audit-sensitive-data)。 
 
 **最佳做法**：
 

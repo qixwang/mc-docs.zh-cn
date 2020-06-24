@@ -11,14 +11,14 @@ author: WenJason
 manager: digimobile
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
-origin.date: 11/20/2019
-ms.date: 05/11/2020
-ms.openlocfilehash: bba82a0c99d45cb12dadc985da21f654afbe3e0c
-ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
+origin.date: 05/06/2020
+ms.date: 06/15/2020
+ms.openlocfilehash: a8e492ff7eb202d76484a0735c5d476ea2d61c45
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82198052"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723390"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 Dynamics 365 (Common Data Service) 或 Dynamics CRM 复制数据
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -79,68 +79,13 @@ Dynamics 链接服务支持以下属性。
 | type | 类型属性必须设置为 **Dynamics**、**DynamicsCrm** 或 **CommonDataServiceForApps**。 | 是 |
 | deploymentType | Dynamics 实例的部署类型。 Dynamics Online 必须为 **"Online"** 。 | 是 |
 | serviceUri | 你的 Dynamics 实例的服务 URL，例如 `https://adfdynamics.crm.dynamics.com`。 | 是 |
-| authenticationType | 要连接到 Dynamics 服务器的身份验证类型。 允许值包括：**AADServicePrincipal** 或 **"Office365"** 。 | 是 |
-| servicePrincipalId | 指定 Azure Active Directory 应用程序的客户端 ID。 | 在使用 `AADServicePrincipal` 身份验证时为“是” |
-| servicePrincipalCredentialType | 指定要用于服务主体身份验证的凭据类型。 允许值包括：**ServicePrincipalKey** 或 **ServicePrincipalCert**。 | 在使用 `AADServicePrincipal` 身份验证时为“是” |
-| servicePrincipalCredential | 指定服务主体凭据。 <br>使用 `ServicePrincipalKey` 作为凭据类型时，`servicePrincipalCredential` 可以是字符串（ADF 会在链接服务部署的基础上对其加密），也可以是对 AKV 中机密的引用。 <br>使用 `ServicePrincipalCert` 作为凭据时，`servicePrincipalCredential` 应该是对 AKV 中证书的引用。 | 在使用 `AADServicePrincipal` 身份验证时为“是” | 
+| authenticationType | 要连接到 Dynamics 服务器的身份验证类型。 允许值包括：“Office365”****。 | 是 |
 | username | 指定用于连接到 Dynamics 的用户名。 | 在使用 `Office365` 身份验证时为“是” |
 | password | 指定为 username 指定的用户帐户的密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 在使用 `Office365` 身份验证时为“是” |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果未指定，则使用默认 Azure Integration Runtime。 | 对于源为“否”，对于接收器为“是”（如果源链接服务没有集成运行时） |
 
 >[!NOTE]
 >Dynamics 连接器使用可选的“organizationName”属性来标识 Dynamics CRM/365 Online 实例。 虽然它保持正常工作，但建议改为指定新的“serviceUri”属性来获得更好的实例发现性能。
-
-**示例：使用 AAD 服务主体 + 密钥身份验证的 Dynamics Online**
-
-```json
-{  
-    "name": "DynamicsLinkedService",  
-    "properties": {  
-        "type": "Dynamics",  
-        "typeProperties": {  
-            "deploymentType": "Online",  
-            "serviceUri": "https://adfdynamics.crm.dynamics.com",  
-            "authenticationType": "AADServicePrincipal",  
-            "servicePrincipalId": "<service principal id>",  
-            "servicePrincipalCredentialType": "ServicePrincipalKey",  
-            "servicePrincipalCredential": "<service principal key>"
-        },  
-        "connectVia": {  
-            "referenceName": "<name of Integration Runtime>",  
-            "type": "IntegrationRuntimeReference"  
-        }  
-    }  
-}  
-```
-**示例：使用 AAD 服务主体 + 证书身份验证的 Dynamics Online**
-
-```json
-{ 
-    "name": "DynamicsLinkedService", 
-    "properties": { 
-        "type": "Dynamics", 
-        "typeProperties": { 
-            "deploymentType": "Online", 
-            "serviceUri": "https://adfdynamics.crm.dynamics.com", 
-            "authenticationType": "AADServicePrincipal", 
-            "servicePrincipalId": "<service principal id>", 
-            "servicePrincipalCredentialType": "ServicePrincipalCert", 
-            "servicePrincipalCredential": { 
-                "type": "AzureKeyVaultSecret", 
-                "store": { 
-                    "referenceName": "<AKV reference>", 
-                    "type": "LinkedServiceReference" 
-                }, 
-                "secretName": "<certificate name in AKV>" 
-            } 
-        }, 
-        "connectVia": { 
-            "referenceName": "<name of Integration Runtime>", 
-            "type": "IntegrationRuntimeReference" 
-        } 
-    } 
-} 
-```
 
 **示例：使用 Office365 身份验证的 Dynamics 联机**
 
@@ -169,7 +114,7 @@ Dynamics 链接服务支持以下属性。
 
 ### <a name="dynamics-365-and-dynamics-crm-on-premises-with-ifd"></a>带有 IFD 的本地 Dynamics 365 和 Dynamics CRM
 
-与 Dynamics 联机进行对比的其他属性是“hostName”和“port”。 
+与 Dynamics 联机进行对比的其他属性是“hostName”和“port”。**
 
 | 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
@@ -178,7 +123,7 @@ Dynamics 链接服务支持以下属性。
 | hostName | 本地 Dynamics 服务器的主机名称。 | 是 |
 | port | 本地 Dynamics 服务器的端口。 | 否，默认端口为 443 |
 | organizationName | Dynamics 实例的组织名称。 | 是 |
-| authenticationType | 要连接到 Dynamics 服务器的身份验证类型。 为带有 IFD 的本地 Dynamics 指定“Ifd”  | 是 |
+| authenticationType | 要连接到 Dynamics 服务器的身份验证类型。 为带有 IFD 的本地 Dynamics 指定“Ifd”**** | 是 |
 | username | 指定用于连接到 Dynamics 的用户名。 | 是 |
 | password | 指定为 username 指定的用户帐户的密码。 可选择将此字段标记为 SecureString，将其安全地存储在 ADF 中，或在 Azure Key Vault 中存储密码，并允许复制活动在执行数据复制时从此处拉取（请参阅[在 Key Vault 中存储凭据](store-credentials-in-key-vault.md)了解详细信息）。 | 是 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果未指定，则使用默认 Azure Integration Runtime。 | 对于源为“No”，对于接收器为“Yes” |
@@ -326,11 +271,11 @@ Dynamics 链接服务支持以下属性。
 | ignoreNullValues | 指示是否忽略 null 值从输入数据（键字段除外）期间写入操作。<br/>允许的值为 **true** 和 **false**。<br>- **True**：执行更新插入/更新操作时，保持目标对象中的数据不变。 插入在执行插入操作时定义的默认值。<br/>- **False**：执行更新插入/更新操作时，将目标对象中的数据更新为 NULL。 执行插入操作时插入 NULL 值。 | 否（默认值为 false） |
 
 >[!NOTE]
->接收器“writeBatchSize”  和 Dynamics 接收器的复制活动“[parallelCopies](copy-activity-performance-features.md#parallel-copy)”  的默认值都是 10。 因此，会将 100 条记录同时提交到 Dynamics。
+>接收器“writeBatchSize”**** 和 Dynamics 接收器的复制活动“[parallelCopies](copy-activity-performance-features.md#parallel-copy)”**** 的默认值都是 10。 因此，会将 100 条记录同时提交到 Dynamics。
 
 对于 Dynamics 365（联机版），存在[每个组织进行 2 次并发批量调用](https://msdn.microsoft.com/library/jj863631.aspx#Run-time%20limitations)的限制。 如果超出此限制，则会在执行第一个请求之前引发“服务器忙”错误。 保持“writeBatchSize”小于或等于 10 可避免这种并发调用的限制。
 
-“writeBatchSize”  和“parallelCopies”  的最佳组合取决于实体的架构，例如列数、行大小、与这些调用挂钩的插件/工作流/工作流活动的数量等。10 writeBatchSize * 10 parallelCopies 的默认设置是基于 Dynamics 服务提供的建议设置，该服务可用于大多数 Dynamics 实体，但可能无法获得最佳性能。 你可以通过在复制活动设置中调整组合来调整性能。
+“writeBatchSize”**** 和“parallelCopies”**** 的最佳组合取决于实体的架构，例如列数、行大小、与这些调用挂钩的插件/工作流/工作流活动的数量等。10 writeBatchSize * 10 parallelCopies 的默认设置是基于 Dynamics 服务提供的建议设置，该服务可用于大多数 Dynamics 实体，但可能无法获得最佳性能。 你可以通过在复制活动设置中调整组合来调整性能。
 
 **示例：**
 

@@ -2,13 +2,13 @@
 title: Azure Functions Java 开发人员参考
 description: 了解如何使用 Java 开发函数。
 ms.topic: conceptual
-ms.date: 01/13/2020
-ms.openlocfilehash: 18194662a97c1e5f8421d31c4e086901a7c7b395
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 06/08/2020
+ms.openlocfilehash: cc8a94d2c63c961904d3d25abd23d3adfd9976fe
+ms.sourcegitcommit: f1a76ee3242698123a3d77f44c860db040b48f70
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292417"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84563742"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Functions Java 开发人员指南
 
@@ -16,7 +16,7 @@ Azure Functions 运行时支持 [Java SE 8 LTS (zulu8.31.0.2-jre8.0.181-win_x64)
 
 与其他语言一样，函数应用可能有一个或多个函数。 Java 函数是一个 `public` 方法，使用注释 `@FunctionName` 进行修饰。 此方法定义 java 函数的条目，必须在特定的包中独一无二。 使用 Java 编写的一个函数应用可能有多个类，这些类具有使用 `@FunctionName` 批注的多个公共方法。
 
-本文假定你已阅读 [Azure Functions 开发人员参考](functions-reference.md)。 此外，应该完成有关如何使用 [Visual Studio Code](functions-create-first-function-vs-code.md) 或 [Maven](functions-create-first-java-maven.md) 创建第一个函数的 Functions 快速入门。
+本文假定你已阅读 [Azure Functions 开发人员参考](functions-reference.md)。 此外，应该完成有关如何使用 [Visual Studio Code](/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-java) 或 [Maven](/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java) 创建第一个函数的 Functions 快速入门。
 
 ## <a name="programming-model"></a>编程模型 
 
@@ -38,28 +38,29 @@ Azure Functions 运行时支持 [Java SE 8 LTS (zulu8.31.0.2-jre8.0.181-win_x64)
 
 ### <a name="project-scaffolding"></a>项目基架
 
-如果更喜欢从终端进行命令行开发，搭建基于 Java 的函数项目的最简单方法是使用 `Apache Maven` 原型。 Maven 目前有两种 Functions 原型：
+如果更喜欢从终端进行命令行开发，搭建基于 Java 的函数项目的最简单方法是使用 `Apache Maven` 原型。 适用于 Azure Functions 的 Java Maven 原型发布在以下 groupId:artifactId 之下：[com.microsoft.azure:azure-functions-archetype](https://search.maven.org/artifact/com.microsoft.azure/azure-functions-archetype/)__ __。 
 
-+ **Java 原型**：使用以下 groupId 和 artifactId [com.microsoft.azure:azure-functions-archetype](https://search.maven.org/artifact/com.microsoft.azure/azure-functions-archetype/) 发布：
+以下命令使用此原型生成新的 Java 函数项目：
 
-    ```
-    mvn archetype:generate \
-        -DarchetypeGroupId=com.microsoft.azure \
-        -DarchetypeArtifactId=azure-functions-archetype 
-    ```
+```
+mvn archetype:generate \
+    -DarchetypeGroupId=com.microsoft.azure \
+    -DarchetypeArtifactId=azure-functions-archetype 
+```
 
-    若要开始使用此原型，请参阅 [Java 快速入门](functions-create-first-java-maven.md)。 
+若要开始使用此原型，请参阅 [Java 快速入门](/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java)。 
 
-+ **Kotlin 原型（预览版）** 使用以下 groupId 和 artifactId [com.microsoft.azure:azure-functions-kotlin-archetype](https://search.maven.org/artifact/com.microsoft.azure/azure-functions-kotlin-archetype/) 发布：
+## <a name="create-kotlin-functions-preview"></a>创建 Kotlin 函数（预览）
 
-    ```
-    mvn archetype:generate \
-        -DarchetypeGroupId=com.microsoft.azure \
-        -DarchetypeArtifactId=azure-functions-kotlin-archetype
-    ```
+还有一个 Maven 原型用来生成 Kotlin 函数。 此原型当前处于预览阶段，发布在以下 groupId:artifactId 之下：[com.microsoft.azure:azure-functions-kotlin-archetype](https://search.maven.org/artifact/com.microsoft.azure/azure-functions-kotlin-archetype/)__ __。 
 
-这些原型的源代码可以在 [Azure Maven 原型 GitHub 存储库](https://github.com/microsoft/azure-maven-archetypes)中找到。
+以下命令使用此原型生成新的 Java 函数项目：
 
+```
+mvn archetype:generate \
+    -DarchetypeGroupId=com.microsoft.azure \
+    -DarchetypeArtifactId=azure-functions-kotlin-archetype
+```
 
 ## <a name="folder-structure"></a>文件夹结构
 
@@ -89,7 +90,7 @@ FunctionsProject
 
 _* Kotlin 项目看起来非常相似，因为它仍然是 Maven_
 
-可以使用共享的 [host json](functions-host-json.md) 文件配置函数应用。 每个函数都有自己的代码文件 (.Java) 和绑定配置文件 (function.json)。
+可以使用共享的 [host json](functions-host-json.md) 文件配置函数应用。 每个函数都有自己的代码文件 (.java) 和绑定配置文件 (function.json)。
 
 可在项目中放置多个函数。 不要将函数放入单独的 jar 中。 目标目录中的 `FunctionApp` 是部署到 Azure 中的函数应用的内容。
 
@@ -138,7 +139,7 @@ public class Function {
 
 ```
 
-## <a name="jdk-runtime-availability-and-support"></a>JDK 运行时的可用性与支持 
+## <a name="jdk-runtime-availability-and-support"></a>JDK 运行时可用性和支持 
 
 若要进行本地 Java 函数应用开发，请从 [Azul Systems](https://www.azul.com/downloads/azure-only/zulu/) 下载并使用[适用于 Azure 的 Azul Zulu Enterprise](https://assets.azul.com/files/Zulu-for-Azure-FAQ.pdf) Java 8 JDK。 将函数应用部署到云时，Azure Functions 使用 Azul Java 8 JDK 运行时。
 
@@ -156,6 +157,9 @@ public class Function {
 
 可以在名为 `JAVA_OPTS` 的应用设置中提供其他参数。 可以在 Azure 门户或 Azure CLI 中将应用设置添加到已部署至 Azure 的函数应用。
 
+> [!IMPORTANT]  
+> 在消耗计划中，还必须添加值为 0 的 WEBSITE_USE_PLACEHOLDER 设置，才能使自定义操作生效。 此设置确实可增加 Java 函数的冷启动时间。
+
 ### <a name="azure-portal"></a>Azure 门户
 
 在 [Azure 门户](https://portal.azure.cn)中，使用[“应用程序设置”选项卡](functions-how-to-use-azure-function-app-settings.md#settings)添加 `JAVA_OPTS` 设置。
@@ -164,16 +168,16 @@ public class Function {
 
 可以使用 [az functionapp config appsettings set](/cli/functionapp/config/appsettings) 命令来设置 `JAVA_OPTS`，如以下示例所示：
 
+#### <a name="consumption-plan"></a>[消耗计划](#tab/consumption)
 ```azurecli
-az functionapp config appsettings set --name <APP_NAME> \
---resource-group <RESOURCE_GROUP> \
---settings "JAVA_OPTS=-Djava.awt.headless=true"
+az functionapp config appsettings set \
+--settings "JAVA_OPTS=-Djava.awt.headless=true" \
+"WEBSITE_USE_PLACEHOLDER=0" \
+--name <APP_NAME> --resource-group <RESOURCE_GROUP>
 ```
-此示例将启用无外设模式。 请将 `<APP_NAME>` 替换为函数应用的名称，将 `<RESOURCE_GROUP>` 替换为资源组的名称。
+---
 
-> [!WARNING]  
-> 在[消耗计划](functions-scale.md#consumption-plan)中，必须添加值为 `0` 的 `WEBSITE_USE_PLACEHOLDER` 设置。  
-此设置确实可增加 Java 函数的冷启动时间。
+此示例将启用无外设模式。 请将 `<APP_NAME>` 替换为函数应用的名称，将 `<RESOURCE_GROUP>` 替换为资源组的名称。 
 
 ## <a name="third-party-libraries"></a>第三方库 
 
@@ -336,7 +340,7 @@ public class Function {
 | `HttpRequestMessage<T>`  |    HTTP 触发器     | 获取方法、标头或查询 |
 | `HttpResponseMessage` | HTTP 输出绑定 | 返回除 200 以外的状态   |
 
-## <a name="metadata"></a>元数据
+## <a name="metadata"></a>Metadata
 
 少量的触发器会连同输入数据一起发送[触发器元数据](/azure-functions/functions-triggers-bindings)。 可以使用注释 `@BindingName` 绑定到触发器元数据。
 
@@ -443,6 +447,9 @@ public class Function {
 }
 
 ```
+
+> [!NOTE]
+> 对于优化的冷启动体验，AppSetting FUNCTIONS_EXTENSION_VERSION 的值应为 ~2 或 ~3。
 
 ## <a name="next-steps"></a>后续步骤
 

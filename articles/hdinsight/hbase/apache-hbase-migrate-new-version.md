@@ -1,6 +1,6 @@
 ---
 title: 将 HBase 群集迁移到新版本 - Azure HDInsight | Microsoft Docs
-description: 如何将 HBase 群集迁移到新版本。
+description: 如何将 Apache HBase 群集迁移到 Azure HDInsight 中的较新版本。
 services: hdinsight
 documentationcenter: ''
 tags: azure-portal
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 origin.date: 01/02/2020
 ms.author: ashishth
-ms.date: 03/02/2020
-ms.openlocfilehash: 158b79f01b93e859880f4b5abc62c04d67008759
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 06/22/2020
+ms.openlocfilehash: 3f5e40669dc3d75c66497a36a8095c59c406b7c6
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77563389"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723125"
 ---
 # <a name="migrate-an-apache-hbase-cluster-to-a-new-version"></a>将 Apache HBase 群集迁移到新版本
 
@@ -187,7 +187,7 @@ ms.locfileid: "77563389"
 
     ![选中“为 HBase 启用维护模式”复选框，然后确认](./media/apache-hbase-migrate-new-version/turn-on-maintenance-mode.png)
 
-7. 在新 HDInsight 群集上登录到 Ambari。 将 `fs.defaultFS` HDFS 设置更改为指向原始群集所用的容器名称。 此设置位于“HDFS”>“配置”>“高级”>“高级 core-site”下。 
+7. 在新 HDInsight 群集上登录到 Ambari。 将 `fs.defaultFS` HDFS 设置更改为指向原始群集所用的容器名称。 此设置位于“HDFS”>“配置”>“高级”>“高级 core-site”下。****
 
     ![在 Ambari 中单击“服务”>“HDFS”>“配置”>“停止”](./media/apache-hbase-migrate-new-version/hdfs-advanced-settings.png)
 
@@ -199,7 +199,7 @@ ms.locfileid: "77563389"
 
     ![在 Ambari 中更改 HBase rootdir 的容器名称](./media/apache-hbase-migrate-new-version/change-container-name-for-hbase-rootdir.png)
 1. 若要将 HDInsight 3.6 升级到 4.0，请按以下步骤操作，否则请跳到步骤 10：
-    1. 选择“服务”   >   “重启所有必需服务”，以便重启 Ambari 中的所有必需服务。
+    1. 选择“服务”**** > ****“重启所有必需服务”，以便重启 Ambari 中的所有必需服务。
     1. 停止 HBase 服务。
     1. 通过 SSH 连接到 Zookeeper 节点，执行 [zkCli](https://github.com/go-zkcli/zkcli) 命令 `rmr /hbase-unsecure`，以便从 Zookeeper 中删除 HBase 根 znode。
     1. 重启 HBase。
@@ -221,4 +221,4 @@ ms.locfileid: "77563389"
 * [将 HDInsight 群集升级到更新版本](../hdinsight-upgrade-cluster.md)
 * [使用 Apache Ambari Web UI 监视和管理 Azure HDInsight](../hdinsight-hadoop-manage-ambari.md)
 * [Apache Hadoop 组件和版本](../hdinsight-component-versioning.md)
-* [使用 Apache Ambari 优化配置](../hdinsight-changing-configs-via-ambari.md#apache-hbase-optimization-with-the-ambari-web-ui)
+* [优化 Apache HBase](../optimize-hbase-ambari.md)

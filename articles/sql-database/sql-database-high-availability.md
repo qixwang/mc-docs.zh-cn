@@ -10,14 +10,14 @@ ms.topic: conceptual
 author: WenJason
 ms.author: v-jay
 ms.reviewer: carlrab, sashan
-origin.date: 10/14/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: 13d2ae1c40729f6ec231fffe2bffebfbe39de5f9
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+origin.date: 04/02/2020
+ms.date: 06/15/2020
+ms.openlocfilehash: dde1d275d7ed6a7725660ebfc7c077bb07f0fa2c
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79291738"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723760"
 ---
 # <a name="high-availability-and-azure-sql-database"></a>高可用性和 Azure SQL 数据库
 
@@ -34,7 +34,7 @@ Azure SQL 数据库在最新稳定版本的 SQL Server 数据库引擎和 Window
 
 ## <a name="basic-standard-and-general-purpose-service-tier-availability"></a>“基本”、“标准”和“常规用途”服务层级可用性
 
-这些服务层级利用标准的可用性体系结构。 下图显示了具有隔离的计算和存储层的四个不同节点。
+“基本”、“标准”和“常规用途”服务层级利用标准可用性体系结构来实现无服务器和预配计算。 下图显示了具有隔离的计算和存储层的四个不同节点。
 
 ![计算和存储隔离](media/sql-database-high-availability/general-purpose-service-tier.png)
 

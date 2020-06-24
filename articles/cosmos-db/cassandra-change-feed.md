@@ -6,22 +6,24 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 origin.date: 11/25/2019
-ms.date: 01/20/2020
+ms.date: 06/15/2020
 ms.author: v-yeche
-ms.openlocfilehash: 4709029a4f77722f3906d355541ee286ee7b3fc9
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 41c993cdb58846a9430ab1e47538e7ad57f5134e
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "76288553"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723597"
 ---
 # <a name="change-feed-in-the-azure-cosmos-db-api-for-cassandra"></a>Azure Cosmos DB API for Cassandra 中的更改源
 
 Azure Cosmos DB API for Cassandra 中的[更改源](change-feed.md)支持通过 Cassandra 查询语言 (CQL) 中的查询谓词提供。 使用这些谓词条件可以查询更改源 API。 应用程序可以使用 CQL 中必需的主键（也称为分区键）来获取对表所做的更改。 然后，可以根据结果采取进一步的措施。 对表中的行所做的更改将按照其修改时间顺序捕获，而排序顺序是按分区键提供保证的。
 
-以下示例演示如何使用 .NET 获取 Cassandra API 密钥空间表中所有行上的更改源。 直接在 CQL 中使用谓词 COSMOS_CHANGEFEED_START_TIME()，以从指定的开始时间（在本例中为当前日期时间）查询更改源中的项。 可在[此处](https://docs.microsoft.com/samples/azure-samples/azure-cosmos-db-cassandra-change-feed/cassandra-change-feed/)下载完整示例。
+以下示例演示如何使用 .NET 获取 Cassandra API 密钥空间表中所有行上的更改源。 直接在 CQL 中使用谓词 COSMOS_CHANGEFEED_START_TIME()，以从指定的开始时间（在本例中为当前日期时间）查询更改源中的项。 可以在[此处](https://docs.microsoft.com/samples/azure-samples/azure-cosmos-db-cassandra-change-feed/cassandra-change-feed/)（对于 C#）和[此处](https://github.com/Azure-Samples/cosmos-changefeed-cassandra-java)（对于 Java）下载完整示例。
 
-在每个迭代中，查询将使用分页状态从上次读取更改的时间点恢复。 可以看到，新的更改不断地流式传输到密钥空间中的表。 我们将会看到对已插入或更新的行所做的更改。 目前不支持使用 Cassandra API 中的更改源来监视删除操作。 
+在每个迭代中，查询将使用分页状态从上次读取更改的时间点恢复。 可以看到，新的更改不断地流式传输到密钥空间中的表。 我们将会看到对已插入或更新的行所做的更改。 目前不支持使用 Cassandra API 中的更改源来监视删除操作。
+
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```C#
 //set initial start time for pulling the change feed
@@ -72,7 +74,46 @@ while (true)
 
 ```
 
+# <a name="java"></a>[Java](#tab/java)
+
+```java
+Session cassandraSession = utils.getSession();
+
+try {
+      DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");  
+       LocalDateTime now = LocalDateTime.now().minusHours(6).minusMinutes(30);  
+       String query="SELECT * FROM uprofile.user where COSMOS_CHANGEFEED_START_TIME()='" 
+            + dtf.format(now)+ "'";
+
+     byte[] token=null; 
+     System.out.println(query); 
+     while(true)
+     {
+         SimpleStatement st=new  SimpleStatement(query);
+         st.setFetchSize(100);
+         if(token!=null)
+             st.setPagingStateUnsafe(token);
+
+         ResultSet result=cassandraSession.execute(st) ;
+         token=result.getExecutionInfo().getPagingState().toBytes();
+
+         for(Row row:result)
+         {
+             System.out.println(row.getString("user_name"));
+         }
+     }
+
+} finally {
+    utils.close();
+    LOGGER.info("Please delete your table after verifying the presence of the data in portal or from CQL");
+}
+
+```
+---
+
 若要按主键获取对单个行所做的更改，可以在查询中添加主键。 以下示例演示如何跟踪指定了“user_id = 1”的行的更改。
+
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```C#
 //Return the latest change for all row in 'user' table where user_id = 1
@@ -81,6 +122,14 @@ $"SELECT * FROM uprofile.user where user_id = 1 AND COSMOS_CHANGEFEED_START_TIME
 
 ```
 
+# <a name="java"></a>[Java](#tab/java)
+
+```java
+    String query="SELECT * FROM uprofile.user where user_id=1 and COSMOS_CHANGEFEED_START_TIME()='" 
+                    + dtf.format(now)+ "'";
+    SimpleStatement st=new  SimpleStatement(query);
+```
+---
 ## <a name="current-limitations"></a>当前限制
 
 使用 Cassandra API 的更改源时，以下限制适用：
@@ -98,5 +147,4 @@ $"SELECT * FROM uprofile.user where user_id = 1 AND COSMOS_CHANGEFEED_START_TIME
 
 * [使用 Azure 资源管理器模板管理 Azure Cosmos DB Cassandra API 资源](manage-cassandra-with-resource-manager.md)
 
-<!-- Update_Description: new article about cassandra change feed -->
-<!--NEW.date: 01/20/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

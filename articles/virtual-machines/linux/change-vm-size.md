@@ -1,28 +1,17 @@
 ---
-title: 使用 Azure CLI 重设 Linux 虚拟机大小 | Azure
+title: 如何使用 Azure CLI 重设 Linux VM 的大小
 description: 如何通过更改 VM 大小来增加或减少 Linux 虚拟机。
-services: virtual-machines-linux
-documentationcenter: na
-author: rockboyfor
-manager: digimobile
-editor: ''
-tags: ''
-ms.assetid: e163f878-b919-45c5-9f5a-75a64f3b14a0
+author: Johnnytechn
 ms.service: virtual-machines-linux
-ms.devlang: azurecli
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-origin.date: 02/10/2017
-ms.date: 08/12/2019
-ms.author: v-yeche
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2f27aead8ad698483bc56b5dbd938682f0a64f45
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 06/05/2020
+ms.author: v-johya
+ms.openlocfilehash: 180f9548f2f5aace0f45a630da2c4fe35c9fe4ef
+ms.sourcegitcommit: 285649db9b21169f3136729c041e4d04d323229a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "68912742"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84683875"
 ---
 # <a name="resize-a-linux-virtual-machine-using-azure-cli"></a>使用 Azure CLI 重设 Linux 虚拟机大小 
 
@@ -62,7 +51,6 @@ ms.locfileid: "68912742"
 若要提高可伸缩性，请运行多个 VM 实例并进行横向扩展。有关详细信息，请参阅[自动缩放虚拟机规模集中的 Linux 计算机][scale-set]。 
 
 <!-- links -->
-
 [boot-diagnostics]: https://azure.microsoft.com/blog/boot-diagnostics-for-virtual-machines-v2/
 [scale-set]: ../../virtual-machine-scale-sets/tutorial-autoscale-cli.md
 

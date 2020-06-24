@@ -1,18 +1,18 @@
 ---
 title: Azure HDInsight 中群集节点的磁盘空间不足
-description: Azure HDInsight 中群集节点的磁盘空间不足
+description: 排查 Azure HDInsight 中的 Apache Hadoop 群集节点磁盘空间问题。
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: v-yiso
-origin.date: 08/05/2019
-ms.date: 09/23/2019
-ms.openlocfilehash: 435bbcfe2fc1b7ab3b016c2cb33d939531fbb8e2
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+origin.date: 04/30/2020
+ms.date: 06/22/2020
+ms.openlocfilehash: d7e8688aa5eca1bcdf69f566b5c9471a0126e779
+ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "70921336"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723766"
 ---
 # <a name="scenario-cluster-node-runs-out-of-disk-space-in-azure-hdinsight"></a>方案：Azure HDInsight 中群集节点的磁盘空间不足
 
@@ -36,10 +36,20 @@ Apache Yarn 应用程序缓存可能占用了所有可用磁盘空间。 Spark �
 
 1. 若要缓解此问题，请终止应用程序，以释放该应用程序使用的磁盘空间。
 
-1. 若要最终解决该问题，请优化应用程序。
+1. 如果此问题在工作器节点上频繁发生，则可以调整群集上的 YARN 本地缓存设置。
+
+    打开 Ambari UI 并导航到 YARN -> 配置 -> 高级。  
+    将以下 2 个属性添加到自定义 yarn-site.xml 部分并进行保存：
+
+    ```
+    yarn.nodemanager.localizer.cache.target-size-mb=2048
+    yarn.nodemanager.localizer.cache.cleanup.interval-ms=300000
+    ```
+
+1. 如果上述方法不能永久解决该问题，请优化应用程序。
 
 ## <a name="next-steps"></a>后续步骤
 
 如果你的问题未在本文中列出，或者无法解决问题，请访问以下渠道之一获取更多支持：
 
-* 如果需要更多帮助，可以从 [Azure 门户](https://portal.azure.cn/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支持请求。 从菜单栏中选择“支持”  ，或打开“帮助 + 支持”  中心。 有关更多详细信息，请参阅[如何创建 Azure 支持请求](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)。 在 Microsoft Azure 订阅中可以访问订阅管理和计费支持；通过 [Azure 支持计划](https://azure.microsoft.com/support/plans/)之一提供技术支持。
+* 如果需要更多帮助，可以从 [Azure 门户](https://portal.azure.cn/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支持请求。 从菜单栏中选择“支持”****，或打开“帮助 + 支持”**** 中心。 有关更多详细信息，请参阅[如何创建 Azure 支持请求](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)。 在 Microsoft Azure 订阅中可以访问订阅管理和计费支持；通过 [Azure 支持计划](https://azure.microsoft.com/support/plans/)之一提供技术支持。

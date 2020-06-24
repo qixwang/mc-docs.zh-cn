@@ -6,19 +6,19 @@ ms.service: virtual-machines-linux
 ms.subservice: security
 ms.topic: article
 ms.author: v-johya
-ms.date: 04/20/2020
+ms.date: 06/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1cc9b4d9f4f07bbfd86a09a2e5230985eea837e0
-ms.sourcegitcommit: ebedf9e489f5218d4dda7468b669a601b3c02ae5
+ms.openlocfilehash: ed50ef6b842c96a7609c8c1563405fb13aea51ee
+ms.sourcegitcommit: 285649db9b21169f3136729c041e4d04d323229a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82159050"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84684047"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Linux VM 上的 Azure 磁盘加密方案
 
 
-适用于 Linux 虚拟机 (VM) 的 Azure 磁盘加密使用 Linux 的 DM-Crypt 功能提供对 OS 磁盘和数据磁盘的完整磁盘加密。 此外，使用 EncryptFormatAll 功能时，它还可以对临时资源磁盘进行加密。
+适用于 Linux 虚拟机 (VM) 的 Azure 磁盘加密使用 Linux 的 DM-Crypt 功能提供对 OS 磁盘和数据磁盘的完整磁盘加密。 此外，它还在使用 EncryptFormatAll 功能时提供临时磁盘加密。
 
 Azure 磁盘加密[与 Azure Key Vault 集成](disk-encryption-key-vault.md)，帮助你控制和管理磁盘加密密钥与机密。 有关该服务的概述，请参阅[适用于 Linux VM 的 Azure 磁盘加密](disk-encryption-overview.md)。
 
@@ -193,9 +193,9 @@ key-encryption-key 参数值的语法是 KEK 的完整 URI，其格式为： htt
 
 可通过[资源管理器模板](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-linux-vm-without-aad)在 Azure 中为现有或正在运行的 Linux VM 启用磁盘加密。
 
-1. 在 Azure 快速入门模板中，单击“部署到 Azure”。 
+1. 在 Azure 快速入门模板中，单击“部署到 Azure”。
 
-2. 选择订阅、资源组、资源组位置、参数、法律条款和协议。 单击“创建”，在现有或正在运行的 VM 上启用加密。 
+2. 选择订阅、资源组、资源组位置、参数、法律条款和协议。 单击“创建”，在现有或正在运行的 VM 上启用加密。
 
 下表列出了现有的或正在运行的 VM 的资源管理器模板参数：
 
@@ -204,8 +204,8 @@ key-encryption-key 参数值的语法是 KEK 的完整 URI，其格式为： htt
 | vmName | 运行加密操作的 VM 的名称。 |
 | KeyVaultName | 加密密钥应上传到的 Key Vault 的名称。 可使用 cmdlet `(Get-AzKeyVault -ResourceGroupName <MyKeyVaultResourceGroupName>). Vaultname` 或 Azure CLI 命令 `az keyvault list --resource-group "MyKeyVaultResourceGroupName"` 获取该名称。|
 | keyVaultResourceGroup | 包含 Key Vault 的资源组的名称。 |
-|  keyEncryptionKeyURL | 用于对加密密钥进行加密的密钥加密密钥的 URL。 如果在 UseExistingKek 下拉列表中选择“nokek”  ，则此参数为可选参数。 如果在 UseExistingKek 下拉列表中选择“kek”  ，则必须输入 _keyEncryptionKeyURL_ 值。 |
-| volumeType | 要对其执行加密操作的卷的类型。 有效值为“OS”  、“Data”  和“All”  。 
+|  keyEncryptionKeyURL | 用于对加密密钥进行加密的密钥加密密钥的 URL。 如果在 UseExistingKek 下拉列表中选择“nokek”，则此参数为可选参数。 如果在 UseExistingKek 下拉列表中选择“kek”，则必须输入 _keyEncryptionKeyURL_ 值。 |
+| volumeType | 要对其执行加密操作的卷的类型。 有效值为“OS”、“Data”和“All”。 
 | forceUpdateTag | 每次操作需要强制运行时，传入一个像 GUID 这样的唯一值。 |
 | location | 所有资源的位置。 |
 
@@ -213,9 +213,9 @@ key-encryption-key 参数值的语法是 KEK 的完整 URI，其格式为： htt
 
 ## <a name="use-encryptformatall-feature-for-data-disks-on-linux-vms"></a>对 Linux VM 上的数据磁盘使用 EncryptFormatAll 功能
 
-**EncryptFormatAll** 参数可以减少加密 Linux 数据磁盘所需的时间。 满足特定条件的分区将格式化（使用其当前文件系统），然后重新装载回到执行命令之前所在的位置。 如果想要排除某个符合条件的数据磁盘，可以在运行命令之前卸载该磁盘。
+**EncryptFormatAll** 参数可以减少加密 Linux 数据磁盘所需的时间。 满足特定条件的分区与当前文件系统一起格式化，然后重新装载回在命令执行前的位置。 如果想要排除某个符合条件的数据磁盘，可以在运行命令之前卸载该磁盘。
 
- 运行此命令之后，以前装载的所有驱动器将格式化，然后，加密层将在现为空白的驱动器的顶层启动。 选择此选项后，附加到 VM 的临时资源磁盘也会加密。 如果重置临时驱动器，该驱动器将重新格式化，并且 Azure 磁盘加密解决方案下次有机会为 VM 重新加密该驱动器。 加密资源磁盘后，[Azure Linux 代理](/virtual-machines/extensions/agent-linux)无法管理资源磁盘和启用交换文件，但你可以手动配置交换文件。
+ 运行此命令之后，以前装载的所有驱动器将格式化，然后，加密层将在现为空白的驱动器的顶层启动。 如果你选择这种方式，附加到 VM 的临时磁盘也会得到加密。 如果重置临时磁盘，该磁盘将重新格式化，并且 Azure 磁盘加密解决方案下次有机会为 VM 重新加密该磁盘。 加密资源磁盘后，[Azure Linux 代理](/virtual-machines/extensions/agent-linux)无法管理资源磁盘和启用交换文件，但你可以手动配置交换文件。
 
 >[!WARNING]
 > 如果 VM 的数据卷上存在所需的数据，则不应使用 EncryptFormatAll。 卸载磁盘可将其从加密项中排除。 首先应该在测试 VM 上试用 EncryptFormatAll，以了解功能参数及其影响，然后再尝试在生产 VM 上使用该参数。 EncryptFormatAll 选项会格式化数据磁盘，因此磁盘上的所有数据都会丢失。 在继续之前，请验证是否已正确卸载想要排除的磁盘。 </br></br>
@@ -412,8 +412,8 @@ Azure 磁盘加密不支持以下 Linux 方案、功能和技术：
 - 加密共享/分布式文件系统，包括但不限于：DFS、GFS、DRDB 和 CephFS。
 - 将加密的 VM 移到其他订阅。
 - 内核故障转储 (kdump)。
-- Oracle ACFS（ASM 群集文件系统）
-- Gen2 VM（请参阅：[Azure 对第 2 代 VM 的支持](generation-2.md#generation-1-vs-generation-2-capabilities)）
+- Oracle ACFS（ASM 群集文件系统）。
+- Gen2 VM（请参阅：[Azure 对第 2 代 VM 的支持](generation-2.md#generation-1-vs-generation-2-capabilities)）。
 <!--Not Available on Lsv2-series VM in china -->
 
 ## <a name="next-steps"></a>后续步骤
