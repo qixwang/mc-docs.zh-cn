@@ -7,14 +7,14 @@ ms.reviewer: sngun
 ms.subservice: cosmosdb-cassandra
 ms.topic: tutorial
 origin.date: 09/24/2018
-ms.date: 06/15/2020
+ms.date: 06/22/2020
 ms.author: v-yeche
-ms.openlocfilehash: 9edf6582b8783ab8988f1163c03842479d304f78
-ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
+ms.openlocfilehash: 71bbffde36ce8aaf0c2953c7e508b518978076e4
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84723755"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098734"
 ---
 # <a name="tutorial-query-data-from-a-cassandra-api-account-in-azure-cosmos-db"></a>教程：从 Azure Cosmos DB 中的 Cassandra API 帐户查询数据
 
@@ -103,11 +103,11 @@ ms.locfileid: "84723755"
     java -cp target/cosmosdb-cassandra-examples.jar com.azure.cosmosdb.cassandra.examples.UserProfile
     ```
 
-2. 现在，在 Azure 门户中，打开“数据资源管理器”**** 并确认用户表已删除。
+2. 现在，在 Azure 门户中，打开“数据资源管理器”并确认用户表已删除。
 
 ## <a name="clean-up-resources"></a>清理资源
 
-不再需要资源组、Azure Cosmos 帐户和所有相关的资源时，可将其删除。 为此，请选择虚拟机的资源组，选择“删除”****，然后确认要删除的资源组的名称。
+不再需要资源组、Azure Cosmos 帐户和所有相关的资源时，可将其删除。 为此，请选择虚拟机的资源组，选择“删除”，然后确认要删除的资源组的名称。
 
 ## <a name="next-steps"></a>后续步骤
 
