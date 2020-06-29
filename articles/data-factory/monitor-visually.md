@@ -1,6 +1,6 @@
 ---
 title: 以可视化方式监视 Azure 数据工厂
-description: 了解如何以可视化方式监视 Azure 数据工厂
+description: 了解如何直观监视 Azure 数据工厂
 services: data-factory
 documentationcenter: ''
 author: WenJason
@@ -9,22 +9,22 @@ ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-origin.date: 11/19/2018
-ms.date: 05/11/2020
-ms.openlocfilehash: 875869c9ea5debd564a1624746a1daa323bf5c40
-ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
+origin.date: 05/15/2020
+ms.date: 06/29/2020
+ms.openlocfilehash: 93c1af08cec3dbd33593f1534a551faea7d27219
+ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82198053"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85323317"
 ---
 # <a name="visually-monitor-azure-data-factory"></a>以可视化方式监视 Azure 数据工厂
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-在 Azure 数据工厂中创建并发布管道以后，即可将其与触发器关联，或者手动启动临时运行。 可以在 Azure 数据工厂用户体验中以本机方式监视所有管道运行。 若要打开监视体验，请在 [Azure 门户](https://portal.azure.cn/)的数据工厂边栏选项卡中选择“监视和管理”磁贴。  如果已在 ADF UX 中，请单击左侧边栏上的“监视”图标。 
+在 Azure 数据工厂中创建并发布管道以后，即可将其与触发器关联，或者手动启动临时运行。 可以在 Azure 数据工厂用户体验中以本机方式监视所有管道运行。 若要打开监视体验，请在 [Azure 门户](https://portal.azure.cn/)的数据工厂边栏选项卡中选择“监视和管理”磁贴。 如果已在 ADF UX 中，请单击左侧边栏上的“监视”图标。
 
-所有数据工厂运行都以浏览器的本地时区显示。 如果更改时区，所有日期/时间字段都将调整为所选的时区。
+所有数据工厂运行都以浏览器的本地时区显示。 如果你更改时区，所有日期/时间字段都会与你选择的时区保持一致。
 
 ## <a name="monitor-pipeline-runs"></a>监视管道运行
 
@@ -45,18 +45,18 @@ ms.locfileid: "82198053"
 
 ![用于监视管道运行的列表视图](media/monitor-visually/pipeline-runs.png)
 
-需要手动选择“刷新”按钮来刷新管道和活动运行的列表。  当前不支持自动刷新。
+需要手动选择“刷新”按钮来刷新管道和活动运行的列表。 当前不支持自动刷新。
 
 ![“刷新”按钮](media/monitor-visually/refresh.png)
 
 ## <a name="monitor-activity-runs"></a>监视活动运行
 
-若要查看每个管道运行的活动运行，请在“操作”列下选择“查看活动运行”图标。   列表视图显示对应于每个管道运行的活动运行。
+若要查看每个管道运行的活动运行，请在“操作”列下选择“查看活动运行”图标。  此列表视图显示了与每个管道运行对应的活动运行。
 
 | **列名** | **说明** |
 | --- | --- |
 | 活动名称 | 管道中的活动的名称 |
-| 活动类型 | 活动类型，例如“复制”、“HDInsightSpark”或“HDInsightHive”。    |
+| 活动类型 | 活动类型，例如“复制”、“HDInsightSpark”或“HDInsightHive”。   |
 | 操作 | 图标，用于查看 JSON 输入信息、JSON 输出信息或详细的特定于活动的监视体验 | 
 | 运行开始时间 | 活动运行的开始日期和时间（MM/DD/YYYY，HH:MM:SS AM/PM） |
 | 持续时间 | 运行持续时间 (HH:MM:SS) |
@@ -70,7 +70,7 @@ ms.locfileid: "82198053"
 
 ### <a name="promote-user-properties-to-monitor"></a>提升要监视的用户属性
 
-将任何管道活动属性提升为用户属性，使其成为受监视的实体。 例如，可以将管道中复制活动的**源**和**目标**属性提升为用户属性。 选择“自动生成”  ，为复制活动生成“源”  和“目标”  用户属性。
+将任何管道活动属性提升为用户属性，使其成为受监视的实体。 例如，可以将管道中复制活动的“源”和“目标”属性提升为用户属性。 选择“自动生成”，为复制活动生成“源”和“目标”用户属性。
 
 ![创建用户属性](media/monitor-visually/monitor-user-properties-image1.png)
 
@@ -94,7 +94,7 @@ ms.locfileid: "82198053"
 | **列名** | **说明** |
 | --- | --- |
 | 管道名称 | 按管道名称筛选。 |
-| 运行开始时间 |  确定所显示的管道运行的时间范围。 选项包括针对“过去 24 小时”、“过去一周”、“过去 30 天”的快速筛选器，还可以选择一个自定义日期和时间。    |
+| 运行开始时间 |  确定所显示的管道运行的时间范围。 选项包括针对“过去 24 小时”、“过去一周”、“过去 30 天”的快速筛选器，还可以选择一个自定义日期和时间。   |
 | 运行状态 | 按状态筛选运行：**成功**、**失败**、**已排队**、**已取消**或**正在进行**。 |
 | 批注 | 按应用到每个管道的标记进行筛选 |
 | 运行次数 | 筛选是否要查看重新运行的管道 |
@@ -107,11 +107,11 @@ ms.locfileid: "82198053"
 ![列选项](media/monitor-visually/columns.png)
 
 ### <a name="adjust-column-widths"></a>调整列宽
-通过将鼠标指针悬停在列标题上来增大或减小列表视图中的列宽。
+通过将鼠标悬停在列标题之上，可以增加和减少列表视图中的列宽。
 
 ## <a name="rerun-activities-inside-a-pipeline"></a>重新运行管道中的活动
 
-可以重新运行管道中的活动。 选择“查看活动运行”  并选择要从管道中的活动中的哪个点重新运行管道。
+可以重新运行管道中的活动。 依次选择“查看活动运行”和管道中的活动，以从这一点开始重新运行管道。
 
 ![查看活动运行](media/monitor-visually/rerun-activities-image1.png)
 
@@ -119,7 +119,7 @@ ms.locfileid: "82198053"
 
 ### <a name="rerun-from-failed-activity"></a>从失败的活动重新运行
 
-如果某个活动失败、超时或被取消，则可以通过选择“从失败的活动重新运行”  来从该失败的活动重新运行管道。
+如果某个活动失败、超时或被取消，则可以通过选择“从失败的活动重新运行”来从该失败的活动重新运行管道。
 
 ![重新运行失败的活动](media/monitor-visually/rerun-failed-activity.png)
 
@@ -133,9 +133,24 @@ ms.locfileid: "82198053"
 
 ![查看管道运行的历史记录](media/monitor-visually/rerun-history-image2.png)
 
-## <a name="gantt-views"></a>甘特图
+## <a name="monitor-consumption"></a>监视消耗
 
-使用甘特图可以快速可视化管道和活动运行。
+通过单击管道运行旁边的消耗图标，可以查看运行消耗的资源。 
+
+![监视消耗](media/monitor-visually/monitor-consumption-1.png)
+
+单击此图标会打开相应管道运行所使用的资源的消耗报告。 
+
+![监视消耗](media/monitor-visually/monitor-consumption-2.png)
+
+可以将这些值插入到 [Azure 定价计算器](https://azure.cn/pricing/details/data-factory/)中，以估计管道运行的成本。 若要详细了解 Azure 数据工厂定价，请参阅[了解定价](pricing-concepts.md)。
+
+> [!NOTE]
+> 定价计算器返回的这些值是估计值。 它并不反映 Azure 数据工厂将向你收取的确切金额 
+
+## <a name="gantt-views"></a>甘特视图
+
+使用甘特视图可快速可视化管道和活动运行。
 
 ![甘特图示例](media/monitor-visually/gantt1.png)
 
@@ -148,49 +163,45 @@ ms.locfileid: "82198053"
 ![甘特图持续时间](media/monitor-visually/gantt3.png)
 
 ## <a name="guided-tours"></a>引导式演示
-选择左下角的“信息”图标。  然后选择“引导式演示”来获取有关如何监视管道和活动运行的分步说明。 
+选择左下角的“信息”图标。 然后选择“引导式演示”来获取有关如何监视管道和活动运行的分步说明。
 
 ![引导式演示](media/monitor-visually/guided-tours.png)
 
 ## <a name="alerts"></a>警报
 
-可在数据工厂中发出有关受支持指标的警报。 在数据工厂监视页上选择“监视” > “警报和指标”即可开始。  
+可在数据工厂中发出有关受支持指标的警报。 在“数据工厂监视”页上，依次选择“监视” > “警报和指标”，以开始操作。
 
-![数据工厂监视页](media/monitor-visually/alerts01.png)
-
-有关此功能的 7 分钟介绍和演示，请观看以下视频：
-
-> [!VIDEO https://channel9.msdn.com/shows/azure-friday/Monitor-your-Azure-Data-Factory-pipelines-proactively-with-alerts/player]
+![数据工厂监视页](media/monitor-visually/start-page.png)
 
 ### <a name="create-alerts"></a>创建警报
 
-1.  选择“新建警报规则”，创建新的警报  。
+1.  选择“新建警报规则”，以新建警报。
 
-    ![“新建警报规则”按钮](media/monitor-visually/alerts02.png)
+    ![“新建警报规则”按钮](media/monitor-visually/new-alerts.png)
 
 1.  指定规则名称，然后选择警报严重性。
 
-    ![规则名称和严重性的框](media/monitor-visually/alerts03.png)
+    ![规则名称和严重性的框](media/monitor-visually/name-and-severity.png)
 
 1.  选择警报条件。
 
-    ![目标条件的框](media/monitor-visually/alerts04.png)
+    ![目标条件的框](media/monitor-visually/add-criteria-1.png)
 
-    ![条件列表](media/monitor-visually/alerts05.png)
+    ![条件列表](media/monitor-visually/add-criteria-2.png)
 
 1.  配置警报逻辑。 可以针对所选的指标为所有管道和对应的活动创建警报。 还可以选择特定的活动类型、活动名称、管道名称或故障类型。
 
-    ![用于配置警报逻辑的选项](media/monitor-visually/alerts06.png)
+    ![用于配置警报逻辑的选项](media/monitor-visually/alert-logic.png)
 
 1.  为警报配置电子邮件、短信、推送和语音通知。 为警报通知创建一个操作组，或选择现有的操作组。
 
-    ![用于配置通知的选项](media/monitor-visually/alerts07.png)
+    ![用于配置通知的选项](media/monitor-visually/configure-notification-1.png)
 
-    ![用于添加通知的选项](media/monitor-visually/alerts08.png)
+    ![用于添加通知的选项](media/monitor-visually/configure-notification-2.png)
 
 1.  创建警报规则。
 
-    ![用于创建警报规则的选项](media/monitor-visually/alerts09.png)
+    ![用于创建警报规则的选项](media/monitor-visually/create-alert-rule.png)
 
 ## <a name="next-steps"></a>后续步骤
 

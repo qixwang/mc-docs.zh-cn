@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.devlang: python
 ms.topic: quickstart
 origin.date: 01/22/2018
-ms.date: 05/11/2020
-ms.custom: seo-python-october2019
-ms.openlocfilehash: 5ed30df4ba53380efde4a52f8f5b534271108eed
-ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
+ms.date: 06/29/2020
+ms.custom: seo-python-october2019, tracking-python
+ms.openlocfilehash: 77c5b064b1ffdcc2ff8ebd32b3e09f54e2fbbc53
+ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82198087"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85323301"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-python"></a>快速入门：使用 Python 创建数据工厂和管道
 
@@ -41,7 +41,7 @@ Azure 数据工厂是基于云的数据集成服务，用于创建数据驱动�
 
 * [Azure 存储资源管理器](https://storageexplorer.com/)（可选）。
 
-* [Azure Active Directory 中的应用程序](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)。 记下要在后续步骤中使用的以下值：**应用程序 ID**、**身份验证密钥**和**租户 ID**。 按照同一文章中的以下说明将应用程序分配到“参与者”角色。 
+* [Azure Active Directory 中的应用程序](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)。 记下要在后续步骤中使用的以下值：**应用程序 ID**、**身份验证密钥**和**租户 ID**。 按照同一文章中的以下说明将应用程序分配到“参与者”角色。
 
 ## <a name="create-and-upload-an-input-file"></a>创建并上传输入文件
 
@@ -113,7 +113,7 @@ Azure 数据工厂是基于云的数据集成服务，用于创建数据驱动�
         else:
             print("\tErrors: {}".format(activity_run.error['message']))
     ```
-3. 向 **Main** 方法中添加用于创建 DataFactoryManagementClient 类的实例的以下代码。 将使用此对象来创建数据工厂、链接服务、数据集和管道。 还将使用此对象来监视管道运行详细信息。 将 **subscription_id** 变量设置为 Azure 订阅的 ID。 若要查看目前提供数据工厂的 Azure 区域的列表，请在以下页面上选择感兴趣的区域，然后展开“分析”  以找到“数据工厂”  ：[可用产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/?regions=china-non-regional,china-east,china-east-2,china-north,china-north-2&products=all)。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
+3. 向 **Main** 方法中添加用于创建 DataFactoryManagementClient 类的实例的以下代码。 将使用此对象来创建数据工厂、链接服务、数据集和管道。 还将使用此对象来监视管道运行详细信息。 将 **subscription_id** 变量设置为 Azure 订阅的 ID。 若要查看目前提供数据工厂的 Azure 区域的列表，请在以下页面上选择感兴趣的区域，然后展开“分析”以找到“数据工厂”：[可用产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/?regions=china-non-regional,china-east,china-east-2,china-north,china-north-2&products=all)。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
 
     ```python
     def main():

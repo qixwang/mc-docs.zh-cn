@@ -4,16 +4,16 @@ description: 了解如何将 Kubernetes 群集部署到 Azure Stack Hub 上的�
 author: WenJason
 ms.topic: article
 origin.date: 2/28/2020
-ms.date: 05/18/2020
+ms.date: 06/22/2020
 ms.author: v-jay
 ms.reviewer: waltero
 ms.lastreviewed: 2/28/2020
-ms.openlocfilehash: 99fe4f20df4d4967533d0fb580e5a283680a04b9
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.openlocfilehash: c870eb9d1f06312569ea561bbcc1926325f057bd
+ms.sourcegitcommit: d86e169edf5affd28a1c1a4476d72b01a7fb421d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83422577"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85096432"
 ---
 # <a name="create-an-ssh-key-for-linux-on-azure-stack-hub"></a>在 Azure Stack Hub 上为 Linux 创建 SSH 密钥
 
@@ -95,4 +95,5 @@ ms.locfileid: "83422577"
 
 ## <a name="next-steps"></a>后续步骤
 
+- [使用 Azure Stack Hub 上的 AKS 引擎部署 Kubernetes 群集](azure-stack-kubernetes-aks-engine-deploy-cluster.md)
 - [快速入门：使用 Azure Stack Hub 门户创建 Linux 服务器 VM](azure-stack-quick-linux-portal.md)

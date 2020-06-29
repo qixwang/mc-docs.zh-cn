@@ -7,12 +7,12 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: quickstart
 ms.date: 03/10/2020
-ms.openlocfilehash: 7c25d66b853996a2ce6568cd83ad7606854db5b3
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 32127df01c7f52b438996dac3eef325950f0a433
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80343220"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097468"
 ---
 # <a name="quickstart-set-up-the-data-science-virtual-machine-for-linux-ubuntu"></a>快速入门：设置适用于 Linux (Ubuntu) 的 Data Science Virtual Machine
 
@@ -21,7 +21,7 @@ ms.locfileid: "80343220"
 ## <a name="prerequisites"></a>先决条件
 
 要创建 Ubuntu 18.04 Data Science Virtual Machine，必须具备 Azure 订阅。 [免费试用 Azure](https://azure.com/free)。
-请注意，Azure 免费帐户不支持启用 GPU 的虚拟机 SKU。
+请注意，Azure 试用帐户不支持已启用 GPU 的虚拟机 SKU。
 
 ## <a name="create-your-data-science-virtual-machine-for-linux"></a>创建适用于 Linux 的数据科学虚拟机
 
@@ -30,7 +30,7 @@ ms.locfileid: "80343220"
 1. 转到 [Azure 门户](https://portal.azure.cn) 如果你尚未登录到 Azure 帐户，系统可能会提示你登录。
 1. 通过键入“data Science virtual machine”并选择“Data Science Virtual Machine - Ubuntu 18.04”来查找虚拟机列表。
 
-1. 在随后的窗口中，选择“创建”  。
+1. 在随后的窗口中，选择“创建”。
 
 1. 你应该被重定向到“创建虚拟机”边栏选项卡。
    
@@ -47,7 +47,7 @@ ms.locfileid: "80343220"
        * **身份验证类型**：为了更快地设置，请选择“密码”。 
          
          > [!NOTE]
-         > 如果打算使用 JupyterHub，请确保选择“密码”，因为 JupyterHub 未  配置为使用 SSH 公钥。
+         > 如果打算使用 JupyterHub，请确保选择“密码”，因为 JupyterHub 未配置为使用 SSH 公钥。
 
        * **用户名**：输入管理员用户名。 这是你将用于登录到虚拟机的用户名，无需与 Azure 用户名相同。 *不要*使用大写字母。
          
@@ -56,10 +56,10 @@ ms.locfileid: "80343220"
 
        * **密码**：输入将用于登录到虚拟机的密码。    
     
-   1. 选择“查看 + 创建”  。
+   1. 选择“查看 + 创建”。
    1. **查看 + 创建**
       * 验证输入的所有信息是否正确。 
-      * 选择“创建”  。
+      * 选择“创建” 。
     
     预配大约需要 5 分钟。 状态将显示在 Azure 门户中。
 
@@ -96,15 +96,15 @@ Linux VM 已通过 X2Go 服务器进行预配并且可接受客户端连接。 �
      * **主机**：输入之前记下的 VM 的 IP 地址。
      * **登录名**：输入 Linux VM 上的用户名。
      * **SSH 端口**：保留默认值 22。
-     * **会话类型**：将值更改为“XFCE”  。 Linux VM 目前仅支持 XFCE 桌面。
+     * **会话类型**：将值更改为“XFCE”。 Linux VM 目前仅支持 XFCE 桌面。
    * **媒体选项卡**：如果无需使用声音支持和客户端打印功能，可将其关闭。
    * **共享文件夹**：如果希望将目录从客户端计算机装入 Linux VM，则在此选项卡上添加要与 VM 共享的客户端计算机目录。
 
    ![X2go 配置](./media/dsvm-ubuntu-intro/x2go-ubuntu.png)
-1. 选择“确定”  。
+1. 选择“确定” 。
 1. 单击 X2Go 窗口右窗格中的框以调出 VM 的登录屏幕。
 1. 输入 VM 的密码。
-1. 选择“确定”  。
+1. 选择“确定” 。
 1. 可能必须授予 X2Go 绕过防火墙的权限才能完成连接。
 1. 现在应会看到 Ubuntu DSVM 的图形界面。 
 

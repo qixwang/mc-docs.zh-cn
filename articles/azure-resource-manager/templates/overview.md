@@ -3,14 +3,14 @@ title: 模板概述
 description: 介绍使用 Azure 资源管理器模板部署资源的好处。
 ms.topic: conceptual
 origin.date: 04/06/2020
-ms.date: 04/30/2020
+ms.date: 06/22/2020
 ms.author: v-yeche
-ms.openlocfilehash: 4b4b6035d78ca5715d79a7121b54724e92e220e8
-ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
+ms.openlocfilehash: b336eb6e44a5095e9cf76896a6c1c580456adede
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82596092"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098683"
 ---
 <!--Verify successfully-->
 # <a name="what-are-arm-templates"></a>什么是 ARM 模板？
@@ -38,9 +38,12 @@ ms.locfileid: "82596092"
 
 * **创建任何 Azure 资源**：可以立即在模板中使用新的 Azure 服务和功能。 一旦资源提供程序引入了新资源，你就可以通过模板立即部署这些资源。 在使用新服务之前，无需等待工具或模块完成更新。
 
-    <!--Not Available on  [deployment scripts](deployment-script-template.md)-->
+* **扩展性**：使用[部署脚本](deployment-script-template.md)时，可以将 PowerShell 或 Bash 脚本添加到模板。 使用部署脚本可扩展在部署过程中设置资源的功能。 脚本可以包含在模板中，也可存储在外部源中并在模板中引用。 使用部署脚本可以在单个 ARM 模板中完成端到端环境设置。
+
 * **测试**：可以使用 ARM 模板工具包 (arm-ttk) 对模板进行测试，确保模板符合建议的准则。 此测试工具包是一个 PowerShell 脚本，可从 [GitHub](https://github.com/Azure/arm-ttk) 下载。 使用此工具包，可以更轻松地使用模板语言开发专门技术。
-    <!--Not Available on [what-if operation](template-deploy-what-if.md)-->
+
+* **预览更改**：可以使用[模拟操作](template-deploy-what-if.md)在部署模板前预览更改。 通过模拟，你可看到将创建、更新或删除哪些资源，以及将更改的任何资源属性。 模拟操作会检查环境的当前状态，因此无需管理状态。
+
 * **内置验证**：只有在通过验证后才会部署模板。 资源管理器在开始部署之前会检查模板，以确保部署成功。 部署不太可能会在半完成状态时停止。
 
 * **受跟踪的部署**：在 Azure 门户中，可以查看部署历史记录并获取有关模板部署的信息。 可以查看已部署的模板、已传入的参数值，以及任何输出值。 其他基础结构即代码服务不是通过门户跟踪的。
@@ -49,9 +52,9 @@ ms.locfileid: "82596092"
 
 * **策略即代码**：[Azure Policy](../../governance/policy/overview.md) 是一个用于自动化监管的策略即代码框架。 如果使用 Azure 策略，在通过模板进行部署时，将会针对不合规的资源执行策略修正。
 
-    <!--MOONCAKE: Not Available on * **Deployment Blueprints**: You can take advantage of [Blueprints](../governance/blueprints/overview.md)-->
-    
-* **CI/CD 集成**：可以将模板集成到持续集成和持续部署 (CI/CD) 工具中，这些工具可以自动执行发布管道，以实现快速可靠的应用程序和基础结构更新。 通过 Azure DevOps 和资源管理器模板任务，可以使用 Azure Pipelines 持续生成和部署 ARM 模板项目。 若要了解详细信息，请参阅[使用管道的 VS 项目](add-template-to-azure-pipelines.md)和[使用 Azure Pipelines 进行持续集成](template-tutorial-use-azure-pipelines.md)。
+    <!--NOT AVAILABLE ON * **Deployment Blueprints**: You can take advantage of [Blueprints](../../governance/blueprints/overview.md)-->
+
+* **CI/CD 集成**：可以将模板集成到持续集成和持续部署 (CI/CD) 工具中，这些工具可以自动执行发布管道，以实现快速可靠的应用程序和基础结构更新。 通过 Azure DevOps 和资源管理器模板任务，可以使用 Azure Pipelines 持续生成和部署 ARM 模板项目。 若要了解详细信息，请参阅[使用管道的 VS 项目](add-template-to-azure-pipelines.md)和[教程：使用 Azure Pipelines 持续集成 Azure 资源管理器模板](./deployment-tutorial-pipeline.md)。
 
 * **可导出的代码**：可以通过导出资源组的当前状态或查看特定部署所用的模板，来获取现有资源组的模板。 查看[导出的模板](export-template-portal.md)是了解模板语法的有用方法。
 
@@ -127,7 +130,7 @@ REQUEST BODY
 
 ## <a name="next-steps"></a>后续步骤
 
-* 如果需要通过分步教程来了解创建模板的过程，请参阅[教程：创建和部署第一个 ARM 模板](template-tutorial-create-first-template.md)。
+* 有关引导你完成模板创建过程的分步教程，请参阅[教程：创建和部署第一个 ARM 模板](template-tutorial-create-first-template.md)。
 * 有关模板文件中的属性的信息，请参阅[了解 ARM 模板的结构和语法](template-syntax.md)。
 * 若要了解如何导出模板，请参阅[快速入门：使用 Azure 门户创建和部署 ARM 模板](quickstart-create-templates-use-the-portal.md)。
 

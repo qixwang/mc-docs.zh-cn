@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-origin.date: 3/17/2019
-ms.date: 05/11/2020
-ms.openlocfilehash: 93cf5944b83c5031e66a523edad6bcccc5b91e10
-ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
+origin.date: 6/10/2019
+ms.date: 06/29/2020
+ms.openlocfilehash: 275516086d8462a3748721d0f1fbceb5a051e2ee
+ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82198102"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85319895"
 ---
 # <a name="incrementally-copy-new-files-based-on-time-partitioned-file-name-by-using-the-copy-data-tool"></a>使用复制数据工具仅根据时间分区文件名以增量方式复制新文件
 
@@ -156,7 +156,7 @@ ms.locfileid: "82198102"
 
 10. 请注意，界面中已自动选择左侧的“监视”选项卡。   在自动触发管道后，需等待管道运行（约等待一小时）。 在它运行时，单击管道名称链接“DeltaCopyFromBlobPipeline”  ，以查看活动运行详细信息或重新运行管道。 选择“刷新”可刷新列表。 
 
-    ![监视管道运行](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs1.png)
+    ![监视管道运行](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs-1.png)
 11. 该管道只包含一个活动（复制活动），因此只显示了一个条目。 调整“源”  和“目标”  列的列宽（如果需要）以显示更多详细信息。可以看到源文件 (file1.txt) 已从“source/2020/03/17/03/”  复制到“destination/2020/03/17/03/”  ，文件名保持未变。 
 
     ![监视管道运行](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs2.png)

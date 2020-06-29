@@ -5,16 +5,16 @@ author: cynthn
 ms.service: virtual-machine-scale-sets
 ms.subservice: imaging
 ms.topic: tutorial
-ms.date: 05/21/2020
+ms.date: 06/22/2020
 ms.author: v-junlch
 ms.reviewer: akjosh
 ms.custom: akjosh
-ms.openlocfilehash: 867bd6e54ba430b832adcb71f31163f3113f907f
-ms.sourcegitcommit: 87e789550ea49ff77c7f19bc68fad228009fcf44
+ms.openlocfilehash: 686db2eea80622409e8e392579ecd5d6d0396a39
+ms.sourcegitcommit: 43db4001be01262959400663abf8219e27e5cb8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83748147"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85241554"
 ---
 # <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-azure-powershell"></a>教程：通过 Azure PowerShell 创建和使用虚拟机规模集的自定义映像
 
@@ -113,7 +113,7 @@ New-AzGalleryImageVersion `
    -ResourceGroupName $resourceGroup.ResourceGroupName `
    -Location $resourceGroup.Location `
    -TargetRegion $targetRegions  `
-   -Source $vm.Id.ToString() `
+   -Source $sourceVM.Id.ToString() `
    -PublishingProfileEndOfLifeDate '2020-12-01'
 ```
 

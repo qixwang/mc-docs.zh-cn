@@ -12,19 +12,19 @@ origin.date: 03/30/2019
 ms.date: 04/20/2020
 ms.author: v-tawe
 zone_pivot_groups: programming-languages-set-twelve
-ms.openlocfilehash: c1214570091f8272a69b4b76cbb903c9e8bcde93
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.openlocfilehash: 79c78545f53f4c9972792e623381d65d9e46aadd
+ms.sourcegitcommit: 304d3ef3c9e65c3e85977b3afb9985fbc0f908d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82127016"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85095987"
 ---
 # <a name="use-codec-compressed-audio-input-with-the-speech-sdk"></a>在语音 SDK 中使用编解码器压缩的音频输入
 
-语音服务 SDK 压缩音频输入流  API 提供了一种使用 `PullStream` 或 `PushStream` 将压缩音频流式传输到语音服务的方法。
+语音服务 SDK 压缩音频输入流 API 提供了一种使用 `PullStream` 或 `PushStream` 将压缩音频流式传输到语音服务的方法。
 
 目前，Windows（不支持 UWP 应用程序）和 Linux（Ubuntu 16.04、Ubuntu 18.04、Debian 9、RHEL 8、CentOS 8）上的 C#、C++ 和 Java 支持流式传输压缩输入音频。 Android 中的 Java 和 iOS 平台中的 Objective-C 也支持该功能。
-* 需要语音 SDK 版本 1.10.0 或更高版本。
+* 需要语音 SDK 1.11.0 或更高版本。
 * Windows 需要语音 SDK 版本 1.11.0 或更高版本。
 
 [!INCLUDE [supported-audio-formats](includes/supported-audio-formats.md)]

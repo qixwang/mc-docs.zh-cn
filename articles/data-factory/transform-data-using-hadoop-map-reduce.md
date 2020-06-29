@@ -9,14 +9,14 @@ author: WenJason
 ms.author: v-jay
 manager: digimobile
 ms.custom: seo-lt-2019
-origin.date: 01/16/2018
-ms.date: 05/11/2020
-ms.openlocfilehash: fd6067553c87e16921fdc6361fea5bd5fcce6992
-ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
+origin.date: 05/08/2018
+ms.date: 06/29/2020
+ms.openlocfilehash: 62081b8c5d2c862d60b98519cab24d0f0d8cdc7b
+ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82198209"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85323130"
 ---
 # <a name="transform-data-using-hadoop-mapreduce-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用 Hadoop MapReduce 活动转换数据
 
@@ -66,7 +66,7 @@ ms.locfileid: "82198209"
 | type              | 对于 MapReduce 活动，活动类型是 HDinsightMapReduce | 是      |
 | linkedServiceName | 引用在数据工厂中注册为链接服务的 HDInsight 群集。 若要了解此链接服务，请参阅[计算链接服务](compute-linked-services.md)一文。 | 是      |
 | className         | 要执行的类的名称         | 是      |
-| jarLinkedService  | 对 Azure 存储链接服务的引用，该服务用于存储 Jar 文件。 如果未指定此链接服务，则使用 HDInsight 链接服务中定义的 Azure 存储链接服务。 | 否       |
+| jarLinkedService  | 对 Azure 存储链接服务的引用，该服务用于存储 Jar 文件。 此处仅支持 [Azure Blob 存储](/data-factory/connector-azure-blob-storage)和 [ADLS Gen2](/data-factory/connector-azure-data-lake-storage) 链接服务 。 如果未指定此链接服务，则使用 HDInsight 链接服务中定义的 Azure 存储链接服务。 | 否       |
 | jarFilePath       | 提供由 jarLinkedService 引用的 Azure 存储中存储的 Jar 文件的路径。 文件名称需区分大小写。 | 是      |
 | jarlibs           | 作业引用的 Jar 库文件路径的字符串数组，该作业存储在 jarLinkedService 中定义的 Azure 存储中。 文件名称需区分大小写。 | 否       |
 | getDebugInfo      | 指定何时将日志文件复制到 HDInsight 群集使用的（或者）jarLinkedService 指定的 Azure 存储。 允许的值：None、Always 或 Failure。 默认值：无。 | 否       |
@@ -109,7 +109,7 @@ ms.locfileid: "82198209"
     }
 }
 ```
-可以在**参数**部分为 MapReduce 程序指定任意参数。 运行时，可在 MapReduce 框架中看到几个额外的参数（例如：mapreduce.job.tags）。 要区分自己的参数和 MapReduce 参数，请考虑将选项和值同时作为参数使用，如下例所示（-s、--input、--output 等选项后紧跟有相应的值）。
+可以在**参数**部分为 MapReduce 程序指定任意参数。 运行时，可在 MapReduce 框架中看到几个额外的参数（例如：mapreduce.job.tags）。 要区分自己的参数和 MapReduce 参数，请考虑将选项和值同时作为参数使用，如下例所示（-s、--input、--output 等选项后面紧接相应的值）。
 
 ## <a name="next-steps"></a>后续步骤
 参阅以下文章了解如何以其他方式转换数据：

@@ -11,12 +11,12 @@ ms.topic: quickstart
 origin.date: 12/09/2019
 ms.date: 01/27/2020
 ms.author: v-tawe
-ms.openlocfilehash: d2a53e8fb50e5b98395c4770aad4dafb453f682d
-ms.sourcegitcommit: bfbd6694da33f703481386f2a3f16850c4e94bfa
+ms.openlocfilehash: 10d26ec6acc38345b7993405fa15969a2a8fe6c9
+ms.sourcegitcommit: 304d3ef3c9e65c3e85977b3afb9985fbc0f908d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83417727"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85095882"
 ---
 # <a name="quickstart-synthesize-speech-in-swift-on-macos-using-the-speech-sdk"></a>快速入门：在 macOS 上使用语音 SDK 通过 Swift 合成语音
 
@@ -37,11 +37,11 @@ ms.locfileid: "83417727"
 可在 Xcode 项目将它作为 [CocoaPod](https://cocoapods.org/) 使用，或者从 https://aka.ms/csspeech/macosbinary 下载，然后手动与它建立链接。 本指南使用 CocoaPod。
 
 > [!IMPORTANT]
-> 需要语音 SDK 版本 1.10.0 或更高版本。
+> 需要语音 SDK 1.11.0 或更高版本。
 
 ## <a name="create-an-xcode-project"></a>创建 Xcode 项目
 
-启动 Xcode，然后通过单击“文件” > “新建” > “项目”来启动新项目。   
+启动 Xcode，然后通过单击“文件” > “新建” > “项目”来启动新项目。**** **** ****
 在模板选择对话框中，选择“Cocoa 应用”模板。
 
 在随后的对话框中，进行以下选择：
@@ -70,7 +70,7 @@ ms.locfileid: "83417727"
     #endif /* MicrosoftCognitiveServicesSpeech_Bridging_Header_h */
     ```
 
-1. 在“Objective-C 桥接头文件”  字段![标头属性](~/articles/cognitive-services/Speech-Service/media/sdk/qs-swift-macos-bridging-header.png)中，将桥接头文件的相对路径 `helloworld/MicrosoftCognitiveServicesSpeech-Bridging-Header.h` 添加到 helloworld 目标的 Swift 项目设置中
+1. 在“Objective-C 桥接头文件”** 字段![标头属性](~/articles/cognitive-services/Speech-Service/media/sdk/qs-swift-macos-bridging-header.png)中，将桥接头文件的相对路径 `helloworld/MicrosoftCognitiveServicesSpeech-Bridging-Header.h` 添加到 helloworld 目标的 Swift 项目设置中
 1. 通过以下方式替换自动生成的 `AppDelegate.swift` 文件的内容：
 
     ```swift
@@ -165,8 +165,8 @@ ms.locfileid: "83417727"
 ## <a name="build-and-run-the-sample"></a>生成并运行示例
 
 1. 在 Xcode 中打开 `helloworld.xcworkspace` 工作区。
-1. 使调试输出可见（“视图”   > “调试区域”   >   “激活控制台”）。
-1. 在菜单中选择“产品” > “运行”，或者单击“播放”按钮，以生成并运行示例代码。   
+1. 使调试输出可见（“视图”**** > “调试区域”**** > ****“激活控制台”）。
+1. 在菜单中选择“产品” > “运行”，或者单击“播放”按钮，以生成并运行示例代码。**** **** ****
 1. 在输入一些文本并单击应用中的按钮后，你应该会听到播放的合成音频。
 
 ## <a name="next-steps"></a>后续步骤

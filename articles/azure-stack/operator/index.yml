@@ -10,13 +10,13 @@ metadata:
   author: WenJason
   ms.author: v-jay
   origin.date: 04/13/2020
-  ms.date: 05/18/2020
-  ms.openlocfilehash: c1175d506a3ec8be01107fda4837473268338962
-  ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+  ms.date: 06/22/2020
+  ms.openlocfilehash: 99b34a5fe1274e308e8da6c889a1e753ede3fa16
+  ms.sourcegitcommit: d86e169edf5affd28a1c1a4476d72b01a7fb421d
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 05/15/2020
-  ms.locfileid: "83422099"
+  ms.lasthandoff: 06/19/2020
+  ms.locfileid: "85096443"
 landingContent:
 - title: 关于 Azure Stack Hub
   linkLists:
@@ -78,6 +78,8 @@ landingContent:
   linkLists:
   - linkListType: deploy
     links:
+    - text: 为虚拟机创建产品/服务
+      url: azure-stack-tutorial-tenant-vm.md
     - text: 创建面向任何平台的应用
       url: azure-stack-app-service-overview.md
 - title: 管理 Azure Stack Hub

@@ -5,12 +5,12 @@ ms.topic: include
 origin.date: 04/03/2019
 ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: 5cb0bbf74c6ba098819fce0e78e3fa85f63a36b8
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.openlocfilehash: 2d38294c01159fcc84782fac92014f7036617313
+ms.sourcegitcommit: 304d3ef3c9e65c3e85977b3afb9985fbc0f908d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82150858"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85095909"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -20,7 +20,7 @@ ms.locfileid: "82150858"
 > * <a href="https://portal.azure.cn/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">创建 Azure 语音资源<span class="docon docon-navigate-external x-hidden-focus"></span></a>
 > * [设置开发环境并创建空项目](../../../../quickstarts/setup-platform.md?tabs=windows&pivots=programming-language-cpp)
 > * 请确保你有权访问麦克风，以便进行音频捕获
-> * 需要语音 SDK 版本 1.10.0 或更高版本。
+> * 需要语音 SDK 1.11.0 或更高版本。
 
 ## <a name="source-code"></a>源代码
 
@@ -91,9 +91,9 @@ ms.locfileid: "82150858"
 
 ## <a name="build-and-run-app"></a>生成并运行应用
 
-1. 从菜单栏中，选择“构建”   > “构建解决方案”  以构建应用程序。 现在，编译代码时应不会提示错误。
+1. 从菜单栏中，选择“构建” > “构建解决方案”以构建应用程序。 现在，编译代码时应不会提示错误。
 
-1. 选择“调试”   > “开始调试”  （或按 F5<kbd></kbd>）以启动 helloworld  应用程序。
+1. 选择“调试” > “开始调试”（或按 F5<kbd></kbd>）以启动 helloworld 应用程序。
 
 1. 说一个英语短语或句子。 应用程序将语音传输到语音服务，该服务转录文本并将其发送回应用程序以供显示。
 

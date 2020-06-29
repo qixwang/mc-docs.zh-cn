@@ -3,16 +3,16 @@ title: Azure Stack Hub 中的 DNS
 description: 了解 Azure Stack Hub 中的 DNS 以及如何创建和管理 DNS 区域。
 author: WenJason
 ms.topic: article
-origin.date: 01/24/2020
-ms.date: 05/18/2020
+origin.date: 06/11/2020
+ms.date: 06/22/2020
 ms.author: v-jay
 ms.lastreviewed: 01/05/2020
-ms.openlocfilehash: ebc4ddeabba1a407afc3929b81c4ac0dfd62c9ee
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.openlocfilehash: bfc7b73b161e34580308967102ea0699513d4948
+ms.sourcegitcommit: d86e169edf5affd28a1c1a4476d72b01a7fb421d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83422367"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85096440"
 ---
 # <a name="use-dns-in-azure-stack-hub"></a>使用 Azure Stack Hub 中的 DNS
 
@@ -32,7 +32,7 @@ Azure Stack Hub 支持以下 Azure DNS 功能：
 > [!IMPORTANT]
 > 创建的每个域名标签在其 Azure Stack Hub 位置中必须是唯一的。
 
-以下屏幕截图显示了使用门户创建公共 IP 地址时的“创建公共 IP 地址”对话框  ：
+以下屏幕截图显示了使用门户创建公共 IP 地址时的“创建公共 IP 地址”对话框****：
 
 ![创建公共 IP 地址](media/azure-stack-dns/image01.png)
 
@@ -44,7 +44,7 @@ Azure Stack Hub 支持以下 Azure DNS 功能：
 
 可以在 Azure Stack Hub 中创建和管理 DNS 区域和记录。
 
-Azure Stack Hub 使用与 Azure DNS API 一致的 API 提供与 Azure 类似的 DNS 服务。  通过将域托管在 Azure Stack Hub DNS 中，可以使用相同的凭据、API 和工具来管理 DNS 记录。 还可以使用与其他 Azure 服务相同的计费和支持功能。
+Azure Stack Hub 使用与 Azure DNS API 一致的 API 提供与 Azure 类似的 DNS 服务。 通过将域托管在 Azure Stack Hub DNS 中，可以使用相同的凭据、API 和工具来管理 DNS 记录。 还可以使用与其他 Azure 服务相同的计费和支持功能。
 
 Azure Stack Hub DNS 的基础结构比 Azure 的更为精简。 Azure Stack Hub 部署的大小和位置会影响 DNS 的范围、规模和性能。 这还意味着性能、可用性、全局分发和高可用性可能会因部署而异。
 
@@ -54,7 +54,7 @@ Azure Stack Hub 中的 DNS 类似于 Azure 中的 DNS，但有几个重要例外
 
 * **不支持 AAAA 记录**：Azure Stack Hub 不支持 AAAA 记录，因为 Azure Stack Hub 不支持 IPv6 地址。 这是 Azure DNS 与 Azure Stack Hub DNS 之间的主要差异。
 
-* **不是多租户**：Azure Stack Hub 中的 DNS 服务不是多租户的。 租户不能创建相同的 DNS 区域。 只有第一个尝试创建该区域的订阅会成功，以后的请求都会失败。 这是 Azure DNS 与 Azure Stack Hub DNS 之间另一个主要差异。
+* **不是多租户**：Azure Stack Hub 中的 DNS 服务不是多租户服务。 租户不能创建相同的 DNS 区域。 只有第一个尝试创建该区域的订阅会成功，以后的请求都会失败。 这是 Azure DNS 与 Azure Stack Hub DNS 之间另一个主要差异。
 
 * **标记、元数据和 Etag**：Azure Stack Hub 在处理标记、元数据、Etag 和限制的方式方面也有一些细微差异。
 
@@ -62,17 +62,17 @@ Azure Stack Hub 中的 DNS 类似于 Azure 中的 DNS，但有几个重要例外
 
 ### <a name="tags"></a>Tags
 
-Azure Stack Hub DNS 支持在 DNS 区域资源上使用 Azure 资源管理器标记。 它不支持 DNS 记录集上的标记。 作为替代方法，在 DNS 记录集上支持“元数据”，如下一部分所述。 
+Azure Stack Hub DNS 支持在 DNS 区域资源上使用 Azure 资源管理器标记。 它不支持 DNS 记录集上的标记。 作为替代方法，在 DNS 记录集上支持“元数据”，如下一部分所述。****
 
 ### <a name="metadata"></a>Metadata
 
-作为记录集标记的替代方法，Azure Stack Hub DNS 支持使用“元数据”  批注记录集。 与标记相类似，通过元数据可将名称/值对与每个记录集相关联。 例如，元数据可用于记录每个记录集的用途。 与标记不同的是，不能使用元数据提供 Azure 帐单的筛选视图，且不能在 Azure 资源管理器策略中指定元数据。
+作为记录集标记的替代方法，Azure Stack Hub DNS 支持使用“元数据”** 批注记录集。 与标记相类似，通过元数据可将名称/值对与每个记录集相关联。 例如，元数据可用于记录每个记录集的用途。 与标记不同的是，不能使用元数据提供 Azure 帐单的筛选视图，且不能在 Azure 资源管理器策略中指定元数据。
 
 ### <a name="etags"></a>Etag
 
 假设两个人或两个进程尝试同时修改一条 DNS 记录。 哪一个占先？ 占先方是否知道他们/它们覆盖了其他人/进程创建的更改？
 
-Azure Stack Hub DNS 使用 Etag  来安全地处理对同一资源的并发更改。 Etag 与 Azure 资源管理器“标记”  不同。 每个 DNS 资源（区域或记录集）都有与其相关联的 Etag。 检索资源时，还会检索其 Etag。 更新资源时，可以选择传递回 Etag 以便 Azure Stack Hub DNS 可以验证服务器上的 Etag 是否匹配。 由于对资源的每次更新都会导致重新生成 Etag，Etag 不匹配表示发生了并发更改。 创建新的资源时也可以使用 Etag，以确保该资源尚不存在。
+Azure Stack Hub DNS 使用 Etag** 来安全地处理对同一资源的并发更改。 Etag 与 Azure 资源管理器“标记”** 不同。 每个 DNS 资源（区域或记录集）都有与其相关联的 Etag。 检索资源时，还会检索其 Etag。 更新资源时，可以选择传递回 Etag 以便 Azure Stack Hub DNS 可以验证服务器上的 Etag 是否匹配。 由于对资源的每次更新都会导致重新生成 Etag，Etag 不匹配表示发生了并发更改。 创建新的资源时也可以使用 Etag，以确保该资源尚不存在。
 
 默认情况下，Azure Stack Hub DNS PowerShell cmdlet 使用 Etag 来阻止对区域和记录集的并发更改。 可以使用可选的 `-Overwrite` 开关取消 Etag 检查。 如果没有 Etag 检查，则会覆盖已发生的任何并发更改。
 

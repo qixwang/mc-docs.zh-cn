@@ -7,16 +7,16 @@ ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: tutorial
 origin.date: 12/26/2018
-ms.date: 02/10/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
 ms.custom: seodec18
 ms.reviewer: sngun
-ms.openlocfilehash: 83e8f7c51575af7aeb96d5a1e6d603bdea784246
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: a1479f846acabd6bcf97157e68355984ed3da730
+ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77067911"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85321611"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---add-crud-functions-to-the-app"></a>使用 Azure Cosmos DB 的用于 MongoDB 的 API 创建 Angular 应用 - 将 CRUD 函数添加至应用
 
@@ -28,7 +28,7 @@ ms.locfileid: "77067911"
 
 <!-- Not Available > [!VIDEO https://www.youtube.com/embed/Y5mdAlFGZjc]-->
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 开始教程的此部分之前，请确保已完成教程[第 5 部分](tutorial-develop-mongodb-nodejs-part5.md)的步骤。
 
@@ -37,20 +37,20 @@ ms.locfileid: "77067911"
 
 ## <a name="add-a-post-function-to-the-hero-service"></a>向 hero 服务添加 Post 函数
 
-1. 在 Visual Studio Code 中按“拆分编辑器”按钮 **Visual Studio 中的“拆分编辑器”按钮**，并排打开  routes.js 和  hero.service.js。![](./media/tutorial-develop-mongodb-nodejs-part6/split-editor-button.png)
+1. 在 Visual Studio Code 中按“拆分编辑器”按钮 ![Visual Studio 中的“拆分编辑器”按钮](./media/tutorial-develop-mongodb-nodejs-part6/split-editor-button.png)，并排打开  routes.js 和  hero.service.js。 
 
-    可以看到，routes.js 第 7 行调用的是 `getHeroes`**hero.service.js 中第 5 行的**  函数。  需为 post、put 和 delete 函数进行与此相同的配对。 
+    可以看到，routes.js 第 7 行调用的是  hero.service.js 中第 5 行的 `getHeroes` 函数。  需为 post、put 和 delete 函数进行与此相同的配对。 
 
     ![Visual Studio Code 中的 routes.js 和 hero.service.js](./media/tutorial-develop-mongodb-nodejs-part6/routes-heroservicejs.png)
 
     首先，请对 hero 服务进行编码。 
 
-2. 将以下代码复制到  hero.service.js 中 `getHeroes` 函数之前 `module.exports` 函数之后的位置。 此代码：  
-   * 使用 hero 模型发布新的 hero。
-   * 查看响应，了解是否存在错误，然后返回状态值 500。
+2. 将以下代码复制到  hero.service.js 中 `module.exports` 函数之前 `getHeroes` 函数之后的位置。 此代码：  
+    * 使用 hero 模型发布新的 hero。
+    * 查看响应，了解是否存在错误，然后返回状态值 500。
 
-   ```javascript
-   function postHero(req, res) {
+    ```javascript
+    function postHero(req, res) {
      const originalHero = { uid: req.body.uid, name: req.body.name, saying: req.body.saying };
      const hero = new Hero(originalHero);
      hero.save(error => {
@@ -58,15 +58,15 @@ ms.locfileid: "77067911"
        res.status(201).json(hero);
        console.log('Hero created successfully!');
      });
-   }
+    }
 
-   function checkServerError(res, error) {
+    function checkServerError(res, error) {
      if (error) {
        res.status(500).send(error);
        return error;
      }
-   }
-   ```
+    }
+    ```
 
 3. 在  hero.service.js 中更新 `module.exports`，使之包括新的 `postHero` 函数。 
 
@@ -77,7 +77,7 @@ ms.locfileid: "77067911"
     };
     ```
 
-4. 在  routes.js 中的 `post` 路由器之后为 `get` 函数添加一个路由器。 此路由器一次发布一个 hero。 以这种方式安排路由器文件的结构可以清楚地显示所有可用的 API 终结点，将真正的工作留给  hero.service.js 文件。
+4. 在  routes.js 中的 `get` 路由器之后为 `post` 函数添加一个路由器。 此路由器一次发布一个 hero。 以这种方式安排路由器文件的结构可以清楚地显示所有可用的 API 终结点，将真正的工作留给  hero.service.js 文件。
 
     ```javascript
     router.post('/hero', (req, res) => {
@@ -87,7 +87,7 @@ ms.locfileid: "77067911"
 
 5. 运行应用，看是否一切正常。 在 Visual Studio Code 中，保存所有更改，选择左侧的“调试”按钮  ![Visual Studio Code 中的“调试”图标](./media/tutorial-develop-mongodb-nodejs-part6/debug-button.png)，然后选择“开始调试”按钮  ![Visual Studio Code 中的“开始调试”图标](./media/tutorial-develop-mongodb-nodejs-part6/start-debugging-button.png)。
 
-6. 现在请返回到 Internet 浏览器，打开开发人员工具的“网络”选项卡（在大多数计算机上按 F12 即可）。 导航到 [http://localhost:3000](http://localhost:3000)，观察通过网络进行的调用。
+6. 现在请返回到 Internet 浏览器，打开开发人员工具的“网络”选项卡（在大多数计算机上按 F12 即可）。 导航到 `http://localhost:3000`，观察通过网络进行的调用。
 
     ![Chrome 中的“网络”选项卡，显示网络活动](./media/tutorial-develop-mongodb-nodejs-part6/add-new-hero.png)
 
@@ -112,12 +112,12 @@ ms.locfileid: "77067911"
     ```
 
 2. 将以下代码复制到  hero.service.js 中 `checkServerError` 函数之后的位置。 此代码：
-   * 创建 `put` 和 `delete` 函数
-   * 查看是否已找到 hero
-   * 进行错误处理 
+    * 创建 `put` 和 `delete` 函数
+    * 查看是否已找到 hero
+    * 进行错误处理 
 
-   ```javascript
-   function putHero(req, res) {
+    ```javascript
+    function putHero(req, res) {
      const originalHero = {
        uid: parseInt(req.params.uid, 10),
        name: req.body.name,
@@ -135,9 +135,9 @@ ms.locfileid: "77067911"
          console.log('Hero updated successfully!');
        });
      });
-   }
+    }
 
-   function deleteHero(req, res) {
+    function deleteHero(req, res) {
      const uid = parseInt(req.params.uid, 10);
      Hero.findOneAndRemove({ uid: uid })
        .then(hero => {
@@ -148,20 +148,20 @@ ms.locfileid: "77067911"
        .catch(error => {
          if (checkServerError(res, error)) return;
        });
-   }
+    }
 
-   function checkFound(res, hero) {
+    function checkFound(res, hero) {
      if (!hero) {
        res.status(404).send('Hero not found.');
        return;
      }
      return hero;
-   }
-   ```
+    }
+    ```
 
 3. 在  hero.service.js 中导出新模块：
 
-   ```javascript
+    ```javascript
     module.exports = {
       getHeroes,
       postHero,

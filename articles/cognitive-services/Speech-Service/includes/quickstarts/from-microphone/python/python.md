@@ -5,12 +5,12 @@ ms.topic: include
 origin.date: 04/03/2020
 ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: 97c78e6bc4f7de97dcfde63fcb3bb484c7d54afc
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.openlocfilehash: c9f0c1d3ace2a07726bb19bdb0a9139bd17cdfab
+ms.sourcegitcommit: 304d3ef3c9e65c3e85977b3afb9985fbc0f908d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82150724"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85095910"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -20,11 +20,11 @@ ms.locfileid: "82150724"
 > * <a href="https://portal.azure.cn/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">创建 Azure 语音资源<span class="docon docon-navigate-external x-hidden-focus"></span></a>
 > * [设置开发环境并创建空项目](../../../../quickstarts/setup-platform.md?pivots=programming-language-python)
 > * 请确保你有权访问麦克风，以便进行音频捕获
-> * 需要语音 SDK 版本 1.10.0 或更高版本。
+> * 需要语音 SDK 1.11.0 或更高版本。
 
 ## <a name="source-code"></a>源代码
 
-创建名为“quickstart.py”的文件并在其中粘贴以下 Python 代码  。
+创建名为“quickstart.py”的文件并在其中粘贴以下 Python 代码。
 
 ```
 import azure.cognitiveservices.speech as speechsdk

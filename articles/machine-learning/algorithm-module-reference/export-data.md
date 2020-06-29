@@ -8,20 +8,20 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: v-yiso
-origin.date: 10/22/2019
-ms.date: 03/09/2020
-ms.openlocfilehash: d418192aeb4a98b43a4bb6a7cfe2d7f756a16062
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+origin.date: 02/22/2020
+ms.date: 06/29/2020
+ms.openlocfilehash: ec30cf383a2db9c50e7d5a456f53cb3d58ee0cb3
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78155036"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097488"
 ---
 # <a name="export-data-module"></a>导出数据模块
 
 本文介绍 Azure 机器学习设计器（预览版）中的一个模块。
 
-使用该模块将管道中的结果、中间数据和工作数据保存到 Azure 机器学习之外的云存储目标中。 
+使用此模块将管道中的结果、中间数据和工作数据保存到云存储目标中。 
 
 此模块支持将数据导出到以下云数据服务中：
 
@@ -34,20 +34,25 @@ ms.locfileid: "78155036"
 
 ## <a name="how-to-configure-export-data"></a>如何配置“导出数据”
 
-1. 在设计器中将“导出数据”模块添加到管道  。 可以在“输入和输出”类别中找到该模块  。
+1. 在设计器中将“导出数据”模块添加到管道。 可以在“输入和输出”类别中找到该模块。
 
-1. 将“导出数据”连接到包含要导出的数据的模块  。
+1. 将“导出数据”连接到包含要导出的数据的模块。
 
-1. 选择“导出数据”，打开“属性”窗格   。
+1. 选择“导出数据”，打开“属性”窗格 。
 
-1. 对于“数据存储”，请从下拉列表中选择现有数据存储  。 还可以创建新的数据存储。 通过访问[访问 Azure 存储服务中的数据](../how-to-access-data.md)来查看方法。
+1. 对于“数据存储”，请从下拉列表中选择现有数据存储。 还可以创建新的数据存储。 通过访问[访问 Azure 存储服务中的数据](../how-to-access-data.md)来查看方法。
 
-1. 定义数据存储中将数据写入其中的路径。 
+1. 复选框“再生成输出”决定是否在运行时执行模块以再生成输出。 
 
+    默认情况下，它处于未选中状态，这意味着如果以前已经以相同的参数执行了模块，系统将重用上次运行的输出以减少运行时间。 
 
-1. 对于“文件格式”，请选择数据的存储格式  。
+    如果选中了此复选框，系统将再次执行模块以再生成输出。
+
+1. 在数据存储中定义数据所在的路径。 此路径是相对路径。 不允许使用空路径或 URL 路径。
+
+1. 对于“文件格式”，请选择数据的存储格式。
  
-1. 运行管道。
+1. 提交管道。
 
 ## <a name="next-steps"></a>后续步骤
 

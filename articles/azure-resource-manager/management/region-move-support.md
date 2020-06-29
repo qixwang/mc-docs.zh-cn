@@ -4,15 +4,15 @@ description: 列出可跨 Azure 区域移动的 Azure 资源类型
 author: rockboyfor
 ms.service: azure-resource-manager
 ms.topic: reference
-origin.date: 01/20/2020
-ms.date: 03/23/2020
+origin.date: 05/31/2020
+ms.date: 06/22/2020
 ms.author: v-yeche
-ms.openlocfilehash: beecc066da24f34371fda8804d0537a687511205
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 4075dcb8686f81a4252e7ba3907ab70084a861b7
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79543801"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098628"
 ---
 # <a name="support-for-moving-azure-resources-across-regions"></a>跨区域移动 Azure 资源的支持
 
@@ -117,7 +117,7 @@ ms.locfileid: "79543801"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
-> | 服务 |  是 | 
+> | 服务 |  是（使用模板） <br/><br/> [跨区域移动 API 管理](../../api-management/api-management-howto-migrate.md)。 | 
 
 <!--Not Available on ## Microsoft.AppConfiguration-->
 <!--Not Available on ## Microsoft.AppService-->
@@ -595,7 +595,7 @@ ms.locfileid: "79543801"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
-> | vaults | 不是。 为 Site Recovery [禁用保管库并进行重新创建](/site-recovery/move-vaults-across-regions)  | 
+> | vaults | 否。 为 Site Recovery [禁用保管库并进行重新创建](/site-recovery/move-vaults-across-regions)  | 
 
 ## <a name="microsoftrelay"></a>Microsoft.Relay
 
@@ -650,7 +650,7 @@ ms.locfileid: "79543801"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
-> | 服务 | 否 | 
+> | applications | 否 | 
 > | clusters |  否 | 
 > | clusters/applications | 否 | 
 > | containergroups | 否 | 
@@ -677,7 +677,7 @@ ms.locfileid: "79543801"
 > | appliancedefinitions | 否 | 
 > | appliances | 否 | 
 > | applicationdefinitions | 否 | 
-> | 服务 | 否 | 
+> | applications | 否 | 
 > | jitrequests | 否 | 
 
 ## <a name="microsoftsql"></a>Microsoft.Sql
@@ -725,7 +725,7 @@ ms.locfileid: "79543801"
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
 > | environments |  否 | 
-> | environments/eventsources |  否 |  
+> | environments / eventsources |  否 |  
 > | environments/referencedatasets |  否 | 
 
 <!--Not Available on ## Microsoft.Token-->
@@ -753,6 +753,6 @@ ms.locfileid: "79543801"
 
 ## <a name="third-party-services"></a>第三方服务
 
-第三方服务当前不支持移动操作。
+第三方服务目前不支持移动操作。
 
 <!-- Update_Description: update meta properties, wording update, update link -->

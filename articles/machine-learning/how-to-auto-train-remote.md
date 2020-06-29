@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 origin.date: 11/04/2019
 ms.date: 03/09/2020
-ms.openlocfilehash: 1584c077492bd521f21e389589dc7d9e6127083b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 77b8c920ebbaf1a555b4471404d7ce388b862291
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78154995"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097145"
 ---
 # <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>在云中使用自动化机器学习对模型进行训练
 
@@ -31,7 +31,9 @@ ms.locfileid: "78154995"
 
 ## <a name="how-does-remote-differ-from-local"></a>远程与本地有何区别？
 
-教程“[使用自动化机器学习训练分类模型](tutorial-auto-train-models.md)”讲授了如何使用本地计算机通过自动化机器学习来训练模型。 本地培训的工作流同样适用于远程目标。 但是，使用远程计算，能够以异步方式执行自动化机器学习试验迭代。 此功能允许你取消特定迭代，观察执行状态，或继续在 Jupyter 笔记本的其他单元格上处理。 若要进行远程训练，首先要创建一个远程计算目标，例如 AmlCompute。 然后，配置远程资源，并在那里提交代码。
+使用远程计算目标时，可以使用更多功能。  有关更多详细信息，请参阅[本地和远程计算目标](concept-automated-ml.md#local-remote)。
+
+教程“[使用自动化机器学习训练分类模型](tutorial-auto-train-models.md)”讲授了如何使用本地计算机通过自动化机器学习来训练模型。 本地培训的工作流同样适用于远程目标。 若要进行远程训练，首先要创建一个远程计算目标，例如 AmlCompute。 然后，配置远程资源，并在那里提交代码。
 
 本文展示了在远程 AmlCompute 目标上运行自动化机器学习试验所需的额外步骤。 本教程中的工作区对象 `ws` 将会在此处的整个代码中使用。
 

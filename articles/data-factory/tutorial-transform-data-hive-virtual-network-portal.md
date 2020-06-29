@@ -10,15 +10,15 @@ manager: digimobile
 ms.topic: tutorial
 ms.custom: seo-dt-2019
 origin.date: 01/04/2018
-ms.date: 05/11/2020
-ms.openlocfilehash: 1bc31cb24e3ca233e2d24b80550f904d046e3569
-ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
+ms.date: 06/29/2020
+ms.openlocfilehash: f3092b97f09aac51d178f521c45000457b38a94c
+ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82198118"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85323252"
 ---
-# <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用 Hive 活动转换 Azure 虚拟网络中的数据
+# <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory-using-the-azure-portal"></a>通过 Azure 门户在 Azure 数据工厂中使用 Hive 活动转换 Azure 虚拟网络中的数据
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
@@ -75,10 +75,10 @@ ms.locfileid: "82198118"
 
 1. 启动 **Microsoft Edge** 或 **Google Chrome** Web 浏览器。 目前，仅 Microsoft Edge 和 Google Chrome Web 浏览器支持数据工厂 UI。
 1. 登录到 [Azure 门户](https://portal.azure.cn/)。    
-2. 在左侧菜单中单击“新建”，并依次单击“数据 + 分析”、“数据工厂”。    
+2. 在左侧菜单中单击“新建”，并依次单击“数据 + 分析”、“数据工厂”。   
    
    ![新建 -> DataFactory](./media/tutorial-transform-data-using-hive-in-vnet-portal/new-data-factory-menu.png)
-3. 在“新建数据工厂”  页中，输入 **ADFTutorialHiveFactory** 作为**名称**。 
+3. 在“新建数据工厂”页中，输入 **ADFTutorialHiveFactory** 作为**名称**。 
       
      ![“新建数据工厂”页](./media/tutorial-transform-data-using-hive-in-vnet-portal/new-azure-data-factory.png)
  
@@ -88,38 +88,38 @@ ms.locfileid: "82198118"
 3. 选择要在其中创建数据工厂的 Azure **订阅**。 
 4. 对于**资源组**，请执行以下步骤之一：
      
-   - 选择“使用现有资源组”，并从下拉列表选择现有的资源组。  
-   - 选择“新建”，并输入资源组的名称。    
+   - 选择“使用现有资源组”，并从下拉列表选择现有的资源组。 
+   - 选择“新建”，并输入资源组的名称。   
          
      若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../azure-resource-manager/management/overview.md)。  
-4. 选择“V2”  作为“版本”  。
+4. 选择“V2”作为“版本”。
 5. 选择数据工厂的**位置**。 列表中只会显示支持创建数据工厂的位置。
-6. 选择“固定到仪表板”  。     
-7. 单击**创建**。
-8. 在仪表板上，你会看状态如下的以下磁贴：“正在部署数据工厂”  。 
+6. 选择“固定到仪表板”。     
+7. 单击“创建”。
+8. 在仪表板上，你会看状态如下的以下磁贴：“正在部署数据工厂”。 
 
      ![“正在部署数据工厂”磁贴](media/tutorial-transform-data-using-hive-in-vnet-portal/deploying-data-factory.png)
-9. 创建完成后，可以看到图中所示的“数据工厂”页。 
+9. 创建完成后，可以看到图中所示的“数据工厂”页。
    
     ![数据工厂主页](./media/tutorial-transform-data-using-hive-in-vnet-portal/data-factory-home-page.png)
-10. 单击“创作和监视”，在单独的选项卡中启动数据工厂用户界面 (UI)。 
-11. 在“入门”页的左侧面板中，切换到“编辑”选项卡，如下图所示：   
+10. 单击“创作和监视”，在单独的选项卡中启动数据工厂用户界面 (UI)。
+11. 在“入门”页的左侧面板中，切换到“编辑”选项卡，如下图所示：  
 
     ![“编辑”选项卡](./media/tutorial-transform-data-using-hive-in-vnet-portal/get-started-page.png)
 
 ## <a name="create-a-self-hosted-integration-runtime"></a>创建自承载 Integration Runtime
 由于 Hadoop 群集位于虚拟网络中，因此需要在同一个虚拟网络中安装自承载集成运行时 (IR)。 在本部分，我们将创建一个新的 VM、将其加入到同一个虚拟网络，然后在其上安装自承载 IR。 数据工厂服务可以使用自承载 IR 将处理请求分发到虚拟网络中的某个计算服务，例如 HDInsight。 自承载 IR 还可用于将数据移入/移出虚拟网络中的数据存储，以及移到 Azure。 当数据存储或计算资源位于本地环境中时，也可以使用自承载 IR。 
 
-1. 在 Azure 数据工厂 UI 中，单击窗口底部的“链接”，切换到“集成运行时”选项卡，然后单击工具栏上的“+ 新建”按钮。    
+1. 在 Azure 数据工厂 UI 中，单击窗口底部的“链接”，切换到“集成运行时”选项卡，然后单击工具栏上的“+ 新建”按钮。   
 
    ![新建集成运行时菜单](./media/tutorial-transform-data-using-hive-in-vnet-portal/new-integration-runtime-menu.png)
-2. 在“集成运行时安装”窗口中，选择“执行数据移动并将活动分发到外部计算”选项，然后单击“下一步”。    
+2. 在“集成运行时安装”窗口中，选择“执行数据移动并将活动分发到外部计算”选项，然后单击“下一步”。   
 
    ![选择执行数据移动并分发活动选项](./media/tutorial-transform-data-using-hive-in-vnet-portal/select-perform-data-movement-compute-option.png)
-3. 选择“专用网络”，单击“下一步”。  
+3. 选择“专用网络”，单击“下一步”。 
     
    ![选择专用网络](./media/tutorial-transform-data-using-hive-in-vnet-portal/select-private-network.png)
-4. 在“名称”中输入 **MySelfHostedIR**，然后单击“下一步”。   
+4. 在“名称”中输入 **MySelfHostedIR**，然后单击“下一步”。  
 
    ![指定集成运行时名称](./media/tutorial-transform-data-using-hive-in-vnet-portal/integration-runtime-name.png) 
 5. 单击复制按钮复制集成运行时的**身份验证密钥**，并将其保存。 使窗口保持打开。 稍后将要使用此密钥注册虚拟机中安装的 IR。 
@@ -135,7 +135,7 @@ ms.locfileid: "82198118"
 2. 成功注册自承载集成运行时后，会看到以下消息： 
    
     ![已成功注册](media/tutorial-transform-data-using-hive-in-vnet-portal/registered-successfully.png)
-3. 单击“启动配置管理器”。  将节点连接到云服务后，会看到以下页： 
+3. 单击“启动配置管理器”。 将节点连接到云服务后，会看到以下页： 
    
     ![节点已连接](media/tutorial-transform-data-using-hive-in-vnet-portal/node-is-connected.png)
 
@@ -144,7 +144,7 @@ ms.locfileid: "82198118"
 1. 在 **Azure 数据工厂 UI** 中，应会看到自承载 VM 的名称及其状态。
 
    ![现有的自承载节点](./media/tutorial-transform-data-using-hive-in-vnet-portal/existing-self-hosted-nodes.png)
-2. 单击“完成”关闭“集成运行时安装”窗口。   集成运行时列表中会显示该自承载 IR。
+2. 单击“完成”关闭“集成运行时安装”窗口。  集成运行时列表中会显示该自承载 IR。
 
    ![列表中的自承载 IR](./media/tutorial-transform-data-using-hive-in-vnet-portal/self-hosted-ir-in-list.png)
 
@@ -157,35 +157,35 @@ ms.locfileid: "82198118"
 
 ### <a name="create-azure-storage-linked-service"></a>创建 Azure 存储链接服务
 
-1. 切换到“链接的服务”选项卡，单击“新建”。  
+1. 切换到“链接的服务”选项卡，单击“新建”。 
 
    ![“新建链接服务”按钮](./media/tutorial-transform-data-using-hive-in-vnet-portal/new-linked-service.png)    
-2. 在“新建链接服务”窗口中，选择“Azure Blob 存储”，然后单击“继续”。    
+2. 在“新建链接服务”窗口中，选择“Azure Blob 存储”，然后单击“继续”。   
 
    ![选择“Azure Blob 存储”](./media/tutorial-transform-data-using-hive-in-vnet-portal/select-azure-storage.png)
-3. 在“新建链接服务”  窗口中执行以下步骤：
+3. 在“新建链接服务”窗口中执行以下步骤：
 
     1. 输入 **AzureStorageLinkedService** 作为**名称**。
-    2. 为“通过集成运行时连接”选择“MySelfHostedIR”。  
-    3. 对于“存储帐户名称”，请选择自己的 Azure 存储帐户。  
-    4. 若要测试与存储帐户的连接，请单击“测试连接”。 
-    5. 单击“保存”  。
+    2. 为“通过集成运行时连接”选择“MySelfHostedIR”。 
+    3. 对于“存储帐户名称”，请选择自己的 Azure 存储帐户。 
+    4. 若要测试与存储帐户的连接，请单击“测试连接”。
+    5. 单击“ **保存**”。
    
         ![指定 Azure Blob 存储帐户](./media/tutorial-transform-data-using-hive-in-vnet-portal/specify-azure-storage-account.png)
 
 ### <a name="create-hdinsight-linked-service"></a>创建 HDInsight 链接的服务
 
-1. 再次单击“新建”以创建另一个链接服务。  
+1. 再次单击“新建”以创建另一个链接服务。 
     
    ![“新建链接服务”按钮](./media/tutorial-transform-data-using-hive-in-vnet-portal/new-linked-service.png)    
-2. 切换到“计算”选项卡，选择“Azure HDInsight”，然后单击“继续”。   
+2. 切换到“计算”选项卡，选择“Azure HDInsight”，然后单击“继续”。  
 
     ![选择“Azure HDInsight”](./media/tutorial-transform-data-using-hive-in-vnet-portal/select-hdinsight.png)
-3. 在“新建链接服务”  窗口中执行以下步骤：
+3. 在“新建链接服务”窗口中执行以下步骤：
 
-    1. 在“名称”中输入 **AzureHDInsightLinkedService**。 
-    2. 选择“自带 HDInsight”。  
-    3. 对于“HDI 群集”，请选择自己的 HDInsight 群集。  
+    1. 在“名称”中输入 **AzureHDInsightLinkedService**。
+    2. 选择“自带 HDInsight”。 
+    3. 对于“HDI 群集”，请选择自己的 HDInsight 群集。 
     4. 输入 HDInsight 群集的**用户名**。
     5. 输入该用户的**密码**。 
     
@@ -206,39 +206,39 @@ ms.locfileid: "82198118"
 - **scriptPath** 指向用于 MyStorageLinkedService 的 Azure 存储帐户中的 Hive 脚本路径。 此路径区分大小写。
 - **Output** 是 Hive 脚本中使用的参数。 使用 `wasbs://<Container>@<StorageAccount>.blob.core.chinacloudapi.cn/outputfolder/` 格式指向 Azure 存储中的现有文件夹。 此路径区分大小写。 
 
-1. 在数据工厂 UI 中，单击左窗格中的“+”（加号），然后单击“管道”。   
+1. 在数据工厂 UI 中，单击左窗格中的“+”（加号），然后单击“管道”。  
 
     ![“新建管道”菜单](./media/tutorial-transform-data-using-hive-in-vnet-portal/new-pipeline-menu.png)
-2. 在“活动”工具箱中展开“HDInsight”，将“Hive”活动拖放到管道设计器图面。    
+2. 在“活动”工具箱中展开“HDInsight”，将“Hive”活动拖放到管道设计器图面。   
 
     ![拖放 Hive 活动](./media/tutorial-transform-data-using-hive-in-vnet-portal/drag-drop-hive-activity.png)
-3. 在属性窗口中切换到“HDI 群集”选项卡，然后为“HDInsight 链接服务”选择“AzureHDInsightLinkedService”。   
+3. 在属性窗口中切换到“HDI 群集”选项卡，然后为“HDInsight 链接服务”选择“AzureHDInsightLinkedService”。  
 
     ![选择“HDInsight 链接服务”](./media/tutorial-transform-data-using-hive-in-vnet-portal/select-hdinsight-linked-service.png)
-4. 切换到“脚本”选项卡，然后执行以下步骤：  
+4. 切换到“脚本”选项卡，然后执行以下步骤： 
 
-    1. 为“脚本链接服务”选择“AzureStorageLinkedService”。   
-    2. 对于“文件路径”，请单击“浏览存储”。   
+    1. 为“脚本链接服务”选择“AzureStorageLinkedService”。  
+    2. 对于“文件路径”，请单击“浏览存储”。  
  
         ![浏览存储](./media/tutorial-transform-data-using-hive-in-vnet-portal/browse-storage-hive-script.png)
-    3. 在“选择文件或文件夹”窗口中导航到 **adftutorial** 容器中的 **hivescripts** 文件夹，选择 **hivescript.hql**，然后单击“完成”。    
+    3. 在“选择文件或文件夹”窗口中导航到 **adftutorial** 容器中的 **hivescripts** 文件夹，选择 **hivescript.hql**，然后单击“完成”。   
         
         ![选择文件或文件夹](./media/tutorial-transform-data-using-hive-in-vnet-portal/choose-file-folder.png) 
-    4. 确认“文件路径”中显示了 **adftutorial/hivescripts/hivescript.hql**。 
+    4. 确认“文件路径”中显示了 **adftutorial/hivescripts/hivescript.hql**。
 
         ![脚本设置](./media/tutorial-transform-data-using-hive-in-vnet-portal/confirm-hive-script-settings.png)
-    5. 在“脚本”选项卡中，展开“高级”部分。   
-    6. 单击“参数”对应的“从脚本自动填充”。   
-    7. 使用以下格式输入“输出”参数的值：`wasbs://<Blob Container>@<StorageAccount>.blob.core.chinacloudapi.cn/outputfolder/`。  例如：`wasbs://adftutorial@mystorageaccount.blob.core.chinacloudapi.cn/outputfolder/`。
+    5. 在“脚本”选项卡中，展开“高级”部分。  
+    6. 单击“参数”对应的“从脚本自动填充”。  
+    7. 使用以下格式输入“输出”参数的值：`wasbs://<Blob Container>@<StorageAccount>.blob.core.chinacloudapi.cn/outputfolder/`。 例如：`wasbs://adftutorial@mystorageaccount.blob.core.chinacloudapi.cn/outputfolder/`。
  
         ![脚本参数](./media/tutorial-transform-data-using-hive-in-vnet-portal/script-arguments.png)
-1. 若要将项目发布到数据工厂，请单击“发布”。 
+1. 若要将项目发布到数据工厂，请单击“发布”。
 
     ![发布](./media/tutorial-transform-data-using-hive-in-vnet-portal/publish.png)
 
 ## <a name="trigger-a-pipeline-run"></a>触发管道运行
 
-1. 首先，请单击工具栏中的“验证”按钮来验证管道。  单击**右箭头 (>>)** 关闭“管道验证输出”窗口。  
+1. 首先，请单击工具栏中的“验证”按钮来验证管道。 单击**右箭头 (>>)** 关闭“管道验证输出”窗口。 
 
     ![验证管道](./media/tutorial-transform-data-using-hive-in-vnet-portal/validate-pipeline.png) 
 2. 若要触发某个管道运行，请在工具栏中单击“触发器”，然后单击“立即触发”。 
@@ -247,14 +247,14 @@ ms.locfileid: "82198118"
 
 ## <a name="monitor-the-pipeline-run"></a>监视管道运行
 
-1. 在左侧切换到“监视”选项卡。  “管道运行”列表中会显示一个管道运行。  
+1. 在左侧切换到“监视”选项卡。 “管道运行”列表中会显示一个管道运行。 
 
     ![监视管道运行](./media/tutorial-transform-data-using-hive-in-vnet-portal/monitor-pipeline-runs.png)
-2. 若要刷新列表，请单击“刷新”。 
-4. 若要查看与管道运行相关联的活动运行，请单击“操作”列中的“查看活动运行”。   其他操作链接用于停止/重新运行管道。 
+2. 若要刷新列表，请单击“刷新”。
+4. 若要查看与管道运行相关联的活动运行，请单击“操作”列中的“查看活动运行”。  其他操作链接用于停止/重新运行管道。 
 
     ![查看活动运行](./media/tutorial-transform-data-using-hive-in-vnet-portal/view-activity-runs-link.png)
-5. 只能看到一个活动运行，因为该管道中只包含一个 **HDInsightHive** 类型的活动。 若要切换回到上一视图，请单击顶部的“管道”链接  。
+5. 只能看到一个活动运行，因为该管道中只包含一个 **HDInsightHive** 类型的活动。 若要切换回到上一视图，请单击顶部的“管道”链接。
 
     ![活动运行](./media/tutorial-transform-data-using-hive-in-vnet-portal/view-activity-runs.png)
 6. 确认可以在 **adftutorial** 容器的 **outputfolder** 中看到输出文件。 

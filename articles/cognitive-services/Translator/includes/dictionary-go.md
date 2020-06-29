@@ -2,15 +2,17 @@
 author: erhopf
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 08/06/2019
-ms.author: erhopf
-ms.openlocfilehash: 87bb26f5b52b3a058b2da0dedeec7e205499f38c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 06/22/2020
+origin.date: 08/06/2019
+ms.author: v-tawe
+ms.openlocfilehash: 45074fd3cba694c3a5b0902bf6ce5ffeecf97ae1
+ms.sourcegitcommit: 43db4001be01262959400663abf8219e27e5cb8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80343007"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85241493"
 ---
+<!-- word updating-->
 [!INCLUDE [Prerequisites](prerequisites-go.md)]
 
 [!INCLUDE [Set up and use environment variables](setup-env-variables.md)]
@@ -35,7 +37,7 @@ import (
 
 ## <a name="create-the-main-function"></a>创建 main 函数
 
-此示例将尝试从以下环境变量中读取文本翻译订阅密钥和终结点：`TRANSLATOR_TEXT_SUBSCRIPTION_KEY` 和 `TRANSLATOR_TEXT_ENDPOINT`。 如果不熟悉环境变量，则可将 `subscriptionKey` 和 `endpoint` 设置为字符串并注释掉条件语句。
+此示例将尝试从以下环境变量中读取“翻译”订阅密钥和终结点：`TRANSLATOR_TEXT_SUBSCRIPTION_KEY` 和 `TRANSLATOR_TEXT_ENDPOINT`。 如果不熟悉环境变量，则可将 `subscriptionKey` 和 `endpoint` 设置为字符串并注释掉条件语句。
 
 将以下代码复制到项目中：
 
@@ -67,7 +69,7 @@ func main() {
 
 ## <a name="create-a-function-to-get-alternate-translations"></a>创建获取备用翻译的函数
 
-让我们创建获取备用翻译的函数。 此函数将接受一个参数，即文本翻译订阅密钥。
+让我们创建获取备用翻译的函数。 此函数将接受一个参数，即“翻译”订阅密钥。
 
 ```go
 func dictionaryLookup(subscriptionKey string, uri string) {
@@ -92,7 +94,7 @@ u.RawQuery = q.Encode()
 ```
 
 >[!NOTE]
-> 有关终结点、路由和请求参数的详细信息，请参阅[文本翻译 API 3.0：字典查找](/cognitive-services/translator/reference/v3-0-dictionary-lookup)。
+> 有关终结点、路由和请求参数的详细信息，请参阅[翻译 3.0：字典查找](/cognitive-services/translator/reference/v3-0-dictionary-lookup)。
 
 ## <a name="create-a-struct-for-your-request-body"></a>创建请求正文的结构
 
@@ -110,7 +112,7 @@ b, _ := json.Marshal(body)
 
 ## <a name="build-the-request"></a>生成请求
 
-将请求正文编码为 JSON 后，可以生成 POST 请求并调用文本翻译 API。
+将请求正文编码为 JSON 后，可以生成 POST 请求并调用“翻译”。
 
 ```go
 // Build the HTTP POST request
@@ -122,7 +124,7 @@ if err != nil {
 req.Header.Add("Ocp-Apim-Subscription-Key", subscriptionKey)
 req.Header.Add("Content-Type", "application/json")
 
-// Call the Translator Text API
+// Call the Translator
 res, err := http.DefaultClient.Do(req)
 if err != nil {
     log.Fatal(err)
@@ -148,7 +150,7 @@ fmt.Printf("%s\n", prettyJSON)
 
 ## <a name="put-it-all-together"></a>将其放在一起
 
-就是这样，你已构建了一个简单的程序。该程序可以调用文本翻译 API 并返回 JSON 响应。 现在，可以运行该程序了：
+就是这样，你已构建了一个简单的程序。该程序可以调用“翻译”并返回 JSON 响应。 现在，可以运行该程序了：
 
 ```console
 go run dictionaryLookup.go
@@ -219,7 +221,7 @@ go run dictionaryLookup.go
 
 ## <a name="next-steps"></a>后续步骤
 
-查看 API 参考，了解使用文本翻译 API 可以执行的所有操作。
+查看 API 参考，了解使用“翻译”可以执行的所有操作。
 
 > [!div class="nextstepaction"]
 > [API 参考](/cognitive-services/translator/reference/v3-0-reference)

@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: quickstart
-origin.date: 05/21/2019
-ms.date: 04/27/2020
+origin.date: 05/28/2020
+ms.date: 06/22/2020
 ms.author: v-yeche
-ms.openlocfilehash: 6c0a991494d4852c95d58ab5cc87ec72c12b7e39
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.openlocfilehash: 03b06c2dda388531a38210a73c6a060aaddef34b
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82134950"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098658"
 ---
 <!--Verify sucessfully-->
 # <a name="quickstart-build-a-table-api-app-with-net-sdk-and-azure-cosmos-db"></a>快速入门：使用 .NET SDK 和 Azure Cosmos DB 生成表 API 应用 
@@ -30,7 +30,7 @@ ms.locfileid: "82134950"
 
 ## <a name="prerequisites"></a>先决条件
 
-如果尚未安装 Visual Studio 2019，可以下载并使用**免费**的 [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)。 在安装 Visual Studio 的过程中，请确保启用“Azure 开发”。 
+如果尚未安装 Visual Studio 2019，可以下载并使用**免费**的 [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)。 在安装 Visual Studio 的过程中，请确保启用“Azure 开发”。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -68,25 +68,162 @@ ms.locfileid: "82134950"
     git clone https://github.com/Azure-Samples/azure-cosmos-table-dotnet-core-getting-started.git
     ```
 
+> [!TIP]
+> 有关类似代码的更详细演练，请参阅 [Cosmos DB 表 API 示例](table-storage-how-to-use-dotnet.md)一文。
+
 ## <a name="open-the-sample-application-in-visual-studio"></a>在 Visual Studio 中打开示例应用程序
 
-1. 在 Visual Studio 的“文件”菜单中选择“打开”，然后选择“项目/解决方案”。    
+1. 在 Visual Studio 的“文件”菜单中选择“打开”，然后选择“项目/解决方案”。   
 
     ![打开解决方案](media/create-table-dotnet/azure-cosmosdb-open-solution.png) 
 
 2. 导航到示例应用程序所克隆到的文件夹，然后打开 TableStorage.sln 文件。
 
+## <a name="review-the-code"></a>查看代码
+
+此步骤是可选的。 如果有意了解如何使用代码创建数据库资源，可以查看以下代码片段。 否则，可以直接跳转到本文档的[更新连接字符串](#update-your-connection-string)部分。
+
+* 下面的代码演示如何在 Azure 存储中创建表：
+
+    ```csharp
+    public static async Task<CloudTable> CreateTableAsync(string tableName)
+    {
+      string storageConnectionString = AppSettings.LoadAppSettings().StorageConnectionString;
+
+      // Retrieve storage account information from connection string.
+      CloudStorageAccount storageAccount = CreateStorageAccountFromConnectionString(storageConnectionString);
+
+      // Create a table client for interacting with the table service
+      CloudTableClient tableClient = storageAccount.CreateCloudTableClient(new TableClientConfiguration());
+
+      Console.WriteLine("Create a Table for the demo");
+
+      // Create a table client for interacting with the table service 
+      CloudTable table = tableClient.GetTableReference(tableName);
+      if (await table.CreateIfNotExistsAsync())
+      {
+          Console.WriteLine("Created Table named: {0}", tableName);
+      }
+      else
+      {
+          Console.WriteLine("Table {0} already exists", tableName);
+      }
+
+      Console.WriteLine();
+      return table;
+    }
+
+    ```
+
+* 以下代码演示了如何在表中插入数据：
+
+    ```csharp
+    public static async Task<CustomerEntity> InsertOrMergeEntityAsync(CloudTable table, CustomerEntity entity)
+    {
+      if (entity == null)
+      {
+          throw new ArgumentNullException("entity");
+      }
+
+      try
+      {
+          // Create the InsertOrReplace table operation
+          TableOperation insertOrMergeOperation = TableOperation.InsertOrMerge(entity);
+
+          // Execute the operation.
+          TableResult result = await table.ExecuteAsync(insertOrMergeOperation);
+          CustomerEntity insertedCustomer = result.Result as CustomerEntity;
+
+          if (result.RequestCharge.HasValue)
+          {
+              Console.WriteLine("Request Charge of InsertOrMerge Operation: " + result.RequestCharge);
+          }
+
+          return insertedCustomer;
+      }
+      catch (StorageException e)
+      {
+          Console.WriteLine(e.Message);
+          Console.ReadLine();
+          throw;
+      }
+    }
+
+    ```
+* 以下代码演示了如何查询表中的数据：
+
+    ```csharp
+    public static async Task<CustomerEntity> RetrieveEntityUsingPointQueryAsync(CloudTable table, string partitionKey, string rowKey)
+    {
+      try
+      {
+          TableOperation retrieveOperation = TableOperation.Retrieve<CustomerEntity>(partitionKey, rowKey);
+          TableResult result = await table.ExecuteAsync(retrieveOperation);
+          CustomerEntity customer = result.Result as CustomerEntity;
+          if (customer != null)
+          {
+              Console.WriteLine("\t{0}\t{1}\t{2}\t{3}", customer.PartitionKey, customer.RowKey, customer.Email, customer.PhoneNumber);
+          }
+
+          if (result.RequestCharge.HasValue)
+          {
+              Console.WriteLine("Request Charge of Retrieve Operation: " + result.RequestCharge);
+          }
+
+          return customer;
+      }
+      catch (StorageException e)
+      {
+          Console.WriteLine(e.Message);
+          Console.ReadLine();
+          throw;
+      }
+    }
+
+    ```
+
+* 以下代码演示了如何删除表中的数据：
+
+    ```csharp
+    public static async Task DeleteEntityAsync(CloudTable table, CustomerEntity deleteEntity)
+    {
+      try
+      {
+          if (deleteEntity == null)
+          {
+              throw new ArgumentNullException("deleteEntity");
+          }
+
+          TableOperation deleteOperation = TableOperation.Delete(deleteEntity);
+          TableResult result = await table.ExecuteAsync(deleteOperation);
+
+          if (result.RequestCharge.HasValue)
+          {
+              Console.WriteLine("Request Charge of Delete Operation: " + result.RequestCharge);
+          }
+
+      }
+      catch (StorageException e)
+      {
+          Console.WriteLine(e.Message);
+          Console.ReadLine();
+          throw;
+      }
+    }
+
+    ```
+
 ## <a name="update-your-connection-string"></a>更新连接字符串
 
 现在返回到 Azure 门户，获取连接字符串信息，并将其复制到应用。 这样，应用程序就可以与托管的数据库进行通信。 
 
-1. 在 [Azure 门户](https://portal.azure.cn/)中，单击“连接字符串”  。 使用窗口右侧的复制按钮复制“主连接字符串”。 
+1. 在 [Azure 门户](https://portal.azure.cn/)中，单击“连接字符串”。 使用窗口右侧的复制按钮复制“主连接字符串”。
 
     ![在“连接字符串”窗格中查看并复制“主连接字符串”](./media/create-table-dotnet/connection-string.png)
 
 2. 在 Visual Studio 中打开 **Settings.json** 文件。 
 
-3. 将门户中的“主连接字符串”粘贴到 StorageConnectionString 值中。  粘贴引号内的字符串。
+3. 将门户中的“主连接字符串”粘贴到 StorageConnectionString 值中。 粘贴引号内的字符串。
 
     ```csharp
     {
@@ -100,17 +237,17 @@ ms.locfileid: "82134950"
 
 ## <a name="build-and-deploy-the-app"></a>生成并部署应用
 
-1. 在 Visual Studio 中，右键单击“解决方案资源管理器”中的“CosmosTableSamples”项目，然后单击“管理 NuGet 包”。    
+1. 在 Visual Studio 中，右键单击“解决方案资源管理器”中的“CosmosTableSamples”项目，然后单击“管理 NuGet 包”。   
 
     ![管理 NuGet 包](media/create-table-dotnet/azure-cosmosdb-manage-nuget.png)
 
-2. 在 NuGet 的“浏览”框中，键入 Microsoft.Azure.Cosmos.Table。  这样会查找 Cosmos DB 表 API 客户端库。 请注意，此库目前仅适用于 .NET Framework 和 .NET Standard。 
+2. 在 NuGet 的“浏览”框中，键入 Microsoft.Azure.Cosmos.Table。 这样会查找 Cosmos DB 表 API 客户端库。 请注意，此库目前仅适用于 .NET Framework 和 .NET Standard。 
 
     ![NuGet 的“浏览”选项卡](media/create-table-dotnet/azure-cosmosdb-nuget-browse.png)
 
-3. 单击“安装”以安装 **Microsoft.Azure.Cosmos.Table** 库。  这会安装 Azure Cosmos DB 表 API 包和所有依赖项。
+3. 单击“安装”以安装 **Microsoft.Azure.Cosmos.Table** 库。 这会安装 Azure Cosmos DB 表 API 包和所有依赖项。
 
-4. 运行整个应用时，示例数据将插入到表实体中，运行结束时会删除这些数据，因此，如果运行整个示例，你将看不到插入的任何数据。 但是，可以插入一些断点来查看数据。 打开 BasicSamples.cs 文件并右键单击第 52 行，选择“断点”，然后选择“插入断点”。   在第 55 行中插入另一个断点。
+4. 运行整个应用时，示例数据将插入到表实体中，运行结束时会删除这些数据，因此，如果运行整个示例，你将看不到插入的任何数据。 但是，可以插入一些断点来查看数据。 打开 BasicSamples.cs 文件并右键单击第 52 行，选择“断点”，然后选择“插入断点”。  在第 55 行中插入另一个断点。
 
     ![添加断点](media/create-table-dotnet/azure-cosmosdb-breakpoint.png) 
 
@@ -118,7 +255,7 @@ ms.locfileid: "82134950"
 
     ![控制台输出](media/create-table-dotnet/azure-cosmosdb-console.png)
 
-    点击第一个断点后，返回到 Azure 门户中的数据资源管理器。 单击“刷新”按钮，  展开 demo* 表，然后单击“实体”。  右侧的“实体”  选项卡将显示为 Walter Harp 添加的新实体。 请注意，新实体的电话号码为 425-555-0101。
+    点击第一个断点后，返回到 Azure 门户中的数据资源管理器。 单击“刷新”按钮，展开 demo* 表，然后单击“实体”。 右侧的“实体”选项卡将显示为 Walter Harp 添加的新实体。 请注意，新实体的电话号码为 425-555-0101。
 
     ![新建实体](media/create-table-dotnet/azure-cosmosdb-entity.png)
 
@@ -132,11 +269,11 @@ ms.locfileid: "82134950"
      </ItemGroup>
     ```
 
-6. 关闭数据资源管理器中的“实体”选项卡。 
+6. 关闭数据资源管理器中的“实体”选项卡。
 
 7. 按 F5，运行应用到下一个断点。 
 
-    点击该断点后，切换回 Azure 门户，再次单击“实体”以打开“实体”选项卡，请注意该电话号码已更新为 425-555-0105。  
+    点击该断点后，切换回 Azure 门户，再次单击“实体”以打开“实体”选项卡，请注意该电话号码已更新为 425-555-0105。 
 
 8. 按 F5 运行该应用。 
 
@@ -159,4 +296,4 @@ ms.locfileid: "82134950"
 > [!div class="nextstepaction"]
 > [将表数据导入表 API](table-import.md)
 
-<!--Update_Description: wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

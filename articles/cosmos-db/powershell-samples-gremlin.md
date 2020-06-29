@@ -4,19 +4,22 @@ description: 获取用于在 Azure Cosmos DB Gremlin API 帐户中执行各种�
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: sample
-origin.date: 12/02/2019
-ms.date: 02/10/2020
+origin.date: 05/13/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: ec4828ce959b0c30bf21c332e471dbb4056bcbba
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: f9807accba15170154b27b45ab5957cbe3770256
+ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77028776"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85323335"
 ---
 # <a name="azure-powershell-samples-for-azure-cosmos-db-gremlin-api"></a>适用于 Azure Cosmos DB 的 Azure PowerShell 示例 - Gremlin API
 
 下表包含用于 Azure Cosmos DB for Gremlin API 的示例 Azure PowerShell 脚本的链接。
+
+> [!NOTE]
+> 该示例使用 [Az.CosmosDB](https://docs.microsoft.com/powershell/module/az.cosmosdb) 管理 cmdlet。 请定期检查 `Az.CosmosDB` 是否有更新。
 
 | | |
 |---|---|
@@ -30,4 +33,4 @@ ms.locfileid: "77028776"
 |[创建启用 IP 防火墙的 Cosmos 帐户](scripts/powershell/common/ps-account-firewall-create.md)| 创建启用 IP 防火墙的 Azure Cosmos 帐户。 |
 |||
 
-<!--Update_Description: update meta properties, update reference link -->
+<!-- Update_Description: update meta properties, wording update, update link -->

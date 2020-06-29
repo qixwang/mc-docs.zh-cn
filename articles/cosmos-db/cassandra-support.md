@@ -7,14 +7,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 origin.date: 09/24/2018
-ms.date: 04/27/2020
+ms.date: 06/22/2020
 ms.author: v-yeche
-ms.openlocfilehash: bf81dd5b335e56df597b866754900f27b6340074
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.openlocfilehash: 29769cec939ebd538b29da28fb09856e26de1b42
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82134776"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098708"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API 支持的 Apache Cassandra 功能 
 
@@ -24,7 +24,7 @@ Azure Cosmos DB 是 Azure 提供的多区域分布式多模型数据库服务。
 
 ## <a name="cassandra-protocol"></a>Cassandra 协议 
 
-Azure Cosmos DB Cassandra API 与 CQL 版本 v4  兼容。 下面列出了支持的 CQL 命令、工具、限制和例外。 任何理解这些协议的客户端驱动程序应该都能够连接到 Azure Cosmos DB Cassandra API。
+Azure Cosmos DB Cassandra API 与 CQL 版本 v4 兼容。 下面列出了支持的 CQL 命令、工具、限制和例外。 任何理解这些协议的客户端驱动程序应该都能够连接到 Azure Cosmos DB Cassandra API。
 
 ## <a name="cassandra-driver"></a>Cassandra 驱动程序
 
@@ -103,9 +103,13 @@ Azure Cosmos DB Cassandra API 是一个托管的服务平台。 它不需要任�
 
 * Azure 门户的数据资源管理器、指标、日志诊断、PowerShell 和 CLI 都是其他用来管理帐户的受支持机制。
 
-## <a name="cql-shell"></a>CQL Shell  
+## <a name="hosted-cql-shell-preview"></a>托管 CQL shell（预览版）
 
-CQLSH 命令行实用程序随 Apache Cassandra 3.1.1 一起提供，设置一些环境变量即可直接使用。
+<!--Not Available on Enable Notebook feature on Azure portal-->
+
+可以使用安装在本地计算机上的 CQLSH 连接到 Azure Cosmos DB 中的 Cassandra API。 它随 Apache Cassandra 3.1.1 一起提供，设置一些环境变量即可直接使用。 以下部分包括使用 CQLSH 在 Windows 或 Linux 上的 Azure Cosmos DB 中安装、配置和连接到 Cassandra API 的说明。
+
+<!--Not Available on also-->
 
 **Windows:**
 
@@ -196,7 +200,7 @@ ALTER TABLE gks1.t1 WITH cosmosdb_provisioned_throughput=10000 ;
 
 ## <a name="usage-of-cassandra-retry-connection-policy"></a>使用 Cassandra 重试连接策略
 
-Azure Cosmos DB 是一种资源治理系统。 这意味着，你可以根据操作消耗的请求单位数在给定的秒内执行特定数目的操作。 如果应用程序在给定的秒内超出该限制，则请求会受到速率限制，并会引发异常。 Azure Cosmos DB 中的 Cassandra API 在 Cassandra 本机协议中将这些异常解释为过载错误。 为了确保应用程序在速率受限的情况下能够截获并重试请求，我们提供了 [spark](https://mvnrepository.com/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper) 和 [Java](https://github.com/Azure/azure-cosmos-cassandra-extensions) 扩展。 在 Azure Cosmos DB 中，如果使用其他 SDK 来访问 Cassandra API，请创建一项连接策略，以便在出现这些异常时进行重试。
+Azure Cosmos DB 是一种资源治理系统。 这意味着，你可以根据操作消耗的请求单位数在给定的秒内执行特定数目的操作。 如果应用程序在给定的秒内超出该限制，则请求会受到速率限制，并会引发异常。 Azure Cosmos DB 中的 Cassandra API 在 Cassandra 本机协议中将这些异常解释为过载错误。 为了确保应用程序在速率受限的情况下能够截获并重试请求，我们提供了 [spark](https://mvnrepository.com/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper) 和 [Java](https://github.com/Azure/azure-cosmos-cassandra-extensions) 扩展。 当连接到 Azure Cosmos DB 中的 Cassandra API 时，另请参阅 Datastax 驱动程序[版本 3](https://github.com/Azure-Samples/azure-cosmos-cassandra-java-retry-sample) 和[版本 4](https://github.com/Azure-Samples/azure-cosmos-cassandra-java-retry-sample-v4) 的 Java 代码示例。 在 Azure Cosmos DB 中，如果使用其他 SDK 来访问 Cassandra API，请创建一项连接策略，以便在出现这些异常时进行重试。
 
 ## <a name="next-steps"></a>后续步骤
 

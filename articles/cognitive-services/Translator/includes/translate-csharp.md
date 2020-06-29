@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: fcb500b94ef5e5d16589af5559c9acd8f6ca69c8
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 92c42c7cbde80e06e7a47d23ff015ed94fa28777
+ms.sourcegitcommit: 43db4001be01262959400663abf8219e27e5cb8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80342985"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85241545"
 ---
 [!INCLUDE [Prerequisites](prerequisites-csharp.md)]
 
@@ -59,11 +59,11 @@ using Newtonsoft.Json;
 
 ## <a name="create-classes-for-the-json-response"></a>为 JSON 响应创建类
 
-接下来，我们将创建一组类，在反序列化文本翻译 API 返回的 JSON 响应时使用。
+接下来，我们将创建一组类，在反序列化翻译返回的 JSON 响应时使用。
 
 ```csharp
 /// <summary>
-/// The C# classes that represents the JSON returned by the Translator Text API.
+/// The C# classes that represents the JSON returned by the Translator.
 /// </summary>
 public class TranslationResult
 {
@@ -136,7 +136,7 @@ static Program()
 
 ```csharp
 // This sample requires C# 7.1 or later for async/await.
-// Async call to the Translator Text API
+// Async call to the Translator
 static public async Task TranslateTextRequest(string subscriptionKey, string endpoint, string route, string inputText)
 {
   /*
@@ -212,7 +212,7 @@ foreach (TranslationResult o in deserializedOutput)
 
 ## <a name="put-it-all-together"></a>将其放在一起
 
-最后一步是在 `TranslateTextRequest()` 函数中调用 `Main`。 在此示例中，我们将翻译为德语 (`de`)、意大利语 (`it`)、日语 (`ja`) 和泰语 (`th`)。 找到 `static void Main(string[] args)` 并将其替换为以下代码：
+最后一步是在 `Main` 函数中调用 `TranslateTextRequest()`。 在此示例中，我们将翻译为德语 (`de`)、意大利语 (`it`)、日语 (`ja`) 和泰语 (`th`)。 找到 `static void Main(string[] args)` 并将其替换为以下代码：
 
 ```csharp
 static async Task Main(string[] args)

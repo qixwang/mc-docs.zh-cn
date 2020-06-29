@@ -5,26 +5,28 @@ description: 使用错误代码对 Azure 机器学习设计器中的模块异常
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: reference
-author: xiaoharper
+ms.topic: troubleshooting
+author: likebupt
 ms.author: zhanxia
-ms.date: 12/03/2019
-ms.openlocfilehash: 8e9b3f0d3aaa8df7675772db9a0784ee56885891
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 04/16/2020
+ms.openlocfilehash: f657ce9474a0189591b0b49e1f40f12de249cf3b
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75598024"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097492"
 ---
 # <a name="exceptions-and-error-codes-for-the-designer-preview"></a>设计器的异常和错误代码（预览）
 
-本文介绍 Azure 机器学习设计器（预览）中的错误消息和异常代码，以帮助你对机器学习管道进行故障排除。
+本文介绍 Azure 机器学习设计器（预览版）中的错误消息和异常代码，以帮助你排查机器学习管道问题。
 
-可以通过两种方式获取设计器中错误消息的完整文本：  
+可以按照以下步骤在设计器中找到错误消息：  
 
-- 单击右窗格中的链接“查看输出日志”，然后滚动到底部  。 详细错误消息将显示在窗口的最后两行。  
-  
-- 选择出现错误的模块，然后单击红色 X。仅显示相关的错误文本。
+- 选择失败的模块，转到“输出+日志”选项卡，可以在 azureml-logs 类别下的 70_driver_log.txt 文件中找到详细的日志。
+
+- 对于详细的模块错误，可以在 module_statistics 类别下的 error_info.json 中进行检查。
+
+以下是设计器中模块的错误代码。
 
 ## <a name="error-0001"></a>错误 0001  
  如果找不到数据集的一个或多个指定列，将出现异常。  
@@ -38,7 +40,10 @@ ms.locfileid: "75598024"
 |找不到一个或多个指定的列。|
 |找不到名称或索引为“{column_id}”的列。|
 |“{arg_name_missing_column}”中不存在名称或索引为“{column_id}”的列。|
-|名称或索引为“{column_id}”的列不在“{arg_name_missing_column}”中，但存在于“{arg_name_has_column}”中。|
+|名称或索引为“{column_id}”的列在“{arg_name_missing_column}”中不存在，但在“{arg_name_has_column}”中存在。|
+|找不到名称或索引为“{column_names}”的列。|
+|名称或索引为“{column_names}”的列在“{arg_name_missing_column}”中不存在。|
+|名称或索引为“{column_names}”的列在“{arg_name_missing_column}”中不存在，但在“{arg_name_has_column}”中存在。|
 
 
 ## <a name="error-0002"></a>错误 0002  
@@ -73,8 +78,8 @@ ms.locfileid: "75598024"
   
 |异常消息|
 |------------------------|
-|一个或多个输入为 NULL 或为空。|
-|输入“{0}”为 NULL 或为空。|
+|一个或多个输入为 null 或为空。|
+|输入“{name}”为 null 或为空。|
 
 
 ## <a name="error-0004"></a>错误 0004  
@@ -87,8 +92,8 @@ ms.locfileid: "75598024"
 |异常消息|
 |------------------------|
 |参数应大于边界值。|
-|参数“{0}”值应大于 {1}。|
-|参数“{0}”的值为“{1}”，而该值应大于 {2}。|
+|参数“{arg_name}”的值应大于 {lower_boundary}。|
+|参数“{arg_name}”的值“{actual_value}”应大于 {lower_boundary}。|
 
 
 ## <a name="error-0005"></a>错误 0005  
@@ -101,8 +106,8 @@ ms.locfileid: "75598024"
 |异常消息|
 |------------------------|
 |参数应大于或等于边界值。|
-|参数“{arg_name}”值应大于或等于 {target_val}。|
-|参数“{arg_name}”的值为“{true_val}”，而该值应大于或等于 {target_val}。|
+|参数“{arg_name}”的值应大于或等于 {lower_boundary}。|
+|参数“{arg_name}”的值“{value}”应大于或等于 {lower_boundary}。|
 
 
 ## <a name="error-0006"></a>错误 0006  
@@ -114,9 +119,9 @@ ms.locfileid: "75598024"
 
 |异常消息|
 |------------------------|
-|参数不匹配。 其中一个参数应小于另一个参数。|
-|参数“{0}”值应小于参数“{1}”值。|
-|参数“{0}”的值为“{1}”，而该值应小于 {2}。|
+|参数不匹配。 一个参数应小于另一个参数。|
+|参数“{arg_name}”的值应小于参数“{upper_boundary_parameter_name}”的值。|
+|参数“{arg_name}”的值“{value}”应小于 {upper_boundary_parameter_name}。|
 
 
 ## <a name="error-0007"></a>错误 0007  
@@ -136,9 +141,11 @@ ms.locfileid: "75598024"
 
 |异常消息|
 |------------------------|
-|参数不匹配。 其中一个参数应小于或等于另一个参数。|
-|参数“{0}”值应小于或等于参数“{1}”值。|
-|参数“{0}”的值为“{1}”，而该值应小于或等于 {2}。|
+|参数不匹配。 一个参数应小于或等于另一个参数。|
+|参数“{arg_name}”的值应小于或等于参数“{upper_boundary_parameter_name}”的值。|
+|参数“{arg_name}”的值“{actual_value}”应小于或等于 {upper_boundary}。|
+|参数“{arg_name}”的值 {actual_value} 应小于或等于参数“{upper_boundary_parameter_name}”的值 {upper_boundary}。|
+|参数“{arg_name}”的值 {actual_value} 应小于或等于 {upper_boundary_meaning} 值 {upper_boundary}。|
 
 
 ## <a name="error-0008"></a>错误 0008  
@@ -153,9 +160,9 @@ ms.locfileid: "75598024"
 |异常消息|
 |------------------------|
 |参数值不在指定范围内。|
-|参数“{arg_name}”值不在范围内。|
-|参数“{arg_name}”值应在 [{a}, {b}] 范围内。|
-|参数“{arg_name}”值不在 {reason} 范围内|
+|参数“{arg_name}”的值不在范围内。|
+|参数“{arg_name}”的值应在 [{lower_boundary}, {upper_boundary}] 范围内。|
+|参数“{arg_name}”的值不在范围内。 {reason}|
 
 
 ## <a name="error-0009"></a>错误 0009  
@@ -179,15 +186,15 @@ ms.locfileid: "75598024"
 
 Azure 机器学习不支持某些更新的帐户类型。 例如，新的“热”或“冷”存储类型不能用于机器学习。 经典存储帐户和创建为“常规用途”的存储帐户都可以正常工作。
 
-如果已指定 blob 的完整路径，请验证是否将该路径指定为“container/blobname”，以及容器和 blob 是否存在于该帐户中  。  
+如果已指定 blob 的完整路径，请验证是否将该路径指定为“container/blobname”，以及容器和 blob 是否存在于该帐户中。  
 
- 该路径不应包含前导斜杠。 例如 /container/blob 是不正确的，应输入为 container/blob   。  
+ 该路径不应包含前导斜杠。 例如 /container/blob 是不正确的，应输入为 container/blob 。  
 
 
 |异常消息|
 |------------------------|
 |Azure 存储帐户名称或容器名称不正确。|
-|Azure 存储帐户名称“{0}”或容器名称“{1}”不正确；容器名称的格式应为 container/blob。|
+|Azure 存储帐户名称“{account_name}”或容器名称“{container_name}”不正确；应提供 container/blob 格式的容器名称。|
 
 
 ## <a name="error-0010"></a>错误 0010  
@@ -200,7 +207,7 @@ Azure 机器学习不支持某些更新的帐户类型。 例如，新的“热�
 |异常消息|
 |------------------------|
 |输入数据集中具有相应索引的列具有不同的名称。|
-|输入数据集中第 {0} 列（从零开始）的列名不同（分别为 {1} 和 {2}）。|
+|输入数据集(分别为 {dataset1} 和 {dataset2})的列 {col_index} (从零开始)的列名称不同。|
 
 
 ## <a name="error-0011"></a>错误 0011  
@@ -219,7 +226,7 @@ Azure 机器学习不支持某些更新的帐户类型。 例如，新的“热�
 |异常消息|
 |------------------------|
 |指定的列集不适用于任何数据集列。|
-|指定的列集“{0}”不适用于任何数据集列。|
+|指定的列集“{column_set}”不适用于任何数据集列。|
 
 
 ## <a name="error-0012"></a>错误 0012  
@@ -265,6 +272,7 @@ Azure 机器学习不支持某些更新的帐户类型。 例如，新的“热�
 |传递的学习器类型无效。|
 |学习器“{arg_name}”的类型无效。|
 |学习器“{arg_name}”的类型“{learner_type}”无效。|
+|传递了无效类型的学习器。 异常消息: {exception_message}|
 
 
 ## <a name="error-0014"></a>错误 0014  
@@ -274,7 +282,7 @@ Azure 机器学习不支持某些更新的帐户类型。 例如，新的“热�
 
 **解决方法：**
 
-打开生成错误的模块，并标识用作输入的列。 对于某些模块，可以右键单击数据集输入，然后选择“可视化”以获取各列的统计信息，包括唯一值的数目及其分布  。
+打开生成错误的模块，并标识用作输入的列。 对于某些模块，可以右键单击数据集输入，然后选择“可视化”以获取各列的统计信息，包括唯一值的数目及其分布。
 
 对于打算用于分组或分类的列，请采取措施来减少列中的唯一值数目。 根据列的数据类型，可以通过不同的方式减小唯一值数目。 
 <!--
@@ -301,7 +309,7 @@ Azure 机器学习不支持某些更新的帐户类型。 例如，新的“热�
 |异常消息|
 |------------------------|
 |建立数据库连接时出错。|
-|建立数据库连接时出错：{0}。|
+|建立数据库连接 {connection_str} 时出错。|
 
 
 ## <a name="error-0016"></a>错误 0016  
@@ -372,6 +380,7 @@ Azure 机器学习不支持某些更新的帐户类型。 例如，新的“热�
 |{dataset1} 和 {dataset2} 的应保持一致。|
 |{dataset1} 包含无效数据，{reason}。|
 |{dataset1} 包含 {invalid_data_category}。 {troubleshoot_hint}|
+|{dataset1} 无效，{reason}。 {troubleshoot_hint}|
 
 
 ## <a name="error-0019"></a>错误 0019  
@@ -383,9 +392,10 @@ Azure 机器学习不支持某些更新的帐户类型。 例如，新的“热�
 
 |异常消息|
 |------------------------|
-|未对列中的值进行排序。|
-|未对列“{0}”中的值进行排序。|
-|未对数据集“{1}”的列“{0}”中的值进行排序。|
+|列中的值未排序。|
+|列“{col_index}”中的值未排序。|
+|数据集“{dataset}”的列“{col_index}”中的值未排序。|
+|参数“{arg_name}”中的值未按“{sorting_order}”顺序排序。|
 
 
 ## <a name="error-0020"></a>错误 0020  
@@ -397,8 +407,9 @@ Azure 机器学习不支持某些更新的帐户类型。 例如，新的“热�
 
 |异常消息|
 |------------------------|
-|输入数据集中的列数小于允许的最小值。|
-|输入数据集中的列数小于允许的最小值 {required_columns_count} 列。|
+|输入数据集中的列数小于允许的最小列数。|
+|输入数据集“{arg_name}”中的列数小于允许的最小列数。|
+|输入数据集中的列数小于允许的最小列数({required_columns_count} 列)。|
 |输入数据集“{arg_name}”中的列数小于允许的最小值 {required_columns_count} 列。|
 
 
@@ -449,10 +460,10 @@ Azure 机器学习不支持某些更新的帐户类型。 例如，新的“热�
 
 |异常消息|
 |------------------------|
-|输入数据集中的选定列数不等于预期数量。|
-|输入数据集中的选定列数不等于 {0}。|
-|列选择模式“{0}”提供的输入数据集中的所选列数不等于 {1}。|
-|列选择模式“{0}”应提供在输入数据集中选中的 {1} 列，但实际提供了 {2} 列。|
+|在输入数据集中选择的列数不等于预期数量。|
+|在输入数据集中选择的列数不等于 {expected_col_count}。|
+|列选择模式“{selection_pattern_friendly_name}”提供的在输入数据集中选择的列数不等于 {expected_col_count}。|
+|列选择模式“{selection_pattern_friendly_name}”应提供在输入数据集中选择的 {expected_col_count} 列，但实际上提供了 {selected_col_count} 列。|
 
 
 ## <a name="error-0023"></a>错误 0023  
@@ -465,9 +476,9 @@ Azure 机器学习不支持某些更新的帐户类型。 例如，新的“热�
 
 |异常消息|
 |------------------------|
-|输入数据集包含不受支持的目标列。|
-|输入数据集包含不受支持的目标列“{0}”。|
-|输入数据集包含不受 {1} 类型的学习器支持的目标列“{0}”。|
+|输入数据集包含不支持的目标列。|
+|输入数据集包含不支持的目标列“{column_index}”。|
+|输入数据集包含 {learner_type} 类型的学习器不支持的目标列“{column_index}”。|
 
 
 ## <a name="error-0024"></a>错误 0024  
@@ -479,10 +490,10 @@ Azure 机器学习不支持某些更新的帐户类型。 例如，新的“热�
 
 **解决方法：**
 
-+ 打开生成错误的模块，确定标签列是否存在。 列的名称或数据类型并不重要，只要该列包含尝试预测的单个结果（或因变量）即可。 如果不确定哪个列具有标签，请查找“类”或“目标”等通用名称   。 
++ 打开生成错误的模块，确定标签列是否存在。 列的名称或数据类型并不重要，只要该列包含尝试预测的单个结果（或因变量）即可。 如果不确定哪个列具有标签，请查找“类”或“目标”等通用名称 。 
 +  如果数据集不包含标签列，则可能是在上游显式或意外地删除了标签列。 也可能是该数据集不是上游评分模块的输出。
-+ 若要将该列显式标记为标签列，请添加[编辑元数据](edit-metadata.md)模块并连接数据集。 仅选择标签列，然后从“字段”下拉列表中选择“标签”   。 
-+ 如果将错误的列选作了标签，可以从“字段”中选择“清除标签”以恢复该列的元数据   。 
++ 若要将该列显式标记为标签列，请添加[编辑元数据](edit-metadata.md)模块并连接数据集。 仅选择标签列，然后从“字段”下拉列表中选择“标签” 。 
++ 如果将错误的列选作了标签，可以从“字段”中选择“清除标签”以恢复该列的元数据 。 
   
 |异常消息|
 |------------------------|
@@ -499,9 +510,9 @@ Azure 机器学习不支持某些更新的帐户类型。 例如，新的“热�
 
 |异常消息|
 |------------------------|
-|数据集中没有分数列。|
-|“{0}”中没有分数列。|
-|“{0}”中没有由“{1}”生成的分数列。 使用合适的学习器类型对数据集进行评分。|
+|数据集中没有评分列。|
+|“{dataset_name}”中没有评分列。|
+|“{Learner_type}”生成的“{dataset_name}”中没有评分列。 请使用正确类型的学习器为数据集评分。|
 
 
 ## <a name="error-0026"></a>错误 0026  
@@ -509,12 +520,12 @@ Azure 机器学习不支持某些更新的帐户类型。 例如，新的“热�
 
  如果多个列具有相同的名称，则 Azure 机器学习中会出现此错误。 如果数据集没有标题行，并且自动分配了Col0、Col1 等列名，你可能会收到此错误。  
 
-**解决方法：** 如果列具有相同的名称，请在输入数据集和该模块之间插入[编辑元数据](edit-metadata.md)模块。 使用[编辑元数据](edit-metadata.md)中的列选择器来选择要重命名的列，并将新名称键入“新列名”文本框中  。  
+**解决方法：** 如果列具有相同的名称，请在输入数据集和该模块之间插入[编辑元数据](edit-metadata.md)模块。 使用[编辑元数据](edit-metadata.md)中的列选择器来选择要重命名的列，并将新名称键入“新列名”文本框中。  
 
 |异常消息|
 |------------------------|
-|在参数中指定了相同的列名。 模块不允许使用相同的列名。|
-|不允许参数“{0}”和“{1}”中的列名相同。 请指定不同的名称。|
+|在参数中指定了相同的列名。 模块不允许使用相同的列名称。|
+|不允许在参数“{arg_name_1}”和“{arg_name_2}”中使用相同的列名称。 请指定不同的名称。|
 
 
 ## <a name="error-0027"></a>错误 0027  
@@ -528,12 +539,12 @@ Azure 机器学习不支持某些更新的帐户类型。 例如，新的“热�
   
 -   如果要联接或串联两个数据集，请确保它们具有相同的架构。  
   
--   如果要联接两个具有多个列的数据集，请确保键列具有相同的数据类型，并选择选项“允许重复项并保留选定内容中的列顺序”  。  
+-   如果要联接两个具有多个列的数据集，请确保键列具有相同的数据类型，并选择选项“允许重复项并保留选定内容中的列顺序”。  
 
 |异常消息|
 |------------------------|
 |传递的对象大小不一致。|
-|“{0}”的大小与“{1}”的大小不一致。|
+|“{friendly_name1}”的大小与“{friendly_name2}”的大小不一致。|
 
 
 ## <a name="error-0028"></a>错误 0028  
@@ -541,7 +552,7 @@ Azure 机器学习不支持某些更新的帐户类型。 例如，新的“热�
 
  如果列名重复，即列名不是唯一的，则 Azure 机器学习中会出现此错误。  
 
-**解决方法：** 如果任何列具有相同的名称，请在输入数据集和引发错误的模块之间添加[编辑元数据](edit-metadata.md)的实例。 使用[编辑元数据](edit-metadata.md)中的列选择器来选择要重命名的列，并将新名称键入“新列名”文本框中  。 如果要重命名多个列，请确保在“新列名”中键入的值是唯一的  。  
+**解决方法：** 如果任何列具有相同的名称，请在输入数据集和引发错误的模块之间添加[编辑元数据](edit-metadata.md)的实例。 使用[编辑元数据](edit-metadata.md)中的列选择器来选择要重命名的列，并将新名称键入“新列名”文本框中。 如果要重命名多个列，请确保在“新列名”中键入的值是唯一的。  
 
 |异常消息|
 |------------------------|
@@ -570,8 +581,8 @@ Azure 机器学习不支持某些更新的帐户类型。 例如，新的“热�
 
 |异常消息|
 |------------------------|
-|传递的 URI 无效。|
-|URI“{0}”无效。|
+|传递了无效的 URI。|
+|URI“{invalid_url}”无效。|
 
 
 ## <a name="error-0030"></a>错误 0030  
@@ -584,7 +595,7 @@ Azure 机器学习不支持某些更新的帐户类型。 例如，新的“热�
 |异常消息|
 |------------------------|
 |无法下载文件。|
-|下载文件时出错：{0}。|
+|下载文件 {file_url} 时出错。|
 
 
 ## <a name="error-0031"></a>错误 0031  
@@ -592,12 +603,13 @@ Azure 机器学习不支持某些更新的帐户类型。 例如，新的“热�
 
  如果选择的列数小于所需列数，则 Azure 机器学习中会出现此错误。  如果选择的列数未达到要求的最小值，你将收到此错误。  
 
-**解决方法：** 使用“列选择器”将其他列添加到列选择  。  
+**解决方法：** 使用“列选择器”将其他列添加到列选择。  
 
 |异常消息|
 |------------------------|
 |列集中的列数小于所需列数。|
-|至少应指定 {0} 列。 实际指定的列数为 {1}。|
+|至少需要为输入参数“{arg_name}”指定 {required_columns_count} 列。|
+|至少需要为输入参数“{arg_name}”指定 {required_columns_count} 列。 指定的实际列数为 {input_columns_count} 列。|
 
 
 ## <a name="error-0032"></a>错误 0032  
@@ -610,7 +622,7 @@ Azure 机器学习不支持某些更新的帐户类型。 例如，新的“热�
 |异常消息|
 |------------------------|
 |参数不是数字。|
-|“{0}”不是数字。|
+|“{arg_name}”不是数字。|
 
 
 ## <a name="error-0033"></a>错误 0033  
@@ -622,8 +634,9 @@ Azure 机器学习不支持某些更新的帐户类型。 例如，新的“热�
 
 |异常消息|
 |------------------------|
-|参数必须是有限的。|
-|“{0}”不是有限的。|
+|参数必须为有限数字。|
+|“{arg_name}”不是有限数字。|
+|列“{column_name}”包含无限值。|
 
 
 ## <a name="error-0034"></a>错误 0034  
@@ -662,8 +675,8 @@ For general information about how the Matchbox recommendation algorithm works, a
 
 |异常消息|
 |------------------------|
-|没有提供所需的用户或项的任何特征。|
-|“{0}”的特征是必需的，但并未提供。|
+|没有为所需的用户或项提供任何特征。|
+|{required_feature_name} 的特征是必需的，但未提供。|
 
 
 ## <a name="error-0036"></a>错误 0036  
@@ -675,8 +688,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 
 |异常消息|
 |------------------------|
-|用户或项的特征定义重复。|
-|{0} 的特征定义重复。|
+|用户或项存在重复的特征定义。|
 
 
 ## <a name="error-0037"></a>错误 0037  
@@ -698,9 +710,9 @@ For general information about how the Matchbox recommendation algorithm works, a
  如果无法完成内部操作，则 Azure 机器学习中会出现此错误。  
 
 **解决方法：** 此错误可由多种情况引起，因此没有特定的补救措施。  
- 下表包含此错误的一般消息，后接具体的情况说明。 
+ 下表包含此错误的通用消息，后跟具体情况说明。 
 
- 如果没有任何可用的详细信息，请[发送反馈](https://social.msdn.microsoft.com/forums/azure/home?forum=MachineLearning)并提供有关生成错误的模块的信息和相关情况。
+ 如果没有可用的详细信息，请访问 [Microsoft 问答页以发送反馈](https://docs.microsoft.com/answers/topics/azure-machine-learning-studio-classic.html)，并提供有关生成该错误的模块和相关情况的信息。
 
 |异常消息|
 |------------------------|
@@ -741,10 +753,10 @@ For general information about how the Matchbox recommendation algorithm works, a
 
 |异常消息|
 |------------------------|
-|不允许的转换。|
-|无法将 {0} 类型的列转换为 {1} 类型的列。|
-|无法将 {0} 类型的列“{2}”转换为 {1} 类型的列。|
-|无法将 {0} 类型的列“{2}”转换为 {1} 类型的列“{3}”。|
+|不允许转换。|
+|无法将 {type1} 类型的列转换为 {type2} 类型的列。|
+|无法将 {type1} 类型的列“{col_name1}”转换为 {type2} 类型的列。|
+|无法将 {type1} 类型的列“{col_name1}”转换为 {type2} 类型的列“{col_name2}”。|
 
 
 ## <a name="error-0044"></a>错误 0044  
@@ -757,8 +769,8 @@ For general information about how the Matchbox recommendation algorithm works, a
 |异常消息|
 |------------------------|
 |无法派生列的元素类型。|
-|无法派生列“{0}”的元素类型 -- 所有元素都是 null 引用。|
-|无法派生数据集“{1}”的列“{0}”的元素类型 -- 所有元素都是 null 引用。|
+|无法派生列“{column_name}”的元素类型 - 所有元素都是空引用。|
+|无法派生数据集“{dataset_name}”的列“{column_name}”的元素类型 - 所有元素都是空引用。|
 
 
 ## <a name="error-0045"></a>错误 0045  
@@ -771,8 +783,8 @@ For general information about how the Matchbox recommendation algorithm works, a
 |异常消息|
 |------------------------|
 |无法创建具有混合元素类型的列。|
-|无法创建 ID 为“{column_id}”的混合元素类型的列：\n\tdata[{row_1}, {column_id}] 的类型为“{type_1}”。 data[{row_2}, {column_id}] 的类型为“{type_2}”。|
-|无法创建 ID 为“{column_id}”的混合元素类型的列：\n\t区块 {chunk_id_1} 类型为“{type_1}”。 区块 {chunk_id_2} 类型为“{type_2}”，区块大小为 {chunk_size}。|
+|无法创建 ID 为“{column_id}”的混合元素类型的列:<br />数据[{row_1}, {column_id}]的类型为“{type_1}”。 <br />数据[{row_2}, {column_id}]的类型为“{type_2}”。|
+|无法创建 ID 为“{column_id}”的混合元素类型的列:<br />区块 {chunk_id_1} 中的类型为“{type_1}”。 <br />区块 {chunk_id_2} 中的类型为“{type_2}”，区块大小为 {chunk_size}。|
 
 
 ## <a name="error-0046"></a>错误 0046  
@@ -785,7 +797,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 |异常消息|
 |------------------------|
 |请指定有效的输出目录。|
-|无法创建目录 {0}。 请指定有效路径。|
+|无法创建目录 {path}。 请指定有效的路径。|
 
 
 ## <a name="error-0047"></a>错误 0047  
@@ -824,8 +836,8 @@ For general information about how the Matchbox recommendation algorithm works, a
 |异常消息|
 |------------------------|
 |无法打开文件。|
-|打开文件时出错：{0}。|
-|打开文件时出错：{0}。 存储异常消息：{1}。|
+|打开文件 {file_name} 时出错。|
+|打开文件 {file_name} 时出错。 存储异常消息: {exception}。|
 
 
 ## <a name="error-0049"></a>错误 0049  
@@ -902,15 +914,15 @@ For general information about how the Matchbox recommendation algorithm works, a
 
 **解决方法：**
 
- 只有在之前将属性“Azure blob 存储写入模式”设置为“错误”时，才会收到此错误   。 根据设计，如果你尝试将数据集写入已存在的 blob，那么此模块将引发错误。
+ 只有在之前将属性“Azure blob 存储写入模式”设置为“错误”时，才会收到此错误 。 根据设计，如果你尝试将数据集写入已存在的 blob，那么此模块将引发错误。
 
- - 打开模块属性，将属性“Azure blob 存储写入模式”更改为“覆盖”   。
+ - 打开模块属性，将属性“Azure blob 存储写入模式”更改为“覆盖” 。
  - 或者，你可以键入其他目标 blob 或文件的名称，并确保指定尚不存在的 blob。  
 
 |异常消息|
 |------------------------|
 |文件或 Blob 已存在。|
-|文件或 Blob“{0}”已存在。|
+|文件或 Blob“{file_path}”已存在。|
 
 
 ## <a name="error-0058"></a>错误 0058  
@@ -945,7 +957,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 |异常消息|
 |------------------------|
 |无法分析一个或多个指定的列索引或索引范围。|
-|无法分析列索引或范围“{0}”。|
+|无法分析列索引或范围“{column_index_or_range}”。|
 
 
 ## <a name="error-0060"></a>错误 0060  
@@ -957,8 +969,8 @@ For general information about how the Matchbox recommendation algorithm works, a
 
 |异常消息|
 |------------------------|
-|指定的列索引范围无效或超出范围。|
-|列范围“{0}”无效或超出范围。|
+|指定了无效或超出范围的列索引范围。|
+|列范围“{column_range}”无效或超出范围。|
 
 
 ## <a name="error-0061"></a>错误 0061  
@@ -1014,7 +1026,7 @@ For general information about how the Matchbox recommendation algorithm works, a
   
 -   SAS URI 不包含有效的 blob 名称。  
 
-**解决方法：** 重新访问引发异常的模块。 验证指定的 blob 是否存在于存储帐户中的容器内，并验证你是否有权查看该 blob。 如果具有带编码格式的 Excel 或 CSV，请验证输入的格式是否为 containername/filename  。 验证 SAS URI 是否包含有效的 blob 名称。  
+**解决方法：** 重新访问引发异常的模块。 验证指定的 blob 是否存在于存储帐户中的容器内，并验证你是否有权查看该 blob。 如果具有带编码格式的 Excel 或 CSV，请验证输入的格式是否为 containername/filename。 验证 SAS URI 是否包含有效的 blob 名称。  
 
 |异常消息|
 |------------------------|
@@ -1034,8 +1046,8 @@ For general information about how the Matchbox recommendation algorithm works, a
 
 |异常消息|
 |------------------------|
-|无法将资源上传到 Azure 存储。|
-|无法将文件“{0}”作为“{1}”上传到 Azure 存储。|
+|无法将资源上载到 Azure 存储。|
+|无法将文件“{source_path}”作为“{dest_path}”上载到 Azure 存储。|
 
 
 ## <a name="error-0067"></a>错误 0067  
@@ -1079,7 +1091,6 @@ For general information about how the Matchbox recommendation algorithm works, a
 |异常消息|
 |------------------------|
 |Hive 脚本不正确。|
-|Hive 脚本 {0} 不正确。|
 
 
 ## <a name="error-0069"></a>错误 0069  
@@ -1094,15 +1105,15 @@ For general information about how the Matchbox recommendation algorithm works, a
  通过直接登录到数据库服务器并运行查询来验证该查询在 Azure ML 之外是否正常运作。  
 
  如果模块异常报告了由 SQL 生成的消息，请根据报告的错误采取操作。 例如，错误消息有时包含关于可能出现的错误的特定指导：
-+ 没有此列或缺少数据库，表示键入的列名可能有误  。 如果你确定列名正确，请尝试使用括号或引号将列标识符括起来。
-+ \<SQL 关键字\>附近出现 SQL 逻辑错误，表示指定的关键字前面可能存在语法错误 
++ 没有此列或缺少数据库，表示键入的列名可能有误。 如果你确定列名正确，请尝试使用括号或引号将列标识符括起来。
++ \<SQL keyword\> 附近出现 SQL 逻辑错误，表示指定的关键字前面可能存在语法错误
 
   
 |异常消息|
 |------------------------|
 |SQL 脚本不正确。|
-|SQL 查询“{0}”不正确。|
-|SQL 查询“{0}”不正确：{1}。|
+|SQL 查询“{sql_query}”不正确。|
+|SQL 查询“{sql_query}”不正确。 异常消息: {exception}。|
 
 
 ## <a name="error-0070"></a>错误 0070  
@@ -1115,7 +1126,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 |异常消息|
 |------------------------|
 |Azure 表不存在。|
-|Azure 表“{0}”不存在。|
+|Azure 表“{table_name}”不存在。|
 
 
 ## <a name="error-0072"></a>错误 0072  
@@ -1139,8 +1150,8 @@ For general information about how the Matchbox recommendation algorithm works, a
 
 |异常消息|
 |------------------------|
-|未能转换列。|
-|未能将列转换为 {0}。|
+|无法转换列。|
+|无法将列转换为 {target_type}。|
 
 
 ## <a name="error-0075"></a>错误 0075  
@@ -1152,7 +1163,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 
 在早期版本的 Azure 机器学习中引入了此事件的错误处理，该版本允许对分箱方法进行更多自定义操作。 当前所有分箱方法都可从下拉列表中进行选择，因此从技术上讲，应该不可能再收到此错误。
 
- <!--If you get this error when using the [Group Data into Bins](group-data-into-bins.md) module, consider reporting the issue in the [Azure Machine Learning forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=MachineLearning), providing the data types, parameter settings, and the exact error message.  -->
+ <!--If you get this error when using the [Group Data into Bins](group-data-into-bins.md) module, consider reporting the issue in the [Microsoft Q&A question page for Azure Machine Learning](https://docs.microsoft.com/answers/topics/azure-machine-learning-studio-classic.html), providing the data types, parameter settings, and the exact error message.  -->
 
 |异常消息|
 |------------------------|
@@ -1169,7 +1180,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 |异常消息|
 |------------------------|
 |blob 写入模式不受支持。|
-|blob 写入模式 {0} 不受支持。|
+|blob 写入模式 {blob_write_mode} 不受支持。|
 
 
 ## <a name="error-0078"></a>错误 0078  
@@ -1187,14 +1198,14 @@ For general information about how the Matchbox recommendation algorithm works, a
 ## <a name="error-0079"></a>错误 0079  
  如果指定的 Azure 存储容器不正确，将出现异常。  
 
- 如果指定的 Azure 存储容器名称不正确，则 Azure 机器学习中会出现此错误。 如果在写入 Azure Blob 存储时，尚未使用“以 container 开头的 blob 路径”选项指定容器和 blob（文件）名称，你将收到此错误  。  
+ 如果指定的 Azure 存储容器名称不正确，则 Azure 机器学习中会出现此错误。 如果在写入 Azure Blob 存储时，尚未使用“以 container 开头的 blob 路径”选项指定容器和 blob（文件）名称，你将收到此错误。  
 
-**解决方法：** 重新访问[导出数据](export-data.md)模块，并验证指定的 blob 路径是否包含容器和文件名（格式为 container/filename）  。  
+**解决方法：** 重新访问[导出数据](export-data.md)模块，并验证指定的 blob 路径是否包含容器和文件名（格式为 container/filename）。  
 
 |异常消息|
 |------------------------|
 |Azure 存储容器名称不正确。|
-|Azure 存储容器名称“{0}”不正确；容器名称的格式应为 container/blob。|
+|Azure 存储容器名称“{container_name}”不正确；应提供 container/blob 格式的容器名称。|
 
 
 ## <a name="error-0080"></a>错误 0080  
@@ -1206,8 +1217,8 @@ For general information about how the Matchbox recommendation algorithm works, a
 
 |异常消息|
 |------------------------|
-|不允许使用缺失所有值的列。|
-|列 {0} 的值全部缺失。|
+|不允许使用包含所有缺失值的列。|
+|列 {col_index_or_name} 包含所有缺失值。|
 
 
 ## <a name="error-0081"></a>错误 0081  
@@ -1244,9 +1255,10 @@ For general information about how the Matchbox recommendation algorithm works, a
 |异常消息|
 |------------------------|
 |用于训练的数据集无效。|
-|{0} 包含用于训练的无效数据。|
-|{0} 包含用于训练的无效数据。 学习器类型：{1}。|
-|{0} 包含用于训练的无效数据。 学习器类型：{1}。 原因：{2}。|
+|{data_name} 包含无法用于训练的数据。|
+|{data_name} 包含无法用于训练的数据。 学习器类型: {learner_type}。|
+|{data_name} 包含无法用于训练的数据。 学习器类型: {learner_type}。 原因: {reason}。|
+|无法对训练数据 {data_name} 应用“{action_name}”操作。 原因: {reason}。|
 
 
 ## <a name="error-0084"></a>错误 0084  
@@ -1270,8 +1282,8 @@ For general information about how the Matchbox recommendation algorithm works, a
 
 |异常消息|
 |------------------------|
-|评估脚本期间出错。|
-|评估脚本期间出现以下错误，请查看输出日志以了解详细信息：---------- Start of error message from {script_language} interpreter ----------{message}---------- End of error message from {script_language}  interpreter  ----------|
+|计算脚本期间出错。|
+|计算脚本期间发生以下错误，请查看输出日志以了解详细信息:<br />---------- 来自 {script_language} 解释器的错误消息开头 ----------<br />{message}<br />---------- 来自 {script_language} 解释器的错误消息结尾 ----------|
 
 
 ## <a name="error-0090"></a>错误 0090  
@@ -1283,9 +1295,9 @@ For general information about how the Matchbox recommendation algorithm works, a
 
 |异常消息|
 |------------------------|
-|无法创建 Hive 表。 对于 HDInsight 群集，请确保与群集相关联的 Azure 存储帐户名称与通过模块参数传递的名称相同。|
-|无法创建 Hive 表“{0}”。 对于 HDInsight 群集，请确保与群集相关联的 Azure 存储帐户名称与通过模块参数传递的名称相同。|
-|无法创建 Hive 表“{0}”。 对于 HDInsight 群集，请确保与群集相关联的 Azure 存储帐户名称为“{1}”。|
+|无法创建 Hive 表。 对于 HDInsight 群集，请确保与群集关联的 Azure 存储帐户名称与通过模块参数传入的名称相同。|
+|无法创建 Hive 表“{table_name}”。 对于 HDInsight 群集，请确保与群集关联的 Azure 存储帐户名称与通过模块参数传入的名称相同。|
+|无法创建 Hive 表“{table_name}”。 对于 HDInsight 群集，请确保与群集关联的 Azure 存储帐户名称为“{cluster_name}”。|
 
 
 ## <a name="error-0102"></a>错误 0102  
@@ -1309,12 +1321,25 @@ For general information about how the Matchbox recommendation algorithm works, a
   
  当你创建自定义模块 xml 定义，并且定义中的形参或实参的类型与受支持的类型不匹配时，Azure 机器学习中会产生此错误。  
   
-**解决方法：** 请确保自定义模块 xml 定义文件中任何 Arg 元素的类型属性都是受支持的类型  。  
+**解决方法：** 请确保自定义模块 xml 定义文件中任何 Arg 元素的类型属性都是受支持的类型。  
   
 |异常消息|  
 |------------------------|  
 |参数类型不受支持。|  
-|指定了不受支持的参数类型“{0}”。|  
+|指定了不支持的参数类型“{0}”。|  
+
+
+## <a name="error-0107"></a>错误 0107  
+ 当模块定义文件定义了不支持的输出类型时引发  
+  
+ 当自定义模块 xml 定义中输出端口的类型与支持的类型不匹配时，将在 Azure 机器学习中生成此错误。  
+  
+**解决方法：** 确保自定义模块 xml 定义文件中 Output 元素的 type 属性是受支持的类型。  
+  
+|异常消息|  
+|------------------------|  
+|输出类型不受支持。|  
+|指定了不支持的输出类型“{output_type}”。|  
 
 
 ## <a name="error-0125"></a>错误 0125  
@@ -1341,8 +1366,8 @@ For general information about how the Matchbox recommendation algorithm works, a
 
 |异常消息|
 |------------------------|
-|图像像素大小超过允许的限制。|
-|文件“{0}”中的图像像素大小超过允许的限制“{1}”。|
+|图像像素大小超出了允许的限制。|
+|文件“{file_path}”中的图像像素大小超出了允许的限制:“{size_limit}”。|
 
 
 ## <a name="error-0128"></a>错误 0128  
@@ -1353,7 +1378,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 |异常消息|
 |------------------------|
 |分类列的条件概率数超出了限制。|
-|分类列的条件概率数超出了限制。 列“{0}”和“{1}”存在问题。|
+|分类列的条件概率数超出了限制。 “{column_name_or_index_1}”和“{column_name_or_index_2}”列是有问题的配对。|
 
 
 ## <a name="error-0129"></a>错误 0129  
@@ -1378,9 +1403,10 @@ For general information about how the Matchbox recommendation algorithm works, a
 
 解决方法： 
 
- 如果在列选择中包含标签列，但无法识别，请使用[编辑元数据](edit-metadata.md)模块将其标记为标签列。
+ 如果在列选择中包含标签列，但无法识别该列，请使用[编辑元数据](edit-metadata.md)模块将其标记为标签列。
 
-  <!--Use the [Summarize Data](summarize-data.md) module to generate a report that shows how many values are missing in each column. -->然后，可以使用[清理缺失数据](clean-missing-data.md)模块删除标签列中包含缺失值的行。 
+  <!--Use the [Summarize Data](summarize-data.md) module to generate a report that shows how many values are missing in each column. -->
+  然后，可以使用[清理缺失数据](clean-missing-data.md)模块来删除标签列中包含缺失值的行。 
 
  检查输入数据集以确保它们包含有效数据和足够的行来满足操作要求。 如果算法具有最少数据行数要求，但数据只包含几行或一个标头，很多算法会生成错误消息。
 
@@ -1423,8 +1449,8 @@ For general information about how the Matchbox recommendation algorithm works, a
 
 |异常消息|
 |------------------------|
-|分类列和字符串列中选定的数值列数和唯一值数量过少。|
-|分类列和字符串列中选定的数值列数和唯一值数的总数（当前为 {0}）应至少为 {1}。|
+|所选数值列的数量以及分类列和字符串列中唯一值的数量太少。|
+|所选数值列以及分类列和字符串列中唯一值的总数(当前为 {actual_num} 个)应至少为 {lower_boundary}。|
 
 
 ## <a name="error-0154"></a>错误 0154  
@@ -1441,8 +1467,8 @@ For general information about how the Matchbox recommendation algorithm works, a
 
 |异常消息|
 |------------------------|
-|列名不是字符串。|
-|列名 {column_names} 不是字符串。|
+|数据帧列名称必须是字符串类型。 列名称不是字符串。|
+|数据帧列名称必须是字符串类型。 列名称 {column_names} 不是字符串。|
 
 
 ## <a name="error-0156"></a>错误 0156  
@@ -1461,6 +1487,27 @@ For general information about how the Matchbox recommendation algorithm works, a
 |------------------------|
 |数据存储信息无效。|
 |数据存储信息无效。 未能获取工作区“{workspace_name}”中的 AzureML 数据存储“{datastore_name}”。|
+
+
+## <a name="error-0158"></a>错误 0158
+ 转换目录无效时引发。
+
+|异常消息|
+|------------------------------------------------------------|
+|给定的 TransformationDirectory 无效。|
+|TransformationDirectory“{arg_name}”无效。 原因: {reason}。 请重新运行训练实验，以生成转换文件。 如果训练实验被删除，请重新创建并保存转换文件。|
+|TransformationDirectory“{arg_name}”无效。 原因: {reason}。 {troubleshoot_hint}|
+
+
+## <a name="error-0159"></a>错误 0159
+ 如果模块模型目录无效，则会发生异常。 
+
+|异常消息|
+|------------------------------------------------------------|
+|给定的 ModelDirectory 无效。|
+|ModelDirectory“{arg_name}”无效。|
+|ModelDirectory“{arg_name}”无效。 原因: {reason}。|
+|ModelDirectory“{arg_name}”无效。 原因: {reason}。 {troubleshoot_hint}|
 
 
 ## <a name="error-1000"></a>错误 1000  

@@ -2,20 +2,21 @@
 title: 具有依赖资源的模板
 description: 了解如何使用多个资源创建 Azure 资源管理器模板，以及如何使用 Azure 门户部署该模板
 author: rockboyfor
-origin.date: 04/10/2020
-ms.date: 04/30/2020
+origin.date: 04/23/2020
+ms.date: 06/22/2020
 ms.topic: tutorial
 ms.author: v-yeche
-ms.openlocfilehash: 05bba3705acd0ad6d6cfa1e4d4cddcd6b49cfd91
-ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
+ms.openlocfilehash: 52ec4ca1acb4a616541a40e0fb19f692767e3c94
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82596127"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098634"
 ---
+<!--Verify successfully on 06/177/2020 by harris-->
 # <a name="tutorial-create-arm-templates-with-dependent-resources"></a>教程：创建包含所依赖资源的 ARM 模板
 
-了解如何创建 Azure 资源管理器 (ARM) 模板以部署多个资源并配置部署顺序。 创建模板后，从 Azure 门户使用本地 Shell 部署该模板。
+了解如何创建 Azure 资源管理器 (ARM) 模板以部署多个资源并配置部署顺序。 创建模板后，使用 shell 部署该模板。
 
 <!--Not Available on Cloud Shell-->
 
@@ -49,15 +50,15 @@ ms.locfileid: "82596127"
 
 Azure 快速入门模板是 ARM 模板的存储库。 无需从头开始创建模板，只需找到一个示例模板并对其自定义即可。 本教程中使用的模板称为[部署简单的 Windows VM](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows/)。
 
-1. 在 Visual Studio Code 中，选择“文件”>“打开文件”。  
-2. 在“文件名”中粘贴以下 URL： 
+1. 在 Visual Studio Code 中，选择“文件”>“打开文件”。 
+2. 在“文件名”中粘贴以下 URL：
 
     ```url
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json
     ```
 
-3. 选择“打开”以打开该文件。 
-4. 选择“文件”>“另存为”，将该文件的副本保存到名为 **azuredeploy.json** 的本地计算机。  
+3. 选择“打开”以打开该文件。
+4. 选择“文件”>“另存为”，将该文件的副本保存到名为 **azuredeploy.json** 的本地计算机。 
 
 ## <a name="explore-the-template"></a>浏览模板
 
@@ -107,7 +108,7 @@ Azure 快速入门模板是 ARM 模板的存储库。 无需从头开始创建�
     
     ![Visual Studio Code Azure 资源管理器模板虚拟网络 dependsOn](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-virtual-network-definition.png)
 
-    使用 dependsOn 元素可将一个资源定义为与一个或多个资源相依赖。 使用 dependsOn 元素可将一个资源定义为与一个或多个资源相依赖。  此资源依赖于另一个资源：
+    使用 dependsOn 元素可将一个资源定义为与一个或多个资源相依赖。 此资源依赖于另一个资源：
 
     * `Microsoft.Network/networkSecurityGroups`
 
@@ -135,6 +136,24 @@ Azure 快速入门模板是 ARM 模板的存储库。 无需从头开始创建�
 
 1. 运行以下 PowerShell 脚本以部署该模板。
 
+    # <a name="cli"></a>[CLI](#tab/CLI)
+
+    ```azurecli
+    echo "Enter a project name that is used to generate resource group name:" &&
+    read projectName &&
+    echo "Enter the location (i.e. chinaeast):" &&
+    read location &&
+    echo "Enter the virtual machine admin username:" &&
+    read adminUsername &&
+    echo "Enter the DNS label prefix:" &&
+    read dnsLabelPrefix &&
+    resourceGroupName="${projectName}rg" &&
+    az group create --name $resourceGroupName --location $location &&
+    az deployment group create --resource-group $resourceGroupName --template-file "azuredeploy.json" --parameters adminUsername=$adminUsername dnsLabelPrefix=$dnsLabelPrefix
+    ```
+
+    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
+
     ```azurepowershell
     $projectName = Read-Host -Prompt "Enter a project name that is used to generate resource group name"
     $location = Read-Host -Prompt "Enter the location (i.e. chinaeast)"
@@ -154,19 +173,7 @@ Azure 快速入门模板是 ARM 模板的存储库。 无需从头开始创建�
     Write-Host "Press [ENTER] to continue ..."
     ```
 
-1. 运行以下 PowerShell 命令，列出新建的虚拟机：
-
-    ```azurepowershell
-    $projectName = Read-Host -Prompt "Enter a project name that is used to generate resource group name"
-    $resourceGroupName = "${projectName}rg"
-    $vmName = "SimpleWinVM"
-
-    Get-AzVM -Name $vmName -ResourceGroupName $resourceGroupName
-
-    Write-Host "Press [ENTER] to continue ..."
-    ```
-
-    虚拟机名称在模板中硬编码为 **SimpleWinVM**。
+    ---
 
 1. 通过 RDP 连接到虚拟机，验证虚拟机是否已成功创建。
 
@@ -174,12 +181,16 @@ Azure 快速入门模板是 ARM 模板的存储库。 无需从头开始创建�
 
 不再需要 Azure 资源时，请通过删除资源组来清理部署的资源。
 
-1. 在 Azure 门户上的左侧菜单中选择“资源组”  。
-2. 在“按名称筛选”字段中输入资源组名称。 
-3. 选择资源组名称。  应会看到，该资源组中总共有六个资源。
-4. 在顶部菜单中选择“删除资源组”。 
+1. 在 Azure 门户上的左侧菜单中选择“资源组”。
+2. 在“按名称筛选”字段中输入资源组名称。
+3. 选择资源组名称。 应会看到，该资源组中总共有六个资源。
+4. 在顶部菜单中选择“删除资源组”。
 
-<!--Not Available on  ## Next steps-->
-<!--Not Available on  [Use deployment script](./template-tutorial-deployment-script.md)-->
+## <a name="next-steps"></a>后续步骤
+
+本教程介绍如何通过开发和部署模板来创建虚拟机、虚拟网络和依赖资源。 若要了解如何使用部署脚本来执行部署前/后操作，请参阅：
+
+> [!div class="nextstepaction"]
+> [使用部署脚本](./template-tutorial-deployment-script.md)
 
 <!-- Update_Description: update meta properties, wording update, update link -->

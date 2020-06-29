@@ -2,16 +2,16 @@
 title: 使用模板部署 VM 扩展
 description: 了解如何使用 Azure 资源管理器模板部署虚拟机扩展
 author: rockboyfor
-origin.date: 04/16/2020
-ms.date: 04/30/2020
+origin.date: 04/23/2020
+ms.date: 06/22/2020
 ms.topic: tutorial
 ms.author: v-yeche
-ms.openlocfilehash: fbf7bb676e31bac80c5f3a88c099dfc94e35aa83
-ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
+ms.openlocfilehash: 01ea62fec42320e08cefa08f7bfbb586fbc50a84
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82596120"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098716"
 ---
 <!-- Verify Successfully-->
 # <a name="tutorial-deploy-virtual-machine-extensions-with-arm-templates"></a>教程：使用 ARM 模板部署虚拟机扩展
@@ -55,14 +55,14 @@ Install-WindowsFeature -name Web-Server -IncludeManagementTools
 
 Azure 快速入门模板是 ARM 模板的存储库。 无需从头开始创建模板，只需找到一个示例模板并对其自定义即可。 本教程中使用的模板称为[部署简单的 Windows VM](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows/)。
 
-1. 在 Visual Studio Code 中，选择“文件” > “打开文件”。  
-1. 在“文件名”框中粘贴以下 URL： 
+1. 在 Visual Studio Code 中，选择“文件” > “打开文件”。**** ****
+1. 在“文件名”框中粘贴以下 URL：****
 
     ```url
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json
     ```
 
-1. 若要打开该文件，请选择“打开”。 
+1. 若要打开该文件，请选择“打开”。****
     该模板定义五个资源：
 
     * `Microsoft.Storage/storageAccounts`。 
@@ -80,7 +80,7 @@ Azure 快速入门模板是 ARM 模板的存储库。 无需从头开始创建�
 
      在自定义模板之前，不妨对其进行一些基本的了解。
 
-1. 选择“文件” > “另存为”，使用文件名 *azuredeploy.json* 将该文件的副本保存到本地计算机。  
+1. 选择“文件” > “另存为”，使用文件名 *azuredeploy.json* 将该文件的副本保存到本地计算机。**** ****
 
 ## <a name="edit-the-template"></a>编辑模板
 
@@ -124,7 +124,7 @@ Azure 快速入门模板是 ARM 模板的存储库。 无需从头开始创建�
 * **fileUris**：存储脚本文件的位置。 如果不使用提供的位置，则需更新这些值。
 * **commandToExecute**：此命令调用脚本。
 
-若要使用内联脚本，请删除“fileUris”  并将“commandToExecute”  更新为：
+若要使用内联脚本，请删除“fileUris”**** 并将“commandToExecute”**** 更新为：
 
 ```powershell
 powershell.exe Install-WindowsFeature -name Web-Server -IncludeManagementTools && powershell.exe remove-item 'C:\\inetpub\\wwwroot\\iisstart.htm' && powershell.exe Add-Content -Path 'C:\\inetpub\\wwwroot\\iisstart.htm' -Value $('Hello World from ' + $env:computername)
@@ -157,7 +157,7 @@ powershell.exe Install-WindowsFeature -name Web-Server -IncludeManagementTools &
 
 有关部署过程，请参阅“部署模板”部分，文档为[教程：创建包含依赖资源的 ARM 模板](./template-tutorial-create-templates-with-dependent-resources.md#deploy-the-template)。 建议使用为虚拟机管理员帐户生成的密码。 请参阅本文的[先决条件](#prerequisites)部分。
 
-在本地 PowerShell 中，运行以下命令来检索 VM 的公共 IP 地址：
+在本地 Shell 中，运行以下命令以检索 VM 的公共 IP 地址：
 
 ```azurepowershell
 (Get-AzPublicIpAddress -ResourceGroupName $resourceGroupName).IpAddress
@@ -171,11 +171,11 @@ powershell.exe Install-WindowsFeature -name Web-Server -IncludeManagementTools &
 
 不再需要部署的 Azure 资源时，请通过删除资源组将其清除。
 
-1. 在 Azure 门户的左窗格中选择“资源组”  。
-2. 在“按名称筛选”框中输入资源组名称。 
+1. 在 Azure 门户的左窗格中选择“资源组”****。
+2. 在“按名称筛选”框中输入资源组名称。****
 3. 选择资源组名称。
     将显示资源组中的六个资源。
-4. 在顶部菜单中选择“删除资源组”。 
+4. 在顶部菜单中选择“删除资源组”。****
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -6,18 +6,20 @@ author: rockboyfor
 tags: keyvault
 ms.service: virtual-machines-linux
 ms.topic: article
-ms.date: 04/27/2020
+origin.date: 06/22/2020
+ms.date: 06/22/2020
 ms.author: v-yeche
-ms.openlocfilehash: 23890f03fdb9ee8bf065cc1e584737e73872e18c
-ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
+ms.openlocfilehash: 4bc1ba0f5d1d683e2ad17b1e443ea761ee280957
+ms.sourcegitcommit: 4d824957213536e79cf097fd29bd0bd0f8306066
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82596524"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84901927"
 ---
+<!--Verified successfully-->
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>适用于 Linux 的 Key Vault 虚拟机扩展
 
-密钥保管库 VM 扩展可自动刷新 Azure 密钥保管库中存储的证书。 具体而言，该扩展会监视在密钥保管库中存储的观察到的证书列表。  检测到更改后，该扩展会检索并安装相应的证书。 Key Vault VM 扩展由 Microsoft 发布并提供支持，目前在 Linux VM 上提供。 本文档详细介绍适用于 Linux 的 Key Vault VM 扩展支持的平台、配置和部署选项。 
+通过 Key Vault 虚拟机 (VM) 扩展，可自动刷新 Azure Key Vault 上存储的证书。 具体而言，该扩展会监视在密钥保管库中存储的观察到的证书列表。  检测到更改后，该扩展会检索并安装相应的证书。 Key Vault VM 扩展由 Microsoft 发布并提供支持，目前在 Linux VM 上提供。 本文档详细介绍适用于 Linux 的 Key Vault VM 扩展支持的平台、配置和部署选项。 
 
 ### <a name="operating-system"></a>操作系统
 
@@ -37,38 +39,37 @@ Key Vault VM 扩展支持以下 Linux 发行版：
 
 以下 JSON 显示 Key Vault VM 代理扩展的架构。 该扩展不需要受保护的设置 - 其所有设置都被视为没有安全影响的信息。 该扩展需要受监视的密钥列表、轮询频率和目标证书存储。 具体而言：  
 ```json
-    {
-      "type": "Microsoft.Compute/virtualMachines/extensions",
-      "name": "KVVMExtensionForLinux",
-      "apiVersion": "2019-07-01",
-      "location": "<location>",
-      "dependsOn": [
-          "[concat('Microsoft.Compute/virtualMachines/', <vmName>)]"
-      ],
-      "properties": {
-      "publisher": "Microsoft.Azure.KeyVault",
-      "type": "KeyVaultForLinux",
-      "typeHandlerVersion": "1.0",
-      "autoUpgradeMinorVersion": true,
-      "settings": {
-        "secretsManagementSettings": {
-          "pollingIntervalInS": <polling interval in seconds, e.g. "3600">,
-          "certificateStoreName": <certificate store name, e.g.: "MY">,
-          "linkOnRenewal": <Not available on Linux e.g.: false>,
-          "certificateStoreLocation": <certificate store location, currently it works locally only e.g.: "LocalMachine">,
-          "requireInitialSync": <initial synchronization of certificates e..g: true>,
-          "observedCertificates": <list of KeyVault URIs representing monitored certificates, e.g.: "https://myvault.vault.azure.net/secrets/mycertificate"
-        }      
-      }
-      }
-    }
+{
+  "type": "Microsoft.Compute/virtualMachines/extensions",
+  "name": "KVVMExtensionForLinux",
+  "apiVersion": "2019-07-01",
+  "location": "<location>",
+  "dependsOn": [
+      "[concat('Microsoft.Compute/virtualMachines/', <vmName>)]"
+  ],
+  "properties": {
+  "publisher": "Microsoft.Azure.KeyVault",
+  "type": "KeyVaultForLinux",
+  "typeHandlerVersion": "1.0",
+  "autoUpgradeMinorVersion": true,
+  "settings": {
+    "secretsManagementSettings": {
+      "pollingIntervalInS": <polling interval in seconds, e.g. "3600">,
+      "certificateStoreName": <It is ignored on Linux>,
+      "linkOnRenewal": <Not available on Linux e.g.: false>,
+      "certificateStoreLocation": <disk path where certificate is stored, default: "/var/lib/waagent/Microsoft.Azure.KeyVault">,
+      "requireInitialSync": <initial synchronization of certificates e..g: true>,
+      "observedCertificates": <list of KeyVault URIs representing monitored certificates, e.g.: "https://myvault.vault.azure.cn/secrets/mycertificate"
+    }      
+  }
+  }
+}
 ```
 
 > [!NOTE]
-> 观察到的证书 URL 的格式应为 `https://myVaultName.vault.azure.net/secrets/myCertName`。
+> 观察到的证书 URL 的格式应为 `https://myVaultName.vault.azure.cn/secrets/myCertName`。
 > 
-> 这是因为 `/secrets` 路径将返回包含私钥的完整证书，而 `/certificates` 路径不会。 有关证书的详细信息可在此处找到：[密钥保管库证书](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-certificates)
-
+> 这是因为 `/secrets` 路径将返回包含私钥的完整证书，而 `/certificates` 路径不会。 有关证书的详细信息可在此处找到：[密钥保管库证书](/key-vault/about-keys-secrets-and-certificates#key-vault-certificates)
 
 ### <a name="property-values"></a>属性值
 
@@ -79,12 +80,11 @@ Key Vault VM 扩展支持以下 Linux 发行版：
 | type | KeyVaultForLinux | string |
 | typeHandlerVersion | 1.0 | int |
 | pollingIntervalInS | 3600 | string |
-| certificateStoreName | MY | string |
+| certificateStoreName | 它在 Linux 上被忽略 | string |
 | linkOnRenewal | false | boolean |
-| certificateStoreLocation  | LocalMachine | string |
+| certificateStoreLocation  | /var/lib/waagent/Microsoft.Azure.KeyVault | string |
 | requiredInitialSync | 是 | boolean |
-| observedCertificates  | ["https://myvault.vault.azure.net/secrets/mycertificate"] | 字符串数组
-
+| observedCertificates  | ["https://myvault.vault.azure.cn/secrets/mycertificate"] | 字符串数组
 
 ## <a name="template-deployment"></a>模板部署
 
@@ -109,15 +109,14 @@ Key Vault VM 扩展支持以下 Linux 发行版：
       "settings": {
           "secretsManagementSettings": {
           "pollingIntervalInS": <polling interval in seconds, e.g. "3600">,
-          "certificateStoreName": <certificate store name, e.g.: "MY">,
-          "certificateStoreLocation": <certificate store location, currently it works locally only e.g.: "LocalMachine">,
-          "observedCertificates": <list of KeyVault URIs representing monitored certificates, e.g.: "https://myvault.vault.azure.net/secrets/mycertificate"
+          "certificateStoreName": <ingnored on linux>,
+          "certificateStoreLocation": <disk path where certificate is stored, default: "/var/lib/waagent/Microsoft.Azure.KeyVault">,
+          "observedCertificates": <list of KeyVault URIs representing monitored certificates, e.g.: "https://myvault.vault.azure.cn/secrets/mycertificate"
         }      
       }
       }
     }
 ```
-
 
 ## <a name="azure-powershell-deployment"></a>Azure PowerShell 部署
 
@@ -126,19 +125,18 @@ Key Vault VM 扩展支持以下 Linux 发行版：
 * 在 VM 上部署该扩展：
     
     ```powershell
-        # Build settings
-        $settings = '{"secretsManagementSettings": 
-        { "pollingIntervalInS": "' + <pollingInterval> + 
-        '", "certificateStoreName": "' + <certStoreName> + 
-        '", "certificateStoreLocation": "' + <certStoreLoc> + 
-        '", "observedCertificates": ["' + <observedCerts> + '"] } }'
-        $extName =  "KeyVaultForLinux"
-        $extPublisher = "Microsoft.Azure.KeyVault"
-        $extType = "KeyVaultForLinux"
-       
-    
-        # Start the deployment
-        Set-AzVmExtension -TypeHandlerVersion "1.0" -ResourceGroupName <ResourceGroupName> -Location <Location> -VMName <VMName> -Name $extName -Publisher $extPublisher -Type $extType -SettingString $settings
+    # Build settings
+    $settings = '{"secretsManagementSettings": 
+    { "pollingIntervalInS": "' + <pollingInterval> + 
+    '", "certificateStoreName": "' + <certStoreName> + 
+    '", "certificateStoreLocation": "' + <certStoreLoc> + 
+    '", "observedCertificates": ["' + <observedCerts> + '"] } }'
+    $extName =  "KeyVaultForLinux"
+    $extPublisher = "Microsoft.Azure.KeyVault"
+    $extType = "KeyVaultForLinux"
+
+    # Start the deployment
+    Set-AzVmExtension -TypeHandlerVersion "1.0" -ResourceGroupName <ResourceGroupName> -Location <Location> -VMName <VMName> -Name $extName -Publisher $extPublisher -Type $extType -SettingString $settings
     
     ```
 
@@ -146,22 +144,22 @@ Key Vault VM 扩展支持以下 Linux 发行版：
 
     ```powershell
     
-        # Build settings
-        $settings = '{"secretsManagementSettings": 
-        { "pollingIntervalInS": "' + <pollingInterval> + 
-        '", "certificateStoreName": "' + <certStoreName> + 
-        '", "certificateStoreLocation": "' + <certStoreLoc> + 
-        '", "observedCertificates": ["' + <observedCerts> + '"] } }'
-        $extName = "KeyVaultForLinux"
-        $extPublisher = "Microsoft.Azure.KeyVault"
-        $extType = "KeyVaultForLinux"
+    # Build settings
+    $settings = '{"secretsManagementSettings": 
+    { "pollingIntervalInS": "' + <pollingInterval> + 
+    '", "certificateStoreName": "' + <certStoreName> + 
+    '", "certificateStoreLocation": "' + <certStoreLoc> + 
+    '", "observedCertificates": ["' + <observedCerts> + '"] } }'
+    $extName = "KeyVaultForLinux"
+    $extPublisher = "Microsoft.Azure.KeyVault"
+    $extType = "KeyVaultForLinux"
         
-        # Add Extension to VMSS
-        $vmss = Get-AzVmss -ResourceGroupName <ResourceGroupName> -VMScaleSetName <VmssName>
-        Add-AzVmssExtension -VirtualMachineScaleSet $vmss  -Name $extName -Publisher $extPublisher -Type $extType -TypeHandlerVersion "1.0" -Setting $settings
+    # Add Extension to VMSS
+    $vmss = Get-AzVmss -ResourceGroupName <ResourceGroupName> -VMScaleSetName <VmssName>
+    Add-AzVmssExtension -VirtualMachineScaleSet $vmss  -Name $extName -Publisher $extPublisher -Type $extType -TypeHandlerVersion "1.0" -Setting $settings
 
-        # Start the deployment
-        Update-AzVmss -ResourceGroupName <ResourceGroupName> -VMScaleSetName <VmssName> -VirtualMachineScaleSet $vmss 
+    # Start the deployment
+    Update-AzVmss -ResourceGroupName <ResourceGroupName> -VMScaleSetName <VmssName> -VirtualMachineScaleSet $vmss 
     
     ```
 
@@ -194,8 +192,7 @@ Key Vault VM 扩展支持以下 Linux 发行版：
 请注意以下限制/要求：
 - Key Vault 限制：
     - 必须在部署时存在 
-    - 使用 MSI 为 VM/VMSS 标识设置密钥保管库访问策略
-
+    - 必须使用托管标识为 VM/VMSS 标识设置 Key Vault 访问策略。 请参阅如何[使用托管标识提供 Key Vault 身份验证](../../key-vault/managed-identity.md)
 
 ## <a name="troubleshoot-and-support"></a>故障排除和支持
 
@@ -212,10 +209,16 @@ Get-AzVMExtension -VMName <vmName> -ResourceGroupname <resource group name>
 ```azurecli
 az vm get-instance-view --resource-group <resource group name> --name  <vmName> --query "instanceView.extensions"
 ```
+### <a name="logs-and-configuration"></a>日志和配置
+
+```
+/var/log/waagent.log
+/var/log/azure/Microsoft.Azure.KeyVault.KeyVaultForLinux/*
+/var/lib/waagent/Microsoft.Azure.KeyVault.KeyVaultForLinux-<most recent version>/config/*
+```
 
 ### <a name="support"></a>支持
 
 如果对本文中的任何观点存在疑问，可以联系 [Azure 支持](https://support.azure.cn/support/contact/)上的 Azure 专家。 或者，也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://support.azure.cn/support/support-azure/)提交请求。 有关使用 Azure 支持的信息，请阅读[世纪互联 Azure 支持常见问题解答](https://www.azure.cn/support/faq/)。
 
-<!-- Update_Description: new article about key vault linux -->
-<!--NEW.date: 04/27/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

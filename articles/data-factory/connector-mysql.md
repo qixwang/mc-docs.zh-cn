@@ -9,15 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-origin.date: 02/19/2020
-ms.date: 05/11/2020
+origin.date: 05/12/2020
+ms.date: 06/29/2020
 ms.author: v-jay
-ms.openlocfilehash: 0747a405a7c5d7c112f1390e193167201b08cc68
-ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
+ms.openlocfilehash: 54db04026172e0c0a206ada65d6b06ee6c5c7c25
+ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82198226"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85323285"
 ---
 # <a name="copy-data-from-mysql-using-azure-data-factory"></a>使用 Azure 数据工厂从 MySQL 复制数据
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -31,12 +31,12 @@ ms.locfileid: "82198226"
 
 以下活动支持此 MySQL 连接器：
 
-- 带有[支持的源或接收器矩阵](copy-activity-overview.md)的[复制活动](copy-activity-overview.md)
+- 包含[支持的源/接收器矩阵](copy-activity-overview.md)的 [Copy 活动](copy-activity-overview.md)
 - [Lookup 活动](control-flow-lookup-activity.md)
 
 可以将数据从 MySQL 数据库复制到任何支持的接收器数据存储。 有关复制活动支持作为源/接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
 
-具体而言，此 MySQL 连接器支持 5.6 和5.7 版本的 MySQL  。
+具体而言，此 MySQL 连接器支持 MySQL 版本 5.6、5.7 和 8.0。
 
 ## <a name="prerequisites"></a>先决条件
 

@@ -12,17 +12,17 @@ origin.date: 02/20/2020
 ms.date: 04/20/2020
 ms.author: v-tawe
 zone_pivot_groups: platforms-set-of-three
-ms.openlocfilehash: 40433ce4a6d0c03d128ac29767376899d88dac26
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.openlocfilehash: 8128bdf76f9da0aefb6342660bf6a18c190967c4
+ms.sourcegitcommit: 304d3ef3c9e65c3e85977b3afb9985fbc0f908d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82126785"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85095963"
 ---
 # <a name="quickstart-run-the-speech-devices-sdk-sample-app-on-windows-linux-or-android"></a>快速入门：在 Windows、Linux 或 Android 上运行语音设备 SDK 示例应用
 
 > [!IMPORTANT]
-> 需要语音 SDK 版本 1.10.0 或更高版本。
+> 需要语音 SDK 1.11.0 或更高版本。
 
 ::: zone pivot="platform-windows"
 [!INCLUDE [Windows platform](includes/speech-devices-sdk-windows-quickstart.md)]

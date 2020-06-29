@@ -5,16 +5,16 @@ author: WenJason
 manager: digimobile
 ms.topic: article
 origin.date: 03/25/2019
-ms.date: 05/18/2020
+ms.date: 06/22/2020
 ms.author: v-jay
 ms.reviewer: anwestg
 ms.lastreviewed: 08/20/2019
-ms.openlocfilehash: a66304300356e460b4f9f15124e00d0d43aa1990
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.openlocfilehash: 8a2b43a0742908901b503f80ea9e0bb160eb633f
+ms.sourcegitcommit: d86e169edf5affd28a1c1a4476d72b01a7fb421d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83422408"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85096382"
 ---
 # <a name="app-service-on-azure-stack-hub-update-1-release-notes"></a>Azure Stack Hub 上的应用服务 Update 1 发行说明
 
@@ -27,14 +27,14 @@ ms.locfileid: "83422408"
 
 Azure Stack Hub 上的应用服务 Update 1 的内部版本号为 **69.0.13698.9**。
 
-### <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>先决条件
 
 > [!IMPORTANT]
-> 基于 Azure Stack Hub 的 Azure 应用服务的新部署现在要求提供[三使用者通配型证书](azure-stack-app-service-before-you-get-started.md#get-certificates)，因为在 Azure 应用服务中处理适用于 Kudu 的 SSO 的方式已改进。 新的使用者是 **\*.sso.appservice.\<region\>.\<domainname\>.\<extension\>**
+> 基于 Azure Stack Hub 的 Azure 应用服务的新部署现在要求提供三使用者通配型证书，因为在 Azure 应用服务中处理适用于 Kudu 的 SSO 的方式已改进。 新使用者为“\*.sso.appservice.\<region\>.\<domainname\>.\<extension\>”
 
 在开始部署之前，请参阅[在 Azure Stack Hub 上部署应用服务的先决条件](azure-stack-app-service-before-you-get-started.md)。
 
-### <a name="new-features-and-fixes"></a>新功能和修复
+## <a name="new-features-and-fixes"></a>新功能和修复
 
 Azure Stack Hub 上的 Azure 应用服务 Update 1 包含以下改进和修复：
 
@@ -74,11 +74,11 @@ Azure Stack Hub 上的 Azure 应用服务 Update 1 包含以下改进和修复�
     - 已将**适用于 Windows 的 Git** 更新到 v2.14.1
     - 已将 **Mercurial** 更新到 v4.5.0
 
-  - 增加了对“仅限 HTTPS”  功能的支持，该功能位于应用服务用户门户的“自定义域”功能中。
+  - 增加了对“仅限 HTTPS”功能的支持，该功能位于应用服务用户门户的“自定义域”功能中。
 
   - 增加了在 Azure Functions 的自定义存储选取器中对存储连接进行验证的功能。
 
-#### <a name="fixes"></a>修复项
+### <a name="fixes"></a>修复项
 
 - 创建脱机部署包时，客户再也不会一打开应用服务安装程序中的文件夹就收到拒绝访问错误消息。
 
@@ -92,7 +92,7 @@ Azure Stack Hub 上的 Azure 应用服务 Update 1 包含以下改进和修复�
 
 - 修复了在删除 Microsoft.Web 命名空间中包含资源的订阅时，返回到 Azure 资源管理器的状态不正确的问题。
 
-### <a name="known-issues-with-the-deployment-process"></a>部署过程的已知问题
+## <a name="known-issues-with-the-deployment-process"></a>部署过程的已知问题
 
 - 证书验证错误。
 
@@ -102,11 +102,11 @@ Azure Stack Hub 上的 Azure 应用服务 Update 1 包含以下改进和修复�
 
     Get-AzureStackRootCert.ps1 出错，导致客户在尚未安装 Azure Stack Hub 根证书的计算机上执行此脚本时无法检索该根证书。 现在，此脚本也已重新发布，解决了此问题。 [在此处下载更新的帮助程序脚本](https://aka.ms/appsvconmashelpers)。 如果在使用更新的脚本检索根证书时仍然遇到问题，请与支持部门联系。
 
-### <a name="known-issues-with-the-update-process"></a>更新过程的已知问题
+## <a name="known-issues-with-the-update-process"></a>更新过程的已知问题
 
 - 基于 Azure Stack Hub 的 Azure 应用服务 Update 1 的更新没有已知问题。
 
-### <a name="known-issues-post-installation"></a>已知问题（安装后）
+## <a name="known-issues-post-installation"></a>已知问题（安装后）
 
 - 槽交换不正常。
 
@@ -137,7 +137,7 @@ Azure Stack Hub 上的 Azure 应用服务 Update 1 包含以下改进和修复�
       Set-AzureRmNetworkSecurityGroup -NetworkSecurityGroup $nsg
     ```
 
-2. 浏览到 Azure Stack Hub 管理员门户中“虚拟机”下的 **CN0-VM**，单击“连接”，以便通过控制器实例打开远程桌面会话。  使用在部署应用服务期间指定的凭据。
+2. 浏览到 Azure Stack Hub 管理员门户中“虚拟机”下的 **CN0-VM**，单击“连接”，以便通过控制器实例打开远程桌面会话。 使用在部署应用服务期间指定的凭据。
 3. 以管理员身份启动 **PowerShell** 并执行以下脚本：
 
     ```powershell
@@ -202,7 +202,7 @@ Azure Stack Hub 上的 Azure 应用服务 Update 1 包含以下改进和修复�
 - 优先级：700
 - 姓名：Outbound_Allow_SMB445
 
-### <a name="known-issues-for-cloud-admins-operating-azure-app-service-on-azure-stack-hub"></a>云管理员在操作基于 Azure Stack Hub 的 Azure 应用服务时的已知问题
+## <a name="known-issues-for-cloud-admins-operating-azure-app-service-on-azure-stack-hub"></a>云管理员在操作基于 Azure Stack Hub 的 Azure 应用服务时的已知问题
 
 请参阅 [Azure Stack Hub 1802 发行说明](azure-stack-update-1903.md)中的文档
 

@@ -9,14 +9,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-origin.date: 01/16/2018
-ms.date: 05/11/2020
-ms.openlocfilehash: 09614a45ff091838f356ed8a1c3ea6571e4bc656
-ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
+origin.date: 05/08/2020
+ms.date: 06/29/2020
+ms.openlocfilehash: 8c01e8dea65d9d3bc6533014ec458927f1f89978
+ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82198202"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85323109"
 ---
 # <a name="transform-data-using-hadoop-streaming-activity-in-azure-data-factory"></a>使用 Azure 数据工厂中的 Hadoop 流式处理活动转换数据
 
@@ -76,7 +76,7 @@ ms.locfileid: "82198202"
 | mapper            | 指定映射器可执行文件的名称 | 是      |
 | reducer           | 指定化简器可执行文件的名称 | 是      |
 | combiner          | 指定合并器可执行文件的名称 | 否       |
-| fileLinkedService | 对 Azure 存储链接服务的引用，该服务用于存储要执行的映射器、合并器和化简器程序。 如果未指定此链接服务，则使用 HDInsight 链接服务中定义的 Azure 存储链接服务。 | 否       |
+| fileLinkedService | 对 Azure 存储链接服务的引用，该服务用于存储要执行的映射器、合并器和化简器程序。 此处仅支持 [Azure Blob 存储](/data-factory/connector-azure-blob-storage)和 [ADLS Gen2](/data-factory/connector-azure-data-lake-storage) 链接服务 。 如果未指定此链接服务，则使用 HDInsight 链接服务中定义的 Azure 存储链接服务。 | 否       |
 | filePath          | 提供由 fileLinkedService 引用的 Azure 存储中存储的映射器、合并器和化简器程序的路径数组。 此路径区分大小写。 | 是      |
 | input             | 指定映射器输入文件的 WASB 路径。 | 是      |
 | output            | 指定化简器输出文件的 WASB 路径。 | 是      |

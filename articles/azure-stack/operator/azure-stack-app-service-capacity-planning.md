@@ -3,17 +3,17 @@ title: 针对 Azure Stack Hub 中的应用服务服务器角色的容量计划
 description: 了解针对 Azure Stack Hub 中的应用服务服务器角色的容量计划。
 author: WenJason
 ms.topic: article
-origin.date: 03/13/2019
-ms.date: 05/18/2020
+origin.date: 05/05/2019
+ms.date: 06/22/2020
 ms.author: v-jay
 ms.reviewer: anwestg
-ms.lastreviewed: 03/13/20192
-ms.openlocfilehash: 2cc7fb9ca93105e28a2e07da31093c18362a90e8
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.lastreviewed: 04/13/2020
+ms.openlocfilehash: 344577a7c9e7f590a24f059195bcc34f9d8de4fa
+ms.sourcegitcommit: d86e169edf5affd28a1c1a4476d72b01a7fb421d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83422459"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85096495"
 ---
 # <a name="capacity-planning-for-app-service-server-roles-in-azure-stack-hub"></a>针对 Azure Stack Hub 中的应用服务服务器角色的容量计划
 
@@ -21,44 +21,49 @@ ms.locfileid: "83422459"
 
 本文提供了有关应当为任何生产部署使用的最少计算实例和计算 SKU 数量的指南。
 
+> [!NOTE]
+> 建议用于角色的计算 SKU 的相关指南已随 Azure Stack Hub 上的 2020.Q2 版 Azure 应用服务进行更新，使标准部署与 Azure 部署保持一致。
+
 可以使用这些准则来计划应用服务容量策略。
 
 | 应用服务服务器角色 | 建议的最少实例数 | 建议的计算 SKU|
 | --- | --- | --- |
-| 控制器 | 2 | A1 |
-| 前端 | 2 | A1 |
-| 管理 | 2 | A3 |
-| 发布者 | 2 | A1 |
-| Web 辅助角色 - 共享 | 2 | A1 |
-| Web 辅助角色 - 专用 | 每层 2 个 | A1 |
+| 控制器 | 2 | A4v2 |
+| 前端 | 2 | A4_v2 |
+| 管理 | 2 | D3_v2 |
+| 发布者 | 2 | A2_v2 |
+| Web 辅助角色 - 共享 | 2 | A4_v2 |
+| Web 辅助角色 - 专用 - 小型 | 每层 2 个 | A1_v2 |
+| Web 辅助角色 - 专用 - 中型 | 每层 2 个 | A2_v2 |
+| Web 辅助角色 - 专用 - 大型 | 每层 2 个 | A4_v2 |
 
 ## <a name="controller-role"></a>控制器角色
 
-**建议的最小值**：两个 A1 Standard 实例
+**建议的最小值**：两个 A4v2 实例
 
 Azure 应用服务控制器通常消耗较少的 CPU、内存和网络资源。 但是，为了实现高可用性，必须具有两个控制器。 两个控制器也是允许的最大控制器数。 在部署期间可以直接通过安装程序创建第二个网站控制器。
 
 ## <a name="front-end-role"></a>前端角色
 
-**建议的最小值**：两个 A1 Standard 实例
+**建议的最小值**：两个 A4v_2 实例
 
 前端根据 Web 辅助角色可用性将请求路由到 Web 辅助角色。 为实现高可用性，应配备一个以上前端，并且可以配备两个以上。 对于容量计划用途，请考虑每个核心每秒可以处理大约 100 个请求。
 
 ## <a name="management-role"></a>管理角色
 
-**建议的最小值**：两个 A3 Standard 实例
+**建议的最小值**：两个 D3v2 实例
 
 Azure 应用经典部署模型角色负责管理应用服务 Azure 资源管理器和 API 终结点、门户扩展（管理员门户、租户门户、Functions 门户）和数据服务。 在生产环境中，管理服务器角色通常仅需要大约 4-GB RAM。 但是，当执行许多管理任务（例如创建网站）时，它可能会经历很高的 CPU 利用率水平。 为实现高可用性，应当将一台以上服务器分配给此角色，并且每台服务器至少两个核心。
 
 ## <a name="publisher-role"></a>发布服务器角色
 
-**建议的最小值**：两个 A1 Standard 实例
+**建议的最小值**：两个 A2v2 实例
 
 如果许多用户同时发布，则发布服务器角色可能会经历很高的 CPU 使用率。 为实现高可用性，请务必提供多个发布服务器角色。 发布服务器仅处理 FTP/FTPS 流量。
 
 ## <a name="web-worker-role"></a>Web 辅助角色
 
-**建议的最小值**：两个 A1 Standard 实例
+**建议的最小值**：两个 A4_v2 实例
 
 为实现高可用性，应当配备至少四个 Web 辅助角色：两个用于共享网站模式，两个用于你计划提供的每个专用辅助角色层。 共享计算模式和专用计算模式向租户提供不同的服务级别。 如果你有符合下述情况的许多客户，则可能需要更多 Web 辅助角色：
 

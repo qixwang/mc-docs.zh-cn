@@ -5,16 +5,16 @@ author: rockboyfor
 tags: azure-resource-manager
 ms.service: cosmos-db
 ms.topic: quickstart
-origin.date: 02/27/2020
-ms.date: 04/27/2020
+origin.date: 06/01/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
 ms.custom: subject-armqs
-ms.openlocfilehash: 9071bc42433cfff9b2dd618b81687068db09a3f4
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.openlocfilehash: 8bf97caa884eb2f947864b44d6aa443a987ede82
+ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82134589"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85323280"
 ---
 <!--Verified successfully-->
 # <a name="quickstart-create-an-azure-cosmos-db-and-a-container-by-using-azure-resource-manager-template"></a>快速入门：使用 Azure 资源管理器模板创建 Azure Cosmos DB 和容器
@@ -37,7 +37,7 @@ Azure 订阅，或免费的 Azure Cosmos DB 试用帐户
 
 ### <a name="review-the-template"></a>查看模板
 
-本快速入门中使用的模板来自 [Azure 快速入门模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-cosmosdb-create/)。
+本快速入门中使用的模板来自 [Azure 快速入门模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-cosmosdb-sql/)。
 
 ```json
 {
@@ -73,51 +73,49 @@ Azure 订阅，或免费的 Azure Cosmos DB 试用帐户
         "defaultConsistencyLevel": {
             "type": "string",
             "defaultValue": "Session",
-            "allowedValues": [
-                "Eventual",
-                "ConsistentPrefix",
-                "Session",
-                "BoundedStaleness",
-                "Strong"
-            ],
+            "allowedValues": [ "Eventual", "ConsistentPrefix", "Session", "BoundedStaleness", "Strong" ],
             "metadata": {
                 "description": "The default consistency level of the Cosmos DB account."
             }
         },
-        "multipleWriteLocations": {
-            "type": "bool",
-            "defaultValue": false,
-            "allowedValues": [
-                true,
-                false
-            ],
+        "maxStalenessPrefix": {
+            "type": "int",
+            "minValue": 10,
+            "defaultValue": 100000,
+            "maxValue": 2147483647,
             "metadata": {
-                "description": "Enable multi-master to make all regions writable."
+                "description": "Max stale requests. Required for BoundedStaleness. Valid ranges, Single Region: 10 to 1000000. Multi Region: 100000 to 1000000."
             }
         },
+        "maxIntervalInSeconds": {
+            "type": "int",
+            "minValue": 5,
+            "defaultValue": 300,
+            "maxValue": 86400,
+            "metadata": {
+                "description": "Max lag time (minutes). Required for BoundedStaleness. Valid ranges, Single Region: 5 to 84600. Multi Region: 300 to 86400."
+            }
+        },  
         "automaticFailover": {
             "type": "bool",
-            "defaultValue": false,
-            "allowedValues": [
-                true,
-                false
-            ],
+            "defaultValue": true,
+            "allowedValues": [ true, false ],
             "metadata": {
-                "description": "Enable automatic failover for regions. Ignored when Multi-Master is enabled"
+                "description": "Enable automatic failover for regions"
             }
         },
         "databaseName": {
             "type": "string",
-            "defaultValue": "Database1",
+            "defaultValue": "myDatabase",
             "metadata": {
-                "description": "The name for the Azure Cosmos database"
+                "description": "The name for the database"
             }
         },
         "containerName": {
             "type": "string",
-            "defaultValue": "Container1",
+            "defaultValue": "myContainer",
             "metadata": {
-                "description": "The name for the container with dedicated throughput"
+                "description": "The name for the container"
             }
         },
         "throughput": {
@@ -126,23 +124,38 @@ Azure 订阅，或免费的 Azure Cosmos DB 试用帐户
             "minValue": 400,
             "maxValue": 1000000,
             "metadata": {
-                "description": "The throughput for the container with dedicated throughput"
-            }
+                "description": "The throughput for the container"
+            }           
         }
     },
     "variables": {
         "accountName": "[toLower(parameters('accountName'))]",
         "consistencyPolicy": {
+            "Eventual": {
+                "defaultConsistencyLevel": "Eventual"
+            },
+            "ConsistentPrefix": {
+                "defaultConsistencyLevel": "ConsistentPrefix"
+            },
             "Session": {
                 "defaultConsistencyLevel": "Session"
+            },
+            "BoundedStaleness": {
+                "defaultConsistencyLevel": "BoundedStaleness",
+                "maxStalenessPrefix": "[parameters('maxStalenessPrefix')]",
+                "maxIntervalInSeconds": "[parameters('maxIntervalInSeconds')]"
+            },
+            "Strong": {
+                "defaultConsistencyLevel": "Strong"
             }
         },
-        "locations": [
+        "locations": 
+        [ 
             {
                 "locationName": "[parameters('primaryRegion')]",
                 "failoverPriority": 0,
                 "isZoneRedundant": false
-            },
+            }, 
             {
                 "locationName": "[parameters('secondaryRegion')]",
                 "failoverPriority": 1,
@@ -150,30 +163,28 @@ Azure 订阅，或免费的 Azure Cosmos DB 试用帐户
             }
         ]
     },
-    "resources": [
+    "resources": 
+    [
         {
             "type": "Microsoft.DocumentDB/databaseAccounts",
             "name": "[variables('accountName')]",
-            "apiVersion": "2019-08-01",
+            "apiVersion": "2020-03-01",
             "kind": "GlobalDocumentDB",
             "location": "[parameters('location')]",
             "properties": {
                 "consistencyPolicy": "[variables('consistencyPolicy')[parameters('defaultConsistencyLevel')]]",
                 "locations": "[variables('locations')]",
                 "databaseAccountOfferType": "Standard",
-                "enableAutomaticFailover": "[parameters('automaticFailover')]",
-                "enableMultipleWriteLocations": "[parameters('multipleWriteLocations')]"
+                "enableAutomaticFailover": "[parameters('automaticFailover')]"
             }
         },
         {
             "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases",
             "name": "[concat(variables('accountName'), '/', parameters('databaseName'))]",
-            "apiVersion": "2019-08-01",
-            "dependsOn": [
-                "[resourceId('Microsoft.DocumentDB/databaseAccounts', variables('accountName'))]"
-            ],
-            "properties": {
-                "resource": {
+            "apiVersion": "2020-03-01",
+            "dependsOn": [ "[resourceId('Microsoft.DocumentDB/databaseAccounts', variables('accountName'))]" ],
+            "properties":{
+                "resource":{
                     "id": "[parameters('databaseName')]"
                 }
             }
@@ -181,46 +192,64 @@ Azure 订阅，或免费的 Azure Cosmos DB 试用帐户
         {
             "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers",
             "name": "[concat(variables('accountName'), '/', parameters('databaseName'), '/', parameters('containerName'))]",
-            "apiVersion": "2019-08-01",
-            "dependsOn": [
-                "[resourceId('Microsoft.DocumentDB/databaseAccounts/sqlDatabases', variables('accountName'), parameters('databaseName'))]"
-            ],
-            "properties": {
-                "resource": {
-                    "id": "[parameters('containerName')]",
+            "apiVersion": "2020-03-01",
+            "dependsOn": [ "[resourceId('Microsoft.DocumentDB/databaseAccounts/sqlDatabases', variables('accountName'), parameters('databaseName'))]" ],
+            "properties":
+            {
+                "resource":{
+                    "id":  "[parameters('containerName')]",
                     "partitionKey": {
                         "paths": [
-                            "/myPartitionKey"
+                        "/myPartitionKey"
                         ],
                         "kind": "Hash"
                     },
                     "indexingPolicy": {
                         "indexingMode": "consistent",
-                        "includedPaths": [
-                            {
+                        "includedPaths": [{
                                 "path": "/*"
                             }
                         ],
-                        "excludedPaths": [
-                            {
+                        "excludedPaths": [{
                                 "path": "/myPathToNotIndex/*"
+                            }
+                        ],
+                        "compositeIndexes":[  
+                        [
+                            {
+                                "path":"/name",
+                                "order":"ascending"
+                            },
+                            {
+                                "path":"/age",
+                                "order":"descending"
+                            }
+                        ]
+                    ],
+                    "spatialIndexes": [
+                            {
+                                "path": "/path/to/geojson/property/?",
+                                "types": [
+                                    "Point",
+                                    "Polygon",
+                                    "MultiPolygon",
+                                    "LineString"
+                                ]
                             }
                         ]
                     },
                     "defaultTtl": 86400,
                     "uniqueKeyPolicy": {
                         "uniqueKeys": [
-                            {
-                                "paths": [
-                                    "/phoneNumber"
-                                ]
-                            }
+                        {
+                            "paths": [
+                            "/phoneNumber"
+                            ]
+                        }
                         ]
                     }
                 },
-                "options": {
-                    "throughput": "[parameters('throughput')]"
-                }
+                "options": { "throughput": "[parameters('throughput')]" }
             }
         }
     ]
@@ -247,9 +276,9 @@ Azure 订阅，或免费的 Azure Cosmos DB 试用帐户
 
 1. 选择下图登录到 Azure 并打开一个模板。 该模板将创建 Azure Cosmos 帐户、数据库和容器。
 
-    [![“部署到 Azure”](./media/quick-create-template/deploy-to-azure.png)](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-create%2Fazuredeploy.json)
+    [![“部署到 Azure”](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-sql%2Fazuredeploy.json)
 
-    <!--CORRECT ON media/quick-create-template/deploy-to-azure.png-->
+    <!--CORRECT ON media/template-deployments/deploy-to-azure.svg-->
     
 2. 选择或输入以下值。
 
@@ -257,9 +286,9 @@ Azure 订阅，或免费的 Azure Cosmos DB 试用帐户
 
     除非另有指定，否则请使用默认值创建 Azure Cosmos 资源。
 
-    * **订阅**：选择一个 Azure 订阅。
-    * **资源组**：选择“新建”，输入资源组的唯一名称，然后单击“确定”。  
-    * **位置**：选择一个位置。  例如，**中国北部**。
+    * 订阅：选择一个 Azure 订阅。
+    * 资源组：选择“新建”，输入资源组的唯一名称，然后单击“确定”。 
+    * 位置：选择一个位置。  例如，**中国北部**。
     * **帐户名称**：输入 Azure Cosmos 帐户的名称。 它必须全局唯一。 
         
         <!--MOONCAKE: CORRECT ON globally unique-->
@@ -267,12 +296,15 @@ Azure 订阅，或免费的 Azure Cosmos DB 试用帐户
     * **位置**：输入要在其中创建 Azure Cosmos 帐户的位置。 Azure Cosmos 帐户必须与资源组处于同一位置。
     * **主要区域**：Azure Cosmos 帐户的主要副本区域。
     * **次要区域**：Azure Cosmos 帐户的次要副本区域。
+    * **默认一致性级别**：Azure Cosmos 帐户的默认一致性级别。
+    * **最大过期前缀**：最大过时请求数。 对于 BoundedStaleness 是必需的。
+    * **以秒为单位的最大间隔**：最大延迟时间。 对于 BoundedStaleness 是必需的。
     * **数据库名称**：Azure Cosmos 数据库的名称。
     * **容器名称**：Azure Cosmos 容器的名称。
     * **吞吐量**：容器的吞吐量，最小吞吐量值为 400 RU/秒。
     * **我同意上述条款和条件**：选中。
 
-3. 选择“购买”。  成功部署 Azure Cosmos 帐户后，你会收到通知：
+3. 选择“购买”。 成功部署 Azure Cosmos 帐户后，你会收到通知：
 
     ![资源管理器模板, Cosmos DB 集成, 部署门户通知](./media/quick-create-template/resource-manager-template-portal-deployment-notification.png)
 

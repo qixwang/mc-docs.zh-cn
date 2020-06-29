@@ -9,18 +9,18 @@ author: WenJason
 ms.service: load-balancer
 ms.topic: troubleshooting
 origin.date: 04/27/2020
-ms.date: 06/08/2020
+ms.date: 06/22/2020
 ms.author: v-jay
-ms.openlocfilehash: 87f92e85d9ae5f3603d65b15d433407fcb0000c4
-ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
+ms.openlocfilehash: c43ca6a7b7e1293a91e79db5f5de54e99f310bf0
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84275672"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098651"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-load-balancer"></a>排查使用 Azure 负载均衡器时出现的常见 Azure 部署错误
 
-本文介绍了一些常见的 Azure 负载均衡器部署错误及其解决方法。 如果需要某个错误代码的信息，而本文没有提供该信息，请告知我们。 在此页的底部，你可以留下反馈。 我们将跟踪 GitHub 问题的反馈。
+本文介绍了一些常见的 Azure 负载均衡器部署错误及其解决方法。 如果你正在查找有关错误代码的信息，但本文未提供这些信息，请告知我们。 在此页的底部，你可以留下反馈。 我们将跟踪 GitHub 问题的反馈。
 
 ## <a name="error-codes"></a>错误代码
 
@@ -29,6 +29,7 @@ ms.locfileid: "84275672"
 |DifferentSkuLoadBalancersAndPublicIPAddressNotAllowed| 公共 IP SKU 和负载均衡器 SKU 必须匹配。 请确保 Azure 负载均衡器和公共 IP SKU 匹配。 对于生产型工作负荷，建议使用标准 SKU。 详细了解 [SKU 中的差异](./skus.md)  |
 |DifferentSkuLoadBalancerAndPublicIPAddressNotAllowedInVMSS | 当未指定 SKU 或在没有标准公共 IP 的情况下部署 SKU 时，虚拟机规模集默认设置为“基本负载均衡器”。 在单个实例上使用标准公共 IP 重新部署虚拟机规模集，以确保选择“标准负载均衡器”，或者在从 Azure 门户部署虚拟机规模集时直接选择“标准 LB”。 |
 |MaxAvailabilitySetsInLoadBalancerReached | 负载均衡器的后端池最多可包含 150 个可用性集。 如果未为后端池中的 VM 显式定义可用性集，则每个 VM 都将进入其各自的可用性集。 因此，部署 150 个独立 VM 意味着会有 150 个可用性集，因此会达到限制。 一种解决方法是部署可用性集并将更多 VM 添加到其中。 |
+|NetworkInterfaceAndLoadBalancerAreInDifferentAvailabilitySets | 对于基本 SKU 负载均衡器，网络接口和负载均衡器必须位于同一可用性集中。 |
 |RulesOfSameLoadBalancerTypeUseSameBackendPortProtocolAndIPConfig| 对于给定的负载均衡器类型（内部、公共），不能有多个规则使用由同一虚拟机规模集引用的相同后端端口和协议。 更新规则以更改此重复规则创建操作。 |
 |RulesOfSameLoadBalancerTypeUseSameBackendPortProtocolAndVmssIPConfig| 对于给定的负载均衡器类型（内部、公共），不能有多个规则使用由同一虚拟机规模集引用的相同后端端口和协议。 更新规则参数以更改此重复规则创建操作。 |
 |AnotherInternalLoadBalancerExists| 你只能使用一个“内部”类型的负载均衡器引用该负载均衡器后端的同一组 VM/网络接口。 更新部署，以确保只创建一个相同类型的负载均衡器。 |

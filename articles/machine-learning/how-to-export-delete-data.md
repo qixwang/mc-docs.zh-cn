@@ -5,20 +5,21 @@ description: 了解如何使用 Azure 机器学习工作室、CLI、SDK 和经�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.reviewer: jmartens
 author: lobrien
 ms.author: laobri
-ms.date: 11/04/2019
+ms.date: 04/24/2020
 ms.custom: seodec18
-ms.openlocfilehash: 911ffe754c7fad73eeb484e97bd28e69d285fd7a
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 9668a9b4e7bcafff5f4b8a78c4d98708e3c6417a
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80343386"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097515"
 ---
-# <a name="export-or-delete-your-machine-learning-service-workspace-data"></a>导出或删除机器学习服务工作区数据 
+# <a name="export-or-delete-your-machine-learning-service-workspace-data"></a>导出或删除机器学习服务工作区数据
+
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 在 Azure 机器学习中，可以使用经过身份验证的 REST API 导出或删除工作区数据。 本文介绍了相关实现方法。
@@ -28,15 +29,16 @@ ms.locfileid: "80343386"
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="control-your-workspace-data"></a>控制工作区数据
+
 通过 Azure 机器学习工作室、CLI、SDK 和经过身份验证的 REST API，可导出和删除 Azure 机器学习存储的产品内数据。 可通过 Azure 隐私门户访问遥测数据。 
 
 在 Azure 机器学习中，个人数据包括运行历史记录文档中的用户信息以及用户与服务之间的一些交互的遥测数据记录。
 
-## <a name="delete-workspace-data-with-the-rest-api"></a>使用 REST API 删除工作区数据 
+## <a name="delete-workspace-data-with-the-rest-api"></a>使用 REST API 删除工作区数据
 
 若要删除数据，可以使用 HTTP DELETE 谓词进行以下 API 调用。 它们是通过在请求中放置 `Authorization: Bearer <arm-token>` 标头进行授权的，其中 `<arm-token>` 是 `https://management.core.windows.net/` 终结点的 AAD 访问令牌。  
 
-若要了解如何获取此令牌并调用 Azure 终结点，请参阅 [Azure REST API 文档](https://docs.microsoft.com/rest/api/azure/)。  
+若要了解如何获取此令牌并调用 Azure 终结点，请参阅[使用 REST 管理 ML 资源](how-to-manage-rest.md)和 [Azure REST API 文档](https://docs.microsoft.com/rest/api/azure/)。  
 
 在下面的示例中，请将 {} 中的文本替换为决定了相关资源的实例名称。
 
@@ -117,6 +119,7 @@ ms.locfileid: "80343386"
     https://management.azure.com/subscriptions/{subscriptionId}/resourceGroup/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/computes/{computeName}?api-version=2019-11-01
 
 ### <a name="export-run-history-data"></a>导出运行历史记录数据
+
 使用以下调用来获取所有试验及其信息的列表：
 
     https://{location}.experiments.azureml.net/history/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/experiments 
@@ -136,16 +139,16 @@ ms.locfileid: "80343386"
 可以使用以下调用获取单一运行指标：
 
     https://{location}.experiments.azureml.net/history/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/experiments/{experimentName}/metrics/{metricId}
-    
+
 ### <a name="export-artifacts"></a>导出组件
 
 使用以下调用来获取所有组件及其路径的列表：
 
     https://{location}.experiments.azureml.net/artifact/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/artifacts/origins/ExperimentRun/containers/{runId}
-    
+
 ### <a name="export-notifications"></a>导出通知
 
-使用以下调用来获取存储任务的列表：     
+使用以下调用来获取存储任务的列表：
 
     https://{location}.experiments.azureml.net/notification/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/tasks
 
@@ -243,18 +246,9 @@ ms.locfileid: "80343386"
 
 1. 在列表中，选择要删除的单个管道草案。
 
-1. 选择“删除”。 
+1. 选择“删除” 。
 
 ### <a name="delete-datasets-in-the-designer"></a>在设计器中删除数据集
 
-若要在设计器中删除数据集，请使用 Azure 门户或存储资源管理器导航到已连接的存储帐户，删除其中的数据集。 在设计器中注销数据集只会删除存储中的引用点。 
+若要在设计器中删除数据集，请使用 Azure 门户或存储资源管理器导航到已连接的存储帐户，删除其中的数据集。 在设计器中注销数据集只会删除存储中的引用点。
 
-## <a name="export-data-in-the-designer"></a>在设计器中导出数据
-
-在创建了试验的设计器中，导出已添加的数据：
-
-1. 在左侧选择“数据集”。 
-
-1. 在列表中，选择要导出的数据集
-
-    ![下载数据](./media/how-to-export-delete-data/unregister-dataset.png)

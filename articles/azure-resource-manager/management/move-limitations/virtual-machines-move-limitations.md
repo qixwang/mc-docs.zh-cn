@@ -3,14 +3,14 @@ title: 将 Azure VM 移到新的订阅或资源组
 description: 使用 Azure 资源管理器将虚拟机移到新的资源组或订阅。
 ms.topic: conceptual
 origin.date: 03/31/2020
-ms.date: 04/30/2020
+ms.date: 06/22/2020
 ms.author: v-yeche
-ms.openlocfilehash: 5bef51b43ee1522d6464c14d354da290756d1346
-ms.sourcegitcommit: 285649db9b21169f3136729c041e4d04d323229a
+ms.openlocfilehash: 26ee8f03bb5feea80f1466c931a01667ee200f87
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84683852"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098720"
 ---
 # <a name="move-guidance-for-virtual-machines"></a>针对虚拟机的移动指南
 
@@ -21,12 +21,10 @@ ms.locfileid: "84683852"
 以下方案尚不受支持：
 
 <!--Not Available on Availability Zones-->
-
 * 无法移动具有标准 SKU 负载均衡器或标准 SKU 公共 IP 的虚拟机规模集。
 * 无法跨资源组或订阅移动基于附加了计划的市场资源创建的虚拟机。 在当前订阅中取消预配虚拟机，并在新的订阅中重新部署虚拟机。
 * 如果没有移动虚拟网络中的所有资源，则无法将现有虚拟网络中的虚拟机移到新订阅。
-    
-    <!--MOONCAKE: Not Available on Low priority-->
+<!--MOONCAKE: Not Available on Low priority-->
     
 * 可用性集中的虚拟机不能单独移动。
 
@@ -34,19 +32,22 @@ ms.locfileid: "84683852"
 
 若要移动配置了 Azure 备份的虚拟机，必须从保管库中删除还原点。
 
-如果为虚拟机启用了[软删除](../../../backup/backup-azure-security-feature-cloud.md)，则在保留这些还原点的情况下，你将无法移动虚拟机。 请[禁用软删除](../../../backup/backup-azure-security-feature-cloud.md)，或在删除还原点后等待 14 天。
+如果为虚拟机启用了[软删除](../../../backup/backup-azure-security-feature-cloud.md)，则在保留这些还原点的情况下，你将无法移动虚拟机。 请[禁用软删除](../../../backup/backup-azure-security-feature-cloud.md#enabling-and-disabling-soft-delete)，或在删除还原点后等待 14 天。
 
 ### <a name="portal"></a>门户
 
-1. 选择为备份配置的虚拟机。
+1. 暂时停止备份并保留备份数据。
+2. 若要移动配置了 Azure 备份的虚拟机，请执行以下步骤：
 
-1. 在左窗格中选择“备份”  。
-
-1. 选择“停止备份”。 
-
-1. 选择“删除备份数据”  。
-
-1. 删除完成后，可以将保管库和虚拟机移到目标订阅。 移动后即可继续备份。
+   1. 找到虚拟机的位置。
+   2. 找到包含以下命名模式的资源组：`AzureBackupRG_<location of your VM>_1`。 例如，AzureBackupRG_chinanorth2_1
+   3. 在 Azure 门户中，勾选“显示隐藏的类型”。
+   4. 查找类型为“Microsoft.Compute/restorePointCollections”的资源，其命名模式为“AzureBackup_<要移动的 VM 的名称>”。
+   5. 删除此资源。 此操作仅删除即时恢复点，不删除保管库中的备份数据。
+   6. 删除操作完成后，可以移动虚拟机。
+<!--Correct on the mistake at the end of line 40-->
+3. 将 VM 移到目标资源组。
+4. 恢复备份。
 
 ### <a name="powershell"></a>PowerShell
 

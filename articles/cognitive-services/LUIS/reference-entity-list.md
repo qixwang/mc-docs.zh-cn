@@ -1,26 +1,20 @@
 ---
 title: 列出实体类型 - LUIS
-titleSuffix: Azure Cognitive Services
 description: 列表实体表示一组固定、封闭的相关单词及其同义词。 LUIS 不会为列表实体发现更多值。 使用“建议”功能根据当前列表查看有关新词的建议。
-services: cognitive-services
-author: lingliw
-manager: digimobile
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: reference
-origin.date: 11/11/2019
-ms.date: 1/2/2019
-ms.author: v-lingwu
-ms.openlocfilehash: 533792c2c76293e3d5e214dcf08fa16736f93c93
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+origin.date: 04/14/2020
+ms.date: 06/15/2020
+ms.author: v-tawe
+ms.openlocfilehash: bb3bcd9d550ac6f24893e56a544d79c7b5cdae57
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75854215"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098596"
 ---
 # <a name="list-entity"></a>列表实体
 
-列表实体表示一组固定、封闭的相关单词及其同义词。 LUIS 不会为列表实体发现更多值。 使用“建议”功能根据当前列表查看有关新词的建议  。 如果存在多个具有相同值的列表实体，则终结点查询中会返回其中每个实体。
+列表实体表示一组固定、封闭的相关单词及其同义词。 LUIS 不会为列表实体发现更多值。 使用“建议”功能根据当前列表查看有关新词的建议。 如果存在多个具有相同值的列表实体，则终结点查询中会返回其中每个实体。
 
 列表实体不进行机器学习。 它是确切的文本匹配。 LUIS 将任何列表中某个项的任何匹配项标记为响应中的实体。
 
@@ -28,8 +22,8 @@ ms.locfileid: "75854215"
 
 * 是已知的集。
 * 不经常更改。 如果需要经常更改列表或希望列表自行扩展，则使用短语列表提升的简单实体是更好的选择。
-* 此集不超出此实体类型的最大 LUIS [边界](luis-boundaries.md)。
-* 话语中的文本是同义项或规范名称的完全匹配。 LUIS 不会使用除文本完全匹配项之外的列表。 使用列表实体无法解析模糊匹配、不区分大小写、词干、复数形式和其他变体。 若要管理变体，请考虑使用带有可选文本语法的[模式](reference-pattern-syntax.md#syntax-to-mark-optional-text-in-a-template-utterance)。
+* 此集不超出此实体类型的最大 LUIS [边界](luis-limits.md)。
+* 言语中的文本是同义项或规范名称的不区分大小写的匹配。 LUIS 不会在不匹配的情况下使用该列表。 使用列表实体无法解析模糊匹配、词干提取、复数形式和其他变体。 若要管理变体，请考虑使用带有可选文本语法的[模式](reference-pattern-syntax.md#syntax-to-mark-optional-text-in-a-template-utterance)。
 
 ![列表实体](./media/luis-concept-entities/list-entity.png)
 
@@ -133,7 +127,14 @@ ms.locfileid: "75854215"
 
 * * *
 
-|数据对象|实体名称|值|
+|数据对象|实体名称|Value|
 |--|--|--|
 |列表实体|`Cities`|`paris`|
 
+
+## <a name="next-steps"></a>后续步骤
+
+详细了解实体：
+
+* [概念](luis-concept-entity-types.md)
+* [如何创建](luis-how-to-add-entities.md)

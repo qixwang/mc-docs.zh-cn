@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: quickstart
-ms.date: 04/29/2020
+ms.date: 06/22/2020
 ms.author: v-junlch
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7999f21c6d8e9f7b0242113eb430b6c4b49b3aff
-ms.sourcegitcommit: 95efd248f5ee3701f671dbd5cfe0aec9c9959a24
+ms.openlocfilehash: 3040bd4847dcf9e1b05906e3f6aacb3b251ba418
+ms.sourcegitcommit: fac10504efdfd3806dead4b74ca6ae5fcb5ea906
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82515721"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85129720"
 ---
 # <a name="quickstart-add-a-guest-user-with-powershell"></a>快速入门：使用 PowerShell 添加来宾用户
 
@@ -56,11 +56,11 @@ Get-Module -ListAvailable AzureAD*
    Install-Module AzureADPreview 
   ```
 
-你可能会收到正在从不受信任的存储库安装模块的提示。 如果之前未将 PSGallery 存储库设置为受信任的存储库，则可能出现此情况。 按 Y 以安装模块  。
+你可能会收到正在从不受信任的存储库安装模块的提示。 如果之前未将 PSGallery 存储库设置为受信任的存储库，则可能出现此情况。 按 Y 以安装模块。
 
 ### <a name="get-a-test-email-account"></a>获取测试电子邮件帐户
 
-需要可向其发送邀请的测试电子邮件帐户。 这些帐户必须来自组织外部。 可使用任意类型的帐户，包括 gmail.com 或 outlook.com 地址等社交帐户。
+需要可向其发送邀请的测试电子邮件帐户。 这些帐户必须来自组织外部。 
 
 ## <a name="sign-in-to-your-tenant"></a>登录租户
 
@@ -75,7 +75,7 @@ Connect-AzureAD -AzureEnvironmentName AzureChinaCloud -TenantDomain "<Tenant_Dom
 
 ## <a name="send-an-invitation"></a>发送邀请
 
-1. 要向测试电子邮件帐户发送邀请，请运行以下 PowerShell 命令（将“Sanda”和“sanda\@fabrikam.com”替换为你的测试电子邮件帐户名和电子邮件地址）   ： 
+1. 要向测试电子邮件帐户发送邀请，请运行以下 PowerShell 命令（将“Sanda”和“sanda\@fabrikam.com”替换为你的测试电子邮件帐户名和电子邮件地址） ： 
 
    ```powershell
    New-AzureADMSInvitation -InvitedUserDisplayName "Sanda" -InvitedUserEmailAddress sanda@fabrikam.com -InviteRedirectURL https://account.activedirectory.windowsazure.cn/r#/applications -SendInvitationMessage $true

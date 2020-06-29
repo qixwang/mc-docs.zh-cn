@@ -11,17 +11,17 @@ ms.author: trbye
 ms.reviewer: trbye
 origin.date: 02/10/2020
 ms.date: 05/11/2020
-ms.openlocfilehash: 7fce9085262ea461746c507652e6c2e31fddcadb
-ms.sourcegitcommit: d210eb03ed6432aeefd3e9b1c77d2c92a6a8dbca
+ms.openlocfilehash: 029f76351d7ca8a83d51c0d93af71ea229bdb1a8
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82591457"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097284"
 ---
 # <a name="tutorial-get-started-creating-your-first-ml-experiment-with-the-python-sdk"></a>教程：开始使用 Python SDK 创建第一个 ML 试验
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-在本教程中，你将完成端到端的步骤，以开始使用 Jupyter Notebook 中运行的 Azure 机器学习 Python SDK。 本教程是**由两个部分组成的系列教程的第一部分**，介绍如何设置和配置 Python 环境，以及如何创建工作区来管理试验模型和机器学习模型。 [第二部分](tutorial-1st-experiment-sdk-train.md)是在本文的基础上编写的，介绍如何训练多个机器学习模型，以及如何使用 Azure 机器学习工作室和 SDK 来管理模型  。
+在本教程中，你将完成端到端的步骤，以开始使用 Jupyter Notebook 中运行的 Azure 机器学习 Python SDK。 本教程是**由两个部分组成的系列教程的第一部分**，介绍如何设置和配置 Python 环境，以及如何创建工作区来管理试验模型和机器学习模型。 [第二部分](tutorial-1st-experiment-sdk-train.md)是在本文的基础上编写的，介绍如何训练多个机器学习模型，以及如何使用 Azure 机器学习工作室和 SDK 来管理模型****。
 
 本教程介绍以下操作：
 
@@ -31,7 +31,7 @@ ms.locfileid: "82591457"
 > * 创建一个基于云的计算实例，其中已安装并预配置了 Azure 机器学习 Python SDK。
 
 
-如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
+如果没有 Azure 订阅，请在开始前创建一个试用帐户。 立即试用[免费版或付费版 Azure 机器学习](https://www.azure.cn/pricing/1rmb-trial)。
 
 ## <a name="create-a-workspace"></a>创建工作区
 
@@ -42,7 +42,7 @@ Azure 机器学习工作区是云中的基础资源，用于试验、训练和�
 [!INCLUDE [aml-create-portal](../../includes/aml-create-in-portal.md)]
 
 >[!IMPORTANT] 
-> 记下你的工作区和订阅   。 你将需要这些项才能确保在正确的位置创建试验。 
+> 记下你的工作区和订阅**** ****。 你将需要这些项才能确保在正确的位置创建试验。 
 
 ## <a name="run-notebook-in-your-workspace"></a><a name="azure"></a>在工作区中运行笔记本
 
@@ -56,44 +56,51 @@ Azure 机器学习工作区是云中的基础资源，用于试验、训练和�
 
 1. 选择创建的订阅和工作区。
 
-1. 选择左侧的“笔记本”  。
+1. 选择左侧的“笔记本”****。
 
-1. 打开“Samples”文件夹  。
+1. 选择顶部的“示例”**** 选项卡。
 
-1. 打开“Python”文件夹  。
+1. 打开“Python”文件夹****。
 
 1. 打开包含版本号的文件夹。  此数字表示 Python SDK 的当前版本。
 
-1. 选择 **tutorials** 文件夹右侧的“...”，然后选择“克隆”。  
+1. 选择 **tutorials** 文件夹右侧的“...”，然后选择“克隆”。**** ****
 
-    ![克隆文件夹](./media/tutorial-1st-experiment-sdk-setup/clone-tutorials.png)
+    :::image type="content" source="media/tutorial-1st-experiment-sdk-setup/clone-tutorials.png" alt-text="克隆 tutorials 文件夹":::
 
-1. 将显示文件夹列表，其中显示了访问工作区的每个用户。  选择要将“tutorials”文件夹克隆到其中的文件夹  。
+1. 将显示文件夹列表，其中显示了访问工作区的每个用户。  选择要将“tutorials”文件夹克隆到其中的文件夹****。
 
-### <a name="a-nameopenopen-the-cloned-notebook"></a><a name="open">打开克隆的笔记本
+### <a name="open-the-cloned-notebook"></a><a name="open"></a>打开克隆的笔记本
 
-1. 在“用户文件”下打开你的文件夹，然后打开克隆的“tutorials”文件夹。  
-
-    ![打开 tutorials 文件夹](./media/tutorial-1st-experiment-sdk-setup/expand-user-folder.png)
+1. 打开“用户文件”**** 部分中刚刚关闭的 tutorials **** 文件夹。
 
     > [!IMPORTANT]
-    > 可以查看 **samples** 文件夹中的笔记本，但无法从此文件夹运行笔记本。  若要运行笔记本，请确保在“用户文件”部分打开笔记本的克隆版本。 
+    > 可以查看 **samples** 文件夹中的笔记本，但无法从此文件夹运行笔记本。  若要运行笔记本，请确保在“用户文件”部分打开笔记本的克隆版本。****
     
 1. 选择 **tutorials/create-first-ml-experiment** 文件夹中的 **tutorial-1st-experiment-sdk-train.ipynb** 文件。
 
+    :::image type="content" source="media/tutorial-1st-experiment-sdk-setup/expand-user-folder.png" alt-text="打开 tutorials 文件夹":::
+
+
 1. 在顶部栏上，选择用来运行笔记本的计算实例。 这些 VM 中已预先配置了[运行 Azure 机器学习所需的一切设置](concept-compute-instance.md#contents)。 
 
-1. 如果未找到任何 VM，请选择“+ 添加”来创建计算实例 VM  。 
+1. 如果未找到任何 VM，请选择“+ 添加”来创建计算实例 VM****。 
 
-    1. 创建 VM 时请提供其名称。  该名称必须包含 2 到 16 个字符。 有效字符为字母、数字和 - 字符。该名称必须在整个 Azure 订阅中唯一。
+    1. 创建 VM 时，请遵循以下规则：  
+        + 名称是必填项，不能为空。
+        + 名称在工作区/计算实例的 Azure 区域中的所有现有计算实例中必须独一无二（不区分大小写）。 如果选择的名称不是独一无二的，则会收到警报。
+        + 有效字符包括大小写字母、数字（0 到 9）和短划线字符 (-)。
+        + 名称长度必须介于 3 到 24 个字符之间。
+        + 名称应以字母（而非数字或短划线字符）开头。
+        + 如果使用短划线字符，则必须在短划线后至少跟一个字母。 示例：“Test-”、“test-0”、“test-01”无效，而“test-a0”、“test-0a”为有效实例。
 
-    1.  从提供的选项中选择虚拟机大小。
+    1.  从可用选项中选择虚拟机大小。
 
-    1. 然后选择“创建”  。 设置 VM 可能需要大约 5 分钟时间。
+    1. 然后选择“创建”****。 设置 VM 可能需要大约 5 分钟时间。
 
-1. VM 可用后，它将显示在顶部工具栏中。  现在，可以使用工具栏中的“全部运行”，或者在笔记本的代码单元中按 **Shift+Enter**，来运行笔记本。 
+1. VM 可用后，它将显示在顶部工具栏中。  现在，可以使用工具栏中的“全部运行”，或者在笔记本的代码单元中按 **Shift+Enter**，来运行笔记本。****
 
-如果你有自定义小组件或喜欢使用 Jupyter/JupyterLab，请在最右侧选择“Jupyter”下拉菜单，然后选择“Jupyter”或“JupyterLab”    。 系统将打开新的浏览器窗口。
+如果你有自定义小工具或更喜欢使用 Jupyter/JupyterLab，请选择最右侧的 **Jupyter** 下拉菜单，然后选择 **Jupyter** 或 **JupyterLab**。 此时将打开新的浏览器窗口。
 
 ## <a name="next-steps"></a>后续步骤
 

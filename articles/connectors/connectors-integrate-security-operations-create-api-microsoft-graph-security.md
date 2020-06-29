@@ -11,16 +11,19 @@ ms.topic: article
 origin.date: 01/30/2019
 ms.date: 11/11/2019
 tags: connectors
-ms.openlocfilehash: b9f57f56bf438f14334292d71d11f5a66715d35c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 5f5a37484953cf1f3e9854b55451bab6a35cd31e
+ms.sourcegitcommit: 4d824957213536e79cf097fd29bd0bd0f8306066
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74797602"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84901933"
 ---
+<!--Not Available the Microsoft Graph Security on Mooncake-->
 # <a name="improve-threat-protection-by-integrating-security-operations-with-microsoft-graph-security--azure-logic-apps"></a>通过将安全操作与 Microsoft Graph 安全性和 Azure 逻辑应用集成，提升威胁防护能力
 
-借助 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)和 [Microsoft Graph 安全性](https://docs.microsoft.com/graph/security-concept-overview)连接器，可以创建用于集成 Microsoft 安全产品、服务和合作伙伴的自动工作流，从而提升应用的威胁检测、防护和响应能力。 例如，可以创建用于监视和管理 Microsoft Graph 安全性实体（如警报）的 [Azure 安全中心 playbook](../security-center/security-center-playbooks.md)。 下面介绍了 Microsoft Graph 安全性连接器支持的一些方案：
+借助 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)和 [Microsoft Graph 安全性](https://docs.microsoft.com/graph/security-concept-overview)连接器，可以创建用于集成 Microsoft 安全产品、服务和合作伙伴的自动工作流，从而提升应用的威胁检测、防护和响应能力。 例如，可以创建用于监视和管理 Microsoft Graph 安全性实体（如警报）的 Azure 安全中心 playbook。 下面介绍了 Microsoft Graph 安全性连接器支持的一些方案：
+
+<!--Not Available on [Azure Security Center playbooks](../security-center/security-center-playbooks.md)-->
 
 * 按查询或警报 ID 获取警报。 例如，可以获取非常严重的警报列表。
 * 更新警报。 例如，可以更新警报分配、向警报添加注释或标记警报。
@@ -35,7 +38,7 @@ ms.locfileid: "74797602"
 
 * Azure 订阅。 如果没有 Azure 订阅，请[注册一个 Azure 试用帐户](https://www.azure.cn/pricing/1rmb-trial)。 
 
-* 根据 [Microsoft Graph 安全性身份验证要求](https://aka.ms/graphsecurityauth)，必须已明确授予 Azure Active Directory (AD) 租户管理员同意，才能使用 Microsoft Graph 安全性连接器。 若要授予此同意，必须提供 Microsoft Graph 安全性连接器的应用程序 ID 和名称（也可以在 [Azure 门户](https://portal.azure.cn)中查找）：
+* 根据 [Microsoft Graph 安全性身份验证要求](https://aka.ms/graphsecurityauth)，必须已明确授予** Azure Active Directory (AD) 租户管理员同意，才能使用 Microsoft Graph 安全性连接器。 若要授予此同意，必须提供 Microsoft Graph 安全性连接器的应用程序 ID 和名称（也可以在 [Azure 门户](https://portal.azure.cn)中查找）：
 
    | 属性 | Value |
    |----------|-------|
@@ -51,7 +54,7 @@ ms.locfileid: "74797602"
    
 * 有关[如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知识
 
-* 要访问 Microsoft Graph 安全性实体（如警报）的逻辑应用。 目前，此连接器没有触发器。 因此，若要使用 Microsoft Graph 安全性操作，请使用触发器（例如，“定期”  触发器）启动逻辑应用。
+* 要访问 Microsoft Graph 安全性实体（如警报）的逻辑应用。 目前，此连接器没有触发器。 因此，若要使用 Microsoft Graph 安全性操作，请使用触发器（例如，“定期”**** 触发器）启动逻辑应用。
 
 ## <a name="connect-to-microsoft-graph-security"></a>连接到 Microsoft Graph 安全性 
 
@@ -63,12 +66,12 @@ ms.locfileid: "74797602"
 
    -或-
 
-   对于现有逻辑应用，请在要添加 Microsoft Graph安全性操作的最后一个步骤下，选择“新建步骤”  。
+   对于现有逻辑应用，请在要添加 Microsoft Graph安全性操作的最后一个步骤下，选择“新建步骤”****。
 
    -或-
 
    若要在步骤之间添加操作，请将鼠标指针移到步骤之间的箭头上。 
-   依次选择出现的加号 (+) 和“添加操作”  。
+   依次选择出现的加号 (+) 和“添加操作”****。
 
 1. 在搜索框中，输入“microsoft graph 安全性”作为筛选器。 从操作列表中选择所需的操作。
 
@@ -82,7 +85,7 @@ ms.locfileid: "74797602"
 
 ### <a name="manage-alerts"></a>管理警报
 
-若要筛选、排序或获取最新结果，只需  提供 [Microsoft Graph支持的 ODATA 查询参数](https://docs.microsoft.com/graph/query-parameters)。 请勿指定  完整的基 URL 或 HTTP 操作，例如 `https://graph.microsoft.com/v1.0/security/alerts` 或 `GET`/`PATCH` 操作。 下面的具体示例展示了在要获取非常严重的警报列表时“获取警报”  操作的参数：
+若要筛选、排序或获取最新结果，只需** 提供 [Microsoft Graph支持的 ODATA 查询参数](https://docs.microsoft.com/graph/query-parameters)。 请勿指定** 完整的基 URL 或 HTTP 操作，例如 `https://graph.microsoft.com/v1.0/security/alerts` 或 `GET`/`PATCH` 操作。 下面的具体示例展示了在要获取非常严重的警报列表时“获取警报”**** 操作的参数：
 
 `Filter alerts value as Severity eq 'high'`
 
@@ -92,13 +95,13 @@ ms.locfileid: "74797602"
 |--------|-------------|
 | **获取警报** | 获取按一个或多个[警报属性](https://docs.microsoft.com/graph/api/resources/alert)筛选出的警报，例如： <p>`Provider eq 'Azure Security Center' or 'Palo Alto Networks'` | 
 | **按 ID 获取警报** | 按警报 ID 获取特定警报。 | 
-| **更新警报** | 按警报 ID 更新特定警报。 <p>若要确保在请求中传递必需的可编辑属性，请参阅[可编辑警报属性](https://docs.microsoft.com/graph/api/alert-update)。 例如，若要向安全分析师分配警报以供调查，可以更新警报的“分配对象”  属性。 |
+| **更新警报** | 按警报 ID 更新特定警报。 <p>若要确保在请求中传递必需的可编辑属性，请参阅[可编辑警报属性](https://docs.microsoft.com/graph/api/alert-update)。 例如，若要向安全分析师分配警报以供调查，可以更新警报的“分配对象”**** 属性。 |
 |||
 
 ### <a name="manage-alert-subscriptions"></a>管理警报订阅
 
-Microsoft Graph 支持[订阅  ](https://docs.microsoft.com/graph/api/resources/subscription)或 [Webhook  ](https://docs.microsoft.com/graph/api/resources/webhooks)。 若要获取、更新或删除订阅，请向 Microsoft Graph 实体构造提供 [Microsoft Graph 支持的 ODATA 查询参数](https://docs.microsoft.com/graph/query-parameters)，并添加后跟 ODATA 查询的 `security/alerts`。 
-请勿添加  基 URL（例如，`https://graph.microsoft.com/v1.0`）。 而是改用此示例中的格式：
+Microsoft Graph 支持[订阅**](https://docs.microsoft.com/graph/api/resources/subscription)或 [Webhook**](https://docs.microsoft.com/graph/api/resources/webhooks)。 若要获取、更新或删除订阅，请向 Microsoft Graph 实体构造提供 [Microsoft Graph 支持的 ODATA 查询参数](https://docs.microsoft.com/graph/query-parameters)，并添加后跟 ODATA 查询的 `security/alerts`。 
+请勿添加** 基 URL（例如，`https://graph.microsoft.com/v1.0`）。 而是改用此示例中的格式：
 
 `security/alerts?$filter=status eq 'New'`
 

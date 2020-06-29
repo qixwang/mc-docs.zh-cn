@@ -5,14 +5,14 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 05/08/2020
-ms.date: 05/12/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 7ba84199a24e4e834a502c30bcd66111eb28762e
-ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
+ms.openlocfilehash: b3d2d617dac803f5fcdff54950f692e3a81c8f82
+ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83392364"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85321689"
 ---
 # <a name="select-clause-in-azure-cosmos-db"></a>Azure Cosmos DB 中的 SELECT 子句
 

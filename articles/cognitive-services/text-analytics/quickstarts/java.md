@@ -1,7 +1,7 @@
 ---
-title: 快速入门：使用 Java 调用文本分析 API
+title: 快速入门：使用 Java 调用文本分析 REST API
 titleSuffix: Azure Cognitive Services
-description: 获取信息和代码示例，以便快速完成 Azure 认知服务中的文本分析 API 的使用入门。
+description: 本快速入门介绍如何获取信息和代码示例，以帮助你快速开始使用 Azure 认知服务中的文本分析 API。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -9,25 +9,28 @@ ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
 origin.date: 04/16/2019
-ms.date: 05/15/2019
-ms.author: v-junlch
-ms.openlocfilehash: 957e96600a128a0db5414468395678283cd9c71e
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 06/23/2020
+ms.author: v-tawe
+ms.custom: seo-java-july2019, seo-java-august2019
+ms.openlocfilehash: 72b0f358581e91d7fbade910dfb7a4feb222c67c
+ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78154779"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85323029"
 ---
-# <a name="quickstart-using-java-to-call-the-text-analytics-cognitive-service"></a>快速入门：使用 Java 调用文本分析认知服务
+# <a name="quickstart-use-java-to-call-the-azure-text-analytics-cognitive-service"></a>快速入门：使用 Java 调用 Azure 文本分析认知服务
 <a name="HOLTop"></a>
 
 本文展示了如何将 [文本分析 API](https://www.azure.cn/zh-cn/home/features/cognitive-services/text-analytics/) 与 Java 配合使用来[检测语言](#Detect)、[分析情绪](#SentimentAnalysis)、[提取关键短语](#KeyPhraseExtraction)以及[识别链接的实体](#Entities)。
 
 有关 API 的技术文档，请参阅 [API 定义](https://dev.cognitive.azure.cn/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
+
+还必须拥有在注册期间生成的[终结点和访问密钥](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource)。
 
 <a name="Detect"></a>
 
@@ -37,8 +40,7 @@ ms.locfileid: "78154779"
 
 1. 在最喜爱的 IDE（或桌面上的新文件夹）中新建一个 Java 项目。 创建名为的 `DetectLanguage.java` 的类。
 1. 向类中添加以下提供的代码。
-1. 将 `accessKey` 值替换为 [Azure](https://portal.azure.cn) 中文本分析订阅中的密钥。
-4. 将 `host` 中的位置（当前为 `chinaeast2`）替换为进行注册的区域。
+1. 将文本分析密钥和终结点复制到代码中。 
 1. 确保已安装 [Gson](https://github.com/google/gson) 库。
 1. 在 IDE 中运行程序或使用命令行来运行程序（代码注释中的说明）。
 
@@ -89,21 +91,15 @@ class Documents {
 }
 
 public class DetectLanguage {
+    static String subscription_key_var;
+    static String subscription_key;
+    static String endpoint_var;
+    static String endpoint;
 
-// ***********************************************
-// *** Update or verify the following values. ***
-// **********************************************
-
-// Replace the accessKey string value with your valid access key.
-    static String accessKey = "enter key here";
-
-// Replace or verify the region.
-
-// You must use the same region in your REST API call as you used to obtain your access keys.
-// For example, if you obtained your access keys from the chinanorth region, replace 
-// "chinaeast2" in the URI below with "chinanorth".
-
-    static String host = "https://chinaeast2.api.cognitive.azure.cn";
+    public static void Initialize () throws Exception {
+        subscription_key = "<paste-your-text-analytics-key-here>";
+        endpoint = "<paste-your-text-analytics-endpoint-here>";
+    }
 
     static String path = "/text/analytics/v2.1/languages";
     
@@ -111,11 +107,11 @@ public class DetectLanguage {
         String text = new Gson().toJson(documents);
         byte[] encoded_text = text.getBytes("UTF-8");
 
-        URL url = new URL(host+path);
+        URL url = new URL(endpoint+path);
         HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
         connection.setRequestMethod("POST");
         connection.setRequestProperty("Content-Type", "text/json");
-        connection.setRequestProperty("Ocp-Apim-Subscription-Key", accessKey);
+        connection.setRequestProperty("Ocp-Apim-Subscription-Key", subscription_key);
         connection.setDoOutput(true);
 
         DataOutputStream wr = new DataOutputStream(connection.getOutputStream());
@@ -144,6 +140,8 @@ public class DetectLanguage {
 
     public static void main (String[] args) {
         try {
+            Initialize();
+
             Documents documents = new Documents ();
             documents.add ("1", "This is a document written in English.");
             documents.add ("2", "Este es un document escrito en Español.");
@@ -211,8 +209,7 @@ public class DetectLanguage {
 
 1. 在最喜爱的 IDE（或桌面上的新文件夹）中新建一个 Java 项目。 在其中创建名为 `GetSentiment.java` 的类。
 1. 向类中添加以下提供的代码。
-1. 将 `accessKey` 值替换为 [Azure](https://portal.azure.cn) 中文本分析订阅中的密钥。
-1. 将 `host` 中的位置（当前为 `chinaeast2`）替换为进行注册的区域。
+1. 将文本分析密钥和终结点复制到代码中。
 1. 确保已安装 [Gson](https://github.com/google/gson) 库。
 1. 在 IDE 中运行程序或使用命令行来运行程序（代码注释中的说明）。
 
@@ -264,21 +261,15 @@ class Documents {
 }
 
 public class GetSentiment {
+    static String subscription_key_var;
+    static String subscription_key;
+    static String endpoint_var;
+    static String endpoint;
 
-// ***********************************************
-// *** Update or verify the following values. ***
-// **********************************************
-
-// Replace the accessKey string value with your valid access key.
-    static String accessKey = "enter key here";
-
-// Replace or verify the region.
-
-// You must use the same region in your REST API call as you used to obtain your access keys.
-// For example, if you obtained your access keys from the chinanorth region, replace 
-// "chinaeast2" in the URI below with "chinanorth".
-
-    static String host = "https://chinaeast2.api.cognitive.azure.cn";
+    public static void Initialize () throws Exception {
+        subscription_key = "<paste-your-text-analytics-key-here>";
+        endpoint = "<paste-your-text-analytics-endpoint-here>";
+    }
 
     static String path = "/text/analytics/v2.1/sentiment";
     
@@ -286,11 +277,11 @@ public class GetSentiment {
         String text = new Gson().toJson(documents);
         byte[] encoded_text = text.getBytes("UTF-8");
 
-        URL url = new URL(host+path);
+        URL url = new URL(endpoint+path);
         HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
         connection.setRequestMethod("POST");
         connection.setRequestProperty("Content-Type", "text/json");
-        connection.setRequestProperty("Ocp-Apim-Subscription-Key", accessKey);
+        connection.setRequestProperty("Ocp-Apim-Subscription-Key", subscription_key);
         connection.setDoOutput(true);
 
         DataOutputStream wr = new DataOutputStream(connection.getOutputStream());
@@ -319,6 +310,8 @@ public class GetSentiment {
 
     public static void main (String[] args) {
         try {
+            Initialize();
+
             Documents documents = new Documents ();
             documents.add ("1", "en", "I really enjoy the new XBox One S. It has a clean look, it has 4K/HDR resolution and it is affordable.");
             documents.add ("2", "es", "Este ha sido un dia terrible, llegué tarde al trabajo debido a un accidente automobilistico.");
@@ -362,8 +355,7 @@ public class GetSentiment {
 
 1. 在最喜爱的 IDE（或桌面上的新文件夹）中新建一个 Java 项目。 在其中创建名为 `GetKeyPhrases.java` 的类。
 1. 向类中添加以下提供的代码。
-1. 将 `accessKey` 值替换为 [Azure](https://portal.azure.cn) 中文本分析订阅中的密钥。
-1. 将 `host` 中的位置（当前为 `chinaeast2`）替换为进行注册的区域。
+1. 将文本分析密钥和终结点复制到代码中。 
 1. 确保已安装 [Gson](https://github.com/google/gson) 库。
 1. 在 IDE 中运行程序或使用命令行来运行程序（代码注释中的说明）。
 
@@ -415,21 +407,15 @@ class Documents {
 }
 
 public class GetKeyPhrases {
+    static String subscription_key_var;
+    static String subscription_key;
+    static String endpoint_var;
+    static String endpoint;
 
-// ***********************************************
-// *** Update or verify the following values. ***
-// **********************************************
-
-// Replace the accessKey string value with your valid access key.
-    static String accessKey = "enter key here";
-
-// Replace or verify the region.
-
-// You must use the same region in your REST API call as you used to obtain your access keys.
-// For example, if you obtained your access keys from the chinanorth region, replace 
-// "chinaeast2" in the URI below with "chinanorth".
-
-    static String host = "https://chinaeast2.api.cognitive.azure.cn";
+    public static void Initialize () throws Exception {
+        subscription_key = "<paste-your-text-analytics-key-here>";
+        endpoint = "<paste-your-text-analytics-endpoint-here>";
+    }
 
     static String path = "/text/analytics/v2.1/keyPhrases";
     
@@ -437,11 +423,11 @@ public class GetKeyPhrases {
         String text = new Gson().toJson(documents);
         byte[] encoded_text = text.getBytes("UTF-8");
 
-        URL url = new URL(host+path);
+        URL url = new URL(endpoint+path);
         HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
         connection.setRequestMethod("POST");
         connection.setRequestProperty("Content-Type", "text/json");
-        connection.setRequestProperty("Ocp-Apim-Subscription-Key", accessKey);
+        connection.setRequestProperty("Ocp-Apim-Subscription-Key", subscription_key);
         connection.setDoOutput(true);
 
         DataOutputStream wr = new DataOutputStream(connection.getOutputStream());
@@ -470,6 +456,8 @@ public class GetKeyPhrases {
 
     public static void main (String[] args) {
         try {
+            Initialize();
+
             Documents documents = new Documents ();
             documents.add ("1", "en", "I really enjoy the new XBox One S. It has a clean look, it has 4K/HDR resolution and it is affordable.");
             documents.add ("2", "es", "Si usted quiere comunicarse con Carlos, usted debe de llamarlo a su telefono movil. Carlos es muy responsable, pero necesita recibir una notificacion si hay algun problema.");
@@ -532,8 +520,7 @@ public class GetKeyPhrases {
 
 1. 在最喜爱的 IDE（或桌面上的新文件夹）中新建一个 Java 项目。 在其中创建名为 `GetEntities.java` 的类。
 1. 向类中添加以下提供的代码。
-1. 将 `accessKey` 值替换为 [Azure](https://portal.azure.cn) 中文本分析订阅中的密钥。
-1. 将 `host` 中的位置（当前为 `chinaeast2`）替换为进行注册的区域。
+1. 将文本分析密钥和终结点复制到代码中。 
 1. 确保已安装 [Gson](https://github.com/google/gson) 库。
 1. 在 IDE 中运行程序或使用命令行来运行程序（代码注释中的说明）。
 
@@ -585,21 +572,15 @@ class Documents {
 }
 
 public class GetEntities {
+    static String subscription_key_var;
+    static String subscription_key;
+    static String endpoint_var;
+    static String endpoint;
 
-// ***********************************************
-// *** Update or verify the following values. ***
-// **********************************************
-
-// Replace the accessKey string value with your valid access key.
-    static String accessKey = "enter key here";
-
-// Replace or verify the region.
-
-// You must use the same region in your REST API call as you used to obtain your access keys.
-// For example, if you obtained your access keys from the chinanorth region, replace 
-// "chinaeast2" in the URI below with "chinanorth".
-
-    static String host = "https://chinaeast2.api.cognitive.azure.cn";
+    public static void Initialize () throws Exception {
+        subscription_key = "<paste-your-text-analytics-key-here>";
+        endpoint = "<paste-your-text-analytics-endpoint-here>";
+    }
 
     static String path = "/text/analytics/v2.1/entities";
     
@@ -607,11 +588,11 @@ public class GetEntities {
         String text = new Gson().toJson(documents);
         byte[] encoded_text = text.getBytes("UTF-8");
 
-        URL url = new URL(host+path);
+        URL url = new URL(endpoint+path);
         HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
         connection.setRequestMethod("POST");
         connection.setRequestProperty("Content-Type", "text/json");
-        connection.setRequestProperty("Ocp-Apim-Subscription-Key", accessKey);
+        connection.setRequestProperty("Ocp-Apim-Subscription-Key", subscription_key);
         connection.setDoOutput(true);
 
         DataOutputStream wr = new DataOutputStream(connection.getOutputStream());
@@ -640,6 +621,8 @@ public class GetEntities {
 
     public static void main (String[] args) {
         try {
+            Initialize();
+
             Documents documents = new Documents ();
             documents.add ("1", "en", "Microsoft is an It company.");
 

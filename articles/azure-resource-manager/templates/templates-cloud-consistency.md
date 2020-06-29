@@ -4,29 +4,29 @@ description: 开发可针对不同的云环境一致地工作的 Azure 资源管
 author: rockboyfor
 ms.topic: conceptual
 origin.date: 12/09/2018
-ms.date: 03/23/2020
+ms.date: 06/22/2020
 ms.author: v-yeche
 ms.custom: seodec18
-ms.openlocfilehash: 7dcf69248c9bd1d26cd0ec413bd54a072a8690c4
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 3710d620bc02bd021098dd1012e30cbdfc59c19d
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79543910"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098681"
 ---
-# <a name="develop-azure-resource-manager-templates-for-cloud-consistency"></a>开发用于实现云一致性的 Azure 资源管理器模板
+# <a name="develop-arm-templates-for-cloud-consistency"></a>开发用于确保云一致性的 ARM 模板
 
 [!INCLUDE [requires-azurerm](../../../includes/requires-azurerm.md)]
 
-Azure 的主要优势是一致性。 一个位置的开发投入可在另一个位置重复使用。 利用模板可以确保部署在全球 Azure、Azure 主权云和 Azure Stack 等各种环境中保持一致和重复。 若要在各种云中重复使用模板，需要参照本指南的说明，考虑特定于云的依赖关系。
+Azure 的主要优势是一致性。 一个位置的开发投入可在另一个位置重复使用。 Azure 资源管理器 (ARM) 模板可确保部署在全球 Azure、Azure 主权云和 Azure Stack 等环境中保持一致性和可重复性。 若要在各种云中重复使用模板，需要参照本指南的说明，考虑特定于云的依赖关系。
 
 Azure 在很多位置提供了面向企业的智能云服务，其中包括：
 
-* 全球 Azure 平台，该平台由全球各区域不断扩大的 Microsoft 托管数据中心的网络提供支持。
+* 全球 Azure 平台，该平台由全球各区域不断扩大的 Azure 托管数据中心网络提供支持。
 
     <!--MOONCAKE: CORRECT ON Microsoft-managed Azure platform-->
     
-* 独立主权云，例如 Azure 德国、Azure 美国政府和 Azure 中国世纪互联。 主权云提供具有大部分相同的强大功能的一致平台，全球 Azure 客户均有权访问。
+* 独立主权云，例如 Azure 德国、Azure 中国云和 Azure 中国世纪互联。 主权云提供具有大部分相同的强大功能的一致平台，全球 Azure 客户均有权访问。
     
     <!--MOONCAKE: sovereign cloud correct-->
     
@@ -40,7 +40,7 @@ Azure 在很多位置提供了面向企业的智能云服务，其中包括：
 
 然而，即使全球云、主权云、托管云和混合云提供一致的服务，也不是所有云都相同。 因此，可以创建对仅特定云可以提供的功能具有依赖关系的模板。
 
-本指南的其余部分介绍在计划开发新的适用于 Azure Stack 的 Azure 资源管理器模板或更新现有模板时需要考虑的方面。 一般情况下，注意事项应包括以下各项：
+本指南的其余部分介绍在计划开发新的或更新现有的适用于 Azure Stack 的 ARM 模板时需要考虑的方面。 一般情况下，注意事项应包括以下各项：
 
 * 验证模板中的函数、终结点、服务和其他资源在目标部署位置是否可用。
 * 将嵌套模板和配置项目存储在可访问的位置，确保可以跨云访问。
@@ -48,11 +48,11 @@ Azure 在很多位置提供了面向企业的智能云服务，其中包括：
 * 请确保使用的模板参数适用于目标云。
 * 验证特定于资源的属性在目标云中是否可用。
 
-有关 Azure 资源管理器模板的简介，请参阅[模板部署](overview.md)。
+有关 ARM 模板的简介，请参阅[模板部署](overview.md)。
 
 ## <a name="ensure-template-functions-work"></a>确保模板函数可用
 
-资源管理器模板的基本语法是 JSON。 模板使用 JSON 的超集，通过表达式和函数扩展语法。 模板语言处理器经常更新以支持附加的模板函数。 有关可用模板函数的详细说明，请参阅 [Azure 资源管理器模板函数](template-functions.md)。
+ARM 模板的基本语法为 JSON。 模板使用 JSON 的超集，通过表达式和函数扩展语法。 模板语言处理器经常更新以支持附加的模板函数。 有关可用模板函数的详细说明，请参阅 [ARM 模板函数](template-functions.md)。
 
 Azure 资源管理器中引入的新模板函数在主权云或 Azure Stack 中不会立即可用。 要成功部署模板，模板中引用的所有函数都必须在目标云中可用。
 
@@ -144,7 +144,7 @@ Azure 资源管理器在运行时评估主要模板并检索和评估每个嵌�
 "resources": [
   {
     "type": "Microsoft.Resources/deployments",
-    "apiVersion": "2015-01-01",
+    "apiVersion": "2019-10-01",
     "name": "shared",
     "properties": {
       "mode": "Incremental",
@@ -312,7 +312,7 @@ Get-AzureRmResourceProvider | select-object ProviderNamespace -ExpandProperty Re
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "location": {
@@ -353,7 +353,7 @@ API 配置文件版本充当 Azure 和 Azure Stack 通用的每种资源类型�
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "apiProfile": "2018-03-01-hybrid",
     "parameters": {
@@ -395,7 +395,7 @@ API 配置文件可确保 API 版本可跨位置使用，因此不需要手动�
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "apiProfile": "2018-03-01-hybrid",
     "parameters": {
@@ -456,11 +456,11 @@ API 配置文件可确保 API 版本可跨位置使用，因此不需要手动�
 
 <!--Notice: Global Azure Cloud should be mystorageaccount1.blob.core.windows.net-->
 
-* 在全球 Azure 云上创建时会产生 mystorageaccount1.blob.core.windows.net  。
+* 在全球 Azure 云上创建时会产生 mystorageaccount1.blob.core.windows.net。
     
     <!--Notice: Global Azure Cloud should be mystorageaccount1.blob.core.windows.net-->
     
-* 在 Azure 中国世纪互联云创建时会产生 mystorageaccount1.blob.core.chinacloudapi.cn  。
+* 在 Azure 中国世纪互联云创建时会产生 mystorageaccount1.blob.core.chinacloudapi.cn。
 
 以下引用模板函数从存储资源提供程序中检索终结点命名空间：
 
@@ -517,7 +517,7 @@ Get-AzureRmVMImagePublisher -Location "China North" | Get-AzureRmVMImageOffer | 
 
 如果向 Azure Stack 提供这些 VM 映像，则会占用所有可用的存储。 为了可以容纳最小的缩放单元，Azure Stack 允许选择所需的映像添加到环境。
 
-以下代码示例演示了在 Azure 资源管理器模板中引用发布服务器、产品和 SKU 的参数的一致方法：
+以下代码示例演示了在 ARM 模板中引用发布服务器、产品/服务和 SKU 参数的一致方法：
 
 ```json
 "storageProfile": {
@@ -631,7 +631,7 @@ Get-AzureRmVmImagePublisher -Location 'chinanorth' | Get-AzureRmVMExtensionImage
 
 VM 扩展资源的 API 版本必须存在于你模板中计划的所有目标位置。 位置依赖关系的作用类似于之前在“验证所有资源类型的版本”部分讨论的资源提供程序 API 版本的可用性。
 
-要检索 VM 扩展资源的可用 API 版本列表，请将 [Get-AzureRmResourceProvider](https://docs.microsoft.com/powershell/module/az.resources/get-azresourceprovider) cmdlet 与 Microsoft.Compute 资源提供程序结合使用，如下所示  ：
+要检索 VM 扩展资源的可用 API 版本列表，请将 [Get-AzureRmResourceProvider](https://docs.microsoft.com/powershell/module/az.resources/get-azresourceprovider) cmdlet 与 Microsoft.Compute 资源提供程序结合使用，如下所示：
 
 ```powershell
 Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.Compute" | Select-Object -ExpandProperty ResourceTypes | Select ResourceTypeName, Locations, ApiVersions | where {$_.ResourceTypeName -eq "virtualMachines/extensions"}
@@ -661,7 +661,7 @@ Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.Compute" | Select-Obje
         ...
 ```
 
-要检索特定 VM 扩展的可用版本列表，请使用 [Get AzureRmVMExtensionImage](https://docs.microsoft.com/powershell/module/az.compute/get-azvmextensionimage) cmdlet。 以下示例从 myLocation 检索 PowerShell DSC（所需状态配置）VM 扩展的可用版本  ：
+要检索特定 VM 扩展的可用版本列表，请使用 [Get AzureRmVMExtensionImage](https://docs.microsoft.com/powershell/module/az.compute/get-azvmextensionimage) cmdlet。 以下示例从 myLocation 检索 PowerShell DSC（所需状态配置）VM 扩展的可用版本：
 
 ```powershell
 Get-AzureRmVMExtensionImage -Location myLocation -PublisherName Microsoft.PowerShell -Type DSC | FT
@@ -691,6 +691,6 @@ Get-AzureRmVMExtensionImage -Location myLocation -PublisherName Microsoft.PowerS
 
     <!--MOONCAKE: correct on /azure-stack/user/azure-stack-develop-templates-->
     
-* [Azure 资源管理器模板的最佳做法](template-syntax.md)
+* [ARM 模板的最佳做法](template-syntax.md)
 
 <!-- Update_Description: update meta properties, wording update, update link -->

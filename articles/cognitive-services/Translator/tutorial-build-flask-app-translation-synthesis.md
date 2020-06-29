@@ -1,22 +1,23 @@
 ---
-title: 教程：生成用于翻译、合成与分析文本的 Flask 应用 - 文本翻译 API
+title: 教程：生成用于翻译、合成与分析文本的 Flask 应用 - 翻译
 titleSuffix: Azure Cognitive Services
 description: 在本教程中，你将生成一个基于 Flask 的 Web 应用以翻译文本、分析情绪，并将翻译的文本合成为语音。
 services: cognitive-services
-author: erhopf
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: tutorial
-origin.date: 02/10/2020
-ms.date: 03/26/2020
-ms.author: v-lingwu
-ms.openlocfilehash: 060a87ba494e7a69baf0d4a8fc737cefaf9a354c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+origin.date: 05/26/2020
+ms.date: 06/22/2020
+ms.author: v-tawe
+ms.custom: tracking-python
+ms.openlocfilehash: 465ff88b85d5b287aa8f238549161cddfdad5b88
+ms.sourcegitcommit: 43db4001be01262959400663abf8219e27e5cb8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80342382"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85241576"
 ---
 # <a name="tutorial-build-a-flask-app-with-azure-cognitive-services"></a>教程：生成使用 Azure 认知服务的 Flask 应用
 
@@ -28,7 +29,7 @@ ms.locfileid: "80342382"
 > * 获取 Azure 订阅密钥
 > * 设置开发环境并安装依赖项
 > * 创建 Flask 应用
-> * 使用文本翻译 API 翻译文本
+> * 使用“翻译”来翻译文本
 > * 使用文本分析来分析输入文本和翻译内容中的积极/消极情绪
 > * 使用语音服务将翻译的文本转换为合成语音
 > * 在本地运行 Flask 应用
@@ -53,14 +54,14 @@ Flask 是用于创建 Web 应用程序的微框架。 也就是说，Flask 提�
 * [Git 工具](https://git-scm.com/downloads)
 * IDE 或文本编辑器，例如 [Visual Studio Code](https://code.visualstudio.com/) 或 [Atom](https://atom.io/)  
 * Chrome 或 [Firefox](https://www.mozilla.org/firefox)
-* **文本翻译**订阅密钥（请注意，不需要选择区域。）
+* “翻译”订阅密钥（请注意，不需要选择区域。）
 * **中国北部**区域的**文本分析**订阅密钥。
 * **中国北部**区域的**语音服务**订阅密钥。
 
 ## <a name="create-an-account-and-subscribe-to-resources"></a>创建帐户并订阅资源
 
 如前所述，在本教程中需要三个订阅密钥。 这意味着，需要在 Azure 帐户中为以下服务创建资源：
-* 文本翻译
+* 转换器
 * 文本分析
 * 语音服务
 
@@ -246,14 +247,14 @@ def about():
 
 大致了解简单 Flask 应用的工作方式后，让我们：
 
-* 编写一些 Python 代码来调用文本翻译 API 并返回响应
+* 编写一些 Python 代码来调用“翻译”并返回响应
 * 创建一个 Flask 路由用于调用 Python 代码
 * 使用文本输入和翻译区域、语言选择器和翻译按钮更新 HTML
 * 编写 Javascript 代码，使用户能够通过 HTML 来与 Flask 应用交互
 
-### <a name="call-the-translator-text-api"></a>调用文本翻译 API
+### <a name="call-the-translator"></a>调用“翻译”
 
-要做的第一件事是编写一个函数来调用文本翻译 API。 此函数采用两个参数：`text_input` 和 `language_output`。 每当用户在该应用中按下翻译按钮时，就会调用此函数。 HTML 中的文本区域作为 `text_input` 发送，HTML 中的语言选择值作为 `language_output` 发送。
+要做的第一件事是编写一个函数来调用“翻译”。 此函数采用两个参数：`text_input` 和 `language_output`。 每当用户在该应用中按下翻译按钮时，就会调用此函数。 HTML 中的文本区域作为 `text_input` 发送，HTML 中的语言选择值作为 `language_output` 发送。
 
 1. 让我们先在工作目录的根目录中创建名为 `translate.py` 的文件。
 2. 接下来，将以下代码添加到 `translate.py`。 此函数采用两个参数：`text_input` 和 `language_output`。
@@ -264,7 +265,7 @@ def about():
    # If you prefer to use environment variables, see Extra Credit for more info.
    subscription_key = 'YOUR_TRANSLATOR_TEXT_SUBSCRIPTION_KEY'
    region = 'YOUR_REGION'
-
+   # Don't forget to replace with your Cog Services location!
    # Our Flask route will supply two arguments: text_input and language_output.
    # When the translate text button is pressed in our Flask app, the Ajax request
    # will grab these values from our web app, and use them in the request.
@@ -289,7 +290,7 @@ def about():
        response = requests.post(constructed_url, headers=headers, json=body)
        return response.json()
    ```
-3. 添加文本翻译订阅密钥并保存。
+3. 添加“翻译”订阅密钥并保存。
 
 ### <a name="add-a-route-to-apppy"></a>将路由添加到 `app.py`
 
@@ -786,7 +787,7 @@ flask run
        <option value="(zh-TW, Yating, Apollo)">Chinese (Taiwan)| Female | Yaiting, Apollo</option>
        <option value="(zh-TW, Zhiwei, Apollo)">Chinese (Taiwan) | Male | Zhiwei, Apollo</option>
        <option value="(hr-HR, Matej)">Croatian | Male | Matej</option>
-       <option value="(en-US, Jessa24kRUS)">English (US) | Female | Jessa24kRUS</option>
+       <option value="(en-US, AriaRUS)">English (US) | Female | AriaRUS</option>
        <option value="(en-US, Guy24kRUS)">English (US) | Male | Guy24kRUS</option>
        <option value="(en-IE, Sean)">English (IE) | Male | Sean</option>
        <option value="(fr-FR, Julie, Apollo)">French | Female | Julie, Apollo</option>
@@ -967,7 +968,7 @@ flask run
 
 ## <a name="next-steps"></a>后续步骤
 
-* [文本翻译 API 参考](/cognitive-services/Translator/reference/v3-0-reference)
+* [翻译引用](/cognitive-services/Translator/reference/v3-0-reference)
 * [文本分析 API 参考](https://dev.cognitive.azure.cn/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7)
 * [文本到语音 API 参考](/cognitive-services/speech-service/rest-text-to-speech)
 

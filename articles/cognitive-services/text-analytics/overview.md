@@ -11,16 +11,16 @@ ms.topic: overview
 origin.date: 11/07/2019
 ms.date: 02/28/2020
 ms.author: v-lingwu
-ms.openlocfilehash: 948d22e74598f99af2110e15fafb353fd4559773
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 59b4cc57a5bdd62aee95f3b517113837031b13b4
+ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78154519"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85323395"
 ---
 # <a name="what-is-the-text-analytics-api"></a>什么是文本分析 API？
 
-文本分析 API 是一种基于云的服务，它对原始文本提供高级自然语言处理，并且包含四项主要功能：情绪分析、关键短语提取、语言检测和实体识别。
+文本分析 API 是一种基于云的服务，它提供对原始文本的高级自然语言处理，并且包含四项主要功能：情绪分析、关键短语提取、语言检测和命名实体识别。
 
 该 API 是 [Azure 认知服务](/cognitive-services/)的一部分，是云中机器学习和 AI 算法的集合，适用于开发项目。
 
@@ -28,7 +28,7 @@ ms.locfileid: "78154519"
 文本分析可能有不同的含义，但在认知服务中，文本分析 API 提供如下所述的四种分析。 可以将这些功能与 [REST API](https://dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/) 或[客户端库](quickstarts/text-analytics-sdk.md)一起使用。
 
 ## <a name="sentiment-analysis"></a>情绪分析
-通过在原始文本中分析有关积极和消极情绪的线索，使用[情绪分析](how-tos/text-analytics-how-to-sentiment-analysis.md)确定客户如何看待你的品牌或主题。 此 API 针对每个文档返回介于 0 和 1 之间的情绪评分，1 是最积极的评分。<br /> 分析模型已使用 Microsoft 提供的大量文本正文和自然语言技术进行预先训练。 对于[选定的语言](text-analytics-supported-languages.md)，该 API 可以分析和评分提供的任何原始文本，并直接将结果返回给调用方应用程序。
+使用[情绪分析](how-tos/text-analytics-how-to-sentiment-analysis.md)，通过在原始文本中分析有关积极和消极情绪的线索，确定客户如何看待你的品牌或主题。 此 API 针对每个文档返回介于 0 和 1 之间的情绪评分，1 是最积极的评分。<br /> 分析模型已使用 Microsoft 提供的大量文本正文和自然语言技术进行预先训练。 对于[选定的语言](text-analytics-supported-languages.md)，该 API 可以分析和评分提供的任何原始文本，并直接将结果返回给调用方应用程序。
 
 ## <a name="key-phrase-extraction"></a>关键短语提取
 自动[提取关键短语](how-tos/text-analytics-how-to-keyword-extraction.md)，以快速识别要点。 例如，针对输入文本“The food was delicious and there were wonderful staff”，该 API 会返回谈话要点：“food”和“wonderful staff”。
@@ -37,7 +37,7 @@ ms.locfileid: "78154519"
 可以[检测输入文本是用哪种语言编写的](how-tos/text-analytics-how-to-language-detection.md)，并以多种语言、变体、方言和一些区域/文化语言报告请求中提交的每个文档的单一语言代码。 语言代码与表示评分强度的评分相搭配。
 
 ## <a name="named-entity-recognition"></a>命名实体识别
-[识别文本中的实体并将其分类](how-tos/text-analytics-how-to-entity-linking.md)为人员、地点、组织、日期/时间、数量、百分比、货币等。 已知实体也可以在 Web 上识别并链接到更多信息。
+在文本中[识别实体并将其分类](how-tos/text-analytics-how-to-entity-linking.md)为人员、地点、组织、日期/时间、数量、百分比、货币等。 已知实体也可以在 Web 上识别并链接到更多信息。
 
 ## <a name="use-containers"></a>使用容器
 
@@ -47,11 +47,11 @@ ms.locfileid: "78154519"
 
 工作流非常简单：在代码中提交分析数据和处理输出。 分析器按原样使用，无需额外的配置或自定义。
 
-1. [注册](/cognitive-services/cognitive-services-apis-create-account)访问密钥。 必须在每个请求中传递密钥。
+1. 为文本分析[创建 Azure 资源](../cognitive-services-apis-create-account.md)。 然后，[获取生成的密钥](../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource)，以便对请求进行身份验证。
 
 2. [规划请求](how-tos/text-analytics-how-to-call-api.md#json-schema)，其中包含原始非结构化文本形式的 JSON 数据。
 
-3. 将此请求发布到注册期间建立的终结点，并追加所需的资源：情绪分析、关键短语提取、语言检测或实体识别。
+3. 将此请求发布到注册期间建立的终结点，并追加所需的资源：情绪分析、关键短语提取、语言检测或命名实体识别。
 
 4. 在本地流式处理或存储响应。 根据具体的请求，结果将是情绪评分、提取的关键短语集合或语言代码。
 
@@ -82,11 +82,11 @@ ms.locfileid: "78154519"
 
 所有的文本分析 API 终结点都接受原始文本数据。 当前限制为每个文档最多包含 5,120 个字符；如果需要分析更大的文档，可将它们分解成较小的区块。
 
-| 限制 | 值 |
+| 限制 | Value |
 |------------------------|---------------|
 | 单个文档的最大大小 | 5,120 个字符，由 [`StringInfo.LengthInTextElements`](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements) 度量。 |
 | 整个请求的最大大小 | 1 MB |
-| 一个请求中的文档数上限 | 1,000 个文档 |
+| 一个请求中的文档数上限 | 最多为 1,000 个文档（[具体上限取决于不同的功能](concepts/data-limits.md)） |
 
 速率限制将因定价层而异。
 
@@ -105,6 +105,13 @@ ms.locfileid: "78154519"
 
 文本分析 API 使用 Unicode 编码来呈现文本和计算字符数。 可以 UTF-8 和 UTF-16 编码提交请求，这在字符计数方面没有可度量的差别。 Unicode 码位用作字符长度的启发因子，对文本分析数据限制的影响被视为等效。 如果你使用 [`StringInfo.LengthInTextElements`](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements) 获取字符计数，则使用的方法也是我们用来度量数据大小的方法。
 
+## <a name="next-steps"></a>后续步骤
 
++ 为文本分析[创建 Azure 资源](../cognitive-services-apis-create-account.md)，以获取应用程序的密钥和终结点。
 
-<!-- Update_Description: wording update -->
++ 使用[快速入门](quickstarts/text-analytics-sdk.md)开始发送 API 调用。 了解如何以少量的代码提交文本、选择分析，并查看结果。
+
++ 有关新版本和功能的信息，请参阅[文本分析 API 中的新增功能](whats-new.md)。
+
+<!-- not available-->
+

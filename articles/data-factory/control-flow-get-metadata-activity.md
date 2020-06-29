@@ -11,14 +11,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 origin.date: 04/15/2020
-ms.date: 05/11/2020
+ms.date: 06/29/2020
 ms.author: v-jay
-ms.openlocfilehash: 12401dcf4787e31253bec05fcf7eb2f573745e23
-ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
+ms.openlocfilehash: d698f07ced19f809195f9f0e98bffbae247d664e
+ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82198254"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85323361"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Azure 数据工厂中的“获取元数据”活动
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -66,7 +66,7 @@ ms.locfileid: "82198254"
 | 连接器/元数据 | structure | columnCount | exists |
 |:--- |:--- |:--- |:--- |
 | [Azure SQL 数据库](connector-azure-sql-database.md) | √ | √ | √ |
-| [Azure SQL 数据库托管实例](connector-azure-sql-database-managed-instance.md) | √ | √ | √ |
+| [Azure SQL 托管实例](connector-azure-sql-database-managed-instance.md) | √ | √ | √ |
 | [Azure SQL 数据仓库](connector-azure-sql-data-warehouse.md) | √ | √ | √ |
 | [SQL Server](connector-sql-server.md) | √ | √ | √ |
 
@@ -111,7 +111,7 @@ ms.locfileid: "82198254"
 }
 ```
 
-**数据集**
+数据集
 
 ```json
 {

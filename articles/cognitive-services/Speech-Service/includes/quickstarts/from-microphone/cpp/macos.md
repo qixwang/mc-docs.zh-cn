@@ -5,12 +5,12 @@ ms.topic: include
 origin.date: 04/03/2019
 ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: 858a74c36083bdf01d2d34add49d79e83002e611
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.openlocfilehash: 1acfb349089b6aff99d74ae7943969a716f3f895
+ms.sourcegitcommit: 304d3ef3c9e65c3e85977b3afb9985fbc0f908d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82150774"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85095906"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -20,7 +20,7 @@ ms.locfileid: "82150774"
 > * <a href="https://portal.azure.cn/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">创建 Azure 语音资源<span class="docon docon-navigate-external x-hidden-focus"></span></a>
 > * [设置开发环境并创建空项目](../../../../quickstarts/setup-platform.md?tabs=macos&pivots=programming-language-cpp)
 > * 请确保你有权访问麦克风，以便进行音频捕获
-> * 需要语音 SDK 版本 1.10.0 或更高版本。
+> * 需要语音 SDK 1.11.0 或更高版本。
 
 ## <a name="source-code"></a>源代码
 

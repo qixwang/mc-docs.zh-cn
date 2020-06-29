@@ -1,20 +1,21 @@
 ---
 title: 使用 Azure Cosmos DB API for MongoDB 构建 Python Flask Web 应用
-description: 演示了一个 Python Flask 代码示例，可以参考该示例使用 Azure Cosmos DB 的用于 MongoDB 的 API 进行连接和查询。
+description: 提供了一个 Python Flask 代码示例，可以参考该示例使用 Azure Cosmos DB API for MongoDB 进行连接和查询。
 author: rockboyfor
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: python
 ms.topic: quickstart
 origin.date: 12/26/2018
-ms.date: 04/27/2020
+ms.date: 06/22/2020
 ms.author: v-yeche
-ms.openlocfilehash: efe3311b84163fb58ff8c8c35692d46c830b8e6b
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.custom: tracking-python
+ms.openlocfilehash: 36f6e935af8c48a7e609c337b2ef77a488ca1107
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82134961"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098675"
 ---
 # <a name="quickstart-build-a-python-app-using-azure-cosmos-dbs-api-for-mongodb"></a>快速入门：使用 Azure Cosmos DB 的 API for MongoDB 构建 Python 应用
 
@@ -24,7 +25,7 @@ ms.locfileid: "82134961"
 > * [Node.js](create-mongodb-nodejs.md)
 > * [Python](create-mongodb-flask.md)
 > * [Xamarin](create-mongodb-xamarin.md)
-> * [Golang](create-mongodb-golang.md)
+> * [Golang](create-mongodb-go.md)
 >  
 
 在本快速入门中，我们使用 Mongo DB API 帐户的 Azure Cosmos DB 或 Azure Cosmos DB 模拟器来运行从 GitHub 克隆的 Python Flask To-Do Web 应用。 Azure Cosmos DB 是一种多模型数据库服务，可让你通过多区域分布和水平缩放功能快速创建和查询文档、表、键/值和图数据库。
@@ -102,7 +103,7 @@ ms.locfileid: "82134961"
 
 3. 然后，使用 `set FLASK_APP=app.py`、`$env:FLASK_APP = app.py`（适用于 PowerShell 编辑器）或 `export FLASK_APP=app.py`（如果使用的是 Mac）设置 Flask 应用的环境变量。 
 
-4. 使用 `flask run` 运行此应用并浏览到“http:\//127.0.0.1:5000/”  。
+4. 使用 `flask run` 运行此应用并浏览到 *http:\//127.0.0.1:5000/* 。
 
 5. 添加和删除任务，并查看集合中添加和更改的任务。
 
@@ -116,15 +117,15 @@ ms.locfileid: "82134961"
 
 若要针对实时 Azure Cosmos DB 帐户测试代码，请获取连接字符串信息。 然后将其复制到此应用中。
 
-1. 在 Azure 门户的 Azure Cosmos DB 帐户的左侧导航栏中，选择“连接字符串”，然后选择“读写密钥”。   我们将使用屏幕右侧的复制按钮复制用户名、连接字符串和密码。 
+1. 在 Azure 门户的 Azure Cosmos DB 帐户的左侧导航栏中，选择“连接字符串”，然后选择“读写密钥”。**** **** 我们将使用屏幕右侧的复制按钮复制用户名、连接字符串和密码。 
 
-2. 在根目录中打开 app.py 文件  。
+2. 在根目录中打开 app.py 文件**。
 
-3. 从门户中（使用复制按钮）复制“用户名”值，并在 app.py 文件中将其设为“名称”的值    。
+3. 从门户中（使用复制按钮）复制“用户名”值，并在 app.py 文件中将其设为“名称”的值**** ******。
 
-4. 然后从门户中复制“连接字符串”值，并在 *app.py* 文件中将其设为 MongoClient 值   。
+4. 然后从门户中复制“连接字符串”值，并在 *app.py* 文件中将其设为 MongoClient 值**** ****。
 
-5. 最后从门户复制“密码”值，并在 app.py 文件中将其设为“密码”的值    。
+5. 最后从门户复制“密码”值，并在 app.py 文件中将其设为“密码”的值**** ******。
 
 现已使用与 Azure Cosmos DB 进行通信所需的所有信息更新应用。 此时，即可像以前一样运行它。
 

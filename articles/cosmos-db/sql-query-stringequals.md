@@ -5,15 +5,15 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 05/20/2020
-ms.date: 06/22/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
 ms.custom: query-reference
-ms.openlocfilehash: dd6ede5272fbb47ed7dbc8f097de4d9060c7ed23
-ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
+ms.openlocfilehash: 854a71abbf7d7ad218120b8b312cc8991c2ac54f
+ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85101983"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85323393"
 ---
 <!--Verified successfully-->
 # <a name="stringequals-azure-cosmos-db"></a>STRINGEQUALS (Azure Cosmos DB)
@@ -70,5 +70,4 @@ SELECT STRINGEQUALS("abc", "abc", false) AS c1, STRINGEQUALS("abc", "ABC", false
 - [系统函数 Azure Cosmos DB](sql-query-system-functions.md)
 - [Azure Cosmos DB 简介](introduction.md)
 
-<!-- Update_Description: new article about sql query stringequals -->
-<!--NEW.date: 06/22/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

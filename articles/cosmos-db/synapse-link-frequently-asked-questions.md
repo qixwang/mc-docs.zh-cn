@@ -5,14 +5,14 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 05/19/2020
-ms.date: 06/08/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: d36eefe24390913b91fd29d50cd5a5ab27ce6660
-ms.sourcegitcommit: 8a2fbc0eae8d8f7297f5334f508ff868b4077f32
+ms.openlocfilehash: d7f34a989a6cedd41f6efa6c427670c7d2277879
+ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84326279"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85320758"
 ---
 <!--Verified successfully-->
 # <a name="frequently-asked-questions-about-azure-synapse-link-for-azure-cosmos-db"></a>有关 Azure Synapse Link for Azure Cosmos DB 的常见问题

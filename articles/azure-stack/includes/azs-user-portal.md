@@ -1,17 +1,17 @@
 ---
 author: WenJason
-ms.service: azure-stack
 ms.topic: include
-origin.date: 10/23/2018
-ms.date: 06/03/2019
+origin.date: 1/22/2020
+ms.date: 02/24/2020
 ms.author: v-jay
-ms.openlocfilehash: c559edcf88c3177e142b7242a79367e5a1635366
-ms.sourcegitcommit: 87e9b389e59e0d8f446714051e52e3c26657ad52
+ms.openlocfilehash: 091f2ed07809815f4917350e5c7ac873d0f3f449
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66381782"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "85096784"
 ---
-登录到用户门户：
-    - 对于集成系统部署，门户地址将根据解决方案的区域和外部域名而有所不同。 它将采用格式： https://portal.&lt;*region*&gt;.&lt;*FQDN*&gt;。
-    - 如果使用的是 Azure Stack 开发工具包 (ASDK)，则门户地址为 [https://portal.local.azurestack.external](https://portal.local.azurestack.external)。
+登录到用户门户： 
+
+* 对于集成系统部署，门户地址将根据解决方案的区域和外部域名而有所不同。 它将采用 `https://portal.<region>.<FQDN>` 格式。
+* 对于 Azure Stack 开发工具包 (ASDK)，门户地址为 [https://portal.local.azurestack.external](https://portal.local.azurestack.external)。

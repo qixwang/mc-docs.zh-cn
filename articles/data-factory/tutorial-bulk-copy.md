@@ -1,5 +1,5 @@
 ---
-title: 批量复制数据
+title: 用 PowerShell 批量复制数据
 description: 了解如何使用 Azure 数据工厂和复制活动将源数据存储中的数据批量复制到目标数据存储。
 services: data-factory
 author: WenJason
@@ -11,15 +11,15 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 origin.date: 01/22/2018
-ms.date: 05/11/2020
-ms.openlocfilehash: 1870e66a32ea04dd72a5114911323d8003452d75
-ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
+ms.date: 06/29/2020
+ms.openlocfilehash: b39b37e056eb0276c0bbf941eaf9507d824cf620
+ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82198192"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85322099"
 ---
-# <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>使用 Azure 数据工厂批量复制多个表
+# <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory-using-powershell"></a>使用 PowerShell 通过 Azure 数据工厂批量复制多个表
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
@@ -70,11 +70,11 @@ ms.locfileid: "82198192"
 
 ## <a name="azure-services-to-access-sql-server"></a>Azure 服务访问 SQL 服务器
 
-对于 SQL 数据库和 SQL 数据仓库，请允许 Azure 服务访问 SQL 服务器。 确保针对 Azure SQL 服务器，将“允许访问 Azure 服务”设置切换为“打开”状态。   此设置允许数据工厂服务从 Azure SQL 数据库中读取数据，并将数据写入 Azure SQL 数据仓库。 若要验证并启用此设置，请执行以下步骤：
+对于 SQL 数据库和 SQL 数据仓库，请允许 Azure 服务访问 SQL 服务器。 确保服务器的“允许访问 Azure 服务”设置已切换为“打开”状态 。 此设置允许数据工厂服务从 Azure SQL 数据库中读取数据，并将数据写入 Azure SQL 数据仓库。 若要验证并启用此设置，请执行以下步骤：
 
-1. 单击左侧的“所有服务”  ，然后单击“SQL Server”  。
-2. 选择服务器，并单击“设置”  下的“防火墙”  。
-3. 在“防火墙设置”页中，单击“允许访问 Azure 服务”对应的“打开”。   
+1. 单击左侧的“所有服务”，然后单击“SQL Server”。
+2. 选择服务器，并单击“设置”下的“防火墙”。
+3. 在“防火墙设置”页中，单击“允许访问 Azure 服务”对应的“打开”。  
 
 ## <a name="create-a-data-factory"></a>创建数据工厂
 
@@ -112,7 +112,7 @@ ms.locfileid: "82198192"
         ```
 
     * 只有 Azure 订阅的参与者或管理员才可以创建数据工厂实例。
-    * 若要查看目前提供数据工厂的 Azure 区域的列表，请在以下页面上选择感兴趣的区域，然后展开“分析”  以找到“数据工厂”  ：[可用产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/?regions=china-non-regional,china-east,china-east-2,china-north,china-north-2&products=all)。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
+    * 若要查看目前提供数据工厂的 Azure 区域的列表，请在以下页面上选择感兴趣的区域，然后展开“分析”以找到“数据工厂”：[可用产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/?regions=china-non-regional,china-east,china-east-2,china-north,china-north-2&products=all)。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
 
 ## <a name="create-linked-services"></a>创建链接服务
 

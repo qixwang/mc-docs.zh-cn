@@ -5,16 +5,16 @@ description: 了解全球 Azure、Azure Stack Hub 与 Azure Stack HCI 之间的�
 author: WenJason
 ms.topic: overview
 origin.date: 05/03/2019
-ms.date: 05/18/2020
+ms.date: 06/22/2020
 ms.author: v-jay
 ms.reviewer: unknown
 ms.lastreviewed: 03/29/2019
-ms.openlocfilehash: e9307a6556e031101f88736e71f5303e7709f313
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.openlocfilehash: 18e55cf5d93ad1d84f48d659d37b6c4c107fe87b
+ms.sourcegitcommit: d86e169edf5affd28a1c1a4476d72b01a7fb421d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83422427"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85096451"
 ---
 # <a name="differences-between-azure-azure-stack-hub-and-azure-stack-hci"></a>Azure、Azure Stack Hub 与 Azure Stack HCI 之间的差异
 
@@ -49,6 +49,7 @@ Azure Stack Hub 的 PaaS 功能是可选的，因为 Azure Stack Hub 不是由 M
 除上述资源提供程序以外，还有其他 PaaS 服务可供使用，经测试它们可以用作在 IaaS 中运行的[基于 Azure 资源管理器模板的解决方案](https://github.com/Azure/AzureStack-QuickStart-Templates)。 Azure Stack Hub 操作员可将其作为 PaaS 服务提供给用户，这些服务包括：
 
 - Service Fabric
+- Kubernetes 容器服务
 - 以太坊区块链
 - Cloud Foundry
 

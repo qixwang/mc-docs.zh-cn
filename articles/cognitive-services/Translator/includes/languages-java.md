@@ -3,14 +3,16 @@ author: erhopf
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
-ms.author: erhopf
-ms.openlocfilehash: 4070b3cbd8eb59719476141e00752b71d5438f9d
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+origin.date: 06/22/2020
+ms.author: v-tawe
+ms.openlocfilehash: 8fb7947300538aa55f18cd815d44c191608313e9
+ms.sourcegitcommit: 43db4001be01262959400663abf8219e27e5cb8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80343020"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85241514"
 ---
+<!-- word updating-->
 [!INCLUDE [Prerequisites](prerequisites-java.md)]
 
 [!INCLUDE [Set up and use environment variables](setup-env-variables.md)]
@@ -121,7 +123,7 @@ public String Get() throws IOException {
 
 ## <a name="create-a-function-to-parse-the-response"></a>创建一个函数来分析响应
 
-这个简单的函数分析来自文本翻译服务的 JSON 响应并对其进行美化。
+这个简单的函数分析来自“翻译”服务的 JSON 响应并对其进行美化。
 
 ```java
 // This function prettifies the json response.
@@ -255,7 +257,7 @@ gradle run
 
 ## <a name="next-steps"></a>后续步骤
 
-查看 API 参考，了解使用文本翻译 API 可以执行的所有操作。
+查看 API 参考，了解使用“翻译”可以执行的所有操作。
 
 > [!div class="nextstepaction"]
 > [API 参考](/cognitive-services/translator/reference/v3-0-reference)

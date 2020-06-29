@@ -4,14 +4,14 @@ description: 配置包含托管标识的托管应用程序，以链接到现有�
 ms.topic: conceptual
 author: rockboyfor
 origin.date: 05/13/2019
-ms.date: 01/20/2020
+ms.date: 06/22/2020
 ms.author: v-yeche
-ms.openlocfilehash: e30cdeac28b94a9aea0e1193b3dd0097ac8604d4
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+ms.openlocfilehash: e718db2439a8a197990e24ca65cc377a4a00e022
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84199678"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098695"
 ---
 # <a name="azure-managed-application-with-managed-identity"></a>包含托管标识的 Azure 托管应用程序
 
@@ -22,7 +22,7 @@ ms.locfileid: "84199678"
 
 你的应用程序可以被授予两种类型的标识：
 
-- 系统分配的标识与你的应用程序相绑定，如果删除应用，标识也会被删除  。 一个应用只能具有一个系统分配的标识。
+- 系统分配的标识与你的应用程序相绑定，如果删除应用，标识也会被删除****。 一个应用只能具有一个系统分配的标识。
 - **用户分配的标识**是可以分配给应用的独立 Azure 资源。 一个应用可以具有多个用户分配的标识。
 
 ## <a name="how-to-use-managed-identity"></a>如何使用托管标识
@@ -55,7 +55,7 @@ ms.locfileid: "84199678"
 
 ```json
 "outputs": {
-    "managedIdentity": "[parse('{\"Type\":\"SystemAssigned\"}')]"
+    "managedIdentity": { "Type": "SystemAssigned" }
 }
 ```
 
@@ -67,71 +67,65 @@ ms.locfileid: "84199678"
 - 托管标识需要复杂的使用者输入。
 - 创建托管应用程序时需要托管标识。
 
-#### <a name="systemassigned-createuidefinition"></a>SystemAssigned CreateUIDefinition
+#### <a name="managed-identity-createuidefinition-control"></a>托管标识 CreateUIDefinition 控件
 
-为托管应用程序启用 SystemAssigned 标识的基本 CreateUIDefinition。
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/0.1.2-preview/CreateUIDefinition.MultiVm.json#",
-  "handler": "Microsoft.Azure.CreateUIDef",
-  "version": "0.1.2-preview",
-    "parameters": {
-        "basics": [
-            {}
-        ],
-        "steps": [
-        ],
-        "outputs": {
-            "managedIdentity": "[parse('{\"Type\":\"SystemAssigned\"}')]"
-        }
-    }
-}
-```
-
-#### <a name="userassigned-createuidefinition"></a>UserAssigned CreateUIDefinition
-
-一个基本 CreateUIDefinition，它使用**用户分配的标识**资源作为输入，并为托管应用程序启用 UserAssigned 标识。
+CreateUIDefinition 支持内置的[托管标识控件](./microsoft-managedidentity-identityselector.md)。
 
 ```json
 {
   "$schema": "https://schema.management.azure.com/schemas/0.1.2-preview/CreateUIDefinition.MultiVm.json#",
   "handler": "Microsoft.Azure.CreateUIDef",
-  "version": "0.1.2-preview",
-    "parameters": {
-        "basics": [
-            {}
-        ],
-        "steps": [
-            {
-                "name": "manageIdentity",
-                "label": "Identity",
-                "subLabel": {
-                    "preValidation": "Manage Identities",
-                    "postValidation": "Done"
-                },
-                "bladeTitle": "Identity",
-                "elements": [
-                    {
-                        "name": "userAssignedText",
-                        "type": "Microsoft.Common.TextBox",
-                        "label": "User assigned managed identity",
-                        "defaultValue": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.ManagedIdentity/userassignedidentites/myuserassignedidentity",
-                        "visible": true
-                    }
-                ]
-            }
-        ],
-        "outputs": {
-            "managedIdentity": "[parse(concat('{\"Type\":\"UserAssigned\",\"UserAssignedIdentities\":{',string(steps('manageIdentity').userAssignedText),':{}}}'))]"
-        }
+  "version": "0.0.1-preview",
+  "parameters": {
+    "basics": [],
+    "steps": [
+      {
+        "name": "applicationSettings",
+        "label": "Application Settings",
+        "subLabel": {
+          "preValidation": "Configure your application settings",
+          "postValidation": "Done"
+        },
+        "bladeTitle": "Application Settings",
+        "elements": [
+          {
+            "name": "appName",
+            "type": "Microsoft.Common.TextBox",
+            "label": "Managed application Name",
+            "toolTip": "Managed application instance name",
+            "visible": true
+          },
+          {
+            "name": "appIdentity",
+            "type": "Microsoft.ManagedIdentity.IdentitySelector",
+            "label": "Managed Identity Configuration",
+            "toolTip": {
+              "systemAssignedIdentity": "Enable system assigned identity to grant the managed application access to additional existing resources.",
+              "userAssignedIdentity": "Add user assigned identities to grant the managed application access to additional existing resources."
+            },
+            "defaultValue": {
+              "systemAssignedIdentity": "Off"
+            },
+            "options": {
+              "hideSystemAssignedIdentity": false,
+              "hideUserAssignedIdentity": false,
+              "readOnlySystemAssignedIdentity": false
+            },
+            "visible": true
+          }
+        ]
+      }
+    ],
+    "outputs": {
+      "applicationResourceName": "[steps('applicationSettings').appName]",
+      "location": "[location()]",
+      "managedIdentity": "[steps('applicationSettings').appIdentity]"
     }
+  }
 }
 ```
 
-以上 CreateUIDefinition.json 生成“创建用户”体验，其中包含一个文本框，供使用者输入**用户分配的标识** Azure 资源 ID。 生成的体验如下所示：
-
-![用户分配的标识 CreateUIDefinition 示例](./media/publish-managed-identity/user-assigned-identity.png)
+![托管标识 CreateUIDefinition](./media/publish-managed-identity/msi-cuid.png)
 
 ### <a name="using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板
 
@@ -334,8 +328,8 @@ POST https://management.chinacloudapi.cn/subscriptions/{subscriptionId}/resource
 
 参数 | 必须 | 说明
 ---|---|---
-authorizationAudience | 否  | 目标资源的应用 ID URI。 它也是颁发的令牌的 `aud`（受众）声明。 默认值为“https://management.azure.com/”
-userAssignedIdentities | 否  | 要检索其令牌的用户分配托管标识的列表。 如果未指定，`listTokens` 将返回系统分配的托管标识的令牌。
+authorizationAudience | 否** | 目标资源的应用 ID URI。 它也是颁发的令牌的 `aud`（受众）声明。 默认值为“https://management.chinacloudapi.cn/”
+userAssignedIdentities | 否** | 要检索其令牌的用户分配托管标识的列表。 如果未指定，`listTokens` 将返回系统分配的托管标识的令牌。
 
 <!--CORRECT ON The default value is "https://management.azure.com/"-->
 
@@ -375,5 +369,4 @@ token_type | 令牌的类型。
 <!--Not Available on ## Next steps-->
 <!--Not Available on [How to configure a Managed Application with a Custom Provider](../custom-providers/overview.md)-->
 
-<!-- Update_Description: new article about publish managed identity -->
-<!--NEW.date: 01/20/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

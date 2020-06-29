@@ -1,33 +1,33 @@
 ---
-title: Azure Cosmos DB 监视数据参考 | Azure Docs
+title: Azure Cosmos DB 监视数据参考 | Azure
 description: 来自 Azure Cosmos DB 的监视数据的日志和指标参考。
 author: rockboyfor
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: reference
 origin.date: 11/11/2019
-ms.date: 05/06/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
 ms.custom: subject-monitoring
 ms.subservice: logs
-ms.openlocfilehash: 358b39ffaa336c0999352f122177d88e5a4410fd
-ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
+ms.openlocfilehash: 20d3a1df34e24e7c476d2c15b62520bf3341de93
+ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "83002078"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85323385"
 ---
 # <a name="azure-cosmos-db-monitoring-data-reference"></a>Azure Cosmos DB 监视数据参考
 本文提供了对所收集日志和指标数据的引用，用于分析 Azure Cosmos DB 的性能和可用性。 请参阅[监视 Cosmos DB](monitor-cosmos-db.md)，详细了解如何收集和分析 Azure Cosmos DB 的监视数据。
 
 ## <a name="resource-logs"></a>资源日志
-下表列出了在 Azure Monitor 日志或 Azure 存储中收集 Azure Cosmos DB 资源日志时这些资源日志的属性。 在 Azure Monitor 日志中，它们收集在 AzureDiagnostics  表中，且 ResourceProvider  值为 MICROSOFT.DOCUMENTDB  。 
+下表列出了在 Azure Monitor 日志或 Azure 存储中收集 Azure Cosmos DB 资源日志时这些资源日志的属性。 在 Azure Monitor 日志中，它们收集在 AzureDiagnostics 表中，且 ResourceProvider 值为 MICROSOFT.DOCUMENTDB。 
 
 | Azure 存储字段或属性 | Azure Monitor 日志属性 | 说明 |
 | --- | --- | --- |
 | **time** | **TimeGenerated** | 操作发生时的日期和时间 (UTC)。 |
 | **resourceId** | **资源** | 为其启用日志的 Azure Cosmos DB 帐户。|
-| **category** | **类别** | 就 Azure Cosmos DB 日志来说，DataPlaneRequests  、MongoRequests  、QueryRuntimeStatistics  、PartitionKeyStatistics  、PartitionKeyRUConsumption  、ControlPlaneRequests  是可用的日志类型。 |
+| **category** | **类别** | 就 Azure Cosmos DB 日志来说，DataPlaneRequests、MongoRequests、QueryRuntimeStatistics、PartitionKeyStatistics、PartitionKeyRUConsumption、ControlPlaneRequests 是可用的日志类型。 |
 | **operationName** | **OperationName** | 操作的名称。 此值可以是以下任意操作：创建、更新、读取、ReadFeed、删除、替换、执行、SqlQuery、查询、JSQuery、Head、HeadFeed 或 Upsert。   |
 | **properties** | 不适用 | 下面的行中描述了此字段的内容。 |
 | **activityId** | **activityId_g** | 日志记录操作的唯一 GUID。 |
@@ -42,11 +42,12 @@ ms.locfileid: "83002078"
 | **requestLength** | **requestLength_s** | 请求的长度（按字节计）。 |
 | **responseLength** | **responseLength_s** | 响应的长度（按字节计）。|
 | **resourceTokenUserRid** | **resourceTokenUserRid_s** | 将[资源令牌](/cosmos-db/secure-access-to-data#resource-tokens)用于身份验证时，此值非空。 值指向用户的资源 ID。 |
+| **responseLength** | **responseLength_s** | 响应的长度（按字节计）。|
 
 如需所有 Azure Monitor 日志类别的列表和指向关联架构的链接，请参阅 [Azure Monitor 日志类别和架构](../azure-monitor/platform/diagnostic-logs-schema.md)。 
 
 ## <a name="metrics"></a>指标
-以下各表列出了为 Azure CosmOS DB 收集的平台指标。 所有指标都存储在“Cosmos DB 标准指标”  命名空间中。
+以下各表列出了为 Azure CosmOS DB 收集的平台指标。 所有指标都存储在“Cosmos DB 标准指标”命名空间中。
 
 有关 Azure Monitor 支持的所有指标（包括 CosmosDB）的列表，请参阅 [Azure Monitor 支持的指标](../azure-monitor/platform/metrics-supported.md)。 
 
@@ -100,8 +101,6 @@ ms.locfileid: "83002078"
 ## <a name="see-also"></a>另请参阅
 
 - 有关如何监视 Azure Cosmos DB 的说明，请参阅[监视 Azure Cosmos DB](monitor-cosmos-db.md)。
+- 有关监视 Azure 资源的详细信息，请参阅[通过 Azure Monitor 监视 Azure 资源](../azure-monitor/insights/monitor-azure-resource.md)。
 
-<!--Not Available on [Monitoring Azure resources with Azure Monitor](../azure-monitor/insights/monitor-azure-resource.md)-->
-<!-- Update_Description: new article about monitor cosmos db reference -->
-<!--NEW.date: 04/27/2020-->
-
+<!-- Update_Description: update meta properties, wording update, update link -->

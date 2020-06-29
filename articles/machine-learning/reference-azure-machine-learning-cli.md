@@ -1,28 +1,26 @@
 ---
-title: CLI 扩展
-titleSuffix: Azure Machine Learning
-description: 了解适用于 Azure CLI 的 Azure 机器学习的机器学习 CLI 扩展。 Azure CLI 是一个跨平台命令行实用工具，可让你使用 Azure 云中的资源。 可通过该机器学习扩展来使用 Azure 机器学习。 ML CLI 可创建和管理工作区、数据存储、数据集、管道、模型与部署等资源。
+title: 安装和使用 Azure 机器学习 CLI
+description: 了解如何安装和使用 Azure 机器学习 CLI 扩展来创建和管理资源，例如工作区、数据存储、数据集、管道、模型和部署。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: reference
 ms.reviewer: jmartens
 ms.author: jordane
 author: jpe316
-origin.date: 11/05/2019
-ms.date: 03/16/2020
+ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: e6f2987fef9bd7f865bac269caf843e12cdc0160
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 3444e5070a42576cf4cbdd5b93df230b6002f52d
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78850640"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097425"
 ---
-# <a name="use-the-cli-extension-for-azure-machine-learning"></a>使用 Azure 机器学习的 CLI 扩展
+# <a name="install--use-the-cli-extension-for-azure-machine-learning"></a>安装和使用 Azure 机器学习的 CLI 扩展
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Azure 机器学习 CLI 是 [Azure CLI](/cli/?view=azure-cli-latest)（适用于 Azure 平台的跨平台命令行接口）的一个扩展。 此扩展提供用于操作 Azure 机器学习的命令。 通过此扩展可将机器学习活动自动化。 以下列表提供了可以使用 CLI 扩展执行的一些示例操作：
+Azure 机器学习 CLI 是 [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)（适用于 Azure 平台的跨平台命令行接口）的一个扩展。 此扩展提供用于操作 Azure 机器学习的命令。 通过此扩展可将机器学习活动自动化。 以下列表提供了可以使用 CLI 扩展执行的一些示例操作：
 
 + 运行试验以创建机器学习模型
 
@@ -32,15 +30,31 @@ Azure 机器学习 CLI 是 [Azure CLI](/cli/?view=azure-cli-latest)（适用于 
 
 CLI 不能取代 Azure 机器学习 SDK。 它是一个经过优化的补充工具，可以处理高度参数化的、非常适合自动化的任务。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
-* 若要使用 CLI，必须拥有 Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
+* 若要使用 CLI，必须拥有 Azure 订阅。 如果没有 Azure 订阅，请在开始前创建一个试用帐户。 立即试用[免费版或付费版 Azure 机器学习](https://www.azure.cn/pricing/1rmb-trial)。
 
-* [Azure CLI](/cli/?view=azure-cli-latest)。
+* 若要在**本地环境**中使用本文档所述的 CLI 命令，需要安装 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
+
+
 
 ## <a name="full-reference-docs"></a>完整参考文档
 
 查找 [Azure CLI 的 azure-cli-ml 扩展的完整参考文档](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/?view=azure-cli-latest)。
+
+## <a name="connect-the-cli-to-your-azure-subscription"></a>将 CLI 连接到 Azure 订阅
+
+可通过多种方法从 CLI 对 Azure 订阅进行身份验证。 最基本的方法是使用浏览器进行交互式身份验证。 若要以交互方式进行身份验证，请打开命令行或终端，然后使用以下命令：
+
+```azurecli
+az login
+```
+
+如果 CLI 可以打开默认的浏览器，则它会打开该浏览器并加载登录页。 否则，需要打开浏览器并按照命令行中的说明操作。 按说明操作时，需要浏览到 [https://aka.ms/devicelogin](https://aka.ms/devicelogin) 并输入授权代码。
+
+[!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)]
+
+有关其他身份验证方法，请参阅[使用 Azure CLI 登录](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest)。
 
 ## <a name="install-the-extension"></a>安装扩展
 
@@ -85,7 +99,7 @@ az extension remove -n azure-cli-ml
 + 如果没有资源组，请创建一个资源组：
 
     ```azurecli
-    az group create -n myresourcegroup -l chinaeast
+    az group create -n myresourcegroup -l westus2
     ```
 
 + 创建 Azure 机器学习工作区：
@@ -413,4 +427,4 @@ az extension remove -n azure-cli-ml
 
 * [机器学习 CLI 扩展的命令参考](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml?view=azure-cli-latest)。
 
-* [使用 Azure Pipelines 训练和部署机器学习模型](https://docs.microsoft.com/azure/devops/pipelines/targets/azure-machine-learning)
+* [使用 Azure Pipelines 训练和部署机器学习模型](/azure/devops/pipelines/targets/azure-machine-learning)

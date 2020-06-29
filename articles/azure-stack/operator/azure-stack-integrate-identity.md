@@ -4,16 +4,16 @@ description: 了解如何将 Azure Stack Hub AD FS 标识提供者与数据中�
 author: WenJason
 ms.topic: article
 origin.date: 04/10/2019
-ms.date: 05/18/2020
+ms.date: 06/22/2020
 ms.author: v-jay
 ms.reviewer: thoroet
 ms.lastreviewed: 05/10/2019
-ms.openlocfilehash: 1d3f7f2bcbd73103c231657f21b89fbde244c9fc
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.openlocfilehash: aa37162a1b7218fd1a54d5ac57d27ad3eb07566d
+ms.sourcegitcommit: d86e169edf5affd28a1c1a4476d72b01a7fb421d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83422613"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85096462"
 ---
 # <a name="integrate-ad-fs-identity-with-your-azure-stack-hub-datacenter"></a>将 AD FS 标识与 Azure Stack Hub 数据中心集成
 
@@ -220,7 +220,7 @@ Microsoft 提供了用于配置信赖方信任（包括声明转换规则）的�
 
 如果确定要手动运行命令，请遵循以下步骤：
 
-1. 将以下内容复制到数据中心的 AD FS 实例或场成员上的 .txt 文件中（例如，保存为 c:\ClaimRules.txt）：
+1. 将以下内容复制到数据中心的 AD FS 实例或场成员上的 .txt 文件（例如，另存为 c:\ClaimIssuanceRules.txt 的文件）中：
 
    ```text
    @RuleTemplate = "LdapClaims"

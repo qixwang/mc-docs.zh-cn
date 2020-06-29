@@ -1,19 +1,20 @@
 ---
 title: 了解 Azure VM 规模集 VM 的实例 ID
 description: 了解 Azure VM 规模集虚拟机的实例 ID 以及它们出现的各种方式。
-author: mayanknayar
-tags: azure-resource-manager
-ms.assetid: e229664e-ee4e-4f12-9d2e-a4f456989e5d
-ms.service: virtual-machine-scale-sets
-ms.topic: conceptual
-ms.date: 03/31/2020
+author: mimckitt
 ms.author: v-junlch
-ms.openlocfilehash: 9a7331545fd8e098e8038fddec7b668af1f8a968
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.topic: conceptual
+ms.service: virtual-machine-scale-sets
+ms.subservice: management
+ms.date: 06/22/2020
+ms.reviewer: jushiman
+ms.custom: mimckitt
+ms.openlocfilehash: d6de989d7992c1460abdb0eec17b62d774d0ee39
+ms.sourcegitcommit: 43db4001be01262959400663abf8219e27e5cb8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80581819"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85241594"
 ---
 # <a name="understand-instance-ids-for-azure-vm-scale-set-vms"></a>了解 Azure VM 规模集 VM 的实例 ID
 本文介绍规模集的实例 ID 和显示这些 ID 的各种方法。
@@ -22,7 +23,7 @@ ms.locfileid: "80581819"
 
 规模集中的每个 VM 均获得唯一标识它的实例 ID。 可在规模集 API 中使用此实例 ID 对规模集中的特定 VM 执行操作。 例如，使用重置映像 API 时，可以指定特定实例 ID 以重置映像：
 
-REST API：`POST https://management.chinacloudapi.cn/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/reimage?api-version={apiVersion}`（有关详细信息，请参阅 [REST API 文档](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/reimage)）
+REST API：`POST https://management.chinacloudapi.cn/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualmachines/{instanceId}/reimage?api-version={apiVersion}`（有关详细信息，请参阅 [REST API 文档](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesetvms/reimage)）
 
 PowerShell：`Set-AzVmssVM -ResourceGroupName {resourceGroupName} -VMScaleSetName {vmScaleSetName} -InstanceId {instanceId} -Reimage`（有关详细信息，请参阅 [PowerShell 文档](https://docs.microsoft.com/powershell/module/az.compute/set-azvmssvm)）
 

@@ -1,20 +1,20 @@
 ---
 title: 使用 .NET 和 Azure Cosmos DB 的 API for MongoDB 构建 Xamarin 应用
-description: 提供了一个 Xamarin 代码示例，可以参考该示例使用 Azure Cosmos DB 的用于 MongoDB 的 API 进行连接和查询
+description: 提供了一个 Xamarin 代码示例，可以参考该示例使用 Azure Cosmos DB API for MongoDB 进行连接和查询
 author: rockboyfor
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: dotnet
 ms.topic: quickstart
-origin.date: 06/20/2018
-ms.date: 02/10/2020
+origin.date: 03/16/2020
+ms.date: 06/22/2020
 ms.author: v-yeche
-ms.openlocfilehash: e50e378cbe192d3f6b4b0938d41daef4b89cde7d
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 226830a24b2ee56f1ea33439bb8e7883fe1ebf50
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "76980544"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098664"
 ---
 # <a name="quickstart-build-a-xamarinforms-app-with-net-sdk-and-azure-cosmos-dbs-api-for-mongodb"></a>快速入门：使用 .NET SDK 和 Azure Cosmos DB 的 API for MongoDB 构建 Xamarin.Forms 应用
 
@@ -24,7 +24,7 @@ ms.locfileid: "76980544"
 > * [Node.js](create-mongodb-nodejs.md)
 > * [Python](create-mongodb-flask.md)
 > * [Xamarin](create-mongodb-xamarin.md)
-> * [Golang](create-mongodb-golang.md)
+> * [Golang](create-mongodb-go.md)
 >  
 
 Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服务。 可快速创建和查询文档、键/值和图形数据库，所有这些都受益于 Azure Cosmos DB 核心的多区域分布和水平缩放功能。
@@ -53,10 +53,16 @@ Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服�
 
 首先，从 GitHub 下载示例应用。 这会实施一个包含 MongoDB 文档存储模型的待办事项应用。
 
-1. 打开命令提示符，新建一个名为“git-samples”的文件夹，然后关闭命令提示符。
+# <a name="windows"></a>[Windows](#tab/windows)
+
+1. 在 Windows 上打开命令提示符，或在 Mac 上打开终端，创建名为 git-samples 的新文件夹，然后关闭窗口。
+
+    ```batch
+    md "C:\git-samples"
+    ```
 
     ```bash
-    md "C:\git-samples"
+    mkdir '$home\git-samples\
     ```
 
 2. 打开诸如 git bash 之类的 git 终端窗口，并使用 `cd` 命令更改为要安装示例应用的新文件夹。
@@ -87,6 +93,8 @@ Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服�
 
     settings.SslSettings =
         new SslSettings() { EnabledSslProtocols = SslProtocols.Tls12 };
+
+    settings.RetryWrites = false;
 
     MongoClient mongoClient = new MongoClient(settings);
     ```
@@ -155,11 +163,16 @@ Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服�
 
 现在返回到 Azure 门户，获取连接字符串信息，并将其复制到应用。
 
-1. 在 [Azure 门户](https://portal.azure.cn/)的 Azure Cosmos DB 帐户的左侧导航栏中，单击“连接字符串”  ，然后单击“读写密钥”  。 在后续步骤中，将使用屏幕右侧的复制按钮复制“主连接字符串”。
+1. 在 [Azure 门户](https://portal.azure.cn/)的 Azure Cosmos DB 帐户的左侧导航栏中，单击“连接字符串”，然后单击“读写密钥”。 在后续步骤中，将使用屏幕右侧的复制按钮复制“主连接字符串”。
 
 2. 打开 **TaskList.Core** 项目的 **Helpers** 目录中的 **APIKeys.cs** 文件。
 
-3. 从门户复制“主连接字符串”值（使用复制按钮），并将其设置为 **APIKeys.cs** 文件中 **ConnectionString** 字段的值。 
+3. 从门户复制“主连接字符串”值（使用复制按钮），并将其设置为 **APIKeys.cs** 文件中 **ConnectionString** 字段的值。
+
+4. 从连接字符串中删除 `&replicaSet=globaldb`。 如果不从查询字符串中删除该值，则会出现运行时错误。
+
+> [!IMPORTANT]
+> 必须从连接字符串的查询字符串中删除 `&replicaSet=globaldb` 键值对，避免运行时错误。
 
 现已使用与 Azure Cosmos DB 进行通信所需的所有信息更新应用。
 
@@ -167,12 +180,12 @@ Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服�
 
 ### <a name="visual-studio-2019"></a>Visual Studio 2019
 
-1. 在 Visual Studio 中，右键单击解决方案资源管理器  中的每个项目，并单击“管理 NuGet 包”  。
-2. 单击“还原所有 NuGet 包”  。
-3. 右键单击“TaskList.Android”，并选择“设为启动项目”。  
+1. 在 Visual Studio 中，右键单击解决方案资源管理器中的每个项目，并单击“管理 NuGet 包”。
+2. 单击“还原所有 NuGet 包”。
+3. 右键单击“TaskList.Android”，并选择“设为启动项目”。 
 4. 按 F5 开始调试应用程序。
 5. 如果想要在 iOS 上运行，首先请将计算机连接到 Mac（参阅操作[说明](https://docs.microsoft.com/xamarin/ios/get-started/installation/windows/introduction-to-xamarin-ios-for-visual-studio)）。
-6. 右键单击“TaskList.iOS”项目，并选择“设为启动项目”。  
+6. 右键单击“TaskList.iOS”项目，并选择“设为启动项目”。 
 7. 单击 F5 开始调试应用程序。
 
 ### <a name="visual-studio-for-mac"></a>Visual Studio for Mac

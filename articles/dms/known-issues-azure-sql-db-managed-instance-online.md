@@ -1,6 +1,6 @@
 ---
-title: 联机迁移到 Azure SQL 数据库托管实例时存在的已知问题和限制
-description: 了解联机迁移到 Azure SQL 数据库托管实例时存在的已知问题/迁移限制。
+title: 联机迁移到 Azure SQL 托管实例时存在的已知问题和限制
+description: 了解联机迁移到 Azure SQL 托管实例时存在的已知问题/迁移限制。
 services: database-migration
 author: WenJason
 ms.author: v-jay
@@ -10,18 +10,18 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-origin.date: 12/18/2019
-ms.date: 01/13/2020
-ms.openlocfilehash: 36e3846b7ea1661c8d46a7f006fc1a93b2f2e6ba
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+origin.date: 02/20/2020
+ms.date: 06/22/2020
+ms.openlocfilehash: 7c9f1cd3f04bc5745d292f3bd2b727d21cfa5a80
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75776766"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098722"
 ---
-# <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-sql-database-managed-instance"></a>联机迁移到 Azure SQL 数据库托管实例时存在的已知问题/迁移限制
+# <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-sql-managed-instance"></a>联机迁移到 Azure SQL 托管实例时存在的已知问题/迁移限制
 
-本文描述了从 SQL Server 联机迁移到 Azure SQL 数据库托管实例时存在的已知问题和限制。
+下面介绍了从 SQL Server 联机迁移到 Azure SQL 托管实例时的已知问题和限制。
 
 > [!IMPORTANT]
 > 将 SQL Server 联机迁移到 Azure SQL 数据库时，不支持迁移 SQL_variant 数据类型。
@@ -30,14 +30,14 @@ ms.locfileid: "75776766"
 
 - **使用校验和的备份**
 
-    Azure 数据库迁移服务使用备份和还原方法将本地数据库迁移到 SQL 数据库托管实例。 Azure 数据库迁移服务仅支持使用校验和创建的备份。
+    Azure 数据库迁移服务使用备份和还原方法将本地数据库迁移到 SQL 托管实例。 Azure 数据库迁移服务仅支持使用校验和创建的备份。
 
     [在备份或还原期间启用或禁用备份校验和 (SQL Server)](https://docs.microsoft.com/sql/relational-databases/backup-restore/enable-or-disable-backup-checksums-during-backup-or-restore-sql-server?view=sql-server-2017)
 
     > [!NOTE]
     > 如果通过压缩进行数据库备份，则除非明确禁用，否则校验和是默认行为。
 
-    脱机迁移时，如果选择“我将让 Azure 数据库迁移服务...”，则 Azure 数据库迁移服务进行数据库备份时会启用校验和选项  。
+    脱机迁移时，如果选择“我将让 Azure 数据库迁移服务...”，则 Azure 数据库迁移服务进行数据库备份时会启用校验和选项。
 
 - **备份介质**
 
@@ -53,16 +53,16 @@ ms.locfileid: "75776766"
 
 - **FileStream/Filetable**
 
-    SQL 数据库托管实例当前不支持 FileStream 和 Filetable。 对于依赖这些功能的工作负载，建议选择 Azure VM 上运行的 SQL Server 作为 Azure 目标。
+    SQL 托管实例当前不支持 FileStream 和 FileTable。 对于依赖这些功能的工作负载，建议选择 Azure VM 上运行的 SQL Server 作为 Azure 目标。
 
 - **内存中表**
 
-    内存中 OLTP 在 SQL 数据库托管实例高级层和业务关键层中可用。常规用途层不支持内存中 OLTP。
+    内存中 OLTP 在 SQL 托管实例高级层和业务关键层中可用；常规用途层不支持内存中 OLTP。
 
 ## <a name="migration-resets"></a>迁移重置
 
 - **部署**
 
-    SQL 数据库托管实例是一种具有自动修补和版本更新的 PaaS 服务。 迁移 SQL 数据库托管实例期间，非关键更新最多保留 36 小时。 之后（对于关键更新），如果迁移中断，进程将重置为完全还原状态。
+    SQL 托管实例是一种具有自动修补和版本更新功能的 PaaS 服务。 迁移 SQL 托管实例期间，非关键更新最多保留 36 小时。 之后（对于关键更新），如果迁移中断，进程将重置为完全还原状态。
 
     仅在完整备份还原完成且与所有日志备份一致后才能调用迁移切换。

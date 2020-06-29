@@ -1,7 +1,7 @@
 ---
 title: 快速入门：使用 PHP 调用文本分析 API
 titleSuffix: Azure Cognitive Services
-description: 获取信息和代码示例，以便快速完成 Azure 认知服务中的文本分析 API 的使用入门。
+description: 本快速入门介绍如何获取信息和代码示例，以帮助你快速开始使用 Azure 认知服务中的文本分析 API。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
 origin.date: 04/15/2019
-ms.date: 05/15/2019
-ms.author: v-junlch
-ms.openlocfilehash: d9588d268b473f89dae1d6edde6565aedcd9e0d9
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 06/23/2019
+ms.author: v-tawe
+ms.openlocfilehash: 660d68986f6c5a5381717b81fda50df1dd1ce463
+ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78154807"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85323291"
 ---
 # <a name="quickstart-using-php-to-call-the-text-analytics-cognitive-service"></a>快速入门：使用 PHP 调用文本分析认知服务
 <a name="HOLTop"></a>
@@ -25,7 +25,7 @@ ms.locfileid: "78154807"
 
 有关 API 的技术文档，请参阅 [API 定义](https://dev.cognitive.azure.cn/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
 
@@ -36,31 +36,21 @@ ms.locfileid: "78154807"
 语言检测 API 使用[检测语言方法](https://dev.cognitive.azure.cn/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7)检测文本文档的语言。
 
 1. 在你喜欢使用的 IDE 中新建一个 PHP 项目。
-2. 添加以下提供的代码。
-3. 使用对订阅有效的访问密钥替换 `accessKey` 值。
-4. 将 `host` 中的位置（当前为 `chinaeast2`）替换为进行注册的区域。
-5. 运行该程序。
+1. 添加以下提供的代码。
+1. 将文本分析密钥和终结点复制到代码中。
+1. 运行该程序。
 
 ```php
 <?php
 
 // NOTE: Be sure to uncomment the following line in your php.ini file.
 // ;extension=php_openssl.dll
+// You might need to set the full path, for example:
+// extension="C:\Program Files\Php\ext\php_openssl.dll"
 
-// **********************************************
-// *** Update or verify the following values. ***
-// **********************************************
+$subscription_key = "<paste-your-text-analytics-key-here>";
+$endpoint = "<paste-your-text-analytics-endpoint-here>";
 
-// Replace the accessKey string value with your valid access key.
-$accessKey = 'enter key here';
-
-// Replace or verify the region.
-
-// You must use the same region in your REST API call as you used to obtain your access keys.
-// For example, if you obtained your access keys from the chinanorth region, replace 
-// "chinaeast2" in the URI below with "chinanorth".
-
-$host = 'https://chinaeast2.api.cognitive.azure.cn';
 $path = '/text/analytics/v2.1/languages';
 
 function DetectLanguage ($host, $path, $key, $data) {
@@ -94,7 +84,7 @@ $data = array (
 
 print "Please wait a moment for the results to appear.";
 
-$result = DetectLanguage ($host, $path, $accessKey, $data);
+$result = DetectLanguage ($endpoint, $path, $subscription_key, $data);
 
 echo json_encode (json_decode ($result), JSON_PRETTY_PRINT);
 ?>
@@ -152,40 +142,37 @@ echo json_encode (json_decode ($result), JSON_PRETTY_PRINT);
 
 情绪分析 API 使用 [Sentiment 方法](https://dev.cognitive.azure.cn/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9)检测一组文本记录的情绪。 以下示例为两个文档打分，一个是英文文档，另一个是西班牙文文档。
 
+
 1. 在你喜欢使用的 IDE 中新建一个 PHP 项目。
-2. 添加以下提供的代码。
-3. 使用对订阅有效的访问密钥替换 `accessKey` 值。
-4. 将 `host` 中的位置（当前为 `chinaeast2`）替换为进行注册的区域。
-5. 运行该程序。
+1. 添加以下提供的代码。
+1. 将文本分析密钥和终结点复制到代码中。
+1. 运行该程序。
 
 ```php
 <?php
 
 // NOTE: Be sure to uncomment the following line in your php.ini file.
 // ;extension=php_openssl.dll
+// You might need to set the full path, for example:
+// extension="C:\Program Files\Php\ext\php_openssl.dll"
+$subscription_key = "<paste-your-text-analytics-key-here>";
+$endpoint = "<paste-your-text-analytics-endpoint-here>";
 
-// **********************************************
-// *** Update or verify the following values. ***
-// **********************************************
-
-// Replace the accessKey string value with your valid access key.
-$accessKey = 'enter key here';
-
-// Replace or verify the region.
-
-// You must use the same region in your REST API call as you used to obtain your access keys.
-// For example, if you obtained your access keys from the chinanorth region, replace 
-// "chinaeast2" in the URI below with "chinanorth".
-
-$host = 'https://chinaeast2.api.cognitive.azure.cn';
 $path = '/text/analytics/v2.1/sentiment';
 
 function GetSentiment ($host, $path, $key, $data) {
-
-    $headers = "Content-type: text/json\r\n" .
-        "Ocp-Apim-Subscription-Key: $key\r\n";
+    // Make sure all text is UTF-8 encoded.
+    foreach ($data as &$item) {
+        foreach ($item as $ignore => &$value) {
+            $value['text'] = utf8_encode($value['text']);
+        }
+    }
 
     $data = json_encode ($data);
+
+    $headers = "Content-type: text/json\r\n" .
+        "Content-Length: " . strlen($data) . "\r\n" .
+        "Ocp-Apim-Subscription-Key: $key\r\n";
 
     // NOTE: Use the key 'http' even if you are making an HTTPS request. See:
     // https://php.net/manual/en/function.stream-context-create.php
@@ -210,7 +197,7 @@ $data = array (
 
 print "Please wait a moment for the results to appear.";
 
-$result = GetSentiment ($host, $path, $accessKey, $data);
+$result = GetSentiment($endpoint, $path, $subscription_key, $data);
 
 echo json_encode (json_decode ($result), JSON_PRETTY_PRINT);
 ?>
@@ -241,33 +228,21 @@ echo json_encode (json_decode ($result), JSON_PRETTY_PRINT);
 ## <a name="extract-key-phrases"></a>提取关键短语
 
 关键短语提取 API 使用[关键短语方法](https://dev.cognitive.azure.cn/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6)从文本文档中提取关键短语。 以下示例为英文和西班牙文文档提取关键短语。
-
 1. 在你喜欢使用的 IDE 中新建一个 PHP 项目。
-2. 添加以下提供的代码。
-3. 使用对订阅有效的访问密钥替换 `accessKey` 值。
-4. 将 `host` 中的位置（当前为 `chinaeast2`）替换为进行注册的区域。
-5. 运行该程序。
+1. 添加以下提供的代码。
+1. 将文本分析密钥和终结点复制到代码中。
+1. 运行该程序。
 
 ```php
 <?php
 
 // NOTE: Be sure to uncomment the following line in your php.ini file.
 // ;extension=php_openssl.dll
+// You might need to set the full path, for example:
+// extension="C:\Program Files\Php\ext\php_openssl.dll"
+$subscription_key = "<paste-your-text-analytics-key-here>";
+$endpoint = "<paste-your-text-analytics-endpoint-here>";
 
-// **********************************************
-// *** Update or verify the following values. ***
-// **********************************************
-
-// Replace the accessKey string value with your valid access key.
-$accessKey = 'enter key here';
-
-// Replace or verify the region.
-
-// You must use the same region in your REST API call as you used to obtain your access keys.
-// For example, if you obtained your access keys from the chinanorth region, replace 
-// "chinaeast2" in the URI below with "chinanorth".
-
-$host = 'https://chinaeast2.api.cognitive.azure.cn';
 $path = '/text/analytics/v2.1/keyPhrases';
 
 function GetKeyPhrases ($host, $path, $key, $data) {
@@ -301,11 +276,10 @@ $data = array (
 
 print "Please wait a moment for the results to appear.";
 
-$result = GetKeyPhrases ($host, $path, $accessKey, $data);
+$result = GetKeyPhrases($endpoint, $path, $subscription_key, $data);
 
 echo json_encode (json_decode ($result), JSON_PRETTY_PRINT);
 ?>
-
 ```
 
 **关键短语提取响应**
@@ -355,38 +329,27 @@ echo json_encode (json_decode ($result), JSON_PRETTY_PRINT);
 实体 API 使用[实体方法](https://dev.cognitive.azure.cn/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)识别文本文档中的已知实体。 以下示例识别英文文档的实体。
 
 1. 在你喜欢使用的 IDE 中新建一个 PHP 项目。
-2. 添加以下提供的代码。
-3. 使用对订阅有效的访问密钥替换 `accessKey` 值。
-4. 将 `host` 中的位置（当前为 `chinaeast2`）替换为进行注册的区域。
-5. 运行该程序。
+1. 添加以下提供的代码。
+1. 将文本分析密钥和终结点复制到代码中。 
+1. 运行该程序。
 
 ```php
 <?php
 
 // NOTE: Be sure to uncomment the following line in your php.ini file.
 // ;extension=php_openssl.dll
+// You might need to set the full path, for example:
+// extension="C:\Program Files\Php\ext\php_openssl.dll"
+$subscription_key = "<paste-your-text-analytics-key-here>";
+$endpoint = "<paste-your-text-analytics-endpoint-here>";
 
-// **********************************************
-// *** Update or verify the following values. ***
-// **********************************************
-
-// Replace the accessKey string value with your valid access key.
-$accessKey = 'enter key here';
-
-// Replace or verify the region.
-
-// You must use the same region in your REST API call as you used to obtain your access keys.
-// For example, if you obtained your access keys from the chinanorth region, replace 
-// "chinaeast2" in the URI below with "chinanorth".
-
-$host = 'https://chinaeast2.api.cognitive.azure.cn';
 $path = '/text/analytics/v2.1/entities';
 
 function GetEntities ($host, $path, $key, $data) {
 
     $headers = "Content-type: text/json\r\n" .
+        "Content-Length: " . Length($data) . "\r\n" .
         "Ocp-Apim-Subscription-Key: $key\r\n";
-
     $data = json_encode ($data);
 
     // NOTE: Use the key 'http' even if you are making an HTTPS request. See:
@@ -411,11 +374,10 @@ $data = array (
 
 print "Please wait a moment for the results to appear.";
 
-$result = GetEntities ($host, $path, $accessKey, $data);
+$result = GetEntities($endpoint, $path, $subscription_key, $data);
 
 echo json_encode (json_decode ($result), JSON_PRETTY_PRINT);
 ?>
-
 ```
 
 **实体提取响应**
@@ -476,5 +438,4 @@ echo json_encode (json_decode ($result), JSON_PRETTY_PRINT);
 
  [文本分析概述](../overview.md)  
  [常见问题解答 (FAQ)](../text-analytics-resource-faq.md)
-
 <!-- Update_Description: wording update -->

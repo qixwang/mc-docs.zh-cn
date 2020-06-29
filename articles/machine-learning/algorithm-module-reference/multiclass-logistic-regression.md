@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: v-yiso
-origin.date: 10/22/2019
-ms.date: 03/09/2020
-ms.openlocfilehash: ec1cf39144f6790e83738c7d8e5432ab271acb5f
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+origin.date: 04/22/2020
+ms.date: 06/22/2020
+ms.openlocfilehash: 65daaa95aec4ed8200672f458f00f0480b2f7711
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78155032"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097478"
 ---
 # <a name="multiclass-logistic-regression-module"></a>多类逻辑回归模块
 
@@ -35,15 +35,15 @@ Azure 机器学习还提供了[两类逻辑回归](./two-class-logistic-regressi
 
 ## <a name="configure-a-multiclass-logistic-regression"></a>配置多类逻辑回归
 
-1. 将“多类逻辑回归”模块添加到管道  。
+1. 将“多类逻辑回归”模块添加到管道。
 
-2. 通过设置“创建训练程序模式”选项，指定所希望的模型训练方式  。
+2. 通过设置“创建训练程序模式”选项，指定所希望的模型训练方式。
 
     + **单个参数**：如果知道自己想要如何配置模型，请使用此选项并提供一组特定的值作为参数。
 
-    + **参数范围**：如果无法确定最佳参数且想要使用参数扫描，请使用此选项。
+    + **参数范围**：如果无法确定最佳参数并想要运行参数扫描，请选择此选项。 选择要循环访问的值范围，[优化模型超参数](tune-model-hyperparameters.md)模块将循环访问所提供的设置的所有可能组合，以确定产生最佳结果的超参数。  
 
-3. 优化容差，指定优化器收敛的阈值  。 如果迭代间的改进小于阈值，则算法将停止并返回当前模型。
+3. 优化容差，指定优化器收敛的阈值。 如果迭代间的改进小于阈值，则算法将停止并返回当前模型。
 
 4. **L1 正则化权重**，**L2 正则化权重**：键入要用于正则化参数 L1 和 L2 的值。 对于这两个值，建议使用非零值。
 
@@ -55,11 +55,21 @@ Azure 机器学习还提供了[两类逻辑回归](./two-class-logistic-regressi
 
 6. **随机数种子**：如果希望结果在运行期间是可重复的，请键入一个整数值作为算法的种子。 否则，将使用系统时钟值作为种子，这可能会在同一管道的运行中产生略微不同的结果。
 
-8. 将带标签的数据集连接到一个训练模块：
+8. 连接标记的数据集，并训练模型：
 
-    + 如果将“创建训练模式”设置为“单个参数”，请使用[训练模型](./train-model.md)模块   。
+    + 如果将“创建训练程序模式”设置为“单个参数”，请连接带标记的数据集和[训练模型](train-model.md)模块 。  
+  
+    + 如果将“创建训练程序模式”设置为“参数范围”，则连接标记的数据集并使用[优化模型超参数](tune-model-hyperparameters.md)模块来训练模型 。  
+  
+    > [!NOTE]
+    > 
+    > 如果将参数范围传递给[训练模型](train-model.md)模块，则它只使用单个参数列表中的默认值。  
+    > 
+    > 如果将一组参数值传递给[优化模型超参数](tune-model-hyperparameters.md)模块，则当它期望每个参数有一系列设置时，它会忽略这些值，并为学习器使用默认值。  
+    > 
+    > 如果选择“参数范围”选项并为任何参数输入单个值，则整个扫描过程中都会使用你指定的单个值，即使其他参数的一系列值发生了更改。
 
-9. 运行管道。
+9. 提交管道。
 
 
 

@@ -5,14 +5,14 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 05/08/2020
-ms.date: 06/22/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: f066ae08f62f345a4dfcf3849e2d5610a2a768a0
-ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
+ms.openlocfilehash: 5fae28a6550e247206922f6b964f39b3e0324d7e
+ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85098272"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85321576"
 ---
 <!--Verify successfully-->
 # <a name="azure-resource-manager-templates-for-azure-cosmos-db"></a>用于 Azure Cosmos DB 的 Azure 资源管理器模板

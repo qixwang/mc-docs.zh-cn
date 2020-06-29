@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
 origin.date: 12/17/2019
-ms.date: 02/25/2020
-ms.author: v-lingwu
-ms.openlocfilehash: b76d27b173afb29fce8e1714ff1d8597e97d4d24
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 06/23/2020
+ms.author: v-tawe
+ms.openlocfilehash: 134bdd4a6f9551ab7a9fff6c3b863627a53e55c6
+ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78154543"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85323049"
 ---
 # <a name="quickstart-using-go-to-call-the-text-analytics-cognitive-service"></a>快速入门：使用 Go 调用文本分析认知服务 
 <a name="HOLTop"></a>
@@ -25,10 +25,11 @@ ms.locfileid: "78154543"
 
 [!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
 
+[!INCLUDE [text-analytics-find-resource-information](../includes/find-azure-resource-info.md)]
 
 
 <a name="Detect"></a>

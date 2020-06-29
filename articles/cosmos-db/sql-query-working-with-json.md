@@ -4,15 +4,15 @@ description: 了解如何查询和访问嵌套的 JSON 属性并在 Azure Cosmos
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
-origin.date: 05/08/2020
-ms.date: 05/12/2020
+origin.date: 05/19/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 5d043c0ccf4e7e74d3136d8e14fd0a1e7bdcd63f
-ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
+ms.openlocfilehash: a9fba79a7a5d15fd8fceae266f7f82a76e85270b
+ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83392648"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85323391"
 ---
 # <a name="working-with-json-in-azure-cosmos-db"></a>使用 Azure Cosmos DB 中的 JSON
 
@@ -149,13 +149,11 @@ WHERE EXISTS(
 ```json
 {
   "id": "AndersenFamily",
-  "order": [
-     {
+  "order": {
          "orderId": "12345",
          "productId": "A17849",
          "price($)": 59.33
-     }
-  ],
+   },
   "creationDate": 1431620472,
   "isRegistered": true
 }
@@ -179,17 +177,13 @@ Syntax error, incorrect syntax near 'order'
 
 应按如下所示重写相同的查询：
 
-<!--CORRECT ON CUSTOMIZE TO ADD [0]-->
-
 ```sql
-SELECT * FROM c WHERE c["order"][0].orderId = "12345"
+SELECT * FROM c WHERE c["order"].orderId = "12345"
 ```
 
 ```sql
-SELECT * FROM c WHERE c["order"][0]["price($)"] > 50
+SELECT * FROM c WHERE c["order"]["price($)"] > 50
 ```
-
-<!--CORRECT ON CUSTOMIZE TO ADD [0]-->
 
 ## <a name="json-expressions"></a>JSON 表达式
 
@@ -275,7 +269,7 @@ SELECT * FROM c WHERE c["order"][0]["price($)"] > 50
 ```sql
     SELECT
            {"JSON expression with a space": { "state": f.address.state, "city": f.address.city }},
-           { "JSON expression with a special character": { "name": f.id }}
+           {"JSON expression with a special character!": { "name": f.id }}
     FROM Families f
     WHERE f.id = "AndersenFamily"
 ```
@@ -286,5 +280,4 @@ SELECT * FROM c WHERE c["order"][0]["price($)"] > 50
 - [SELECT 子句](sql-query-select.md)
 - [WHERE 子句](sql-query-where.md)
 
-<!-- Update_Description: new article about sql query working with json -->
-<!--NEW.date: 05/12/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

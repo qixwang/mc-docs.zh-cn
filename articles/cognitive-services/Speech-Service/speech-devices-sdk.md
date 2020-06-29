@@ -11,12 +11,12 @@ ms.topic: conceptual
 origin.date: 03/11/2020
 ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: 993fd843bedd12e25d6b2b81dfeaa7e096c6fdc0
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.openlocfilehash: e0e405f9fa5083f673dfdc650c04f2c29ecdbadc
+ms.sourcegitcommit: 304d3ef3c9e65c3e85977b3afb9985fbc0f908d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82127006"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85095950"
 ---
 # <a name="what-is-the-speech-devices-sdk"></a>什么是语音设备 SDK？
 
@@ -37,7 +37,7 @@ ms.locfileid: "82127006"
 ## <a name="get-the-speech-devices-sdk"></a>获取语音设备 SDK
 
 > [!IMPORTANT]
-> 需要语音 SDK 版本 1.10.0 或更高版本。
+> 需要语音 SDK 1.11.0 或更高版本。
 
 ### <a name="android"></a>Android
 

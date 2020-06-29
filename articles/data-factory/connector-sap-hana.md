@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 origin.date: 04/22/2020
 ms.date: 06/15/2020
-ms.openlocfilehash: 59b1152a7862a2be389d642b68b0ec4a3e5ee5fe
-ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
+ms.openlocfilehash: ccaf15396d5bb1c9a006b235b12e7158e6edc7d6
+ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84723652"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85322427"
 ---
 # <a name="copy-data-from-sap-hana-using-azure-data-factory"></a>使用 Azure 数据工厂从 SAP HANA 复制数据
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -297,7 +297,7 @@ SAP HANA 链接的服务支持以下属性：
 | TIMESTAMP          | DateTime                       |
 | VARBINARY          | Byte[]                         |
 
-### <a name="sap-hana-sink"></a>SAP HANA 接收器
+## <a name="sap-hana-sink"></a>SAP HANA 接收器
 
 目前，不支持将 SAP HANA 连接器用作接收器，你可以将通用 ODBC 连接器与 SAP HANA 驱动程序结合使用，以将数据写入 SAP HANA。 
 

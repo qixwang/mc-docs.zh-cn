@@ -11,12 +11,12 @@ ms.topic: include
 origin.date: 12/09/2019
 ms.date: 03/16/2020
 ms.author: v-tawe
-ms.openlocfilehash: f1373a8d6e8d647aad7dd61be7868947b41704b4
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.openlocfilehash: a78b51a4c74f4f943e77fbb0edec304c343d7853
+ms.sourcegitcommit: 304d3ef3c9e65c3e85977b3afb9985fbc0f908d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82150765"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85095991"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -25,13 +25,13 @@ ms.locfileid: "82150765"
 > [!div class="checklist"]
 > * [创建一个 Azure 搜索资源](../../../../get-started.md)
 > * [设置开发环境并创建空项目](../../../../quickstarts/setup-platform.md?tabs=jre)
-> * 需要语音 SDK 版本 1.10.0 或更高版本。
+> * 需要语音 SDK 1.11.0 或更高版本。
 
 ## <a name="add-sample-code"></a>添加示例代码
 
-1. 若要向 Java 项目添加新的空类，请选择“文件” > “新建” > “类”。   
+1. 若要向 Java 项目添加新的空类，请选择“文件” > “新建” > “类”。**** **** ****
 
-1. 在“新建 Java 类”窗口中，在“包”字段内输入 **speechsdk.quickstart**，在“名称”字段内输入 **Main**。   
+1. 在“新建 Java 类”窗口中，在“包”字段内输入 **speechsdk.quickstart**，在“名称”字段内输入 **Main**。**** **** ****
 
    ![“新建 Java 类”窗口的屏幕截图](~/articles/cognitive-services/Speech-Service/media/sdk/qs-java-jre-06-create-main-java.png)
 
@@ -130,7 +130,7 @@ ms.locfileid: "82150765"
 
 ## <a name="build-and-run-the-app"></a>生成并运行应用
 
-按 F11，或选择“运行” > “调试”。  
+按 F11，或选择“运行” > “调试”。**** ****
 
 1. 说一个英语短语或句子。 应用程序将语音传输到语音服务，该服务会将语音翻译并转录为文本（在本例中为德语）。 然后，语音服务会将该文本发送回应用程序以供显示。
 

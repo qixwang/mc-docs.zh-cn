@@ -5,15 +5,15 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 05/23/2019
-ms.date: 04/27/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
 ms.reviewer: sngun
-ms.openlocfilehash: 3dd5ca0f2553d7a9b38215535a98824694d8c412
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.openlocfilehash: 1b3328c23f4e11adad2f81b9b9fc33471150e0ef
+ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82134872"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85323271"
 ---
 # <a name="access-azure-cosmos-db-from-virtual-networks-vnet"></a>从虚拟网络 (VNet) 访问 Azure Cosmos DB
 
@@ -35,23 +35,23 @@ ms.locfileid: "82134872"
 
 ### <a name="will-virtual-network-acls-and-ip-firewall-reject-requests-or-connections"></a>虚拟网络 ACL 和 IP 防火墙是否会拒绝请求或连接？ 
 
-添加 IP 防火墙或虚拟网络访问规则后，只有来自受允许源的请求才能获取有效响应。 将拒绝其他请求并返回 403（禁止访问）错误。 必须将 Azure Cosmos 帐户的防火墙与连接级别的防火墙区分开来。 源仍可以连接到服务，连接本身不会遭到拒绝。
+添加 IP 防火墙或虚拟网络访问规则后，只有来自受允许源的请求才能获取有效响应。 将拒绝其他请求并返回 403（禁止访问）错误。 必须将 Azure Cosmos 帐户的防火墙与连接级别的防火墙区分开来。 源仍可连接到服务，连接本身不会遭到拒绝。
 
 ### <a name="my-requests-started-getting-blocked-when-i-enabled-service-endpoint-to-azure-cosmos-db-on-the-subnet-what-happened"></a>在子网中为 Azure Cosmos DB 启用服务终结点后，我的请求开始遭到阻止。 发生了什么情况？
 
 在子网中为 Azure Cosmos DB 启用服务终结点后，抵达帐户的流量源将从公共 IP 切换到虚拟网络和子网。 如果 Azure Cosmos 帐户仅包含基于 IP 的防火墙，则已启用服务的子网发出的流量将不再与 IP 防火墙规则相匹配，因此遭到拒绝。 请重温有关从基于 IP 的防火墙无缝迁移到基于虚拟网络的访问控制的步骤。
 
-### <a name="are-additional-rbac-permissions-needed-for-azure-cosmos-accounts-with-vnet-service-endpoints"></a>对于使用 VNET 服务终结点的 Azure Cosmos 帐户，是否需要其他 RBAC 权限？
+### <a name="are-additional-rbac-permissions-needed-for-azure-cosmos-accounts-with-vnet-service-endpoints"></a>具有 VNET 服务终结点的 Azure Cosmos 帐户是否需要其他 RBAC 权限？
 
-将 VNet 服务终结点添加到 Azure Cosmos 帐户后，若要对帐户设置进行任何更改，需要有权访问 `Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action` 操作，该操作针对 Azure Cosmos 帐户上配置的所有 VNET。 此权限是必需的，因为在评估任何属性之前，授权过程会验证对资源（例如数据库和虚拟网络资源）的访问。
+在将 VNet 服务终结点添加到 Azure Cosmos 帐户后，若要对帐户设置进行任何更改，需要访问 Azure Cosmos 帐户上配置的所有 VNET 的 `Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action` 操作。 此权限是必需的，因为授权过程会先验证对资源（例如数据库和虚拟网络资源）的访问权限，然后再对所有属性进行评估。
 
-即使用户不使用 Azure CLI 指定 VNET ACL，授权也会验证 VNet 资源操作的权限。 目前，Azure Cosmos 帐户的控制平面支持设置 Azure Cosmos 帐户的完整状态。 控制平面调用的参数之一是 `virtualNetworkRules`。 如果未指定此参数，Azure CLI 会执行“获取数据库”调用以检索 `virtualNetworkRules` 并在“更新”调用中使用此值。
+即使用户没有使用 Azure CLI 指定 VNET ACL，授权也会验证对 VNet 资源操作的权限。 目前，Azure Cosmos 帐户的控制平面支持设置 Azure Cosmos 帐户的完整状态。 控制平面调用的其中一个参数是 `virtualNetworkRules`。 如果未指定此参数，Azure CLI 将执行 get database 调用来检索 `virtualNetworkRules`，并在更新调用中使用此值。
 
 ### <a name="do-the-peered-virtual-networks-also-have-access-to-azure-cosmos-account"></a>对等互连的虚拟网络是否也有权访问 Azure Cosmos 帐户？ 
 只有已添加到 Azure Cosmos 帐户的虚拟网络及其子网才拥有此访问权限。 将对等互连的虚拟网络中的子网添加到帐户之后，对等互连的 VNet 才可以访问该帐户。
 
 ### <a name="what-is-the-maximum-number-of-subnets-allowed-to-access-a-single-cosmos-account"></a>最多允许多少个子网访问单个 Cosmos 帐户？ 
-目前，最多允许 256 个子网访问一个 Azure Cosmos 帐户。
+目前，一个 Azure Cosmos 帐户最多允许 256 个子网。
 
 ### <a name="can-i-enable-access-from-vpn-and-express-route"></a>是否可以启用从 VPN 和 Express Route 进行访问？ 
 若要在本地通过 Express Route 访问 Azure Cosmos 帐户，需要启用 Azure 对等互连。 创建 IP 防火墙或虚拟网络访问规则后，可以在 Azure Cosmos 帐户 IP 防火墙中添加用于 Azure 对等互连的公共 IP 地址，以允许本地服务访问 Azure Cosmos 帐户。 

@@ -11,12 +11,12 @@ ms.topic: include
 origin.date: 04/04/2020
 ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: c588e26a3f9cb3bdd81e8a73e93ee505c1637681
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.openlocfilehash: acb226c16760f651736cf35d77d820ef98a93853
+ms.sourcegitcommit: 304d3ef3c9e65c3e85977b3afb9985fbc0f908d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82150854"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85095890"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -25,7 +25,7 @@ ms.locfileid: "82150854"
 > [!div class="checklist"]
 > * [创建一个 Azure 搜索资源](../../../../get-started.md)
 > * [设置开发环境并创建空项目](../../../../quickstarts/setup-platform.md?tabs=windows&pivots=programming-language-cpp)
-> * 需要语音 SDK 版本 1.10.0 或更高版本。
+> * 需要语音 SDK 1.11.0 或更高版本。
 
 ## <a name="add-sample-code"></a>添加示例代码
 
@@ -76,13 +76,13 @@ ms.locfileid: "82150854"
 
 1. 将 `helloworld.wav` 字符串替换为你自己的文件名。
 
-1. 在菜单栏中，选择“文件”   > “全部保存”  。
+1. 在菜单栏中，选择“文件”**** > “全部保存”****。
 
 ## <a name="build-and-run-the-application"></a>生成并运行应用程序
 
-1. 从菜单栏中，选择“构建”   > “构建解决方案”  以构建应用程序。 现在，编译代码时应不会提示错误。
+1. 从菜单栏中，选择“构建”**** > “构建解决方案”**** 以构建应用程序。 现在，编译代码时应不会提示错误。
 
-1. 选择“调试”   > “开始调试”  （或按 F5  ）以启动 helloworld  应用程序。
+1. 选择“调试”**** > “开始调试”****（或按 F5****）以启动 helloworld**** 应用程序。
 
 1. 文本转换为语音，并保存在指定的音频数据中。
 

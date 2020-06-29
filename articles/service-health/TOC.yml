@@ -30,8 +30,6 @@
       href: service-health-alert-webhook-pagerduty.md
     - name: 将警报发送给 OpsGenie
       href: service-health-alert-webhook-opsgenie.md
-    - name: 配置资源运行状况事件的警报
-      href: resource-health-alert-arm-template-guide.md
 - name: 参考
   items:
     - name: 服务运行状况通知属性

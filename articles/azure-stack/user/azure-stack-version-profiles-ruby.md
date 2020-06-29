@@ -3,17 +3,17 @@ title: 在 Azure Stack Hub 中将 API 版本配置文件与 Ruby 配合使用
 description: 了解如何在 Azure Stack Hub 中将 API 版本配置文件与 Ruby 配合使用。
 author: WenJason
 ms.topic: article
-origin.date: 01/23/2020
-ms.date: 05/18/2020
+origin.date: 05/05/2020
+ms.date: 06/22/2020
 ms.author: v-jay
 ms.reviewer: sijuman
 ms.lastreviewed: 05/16/2019
-ms.openlocfilehash: b7e58df97060fc27c0f6bd9b6f8ae09d9e2ab512
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.openlocfilehash: f02ed690e6e21dde58b45fd3d8c89e87b71a4623
+ms.sourcegitcommit: d86e169edf5affd28a1c1a4476d72b01a7fb421d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83422585"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85096433"
 ---
 # <a name="use-api-version-profiles-with-ruby-in-azure-stack-hub"></a>在 Azure Stack Hub 中将 API 版本配置文件与 Ruby 配合使用
 
@@ -35,7 +35,7 @@ API 配置文件是资源提供程序和服务版本的组合。 可以使用 AP
 
 - 遵照官方说明安装 [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)。
 - 遵照官方说明安装 [Ruby](https://www.ruby-lang.org/en/documentation/installation/)。
-  - 在安装时选择“将 Ruby 添加到 PATH 变量”。 
+  - 在安装时选择“将 Ruby 添加到 PATH 变量”。****
   - 在 Ruby 安装过程中出现提示时，安装开发工具包。
   - 接下来，使用以下命令安装捆绑程序： 
 
@@ -45,7 +45,7 @@ API 配置文件是资源提供程序和服务版本的组合。 可以使用 AP
 
 - 如果不可用，请创建订阅，并保存订阅 ID 供稍后使用。 有关创建订阅的说明，请参阅[在 Azure Stack Hub 中创建套餐的订阅](../operator/azure-stack-subscribe-plan-provision-vm.md)一文。
 - 创建服务主体并保存其 ID 和机密。 有关为 Azure Stack Hub 创建服务主体的说明，请参阅[使用应用标识访问资源](../operator/azure-stack-create-service-principals.md)一文。
-- 确保服务主体在订阅上分配有“参与者/所有者”角色。 有关如何将角色分配给服务主体的说明，请参阅[使用应用标识访问资源](../operator/azure-stack-create-service-principals.md)一文。
+- 确保服务主体在订阅上分配有“参与者/所有者”角色。 有关如何为服务主体分配角色的说明，请参阅[使用应用标识访问资源](../operator/azure-stack-create-service-principals.md)一文。
 
 ## <a name="install-the-rubygem-packages"></a>安装 RubyGem 包
 

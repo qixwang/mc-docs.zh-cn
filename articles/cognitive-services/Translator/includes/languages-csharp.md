@@ -2,14 +2,15 @@
 author: erhopf
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 08/06/2019
-ms.author: erhopf
-ms.openlocfilehash: 51755702444b6892742d51e55f054ee78414f09d
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 06/22/2020
+origin.date: 08/06/2019
+ms.author: v-tawe
+ms.openlocfilehash: 0f21f5f5882e044b77293db8c876c496c0ab1273
+ms.sourcegitcommit: 43db4001be01262959400663abf8219e27e5cb8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80343011"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85241513"
 ---
 [!INCLUDE [Prerequisites](prerequisites-csharp.md)]
 
@@ -132,7 +133,7 @@ static string PrettyPrint(string s)
 
 ## <a name="put-it-all-together"></a>将其放在一起
 
-最后一步是在 `GetLanguages()` 函数中调用 `Main`。 找到 `static void Main(string[] args)` 并添加以下行：
+最后一步是在 `Main` 函数中调用 `GetLanguages()`。 找到 `static void Main(string[] args)` 并添加以下行：
 
 ```csharp
 GetLanguages();
@@ -241,7 +242,7 @@ dotnet run
 
 ## <a name="next-steps"></a>后续步骤
 
-查看 API 参考，了解使用文本翻译 API 可以执行的所有操作。
+查看 API 参考，了解使用“翻译”可以执行的所有操作。
 
 > [!div class="nextstepaction"]
 > [API 参考](/cognitive-services/translator/reference/v3-0-reference)

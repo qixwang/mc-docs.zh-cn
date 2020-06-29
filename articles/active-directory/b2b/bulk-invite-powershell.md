@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: tutorial
-ms.date: 04/29/2020
+ms.date: 06/22/2020
 ms.author: v-junlch
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 643d7907fc309ca625a2ee39e302cee108017dd8
-ms.sourcegitcommit: 95efd248f5ee3701f671dbd5cfe0aec9c9959a24
+ms.openlocfilehash: bea3f1409e3dc60c281ee283b3f74542af2824d3
+ms.sourcegitcommit: fac10504efdfd3806dead4b74ca6ae5fcb5ea906
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82515718"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85129719"
 ---
 # <a name="tutorial-use-powershell-to-bulk-invite-azure-ad-b2b-collaboration-users"></a>教程：使用 PowerShell 批量邀请 Azure AD B2B 协作用户
 
@@ -63,21 +63,21 @@ Get-Module -ListAvailable AzureAD*
    Install-Module AzureADPreview
    ```
 
-可能会收到提示，其要求你从不受信任的存储库安装模块。 如果之前未将 PSGallery 存储库设置为受信任的存储库，则可能出现此情况。 按 Y 以安装模块  。
+可能会收到提示，其要求你从不受信任的存储库安装模块。 如果之前未将 PSGallery 存储库设置为受信任的存储库，则可能出现此情况。 按 Y 以安装模块。
 
 ### <a name="get-test-email-accounts"></a>获取测试电子邮件帐户
 
-需要两个或更多可向其发送邀请的测试电子邮件帐户。 这些帐户必须来自组织外部。 可使用任意类型的帐户，包括 gmail.com 或 outlook.com 地址等社交帐户。
+需要两个或更多可向其发送邀请的测试电子邮件帐户。 这些帐户必须来自组织外部。
 
 ## <a name="prepare-the-csv-file"></a>准备 CSV 文件
 
-在 Microsoft Excel 中，使用受邀用户的姓名和电子邮件地址列表创建一个 CSV 文件。 请确保包含“Name”和“InvitedUserEmailAddress”列标题   。
+在 Microsoft Excel 中，使用受邀用户的姓名和电子邮件地址列表创建一个 CSV 文件。 请确保包含“Name”和“InvitedUserEmailAddress”列标题 。
 
 例如，按以下格式创建一个工作表：
 
 ![显示“等待用户接受”的 PowerShell 输出](./media/tutorial-bulk-invite/AddUsersExcel.png)
 
-将此文件保存为 C:\BulkInvite\Invitations.csv  。 
+将此文件保存为 C:\BulkInvite\Invitations.csv。 
 
 如果没有 Excel，可在任意文本编辑器（例如记事本）中创建 CSV 文件。 以逗号分隔每个值，以换行符分隔每一行。 
 
@@ -95,7 +95,7 @@ Connect-AzureAD -AzureEnvironmentName AzureChinaCloud -TenantDomain "<Tenant_Dom
 
 ## <a name="send-bulk-invitations"></a>批量发送邀请
 
-要发送邀请，请运行以下 PowerShell 脚本（其中 c:\bulkinvite\invitations.csv 是 CSV 文件的路径）  ：
+要发送邀请，请运行以下 PowerShell 脚本（其中 c:\bulkinvite\invitations.csv 是 CSV 文件的路径）：
 
 ```powershell
 $invitations = import-csv c:\bulkinvite\invitations.csv
@@ -126,7 +126,7 @@ foreach ($email in $invitations)
  Get-AzureADUser -Filter "UserType eq 'Guest'"
 ```
 
-应会看到已列出受邀用户，其中用户主体名称 (UPN) 采用 emailaddress  #EXT#\@domain  的格式。 例如，lstokes_fabrikam.com#EXT#\@contoso.partner.onmschina.cn  ，其中 contoso.partner.onmschina.cn 是你从中发送邀请的组织。
+应会看到已列出受邀用户，其中用户主体名称 (UPN) 采用 emailaddress#EXT#\@domain 的格式。 例如，lstokes_fabrikam.com#EXT#\@contoso.partner.onmschina.cn，其中 contoso.partner.onmschina.cn 是你从中发送邀请的组织。
 
 ## <a name="clean-up-resources"></a>清理资源
 

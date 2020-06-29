@@ -2,22 +2,22 @@
 title: 将 Java WAR 部署到 Azure Stack Hub 中的虚拟机
 description: 将 Java WAR 部署到 Azure Stack Hub 中的虚拟机。
 author: WenJason
-ms.topic: overview
-origin.date: 1/22/2020
-ms.date: 02/24/2020
+ms.topic: how-to
+origin.date: 05/27/2020
+ms.date: 06/22/2020
 ms.author: v-jay
 ms.reviewer: sijuman
-ms.lastreviewed: 10/02/2019
-ms.openlocfilehash: 74595b4d568db305269880be95b55d2de03e2643
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.lastreviewed: 05/05/2020
+ms.openlocfilehash: bf5576da7a18d6ad4f0ad2ccd4e5b1b3a60e1d78
+ms.sourcegitcommit: d86e169edf5affd28a1c1a4476d72b01a7fb421d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540828"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85096444"
 ---
 # <a name="deploy-a-java-web-app-to-a-vm-in-azure-stack-hub"></a>将 Java Web 应用部署到 Azure Stack Hub 中的 VM
 
-可以创建一个虚拟机 (VM) 来托管 Azure Stack Hub 中的 Python Web 应用。 在本文中，我们将在 Azure Stack Hub 中的 Linux VM 上安装并配置一个 Apache Tomcat 服务器。 然后，将 Java Web 应用程序资源 (WAR) 文件加载到该服务器。 WAR 文件用于分发 Java 存档 (JAR) 文件，以及包含 Java 资源（例如类、文本、图像、XML 和 HTML）其他用于交付 Web 应用程序的资源的压缩文件。
+可以创建一个虚拟机 (VM) 来托管 Azure Stack Hub 中的 Java Web 应用。 在本文中，你将在 Azure Stack Hub 中的 Linux VM 上安装 Apache Tomcat 服务器，然后打开正确的端口并对该服务器进行配置。 然后，将 Java Web 应用程序资源 (WAR) 文件加载到该服务器。 WAR 文件用于分发 Java 存档 (JAR) 文件，以及包含 Java 资源（例如类、文本、图像、XML 和 HTML）其他用于交付 Web 应用程序的资源的压缩文件。
 
 ## <a name="create-a-vm"></a>创建 VM
 
@@ -31,7 +31,7 @@ ms.locfileid: "77540828"
     | 443 | HTTPS | 安全超文本传输协议 (HTTPS) 是 HTTP 的安全版本，它需要一个安全证书，并允许对信息进行加密传输。 |
     | 22 | SSH | 安全外壳 (SSH) 是一种用于安全通信的加密网络协议。 你在 SSH 客户端上使用此连接来配置 VM 并部署应用。 |
     | 3389 | RDP | 可选。 远程桌面协议 (RDP) 允许远程桌面连接使用计算机的图形用户界面。   |
-    | 8080 | 自定义 | Apache Tomcat 服务的默认端口。 对于生产服务器，通过 80 和 443 路由流量。 |
+    | 8080 | “自定义” | Apache Tomcat 服务的默认端口。 对于生产服务器，通过 80 和 443 路由流量。 |
 
 ## <a name="install-java"></a>安装 Java
 
@@ -43,7 +43,7 @@ ms.locfileid: "77540828"
         sudo apt-get install default-jdk
     ```
 
-3. 验证你的安装。 仍在 SSH 会话中连接到 VM，运行以下命令：
+3. 验证安装。 仍在 SSH 会话中连接到 VM，运行以下命令：
 
     ```bash  
         java -version
@@ -216,7 +216,7 @@ ms.locfileid: "77540828"
 
     c. 保存并关闭该文件。
 
-1. Tomcat 会将“管理器”和“主机管理器”应用的访问权限限制为来自服务器的连接。   由于你要在 Azure Stack Hub 中的 VM 上安装 Tomcat，因此需要解除此限制。 通过编辑相应的 *context.xml* 文件来更改对这些应用的 IP 地址限制。
+1. Tomcat 会将“管理器”和“主机管理器”应用的访问权限限制为来自服务器的连接。** ** 由于你要在 Azure Stack Hub 中的 VM 上安装 Tomcat，因此需要解除此限制。 通过编辑相应的 *context.xml* 文件来更改对这些应用的 IP 地址限制。
 
     a. 在管理器应用中更新 *context.xml*：
 
@@ -251,7 +251,7 @@ ms.locfileid: "77540828"
 
 1. 在 Azure Stack Hub 所在的同一网络中打开浏览器，然后打开服务器 *yourmachine.local.cloudapp.azurestack.external:8080*。
 
-    a. 若要查看 Tomcat 服务器的状态并验证你是否有访问权限，请选择“服务器状态”。 
+    a. 若要查看 Tomcat 服务器的状态并验证你是否有访问权限，请选择“服务器状态”。****
 
     b. 使用 Tomcat 凭据登录。
 

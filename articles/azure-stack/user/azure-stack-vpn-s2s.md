@@ -1,18 +1,19 @@
 ---
-title: 配置 IPsec/IKE 站点到站点 VPN 连接
-description: 了解并配置 Azure Stack Hub 中站点到站点 VPN 或 VNet 到 VNet 连接的 IPsec/IKE 策略。
+title: 在 Azure Stack Hub 中配置 IPsec/IKE 站点到站点 VPN 连接
+description: 详细了解并配置 Azure Stack Hub 中站点到站点 VPN 或 VNet 到 VNet 连接的 IPsec/IKE 策略。
 author: WenJason
+ms.custom: contperfq4
 ms.topic: article
-origin.date: 01/07/2020
-ms.date: 05/18/2020
+origin.date: 05/21/2020
+ms.date: 06/22/2020
 ms.author: v-jay
 ms.lastreviewed: 05/07/2019
-ms.openlocfilehash: 9e6dd91d9908a36c2615ef44b7a53570e5c1a41f
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.openlocfilehash: ebf9b413ba34109d114ec3de92daf4eae83e0568
+ms.sourcegitcommit: d86e169edf5affd28a1c1a4476d72b01a7fb421d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83422579"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85096435"
 ---
 # <a name="configure-ipsecike-policy-for-site-to-site-vpn-connections"></a>配置站点到站点 VPN 连接的 IPsec/IKE 策略
 
@@ -39,9 +40,17 @@ IPsec 和 IKE 协议标准支持采用各种组合的各种加密算法。 若�
 
 - 请查阅 VPN 设备供应商规范，确保本地 VPN 设备支持该策略。 如果策略不兼容，则无法建立站点到站点连接。
 
-## <a name="part-1---workflow-to-create-and-set-ipsecike-policy"></a>第 1 部分 - 创建和设置 IPsec/IKE 策略的工作流
+### <a name="prerequisites"></a>先决条件
 
-本部分概述了针对站点到站点 VPN 连接创建和更新 IPsec/IKE 策略所要运行的工作流：
+在开始之前，请确保具备以下先决条件：
+
+- Azure 订阅。 如果还没有 Azure 订阅，可以注册一个[试用帐户](https://wd.azure.cn/pricing/1rmb-trial-full)。
+
+- Azure 资源管理器 PowerShell cmdlet。 有关安装 PowerShell cmdlet 的详细信息，请参阅[安装适用于 Azure Stack Hub 的 PowerShell](../operator/azure-stack-powershell-install.md)。
+
+## <a name="part-1---create-and-set-ipsecike-policy"></a>第 1 部分 - 创建和设置 IPsec/IKE 策略
+
+本部分介绍针对站点到站点 VPN 连接创建和更新 IPsec/IKE 策略所需的步骤：
 
 1. 创建虚拟网络和 VPN 网关。
 
@@ -55,11 +64,11 @@ IPsec 和 IKE 协议标准支持采用各种组合的各种加密算法。 若�
 
 本文中的说明可帮助你设置和配置 IPsec/IKE 策略，如下图所示：
 
-![设置和配置 IPsec/IKE 策略](media/azure-stack-vpn-s2s/site-to-site.png)
+![设置和配置 IPsec/IKE 策略](media/azure-stack-vpn-s2s/site-to-site.svg)
 
 ## <a name="part-2---supported-cryptographic-algorithms-and-key-strengths"></a>第 2 部分 - 支持的加密算法和密钥强度
 
-下表列出了支持的加密算法和密钥强度，Azure Stack Hub 客户可对其进行配置：
+下表列出了支持的加密算法和密钥强度，Azure Stack Hub 可对其进行配置：
 
 | IPsec/IKEv2                                          | 选项                                                                  |
 |------------------------------------------------------|--------------------------------------------------------------------------|
@@ -80,9 +89,9 @@ IPsec 和 IKE 协议标准支持采用各种组合的各种加密算法。 若�
   - IPsec 加密算法（快速模式/阶段 2）。
   - IPsec 完整性算法（快速模式/阶段 2）。
   - PFS 组（快速模式/阶段 2）。
-  - SA 生存期仅为本地规范，不需要匹配。
+  - SA 生存期仅为本地规范，无需匹配。
 
-- 如果将 GCMAES 用作 IPsec 加密算法，则必须为 IPsec 完整性选择相同的 GCMAES 算法和密钥长度。 例如：将 GCMAES128 用于这两者。
+- 如果使用 GCMAES 作为 IPsec 加密算法，则必须选择相同的 GCMAES 算法和密钥长度以保证 IPsec 完整性，例如对这两者使用 GCMAES128。
 
 - 在上表中：
 
@@ -110,17 +119,9 @@ IPsec 和 IKE 协议标准支持采用各种组合的各种加密算法。 若�
 
 本部分逐步介绍如何创建采用 IPsec/IKE 策略的站点到站点 VPN 连接。 以下步骤将创建下图所示的连接：
 
-![site-to-site-policy](media/azure-stack-vpn-s2s/site-to-site.png)
+![site-to-site-policy](media/azure-stack-vpn-s2s/site-to-site.svg)
 
 有关创建站点到站点 VPN 连接的详细分步说明，请参阅[创建站点到站点 VPN 连接](/vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell)。
-
-### <a name="prerequisites"></a>先决条件
-
-在开始之前，请确保具备以下先决条件：
-
-- Azure 订阅。 如果还没有 Azure 订阅，可以注册一个 [1 元试用帐户](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth)。
-
-- Azure 资源管理器 PowerShell cmdlet。 有关安装 PowerShell cmdlet 的详细信息，请参阅[安装适用于 Azure Stack Hub 的 PowerShell](../operator/azure-stack-powershell-install.md)。
 
 ### <a name="step-1---create-the-virtual-network-vpn-gateway-and-local-network-gateway"></a>步骤 1 - 创建虚拟网络、VPN 网关和本地网关
 
@@ -227,9 +228,9 @@ New-AzureRmVirtualNetworkGatewayConnection -Name $Connection16 -ResourceGroupNam
 
 上一部分介绍了如何管理现有站点到站点连接的 IPsec/IKE 策略。 本部分逐步介绍如何对连接执行以下操作：
 
-1. 显示连接的 IPsec/IKE 策略。
-2. 为连接添加或更新 IPsec/IKE 策略。
-3. 从连接中删除 IPsec/IKE 策略。
+- 显示连接的 IPsec/IKE 策略。
+- 为连接添加或更新 IPsec/IKE 策略。
+- 从连接中删除 IPsec/IKE 策略。
 
 > [!NOTE]
 > IPsec/IKE 策略仅受基于路由的标准 VPN 网关和高性能 VPN 网关支持 。 它不适用于“基本”网关 SKU。
@@ -298,7 +299,7 @@ PfsGroup : None
 
 ### <a name="3-remove-an-ipsecike-policy-from-a-connection"></a>3.删除连接的 IPsec/IKE 策略
 
-从连接中删除自定义策略后，Azure VPN 网关将还原为[默认的 IPsec/IKE 提议](azure-stack-vpn-gateway-settings.md#ipsecike-parameters)，并再次与本地 VPN 设备协商。
+从连接中删除自定义策略后，Azure VPN 网关将还原为[默认的 IPsec/IKE 协议](azure-stack-vpn-gateway-settings.md#ipsecike-parameters)，并再次与本地 VPN 设备协商。
 
 ```powershell
 $RG1 = "TestPolicyRG1"

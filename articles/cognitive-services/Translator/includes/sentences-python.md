@@ -2,15 +2,17 @@
 author: erhopf
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 08/06/2019
-ms.author: erhopf
-ms.openlocfilehash: fb13160c89bcc1e41d6bf550f8e4c64996d26f4d
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 06/22/2020
+origin.date: 08/06/2019
+ms.author: v-tawe
+ms.openlocfilehash: f356df2bd134ec2d593d61b21d745b87770bd24f
+ms.sourcegitcommit: 43db4001be01262959400663abf8219e27e5cb8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80343000"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85241539"
 ---
+<!-- word updating -->
 [!INCLUDE [Prerequisites](prerequisites-python.md)]
 
 [!INCLUDE [Set up and use environment variables](setup-env-variables.md)]
@@ -27,11 +29,11 @@ import os, requests, uuid, json
 > [!NOTE]
 > 如果尚未使用这些模块，则需在运行程序之前安装它们。 若要安装这些包，请运行 `pip install requests uuid`。
 
-第一个注释告知 Python 解释器使用 UTF-8 编码。 然后导入必需的模块，以便从环境变量读取订阅密钥、构造 HTTP 请求、创建唯一标识符，以及处理文本翻译 API 返回的 JSON 响应。
+第一个注释告知 Python 解释器使用 UTF-8 编码。 然后导入必需的模块，以便从环境变量读取订阅密钥、构造 HTTP 请求、创建唯一标识符，以及处理“翻译”返回的 JSON 响应。
 
 ## <a name="set-the-subscription-key-endpoint-and-path"></a>设置订阅密钥、终结点和路径
 
-此示例将尝试从以下环境变量中读取文本翻译订阅密钥和终结点：`TRANSLATOR_TEXT_KEY` 和 `TRANSLATOR_TEXT_ENDPOINT`。 如果不熟悉环境变量，则可将 `subscription_key` 和 `endpoint` 设置为字符串并注释掉条件语句。
+此示例将尝试从以下环境变量中读取“翻译”订阅密钥和终结点：`TRANSLATOR_TEXT_KEY` 和 `TRANSLATOR_TEXT_ENDPOINT`。 如果不熟悉环境变量，则可将 `subscription_key` 和 `endpoint` 设置为字符串并注释掉条件语句。
 
 将以下代码复制到项目中：
 
@@ -47,12 +49,12 @@ if not endpoint_var_name in os.environ:
 endpoint = os.environ[endpoint_var_name]
 ```
 
-文本翻译全局终结点设置为 `endpoint`。 `path` 设置 `breaksentence` 路由并确定我们需使用 API 的版本 3。
+“翻译”全局终结点设置为 `endpoint`。 `path` 设置 `breaksentence` 路由并确定我们需使用 API 的版本 3。
 
 此示例中的 `params` 用于设置所提供文本的语言。 `params` 不是 `breaksentence` 路由所需的。 如果不包含在请求中，此 API 会尝试检测所提供文本的语言，并会在响应中提供此信息以及置信度分数。
 
 >[!NOTE]
-> 有关终结点、路由和请求参数的详细信息，请参阅[文本翻译 API 3.0：语言](/cognitive-services/translator/reference/v3-0-break-sentence)。
+> 有关终结点、路由和请求参数的详细信息，请参阅[翻译 3.0：语言](/cognitive-services/translator/reference/v3-0-break-sentence)。
 
 ```python
 path = '/breaksentence?api-version=3.0'
@@ -105,7 +107,7 @@ print(json.dumps(response, sort_keys=True, indent=4,
 
 ## <a name="put-it-all-together"></a>将其放在一起
 
-就是这样，你已构建了一个简单的程序。该程序可以调用文本翻译 API 并返回 JSON 响应。 现在，可以运行该程序了：
+就是这样，你已构建了一个简单的程序。该程序可以调用“翻译”并返回 JSON 响应。 现在，可以运行该程序了：
 
 ```console
 python sentence-length.py
@@ -133,7 +135,7 @@ python sentence-length.py
 
 ## <a name="next-steps"></a>后续步骤
 
-查看 API 参考，了解使用文本翻译 API 可以执行的所有操作。
+查看 API 参考，了解使用“翻译”可以执行的所有操作。
 
 > [!div class="nextstepaction"]
 > [API 参考](/cognitive-services/translator/reference/v3-0-reference)

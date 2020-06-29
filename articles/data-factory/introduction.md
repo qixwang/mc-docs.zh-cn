@@ -9,13 +9,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: overview
 origin.date: 09/30/2019
-ms.date: 05/11/2020
-ms.openlocfilehash: 078af7b99363ea2d94162dcde91c22fe5518367d
-ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
+ms.date: 06/29/2020
+ms.openlocfilehash: 2f1957ddb5578f6b7e77261da3613c916c491548
+ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82198240"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85319145"
 ---
 # <a name="what-is-azure-data-factory"></a>什么是 Azure 数据工厂？
 
@@ -31,7 +31,7 @@ ms.locfileid: "82198240"
 
 为了获取见解，它希望使用云中的 Spark 群集 (Azure HDInsight) 处理加入的数据，并将转换的数据发布到云数据仓库（如 Azure SQL 数据仓库）以轻松地基于它生成报表。 公司的人员希望自动执行此工作流，并每天按计划对其进行监视和管理。 他们还希望在文件存储到 blob 存储容器中时执行该工作流。
 
-Azure 数据工厂是解决此类数据方案的平台。 它是*基于云的 ETL 和数据集成服务，可让你创建数据驱动型工作流，用于协调数据移动和大规模转换数据*。 可以使用 Azure 数据工厂创建和计划数据驱动型工作流（称为管道），以便从不同的数据存储引入数据。 可以构建复杂的 ETL 流程，用于通过 Azure HDInsight Hadoop 和 Azure SQL 数据库等计算服务直观转换数据。 
+Azure 数据工厂是解决此类数据方案的平台。 它是基于云的 ETL 和数据集成服务，可让你创建数据驱动型工作流用于大规模协调数据移动和转换数据。 可以使用 Azure 数据工厂创建和计划数据驱动型工作流（称为管道），以便从不同的数据存储引入数据。 可以构建复杂的 ETL 流程，用于通过 Azure HDInsight Hadoop 和 Azure SQL 数据库等计算服务直观转换数据。 
 
 此外，你还可以将转换的数据发布到数据存储（例如 Azure SQL 数据仓库），供商业智能 (BI) 应用程序使用。 最终，通过 Azure 数据工厂，可将原始数据组织成有意义的数据存储和数据湖，以实现更好的业务决策。
 
@@ -39,7 +39,7 @@ Azure 数据工厂是解决此类数据方案的平台。 它是*基于云的 ET
 
 ## <a name="how-does-it-work"></a>工作原理
 
-数据工厂包含一系列相互连接的系统，可为数据工程师提供完整的端到端平台。
+数据工厂包含一系列为数据工程师提供完整端到端平台的互连系统。
 
 ### <a name="connect-and-collect"></a>连接和收集
 
@@ -79,7 +79,7 @@ Azure 数据工厂是解决此类数据方案的平台。 它是*基于云的 ET
 
 数据工厂中的链接服务有两个用途：
 
-- 代表  数据存储。此类存储包括但不限于本地 SQL Server 数据库、Oracle 数据库、文件共享或 Azure Blob 存储帐户。 有关支持的数据存储的列表，请参阅[复制活动](copy-activity-overview.md)一文。
+- 代表数据存储，此类存储包括但不限于 SQL Server 数据库、Oracle 数据库、文件共享或 Azure blob 存储帐户。 有关支持的数据存储的列表，请参阅[复制活动](copy-activity-overview.md)一文。
 
 - 代表可托管活动执行的**计算资源**。 例如，HDInsightHive 活动在 HDInsight Hadoop 群集上运行。 有关转换活动列表和支持的计算环境，请参阅[转换数据](transform-data.md)一文。
 
@@ -89,7 +89,7 @@ Azure 数据工厂是解决此类数据方案的平台。 它是*基于云的 ET
 ### <a name="pipeline-runs"></a>管道运行
 管道运行是管道执行实例。 管道运行通常是通过将自变量传递给管道中定义的参数来实例化的。 自变量可手动传递，也可在触发器定义中传递。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>参数
 参数是只读配置的键值对。  参数是在管道中定义的。 所定义的参数的自变量是在执行期间通过由触发器创建的运行上下文传递的或通过手动执行的管道传递的。 管道中的活动使用参数值。
 
 数据集是强类型参数和可重用/可引用的实体。 活动可以引用数据集并且可以使用数据集定义中所定义的属性。
@@ -103,12 +103,11 @@ Azure 数据工厂是解决此类数据方案的平台。 它是*基于云的 ET
 变量可用于在管道内存储临时值，也可以与参数结合使用，以实现在管道和其他活动之间传递值。
 
 ## <a name="next-steps"></a>后续步骤
-下面是要浏览的重要后续步骤文档：
+请阅读以下重要后续步骤文档：
 
 - [数据集和链接服务](concepts-datasets-linked-services.md)
 - [管道和活动](concepts-pipelines-activities.md)
 - [集成运行时](concepts-integration-runtime.md)
-
 - [Azure 门户中的数据工厂 UI](quickstart-create-data-factory-portal.md)
 - [Azure 门户中的“复制数据”工具](quickstart-create-data-factory-copy-data-tool.md)
 - [PowerShell](quickstart-create-data-factory-powershell.md)

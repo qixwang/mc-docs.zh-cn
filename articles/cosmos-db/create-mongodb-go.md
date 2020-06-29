@@ -1,20 +1,20 @@
 ---
 title: 将 Go 应用程序连接到 Azure Cosmos DB 用于 MongoDB 的 API
-description: 本快速入门演示了如何将现有的 Go 应用程序连接到 Azure Cosmos DB 用于 MongoDB 的 API。
+description: 本快速入门演示了如何将现有 Go 应用程序连接到 Azure Cosmos DB API for MongoDB。
 author: rockboyfor
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: go
 ms.topic: quickstart
 origin.date: 04/24/2020
-ms.date: 06/15/2020
+ms.date: 06/22/2020
 ms.author: v-yeche
-ms.openlocfilehash: 424c55c4e30e624e965ccd32fc3b9c75550df8a2
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+ms.openlocfilehash: bf04479d4eea514f3e59665831eea14af1416333
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84200196"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098666"
 ---
 <!--Verified successfully-->
 # <a name="quickstart-connect-a-go-application-to-azure-cosmos-dbs-api-for-mongodb"></a>快速入门：将 Go 应用程序连接到 Azure Cosmos DB 用于 MongoDB 的 API
@@ -25,7 +25,7 @@ ms.locfileid: "84200196"
 > * [Node.js](create-mongodb-nodejs.md)
 > * [Python](create-mongodb-flask.md)
 > * [Xamarin](create-mongodb-xamarin.md)
-> * [Golang](create-mongodb-golang.md)
+> * [Golang](create-mongodb-go.md)
 >  
 
 Azure Cosmos DB 是一种多模型数据库服务，可让你通过多区域分布和水平缩放功能快速创建和查询文档、表、键/值和图数据库。 在本快速入门中，你将使用 Azure CLI 创建和管理 Azure Cosmos DB 帐户，从 GitHub 克隆现有示例应用程序并将其配置为使用 Azure Cosmos DB。 
@@ -471,5 +471,4 @@ Azure Cosmos DB 中存储的数据可用于在 Azure 门户中查看和查询。
 > [!div class="nextstepaction"]
 > [将 MongoDB 数据导入 Azure Cosmos DB](mongodb-migrate.md)
 
-<!-- Update_Description: new article about create mongodb go -->
-<!--NEW.date: 06/15/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

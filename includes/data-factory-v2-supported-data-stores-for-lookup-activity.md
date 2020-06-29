@@ -6,15 +6,15 @@ author: WenJason
 ms.service: data-factory
 ms.topic: include
 origin.date: 12/13/2019
-ms.date: 01/06/2020
+ms.date: 06/29/2020
 ms.author: v-jay
 ms.custom: include file
-ms.openlocfilehash: 7c608f430a1916fa77d5a2b70599ea9e54f4fc00
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: ffc3533a2ae6e8a14068f2c7826da74b517bdc76
+ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75624222"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85323363"
 ---
 | Category | 数据存储 |
 |:--- |:--- |
@@ -27,7 +27,7 @@ ms.locfileid: "75624222"
 | &nbsp; |[Azure Database for PostgreSQL](../articles/data-factory/connector-azure-database-for-postgresql.md) |
 | &nbsp; |[Azure 文件](../articles/data-factory/connector-azure-file-storage.md) |
 | &nbsp; |[Azure SQL 数据库](../articles/data-factory/connector-azure-sql-database.md) |
-| &nbsp; |[Azure SQL 数据库托管实例](../articles/data-factory/connector-azure-sql-database-managed-instance.md) |
+| &nbsp; |[Azure SQL 托管实例](../articles/data-factory/connector-azure-sql-database-managed-instance.md) |
 | &nbsp; |[Azure Synapse Analytics（以前称为 SQL 数据仓库）](../articles/data-factory/connector-azure-sql-data-warehouse.md) |
 | &nbsp; |[Azure 表存储](../articles/data-factory/connector-azure-table-storage.md) |
 | **Database** |[Amazon Redshift](../articles/data-factory/connector-amazon-redshift.md) |
@@ -51,6 +51,7 @@ ms.locfileid: "75624222"
 | &nbsp; |[通过 MDX 实现的 SAP Business Warehouse](../articles/data-factory/connector-sap-business-warehouse.md) |
 | &nbsp; |[SAP HANA](../articles/data-factory/connector-sap-hana.md) |
 | &nbsp; |[SAP Table](../articles/data-factory/connector-sap-table.md) |
+| &nbsp; |[Snowflake](../articles/data-factory/connector-snowflake.md) |
 | &nbsp; |[Spark](../articles/data-factory/connector-spark.md) |
 | &nbsp; |[SQL Server](../articles/data-factory/connector-sql-server.md) |
 | &nbsp; |[Sybase](../articles/data-factory/connector-sybase.md) |
@@ -90,6 +91,7 @@ ms.locfileid: "75624222"
 | &nbsp; |[SAP ECC](../articles/data-factory/connector-sap-ecc.md) |
 | &nbsp; |[ServiceNow](../articles/data-factory/connector-servicenow.md) |
 | &nbsp; |[Shopify（预览）](../articles/data-factory/connector-shopify.md) |
+| &nbsp; |[SharePoint Online 列表](../articles/data-factory/connector-sharepoint-online-list.md) |
 | &nbsp; |[Square（预览）](../articles/data-factory/connector-square.md) |
 | &nbsp; |[Web 表（HTML 表）](../articles/data-factory/connector-web-table.md) 
 | &nbsp; |[Xero](../articles/data-factory/connector-xero.md) |

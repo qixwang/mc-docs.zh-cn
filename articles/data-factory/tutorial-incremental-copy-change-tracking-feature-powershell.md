@@ -1,6 +1,6 @@
 ---
-title: 使用更改跟踪以增量方式复制数据
-description: 在本教程中，请创建一个 Azure 数据工厂管道，将增量数据以增量方式从本地 SQL Server 数据库中的多个表复制到 Azure SQL 数据库。
+title: 使用 PowerShell 使用更改跟踪以增量方式复制数据
+description: 在本教程中，你将创建一个 Azure 数据工厂管道，该管道以递增方式将增量数据从 SQL Server 数据库中的多个表复制到 Azure SQL 数据库。
 services: data-factory
 ms.author: v-jay
 author: WenJason
@@ -11,15 +11,15 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 origin.date: 01/22/2018
-ms.date: 05/11/2020
-ms.openlocfilehash: 4cae2ddd7d138ce0f8cecea8a4b289c435e9322c
-ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
+ms.date: 06/29/2020
+ms.openlocfilehash: eb9a8b343d5a759d2f4747573b8f97810e1b4542
+ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82198129"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85322003"
 ---
-# <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information"></a>根据更改跟踪信息，以增量方式将 Azure SQL 数据库中的数据加载到 Azure Blob 存储
+# <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information-using-powershell"></a>使用 PowerShell 根据更改跟踪信息，以增量方式将 Azure SQL 数据库中的数据加载到 Azure Blob 存储
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
@@ -45,7 +45,7 @@ ms.locfileid: "82198129"
 下面是典型的端到端工作流步骤，用于通过更改跟踪技术以增量方式加载数据。
 
 > [!NOTE]
-> Azure SQL 数据库和 SQL Server 都支持更改跟踪技术。 本教程使用 Azure SQL 数据库作为源数据存储。 也可以使用本地 SQL Server。
+> Azure SQL 数据库和 SQL Server 都支持更改跟踪技术。 本教程使用 Azure SQL 数据库作为源数据存储。 此外，还可以使用 SQL Server 实例。
 
 1. **首次加载历史数据**（运行一次）：
     1. 在源 Azure SQL 数据库中启用更改跟踪技术。
@@ -79,8 +79,8 @@ ms.locfileid: "82198129"
 * **Azure 存储帐户**。 将 Blob 存储用作**接收器**数据存储。 如果没有 Azure 存储帐户，请参阅[创建存储帐户](../storage/common/storage-account-create.md)一文获取创建步骤。 创建名为 **adftutorial** 的容器。 
 
 ### <a name="create-a-data-source-table-in-your-azure-sql-database"></a>在 Azure SQL 数据库中创建数据源表
-1. 启动 **SQL Server Management Studio**，连接到 Azure SQL Server。
-2. 在“服务器资源管理器”中  ，右键单击你的**数据库**，然后选择“新建查询”  。
+1. 启动 SQL Server Management Studio，连接到 SQL 数据库。
+2. 在“服务器资源管理器”中，右键单击你的**数据库**，然后选择“新建查询”。
 3. 针对 Azure SQL 数据库运行以下 SQL 命令，创建名为 `data_source_table` 的表作为数据源存储。  
 
     ```sql
@@ -194,7 +194,7 @@ ms.locfileid: "82198129"
     The specified Data Factory name 'ADFIncCopyChangeTrackingTestFactory' is already in use. Data Factory names must be globally unique.
     ```
 * 若要创建数据工厂实例，用于登录到 Azure 的用户帐户必须属于**参与者**或**所有者**角色，或者是 Azure 订阅的**管理员**。
-* 若要查看目前提供数据工厂的 Azure 区域的列表，请在以下页面上选择感兴趣的区域，然后展开“分析”  以找到“数据工厂”  ：[可用产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/?regions=china-non-regional,china-east,china-east-2,china-north,china-north-2&products=all)。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
+* 若要查看目前提供数据工厂的 Azure 区域的列表，请在以下页面上选择感兴趣的区域，然后展开“分析”以找到“数据工厂”：[可用产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/?regions=china-non-regional,china-east,china-east-2,china-north,china-north-2&products=all)。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
 
 
 ## <a name="create-linked-services"></a>创建链接服务
@@ -235,7 +235,7 @@ ms.locfileid: "82198129"
 ### <a name="create-azure-sql-database-linked-service"></a>创建 Azure SQL 数据库链接服务
 在此步骤中，将 Azure SQL 数据库链接到数据工厂。
 
-1. 在 **C:\ADFTutorials\IncCopyChangeTrackingTutorial** 文件夹中，创建包含以下内容的名为 **AzureSQLDatabaseLinkedService.json** 的 JSON 文件：将 **&lt;server&gt;、&lt;database name&gt;、&lt;user id&gt; 和 &lt;password&gt;** 分别替换为自己的 Azure SQL Server 名称、数据库名称、用户 ID 和密码，然后保存文件。
+1. 在 **C:\ADFTutorials\IncCopyChangeTrackingTutorial** 文件夹中，创建包含以下内容的名为 **AzureSQLDatabaseLinkedService.json** 的 JSON 文件：将 &lt;server&gt;、&lt;database name&gt;、&lt;user id&gt; 和 &lt;password&gt; 分别替换为自己的服务器名称、数据库名称、用户 ID 和密码，然后保存文件。
 
     ```json
     {
@@ -442,22 +442,22 @@ Invoke-AzDataFactoryV2Pipeline -PipelineName "FullCopyPipeline" -ResourceGroup $
 ### <a name="monitor-the-full-copy-pipeline"></a>监视完整的复制管道
 
 1. 登录到 [Azure 门户](https://portal.azure.cn)。
-2. 单击“所有服务”，使用关键字 `data factories` 进行搜索，然后选择“数据工厂”。  
+2. 单击“所有服务”，使用关键字 `data factories` 进行搜索，然后选择“数据工厂”。 
 
     ![数据工厂菜单](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-data-factories-menu-1.png)
 3. 在数据工厂列表中搜索**你的数据工厂**，然后选择它来启动“数据工厂”页。
 
     ![搜索你的数据工厂](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-search-data-factory-2.png)
-4. 在“数据工厂”页中，单击“监视和管理”磁贴。 
+4. 在“数据工厂”页中，单击“监视和管理”磁贴。
 
     ![“监视和管理”磁贴](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-monitor-manage-tile-3.png)    
-5. **数据集成应用程序**在单独的选项卡中启动。可以看到所有**管道运行**及其状态。 请注意，在以下示例中，管道运行的状态为“成功”。   单击“参数”列中的链接即可查看传递至管道的参数。 如果有错误，在“错误”  列可以看到链接。 单击“操作”列中的链接。 
+5. **数据集成应用程序**在单独的选项卡中启动。可以看到所有**管道运行**及其状态。 请注意，在以下示例中，管道运行的状态为“成功”。 单击“参数”列中的链接即可查看传递至管道的参数。 如果有错误，在“错误”列可以看到链接。 单击“操作”列中的链接。
 
     ![管道运行](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-pipeline-runs-4.png)    
-6. 单击“操作”列中的链接时，可以看到以下页面，其中显示管道的所有  **活动运行**。
+6. 单击“操作”列中的链接时，可以看到以下页面，其中显示管道的所有 **活动运行**。
 
     ![活动运行](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-activity-runs-5.png)
-7. 若要切换回“管道运行”  视图，请单击“管道”  ，如图所示。
+7. 若要切换回“管道运行”视图，请单击“管道”，如图所示。
 
 
 ### <a name="review-the-results"></a>查看结果
@@ -630,13 +630,13 @@ Invoke-AzDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -Resource
 
 
 ### <a name="monitor-the-incremental-copy-pipeline"></a>监视增量复制管道
-1. 在**数据集成应用程序**中，刷新“管道运行”  视图。 确认在列表中看到 IncrementalCopyPipeline。 单击“操作”列中的链接。   
+1. 在**数据集成应用程序**中，刷新“管道运行”视图。 确认在列表中看到 IncrementalCopyPipeline。 单击“操作”列中的链接。  
 
     ![管道运行](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-pipeline-runs-6.png)    
-2. 单击“操作”列中的链接时，可以看到以下页面，其中显示管道的所有  **活动运行**。
+2. 单击“操作”列中的链接时，可以看到以下页面，其中显示管道的所有 **活动运行**。
 
     ![活动运行](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-activity-runs-7.png)
-3. 若要切换回“管道运行”  视图，请单击“管道”  ，如图所示。
+3. 若要切换回“管道运行”视图，请单击“管道”，如图所示。
 
 ### <a name="review-the-results"></a>查看结果
 可以在 `adftutorial` 容器的 `incchgtracking` 文件夹中看到第二个文件。

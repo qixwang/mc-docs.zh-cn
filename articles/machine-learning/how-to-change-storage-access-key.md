@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 11/06/2019
-ms.openlocfilehash: 785cdd3b13c66562e0ccf6239cd7a2091ad40a90
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 22a2ef372a0501655a3664782248a6f30504d12d
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80343562"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097144"
 ---
 # <a name="regenerate-storage-account-access-keys"></a>重新生成存储帐户访问密钥
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -93,6 +93,8 @@ for name, ds in datastores.items():
         az login
         ```
 
+        [!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)]
+
     1. 使用以下命令更新工作区以使用新密钥。 将 `myworkspace` 替换为你的 Azure 机器学习工作区名称，并将 `myresourcegroup` 替换为包含该工作区的 Azure 资源组的名称。
 
         ```azurecli
@@ -103,27 +105,35 @@ for name, ds in datastores.items():
 
         此命令自动为工作区使用的 Azure 存储帐户同步新密钥。
 
-1. 若要重新注册使用存储帐户的数据存储，请使用以下代码并使用[需要更新的内容](#whattoupdate)部分中的值以及步骤 1 中的密钥：
-
-    ```python
-    # Re-register the blob container
-    ds_blob = Datastore.register_azure_blob_container(workspace=ws,
+1. 可以通过 SDK 或 [Azure 机器学习工作室](https://ml.azure.com)重新注册使用存储帐户的数据存储。
+    1. 若要通过 Python SDK 重新注册数据存储，请在以下代码中使用[需要更新的内容](#whattoupdate)部分中的值以及步骤 1 中的密钥。 
+    
+        因为指定了 `overwrite=True`，所以此代码将覆盖现有注册，并对其进行更新以使用新密钥。
+    
+        ```python
+        # Re-register the blob container
+        ds_blob = Datastore.register_azure_blob_container(workspace=ws,
+                                                  datastore_name='your datastore name',
+                                                  container_name='your container name',
+                                                  account_name='your storage account name',
+                                                  account_key='new storage account key',
+                                                  overwrite=True)
+        # Re-register file shares
+        ds_file = Datastore.register_azure_file_share(workspace=ws,
                                               datastore_name='your datastore name',
-                                              container_name='your container name',
+                                              file_share_name='your container name',
                                               account_name='your storage account name',
                                               account_key='new storage account key',
                                               overwrite=True)
-    # Re-register file shares
-    ds_file = Datastore.register_azure_file_share(workspace=ws,
-                                          datastore_name='your datastore name',
-                                          file_share_name='your container name',
-                                          account_name='your storage account name',
-                                          account_key='new storage account key',
-                                          overwrite=True)
+        
+        ```
     
-    ```
-
-    因为指定了 `overwrite=True`，所以此代码将覆盖现有注册，并对其进行更新以使用新密钥。
+    1. 若要通过工作室重新注册数据存储，请从工作室的左窗格中选择“数据存储”。 
+        1. 选择要更新的数据存储。
+        1. 选择左上角的“更新凭据”按钮。 
+        1. 使用步骤 1 中的新访问密钥填充窗体，然后单击“保存”。
+        
+            若要更新默认数据存储的凭据，请完成此步骤，并重复步骤 2b，以将新密钥与工作区的默认数据存储重新同步。 
 
 ## <a name="next-steps"></a>后续步骤
 

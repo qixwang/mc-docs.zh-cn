@@ -2,17 +2,17 @@
 title: 在模板中使用 Azure Key Vault
 description: 了解如何在资源管理器模板部署期间使用 Azure Key Vault 来传递安全参数值
 author: rockboyfor
-origin.date: 04/16/2020
-ms.date: 05/18/2020
+origin.date: 04/23/2020
+ms.date: 06/22/2020
 ms.topic: tutorial
 ms.author: v-yeche
 ms.custom: seodec18
-ms.openlocfilehash: aa53d828af61e07e839c25c0755327924d3d56cf
-ms.sourcegitcommit: 9dd5f5140f076af9d9a3842836970c549849e70f
+ms.openlocfilehash: ccf1707296fe68fc16ad594fc1970453fbd7f503
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/18/2020
-ms.locfileid: "83542493"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098717"
 ---
 <!-- Verify successfully-->
 <!-- CORRECT THE LOCATION DEFAULT VALUE TO [parameters('location')]-->
@@ -223,7 +223,7 @@ Write-Host "Press [ENTER] to continue ..."
 
 1. 打开 [Azure 门户](https://portal.azure.cn)。
 
-1. 选择“资源组” > \<YourResourceGroupName> > simpleWinVM  。
+1. 选择“资源组” >  **\<*YourResourceGroupName*>**  > “simpleWinVM”。
 1. 选择顶部的“连接”。
 1. 选择“下载 RDP 文件”，然后遵照说明使用密钥保管库中存储的密码登录到虚拟机。
 

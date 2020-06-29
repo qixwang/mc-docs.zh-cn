@@ -1,53 +1,62 @@
 ---
-title: Azure Cosmos DB 查询语言中的 STARTSWITH
+title: Azure Cosmos DB 查询语言中的 StartsWith
 description: 了解 Azure Cosmos DB 中的 SQL 系统函数 STARTSWITH。
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
-origin.date: 09/13/2019
-ms.date: 04/27/2020
+origin.date: 05/20/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
 ms.custom: query-reference
-ms.openlocfilehash: 8c522e1b4e1dd9314b7ad5d63ac1e9305e1a8f82
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.openlocfilehash: d3e228b2c8b091827eb8883f6602c7f9a59f584c
+ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82134832"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85322965"
 ---
 # <a name="startswith-azure-cosmos-db"></a>STARTSWITH (Azure Cosmos DB)
+
  返回一个布尔值，指示第一个字符串表达式是否以第二个字符串表达式开头。  
 
 ## <a name="syntax"></a>语法
 
 ```sql
-STARTSWITH(<str_expr1>, <str_expr2>)  
+STARTSWITH(<str_expr1>, <str_expr2> [, <bool_expr>])  
 ```  
 
 ## <a name="arguments"></a>参数
 
-*str_expr1*  
-  是一个字符串表达式。
+str_expr1  
+   一个字符串表达式。
 
-*str_expr2*  
-  是要与 *str_expr1* 的开头进行比较的字符串表达式。
+str_expr2  
+   要与 str_expr1 的开头进行比较的字符串表达式。
+
+bool_expr 忽略大小写的可选值。 如果设置为 true，则 STARTSWITH 将执行不区分大小写的搜索。 如果未指定，则此值为 false。
 
 ## <a name="return-types"></a>返回类型
 
-  返回一个布尔表达式。  
+返回一个布尔表达式。  
 
 ## <a name="examples"></a>示例
 
-  以下示例检查字符串“abc”是否以“b”和“a”开头。  
+以下示例检查了字符串“abc”是否以“b”和“A”开头。  
 
 ```sql
-SELECT STARTSWITH("abc", "b") AS s1, STARTSWITH("abc", "a") AS s2  
+SELECT STARTSWITH("abc", "b", false) AS s1, STARTSWITH("abc", "A", false) AS s2, STARTSWITH("abc", "A", true) AS s3
 ```  
 
- 下面是结果集。  
+ 下面是结果集：  
 
 ```json
-[{"s1": false, "s2": true}]  
+[
+    {
+        "s1": false,
+        "s2": false,
+        "s3": true
+    }
+]
 ```  
 
 ## <a name="remarks"></a>备注

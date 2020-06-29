@@ -10,12 +10,12 @@ ms.topic: include
 origin.date: 04/02/2020
 ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: 01b74871cb48b606a909176f0f3e98026afa833a
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.openlocfilehash: e00a239b7864843939b1b8e66f0fdabf0a9cdc46
+ms.sourcegitcommit: 304d3ef3c9e65c3e85977b3afb9985fbc0f908d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82150844"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85095908"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -25,7 +25,7 @@ ms.locfileid: "82150844"
 > * [创建一个 Azure 搜索资源](../../../../get-started.md)
 > * [设置开发环境并创建空项目](../../../../quickstarts/setup-platform.md?tabs=uwp&pivots=programming-language-csharp)
 > * 请确保你有权访问麦克风，以便进行音频捕获
-> * 需要语音 SDK 版本 1.10.0 或更高版本。
+> * 需要语音 SDK 1.11.0 或更高版本。
 
 如果尚未执行此操作，很好！ 让我们继续。
 
@@ -37,9 +37,9 @@ ms.locfileid: "82150844"
 
 添加一些代码作为项目的框架。
 
-1. 在“解决方案资源管理器”  中打开 `MainPage.xaml`。
+1. 在“解决方案资源管理器”中打开 `MainPage.xaml`。
 
-2. 在设计器的 XAML 视图中，将以下 XAML 代码片段插入到“Grid”  标记中（位于 `<Grid>` 和 `</Grid>` 之间）：
+2. 在设计器的 XAML 视图中，将以下 XAML 代码片段插入到“Grid”标记中（位于 `<Grid>` 和 `</Grid>` 之间）：
 
    ```xml
    <StackPanel Orientation="Vertical" HorizontalAlignment="Center"  Margin="20,50,0,0" VerticalAlignment="Center" Width="800">
@@ -58,7 +58,7 @@ ms.locfileid: "82150844"
     </StackPanel>
    ```
 
-3. 在“解决方案资源管理器”  中，打开代码隐藏源文件 `MainPage.xaml.cs`。 （其分组在 `MainPage.xaml` 下。）
+3. 在“解决方案资源管理器”中，打开代码隐藏源文件 `MainPage.xaml.cs`。 （其分组在 `MainPage.xaml` 下。）
 
 4. 将此代码替换为以下基代码：
 
@@ -243,17 +243,17 @@ NotifyUser(sb.ToString(), NotifyType.StatusMessage);
 
 现已准备好构建并测试应用程序。
 
-1. 从菜单栏中，选择“构建”   > “构建解决方案”  以构建应用程序。 现在，编译代码时应不会提示错误。
+1. 从菜单栏中，选择“构建” > “构建解决方案”以构建应用程序。 现在，编译代码时应不会提示错误。
 
-1. 选择“调试”   > “开始调试”  （或按 F5  ）以启动应用程序。 此时将显示“helloworld”  窗口。
+1. 选择“调试” > “开始调试”（或按 F5）以启动应用程序。 此时将显示“helloworld”窗口。
 
    ![C# 中的示例 UWP 语音识别应用程序 - 快速入门](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-uwp-helloworld-window.png)
 
-1. 选择“启用麦克风”  ，并在弹出访问权限请求时选择“是”  。
+1. 选择“启用麦克风”，并在弹出访问权限请求时选择“是”。
 
    ![麦克风访问权限请求](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-uwp-10-access-prompt.png)
 
-1. 选择“使用麦克风输入进行语音识别”，然后对着设备的麦克风说一个英文短语或句子  。 你的语音将传输到语音服务并转录为文本，该文本将显示在窗口中。
+1. 选择“使用麦克风输入进行语音识别”，然后对着设备的麦克风说一个英文短语或句子。 你的语音将传输到语音服务并转录为文本，该文本将显示在窗口中。
 
    ![语音识别用户界面](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-uwp-11-ui-result.png)
 

@@ -1,42 +1,32 @@
 ---
 title: 应用程序设置 - LUIS
-titleSuffix: Azure Cognitive Services
 description: Azure 认知服务语言理解应用的应用程序设置存储在应用和门户中。
-services: cognitive-services
-author: lingliw
-manager: digimobile
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
-ms.topic: conceptual
-origin.date: 11/12/2019
-ms.date: 12/05/2019
-ms.author: v-lingwu
-ms.openlocfilehash: a690fbb807e0fa81d8004d20fed9dbfea2065b61
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.topic: reference
+origin.date: 05/04/2020
+ms.date: 06/16/2020
+ms.author: v-tawe
+ms.openlocfilehash: f23c33198a8667e56357916ba657020374379bd6
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74982043"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098617"
 ---
-# <a name="application-settings"></a>应用程序设置
+# <a name="app-and-version-settings"></a>应用和版本设置
 
-这些应用程序设置存储在[导出的](https://{region}.dev.cognitive.azure.cn/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40)应用中，并使用 REST API 进行[更新](https://{region}.dev.cognitive.azure.cn/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings)。 更改应用版本设置会将应用训练状态重置为“未训练”。
+这些设置存储在[导出的](https://dev.cognitive.azure.cn/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40)应用中，并使用 REST API 或 LUIS 门户进行更新。
 
-|设置|默认值|说明|
-|--|--|--|
-|NormalizePunctuation|True|删除标点。|
-|NormalizeDiacritics|True|删除音调符号。|
+更改应用版本设置会将应用训练状态重置为“未训练”。
 
-## <a name="diacritics-normalization"></a>音调符号规范化 
+[!INCLUDE [App and version settings](includes/app-version-settings.md)]
 
-在 `settings` 参数中针对 LUIS JSON 应用文件的音调符号打开话语规范化。
 
-```JSON
-"settings": [
-    {"name": "NormalizeDiacritics", "value": "true"}
-] 
-```
+文本参考和示例包括：
+
+* [标点](#punctuation-normalization)
+* [音调符号](#diacritics-normalization)
+
+## <a name="diacritics-normalization"></a>音调符号规范化
 
 以下话语显示了音调符号规范化如何影响话语：
 
@@ -45,16 +35,102 @@ ms.locfileid: "74982043"
 |`quiero tomar una piña colada`|`quiero tomar una pina colada`|
 |||
 
+### <a name="language-support-for-diacritics"></a>对音调符号的语言支持
+
+#### <a name="brazilian-portuguese-pt-br-diacritics"></a>巴西葡萄牙语 `pt-br` 音调符号
+
+|音调符号设置为 false|音调符号设置为 true|
+|-|-|
+|`á`|`a`|
+|`â`|`a`|
+|`ã`|`a`|
+|`à`|`a`|
+|`ç`|`c`|
+|`é`|`e`|
+|`ê`|`e`|
+|`í`|`i`|
+|`ó`|`o`|
+|`ô`|`o`|
+|`õ`|`o`|
+|`ú`|`u`|
+|||
+
+#### <a name="dutch-nl-nl-diacritics"></a>荷兰语 `nl-nl` 音调符号
+
+|音调符号设置为 false|音调符号设置为 true|
+|-|-|
+|`á`|`a`|
+|`à`|`a`|
+|`é`|`e`|
+|`ë`|`e`|
+|`è`|`e`|
+|`ï`|`i`|
+|`í`|`i`|
+|`ó`|`o`|
+|`ö`|`o`|
+|`ú`|`u`|
+|`ü`|`u`|
+|||
+
+#### <a name="french-fr--diacritics"></a>法语 `fr-` 音调符号
+
+这包括法国和加拿大的子区域性。
+
+|音调符号设置为 false|音调符号设置为 true|
+|--|--|
+|`é`|`e`|
+|`à`|`a`|
+|`è`|`e`|
+|`ù`|`u`|
+|`â`|`a`|
+|`ê`|`e`|
+|`î`|`i`|
+|`ô`|`o`|
+|`û`|`u`|
+|`ç`|`c`|
+|`ë`|`e`|
+|`ï`|`i`|
+|`ü`|`u`|
+|`ÿ`|`y`|
+
+#### <a name="german-de-de-diacritics"></a>德语 `de-de` 音调符号
+
+|音调符号设置为 false|音调符号设置为 true|
+|--|--|
+|`ä`|`a`|
+|`ö`|`o`|
+|`ü`|`u`|
+
+#### <a name="italian-it-it-diacritics"></a>意大利语 `it-it` 音调符号
+
+|音调符号设置为 false|音调符号设置为 true|
+|--|--|
+|`à`|`a`|
+|`è`|`e`|
+|`é`|`e`|
+|`ì`|`i`|
+|`í`|`i`|
+|`î`|`i`|
+|`ò`|`o`|
+|`ó`|`o`|
+|`ù`|`u`|
+|`ú`|`u`|
+
+#### <a name="spanish-es--diacritics"></a>西班牙语 `es-` 音调符号
+
+这包括西班牙和加拿大墨西哥。
+
+|音调符号设置为 false|音调符号设置为 true|
+|-|-|
+|`á`|`a`|
+|`é`|`e`|
+|`í`|`i`|
+|`ó`|`o`|
+|`ú`|`u`|
+|`ü`|`u`|
+|`ñ`|`u`|
 
 ## <a name="punctuation-normalization"></a>标点规范化
-
-在 `settings` 参数中针对 LUIS JSON 应用文件的标点打开话语规范化。
-
-```JSON
-"settings": [
-    {"name": "NormalizePunctuation", "value": "true"}
-] 
-```
 
 以下话语显示了标点如何影响话语：
 
@@ -69,8 +145,8 @@ ms.locfileid: "74982043"
 
 |标点|
 |--|
-|`-`| 
-|`.`| 
+|`-`|
+|`.`|
 |`'`|
 |`"`|
 |`\`|
@@ -89,3 +165,7 @@ ms.locfileid: "74982043"
 |`}`|
 |`+`|
 |`¡`|
+
+## <a name="next-steps"></a>后续步骤
+
+* 了解音调符号和标点的[概念](luis-concept-utterance.md#utterance-normalization-for-diacritics-and-punctuation)。

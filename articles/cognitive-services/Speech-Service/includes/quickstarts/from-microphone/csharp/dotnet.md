@@ -5,12 +5,12 @@ ms.topic: include
 origin.date: 04/03/2020
 ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: e05a6c8e2fcacb47325c3cc61eb52e1832419561
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.openlocfilehash: 65865effdff95a24cc47d7a9b4e76679c966d846
+ms.sourcegitcommit: 304d3ef3c9e65c3e85977b3afb9985fbc0f908d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82150810"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85095901"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -20,18 +20,18 @@ ms.locfileid: "82150810"
 > * <a href="https://portal.azure.cn/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">创建 Azure 语音资源<span class="docon docon-navigate-external x-hidden-focus"></span></a>
 > * [设置开发环境并创建空项目](../../../../quickstarts/setup-platform.md?tabs=dotnet&pivots=programming-language-csharp)
 > * 请确保你有权访问麦克风，以便进行音频捕获
-> * 需要语音 SDK 版本 1.10.0 或更高版本。
+> * 需要语音 SDK 1.11.0 或更高版本。
 
 ## <a name="open-your-project-in-visual-studio"></a>在 Visual Studio 中打开项目
 
 第一步是确保在 Visual Studio 中打开项目。
 
-1. 启动 Visual Studio 2019  。
-2. 加载项目并打开 Program.cs  。
+1. 启动 Visual Studio 2019。
+2. 加载项目并打开 Program.cs。
 
 ## <a name="source-code"></a>源代码
 
-将 Program.cs  文件的内容替换为以下 C# 代码。
+将 Program.cs 文件的内容替换为以下 C# 代码。
 
 ```csharp
 using System;
@@ -95,8 +95,8 @@ namespace Speech.Recognition
 
 现在，可以使用语音服务重新构建应用并测试语音识别功能。
 
-1. “编译代码”- 在 Visual Studio 菜单栏中，选择“生成” > “生成解决方案”    。
-2. **启动应用** - 在菜单栏中，选择“调试” > “开始调试”，或按 F5   <kbd></kbd>。
+1. “编译代码”- 在 Visual Studio 菜单栏中，选择“生成” > “生成解决方案”  。
+2. **启动应用** - 在菜单栏中，选择“调试” > “开始调试”，或按 F5  <kbd></kbd>。
 3. **开始识别** - 它会提示你说英语短语。 语音将发送到语音服务，转录为文本，并在控制台中呈现。
 
 ## <a name="next-steps"></a>后续步骤

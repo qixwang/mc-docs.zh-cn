@@ -3,20 +3,20 @@ title: 使用 Spark 读取 Cassandra API 表数据
 titleSufix: Azure Cosmos DB
 description: 本文介绍如何读取 Azure Cosmos DB 中的 Cassandra API 表中的数据。
 author: rockboyfor
-ms.author: v-yeche
 ms.reviewer: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
-origin.date: 12/06/2018
-ms.date: 03/18/2019
+origin.date: 06/02/2020
+ms.date: 06/22/2020
+ms.author: v-yeche
 ms.custom: seodec18
-ms.openlocfilehash: 19f5d0d6d959d8cf3f6cf6f068c8f21e6bf94be9
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 43167dafec9c54a7d147801a9f230ec327d5e540
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "63856939"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098712"
 ---
 <!--Verify sucessfully-->
 # <a name="read-data-from-azure-cosmos-db-cassandra-api-tables-using-spark"></a>使用 Spark 读取 Azure Cosmos DB Cassandra API 表中的数据
@@ -34,7 +34,7 @@ import com.datastax.spark.connector.cql.CassandraConnector
 import com.microsoft.azure.cosmosdb.cassandra
 
 //Connection-related
-spark.conf.set("spark.cassandra.connection.host","YOUR_ACCOUNT_NAME.cassandra.cosmosdb.azure.cn")
+spark.conf.set("spark.cassandra.connection.host","YOUR_ACCOUNT_NAME.cassandra.cosmos.azure.cn")
 spark.conf.set("spark.cassandra.connection.port","10350")
 spark.conf.set("spark.cassandra.connection.ssl.enabled","true")
 spark.conf.set("spark.cassandra.auth.username","YOUR_ACCOUNT_NAME")
@@ -85,7 +85,7 @@ readBooksDF.show
 
 ### <a name="apply-filters"></a>应用筛选器
 
-目前不支持谓词下推，下面的示例反映客户端筛选。 
+可以将谓词向下推送到数据库，以便更好地优化 Spark 查询。 谓词是返回 true 或 false 的查询的条件，通常位于 WHERE 子句中。 谓词向下推送会筛选数据库查询中的数据，减少从数据库中检索到的条目数，提高查询性能。 默认情况下，Spark 数据集 API 会自动将有效的 WHERE 子句向下推送到数据库。 
 
 ```scala
 val readBooksDF = spark
@@ -104,6 +104,10 @@ readBooksDF.printSchema
 readBooksDF.explain
 readBooksDF.show
 ```
+
+物理计划的 PushedFilters 节包括 GreaterThan 向下推送筛选器。 
+
+![分区](./media/cassandra-spark-read-ops/pushdown-predicates.png)
 
 ## <a name="rdd-api"></a>RDD API
 
@@ -148,5 +152,4 @@ select * from books_vw where book_pub_year > 1891
  * [表复制操作](cassandra-spark-table-copy-ops.md)
 
 <!--Verify sucessfully-->
-<!--Update_Description: new articles on  -->
-<!--ms.date: 03/18/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

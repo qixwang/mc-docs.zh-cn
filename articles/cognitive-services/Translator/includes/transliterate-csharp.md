@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: a53523930866fa932949d8da2836fdbf638c4b91
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 24e7e33125d9c10d1a6dcd3907d24321629c0a76
+ms.sourcegitcommit: 43db4001be01262959400663abf8219e27e5cb8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80342996"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85241501"
 ---
 [!INCLUDE [Prerequisites](prerequisites-csharp.md)]
 
@@ -59,11 +59,11 @@ using Newtonsoft.Json;
 
 ## <a name="create-classes-for-the-json-response"></a>为 JSON 响应创建类
 
-接下来，我们将创建一个在反序列化由文本翻译 API 返回的 JSON 响应时使用的类。
+接下来，我们将创建一个类，在反序列化由“翻译”返回的 JSON 响应时使用。
 
 ```csharp
 /// <summary>
-/// The C# classes that represents the JSON returned by the Translator Text API.
+/// The C# classes that represents the JSON returned by the Translator.
 /// </summary>
 public class TransliterationResult
 {
@@ -171,7 +171,7 @@ foreach (TransliterationResult o in deserializedOutput)
 
 ## <a name="put-it-all-together"></a>将其放在一起
 
-最后一步是在 `TransliterateTextRequest()` 函数中调用 `Main`。 在此示例中，我们从日语直译为拉丁语脚本。 找到 `static void Main(string[] args)` 并将其替换为以下代码：
+最后一步是在 `Main` 函数中调用 `TransliterateTextRequest()`。 在此示例中，我们从日语直译为拉丁语脚本。 找到 `static void Main(string[] args)` 并将其替换为以下代码：
 
 ```csharp
 static async Task Main(string[] args)
@@ -223,7 +223,7 @@ Transliterated to latn script: Kon\'nichiwa
 
 ## <a name="next-steps"></a>后续步骤
 
-查看 API 参考，了解使用文本翻译 API 可以执行的所有操作。
+查看 API 参考，了解使用“翻译”可以执行的所有操作。
 
 > [!div class="nextstepaction"]
 > [API 参考](/cognitive-services/translator/reference/v3-0-reference)

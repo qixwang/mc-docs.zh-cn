@@ -6,22 +6,21 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: sample
 origin.date: 08/23/2019
-ms.date: 02/10/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 077524f0cc72f4b0a7a8b9bfe06ce0453cba8efc
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 26d2c96ac552e7ae43d3b75214e19b69da30d591
+ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77028728"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85323377"
 ---
 # <a name="nodejs-examples-to-manage-data-in-azure-cosmos-db"></a>管理 Azure Cosmos DB 中数据的 Node.js 示例
 
 > [!div class="op_single_selector"]
 > * [.NET V2 SDK 示例](sql-api-dotnet-samples.md)
 > * [.NET V3 SDK 示例](sql-api-dotnet-v3sdk-samples.md)
-> * [Java 示例](sql-api-java-samples.md)
-> * [异步 Java 示例](sql-api-async-java-samples.md)
+> * [Java V4 SDK 示例](sql-api-java-sdk-samples.md)
 > * [Node.js 示例](sql-api-nodejs-samples.md)
 > * [Python 示例](sql-api-python-samples.md)
 > * [Azure 代码示例库](https://azure.microsoft.com/resources/samples/?sort=0&service=cosmos-db)
@@ -37,16 +36,16 @@ ms.locfileid: "77028728"
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-- 可以[激活 Visual Studio 订阅者权益](https://www.azure.cn/support/legal/offer-rate-plans/)：Visual Studio 订阅每月提供可用来试用付费版 Azure 服务的信用额度。
+- 可以[激活 Visual Studio 订阅者权益](https://www.azure.cn/offers/ms-mc-arz-msdn/index.html)：Visual Studio 订阅每月提供可用来试用付费版 Azure 服务的信用额度。
 
 [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
 也需 [JavaScript SDK](sql-api-sdk-node.md)。
 
-> [!NOTE]
-> 每个示例都是独立的，自行对自身进行设置并在完成后自行进行清理。 因此，这些示例对 [Containers.create](https://docs.microsoft.com/javascript/api/%40azure/cosmos/containers?view=azure-node-latest) 发出多个调用。 每次执行完此操作，均会按照正在创建的容器的性能层，向订阅收取使用 1 小时的费用。
-> 
-> 
+   > [!NOTE]
+   > 每个示例都是独立的，自行对自身进行设置并在完成后自行进行清理。 因此，这些示例对 [Containers.create](https://docs.microsoft.com/javascript/api/%40azure/cosmos/containers?view=azure-node-latest) 发出多个调用。 每次执行完此操作，均会按照正在创建的容器的性能层，向订阅收取使用 1 小时的费用。
+   > 
+   > 
 
 ## <a name="database-examples"></a>数据库示例
 

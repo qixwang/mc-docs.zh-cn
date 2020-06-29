@@ -1,7 +1,7 @@
 ---
 title: 快速入门：使用 Ruby 调用文本分析 API
 titleSuffix: Azure Cognitive Services
-description: 获取信息和代码示例，以便快速完成 Azure 认知服务中的文本分析 API 的使用入门。
+description: 本快速入门介绍如何获取信息和代码示例，以帮助你快速开始使用 Azure 认知服务中的文本分析 API。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -9,27 +9,25 @@ ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
 origin.date: 04/16/2019
-ms.date: 06/10/2019
-ms.author: v-junlch
-ms.openlocfilehash: 5a21979e9d18843e0b1da0cea7a12f8cf7eecd13
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 06/23/2020
+ms.author: v-tawe
+ms.openlocfilehash: 6c32de042be73d4ba2a02d9b88e7c4474462d0f8
+ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78154795"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85323286"
 ---
 # <a name="quickstart-using-ruby-to-call-the-text-analytics-cognitive-service"></a>快速入门：使用 Ruby 调用文本分析认知服务
 <a name="HOLTop"></a>
 
-本文展示了如何将 [文本分析 API](https://www.azure.cn/zh-cn/home/features/cognitive-services/text-analytics/) 与 Ruby 配合使用来[检测语言](#Detect)、[分析情绪](#SentimentAnalysis)、[提取关键短语](#KeyPhraseExtraction)以及[识别链接的实体](#Entities)。
+本文展示了如何将 [文本分析 API](https://www.azure.cn/home/features/cognitive-services/text-analytics/) 与 Ruby 配合使用来[检测语言](#Detect)、[分析情绪](#SentimentAnalysis)、[提取关键短语](#KeyPhraseExtraction)以及[识别链接的实体](#Entities)。
 
 有关 API 的技术文档，请参阅 [API 定义](https://dev.cognitive.azure.cn/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
-
-还必须有在注册期间生成的终结点和访问密钥。 
 
 <a name="Detect"></a>
 
@@ -38,33 +36,23 @@ ms.locfileid: "78154795"
 语言检测 API 使用[检测语言方法](https://dev.cognitive.azure.cn/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7)检测文本文档的语言。
 
 1. 在你喜欢使用的 IDE 中新建一个 Ruby 项目。
-2. 添加以下提供的代码。
-3. 使用对订阅有效的访问密钥替换 `accessKey` 值。
-4. 将 `uri` 中的位置（当前为 `chinaeast2`）替换为进行注册的区域。
-5. 运行该程序。
+1. 添加以下提供的代码。
+1. 将文本分析密钥和终结点复制到代码中。 
+1. 运行该程序。
 
 ```ruby
+# encoding: UTF-8
+
 require 'net/https'
 require 'uri'
 require 'json'
 
-# **********************************************
-# *** Update or verify the following values. ***
-# **********************************************
+subscription_key = "<paste-your-text-analytics-key-here>"
+endpoint = "<paste-your-text-analytics-endpoint-here>"
 
-# Replace the accessKey string value with your valid access key.
-accessKey = 'enter key here'
-
-# Replace or verify the region.
-#
-# You must use the same region in your REST API call as you used to obtain your access keys.
-# For example, if you obtained your access keys from the chinanorth region, replace 
-# "chinaeast2" in the URI below with "chinanorth".
-#
-uri = 'https://chinaeast2.api.cognitive.azure.cn'
 path = '/text/analytics/v2.1/languages'
 
-uri = URI(uri + path)
+uri = URI(endpoint + path)
 
 documents = { 'documents': [
     { 'id' => '1', 'text' => 'This is a document written in English.' },
@@ -76,7 +64,7 @@ puts 'Please wait a moment for the results to appear.'
 
 request = Net::HTTP::Post.new(uri)
 request['Content-Type'] = "application/json"
-request['Ocp-Apim-Subscription-Key'] = accessKey
+request['Ocp-Apim-Subscription-Key'] = subscription_key
 request.body = documents.to_json
 
 response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|
@@ -139,33 +127,23 @@ puts JSON::pretty_generate (JSON (response.body))
 情绪分析 API 使用 [Sentiment 方法](https://dev.cognitive.azure.cn/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9)检测一组文本记录的情绪。 以下示例为两个文档打分，一个是英文文档，另一个是西班牙文文档。
 
 1. 在你喜欢使用的 IDE 中新建一个 Ruby 项目。
-2. 添加以下提供的代码。
-3. 使用对订阅有效的访问密钥替换 `accessKey` 值。
-4. 将 `uri` 中的位置（当前为 `chinaeast2`）替换为进行注册的区域。
-5. 运行该程序。
+1. 添加以下提供的代码。
+1. 将文本分析密钥和终结点复制到代码中。 
+1. 运行该程序。
 
 ```ruby
+# encoding: UTF-8
+
 require 'net/https'
 require 'uri'
 require 'json'
 
-# **********************************************
-# *** Update or verify the following values. ***
-# **********************************************
+subscription_key = "<paste-your-text-analytics-key-here>"
+endpoint = "<paste-your-text-analytics-endpoint-here>"
 
-# Replace the accessKey string value with your valid access key.
-accessKey = 'enter key here'
-
-# Replace or verify the region.
-#
-# You must use the same region in your REST API call as you used to obtain your access keys.
-# For example, if you obtained your access keys from the chinanorth region, replace 
-# "chinaeast2" in the URI below with "chinanorth".
-#
-uri = 'https://chinaeast2.api.cognitive.azure.cn'
 path = '/text/analytics/v2.1/sentiment'
 
-uri = URI(uri + path)
+uri = URI(endpoint + path)
 
 documents = { 'documents': [
     { 'id' => '1', 'language' => 'en', 'text' => 'I really enjoy the new XBox One S. It has a clean look, it has 4K/HDR resolution and it is affordable.' },
@@ -176,7 +154,7 @@ puts 'Please wait a moment for the results to appear.'
 
 request = Net::HTTP::Post.new(uri)
 request['Content-Type'] = "application/json"
-request['Ocp-Apim-Subscription-Key'] = accessKey
+request['Ocp-Apim-Subscription-Key'] = subscription_key
 request.body = documents.to_json
 
 response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|
@@ -213,34 +191,24 @@ puts JSON::pretty_generate (JSON (response.body))
 关键短语提取 API 使用[关键短语方法](https://dev.cognitive.azure.cn/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6)从文本文档中提取关键短语。 以下示例为英文和西班牙文文档提取关键短语。
 
 1. 在你喜欢使用的 IDE 中新建一个 Ruby 项目。
-2. 添加以下提供的代码。
-3. 使用对订阅有效的访问密钥替换 `accessKey` 值。
-4. 将 `uri` 中的位置（当前为 `chinaeast2`）替换为进行注册的区域。
-5. 运行该程序。
+1. 添加以下提供的代码。
+1. 将文本分析密钥和终结点复制到代码中。
+1. 运行该程序。
 
 
 ```ruby
+# encoding: UTF-8
+
 require 'net/https'
 require 'uri'
 require 'json'
 
-# **********************************************
-# *** Update or verify the following values. ***
-# **********************************************
+subscription_key = "<paste-your-text-analytics-key-here>"
+endpoint = "<paste-your-text-analytics-endpoint-here>"
 
-# Replace the accessKey string value with your valid access key.
-accessKey = 'enter key here'
-
-# Replace or verify the region.
-#
-# You must use the same region in your REST API call as you used to obtain your access keys.
-# For example, if you obtained your access keys from the chinanorth region, replace 
-# "chinaeast2" in the URI below with "chinanorth".
-#
-uri = 'https://chinaeast2.api.cognitive.azure.cn'
 path = '/text/analytics/v2.1/keyPhrases'
 
-uri = URI(uri + path)
+uri = URI(endpoint + path)
 
 documents = { 'documents': [
     { 'id' => '1', 'language' => 'en', 'text' => 'I really enjoy the new XBox One S. It has a clean look, it has 4K/HDR resolution and it is affordable.' },
@@ -252,7 +220,7 @@ puts 'Please wait a moment for the results to appear.'
 
 request = Net::HTTP::Post.new(uri)
 request['Content-Type'] = "application/json"
-request['Ocp-Apim-Subscription-Key'] = accessKey
+request['Ocp-Apim-Subscription-Key'] = subscription_key
 request.body = documents.to_json
 
 response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|
@@ -308,34 +276,23 @@ puts JSON::pretty_generate (JSON (response.body))
 实体 API 使用[实体方法](https://dev.cognitive.azure.cn/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)提取文本文档中的实体。 以下示例识别英文文档的实体。
 
 1. 在你喜欢使用的 IDE 中新建一个 Ruby 项目。
-2. 添加以下提供的代码。
-3. 使用对订阅有效的访问密钥替换 `accessKey` 值。
-4. 将 `uri` 中的位置（当前为 `chinaeast2`）替换为进行注册的区域。
-5. 运行该程序。
-
+1. 添加以下提供的代码。
+1. 将文本分析密钥和终结点复制到代码中。
+1. 运行该程序。
 
 ```ruby
+# encoding: UTF-8
+
 require 'net/https'
 require 'uri'
 require 'json'
 
-# **********************************************
-# *** Update or verify the following values. ***
-# **********************************************
+subscription_key = "<paste-your-text-analytics-key-here>"
+endpoint = "<paste-your-text-analytics-endpoint-here>"
 
-# Replace the accessKey string value with your valid access key.
-accessKey = 'enter key here'
-
-# Replace or verify the region.
-#
-# You must use the same region in your REST API call as you used to obtain your access keys.
-# For example, if you obtained your access keys from the chinanorth region, replace 
-# "chinaeast2" in the URI below with "chinanorth".
-#
-uri = 'https://chinaeast2.api.cognitive.azure.cn'
 path = '/text/analytics/v2.1/entities'
 
-uri = URI(uri + path)
+uri = URI(endpoint + path)
 
 documents = { 'documents': [
     { 'id' => '1', 'language' => 'en', 'text' => 'Microsoft is an It company.' }
@@ -345,7 +302,7 @@ puts 'Please wait a moment for the results to appear.'
 
 request = Net::HTTP::Post.new(uri)
 request['Content-Type'] = "application/json"
-request['Ocp-Apim-Subscription-Key'] = accessKey
+request['Ocp-Apim-Subscription-Key'] = subscription_key
 request.body = documents.to_json
 
 response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|

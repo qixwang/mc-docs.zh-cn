@@ -2,14 +2,15 @@
 author: erhopf
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 08/06/2019
-ms.author: erhopf
-ms.openlocfilehash: 2279bf888f3c3453f6d01508f21133bea3c1cd1a
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 06/22/2020
+origin.date: 08/06/2019
+ms.author: v-tawe
+ms.openlocfilehash: 4c336798bad39407964741b62ef3d6ffd9d020a9
+ms.sourcegitcommit: 43db4001be01262959400663abf8219e27e5cb8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80343019"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85241541"
 ---
 [!INCLUDE [Prerequisites](prerequisites-csharp.md)]
 
@@ -63,7 +64,7 @@ using Newtonsoft.Json;
 
 ```csharp
 /// <summary>
-/// The C# classes that represents the JSON returned by the Translator Text API.
+/// The C# classes that represents the JSON returned by the Translator.
 /// </summary>
 public class BreakSentenceResult
 {
@@ -177,7 +178,7 @@ foreach (BreakSentenceResult o in deserializedOutput)
 
 ## <a name="put-it-all-together"></a>将其放在一起
 
-最后一步是在 `BreakSentenceRequest()` 函数中调用 `Main`。 找到 `static void Main(string[] args)` 并将其替换为以下代码：
+最后一步是在 `Main` 函数中调用 `BreakSentenceRequest()`。 找到 `static void Main(string[] args)` 并将其替换为以下代码：
 
 ```csharp
 static async Task Main(string[] args)
@@ -234,7 +235,7 @@ The first sentence length is: 25
 
 ## <a name="next-steps"></a>后续步骤
 
-查看 API 参考，了解使用文本翻译 API 可以执行的所有操作。
+查看 API 参考，了解使用“翻译”可以执行的所有操作。
 
 > [!div class="nextstepaction"]
 > [API 参考](/cognitive-services/translator/reference/v3-0-reference)

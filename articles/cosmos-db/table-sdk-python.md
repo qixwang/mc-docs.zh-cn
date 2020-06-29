@@ -6,15 +6,15 @@ ms.subservice: cosmosdb-table
 ms.devlang: python
 ms.topic: reference
 origin.date: 11/20/2018
-ms.date: 02/10/2020
+ms.date: 07/06/2020
 author: rockboyfor
 ms.author: v-yeche
-ms.openlocfilehash: f39b4ea5c21c96293e1326a164f71b3f0ac330ac
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 4746e029e5f02b252a1f4edff693f20fe19769e2
+ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77068263"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85323367"
 ---
 <!--Verify sucessfully-->
 # <a name="azure-cosmos-db-table-api-sdk-for-python-release-notes-and-resources"></a>用于 Python 的 Azure Cosmos DB 表 API SDK：发行说明和资源

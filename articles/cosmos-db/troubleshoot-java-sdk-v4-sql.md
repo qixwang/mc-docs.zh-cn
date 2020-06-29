@@ -3,18 +3,18 @@ title: 诊断 Azure Cosmos DB Java SDK v4 并对其进行故障排除
 description: 使用客户端日志记录等功能和其他第三方工具来确定、诊断和排查 Java SDK v4 中的 Azure Cosmos DB 问题。
 author: rockboyfor
 ms.service: cosmos-db
-origin.date: 05/08/2020
-ms.date: 06/15/2020
+origin.date: 06/11/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
 ms.devlang: java
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
-ms.openlocfilehash: 9dba06ffcf296eca260d0aafad30851a4b58c0ff
-ms.sourcegitcommit: 8a2fbc0eae8d8f7297f5334f508ff868b4077f32
+ms.openlocfilehash: d123b8838da98d9d64162c03dbf4834f4a8599b2
+ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84326244"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85321667"
 ---
 <!--Verified successfully, ONLY CHARACTORS CONTENT-->
 # <a name="troubleshoot-issues-when-you-use-azure-cosmos-db-java-sdk-v4-with-sql-api-accounts"></a>排查将 Azure Cosmos DB Java SDK v4 与 SQL API 帐户配合使用时出现的问题
@@ -26,7 +26,7 @@ ms.locfileid: "84326244"
 > 
 
 > [!IMPORTANT]
-> 本文仅介绍对 Azure Cosmos DB Java SDK v4 进行故障排除的信息。 有关详细信息，请参阅 Azure Cosmos DB Java SDK v4 发行说明、[Maven 存储库](https://mvnrepository.com/artifact/com.azure/azure-cosmos)和[性能提示](performance-tips-java-sdk-v4-sql.md)。 如果你当前使用的是早于 v4 的版本，请参阅[迁移到 Azure Cosmos DB Java SDK v4](migrate-java-v4-sdk.md) 指南，获取升级到 v4 的相关帮助。
+> 本文仅介绍 Azure Cosmos DB Java SDK v4 的故障排除。 有关详细信息，请参阅 Azure Cosmos DB Java SDK v4 [发行说明](sql-api-sdk-java-v4.md)、[Maven 存储库](https://mvnrepository.com/artifact/com.azure/azure-cosmos)和[性能提示](performance-tips-java-sdk-v4-sql.md)。 如果你当前使用的是早于 v4 的版本，请参阅[迁移到 Azure Cosmos DB Java SDK v4](migrate-java-v4-sdk.md) 指南，获取升级到 v4 的相关帮助。
 >
 
 本文介绍了将 Azure Cosmos DB Java SDK v4 与 Azure Cosmos DB SQL API 帐户配合使用时的常见问题、解决方法、诊断步骤和工具。
@@ -35,7 +35,7 @@ Azure Cosmos DB Java SDK v4 提供客户端逻辑表示用于访问 Azure Cosmos
 从本列表开始：
 
 * 请查看本文中的[常见问题和解决方法]部分。
-* 查看 Azure Cosmos DB 中心存储库中的 Java SDK，它以 [GitHub 上的开放源代码](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos/azure-cosmos)的形式提供。 该 SDK 拥有受到主动监视的[问题部分](https://github.com/Azure/azure-sdk-for-java/issues)。 检查是否已提交包含解决方法的任何类似问题。 一个有用的提示是通过 cosmos:v4-item 标签来筛选问题。。
+* 查看 Azure Cosmos DB 中心存储库中的 Java SDK，它以 [GitHub 上的开放源代码](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos/azure-cosmos)的形式提供。 该 SDK 拥有受到主动监视的[问题部分](https://github.com/Azure/azure-sdk-for-java/issues)。 检查是否已提交包含解决方法的任何类似问题。 一个有用的提示是通过 cosmos:v4-item 标签来筛选问题。
 * 查看适用于 Azure Cosmos DB Java SDK v4 的[性能提示](performance-tips-java-sdk-v4-sql.md)并按照建议的做法进行操作。
 * 阅读本文的其余部分，如果找不到解决方案， 则提交 [GitHub 问题](https://github.com/Azure/azure-sdk-for-java/issues)。 如果有向 GitHub 问题添加标签的选项，请添加 cosmos:v4-item 标签。
 
@@ -103,34 +103,36 @@ Netty IO 线程仅用于非阻塞性 Netty IO 工作。 SDK 将其中一个 Nett
 ### <a name="java-sdk-v4-maven-comazureazure-cosmos-async-api"></a>Java SDK V4 (Maven com.azure::azure-cosmos) 异步 API
 
 ```java
-@Test
-public void badCodeWithReadTimeoutException() throws Exception {
-  int requestTimeoutInSeconds = 10;
-  ConnectionPolicy policy = new ConnectionPolicy();
-  policy.setRequestTimeout(Duration.ofMillis(requestTimeoutInSeconds * 1000));
-  AtomicInteger failureCount = new AtomicInteger();
-  // Max number of concurrent item inserts is # CPU cores + 1
-  Flux<Family> familyPub = 
-      Flux.just(Families.getAndersenFamilyItem(), Families.getWitherspoonFamilyItem(), Families.getCarltonFamilyItem());
-  familyPub.flatMap(family -> {
-      return container.createItem(family);
-  }).flatMap(r -> {
-      try {
-          // Time-consuming work is, for example,
-          // writing to a file, computationally heavy work, or just sleep.
-          // Basically, it's anything that takes more than a few milliseconds.
-          // Doing such operations on the IO Netty thread
-          // without a proper scheduler will cause problems.
-          // The subscriber will get a ReadTimeoutException failure.
-          TimeUnit.SECONDS.sleep(2 * requestTimeoutInSeconds);
-      } catch (Exception e) {
-      }
-      return Mono.empty();
-  }).doOnError(Exception.class, exception -> {
-      failureCount.incrementAndGet();
-  }).blockLast();
-  assert(failureCount.get() > 0);
-}
+
+//Bad code with read timeout exception
+
+int requestTimeoutInSeconds = 10;
+
+/* ... */
+
+AtomicInteger failureCount = new AtomicInteger();
+// Max number of concurrent item inserts is # CPU cores + 1
+Flux<Family> familyPub =
+        Flux.just(Families.getAndersenFamilyItem(), Families.getAndersenFamilyItem(), Families.getJohnsonFamilyItem());
+familyPub.flatMap(family -> {
+    return container.createItem(family);
+}).flatMap(r -> {
+    try {
+        // Time-consuming work is, for example,
+        // writing to a file, computationally heavy work, or just sleep.
+        // Basically, it's anything that takes more than a few milliseconds.
+        // Doing such operations on the IO Netty thread
+        // without a proper scheduler will cause problems.
+        // The subscriber will get a ReadTimeoutException failure.
+        TimeUnit.SECONDS.sleep(2 * requestTimeoutInSeconds);
+    } catch (Exception e) {
+    }
+    return Mono.empty();
+}).doOnError(Exception.class, exception -> {
+    failureCount.incrementAndGet();
+}).blockLast();
+assert(failureCount.get() > 0);
+
 ```
 
 解决方法是更改用于执行需要耗费一定时间的工作的线程。 为应用定义计划程序的单一实例。
@@ -143,6 +145,7 @@ public void badCodeWithReadTimeoutException() throws Exception {
 ExecutorService ex  = Executors.newFixedThreadPool(30);
 Scheduler customScheduler = Schedulers.fromExecutor(ex);
 ```
+
 你可能会需要完成需耗费一定时间的工作，例如，计算工作量繁重的工作或阻塞性 IO。 在这种情况下，使用 `.publishOn(customScheduler)` API 将线程切换为 `customScheduler` 提供的辅助角色。
 
 <a name="java4-apply-custom-scheduler"></a>
@@ -150,11 +153,13 @@ Scheduler customScheduler = Schedulers.fromExecutor(ex);
 
 ```java
 container.createItem(family)
-    .publishOn(customScheduler) // Switches the thread.
-    .subscribe(
-        // ...
-    );
+        .publishOn(customScheduler) // Switches the thread.
+        .subscribe(
+                // ...
+        );
+
 ```
+
 通过使用 `publishOn(customScheduler)`，可以释放 Netty IO 线程并切换到自定义计划程序提供的自定义线程。 此修改可解决这一问题。 你不会再遇到 `io.netty.handler.timeout.ReadTimeoutException` 故障。
 
 ### <a name="request-rate-too-large"></a>请求速率过大
@@ -178,7 +183,7 @@ Azure Cosmos DB Java SDK 可提取大量依赖项；一般来说，如果项目�
 ```bash
 mvn dependency:tree
 ```
-有关详细信息，请参阅 [maven 依赖项树指南](https://maven.apache.org/plugins/maven-dependency-plugin/examples/resolving-conflicts-using-the-dependency-tree.html)。
+有关详细信息，请参阅[maven 依赖项树指南](https://maven.apache.org/plugins/maven-dependency-plugin/examples/resolving-conflicts-using-the-dependency-tree.html)。
 
 了解项目的哪个依赖项依赖于旧版本后，就可以修改 pom 文件中该 lib 上的依赖项并排除可传递依赖项，如下所示（假定 reactor core 是过时的依赖项）：
 
@@ -265,5 +270,4 @@ netstat -abn
 [主机上的连接限制]: #connection-limit-on-host
 [Azure SNAT (PAT) 端口耗尽]: #snat
 
-<!-- Update_Description: new article about troubleshoot java sdk v4 sql -->
-<!--NEW.date: 06/15/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

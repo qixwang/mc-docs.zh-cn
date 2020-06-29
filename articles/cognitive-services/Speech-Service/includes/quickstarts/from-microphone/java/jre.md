@@ -5,12 +5,12 @@ ms.topic: include
 origin.date: 04/02/2020
 ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: 0371457343ac36ae3afafb7799b57e05b25ef14d
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.openlocfilehash: 887d50b39eeccc45ae7093957c999e08b245806a
+ms.sourcegitcommit: 304d3ef3c9e65c3e85977b3afb9985fbc0f908d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82150766"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85095911"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -20,11 +20,11 @@ ms.locfileid: "82150766"
 > * <a href="https://portal.azure.cn/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">创建 Azure 语音资源<span class="docon docon-navigate-external x-hidden-focus"></span></a>
 > * [设置开发环境并创建空项目](../../../../quickstarts/setup-platform.md?tabs=jre&pivots=programming-language-java)
 > * 请确保你有权访问麦克风，以便进行音频捕获
-> * 需要语音 SDK 版本 1.10.0 或更高版本。
+> * 需要语音 SDK 1.11.0 或更高版本。
 
 ## <a name="source-code"></a>源代码
 
-若要向 Java 项目添加新的空类，请选择“文件” > “新建” > “类”。    在“新建 Java 类”窗口中，在“包”字段内输入 **speechsdk.quickstart**，在“名称”字段内输入 **Main**。   
+若要向 Java 项目添加新的空类，请选择“文件” > “新建” > “类”。**** **** **** 在“新建 Java 类”窗口中，在“包”字段内输入 **speechsdk.quickstart**，在“名称”字段内输入 **Main**。**** **** ****
 
 ![“新建 Java 类”窗口的屏幕截图](~/articles/cognitive-services/Speech-Service/media/sdk/qs-java-jre-06-create-main-java.png)
 
@@ -102,7 +102,7 @@ ms.locfileid: "82150766"
 
 ## <a name="build-and-run-app"></a>生成并运行应用
 
-按 <kbd>F11</kbd>，或选择“运行”   > “调试”  。
+按 <kbd>F11</kbd>，或选择“运行”**** > “调试”****。
 接下来的 15 秒，通过麦克风提供的语音输入将被识别并记录到控制台窗口中。
 
 ![成功识别后的控制台输出的屏幕截图](~/articles/cognitive-services/Speech-Service/media/sdk/qs-java-jre-07-console-output.png)

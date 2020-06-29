@@ -3,17 +3,17 @@ title: 向 Azure Stack Hub 发出 API 请求
 description: 了解如何从 Azure 检索身份验证令牌，以向 Azure Stack Hub 发出 API 请求。
 author: WenJason
 ms.topic: article
-origin.date: 01/23/2020
-ms.date: 02/24/2020
+origin.date: 05/06/2020
+ms.date: 06/22/2020
 ms.author: v-jay
 ms.reviewer: thoroet
-ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: ac48327159730eb86868e58aed367781d2acef53
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.lastreviewed: 01/14/2020
+ms.openlocfilehash: 15d012d31135360af87269b840ec9cf7c09e07fc
+ms.sourcegitcommit: d86e169edf5affd28a1c1a4476d72b01a7fb421d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77541016"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85096421"
 ---
 <!--  cblackuk and charliejllewellyn. This is a community contribution by cblackuk-->
 
@@ -23,11 +23,11 @@ ms.locfileid: "77541016"
 
 这些 API 要求客户端向 Azure 登录终结点进行身份验证。 该终结点将返回一个要在发送到 Azure Stack Hub API 的每个请求的标头中使用的令牌。 Azure 使用 Oauth 2.0。
 
-本文提供了使用 **cURL** 实用工具创建 Azure Stack Hub 请求的示例。 cURL 是一个命令行工具，它有一个用于传输数据的库。 这些示例演练了检索令牌以访问 Azure Stack Hub API 的过程。 大多数编程语言都提供了 Oauth 2.0 库，这些库提供可靠的令牌管理，并可以处理刷新令牌等任务。
+本文提供了使用 **cURL** 实用工具创建 Azure Stack Hub 请求的示例。 cURL 是一个命令行工具，它有一个用于传输数据的库。 这些示例说明了检索令牌以访问 Azure Stack Hub API 的过程。 大多数编程语言都提供了 Oauth 2.0 库，这些库提供可靠的令牌管理，并可以处理刷新令牌等任务。
 
 查看配合常规 REST 客户端（例如 **cURL**）使用 Azure Stack Hub REST API 的整个过程有助于了解基础请求，以及应可在响应有效负载中收到的内容。
 
-本文并未探索可用于检索令牌的所有选项，例如交互式登录或创建专用应用 ID。 若要获取有关这些主题的信息，请参阅 [Azure REST API 参考](https://docs.microsoft.com/rest/api/)。
+本文并未探索可用于检索令牌的所有选项，例如交互式登录或创建专用应用 ID。 若要了解这些主题，请查看 [Azure REST API 参考](https://docs.microsoft.com/rest/api/)。
 
 ## <a name="get-a-token-from-azure"></a>从 Azure 获取令牌
 
@@ -62,7 +62,7 @@ grant_type=password
    要使用的身份验证方案类型。 在此示例中，值为 `password`。
 
 - **资源**：  
-   令牌访问的资源。 可以通过查询 Azure Stack Hub 管理元数据终结点找到该资源。 查看“受众”  部分。
+   令牌访问的资源。 可以通过查询 Azure Stack Hub 管理元数据终结点找到该资源。 查看“受众”**** 部分。
 
 - **Azure Stack Hub 管理终结点**：
 
@@ -99,7 +99,7 @@ grant_type=password
   https://contoso.partner.onmschina.cn/4de154de-f8a8-4017-af41-df619da68155
   ```
 
-- **client_id**
+- client_id****
 
   此值已硬编码为默认值：
 
@@ -125,7 +125,7 @@ grant_type=password
   azurestackadmin@fabrikam.partner.onmschina.cn
   ```
 
-- password 
+- **password**
 
   Azure Stack Hub Azure AD 管理员密码。
 
@@ -185,7 +185,7 @@ subscriptionPolicies : @{locationPlacementId=AzureStack}
 通用请求 URI 包含：`{URI-scheme} :// {URI-host} / {resource-path} ? {query-string}`
 
 - **URI 方案**：  
-URI 指示用于发送请求的协议。 例如，`http` 或 `https`。
+URI 指示用于发送请求的协议。 例如 `http` 或 `https`。
 - **URI 主机**：  
 该主机指定 REST 服务终结点所在服务器的域名或 IP 地址，例如 `graph.microsoft.com` 或 `adminmanagement.local.azurestack.external`。
 - **资源路径**：  

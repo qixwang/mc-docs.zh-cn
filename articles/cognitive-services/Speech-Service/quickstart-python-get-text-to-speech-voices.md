@@ -11,12 +11,12 @@ ms.topic: how-to
 origin.date: 04/13/2020
 ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: 16fcb4b5071a2591b49c27504b782be5f1d92edb
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.openlocfilehash: 245ea0078370aedbf41d8c9ddecfb1b361fed219
+ms.sourcegitcommit: 304d3ef3c9e65c3e85977b3afb9985fbc0f908d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82126863"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85095961"
 ---
 # <a name="get-the-list-of-text-to-speech-voices-using-python"></a>使用 Python 获取“文本转语音”语音的列表
 
@@ -29,7 +29,7 @@ ms.locfileid: "82126863"
 * Python 2.7.x 或 3.x
 * <a href="https://visualstudio.microsoft.com/downloads/" target="_blank">Visual Studio<span class="docon docon-navigate-external x-hidden-focus"></span></a>、<a href="https://code.visualstudio.com/download" target="_blank">Visual Studio Code<span class="docon docon-navigate-external x-hidden-focus"></span></a> 或你喜欢用的文本编辑器
 * 语音服务的 Azure 订阅密钥
-* 需要语音 SDK 版本 1.10.0 或更高版本。
+* 需要语音 SDK 1.11.0 或更高版本。
 
 ## <a name="create-a-project-and-import-required-modules"></a>创建一个项目并导入必需的模块
 

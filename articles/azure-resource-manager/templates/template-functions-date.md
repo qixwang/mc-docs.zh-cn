@@ -2,15 +2,15 @@
 title: 模板函数 - 日期
 description: 介绍了可在 Azure 资源管理器模板中用来处理日期的函数。
 ms.topic: conceptual
-origin.date: 04/06/2020
-ms.date: 05/08/2020
+origin.date: 04/27/2020
+ms.date: 06/22/2020
 ms.author: v-yeche
-ms.openlocfilehash: 98f753432021b9a78c48b058cbcbd01ce9a813dc
-ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
+ms.openlocfilehash: 1caaaf9c78ab3218efdf79ae2080d676491dc233
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "83001935"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098633"
 ---
 # <a name="date-functions-for-arm-templates"></a>ARM 模板的日期函数
 
@@ -23,11 +23,11 @@ ms.locfileid: "83001935"
 
 `dateTimeAdd(base, duration, [format])`
 
-向基础的日期/时间值加上一个持续时间。
+向基础值加上一个持续时间。 需要 ISO 8601 格式。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | base | 是 | string | 用于相加的起始日期/时间值。 使用 [ISO 8601 时间戳格式](https://en.wikipedia.org/wiki/ISO_8601)。 |
 | duration | 是 | string | 要与 base 相加的时间值。 它可以是负值。 使用 [ISO 8601 持续时间格式](https://en.wikipedia.org/wiki/ISO_8601#Durations)。 |
@@ -76,7 +76,7 @@ ms.locfileid: "83001935"
 
 在 baseTime为 `2020-04-07 14:53:14Z` 的情况下部署上述模板时，输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
 | add3Years | String | 4/7/2023 2:53:14 PM |
 | subtract9Days | String | 3/29/2020 2:53:14 PM |
@@ -142,9 +142,9 @@ ms.locfileid: "83001935"
 
 以指定的格式返回当前的 (UTC) 日期时间值。 如果未提供格式，则使用 ISO 8601 (yyyyMMddTHHmmssZ) 格式。 **此函数只能在参数的默认值中使用。**
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | format |否 |string |要转换为字符串的 URI 编码值。 使用[标准格式字符串](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式字符串](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 |
 
@@ -166,7 +166,7 @@ ms.locfileid: "83001935"
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "utcValue": {
@@ -203,7 +203,7 @@ ms.locfileid: "83001935"
 
 上述示例的输出根据每个部署的不同而异，但类似于：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
 | utcOutput | string | 20190305T175318Z |
 | utcShortOutput | string | 03/05/2019 |
@@ -245,5 +245,8 @@ ms.locfileid: "83001935"
 }
 ```
 
-<!-- Update_Description: new article about template functions date -->
-<!--NEW.date: 04/30/2020-->
+## <a name="next-steps"></a>后续步骤
+
+* 有关 Azure 资源管理器模板中各部分的说明，请参阅[了解 ARM 模板的结构和语法](template-syntax.md)。
+
+<!-- Update_Description: update meta properties, wording update, update link -->

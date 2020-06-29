@@ -1,42 +1,38 @@
 ---
-title: Azure PowerShell 示例 - 创建完整的虚拟机规模集 | Microsoft Docs
-description: Azure PowerShell 示例
-services: virtual-machine-scale-sets
-documentationcenter: ''
-author: cynthn
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: virtual-machine-scale-sets
-ms.devlang: na
-ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: na
-origin.date: 05/29/2018
-ms.date: 05/16/2019
+title: Azure PowerShell 示例 - 创建完整的虚拟机规模集
+description: 此脚本创建一个运行 Windows Server 2016 的虚拟机规模集，其中配置并创建了各个资源。
+author: mimckitt
 ms.author: v-junlch
-ms.custom: mvc
-ms.openlocfilehash: 856a2bc7dc054c2a91a9fc03785f76b62788edc5
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.topic: sample
+ms.service: virtual-machine-scale-sets
+ms.subservice: powershell
+ms.date: 06/22/2020
+ms.reviewer: jushiman
+ms.custom: mimckitt
+ms.openlocfilehash: c8e1c0bb0f3422eb028a51a46bc2f2a033810515
+ms.sourcegitcommit: 43db4001be01262959400663abf8219e27e5cb8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "65917449"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85241484"
 ---
 # <a name="create-a-complete-virtual-machine-scale-set-with-powershell"></a>使用 PowerShell 创建完整的虚拟机规模集
 
 此脚本创建运行 Windows Server 2016 的虚拟机规模集。 单个资源是配置和创建的，而不是使用 [New-AzVmss 中提供的内置资源创建选项](powershell-sample-create-simple-scale-set.md)。 运行脚本后，可通过 RDP 访问 VM 实例。
 
 
-如果没有 Azure 订阅，可在开始前创建一个 [试用帐户](https://www.azure.cn/pricing/1rmb-trial) 。
+如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 
 [!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 ## <a name="sample-script"></a>示例脚本
+
 ```powershell
 # Provide your own secure password for use with the VM instances
 $cred = Get-Credential
+$Ptr = [System.Runtime.InteropServices.Marshal]::SecureStringToCoTaskMemUnicode($cred.Password)
+$Password = [System.Runtime.InteropServices.Marshal]::PtrToStringUni($Ptr)
+[System.Runtime.InteropServices.Marshal]::ZeroFreeCoTaskMemUnicode($Ptr)
 
 # Define variables for resource names
 $resourceGroupName = "myResourceGroup"
@@ -44,15 +40,15 @@ $scaleSetName = "myScaleSet"
 $location = "ChinaNorth"
 
 # Create a resource group
-New-AzureRmResourceGroup -ResourceGroupName $resourceGroupName -Location $location
+New-AzResourceGroup -ResourceGroupName $resourceGroupName -Location $location
 
 # Create a virtual network subnet
-$subnet = New-AzureRmVirtualNetworkSubnetConfig `
+$subnet = New-AzVirtualNetworkSubnetConfig `
   -Name "mySubnet" `
   -AddressPrefix 10.0.0.0/24
 
 # Create a virtual network
-$vnet = New-AzureRmVirtualNetwork `
+$vnet = New-AzVirtualNetwork `
   -ResourceGroupName $resourceGroupName `
   -Name "myVnet" `
   -Location $location `
@@ -60,21 +56,21 @@ $vnet = New-AzureRmVirtualNetwork `
   -Subnet $subnet
 
 # Create a public IP address
-$publicIP = New-AzureRmPublicIpAddress `
+$publicIP = New-AzPublicIpAddress `
   -ResourceGroupName $resourceGroupName `
   -Location $location `
   -AllocationMethod Static `
   -Name "myPublicIP"
 
 # Create a frontend and backend IP pool
-$frontendIP = New-AzureRmLoadBalancerFrontendIpConfig `
+$frontendIP = New-AzLoadBalancerFrontendIpConfig `
   -Name "myFrontEndPool" `
   -PublicIpAddress $publicIP
-$backendPool = New-AzureRmLoadBalancerBackendAddressPoolConfig -Name "myBackEndPool"
+$backendPool = New-AzLoadBalancerBackendAddressPoolConfig -Name "myBackEndPool"
 
 # Create a Network Address Translation (NAT) pool
 # A rule for Remote Desktop Protocol (RDP) traffic is created on TCP port 3389
-$inboundNATPool = New-AzureRmLoadBalancerInboundNatPoolConfig `
+$inboundNATPool = New-AzLoadBalancerInboundNatPoolConfig `
   -Name "myRDPRule" `
   -FrontendIpConfigurationId $frontendIP.Id `
   -Protocol TCP `
@@ -83,7 +79,7 @@ $inboundNATPool = New-AzureRmLoadBalancerInboundNatPoolConfig `
   -BackendPort 3389
 
 # Create the load balancer
-$lb = New-AzureRmLoadBalancer `
+$lb = New-AzLoadBalancer `
   -ResourceGroupName $resourceGroupName `
   -Name "myLoadBalancer" `
   -Location $location `
@@ -92,7 +88,7 @@ $lb = New-AzureRmLoadBalancer `
   -InboundNatPool $inboundNATPool
 
 # Create a load balancer health probe for TCP port 80
-Add-AzureRmLoadBalancerProbeConfig -Name "myHealthProbe" `
+Add-AzLoadBalancerProbeConfig -Name "myHealthProbe" `
   -LoadBalancer $lb `
   -Protocol TCP `
   -Port 80 `
@@ -102,7 +98,7 @@ Add-AzureRmLoadBalancerProbeConfig -Name "myHealthProbe" `
 # Create a load balancer rule to distribute traffic on port TCP 80
 # The health probe from the previous step is used to make sure that traffic is
 # only directed to healthy VM instances
-Add-AzureRmLoadBalancerRuleConfig `
+Add-AzLoadBalancerRuleConfig `
   -Name "myLoadBalancerRule" `
   -LoadBalancer $lb `
   -FrontendIpConfiguration $lb.FrontendIpConfigurations[0] `
@@ -110,13 +106,13 @@ Add-AzureRmLoadBalancerRuleConfig `
   -Protocol TCP `
   -FrontendPort 80 `
   -BackendPort 80 `
-  -Probe (Get-AzureRmLoadBalancerProbeConfig -Name "myHealthProbe" -LoadBalancer $lb)
+  -Probe (Get-AzLoadBalancerProbeConfig -Name "myHealthProbe" -LoadBalancer $lb)
 
 # Update the load balancer configuration
-Set-AzureRmLoadBalancer -LoadBalancer $lb
+Set-AzLoadBalancer -LoadBalancer $lb
 
 # Create IP address configurations
-$ipConfig = New-AzureRmVmssIpConfig `
+$ipConfig = New-AzVmssIpConfig `
   -Name "myIPConfig" `
   -LoadBalancerBackendAddressPoolsId $lb.BackendAddressPools[0].Id `
   -LoadBalancerInboundNatPoolsId $inboundNATPool.Id `
@@ -124,14 +120,14 @@ $ipConfig = New-AzureRmVmssIpConfig `
 
 # Create a config object
 # The VMSS config object stores the core information for creating a scale set
-$vmssConfig = New-AzureRmVmssConfig `
+$vmssConfig = New-AzVmssConfig `
     -Location $location `
     -SkuCapacity 2 `
-    -SkuName "Standard_A1_V2" `
+    -SkuName "Standard_DS2" `
     -UpgradePolicyMode "Automatic"
 
 # Reference a virtual machine image from the gallery
-Set-AzureRmVmssStorageProfile $vmssConfig `
+Set-AzVmssStorageProfile $vmssConfig `
   -OsDiskCreateOption "FromImage" `
   -ImageReferencePublisher "MicrosoftWindowsServer" `
   -ImageReferenceOffer "WindowsServer" `
@@ -139,20 +135,20 @@ Set-AzureRmVmssStorageProfile $vmssConfig `
   -ImageReferenceVersion "latest"
 
 # Set up information for authenticating with the virtual machine
-Set-AzureRmVmssOsProfile $vmssConfig `
-  -AdminUsername azureuser `
-  -AdminPassword "Azure123456!" `
+Set-AzVmssOsProfile $vmssConfig `
+  -AdminUsername $cred.UserName `
+  -AdminPassword $Password `
   -ComputerNamePrefix "myVM"
 
 # Attach the virtual network to the config object
-Add-AzureRmVmssNetworkInterfaceConfiguration `
+Add-AzVmssNetworkInterfaceConfiguration `
   -VirtualMachineScaleSet $vmssConfig `
   -Name "network-config" `
   -Primary $true `
   -IPConfiguration $ipConfig
 
 # Create the scale set with the config object (this step might take a few minutes)
-New-AzureRmVmss `
+New-AzVmss `
   -ResourceGroupName $resourceGroupName `
   -Name $scaleSetName `
   -VirtualMachineScaleSet $vmssConfig
@@ -168,10 +164,10 @@ Remove-AzResourceGroup -Name $resourceGroupName
 ## <a name="script-explanation"></a>脚本说明
 此脚本使用以下命令创建部署。 表中的每一项均链接到特定于命令的文档。
 
-| Command | 说明 |
+| 命令 | 注释 |
 |---|---|
 | [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) | 创建用于存储所有资源的资源组。 |
-| [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig) | 创建子网配置。 在虚拟网络创建过程中将使用此配置。 |
+| [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig) | 创建子网配置。 在虚拟网络创建过程中会使用此配置。 |
 | [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork) | 创建虚拟网络。 |
 | [New-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress) | 创建公共 IP 地址。 |
 | [New-AzLoadBalancerFrontendIpConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerfrontendipconfig) | 创建负载均衡器的前端 IP 配置。 |
@@ -192,6 +188,3 @@ Remove-AzResourceGroup -Name $resourceGroupName
 ## <a name="next-steps"></a>后续步骤
 有关 Azure PowerShell 模块的详细信息，请参阅 [Azure PowerShell 文档](https://docs.microsoft.com/powershell/azure/overview)。
 
-可以在 [Azure 虚拟机规模集文档](../powershell-samples.md)中找到其他虚拟机规模集 PowerShell 脚本示例。
-
-<!-- Update_Description: wording update -->

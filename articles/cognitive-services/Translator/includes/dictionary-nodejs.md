@@ -3,14 +3,16 @@ author: erhopf
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
-ms.author: erhopf
-ms.openlocfilehash: 093bd81806c158665064bc79450d1ce9374a7f10
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.author: v-tawe
+origin.date: 08/06/2019
+ms.openlocfilehash: 7ac752eb66be906ac2429a23fdc8cf5393cfa72c
+ms.sourcegitcommit: 43db4001be01262959400663abf8219e27e5cb8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80343024"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85241491"
 ---
+<!-- word updating -->
 [!INCLUDE [Prerequisites](prerequisites-nodejs.md)]
 
 [!INCLUDE [Set up and use environment variables](setup-env-variables.md)]
@@ -31,7 +33,7 @@ const uuidv4 = require('uuid/v4');
 
 ## <a name="set-the-subscription-key-and-endpoint"></a>设置订阅密钥和终结点
 
-此示例将尝试从以下环境变量中读取文本翻译订阅密钥和终结点：`TRANSLATOR_TEXT_SUBSCRIPTION_KEY` 和 `TRANSLATOR_TEXT_ENDPOINT`。 如果不熟悉环境变量，则可将 `subscriptionKey` 和 `endpoint` 设置为字符串并注释掉条件语句。
+此示例将尝试从以下环境变量中读取“翻译”订阅密钥和终结点：`TRANSLATOR_TEXT_SUBSCRIPTION_KEY` 和 `TRANSLATOR_TEXT_ENDPOINT`。 如果不熟悉环境变量，则可将 `subscriptionKey` 和 `endpoint` 设置为字符串并注释掉条件语句。
 
 将以下代码复制到项目中：
 
@@ -53,7 +55,7 @@ var endpoint = process.env[endpoint_var];
 使用通过请求模块提供的 `request()` 方法，可以以 `options` 对象的形式传递 HTTP 方法、URL、请求参数、标头和 JSON 正文。 在此代码片段中，我们将配置请求：
 
 >[!NOTE]
-> 有关终结点、路由和请求参数的详细信息，请参阅[文本翻译 API 3.0：字典查找](/cognitive-services/translator/reference/v3-0-dictionary-lookup)。
+> 有关终结点、路由和请求参数的详细信息，请参阅[翻译 3.0：字典查找](/cognitive-services/translator/reference/v3-0-dictionary-lookup)。
 
 ```javascript
 let options = {
@@ -98,7 +100,7 @@ request(options, function(err, res, body){
 
 ## <a name="put-it-all-together"></a>将其放在一起
 
-就是这样，你已构建了一个简单的程序。该程序可以调用文本翻译 API 并返回 JSON 响应。 现在，可以运行该程序了：
+就是这样，你已构建了一个简单的程序。该程序可以调用“翻译”并返回 JSON 响应。 现在，可以运行该程序了：
 
 ```console
 node alt-translations.js
@@ -140,7 +142,7 @@ node alt-translations.js
 
 ## <a name="next-steps"></a>后续步骤
 
-查看 API 参考，了解使用文本翻译 API 可以执行的所有操作。
+查看 API 参考，了解使用“翻译”可以执行的所有操作。
 
 > [!div class="nextstepaction"]
 > [API 参考](/cognitive-services/translator/reference/v3-0-reference)

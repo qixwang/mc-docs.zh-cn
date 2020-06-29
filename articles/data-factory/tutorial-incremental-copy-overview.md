@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 origin.date: 01/22/2018
-ms.date: 05/11/2020
-ms.openlocfilehash: 017b9e1f2581f1d7d0aaa808ffd12ee485bc6da8
-ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
+ms.date: 06/29/2020
+ms.openlocfilehash: aa94fbaddf17d9064b692eca7dc6d63f494c36a3
+ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82198101"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85321851"
 ---
 # <a name="incrementally-load-data-from-a-source-data-store-to-a-destination-data-store"></a>以增量方式将数据从源数据存储加载到目标数据存储
 
@@ -33,7 +33,7 @@ ms.locfileid: "82198101"
 
 有关分步说明，请参阅以下教程： 
 - [以增量方式将 Azure SQL 数据库中某个表的数据复制到 Azure Blob 存储](tutorial-incremental-copy-powershell.md)
-- [以增量方式将数据从本地 SQL Server 中的多个表复制到 Azure SQL 数据库](tutorial-incremental-copy-multiple-tables-powershell.md)
+- [以增量方式将数据 SQL Server 实例中的多个表复制到 Azure SQL 数据库](tutorial-incremental-copy-multiple-tables-powershell.md)
 
 对于模板，请参阅以下内容：
 - [使用控制表进行增量复制](solution-template-delta-copy-with-control-table.md)
@@ -58,7 +58,7 @@ ms.locfileid: "82198101"
 - [按 LastModifiedDate 复制新文件](solution-template-copy-new-files-lastmodifieddate.md)
 
 ## <a name="loading-new-files-only-by-using-time-partitioned-folder-or-file-name"></a>仅通过使用时间分区文件夹或文件名称来加载新文件。
-仅可以复制新文件，其中文件或文件夹已经过时间分区，时间片信息作为文件或文件夹名称的一部分（如 /yyyy/mm/dd/file.csv）。 这是以增量方式加载新文件的最高性能方法。 
+仅可以复制新文件，其中文件或文件夹已经过时间分区，时间片信息作为文件或文件夹名称的一部分（如 /yyyy/mm/dd/file.csv）。 这是用于增量加载新文件的性能最好的方法。 
 
 有关分步说明，请参阅以下教程： <br/>
 - [基于时间分区文件夹或文件名称以增量方式将新文件从 Azure Blob 存储复制到 Azure Blob 存储](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md)

@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 05475296e15f9ab2305f9b2e4aeb9b77afe453a5
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: b397005ec6fac339bdbca29d7bac2510e010777d
+ms.sourcegitcommit: 43db4001be01262959400663abf8219e27e5cb8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80343009"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85241523"
 ---
 [!INCLUDE [Prerequisites](prerequisites-java.md)]
 
@@ -126,7 +126,7 @@ public String Post() throws IOException {
 
 ## <a name="create-a-function-to-parse-the-response"></a>创建一个函数来分析响应
 
-这个简单的函数分析来自文本翻译服务的 JSON 响应并对其进行美化。
+这个简单的函数分析来自“翻译”服务的 JSON 响应并对其进行美化。
 
 ```java
 // This function prettifies the json response.

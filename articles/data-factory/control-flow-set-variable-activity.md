@@ -7,17 +7,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 origin.date: 04/07/2020
-ms.date: 05/11/2020
+ms.date: 06/29/2020
 author: WenJason
 ms.author: v-jay
 manager: digimobile
 ms.reviewer: maghan
-ms.openlocfilehash: 47ac92ed68c2b3abfbf15df0fb93fbd43b8dadca
-ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
+ms.openlocfilehash: 2a1afbb83819179040bfe23473e9461c3184dfc1
+ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82197785"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85323346"
 ---
 # <a name="set-variable-activity-in-azure-data-factory"></a>Azure 数据工厂中的设置变量活动
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -26,17 +26,17 @@ ms.locfileid: "82197785"
 
 ## <a name="type-properties"></a>Type 属性
 
-属性 | 说明 | 必须
+properties | 说明 | 必选
 -------- | ----------- | --------
 name | 管道中活动的名称 | 是
 description | 描述活动用途的文本 | 否
-type | 必须设置为“SetVariable”  | 是
-value | 变量将分配到的字符串文本或表达式对象值 | 是
-variableName | 此活动将设置的变量的名称 | 是
+type | 必须设置为“SetVariable” | 是
+值 | 变量分配到的字符串文本或表达式对象值 | 是
+variableName | 此活动设置的变量的名称 | 是
 
 ## <a name="incrementing-a-variable"></a>递增变量
 
-Azure 数据工厂中涉及变量的一种常见情况是在 until 或 foreach 活动中将变量用作迭代器。 在设置变量活动中，不能引用在 `value` 字段中设置的变量。 若要解决此限制，请设置一个临时变量，然后创建第二个设置变量活动。 第二个设置变量活动将迭代器的值设置为临时变量。 
+涉及 Azure 数据工厂中的变量的常见情景是将变量用作 until 或 foreach 活动中的迭代器。 在设置变量活动中，无法引用在 `value` 字段中设置的变量。 若要解决此限制，请设置一个临时变量，然后创建第二个设置变量活动。 第二个设置变量活动会将迭代器的值设置为临时变量。 
 
 下面是此模式的示例：
 

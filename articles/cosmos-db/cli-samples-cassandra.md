@@ -5,15 +5,15 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: sample
-origin.date: 09/25/2019
-ms.date: 10/28/2019
+origin.date: 06/03/2020
+ms.date: 06/22/2020
 ms.author: v-yeche
-ms.openlocfilehash: 25967e9c7747616d111125a1630f938782533675
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: d28adc5f416a39f3c53431228b22e64dcb011c89
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "72970284"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098703"
 ---
 # <a name="azure-cli-samples-for-azure-cosmos-db-cassandra-api"></a>适用于 Azure Cosmos DB Cassandra API 的 Azure CLI 示例
 
@@ -28,7 +28,7 @@ ms.locfileid: "72970284"
 | [使用 IP 防火墙保护](scripts/cli/common/ipfirewall.md?toc=%2fcli%2ftoc.json)| 创建配置了 IP 防火墙的 Cosmos 帐户。|
 | [使用服务终结点保护新帐户](scripts/cli/common/service-endpoints.md?toc=%2fcli%2ftoc.json)| 使用服务终结点创建 Cosmos 帐户并确保其安全。|
 | [使用服务终结点保护现有帐户](scripts/cli/common/service-endpoints-ignore-missing-vnet.md?toc=%2fcli%2ftoc.json)| 最终配置子网后，更新 Cosmos 帐户以使用服务终结点进行保护。|
+| [锁定资源以防止将其删除](scripts/cli/cassandra/lock.md?toc=%2fcli%2ftoc.json)| 使用资源锁防止删除资源。|
 |||
 
-<!--Update_Description: new articles on cli samples cassandra -->
-<!--New.date: 10/28/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-origin.date: 3/18/2019
-ms.date: 05/11/2020
-ms.openlocfilehash: bfb620c3f76834324c84e27ab0beda928906b6cd
-ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
+origin.date: 6/10/2019
+ms.date: 06/29/2020
+ms.openlocfilehash: 7d6a72f34ad84b536866d5422ece8aa0ef4c7c50
+ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82198132"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85321983"
 ---
 # <a name="incrementally-copy-new-and-changed-files-based-on-lastmodifieddate-by-using-the-copy-data-tool"></a>使用复制数据工具根据 LastModifiedDate 以增量方式复制新的和已更改的文件
 
@@ -151,7 +151,7 @@ ms.locfileid: "82198132"
 
 10. 请注意，界面中已自动选择左侧的“监视”选项卡。  应用程序将切换到“监视”选项卡。  请查看管道的状态。 选择“刷新”可刷新列表。  选择“管道名称”  下的链接，查看活动运行详细信息或重新运行管道。
 
-    ![刷新列表并查看活动运行详细信息](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs1.png)
+    ![刷新列表并查看活动运行详细信息](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs-1.png)
 
 11. 该管道只包含一个活动（复制活动），因此只显示了一个条目。 有关复制操作的详细信息，请选择“活动名称”列中的“详细信息”链接（眼镜图标）。   有关属性的详细信息，请参阅[复制活动概述](copy-activity-overview.md)。
 
@@ -166,8 +166,6 @@ ms.locfileid: "82198132"
     ![创建 file1.txt 并将其上传到源容器](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs3-1.png)
 
 13. 若要回到“管道运行”视图，请选择“所有管道运行”，然后等待再次自动触发同一管道   。  
-
-    ![选择“所有管道运行”](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs4.png)
 
 14. 当第二个管道运行完成时，请按照前述步骤查看活动运行详情。  
 

@@ -5,14 +5,14 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 04/27/2020
-ms.date: 06/15/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 3e65868faee7e4a188c5ee04eb0d8ff6b44bb973
-ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
+ms.openlocfilehash: d4706796ae8311f5bcdf0224a09b4acc5231a65d
+ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84723489"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85323265"
 ---
 # <a name="optimize-development-and-testing-cost-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中优化开发和测试成本
 

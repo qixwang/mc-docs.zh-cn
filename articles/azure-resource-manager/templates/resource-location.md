@@ -3,23 +3,23 @@ title: 模板资源位置
 description: 介绍如何在 Azure 资源管理器模板中设置资源位置。
 ms.topic: conceptual
 origin.date: 09/04/2019
-ms.date: 03/23/2020
+ms.date: 06/22/2020
 ms.author: v-yeche
-ms.openlocfilehash: 3128a24d06137ed1de116b5a7cb4a544f322657d
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: cc0217212b8226c15fccd7d9b19b196ed6b20cc8
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79543896"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098609"
 ---
 <!--Verify successfully-->
-# <a name="set-resource-location-in-resource-manager-template"></a>在资源管理器模板中设置资源位置
+# <a name="set-resource-location-in-arm-template"></a>在 ARM 模板中设置资源位置
 
-部署模板时，必须提供每个资源的位置。 该位置不必与资源组位置相同。
+部署 Azure 资源管理器 (ARM) 模板时，必须提供每个资源的位置。 该位置不必与资源组位置相同。
 
 ## <a name="get-available-locations"></a>获取可用位置
 
-不同的位置中支持不同的资源类型。 若要获取资源类型支持的位置，请使用 Azure PowerShell 或 Azure CLI。
+不同位置支持的资源类型不一样。 若要获取资源类型支持的位置，请使用 Azure PowerShell 或 Azure CLI。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -45,11 +45,9 @@ az provider show \
 
 以下示例显示了部署到作为参数指定的位置的存储帐户：
 
-<!--Not Available on  "Standard_ZRS"-->
-
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "storageAccountType": {
@@ -89,6 +87,7 @@ az provider show \
     }
   ],
   "outputs": {
+    "storageAccountEndPoint": "https://core.chinacloudapi.cn/",
     "storageAccountName": {
       "type": "string",
       "value": "[variables('storageAccountName')]"
@@ -99,7 +98,7 @@ az provider show \
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关模板函数的完整列表，请参阅 [Azure 资源管理器模板函数](template-functions.md)。
-* 有关模板文件的详细信息，请参阅[了解 Azure 资源管理器模板的结构和语法](template-syntax.md)。
+* 有关模板函数的完整列表，请参阅 [Azure Resource Manager 模板函数](template-functions.md)。
+* 若要详细了解模板文件，请参阅[了解 ARM 模板的结构和语法](template-syntax.md)。
 
 <!-- Update_Description: update meta properties, wording update, update link -->

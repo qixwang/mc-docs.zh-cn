@@ -2,15 +2,17 @@
 author: erhopf
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 08/06/2019
-ms.author: erhopf
-ms.openlocfilehash: 0e326f5b319df7267c3be39eae6630e4fddf7177
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 06/22/2020
+origin.date: 08/06/2019
+ms.author: v-tawe
+ms.openlocfilehash: 92a2bcc591ccd7b4c24356d17110e903a16dcf91
+ms.sourcegitcommit: 43db4001be01262959400663abf8219e27e5cb8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80343005"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85241521"
 ---
+<!-- word updating-->
 [!INCLUDE [Prerequisites](prerequisites-go.md)]
 
 [!INCLUDE [Setup and use environment variables](setup-env-variables.md)]
@@ -35,7 +37,7 @@ import (
 
 ## <a name="create-the-main-function"></a>创建 main 函数
 
-此示例将尝试从以下环境变量中读取文本翻译订阅密钥和终结点：`TRANSLATOR_TEXT_SUBSCRIPTION_KEY` 和 `TRANSLATOR_TEXT_ENDPOINT`。 如果不熟悉环境变量，则可将 `subscriptionKey` 和 `endpoint` 设置为字符串并注释掉条件语句。
+此示例将尝试从以下环境变量中读取“翻译”订阅密钥和终结点：`TRANSLATOR_TEXT_SUBSCRIPTION_KEY` 和 `TRANSLATOR_TEXT_ENDPOINT`。 如果不熟悉环境变量，则可将 `subscriptionKey` 和 `endpoint` 设置为字符串并注释掉条件语句。
 
 将以下代码复制到项目中：
 
@@ -67,7 +69,7 @@ func main() {
 
 ## <a name="create-a-function-to-detect-the-text-language"></a>创建文本语言检测函数
 
-创建文本语言检测函数。 此函数将接受一个参数，即文本翻译订阅密钥。
+创建文本语言检测函数。 此函数将接受一个参数，即“翻译”订阅密钥。
 
 ```go
 func detect(subscriptionKey string, uri string) {
@@ -90,7 +92,7 @@ u.RawQuery = q.Encode()
 ```
 
 >[!NOTE]
-> 有关终结点、路由和请求参数的详细信息，请参阅[文本翻译 API 3.0：检测](/cognitive-services/translator/reference/v3-0-detect)。
+> 有关终结点、路由和请求参数的详细信息，请参阅[翻译 3.0：检测](/cognitive-services/translator/reference/v3-0-detect)。
 
 ## <a name="create-a-struct-for-your-request-body"></a>创建请求正文的结构
 

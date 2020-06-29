@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: tutorial
-ms.date: 05/29/2020
+ms.date: 06/22/2020
 ms.author: v-junlch
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bbfda0e691f97ad862f8babfd7e7811bbac484d2
-ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
+ms.openlocfilehash: fc5edfb1329bce05f06bef2a2727e1ada1250127
+ms.sourcegitcommit: fac10504efdfd3806dead4b74ca6ae5fcb5ea906
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84186688"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85129723"
 ---
 # <a name="tutorial-bulk-invite-azure-ad-b2b-collaboration-users"></a>教程：批量邀请 Azure AD B2B 协作用户
 
@@ -52,7 +52,7 @@ ms.locfileid: "84186688"
 
 ## <a name="prerequisites"></a>先决条件
 
-需要两个或更多可向其发送邀请的测试电子邮件帐户。 这些帐户必须来自组织外部。 可使用任意类型的帐户，包括 gmail.com 或 outlook.com 地址等社交帐户。
+需要两个或更多可向其发送邀请的测试电子邮件帐户。 这些帐户必须来自组织外部。 
 
 ## <a name="invite-guest-users-in-bulk"></a>批量邀请来宾用户
 

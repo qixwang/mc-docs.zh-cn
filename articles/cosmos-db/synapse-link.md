@@ -5,15 +5,15 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 05/19/2020
-ms.date: 06/08/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
 ms.reviewer: sngun
-ms.openlocfilehash: cfcb95accdb47fc36a9c54d570093d05155cb605
-ms.sourcegitcommit: 8a2fbc0eae8d8f7297f5334f508ff868b4077f32
+ms.openlocfilehash: b6dc5ea59797012f5c12effbc045c2e83763ea13
+ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84326278"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85323325"
 ---
 <!--Verified successfully-->
 # <a name="what-is-azure-synapse-link-for-azure-cosmos-db-preview"></a>什么是 Azure Synapse Link for Azure Cosmos DB（预览版）？

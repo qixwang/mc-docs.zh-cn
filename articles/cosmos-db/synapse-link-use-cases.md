@@ -5,14 +5,14 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 05/19/2020
-ms.date: 06/08/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: a476f253e68c14f1c411fddc295528de6b7ea049
-ms.sourcegitcommit: 8a2fbc0eae8d8f7297f5334f508ff868b4077f32
+ms.openlocfilehash: 4f72a93ffa20b691be610b27b5d1a1cfe68f209b
+ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84326281"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85323326"
 ---
 <!--Verified successfully-->
 # <a name="azure-synapse-link-for-azure-cosmos-db-near-real-time-analytics-use-cases"></a>Azure Synapse Link for Azure Cosmos DB：准实时分析用例
@@ -126,7 +126,7 @@ Synapse Link for Azure Cosmos DB 用例：
 
     * Azure Cosmos DB 事务存储提供了另外三个选项，而不会走非常一致性和最终一致性这两种极端，从而实现最接近近业务需求的[可用性和性能权衡](consistency-levels-tradeoffs.md)。
 
-* CompanyXYZ 的供应链合作伙伴的流量模式波动很大，范围从数百到数百万个请求/秒，因此库存管理平台需要处理流量意外突发的情况。  使用 Azure Cosmos DB 的好处：
+* CompanyXYZ 的供应链合作伙伴具有较大变动的流量模式，范围从数百到数百万个请求，因此库存管理平台需要处理流量中的意外情况。  使用 Azure Cosmos DB 的好处：
 
     * Azure Cosmos DB 的事务存储使用水平分区支持存储和吞吐量的弹性可伸缩性。 在 Autopilot 模式下配置的容器和数据库将会根据应用程序的需求自动即时缩放预配的吞吐量，而不影响多区域工作负荷的可用性、延迟、吞吐量或性能。
 

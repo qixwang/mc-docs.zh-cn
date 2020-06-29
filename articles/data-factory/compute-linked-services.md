@@ -9,14 +9,14 @@ ms.topic: conceptual
 author: WenJason
 ms.author: v-jay
 manager: digimobile
-origin.date: 10/10/2019
-ms.date: 05/11/2020
-ms.openlocfilehash: 0a5658d7dfd53b59d31cdc65222a8360874ebc0c
-ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
+origin.date: 05/08/2019
+ms.date: 06/29/2020
+ms.openlocfilehash: 4fd185ac35930b06e2e9ce12e13646903ae692d2
+ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82197940"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85321485"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Azure 数据工厂支持的计算环境
 
@@ -32,13 +32,27 @@ ms.locfileid: "82197940"
 | [Azure Batch](#azure-batch-linked-service)                   | [自定义](transform-data-using-dotnet-custom-activity.md)     |
 | [Azure SQL](#azure-sql-database-linked-service)、[Azure SQL 数据仓库](#azure-sql-data-warehouse-linked-service)、[SQL Server](#sql-server-linked-service) | [存储过程](transform-data-using-stored-procedure.md) |
 
-## <a name="on-demand-hdinsight-compute-environment"></a>按需 HDInsight 计算环境
+## <a name="hdinsight-compute-environment"></a>HDInsight 计算环境
+
+请参阅下表，详细了解按需和 BYOC（自带计算）环境中的配置支持的存储链接服务类型。
+
+| 计算链接服务中 | 属性名称                | 说明                                                  | Blob | ADLS Gen2 | Azure SQL DB |
+| ------------------------- | ---------------------------- | ------------------------------------------------------------ | ---- | --------- | ------------ |
+| 按需                 | linkedServiceName            | 由按需群集用于存储和处理数据的 Azure 存储链接服务。 | 是  | 是       | 否           |
+|                           | additionalLinkedServiceNames | 指定 HDInsight 链接服务的其他存储帐户，使数据工厂服务能够代为注册它们。 | 是  | 否        | 否           |
+|                           | hcatalogLinkedServiceName    | 指向 HCatalog 数据库的 Azure SQL 链接服务的名称。 将 Azure SQL 数据库用作元存储以创建按需 HDInsight 群集。 | 否   | 否        | 是          |
+| BYOC                      | linkedServiceName            | Azure 存储链接服务引用。                | 是  | 是       | 否           |
+|                           | additionalLinkedServiceNames | 指定 HDInsight 链接服务的其他存储帐户，使数据工厂服务能够代为注册它们。 | 否   | 否        | 否           |
+|                           | hcatalogLinkedServiceName    | 指向 HCatalog 数据库的 Azure SQL 链接服务的引用。 | 否   | 否        | 否           |
+
+### <a name="azure-hdinsight-on-demand-linked-service"></a>Azure HDInsight 按需链接服务
 
 在此类型的配置中，计算环境由 Azure 数据工厂服务完全管理。 作业提交到进程数据前，数据工厂服务会自动创建计算环境，作业完成后则自动将其删除。 可以为按需计算环境创建并配置链接服务，以及控制作业执行、群集管理和引导操作的粒度设置。
 
-## <a name="azure-hdinsight-on-demand-linked-service"></a>Azure HDInsight 按需链接服务
+> [!NOTE]
+> 按需配置目前仅支持 Azure HDInsight 群集。
 
-Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据。 群集创建在与该群集相关联的存储帐户（JSON 中的 linkedServiceName 属性）所在的同一区域中。 存储帐户必须是通用的标准 Azure 存储帐户。 
+Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据。 群集创建在与该群集相关联的存储帐户（JSON 中的 linkedServiceName 属性）所在的同一区域中。 存储帐户 `must` 是通用的标准 Azure 存储帐户。 
 
 请注意以下关于按需 HDInsight 链接服务的**重要**事项：
 
@@ -50,9 +64,9 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 > [!IMPORTANT]
 > 按需预配 Azure HDInsight 群集通常需要 **20 分钟**或更长时间。
 
-### <a name="example"></a>示例
+#### <a name="example"></a>示例
 
-以下 JSON 定义基于 Linux 的按需 HDInsight 链接服务。 数据工厂服务自动创建基于 Linux 的  HDInsight 群集来处理所需的活动。 
+以下 JSON 定义基于 Linux 的按需 HDInsight 链接服务。 数据工厂服务自动创建基于 Linux 的 HDInsight 群集来处理所需的活动。 
 
 ```json
 {
@@ -91,7 +105,7 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 >
 > 随着运行的活动越来越多，Azure Blob 存储中会出现大量的容器。 如果不需要使用它们对作业进行故障排除，则可能需要删除它们以降低存储成本。 这些容器的名称遵循 `adf**yourdatafactoryname**-**linkedservicename**-datetimestamp`模式。 使用 [Microsoft 存储资源管理器](https://storageexplorer.com/) 等工具删除 Azure Blob 存储中的容器。
 
-### <a name="properties"></a>属性
+#### <a name="properties"></a>属性
 
 | 属性                     | 说明                              | 必须 |
 | ---------------------------- | ---------------------------------------- | -------- |
@@ -122,7 +136,7 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 > [!IMPORTANT]
 > 目前，HDInsight 链接服务不支持 HBase、交互式查询 (Hive LLAP)、Storm。 
 
-#### <a name="additionallinkedservicenames-json-example"></a>additionalLinkedServiceNames JSON 示例
+* additionalLinkedServiceNames JSON 示例
 
 ```json
 "additionalLinkedServiceNames": [{
@@ -131,9 +145,9 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 }]
 ```
 
-### <a name="service-principal-authentication"></a>服务主体身份验证
+#### <a name="service-principal-authentication"></a>服务主体身份验证
 
-按需 HDInsight 链接服务要求进行服务主体身份验证，以代表你创建 HDInsight 群集。 要使用服务主体身份验证，请在 Azure Active Directory (Azure AD) 中注册应用程序实体，并向其授予在其中创建 HDInsight 群集的订阅或资源组的“参与者”  角色。 有关详细步骤，请参阅[使用门户创建可访问资源的 Azure Active Directory 应用程序和服务主体](/azure-resource-manager/resource-group-create-service-principal-portal)。 记下下面的值，这些值用于定义链接服务：
+按需 HDInsight 链接服务要求进行服务主体身份验证，以代表你创建 HDInsight 群集。 要使用服务主体身份验证，请在 Azure Active Directory (Azure AD) 中注册应用程序实体，并向其授予在其中创建 HDInsight 群集的订阅或资源组的“参与者”角色。 有关详细步骤，请参阅[使用门户创建可访问资源的 Azure Active Directory 应用程序和服务主体](/azure-resource-manager/resource-group-create-service-principal-portal)。 记下下面的值，这些值用于定义链接服务：
 
 - 应用程序 ID
 - 应用程序密钥 
@@ -147,7 +161,7 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 | **servicePrincipalKey** | 指定应用程序的密钥。           | 是      |
 | **tenant**              | 指定应用程序的租户信息（域名或租户 ID）。 可将鼠标悬停在 Azure 门户右上角进行检索。 | 是      |
 
-### <a name="advanced-properties"></a>高级属性
+#### <a name="advanced-properties"></a>高级属性
 
 也可以为按需 HDInsight 群集的粒度配置指定以下属性。
 
@@ -162,7 +176,7 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 | stormConfiguration     | 为 HDInsight 群集指定 Storm 配置参数 (storm-site.xml)。 | 否       |
 | yarnConfiguration      | 为 HDInsight 群集指定 Yarn 配置参数 (yarn-site.xml)。 | 否       |
 
-#### <a name="example--on-demand-hdinsight-cluster-configuration-with-advanced-properties"></a>示例 - 具有高级属性的按需 HDInsight 群集配置
+* 示例 - 具有高级属性的按需 HDInsight 群集配置
 
 ```json
 {
@@ -216,7 +230,7 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 }
 ```
 
-### <a name="node-sizes"></a>节点大小
+#### <a name="node-sizes"></a>节点大小
 可使用以下属性指定头节点、数据节点和 Zookeeper 节点的大小： 
 
 | 属性          | 说明                              | 必须 |
@@ -225,8 +239,7 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 | dataNodeSize      | 指定数据节点的大小。 默认值为：Standard_D3。 | 否       |
 | zookeeperNodeSize | 指定 ZooKeeper 节点的大小。 默认值为：Standard_D3。 | 否       |
 
-#### <a name="specifying-node-sizes"></a>指定节点大小
-若要了解需要为在上面的部分中提到的属性指定的字符串值，请参阅[虚拟机的大小](../virtual-machines/linux/sizes.md)。 这些值需要符合文章中所引用的 **CMDLET 和 API**。 如文章中所示，大尺寸（默认）的数据节点拥有 7 GB 的内存，这可能无法满足具体方案的需求。 
+* 指定节点大小 若要了解需要为在上面的部分中提到的属性指定的字符串值，请参阅[虚拟机的大小](../virtual-machines/linux/sizes.md)。 这些值需要符合文章中所引用的 **CMDLET 和 API**。 如文章中所示，大尺寸（默认）的数据节点拥有 7 GB 的内存，这可能无法满足具体方案的需求。 
 
 如果想要创建 D4 大小的头节点和辅助进程节点，请将 **Standard_D4** 指定为 headNodeSize 和 dataNodeSize 属性的值。 
 
@@ -235,9 +248,9 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 "dataNodeSize": "Standard_D4",
 ```
 
-如果为这些属性指定了错误的值，则可能会收到以下错误：  未能创建群集。 异常：无法完成群集创建操作。 操作失败，代码为 '400'。 群集保持为 'Error' 状态。 消息：'PreClusterCreationValidationFailure'。 收到此错误时，请确保使用的是[虚拟机的大小](../virtual-machines/linux/sizes.md)一文中的表中的 **CMDLET 和 API** 名称。        
+如果为这些属性指定了错误的值，则可能会收到以下错误：未能创建群集。 异常：无法完成群集创建操作。 操作失败，代码为 '400'。 群集保持为 'Error' 状态。 消息：'PreClusterCreationValidationFailure'。 收到此错误时，请确保使用的是[虚拟机的大小](../virtual-machines/linux/sizes.md)一文中的表中的 **CMDLET 和 API** 名称。        
 
-## <a name="bring-your-own-compute-environment"></a>自带计算环境
+### <a name="bring-your-own-compute-environment"></a>自带计算环境
 在此类型的配置中，用户可在数据工厂中将现有的计算环境注册为链接服务。 该计算环境由用户进行管理，数据工厂服务用它来执行活动。
 
 此类型的配置支持以下计算环境：
@@ -284,7 +297,7 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 | username          | 指定用于连接到现有 HDInsight 群集的用户的名称。 | 是      |
 | password          | 指定用户帐户的密码。                       | 是      |
 | linkedServiceName | Azure 存储链接服务（指 HDInsight 群集使用的 Azure Blob 存储）的名称。 <p>目前，不能为此属性指定 Azure Data Lake Storage（第 2 代）链接服务。 如果 HDInsight 群集有权访问 Data Lake Store，则可从 Hive/Pig 脚本访问 Azure Data Lake Storage（第 2 代）中的数据。 </p> | 是      |
-| isEspEnabled      | 默认值为“false”  。 | 否       |
+| isEspEnabled      | 默认值为“false”。 | 否       |
 | connectVia        | 用于将活动分发到此链接服务的集成运行时。 可以使用 Azure 集成运行时或自托管集成运行时。 如果未指定，则使用默认 Azure Integration Runtime。 <br />对于启用了企业安全性套餐 (ESP) 的 HDInsight 群集，请使用自承载集成运行时，该运行时具有群集的视线，或者应该与 ESP HDInsight 群集部署在同一虚拟网络内。 | 否       |
 
 > [!IMPORTANT]
@@ -305,7 +318,7 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 
 * [Azure Batch 基础知识](../batch/batch-technical-overview.md) - Azure Batch 服务的概述。
 * [New-AzBatchAccount](https://docs.microsoft.com/powershell/module/az.batch/New-azBatchAccount) cmdlet 以创建 Azure Batch 帐户（或）[Azure 门户](../batch/batch-account-create-portal.md)以使用 Azure 门户创建 Azure Batch 帐户。 请参阅 [Using PowerShell to manage Azure Batch Account](https://blogs.technet.com/b/windowshpc/archive/2014/10/28/using-azure-powershell-to-manage-azure-batch-account.aspx)（使用 Azure PowerShell 管理 Azure Batch 帐户）一文，了解有关使用此 cmdlet 的详细说明。
-* [New-AzBatchPool](https://docs.microsoft.com/powershell/module/az.batch/New-AzBatchPool) cmdlet 以创建 Azure Batch 池。
+* [New-AzBatchPool](https://docs.microsoft.com/powershell/module/az.batch/New-AzBatchPool) cmdlet - 创建 Azure Batch 池。
 
 ### <a name="example"></a>示例
 
@@ -361,13 +374,13 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 
 ## <a name="azure-function-linked-service"></a>Azure 函数链接服务
 
-创建 Azure 函数链接服务，并将其与 [Azure 函数活动](control-flow-azure-function-activity.md)一起使用，以在数据工厂管道中运行 Azure Functions。 Azure 函数的返回类型必须是有效的 `JObject`。 （请记住：[JArray](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_Linq_JArray.htm) 不  是 `JObject`。）除了 `JObject` 之外的任何返回类型都将失败，并且会引发用户错误*响应内容不是有效的 JObject*。
+创建 Azure 函数链接服务，并将其与 [Azure 函数活动](control-flow-azure-function-activity.md)一起使用，以在数据工厂管道中运行 Azure Functions。 Azure 函数的返回类型必须是有效的 `JObject`。 （请记住：[JArray](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_Linq_JArray.htm) 不是 `JObject`。）除了 `JObject` 之外的任何返回类型都将失败，并且会引发用户错误*响应内容不是有效的 JObject*。
 
 | **属性** | **说明** | **必需** |
 | --- | --- | --- |
 | type   | type 属性必须设置为：**AzureFunction** | 是 |
-| 函数应用 URL | Azure 函数应用的 URL。 格式为 `https://<accountname>.chinacloudsites.cn`。 在 Azure 门户中查看函数应用时，此 URL 是 URL  部分下的值  | 是 |
-| 函数密钥 | Azure 函数的访问密钥。 单击相应函数的“管理”  部分，并复制“函数密钥”  或“主机密钥”  。 在此处了解详细信息：[Azure Functions HTTP 触发器和绑定](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) | 是 |
+| 函数应用 URL | Azure 函数应用的 URL。 格式为 `https://<accountname>.chinacloudsites.cn`。 在 Azure 门户中查看函数应用时，此 URL 是 URL 部分下的值  | 是 |
+| 函数密钥 | Azure 函数的访问密钥。 单击相应函数的“管理”部分，并复制“函数密钥”或“主机密钥”。 在此处了解详细信息：[Azure Functions HTTP 触发器和绑定](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) | 是 |
 |   |   |   |
 
 ## <a name="next-steps"></a>后续步骤

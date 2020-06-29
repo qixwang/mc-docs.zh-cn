@@ -5,14 +5,14 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 04/28/2020
-ms.date: 06/22/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: ed5dc0ed31d77bf3e71132fc687208cee3a89b9e
-ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
+ms.openlocfilehash: 7f3528b42464568cefcad17c99ee06695308815a
+ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85098615"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85320754"
 ---
 # <a name="frequently-asked-questions-about-the-table-api-in-azure-cosmos-db"></a>有关 Azure Cosmos DB 中的表 API 的常见问题解答
 
@@ -296,7 +296,8 @@ Azure Cosmos DB 是基于 SLA 的系统，在可用性、延迟和吞吐量方�
 
 * [Azure 支持](https://support.azure.cn/support/contact/)
 
-<!--Not Available on * [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-cosmosdb)-->
+* [Microsoft 问答页](https://docs.microsoft.com/answers/topics/azure-cosmos-db.html)
+
 
 ## <a name="next-steps"></a>后续步骤
 

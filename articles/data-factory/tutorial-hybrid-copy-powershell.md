@@ -11,19 +11,19 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 origin.date: 01/22/2018
-ms.date: 05/11/2020
-ms.openlocfilehash: 19a33e89a0e01df8af60886d7239dbaba950b268
-ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
+ms.date: 06/29/2020
+ms.openlocfilehash: 6f96229da9355042767dc37624efd0cef1e330be
+ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82198148"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85318972"
 ---
-# <a name="tutorial-copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>教程：将数据从本地 SQL Server 数据库复制到 Azure Blob 存储
+# <a name="tutorial-copy-data-from-a-sql-server-database-to-azure-blob-storage"></a>教程：将数据从 SQL Server 数据库复制到 Azure Blob 存储
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-本教程使用 Azure PowerShell 创建一个数据工厂管道，用于将数据从本地 SQL Server 数据库复制到 Azure Blob 存储。 同时创建一个自承载 Integration Runtime，用其在本地数据存储和云数据存储之间移动数据。
+本教程使用 Azure PowerShell 创建一个数据工厂管道，用于将数据从 SQL Server 数据库复制到 Azure Blob 存储。 同时创建一个自承载 Integration Runtime，用其在本地数据存储和云数据存储之间移动数据。
 
 > [!NOTE]
 > 本文不提供数据工厂服务的详细介绍。 有关详细信息，请参阅 [Azure 数据工厂简介](introduction.md)。
@@ -49,7 +49,7 @@ ms.locfileid: "82198148"
 若要查看你在订阅中拥有的权限，请转到 Azure 门户，选择右上角的用户名，然后选择“权限”。 如果可以访问多个订阅，请选择相应的订阅。 有关如何将用户添加到角色的示例说明，请参阅[使用 RBAC 和 Azure 门户管理访问权限](../role-based-access-control/role-assignments-portal.md)一文。
 
 ### <a name="sql-server-2014-2016-and-2017"></a>SQL Server 2014、2016 和 2017
-在本教程中，请将本地 SQL Server 数据库用作源数据存储。 首先，在本教程中创建的数据工厂中的管道将数据从这个本地 SQL Server 数据库（源）复制到 Azure Blob 存储（接收器）。 然后，你可以在 SQL Server 数据库中创建名为 **emp** 的表，并向表中插入几个示例条目。
+在本教程中，需将 SQL Server 数据库用作源数据存储。 在本教程中创建的数据工厂中的管道将数据从这个 SQL Server 数据库（源）复制到 Azure Blob 存储（接收器）。 然后，你可以在 SQL Server 数据库中创建名为 **emp** 的表，并向表中插入几个示例条目。
 
 1. 启动 SQL Server Management Studio。 如果此软件尚未安装在计算机上，请访问[下载 SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)。
 
@@ -77,7 +77,7 @@ ms.locfileid: "82198148"
 
 
 ### <a name="azure-storage-account"></a>Azure 存储帐户
-在本教程中，请使用常规用途的 Azure 存储帐户（具体说来就是 Azure Blob 存储）作为目标/接收器数据存储。 如果没有常规用途的 Azure 存储帐户，请参阅[创建存储帐户](../storage/common/storage-account-create.md)。 在本教程中创建的数据工厂中的管道将数据从本地 SQL Server 数据库（源）复制到这个 Azure Blob 存储（接收器）。 
+在本教程中，请使用常规用途的 Azure 存储帐户（具体说来就是 Azure Blob 存储）作为目标/接收器数据存储。 如果没有常规用途的 Azure 存储帐户，请参阅[创建存储帐户](../storage/common/storage-account-create.md)。 在本教程中创建的数据工厂中的管道将数据从 SQL Server 数据库（源）复制到此 Azure Blob 存储（接收器）。 
 
 #### <a name="get-storage-account-name-and-account-key"></a>获取存储帐户名称和帐户密钥
 在本教程中，请使用 Azure 存储帐户的名称和密钥。 通过以下步骤获取存储帐户的名称和密钥：
@@ -302,7 +302,7 @@ ms.locfileid: "82198148"
 
     g. 输入与用户名关联的密码。
 
-    h.如果该值不存在，请单击“添加行”。 若要确认 Integration Runtime 能否连接到 SQL Server，请选择“测试”。  
+    h. 若要确认 Integration Runtime 能否连接到 SQL Server，请选择“测试”。  
     ![连接成功](media/tutorial-hybrid-copy-powershell/config-manager-diagnostics-tab.png)
 
     如果连接成功，则会显示绿色复选图标。 否则，会收到与故障相关的错误消息。 请解决问题，确保 Integration Runtime 可以连接到 SQL Server 实例。
@@ -310,7 +310,7 @@ ms.locfileid: "82198148"
     记下所有上述值，在本教程的后面部分使用。
 
 ## <a name="create-linked-services"></a>创建链接服务
-若要将数据存储和计算服务链接到数据工厂，请在数据工厂中创建链接服务。 在本教程中，请将 Azure 存储帐户和本地 SQL Server 实例链接到数据存储。 链接服务包含的连接信息可供数据工厂服务用来在运行时连接到它们。
+若要将数据存储和计算服务链接到数据工厂，请在数据工厂中创建链接服务。 在本教程中，请将 Azure 存储帐户和 SQL Server 实例链接到数据存储。 链接服务包含的连接信息可供数据工厂服务用来在运行时连接到它们。
 
 ### <a name="create-an-azure-storage-linked-service-destinationsink"></a>创建 Azure 存储链接服务（目标/接收器）
 在此步骤中，请将 Azure 存储帐户链接到数据工厂。
@@ -318,7 +318,7 @@ ms.locfileid: "82198148"
 1. 在 *C:\ADFv2Tutorial* 文件夹中，创建包含以下代码的名为 *AzureStorageLinkedService.json* 的 JSON 文件。 如果 *ADFv2Tutorial* 文件夹不存在，请创建。  
 
     > [!IMPORTANT]
-    > 在保存文件之前，请将 \<accountName> 和 \<accountKey> 分别替换为 Azure 存储帐户的名称和密钥。 已在[先决条件](#get-storage-account-name-and-account-key)部分记下它们。
+    > 在保存文件之前，请将 \<accountName> 和 \<accountKey> 替换为存储帐户的名称和密钥。 已在[先决条件](#get-storage-account-name-and-account-key)部分记下它们。
 
    ```json
     {
@@ -356,7 +356,7 @@ ms.locfileid: "82198148"
     如果收到“找不到文件”错误，请运行 `dir` 命令，确认该文件是否存在。 如果文件名的扩展为 *.txt*（例如 AzureStorageLinkedService.json.txt），请将其删除，然后再次运行 PowerShell 命令。
 
 ### <a name="create-and-encrypt-a-sql-server-linked-service-source"></a>创建并加密 SQL Server 链接服务（源）
-在此步骤中，请将本地 SQL Server 实例链接到数据工厂。
+在此步骤中，请将 SQL Server 实例链接到数据工厂。
 
 1. 使用以下代码，在 *C:\ADFv2Tutorial* 文件夹中创建名为 *SqlServerLinkedService.json* 的 JSON 文件：
 
@@ -414,8 +414,8 @@ ms.locfileid: "82198148"
 
     > [!IMPORTANT]
     > - 根据连接到 SQL Server 实例时所使用的身份验证选择节。
-    > - 将 **\<integration runtime name>** 替换为 Integration Runtime 的名称。
-    > - 保存文件之前，请将 **\<servername>** 、 **\<databasename>** 、 **\<username>** 和 **\<password>** 替换为 SQL Server 实例的值。
+    > - 将 \<integration runtime name> 替换为集成运行时的名称。
+    > - 保存文件之前，请将 \<servername>、\<databasename>、\<username> 和 \<password> 替换为 SQL Server 实例的值   。
     > - 如需在用户帐户或服务器名称中使用反斜杠 (\\)，请在其前面加上转义字符 (\\)。 例如，使用 *mydomain\\\\myuser*。
 
 1. 若要加密敏感数据（用户名、密码等），请运行 `New-AzDataFactoryV2LinkedServiceEncryptedCredential` cmdlet。  
@@ -433,7 +433,7 @@ ms.locfileid: "82198148"
 
 
 ## <a name="create-datasets"></a>创建数据集
-在此步骤中，请创建输入和输出数据集。 这些数据集代表复制操作的输入和输出数据，该复制操作可将数据从本地 SQL Server 数据库复制到 Azure Blob 存储。
+在此步骤中，请创建输入和输出数据集。 这些数据集代表复制操作的输入和输出数据，该复制操作可将数据从 SQL Server 数据库复制到 Azure Blob 存储。
 
 ### <a name="create-a-dataset-for-the-source-sql-server-database"></a>为源 SQL Server 数据库创建数据集
 在此步骤中，请定义一个数据集，代表 SQL Server 数据库实例中的数据。 数据集为 SqlServerTable 类型。 它引用在上一步创建的 SQL Server 链接服务。 链接服务包含的连接信息可供数据工厂服务用来在运行时连接到 SQL Server 实例。 此数据集指定数据库中包含相应数据的 SQL 表。 在本教程中，**emp** 表包含源数据。
@@ -718,7 +718,7 @@ $runId = Invoke-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -Resou
 
 
 ## <a name="next-steps"></a>后续步骤
-此示例中的管道将数据从 Azure Blob 存储中的一个位置复制到另一个位置。 你已了解如何：
+此示例中的管道将数据从 Azure Blob 存储中的一个位置复制到另一个位置。 你已了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建数据工厂。

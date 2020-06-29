@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: f8870c85c280f2856bd559de05a692d6cea12e36
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 4812b7d99bf8391111a5cdc60686ea59f2b49df0
+ms.sourcegitcommit: 43db4001be01262959400663abf8219e27e5cb8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80342991"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85241504"
 ---
 [!INCLUDE [Prerequisites](prerequisites-go.md)]
 
@@ -35,7 +35,7 @@ import (
 
 ## <a name="create-the-main-function"></a>创建 main 函数
 
-此示例将尝试从以下环境变量中读取文本翻译订阅密钥和终结点：`TRANSLATOR_TEXT_SUBSCRIPTION_KEY` 和 `TRANSLATOR_TEXT_ENDPOINT`。 如果不熟悉环境变量，则可将 `subscriptionKey` 和 `endpoint` 设置为字符串并注释掉条件语句。
+此示例将尝试从以下环境变量中读取“翻译”订阅密钥和终结点：`TRANSLATOR_TEXT_SUBSCRIPTION_KEY` 和 `TRANSLATOR_TEXT_ENDPOINT`。 如果不熟悉环境变量，则可将 `subscriptionKey` 和 `endpoint` 设置为字符串并注释掉条件语句。
 
 将以下代码复制到项目中：
 
@@ -67,7 +67,7 @@ func main() {
 
 ## <a name="create-a-function-to-transliterate-text"></a>创建文本直译函数
 
-创建文本直译函数。 此函数将接受一个参数，即文本翻译订阅密钥。
+创建文本直译函数。 此函数将接受一个参数，即“翻译”订阅密钥。
 
 ```go
 func transliterate(subscriptionKey string, uri string) {
@@ -93,7 +93,7 @@ u.RawQuery = q.Encode()
 ```
 
 >[!NOTE]
-> 有关终结点、路由和请求参数的详细信息，请参阅[文本翻译 API 3.0：直译](/cognitive-services/translator/reference/v3-0-transliterate)。
+> 有关终结点、路由和请求参数的详细信息，请参阅[翻译 3.0：直译](/cognitive-services/translator/reference/v3-0-transliterate)。
 
 ## <a name="create-a-struct-for-your-request-body"></a>创建请求正文的结构
 
@@ -111,7 +111,7 @@ b, _ := json.Marshal(body)
 
 ## <a name="build-the-request"></a>生成请求
 
-将请求正文编码为 JSON 后，可以生成 POST 请求并调用文本翻译 API。
+将请求正文编码为 JSON 后，可以生成 POST 请求并调用“翻译”。
 
 ```go
 // Build the HTTP POST request
@@ -123,7 +123,7 @@ if err != nil {
 req.Header.Add("Ocp-Apim-Subscription-Key", subscriptionKey)
 req.Header.Add("Content-Type", "application/json")
 
-// Call the Translator Text API
+// Call the Translator
 res, err := http.DefaultClient.Do(req)
 if err != nil {
     log.Fatal(err)
@@ -149,7 +149,7 @@ fmt.Printf("%s\n", prettyJSON)
 
 ## <a name="put-it-all-together"></a>将其放在一起
 
-就是这样，你已构建了一个简单的程序。该程序可以调用文本翻译 API 并返回 JSON 响应。 现在，可以运行该程序了：
+就是这样，你已构建了一个简单的程序。该程序可以调用“翻译”并返回 JSON 响应。 现在，可以运行该程序了：
 
 ```console
 go run transliterate-text.go
@@ -170,7 +170,7 @@ go run transliterate-text.go
 
 ## <a name="next-steps"></a>后续步骤
 
-查看 API 参考，了解使用文本翻译 API 可以执行的所有操作。
+查看 API 参考，了解使用“翻译”可以执行的所有操作。
 
 > [!div class="nextstepaction"]
 > [API 参考](/cognitive-services/translator/reference/v3-0-reference)

@@ -1,7 +1,7 @@
 ---
 title: 快速入门：使用 Python 调用文本分析 API
 titleSuffix: Azure Cognitive Services
-description: 获取信息和代码示例，以便快速完成 Azure 认知服务中的文本分析 API 的使用入门。
+description: 本快速入门介绍如何获取信息和代码示例，以帮助你快速开始使用 Azure 认知服务中的文本分析 API。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -9,14 +9,15 @@ ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
 origin.date: 06/28/2019
-ms.date: 07/12/2019
+ms.date: 06/23/2020
 ms.author: v-junlch
-ms.openlocfilehash: 964323f64483d9d7bf630d85d9884957c968bac9
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.custom: tracking-python
+ms.openlocfilehash: 744080a2c17dd2086705703c16789b8173fe1250
+ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78154833"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85323290"
 ---
 # <a name="quickstart-using-the-python-rest-api-to-call-the-text-analytics-cognitive-service"></a>快速入门：使用 Python REST API 调用文本分析认知服务 
 <a name="HOLTop"></a>
@@ -52,11 +53,13 @@ import requests
 from pprint import pprint
 ```
 
-为订阅密钥创建变量，并文本分析 REST API 创建终结点。 验证终结点中的区域是否与注册时使用的区域（例如 `chinaeast2`）相对应。 
+为资源的 Azure 终结点和订阅密钥创建变量。
     
 ```python
-subscription_key = "<ADD YOUR KEY HERE>"
-text_analytics_base_url = "https://chinaeast2.api.cognitive.azure.cn/text/analytics/v2.1/"
+import os
+
+subscription_key = "<paste-your-text-analytics-key-here>"
+endpoint = "<paste-your-text-analytics-endpoint-here>"
 ```
 
 以下部分介绍如何调用每项 API 功能。
@@ -65,27 +68,27 @@ text_analytics_base_url = "https://chinaeast2.api.cognitive.azure.cn/text/analyt
 
 ## <a name="detect-languages"></a>检测语言
 
-将 `languages` 追加到文本分析基终结点，形成语言检测 URL。 例如： `https://chinaeast2.api.cognitive.azure.cn/text/analytics/v2.1/languages`
+将 `/text/analytics/v2.1/languages` 追加到文本分析基终结点，形成语言检测 URL。 例如： `https://<your-custom-subdomain>.cognitiveservices.azure.cn/text/analytics/v2.1/languages`
     
 ```python
-language_api_url = text_analytics_base_url + "languages"
+language_api_url = endpoint + "/text/analytics/v2.1/languages"
 ```
 
 API 的有效负载由 `documents` 列表组成，而列表中的项是包含 `id` 和 `text` 属性的元组。 `text` 属性存储要分析的文本，而 `id` 则可以是任何值。 
 
 ```python
-documents = { "documents": [
-    { "id": "1", "text": "This is a document written in English." },
-    { "id": "2", "text": "Este es un document escrito en Español." },
-    { "id": "3", "text": "这是一个用中文写的文件" }
+documents = {"documents": [
+    {"id": "1", "text": "This is a document written in English."},
+    {"id": "2", "text": "Este es un document escrito en Español."},
+    {"id": "3", "text": "这是一个用中文写的文件"}
 ]}
 ```
 
 使用请求库将文档发送到 API。 将订阅密钥添加到 `Ocp-Apim-Subscription-Key` 标头，并发送带 `requests.post()` 的请求。 
 
 ```python
-headers   = {"Ocp-Apim-Subscription-Key": subscription_key}
-response  = requests.post(language_api_url, headers=headers, json=documents)
+headers = {"Ocp-Apim-Subscription-Key": subscription_key}
+response = requests.post(language_api_url, headers=headers, json=documents)
 languages = response.json()
 pprint(languages)
 ```
@@ -134,28 +137,32 @@ pprint(languages)
 
 ## <a name="analyze-sentiment"></a>分析情绪
 
-若要检测一组文档的情绪（可以是正面的，也可以是负面的），请将 `sentiment` 追加到文本分析基终结点，形成语言检测 URL。 例如： `https://chinaeast2.api.cognitive.azure.cn/text/analytics/v2.1/sentiment`
+若要检测一组文档的情绪（可以是正面的，也可以是负面的），请将 `/text/analytics/v2.1/sentiment` 追加到文本分析基终结点，形成语言检测 URL。 例如： `https://<your-custom-subdomain>.cognitiveservices.azure.cn/text/analytics/v2.1/sentiment`
     
 ```python
-sentiment_url = text_analytics_base_url + "sentiment"
+sentiment_url = endpoint + "/text/analytics/v2.1/sentiment"
 ```
 
 与语言检测示例一样，请创建一个字典，其 `documents` 键由一系列文档组成。 每个文档都是一个由 `id`、要分析的 `text` 和文本的 `language` 组成的元组。 
 
 ```python
-documents = {"documents" : [
-  {"id": "1", "language": "en", "text": "I had a wonderful experience! The rooms were wonderful and the staff was helpful."},
-  {"id": "2", "language": "en", "text": "I had a terrible time at the hotel. The staff was rude and the food was awful."},  
-  {"id": "3", "language": "es", "text": "Los caminos que llevan hasta Monte Rainier son espectaculares y hermosos."},  
-  {"id": "4", "language": "es", "text": "La carretera estaba atascada. Había mucho tráfico el día de ayer."}
+documents = {"documents": [
+    {"id": "1", "language": "en",
+        "text": "I had a wonderful experience! The rooms were wonderful and the staff was helpful."},
+    {"id": "2", "language": "en",
+        "text": "I had a terrible time at the hotel. The staff was rude and the food was awful."},
+    {"id": "3", "language": "es",
+        "text": "Los caminos que llevan hasta Monte Rainier son espectaculares y hermosos."},
+    {"id": "4", "language": "es",
+     "text": "La carretera estaba atascada. Había mucho tráfico el día de ayer."}
 ]}
 ```
 
 使用请求库将文档发送到 API。 将订阅密钥添加到 `Ocp-Apim-Subscription-Key` 标头，并发送带 `requests.post()` 的请求。 
 
 ```python
-headers   = {"Ocp-Apim-Subscription-Key": subscription_key}
-response  = requests.post(sentiment_url, headers=headers, json=documents)
+headers = {"Ocp-Apim-Subscription-Key": subscription_key}
+response = requests.post(sentiment_url, headers=headers, json=documents)
 sentiments = response.json()
 pprint(sentiments)
 ```
@@ -184,9 +191,7 @@ pprint(sentiments)
       "score":0.334433376789093
     }
   ],
-  "errors":[
-
-  ]
+  "errors":[]
 }
 ```
 
@@ -194,28 +199,32 @@ pprint(sentiments)
 
 ## <a name="extract-key-phrases"></a>提取关键短语
  
-若要从一组文档中提取关键短语，请将 `keyPhrases` 追加到文本分析基终结点，形成语言检测 URL。 例如： `https://chinaeast2.api.cognitive.azure.cn/text/analytics/v2.1/keyPhrases`
+若要从一组文档中提取关键短语，请将 `/text/analytics/v2.1/keyPhrases` 追加到文本分析基终结点，形成语言检测 URL。 例如： `https://<your-custom-subdomain>.cognitiveservices.azure.cn/text/analytics/v2.1/keyPhrases`
     
 ```python
-keyphrase_url = text_analytics_base_url + "keyPhrases"
+keyphrase_url = endpoint + "/text/analytics/v2.1/keyphrases"
 ```
 
 此文档集合与用于情绪分析示例的文档集合相同。
 
 ```python
-documents = {"documents" : [
-  {"id": "1", "language": "en", "text": "I had a wonderful experience! The rooms were wonderful and the staff was helpful."},
-  {"id": "2", "language": "en", "text": "I had a terrible time at the hotel. The staff was rude and the food was awful."},  
-  {"id": "3", "language": "es", "text": "Los caminos que llevan hasta Monte Rainier son espectaculares y hermosos."},  
-  {"id": "4", "language": "es", "text": "La carretera estaba atascada. Había mucho tráfico el día de ayer."}
+documents = {"documents": [
+    {"id": "1", "language": "en",
+        "text": "I had a wonderful experience! The rooms were wonderful and the staff was helpful."},
+    {"id": "2", "language": "en",
+        "text": "I had a terrible time at the hotel. The staff was rude and the food was awful."},
+    {"id": "3", "language": "es",
+        "text": "Los caminos que llevan hasta Monte Rainier son espectaculares y hermosos."},
+    {"id": "4", "language": "es",
+     "text": "La carretera estaba atascada. Había mucho tráfico el día de ayer."}
 ]}
 ```
 
 使用请求库将文档发送到 API。 将订阅密钥添加到 `Ocp-Apim-Subscription-Key` 标头，并发送带 `requests.post()` 的请求。 
 
 ```python
-headers   = {"Ocp-Apim-Subscription-Key": subscription_key}
-response  = requests.post(keyphrase_url, headers=headers, json=documents)
+headers = {"Ocp-Apim-Subscription-Key": subscription_key}
+response = requests.post(keyphrase_url, headers=headers, json=documents)
 key_phrases = response.json()
 pprint(key_phrases)
 ```
@@ -258,9 +267,7 @@ pprint(key_phrases)
       "id":"4"
     }
   ],
-  "errors":[
-
-  ]
+  "errors":[]
 }
 ```
 
@@ -268,106 +275,182 @@ pprint(key_phrases)
 
 ## <a name="identify-entities"></a>识别实体
 
-若要标识文本文档中的已知实体（人物、位置和事物），请将 `entities` 追加到文本分析基终结点，形成语言检测 URL。 例如： `https://chinaeast2.api.cognitive.azure.cn/text/analytics/v2.1/entities`
+若要标识文本文档中的已知实体（人物、位置和事物），请将 `/text/analytics/v2.1/entities` 追加到文本分析基终结点，形成语言检测 URL。 例如： `https://<your-custom-subdomain>.cognitiveservices.azure.cn/text/analytics/v2.1/entities`
     
 ```python
-entities_url = text_analytics_base_url + "entities"
+entities_url = endpoint + "/text/analytics/v2.1/entities"
 ```
 
 创建文档集合，就像以前的示例一样。 
 
 ```python
-documents = {"documents" : [
-  {"id": "1", "text": "Microsoft was founded by Bill Gates and Paul Allen on April 4, 1975, to develop and sell BASIC interpreters for the Altair 8800."}
+documents = {"documents": [
+    {"id": "1", "text": "Microsoft was founded by Bill Gates and Paul Allen on April 4, 1975, to develop and sell BASIC interpreters for the Altair 8800."}
 ]}
 ```
 
 使用请求库将文档发送到 API。 将订阅密钥添加到 `Ocp-Apim-Subscription-Key` 标头，并发送带 `requests.post()` 的请求。
 
 ```python
-headers   = {"Ocp-Apim-Subscription-Key": subscription_key}
-response  = requests.post(entities_url, headers=headers, json=documents)
+headers = {"Ocp-Apim-Subscription-Key": subscription_key}
+response = requests.post(entities_url, headers=headers, json=documents)
 entities = response.json()
+pprint(entities)
 ```
 
 ### <a name="output"></a>输出
 
 ```json
-{'documents': [{'id': '1',
-   'entities': [{'name': 'Microsoft',
-     'matches': [{'wikipediaScore': 0.502357972145024,
-       'entityTypeScore': 1.0,
-       'text': 'Microsoft',
-       'offset': 0,
-       'length': 9}],
-     'wikipediaLanguage': 'en',
-     'wikipediaId': 'Microsoft',
-     'wikipediaUrl': 'https://en.wikipedia.org/wiki/Microsoft',
-     'bingId': 'a093e9b9-90f5-a3d5-c4b8-5855e1b01f85',
-     'type': 'Organization'},
-    {'name': 'Bill Gates',
-     'matches': [{'wikipediaScore': 0.5849375085784292,
-       'entityTypeScore': 0.999847412109375,
-       'text': 'Bill Gates',
-       'offset': 25,
-       'length': 10}],
-     'wikipediaLanguage': 'en',
-     'wikipediaId': 'Bill Gates',
-     'wikipediaUrl': 'https://en.wikipedia.org/wiki/Bill_Gates',
-     'bingId': '0d47c987-0042-5576-15e8-97af601614fa',
-     'type': 'Person'},
-    {'name': 'Paul Allen',
-     'matches': [{'wikipediaScore': 0.5314163053043621,
-       'entityTypeScore': 0.9988409876823425,
-       'text': 'Paul Allen',
-       'offset': 40,
-       'length': 10}],
-     'wikipediaLanguage': 'en',
-     'wikipediaId': 'Paul Allen',
-     'wikipediaUrl': 'https://en.wikipedia.org/wiki/Paul_Allen',
-     'bingId': 'df2c4376-9923-6a54-893f-2ee5a5badbc7',
-     'type': 'Person'},
-    {'name': 'April 4',
-     'matches': [{'wikipediaScore': 0.37312706493069636,
-       'entityTypeScore': 0.8,
-       'text': 'April 4',
-       'offset': 54,
-       'length': 7}],
-     'wikipediaLanguage': 'en',
-     'wikipediaId': 'April 4',
-     'wikipediaUrl': 'https://en.wikipedia.org/wiki/April_4',
-     'bingId': '52535f87-235e-b513-54fe-c03e4233ac6e',
-     'type': 'Other'},
-    {'name': 'April 4, 1975',
-     'matches': [{'entityTypeScore': 0.8,
-       'text': 'April 4, 1975',
-       'offset': 54,
-       'length': 13}],
-     'type': 'DateTime',
-     'subType': 'Date'},
-    {'name': 'BASIC',
-     'matches': [{'wikipediaScore': 0.35916049097766867,
-       'entityTypeScore': 0.8,
-       'text': 'BASIC',
-       'offset': 89,
-       'length': 5}],
-     'wikipediaLanguage': 'en',
-     'wikipediaId': 'BASIC',
-     'wikipediaUrl': 'https://en.wikipedia.org/wiki/BASIC',
-     'bingId': '5b16443d-501c-58f3-352e-611bbe75aa6e',
-     'type': 'Other'},
-    {'name': 'Altair 8800',
-     'matches': [{'wikipediaScore': 0.8697256853652899,
-       'entityTypeScore': 0.8,
-       'text': 'Altair 8800',
-       'offset': 116,
-       'length': 11}],
-     'wikipediaLanguage': 'en',
-     'wikipediaId': 'Altair 8800',
-     'wikipediaUrl': 'https://en.wikipedia.org/wiki/Altair_8800',
-     'bingId': '7216c654-3779-68a2-c7b7-12ff3dad5606',
-     'type': 'Other'}]}],
- 'errors': []}
+{
+   "documents" : [
+      {
+         "id" : "1",
+         "entities" : [
+            {
+               "name" : "Microsoft",
+               "matches" : [
+                  {
+                     "wikipediaScore" : 0.49897989655674446,
+                     "entityTypeScore" : 1.0,
+                     "text" : "Microsoft",
+                     "offset" : 0,
+                     "length" : 9
+                  }
+               ],
+               "wikipediaLanguage" : "en",
+               "wikipediaId" : "Microsoft",
+               "wikipediaUrl" : "https://en.wikipedia.org/wiki/Microsoft",
+               "bingId" : "a093e9b9-90f5-a3d5-c4b8-5855e1b01f85",
+               "type" : "Organization"
+            },
+            {
+               "name" : "Bill Gates",
+               "matches" : [
+                  {
+                     "wikipediaScore" : 0.58357497243368983,
+                     "entityTypeScore" : 0.999847412109375,
+                     "text" : "Bill Gates",
+                     "offset" : 25,
+                     "length" : 10
+                  }
+               ],
+               "wikipediaLanguage" : "en",
+               "wikipediaId" : "Bill Gates",
+               "wikipediaUrl" : "https://en.wikipedia.org/wiki/Bill_Gates",
+               "bingId" : "0d47c987-0042-5576-15e8-97af601614fa",
+               "type" : "Person"
+            },
+            {
+               "name" : "Paul Allen",
+               "matches" : [
+                  {
+                     "wikipediaScore" : 0.52977533244176866,
+                     "entityTypeScore" : 0.99884098768234253,
+                     "text" : "Paul Allen",
+                     "offset" : 40,
+                     "length" : 10
+                  }
+               ],
+               "wikipediaLanguage" : "en",
+               "wikipediaId" : "Paul Allen",
+               "wikipediaUrl" : "https://en.wikipedia.org/wiki/Paul_Allen",
+               "bingId" : "df2c4376-9923-6a54-893f-2ee5a5badbc7",
+               "type" : "Person"
+            },
+            {
+               "name" : "April 4",
+               "matches" : [
+                  {
+                     "wikipediaScore" : 0.37220990924571939,
+                     "entityTypeScore" : 0.8,
+                     "text" : "April 4",
+                     "offset" : 54,
+                     "length" : 7
+                  }
+               ],
+               "wikipediaLanguage" : "en",
+               "wikipediaId" : "April 4",
+               "wikipediaUrl" : "https://en.wikipedia.org/wiki/April_4",
+               "bingId" : "52535f87-235e-b513-54fe-c03e4233ac6e",
+               "type" : "Other"
+            },
+            {
+               "name" : "April 4, 1975",
+               "matches" : [
+                  {
+                     "entityTypeScore" : 0.8,
+                     "text" : "April 4, 1975",
+                     "offset" : 54,
+                     "length" : 13
+                  }
+               ],
+               "type" : "DateTime",
+               "subType" : "Date"
+            },
+            {
+               "name" : "BASIC",
+               "matches" : [
+                  {
+                     "wikipediaScore" : 0.35686239324548041,
+                     "entityTypeScore" : 0.8,
+                     "text" : "BASIC",
+                     "offset" : 89,
+                     "length" : 5
+                  }
+               ],
+               "wikipediaLanguage" : "en",
+               "wikipediaId" : "BASIC",
+               "wikipediaUrl" : "https://en.wikipedia.org/wiki/BASIC",
+               "bingId" : "5b16443d-501c-58f3-352e-611bbe75aa6e",
+               "type" : "Other"
+            },
+            {
+               "name" : "Altair 8800",
+               "matches" : [
+                  {
+                     "wikipediaScore" : 0.868324676465041,
+                     "entityTypeScore" : 0.8,
+                     "text" : "Altair 8800",
+                     "offset" : 116,
+                     "length" : 11
+                  }
+               ],
+               "wikipediaLanguage" : "en",
+               "wikipediaId" : "Altair 8800",
+               "wikipediaUrl" : "https://en.wikipedia.org/wiki/Altair_8800",
+               "bingId" : "7216c654-3779-68a2-c7b7-12ff3dad5606",
+               "type" : "Other"
+            },
+            {
+               "name" : "Altair",
+               "matches" : [
+                  {
+                     "entityTypeScore" : 0.52505272626876831,
+                     "text" : "Altair",
+                     "offset" : 116,
+                     "length" : 6
+                  }
+               ],
+               "type" : "Organization"
+            },
+            {
+               "name" : "8800",
+               "matches" : [
+                  {
+                     "entityTypeScore" : 0.8,
+                     "text" : "8800",
+                     "offset" : 123,
+                     "length" : 4
+                  }
+               ],
+               "type" : "Quantity",
+               "subType" : "Number"
+            }
+         ]
+      }
+   ],
+   "errors" : []
+}
 ```
 
 ## <a name="next-steps"></a>后续步骤

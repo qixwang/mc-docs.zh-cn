@@ -1,27 +1,27 @@
 ---
-title: Azure Cosmos DB - 使用 Xamarin 生成 ToDo 应用
+title: Azure Cosmos DB - 使用 Xamarin 生成待办事项应用
 description: 演示了一个可以用来连接到 Azure Cosmos DB 并进行查询的 Xamarin 代码示例
 author: rockboyfor
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
-origin.date: 05/30/2018
-ms.date: 04/27/2020
+origin.date: 05/11/2020
+ms.date: 06/22/2020
 ms.author: v-yeche
-ms.openlocfilehash: 0fc33eee50f47db3dd9b27605e45b8f6c0f5dd0e
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.openlocfilehash: 23dedb24f67fa75c46e48e265ec0ae00d1ffcaae
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82134954"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098662"
 ---
 # <a name="quickstart-build-a-todo-app-with-xamarin-using-azure-cosmos-db-sql-api-account"></a>快速入门：使用 Azure Cosmos DB SQL API 帐户通过 Xamarin 构建待办事项应用
 
 > [!div class="op_single_selector"]
 > * [.NET V3](create-sql-api-dotnet.md)
 > * [.NET V4](create-sql-api-dotnet-V4.md)
-> * [Java](create-sql-api-java.md)
+> * [Java SDK v4](create-sql-api-java.md)
 > * [Node.js](create-sql-api-nodejs.md)
 > * [Python](create-sql-api-python.md)
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
@@ -37,7 +37,7 @@ Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服�
 
 ## <a name="prerequisites"></a>先决条件
 
-如果是在 Windows 上进行开发，且尚未安装 Visual Studio 2019，可以下载并使用**免费的** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)。 在安装 Visual Studio 的过程中，请确保启用“Azure 开发”和“使用 .NET 进行移动开发”工作负荷。  
+如果是在 Windows 上进行开发，且尚未安装 Visual Studio 2019，可以下载并使用**免费的** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)。 在安装 Visual Studio 的过程中，请确保启用“Azure 开发”和“使用 .NET 进行移动开发”工作负荷。 
 
 如果使用的是 Mac，则可以下载**免费的** [Visual Studio for Mac](https://www.visualstudio.com/vs/mac/)。
 
@@ -88,7 +88,7 @@ Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服�
 
 返回到 Azure 门户，获取 API 密钥信息并将其复制到应用中。
 
-1. 在 [Azure 门户](https://portal.azure.cn/)的 Azure Cosmos DB SQL API 帐户的左侧导航栏中，单击“密钥”  ，然后单击“读写密钥”  。 使用屏幕右侧的复制按钮将 URI 和主密钥复制到下一步的 APIKeys.cs 文件中。
+1. 在 [Azure 门户](https://portal.azure.cn/)的 Azure Cosmos DB SQL API 帐户的左侧导航栏中，单击“密钥”，然后单击“读写密钥”。 使用屏幕右侧的复制按钮将 URI 和主密钥复制到下一步的 APIKeys.cs 文件中。
 
     ![在 Azure 门户的“密钥”边栏选项卡中查看并复制访问密钥](./media/create-sql-api-xamarin-dotnet/keys.png)
 
@@ -244,7 +244,7 @@ ToDoItems 解决方案中的代码包含：
 
     ![ToDo 应用的启动屏幕](./media/create-sql-api-xamarin-dotnet/ios-droid-started.png)
 
-4. 若要在 iOS 上完成某个待办事项，请向左滑动，然后点击“完成”按钮。  若要在 Android 上完成某个待办事项，请长按该项，然后点击“完成”按钮。
+4. 若要在 iOS 上完成某个待办事项，请向左滑动，然后点击“完成”按钮。 若要在 Android 上完成某个待办事项，请长按该项，然后点击“完成”按钮。
 
     ![完成待办事项](./media/create-sql-api-xamarin-dotnet/simulator-complete.png)
 
@@ -252,7 +252,7 @@ ToDoItems 解决方案中的代码包含：
 
     ![编辑待办事项](./media/create-sql-api-xamarin-dotnet/simulator-edit.png)
 
-6. 若要添加待办事项，请点击主屏幕右上角的“添加”按钮，然后就会出现一个新的空白编辑页。 
+6. 若要添加待办事项，请点击主屏幕右上角的“添加”按钮，然后就会出现一个新的空白编辑页。
 
     ![添加待办事项](./media/create-sql-api-xamarin-dotnet/simulator-add.png)
 

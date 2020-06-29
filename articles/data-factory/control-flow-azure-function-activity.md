@@ -12,30 +12,26 @@ ms.workload: data-services
 ms.topic: conceptual
 origin.date: 01/09/2019
 ms.date: 05/11/2020
-ms.openlocfilehash: 804bc414f7b6841339b309218d66b58d27256d2f
-ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
+ms.openlocfilehash: 8014533a3dc471ae190aef683ffb523b6d439ce0
+ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82197794"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85323303"
 ---
 # <a name="azure-function-activity-in-azure-data-factory"></a>Azure 数据工厂中的 Azure 函数活动
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 通过 Azure 函数活动可以在数据工厂管道中运行 [Azure Functions](../azure-functions/functions-overview.md)。 若要运行 Azure 函数，需要创建链接服务连接以及指定计划执行的 Azure 函数的活动。
 
-有关此功能的 8 分钟简介和演示，请观看以下视频：
-
-> [!VIDEO https://channel9.msdn.com/shows/azure-friday/Run-Azure-Functions-from-Azure-Data-Factory-pipelines/player]
-
 ## <a name="azure-function-linked-service"></a>Azure 函数链接服务
 
-Azure 函数的返回类型必须是有效的 `JObject`。 （请记住：[JArray](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_Linq_JArray.htm) 不  是 `JObject`。）除了 `JObject` 之外的任何返回类型都将失败，并且会引发用户错误*响应内容不是有效的 JObject*。
+Azure 函数的返回类型必须是有效的 `JObject`。 （请记住：[JArray](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_Linq_JArray.htm) 不是 `JObject`。）除了 `JObject` 之外的任何返回类型都将失败，并且会引发用户错误*响应内容不是有效的 JObject*。
 
 | **属性** | **说明** | **必需** |
 | --- | --- | --- |
 | type   | type 属性必须设置为：**AzureFunction** | 是 |
-| 函数应用 URL | Azure 函数应用的 URL。 格式为 `https://<accountname>.chinacloudsites.cn`。 在 Azure 门户中查看函数应用时，此 URL 是 URL  部分下的值  | 是 |
-| 函数密钥 | Azure 函数的访问密钥。 单击相应函数的“管理”  部分，并复制“函数密钥”  或“主机密钥”  。 在此处了解详细信息：[Azure Functions HTTP 触发器和绑定](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) | 是 |
+| 函数应用 URL | Azure 函数应用的 URL。 格式为 `https://<accountname>.chinacloudsites.cn`。 在 Azure 门户中查看函数应用时，此 URL 是 URL 部分下的值  | 是 |
+| 函数密钥 | Azure 函数的访问密钥。 单击相应函数的“管理”部分，并复制“函数密钥”或“主机密钥”。 在此处了解详细信息：[Azure Functions HTTP 触发器和绑定](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) | 是 |
 |   |   |   |
 
 ## <a name="azure-function-activity"></a>Azure 函数活动

@@ -6,15 +6,15 @@ ms.subservice: cosmosdb-table
 ms.devlang: java
 ms.topic: reference
 origin.date: 11/20/2018
-ms.date: 02/10/2020
+ms.date: 07/06/2020
 author: rockboyfor
 ms.author: v-yeche
-ms.openlocfilehash: 022813e284580eadac6980e6c7ed01a51ef4cdce
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 3db13d4469ffd24ef6ef17b5af02ab2a309719da
+ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77068220"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85320574"
 ---
 <!--Verify sucessfully-->
 # <a name="azure-cosmos-db-table-api-for-java-release-notes-and-resources"></a>用于 Java 的 Azure Cosmos DB 表 API：发行说明和资源
@@ -42,7 +42,7 @@ ms.locfileid: "77068220"
 * 正式发布版
 
 ## <a name="release-and-retirement-dates"></a>发布日期和停用日期
-Azure 会在停用 SDK 时至少提前 12 个月  发出通知，以便用户顺利转换为更高版本/受支持版本。
+Azure 会在停用 SDK 时至少提前 12 个月发出通知，以便用户顺利转换为更高版本/受支持版本。
 
 新特性和功能以及优化仅添加到当前 SDK，因此建议始终尽早升级到最新的 SDK 版本。 
 
@@ -50,7 +50,7 @@ Azure 会在停用 SDK 时至少提前 12 个月  发出通知，以便用户顺
 | --- | --- | --- |
 | [1.0.0](#1.0.0) |2017 年 11 月 15 日 |--- |
 
-## <a name="faq"></a>常见问题解答
+## <a name="faq"></a>常见问题
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>另请参阅

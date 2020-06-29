@@ -11,12 +11,12 @@ ms.topic: conceptual
 origin.date: 04/02/2020
 ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: b3a3e10e483d9dec2a967ad0dc28d9d5a1056c20
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.openlocfilehash: f8a25108094e9468e812631673b5150528db4368
+ms.sourcegitcommit: 304d3ef3c9e65c3e85977b3afb9985fbc0f908d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82126960"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85095959"
 ---
 # <a name="about-the-speech-sdk"></a>关于语音 SDK
 
@@ -30,11 +30,11 @@ ms.locfileid: "82126960"
 
 ### <a name="speech-to-text"></a>语音转文本
 
-[语音转文本](speech-to-text.md)（也称为“语音识别”  ）可将音频流听录为应用程序、工具或设备可以使用或显示的文本。 结合[语言理解 (LUIS)](../luis/index.yml) 使用语音转文本可以从听录的语音中派生用户意向，以及处理语音命令。 使用[语音翻译](speech-translation.md)通过单个调用将语音输入翻译为另一种语言。 有关详细信息，请参阅[语音转文本基础知识](speech-to-text-basics.md)。
+[语音转文本](speech-to-text.md)（也称为“语音识别”**）可将音频流听录为应用程序、工具或设备可以使用或显示的文本。 结合[语言理解 (LUIS)](../luis/index.yml) 使用语音转文本可以从听录的语音中派生用户意向，以及处理语音命令。 使用[语音翻译](speech-translation.md)通过单个调用将语音输入翻译为另一种语言。 有关详细信息，请参阅[语音转文本基础知识](speech-to-text-basics.md)。
 
 ### <a name="text-to-speech"></a>文本转语音
 
-[文本转语音](text-to-speech.md)（也称为“语音合成”  ）将文本转换为类似人类语言的合成语音。 输入文本是字符串文字或使用[语音合成标记语言 (SSML)](speech-synthesis-markup.md)。 有关标准语音或神经语音的详细信息，请参阅[文本转语音语言和语音支持](language-support.md#text-to-speech)。
+[文本转语音](text-to-speech.md)（也称为“语音合成”**）将文本转换为类似人类语言的合成语音。 输入文本是字符串文字或使用[语音合成标记语言 (SSML)](speech-synthesis-markup.md)。 有关标准语音或神经语音的详细信息，请参阅[文本转语音语言和语音支持](language-support.md#text-to-speech)。
 
 <!-- ### Voice assistants -->
 
@@ -75,7 +75,7 @@ ms.locfileid: "82126960"
 ## <a name="get-the-speech-sdk"></a>获取语音 SDK
 
 > [!IMPORTANT]
-> 需要语音 SDK 1.10.0 或更高版本。
+> 需要语音 SDK 1.11.0 或更高版本。
 
 # <a name="windows"></a>[Windows](#tab/windows)
 

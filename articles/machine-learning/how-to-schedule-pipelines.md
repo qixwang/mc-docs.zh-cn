@@ -5,17 +5,17 @@ description: 通过适用于 Python 的 Azure 机器学习 SDK 来计划 Azure �
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
-ms.author: v-yiso
+ms.topic: how-to
+ms.author: laobri
 author: lobrien
-origin.date: 11/12/2019
-ms.date: 03/16/2020
-ms.openlocfilehash: c82b8fc736e988188c00c9e3dbe9e3dbca94debe
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 11/12/2019
+ms.custom: tracking-python
+ms.openlocfilehash: 78d36cc03bcf546801067ea3e051452e5fc080ed
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78850204"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097501"
 ---
 # <a name="schedule-machine-learning-pipelines-with-azure-machine-learning-sdk-for-python"></a>通过适用于 Python 的 Azure 机器学习 SDK 来计划机器学习管道
 
@@ -23,7 +23,7 @@ ms.locfileid: "78850204"
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅。 如果没有 Azure 订阅，请创建一个[免费帐户](https://aka.ms/AMLFree)。
+* Azure 订阅。 如果没有 Azure 订阅，请创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 
 * 安装了适用于 Python 的 Azure 机器学习 SDK 的 Python 环境。 有关详细信息，请参阅[使用 Azure 机器学习创建和管理用于训练和部署的可重用环境。](how-to-use-environments.md)
 
@@ -81,7 +81,7 @@ recurring_schedule = Schedule.create(ws, name="MyRecurringSchedule",
 
 ### <a name="create-a-change-based-schedule"></a>创建基于更改的计划
 
-由文件更改触发的管道可能比基于时间的计划更有效。 例如，你可能需要在文件更改时或者在将新文件添加到数据目录时执行预处理步骤。 可以监视对数据存储的任何更改，或监视数据存储中特定目录中的更改。 如果监视特定目录，该目录的子目录中的更改将不会触发运行  。
+由文件更改触发的管道可能比基于时间的计划更有效。 例如，你可能需要在文件更改时或者在将新文件添加到数据目录时执行预处理步骤。 可以监视对数据存储的任何更改，或监视数据存储中特定目录中的更改。 如果监视特定目录，该目录的子目录中的更改将不会触发运行__。
 
 若要创建响应文件的 `Schedule`，必须在对 [Schedule.create](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.schedule.schedule?view=azure-ml-py#create-workspace--name--pipeline-id--experiment-name--recurrence-none--description-none--pipeline-parameters-none--wait-for-provisioning-false--wait-timeout-3600--datastore-none--polling-interval-5--data-path-parameter-name-none--continue-on-step-failure-none--path-on-datastore-none---workflow-provider-none---service-endpoint-none-) 的调用中设置 `datastore` 参数。 若要监视文件夹，请设置 `path_on_datastore` 参数。
 
@@ -92,7 +92,7 @@ recurring_schedule = Schedule.create(ws, name="MyRecurringSchedule",
 ```python
 datastore = Datastore(workspace=ws, name="workspaceblobstore")
 
-reactive_schedule = Schedule.create(ws, name="MyReactiveSchedule", description="Based on time",
+reactive_schedule = Schedule.create(ws, name="MyReactiveSchedule", description="Based on input file change.",
                             pipeline_id=pipeline_id, experiment_name=experiment_name, datastore=datastore, data_path_parameter_name="input_data")
 ```
 
@@ -100,9 +100,13 @@ reactive_schedule = Schedule.create(ws, name="MyReactiveSchedule", description="
 
 除了前面所述的参数，还可以将 `status` 参数设置为 `"Disabled"` 以创建非活动计划。 最后，可通过 `continue_on_step_failure` 传递布尔值，重写管道的默认失败行为。
 
+### <a name="use-azure-logic-apps-for-more-complex-workflows"></a>将 Azure 逻辑应用用于更复杂的工作流
+
+Azure 逻辑应用支持更复杂的工作流，其集成的广泛程度远远高于 Azure 机器学习管道。 有关详细信息，请参阅[从逻辑应用触发机器学习管道的运行](how-to-trigger-published-pipeline.md)。
+
 ## <a name="view-your-scheduled-pipelines"></a>查看计划的管道
 
-在 Web 浏览器中，导航到 Azure 机器学习。 在导航面板的“终结点”部分中，选择“管道终结点”   。 将转到已在工作区中发布的管道的列表。
+在 Web 浏览器中，导航到 Azure 机器学习。 在导航面板的“终结点”部分中，选择“管道终结点”**** ****。 将转到已在工作区中发布的管道的列表。
 
 ![AML 的“管道”页](./media/how-to-schedule-pipelines/scheduled-pipelines.png)
 
@@ -149,3 +153,4 @@ stop_by_schedule_id(ws, schedule_id)
 
 * 详细了解[管道](concept-ml-pipelines.md)
 * 详细了解如何[通过 Jupyter 探索 Azure 机器学习](samples-notebooks.md)
+

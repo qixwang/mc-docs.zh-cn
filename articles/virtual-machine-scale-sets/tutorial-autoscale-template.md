@@ -1,19 +1,20 @@
 ---
 title: 教程 - 使用 Azure 模板自动缩放规模集
 description: 了解如何使用 Azure 资源管理器模板随 CPU 需求的增减自动缩放虚拟机规模集
-author: cynthn
-tags: azure-resource-manager
-ms.service: virtual-machine-scale-sets
-ms.topic: tutorial
-ms.date: 03/31/2020
+author: ju-shim
 ms.author: v-junlch
-ms.custom: mvc
-ms.openlocfilehash: 3014ded1f110e97a293145eb96432a7f5843fa12
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.topic: tutorial
+ms.service: virtual-machine-scale-sets
+ms.subservice: autoscale
+ms.date: 06/22/2020
+ms.reviewer: avverma
+ms.custom: avverma
+ms.openlocfilehash: 6584e6b210c82c7545181e9fcc9b93fc206d1afe
+ms.sourcegitcommit: 43db4001be01262959400663abf8219e27e5cb8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80581611"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85241563"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-an-azure-template"></a>教程：使用 Azure 模板自动缩放虚拟机规模集
 创建规模集时，可定义想运行的 VM 实例数。 若应用程序需要更改，可自动增加或减少 VM 实例数。 通过自动缩放功能，可随客户需求的改变而进行调整，或在应用的整个生命周期内响应应用程序性能更改。 本教程介绍如何执行下列操作：
@@ -30,7 +31,7 @@ ms.locfileid: "80581611"
 
 
 ## <a name="define-an-autoscale-profile"></a>定义自动缩放配置文件
-请使用 *Microsoft.insights/autoscalesettings* 资源提供程序在 Azure 模板中定义一个自动缩放配置文件。  配置文件提供规模集容量以及任何关联规则的详细信息。 下面的示例定义一个名为 *Autoscale by percentage based on CPU usage* 的配置文件，并设置 *2* 个 VM 实例的默认值、最小值、容量和最大值 (*10*)：
+请使用 *Microsoft.insights/autoscalesettings* 资源提供程序在 Azure 模板中定义一个自动缩放配置文件。 配置文件提供规模集容量以及任何关联规则的详细信息。 下面的示例定义一个名为 *Autoscale by percentage based on CPU usage* 的配置文件，并设置 *2* 个 VM 实例的默认值、最小值、容量和最大值 (*10*)：
 
 ```json
 {
@@ -61,7 +62,7 @@ ms.locfileid: "80581611"
 
 此规则使用以下参数：
 
-| 参数         | 说明                                                                                                         | 值           |
+| 参数         | 说明                                                                                                         | Value           |
 |-------------------|---------------------------------------------------------------------------------------------------------------------|-----------------|
 | *metricName*      | 监视和应用规模集操作的性能指标。                                                   | CPU 百分比  |
 | *timeGrain*       | 为进行而收集指标分析的频率。                                                                   | 1 分钟        |
@@ -69,9 +70,9 @@ ms.locfileid: "80581611"
 | *timeWindow*      | 比较指标与阈值之前监视的时长。                                   | 5 分钟       |
 | *operator*        | 用于比较指标数据和阈值的运算符。                                                     | 大于    |
 | *threshold*       | 使自动缩放规则触发操作的值。                                                      | 70%             |
-| direction        | 定义在应用规则的情况下，规模集应横向缩减还是扩展。                                              | 增加        |
-| type             | 表明 VM 实例数应该根据特定值进行更改。                                    | 更改计数    |
-| *value*           | 应用规则时应减少或增加多少 VM 实例。                                             | 3               |
+| *direction*       | 定义在应用规则的情况下，规模集应横向缩减还是扩展。                                              | 增加        |
+| *type*            | 表明 VM 实例数应该根据特定值进行更改。                                    | 更改计数    |
+| value           | 应用规则时应减少或增加多少 VM 实例。                                             | 3               |
 | *cooldown*        | 为使自动缩放操作有时间生效，再次应用规则前需要等待的时间。 | 5 分钟       |
 
 以下规则将添加到上一部分中的 *Microsoft.insights/autoscalesettings* 资源提供程序的概要文件节：
@@ -177,14 +178,15 @@ az vmss list-instance-connection-info \
 ssh azureuser@13.92.224.66 -p 50001
 ```
 
-登录后，安装 **stress** 实用工具。 启动 10  个生成 CPU 负载的 **stress** 辅助角色。 这些辅助角色运行 *420* 秒，此时间足以让自动缩放规则实施所需的操作。
+登录后，安装 **stress** 实用工具。 启动 10 个生成 CPU 负载的 **stress** 辅助角色。 这些辅助角色运行 *420* 秒，此时间足以让自动缩放规则实施所需的操作。
 
 ```console
+sudo apt-get update
 sudo apt-get -y install stress
 sudo stress --cpu 10 --timeout 420 &
 ```
 
-当 **stress** 显示类似于 *stress: info: [2688] dispatching hogs: 10 cpu, 0 io, 0 vm, 0 hdd* 的输出时，按 *Enter* 键返回到提示符。
+当 **stress** 显示类似于 *stress: info: [2688] dispatching hogs:10 cpu, 0 io, 0 vm, 0 hdd* 的输出时，按 *Enter* 键返回到提示符。
 
 若要确认 **stress** 是否生成了 CPU 负载，请使用 **top** 实用工具检查活动的系统负载：
 
@@ -212,7 +214,7 @@ sudo apt-get -y install stress
 sudo stress --cpu 10 --timeout 420 &
 ```
 
-当 **stress** 再次显示类似于 *stress: info: [2713] dispatching hogs: 10 cpu, 0 io, 0 vm, 0 hdd* 的输出时，按 *Enter* 键返回到提示符。
+当 **stress** 再次显示类似于 *stress: info: [2713] dispatching hogs:10 cpu, 0 io, 0 vm, 0 hdd* 的输出时，按 *Enter* 键返回到提示符。
 
 关闭与第二个 VM 实例的连接。 **stress** 继续在 VM 实例上运行。
 
@@ -269,9 +271,4 @@ az group delete --name myResourceGroup --yes --no-wait
 > * 创建和使用自动缩放规则
 > * 对 VM 实例进行压力测试并触发自动缩放规则
 > * 在需求下降时自动横向缩减
-
-如需更多的虚拟机规模集操作示例，请参阅下面的 Azure CLI 示例脚本：
-
-> [!div class="nextstepaction"]
-> [适用于 Azure CLI 的规模集脚本示例](cli-samples.md)
 

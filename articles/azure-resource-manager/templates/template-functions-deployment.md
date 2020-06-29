@@ -1,24 +1,24 @@
 ---
 title: 模板函数 - 部署
-description: 介绍可在 Azure 资源管理器模板中使用的用于检索部署信息的函数。
+description: 介绍可在 Azure Resource Manager 模板中使用的用于检索部署信息的函数。
 ms.topic: conceptual
-origin.date: 11/27/2019
-ms.date: 03/23/2020
+origin.date: 04/27/2020
+ms.date: 06/22/2020
 ms.author: v-yeche
-ms.openlocfilehash: 8589dbed292e098a5b706599b93599ee82424c71
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 9637c623e46bac888d90dc26d0c3e8a0e30b21c5
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79543888"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098719"
 ---
-# <a name="deployment-functions-for-azure-resource-manager-templates"></a>用于 Azure 资源管理器模板的部署函数 
+# <a name="deployment-functions-for-arm-templates"></a>ARM 模板的部署函数
 
-资源管理器提供了以下函数，用于获取与当前部署相关的值：
+资源管理器提供了以下函数，用于获取与 Azure 资源管理器 (ARM) 模板的当前部署相关的值：
 
-* [deployment](#deployment)
+* [部署](#deployment)
 * [环境](#environment)
-* [参数](#parameters)
+* [parameters](#parameters)
 * [variables](#variables)
 
 若要从资源、资源组或订阅获取值，请参阅 [Resource functions](template-functions-resource.md)（资源函数）。
@@ -33,7 +33,12 @@ ms.locfileid: "79543888"
 
 ### <a name="return-value"></a>返回值
 
-此函数返回部署期间传递的对象。 根据部署对象是作为链接还是内联对象传递，所返回对象中的属性将有所不同。 如果部署对象是以内联形式传递的（例如使用 Azure PowerShell 中的 **-TemplateFile** 参数指向本地文件时），所返回的对象采用以下格式：
+此函数返回部署期间传递的对象。 返回的对象中的属性因以下情况而异：
+
+* 你部署的模板是本地文件，还是通过 URI 访问的远程文件。
+* 你是部署到资源组，还是部署到其他作用域之一（[Azure 订阅](deploy-to-subscription.md)、[管理组](deploy-to-management-group.md)或[租户](deploy-to-tenant.md)）。
+
+将本地模板部署到资源组时，该函数返回以下格式：
 
 ```json
 {
@@ -48,6 +53,7 @@ ms.locfileid: "79543888"
             ],
             "outputs": {}
         },
+        "templateHash": "",
         "parameters": {},
         "mode": "",
         "provisioningState": ""
@@ -55,7 +61,7 @@ ms.locfileid: "79543888"
 }
 ```
 
-如果对象是以链接形式传递的（例如使用 **-TemplateUri** 参数指向远程对象时），所返回的对象采用以下格式： 
+将远程模板部署到资源组时，该函数返回以下格式：
 
 ```json
 {
@@ -72,6 +78,7 @@ ms.locfileid: "79543888"
             "resources": [],
             "outputs": {}
         },
+        "templateHash": "",
         "parameters": {},
         "mode": "",
         "provisioningState": ""
@@ -79,11 +86,30 @@ ms.locfileid: "79543888"
 }
 ```
 
-[部署到 Azure 订阅](deploy-to-subscription.md)而不是资源组时，返回对象包含 `location` 属性。 部署本地模板或外部模板时包含 location 属性。
+当部署到 Azure 订阅、管理组或租户时，返回对象包含 `location` 属性。 部署本地模板或外部模板时包含 location 属性。 格式为：
+
+```json
+{
+    "name": "",
+    "location": "",
+    "properties": {
+        "template": {
+            "$schema": "",
+            "contentVersion": "",
+            "resources": [],
+            "outputs": {}
+        },
+        "templateHash": "",
+        "parameters": {},
+        "mode": "",
+        "provisioningState": ""
+    }
+}
+```
 
 ### <a name="remarks"></a>备注
 
-可以根据父模板的 URI，使用 deployment() 链接到另一个模板。
+如何根据父模板的 URI，使用 deployment() 链接到另一个模板。
 
 ```json
 "variables": {  
@@ -99,11 +125,11 @@ ms.locfileid: "79543888"
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "resources": [],
     "outputs": {
-        "subscriptionOutput": {
+        "deploymentOutput": {
             "value": "[deployment()]",
             "type" : "object"
         }
@@ -111,31 +137,30 @@ ms.locfileid: "79543888"
 }
 ```
 
-上面的示例返回下列对象：
+前面的示例返回以下对象：
 
 ```json
 {
   "name": "deployment",
   "properties": {
     "template": {
-      "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+      "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
       "contentVersion": "1.0.0.0",
       "resources": [],
       "outputs": {
-        "subscriptionOutput": {
+        "deploymentOutput": {
           "type": "Object",
           "value": "[deployment()]"
         }
       }
     },
+    "templateHash": "13135986259522608210",
     "parameters": {},
     "mode": "Incremental",
     "provisioningState": "Accepted"
   }
 }
 ```
-
-对于使用部署功能的订阅级别模板，请参阅[订阅部署功能](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/deploymentsubscription.json)。 它使用 `az deployment create` 或 `New-AzDeployment` 命令进行部署。
 
 ## <a name="environment"></a>环境
 
@@ -201,45 +226,41 @@ ms.locfileid: "79543888"
 
 前面的示例在部署到全局 Azure 时返回以下对象：
 
-<!--Generate the report on 12/04/2019-->
-<!--Verified successfully-->
-
 ```json
 {
-    "name":"AzureChinaCloud",
-    "gallery":"https://gallery.chinacloudapi.cn",
-    "graph":"https://graph.chinacloudapi.cn",
-    "portal":"https://portal.azure.cn",
-    "graphAudience":"https://graph.chinacloudapi.cn",
-    "activeDirectoryDataLake":null,
-    "batch":"https://batch.chinacloudapi.cn",
-    "media":"https://rest.media.chinacloudapi.cn",
-    "sqlManagement":"https://management.core.chinacloudapi.cn:8443",
-    "vmImageAliasDoc":"https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json",
-    "resourceManager":"https://management.chinacloudapi.cn",
-    "authentication":{
-        "loginEndpoint":"https://login.chinacloudapi.cn",
-        "audiences":[
-            "https://management.core.chinacloudapi.cn/",
-            "https://management.chinacloudapi.cn/"
-        ],
-        "tenant":"common",
-        "identityProvider":"AAD"
-    },
-    "suffixes":{
-        "acrLoginServer":".azurecr.cn",
-        "azureDatalakeAnalyticsCatalogAndJob":null,
-        "azureDatalakeStoreFileSystem":null,
-        "azureFrontDoorEndpointSuffix":"",
-        "keyvaultDns":".vault.azure.cn",
-        "sqlServerHostname":".database.chinacloudapi.cn",
-        "storage":"core.chinacloudapi.cn"
-    }
+  "name": "AzureChinaCloud",
+  "gallery": "https://gallery.chinacloudapi.cn/",
+  "graph": "https://graph.chinacloudapi.cn/",
+  "portal": "https://portal.azure.cn",
+  "graphAudience": "https://graph.chinacloudapi.cn/",
+  "activeDirectoryDataLake": "https://datalake.chinacloudapi.cn/",
+  "batch": "https://batch.core.chinacloudapi.cn/",
+  "media": "https://rest.media.chinacloudapi.cn",
+  "sqlManagement": "https://management.core.chinacloudapi.cn:8443/",
+  "vmImageAliasDoc": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json",
+  "resourceManager": "https://management.chinacloudapi.cn/",
+  "authentication": {
+    "loginEndpoint": "https://login.chinacloudapi.cn/",
+    "audiences": [
+      "https://management.core.chinacloudapi.cn/",
+      "https://management.chinacloudapi.cn/"
+    ],
+    "tenant": "common",
+    "identityProvider": "AAD"
+  },
+  "suffixes": {
+    "acrLoginServer": ".azurecr.cn",
+    "azureDatalakeAnalyticsCatalogAndJob": "azuredatalakeanalytics.net",
+    "azureDatalakeStoreFileSystem": "azuredatalakestore.net",
+    "azureFrontDoorEndpointSuffix": "azurefd.net",
+    "keyvaultDns": ".vault.azure.cn",
+    "sqlServerHostname": ".database.chinacloudapi.cn",
+    "storage": "core.chinacloudapi.cn"
+  }
 }
 ```
-<!--Generate the report on 12/04/2019-->
 
-## <a name="parameters"></a>parameters
+## <a name="parameters"></a>参数
 
 `parameters(parameterName)`
 
@@ -247,9 +268,9 @@ ms.locfileid: "79543888"
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
-| parameterName |是 |字符串 |要返回的参数名称。 |
+| parameterName |是 |string |要返回的参数名称。 |
 
 ### <a name="return-value"></a>返回值
 
@@ -257,7 +278,7 @@ ms.locfileid: "79543888"
 
 ### <a name="remarks"></a>备注
 
-通常情况下，使用参数来设置资源值。 下面的示例将网站的名称设置为部署过程中传递的参数值。
+通常，使用参数设置资源值。 以下示例将 Web 站点的名称设置为在部署过程中传递的参数值。
 
 ```json
 "parameters": { 
@@ -281,7 +302,7 @@ ms.locfileid: "79543888"
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "stringParameter": {
@@ -332,15 +353,15 @@ ms.locfileid: "79543888"
 }
 ```
 
-上面具有默认值的示例的输出为：
+上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
-| stringOutput | String | option 1 |
-| intOutput | Int | 1 |
+| stringOutput | String | 选项 1 |
+| intOutput | int | 1 |
 | objectOutput | Object | {"one": "a", "two": "b"} |
 | arrayOutput | Array | [1, 2, 3] |
-| crossOutput | String | option 1 |
+| crossOutput | String | 选项 1 |
 
 如需详细了解如何使用参数，请参阅 [Azure 资源管理器模板中的参数](template-parameters.md)。
 
@@ -354,7 +375,7 @@ ms.locfileid: "79543888"
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | variableName |是 |String |要返回的变量名称。 |
 
@@ -364,7 +385,7 @@ ms.locfileid: "79543888"
 
 ### <a name="remarks"></a>备注
 
-通常情况下，使用变量通过仅构造一次复杂值来简化模板。 下面的示例为存储帐户构造唯一的名称。
+通常，使用变量通过只构造一次复杂值来简化模板。 以下示例构造存储帐户的唯一名称。
 
 ```json
 "variables": {
@@ -392,7 +413,7 @@ ms.locfileid: "79543888"
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {},
     "variables": {
@@ -402,7 +423,7 @@ ms.locfileid: "79543888"
         "var4": {
             "property1": "value1",
             "property2": "value2"
-        }
+          }
     },
     "resources": [],
     "outputs": {
@@ -426,9 +447,9 @@ ms.locfileid: "79543888"
 }
 ```
 
-上面具有默认值的示例的输出为：
+上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
 | exampleOutput1 | String | myVariable |
 | exampleOutput2 | Array | [1, 2, 3, 4] |
