@@ -1,19 +1,19 @@
 ---
-title: 从 Azure Stack Hub 中按需清除门户用户数据。
-description: 为 Azure Stack Hub 操作员介绍如何按 Azure Stack Hub 用户的请求清除门户用户数据。
+title: 从 Azure Stack Hub 中按需清除门户用户数据数据
+description: 了解如何按 Azure Stack Hub 用户的请求清除门户用户数据。
 author: WenJason
 ms.topic: conceptual
-origin.date: 01/27/2020
-ms.date: 05/18/2020
+origin.date: 05/06/2020
+ms.date: 06/22/2020
 ms.author: v-jay
 ms.reviewer: troettinger
 ms.lastreviewed: 09/10/2019
-ms.openlocfilehash: 4a12e54b045d6e3b00c04e5315319e2d2776f3eb
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.openlocfilehash: 90c85a82754b5424fcae368b262217bf670c1d3d
+ms.sourcegitcommit: d86e169edf5affd28a1c1a4476d72b01a7fb421d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83422482"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85096283"
 ---
 # <a name="clear-portal-user-data-from-azure-stack-hub"></a>从 Azure Stack Hub 中清除门户用户数据
 
@@ -44,7 +44,7 @@ Azure Stack Hub 操作员可以根据 Azure Stack Hub 用户的请求，按需�
 
 对于此过程，请使用能够与 Azure Stack Hub 的管理员资源管理器终结点通信的计算机。
 
-1. 以提升的权限打开 Windows PowerShell 会话（以管理员身份运行），导航到 **AzureStack-Tools-master** 目录中的根文件夹，然后导入所需的 PowerShell 模块：
+1. 以提升的权限打开 Windows PowerShell 会话（以管理员身份运行），转到 AzureStack-Tools-master 目录中的根文件夹，然后导入所需的 PowerShell 模块****：
 
    ```powershell
    Import-Module .\DatacenterIntegration\Portal\PortalUserDataUtilities.psm1
@@ -85,7 +85,7 @@ Azure Stack Hub 操作员可以根据 Azure Stack Hub 用户的请求，按需�
 
 ### <a name="user-retrieves-the-user-object-id"></a>用户检索用户对象 ID
 
-1. 以提升的权限打开 Windows PowerShell 会话（以管理员身份运行），导航到 **AzureStack-Tools-master** 目录中的根文件夹，然后导入所需的 PowerShell 模块。
+1. 以提升的权限打开 Windows PowerShell 会话（以管理员身份运行），转到 AzureStack-Tools-master 目录中的根文件夹，然后导入所需的 PowerShell 模块****。
 
    ```powershell
    Import-Module .\DatacenterIntegration\Portal\PortalUserDataUtilities.psm1
@@ -115,7 +115,7 @@ Azure Stack Hub 操作员可以根据 Azure Stack Hub 用户的请求，按需�
 
 以 Azure Stack Hub 操作员的身份收到用户对象 ID 后，运行以下命令删除门户用户数据：
 
-1. 以提升的权限打开 Windows PowerShell 会话（以管理员身份运行），导航到 **AzureStack-Tools-master** 目录中的根文件夹，然后导入所需的 PowerShell 模块。
+1. 以提升的权限打开 Windows PowerShell 会话（以管理员身份运行），转到 AzureStack-Tools-master 目录中的根文件夹，然后导入所需的 PowerShell 模块****。
 
    ```powershell
    Import-Module .\DatacenterIntegration\Portal\PortalUserDataUtilities.psm1
@@ -129,7 +129,7 @@ Azure Stack Hub 操作员可以根据 Azure Stack Hub 用户的请求，按需�
 
    ## Replace the following value with the Azure Stack Hub directory tenant ID.
    $AzsAdminDirectoryTenantId = "f5025bf2-547f-4b49-9693-6420c1d5e4ca"
-   
+
    ## Replace the following value with the directory tenant ID of the user to clear.
    $DirectoryTenantId = "3160cbf5-c227-49dd-8654-86e924c0b72f"
 

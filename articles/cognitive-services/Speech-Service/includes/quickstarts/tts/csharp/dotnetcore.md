@@ -11,12 +11,12 @@ ms.topic: include
 origin.date: 04/04/2020
 ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: c4a3b50f6155ffeb77047eb6fa2180c0af927cee
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.openlocfilehash: bb7bcc13571cc6f4fe53f1a3d9d69cc0651bef3e
+ms.sourcegitcommit: 304d3ef3c9e65c3e85977b3afb9985fbc0f908d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82150975"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85095983"
 ---
 > [!NOTE]
 > .NET Core 是一个实现了 [.NET Standard](https://docs.microsoft.com/dotnet/standard/net-standard) 规范的开源跨平台 .NET 平台。
@@ -28,7 +28,7 @@ ms.locfileid: "82150975"
 > [!div class="checklist"]
 > * [创建一个 Azure 搜索资源](../../../../get-started.md)
 > * [设置开发环境并创建空项目](../../../../quickstarts/setup-platform.md?tabs=dotnetcore&pivots=programming-language-csharp)
-> * 需要语音 SDK 版本 1.10.0 或更高版本。
+> * 需要语音 SDK 版本 1.11.0 或更高版本。
 
 ## <a name="add-sample-code"></a>添加示例代码
 
@@ -98,11 +98,11 @@ ms.locfileid: "82150975"
 
 ## <a name="build-and-run-the-app"></a>生成并运行应用
 
-1. 构建应用程序。 从菜单栏中，选择“构建” > “构建解决方案”   。 编译代码时应不会出错。
+1. 构建应用程序。 从菜单栏中，选择“构建” > “构建解决方案” 。 编译代码时应不会出错。
 
     ![Visual Studio 应用程序的屏幕截图，其中突出显示了“生成解决方案”选项](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-dotnetcore-windows-05-build.png "成功的生成")
 
-1. 启动应用程序。 在菜单栏中，选择“调试” > “开始调试”，或按 F5    。
+1. 启动应用程序。 在菜单栏中，选择“调试” > “开始调试”，或按 F5  。
 
     ![Visual Studio 应用程序的屏幕截图，其中突出显示了“启动调试”选项](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-dotnetcore-windows-06-start-debugging.png "启动应用进行调试")
 

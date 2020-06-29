@@ -12,12 +12,12 @@ author: vaidya-s
 origin.date: 01/15/2020
 ms.date: 03/16/2020
 ms.custom: Ignite2019
-ms.openlocfilehash: 0266abfb91576375caf0e93b44fbbbc5ca2169ef
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: d313c8728dd4384a0837bd5a702cbf386bef02d9
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78934881"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097354"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>使用 Azure 机器学习对大量数据运行批处理推理
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -35,7 +35,7 @@ ms.locfileid: "78934881"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 试用 [Azure 机器学习免费版或付费版](https://aka.ms/AMLFree)。
+* 如果没有 Azure 订阅，请在开始前创建一个试用帐户。 试用 [Azure 机器学习免费版或付费版](https://www.azure.cn/pricing/1rmb-trial)。
 
 * 对于引导式快速入门，如果你还没有 Azure 机器学习的工作区或笔记本虚拟机，请完成[安装教程](tutorial-1st-experiment-sdk-setup.md)。 
 
@@ -187,7 +187,7 @@ model = Model.register(model_path="models/",
 >[!Warning]
 >下面的代码只是[示例笔记本](https://aka.ms/batch-inference-notebooks)使用的示例。 你需要根据具体情况创建自己的脚本。
 
-脚本必须包含  两个函数：
+脚本必须包含两个函数：
 - `init()`：此函数适用于后续推理的任何成本高昂或常见的准备工作。 例如，使用它将模型加载到全局对象。 此函数将在进程开始时调用一次。
 -  `run(mini_batch)`：将针对每个 `mini_batch` 实例运行此函数。
     -  `mini_batch`：并行运行步骤将调用 run 方法，并将列表或 Pandas 数据帧作为参数传递给该方法。 min_batch 中的每个条目是文件路径（如果输入是 FileDataset）或 Pandas 数据帧（如果输入是 TabularDataset）。

@@ -12,12 +12,12 @@ ms.author: v-yiso
 origin.date: 02/21/2020
 ms.date: 03/09/2020
 ms.custom: seodec18
-ms.openlocfilehash: 5729dca676be8f97881792ccbee806b814be1022
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 04933fe5afd718032f876de77239ccf55902fe7d
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80343594"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097053"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps：使用 Azure 机器学习进行模型管理、部署和监视
 
@@ -34,12 +34,12 @@ ms.locfileid: "80343594"
 Azure 机器学习提供以下 MLOps 功能：
 
 - **创建可重现的 ML 管道**。 使用机器学习管道可为数据准备、训练和评分过程定义可重复且可重用的步骤。
-- 创建可重用的软件环境用于训练和部署模型。 
-- 从任意位置注册、打包和部署模型。  还可以跟踪使用模型时所需的关联元数据。
-- 捕获端到端 ML 生命周期的监管数据。  记录的信息可以包括模型的发布者、做出更改的原因，以及在生产环境中部署或使用模型的时间。
-- 针对 ML 生命周期中的事件发出通知和警报。  例如，试验完成、模型注册、模型部署和数据偏移检测。
+- 创建可重用的软件环境用于训练和部署模型。
+- 从任意位置注册、打包和部署模型。 还可以跟踪使用模型时所需的关联元数据。
+- 捕获端到端 ML 生命周期的监管数据。 记录的信息可以包括模型的发布者、做出更改的原因，以及在生产环境中部署或使用模型的时间。
+- 针对 ML 生命周期中的事件发出通知和警报。 例如，试验完成、模型注册、模型部署和数据偏移检测。
 - **监视 ML 应用程序中的操作和 ML 相关问题**。 比较训练与推理之间的模型输入，浏览特定于模型的指标，以及针对 ML 基础结构提供监视和警报。
-- 使用 Azure 机器学习和 Azure Pipelines 自动化端到端 ML 生命周期。  使用管道可以频繁更新模型、测试新模型，并连同其他应用程序和服务持续推出新的 ML 模型。
+- 使用 Azure 机器学习和 Azure Pipelines 自动化端到端 ML 生命周期。 使用管道可以频繁更新模型、测试新模型，并连同其他应用程序和服务持续推出新的 ML 模型。
 
 ## <a name="create-reproducible-ml-pipelines"></a>创建可重现的 ML 管道
 
@@ -47,7 +47,7 @@ Azure 机器学习提供以下 MLOps 功能：
 
 ML 管道可以包含从数据准备、到特征提取、到超参数优化、再到模型评估的所有步骤。 有关详细信息，请参阅 [ML 管道](concept-ml-pipelines.md)。
 
-如果使用[设计器](concept-designer.md)创建 ML 管道，则随时可以单击设计器页面右上角的“...”，然后选择“克隆”。   克隆管道可以迭代管道设计，而不会丢失旧版本。  
+如果使用[设计器](concept-designer.md)创建 ML 管道，则随时可以单击设计器页面右上角的“...”，然后选择“克隆”。  克隆管道可以迭代管道设计，而不会丢失旧版本。  
 
 ## <a name="create-reusable-software-environments"></a>创建可重用的软件环境
 
@@ -137,12 +137,20 @@ Microsoft Power BI 支持使用机器学习模型进行数据分析。 有关详
 
 ## <a name="capture-the-governance-data-required-for-capturing-the-end-to-end-ml-lifecycle"></a>捕获所需的监管数据以捕获端到端的 ML 生命周期
 
-Azure ML 提供用于跟踪所有 ML 资产的端到端审核线索的功能。 具体而言：
+Azure ML 提供使用元数据跟踪所有 ML 资产的端到端审核线索的功能。
 
 - Azure ML [与 Git 集成](how-to-set-up-training-targets.md#gitintegration)，可跟踪有关存储库/分支/提交代码的来源位置的信息。
-- [Azure ML 数据集](how-to-create-register-datasets.md)可帮助你跟踪、分析数据及控制其版本。 
+- [Azure ML 数据集](how-to-create-register-datasets.md)可帮助你跟踪、分析数据及控制其版本。
+- 借助[可解释性](how-to-machine-learning-interpretability.md)，可以解释模型、满足法规要求，并了解模型如何针对给定输入来提供结果。
 - Azure ML 运行历史记录存储用于训练模型的代码、数据和计算的快照。
 - Azure ML 模型注册表捕获与模型关联的所有元数据（训练该模型的试验、模型的部署位置、其部署是否正常）。
+- 通过[与 Azure 集成](how-to-use-event-grid.md)，可以对机器学习生命周期中的事件进行操作。 例如，模型注册、部署、数据偏移和训练（运行）事件。
+
+> [!TIP]
+> 系统会自动捕获有关模型和数据集的某些信息，同时你可以使用“标记”添加其他信息。 在工作区中查找已注册的模型和数据集时，可以使用标记作为筛选器。
+>
+> 可以选择将数据集与已注册的模型相关联。 若要了解如何在注册模型时引用数据集，请参阅 [Model](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model(class)?view=azure-ml-py) 类参考信息。
+
 
 ## <a name="notify-automate-and-alert-on-events-in-the-ml-lifecycle"></a>针对 ML 生命周期中的事件发出通知和警报以及进行自动化处理
 Azure ML 将关键事件发布到 Azure 事件网格。使用事件网格可以针对 ML 生命周期中的事件发出通知并自动采取措施。 有关详细信息，请参阅[此文档](how-to-use-event-grid.md)。
@@ -158,7 +166,7 @@ Azure ML 将关键事件发布到 Azure 事件网格。使用事件网格可以�
 
 ## <a name="retrain-your-model-on-new-data"></a>基于新数据重新训练模型
 
-我们经常需要更新模型，甚至需要在收到新信息时从头开始重新训练该模型。 有时，接收新数据是该领域的预期环节。 在其他时候，如[检测数据集中的数据偏移（预览版）](how-to-monitor-datasets.md)中所述，在面对特定传感器更改、自然数据更改（例如季节性影响），或者某些功能因其他功能而发生改变等情况时，模型性能可能会下降。 
+我们经常需要验证并更新模型，甚至需要在收到新信息时从头开始重新训练该模型。 有时，接收新数据是该领域的预期环节。 在其他时候，如[检测数据集中的数据偏移（预览版）](how-to-monitor-datasets.md)中所述，在面对特定传感器更改、自然数据更改（例如季节性影响），或者某些功能因其他功能而发生改变等情况时，模型性能可能会下降。 
 
 对于“如何知道我是否应重新训练模型？”这一问题，没有统一的答案。 但是，前面所述 Azure ML 事件和监视工具是实现自动化的良好起点。 在决定重新训练模型后，应该： 
 
@@ -178,7 +186,11 @@ Azure ML 将关键事件发布到 Azure 事件网格。使用事件网格可以�
 * 定义服务连接时启用工作区选择。
 * 使发布管道可由训练管道中创建的已训练模型触发。
 
-有关将 Azure Pipelines 与 Azure 机器学习配合使用的详细信息，请参阅[使用 Azure Pipelines 实现 ML 模型的持续集成和部署](https://docs.microsoft.com/azure/azure/devops/pipelines/targets/azure-machine-learning)一文，以及 [Azure 机器学习 MLOps](https://aka.ms/mlops) 存储库。
+若要了解如何配合使用 Azure Pipelines 与 Azure 机器学习，请参阅以下链接：
+
+* [借助 Azure Pipelines 实现机器学习模型的持续集成和部署](https://docs.microsoft.com/azure/azure/devops/pipelines/targets/azure-machine-learning) 
+* [Azure 机器学习 MLOps](https://aka.ms/mlops) 存储库。
+* [Azure 机器学习 MLOpsPython](https://github.com/Microsoft/MLOpspython) 存储库。
 
 还可以使用 Azure 数据工厂创建数据引入管道，以准备好用于训练的数据。 有关详细信息，请参阅[数据引入管道](how-to-cicd-data-ingestion.md)。
 

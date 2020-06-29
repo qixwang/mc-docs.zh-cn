@@ -9,40 +9,41 @@ ms.topic: tutorial
 author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
-origin.date: 02/10/2020
-ms.date: 03/16/2020
-ms.openlocfilehash: fbbe2fbb41a54912111eb49787d75f484ef3abce
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+origin.date: 03/11/2020
+ms.date: 06/22/2020
+ms.openlocfilehash: ba4e597361535e0bc12031dd9aa7868e28d3e26a
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79291796"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097220"
 ---
 # <a name="tutorial-build-an-azure-machine-learning-pipeline-for-batch-scoring"></a>教程：生成用于批量评分的 Azure 机器学习管道
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-在本教程中，你将使用 Azure 机器学习中的某个管道运行批量评分作业。 本示例使用预先训练的 [Inception-V3](https://arxiv.org/abs/1512.00567) 卷积神经网络 Tensorflow 模型来对不带标签的图像进行分类。 生成并发布管道后，你将配置一个 REST 终结点，用于从任何平台上的任何 HTTP 库触发该管道。
+此高级教程介绍如何在 Azure 机器学习中构建管道来运行批量评分作业。 机器学习管道可以优化工作流以提高其速度、可移植性和可重用性，使你能够将工作重心放在机器学习上，而不必关注基础结构和自动化。 生成并发布管道后，你将配置一个 REST 终结点，用于从任何平台上的任何 HTTP 库触发该管道。 
 
-机器学习管道可以优化工作流以提高其速度、可移植性和可重用性，使你能够将工作重心放在专业技术和机器学习，而不是在基础结构和自动化上。 [详细了解机器学习管道](concept-ml-pipelines.md)。
+本示例使用 Tensorflow 中实现的预先训练的 [Inception-V3](https://arxiv.org/abs/1512.00567) 卷积神经网络模型来对不带标签的图像进行分类。 [详细了解机器学习管道](concept-ml-pipelines.md)。
 
 在本教程中，请完成以下任务：
 
 > [!div class="checklist"]
-> * 配置工作区并下载示例数据
-> * 创建用于提取和输出数据的数据对象
+> * 配置工作区 
+> * 下载并存储示例数据
+> * 创建用于提取和输出数据的数据集对象
 > * 下载、准备模型并将其注册到工作区中
 > * 预配计算目标并创建评分脚本
 > * 使用 `ParallelRunStep` 类进行异步批处理评分
 > * 生成、运行并发布管道
 > * 为管道启用 REST 终结点
 
-如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
+如果没有 Azure 订阅，请在开始前创建一个试用帐户。 立即试用[试用帐户](https://www.azure.cn/pricing/1rmb-trial)功能。
 
 ## <a name="prerequisites"></a>先决条件
 
 * 如果你没有 Azure 机器学习工作区或笔记本虚拟机，请完成[设置教程的第 1 部分](tutorial-1st-experiment-sdk-setup.md)。
-* 完成设置教程后，使用同一笔记本服务器打开 tutorials/machine-learning-pipelines-advanced/tutorial-pipeline-batch-scoring-classification.ipynb  笔记本。
+* 完成设置教程后，使用同一笔记本服务器打开 tutorials/machine-learning-pipelines-advanced/tutorial-pipeline-batch-scoring-classification.ipynb 笔记本。
 
 如果要在自己的[本地环境](how-to-configure-environment.md#local)中运行设置教程，可以访问 [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) 上的教程。 运行 `pip install azureml-sdk[notebooks] azureml-pipeline-core azureml-contrib-pipeline-steps pandas requests` 以获取所需的包。
 
@@ -58,7 +59,7 @@ from azureml.core import Workspace
 ws = Workspace.from_config()
 ```
 
-### <a name="create-a-datastore-for-sample-images"></a>为示例图像创建数据存储
+## <a name="create-a-datastore-for-sample-images"></a>为示例图像创建数据存储
 
 在 `pipelinedata` 帐户中，从 `sampledata` 公共 Blob 容器获取 ImageNet 评估公共数据示例。 调用 `register_azure_blob_container()` 可使数据可用于名为 `images_datastore` 的工作区。 然后，将工作区的默认数据存储设置为输出数据存储。 使用输出数据存储在管道中为输出评分。
 
@@ -74,16 +75,16 @@ batchscore_blob = Datastore.register_azure_blob_container(ws,
 def_data_store = ws.get_default_datastore()
 ```
 
-## <a name="create-data-objects"></a>创建数据对象
+## <a name="create-dataset-objects"></a>创建数据集对象
 
 生成管道时，将使用 `Dataset` 对象从工作区数据存储读取数据，并使用 `PipelineData` 对象在管道步骤之间传输中间数据。
 
 > [!Important]
 > 本教程中的批量评分示例只使用一个管道步骤。 在包含多个步骤的用例中，典型流包括以下步骤：
 >
-> 1. 使用 `Dataset` 对象作为提取原始数据的输入，执行某种转换，然后输出 `PipelineData` 对象。  
+> 1. 使用 `Dataset` 对象作为提取原始数据的输入，执行某种转换，然后输出 `PipelineData` 对象。 
 >
-> 2. 使用上一步骤中的 `PipelineData` 输出对象作为输入对象   。 针对后续步骤重复此过程。
+> 2. 使用上一步骤中的 `PipelineData` 输出对象作为输入对象 。 针对后续步骤重复此过程。
 
 在此场景中，你将创建与输入图像和分类标签（y-test 值）的数据存储目录相对应的 `Dataset` 对象。 此外，将为批量评分输出数据创建一个 `PipelineData` 对象。
 
@@ -137,7 +138,7 @@ model = Model.register(model_path="models/inception_v3.ckpt",
 
 ## <a name="create-and-attach-the-remote-compute-target"></a>创建并附加远程计算目标
 
-机器学习管道无法在本地运行，因此你需要在云资源或远程计算目标上运行这些管道。  远程计算目标是可重用的虚拟计算环境，可在其中运行试验和机器学习工作流。 
+机器学习管道无法在本地运行，因此你需要在云资源或远程计算目标上运行这些管道。 远程计算目标是可重用的虚拟计算环境，可在其中运行试验和机器学习工作流。 
 
 运行以下代码创建支持 GPU 的 [`AmlCompute`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py) 目标，并将其附加到工作区。 有关计算目标的详细信息，请参阅[概念文章](/machine-learning/concept-compute-target)。
 
@@ -260,7 +261,7 @@ def run(mini_batch):
 > [!TIP]
 > 本教程中的管道只有一个步骤，它会将输出写入某个文件。 对于多步骤管道，你也可以使用 `ArgumentParser` 来定义要将输出数据写入到的目录，以便将其输入到后续步骤。 有关使用 `ArgumentParser` 设计模式在多个管道步骤之间传递数据的示例，请参阅[笔记本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/nyc-taxi-data-regression-model-building/nyc-taxi-data-regression-model-building.ipynb)。
 
-## <a name="build-and-run-the-pipeline"></a>生成并运行管道
+## <a name="build-the-pipeline"></a>构建管道
 
 在运行管道之前，请创建一个用于定义 Python 环境的对象，并创建 `batch_scoring.py` 脚本所需的依赖项。 所需的主要依赖项是 Tensorflow，但你还需要为后台进程安装 `azureml-defaults`。 使用依赖项创建 `RunConfiguration` 对象。 另外，指定 Docker 和 Docker-GPU 支持。
 
@@ -304,9 +305,9 @@ parallel_run_config = ParallelRunConfig(
 * 输入和输出数据，以及任何自定义参数
 * 对执行步骤期间要运行的脚本或 SDK 逻辑的引用
 
-有多个类继承自父类 [`PipelineStep`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.builder.pipelinestep?view=azure-ml-py)。 你可以选择适当的类，以使用特定的框架和堆栈生成步骤。 在此示例中，将通过自定义 Python 脚本使用 `ParallelRunStep` 类定义步骤逻辑。 如果脚本的某个自变量是步骤的输入或步骤的输出，则必须分别在 `arguments` 数组以及 `input` 或 `output` 参数中定义该自变量。   
+有多个类继承自父类 [`PipelineStep`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.builder.pipelinestep?view=azure-ml-py)。 你可以选择适当的类，以使用特定的框架和堆栈生成步骤。 在此示例中，将通过自定义 Python 脚本使用 `ParallelRunStep` 类定义步骤逻辑。 如果脚本的某个自变量是步骤的输入或步骤的输出，则必须分别在 `arguments` 数组以及 `input` 或 `output` 参数中定义该自变量。  
 
-如果存在多个步骤，`outputs` 数组中的某个对象引用可用作后续管道步骤的输入。 
+如果存在多个步骤，`outputs` 数组中的某个对象引用可用作后续管道步骤的输入。
 
 ```python
 from azureml.contrib.pipeline.steps import ParallelRunStep
@@ -325,14 +326,14 @@ batch_score_step = ParallelRunStep(
 
 有关可对不同步骤类型使用的所有类的列表，请参阅[步骤包](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps?view=azure-ml-py)。
 
-### <a name="run-the-pipeline"></a>运行管道
+## <a name="submit-the-pipeline"></a>提交管道
 
 现在请运行管道。 首先，使用工作区引用和创建的管道步骤创建一个 `Pipeline` 对象。 `steps` 参数是步骤数组。 在本例中，批量评分只有一个步骤。 若要生成包含多个步骤的管道，请将步骤按顺序放入此数组。
 
 接下来，使用 `Experiment.submit()` 函数提交管道以供执行。 还可以指定自定义参数 `param_batch_size`。 `wait_for_completion` 函数将在管道生成过程中输出日志。 可以使用日志来查看当前进度。
 
 > [!IMPORTANT]
-> 首次管道运行需要大约 15 分钟。  必须下载所有依赖项、创建 Docker 映像，并预配和创建 Python 环境。 再次运行管道所花费的时间会大幅减少，因为会重复使用这些资源，而无需再次创建。 但是，管道的总运行时间取决于脚本的工作负荷，以及每个管道步骤中运行的进程数。
+> 首次管道运行需要大约 15 分钟。 必须下载所有依赖项、创建 Docker 映像，并预配和创建 Python 环境。 再次运行管道所花费的时间会大幅减少，因为会重复使用这些资源，而无需再次创建。 但是，管道的总运行时间取决于脚本的工作负荷，以及每个管道步骤中运行的进程数。
 
 ```python
 from azureml.core import Experiment
@@ -352,7 +353,7 @@ import pandas as pd
 
 batch_run = next(pipeline_run.get_children())
 batch_output = batch_run.get_output_data("scores")
-batch_output.download(local_path="inception_result")
+batch_output.download(local_path="inception_results")
 
 for root, dirs, files in os.walk("inception_results"):
     for file in files:
@@ -380,7 +381,7 @@ published_pipeline
 
 若要从 REST 终结点运行管道，需要获取 OAuth2 Bearer-type 身份验证标头。 以下示例使用交互式身份验证（用于演示目的），但对于大多数需要自动身份验证或无头身份验证的生产方案，请使用服务主体身份验证，如[此文中所述](how-to-setup-authentication.md)。
 
-服务主体身份验证涉及到在 *Azure Active Directory* 中创建应用注册。  首先生成客户端机密，然后为服务主体授予对机器学习工作区的角色访问权限。  使用 [`ServicePrincipalAuthentication`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.serviceprincipalauthentication?view=azure-ml-py) 类来管理身份验证流。 
+服务主体身份验证涉及到在 *Azure Active Directory* 中创建应用注册。 首先生成客户端机密，然后为服务主体授予对机器学习工作区的角色访问权限。 使用 [`ServicePrincipalAuthentication`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.serviceprincipalauthentication?view=azure-ml-py) 类来管理身份验证流。 
 
 [`InteractiveLoginAuthentication`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.interactiveloginauthentication?view=azure-ml-py) 和 `ServicePrincipalAuthentication` 均继承自 `AbstractAuthentication`。 在这两种情况下，请以相同的方式使用 [`get_authentication_header()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.abstractauthentication?view=azure-ml-py#get-authentication-header--) 函数来提取标头：
 
@@ -432,12 +433,12 @@ RunDetails(published_pipeline_run).show()
 
 如果不打算使用已创建的资源，请删除它们，以免产生任何费用：
 
-1. 在 Azure 门户的左侧菜单中选择“资源组”  。
+1. 在 Azure 门户的左侧菜单中选择“资源组”。
 1. 在资源组列表中，选择创建的资源组。
-1. 选择“删除资源组”  。
-1. 输入资源组名称。 然后选择“删除”。 
+1. 选择“删除资源组”。
+1. 输入资源组名称。 然后选择“删除”。
 
-还可保留资源组，但请删除单个工作区。 显示工作区属性，然后选择“删除”  。
+还可保留资源组，但请删除单个工作区。 显示工作区属性，然后选择“删除”。
 
 ## <a name="next-steps"></a>后续步骤
 

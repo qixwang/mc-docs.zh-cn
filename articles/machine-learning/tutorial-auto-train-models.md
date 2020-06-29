@@ -11,12 +11,12 @@ ms.author: trbye
 ms.reviewer: trbye
 origin.date: 02/10/2020
 ms.date: 03/16/2020
-ms.openlocfilehash: adcc49cc30cdb66dd611ce8e634cb193f3c017f8
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 5572e1fd5fdfb1d427b95524946a483b4f49f61d
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78850590"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097127"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>教程：使用自动化机器学习预测出租车费
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -32,12 +32,12 @@ ms.locfileid: "78850590"
 > * 定型自动化机器学习回归模型
 > * 计算模型准确度
 
-如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 立即试用[免费版或付费版](https://aka.ms/AMLFree)的 Azure 机器学习。
+如果没有 Azure 订阅，请在开始前创建一个试用帐户。 立即试用[免费版或付费版](https://www.azure.cn/pricing/1rmb-trial)的 Azure 机器学习。
 
 ## <a name="prerequisites"></a>先决条件
 
 * 如果还没有 Azure 机器学习工作区或 Notebook 虚拟机，请完成[设置教程](tutorial-1st-experiment-sdk-setup.md)。
-* 完成设置教程后，使用同一笔记本服务器打开 tutorials/regression-automl-nyc-taxi-data/regression-automated-ml.ipynb  笔记本。
+* 完成设置教程后，使用同一笔记本服务器打开 tutorials/regression-automl-nyc-taxi-data/regression-automated-ml.ipynb** 笔记本。
 
 如果你想要在自己的[本地环境](how-to-configure-environment.md#local)中运行此教程，也可以在 [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) 上找到它。 运行 `pip install azureml-sdk[automl] azureml-opendatasets azureml-widgets` 以获取所需的包。
 
@@ -454,7 +454,7 @@ green_taxi_df.head(10)
       <td>6.30</td>
       <td>1.00</td>
       <td>1</td>
-      <td>20</td>
+      <td>20 个</td>
       <td>1</td>
       <td>16</td>
     </tr>
@@ -895,13 +895,13 @@ x_train, x_test, y_train, y_test = train_test_split(x_df, y_df, test_size=0.2, r
 
 定义用于训练的试验参数和模型设置。 查看[设置](how-to-configure-auto-train.md)的完整列表。 提交带这些默认设置的试验大约需要 5-20 分钟，但如果需要缩短运行时间，可减小 `experiment_timeout_minutes` 参数。
 
-|properties| 本教程中的值 |说明|
+|属性| 本教程中的值 |说明|
 |----|----|---|
 |**iteration_timeout_minutes**|2|每个迭代的时间限制（分钟）。 减小此值可缩短总运行时。|
-|**experiment_timeout_minutes**|20|在试验结束之前，所有合并的迭代所花费的最大时间量（以分钟为单位）。|
+|**experiment_timeout_minutes**|20 个|在试验结束之前，所有合并的迭代所花费的最大时间量（以分钟为单位）。|
 |**enable_early_stopping**|True|如果分数在短期内没有提高，则进行标记，以提前终止。|
 |**primary_metric**| spearman_correlation | 要优化的指标。 将根据此指标选择最佳拟合模型。|
-|**featurization**| auto | 如果使用“auto”，则试验可以预处理输入数据（处理缺失的数据、将文本转换为数字，等等） |
+|**featurization**| auto | 如果使用“auto”，则试验可以预处理输入数据（处理缺失的数据、将文本转换为数字，等等）****|
 |**verbosity**| logging.INFO | 控制日志记录的级别。|
 |**n_cross_validations**|5|在验证数据未指定的情况下，需执行的交叉验证拆分的数目。|
 
@@ -1071,12 +1071,12 @@ print(1 - mean_abs_percent_error)
 
 如果不打算使用已创建的资源，请删除它们，以免产生任何费用。
 
-1. 在 Azure 门户中，选择最左侧的“资源组”  。
+1. 在 Azure 门户中，选择最左侧的“资源组”****。
 1. 从列表中选择已创建的资源组。
-1. 选择“删除资源组”  。
-1. 输入资源组名称。 然后选择“删除”  。
+1. 选择“删除资源组”****。
+1. 输入资源组名称。 然后选择“删除”****。
 
-还可保留资源组，但请删除单个工作区。 显示工作区属性，然后选择“删除”  。
+还可保留资源组，但请删除单个工作区。 显示工作区属性，然后选择“删除”****。
 
 ## <a name="next-steps"></a>后续步骤
 

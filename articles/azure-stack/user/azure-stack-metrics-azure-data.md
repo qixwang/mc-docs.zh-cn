@@ -3,20 +3,20 @@ title: 使用 Azure Stack Hub 上的 Azure Monitor
 description: 了解如何使用 Azure Stack Hub 上的 Azure Monitor。
 author: WenJason
 ms.topic: article
-origin.date: 1/22/2020
-ms.date: 05/18/2020
+origin.date: 5/27/2020
+ms.date: 06/22/2020
 ms.author: v-jay
 ms.lastreviewed: 12/01/2019
-ms.openlocfilehash: 079cf15ec4d0e7156ecd86b98f2c85c7840a1648
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.openlocfilehash: 21cc929510aeb42cf146827276545c957e882d70
+ms.sourcegitcommit: d86e169edf5affd28a1c1a4476d72b01a7fb421d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83422642"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85096269"
 ---
 # <a name="use-azure-monitor-on-azure-stack-hub"></a>使用 Azure Stack Hub 上的 Azure Monitor
 
-本文概述了 Azure Stack Hub 中的 Azure Monitor 服务。 它讨论了 Azure Monitor 的运行以及有关如何使用 Azure Stack Hub 中的 Azure Monitor 的其他信息。 
+本文概述了 Azure Stack Hub 中的 Azure Monitor 服务。 它讨论了 Azure Monitor 的运行以及有关如何使用 Azure Stack Hub 中的 Azure Monitor 的其他信息。
 
 有关 Azure Monitor 的概述，请参阅 Azure 文章：[Azure Stack Hub 上的 Azure Monitor 入门](/azure-monitor/overview)。
 
@@ -32,10 +32,10 @@ Azure 监视器是一款平台服务，提供一个中心位置来让用户监�
 在你的订阅的套餐资源提供程序设置上注册 **Microsoft.insights** 资源提供程序。 你可以验证该资源提供程序在与你的订阅关联的套餐中是否可用：
 
 1. 打开 Azure Stack Hub 用户门户。
-2. 选择 **订阅**。
+2. 选择“订阅”。****
 3. 选择要注册的订阅。
-4. 在“设置”下，选择“资源提供程序”。   
-5. 在列表中找到 **Microsoft.Insights**，并验证状态是否为“已注册”  。
+4. 在“设置”下，选择“资源提供程序”。**** **** 
+5. 在列表中找到 **Microsoft.Insights**，并验证状态是否为“已注册”****。
 
 ## <a name="overview-of-azure-monitor-on-azure-stack-hub"></a>Azure Stack Hub 上的 Azure Monitor 概述
 
@@ -43,7 +43,7 @@ Azure 监视器是一款平台服务，提供一个中心位置来让用户监�
 
 ## <a name="azure-monitor-sources-compute-subset"></a>Azure Monitor 源：计算子集
 
-![Azure Stack Hub 上的 Azure Monitor 源 - 计算子集](media/azure-stack-metrics-azure-data/azs-monitor-computersubset.png)
+![Azure Stack Hub 上的 Azure Monitor 源 - 计算子集](media/azure-stack-metrics-azure-data/azs-monitor-computersubset.svg)
 
 Azure Stack Hub 中的 **Microsoft.Compute** 资源提供程序包括：
  - 虚拟机 
@@ -77,7 +77,7 @@ Azure Stack Hub 中的 **Microsoft.Compute** 资源提供程序包括：
 
 ## <a name="azure-monitor-sources-everything-else"></a>Azure Monitor 源：所有其他项
 
-![Azure Stack Hub 上的 Azure Monitor 源 - 所有其他项](media/azure-stack-metrics-azure-data/azs-monitor-othersubset.png)
+![Azure Stack Hub 上的 Azure Monitor 源 - 所有其他项](media/azure-stack-metrics-azure-data/azs-monitor-othersubset.svg)
 
 ### <a name="resources---metrics-and-diagnostics-logs"></a>资源 - 指标和诊断日志
 
@@ -107,7 +107,7 @@ Azure Stack Hub 中的 **Microsoft.Compute** 资源提供程序包括：
 
 可视化方法包括：
  - 使用 Azure Stack Hub 用户和管理员门户。
- - 将数据路由到 Azure Power BI。
+ - 将数据路由到 Microsoft Power BI。
  - 将数据路由到第三方可视化工具，可以使用实时传送视频流，也可以让工具从 Azure 存储中的存档读取。
 
 ## <a name="methods-of-accessing-azure-monitor-on-azure-stack-hub"></a>访问 Azure Stack Hub 上的 Azure Monitor 的方法
@@ -121,7 +121,7 @@ Azure Stack Hub 中的 **Microsoft.Compute** 资源提供程序包括：
  - [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor)
 
 > [!Important]  
-> 如果在查看 VM 的性能图表时遇到“资源未找到”  错误，请确保已在与 VM 关联的订阅上注册了 Microsoft.insights。
+> 如果在查看 VM 的性能图表时遇到“资源未找到”**** 错误，请确保已在与 VM 关联的订阅上注册了 Microsoft.insights。
 
 ## <a name="next-steps"></a>后续步骤
 

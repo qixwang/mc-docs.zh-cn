@@ -5,15 +5,15 @@ ms.topic: conceptual
 origin.date: 04/06/2020
 ms.date: 04/30/2020
 ms.author: v-yeche
-ms.openlocfilehash: f3ae986eafba1b22e6835f272b6ba0823f4841ba
-ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
+ms.openlocfilehash: d5e8addcc56444a91ca5eef72ecf545bfe5adb9d
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82595988"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098622"
 ---
 # <a name="tag-support-for-azure-resources"></a>Azure 资源的标记支持
-本文介绍某一资源类型是否支持[标记](tag-resources.md)。 标记为“支持标记”  的列指示资源类型是否具有标记的属性。 
+本文介绍某一资源类型是否支持[标记](tag-resources.md)。 标记为“支持标记”的列指示资源类型是否具有标记的属性。 
 
 <!--Not Avaialble on [Cost Management cost analysis](../../cost-management/quick-acm-cost-analysis.md#understanding-grouping-and-filtering-options)-->
 <!--Not Avaialble on [Azure billing invoice and daily usage data](../../billing/billing-download-azure-invoice-daily-usage-date.md)-->
@@ -59,6 +59,7 @@ ms.locfileid: "82595988"
 > - [Microsoft.Insights](#microsoftinsights)
 > - [Microsoft.IoTCentral](#microsoftiotcentral)
 > - [Microsoft.KeyVault](#microsoftkeyvault)
+> - [Microsoft.Kubernetes](#microsoftkubernetes)
 > - [Microsoft.Kusto](#microsoftkusto)
 > - [Microsoft.Logic](#microsoftlogic)
 > - [Microsoft.MachineLearningServices](#microsoftmachinelearningservices)
@@ -411,7 +412,7 @@ ms.locfileid: "82595988"
 > | registries / queueBuild | 否 | 否 |
 > | registries / regenerateCredential | 否 | 否 |
 > | registries / regenerateCredentials | 否 | 否 |
-> | registries/replications | 是 | 是 |
+> | registries / replications | 是 | 是 |
 > | registries / runs | 否 | 否 |
 > | registries / runs / cancel | 否 | 否 |
 > | registries / scheduleRun | 否 | 否 |
@@ -420,7 +421,7 @@ ms.locfileid: "82595988"
 > | registries/tasks | 是 | 是 |
 > | registries / tokens | 否 | 否 |
 > | registries / updatePolicies | 否 | 否 |
-> | registries/webhooks | 是 | 是 |
+> | registries / webhooks | 是 | 是 |
 > | registries / webhooks / getCallbackConfig | 否 | 否 |
 > | registries / webhooks / ping | 否 | 否 |
 
@@ -689,6 +690,13 @@ ms.locfileid: "82595988"
 > | vaults / eventGridFilters | 否 | 否 |
 > | vaults / secrets | 否 | 否 |
 
+## <a name="microsoftkubernetes"></a>Microsoft.Kubernetes
+
+> [!div class="mx-tableFixed"]
+> | 资源类型 | 支持标记 | 在成本报表中标记 |
+> | ------------- | ----------- | ----------- |
+> | connectedClusters | 是 | 是 |
+
 ## <a name="microsoftkusto"></a>Microsoft.Kusto
 
 > [!div class="mx-tableFixed"]
@@ -737,7 +745,7 @@ ms.locfileid: "82595988"
 > | applyUpdates | 否 | 否 |
 > | configurationAssignments | 否 | 否 |
 > | maintenanceConfigurations | 是 | 是 |
-> | 更新 | 否 | 否 |
+> | updates | 否 | 否 |
 
 ## <a name="microsoftmanagedidentity"></a>Microsoft.ManagedIdentity
 
@@ -804,8 +812,11 @@ ms.locfileid: "82595988"
 > | applicationSecurityGroups | 是 | 是 |
 > | azureFirewallFqdnTags | 否 | 否 |
 > | azureFirewalls | 是 | 否 |
+> | bastionHosts | 是 | 否 |
 > | bgpServiceCommunities | 否 | 否 |
 > | connections | 是 | 是 |
+> | ddosCustomPolicies | 是 | 是 |
+> | ddosProtectionPlans | 是 | 是 |
 > | dnsOperationStatuses | 否 | 否 |
 > | dnszones | 是 | 是 |
 > | dnszones / A | 否 | 否 |
@@ -854,6 +865,7 @@ ms.locfileid: "82595988"
 > | privateDnsZones / TXT | 否 | 否 |
 > | privateDnsZones / virtualNetworkLinks | 是 | 是 |
 > | privateEndpoints | 是 | 是 |
+> | privateLinkServices | 是 | 是 |
 > | publicIPAddresses | 是 | 是 |
 > | publicIPPrefixes | 是 | 是 |
 > | routeFilters | 是 | 是 |
@@ -866,6 +878,7 @@ ms.locfileid: "82595988"
 > | virtualHubs | 是 | 是 |
 > | virtualNetworkGateways | 是 | 是 |
 > | virtualNetworks | 是 | 是 |
+> | virtualNetworks/subnets | 否 | 否 |
 > | virtualNetworkTaps | 是 | 是 |
 > | virtualWans | 是 | 否 |
 > | vpnGateways | 是 | 是 |
@@ -1214,7 +1227,7 @@ ms.locfileid: "82595988"
 > | ------------- | ----------- | ----------- |
 > | environments | 是 | 否 |
 > | environments / accessPolicies | 否 | 否 |
-> | environments/eventsources | 是 | 否 |
+> | environments / eventsources | 是 | 否 |
 > | environments / referenceDataSets | 是 | 否 |
 
 <!--Not Available on ## Microsoft.VMwareCloudSimple-->
@@ -1257,7 +1270,7 @@ ms.locfileid: "82595988"
 > | sites / eventGridFilters | 否 | 否 |
 > | sites / hostNameBindings | 否 | 否 |
 > | sites / networkConfig | 否 | 否 |
-> | sites/premieraddons | 是 | 是 |
+> | sites / premieraddons | 是 | 是 |
 > | sites/slots | 是 | 是 |
 > | sites / slots / eventGridFilters | 否 | 否 |
 > | sites / slots / hostNameBindings | 否 | 否 |

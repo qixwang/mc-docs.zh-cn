@@ -4,17 +4,17 @@ titleSuffix: Azure Stack
 description: 了解如何排查 Azure Stack Hub 的问题，包括 VM、存储和应用服务的问题。
 author: WenJason
 ms.topic: article
-origin.date: 11/05/2019
-ms.date: 05/18/2020
+origin.date: 05/13/2019
+ms.date: 06/22/2020
 ms.author: v-jay
 ms.reviewer: prchint
-ms.lastreviewed: 11/05/2019
-ms.openlocfilehash: 4fcc4c4c8e2f97278a7cbbd3d72faacb52dd9967
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.lastreviewed: 15/13/2020
+ms.openlocfilehash: b40aaa7862916f560738450b9938f723e3195a29
+ms.sourcegitcommit: d86e169edf5affd28a1c1a4476d72b01a7fb421d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83422602"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85096377"
 ---
 # <a name="troubleshoot-issues-in-azure-stack-hub"></a>排查 Azure Stack Hub 中的问题
 
@@ -33,6 +33,7 @@ ms.locfileid: "83422602"
 * [如何在 Azure Stack Hub 中使用诊断工具](azure-stack-diagnostics.md)
 * [如何验证 Azure Stack Hub 系统状态](azure-stack-diagnostic-test.md)
 * [更新包发布频率](azure-stack-servicing-policy.md#update-package-release-cadence)
+* [对节点状态进行验证和故障排除](azure-stack-node-actions.md)
 
 ### <a name="supported-operating-systems-and-sizes-for-guest-vms"></a>来宾 VM 支持的操作系统和大小
 
@@ -116,8 +117,32 @@ Azure Stack Hub 中的用户可以是订阅、资源组或服务的每个实例�
 
 如果在离线场景中使用集成系统，建议使用企业证书颁发机构 (CA)。 以 Base-64 格式导出根证书，然后将其导入 Azure 存储资源管理器。 确保从资源管理器终结点中删除尾部斜杠 (`/`)。 有关详细信息，请参阅[准备连接到 Azure Stack Hub](/azure-stack/user/azure-stack-storage-connect-se)。
 
-## <a name="troubleshooting-app-service"></a>应用服务故障排除
+## <a name="troubleshoot-app-service"></a>对应用服务进行故障排除
 
 ### <a name="create-aadidentityappps1-script-fails"></a>Create-AADIdentityApp.ps1 脚本失败
 
-如果应用服务所需的 Create-AADIdentityApp.ps1 脚本失败，请确保在运行该脚本时包含必需的 `-AzureStackAdminCredential` 参数。 有关详细信息，请参阅[在 Azure Stack Hub 上部署应用服务的先决条件](azure-stack-app-service-before-you-get-started.md#create-an-azure-active-directory-app)。
+如果应用服务所需的 Create-AADIdentityApp.ps1 脚本失败，请确保在运行该脚本时包含必需的 `-AzureStackAdminCredential` 参数。 有关详细信息，请参阅[在 Azure Stack Hub 上部署应用服务的先决条件](azure-stack-app-service-before-you-get-started.md#create-an-azure-ad-app)。
+
+## <a name="troubleshoot-azure-stack-hub-updates"></a>对 Azure Stack Hub 更新进行故障排除
+
+Azure Stack Hub 修补程序和更新过程旨在让操作员以一致且简单的方式应用更新包。 虽然不常见，但在修补和更新过程中可能会出现问题。 如果在修补和更新过程中遇到问题，建议执行以下步骤：
+
+0. **先决条件**：请确保已遵循[更新活动清单](release-notes-checklist.md)，并[启用主动日志收集](azure-stack-configure-automatic-diagnostic-log-collection-tzl.md)。
+
+1. 按照在更新失败时创建的失败警报中的补救步骤进行操作。
+
+2. 如果无法解决问题，请创建 [Azure Stack Hub 支持票证](azure-stack-help-and-support-overview-tzl.md)。 请确保已针对发生问题的时间跨度[收集日志](azure-stack-configure-on-demand-diagnostic-log-collection-portal-tzl.md)。
+
+## <a name="common-azure-stack-hub-patch-and-update-issues"></a>常见 Azure Stack Hub 修补程序和更新问题
+
+*适用于：Azure Stack Hub 集成系统*
+
+### <a name="preparationfailed"></a>PreparationFailed
+
+**适用于**：此问题适用于所有支持的版本。
+
+**原因：** 尝试安装 Azure Stack Hub 更新时，更新的状态可能会失败并将状态更改为 `PreparationFailed`。 对于连接到 Internet 的系统，这通常表明由于 Internet 连接不稳定，无法正确下载更新包。 
+
+**补救措施**：可以通过再次单击“立即安装”**** 来解决此问题。 如果此问题仍然存在，建议按照[安装更新](azure-stack-apply-updates.md?#install-updates-and-monitor-progress)部分的说明手动上传更新包。
+
+**发生率**：通用

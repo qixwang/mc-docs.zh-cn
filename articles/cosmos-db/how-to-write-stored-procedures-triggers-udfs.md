@@ -4,15 +4,15 @@ description: 了解如何在 Azure Cosmos DB 中定义存储过程、触发器�
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
-origin.date: 10/31/2019
-ms.date: 02/10/2020
+origin.date: 05/07/2020
+ms.date: 06/22/2020
 ms.author: v-yeche
-ms.openlocfilehash: cd999c15ce8931a5bc909fcbc329826c15ee97d5
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 60ee6eb06c385eac21d5d5bf653620608f908014
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "76980455"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098577"
 ---
 # <a name="how-to-write-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>如何在 Azure Cosmos DB 中编写存储过程、触发器和用户定义的函数
 
@@ -30,8 +30,6 @@ Azure Cosmos DB 提供 JavaScript 的语言集成式事务执行用于编写**�
 ## <a name="how-to-write-stored-procedures"></a>如何编写存储过程
 
 存储过程是使用 JavaScript 编写的，它们可以在 Azure Cosmos 容器中创建、更新、读取、查询和删除项。 存储过程按集合注册，可以针对该集合中的任何文档或附件运行。
-
-**示例**
 
 下面是一个可以返回“Hello World”响应的简单存储过程。
 
@@ -54,7 +52,7 @@ var helloWorldStoredProc = {
 <a name="create-an-item"></a>
 ### <a name="create-an-item-using-stored-procedure"></a>使用存储过程创建项
 
-使用存储过程创建某个项时，该项将会插入到 Azure Cosmos 容器，并返回新建项的 ID。 创建项是一种异步操作，依赖于 JavaScript 回调函数。 回调函数包含两个参数 - 一个参数用于操作失败时返回的错误对象，另一个参数用于返回值（在本例中为创建的对象）。 在回调内部，可以处理异常或引发错误。 如果未提供回调并出现错误，则 Azure Cosmos DB 运行时将引发错误。 
+使用存储过程创建某个项时，该项将会插入到 Azure Cosmos 容器，并返回新建项的 ID。 创建项是一种异步操作，依赖于 JavaScript 回调函数。 回调函数包含两个参数 - 一个参数用于操作失败时返回的错误对象，另一个参数用于返回值（在本例中为创建的对象）。 在回调内部，可以处理异常或引发错误。 如果未提供回调并出现错误，则 Azure Cosmos DB 运行时将引发错误。
 
 存储过程还包含一个用于设置说明的参数（一个布尔值）。 如果该参数设置为 true，同时缺少说明，则存储过程将引发异常。 否则，存储过程的剩余部分将继续运行。
 
@@ -76,7 +74,7 @@ function createToDoItem(itemToCreate) {
 }
 ```
 
-### <a name="arrays-as-input-parameters-for-stored-procedures"></a>将数组用作存储过程的输入参数 
+### <a name="arrays-as-input-parameters-for-stored-procedures"></a>将数组用作存储过程的输入参数
 
 使用 Azure 门户定义存储过程时，输入参数始终以字符串的形式发送到该存储过程。 即使将字符串数组作为输入传递，该数组也会转换为字符串发送到存储过程。 若要解决此问题，可在存储过程中定义一个函数以将字符串作为数组进行分析。 以下代码演示如何将字符串输入参数作为数组进行分析：
 
@@ -106,8 +104,8 @@ function tradePlayers(playerId1, playerId2) {
     var player1Document, player2Document;
 
     // query for players
-    var filterQuery = 
-    {     
+    var filterQuery =
+    {
         'query' : 'SELECT * FROM Players p where p.id = @playerId1',
         'parameters' : [{'name':'@playerId1', 'value':playerId1}] 
     };
@@ -119,10 +117,10 @@ function tradePlayers(playerId1, playerId2) {
             if (items.length != 1) throw "Unable to find both names";
             player1Item = items[0];
 
-            var filterQuery2 = 
-            {     
+            var filterQuery2 =
+            {
                 'query' : 'SELECT * FROM Players p where p.id = @playerId2',
-                'parameters' : [{'name':'@playerId2', 'value':playerId2}] 
+                'parameters' : [{'name':'@playerId2', 'value':playerId2}]
             };
             var accept2 = container.queryDocuments(container.getSelfLink(), filterQuery2, {},
                 function (err2, items2, responseOptions2) {
@@ -213,6 +211,57 @@ function bulkImport(items) {
             tryCreate(items[count], callback);
         }
     }
+}
+```
+
+<a name="async-promises"></a>
+### <a name="async-await-with-stored-procedures"></a>使用存储过程的 async await
+
+下面是使用 helper 函数将 async-await 与 Promises 结合使用的存储过程的示例。 存储过程会查询项并将其替换。
+
+```javascript
+function async_sample() {
+    const ERROR_CODE = {
+        NotAccepted: 429
+    };
+
+    const asyncHelper = {
+        queryDocuments(sqlQuery, options) {
+            return new Promise((resolve, reject) => {
+                const isAccepted = __.queryDocuments(__.getSelfLink(), sqlQuery, options, (err, feed, options) => {
+                    if (err) reject(err);
+                    resolve({ feed, options });
+                });
+                if (!isAccepted) reject(new Error(ERROR_CODE.NotAccepted, "replaceDocument was not accepted."));
+            });
+        },
+
+        replaceDocument(doc) {
+            return new Promise((resolve, reject) => {
+                const isAccepted = __.replaceDocument(doc._self, doc, (err, result, options) => {
+                    if (err) reject(err);
+                    resolve({ result, options });
+                });
+                if (!isAccepted) reject(new Error(ERROR_CODE.NotAccepted, "replaceDocument was not accepted."));
+            });
+        }
+    };
+
+    async function main() {
+        let continuation;
+        do {
+            let { feed, options } = await asyncHelper.queryDocuments("SELECT * from c", { continuation });
+
+            for (let doc of feed) {
+                doc.newProp = 1;
+                await asyncHelper.replaceDocument(doc);
+            }
+
+            continuation = options.continuation;
+        } while (continuation);
+    }
+
+    main().catch(err => getContext().abort(err));
 }
 ```
 

@@ -2,19 +2,23 @@
 title: 超出部署配额
 description: 介绍如何解决这样一个错误：在资源组历史记录中有 800 多个部署。
 ms.topic: troubleshooting
-origin.date: 10/04/2019
+origin.date: 05/26/2020
+ms.date: 06/22/2020
 ms.author: v-yeche
-ms.date: 01/06/2020
-ms.openlocfilehash: 06e08e98896f5f8e33a29e4f167d719f928b9836
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 3bef0c31fe70c20f32241c279d7c32dfbdcc8df9
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75631390"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098327"
 ---
+<!--Verified successfully on 2020/06/18 by harris-->
 # <a name="resolve-error-when-deployment-count-exceeds-800"></a>解决部署计数超出 800 的错误
 
 每个资源组在其部署历史记录中最多只能有 800 个部署。 本文介绍在部署因超出允许的 800 个部署的限制而失败时可能会出现的错误。 若要解决此错误，请从资源组历史记录中删除部署。 从历史记录中删除部署不会影响已部署的任何资源。
+
+> [!NOTE]
+> 从 2020 年 6 月开始，当你接近限制时，Azure 资源管理器会自动删除历史记录中的部署。 如果取消选择了自动删除，可能仍会看到此错误。 有关详细信息，请参阅[从部署历史记录中自动删除](deployment-history-deletions.md)。
 
 ## <a name="symptom"></a>症状
 
@@ -24,28 +28,28 @@ ms.locfileid: "75631390"
 
 ### <a name="azure-cli"></a>Azure CLI
 
-使用 [az group deployment delete](https://docs.azure.cn/cli/group/deployment?view=azure-cli-latest#az-group-deployment-delete) 命令从历史记录中删除部署。
+使用 [az deployment group delete](https://docs.azure.cn/cli/group/deployment?view=azure-cli-latest#az-deployment-group-delete) 命令从历史记录中删除部署。
 
 ```azurecli
-az group deployment delete --resource-group exampleGroup --name deploymentName
+az deployment group delete --resource-group exampleGroup --name deploymentName
 ```
 
 若要删除五天以前的所有部署，请使用：
 
 ```azurecli
 startdate=$(date +%F -d "-5days")
-deployments=$(az group deployment list --resource-group exampleGroup --query "[?properties.timestamp<'$startdate'].name" --output tsv)
+deployments=$(az deployment group list --resource-group exampleGroup --query "[?properties.timestamp<'$startdate'].name" --output tsv)
 
 for deployment in $deployments
 do
-  az group deployment delete --resource-group exampleGroup --name $deployment
+  az deployment group delete --resource-group exampleGroup --name $deployment
 done
 ```
 
 可使用以下命令获取部署历史记录中的当前计数：
 
 ```azurecli
-az group deployment list --resource-group exampleGroup --query "length(@)"
+az deployment group list --resource-group exampleGroup --query "length(@)"
 ```
 
 ### <a name="azure-powershell"></a>Azure PowerShell
@@ -79,5 +83,4 @@ foreach ($deployment in $deployments) {
 * [Azure 逻辑应用和 PowerShell 解决方案](https://devkimchi.com/2018/05/30/managing-excessive-arm-deployment-histories-with-logic-apps/)
 * [AzDevOps 扩展](https://github.com/christianwaha/AzureDevOpsExtensionCleanRG)
 
-<!-- Update_Description: new article about deployment quota exceeded -->
-<!--NEW.date: 11/25/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

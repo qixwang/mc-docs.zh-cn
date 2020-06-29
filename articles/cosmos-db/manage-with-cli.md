@@ -4,34 +4,51 @@ description: 使用 Azure CLI 管理 Azure Cosmos DB 帐户、数据库和容器
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
-origin.date: 04/13/2020
-ms.date: 04/27/2020
+origin.date: 06/03/2020
+ms.date: 06/22/2020
 ms.author: v-yeche
-ms.openlocfilehash: fd4e49e49fca6f0c1ee05bb13ab1c08779e70918
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.openlocfilehash: b4e2b2108ff62c3bab4785671875b0f745ea2de6
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82134654"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098298"
 ---
 # <a name="manage-azure-cosmos-resources-using-azure-cli"></a>使用 Azure CLI 管理 Azure Cosmos 资源
 
-以下指南介绍了使用 Azure CLI 自动管理 Azure Cosmos DB 帐户、数据库和容器的常用命令。 [Azure CLI 参考](https://docs.azure.cn/cli/cosmosdb?view=azure-cli-latest)中收录了所有 Azure Cosmos DB CLI 命令的参考页。 还可以在[针对 Azure Cosmos DB 的 Azure CLI 示例](cli-samples.md)中找到更多示例，包括如何为 MongoDB、Gremlin、Cassandra 和表 API 创建和管理 Cosmos DB 帐户、数据库和容器。
+以下指南介绍了使用 Azure CLI 自动管理 Azure Cosmos DB 帐户、数据库和容器的常见命令。 [Azure CLI 参考](https://docs.azure.cn/cli/cosmosdb?view=azure-cli-latest)中收录了所有 Azure Cosmos DB CLI 命令的参考页。 还可以在[针对 Azure Cosmos DB 的 Azure CLI 示例](cli-samples.md)中找到更多示例，包括如何为 MongoDB、Gremlin、Cassandra 和表 API 创建和管理 Cosmos DB 帐户、数据库和容器。
 
 [!INCLUDE [azure-cli-2-azurechinacloud-environment-parameter](../../includes/azure-cli-2-azurechinacloud-environment-parameter.md)]
 
-如果选择在本地安装并使用 CLI，本主题要求运行 Azure CLI 2.0 版或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest)。
+选择在本地安装并使用 CLI 时，本主题要求运行 Azure CLI 2.6.0 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest)。
 
-## <a name="create-an-azure-cosmos-db-account"></a>创建 Azure Cosmos DB 帐户
+<!--Correct to use When-->
+
+## <a name="azure-cosmos-accounts"></a>Azure Cosmos 帐户
+
+以下部分演示如何管理 Azure Cosmos 帐户，包括：
+
+* [创建 Azure Cosmos 帐户](#create-an-azure-cosmos-db-account)
+* [添加或删除区域](#add-or-remove-regions)
+* [启用多区域写入](#enable-multiple-write-regions)
+* [设置区域性故障转移优先级](#set-failover-priority)
+* [启用自动故障转移](#enable-automatic-failover)
+* [触发手动故障转移](#trigger-manual-failover)
+* [列出帐户密钥](#list-account-keys)
+* [列出只读帐户密钥](#list-read-only-account-keys)
+* [列出连接字符串](#list-connection-strings)
+* [重新生成帐户密钥](#regenerate-account-key)
+
+### <a name="create-an-azure-cosmos-db-account"></a>创建 Azure Cosmos DB 帐户
 
 在“中国北部 2”和“中国东部 2”区域创建启用了 SQL API 和会话一致性的 Azure Cosmos DB 帐户：
 
 > [!IMPORTANT]
-> Azure Cosmos 帐户名称必须为小写且小于 31 个字符。
+> Azure Cosmos 帐户名称必须为小写且小于 44 个字符。
 
 ```azurecli
 resourceGroupName='MyResourceGroup'
-accountName='mycosmosaccount' #needs to be lower case and less than 31 characters
+accountName='mycosmosaccount' #needs to be lower case and less than 44 characters
 
 az cosmosdb create \
     -n $accountName \
@@ -41,7 +58,7 @@ az cosmosdb create \
     --locations regionName='China East 2' failoverPriority=1 isZoneRedundant=False
 ```
 
-## <a name="add-or-remove-regions"></a>添加或删除区域
+### <a name="add-or-remove-regions"></a>添加或删除区域
 
 创建包含两个区域的 Azure Cosmos 帐户，添加一个区域，并删除一个区域。
 
@@ -52,7 +69,7 @@ az cosmosdb create \
 
 ```azurecli
 resourceGroupName='myResourceGroup'
-accountName='mycosmosaccount' # must be lower case and <31 characters
+accountName='mycosmosaccount'
 
 # Create an account with 2 regions
 az cosmosdb create --name $accountName --resource-group $resourceGroupName \
@@ -71,7 +88,7 @@ az cosmosdb update --name $accountName --resource-group $resourceGroupName \
     --locations regionName="China East 2" failoverPriority=1 isZoneRedundant=False
 ```
 
-## <a name="enable-multiple-write-regions"></a>启用多个写入区域
+### <a name="enable-multiple-write-regions"></a>启用多个写入区域
 
 为 Cosmos 帐户启用多主数据库
 
@@ -86,7 +103,7 @@ accountId=$(az cosmosdb show -g $resourceGroupName -n $accountName --query id -o
 az cosmosdb update --ids $accountId --enable-multiple-write-locations true
 ```
 
-## <a name="set-failover-priority"></a>设置故障转移优先级
+### <a name="set-failover-priority"></a>设置故障转移优先级
 
 为已为自动故障转移而配置的 Azure Cosmos 帐户设置故障转移优先级
 
@@ -100,10 +117,12 @@ accountId=$(az cosmosdb show -g $resourceGroupName -n $accountName --query id -o
 
 # Make China East the next region to fail over to instead of China East 2
 az cosmosdb failover-priority-change --ids $accountId \
-    --failover-policies 'China North 2'=0 'China East'=1 'China East 2'=2
+    --failover-policies ChinaNorth2=0 ChinaEast=1 ChinaEast2=2
 ```
 
-## <a name="enable-automatic-failover"></a>启用自动故障转移
+<!--CORRECT ON E.g eastus=0 westus=1-->
+
+### <a name="enable-automatic-failover"></a>启用自动故障转移
 
 ```azurecli
 # Enable automatic failover on an existing account
@@ -116,13 +135,13 @@ accountId=$(az cosmosdb show -g $resourceGroupName -n $accountName --query id -o
 az cosmosdb update --ids $accountId --enable-automatic-failover true
 ```
 
-## <a name="trigger-manual-failover"></a>触发手动故障转移
+### <a name="trigger-manual-failover"></a>触发手动故障转移
 
 > [!CAUTION]
 > 在 priority = 0 的情况下更改区域会为 Azure Cosmos 帐户触发手动故障转移。 任何其他优先级更改都不会触发故障转移。
 
 ```azurecli
-# Assume region order is initially 'China North 2'=0 'China East 2'=1 'China East'=2 for account
+# Assume region order is initially 'ChinaNorth2=0' 'ChinaEast2=1' 'ChinaEast=2' for account
 resourceGroupName='myResourceGroup'
 accountName='mycosmosaccount'
 
@@ -131,11 +150,11 @@ accountId=$(az cosmosdb show -g $resourceGroupName -n $accountName --query id -o
 
 # Trigger a manual failover to promote China East 2 as new write region
 az cosmosdb failover-priority-change --ids $accountId \
-    --failover-policies 'China East 2'=0 'China East'=1 'China North 2'=2
+    --failover-policies ChinaEast2=0 ChinaEast=1 ChinaNorth2=2
 ```
 
 <a name="list-account-keys"></a>
-## <a name="list-all-account-keys"></a>列出所有帐户密钥
+### <a name="list-all-account-keys"></a>列出所有帐户密钥
 
 获取 Cosmos 帐户的所有密钥。
 
@@ -149,7 +168,7 @@ az cosmosdb keys list \
    -g $resourceGroupName
 ```
 
-## <a name="list-read-only-account-keys"></a>列出只读帐户密钥
+### <a name="list-read-only-account-keys"></a>列出只读帐户密钥
 
 获取 Cosmos 帐户的只读密钥。
 
@@ -164,7 +183,7 @@ az cosmosdb keys list \
     --type read-only-keys
 ```
 
-## <a name="list-connection-strings"></a>列出连接字符串
+### <a name="list-connection-strings"></a>列出连接字符串
 
 获取 Cosmos 帐户的连接字符串。
 
@@ -179,7 +198,7 @@ az cosmosdb keys list \
     --type connection-strings
 ```
 
-## <a name="regenerate-account-key"></a>重新生成帐户密钥
+### <a name="regenerate-account-key"></a>重新生成帐户密钥
 
 重新生成 Cosmos 帐户的新密钥。
 
@@ -192,7 +211,16 @@ az cosmosdb keys regenerate \
     --key-kind secondary
 ```
 
-## <a name="create-a-database"></a>创建数据库
+## <a name="azure-cosmos-db-database"></a>Azure Cosmos DB 数据库
+
+以下部分演示了如何管理 Azure Cosmos DB 数据库，具体包括：
+
+* [创建数据库](#create-a-database)
+* [创建具有共享吞吐量的数据库](#create-a-database-with-shared-throughput)
+* [更改数据库吞吐量](#change-database-throughput)
+* [管理数据库上的锁定](#manage-lock-on-a-database)
+
+### <a name="create-a-database"></a>创建数据库
 
 创建 Cosmos 数据库。
 
@@ -207,7 +235,7 @@ az cosmosdb sql database create \
     -n $databaseName
 ```
 
-## <a name="create-a-database-with-shared-throughput"></a>创建具有共享吞吐量的数据库
+### <a name="create-a-database-with-shared-throughput"></a>创建具有共享吞吐量的数据库
 
 创建具有共享吞吐量的 Cosmos 数据库。
 
@@ -224,7 +252,7 @@ az cosmosdb sql database create \
     --throughput $throughput
 ```
 
-## <a name="change-the-throughput-of-a-database"></a>更改数据库的吞吐量
+### <a name="change-database-throughput"></a>更改数据库吞吐量
 
 将 Cosmos 数据库的吞吐量增加 1000 RU/s。
 
@@ -250,7 +278,48 @@ az cosmosdb sql database throughput update \
     --throughput $newRU
 ```
 
-## <a name="create-a-container"></a>创建容器
+### <a name="manage-lock-on-a-database"></a>管理数据库上的锁
+
+将删除锁置于数据库上。 要详细了解如何执行此操作，请参阅[防止 SDK 更改](role-based-access-control.md#preventing-changes-from-cosmos-sdk)。
+
+```azurecli
+resourceGroupName='myResourceGroup'
+accountName='my-cosmos-account'
+databaseName='myDatabase'
+
+lockType='CanNotDelete' # CanNotDelete or ReadOnly
+databaseParent="databaseAccounts/$accountName"
+databaseLockName="$databaseName-Lock"
+
+# Create a delete lock on database
+az lock create --name $databaseLockName \
+    --resource-group $resourceGroupName \
+    --resource-type Microsoft.DocumentDB/sqlDatabases \
+    --lock-type $lockType \
+    --parent $databaseParent \
+    --resource $databaseName
+
+# Delete lock on database
+lockid=$(az lock show --name $databaseLockName \
+        --resource-group $resourceGroupName \
+        --resource-type Microsoft.DocumentDB/sqlDatabases \
+        --resource $databaseName \
+        --parent $databaseParent \
+        --output tsv --query id)
+az lock delete --ids $lockid
+```
+
+## <a name="azure-cosmos-db-container"></a>Azure Cosmos DB 容器
+
+以下部分演示了如何管理 Azure Cosmos DB 容器，具体包括：
+
+* [创建容器](#create-a-container)
+* [创建启用了 TTL 的容器](#create-a-container-with-ttl)
+* [使用自定义索引策略创建容器](#create-a-container-with-a-custom-index-policy)
+* [更改容器吞吐量](#change-container-throughput)
+* [管理容器上的锁定](#manage-lock-on-a-container)
+
+### <a name="create-a-container"></a>创建容器
 
 创建带有默认索引策略、分区键且 RU/s 为 400 的 Cosmos 容器。
 
@@ -269,7 +338,7 @@ az cosmosdb sql container create \
     -p $partitionKey --throughput $throughput
 ```
 
-## <a name="create-a-container-with-ttl"></a>创建带有 TTL 的容器
+### <a name="create-a-container-with-ttl"></a>创建带有 TTL 的容器
 
 创建启用了 TTL 的 Cosmos 容器。
 
@@ -288,7 +357,7 @@ az cosmosdb sql container update \
     --ttl=86400
 ```
 
-## <a name="create-a-container-with-a-custom-index-policy"></a>创建带有自定义索引策略的容器
+### <a name="create-a-container-with-a-custom-index-policy"></a>创建带有自定义索引策略的容器
 
 创建带有自定义索引策略、空间索引、组合索引、分区键且 RU/s 为 400 的 Cosmos 容器。
 
@@ -339,7 +408,7 @@ az cosmosdb sql container create \
 rm -f "idxpolicy-$uniqueId.json"
 ```
 
-## <a name="change-the-throughput-of-a-container"></a>更改容器的吞吐量
+### <a name="change-container-throughput"></a>更改容器吞吐量
 
 将 Cosmos 容器的吞吐量增加 1000 RU/s。
 
@@ -365,6 +434,39 @@ az cosmosdb sql container throughput update \
     -d $databaseName \
     -n $containerName \
     --throughput $newRU
+```
+
+### <a name="manage-lock-on-a-container"></a>管理容器上的锁定
+
+在某个容器上放置删除锁定。 要详细了解如何执行此操作，请参阅[防止 SDK 更改](role-based-access-control.md#preventing-changes-from-cosmos-sdk)。
+
+```azurecli
+resourceGroupName='myResourceGroup'
+accountName='my-cosmos-account'
+databaseName='myDatabase'
+containerName='myContainer'
+
+lockType='CanNotDelete' # CanNotDelete or ReadOnly
+databaseParent="databaseAccounts/$accountName"
+containerParent="databaseAccounts/$accountName/sqlDatabases/$databaseName"
+containerLockName="$containerName-Lock"
+
+# Create a delete lock on container
+az lock create --name $containerLockName \
+    --resource-group $resourceGroupName \
+    --resource-type Microsoft.DocumentDB/containers \
+    --lock-type $lockType \
+    --parent $containerParent \
+    --resource $containerName
+
+# Delete lock on container
+lockid=$(az lock show --name $containerLockName \
+        --resource-group $resourceGroupName \
+        --resource-type Microsoft.DocumentDB/containers \
+        --resource-name $containerName \
+        --parent $containerParent \
+        --output tsv --query id)
+az lock delete --ids $lockid
 ```
 
 ## <a name="next-steps"></a>后续步骤

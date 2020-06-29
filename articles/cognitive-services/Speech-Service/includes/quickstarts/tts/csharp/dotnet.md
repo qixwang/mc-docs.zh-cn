@@ -11,12 +11,12 @@ ms.topic: include
 origin.date: 04/04/2020
 ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: 3e70987aa0fa0411a63c831f747583425b7b6fb1
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.openlocfilehash: b6b27013b86137077982348dc6d81be9db1e6933
+ms.sourcegitcommit: 304d3ef3c9e65c3e85977b3afb9985fbc0f908d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82151033"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85095986"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -25,7 +25,7 @@ ms.locfileid: "82151033"
 > [!div class="checklist"]
 > * [创建一个 Azure 搜索资源](../../../../get-started.md)
 > * [设置开发环境并创建空项目](../../../../quickstarts/setup-platform.md?tabs=dotnet&pivots=programming-language-csharp)
-> * 需要语音 SDK 版本 1.10.0 或更高版本。
+> * 需要语音 SDK 版本 1.11.0 或更高版本。
 
 ## <a name="add-sample-code"></a>添加示例代码
 
@@ -93,13 +93,13 @@ ms.locfileid: "82151033"
 
 1. 查找字符串 `YourServiceRegion`，并将其替换为与订阅关联的[区域](~/articles/cognitive-services/Speech-Service/regions.md)。 例如，如果使用的是试用订阅，则区域是 `chinaeast2`。
 
-1. 在菜单栏中，选择“文件”   > “全部保存”  。
+1. 在菜单栏中，选择“文件” > “全部保存”。
 
 ## <a name="build-and-run-the-application"></a>生成并运行应用程序
 
-1. 从菜单栏中，选择“构建”   > “构建解决方案”  以构建应用程序。 现在，编译代码时应不会提示错误。
+1. 从菜单栏中，选择“构建” > “构建解决方案”以构建应用程序。 现在，编译代码时应不会提示错误。
 
-1. 选择“调试”   > “开始调试”  （或选择 F5  ）以启动 **helloworld** 应用程序。
+1. 选择“调试” > “开始调试”（或选择 F5）以启动 **helloworld** 应用程序。
 
 1. 输入一个英语短语或句子。 应用程序将你的文本传输到语音服务，该服务会将合成的语音发送到应用程序以在你的扬声器上播放。
 

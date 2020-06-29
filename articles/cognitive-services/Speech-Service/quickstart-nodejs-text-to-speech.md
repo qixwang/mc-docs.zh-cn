@@ -11,12 +11,12 @@ ms.topic: quickstart
 origin.date: 04/13/2020
 ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: 8e223b83bd11313830e9b0f86c1e8191235c5726
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.openlocfilehash: d92726933401df9844044557207fefbeb5c51a60
+ms.sourcegitcommit: 304d3ef3c9e65c3e85977b3afb9985fbc0f908d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82126594"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85095886"
 ---
 # <a name="quickstart-convert-text-to-speech-using-nodejs"></a>快速入门：使用 Node.js 将文本转换为语音
 
@@ -31,7 +31,7 @@ ms.locfileid: "82126594"
 * <a href="https://nodejs.org/en/" target="_blank">Node 8.12.x 或更高版本 <span class="docon docon-navigate-external x-hidden-focus"></span></a>
 * <a href="https://visualstudio.microsoft.com/downloads/" target="_blank">Visual Studio<span class="docon docon-navigate-external x-hidden-focus"></span></a>、<a href="https://code.visualstudio.com/download" target="_blank">Visual Studio Code<span class="docon docon-navigate-external x-hidden-focus"></span></a> 或你喜欢用的文本编辑器
 * 语音服务的 Azure 订阅密钥。 [免费获得一个！](get-started.md)
-* 需要语音 SDK 版本 1.10.0 或更高版本。
+* 需要语音 SDK 版本 1.11.0 或更高版本。
 
 ## <a name="create-a-project-and-require-dependencies"></a>创建项目并声明需要的依赖项
 

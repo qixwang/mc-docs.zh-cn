@@ -4,14 +4,14 @@ description: 遵循这些最佳做法了解如何有效使用 Azure Redis 缓存
 author: joncole
 ms.service: cache
 ms.topic: conceptual
-ms.date: 04/26/2020
+ms.date: 06/16/2020
 ms.author: v-junlch
-ms.openlocfilehash: 2be57cd2e48f88f1255a68c8ea0f399d30f40f25
-ms.sourcegitcommit: e3512c5c2bbe61704d5c8cbba74efd56bfe91927
+ms.openlocfilehash: c66f29cb76f96b40ce0710a56312208f7ef31f05
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82267534"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097297"
 ---
 # <a name="best-practices-for-azure-cache-for-redis"></a>Azure Redis 缓存的最佳做法 
 遵循这些最佳做法可帮助最大化性能并在 Azure 中经济、高效地利用 Azure Redis 缓存实例。
@@ -27,17 +27,19 @@ ms.locfileid: "82267534"
 
  * **具有较小值的 Redis 工作性能最佳**，因此请考虑将较大数据分成多个键。  [此 Redis 介绍文章](https://stackoverflow.com/questions/55517224/what-is-the-ideal-value-size-range-for-redis-is-100kb-too-large/)中列出了一些应该仔细考虑的因素。  阅读[本文](cache-troubleshoot-client.md#large-request-or-response-size)了解较大值可能引起的问题示例。
 
- * **将缓存实例和应用程序定位在同一区域中。**  连接到不同区域中的缓存可能会明显增大延迟并降低可靠性。  尽管可以从 Azure 外部进行连接，但不建议这样做，尤其是使用 Redis 作为缓存时。   如果只是使用 Redis 作为键/值存储，则延迟可能不是主要考虑因素。 
+ * **将缓存实例和应用程序定位在同一区域中。**  连接到不同区域中的缓存可能会明显增大延迟并降低可靠性。  尽管可以从 Azure 外部进行连接，但不建议这样做，尤其是使用 Redis 作为缓存时。  如果只是使用 Redis 作为键/值存储，则延迟可能不是主要考虑因素。 
 
  * **重复使用连接。**  创建新连接是高开销的操作，会增大延迟，因此请尽量重复使用连接。 如果你选择创建新连接，请确保在释放旧连接之前先将其关闭（即使是在 .NET 或 Java 等托管内存语言中）。
 
- * **将客户端库配置为使用至少 15 秒的连接超时**，以便即使是在 CPU 负载较高的情况下，系统也有时间建立连接。   使用较小的连接超时值无法保证在该时间范围内能够建立连接。  如果出现问题（客户端 CPU 负载偏高、服务器 CPU 负载偏高等），则使用较短的连接超时值会导致连接尝试失败。 此行为通常会使问题变得更糟。  使用较短的超时不仅无助于解决问题，而且会加剧问题，这会强制系统重启尝试重新连接的进程，从而可能导致出现“连接 -> 失败 -> 重试”循环。  我们通常建议将连接超时保留为 15 秒或更长。 让连接尝试在 15 或 20 秒后成功，比失败后立即重试更有利。 与最初让系统花费更长时间尝试连接相比，这种重试循环可能会导致服务中断的持续时间变长。  
+ * **将客户端库配置为使用至少 15 秒的连接超时**，以便即使是在 CPU 负载较高的情况下，系统也有时间建立连接。  使用较小的连接超时值无法保证在该时间范围内能够建立连接。  如果出现问题（客户端 CPU 负载偏高、服务器 CPU 负载偏高等），则使用较短的连接超时值会导致连接尝试失败。 此行为通常会使问题变得更糟。  使用较短的超时不仅无助于解决问题，而且会加剧问题，这会强制系统重启尝试重新连接的进程，从而可能导致出现“连接 -> 失败 -> 重试”循环。 我们通常建议将连接超时保留为 15 秒或更长。 让连接尝试在 15 或 20 秒后成功，比失败后立即重试更有利。 与最初让系统花费更长时间尝试连接相比，这种重试循环可能会导致服务中断的持续时间变长。  
      > [!NOTE]
-     > 本指南特定于连接尝试，而与你愿意等待 GET 或 SET 等操作完成的时间无关。  
+     > 本指南特定于连接尝试，而与你愿意等待 GET 或 SET 等操作完成的时间无关。 
  
- * **避免高开销操作** - 某些 Redis 操作（例如 [KEYS](https://redis.io/commands/keys) 命令）的开销很大，应该避免。   有关详细信息，请参阅有关[长时间运行的命令](cache-troubleshoot-server.md#long-running-commands)的一些注意事项
+ * **避免高开销操作** - 某些 Redis 操作（例如 [KEYS](https://redis.io/commands/keys) 命令）的开销很大，应该避免。  有关详细信息，请参阅有关[长时间运行的命令](cache-troubleshoot-server.md#long-running-commands)的一些注意事项
 
  * **使用 TLS 加密** - 默认情况下，Azure Cache for Redis 需要 TLS 加密通信。  目前支持 TLS 版本 1.0、1.1 和 1.2。  但是，TLS 1.0 和 TLS 1.1 即将在全行业范围内弃用，因此，请尽可能使用 TLS 1.2。  如果客户端库或工具不支持 TLS，则可以[通过 Azure 门户](cache-configure.md#access-ports)或[管理 API](https://docs.microsoft.com/rest/api/redis/redis/update) 来启用未加密的连接。  在无法进行加密连接的情况下，建议将缓存和客户端应用程序放入虚拟网络中。  有关虚拟网络缓存方案中使用的端口的详细信息，请参阅此[表](cache-how-to-premium-vnet.md#outbound-port-requirements)。
+ 
+ * **空闲超时** - Azure Redis 当前有 10 分钟的连接空闲超时，因此应设置为少于 10 分钟。
  
 ## <a name="memory-management"></a>内存管理
 可能需要考虑到与 Redis 服务器实例中内存用量相关的一些问题。  下面是一些建议：
@@ -70,7 +72,7 @@ ms.locfileid: "82267534"
  * **首先使用 `redis-benchmark.exe`** 以在编写自己的性能测试之前感受可能的吞吐量/延迟。  [可在此处找到](https://redis.io/topics/benchmarks) Redis 基准文档。  请注意，该 Redis 基准不支持 TLS，因此在运行测试之前必须[通过门户启用非 TLS 端口](cache-configure.md#access-ports)。  [可在此处找到 Windows 兼容版本的 redis-benchmark.exe](https://github.com/MSOpenTech/redis/releases)
  * 用于测试的客户端 VM 应与 Redis 缓存实例位于**同一区域**。
  * **建议为客户端使用 Dv2 VM 系列**，因为它们具有更好的硬件，会提供最佳的结果。
- * 确保所用客户端 VM 的计算和带宽资源 *至少与要测试的缓存相同。  
+ * 确保所用客户端 VM 的计算和带宽资源 *至少与要测试的缓存相同。 
  * 如果是在 Windows 设备上操作，请在客户端计算机上**启用 VRSS**。  [请参阅此处了解详细信息](https://technet.microsoft.com/library/dn383582(v=ws.11).aspx)。  PowerShell 脚本示例：
      >PowerShell -ExecutionPolicy Unrestricted Enable-NetAdapterRSS -Name (    Get-NetAdapter).Name 
      

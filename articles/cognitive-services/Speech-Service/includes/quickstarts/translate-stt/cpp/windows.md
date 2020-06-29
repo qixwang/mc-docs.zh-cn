@@ -11,12 +11,12 @@ ms.topic: include
 origin.date: 04/04/2020
 ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: 46e72e645fd6ce6bfb319f5d839a6986954fb6b4
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.openlocfilehash: 20cd41ab6bce0991d64bc7d70fd8cabf0e5d362f
+ms.sourcegitcommit: 304d3ef3c9e65c3e85977b3afb9985fbc0f908d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82150877"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85095992"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -25,7 +25,7 @@ ms.locfileid: "82150877"
 > [!div class="checklist"]
 > * [创建一个 Azure 搜索资源](../../../../get-started.md)
 > * [设置开发环境并创建空项目](../../../../quickstarts/setup-platform.md?tabs=windows&pivots=programming-language-cpp)
-> * 需要语音 SDK 版本 1.10.0 或更高版本。
+> * 需要语音 SDK 版本 1.11.0 或更高版本。
 
 ## <a name="add-sample-code"></a>添加示例代码
 
@@ -106,13 +106,13 @@ ms.locfileid: "82150877"
 
 1. 将字符串 `YourServiceRegion` 替换为与订阅关联的[区域](~/articles/cognitive-services/Speech-Service/regions.md)（例如，对于试用订阅，为 `chinaeast2`）。
 
-1. 在菜单栏中，选择“文件”   > “全部保存”  。
+1. 在菜单栏中，选择“文件” > “全部保存”。
 
 ## <a name="build-and-run-the-application"></a>生成并运行应用程序
 
-1. 从菜单栏中，选择“构建”   > “构建解决方案”  以构建应用程序。 现在，编译代码时应不会提示错误。
+1. 从菜单栏中，选择“构建” > “构建解决方案”以构建应用程序。 现在，编译代码时应不会提示错误。
 
-1. 选择“调试”   > “开始调试”  （或按 F5  ）以启动 helloworld  应用程序。
+1. 选择“调试” > “开始调试”（或按 F5）以启动 helloworld 应用程序。
 
 1. 说一个英语短语或句子。 应用程序将语音传输到语音服务，该服务会将语音翻译并转录为文本（在本例中为德语）。 然后，语音服务会将该文本发送回应用程序以供显示。
 

@@ -1,33 +1,35 @@
 ---
 title: 部署历史记录
-description: 介绍如何通过门户、PowerShell、Azure CLI 和 REST API 查看 Azure 资源管理器部署操作。
+description: 介绍如何通过门户、PowerShell、Azure CLI 和 REST API 查看 Azure Resource Manager 部署操作。
 tags: top-support-issue
 ms.topic: conceptual
-origin.date: 11/26/2019
+origin.date: 05/26/2020
+ms.date: 06/22/2020
 ms.author: v-yeche
-ms.date: 01/06/2020
-ms.openlocfilehash: f2fb405ab1adc8b28cfe22202d7ec1a2a3d38596
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: c9295780e06f0744d7fa671e639f48801bb3da1b
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75631395"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098331"
 ---
 # <a name="view-deployment-history-with-azure-resource-manager"></a>使用 Azure 资源管理器查看部署历史记录
 
-使用 Azure 资源管理器可以查看部署历史记录并检查过去部署中的特定操作。 你可以查看已部署的资源，并获取有关任何错误的信息。
+通过 Azure 资源管理器，你能够查看部署历史记录。 可以检查过去的部署中的特定操作和部署的资源。 此历史记录包含有关任何错误的信息。
 
-有关解决特定部署错误的帮助，请参阅[解决使用 Azure 资源管理器将资源部署到 Azure 时的常见错误](common-deployment-errors.md)。
+一个资源组的部署历史记录限含 800 个部署。 接近限制时，将自动从历史记录中删除部署。 有关详细信息，请参阅[从部署历史记录中自动删除](deployment-history-deletions.md)。
+
+如需帮助解决特定部署错误，请参阅[解决使用 Azure Resource Manager 将资源部署到 Azure 时的常见错误](common-deployment-errors.md)。
 
 ## <a name="get-deployments-and-correlation-id"></a>获取部署和相关 ID
 
 可通过 Azure 门户、PowerShell、Azure CLI 或 REST API 查看部署详细信息。 每个部署都有一个相关 ID，用于跟踪相关的事件。 与技术支持人员合作排查部署问题时，它非常有用。
 
-# <a name="portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. 选择要检查的资源组。
 
-1. 选择“部署”下面的链接。 
+1. 选择“部署”**** 下的链接。
 
     ![选择部署历史记录](./media/deployment-history/select-deployment-history.png)
 
@@ -61,22 +63,22 @@ Get-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -DeploymentName Ex
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-若要列出某个资源组的部署，请使用 [az group deployment list](https://docs.azure.cn/cli/group/deployment?view=azure-cli-latest#az-group-deployment-list)。
+若要列出资源组部署，请使用 [az 部署组列表](https://docs.azure.cn/cli/group/deployment?view=azure-cli-latest#az-deployment-group-list)。
 
 ```azurecli
-az group deployment list --resource-group ExampleGroup
+az deployment group list --resource-group ExampleGroup
 ```
 
-若要获取特定部署，请使用 [az group deployment show](https://docs.azure.cn/cli/group/deployment?view=azure-cli-latest#az-group-deployment-show)。
+若要获取特定部署，请使用 [az 部署组显示](https://docs.azure.cn/cli/group/deployment?view=azure-cli-latest#az-deployment-group-show)。
 
 ```azurecli
-az group deployment show --resource-group ExampleGroup --name ExampleDeployment
+az deployment group show --resource-group ExampleGroup --name ExampleDeployment
 ```
 
 若要获取相关 ID，请使用：
 
 ```azurecli
-az group deployment show --resource-group ExampleGroup --name ExampleDeployment --query properties.correlationId
+az deployment group show --resource-group ExampleGroup --name ExampleDeployment --query properties.correlationId
 ```
 
 # <a name="http"></a>[HTTP](#tab/http)
@@ -115,11 +117,11 @@ GET https://management.chinacloudapi.cn/subscriptions/{subscription-id}/resource
 
 每个部署可能包括多个操作。 若要查看某个部署的更多详细信息，请参阅部署操作。 当部署失败时，部署操作会包含一条错误消息。
 
-# <a name="portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. 在部署的摘要上，选择“操作详细信息”。 
+1. 在部署的摘要上，选择“操作详细信息”。****
 
-    ![选择部署操作](./media/deployment-history/get-operation-details.png)
+    ![选择操作详细信息](./media/deployment-history/get-operation-details.png)
 
 1. 会看到部署的该步骤的详细信息。 发生错误时，详细信息会包含错误消息。
 
@@ -133,7 +135,7 @@ GET https://management.chinacloudapi.cn/subscriptions/{subscription-id}/resource
 Get-AzResourceGroupDeploymentOperation -ResourceGroupName ExampleGroup -DeploymentName ExampleDeploy
 ```
 
-若要查看失败的操作，请使用“失败”状态筛选操作。 
+若要查看失败的操作，请使用“失败”状态筛选操作。****
 
 ```powershell
 (Get-AzResourceGroupDeploymentOperation -ResourceGroupName ExampleGroup -DeploymentName ExampleDeploy).Properties | Where-Object ProvisioningState -eq Failed
@@ -147,22 +149,22 @@ Get-AzResourceGroupDeploymentOperation -ResourceGroupName ExampleGroup -Deployme
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-若要查看部署到某个资源组时的部署操作，请使用 [az group deployment operation list](https://docs.azure.cn/cli/group/deployment/operation?view=azure-cli-latest#az-group-deployment-operation-list) 命令。
+若要查看部署到资源组的部署操作，请使用 [az deployment operation group list](https://docs.azure.cn/cli/deployment/operation/group?view=azure-cli-latest#az-deployment-operation-group-list) 命令。 必须具有 Azure CLI 2.6.0 或更高版本。
 
 ```azurecli
-az group deployment operation list --resource-group ExampleGroup --name ExampleDeployment
+az deployment operation group list --resource-group ExampleGroup --name ExampleDeployment
 ```
 
-若要查看失败的操作，请使用“失败”状态筛选操作。 
+若要查看失败操作，请筛选具有“失败”**** 状态的操作。
 
 ```azurecli
-az group deployment operation list --resource-group ExampleGroup --name ExampleDeploy --query "[?properties.provisioningState=='Failed']"
+az deployment operation group list --resource-group ExampleGroup --name ExampleDeploy --query "[?properties.provisioningState=='Failed']"
 ```
 
 若要获取失败操作的状态消息，请使用以下命令：
 
 ```azurecli
-az group deployment operation list --resource-group ExampleGroup --name ExampleDeploy --query "[?properties.provisioningState=='Failed'].properties.statusMessage.error"
+az deployment operation group list --resource-group ExampleGroup --name ExampleDeploy --query "[?properties.provisioningState=='Failed'].properties.statusMessage.error"
 ```
 
 # <a name="http"></a>[HTTP](#tab/http)
@@ -211,8 +213,8 @@ GET https://management.chinacloudapi.cn/subscriptions/{subscription-id}/resource
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关解决特定部署错误的帮助，请参阅[解决使用 Azure 资源管理器将资源部署到 Azure 时的常见错误](common-deployment-errors.md)。
-* 若要了解如何使用活动日志监视其他类型的操作，请参阅[通过查看活动日志管理 Azure 资源](../management/view-activity-logs.md)。
-* 若要在执行部署之前验证部署，请参阅[使用 Azure 资源管理器模板部署资源组](deploy-powershell.md)。
+* 如需帮助解决特定部署错误，请参阅[解决使用 Azure Resource Manager 将资源部署到 Azure 时的常见错误](common-deployment-errors.md)。
+* 要了解历史记录中的部署是如何进行管理的，请参阅[从部署历史记录中自动删除](deployment-history-deletions.md)。
+* 若要在执行部署之前验证部署，请参阅[使用 Azure Resource Manager 模板部署资源组](deploy-powershell.md)。
 
 <!-- Update_Description: update meta properties, wording update, update link -->

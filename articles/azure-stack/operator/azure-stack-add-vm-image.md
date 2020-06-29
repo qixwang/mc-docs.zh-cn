@@ -4,16 +4,16 @@ description: 了解如何在 Azure Stack Hub 中添加或删除自定义 VM 映�
 author: WenJason
 ms.topic: conceptual
 origin.date: 02/07/2020
-ms.date: 05/18/2020
+ms.date: 06/22/2020
 ms.author: v-jay
 ms.reviewer: kivenkat
 ms.lastreviewed: 06/08/2019
-ms.openlocfilehash: 63b7cabb77314c5a953dcaf63c19e98f1ec45994
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.openlocfilehash: 1d94765f673e5be95705d78992a94158e3013d10
+ms.sourcegitcommit: d86e169edf5affd28a1c1a4476d72b01a7fb421d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83422463"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85096386"
 ---
 # <a name="add-a-custom-vm-image-to-azure-stack-hub"></a>将自定义 VM 映像添加到 Azure Stack Hub
 
@@ -66,19 +66,19 @@ Remove-AzureRmVMExtension -ResourceGroupName winvmrg1 -VMName windowsvm -Name "C
 
    1. 若要下载 VHD 文件，需要生成共享访问签名 (SAS) URL。 生成 URL 时，将为 URL 分配到期时间。
 
-   1. 在 VM 的边栏选项卡菜单中选择“磁盘”。 
+   1. 在 VM 的边栏选项卡菜单中选择“磁盘”。****
 
-   1. 为 VM 选择操作系统磁盘，然后选择“磁盘导出”  。
+   1. 为 VM 选择操作系统磁盘，然后选择“磁盘导出”****。
 
    1. 将 URL 的过期时间设置为 36000。
 
-   1. 选择“生成 URL”  。
+   1. 选择“生成 URL”****。
 
    1. 生成 URL。
 
-   1. 在生成的 URL 下，选择“下载 VHD 文件”  。
+   1. 在生成的 URL 下，选择“下载 VHD 文件”****。
 
-   1. 可能需要选择浏览器中的“保存”才能开始下载。  VHD 文件的默认名称为 _abcd_。
+   1. 可能需要选择浏览器中的“保存”才能开始下载。**** VHD 文件的默认名称为 _abcd_。
 
 ### <a name="considerations"></a>注意事项
 
@@ -108,7 +108,7 @@ Remove-AzureRmVMExtension -ResourceGroupName winvmrg1 -VMName windowsvm -Name "C
 
 4. 记下在其中上传映像的 Blob 存储 URI。 Blob 存储 URI 的格式如下： *&lt;storageAccount&gt;/&lt;blobContainer&gt;/&lt;targetVHDName&gt;* .vhd。
 
-5. 若要使 Blob 可供匿名访问，请转到已在其中上传了 VM 映像 VHD 的存储帐户 Blob 容器。 选择“Blob”  ，然后选择“访问策略”  。 也可生成容器的共享访问签名，然后将其作为 Blob URI 的一部分包括进去。 此步骤确保 blob 可用。 如果 blob 不可匿名访问，则 VM 映像创建将处于失败状态。
+5. 若要使 Blob 可供匿名访问，请转到已在其中上传了 VM 映像 VHD 的存储帐户 Blob 容器。 选择“Blob”****，然后选择“访问策略”****。 也可生成容器的共享访问签名，然后将其作为 Blob URI 的一部分包括进去。 此步骤确保 blob 可用。 如果 blob 不可匿名访问，则 VM 映像创建将处于失败状态。
 
    ![转到存储帐户 Blob](./media/azure-stack-add-vm-image/tca1.png)
 
@@ -118,17 +118,17 @@ Remove-AzureRmVMExtension -ResourceGroupName winvmrg1 -VMName windowsvm -Name "C
 
 ## <a name="step-3-option-1-add-the-vm-image-as-an-azure-stack-hub-operator-using-the-portal"></a>步骤 3，选项 1：以 Azure Stack Hub 操作员的身份使用门户添加 VM 映像
 
-1. 以操作员身份登录到 Azure Stack Hub。 在菜单中选择“VM 映像” > “添加”下面的“所有服务” > “计算”。    
+1. 以操作员身份登录到 Azure Stack Hub。 在菜单中选择“VM 映像” > “添加”下面的“所有服务” > “计算”。**** **** **** ****
 
    ![自定义映像旁加载 UI](./media/azure-stack-add-vm-image/tca4.png)
 
-2. 在“创建映像”下，输入发布者、套餐、SKU、版本和 OS 磁盘 Blob URI。  然后选择“创建”，开始创建 VM 映像。 
+2. 在“创建映像”下，输入发布者、套餐、SKU、版本和 OS 磁盘 Blob URI。**** 然后选择“创建”，开始创建 VM 映像。****
 
    ![自定义映像旁加载 UI](./media/azure-stack-add-vm-image/tca5.png)
 
-   成功创建映像后，VM 映像状态会更改为“已成功”。 
+   成功创建映像后，VM 映像状态会更改为“已成功”。****
 
-3. 添加映像时，它仅适用于基于 Azure 资源管理器的模板和 PowerShell 部署。 若要将映像作为市场项提供给用户，请使用[创建和发布市场项](azure-stack-create-and-publish-marketplace-item.md)一文中的步骤发布市场项 请务必记下“发布者”、“套餐”、“SKU”和“版本”的值。     在自定义 .azpkg 中编辑资源管理器模板和 Manifest.json 时，需要用到这些值。
+3. 添加映像时，它仅适用于基于 Azure 资源管理器的模板和 PowerShell 部署。 若要将映像作为市场项提供给用户，请使用[创建和发布市场项](azure-stack-create-and-publish-marketplace-item.md)一文中的步骤发布市场项 请务必记下“发布者”、“套餐”、“SKU”和“版本”的值。**** **** **** **** 在自定义 .azpkg 中编辑资源管理器模板和 Manifest.json 时，需要用到这些值。
 
 ## <a name="step-3-option-2-add-a-vm-image-as-an-azure-stack-hub-operator-using-powershell"></a>步骤 3，选项 2：以 Azure Stack Hub 操作员的身份使用 PowerShell 添加 VM 映像
 
@@ -169,17 +169,17 @@ Remove-AzureRmVMExtension -ResourceGroupName winvmrg1 -VMName windowsvm -Name "C
 
      有关详细信息，请参阅 [Add-AzsPlatformimage](https://docs.microsoft.com/powershell/module/azs.compute.admin/add-azsplatformimage) cmdlet 的 PowerShell 参考。
 
-4. 添加映像时，它仅适用于基于 Azure 资源管理器的模板和 PowerShell 部署。 若要将映像作为市场项提供给用户，请使用[创建和发布市场项](azure-stack-create-and-publish-marketplace-item.md)一文中的步骤发布市场项 请务必记下“发布者”、“套餐”、“SKU”和“版本”的值。     在自定义 .azpkg 中编辑资源管理器模板和 Manifest.json 时，需要用到这些值。
+4. 添加映像时，它仅适用于基于 Azure 资源管理器的模板和 PowerShell 部署。 若要将映像作为市场项提供给用户，请使用[创建和发布市场项](azure-stack-create-and-publish-marketplace-item.md)一文中的步骤发布市场项 请务必记下“发布者”、“套餐”、“SKU”和“版本”的值。**** **** **** **** 在自定义 .azpkg 中编辑资源管理器模板和 Manifest.json 时，需要用到这些值。
 
 ## <a name="remove-the-vm-image-as-an-azure-stack-hub-operator-using-the-portal"></a>以 Azure Stack Hub 操作员的身份使用门户删除 VM 映像
 
-1. 打开 Azure Stack Hub [管理员门户](https://adminportal.local.azurestack.external)。
+1. 打开 Azure Stack Hub [管理员门户] `https://adminportal.local.azurestack.external`。
 
-2. 如果 VM 映像有关联的市场项，请选择“市场管理”，然后选择要删除的 VM 市场项。 
+2. 如果 VM 映像有关联的市场项，请选择“市场管理”，然后选择要删除的 VM 市场项。****
 
-3. 如果 VM 映像没有关联的市场项，请导航到“所有服务”>“计算”>“VM 映像”，然后选择 VM 映像旁边的省略号 ( **...** )。 
+3. 如果 VM 映像没有关联的市场项，请导航到“所有服务”>“计算”>“VM 映像”，然后选择 VM 映像旁边的省略号 ( **...** )。****
 
-4. 选择“删除”  。
+4. 选择“删除” ****。
 
 ## <a name="remove-a-vm-image-as-an-azure-stack-hub-operator-using-powershell"></a>以 Azure Stack Hub 操作员的身份使用 PowerShell 删除 VM 映像
 
@@ -218,3 +218,4 @@ Remove-AzureRmVMExtension -ResourceGroupName winvmrg1 -VMName windowsvm -Name "C
 ## <a name="next-steps"></a>后续步骤
 
 - [创建并发布自定义 Azure Stack Hub 市场项](azure-stack-create-and-publish-marketplace-item.md)
+- [预配虚拟机](../user/azure-stack-create-vm-template.md)

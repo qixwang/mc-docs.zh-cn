@@ -11,12 +11,12 @@ ms.topic: include
 origin.date: 10/10/2019
 ms.date: 01/13/2020
 ms.author: v-tawe
-ms.openlocfilehash: 37fff989ba58f492af04b9474e8d78441c7a61be
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.openlocfilehash: bfc37bd08dbef3473688fe300c03cf262325a2ee
+ms.sourcegitcommit: 304d3ef3c9e65c3e85977b3afb9985fbc0f908d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82150908"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85095930"
 ---
 本指南介绍如何安装用于 [Unity](https://unity3d.com/) 的[语音 SDK](~/articles/cognitive-services/speech-service/speech-sdk.md)。
 
@@ -32,17 +32,17 @@ ms.locfileid: "82150908"
 - [Unity 2018.3 或更高版本](https://store.unity.com/)，以及[支持 UWP ARM64 的 Unity 2019.1](https://blogs.unity3d.com/2019/04/16/introducing-unity-2019-1/#universal)。
 - [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)。 也可以使用 Visual Studio 2017 版本 15.9 或更高版本。
 - 为了支持 Windows ARM64，请安装[适用于 ARM64 的可选版本工具，以及适用于 ARM64 的 Windows 10 SDK](https://blogs.windows.com/buildingapps/2018/11/15/official-support-for-windows-10-on-arm-development/)
-- 需要语音 SDK 版本 1.10.0 或更高版本。
+- 需要语音 SDK 版本 1.11.0 或更高版本。
 
 ## <a name="install-the-speech-sdk"></a>安装语音 SDK
 
 若要安装适用于 Unity 的语音 SDK，请执行以下步骤：
 
-1. 下载并打开[适用于 Unity 的语音 SDK](https://aka.ms/csspeech/unitypackage)，该程序打包为 Unity 资产包 (.unitypackage)，应该已经与 Unity 关联。 打开资产包后，会显示“导入 Unity 包”对话框。  可能需要创建并打开一个空项目才能使用此步骤。
+1. 下载并打开[适用于 Unity 的语音 SDK](https://aka.ms/csspeech/unitypackage)，该程序打包为 Unity 资产包 (.unitypackage)，应该已经与 Unity 关联。 打开资产包后，会显示“导入 Unity 包”对话框。 可能需要创建并打开一个空项目才能使用此步骤。
 
    [![Unity 编辑器中的“导入 Unity 包”对话框](~/articles/cognitive-services/speech-service/media/sdk/qs-csharp-unity-01-import.png)](~/articles/cognitive-services/speech-service/media/sdk/qs-csharp-unity-01-import.png#lightbox)
 
-1. 确保选择所有文件，然后选择“导入”。  片刻之后，Unity 资产包即会导入到项目中。
+1. 确保选择所有文件，然后选择“导入”。 片刻之后，Unity 资产包即会导入到项目中。
 
 有关将资产包导入 Unity 的详细信息，请参阅 [Unity 文档](https://docs.unity3d.com/Manual/AssetPackages.html)。
 

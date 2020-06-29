@@ -5,14 +5,15 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 12/02/2019
-ms.date: 02/10/2020
+ms.date: 06/22/2020
 ms.author: v-yeche
-ms.openlocfilehash: 7d59cfe8af6fae4e462159e46af8a18625fb4800
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.custom: tracking-python
+ms.openlocfilehash: de07a80c015a181761d1275bac3a7285497a49ac
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "76980483"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098473"
 ---
 # <a name="configure-multi-master-in-your-applications-that-use-azure-cosmos-db"></a>在使用 Azure Cosmos DB 的应用程序配置多主数据库
 
@@ -58,10 +59,55 @@ CosmosClientBuilder cosmosClientBuilder = new CosmosClientBuilder("<connection-s
 CosmosClient client = cosmosClientBuilder.Build();
 ```
 
-<a name="java"></a>
-## <a name="java-async-sdk"></a>Java 异步 SDK
+<a name="java4-multi-master"></a>
+## <a name="java-v4-sdk"></a>Java V4 SDK
 
-若要在应用程序中启用多主数据库，请设置 `policy.setUsingMultipleWriteLocations(true)` 并将 `policy.setPreferredLocations` 设置为在其中部署应用程序并复制 Cosmos DB 的区域：
+若要在应用程序中启用多主数据库，请在客户端生成器中调用 `.multipleWriteRegionsEnabled(true)` 和 `.preferredRegions(preferredRegions)`，其中 `preferredRegions` 是包含一个元素的 `List`，即正在部署应用程序和复制 Cosmos DB 的区域：
+
+# <a name="async"></a>[异步](#tab/api-async)
+
+   [Java SDK V4](sql-api-sdk-java-v4.md) (Maven [com.azure::azure-cosmos](https://mvnrepository.com/artifact/com.azure/azure-cosmos)) 异步 API
+
+   ```java
+
+   ArrayList<String> preferredRegions = new ArrayList<String>();
+   preferredRegions.add(region);
+
+   CosmosAsyncClient client =
+           new CosmosClientBuilder()
+                   .endpoint(HOST)
+                   .key(MASTER_KEY)
+                   .multipleWriteRegionsEnabled(true)
+                   .preferredRegions(preferredRegions)
+                   .buildAsyncClient();
+
+   ```
+
+# <a name="sync"></a>[Sync](#tab/api-sync)
+
+   [Java SDK V4](sql-api-sdk-java-v4.md) (Maven [com.azure::azure-cosmos](https://mvnrepository.com/artifact/com.azure/azure-cosmos)) 同步 API
+
+   ```java
+
+   ArrayList<String> preferredRegions = new ArrayList<String>();
+   preferredRegions.add(region);
+
+   CosmosClient client =
+           new CosmosClientBuilder()
+                   .endpoint(HOST)
+                   .key(MASTER_KEY)
+                   .multipleWriteRegionsEnabled(true)
+                   .preferredRegions(preferredRegions)
+                   .buildClient();
+
+   ```
+
+--- 
+
+<a name="java2-milti-master"></a>
+## <a name="async-java-v2-sdk"></a>Async Java V2 SDK
+
+Java V2 SDK 使用 Maven [com.microsoft.azure::azure-cosmosdb](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb)。 若要在应用程序中启用多主数据库，请设置 `policy.setUsingMultipleWriteLocations(true)` 并将 `policy.setPreferredLocations` 设置为在其中部署应用程序并复制 Cosmos DB 的区域：
 
 ```java
 ConnectionPolicy policy = new ConnectionPolicy();
@@ -122,4 +168,4 @@ client = cosmos_client.CosmosClient(self.account_endpoint, {
 * [全局缩放预配的吞吐量](scaling-throughput.md)
 * [多区域分布：揭秘](global-dist-under-the-hood.md)
 
-<!--Update_Description: update meta properties -->
+<!-- Update_Description: update meta properties, wording update, update link -->

@@ -4,17 +4,17 @@ ms.author: v-jay
 ms.service: azure-stack
 ms.topic: include
 origin.date: 12/09/2019
-ms.date: 05/18/2020
+ms.date: 06/22/2020
 ms.reviewer: bryanla
 ms.lastreviewed: 12/09/2019
-ms.openlocfilehash: a28636beedd2cd01cb21b74843368d622b8c04b9
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.openlocfilehash: 412342e7c2d9eda091052e942cb64c337403b662
+ms.sourcegitcommit: d86e169edf5affd28a1c1a4476d72b01a7fb421d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83423036"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85096496"
 ---
-如果已从 Azure Stack Hub 市场安装了资源提供程序，则可能已完成了常见的先决条件操作，可以跳过此部分。 否则，请先完成以下先决条件操作： 
+如果已安装资源提供程序，则可能已完成以下先决条件，可跳过此部分。 否则，请在继续下一步之前完成以下步骤： 
 
 1. [向 Azure 注册 Azure Stack Hub 实例](../operator/azure-stack-registration.md)（如果尚未这样做）。 此步骤是必需的，因为需要连接到 Azure 并将项目从 Azure 下载到市场。
 

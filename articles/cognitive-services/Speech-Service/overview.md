@@ -11,12 +11,12 @@ ms.topic: overview
 origin.date: 03/12/2020
 ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: 73e027435076dbd62ca485d090d77f1e7ed8a7fe
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.openlocfilehash: 7f8c40a1bcd517c46b9b4392caf35ddcc68c974a
+ms.sourcegitcommit: 304d3ef3c9e65c3e85977b3afb9985fbc0f908d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82126703"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85095889"
 ---
 # <a name="what-is-the-speech-service"></a>什么是语音服务？
 
@@ -58,7 +58,7 @@ ms.locfileid: "82126703"
 ## <a name="get-sample-code"></a>获取示例代码
 
 > [!IMPORTANT]
-> 需要语音 SDK 版本 1.10.0 或更高版本。
+> 需要语音 SDK 版本 1.11.0 或更高版本。
 
 GitHub 上提供了语音服务的示例代码。 这些示例涵盖了常见方案，例如，从文件或流中读取音频、连续和单次识别，以及使用自定义模型。 使用以下链接查看 SDK 和 REST 示例：
 

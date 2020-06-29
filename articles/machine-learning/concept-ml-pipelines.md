@@ -1,25 +1,24 @@
 ---
-title: 什么是 ML 管道
-titleSuffix: Azure Machine Learning
-description: 本文介绍可通过适用于 Python 的 Azure 机器学习 SDK 生成的机器学习 (ML) 管道的好处。 机器学习管道由数据科学家用来生成、优化和管理机器学习工作流。
+title: 什么是 Azure 机器学习管道
+description: 了解如何借助机器学习 (ML) 管道生成、优化和管理机器学习工作流。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.author: v-yiso
+ms.author: laobri
 author: lobrien
-origin.date: 11/06/2019
-ms.date: 03/09/2020
-ms.openlocfilehash: 38260b4dc8f9d6ebfd6b2972be059bda16d2d8e6
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 04/01/2020
+ms.custom: tracking-python
+ms.openlocfilehash: 6a06876e0614b5b4cfda4509321c333210d55fc5
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80343596"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097056"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>什么是 Azure 机器学习管道？
 
-Azure 机器学习管道可用于在机器学习项目中创建工作流。 这些工作流具备多个优点： 
+本文介绍如何借助 Azure 机器学习管道生成、优化和管理机器学习工作流。 这些工作流具备多个优点： 
 
 + 简单
 + Speed
@@ -41,15 +40,15 @@ Azure 机器学习管道可用于在机器学习项目中创建工作流。 这�
 
 Azure 云提供多种其他管道，每种管道都有不同的用途。 下表列出了各种不同的管道及其用途：
 
-| 场景 | 主要角色 | Azure 产品/服务 | OSS 产品/服务 | 规范管道 | 优势 | 
+| 方案 | 主要角色 | Azure 产品/服务 | OSS 产品/服务 | 规范管道 | 优势 | 
 | -------- | --------------- | -------------- | ------------ | -------------- | --------- | 
 | 模型业务流程（机器学习） | 数据科学家 | Azure 机器学习管道 | Kubeflow 管道 | 数据 -> 模型 | 分布、缓存、代码优先、重用 | 
-| 数据业务流程（数据准备） | 数据工程师 | [Azure 数据工厂管道](/data-factory/concepts-pipelines-activities) | Apache Airflow | 数据 -> 数据 | 强类型移动。 以数据为中心的活动。 |
+| 数据业务流程（数据准备） | 数据工程师 | [Azure 数据工厂管道](https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities) | Apache Airflow | 数据 -> 数据 | 强类型移动。 以数据为中心的活动。 |
 | 代码和应用业务流程 (CI/CD) | 应用开发人员/Ops | [Azure DevOps Pipelines](https://azure.microsoft.com/services/devops/pipelines/) | Jenkins | 代码 + 模型 -> 应用/服务 | 最开放和灵活的活动支持、审批队列、门控相位 | 
 
 ## <a name="what-can-azure-ml-pipelines-do"></a>Azure ML 管道有哪些用途？
 
-Azure 机器学习管道是整个机器学习任务的可独立执行的工作流。 子任务封装为管道中的一系列步骤。 Azure 机器学习管道可以像调用 Python 脚本一样简单，因此几乎可以执行任何操作  。 管道应专注于机器学习任务，例如  ：
+Azure 机器学习管道是整个机器学习任务的可独立执行的工作流。 子任务封装为管道中的一系列步骤。 Azure 机器学习管道可以像调用 Python 脚本一样简单，因此几乎可以执行任何操作。 管道应专注于机器学习任务，例如：
 
 + 数据准备，包括导入、验证、清理、修整、转换、规范化和暂存
 + 训练配置，包括参数化自变量、文件路径和日志记录/报告配置
@@ -62,9 +61,9 @@ Azure 机器学习管道是整个机器学习任务的可独立执行的工作�
 
 借助 Azure 机器学习，可以针对管道中的每个步骤使用各种工具包和框架，例如 PyTorch 或 TensorFlow。 Azure 协调会你使用的各种[计算目标](concept-azure-machine-learning-architecture.md)，因此中间数据可与下游计算目标共享。
 
-可以直接在 Azure 门户中或在[工作区登陆页面（预览）](https://ml.azure.com)[跟踪管道试验的指标](/machine-learning/how-to-track-experiments)。 发布管道之后，可以配置 REST 终结点，这样就能够从任何平台或堆栈重新运行管道。
+可以直接在 Azure 门户中或在[工作区登陆页面（预览）](https://ml.azure.com)[跟踪管道试验的指标](https://docs.microsoft.com/azure/machine-learning/how-to-track-experiments)。 发布管道之后，可以配置 REST 终结点，这样就能够从任何平台或堆栈重新运行管道。
 
-简而言之，可以通过管道处理机器学习生命周期的所有复杂任务。 其他 Azure 管道技术也有各自的优势，例如 [Azure 数据工厂管道](/data-factory/concepts-pipelines-activities)适用于处理数据，[Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/) 适用于持续集成和部署。 但如果关注点是机器学习，则 Azure 机器学习管道可能是满足工作流需求的最佳选择。 
+简而言之，可以通过管道处理机器学习生命周期的所有复杂任务。 其他 Azure 管道技术各有各的优势。 [Azure 数据工厂管道](https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities)擅长处理数据，[Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/) 适合用于持续集成和部署。 但如果关注点是机器学习，则 Azure 机器学习管道可能是满足工作流需求的最佳选择。 
 
 ## <a name="what-are-azure-ml-pipelines"></a>什么是 Azure ML 管道？
 
@@ -110,13 +109,13 @@ Azure ML 管道按步骤顺序执行完整的逻辑工作流。 每个步骤都�
 
 在 [Azure 机器学习 Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) 中，管道是 `azureml.pipeline.core` 模块中定义的 Python 对象。 [Pipeline](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline%28class%29?view=azure-ml-py) 对象包含一个或多个 [PipelineStep](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.builder.pipelinestep?view=azure-ml-py) 对象的有序序列。 `PipelineStep` 类是抽象类，而实际步骤属于子类，如 [EstimatorStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.estimatorstep?view=azure-ml-py)、[PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.pythonscriptstep?view=azure-ml-py) 或 [DataTransferStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?view=azure-ml-py)。 [ModuleStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.modulestep?view=azure-ml-py) 类包含一系列可重用的步骤，这些步骤可在管道之间共享。 `Pipeline` 作为 `Experiment` 的一部分运行。
 
-Azure ML 管道与 Azure 机器学习工作区相关联，而管道步骤与该工作区中提供的计算目标相关联。 有关详细信息，请参阅[在 Azure 门户中创建和管理 Azure 机器学习工作区](/machine-learning/how-to-manage-workspace)或[什么是 Azure 机器学习中的计算目标？](/machine-learning/concept-compute-target)。
+Azure ML 管道与 Azure 机器学习工作区相关联，而管道步骤与该工作区中提供的计算目标相关联。 有关详细信息，请参阅[在 Azure 门户中创建和管理 Azure 机器学习工作区](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace)或[什么是 Azure 机器学习中的计算目标？](https://docs.microsoft.com/azure/machine-learning/concept-compute-target)。
 
 在 Azure 机器学习中，计算目标是 ML 阶段发生的环境。 软件环境可以是远程 VM、Azure 机器学习计算、Azure Databricks、Azure Batch 等。 硬件环境也可能会有很大差异，具体取决于 GPU 支持、内存、存储等。 你可以为每个步骤指定计算目标，这样可以精细地控制成本。 可以使用功能更强或功能更弱的资源来满足项目的特定操作、数据量和性能需求。 
 
 ## <a name="building-pipelines-with-the-designer"></a>使用设计器生成管道
 
-偏好可视化设计图面的开发人员可以使用 Azure 机器学习设计器创建管道。 可以从工作区主页上的“设计器”选项使用此工具  。  通过设计器可以将步骤拖放到设计图面上。 若要进行快速开发，可以在 ML 任务范围内使用现有模块；现有模块涵盖了从数据转换到算法选择、训练和部署等所有内容。 或者，可以通过组合在 Python 脚本中定义的步骤来创建完全自定义管道。
+偏好可视化设计图面的开发人员可以使用 Azure 机器学习设计器创建管道。 可以从工作区主页上的“设计器”选项使用此工具。  通过设计器可以将步骤拖放到设计图面上。 若要进行快速开发，可以在 ML 任务范围内使用现有模块；现有模块涵盖了从数据转换到算法选择、训练和部署等所有内容。 或者，可以通过组合在 Python 脚本中定义的步骤来创建完全自定义管道。
 
 在直观地设计管道时，步骤的输入和输出显示为可见。 通过拖放数据连接，可以快速了解和修改管道的数据流。
  
@@ -126,7 +125,7 @@ Azure ML 管道与 Azure 机器学习工作区相关联，而管道步骤与该�
 
 管道内的步骤可能依赖于其他步骤。 Azure ML 管道服务执行分析和协调这些依赖项的工作。 生成的“执行图”中的节点是处理步骤。 每个步骤都可能涉及创建或重用硬件和软件的特定组合、重用缓存的结果等。 此执行图中服务的协调和优化可显著加快 ML 阶段并降低成本。 
 
-由于各个步骤独立运行，因此必须在外部定义用于保存在步骤之间流动的输入和输出数据的对象。 这是 [DataReference](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py)、[PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) 和关联类的角色。 这些数据对象与封装其存储配置的 [Datastore](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore%28class%29?view=azure-ml-py) 对象关联。 始终使用 `name` 字符串、`inputs` 列表和 `outputs` 列表创建 `PipelineStep` 基类。 通常情况下，该基类还具有一个 `arguments` 列表，并且通常具有一个 `resource_inputs` 列表。 子类通常还具有其他参数（例如，`PythonScriptStep` 需要待运行脚本的文件名和路径）。 
+由于各个步骤独立运行，因此必须在外部定义用于保存在步骤之间流动的输入和输出数据的对象。 这正是 [DataSet](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py) 和 [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) 对象所发挥的作用。 这些数据对象与封装其存储配置的 [Datastore](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore%28class%29?view=azure-ml-py) 对象关联。 始终使用 `name` 字符串、`inputs` 列表和 `outputs` 列表创建 `PipelineStep` 基类。 通常情况下，该基类还具有一个 `arguments` 列表，并且通常具有一个 `resource_inputs` 列表。 子类通常还具有其他参数（例如，`PythonScriptStep` 需要待运行脚本的文件名和路径）。 
 
 执行图是非循环的，但管道可以按定期计划运行，并且可以运行可将状态信息写入文件系统的 Python 脚本，从而能够创建复杂的配置文件。 如果设计自己的管道，以使某些步骤可以并行或异步运行，则 Azure 机器学习会以透明方式处理扇出和扇入的依赖项分析和协调。 通常无需亲自关注执行图的细节，但可通过 [Pipeline.graph](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline.pipeline?view=azure-ml-py#attributes) 属性了解相关细节。 
 
@@ -141,19 +140,16 @@ blob_store = Datastore(ws, "workspaceblobstore")
 compute_target = ws.compute_targets["STANDARD_NC6"]
 experiment = Experiment(ws, 'MyExperiment') 
 
-input_data = DataReference(
-    datastore=Datastore(ws, blob_store),
-    data_reference_name="test_data",
-    path_on_datastore="20newsgroups/20news.pkl")
+input_data = Dataset.File.from_files(
+    DataPath(datastore, '20newsgroups/20news.pkl'))
 
-output_data = PipelineData(
-    "output_data",
-    datastore=blob_store,
-    output_name="output_data1")
+output_data = PipelineData("output_data", datastore=blob_store)
+
+input_named = input_data.as_named_input('input')
 
 steps = [ PythonScriptStep(
     script_name="train.py",
-    arguments=["--input", input_data, "--output", output_data],
+    arguments=["--input", input_named.as_download(), "--output", output_data],
     inputs=[input_data],
     outputs=[output_data],
     compute_target=compute_target,
@@ -168,7 +164,7 @@ pipeline_run.wait_for_completion()
 
 代码片段以常用 Azure 机器学习对象（`Workspace`、`Datastore`、[ComputeTarget](https://docs.microsoft.com/python/api/azureml-core/azureml.core.computetarget?view=azure-ml-py) 和 `Experiment`）开头。 然后，该代码将创建用于保存 `input_data` 和 `output_data` 的对象。 数组 `steps` 保存一个元素，即：将使用数据对象并在 `compute_target` 上运行的 `PythonScriptStep`。 然后，代码将实例化 `Pipeline` 对象本身，并将其传入工作区和步骤数组。 对 `experiment.submit(pipeline)` 的调用开始 Azure ML 管道运行。 在管道完成之前，对 `wait_for_completion()` 的调用会被阻止。 
 
-若要详细了解如何将管道连接到数据，请参阅[如何访问数据](how-to-access-data.md)和[如何注册数据集](how-to-create-register-datasets.md)这两篇文章。 
+若要详细了解如何将管道连接到数据，请参阅以下文章：[Azure 机器学习中的数据访问](concept-data.md)和[将数据移入 ML 管道并在管道之间移动的步骤 (Python)](how-to-move-data-in-out-of-pipelines.md)。 
 
 ## <a name="best-practices-when-using-pipelines"></a>使用管道的最佳做法
 
@@ -188,9 +184,9 @@ pipeline_run.wait_for_completion()
 
 * 管道步骤之间会出现重度耦合。 如果重构从属步骤经常需要修改上一步骤的输出，那么单独步骤的成本一般会大过收益。 步骤过度耦合的另一个迹象是，步骤的参数不是数据，而是控制处理的标记。 
 
-* 提前优化计算资源。 例如，数据准备通常涉及多个阶段，并且你经常可以看到“哦，在此阶段我可以使用 `MpiStep` 进行并行编程，但在另一个阶段我可以使用 `PythonScriptStep` 完成配置要求不高的计算目标”等等。 也许从长远来看，创建像这样的精细步骤可能是值得的，尤其在有可能使用缓存的结果而不是总是重新计算时。 但管道的目的不是替代 `multiprocessing` 模块。 
+* 提前优化计算资源。 例如，数据准备通常涉及多个阶段，并且你经常可以看到“哦，在此阶段我可以使用 `MpiStep` 进行并行编程，但在另一个阶段我可以使用 `PythonScriptStep` 完成配置要求不高的计算目标”等等。 也许从长远来看，创建像这样的精细步骤可能是值得的，尤其在有可能使用缓存的结果而不是总是重新计算时。 但管道的目的不是替代 Python 的本机 `multiprocessing` 模块。 
 
-在项目规模变大或接近部署之前，管道应该更粗糙而不是更精细。 如果你认为 ML 项目同样涉及多个阶段，而管道同样为你提供了一个完整的工作流来引导你完成特定阶段，那么你的做法就是正确的  。 
+在项目规模变大或接近部署之前，管道应该更粗糙而不是更精细。 如果你认为 ML 项目同样涉及多个阶段，而管道同样为你提供了一个完整的工作流来引导你完成特定阶段，那么你的做法就是正确的。 
 
 ## <a name="key-advantages"></a>主要优点
 
@@ -209,7 +205,7 @@ pipeline_run.wait_for_completion()
 
 `PythonScriptStep` 是抽象 `PipelineStep` 中最灵活的子类。 其他子类（如 `EstimatorStep` 子类和 `DataTransferStep`）可以用更少代码完成特定任务。 例如，只需传入步骤名称、`Estimator` 和计算目标即可创建 `EstimatorStep`。 或者，可以重写输入和输出、管道形式参数和实际参数。 有关详细信息，请参阅[通过估算器使用 Azure 机器学习训练模型](how-to-train-ml-models.md)。 
 
-使用 `DataTransferStep` 可轻松地在数据源和接收器之间移动数据。 手动执行此操作的代码非常简单，但却是重复的。 取而代之的是，你可以只使用名称、对数据源和数据接收器的引用以及计算目标创建一个 `DataTransferStep`。 笔记本[使用 DataTransferStep 的 Azure 机器学习管道](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-data-transfer.ipynb)演示了这种灵活性。
+使用 `DataTransferStep` 可轻松地在数据源和接收器之间移动数据。 手动执行此传输的代码非常简单，但却是重复的。 取而代之的是，你可以只使用名称、对数据源和数据接收器的引用以及计算目标创建一个 `DataTransferStep`。 笔记本[使用 DataTransferStep 的 Azure 机器学习管道](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-data-transfer.ipynb)演示了这种灵活性。
 
 ## <a name="modules"></a>模块
 

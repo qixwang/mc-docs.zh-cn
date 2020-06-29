@@ -5,23 +5,23 @@ author: yegu-ms
 ms.author: v-junlch
 ms.service: cache
 ms.topic: conceptual
-ms.date: 04/26/2020
-ms.openlocfilehash: 4c70eb75abc37318858f0cedaa001e0d724d4288
-ms.sourcegitcommit: e3512c5c2bbe61704d5c8cbba74efd56bfe91927
+ms.date: 06/16/2020
+ms.openlocfilehash: b6aa40271721a3a6f2aeb748f0f44b37b16160a0
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82267543"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097301"
 ---
 # <a name="aspnet-session-state-provider-for-azure-cache-for-redis"></a>Azure Redis 缓存的 ASP.NET 会话状态提供程序
 
-Azure Redis 缓存提供了一个会话状态提供程序，可使用该提供程序通过 Azure Redis 缓存将会话状态存储在内存中而不是存储在 SQL Server 数据库中。 要使用缓存会话状态提供程序，首先配置缓存，然后使用用于 Azure Redis 缓存会话状态 NuGet 包为缓存配置 ASP.NET 应用程序。
+Azure Redis 缓存提供了一个会话状态提供程序，可使用该提供程序通过 Azure Redis 缓存将会话状态存储在内存中而不是存储在 SQL Server 数据库中。 要使用缓存会话状态提供程序，首先配置缓存，然后使用用于 Azure Redis 缓存会话状态 NuGet 包为缓存配置 ASP.NET 应用程序。 对于 ASP.NET Core 应用程序，请参阅 [ASP.NET Core 中的会话和状态管理](https://docs.microsoft.com/aspnet/core/fundamentals/app-state)。
 
 在实际云应用中避免存储某种形式的用户会话状态通常是不现实的，但某些方法相比其他方法而言，对性能和可伸缩性的影响更大。 如果需要存储状态，最佳解决方案是使状态量保持较小并将其存储在 Cookie 中。 如果这不可行，下一个最佳解决方案是将 ASP.NET 会话状态与提供程序配合使用以实现分布式内存中缓存。 从性能和可伸缩性的角度来看，最差的解决方案是使用数据库支持的会话状态提供程序。 本主题提供有关使用 Azure Redis 缓存的 ASP.NET 会话状态提供程序的指南。 有关其他会话状态选项的信息，请参阅 [ASP.NET 会话状态选项](#aspnet-session-state-options)。
 
 ## <a name="store-aspnet-session-state-in-the-cache"></a>在缓存中存储 ASP.NET 会话状态
 
-要使用 Azure Redis 缓存会话状态 NuGet 包在 Visual Studio 中配置客户端应用程序，请在“工具”菜单中依次单击“NuGet 包管理器”和“包管理器控制台”    。
+要使用 Azure Redis 缓存会话状态 NuGet 包在 Visual Studio 中配置客户端应用程序，请在“工具”菜单中依次单击“NuGet 包管理器”和“包管理器控制台”**** **** ****。
 
 从 `Package Manager Console` 窗口运行以下命令。
     
@@ -94,7 +94,6 @@ NuGet 包会下载并添加所需的程序集引用，并将以下节添加到 w
 * **operationTimeoutInMilliseconds** - 此设置允许覆盖 StackExchange.Redis 客户端中的 syncTimeout 设置。 如果未指定，则使用默认 syncTimeout 设置 1000。 有关详细信息，请参阅 [StackExchange.Redis 配置模型](https://go.microsoft.com/fwlink/?LinkId=398705)。
 * **redisSerializerType** - 此设置允许你为发送到 Redis 的会话内容指定自定义序列化。 指定的类型必须实现 `Microsoft.Web.Redis.ISerializer` 并且必须声明公共无参数构造函数。 默认情况下使用 `System.Runtime.Serialization.Formatters.Binary.BinaryFormatter`。
 
-有关这些属性的详细信息，请参阅 [宣布推出适用于 Redis 的 ASP.NET 会话状态提供程序](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx)中的原始博客文章公告。
 
 别忘了在 web.config 中注释掉标准 InProc 会话状态提供程序部分。
 

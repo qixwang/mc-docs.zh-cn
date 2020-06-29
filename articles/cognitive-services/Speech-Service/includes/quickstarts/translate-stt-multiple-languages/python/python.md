@@ -11,12 +11,12 @@ ms.topic: include
 origin.date: 04/04/2020
 ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: 57c3559abcd44b9b773a66aeee135dec869f97e7
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.openlocfilehash: bf8228d047d3f0d58d17287b8d48e55b62b8db03
+ms.sourcegitcommit: 304d3ef3c9e65c3e85977b3afb9985fbc0f908d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82150833"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85095998"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -25,7 +25,7 @@ ms.locfileid: "82150833"
 > [!div class="checklist"]
 > * [创建一个 Azure 搜索资源](../../../../get-started.md)
 > * [设置开发环境并创建空项目](../../../../quickstarts/setup-platform.md?tabs=python&pivots=programming-language-python)
-> * 需要语音 SDK 版本 1.10.0 或更高版本。
+> * 需要语音 SDK 版本 1.11.0 或更高版本。
 
 ## <a name="add-sample-code"></a>添加示例代码
 

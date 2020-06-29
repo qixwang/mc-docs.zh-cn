@@ -1,22 +1,16 @@
 ---
 title: 正则表达式实体类型 - LUIS
-titleSuffix: Azure Cognitive Services
 description: 正则表达式最适合用于原始话语文本。 不区分大小写，并忽略区域性变体。  完成字符级别而不是令牌级别的拼写检查更改后，会应用正则表达式匹配。
-services: cognitive-services
-author: lingliw
-manager: digimobile
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: reference
-origin.date: 09/29/2019
-ms.date: 10/31/2019
-ms.author: v-lingwu
-ms.openlocfilehash: 5961e128d14dc68aad67b281ddae78dbbfb0f950
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+origin.date: 04/14/2020
+ms.date: 06/16/2020
+ms.author: v-tawe
+ms.openlocfilehash: f506f3412cc2dda9e153cebc5ac5872ad75106ec
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75858053"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098594"
 ---
 # <a name="regular-expression-entity"></a>正则表达式实体
 
@@ -49,7 +43,7 @@ ms.locfileid: "75858053"
 
 如果将 `kb[0-9]{6}` 用作正则表达式实体定义，则下面的 JSON 响应就是一个示例话语，其中包含查询返回的正则表达式实体：
 
-`When was kb123456 published?`设置用户帐户 ：
+`When was kb123456 published?`：
 
 #### <a name="v2-prediction-endpoint-response"></a>[V2 预测终结点响应](#tab/V2)
 
@@ -103,4 +97,11 @@ ms.locfileid: "75858053"
 }
 ```
 
-* * * 
+* * *
+
+## <a name="next-steps"></a>后续步骤
+
+详细了解实体：
+
+* [概念](luis-concept-entity-types.md)
+* [如何创建](luis-how-to-add-entities.md)

@@ -11,12 +11,12 @@ ms.topic: include
 origin.date: 04/04/2020
 ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: 3f5cd7dd3cab6049625e9c75875bdd3173068ab3
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.openlocfilehash: bd5a9ca834cbb75067130e50776c5813e1fa571d
+ms.sourcegitcommit: 304d3ef3c9e65c3e85977b3afb9985fbc0f908d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82150963"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85095982"
 ---
 > [!NOTE]
 > Unity 支持 Windows 桌面版（x86 和 x64）或通用 Windows 平台（x86、x64、ARM/ARM64）、Android（x86、ARM32/64）或 iOS（x64 模拟器、ARM32 和 ARM64）。
@@ -28,25 +28,25 @@ ms.locfileid: "82150963"
 > [!div class="checklist"]
 > * [创建一个 Azure 搜索资源](../../../../get-started.md)
 > * [设置开发环境并创建空项目](../../../../quickstarts/setup-platform.md?tabs=unity&pivots=programming-language-csharp)
-> * 需要语音 SDK 版本 1.10.0 或更高版本。
+> * 需要语音 SDK 版本 1.11.0 或更高版本。
 
 ## <a name="add-a-ui"></a>添加 UI
 
 我们向场景中添加一个极简 UI，其中包括一个用于输入文本以进行合成的输入字段、一个用于触发语音合成的按钮，以及一个用于显示结果的文本字段。
 
 * 在[“层次结构”窗口](https://docs.unity3d.com/Manual/Hierarchy.html)（默认位于左侧）中，显示了 Unity 通过新项目创建的示例场景。
-* 选择“层次结构”窗口顶部的“创建”按钮，然后选择“UI” > “输入字段”。    
-* 此选项会创建三个显示在“层次结构”窗口中的游戏对象：一个嵌套在“画布”对象中的“输入字段”对象，以及一个“EventSystem”对象    。 
+* 选择“层次结构”窗口顶部的“创建”按钮，然后选择“UI” > “输入字段”。   
+* 此选项会创建三个显示在“层次结构”窗口中的游戏对象：一个嵌套在“画布”对象中的“输入字段”对象，以及一个“EventSystem”对象  。
 * [浏览“场景”视图](https://docs.unity3d.com/Manual/SceneViewNavigation.html)，以便全面查看[“场景”视图](https://docs.unity3d.com/Manual/UsingTheSceneView.html)中的画布和输入字段。
-* 在“层次结构”窗口中选择“输入字段”对象，以便在[“检查器”窗口](https://docs.unity3d.com/Manual/UsingTheInspector.html)（默认位于右侧）中显示其设置。  
-* 将“位置 X”  和“位置 Y”  属性都设置为 **0**，以使输入字段在画布上居中。
-* 再次选择“层次结构”窗口顶部的“创建”按钮。   选择“UI” > “按钮”，创建一个按钮。  
-* 在“层次结构”窗口中选择“按钮”对象，以便在[“检查器”窗口](https://docs.unity3d.com/Manual/UsingTheInspector.html)（默认位于右侧）中显示其设置。  
-* 将“位置 X”和“位置 Y”属性分别设置为 **0** 和 **-48**。   将“宽度”和“高度”属性分别设置为 **160** 和 **30**，确保按钮和输入字段不会重叠。  
-* 再次选择“层次结构”窗口顶部的“创建”按钮。   选择“UI” > “文本”以创建文本字段。  
-* 在“层次结构”窗口中选择“文本”对象，以便在[“检查器”窗口](https://docs.unity3d.com/Manual/UsingTheInspector.html)（默认位于右侧）中显示其设置。  
-* 将“位置 X”和“位置 Y”属性分别设置为 **0** 和 **80**。   将“宽度”和“高度”属性分别设置为 **320** 和 **80**，确保文本字段和输入字段不会重叠。  
-* 再次选择“层次结构”窗口顶部的“创建”按钮。   选择“音频” > “音频源”以创建音频源。  
+* 在“层次结构”窗口中选择“输入字段”对象，以便在[“检查器”窗口](https://docs.unity3d.com/Manual/UsingTheInspector.html)（默认位于右侧）中显示其设置。 
+* 将“位置 X”和“位置 Y”属性都设置为 **0**，以使输入字段在画布上居中。
+* 再次选择“层次结构”窗口顶部的“创建”按钮。  选择“UI” > “按钮”，创建一个按钮。 
+* 在“层次结构”窗口中选择“按钮”对象，以便在[“检查器”窗口](https://docs.unity3d.com/Manual/UsingTheInspector.html)（默认位于右侧）中显示其设置。 
+* 将“位置 X”和“位置 Y”属性分别设置为 **0** 和 **-48**。  将“宽度”和“高度”属性分别设置为 **160** 和 **30**，确保按钮和输入字段不会重叠。 
+* 再次选择“层次结构”窗口顶部的“创建”按钮。  选择“UI” > “文本”以创建文本字段。 
+* 在“层次结构”窗口中选择“文本”对象，以便在[“检查器”窗口](https://docs.unity3d.com/Manual/UsingTheInspector.html)（默认位于右侧）中显示其设置。 
+* 将“位置 X”和“位置 Y”属性分别设置为 **0** 和 **80**。  将“宽度”和“高度”属性分别设置为 **320** 和 **80**，确保文本字段和输入字段不会重叠。 
+* 再次选择“层次结构”窗口顶部的“创建”按钮。  选择“音频” > “音频源”以创建音频源。 
 
 完成后，UI 应如以下屏幕截图所示：
 
@@ -54,12 +54,12 @@ ms.locfileid: "82150963"
 
 ## <a name="add-the-sample-code"></a>添加示例代码
 
-1. 在[“项目”窗口](https://docs.unity3d.com/Manual/ProjectView.html)（默认位于左下角）中，选择“创建”按钮并选择“C# 脚本”。   将脚本命名为 `HelloWorld`。
+1. 在[“项目”窗口](https://docs.unity3d.com/Manual/ProjectView.html)（默认位于左下角）中，选择“创建”按钮并选择“C# 脚本”。  将脚本命名为 `HelloWorld`。
 
 1. 双击脚本对其进行编辑。
 
    > [!NOTE]
-   > 可以选择“编辑” > “首选项”来配置要启动的代码编辑器。   有关详细信息，请参阅 [Unity 用户手册](https://docs.unity3d.com/Manual/Preferences.html)。
+   > 可以选择“编辑” > “首选项”来配置要启动的代码编辑器。  有关详细信息，请参阅 [Unity 用户手册](https://docs.unity3d.com/Manual/Preferences.html)。
 
 1. 将所有代码替换为以下内容：
 
@@ -199,17 +199,17 @@ ms.locfileid: "82150963"
 
 1. 返回到 Unity 编辑器，将脚本作为组件添加到游戏对象之一。
 
-   * 在“层次结构”窗口中选择“画布”对象，以便在[“检查器”窗口](https://docs.unity3d.com/Manual/UsingTheInspector.html)（默认位于右侧）中打开设置。  
-   * 在“检查器”窗口中选择“添加组件”按钮。   然后，搜索以前创建的 `HelloWorld` 脚本并添加它。
-   * HelloWorld 组件包含四个未初始化的属性：“输出文本”  、“输入字段”  、“朗读按钮”  和“音频源”  ，它们与 `HelloWorld` 类的公共属性相匹配。
+   * 在“层次结构”窗口中选择“画布”对象，以便在[“检查器”窗口](https://docs.unity3d.com/Manual/UsingTheInspector.html)（默认位于右侧）中打开设置。 
+   * 在“检查器”窗口中选择“添加组件”按钮。  然后，搜索以前创建的 `HelloWorld` 脚本并添加它。
+   * HelloWorld 组件包含四个未初始化的属性：“输出文本”、“输入字段”、“朗读按钮”和“音频源”，它们与 `HelloWorld` 类的公共属性相匹配。
      若要连接它们，请选择对象选取器（属性右侧的小圆圈图标）。 选择此前创建的文本和按钮对象。
 
      > [!NOTE]
-     > 输入字段和按钮还包含嵌套的文本对象。 请确保不要意外选择该对象来提供文本输出。 或者，可以在“检查器”窗口中重命名使用“名称”字段的文本对象，以避免这种混淆。  
+     > 输入字段和按钮还包含嵌套的文本对象。 请确保不要意外选择该对象来提供文本输出。 或者，可以在“检查器”窗口中重命名使用“名称”字段的文本对象，以避免这种混淆。 
 
 ## <a name="run-the-application-in-the-unity-editor"></a>在 Unity 编辑器中运行应用程序
 
-* 在菜单栏下方的 Unity 编辑器工具栏中选择“播放”按钮。 
+* 在菜单栏下方的 Unity 编辑器工具栏中选择“播放”按钮。
 * 应用启动后，在输入字段中输入一些文本，然后选择该按钮。 你的文本将传输到语音服务，并合成为语音，以在扬声器上播放。
 
   [![Unity 游戏窗口中运行的快速入门应用程序的屏幕截图](~/articles/cognitive-services/speech-service/media/sdk/qs-tts-csharp-unity-output-inline.png)](~/articles/cognitive-services/speech-service/media/sdk/qs-tts-csharp-unity-output-expanded.png#lightbox)

@@ -3,17 +3,17 @@ title: Azure Stack Hub 已知问题
 description: 了解 Azure Stack Hub 发行版中的已知问题。
 author: WenJason
 ms.topic: article
-origin.date: 04/22/2020
-ms.date: 05/18/2020
+origin.date: 06/10/2020
+ms.date: 06/22/2020
 ms.author: v-jay
 ms.reviewer: sranthar
 ms.lastreviewed: 03/18/2020
-ms.openlocfilehash: dca86c3461fa53a4b8da0941c35304c8a754d788
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.openlocfilehash: d021dd3eb798bd9a28907960dd1a40b0cd3fc9fb
+ms.sourcegitcommit: d86e169edf5affd28a1c1a4476d72b01a7fb421d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83422510"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85096291"
 ---
 # <a name="azure-stack-hub-known-issues"></a>Azure Stack Hub 已知问题
 
@@ -37,7 +37,9 @@ ms.locfileid: "83422510"
 ::: moniker range="azs-2002"
 ## <a name="update"></a>更新
 
-有关已知的 Azure Stack Hub 更新问题，请参阅[排查 Azure Stack Hub 中的更新问题](azure-stack-updates-troubleshoot.md)。
+应用 2002 更新后，管理员门户中可能会错误地显示“时间源无效”警报。 这个警报是可忽略的误报，会在即将发布的版本中得到解决。 
+
+有关已知的其他 Azure Stack Hub 更新问题，请参阅[排查 Azure Stack Hub 中的更新问题](azure-stack-troubleshooting.md)。
 
 ## <a name="portal"></a>门户
 
@@ -74,16 +76,31 @@ ms.locfileid: "83422510"
 - 原因：当线缆与网络适配器断开连接时，管理员门户中不显示警报。 此问题的原因是 Windows Server 2019 中默认会禁用此故障。
 - 发生次数：通用
 
+### <a name="access-control-iam"></a>访问控制 (IAM)
+
+- 适用于：此问题适用于所有支持的版本。
+- 原因：IAM 扩展已过时。 Azure Stack Hub 随附的 Ibiza 门户引入了新的行为，如果用户针对未在全局订阅选择器（用户门户中的“目录 + 订阅”）中选择的订阅打开“访问控制(IAM)”边栏选项卡，则会导致 RBAC 扩展失败。  该边栏选项卡反复显示“正在加载”，且用户无法将新角色添加到订阅。 “添加”边栏选项卡也反复显示“正在加载”。 
+- 补救措施：确保已在“目录 + 订阅”菜单中选中该订阅。 可以从门户顶部、“通知”按钮附近，或通过显示以下内容的“所有资源”边栏选项卡上的快捷方式来访问此菜单：“看不到订阅?  请打开‘目录 + 订阅’设置”。 必须在此菜单中选择该订阅。
+
 ## <a name="networking"></a>网络
 
-### <a name="network-security-groups"></a>网络安全组
+### <a name="denyalloutbound-rule-cannot-be-created"></a>无法创建 DenyAllOutbound 规则
 
 - 适用于：此问题适用于所有支持的版本。 
 - 原因：无法在 NSG 中创建显式 **DenyAllOutbound** 规则，因为这会使 VM 部署所需的基础结构无法完成所有内部通信。
 - 发生次数：通用
 
+### <a name="icmp-protocol-not-supported-for-nsg-rules"></a>NSG 规则不支持 ICMP 协议
+
 - 适用于：此问题适用于所有支持的版本。 
 - 原因：创建入站或出站网络安全规则时，“协议”选项显示“ICMP”选项。 Azure Stack Hub 目前不支持此选项。 此问题已修复，不会出现在下一个 Azure Stack Hub 版本中。
+- 发生次数：通用
+
+### <a name="cannot-delete-an-nsg-if-nics-not-attached-to-running-vm"></a>如果 NIC 未附加到运行中的 VM，则无法删除 NSG
+
+- 适用于：此问题适用于所有支持的版本。
+- 原因：如果取消关联 NSG 和未附加到运行中 VM 的 NIC，则该对象的更新 (PUT) 操作会在网络控制器层失败。 NSG 将在网络资源提供程序层（而不是网络控制器上）更新，因此 NSG 转变为失败状态。
+- 补救措施：将与 NSG 相关联的 NIC 附加到运行中的 VM，然后取消与 NSG 的关联，或者删除与 NSG 关联的所有 NIC。
 - 发生次数：通用
 
 ### <a name="network-interface"></a>Linux
@@ -122,6 +139,10 @@ ms.locfileid: "83422510"
   - [指定自定义的 IPsec/IKE 策略](../user/azure-stack-vpn-gateway-settings.md#ipsecike-parameters)
 
 ## <a name="compute"></a>计算
+### <a name="cannot-create-a-vmss-with-standard_ds2_v2-vm-size-on-portal"></a>无法在门户中创建 Standard_DS2_v2 VM 大小的 VMSS
+
+- 适用于：此问题适用于 2002 版本。
+- 原因：存在一个门户 bug，它阻止创建 Standard_DS2_v2 VM 大小的 VMSS。 创建即会产生错误：“{"code":"DeploymentFailed","message":":"至少一项资源部署操作失败。 请列出部署操作以获取详细信息。 请参阅 https://aka.ms/arm-debug 了解使用情况详细信息。","details":[{"code":"BadRequest","message":"{\r\n \" error\": {\r\n \" code\":\" NetworkProfileValidationError\" ,\r\n \" message\":\" 虚拟机大小 Standard_DS2_v2 不在 VM 大小的允许列表中，不能在 VM 规模集 /subscriptions/x/resourceGroups/RGVMSS/providers/Microsoft.Compute/virtualMachineScaleSets/vmss 的索引 0 处的 VM 上启用加速网络。 允许的大小: .\"\r\n }\r\n}"}]}”补救措施：使用 PowerShell 或资源管理器模板创建 VMSS。
 
 ### <a name="vm-overview-blade-does-not-show-correct-computer-name"></a>VM 概述边栏选项卡未显示正确的计算机名称
 
@@ -189,7 +210,7 @@ ms.locfileid: "83422510"
 
 - 适用于：此问题适用于版本 2002。
 - 原因：如果标记包含应用服务资源提供程序 (RP) 版本 1.7 和更早版本，则在更新标记时，不会加载应用服务的边栏选项卡。
-- 补救措施：将 RP 更新到版本 1.8。
+- 补救措施：将 RP 更新到版本 [2020 Q2](azure-stack-app-service-update.md)。
 
 <!-- ## Storage -->
 <!-- ## SQL and MySQL-->
@@ -202,7 +223,7 @@ ms.locfileid: "83422510"
 ::: moniker range="azs-1910"
 ## <a name="update"></a>更新
 
-有关已知的 Azure Stack Hub 更新问题，请参阅[排查 Azure Stack Hub 中的更新问题](azure-stack-updates-troubleshoot.md)。
+有关已知的 Azure Stack Hub 更新问题，请参阅[排查 Azure Stack Hub 中的更新问题](azure-stack-troubleshooting.md)。
 
 ## <a name="portal"></a>门户
 
@@ -245,7 +266,6 @@ ms.locfileid: "83422510"
 - 原因：在用户门户中尝试从“上传”边栏选项卡上传 Blob 时，有一个选项可用于选择“AAD”或“密钥身份验证”，但是，Azure Stack Hub 不支持“AAD”。  
 - 发生次数：通用
 
-
 ### <a name="alert-for-network-interface-disconnected"></a>网络接口已断开连接的警报
 
 - 适用于：此问题适用于 1908 及更高版本。
@@ -257,13 +277,6 @@ ms.locfileid: "83422510"
 - 适用于：此问题适用于所有支持的版本。
 - 原因：在用户门户中选择类型为“高级 SSD”的托管磁盘时，下拉列表显示“OS 磁盘”。 该选项旁边的工具提示显示“可以通过 Azure 试用帐户免费使用某些 OS 磁盘大小”；但是，这对于 Azure Stack Hub 而言是不正确的。 此外，该列表包含“符合免费帐户的条件”，而这对 Azure Stack Hub 而言也是不正确的。
 - 发生次数：通用
-
-### <a name="vpn-troubleshoot-and-metrics"></a>VPN 故障排除和指标
-
-- 适用于：此问题适用于所有支持的版本。
-- 原因：用户门户显示 VPN 网关资源中的“VPN 故障排除”功能和“指标”，但这在 Azure Stack Hub 中不受支持。 
-- 发生次数：通用
-
 
 ### <a name="delete-a-storage-container"></a>删除存储容器
 
@@ -277,12 +290,6 @@ ms.locfileid: "83422510"
 - 适用于：此问题适用于所有支持的版本。
 - 原因：在用户门户中导航到“虚拟机”并尝试使用顶部的按钮进行刷新时，状态无法准确更新。
 - 补救措施：无论是否已按下刷新按钮，状态每隔 5 分钟都会自动更新。 请等待 5 分钟，然后检查状态。
-- 发生次数：通用
-
-### <a name="virtual-network-gateway"></a>虚拟网络网关
-
-- 适用于：此问题适用于所有支持的版本。
-- 原因：在用户门户中创建路由表时，“虚拟网络网关”显示为下一跃点类型选项；但是，Azure Stack Hub 不支持此类型。
 - 发生次数：通用
 
 ### <a name="storage-account-options"></a>存储帐户选项
@@ -342,6 +349,13 @@ ms.locfileid: "83422510"
 - 原因：在用户门户中，“虚拟网络”边栏选项卡显示使用“服务终结点”的选项。  Azure Stack Hub 目前不支持此功能。
 - 发生次数：通用
 
+### <a name="cannot-delete-an-nsg-if-nics-not-attached-to-running-vm"></a>如果 NIC 未附加到运行中的 VM，则无法删除 NSG
+
+- 适用于：此问题适用于所有支持的版本。
+- 原因：如果取消关联 NSG 和未附加到运行中 VM 的 NIC，则该对象的更新 (PUT) 操作会在网络控制器层失败。 NSG 将在网络资源提供程序层（而不是网络控制器上）更新，因此 NSG 转变为失败状态。
+- 补救措施：将与 NSG 相关联的 NIC 附加到运行中的 VM，然后取消与 NSG 的关联，或者删除与 NSG 关联的所有 NIC。
+- 发生次数：通用
+
 ### <a name="network-interface"></a>Linux
 
 #### <a name="addingremoving-network-interface"></a>添加/删除网络接口
@@ -359,6 +373,12 @@ ms.locfileid: "83422510"
 
 ### <a name="virtual-network-gateway"></a>虚拟网络网关
 
+#### <a name="next-hop-type"></a>下一跃点类型
+
+- 适用于：此问题适用于所有支持的版本。
+- 原因：在用户门户中创建路由表时，“虚拟网络网关”显示为下一跃点类型选项；但是，Azure Stack Hub 不支持此类型。
+- 发生次数：通用
+
 #### <a name="alerts"></a>警报
 
 - 适用于：此问题适用于所有支持的版本。
@@ -375,6 +395,10 @@ ms.locfileid: "83422510"
 
 - 适用于：此问题适用于所有支持的版本。
 - 原因：在用户门户中，“连接”边栏选项卡显示一项名为“VPN 故障排除程序”的功能。  Azure Stack Hub 目前不支持此功能。
+- 发生次数：通用
+
+- 适用于：此问题适用于所有支持的版本。
+- 原因：用户门户显示 VPN 网关资源中的“VPN 故障排除”功能和“指标”，但这在 Azure Stack Hub 中不受支持。 
 - 发生次数：通用
 
 #### <a name="documentation"></a>文档
@@ -408,7 +432,7 @@ ms.locfileid: "83422510"
 
 - 适用于：此问题适用于 1910 和更低版本。
 - 原因：无法从运行非英语版 Windows 的计算机连接到特权终结点 (ERC VM)。
-- 补救措施：这是一个已知问题，已在 1910 以上的版本中修复。 解决方法之一是，使用 **en-US** 区域性运行 **New-PSSession** 和 **Enter-PSSession** Powershell cmdlet；有关示例，请使用以下脚本来设置区域性： https://resources.oreilly.com/examples/9780596528492/blob/master/Use-Culture.ps1 。
+- 补救措施：这是一个已知问题，已在 1910 以上的版本中修复。 解决方法之一是，使用 en-US 区域性运行 New-PSSession 和 Enter-PSSession Powershell cmdlet；有关示例，请使用以下脚本来设置区域性： https://resources.oreilly.com/examples/9780596528492/blob/master/Use-Culture.ps1  。
 - 发生次数：罕见
 
 ### <a name="virtual-machine-scale-set"></a>虚拟机规模集
@@ -488,7 +512,7 @@ ms.locfileid: "83422510"
 ### <a name="load-balancer"></a>负载均衡器
 
 - 适用于：此问题适用于所有支持的版本。 
-- 原因：将可用性集 VM 添加到负载均衡器的后端池时，门户上显示错误消息，指出“无法保存负载均衡器后端池”。 这是门户的表面问题；此功能仍在起作用，VM 在内部已成功添加到后端池。 
+- 原因：将可用性集 VM 添加到负载均衡器的后端池时，门户上显示错误消息，指出“未能保存负载均衡器后端池”。 这是门户的表面问题；此功能仍在起作用，VM 在内部已成功添加到后端池。 
 - 发生次数：通用
 
 ### <a name="network-security-groups"></a>网络安全组
@@ -501,6 +525,13 @@ ms.locfileid: "83422510"
 
 - 适用于：此问题适用于所有支持的版本。
 - 原因：在用户门户中，“虚拟网络”边栏选项卡显示使用“服务终结点”的选项。  Azure Stack Hub 目前不支持此功能。
+- 发生次数：通用
+
+### <a name="cannot-delete-an-nsg-if-nics-not-attached-to-running-vm"></a>如果 NIC 未附加到运行中的 VM，则无法删除 NSG
+
+- 适用于：此问题适用于所有支持的版本。
+- 原因：如果取消关联 NSG 和未附加到运行中 VM 的 NIC，则该对象的更新 (PUT) 操作会在网络控制器层失败。 NSG 将在网络资源提供程序层（而不是网络控制器上）更新，因此 NSG 转变为失败状态。
+- 补救措施：将与 NSG 相关联的 NIC 附加到运行中的 VM，然后取消与 NSG 的关联，或者删除与 NSG 关联的所有 NIC。
 - 发生次数：通用
 
 ### <a name="network-interface"></a>Linux
@@ -520,6 +551,12 @@ ms.locfileid: "83422510"
 - 发生次数：通用
 
 ### <a name="virtual-network-gateway"></a>虚拟网络网关
+
+#### <a name="next-hop-type"></a>下一跃点类型
+
+- 适用于：此问题适用于所有支持的版本。
+- 原因：在用户门户中创建路由表时，“虚拟网络网关”显示为下一跃点类型选项；但是，Azure Stack Hub 不支持此类型。
+- 发生次数：通用
 
 #### <a name="alerts"></a>警报
 
@@ -652,7 +689,14 @@ ms.locfileid: "83422510"
 ### <a name="load-balancer"></a>负载均衡器
 
 - 适用于：此问题适用于所有支持的版本。 
-- 原因：将可用性集 VM 添加到负载均衡器的后端池时，门户上显示错误消息，指出“无法保存负载均衡器后端池”。 这是门户的表面问题；此功能仍在起作用，VM 在内部已成功添加到后端池。 
+- 原因：将可用性集 VM 添加到负载均衡器的后端池时，门户上显示错误消息，指出“未能保存负载均衡器后端池”。 这是门户的表面问题；此功能仍在起作用，VM 在内部已成功添加到后端池。 
+- 发生次数：通用
+
+### <a name="cannot-delete-an-nsg-if-nics-not-attached-to-running-vm"></a>如果 NIC 未附加到运行中的 VM，则无法删除 NSG
+
+- 适用于：此问题适用于所有支持的版本。
+- 原因：如果取消关联 NSG 和未附加到运行中 VM 的 NIC，则该对象的更新 (PUT) 操作会在网络控制器层失败。 NSG 将在网络资源提供程序层（而不是网络控制器上）更新，因此 NSG 转变为失败状态。
+- 补救措施：将与 NSG 相关联的 NIC 附加到运行中的 VM，然后取消与 NSG 的关联，或者删除与 NSG 关联的所有 NIC。
 - 发生次数：通用
 
 ### <a name="network-security-groups"></a>网络安全组
@@ -684,6 +728,12 @@ ms.locfileid: "83422510"
 - 发生次数：通用
 
 ### <a name="virtual-network-gateway"></a>虚拟网络网关
+
+#### <a name="next-hop-type"></a>下一跃点类型
+
+- 适用于：此问题适用于所有支持的版本。
+- 原因：在用户门户中创建路由表时，“虚拟网络网关”显示为下一跃点类型选项；但是，Azure Stack Hub 不支持此类型。
+- 发生次数：通用
 
 #### <a name="alerts"></a>警报
 

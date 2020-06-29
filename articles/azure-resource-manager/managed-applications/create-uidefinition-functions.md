@@ -4,14 +4,14 @@ description: 介绍为 Azure 托管应用程序构造 UI 定义时要使用的�
 author: rockboyfor
 ms.topic: conceptual
 origin.date: 10/12/2017
-ms.date: 01/20/2020
+ms.date: 06/22/2020
 ms.author: v-yeche
-ms.openlocfilehash: 5e63a95765455ae06c7810dc94ef52544d2196ed
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 2768f4fced12aa099ece8abcd40d4a31c911170b
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79293018"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098248"
 ---
 # <a name="createuidefinition-functions"></a>CreateUiDefinition 函数
 本部分包含 CreateUiDefinition 支持的所有函数的签名。
@@ -94,7 +94,7 @@ ms.locfileid: "79293018"
 "[replace('Everything is terrible!', 'terrible', 'awesome')]"
 ```
 
-### <a name="guid"></a>guid
+### <a name="guid"></a>GUID
 生成全局唯一字符串 (GUID)。
 
 以下示例可能返回 `"c7bc8bdc-7252-4a82-ba53-7c468679a511"`：
@@ -157,7 +157,7 @@ ms.locfileid: "79293018"
 "[contains(steps('foo').element1, 'key1')]"
 ```
 
-### <a name="length"></a>长度
+### <a name="length"></a>length
 返回字符串中的字符数、数组中的值数，或对象中的键数。
 
 #### <a name="example-1-string"></a>示例 1：字符串
@@ -486,6 +486,45 @@ ms.locfileid: "79293018"
 "[coalesce(steps('foo').element1, steps('foo').element2, 'foobar')]"
 ```
 
+在页面加载后因用户操作而发生可选调用的情况下，此功能特别有用。 例如，UI 的一个字段中的约束取决于最初不可见的另一个字段中的当前选定值时。 在这种情况下，可以使用 `coalesce()` 使该函数在页面加载时在语法上有效，同时使用户与该字段进行交互时获得所需的效果。
+
+请考虑使用此 `DropDown`，以允许用户在几种不同的数据库类型中进行选择：
+
+```
+{
+    "name": "databaseType",
+    "type": "Microsoft.Common.DropDown",
+    "label": "Choose database type",
+    "toolTip": "Choose database type",
+    "defaultValue": "Oracle Database",
+    "visible": "[bool(steps('section_database').connectToDatabase)]"
+    "constraints": {
+        "allowedValues": [
+            {
+                "label": "Azure Database for PostgreSQL",
+                "value": "postgresql"
+            },
+            {
+                "label": "Oracle Database",
+                "value": "oracle"
+            },
+            {
+                "label": "Azure SQL",
+                "value": "sqlserver"
+            }
+        ],
+        "required": true
+    },
+```
+
+若要限制另一个字段对此字段的当前选定值进行操作，请使用 `coalesce()`，如下所示：
+
+```
+"regex": "[concat('^jdbc:', coalesce(steps('section_database').databaseConnectionInfo.databaseType, ''), '.*$')]",
+```
+
+这是必需的，因为 `databaseType` 最初不可见，所以没有值。 这将导致整个表达式无法正确求值。
+
 ## <a name="conversion-functions"></a>转换函数
 可以使用这些函数在 JSON 数据类型和编码之间转换值。
 
@@ -504,7 +543,7 @@ ms.locfileid: "79293018"
 "[int(2.9)]"
 ```
 
-### <a name="float"></a>FLOAT
+### <a name="float"></a>float
 将参数转换为浮点。 此函数支持数字和字符串类型的参数。
 
 以下示例返回 `1.0`：
@@ -519,7 +558,7 @@ ms.locfileid: "79293018"
 "[float(2.9)]"
 ```
 
-### <a name="string"></a>字符串
+### <a name="string"></a>string
 将参数转换为字符串。 此函数支持所有 JSON 数据类型的参数。
 
 以下示例返回 `"1"`：
@@ -784,5 +823,4 @@ ms.locfileid: "79293018"
 ## <a name="next-steps"></a>后续步骤
 * 有关 Azure 资源管理器的简介，请参阅 [Azure 资源管理器概述](../management/overview.md)。
 
-<!-- Update_Description: new article about create uidefinition functions -->
-<!--NEW.date: 01/20/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

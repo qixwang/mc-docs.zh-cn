@@ -1,20 +1,20 @@
 ---
 title: 设计可缩放的高性能 Azure Cosmos DB 表
-description: Azure 表存储设计指南：Azure Cosmos DB 和 Azure 表存储中可缩放的高性能表
+description: Azure 表存储设计指南 - Azure Cosmos DB 和 Azure 表存储中可缩放的高性能表
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: conceptual
 origin.date: 05/21/2019
-ms.date: 02/10/2020
+ms.date: 06/22/2020
 author: rockboyfor
 ms.author: v-yeche
 ms.custom: seodec18
-ms.openlocfilehash: d44d71a201d1efb431b29b7b3e30302034dad227
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: b40ba2c1aa984559337db9405a0a6dc7cc264047
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292537"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098619"
 ---
 # <a name="azure-table-storage-table-design-guide-scalable-and-performant-tables"></a>Azure 表存储表设计指南：可缩放的高性能表
 
@@ -134,10 +134,10 @@ ms.locfileid: "79292537"
 
 在表存储中，单个节点为一个或多个完整的分区提供服务，并且该服务可通过对节点上的分区进行动态负载均衡来进行缩放。 如果某节点承受负载，表存储会将该节点服务的分区范围拆分到不同的节点。 流量下降时，表存储可将无操作的节点的分区范围合并到单个节点。  
 
-有关表存储内部细节的详细信息（特别是它如何管理分区），请参阅 [Azure 存储：具有高度一致性的高可用云存储服务](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)。  
+有关表存储内部细节的详细信息（特别是它如何管理分区），请参阅 [Azure 存储：具有高度一致性的高可用云存储服务](https://docs.microsoft.com/archive/blogs/windowsazurestorage/sosp-paper-windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency)。  
 
 ### <a name="entity-group-transactions"></a>实体组事务
-在表存储中，实体组事务 (EGT) 是唯一内置机制，用于对多个实体执行原子更新。 EGT 也称为“批处理事务”  。 EGT 只能应用于存储在同一分区（共享特定表中的同一分区键）的实体，因此每当需要对多个实体执行原子事务行为时，都需要确保这些实体位于同一分区。 这通常是将多个实体类型保存在同一个表（和分区）中，而不是对不同实体类型使用多个表的原因。 单个 EGT 最多可应用于 100 个实体。  若要提交多个并发 EGT 进行处理，请务必确保不在 EGT 共用实体上操作这些 EGT。 否则可能会造成处理延迟。
+在表存储中，实体组事务 (EGT) 是唯一内置机制，用于对多个实体执行原子更新。 EGT 也称为“批处理事务”。 EGT 只能应用于存储在同一分区（共享特定表中的同一分区键）的实体，因此每当需要对多个实体执行原子事务行为时，都需要确保这些实体位于同一分区。 这通常是将多个实体类型保存在同一个表（和分区）中，而不是对不同实体类型使用多个表的原因。 单个 EGT 最多可应用于 100 个实体。  若要提交多个并发 EGT 进行处理，请务必确保不在 EGT 共用实体上操作这些 EGT。 否则可能会造成处理延迟。
 
 EGT 还引入了一个在设计时需要评估的潜在权衡。 使用更多分区会提高应用程序的可伸缩性，因为 Azure 可以有更多的机会在各个节点之间对请求进行负载均衡。 但是，这可能会限制应用程序执行原子事务以及保持数据的强一致性的能力。 而且，在分区级别还有特定的可伸缩性目标，这些目标可能会限制预期单个节点可以实现的事务吞吐量。
 
@@ -164,16 +164,16 @@ EGT 还引入了一个在设计时需要评估的潜在权衡。 使用更多分
 ## <a name="guidelines-for-table-design"></a>表设计准则
 这些列表汇总了一些设计表时需要牢记的一些重要准则。 本指南稍后会更详细地对其进行解释。 本指南的内容与设计关系数据库通常所遵循的指导原则不同。  
 
-将表存储设计为高效读取： 
+将表存储设计为高效读取：
 
 * **专用于查询读取操作繁重的应用程序。** 设计表时，在考虑将如何更新实体之前，请先考虑要运行的查询（特别是延迟敏感的查询）。 这通常会产生一个高效且高性能的解决方案。  
-* **在查询中指定 `PartitionKey` 和 `RowKey`。** 点查询：此类查询是最高效的表存储查询。   
+* **在查询中指定 `PartitionKey` 和 `RowKey`。** 点查询：此类查询是最高效的表存储查询。  
 * **请考虑存储实体的重复副本。** 表存储比较便宜，因此请考虑多次存储同一实体（使用不同键）以实现更高效的查询。  
 * **请考虑反规范化处理数据。** 表存储比较便宜，因此请考虑反规范化数据。 例如，存储摘要实体，以便对聚合数据的查询只需访问单个实体。  
 * **使用复合键值。** 具有的唯一键是 `PartitionKey` 和 `RowKey`。 例如，使用复合键值来启用对实体的备用键控访问路径。  
 * **使用查询投影。** 可以通过使用只选择所需字段的查询来减少网络上传输的数据量。  
 
-将表存储设计为高效写入：   
+将表存储设计为高效写入：  
 
 * **不要创建热分区。** 选择在任何时间点都能够将请求散布到多个分区的键。  
 * **避免出现流量高峰。** 在合理的时间段内分配流量，并避免出现流量高峰。
@@ -204,11 +204,11 @@ EGT 还引入了一个在设计时需要评估的潜在权衡。 使用更多分
 
 下面是有关设计表存储查询的一般准则。 下述示例中所用的筛选器语法源自表存储 REST API。 有关详细信息，请参阅[查询实体](https://msdn.microsoft.com/library/azure/dd179421.aspx)。  
 
-* 点查询是可用的最高效的一种查找方式，建议用于大容量查找或要求最低延迟的查找  。 通过指定 `PartitionKey` 和 `RowKey` 值，此类查询可以高效地利用索引查找单个实体。 例如：`$filter=(PartitionKey eq 'Sales') and (RowKey eq '2')`。  
-* 其次是范围查询  。 它使用 `PartitionKey` 并筛选 `RowKey` 值的范围，以返回多个实体。 `PartitionKey` 值确定特定分区，`RowKey` 值确定该分区中的实体子集。 例如：`$filter=PartitionKey eq 'Sales' and RowKey ge 'S' and RowKey lt 'T'`。  
-* 然后是分区扫描  。 它使用 `PartitionKey` 并筛选另一个非键属性，可能会返回多个实体。 `PartitionKey` 值确定特定分区，而属性值会选择该分区中的实体子集。 例如：`$filter=PartitionKey eq 'Sales' and LastName eq 'Smith'`。  
-* 表扫描不包括 `PartitionKey` 且效率较低，因为它会依次搜索构成表的所有分区，查找所有匹配的实体  。 它会执行表扫描而不管你的筛选器是否使用 `RowKey`。 例如：`$filter=LastName eq 'Jones'`。  
-* 返回多个实体的 Azure 表存储查询将按 `PartitionKey` 和 `RowKey` 顺序为实体排序。 若要避免对客户端中的实体重新排序，请选择定义最常见排序顺序的 `RowKey`。 Azure Cosmos DB 中 Azure 表 API 返回的查询结果不按分区键或行键排序。 有关功能差异详细列表的信息，请参阅 [Azure Cosmos DB 和 Azure 表存储中的表 API 之间的差异](faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior)。
+* 点查询是可用的最高效的一种查找方式，建议用于大容量查找或要求最低延迟的查找。 通过指定 `PartitionKey` 和 `RowKey` 值，此类查询可以高效地利用索引查找单个实体。 例如：`$filter=(PartitionKey eq 'Sales') and (RowKey eq '2')`。  
+* 其次是范围查询。 它使用 `PartitionKey` 并筛选 `RowKey` 值的范围，以返回多个实体。 `PartitionKey` 值确定特定分区，`RowKey` 值确定该分区中的实体子集。 例如：`$filter=PartitionKey eq 'Sales' and RowKey ge 'S' and RowKey lt 'T'`。  
+* 然后是分区扫描。 它使用 `PartitionKey` 并筛选另一个非键属性，可能会返回多个实体。 `PartitionKey` 值确定特定分区，而属性值会选择该分区中的实体子集。 例如：`$filter=PartitionKey eq 'Sales' and LastName eq 'Smith'`。  
+* 表扫描不包括 `PartitionKey` 且效率较低，因为它会依次搜索构成表的所有分区，查找所有匹配的实体。 它会执行表扫描而不管你的筛选器是否使用 `RowKey`。 例如：`$filter=LastName eq 'Jones'`。  
+* 返回多个实体的 Azure 表存储查询将按 `PartitionKey` 和 `RowKey` 顺序为实体排序。 若要避免对客户端中的实体重新排序，请选择定义最常见排序顺序的 `RowKey`。 Azure Cosmos DB 中 Azure 表 API 返回的查询结果不按分区键或行键排序。 有关功能差异详细列表的信息，请参阅 [Azure Cosmos DB 和 Azure 表存储中的表 API 之间的差异](table-api-faq.md#table-api-vs-table-storage)。
 
 使用“**or**”指定基于 `RowKey` 值的筛选器将导致分区扫描，而不会视为范围查询。 因此，请避免使用筛选器的查询，例如：`$filter=PartitionKey eq 'Sales' and (RowKey eq '121' or RowKey eq '322')`。  
 
@@ -250,7 +250,7 @@ EGT 还引入了一个在设计时需要评估的潜在权衡。 使用更多分
 表存储返回的查询结果依次按照 `PartitionKey` 和 `RowKey` 的升序排序。
 
 > [!NOTE]
-> Azure Cosmos DB 中 Azure 表 API 返回的查询结果不按分区键或行键排序。 有关功能差异详细列表的信息，请参阅 [Azure Cosmos DB 和 Azure 表存储中的表 API 之间的差异](faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior)。
+> Azure Cosmos DB 中 Azure 表 API 返回的查询结果不按分区键或行键排序。 有关功能差异详细列表的信息，请参阅 [Azure Cosmos DB 和 Azure 表存储中的表 API 之间的差异](table-api-faq.md#table-api-vs-table-storage)。
 
 表存储中的键是字符串值。 为确保数字值正确排序，应将值转换为固定长度并使用零进行填充。 例如，如果用作 `RowKey` 的员工 ID 值是个整数值，则应将员工 ID **123** 转换为 **00000123**。 
 
@@ -555,7 +555,7 @@ EGT 在多个共享同一分区键的实体之间启用原子事务。 由于性
 在此示例中，图中的步骤 4 将该员工插入到 **Archive** 表中。 它可以将该员工添加到 Blob 存储中的 Blob 或文件系统中的文件。  
 
 #### <a name="recover-from-failures"></a>从故障中恢复
-为避免辅助角色需重启存档操作，必须确保图中步骤 4-5 中的操作为幂等操作  。 如果使用的是表存储，步骤 4 中应使用“插入或替换”操作；步骤 5 中应使用当前所用客户端库中的“如果存在则删除”操作。 如果使用的是其他存储系统，则必须使用相应的幂等操作。  
+为避免辅助角色需重启存档操作，必须确保图中步骤 4-5 中的操作为幂等操作。 如果使用的是表存储，步骤 4 中应使用“插入或替换”操作；步骤 5 中应使用当前所用客户端库中的“如果存在则删除”操作。 如果使用的是其他存储系统，则必须使用相应的幂等操作。  
 
 如果辅助角色永远不会完成图中步骤 6，则在超时后该消息会重新出现在队列中，以供辅助角色尝试重新处理它。 辅助角色可以检查已读取队列中的某条消息多少次，如有必要，可通过将该消息发送到单独的队列来将其标记“坏”消息以供调查。 若要深入了解如何读取队列消息和检查取消排队计数，请参阅[获取消息](https://msdn.microsoft.com/library/azure/dd179474.aspx)。  
 
@@ -633,7 +633,7 @@ EGT 在多个共享同一分区键的实体之间启用原子事务。 由于性
 
 `EmployeeIDs` 属性包含一个员工 ID 列表，其中员工的姓氏存储在 `RowKey` 中。  
 
-不能使用 EGT 来保持一致性，因为索引实体位于与员工实体不同的分区中。 确保索引实体与员工实体最终一致。  
+不能使用 EGT 来保持一致性，因为索引实体位于与员工实体不同的分区中。 确保索引实体与员工实体是最终一致的。  
 
 #### <a name="issues-and-considerations"></a>问题和注意事项
 在决定如何实现此模式时，请考虑以下几点：  
@@ -734,7 +734,7 @@ $filter=(PartitionKey eq 'Sales') and (RowKey ge 'empid_000123') and (RowKey lt 
 通过使用以日期时间倒序排序的 `RowKey` 值检索最近添加到分区中的 *n* 个实体。  
 
 > [!NOTE]
-> Azure Cosmos DB 中 Azure 表 API 返回的查询结果不按分区键或行键排序。 因此，虽然此模式适用于表存储，但不适用于 Azure Cosmos DB。 有关功能差异详细列表的信息，请参阅 [Azure Cosmos DB 和 Azure 表存储中的表 API 之间的差异](faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior)。
+> Azure Cosmos DB 中 Azure 表 API 返回的查询结果不按分区键或行键排序。 因此，虽然此模式适用于表存储，但不适用于 Azure Cosmos DB。 有关功能差异详细列表的信息，请参阅 [Azure Cosmos DB 和 Azure 表存储中的表 API 之间的差异](table-api-faq.md#table-api-vs-table-storage)。
 
 #### <a name="context-and-problem"></a>上下文和问题
 一个常见的需求是能够检索最近创建的实体，例如某个员工提交的最近 10 个费用报销单。 表查询支持使用 `$top` 查询操作返回一个集中的前 *n* 个实体。 没有等效的查询操作可返回一个集中的最后 *n* 个实体。  
@@ -1121,7 +1121,7 @@ foreach (var e in entities)
 > 
 
 ### <a name="work-with-heterogeneous-entity-types"></a>处理异类实体类型
-表存储是无架构的表存储  。 这意味着单个表可以存储多种类型的实体，从而在设计中提供了极大的灵活性。 以下示例说明了同时存储员工实体和部门实体的表：  
+表存储是无架构的表存储。 这意味着单个表可以存储多种类型的实体，从而在设计中提供了极大的灵活性。 以下示例说明了同时存储员工实体和部门实体的表：  
 
 <table>
 <tr>

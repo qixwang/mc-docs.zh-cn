@@ -5,12 +5,12 @@ ms.topic: include
 origin.date: 04/04/2020
 ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: 34e677c8811d08e1a463833d68ad9b91ba78ef49
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.openlocfilehash: 72f1b91547ecb2af57a8621b8c6aeccc7fe1cabf
+ms.sourcegitcommit: 304d3ef3c9e65c3e85977b3afb9985fbc0f908d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82150801"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85095977"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -20,7 +20,7 @@ ms.locfileid: "82150801"
 > * [设置开发环境并创建空项目](../../../../quickstarts/setup-platform.md?tabs=dotnet&pivots=programmming-language-csharp)
 > * [创建 Azure 语音资源](../../../../get-started.md)
 > * [将源文件上传到 Azure blob](https://docs.azure.cn/storage/blobs/storage-quickstart-blobs-portal)
-> * 需要语音 SDK 版本 1.10.0 或更高版本。
+> * 需要语音 SDK 版本 1.11.0 或更高版本。
 
 ## <a name="open-your-project-in-visual-studio"></a>在 Visual Studio 中打开项目
 
@@ -31,13 +31,13 @@ ms.locfileid: "82150801"
 
 ## <a name="add-a-reference-to-newtonsoftjson"></a>添加对 Newtonsoft.Json 的引用
 
-1. 在解决方案资源管理器中右键单击“helloworld”项目，然后选择“管理 NuGet 包”显示 NuGet 包管理器。  
-1. 在右上角找到“包源”下拉框，确保选择了 `nuget.org`  。
-1. 在左上角，选择“浏览”  。
-1. 在搜索框中键入“Newtonsoft.Json”并选择“输入”   。
-1. 从搜索结果中选择 [**Newtonsoft.Json**](https://www.nuget.org/packages/Newtonsoft.Json) 包，然后选择“安装”以安装最新稳定版本  。
+1. 在解决方案资源管理器中右键单击“helloworld”项目，然后选择“管理 NuGet 包”显示 NuGet 包管理器。 
+1. 在右上角找到“包源”下拉框，确保选择了 `nuget.org` 。
+1. 在左上角，选择“浏览”。
+1. 在搜索框中键入“Newtonsoft.Json”并选择“输入”。
+1. 从搜索结果中选择 [**Newtonsoft.Json**](https://www.nuget.org/packages/Newtonsoft.Json) 包，然后选择“安装”以安装最新稳定版本。
 1. 接受所有协议和许可证，开始安装。
-   安装此包后，“包管理器控制台”  窗口中将显示一条确认消息。
+   安装此包后，“包管理器控制台”窗口中将显示一条确认消息。
 
 ## <a name="start-with-some-boilerplate-code"></a>从一些样本代码入手
 
@@ -553,8 +553,8 @@ namespace BatchClient
 
 现在，可以使用语音服务构建应用并测试语音识别。
 
-1. “编译代码”- 在 Visual Studio 菜单栏中，选择“生成” > “生成解决方案”    。
-2. **启动应用** - 在菜单栏中，选择“调试” > “开始调试”，或按 F5    。
+1. “编译代码”- 在 Visual Studio 菜单栏中，选择“生成” > “生成解决方案”  。
+2. **启动应用** - 在菜单栏中，选择“调试” > “开始调试”，或按 F5   。
 3. **开始识别** - 它将提示你说英语短语。 语音将发送到语音服务，转录为文本，并在控制台中呈现。
 
 ## <a name="next-steps"></a>后续步骤

@@ -6,20 +6,19 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.author: v-yiso
+ms.author: sgilley
 author: sdgilley
-origin.date: 11/04/2019
-ms.date: 03/09/2020
-ms.openlocfilehash: d65e472d5074fa8007526d924f35e3cd1af75b0e
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 03/30/2020
+ms.openlocfilehash: d83a4425eb8e6d915a3f0cc84f3c1f0c5560c906
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292394"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097074"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>什么是 Azure 机器学习中的计算目标? 
 
-“计算目标”  是用来运行训练脚本或托管服务部署的指定计算资源/环境。 此位置可以是你的本地计算机，也可以是基于云的计算资源。 如果使用计算目标，以后可以轻松地更改计算环境，不需更改代码。  
+“计算目标”**** 是用来运行训练脚本或托管服务部署的指定计算资源/环境。 此位置可以是你的本地计算机，也可以是基于云的计算资源。 如果使用计算目标，以后可以轻松地更改计算环境，不需更改代码。  
 
 在典型的模型开发生命周期中，你可以：
 1. 首先，基于少量数据进行开发和试验。 在此阶段，我们建议使用本地环境（本地计算机或基于云的 VM）作为计算目标。 
@@ -50,11 +49,13 @@ Azure 机器学习为不同的计算资源提供不同的支持。  你也可以
 托管计算资源是由 Azure 机器学习创建和管理的。 此计算针对机器学习工作负荷进行了优化。 Azure 机器学习计算群集和[计算实例](concept-compute-instance.md)是仅有的托管计算。 将来可能会添加其他托管计算资源。
 
 可以通过以下方法创建 Azure 机器学习计算实例（预览版）或计算群集：
+* Azure 机器学习工作室
+* Azure 门户
+* Python SDK [ComputeInstance](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computeinstance(class)?view=azure-ml-py) 和 [AmlCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute(class)?view=azure-ml-py) 类
+* [R SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-compute-targets)
+* Resource Manager 模板
 
-| | Azure 机器学习工作室 | Azure 门户 | SDK 中 IsInRole 中的声明 | 资源管理器模板 | CLI |
-|---| ----- | ----- | ----- | ----- | ----- |
-| 计算实例 | 是 | 是 | 是 | 是 |  |
-| 计算群集 | 是 | 是 | 是 | 是 | 是 |
+也可以使用 [ 的机器学习扩展](tutorial-train-deploy-model-cli.md#create-the-compute-target-for-training)创建计算群集。
 
 创建时，这些计算资源会自动成为工作区的一部分，这与其他类型的计算目标不同。
 
@@ -67,14 +68,40 @@ Azure 机器学习为不同的计算资源提供不同的支持。  你也可以
 * 自动化群集管理和作业计划 
 * 为 CPU 和 GPU 资源提供支持
 
+### <a name="supported-vm-series-and-sizes"></a>支持的 VM 系列和大小
 
+为 Azure 机器学习中的托管计算资源选择节点大小时，可以从 Azure 提供的选定 VM 大小中进行选择。 Azure 针对不同工作负载为 Linux 和 Windows 提供了一系列大小。 请参阅以下内容，详细了解各种 [VM 类型和大小](https://docs.microsoft.com/azure/virtual-machines/linux/sizes)。
+
+选择 VM 大小时有几个例外和限制：
+* Azure 机器学习不支持某些 VM 系列。
+* 某些 VM 系列是受限制的。 若要使用受限制的系列，请与支持团队联系并请求为该系列增加配额。 若要了解如何联系支持团队，请参阅 [Azure 支持选项](https://azure.microsoft.com/support/options/)
+
+请查看下表，了解有关支持的系列和限制的详细信息。 
+
+| **支持的 VM 系列**  | **限制** |
+|------------|------------|
+| D | 无 |
+| Dv2 | 无 |  
+| DSv2 | 无 |  
+| FSv2 | 无 |  
+| M | 需要批准 |
+| NC | 无 |    
+| NCsv2 | 需要批准 |
+| NCsv3 | 需要批准 |  
+| NDs | 需要批准 |
+| NDv2 | 需要批准 |
+| NV | 无 |
+| NVv3 | 需要批准 | 
+
+
+尽管 Azure 机器学习支持这些 VM 系列，但它们可能并非在所有 Azure 区域中均可用。 可在下文中查看可用的 VM 系列：[可用产品（按区域）](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines)。
 
 ## <a name="unmanaged-compute"></a>非托管计算
 
-非托管计算目标不是由 Azure 机器学习托管的。  你将在 Azure 机器学习外部创建此类型的计算目标，然后将其附加到工作区。 对于非托管计算资源，可能需要执行额外的步骤才能保持或提高机器学习工作负荷的性能。
+非托管计算目标不是由 Azure 机器学习托管的。** 你将在 Azure 机器学习外部创建此类型的计算目标，然后将其附加到工作区。 对于非托管计算资源，可能需要执行额外的步骤才能保持或提高机器学习工作负荷的性能。
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何操作：
+了解如何：
 * [设置用来训练模型的计算目标](how-to-set-up-training-targets.md)
 * [将模型部署到计算目标](how-to-deploy-and-where.md)

@@ -11,12 +11,12 @@ ms.topic: include
 origin.date: 04/04/2020
 ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: f0ee21d213eb09ed700351adbb0aa6d986493d7a
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.openlocfilehash: 7ae6dc0cfd6eaf27f58933b0f542c3c6a67d3e57
+ms.sourcegitcommit: 304d3ef3c9e65c3e85977b3afb9985fbc0f908d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82150931"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85095891"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -25,7 +25,7 @@ ms.locfileid: "82150931"
 > [!div class="checklist"]
 > * [创建一个 Azure 搜索资源](../../../../get-started.md)
 > * [设置开发环境并创建空项目](../../../../quickstarts/setup-platform.md?tabs=dotnet&pivots=programming-language-csharp)
-> * 需要语音 SDK 版本 1.10.0 或更高版本。
+> * 需要语音 SDK 版本 1.11.0 或更高版本。
 
 ## <a name="open-your-project-in-visual-studio"></a>在 Visual Studio 中打开项目
 
@@ -188,9 +188,9 @@ namespace helloworld
 
 现在，可以使用语音服务构建应用并测试语音合成。
 
-1. “编译代码”- 在 Visual Studio 菜单栏中，选择“生成” > “生成解决方案”    。
-2. **启动应用** - 在菜单栏中，选择“调试” > “开始调试”，或按 F5    。
-3. 开始合成 - 将文本转换为语音，并保存在指定的音频数据中  。
+1. “编译代码”- 在 Visual Studio 菜单栏中，选择“生成” > “生成解决方案”  。
+2. **启动应用** - 在菜单栏中，选择“调试” > “开始调试”，或按 F5   。
+3. 开始合成 - 将文本转换为语音，并保存在指定的音频数据中。
 
    ```text
    Speech synthesized to [helloworld.wav] for text [Hello world!]

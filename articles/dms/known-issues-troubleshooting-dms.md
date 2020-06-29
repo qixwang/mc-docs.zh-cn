@@ -1,5 +1,5 @@
 ---
-title: 有关排查使用 Azure 数据库迁移服务时出现的常见已知问题/错误的文章 | Microsoft Docs
+title: 常见问题 - Azure 数据库迁移服务
 description: 了解有关如何排查使用 Azure 数据库迁移服务时出现的常见已知问题/错误。
 services: database-migration
 author: WenJason
@@ -8,16 +8,16 @@ manager: digimobile
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc
+ms.custom: seo-lt-2019
 ms.topic: article
-origin.date: 06/18/2019
-ms.date: 09/09/2019
-ms.openlocfilehash: b02ca31b75503ecfe6663904ff453af6fe38ad57
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+origin.date: 02/20/2020
+ms.date: 06/22/2020
+ms.openlocfilehash: 795686b377e95728daf4e3af6fa4f3bdf4d241c5
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "70737218"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098265"
 ---
 # <a name="troubleshoot-common-azure-database-migration-service-issues-and-errors"></a>排查常见的 Azure 数据库迁移服务问题和错误
 
@@ -33,7 +33,7 @@ ms.locfileid: "70737218"
 
 ## <a name="max-number-of-databases-selected-for-migration"></a>选择迁移的数据库数目上限
 
-为要转移到 Azure SQL 数据库或 Azure SQL 数据库托管实例的数据库迁移项目创建活动时发生以下错误：
+为要转移到 Azure SQL 数据库或 Azure SQL 托管实例的数据库迁移项目创建活动时发生以下错误：
 
 * **错误**：迁移设置验证错误: "errorDetail": 选择迁移的“数据库”对象数目超过最大数目 '4'。
 
@@ -59,7 +59,7 @@ ms.locfileid: "70737218"
 
 | 原因         | 解决方法 |
 | ------------- | ------------- |
-| 如果尝试停止的服务实例包含仍在运行的或者存在于迁移项目中的活动，则会显示此错误。 <br><br><br><br><br><br> | 确保尝试停止的 Azure 数据库迁移服务实例中没有任何活动正在运行。 在尝试停止该服务之前，还可以删除活动或项目。 以下步骤演示如何通过删除所有正在运行的任务来删除项目，以清理迁移服务实例：<br>1.Install-Module -Name AzureRM.DataMigration <br>2.Login-AzureRmAccount -EnvironmentName AzureChinaCloud <br>3.Select-AzureRmSubscription -SubscriptionName "<subName>" <br> 4.Remove-AzureRmDataMigrationProject -Name \<projectName> -ResourceGroupName \<rgName> -ServiceName \<serviceName> -DeleteRunningTask |
+| 如果尝试停止的服务实例包含仍在运行的或者存在于迁移项目中的活动，则会显示此错误。 <br><br><br><br><br><br> | 确保尝试停止的 Azure 数据库迁移服务实例中没有任何活动正在运行。 在尝试停止该服务之前，还可以删除活动或项目。 以下步骤演示如何通过删除所有正在运行的任务来删除项目，以清理迁移服务实例：<br>1.Install-Module -Name AzureRM.DataMigration <br>2.Login-AzureRmAccount -EnvironmentName AzureChinaCloud <br>3.Select-AzureRmSubscription -SubscriptionName "\<subName>" <br> 4.Remove-AzureRmDataMigrationProject -Name \<projectName> -ResourceGroupName \<rgName> -ServiceName \<serviceName> -DeleteRunningTask |
 
 ## <a name="error-when-attempting-to-start-azure-database-migration-service"></a>尝试启动 Azure 数据库迁移服务时出错
 
@@ -73,13 +73,13 @@ ms.locfileid: "70737218"
 
 ## <a name="error-restoring-database-while-migrating-sql-to-azure-sql-db-managed-instance"></a>在将 SQL 迁移到 Azure SQL DB 托管实例的过程中还原数据库时出错
 
-从 SQL Server 联机迁移到 Azure SQL 数据库托管实例时，直接转换失败，出现以下错误：
+从 SQL Server 联机迁移到 Azure SQL 托管实例时，直接转换失败，出现以下错误：
 
 * **错误**：操作 ID 为“operationId”的还原操作失败。 代码为“AuthorizationFailed”，消息为“对象 ID 为 'objectId' 的客户端 'clientId' 无权执行作用域为 '/订阅/subscriptionId' 的操作 'Microsoft.Sql/locations/managedDatabaseRestoreAzureAsyncOperation/read'。”。
 
 | 原因         | 解决方法    |
 | ------------- | ------------- |
-| 此错误表明，用于从 SQL Server 联机迁移到 Azure SQL 数据库托管实例的应用程序主体在订阅上没有参与权限。 目前，使用托管实例进行的某些 API 调用需要在订阅上有此权限才能执行还原操作。 <br><br><br><br><br><br><br><br><br><br><br><br><br><br> | 将 `Get-AzureADServicePrincipal` PowerShell cmdlet 与错误消息中提供的 `-ObjectId` 配合使用即可列出所用应用程序 ID 的显示名称。<br><br> 验证此应用程序的权限，确保其在订阅级别有[参与者角色](/role-based-access-control/built-in-roles#contributor)。 <br><br> Azure 数据库迁移服务工程团队会限定从订阅上的当前参与角色进行访问这一必需权限。 如果你的业务要求不允许使用参与角色，请联系 Azure 支持部门以获取更多帮助。 |
+| 此错误表明，用于从 SQL Server 联机迁移到 SQL 托管实例的应用程序主体在订阅上没有参与权限。 目前，使用托管实例进行的某些 API 调用需要在订阅上有此权限才能执行还原操作。 <br><br><br><br><br><br><br><br><br><br><br><br><br><br> | 将 `Get-AzureADServicePrincipal` PowerShell cmdlet 与错误消息中提供的 `-ObjectId` 配合使用即可列出所用应用程序 ID 的显示名称。<br><br> 验证此应用程序的权限，确保其在订阅级别有[参与者角色](/role-based-access-control/built-in-roles#contributor)。 <br><br> Azure 数据库迁移服务工程团队会限定从订阅上的当前参与角色进行访问这一必需权限。 如果你的业务要求不允许使用参与角色，请联系 Azure 支持部门以获取更多帮助。 |
 
 ## <a name="error-when-deleting-nic-associated-with-azure-database-migration-service"></a>删除与 Azure 数据库迁移服务关联的 NIC 时出错
 

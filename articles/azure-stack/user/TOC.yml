@@ -27,6 +27,8 @@
   items:
     - name: 订阅产品
       href: azure-stack-subscribe-services.md
+    - name: 从模板创建 VM
+      href: azure-stack-create-vm-template.md
 - name: 操作指南
   items:
     - name: 开始为混合云构建解决方案
@@ -95,6 +97,8 @@
           items:
             - name: 概述
               href: azure-stack-version-profiles.md
+            - name: 配置文件支持的资源提供程序 API
+              href: azure-stack-profiles-azure-resource-manager-versions.md
             - name: .NET
               href: azure-stack-version-profiles-net.md
             - name: Java
@@ -107,8 +111,6 @@
               href: azure-stack-version-profiles-python.md
             - name: NodeJS
               href: azure-stack-version-profile-nodejs.md
-            - name: 配置文件支持的资源提供程序 API
-              href: azure-stack-profiles-azure-resource-manager-versions.md
     - name: 使用资源提供程序
       items:
         - name: 安全性、合规性和标识
@@ -133,6 +135,8 @@
                   href: azure-stack-managed-disk-considerations.md
                 - name: 保护 VM
                   href: azure-stack-manage-vm-protect.md
+                - name: VM 更新和管理
+                  href: vm-update-management.md
                 - name: SQL Server VM 注意事项
                   href: azure-stack-sql-server-vm-considerations.md
             - name: 存储
@@ -163,6 +167,10 @@
                       href: azure-stack-vpn-s2s.md
                     - name: VPN 网关设置
                       href: azure-stack-vpn-gateway-settings.md
+                    - name: 排查网络虚拟设备问题
+                      href: network-virtual-appliance.md
+                    - name: 排查站点到站点连接问题
+                      href: site-to-site.md
                 - name: 用于 Azure Stack Hub 的 iDNS
                   href: azure-stack-understanding-dns.md
                 - name: Azure Stack Hub 中的 DNS
@@ -200,9 +208,53 @@
               href: azure-stack-ethereum.md
             - name: 部署 Service Fabric 群集
               href: azure-stack-solution-template-service-fabric-cluster.md
+            - name: 部署 Kubernetes 群集
+              items:
+                - name: AKS 引擎
+                  items:
+                    - name: Azure Stack Hub 上的 AKS 引擎
+                      href: azure-stack-kubernetes-aks-engine-overview.md
+                    - name: 支持策略
+                      href: azure-stack-kubernetes-aks-engine-support.md
+                    - name: AKS 引擎发行说明
+                      href: kubernetes-aks-engine-release-notes.md
+                    - name: 设置先决条件
+                      href: azure-stack-kubernetes-aks-engine-set-up.md
+                    - name: 创建 Linux 客户端
+                      href: azure-stack-kubernetes-aks-engine-deploy-linux.md
+                    - name: 创建 Windows 客户端
+                      href: azure-stack-kubernetes-aks-engine-deploy-windows.md
+                    - name: 部署群集
+                      href: azure-stack-kubernetes-aks-engine-deploy-cluster.md
+                    - name: 部署到自定义虚拟网络
+                      href: kubernetes-aks-engine-custom-vnet.md
+                    - name: 缩放群集
+                      href: azure-stack-kubernetes-aks-engine-scale.md
+                    - name: 升级群集
+                      href: azure-stack-kubernetes-aks-engine-upgrade.md
+                    - name: AKS 引擎疑难解答
+                      href: azure-stack-kubernetes-aks-engine-troubleshoot.md
+                    - name: 对容器使用 Azure Monitor
+                      href: /azure-monitor/insights/container-insights-hybrid-setup
+                - name: 市场项
+                  items:
+                    - name: 部署 Kubernetes 群集
+                      href: azure-stack-solution-template-kubernetes-deploy.md
+                    - name: 使用 Azure AD 部署 Kubernetes
+                      href: azure-stack-solution-template-kubernetes-azuread.md
+                    - name: 使用 AD FS 部署 Kubernetes
+                      href: azure-stack-solution-template-kubernetes-adfs.md
+                    - name: 启用 Kubernetes 仪表板
+                      href: azure-stack-solution-template-kubernetes-dashboard.md
+                    - name: 从市场项转移 AKS 引擎
+                      href: azure-stack-kubernetes-aks-engine-dvm.md
+                    - name: 对 Kubernetes 群集进行故障排除
+                      href: azure-stack-solution-template-kubernetes-trouble.md
+            - name: 部署认知服务
+              href: azure-stack-solution-template-cognitive-services.md
     - name: 部署应用
       items:
-        - name: '将 C# Web 应用部署到 Windows VM'
+        - name: 将 C# Web 应用部署到 Windows VM
           href: azure-stack-dev-start-howto-vm-dotnet.md
         - name: 将 Web 应用部署到 Linux VM
           items:
@@ -274,11 +326,11 @@
 - name: 参考
   items:
     - name: Azure Stack Hub PowerShell
-      href: 'https://docs.microsoft.com/powershell/azure/azure-stack/overview?view=azurestackps-1.3.0'
-    - name: Azure Stack Hub REST API 浏览器
-      href: 'https://docs.microsoft.com/rest/api/'
+      href: 'https://docs.microsoft.com/powershell/azure/azure-stack/overview'
+    - name: Azure Stack Hub 管理员 REST API
+      href: 'https://docs.microsoft.com/rest/api/azure-stack/'
     - name: Azure CLI
-      href: /cli/reference-index?view=azure-cli-2017-03-09-profile
+      href: /cli/reference-index?view=azure-cli-latest
 - name: 相关内容
   items:
     - name: Azure Stack Hub 操作员文档

@@ -11,12 +11,12 @@ ms.topic: include
 origin.date: 04/04/2020
 ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: 3de3e1b900191ac95cbf29fee3d83ae2e14fc10b
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.openlocfilehash: 969f59cdc516a407454a2aa810f10789b2e9fc47
+ms.sourcegitcommit: 304d3ef3c9e65c3e85977b3afb9985fbc0f908d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82150997"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85095980"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -25,7 +25,7 @@ ms.locfileid: "82150997"
 > [!div class="checklist"]
 > * [创建一个 Azure 搜索资源](../../../../get-started.md)
 > * [设置开发环境并创建空项目](../../../../quickstarts/setup-platform.md?tabs=android&pivots=programming-language-java)
-> * 需要语音 SDK 版本 1.10.0 或更高版本。
+> * 需要语音 SDK 版本 1.11.0 或更高版本。
 
 ## <a name="create-user-interface"></a>创建用户界面
 
@@ -195,9 +195,9 @@ ms.locfileid: "82150997"
 
 1. 将 Android 设备连接到开发电脑。 确保已在设备上启用[开发模式和 USB 调试](https://developer.android.com/studio/debug/dev-options)。 或者，创建一个 [Android 仿真器](https://developer.android.com/studio/run/emulator)。
 
-1. 若要生成应用程序，请按 Ctrl+F9，或者从菜单栏中选择“生成” > “生成项目”   。
+1. 若要生成应用程序，请按 Ctrl+F9，或者从菜单栏中选择“生成” > “生成项目” 。
 
-1. 若要启动应用程序，请按 Shift+F10 或选择“运行” > “运行‘应用’”   。
+1. 若要启动应用程序，请按 Shift+F10 或选择“运行” > “运行‘应用’” 。
 
 1. 在出现的部署目标窗口中，选择你的 Android 设备或仿真器。
 

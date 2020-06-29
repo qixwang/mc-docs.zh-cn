@@ -1,177 +1,169 @@
 ---
-title: 在 Azure Stack Hub 上引发警报时主动收集诊断日志
-description: 如何在 Azure Stack Hub 的“帮助 + 支持”中配置主动收集日志的功能。
+title: Azure Stack Hub 中的主动诊断日志收集
+description: 了解如何在 Azure Stack Hub 的“帮助 + 支持”中配置主动诊断收集日志的功能。
 author: WenJason
 ms.topic: article
 origin.date: 04/17/2020
-ms.date: 05/18/2020
+ms.date: 06/22/2020
 ms.author: v-jay
 ms.reviewer: shisab
 ms.lastreviewed: 04/17/2020
-ms.openlocfilehash: 6425889ec57b501a93239681908a8f99d4d1d125
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.openlocfilehash: aea85726c36605a6d58defeec1d4162da0eb2928
+ms.sourcegitcommit: d86e169edf5affd28a1c1a4476d72b01a7fb421d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83422843"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85096321"
 ---
-# <a name="send-azure-stack-hub-diagnostic-logs-proactively"></a>主动发送 Azure Stack Hub 诊断日志
+# <a name="proactive-diagnostic-log-collection-in-azure-stack-hub"></a>Azure Stack Hub 中的主动诊断日志收集
 
 ::: moniker range=">= azs-2002"
 
 在 Azure Stack Hub 上引发警报时主动收集诊断日志可以节省客户支持的时间。
-如果需要调查系统运行状况，可以在通过 Microsoft 客户支持服务 (CSS) 打开支持案例之前，自动上传要分析的日志。 
+
+如果需要调查系统运行状况，可以在通过 Microsoft 客户支持服务 (CSS) 打开支持案例之前，自动上传要分析的日志。
 
 ## <a name="steps-to-configure-proactive-log-collection"></a>配置主动收集日志功能的步骤
 
-按照以下步骤配置主动收集日志功能。 随时可以禁用和重新启用自动日志收集。  
+按照以下步骤配置主动收集日志功能。 随时可以禁用和重新启用主动日志收集。  
 
 1. 登录到 Azure Stack Hub 管理员门户。
-1. 打开“帮助和支持概述”。
-1. 如果出现横幅，请单击“启用主动收集日志功能”。 
+1. 打开“帮助 + 支持概述”****。
+1. 如果出现横幅，请选择“启用主动收集日志功能”****。 =
 
-   ![显示“帮助和支持”中用于启用收集日志的位置的屏幕截图](media/azure-stack-help-and-support/banner-enable-automatic-log-collection.png)
+   ![显示“帮助 + 支持”中用于启用收集日志的位置的屏幕截图](media/azure-stack-help-and-support/banner-enable-automatic-log-collection.png)
 
-   也可以单击“设置”，将“主动收集日志”设置为“启用”，然后单击“保存”。
+   也可以选择“设置”，将“主动收集日志”设置为“启用”，然后选择“保存”**** **** **** ****。
 
-   ![显示“帮助和支持”中用于启用收集日志的位置的屏幕截图](media/azure-stack-help-and-support/settings-enable-automatic-log-collection.png)
+   ![显示“帮助 + 支持”中用于启用收集日志的位置的屏幕截图](media/azure-stack-help-and-support/settings-enable-automatic-log-collection.png)
 
 ::: moniker-end
 ::: moniker range="<= azs-1910"
 
-我们建议配置诊断日志自动收集功能，以获得顺畅的日志收集和客户支持体验。 
-如果需要调查系统运行状况，可以自动上传日志以供 Azure 客户支持服务 (CSS) 进行分析。 
+我们建议配置诊断日志自动收集功能，以获得顺畅的日志收集和客户支持体验。
 
-## <a name="create-an-azure-blob-container-sas-url"></a>创建 Azure Blob 容器 SAS URL 
+如果需要调查系统运行状况，可以自动上传日志以供 Microsoft 客户支持服务 (CSS) 进行分析。
 
-在配置日志自动收集之前，需要先获取 Blob 容器的共享访问签名 (SAS)。 使用 SAS 可以授予对存储帐户中资源的访问权限，而无需共享帐户密钥。 
-可将 Azure Stack Hub 日志文件保存到 Azure 中的某个 Blob 容器，然后提供 SAS URL 供 CSS 从中收集日志。 
+## <a name="create-an-azure-blob-container-sas-url"></a>创建 Azure Blob 容器 SAS URL
+
+在配置日志自动收集之前，需要先获取 Blob 容器的共享访问签名 (SAS)。 使用 SAS 可以授予对存储帐户中资源的访问权限，而无需共享帐户密钥。
+
+可将 Azure Stack Hub 日志文件保存到 Azure 中的某个 Blob 容器，然后提供 SAS URL 供 CSS 从中收集日志。
 
 ### <a name="prerequisites"></a>先决条件
 
-可以使用新的或 Azure 中的现有 Blob 容器。 
-若要在 Azure 中创建 Blob 容器，至少需要拥有[存储 Blob 参与者角色](/role-based-access-control/built-in-roles#storage-blob-data-contributor)或[特定的权限](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 
-全局管理员也拥有所需的权限。 
+可以使用新的或 Azure 中的现有 Blob 容器。 若要在 Azure 中创建 Blob 容器，至少需要拥有[存储 Blob 参与者角色](/role-based-access-control/built-in-roles#storage-blob-data-contributor)或[特定的权限](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 全局管理员也拥有所需的权限。
 
-有关如何为自动日志收集存储帐户选择参数的最佳做法，请参阅[自动收集 Azure Stack Hub 日志的最佳做法](azure-stack-best-practices-automatic-diagnostic-log-collection.md)。 有关存储帐户类型的详细信息，请参阅 [Azure 存储帐户概述](/storage/common/storage-account-overview)
+有关如何为自动日志收集存储帐户选择参数的最佳做法，请参阅[自动收集 Azure Stack Hub 日志的最佳做法](azure-stack-best-practices-automatic-diagnostic-log-collection.md)。 有关存储帐户类型的详细信息，请参阅 [Azure 存储帐户概述](/storage/common/storage-account-overview)。
 
 ### <a name="create-a-blob-storage-account"></a>创建 Blob 存储帐户
- 
+
 1. 登录到 [Azure 门户](https://portal.azure.cn)。
-1. 单击“存储帐户”>“添加”。 
+1. 选择“存储帐户”>“添加”**** ****。
 1. 使用以下设置创建 Blob 容器：
-   - **订阅**：选择自己的 Azure 订阅
-   - **资源组**：指定资源组
-   - **存储帐户名称**：指定唯一的存储帐户名称
-   - **位置**：根据公司策略选择数据中心
-   - **性能**：标准
-   - **帐户类型** StorageV2（常规用途 v2） 
-   - **复制**：本地冗余存储 (LRS)
-   - **访问层**：冷
 
-   ![显示 Blob 容器属性的屏幕截图](media/azure-stack-automatic-log-collection/azure-stack-log-collection-create-storage-account.png)
+   - **订阅**：选择自己的 Azure 订阅。
+   - **资源组**：指定资源组。
+   - **存储帐户名称**：指定唯一的存储帐户名称。
+   - **位置**：根据公司政策选择数据中心。
+   - **性能**：标准。
+   - **帐户类型** StorageV2（常规用途 v2）。
+   - **复制**：本地冗余存储 (LRS)。
+   - **访问层**：Cool。
 
-1. 依次单击“查看 + 创建”、“创建”。   
+   ![Blob 容器属性](media/azure-stack-automatic-log-collection/azure-stack-log-collection-create-storage-account.png)
 
-### <a name="create-a-blob-container"></a>创建 Blob 容器 
+1. 选择“查看 + 创建”，然后选择“创建”**** ****。  
 
-1. 部署成功后，单击“转到资源”。 还可以将存储帐户固定到仪表板以方便访问。 
-1. 依次单击“Blob”、“+ 容器”。  
-1. 输入新容器的名称，然后单击“确定”。
+### <a name="create-a-blob-container"></a>创建 Blob 容器
+
+1. 部署成功后，选择“转到资源”****。 还可以将存储帐户固定到仪表板以方便访问。
+1. 选择“Blob”，然后选择“+ 容器”**** ****。 
+1. 输入新容器的名称，然后选择“确定”****。
 
 ## <a name="create-a-sas-url"></a>创建 SAS URL
 
-1. 打开 Microsoft Azure 存储资源管理器，右键单击容器，然后单击“获取共享访问签名”。 
+1. 打开 Microsoft Azure 存储资源管理器，右键单击容器，然后选择“获取共享访问签名”****。 
    
-   ![显示如何获取 Blob 容器共享访问签名的屏幕截图](media/azure-stack-automatic-log-collection/get-sas.png)
+   ![如何获取 Blob 容器共享访问签名](media/azure-stack-automatic-log-collection/get-sas.png)
 
 1. 选择以下属性：
-   - 开始时间：可视需要将开始时间回调 
+
+   - 开始时间：可视需要将开始时间回调
    - 过期时间：两年
    - 时区：UTC
    - 权限：“读取”、“写入”和“列出”
 
-   ![显示共享访问签名属性的屏幕截图](media/azure-stack-automatic-log-collection/sas-properties.png) 
+   ![共享访问签名的属性](media/azure-stack-automatic-log-collection/sas-properties.png) 
 
-1. 单击**创建**。  
+1. 选择“创建” ****。  
 
-复制 URL，并在[配置自动日志收集](azure-stack-configure-automatic-diagnostic-log-collection-tzl.md)时输入该 URL。 
-有关 SAS URL 的详细信息，请参阅[使用共享访问签名 (SAS)](/storage/common/storage-dotnet-shared-access-signature-part-1)。 
-
+复制 URL，并在[配置自动日志收集](azure-stack-configure-automatic-diagnostic-log-collection-tzl.md)时输入该 URL。 有关 SAS URL 的详细信息，请参阅[使用共享访问签名 (SAS)](/storage/common/storage-dotnet-shared-access-signature-part-1)。
 
 ## <a name="steps-to-configure-automatic-log-collection"></a>配置自动日志收集的步骤
 
-按照以下步骤将 SAS URL 添加到日志收集 UI： 
+按照以下步骤将 SAS URL 添加到日志收集 UI：
 
 1. 登录到 Azure Stack Hub 管理员门户。
-1. 打开“帮助和支持概述”。
-1. 单击“自动收集设置”。
+1. 打开“帮助 + 支持概述”****。
+1. 单击“自动收集设置”。****
 
-   ![显示“帮助和支持”中用于启用收集日志的位置的屏幕截图](media/azure-stack-automatic-log-collection/azure-stack-automatic-log-collection.png)
+   ![“帮助 + 支持”中用于启用收集日志的位置](media/azure-stack-automatic-log-collection/azure-stack-automatic-log-collection.png)
 
-1. 将“自动日志收集”设置为“已启用”。
+1. 将“自动日志收集”设置为“已启用”****。
 1. 输入存储帐户 Blob 容器的共享访问签名 (SAS) URL。
 
-   ![显示 Blob SAS URL 的屏幕截图](media/azure-stack-automatic-log-collection/azure-stack-enable-automatic-log-collection.png)
+   ![Blob SAS URL](media/azure-stack-automatic-log-collection/azure-stack-enable-automatic-log-collection.png)
 
 >[!NOTE]
->随时可以禁用和重新启用自动日志收集。 SAS URL 配置不会更改。 如果重新启用自动日志收集，系统会对以前输入的 SAS URL 进行相同的验证检查，已过期的 SAS URL 将被拒绝。 
-
+>随时可以禁用和重新启用自动日志收集。 SAS URL 配置不会更改。 如果重新启用自动日志收集，系统会对以前输入的 SAS URL 进行相同的验证检查，已过期的 SAS URL 将被拒绝。
 
 ::: moniker-end
 
 ## <a name="view-log-collection"></a>查看日志集合
 
-以往从 Azure Stack Hub 收集的日志显示在“帮助和支持”中的“日志收集”页上，其中提供了以下日期和时间：
+以往从 Azure Stack Hub 收集的日志显示在“帮助 + 支持”中的“日志收集”页上，其中提供了以下日期和时间**** ****：
 
-- **收集的时间**：日志收集操作的开始时间
-- **状态**：“正在进行”或“已完成”
-- **日志开始**：要收集日志的时段的开始时间
-- **日志结束**：收集时段的结束时间
-- **类型**：是手动收集日志还是主动收集日志 
+- **收集的时间**：日志收集操作的开始时间。
+- **状态**：“正在进行”或“已完成”。
+- **日志开始**：要收集日志的时段的开始时间。
+- **日志结束**：收集时段的结束时间。
+- **类型**：是手动收集日志还是主动收集日志。
 
+![“帮助 + 支持”中的日志集合](media/azure-stack-help-and-support/azure-stack-log-collection.png)
 
-![显示日志集合的屏幕截图](media/azure-stack-help-and-support/azure-stack-log-collection.png)
+## <a name="proactive-diagnostic-log-collection-alerts"></a>主动收集诊断日志时的警报
 
+如果已启用，则仅当引发以下事件之一时，主动收集日志功能才会上传日志。
 
-## <a name="proactive-diagnostic-log-collection-alerts"></a>主动收集诊断日志时的警报 
+例如，“更新失败”**** 是一个警报，会触发主动收集诊断日志的操作。 如果启用了主动收集功能，则会在更新失败时主动捕获诊断日志，这样有助于 CSS 排查问题。 仅在引发**更新失败**的警报时才收集诊断日志。
 
-如果已启用，则仅当引发以下事件之一时，主动收集日志功能才会上传日志。 
-
-例如，“更新失败”是一个警报，会触发主动收集诊断日志的操作。 如果启用了主动收集功能，则会在更新失败时主动捕获诊断日志，这样有助于 CSS 排查问题。 仅在引发**更新失败**的警报时才收集诊断日志。 
-
-|警报标题  |    FaultIdType|    
-|-------------|------------|
-|无法连接到远程服务 |    UsageBridge.NetworkError|
-|更新失败 |    Urp.UpdateFailure    |          
-|存储资源提供程序基础结构/依赖项不可用 |    StorageResourceProviderDependencyUnavailable     |     
-|节点未连接到控制器|    ServerHostNotConnectedToController     |     
-|路由发布失败 |    SlbMuxRoutePublicationFailure |    
-|存储资源提供程序内部数据存储不可用 |    StorageResourceProvider。 DataStoreConnectionFail     |       
-|存储设备发生故障    | Microsoft.Health.FaultType.VirtualDisks.Detached     |      
-|运行状况控制器无法访问存储帐户 | Microsoft.Health.FaultType.StorageError |    
-|与物理磁盘的连接已丢失 |    Microsoft.Health.FaultType.PhysicalDisk.LostCommunication     |    
-|Blob 服务未在节点上运行 |    StorageService.The.blob.service.is.not.running.on.a.node-Critical |    
-|基础结构角色不正常 |    Microsoft.Health.FaultType.GenericExceptionFault |        
-|表服务错误 |    StorageService.Table.service.errors-Critical |              
-|文件共享已利用超过 80% |    Microsoft.Health.FaultType.FileShare.Capacity.Warning.Infra |       
-|缩放单元节点已脱机    | FRP.Heartbeat.PhysicalNode |    
-|基础结构角色实例不可用 |    FRP.Heartbeat.InfraVM    |    
-|基础结构角色实例不可用  |    FRP.Heartbeat.NonHaVm     |        
-|基础结构角色“目录管理”报告了时间同步错误 |    DirectoryServiceTimeSynchronizationError |       
-|挂起的外部证书过期 |    CertificateExpiration.ExternalCert.Warning |
-|挂起的外部证书过期 |    CertificateExpiration.ExternalCert.Critical |
-|由于内存容量不足，无法针对特定类别和大小预配虚拟机 |    AzureStack.ComputeController.VmCreationFailure.LowMemory |
-|无法访问节点以供虚拟机放置 |    AzureStack.ComputeController.HostUnresponsive |    
-|备份失败  | AzureStack.BackupController.BackupFailedGeneralFault |    
-|由于与失败的操作发生冲突，已跳过计划的备份    | AzureStack.BackupController.BackupSkippedWithFailedOperationFault |    
-
+| 警报标题 | FaultIdType |
+|---|---|
+|无法连接到远程服务 | UsageBridge.NetworkError|
+|更新失败 | Urp.UpdateFailure |
+|存储资源提供程序基础结构/依赖项不可用 |    StorageResourceProviderDependencyUnavailable |
+|节点未连接到控制器| ServerHostNotConnectedToController |  
+|路由发布失败 | SlbMuxRoutePublicationFailure |
+|存储资源提供程序内部数据存储不可用 |    StorageResourceProvider。 DataStoreConnectionFail |
+|存储设备发生故障 | Microsoft.Health.FaultType.VirtualDisks.Detached |
+|运行状况控制器无法访问存储帐户 | Microsoft.Health.FaultType.StorageError |
+|与物理磁盘的连接已丢失 | Microsoft.Health.FaultType.PhysicalDisk.LostCommunication |
+|Blob 服务未在节点上运行 | StorageService.The.blob.service.is.not.running.on.a.node-Critical |
+|基础结构角色不正常 | Microsoft.Health.FaultType.GenericExceptionFault |
+|表服务错误 | StorageService.Table.service.errors-Critical |
+|文件共享已利用超过 80% | Microsoft.Health.FaultType.FileShare.Capacity.Warning.Infra |
+|缩放单元节点已脱机 | FRP.Heartbeat.PhysicalNode |
+|基础结构角色实例不可用 | FRP.Heartbeat.InfraVM |
+|基础结构角色实例不可用  | FRP.Heartbeat.NonHaVm |
+|基础结构角色“目录管理”报告了时间同步错误 | DirectoryServiceTimeSynchronizationError |
+|挂起的外部证书过期 | CertificateExpiration.ExternalCert.Warning |
+|挂起的外部证书过期 | CertificateExpiration.ExternalCert.Critical |
+|由于内存容量不足，无法针对特定类别和大小预配虚拟机 | AzureStack.ComputeController.VmCreationFailure.LowMemory |
+|无法访问节点以供虚拟机放置 | AzureStack.ComputeController.HostUnresponsive |
+|备份失败  | AzureStack.BackupController.BackupFailedGeneralFault |
+|由于与失败的操作发生冲突，已跳过计划的备份    | AzureStack.BackupController.BackupSkippedWithFailedOperationFault |
 
 ## <a name="see-also"></a>另请参阅
 
 [Azure Stack Hub 日志和客户数据处理](azure-stack-data-collection.md)
-
-
-
-
-

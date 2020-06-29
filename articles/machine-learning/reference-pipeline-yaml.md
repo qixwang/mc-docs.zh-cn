@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 origin.date: 11/11/2019
 ms.date: 03/16/2020
-ms.openlocfilehash: 3c52df5775bdd98d53f711fb0867977fad8d702b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: f21dc38e443fc6285666a32686110288852e49d6
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80343315"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097416"
 ---
 # <a name="define-machine-learning-pipelines-in-yaml"></a>在 YAML 中定义机器学习管道
 
@@ -27,6 +27,7 @@ ms.locfileid: "80343315"
 | 步骤类型 | 支持？ |
 | ----- | :-----: |
 | PythonScriptStep | 是 |
+| ParallelRunStep | 是 |
 | AdlaStep | 是 |
 | AzureBatchStep | 是 |
 | DatabricksStep | 是 |
@@ -112,6 +113,7 @@ pipeline:
 | `DatabricsStep` | 添加 Databricks 笔记本、Python 脚本或 JAR。 对应于 [DatabricksStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricksstep?view=azure-ml-py) 类。 |
 | `DataTransferStep` | 在存储选项之间传输数据。 对应于 [DataTransferStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?view=azure-ml-py) 类。 |
 | `PythonScriptStep` | 运行 Python 脚本。 对应于 [PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?view=azure-ml-py) 类。 |
+| `ParallelRunStep` | 运行 Python 脚本，以异步方式并行处理大量数据。 对应于 [ParallelRunStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallel_run_step.parallelrunstep?view=azure-ml-py) 类。 |
 
 ### <a name="adla-step"></a>ADLA 步骤
 
@@ -320,7 +322,6 @@ pipeline:
 
 | YAML 键 | 说明 |
 | ----- | ----- |
-| `compute_target` | 用于此步骤的计算目标。 计算目标可以是 Azure 机器学习计算、虚拟机（例如 Data Science VM）或 HDInsight。 |
 | `inputs` | 输入可以是 [InputPortBinding](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.inputportbinding?view=azure-ml-py)、[DataReference](#data-reference)、[PortDataReference](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.portdatareference?view=azure-ml-py)、[PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py)、[Dataset](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py)、[DatasetDefinition](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition?view=azure-ml-py) 或 [PipelineDataset](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset?view=azure-ml-py)。 |
 | `outputs` | 输出可以是 [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) 或 [OutputPortBinding](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.outputportbinding?view=azure-ml-py)。 |
 | `script_name` | Python 脚本的名称（相对于 `source_directory`）。 |
@@ -362,6 +363,117 @@ pipeline:
                     destination: Output4
                     datastore: workspaceblobstore
                     bind_mode: mount
+```
+
+### <a name="parallel-run-step"></a>并行运行步骤
+
+| YAML 键 | 说明 |
+| ----- | ----- |
+| `inputs` | 输入可以是 [Dataset](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py)、[DatasetDefinition](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition?view=azure-ml-py) 或 [PipelineDataset](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset?view=azure-ml-py)。 |
+| `outputs` | 输出可以是 [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) 或 [OutputPortBinding](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.outputportbinding?view=azure-ml-py)。 |
+| `script_name` | Python 脚本的名称（相对于 `source_directory`）。 |
+| `source_directory` | 包含脚本、Conda 环境等的目录。 |
+| `parallel_run_config` | `parallel_run_config.yml` 文件的路径。 此文件是 [ParallelRunConfig](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallelrunconfig?view=azure-ml-py) 类的 YAML 表示形式。 |
+| `allow_reuse` | 确定当使用相同的设置再次运行时，该步骤是否应重用以前的结果。 |
+
+以下示例包含并行运行步骤：
+
+```yaml
+pipeline:
+    description: SamplePipelineFromYaml
+    default_compute: cpu-cluster
+    data_references:
+        MyMinistInput:
+            dataset_name: mnist_sample_data
+    parameters:
+        PipelineParamTimeout:
+            type: int
+            default: 600
+    steps:        
+        Step1:
+            parallel_run_config: "yaml/parallel_run_config.yml"
+            type: "ParallelRunStep"
+            name: "parallel-run-step-1"
+            allow_reuse: True
+            arguments:
+            - "--progress_update_timeout"
+            - parameter:timeout_parameter
+            - "--side_input"
+            - side_input:SideInputData
+            parameters:
+                timeout_parameter:
+                    source: PipelineParamTimeout
+            inputs:
+                InputData:
+                    source: MyMinistInput
+            side_inputs:
+                SideInputData:
+                    source: Output4
+                    bind_mode: mount
+            outputs:
+                OutputDataStep2:
+                    destination: Output5
+                    datastore: workspaceblobstore
+                    bind_mode: mount
+```
+
+### <a name="pipeline-with-multiple-steps"></a>包含多个步骤的管道 
+
+| YAML 键 | 说明 |
+| ----- | ----- |
+| `steps` | 具有一个或多个 PipelineStep 定义的序列。 请注意，步骤 `outputs` 的 `destination` 键将成为下一步 `inputs` 的 `source` 键。| 
+
+```yaml
+pipeline:
+    name: SamplePipelineFromYAML
+    description: Sample multistep YAML pipeline
+    data_references:
+        TitanicDS:
+            dataset_name: 'titanic_ds'
+            bind_mode: download
+    default_compute: cpu-cluster
+    steps:
+        Dataprep:
+            type: "PythonScriptStep"
+            name: "DataPrep Step"
+            compute: cpu-cluster
+            runconfig: ".\\default_runconfig.yml"
+            script_name: "prep.py"
+            arguments:
+            - '--train_path'
+            - output:train_path
+            - '--test_path'
+            - output:test_path
+            allow_reuse: True
+            inputs:
+                titanic_ds:
+                    source: TitanicDS
+                    bind_mode: download
+            outputs:
+                train_path:
+                    destination: train_csv
+                    datastore: workspaceblobstore
+                test_path:
+                    destination: test_csv
+        Training:
+            type: "PythonScriptStep"
+            name: "Training Step"
+            compute: cpu-cluster
+            runconfig: ".\\default_runconfig.yml"
+            script_name: "train.py"
+            arguments:
+            - "--train_path"
+            - input:train_path
+            - "--test_path"
+            - input:test_path
+            inputs:
+                train_path:
+                    source: train_csv
+                    bind_mode: download
+                test_path:
+                    source: test_csv
+                    bind_mode: download
+
 ```
 
 ## <a name="schedules"></a>计划

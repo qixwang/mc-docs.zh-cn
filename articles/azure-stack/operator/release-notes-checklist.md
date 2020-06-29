@@ -3,17 +3,17 @@ title: Azure Stack Hub 更新活动清单
 description: 为系统准备最新 Azure Stack Hub 更新的清单。
 author: WenJason
 ms.topic: article
-origin.date: 02/18/2020
-ms.date: 05/18/2020
+origin.date: 05/04/2020
+ms.date: 06/22/2020
 ms.author: v-jay
 ms.reviewer: ppacent
 ms.lastreviewed: 01/14/2020
-ms.openlocfilehash: c48cb08b0e701d2a1e72dd9a10f419fe62764f20
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.openlocfilehash: 0986fab65aae8db85245642d4dd2f94d40b73ae4
+ms.sourcegitcommit: d86e169edf5affd28a1c1a4476d72b01a7fb421d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83422634"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85096502"
 ---
 # <a name="azure-stack-hub-update-activity-checklist"></a>Azure Stack Hub 更新活动清单
 
@@ -25,6 +25,7 @@ ms.locfileid: "83422634"
 |------------------------------|-----------------------------------------------------------|
 | 查看已知问题     | [已知问题列表](known-issues.md)。                |
 | 查看安全更新 | [安全更新列表](release-notes-security-updates.md)。      |
+| 查看加载项资源提供程序更新 | [应用服务](azure-stack-app-service-update.md)<br>[事件中心](resource-provider-apply-updates.md)<br> [MySQL](azure-stack-sql-resource-provider-update.md)<br>[SQL](azure-stack-mysql-resource-provider-update.md)<br>  |
 | 应用最新的 OEM 包 | 请与 OEM 联系，以确保你的系统满足系统要更新到的 Azure Stack Hub 版本的最低 OEM 包要求。 确保 OEM 包与要更新到的 Azure Stack Hub 版本兼容。 如果 OEM 包与要更新到的 Azure Stack Hub 版本不兼容，则必须在运行 Azure Stack Hub 更新之前，先执行 OEM 包更新。 有关说明，请参阅“应用 Azure Stack Hub 原始设备制造商 (OEM) 更新”。 |
 | 可选：配置日志自动收集 | 建议在 Azure Stack Hub 环境的基础上配置日志自动收集，以便在需要开具支持票证时简化收集系统日志的过程。 若要配置日志自动收集，请参阅[配置 Azure Stack Hub 诊断日志自动收集](azure-stack-configure-automatic-diagnostic-log-collection-tzl.md)中的说明。 |
 | 应用最新修补程序 | 应用适用于当前安装版本的最新修补程序。 有关最新修补程序的列表，请参阅[发行说明中的“修补程序”](release-notes.md)部分。 |

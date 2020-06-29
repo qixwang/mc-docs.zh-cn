@@ -2,16 +2,15 @@
 title: 使用 Azure Kubernetes 服务 (AKS) 中的群集自动缩放程序
 description: 了解如何使用群集自动缩放程序自动缩放群集以满足 Azure Kubernetes 服务 (AKS) 群集中的应用程序需求。
 services: container-service
-author: rockboyfor
 ms.topic: article
-ms.date: 05/25/2020
+ms.date: 06/22/2020
 ms.author: v-yeche
-ms.openlocfilehash: 9973cb33219e053e3384dacdd62347d1aa1d3ce3
-ms.sourcegitcommit: 7e6b94bbaeaddb854beed616aaeba6584b9316d9
+ms.openlocfilehash: fcfc5958a943c1d1bd4e2e0d80b45cc57ad88788
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83735173"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098550"
 ---
 <!--NOT SUITABLE FOR MOONCAKE-->
 <!--REASON: PRODUCTION TEAM NOTIFIED-->
@@ -48,7 +47,7 @@ ms.locfileid: "83735173"
 
 有关群集自动缩放程序如何可能无法减少的详细信息，请参阅[哪些类型的 Pod 可能会阻止群集自动缩放程序删除节点？][autoscaler-scaledown]
 
-群集自动缩放程序对诸如缩放事件与资源阈值之间的时间间隔等内容使用启动参数。 有关群集自动缩放程序使用的参数的详细信息，请参阅[群集自动缩放程序参数是什么？][autoscaler-parameters]。
+群集自动缩放程序对诸如缩放事件与资源阈值之间的时间间隔等内容使用启动参数。 若要详细了解群集自动缩放程序使用的参数，请参阅[群集自动缩放程序参数是什么？][autoscaler-parameters]
 
 群集和水平 Pod 自动缩放程序可以协同工作，通常部署在一个群集中。 结合使用时，水平 Pod 自动缩放程序侧重于运行满足应用程序需求所需的 Pod 数。 群集自动缩放程序侧重于运行支持计划 Pod 所需的节点数。
 
@@ -60,9 +59,9 @@ ms.locfileid: "83735173"
 如果需要创建 AKS 群集，请使用 [az aks create][az-aks-create] 命令。 若要在群集的节点池中启用和配置群集自动缩放程序，请使用 *--enable-cluster-autoscaler* 参数，并指定节点 *--min-count* 和 *--max-count*。
 
 > [!IMPORTANT]
-> 群集自动缩放程序是 Kubernetes 组件。 虽然 AKS 群集对节点使用虚拟机规模集，但请勿在 Azure 门户中或使用 Azure CLI 手动启用或编辑规模集自动缩放设置。 让 Kubernetes 群集自动缩放程序管理所需的规模设置。 有关详细信息，请参阅[是否可以修改节点资源组中的 AKS 资源？](faq.md#can-i-modify-tags-and-other-properties-of-the-aks-resources-in-the-node-resource-group)
+> 群集自动缩放程序是 Kubernetes 组件。 虽然 AKS 群集对节点使用虚拟机规模集，但请勿在 Azure 门户中或使用 Azure CLI 手动启用或编辑规模集自动缩放设置。 让 Kubernetes 群集自动缩放程序管理所需的规模设置。 有关详细信息，请参阅[我可以修改节点资源组中的 AKS 资源吗？](faq.md#can-i-modify-tags-and-other-properties-of-the-aks-resources-in-the-node-resource-group)
 
-以下示例使用虚拟机规模集支持的单个节点池创建 AKS 群集。 它还在群集的节点池中启用群集自动缩放程序，并将节点的最小数目设置为 *1*，最大数目设置为 *3*：
+以下示例使用虚拟机规模集支持的单个节点池创建 AKS 群集。 它还会在群集的节点池中启用群集自动缩放程序，并将最小节点数设置为 1，将最大节点数设置为 3： 
 
 ```azurecli
 # First create a resource group
@@ -103,13 +102,13 @@ az aks update \
 以上示例将 *myAKSCluster* 中单个节点池上的群集自动缩放程序更新为最少 *1* 个和最多 *5* 个节点。
 
 > [!NOTE]
-> 目前，无法为节点池设置超过此限制的最小节点计数。 例如，如果当前将最小计数设置为 1，则不能将最小计数更新为 3。
+> 群集自动缩放程序根据每个节点池上设置的最小计数和最大计数来做出缩放决定，但更新最小计数或最大计数后不会强制执行。 例如，如果当前节点计数为 3，则将最小计数设置为 5 不会立即将池扩展到 5。 如果节点池的最小计数大于当前节点数的值，则当存在足够多的计划外 Pod（需要 2 个额外的新节点并触发自动缩放程序事件）时，将采用新的最小或最大设置。 缩放事件之后，将遵循新的计数限制。
 
 监视应用程序和服务的性能，并调整群集自动缩放程序节点计数以匹配所需性能。
 
 ## <a name="using-the-autoscaler-profile"></a>使用自动缩放程序配置文件
 
-还可以通过更改群集范围的自动缩放程序配置文件中的默认值，来配置群集自动缩放程序的更高粒度详细信息。 例如，在节点利用不足超过 10 分钟后发生纵向缩减事件。 如果你的工作负荷每隔 15 分钟运行一次，则你可以更改自动缩放程序配置文件，以便利用不足超过 15 或 20 分钟后进行纵向缩减。 启用群集自动缩放程序时，除非指定不同的设置，否则将使用默认配置文件。 可以更新群集自动缩放程序配置文件中的以下设置：
+还可以通过更改群集范围的自动缩放程序配置文件中的默认值，来配置群集自动缩放程序的更高粒度详细信息。 例如，在节点未充分利用 10 分钟后，将发生纵向缩减事件。 如果你的工作负荷每 15 分钟运行一次，则可能需要更改自动缩放程序配置文件，以便在 15 到 20 分钟后纵向缩减未充分利用的节点。 启用群集自动缩放程序后，除非指定不同的设置，否则将使用默认配置文件。 可以更新群集自动缩放程序配置文件中的以下设置：
 
 | 设置                          | 说明                                                                              | 默认值 |
 |----------------------------------|------------------------------------------------------------------------------------------|---------------|
@@ -128,7 +127,7 @@ az aks update \
 
 ### <a name="install-aks-preview-cli-extension"></a>安装 aks-preview CLI 扩展
 
-若要设置群集自动缩放程序设置配置文件，需要安装 *aks-preview* CLI 扩展 0.4.30 或更高版本。 使用 [az extension add][az-extension-add] 命令安装 *aks-preview* Azure CLI 扩展，然后使用 [az extension update][az-extension-update] 命令检查是否有任何可用的更新：
+若要设置群集自动缩放程序设置配置文件，需要安装 *aks-preview* CLI 扩展 0.4.30 或更高版本。 使用 [az extension add][az-extension-add] 命令安装 aks-preview Azure CLI 扩展，然后使用 [az extension update][az-extension-update] 命令检查是否有任何可用的更新：
 
 ```azurecli
 # Install the aks-preview extension
@@ -213,13 +212,13 @@ az aks update \
 
 若要诊断和调试自动缩放程序事件，可以从自动缩放程序加载项检索日志和状态。
 
-AKS 将代你管理群集自动缩放程序，并在托管控制平面中运行它。 必须配置主节点日志，才能将其作为结果查看。
+AKS 将代你管理群集自动缩放程序，并在托管控制平面中运行它。 必须将主节点日志配置为可作为结果查看。
 
-若要将日志配置为从群集自动缩放程序推送到 Log Analytics，请执行以下步骤。
+若要配置将从群集自动缩放程序推送到 Log Analytics 的日志，请执行以下步骤。
 
-1. 设置一个诊断日志规则，以将群集自动缩放程序日志推送到 Log Analytics。 [此处提供了详细说明](/aks/view-master-logs#enable-resource-logs)。选择“日志”的选项时，请确保选中 `cluster-autoscaler` 对应的复选框。
+1. 设置一条资源日志规则，以便将群集自动缩放程序日志推送到 Log Analytics。 [此处提供了详细说明](/aks/view-master-logs#enable-resource-logs)，请确保在选择“日志”的选项时选中 `cluster-autoscaler` 的复选框。
 1. 在 Azure 门户中单击群集上的“日志”部分。
-1. 将以下示例查询输入到 Log Analytics：
+1. 将以下示例查询输入 Log Analytics：
 
     ```
     AzureDiagnostics
@@ -238,9 +237,9 @@ kubectl get configmap -n kube-system cluster-autoscaler-status -o yaml
 
 若要详细了解通过自动缩放程序记录的内容，请阅读有关 [Kubernetes/自动缩放程序 GitHub 项目](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#ca-doesnt-work-but-it-used-to-work-yesterday-why)的常见问题解答。
 
-## <a name="use-the-cluster-autoscaler-with-multiple-node-pools-enabled"></a>将群集自动缩放程序与启用的多个节点池结合使用
+## <a name="use-the-cluster-autoscaler-with-multiple-node-pools-enabled"></a>使用启用了多个节点池的群集自动缩放程序
 
-群集自动缩放程序可与启用的[多个节点池](use-multiple-node-pools.md)结合使用。 请在该文档中了解如何启用多个节点池，以及如何将更多节点池添加到现有群集。 将这两个功能结合使用时，可对群集中的每个节点池启用群集自动缩放程序，并可将唯一的自动缩放规则传递到每个节点池。
+群集自动缩放程序可与启用的[多个节点池](use-multiple-node-pools.md)结合使用。 参阅该文档了解如何启用多个节点池，以及如何将其他节点池添加到现有群集。 将这两个功能结合使用时，可对群集中的每个节点池启用群集自动缩放程序，并可将唯一的自动缩放规则传递到每个节点池。
 
 以下命令假设已按照本文档前面提供的[初始说明](#create-an-aks-cluster-and-enable-the-cluster-autoscaler)操作，并且你要将现有节点池的最大计数从 *3* 更新为 *5*。 使用 [az aks nodepool update][az-aks-nodepool-update] 命令更新现有节点池的设置。
 

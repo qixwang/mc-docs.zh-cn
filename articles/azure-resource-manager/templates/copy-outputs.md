@@ -3,14 +3,14 @@ title: 定义输出值的多个实例
 description: 从部署中返回值时，可以在 Azure 资源管理器模板中使用复制操作进行多次迭代。
 ms.topic: conceptual
 origin.date: 04/17/2020
-ms.date: 04/30/2020
+ms.date: 06/22/2020
 ms.author: v-yeche
-ms.openlocfilehash: 90611f7a6326a8868f9faa8070da19c104077297
-ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
+ms.openlocfilehash: 57d2f989e2c9fc45778db28b00afd46880dc0bd0
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82596167"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098544"
 ---
 <!--Verified successfully-->
 # <a name="output-iteration-in-arm-templates"></a>ARM 模板中的输出迭代
@@ -19,7 +19,7 @@ ms.locfileid: "82596167"
 
 还可以将 copy 用于[资源](copy-resources.md)、[资源中的属性](copy-properties.md)，以及[变量](copy-variables.md)。
 
-## <a name="outputs-iteration"></a>输出迭代
+## <a name="syntax"></a>语法
 
 copy 元素采用以下常规格式：
 
@@ -33,6 +33,21 @@ copy 元素采用以下常规格式：
 **count** 属性指定要对该输出值进行的迭代次数。
 
 **input** 属性指定要重复的属性。 你将创建一个由 **input** 属性中的值构造的元素数组。 它可以是单个属性（例如字符串），也可以是具有多个属性的对象。
+
+## <a name="copy-limits"></a>复制限制
+
+count 不能超过 800。
+
+count 不能为负数。 如果使用最新版本的 Azure CLI、PowerShell 或 REST API 部署模板，则它可以为零。 具体而言，必须使用：
+
+* Azure PowerShell 2.6 或更高版本****
+* Azure CLI 2.0.74 或更高版本****
+* REST API 版本 2019-05-10 或更高版本****
+* [链接的部署](linked-templates.md)必须将 API 版本 2019-05-10 或更高版本用于部署资源类型****
+
+更早版本的 PowerShell、CLI 和 REST API 不支持将 count 设为零。
+
+## <a name="outputs-iteration"></a>输出迭代
 
 以下示例创建可变数量的存储帐户，并返回每个存储帐户的终结点：
 

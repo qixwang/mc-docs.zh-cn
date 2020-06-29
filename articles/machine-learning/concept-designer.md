@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: peterlu
 author: peterclu
 ms.date: 11/12/2019
-ms.openlocfilehash: 015571bbe962962ca240bf0368298aef80f5751d
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: bf3904e7b781a10a683dcd79768f6eb8cc8ce077
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80343534"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097073"
 ---
 # <a name="what-is-azure-machine-learning-designer-preview"></a>什么是 Azure 机器学习设计器（预览版）？ 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -37,23 +37,23 @@ ms.locfileid: "80343534"
 设计器提供用于生成、测试和部署机器学习模型的可视化画布。 使用设计器，可以：
 
 + 将[数据集](#datasets)和[模块](#module)拖放至画布上。
-+ 将模块连接在一起以创建[管道草稿](#pipeline-draft)。
++ 连接模块以创建[管道草稿](#pipeline-draft)。
 + 使用 Azure 机器学习工作区中的计算资源提交[管道运行](#pipeline-run)。
-+ 将训练管道转换为推理管道   。
-+ 将管道[发布](#publish)到 REST 管道终结点，以提交具有不同参数和数据集的新管道运行  。
-    + 发布训练管道，在更改参数和数据集时重用单个管道训练多个模型  。
-    + 发布批量推理管道，通过使用以前训练的模型针对新数据进行预测  。
-+ 将实时推理管道[部署](#deploy)到实时终结点，以便针对新数据进行实时预测  。
++ 将训练管道转换为推理管道 。
++ 将管道[发布](#publish)到 REST 管道终结点，以提交具有不同参数和数据集的新管道运行。
+    + 发布训练管道，在更改参数和数据集时重用单个管道训练多个模型。
+    + 发布批量推理管道，通过使用以前训练的模型针对新数据进行预测。
++ 将实时推理管道[部署](#deploy)到实时终结点，以便针对新数据进行实时预测。
 
 ![设计器中的训练、批量推理和实时推理的工作流示意图](./media/concept-designer/designer-workflow-diagram.png)
 
 ## <a name="pipeline"></a>管道
 
-[管道](concept-azure-machine-learning-architecture.md#ml-pipelines)包含连接在一起的数据集和分析模块。 管道有许多用途，可以创建管道来训练单个模型或多个模型。 可以创建管道来进行实时预测或批量预测，或者仅用于清理数据。 借助管道，可以重复使用工作成果和整理项目。
+[管道](concept-azure-machine-learning-architecture.md#ml-pipelines)包含连接的数据集和分析模块。 管道有许多用途，可以创建管道来训练单个模型或多个模型。 可以创建管道来进行实时预测或批量预测，或者仅用于清理数据。 借助管道，可以重复使用工作成果和整理项目。
 
 ### <a name="pipeline-draft"></a>管道草稿
 
-在设计器中编辑管道时，你的进度会保存为管道草稿  。 可以通过添加或删除模块、配置计算目标、创建参数等方式随时编辑管道草案。
+在设计器中编辑管道时，你的进度会保存为管道草稿。 可以通过添加或删除模块、配置计算目标、创建参数等方式随时编辑管道草案。
 
 有效管道具有以下特征：
 
@@ -66,23 +66,23 @@ ms.locfileid: "80343534"
 
 ### <a name="pipeline-run"></a>管道运行
 
-每次运行管道时，管道及其结果的配置都作为管道运行存储在工作区中  。 出于故障排除或审核目的，可以返回任何管道运行以对其进行检查。 克隆管道运行，可创建新的管道草稿以供编辑  。
+每次运行管道时，管道及其结果的配置都作为管道运行存储在工作区中。 出于故障排除或审核目的，可以返回任何管道运行以对其进行检查。 克隆管道运行，可创建新的管道草稿以供编辑。
 
 管道运行被分入[试验](concept-azure-machine-learning-architecture.md#experiments)以整理运行历史记录。 可以为每个管道运行设置试验。 
 
 ## <a name="datasets"></a>数据集
 
-使用机器学习数据集可以轻松地访问和处理数据。 此设计器中包含很多示例数据集供你进行试验。 你可以根据需要[注册](how-to-create-register-datasets.md)更多数据集。
+使用机器学习数据集可以轻松地访问和处理数据。 此设计器中包含多个示例数据集供你进行试验。 你可以根据需要[注册](how-to-create-register-datasets.md)更多数据集。
 
 ## <a name="module"></a>模块
 
-模块是可对数据执行的算法。 设计器有许多模块，包括数据引入函数、训练、评分和验证过程。
+模块是可对数据执行的算法。 设计器有多个模块，包括数据引入函数、训练、评分和验证过程。
 
 模块可能提供一组参数用于配置模块的内部算法。 在画布上选择模块时，模块的参数会显示在画布右侧的“属性”窗格中。 可以在该窗格中修改参数来调整模型。 可以在设计器中设置各个模块的计算资源。 
 
 ![模块属性](./media/concept-designer/properties.png)
 
-在浏览可用的机器学习算法库时如需帮助，请参阅[算法和模块参考概述](algorithm-module-reference/module-reference.md)
+有关在可用的机器学习算法库中导航的某些帮助，请参阅[算法和模块参考概述](algorithm-module-reference/module-reference.md)。 有关选择算法的帮助，请参阅 [Azure 机器学习算法速查表](algorithm-cheat-sheet.md)。
 
 ## <a name="compute-resources"></a><a name="compute"></a> 计算资源
 
@@ -91,6 +91,7 @@ ms.locfileid: "80343534"
 | 计算目标 | 培训 | 部署 |
 | ---- |:----:|:----:|
 | Azure 机器学习计算 | ✓ | |
+| Azure 机器学习计算实例 | ✓ | |
 | Azure Kubernetes 服务 | | ✓ |
 
 计算目标会附加至 [Azure 机器学习工作区](concept-workspace.md)。 可在 [Azure 机器学习工作室（经典）](https://ml.azure.com)中管理工作区中的计算目标。
@@ -105,7 +106,7 @@ ms.locfileid: "80343534"
 
 ## <a name="publish"></a>发布
 
-还可以将管道发布到管道终结点  。 与实时终结点类似，借助管道终结点，可以使用 REST 调用从外部应用程序提交新的管道运行。 但是不能使用管道终结点实时发送或接收数据。
+还可以将管道发布到管道终结点。 与实时终结点类似，借助管道终结点，可以使用 REST 调用从外部应用程序提交新的管道运行。 但是不能使用管道终结点实时发送或接收数据。
 
 已发布的管道是灵活的，它们可用于训练或重新训练模型、[执行批量推断](how-to-run-batch-predictions-designer.md)、处理新数据等。 可以将多个管道发布到单个管道终结点，并指定要运行的管道版本。
 

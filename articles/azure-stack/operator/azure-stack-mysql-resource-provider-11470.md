@@ -4,16 +4,16 @@ description: 查看发行说明以了解 Azure Stack Hub MySQL 资源提供程�
 author: WenJason
 ms.topic: article
 origin.date: 11/26/2019
-ms.date: 05/18/2020
+ms.date: 06/22/2020
 ms.author: v-jay
 ms.reviewer: xiaofmao
 ms.lastreviewed: 11/26/2019
-ms.openlocfilehash: 2e7992b61f49bd86c96816e78a74a234e851ad9a
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.openlocfilehash: 8f0ac6fd4bc46f6ead0bf22598c85f17ea928a87
+ms.sourcegitcommit: d86e169edf5affd28a1c1a4476d72b01a7fb421d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83422547"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85096540"
 ---
 # <a name="mysql-resource-provider-11470-release-notes"></a>MySQL 资源提供程序 1.1.47.0 发行说明
 
@@ -32,9 +32,9 @@ ms.locfileid: "83422547"
 
 ## <a name="new-features-and-fixes"></a>新功能和修复
 
-此版本的 Azure Stack Hub MySQL 资源提供程序是一个修补程序版本，可使资源提供程序与 1910 更新中的某些最新门户更改兼容，而没有任何新功能。
+此版本的 Azure Stack Hub MySQL 资源提供程序是一个修补程序版本，可使资源提供程序与 1910 更新中的某些最新门户更改兼容。 没有任何新功能。
 
-它还支持当前最新的 Azure Stack Hub API 版本配置文件 2019-03-01-hybrid 和 Azure Stack Hub PowerShell 模块 1.8.0。 因此，部署和更新期间无需安装模块的特定历史版本。
+它还支持最新的 Azure Stack Hub API 版本配置文件 2019-03-01-hybrid 和 Azure Stack Hub PowerShell 模块 1.8.0。 因此，部署和更新期间无需安装模块的特定历史版本。
 
 建议在将 Azure Stack Hub 升级到 1910 版本后应用 MySQL 资源提供程序修补程序 1.1.47.0。
 
@@ -43,8 +43,7 @@ ms.locfileid: "83422547"
 无。
 
 ## <a name="next-steps"></a>后续步骤
-[详细了解 MySQL 资源提供程序](azure-stack-mysql-resource-provider.md)。
 
-[准备部署 MySQL 资源提供程序](azure-stack-mysql-resource-provider-deploy.md#prerequisites)。
-
-[从旧版升级 MySQL 资源提供程序](azure-stack-mysql-resource-provider-update.md)。 
+- [详细了解 MySQL 资源提供程序](azure-stack-mysql-resource-provider.md)。
+- [准备部署 MySQL 资源提供程序](azure-stack-mysql-resource-provider-deploy.md#prerequisites)。
+- [从旧版升级 MySQL 资源提供程序](azure-stack-mysql-resource-provider-update.md)。

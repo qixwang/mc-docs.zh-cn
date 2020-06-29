@@ -1,25 +1,26 @@
 ---
 title: Azure Stack Hub SQL 资源提供程序 1.1.47.0 发行说明
-description: 了解最新的 Azure Stack Hub SQL 资源提供程序更新中的内容，包括任何已知问题以及下载位置。
+description: 查看最新的 Azure Stack Hub SQL 资源提供程序更新中的新增内容，包括新功能、修复和已知问题。
 author: WenJason
 ms.topic: article
 origin.date: 11/26/2019
-ms.date: 05/18/2020
+ms.date: 06/22/2020
 ms.author: v-jay
 ms.reviewer: xiaofmao
 ms.lastreviewed: 11/26/2019
-ms.openlocfilehash: 1bd5b1e1218b87957bdc4d0d5ae40b5f49e32137
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.openlocfilehash: 08c27a9b4120ac8903dcbfdfc5ff8f9784350f20
+ms.sourcegitcommit: d86e169edf5affd28a1c1a4476d72b01a7fb421d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83422513"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85096326"
 ---
 # <a name="sql-resource-provider-11470-release-notes"></a>SQL 资源提供程序 1.1.47.0 发行说明
 
 本发行说明介绍 SQL 资源提供程序 1.1.47.0 版中的改进和已知问题。
 
 ## <a name="build-reference"></a>内部版本参考
+
 下载 SQL 资源提供程序二进制文件，然后运行自解压程序，将内容解压缩到一个临时目录。 资源提供程序具有相应的最低 Azure Stack Hub 版本。 下面列出了安装此 SQL 资源提供程序版本所需的最低 Azure Stack Hub 发行版：
 
 > |最低 Azure Stack Hub 版本|SQL 资源提供程序版本|
@@ -32,9 +33,9 @@ ms.locfileid: "83422513"
 
 ## <a name="new-features-and-fixes"></a>新功能和修复
 
-此版本的 Azure Stack Hub SQL 资源提供程序是一个修补程序版本，可使资源提供程序与 1910 更新中的某些最新门户更改兼容，而没有任何新功能。
+此版本的 Azure Stack Hub SQL 资源提供程序是一个修补程序版本，可使资源提供程序与 1910 更新中的最新门户更改兼容。 没有任何新功能。
 
-它还支持当前最新的 Azure Stack Hub API 版本配置文件 2019-03-01-hybrid 和 Azure Stack Hub PowerShell 模块 1.8.0。 因此，部署和更新期间无需安装模块的特定历史版本。
+它还支持最新的 Azure Stack Hub API 版本配置文件 2019-03-01-hybrid 和 Azure Stack Hub PowerShell 模块 1.8.0。 因此，部署和更新期间无需安装模块的特定历史版本。
 
 Azure Stack Hub 升级到 1910 更新后，请按照资源提供程序更新过程应用 SQL 资源提供程序修补程序 1.1.47.0。 它将帮助解决管理员门户中的已知问题，在该门户中，SQL 资源提供程序中的容量监视一直保持加载状态。
 
@@ -43,8 +44,7 @@ Azure Stack Hub 升级到 1910 更新后，请按照资源提供程序更新过�
 无。
 
 ## <a name="next-steps"></a>后续步骤
-[详细了解 SQL 资源提供程序](azure-stack-sql-resource-provider.md)。
 
-[准备部署 SQL 资源提供程序](azure-stack-sql-resource-provider-deploy.md#prerequisites)。
-
-[从旧版升级 SQL 资源提供程序](azure-stack-sql-resource-provider-update.md)。 
+- [详细了解 SQL 资源提供程序](azure-stack-sql-resource-provider.md)。
+- [准备部署 SQL 资源提供程序](azure-stack-sql-resource-provider-deploy.md#prerequisites)。
+- [从旧版升级 SQL 资源提供程序](azure-stack-sql-resource-provider-update.md)。

@@ -9,12 +9,12 @@ author: j-martens
 ms.author: jmartens
 origin.date: 11/04/2019
 ms.date: 03/16/2020
-ms.openlocfilehash: 0b2e2b8597a596b12b95635d519ae991bc04417a
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 114bb1fa9591e1ddf4c9b9622f6cc9a20a1aea99
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292882"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097427"
 ---
 # <a name="what-is-azure-machine-learning"></a>什么是 Azure 机器学习？
 
@@ -24,12 +24,12 @@ Azure 机器学习可用于任何类型的机器学习，从传统 ml 到深度�
 
 开始在本地计算机上训练，然后横向扩展到云。 
 
-该服务还可与常用的开源工具（如 PyTorch、TensorFlow 和 scikit-learn）进行互操作。
+此服务还与常用的深度学习和强化学习开放源代码工具（如 PyTorch、TensorFlow、scikit-learn 和 Ray RLlib）进行互操作。 
 
 > [!VIDEO https://channel9.msdn.com/Events/Connect/Microsoft-Connect--2018/D240/player]
 
 > [!Tip]
-> **免费试用！**  如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。 你将获得可用于 Azure 服务的赠送额度。 额度用完后，可以保留该帐户并继续使用[免费的 Azure 服务](https://azure.microsoft.com/free/)。 除非显式更改设置并要求付费，否则不会对信用卡收取任何费用。
+> **免费试用！**  如果没有 Azure 订阅，请在开始前创建一个试用帐户。 立即试用[免费版或付费版 Azure 机器学习](https://www.azure.cn/pricing/1rmb-trial)。 你将获得可用于 Azure 服务的赠送额度。 额度用完后，可以保留该帐户并继续使用[免费的 Azure 服务](https://azure.microsoft.com/free/)。 除非显式更改设置并要求付费，否则不会对信用卡收取任何费用。
 
 
 ## <a name="what-is-machine-learning"></a>什么是机器学习？
@@ -47,11 +47,15 @@ Azure 机器学习为其机器学习工作流提供了开发人员和数据科�
 
 + R 脚本或笔记本，其中你使用<a href="https://azure.github.io/azureml-sdk-for-r/reference/index.html" target="_blank">适用于 R 的 SDK</a> 编写自己的代码，或使用设计器中的 R 模块。
 
++ + [多模型解决方案加速器](https://aka.ms/many-models)（预览版）在 Azure 机器学习的基础上构建，使你能够训练、操作和管理数百甚至数千个机器学习模型。
+
 + [Visual Studio Code 扩展](tutorial-setup-vscode-extension.md)
 
 + [机器学习 CLI](reference-azure-machine-learning-cli.md)
 
 + 使用开放源代码框架，如 PyTorch、TensorFlow 和 scikit-learn 等
+
++ 与 Ray RLlib 互操作的[强化学习](how-to-use-reinforcement-learning.md)
 
 甚至可以使用 [MLflow 跟踪指标并部署模型](how-to-use-mlflow.md)或使用 Kubeflow [生成端到端工作流管道](https://www.kubeflow.org/docs/azure/)。
 
@@ -59,7 +63,7 @@ Azure 机器学习为其机器学习工作流提供了开发人员和数据科�
 
 开始使用 Azure 机器学习 <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">Python SDK</a> 或 <a href="https://azure.github.io/azureml-sdk-for-r/reference/index.html" target="_blank">R SDK</a> 在本地计算机上训练。 然后，横向扩展到云。 
 
-借助许多可用的[计算目标](how-to-set-up-training-targets.md)（例如 Azure 机器学习计算和 [Azure Databricks](/azure-databricks/what-is-azure-databricks)）以及[高级超参数优化服务](how-to-tune-hyperparameters.md)，可以利用云的强大功能更快地生成更好的模型。
+借助许多可用的[计算目标](how-to-set-up-training-targets.md)（例如 Azure 机器学习计算）以及[高级超参数优化服务](how-to-tune-hyperparameters.md)，可以利用云的强大功能更快地生成更好的模型。
 
 也可使用 SDK [自动完成模型训练和优化](tutorial-auto-train-models.md)。
 
@@ -120,16 +124,11 @@ Azure 存储帐户、计算目标和其他资源可在虚拟网络内安全地�
 ## <a name="basic--enterprise-editions"></a><a name="sku"></a>Basic 和 Enterprise Edition
 
 Azure 机器学习提供了两个版本，专为你的机器学习需求提供：
-+ Basic（正式版）
-+ Enterprise（预览版）
++ **基本**：非常适合提供代码优先体验的云规模的开源开发。
 
-这些版本确定开发人员和数据科学家的工作区中可用的机器学习工具。   
++ **企业版**：不仅具有“基本”版的所有功能，还提供 Web 界面（工作室），以及可实现全面安全的 ML 生命周期管理的功能，适用于各个技能级别。
 
-Basic 工作区允许继续使用 Azure 机器学习，并只为在机器学习过程中使用的 Azure 资源付费。 Enterprise Edition 工作区只对其 Azure 使用情况收费，它是预览版。 若要详细了解 Azure 机器学习中提供的内容，请参阅[版本概述和定价页](https://www.azure.cn/pricing/details/machine-learning/)。 
-
-你始终可以在创建工作区时分配版本。 而且，预先存在的工作区已转换为 Basic Edition。 Basic Edition 包括已于 2019 年 10 月公开发布的所有功能。 使用 Enterprise Edition 功能构建的工作区中的任何试验都将以只读模式继续供你使用，直至升级到 Enterprise。 了解如何[将 Basic 工作区升级到 Enterprise Edition](how-to-manage-workspace.md#upgrade)。 
-
-客户负责在此期间因计算和其他 Azure 资源产生的成本。
+若要详细了解这些版本及其提供的功能，请参阅[“Azure 机器学习版本”一文](concept-editions.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

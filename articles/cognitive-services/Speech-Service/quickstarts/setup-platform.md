@@ -12,12 +12,12 @@ origin.date: 04/04/2020
 ms.date: 04/20/2020
 ms.author: v-tawe
 zone_pivot_groups: programming-languages-set-three
-ms.openlocfilehash: 5ed16302c8304fe8f94c620a64cd1c8a2a4cf38f
-ms.sourcegitcommit: bfbd6694da33f703481386f2a3f16850c4e94bfa
+ms.openlocfilehash: afec3b70110e3d8e1870e4c78f055382928ae501
+ms.sourcegitcommit: 304d3ef3c9e65c3e85977b3afb9985fbc0f908d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83417723"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85095927"
 ---
 # <a name="quickstart-setup-development-environment"></a>快速入门：安装开发环境
 
@@ -26,7 +26,7 @@ ms.locfileid: "83417723"
 **选择目标环境**
 
 > [!IMPORTANT]
-> 需要语音 SDK 版本 1.10.0 或更高版本。
+> 需要语音 SDK 版本 1.11.0 或更高版本。
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 

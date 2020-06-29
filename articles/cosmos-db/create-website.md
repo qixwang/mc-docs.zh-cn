@@ -5,14 +5,14 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 03/11/2019
-ms.date: 04/27/2020
+ms.date: 06/22/2020
 ms.author: v-yeche
-ms.openlocfilehash: 78f52861d0b9a32770b577751bbd3bd8ffa78a8d
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.openlocfilehash: 53caed4c159c6fffe65d9c63d9a32c9951aa45b8
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82134943"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098420"
 ---
 # <a name="deploy-azure-cosmos-db-and-azure-app-service-web-apps-using-an-azure-resource-manager-template"></a>使用 Azure Resource Manager 模板部署 Azure Cosmos DB 和 Azure 应用服务 Web 应用
 本教程说明如何使用 Azure 资源管理器模板来部署和集成 [Azure Cosmos DB](https://www.azure.cn/home/features/cosmos-db/)、[Azure 应用服务](/app-service-web/app-service-changes-existing-services)、Web 应用以及示例 Web 应用程序。
@@ -38,8 +38,8 @@ ms.locfileid: "82134943"
 ## <a name="step-1-download-the-template-files"></a>步骤 1：下载模板文件
 让我们从下载本教程所需的模板文件开始。
 
-1. 将[创建 Azure Cosmos DB 帐户、Web 应用和部署演示应用程序示例](https://portalcontent.blob.core.windows.net/samples/DocDBWebsiteTodo.json)模板下载到本地文件夹（例如 C:\Azure Cosmos DBTemplates）。 此模板会部署 Azure Cosmos DB 帐户、应用服务 Web 应用和 Web 应用程序。  它还会自动配置 Web 应用程序，以连接到 Azure Cosmos DB 帐户。
-2. 将[创建 Azure Cosmos DB 帐户和 Web 应用示例](https://portalcontent.blob.core.windows.net/samples/DocDBWebSite.json)模板下载到本地文件夹（例如 C:\Azure Cosmos DBTemplates）。 此模板将部署 Azure Cosmos DB 帐户、应用服务 Web 应用，并修改站点的应用程序设置以便轻松地显示 Azure Cosmos DB 连接信息，但不包含 Web 应用程序。  
+1. 将“创建 Azure Cosmos DB 帐户、Web 应用和部署演示应用程序示例”(`https://portalcontent.blob.core.windows.net/samples/DocDBWebsiteTodo.json`) 模板下载到本地文件夹（例如 C:\Azure Cosmos DBTemplates）****。 此模板会部署 Azure Cosmos DB 帐户、应用服务 Web 应用和 Web 应用程序。  它还会自动配置 Web 应用程序，以连接到 Azure Cosmos DB 帐户。
+2. 将“创建 Azure Cosmos DB 帐户和 Web 应用示例”(`https://portalcontent.blob.core.windows.net/samples/DocDBWebSite.json`) 模板下载到本地文件夹（例如 C:\Azure Cosmos DBTemplates）****。 此模板将部署 Azure Cosmos DB 帐户、应用服务 Web 应用，并修改站点的应用程序设置以便轻松地显示 Azure Cosmos DB 连接信息，但不包含 Web 应用程序。  
 
 <a name="Build"></a>
 
@@ -53,8 +53,8 @@ ms.locfileid: "82134943"
 
 1. 登录到 [Azure 门户](https://portal.azure.cn)，单击“新建”并搜索“模板部署”。
     ![模板部署 UI 的屏幕截图](./media/create-website/TemplateDeployment1.png)
-2. 选择模板部署项目，然后单击“创建”  ![模板部署 UI 的屏幕截图](./media/create-website/TemplateDeployment2.png)
-3. 单击“编辑模板”  ，粘贴 DocDBWebsiteTodo.json 模板文件的内容，并单击“保存”  。
+2. 选择模板部署项目，然后单击“创建”****![模板部署 UI 的屏幕截图](./media/create-website/TemplateDeployment2.png)
+3. 单击“编辑模板”****，粘贴 DocDBWebsiteTodo.json 模板文件的内容，并单击“保存”****。
     
     <!--Customized on Mooncake-->
     
@@ -62,7 +62,7 @@ ms.locfileid: "82134943"
     
     ![模板部署 UI 的屏幕截图](./media/create-website/TemplateDeployment3.png)
 
-4. 单击“编辑参数”  ，为每个必需参数提供值，并单击“确定”  。  参数如下：
+4. 单击“编辑参数”****，为每个必需参数提供值，并单击“确定”****。  参数如下：
 
     1. SITENAME：指定应用服务 Web 应用名称，并用来构造用于访问 Web 应用的 URL（例如，如果指定“mydemodocdbwebapp”，则用于访问 Web 应用的 URL 为 `mydemodocdbwebapp.chinacloudsites.cn`）。
     2. HOSTINGPLANNAME：指定要创建的应用服务托管计划的名称。
@@ -74,7 +74,7 @@ ms.locfileid: "82134943"
 5. 选择现有的资源组或提供名称以创建新的资源组，并选择资源组的位置。
 
     ![模板部署 UI 的屏幕截图](./media/create-website/TemplateDeployment5.png)
-6. 依次单击“查看法律条款”  、“购买”  和“创建”  以开始部署。   选择“固定到仪表板”，让生成的部署轻松显示在 Azure 门户的主页上。
+6. 依次单击“查看法律条款”****、“购买”**** 和“创建”**** 以开始部署。  **** 选择“固定到仪表板”，让生成的部署轻松显示在 Azure 门户的主页上。
     
     ![模板部署 UI 的屏幕截图](./media/create-website/TemplateDeployment6.png)
     
@@ -86,7 +86,7 @@ ms.locfileid: "82134943"
 
     ![示例待办事项应用程序](./media/create-website/image2.png)
     
-9. 继续在 Web 应用中创建几个任务，并返回到 Azure 门户中的“资源组”窗格。 单击“资源”列表中的“Azure Cosmos DB 帐户”资源，并单击“数据资源管理器”  。
+9. 继续在 Web 应用中创建几个任务，并返回到 Azure 门户中的“资源组”窗格。 单击“资源”列表中的“Azure Cosmos DB 帐户”资源，并单击“数据资源管理器”****。
 10. 运行默认查询“SELECT * FROM c”，并检查结果。  请注意，查询已检索在上面的步骤 7 中创建的待办事项的 JSON 表示形式。  任意尝试查询；例如，尝试运行 SELECT * FROM c WHERE c.isComplete = true，以返回所有标记为完成的待办事项。
 11. 随意浏览 Azure Cosmos DB 门户体验，或修改示例待办事项应用程序。  准备好时，让我们来部署另一个模板。
 
@@ -102,8 +102,8 @@ ms.locfileid: "82134943"
 
 1. 在 [Azure 门户](https://portal.azure.cn)中，单击“新建”并搜索“模板部署”。
     ![模板部署 UI 的屏幕截图](./media/create-website/TemplateDeployment1.png)
-2. 选择模板部署项目，然后单击“创建”  ![模板部署 UI 的屏幕截图](./media/create-website/TemplateDeployment2.png)
-3. 单击“编辑模板”  ，粘贴 DocDBWebSite.json 模板文件的内容，并单击“保存”  。
+2. 选择模板部署项目，然后单击“创建”****![模板部署 UI 的屏幕截图](./media/create-website/TemplateDeployment2.png)
+3. 单击“编辑模板”****，粘贴 DocDBWebSite.json 模板文件的内容，并单击“保存”****。
     
     <!--Customized on Mooncake-->
     
@@ -111,7 +111,7 @@ ms.locfileid: "82134943"
     
     ![模板部署 UI 的屏幕截图](./media/create-website/TemplateDeployment3.png)
     
-4. 单击“编辑参数”  ，为每个必需参数提供值，并单击“确定”  。  参数如下：
+4. 单击“编辑参数”****，为每个必需参数提供值，并单击“确定”****。  参数如下：
 
    1. SITENAME：指定应用服务 Web 应用名称，该名称用来构造用于访问 Web 应用的 URL（例如，如果指定“mydemodocdbwebapp”，则用于访问 Web 应用的 URL 是 mydemodocdbwebapp.chinacloudsites.cn）。
    2. HOSTINGPLANNAME：指定要创建的应用服务托管计划的名称。
@@ -124,7 +124,7 @@ ms.locfileid: "82134943"
 
     ![模板部署 UI 的屏幕截图](./media/create-website/TemplateDeployment5.png)
     
-6. 依次单击“查看法律条款”  、“购买”  和“创建”  以开始部署。   选择“固定到仪表板”，让生成的部署轻松显示在 Azure 门户的主页上。
+6. 依次单击“查看法律条款”****、“购买”**** 和“创建”**** 以开始部署。  **** 选择“固定到仪表板”，让生成的部署轻松显示在 Azure 门户的主页上。
     
     ![模板部署 UI 的屏幕截图](./media/create-website/TemplateDeployment6.png)
     
@@ -132,7 +132,7 @@ ms.locfileid: "82134943"
 
     ![“资源组”窗格的屏幕截图](./media/create-website/TemplateDeployment7.png)
     
-8. 单击“资源”列表中的“Web 应用”资源，然后单击“应用程序设置” 
+8. 单击“资源”列表中的“Web 应用”资源，然后单击“应用程序设置”****
 
     ![资源组的屏幕截图](./media/create-website/TemplateDeployment9.png)  
     

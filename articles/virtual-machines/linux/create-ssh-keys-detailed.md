@@ -1,28 +1,20 @@
 ---
-title: 详细步骤 - Azure Linux VM 的 SSH 密钥对
+title: 创建 SSH 密钥对的详细步骤
 description: 了解创建和管理适用于 Azure 中 Linux VM 的 SSH 公钥和私钥对的详细步骤。
-services: virtual-machines-linux
-documentationcenter: ''
-author: rockboyfor
-manager: digimobile
-editor: ''
-tags: ''
-ms.assetid: ''
+author: Johnnytechn
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
 ms.topic: article
 origin.date: 12/06/2019
-ms.date: 02/10/2020
-ms.author: v-yeche
-ms.openlocfilehash: c2a351a00d8beb3ebf091d247a4be737fcc82c66
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 06/17/2020
+ms.author: v-johya
+ms.openlocfilehash: 51f58394ecfb62bfb95e5d96ccb5af57f0af650b
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77428676"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097342"
 ---
-# <a name="detailed-steps-create-and-manage-ssh-keys-for-authentication-to-a-linux-vm-in-azure"></a>详细步骤：创建和管理用于 Azure 中 Linux VM 的身份验证的 SSH 密钥 
+# <a name="detailed-steps-create-and-manage-ssh-keys-for-authentication-to-a-linux-vm-in-azure"></a>详细步骤：创建和管理 Azure 中的 Linux VM 用于身份验证的 SSH 密钥 
 使用安全外壳 (SSH) 密钥对，可在 Azure 上创建默认使用 SSH 密钥进行身份验证的 Linux 虚拟机，从而无需密码即可登录。 使用 Azure 门户、Azure CLI、资源管理器模板或其他工具创建的 VM 可在部署中包含 SSH 公钥，为 SSH 连接设置 SSH 密钥身份验证。 
 
 本文提供创建和管理用于 SSH 客户端连接的 SSH RSA 公钥/私钥文件对的详细背景和步骤。 如果想要快捷命令，请参阅[如何创建适用于 Azure 中 Linux VM 的 SSH 公钥/私钥对](mac-create-ssh-keys.md)。
@@ -32,7 +24,7 @@ ms.locfileid: "77428676"
 [!INCLUDE [virtual-machines-common-ssh-overview](../../../includes/virtual-machines-common-ssh-overview.md)]
 
 ### <a name="private-key-passphrase"></a>私钥密码
-SSH 私钥应使用非常安全的密码来保护它。 此密码只用于访问 SSH 私钥文件，不是用户帐户密码  。 向 SSH 密钥添加密码时，会使用 128 位 AES 加密私钥，因此在不能通过密码解密的情况下，私钥是没有用的。 如果攻击者窃取了私钥，并且该私钥没有密码，那么他们就能使用私钥登录到有相应公钥的任何服务器。 如果私钥受密码保护，攻击者就无法使用，从而为 Azure 基础结构提供一个额外的安全层。
+SSH 私钥应使用非常安全的密码来保护它。 此密码只用于访问 SSH 私钥文件，不是用户帐户密码**。 向 SSH 密钥添加密码时，会使用 128 位 AES 加密私钥，因此在不能通过密码解密的情况下，私钥是没有用的。 如果攻击者窃取了私钥，并且该私钥没有密码，那么他们就能使用私钥登录到有相应公钥的任何服务器。 如果私钥受密码保护，攻击者就无法使用，从而为 Azure 基础结构提供一个额外的安全层。
 
 [!INCLUDE [virtual-machines-common-ssh-support](../../../includes/virtual-machines-common-ssh-support.md)]
 
@@ -40,11 +32,11 @@ SSH 私钥应使用非常安全的密码来保护它。 此密码只用于访问
 
 通过指定公钥创建 Azure VM 时，Azure 将公钥（以 `.pub` 格式）复制到 VM 上的 `~/.ssh/authorized_keys` 文件夹。 `~/.ssh/authorized_keys` 中的 SSH 密钥用于在 SSH 连接时质询客户端以匹配相应的私钥。 在使用 SSH 密钥进行身份验证的 Azure Linux VM 中，Azure 会将 SSHD 服务器配置为不允许密码登录，仅允许 SSH 密钥登录。 因此，使用 SSH 密钥创建 Azure Linux VM 可确保 VM 部署的安全，不必进行通常在部署完后需要进行的配置步骤（即在 `sshd_config` 文件中禁用密码）。
 
-如果不希望使用 SSH 密钥，可以将 Linux VM 设置为使用密码身份验证。 如果 VM 不向 Internet 公开，使用密码可能已足够。 但是，仍需要管理每台 Linux VM 的密码和维护正常密码策略和做法（如最小密码长度）并定期进行更新。 使用 SSH 密钥可降低跨多台 VM 管理单个凭据的复杂性。
+如果不希望使用 SSH 密钥，可以将 Linux VM 设置为使用密码身份验证。 如果 VM 未向 Internet 公开，使用密码可能已足够。 但是，仍需要管理每台 Linux VM 的密码和维护正常密码策略和做法（如最小密码长度）并定期进行更新。 使用 SSH 密钥可降低跨多台 VM 管理单个凭据的复杂性。
 
 ## <a name="generate-keys-with-ssh-keygen"></a>使用 ssh-keygen 生成密钥
 
-若要创建密钥，首选命令是 `ssh-keygen`，它随 Azure 本地 Shell、macOS 或 Linux 主机中的 OpenSSH 实用程序、[用于 Linux 的 Windows 子系统](https://docs.microsoft.com/windows/wsl/about)以及其他工具提供。 `ssh-keygen` 会询问一系列问题，然后编写私钥和匹配的公钥。 
+若要创建密钥，首选命令是 `ssh-keygen`，它可与 Azure 本地 Shell、macOS 或 Linux 主机和 Windows 10 中的 OpenSSH 实用工具配合使用。 `ssh-keygen` 会询问一系列问题，然后编写私钥和匹配的公钥。 
 
 <!-- Notice: Azure local Shell-->
 
@@ -52,7 +44,7 @@ SSH 密钥默认保留在 `~/.ssh` 目录中。  如果没有 `~/.ssh` 目录，
 
 ### <a name="basic-example"></a>基本示例
 
-以下 `ssh-keygen` 命令默认在 `~/.ssh` 目录中生成 4096 位 SSH RSA 公钥和私钥文件。 如果当前位置存在 SSH 密钥对，这些文件将被覆盖。
+以下 `ssh-keygen` 命令默认在 `~/.ssh` 目录中生成 2048 位 SSH RSA 公钥和私钥文件。 如果当前位置存在 SSH 密钥对，这些文件将被覆盖。
 
 ```bash
 ssh-keygen -m PEM -t rsa -b 4096
@@ -87,7 +79,7 @@ ssh-keygen \
 
 `-N mypassphrase` = 用于访问私钥文件的其他密码。 
 
-### <a name="example-of-ssh-keygen"></a>ssh-keygen 示例
+### <a name="example-of-ssh-keygen"></a>ssh-keygen 的示例
 
 ```bash
 ssh-keygen -t -m PEM rsa -b 4096 -C "azureuser@myserver"
@@ -131,7 +123,7 @@ ls -al ~/.ssh
 
 `Enter passphrase (empty for no passphrase):`
 
-强烈建议为私钥添加密码  。 如果不使用密码来保护密钥文件，任何人只要拥有该文件，就可以用它登录到拥有相应公钥的任何服务器。 添加密码可提升防护能力以防有人能够访问私钥文件，可让用户有时间更改密钥。
+强烈建议为私钥添加密码**。 如果不使用密码来保护密钥文件，任何人只要拥有该文件，就可以用它登录到拥有相应公钥的任何服务器。 添加密码可提升防护能力以防有人能够访问私钥文件，可让用户有时间更改密钥。
 
 ## <a name="generate-keys-automatically-during-deployment"></a>部署期间自动生成密钥
 
@@ -157,7 +149,7 @@ ssh-rsa XXXXXXXXXXc2EAAAADAXABAAABAXC5Am7+fGZ+5zXBGgXS6GUvmsXCLGc7tX7/rViXk3+eSh
 
 如果更愿意使用多行格式的公钥，则可基于之前创建的公钥在 pem 容器中生成 RFC4716 格式的密钥。
 
-若要基于现有的 SSH 公钥创建 RFC4716 格式的密钥，请执行以下操作：
+从现有的 SSH 公钥创建 RFC4716 格式的密钥：
 
 ```bash
 ssh-keygen \

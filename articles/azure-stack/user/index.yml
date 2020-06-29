@@ -10,12 +10,12 @@ metadata:
   ms.author: v-jay
   origin.date: 03/19/2020
   ms.date: 05/18/2020
-  ms.openlocfilehash: 2cf1ac98d2d2c204aaf99af0c0fd3f460e51f00e
-  ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+  ms.openlocfilehash: 52bea827e7d84d685f04fe8ff3be65443e2fb424
+  ms.sourcegitcommit: d86e169edf5affd28a1c1a4476d72b01a7fb421d
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 05/15/2020
-  ms.locfileid: "83422008"
+  ms.lasthandoff: 06/19/2020
+  ms.locfileid: "85096339"
 landingContent:
 - title: 关于 Azure Stack Hub
   linkLists:
@@ -35,6 +35,8 @@ landingContent:
       url: azure-stack-quick-linux-portal.md
   - linkListType: tutorial
     links:
+    - text: 从模板创建 VM
+      url: azure-stack-create-vm-template.md
     - text: 将 C# Web 应用部署到 Windows VM
       url: azure-stack-dev-start-howto-vm-dotnet.md
     - text: 部署 Java Web 应用
@@ -59,6 +61,8 @@ landingContent:
   linkLists:
   - linkListType: how-to-guide
     links:
+    - text: 使用模板在 IaaS 中部署 VM
+      url: azure-stack-create-vm-template.md
     - text: 配置虚拟网络
       url: deploy-foundational-patterns.md
     - text: 快速入门 - 创建 VM
@@ -71,3 +75,7 @@ landingContent:
     links:
     - text: 部署 Service Fabric 群集
       url: azure-stack-solution-template-service-fabric-cluster.md
+    - text: 部署 Kubernetes 群集
+      url: azure-stack-kubernetes-aks-engine-overview.md
+    - text: 部署 Azure 认知服务
+      url: azure-stack-solution-template-cognitive-services.md

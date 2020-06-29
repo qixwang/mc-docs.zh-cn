@@ -1,27 +1,19 @@
 ---
-title: 在 Linux 上配置软件 RAID | Azure
+title: 在 Linux VM 上配置软件 RAID
 description: 了解如何使用 mdadm 在 Azure 中的 Linux 虚拟机上配置 RAID。
-services: virtual-machines-linux
-documentationcenter: na
 author: Johnnytechn
-manager: digimobile
-editor: tysonn
-tag: azure-service-management,azure-resource-manager
-ms.assetid: f3cb2786-bda6-4d2c-9aaf-2db80f490feb
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.topic: article
+ms.topic: how-to
 origin.date: 02/02/2017
-ms.date: 04/13/2020
+ms.date: 06/17/2020
 ms.author: v-johya
 ms.subservice: disks
-ms.openlocfilehash: b1d1a6f400e077c5b5ab710eec0501f6b59d557f
-ms.sourcegitcommit: ebedf9e489f5218d4dda7468b669a601b3c02ae5
+ms.openlocfilehash: c50fabb06881cef49df8e064f2620c25f9ba16ca
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82159113"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097028"
 ---
 # <a name="configure-software-raid-on-linux"></a>在 Linux 上配置软件 RAID
 一种比较常见的情况是，在 Azure 中的 Linux 虚拟机上使用软件 RAID 将多个附加的数据磁盘显示为单个 RAID 设备。 通常，与仅使用单个磁盘相比，使用此方法不但可改进性能，而且还可提高吞吐量。
@@ -68,13 +60,13 @@ ms.locfileid: "82159113"
                     sectors (command 'u').
     ```
 
-1. 在提示符处按 N 键，以创建新  分区：
+1. 在提示符处按 N 键，以创建新 分区：
 
     ```bash
     Command (m for help): n
     ```
 
-1. 接下来，按 P 键以创建主分区  ：
+1. 接下来，按 P 键以创建主分区 ：
 
     ```bash 
     Command action

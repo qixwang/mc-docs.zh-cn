@@ -5,12 +5,12 @@ ms.topic: include
 origin.date: 03/20/2020
 ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: 37f1b935a3dfe602d9a21f665c46e4bf63a0e0c5
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.openlocfilehash: 95575136c926af216f75df31118af0ce153f0050
+ms.sourcegitcommit: 304d3ef3c9e65c3e85977b3afb9985fbc0f908d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82150803"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85095917"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -20,7 +20,7 @@ ms.locfileid: "82150803"
 > * [创建 Azure 语音资源](../../../../get-started.md)
 > * [创建 LUIS 应用程序并获取终结点密钥](../../../../quickstarts/create-luis.md)
 > * [设置开发环境并创建空项目](../../../../quickstarts/setup-platform.md?pivots=programming-language-python)
-> * 需要语音 SDK 版本 1.10.0 或更高版本。
+> * 需要语音 SDK 版本 1.11.0 或更高版本。
 
 [!INCLUDE [Audio input format](~/articles/cognitive-services/speech-service/includes/audio-input-format-chart.md)]
 
@@ -91,12 +91,12 @@ elif result.reason == speechsdk.ResultReason.Canceled:
 
 1. 在计算机上下载并安装 64 位版本的 [Python](https://www.python.org/downloads/)（3.5 到 3.8）。
 1. 下载并安装 [Visual Studio Code](https://code.visualstudio.com/Download)。
-1. 打开 Visual Studio Code 并安装 Python 扩展。 在菜单中选择“文件”   >   “首选项” >   “扩展”。 搜索 **Python**。
+1. 打开 Visual Studio Code 并安装 Python 扩展。 在菜单中选择“文件” > “首选项” > “扩展”。 搜索 **Python**。
 
    ![安装 Python 扩展](~/articles/cognitive-services/Speech-Service/media/sdk/qs-python-vscode-python-extension.png)
 
 1. 创建一个文件夹用于存储项目。 例如，使用 Windows 资源管理器。
-1. 在 Visual Studio Code 中选择“文件”图标。  然后打开创建的文件夹。
+1. 在 Visual Studio Code 中选择“文件”图标。 然后打开创建的文件夹。
 
    ![打开文件夹](~/articles/cognitive-services/Speech-Service/media/sdk/qs-python-vscode-python-open-folder.png)
 
@@ -111,7 +111,7 @@ elif result.reason == speechsdk.ResultReason.Canceled:
 1. 如果尚未为所选的 Python 解释器安装， 可以从 Visual Studio Code 内部安装语音 SDK Python 包。
    若要安装语音 SDK 包，请打开终端。 再次启动命令面板 <kbd>Ctrl+Shift+P</kbd> 并输入 **Terminal:Create New Integrated Terminal** 来打开终端。
    在打开的终端中，输入命令 `python -m pip install azure-cognitiveservices-speech`，或者输入适用于系统的命令。
-1. 若要运行示例代码，请在编辑器中的某个位置单击右键。 选择“在终端中运行 Python 文件”。 
+1. 若要运行示例代码，请在编辑器中的某个位置单击右键。 选择“在终端中运行 Python 文件”。
    头 15 秒，通过音频文件提供的语音输入将被识别并记录到控制台窗口中。
 
    ```console

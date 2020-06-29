@@ -3,17 +3,18 @@ title: 从 Azure 下载市场项并发布到 Azure Stack Hub
 description: 了解如何从 Azure 下载市场项并发布到 Azure Stack Hub。
 author: WenJason
 ms.topic: conceptual
-origin.date: 04/08/2020
-ms.date: 05/18/2020
+origin.date: 04/13/2020
+ms.date: 06/22/2020
 ms.author: v-jay
 ms.reviewer: avishwan
 ms.lastreviewed: 12/23/2019
-ms.openlocfilehash: 19b3b24dba12bf794063a071aac6518e3445bc30
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+zone_pivot_groups: state-connected-disconnected
+ms.openlocfilehash: 7e3cc326c3151ba25d73962ca9f68a843fc5e539
+ms.sourcegitcommit: d86e169edf5affd28a1c1a4476d72b01a7fb421d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83422505"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85096476"
 ---
 # <a name="download-marketplace-items-to-azure-stack-hub"></a>将市场项下载到 Azure Stack Hub 
 
@@ -29,43 +30,42 @@ ms.locfileid: "83422505"
 > [!NOTE]
 > 目录根据 Azure Stack Hub 系统连接到的云而异。 云环境由用于注册 Azure Stack Hub 的 Azure 订阅确定。
 
-## <a name="connected-scenario"></a>联网场景
+::: zone pivot="state-connected"
+通过连接的部署，可以使用管理员门户下载市场项。
 
-如果 Azure Stack Hub 连接到 Internet，则可以使用管理员门户下载市场项。
-
-### <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>先决条件
 
 Azure Stack Hub 部署必须已建立 Internet 连接，并且已注册到 Azure。
 
-### <a name="use-the-portal-to-download-marketplace-items"></a>使用门户下载市场项
+## <a name="use-the-portal-to-download-marketplace-items"></a>使用门户下载市场项
 
 1. 登录到 Azure Stack Hub 管理员门户。
 
 2. 下载市场项之前，查看可用的存储空间。 稍后在选择要下载的项时，可将下载大小与可用存储容量进行比较。 如果容量有限，请考虑使用[管理可用空间](azure-stack-manage-storage-shares.md#manage-available-space)的选项。
 
-   若要查看可用空间，请在“区域管理”中选择要浏览的区域，然后转到“资源提供程序” > “存储”：  
+   若要查看可用空间，请在“区域管理”中选择要浏览的区域，然后转到“资源提供程序” > “存储”：**** **** ****
 
    ![在 Azure Stack Hub 管理员门户中查看存储空间](media/azure-stack-download-azure-marketplace-item/storage.png)
 
-3. 打开 Azure Stack Hub 市场并连接到 Azure。 为此，请依次选择“市场管理”服务、“市场项”和“从 Azure 中添加”：
+3. 打开 Azure Stack Hub 市场并连接到 Azure。 为此，请依次选择“市场管理”**** 服务、“市场项”**** 和“从 Azure 中添加”****：
 
    ![从 Azure 添加市场项](media/azure-stack-download-azure-marketplace-item/marketplace.png)
 
-4. 每个行项还显示当前可用版本。 如果某个市场项有多个可用版本，“版本”列会显示“多个”。  可以单击每个项查看其说明和附加信息，包括其下载大小：
+4. 每个行项还显示当前可用版本。 如果某个市场项有多个可用版本，“版本”列会显示“多个”。**** **** 可以单击每个项查看其说明和附加信息，包括其下载大小：
 
    ![从 Azure 添加](media/azure-stack-download-azure-marketplace-item/add-from-azure1.png)
 
-5. 如果某个项的版本显示为“多个”，你可以选择该项，然后从显示的版本选择器下拉列表中选择特定的版本。 请注意，Microsoft 现在可以通过添加属性来阻止管理员下载由于各种属性（例如，Azure Stack 版本或计费模型）而与其 Azure Stack 不兼容的市场产品。 只有 Microsoft 才能添加以下属性：
+5. 如果某个项的版本显示为“多个”，你可以选择该项，然后从显示的版本选择器下拉列表中选择特定的版本****。 请注意，Microsoft 现在可以通过添加属性来阻止管理员下载由于各种属性（例如，Azure Stack 版本或计费模型）而与其 Azure Stack 不兼容的市场产品。 只有 Microsoft 才能添加以下属性：
 
    [![从 Azure 添加](media/azure-stack-download-azure-marketplace-item/add-from-azure3sm.png "多个版本")](media/azure-stack-download-azure-marketplace-item/add-from-azure3.png#lightbox)
 
-6. 选择所需的项，然后选择“下载”。 下载时间根据网络连接性能而异。 下载完成后，可以 Azure Stack Hub 操作员或用户的身份部署新市场项。
+6. 选择所需的项，然后选择“下载”****。 下载时间根据网络连接性能而异。 下载完成后，可以 Azure Stack Hub 操作员或用户的身份部署新市场项。
 
-7. 若要部署下载的项，请选择“+ 创建资源”，在类别中搜索该新市场项。 接下来，选择该项以开始部署过程。 该过程根据市场项的不同而异。
+7. 若要部署下载的项，请选择“+ 创建资源”，在类别中搜索该新市场项。**** 接下来，选择该项以开始部署过程。 该过程根据市场项的不同而异。
+::: zone-end
 
-## <a name="disconnected-or-a-partially-connected-scenario"></a>离线场景或部分联网场景
-
-如果 Azure Stack Hub 受限或未建立 Internet 连接，可以使用 PowerShell 和*市场联合工具*，将市场项下载到已建立 Internet 连接的计算机。 然后，将这些项传输到 Azure Stack Hub 环境。 在离线环境中，无法使用 Azure Stack Hub 门户下载市场项。
+::: zone pivot="state-disconnected"
+Azure Stack Hub 受限或未建立 Internet 连接时，可以使用 PowerShell 和“市场联合工具”，将市场项下载到已建立 Internet 连接的计算机**。 然后，将这些项传输到 Azure Stack Hub 环境。 在离线环境中，无法使用 Azure Stack Hub 门户下载市场项。
 
 也可以在联网场景中使用市场联合工具。
 
@@ -74,7 +74,7 @@ Azure Stack Hub 部署必须已建立 Internet 连接，并且已注册到 Azure
 - **第 1 部分**：从市场项下载。 在能够访问 Internet 的计算机上配置 PowerShell，下载联合工具，然后从 Azure 市场下载项。
 - **第 2 部分**：上传并发布到 Azure Stack Hub 市场。 将下载的文件移到 Azure Stack Hub 环境，然后将其发布到 Azure Stack Hub 市场。
 
-### <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>先决条件
 
 - 联网环境（不必是 Azure Stack Hub）。 需要建立连接才能获取 Azure 中的产品列表及其详细信息，并在本地下载所有项。 完成此操作后，剩余的过程无需建立 Internet 连接。 此过程将创建以前下载的项的目录，供你在离线环境中使用。
 
@@ -99,7 +99,7 @@ Azure Stack Hub 部署必须已建立 Internet 连接，并且已注册到 Azure
 
 ![市场管理](media/azure-stack-download-azure-marketplace-item/toolsmsg.png)
 
-### <a name="use-the-marketplace-syndication-tool-to-download-marketplace-items"></a>使用市场联合工具下载市场项
+## <a name="use-the-marketplace-syndication-tool-to-download-marketplace-items"></a>使用市场联合工具下载市场项
 
 > [!IMPORTANT]
 > 每当在离线场景中下载市场项时，都请确保下载市场联合工具。 此工具经常发生更改，每次下载都应使用最新版本。
@@ -134,14 +134,14 @@ Azure Stack Hub 部署必须已建立 Internet 连接，并且已注册到 Azure
    $products = Select-AzsMarketplaceItem
    ```
 
-   随后会显示一个表格，其中列出了所选订阅中可用的所有 Azure Stack 注册。 选择与要下载其市场项的 Azure Stack 环境相匹配的注册，然后选择“确定”。
+   随后会显示一个表格，其中列出了所选订阅中可用的所有 Azure Stack 注册。 选择与要下载其市场项的 Azure Stack 环境相匹配的注册，然后选择“确定”。****
 
      ![选择 Azure Stack 注册](media/azure-stack-download-azure-marketplace-item/select-registration.png)
 
    此时应会看到另一个表格，其中列出了所有可供下载的市场项。 选择要下载的项，并记下**版本**。 可以按住 **Ctrl** 键选择多个映像。
      ![选择 Azure Stack 注册](media/azure-stack-download-azure-marketplace-item/select-products.png)
   
-   也可通过“添加条件”选项来筛选映像的列表。
+   也可通过“添加条件”选项来筛选映像的列表。****
    ![选择 Azure Stack 注册](media/azure-stack-download-azure-marketplace-item/select-products-with-filter.png)
 
    做出选择后，选择“确定”。
@@ -152,7 +152,7 @@ Azure Stack Hub 部署必须已建立 Internet 连接，并且已注册到 Azure
     $products | Export-AzsMarketplaceItem  -RepositoryDir "Destination folder path in quotes"
     ```
 
-7. 所需的下载时间取决于项的大小。 下载完成后，该项会出现在脚本中指定的文件夹内。 下载内容中包括一个 VHD 文件（适用于虚拟机）或 .zip 文件（适用于虚拟机扩展和资源提供程序）。 其中还可能包含一个 .azpkg 格式的库包（一个 .zip 文件）。
+7. 所需的下载时间取决于项的大小。 下载完成后，该项会出现在脚本中指定的文件夹内。 下载内容中包括一个 VHD 文件（适用于虚拟机）或 .zip 文件（适用于虚拟机扩展和资源提供程序）。 其中还可能包含一个 .azpkg** 格式的库包（一个 .zip 文件）。
 
 8. 如果下载失败，可以重新运行以下 PowerShell cmdlet 来重试下载：
 
@@ -169,7 +169,7 @@ Azure Stack Hub 部署必须已建立 Internet 连接，并且已注册到 Azure
     Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name Azs.Syndication.Admin -Path "Destination folder path in quotes" -Force
     ```
 
-### <a name="import-the-download-and-publish-to-azure-stack-hub-marketplace-using-powershell"></a>使用 PowerShell 导入下载内容并发布到 Azure Stack Hub 市场
+## <a name="import-the-download-and-publish-to-azure-stack-hub-marketplace-using-powershell"></a>使用 PowerShell 导入下载内容并发布到 Azure Stack Hub 市场
 
 1. 必须将[前面下载](#use-the-marketplace-syndication-tool-to-download-marketplace-items)到本地的文件移到已与 Azure Stack Hub 环境建立了连接的计算机。 市场联合工具也必须可供 Azure Stack Hub 环境使用，因为你需要使用该工具来执行导入操作。
 
@@ -188,3 +188,4 @@ Azure Stack Hub 部署必须已建立 Internet 连接，并且已注册到 Azure
     ```
 
 5. 成功完成该脚本后，Azure Stack Hub 市场中应会提供这些市场项。
+::: zone-end

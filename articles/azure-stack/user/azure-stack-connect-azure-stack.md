@@ -3,17 +3,17 @@ title: 连接到 Azure Stack Hub
 description: 了解如何连接 Azure Stack Hub。
 author: WenJason
 ms.topic: conceptual
-origin.date: 1/22/2020
-ms.date: 05/18/2020
+origin.date: 5/27/2020
+ms.date: 06/22/2020
 ms.author: v-jay
 ms.reviewer: thoroet
 ms.lastreviewed: 01/14/2020
-ms.openlocfilehash: d50ce2e38868fa4dfe665291f311b4b28c0d9067
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.openlocfilehash: edbf7f536f378c53fa23fd94561c2b5e8f43a4e5
+ms.sourcegitcommit: d86e169edf5affd28a1c1a4476d72b01a7fb421d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83422641"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85096522"
 ---
 # <a name="connect-to-azure-stack-hub"></a>连接到 Azure Stack Hub
 
@@ -27,9 +27,9 @@ ms.locfileid: "83422641"
 
 1. 打开远程桌面连接并连接到开发工具包。 输入 **AzureStack\AzureStackAdmin** 作为用户名，并输入设置 Azure Stack Hub 期间提供的管理密码。  
 
-2. 在开发工具包计算机上打开服务器管理器，单击“本地服务器”，关闭“Internet Explorer 增强的安全性”，然后关闭服务器管理器。 
+2. 在开发工具包计算机上打开服务器管理器，单击“本地服务器”，关闭“Internet Explorer 增强的安全性”，然后关闭服务器管理器。****
 
-3. 若要打开门户，请转到 https://portal.local.azurestack.external/) ，并使用用户凭据登录。
+3. 若要打开门户，请转到 `https://portal.local.azurestack.external/`，并使用用户凭据登录。
 
 
 ## <a name="connect-to-azure-stack-hub-with-vpn"></a>使用 VPN 连接到 Azure Stack Hub
@@ -39,7 +39,7 @@ ms.locfileid: "83422641"
 > [!NOTE] 
 > 此 VPN 连接不提供与 Azure Stack Hub 基础结构 VM 的连接。 
 
-### <a name="prerequisites"></a>必备条件
+### <a name="prerequisites"></a>先决条件
 
 * 在本地计算机上安装[与 Azure Stack Hub 兼容的 Azure PowerShell](../operator/azure-stack-powershell-install.md)。  
 * 下载[使用 Azure Stack Hub 所需的工具](../operator/azure-stack-powershell-download.md)。 
@@ -94,11 +94,11 @@ Add-AzsVpnConnection `
 
   出现提示时，信任 Azure Stack Hub 主机，并将 **AzureStackCertificateAuthority** 提供的证书安装到本地计算机的证书存储。 该提示可能会出现在 PowerShell 会话窗口后面。 
 
-* 在本地计算机上，转到“网络设置”   > “VPN”  >选择“`azurestack`” > “连接”  。 在登录提示符下，输入用户名 (AzureStack\AzureStackAdmin) 和密码。
+* 在本地计算机上，转到“网络设置”**** > “VPN”****>选择“`azurestack`” > “连接”****。 在登录提示符下，输入用户名 (AzureStack\AzureStackAdmin) 和密码。
 
 ### <a name="test-the-vpn-connectivity"></a>测试 VPN 连接
 
-若要测试门户连接，请打开浏览器并转到用户门户 (https://portal.local.azurestack.external/) ，登录，然后创建资源。  
+若要测试门户连接，请打开浏览器并转到用户门户 `https://portal.local.azurestack.external/`，登录，然后创建资源。  
 
 <!-- Update_Description: wording update -->
 

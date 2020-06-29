@@ -3,17 +3,17 @@ title: Azure Stack Hub 托管磁盘：差异与注意事项
 description: 了解 Azure Stack Hub 中托管磁盘和托管映像的差异与注意事项。
 author: WenJason
 ms.topic: article
-origin.date: 01/22/2020
-ms.date: 05/18/2020
+origin.date: 05/04/2020
+ms.date: 06/22/2020
 ms.author: v-jay
 ms.reviewer: jiahan
 ms.lastreviewed: 03/23/2019
-ms.openlocfilehash: 19b398f94aa9d2cff756ecc34dfdfca7120dcf04
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.openlocfilehash: 890f277a30e8aac516f2b7d7ffc51bdf6fd0b4ff
+ms.sourcegitcommit: d86e169edf5affd28a1c1a4476d72b01a7fb421d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83422643"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85096266"
 ---
 # <a name="azure-stack-hub-managed-disks-differences-and-considerations"></a>Azure Stack Hub 托管磁盘：差异与注意事项
 
@@ -55,7 +55,7 @@ ms.locfileid: "83422643"
 
 Azure Stack Hub 托管磁盘支持以下 API 版本：
 
-- 2017-03-30 
+- 2017-03-30
 - 2017-12-01（仅限托管映像，无磁盘，无快照）
 
 ## <a name="convert-to-managed-disks"></a>转换为托管磁盘
@@ -187,13 +187,13 @@ $PIp = New-AzureRmPublicIpAddress -ResourceGroupName $ResourceGroupName -Locatio
   -Name "mypublicdns$(Get-Random)" -AllocationMethod Static -IdleTimeoutInMinutes 4
 
 # Create an inbound network security group rule for port 3389
-$NsgRuleRDP = New-AzureRmNetworkSecurityRuleConfig -Name "MyNetworkSecurityGroupRuleRDP"  -Protocol Tcp `
+$NsgRuleSSH = New-AzureRmNetworkSecurityRuleConfig -Name "MyNetworkSecurityGroupRuleSSH"  -Protocol Tcp `
   -Direction Inbound -Priority 1000 -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix * `
-  -DestinationPortRange 3389 -Access Allow
+  -DestinationPortRange 22 -Access Allow
 
 # Create a network security group
 $Nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName $ResourceGroupName -Location $Location `
-  -Name "MyNetworkSecurityGroup" -SecurityRules $NsgRuleRDP
+  -Name "MyNetworkSecurityGroup" -SecurityRules $NsgRuleSSH
 
 # Create a virtual network card and associate with public IP address and NSG
 $Nic = New-AzureRmNetworkInterface -Name "MyNic" -ResourceGroupName $ResourceGroupName -Location $Location `

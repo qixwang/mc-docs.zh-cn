@@ -2,19 +2,19 @@
 title: 模板函数 - 逻辑
 description: 介绍 Azure 资源管理器模板中用于确定逻辑值的函数。
 ms.topic: conceptual
-origin.date: 04/15/2019
-ms.date: 03/23/2020
+origin.date: 04/27/2020
+ms.date: 06/22/2020
 ms.author: v-yeche
-ms.openlocfilehash: 7749dd1b7505ec8f5539bb095117876a76eb9c2a
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 32f9e9e138851879b33d1550cec18d1737498cea
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79543887"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098608"
 ---
-# <a name="logical-functions-for-azure-resource-manager-templates"></a>用于 Azure 资源管理器模板的逻辑函数
+# <a name="logical-functions-for-arm-templates"></a>ARM 模板的逻辑函数
 
-Resource Manager 提供了多个用于在模板中进行比较的函数。
+资源管理器提供了多个用于在 Azure 资源管理器 (ARM) 模板中进行比较的函数。
 
 * [and](#and)
 * [bool](#bool)
@@ -30,15 +30,15 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
-| arg1 |是 |boolean |第一个值，需检查其是否为 true。 |
-| arg2 |是 |boolean |第二个值，需检查其是否为 true。 |
+| arg1 |是 |boolean |要检查是否为 true 的第一个值。 |
+| arg2 |是 |boolean |要检查是否为 true 的第二个值。 |
 | 其他参数 |否 |boolean |用于检查是否为 true 的其他参数。 |
 
 ### <a name="return-value"></a>返回值
 
-如果所有值均为 true，则返回 True；否则返回 False   。
+如果所有值均为 true，则返回 True；否则返回 False**** ****。
 
 ### <a name="examples"></a>示例
 
@@ -46,7 +46,7 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "resources": [ ],
     "outputs": {
@@ -68,7 +68,7 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
 
 前述示例的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
 | andExampleOutput | Bool | False |
 | orExampleOutput | Bool | True |
@@ -82,7 +82,7 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |字符串或整数 |要转换为布尔值的值。 |
 
@@ -119,9 +119,9 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
 }
 ```
 
-上面具有默认值的示例的输出为：
+上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
 | trueString | Bool | True |
 | falseString | Bool | False |
@@ -136,15 +136,15 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
-| 条件 (condition) |是 |boolean |要检查是为 true 还是为 false 的值。 |
+| condition |是 |boolean |要检查是为 true 还是为 false 的值。 |
 | trueValue |是 | 字符串、int、对象或数组 |条件为 true 时返回的值。 |
 | falseValue |是 | 字符串、int、对象或数组 |条件为 false 时返回的值。 |
 
 ### <a name="return-value"></a>返回值
 
-如果第一个参数为 True，则返回第二个参数；否则返回第三个参数  。
+如果第一个参数为 True，则返回第二个参数；否则返回第三个参数****。
 
 ### <a name="remarks"></a>备注
 
@@ -156,7 +156,7 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "resources": [
     ],
@@ -179,7 +179,7 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
 
 前述示例的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
 | yesOutput | String | 是 |
 | noOutput | String | 否 |
@@ -189,7 +189,7 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "vmName": {
@@ -241,13 +241,13 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |boolean |要转换的值。 |
 
 ### <a name="return-value"></a>返回值
 
-参数为 False 时返回 True   。 参数为 True 时返回 False   。
+参数为 False 时返回 True**** ****。 参数为 True 时返回 False**** ****。
 
 ### <a name="examples"></a>示例
 
@@ -255,7 +255,7 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "resources": [ ],
     "outputs": {
@@ -277,7 +277,7 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
 
 前述示例的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
 | andExampleOutput | Bool | False |
 | orExampleOutput | Bool | True |
@@ -287,7 +287,7 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "resources": [
     ],
@@ -297,11 +297,12 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
             "value": "[not(equals(1, 2))]"
         }
     }
+}
 ```
 
 前述示例的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
 | checkNotEquals | Bool | True |
 
@@ -313,15 +314,15 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
-| arg1 |是 |boolean |第一个值，需检查其是否为 true。 |
-| arg2 |是 |boolean |第二个值，需检查其是否为 true。 |
+| arg1 |是 |boolean |要检查是否为 true 的第一个值。 |
+| arg2 |是 |boolean |要检查是否为 true 的第二个值。 |
 | 其他参数 |否 |boolean |用于检查是否为 true 的其他参数。 |
 
 ### <a name="return-value"></a>返回值
 
-如果任何值为 true，则返回 True；否则返回 False   。
+如果任何值为 true，则返回 True；否则返回 False**** ****。
 
 ### <a name="examples"></a>示例
 
@@ -329,7 +330,7 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "resources": [ ],
     "outputs": {
@@ -351,7 +352,7 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
 
 前述示例的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
 | andExampleOutput | Bool | False |
 | orExampleOutput | Bool | True |
@@ -360,7 +361,7 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
 ## <a name="next-steps"></a>后续步骤
 
 * 有关 Azure 资源管理器模板中各部分的说明，请参阅[创作 Azure 资源管理器模板](template-syntax.md)。
-* 要合并多个模板，请参阅[将链接的模板与 Azure 资源管理器配合使用](linked-templates.md)。
+* 若要合并多个模板，请参阅[将链接的模板与 Azure 资源管理器配合使用](linked-templates.md)。
 * 若要在创建资源类型时迭代指定的次数，请参阅[在 Azure 资源管理器中创建多个资源实例](copy-resources.md)。
 * 要查看如何部署已创建的模板，请参阅[使用 Azure 资源管理器模板部署应用程序](deploy-powershell.md)。
 

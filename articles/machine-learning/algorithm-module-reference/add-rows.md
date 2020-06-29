@@ -6,15 +6,15 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
+author: likebupt
 ms.author: zhanxia
-ms.date: 10/22/2019
-ms.openlocfilehash: 93271f61b006be37e025365e448978d5f1dd7f83
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 02/22/2020
+ms.openlocfilehash: 7c4e616ce56a63c04231314dc3e57409d8a65973
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75598302"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097452"
 ---
 # <a name="add-rows-module"></a>“添加行”模块
 
@@ -32,13 +32,13 @@ ms.locfileid: "75598302"
 
 若要连接两个数据集中的行，这些行必须具有完全相同的架构。 这意味着列的列数和列中的数据类型相同。
 
-1.  将“添加行”模块拖到管道中。可以在“数据转换”下的“操作”类别中找到它。   
+1.  将“添加行”模块拖到管道中，可以在“数据转换”下找到它 。
 
 2. 将数据集连接到两个输入端口。 要追加的数据集应连接到第二个（右）端口。 
   
-3.  运行管道。 输出数据集中的行数应等于两个输入数据集的行数之和。
+3.  提交管道。 输出数据集中的行数应等于两个输入数据集的行数之和。
 
-    如果将同一数据集添加到“添加行”模块的两个输入，则会复制数据集。  
+    如果将同一数据集添加到“添加行”模块的两个输入，则会复制数据集。 
 
 ## <a name="next-steps"></a>后续步骤
 

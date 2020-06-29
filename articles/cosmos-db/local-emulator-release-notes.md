@@ -5,14 +5,14 @@ ms.service: cosmos-db
 ms.topic: tutorial
 author: rockboyfor
 origin.date: 06/20/2019
-ms.date: 04/27/2020
+ms.date: 06/22/2020
 ms.author: v-yeche
-ms.openlocfilehash: e160f7cc47e63388331b96731bded0c976992b76
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.openlocfilehash: 0df83399426727313613addb69b48d3f0d7395af
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82134620"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098556"
 ---
 # <a name="azure-cosmos-emulator---release-notes-and-download-information"></a>Azure Cosmos 模拟器 - 发行说明和下载信息
 
@@ -26,6 +26,19 @@ ms.locfileid: "82134620"
 |**入门**|[使用 Azure Cosmos 模拟器在本地开发](local-emulator.md)|
 
 ## <a name="release-notes"></a>发行说明
+
+### <a name="2111"></a>2.11.1
+
+- 此版本修复了与模拟器数据资源管理器相关的几个 bug。 在某些情况下，通过 Web 浏览器使用模拟器“数据资源管理器”时，无法连接到 Cosmos 模拟器终结点，并且所有相关操作（如创建数据库或容器）都会出错。 解决的第二个问题与通过数据资源管理器上传操作从 JSON 文件中创建一个项有关。
+
+### <a name="2110"></a>2.11.0
+
+- 此版本引入了对自动缩放预配吞吐量的支持。 这些新功能包括：以请求单位 (RU/s) 设置自定义的最大预配吞吐量级别，在现有数据库和容器上启用自动缩放，以及通过 Azure Cosmos DB SDK 提供编程支持。
+- 解决了查询大量文档（超过 1GB）时模拟器会失败并出现内部错误状态代码 500 的问题。
+
+### <a name="292"></a>2.9.2
+
+- 此版本修复了实现对 MongoDb 终结点版本 3.2 的支持时的一个 bug。 它还添加了对使用 WPR 而不是 LOGMAN 生成 ETL 跟踪以进行故障排除的支持。
 
 ### <a name="291"></a>2.9.1
 

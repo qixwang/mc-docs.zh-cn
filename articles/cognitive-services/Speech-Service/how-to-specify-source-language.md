@@ -12,17 +12,17 @@ origin.date: 01/07/2020
 ms.date: 04/20/2020
 ms.author: v-tawe
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 446255a5db1a9fd8bc425be58d5017f4e0459dd3
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.openlocfilehash: 9fccf1e4aa8605d1c2c9f69718c644fca4533d9d
+ms.sourcegitcommit: 304d3ef3c9e65c3e85977b3afb9985fbc0f908d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82134666"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85095971"
 ---
 # <a name="specify-source-language-for-speech-to-text"></a>指定语音转文本的源语言
 
 > [!IMPORTANT]
-> 需要语音 SDK 版本 1.10.0 或更高版本。
+> 需要语音 SDK 版本 1.11.0 或更高版本。
 
 本文介绍如何指定某个传递给语音 SDK 进行语音识别的音频输入的源语言。 另外还提供示例代码，用于指定自定义语音识别模型以改进识别。
 

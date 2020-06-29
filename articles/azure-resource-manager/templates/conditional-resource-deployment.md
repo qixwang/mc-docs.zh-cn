@@ -2,20 +2,22 @@
 title: 使用模板进行条件部署
 description: 介绍如何在 Azure 资源管理器模板中有条件地部署资源。
 ms.topic: conceptual
-origin.date: 12/03/2019
-ms.date: 03/23/2020
+origin.date: 06/01/2020
+ms.date: 06/22/2020
 ms.author: v-yeche
-ms.openlocfilehash: e975f5d0452bc936cd02d97bd86bbdd17615d350
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 2308ebe8f7e04db68e610add70c83ea2e5ed68ea
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79543732"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098545"
 ---
-<!--Verify successfully-->
-# <a name="conditional-deployment-in-resource-manager-templates"></a>资源管理器模板中的条件部署
+# <a name="conditional-deployment-in-arm-templates"></a>使用 ARM 模板进行条件部署
 
-有时，需要有选择地在模板中部署资源。 使用 `condition` 元素指定是否部署资源。 此元素的值解析为 true 或 false。 如果值为 true，则创建了该资源。 如果值为 false，则未创建该资源。 值只能应用到整个资源。
+有时，需要选择在 Azure 资源管理器 (ARM) 模板中部署资源。 使用 `condition` 元素指定是否部署资源。 此元素的值将解析为 true 或 false。 如果值为 true，则创建了该资源。 如果值为 false，则未创建该资源。 值只能应用到整个资源。
+
+> [!NOTE]
+> 条件部署不会级联到[子资源](child-resource-name-type.md)。 如果要有条件地部署资源及其子资源，需要对每种资源类型应用相同的条件。
 
 ## <a name="new-or-existing-resource"></a>新资源或现有资源
 
@@ -23,16 +25,16 @@ ms.locfileid: "79543732"
 
 ```json
 {
-    "condition": "[equals(parameters('newOrExisting'),'new')]",
-    "type": "Microsoft.Storage/storageAccounts",
-    "apiVersion": "2017-06-01",
-    "name": "[variables('storageAccountName')]",
-    "location": "[parameters('location')]",
-    "sku": {
-        "name": "[variables('storageAccountType')]"
-    },
-    "kind": "Storage",
-    "properties": {}
+  "condition": "[equals(parameters('newOrExisting'),'new')]",
+  "type": "Microsoft.Storage/storageAccounts",
+  "apiVersion": "2017-06-01",
+  "name": "[variables('storageAccountName')]",
+  "location": "[parameters('location')]",
+  "sku": {
+    "name": "[variables('storageAccountType')]"
+  },
+  "kind": "Storage",
+  "properties": {}
 }
 ```
 
@@ -84,13 +86,13 @@ ms.locfileid: "79543732"
 
 [将资源设置为依赖于](define-resource-dependency.md)条件资源，这与设置任何其他资源完全一样。 条件资源未部署时，Azure 资源管理器会自动将其从所需依赖项中删除。
 
-## <a name="condition-with-complete-mode"></a>完整模式条件
+## <a name="complete-mode"></a>完整模式
 
 如果以[完整模式](deployment-modes.md)部署模板并且由于条件的计算结果为 false 而未部署资源，则结果取决于用于部署模板的 REST API 版本。 如果使用 2019-05-10 之前的版本，则**不会删除**该资源。 如果使用 2019-05-10 或更高版本，则**会删除**该资源。 最新版本的 Azure PowerShell 和 Azure CLI 在条件为 false 时会删除该资源。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关创建模板的建议，请参阅 [Azure 资源管理器模板的最佳做法](template-best-practices.md)。
-* 若要创建资源的多个实例，请参阅 [Azure 资源管理器模板中的资源迭代](copy-resources.md)。
+* 有关创建模板的建议，请参阅 [ARM 模板的最佳做法](template-best-practices.md)。
+* 要创建资源的多个实例，请参阅 [ARM 模板中的资源迭代](copy-resources.md)。
 
 <!-- Update_Description: update meta properties, wording update, update link -->

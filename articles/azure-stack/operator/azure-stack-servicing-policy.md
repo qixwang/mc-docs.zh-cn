@@ -4,17 +4,17 @@ titleSuffix: Azure Stack Hub
 description: 了解 Azure Stack Hub 服务策略以及如何使集成系统保持受支持状态。
 author: WenJason
 ms.topic: article
-origin.date: 02/07/2020
-ms.date: 05/18/2020
+origin.date: 06/09/2020
+ms.date: 06/22/2020
 ms.author: v-jay
-ms.reviewer: harik
+ms.reviewer: niy
 ms.lastreviewed: 03/18/2020
-ms.openlocfilehash: b71d096e306a36470ebed630cf58b1b30efb4c01
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.openlocfilehash: 78c473fd305b1f3bc0cc634855b67d7358dc6853
+ms.sourcegitcommit: d86e169edf5affd28a1c1a4476d72b01a7fb421d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83422516"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85096327"
 ---
 # <a name="azure-stack-hub-servicing-policy"></a>Azure Stack Hub 服务策略
 
@@ -53,9 +53,9 @@ Microsoft 预期每月发布软件更新包。 但是，可能一个月内发布
 
 ## <a name="hotfixes"></a>修补程序
 
-有时，Microsoft 会为 Azure Stack Hub 提供修补程序（通常是预防性或时效性的程序）来解决特定问题。 发布的每个修补程序都附带相应的 Microsoft 知识库文章，其中详细描述了问题、原因和解决方法。
+有时，Microsoft 会为 Azure Stack Hub 提供修补程序（通常是预防性或时效性的程序）来解决特定问题。 发布的每个修补程序都附带相应的 Microsoft 知识库文章，其中详细说明了该修补程序中解决的问题。
 
-可以像下载和安装普通的 Azure Stack Hub 完整更新包一样下载和安装修补程序。 但是，与完整更新不同，修补程序在几分钟内即可完成安装。 我们建议 Azure Stack Hub 操作员在安装修补程序时设置维护时段。 修补程序会更新 Azure Stack Hub 云的版本，使你可以轻松确定是否已应用该修补程序。 对于仍在支持期内的每个 Azure Stack Hub 版本，将单独提供修补程序。 特定迭代的每个修复程序是累积性的，包含同一版本的以往更新。 可以在相应的知识库文章中详细了解特定修补程序的适用性。 请参阅上一部分中的发行说明链接。
+可以像下载和安装普通的 Azure Stack Hub 完整更新包一样下载和安装修补程序。 但是，与完整更新不同，修补程序在几分钟内即可完成安装。 我们建议 Azure Stack Hub 操作员在安装修补程序时设置维护时段。 修补程序会更新 Azure Stack Hub 云的版本，使你可以轻松确定是否已应用该修补程序。 对于仍在支持期内的每个 Azure Stack Hub 版本，将单独提供修补程序。 特定迭代的每个修补程序是累积性的，包含该版本以前的修补程序。 可以在相应的知识库文章中详细了解特定修补程序的适用性。 请参阅上一部分中的发行说明链接。
 
 有关当前可用的修补程序的信息，请参阅该更新的发行说明：
 
@@ -81,13 +81,19 @@ Microsoft 预期每月发布软件更新包。 但是，可能一个月内发布
 
 Microsoft 软件更新包是非累积性的，其先决条件是需要前一个更新包或修补程序。 如果决定延后一个或多个更新，如果想要获取最新版本，请考虑整体运行时。
 
+### <a name="resource-provider-version-support"></a>资源提供程序版本支持
+
+对于 Azure Stack Hub 资源提供程序，请务必注意，即使所使用的旧版本 Azure Stack Hub 仍处于支持窗口内，也仅支持与受支持版本的 Azure Stack Hub 相兼容的最新发布版本的给定资源提供程序。
+
+有关资源提供程序兼容性的详细信息，请参阅该特定资源提供程序的发行说明。
+
 ## <a name="get-support"></a>获取支持
 
 Azure Stack Hub 遵循与 Azure 相同的支持流程。 企业客户可以[创建 Azure 支持请求](https://support.azure.cn/zh-cn/support/support-azure/)。 如果你是云解决方案提供商 (CSP) 的客户，请联系 CSP 获得支持。 有关详细信息，请参阅 [Azure 支持常见问题解答](https://www.azure.cn/support/faq/)。
 
-如果在排查更新问题时需要帮助，请参阅[排查 Azure Stack Hub 修补程序和更新问题的最佳做法](azure-stack-updates-troubleshoot.md)。
+如果在排查更新问题时需要帮助，请参阅[排查 Azure Stack Hub 修补程序和更新问题的最佳做法](azure-stack-troubleshooting.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
 - [在 Azure Stack Hub 中管理更新](azure-stack-updates.md)
-- [排查 Azure Stack Hub 修补程序和更新问题的最佳做法](azure-stack-updates-troubleshoot.md)
+- [排查 Azure Stack Hub 修补程序和更新问题的最佳做法](azure-stack-troubleshooting.md)

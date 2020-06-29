@@ -10,16 +10,16 @@ author: FrancescaLazzeri
 ms.author: v-yiso
 origin.date: 11/04/2019
 ms.date: 03/09/2020
-ms.openlocfilehash: b9c7580e68ffec9be6acf807f4bd8df550db906e
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 134097217a16bb710face464707cc53511354f90
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78155040"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097458"
 ---
 # <a name="machine-learning-algorithm-cheat-sheet-for-azure-machine-learning-designer"></a>Azure 机器学习设计器机器学习算法备忘单
 
-“Azure 机器学习算法备忘单”  可帮助为预测分析模型选择正确的算法。
+“Azure 机器学习算法备忘单”可帮助你从设计器为预测分析模型选择正确的算法****。
 
 Azure 机器学习拥有一个大型算法库，包括***分类***、***推荐系统***、***聚类分析***、***异常检测***、***回归***和***文本分析***系列。 每一类算法都可用于解决一种类型的机器学习问题。
 
@@ -39,7 +39,7 @@ Azure 机器学习拥有一个大型算法库，包括***分类***、***推荐�
 
 每种机器学习算法都有自己的风格或归纳偏差。 对于特定问题，有多种算法可能都合适，但会有一种算法可能比其他算法更合适。 但并非总是可以预先知道哪种是最合适的。 在这些情况下，会在备忘单中列出几种算法。 适当的策略是尝试一种算法，如果结果尚不令人满意，则尝试其他算法。 
 
-若要详细了解 Azure 机器学习中的算法，请参阅[算法和模块参考](algorithm-module-reference/module-reference.md)。
+若要详细了解 Azure 机器学习设计器中的算法，请参阅[算法和模块参考](algorithm-module-reference/module-reference.md)。
 
 ## <a name="kinds-of-machine-learning"></a>机器学习的种类
 

@@ -7,15 +7,14 @@ author: Blackmist
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
-origin.date: 03/26/2020
-ms.date: 05/11/2020
-ms.openlocfilehash: b5fe759ed0deab3469a0617d43b3bd758e670314
-ms.sourcegitcommit: d210eb03ed6432aeefd3e9b1c77d2c92a6a8dbca
+ms.topic: tutorial
+ms.date: 03/26/2020
+ms.openlocfilehash: 693f59e732bf267ae36c2a05a2b53206e4e03800
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82591447"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097105"
 ---
 # <a name="tutorial-train-and-deploy-a-model-from-the-cli"></a>教程：通过 CLI 训练和部署模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -38,9 +37,10 @@ ms.locfileid: "82591447"
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
+* Azure 订阅。 如果没有 Azure 订阅，请在开始前创建一个试用帐户。 立即试用[免费版或付费版 Azure 机器学习](https://www.azure.cn/pricing/1rmb-trial)。
 
-* 若要在**本地环境**中使用本文档所述的 CLI 命令，需要安装 [Azure CLI](/cli/install-azure-cli?view=azure-cli-latest)。
+* 若要在**本地环境**中使用本文档所述的 CLI 命令，需要安装 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
+
 
 ## <a name="download-the-example-project"></a>下载示例项目
 
@@ -56,7 +56,7 @@ git clone https://github.com/microsoft/MLOps.git
 
 项目中的 `examples/cli-train-deploy` 目录包含以下在训练模型时要使用的文件：
 
-* `.azureml\mnist.runconfig`：一个运行配置文件。  此文件定义训练模型所需的运行时环境。 在此示例中，它还会将用于训练模型的数据装入训练环境。
+* `.azureml\mnist.runconfig`：一个运行配置文件。 此文件定义训练模型所需的运行时环境。 在此示例中，它还会将用于训练模型的数据装入训练环境。
 * `scripts\train.py`：训练脚本。 此文件训练模型。
 * `scripts\utils.py`：训练脚本使用的帮助器文件。
 * `.azureml\conda_dependencies.yml`：定义运行训练脚本所需的软件依赖项。
@@ -66,8 +66,8 @@ git clone https://github.com/microsoft/MLOps.git
 
 存储库包含以下文件，在将训练的模型部署为 Web 服务时要使用这些文件：
 
-* `aciDeploymentConfig.yml`：一个部署配置文件。  此文件定义模型所需的托管环境。
-* `inferenceConfig.json`：一个推理配置文件  。 此文件定义软件环境，服务使用该环境通过模型为数据评分。
+* `aciDeploymentConfig.yml`：一个部署配置文件。 此文件定义模型所需的托管环境。
+* `inferenceConfig.json`：一个推理配置文件。 此文件定义软件环境，服务使用该环境通过模型为数据评分。
 * `score.py`：一个 Python 脚本，用于接受传入的数据，使用模型为数据评分，然后返回响应。
 * `scoring-env.yml`：运行模型和 `score.py` 脚本所需的 conda 依赖项。
 * `testdata.json`：可用于测试已部署的 Web 服务的数据文件。
@@ -102,7 +102,7 @@ az extension update -n azure-cli-ml
 
 资源组是 Azure 平台上的资源的基本容器。 使用 Azure 机器学习时，资源组将包含 Azure 机器学习工作区。 它还将包含工作区使用的其他 Azure 服务。 例如，如果使用基于云的计算资源来训练模型，则会在资源组中创建该资源。
 
-若要创建新资源组，请使用以下命令。  请将 `<resource-group-name>` 替换为此资源组使用的名称。 请将 `<location>` 替换为此资源组使用的 Azure 区域：
+若要创建新资源组，请使用以下命令。 请将 `<resource-group-name>` 替换为此资源组使用的名称。 请将 `<location>` 替换为此资源组使用的 Azure 区域：
 
 > [!TIP]
 > 应选择可在其中使用 Azure 机器学习的区域。 有关信息，请参阅[各区域的产品可用性](https://azure.microsoft.com/global-infrastructure/services/?products=machine-learning-service)。
@@ -127,7 +127,7 @@ az group create --name <resource-group-name> --location <location>
 }
 ```
 
-有关使用资源组的详细信息，请参阅 [az group](/cli/group?view=azure-cli-latest)。
+有关使用资源组的详细信息，请参阅 [az group](https://docs.microsoft.com//cli/azure/group?view=azure-cli-latest)。
 
 ## <a name="create-a-workspace"></a>创建工作区
 
@@ -247,6 +247,7 @@ az ml dataset register -f dataset.json --skip-validation
 > 复制 `id` 条目的值，以便在下一部分使用。
 
 若要查看数据集的更全面模板，请使用以下命令：
+
 ```azurecli
 az ml dataset register --show-template
 ```
@@ -379,9 +380,9 @@ az ml model deploy -n myservice -m "mymodel:1" --ic inferenceConfig.json --dc ac
 
 此命令使用前面注册的模型版本 1 部署名为 `myservice` 的新服务。
 
-`inferenceConfig.yml` 文件提供了有关如何使用模型进行推理的信息。 例如，它引用入口脚本 (`score.py`) 和软件依赖项。 
+`inferenceConfig.yml` 文件提供了有关如何使用模型进行推理的信息。 例如，它引用入口脚本 (`score.py`) 和软件依赖项。
 
-有关此文件的结构的详细信息，请参阅[推理配置架构](reference-azure-machine-learning-cli.md#inference-configuration-schema)。 有关入口脚本的详细信息，请参阅[使用 Azure 机器学习部署模型](how-to-deploy-and-where.md#prepare-deployment-artifacts)。
+有关此文件的结构的详细信息，请参阅[推理配置架构](reference-azure-machine-learning-cli.md#inference-configuration-schema)。 有关入口脚本的详细信息，请参阅[使用 Azure 机器学习部署模型](how-to-deploy-and-where.md#prepare-to-deploy)。
 
 `aciDeploymentConfig.yml` 描述用于托管服务的部署环境。 部署配置特定于用于部署的计算类型。 本例中使用了 Azure 容器实例。 有关详细信息，请参阅[部署配置架构](reference-azure-machine-learning-cli.md#deployment-configuration-schema)。
 
@@ -398,7 +399,7 @@ ACI service creation operation finished, operation "Succeeded"
   "computeType": "ACI",
   {...ommitted for space...}
   "runtimeType": null,
-  "scoringUri": "http://6c061467-4e44-4f05-9db5-9f9a22ef7a5d.chinaeast.azurecontainer.io/score",
+  "scoringUri": "http://6c061467-4e44-4f05-9db5-9f9a22ef7a5d.eastus2.azurecontainer.io/score",
   "state": "Healthy",
   "tags": "",
   "updatedAt": "2019-09-19T18:22:32.227401+00:00"
@@ -428,7 +429,7 @@ az ml service run -n myservice -d @testdata.json
 > [!TIP]
 > 如果使用 PowerShell，请改用以下命令：
 >
-> ```powershell
+> ```azurecli
 > az ml service run -n myservice -d `@testdata.json
 > ```
 

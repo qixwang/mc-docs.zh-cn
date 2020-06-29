@@ -4,16 +4,16 @@ description: 了解可与 Azure Stack Hub 配合使用的标识提供者。
 author: WenJason
 ms.topic: conceptual
 origin.date: 04/10/2020
-ms.date: 05/18/2020
+ms.date: 06/22/2020
 ms.author: v-jay
 ms.reviewer: fiseraci
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: c8ec59df590149bc22829707d3da4a9c3066c131
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.openlocfilehash: 10be1ef92535edaaedf676146570a251c5530813
+ms.sourcegitcommit: d86e169edf5affd28a1c1a4476d72b01a7fb421d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83422620"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85096468"
 ---
 # <a name="overview-of-identity-providers-for-azure-stack-hub"></a>Azure Stack Hub 的标识提供者概述
 
@@ -37,9 +37,9 @@ Azure Stack Hub 要求使用 Active Directory 所支持的 Azure Active Director
 
 ### <a name="directory-tenants-and-organizations"></a>目录租户和组织
 
-目录是保留用户、应用程序、组和服务主体相关信息的容器。    
+目录是保留用户、应用程序、组和服务主体相关信息的容器。** ** ** **
 
-目录租户是一个组织，例如 Azure 或你自己的公司。 
+目录租户是一个组织，例如 Azure 或你自己的公司。**
 
 - Azure AD 支持多个租户并可支持多个组织（各自位于自身的目录中）。 如果使用 Azure AD 并且有多个租户，则可以授权应用和用户从一个租户访问同一目录中的其他租户。
 - AD FS 仅支持单个租户，因此仅支持单个组织。
@@ -52,16 +52,18 @@ Azure Stack Hub 要求使用 Active Directory 所支持的 Azure Active Director
 
 在 Azure Stack Hub 中，用户帐户：
 
-- 以 *username\@domain* 格式创建。 尽管 AD FS 可将用户帐户映射到 Active Directory 实例，但 AD FS 不支持使用 *\\\<域>\\\<别名>* 格式。
+- 以 *username\@domain* 格式创建。 尽管 AD FS 可将用户帐户映射到 Active Directory 实例，但 AD FS 不支持使用 \\\<domain>\\\<alias> 格式**。
 - 可以设置为使用多重身份验证。
 - 限制为它们首先注册到的目录，即其组织的目录。
 - 可从本地目录导入。 如需详细信息，请参阅[将本地目录与 Azure Active Directory 集成](/active-directory/connect/active-directory-aadconnect)。 
 
-登录到组织的用户门户时，请使用 *https:\//portal.local.azurestack.external* URL。 从用于注册 Azure Stack Hub 的域以外的域登录 Azure Stack Hub 门户时，用于注册 Azure Stack 的域名必须追加到门户 URL 后面。 例如，如果 Azure Stack Hub 已注册到 fabrikam.partner.onmschina.cn 并且登录的用户帐户为 admin@contoso.com，则用于登录用户门户的 URL 将为 https:\//portal.local.azurestack.external/fabrikam.partner.onmschina.cn。
+登录到组织的用户门户时，请使用 *https:\//portal.local.azurestack.external* URL。 从用于注册 Azure Stack Hub 的域以外的域登录 Azure Stack Hub 门户时，用于注册 Azure Stack Hub 的域名必须追加到门户 URL 后面。 例如，如果 Azure Stack Hub 已注册到 fabrikam.partner.onmschina.cn 并且登录的用户帐户为 admin@contoso.com，则用于登录用户门户的 URL 将为 https:\//portal.local.azurestack.external/fabrikam.partner.onmschina.cn。
 
 ### <a name="guest-users"></a>来宾用户
 
 来宾用户是其他目录租户中的用户帐户，这些用户已获得目录中资源的访问权限。 若要支持来宾用户，请使用 Azure AD 并启用多租户支持。 若已启用支持，可以邀请来宾用户访问目录租户中的资源，方便他们与外部组织协作。
+
+若要邀请来宾用户，云操作员和用户可以使用 [Azure AD B2B 协作](/active-directory/b2b/what-is-b2b)。 受邀用户可以从你的目录访问文档、资源和应用，并且你仍可控制自己的资源和数据。
 
 可以作为来宾用户登录到其他组织的目录租户。 为此，请将该组织的目录名称追加到门户 URL。 例如，如果你属于 Contoso 组织，但想要登录 Fabrikam 目录，可以使用 https:\//portal.local.azurestack.external/fabrikam.partner.onmschina.cn。
 
@@ -97,7 +99,7 @@ Azure Stack Hub 要求使用 Active Directory 所支持的 Azure Active Director
 
 ### <a name="service-principals"></a>服务主体
 
-服务主体是应用或服务的一组凭据，可授予 Azure Stack Hub 中资源的访问权限。  使用服务主体可将应用权限与应用用户权限区分开来。
+服务主体是应用或服务的一组凭据，可授予 Azure Stack Hub 中资源的访问权限。** 使用服务主体可将应用权限与应用用户权限区分开来。
 
 服务主体是在使用应用的每个租户中创建的。 服务主体建立的标识用于登录和访问受该租户保护的资源（例如用户）。
 
@@ -135,8 +137,8 @@ Azure Stack Hub 的标识包括用户帐户、组和服务主体。
 
 |层    |各层之间的身份验证  |
 |---------|---------|
-|工具与客户端，例如管理员门户     | 为了访问或修改 Azure Stack Hub 中的资源，工具和客户端将使用 [JSON Web 令牌](/active-directory/develop/active-directory-token-and-claims)来调用 Azure 资源管理器。 <br>Azure 资源管理器验证 JSON Web 令牌并扫视所颁发令牌中的声明，以评估用户或服务主体在 Azure Stack Hub 中的授权级别。  |
-|Azure 资源管理器及其核心服务     |Azure 资源管理器与资源提供程序通信，以传输用户的通信。 <br> 传输通过 [Azure 资源管理器模板](/azure-stack/user/azure-stack-arm-templates)使用直接命令式调用或声明式调用。  |
+|工具与客户端，例如管理员门户     | 为了访问或修改 Azure Stack Hub 中的资源，工具和客户端将使用 [JSON Web 令牌](/active-directory/develop/active-directory-token-and-claims)来调用 Azure 资源管理器。 <br>Azure 资源管理器验证 JSON Web 令牌并扫视所颁发令牌中的声明，以评估用户或服务主体在 Azure Stack Hub 中的授权级别。** |
+|Azure 资源管理器及其核心服务     |Azure 资源管理器与资源提供程序通信，以传输用户的通信。 <br> 传输通过 [Azure 资源管理器模板](/azure-stack/user/azure-stack-arm-templates)使用直接命令式调用或声明式调用。** **|
 |资源提供程序     |传递给资源提供程序的调用通过基于证书的身份验证进行保护。 <br>随后，Azure 资源管理器和资源提供程序持续通过 API 通信。 对于从 Azure 资源管理器 收到的每个调用，资源提供程序使用该证书来验证调用。|
 |基础结构和业务逻辑     |资源提供程序使用所选的身份验证模式与业务逻辑和基础结构通信。 Azure Stack Hub 随附的默认资源提供程序使用 Windows 身份验证来保护此通信。|
 
@@ -165,12 +167,12 @@ Azure Stack Hub 的标识包括用户帐户、组和服务主体。
 - 验证 JSON Web 令牌是否已使用通过 OpenID 配置的证书进行签名，并且为 Azure 资源管理器所知。
 - 检查 *issued at* (iat) 和 *expiration* (exp) 声明，确认令牌处于活动状态并且可以接受。
 
-完成所有验证后，Azure 资源管理器使用对象 ID (oid) 和 *groups* 声明来生成主体可以访问的资源列表。 
+完成所有验证后，Azure 资源管理器使用对象 ID (oid) 和 *groups* 声明来生成主体可以访问的资源列表。**
 
 ![令牌交换协议示意图](media/azure-stack-identity-overview/token-exchange.svg)
 
 > [!NOTE]
-> 部署后，不需要 Azure Active Directory 全局管理员权限。 但是，某些操作可能需要全局管理员凭据（例如，资源提供程序安装程序脚本或需要授予权限的新功能）。 可以临时复原帐户的全局管理员权限，也可以使用单独的全局管理员帐户（该帐户应是默认提供程序订阅的所有者）。 
+> 部署后，不需要 Azure Active Directory 全局管理员权限。 但是，某些操作可能需要全局管理员凭据（例如，资源提供程序安装程序脚本或需要授予权限的新功能）。 可以临时复原帐户的全局管理员权限，也可以使用单独的全局管理员帐户（该帐户应是默认提供程序订阅的所有者）。**
 
 ### <a name="use-role-based-access-control"></a>使用基于角色的访问控制
 

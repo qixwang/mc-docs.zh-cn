@@ -9,12 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 8ed259f529ac0ae998b932b9ee571a45273ff99f
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 7033da9b73165a0f5f851d8a7004ca2720e2f571
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79293046"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097548"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Windows 数据科学虚拟机的十大功能
 
@@ -30,7 +30,7 @@ DSVM 与 Azure 服务紧密协同工作。 它可以读取并处理已存储在 
 - 使用 Azure 门户或 PowerShell 管理 Azure 资源。
 - 通过将 Azure 文件存储共享创建为可在 DSVM 上装载的驱动器，即可扩展存储空间并跨整个团队共享大型数据集/代码。
 - 使用 GitHub 与团队共享代码。 使用下列预安装的 Git 客户端访问存储库：Git Bash 和 Git GUI。
-- 访问 Azure 数据和分析服务，如 Azure Blob 存储、Azure Data Lake、Azure HDInsight (Hadoop)、Azure Cosmos DB、Azure SQL 数据仓库和 Azure SQL 数据库。
+- 访问 Azure 数据和分析服务，如 Azure Blob 存储、Azure Data Lake、Azure Cosmos DB、Azure SQL 数据仓库和 Azure SQL 数据库。
 - 使用 DSVM 上预安装的 Power BI Desktop 实例生成报表和仪表板，然后将它们部署到云中。
 - 动态缩放 DSVM 以满足项目需求。
 - 在虚拟机上安装其他工具。   
@@ -55,25 +55,25 @@ DSVM 与 Azure 服务紧密协同工作。 它可以读取并处理已存储在 
 
 对于 Python，可以使用已预安装针对 Visual Studio 的 Python 工具 (PTVS) 扩展的 Visual Studio Community Edition 之类的 IDE。 默认情况下，PTVS 上仅配置了根 Conda 环境 Python 3.6。 若要启用 Anaconda Python 2.7，请按以下步骤操作：
 
-1. 在 Visual Studio Community Edition 中，转到“工具”   > “Python 工具”   > “Python 环境”  ，并选择“+ 自定义”  ，为每个版本创建自定义环境。
-1. 提供描述并将环境前缀路径设置为 c:\anaconda\envs\python2（适用于 Anaconda Python 2.7）。 
-1. 选择“自动检测”   > “应用”  以保存环境。
+1. 在 Visual Studio Community Edition 中，转到“工具” > “Python 工具” > “Python 环境”，并选择“+ 自定义”，为每个版本创建自定义环境。
+1. 提供描述并将环境前缀路径设置为 c:\anaconda\envs\python2（适用于 Anaconda Python 2.7）。
+1. 选择“自动检测” > “应用”以保存环境。
 
 有关如何创建 Python 环境的详细信息，请参阅 [PTVS 文档](https://aka.ms/ptvsdocs)。
 
-现在即可开始创建新的 Python 项目。 转到“文件”   > “新建”   > “项目”   > “Python”  ，并选择要生成的 Python 应用程序的类型。 可以将当前项目的 Python 环境设置为所需版本（Python 2.7 或 3.6），方法是右键单击“Python 环境”  ，然后选择“添加/删除 Python 环境”  。 要详细了解如何使用 PTVS，请参阅[产品文档](https://aka.ms/ptvsdocs)。
+现在即可开始创建新的 Python 项目。 转到“文件” > “新建” > “项目” > “Python”，并选择要生成的 Python 应用程序的类型。 可以将当前项目的 Python 环境设置为所需版本（Python 2.7 或 3.6），方法是右键单击“Python 环境”，然后选择“添加/删除 Python 环境”。 要详细了解如何使用 PTVS，请参阅[产品文档](https://aka.ms/ptvsdocs)。
 
 ## <a name="use-jupyter-notebooks"></a>使用 Jupyter Notebook
 Jupyter Notebook 提供基于浏览器的 IDE，用于数据探索和建模。 可以在 Jupyter 笔记本中使用 Python 2、Python 3 或 R（开源和 Microsoft R Server）。
 
-若要启动 Jupyter Notebook，请在“开始”菜单或桌面上选择“Jupyter Notebook”图标。   在 DSVM 命令提示符处，还可以从包含现有笔记本或想在其中创建新笔记本的目录中运行 ```jupyter notebook``` 命令。  
+若要启动 Jupyter Notebook，请在“开始”菜单或桌面上选择“Jupyter Notebook”图标。  在 DSVM 命令提示符处，还可以从包含现有笔记本或想在其中创建新笔记本的目录中运行 ```jupyter notebook``` 命令。  
 
-启动 Jupyter 后，应当会看到一个目录，其中包含预打包到 DSVM 中的多个示例笔记本。 现在可以：
+启动 Jupyter 后，导航到 `/notebooks` 目录，以获取预打包到 DSVM 中的多个示例笔记本。 现在可以：
 
 * 单击笔记本以查看代码。
 * 选择 Shift+Enter 以运行每个单元格。
-* 选择“单元” > “运行”，运行整个笔记本。  
-* 依次选择 Jupyter 图标（左上角），右侧的“新建”按钮和笔记本语言（也称为内核），创建新的笔记本。    
+* 选择“单元” > “运行”，运行整个笔记本。 
+* 依次选择 Jupyter 图标（左上角），右侧的“新建”按钮和笔记本语言（也称为内核），创建新的笔记本。   
 
 > [!NOTE]
 > Jupyter 当前支持 Python 2.7、Python 3.6、R、Julia 和 PySpark 内核。 R 内核支持以开放源代码 R 和 Microsoft R 进行编程。   
@@ -127,11 +127,6 @@ pass
 
 IrisPredictor(3,2,3,4)
 ```
-
-> [!NOTE]
-> 目前，仅 Python 2.7 支持 Azure 机器学习库。   
-> 
-> 
 
 ### <a name="build-and-operationalize-r-models"></a>生成 R 模型并使其可操作
 可以将在 Data Science Virtual Machine 或其他环境中生成的 R 模型部署到 Azure 机器学习，方法与部署 Python 模型类似。 下面是相关步骤：
@@ -202,7 +197,7 @@ DSVM 不仅允许在虚拟机上本地生成分析解决方案。 它还允许�
 可选用两种方法管理 Azure 订阅和云资源：
 + 使用 Web 浏览器并转到 [Azure 门户](https://portal.azure.cn)。
 
-+ 使用 PowerShell 脚本。 从桌面快捷方式或“开始”菜单运行 Azure PowerShell。  请参阅 [Microsoft Azure PowerShell 文档](../../powershell-azure-resource-manager.md)以了解全部详细信息。 
++ 使用 PowerShell 脚本。 从桌面快捷方式或“开始”菜单运行 Azure PowerShell。 请参阅 [Microsoft Azure PowerShell 文档](../../powershell-azure-resource-manager.md)以了解全部详细信息。 
 
 ## <a name="extend-storage-by-using-shared-file-systems"></a>使用共享文件系统扩展存储
 数据科学家可以在团队内共享大型数据集、代码或其他资源。 DSVM 约有 45 GB 的可用空间。 要扩展存储，可以使用 Azure 文件存储，将它装载到一个或多个 DSVM 实例或通过 REST API 访问它。 还可以使用 [Azure 门户](../../virtual-machines/windows/attach-managed-disk-portal.md)或 [Azure PowerShell](../../virtual-machines/windows/attach-disk-ps.md) 添加其他专用数据磁盘。 
@@ -249,7 +244,7 @@ GitHub 是一个代码存储库，可在其中找到代码示例和资源，用�
 
 有关使用 Git 的详细信息，请访问 [GitHub 帮助页](https://help.github.com/)。 可以将 GitHub 用作团队协作、利用社区开发的代码以及向社区回馈代码的一个途径。
 
-DSVM 包含用于访问 GitHub 存储库的客户端工具，可通过命令行和 GUI 使用。 可作用于 Git 和 GitHub 的命令行工具称为 Git Bash。 DSVM 上安装了 Visual Studio 且有 Git 扩展。 可以在“开始”菜单和桌面上找到这些工具的图标。 
+DSVM 包含用于访问 GitHub 存储库的客户端工具，可通过命令行和 GUI 使用。 可作用于 Git 和 GitHub 的命令行工具称为 Git Bash。 DSVM 上安装了 Visual Studio 且有 Git 扩展。 可以在“开始”菜单和桌面上找到这些工具的图标。
 
 若要从 GitHub 存储库下载代码，请使用 ```git clone``` 命令。 例如，要将 Microsoft 发布的数据科学存储库下载到当前目录，可在 Git Bash 中运行以下命令：
 
@@ -269,7 +264,7 @@ Azure Blob 存储是适合大小数据的经济可靠云存储服务。 本部�
 
 * 从 [Azure 门户](https://portal.azure.cn)创建 Azure Blob 存储帐户。
 
-   ![Azure 门户中存储帐户创建流程的屏幕截图](./media/vm-do-ten-things/Create_Azure_Blob.PNG)
+   ![Azure 门户中存储帐户创建流程的屏幕截图](./media/vm-do-ten-things/create-azure-blob.png)
 
 * 确认已预安装命令行 AzCopy 工具：```C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy.exe```。 包含 azcopy.exe 的目录已在 PATH 环境变量中，因此运行此工具时不用键入完整命令路径。 有关 AzCopy 工具的详细信息，请参阅 [AzCopy 文档](../../storage/common/storage-use-azcopy.md)。
 * 启动 Azure 存储资源管理器工具。 可从[存储资源管理器网页](https://storageexplorer.com/)下载它。 
@@ -282,7 +277,7 @@ Azure Blob 存储是适合大小数据的经济可靠云存储服务。 本部�
 
     AzCopy /Source:C:\myfolder /Dest:https://<mystorageaccount>.blob.core.windows.net/<mycontainer> /DestKey:<storage account key> /Pattern:abc.txt
 
-将“C:\myfolder”替换为存储着文件的路径，将“mystorageaccount”替换为 Blob 存储帐户名称，将“mycontainer”替换为容器名称，将“storage account key”替换为 Blob 存储访问密钥。     可以在 [Azure 门户](https://portal.azure.cn)中找到存储帐户凭据。
+将“C:\myfolder”替换为存储着文件的路径，将“mystorageaccount”替换为 Blob 存储帐户名称，将“mycontainer”替换为容器名称，将“storage account key”替换为 Blob 存储访问密钥。    可以在 [Azure 门户](https://portal.azure.cn)中找到存储帐户凭据。
 
 在 PowerShell 中或从命令提示符下运行 AzCopy 命令。 以下是 AzCopy 命令的一些使用示例：
 
@@ -303,8 +298,8 @@ Azure Blob 存储是适合大小数据的经济可靠云存储服务。 本部�
 
 还可使用 Azure 存储资源管理器上传来自 VM 中本地文件的数据：
 
-* 要将数据上传到容器，请选择目标容器，然后选择“上传”按钮。  ![Azure 存储资源管理器中上传按钮的屏幕截图](./media/vm-do-ten-things/storage-accounts.png)
-* 选择“文件”框右侧的省略号 (…)，选择要从文件系统上传的一个或多个文件，然后选择“上传”开始上传文件。    ![“上传文件”对话框的屏幕截图](./media/vm-do-ten-things/upload-files-to-blob.png)
+* 要将数据上传到容器，请选择目标容器，然后选择“上传”按钮。![Azure 存储资源管理器中上传按钮的屏幕截图](./media/vm-do-ten-things/storage-accounts.png)
+* 选择“文件”框右侧的省略号 (…)，选择要从文件系统上传的一个或多个文件，然后选择“上传”开始上传文件。  ![“上传文件”对话框的屏幕截图](./media/vm-do-ten-things/upload-files-to-blob.png)
 
 #### <a name="read-data-from-an-azure-blob-machine-learning-reader-module"></a>读取 Azure blob 中的数据：机器学习读取器模块
 
@@ -371,7 +366,7 @@ Azure Data Lake Storage 是一个超大规模存储库，适用于大数据分�
 
 * 在 [Azure 门户](https://portal.azure.cn)中创建 Azure Data Lake Analytics 实例。
 
-   ![在 Azure 门户中创建 Data Lake Analytics 实例的屏幕截图](./media/vm-do-ten-things/Azure_Data_Lake_Create_v2.png)
+   ![在 Azure 门户中创建 Data Lake Analytics 实例的屏幕截图](./media/vm-do-ten-things/azure-data-lake-create-v3.png)
 
 * [适用于 Visual Studio 的 Azure Data Lake 和流分析工具插件](https://www.microsoft.com/download/details.aspx?id=49504)已安装在虚拟机上的 Visual Studio Community Edition 中。 启动 Visual Studio 并登录到你的 Azure 订阅后，应会在 Visual Studio 的左侧面板中看到你的 Azure 数据分析帐户和存储。
 
@@ -385,11 +380,11 @@ Azure Data Lake Storage 是一个超大规模存储库，适用于大数据分�
 
 #### <a name="read-data-from-an-azure-blob-to-data-lake-u-sql"></a>将数据从 Azure blob 读取到 Data Lake：U-SQL
 
-如果数据驻留在 Azure Blob 存储中，可以使用 U-SQL 查询直接读取 Azure blob 中的数据。 编写 U-SQL 查询之前，请确保你的 Blob 存储帐户已链接到 Azure Data Lake 实例。 转到 Azure 门户，找到 Azure Data Lake Analytics 仪表板，单击“添加数据源”，选择 Azure 存储的存储类型，并插入你的 Azure 存储帐户名称和密钥。   然后即可引用存储帐户中存储的数据。
+如果数据驻留在 Azure Blob 存储中，可以使用 U-SQL 查询直接读取 Azure blob 中的数据。 编写 U-SQL 查询之前，请确保你的 Blob 存储帐户已链接到 Azure Data Lake 实例。 转到 Azure 门户，找到 Azure Data Lake Analytics 仪表板，单击“添加数据源”，选择 Azure 存储的存储类型，并插入你的 Azure 存储帐户名称和密钥。  然后即可引用存储帐户中存储的数据。
 
 ![“添加数据源”对话框的屏幕截图](./media/vm-do-ten-things/Link_Blob_to_ADLA_v2.PNG)
 
-在 Visual Studio 中，可以读取 Blob 存储中的数据、操纵数据、进行特征工程，并将生成的数据发送到 Azure Data Lake 或 Azure Blob 存储。 引用 Blob 存储中的数据时，请使用 wasb://。  引用 Azure Data Lake 中的数据时，请使用 swbhdfs://。 
+在 Visual Studio 中，可以读取 Blob 存储中的数据、操纵数据、进行特征工程，并将生成的数据发送到 Azure Data Lake 或 Azure Blob 存储。 引用 Blob 存储中的数据时，请使用 wasb://。 引用 Azure Data Lake 中的数据时，请使用 swbhdfs://。
 
 在 Visual Studio 中，可以使用以下 U-SQL 查询：
 
@@ -449,371 +444,6 @@ USING Outputters.Csv();
 
 ![文件摘要信息的屏幕截图](./media/vm-do-ten-things/USQL_tripdata_summary.png)
 
-### <a name="hdinsight-hadoop-clusters"></a>HDInsight Hadoop 群集
-Azure HDInsight 是云中托管的 Apache Hadoop、Spark、HBase 和 Storm 服务。 可以从 Data Science Virtual Machine 轻松使用 Azure HDInsight 群集。
-
-#### <a name="prerequisites"></a>先决条件
-
-* 从 [Azure 门户](https://portal.azure.cn)创建 Azure Blob 存储帐户。 此存储帐户用于存储 HDInsight 群集的数据。
-
-   ![从 Azure 门户创建存储帐户的屏幕截图](./media/vm-do-ten-things/Create_Azure_Blob.PNG)
-
-* 从 [Azure 门户](../team-data-science-process/customize-hadoop-cluster.md)自定义 Azure HDInsight Hadoop 群集。
-  
-   在创建存储帐户后将其链接到 HDInsight 群集。 此存储帐户用于访问可在群集中处理的数据。
-
-   ![将已创建的存储帐户链接到 HDInsight 群集的选项](./media/vm-do-ten-things/Create_HDI_v4.PNG)
-
-* 创建群集后，启用对其头节点的远程桌面访问权限。 请记住你在此处指定的远程访问凭据，因为后续过程中将会用到它们。
-
-   ![“远程桌面”按钮，用于启用对 HDInsight 群集的远程访问权限](./media/vm-do-ten-things/Create_HDI_dashboard_v3.PNG)
-
-* 创建 Azure 机器学习工作区。 机器学习试验存储在此机器学习工作区中。 选择门户中突出显示的选项，如以下屏幕截图中所示：
-
-   ![创建 Azure 机器学习工作区](./media/vm-do-ten-things/Create_ML_Space.PNG)
-
-* 输入工作区的参数。
-
-   ![输入机器学习工作区参数](./media/vm-do-ten-things/Create_ML_Space_step2_v2.PNG)
-
-* 使用 IPython Notebook 上传数据。 导入所需包，插入凭据，在存储帐户中创建数据库，然后将数据上传到 HDI 群集。
-
-```python
-# Import required packages
-import pyodbc
-import time as time
-import json
-import os
-import urllib
-import urllib2
-import warnings
-import re
-import pandas as pd
-import matplotlib.pyplot as plt
-from azure.storage.blob import BlobService
-warnings.filterwarnings("ignore", category=UserWarning, module='urllib2')
-
-
-# Create the connection to Hive by using ODBC
-SERVER_NAME = 'xxx.azurehdinsight.net'
-DATABASE_NAME = 'nyctaxidb'
-USERID = 'xxx'
-PASSWORD = 'xxxx'
-DB_DRIVER = 'Microsoft Hive ODBC Driver'
-driver = 'DRIVER={' + DB_DRIVER + '}'
-server = 'Host=' + SERVER_NAME + ';Port=443'
-database = 'Schema=' + DATABASE_NAME
-hiveserv = 'HiveServerType=2'
-auth = 'AuthMech=6'
-uid = 'UID=' + USERID
-pwd = 'PWD=' + PASSWORD
-CONNECTION_STRING = ';'.join(
-    [driver, server, database, hiveserv, auth, uid, pwd])
-connection = pyodbc.connect(CONNECTION_STRING, autocommit=True)
-cursor = connection.cursor()
-
-
-# Create the Hive database and tables
-queryString = "create database if not exists nyctaxidb;"
-cursor.execute(queryString)
-
-queryString = """
-                create external table if not exists nyctaxidb.trip
-                (
-                    medallion string,
-                    hack_license string,
-                    vendor_id string,
-                    rate_code string,
-                    store_and_fwd_flag string,
-                    pickup_datetime string,
-                    dropoff_datetime string,
-                    passenger_count int,
-                    trip_time_in_secs double,
-                    trip_distance double,
-                    pickup_longitude double,
-                    pickup_latitude double,
-                    dropoff_longitude double,
-                    dropoff_latitude double)  
-                PARTITIONED BY (month int)
-                ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' lines terminated by '\\n'
-                STORED AS TEXTFILE LOCATION 'wasb:///nyctaxidbdata/trip' TBLPROPERTIES('skip.header.line.count'='1');
-            """
-cursor.execute(queryString)
-
-queryString = """
-                create external table if not exists nyctaxidb.fare
-                (
-                    medallion string,
-                    hack_license string,
-                    vendor_id string,
-                    pickup_datetime string,
-                    payment_type string,
-                    fare_amount double,
-                    surcharge double,
-                    mta_tax double,
-                    tip_amount double,
-                    tolls_amount double,
-                    total_amount double)
-                PARTITIONED BY (month int)
-                ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' lines terminated by '\\n'
-                STORED AS TEXTFILE LOCATION 'wasb:///nyctaxidbdata/fare' TBLPROPERTIES('skip.header.line.count'='1');
-            """
-cursor.execute(queryString)
-
-
-# Upload data from Blob storage to an HDI cluster
-for i in range(1, 13):
-    queryString = "LOAD DATA INPATH 'wasb:///nyctaxitripraw2/trip_data_%d.csv' INTO TABLE nyctaxidb2.trip PARTITION (month=%d);" % (
-        i, i)
-    cursor.execute(queryString)
-    queryString = "LOAD DATA INPATH 'wasb:///nyctaxifareraw2/trip_fare_%d.csv' INTO TABLE nyctaxidb2.fare PARTITION (month=%d);" % (
-        i, i)
-    cursor.execute(queryString)
-```
-
-或者，可以遵循此[演练](../team-data-science-process/hive-walkthrough.md)将纽约出租车数据上传到 HDI 群集。 主要步骤如下所示：
-  
-* 使用 AzCopy 将已压缩的 CSV 从公共 blob 下载到本地文件夹。
-* 使用 AzCopy 将已解压的 CSV 从本地文件夹上传到 HDI 群集。
-* 登录到 Hadoop 群集的头节点，并为探索数据分析做好准备。
-
-将数据加载到 HDI 群集后，可在 Azure 存储资源管理器中查看数据。 而 nyctaxidb 数据库是在 HDI 群集中创建的。
-
-#### <a name="data-exploration-hive-queries-in-python"></a>数据探索：以 Python 进行 Hive 查询
-
-由于数据在 Hadoop 群集中，因此可以使用 pyodbc 包连接到 Hadoop 群集并使用 Hive 查询数据库，以执行探索和特征工程。 可以查看你在先决步骤中创建的现有表。
-
-```python
-queryString = """
-    show tables in nyctaxidb2;
-    """
-pd.read_sql(queryString, connection)
-```
-
-![查看现有表](./media/vm-do-ten-things/Python_View_Existing_Tables_Hive_v3.PNG)
-
-请查看每月的记录数以及行程表中已付小费或未付小费的频率：
-
-```python
-queryString = """
-    select month, count(*) from nyctaxidb.trip group by month;
-    """
-results = pd.read_sql(queryString,connection)
-
-%matplotlib inline
-
-results.columns = ['month', 'trip_count']
-df = results.copy()
-df.index = df['month']
-df['trip_count'].plot(kind='bar')
-```
-
-![每个月的记录数的走势图](./media/vm-do-ten-things/Exploration_Number_Records_by_Month_v3.PNG)
-
-```python
-queryString = """
-    SELECT tipped, COUNT(*) AS tip_freq
-    FROM
-    (
-        SELECT if(tip_amount > 0, 1, 0) as tipped, tip_amount
-        FROM nyctaxidb.fare
-    )tc
-    GROUP BY tipped;
-    """
-results = pd.read_sql(queryString, connection)
-
-results.columns = ['tipped', 'trip_count']
-df = results.copy()
-df.index = df['tipped']
-df['trip_count'].plot(kind='bar')
-```
-
-![行程频率图](./media/vm-do-ten-things/Exploration_Frequency_tip_or_not_v3.PNG)
-
-还可以计算上车位置和下车位置之间的距离，然后将该距离与行程距离比较。
-
-```python
-queryString = """
-                select pickup_longitude, pickup_latitude, dropoff_longitude, dropoff_latitude, trip_distance, trip_time_in_secs,
-                    3959*2*2*atan((1-sqrt(1-pow(sin((dropoff_latitude-pickup_latitude)
-                    *radians(180)/180/2),2)-cos(pickup_latitude*radians(180)/180)
-                    *cos(dropoff_latitude*radians(180)/180)*pow(sin((dropoff_longitude-pickup_longitude)*radians(180)/180/2),2)))
-                    /sqrt(pow(sin((dropoff_latitude-pickup_latitude)*radians(180)/180/2),2)
-                    +cos(pickup_latitude*radians(180)/180)*cos(dropoff_latitude*radians(180)/180)*
-                    pow(sin((dropoff_longitude-pickup_longitude)*radians(180)/180/2),2))) as direct_distance
-                    from nyctaxidb.trip
-                    where month=1
-                        and pickup_longitude between -90 and -30
-                        and pickup_latitude between 30 and 90
-                        and dropoff_longitude between -90 and -30
-                        and dropoff_latitude between 30 and 90;
-            """
-results = pd.read_sql(queryString, connection)
-results.head(5)
-```
-
-![上车和下车表的前几行](./media/vm-do-ten-things/Exploration_compute_pickup_dropoff_distance_v2.PNG)
-
-```python
-results.columns = ['pickup_longitude', 'pickup_latitude', 'dropoff_longitude',
-                   'dropoff_latitude', 'trip_distance', 'trip_time_in_secs', 'direct_distance']
-df = results.loc[results['trip_distance'] <= 100]  # remove outliers
-df = df.loc[df['direct_distance'] <= 100]  # remove outliers
-plt.scatter(df['direct_distance'], df['trip_distance'])
-```
-
-![上车/下车距离与行程距离的对比图](./media/vm-do-ten-things/Exploration_direct_distance_trip_distance_v2.PNG)
-
-现在，我们要准备一组降采样 (1%) 数据用于建模。 可以在机器学习读取器模块中使用此数据。
-
-```python
-queryString = """
-create  table if not exists nyctaxi_downsampled_dataset_testNEW (
-medallion string,
-hack_license string,
-vendor_id string,
-rate_code string,
-store_and_fwd_flag string,
-pickup_datetime string,
-dropoff_datetime string,
-pickup_hour string,
-pickup_week string,
-weekday string,
-passenger_count int,
-trip_time_in_secs double,
-trip_distance double,
-pickup_longitude double,
-pickup_latitude double,
-dropoff_longitude double,
-dropoff_latitude double,
-direct_distance double,
-payment_type string,
-fare_amount double,
-surcharge double,
-mta_tax double,
-tip_amount double,
-tolls_amount double,
-total_amount double,
-tipped string,
-tip_class string
-)
-row format delimited fields terminated by ','
-lines terminated by '\\n'
-stored as textfile;
-"""
-cursor.execute(queryString)
-```
-
-现在，将联接的内容插入到前面的内部表中。
-
-```python
-queryString = """
-insert overwrite table nyctaxi_downsampled_dataset_testNEW
-select
-t.medallion,
-t.hack_license,
-t.vendor_id,
-t.rate_code,
-t.store_and_fwd_flag,
-t.pickup_datetime,
-t.dropoff_datetime,
-hour(t.pickup_datetime) as pickup_hour,
-weekofyear(t.pickup_datetime) as pickup_week,
-from_unixtime(unix_timestamp(t.pickup_datetime, 'yyyy-MM-dd HH:mm:ss'),'u') as weekday,
-t.passenger_count,
-t.trip_time_in_secs,
-t.trip_distance,
-t.pickup_longitude,
-t.pickup_latitude,
-t.dropoff_longitude,
-t.dropoff_latitude,
-t.direct_distance,
-f.payment_type,
-f.fare_amount,
-f.surcharge,
-f.mta_tax,
-f.tip_amount,
-f.tolls_amount,
-f.total_amount,
-if(tip_amount>0,1,0) as tipped,
-if(tip_amount=0,0,
-if(tip_amount>0 and tip_amount<=5,1,
-if(tip_amount>5 and tip_amount<=10,2,
-if(tip_amount>10 and tip_amount<=20,3,4)))) as tip_class
-from
-(
-select
-medallion,
-hack_license,
-vendor_id,
-rate_code,
-store_and_fwd_flag,
-pickup_datetime,
-dropoff_datetime,
-passenger_count,
-trip_time_in_secs,
-trip_distance,
-pickup_longitude,
-pickup_latitude,
-dropoff_longitude,
-dropoff_latitude,
-3959*2*2*atan((1-sqrt(1-pow(sin((dropoff_latitude-pickup_latitude)
-radians(180)/180/2),2)-cos(pickup_latitude*radians(180)/180)
-*cos(dropoff_latitude*radians(180)/180)*pow(sin((dropoff_longitude-pickup_longitude)*radians(180)/180/2),2)))
-/sqrt(pow(sin((dropoff_latitude-pickup_latitude)*radians(180)/180/2),2)
-+cos(pickup_latitude*radians(180)/180)*cos(dropoff_latitude*radians(180)/180)*pow(sin((dropoff_longitude-pickup_longitude)*radians(180)/180/2),2))) as direct_distance,
-rand() as sample_key
-
-from trip
-where pickup_latitude between 30 and 90
-    and pickup_longitude between -90 and -30
-    and dropoff_latitude between 30 and 90
-    and dropoff_longitude between -90 and -30
-)t
-join
-(
-select
-medallion,
-hack_license,
-vendor_id,
-pickup_datetime,
-payment_type,
-fare_amount,
-surcharge,
-mta_tax,
-tip_amount,
-tolls_amount,
-total_amount
-from fare
-)f
-on t.medallion=f.medallion and t.hack_license=f.hack_license and t.pickup_datetime=f.pickup_datetime
-where t.sample_key<=0.01
-"""
-cursor.execute(queryString)
-```
-
-不久，即可看到数据已载入 Hadoop 群集：
-
-```python
-queryString = """
-    select * from nyctaxi_downsampled_dataset limit 10;
-    """
-cursor.execute(queryString)
-pd.read_sql(queryString, connection)
-```
-
-![表中前几行的数据](./media/vm-do-ten-things/DownSample_Data_For_Modeling_v2.PNG)
-
-#### <a name="read-data-from-hdi-by-using-azure-machine-learning-studio-classic-reader-module"></a>使用 Azure 机器学习工作室（经典）读取器模块从 HDI 读取数据
-
-可以使用 Azure 机器学习工作室（经典）中的读取器模块访问 Hadoop 群集中的数据库。 插入 HDI 群集和 Azure 存储帐户的凭据，以便能够使用 HDI 群集中的数据库构建机器学习模型。
-
-![读取器模块属性](./media/vm-do-ten-things/AML_Reader_Hive.PNG)
-
-然后即可查看已评分的数据集：
-
-![查看已评分数据集](./media/vm-do-ten-things/AML_Model_Results.PNG)
-
 ### <a name="azure-sql-data-warehouse-and-databases"></a>Azure SQL 数据仓库和数据库
 Azure SQL 数据仓库是一项弹性数据仓库即服务，具有企业级 SQL Server 体验。
 
@@ -827,21 +457,21 @@ Azure Cosmos DB 是云中的 NoSQL 数据库。 可用其处理 JSON 等文档�
 1. DSVM 上已安装 Azure Cosmos DB Python SDK。 若要更新它，请在命令提示符下运行 ```pip install pydocumentdb --upgrade```。
 2. 从 [Azure 门户](https://portal.azure.cn)创建 Azure Cosmos DB 帐户和数据库。
 3. 从 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=53595)下载 Azure Cosmos DB 数据迁移工具，并提取到你选择的目录。
-4. 在迁移工具中使用以下命令参数，将存储在 [公共 blob](https://cahandson.blob.core.windows.net/samples/volcano.json) 中的 JSON 数据（Volcano 数据）导入 Azure Cosmos DB。 （使用安装了 Azure Cosmos DB 数据迁移工具的目录中的 dtui.exe。）通过以下参数输入源和目标位置：
+4. 在迁移工具中使用以下命令参数，将存储在 [公共 blob](https://data.humdata.org/dataset/a60ac839-920d-435a-bf7d-25855602699d/resource/7234d067-2d74-449a-9c61-22ae6d98d928/download/volcano.json) 中的 JSON 数据（Volcano 数据）导入 Azure Cosmos DB。 （使用安装了 Azure Cosmos DB 数据迁移工具的目录中的 dtui.exe。）通过以下参数输入源和目标位置：
    
-    `/s:JsonFile /s.Files:https://cahandson.blob.core.windows.net/samples/volcano.json /t:DocumentDBBulk /t.ConnectionString:AccountEndpoint=https://[DocDBAccountName].documents.azure.com:443/;AccountKey=[[KEY];Database=volcano /t.Collection:volcano1`
+    `/s:JsonFile /s.Files:https://data.humdata.org/dataset/a60ac839-920d-435a-bf7d-25855602699d/resource/7234d067-2d74-449a-9c61-22ae6d98d928/download/volcano.json /t:DocumentDBBulk /t.ConnectionString:AccountEndpoint=https://[DocDBAccountName].documents.azure.com:443/;AccountKey=[[KEY];Database=volcano /t.Collection:volcano1`
 
-导入数据后，可转到 Jupyter 并打开名为“DocumentDBSample”的笔记本。  它包含用于访问 Azure Cosmos DB 和执行某些基本查询所需的 Python 代码。 访问 Azure Cosmos DB 的[文档页](/cosmos-db/)，可了解有关该服务的详细信息。
+导入数据后，可转到 Jupyter 并打开名为“DocumentDBSample”的笔记本。 它包含用于访问 Azure Cosmos DB 和执行某些基本查询所需的 Python 代码。 访问 Azure Cosmos DB 的[文档页](/cosmos-db/)，可了解有关该服务的详细信息。
 
 ## <a name="use-power-bi-reports-and-dashboards"></a>使用 Power BI 报告和仪表板 
 可在 Power BI Desktop 中对上一 Azure Cosmos DB 示例中的 Volcano JSON 文件进行可视化，以便获得有关该数据的直观见解。 [Power BI 文章](../../cosmos-db/powerbi-visualize.md)中提供了详细步骤。 下面是概要步骤：
 
-1. 打开 Power BI Desktop 并选择“获取数据”。  将 URL 指定为 https://cahandson.blob.core.windows.net/samples/volcano.json 。
+1. 打开 Power BI Desktop 并选择“获取数据”。 将 URL 指定为 `https://cahandson.blob.core.windows.net/samples/volcano.json`。
 2. 应会看到导入的 JSON 记录显示为一个列表。 将此列表转换为表，使 Power BI 可以处理它。
 4. 选择展开（箭头）按钮来展开列。
-5. 注意到位置是一个记录字段。  展开记录并仅选择坐标。 坐标是列表中的一列。 
-6. 添加新列，将列表的坐标列转换为逗号分隔的 LatLong 列。  使用公式 ```Text.From([coordinates]{1})&","&Text.From([coordinates]{0})``` 串接坐标列表字段中的两个元素。
-7. 将“海拔”列转换为十进制，并选择“关闭”和“应用”按钮。   
+5. 注意到位置是一个记录字段。 展开记录并仅选择坐标。 坐标是列表中的一列。
+6. 添加新列，将列表的坐标列转换为逗号分隔的 LatLong 列。 使用公式 ```Text.From([coordinates]{1})&","&Text.From([coordinates]{0})``` 串接坐标列表字段中的两个元素。
+7. 将“海拔”列转换为十进制，并选择“关闭”和“应用”按钮。  
 
 可以不执行以上步骤，而是粘贴以下代码。 它将 Power BI 中“高级编辑器”中的步骤编写为脚本，以查询语言编写数据转换。
 
@@ -878,7 +508,7 @@ in
 ## <a name="add-more-tools"></a>添加更多工具
 DSVM 中预构建的工具可以满足很多常规数据分析需求。 这能节约时间，因为无须一一安装和配置环境。 还能节约成本，因为仅为使用的资源付费。
 
-可以使用本文中介绍的其他 Azure 数据和分析服务改进你的分析环境。 在某些情况下，可能需要额外的工具，包括我们的合作伙伴提供的某些专利工具。 你拥有虚拟机上的完全管理访问权限，可安装必要的新工具。 还可以安装未预安装的 Python 和 R 中的其他程序包。 对于 Python，可以使用 ```conda``` 或 ```pip```。 对于 R，可以在 R 控制台中使用 ```install.packages()```或使用 IDE 并选择“包”   >   “安装包”。
+可以使用本文中介绍的其他 Azure 数据和分析服务改进你的分析环境。 在某些情况下，可能需要额外的工具，包括我们的合作伙伴提供的某些专利工具。 你拥有虚拟机上的完全管理访问权限，可安装必要的新工具。 还可以安装未预安装的 Python 和 R 中的其他程序包。 对于 Python，可以使用 ```conda``` 或 ```pip```。 对于 R，可以在 R 控制台中使用 ```install.packages()```或使用 IDE 并选择“包” > “安装包”。
 
 ## <a name="deep-learning"></a>深度学习
 

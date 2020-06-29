@@ -4,17 +4,17 @@ description: 了解 Azure Stack Hub 上的 Azure 应用服务的计费。
 author: WenJason
 manager: digimobile
 ms.topic: article
-origin.date: 06/10/2019
-ms.date: 05/18/2020
+origin.date: 05/05/2020
+ms.date: 06/22/2020
 ms.author: v-jay
 ms.reviewer: anwestg
-ms.lastreviewed: 06/10/2019
-ms.openlocfilehash: 773abac05501a256af1ed22214d76e72c667c7e3
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.lastreviewed: 04/13/2020
+ms.openlocfilehash: 6f6d1faf5ff98fe25579ad777ce7edf7d94e802c
+ms.sourcegitcommit: d86e169edf5affd28a1c1a4476d72b01a7fb421d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83422564"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85096535"
 ---
 # <a name="azure-app-service-on-azure-stack-hub-billing-overview-and-faq"></a>Azure Stack Hub 上的 Azure 应用服务计费概述和常见问题解答
 
@@ -71,6 +71,9 @@ Azure Stack Hub 云运营商选择将 Azure Stack Hub 上的 Azure 应用服务�
 ### <a name="as-a-csp-how-can-i-offer-free-and-shared-skus-for-customers-to-try-out-the-service"></a>身为 CSP，我要如何提供免费和共享的 SKU 让客户试用服务？
 
 云运营商提供免费和共享的 SKU 会产生费用，由于这些 SKU 托管在共享的辅助角色中。 若要尽量降低成本，可以选择将共享辅助角色层缩减到最低限度。
+
+> [!IMPORTANT] 
+> 对于新安装，Azure Stack Hub（2020 年第二季度）上 Azure 应用服务中共享辅助角色的安装程序默认设置已更改。  默认情况下，共享辅助角色使用 A4_v2 计算 SKU 进行预配，操作员可以在安装时或安装后对其进行更改。
 
 例如，若要提供免费和共享的应用服务计划 SKU，并提供基于用量的功能，至少需要 1 个可用的 A1 实例。 共享辅助角色是多租户的，因此可以托管多个客户应用，每个应用独立且受应用服务沙盒保护。 以这种方式缩放共享的辅助角色层，可将支出限制为每月 1 个 vCPU 的成本。
 

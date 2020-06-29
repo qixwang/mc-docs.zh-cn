@@ -1,19 +1,19 @@
 ---
-title: 将 Linux 虚拟机从非托管磁盘转换为托管磁盘
-description: 如何在资源管理器部署模型中使用 Azure CLI 将 Linux VM 从非托管磁盘转换为托管磁盘
-author: rockboyfor
+title: 将 Linux VM 从非托管磁盘转换为托管磁盘
+description: 如何使用 Azure CLI 将 Linux VM 从非托管磁盘转换为托管磁盘。
+author: Johnnytechn
 ms.service: virtual-machines-linux
-ms.topic: conceptual
+ms.topic: how-to
 origin.date: 12/15/2017
-ms.date: 02/10/2020
-ms.author: v-yeche
+ms.date: 06/17/2020
+ms.author: v-johya
 ms.subservice: disks
-ms.openlocfilehash: 35191e3cf2c4dfad70610db12f47739abb205758
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 2913f2c42cd09160a5e0c417179805240a1e10b3
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77428739"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097031"
 ---
 # <a name="convert-a-linux-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>将 Linux 虚拟机从非托管磁盘转换为托管磁盘
 
@@ -101,9 +101,9 @@ ms.locfileid: "77428739"
 
 1. 登录到 [Azure 门户](https://portal.azure.cn)。
 2. 从门户的 VM 列表中选择 VM。
-3. 在 VM 的边栏选项卡中，从菜单中选择“磁盘”  。
-4. 在“磁盘”  边栏选项卡的顶部，选择“迁移到托管磁盘”  。
-5. 如果 VM 位于可用性集中，则“迁移到托管磁盘”  边栏选项卡上会出现“首先需要转换可用性集”的警告。 此警告应该有一个链接，单击该链接即可转换可用性集。 转换可用性集后，或者如果 VM 不在可用性集中，请单击“迁移”  以启动将磁盘迁移到托管磁盘的过程。
+3. 在 VM 的边栏选项卡中，从菜单中选择“磁盘”****。
+4. 在“磁盘”**** 边栏选项卡的顶部，选择“迁移到托管磁盘”****。
+5. 如果 VM 位于可用性集中，则“迁移到托管磁盘”**** 边栏选项卡上会出现“首先需要转换可用性集”的警告。 此警告应该有一个链接，单击该链接即可转换可用性集。 转换可用性集后，或者如果 VM 不在可用性集中，请单击“迁移”**** 以启动将磁盘迁移到托管磁盘的过程。
 
 VM 将会停止并在完成迁移后重新启动。
 

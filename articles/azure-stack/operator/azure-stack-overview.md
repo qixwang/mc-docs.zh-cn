@@ -4,16 +4,16 @@ description: Azure Stack Hub 的概述，以及如何使用它在数据中心运
 author: WenJason
 ms.topic: overview
 origin.date: 04/20/2020
-ms.date: 05/18/2020
+ms.date: 06/22/2020
 ms.author: v-jay
 ms.reviewer: unknown
 ms.lastreviewed: 11/08/2019
-ms.openlocfilehash: 40d1eb97019249c562de83bb027efa31ef5567ab
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.openlocfilehash: 2dd6c405f4d0e0a77acd3672e62a743a68acf31a
+ms.sourcegitcommit: d86e169edf5affd28a1c1a4476d72b01a7fb421d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83422485"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85096288"
 ---
 # <a name="azure-stack-hub-overview"></a>Azure Stack Hub 概述
 
@@ -43,7 +43,7 @@ Azure Stack Hub 体系结构允许在远程位置的边缘，或者在间歇性�
 
 Azure Stack Hub 集成系统通过 Azure 与硬件合作伙伴的合作关系提供，它创建的解决方案兼顾云时代的创新与计算管理的简化。 由于 Azure Stack Hub 以集成式硬件和软件系统的形式提供，因此你可以获得所需的灵活性和控制度，以及云中的创新能力。 
 
-Azure Stack Hub 集成系统的大小范围为 4-16 台服务器（称为“缩放单元”）  。 集成系统由硬件合作伙伴和 Azure 共同提供支持。 下图显示了缩放单元示例。 
+Azure Stack Hub 集成系统的大小范围为 4-16 台服务器（称为“缩放单元”）**。 集成系统由硬件合作伙伴和 Azure 共同提供支持。 下图显示了缩放单元示例。 
 
 ![显示 Azure Stack Hub 集成系统的关系图](./media/azure-stack-overview/azure-stack-integrated-system.svg)上获取。 
 
@@ -66,13 +66,13 @@ Azure Stack Hub 使用 Azure Active Directory (Azure AD) 或 Active Directory �
 
 Azure Stack Hub 使用与 Azure 相同的操作模型。 Azure Stack Hub 操作员可以向租户用户提供各种服务和应用，类似于 Microsoft 向租户用户提供 Azure 服务。 
 
-![显示 Azure Stack Hub 作业角色的关系图](./media/azure-stack-overview/azure-stack-job-roles.png)
+![显示 Azure Stack Hub 作业角色的关系图](./media/azure-stack-overview/azure-stack-job-roles.svg)
 
 可以通过管理员门户、用户门户或 [PowerShell](https://docs.microsoft.com/powershell/azure/azure-stack/overview?view=azurestackps-1.7.1) 来管理 Azure Stack Hub。 每个 Azure Stack Hub 门户由 Azure 资源管理器的单独实例提供支持。 **Azure Stack Hub 操作员**可以使用管理员门户来管理 Azure Stack Hub，以及执行如下所述的操作：创建租户套餐，保持集成式系统的运行状况及监视其状态。 用户门户提供自助服务体验让用户使用云资源，例如虚拟机 (VM)、存储帐户和 Web 应用。
 
 > 有关使用管理门户管理 Azure Stack Hub 的详细信息，请参阅 [Azure Stack Hub 管理员门户快速入门](azure-stack-manage-portals.md)。
 
-Azure Stack Hub 操作员可以提供 [VM](azure-stack-tutorial-tenant-vm.md)、[Web 应用](azure-stack-app-service-overview.md)。 他们还可以使用 [Azure Stack Hub 快速入门 Azure 资源管理器模板](https://github.com/Azure/AzureStack-QuickStart-Templates)来部署 SharePoint、Exchange 等。 
+Azure Stack Hub 操作员可以提供 [VM](azure-stack-tutorial-tenant-vm.md)、[Web 应用](azure-stack-app-service-overview.md)、高度可用的 [SQL Server](azure-stack-tutorial-sql.md)。 他们还可以使用 [Azure Stack Hub 快速入门 Azure 资源管理器模板](https://github.com/Azure/AzureStack-QuickStart-Templates)来部署 SharePoint、Exchange 等。 
 
 操作员可以通过[管理员门户](azure-stack-manage-portals.md)或 [PowerShell](https://docs.microsoft.com/powershell/azure/azure-stack/overview?view=azurestackps-1.7.1) 来管理 Azure Stack Hub。 可以使用计划、配额、套餐和订阅来配置 Azure Stack Hub，以向租户[提供服务](service-plan-offer-subscription-overview.md)。 租户用户可以订阅多个套餐。 套餐可以包含一个或多个计划，计划可以包含一个或多个服务。 操作员还可以管理容量以及对警报做出响应。
 

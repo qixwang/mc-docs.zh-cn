@@ -8,18 +8,18 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/12/2020
 ms.custom: seodec18
-ms.openlocfilehash: cd71346344209de0448586469771251b2e8ead7e
-ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
+ms.openlocfilehash: 7d50e72599e0b9eb4588e7f571b8b3e71339b92b
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84723607"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097250"
 ---
 # <a name="troubleshoot-azure-stream-analytics-queries"></a>Azure 流分析查询的故障排除
 
 本文介绍开发流分析查询的常见问题以及如何进行故障排除。
 
-本文介绍开发 Azure 流分析查询的常见问题、如何排查查询问题以及如何解决这些问题。 许多故障排除步骤都需要为流分析作业启用资源日志。 如果没有启用资源日志，请参阅[使用资源日志对 Azure 流分析进行故障排除](stream-analytics-job-diagnostic-logs.md)。
+本文介绍了编写 Azure 流分析查询时遇到的常见问题，以及如何排查和更正查询问题。 许多故障排除步骤都需要为流分析作业启用资源日志。 如果没有启用资源日志，请参阅[使用资源日志对 Azure 流分析进行故障排除](stream-analytics-job-diagnostic-logs.md)。
 
 ## <a name="query-is-not-producing-expected-output"></a>查询未生成预期输出
 
@@ -28,20 +28,20 @@ ms.locfileid: "84723607"
     - 在 Azure 门户的“查询”选项卡上，选择“测试” 。 使用下载的示例数据[测试查询](stream-analytics-test-query.md)。 检查并尝试修正所有错误。   
     - 还可以使用适用于 Visual Studio 或 [Visual Studio Code](visual-studio-code-local-run-live-input.md) 的 Azure 流分析工具[在本地测试查询](stream-analytics-live-data-local-testing.md)。 
 
-2.  在适用于 Visual Studio 的 Azure 流分析工具中[使用作业关系图在本地逐步调试查询](debug-locally-using-job-diagram.md)。 作业关系图显示数据如何从输入源（事件中心、IoT 中心等）流经多个查询步骤，最后流向输出接收器。 每个查询步骤都使用 WITH 语句映射到脚本中定义的临时结果集。 可以在每个中间结果集中查看数据和指标，以找到问题的根源。
+2.  在适用于 Visual Studio 的 Azure 流分析工具中，[使用作业关系图对查询进行本地分步调试](debug-locally-using-job-diagram.md)。 作业关系图显示数据如何从输入源（事件中心、IoT 中心等）流经多个查询步骤，最后流向输出接收器。 每个查询步骤都使用 WITH 语句映射到脚本中定义的临时结果集。 可以在每个中间结果集中查看数据和指标，以找到问题的根源。
 
     ![作业关系图 - 预览结果](./media/debug-locally-using-job-diagram/preview-result.png)
 
-3.  如果使用了 [Timestamp By](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics)，请验证事件的时间戳是否大于[作业开始时间](stream-analytics-out-of-order-and-late-events.md)。
+3.  如果使用了 [Timestamp By](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics)，请验证事件的时间戳是否大于作业开始时间。
 
 4.  避免常犯的错误，例如：
     - 查询中的一个 [WHERE](https://docs.microsoft.com/stream-analytics-query/where-azure-stream-analytics) 子句筛选掉了所有事件，从而阻止生成输出。
     - [CAST](https://docs.microsoft.com/stream-analytics-query/cast-azure-stream-analytics) 函数失败，导致作业失败。 为了避免类型强制转换失败，请改用 [TRY_CAST](https://docs.microsoft.com/stream-analytics-query/try-cast-azure-stream-analytics)。
     - 使用窗口函数时，请等待整个窗口持续时间完成，以查看查询中的输出。
-    - 事件的时间戳要先于作业开始时间，因此事件会被删除。
+    - 事件时间戳先于作业开始时间，事件被删除。
     - [JOIN](https://docs.microsoft.com/stream-analytics-query/join-azure-stream-analytics) 条件不匹配。 如果没有匹配，则输出为零。
 
-5.  确保按预期方式配置事件排序策略。 转到“设置”，选择“[事件排序](stream-analytics-out-of-order-and-late-events.md)” 。 使用“测试”按钮测试查询时，不会应用此策略。 这是在浏览器中测试与在生产中运行作业之间的一个差别。 
+5.  确保按预期方式配置事件排序策略。 转到“设置”并选择“事件排序” 。 使用“测试”按钮测试查询时，不会应用此策略。 这是在浏览器中测试与在生产中运行作业之间的一个差别。 
 
 6. 使用活动和资源日志进行调试：
     - 使用[审核日志](../azure-resource-manager/resource-group-audit.md)，并进行筛选来发现和调试错误。

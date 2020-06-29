@@ -6,17 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.author: v-yiso
+ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-origin.date: 01/09/2020
-ms.date: 03/09/2020
-ms.openlocfilehash: 7f6932d3e29f0f8e58bbd5ad23a25807950b2466
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 05/19/2020
+ms.openlocfilehash: d38e7c1b114418e7dd6d6797d477748289e09ecf
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78154572"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097071"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Azure 机器学习的企业安全性
 
@@ -27,7 +26,7 @@ ms.locfileid: "78154572"
 > [!NOTE]
 > 本文中的信息适用于 Azure 机器学习 Python SDK 1.0.83.1 或更高版本。
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>身份验证
 
 如果 Azure Active Directory (Azure AD) 已配置为使用多重身份验证，则支持多重身份验证。 下面是身份验证过程：
 
@@ -45,8 +44,8 @@ ms.locfileid: "78154572"
 
 |身份验证方法|说明|Azure 容器实例|AKS|
 |---|---|---|---|
-|密钥|密钥是静态的，无需刷新。 可以手动重新生成密钥。|默认已禁用| 默认已启用|
-|标记|令牌会在指定的时限后过期，需要刷新。| 不可用| 默认已禁用 |
+|键|密钥是静态的，无需刷新。 可以手动重新生成密钥。|默认已禁用| 默认情况下启用|
+|令牌|令牌会在指定的时限后过期，需要刷新。| 不可用| 默认情况下禁用 |
 
 有关代码示例，请参阅 [Web 服务身份验证](how-to-setup-authentication.md#web-service-authentication)部分。
 
@@ -54,13 +53,13 @@ ms.locfileid: "78154572"
 
 你可以创建多个工作区，并且每个工作区可由多个用户共享。 共享工作区时，可通过向用户分配以下角色来控制对该工作区的访问：
 
-* “所有者”
+* 所有者
 * 参与者
 * 读取器
 
 下表列出了一些主要 Azure 机器学习操作，以及可执行这些操作的角色：
 
-| Azure 机器学习操作 | “所有者” | 参与者 | 读取器 |
+| Azure 机器学习操作 | 所有者 | 参与者 | 读取器 |
 | ---- |:----:|:----:|:----:|
 | 创建工作区 | ✓ | ✓ | |
 | 共享工作区 | ✓ | |  |
@@ -78,13 +77,16 @@ ms.locfileid: "78154572"
 
 如果内置角色不符合你的需求，可以创建自定义角色。 只有针对工作区上和机器学习计算的操作支持自定义角色。 自定义角色对工作区及其中的计算资源拥有读取、写入或删除权限。 可以使角色在特定工作区级别、特定资源组级别或特定订阅级别可用。 有关详细信息，请参阅[管理 Azure 机器学习工作区中的用户和角色](how-to-assign-roles.md)。
 
-### <a name="securing-compute-targets-and-data"></a>保护计算目标和数据
+> [!WARNING]
+> Azure Active Directory 企业对企业协作支持 Azure 机器学习，但目前 Azure Active Directory 的企业对消费者协作不支持。
+
+### <a name="securing-compute-targets-and-data"></a>保护计算目标和数据的安全
 
 所有者和参与者可以使用已附加到工作区的所有计算目标和数据存储。  
 
 每个工作区还有一个关联的系统分配的托管标识，该标识与工作区同名。 托管标识对工作区中使用的附加资源拥有以下权限。
 
-有关托管标识的详细信息，请参阅 [Azure 资源的托管标识](/active-directory/managed-identities-azure-resources/overview)。
+有关托管标识的详细信息，请参阅 [Azure 资源的托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)。
 
 | 资源 | 权限 |
 | ----- | ----- |
@@ -97,21 +99,32 @@ ms.locfileid: "78154572"
 
 不建议管理员撤销托管标识对上表中所述资源的访问权限。 可以使用重新同步密钥操作来恢复访问权限。
 
-对于每个工作区区域，Azure 机器学习将在订阅中创建一个拥有参与者级别访问权限的附加应用程序（名称以 `aml-` 或 `Microsoft-AzureML-Support-App-` 开头）。 例如，如果你在“美国东部”有一个工作区，在“北欧”的相同订阅中有另一个工作区，则会看到其中的两个应用程序。 Azure 机器学习可以通过这些应用程序来帮助你管理计算资源。
+Azure 机器学习将在订阅中为每个工作区区域创建一个额外的应用程序（名称以 `aml-` 或 `Microsoft-AzureML-Support-App-` 开头），该应用程序具有参与者级别的访问权限。 例如，在同一订阅中，如果在美国东部和欧洲北部各有一个工作区，则会看到两个这样的应用程序。 通过这些应用程序，Azure 机器学习可帮助管理计算资源。
 
-## <a name="network-security"></a>网络安全
+## <a name="network-security"></a>网络安全性
 
-Azure 机器学习依赖于其他 Azure 服务提供计算资源。 计算资源（计算目标）用于训练和部署模型。 可以在虚拟网络中创建这些计算目标。 例如，可以使用 Azure Data Science Virtual Machine 来训练模型，然后将该模型部署到 AKS。  
+Azure 机器学习依赖于其他 Azure 服务提供计算资源。 计算资源（计算目标）用于训练和部署模型。 可以在虚拟网络中创建这些计算目标。 例如，可以使用 Azure Data Science Virtual Machine 来训练模型，然后将模型部署到 AKS。  
 
-有关详细信息，请参阅[如何在虚拟网络中运行试验和推理](how-to-enable-virtual-network.md)。
+有关详细信息，请参阅[如何在独立的虚拟网络中安全地运行试验和推理](how-to-enable-virtual-network.md)。
+
+还可以为工作区启用 Azure 专用链接。 通过专用链接，你可以限制从 Azure 虚拟网络到工作区的通信。 有关详细信息，请参阅[如何配置专用链接](how-to-configure-private-link.md)。
 
 ## <a name="data-encryption"></a>数据加密
 
 ### <a name="encryption-at-rest"></a>静态加密
 
 > [!IMPORTANT]
-> 如果工作区包含敏感数据，我们建议在创建工作区时设置 [hbi_workspace 标志](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-)。 此标志控制 Microsoft 出于诊断目的收集的数据量，并可以在 Microsoft 托管环境中启用额外的加密。
+> 如果工作区包含敏感数据，我们建议在创建工作区时设置 [hbi_workspace 标志](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-)。 
 
+`hbi_workspace` 标志控制 Microsoft 为诊断而收集的数据量，并在 Microsoft 托管环境中启用其他加密。 此外，该标志还可启用以下功能：
+
+* 开始加密 Amlcompute 群集中的本地暂存磁盘，前提是尚未在该订阅中创建任何以前的群集。 否则，需要提供支持票证来启用对计算群集的暂存磁盘的加密 
+* 在不同运行之间清理本地暂存磁盘
+* 利用密钥保管库，将存储帐户、容器注册表和 SSH 帐户的凭据从执行层安全地传递到计算群集
+* 启用 IP 筛选，以确保基础批处理池不会由除 AzureMachineLearningService 以外的任何外部服务调用
+
+
+有关 Azure 中静态加密工作原理的详细信息，请参阅 [Azure 数据静态加密](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)。
 
 #### <a name="azure-blob-storage"></a>Azure Blob 存储
 
@@ -119,11 +132,45 @@ Azure 机器学习在绑定到 Azure 机器学习工作区和订阅的 Azure Blo
 
 有关如何对 Azure Blob 存储中存储的数据使用自己密钥的信息，请参阅[使用 Azure Key Vault 中客户管理的密钥进行 Azure 存储加密](../storage/common/storage-encryption-keys-portal.md)。
 
-训练数据通常也存储在 Azure Blob 存储中，因此可供训练计算目标访问。 此存储不由 Azure 机器学习管理，而是作为远程文件系统装载到计算目标。
+训练数据通常也存储在 Azure Blob 存储中，因此可供训练计算目标访问。 此存储并不受 Azure 机器学习管理，而是作为远程文件系统装载到计算目标上。
+
+如果需要轮换或撤销密钥，则可以随时执行此操作。 轮换密钥时，存储帐户将开始使用新密钥（最新版本）来加密静态数据。 撤消（禁用）密钥时，存储帐户会处理失败的请求。 轮换或撤消操作通常需要一小时才能生效。
 
 有关重新生成访问密钥的信息，请参阅[重新生成存储访问密钥](how-to-change-storage-access-key.md)。
 
-<!--Pay attention to the availability here-->
+#### <a name="azure-cosmos-db"></a>Azure Cosmos DB
+
+Azure 机器学习在 Azure Cosmos DB 实例中存储指标和元数据。 此实例与 Azure 机器学习管理的 Microsoft 订阅相关联。 Azure Cosmos DB 中存储的所有数据都使用 Microsoft 托管密钥进行静态加密。
+
+若要使用自己的（客户管理的）密钥来加密 Azure Cosmos DB 实例，可以创建一个专用的 Cosmos DB 实例用于工作区。 如果要将数据（例如运行历史记录信息）存储在 Microsoft 订阅中托管的多租户 Cosmos DB 实例之外，则建议采用此方法。 
+
+若要使用客户管理的密钥来预配订阅中的 Cosmos DB 实例，请执行以下操作：
+
+* 在订阅中注册 Microsoft.MachineLearning 和 Microsoft.DocumentDB 资源提供程序（如果尚未注册）。
+
+* 授予机器学习应用（在标识和访问管理中）对订阅的参与者权限。
+
+    ![在门户中的标识和访问管理中向“Azure 机器学习应用”授权](./media/concept-enterprise-security/authorize-azure-machine-learning.png)
+
+* 创建 Azure 机器学习工作区时，请使用以下参数。 这两个参数都是必需的，并且在 SDK、CLI、REST API 和资源管理器模板中受支持。
+
+    * `resource_cmk_uri`：此参数是密钥保管库中客户管理的密钥的完整资源 URI，其中包括[密钥的版本信息](../key-vault/about-keys-secrets-and-certificates.md#objects-identifiers-and-versioning)。 
+
+    * `cmk_keyvault`：此参数是订阅中密钥保管库的资源 ID。 此密钥保管库位于要用于 Azure 机器学习工作区的同一区域和订阅中。 
+    
+        > [!NOTE]
+        > 此密钥保管库实例可能不同于在预配工作区时 Azure 机器学习创建的密钥保管库。 如果要对工作区使用相同的密钥保管库实例，请在使用 [key_vault 参数](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-)预配工作区时传递相同的密钥保管库。 
+
+此 Cosmos DB 实例是在订阅的 Microsoft 托管资源组中创建的。 托管资源组的命名格式为 `<AML Workspace Resource Group Name><GUID>`。
+
+> [!IMPORTANT]
+> * 如果需要删除此 Cosmos DB 实例，则必须删除使用该实例的 Azure 机器学习工作区。 
+> * 此 Cosmos DB 帐户的默认[请求单位数](../cosmos-db/request-units.md)设置为“8000” 。 不支持更改此值。 
+
+如果需要轮换或撤销密钥，则可以随时执行此操作。 轮换密钥时，Cosmos DB 将开始使用新密钥（最新版本）来加密静态数据。 撤消（禁用）密钥时，Cosmos DB 会处理失败的请求。 轮换或撤消操作通常需要一小时才能生效。
+
+有关 Cosmos DB 的客户管理的密钥的详细信息，请参阅[为 Azure Cosmos DB 帐户配置客户管理的密钥](../cosmos-db/how-to-setup-cmk.md)。
+
 #### <a name="azure-container-registry"></a>Azure 容器注册表
 
 注册表（Azure 容器注册表）中的所有容器映像均已进行静态加密。 Azure 会在存储映像之前自动将其加密，并在 Azure 机器学习提取映像时将其解密。
@@ -137,7 +184,21 @@ Azure 机器学习在绑定到 Azure 机器学习工作区和订阅的 Azure Blo
 
 #### <a name="azure-container-instance"></a>Azure 容器实例
 
-Azure 容器实例不支持磁盘加密。 如果需要磁盘加密，我们建议改为[部署到 Azure Kubernetes 服务实例](how-to-deploy-azure-kubernetes-service.md)。 在这种情况下，你可能还想要使用 Azure 机器学习对基于角色的访问控制的支持，来防止部署到订阅中的 Azure 容器实例。
+可以使用客户管理的密钥来加密已部署的 Azure 容器实例 (ACI) 资源。 用于 ACI 的客户管理的密钥可存储在用于工作区的 Azure Key Vault 中。 有关生成密钥的信息，请参阅[使用客户管理的密钥加密数据](../container-instances/container-instances-encrypt-data.md#generate-a-new-key)。
+
+若要在将模型部署到 Azure 容器实例时使用密钥，请使用 `AciWebservice.deploy_configuration()` 创建新的部署配置。 使用以下参数提供密钥信息：
+
+* `cmk_vault_base_url`：包含密钥的密钥保管库的 URL。
+* `cmk_key_name`：键的名称。
+* `cmk_key_version`：密钥版本。
+
+有关如何创建和使用部署配置的详细信息，请参阅以下文章：
+
+* [AciWebservice.deploy_configuration()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice?view=azure-ml-py#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none-) 参考
+* [部署方式和位置](how-to-deploy-and-where.md)
+* [将模型部署到 Azure 容器实例](how-to-deploy-azure-container-instance.md)
+
+有关如何将客户管理的密钥用于 ACI 的详细信息，请参阅[使用客户管理的密钥加密数据](../container-instances/container-instances-encrypt-data.md#encrypt-data-with-a-customer-managed-key)。
 
 #### <a name="azure-kubernetes-service"></a>Azure Kubernetes 服务
 
@@ -152,15 +213,17 @@ Azure 容器实例不支持磁盘加密。 如果需要磁盘加密，我们建�
 
 Azure 存储中存储的每个计算节点的 OS 磁盘，已通过 Azure 机器学习存储帐户中由 Microsoft 管理的密钥进行加密。 此计算目标是暂时的；没有排队的运行时，群集通常会缩减。 底层虚拟机将解除预配，OS 磁盘将被删除。 OS 磁盘不支持 Azure 磁盘加密。
 
-每个虚拟机还包含一个本地临时磁盘用于 OS 操作。 如果需要，可以使用该磁盘来暂存训练数据。 对于其 `hbi_workspace` 参数设置为 `TRUE` 的工作区，默认会加密磁盘。 此环境的生存期较短（与运行的持续时间相当），加密支持仅限于系统托管的密钥。
+每个虚拟机还包含一个本地临时磁盘用于 OS 操作。 如果需要，可以使用该磁盘来暂存训练数据。 对于其 `hbi_workspace` 参数设置为 `TRUE` 的工作区，默认会加密磁盘。 此环境仅在运行期间短暂存在，加密支持仅限于系统管理的密钥。
 
-有关 Azure 中静态加密的工作原理的详细信息，请参阅 [Azure 静态数据加密](/security/fundamentals/encryption-atrest)。
+#### <a name="azure-databricks"></a>Azure Databricks
+
+Azure Databricks 可在 Azure 机器学习管道中使用。 默认情况下，Azure Databricks 使用的 Databricks 文件系统 (DBFS) 使用 Microsoft 托管密钥进行加密。 若要将 Azure Databricks 配置为使用客户管理的密钥，请参阅[在默认（根）DBFS 上配置客户管理的密钥](/azure/databricks/security/customer-managed-keys-dbfs)。
 
 ### <a name="encryption-in-transit"></a>传输中加密
 
-可以使用 SSL 来保护 Azure 机器学习微服务之间的内部通信，以及保护对评分终结点的外部调用。 所有 Azure 存储访问也是通过安全通道发生的。
+Azure 机器学习使用 TLS 来保护各种 Azure 机器学习微服务之间的内部通信。 所有 Azure 存储访问也都通过安全通道进行。
 
-有关详细信息，请参阅[使用 SSL 通过 Azure 机器学习保护 Web 服务](/machine-learning/how-to-secure-web-service)。
+Azure 机器学习使用 TLS 来保护对评分终结点的外部调用。 有关详细信息，请参阅[使用 TLS 通过 Azure 机器学习来保护 Web 服务](https://docs.microsoft.com/azure/machine-learning/how-to-secure-web-service)。
 
 ### <a name="using-azure-key-vault"></a>使用 Azure Key Vault
 
@@ -172,17 +235,17 @@ Azure 机器学习使用与工作区关联的 Azure Key Vault 实例来存储各
 
 Azure HDInsight 等计算目标和 VM 的 SSH 密码与密钥存储在与 Microsoft 订阅关联的独立 Key Vault 中。 Azure 机器学习不会存储用户提供的任何密码或密钥， 而是生成、授权并存储自身的 SSH 密钥，用于连接到 VM 和 HDInsight 以运行试验。
 
-每个工作区有一个关联的系统分配的托管标识，该标识与工作区同名。 此托管标识有权访问 Key Vault 中的所有密钥、机密和证书。
+每个工作区有一个关联的系统分配的托管标识，该标识与工作区同名。 此托管标识可以访问密钥保管库中的所有密钥、机密和证书。
 
 ## <a name="data-collection-and-handling"></a>数据收集和处理
 
 ### <a name="microsoft-collected-data"></a>Microsoft 收集的数据
 
-Microsoft 可能会出于诊断目的而收集非用户身份信息，例如资源名称（如数据集名称或机器学习试验名称）或作业环境变量。 所有此类数据将使用 Microsoft 托管的密钥存储在承载于 Microsoft 自有订阅中的存储内，并遵守 [Microsoft 的标准隐私政策和数据处理标准](https://privacy.microsoft.com/privacystatement)。
+Microsoft 可能会收集非用户标识信息，如资源名称（例如数据集名称或机器学习试验名称）或用于诊断的作业环境变量。 所有此类数据都使用 Microsoft 托管密钥存储在 Microsoft 拥有的订阅中托管的存储中，并遵循 [Microsoft 的标准隐私策略和数据处理标准](https://privacy.microsoft.com/privacystatement)。
 
-另外，Microsoft 建议不要在环境变量中存储敏感信息（例如帐户密钥机密）。 我们会记录、加密和存储环境变量。
+Microsoft 还建议不要在环境变量中存储敏感信息（如帐户密钥机密）。 我们会记录、加密和存储环境变量。 同样，为 [run_id](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py) 命名时，请避免包含用户名或机密项目名称等敏感信息。 此信息可能会出现在可供 Microsoft 支持部门工程师访问的遥测日志中。
 
-可以选择不收集诊断数据，只需在预配工作区时将 `hbi_workspace` 参数设置为 `TRUE` 即可。 使用 AzureML Python SDK、CLI、REST API 或 Azure 资源管理器模板时支持此功能。
+预配工作区时，可以通过将 `hbi_workspace` 参数设置为 `TRUE` 来选择退出收集诊断数据。 使用 AzureML Python SDK、CLI、REST API 或 Azure 资源管理器模板时支持此功能。
 
 ### <a name="microsoft-generated-data"></a>Microsoft 生成的数据
 
@@ -192,15 +255,15 @@ Microsoft 可能会出于诊断目的而收集非用户身份信息，例如资�
 
 ## <a name="monitoring"></a>监视
 
-### <a name="metrics"></a>度量值
+### <a name="metrics"></a>指标
 
-可以使用 Azure Monitor 指标来查看和监视 Azure 机器学习工作区的指标。 在 [Azure 门户](https://portal.azure.cn)中选择你的工作区，然后选择“指标”： 
+可以使用 Azure Monitor 指标来查看和监视 Azure 机器学习工作区的指标。 在 [Azure 门户](https://portal.azure.cn)中选择你的工作区，然后选择“指标”：
 
 [![显示工作区示例指标的屏幕截图](media/concept-enterprise-security/workspace-metrics.png)](media/concept-enterprise-security/workspace-metrics-expanded.png#lightbox)
 
 指标包含有关运行、部署和注册的信息。
 
-有关详细信息，请参阅 [Azure Monitor 中的指标](/azure-monitor/platform/data-platform-metrics)。
+有关详细信息，请参阅 [Azure Monitor 中的指标](/azure/azure-monitor/platform/data-platform-metrics)。
 
 ### <a name="activity-log"></a>活动日志
 
@@ -210,7 +273,7 @@ Microsoft 可能会出于诊断目的而收集非用户身份信息，例如资�
 
 [![显示工作区活动日志的屏幕截图](media/concept-enterprise-security/workspace-activity-log.png)](media/concept-enterprise-security/workspace-activity-log-expanded.png#lightbox)
 
-评分请求详细信息存储在 Application Insights 中。 创建工作区时，会在订阅中创建 Application Insights。 记录的信息包括如下所述的字段：
+评分请求详细信息存储在 Application Insights 中。 创建工作区时，订阅中会创建 Application Insights。 记录的信息包括如下所述的字段：
 
 * HTTPMethod
 * UserAgent
@@ -218,12 +281,12 @@ Microsoft 可能会出于诊断目的而收集非用户身份信息，例如资�
 * RequestUrl
 * StatusCode
 * RequestId
-* Duration
+* 持续时间
 
 > [!IMPORTANT]
-> Azure 机器学习工作区中的某些操作不会将信息记录到活动日志。 例如，不会记录训练运行的启动和模型的注册。
+> Azure 机器学习工作区中的一些操作不会将信息记录到活动日志中。 例如，不会记录训练运行的启动和模型的注册。
 >
-> 其中的某些操作显示在工作区的“活动”区域，但这些通知不会指出活动是谁发起的。 
+> 其中的某些操作显示在工作区的“活动”区域，但这些通知不会指出活动是谁发起的。
 
 ## <a name="data-flow-diagrams"></a>数据流示意图
 
@@ -259,8 +322,8 @@ Microsoft 可能会出于诊断目的而收集非用户身份信息，例如资�
 下图显示了训练工作流。
 
 * 使用在上一部分保存的代码快照的快照 ID 调用 Azure 机器学习。
-* Azure 机器学习创建一个运行 ID（可选）和一个机器学习服务令牌，计算目标（例如机器学习计算/VM）随后使用该令牌来与机器学习服务通信。
-* 可以选择使用托管计算目标（例如机器学习计算）或非托管计算目标（例如 VM）来运行训练作业。 下面是这两种方案的数据流：
+* Azure 机器学习会创建一个运行 ID （可选）和一个机器学习服务令牌，计算目标（例如机器学习计算/VM）稍后会使用该令牌来与机器学习服务通信。
+* 可以选择使用托管计算目标（例如机器学习计算）或非托管计算目标（例如 VM）来运行训练作业。 以下是针对两种场景的数据流：
    * VM/HDInsight，通过 Microsoft 订阅中的 Key Vault 内的 SSH 凭据访问。 Azure 机器学习在计算目标上运行管理代码，以执行以下操作：
 
    1. 准备环境。 （Docker 是 VM 和本地计算机的一个选项。 请参阅适用于机器学习计算的以下步骤来了解如何在 Docker 容器上运行试验。）
@@ -290,20 +353,17 @@ Microsoft 可能会出于诊断目的而收集非用户身份信息，例如资�
 * 用户使用 Azure 机器学习 SDK 等客户端注册模型。
 * 用户使用模型、评分文件和其他模型依赖项创建映像。
 * Docker 映像在创建后存储在 Azure 容器注册表中。
-* 使用在上一步骤中创建的映像将 Web 服务部署到计算目标（容器实例/AKS）。
-* 评分请求详细信息存储在用户订阅中的 Application Insights 内。
-* 遥测数据还会推送到 Microsoft/Azure 订阅。
+* 使用上一步中创建的映像将 Web 服务部署到计算目标（容器实例/AKS）中。
+* 将评分请求详细信息存储在用户订阅的 Application Insights 中。
+* 此外，将遥测推送到 Microsoft/Azure 订阅。
 
 [![推理工作流](media/concept-enterprise-security/inferencing.png)](media/concept-enterprise-security/inferencing-expanded.png#lightbox)
 
 ## <a name="next-steps"></a>后续步骤
 
-* [使用 SSL 保护 Azure 机器学习 Web 服务](how-to-secure-web-service.md)
+* [使用 TLS 保护 Azure 机器学习 Web 服务](how-to-secure-web-service.md)
 * [使用部署为 Web 服务的机器学习模型](how-to-consume-web-service.md)
-* [如何运行批量预测](how-to-use-parallel-run-step.md)
-* [使用 Application Insights 监视 Azure 机器学习模型](how-to-enable-app-insights.md)
-* [为生产环境中的模型收集数据](how-to-enable-data-collection.md)
-* [Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)
+* [将 Azure 机器学习与 Azure 防火墙配合使用](how-to-access-azureml-behind-firewall.md)
 * [通过 Azure 虚拟网络使用 Azure 机器学习](how-to-enable-virtual-network.md)
 * [有关构建建议系统的最佳实践](https://github.com/Microsoft/Recommenders)
 * [在 Azure 上生成实时建议 API](https://docs.microsoft.com/azure/architecture/reference-architectures/ai/real-time-recommendation)

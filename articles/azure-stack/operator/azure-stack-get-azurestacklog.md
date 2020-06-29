@@ -4,16 +4,16 @@ description: 了解如何使用管理员门户或 PowerShell 脚本在 Azure Sta
 author: WenJason
 ms.topic: article
 origin.date: 03/05/2020
-ms.date: 05/18/2020
+ms.date: 06/22/2020
 ms.author: v-jay
 ms.reviewer: shisab
 ms.lastreviewed: 03/05/2020
-ms.openlocfilehash: 007439cad1be04cb64bb94d8828ad2351aca86ab
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.openlocfilehash: 4760693f43a01f98a3d4d10a04884f24af886bce
+ms.sourcegitcommit: d86e169edf5affd28a1c1a4476d72b01a7fb421d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83422893"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85096469"
 ---
 # <a name="send-azure-stack-hub-diagnostic-logs-by-using-the-privileged-endpoint-pep"></a>使用特权终结点 (PEP) 发送 Azure Stack Hub 诊断日志
 
@@ -69,6 +69,18 @@ if ($session) {
   Get-AzureStackLog -OutputSharePath "<path>" -OutputShareCredential $cred -FilterByRole VirtualMachines,BareMetal -FromDate (Get-Date).AddHours(-8) -ToDate (Get-Date).AddHours(-2)
   ```
 
+* 在 Azure Stack 上，从运行了自行管理的 Kubernetes 群集（AKS 引擎）的租户部署中收集日志。 Kubernetes 日志应采用符合条件的格式存储在租户存储帐户中：使用该格式时应能够对日志应用“收集时间范围”。 
+
+  ```powershell
+  Get-AzureStackLog -OutputPath <Path> -InputSasUri "<Blob Service Sas URI>" -FromDate "<Beginning of the time range>" -ToDate "<End of the time range>"
+  ```
+
+  例如：
+
+  ```powershell
+  Get-AzureStackLog -OutputPath C:\KubernetesLogs -InputSasUri "https://<storageAccountName>.blob.core.chinacloudapi.cn/<ContainerName><SAS token>" -FromDate (Get-Date).AddHours(-8) -ToDate (Get-Date).AddHours(-2) 
+  ```
+
 * 收集 value-add RPs 的日志。 常规语法为：
  
   ```powershell
@@ -119,11 +131,11 @@ if ($session) {
   2. 打开 Azure 存储资源管理器的实例。
   3. 连接到在步骤 1 中创建的存储帐户。
   4. 在**存储服务**中导航到 **Blob 容器**。
-  5. 选择“新建容器”。
-  6. 右键单击新容器，然后单击“获取共享访问签名”。
+  5. 选择“新建容器”****。
+  6. 右键单击新容器，然后单击“获取共享访问签名”。****
   7. 根据需求，选择有效的**开始时间**和**结束时间**。
-  8. 根据所需的权限，选择“读取”、“写入”和“列表”。
-  9. 选择“创建” 。
+  8. 根据所需的权限，选择“读取”****、“写入”**** 和“列表”****。
+  9. 选择“创建” ****。
   10. 你将获得共享访问签名。 复制 URL 部分，并将其提供给 `-OutputSasUri` 参数。
 
 ### <a name="parameter-considerations"></a>参数注意事项 
@@ -175,14 +187,14 @@ if ($session) {
 
 * 此命令需要一些时间来运行，具体取决于日志收集的角色。 影响因素还包括指定用于日志收集的时限，以及 Azure Stack Hub 环境中的节点数。
 * 当日志收集运行时，请查看在 **OutputSharePath** 参数（在命令中指定）中创建的新文件夹。
-* 每个角色的日志位于单个 zip 文件中。 根据所收集日志的大小，一个角色的日志可能会拆分成多个 zip 文件。 对于此类角色，如果需要将所有日志文件解压缩到单个文件夹中，请使用可以批量解压缩的工具。 选择角色的所有压缩文件，然后选择“解压缩到此处”。 该角色的所有日志文件会解压缩到单个合并的文件夹中。
+* 每个角色的日志位于单个 zip 文件中。 根据所收集日志的大小，一个角色的日志可能会拆分成多个 zip 文件。 对于此类角色，如果需要将所有日志文件解压缩到单个文件夹中，请使用可以批量解压缩的工具。 选择角色的所有压缩文件，然后选择“解压缩到此处”。**** 该角色的所有日志文件会解压缩到单个合并的文件夹中。
 * 在压缩的日志文件所在的文件夹中，还会创建名为 **Get-AzureStackLog_Output.log** 的文件。 此文件是一个命令输出日志，可以用来排查日志收集过程中的问题。 有时，日志文件包含 `PS>TerminatingError` 条目，除非运行日志收集后缺少预期的日志文件，否则可以放心忽略这些条目。
 * 调查某个特定的故障时，可能需要多个组件中的日志。
 
   * 所有基础结构 VM 的系统和事件日志收集在 **VirtualMachines** 角色中。
   * 所有主机的系统和事件日志收集在 **BareMetal** 角色中。
-  * 故障转移群集和 Hyper-V 事件日志收集在“存储”角色中。
-  * ACS 日志收集在“存储”角色和 **ACS** 角色中。
+  * 故障转移群集和 Hyper-V 事件日志收集在“存储”**** 角色中。
+  * ACS 日志收集在“存储”角色**** 和 **ACS** 角色中。
 
 > [!NOTE]
 > 会对收集的日志强制实施大小和保留时间限制，因为必须确保对存储空间进行有效的利用，以免该空间充斥着日志。 但是，在诊断问题时，有时可能需要某些日志，但这些日志因为这些限制而不再存在了。 因此，**强烈建议**每隔 8 到 12 小时就将日志卸载到外部存储空间（Azure 中的存储帐户、其他本地存储设备，等等）并在该处保留 1 - 3 月，具体取决于你的要求。 还应确保该存储位置已加密。

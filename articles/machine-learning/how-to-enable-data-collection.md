@@ -5,26 +5,22 @@ description: 了解如何在 Azure Blob 存储中收集 Azure 机器学习输入
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.reviewer: laobri
-ms.author: v-yiso
+ms.author: copeters
 author: lostmygithubaccount
-origin.date: 11/12/2019
-ms.date: 03/16/2020
+ms.date: 11/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3aef99ea8c76f8e86a974340f531cdb00fe43d66
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: b8cb389289ab6d6b17842d5b7d23e88aa6412903
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78850595"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097521"
 ---
 # <a name="collect-data-for-models-in-production"></a>为生产环境中的模型收集数据
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
-
->[!IMPORTANT]
-> Azure 机器学习监视 SDK 即将停用。 目前使用该 SDK 监视模型中数据偏移的开发人员仍适合使用该 SDK。 但对于新客户，我们建议使用简化的 [Application Insights 数据监视功能](/machine-learning/how-to-enable-app-insights)。
 
 本文介绍如何从 Azure 机器学习收集输入模型数据。 此外，介绍如何将输入数据部署到 Azure Kubernetes 服务 (AKS) 群集，并将输出数据存储在 Azure Blob 存储中。
 
@@ -40,7 +36,7 @@ ms.locfileid: "78850595"
 
 可以收集以下数据：
 
-* 从部署在 AKS 群集中的 Web 服务收集模型输入数据。 不收集语音、音频、图像和视频数据。 
+* 从部署在 AKS 群集中的 Web 服务收集模型输入数据。 不收集语音、音频、图像和视频数据。**
   
 * 使用生产输入数据进行模型预测。
 
@@ -59,9 +55,9 @@ Blob 中输出数据的路径遵循以下语法：
 >[!NOTE]
 > 在低于 0.1.0a16 的适用于 Python 的 Azure 机器学习 SDK 版本中，`designation` 参数命名为 `identifier`。 如果使用早期版本开发代码，则需要相应地更新此名称。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
-- 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://aka.ms/AMLFree)。
+- 如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 
 - 必须安装一个 Azure 机器学习工作区、一个包含脚本的本地目录以及适用于 Python 的 Azure 机器学习 SDK。 若要了解如何安装，请参阅[如何配置开发环境](how-to-configure-environment.md)。
 
@@ -106,7 +102,7 @@ Blob 中输出数据的路径遵循以下语法：
     prediction_dc.collect(result) #this call is saving our input data into Azure Blob
     ```
 
-1. 在 AKS 中部署服务时，数据收集不会自动设置为 **true**。 如以下示例所示更新配置文件：
+1. 在 AKS 中部署服务时，数据收集不会自动设置为 **true**。** 如以下示例所示更新配置文件：
 
     ```python
     aks_config = AksWebservice.deploy_configuration(collect_model_data=True)
@@ -126,17 +122,13 @@ Blob 中输出数据的路径遵循以下语法：
 
 1. 打开你的工作区。
 
-1. 选择“部署”   > “选择服务”   > “编辑”  。
+1. 选择“部署”**** > “选择服务”**** > “编辑”****。
 
    ![编辑服务](././media/how-to-enable-data-collection/EditService.PNG)
 
-1. 在“高级设置”  中，选择“启用模型数据收集”  。
+1. 在“高级设置”中，选择“启用 Application Insights 诊断和数据收集”**** ****。
 
-    [![选择数据收集](./media/how-to-enable-data-collection/CheckDataCollection.png)](././media/how-to-enable-data-collection/CheckDataCollection.png#lightbox)
-
-   还可以选择“启用 AppInsights 诊断”以跟踪服务的运行状况。 
-
-1. 选择“更新”  以应用更改。
+1. 选择“更新”**** 以应用更改。
 
 ## <a name="disable-data-collection"></a>禁用数据收集
 
@@ -148,15 +140,13 @@ Blob 中输出数据的路径遵循以下语法：
 
 1. 打开你的工作区。
 
-1. 选择“部署”   > “选择服务”   > “编辑”  。
+1. 选择“部署”**** > “选择服务”**** > “编辑”****。
 
    [![选择“编辑”选项](././media/how-to-enable-data-collection/EditService.PNG)](./././media/how-to-enable-data-collection/EditService.PNG#lightbox)
 
-1. 在“高级设置”  中，清除“启用模型数据收集”  。
+1. 在“高级设置”中，清除“启用 Application Insights 诊断和数据收集”**** ****。
 
-    [![清除数据收集复选框](./media/how-to-enable-data-collection/UncheckDataCollection.png)](././media/how-to-enable-data-collection/UncheckDataCollection.png#lightbox)
-
-1. 选择“更新”  以应用更改。
+1. 选择“更新”**** 以应用更改。
 
 还可以在 [Azure 机器学习](https://ml.azure.com)的工作区中访问这些设置。
 
@@ -177,7 +167,7 @@ Blob 中输出数据的路径遵循以下语法：
 
 1. 打开你的工作区。
 
-1. 选择“存储”  。
+1. 选择“存储”****。
 
     [![选择“存储”选项](./media/how-to-enable-data-collection/StorageLocation.png)](././media/how-to-enable-data-collection/StorageLocation.png#lightbox)
 
@@ -192,35 +182,59 @@ Blob 中输出数据的路径遵循以下语法：
 
 1. 下载并打开 [Power BI Desktop](https://www.powerbi.com)。
 
-1. 选择“获取数据”，然后选择“[Azure Blob 存储](https://docs.microsoft.com/power-bi/desktop-data-sources)”。
+1. 选择“获取数据”，然后选择“[Azure Blob 存储](https://docs.microsoft.com/power-bi/desktop-data-sources)”。**** ****
 
     [![Power BI Blob 设置](./media/how-to-enable-data-collection/PBIBlob.png)](././media/how-to-enable-data-collection/PBIBlob.png#lightbox)
 
-1. 添加存储帐户名称并输入存储密钥。 可以通过在 Blob 中选择“设置” > “访问密钥”找到此信息。
+1. 添加存储帐户名称并输入存储密钥。 可以通过在 Blob 中选择“设置” > “访问密钥”找到此信息。**** ****
 
-1. 选择“模型数据”容器，然后选择“编辑”。  
+1. 选择“模型数据”容器，然后选择“编辑”。**** ****
 
     [![Power BI Navigator](./media/how-to-enable-data-collection/pbiNavigator.png)](././media/how-to-enable-data-collection/pbiNavigator.png#lightbox)
 
-1. 在查询编辑器中，单击“名称”列的下面，并添加存储帐户。 
+1. 在查询编辑器中，单击“名称”列的下面，并添加存储帐户。****
 
 1. 在筛选器中输入模型路径。 如果只想查看特定年份或月份的文件，则只需展开筛选器路径即可。 例如，如果只想查看三月份的数据，请使用以下筛选路径：
 
    /modeldata/\<subscriptionid>/\<resourcegroupname>/\<workspacename>/\<webservicename>/\<modelname>/\<modelversion>/\<designation>/\<year>/3
 
-1. 基于“名称”值筛选相关的数据。  如果存储了预测和输入，则需要针对每个预测和输入创建一个查询。
+1. 基于“名称”值筛选相关的数据。**** 如果存储了预测和输入，则需要针对每个预测和输入创建一个查询。
 
-1. 选择“内容”列标题旁边的向下双箭头，将文件合并在一起。 
+1. 选择“内容”列标题旁边的向下双箭头，将文件合并在一起。****
 
     [![Power BI 内容](./media/how-to-enable-data-collection/pbiContent.png)](././media/how-to-enable-data-collection/pbiContent.png#lightbox)
 
-1. 选择“确定”  。 数据将预先加载。
+1. 选择“确定” ****。 数据将预先加载。
 
     [![Power BI 合并文件](./media/how-to-enable-data-collection/pbiCombine.png)](././media/how-to-enable-data-collection/pbiCombine.png#lightbox)
 
-1. 选择“关闭并应用”。 
+1. 选择“关闭并应用”。****
 
 1. 如果添加了输入和预测，则表会自动按 **RequestId** 值排序。
 
 1. 开始基于模型数据生成自定义报表。
 
+### <a name="analyze-model-data-using-azure-databricks"></a>使用 Azure Databricks 分析模型数据
+
+1. 创建一个 [Azure Databricks 工作区](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal)。
+
+1. 转到该 Databricks 工作区。
+
+1. 在 Databricks 工作区中，选择“上传数据”。****
+
+    [![选择 Databricks“上传数据”选项](./media/how-to-enable-data-collection/dbupload.png)](././media/how-to-enable-data-collection/dbupload.png#lightbox)
+
+1. 选择“创建新表”，然后选择“其他数据源” > “Azure Blob 存储” > “在笔记本中创建表”。**** **** **** ****
+
+    [![Databricks 表创建](./media/how-to-enable-data-collection/dbtable.PNG)](././media/how-to-enable-data-collection/dbtable.PNG#lightbox)
+
+1. 更新数据的位置。 以下是示例：
+
+    ```
+    file_location = "wasbs://mycontainer@storageaccountname.blob.core.windows.net/modeldata/1a2b3c4d-5e6f-7g8h-9i10-j11k12l13m14/myresourcegrp/myWorkspace/aks-w-collv9/best_model/10/inputs/2018/*/*/data.csv" 
+    file_type = "csv"
+    ```
+
+    [![Databricks 设置](./media/how-to-enable-data-collection/dbsetup.png)](././media/how-to-enable-data-collection/dbsetup.png#lightbox)
+
+1. 遵循模板中的步骤查看和分析数据。

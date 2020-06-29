@@ -2,18 +2,18 @@
 title: 在 Azure Cosmos DB 中使用数据库、容器和项
 description: 本文介绍如何在 Azure Cosmos DB 中创建和使用数据库、容器与项。
 author: rockboyfor
-ms.author: v-yeche
 ms.service: cosmos-db
 ms.topic: conceptual
-origin.date: 09/01/2019
-ms.date: 02/10/2020
+origin.date: 04/24/2020
+ms.date: 06/22/2020
+ms.author: v-yeche
 ms.reviewer: sngun
-ms.openlocfilehash: 1f7ec438ff19b2588f864d9dd4b5a330edd36199
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: bc662dbb75ed285e2138e69225bba268b00b0ba9
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292927"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098407"
 ---
 # <a name="work-with-databases-containers-and-items-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中使用数据库、容器和项
 
@@ -60,13 +60,13 @@ Azure Cosmos 容器是预配的吞吐量和存储的缩放单元。 容器会进
 
 无论是使用专用还是共享预配吞吐量模式创建容器，Azure Cosmos 容器都可以弹性缩放。
 
-Azure Cosmos 容器是与架构无关的项容器。 容器中的项可以采用任意架构。 例如，可以在同一个容器中放置一个表示人员的项，以及一个表示汽车的项。  默认情况下，添加到容器的所有项会自动编制索引，不需要进行显式的索引或架构管理。 通过在容器上配置的[索引策略](index-overview.md)，可以自定义索引行为。 
+Azure Cosmos 容器是与架构无关的项容器。 容器中的项可以采用任意架构。 例如，可以在同一个容器中放置一个表示人员的项，以及一个表示汽车的项。** 默认情况下，添加到容器的所有项会自动编制索引，不需要进行显式的索引或架构管理。 通过在容器上配置的[索引策略](index-overview.md)，可以自定义索引行为。 
 
 可以针对 Azure Cosmos 容器中的所选项或整个容器设置[生存时间 (TTL)](time-to-live.md)，以正常从系统中清除这些项。 Azure Cosmos DB 会在这些项过期时自动将其删除。 这样还能保证对这些容器执行的查询不会返回固定边界内已过期的项。 有关详细信息，请参阅[对容器配置 TTL](how-to-time-to-live.md)。
 
-可以使用[更改源](change-feed.md)订阅针对容器的每个逻辑分区管理的操作日志。 更改源提供对容器执行的所有更新的日志，以及更新前和更新后的项的映像。 有关详细信息，请参阅[使用更改源生成被动式应用程序](serverless-computing-database.md)。 还可以通过使用容器上的更改源策略来配置更改源的保留期限。 
+可以使用[更改源](change-feed.md)订阅针对容器的每个逻辑分区管理的操作日志。 更改源提供对容器执行的所有更新的日志，以及更新前和更新后的项的映像。 有关详细信息，请参阅[使用更改源生成被动式应用程序](serverless-computing-database.md)。 还可以通过使用容器上的更改源策略来配置更改源的保留期限。
 
-可为 Azure Cosmos 容器注册[存储过程、触发器、用户定义的函数 (UDF)](stored-procedures-triggers-udfs.md) 和[合并过程](how-to-manage-conflicts.md)。 
+可为 Azure Cosmos 容器注册[存储过程、触发器、用户定义的函数 (UDF)](stored-procedures-triggers-udfs.md) 和[合并过程](how-to-manage-conflicts.md)。
 
 可以在 Azure Cosmos 容器上指定一个[唯一键约束](unique-keys.md)。 通过创建唯一键策略，可确保每个逻辑分区键的一个或多个值的唯一性。 如果使用唯一键策略创建容器，则无法创建值与唯一键约束指定的值重复的任何新项或更新的项。 若要了解详细信息，请参阅[唯一键约束](unique-keys.md)。
 
@@ -75,6 +75,9 @@ Azure Cosmos 容器专用于 API 特定的实体，如下表所示：
 | Azure Cosmos 实体 | SQL API | Cassandra API | 用于 MongoDB 的 Azure Cosmos DB API | Gremlin API | 表 API |
 | --- | --- | --- | --- | --- | --- |
 |Azure Cosmos 容器 | 容器 | 表 | 集合 | Graph | 表 |
+
+> [!NOTE]
+> 创建容器时，请确保不创建名称相同但大小写不同的两个容器。 这是因为 Azure 平台的某些部分不区分大小写，这可能会对具有此类名称的容器导致遥测和操作混乱/冲突。
 
 ### <a name="properties-of-an-azure-cosmos-container"></a>Azure Cosmos 容器的属性
 

@@ -4,17 +4,17 @@ description: 了解 Azure Stack Hub 上的应用服务 Update 4 中的改进、�
 author: WenJason
 manager: digimobile
 ms.topic: article
-origin.date: 03/25/2019
-ms.date: 05/18/2020
+origin.date: 05/05/2019
+ms.date: 06/22/2020
 ms.author: v-jay
 ms.reviewer: anwestg
 ms.lastreviewed: 08/20/2019
-ms.openlocfilehash: 6a2935f55fe93bbc27f4ad8748c38f14fdae2a9b
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.openlocfilehash: 25417c979a44e1171deaacbaff0b3cee19f09e79
+ms.sourcegitcommit: d86e169edf5affd28a1c1a4476d72b01a7fb421d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83422409"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85096486"
 ---
 # <a name="app-service-on-azure-stack-hub-update-4-release-notes"></a>Azure Stack Hub 上的应用服务 Update 4 发行说明
 
@@ -27,7 +27,7 @@ ms.locfileid: "83422409"
 
 Azure Stack Hub 上的应用服务 Update 4 的内部版本号为 **78.0.13698.5**
 
-### <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>先决条件
 
 在开始部署之前，请参阅[在 Azure Stack Hub 上部署应用服务的先决条件](azure-stack-app-service-before-you-get-started.md)。
 
@@ -35,16 +35,21 @@ Azure Stack Hub 上的应用服务 Update 4 的内部版本号为 **78.0.13698.5
 
 - 确保所有角色在 Azure Stack Hub 管理员门户的 Azure应用服务管理中处于“就绪”状态。
 
-- 备份应用服务和 master 数据库：
+- 在 Azure Stack Hub 管理员门户中使用应用服务管理来备份应用服务机密
+
+- 备份应用服务和 Master 数据库：
   - AppService_Hosting；
   - AppService_Metering；
   - Master
 
-- 备份租户应用内容文件共享。
+- 备份租户应用内容文件共享
+
+  > [!Important]
+  > 云操作员负责文件服务器和 SQL Server 的维护和操作。  资源提供程序不管理这些资源。  云操作员负责备份应用服务数据库和租户内容文件共享。
 
 - 同步发布 Azure 市场的**自定义脚本扩展**版本 **1.9**。
 
-### <a name="new-features-and-fixes"></a>新功能和修复
+## <a name="new-features-and-fixes"></a>新功能和修复
 
 Azure Stack Hub 上的 Azure 应用服务 Update 4 包含以下改进和修复：
 
@@ -87,12 +92,12 @@ Azure Stack Hub 上的 Azure 应用服务 Update 4 包含以下改进和修复�
 
 - 确保在新的函数应用中指定终结点时，也会在自定义存储连接字符串中指定终结点。
 
-### <a name="post-deployment-steps"></a>部署后步骤
+## <a name="post-deployment-steps"></a>部署后步骤
 
 > [!IMPORTANT]  
-> 如果已经为应用服务资源提供程序提供 SQL Always On 实例，则必须[将 appservice_hosting 和 appservice_metering 数据库添加到可用性组](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database)并同步数据库，以免在进行数据库故障转移时丢失服务。 
+> 如果已经为应用服务资源提供程序提供 SQL Always On 实例，则必须[将 appservice_hosting 和 appservice_metering 数据库添加到可用性组](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database)并同步数据库，以免在进行数据库故障转移时丢失服务。
 
-### <a name="post-update-steps-optional"></a>更新后的步骤（可选）
+## <a name="post-update-steps-optional"></a>更新后的步骤（可选）
 
 对于希望为基于 Azure Stack Hub 的现有 Azure 应用服务部署迁移到包含的数据库的客户，请在完成基于 Azure Stack Hub 的 Azure 应用服务 1.4 更新后执行以下步骤：
 
@@ -155,6 +160,33 @@ Azure Stack Hub 上的 Azure 应用服务 Update 4 包含以下改进和修复�
 1. 将登录名迁移到包含的数据库用户。
 
     ```sql
+        USE appservice_hosting
+        IF EXISTS(SELECT * FROM sys.databases WHERE Name=DB_NAME() AND containment = 1)
+        BEGIN
+        DECLARE @username sysname ;  
+        DECLARE user_cursor CURSOR  
+        FOR
+            SELECT dp.name
+            FROM sys.database_principals AS dp  
+            JOIN sys.server_principals AS sp
+                ON dp.sid = sp.sid  
+                WHERE dp.authentication_type = 1 AND dp.name NOT IN ('dbo','sys','guest','INFORMATION_SCHEMA');
+            OPEN user_cursor  
+            FETCH NEXT FROM user_cursor INTO @username  
+                WHILE @@FETCH_STATUS = 0  
+                BEGIN  
+                    EXECUTE sp_migrate_user_to_contained
+                    @username = @username,  
+                    @rename = N'copy_login_name',  
+                    @disablelogin = N'do_not_disable_login';  
+                FETCH NEXT FROM user_cursor INTO @username  
+            END  
+            CLOSE user_cursor ;  
+            DEALLOCATE user_cursor ;
+            END
+        GO
+
+        USE appservice_metering
         IF EXISTS(SELECT * FROM sys.databases WHERE Name=DB_NAME() AND containment = 1)
         BEGIN
         DECLARE @username sysname ;  
@@ -194,7 +226,7 @@ Azure Stack Hub 上的 Azure 应用服务 Update 4 包含以下改进和修复�
         SELECT containment FROM sys.databases WHERE NAME LIKE (SELECT DB_NAME())
     ```
 
-### <a name="known-issues-post-installation"></a>已知问题（安装后）
+## <a name="known-issues-post-installation"></a>已知问题（安装后）
 
 - 当应用服务部署在现有虚拟网络中并且文件服务器仅在专用网络上可用时，工作人员将无法访问文件服务器。 在 Azure Stack Hub 部署文档的 Azure 应用服务中也提到了此问题。
 
@@ -210,7 +242,7 @@ Azure Stack Hub 上的 Azure 应用服务 Update 4 包含以下改进和修复�
  * 优先级：700
  * 姓名：Outbound_Allow_SMB445
 
-### <a name="known-issues-for-cloud-admins-operating-azure-app-service-on-azure-stack-hub"></a>云管理员在操作基于 Azure Stack Hub 的 Azure 应用服务时的已知问题
+## <a name="known-issues-for-cloud-admins-operating-azure-app-service-on-azure-stack-hub"></a>云管理员在操作基于 Azure Stack Hub 的 Azure 应用服务时的已知问题
 
 请参阅 [Azure Stack Hub 1809 发行说明](azure-stack-update-1903.md)中的文档
 

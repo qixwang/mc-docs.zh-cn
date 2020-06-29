@@ -1,23 +1,16 @@
 ---
 title: 教程：模式 - LUIS
-titleSuffix: Azure Cognitive Services
 description: 在本教程中，使用模式来改进意向和实体预测，同时提供更少的示例话语。 该模式以模板言语示例形式提供，该示例包括用于标识实体和可忽略文本的语法。
-services: cognitive-services
-author: lingliw
-ms.custom: seodec18
-manager: digimobile
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: tutorial
-origin.date: 12/17/2019
-ms.date: 1/2/2020
-ms.author: v-lingwu
-ms.openlocfilehash: b8cbd1f55adc750d0d8b854f3c7485eedd0393d8
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+origin.date: 05/07/2020
+ms.date: 06/18/2020
+ms.author: v-tawe
+ms.openlocfilehash: f1ce5545b14985234727dcbb9a72996f50f017f0
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75857441"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098357"
 ---
 # <a name="tutorial-add-common-pattern-template-utterance-formats-to-improve-predictions"></a>教程：添加常见的模式模板言语格式以改进预测
 
@@ -42,29 +35,32 @@ LUIS 应用中存储了两种类型的言语：
 
 将模板言语作为一种模式添加后，总体说来可以为意向提供更少的示例言语。
 
-模式作为表达式匹配和机器学习的组合来应用。  模板言语和示例言语使 LUIS 能够更好地理解哪些言语符合意向。
+模式作为文本匹配的组合来应用。  模式中的模板言语以及意向中的示例言语使 LUIS 能够更好地理解哪些言语符合意向。
 
 ## <a name="import-example-app-and-clone-to-new-version"></a>导入示例应用并克隆到新版
 
-请使用以下步骤：
+使用以下步骤：
 
 1.  下载并保存[应用 JSON 文件](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-batchtest-HumanResources.json?raw=true)。
 
-1. 在 [LUIS 预览版门户](https://luis.azure.cn)中，将该 JSON 文件导入到新应用中。
+1. 登录到 [LUIS 门户](https://luis.azure.cn)，选择“订阅”和“创作资源”以查看分配给该创作资源的应用。
+1. 将 JSON 导入到 [LUIS 门户](https://luis.azure.cn)的新应用中。 在“我的应用”页上，选择“+ 新建聊天应用”，然后选择“作为 JSON 导入”。   选择在上一步骤中下载的文件。
 
-1. 在“管理”  部分的“版本”  选项卡上，克隆版本并将其命名为 `patterns`。 克隆非常适合用于演练各种 LUIS 功能，且不会影响原始版本。 由于版本名称用作 URL 路由的一部分，因此该名称不能包含任何在 URL 中无效的字符。
+1. 在“管理”部分的“版本”选项卡上选择活动版本，然后选择“克隆”。   将克隆的版本命名为 `patterns`。 克隆非常适合用于演练各种 LUIS 功能，且不会影响原始版本。 由于版本名称用作 URL 路由的一部分，因此该名称不能包含任何在 URL 中无效的字符。
 
 ## <a name="create-new-intents-and-their-utterances"></a>创建新意向及其话语
 
-1. 从导航栏中选择“生成”  。
+这两个意向根据言语文本查找经理或经理的直接下属。 难点在于，这两个意向的含义不同，而大部分单词是相同的， 只是单词顺序不同。 为了能够正确预测意向，必须提供更多示例。
 
-1. 在“意向”页上，选择“+ 创建”以创建新意向。  
+1. 从导航栏中选择“生成”。
 
-1. 在弹出对话框中输入 `OrgChart-Manager`，然后选择“完成”。 
+1. 在“意向”页上，选择“+ 创建”以创建新意向 。
+
+1. 在弹出对话框中输入 `OrgChart-Manager`，然后选择“完成”。
 
     ![创建新消息弹出窗口](media/luis-tutorial-pattern/hr-create-new-intent-popup.png)
 
-1. 将示例陈述添加到意向。 这些言语不完全相像，但确实有一种可以提取的模式。 
+1. 将示例陈述添加到意向。 这些言语不完全相像，但确实有一种可以提取的模式。
 
     |示例陈述|
     |--|
@@ -76,9 +72,9 @@ LUIS 应用中存储了两种类型的言语：
 
     如果 keyPhrase 实体在意向的话语中而不是员工实体中标记，请不要担心。 两者都已在“测试”窗格和终结点中正确预测。
 
-1. 在左侧导航栏中选择“意向”。 
+1. 在左侧导航栏中选择“意向”。
 
-1. 选择“+ 创建”以创建新意向。  在弹出对话框中输入 `OrgChart-Reports`，然后选择“完成”。 
+1. 选择“+ 创建”以创建新意向。 在弹出对话框中输入 `OrgChart-Reports`，然后选择“完成”。
 
 1. 将示例陈述添加到意向。
 
@@ -106,7 +102,7 @@ LUIS 应用中存储了两种类型的言语：
 
 1. [!INCLUDE [LUIS How to get endpoint first step](includes/howto-get-endpoint.md)]
 
-1. 将光标定位到地址中 URL 的末尾，并输入 `Who is the boss of Jill Jones?`。 最后一个查询字符串参数为言语 `query`。
+1. 转到地址栏中 URL 的末尾，将 YOUR_QUERY_HERE 替换为 `Who is the boss of Jill Jones?`。
 
     ```json
     {
@@ -196,16 +192,16 @@ LUIS 应用中存储了两种类型的言语：
     }
     ```
 
-此查询是否成功？ 在此定型周期中，它确实成功了。 两个顶级意向的分数很接近，而最高的意向没有高得很显著（超出 60%），并没有超出下一个意向的分数足够多。
+最相关的两个意向的分数非常接近，但最高意向并不是很高（超过 60%），并没有比下一意向的分数高多少。
 
-因为 LUIS 定型每次都不完全相同，有一些变化，所以这两个分数可能会在下一个训练周期中反转。 结果导致可能会返回的错误意向。
+由于 LUIS 训练每次都不完全相同（有一定的变化），因此这两个排名最靠前的评分可能会在下一个训练周期中反转。 结果导致可能会返回的错误意向。
 
 使用模式使正确意向的分数在百分比上显着提高，并且距离下一个最高分数更远。
 
 使此第二个浏览器窗口保持打开。 本教程稍后将使用该窗口。
 
 ## <a name="template-utterances"></a>模板话语
-由于人力资源域的性质，可通过几种常见方式询问组织中的员工关系。 例如：
+考虑到人力资源主题领域的性质，可通过几种常见方式询问组织中的员工关系。 例如：
 
 |陈述|
 |--|
@@ -221,19 +217,19 @@ LUIS 应用中存储了两种类型的言语：
 |`Who does {Employee} report to[?]`|可交换 `{Employee}`<br>忽略 `[?]`|
 |`Who reports to {Employee}[?]`|可交换 `{Employee}`<br>忽略 `[?]`|
 
-`{Employee}` 语法可标记模板陈述中的实体位置以及它是哪个实体。 可选的语法 `[?]` 标记可选的单词或标点。 LUIS 匹配话语，忽略括号内的可选文本。
+`{Employee}` 语法可标记模板陈述中的实体位置以及它是哪个实体。 可选语法 `[?]` 标记可选的单词或[标点](luis-reference-application-settings.md#punctuation-normalization)。 LUIS 匹配话语，忽略括号内的可选文本。
 
 虽然语法类似于正则表达式，但它不是正则表达式。 仅支持大括号 `{}` 和方括号 `[]` 语法。 它们最多可以嵌套两层。
 
-为了使模式与话语匹配，话语内的实体必须首先匹配模板话语中的实体。 这意味着，在带实体的模式成功之前，实体在预测度高的示例言语中必须有足够的示例。 但是，模板不会帮助预测实体，仅预测意向。
+为了使模式与言语匹配，言语中的实体必须首先匹配模板言语中的实体。 这意味着实体必须在具有高度预测性的实例话语中拥有足够的实例，才能使实体的模式获得成功。 但是，模板不会帮助预测实体，仅预测意向。
 
 **尽管模式允许提供较少的示例话语，但如果未检测到实体，则该模式将不匹配。**
 
 ### <a name="add-the-patterns-for-the-orgchart-manager-intent"></a>添加 OrgChart-Manager 意向的模式
 
-1. 选择顶部菜单中的“生成”  。
+1. 选择顶部菜单中的“生成”。
 
-1. 在左侧导航栏中，在“提高应用性能”下，从左侧导航栏中选择“模式”   。
+1. 在左侧导航栏中，在“提高应用性能”下，从左侧导航栏中选择“模式” 。
 
 1. 选择 **OrgChart-Manager** 意向，然后输入以下模板话语：
 
@@ -246,7 +242,9 @@ LUIS 应用中存储了两种类型的言语：
     |`Who is {Employee}['s] supervisor[?]`|
     |`Who is the boss of {Employee}[?]`|
 
-1. 在“模式”页上选择“OrgChart-Reports”意向，然后输入以下模板言语： 
+    这些模板言语使用大括号表示法包含了 Employee 实体。
+
+1. 在“模式”页上选择“OrgChart-Reports”意向，然后输入以下模板言语：
 
     |模板话语|
     |:--|
@@ -261,11 +259,11 @@ LUIS 应用中存储了两种类型的言语：
 
 将模式添加到应用后，在预测运行时终结点上训练、发布和查询应用。
 
-1. 选择“训练”。  训练完成后，请依次选择“发布”、“生产”槽、“完成”。   
+1. 选择“训练”。 训练完成后，选择“发布”并选择“生产”槽，然后选择“完成”  。
 
 1. 发布完成后，请将浏览器标签页切换回终结点 URL 标签页。
 
-1. 将光标定位到地址中 URL 的末尾，并输入 `Who is the boss of Jill Jones?` 作为话语。 最后一个查询字符串参数为 `query`。
+1. 转到地址栏中 URL 的末尾，将 YOUR_QUERY_HERE 替换为 `Who is the boss of Jill Jones?`
 
     ```json
     {
@@ -376,7 +374,7 @@ LUIS 应用中存储了两种类型的言语：
 
 |Intent|包含可选文本和预构建的实体的示例话语|
 |:--|:--|
-|OrgChart-Manager|`who was {Employee}['s] manager [[on]{datetimeV2}?`]|
+|OrgChart-Manager|`who was {Employee}['s] manager [[on]{datetimeV2}?]`|
 |OrgChart-Manager|`who is {Employee}['s] manager [[on]{datetimeV2}?]`|
 
 
@@ -391,17 +389,9 @@ LUIS 应用中存储了两种类型的言语：
 
 **请记住：将首先查找实体，然后再匹配模式。**
 
-### <a name="edit-the-existing-pattern-template-utterance"></a>编辑现有模式模板话语
-
-1. 在预览版 LUIS 门户的顶部菜单中选择“生成”  ，然后在左侧菜单中选择“模式”。 
-
-1. 搜索现有的模板言语 `Who is {Employee}['s] manager[?]`，选择右侧的省略号 (***...***)，然后在弹出菜单中选择“编辑”。 
-
-1. 将模板话语更改为：`who is {Employee}['s] manager [[on]{datetimeV2}?]`
-
 ### <a name="add-new-pattern-template-utterances"></a>添加新的模式模板话语
 
-1. 仍然停留在“生成”  的“模式”  部分中，添加几个新的模式模板话语。 从“意向”下拉菜单中选择“OrgChart-Manager”  ，然后输入下面的每条模板话语：
+1. 仍然停留在“生成”的“模式”部分中，添加几个新的模式模板话语。 从“意向”下拉菜单中选择“OrgChart-Manager”，然后输入下面的每条模板话语：
 
     |Intent|包含可选文本和预构建的实体的示例话语|
     |--|--|
@@ -409,13 +399,13 @@ LUIS 应用中存储了两种类型的言语：
     |OrgChart-Manager|`who will be {Employee}['s] manager [[in]{datetimeV2}?]`|
     |OrgChart-Manager|`who will be {Employee}['s] manager [[on]{datetimeV2}?]`|
 
-2. 选择导航栏的“训练”来训练该应用  。
+2. 选择导航栏的“训练”来训练该应用。
 
-3. 训练完成后，选择面板顶部的“测试”  以打开测试面板。
+3. 训练完成后，选择面板顶部的“测试”以打开测试面板。
 
 4. 输入多条测试话语来验证模式是否匹配以及意向得分是否很高。
 
-    输入第一条话语后，选择结果下的“检查”  ，以便可以看到所有预测结果。 每个言语应该包含 **OrgChart Manager** 意向，并且应提取 Employee 和 datetimeV2 实体的值。
+    输入第一条话语后，选择结果下的“检查”，以便可以看到所有预测结果。 每个言语应该包含 **OrgChart Manager** 意向，并且应提取 Employee 和 datetimeV2 实体的值。
 
     |话语|
     |--|
@@ -429,7 +419,7 @@ LUIS 应用中存储了两种类型的言语：
 所有这些话语都在内部找到了实体，因此它们将匹配相同的模式，并且具有很高的预测得分。 你添加了几个模式，这些模式将匹配多个言语变体。 无需在意向中添加任何示例言语，即可让模板言语在模式中工作。
 
 这样使用模式提供了：
-* 更高的预测分数
+* 更高的预测评分
 * 意向中的相同示例言语
 * 模式中一些构造良好的模板言语
 
@@ -446,11 +436,11 @@ LUIS 应用中存储了两种类型的言语：
 
 新的模板言语为：
 
-`who ( was | is | will be ) {Employee}['s] manager [([in]|[on]){datetimeV2}?]` 列中的一个值匹配。
+`who ( was | is | will be ) {Employee}['s] manager [([in]|[on]){datetimeV2}?]`。
 
 此代码围绕所需的谓语时态使用 **group**，并在两者之间结合 **or** 管道使用可选的 `in` 和 `on`。
 
-1. 在“模式”页上，选择“OrgChart-Manager”筛选器。   通过搜索 `manager` 来缩小列表范围。
+1. 在“模式”页上，选择“OrgChart-Manager”筛选器。  通过搜索 `manager` 来缩小列表范围。
 
 1. 保留模板言语的一个版本（以便在下一步骤中编辑），并删除其他变体。
 
@@ -458,9 +448,9 @@ LUIS 应用中存储了两种类型的言语：
 
     `who ( was | is | will be ) {Employee}['s] manager [([in]|[on]){datetimeV2}?]`
 
-2. 选择导航栏的“训练”来训练该应用  。
+2. 选择导航栏的“训练”来训练该应用。
 
-3. 训练完成后，选择面板顶部的“测试”  以打开测试面板。
+3. 训练完成后，选择面板顶部的“测试”以打开测试面板。
 
     使用“测试”窗格测试言语的版本：
 
@@ -473,7 +463,7 @@ LUIS 应用中存储了两种类型的言语：
     |`Who will be Jill Jones manager in a month`|
     |`Who will be Jill Jones manager on July 5th`|
 
-通过使用更多模式语法，可以减少必须在应用中维护的模板言语的数量，同时仍具有高的预测分数。
+通过使用更多模式语法，可以减少必须在应用中维护的模板言语的数量，同时仍保持高的预测评分。
 
 ### <a name="use-the-utterance-beginning-and-ending-anchors"></a>使用言语开头和结尾定位符
 
@@ -481,63 +471,37 @@ LUIS 应用中存储了两种类型的言语：
 
 ## <a name="using-patternany-entity"></a>使用 Pattern.any 实体
 
-通过 pattern.any 实体，可找到自由格式数据，其中实体的用语方式比较晦涩，难以从话语的其余部分来确定实体的结尾。
-
-此人力资源应用有助于员工查找公司表单。
-
-|话语|
-|--|
-|**HRF-123456** 在哪里？|
-|**HRF-123234** 的作者是谁？|
-|**HRF-456098** 是以法语发布的吗？|
-
-但是，每个表单都具有一个带格式的名称（如上表所使用的名称），以及一个易记名称，如 `Request relocation from employee new to the company 2018 version 5`。
-
-具有易记表单名称的话语如下所示：
-
-|话语|
-|--|
-|“公司新员工请求调职 2018 年第 5 版”  在哪里？|
-|“公司新员工请求调职 2018 年第 5 版”  的作者是谁？|
-|“公司新员工请求调职 2018 年第 5 版”  是以法语发布的吗？|
-
-此可变长度包含可能导致 LUIS 无法正确识别实体结尾位置的单词。 在模式中使用 Pattern.any 实体，可指定表单名称的开头和结尾，以便 LUIS 正确提取表单名称。
-
-|模板话语示例|
-|--|
-|{FormName} 在哪里[？]|
-|{FormName} 的作者是谁[？]|
-|{FormName} 是以法语发布的吗[？]|
+[!INCLUDE [Pattern.any entity - concepts](./includes/pattern-any-entity.md)]
 
 ### <a name="add-example-utterances-with-patternany"></a>通过 Pattern.any 添加示例言语
 
-1. 从顶部导航栏中选择“生成”  ，然后从左侧导航栏中选择“意向”  。
+1. 从顶部导航栏中选择“生成”，然后从左侧导航栏中选择“意向”。
 
-1. 从“意向”列表中选择“FindForm”  。
+1. 从“意向”列表中选择“FindForm”。
 
-1. 添加一些示例话语：
+1. 添加一些示例言语。 应预测为 Pattern.any 的文本以粗体文本显示。 根据言语中两边的其他单词很难确定表单名称。 Pattern.any 可以标记实体的边界，这样有助于找到表单名称。
 
     |示例陈述|窗体名称|
     |--|--|
-    |“实验室着火时该怎么办”  的表单在哪里，在我阅读该表单后需要谁签名？|实验室着火时该怎么办
-    |“公司新员工请求调职”  在服务器上的哪里？|公司新员工请求调职|
-    |“主要校园的健康和保健请求”  的作者是谁并且最新版本是什么？|主要校园的健康和保健请求|
-    |我正在查找名为“包括物理资产的 Office 移动请求”  的表单。 |包括物理资产的 Office 移动请求|
+    |“实验室着火时该怎么办”的表单在哪里，在我阅读该表单后需要谁签名？|实验室着火时该怎么办
+    |“公司新员工请求调职”在服务器上的哪里？|公司新员工请求调职|
+    |“主要校园的健康和保健请求”的作者是谁并且最新版本是什么？|主要校园的健康和保健请求|
+    |我正在查找名为“包括物理资产的 Office 移动请求”的表单。 |包括物理资产的 Office 移动请求|
 
     如果没有 Pattern.any 实体，则 LUIS 很难理解表单标题的结束位置，因为表单名称有很多种变体。
 
 ### <a name="create-a-patternany-entity"></a>创建 Pattern.any 实体
 Pattern.any 实体提取不同长度的实体。 它仅适用于模式，因为模式会使用语法标记实体的开头和结尾。
 
-1. 在左侧导航栏中选择“意向”  。
+1. 在左侧导航栏中选择“意向”。
 
-1. 选择“+ 创建”  ，输入名称 `FormName`，然后选择“Pattern.any”  作为类型。 选择“创建”  。
+1. 选择“+ 创建”，输入名称 `FormName`，然后选择“Pattern.any”作为类型 。 选择“创建” 。
 
 ### <a name="add-a-pattern-that-uses-the-patternany"></a>添加使用 Pattern.any 的模式
 
-1. 从左侧导航栏中选择“模式”  。
+1. 从左侧导航栏中选择“模式”。
 
-1. 选择“FindForm”意向  。
+1. 选择“FindForm”意向。
 
 1. 输入以下使用新实体的模板话语：
 
@@ -551,30 +515,32 @@ Pattern.any 实体提取不同长度的实体。 它仅适用于模式，因为�
 1. 将应用定型。
 
 ### <a name="test-the-new-pattern-for-free-form-data-extraction"></a>测试自由格式的数据提取的新模式
-1. 从顶栏中选择“测试”，打开测试面板  。
+1. 从顶栏中选择“测试”，打开测试面板。
 
 1. 输入以下话语：
 
     `Where is the form Understand your responsibilities as a member of the community and who needs to sign it after I read it?`
 
-1. 在结果下选择“检查”，查看实体和意向的测试结果  。
+1. 在结果下选择“检查”，查看实体和意向的测试结果。
 
     首先找到 `FormName` 实体，然后找到模式，并确定意向。 如果测试结果中未检测到实体，因而未找到模式，则需要在意向（而不是模式）上添加更多示例陈述。
 
-1. 选择顶部导航栏上的“测试”按钮，关闭测试面板  。
+1. 选择顶部导航栏上的“测试”按钮，关闭测试面板。
 
 ### <a name="using-an-explicit-list"></a>使用显式列表
 
 如果发现模式在包含 Pattern.any 时错误提取实体，请使用[显式列表](reference-pattern-syntax.md#explicit-lists)来更正此问题。
 
-## <a name="what-did-this-tutorial-accomplish"></a>本教程的目标是什么？
+## <a name="what-did-this-tutorial-accomplish"></a>本教程实现了哪些目的？
 
-本教程添加了模式，以帮助 LUIS 通过明显更高的分数来预测意向，而无需添加更多的示例言语。 对实体和可忽略的文本进行标记使得 LUIS 可以将模式应用于更广泛的各种话语。
+本教程添加了一些模式，以帮助 LUIS 通过明显更高的分数来预测意向，而无需添加更多的示例言语。 对实体和可忽略的文本进行标记使得 LUIS 可以将模式应用于更广泛的各种话语。
 
 ## <a name="clean-up-resources"></a>清理资源
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
+## <a name="next-steps"></a>后续步骤
 
 
-
+> [!div class="nextstepaction"]
+> [了解如何结合使用角色和模式](luis-tutorial-pattern.md)

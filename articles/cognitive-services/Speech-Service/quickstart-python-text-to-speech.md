@@ -11,12 +11,12 @@ ms.topic: how-to
 origin.date: 04/13/2020
 ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: a6974f4d2b083b62efd1f6bc21858cee0a9d8f83
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.openlocfilehash: 0fd660eb8f3ef483f6eb4172f1446c70deead102
+ms.sourcegitcommit: 304d3ef3c9e65c3e85977b3afb9985fbc0f908d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82126787"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85095885"
 ---
 # <a name="convert-text-to-speech-using-python"></a>使用 Python 将文本转换为语音
 
@@ -29,7 +29,7 @@ ms.locfileid: "82126787"
 * Python 2.7.x 或 3.x
 * <a href="https://visualstudio.microsoft.com/downloads/" target="_blank">Visual Studio<span class="docon docon-navigate-external x-hidden-focus"></span></a>、<a href="https://code.visualstudio.com/download" target="_blank">Visual Studio Code<span class="docon docon-navigate-external x-hidden-focus"></span></a> 或你喜欢用的文本编辑器
 * 语音服务的 Azure 订阅密钥
-* 需要语音 SDK 版本 1.10.0 或更高版本。
+* 需要语音 SDK 版本 1.11.0 或更高版本。
 
 ## <a name="create-a-project-and-import-required-modules"></a>创建一个项目并导入必需的模块
 

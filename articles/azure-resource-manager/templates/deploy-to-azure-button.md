@@ -2,20 +2,20 @@
 title: “部署到 Azure”按钮
 description: 使用此按钮从 GitHub 存储库部署 Azure 资源管理器模板。
 ms.topic: conceptual
-origin.date: 02/07/2020
-ms.date: 03/09/2020
+origin.date: 05/04/2020
+ms.date: 06/22/2020
 ms.author: v-yeche
-ms.openlocfilehash: 7fb3f1199ddaa9d501abe640c6d86ab0d5378531
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 676191f5486aaa45801fccf93af4f4083394d768
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78850491"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098621"
 ---
 <!--Verified successfully-->
 # <a name="use-a-deployment-button-to-deploy-templates-from-github-repository"></a>使用部署按钮从 GitHub 存储库部署模板
 
-本文介绍了如何使用“部署到 Azure”  按钮从 GitHub 存储库部署模板。 可以直接将此按钮添加到你的 GitHub 存储库中的 README.md 文件，也可以将其添加到引用该存储库的网页。
+本文介绍了如何使用“部署到 Azure”按钮从 GitHub 存储库部署模板。 可以直接将此按钮添加到你的 GitHub 存储库中的 README.md 文件，也可以将其添加到引用该存储库的网页。 此方法仅支持资源组级别的部署。
 
 ## <a name="use-common-image"></a>使用常用图像
 
@@ -85,7 +85,7 @@ https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubu
 
 若要测试整个解决方案，请选择以下按钮：
 
-[![部署到 Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-storage-account-create%2Fazuredeploy.json)
+[![“部署到 Azure”](https://aka.ms/deploytoazurebutton)](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-storage-account-create%2Fazuredeploy.json)
 
 门户会显示一个窗格，你可以在其中轻松地提供参数值。 这些参数预先填充了来自模板的默认值。
 
@@ -95,5 +95,4 @@ https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubu
 
 - 若要详细了解模板，请参阅[了解 Azure 资源管理器模板的结构和语法](template-syntax.md)。
 
-<!-- Update_Description: new article about deploy to azure button -->
-<!--NEW.date: 03/09/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

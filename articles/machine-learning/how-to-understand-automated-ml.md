@@ -3,19 +3,19 @@ title: 了解自动化 ML 的结果
 titleSuffix: Azure Machine Learning
 description: 了解如何查看和理解每个自动机器学习运行的图表与指标。
 services: machine-learning
-author: RachelKellam
-ms.author: rakellam
-ms.reviewer: sgilley
+author: aniththa
+ms.author: anumamah
+ms.reviewer: nibaccam
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/05/2019
-ms.openlocfilehash: 80524cb55f4d7b82985a57efd49a7224d1bb6ca8
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 08cc629e819f7cb3b10f2e58c3562db478ac0c9b
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80343115"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097535"
 ---
 # <a name="understand-automated-machine-learning-results"></a>了解自动化机器学习的结果
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -29,7 +29,7 @@ ms.locfileid: "80343115"
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
+* Azure 订阅。 如果没有 Azure 订阅，请在开始前创建一个试用帐户。 立即试用[免费版或付费版 Azure 机器学习](https://www.azure.cn/pricing/1rmb-trial)。
 
 * 使用 SDK 或 Azure 机器学习工作室为自动化机器学习运行创建试验。
 
@@ -42,7 +42,7 @@ ms.locfileid: "80343115"
 
 1. 转到你的工作区。
 
-1. 在工作区的左侧面板中，选择“试验”。 
+1. 在工作区的左侧面板中，选择“试验”。
 
    ![试验菜单的屏幕截图](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-menu.png)
 
@@ -50,11 +50,11 @@ ms.locfileid: "80343115"
 
    [![试验列表](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-list.png)](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-list-expanded.png)
 
-1. 在底部的表中，选择“运行”。 
+1. 在底部的表中，选择“运行”。
 
    [![试验运行](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-run.png)](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-run-expanded.png))
 
-1. 在“模型”中，选择要进一步探索的模型的“算法名称”。 
+1. 在“模型”中，选择要进一步探索的模型的“算法名称”。
 
    [![试验模型](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-model.png)](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-model-expanded.png)
 

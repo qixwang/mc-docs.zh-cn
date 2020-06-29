@@ -2,16 +2,16 @@
 title: 教程 - 创建和部署模板
 description: 创建第一个 Azure 资源管理器模板。 本教程将介绍模板文件语法，以及如何部署存储帐户。
 author: rockboyfor
-origin.date: 03/27/2020
-ms.date: 04/30/2020
+origin.date: 06/10/2020
+ms.date: 06/22/2020
 ms.topic: tutorial
 ms.author: v-yeche
-ms.openlocfilehash: 6780dbbc8f7b992eda6a930c192826665e5d7858
-ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
+ms.openlocfilehash: bc41a515c6afd99fed5db08fe84fed9f982c36f0
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82596070"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098603"
 ---
 # <a name="tutorial-create-and-deploy-your-first-arm-template"></a>教程：创建和部署第一个 ARM 模板
 
@@ -38,17 +38,21 @@ ms.locfileid: "82596070"
 - [安装 Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps)
 - [在 Windows 上安装 Azure CLI](https://docs.azure.cn/cli/install-azure-cli-windows?view=azure-cli-latest)
 - [在 Linux 上安装 Azure CLI](https://docs.azure.cn/cli/install-azure-cli-linux?view=azure-cli-latest)
+- [在 macOS 上安装 Azure CLI](https://docs.azure.cn/cli/install-azure-cli-macos?view=azure-cli-latest)
 
 安装 Azure PowerShell 或 Azure CLI 后，请务必完成首次登录。 有关帮助，请参阅[登录 - PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps#sign-in) 或[登录 - Azure CLI](https://docs.azure.cn/cli/get-started-with-azure-cli?view=azure-cli-latest#sign-in)。
+
+> [!IMPORTANT]
+> 如果使用的是 Azure CLI，请确保安装 2.6 或更高版本。 如果使用的是较低版本，本教程中所示的命令将不起作用。 要查看已安装版本，请使用 `az --version`。
 
 好了，现在可以开始了解模板。
 
 ## <a name="create-your-first-template"></a>创建第一个模板
 
 1. 打开装有资源管理器工具扩展的 Visual Studio Code。
-1. 在“文件”菜单中，选择“新建文件”以创建新的文件。  
-1. 在“文件”菜单中选择“另存为”。  
-1. 将该文件命名为 **azuredeploy**，然后选择“JSON”文件扩展名。  完整的文件名为 **azuredeploy.json**。
+1. 在“文件”菜单中，选择“新建文件”以创建新的文件。 
+1. 在“文件”菜单中选择“另存为”。 
+1. 将该文件命名为 **azuredeploy**，然后选择“JSON”文件扩展名。 完整的文件名为 **azuredeploy.json**。
 1. 将该文件保存到工作站。 选择容易记住的路径，因为稍后在部署模板时需要提供该路径。
 1. 将以下 JSON 内容复制并粘贴到该文件中：
 
@@ -94,6 +98,23 @@ az login
 ```
 
 ---
+
+如果你有多个 Azure 订阅，请选择要使用的订阅：
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```azurepowershell
+Set-AzContext [SubscriptionID/SubscriptionName]
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli
+az account set --subscription [SubscriptionID/SubscriptionName]
+```
+
+---
+
 ## <a name="create-resource-group"></a>创建资源组
 
 部署模板时，请指定一个包含资源的资源组。 在运行部署命令之前，请使用 Azure CLI 或 Azure PowerShell 创建该资源组。 使用以下代码部分中的选项卡在 Azure PowerShell 与 Azure CLI 之间进行选择。 本文中的 CLI 示例针对 Bash shell 编写。
@@ -165,15 +186,15 @@ az deployment group create \
 
 1. 登录到 [Azure 门户](https://portal.azure.cn)。
 
-1. 在左侧菜单中选择“资源组”。 
+1. 在左侧菜单中选择“资源组”。
 
 1. 选择在上一过程中部署的资源组。 默认名称为 **myResourceGroup**。 你应会看到，该资源组中未部署任何资源。
 
-1. 请注意，在概述的右上角显示了部署状态。 选择“1 成功”。 
+1. 请注意，在概述的右上角显示了部署状态。 选择“1 成功”。
 
     ![查看部署状态](./media/template-tutorial-create-first-template/deployment-status.png)
 
-1. 将会看到该资源组的部署历史记录。 选择“blanktemplate”。 
+1. 将会看到该资源组的部署历史记录。 选择“blanktemplate”。
 
     ![选择部署](./media/template-tutorial-create-first-template/select-from-deployment-history.png)
 
@@ -187,10 +208,10 @@ az deployment group create \
 
 如果就此停止学习，请删除该资源组。
 
-1. 在 Azure 门户上的左侧菜单中选择“资源组”  。
-2. 在“按名称筛选”字段中输入资源组名称。 
+1. 在 Azure 门户上的左侧菜单中选择“资源组”。
+2. 在“按名称筛选”字段中输入资源组名称。
 3. 选择资源组名称。
-4. 在顶部菜单中选择“删除资源组”。 
+4. 在顶部菜单中选择“删除资源组”。
 
 ## <a name="next-steps"></a>后续步骤
 

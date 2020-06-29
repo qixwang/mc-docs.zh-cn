@@ -6,17 +6,20 @@ ms.author: v-jay
 ms.service: azure-stack
 ms.topic: how-to
 origin.date: 11/18/2019
-ms.date: 05/18/2020
+ms.date: 06/22/2020
 ms.reviewer: jfggdl
 ms.lastreviewed: 11/18/2019
-ms.openlocfilehash: 69ef9e80eb61e195eba07312686bf53f07729f94
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.openlocfilehash: 6fbccab7c191d242b6547215387343808bf15644
+ms.sourcegitcommit: d86e169edf5affd28a1c1a4476d72b01a7fb421d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83422822"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85096527"
 ---
 # <a name="how-to-update-an-azure-stack-hub-resource-provider"></a>如何更新 Azure Stack Hub 资源提供程序
+
+> [!IMPORTANT]
+> 在继续之前，请务必查看资源提供程序的最新发行说明，了解新功能、修补程序以及任何可能影响部署的已知问题。 发行说明还可以指定资源提供程序所需的最低 Azure Stack Hub 版本。
 
 从 Marketplace 安装的资源提供程序需要定期维护。 维护是通过应用 Microsoft 定期提供的服务更新来完成的。 更新可以同时包含新功能和修补程序。  
 

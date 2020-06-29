@@ -1,28 +1,28 @@
 ---
-title: 从逻辑应用触发 ML 管道的运行
+title: 触发用于新数据的 ML 管道
 titleSuffix: Azure Machine Learning
 description: 了解如何使用 Azure 逻辑应用触发 ML 管道的运行。
 services: machine-learning
 author: sanpil
-ms.author: v-yiso
+ms.author: sanpil
 ms.service: machine-learning
 ms.subservice: core
 ms.workload: data-services
-ms.topic: conceptual
-origin.date: 02/07/2020
-ms.date: 03/16/2020
-ms.openlocfilehash: ebb80a543d3a851d22f7e172cf72a5c14395ed75
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.topic: how-to
+ms.date: 02/07/2020
+ms.custom: contperfq4
+ms.openlocfilehash: a6fc19df692888ace26224b32d12155c5d18f120
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78934876"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097435"
 ---
 # <a name="trigger-a-run-of-a-machine-learning-pipeline-from-a-logic-app"></a>从逻辑应用触发机器学习管道的运行
 
 在新数据出现时触发 Azure 机器学习管道的运行。 例如，你可能想要在 blob 存储帐户中出现新数据时触发管道来训练新模型。 使用 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)设置触发器。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * Azure 机器学习工作区。 有关详细信息，请参阅[创建 Azure 机器学习工作区](how-to-manage-workspace.md)。
 
@@ -39,6 +39,7 @@ ms.locfileid: "78934876"
 
 ## <a name="create-a-logic-app"></a>创建逻辑应用
 
+现在创建一个 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)实例。 如果需要，[使用集成服务环境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment.md) 并[设置客户管理的密钥](../logic-apps/customer-managed-keys-integration-service-environment.md)供逻辑应用使用。
 
 预配逻辑应用后，使用以下步骤为管道配置触发器：
 
@@ -48,25 +49,25 @@ ms.locfileid: "78934876"
     > [!div class="mx-imgBorder"]
     > ![空白模板](media/how-to-trigger-published-pipeline/blank-template.png)
 
-1. 在设计器中，搜索 **blob**。 选择“添加或修改 blob 时(仅属性)”  触发器并将此触发器添加到你的逻辑应用。
+1. 在设计器中，搜索 **blob**。 选择“添加或修改 blob 时(仅属性)”触发器并将此触发器添加到你的逻辑应用。
     > [!div class="mx-imgBorder"]
     > ![添加触发器](media/how-to-trigger-published-pipeline/add-trigger.png)
 
 1. 填写你要监视其 blob 添加或修改的 Blob 存储帐户的连接信息。 选择要监视的容器。 
  
-    选择轮询适合你的更新时要使用的“间隔”和“频率”。    
+    选择轮询适合你的更新时要使用的“间隔”和“频率”。   
 
     > [!NOTE]
     > 此触发器将监视所选容器，但不会监视子文件夹。
 
-1. 添加当检测到新的或修改的 blob 时要运行的 HTTP 操作。 选择“+ 新建步骤”  ，然后搜索并选择该 HTTP 操作。
+1. 添加当检测到新的或修改的 blob 时要运行的 HTTP 操作。 选择“+ 新建步骤”，然后搜索并选择该 HTTP 操作。
 
   > [!div class="mx-imgBorder"]
   > ![搜索 HTTP 操作](media/how-to-trigger-published-pipeline/search-http.png)
 
   使用以下设置来配置你的操作：
 
-  | 设置 | 值 | 
+  | 设置 | Value | 
   |---|---|
   | HTTP 操作 | POST |
   | URI |作为[先决条件](#prerequisites)找到的已发布管道的终结点 |
@@ -90,6 +91,6 @@ ms.locfileid: "78934876"
     将已添加到工作区的 `DataStoreName` 用作[先决条件](#prerequisites)。
      
     > [!div class="mx-imgBorder"]
-    > HTTP 设置![](media/how-to-trigger-published-pipeline/http-settings.png)
+    > ![HTTP 设置](media/how-to-trigger-published-pipeline/http-settings.png)
 
-1. 选择“保存”  ，你的计划现已准备就绪。
+1. 选择“保存”，你的计划现已准备就绪。

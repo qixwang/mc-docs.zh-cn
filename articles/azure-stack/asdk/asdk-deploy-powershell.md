@@ -4,16 +4,16 @@ description: 了解如何使用 PowerShell 从命令行部署 ASDK。
 author: WenJason
 ms.topic: article
 origin.date: 05/06/2019
-ms.date: 05/18/2020
+ms.date: 06/22/2020
 ms.author: v-jay
 ms.reviewer: misainat
 ms.lastreviewed: 02/08/2019
-ms.openlocfilehash: 7c90d823c4667be9ffdf78ee24a926c2d1bdd384
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.openlocfilehash: 51e8a8cf78c608262ed388941e8ffcab512da8ee
+ms.sourcegitcommit: d86e169edf5affd28a1c1a4476d72b01a7fb421d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83422419"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85096387"
 ---
 # <a name="deploy-asdk-from-the-command-line-using-powershell"></a>使用 Powershell 从命令行部署 ASDK
 
@@ -159,7 +159,7 @@ $aadcred = Get-Credential "<Azure AD global administrator account name>" #Exampl
 **[将 Azure Stack 注册到 Azure](asdk-register.md)**
 
 ## <a name="next-steps"></a>后续步骤
-祝贺！ 完成这些步骤后，你便获得了一个包含[管理员](https://adminportal.local.azurestack.external)门户和[用户](https://portal.local.azurestack.external)门户的 ASDK 环境。 
+祝贺！ 完成这些步骤后，你便获得了一个包含管理员门户 `https://adminportal.local.azurestack.external` 和用户门户 `https://portal.local.azurestack.external` 的 ASDK 环境。 
 
 [安装 ASDK 后的配置任务](asdk-post-deploy.md)
 

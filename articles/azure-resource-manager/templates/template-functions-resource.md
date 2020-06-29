@@ -2,15 +2,15 @@
 title: 模板函数 - 资源
 description: 介绍可在 Azure Resource Manager 模板中用于检索资源相关值的函数。
 ms.topic: conceptual
-origin.date: 04/06/2020
-ms.date: 04/30/2020
+origin.date: 06/01/2020
+ms.date: 06/22/2020
 ms.author: v-yeche
-ms.openlocfilehash: 489f8df5b54d19aa989256a946493c5fd0693b7d
-ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
+ms.openlocfilehash: e97979b8aafe95fbacf64ca2d0646b30491d4b6b
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82596078"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098604"
 ---
 # <a name="resource-functions-for-arm-templates"></a>ARM 模板的资源函数
 
@@ -30,9 +30,7 @@ ms.locfileid: "82596078"
 
 ## <a name="extensionresourceid"></a>extensionResourceId
 
-```json
-extensionResourceId(resourceId, resourceType, resourceName1, [resourceName2], ...)
-```
+`extensionResourceId(resourceId, resourceType, resourceName1, [resourceName2], ...)`
 
 返回某个[扩展资源](../management/extension-resource-types.md)的资源 ID，该资源属于适用于其他资源的资源类型，是对其功能的补充。
 
@@ -87,7 +85,7 @@ extensionResourceId(resourceId, resourceType, resourceName1, [resourceName2], ..
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "lockName":{
@@ -105,16 +103,14 @@ extensionResourceId(resourceId, resourceType, resourceName1, [resourceName2], ..
 }
 ```
 
-<a name="listkeys" />
-<a name="list" />
+<a name="listkeys"></a>
+<a name="list"></a>
 
 ## <a name="list"></a>list*
 
-```json
-list{Value}(resourceName or resourceIdentifier, apiVersion, functionValues)
-```
+`list{Value}(resourceName or resourceIdentifier, apiVersion, functionValues)`
 
-此函数的语法因列表操作的名称而异。 每个实现都为支持列表操作的资源类型返回值。 操作名称必须以 `list` 开头。 一些常见用法是 `listKeys` 和 `listSecrets`。
+此函数的语法因列表操作的名称而异。 每个实现都为支持列表操作的资源类型返回值。 操作名称必须以 `list` 开头。 以下是几个常见示例：`listKeys`、`listKeyValue` 和 `listSecrets`。
 
 ### <a name="parameters"></a>parameters
 
@@ -122,9 +118,9 @@ list{Value}(resourceName or resourceIdentifier, apiVersion, functionValues)
 |:--- |:--- |:--- |:--- |
 | resourceName 或 resourceIdentifier |是 |string |资源的唯一标识符。 |
 | apiVersion |是 |string |资源运行时状态的 API 版本。 通常采用 **yyyy-mm-dd**格式。 |
-| functionValues |否 |object | 具有函数值的对象。 仅为支持接收具有参数值的对象的函数提供此对象，例如存储帐户上的 listAccountSas  。 本文中演示了传递函数值的示例。 |
+| functionValues |否 |object | 具有函数值的对象。 仅为支持接收具有参数值的对象的函数提供此对象，例如存储帐户上的 listAccountSas。 本文中演示了传递函数值的示例。 |
 
-### <a name="valid-uses"></a>有效使用
+### <a name="valid-uses"></a>有效的使用方式
 
 list 函数只能用在资源定义的 properties 中以及模板或部署的 outputs 节中。 与[属性迭代](copy-properties.md)一起使用时，可以使用 `input` 的 list 函数，因为表达式已分配给资源属性。 不能将它们与 `count` 一起使用，因为必须在解析 list 函数之前确定计数。
 
@@ -135,6 +131,8 @@ list 函数只能用在资源定义的 properties 中以及模板或部署的 ou
 | 资源类型 | 函数名称 |
 | ------------- | ------------- |
 | Microsoft.AnalysisServices/servers | [listGatewayStatus](https://docs.microsoft.com/rest/api/analysisservices/servers/listgatewaystatus) |
+| Microsoft.AppConfiguration | [ListKeyValue](https://docs.microsoft.com/rest/api/appconfiguration/configurationstores/listkeyvalue) |
+| Microsoft.AppConfiguration/configurationStores | ListKeys |
 | Microsoft.Automation/automationAccounts | [listKeys](https://docs.microsoft.com/rest/api/automation/keys/listbyautomationaccount) |
 | Microsoft.Batch/batchAccounts | [listkeys](https://docs.microsoft.com/rest/api/batchmanagement/batchaccount/getkeys) |
 | Microsoft.Cache/redis | [listKeys](https://docs.microsoft.com/rest/api/redis/redis/listkeys) |
@@ -156,11 +154,13 @@ list 函数只能用在资源定义的 properties 中以及模板或部署的 ou
 | Microsoft.Devices/provisioningServices | [listkeys](https://docs.microsoft.com/rest/api/iot-dps/iotdpsresource/listkeys) |
 | Microsoft.DocumentDB/databaseAccounts | [listConnectionStrings](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/databaseaccounts/listconnectionstrings) |
 | Microsoft.DocumentDB/databaseAccounts | [listKeys](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/databaseaccounts/listkeys) |
-| Microsoft.EventGrid/domains | [listKeys](https://docs.microsoft.com/rest/api/eventgrid/domains/listsharedaccesskeys) |
-| Microsoft.EventGrid/topics | [listKeys](https://docs.microsoft.com/rest/api/eventgrid/topics/listsharedaccesskeys) |
-| Microsoft.EventHub/namespaces/authorizationRules | [listkeys](https://docs.microsoft.com/rest/api/eventhub/namespaces/listkeys) |
-| Microsoft.EventHub/namespaces/disasterRecoveryConfigs/authorizationRules | [listkeys](https://docs.microsoft.com/rest/api/eventhub/disasterrecoveryconfigs/listkeys) |
-| Microsoft.EventHub/namespaces/eventhubs/authorizationRules | [listkeys](https://docs.microsoft.com/rest/api/eventhub/eventhubs/listkeys) |
+| Microsoft.DomainRegistration | [listDomainRecommendations](https://docs.microsoft.com/rest/api/appservice/domains/listrecommendations) |
+| Microsoft.DomainRegistration/topLevelDomains | [listAgreements](https://docs.microsoft.com/rest/api/appservice/topleveldomains/listagreements) |
+| Microsoft.EventGrid/domains | [listKeys](https://docs.microsoft.com/rest/api/eventgrid/version2020-06-01/domains/listsharedaccesskeys) |
+| Microsoft.EventGrid/topics | [listKeys](https://docs.microsoft.com/rest/api/eventgrid/version2020-06-01/topics/listsharedaccesskeys) |
+| Microsoft.EventHub/namespaces/authorizationRules | [listkeys](https://docs.microsoft.com/rest/api/eventhub) |
+| Microsoft.EventHub/namespaces/disasterRecoveryConfigs/authorizationRules | [listkeys](https://docs.microsoft.com/rest/api/eventhub) |
+| Microsoft.EventHub/namespaces/eventhubs/authorizationRules | [listkeys](https://docs.microsoft.com/rest/api/eventhub) |
 | Microsoft.ImportExport/jobs | [listBitLockerKeys](https://docs.microsoft.com/rest/api/storageimportexport/bitlockerkeys/list) |
 | Microsoft.Kusto/Clusters/Databases | [ListPrincipals](https://docs.microsoft.com/rest/api/azurerekusto/databases/listprincipals) |
 | Microsoft.Logic/integrationAccounts/agreements | [listContentCallbackUrl](https://docs.microsoft.com/rest/api/logic/agreements/listcontentcallbackurl) |
@@ -176,9 +176,12 @@ list 函数只能用在资源定义的 properties 中以及模板或部署的 ou
 | Microsoft.Logic/workflows/runs/actions/repetitions | [listExpressionTraces](https://docs.microsoft.com/rest/api/logic/workflowrunactionrepetitions/listexpressiontraces) |
 | Microsoft.Logic/workflows/triggers | [listCallbackUrl](https://docs.microsoft.com/rest/api/logic/workflowtriggers/listcallbackurl) |
 | Microsoft.Logic/workflows/versions/triggers | [listCallbackUrl](https://docs.microsoft.com/rest/api/logic/workflowversions/listcallbackurl) |
+| Microsoft.MachineLearning/webServices | [listkeys](https://docs.microsoft.com/rest/api/machinelearning/webservices/listkeys) |
+| Microsoft.MachineLearning/Workspaces | listworkspacekeys |
 | Microsoft.MachineLearningServices/workspaces/computes | [listKeys](https://docs.microsoft.com/rest/api/azureml/workspacesandcomputes/machinelearningcompute/listkeys) |
 | Microsoft.MachineLearningServices/workspaces/computes | [listNodes](https://docs.microsoft.com/rest/api/azureml/workspacesandcomputes/machinelearningcompute/listnodes) |
 | Microsoft.MachineLearningServices/workspaces | [listKeys](https://docs.microsoft.com/rest/api/azureml/workspacesandcomputes/workspaces/listkeys) |
+| Microsoft.Maps/accounts | [listKeys](https://docs.microsoft.com/rest/api/maps-management/accounts/listkeys) |
 | Microsoft.Media/mediaservices/assets | [listContainerSas](https://docs.microsoft.com/rest/api/media/assets/listcontainersas) |
 | Microsoft.Media/mediaservices/assets | [listStreamingLocators](https://docs.microsoft.com/rest/api/media/assets/liststreaminglocators) |
 | Microsoft.Media/mediaservices/streamingLocators | [listContentKeys](https://docs.microsoft.com/rest/api/media/streaminglocators/listcontentkeys) |
@@ -186,7 +189,8 @@ list 函数只能用在资源定义的 properties 中以及模板或部署的 ou
 | Microsoft.Network/applicationSecurityGroups | listIpConfigurations |
 | Microsoft.NotificationHubs/Namespaces/authorizationRules | [listkeys](https://docs.microsoft.com/rest/api/notificationhubs/namespaces/listkeys) |
 | Microsoft.NotificationHubs/Namespaces/NotificationHubs/authorizationRules | [listkeys](https://docs.microsoft.com/rest/api/notificationhubs/notificationhubs/listkeys) |
-| Microsoft.OperationalInsights/workspaces | [listKeys](https://docs.microsoft.com/rest/api/loganalytics/workspaces%202015-03-20/listkeys) |
+| Microsoft.OperationalInsights/workspaces | [list](https://docs.microsoft.com/rest/api/loganalytics/workspaces/list) |
+| Microsoft.PolicyInsights/remediations | [listDeployments](https://docs.microsoft.com/rest/api/policy-insights/remediations/listdeploymentsatresourcegroup) |
 | Microsoft.Relay/namespaces/authorizationRules | [listkeys](https://docs.microsoft.com/rest/api/relay/namespaces/listkeys) |
 | Microsoft.Relay/namespaces/disasterRecoveryConfigs/authorizationRules | listkeys |
 | Microsoft.Relay/namespaces/HybridConnections/authorizationRules | [listkeys](https://docs.microsoft.com/rest/api/relay/hybridconnections/listkeys) |
@@ -217,6 +221,13 @@ list 函数只能用在资源定义的 properties 中以及模板或部署的 ou
 | microsoft.web/sites/slots/backups | [list](https://docs.microsoft.com/rest/api/appservice/webapps/listbackupsslot) |
 | Microsoft.Web/sites/slots/config | [list](https://docs.microsoft.com/rest/api/appservice/webapps/listconfigurationsslot) |
 | microsoft.web/sites/slots/functions | [listsecrets](https://docs.microsoft.com/rest/api/appservice/webapps/listfunctionsecretsslot) |
+
+<!--Not available on BatchAI and BlockChain on line 135 + 3-->
+<!--Not available on DateBox on line 146 + 1-->
+<!--Not available on DateShare on line 148 + 5-->
+<!--Not available on DevTestLabs on line 152 + 4-->
+<!--Not available on LbaService on line 163 + 2-->
+<!--Not available on StorSimple on line 205 + 4-->
 
 若要确定哪些资源类型具有列表操作，请使用以下选项：
 
@@ -259,7 +270,7 @@ list 函数只能用在资源定义的 properties 中以及模板或部署的 ou
 
 使用资源名称或 [resourceId 函数](#resourceid)来指定资源。 在部署被引用资源的同一模板中使用列表函数时，请使用资源名称。
 
-如果在有条件部署的资源中使用 **list** 函数，则会对该函数进行评估，即使资源尚未部署。 如果 **list** 函数引用某个不存在的资源，则会出现错误。 使用 **if** 函数确保仅在部署资源时才评估函数。 请查看示例模板的 [if 函数](template-functions-logical.md#if)，该模板将 if 和 list 用于进行条件部署的资源。
+如果在有条件部署的资源中使用 **list** 函数，则会对该函数进行评估，即使资源尚未部署。 如果 list 函数引用的资源不存在，系统会显示错误。 使用 **if** 函数确保仅在部署资源时才评估函数。 请参阅 [if 函数](template-functions-logical.md#if)以获取使用 if 和 list 以及有条件部署的资源的示例模板。
 
 ### <a name="list-example"></a>List 示例
 
@@ -269,7 +280,7 @@ list 函数只能用在资源定义的 properties 中以及模板或部署的 ou
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "storagename": {
@@ -330,11 +341,11 @@ list 函数只能用在资源定义的 properties 中以及模板或部署的 ou
 }
 ```
 
+<!--Not available on [Quickstart: Automated VM deployment with App Configuration and Resource Manager template](../../azure-app-configuration/quickstart-resource-manager.md#deploy-vm-using-stored-key-values)-->
+
 ## <a name="providers"></a>providers
 
-```json
-providers(providerNamespace, [resourceType])
-```
+`providers(providerNamespace, [resourceType])`
 
 返回有关资源提供程序及其支持的资源类型的信息。 如果未提供资源类型，则该函数将返回资源提供程序支持的所有类型。
 
@@ -365,7 +376,7 @@ providers(providerNamespace, [resourceType])
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "providerNamespace": {
@@ -385,7 +396,7 @@ providers(providerNamespace, [resourceType])
 }
 ```
 
-对于 Microsoft.Web 资源提供程序和站点资源类型，上面的示例返回以下格式的对象   ：
+对于 Microsoft.Web 资源提供程序和站点资源类型，上面的示例返回以下格式的对象 ：
 
 ```json
 {
@@ -409,9 +420,7 @@ providers(providerNamespace, [resourceType])
 
 ## <a name="reference"></a>reference
 
-```json
-reference(resourceName or resourceIdentifier, [apiVersion], ['Full'])
-```
+`reference(resourceName or resourceIdentifier, [apiVersion], ['Full'])`
 
 返回表示资源的运行时状态的对象。
 
@@ -420,7 +429,7 @@ reference(resourceName or resourceIdentifier, [apiVersion], ['Full'])
 | 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | resourceName 或 resourceIdentifier |是 |string |资源的名称或唯一标识符。 当引用当前模板中的资源时，请仅提供资源名称作为参数。 当引用以前部署的资源或者资源名称不明确时，请提供资源 ID。 |
-| apiVersion |否 |string |指定的资源的 API 版本。 如果资源不是在同一模板中预配的，则需要此参数。  通常采用 **yyyy-mm-dd**格式。 |
+| apiVersion |否 |string |指定的资源的 API 版本。 如果资源不是在同一模板中预配的，则需要此参数。 通常采用 **yyyy-mm-dd**格式。 |
 | 'Full' |否 |string |一个值，指定是否要返回完整资源对象。 如果未指定 `'Full'`，仅返回资源的属性对象。 完整对象包括资源 ID 和位置等值。 |
 
 <!--MOONCAKE: Not Available on [template reference](https://docs.microsoft.com/azure/templates/)-->
@@ -433,7 +442,7 @@ reference(resourceName or resourceIdentifier, [apiVersion], ['Full'])
 
 reference 函数检索以前部署的资源或在当前模板中部署的资源的运行时状态。 本文展示了这两种方案的示例。
 
-通常情况下，可以使用 reference 函数返回对象的特定值，例如 blob 终结点 URI 或完全限定的域名  。
+通常情况下，可以使用 reference 函数返回对象的特定值，例如 blob 终结点 URI 或完全限定的域名。
 
 ```json
 "outputs": {
@@ -474,13 +483,13 @@ reference 函数检索以前部署的资源或在当前模板中部署的资源�
 
 ### <a name="valid-uses"></a>有效使用
 
-reference 函数只能用在资源定义的 properties 中以及模板或部署的 outputs 节中。 与[属性迭代](copy-properties.md)一起使用时，可以使用 `input` 的 reference 函数，因为表达式已分配给资源属性。
+reference 函数只能用在资源定义的 properties 中以及模板或部署的 outputs 节中。 与[属性迭代](copy-properties.md)一起使用时，可以将 reference 函数用于 `input`，因为该表达式是分配给资源属性的。
 
 不能使用引用函数在复制循环中设置 `count` 属性的值。 可用于在循环中设置其他属性。 count 属性的引用会被阻止，因为必须在解析引用函数之前确定该属性。
 
-不能在[嵌套模板](linked-templates.md#nested-template)的输出中使用引用函数返回已在嵌套模板中部署的资源， 只能使用[链接模板](linked-templates.md#linked-template)。
+若要在嵌套模板的输出部分中使用 reference 函数或任何 list* 函数，必须将 ```expressionEvaluationOptions``` 设置为使用[内层作用域](linked-templates.md#expression-evaluation-scope-in-nested-templates)计算或使用链接的而不是嵌套的模板。
 
-如果在有条件部署的资源中使用 **reference** 函数，则会对该函数进行评估，即使资源尚未部署。  如果 **reference** 函数引用某个不存在的资源，则会出现错误。 使用 **if** 函数确保仅在部署资源时才评估函数。 请查看示例模板的 [if 函数](template-functions-logical.md#if)，该模板将 if 和 reference 用于进行条件部署的资源。
+如果在有条件部署的资源中使用 **reference** 函数，则会对该函数进行评估，即使资源尚未部署。  如果 reference 函数引用的资源不存在，系统会显示错误。 使用 **if** 函数确保仅在部署资源时才评估函数。 请参阅 [if 函数](template-functions-logical.md#if)以获取使用 if 和 reference 以及有条件部署的资源的示例模板。
 
 ### <a name="implicit-dependency"></a>隐式依赖项
 
@@ -488,7 +497,7 @@ reference 函数只能用在资源定义的 properties 中以及模板或部署�
 
 ### <a name="resource-name-or-identifier"></a>资源名称或标识符
 
-引用部署在同一模板中的资源时，请提供资源的名称。
+若要引用在同一模板中部署的资源，请提供资源的名称。
 
 ```json
 "value": "[reference(parameters('storageAccountName'))]"
@@ -500,7 +509,7 @@ reference 函数只能用在资源定义的 properties 中以及模板或部署�
 "value": "[reference(resourceId(parameters('storageResourceGroup'), 'Microsoft.Storage/storageAccounts', parameters('storageAccountName')), '2018-07-01')]"
 ```
 
-为了避免对引用的资源产生歧义，可以提供完全限定的资源标识符。
+若要避免所引用的资源不明确，可以提供完全限定的资源标识符。
 
 ```json
 "value": "[reference(resourceId('Microsoft.Network/publicIPAddresses', parameters('ipAddressName')))]"
@@ -520,10 +529,20 @@ reference 函数只能用在资源定义的 properties 中以及模板或部署�
 
 [Azure 资源的托管标识](../../active-directory/managed-identities-azure-resources/overview.md)是为某些资源隐式创建的[扩展资源类型](../management/extension-resource-types.md)。 由于模板中未显式定义托管标识，因此必须引用该标识所应用到的资源。 使用 `Full` 获取所有属性，包括隐式创建的标识。
 
-例如，若要获取应用于虚拟机规模集的托管标识的租户 ID，请使用：
+模式为：
+
+`"[reference(resourceId(<resource-provider-namespace>, <resource-name>, <API-version>, 'Full').Identity.propertyName]"`
+
+例如，若要获取应用于虚拟机的托管标识的主体 ID，请使用：
 
 ```json
-"tenantId": "[reference(resourceId('Microsoft.Compute/virtualMachineScaleSets',  variables('vmNodeType0Name')), '2019-03-01', 'Full').Identity.tenantId]"
+"[reference(resourceId('Microsoft.Compute/virtualMachines', variables('vmName')),'2019-12-01', 'Full').identity.principalId]",
+```
+
+或者，若要获取应用于虚拟机规模集的托管标识的租户 ID，请使用：
+
+```json
+"[reference(resourceId('Microsoft.Compute/virtualMachineScaleSets',  variables('vmNodeType0Name')), 2019-12-01, 'Full').Identity.tenantId]"
 ```
 
 ### <a name="reference-example"></a>Reference 示例
@@ -532,9 +551,10 @@ reference 函数只能用在资源定义的 properties 中以及模板或部署�
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
+      "storageAccountEndPoint": "https://core.chinacloudapi.cn/",
       "storageAccountName": {
           "type": "string"
       }
@@ -626,7 +646,7 @@ reference 函数只能用在资源定义的 properties 中以及模板或部署�
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "storageResourceGroup": {
@@ -648,9 +668,7 @@ reference 函数只能用在资源定义的 properties 中以及模板或部署�
 
 ## <a name="resourcegroup"></a>resourceGroup
 
-```json
-resourceGroup()
-```
+`resourceGroup()`
 
 返回表示当前资源组的对象。
 
@@ -692,7 +710,7 @@ resourceGroup 函数的一个常见用途是在与资源组相同的位置中创
 }
 ```
 
-也可使用 resourceGroup 函数将资源组提供的标记应用到资源。 有关详细信息，请参阅[应用资源组提供的标记](../management/tag-resources.md#apply-tags-from-resource-group)。
+还可以使用 resourceGroup 函数将资源组中的标记应用于资源。 有关详细信息，请参阅[应用资源组中的标记](../management/tag-resources.md#apply-tags-from-resource-group)。
 
 使用嵌套模板部署到多个资源组时，可以指定评估 resourceGroup 函数的范围。 有关详细信息，[将 Azure 资源部署到多个订阅或资源组](cross-resource-group-deployment.md)。
 
@@ -702,7 +720,7 @@ resourceGroup 函数的一个常见用途是在与资源组相同的位置中创
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "resources": [],
     "outputs": {
@@ -730,9 +748,7 @@ resourceGroup 函数的一个常见用途是在与资源组相同的位置中创
 
 ## <a name="resourceid"></a>ResourceId
 
-```json
-resourceId([subscriptionId], [resourceGroupName], resourceType, resourceName1, [resourceName2], ...)
-```
+`resourceId([subscriptionId], [resourceGroupName], resourceType, resourceName1, [resourceName2], ...)`
 
 返回资源的唯一标识符。 如果资源名称不确定或未设置在相同的模板内，请使用此函数。 返回的标识符的格式因部署是在资源组、订阅、管理组还是租户的范围内进行而不同。
 
@@ -756,7 +772,7 @@ resourceId([subscriptionId], [resourceGroupName], resourceType, resourceName1, [
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 ```
 
-在[订阅级别部署](deploy-to-subscription.md)中使用时，使用以下格式返回资源 ID：
+用于[订阅级别部署](deploy-to-subscription.md)中时，将返回以下格式的资源 ID：
 
 ```json
 /subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -796,7 +812,7 @@ resourceId([subscriptionId], [resourceGroupName], resourceType, resourceName1, [
 "[resourceId('otherResourceGroup', 'Microsoft.Storage/storageAccounts', 'examplestorage')]"
 ```
 
-对于属于不同订阅和资源组的资源，若要获取其资源 ID，请提供订阅 ID 和资源组名称。
+若要获取位于不同订阅和资源组中的资源的资源 ID，请提供订阅 ID 和资源组名称。
 
 ```json
 "[resourceId('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx', 'otherResourceGroup', 'Microsoft.Storage/storageAccounts','examplestorage')]"
@@ -806,7 +822,7 @@ resourceId([subscriptionId], [resourceGroupName], resourceType, resourceName1, [
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
       "virtualNetworkName": {
@@ -852,7 +868,7 @@ resourceId([subscriptionId], [resourceGroupName], resourceType, resourceName1, [
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "resources": [],
     "outputs": {
@@ -887,9 +903,7 @@ resourceId([subscriptionId], [resourceGroupName], resourceType, resourceName1, [
 
 ## <a name="subscription"></a>订阅
 
-```json
-subscription()
-```
+`subscription()`
 
 返回有关当前部署的订阅的详细信息。
 
@@ -916,7 +930,7 @@ subscription()
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "resources": [],
     "outputs": {
@@ -930,9 +944,7 @@ subscription()
 
 ## <a name="subscriptionresourceid"></a>subscriptionResourceId
 
-```json
-subscriptionResourceId([subscriptionId], resourceType, resourceName1, [resourceName2], ...)
-```
+`subscriptionResourceId([subscriptionId], resourceType, resourceName1, [resourceName2], ...)`
 
 返回在订阅级别部署的资源的唯一标识符。
 
@@ -965,7 +977,7 @@ subscriptionResourceId([subscriptionId], resourceType, resourceName1, [resourceN
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "principalId": {
@@ -1014,9 +1026,7 @@ subscriptionResourceId([subscriptionId], resourceType, resourceName1, [resourceN
 
 ## <a name="tenantresourceid"></a>tenantResourceId
 
-```json
-tenantResourceId(resourceType, resourceName1, [resourceName2], ...)
-```
+`tenantResourceId(resourceType, resourceName1, [resourceName2], ...)`
 
 返回在租户级别部署的资源的唯一标识符。
 

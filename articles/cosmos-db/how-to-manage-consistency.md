@@ -4,15 +4,15 @@ description: 了解如何使用 Azure 门户、.NET SDK、Java SDK 和各种其�
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
-origin.date: 12/02/2019
-ms.date: 04/27/2020
+origin.date: 06/10/2020
+ms.date: 06/22/2020
 ms.author: v-yeche
-ms.openlocfilehash: bf99c9ecd82d5ef16bb7f7bea7eb4aa9f4521a66
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.openlocfilehash: 16f03d5da9e11b6e34a970719992ea7591ae8356
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82134912"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098499"
 ---
 # <a name="manage-consistency-levels-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中管理一致性级别
 
@@ -22,61 +22,56 @@ ms.locfileid: "82134912"
 
 ## <a name="configure-the-default-consistency-level"></a>配置默认一致性级别
 
-[默认一致性级别](consistency-levels.md)是客户端默认情况下使用的一致性级别。 客户端总是可以替代它。
+[默认一致性级别](consistency-levels.md)是客户端默认情况下使用的一致性级别。
 
-### <a name="cli"></a>CLI
+# <a name="azure-portal"></a>[Azure 门户](#tab/portal)
 
-```azurecli
-# create with a default consistency
-az cosmosdb create --name <name of Cosmos DB Account> --resource-group <resource group name> --default-consistency-level Session
+若要查看或修改默认一致性级别，请登录到 Azure 门户。 找到你的 Azure Cosmos 帐户，打开“默认一致性”窗格****。 选择你希望用作新的默认值的一致性级别，然后选择“保存”****。 
 
-# update an existing account's default consistency
-az cosmosdb update --name <name of Cosmos DB Account> --resource-group <resource group name> --default-consistency-level Eventual
-```
-
-### <a name="powershell"></a>PowerShell
-
-此示例在“中国东部”和“中国北部”区域中创建启用了多个写入区域的新 Azure Cosmos 帐户。 默认一致性级别设置为“会话”一致性  。
-
-```powershell
-$locations = @(@{"locationName"="China East"; "failoverPriority"=0},
-             @{"locationName"="China North"; "failoverPriority"=1})
-
-$iprangefilter = ""
-
-$consistencyPolicy = @{"defaultConsistencyLevel"="Session"}
-
-$CosmosDBProperties = @{"databaseAccountOfferType"="Standard";
-                        "locations"=$locations;
-                        "consistencyPolicy"=$consistencyPolicy;
-                        "ipRangeFilter"=$iprangefilter;
-                        "enableMultipleWriteLocations"="true"}
-
-New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
-  -ApiVersion "2015-04-08" `
-  -ResourceGroupName "myResourceGroup" `
-  -Location "China East" `
-  -Name "myCosmosDbAccount" `
-  -Properties $CosmosDBProperties
-```
-
-### <a name="azure-portal"></a>Azure 门户
-
-<!--MOONCAKE: music notes in cosmos db NOT AVAILABLE-->
-
-若要查看或修改默认一致性级别，请登录到 Azure 门户。 找到你的 Azure Cosmos 帐户，打开“默认一致性”窗格  。 选择你希望用作新的默认值的一致性级别，然后选择“保存”  。
-
-<!--MOONCAKE: music notes in cosmos db NOT AVAILABLE-->
-<!--Not Availabel on 06/14/2019 The Azure portal also provides a visualization of different consistency levels with music notes. -->
+<!--MOONCAKE: music notes in cosmos db NOT AVAILABLE till on 06/19/2020-->
+<!--Not Available on The Azure portal also provides a visualization of different consistency levels with music notes. -->
 
 ![Azure 门户中的一致性菜单](./media/how-to-manage-consistency/consistency-settings.png)
+
+# <a name="cli"></a>[CLI](#tab/cli)
+
+创建具有会话一致性的 Cosmos 帐户，并更新默认一致性。
+
+```azurecli
+# Create a new account with Session consistency
+az cosmosdb create --name $accountName --resource-group $resourceGroupName --default-consistency-level Session
+
+# update an existing account's default consistency
+az cosmosdb update --name $accountName --resource-group $resourceGroupName --default-consistency-level Strong
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+创建具有会话一致性的 Cosmos 帐户，并更新默认一致性。
+
+```powershell
+# Create a new account with Session consistency
+New-AzCosmosDBAccount -ResourceGroupName $resourceGroupName `
+  -Location $locations -Name $accountName -DefaultConsistencyLevel "Session"
+
+# Update an existing account's default consistency
+Update-AzCosmosDBAccount -ResourceGroupName $resourceGroupName `
+  -Name $accountName -DefaultConsistencyLevel "Strong"
+```
+
+---
 
 ## <a name="override-the-default-consistency-level"></a>替代默认一致性级别
 
 客户端可以重写由服务设置的默认一致性级别。 可以在每个请求上设置一致性级别，这将替代在帐户级别设置的默认一致性级别。
 
+> [!TIP]
+> 只能在请求级别放松**** 一致性要求。 若要从较弱的一致性移动到更强的一致性，请更新 Cosmos 帐户的默认一致性。
+
 <a name="override-default-consistency-dotnet"></a>
-### <a name="net-sdk-v2"></a>.NET SDK V2
+### <a name="net-sdk"></a>.NET SDK
+
+# <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
 
 ```csharp
 // Override consistency at the client level
@@ -88,8 +83,7 @@ RequestOptions requestOptions = new RequestOptions { ConsistencyLevel = Consiste
 var response = await client.CreateDocumentAsync(collectionUri, document, requestOptions);
 ```
 
-<a name="override-default-consistency-dotnet-v3"></a>
-### <a name="net-sdk-v3"></a>.NET SDK V3
+# <a name="net-sdk-v3"></a>[.NET SDK V3](#tab/dotnetv3)
 
 ```csharp
 // Override consistency at the request level via request options
@@ -97,13 +91,53 @@ ItemRequestOptions requestOptions = new ItemRequestOptions { ConsistencyLevel = 
 
 var response = await client.GetContainer(databaseName, containerName)
     .CreateItemAsync(
-        item, 
-        new PartitionKey(itemPartitionKey), 
+        item,
+        new PartitionKey(itemPartitionKey),
         requestOptions);
 ```
+---
 
-<a name="override-default-consistency-java-async"></a>
-### <a name="java-async-sdk"></a>Java 异步 SDK
+<a name="override-default-consistency-javav4"></a>
+### <a name="java-v4-sdk"></a>Java V4 SDK
+
+# <a name="async"></a>[异步](#tab/api-async)
+
+   Java SDK V4 (Maven com.azure::azure-cosmos) 异步 API
+
+   ```java
+
+   CosmosAsyncClient client =
+           new CosmosClientBuilder()
+                   .endpoint(HOST)
+                   .key(MASTER_KEY)
+                   .consistencyLevel(ConsistencyLevel.EVENTUAL)
+                   .buildAsyncClient();
+
+   ```
+
+# <a name="sync"></a>[Sync](#tab/api-sync)
+
+   Java SDK V4 (Maven com.azure::azure-cosmos) 同步 API
+
+   ```java
+
+   CosmosClient client =
+           new CosmosClientBuilder()
+                   .endpoint(HOST)
+                   .key(MASTER_KEY)
+                   .consistencyLevel(ConsistencyLevel.EVENTUAL)
+                   .buildClient();
+
+   ```
+
+--- 
+
+<a name="override-default-consistency-javav2"></a>
+### <a name="java-v2-sdks"></a>Java V2 SDK
+
+# <a name="async"></a>[异步](#tab/api-async)
+
+Async Java V2 SDK (Maven com.microsoft.azure::azure-cosmosdb)
 
 ```java
 // Override consistency at the client level
@@ -117,14 +151,16 @@ AsyncDocumentClient client =
                 .withConnectionPolicy(policy).build();
 ```
 
-<a name="override-default-consistency-java-sync"></a>
-### <a name="java-sync-sdk"></a>Java 同步 SDK
+# <a name="sync"></a>[Sync](#tab/api-sync)
+
+Sync Java V2 SDK (Maven com.microsoft.azure::azure-documentdb)
 
 ```java
 // Override consistency at the client level
 ConnectionPolicy connectionPolicy = new ConnectionPolicy();
 DocumentClient client = new DocumentClient(accountEndpoint, accountKey, connectionPolicy, ConsistencyLevel.Eventual);
 ```
+---
 
 <a name="override-default-consistency-javascript"></a>
 ### <a name="nodejsjavascripttypescript-sdk"></a>Node.js/JavaScript/TypeScript SDK
@@ -152,12 +188,14 @@ client = cosmos_client.CosmosClient(self.account_endpoint, {
 
 ## <a name="utilize-session-tokens"></a>利用会话令牌
 
-Azure Cosmos DB 中的一致性级别之一是“会话”一致性  。 这是默认情况下应用于 Cosmos 帐户的默认级别。 使用“会话”一致性时，客户端将在内部的每个读取/查询请求中使用会话令牌，以确保维持设置的一致性级别  。
+Azure Cosmos DB 中的一致性级别之一是“会话”一致性**。 这是默认情况下应用于 Cosmos 帐户的默认级别。 使用“会话”一致性时，客户端将在内部的每个读取/查询请求中使用会话令牌，以确保维持设置的一致性级别**。
 
 若要手动管理会话令牌，请从响应中获取会话令牌并针对每个请求设置它们。 如果不需手动管理会话令牌，则不需要使用这些示例。 SDK 会自动跟踪会话令牌。 如果未手动设置会话令牌，则默认情况下，SDK 使用最新的会话令牌。
 
 <a name="utilize-session-tokens-dotnet"></a>
-### <a name="net-sdk-v2"></a>.NET SDK V2
+### <a name="net-sdk"></a>.NET SDK
+
+# <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
 
 ```csharp
 var response = await client.ReadDocumentAsync(
@@ -170,8 +208,7 @@ var response = await client.ReadDocumentAsync(
                 UriFactory.CreateDocumentUri(databaseName, collectionName, "SalesOrder1"), options);
 ```
 
-<a name="utilize-session-tokens-dotnet-v3"></a>
-### <a name="net-sdk-v3"></a>.NET SDK V3
+# <a name="net-sdk-v3"></a>[.NET SDK V3](#tab/dotnetv3)
 
 ```csharp
 Container container = client.GetContainer(databaseName, collectionName);
@@ -182,9 +219,53 @@ ItemRequestOptions options = new ItemRequestOptions();
 options.SessionToken = sessionToken;
 ItemResponse<SalesOrder> response = await container.ReadItemAsync<SalesOrder>(salesOrder.Id, new PartitionKey(salesOrder.PartitionKey), options);
 ```
+---
 
-<a name="utilize-session-tokens-java-async"></a>
-### <a name="java-async-sdk"></a>Java 异步 SDK
+<a name="override-default-consistency-javav4"></a>
+### <a name="java-v4-sdk"></a>Java V4 SDK
+
+# <a name="async"></a>[异步](#tab/api-async)
+
+   Java SDK V4 (Maven com.azure::azure-cosmos) 异步 API
+
+   ```java
+
+   // Get session token from response
+   CosmosItemResponse<JsonNode> response = container.readItem(itemId, new PartitionKey(partitionKey), JsonNode.class).block();
+   String sessionToken = response.getSessionToken();
+
+   // Resume the session by setting the session token on the RequestOptions
+   CosmosItemRequestOptions options = new CosmosItemRequestOptions();
+   options.setSessionToken(sessionToken);
+   CosmosItemResponse<JsonNode> response2 = container.readItem(itemId, new PartitionKey(partitionKey), JsonNode.class).block();
+
+   ```
+
+# <a name="sync"></a>[Sync](#tab/api-sync)
+
+   Java SDK V4 (Maven com.azure::azure-cosmos) 同步 API
+
+   ```java
+
+   // Get session token from response
+   CosmosItemResponse<JsonNode> response = container.readItem(itemId, new PartitionKey(partitionKey), JsonNode.class);
+   String sessionToken = response.getSessionToken();
+
+   // Resume the session by setting the session token on the RequestOptions
+   CosmosItemRequestOptions options = new CosmosItemRequestOptions();
+   options.setSessionToken(sessionToken);
+   CosmosItemResponse<JsonNode> response2 = container.readItem(itemId, new PartitionKey(partitionKey), JsonNode.class);
+
+   ```
+
+--- 
+
+<a name="utilize-session-tokens-javav2"></a>
+### <a name="java-v2-sdks"></a>Java V2 SDK
+
+# <a name="async"></a>[异步](#tab/api-async)
+
+Async Java V2 SDK (Maven com.microsoft.azure::azure-cosmosdb)
 
 ```java
 // Get session token from response
@@ -206,8 +287,9 @@ requestOptions.setSessionToken(sessionToken);
 Observable<ResourceResponse<Document>> readObservable = client.readDocument(document.getSelfLink(), options);
 ```
 
-<a name="utilize-session-tokens-java-sync"></a>
-### <a name="java-sync-sdk"></a>Java 同步 SDK
+# <a name="sync"></a>[Sync](#tab/api-sync)
+
+Sync Java V2 SDK (Maven com.microsoft.azure::azure-documentdb)
 
 ```java
 // Get session token from response
@@ -219,6 +301,7 @@ RequestOptions options = new RequestOptions();
 options.setSessionToken(sessionToken);
 ResourceResponse<Document> response = client.readDocument(documentLink, options);
 ```
+---
 
 <a name="utilize-session-tokens-javascript"></a>
 ### <a name="nodejsjavascripttypescript-sdk"></a>Node.js/JavaScript/TypeScript SDK
@@ -249,7 +332,7 @@ item = client.ReadItem(doc_link, options)
 
 ## <a name="monitor-probabilistically-bounded-staleness-pbs-metric"></a>监视概率有限过期 (PBS) 指标
 
-最终一致性的最终程度如何？ 对于普通情况，我们是否可以提供版本历史和时间方面的过期限度。 [**概率有限过期 (PBS)** ](https://pbs.cs.berkeley.edu/) 指标尝试量化过期的概率并将其显示为指标。 若要查看 PBS 指标，请在 Azure 门户中转到你的 Cosmos 帐户。 打开“指标”  窗格，然后选择“一致性”  选项卡。查看名为“基于工作负载的强一致性读取的概率(请参阅 PBS)”的图。 
+最终一致性的最终程度如何？ 对于普通情况，我们是否可以提供版本历史和时间方面的过期限度。 [**概率有限过期 (PBS)** ](https://pbs.cs.berkeley.edu/) 指标尝试量化过期的概率并将其显示为指标。 若要查看 PBS 指标，请在 Azure 门户中转到你的 Cosmos 帐户。 打开“指标”**** 窗格，然后选择“一致性”**** 选项卡。查看名为“基于工作负载的强一致性读取的概率(请参阅 PBS)”的图。****
 
 ![Azure 门户中的 PBS 图](./media/how-to-manage-consistency/pbs-metric.png)
 
@@ -264,4 +347,4 @@ item = client.ReadItem(doc_link, options)
 * [高可用性](high-availability.md)
 * [Azure Cosmos DB SLA](https://www.azure.cn/support/sla/cosmos-db/)
 
-<!-- Update_Description: update meta properties, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

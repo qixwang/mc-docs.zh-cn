@@ -5,12 +5,12 @@ ms.topic: include
 origin.date: 04/04/2020
 ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: 5a4208339679a6f5e7e28dc5f6b5e532ae419824
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.openlocfilehash: e4424fcda140ea9c03ddc829ca3194e0a7efa784
+ms.sourcegitcommit: 304d3ef3c9e65c3e85977b3afb9985fbc0f908d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82150713"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85095975"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -20,7 +20,7 @@ ms.locfileid: "82150713"
 > * [设置开发环境并创建空项目](../../../../quickstarts/setup-platform.md?pivots=programming-language-python)
 > * [创建 Azure 语音资源](../../../../get-started.md)
 > * [将源文件上传到 Azure blob](https://docs.azure.cn/storage/blobs/storage-quickstart-blobs-portal)
-> * 需要语音 SDK 版本 1.10.0 或更高版本。
+> * 需要语音 SDK 版本 1.11.0 或更高版本。
 
 ## <a name="download-and-install-the-api-client-library"></a>下载并安装 API 客户端库
 
@@ -29,9 +29,9 @@ ms.locfileid: "82150713"
 请按照以下步骤进行安装：
 
 1. 转到  https://editor.swagger.io 。
-1. 单击“文件”，然后单击“导入 URL”   。
+1. 单击“文件”，然后单击“导入 URL” 。
 1. 输入 Swagger URL，包括语音服务订阅的区域：`https://<your-region>.cris.azure.cn/docs/v2.0/swagger`。
-1. 单击“生成客户端”，然后选择“Python”   。
+1. 单击“生成客户端”，然后选择“Python” 。
 1. 保存客户端库。
 1. 将下载的 python-client-generated.zip 提取到文件系统中的某个位置。
 1. 使用 pip：`pip install path/to/package/python-client` 在 Python 环境中安装提取的 python-client 模块。

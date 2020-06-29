@@ -3,17 +3,17 @@ title: 安装 Visual Studio 并连接到 Azure Stack Hub
 description: 了解如何安装 Visual Studio 并连接到 Azure Stack Hub。
 author: WenJason
 ms.topic: article
-origin.date: 01/07/2020
-ms.date: 02/24/2020
+origin.date: 06/11/2020
+ms.date: 06/22/2020
 ms.author: v-jay
 ms.reviewer: unknown
-ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 323ebe159296b2a184021bbae4e0c0b58fe33efa
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.lastreviewed: 01/04/2020
+ms.openlocfilehash: d195db0a789d02d98b606333a1a1859ad79ef09c
+ms.sourcegitcommit: d86e169edf5affd28a1c1a4476d72b01a7fb421d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77540804"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85096538"
 ---
 # <a name="install-visual-studio-and-connect-to-azure-stack-hub"></a>安装 Visual Studio 并连接到 Azure Stack Hub
 
@@ -23,9 +23,9 @@ ms.locfileid: "77540804"
 
 1. 下载并运行此 [Web 平台安装程序](https://www.microsoft.com/web/downloads/platform.aspx)。  
 
-2. 打开“Microsoft Web 平台安装程序”。 
+2. 打开“Microsoft Web 平台安装程序”。****
 
-3. 搜索 **Visual Studio Community 2015 with Azure SDK - 2.9.6**。 依次单击“添加”、“安装”。  
+3. 搜索 **Visual Studio Community 2015 with Azure SDK - 2.9.6**。 依次单击“添加”、“安装”。**** ****
 
 4. 卸载作为 Azure SDK 的一部分安装的 **Azure PowerShell**。
 
@@ -33,15 +33,15 @@ ms.locfileid: "77540804"
 
 5. [安装适用于 Azure Stack Hub 的 PowerShell](../operator/azure-stack-powershell-install.md)。
 
-6. 安装完成后，重启操作系统。
+6. 安装完成后，重启计算机。
 
 ## <a name="connect-to-azure-stack-hub-with-azure-ad"></a>使用 Azure AD 连接到 Azure Stack Hub
 
 1. 启动 Visual Studio。
 
-2. 在“视图”  菜单中，选择“云资源管理器”  。
+2. 在“视图”**** 菜单中，选择“云资源管理器”****。
 
-3. 在新窗格中选择“添加帐户”，然后使用 Azure Active Directory (Azure AD) 凭据登录。   
+3. 选择“管理帐户”，然后在新窗格中使用 Azure Active Directory (Azure AD) 凭据登录****。  
 
     ![登录并连接到 Azure Stack Hub 后的 Cloud Explorer 屏幕截图](./media/azure-stack-install-visual-studio/image2.png)
 
@@ -51,23 +51,23 @@ ms.locfileid: "77540804"
 
 1. 启动 Visual Studio。
 
-2. 在“工具”中选择“选项”。  
+2. 在“工具”中选择“选项”。**** ****
 
-3. 展开**导航窗格**中的“环境”，然后选择“帐户”。 
+3. 展开导航窗格中的“环境”，然后选择“帐户”**** ****。
 
-4. 选择“添加”，然后输入“用户 Azure 资源管理器终结点”。  对于 Azure Stack 开发工具包 (ASDK)，URL 为：`https://management.local.azurestack/external`。  对于 Azure Stack Hub 集成系统，URL 为：`https://management.[Region}.[External FQDN]`。
+4. 选择“添加”，然后输入“用户 Azure 资源管理器终结点”。**** 对于 Azure Stack 开发工具包 (ASDK)，URL 为：`https://management.local.azurestack/external`。  对于 Azure Stack Hub 集成系统，URL 为：`https://management.[Region}.[External FQDN]`。
 
     ![添加新的 Azure Cloud Discovery 终结点](./media/azure-stack-install-visual-studio/image5.png)
 
-5. 选择 **添加** 。  
+5. 选择“添加”  ****。  
 
     Visual Studio 会调用 Azure 资源管理器，并发现终结点，包括 Active Directory 联合身份验证服务 (AD FS) 的身份验证终结点。
 
     ![登录并连接到 Azure Stack Hub 后的 Cloud Explorer 屏幕截图](./media/azure-stack-install-visual-studio/image6.png)
 
-6. 在“视图”菜单中，选择“Cloud Explorer”。  
+6. 在“视图”菜单中，选择“Cloud Explorer”。**** ****
 
-7. 选择“添加帐户”并使用 AD FS 凭据登录。   
+7. 选择“添加帐户”并使用 AD FS 凭据登录。****  
 
     ![在 Cloud Explorer 中登录 Visual Studio](./media/azure-stack-install-visual-studio/image7.png)
 

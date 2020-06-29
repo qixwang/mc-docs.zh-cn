@@ -9,27 +9,30 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: overview
 ms.date: 02/22/2019
-ms.openlocfilehash: 1b6286820a8fc2037d683a9338762e1e3c654af1
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 1745d6a74805cdda3be5ddf092f6b929ff1c2055
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75598026"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097551"
 ---
 # <a name="what-is-the-azure-data-science-virtual-machine-for-linux-and-windows"></a>什么是适用于 Linux 和 Windows 的 Azure Data Science Virtual Machine？
 
 Data Science Virtual Machine (DSVM) 是专为开展数据科学构建的 Azure 云平台上的自定义 VM 映像。 它预装并预配了许多热门数据科学工具，可为高级分析快速生成智能应用程序。 
 
 DSVM 在以下环境中可用：
+
++ **Windows Server 2019**
++ Ubuntu 18.04 LTS****
 + Windows Server 2016
-+ Ubuntu 16.04 LTS 和 CentOS 7.4
++ Ubuntu 16.04 LTS
 
 > [!NOTE]
 > 用于深度学习的所有 VM 工具都已装入到 Data Science Virtual Machine 中。 
 
 
 ## <a name="why-choose-the-dsvm"></a>为何选择 DSVM？
-Data Science Virtual Machine 的目标在于向所有技能级别和各个行业的数据专业人员提供无摩擦、预配置的数据科学环境。 可以预配一个 DSVM，而无需自行部署一个与之相当的工作区。 这种做法可以在安装、配置和包管理方面节省数天甚至数周的时间。  分配 DSVM 后，可以立即开始处理数据科学项目。
+Data Science Virtual Machine 的目标在于向所有技能级别和各个行业的数据专业人员提供无摩擦、预配置的数据科学环境。 可以预配一个 DSVM，而无需自行部署一个与之相当的工作区。 这种做法可以在安装、配置和包管理方面节省数天甚至数周的时间。__ 分配 DSVM 后，可以立即开始处理数据科学项目。
 
 ## <a name="sample-use-cases"></a>示例用例
 
@@ -57,13 +60,13 @@ DSVM 创建可缓解支持和不兼容性挑战的一致设置的按需环境。
 
 
 ### <a name="deep-learning-with-gpus"></a>使用 GPU 进行深度学习
-在 DSVM 中，训练模型可以使用基于图形处理单元 (GPU) 的硬件上的深度学习算法。 利用 Azure 平台的 VM 缩放功能，DSVM 可帮助根据需要在云中使用基于 GPU 的硬件。 若要训练大型模型或者在保留相同 OS 磁盘的同时进行高速计算，可以切换到基于 GPU 的 VM。 可以在 DSVM 中选择启用了 N 系列 GPU 的任意虚拟机 SKU。 请注意，Azure 免费帐户不支持启用 GPU 的虚拟机 SKU。
+在 DSVM 中，训练模型可以使用基于图形处理单元 (GPU) 的硬件上的深度学习算法。 利用 Azure 平台的 VM 缩放功能，DSVM 可帮助根据需要在云中使用基于 GPU 的硬件。 若要训练大型模型或者在保留相同 OS 磁盘的同时进行高速计算，可以切换到基于 GPU 的 VM。 可以在 DSVM 中选择启用了 N 系列 GPU 的任意虚拟机 SKU。 请注意，Azure 试用帐户不支持启用 GPU 的虚拟机 SKU。
 
-Windows Server 2016 版本的 DSVM 预安装了 GPU 驱动程序、框架和 GPU 版本的深度学习框架。 在 Linux 版上，在 CentOS 和 Ubuntu DSVM 中都启用了 GPU 上的深度学习。 
+Windows 版本的 DSVM 预安装了 GPU 驱动程序、框架和 GPU 版本的深度学习框架。 Linux 版的 Ubuntu DSVM 上启用了基于 GPU 的深度学习。 
 
-还可以将 Ubuntu、CentOS 或 Windows 2016 版的 DSVM 部署到非基于 GPU 的 Azure 虚拟机。 在这种情况下，所有深度学习框架都将回退到 CPU 模式。
- 
-[详细了解可用的深度学习和 AI 框架](dsvm-deep-learning-ai-frameworks.md)。
+还可以将 Ubuntu 或 Windows 版本的 DSVM 部署到不基于 GPU 的 Azure 虚拟机。 在这种情况下，所有深度学习框架都将回退到 CPU 模式。
+
+[详细了解可用的深度学习和 AI 框架](dsvm-tools-deep-learning-frameworks.md)。
 
 <a name="included"></a>
 
@@ -75,11 +78,10 @@ Windows Server 2016 版本的 DSVM 预安装了 GPU 驱动程序、框架和 GPU
 
 通过以下文章，了解详细信息：
 
-+ Windows：
++ Windows:
   + [设置 Windows DSVM](provision-vm.md)
   + [可以在 Windows DSVM 上执行的十项操作](vm-do-ten-things.md)
 
 + Linux：
   + [设置 Linux DSVM (Ubuntu)](dsvm-ubuntu-intro.md)
-  + [设置 Linux DSVM (CentOS)](linux-dsvm-intro.md)
   + [Linux DSVM 上的数据科学](linux-dsvm-walkthrough.md)

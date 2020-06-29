@@ -11,12 +11,12 @@ ms.topic: include
 origin.date: 11/05/2019
 ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: 3f5baf5942bcdb9b938fe83ac2fc7ac0a638c958
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.openlocfilehash: 45973d0bd4f70110f81db1ff8eb2ea5e00d8f41e
+ms.sourcegitcommit: 304d3ef3c9e65c3e85977b3afb9985fbc0f908d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82150909"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85095904"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -26,7 +26,7 @@ ms.locfileid: "82150909"
 > * [创建一个 Azure 搜索资源](../../../../get-started.md)
 > * [设置开发环境](../../../../quickstarts/setup-platform.md?tabs=android&pivots=programming-language-java)
 > * 请确保你有权访问麦克风，以便进行音频捕获
-> * 需要语音 SDK 版本 1.10.0 或更高版本。
+> * 需要语音 SDK 版本 1.11.0 或更高版本。
 
 ## <a name="create-a-user-interface"></a>创建用户界面
 
@@ -156,15 +156,15 @@ ms.locfileid: "82150909"
 
 1. 在同一文件中，将字符串 `YourSubscriptionKey` 替换为你的订阅密钥。
 
-1. 此外，将字符串 `YourServiceRegion` 替换为与订阅关联的[区域](~/articles/cognitive-services/Speech-Service/regions.md)的“区域标识符”。  例如，将 `chinaeast2` 用于试用订阅。
+1. 此外，将字符串 `YourServiceRegion` 替换为与订阅关联的[区域](~/articles/cognitive-services/Speech-Service/regions.md)的“区域标识符”。 例如，将 `chinaeast2` 用于试用订阅。
 
 ## <a name="build-and-run-the-app"></a>生成并运行应用
 
 1. 将 Android 设备连接到开发电脑。 确保已在设备上启用[开发模式和 USB 调试](https://developer.android.com/studio/debug/dev-options)。
 
-1. 若要生成应用程序，请选择 Ctrl+F9，或者从菜单栏中选择“生成” > “生成项目”   。
+1. 若要生成应用程序，请选择 Ctrl+F9，或者从菜单栏中选择“生成” > “生成项目” 。
 
-1. 若要启动应用程序，请选择 Shift+F10 或选择“运行” > “运行‘应用’”   。
+1. 若要启动应用程序，请选择 Shift+F10 或选择“运行” > “运行‘应用’” 。
 
 1. 在出现的部署目标窗口中，选择 Android 设备。
 

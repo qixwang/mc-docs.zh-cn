@@ -3,19 +3,19 @@ title: 使用 Azure Pipelines 和模板实现 CI/CD
 description: 介绍如何在 Visual Studio 中使用 Azure 资源组部署项目在 Azure Pipelines 中设置持续集成，以部署资源管理器模板。
 ms.topic: conceptual
 origin.date: 10/17/2019
+ms.date: 06/22/2020
 ms.author: v-yeche
-ms.date: 01/06/2020
-ms.openlocfilehash: 6d53d0629e63f667bd3a7425df848016c51ab91c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: c2c892fcad42f03c9f4e5a11a88ec620e6728506
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75631434"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098280"
 ---
-<!--Verified successfully on 12/16/2019-->
-# <a name="integrate-resource-manager-templates-with-azure-pipelines"></a>将资源管理器模板与 Azure Pipelines 集成
+<!--Verified successfully on 2020/06/18 by harris-->
+# <a name="integrate-arm-templates-with-azure-pipelines"></a>将 ARM 模板与 Azure Pipelines 集成
 
-Visual Studio 提供了 Azure 资源组项目用于创建模板并将其部署到 Azure 订阅。 可将此项目与 Azure Pipelines 集成，以实现持续集成和持续部署 (CI/CD)。
+Visual Studio 提供了用于创建 Azure 资源管理器 (ARM) 模板并将其部署到 Azure 订阅的 Azure 资源组项目。 可将此项目与 Azure Pipelines 集成，以实现持续集成和持续部署 (CI/CD)。
 
 可通过两种方式在 Azure Pipelines 中部署模板：
 
@@ -31,7 +31,7 @@ Visual Studio 提供了 Azure 资源组项目用于创建模板并将其部署�
 
 * 你已有一个 Azure DevOps 组织。 如果没有，请[免费创建一个](https://docs.microsoft.com/azure/devops/pipelines/get-started/pipelines-sign-up?view=azure-devops)。 如果你的团队已创建了一个 Azure DevOps 组织，请确保你是要使用的 Azure DevOps 项目的管理员。
 
-* 已配置与 Azure 订阅之间的[服务连接](https://docs.microsoft.com/azure/devops/pipelines/library/connect-to-azure?view=azure-devops)。 管道中的任务将以服务主体的身份执行。 有关创建连接的步骤，请参阅[创建 DevOps 项目](template-tutorial-use-azure-pipelines.md#create-a-devops-project)。
+* 已配置与 Azure 订阅之间的[服务连接](https://docs.microsoft.com/azure/devops/pipelines/library/connect-to-azure?view=azure-devops)。 管道中的任务将以服务主体的身份执行。 有关创建连接的步骤，请参阅[创建 DevOps 项目](deployment-tutorial-pipeline.md#create-a-devops-project)。
 
 * 已从 **Azure 资源组**初学者模板创建了一个 Visual Studio 项目。 有关创建此类项目的信息，请参阅[通过 Visual Studio 创建和部署 Azure 资源组](create-visual-studio-deployment-project.md)。
 
@@ -39,11 +39,11 @@ Visual Studio 提供了 Azure 资源组项目用于创建模板并将其部署�
 
 ## <a name="create-pipeline"></a>创建管道
 
-1. 如果事先尚未添加管道，需要创建一个新管道。 在 Azure DevOps 组织中，选择“管道”和“新建管道”。  
+1. 如果事先尚未添加管道，需要创建一个新管道。 在 Azure DevOps 组织中，选择“管道”和“新建管道”。**** ****
 
     ![添加新管道](./media/add-template-to-azure-pipelines/new-pipeline.png)
 
-1. 指定代码的存储位置。 在下图中，选择的是“Azure Repos Git”。 
+1. 指定代码的存储位置。 在下图中，选择的是“Azure Repos Git”。****
 
     ![选择代码源](./media/add-template-to-azure-pipelines/select-source.png)
 
@@ -51,7 +51,7 @@ Visual Studio 提供了 Azure 资源组项目用于创建模板并将其部署�
 
     ![选择存储库](./media/add-template-to-azure-pipelines/select-repo.png)
 
-1. 选择要创建的管道类型。 可以选择“初学者管道”。 
+1. 选择要创建的管道类型。 可以选择“初学者管道”。****
 
     ![选择管道](./media/add-template-to-azure-pipelines/select-pipeline.png)
 
@@ -125,13 +125,13 @@ ScriptArguments: -ResourceGroupName '<resource-group-name>' -ResourceGroupLocati
        azurePowerShellVersion: LatestVersion
     ```
 
-1. 选择“保存”  。
+1. 选择“保存” ****。
 
     ![保存管道](./media/add-template-to-azure-pipelines/save-pipeline.png)
 
 1. 提供要提交的消息，并直接提交到 **master**。
 
-1. 选择“保存”时，生成管道将自动运行。  返回生成管道的摘要并观察状态。
+1. 选择“保存”时，生成管道将自动运行。**** 返回生成管道的摘要并观察状态。
 
     ![查看结果](./media/add-template-to-azure-pipelines/view-results.png)
 
@@ -252,11 +252,11 @@ ContainerName: '<container-name>'
         deploymentMode: 'Incremental'
     ```
 
-1. 选择“保存”  。
+1. 选择“保存” ****。
 
 1. 提供要提交的消息，并直接提交到 **master**。
 
-1. 选择“保存”时，生成管道将自动运行。  返回生成管道的摘要并观察状态。
+1. 选择“保存”时，生成管道将自动运行。**** 返回生成管道的摘要并观察状态。
 
     ![查看结果](./media/add-template-to-azure-pipelines/view-results.png)
 
@@ -264,7 +264,6 @@ ContainerName: '<container-name>'
 
 ## <a name="next-steps"></a>后续步骤
 
-有关将 Azure Pipelines 与资源管理器模板配合使用的分步过程，请参阅[教程：使用 Azure Pipelines 持续集成 Azure 资源管理器模板](template-tutorial-use-azure-pipelines.md)。
+有关将 Azure Pipelines 与 ARM 模板配合使用的分步过程，请参阅[教程：使用 Azure Pipelines 持续集成 Azure 资源管理器模板](deployment-tutorial-pipeline.md)。
 
-<!--Verified successfully on 12/16/2019-->
 <!-- Update_Description: update meta properties, wording update, update link -->

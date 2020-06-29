@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 origin.date: 02/25/2020
-ms.date: 03/09/2020
-ms.openlocfilehash: 1fe77e5bfd8980bd724f5d0105e3fc11034e1a88
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 06/22/2020
+ms.openlocfilehash: a5c6291d8ed5e372decc79511cae3c5e6faf3fab
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78238539"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098454"
 ---
 # <a name="overview-of-prerequisites-for-using-the-azure-database-migration-service"></a>使用 Azure 数据库迁移服务的先决条件概述
 
@@ -118,7 +118,7 @@ ms.locfileid: "78238539"
 * 下载并安装[数据迁移助手](https://www.microsoft.com/download/details.aspx?id=53595) v3.3 或更高版本。
 * 打开 Windows 防火墙，使 Azure 数据库迁移服务能够访问源 SQL Server（默认情况下为 TCP 端口 1433）。
 * 如果使用动态端口运行多个命名 SQL Server 实例，则可能需要启用 SQL Browser 服务并允许通过防火墙访问 UDP 端口 1434，以便 Azure 数据库迁移服务可连接到源服务器上的命名实例。
-* 为 Azure SQL 数据库服务器创建服务器级[防火墙规则](/sql-database/sql-database-firewall-configure)，以允许 Azure 数据库迁移服务访问目标数据库。 提供用于 Azure 数据库迁移服务的虚拟网络子网范围。
+* 为 SQL 数据库创建服务器级[防火墙规则](/sql-database/sql-database-firewall-configure)，以允许 Azure 数据库迁移服务访问目标数据库。 提供用于 Azure 数据库迁移服务的虚拟网络子网范围。
 * 确保用于连接到源 SQL Server 实例的凭据具有 [CONTROL SERVER](https://docs.microsoft.com/sql/t-sql/statements/grant-server-permissions-transact-sql) 权限。
 * 确保用于连接到目标 Azure SQL 数据库实例的凭据具有目标 Azure SQL 数据库的 CONTROL DATABASE 权限。
 
@@ -126,9 +126,9 @@ ms.locfileid: "78238539"
    > 有关使用 Azure 数据库迁移服务执行从 SQL Server 到 Azure SQL 数据库的迁移所需的先决条件的完整列表，请参阅教程[将 SQL Server 迁移到 Azure SQL 数据库](/dms/tutorial-sql-server-to-azure-sql)。
    >
 
-## <a name="prerequisites-for-migrating-sql-server-to-an-azure-sql-database-managed-instance"></a>将 SQL Server 迁移到 Azure SQL 数据库托管实例的先决条件
+## <a name="prerequisites-for-migrating-sql-server-to-azure-sql-managed-instance"></a>将 SQL Server 迁移到 Azure SQL 托管实例的先决条件
 
-* 按照[在 Azure 门户中创建 Azure SQL 数据库托管实例](/sql-database/sql-database-managed-instance-get-started)一文中的详细信息创建 Azure SQL 数据库托管实例。
+* 按照[在 Azure 门户中创建 Azure SQL 托管实例](/sql-database/sql-database-managed-instance-get-started)一文中的详述创建 SQL 托管实例。
 * 打开防火墙以允许 Azure 数据库迁移服务 IP 地址或子网范围的端口 445 上的 SMB 流量。
 * 打开 Windows 防火墙，使 Azure 数据库迁移服务能够访问源 SQL Server（默认情况下为 TCP 端口 1433）。
 * 如果使用动态端口运行多个命名 SQL Server 实例，则可能需要启用 SQL Browser 服务并允许通过防火墙访问 UDP 端口 1434，以便 Azure 数据库迁移服务可连接到源服务器上的命名实例。
@@ -139,7 +139,7 @@ ms.locfileid: "78238539"
 * 通过采用[使用存储资源管理器管理 Azure Blob 存储资源](/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container)一文中的步骤，创建 blob 容器并检索其 SAS URI。 在创建 SAS URI 时，务必在策略窗口选择所有权限（读取、写入、删除、列出）。
 
    > [!NOTE]
-   > 有关使用 Azure 数据库迁移服务执行从 SQL Server 到 Azure SQL 数据库托管实例的迁移所需的先决条件的完整列表，请参阅教程[将 SQL Server 迁移到 Azure SQL 数据库托管实例](/dms/tutorial-sql-server-to-managed-instance)。
+   > 有关使用 Azure 数据库迁移服务执行从 SQL Server 到 SQL 托管实例的迁移所需的先决条件的完整列表，请参阅教程[将 SQL Server 迁移到 SQL 托管实例](/dms/tutorial-sql-server-to-managed-instance)。
 
 ## <a name="next-steps"></a>后续步骤
 

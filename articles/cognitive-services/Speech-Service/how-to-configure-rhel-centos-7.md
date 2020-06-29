@@ -11,16 +11,16 @@ ms.topic: conceptual
 origin.date: 04/02/2020
 ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: d167b45db958cd98860f85d29c7cda487151dc7b
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.openlocfilehash: 125ff4356d9317e99f2a3097429476841cf9182a
+ms.sourcegitcommit: 304d3ef3c9e65c3e85977b3afb9985fbc0f908d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82127245"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85095898"
 ---
 # <a name="configure-rhelcentos-7-for-speech-sdk"></a>为语音 SDK 配置 RHEL/CentOS 7
 
-语音 SDK 1.10.0 及更高版本正式支持 Red Hat Enterprise Linux (RHEL) 8 x64 和 CentOS 8 x64。 也可以在 RHEL/CentOS 7 x64 上使用语音 SDK，但这需要更新你的系统上的 C++ 编译器（用于 C++ 开发）和共享的 C++ 运行时库。
+语音 SDK 1.11.0 及更高版本正式支持 Red Hat Enterprise Linux (RHEL) 8 x64 和 CentOS 8 x64。 也可以在 RHEL/CentOS 7 x64 上使用语音 SDK，但这需要更新你的系统上的 C++ 编译器（用于 C++ 开发）和共享的 C++ 运行时库。
 
 若要检查 C++ 编译器版本，请运行：
 
@@ -69,11 +69,11 @@ CXXABI_1.3.7
 语音 SDK 需要 **CXXABI_1.3.9** 和 **GLIBCXX_3.4.21**。 可以通过对 Linux 包中的语音 SDK 库运行 `ldd libMicrosoft.CognitiveServices.Speech.core.so` 来查找此信息。
 
 > [!NOTE]
-> 建议在系统上安装的 GCC 版本至少为 5.4.0  ，它具有匹配的运行时库。
+> 建议在系统上安装的 GCC 版本至少为 5.4.0****，它具有匹配的运行时库。
 
 ## <a name="example"></a>示例
 
-下面的示例命令展示了如何配置 RHEL/CentOS 7 x64 以使用语音 SDK 1.10.0 或更高版本进行开发（C++、C#、Java、Python）：
+下面的示例命令展示了如何配置 RHEL/CentOS 7 x64 以使用语音 SDK 1.11.0 或更高版本进行开发（C++、C#、Java、Python）：
 
 ```bash
 # Only run ONE of the following two commands

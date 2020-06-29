@@ -3,14 +3,14 @@ title: 定义属性的多个实例
 description: 在资源上创建属性时，可以使用 Azure 资源管理器模板中的复制操作进行多次迭代。
 ms.topic: conceptual
 origin.date: 04/14/2020
-ms.date: 04/30/2020
+ms.date: 06/22/2020
 ms.author: v-yeche
-ms.openlocfilehash: 1fd51f7a241397e040d35c75419ed39b2faf8684
-ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
+ms.openlocfilehash: 880d4c0a5b338a12060c85c1afeeea679ac75120
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82596142"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098530"
 ---
 <!--Verified successfully-->
 # <a name="property-iteration-in-arm-templates"></a>ARM 模板中的属性迭代
@@ -19,7 +19,7 @@ ms.locfileid: "82596142"
 
 还可以将 copy 用于 [resources](copy-resources.md)、[variables](copy-variables.md) 和 [outputs](copy-outputs.md)。
 
-## <a name="property-iteration"></a>属性迭代
+## <a name="syntax"></a>语法
 
 copy 元素采用以下常规格式：
 
@@ -39,11 +39,26 @@ copy 元素采用以下常规格式：
 
 **input** 属性指定要重复的属性。 你将创建一个由 **input** 属性中的值构造的元素数组。
 
+## <a name="copy-limits"></a>复制限制
+
+count 不能超过 800。
+
+count 不能为负数。 如果使用最新版本的 Azure CLI、PowerShell 或 REST API 部署模板，则它可以为零。 具体而言，必须使用：
+
+* Azure PowerShell 2.6 或更高版本
+* Azure CLI 2.0.74 或更高版本
+* REST API 版本 2019-05-10 或更高版本
+* [链接的部署](linked-templates.md)必须将 API 版本 2019-05-10 或更高版本用于部署资源类型
+
+更早版本的 PowerShell、CLI 和 REST API 不支持将 count 设为零。
+
+## <a name="property-iteration"></a>属性迭代
+
 以下示例演示如何将 `copy` 应用到虚拟机上的 dataDisks 属性：
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "numberOfDataDisks": {
@@ -235,12 +250,6 @@ copy 元素是一个数组，因此，可以为资源指定多个属性。
   }
 }
 ```
-
-## <a name="copy-limits"></a>复制限制
-
-count 不能超过 800。
-
-count 不能为负数。 如果使用 Azure PowerShell 2.6 或更高版本、Azure CLI 2.0.74 或更高版本或者 REST API 版本 **2019-05-10** 或更高版本部署模板，则可以将 count 设置为零。 更早版本的 PowerShell、CLI 和 REST API 不支持将 count 设为零。
 
 ## <a name="example-templates"></a>示例模板
 

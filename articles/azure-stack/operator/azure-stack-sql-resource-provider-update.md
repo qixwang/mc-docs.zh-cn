@@ -5,27 +5,27 @@ description: 了解如何更新 Azure Stack Hub SQL 资源提供程序。
 author: WenJason
 ms.topic: article
 origin.date: 11/11/2019
-ms.date: 03/23/2020
+ms.date: 06/22/2020
 ms.author: v-jay
 ms.reviewer: xiaofmao
 ms.lastreviewed: 11/11/2019
-ms.openlocfilehash: 7502ee727fad8b3538dc741a222e247d26714355
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: d6d9e264689d121a9c25b1b9153e9a7256c61c4f
+ms.sourcegitcommit: d86e169edf5affd28a1c1a4476d72b01a7fb421d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79547050"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85096250"
 ---
 # <a name="update-the-sql-resource-provider"></a>更新 SQL 资源提供程序
+
+> [!IMPORTANT]
+> 在更新资源提供程序之前，请查看发行说明，了解新功能、修补程序以及任何可能影响部署的已知问题。 发行说明还指定资源提供程序所需的最低 Azure Stack Hub 版本。
 
 当 Azure Stack Hub 更新到新版本时，可能会发布新的 SQL 资源提供程序。 虽然现有的资源提供程序可以继续使用，但仍建议尽快更新到最新的内部版本。
 
 从 SQL 资源提供程序 1.1.33.0 版开始，更新是累积性的，只要你从 1.1.24.0 版或更高版本开始，就不需要按照发布的顺序安装更新。 例如，如果运行的是 1.1.24.0 版的 SQL 资源提供程序，则可以升级到 1.1.33.0 版或更高版本，而无需先安装 1.1.30.0 版。 若要查看可用的资源提供程序版本，以及支持它们的 Azure Stack Hub 版本，请参阅[部署资源提供程序的先决条件](./azure-stack-sql-resource-provider-deploy.md#prerequisites)中的版本列表。
 
 若要更新资源提供程序，请使用 *UpdateSQLProvider.ps1* 脚本。 使用具有本地管理权限且是订阅的**所有者**的服务帐户。 新 SQL 资源提供程序的下载包中提供此脚本。 更新过程类似于[部署资源提供程序](./azure-stack-sql-resource-provider-deploy.md)时使用的过程。 更新脚本与 DeploySqlProvider.ps1 脚本使用相同的参数，你需要提供证书信息。
-
- > [!IMPORTANT]
- > 在升级资源提供程序之前，请查看发行说明，了解新功能、修补程序以及任何可能影响部署的已知问题。
 
 ## <a name="update-script-processes"></a>更新脚本过程
 
@@ -51,7 +51,7 @@ ms.locfileid: "79547050"
 | **VMLocalCredential** | SQL 资源提供程序 VM 的本地管理员帐户的凭据。 | _必需_ |
 | **PrivilegedEndpoint** | 特权终结点的 IP 地址或 DNS 名称。 |  _必需_ |
 | **AzureEnvironment** | 用于部署 Azure Stack Hub 的服务管理员帐户的 Azure 环境。 仅对于 Azure AD 部署是必需的。 受支持的环境名称是 **AzureChinaCloud**。 | AzureChinaCloud |
-| **DependencyFilesLocalPath** | 同样必须将证书 .pfx 文件放在此目录中。 |  对单节点为可选，但对多节点为必选 |
+| **DependencyFilesLocalPath** | 同样必须将证书 .pfx 文件放在此目录中。 | __ 对单节点为可选，但对多节点为必选 |
 | **DefaultSSLCertificatePassword** | .pfx 证书的密码。 | _必需_ |
 | **MaxRetryCount** | 操作失败时，想要重试每个操作的次数。| 2 |
 | **RetryDuration** |每两次重试的超时间隔（秒）。 | 120 |

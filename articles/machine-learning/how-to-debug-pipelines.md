@@ -1,25 +1,27 @@
 ---
-title: 对机器学习管道进行调试和故障排除
+title: 调试 ML 管道并排查其问题
 titleSuffix: Azure Machine Learning
-description: 在适用于 Python 的 Azure 机器学习 SDK 中对机器学习管道进行调试和故障排除。 了解开发管道时的常见陷阱，以及有助于在远程执行之前和期间调试脚本的提示。 了解如何使用 Visual Studio Code 以交互方式调试机器学习管道。
+description: 使用 Python 调试 Azure 机器学习管道。 了解开发管道时的常见陷阱，以及有助于在远程执行之前和期间调试脚本的提示。 了解如何使用 Visual Studio Code 以交互方式调试机器学习管道。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: troubleshooting
 author: likebupt
 ms.author: keli19
-ms.date: 12/12/2019
-ms.openlocfilehash: 9303b331b798207f9855f1f33d79251d75cb4c06
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 03/18/2020
+ms.custom: tracking-python
+ms.openlocfilehash: a77ee62d3f701d0cfa885cf585b4fb147d74a5f0
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80343309"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097140"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>对机器学习管道进行调试和故障排除
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-在本文中，你将在 [Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) 和 [Azure 机器学习设计器（预览版）](/machine-learning/concept-designer)中了解如何对[机器学习管道](concept-ml-pipelines.md)进行调试和故障排除。
+在本文中，你将在 [Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) 和 [Azure 机器学习设计器（预览版）](https://docs.microsoft.com/azure/machine-learning/concept-designer)中了解如何对[机器学习管道](concept-ml-pipelines.md)进行调试和故障排除。 本文提供了有关如何执行以下操作的信息：
+
 * 使用 Azure 机器学习 SDK 进行调试
 * 使用 Azure 机器学习设计器进行调试
 * 使用 Application Insights 进行调试
@@ -64,12 +66,12 @@ ms.locfileid: "80343309"
 
 ![管道运行详细信息页](./media/how-to-debug-pipelines/pipelinerun-02.png)
 
-单击特定步骤的模块。 导航到“日志”选项卡。  其他日志包含有关环境映像生成过程和步骤准备脚本的信息。
+单击特定步骤的模块。 导航到“日志”选项卡。其他日志包含有关环境映像生成过程和步骤准备脚本的信息。
 
 ![管道运行详细信息页日志选项卡](./media/how-to-debug-pipelines/pipelinerun-03.png)
 
 > [!TIP]
-> 可以在工作区中的“终结点”选项卡中找到“已发布的管道”的运行。   可以在“试验”或“管道”中找到“未发布的管道”的运行。   
+> 可以在工作区中的“终结点”选项卡中找到“已发布的管道”的运行。 可以在“试验”或“管道”中找到“未发布的管道”的运行。 
 
 ### <a name="troubleshooting-tips"></a>故障排除提示
 
@@ -78,7 +80,7 @@ ms.locfileid: "80343309"
 | 问题 | 可能的解决方法 |
 |--|--|
 | 无法将数据传递给 `PipelineData` 字典 | 确保已在脚本中创建了一个目录，该目录对应于管道预期步骤要将数据输出到的位置。 大多数情况下，输入参数将定义输出目录，然后你需要显式创建该目录。 使用 `os.makedirs(args.output_dir, exist_ok=True)` 创建输出目录。 有关演示此设计模式的评分脚本示例，请参阅[该教程](tutorial-pipeline-batch-scoring-classification.md#write-a-scoring-script)。 |
-| 依赖项 bug | 如果在本地开发并测试了脚本，但在管道中的远程计算上运行时发现了依赖项问题，请确保计算环境依赖项和版本与测试环境相匹配。 |
+| 依赖项 bug | 如果在本地开发并测试了脚本，但在管道中的远程计算上运行时发现了依赖项问题，请确保计算环境依赖项和版本与测试环境相匹配。 请参阅[生成、缓存和重复使用环境](https://docs.microsoft.com/azure/machine-learning/concept-environments#environment-building-caching-and-reuse)|
 | 计算目标出现不明确的错误 | 删除再重新创建计算目标可以解决计算目标的某些问题。 |
 | 管道未重复使用步骤 | 默认已启用步骤重复使用，但是，请确保未在管道步骤中禁用它。 如果已禁用重复使用，则步骤中的 `allow_reuse` 参数将设置为 `False`。 |
 | 管道不必要地重新运行 | 为了确保步骤仅在基础数据或脚本发生更改时才重新运行，请解耦每个步骤的目录。 如果对多个步骤使用同一个源目录，则可能会遇到不必要的重新运行。 在管道步骤对象中使用 `source_directory` 参数以指向该步骤的隔离目录，并确保未对多个步骤使用同一个 `source_directory` 路径。 |
@@ -127,28 +129,32 @@ logger.error("I am an OpenCensus error statement with custom dimensions", {'step
 
 ## <a name="debug-and-troubleshoot-in-azure-machine-learning-designer-preview"></a>在 Azure 机器学习设计器（预览版）中进行调试和故障排除
 
-本部分概述了如何在设计器中对管道进行故障排除。
-对于在设计器中创建的管道，可以在创作页或管道运行详细信息页中找到**日志文件**。
+本部分概述了如何在设计器中对管道进行故障排除。 对于在设计器中创建的管道，可以在创作页或管道运行详细信息页中找到 70_driver_log 文件。
 
-### <a name="access-logs-from-the-authoring-page"></a>从创作页访问日志
+### <a name="get-logs-from-the-authoring-page"></a>从创作页获取日志
 
-当你提交管道运行并停留在创作页时，可以找到为每个模块生成的日志文件。
+当你提交管道运行并停留在创作页时，可以找到每个模块完成运行时，为每个模块生成的日志文件。
 
-1. 在创作画布中选择任何模块。
-1. 在“属性”窗格中，转到“日志”  选项卡。
-1. 选择日志文件 `70_driver_log.txt`
+1. 在创作画布中选择已完成运行的模块。
+1. 在模块的右窗格中，转到“输出 + 日志”选项卡。
+1. 展开右窗格，然后选择 70_driver_log.txt 并在浏览器中查看该文件。 还可以在本地下载日志。
 
-    ![创作页模块日志](./media/how-to-debug-pipelines/pipelinerun-05.png)
+    ![设计器中展开的输出窗格](./media/how-to-debug-pipelines/designer-logs.png)
 
-### <a name="access-logs-from-pipeline-runs"></a>从管道运行访问日志
+### <a name="get-logs-from-pipeline-runs"></a>从管道运行获取日志
 
-还可以在管道运行详细信息页的“管道”或“试验”部分中找到特定运行的日志文件。  
+还可以在管道运行详细信息页找到特定运行的日志文件，文件位于工作室的“管道”或“试验”部分。 
 
 1. 选择在设计器中创建的一个管道运行。
-    ![管道运行页](./media/how-to-debug-pipelines/pipelinerun-04.png)
-1. 在预览窗格中选择任何模块。
-1. 在“属性”窗格中，转到“日志”  选项卡。
-1. 选择日志文件 `70_driver_log.txt`
+
+    ![管道运行页](./media/how-to-debug-pipelines/designer-pipelines.png)
+
+1. 在预览窗格中选择模块。
+1. 在模块的右窗格中，转到“输出 + 日志”选项卡。
+1. 展开右窗格，在浏览器中查看 70_driver_log.txt 文件，或选择该文件，在本地下载日志。
+
+> [!IMPORTANT]
+> 若要从管道运行详细信息页更新管道，必须将管道运行克隆到新管道草稿。 管道运行是管道的快照。 它类似于日志文件，并且无法更改。 
 
 ## <a name="debug-and-troubleshoot-in-application-insights"></a>在 Application Insights 中进行调试和故障排除
 有关以此方式使用 OpenCensus Python 库的详细信息，请参阅此指南：[在 Application Insights 中对机器学习管道进行调试和故障排除](how-to-debug-pipelines-application-insights.md)
@@ -159,10 +165,10 @@ logger.error("I am an OpenCensus error statement with custom dimensions", {'step
 
 ### <a name="prerequisites"></a>先决条件
 
-* 一个配置为使用 Azure 虚拟网络的 Azure 机器学习工作区。  
-* 一个使用 Python 脚本作为管道步骤的一部分的 Azure 机器学习管道。  例如 PythonScriptStep。
-* 一个位于虚拟网络中并供管道用来训练的 Azure 机器学习计算群集。  
-* 一个位于虚拟网络中的开发环境。   该开发环境可以是下列其中一项：
+* 一个配置为使用 Azure 虚拟网络的 Azure 机器学习工作区。 
+* 一个使用 Python 脚本作为管道步骤的一部分的 Azure 机器学习管道。 例如 PythonScriptStep。
+* 一个位于虚拟网络中并供管道用来训练的 Azure 机器学习计算群集。 
+* 一个位于虚拟网络中的开发环境。  该开发环境可以是下列其中一项：
 
     * 虚拟网络中的 Azure 虚拟机
     * 虚拟网络中笔记本 VM 的计算实例
@@ -344,9 +350,9 @@ ip_address: 10.3.0.5
 
 1. 若要配置 VS Code 以便与运行调试器的 Azure 机器学习计算进行通信，请创建新的调试配置：
 
-    1. 在 VS Code 中，选择“调试”菜单，然后选择“打开配置”   。 打开一个名为 launch.json  的文件。
+    1. 在 VS Code 中，选择“调试”菜单，然后选择“打开配置” 。 打开一个名为 launch.json 的文件。
 
-    1. 在 launch.json 文件中，找到包含 `"configurations": [` 的行，然后在其后插入以下文本：  将 `"host": "10.3.0.5"` 项更改为在上一部分所述的、在日志中返回的 IP 地址。 将 `"localRoot": "${workspaceFolder}/code/step"` 项更改为包含所调试脚本的副本的本地目录：
+    1. 在 launch.json 文件中，找到包含 `"configurations": [` 的行，然后在其后插入以下文本： 将 `"host": "10.3.0.5"` 项更改为在上一部分所述的、在日志中返回的 IP 地址。 将 `"localRoot": "${workspaceFolder}/code/step"` 项更改为包含所调试脚本的副本的本地目录：
 
         ```json
         {
@@ -373,13 +379,13 @@ ip_address: 10.3.0.5
         >
         > 如果你正在调试多个脚本，请在不同的目录中为每个脚本创建一个单独的配置节。
 
-    1. 保存 launch.json  文件。
+    1. 保存 launch.json 文件。
 
 ### <a name="connect-the-debugger"></a>连接调试器
 
 1. 打开 VS Code，然后打开脚本的本地副本。
 2. 设置断点，在附加调试器后，脚本将在这些断点处停止。
-3. 当子进程正在运行脚本，并且 `Timeout for debug connection` 已显示在日志中时，请按 F5 键或选择“调试”。  出现提示时，选择“Azure 机器学习计算: 远程调试”配置。  还可以从侧栏中选择“调试”图标，从“调试”下拉菜单中选择“Azure 机器学习: 远程调试”项，然后使用绿色箭头附加调试器。 
+3. 当子进程正在运行脚本，并且 `Timeout for debug connection` 已显示在日志中时，请按 F5 键或选择“调试”。 出现提示时，选择“Azure 机器学习计算: 远程调试”配置。 还可以从侧栏中选择“调试”图标，从“调试”下拉菜单中选择“Azure 机器学习: 远程调试”项，然后使用绿色箭头附加调试器。
 
     此时，VS Code 将连接到计算节点上的 PTVSD，并在前面设置的断点处停止。 现在可以在代码运行时逐句调试代码、查看变量等。
 

@@ -4,15 +4,15 @@ description: 了解如何将应用程序从使用批量执行工具库迁移到�
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
-origin.date: 04/06/2020
-ms.date: 05/06/2020
+origin.date: 04/24/2020
+ms.date: 06/22/2020
 ms.author: v-yeche
-ms.openlocfilehash: af04eac8820dc3286f1a7ab995f7089e64cfb0f4
-ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
+ms.openlocfilehash: 391ec0739949a2fcd05e5e0172dd6abfde4f68d4
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "83001975"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098476"
 ---
 <!--Verified with cosmos db SDK V3-->
 # <a name="migrate-from-the-bulk-executor-library-to-the-bulk-support-in-azure-cosmos-db-net-v3-sdk"></a>从批量执行工具库迁移到 Azure Cosmos DB .NET V3 SDK 中的批量操作支持
@@ -32,7 +32,7 @@ ms.locfileid: "83001975"
 
 通过利用[任务并行库](https://docs.microsoft.com/dotnet/standard/parallel-programming/task-parallel-library-tpl?view=azure-dotnet)，并将并发执行的操作分组，.NET SDK 中的批量操作支持得以发挥作用。 
 
-没有任何一种方法可将文档或操作的列表用作输入参数；需要针对你想要批量执行的每个操作创建一个任务。
+SDK 中没有任何一种方法可将文档或操作的列表用作输入参数，你需要针对要批量执行的每个操作创建一个任务，然后等待它们完成。
 
 例如，如果初始输入是一个项列表，其中的每个项采用以下架构：
 
@@ -48,7 +48,7 @@ ms.locfileid: "83001975"
 
    ```
 
-若要执行批量导入（类似于使用 BulkExecutor.BulkImportAsync），需要使用每个项值对 `CreateItemAsync` 发出并发调用。 例如：
+若要执行批量导入（类似于使用 BulkExecutor.BulkImportAsync），需要对 `CreateItemAsync` 发出并发调用。 例如：
 
    ```csharp
    BulkOperations<MyItem> bulkOperations = new BulkOperations<MyItem>(documentsToWorkWith.Count);
@@ -59,7 +59,7 @@ ms.locfileid: "83001975"
 
    ```
 
-若要执行批量更新（类似于使用 [BulkExecutor.BulkUpdateAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkexecutor.bulkupdateasync?view=azure-dotnet)），则在更新项值后，需要对 `ReplaceItemAsync` 方法发出并发调用。  例如：
+若要执行批量更新（类似于使用 [BulkExecutor.BulkUpdateAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkexecutor.bulkupdateasync?view=azure-dotnet)），则在更新项值后，需要对 `ReplaceItemAsync` 方法发出并发调用。 例如：
 
    ```csharp
    BulkOperations<MyItem> bulkOperations = new BulkOperations<MyItem>(documentsToWorkWith.Count);
@@ -71,7 +71,7 @@ ms.locfileid: "83001975"
 
    ```
 
-若要执行批量删除（类似于使用 [BulkExecutor.BulkDeleteAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkexecutor.bulkdeleteasync?view=azure-dotnet)），需要使用每个项的 `id` 和分区键对 `DeleteItemAsync` 发出并发调用。  例如：
+若要执行批量删除（类似于使用 [BulkExecutor.BulkDeleteAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkexecutor.bulkdeleteasync?view=azure-dotnet)），需要使用每个项的 `id` 和分区键对 `DeleteItemAsync` 发出并发调用。 例如：
 
    ```csharp
    BulkOperations<MyItem> bulkOperations = new BulkOperations<MyItem>(documentsToWorkWith.Count);
@@ -85,7 +85,7 @@ ms.locfileid: "83001975"
 
 ## <a name="capture-task-result-state"></a>捕获任务结果状态
 
-在前面的代码示例中，你已创建一个并发任务列表，并对其中的每个任务调用了 `CaptureOperationResponse` 方法。 此方法是一个扩展，可让我们通过捕获任何错误并跟踪[请求单位用量](request-units.md)来保持与 BulkExecutor 类似的响应架构。 
+在前面的代码示例中，我们已创建一个并发任务列表，并对其中的每个任务调用了 `CaptureOperationResponse` 方法。 此方法是一个扩展，可让我们通过捕获任何错误并跟踪[请求单位用量](request-units.md)来保持与 BulkExecutor 类似的响应架构。
 
    ```csharp
    public static Task<OperationResponse<T>> CaptureOperationResponse<T>(this Task<ItemResponse<T>> task, T item)
@@ -144,7 +144,7 @@ ms.locfileid: "83001975"
 为了跟踪整个 Tasks 列表的作用域，我们使用以下帮助程序类：
 
    ```csharp
-    public class BulkOperations<T>
+   public class BulkOperations<T>
     {
         public readonly List<Task<OperationResponse<T>>> Tasks;
 
@@ -167,7 +167,7 @@ ms.locfileid: "83001975"
                 Failures = this.Tasks.Where(task => !task.Result.IsSuccessful).Select(task => (task.Result.Item, task.Result.CosmosException)).ToList()
             };
         }
-    }
+   }
    ```
 `ExecuteAsync` 方法会等待所有操作完成，你可以像这样使用它：
 
@@ -219,5 +219,4 @@ ms.locfileid: "83001975"
 * 从 GitHub 获取完整的[迁移源代码](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration)。
 * [GitHub 上的其他批量操作示例](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/BulkSupport)
 
-<!-- Update_Description: new article about how to migrate from bulk executor library -->
-<!--NEW.date: 04/27/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

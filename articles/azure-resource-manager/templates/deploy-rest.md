@@ -1,60 +1,68 @@
 ---
 title: 使用 REST API 和模板部署资源
-description: 使用 Azure Resource Manager 和 Resource Manager REST API 将资源部署到 Azure。 资源在 Resource Manager 模板中定义。
+description: 使用 Azure 资源管理器和资源管理器 REST API 将资源部署到 Azure。 资源在 Resource Manager 模板中定义。
 ms.topic: conceptual
-origin.date: 06/04/2019
-ms.date: 03/23/2020
+origin.date: 06/04/2020
+ms.date: 06/22/2020
 ms.author: v-yeche
-ms.openlocfilehash: 5daa36282c23d0ba52472922b382ff9c4450b3f3
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 0d1f6666953190d7e0495890e4f10ee947b928ab
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79543731"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098522"
 ---
-# <a name="deploy-resources-with-resource-manager-templates-and-resource-manager-rest-api"></a>使用 Resource Manager 模板和 Resource Manager REST API 部署资源
+# <a name="deploy-resources-with-arm-templates-and-resource-manager-rest-api"></a>使用 ARM 模板和资源管理器 REST API 部署资源
 
-本文介绍如何将 Resource Manager REST API 与 Resource Manager 模板配合使用向 Azure 部署资源。
+本文介绍如何将资源管理器 REST API 与 Azure 资源管理器模板 (ARM) 配合使用向 Azure 部署资源。
 
 可以在请求正文中包含模板或链接到文件。 使用文件时，它可以是本地文件，也可以是通过 URI 提供的外部文件。 如果模板位于存储帐户中，可以限制对该模板的访问，并在部署过程中提供共享访问签名 (SAS) 令牌。
 
 ## <a name="deployment-scope"></a>部署范围
 
-可将部署目标设定为管理组、Azure 订阅或资源组。 大多数情况下，我们会将部署目标设定为资源组。 使用管理组或订阅部署在指定范围内应用策略和角色分配。 还可以使用订阅部署创建资源组并向其部署资源。 你将根据部署范围使用不同的命令。
+可将部署目标设定为管理组、Azure 订阅或资源组。 大多数情况下，我们会将部署目标设定为资源组。 使用管理组或订阅部署在指定范围内应用策略和角色分配。 还可以使用订阅部署创建资源组，并将资源部署到该资源组。 你将根据部署范围使用不同的命令。
 
-若要部署到**资源组**，请使用“[部署 - 创建](https://docs.microsoft.com/rest/api/resources/deployments/createorupdate)”。 请求将发送到：
+* 若要部署到资源组，请使用[部署 - 创建](https://docs.microsoft.com/rest/api/resources/deployments/createorupdate)。 请求将发送到：
 
-```HTTP
-PUT https://management.chinacloudapi.cn/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2019-05-01
-```
+  ```HTTP
+  PUT https://management.chinacloudapi.cn/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2019-10-01
+  ```
 
-若要部署到**订阅**，请使用“[部署 - 在订阅范围创建](https://docs.microsoft.com/rest/api/resources/deployments/createorupdateatsubscriptionscope)”。 请求将发送到：
+* 若要部署到订阅，请使用[部署 - 在订阅范围内创建](https://docs.microsoft.com/rest/api/resources/deployments/createorupdateatsubscriptionscope)。 请求发送到：
 
-```HTTP
-PUT https://management.chinacloudapi.cn/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2019-05-01
-```
+  ```HTTP
+  PUT https://management.chinacloudapi.cn/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2019-10-01
+  ```
 
 有关订阅级部署的详细信息，请参阅[在订阅级别创建资源组和资源](deploy-to-subscription.md)。
 
-若要部署到**管理组**，请使用[部署 - 在管理组范围内创建](https://docs.microsoft.com/rest/api/resources/deployments/createorupdateatmanagementgroupscope)。 请求将发送到：
+* 若要部署到管理组，请使用[部署 - 在管理组范围内创建](https://docs.microsoft.com/rest/api/resources/deployments/createorupdateatmanagementgroupscope)。 请求发送到：
 
-```HTTP
-PUT https://management.chinacloudapi.cn/providers/Microsoft.Management/managementGroups/{groupId}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2019-05-01
-```
+  ```HTTP
+  PUT https://management.chinacloudapi.cn/providers/Microsoft.Management/managementGroups/{groupId}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2019-10-01
+  ```
 
-有关管理组级部署的详细信息，请参阅[在管理组级别创建资源](deploy-to-management-group.md)。
+有关管理组级别部署的详细信息，请参阅[在管理组级别创建资源](deploy-to-management-group.md)。
+
+* 若要部署到租户，请使用[部署 - 在租户范围内创建或更新](https://docs.microsoft.com/rest/api/resources/deployments/createorupdateattenantscope)。 请求发送到：
+
+  ```HTTP
+  PUT https://management.chinacloudapi.cn/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2019-10-01
+  ```
+
+  有关租户级别部署的详细信息，请参阅[在租户级别创建资源](deploy-to-tenant.md)。
 
 本文中的示例使用资源组部署。
 
 ## <a name="deploy-with-the-rest-api"></a>使用 REST API 进行部署
 
-1. 设置[常见参数和标头](https://docs.microsoft.com/rest/api/azure/)，包括身份验证令牌。
+1. 设置 [常见参数和标头](https://docs.microsoft.com/rest/api/azure/)，包括身份验证令牌。
 
-1. 如果目前没有资源组，请创建资源组。 提供订阅 ID、新资源组的名称，以及解决方案所需的位置。 有关详细信息，请参阅[创建资源组](https://docs.microsoft.com/rest/api/resources/resourcegroups/createorupdate)。
+1. 如果目前没有资源组，请创建资源组。 提供订阅 ID、新资源组的名称，以及解决方案所需的位置。 有关详细信息，请参阅 [创建资源组](https://docs.microsoft.com/rest/api/resources/resourcegroups/createorupdate)。
 
-    ```HTTP
-    PUT https://management.chinacloudapi.cn/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>?api-version=2019-05-01
-    ```
+   ```HTTP
+   PUT https://management.chinacloudapi.cn/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>?api-version=2019-10-01
+   ```
 
     使用如下所示请求正文：
 
@@ -67,13 +75,13 @@ PUT https://management.chinacloudapi.cn/providers/Microsoft.Management/managemen
     }
     ```
 
-1. 在执行部署之前，通过运行[验证模板部署](https://docs.microsoft.com/rest/api/resources/deployments/validate)操作来验证部署。 测试部署时，请提供与执行部署时所提供的完全相同的参数（如下一步中所示）。
+1. 在部署模板之前，可以预览模板将对环境作出的更改。 使用[假设操作](template-deploy-what-if.md)验证模板是否进行了预期的更改。 假设操作还验证模板是否有错误。
 
 1. 若要部署模板，请在请求 URI 中提供订阅 ID、资源组名称和部署名称。
 
-    ```HTTP
-    PUT https://management.chinacloudapi.cn/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>/providers/Microsoft.Resources/deployments/<YourDeploymentName>?api-version=2019-05-01
-    ```
+   ```HTTP
+   PUT https://management.chinacloudapi.cn/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>/providers/Microsoft.Resources/deployments/<YourDeploymentName>?api-version=2019-10-01
+   ```
 
     在请求正文中，提供指向模板和参数文件的链接。 有关参数文件的详细信息，请参阅[创建资源管理器参数文件](parameter-files.md)。
 
@@ -127,7 +135,7 @@ PUT https://management.chinacloudapi.cn/providers/Microsoft.Management/managemen
       "properties": {
       "mode": "Incremental",
       "template": {
-        "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+        "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
         "contentVersion": "1.0.0.0",
         "parameters": {
           "storageAccountType": {
@@ -184,17 +192,17 @@ PUT https://management.chinacloudapi.cn/providers/Microsoft.Management/managemen
     }
     ```
 
-1. 若要获取模板部署的状态，请使用[部署 - 获取](https://docs.microsoft.com/rest/api/resources/deployments/get)。
+1. 要获取模板部署的状态，请使用[部署 - 获取](https://docs.microsoft.com/rest/api/resources/deployments/get)。
 
-    ```HTTP
-    GET https://management.chinacloudapi.cn/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>/providers/Microsoft.Resources/deployments/<YourDeploymentName>?api-version=2018-05-01
-    ```
+   ```HTTP
+   GET https://management.chinacloudapi.cn/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2019-10-01
+   ```
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要在出错时回滚到成功的部署，请参阅[出错时回滚到成功的部署](rollback-on-error.md)。
+- 若要在出错时回退到成功的部署，请参阅[出错时回退到成功的部署](rollback-on-error.md)。
 - 若要指定如何处理存在于资源组中但未在模板中定义的资源，请参阅 [Azure 资源管理器部署模式](deployment-modes.md)。
 - 若要了解如何处理异步 REST 操作，请参阅[跟踪异步 Azure 操作](../management/async-operations.md)。
-- 若要详细了解模板，请参阅[了解 Azure 资源管理器模板的结构和语法](template-syntax.md)。
+- 若要详细了解模板，请参阅[了解 ARM 模板的结构和语法](template-syntax.md)。
 
 <!-- Update_Description: update meta properties, wording update, update link -->

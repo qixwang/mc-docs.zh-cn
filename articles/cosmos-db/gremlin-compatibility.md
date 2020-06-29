@@ -6,17 +6,17 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: reference
 origin.date: 09/10/2019
-ms.date: 04/27/2020
+ms.date: 06/22/2020
 ms.author: v-yeche
-ms.openlocfilehash: a5abcdfd0330cd488ec9fb6dc24621dd7e71bf58
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.openlocfilehash: fa8556dda9b2ee9b76e20521dabeb0bc273ed230
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82134934"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098393"
 ---
 # <a name="azure-cosmos-db-gremlin-compatibility"></a>Azure Cosmos DB Gremlin 兼容性
-Azure Cosmos DB Graph 引擎紧密遵循 [Apache TinkerPop](https://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps) 遍历步骤规范，但是存在差异。
+Azure Cosmos DB Graph 引擎严格遵循 [Apache TinkerPop](https://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps) 遍历步骤规范，但在实现中存在特定于 Azure Cosmos DB 的差异。 若要查看支持的 Gremlin 步骤列表，请参阅 [Gremlin API 线路协议支持](gremlin-support.md)一文。
 
 ## <a name="behavior-differences"></a>行为差异
 
@@ -28,10 +28,8 @@ Azure Cosmos DB Graph 引擎紧密遵循 [Apache TinkerPop](https://tinkerpop.ap
 
 * ***`property(set, 'xyz', 1)`*** 目前不支持集基数。 请改用 `property(list, 'xyz', 1)`。 若要了解详细信息，请参阅 [TinkerPop 的顶点属性](http://tinkerpop.apache.org/docs/current/reference/#vertex-properties)。
 
-* ***`match()`*** 允许使用声明性模式匹配来查询图。 此功能不可用。
+* `match()` 步骤当前不可用。 此步骤提供声明性查询功能。
 
-    <!--CORRECT ON match()-->
-    
 * 不支持顶点或边上的***对象作为属性***。 属性只能是基元类型或数组。
 
 * 不支持***按数组属性排序*** `order().by(<array property>)`。 只支持按基元类型排序。
@@ -44,7 +42,37 @@ Azure Cosmos DB Graph 引擎紧密遵循 [Apache TinkerPop](https://tinkerpop.ap
 
 * 由于系统具有分布式特性，因此***事务***不受支持。  在 Gremlin 帐户上配置适当的一致性模型以“读取自己的写入”，并使用乐观并发解决冲突的写入。
 
+## <a name="known-limitations"></a>已知的限制
+
+* **使用中间遍历 `.V()` 步骤的 Gremlin 查询的索引利用**：目前，只有遍历的第一次 `.V()` 调用将使用索引来解析附加到它的任何筛选器或谓词。 后续调用将不会访问索引，因为这可能会增加查询的延迟和成本。
+
+    假设使用默认索引，以 `.V()` 步骤开始的典型读取 Gremlin 查询将在其附加的筛选步骤中使用参数，例如 `.has()` 或 `.where()`，以优化查询的成本和性能。 例如：
+
+    ```java
+    g.V().has('category', 'A')
+    ```
+
+    但是，当 Gremlin 查询中包含多个 `.V()` 步骤时，查询的数据解析可能达不到最优效果。 以下列查询为例：
+
+    ```java
+    g.V().has('category', 'A').as('a').V().has('category', 'B').as('b').select('a', 'b')
+    ```
+
+    此查询将根据名为 `category` 的属性返回两组顶点。 在这种情况下，只有第一次调用 `g.V().has('category', 'A')` 将使用索引根据其属性值解析顶点。
+
+    对于此查询，一个解决方法是使用 `.map()` 和 `union()` 等子遍历步骤。 下面来举例说明：
+
+    ```java
+    // Query workaround using .map()
+    g.V().has('category', 'A').as('a').map(__.V().has('category', 'B')).as('b').select('a','b')
+
+    // Query workaround using .union()
+    g.V().has('category', 'A').fold().union(unfold(), __.V().has('category', 'B'))
+    ```
+
+    可以使用 [Gremlin `executionProfile()` 步骤](graph-execution-profile.md 检查查询的性能。
+
 ## <a name="next-steps"></a>后续步骤
-* 访问 [Cosmos DB 支持](https://support.azure.cn/support/contact/)页以共享反馈并帮助团队专注于对你重要的功能。
+* 访问 [Cosmos DB 用户之声](https://support.azure.cn/support/contact/)页以共享反馈并帮助团队专注于对你重要的功能。
 
 <!-- Update_Description: update meta properties, wording update, update link -->

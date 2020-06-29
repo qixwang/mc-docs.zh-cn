@@ -3,17 +3,17 @@ title: Azure Stack Hub 中的 PowerShell
 description: Azure Stack Hub 中的 PowerShell 具有一些模块和上下文。
 author: WenJason
 ms.topic: article
-origin.date: 1/22/2020
-ms.date: 05/18/2020
+origin.date: 5/27/2020
+ms.date: 06/22/2020
 ms.author: v-jay
 ms.reviewer: sijuman
 ms.lastreviewed: 10/02/2019
-ms.openlocfilehash: 82e0116ac6987c5508c541909bb75ed0be5ca57c
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.openlocfilehash: 9ec76f675778fdeac863bcb738d977ce667d505f
+ms.sourcegitcommit: d86e169edf5affd28a1c1a4476d72b01a7fb421d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83422349"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85096530"
 ---
 # <a name="get-started-with-powershell-in-azure-stack-hub"></a>Azure Stack Hub 中的 PowerShell 入门
 
@@ -23,7 +23,7 @@ PowerShell 用于从命令行管理资源。 若要生成使用 Azure 资源管�
 
 | API | PowerShell 参考 | REST 参考 |
 | --- | --- | --- |
-| Azure 资源管理器 | [Azure PowerShell 模块](https://github.com/Azure/azure-powershell/blob/master/documentation/azure-powershell-modules.md) | [REST API 浏览器](https://docs.microsoft.com/rest/api/) |
+| Azure Resource Manager | [Azure PowerShell 模块](https://github.com/Azure/azure-powershell/blob/master/documentation/azure-powershell-modules.md) | [REST API 浏览器](https://docs.microsoft.com/rest/api/) |
 | Azure Stack Hub 资源管理器 | [管理 Azure Stack Hub 中的 API 版本配置文件](azure-stack-version-profiles.md) | [管理 Azure Stack Hub 中的 API 版本配置文件](azure-stack-version-profiles.md) |
 | Azure Stack Hub 管理员终结点 | [Azure Stack Hub 管理模块](https://docs.microsoft.com/powershell/azure/azure-stack/overview) | [REST API 浏览器 - Azure Stack Hub](https://docs.microsoft.com/rest/api/?term=Azure%20Azure%20Stack%20Admin) |
 | Azure Stack Hub 特权终结点 | [使用 Azure Stack Hub 中的特权终结点](../operator/azure-stack-privileged-endpoint.md) | |
@@ -36,7 +36,7 @@ PowerShell 用于从命令行管理资源。 若要生成使用 Azure 资源管�
 
 以下框图显示了 PowerShell 模块集之间的关系。 可以从计算机加载 PowerShell 模块，并管理 Azure 和 Azure Stack Hub。
 
-![Azure Stack Hub PowerShell](media/azure-stack-powershell-overview/Azure-Stack-PowerShell.png)
+![Azure Stack Hub PowerShell](media/azure-stack-powershell-overview/azure-stack-powerShell.svg)
 
 ### <a name="azure"></a>Azure
 
@@ -70,5 +70,5 @@ PowerShell 提供编程的方式来与 Azure 资源管理器交互。 可以使�
 ## <a name="next-steps"></a>后续步骤
 
 - 了解 Azure Stack Hub 中的 [PowerShell 的 API 配置文件](azure-stack-version-profiles.md)。
-- 安装 [Azure Stack Hub Powershell](../operator/azure-stack-powershell-install.md)。
+- 安装 [Azure Stack Hub PowerShell](../operator/azure-stack-powershell-install.md)。
 - 了解如何创建 [Azure 资源管理器模板](azure-stack-develop-templates.md)以实现云一致性。

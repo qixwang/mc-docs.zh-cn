@@ -5,14 +5,14 @@ author: Johnnytechn
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.topic: article
-ms.date: 06/05/2020
+ms.date: 06/17/2020
 ms.author: v-johya
-ms.openlocfilehash: a9ff15d598558fa53be077190240d725c46848d6
-ms.sourcegitcommit: 285649db9b21169f3136729c041e4d04d323229a
+ms.openlocfilehash: dc8f2cd8e7ce27e1fb7c1659301e7519a51447a1
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84684052"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097215"
 ---
 <!--Verify sucessfully-->
 # <a name="support-for-generation-2-vms-on-azure"></a>Azure 对第 2 代 VM 的支持
@@ -38,11 +38,12 @@ Azure 中的所有 VM 大小都支持第 1 代 VM（Mv2 系列 VM 除外）。 A
 * [DSv2 系列](../dv2-dsv2-series.md)和 [Dsv3 系列](../dv3-dsv3-series.md)
 * [Esv3 系列](../ev3-esv3-series.md)
 * [Fsv2 系列](../fsv2-series.md)
-
     <!--Not Available on * [GS-series](/virtual-machines/linux/sizes-previous-gen#gs-series)-->
     <!--Not Available on * [HB-series](../hb-series.md)-->
     <!--Not Available on * [HC-series](../hc-series.md)-->
     <!--Not Available on * [Ls-series](/virtual-machines/linux/sizes-previous-gen#ls-series) and [Lsv2-series](../lsv2-series.md)-->
+* [M 系列](../m-series.md)
+* [NCv3 系列](../ncv3-series.md)
     <!--Not Available on * [Mv2-series](../mv2-series.md)-->      
     <!--Not Available on * [NCv2-series](../ncv2-series.md)-->
     <!--Not Available on * [ND-series](../nd-series.md)-->
@@ -58,7 +59,7 @@ Azure 中的所有 VM 大小都支持第 1 代 VM（Mv2 系列 VM 除外）。 A
 * SUSE Linux Enterprise Server 12 SP4
 * Ubuntu Server 16.04、18.04、19.04、19.10 
     
-
+* Cent OS 8.1、8.0、7.7、7.6、7.5、7.4
 
 <!--MOONCAKE: CUSTOMIZED-->
 
@@ -128,12 +129,6 @@ Azure 目前不支持本地 Hyper-V 对第 2 代 VM 所支持的某些特性。
 Get-AzVMImageSku -Location chinanorth2 -PublisherName MicrosoftWindowsServer -Offer WindowsServer
 ```
 
-或者，可以使用 Azure CLI 查看按 **Publisher** 列出的任何可用第 2 代映像。
-
-```azurecli
-az vm image list --publisher Canonical --sku gen2 --output table --all
-```
-
 如果要创建使用 Windows Server 2012 作为操作系统的 VM，则将选择第 1 代 (BIOS) 或第 2 代 (UEFI) VM SKU，如下所示：
 
 ```powershell
@@ -141,7 +136,15 @@ az vm image list --publisher Canonical --sku gen2 --output table --all
 2012-datacenter-gensecond
 ```
 
-有关最新的受支持市场映像列表，请参阅[特性和功能](#features-and-capabilities)部分。
+有关支持的市场映像的最新列表，请参阅[特性和功能](#features-and-capabilities)部分。
+
+#### <a name="azure-cli"></a>Azure CLI
+
+或者，可以使用 Azure CLI 查看按 **Publisher** 列出的任何可用第 2 代映像。
+
+```azurecli
+az vm image list --publisher Canonical --sku gen2 --output table --all
+```
 
 ### <a name="managed-image-or-managed-disk"></a>托管映像或托管磁盘
 

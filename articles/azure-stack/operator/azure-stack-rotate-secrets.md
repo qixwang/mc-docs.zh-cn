@@ -5,17 +5,17 @@ description: 了解如何在 Azure Stack Hub 中轮换机密。
 author: WenJason
 ms.topic: how-to
 origin.date: 04/03/2020
-ms.date: 05/18/2020
+ms.date: 06/22/2020
 ms.reviewer: ppacent
 ms.author: v-jay
 ms.lastreviewed: 12/13/2019
 monikerRange: '>=azs-1802'
-ms.openlocfilehash: f53e53f3d61e14d3d6ebaed40da8409d52395d54
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.openlocfilehash: 3994f68a4c0e59690469df4aca04e1d4457c5709
+ms.sourcegitcommit: d86e169edf5affd28a1c1a4476d72b01a7fb421d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83422457"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85096329"
 ---
 # <a name="rotate-secrets-in-azure-stack-hub"></a>在 Azure Stack Hub 中轮换机密
 
@@ -142,18 +142,18 @@ Azure Stack Hub 使用各种机密来维持 Azure Stack Hub 基础结构资源�
 > 错误消息指出访问文件共享时出现问题，但实际上它是此处强制实施的文件夹结构。 在 AzureStack 就绪性检查器 - [PublicCertHelper 模块](https://www.powershellgallery.com/packages/Microsoft.AzureStack.ReadinessChecker/1.1811.1101.1/Content/CertificateValidation%5CPublicCertHelper.psm1)中可以找到详细信息
 >
 > 同样重要的是，文件共享文件夹结构以 **Certificates** 文件夹开头，否则验证时也会失败。
-> 文件共享装入点应该类似于 **\\\\\<IP 地址>\\\<共享名称>\\** ，并且应该包含文件夹 **Certificates\AAD** 或 **Certificates\ADFS**。
+> 文件共享装入点应该类似于 \\\\\<IPAddress>\\\<ShareName>\\，并且应该包含文件夹 Certificates\AAD 或 Certificates\ADFS  。
 >
 > 例如：
-> - Fileshare = **\\\\\<IP 地址>\\\<共享名称>\\**
+> - Fileshare = **\\\\\<IPAddress>\\\<ShareName>\\**
 > - CertFolder = **Certificates\AAD**
-> - FullPath = **\\\\\<IP 地址>\\\<共享名称>\Certificates\AAD**
+> - FullPath = **\\\\\<IPAddress>\\\<ShareName>\Certificates\AAD**
 
 ## <a name="rotating-external-secrets"></a>轮换外部机密
 
 轮换外部机密：
 
-1. 在前期步骤中新建的 **\Certificates\\\<标识提供者>** 目录内，根据 [Azure Stack Hub PKI 证书要求](azure-stack-pki-certs.md#mandatory-certificates)的“必需证书”部分中所述的格式，将新的替换外部证书集放入目录结构。
+1. 在前期步骤中新建的 \Certificates\\\<IdentityProvider> 目录内，根据 [Azure Stack PKI 证书要求](azure-stack-pki-certs.md#mandatory-certificates)的“必需证书”部分中所述的格式，将新的替换外部证书集放入目录结构 。
 
     Azure AD 标识提供者的文件夹结构示例：
     ```powershell
@@ -213,7 +213,7 @@ Azure Stack Hub 使用各种机密来维持 Azure Stack Hub 基础结构资源�
 
 5. 等待机密完成轮换。 外部机密轮换需要大约一小时。
 
-    机密轮换成功完成后，控制台会显示“总体操作状态: 成功”。
+    机密轮换成功完成后，控制台会显示“ActionPlanInstanceID ...**CurrentStatus:** Completed”，后跟“DONE”。
 
     > [!Note]
     > 如果机密轮换失败，请按照错误消息中的说明操作，并结合 **-ReRun** 参数重新运行 **Start-SecretRotation**。
@@ -259,7 +259,7 @@ Remove-PSSession -Session $PEPSession
 
 3. 等待机密完成轮换。
 
-   机密轮换成功完成后，控制台会显示“总体操作状态: 成功”。
+   机密轮换成功完成后，控制台会显示“ActionPlanInstanceID ...**CurrentStatus:** Completed”，后跟“DONE”
     > [!Note]
     > 如果机密轮换失败，请按照错误消息中的说明操作，并使用 **-Internal** 和 **-ReRun** 参数重新运行 **Start-SecretRotation**。  
 

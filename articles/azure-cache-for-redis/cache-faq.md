@@ -1,17 +1,17 @@
 ---
 title: 用于 Redis 的 Azure 缓存常见问题解答
-description: 了解 Azure Redis 缓存的常见问题、模式和最佳做法
+description: 了解 Azure Cache for Redis 的常见问题、模式和最佳做法
 author: yegu-ms
 ms.author: v-junlch
 ms.service: cache
 ms.topic: conceptual
-ms.date: 04/26/2020
-ms.openlocfilehash: 731d8471ab31295ecb5157f921eeda65293e3ced
-ms.sourcegitcommit: e3512c5c2bbe61704d5c8cbba74efd56bfe91927
+ms.date: 06/16/2020
+ms.openlocfilehash: 2e413affbd22ad2f2c5e597c0f005aa43b64c684
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82267613"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097299"
 ---
 # <a name="azure-cache-for-redis-faq"></a>用于 Redis 的 Azure 缓存常见问题解答
 了解 Azure Redis 缓存的常见问题、模式和最佳做法。
@@ -20,7 +20,7 @@ ms.locfileid: "82267613"
 如果未在此处找到相关问题，请联系我们获取帮助。
 
 * 可在此常见问题解答末尾的评论处发布问题，并与 Azure 缓存团队和其他社区成员就本文进行讨论。
-* 若希望更多的人看到问题，可以将问题发布在 [Azure Cache MSDN Forum](https://social.msdn.microsoft.com/forums/azure/home?forum=azurecache)（Azure 缓存 MSDN 论坛）并与 Azure 缓存团队和社区的其他成员讨论。
+* 若希望更多的人看到问题，可以将问题发布在[有关 Azure 缓存的 Microsoft Q&A 问题页面](https://docs.microsoft.com/answers/topics/azure-cache-redis.html)并与 Azure 缓存团队和社区的其他成员讨论。
 * 如果想要发出功能请求，可将请求和意见提交到 [Azure Redis 缓存 User Voice](https://feedback.azure.com/forums/169382-cache)。
 
 ## <a name="azure-cache-for-redis-basics"></a>Azure Redis 缓存基础知识
@@ -89,7 +89,7 @@ Azure Redis 缓存基于热门开源软件 [Redis](https://redis.io/)。 这使�
 <a name="cache-size"></a>
 
 ### <a name="what-azure-cache-for-redis-offering-and-size-should-i-use"></a>我应使用哪种 Azure Redis 缓存产品/服务和大小？
-每个 Azure Redis 缓存产品/服务提供不同级别的大小、带宽、高可用性和 SLA 选项     。
+每个 Azure Redis 缓存产品/服务提供不同级别的大小、带宽、高可用性和 SLA 选项   。
 
 以下是有关选择缓存产品的注意事项。
 
@@ -268,7 +268,7 @@ Redis 服务器本身不支持 TLS，但 Azure Cache for Redis 可提供此支�
 >
 >
 
-`redis-cli` 等 Redis 工具对 TLS 端口不起作用，但是，可以根据 [Announcing ASP.NET Session State Provider for Redis Preview Release](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx)（适用于 Redis 预览版的 ASP.NET 会话状态提供程序通告）博客文章中的说明，使用 `stunnel` 等实用程序安全地将这些工具连接到 TLS 端口。
+Redis 工具（如 `redis-cli`）不适用于 TLS 端口，但可以使用实用程序（如 `stunnel`）将该工具安全连接到 TLS 端口。
 
 有关下载 Redis 工具的说明，请参阅[如何运行 Redis 命令？](#cache-commands)部分。
 
@@ -406,9 +406,9 @@ void Application_Start(object sender, EventArgs e)
 
 Azure Redis 缓存**资源菜单**中还包含了用于对缓存进行监视和故障排除的几个工具。
 
-* “诊断并解决问题”  提供常见问题的相关信息，以及解决问题的策略。
-* “资源运行状况”  会监视资源，并告知资源是否按预期运行。 有关 Azure 资源运行状况服务的详细信息，请参阅 [Azure 资源运行状况概述](../service-health/resource-health-overview.md)。
-* “新建支持请求”提供用于建立缓存支持请求的选项。 
+* “诊断并解决问题”提供常见问题的相关信息，以及解决问题的策略。
+* “资源运行状况”会监视资源，并告知资源是否按预期运行。 有关 Azure 资源运行状况服务的详细信息，请参阅 [Azure 资源运行状况概述](../service-health/resource-health-overview.md)。
+* “新建支持请求”提供用于建立缓存支持请求的选项。
 
 借助这些工具，可以监视 Azure Redis 缓存实例的运行状况，以及管理缓存应用程序。 有关详细信息，请参阅[如何配置 Azure Redis 缓存](cache-configure.md)的“支持和故障排除设置”部分。
 

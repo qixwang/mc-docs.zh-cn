@@ -5,19 +5,18 @@ description: 了解部署 Azure 机器学习模型（包括 Azure 容器实例�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
-ms.author: v-yiso
+ms.topic: how-to
+ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-origin.date: 02/27/2020
-ms.date: 03/09/2020
-ms.custom: seoapril2019
-ms.openlocfilehash: 3fa14d4848b2463263d43906e1ac7d4afbff4200
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 06/12/2020
+ms.custom: seoapril2019, tracking-python
+ms.openlocfilehash: f0e68d91943d89e5a76c725622d3f711a645d694
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80343301"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097546"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>使用 Azure 机器学习部署模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -58,18 +57,20 @@ ms.locfileid: "80343301"
 
    使用 CLI 时，请使用 `-w` 或 `--workspace-name` 参数指定命令的工作区。
 
-+ **使用 VS Code**
++ **使用 Visual Studio Code**
 
-   使用 VS Code 时，可以使用图形界面选择工作区。 有关详细信息，请参阅 VS Code 扩展文档中的[部署和管理模型](tutorial-train-deploy-image-classification-model-vscode.md#deploy-the-model)。
+   使用 Visual Studio Code 时，可以使用图形界面选择工作区。 有关详细信息，请参阅 Visual Studio Code 扩展文档中的[部署和管理模型](tutorial-train-deploy-image-classification-model-vscode.md#deploy-the-model)。
 
 ## <a name="register-your-model"></a><a id="registermodel"></a> 注册模型
 
 已注册的模型是组成模型的一个或多个文件的逻辑容器。 例如，如果有一个存储在多个文件中的模型，则可以在工作区中将这些文件注册为单个模型。 注册这些文件后，可以下载或部署已注册的模型，并接收注册的所有文件。
 
 > [!TIP]
-> 注册模型时，请提供云位置（来自训练运行）或本地目录的路径。 此路径仅用于在注册过程中查找要上传的文件。 它不需要与入口脚本中使用的路径匹配。 有关详细信息，请参阅[在入口脚本中查找模型文件](#locate-model-files-in-your-entry-script)。
+> 注册模型时，请提供云位置（来自训练运行）或本地目录的路径。 此路径仅用于在注册过程中查找要上传的文件。 它不需要与入口脚本中使用的路径匹配。 有关详细信息，请参阅[在入口脚本中查找模型文件](#load-model-files-in-your-entry-script)。
 
-机器学习模型会注册到 Azure 机器学习工作区中。 模型可以来自 Azure 机器学习或其他位置。 以下示例演示如何注册模型。
+机器学习模型会注册到 Azure 机器学习工作区中。 模型可以来自 Azure 机器学习或其他位置。 注册模型时，可以选择提供有关模型的元数据。 然后，可将应用于模型注册的 `tags` 和 `properties` 字典用于筛选模型。
+
+以下示例演示如何注册模型。
 
 ### <a name="register-a-model-from-an-experiment-run"></a>在实验运行中注册模型
 
@@ -85,7 +86,9 @@ ms.locfileid: "80343301"
   + 通过 `azureml.core.Run` 对象注册模型：
  
     ```python
-    model = run.register_model(model_name='sklearn_mnist', model_path='outputs/sklearn_mnist_model.pkl')
+    model = run.register_model(model_name='sklearn_mnist',
+                               tags={'area': 'mnist'},
+                               model_path='outputs/sklearn_mnist_model.pkl')
     print(model.name, model.id, model.version, sep='\t')
     ```
 
@@ -95,7 +98,8 @@ ms.locfileid: "80343301"
 
     ```python
         description = 'My AutoML Model'
-        model = run.register_model(description = description)
+        model = run.register_model(description = description,
+                                   tags={'area': 'mnist'})
 
         print(run.model_id)
     ```
@@ -107,16 +111,16 @@ ms.locfileid: "80343301"
 + **使用 CLI**
 
   ```azurecli
-  az ml model register -n sklearn_mnist  --asset-path outputs/sklearn_mnist_model.pkl  --experiment-name myexperiment --run-id myrunid
+  az ml model register -n sklearn_mnist  --asset-path outputs/sklearn_mnist_model.pkl  --experiment-name myexperiment --run-id myrunid --tag area=mnist
   ```
 
   [!INCLUDE [install extension](../../includes/machine-learning-service-install-extension.md)]
 
   `--asset-path` 参数表示模型的云位置。 本示例使用的是单个文件的路径。 若要在模型注册中包含多个文件，请将 `--asset-path` 设置为包含文件的文件夹的路径。
 
-+ **使用 VS Code**
++ **使用 Visual Studio Code**
 
-  通过使用 [VS Code](tutorial-train-deploy-image-classification-model-vscode.md#deploy-the-model) 扩展，可使用任何模型文件或文件夹注册模型。
+  通过使用 [Visual Studio Code](tutorial-train-deploy-image-classification-model-vscode.md#deploy-the-model) 扩展，可使用任何模型文件或文件夹注册模型。
 
 ### <a name="register-a-model-from-a-local-file"></a>通过本地文件注册模型
 
@@ -171,24 +175,48 @@ Azure ML 支持在单个终结点后部署单个或多个模型。
 
 若要将模型部署为服务，需要以下组件：
 
-* **入口脚本和源代码依赖项**。 此脚本接受请求、使用模型为请求评分并返回结果。
-
-    > [!IMPORTANT]
-    > * 入口脚本特定于你的模型。 它必须能够识别传入请求数据的格式、模型所需数据的格式以及返回给客户端的数据的格式。
-    >
-    >   如果请求数据的格式对模型不可用，则该脚本可以将其转换为可接受的格式。 在将响应返回给客户端之前，它还可以对响应进行转换。
-    >
-    > * Web 服务和 IoT Edge 部署无法访问工作区数据存储或数据集。 如果部署的服务需要访问存储在部署外的数据，例如 Azure 存储帐户中的数据，则必须使用相关的 SDK 开发自定义代码解决方案。 例如，[用于 Python 的 Azure 存储 SDK](https://github.com/Azure/azure-storage-python)。
-    >
-    >   可能适用于该方案的另一种方法是[批量预测](how-to-use-parallel-run-step.md)，它在评分期间提供对数据存储的访问。
-
-* **推理配置**。 推理配置指定以服务形式运行模型所需的环境配置、入口脚本和其他组件。
+* **定义推理环境**。 此环境封装运行模型进行推理所需的依赖项。
+* **定义评分代码**。 此脚本接受请求、使用模型为请求评分并返回结果。
+* **定义推理配置**。 推理配置指定以服务形式运行模型所需的环境配置、入口脚本和其他组件。
 
 获得必要的组件后，可以分析在部署模型后会创建的服务，了解其 CPU 和内存要求。
 
-### <a name="1-define-your-entry-script-and-dependencies"></a><a id="script"></a> 1.定义入口脚本和依赖项
+### <a name="1-define-inference-environment"></a>1.定义推理环境
 
-入口脚本接收提交到已部署 Web 服务的数据，并将此数据传递给模型。 然后，该脚本接收模型返回的响应，并将该响应返回给客户端。 该脚本特定于你的模型  。 它必须能够识别模型需要和返回的数据。
+推理配置描述如何设置包含模型的 Web 服务。 此配置稍后在部署模型时使用。
+
+推理配置使用 Azure 机器学习环境来定义部署所需的软件依赖项。 利用环境，你可以创建、管理和重复使用训练和部署所需的软件依赖项。 可以从自定义依赖项文件创建环境，或使用特选 Azure 机器学习环境之一。 以下 YAML 是用于推理的 Conda 依赖项文件的一个示例。 请注意，必须将版本为 1.0.45 或更高版本的 azureml-defaults 指示为 pip 依赖项，因为它包含将模型托管为 Web 服务所需的功能。 如果要使用自动生成架构功能，则入口脚本也必须导入 `inference-schema` 包。
+
+```YAML
+name: project_environment
+dependencies:
+  - python=3.6.2
+  - scikit-learn=0.20.0
+  - pip:
+      # You must list azureml-defaults as a pip dependency
+    - azureml-defaults>=1.0.45
+    - inference-schema[numpy-support]
+```
+
+> [!IMPORTANT]
+> 如果你的依赖项可通过 Conda 和 pip（通过 PyPi）使用，Microsoft 建议使用 Conda 版本，因为 Conda 包通常附带预生成的二进制文件，能让安装更可靠。
+>
+> 有关详细信息，请参阅[了解 Conda 和 Pip](https://www.anaconda.com/understanding-conda-and-pip/)。
+>
+> 若要检查是否能通过 Conda 使用依赖项，请使用 `conda search <package-name>` 命令，或使用 [https://anaconda.org/anaconda/repo](https://anaconda.org/anaconda/repo) 和 [https://anaconda.org/conda-forge/repo](https://anaconda.org/conda-forge/repo) 处的包索引。
+
+可以使用依赖项文件创建环境对象，并将其保存到工作区供将来使用：
+
+```python
+from azureml.core.environment import Environment
+myenv = Environment.from_conda_specification(name = 'myenv',
+                                             file_path = 'path-to-conda-specification-file'
+myenv.register(workspace=ws)
+```
+
+### <a name="2-define-scoring-code"></a><a id="script"></a> 2.定义评分代码
+
+入口脚本接收提交到已部署 Web 服务的数据，并将此数据传递给模型。 然后，该脚本接收模型返回的响应，并将该响应返回给客户端。 该脚本特定于你的模型**。 它必须能够识别模型需要和返回的数据。
 
 该脚本包含两个用于加载和运行模型的函数：
 
@@ -196,7 +224,7 @@ Azure ML 支持在单个终结点后部署单个或多个模型。
 
 * `run(input_data)`：此函数使用模型来基于输入数据预测值。 运行的输入和输出通常使用 JSON 进行序列化和反序列化。 也可以处理原始二进制数据。 可以先转换数据，然后再将数据发送到模型或返回给客户端。
 
-#### <a name="locate-model-files-in-your-entry-script"></a>在入口脚本中查找模型文件
+#### <a name="load-model-files-in-your-entry-script"></a>在入口脚本中加载模型文件
 
 可以通过两种方法在入口脚本中查找模型：
 * `AZUREML_MODEL_DIR`：一个包含模型位置路径的环境变量。
@@ -227,9 +255,34 @@ file_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'my_model_folder', 'skl
 ```
 
 **多个模型示例**
+
+在此方案中，向工作区注册两个模型：
+
+* `my_first_model`：包含一个文件 (`my_first_model.pkl`)，并且只有一个版本 (`1`)。
+* `my_second_model`：包含一个文件 (`my_second_model.pkl`)，有两个版本；`1` 和 `2`。
+
+部署服务后，部署操作中将同时提供两种模型：
+
+```python
+first_model = Model(ws, name="my_first_model", version=1)
+second_model = Model(ws, name="my_second_model", version=2)
+service = Model.deploy(ws, "myservice", [first_model, second_model], inference_config, deployment_config)
+```
+
+在托管服务的 Docker 映像中，`AZUREML_MODEL_DIR` 环境变量包含模型所在的目录。
+在此目录中，每个模型都位于 `MODEL_NAME/VERSION` 的目录路径中。 其中 `MODEL_NAME` 是已注册的模型的名称，`VERSION` 是模型的版本。 构成已注册的模型的文件存储在这些目录中。
+
+在此示例中，路径将是 `$AZUREML_MODEL_DIR/my_first_model/1/my_first_model.pkl` 和 `$AZUREML_MODEL_DIR/my_second_model/2/my_second_model.pkl`。
+
+
 ```python
 # Example when the model is a file, and the deployment contains multiple models
-model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'sklearn_model', '1', 'sklearn_regression_model.pkl')
+first_model_name = 'my_first_model'
+first_model_version = '1'
+first_model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), first_model_name, first_model_version, 'my_first_model.pkl')
+second_model_name = 'my_second_model'
+second_model_version = '2'
+second_model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), second_model_name, second_model_version, 'my_second_model.pkl')
 ```
 
 ##### <a name="get_model_path"></a>get_model_path
@@ -238,18 +291,7 @@ model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'sklearn_model', '1', 
 
 注册模型时，请为其指定一个名称。 该名称对应于模型的放置位置（本地位置或在服务部署过程中指定的位置）。
 
-> [!IMPORTANT]
-> 如果使用自动化机器学习来训练模型，则会将 `model_id` 值用作模型名称。 若要通过示例了解如何注册和部署使用自动化机器学习训练的模型，请参阅 GitHub 上的 [Azure/MachineLearningNotebooks](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features)。
-
-下面的示例将返回名为 `sklearn_mnist_model.pkl` 的单个文件的路径（该文件使用名称 `sklearn_mnist` 注册）：
-
-```python
-model_path = Model.get_model_path('sklearn_mnist')
-```
-
-<a id="schema"></a>
-
-#### <a name="optional-automatic-schema-generation"></a>（可选）自动生成架构
+#### <a name="optional-define-model-web-service-schema"></a>（可选）定义模型 Web 服务架构
 
 若要为 Web 服务自动生成架构，请在一个已定义的类型对象的构造函数中提供输入和/或输出的示例。 该类型和示例用于自动创建架构。 Azure 机器学习随后会在部署过程中创建 Web 服务的 [OpenAPI](https://swagger.io/docs/specification/about/) (Swagger) 规范。
 
@@ -260,7 +302,7 @@ model_path = Model.get_model_path('sklearn_mnist')
 * `pyspark`
 * 标准 Python 对象
 
-若要使用架构生成，请在依赖项文件中包括 `inference-schema` 包。 若要详细了解此包，请参阅 [https://github.com/Azure/InferenceSchema](https://github.com/Azure/InferenceSchema)。 定义 `input_sample` 和 `output_sample` 变量中的输入和输出示例格式，它们表示 Web 服务的请求和响应格式。 在 `run()` 函数的输入和输出函数修饰器中使用这些示例。 以下 scikit-learn 示例使用架构生成功能。
+若要使用架构生成，请在依赖项文件中包括开源 `inference-schema` 包。 若要详细了解此包，请参阅 [https://github.com/Azure/InferenceSchema](https://github.com/Azure/InferenceSchema)。 定义 `input_sample` 和 `output_sample` 变量中的输入和输出示例格式，它们表示 Web 服务的请求和响应格式。 在 `run()` 函数的输入和输出函数修饰器中使用这些示例。 以下 scikit-learn 示例使用架构生成功能。
 
 ##### <a name="example-entry-script"></a>入口脚本示例
 
@@ -305,6 +347,8 @@ def run(data):
         return error
 ```
 
+##### <a name="power-bi-compatible-endpoint"></a>Power BI 兼容终结点 
+
 以下示例演示如何使用数据帧将输入数据定义为 `<key: value>` 字典。 此方法支持使用 Power BI 中已部署的 Web 服务。 （[详细了解如何使用 Power BI 中的 Web 服务](https://docs.microsoft.com/power-bi/service-machine-learning-integration)。）
 
 ```python
@@ -341,8 +385,9 @@ input_sample = pd.DataFrame(data=[{
 # This is an integer type sample. Use the data type that reflects the expected result.
 output_sample = np.array([0])
 
-
-@input_schema('data', PandasParameterType(input_sample))
+# To indicate that we support a variable length of data input,
+# set enforce_shape=False
+@input_schema('data', PandasParameterType(input_sample, enforce_shape=False))
 @output_schema(NumpyParameterType(output_sample))
 def run(data):
     try:
@@ -359,134 +404,13 @@ def run(data):
 * [PyTorch](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/pytorch)
 * [TensorFlow](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/tensorflow)
 * [Keras](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-keras)
+* [AutoML](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features)
 * [ONNX](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/onnx/)
+* [Binary Data](#binary)
+* [CORS](#cors)
 
-<a id="binary"></a>
-
-#### <a name="binary-data"></a>Binary data
-
-如果模型接受二进制数据（如映像），则必须修改用于部署的 `score.py` 文件以接受原始 HTTP 请求。 若要接受原始数据，请在入口脚本中使用 `AMLRequest` 类，并向 `run()` 函数添加 `@rawhttp` 修饰器。
-
-下面是接受二进制数据的 `score.py` 的示例：
-
-```python
-from azureml.contrib.services.aml_request import AMLRequest, rawhttp
-from azureml.contrib.services.aml_response import AMLResponse
-
-
-def init():
-    print("This is init()")
-
-
-@rawhttp
-def run(request):
-    print("This is run()")
-    print("Request: [{0}]".format(request))
-    if request.method == 'GET':
-        # For this example, just return the URL for GETs.
-        respBody = str.encode(request.full_path)
-        return AMLResponse(respBody, 200)
-    elif request.method == 'POST':
-        reqBody = request.get_data(False)
-        # For a real-world solution, you would load the data from reqBody
-        # and send it to the model. Then return the response.
-
-        # For demonstration purposes, this example just returns the posted data as the response.
-        return AMLResponse(reqBody, 200)
-    else:
-        return AMLResponse("bad request", 500)
-```
-
-> [!IMPORTANT]
-> `AMLRequest` 类位于 `azureml.contrib` 命名空间中。 此命名空间中的实体会频繁更改，因为我们正在改进服务。 此命名空间中的任何内容都应被视为预览版，Microsoft 并不完全支持这些内容。
->
-> 如果需要在本地开发环境中对此进行测试，可以使用以下命令安装这些组件：
->
-> ```shell
-> pip install azureml-contrib-services
-> ```
-
-<a id="cors"></a>
-
-#### <a name="cross-origin-resource-sharing-cors"></a>跨域资源共享 (CORS)
-
-通过跨源资源共享 (CORS) 可以从其他域请求网页上的资源。 CORS 通过 HTTP 标头工作，这些标头通过客户端请求发送并随服务响应返回。 若要详细了解 CORS 和有效标头，请参阅维基百科上的[跨域资源共享 (CORS)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)。
-
-若要配置模型部署以支持 CORS，请在入口脚本中使用 `AMLResponse` 类。 使用此类，可设置响应对象的标头。
-
-以下示例在入口脚本中设置响应的 `Access-Control-Allow-Origin` 标头：
-
-```python
-from azureml.contrib.services.aml_response import AMLResponse
-
-def init():
-    print("This is init()")
-
-def run(request):
-    print("This is run()")
-    print("Request: [{0}]".format(request))
-    if request.method == 'GET':
-        # For this example, just return the URL for GETs.
-        respBody = str.encode(request.full_path)
-        return AMLResponse(respBody, 200)
-    elif request.method == 'POST':
-        reqBody = request.get_data(False)
-        # For a real-world solution, you would load the data from reqBody
-        # and send it to the model. Then return the response.
-
-        # For demonstration purposes, this example
-        # adds a header and returns the request body.
-        resp = AMLResponse(reqBody, 200)
-        resp.headers['Access-Control-Allow-Origin'] = "http://www.example.com"
-        return resp
-    else:
-        return AMLResponse("bad request", 500)
-```
-
-> [!IMPORTANT]
-> `AMLResponse` 类位于 `azureml.contrib` 命名空间中。 此命名空间中的实体会频繁更改，因为我们正在改进服务。 此命名空间中的任何内容都应被视为预览版，Microsoft 并不完全支持这些内容。
->
-> 如果需要在本地开发环境中对此进行测试，可以使用以下命令安装这些组件：
->
-> ```shell
-> pip install azureml-contrib-services
-> ```
-
-### <a name="2-define-your-inference-configuration"></a>2.定义推理配置
-
-推理配置描述如何设置包含模型的 Web 服务。 它不是入口脚本的一部分。 它引用入口脚本，并用于查找部署所需的所有资源。 此配置稍后在部署模型时使用。
-
-推理配置使用 Azure 机器学习环境来定义部署所需的软件依赖项。 利用环境，你可以创建、管理和重复使用训练和部署所需的软件依赖项。 可以从自定义依赖项文件创建环境，或使用特选 Azure 机器学习环境之一。 以下 YAML 是用于推理的 Conda 依赖项文件的一个示例。 请注意，必须将版本为 1.0.45 或更高版本的 azureml-defaults 指示为 pip 依赖项，因为它包含将模型托管为 Web 服务所需的功能。 如果要使用自动生成架构功能，则入口脚本也必须导入 `inference-schema` 包。
-
-```YAML
-name: project_environment
-dependencies:
-  - python=3.6.2
-  - scikit-learn=0.20.0
-  - pip:
-      # You must list azureml-defaults as a pip dependency
-    - azureml-defaults>=1.0.45
-    - inference-schema[numpy-support]
-```
-
-> [!IMPORTANT]
-> 如果你的依赖项可通过 Conda 和 pip（通过 PyPi）使用，Microsoft 建议使用 Conda 版本，因为 Conda 包通常附带预生成的二进制文件，能让安装更可靠。
->
-> 有关详细信息，请参阅[了解 Conda 和 Pip](https://www.anaconda.com/understanding-conda-and-pip/)。
->
-> 若要检查是否能通过 Conda 使用依赖项，请使用 `conda search <package-name>` 命令，或使用 [https://anaconda.org/anaconda/repo](https://anaconda.org/anaconda/repo) 和 [https://anaconda.org/conda-forge/repo](https://anaconda.org/conda-forge/repo) 处的包索引。
-
-可以使用依赖项文件创建环境对象，并将其保存到工作区供将来使用：
-
-```python
-from azureml.core.environment import Environment
-
-
-myenv = Environment.from_conda_specification(name = 'myenv',
-                                             file_path = 'path-to-conda-specification-file'
-myenv.register(workspace=ws)
-```
-
+### <a name="3-define-inference-configuration"></a><a id="script"></a> 3.定义推理配置
+    
 下面的示例演示如何从工作区加载环境，并将其与推理配置结合使用：
 
 ```python
@@ -523,7 +447,7 @@ az ml model deploy -n myservice -m mymodel:1 --ic inferenceconfig.json
 
 若要详细了解如何将自定义 Docker 映像与推理配置结合使用，请参阅[如何使用自定义 Docker 映像部署模型](how-to-deploy-custom-docker-image.md)。
 
-### <a name="3-profile-your-model-to-determine-resource-utilization"></a><a id="profilemodel"></a> 3.分析模型，确定资源利用率
+### <a name="4-optional-profile-your-model-to-determine-resource-utilization"></a><a id="profilemodel"></a> 4.（可选）分析模型，确定资源利用率
 
 注册模型并准备好部署所需的其他组件后，即可确定部署的服务将需要的 CPU 和内存。 分析可测试运行模型并返回 CPU 使用情况、内存使用情况和响应延迟等信息的服务。 它还根据资源使用情况提供 CPU 和内存建议。
 
@@ -599,6 +523,18 @@ details = profile.get_details()
 az ml model profile -g <resource-group-name> -w <workspace-name> --inference-config-file <path-to-inf-config.json> -m <model-id> --idi <input-dataset-id> -n <unique-name>
 ```
 
+> [!TIP]
+> 要保留分析步骤所返回的信息，请为模型使用标记或属性。 使用标记或属性在模型注册表中存储模型数据。 以下示例演示添加包含 `requestedCpu` 和 `requestedMemoryInGb` 信息的新标记：
+>
+> ```python
+> model.add_tags({'requestedCpu': details['requestedCpu'],
+>                 'requestedMemoryInGb': details['requestedMemoryInGb']})
+> ```
+>
+> ```azurecli
+> az ml model profile -g <resource-group-name> -w <workspace-name> --i <model-id> --add-tag requestedCpu=1 --add-tag requestedMemoryInGb=0.5
+> ```
+
 ## <a name="deploy-to-target"></a>部署到目标
 
 部署使用推理配置部署配置来部署模型。 不管计算目标如何，部署过程都是类似的。 部署到 AKS 的过程略有不同，因为必须提供对 AKS 群集的引用。
@@ -611,7 +547,7 @@ az ml model profile -g <resource-group-name> -w <workspace-name> --inference-con
 
 ### <a name="define-your-deployment-configuration"></a>定义部署配置
 
-在部署模型之前，必须定义部署配置。 部署配置特定于将托管 Web 服务的计算目标  。 例如，在本地部署模型时，必须指定服务接受请求的端口。 该部署配置不属于入口脚本。 它用于定义将托管模型和入口脚本的计算目标的特征。
+在部署模型之前，必须定义部署配置。 部署配置特定于将托管 Web 服务的计算目标**。 例如，在本地部署模型时，必须指定服务接受请求的端口。 该部署配置不属于入口脚本。 它用于定义将托管模型和入口脚本的计算目标的特征。
 
 例如，如果没有与工作区关联的 Azure Kubernetes 服务 (AKS) 实例，则可能还需要创建计算资源。
 
@@ -629,9 +565,9 @@ az ml model profile -g <resource-group-name> -w <workspace-name> --inference-con
 from azureml.core.webservice import AciWebservice, AksWebservice, LocalWebservice
 ```
 
-### <a name="securing-deployments-with-ssl"></a>使用 SSL 保护部署
+### <a name="securing-deployments-with-tls"></a>使用 TLS 保护部署
 
-若要详细了解如何保护 Web 服务部署，请参阅[使用 SSL 保护 Web 服务](how-to-secure-web-service.md#enable)。
+若要详细了解如何保护 Web 服务部署，请参阅[启用 TLS 并进行部署](how-to-secure-web-service.md#enable)。
 
 ### <a name="local-deployment"></a><a id="local"></a> 本地部署
 
@@ -697,7 +633,7 @@ az ml model deploy -m mymodel:1 --ic inferenceconfig.json --dc deploymentconfig.
 如果已为服务启用基于密钥的身份验证，则需要提供服务密钥，将其作为请求标头中的令牌。
 如果已为服务启用基于令牌的身份验证，则需要提供 Azure 机器学习 JSON Web 令牌 (JWT)，将其作为请求标头中的持有者令牌。 
 
-主要区别在于，密钥是静态的且能手动重新生成，而令牌需要在到期时刷新   。 Azure 容器实例和 Azure Kubernetes 服务部署的 Web 服务支持基于密钥的身份验证，而基于令牌的身份验证仅能用于 Azure Kubernetes 服务部署  。 请参阅身份验证[操作说明](how-to-setup-authentication.md#web-service-authentication)，了解更多信息和特定代码示例。
+主要区别在于，密钥是静态的且能手动重新生成，而令牌需要在到期时刷新**** ****。 Azure 容器实例和 Azure Kubernetes 服务部署的 Web 服务支持基于密钥的身份验证，而基于令牌的身份验证仅能用于 Azure Kubernetes 服务部署****。 请参阅身份验证[操作说明](how-to-setup-authentication.md#web-service-authentication)，了解更多信息和特定代码示例。
 
 > [!TIP]
 > 部署服务后，可以检索架构 JSON 文档。 使用部署的 Web 服务中的 [swagger_uri 属性](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#swagger-uri)（例如 `service.swagger_uri`）获取本地 Web 服务的 Swagger 文件的 URI。
@@ -880,7 +816,7 @@ Azure 机器学习计算目标由 Azure 机器学习创建和管理。 它们可
 若要查看使用 Azure 机器学习计算进行批量推理的演练，请参阅[如何运行批量预测](tutorial-pipeline-batch-scoring-classification.md)。
 
 ### <a name="iot-edge-inference"></a><a id="iotedge"></a> IoT Edge 推理
-对部署到边缘的支持处于预览阶段。 有关详细信息，请参阅[将 Azure 机器学习部署为 IoT Edge 模块](/iot-edge/tutorial-deploy-machine-learning)。
+对部署到边缘的支持处于预览阶段。 有关详细信息，请参阅[将 Azure 机器学习部署为 IoT Edge 模块](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-machine-learning)。
 
 
 ## <a name="update-web-services"></a><a id="update"></a> 更新 Web 服务
@@ -897,15 +833,15 @@ Azure 机器学习计算目标由 Azure 机器学习创建和管理。 它们可
 
 1. 安装 [Azure Pipelines 的机器学习扩展](https://marketplace.visualstudio.com/items?itemName=ms-air-aiagility.vss-services-azureml&targetId=6756afbe-7032-4a36-9cb6-2771710cadc2&utm_source=vstsproduct&utm_medium=ExtHubManageList)。
 
-1. 使用服务连接设置与 Azure 机器学习工作区的服务主体连接，以便访问你的项目。 转到项目设置，选择“服务连接”，然后选择“Azure 资源管理器”   ：
+1. 使用服务连接设置与 Azure 机器学习工作区的服务主体连接，以便访问你的项目。 转到项目设置，选择“服务连接”，然后选择“Azure 资源管理器”**** ****：
 
     [![选择 Azure 资源管理器](media/how-to-deploy-and-where/view-service-connection.png)](media/how-to-deploy-and-where/view-service-connection-expanded.png)
 
-1. 在“范围级别”列表中选择“AzureMLWorkspace”，然后输入其余值   ：
+1. 在“范围级别”列表中选择“AzureMLWorkspace”，然后输入其余值**** ****：
 
     ![选择 AzureMLWorkspace](./media/how-to-deploy-and-where/resource-manager-connection.png)
 
-1. 若要使用 Azure Pipelines 持续部署机器学习模型，请在管道下选择“发布”  。 添加新项目，然后选择之前创建的“AzureML 模型”项目以及服务连接  。 选择模型和版本以触发部署：
+1. 若要使用 Azure Pipelines 持续部署机器学习模型，请在管道下选择“发布”****。 添加新项目，然后选择之前创建的“AzureML 模型”项目以及服务连接****。 选择模型和版本以触发部署：
 
     [![选择 AzureML 模型](media/how-to-deploy-and-where/enable-modeltrigger-artifact.png)](media/how-to-deploy-and-where/enable-modeltrigger-artifact-expanded.png)
 
@@ -936,7 +872,7 @@ az ml model download --model-id mymodel:1 --target-dir model_folder
 无代码模型部署目前处于预览阶段，支持以下机器学习框架：
 
 ### <a name="tensorflow-savedmodel-format"></a>Tensorflow SavedModel 格式
-需要以 SavedModel 格式注册 Tensorflow 模型，才能进行无代码模型部署  。
+需要以 SavedModel 格式注册 Tensorflow 模型，才能进行无代码模型部署****。
 
 请访问[此链接](https://www.tensorflow.org/guide/saved_model)以了解如何创建 SavedModel。
 
@@ -999,13 +935,36 @@ service_name = 'my-sklearn-service'
 service = Model.deploy(ws, service_name, [model])
 ```
 
-注意：这些依赖项包含在预生成的 sklearn 推理容器中：
+注意：默认情况下，支持 predict_proba 的模型将使用该方法。 要重写此内容以使用预测，可以修改 POST 正文，如下所示：
+```python
+import json
+
+
+input_payload = json.dumps({
+    'data': [
+        [ 0.03807591,  0.05068012,  0.06169621, 0.02187235, -0.0442235,
+         -0.03482076, -0.04340085, -0.00259226, 0.01990842, -0.01764613]
+    ],
+    'method': 'predict'  # If you have a classification model, the default behavior is to run 'predict_proba'.
+})
+
+output = service.run(input_payload)
+
+print(output)
+```
+
+注意：这些依赖项包含在预建的 scikit-learn 推理容器中：
 
 ```yaml
+    - dill
     - azureml-defaults
     - inference-schema[numpy-support]
     - scikit-learn
     - numpy
+    - joblib
+    - pandas
+    - scipy
+    - sklearn_pandas
 ```
 
 ## <a name="package-models"></a>包模型
@@ -1043,7 +1002,7 @@ package.wait_for_creation(show_output=True)
 
 ```text
 REPOSITORY                               TAG                 IMAGE ID            CREATED             SIZE
-myworkspacef78fd10.azurecr.io/package    20190822181338      7ff48015d5bd        4 minutes ago       1.43GB
+myworkspacef78fd10.azurecr.io/package    20190822181338      7ff48015d5bd        4 minutes ago       1.43 GB
 ```
 
 若要启动基于此映像的本地容器，请使用以下命令从 Shell 或命令行启动已命名容器。 使用 `docker images` 命令返回的映像 ID 替换 `<imageid>` 值。
@@ -1090,8 +1049,8 @@ print("Password:", acr.password)
 
 ```text
 REPOSITORY      TAG                 IMAGE ID            CREATED             SIZE
-<none>          <none>              2d5ee0bf3b3b        49 seconds ago      1.43GB
-myimage         latest              739f22498d64        3 minutes ago       1.43GB
+<none>          <none>              2d5ee0bf3b3b        49 seconds ago      1.43 GB
+myimage         latest              739f22498d64        3 minutes ago       1.43 GB
 ```
 
 若要启动基于此映像的新容器，请使用以下命令：
@@ -1148,12 +1107,124 @@ docker kill mycontainer
 
 有关详细信息，请参阅关于 [WebService.delete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#delete--) 和 [Model.delete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#delete--) 的文档。
 
+<a id="advanced-entry-script"></a>
+## <a name="advanced-entry-script-authoring"></a>高级条目脚本创作
+
+<a id="binary"></a>
+
+### <a name="binary-data"></a>Binary data
+
+如果模型接受二进制数据（如映像），则必须修改用于部署的 `score.py` 文件以接受原始 HTTP 请求。 若要接受原始数据，请在入口脚本中使用 `AMLRequest` 类，并向 `run()` 函数添加 `@rawhttp` 修饰器。
+
+下面是接受二进制数据的 `score.py` 的示例：
+
+```python
+from azureml.contrib.services.aml_request import AMLRequest, rawhttp
+from azureml.contrib.services.aml_response import AMLResponse
+
+
+def init():
+    print("This is init()")
+
+
+@rawhttp
+def run(request):
+    print("This is run()")
+    print("Request: [{0}]".format(request))
+    if request.method == 'GET':
+        # For this example, just return the URL for GETs.
+        respBody = str.encode(request.full_path)
+        return AMLResponse(respBody, 200)
+    elif request.method == 'POST':
+        reqBody = request.get_data(False)
+        # For a real-world solution, you would load the data from reqBody
+        # and send it to the model. Then return the response.
+
+        # For demonstration purposes, this example just returns the posted data as the response.
+        return AMLResponse(reqBody, 200)
+    else:
+        return AMLResponse("bad request", 500)
+```
+
+> [!IMPORTANT]
+> `AMLRequest` 类位于 `azureml.contrib` 命名空间中。 此命名空间中的实体会频繁更改，因为我们正在改进服务。 此命名空间中的任何内容都应被视为预览版，Microsoft 并不完全支持这些内容。
+>
+> 如果需要在本地开发环境中对此进行测试，可以使用以下命令安装这些组件：
+>
+> ```shell
+> pip install azureml-contrib-services
+> ```
+
+`AMLRequest` 类仅允许访问 score.py 中的原始发布数据，没有客户端组件。 从客户端中，像往常一样发布数据。 例如，以下 Python 代码读取图像文件并发布数据：
+
+```python
+import requests
+# Load image data
+data = open('example.jpg', 'rb').read()
+# Post raw data to scoring URI
+res = request.post(url='<scoring-uri>', data=data, headers={'Content-Type': 'application/octet-stream'})
+```
+
+<a id="cors"></a>
+
+### <a name="cross-origin-resource-sharing-cors"></a>跨域资源共享 (CORS)
+
+通过跨源资源共享 (CORS) 可以从其他域请求网页上的资源。 CORS 通过 HTTP 标头工作，这些标头通过客户端请求发送并随服务响应返回。 若要详细了解 CORS 和有效标头，请参阅维基百科上的[跨域资源共享 (CORS)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)。
+
+若要配置模型部署以支持 CORS，请在入口脚本中使用 `AMLResponse` 类。 使用此类，可设置响应对象的标头。
+
+以下示例在入口脚本中设置响应的 `Access-Control-Allow-Origin` 标头：
+
+```python
+from azureml.contrib.services.aml_request import AMLRequest, rawhttp
+from azureml.contrib.services.aml_response import AMLResponse
+
+def init():
+    print("This is init()")
+
+@rawhttp
+def run(request):
+    print("This is run()")
+    print("Request: [{0}]".format(request))
+    if request.method == 'GET':
+        # For this example, just return the URL for GETs.
+        respBody = str.encode(request.full_path)
+        return AMLResponse(respBody, 200)
+    elif request.method == 'POST':
+        reqBody = request.get_data(False)
+        # For a real-world solution, you would load the data from reqBody
+        # and send it to the model. Then return the response.
+
+        # For demonstration purposes, this example
+        # adds a header and returns the request body.
+        resp = AMLResponse(reqBody, 200)
+        resp.headers['Access-Control-Allow-Origin'] = "http://www.example.com"
+        return resp
+    else:
+        return AMLResponse("bad request", 500)
+```
+
+> [!IMPORTANT]
+> `AMLResponse` 类位于 `azureml.contrib` 命名空间中。 此命名空间中的实体会频繁更改，因为我们正在改进服务。 此命名空间中的任何内容都应被视为预览版，Microsoft 并不完全支持这些内容。
+>
+> 如果需要在本地开发环境中对此进行测试，可以使用以下命令安装这些组件：
+>
+> ```shell
+> pip install azureml-contrib-services
+> ```
+
+
+> [!WARNING]
+> Azure 机器学习仅将 POST 和 GET 请求路由到运行评分服务的容器。 这可能导致错误，因为浏览器使用 OPTIONS 请求预检 CORS 请求。
+> 
+
 ## <a name="next-steps"></a>后续步骤
 
 * [如何使用自定义 Docker 映像部署模型](how-to-deploy-custom-docker-image.md)
 * [部署疑难解答](how-to-troubleshoot-deployment.md)
-* [使用 SSL 保护 Azure 机器学习 Web 服务](how-to-secure-web-service.md)
+* [使用 TLS 通过 Azure 机器学习保护 Web 服务](how-to-secure-web-service.md)
 * [使用部署为 Web 服务的 Azure 机器学习模型](how-to-consume-web-service.md)
 * [使用 Application Insights 监视 Azure 机器学习模型](how-to-enable-app-insights.md)
 * [为生产环境中的模型收集数据](how-to-enable-data-collection.md)
+* [为模型部署创建事件警报和触发器](how-to-use-event-grid.md)
 

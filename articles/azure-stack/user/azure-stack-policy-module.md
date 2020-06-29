@@ -3,16 +3,16 @@ title: 使用 Azure Stack Hub 策略模块
 description: 了解如何限制 Azure 订阅使其行为像 Azure Stack Hub 订阅
 author: WenJason
 ms.topic: article
-origin.date: 01/07/2020
-ms.date: 05/18/2020
+origin.date: 06/09/2020
+ms.date: 06/22/2020
 ms.author: v-jay
 ms.lastreviewed: 03/26/2019
-ms.openlocfilehash: ddb779f987ffebf06178ddadcf727ef36f7794a7
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.openlocfilehash: 0543eaf149b967709869e23b4de20baaf1184c6b
+ms.sourcegitcommit: d86e169edf5affd28a1c1a4476d72b01a7fb421d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83422021"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85096294"
 ---
 # <a name="manage-azure-policy-using-the-azure-stack-hub-policy-module"></a>使用 Azure Stack Hub 策略模块管理 Azure Policy
 
@@ -23,7 +23,7 @@ ms.locfileid: "83422021"
 1. 按照[安装适用于 Azure Stack Hub 的 PowerShell](../operator/azure-stack-powershell-install.md) 步骤 1 中的说明，安装所需的 AzureRM PowerShell 模块版本。
 2. [从 GitHub 下载 Azure Stack Hub 工具](../operator/azure-stack-powershell-download.md)。
 3. [配置适用于 Azure Stack Hub 的 PowerShell](azure-stack-powershell-configure-user.md)。
-4. 导入 AzureStack.Policy.psm1  模块：
+4. 导入 AzureStack.Policy.psm1**** 模块：
 
    ```powershell
    Import-Module .\Policy\AzureStack.Policy.psm1
@@ -31,7 +31,7 @@ ms.locfileid: "83422021"
 
 ## <a name="apply-policy-to-azure-subscription"></a>将策略应用于 Azure 订阅
 
-可以使用以下命令针对 Azure 订阅应用默认 Azure Stack Hub 策略。 在运行这些命令之前，请将 `Azure subscription name` 替换为 Azure 订阅的名称：
+可以使用以下命令将默认 Azure Stack Hub 策略应用于 Azure 订阅。 在运行这些命令之前，请将 `Azure subscription name` 替换为 Azure 订阅的名称：
 
 ```powershell
 Add-AzureRmAccount

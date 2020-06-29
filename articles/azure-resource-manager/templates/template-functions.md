@@ -2,15 +2,15 @@
 title: 模板函数
 description: 介绍在 Azure Resource Manager 模板中检索值、处理字符串和数字以及检索部署信息时所用的函数。
 ms.topic: conceptual
-origin.date: 04/06/2020
-ms.date: 04/30/2020
+origin.date: 04/27/2020
+ms.date: 06/22/2020
 ms.author: v-yeche
-ms.openlocfilehash: 17e6b5378e9dce4e0d90c6c850454bcd416f5f40
-ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
+ms.openlocfilehash: ce05f7c5a9610e5c97de1f2098c2c6af49635f40
+ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82596072"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098601"
 ---
 # <a name="arm-template-functions"></a>ARM 模板函数
 
@@ -21,14 +21,12 @@ ms.locfileid: "82596072"
 大多数函数在部署到资源组、订阅、管理组或租户时工作方式相同。 某些函数并非可以在所有范围内使用。 下表对这些函数进行了说明。
 
 <a name="array" aria-hidden="true" />
-<a name="coalesce" aria-hidden="true" />
 <a name="concatarray" aria-hidden="true" />
 <a name="contains" aria-hidden="true" />
 <a name="createarray" aria-hidden="true" />
 <a name="empty" aria-hidden="true" />
 <a name="first" aria-hidden="true" />
 <a name="intersection" aria-hidden="true" />
-<a name="json" aria-hidden="true" />
 <a name="last" aria-hidden="true" />
 <a name="length" aria-hidden="true" />
 <a name="min" aria-hidden="true" />
@@ -38,19 +36,17 @@ ms.locfileid: "82596072"
 <a name="take" aria-hidden="true" />
 <a name="union" aria-hidden="true" />
 
-## <a name="array-and-object-functions"></a>数组和对象函数
+## <a name="array-functions"></a>数组函数
 
-Resource Manager 提供以下用于处理数组和对象的函数。
+Resource Manager 提供以下用于处理数组的函数。
 
 * [array](template-functions-array.md#array)
-* [coalesce](template-functions-array.md#coalesce)
 * [concat](template-functions-array.md#concat)
 * [contains](template-functions-array.md#contains)
 * [createArray](template-functions-array.md#createarray)
 * [empty](template-functions-array.md#empty)
 * [first](template-functions-array.md#first)
 * [intersection](template-functions-array.md#intersection)
-* [json](template-functions-array.md#json)
 * [last](template-functions-array.md#last)
 * [length](template-functions-array.md#length)
 * [min](template-functions-array.md#min)
@@ -60,6 +56,7 @@ Resource Manager 提供以下用于处理数组和对象的函数。
 * [take](template-functions-array.md#take)
 * [union](template-functions-array.md#union)
 
+<a name="coalesce" aria-hidden="true" />
 <a name="equals" aria-hidden="true" />
 <a name="less" aria-hidden="true" />
 <a name="lessorequals" aria-hidden="true" />
@@ -70,6 +67,7 @@ Resource Manager 提供以下用于处理数组和对象的函数。
 
 Resource Manager 提供了多个用于在模板中进行比较的函数。
 
+* [coalesce](template-functions-comparison.md#coalesce)
 * [equals](template-functions-comparison.md#equals)
 * [less](template-functions-comparison.md#less)
 * [lessOrEquals](template-functions-comparison.md#lessorequals)
@@ -91,8 +89,8 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
 
 Resource Manager 提供以下函数，用于从与部署相关的模板和值部分获取值：
 
-* [deployment](template-functions-deployment.md#deployment)
-* [environment](template-functions-deployment.md#environment)
+* [部署](template-functions-deployment.md#deployment)
+* [环境](template-functions-deployment.md#environment)
 * [parameters](template-functions-deployment.md#parameters)
 * [variables](template-functions-deployment.md#variables)
 
@@ -138,16 +136,29 @@ Resource Manager 提供以下用于处理整数的函数：
 * [mul](template-functions-numeric.md#mul)
 * [sub](template-functions-numeric.md#sub)
 
-<a name="extensionResourceId" aria-hidden="true" />
-<a name="listkeys" aria-hidden="true" />
-<a name="list" aria-hidden="true" />
-<a name="providers" aria-hidden="true" />
-<a name="reference" aria-hidden="true" />
-<a name="resourcegroup" aria-hidden="true" />
-<a name="resourceid" aria-hidden="true" />
-<a name="subscription" aria-hidden="true" />
-<a name="subscriptionResourceId" aria-hidden="true" />
-<a name="tenantResourceId" aria-hidden="true" />
+<a name="json" aria-hidden="true"/>
+
+## <a name="object-functions"></a>对象函数
+
+Resource Manager 提供以下用于处理对象的函数。
+
+* [contains](template-functions-object.md#contains)
+* [empty](template-functions-object.md#empty)
+* [intersection](template-functions-object.md#intersection)
+* [json](template-functions-object.md#json)
+* [length](template-functions-object.md#length)
+* [union](template-functions-object.md#union)
+
+<a name="extensionResourceId" aria-hidden="true"></a>
+<a name="listkeys" aria-hidden="true"></a>
+<a name="list" aria-hidden="true"></a>
+<a name="providers" aria-hidden="true"></a>
+<a name="reference" aria-hidden="true"></a>
+<a name="resourcegroup" aria-hidden="true"></a>
+<a name="resourceid" aria-hidden="true"></a>
+<a name="subscription" aria-hidden="true"></a>
+<a name="subscriptionResourceId" aria-hidden="true"></a>
+<a name="tenantResourceId" aria-hidden="true"></a>
 
 ## <a name="resource-functions"></a>Resource functions
 

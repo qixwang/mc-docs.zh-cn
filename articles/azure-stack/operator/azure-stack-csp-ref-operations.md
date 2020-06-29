@@ -3,24 +3,24 @@ title: 在 Azure Stack Hub 中注册租户以跟踪使用情况
 description: 了解如何在 Azure Stack Hub 中注册租户以及如何跟踪租户使用情况。
 author: WenJason
 ms.topic: article
-origin.date: 01/22/2020
-ms.date: 05/18/2020
+origin.date: 05/012020
+ms.date: 06/22/2020
 ms.author: v-jay
 ms.reviewer: alfredop
 ms.lastreviewed: 10/14/2019
-ms.openlocfilehash: 670a95a3c00b86af79d8a13139b1cc92c3a2a78f
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.openlocfilehash: 81d4941f7dd12b485852b86344cc9486cc25f0fa
+ms.sourcegitcommit: d86e169edf5affd28a1c1a4476d72b01a7fb421d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83422389"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85096353"
 ---
 # <a name="register-tenants-for-usage-tracking-in-azure-stack-hub"></a>在 Azure Stack Hub 中注册租户以跟踪使用情况
 
 本文包含有关注册操作的详细信息。 可以使用这些操作：
 
-- 管理租户注册
-- 管理租户使用情况跟踪
+- 管理租户注册。
+- 管理租户使用情况跟踪。
 
 ## <a name="add-tenant-to-registration"></a>将租户添加到注册
 
@@ -41,7 +41,7 @@ ms.locfileid: "83422389"
 | 参数                  | 说明 |
 |---                         | --- |
 | registrationSubscriptionID | 用于初始注册的 Azure 订阅。 |
-| customerSubscriptionID     | 属于要注册的客户的 Azure 订阅（非 Azure Stack Hub）。 必须通过合作伙伴中心在云解决方案提供商 (CSP) 产品/服务中创建。 如果客户有多个租户，则为要登录 Azure Stack Hub 的租户创建订阅。 |
+| customerSubscriptionID     | 属于要注册的客户的 Azure 订阅（非 Azure Stack Hub）。 必须通过合作伙伴中心在云解决方案提供商 (CSP) 产品/服务中创建。 如果客户有多个租户，则为要登录 Azure Stack Hub 的租户创建订阅。 客户订阅 ID 区分大小写。 |
 | resourceGroup              | Azure 中用于存储注册的资源组。 |
 | registrationName           | Azure Stack Hub 的注册名称。 它是 Azure 中存储的对象。 该名称通常采用格式 **azurestack-CloudID**，其中 **CloudID** 是 Azure Stack Hub 部署的云 ID。 |
 
@@ -58,9 +58,9 @@ New-AzureRmResource -ResourceId "subscriptions/{registrationSubscriptionId}/reso
 
 ### <a name="api-call"></a>API 调用
 
-**操作**：PUT  
+**Operation**：PUT  
 **RequestURI**：`subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/{customerSubscriptionId}?api-version=2017-06-01 HTTP/1.1`  
-**响应**：201 已创建  
+**响应**：201 Created  
 **响应正文**：空  
 
 ## <a name="list-all-registered-tenants"></a>列出所有已注册租户
@@ -90,7 +90,7 @@ Get-AzureRmResource -ResourceId "subscriptions/{registrationSubscriptionId}/reso
 
 可以使用 GET 操作获取所有租户映射的列表。
 
-**操作**：GET  
+**Operation**：GET  
 **RequestURI**：`subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions?api-version=2017-06-01 HTTP/1.1`  
 **响应**：200  
 **响应正文**：
@@ -125,7 +125,7 @@ Get-AzureRmResource -ResourceId "subscriptions/{registrationSubscriptionId}/reso
 | registrationSubscriptionId | 注册的订阅 ID。   |
 | resourceGroup              | 注册的资源组。   |
 | registrationName           | 注册的名称。  |
-| customerSubscriptionId     | 客户订阅 ID。  |
+| customerSubscriptionId     | 客户订阅 ID。 客户订阅 ID 区分大小写。  |
 
 ### <a name="powershell"></a>PowerShell
 
@@ -139,7 +139,7 @@ Remove-AzureRmResource -ResourceId "subscriptions/{registrationSubscriptionId}/r
 
 可以使用 DELETE 操作删除租户映射。
 
-**操作**：DELETE  
+**Operation**：DELETE  
 **RequestURI**：`subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/{customerSubscriptionId}?api-version=2017-06-01 HTTP/1.1`  
 **响应**：204 无内容  
 **响应正文**：空

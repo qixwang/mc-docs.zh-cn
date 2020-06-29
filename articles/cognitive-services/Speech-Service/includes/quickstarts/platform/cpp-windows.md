@@ -11,12 +11,12 @@ ms.topic: include
 origin.date: 10/14/2019
 ms.date: 01/13/2020
 ms.author: v-tawe
-ms.openlocfilehash: f465324f4687d0e58975eed9a543704847ec2d93
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.openlocfilehash: 160c830fb3fcca8fd7726d5441b1065b56e4b317
+ms.sourcegitcommit: 304d3ef3c9e65c3e85977b3afb9985fbc0f908d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82150772"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85095932"
 ---
 本指南介绍如何安装适用于 Windows 桌面上的 C++ 的[语音 SDK](~/articles/cognitive-services/speech-service/speech-sdk.md)。
 
@@ -25,7 +25,7 @@ ms.locfileid: "82150772"
 本快速入门需要：
 
 * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
-* 需要语音 SDK 版本 1.10.0 或更高版本。
+* 需要语音 SDK 版本 1.11.0 或更高版本。
 
 ## <a name="create-a-visual-studio-project-and-install-the-speech-sdk"></a>创建 Visual Studio 项目并安装语音 SDK
 

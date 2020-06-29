@@ -3,17 +3,17 @@ title: Azure Stack Hub 发行说明
 description: Azure Stack Hub 集成系统的发行说明，包括更新和 bug 修复。
 author: WenJason
 ms.topic: article
-origin.date: 04/22/2020
-ms.date: 05/18/2020
+origin.date: 06/09/2020
+ms.date: 06/22/2020
 ms.author: sethm
 ms.reviewer: sranthar
 ms.lastreviewed: 03/18/2020
-ms.openlocfilehash: 639686a0592e6ff4ca35c8789bd146f7d3aaf291
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.openlocfilehash: d200fb85dd197cbd5f3457cef14822e62e23b847
+ms.sourcegitcommit: d86e169edf5affd28a1c1a4476d72b01a7fb421d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83422094"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85096277"
 ---
 # <a name="azure-stack-hub-release-notes"></a>Azure Stack Hub 发行说明
 
@@ -38,7 +38,7 @@ ms.locfileid: "83422094"
 - [安全更新](release-notes-security-updates.md)
 - [应用更新之前和之后的活动清单](release-notes-checklist.md)
 
-有关对更新和更新过程进行故障排除的帮助，请参阅[对 Azure Stack Hub 的修补和更新问题进行故障排除](azure-stack-updates-troubleshoot.md)。
+有关对更新和更新过程进行故障排除的帮助，请参阅[对 Azure Stack Hub 的修补和更新问题进行故障排除](azure-stack-troubleshooting.md)。
 
 ## <a name="download-the-update"></a>下载更新
 
@@ -138,7 +138,7 @@ Azure Stack Hub 2002 更新内部版本类型为“完整”。
 - 修复了一个问题，该问题是由于 ERCS 角色的内存压力导致 Azure Stack Hub 更新失败的常见原因。
 - 修复了“更新”边栏选项卡中的一个 bug：在 Azure Stack Hub 更新的准备阶段，更新状态显示为“正在安装”而不是“正在准备”。
 - 修复了物理交换机上的 RSC 功能导致不一致并丢弃流经负载均衡器的流量的问题。 现在，RSC 功能默认处于禁用状态。
-- 修复了向 VM 添加辅助 IP 导致 RDP 问题的问题。
+- 修复了问题：NIC 上的多个 IP 配置导致流量在出站连接中被错误路由和阻止。 
 - 修复了在 NIC 的 MAC 地址被缓存的情况下将该地址分配给另一资源导致 VM 部署失败的问题。
 - 修复了来自零售渠道的 Windows VM 映像无法通过 AVMA 激活其许可证的问题。
 - 修复了当 VM 所请求的虚拟核心数等于节点的物理核心数时无法创建 VM 的问题。 我们现在允许 VM 的虚拟核心数等于或少于节点的物理核心数。
@@ -158,19 +158,21 @@ Azure Stack Hub 定期发布修补程序。 将 Azure Stack Hub 更新到 2002 �
 
 Azure Stack Hub 修补程序仅适用于 Azure Stack Hub 集成系统；请勿尝试在 ASDK 上安装修补程序。
 
+有关修补程序的详细信息，请参阅 [Azure Stack Hub 服务策略](azure-stack-servicing-policy.md#hotfixes)。
+
 ### <a name="prerequisites-before-applying-the-2002-update"></a>先决条件：应用 2002 更新之前
 
 必须在包含以下修补程序的版本 1910 中应用 Azure Stack Hub 版本 2002：
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack Hub 修补程序 1.1910.37.132](https://support.microsoft.com/help/4550133)
+- [Azure Stack Hub 修补程序 1.1910.42.142](https://support.microsoft.com/help/4564874)
 
 ### <a name="after-successfully-applying-the-2002-update"></a>成功应用 2002 更新之后
 
-安装此更新之后，请安装所有适用的修补程序。 有关详细信息，请参阅我们的[服务策略](azure-stack-servicing-policy.md)。
+安装此更新之后，请安装所有适用的修补程序。
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack Hub 修补程序 1.2002.19.73](https://support.microsoft.com/help/4557355)
+- [Azure Stack Hub 修补程序 1.2002.28.93](https://support.microsoft.com/help/4562966)
 ::: moniker-end
 
 ::: moniker range="azs-1910"
@@ -213,6 +215,17 @@ Azure Stack Hub 1910 更新内部版本类型为“快速”。
 - 已在特权终结点 (PEP) 中添加 **Set-AzSDnsForwarder** cmdlet，用于在 Azure Stack Hub 中更改 DNS 服务器的转发器设置。 有关 DNS 配置的详细信息，请参阅 [Azure Stack Hub 数据中心 DNS 集成](azure-stack-integrate-dns.md)。
 
 - 已在特权终结点 (PEP) 中添加 **Get-AzSDnsForwarder** cmdlet，用于在 Azure Stack Hub 中检索 DNS 服务器的转发器设置。 有关 DNS 配置的详细信息，请参阅 [Azure Stack Hub 数据中心 DNS 集成](azure-stack-integrate-dns.md)。
+
+- 添加了对使用 [AKS 引擎](../user/azure-stack-kubernetes-aks-engine-overview.md)管理 **Kubernetes 集群**的支持。 从此更新开始，客户可以部署生产 Kubernetes 群集。 借助 AKS 引擎，用户能够：
+  - 管理其 Kubernetes 群集的生命周期。 创建、更新和扩展群集。
+  - 使用 AKS 和 Azure Stack Hub 团队生成的托管映像维护其群集。
+  - 利用集成了 Azure 资源管理器的 Kubernetes 云提供程序，该提供程序使用本机 Azure 资源构建群集。
+  - 在已连接或断开连接的 Azure Stack Hub 戳中部署和管理其群集。
+  - 使用 Azure 混合功能：
+    - 与 Azure Arc 集成。
+    - 用适用于容器的 Azure Monitor 进行集成。
+  - 将 Windows 容器与 AKS 引擎一起使用。
+  - 为其部署接收 CSS 和工程支持。
 
 ### <a name="improvements"></a>改进
 
@@ -262,7 +275,7 @@ Azure Stack Hub 1910 更新内部版本类型为“快速”。
 
 - 将市场项从 Azure 下载到 Azure Stack Hub 时，可以使用新的用户界面来指定项的版本（如果存在多个版本时）。 新 UI 可用于联网场景和离线场景。 有关详细信息，请参阅[将市场项从 Azure 下载到 Azure Stack Hub](azure-stack-download-azure-marketplace-item.md)。  
 
-- 从版本 1910 开始，Azure Stack Hub 系统**需要**额外的 /20 专用内部 IP 空间。  有关详细信息，请参阅 [Azure Stack 的网络集成规划](azure-stack-network.md)。
+- 从版本 1910 开始，Azure Stack Hub 系统**需要**额外的 /20 专用内部 IP 空间。 有关详细信息，请参阅 [Azure Stack 的网络集成规划](azure-stack-network.md)。
   
 - 如果在上传过程中外部存储位置耗尽了容量，基础结构备份服务将会删除部分上传的备份数据。  
 
@@ -309,14 +322,14 @@ Azure Stack Hub 修补程序仅适用于 Azure Stack Hub 集成系统；请勿�
 必须在包含以下修补程序的版本 1908 中应用 Azure Stack 版本 1910：
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack Hub 修补程序 1.1908.25.78](https://support.microsoft.com/help/4552361)
+- [Azure Stack Hub 修补程序 1.1908.29.87](https://support.microsoft.com/help/4558083)
 
 ### <a name="after-successfully-applying-the-1910-update"></a>成功应用 1910 更新之后
 
 安装此更新之后，请安装所有适用的修补程序。 有关详细信息，请参阅我们的[服务策略](azure-stack-servicing-policy.md)。
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack Hub 修补程序 1.1910.37.132](https://support.microsoft.com/help/4550133)
+- [Azure Stack Hub 修补程序 1.1910.42.142](https://support.microsoft.com/help/4564874)
 ::: moniker-end
 
 ::: moniker range="azs-1908"
@@ -395,7 +408,7 @@ Azure Stack Hub 1908 更新需要系统硬件提供商提供的 **Azure Stack Hu
 安装此更新之后，请安装所有适用的修补程序。 有关详细信息，请参阅我们的[服务策略](azure-stack-servicing-policy.md)。
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack Hub 修补程序 1.1908.25.78](https://support.microsoft.com/help/4552361)
+- [Azure Stack Hub 修补程序 1.1908.29.87](https://support.microsoft.com/help/4558083)
 ::: moniker-end
 
 ::: moniker range="azs-1907"

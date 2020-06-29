@@ -1,7 +1,7 @@
 ---
 title: 导出和删除数据
 titleSuffix: ML Studio (classic) - Azure
-description: 通过 Azure 门户或经过身份验证的 REST API，可导出和删除 Azure 机器学习工作室（经典版）存储的产品内数据。 可通过 Azure 隐私门户访问遥测数据。 本文介绍相关实现方法。
+description: 通过 Azure 门户或经过身份验证的 REST API，可导出和删除 Azure 机器学习工作室（经典版）存储的产品内数据。 可通过 Azure 隐私门户访问遥测数据。 本文介绍如何进行此操作。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 05/25/2018
-ms.openlocfilehash: ce8d5d6d9ca3b346800972955e1baa7951224f0d
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 7e269285e46afd138d8e2df3b5078186b2df5528
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80343358"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097023"
 ---
 # <a name="export-and-delete-in-product-user-data-from-azure-machine-learning-studio-classic"></a>从 Azure 机器学习工作室（经典版）中导出和删除产品内用户数据
 
@@ -44,7 +44,7 @@ ms.locfileid: "80343358"
 - **来宾工作区**是一个免费的匿名帐户。 无需提供凭据（例如电子邮件地址或密码）即可注册。
     -  来宾工作区到期后，数据将被清除。
     - 来宾用户可以通过 UI、REST API 或 PowerShell 包导出客户数据。
-- **免费工作区**是一个使用 Microsoft 帐户凭据（电子邮件地址和密码）登录的免费帐户。
+- “免费工作区”是一个试用帐户，使用 Microsoft 帐户凭据（电子邮件地址和密码）登录到其中****。
     - 可以导出和删除受数据主体权限 (DSR) 请求影响的个人及客户数据。
     - 可以通过 UI、REST API 或 PowerShell 包导出客户数据。
     - 对于不使用 Azure AD 帐户的免费工作区，可使用隐私门户导出遥测数据。
@@ -66,8 +66,8 @@ ms.locfileid: "80343358"
 ### <a name="delete-an-entire-workspace"></a>删除整个工作区
 
 用户也可以删除其整个工作区：
-- 付费工作区：通过 Azure 门户删除。
-- 免费工作区：使用“设置”窗格中的删除按钮  。
+- 付费工作区：通过 Azure 门户进行删除。
+- 免费工作区：使用“设置”窗格中的“删除”按钮****。
 
 ![删除机器学习工作室（经典版）中的免费工作区](./media/export-delete-personal-data-dsr/delete-studio-data-workspace.png)
  

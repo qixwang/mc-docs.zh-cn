@@ -8,81 +8,111 @@ ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: jmartens
 author: cartacioS
-ms.author: v-yiso
-origin.date: 11/04/2019
-ms.date: 03/09/2020
-ms.openlocfilehash: 31fe6c33df6dac6ea15e8ef7f2fb5d54eb52d36d
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.author: sacartac
+ms.date: 04/22/2020
+ms.openlocfilehash: 16b6833de09278d68004dc45a9ff2e7734c400de
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80343573"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097083"
 ---
-# <a name="what-is-automated-machine-learning"></a>什么是自动化机器学习？
+# <a name="what-is-automated-machine-learning-automl"></a>什么是自动化机器学习 (AutoML)？
 
-自动化机器学习也称为自动化 ML，是将机器学习模型开发过程中耗时的反复性任务自动化的过程。 数据科学家、分析师和开发人员可以使用它来生成高度可缩放、高效且高产能的 ML 模型，同时保证模型的质量。 自动化 ML 基于 [Microsoft Research 部门](https://arxiv.org/abs/1705.05355)的突破性技术。
+自动化机器学习也称为自动化 ML 或 AutoML，是将机器学习模型开发过程中耗时的反复性任务自动化的过程。 数据科学家、分析师和开发人员可以使用它来生成高度可缩放、高效且高产能的 ML 模型，同时保证模型的质量。 自动化 ML 基于 [Microsoft Research 部门](https://arxiv.org/abs/1705.05355)的突破性技术。
 
-传统的机器学习模型开发是资源密集型的，需要具备丰富的领域知识，并需要花费大量的时间来生成和比较数十个模型。 想要通过 Azure 机器学习使用指定的目标指标训练和优化模型时，可以运用自动化 ML。 然后，该服务将迭代与特征选择配对的 ML 算法，每次迭代都会生成模型和训练评分。 模型的评分越高，则认为它可以更好地“拟合”数据。
+传统的机器学习模型开发是资源密集型的，需要具备丰富的领域知识，并需要花费大量的时间来生成和比较数十个模型。 使用自动化机器学习可以缩减生成生产就绪型 ML 模型所需的时间，同时使工作变得更轻松高效。
 
-使用自动化机器学习可以缩减生成生产就绪型 ML 模型所需的时间，同时使工作变得更轻松、更高效。
+## <a name="when-to-use-automl-classify-regression--forecast"></a>何时使用 AutoML：分类、回归和预测
 
-## <a name="when-to-use-automated-ml"></a>何时使用自动化 ML
-
-自动化 ML 可将机器学习模型开发过程标准化，并使其用户（无论是否具备数据科学知识）能够在端到端的机器学习管道中识别任何问题。
+想要通过 Azure 机器学习使用指定的目标指标训练和优化模型时，可以运用自动化 ML。 自动化 ML 可将机器学习模型开发过程标准化，并使其用户（无论是否具备数据科学知识）能够在端到端的机器学习管道中识别任何问题。
 
 跨行业的数据科学家、分析师和开发人员可以使用自动化 ML 来实现以下目的：
-
 + 无需丰富的编程知识，即可实现机器学习解决方案
 + 节省时间和资源
 + 利用数据科学最佳做法
 + 提供灵活的问题解决方法
 
-下表列出了常见的自动化 ML 用例。 
+### <a name="classification"></a>分类
 
-分类| 时序预测 | 回归
----|---|---
-[欺诈检测](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-credit-card-fraud/auto-ml-classification-credit-card-fraud.ipynb)|[销售预测](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-orange-juice-sales/auto-ml-forecasting-orange-juice-sales.ipynb)|[CPU 性能预测](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/regression-hardware-performance-explanation-and-featurization/auto-ml-regression-hardware-performance-explanation-and-featurization.ipynb)
-|[营销预测](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb)|[需求预测](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)|
-|[新闻组数据分类](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-text-dnn/auto-ml-classification-text-dnn.ipynb)|[饮料生产预测](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-beer-remote/auto-ml-forecasting-beer-remote.ipynb)|
+分类是一个常见的机器学习任务。 分类是一种监督式学习，其中的模型使用训练数据进行学习，并将学习所得应用于新数据。 Azure 机器学习为这些任务专门提供特征化，例如用于分类的深度神经网络文本特征化器。 详细了解[特征化选项](how-to-configure-auto-features.md#featurization)。 
 
-## <a name="how-automated-ml-works"></a>自动化 ML 的工作原理
+分类模型的主要目标是根据从其训练数据中获得的经验，预测新数据将属于哪些类别。 常见分类示例包括欺诈检测、手写识别和对象检测。  详细了解[使用自动化机器学习的分类](tutorial-train-models-with-aml.md)并查看其示例。
+
+参阅以下 Python 笔记本中的分类和自动化机器学习示例：[欺诈检测](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-credit-card-fraud/auto-ml-classification-credit-card-fraud.ipynb)、[营销预测](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb)和[新闻组数据分类](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-text-dnn/auto-ml-classification-text-dnn.ipynb)
+
+### <a name="regression"></a>回归
+
+类似于分类，回归任务也是常见的监督式学习任务。 Azure 机器学习[专门为这些任务提供特征化](how-to-configure-auto-features.md#featurization)。
+
+不同于分类（其中的预测输出值是分类的），回归模型基于独立的预测器预测数字输出值。 在回归中，目标是通过估计一个变量对其他变量的影响，帮助建立这些独立预测因子变量之间的关系。 例如，基于每英里耗油量、安全评级等特征预测汽车价格。 详细了解[使用自动化机器学习进行回归](tutorial-auto-train-models.md)并查看示例。
+
+参阅以下 Python 笔记本中用于预测的回归和自动化机器学习示例：[CPU 性能预测](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/regression-explanation-featurization/auto-ml-regression-explanation-featurization.ipynb) 
+
+### <a name="time-series-forecasting"></a>时序预测
+
+生成预测是任何业务（无论是收入、库存、销售还是客户需求）中不可或缺的组成部分。 可以使用自动化 ML 来合并多种技术和方法，获得推荐的高质量时序预测结果。 在以下操作指南中了解详细信息：[用于时序预测的自动化机器学习](how-to-auto-train-forecast.md)。 
+
+自动化时序试验被视为多元回归问题。 将“透视”过去的时序值，使其成为回归量与其他预测指标的附加维度。 与传统时序方法不同，这种方法的优点是，在训练过程中自然包含多个上下文变量及其相互关系。 自动化 ML 会针对数据集和预测时间范围内的所有项目，习得通常有内部分支的单个模型。 这样就可以使用更多的数据来估计模型参数，使得未知系列的泛化成为可能。
+
+高级预测配置包括：
+* 假日检测和特征化
+* 时序和 DNN 教学器（Auto-ARIMA、Prophet、ForecastTCN）
+* 通过分组实现的多模型支持
+* 滚动原点交叉验证
+* 可配置滞后
+* 滚动窗口聚合特征
+
+
+参阅以下 Python 笔记本中用于预测的回归和自动化机器学习示例：[销售预测](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-orange-juice-sales/auto-ml-forecasting-orange-juice-sales.ipynb)、[需求预测](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)和[饮料生产预测](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-beer-remote/auto-ml-forecasting-beer-remote.ipynb)。
+
+## <a name="how-automl-works"></a>AutoML 的工作原理
+
+在训练期间，Azure 机器学习会创建多个尝试不同算法和参数的并行管道。 该服务将迭代与特征选择配对的 ML 算法，每次迭代都会生成带有训练评分的模型。 模型的评分越高，则认为它可以更好地“拟合”数据。  一旦达到试验中定义的退出条件，机器学习就会停止。 
 
 使用 **Azure 机器学习**可以通过以下步骤设计和运行自动化 ML 训练试验：
 
 1. **识别要解决的 ML 问题**：分类、预测或回归
 
+1. **选择是要使用 Python SDK 还是工作室 Web 体验**：了解 [Python SDK 与工作室 Web 体验](#parity)之间的搭配用法。
+
+   * 如果你的编程经验有限或者没有经验，请在 [https://ml.azure.com](https://ml.azure.com/) 上尝试使用 Azure 机器学习工作室 Web 体验  
+   * Python 开发人员请查看 [Azure 机器学习 Python SDK](how-to-configure-auto-train.md) 
+
+    [!INCLUDE [aml-applies-to-enterprise-sku](../../includes/aml-applies-to-enterprise-sku-inline.md)]  
+    
 1. **指定已标记训练数据的源和格式**：Numpy 数组或 Pandas 数据帧
 
 1. **配置模型训练的计算目标**，例如[本地计算机、Azure 机器学习计算、远程 VM 或 Azure Databricks](how-to-set-up-training-targets.md)。  了解如何对[远程资源](how-to-auto-train-remote.md)进行自动训练。
 
-1. **配置自动化机器学习参数**，用于确定要对不同模型运行的迭代次数、超参数设置、高级预处理/特征化，以及在确定最佳模型时要查看的指标。  可以在 [Azure 机器学习工作室](https://ml.azure.com)中或使用 [SDK](how-to-configure-auto-train.md) 配置自动训练试验的设置。 
-
-    [!INCLUDE [aml-applies-to-enterprise-sku](../../includes/aml-applies-to-enterprise-sku-inline.md)]
-
+1. **配置自动化机器学习参数**，用于确定要对不同模型运行的迭代次数、超参数设置、高级预处理/特征化，以及在确定最佳模型时要查看的具体指标。  
 1. **提交训练运行。**
 
-  ![自动化机器学习](./media/concept-automated-ml/automl-concept-diagram2.png)
+1. **查看结果** 
 
-在训练期间，Azure 机器学习会创建多个尝试不同算法和参数的并行管道。 一旦达到试验中定义的退出条件，机器学习就会停止。
+下图演示了此过程。 
+![自动化机器学习](./media/concept-automated-ml/automl-concept-diagram2.png)
 
-还可以检查记录的运行信息，其中包含运行期间收集的[指标](how-to-understand-automated-ml.md)。 训练运行会生成一个包含模型和数据预处理的 Python 序列化对象（`.pkl` 文件）。
+
+还可以检查记录的运行信息，其中[包含的指标](how-to-understand-automated-ml.md)是在运行期间收集的。 训练运行会生成一个包含模型和数据预处理的 Python 序列化对象（`.pkl` 文件）。
 
 模型生成是自动化的，同时，你也可以[了解特征对于生成的模型而言如何重要或者彼此相关](how-to-configure-auto-train.md#explain)。
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE2Xc9t]
 
-<a name="preprocess"></a>
 
-## <a name="preprocessing"></a>预处理
+## <a name="feature-engineering"></a>特性工程
 
-在每个自动化机器学习试验中，数据将使用默认方法进行预处理，有时还会通过高级预处理技术进行预处理。
+特征工程是使用数据领域知识创建有助于优化机器学习算法学习效果的特征的过程。 在 Azure 机器学习中，应用缩放和规范化技术来简化特征工程。 这些技术和特征工程统称为特征化。
+
+对于自动机器学习试验，会自动应用特征化，但也可以基于你的数据进行自定义。 [详细了解包含的功能化](how-to-configure-auto-features.md#featurization)。  
 
 > [!NOTE]
-> 自动机器学习预处理步骤（特征规范化、处理缺失数据，将文本转换为数字等）成为基础模型的一部分。 使用模型进行预测时，训练期间应用的相同预处理步骤将自动应用于输入数据。
+> 自动化机器学习特征化步骤（特征规范化、处理缺失数据，将文本转换为数字等）成为了基础模型的一部分。 使用模型进行预测时，将自动向输入数据应用在训练期间应用的相同特征化步骤。
 
-### <a name="automatic-preprocessing-standard"></a>自动预处理（标准）
+### <a name="automatic-featurization-standard"></a>自动特征化（标准）
 
-在每个自动化机器学习试验中，数据将自动缩放或规范化，以帮助确保算法的良好性能。  在模型训练过程中，将对每个模型应用以下缩放或规范化技术之一。
+在每个自动化机器学习试验中，数据将自动缩放或规范化，以帮助确保算法的良好性能。 在模型训练过程中，将对每个模型应用以下缩放或规范化技术之一。 了解 AutoML 如何帮助[防止模型中出现过度拟合与数据不平衡](concept-manage-ml-pitfalls.md)。
 
 |缩放和规范化| 说明 |
 | ------------- | ------------- |
@@ -94,86 +124,15 @@ ms.locfileid: "80343573"
 | [TruncatedSVDWrapper](https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.TruncatedSVD.html) |此转换器通过截断的单值分解 (SVD) 执行线性维度化简。 与 PCA 相反，此估算器在计算单值分解之前不会将数据居中，这意味着它可以有效地处理 scipy.sparse 矩阵 |
 | [SparseNormalizer](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.Normalizer.html) | 重新缩放至少包含一个非零成分的每个样本（即，数据矩阵的每个行），而不管其他样本如何，使其范数（l1 或 l2）等于 1 |
 
-### <a name="advanced-preprocessing-optional-featurization"></a>高级预处理：可选特征化
+### <a name="customize-featurization"></a>自定义特征化
 
-还可以使用其他高级预处理和特征化，例如数据护栏、编码和转换。 [详细了解包含的功能化](how-to-use-automated-ml-for-ml-models.md#featurization)。 可通过以下方式启用此设置：
+还提供了其他特征工程技术，例如编码和转换。 
 
-+ Azure 机器学习工作室：[通过以下步骤](how-to-use-automated-ml-for-ml-models.md#create-and-run-experiment)在“查看其他配置”  部分中启用“自动特征化”。 
+可通过以下方式启用此设置：
 
-+ Python SDK：为 [`AutoMLConfig` 类](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)指定 `"feauturization": 'auto' / 'off' / 'FeaturizationConfig'`。 
++ Azure 机器学习工作室：[通过以下步骤](how-to-use-automated-ml-for-ml-models.md#customize-featurization)在“查看其他配置”部分中启用“自动特征化”。
 
-## <a name="prevent-over-fitting"></a>防止过度拟合
-
-如果模型过于完美地拟合训练数据，因而无法准确预测不可见的测试数据，则机器学习中就会发生过度拟合。 换言之，模型只是记住训练数据中的特定模式和干扰，但无法足够灵活地基于实际数据做出预测。 在最严重的情况下，过度拟合的模型会假设训练过程中出现的特征值组合始终为目标生成完全相同的输出。 
-
-防止过度拟合的最佳方式是遵循 ML 最佳做法，包括：
-
-* 使用更多训练数据，并消除统计偏差
-* 防止目标泄漏
-* 使用较少的特征
-* **正则化和超参数优化**
-* **模型复杂性限制**
-* **交叉验证**
-
-在自动化 ML 的上下文中，上面所述的前三项是**你要实施的最佳做法**。 带粗体格式的后三项是**自动化 ML 为了防止过度拟合而默认实施的最佳做法**。 在除自动化 ML 以外的设置中，为了避免过度拟合模型，值得遵循所有六项最佳做法。
-
-### <a name="best-practices-you-implement"></a>你要实施的最佳做法
-
-使用**更多的数据**是防止过度拟合的最简单且最可行的方法，通常，这种做法带来的额外好处就是提高准确度。 使用更多数据时，模型将更难以记住确切的模式，因此它被迫达成可以更灵活地适应更多条件的解决方案。 此外，必须识别**统计偏差**，以确保训练数据不包含实时预测数据中不存在的隔离模式。 此问题可能很难解决，因为训练集和测试集之间可能不存在过度拟合，但与实时测试数据相比，可能又存在过度拟合。
-
-目标泄漏是一个类似的问题，在这种情况下，可能在训练/测试集之间看不到过度拟合，但在预测时却会出现过度拟合。 如果模型在训练过程中“作弊”（访问预测时一般不会存在的数据），则会发生目标泄漏。 例如，如果你的问题是在星期一预测某件商品在星期五的价格，但某个特征意外地包含星期四的数据，则预测时模型不会包含此数据，因为模型无法看到未来。 目标泄漏是一个很容易疏忽的错误，但问题的准确度异常高，则往往可以体现此错误。 如果你正在尝试预测股价，并以 95% 的准确度训练了模型，则特征中的某个位置很可能出现目标泄漏。
-
-删除特征也有助于避免过度拟合问题：防止在模型中包含过多的字段用于记住特定的模式，从而使其更灵活。 以量化方式进行度量可能有难度，但如果可以删除特征并保持相同的准确度，则有可能会使模型变得更灵活，并降低过度拟合的风险。
-
-### <a name="best-practices-automated-ml-implements"></a>自动化 ML 实施的最佳做法
-
-正则化是最大程度地减小代价函数来惩罚复杂的过度拟合模型的过程。 有多种不同类型的正则化函数，但一般情况下，这些函数全都惩罚模型系数大小、差异和复杂性。 自动化 ML 结合用于控制过度拟合的不同模型超参数设置，使用 L1 (Lasso)、L2 (Ridge) 和 ElasticNet（同时包括 L1 和 L2）的不同组合。 简单而言，自动化 ML 会根据模型的调控程度而改变，并选择最佳结果。
-
-自动化 ML 还实施明确的模型复杂性限制来防止过度拟合。 大多数情况下，此实现专用于决策树或林算法，其中每个树的最大深度会受到限制，林或系综技术中使用的树总数会受到限制。
-
-交叉验证 (CV) 是提取整个训练数据的多个子集，并针对每个子集训练模型的过程。 其思路是，某个模型可能比较“幸运”，在预测一个子集时具有很高的准确度，但使用许多子集时，模型无法每次都实现这种高准确度。 执行 CV 时，需要提供一个验证维持数据集，指定 CV 折数（子集数），然后，自动化 ML 将训练模型并优化超参数，以尽量减少验证集的错误。 可能有一个 CV 折过度拟合，但如果使用许多的折，则可以减少最终模型过度拟合的可能性。 缺点是 CV 会导致训练时间变得更长，从而增大成本，因为模型不是训练一次，而是针对 *n* 个 CV 子集中的每个子集训练一次。
-
-> [!NOTE]
-> 默认不会启用交叉验证；必须在自动化 ML 设置中进行配置。 但是，在配置 CV 并提供验证数据集后，此过程会自动化。
-
-### <a name="identifying-over-fitting"></a>识别过度拟合
-
-考虑以下训练的模型及其相应的训练和测试准确度。
-
-| 型号 | 训练准确度 | 测试准确度 |
-|-------|----------------|---------------|
-| A | 99.9% | 95% |
-| B | 87% | 87% |
-| C | 99.9% | 45% |
-
-考虑模型 **A**：一个常见的误解是，如果针对不可见数据的测试准确度低于训练准确度，则模型就是过度拟合的。 但是，测试准确度应始终小于训练准确度，并且过度拟合与适当拟合的差别以较不准确的程度为准。  
-
-将模型 **A** 与 **B** 相比较时，模型 **A** 是更好的模型，因为它的测试准确度更高；尽管测试准确度略低于 95%，但这种差异并不明显，也并不意味着存在过度拟合。 不选择模型 **B** 的原因仅仅是训练和测试精度更为接近。
-
-模型 **C** 明确反映了过度拟合的情况；训练准确度极高，但测试准确度远远达不到较高的水平。 这种差别是主观性的，但需要根据对问题和数据的认知，以及可接受的错误程度来判断。 
-
-## <a name="classification--regression"></a>分类与回归
-
-分类与回归是最常见类型的机器学习任务。 这两者都是监督式学习类型，其中，模型将使用训练数据进行学习，并将所学到的这些知识应用于新数据。 Azure 机器学习提供了专用于这些任务的特征化，例如用于分类的深度神经网络文本特征化器。 详细了解[特征化选项](how-to-use-automated-ml-for-ml-models.md#featurization)。 
-
-分类模型的主要目标是根据从其训练数据中获得的经验，预测新数据将属于哪些类别。 常见分类示例包括欺诈检测、手写识别和对象检测。  详细了解[使用自动化机器学习进行分类](tutorial-train-models-with-aml.md)并查看示例。
-
-不同于分类（其中的预测输出值是类别），回归模型基于独立的预测因子预测数字输出值。 在回归中，目标是通过估计一个变量对其他变量的影响，帮助建立这些独立预测因子变量之间的关系。 例如，基于每英里耗油量、安全评级等特征预测汽车价格。 详细了解[使用自动化机器学习进行回归](tutorial-auto-train-models.md)并查看示例。
-
-## <a name="time-series-forecasting"></a>时序预测
-
-生成预测是任何业务（无论是收入、库存、销售还是客户需求）中不可或缺的组成部分。 可以使用自动化 ML 来合并多种技术和方法，获得推荐的高质量时序预测结果。
-
-自动化时序试验被视为多元回归问题。 将“透视”过去的时序值，使其成为回归量与其他预测指标的附加维度。 与传统时序方法不同，这种方法的优点是，在训练过程中自然包含多个上下文变量及其相互关系。 自动化 ML 会针对数据集和预测时间范围内的所有项目，习得通常有内部分支的单个模型。 这样就可以使用更多的数据来估计模型参数，使得未知系列的泛化成为可能。
-
-详细了解[用于时序预测的自动化机器学习](how-to-auto-train-forecast.md)并查看示例。 或者，请参阅[能源需求笔记本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)中的高级预测配置的详细代码示例，包括：
-
-* 假日检测和特征化
-* 时序和 DNN 教学器（Auto-ARIMA、Prophet、ForecastTCN）
-* 通过分组实现的多模型支持
-* 滚动原点交叉验证
-* 可配置滞后
-* 滚动窗口聚合特征
++ Python SDK：在 [AutoMLConfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig) 对象中指定 `"feauturization": 'auto' / 'off' / 'FeaturizationConfig'`。 详细了解 [启用特征化]((how-to-configure-auto-features.md)。 
 
 ## <a name="ensemble-models"></a><a name="ensemble"></a> 系综模型
 
@@ -184,59 +143,78 @@ ms.locfileid: "80343573"
 
 提供排序系综初始化的 [Caruana 系综选择算法](http://www.niculescu-mizil.org/papers/shotgun.icml04.revised.rev2.pdf)用于决定要在系综中使用的模型。 从较高层面看，此算法使用个体评分最高的最多五个模型来初始化集成，并验证这些模型是否在最佳评分的 5% 阈值范围内，以避免初始系综不佳。 然后，对于每个系综迭代，会将一个新模型添加到现有系综，并计算最终评分。 如果新模型改善了现有的系综评分，则会更新系综以包含新模型。
 
-请参阅[操作指南](how-to-configure-auto-train.md#ensemble)来了解如何在自动化机器学习中更改默认系综设置。
+请参阅[操作指南](how-to-configure-auto-train.md#ensemble)，了解如何在自动化机器学习中更改默认系综设置。
 
-## <a name="imbalanced-data"></a><a name="imbalance"></a> 不平衡的数据
+## <a name="guidance-on-local-vs-remote-managed-ml-compute-targets"></a><a name="local-remote"></a>有关本地和远程托管 ML 计算目标的指导
 
-不平衡的数据往往出现在机器学习分类方案的数据中，指的是在每个类中包含不相称比例的观测值的数据。 这种不平衡可能会对模型准确度造成错误的认知效应，因为输入数据与一个类存在偏差，从而导致训练的模型模拟该偏差。 
+自动化 ML 的 Web 界面始终使用远程[计算目标](concept-compute-target.md)。  但使用 Python SDK 时，可以选择本地计算或远程计算目标进行自动化 ML 训练。
 
-自动化 ML 的目标之一是简化机器学习工作流，其中的内置功能可帮助处理不平衡的数据，例如， 
+* **本地计算**：训练在本地便携式计算机或 VM 计算中发生。 
+* **远程计算**：训练在机器学习计算群集中发生。  
 
-- **权重列**：自动化 ML 支持将加权列用作输入，以便能够增大或减小数据中的行的权重，使某个类的“重要性”更大或更小。
+### <a name="choose-compute-target"></a>选择计算目标
+选择计算目标时请考虑以下因素：
 
-- 自动化 ML 使用的算法可以正确处理最高 20:1 的不平衡比，这意味着，最常用类的数据中包含的行数可以比最不常用类多 20 倍。
+ * **选择本地计算**：如果你的方案涉及到使用小数据和短训练（即，每个子运行持续几秒或几分钟）进行初始探索或演示，则可能更适合在本地计算机上进行训练。  这样就无需进行设置，并且可以直接使用基础结构资源（电脑或 VM）。
+ * **选择远程 ML 计算群集**：如果使用较大的数据集进行训练（例如，在生产训练中创建需要较长时间训练的模型），则远程计算可以提供好得多的端到端时间性能，因为 `AutoML` 会在群集节点之间并行化训练。 在远程计算上，内部基础结构的启动时间大约会根据每个子运行增加 1.5 分钟，如果 VM 尚未启动并运行，则群集基础结构的启动时间也会额外增加几分钟。
 
-### <a name="identify-models-with-imbalanced-data"></a>识别包含不平衡数据的模型
+### <a name="pros-and-cons"></a>优点和缺点
+选择是要使用本地还是远程计算时，请考虑两者的以下优点和缺点。
 
-由于分类算法通常是按准确度评估的，因此，检查模型的准确度评分可以很好地识别该模型是否受到不平衡数据的影响。 模型在预测某些类时的准确度是否确实很高或很低？
+|  | 优点（优势）  |缺点（劣势）  |
+|---------|---------|---------|---------|
+|**本地计算目标** |  <li> 无需花费时间来启动环境   | <li>  特征子集<li>  无法并行化运行 <li> 对于大数据表现较差。 <li>训练时无数据流式处理 <li>  没有基于 DNN 的特征化 <li> 仅限 Python SDK |
+|**远程 ML 计算群集**|  <li> 完整的特征集 <li> 并行化子运行 <li>   大数据支持<li>  基于 DNN 的特征化 <li>  计算群集的按需动态可伸缩性 <li> 还提供无代码体验 (Web UI)  |  <li> 需要花费时间来启动群集节点 <li> 需要花费时间来启动每个子运行    |
 
-此外，自动化 ML 运行会自动生成以下图表，以帮助你了解模型分类的正确性，并识别可能受到不平衡数据影响的模型。
+### <a name="feature-availability"></a>功能可用性 
 
-图表| 说明
----|---
-[混淆矩阵](how-to-understand-automated-ml.md#confusion-matrix)| 根据数据的实际标签评估正确分类的标签。 
-[精准率-召回率](how-to-understand-automated-ml.md#precision-recall-chart)| 根据发现的数据标签实例比评估正确的标签比 
-[ROC 曲线](how-to-understand-automated-ml.md#roc)| 根据误报标签比评估正确的标签比。
+ 使用远程计算时，有更多的功能可用，如下表中所示。 其中一些功能仅在企业工作区中可用。
 
-### <a name="handle-imbalanced-data"></a>处理不平衡的数据 
+| 功能                                                    | Remote | Local | 需要 <br>企业工作区 |
+|------------------------------------------------------------|--------|-------|-------------------------------|
+| 数据流式处理（最高 100 GB 的大数据支持）          | ✓      |       | ✓                             |
+| 基于 DNN-BERT 的文本特征化和训练             | ✓      |       | ✓                             |
+| 现成的 GPU 支持（训练和推理）        | ✓      |       | ✓                             |
+| 图像分类和标记支持                  | ✓      |       | ✓                             |
+| 用于预测的 Auto-ARIMA、Prophet 和 ForecastTCN 模型 | ✓      |       | ✓                             |
+| 并行执行多个运行/迭代                       | ✓      |       | ✓                             |
+| 在 AutoML 工作室 Web 体验 UI 中创建具有可解释性的模型      | ✓      |       | ✓                             |
+| 工作室 Web 体验 UI 中的特征工程自定义                        | ✓      |       | ✓                              |
+| Azure ML 超参数优化                             | ✓      |       |                               |
+| Azure ML 管道工作流支持                         | ✓      |       |                               |
+| 继续运行                                             | ✓      |       |                               |
+| 预测                                                | ✓      | ✓     | ✓                             |
+| 在笔记本中创建和运行试验                    | ✓      | ✓     |                               |
+| 在 UI 中注册和可视化试验的信息与指标 | ✓      | ✓     |                               |
+| 数据护栏                                            | ✓      | ✓     |                               |
 
-以下技术是用于处理自动化 ML 外部的不平衡数据的附加选项。 
+## <a name="many-models"></a>多模型 
 
-- 通过向上采样较小的类或向下采样较大的类，重新采样来均衡类的不平衡性。 这些方法需要具备处理和分析方面的专业知识。
+[多模型解决方案加速器](https://aka.ms/many-models)（预览版）构建在 Azure 机器学习的基础之上，可让你使用自动化 ML 来训练、操作和管理数百甚至数千个机器学习模型。
 
-- 使用性能指标来更好地处理不平衡的数据。 例如，F1 评分是精准率和召回率的加权平均值。 精准率度量分类器的精确性 -- 精准率较低表示存在大量误报；召回率度量分类器的完整性 - 召回率较低表示存在大量的漏报。 
+例如，在下面的方案中为每个实例或个体生成模型可以改善结果：
 
-## <a name="use-with-onnx-in-c-apps"></a>与 C# 应用中的 ONNX 配合使用
+* 预测每家店铺的销售额
+* 对数百口油井进行预测性维护
+* 为个人用户定制体验。
 
-借助 Azure 机器学习，可以使用自动化 ML 来生成 Python 模型并将其转换为 ONNX 格式。 ONNX 运行时支持 C#，因此，可以在 C# 应用中使用自动生成的模型，而无需重新编写代码，同时可避免 REST 终结点造成的任何网络延迟。 在[此 Jupyter Notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb) 中查看此流的示例。
+有关详细信息，请参阅 GitHub 上的[多模型解决方案加速器](https://aka.ms/many-models)。
 
-## <a name="automated-ml-in-azure-machine-learning"></a>Azure 机器学习中的自动化 ML
+## <a name="automl-in-azure-machine-learning"></a>Azure 机器学习中的 AutoML
 
-Azure 机器学习提供了两种使用自动化 ML 的体验方式
+Azure 机器学习提供两个用于操作自动化 ML 的体验
 
 * 对于编码经验丰富的客户，可以使用 [Azure 机器学习 Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) 
 
-* 对于编码经验有限或没有经验的客户，可以使用 [https://ml.azure.com](https://ml.azure.com/) 处的 Azure 机器学习工作室  
-
-下面汇总了每种体验中支持的概要自动化 ML 功能。
+* 编程经验有限/无经验的客户可以使用 [https://ml.azure.com](https://ml.azure.com/) 上的 Azure 机器学习工作室  
 
 <a name="parity"></a>
 
 ### <a name="experiment-settings"></a>试验设置 
 
-以下设置允许你配置自动化 ML 试验。 
+可以使用以下设置来配置自动化 ML 试验。 
 
-| | Python SDK| 工作室
+| |Python SDK|工作室 Web 体验|
 ----|:----:|:----:
 将数据拆分为训练/验证集| ✓|✓
 支持 ML 任务：分类、回归和预测| ✓| ✓
@@ -252,46 +230,54 @@ Azure 机器学习提供了两种使用自动化 ML 的体验方式
 查看工程特征名称|✓|
 特征化摘要| ✓|
 假日特征化|✓|
-日志文件的详细级别| ✓|
+日志文件详细级别| ✓|
 
 ### <a name="model-settings"></a>模型设置
 
-这些设置可作为自动化 ML 试验的结果应用于最佳模型。
+可将这些设置应用到自动化 ML 试验生成的最佳模型。
 
-||Python SDK|工作室
-----|:----:|:----:
-最佳模型注册| ✓|✓
-最佳模型部署| ✓| ✓
-最佳模型可说明性| ✓|✓
-启用投票集成和堆栈集成模型| ✓|✓
-显示基于非主要指标的最佳模型|✓|启用/禁用 ONNX 模型兼容性|✓|
-测试模型 | ✓| |
+| |Python SDK|工作室 Web 体验|
+|----|:----:|:----:|
+|最佳模型注册、部署、可解释性| ✓|✓|
+|启用投票集成和堆栈集成模型| ✓|✓|
+|显示基于非主要指标的最佳模型|✓||
+|启用/禁用 ONNX 模型兼容性|✓||
+|测试模型 | ✓| |
 
 ### <a name="run-control-settings"></a>运行控制设置
 
-通过这些设置，你可以查看和控制实验运行及其子运行。 
+使用这些设置可以查看和控制试验运行及其子运行。 
 
-||Python SDK| 工作室
-----|:----:|:----:
-运行摘要表| ✓|✓
-取消运行| ✓|✓
-取消子运行| ✓| ✓
-获取护栏| ✓|✓
-暂停运行| ✓| 
-恢复运行| ✓| 
+| |Python SDK|工作室 Web 体验|
+|----|:----:|:----:|
+|运行摘要表| ✓|✓|
+|取消运行和子运行| ✓|✓|
+|获取护栏| ✓|✓|
+|暂停和恢复运行| ✓| |
+
+<a name="use-with-onnx"></a>
+
+## <a name="automl--onnx"></a>AutoML 和 ONNX
+
+借助 Azure 机器学习，可以使用自动化 ML 来生成 Python 模型并将其转换为 ONNX 格式。 在模型采用 ONNX 格式后，可以在各种平台和设备上运行这些模型。 详细了解如何[使用 ONNX 加速 ML 模型](concept-onnx.md)。
+
+[在此 Jupyter 笔记本示例中](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb)了解如何转换为 ONNX 格式。 了解 [ONNX 支持的算法](how-to-configure-auto-train.md#select-your-experiment-type)。
+
+ONNX 运行时还支持 C#。因此，你可以在 C# 应用中使用自动生成的模型，而无需重新编写代码，同时可避免 REST 终结点造成的任何网络延迟。 详细了解如何[使用 ONNX 运行时 C# API 推理 ONNX 模型](https://github.com/Microsoft/onnxruntime/blob/master/docs/CSharp_API.md)。 
 
 ## <a name="next-steps"></a>后续步骤
 
-查看示例并了解如何使用自动化机器学习生成模型：
-
-+ 遵循[教程：使用 Azure 机器学习自动训练回归模型](tutorial-auto-train-models.md)
+查看示例并了解如何使用自动化机器学习来生成模型：
 
 + 配置自动训练试验的设置：
-  + 在 Azure 机器学习工作室中[使用这些步骤](how-to-create-portal-experiments.md)。
+  + 在 Azure 机器学习工作室中[使用这些步骤](how-to-use-automated-ml-for-ml-models.md)。
   + 在 Python SDK 中[使用这些步骤](how-to-configure-auto-train.md)。
+
++ 了解如何使用[远程计算目标](how-to-auto-train-remote.md)
+
++ 遵循[教程：使用 Azure 机器学习自动训练回归模型](tutorial-auto-train-models.md) 
 
 + 了解如何[使用这些步骤](how-to-auto-train-forecast.md)通过时序数据自动进行训练。
 
-+ 查看[自动化机器学习的 Jupyter Notebook 示例](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/)
-
++ 尝试学习[自动化机器学习的 Jupyter Notebook 示例](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/)
 * 自动化 ML 也可以在其他 Microsoft 解决方案中使用，例如 [ML.NET](https://docs.microsoft.com/dotnet/machine-learning/automl-overview)、[HDInsight](../hdinsight/spark/apache-spark-run-machine-learning-automl.md)、[Power BI](https://docs.microsoft.com/power-bi/service-machine-learning-automated) 和 [SQL Server](https://cloudblogs.microsoft.com/sqlserver/2019/01/09/how-to-automate-machine-learning-on-sql-server-2019-big-data-clusters/)

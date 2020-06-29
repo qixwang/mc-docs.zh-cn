@@ -10,12 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: da9b98744c4f16df42b0fb1c03d0b99da0282401
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 6d7fd1a7a4113cefed4957a6034ddc2f8aaa0a50
+ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80343815"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85097434"
 ---
 # <a name="data-platforms-supported-on-the-data-science-virtual-machine"></a>Data Science Virtual Machine 支持的数据平台
 
@@ -28,7 +28,7 @@ DSVM 支持以下数据平台工具。
 | | |
 | ------------- | ------------- |
 | 它是什么？   | 本地关系数据库实例      |
-| 支持的 DSVM 版本      | Windows:SQL Server 2017、Windows 2019（预览版）：SQL Server 2019      |
+| 支持的 DSVM 版本      | Windows 2016：SQL Server 2017、Windows 2019：SQL Server 2019      |
 | 典型用途      | 使用小型数据集在本地进行快速开发 <br/> 运行数据库内 R   |
 | 指向示例的链接      |    将 New York City 数据集加载进 SQL 数据库的小型示例：<br/>  `nyctaxi` <br/> 可在以下位置找到显示 Microsoft Machine Learning Server 和数据库内分析的 Jupyter 示例：<br/> `~notebooks/SQL_R_Services_End_to_End_Tutorial.ipynb`  |
 | DSVM 上的相关工具       | SQL Server Management Studio <br/> ODBC/JDBC 驱动程序<br/> pyodbc, RODBC<br />Apache Drill      |
@@ -45,7 +45,7 @@ DSVM 支持以下数据平台工具。
 
         (Replace %COMPUTERNAME% with your VM name.)
        
-若要运行 SQL Server Management Studio，可在程序列表中搜索“SQL Server Management Studio”，或使用 Windows 搜索来查找并运行它。 系统提示输入凭据时，请选择“Windows 身份验证”，然后使用计算机名称或 SQL Server 名称字段中的 ```localhost```  。
+若要运行 SQL Server Management Studio，可在程序列表中搜索“SQL Server Management Studio”，或使用 Windows 搜索来查找并运行它。 系统提示输入凭据时，请选择“Windows 身份验证”，然后使用计算机名称或 SQL Server 名称字段中的 ```localhost``` 。
 
 ### <a name="how-to-use-and-run-it"></a>如何使用和运行它
 
