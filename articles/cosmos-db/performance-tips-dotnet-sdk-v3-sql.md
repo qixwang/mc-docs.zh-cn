@@ -5,14 +5,14 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 06/23/2020
-ms.date: 06/22/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 1ba2fb17a4bab2569b5bbde92a00f8151f3d2871
-ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
+ms.openlocfilehash: 765ad88330c8519ec4c3a65ef66b3612b958a09b
+ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85102097"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85323278"
 ---
 <!--Verified successfully-->
 <!-- ONLY CHARACTOR CONTENT-->
@@ -49,7 +49,7 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
 
 **启用服务器端垃圾回收 (GC)**
 
-在某些情况下，降低垃圾回收的频率可能会有帮助。 在 .NET 中，将 [gcServer](https://docs.microsoft.com/dotnet/core/run-time-config/garbage-collector#flavors-of-garbage-collection) 设置为 `true`。
+在某些情况下，降低垃圾回收的频率可能会有帮助。 在 .NET 中，将 [gcServer](https://docs.microsoft.com/dotnet/core/run-time-config/garbage-collector?view=azure-dotnet#flavors-of-garbage-collection) 设置为 `true`。
 
 <!--CORRECT ON https://docs.microsoft.com/dotnet/core/run-time-config/garbage-collector#flavors-of-garbage-collection-->
 
@@ -259,5 +259,4 @@ SDK 全部都会隐式捕获此响应，并遵循服务器指定的 retry-after 
 
 若要深入了解如何设计应用程序以实现缩放和高性能，请参阅 [Azure Cosmos DB 中的分区和缩放](partition-data.md)。
 
-<!-- Update_Description: new article about performance tips dotnet sdk v3 sql -->
-<!--NEW.date: 06/22/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->
