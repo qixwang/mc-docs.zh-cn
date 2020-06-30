@@ -24891,9 +24891,32 @@
       "redirect_document_id": false
     },
     {
+      "source_path": "articles/batch/batch-retry-after-errors.md",
+      "redirect_url": "/batch/error-handling",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/batch/batch-api-basics.md",
+      "redirect_url": "/batch/batch-service-workflow-features",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/batch/batch-api-differences.md",
+      "redirect_url": "/batch/batch-apis-tools",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/batch/batch-integration-policies.md",
+      "redirect_url": "/batch/policy-samples",
+      "redirect_document_id": false
+    },{
       "source_path": "articles/data-factory/connector-azure-sql-database-managed-instance.md",
       "redirect_url": "/data-factory/connector-azure-sql-managed-instance",
       "redirect_document_id": true
+    },{
+      "source_path": "articles/log-analytics/log-analytics-overview.md",
+      "redirect_url": "/log-analytics/log-analytics-queries",
+      "redirect_document_id": false
     }
 
 
