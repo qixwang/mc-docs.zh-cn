@@ -1,6 +1,11 @@
 {
   "redirections": [
     {
+      "source_path": "articles/notification-hubs/notification-hubs-push-notification-http2-token-authentification.md",
+      "redirect_url": "/notification-hubs/notification-hubs-push-notification-http2-token-authentication",
+      "redirect_document_id": false
+    },
+    {
       "source_path": "articles/powershell-azure-resource-manager.md",
       "redirect_url": "/azure-resource-manager/powershell-azure-resource-manager",
       "redirect_document_id": false
@@ -9623,7 +9628,7 @@
     {
       "source_path": "articles/cosmos-db/sql-api-sql-query-cheat-sheet.md",
       "redirect_url": "https://docs.azure.cn/cosmos-db/query-cheat-sheet",
-      "redirect_document_id": "True"
+      "redirect_document_id": "false"
     },
     {
       "source_path": "articles/event-hubs/event-hubs-streaming-azure-diags-data.md",
@@ -24642,6 +24647,21 @@
       "redirect_document_id": false
     },
     {
+      "source_path": "articles/iot-edge/how-to-deploy-monitor.md",
+      "redirect_url": "/iot-edge/how-to-deploy-at-scale",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "articles/iot-edge/how-to-deploy-monitor-cli.md",
+      "redirect_url": "/iot-edge/how-to-deploy-cli-at-scale",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "articles/iot-edge/how-to-deploy-monitor-vscode.md",
+      "redirect_url": "/iot-edge/how-to-deploy-vscode-at-scale",
+      "redirect_document_id": false
+    },
+    {
       "source_path": "articles/virtual-machines/linux/shared-images.md",
       "redirect_url": "/virtual-machines/shared-images-cli",
       "redirect_document_id": false
@@ -24916,6 +24936,10 @@
     },{
       "source_path": "articles/log-analytics/log-analytics-overview.md",
       "redirect_url": "/log-analytics/log-analytics-queries",
+      "redirect_document_id": false
+    },{
+      "source_path": "articles/service-bus-messaging/service-bus-architecture.md",
+      "redirect_url": "/service-bus-messaging/service-bus-messaging-overview",
       "redirect_document_id": false
     }
 
