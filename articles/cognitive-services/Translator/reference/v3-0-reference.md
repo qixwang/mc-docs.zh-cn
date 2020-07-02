@@ -1,33 +1,33 @@
 ---
-title: 文本翻译 API V3.0 参考
+title: Translator V3.0 参考
 titleSuffix: Azure Cognitive Services
-description: 文本翻译 API v3.0 参考文档。 文本翻译 API 版本 3 提供了基于 JSON 的新型 Web API。
+description: Translator V3.0 参考文档。 Translator 的版本 3 提供了基于 JSON 的新型 Web API。
 services: cognitive-services
 author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-origin.date: 3/13/2020
-ms.date: 03/26/2020
-ms.author: v-junlch
-ms.openlocfilehash: 9c85a56a5e1f2686c18feed28c8a5429390a6bb2
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+origin.date: 4/17/2020
+ms.date: 06/22/2020
+ms.author: v-tawe
+ms.openlocfilehash: cb453e53bd94e3b86850b172f5c8629de204a12f
+ms.sourcegitcommit: 43db4001be01262959400663abf8219e27e5cb8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80342397"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85241525"
 ---
-# <a name="translator-text-api-v30"></a>文本翻译 API v3.0
+# <a name="translator-v30"></a>Translator 3.0 版
 
 ## <a name="whats-new"></a>新增功能
 
-文本翻译 API 版本 3 提供了基于 JSON 的新型 Web API。 它通过将现有功能合并到更少的操作中来提高可用性和性能，并提供新功能。
+Translator 的版本 3 提供了基于 JSON 的新型 Web API。 它通过将现有功能合并到更少的操作中来提高可用性和性能，并提供新功能。
 
  * 音译可将一种语言的文本从一个脚本转换为另一个脚本。
  * 在一个请求中翻译成多种语言。
  * 在一个请求中进行语言检测、翻译和音译。
- * 字典可查找术语的替代翻译，可查找反向翻译以及显示上下文中使用的术语的示例。
+ * 字典可用于查阅词条的替代翻译，查找反向翻译以及词条在上下文中使用时的示例。
  * 更详细的语言检测结果。
 
 ## <a name="base-urls"></a>基 URL
@@ -36,7 +36,7 @@ Microsoft Translator 位于多个数据中心位置之外。 目前它们位于 
 
 * **中国：** 中国北部和中国东部 2 
 
-在大多数情况下，对 Microsoft 文本翻译 API 的请求由距离请求的来源位置最近的数据中心处理。 如果数据中心出现故障，请求可能会路由到 Azure 地理区域之外。
+在大多数情况下，对 Microsoft Translator 的请求由距离请求来源最近的数据中心处理。 如果数据中心出现故障，请求可能会路由到 Azure 地理区域之外。
 
 若要强制由特定 Azure 地理区域处理请求，请将 API 请求中的全球终结点更改为所需的区域终结点：
 
@@ -48,20 +48,75 @@ Microsoft Translator 位于多个数据中心位置之外。 目前它们位于 
 
 ## <a name="authentication"></a>身份验证
 
-订阅文本翻译 API 并使用订阅密钥（Azure 门户中提供）进行身份验证。 
+订阅 Azure 认知服务中的 Translator 或[认知服务多服务](https://www.azure.cn/pricing/details/cognitive-services/)，并使用订阅密钥（在 Azure 门户中提供）进行身份验证。 
 
 有三个标头可用于对你的订阅进行身份验证。 下表介绍了每个标头的使用方式：
 
-|头文件|说明|
+|标头|说明|
 |:----|:----|
-|Ocp-Apim-Subscription-Key|如果要传递密钥，请与认知服务订阅一起使用  。<br/>该值是文本翻译 API 订阅的 Azure 密钥。|
-|授权|如果要传递身份验证令牌，请与认知服务订阅一起使用  。<br/>该值是持有者令牌：`Bearer <token>`。|
-|Ocp-Apim-Subscription-Region|在调用 api.translator.azure.cn endpoint 并直接传递机密密钥时所需的请求标头。 指定你的订阅所在的区域（例如 ` Chinanorth` 或 `Chinaeast2`）。|
+|Ocp-Apim-Subscription-Key|如果要传递密钥，请与认知服务订阅一起使用。<br/>该值是用于 Translator 订阅的 Azure 密钥。|
+|授权|如果要传递身份验证令牌，请与认知服务订阅一起使用。<br/>该值是持有者令牌：`Bearer <token>`。|
+|Ocp-Apim-Subscription-Region|用于认知服务多服务和区域翻译器资源。<br/>该值是多服务或区域翻译器资源的区域。 当使用全球翻译器资源时，该值是可选的。|
 
 ###  <a name="secret-key"></a>密钥
-第一个选项是使用 `Ocp-Apim-Subscription-Key` 标头进行身份验证。 只需将 `Ocp-Apim-Subscription-Key: <YOUR_SECRET_KEY>` 标头添加到你的请求。
+第一个选项是使用 `Ocp-Apim-Subscription-Key` 标头进行身份验证。 将 `Ocp-Apim-Subscription-Key: <YOUR_SECRET_KEY>` 标头添加到请求。
 
-### <a name="authorization-token"></a>授权令牌
+#### <a name="authenticating-with-a-global-resource"></a>使用全球资源进行身份验证
+
+当使用[全球翻译器资源](https://portal.azure.cn/#create/Microsoft.CognitiveServicesTextTranslation)时，需要包含一个标头来调用 Translator。
+
+|标头|说明|
+|:-----|:----|
+|Ocp-Apim-Subscription-Key| 该值是用于 Translator 订阅的 Azure 密钥。|
+
+下面是使用全球翻译器资源调用 Translator 的示例请求
+
+```curl
+// Pass secret key using headers
+curl -X POST "https://api.translator.azure.cn/translate?api-version=3.0&to=es" \
+     -H "Ocp-Apim-Subscription-Key:<your-key>" \
+     -H "Content-Type: application/json" \
+     -d "[{'Text':'Hello, what is your name?'}]"
+```
+
+#### <a name="authenticating-with-a-regional-resource"></a>使用区域资源进行身份验证
+
+当使用[区域翻译器资源](https://portal.azure.cn/#create/Microsoft.CognitiveServicesTextTranslation)时。
+调用 Translator 时所需的标头有 2 个。
+
+|标头|说明|
+|:-----|:----|
+|Ocp-Apim-Subscription-Key| 该值是用于 Translator 订阅的 Azure 密钥。|
+|Ocp-Apim-Subscription-Region| 该值是翻译器资源的区域。 |
+下面是使用区域翻译器资源调用 Translator 的示例请求
+
+```curl
+// Pass secret key and region using headers
+curl -X POST "https://api.translator.azure.cn/translate?api-version=3.0&to=es" \
+     -H "Ocp-Apim-Subscription-Key:<your-key>" \
+     -H "Ocp-Apim-Subscription-Region:<your-region>" \
+     -H "Content-Type: application/json" \
+     -d "[{'Text':'Hello, what is your name?'}]"
+```
+
+#### <a name="authenticating-with-a-multi-service-resource"></a>使用多服务资源进行身份验证
+
+当使用认知服务的多服务资源时。 这样便可以使用一个密钥对多个服务的请求进行身份验证。 
+
+在使用多服务密钥时，请求中必须包含两个身份验证标头。 调用 Translator 时所需的标头有 2 个。
+
+|标头|说明|
+|:-----|:----|
+|Ocp-Apim-Subscription-Key| 该值是用于多服务资源的 Azure 密钥。|
+|Ocp-Apim-Subscription-Region| 该值是多服务资源的区域。 |
+
+区域对于多服务文本 API 订阅是必需的。 你选择的区域是在使用多服务订阅密钥时可用于文本翻译的唯一区域，并且必须与你在通过 Azure 门户注册多服务订阅时选择的区域相同。
+
+可用区域为 `chinanorth`、`chinaeast2`。
+
+如果使用参数 `Subscription-Key` 传递查询字符串中的密钥，则必须使用查询参数 `Subscription-Region` 指定区域。
+
+### <a name="authenticating-with-an-access-token"></a>使用访问令牌进行身份验证
 或者，可以交换访问令牌的密钥。 此令牌作为 `Authorization` 标头包含在每个请求中。 若要获取授权令牌，请向以下 URL 发出 `POST` 请求：
 
 | 环境     | 身份验证服务 URL                                |
@@ -78,13 +133,13 @@ curl --header 'Ocp-Apim-Subscription-Key: <your-key>' --data "" 'https://<your r
 curl --data "" 'https://<your region>.api.cognitive.azure.cn/sts/v1.0/issueToken?Subscription-Key=<your-key>'
 ```
 
-成功的请求会在响应正文中将编码的访问令牌作为纯文本返回。 有效的令牌在授权中作为持有者令牌传递给翻译服务。
+成功的请求会在响应正文中将编码的访问令牌作为纯文本返回。 有效的令牌在授权中作为持有者令牌传递给 Translator 服务。
 
 ```http
 Authorization: Bearer <Base64-access_token>
 ```
 
-身份验证令牌的有效期为 10 分钟。 在对翻译 API 进行多次调用时，应重新使用该令牌。 但是，如果程序在很长一段时间内向翻译 API 发出请求，则程序必须定期（例如每 8 分钟）请求一个新的访问令牌。
+身份验证令牌的有效期为 10 分钟。 在对 Translator 进行多次调用时，应重复使用该令牌。 但是，如果程序向 Translator 发出请求时持续的时间段很长，则该程序必须定期（例如每隔 8 分钟）请求新的访问令牌。
 
 
 ## <a name="errors"></a>错误
@@ -136,7 +191,7 @@ Authorization: Bearer <Base64-access_token>
 | 400079| 请求用于在源语言与目标语言之间进行翻译的自定义系统不存在。|
 | 400080| 语言或脚本不支持音译。|
 | 401000| 由于凭据缺失或无效，请求未授权。|
-| 401015| “提供的凭据适用于语音 API。 此请求需要文本 API 的凭据。 请使用文本翻译 API 的订阅。”|
+| 401015| “提供的凭据适用于语音 API。 此请求需要文本 API 的凭据。 请使用 Translator 的订阅。”|
 | 403000| 不允许该操作。|
 | 403001| 由于订阅已超过其免费配额，因此不允许该操作。|
 | 405000| 请求的资源不支持该请求方法。|
@@ -147,5 +202,21 @@ Authorization: Bearer <Base64-access_token>
 | 500000| 发生了意外错误。 如果该错误持续出现，请报告发生错误的日期/时间、响应标头 X-RequestId 中的请求标识符，以及请求标头 X-ClientTraceId 中的客户端标识符。|
 | 503000| 服务暂时不可用。 请重试。 如果该错误持续出现，请报告发生错误的日期/时间、响应标头 X-RequestId 中的请求标识符，以及请求标头 X-ClientTraceId 中的客户端标识符。|
 
+## <a name="metrics"></a>指标 
+利用指标，可以在 Azure 门户中的指标部分下查看翻译器的使用情况和可用性信息，如以下屏幕截图所示。 有关详细信息，请参阅[数据和平台指标](/azure-monitor/platform/data-platform-metrics)。
 
-<!-- Update_Description: wording update -->
+![Translator 指标](../media/translatormetrics.png)
+
+此表列出了可用的指标，以及有关如何使用它们来监视翻译 API 调用的说明。
+
+| 指标 | 说明 |
+|:----|:-----|
+| TotalCalls| API 调用总数。|
+| TotalTokenCalls| 使用身份验证令牌通过令牌服务进行的 API 调用的总数。|
+| SuccessfulCalls| 成功调用数。|
+| TotalErrors| 产生了错误响应的调用数。|
+| BlockedCalls| 超过速率或配额限制的调用数。|
+| ServerErrors| 产生了服务器内部错误 (5XX) 的调用数。|
+| ClientErrors| 产生了客户端错误 (4xx) 的调用数。|
+| 延迟| 完成请求的持续时间（毫秒）。|
+| CharactersTranslated| 传入的文本请求中的字符总数。|

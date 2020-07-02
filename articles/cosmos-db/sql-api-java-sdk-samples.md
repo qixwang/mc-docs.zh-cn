@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: sample
 origin.date: 05/20/2020
-ms.date: 06/22/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: d31ab2abf8864a23fe78f620699aac6784718db2
-ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
+ms.openlocfilehash: d699ecb44c4de9bf313e64988dfe2ac795b76d3b
+ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85102062"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85323378"
 ---
 <!--Verified successfully-->
 # <a name="azure-cosmos-db-sql-api-java-sdk-v4-examples"></a>Azure Cosmos DB SQL API：Java SDK v4 示例
