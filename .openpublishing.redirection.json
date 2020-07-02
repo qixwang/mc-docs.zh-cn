@@ -24941,6 +24941,41 @@
       "source_path": "articles/service-bus-messaging/service-bus-architecture.md",
       "redirect_url": "/service-bus-messaging/service-bus-messaging-overview",
       "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/security/abstract-develop-secure-apps.md",
+      "redirect_url": "/security/fundamentals/abstract-develop-secure-apps",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "articles/security/fundamentals/abstract-develop-secure-apps.md",
+      "redirect_url": "https://azure.microsoft.com/resources/develop-secure-applications-on-azure/",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/security/azure-security-getting-started.md",
+      "redirect_url": "https://docs.azure.cn/security",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/security/security-microsoft-trust-center.md",
+      "redirect_url": "/security/fundamentals/trust-center",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "articles/security/fundamentals/trust-center.md",
+      "redirect_url": "https://www.microsoft.com/trust-center",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/security/security-storage-overview.md",
+      "redirect_url": "/security/fundamentals/storage-overview",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "articles/security/fundamentals/storage-overview.md",
+      "redirect_url": "/storage/common/storage-security-guide",
+      "redirect_document_id": false
     }
 
 
