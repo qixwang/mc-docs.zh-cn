@@ -24933,11 +24933,13 @@
       "source_path": "articles/data-factory/connector-azure-sql-database-managed-instance.md",
       "redirect_url": "/data-factory/connector-azure-sql-managed-instance",
       "redirect_document_id": true
-    },{
+    },
+    {
       "source_path": "articles/log-analytics/log-analytics-overview.md",
       "redirect_url": "/log-analytics/log-analytics-queries",
       "redirect_document_id": false
-    },{
+    },
+    {
       "source_path": "articles/service-bus-messaging/service-bus-architecture.md",
       "redirect_url": "/service-bus-messaging/service-bus-messaging-overview",
       "redirect_document_id": false
@@ -24976,7 +24978,22 @@
       "source_path": "articles/security/fundamentals/storage-overview.md",
       "redirect_url": "/storage/common/storage-security-guide",
       "redirect_document_id": false
-    }
+    },
+	{
+      "source_path": "articles/virtual-machines/linux/sql/sql-server-linux-faq.md",
+      "redirect_url": "/azure-sql/virtual-machines/linux/frequently-asked-questions-faq",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/virtual-machines/linux/sql/sql-server-linux-virtual-machines-overview.md",
+      "redirect_url": "/azure-sql/virtual-machines/linux/sql-server-on-linux-vm-what-is-iaas-overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/virtual-machines/linux/sql/provision-sql-server-linux-virtual-machine.md",
+      "redirect_url": "/azure-sql/virtual-machines/linux/sql-vm-create-portal-quickstart",
+      "redirect_document_id": false
+	}
 
 
 
