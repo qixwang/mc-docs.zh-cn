@@ -1,24 +1,24 @@
 ---
-title: 词对齐 - 文本翻译 API
+title: 词对齐 - 翻译器
 titleSuffix: Azure Cognitive Services
 description: 若要接收对齐信息，请使用 Translate 方法，并包含可选的 includeAlignment 参数。
 services: cognitive-services
-author: rajdeep-in
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-origin.date: 06/04/2019
-ms.date: 03/26/2020
-ms.author: v-lingwu
-ms.custom: seodec18
-ms.openlocfilehash: dae633ee4d86b31d306a195e0d46bf6f2ac0cdb8
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+origin.date: 05/26/2020
+ms.date: 06/22/2020
+ms.author: v-tawe
+ms.openlocfilehash: 4b266397fe56ac99f17ec66f7ab050a6732db2e7
+ms.sourcegitcommit: 43db4001be01262959400663abf8219e27e5cb8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80342381"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85241575"
 ---
+<!-- title updating-->
 # <a name="how-to-receive-word-alignment-information"></a>如何接收词对齐信息
 
 ## <a name="receiving-word-alignment-information"></a>接收词对齐信息
@@ -58,4 +58,3 @@ ms.locfileid: "80342381"
   }
 ]
 ```
-

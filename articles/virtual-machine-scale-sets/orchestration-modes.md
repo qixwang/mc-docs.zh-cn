@@ -1,24 +1,25 @@
 ---
 title: 详细了解 Azure 中虚拟机规模集的业务流程模式
 description: 详细了解 Azure 中虚拟机规模集的业务流程模式。
-services: virtual-machine-scale-sets
-documentationcenter: ''
-author: shandilvarun
-manager: gwallace
-ms.service: virtual-machine-scale-sets
-ms.workload: infrastructure-services
-ms.topic: article
-origin.date: 10/23/2019
-ms.date: 11/11/2019
+author: mimckitt
 ms.author: v-junlch
-ms.openlocfilehash: 78a9ca58707359466f2bcbaa1a65cd6a8940bce9
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.topic: conceptual
+ms.service: virtual-machine-scale-sets
+ms.subservice: management
+ms.date: 06/22/2020
+ms.reviewer: jushiman
+ms.custom: mimckitt
+ms.openlocfilehash: 882852880d3cc06cb436a63ab8fcc9a8a2c628c9
+ms.sourcegitcommit: 43db4001be01262959400663abf8219e27e5cb8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "73934423"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85241566"
 ---
-# <a name="orchestration-mode-preview"></a>业务流程模式（预览版）
+# <a name="orchestration-modes-preview"></a>业务流程模式（预览版）
+
+> [!CAUTION]
+> 感谢所有参与此公共预览版的人。 我们能够从我们的社区收集有价值的反馈。 此预览版现在将对任何新参与者关闭，以便集成反馈。 我们会使用任何新信息更新此空间。
 
 虚拟机规模集提供平台管理的虚拟机的逻辑分组。 使用规模集可以创建虚拟机配置模型，根据 CPU 或内存负载自动添加或删除其他实例，并自动升级到最新的 OS 版本。 在传统上，规模集允许使用在创建规模集时提供的 VM 配置模型来创建虚拟机，并且规模集只能管理基于配置模型隐式创建的虚拟机。
 

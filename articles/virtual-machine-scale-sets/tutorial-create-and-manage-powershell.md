@@ -1,19 +1,20 @@
 ---
 title: 教程 - 创建和管理 Azure 虚拟机规模集
 description: 了解如何使用 Azure PowerShell 创建虚拟机规模集以及某些常见的管理任务，例如如何启动和停止实例，或者如何更改规模集容量。
-author: cynthn
-tags: azure-resource-manager
-ms.service: virtual-machine-scale-sets
-ms.topic: tutorial
-ms.date: 02/10/2020
+author: ju-shim
 ms.author: v-junlch
-ms.custom: mvc
-ms.openlocfilehash: c5b4a0416e5ab64c049235e33b738eae352fc3ec
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.topic: tutorial
+ms.service: virtual-machine-scale-sets
+ms.subservice: management
+ms.date: 06/22/2020
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: c0edf66be61f76b2e593d184e8b451953edf9027
+ms.sourcegitcommit: 43db4001be01262959400663abf8219e27e5cb8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77128832"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85241558"
 ---
 # <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-azure-powershell"></a>教程：使用 Azure PowerShell 创建和管理虚拟机规模集
 
@@ -130,7 +131,7 @@ IpAddress
 52.168.121.216
 ```
 
-创建连接到第一个 VM 实例所需的远程连接。 指定所需 VM 实例的公共 IP 地址和端口号，如前述命令所示。 出现提示时，输入创建规模集时使用的凭据（在示例命令中，默认为 azureuser 和 P\@ssw0rd!）。 以下示例连接到 VM 实例 *1*：
+创建连接到第一个 VM 实例所需的远程连接。 指定所需 VM 实例的公共 IP 地址和端口号，如前述命令所示。 出现提示时，输入创建规模集时使用的凭据（在示例命令中，默认为 azureuser 和 P\@ssw0rd!） 。 以下示例连接到 VM 实例 *1*：
 
 ```powershell
 mstsc /v 52.168.121.216:50001
@@ -188,6 +189,8 @@ New-AzVmss `
   -Credential $cred
 ```
 
+> [!IMPORTANT]
+> 建议使用最新版本的映像。 指定“latest”以使用部署时可用的最新版本的映像。 请注意，即使使用的是“latest”，VM 映像部署后也不会自动更新，即使新版本可用也是如此。
 
 ## <a name="understand-vm-instance-sizes"></a>了解 VM 实例大小
 VM 实例大小或 *SKU* 决定了可供 VM 实例使用的计算资源（如 CPU、GPU 和内存）的量。 需要根据预期的工作负荷适当调整规模集中 VM 实例的大小。
@@ -199,7 +202,7 @@ VM 实例大小或 *SKU* 决定了可供 VM 实例使用的计算资源（如 CP
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | [常规用途](../virtual-machines/windows/sizes-general.md)         |Dsv3、Dv3、DSv2、Dv2、DS、D、Av2、A0-7| CPU 与内存之比均衡。 适用于开发/测试、小到中型应用程序和数据解决方案。  |
 | [计算优化](../virtual-machines/windows/sizes-compute.md)   | Fs, F             | 高 CPU 与内存之比。 适用于中等流量的应用程序、网络设备和批处理。        |
-| [内存优化](../virtual-machines/windows/sizes-memory.md)    | Esv3、Ev3、M、DSv2、DS、Dv2、D   | 较高的内存核心比。 适用于关系数据库、中到大型缓存和内存分析。                 |
+| [内存优化](../virtual-machines/windows/sizes-memory.md)    | Esv3、Ev3、M、DSv2、DS、Dv2、D   | 较高的内存核心比。 适用于关系数据库、中到大型缓存和内存中分析。                 |
 | [GPU](../virtual-machines/windows/sizes-gpu.md)          | NV, NC            | 专门针对大量图形绘制和视频编辑的 VM。       |
 
 ### <a name="find-available-vm-instance-sizes"></a>查找可用的 VM 实例大小
@@ -302,7 +305,7 @@ Restart-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet"
 
 
 ## <a name="clean-up-resources"></a>清理资源
-删除资源组时，也会删除其中包含的所有资源，例如 VM 实例、虚拟网络和磁盘。 `-Force` 参数将确认是否希望删除资源，不会显示询问是否删除的额外提示。 `-AsJob` 参数会使光标返回提示符处，不会等待操作完成。
+删除资源组时，也会删除其中包含的所有资源，例如 VM 实例、虚拟网络和磁盘。 `-Force` 参数将确认是否希望删除资源，而不会有额外提示。 `-AsJob` 参数会使光标返回提示符处，无需等待操作完成。
 
 ```azurepowershell
 Remove-AzResourceGroup -Name "myResourceGroup" -Force -AsJob
@@ -322,6 +325,5 @@ Remove-AzResourceGroup -Name "myResourceGroup" -Force -AsJob
 请转到下一教程，了解规模集磁盘。
 
 > [!div class="nextstepaction"]
-> [将数据磁盘与规模集配合使用](tutorial-use-disks-powershell.md)
+> [通过规模集使用数据磁盘](tutorial-use-disks-powershell.md)
 
-<!-- Update_Description: wording update -->

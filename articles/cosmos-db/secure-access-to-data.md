@@ -2,34 +2,34 @@
 title: 了解如何保护对 Azure Cosmos DB 中数据的访问
 description: 了解有关 Azure Cosmos DB 中的访问控制概念，包括主密钥、只读密钥、用户和权限。
 author: rockboyfor
-ms.author: v-yeche
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 01/21/2020
-ms.date: 02/10/2020
-ms.openlocfilehash: acb2e0d09de0a30ae859a6283c1f26c68e8d6983
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 07/06/2020
+ms.author: v-yeche
+ms.openlocfilehash: 46a393059bf2280f9cd1f1f8770cb093fae6d77c
+ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79291880"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85323330"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>保护对 Azure Cosmos DB 中数据的访问
 
 本文概述了如何保护对存储在 [Azure Cosmos DB](https://www.azure.cn/home/features/cosmos-db/) 中的数据的访问。
 
-Azure Cosmos DB 使用两种类型的密钥来验证用户身份并提供对其数据和资源的访问权限。 
+Azure Cosmos DB 使用两种类型的密钥来验证用户身份并提供其数据和资源的访问权限。 
 
 |密钥类型|资源|
 |---|---|
 |[主密钥](#master-keys) |用于管理资源：数据库帐户、数据库、用户和权限|
 |[资源令牌](#resource-tokens)|用于应用程序资源：容器、文档、附件、存储过程、触发器和 UDF|
 
+<a name="master-keys"></a>
 <a name="master-key"></a>
-
 <!--Notice: the Archor is master-key without s char-->
 
-## <a name="master-keys"></a>主密钥 
+## <a name="master-keys"></a>主密钥
 
 主密钥提供对数据库帐户的所有管理资源的访问权限。 主密钥：
 
@@ -40,19 +40,27 @@ Azure Cosmos DB 使用两种类型的密钥来验证用户身份并提供对其�
 
 每个帐户包括两个主密钥：主要密钥和辅助密钥。 使用两个密钥的目的是为了能够重新生成或轮换密钥，从而可以持续访问帐户和数据。
 
-Cosmos DB 帐户除了有两个主密钥以外，还有两个只读密钥。 这些只读密钥只允许针对帐户执行读取操作。 只读密钥不提供对资源的读取权限。
+Azure Cosmos DB 帐户除了有两个主密钥以外，还有两个只读密钥。 这些只读密钥只允许针对帐户执行读取操作。 只读密钥不提供对资源的读取权限。
 
 可以使用 Azure 门户检索和重新生成主要、辅助、只读和读写主密钥。 有关说明，请参阅[查看、复制和重新生成访问密钥](manage-with-cli.md#regenerate-account-key)。
 
 ![Azure 门户中的访问控制 (IAM) - 演示 NoSQL 数据库安全性](./media/secure-access-to-data/nosql-database-security-master-key-portal.png)
 
-轮换主密钥的过程相当简单。 导航到 Azure 门户并检索辅助密钥，在应用程序中将主要密钥替换为该辅助密钥，然后在 Azure 门户中轮换主要密钥即可。
+### <a name="key-rotation"></a>密钥轮换<a name="key-rotation"></a>
+
+轮换主密钥的过程相当简单。 
+
+1. 导航到 Azure 门户以检索辅助密钥。
+2. 在应用程序中将主密钥替换为辅助密钥。 确保所有部署中的所有 Cosmos DB 客户端都立即重启，并将开始使用已更新的密钥。
+3. 在 Azure 门户中轮换主密钥。
+4. 验证新主密钥是否适用于所有资源。 密钥轮换过程可能需要不到一分钟，也可能需要几小时，具体取决于 Cosmos DB 帐户的大小。
+5. 将辅助密钥替换为新的主密钥。
 
 ![Azure 门户中的主密钥轮换 - 演示 NoSQL 数据库安全性](./media/secure-access-to-data/nosql-database-security-master-key-rotate-workflow.png)
 
 ### <a name="code-sample-to-use-a-master-key"></a>有关使用主密钥的代码示例
 
-以下代码示例演示如何使用 Cosmos DB 帐户终结点和主密钥来实例化 DocumentClient 并创建数据库。 
+以下代码示例演示如何使用 Cosmos DB 帐户终结点和主密钥来实例化 DocumentClient 并创建数据库。
 
 ```csharp
 //Read the Azure Cosmos DB endpointUrl and authorization keys from config.
@@ -77,9 +85,9 @@ CosmosClient client = new CosmosClient(endpointUrl, authorizationKey);
 - 使用专门针对用户、资源和权限构造的哈希资源令牌。
 - 生存期受到可自定义的有效期的约束。 默认的有效期限为一小时。 但是，可将令牌生存期显式指定为最长五个小时。
 - 可以安全替代主密钥。
-- 使客户端能够根据授予的权限读取、写入和删除 Cosmos DB 帐户中的资源。
+- 使客户端能够根据它们的权限读取、写入和删除 Cosmos DB 帐户中的资源。
 
-如果想要为不能通过主密钥得到信任的客户端提供对 Cosmos DB 帐户中资源的访问权限，可以使用资源令牌（通过创建 Cosmos DB 用户和权限获取）。  
+如果想要为不能通过主密钥得到信任的客户端提供对 Cosmos DB 帐户中资源的访问权限，可以使用资源令牌（通过创建 Cosmos DB 用户和权限来使用）。  
 
 Cosmos DB 资源令牌提供一种安全的替代方案，使客户端能够根据授予的权限读取、写入和删除 Cosmos DB 帐户中的资源，而无需主密钥或只读密钥。
 
@@ -91,8 +99,8 @@ Cosmos DB 资源令牌提供一种安全的替代方案，使客户端能够根�
 4. 登录时，照片应用使用中间层服务建立用户的标识。 这种标识建立机制完全由应用程序决定。
 5. 一旦建立标识，中间层服务就会基于标识请求权限。
 6. 中间层服务将资源令牌发送回手机应用。
-7. 手机应用可以继续使用该资源令牌，以该资源令牌定义的权限，按照该资源令牌允许的间隔直接访问 Cosmos DB 资源。
-8. 资源令牌到期后，后续请求将收到 401 未经授权的异常。  此时，手机应用会重新建立标识，并请求新的资源令牌。
+7. 手机应用可以继续使用该资源令牌以该资源令牌定义的权限按照该资源令牌允许的间隔直接访问 Cosmos DB 资源。
+8. 资源令牌到期后，后续请求收到 401 未经授权的异常。  此时，手机应用会重新建立标识，并请求新的资源令牌。
 
     ![Azure Cosmos DB 资源令牌工作流](./media/secure-access-to-data/resourcekeyworkflow.png)
 
@@ -104,7 +112,7 @@ Cosmos DB 资源令牌提供一种安全的替代方案，使客户端能够根�
 
 ## <a name="users"></a>用户
 
-Azure Cosmos DB 用户与 Cosmos 数据库相关联。  每个数据库可以包含零个或多个 Cosmos DB 用户。 以下代码示例展示了如何使用 [Azure Cosmos DB .NET SDK v3](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/UserManagement) 创建 Cosmos DB 用户。
+Azure Cosmos DB 用户与 Cosmos 数据库相关联。  每个数据库可以包含零个或更多 Cosmos DB 用户。 以下代码示例展示了如何使用 [Azure Cosmos DB .NET SDK v3](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/UserManagement) 创建 Cosmos DB 用户。
 
 ```csharp
 //Create a user.
@@ -118,10 +126,12 @@ User user = await database.CreateUserAsync("User 1");
 
 <a name="permissions"></a>
 
+## <a name="permissions"></a>权限
+
 权限资源与用户相关联，并在容器以及分区键级别进行分配。 每个用户可能包含零个或多个权限。 用户在尝试访问某个特定容器或访问特定分区键中的数据时需要一个安全令牌，权限资源提供对该安全令牌的访问权限。 权限资源提供两种可用的访问级别：
 
 - 所有：用户对资源拥有完全权限。
-- 只读：用户只能读取资源的内容，但无法对资源执行写入、更新或删除操作。
+- 读取：用户只能读取资源的内容，但无法对资源执行写入、更新或删除操作。
 
 > [!NOTE]
 > 为了运行存储过程，用户必须对将在其中运行存储过程的容器具有全部权限。
@@ -157,12 +167,12 @@ CosmosClient client = new CosmosClient(accountEndpoint: "MyEndpoint", authKeyOrR
 若要将 Azure Cosmos DB 帐户读者访问权限添加到用户帐户，请让订阅所有者在 Azure 门户执行以下步骤。
 
 1. 打开 Azure 门户，并选择 Azure Cosmos DB 帐户。
-2. 单击“访问控制(IAM)”  选项卡，然后单击“+ 添加角色分配”  。
-3. 在“添加角色分配”  窗格中的“角色”  框中，选择“Cosmos DB 帐户读者角色”  。
-4. 在“分配其访问权限”  框中，选择“Azure AD 用户、组或应用程序”  。
+2. 单击“访问控制(IAM)”选项卡，然后单击“+ 添加角色分配”。
+3. 在“添加角色分配”窗格中的“角色”框中，选择“Cosmos DB 帐户读者角色”。
+4. 在“分配其访问权限”框中，选择“Azure AD 用户、组或应用程序”。
 5. 在你想要授予访问权限的目录中选择用户、组或应用程序。  可以通过显示名称、电子邮件地址或对象标识符搜索目录。
     所选用户、组或应用程序会显示在所选成员列表中。
-6. 单击“保存”  。
+6. 单击“保存” 。
 
 实体现在便可以读取 Azure Cosmos DB 资源。
 

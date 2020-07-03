@@ -10,16 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-origin.date: 03/25/2020
-ms.date: 06/15/2020
-ms.openlocfilehash: 4dd4f414ba6c857bd2277ff12a3bdf7c3c2fc8de
-ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
+origin.date: 05/26/2020
+ms.date: 06/29/2020
+ms.openlocfilehash: b62ed79d9627289cca8321a9c1f35a916b9fe6d5
+ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84723756"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85321189"
 ---
-# <a name="copy-and-transform-data-in-azure-synapse-analytics-formerly-azure-sql-data-warehouse-by-using-azure-data-factory"></a>使用 Azure 数据工厂在 Azure Synapse Analytics（前称为 Azure SQL 数据仓库）中复制和转换数据 
+# <a name="copy-and-transform-data-in-azure-synapse-analytics-formerly-azure-sql-data-warehouse-by-using-azure-data-factory"></a>使用 Azure 数据工厂在 Azure Synapse Analytics（前称为 Azure SQL 数据仓库）中复制和转换数据
 
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -38,11 +38,11 @@ ms.locfileid: "84723756"
 
 - 将 SQL 身份验证和 Azure Active Directory (Azure AD) 应用程序令牌身份验证与服务主体或 Azure 资源的托管标识配合使用来复制数据。
 - 作为源，使用 SQL 查询或存储过程检索数据。
-- 作为接收器，使用 [PolyBase](#use-polybase-to-load-data-into-azure-sql-data-warehouse)、[COPY 语句](#use-copy-statement)（预览版）或批量插入来加载数据。 为提高复制性能，我们建议使用 PolyBase 或 COPY 语句（预览版）。
+- 作为接收器，使用 [PolyBase](#use-polybase-to-load-data-into-azure-sql-data-warehouse)、[COPY 语句](#use-copy-statement)（预览版）或批量插入来加载数据。 为提高复制性能，我们建议使用 PolyBase 或 COPY 语句（预览版）。 连接器还支持基于源架构自动创建目标表（如果不存在）。
 
 > [!IMPORTANT]
-> 如果使用 Azure 数据工厂集成运行时复制数据，请将 [Azure SQL Server 防火墙](/sql-database/sql-database-firewall-configure)配置为允许 Azure 服务访问服务器。
-> 如果使用自承载集成运行时复制数据，请将 Azure SQL Server 防火墙配置为允许合适的 IP 范围。 此范围包括用于连接 Azure Synapse Analytics 的计算机的 IP。
+> 如果使用 Azure 数据工厂 Integration Runtime 复制数据，请配置[服务器级防火墙规则](/sql-database/sql-database-firewall-configure)，以便 Azure 服务可以访问服务器。
+> 如果使用自承载集成运行时复制数据，请将防火墙配置为允许合适的 IP 范围。 此范围包括用于连接 Azure Synapse Analytics 的计算机的 IP。
 
 ## <a name="get-started"></a>入门
 
@@ -104,13 +104,13 @@ Azure Synapse Analytics 链接服务支持以下属性：
         "type": "AzureSqlDW",
         "typeProperties": {
             "connectionString": "Server=tcp:<servername>.database.chinacloudapi.cn,1433;Database=<databasename>;User ID=<username>@<servername>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30",
-            "password": { 
-                "type": "AzureKeyVaultSecret", 
-                "store": { 
-                    "referenceName": "<Azure Key Vault linked service name>", 
-                    "type": "LinkedServiceReference" 
-                }, 
-                "secretName": "<secretName>" 
+            "password": {
+                "type": "AzureKeyVaultSecret",
+                "store": {
+                    "referenceName": "<Azure Key Vault linked service name>",
+                    "type": "LinkedServiceReference"
+                },
+                "secretName": "<secretName>"
             }
         },
         "connectVia": {
@@ -127,11 +127,11 @@ Azure Synapse Analytics 链接服务支持以下属性：
 
 1. 从 Azure 门户 **[创建 Azure Active Directory 应用程序](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)** 。 记下应用程序名称，以及以下定义链接服务的值：
 
-    - 应用程序 ID
-    - 应用程序密钥
-    - 租户 ID
+   - 应用程序 ID
+   - 应用程序密钥
+   - 租户 ID
 
-2. 在 Azure 门户上为 Azure SQL 服务器[预配 Azure Active Directory 管理员](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)（如果尚未执行该操作）。 Azure AD 管理员可以是 Azure AD 用户或 Azure AD 组。 如果授予包含托管标识的组管理员角色，则可跳过步骤 3 和步骤 4。 管理员将拥有对数据库的完全访问权限。
+2. 为 Azure 门户中的服务器[预配 Azure Active Directory 管理员](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)（如果尚未这样做）。 Azure AD 管理员可以是 Azure AD 用户或 Azure AD 组。 如果授予包含托管标识的组管理员角色，则可跳过步骤 3 和步骤 4。 管理员将拥有对数据库的完全访问权限。
 
 3. 为服务主体 **[创建包含的数据库用户](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)** 。 使用 SSMS 等工具连接到要从中复制数据或要将数据复制到其中的数据仓库，其 Azure AD 标识至少具有 ALTER ANY USER 权限。 运行以下 T-SQL：
   
@@ -139,14 +139,13 @@ Azure Synapse Analytics 链接服务支持以下属性：
     CREATE USER [your application name] FROM EXTERNAL PROVIDER;
     ```
 
-4. 像通常对 SQL 用户或其他用户所做的那样**向服务主体授予所需的权限**。 运行以下代码，或者参考[此处](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=sql-server-2017)的更多选项。 若要使用 PolyBase 来加载数据，请了解[必需的数据库权限](#required-database-permission)。
+4. 像通常对 SQL 用户或其他用户所做的那样**向服务主体授予所需的权限**。 运行以下代码，或者参考[此处](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=sql-server-2017)的更多选项。 如果要使用 PolyBase 加载数据，请了解[所需的数据库权限](#required-database-permission)。
 
     ```sql
     EXEC sp_addrolemember db_owner, [your application name];
     ```
 
 5. 在 Azure 数据工厂中**配置 Azure Synapse Analytics 链接服务**。
-
 
 #### <a name="linked-service-example-that-uses-service-principal-authentication"></a>使用服务主体身份验证的链接服务示例
 
@@ -178,21 +177,21 @@ Azure Synapse Analytics 链接服务支持以下属性：
 
 若要使用托管标识身份验证，请执行以下步骤：
 
-1. 在 Azure 门户上为 Azure SQL 服务器[预配 Azure Active Directory 管理员](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)（如果尚未执行该操作）。 Azure AD 管理员可以是 Azure AD 用户或 Azure AD 组。 如果授予包含托管标识的组管理员角色，则可跳过步骤 3 和步骤 4。 管理员将拥有对数据库的完全访问权限。
+1. 为 Azure 门户上的服务器[预配 Azure Active Directory 管理员](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)（如果尚未这样做）。 Azure AD 管理员可以是 Azure AD 用户或 Azure AD 组。 如果授予包含托管标识的组管理员角色，则可跳过步骤 3 和步骤 4。 管理员将拥有对数据库的完全访问权限。
 
-2. 为数据工厂托管标识 **[创建包含的数据库用户](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)** 。 使用 SSMS 等工具连接到要从中复制数据或要将数据复制到其中的数据仓库，其 Azure AD 标识至少具有 ALTER ANY USER 权限。 运行以下 T-SQL。 
+2. 为数据工厂托管标识 **[创建包含的数据库用户](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)** 。 使用 SSMS 等工具连接到要从中复制数据或要将数据复制到其中的数据仓库，其 Azure AD 标识至少具有 ALTER ANY USER 权限。 运行以下 T-SQL。
   
     ```sql
     CREATE USER [your Data Factory name] FROM EXTERNAL PROVIDER;
     ```
 
-3. 像通常对 SQL 用户和其他用户所做的那样**向数据工厂托管标识授予所需的权限**。 运行以下代码，或者参考[此处](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=sql-server-2017)的更多选项。 若要使用 PolyBase 来加载数据，请了解[必需的数据库权限](#required-database-permission)。
+3. 像通常对 SQL 用户和其他用户所做的那样**向数据工厂托管标识授予所需的权限**。 运行以下代码，或者参考[此处](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=sql-server-2017)的更多选项。 如果要使用 PolyBase 加载数据，请了解[所需的数据库权限](#required-database-permission)。
 
     ```sql
     EXEC sp_addrolemember db_owner, [your Data Factory name];
     ```
 
-5. 在 Azure 数据工厂中**配置 Azure Synapse Analytics 链接服务**。
+4. 在 Azure 数据工厂中**配置 Azure Synapse Analytics 链接服务**。
 
 **示例：**
 
@@ -214,7 +213,7 @@ Azure Synapse Analytics 链接服务支持以下属性：
 
 ## <a name="dataset-properties"></a>数据集属性
 
-有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 
+有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。
 
 Azure Synapse Analytics 数据集支持以下属性：
 
@@ -225,7 +224,7 @@ Azure Synapse Analytics 数据集支持以下属性：
 | 表 | 表/视图的名称。 |对于源为“No”，对于接收器为“Yes”  |
 | tableName | 具有架构的表/视图的名称。 此属性支持后向兼容性。 对于新的工作负荷，请使用 `schema` 和 `table`。 | 对于源为“No”，对于接收器为“Yes” |
 
-#### <a name="dataset-properties-example"></a>数据集属性示例
+### <a name="dataset-properties-example"></a>数据集属性示例
 
 ```json
 {
@@ -355,7 +354,7 @@ Azure 数据工厂支持通过三种方式将数据载入 SQL 数据仓库。
 
 ![SQL 数据仓库接收器复制选项](./media/connector-azure-sql-data-warehouse/sql-dw-sink-copy-options.png)
 
-- [使用 PolyBase](#use-polybase-to-load-data-into-azure-sql-data-warehouse) 
+- [使用 PolyBase](#use-polybase-to-load-data-into-azure-sql-data-warehouse)
 - [使用 COPY 语句（预览版）](#use-copy-statement)
 - 使用批量插入
 
@@ -370,7 +369,7 @@ Azure 数据工厂支持通过三种方式将数据载入 SQL 数据仓库。
 | polyBaseSettings  | `allowPolybase` 属性设置为 **true** 时可以指定的一组属性。 | 否。<br/>使用 PolyBase 时适用。 |
 | allowCopyCommand | 指示是否使用 [COPY 语句](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)（预览版）将数据载入 SQL 数据仓库。 `allowCopyCommand` 和 `allowPolyBase` 不能同时为 true。 <br/><br/>有关约束和详细信息，请参阅[使用 COPY 语句将数据载入 Azure SQL 数据仓库](#use-copy-statement)部分。<br/><br/>允许的值为 **True** 和 **False**（默认值）。 | 否。<br>使用 COPY 时适用。 |
 | copyCommandSettings | `allowCopyCommand` 属性设置为 TRUE 时可以指定的一组属性。 | 否。<br/>使用 COPY 时适用。 |
-| writeBatchSize    | **每批**要插入到 SQL 表中的行数。<br/><br/>允许的值为 **integer**（行数）。 默认情况下，数据工厂会根据行大小动态确定适当的批大小。 | 否。<br/>使用批量插入时适用。     |
+| writeBatchSize    | **每批**要插入到 SQL 表中的行数。<br/><br/>允许的值为 **integer**（行数）。 默认情况下，数据工厂根据行大小动态确定适当的批大小。 | 否。<br/>使用批量插入时适用。     |
 | writeBatchTimeout | 超时前等待批量插入操作完成的时间。<br/><br/>允许的值为 **timespan**。 示例："00:30:00"（30 分钟）。 | 否。<br/>使用批量插入时适用。        |
 | preCopyScript     | 每次运行时，将数据写入到 Azure SQL 数据仓库之前，指定复制活动要运行的 SQL 查询。 使用此属性清理预加载的数据。 | 否                                            |
 | tableOption | 指定是否根据源架构自动创建接收器表（如果不存在）。 在复制活动中配置暂存复制后，无法自动创建表。 允许的值为：`none`（默认值）、`autoCreate`。 |否 |
@@ -396,11 +395,11 @@ Azure 数据工厂支持通过三种方式将数据载入 SQL 数据仓库。
 
 使用 [PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) 是以高吞吐量将大量数据载入 Azure Synapse Analytics 的有效方法。 使用 PolyBase 而非默认 BULKINSERT 机制可以实现吞吐量的巨大增加。
 
-* 如果源数据位于 **Azure Blob、Azure Data Lake Storage Gen2** 中，且**格式与 PolyBase 兼容**，则可使用复制活动直接调用 PolyBase，让 Azure SQL 数据仓库从源拉取数据。 有关详细信息，请参阅 **[使用 PolyBase 直接复制](#direct-copy-by-using-polybase)** 。
-* 如果 PolyBase 最初不支持源数据存储和格式，请改用 **[使用 PolyBase 的暂存复制](#staged-copy-by-using-polybase)** 功能。 暂存复制功能也能提供更高的吞吐量。 它自动将数据转换为 PolyBase 兼容的格式，将数据存储在 Azure Blob 存储中，然后调用 PolyBase 将数据载入 SQL 数据仓库。
+- 如果源数据位于 **Azure Blob、Azure Data Lake Storage Gen2** 中，且**格式与 PolyBase 兼容**，则可使用复制活动直接调用 PolyBase，让 Azure SQL 数据仓库从源拉取数据。 有关详细信息，请参阅 **[使用 PolyBase 直接复制](#direct-copy-by-using-polybase)** 。
+- 如果 PolyBase 最初不支持源数据存储和格式，请改用 **[使用 PolyBase 的暂存复制](#staged-copy-by-using-polybase)** 功能。 暂存复制功能也能提供更高的吞吐量。 它自动将数据转换为 PolyBase 兼容的格式，将数据存储在 Azure Blob 存储中，然后调用 PolyBase 将数据载入 SQL 数据仓库。
 
->[!TIP]
->详细了解[有关如何使用 PolyBase 的最佳做法](#best-practices-for-using-polybase)。
+> [!TIP]
+> 详细了解[有关如何使用 PolyBase 的最佳做法](#best-practices-for-using-polybase)。
 
 在复制活动中的 `polyBaseSettings` 下支持以下 PolyBase 设置：
 
@@ -422,12 +421,12 @@ SQL 数据仓库 PolyBase 直接支持 Azure Blob 和 Azure Data Lake Storage Ge
     | 支持的源数据存储类型                             | 支持的源身份验证类型                        |
     | :----------------------------------------------------------- | :---------------------------------------------------------- |
     | [Azure Blob](connector-azure-blob-storage.md)                | 帐户密钥身份验证, 托管标识身份验证 |
-    | [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | 帐户密钥身份验证, 托管标识身份验证 |
+    | [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | 帐户密钥身份验证、托管标识身份验证 |
 
     >[!IMPORTANT]
     >如果 Azure 存储配置了 VNet 服务终结点，则必须使用托管标识身份验证 - 请参阅[将 VNet 服务终结点与 Azure 存储配合使用的影响](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)。 分别从 [Azure Blob - 托管标识身份验证](connector-azure-blob-storage.md#managed-identity)和 [Azure Data Lake Storage Gen2 - 托管标识身份验证](connector-azure-data-lake-storage.md#managed-identity)部分了解数据工厂中所需的配置。
 
-2. **源数据格式**为 **Parquet**、**ORC** 或“分隔文本”，使用以下配置：
+2. 源数据格式为 Parquet、ORC 或带分隔符的文本，具有以下配置   ：
 
    1. 文件夹路径不包含通配符筛选器。
    2. 文件名为空或指向单个文件。 如果在复制活动中指定通配符文件名，该通配符只能是 `*` 或 `*.*`。
@@ -437,12 +436,12 @@ SQL 数据仓库 PolyBase 直接支持 Azure Blob 和 Azure Data Lake Storage Ge
    6. `quoteChar`、`escapeChar` 和 `skipLineCount` 未指定。 PolyBase 支持跳过可以在 ADF 中配置为 `firstRowAsHeader` 的标头行。
    7. `compression` 可为**无压缩**、**GZip** 或 **Deflate**。
 
-3. 如果源为文件夹，则必须将复制活动中的 `recursive` 设置为 true。
+3. 如果源是文件夹，则必须将复制活动中的 `recursive` 设置为 true。
 
 4. 未指定 `wildcardFolderPath`、`wildcardFilename`、`modifiedDateTimeStart`、`modifiedDateTimeEnd` 和 `additionalColumns`。
 
 >[!NOTE]
->如果源为文件夹，请注意，PolyBase 会从文件夹及其所有子文件夹中检索文件，但不从文件名以下划线 (_) 或句点 (.) 开头的文件中检索数据，详见[此文档 - LOCATION 参数](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql?view=azure-sqldw-latest#arguments-2)。
+>如果源是一个文件夹，请注意，PolyBase 将从该文件夹及其所有子文件夹中检索文件，并且它不会从文件名以下划线 (_) 或句点 (.) 开头的文件中检索数据，如[此处 - LOCATION 参数](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql?view=azure-sqldw-latest#arguments-2)所述。
 
 ```json
 "activities":[
@@ -538,7 +537,7 @@ PolyBase 负载限制为小于 1 MB 的行。 不能用它加载到 VARCHR(MAX)�
 
 如果数据源中的行大于 1 MB，可能需要将源表垂直拆分为多个小型表。 确保每行的最大大小不超过该限制。 然后，可以使用 PolyBase 加载这些小型表，并在 Azure Synapse Analytics 中将它们合并在一起。
 
-另外，对于列这样宽的数据，可以使用非 PolyBase 通过 ADF 来加载数据，只需关闭“允许 PolyBase”设置即可。
+或者，对于具有此类较大列的数据，可以通过关闭“允许 PolyBase”设置，不使用 PolyBase 而使用 ADF 来加载数据。
 
 #### <a name="sql-data-warehouse-resource-class"></a>SQL 数据仓库资源类
 
@@ -548,14 +547,14 @@ PolyBase 负载限制为小于 1 MB 的行。 不能用它加载到 VARCHR(MAX)�
 
 **加载到“小数”列**
 
-如果源数据为文本格式，或者位于其他非 PolyBase 兼容存储（使用暂存复制和 PolyBase）中，并且包含的空值需加载到 SQL 数据仓库“小数”列中，则可能出现以下错误：
+如果源数据是文本格式或其他 PolyBase 不兼容的存储（使用暂存复制和 PolyBase），并且它包含要加载到 SQL 数据仓库十进制列中的空值，则可能会遇到以下错误：
 
 ```
 ErrorCode=FailedDbOperation, ......HadoopSqlException: Error converting data type VARCHAR to DECIMAL.....Detailed Message=Empty string can't be converted to DECIMAL.....
 ```
 
-解决方案是在复制活动接收器 -> PolyBase 设置中取消选中“使用类型默认值”选项（为 false）。 “[USE_TYPE_DEFAULT](https://docs.microsoft.com/sql/t-sql/statements/create-external-file-format-transact-sql?view=azure-sqldw-latest#arguments
-)”是 PolyBase 本机配置，用于指定 PolyBase 从文本文件检索数据时如何处理分隔文本文件中的缺失值。 
+解决方法是在复制活动接收器 -> PolyBase 设置中取消选择“使用类型默认”选项（设为 false）。 “[USE_TYPE_DEFAULT](https://docs.microsoft.com/sql/t-sql/statements/create-external-file-format-transact-sql?view=azure-sqldw-latest#arguments
+)”是一项 PolyBase 本地设置，它指定 PolyBase 从文本文件中检索数据时，如何处理带分隔符的文本文件中的缺失值。
 
 **Azure Synapse Analytics 中的 `tableName`**
 
@@ -603,25 +602,25 @@ SQL 数据仓库 [COPY 语句](https://docs.microsoft.com/sql/t-sql/statements/c
     | [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | [带分隔符的文本](format-delimited-text.md)<br/>[Parquet](format-parquet.md)<br/>[ORC](format-orc.md) | 帐户密钥身份验证、服务主体身份验证、托管标识身份验证 |
 
     >[!IMPORTANT]
-    >如果 Azure 存储配置了 VNet 服务终结点，则必须使用托管标识身份验证 - 请参阅[将 VNet 服务终结点与 Azure 存储配合使用的影响](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)。 分别从 [Azure Blob - 托管标识身份验证](connector-azure-blob-storage.md#managed-identity)和 [Azure Data Lake Storage Gen2 - 托管标识身份验证](connector-azure-data-lake-storage.md#managed-identity)部分了解数据工厂中所需的配置。
+    >如果 Azure 存储配置了 VNet 服务终结点，则必须使用托管标识身份验证 - 请参阅[将 VNet 服务终结点用于 Azure 存储的影响](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)。 请分别从 [Azure Blob - 托管标识身份验证](connector-azure-blob-storage.md#managed-identity)和 [Azure Data Lake Storage Gen2 - 托管标识身份验证](connector-azure-data-lake-storage.md#managed-identity)部分中了解数据工厂中所需的配置。
 
 2. 格式设置如下：
 
-   1. 对于“Parquet”：`compression` 可以是“无压缩”、“Snappy”或“GZip”。   
+   1. 对于 Parquet：`compression` 可以为无压缩、Snappy或 GZip   。
    2. 对于“ORC”：`compression` 可以是“无压缩”、“```zlib```”或“Snappy”。   
-   3. 对于“带分隔符的文本”：
+   3. 对于带分隔符的文本：
       1. `rowDelimiter` 显式设置为**单字符**或“\r\n”，不支持默认值。
       2. `nullValue` 保留默认值或设置为**空字符串** ("")。
       3. `encodingName` 保留默认值或设置为 **utf-8 或 utf-16**。
       4. `escapeChar` 必须与 `quoteChar` 相同，且不能为空。
       5. `skipLineCount` 保留默认值或设置为 0。
-      6. `compression` 可以是“无压缩”或“GZip”。 
+      6. `compression` 可以为无压缩或 GZip 。
 
-3. 如果源为文件夹，则必须将复制活动中的 `recursive` 设置为 true。
+3. 如果源是文件夹，则必须将复制活动中的 `recursive` 设置为 true，并且 `wildcardFilename` 需要为 `*`。 
 
-4. 未指定 `wildcardFolderPath`、`wildcardFilename`、`modifiedDateTimeStart`、`modifiedDateTimeEnd` 和 `additionalColumns`。
+4. `wildcardFolderPath`、`wildcardFilename`（`*` 除外）、`modifiedDateTimeStart`、`modifiedDateTimeEnd` 和 `additionalColumns` 未指定。
 
-在复制活动中的 `allowCopyCommand` 下支持以下 COPY 语句设置：
+复制活动中的 `allowCopyCommand` 下支持以下 COPY 语句设置：
 
 | 属性          | 说明                                                  | 必须                                      |
 | :---------------- | :----------------------------------------------------------- | :-------------------------------------------- |
@@ -655,17 +654,17 @@ SQL 数据仓库 [COPY 语句](https://docs.microsoft.com/sql/t-sql/statements/c
             },
             "sink": {
                 "type": "SqlDWSink",
-                "allowCopyCommand": true, 
+                "allowCopyCommand": true,
                 "copyCommandSettings": {
-                    "defaultValues": [ 
-                        { 
-                            "columnName": "col_string", 
-                            "defaultValue": "DefaultStringValue" 
+                    "defaultValues": [
+                        {
+                            "columnName": "col_string",
+                            "defaultValue": "DefaultStringValue"
                         }
                     ],
-                    "additionalOptions": { 
-                        "MAXERRORS": "10000", 
-                        "DATEFORMAT": "'ymd'" 
+                    "additionalOptions": {
+                        "MAXERRORS": "10000",
+                        "DATEFORMAT": "'ymd'"
                     }
                 }
             },
@@ -676,15 +675,13 @@ SQL 数据仓库 [COPY 语句](https://docs.microsoft.com/sql/t-sql/statements/c
 ```
 
 
-## <a name="lookup-activity-properties"></a>查找活动属性
+## <a name="lookup-activity-properties"></a>Lookup 活动属性
 
 若要了解有关属性的详细信息，请查看 [Lookup 活动](control-flow-lookup-activity.md)。
 
 ## <a name="getmetadata-activity-properties"></a>GetMetadata 活动属性
 
-若要了解有关属性的详细信息，请查看 [GetMetadata 活动](control-flow-get-metadata-activity.md) 
-
-## <a name="data-type-mapping-for-azure-sql-data-warehouse"></a>Azure SQL 数据仓库的数据类型映射
+若要了解有关属性的详细信息，请查看 [GetMetadata 活动](control-flow-get-metadata-activity.md)
 
 ## <a name="data-type-mapping-for-azure-synapse-analytics"></a>Azure Synapse Analytics 的数据类型映射
 
@@ -724,4 +721,5 @@ SQL 数据仓库 [COPY 语句](https://docs.microsoft.com/sql/t-sql/statements/c
 | varchar                               | String, Char[]                 |
 
 ## <a name="next-steps"></a>后续步骤
+
 有关 Azure 数据工厂中复制活动支持用作源和接收器的数据存储的列表，请参阅[支持的数据存储和格式](copy-activity-overview.md#supported-data-stores-and-formats)。

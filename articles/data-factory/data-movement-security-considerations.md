@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-origin.date: 03/11/2020
-ms.date: 05/11/2020
-ms.openlocfilehash: 1022ec05d26c74d86e9b4eff6b20ea892b6a02fe
-ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
+origin.date: 05/26/2020
+ms.date: 06/29/2020
+ms.openlocfilehash: 24286d4fb26b4116a629cb80efd44648c82b8f65
+ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82197803"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85319440"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Azure 数据工厂中数据移动的安全注意事项
 
@@ -105,7 +105,7 @@ Salesforce 支持防火墙平台加密，它允许加密所有文件、附件和
 ### <a name="on-premises-data-store-credentials"></a>本地数据存储凭据
 凭据可以存储在数据工厂中，也可以在运行时从 Azure 密钥保管库[由数据工厂引用](store-credentials-in-key-vault.md)。 如果将凭据存储在数据工厂中，则凭据会始终以加密方式存储在自承载集成运行时上。 
  
-- **在本地存储凭据**。 如果直接结合 JSON 中内联的连接字符串和凭据使用 **Set-AzDataFactoryV2LinkedService** cmdlet，则链接服务将加密并存储在自承载集成运行时中。  在这种情况下，凭据将通过 Azure 后端服务（此服务非常安全）传递到自承载集成计算机（在其中最终会对其进行加密和存储）。 自承载集成运行时使用 Windows [DPAPI](https://msdn.microsoft.com/library/ms995355.aspx) 来加密敏感数据和凭据信息。
+- **在本地存储凭据**。 如果直接结合 JSON 中内联的连接字符串和凭据使用 **Set-AzDataFactoryV2LinkedService** cmdlet，则链接服务将加密并存储在自承载集成运行时中。  在这种情况下，凭据将通过 Azure 后端服务（此服务非常安全）传递到自承载集成计算机（最终对其进行加密和存储的地方）。 自承载集成运行时使用 Windows [DPAPI](https://msdn.microsoft.com/library/ms995355.aspx) 来加密敏感数据和凭据信息。
 
 - **在 Azure Key Vault 中存储凭据**。 还可以将数据存储的凭据存储在 [Azure Key Vault](/key-vault/) 中。 数据工厂在执行某个活动期间会检索该凭据。 有关详细信息，请参阅[在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)。
 
@@ -148,6 +148,12 @@ Azure 虚拟网络是网络在云中的逻辑表示形式。 可以通过设置 
 ![将 IPSec VPN 与网关配合使用](media/data-movement-security-considerations/ipsec-vpn-for-gateway.png)
 
 ### <a name="firewall-configurations-and-allow-list-setting-up-for-ip-addresses"></a><a name="firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway"></a> 防火墙配置和针对 IP 地址设置的允许列表
+
+> [!NOTE] 
+> 可能需要按相应数据源的要求在企业防火墙级别为域管理端口或设置允许列表。 此表仅以 Azure SQL 数据库和 Azure SQL 数据仓库为例。
+
+> [!NOTE] 
+> 若要详细了解通过 Azure 数据工厂实施的数据访问策略，请参阅[此文](/data-factory/data-access-strategies#data-access-strategies-through-azure-data-factory)。
 
 #### <a name="firewall-requirements-for-on-premisesprivate-network"></a>本地/专用网络的防火墙要求    
 在企业中，企业防火墙在组织的中央路由器上运行。 Windows 防火墙在安装自承载集成运行时的本地计算机上作为守护程序运行。 

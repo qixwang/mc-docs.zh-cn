@@ -1,9 +1,9 @@
 ---
-title: 文本翻译 API 语言方法
+title: 翻译器 Languages 方法
 titleSuffix: Azure Cognitive Services
-description: 语言方法可获取文本翻译 API 的其他操作当前支持的语言集。
+description: Languages 方法可获取翻译器的其他操作当前支持的语言集。
 services: cognitive-services
-author: rajdeep-in
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
@@ -11,16 +11,16 @@ ms.topic: reference
 origin.date: 02/01/2019
 ms.date: 06/11/2019
 ms.author: v-junlch
-ms.openlocfilehash: 0d1ae58fe317f7cf8093fda307dbb62b45f5a743
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 384f5f77202ac5c29b9a909a9cdd867c8b104fc2
+ms.sourcegitcommit: 43db4001be01262959400663abf8219e27e5cb8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80342398"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85241487"
 ---
-# <a name="translator-text-api-30-languages"></a>文本翻译 API 3.0：语言
+# <a name="translator-30-languages"></a>翻译器 3.0：语言
 
-获取文本翻译 API 的其他操作当前支持的语言集。 
+获取翻译器的其他操作当前支持的语言集。 
 
 ## <a name="request-url"></a>请求 URL
 
@@ -42,14 +42,14 @@ https://api.translator.azure.cn/languages?api-version=3.0
   </tr>
   <tr>
     <td>scope</td>
-    <td> 可选参数。<br/>逗号分隔的名称列表，用于定义要返回的语言组。 允许的组名称为：`translation`、`transliteration` 和 `dictionary`。 如果未指定范围，则返回所有组，这相当于传递了 `scope=translation,transliteration,dictionary`。 若要确定哪个支持的语言集适合你的场景，请参阅[响应对象](#response-body)的说明。</td>
+    <td>可选参数。<br/>逗号分隔的名称列表，用于定义要返回的语言组。 允许的组名称为：`translation`、`transliteration` 和 `dictionary`。 如果未指定范围，则返回所有组，这相当于传递了 `scope=translation,transliteration,dictionary`。 若要确定哪个支持的语言集适合你的场景，请参阅[响应对象](#response-body)的说明。</td>
   </tr>
 </table> 
 
 请求标头为：
 
 <table width="100%">
-  <th width="20%">标头</th>
+  <th width="20%">头文件</th>
   <th>说明</th>
   <tr>
     <td>Accept-Language</td>
@@ -230,7 +230,7 @@ https://api.translator.azure.cn/languages?api-version=3.0
 ## <a name="response-headers"></a>响应标头
 
 <table width="100%">
-  <th width="20%">标头</th>
+  <th width="20%">头文件</th>
   <th>说明</th>
   <tr>
     <td>ETag</td>
@@ -276,18 +276,13 @@ https://api.translator.azure.cn/languages?api-version=3.0
   </tr>
 </table> 
 
-如果发生错误，请求也将返回 JSON 错误响应。 错误代码是一个 6 位数字，包括 3 位数的 HTTP 状态代码，后接用于进一步将错误分类的 3 位数。 常见错误代码可在 [v3 文本翻译 API 参考页面](/cognitive-services/translator/reference/v3-0-reference#errors)上找到。 
+如果发生错误，请求也将返回 JSON 错误响应。 错误代码是一个 6 位数字，包括 3 位数的 HTTP 状态代码，后接用于进一步将错误分类的 3 位数。 常见错误代码可在 [v3 翻译器参考页](/cognitive-services/translator/reference/v3-0-reference#errors)上找到。 
 
 ## <a name="examples"></a>示例
 
 以下示例演示如何检索文本翻译支持的语言。
 
-# <a name="curl"></a>[curl](#tab/curl)
-
-```
+```curl
 curl "https://api.translator.azure.cn/languages?api-version=3.0&scope=translation"
 ```
-
----
-
 <!-- Update_Description: wording update -->

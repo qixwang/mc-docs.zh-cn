@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 04/29/2020
+ms.date: 06/22/2020
 ms.author: v-junlch
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c9ea2a0898150847b86ffa869e351f95f7efdb04
-ms.sourcegitcommit: 95efd248f5ee3701f671dbd5cfe0aec9c9959a24
+ms.openlocfilehash: 7a7b34cf27ba3e2e1e85aff4fdd89268487b3d13
+ms.sourcegitcommit: fac10504efdfd3806dead4b74ca6ae5fcb5ea906
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82515641"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85129721"
 ---
 # <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Azure Active Directory B2B 协作用户的属性
 
@@ -38,23 +38,19 @@ ms.locfileid: "82515641"
 
 ### <a name="before-invitation-redemption"></a>兑换邀请之前
 
-状态 1 和状态 2 帐户是邀请来宾用户使用来宾用户自己的凭据进行协作的结果。 最初向来宾用户发送邀请时，会在目录中创建帐户。 这个帐户没有与之关联的任何凭据，因为是由来宾用户的标识提供者执行身份验证。 目录中来宾用户帐户的“源”属性设置为“受邀用户”   。 
+状态 1 帐户是邀请来宾用户使用来宾用户自己的凭据进行协作的结果。 最初向来宾用户发送邀请时，会在目录中创建帐户。 这个帐户没有与之关联的任何凭据，因为是由来宾用户的标识提供者执行身份验证。 目录中来宾用户帐户的“源”属性设置为“受邀用户” 。 
 
 ![屏幕截图，显示提供兑换之前的用户属性](./media/user-properties/before-redemption.png)
 
 ### <a name="after-invitation-redemption"></a>兑换邀请之后
 
-来宾用户接受邀请之后，将根据来宾用户的标识提供者更新“源”属性  。
+来宾用户接受邀请之后，将根据来宾用户的标识提供者更新“源”属性。
 
-对于状态 1 中的来宾用户，“源”为“外部 Azure Active Directory”   。
+对于状态 1 中的来宾用户，“源”为“外部 Azure Active Directory” 。
 
 ![兑换产品之后，状态 1 的来宾用户](./media/user-properties/after-redemption-state1.png)
 
-对于状态 2 中的来宾用户，“源”为“Microsoft 帐户”   。
-
-![兑换产品之后，状态 2 的来宾用户](./media/user-properties/after-redemption-state2.png)
-
-对于状态 3 和状态 4 中的来宾用户，“源”属性设置为“Azure Active Directory”或“Windows Server Active Directory”，如下一节所述    。
+对于状态 2 和状态 3 中的来宾用户，“Source”属性设置为“Azure Active Directory”或“Windows Server Active Directory”，如下一部分所述  。
 
 ## <a name="key-properties-of-the-azure-ad-b2b-collaboration-user"></a>Azure AD B2B 协作用户的关键属性
 ### <a name="usertype"></a>UserType
@@ -73,9 +69,9 @@ ms.locfileid: "82515641"
 
 - 外部 Azure Active Directory：此用户驻留在外部组织中，使用属于另一组织的 Azure AD 帐户进行身份验证。 此登录类型对应于状态 1。
 
-- Windows Server Active Directory：此用户从属于此组织的本地 Active Directory 进行登录。 此登录类型对应于状态 3。
+- Windows Server Active Directory：此用户从属于此组织的本地 Active Directory 进行登录。 此登录类型对应于状态 2。
 
-- Azure Active Directory：此用户使用属于此组织的 Azure AD 帐户进行身份验证。 此登录类型对应于状态 4。
+- Azure Active Directory：此用户使用属于此组织的 Azure AD 帐户进行身份验证。 此登录类型对应于状态 3。
   > [!NOTE]
   > Source 和 UserType 是独立的属性。 Source 的值并不暗示特定的 UserType 值。
 

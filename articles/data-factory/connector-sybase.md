@@ -9,15 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-origin.date: 09/04/2019
-ms.date: 05/11/2020
+origin.date: 06/10/2019
+ms.date: 06/29/2020
 ms.author: v-jay
-ms.openlocfilehash: 40214b88e38eec169ab586086f66703d793e5a4f
-ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
+ms.openlocfilehash: edf236a35df9aec4f36c43bd76d042dc144d4155
+ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82197878"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85322301"
 ---
 # <a name="copy-data-from-sybase-using-azure-data-factory"></a>使用 Azure 数据工厂从 Sybase 复制数据
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -35,8 +35,10 @@ ms.locfileid: "82197878"
 
 具体而言，此 Sybase 连接器支持：
 
-- SAP Sybase SQL 随处 (ASA) **版本 16 和更高版本**；不支持智能和 ASE。
+- SAP Sybase SQL Anywhere (ASA) 版本 16 及更高版本。
 - 使用**基本**或 **Windows** 身份验证复制数据。
+
+不支持 Sybase IQ 和 ASE。 可以改用带有 Sybase 驱动程序的通用 ODBC 连接器。
 
 ## <a name="prerequisites"></a>先决条件
 

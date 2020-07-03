@@ -4,23 +4,23 @@ description: 了解 Azure Cosmos DB 的 FROM 子句的 SQL 语法和示例。 �
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
-origin.date: 12/02/2019
-ms.date: 04/27/2020
+origin.date: 05/08/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 2cfdfa70fb6fea3f5741f1ef378e4a4e25dc761c
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.openlocfilehash: 4d3c521ffb3d290e35c1953893b011959bdae961
+ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82134662"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85323272"
 ---
 # <a name="from-clause-in-azure-cosmos-db"></a>Azure Cosmos DB 中的 FROM 子句
 
 FROM (`FROM <from_specification>`) 子句是可选的，除非稍后在查询中对源进行筛选或投影。 `SELECT * FROM Families` 之类的查询枚举整个 `Families` 容器。 还可以对容器使用特殊标识符 ROOT，而无需使用容器名称。
 
-FROM 子句对每个查询强制实施以下规则：
+`FROM` 子句对每个查询强制实施以下规则：
 
-* 容器可以使用别名，如 `SELECT f.id FROM Families AS f` 或只需为 `SELECT f.id FROM Families f`。 此处的 `f` 是 `Families` 的别名。 AS 是可选的关键字，用于指定标识符的[别名](sql-query-aliasing.md)。  
+* 容器可以使用别名，如 `SELECT f.id FROM Families AS f` 或只需为 `SELECT f.id FROM Families f`。 此处的 `f` 是 `Families` 的别名。 AS 是可选的关键字，用于指定标识符的[别名](sql-query-working-with-json.md#aliasing)。  
 
 * 指定别名后，无法绑定原始的源名称。 例如，`SELECT Families.id FROM Families f` 在语法上是无效的，原因是标识符 `Families` 已指定别名，因此不再可以解析。  
 
@@ -31,15 +31,15 @@ FROM 子句对每个查询强制实施以下规则：
 ```sql  
 FROM <from_specification>  
 
-<from_specification> ::=   
+<from_specification> ::=
         <from_source> {[ JOIN <from_source>][,...n]}  
 
-<from_source> ::=   
+<from_source> ::=
           <container_expression> [[AS] input_alias]  
         | input_alias IN <container_expression>  
 
-<container_expression> ::=   
-        ROOT   
+<container_expression> ::=
+        ROOT
      | container_name  
      | input_alias  
      | <container_expression> '.' property_name  

@@ -4,15 +4,15 @@ description: 了解 Azure Cosmos DB 的 SQL ORDER BY 子句。 将 SQL 用作 Az
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
-origin.date: 04/17/2020
-ms.date: 04/27/2020
+origin.date: 06/06/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: cfa8f2ab350c8e42008ccb113b11a247379f17ec
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.openlocfilehash: 2602fc4d9e3c3bbf21d5dd9fbb431a5e9ce8f886
+ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82134545"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85323394"
 ---
 # <a name="order-by-clause-in-azure-cosmos-db"></a>Azure Cosmos DB 中的 ORDER BY 子句
 
@@ -80,7 +80,7 @@ ORDER BY <sort_specification>
     ]
 ```
 
-以下查询按项的创建日期检索家庭 `id`。 项 `creationDate` 是一个数字，表示纪元时间，或者自 1970 年 1 月 1 日开始消逝的时间（以秒为单位）。 
+以下查询按项的创建日期检索家庭 `id`。 项 `creationDate` 是一个数字，表示纪元时间，或者自 1970 年 1 月 1 日开始消逝的时间（以秒为单位）。
 
 ```sql
     SELECT f.id, f.creationDate
@@ -216,6 +216,11 @@ ORDER BY <sort_specification>
     }
 ]
 ```
+
+> [!Note]
+> 仅 .NET SDK 3.4.0 或更高版本支持混合类型的 ORDER BY。 因此，如果要按未定义值和已定义值的组合进行排序，则应使用此版本（或更高版本）。
+
+你无法控制不同类型在结果中的显示顺序。 在上面的示例中，我们演示了如何在字符串值之前对未定义值进行排序。 例如，如果想更好地控制未定义值的排序顺序，则可为任何未定义属性分配字符串值“aaaaaaaaa”或“zzzzzzzz”，以确保它们是第一个或最后一个。
 
 ## <a name="next-steps"></a>后续步骤
 

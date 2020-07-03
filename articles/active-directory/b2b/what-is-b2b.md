@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: overview
-ms.date: 04/29/2020
+ms.date: 06/22/2020
 ms.author: v-junlch
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b5ba1b7f860216d9b15ec6c8e1acd32743699883
-ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
+ms.openlocfilehash: 5ea15955d2a58f5f203f7958a6bb89a0039007db
+ms.sourcegitcommit: 74841b13b4fa011b40570db0763d076c1525e4fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84186691"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85129531"
 ---
 # <a name="what-is-guest-user-access-in-azure-active-directory-b2b"></a>什么是 Azure Active Directory B2B 中的来宾用户访问权限？
 
@@ -37,13 +37,11 @@ ms.locfileid: "84186691"
 
 ## <a name="invite-guest-users-with-a-simple-invitation-and-redemption-process"></a>通过一个简单的邀请和兑换过程邀请来宾用户
 
-来宾用户可使用自己的工作、学校或社交标识登录应用和服务。 如果来宾用户没有 Microsoft 帐户或和 Azure AD 帐户，当他们在兑换邀请时，系统会为他们创建一个帐户。 
+来宾用户可使用自己的工作或学校标识登录应用和服务。 如果来宾用户没有 Azure AD 帐户，当他们在兑换邀请时，系统会为他们创建一个帐户。 
 
 - 邀请使用自选电子邮件标识的来宾用户。
 - 发送应用的直接链接，或发送邀请至来宾用户自己的访问面板。
 - 来宾用户遵循一些简单的兑换步骤登录。
-
-![显示“查看权限”页的屏幕截图](./media/what-is-b2b/consentscreen.png)
 
 ## <a name="use-policies-to-securely-share-your-apps-and-services"></a>使用策略安全地共享你的应用和服务
 

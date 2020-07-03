@@ -7,16 +7,16 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
-ms.topic: overview
-origin.date: 11/29/2019
-ms.date: 02/25/2020
-ms.author: v-lingwu
-ms.openlocfilehash: 1cf2809905090b41198ba970d101b29d85ae2edf
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.topic: conceptual
+origin.date: 05/13/2020
+ms.date: 06/23/2020
+ms.author: v-tawe
+ms.openlocfilehash: 524ae9df160d0e21c6ed85529a9005ba55db13eb
+ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79291458"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85323242"
 ---
 # <a name="example-user-scenarios-for-the-text-analytics-api"></a>文本分析 API 的示例用户方案
 
@@ -42,9 +42,22 @@ ms.locfileid: "79291458"
 
 ## <a name="monitor-your-products-social-media-feeds"></a>监视产品的社交媒体源
 
-在产品的 Twitter 或 Facebook 页面监视用户对产品提供的反馈。 使用数据来分析客户对新推出产品的情绪，提取有关功能和功能请求的关键短语，或者在出现客户投诉时解决投诉。 请参阅 [Microsoft Flow 模板](https://flow.microsoft.com/galleries/public/templates/2680d2227d074c4d901e36c66e68f6f9/run-sentiment-analysis-on-tweets-and-push-results-to-a-power-bi-dataset/)示例。
+在产品的 Twitter 或 Facebook 页监视用户对产品提供的反馈。 使用数据来分析客户对新推出产品的情绪，提取有关功能和功能请求的关键短语，或者在出现客户投诉时解决投诉。 请参阅 [Microsoft Flow 模板](https://flow.microsoft.com/galleries/public/templates/2680d2227d074c4d901e36c66e68f6f9/run-sentiment-analysis-on-tweets-and-push-results-to-a-power-bi-dataset/)示例。
 
 ![描述如何使用关键短语提取在社交媒体上监视产品和公司反馈的插图](media/use-cases/social-feed.svg)
+
+## <a name="classify-and-redact-documents-that-have-sensitive-information"></a>对包含敏感信息的文档进行分类和编修
+
+使用“命名实体识别”识别文档中的个人信息和敏感信息。 使用数据对文档进行分类或对其进行编修，以便安全地共享这些文档。
+
+![描述如何使用 NER 检测个人信息并对文档进行分类和编修的图像](media/use-cases/sensitive-docs.jpg)
+
+## <a name="perform-opinion-mining"></a>进行观点挖掘
+
+将调查、客户反馈或评论（其文本包含某方面的观点）中与产品或服务的特定方面相关的观点进行分组。 使用它来帮助指导产品启动和改进、营销工作，或者重点介绍你的产品或服务的表现情况。 
+
+> [!div class="mx-imgBorder"] 
+> :::image type="content" source="media/use-cases/aspect-based-sentiment.png" alt-text="有关酒店的示例观点。":::
 
 ## <a name="next-steps"></a>后续步骤
 

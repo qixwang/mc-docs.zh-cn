@@ -3,7 +3,7 @@ title: 配置 Azure-SSIS 集成运行时的性能
 description: 了解如何配置高性能 Azure-SSIS Integration Runtime 的属性
 services: data-factory
 origin.date: 01/10/2018
-ms.date: 05/11/2020
+ms.date: 06/29/2020
 ms.topic: conceptual
 ms.service: data-factory
 ms.workload: data-services
@@ -11,12 +11,12 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: ''
 manager: digimobile
-ms.openlocfilehash: fc37477103a96e311a30dcec0c3cf03a85169757
-ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
+ms.openlocfilehash: 489df1bf6c14f4d60b5bfc650df179d65b9b598a
+ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82198250"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85321226"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-for-high-performance"></a>配置高性能 Azure-SSIS Integration Runtime
 
@@ -52,25 +52,25 @@ $AzureSSISNodeNumber = 2
 # Azure-SSIS IR edition/license info: Standard or Enterprise
 $AzureSSISEdition = "Standard" # Standard by default, while Enterprise lets you use advanced/premium features on your Azure-SSIS IR
 # Azure-SSIS IR hybrid usage info: LicenseIncluded or BasePrice
-$AzureSSISLicenseType = "LicenseIncluded" # LicenseIncluded by default, while BasePrice lets you bring your own on-premises SQL Server license with Software Assurance to earn cost savings from Azure Hybrid Benefit (AHB) option
+$AzureSSISLicenseType = "LicenseIncluded" # LicenseIncluded by default, while BasePrice lets you bring your existing SQL Server license with Software Assurance to earn cost savings from Azure Hybrid Benefit (AHB) option
 # For a Standard_D1_v2 node, up to 4 parallel executions per node are supported, but for other nodes, up to max(2 x number of cores, 8) are currently supported
 $AzureSSISMaxParallelExecutionsPerNode = 8
 # Custom setup info
 $SetupScriptContainerSasUri = "" # OPTIONAL to provide SAS URI of blob container where your custom setup script and its associated files are stored
 # Virtual network info: Classic or Azure Resource Manager
-$VnetId = "[your virtual network resource ID or leave it empty]" # REQUIRED if you use Azure SQL Database with virtual network service endpoints/Managed Instance/on-premises data, Azure Resource Manager virtual network is recommended, Classic virtual network will be deprecated soon
-$SubnetName = "[your subnet name or leave it empty]" # WARNING: Please use the same subnet as the one used with your Azure SQL Database with virtual network service endpoints or a different subnet than the one used for your Managed Instance
+$VnetId = "[your virtual network resource ID or leave it empty]" # REQUIRED if you use Azure SQL Database with virtual network service endpoints/SQL Managed Instance/on-premises data, Azure Resource Manager virtual network is recommended, Classic virtual network will be deprecated soon
+$SubnetName = "[your subnet name or leave it empty]" # WARNING: Please use the same subnet as the one used with your Azure SQL Database with virtual network service endpoints or a different subnet than the one used for your SQL Managed Instance
 
 ### SSISDB info
-$SSISDBServerEndpoint = "[your Azure SQL Database server name or Managed Instance name.DNS prefix].database.chinacloudapi.cn" # WARNING: Please ensure that there is no existing SSISDB, so we can prepare and manage one on your behalf
+$SSISDBServerEndpoint = "[your server name or managed instance name.DNS prefix].database.chinacloudapi.cn" # WARNING: Please ensure that there is no existing SSISDB, so we can prepare and manage one on your behalf
 # Authentication info: SQL or Azure Active Directory (AAD)
 $SSISDBServerAdminUserName = "[your server admin username for SQL authentication or leave it empty for AAD authentication]"
 $SSISDBServerAdminPassword = "[your server admin password for SQL authentication or leave it empty for AAD authentication]"
-$SSISDBPricingTier = "[Basic|S0|S1|S2|S3|S4|S6|S7|S9|S12|P1|P2|P4|P6|P11|P15|…|ELASTIC_POOL(name = <elastic_pool_name>) for Azure SQL Database or leave it empty for Managed Instance]"
+$SSISDBPricingTier = "[Basic|S0|S1|S2|S3|S4|S6|S7|S9|S12|P1|P2|P4|P6|P11|P15|…|ELASTIC_POOL(name = <elastic_pool_name>) for Azure SQL Database or leave it empty for SQL Managed Instance]"
 ```
 
 ## <a name="azuressislocation"></a>AzureSSISLocation
-AzureSSISLocation 是 Integration Runtime 辅助角色节点的位置  。 该辅助角色节点始终连接到 Azure SQL 数据库上的 SSIS 目录数据库 (SSISDB)。 将 AzureSSISLocation 位置设置为与托管 SSISDB 的 SQL 数据库服务器相同，确保集成运行时尽可能有效运行  。
+AzureSSISLocation 是 Integration Runtime 辅助角色节点的位置。 该工作器节点始终连接到 Azure SQL 数据库中的 SSIS 目录数据库 (SSISDB)。 将 AzureSSISLocation 位置设置为与托管 SSISDB 的 SQL 数据库服务器相同，确保集成运行时尽可能有效运行。
 
 ## <a name="azuressisnodesize"></a>AzureSSISNodeSize
 数据工厂（包括 Azure-SSIS IR）支持以下选项：
@@ -115,11 +115,11 @@ AzureSSISLocation 是 Integration Runtime 辅助角色节点的位置  。 该�
 
 ## <a name="azuressisnodenumber"></a>AzureSSISNodeNumber
 
-AzureSSISNodeNumber 调整 Integration Runtime 的可伸缩性  。 Integration Runtime 的吞吐量与 AzureSSISNodeNumber 成正比  。 首先将 AzureSSISNodeNumber 设为一个较小值，监视 Integration Runtime 的吞吐量，然后针对方案调整值  。 若要重新配置辅助角色节点数，请参阅[管理 Azure-SSIS Integration Runtime](manage-azure-ssis-integration-runtime.md)。
+AzureSSISNodeNumber 调整 Integration Runtime 的可伸缩性。 Integration Runtime 的吞吐量与 AzureSSISNodeNumber 成正比。 首先将 AzureSSISNodeNumber 设为一个较小值，监视 Integration Runtime 的吞吐量，然后针对方案调整值。 若要重新配置辅助角色节点数，请参阅[管理 Azure-SSIS Integration Runtime](manage-azure-ssis-integration-runtime.md)。
 
 ## <a name="azuressismaxparallelexecutionspernode"></a>AzureSSISMaxParallelExecutionsPerNode
 
-已经在使用强大的辅助角色节点运行包时，增加 AzureSSISMaxParallelExecutionsPerNode 可能增加 Integration Runtime 的整体吞吐量  。 对于 Standard_D1_v2 节点，支持每个节点 1-4 个并行执行。 对于所有其他类型的节点，支持每个节点 1-max(2 x 核心数, 8) 个并行执行。 如果你希望 **AzureSSISMaxParallelExecutionsPerNode** 超出我们支持的最大值，你可以开具支持票证，我们可以为你增加最大值，然后你需要使用 Azure Powershell 更新 **AzureSSISMaxParallelExecutionsPerNode**。
+已经在使用强大的辅助角色节点运行包时，增加 AzureSSISMaxParallelExecutionsPerNode 可能增加 Integration Runtime 的整体吞吐量。 对于 Standard_D1_v2 节点，支持每个节点 1-4 个并行执行。 对于所有其他类型的节点，支持每个节点 1-max(2 x 核心数, 8) 个并行执行。 如果你希望 **AzureSSISMaxParallelExecutionsPerNode** 超出我们支持的最大值，你可以开具支持票证，我们可以为你增加最大值，然后你需要使用 Azure Powershell 更新 **AzureSSISMaxParallelExecutionsPerNode**。
 可以基于包的成本和辅助角色节点的以下配置估计合适的值。 有关详细信息，请参阅[常规用途虚拟机大小](../virtual-machines/windows/sizes-general.md)。
 
 | 大小             | vCPU | 内存:GiB | 临时存储 (SSD) GiB | 最大临时存储吞吐量：IOPS/读取 MBps/写入 MBps | 最大的数据磁盘/吞吐量：IOPS | 最大 NIC 数/预期网络性能 (Mbps) |
@@ -143,7 +143,7 @@ AzureSSISNodeNumber 调整 Integration Runtime 的可伸缩性  。 Integration 
 | Standard\_E32\_v3| 32   | 256         | 800                    | 48000/750/375                                          | 32 / 96x500                       | 8 / 16000                                      |
 | Standard\_E64\_v3| 64   | 432         | 1600                   | 96000 / 1000 / 500                                         | 32 / 192x500                      | 8 / 30000                                      |
 
-以下是为 AzureSSISMaxParallelExecutionsPerNode 属性设置正确值的指南  ： 
+以下是为 AzureSSISMaxParallelExecutionsPerNode 属性设置正确值的指南： 
 
 1. 首先将它设置为一个较小值。
 2. 少量增加该值，以检查是否提升整体吞吐量。
@@ -151,7 +151,7 @@ AzureSSISNodeNumber 调整 Integration Runtime 的可伸缩性  。 Integration 
 
 ## <a name="ssisdbpricingtier"></a>SSISDBPricingTier
 
-SSISDBPricingTier 是 Azure SQL 数据库上 SSIS 目录数据库 (SSISDB) 的定价层  。 此设置影响 IR 实例中的最大辅助角色节点数、包执行排队速度以及执行日志加载速度。
+SSISDBPricingTier 是 Azure SQL 数据库上 SSIS 目录数据库 (SSISDB) 的定价层。 此设置影响 IR 实例中的最大辅助角色节点数、包执行排队速度以及执行日志加载速度。
 
 -   如果不关注包执行排队和执行日志加载速度，可以选择最低的数据库定价层。 使用基本定价的 Azure SQL 数据库在 Integration Runtime 实例中支持 8 个辅助角色节点。
 

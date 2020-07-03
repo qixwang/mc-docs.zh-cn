@@ -6,16 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: nodejs
 ms.topic: tutorial
-origin.date: 08/06/2019
-ms.date: 04/27/2020
+origin.date: 04/20/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
-Customer intent: As a developer, I want to build a Node.js console application to access and manage SQL API account resources in Azure Cosmos DB, so that customers can better use the service.
-ms.openlocfilehash: f42606af59049e8389a4441e41ebd19cc1c1f888
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.openlocfilehash: d6eea0c96a0bff84d50dd60b2afc09384bd4a78d
+ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82134691"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85323379"
 ---
 # <a name="tutorial-build-a-nodejs-console-app-with-the-javascript-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>教程：使用 JavaScript SDK 生成 Node.js 控制台应用以管理 Azure Cosmos DB SQL API 数据
 
@@ -61,15 +60,19 @@ ms.locfileid: "82134691"
 
 1. 打开偏好的终端。
 2. 找到想要在其中保存 Node.js 应用程序的文件夹或目录。
-3. 使用以下命令创建两个空的 JavaScript 文件：
+3. 使用以下命令创建空的 JavaScript 文件：
 
     * Windows:
-        * ```fsutil file createnew app.js 0```
-        * ```fsutil file createnew config.js 0```
+        * `fsutil file createnew app.js 0`
+        * `fsutil file createnew config.js 0`
+        * `md data`
+        * `fsutil file createnew data\databaseContext.js 0`
 
     * Linux/OS X：
-        * ```touch app.js```
-        * ```touch config.js```
+        * `touch app.js`
+        * `touch config.js`
+        * `mkdir data`
+        * `touch data/databaseContext.js`
 
 4. 创建并初始化 `package.json` 文件。 请使用以下命令：
     * ```npm init -y```
@@ -82,540 +85,204 @@ ms.locfileid: "82134691"
 
 有了应用以后，需确保它可以与 Azure Cosmos DB 通信。 如以下步骤所示，更新一些配置设置即可将应用设置为与 Azure Cosmos DB 通信：
 
-1. 在喜爱的文本编辑器中打开 ```config.js``` 。
+1. 在你喜欢使用的文本编辑器中打开 config.js 文件。
 
-1. 复制并粘贴以下代码片段，并将属性 ```config.endpoint``` 和 ```config.key``` 设置为 Azure Cosmos DB 终结点 URI 和主密钥。 这两项配置都可以在 [Azure 门户](https://portal.azure.cn)中找到。
-
-    ![从 Azure 门户获取密钥的屏幕截图][keys]
-
-    ```javascript
-    // ADD THIS PART TO YOUR CODE
-    var config = {}
-
-    config.endpoint = "~your Azure Cosmos DB endpoint uri here~";
-    config.key = "~your primary key here~";
-    ``` 
-
-1. 复制 ```database```、```container``` 和 ```items``` 数据并将其粘贴到在其中设置了 ```config.endpoint``` 和 ```config.key``` 属性的 ```config``` 对象（见下）。 如果已有要在数据库中存储的数据，则可以使用 Azure Cosmos DB 中的数据迁移工具，而不是在此处定义数据。 config.js 文件应包含以下代码：
+1. 将以下代码片段复制并粘贴到 config.js 文件中，并将属性 `endpoint` 和 `key` 设置为 Azure Cosmos DB 终结点 URI 和主密钥。 数据库和容器名称设置为“Tasks”和“Items”。  将用于此应用程序的分区键是 /category。
 
     ```javascript
     // @ts-check
 
     const config = {
-      endpoint: "<Your Azure Cosmos account URI>",
-      key: "<Your Azure Cosmos account key>",
-      databaseId: "Tasks",
-      containerId: "Items",
-      partitionKey: { kind: "Hash", paths: ["/category"] }
+     endpoint: "<Your Azure Cosmos account URI>",
+     key: "<Your Azure Cosmos account key>",
+     databaseId: "Tasks",
+     containerId: "Items",
+     partitionKey: { kind: "Hash", paths: ["/category"] }
     };
 
     module.exports = config;
-
     ```
 
-    JavaScript SDK 使用通用术语“容器”和“项”。   容器可以是集合、图或表。 项可以是文档、边缘/顶点或行，是容器中的内容。 
+    可在 [Azure 门户](https://portal.azure.cn)的“键”窗格中找到终结点和键详细信息。
 
-    `module.exports = config;` 代码用于导出 ```config``` 对象，以便可以在 ```app.js``` 文件中引用该对象。
+    ![从 Azure 门户获取密钥的屏幕截图][keys]
 
-<a name="Connect"></a>
-## <a name="connect-to-an-azure-cosmos-db-account"></a>连接到 Azure Cosmos DB 帐户
+JavaScript SDK 使用通用术语“容器”和“项”。  容器可以是集合、图或表。 项可以是文档、边缘/顶点或行，是容器中的内容。 在前面的代码片段中，`module.exports = config;` 代码用于导出 config 对象，以便你在 app.js 文件中引用它。
 
-1. 在文本编辑器中打开空的 ```app.js``` 文件。 复制并粘贴以下代码，以导入 ```@azure/cosmos``` 模块和新建的 ```config``` 模块。
+## <a name="create-a-database-and-a-container"></a>创建数据库和容器
+
+1. 在你喜欢使用的文本编辑器中打开 databaseContext.js 文件。
+
+1. 将以下代码复制并粘贴到 databaseContext.js 文件中。 此代码定义了一个函数，该函数创建“Tasks”数据库和“Items”容器（如果它们在 Azure Cosmos 帐户中不存在）：
 
     ```javascript
-    // ADD THIS PART TO YOUR CODE
-    const CosmosClient = require('@azure/cosmos').CosmosClient;
+    const config = require("../config");
+    const CosmosClient = require("@azure/cosmos").CosmosClient;
 
-    const config = require('./config');
+    /*
+    // This script ensures that the database is setup and populated correctly
+    */
+    async function create(client, databaseId, containerId) {
+     const partitionKey = config.partitionKey;
+
+     /**
+      * Create the database if it does not exist
+      */
+     const { database } = await client.databases.createIfNotExists({
+       id: databaseId
+     });
+     console.log(`Created database:\n${database.id}\n`);
+
+     /**
+      * Create the container if it does not exist
+      */
+     const { container } = await client
+       .database(databaseId)
+       .containers.createIfNotExists(
+         { id: containerId, partitionKey },
+         { offerThroughput: 400 }
+       );
+
+     console.log(`Created container:\n${container.id}\n`);
+    }
+
+    module.exports = { create };
+
     ```
 
-1. 复制并粘贴以下代码，以使用前面保存的 ```config.endpoint``` 和 ```config.key``` 来创建新的 CosmosClient。
+    数据库是跨容器分区的项的逻辑容器。 使用 Databases 类的 `createIfNotExists` 或 create 函数创建数据库。 在使用 SQL API 的情况下，包含项的容器为 JSON 文档。 使用 **Containers** 类的 `createIfNotExists` 或 create 函数创建容器。 创建容器后，你可以存储并查询数据。
+
+    > [!WARNING]
+    > 创建容器涉及到定价。 请访问[定价页](https://www.azure.cn/pricing/details/cosmos-db/)，了解相关信息。
+
+## <a name="import-the-configuration"></a>导入配置
+
+1. 在你喜欢使用的文本编辑器中打开 app.js 文件。
+
+1. 复制并粘贴以下代码，以便导入在前面的步骤中定义的 `@azure/cosmos` 模块、配置和 databaseContext。 
 
     ```javascript
-    const config = require('./config');
-
-    // ADD THIS PART TO YOUR CODE
-    const endpoint = config.endpoint;
-    const key = config.key;
-
-    const client = new CosmosClient({ endpoint, key });
+    const CosmosClient = require("@azure/cosmos").CosmosClient;
+    const config = require("./config");
+    const dbContext = require("./data/databaseContext");
     ```
+
+## <a name="connect-to-the-azure-cosmos-account"></a>连接到 Azure Cosmos 帐户
+
+在 app.js 文件中，复制并粘贴以下代码，以便使用前面保存的终结点和键来创建新的 CosmosClient 对象。
+
+```javascript
+const { endpoint, key, databaseId, containerId } = config;
+
+const client = new CosmosClient({ endpoint, key });
+
+const database = client.database(databaseId);
+const container = database.container(containerId);
+
+// Make sure Tasks database is already setup. If not, create it.
+await dbContext.create(client, databaseId, containerId);
+
+```
 
 > [!Note]
 > 如果连接到 **Cosmos DB 模拟器**，请为节点进程禁用 TLS 验证：
->   ```
+>   ```javascript
 >   process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 >   const client = new CosmosClient({ endpoint, key });
 >   ```
 
 现已获得用于初始化 Azure Cosmos DB 客户端的代码，接下来请看如何使用 Azure Cosmos DB 资源。
 
-## <a name="create-a-database"></a>创建数据库
+<a name="QueryItem"></a>
+## <a name="query-items"></a>查询项
 
-1. 复制并粘贴以下代码，以设置数据库 ID 和容器 ID。 通过这些 ID，可了解 Azure Cosmos DB 客户端如何查找正确的数据库和容器。
+Azure Cosmos DB 支持对存储在每个容器中的 JSON 项进行各种查询。 以下示例代码展示了一个可以针对容器中项运行的查询。可以使用 `Items` 类的 query 函数来查询项。 将以下代码添加到 app.js 文件中，以便从 Azure Cosmos 帐户查询项：
 
-    ```javascript
-    const client = new CosmosClient({ endpoint, key });
+```javascript
+console.log(`Querying container: Items`);
 
-    // ADD THIS PART TO YOUR CODE
-    const HttpStatusCodes = { NOTFOUND: 404 };
+// query to return all items
+const querySpec = {
+  query: "SELECT * from c"
+};
 
-    const databaseId = config.database.id;
-    const containerId = config.container.id;
-    const partitionKey = { kind: "Hash", paths: ["/Country"] };
-    ```
+// read all items in the Items container
+const { resources: items } = await container.items
+  .query(querySpec)
+  .fetchAll();
 
-    可以使用 **Databases** 类的 `createIfNotExists` 或 create 函数创建数据库。 数据库是跨容器分区的项的逻辑容器。 
+items.forEach(item => {
+  console.log(`${item.id} - ${item.description}`);
+});
 
-2. 复制 **createDatabase** 和 **readDatabase** 方法并将其粘贴到 app.js 文件的 ```databaseId``` 和 ```containerId``` 定义下。 createDatabase 函数会使用通过 ```config``` 对象指定的 ID ```FamilyDatabase``` 来创建新数据库（如果不存在数据库）  。 **readDatabase** 函数会读取数据库的定义，确保数据库存在。
-
-    ```javascript
-    /**
-    * Create the database if it does not exist
-    */
-    async function createDatabase() {
-       const { database } = await client.databases.createIfNotExists({ id: databaseId });
-       console.log(`Created database:\n${database.id}\n`);
-    }
-
-    /**
-    * Read the database definition
-    */
-    async function readDatabase() {
-      const { resource: databaseDefinition } = await client.database(databaseId).read();
-      console.log(`Reading database:\n${databaseDefinition.id}\n`);
-    }
-    ```
-
-3. 复制并粘贴以下代码，以便设置 **createDatabase** 和 **readDatabase** 函数，添加可列显退出消息的帮助程序函数 **exit**。 
-
-    ```javascript
-    // ADD THIS PART TO YOUR CODE
-    function exit(message) {
-      console.log(message);
-      console.log('Press any key to exit');
-      process.stdin.setRawMode(true);
-      process.stdin.resume();
-      process.stdin.on('data', process.exit.bind(process, 0));
-    };
-    ```
-
-4. 复制并粘贴以下代码，以便设置 **exit** 函数，方便调用 **createDatabase** 和 **readDatabase** 函数。
-
-    ```javascript
-    createDatabase()
-     .then(() => readDatabase())
-     .then(() => { exit(`Completed successfully`); })
-     .catch((error) => { exit(`Completed with error \${JSON.stringify(error)}`) });
-    ```
-
-    此时 ```app.js``` 中的代码应如以下代码所示：
-
-    ```javascript
-    const CosmosClient = require('@azure/cosmos').CosmosClient;
-
-    const config = require('./config');
-
-    const endpoint = config.endpoint;
-    const key = config.key;
-
-    const client = new CosmosClient({ endpoint, key });
-
-    const HttpStatusCodes = { NOTFOUND: 404 };
-
-    const databaseId = config.database.id;
-    const containerId = config.container.id;
-    const partitionKey = { kind: "Hash", paths: ["/Country"] };
-
-    /**
-    * Create the database if it does not exist
-    */
-    async function createDatabase() {
-     const { database } = await client.databases.createIfNotExists({ id: databaseId });
-     console.log(`Created database:\n${database.id}\n`);
-    }
-
-    /**
-    * Read the database definition
-    */
-    async function readDatabase() {
-     const { resource: databaseDefinition } = await client.database(databaseId).read();
-    console.log(`Reading database:\n${databaseDefinition.id}\n`);
-    }
-
-    /**
-    * Exit the app with a prompt
-    * @param {message} message - The message to display
-    */
-    function exit(message) {
-     console.log(message);
-     console.log('Press any key to exit');
-     process.stdin.setRawMode(true);
-     process.stdin.resume();
-     process.stdin.on('data', process.exit.bind(process, 0));
-    }
-
-    createDatabase()
-     .then(() => readDatabase())
-     .then(() => { exit(`Completed successfully`); })
-     .catch((error) => { exit(`Completed with error ${JSON.stringify(error) }`) });
-    ```
-
-5. 在终端中，找到 ```app.js``` 文件并运行以下命令： 
-
-    ```bash 
-    node app.js
-    ```
-
-<a name="CreateContainer"></a>
-## <a name="create-a-container"></a>创建容器
-
-接下来在 Azure Cosmos DB 帐户中创建一个容器，用于存储和查询数据。 
-
-> [!WARNING]
-> 创建容器涉及到定价。 请访问[定价页](https://www.azure.cn/pricing/details/cosmos-db/)，了解相关信息。
-
-可以使用 **Containers** 类的 `createIfNotExists` 或 create 函数创建容器。  容器包含项（在使用 SQL API 的情况下为 JSON 文档）和关联的 JavaScript 应用程序逻辑。
-
-1. 复制 **createContainer** 和 **readContainer** 函数并将其粘贴到 app.js 文件的 **readDatabase** 函数下。 **createContainer** 函数会使用通过 ```config``` 对象指定的 ```containerId``` 来创建新容器（如果不存在容器）。 **readContainer** 函数会读取容器定义，以便验证容器是否存在。
-
-    ```javascript
-    /**
-    * Create the container if it does not exist
-    */
-
-    async function createContainer() {
-
-    const { container } = await client.database(databaseId).containers.createIfNotExists({ id: containerId, partitionKey }, { offerThroughput: 400 });
-    console.log(`Created container:\n${config.container.id}\n`);
-    }
-
-    /**
-    * Read the container definition
-    */
-    async function readContainer() {
-      const { resource: containerDefinition } = await client.database(databaseId).container(containerId).read();
-    console.log(`Reading container:\n${containerDefinition.id}\n`);
-    }
-    ```
-
-1. 复制以下代码并将其粘贴到对 **readDatabase** 的调用下面，以便执行 **createContainer** 和 **readContainer** 函数。
-
-    ```javascript
-    createDatabase()
-     .then(() => readDatabase())
-
-     // ADD THIS PART TO YOUR CODE
-     .then(() => createContainer())
-     .then(() => readContainer())
-     // ENDS HERE
-
-     .then(() => { exit(`Completed successfully`); })
-     .catch((error) => { exit(`Completed with error ${JSON.stringify(error)}`) });
-    ```
-
-    此时 ```app.js``` 中的代码应如下所示：
-
-    ```javascript
-    const CosmosClient = require('@azure/cosmos').CosmosClient;
-
-    const config = require('./config');
-
-    const endpoint = config.endpoint;
-    const key = config.key;
-
-    const client = new CosmosClient({ endpoint, key });
-
-    const HttpStatusCodes = { NOTFOUND: 404 };
-
-    const databaseId = config.database.id;
-    const containerId = config.container.id;
-    const partitionKey = { kind: "Hash", paths: ["/Country"] };
-
-    /**
-    * Create the database if it does not exist
-    */
-    async function createDatabase() {
-     const { database } = await client.databases.createIfNotExists({ id: databaseId });
-     console.log(`Created database:\n${database.id}\n`);
-    }
-
-    /**
-    * Read the database definition
-    */
-    async function readDatabase() {
-     const { body: databaseDefinition } = await client.database(databaseId).read();
-     console.log(`Reading database:\n${databaseDefinition.id}\n`);
-    }
-
-    /**
-    * Create the container if it does not exist
-    */
-
-    async function createContainer() {
-
-    const { container } = await client.database(databaseId).containers.createIfNotExists({ id: containerId, partitionKey }, { offerThroughput: 400 });
-    console.log(`Created container:\n${config.container.id}\n`);
-    }
-
-    /**
-    * Read the container definition
-    */
-    async function readContainer() {
-      const { resource: containerDefinition } = await client.database(databaseId).container(containerId).read();
-    console.log(`Reading container:\n${containerDefinition.id}\n`);
-    }
-
-    /**
-    * Exit the app with a prompt
-    * @param {message} message - The message to display
-    */
-    function exit(message) {
-     console.log(message);
-     console.log('Press any key to exit');
-     process.stdin.setRawMode(true);
-     process.stdin.resume();
-     process.stdin.on('data', process.exit.bind(process, 0));
-    }
-
-    createDatabase()
-     .then(() => readDatabase())
-     .then(() => createContainer())
-     .then(() => readContainer())
-     .then(() => { exit(`Completed successfully`); })
-     .catch((error) => { exit(`Completed with error ${JSON.stringify(error)}`) });
-    ```
-
-1. 在终端中，找到 ```app.js``` 文件并运行以下命令： 
-
-    ```bash 
-    node app.js
-    ```
+```
 
 <a name="CreateItem"></a>
 ## <a name="create-an-item"></a>创建项
 
-可以使用 **Items** 类的 create 函数创建项。 使用 SQL API 时，项会投射为文档，后者是用户定义的（任意）JSON 内容。 现在，可以将项插入 Azure Cosmos DB 中。
+可以使用 `Items` 类的 create 函数创建项。 使用 SQL API 时，项会投射为文档，后者是用户定义的（任意）JSON 内容。 在本教程中，我们在 tasks 数据库中创建一个新项。
 
-1. 将 **createFamilyItem** 函数复制并粘贴到 **readContainer** 函数下面。 **createFamilyItem** 函数创建的项包含在 ```config``` 对象中保存的 JSON 数据。 我们会进行检查以确保在创建项之前不存在具有相同 ID 的项。
+1. 在 app.js 文件中，定义项定义：
+
+   ```javascript
+   const newItem = {
+     id: "3",
+     category: "fun",
+     name: "Cosmos DB",
+     description: "Complete Cosmos DB Node.js Quickstart ⚡",
+     isComplete: false
+   };
+   ```
+
+1. 添加以下代码，以便创建前面定义的项：
 
     ```javascript
-    /**
-    * Create family item
+    /** Create new item
+    * newItem is defined at the top of this file
     */
-    async function createFamilyItem(itemBody) {
-      const { item } = await client.database(databaseId).container(containerId).items.upsert(itemBody);
-      console.log(`Created family item with id:\n${itemBody.id}\n`);
-    };
-    ```
+    const { resource: createdItem } = await container.items.create(newItem);
 
-1. 复制以下代码并将其粘贴到对 **readContainer** 的调用下面，以便执行 **createFamilyItem** 函数。
+    console.log(`\r\nCreated new item: ${createdItem.id} - ${createdItem.description}\r\n`);
 
-    ```javascript
-    createDatabase()
-     .then(() => readDatabase())
-     .then(() => createContainer())
-     .then(() => readContainer())
-
-     // ADD THIS PART TO YOUR CODE
-     .then(() => createFamilyItem(config.items.Andersen))
-     .then(() => createFamilyItem(config.items.Wakefield))
-     // ENDS HERE
-
-     .then(() => { exit(`Completed successfully`); })
-     .catch((error) => { exit(`Completed with error ${JSON.stringify(error)}`) });
-    ```
-
-1. 在终端中，找到 ```app.js``` 文件并运行以下命令： 
-
-    ```bash 
-    node app.js
-    ```
-
-<a name="Query"></a>
-## <a name="query-azure-cosmos-db-resources"></a>查询 Azure Cosmos DB 资源
-
-Azure Cosmos DB 支持对存储在每个容器中的 JSON 文档进行各种查询。 下面的示例代码演示了一个可以针对容器中文档运行的查询。
-
-1. 复制 **queryContainer** 函数并将其粘贴到 app.js 文件的 **createFamilyItem** 函数下面。 Azure Cosmos DB 支持类似 SQL 的查询，如下所示。
-
-    ```javascript
-    /**
-    * Query the container using SQL
-    */
-    async function queryContainer() {
-     console.log(`Querying container:\n${config.container.id}`);
-
-     // query to return all children in a family
-     const querySpec = {
-        query: "SELECT VALUE r.children FROM root r WHERE r.lastName = @lastName",
-        parameters: [
-            {
-                name: "@lastName",
-                value: "Andersen"
-            }
-        ]
-    };
-
-    const { resources } = await client.database(databaseId).container(containerId).items.query(querySpec).fetchAll();
-    for (var queryResult of resources) {
-        let resultString = JSON.stringify(queryResult);
-        console.log(`\tQuery returned ${resultString}\n`);
-    }
-    };
-    ```
-
-1. 复制以下代码并将其粘贴到对 **createFamilyItem** 的调用下面，以便执行 **queryContainer** 函数。
-
-    ```javascript
-    createDatabase()
-     .then(() => readDatabase())
-     .then(() => createContainer())
-     .then(() => readContainer())
-     .then(() => createFamilyItem(config.items.Andersen))
-     .then(() => createFamilyItem(config.items.Wakefield))
-
-     // ADD THIS PART TO YOUR CODE
-     .then(() => queryContainer())
-     // ENDS HERE
-
-     .then(() => { exit(`Completed successfully`); })
-     .catch((error) => { exit(`Completed with error ${JSON.stringify(error)}`) });
-    ```
-
-1. 在终端中，找到 ```app.js``` 文件并运行以下命令：
-
-    ```bash 
-    node app.js
     ```
 
 <a name="ReplaceItem"></a>
-## <a name="replace-an-item"></a>替换项
-Azure Cosmos DB 支持替换项的内容。
+## <a name="update-an-item"></a>更新项
 
-1. 复制 **replaceFamilyItem** 函数并将其粘贴到 app.js 文件的 **queryContainer** 函数下面。 请注意，我们已将某个子项的属性“grade”从以前的值 5 更改为 6。
+Azure Cosmos DB 支持替换项的内容。 将以下代码复制并粘贴到 app.js 文件中。 此代码获取容器中的某个项，并将 isComplete 字段更新为 true。
 
-    ```javascript
-    // ADD THIS PART TO YOUR CODE
-    /**
-    * Replace the item by ID.
-    */
-    async function replaceFamilyItem(itemBody) {
-      console.log(`Replacing item:\n${itemBody.id}\n`);
-      // Change property 'grade'
-      itemBody.children[0].grade = 6;
-     const { item } = await client.database(databaseId).container(containerId).item(itemBody.id, itemBody.Country).replace(itemBody);
-    };
-    ```
+```javascript
+/** Update item
+ * Pull the id and partition key value from the newly created item.
+ * Update the isComplete field to true.
+ */
+const { id, category } = createdItem;
 
-1. 复制以下代码并将其粘贴到对 **queryContainer** 的调用下面，以便执行 **replaceFamilyItem** 函数。 另外，请再次将此代码添加到 **queryContainer** 调用，以验证是否已成功更改项。
+createdItem.isComplete = true;
 
-    ```javascript
-    createDatabase()
-     .then(() => readDatabase())
-     .then(() => createContainer())
-     .then(() => readContainer())
-     .then(() => createFamilyItem(config.items.Andersen))
-     .then(() => createFamilyItem(config.items.Wakefield))
-     .then(() => queryContainer())
+const { resource: updatedItem } = await container
+  .item(id, category)
+  .replace(createdItem);
 
-     // ADD THIS PART TO YOUR CODE
-     .then(() => replaceFamilyItem(config.items.Andersen))
-     .then(() => queryContainer())
-     // ENDS HERE
+console.log(`Updated item: ${updatedItem.id} - ${updatedItem.description}`); 
+console.log(`Updated isComplete to ${updatedItem.isComplete}\r\n`);
 
-     .then(() => { exit(`Completed successfully`); })
-     .catch((error) => { exit(`Completed with error ${JSON.stringify(error)}`) });
-    ```
-
-1. 在终端中，找到 ```app.js``` 文件并运行以下命令：
-
-    ```bash 
-    node app.js
-    ```
+```
 
 <a name="DeleteItem"></a>
 ## <a name="delete-an-item"></a>删除项
 
-Azure Cosmos DB 支持删除 JSON 项。
+Azure Cosmos DB 支持删除 JSON 项。 以下代码展示了如何通过项 ID 获取项并将其删除。 将以下代码复制并粘贴到 app.js 文件中：
 
-1. 将 **deleteFamilyItem** 函数复制并粘贴到 **replaceFamilyItem** 函数下面。
+```javascript
+/**
+ * Delete item
+ * Pass the id and partition key value to delete the item
+ */
+const { resource: result } = await container.item(id, category).delete();
+console.log(`Deleted item with id: ${id}`);
 
-    ```javascript
-    /**
-    * Delete the item by ID.
-    */
-    async function deleteFamilyItem(itemBody) {
-      await client.database(databaseId).container(containerId).item(itemBody.id, itemBody.Country).delete(itemBody);
-      console.log(`Deleted item:\n${itemBody.id}\n`);
-    };
-    ```
-
-1. 复制以下代码并将其粘贴到对第二个 **queryContainer** 的调用下面，以便执行 **deleteFamilyItem** 函数。
-
-    ```javascript
-    createDatabase()
-      .then(() => readDatabase())
-      .then(() => createContainer())
-      .then(() => readContainer())
-      .then(() => createFamilyItem(config.items.Andersen))
-      .then(() => createFamilyItem(config.items.Wakefield))
-      .then(() => queryContainer
-      ())
-      .then(() => replaceFamilyItem(config.items.Andersen))
-      .then(() => queryContainer())
-
-    // ADD THIS PART TO YOUR CODE
-      .then(() => deleteFamilyItem(config.items.Andersen))
-    // ENDS HERE
-
-    .then(() => { exit(`Completed successfully`); })
-    .catch((error) => { exit(`Completed with error ${JSON.stringify(error)}`) });
-    ```
-
-1. 在终端中，找到 ```app.js``` 文件并运行以下命令： 
-
-    ```bash 
-    node app.js
-    ```
-
-<a name="DeleteDatabase"></a>
-## <a name="delete-the-database"></a>删除数据库
-
-删除已创建的数据库会删除该数据库及其所有子资源（容器、项等）。
-
-1. 复制 **cleanup** 函数并将其粘贴到 **deleteFamilyItem** 函数下面，以便删除数据库及其所有子资源。
-
-    ```javascript
-    /**
-    * Cleanup the database and container on completion
-    */
-    async function cleanup() {
-     await client.database(databaseId).delete();
-    }
-    ```
-
-1. 复制以下代码并将其粘贴到对 **deleteFamilyItem** 的调用下面，以便执行 **cleanup** 函数。
-
-    ```javascript
-    createDatabase()
-      .then(() => readDatabase())
-      .then(() => createContainer())
-      .then(() => readContainer())
-      .then(() => createFamilyItem(config.items.Andersen))
-      .then(() => createFamilyItem(config.items.Wakefield))
-      .then(() => queryContainer())
-      .then(() => replaceFamilyItem(config.items.Andersen))
-      .then(() => queryContainer())
-      .then(() => deleteFamilyItem(config.items.Andersen))
-
-      // ADD THIS PART TO YOUR CODE
-      .then(() => cleanup())
-      // ENDS HERE
-
-      .then(() => { exit(`Completed successfully`); })
-      .catch((error) => { exit(`Completed with error ${JSON.stringify(error)}`) });
-    ```
+```
 
 <a name="Run"></a>
 ## <a name="run-your-nodejs-application"></a>运行 Node.js 应用程序
@@ -624,19 +291,25 @@ Azure Cosmos DB 支持删除 JSON 项。
 
 ```javascript
 // @ts-check
+//  <ImportConfiguration>
 const CosmosClient = require("@azure/cosmos").CosmosClient;
 const config = require("./config");
 const dbContext = require("./data/databaseContext");
+//  </ImportConfiguration>
 
+//  <DefineNewItem>
 const newItem = {
   id: "3",
   category: "fun",
   name: "Cosmos DB",
-  description: "Complete Cosmos DB Node.js Quickstart ⚡",
+description: Complete Cosmos DB Node.js Quickstart ⚡",
   isComplete: false
 };
+//  </DefineNewItem>
 
 async function main() {
+
+  // <CreateClientObjectDatabaseContainer>
   const { endpoint, key, databaseId, containerId } = config;
 
   const client = new CosmosClient({ endpoint, key });
@@ -646,8 +319,10 @@ async function main() {
 
   // Make sure Tasks database is already setup. If not, create it.
   await dbContext.create(client, databaseId, containerId);
+  // </CreateClientObjectDatabaseContainer>
 
   try {
+    // <QueryItems>
     console.log(`Querying container: Items`);
 
     // query to return all items
@@ -663,14 +338,18 @@ async function main() {
     items.forEach(item => {
       console.log(`${item.id} - ${item.description}`);
     });
+    // </QueryItems>
 
+    // <CreateItem>
     /** Create new item
      * newItem is defined at the top of this file
      */
     const { resource: createdItem } = await container.items.create(newItem);
 
     console.log(`\r\nCreated new item: ${createdItem.id} - ${createdItem.description}\r\n`);
+    // </CreateItem>
 
+    // <UpdateItem>
     /** Update item
      * Pull the id and partition key value from the newly created item.
      * Update the isComplete field to true.
@@ -685,13 +364,16 @@ async function main() {
 
     console.log(`Updated item: ${updatedItem.id} - ${updatedItem.description}`); 
     console.log(`Updated isComplete to ${updatedItem.isComplete}\r\n`);
+    // </UpdateItem>
 
+    // <DeleteItem>    
     /**
      * Delete item
      * Pass the id and partition key value to delete the item
      */
     const { resource: result } = await container.item(id, category).delete();
     console.log(`Deleted item with id: ${id}`);
+    // </DeleteItem>  
 
   } catch (err) {
     console.log(err.message);
@@ -699,10 +381,9 @@ async function main() {
 }
 
 main();
-
 ```
 
-在终端中，找到 ```app.js``` 文件并运行以下命令： 
+在终端中，找到 ```app.js``` 文件并运行以下命令：
 
 ```bash 
 node app.js
@@ -712,52 +393,33 @@ node app.js
 
 ```
 Created database:
-FamilyDatabase
-
-Reading database:
-FamilyDatabase
+Tasks
 
 Created container:
-FamilyContainer
+Items
 
-Reading container:
-FamilyContainer
+Querying container: Items
+1 - Pick up apples and strawberries.
 
-Created family item with id:
-Anderson.1
+Created new item: 3 - Complete Cosmos DB Node.js Quickstart ⚡
 
-Created family item with id:
-Wakefield.7
+Updated item: 3 - Complete Cosmos DB Node.js Quickstart ⚡
+Updated isComplete to true
 
-Querying container:
-FamilyContainer
-        Query returned [{"firstName":"Henriette Thaulow","gender":"female","grade":5,"pets":[{"givenName":"Fluffy"}]}]
-
-Replacing item:
-Anderson.1
-
-Querying container:
-FamilyContainer
-        Query returned [{"firstName":"Henriette Thaulow","gender":"female","grade":6,"pets":[{"givenName":"Fluffy"}]}]
-
-Deleted item:
-Anderson.1
-
-Completed successfully
-Press any key to exit
+Deleted item with id: 3
 ```
 
 <a name="GetSolution"></a>
-## <a name="get-the-complete-nodejs-tutorial-solution"></a>获取完整的 Node.js 教程解决方案 
+## <a name="get-the-complete-nodejs-tutorial-solution"></a>获取完整的 Node.js 教程解决方案
 
-如果没有时间完成本教程中的步骤，或者只需下载代码，则可从 [GitHub](https://github.com/Azure-Samples/azure-cosmos-db-sql-api-nodejs-getting-started ) 获取。 
+如果没有时间完成本教程中的步骤，或者只需下载代码，则可从 [GitHub](https://github.com/Azure-Samples/azure-cosmos-db-sql-api-nodejs-getting-started ) 获取。
 
-若要运行包含本文所有代码的入门解决方案，需要以下项： 
+若要运行包含本文所有代码的入门解决方案，需要以下项：
 
-* 一个 [Azure Cosmos DB 帐户][create-account]。 
-* GitHub 上提供的[入门](https://github.com/Azure-Samples/azure-cosmos-db-sql-api-nodejs-getting-started)解决方案。 
+* 一个 [Azure Cosmos DB 帐户][create-account]。
+* GitHub 上提供的[入门](https://github.com/Azure-Samples/azure-cosmos-db-sql-api-nodejs-getting-started)解决方案。
 
-通过 npm 安装项目的依赖项。 请使用以下命令： 
+通过 npm 安装项目的依赖项。 请使用以下命令：
 
 * ```npm install``` 
 
@@ -771,7 +433,7 @@ node app.js
 
 ## <a name="clean-up-resources"></a>清理资源
 
-不再需要资源组、Azure Cosmos DB 帐户和所有相关的资源时，可将这些资源删除。 为此，请选择用于 Azure Cosmos DB 帐户的资源组，接着选择“删除”  ，然后确认要删除的资源组的名称。
+不再需要资源组、Azure Cosmos DB 帐户和所有相关的资源时，可将这些资源删除。 为此，请选择用于 Azure Cosmos DB 帐户的资源组，接着选择“删除”，然后确认要删除的资源组的名称。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -781,4 +443,4 @@ node app.js
 [create-account]: create-sql-api-dotnet.md#create-account
 [keys]: media/sql-api-nodejs-get-started/node-js-tutorial-keys.png
 
-<!-- Update_Description: update meta properties, wording update-->
+<!-- Update_Description: update meta properties, wording update, update link -->

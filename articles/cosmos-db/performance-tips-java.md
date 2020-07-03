@@ -1,29 +1,37 @@
 ---
-title: 适用于 Java 的 Azure Cosmos DB 性能提示
-description: 了解用于提高 Azure Cosmos 数据库性能的客户端配置选项
+title: 适用于 Azure Cosmos DB Sync Java SDK v2 的性能提示
+description: 了解用于提高 Azure Cosmos DB Sync Java SDK v2 性能的客户端配置选项
 author: rockboyfor
 ms.service: cosmos-db
 ms.devlang: java
 ms.topic: conceptual
-origin.date: 05/23/2019
-ms.date: 04/27/2020
+origin.date: 05/11/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: ef65e85de682a3f648c4db804cec0da360c9f686
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.openlocfilehash: 393c4b17db25de4d24c3b738c57b91c1092d1e76
+ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82134591"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85323339"
 ---
-# <a name="performance-tips-for-azure-cosmos-db-and-java"></a>适用于 Azure Cosmos DB 和 Java 的性能提示
+# <a name="performance-tips-for-azure-cosmos-db-sync-java-sdk-v2"></a>适用于 Azure Cosmos DB Sync Java SDK v2 的性能提示
 
 > [!div class="op_single_selector"]
-> * [异步 Java](performance-tips-async-java.md)
-> * [Java](performance-tips-java.md)
-> * [.NET](performance-tips.md)
+> * [Java SDK v4](performance-tips-java-sdk-v4-sql.md)
+> * [Async Java SDK v2](performance-tips-async-java.md)
+> * [Sync Java SDK v2](performance-tips-java.md)
+> * [.NET SDK v3](performance-tips-dotnet-sdk-v3-sql.md)
+> * [.NET SDK v2](performance-tips.md)
 > 
 
-Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供延迟与吞吐量保证的情况下无缝缩放。 凭借 Azure Cosmos DB，无需对体系结构进行重大更改或编写复杂的代码即可缩放数据库。 扩展和缩减操作就像执行单个 API 调用一样简单。 若要了解详细信息，请参阅[如何预配容器吞吐量](how-to-provision-container-throughput.md)或[如何预配数据库吞吐量](how-to-provision-database-throughput.md)。 但是，由于 Azure Cosmos DB 是通过网络调用访问的，因此，使用 [SQL Java SDK](documentdb-sdk-java.md) 时，可以通过客户端优化来获得最高性能。
+> [!IMPORTANT]  
+> 这不是最新的 Azure Cosmos DB Java SDK！ 应将项目升级到 [Azure Cosmos DB Java SDK v4](sql-api-sdk-java-v4.md)，然后阅读 Azure Cosmos DB Java SDK v4 [性能提示指南](performance-tips-java-sdk-v4-sql.md)。 请按照[迁移到 Azure Cosmos DB Java SDK v4](migrate-java-v4-sdk.md) 指南和 [Reactor 与 RxJava](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-rxjava-guide.md) 指南中的说明进行升级。 
+> 
+> 这些性能提示仅适用于 Azure Cosmos DB Sync Java SDK v2。 有关详细信息，请查看 Azure Cosmos DB Sync Java SDK v2 的[发行说明](sql-api-sdk-java.md)和 [Maven 存储库](https://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb)。
+>
+
+Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供延迟与吞吐量保证的情况下无缝缩放。 凭借 Azure Cosmos DB，无需对体系结构进行重大更改或编写复杂的代码即可缩放数据库。 扩展和缩减操作就像执行单个 API 调用一样简单。 若要了解详细信息，请参阅[如何预配容器吞吐量](how-to-provision-container-throughput.md)或[如何预配数据库吞吐量](how-to-provision-database-throughput.md)。 但是，由于 Azure Cosmos DB 通过网络调用进行访问，因此，使用 [Azure Cosmos DB Sync Java SDK v2](documentdb-sdk-java.md) 时，可以通过客户端优化来获得最佳性能。
 
 如果有“如何改善数据库性能？”的疑问， 请考虑以下选项：
 
@@ -41,9 +49,12 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
     
         网关模式受所有 SDK 平台的支持并已配置为默认设置。  如果应用程序在有严格防火墙限制的企业网络中运行，则网关是最佳选择，因为它使用标准 HTTPS 端口与单个终结点。 但是，对于性能的影响是每次在 Azure Cosmos DB 中读取或写入数据时，网关模式都涉及到额外的网络跃点。 因此，DirectHttps 模式因为网络跃点较少，可以提供更好的性能。 
 
-        Java SDK 使用 HTTPS 作为传输协议。 HTTPS 使用 TLS 进行初始身份验证和加密通信。 使用 Java SDK 时，只需打开 HTTPS 端口 443。 
+        Azure Cosmos DB Sync Java SDK v2 使用 HTTPS 作为传输协议。 HTTPS 使用 TLS 进行初始身份验证和加密通信。 使用 zure Cosmos DB Sync Java SDK v2 时，只需打开 HTTPS 端口 443。 
 
         ConnectionMode 是在构造 DocumentClient 实例期间使用 ConnectionPolicy 参数配置的。 
+
+        <a name="syncjava2-connectionpolicy"></a>
+        ### <a name="sync-java-sdk-v2-maven-commicrosoftazureazure-documentdb"></a>Sync Java SDK V2 (Maven com.microsoft.azure::azure-documentdb)
 
         ```Java
         public ConnectionPolicy getConnectionPolicy() {
@@ -77,11 +88,11 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
    <a name="max-connection"></a>
 3. **使用网关模式时，增加每个主机的 MaxPoolSize**
 
-    使用“网关”模式时，Azure Cosmos DB 请求是通过 HTTPS/REST 发出的，并且受制于每个主机名或 IP 地址的默认连接限制。 可能需要将 MaxPoolSize 设置为较大的值 (200-1000)，以便客户端库能够同时利用多个连接来访问 Azure Cosmos DB。 在 Java SDK 中，[ConnectionPolicy.getMaxPoolSize](https://docs.azure.cn/java/api/com.microsoft.azure.documentdb.connectionpolicy.getmaxpoolsize) 的默认值为 100。 使用 [setMaxPoolSize]( https://docs.azure.cn/java/api/com.microsoft.azure.documentdb.connectionpolicy.setmaxpoolsize) 可更改该值。
+    使用“网关”模式时，Azure Cosmos DB 请求是通过 HTTPS/REST 发出的，并且受制于每个主机名或 IP 地址的默认连接限制。 可能需要将 MaxPoolSize 设置为较大的值 (200-1000)，以便客户端库能够同时利用多个连接来访问 Azure Cosmos DB。 在 Azure Cosmos DB Sync Java SDK v2 中，[ConnectionPolicy.getMaxPoolSize](https://docs.azure.cn/java/api/com.microsoft.azure.documentdb.connectionpolicy.getmaxpoolsize) 的默认值为 100。 使用 [setMaxPoolSize]( https://docs.azure.cn/java/api/com.microsoft.azure.documentdb.connectionpolicy.setmaxpoolsize) 可更改该值。
 
 4. **优化分区集合的并行查询。**
 
-    Azure Cosmos DB SQL Java SDK 版本 1.9.0 和更高版本支持并行查询，使你能够并行查询分区集合。 有关详细信息，请参阅与使用这些 SDK 相关的[代码示例](https://github.com/Azure/azure-documentdb-java/tree/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples)。 并行查询旨改善查询延迟和串行配对物上的吞吐量。
+    Azure Cosmos DB Sync Java SDK 版本 1.9.0 和更高版本支持并行查询，使你能够并行查询分区集合。 有关详细信息，请参阅与使用这些 SDK 相关的[代码示例](https://github.com/Azure/azure-documentdb-java/tree/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples)。 并行查询旨改善查询延迟和串行配对物上的吞吐量。
 
     (a) ***优化 setMaxDegreeOfParallelism\:*** 并行查询的方式是并行查询多个分区。 但就查询本身而言，会按顺序提取单个已分区集合中的数据。 因此，通过使用 [setMaxDegreeOfParallelism](https://docs.azure.cn/java/api/com.microsoft.azure.documentdb.feedoptions.setmaxdegreeofparallelism) 设置分区数，最有可能实现查询的最高性能，但前提是所有其他系统条件仍保持不变。 如果不知道分区数，可使用 setMaxDegreeOfParallelism 设置一个较高的数值，系统会选择最小值（分区数、用户输入）作为最大并行度。 
 
@@ -93,7 +104,7 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
 
 5. **按 getRetryAfterInMilliseconds 间隔实现回退**
 
-    在性能测试期间，应该增加负载，直到系统对小部分请求进行限制为止。 如果受到限制，客户端应用程序应按照服务器指定的重试间隔在限制时退让。 遵循退让可确保最大程度地减少等待重试的时间。 重试策略支持包含在 [Java SDK](documentdb-sdk-java.md) 版本 1.8.0 及更高版本中。 有关详细信息，请参阅 [getRetryAfterInMilliseconds](https://docs.azure.cn/java/api/com.microsoft.azure.documentdb.documentclientexception.getretryafterinmilliseconds)。
+    在性能测试期间，应该增加负载，直到系统对小部分请求进行限制为止。 如果受到限制，客户端应用程序应按照服务器指定的重试间隔在限制时退让。 遵循退让可确保最大程度地减少等待重试的时间。 重试策略支持包含在 [Azure Cosmos DB Sync Java SDK](documentdb-sdk-java.md) 版本 1.8.0 及更高版本中。 有关详细信息，请参阅 [getRetryAfterInMilliseconds](https://docs.azure.cn/java/api/com.microsoft.azure.documentdb.documentclientexception.getretryafterinmilliseconds)。
 
 6. **增大客户端工作负荷**
 
@@ -116,7 +127,10 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
 
 1. **从索引中排除未使用的路径以加快写入速度**
 
-    Azure Cosmos DB 的索引策略允许使用索引路径（[setIncludedPaths](https://docs.azure.cn/java/api/com.microsoft.azure.documentdb.indexingpolicy.setincludedpaths) 和 [setExcludedPaths](https://docs.azure.cn/java/api/com.microsoft.azure.documentdb.indexingpolicy.setexcludedpaths)）指定要在索引中包括或排除的文档路径。 在事先知道查询模式的方案中，使用索引路径可改善写入性能并降低索引存储空间，因为索引成本与索引的唯一路径数目直接相关。  例如，以下代码演示了如何使用“*”通配符 从索引中排除文档的整个部分（也称为子树）。
+    Azure Cosmos DB 的索引策略允许使用索引路径（[setIncludedPaths](https://docs.azure.cn/java/api/com.microsoft.azure.documentdb.indexingpolicy.setincludedpaths) 和 [setExcludedPaths](https://docs.azure.cn/java/api/com.microsoft.azure.documentdb.indexingpolicy.setexcludedpaths)）指定要在索引中包括或排除的文档路径。 在事先知道查询模式的方案中，使用索引路径可改善写入性能并降低索引存储空间，因为索引成本与索引的唯一路径数目直接相关。  例如，以下代码演示如何使用“*”通配符从索引中排除整个文档部分（子树）。
+
+    <a name="syncjava2-indexing"></a>
+    ### <a name="sync-java-sdk-v2-maven-commicrosoftazureazure-documentdb"></a>Sync Java SDK V2 (Maven com.microsoft.azure::azure-documentdb)
 
     ```Java
     Index numberIndex = Index.Range(DataType.Number);
@@ -141,7 +155,10 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
 
     查询的复杂性会影响操作使用的请求单位数量。 谓词数、谓词性质、UDF 数目和源数据集的大小都会影响查询操作的成本。
 
-    若要度量任何操作（创建、更新或删除）的开销，请检查 [x-ms-request-charge](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) 标头（或 [ResourceResponse\<T>](https://docs.azure.cn/java/api/com.microsoft.azure.documentdb.resourceresponse) 或 [FeedResponse\<T>](https://docs.azure.cn/java/api/com.microsoft.azure.documentdb.feedresponse) 中的等效 RequestCharge 属性）来度量这些操作占用的请求单位数。
+    若要测量任何操作（创建、更新或删除）的开销，请检查 [x-ms-request-charge](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) 标头（或 [ResourceResponse\<T>](https://docs.azure.cn/java/api/com.microsoft.azure.documentdb.resourceresponse) 或 [FeedResponse\<T>](https://docs.azure.cn/java/api/com.microsoft.azure.documentdb.feedresponse) 中的等效 RequestCharge 属性）来测量这些操作占用的请求单位数。
+
+    <a name="syncjava2-requestcharge"></a>
+    ### <a name="sync-java-sdk-v2-maven-commicrosoftazureazure-documentdb"></a>Sync Java SDK V2 (Maven com.microsoft.azure::azure-documentdb)
 
     ```Java
     ResourceResponse<Document> response = client.createDocument(collectionLink, documentDefinition, null, false);

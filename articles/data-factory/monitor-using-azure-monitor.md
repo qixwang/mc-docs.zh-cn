@@ -11,39 +11,112 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 origin.date: 12/11/2018
-ms.date: 05/11/2020
-ms.openlocfilehash: cbc9f2e76df7f40c774529500fe909d0d05b48a3
-ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
+ms.date: 06/29/2020
+ms.openlocfilehash: 5a009e88864a82a6a2a437b65ea421abf4318894
+ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82198045"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85323306"
 ---
-# <a name="alert-and-monitor-data-factories-by-using-azure-monitor"></a>使用 Azure Monitor 发出警报和监视数据工厂
+# <a name="monitor-and-alert-data-factory-by-using-azure-monitor"></a>使用 Azure Monitor 监视数据工厂和发警报
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-云应用程序比较复杂，包含很多移动部件。 监视功能可以提供数据来确保应用程序始终处于正常运行状态。 监视功能还有助于避免潜在问题，或者排查以往的问题。
+云应用程序比较复杂，包含很多移动部件。 监视功能可以提供数据来确保应用程序始终处于正常运行状态。 监视功能还有助于避免潜在问题，或者排查以往的问题。 可以使用监视数据深入了解应用程序的情况。 了解这些情况有助于改进应用程序的性能或可维护性。 此外，还有助于实现本来需要手动干预的操作的自动化。
 
-可以使用监视数据深入了解应用程序的情况。 了解这些情况有助于改进应用程序的性能或可维护性。 此外，还有助于实现本来需要手动干预的操作的自动化。
+Azure Monitor 针对大多数 Azure 服务提供基本级别的基础结构指标和日志。 Azure 诊断日志由资源发出，提供与该资源的操作相关的各种频繁生成的数据。 Azure 数据工厂可以在 Azure Monitor 中写入诊断日志。 
 
-Azure Monitor 针对大多数 Azure 服务提供基本级别的基础结构指标和日志。 Azure 诊断日志由资源发出，提供与该资源的操作相关的各种频繁生成的数据。 Azure 数据工厂在 Monitor 中写入诊断日志。
+有关更多详细信息，请参阅 [Azure Monitor 概述](/azure-monitor/overview)。
 
-有关详细信息，请参阅 [Azure Monitor 概述](/monitoring-and-diagnostics/monitoring-overview-azure-monitor)。
+## <a name="keeping-azure-data-factory-metrics-and-pipeline-run-data"></a>保留 Azure 数据工厂指标和管道运行数据
 
-## <a name="keeping-azure-data-factory-data"></a>保留 Azure 数据工厂数据
+数据工厂仅将管道运行数据存储 45 天。 若要将这些数据保留更长时间，请使用 Azure Monitor。 使用 Monitor，可以将诊断日志路由到多个不同目标进行分析。
 
-数据工厂仅将管道运行数据存储 45 天。 若要将这些数据保留更长时间，请使用 Monitor。 使用 Monitor 可以路由诊断日志以进行分析。 此外，还可以将诊断日志保存到存储帐户中，以获得所选持续时间内的工厂信息。
+* **存储帐户**：将诊断日志保存到存储帐户进行审核或手动检查。 可以使用诊断设置指定保留时间（天）。
+* **事件中心**：将日志流式传输到 Azure 事件中心。 日志可用作合作伙伴服务或自定义分析解决方案（例如 Power BI）的输入。
+* **Log Analytics**：使用 Log Analytics 分析日志。 在以下情况下，将数据工厂与 Azure Monitor 集成非常有用：
+  * 需要针对由数据工厂发布到 Monitor 的丰富指标集编写复杂查询。 可以通过 Monitor 创建针对这些查询的自定义警报。
+  * 你希望跨数据工厂进行监视。 可将来自多个数据工厂的数据路由到单个 Monitor 工作区。
 
-## <a name="diagnostic-logs"></a>诊断日志
+还可使用与发出日志的资源不同的订阅中的存储帐户或事件中心命名空间。 配置此设置的用户必须对两个订阅都具有适当的基于角色的访问控制 (RBAC) 访问权限。
 
-* 将诊断日志保存到存储帐户进行审核或手动检查。 可以使用诊断设置指定保留时间（天）。
-* 将日志流式传输到 Azure 事件中心。 日志可用作合作伙伴服务或自定义分析解决方案（例如 Power BI）的输入。
-* 使用 Log Analytics 分析日志。
+## <a name="configure-diagnostic-settings-and-workspace"></a>配置诊断设置和工作区
 
-可以使用与发出日志的资源不同的订阅中的存储帐户或事件中心命名空间。 配置此设置的用户必须对两个订阅都具有适当的基于角色的访问控制 (RBAC) 访问权限。
+为数据工厂创建或添加诊断设置。
 
-## <a name="set-up-diagnostic-logs"></a>设置诊断日志
+1. 在门户中，转到“数据工厂”。 选择“诊断设置”。
+
+1. 选择“添加诊断设置”。
+
+   ![如果不存在任何设置，请创建一个诊断设置](media/data-factory-monitor-oms/monitor-oms-image1.png)
+
+1. 为设置指定名称，选择“发送到 Log Analytics”，然后从 **Log Analytics 工作区**中选择一个工作区。
+
+   ![命名设置并选择 log-analytics 工作区](media/data-factory-monitor-oms/monitor-oms-image2.png)
+
+1. 选择“保存” 。
+
+几分钟后，新设置将出现在此数据工厂的设置列表中。 生成新的事件数据后，诊断日志将立即流式传输到该工作区。 发出事件后可能需要最多 15 分钟的时间该事件才会出现在 Log Analytics 中。
+
+## <a name="data-factory-metrics"></a>数据工厂指标
+
+使用 Monitor 可以洞察 Azure 工作负荷的性能与运行状况。 最重要的 Monitor 数据类型是指标（也称为性能计数器）。 大多数 Azure 资源都会发出指标。 Monitor 提供多种方式来配置和使用这些指标，以便进行监视与故障排除。
+
+Azure 数据工厂版本 2 发出以下指标。
+
+| **指标**           | **指标显示名称**         | **单位** | **聚合类型** | **说明**                                       |
+|----------------------|---------------------------------|----------|----------------------|-------------------------------------------------------|
+| PipelineSucceededRuns | 成功的管道运行数指标 | 计数    | 总计                | 在一分钟时段内成功的管道运行总数。 |
+| PipelineFailedRuns   | 失败的管道运行数指标    | 计数    | 总计                | 在一分钟时段内失败的管道运行总数。    |
+| ActivitySucceededRuns | 成功的活动运行数指标 | 计数    | 总计                | 在一分钟时段内成功的活动运行总数。  |
+| ActivityFailedRuns   | 失败的活动运行数指标    | 计数    | 总计                | 在一分钟时段内失败的活动运行总数。     |
+| TriggerSucceededRuns | 成功的触发器运行数指标  | 计数    | 总计                | 在一分钟时段内成功的触发器运行总数。   |
+| TriggerFailedRuns    | 失败的触发器运行数指标     | 计数    | 总计                | 在一分钟时段内失败的触发器运行总数。      |
+
+若要访问指标，请参阅 [Azure Monitor 数据平台](/azure-monitor/platform/data-platform)中的说明。
+
+> [!NOTE]
+> 仅发出已完成、已触发的活动和管道运行事件。 **不**会发出正在进行的运行和沙盒/调试运行。 
+
+## <a name="data-factory-alerts"></a>数据工厂警报
+
+登录到 Azure 门户，选择“Monitor” > “警报”以创建警报。 
+
+![门户菜单中的警报](media/monitor-using-azure-monitor/alerts_image3.png)
+
+### <a name="create-alerts"></a>创建警报
+
+1. 选择“+ 创建新的预警规则”，创建新的警报。
+
+    ![新建警报规则](media/monitor-using-azure-monitor/alerts_image4.png)
+
+1. 定义警报条件。
+
+    > [!NOTE]
+    > 请务必在“按资源类型筛选”下拉列表中选择“所有”。 
+
+    ![“定义警报条件”>“选择目标”，此时会打开“选择资源”窗格 ](media/monitor-using-azure-monitor/alerts_image5.png)
+
+    ![“定义警报条件”>“添加条件”，此时会打开“配置信号逻辑”窗格](media/monitor-using-azure-monitor/alerts_image6.png)
+
+    ![“配置信号类型”窗格](media/monitor-using-azure-monitor/alerts_image7.png)
+
+1. 定义警报详细信息。
+
+    ![警报详细信息](media/monitor-using-azure-monitor/alerts_image8.png)
+
+1. 定义操作组。
+
+    ![创建规则的屏幕截图，其中突出显示了“新建操作组”](media/monitor-using-azure-monitor/alerts_image9.png)
+
+    ![创建新的操作组](media/monitor-using-azure-monitor/alerts_image10.png)
+
+    ![配置电子邮件、短信、推送和语音](media/monitor-using-azure-monitor/alerts_image11.png)
+
+    ![删除操作组](media/monitor-using-azure-monitor/alerts_image12.png)
+
+## <a name="set-up-diagnostic-logs-via-the-azure-monitor-rest-api"></a>通过 Azure Monitor REST API 设置诊断日志
 
 ### <a name="diagnostic-settings"></a>诊断设置
 
@@ -72,7 +145,7 @@ https://management.chinacloudapi.cn/{resource-id}/providers/microsoft.insights/d
 * 将 `{api-version}` 替换为 `2016-09-01`。
 * 将 `{resource-id}` 替换为要编辑其诊断设置的资源的 ID。 有关详细信息，请参阅[使用资源组管理 Azure 资源](../azure-resource-manager/management/manage-resource-groups-portal.md)。
 * 将 `Content-Type` 标头设置为 `application/json`。
-* 将授权标头设置为从 Azure Active Directory (Azure AD) 获取的 JSON Web 令牌。 有关详细信息，请参阅[对请求进行身份验证](../active-directory/develop/authentication-scenarios.md)。
+* 将授权标头设置为从 Azure Active Directory (Azure AD) 获取的 JSON Web 令牌。 有关详细信息，请参阅[对请求进行身份验证](../active-directory/develop/authentication-vs-authorization.md)。
 
 ##### <a name="body"></a>正文
 
@@ -193,7 +266,7 @@ https://management.chinacloudapi.cn/{resource-id}/providers/microsoft.insights/d
 * 将 `{api-version}` 替换为 `2016-09-01`。
 * 将 `{resource-id}` 替换为要编辑其诊断设置的资源的 ID。 有关详细信息，请参阅[使用资源组管理 Azure 资源](../azure-resource-manager/management/manage-resource-groups-portal.md)。
 * 将 `Content-Type` 标头设置为 `application/json`。
-* 将授权标头设置为从 Azure AD 获取的 JSON Web 令牌。 有关详细信息，请参阅[对请求进行身份验证](../active-directory/develop/authentication-scenarios.md)。
+* 将授权标头设置为从 Azure AD 获取的 JSON Web 令牌。 有关详细信息，请参阅[对请求进行身份验证](../active-directory/develop/authentication-vs-authorization.md)。
 
 ##### <a name="response"></a>响应
 
@@ -417,105 +490,7 @@ Log Analytics 从 Monitor 继承架构，但存在以下例外情况：
     | $.properties.Parameters | parameters | 动态 |
     | $.properties.SystemParameters | SystemParameters | 动态 |
     | $.properties.Tags | Tags | 动态 |
-    
-## <a name="metrics"></a>指标
 
-使用 Monitor 可以洞察 Azure 工作负荷的性能与运行状况。 最重要的 Monitor 数据类型是指标（也称为性能计数器）。 大多数 Azure 资源都会发出指标。 Monitor 提供多种方式来配置和使用这些指标，以便进行监视与故障排除。
-
-Azure 数据工厂版本 2 发出以下指标。
-
-| **指标**           | **指标显示名称**         | **单位** | **聚合类型** | **说明**                                       |
-|----------------------|---------------------------------|----------|----------------------|-------------------------------------------------------|
-| PipelineSucceededRuns | 成功的管道运行数指标 | 计数    | 总计                | 在一分钟时段内成功的管道运行总数。 |
-| PipelineFailedRuns   | 失败的管道运行数指标    | 计数    | 总计                | 在一分钟时段内失败的管道运行总数。    |
-| ActivitySucceededRuns | 成功的活动运行数指标 | 计数    | 总计                | 在一分钟时段内成功的活动运行总数。  |
-| ActivityFailedRuns   | 失败的活动运行数指标    | 计数    | 总计                | 在一分钟时段内失败的活动运行总数。     |
-| TriggerSucceededRuns | 成功的触发器运行数指标  | 计数    | 总计                | 在一分钟时段内成功的触发器运行总数。   |
-| TriggerFailedRuns    | 失败的触发器运行数指标     | 计数    | 总计                | 在一分钟时段内失败的触发器运行总数。      |
-
-若要访问指标，请参阅 [Azure Monitor 数据平台](/monitoring-and-diagnostics/monitoring-overview-metrics)中的说明。
-
-> [!NOTE]
-> 仅发出已完成、已触发的活动和管道运行事件。 **不**会发出正在进行的运行和沙盒/调试运行。 
-
-## <a name="monitor-data-factory-metrics-with-azure-monitor"></a>使用 Azure Monitor 监视数据工厂指标
-
-可以使用 Azure 数据工厂与 Monitor 的集成将数据路由到 Monitor。 此集成在以下情况下非常有用：
-
-* 可以针对由数据工厂发布到 Monitor 的丰富指标集编写复杂查询。 可以通过 Monitor 创建针对这些查询的自定义警报。
-
-* 你希望跨数据工厂进行监视。 可将来自多个数据工厂的数据路由到单个 Monitor 工作区。
-
-有关此功能的 7 分钟介绍和演示，请观看以下视频：
-
-> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Monitor-Data-Factory-pipelines-using-Operations-Management-Suite-OMS/player]
-
-### <a name="configure-diagnostic-settings-and-workspace"></a>配置诊断设置和工作区
-
-为数据工厂创建或添加诊断设置。
-
-1. 在门户中，转到“监视”。 选择“设置” > “诊断设置”。
-
-1. 选择要为其设置诊断设置的数据工厂。
-
-1. 如果所选数据工厂不存在任何设置，则系统会提示你创建设置。 选择“启用诊断”。
-
-   ![如果不存在任何设置，请创建一个诊断设置](media/data-factory-monitor-oms/monitor-oms-image1.png)
-
-   如果数据工厂中存在现有设置，你将看到数据工厂中已配置的设置列表。 选择“添加诊断设置”。
-
-   ![如果存在设置，则添加诊断设置](media/data-factory-monitor-oms/add-diagnostic-setting.png)
-
-1. 为设置指定名称，选择“发送到 Log Analytics”，然后从 **Log Analytics 工作区**中选择一个工作区。
-
-    ![命名设置并选择 log-analytics 工作区](media/data-factory-monitor-oms/monitor-oms-image2.png)
-
-1. 选择“保存” 。
-
-几分钟后，新设置将出现在此数据工厂的设置列表中。 生成新的事件数据后，诊断日志将立即流式传输到该工作区。 发出事件后可能需要最多 15 分钟的时间该事件才会出现在 Log Analytics 中。
-
-* 在“特定于资源”模式下，Azure 数据工厂中的诊断日志将流入 _ADFPipelineRun_、_ADFTriggerRun_ 和 _ADFActivityRun_ 表
-* 在“Azure 诊断”模式下，诊断日志流入 _AzureDiagnostics_ 表
-
-> [!NOTE]
-> 由于 Azure 日志表的列数不能超过 500，因此强烈建议选择“特定于资源”模式。 有关详细信息，请参阅 [Log Analytics 已知限制](../azure-monitor/platform/resource-logs-collect-workspace.md#column-limit-in-azurediagnostics)。
-
-## <a name="alerts"></a>警报
-
-登录到 Azure 门户，选择“Monitor” > “警报”以创建警报。 
-
-![门户菜单中的警报](media/monitor-using-azure-monitor/alerts_image3.png)
-
-### <a name="create-alerts"></a>创建警报
-
-1. 选择“+ 创建新的预警规则”，创建新的警报。
-
-    ![新建警报规则](media/monitor-using-azure-monitor/alerts_image4.png)
-
-1. 定义警报条件。
-
-    > [!NOTE]
-    > 请务必在“按资源类型筛选”下拉列表中选择“所有”。 
-
-    ![“定义警报条件”>“选择目标”，此时会打开“选择资源”窗格 ](media/monitor-using-azure-monitor/alerts_image5.png)
-
-    ![“定义警报条件”>“添加条件”，此时会打开“配置信号逻辑”窗格](media/monitor-using-azure-monitor/alerts_image6.png)
-
-    ![“配置信号类型”窗格](media/monitor-using-azure-monitor/alerts_image7.png)
-
-1. 定义警报详细信息。
-
-    ![警报详细信息](media/monitor-using-azure-monitor/alerts_image8.png)
-
-1. 定义操作组。
-
-    ![创建规则的屏幕截图，其中突出显示了“新建操作组”](media/monitor-using-azure-monitor/alerts_image9.png)
-
-    ![创建新的操作组](media/monitor-using-azure-monitor/alerts_image10.png)
-
-    ![配置电子邮件、短信、推送和语音](media/monitor-using-azure-monitor/alerts_image11.png)
-
-    ![删除操作组](media/monitor-using-azure-monitor/alerts_image12.png)
 
 ## <a name="next-steps"></a>后续步骤
 [以编程方式监视和管理管道](monitor-programmatically.md)

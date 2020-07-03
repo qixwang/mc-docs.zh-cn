@@ -9,13 +9,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 origin.date: 11/19/2019
-ms.date: 05/11/2020
-ms.openlocfilehash: 330dc91a67078ee8c6a4f070b7ea9ff7851d752c
-ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
+ms.date: 06/29/2020
+ms.openlocfilehash: ffddbb658966effc02a63063853da18889139ab2
+ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82198251"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85321317"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Azure 数据工厂中的管道和活动
 
@@ -26,7 +26,7 @@ ms.locfileid: "82198251"
 ## <a name="overview"></a>概述
 数据工厂可以包含一个或多个数据管道。 “管道”是共同执行一项任务的活动的逻辑分组。 例如，管道可能包含一组引入和清理日志数据的活动，然后在 HDInsight 群集上启动 Spark 作业以分析日志数据。 可以通过管道将活动作为一个集来管理，而非单独管理每个活动。 可以部署和计划管道，而不需单独对活动进行操作。
 
-管道中的活动定义对数据执行的操作。 例如，可使用复制活动将数据从本地 SQL Server 复制到 Azure Blob 存储。 然后，使用在 Azure HDInsight 群集上运行 Hive 脚本的 Hive 活动，将 Blob 存储中的数据处理/转换为生成输出数据。 最后，再使用一个复制活动将输出数据复制到 Azure Synapse Analytics 池，基于该池构建商业智能报告解决方案。
+管道中的活动定义对数据执行的操作。 例如，可使用复制活动将数据从 SQL Server 复制到 Azure Blob 存储。 然后，使用在 Azure HDInsight 群集上运行 Hive 脚本的 Hive 活动，将 Blob 存储中的数据处理/转换为生成输出数据。 最后，再使用一个复制活动将输出数据复制到 Azure Synapse Analytics 池，基于该池构建商业智能报告解决方案。
 
 数据工厂包含三组活动：[数据移动活动](copy-activity-overview.md)、[数据转换活动](transform-data.md)和[控制活动](control-flow-web-activity.md)。 每个活动可获取零个或多个输入[数据集](concepts-datasets-linked-services.md)，并生成一个或多个输出[数据集](concepts-datasets-linked-services.md)。 下图显示了数据工厂中管道、活动和数据集之间的关系：
 
@@ -97,14 +97,14 @@ Azure 数据工厂支持以下转换活动，这些活动既可以单独添加�
 }
 ```
 
-标记 | 说明 | 类型 | 必需
+标记 | 说明 | 类型 | 必须
 --- | ----------- | ---- | --------
-name | 管道的名称。 指定一个名称，它表示管道要执行的操作。 <br/><ul><li>最大字符数：140</li><li>必须以字母、数字或下划线 (\_) 开头</li><li>不允许使用以下字符：“.”、“+”、“?”、“/”、“<”、“>”、“*”、“%”、“&”、“:”、“\" </li></ul> | 字符串 | 是
-description | 指定描述管道用途的文本。 | 字符串 | 否
-activities | **activities** 部分中可定义有一个或多个活动。 请参阅[活动 JSON](#activity-json) 部分，以了解有关活动 JSON 元素的详细信息。 | 数组 | 是
-parameters | **parameters** 部分可在在管道内定义一个或多个参数，使你的管道能够灵活地重复使用。 | 列表 | 否
-concurrency | 管道可以具有的最大并发运行数。 默认情况下，没有最大值。 如果达到并发限制，则附加管道运行将排队，直到较早的管道完成为止 | 数字 | 否 
-annotations | 与管道关联的标记的列表 | 数组 | 否
+name | 管道的名称。 指定一个名称，它表示管道要执行的操作。 <br/><ul><li>最大字符数：140</li><li>必须以字母、数字或下划线 (\_) 开头</li><li>不允许使用以下字符：“.”、“+”、“?”、“/”、“<”、“>”、“*”、“%”、“&”、“:”、“\" </li></ul> | String | 是
+description | 指定描述管道用途的文本。 | String | 否
+活动 | **activities** 节中可定义有一个或多个活动。 请参阅[活动 JSON](#activity-json) 一节，以了解有关活动 JSON 元素的详细信息。 | Array | 是
+参数 | **参数**部分可在在管道内定义一个或多个参数，使你的管道能够灵活地重复使用。 | 列出 | 否
+concurrency | 管道可以具有的最大并发运行数。 默认情况下，没有最大值。 如果达到并发限制，则附加管道运行将排队，直到较早的管道完成为止 | Number | 否 
+annotations | 与管道关联的标记的列表 | Array | 否
 
 ## <a name="activity-json"></a>活动 JSON
 **activities** 节中可定义有一个或多个活动。 有两种主要类型的活动：执行和控制活动。
@@ -132,7 +132,7 @@ annotations | 与管道关联的标记的列表 | 数组 | 否
 
 下表描述了活动 JSON 定义中的属性：
 
-标记 | 说明 | 必需
+标记 | 说明 | 必须
 --- | ----------- | ---------
 name | 活动的名称。 指定一个名称，它表示活动要执行的操作。 <br/><ul><li>最大字符数：55</li><li>必须以字母、数字或下划线 (\_) 开头</li><li>不允许使用以下字符：“.”、“+”、“?”、“/”、“<”、“>”、“*”、“%”、“&”、“:”、“\" | 是</li></ul>
 description | 描述活动用途的文本 | 是
@@ -173,11 +173,11 @@ dependsOn | 该属性用于定义活动依赖项，以及后续活动对以前�
 }
 ```
 
-JSON 名称 | 说明 | 允许的值 | 必需
+JSON 名称 | 说明 | 允许的值 | 必须
 --------- | ----------- | -------------- | --------
-timeout | 指定活动运行的超时。 | 时间跨度 | 否。 默认超时为 7 天。
-retry | 最大重试次数 | 整数 | 否。 默认值为 0
-retryIntervalInSeconds | 重试之间的延迟（以秒为单位） | 整数 | 否。 默认为 30 秒
+timeout | 指定活动运行的超时。 | Timespan | 否。 默认超时为 7 天。
+retry | 最大重试次数 | Integer | 否。 默认值为 0
+retryIntervalInSeconds | 重试之间的延迟（以秒为单位） | Integer | 否。 默认为 30 秒
 secureOutput | 当设置为 true 时，来自活动的输出会被视为安全的，不会记录下来进行监视。 | 布尔 | 否。 默认值为 false。
 
 ### <a name="control-activity"></a>控制活动
@@ -197,7 +197,7 @@ secureOutput | 当设置为 true 时，来自活动的输出会被视为安全�
 }
 ```
 
-标记 | 说明 | 必需
+标记 | 说明 | 必须
 --- | ----------- | --------
 name | 活动的名称。 指定一个名称，它表示活动要执行的操作。<br/><ul><li>最大字符数：55</li><li>必须以字母、数字或下划线 (\_) 开头</li><li>不允许使用以下字符：“.”、“+”、“?”、“/”、“<”、“>”、“*”、“%”、“&”、“:”、“\" | 是</li><ul>
 description | 描述活动用途的文本 | 是
@@ -212,10 +212,10 @@ dependsOn | 该属性用于定义活动依赖项，以及后续活动对以前�
 
 例如，如果管道具有活动 A -> 活动 B，则可能发生的不同情况是：
 
-- 活动 B 对活动 A 具有依赖项条件“成功”  ：只有活动 A 的最终状态为“成功”，活动 B 才运行
-- 活动 B 对活动 A 具有依赖项条件“失败”  ：只有活动 A 的最终状态为“失败”，活动 B 才运行
-- 活动 B 对活动 A 具有依赖项条件“完成”  ：如果活动 A 的最终状态为“成功”或“失败”，则活动 B 运行
-- 活动 B 对活动 A 具有依赖项条件“跳过”  ：如果活动 A 的最终状态为“跳过”，则活动 B 运行。 在活动 X -> 活动 Y -> 活动 Z 的情况下出现跳过，其中每个活动仅在以前的活动成功后才运行。 如果活动 X 失败，则活动 Y 的状态为“跳过”，因为它从不执行。 类似地，活动 Z 的状态也为“跳过”。
+- 活动 B 对活动 A 具有依赖项条件“成功”：只有活动 A 的最终状态为“成功”，活动 B 才运行
+- 活动 B 对活动 A 具有依赖项条件“失败”：只有活动 A 的最终状态为“失败”，活动 B 才运行
+- 活动 B 对活动 A 具有依赖项条件“完成”：如果活动 A 的最终状态为“成功”或“失败”，则活动 B 运行
+- 活动 B 对活动 A 具有依赖项条件“跳过”：如果活动 A 的最终状态为“跳过”，则活动 B 运行。 在活动 X -> 活动 Y -> 活动 Z 的情况下出现跳过，其中每个活动仅在以前的活动成功后才运行。 如果活动 X 失败，则活动 Y 的状态为“跳过”，因为它从不执行。 类似地，活动 Z 的状态也为“跳过”。
 
 #### <a name="example-activity-2-depends-on-the-activity-1-succeeding"></a>示例：活动 2 是否运行取决于活动 1 是否成功运行
 
@@ -349,10 +349,10 @@ dependsOn | 该属性用于定义活动依赖项，以及后续活动对以前�
 请注意以下几点：
 
 - 在 activities 节中，只有一个活动的 **type** 设置为 **HDInsightHive**。
-- Hive 脚本文件 partitionweblogs.hql  存储在 Azure 存储帐户（由 scriptLinkedService 指定，名为 AzureStorageLinkedService）中，以及 `adfgetstarted` 容器的 script 文件夹中。
+- Hive 脚本文件 partitionweblogs.hql 存储在 Azure 存储帐户（由 scriptLinkedService 指定，名为 AzureStorageLinkedService）中，以及 `adfgetstarted` 容器的 script 文件夹中。
 - `defines` 部分用于指定以配置单元配置值传递到配置单元脚本的运行时设置（例如，$`{hiveconf:inputtable}`，`${hiveconf:partitionedtable}`）。
 
-每个转换活动的 typeProperties  节都不同。 若要了解有关转换活动所支持的类型属性的详细信息，请单击[数据转换活动](#data-transformation-activities)中的转换活动。
+每个转换活动的 typeProperties 节都不同。 若要了解有关转换活动所支持的类型属性的详细信息，请单击[数据转换活动](#data-transformation-activities)中的转换活动。
 
 有关创建此管道的完整演练，请参阅[教程：使用 Spark 转换数据](tutorial-transform-data-spark-powershell.md)。
 

@@ -1,24 +1,24 @@
 ---
-title: 文本翻译 API 字典查找方法
+title: 翻译器字典查找方法
 titleSuffix: Azure Cognitive Services
 description: 字典查找方法可为某个单词和少量的惯用语提供替代翻译。
 services: cognitive-services
-author: rajdeep-in
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 origin.date: 01/21/2020
-ms.date: 03/26/2020
-ms.author: v-junlch
-ms.openlocfilehash: f4e0fef6522ad2c6001af8381772f25aa1dc3199
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 06/23/2020
+ms.author: v-tawe
+ms.openlocfilehash: 2bb397099c75f729c76ae74181ef12f575a9757f
+ms.sourcegitcommit: 43db4001be01262959400663abf8219e27e5cb8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80342399"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85241562"
 ---
-# <a name="translator-text-api-30-dictionary-lookup"></a>文本翻译 API 3.0：字典查找
+# <a name="translator-30-dictionary-lookup"></a>翻译器 3.0：字典查找
 
 为某个单词和少量的惯用语提供替代翻译。 每条翻译都包含语性和回译列表。 回译可让用户在语境中理解该翻译。 使用[字典示例](./v3-0-dictionary-examples.md)操作可以进一步向下钻取，以查看每个翻译对的用法示例。
 
@@ -36,19 +36,19 @@ https://api.translator.azure.cn/dictionary/lookup?api-version=3.0
 
 | 查询参数  | 说明 |
 | ------ | ----------- |
-| api-version <img width=200/>   | 必需参数  。<br/>客户端所请求的 API 的版本。 值必须是 `3.0` |
-| 从 | 必需参数  。<br/>指定输入文本的语言。 源语言必须是 `dictionary` 范围中包含的[支持的语言](./v3-0-languages.md)之一。 |
-| to   | 必需参数  。<br/>指定输出文本的语言。 目标语言必须是 `dictionary` 范围中包含的[支持的语言](v3-0-languages.md)之一。 |
+| api-version <img width=200/>   | 必需参数。<br/>客户端所请求的 API 的版本。 值必须是 `3.0` |
+| from | 必需参数。<br/>指定输入文本的语言。 源语言必须是 `dictionary` 范围中包含的[支持的语言](./v3-0-languages.md)之一。 |
+| to   | 必需参数。<br/>指定输出文本的语言。 目标语言必须是 `dictionary` 范围中包含的[支持的语言](v3-0-languages.md)之一。 |
 
 
 请求标头包括：
 
-| 标头  | 说明 |
+| 头文件  | 说明 |
 | ------ | ----------- |
-| 身份验证标头 <img width=200/>  | 必需的请求标头  。<br/>请参阅<a href="/cognitive-services/translator/reference/v3-0-reference#authentication">用于身份验证的可用选项</a>。 |
-| Content-Type | 必需的请求标头  。<br/>指定有效负载的内容类型。 可能的值为：`application/json` |
-| Content-Length   | 必需的请求标头  。<br/>请求正文的长度。 |
-| X-ClientTraceId   | **可选**。<br/>客户端生成的 GUID，用于唯一标识请求。 如果在查询字符串中使用名为 `ClientTraceId` 的查询参数包括了跟踪 ID，则可以省略此标头。 |
+| 身份验证标头 <img width=200/>  | 必需的请求标头。<br/>请参阅<a href="/cognitive-services/translator/reference/v3-0-reference#authentication">用于身份验证的可用选项</a>。 |
+| Content-Type | 必需的请求标头。<br/>指定有效负载的内容类型。 可能的值为：`application/json` |
+| Content-Length   | 必需的请求标头。<br/>请求正文的长度。 |
+| X-ClientTraceId   | 可选。<br/>客户端生成的 GUID，用于唯一标识请求。 如果在查询字符串中使用名为 `ClientTraceId` 的查询参数包括了跟踪 ID，则可以省略此标头。 |
 
 ## <a name="request-body"></a>请求正文
 
@@ -69,17 +69,17 @@ https://api.translator.azure.cn/dictionary/lookup?api-version=3.0
 
 成功的响应是一个 JSON 数组，其中的每个结果对应于输入数组中的一个字符串。 结果对象包括以下属性：
 
-  * `normalizedSource`：一个字符串，提供源字词的规范化形式。 例如，如果请求为“JOHN”，则规范化形式为“john”。 此字段的内容将成为[查找示例](./v3-0-dictionary-examples.md)的输入。
+  * `normalizedSource`：一个字符串，提供源术语的规范化形式。 例如，如果请求为“JOHN”，则规范化形式为“john”。 此字段的内容将成为[查找示例](./v3-0-dictionary-examples.md)的输入。
     
-  * `displaySource`：一个字符串，以最适合向最终用户显示的形式提供源字词。 例如，如果输入为“JOHN”，则显示形式将反映该名字的一般拼写方式：“John”。 
+  * `displaySource`：一个字符串，以最适合向最终用户显示的形式提供源术语。 例如，如果输入为“JOHN”，则显示形式将反映该名字的一般拼写方式：“John”。 
 
-  * `translations`：源字词的翻译列表。 每个列表元素都是一个具有以下属性的对象：
+  * `translations`：源术语的翻译列表。 每个列表元素都是一个具有以下属性的对象：
 
-    * `normalizedTarget`：一个字符串，以目标语言提供此字词的规范化形式。 此值应用作[查找示例](./v3-0-dictionary-examples.md)的输入。
+    * `normalizedTarget`：一个字符串，以目标语言提供此术语的规范化形式。 此值应用作[查找示例](./v3-0-dictionary-examples.md)的输入。
 
-    * `displayTarget`：一个字符串，使用目标语言以最适合向最终用户显示的形式提供字词。 一般情况下，此值只是在大小写方面与 `normalizedTarget` 不同。 例如，专有名词“Juan”的拼写方式包括 `normalizedTarget = "juan"` 和 `displayTarget = "Juan"`。
+    * `displayTarget`：一个字符串，使用目标语言以最适合向最终用户显示的形式提供术语。 一般情况下，此值只是在大小写方面与 `normalizedTarget` 不同。 例如，专有名词“Juan”的拼写方式包括 `normalizedTarget = "juan"` 和 `displayTarget = "Juan"`。
 
-    * `posTag`：一个字符串，用于将此字词与词性标记相关联。
+    * `posTag`：一个字符串，用于将此术语与词性标记相关联。
 
         | 标记名称 | 说明  |
         |----------|--------------|
@@ -102,9 +102,9 @@ https://api.translator.azure.cn/dictionary/lookup?api-version=3.0
     
     * `backTranslations`：目标的“回译”列表。 例如，目标可以翻译成的源单词。 保证该列表包含请求的源单词（例如，如果查找的源单词是“fly”，则保证“fly”在 `backTranslations` 列表中）。 但是，不能保证该单词位于第一个位置，并且它往往不是在第一个位置。 `backTranslations` 列表的每个元素是以下属性描述的对象：
 
-        * `normalizedText`：一个字符串，提供目标回译成的源单词的规范化形式。 此值应用作[查找示例](./v3-0-dictionary-examples.md)的输入。        
+        * `normalizedText`：一个字符串，提供目标回译成的源术语的规范化形式。 此值应用作[查找示例](./v3-0-dictionary-examples.md)的输入。        
 
-        * `displayText`：一个字符串，以最适合向最终用户显示的形式，提供目标回译成的源单词。
+        * `displayText`：一个字符串，以最适合向最终用户显示的形式，提供目标回译成的源术语。
 
         * `numExamples`：一个整数，表示此翻译对可用的示例数。 必须通过单独调用[查找示例](./v3-0-dictionary-examples.md)来检索实际示例。 提供该数字的主要目的是方便在 UX 中显示。 例如，如果示例数大于零，则用户界面可以添加回译的超链接；如果没有任何示例，则以纯文本形式显示回译。 请注意，调用[查找示例](./v3-0-dictionary-examples.md)后返回的实际示例数可能小于 `numExamples`，因为可能对“fly”应用了其他筛选，以删除“错误的”示例。
         
@@ -117,13 +117,9 @@ https://api.translator.azure.cn/dictionary/lookup?api-version=3.0
 
 此示例演示如何在西班牙语中查找英语字词 `fly` 的替代翻译。
 
-# <a name="curl"></a>[curl](#tab/curl)
-
-```
+```curl
 curl -X POST "https://api.translator.azure.cn/dictionary/lookup?api-version=3.0&from=en&to=es" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Ocp-Apim-Subscription-Region: your-region" -H "Content-Type: application/json" -d "[{'Text':'fly'}]"
 ```
-
----
 
 响应正文是（为清楚起见已缩写）：
 
@@ -168,13 +164,9 @@ curl -X POST "https://api.translator.azure.cn/dictionary/lookup?api-version=3.0&
 
 此示例演示当查找的字词在有效的字典对中不存在时会发生什么情况。
 
-# <a name="curl"></a>[curl](#tab/curl)
-
-```
+```curl
 curl -X POST "https://api.translator.azure.cn/dictionary/lookup?api-version=3.0&from=en&to=es" -H "X-ClientTraceId: 875030C7-5380-40B8-8A03-63DACCF69C11" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Ocp-Apim-Subscription-Region: your-region" -H "Content-Type: application/json" -d "[{'Text':'fly123456'}]"
 ```
-
----
 
 由于在字典中未找到该字词，响应正文包含一个空 `translations` 列表。
 

@@ -10,13 +10,13 @@ manager: digimobile
 ms.reviewer: maghan
 ms.topic: conceptual
 origin.date: 01/16/2018
-ms.date: 05/11/2020
-ms.openlocfilehash: 6164027b8f529accd89e89ed7a2d03aec53336d9
-ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
+ms.date: 06/29/2020
+ms.openlocfilehash: f403ab59e73c28ae151f59706f27b21736f26b60
+ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82198020"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85323300"
 ---
 # <a name="azure-powershell-samples-for-azure-data-factory"></a>适用于 Azure 数据工厂的 Azure PowerShell 示例
 
@@ -28,7 +28,7 @@ ms.locfileid: "82198020"
 |---|---|
 |**复制数据**||
 |[将 blob 从 Azure Blob 存储中的一个文件夹复制到另一个文件夹](scripts/copy-azure-blob-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 此 PowerShell 脚本将 blob 从 Azure Blob 存储中的一个文件夹复制到同一 Blob 存储中的另一个文件夹。 |
-|[将数据从本地 SQL Server 复制到 Azure Blob 存储](scripts/hybrid-copy-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 此 PowerShell 脚本可从本地 SQL Server 数据库将数据复制到 Azure Blob 存储。 |
+|[将数据从 SQL Server 复制到 Azure Blob 存储](scripts/hybrid-copy-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 此 PowerShell 脚本将数据从 SQL Server 数据库复制到 Azure Blob 存储。 |
 |[大容量复制](scripts/bulk-copy-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 此 PowerShell 示例脚本将数据从 Azure SQL 数据库中的多个表复制到 Azure SQL 数据仓库。 |
 |[增量复制](scripts/incremental-copy-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 将源中的数据初始完全复制到接收器后，此示例 PowerShell 脚本仅从源数据存储将新的或已更新记录加载到接收器数据存储。 |
 |**转换数据**||

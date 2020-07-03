@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 04/29/2020
+ms.date: 06/22/2020
 ms.author: v-junlch
 author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c43099cec9788c7912c4ef6103eae3c9ffc9dcc
-ms.sourcegitcommit: 95efd248f5ee3701f671dbd5cfe0aec9c9959a24
+ms.openlocfilehash: 50848c27539d49437007126922daccaa41f9b03f
+ms.sourcegitcommit: 43db4001be01262959400663abf8219e27e5cb8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82515700"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85241486"
 ---
 # <a name="limitations-of-azure-ad-b2b-collaboration"></a>Azure Active Directory B2B 协作的限制
 Azure Active Directory (Azure AD) B2B 协作当前具有本文中描述的限制。
@@ -32,6 +32,10 @@ Azure AD B2B 受制于 Azure AD 服务目录限制。 有关用户可以创建�
 
 ## <a name="national-clouds"></a>国家云
 [国家云](/active-directory/develop/authentication-national-cloud)是物理上独立的 Azure 实例。 不支持跨国家云边界的 B2B 协作。 例如，如果 Azure 租户位于公共全球云中，则你无法邀请其帐户位于国家云中的用户。 若要与该用户协作，请让他们使用其他电子邮件地址，或者在你的目录中为他们创建成员用户帐户。
+
+> [!IMPORTANT]
+> Azure 中国 b2b 不支持非 AAD 帐户（如 Microsoft 帐户）、Google 联合身份验证、直接联合身份验证和电子邮件一次性密码。
+>
 
 ## <a name="next-steps"></a>后续步骤
 

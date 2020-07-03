@@ -1,24 +1,24 @@
 ---
-title: 文本翻译 API 翻译方法
+title: 翻译器 Translate 方法
 titleSuffix: Azure Cognitive Services
-description: 了解用于翻译文本的 Azure 认知服务文本翻译 API Translate 方法的参数、标头和正文消息。
+description: 了解用于翻译文本的 Azure 认知服务翻译器 Translate 方法的参数、标头和正文消息。
 services: cognitive-services
 author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-origin.date: 03/20/2020
-ms.date: 03/26/2020
-ms.author: v-lingwu
-ms.openlocfilehash: f55fa3f75495a3a162d92eb6f4ce70b66404c41b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+origin.date: 04/17/2020
+ms.date: 06/22/2020
+ms.author: v-tawe
+ms.openlocfilehash: 6da0370b784a049736c321d85afa9de797a1bde2
+ms.sourcegitcommit: 43db4001be01262959400663abf8219e27e5cb8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80342396"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85241593"
 ---
-# <a name="translator-text-api-30-translate"></a>文本翻译 API 3.0：翻译
+# <a name="translator-30-translate"></a>翻译器 3.0：Translate
 
 翻译文本。
 
@@ -55,12 +55,12 @@ https://api.translator.azure.cn/translate?api-version=3.0
   <th width="20%">查询参数</th>
   <th>说明</th>
   <tr>
-    <td>从</td>
+    <td>from</td>
     <td>可选参数。<br/>指定输入文本的语言。 可以使用 <code>translation</code> 范围来查找<a href="./v3-0-languages.md">支持的语言</a>，了解哪些语言可以翻译。 如果未指定 <code>from</code> 参数，则会应用自动语言检测来确定源语言。 <br/><br/>使用<a href="/cognitive-services/translator/dynamic-dictionary">动态字典</a>功能时，必须使用 <code>from</code> 参数而不是自动检测。</td>
   </tr>  
   <tr>
     <td>textType</td>
-    <td>可选参数。<br/>定义要翻译的文本是纯文本还是 HTML 文本。 HTML 必须是格式正确的完整元素。 可能的值为 <code>plain</code>（默认）<code>html</code>。</td>
+    <td>可选参数。<br/>定义要翻译的文本是纯文本还是 HTML 文本。 HTML 必须是格式正确的完整元素。 可能的值为 <code>plain</code>（默认）或 <code>html</code>上获取。</td>
   </tr>
   <tr>
     <td>category</td>
@@ -96,7 +96,7 @@ https://api.translator.azure.cn/translate?api-version=3.0
   </tr>
   <tr>
     <td>allowFallback</td>
-    <td>可选参数。<br/>指定当自定义系统不存在时允许服务回退到一个常规系统。 可能的值为 <code>true</code>（默认）<code>false</code>。<br/><br/><code>allowFallback=false</code> 指定翻译应仅使用针对由此请求指定的 <code>category</code> 而训练的系统。 如果将语言 X 翻译成语言 Y 需要通过枢轴语言 E 进行链接，那么此链中的所有系统（X->E 和 E->Y）将需要进行自定义并且具有相同的类别。 如果未通过特定类别找到任何系统，此请求将返回 400 状态代码。 <code>allowFallback=true</code> 指定当自定义系统不存在时允许服务回退到一个常规系统。
+    <td>可选参数。<br/>指定当自定义系统不存在时允许服务回退到一个常规系统。 可能的值为 <code>true</code>（默认）<code>false</code>。<br/><br/><code>allowFallback=false</code> 指定翻译只应使用针对 <code>category</code>（由请求指定）训练的系统。 如果将语言 X 翻译成语言 Y 需要通过枢轴语言 E 进行链接，那么此链中的所有系统（X->E 和 E->Y）需要进行自定义并且需要具有相同的类别。 如果未通过特定类别找到任何系统，此请求会返回 400 状态代码。 <code>allowFallback=true</code> 指定当自定义系统不存在时允许服务回退到一个常规系统。
 </td>
   </tr>
 </table> 
@@ -104,7 +104,7 @@ https://api.translator.azure.cn/translate?api-version=3.0
 请求标头包括：
 
 <table width="100%">
-  <th width="20%">标头</th>
+  <th width="20%">头文件</th>
   <th>说明</th>
   <tr>
     <td>身份验证标头</td>
@@ -120,7 +120,7 @@ https://api.translator.azure.cn/translate?api-version=3.0
   </tr>
   <tr>
     <td>X-ClientTraceId</td>
-    <td><em>可选</em>。<br/>客户端生成的 GUID，用于唯一标识请求。 如果在查询字符串中使用名为 <code>ClientTraceId</code> 的查询参数包括了跟踪 ID，则可以省略此标头。</td>
+    <td>可选。<br/>客户端生成的 GUID，用于唯一标识请求。 如果在查询字符串中使用名为 <code>ClientTraceId</code> 的查询参数包括了跟踪 ID，则可以省略此标头。</td>
   </tr>
 </table> 
 
@@ -182,7 +182,7 @@ https://api.translator.azure.cn/translate?api-version=3.0
 ## <a name="response-headers"></a>响应标头
 
 <table width="100%">
-  <th width="20%">标头</th>
+  <th width="20%">头文件</th>
   <th>说明</th>
     <tr>
     <td>X-RequestId</td>
@@ -190,7 +190,7 @@ https://api.translator.azure.cn/translate?api-version=3.0
   </tr>
   <tr>
     <td>X-MT-System</td>
-    <td>指定用于将每种语言翻译“到”所请求翻译语言的系统类型。 此值是以逗号分隔的字符串列表。 每个字符串指示一个类型：<br/><ul><li>自定义 - 请求包括一个自定义系统，并且在翻译期间至少使用了一个自定义系统。</li><li>团队 - 所有其他要求</li></td>
+    <td>请求翻译时，对于每种“目标”语言，指定用于翻译的系统类型。 此值是以逗号分隔的字符串列表。 每个字符串指示一个类型：<br/><ul><li>自定义 - 请求包括一个自定义系统。在翻译期间至少使用了一个自定义系统。</li><li>团队 - 所有其他请求</li></td>
   </tr>
 </table> 
 
@@ -219,7 +219,7 @@ https://api.translator.azure.cn/translate?api-version=3.0
   </tr>
   <tr>
     <td>408</td>
-    <td>无法满足请求，因为缺少资源。 请检查详细错误消息。 使用自定义 <code>category</code> 时，这通常指示自定义翻译系统尚不可用于为请求提供服务。 应在等待一段时间（例如 1 分钟）后重试此请求。</td>
+    <td>无法满足请求，因为缺少资源。 请检查详细错误消息。 使用自定义 <code>category</code> 时，这通常指示自定义翻译系统尚不可用于处理请求。 应在等待一段时间（例如 1 分钟）后重试此请求。</td>
   </tr>
   <tr>
     <td>429</td>
@@ -235,7 +235,7 @@ https://api.translator.azure.cn/translate?api-version=3.0
   </tr>
 </table> 
 
-如果发生错误，请求也将返回 JSON 错误响应。 错误代码是一个 6 位数字，包括 3 位数的 HTTP 状态代码，后接用于进一步将错误分类的 3 位数。 常见错误代码可在 [v3 文本翻译 API 参考页面](/cognitive-services/translator/reference/v3-0-reference#errors)上找到。 
+如果发生错误，请求也将返回 JSON 错误响应。 错误代码是一个 6 位数字，包括 3 位数的 HTTP 状态代码，后接用于进一步将错误分类的 3 位数。 常见错误代码可在 [v3 翻译器参考页](/cognitive-services/translator/reference/v3-0-reference#errors)上找到。 
 
 ## <a name="examples"></a>示例
 
@@ -288,7 +288,7 @@ curl -X POST "https://api.translator.azure.cn/translate?api-version=3.0&to=zh-Ha
 让我们添加音译，对上一示例进行扩展。 以下请求要求提供以拉丁字母拼写的中文翻译。
 
 ```curl
-curl -X POST "https://api.translator.azure.cn/translate?api-version=3.0&to=zh-Hans&toScript=Latn" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Ocp-Apim-Subscription-Region: your-region" -H "Content-Type: application/json" -d "[{'Text':'Hello, what is your name?'}]"
+curl -X POST "https://api.translator.azure.cn/translate?api-version=3.0&to=zh-Hans&toScript=Latn" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Ocp-Apim-Subscription-Region: your-region" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'Hello, what is your name?'}]"
 ```
 
 响应正文为：
@@ -315,7 +315,7 @@ curl -X POST "https://api.translator.azure.cn/translate?api-version=3.0&to=zh-Ha
 一次翻译多个字符串时，只需在请求正文中指定一个字符串数组即可。
 
 ```curl
-curl -X POST "https://api.translator.azure.cn/translate?api-version=3.0&from=en&to=zh-Hans" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Ocp-Apim-Subscription-Region: your-region" -H "Content-Type: application/json" -d "[{'Text':'Hello, what is your name?'}, {'Text':'I am fine, thank you.'}]"
+curl -X POST "https://api.translator.azure.cn/translate?api-version=3.0&from=en&to=zh-Hans" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Ocp-Apim-Subscription-Region: your-region" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'Hello, what is your name?'}, {'Text':'I am fine, thank you.'}]"
 ```
 
 响应正文为：
@@ -340,7 +340,7 @@ curl -X POST "https://api.translator.azure.cn/translate?api-version=3.0&from=en&
 以下示例演示如何在一个请求中将同一输入翻译为多种语言。
 
 ```curl
-curl -X POST "https://api.translator.azure.cn/translate?api-version=3.0&from=en&to=zh-Hans&to=de" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Ocp-Apim-Subscription-Region: your-region" -H "Content-Type: application/json" -d "[{'Text':'Hello, what is your name?'}]"
+curl -X POST "https://api.translator.azure.cn/translate?api-version=3.0&from=en&to=zh-Hans&to=de" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Ocp-Apim-Subscription-Region: your-region" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'Hello, what is your name?'}]"
 ```
 
 响应正文为：
@@ -367,7 +367,7 @@ curl -X POST "https://api.translator.azure.cn/translate?api-version=3.0&from=en&
   <th>操作</th>
   <tr>
     <td><code>NoAction</code></td>
-    <td>此选项为默认行为。 不雅内容会从源传递到目标。<br/><br/>
+    <td>这是默认行为。 不雅内容会从源传递到目标。<br/><br/>
     <strong>示例源（日语）</strong>：彼はジャッカスです。<br/>
     <strong>示例翻译（中文）</strong>：他是一个笨蛋。
     </td>
@@ -384,17 +384,17 @@ curl -X POST "https://api.translator.azure.cn/translate?api-version=3.0&from=en&
     <td>不雅词语会在输出中使用标记进行替换。 标记取决于 <code>ProfanityMarker</code> 参数。<br/><br/>
 如果 <code>ProfanityMarker=Asterisk</code>，不雅词语会被替换为 <code>***</code>：<br/>
     <strong>示例源（日语）</strong>：彼はジャッカスです。<br/>
-    <strong>示例翻译（中文）</strong>：他是一个\*\*\*。<br/><br/>
+    <strong>示例翻译（中文）</strong>：他是一个 \*\*\*。<br/><br/>
 如果 <code>ProfanityMarker=Tag</code>，则不雅词语会被括在 XML 标记 &lt;profanity&gt; 和 &lt;/profanity&gt; 中：<br/>
     <strong>示例源（日语）</strong>：彼はジャッカスです。<br/>
-    <strong>示例翻译（中文）</strong>：他是一个&lt;profanity&gt;笨蛋&lt;/profanity&gt;。
+    <strong>示例翻译（中文）</strong>：他是一个 &lt;profanity&gt;笨蛋&lt;/profanity&gt;。
   </tr>
 </table> 
 
 例如：
 
 ```curl
-curl -X POST "https://api.translator.azure.cn/translate?api-version=3.0&from=en&to=de&profanityAction=Marked" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Ocp-Apim-Subscription-Region: your-region" -H "Content-Type: application/json" -d "[{'Text':'This is a freaking good idea.'}]"
+curl -X POST "https://api.translator.azure.cn/translate?api-version=3.0&from=en&to=de&profanityAction=Marked" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Ocp-Apim-Subscription-Region: your-region" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'This is a freaking good idea.'}]"
 ```
 这样会返回：
 
@@ -411,7 +411,7 @@ curl -X POST "https://api.translator.azure.cn/translate?api-version=3.0&from=en&
 与以下示例比较：
 
 ```curl
-curl -X POST "https://api.translator.azure.cn/translate?api-version=3.0&from=en&to=de&profanityAction=Marked&profanityMarker=Tag" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Ocp-Apim-Subscription-Region: your-region" -H "Content-Type: application/json" -d "[{'Text':'This is a freaking good idea.'}]"
+curl -X POST "https://api.translator.azure.cn/translate?api-version=3.0&from=en&to=de&profanityAction=Marked&profanityMarker=Tag" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Ocp-Apim-Subscription-Region: your-region" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'This is a freaking good idea.'}]"
 ```
 
 上一个请求返回：
@@ -438,7 +438,7 @@ curl -X POST "https://api.translator.azure.cn/translate?api-version=3.0&from=en&
 下面是用于演示的示例请求。
 
 ```curl
-curl -X POST "https://api.translator.azure.cn/translate?api-version=3.0&from=en&to=zh-Hans&textType=html" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Ocp-Apim-Subscription-Region: your-region" -H "Content-Type: application/json" -d "[{'Text':'<div class=\"notranslate\">This will not be translated.</div><div>This will be translated.</div>'}]"
+curl -X POST "https://api.translator.azure.cn/translate?api-version=3.0&from=en&to=zh-Hans&textType=html" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Ocp-Apim-Subscription-Region: your-region" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'<div class=\"notranslate\">This will not be translated.</div><div>This will be translated.</div>'}]"
 ```
 
 响应为：
@@ -455,10 +455,18 @@ curl -X POST "https://api.translator.azure.cn/translate?api-version=3.0&from=en&
 
 ### <a name="obtain-alignment-information"></a>获取比对信息
 
+对齐将作为以下格式的字符串值返回给源的每个词。 每个词的信息由一个空格分隔，其中包括非空格分隔的语言（脚本），比如中文：
+
+[[SourceTextStartIndex]:[SourceTextEndIndex]–[TgtTextStartIndex]:[TgtTextEndIndex]] *
+
+对齐字符串示例：“0:0-7:10 1:2-11:20 3:4-0:3 3:4-4:6 5:5-21:21”。
+
+换而言之，冒号分隔开始和结束索引，连字符分隔语言，空格分隔词。 一个单词可能与另一种语言中的 0 个、1 个或多个单词比对，而比对的词可能是不连续的。 当没有可用的对齐信息时，Alignment 元素将为空。 在这种情况下，该方法不会返回任何错误。
+
 若要接收比对信息，请在查询字符串中指定 `includeAlignment=true`。
 
 ```
-curl -X POST "https://api.translator.azure.cn/translate?api-version=3.0&from=en&to=fr&includeAlignment=true" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Ocp-Apim-Subscription-Region: your-region" -H "Content-Type: application/json" -d "[{'Text':'The answer lies in machine translation.'}]"
+curl -X POST "https://api.translator.azure.cn/translate?api-version=3.0&from=en&to=fr&includeAlignment=true" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Ocp-Apim-Subscription-Region: your-region" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'The answer lies in machine translation.'}]"
 ```
 
 响应为：
@@ -479,13 +487,17 @@ curl -X POST "https://api.translator.azure.cn/translate?api-version=3.0&from=en&
 
 比对信息以 `0:2-0:1` 开头，这意味着源文本中的头三个字符 (`The`) 映射到翻译文本中的头两个字符 (`La`)。
 
-请注意以下限制：
+#### <a name="limitations"></a>限制
+获取对齐信息是一项实验性功能，我们已启用此功能，以使用可能的短语映射来创建原型研究和体验。 我们可能会选择在将来停止支持此功能。 下面是一些不支持对齐的显著限制：
 
+* 对齐不适用于 HTML 格式的文本（即 textType=html）
 * 仅针对一部分语言对返回比对内容：
-  - 从英语到任何其他语言；
-  - 从任何其他语言到英语，除了简体中文、繁体中文和拉脱维亚语到英语；
+  - 从英语到除繁体中文、粤语（繁体）或塞尔维亚语（西里尔文）外的任何其他语言，以及从此类其他语言到英语。
   - 从日语到韩语或从韩语到日语。
+  - 从日语到简体中文以及从简体中文到日语。 
+  - 从简体中文到繁体中文以及从繁体中文到简体中文。 
 * 如果句子是预录翻译，则不会收到比对内容。 预录翻译示例有“This is a test”、“I love you”，以及其他高频句子。
+* 当应用任何方法来防止翻译时，对齐功能不可用，如[此文](../prevent-translation.md)所述
 
 ### <a name="obtain-sentence-boundaries"></a>获取句子边界
 
@@ -513,7 +525,7 @@ curl -X POST "https://api.translator.azure.cn/translate?api-version=3.0&from=en&
 
 ### <a name="translate-with-dynamic-dictionary"></a>使用动态词典进行翻译
 
-若已知道要应用于某个单词或短语的翻译，可以在请求中将其作为标记提供。 动态词典仅适用于复合名词，例如专有名称和产品名称。
+若已知道要应用于某个单词或短语的翻译，可以在请求中将其作为标记提供。 动态字典仅适用于专有名词，例如个人姓名和产品名称。
 
 要提供的标记使用以下语法。
 
@@ -524,7 +536,7 @@ curl -X POST "https://api.translator.azure.cn/translate?api-version=3.0&from=en&
 例如，考虑英语句子“The word wordomatic is a dictionary entry.”。 若要在翻译中保留单词 _wordomatic_，请发送请求：
 
 ```
-curl -X POST "https://api.translator.azure.cn/translate?api-version=3.0&from=en&to=de" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Ocp-Apim-Subscription-Region: your-region" -H "Content-Type: application/json" -d "[{'Text':'The word <mstrans:dictionary translation=\"wordomatic\">word or phrase</mstrans:dictionary> is a dictionary entry.'}]"
+curl -X POST "https://api.translator.azure.cn/translate?api-version=3.0&from=en&to=de" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Ocp-Apim-Subscription-Region: your-region" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'The word <mstrans:dictionary translation=\"wordomatic\">word or phrase</mstrans:dictionary> is a dictionary entry.'}]"
 ```
 
 结果为：

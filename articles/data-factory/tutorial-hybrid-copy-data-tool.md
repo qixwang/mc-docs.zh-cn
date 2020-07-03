@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 复制数据工具复制本地数据
-description: 创建一个 Azure 数据工厂，然后使用“复制数据”工具将数据从本地 SQL Server 数据库复制到 Azure Blob 存储。
+description: 创建一个 Azure 数据工厂，然后使用“复制数据”工具将数据从 SQL Server 数据库复制到 Azure Blob 存储。
 services: data-factory
 ms.author: v-jay
 author: WenJason
@@ -10,20 +10,20 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-origin.date: 04/09/2018
-ms.date: 05/11/2020
-ms.openlocfilehash: 04d98f60b5be2bddd93b1d9cc24e01db995a88b1
-ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
+origin.date: 06/09/2020
+ms.date: 06/29/2020
+ms.openlocfilehash: 2adb6e18d6c88a3506e2c88b771bf7a0a5e6d34e
+ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82198164"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85322024"
 ---
-# <a name="copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage-by-using-the-copy-data-tool"></a>使用“复制数据”工具将数据从本地 SQL Server 数据库复制到 Azure Blob 存储
+# <a name="copy-data-from-a-sql-server-database-to-azure-blob-storage-by-using-the-copy-data-tool"></a>使用“复制数据”工具将数据从 SQL Server 数据库复制到 Azure Blob 存储
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-在本教程中，我们将使用 Azure 门户创建数据工厂。 然后，使用“复制数据”工具创建一个管道，用于将数据从本地 SQL Server 数据库复制到 Azure Blob 存储。
+在本教程中，我们将使用 Azure 门户创建数据工厂。 然后，使用“复制数据”工具创建一个管道，用于将数据从 SQL Server 数据库复制到 Azure Blob 存储。
 
 > [!NOTE]
 > - 如果对 Azure 数据工厂不熟悉，请参阅[数据工厂简介](introduction.md)。
@@ -45,7 +45,7 @@ ms.locfileid: "82198164"
 若要查看自己在订阅中的权限，请转到 Azure 门户。 在右上角选择自己的用户名，然后选择“权限”。 如果可以访问多个订阅，请选择相应的订阅。 有关如何将用户添加到角色的示例说明，请参阅[使用 RBAC 和 Azure 门户管理访问权限](../role-based-access-control/role-assignments-portal.md)。
 
 ### <a name="sql-server-2014-2016-and-2017"></a>SQL Server 2014、2016 和 2017
-在本教程中，请将本地 SQL Server 数据库用作源数据存储。 首先，在本教程中创建的数据工厂中的管道将数据从这个本地 SQL Server 数据库（源）复制到 Blob 存储（接收器）。 然后，你可以在 SQL Server 数据库中创建名为 **emp** 的表，并向表中插入几个示例条目。
+在本教程中，需将 SQL Server 数据库用作源数据存储。 在本教程中创建的数据工厂中的管道将数据从这个 SQL Server 数据库（源）复制到 Blob 存储（接收器）。 然后，你可以在 SQL Server 数据库中创建名为 **emp** 的表，并向表中插入几个示例条目。
 
 1. 启动 SQL Server Management Studio。 如果此软件尚未安装在计算机上，请访问[下载 SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)。
 
@@ -72,7 +72,7 @@ ms.locfileid: "82198164"
     ```
 
 ### <a name="azure-storage-account"></a>Azure 存储帐户
-在本教程中，请使用常规用途的 Azure 存储帐户（具体说来就是 Blob 存储）作为目标/接收器数据存储。 如果没有常规用途的存储帐户，请参阅[创建存储帐户](../storage/common/storage-account-create.md)中的创建说明。 在本教程中创建的数据工厂中的管道将数据从本地 SQL Server 数据库（源）复制到此 Blob 存储（接收器）。 
+在本教程中，请使用常规用途的 Azure 存储帐户（具体说来就是 Blob 存储）作为目标/接收器数据存储。 如果没有常规用途的存储帐户，请参阅[创建存储帐户](../storage/common/storage-account-create.md)中的创建说明。 在本教程中创建的数据工厂中的管道将数据从 SQL Server 数据库（源）复制到此 Blob 存储（接收器）。 
 
 #### <a name="get-the-storage-account-name-and-account-key"></a>获取存储帐户名称和帐户密钥
 在本教程中，请使用存储帐户的名称和密钥。 若要获取存储帐户的名称和密钥，请执行以下步骤：
@@ -144,18 +144,15 @@ ms.locfileid: "82198164"
 
 1. 在“源数据存储”页面上，单击“创建新连接”。
 
-
 1. 在“新建链接服务”下，搜索“SQL Server”，然后选择“继续”。
 
 1. 在“新建链接服务(SQL Server)”对话框中的“名称”下输入“SqlServerLinkedService”  。 在“通过集成运行时连接”下选择“+新建”。  必须创建自承载的 Integration Runtime，将其下载到计算机，然后将其注册到数据工厂。 自承载的 Integration Runtime 时可在本地环境与云之间复制数据。
 
+1. 在“集成运行时安装”对话框中选择“自承载”。  然后选择“继续”。
 
-1. 在“集成运行时安装”对话框中选择“自承载”。  然后，选择“下一步”。
+   ![创建集成运行时](./media/tutorial-hybrid-copy-data-tool/create-self-hosted-integration-runtime.png)
 
-   ![创建集成运行时](./media/tutorial-hybrid-copy-data-tool/create-integration-runtime-dialog0.png)
-
-1. 在“集成运行时安装”对话框中的“名称”下输入 **TutorialIntegrationRuntime**。  然后，选择“下一步”。
-
+1. 在“集成运行时安装”对话框中的“名称”下输入 **TutorialIntegrationRuntime**。  然后选择“创建”。
 
 1. 在“集成运行时安装”对话框中，选择“单击此处对此计算机启动快速安装”。  此操作在计算机上安装集成运行时，并将其注册到数据工厂。 或者，可以使用手动安装选项来下载安装文件、运行该文件，并使用密钥来注册集成运行时。
 
@@ -167,13 +164,13 @@ ms.locfileid: "82198164"
 
     a. 在“名称”下输入 **SqlServerLinkedService**。
 
-    b. 在“服务器名称”下，输入本地 SQL Server 实例的名称。
+    b. 在“服务器名称”下，输入 SQL Server 实例的名称。
 
     c. 在“数据库名称”下输入本地数据库的名称。
 
     d. 在“身份验证类型”下选择适当的身份验证。
 
-    e. 在“用户名”下输入有权访问本地 SQL Server 的用户名。
+    e. 在“用户名”下输入有权访问 SQL Server 的用户名。
 
     f. 输入该用户的**密码**。
 
@@ -214,24 +211,21 @@ ms.locfileid: "82198164"
 
 1. 在“摘要”对话框中，复查所有设置的值，然后选择“下一步”。 
 
-1. 在“部署”页中，选择“监视”可以监视创建的管道或任务。 
+1. 在“部署”页中，选择“监视”可以监视管道（任务） 。 
 
-   ![“部署”页](./media/tutorial-hybrid-copy-data-tool/deployment-page.png)
+1. 管道运行完成后，可以查看所创建的管道的状态。 
 
-1. 在“监视”选项卡中，可以查看创建的管道的状态。 可以使用“操作”列中的链接查看与管道运行关联的活动运行，以及重新运行管道。
+1. 在“管道运行”页上，选择“刷新”来刷新列表。 单击“管道名称”下的链接，查看活动运行详细信息或重新运行管道。 
 
-1. 选择“操作”列中的“查看活动运行”链接可以查看与管道运行关联的活动运行。  若要查看复制操作的详细信息，请选择“操作”列中的“详细信息”链接（眼镜图标）。  若要切换回“管道运行”视图，请选择顶部的“管道运行” 。
+1. 在“活动运行”页上，选择“活动名称”列下的“详细信息”链接（眼镜图标），以获取有关复制操作的更多详细信息。 若要回到“管道运行”视图，请选择痕迹导航菜单中的“所有管道运行”链接。 若要刷新视图，请选择“刷新”。
 
 1. 确认可以在 **adftutorial** 容器的 **fromonprem** 文件夹中看到输出文件。
 
-
 1. 选择左侧的“编辑”选项卡可以切换到编辑器模式。 可以使用编辑器来更新该工具创建的链接服务、数据集和管道。 选择“代码”可以查看与编辑器中打开的实体相关联的 JSON 代码。 有关如何在数据工厂 UI 中编辑这些实体的详细信息，请参阅[此教程的 Azure 门户版本](tutorial-copy-data-portal.md)。
-
-   ![“编辑”选项卡](./media/tutorial-hybrid-copy-data-tool/edit-tab.png)
 
 
 ## <a name="next-steps"></a>后续步骤
-此示例中的管道可将数据从本地 SQL Server 数据库复制到 Blob 存储。 你已了解如何：
+此示例中的管道可将数据从 SQL Server 数据库复制到 Blob 存储。 你已了解如何：
 
 > [!div class="checklist"]
 > * 创建数据工厂。

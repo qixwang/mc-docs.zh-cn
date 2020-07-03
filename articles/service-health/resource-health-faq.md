@@ -3,12 +3,12 @@ title: Azure 资源运行状况常见问题解答
 description: Azure 资源运行状况概述
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: c4bc0b77ded55d2ab6dc3517a222e4bb6bc5ffba
-ms.sourcegitcommit: e3512c5c2bbe61704d5c8cbba74efd56bfe91927
+ms.openlocfilehash: 3d687f794dc48d58d3e748486d2ec3f8fb0866dc
+ms.sourcegitcommit: 43db4001be01262959400663abf8219e27e5cb8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82267620"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85241586"
 ---
 # <a name="azure-resource-health-faq"></a>Azure 资源运行状况常见问题解答
 获取 Azure 资源运行状况常见问题的解答。
@@ -46,13 +46,13 @@ ms.locfileid: "82267620"
 在门户中，用户启动的操作用蓝色通知图标显示，而计划内和计划外事件则用红色警告图标显示。 [资源运行状况概述](Resource-health-overview.md)中提供了更多详细信息。  
 
 ## <a name="can-i-integrate-resource-health-with-my-monitoring-tools"></a>能否将资源运行状况与监视工具集成？
-资源运行状况为基于活动日志的警报提供[预览支持](resource-health-alert-arm-template-guide.md)。 活动日志警报使用[操作组](/azure-monitor/platform/action-groups)来通知用户已触发警报。 操作组支持各种通知通道，例如电子邮件、短信、Webhook 和 ITSM 操作。
+资源运行状况为基于活动日志的警报提供预览支持。 活动日志警报使用[操作组](/azure-monitor/platform/action-groups)来通知用户已触发警报。 操作组支持各种通知通道，例如电子邮件、短信、Webhook 和 ITSM 操作。
 
 ## <a name="where-do-i-find-resource-health"></a>在何处查找资源运行状况？
 登录 Azure 门户以后，即可通过多种方式访问资源运行状况：
-- 导航到资源。 在左侧导航栏中，选择“资源运行状况” 
-- 转到“Azure 服务运行状况”边栏选项卡。  在左侧导航栏中，选择“资源运行状况”  。
-- 通过选择门户右上角的问号，并选择“帮助 + 支持”，打开“帮助 + 支持”边栏选项卡。   该边栏选项卡打开后，选择“资源运行状况” 
+- 导航到资源。 在左侧导航栏中，选择“资源运行状况”
+- 转到“Azure 服务运行状况”边栏选项卡。  在左侧导航栏中，选择“资源运行状况”。
+- 通过选择门户右上角的问号，并选择“帮助 + 支持”，打开“帮助 + 支持”边栏选项卡。  该边栏选项卡打开后，选择“资源运行状况”
 
 也可使用资源运行状况 API，获取资源运行状况的相关信息。
 
@@ -60,7 +60,7 @@ ms.locfileid: "82267620"
 如需资源运行状况支持的运行状况检查和资源类型的列表，可单击[此处](resource-health-checks-resource-types.md)。
 
 ## <a name="what-should-i-do-if-my-resource-is-showing-available-but-i-believe-it-is-not"></a>如果我的资源显示可用，但我认为它不可用，该怎么办？
-检查资源的运行状况时，可直接在运行状态下单击“报告不正确的运行状态”。  在提交报告之前，可以选择提供更多详细信息，说明为什么你认为当前的运行状态不正确。
+检查资源的运行状况时，可直接在运行状态下单击“报告不正确的运行状态”。 在提交报告之前，可以选择提供更多详细信息，说明为什么你认为当前的运行状态不正确。
 
 ## <a name="is-resource-health-available-for-all-azure-regions"></a>资源运行状况是否适用于所有 Azure 区域？ 
 所有 Azure 地区中都提供了资源运行状况。

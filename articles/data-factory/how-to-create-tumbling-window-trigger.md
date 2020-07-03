@@ -11,26 +11,26 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 origin.date: 09/11/2019
-ms.date: 06/15/2020
-ms.openlocfilehash: d961df3ba469b99b0f232a0efa96e98682a23c76
-ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
+ms.date: 06/29/2020
+ms.openlocfilehash: bf50065ffad4133e1df6e790671644875f5d2f49
+ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84723445"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85319218"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-tumbling-window"></a>创建按翻转窗口运行管道的触发器
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文提供了创建、启动和监视翻转窗口触发器的步骤。 有关触发器和支持的类型的一般信息，请参阅[管道执行和触发器](concepts-pipeline-execution-triggers.md)。
 
-翻转窗口触发器是一类可以在保留状态的同时按周期性的时间间隔（从指定的开始时间算起）触发的触发器。 翻转窗口是一系列固定大小、非重叠且连续的时间间隔。 翻转窗口触发器与管道存在一对一关系，一个这样的触发器只能引用一个管道。
+翻转窗口触发器是一类可以在保留状态的同时按周期性的时间间隔（从指定的开始时间算起）触发的触发器。 翻转窗口是一系列固定大小、非重叠且连续的时间间隔。 翻转窗口触发器与管道存在一对一关系，一个这样的触发器只能引用一个管道。 翻转窗口触发器是计划触发器的权重更高的替代方案，为复杂方案提供一套功能（[依赖于其他翻转窗口触发器](#tumbling-window-trigger-dependency)、[重新运行失败的作业](tumbling-window-trigger-dependency.md#monitor-dependencies)以及[为管道设置用户重试](#user-assigned-retries-of-pipelines)）。 若要进一步了解计划触发器和翻转窗口触发器之间的差异，请访问[此处](concepts-pipeline-execution-triggers.md#trigger-type-comparison)。
 
 ## <a name="data-factory-ui"></a>数据工厂 UI
 
-1. 若要在数据工厂 UI 中创建翻转窗口触发器，请选择“触发器”**** 选项卡，然后选择“新建”****。 
-1. 在触发器配置窗格打开后，选择“翻转窗口”****，然后定义翻转窗口触发器属性。 
-1. 完成后，选择“保存”****。
+1. 若要在数据工厂 UI 中创建翻转窗口触发器，请选择“触发器”选项卡，然后选择“新建”。 
+1. 在触发器配置窗格打开后，选择“翻转窗口”，然后定义翻转窗口触发器属性。 
+1. 完成后，选择“保存”。
 
 ![在 Azure 门户中创建翻转窗口触发器](media/how-to-create-tumbling-window-trigger/create-tumbling-window-trigger.png)
 
@@ -112,7 +112,7 @@ ms.locfileid: "84723445"
 | **dependsOn: offset** | 依赖项触发器的偏移量。 | Timespan<br/>(hh:mm:ss) |  在自我依赖项中必须为负的时间跨度值。 如果未指定任何值，则该窗口与触发器本身相同。 | 自我依赖项：是<br/>其他：否  |
 
 > [!NOTE]
-> 发布翻转窗口触发器后，无法编辑“间隔”和“频率”**** ****。
+> 发布翻转窗口触发器后，无法编辑“间隔”和“频率” 。
 
 ### <a name="windowstart-and-windowend-system-variables"></a>WindowStart 和 WindowEnd 系统变量
 
@@ -147,13 +147,19 @@ ms.locfileid: "84723445"
 若要在管道定义中使用 **WindowStart** 和 **WindowEnd** 系统变量值，请相应地使用“MyWindowStart”和“MyWindowEnd”参数。
 
 ### <a name="execution-order-of-windows-in-a-backfill-scenario"></a>回填方案中的窗口执行顺序
-有多个窗口需要执行时（尤其是在回填的情况下），窗口的执行顺序是确定的，将根据时间间隔的新旧按从旧到新的顺序执行。 当前无法修改此行为。
+
+如果触发器的 startTime 为过去时间，那么根据公式 M=(CurrentTime- TriggerStartTime)/TriggerSliceSize，触发器将在执行未来运行之前生成 {M} backfill(past) 次并行运行，以保证触发器并发性。 窗口的执行顺序是确定的（从最旧到最新的时间间隔）。 当前无法修改此行为。
 
 ### <a name="existing-triggerresource-elements"></a>现有 TriggerResource 元素
-以下各点适用于现有 **TriggerResource** 元素：
 
-* 如果触发器的 **frequency** 元素（或窗口大小）的值更改，则已处理窗口的状态不会** 重置。 触发器会根据新的窗口大小继续触发一段时间（从上次执行开始计算）。
-* 如果触发器的 **endTime** 元素的值更改（添加或更新），则已处理窗口的状态不会** 重置。 触发器会遵循新的 **endTime** 值。 如果新的 **endTime** 值在已执行的窗口之前，则触发器会停止。 否则，触发器会在遇到新的 **endTime** 值停止。
+以下几点适用于现有 TriggerResource 元素的更新：
+
+* 创建触发器后，便无法更改触发器的 frequency 元素（或窗口大小）与 interval 元素的值。 这是 triggerRun 重新运行和依赖项评估正常运行所必需的
+* 如果触发器的 **endTime** 元素的值更改（添加或更新），则已处理窗口的状态不会重置。 触发器会遵循新的 **endTime** 值。 如果新的 **endTime** 值在已执行的窗口之前，则触发器会停止。 否则，触发器会在遇到新的 **endTime** 值停止。
+
+### <a name="user-assigned-retries-of-pipelines"></a>用户分配的管道重试次数
+
+如果出现管道故障，翻转窗口触发器可以使用相同的输入参数自动重试引用的管道的执行，而无需用户干预。 可以在触发器定义中使用属性“retryPolicy”来指定此项。
 
 ### <a name="tumbling-window-trigger-dependency"></a>翻转窗口触发器依赖项
 

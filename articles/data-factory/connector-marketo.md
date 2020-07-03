@@ -9,15 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-origin.date: 08/01/2019
-ms.date: 05/11/2020
+origin.date: 06/04/2019
+ms.date: 06/29/2020
 ms.author: v-jay
-ms.openlocfilehash: 68cbc70eefa50e8724d9c6d187e1b9e704f3b211
-ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
+ms.openlocfilehash: b09738f036fe4505937e59220e9863e92b2ac9c3
+ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82198058"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85323294"
 ---
 # <a name="copy-data-from-marketo-using-azure-data-factory-preview"></a>使用 Azure 数据工厂（预览版）从 Marketo 复制数据
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -36,7 +36,7 @@ ms.locfileid: "82198058"
 
 可以将数据从 Marketo 复制到任何支持的接收器数据存储。 有关复制活动支持作为源/接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
 
-Azure 数据工厂提供内置的驱动程序用于启用连接，因此无需使用此连接器手动安装任何驱动程序。
+目前，不支持与外部 CRM 集成的 Marketo 实例。
 
 >[!NOTE]
 >此 Marketo 连接器基于 Marketo REST API 构建。 请注意，Marketo 在服务端具有[并发请求限制](https://developers.marketo.com/rest-api/)。 如果遇到错误消息“尝试使用 REST API 时出现错误：在 20 秒内超过最大速率限制 100 (606)”或“尝试使用 REST API 时出现错误：达到并发访问限制 10 (615)”，请考虑减少并发复制活动运行以减少对服务的请求数。
@@ -84,7 +84,7 @@ Marketo 链接服务支持以下属性：
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 Marketo 数据集支持的属性列表。
 
-若要从 Marketo 复制数据，请将数据集的 type 属性设置为“MarketoObject”  。 支持以下属性：
+若要从 Marketo 复制数据，请将数据集的 type 属性设置为“MarketoObject”。 支持以下属性：
 
 | 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
@@ -114,7 +114,7 @@ Marketo 链接服务支持以下属性：
 
 ### <a name="marketo-as-source"></a>Marketo 作为源
 
-若要从 Marketo 复制数据，请将复制活动中的源类型设置为“MarketoSource”  。 复制活动**source**部分支持以下属性：
+若要从 Marketo 复制数据，请将复制活动中的源类型设置为“MarketoSource”。 复制活动**source**部分支持以下属性：
 
 | 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |

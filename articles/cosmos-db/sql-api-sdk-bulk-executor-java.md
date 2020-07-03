@@ -1,35 +1,37 @@
 ---
 title: Azure Cosmos DB - 批量执行工具 Java API、SDK 和资源
-description: 了解有关批量执行程序 Java API 的所有信息。
+description: 了解有关批量执行程序 Java API 和 SDK 的所有信息，包括发布日期、停用日期和 Azure Cosmos DB 批量执行程序 Java SDK 各版本之间所做的更改。
 author: rockboyfor
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-origin.date: 11/21/2018
-ms.date: 04/27/2020
+origin.date: 05/11/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 313a501c47d70d94f657f77aa53a79e27a7ad459
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.openlocfilehash: a0644a58e89e074bbc53d9f53b913e304c595841
+ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82134679"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85323373"
 ---
 # <a name="java-bulk-executor-library-download-information"></a>Java 批量执行程序库：下载信息
 
 > [!div class="op_single_selector"]
-> * [.NET](sql-api-sdk-dotnet.md)
-> * [.NET 更改源](sql-api-sdk-dotnet-changefeed.md)
-> * [.NET Core](sql-api-sdk-dotnet-core.md)
+> * [.NET SDK v3](sql-api-sdk-dotnet-standard.md)
+> * [.NET SDK v2](sql-api-sdk-dotnet.md)
+> * [.NET Core SDK v2](sql-api-sdk-dotnet-core.md)
+> * [.NET 更改源 SDK v2](sql-api-sdk-dotnet-changefeed.md)
 > * [Node.js](sql-api-sdk-node.md)
-> * [异步 Java](sql-api-sdk-async-java.md)
-> * [Java](sql-api-sdk-java.md)
+> * [Java SDK v4](sql-api-sdk-java-v4.md)
+> * [Async Java SDK v2](sql-api-sdk-async-java.md)
+> * [Sync Java SDK v2](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST 资源提供程序](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
-> * [批量执行程序 - .NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [批量执行工具 - .NET v2](sql-api-sdk-bulk-executor-dot-net.md)
 > * [批量执行程序 - Java](sql-api-sdk-bulk-executor-java.md)
 
 | |  |
@@ -39,6 +41,33 @@ ms.locfileid: "82134679"
 |**GitHub 中的批量执行程序库**|[GitHub](https://github.com/Azure/azure-cosmosdb-bulkexecutor-java-getting-started)|
 | **API 文档**| [Java API 参考文档](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.bulkexecutor)|
 |**入门**|[批量执行程序库 Java SDK 入门](bulk-executor-java.md)|
-|受支持的最小运行时 |[Java 开发工具包 (JDK) 7+](https://docs.azure.cn/java/java-supported-jdk-runtime?view=azure-java-stable)|
+|受支持的最小运行时|[Java 开发工具包 (JDK) 7+](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable)|
 
-<!-- Update_Description: update meta properties, update link -->
+## <a name="release-notes"></a>发行说明
+
+<a name="2.10.0"></a>
+### <a name="2100"></a>2.10.0
+
+* 修复了 DocumentAnalyzer.java，以从 JSON 中正确提取嵌套的分区键值。
+
+<a name="2.9.4"></a>
+### <a name="294"></a>2.9.4
+
+* 在 BulkDelete 操作中添加了相应的功能，以便在发生特定的失败后重试，并向用户返回可重试的失败列表。
+
+<a name="2.9.3"></a>
+### <a name="293"></a>2.9.3
+
+* Cosmos SDK 版本 2.4.7 的更新。
+
+<a name="2.9.2"></a>
+### <a name="292"></a>2.9.2
+
+* 修复了“mergeAll”，使之能够在遇到“id”和分区键值时继续运行，以便将“id”和分区键值后面的所有已修补文档属性添加到更新的项列表。
+
+<a name="2.9.1"></a>
+### <a name="291"></a>2.9.1
+
+* 已将起始并发度更新为 1，并增加了 minibatch 的调试日志。
+
+<!-- Update_Description: update meta properties, wording update, update link -->

@@ -12,13 +12,13 @@ ms.reviewer: douglasl
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 origin.date: 04/09/2020
-ms.date: 06/15/2020
-ms.openlocfilehash: ee834458c644e8961d8499355a77459675f9bf39
-ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
+ms.date: 06/29/2020
+ms.openlocfilehash: 32ace93f1800878860770d28399629a899eb5b9a
+ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84723260"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85323324"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-with-sql-database-geo-replication-and-failover"></a>针对 SQL 数据库异地复制和故障转移配置 Azure-SSIS 集成运行时
 
@@ -30,11 +30,11 @@ ms.locfileid: "84723260"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="azure-ssis-ir-failover-with-a-sql-database-managed-instance"></a>使用 SQL 数据库托管实例进行 Azure-SSIS IR 故障转移
+## <a name="azure-ssis-ir-failover-with-a-sql-managed-instance"></a>使用 SQL 托管实例进行 Azure-SSIS IR 故障转移
 
 ### <a name="prerequisites"></a>先决条件
 
-Azure SQL 托管实例使用数据库主密钥 (DMK) 来帮助保护存储在数据库中的数据、凭据和连接信息**。 为启用 DMK 的自动解密，将通过服务器主密钥 (SMK) 对某个密钥副本进行加密**。 
+Azure SQL 托管实例使用数据库主密钥 (DMK) 来帮助保护存储在数据库中的数据、凭据和连接信息。 为启用 DMK 的自动解密，将通过服务器主密钥 (SMK) 对某个密钥副本进行加密。 
 
 SMK 不会在故障转移组中复制。 故障转移后，需要在主实例和辅助实例上添加用于 DMK 解密的密码。
 
@@ -44,9 +44,9 @@ SMK 不会在故障转移组中复制。 故障转移后，需要在主实例和
     ALTER MASTER KEY ADD ENCRYPTION BY PASSWORD = 'password'
     ```
 
-2. 在 Azure SQL 数据库托管实例上创建故障转移组。
+2. 在 SQL 托管实例上创建故障转移组。
 
-3. 使用新的加密密码在辅助实例上运行 sp_control_dbmasterkey_password****。
+3. 使用新的加密密码在辅助实例上运行 sp_control_dbmasterkey_password。
 
     ```sql
     EXEC sp_control_dbmasterkey_password @db_name = N'SSISDB',   
@@ -88,27 +88,27 @@ SMK 不会在故障转移组中复制。 故障转移后，需要在主实例和
 2. 使用辅助实例的新区域、终结点和虚拟网络信息来编辑 Azure-SSIS IR。
 
     ```powershell
-    Set-AzDataFactoryV2IntegrationRuntime -Location "new region" `
-                -CatalogServerEndpoint "Azure SQL Database server endpoint" `
-                -CatalogAdminCredential "Azure SQL Database server admin credentials" `
-                -VNetId "new VNet" `
-                -Subnet "new subnet" `
-                -SetupScriptContainerSasUri "new custom setup SAS URI"
-    ```
+      Set-AzDataFactoryV2IntegrationRuntime -Location "new region" `
+                    -CatalogServerEndpoint "Azure SQL Database endpoint" `
+                    -CatalogAdminCredential "Azure SQL Database admin credentials" `
+                    -VNetId "new VNet" `
+                    -Subnet "new subnet" `
+                    -SetupScriptContainerSasUri "new custom setup SAS URI"
+        ```
 
-3. 重启 Azure-SSIS IR。
+3. Restart the Azure-SSIS IR.
 
-### <a name="scenario-3-azure-ssis-ir-is-pointing-to-a-public-endpoint-of-a-sql-database-managed-instance"></a>应用场景 3：Azure-SSIS IR 指向 SQL 数据库托管实例的公共终结点
+### Scenario 3: Azure-SSIS IR is pointing to a public endpoint of a SQL Managed Instance
 
-如果 Azure-SSIS IR 指向 Azure SQL 数据库托管实例的公共终结点且其不加入虚拟网络，则此方案适用。 此方案与方案 2 的唯一区别在于，故障转移后无需编辑 Azure-SSIS IR 的虚拟网络信息。
+This scenario is suitable if the Azure-SSIS IR is pointing to a public endpoint of a Azure SQL Managed Instance and it doesn't join to a virtual network. The only difference from scenario 2 is that you don't need to edit virtual network information for the Azure-SSIS IR after failover.
 
-#### <a name="solution"></a>解决方案
+#### Solution
 
-发生故障转移时，请执行以下步骤：
+When failover occurs, take the following steps:
 
-1. 停止主要区域中的 Azure-SSIS IR。
+1. Stop the Azure-SSIS IR in the primary region.
 
-2. 利用辅助实例的新区域和终结点信息编辑 Azure-SSIS IR。
+2. Edit the Azure-SSIS IR with the new region and endpoint information for the secondary instance.
 
     ```powershell
     Set-AzDataFactoryV2IntegrationRuntime -Location "new region" `
@@ -132,13 +132,13 @@ SMK 不会在故障转移组中复制。 故障转移后，需要在主实例和
 
 1. 停止主要区域中的 Azure-SSIS IR。
 
-2. 运行存储过程以更新 SSISDB 中的元数据，从而接受来自 \<new_data_factory_name\> 和 \<new_integration_runtime_name\> 的连接**** ****。
+2. 运行存储过程以更新 SSISDB 中的元数据，从而接受来自 \<new_data_factory_name\> 和 \<new_integration_runtime_name\> 的连接 。
    
     ```sql
     EXEC [catalog].[failover_integration_runtime] @data_factory_name='<new_data_factory_name>', @integration_runtime_name='<new_integration_runtime_name>'
     ```
 
-3. 在新区域中创建名为 \<new_data_factory_name\> 的新数据工厂****。
+3. 在新区域中创建名为 \<new_data_factory_name\> 的新数据工厂。
 
     ```powershell
     Set-AzDataFactoryV2 -ResourceGroupName "new resource group name" `
@@ -148,7 +148,7 @@ SMK 不会在故障转移组中复制。 故障转移后，需要在主实例和
     
     有关此 PowerShell 命令的详细信息，请参阅[使用 PowerShell 创建 Azure 数据工厂](quickstart-create-data-factory-powershell.md)。
 
-4. 使用 Azure PowerShell 在新区域中创建名为 \<new_integration_runtime_name\> 的新 Azure-SSIS IR****。
+4. 使用 Azure PowerShell 在新区域中创建名为 \<new_integration_runtime_name\> 的新 Azure-SSIS IR。
 
     ```powershell
     Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName "new resource group name" `
@@ -179,7 +179,7 @@ SMK 不会在故障转移组中复制。 故障转移后，需要在主实例和
 此方案适用于以下情况：
 
 - Azure-SSIS IR 指向故障转移组的读/写侦听器终结点。
-- SQL 数据库服务器未配置虚拟网络服务终结点规则**。
+- SQL 数据库服务器未配置虚拟网络服务终结点规则。
 
 如果希望 Azure-SSIS IR 指向读/写侦听器终结点，则需要首先指向主服务器终结点。 将 SSISDB 放入故障转移组后，可以更改为读/写侦听器终结点，然后重启 Azure-SSIS IR。
 
@@ -203,12 +203,12 @@ SMK 不会在故障转移组中复制。 故障转移后，需要在主实例和
 2. 使用辅助实例的新区域、终结点和虚拟网络信息来编辑 Azure-SSIS IR。
 
     ```powershell
-    Set-AzDataFactoryV2IntegrationRuntime -Location "new region" `
-                    -CatalogServerEndpoint "Azure SQL Database server endpoint" `
-                    -CatalogAdminCredential "Azure SQL Database server admin credentials" `
-                    -VNetId "new VNet" `
-                    -Subnet "new subnet" `
-                    -SetupScriptContainerSasUri "new custom setup SAS URI"
+      Set-AzDataFactoryV2IntegrationRuntime -Location "new region" `
+                        -CatalogServerEndpoint "Azure SQL Database endpoint" `
+                        -CatalogAdminCredential "Azure SQL Database admin credentials" `
+                        -VNetId "new VNet" `
+                        -Subnet "new subnet" `
+                        -SetupScriptContainerSasUri "new custom setup SAS URI"
     ```
 
 3. 重启 Azure-SSIS IR。
@@ -226,13 +226,13 @@ SMK 不会在故障转移组中复制。 故障转移后，需要在主实例和
 
 1. 停止主要区域中的 Azure-SSIS IR。
 
-2. 运行存储过程以更新 SSISDB 中的元数据，从而接受来自 \<new_data_factory_name\> 和 \<new_integration_runtime_name\> 的连接**** ****。
+2. 运行存储过程以更新 SSISDB 中的元数据，从而接受来自 \<new_data_factory_name\> 和 \<new_integration_runtime_name\> 的连接 。
    
     ```sql
     EXEC [catalog].[failover_integration_runtime] @data_factory_name='<new_data_factory_name>', @integration_runtime_name='<new_integration_runtime_name>'
     ```
 
-3. 在新区域中创建名为 \<new_data_factory_name\> 的新数据工厂****。
+3. 在新区域中创建名为 \<new_data_factory_name\> 的新数据工厂。
 
     ```powershell
     Set-AzDataFactoryV2 -ResourceGroupName "new resource group name" `
@@ -242,7 +242,7 @@ SMK 不会在故障转移组中复制。 故障转移后，需要在主实例和
     
     有关此 PowerShell 命令的详细信息，请参阅[使用 PowerShell 创建 Azure 数据工厂](quickstart-create-data-factory-powershell.md)。
 
-4. 使用 Azure PowerShell 在新区域中创建名为 \<new_integration_runtime_name\> 的新 Azure-SSIS IR****。
+4. 使用 Azure PowerShell 在新区域中创建名为 \<new_integration_runtime_name\> 的新 Azure-SSIS IR。
 
     ```powershell
     Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName "new resource group name" `

@@ -1,23 +1,36 @@
 ---
-title: 诊断 Azure Cosmos DB Java 异步 SDK 并对其进行故障排除
-description: 使用客户端日志记录等功能和其他第三方工具来确定、诊断和排查 Azure Cosmos DB 问题。
+title: 诊断 Azure Cosmos DB Async Java SDK v2 并对其进行故障排除
+description: 使用客户端日志记录等功能和其他第三方工具来确定、诊断和排查 Async Java SDK v2 中的 Azure Cosmos DB 问题。
 author: rockboyfor
 ms.service: cosmos-db
-ms.topic: troubleshooting
-origin.date: 04/30/2019
-ms.date: 05/13/2019
+origin.date: 05/11/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
 ms.devlang: java
 ms.subservice: cosmosdb-sql
+ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 221a6ab84129ad6752a7daf709494773331cd5ef
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 413aef816efefebd5603516c3d0af76353b0343b
+ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "65668865"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85321688"
 ---
-# <a name="troubleshoot-issues-when-you-use-the-java-async-sdk-with-azure-cosmos-db-sql-api-accounts"></a>排查将 Java 异步 SDK 与 Azure Cosmos DB SQL API 帐户配合使用时出现的问题
+# <a name="troubleshoot-issues-when-you-use-the-azure-cosmos-db-async-java-sdk-v2-with-sql-api-accounts"></a>排查将 Azure Cosmos DB Async Java SDK v2 于 SQL API 帐户配合使用时出现的问题
+
+> [!div class="op_single_selector"]
+> * [Java SDK v4](troubleshoot-java-sdk-v4-sql.md)
+> * [Async Java SDK v2](troubleshoot-java-async-sdk.md)
+> * [.NET](troubleshoot-dot-net-sdk.md)
+> 
+
+> [!IMPORTANT]
+> 这不是最新的 Azure Cosmos DB Java SDK！ 应将项目升级到 [Azure Cosmos DB Java SDK v4](sql-api-sdk-java-v4.md)，然后阅读 Azure Cosmos DB Java SDK v4 [故障排除指南](troubleshoot-java-sdk-v4-sql.md)。 请按照[迁移到 Azure Cosmos DB Java SDK v4](migrate-java-v4-sdk.md) 指南和 [Reactor 与 RxJava](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-rxjava-guide.md) 指南中的说明进行升级。 
+>
+> 本文仅介绍 Azure Cosmos DB Async Java SDK v2 的故障排除。 有关详细信息，请参阅 Azure Cosmos DB Async Java SDK v2 [发行说明](sql-api-sdk-async-java.md)、[Maven 存储库](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb)和[性能提示](performance-tips-async-java.md)。
+>
+
 本文介绍了将 [Java 异步 SDK](sql-api-sdk-async-java.md) 与 Azure Cosmos DB SQL API 帐户配合使用时的常见问题、解决方法、诊断步骤和工具。
 Java 异步 SDK 提供客户端逻辑表示用于访问 Azure Cosmos DB SQL API。 本文介绍了在遇到任何问题时可以提供帮助的工具和方法。
 
@@ -85,6 +98,10 @@ SDK 使用 [Netty](https://netty.io/) IO 库与 Azure Cosmos DB 通信。 SDK �
 Netty IO 线程仅用于非阻塞性 Netty IO 工作。 SDK 将其中一个 Netty IO 线程上的 API 调用结果返回至应用代码。 如果应用在收到 Netty 线程上的结果后执行持续时间较长的操作，则 SDK 可能会没有足够的 IO 线程来执行其内部 IO 工作。 此类应用编码可能会导致低吞吐量、高延迟和 `io.netty.handler.timeout.ReadTimeoutException` 故障。 解决方法是在知道操作需要耗费一定时间的情况下切换线程。
 
 例如，请查看以下代码片段。 你可能会在 Netty 线程上执行耗时超过几毫秒的持续时间较长的工作。 在这种情况下，你最终会陷入没有 Netty IO 线程来处理 IO 工作的状态。 因此，你会遇到 ReadTimeoutException 故障。
+
+<a name="asyncjava2-readtimeout"></a>
+### <a name="async-java-sdk-v2-maven-commicrosoftazureazure-cosmosdb"></a>Async Java SDK V2 (Maven com.microsoft.azure::azure-cosmosdb)
+
 ```java
 @Test
 public void badCodeWithReadTimeoutException() throws Exception {
@@ -136,13 +153,21 @@ public void badCodeWithReadTimeoutException() throws Exception {
     assertThat(failureCount.get()).isGreaterThan(0);
 }
 ```
-   解决方法是更改用于执行需要耗费一定时间的工作的线程。 为应用定义计划程序的单一实例。
-   ```java
+解决方法是更改用于执行需要耗费一定时间的工作的线程。 为应用定义计划程序的单一实例。
+
+<a name="asyncjava2-scheduler"></a>
+### <a name="async-java-sdk-v2-maven-commicrosoftazureazure-cosmosdb"></a>Async Java SDK V2 (Maven com.microsoft.azure::azure-cosmosdb)
+
+```java
 // Have a singleton instance of an executor and a scheduler.
 ExecutorService ex  = Executors.newFixedThreadPool(30);
 Scheduler customScheduler = rx.schedulers.Schedulers.from(ex);
-   ```
-   你可能会需要完成需耗费一定时间的工作，例如，计算工作量繁重的工作或阻塞性 IO。 在这种情况下，使用 `.observeOn(customScheduler)` API 将线程切换为 `customScheduler` 提供的辅助角色。
+```
+你可能会需要完成需耗费一定时间的工作，例如，计算工作量繁重的工作或阻塞性 IO。 在这种情况下，使用 `.observeOn(customScheduler)` API 将线程切换为 `customScheduler` 提供的辅助角色。
+
+<a name="asyncjava2-applycustomscheduler"></a>
+### <a name="async-java-sdk-v2-maven-commicrosoftazureazure-cosmosdb"></a>Async Java SDK V2 (Maven com.microsoft.azure::azure-cosmosdb)
+
 ```java
 Observable<ResourceResponse<Document>> createObservable = client
         .createDocument(getCollectionLink(), docDefinition, null, false);
@@ -157,7 +182,7 @@ createObservable
 
 ### <a name="connection-pool-exhausted-issue"></a>连接池耗尽问题
 
-`PoolExhaustedException` 是客户端故障。 此故障表明应用工作负载高于 SDK 连接池可以提供的工作负载。 增加连接池大小或将负载分发到多个应用。
+`PoolExhaustedException` 是客户端故障。 此故障表明应用工作负荷高于 SDK 连接池可以提供的工作负载。 增加连接池大小或将负载分发到多个应用。
 
 ### <a name="request-rate-too-large"></a>请求速率过大
 此故障是服务器端故障。 它表明预配的吞吐量已用完。 请稍后重试。 如果经常遇到此故障，请考虑增加集合吞吐量。
@@ -172,11 +197,11 @@ Azure Cosmos DB 仿真器 HTTPS 证书是自签名证书。 若要将 SDK 与仿
 Exception in thread "main" java.lang.NoSuchMethodError: rx.Observable.toSingle()Lrx/Single;
 ```
 
-上述异常表明在旧版 RxJava 库（例如 1.2.2）上有依赖项。 我们的 SDK 依赖于 RxJava 1.3.8，该版本的 API 在更早版的 RxJava 中不可用。 
+上述异常表明在旧版 RxJava 库（例如 1.2.2）上有依赖项。 我们的 SDK 依赖于 RxJava 1.3.8，它具有早期版本的 RxJava 中没有的 API。 
 
-此类问题的解决方案是确定 RxJava-1.2.2 中引入了哪个其他的依赖项，排除 RxJava-1.2.2 上的可传递依赖项，并允许 CosmosDB SDK 引入更新的版本。
+此类问题的解决方法是，确定其他哪些依赖项会引入 RxJava-1.2.2，并排除对 RxJava-1.2.2 的传递依赖关系，让 CosmosDB SDK 能够引入较新版本。
 
-若要确定 RxJava-1.2.2 中引入了哪个库，请在项目 pom.xml 文件旁白运行以下命令：
+若要确定引入 RxJava-1.2.2 的库，请在项目 pom.xml 文件旁边运行以下命令：
 ```bash
 mvn dependency:tree
 ```
@@ -255,6 +280,7 @@ netstat -nap
 到 Azure Cosmos DB 终结点的许多连接可能会处于 `CLOSE_WAIT` 状态。 可能会有超过 1,000 个连接。 较大的数字表明建立和销毁连接的速度很快。 这种情况可能会导致问题。 有关详细信息，请参阅[常见问题和解决方法]部分。
 
  <!--Anchors-->
+
 [常见问题和解决方法]: #common-issues-workarounds
 [Enable client SDK logging]: #enable-client-sice-logging
 [主机上的连接限制]: #connection-limit-on-host

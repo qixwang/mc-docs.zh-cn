@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 origin.date: 12/19/2018
-ms.date: 05/11/2020
-ms.openlocfilehash: 7c4cec56e533475ca725ac44590f2ce140f8a6c8
-ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
+ms.date: 06/29/2020
+ms.openlocfilehash: 8c8b4e4b4bacc51d5aee0c7710673b826672967a
+ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82197771"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85323282"
 ---
 # <a name="web-activity-in-azure-data-factory"></a>Azure 数据工厂中的 Web 活动
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -159,7 +159,7 @@ linkedServices | 传递给终结点的链接服务列表。 | 链接服务引用
 ```
 
 ## <a name="example"></a>示例
-在此示例中，管道中的 Web 活动调用了 REST 终结点。 它将 Azure SQL 链接服务和 Azure SQL 数据集传递到该终结点。 REST 终结点使用 Azure SQL 连接字符串连接到 Azure SQL Server，并返回 SQL Server 实例的名称。
+在此示例中，管道中的 Web 活动调用了 REST 终结点。 它将 Azure SQL 链接服务和 Azure SQL 数据集传递到该终结点。 REST 终结点使用 Azure SQL 连接字符串连接到逻辑 SQL Server，并返回 SQL Server 实例的名称。
 
 ### <a name="pipeline-definition"></a>管道定义
 

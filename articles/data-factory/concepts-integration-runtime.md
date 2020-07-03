@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 origin.date: 03/26/2020
-ms.date: 05/11/2020
-ms.openlocfilehash: 4367526580650427cc5fa99cfffe84624b14d9e0
-ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
+ms.date: 06/29/2020
+ms.openlocfilehash: 3548b365463a1a532d03a1d31a473654fb5c11ba
+ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82197933"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85321394"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Azure 数据工厂中的集成运行时 
 
@@ -30,6 +30,8 @@ ms.locfileid: "82197933"
 - **SSIS 包执行**：在托管的 Azure 计算环境中本机执行 SQL Server 集成服务 (SSIS) 包。
 
 在数据工厂中，活动定义要执行的操作。 链接服务定义目标数据存储或计算服务。 集成运行时提供活动和链接服务之间的桥梁。  它被链接服务或活动引用，提供运行或分派活动的计算环境。 这样一来，可以在最接近目标数据存储的区域中执行活动，或者，以最优性能计算服务的同时满足安全和合规性需求。
+
+可以在 Azure 数据工厂 UX 中通过[管理中心](author-management-hub.md)创建集成运行时以及可引用它们的任何活动或数据集。
 
 ## <a name="integration-runtime-types"></a>集成运行时类型
 
@@ -57,7 +59,7 @@ Azure 集成运行时可以：
 
 - 在 Azure 中运行数据流 
 - 在云数据存储之间运行复制活动
-- 在公用网络中分派以下转换活动：HDInsight Hive 活动、HDInsight Pig 活动、HDInsight MapReduce 活动、HDInsight Spark 活动、HDInsight Streaming 活动、Stored Procedure 活动、.NET 自定义活动、Web 活动、Lookup 活动和 Get Metadata 活动。
+- 在公用网络中调度以下转换活动：HDInsight Hive 活动、HDInsight Pig 活动、HDInsight MapReduce 活动、HDInsight Spark 活动、HDInsight Streaming 活动、Stored Procedure 活动、.NET 自定义活动、Web 活动、Lookup 活动和 Get Metadata 活动。
 
 ### <a name="azure-ir-network-environment"></a>Azure IR 网络环境
 
@@ -105,14 +107,14 @@ Azure 集成运行时提供了使用安全、可靠和高性能的方式在云�
 
 ### <a name="azure-ssis-ir-compute-resource-and-scaling"></a>Azure-SSIS IR 计算资源和缩放
 
-Azure-SSIS IR 是完全托管的 Azure VM 群集，专用于运行 SSIS 包。 可使用自己的 Azure SQL 数据库或托管实例服务器托管要附加到该服务器的 SSIS 项目/包 (SSISDB) 的目录。 可以通过指定节点大小纵向扩展计算能力并通过指定群集中的节点数对其进行横向扩展。 可以在认为合适时停止和启动 Azure-SSIS 集成运行时以管理运行的成本。
+Azure-SSIS IR 是完全托管的 Azure VM 群集，专用于运行 SSIS 包。 可使用自己的 Azure SQL 数据库或 SQL 托管实例来托管 SSIS 项目/包 (SSISDB) 的目录。 可以通过指定节点大小纵向扩展计算能力并通过指定群集中的节点数对其进行横向扩展。 可以在认为合适时停止和启动 Azure-SSIS 集成运行时以管理运行的成本。
 
 有关详细信息，请参阅操作方法指南下的“如何创建和配置 Azure-SSIS IR”一文。  创建后，即可使用熟悉的工具（如 SQL Server 数据工具 (SSDT) 和 SQL Server Management Studio (SSMS)）部署和管理现有 SSIS 包，无需对其更改或仅做少量更改。
 
 有关 Azure-SSIS 运行时的详细信息，请参阅以下文章： 
 
 - [教程：将 SSIS 包部署到 Azure](tutorial-create-azure-ssis-runtime-portal.md)。 此文提供有关创建 Azure-SSIS IR，并使用 Azure SQL 数据库来承载 SSIS 目录的分步说明。 
-- [如何：创建 Azure-SSIS 集成运行时](create-azure-ssis-integration-runtime.md)。 本文是教程的拓展延伸，介绍了如何使用 Azure SQL 数据库托管实例以及如何将 IR 加入虚拟网络。 
+- [如何：创建 Azure-SSIS 集成运行时](create-azure-ssis-integration-runtime.md)。 此文延伸了本教程的内容，介绍了如何使用 SQL 托管实例以及如何将 IR 加入虚拟网络。 
 - [监视 Azure-SSIS IR](monitor-integration-runtime.md#azure-ssis-integration-runtime)。 此文介绍如何检索有关 Azure-SSIS IR 的信息，以及返回的信息中的状态说明。 
 - [管理 Azure-SSIS IR](manage-azure-ssis-integration-runtime.md)。 此文介绍如何停止、启动或删除 Azure-SSIS IR。 此外，介绍如何通过在 Azure-SSIS IR 中添加更多节点来扩展 IR。 
 - [将 Azure-SSIS IR 加入虚拟网络](join-azure-ssis-integration-runtime-virtual-network.md)。 此文提供有关将 Azure-SSIS IR 加入 Azure 虚拟网络的概念性信息。 此外，还介绍可以执行哪些步骤来使用 Azure 门户配置虚拟网络，以便 Azure-SSIS IR 能够加入虚拟网络。 
@@ -125,9 +127,11 @@ IR 位置定义其后端计算的位置，尤其是执行数据移动、活动�
 
 ### <a name="azure-ir-location"></a>Azure IR 位置
 
-- 对于复制活动，ADF 会尽最大努力自动检测接收器数据存储的位置，然后使用同一区域中的 IR（如果可用）或者使用同一地理位置中最靠近的 IR；如果检测不到接收器数据存储的区域，则会改用数据工厂区域中的 IR。
+可以设置 Azure IR 的特定位置，这样活动执行或活动调度就会发生在该特定区域。
 
-- 对于复制活动，ADF 会尽最大努力自动检测接收器和源数据存储，以选择最佳位置：可以是在同一区域中（如果可用），也可以是在同一地理位置的最近区域中；如果检测不到，则会改用数据工厂区域。
+如果选择使用默认的自动解析 Azure IR，则会出现以下情况：
+
+- 对于复制活动，ADF 会尽最大努力自动检测接收器数据存储的位置，然后使用同一区域中的 IR（如果可用）或者使用同一地理位置中最靠近的 IR；如果检测不到接收器数据存储的区域，则会改用数据工厂区域中的 IR。
 
 - 对于查找/获取元数据/删除活动执行（也称为管道活动）、转换活动调度（也称为外部活动）和创作操作（测试连接、浏览文件夹列表和表列表、预览数据），ADF 会使用数据工厂区域中的 IR。
 
@@ -143,9 +147,9 @@ IR 位置定义其后端计算的位置，尤其是执行数据移动、活动�
 
 为你的 Azure-SSIS IR 选择正确的位置对在提取-转换-加载 (ETL) 工作流中实现高性能至关重要。
 
-- Azure-SSIS IR 的位置无需与数据工厂的位置相同，但应与你自己的要托管 SSISDB 的 Azure SQL 数据库或托管实例服务器的位置相同。 这样一来，Azure-SSIS 集成运行时可以轻松地访问 SSISDB，且不会在不同位置之间产生过多的流量。
-- 如果没有用于托管 SSISDB 的现有 Azure SQL 数据库或托管实例服务器，但有本地数据源/目标，则应在连接到本地网络的虚拟网络的同一位置创建新的 Azure SQL 数据库或托管实例服务器。  这样，即可使用新的 Azure SQL 数据库或托管实例服务器并加入该虚拟网络来创建 Azure-SSIS IR，所有操作都在同一位置进行，从而将不同位置间的数据移动降至最低。
-- 如果托管 SSISDB 的现有 Azure SQL 数据库或托管实例服务器的位置与连接到本地网络的虚拟网络的位置不同，请先使用现有 Azure SQL 数据库或托管实例服务器并在同一位置加入其他虚拟网络来创建 Azure-SSIS IR，然后配置不同位置之间的虚拟网络到虚拟网络连接。
+- Azure-SSIS IR 的位置无需与数据工厂的位置相同，但应与你自己的要托管 SSISDB 的 Azure SQL 数据库或 SQL 托管实例的位置相同。 这样一来，Azure-SSIS 集成运行时可以轻松地访问 SSISDB，且不会在不同位置之间产生过多的流量。
+- 如果没有现有 SQL 数据库或 SQL 托管实例，但有本地数据源/目标，则应在连接到本地网络的虚拟网络的同一位置创建新的 Azure SQL 数据库或 SQL 托管实例。  这样，即可使用新的 Azure SQL 数据库或 SQL 托管实例并加入该虚拟网络来创建 Azure-SSIS IR，所有操作都在同一位置进行，从而有效地将不同位置间的数据移动降至最低。
+- 如果现有 Azure SQL 数据库或 SQL 托管实例的位置与连接到本地网络的虚拟网络的位置不同，请先使用现有 Azure SQL 数据库或 SQL 托管实例并在同一位置加入其他虚拟网络来创建 Azure-SSIS IR，然后配置不同位置之间的虚拟网络到虚拟网络连接。
 
 下图显示了数据工厂及其集成运行时的位置设置：
 
@@ -175,4 +179,4 @@ IR 位置定义其后端计算的位置，尤其是执行数据移动、活动�
 
 - [创建 Azure 集成运行时](create-azure-integration-runtime.md)
 - [创建自承载集成运行时](create-self-hosted-integration-runtime.md)
-- [创建 Azure-SSIS 集成运行时](create-azure-ssis-integration-runtime.md)。 本文是教程的拓展延伸，介绍了如何使用 Azure SQL 数据库托管实例以及如何将 IR 加入虚拟网络。 
+- [创建 Azure-SSIS 集成运行时](create-azure-ssis-integration-runtime.md)。 此文延伸了本教程的内容，介绍了如何使用 SQL 托管实例以及如何将 IR 加入虚拟网络。 

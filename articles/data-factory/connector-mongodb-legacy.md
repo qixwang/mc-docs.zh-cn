@@ -2,7 +2,6 @@
 title: 使用旧版从 MongoDB 复制数据
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 Mongo DB 复制到支持的接收器数据存储。
 services: data-factory
-documentationcenter: ''
 author: WenJason
 ms.author: v-jay
 manager: digimobile
@@ -12,15 +11,15 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
 origin.date: 08/12/2019
-ms.date: 05/11/2020
-ms.openlocfilehash: 34178156b098ebb30b5b71aaebd08737792fdc21
-ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
+ms.date: 06/29/2020
+ms.openlocfilehash: f0eb907fe349205e1931b65f3fca653c37fd5415
+ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82198228"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85323293"
 ---
-# <a name="copy-data-from-mongodb-using-azure-data-factory"></a>使用 Azure 数据工厂从 MongoDB 复制数据
+# <a name="copy-data-from-mongodb-using-azure-data-factory-legacy"></a>使用 Azure 数据工厂（旧版）从 MongoDB 复制数据
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从 MongoDB 数据库复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
@@ -35,7 +34,7 @@ ms.locfileid: "82198228"
 具体而言，此 MongoDB 连接器支持：
 
 - MongoDB **版本 2.4、2.6、3.0、3.2、3.4 和 3.6**。
-- 使用基本  或匿名  身份验证复制数据。
+- 使用基本或匿名身份验证复制数据。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -55,11 +54,11 @@ MongoDB 链接的服务支持以下属性：
 
 | 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
-| type |type 属性必须设置为：MongoDb  |是 |
+| type |type 属性必须设置为：MongoDb |是 |
 | server |MongoDB 服务器的 IP 地址或主机名。 |是 |
 | port |MongoDB 服务器用于侦听客户端连接的 TCP 端口。 |否（默认值为 27017） |
 | databaseName |要访问的 MongoDB 数据库名称。 |是 |
-| authenticationType | 用于连接 MongoDB 数据库的身份验证类型。<br/>允许值包括：基本和匿名   。 |是 |
+| authenticationType | 用于连接 MongoDB 数据库的身份验证类型。<br/>允许值包括：基本和匿名 。 |是 |
 | username |用于访问 MongoDB 的用户帐户。 |是（如果使用基本身份验证）。 |
 | password |用户密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 |是（如果使用基本身份验证）。 |
 | authSource |要用于检查身份验证凭据的 MongoDB 数据库名称。 |否。 对于基本身份验证，默认使用管理员帐户和使用 databaseName 属性指定的数据库。 |
@@ -98,7 +97,7 @@ MongoDB 链接的服务支持以下属性：
 
 | 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
-| type | 数据集的 type 属性必须设置为：MongoDbCollection  | 是 |
+| type | 数据集的 type 属性必须设置为：MongoDbCollection | 是 |
 | collectionName |MongoDB 数据库中集合的名称。 |是 |
 
 **示例：**

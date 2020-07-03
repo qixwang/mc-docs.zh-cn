@@ -1,47 +1,55 @@
 ---
-title: 适用于 .NET 的 Azure Cosmos DB 性能提示
-description: 了解用于提高 Azure Cosmos DB 性能的客户端配置选项。
+title: 适用于 .NET SDK v2 的 Azure Cosmos DB 性能提示
+description: 了解用于提高 Azure Cosmos DB .NET v2 SDK 性能的客户端配置选项。
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
-origin.date: 01/15/2020
-ms.date: 04/27/2020
+origin.date: 06/04/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 40cd399310bf44573863d827502e8a3b71dab88c
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.openlocfilehash: 3ec20e0377f16cfc9a867beac63bdb15c449a06c
+ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82134588"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85323338"
 ---
-# <a name="performance-tips-for-azure-cosmos-db-and-net"></a>适用于 Azure Cosmos DB 和 .NET 的性能提示
+# <a name="performance-tips-for-azure-cosmos-db-and-net-sdk-v2"></a>适用于 Azure Cosmos DB 和 .NET SDK v2 的性能提示
 
 > [!div class="op_single_selector"]
-> * [异步 Java](performance-tips-async-java.md)
-> * [Java](performance-tips-java.md)
-> * [.NET](performance-tips.md)
-> 
+> * [.NET SDK v3](performance-tips-dotnet-sdk-v3-sql.md)
+> * [.NET SDK v2](performance-tips.md)
+> * [Java SDK v4](performance-tips-java-sdk-v4-sql.md)
+> * [Async Java SDK v2](performance-tips-async-java.md)
+> * [Sync Java SDK v2](performance-tips-java.md)
 
 Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供延迟与吞吐量保证的情况下无缝缩放。 凭借 Azure Cosmos DB，无需对体系结构进行重大更改或编写复杂的代码即可缩放数据库。 扩展和缩减操作就像执行单个 API 调用一样简单。 若要了解详细信息，请参阅[如何预配容器吞吐量](how-to-provision-container-throughput.md)或[如何预配数据库吞吐量](how-to-provision-database-throughput.md)。 但是，由于 Azure Cosmos DB 是通过网络调用访问的，因此，使用 [SQL .NET SDK](sql-api-sdk-dotnet-standard.md) 时可以通过进行客户端优化来获得最高性能。
 
 因此，如果你尝试改善数据库性能，请考虑以下选项：
 
+## <a name="upgrade-to-the-net-v3-sdk"></a>升级到 .NET V3 SDK
+[.NET v3 SDK](https://github.com/Azure/azure-cosmos-dotnet-v3) 已发布。 如果使用 .NET v3 SDK，请参阅 [.NET v3 性能指南](performance-tips-dotnet-sdk-v3-sql.md)了解以下信息：
+- 默认为“直接 TCP”模式
+- 流 API 支持
+- 支持自定义序列化程序以允许使用 System.Text.JSON
+- 集成的批处理和批量操作支持
+
 ## <a name="hosting-recommendations"></a>托管方面的建议
 
-对于查询密集型工作负载，请使用 Windows 64 位主机处理，而不要使用 Linux 或 Windows 32 位主机处理 
+对于查询密集型工作负载，请使用 Windows 64 位主机处理，而不要使用 Linux 或 Windows 32 位主机处理
 
 我们建议使用 Windows 64 位主机处理来改善性能。 SQL SDK 包含一个本机 ServiceInterop.dll，用于在本地分析和优化查询。 ServiceInterop.dll 仅在 Windows x64 平台上受支持。 对于不支持 ServiceInterop.dll 的 Linux 和其他平台，将对网关发出附加的网络调用以获取优化的查询。 以下类型的应用程序默认使用 32 位主机处理。 若要将主机处理更改为 64 位处理，请根据应用程序的类型执行以下步骤：
 
-- 对于可执行应用程序，可以在“项目属性”窗口中的“版本”选项卡上，通过将[平台目标](https://docs.microsoft.com/visualstudio/ide/how-to-configure-projects-to-target-platforms?view=vs-2019)设置为“x64”来更改主机处理。   
+- 对于可执行应用程序，可以在“项目属性”窗口中的“版本”选项卡上，通过将[平台目标](https://docs.microsoft.com/visualstudio/ide/how-to-configure-projects-to-target-platforms?view=vs-2019)设置为“x64”来更改主机处理。  
 
-- 对于基于 VSTest 的测试项目，可以通过在 Visual Studio“测试”菜单中选择“测试” > “测试设置” > “默认处理器体系结构为 X64”，来更改主机处理。    
+- 对于基于 VSTest 的测试项目，可以通过在 Visual Studio“测试”菜单中选择“测试” > “测试设置” > “默认处理器体系结构为 X64”，来更改主机处理。   
 
-- 对于本地部署的 ASP.NET Web 应用程序，可以通过在“工具” > “选项” > “项目和解决方案” > “Web 项目”下选择“对网站和项目使用 IIS Express 的 64 位版”，来更改主机处理。     
+- 对于本地部署的 ASP.NET Web 应用程序，可以通过在“工具” > “选项” > “项目和解决方案” > “Web 项目”下选择“对网站和项目使用 IIS Express 的 64 位版”，来更改主机处理。    
 
-- 对于部署在 Azure 上的 ASP.NET Web 应用程序，可以通过在 Azure 门户上的“应用程序设置”中选择“64 位”平台，来更改主机处理。  
+- 对于部署在 Azure 上的 ASP.NET Web 应用程序，可以通过在 Azure 门户上的“应用程序设置”中选择“64 位”平台，来更改主机处理。 
 
 > [!NOTE] 
-> 新的 Visual Studio 项目默认设置为“任何 CPU”。  我们建议将项目设置为“x64”，使其不会切换到“x86”。   如果添加了仅限 x86 的依赖项，则设置为“任何 CPU”的项目可以轻松切换到“x86”。  <br/>
+> 新的 Visual Studio 项目默认设置为“任何 CPU”。 我们建议将项目设置为“x64”，使其不会切换到“x86”。  如果添加了仅限 x86 的依赖项，则设置为“任何 CPU”的项目可以轻松切换到“x86”。 <br/>
 > ServiceInterop.dll 所处的文件夹必须是在其中执行 SDK DLL 的文件夹。 仅当你手动复制 DLL 或使用自定义的生成/部署系统时，此位置才是一个考虑因素。
 
 **启用服务器端垃圾回收 (GC)**
@@ -61,9 +69,9 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
 
 **连接策略：使用直接连接模式**
 
-客户端连接到 Azure Cosmos DB 的方式对性能有重大影响，尤其是在观察到的客户端延迟方面。 可以使用这两个重要配置设置来配置客户端连接策略：连接模式  和连接协议  。  两种可用模式：
+客户端连接到 Azure Cosmos DB 的方式对性能有重大影响，尤其是在观察到的客户端延迟方面。 可以使用这两个重要配置设置来配置客户端连接策略：连接模式和连接协议。  两种可用模式：
 
-    * 网关模式
+    * 网关模式（默认）
 
         网关模式受所有 SDK 平台支持并已配置为 [Microsoft.Azure.DocumentDB SDK](sql-api-sdk-dotnet.md) 的默认设置。 如果应用程序在有严格防火墙限制的企业网络中运行，则网关模式是最佳选择，因为它使用标准 HTTPS 端口与单个终结点。 但是，对于性能的影响是：每次在 Azure Cosmos DB 中读取或写入数据时，网关模式都涉及到额外的网络跃点。 因此，直接模式因为网络跃点较少，可以提供更好的性能。 在套接字连接数量有限的环境中运行应用程序时，我们也建议使用网关连接模式。
 
@@ -71,34 +79,22 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
 
     * 直接模式
 
-        直接模式支持通过 TCP 协议进行连接，在使用 [Microsoft.Azure.Cosmos/.NET V3 SDK](sql-api-sdk-dotnet-standard.md) 的情况下是默认的连接模式。
+        直接模式支持通过 TCP 协议的连接。
 
 在网关模式下，当你使用 Azure Cosmos DB API for MongoDB 时，Azure Cosmos DB 会使用端口 443 以及端口 10250、10255 和 10256。 端口 10250 映射到没有异地复制功能的默认 MongoDB 实例。 端口 10255 和 10256 映射到具有异地复制功能的 MongoDB 实例。
 
-在直接模式下使用时 TCP 时，除了网关端口外，还需确保 10000 到 20000 这个范围的端口处于打开状态，因为 Azure Cosmos DB 使用动态 TCP 端口。 如果这些端口未处于打开状态，你会在尝试使用 TCP 时收到“503 服务不可用”错误。 下表显示了可用于各种 API 的连接模式，以及用于每个 API 的服务端口：
+在直接模式下使用 TCP 时，除了网关端口，还需确保 10000 到 20000 这个范围的端口处于打开状态，因为 Azure Cosmos DB 使用动态 TCP 端口（在[专用终结点](./how-to-configure-private-endpoints.md)上使用直接模式时，必须打开整个范围的 TCP 端口（即从 0 到 65535））。 如果这些端口未处于打开状态，你会在尝试使用 TCP 时收到“503 服务不可用”错误。 下表显示了可用于各种 API 的连接模式，以及用于每个 API 的服务端口：
 
 |连接模式  |支持的协议  |支持的 SDK  |API/服务端口  |
 |---------|---------|---------|---------|
 |网关  |   HTTPS    |  所有 SDK    |   SQL (443)、MongoDB（10250、10255、10256）、表 (443)、Cassandra (10350)、Graph (443)    |
-|直接    |     TCP    |  .NET SDK    | 10000 到 20000 范围内的端口 |
+|直接    |     TCP    |  .NET SDK    | 使用公共/服务终结点时：端口介于 10000 到 20000 之间<br />使用专用终结点时：端口介于 0 到 65535 之间 |
 
 Azure Cosmos DB 提供基于 HTTPS 的简单开放 RESTful 编程模型。 此外，它提供高效的 TCP 协议，该协议在其通信模型中也是 RESTful，可通过 .NET 客户端 SDK 获得。 TCP 协议使用 TLS 来进行初始身份验证和加密通信。 为了获得最佳性能，请尽可能使用 TCP 协议。
 
-对于 SDK V3，可以在创建 `CosmosClient` 实例时在 `CosmosClientOptions` 中配置连接模式。 请记住，直接模式是默认设置。
-        
-<!--MOONCAKE: CORRECT ON "https://contoso.documents.azure.cn"-->
-        
-```csharp
-var serviceEndpoint = new Uri("https://contoso.documents.azure.cn");
-var authKey = "your authKey from the Azure portal";
-CosmosClient client = new CosmosClient(serviceEndpoint, authKey,
-new CosmosClientOptions
-{
-    ConnectionMode = ConnectionMode.Gateway // ConnectionMode.Direct is the default
-});
-```
-
 对于 Microsoft.Azure.DocumentDB SDK，可以在构造 `DocumentClient` 实例期间使用 `ConnectionPolicy` 参数配置连接模式。 如果使用直接模式，则也可以使用 `ConnectionPolicy` 参数设置 `Protocol`。
+
+<!--MOONCAKE: CORRECT ON "https://contoso.documents.azure.cn"-->
 
 ```csharp
 var serviceEndpoint = new Uri("https://contoso.documents.azure.cn");
@@ -110,7 +106,7 @@ new ConnectionPolicy
     ConnectionProtocol = Protocol.Tcp
 });
 ```
-        
+
 <!--MOONCAKE: CORRECT ON "https://contoso.documents.azure.cn"-->
         
 由于仅在直接模式下才支持 TCP，因此如果使用网关模式，则 HTTPS 协议始终用来与网关通信，并忽略 `ConnectionPolicy` 中的 `Protocol` 值。
@@ -152,15 +148,9 @@ new ConnectionPolicy
 
 Azure Cosmos DB SDK 正在不断改进以提供最佳性能。 请参阅 [Azure Cosmos DB SDK](sql-api-sdk-dotnet-standard.md) 页以了解最新的 SDK 并查看改进内容。
 
-**使用流 API**
-
-[.NET SDK V3](sql-api-sdk-dotnet-standard.md) 包含的流 API 可以在不序列化的情况下接收和返回数据。 
-
-如果中间层应用程序不直接使用 SDK 的响应，而是将其中继到其他应用程序层，则此类应用程序可以受益于流 API。 请参阅[项管理](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ItemManagement)示例，了解有关流处理的示例。
-
 **在应用程序生存期内使用单一实例 Azure Cosmos DB 客户端**
 
-每个 `DocumentClient` 和 `CosmosClient` 实例都是线程安全的，在直接模式下运行时可执行高效的连接管理和地址缓存。 若要实现有效的连接管理和提高 SDK 客户端性能，建议在应用程序的生存期内对每个 `AppDomain` 使用单个实例。
+每个 `DocumentClient` 实例都是线程安全的，在直接模式下运行时可执行高效的连接管理和地址缓存。 若要实现有效的连接管理和提高 SDK 客户端性能，建议在应用程序的生存期内对每个 `AppDomain` 使用单个实例。
 
 <a name="max-connection"></a>
 
@@ -176,7 +166,7 @@ SQL .NET SDK 1.9.0 及更高版本支持并行查询，使你能够并行查询�
 
 优化并行度
 
-并行查询的工作原理是并行查询多个分区。 但就查询本身而言，会按顺序提取单个分区中的数据。 将 [SDK V2](sql-api-sdk-dotnet.md) 中的 `MaxDegreeOfParallelism` 或 [SDK V3](sql-api-sdk-dotnet-standard.md) 中的 `MaxConcurrency` 设置为分区数最有可能实现最高性能的查询，前提是所有其他的系统条件保持不变。 如果不知道分区数，可将并行度设置为较大的数字。 系统会选择最小值（分区数、用户提供的输入）作为并行度。
+并行查询的工作原理是并行查询多个分区。 但就查询本身而言，会按顺序提取单个分区中的数据。 将 [SDK V2](sql-api-sdk-dotnet.md) 中的 `MaxDegreeOfParallelism` 设置为分区数最有可能实现最高性能的查询，前提是所有其他的系统条件保持不变。 如果不知道分区数，可将并行度设置为较大的数字。 系统会选择最小值（分区数、用户提供的输入）作为并行度。
 
 请注意，如果查询时数据均衡分布在所有分区之间，则并行查询的优势最大。 如果对已分区的集合进行分区，使查询返回的全部或大部分数据集中于几个分区（最坏的情况为一个分区），则这些分区会使查询性能出现瓶颈。
 

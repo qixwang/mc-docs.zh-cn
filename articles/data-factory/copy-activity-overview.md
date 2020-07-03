@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 origin.date: 03/25/2020
-ms.date: 05/11/2020
+ms.date: 06/29/2020
 ms.author: v-jay
-ms.openlocfilehash: 919f4fb0066c5d686a0f6f59e1f47483678ff4fe
-ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
+ms.openlocfilehash: 5e480fe7376d382bbf26a68579155a5c24dde139
+ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82198271"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85323364"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Azure 数据工厂中的复制活动
 
@@ -52,7 +52,7 @@ ms.locfileid: "82198271"
 
 可以使用复制活动在两个基于文件的数据存储之间按原样复制文件，在这种情况下，无需任何序列化或反序列化即可高效复制数据。 此外，还可以分析或生成给定格式的文件。例如，可以执行以下操作：
 
-* 从本地 SQL Server 数据库复制数据，并将数据以 Parquet 格式写入 Azure Data Lake Storage Gen2。
+* 从 SQL Server 数据库复制数据，并将数据以 Parquet 格式写入 Azure Data Lake Storage Gen2。
 * 从本地文件系统中复制文本 (CSV) 格式文件，并将其以 Avro 格式写入 Azure Blob 存储。
 * 从本地文件系统复制压缩文件，动态解压缩，然后将提取的文件写入 Azure Data Lake Storage Gen2。
 * 从 Azure Blob 存储复制 Gzip 压缩文本 (CSV) 格式的数据，并将其写入 Azure SQL 数据库。
@@ -195,7 +195,7 @@ ms.locfileid: "82198271"
 
 若要以编程方式对其进行配置，请在复制活动源中添加 `additionalColumns` 属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 | --- | --- | --- |
 | additionalColumns | 添加要复制到接收器的其他数据列。<br><br>`additionalColumns` 数组下的每个对象都表示一个额外的列。 `name` 定义列名称，`value` 表示该列的数据值。<br><br>允许的数据值为：<br>-  **`$$FILEPATH`** - 一个保留变量，指示将源文件的相对路径存储在数据集中指定的文件夹路径。 应用于基于文件的源。<br>- **表达式**<br>- **静态值** | 否 |
 
@@ -247,4 +247,4 @@ ms.locfileid: "82198271"
 
 - [在同一 Azure Blob 存储帐户中将数据从一个位置复制到另一个位置](quickstart-create-data-factory-dot-net.md)
 - [将数据从 Azure Blob 存储复制到 Azure SQL 数据库](tutorial-copy-data-dot-net.md)
-- [将数据从本地 SQL Server 数据库复制到 Azure](tutorial-hybrid-copy-powershell.md)
+- [将数据从 SQL Server 数据库复制到 Azure](tutorial-hybrid-copy-powershell.md)
