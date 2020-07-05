@@ -1,22 +1,19 @@
 ---
 title: 并置 Windows Azure VM
 description: 了解并置 Azure VM 资源如何改善延迟。
-services: virtual-machines-windows
-documentationcenter: ''
 author: rockboyfor
-manager: digimobile
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 05/18/2020
+origin.date: 10/30/2019
+ms.date: 07/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 07aae67763414597d04755385982dea09a817916
-ms.sourcegitcommit: 436a5dd9a446fe7b6d3c4d5bc76b652f7848c1ba
+ms.openlocfilehash: c00039acc7afc0a3134850551167e025a143e643
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83393125"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85946058"
 ---
 <!--Verified successfully-->
 # <a name="co-locate-resource-for-improved-latency"></a>并置资源以改善延迟

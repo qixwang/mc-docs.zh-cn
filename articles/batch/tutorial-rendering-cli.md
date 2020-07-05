@@ -6,12 +6,12 @@ origin.date: 03/05/2020
 ms.date: 04/29/2020
 ms.author: v-tawe
 ms.custom: mvc
-ms.openlocfilehash: 5a75a0a840c6a26084ae254f20745dae0264fd6f
-ms.sourcegitcommit: cbaa1aef101f67bd094f6ad0b4be274bbc2d2537
+ms.openlocfilehash: 438b748eb7263eb56ea24b29b5be3254334ea272
+ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84126770"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85611857"
 ---
 # <a name="tutorial-render-a-scene-with-azure-batch"></a>教程：使用 Azure Batch 渲染场景 
 
@@ -212,7 +212,7 @@ az batch job create \
   "commandLine": "cmd /c \"%3DSMAX_2018%3dsmaxcmdio.exe -secure off -v:5 -rfw:0 -start:1 -end:1 -outputName:\"dragon.jpg\" -w 400 -h 300 MotionBlur-DragonFlying.max\"",
   "resourceFiles": [
     {
-        "blobSource": "https://mystorageaccount.blob.core.chinacloudapi.cn/scenefiles/MotionBlur-DragonFlying.max",
+        "httpUrl": "https://mystorageaccount.blob.core.chinacloudapi.cn/scenefiles/MotionBlur-DragonFlying.max",
         "filePath": "MotionBlur-DragonFlying.max"
     }
   ],

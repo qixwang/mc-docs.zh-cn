@@ -11,15 +11,15 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: tutorial
-origin.date: 10/08/2019
+origin.date: 05/19/2020
 ms.author: v-yiso
-ms.date: 04/06/2020
-ms.openlocfilehash: 344869a9f6bcd5948c503730e3c1bea23f385e3c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 07/06/2020
+ms.openlocfilehash: c2539725e997023fc772d4901119aa8c17fad352
+ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80343529"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85516751"
 ---
 # <a name="tutorial-use-the-apache-kafka-producer-and-consumer-apis"></a>教程：使用 Apache Kafka 生成者和使用者 API
 
@@ -123,6 +123,18 @@ consumer = new KafkaConsumer<>(properties);
 
 ## <a name="build-and-deploy-the-example"></a>生成并部署示例
 
+### <a name="use-pre-built-jar-files"></a>使用预建 JAR 文件
+
+从 [Kafka 入门 Azure 示例](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/tree/master/Prebuilt-Jars)下载 jar。 如果你的群集启用了**企业安全性套餐 (ESP)** ，请使用 kafka-producer-consumer-esp.jar。 使用以下命令可将 jar 复制到群集。
+
+```cmd
+scp kafka-producer-consumer*.jar sshuser@CLUSTERNAME-ssh.azurehdinsight.cn:kafka-producer-consumer.jar
+```
+
+### <a name="build-the-jar-files-from-code"></a>从代码生成 JAR 文件
+
+如果要跳过此步骤，可以从 `Prebuilt-Jars` 子目录下载预构建的 jar。 下载 kafka-producer-consumer.jar。 如果你的群集启用了**企业安全性套餐 (ESP)** ，请使用 kafka-producer-consumer-esp.jar。 执行步骤 3 来将该 jar 复制到你的 HDInsight 群集。
+
 1. 从 [https://github.com/Azure-Samples/hdinsight-kafka-java-get-started](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started) 下载并提取示例。
 
 2. 将当前目录设置为 `hdinsight-kafka-java-get-started\Producer-Consumer` 目录的位置，然后执行以下命令：
@@ -136,7 +148,7 @@ consumer = new KafkaConsumer<>(properties);
 3. 将 `sshuser` 替换为群集的 SSH 用户，并将 `CLUSTERNAME` 替换为群集的名称。 输入以下命令，将 `kafka-producer-consumer-1.0-SNAPSHOT.jar` 文件复制到 HDInsight 群集。 出现提示时，请输入 SSH 用户的密码。
 
     ```cmd
-    scp ./target/kafka-producer-consumer-1.0-SNAPSHOT.jar SSHUSER@CLUSTERNAME-ssh.azurehdinsight.cn:kafka-producer-consumer.jar
+    scp ./target/kafka-producer-consumer*.jar SSHUSER@CLUSTERNAME-ssh.azurehdinsight.cn:kafka-producer-consumer.jar
     ```
 
 ## <a name="run-the-example"></a><a id="run"></a> 运行示例
@@ -153,7 +165,7 @@ consumer = new KafkaConsumer<>(properties);
     sudo apt -y install jq
     export clusterName='<clustername>'
     export password='<password>'
-    export KAFKABROKERS=$(curl -sS -u admin:$password -G https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/KAFKA/components/KAFKA_BROKER | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")' | cut -d',' -f1,2);
+    export KAFKABROKERS=$(curl -sS -u admin:$password -G https://$clusterName.azurehdinsight.cn/api/v1/clusters/$clusterName/services/KAFKA/components/KAFKA_BROKER | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")' | cut -d',' -f1,2);
     ```
 
     > [!Note]  
@@ -175,6 +187,7 @@ consumer = new KafkaConsumer<>(properties);
 
     ```bash
     java -jar kafka-producer-consumer.jar consumer myTest $KAFKABROKERS
+    scp ./target/kafka-producer-consumer*.jar sshuser@CLUSTERNAME-ssh.azurehdinsight.cn:kafka-producer-consumer.jar
     ```
 
     会显示已读取的记录以及记录计数。
@@ -200,7 +213,7 @@ tmux new-session 'java -jar kafka-producer-consumer.jar consumer myTest $KAFKABR
 \; attach
 ```
 
-此命令使用 `tmux` 将终端拆分为两列。 每列中都会启动使用者，且具有相同的组 ID 值。 使用者完成读取后，请注意，每个使用者仅读取记录的一部分。 按 Ctrl+C  两次以退出 `tmux`。
+此命令使用 `tmux` 将终端拆分为两列。 每列中都会启动使用者，且具有相同的组 ID 值。 使用者完成读取后，请注意，每个使用者仅读取记录的一部分。 按 Ctrl+C 两次以退出 `tmux`。
 
 同一个组中客户端的使用方式由主题的分区处理。 在此代码示例中，之前创建的 `test` 主题有 8 个分区。 如果启动 8 个使用者，则每个使用者都从主题的单个分区读取记录。
 
@@ -215,9 +228,9 @@ Kafka 中存储的记录将按接收顺序存储在分区中。 若要 *在分�
 
 若要使用 Azure 门户删除资源组，请执行以下操作：
 
-1. 在 Azure 门户中展开左侧的菜单，打开服务菜单，然后选择“资源组”以显示资源组的列表。 
-2. 找到要删除的资源组，然后右键单击列表右侧的“更多”按钮 (...)。 
-3. 选择“删除资源组”，然后进行确认。 
+1. 在 Azure 门户中展开左侧的菜单，打开服务菜单，然后选择“资源组”以显示资源组的列表。
+2. 找到要删除的资源组，然后右键单击列表右侧的“更多”按钮 (...)。
+3. 选择“删除资源组”，然后进行确认。
 
 ## <a name="next-steps"></a>后续步骤
 

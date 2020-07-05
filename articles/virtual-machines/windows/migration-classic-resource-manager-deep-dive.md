@@ -1,26 +1,20 @@
 ---
 title: 有关平台支持的从经典部署模型到 Azure Resource Manager 的迁移的技术深入探讨
 description: 对平台支持的从经典部署模型到 Azure 资源管理器的资源迁移进行技术深入探讨。
-services: virtual-machines-windows
-documentationcenter: ''
 author: rockboyfor
 manager: digimobile
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 1ee40d32-a5e8-42a2-97d0-3232fd3cbb98
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
-ms.topic: article
+ms.topic: how-to
 origin.date: 02/06/2020
-ms.date: 04/27/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 4234cdd2a7a1df6fef0824aaf73ee4c3d95cbe0f
-ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
+ms.openlocfilehash: 533fea56aae3a0e264d16863f20b56278616220e
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83392405"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85946046"
 ---
 # <a name="technical-deep-dive-on-platform-supported-migration-from-classic-to-azure-resource-manager"></a>有关平台支持的从经典部署模型到 Azure Resource Manager 的迁移的技术深入探讨
 

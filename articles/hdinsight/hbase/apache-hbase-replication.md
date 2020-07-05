@@ -13,12 +13,12 @@ ms.workload: big-data
 origin.date: 12/06/2019
 ms.date: 01/13/2020
 ms.author: v-yiso
-ms.openlocfilehash: 6e5b7eed0894fb73277b655c6ecd10371ae41ddd
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 0d61cb2b4eb47db1f9bbc04fa0893f6ed2f3a696
+ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75631105"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85516628"
 ---
 # <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>在 Azure 虚拟网络中设置 Apache HBase 群集复制
 
@@ -184,9 +184,9 @@ ms.locfileid: "75631105"
 
     此命令返回类似于以下文本的值：
 
-        vnet1DNS.icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net
+        vnet1DNS.icb0d0thtw0ebifqt0g1jycdxd.ex.internal.chinacloudapp.cn
 
-    `icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net` 文本是此虚拟网络的  DNS 后缀。 保存该值，因为以后会用到。
+    `icb0d0thtw0ebifqt0g1jycdxd.ex.internal.chinacloudapp.cn` 文本是此虚拟网络的  DNS 后缀。 保存该值，因为以后会用到。
 
     还必须从其他 DNS 服务器中找出 DNS 后缀。 因为下一步骤需要用到。
 
@@ -194,14 +194,14 @@ ms.locfileid: "75631105"
 
     ```
     // Replace the following with the DNS suffix for your virtual network
-    zone "v5ant3az2hbe1edzthhvwwkcse.bx.internal.cloudapp.net" {
+    zone "v5ant3az2hbe1edzthhvwwkcse.bx.internal.chinacloudapp.cn" {
             type forward;
             forwarders {10.2.0.4;}; # The Azure recursive resolver
     };
     ```
 
     > [!IMPORTANT]
-    > 必须将 `v5ant3az2hbe1edzthhvwwkcse.bx.internal.cloudapp.net` 替换为另一个虚拟网络的 DNS 后缀。 转发器 IP 是另一虚拟网络中 DNS 服务器的专用 IP 地址。
+    > 必须将 `v5ant3az2hbe1edzthhvwwkcse.bx.internal.chinacloudapp.cn` 替换为另一个虚拟网络的 DNS 后缀。 转发器 IP 是另一虚拟网络中 DNS 服务器的专用 IP 地址。
 
     若要编辑该文件，请使用以下命令：
 
@@ -221,11 +221,11 @@ ms.locfileid: "75631105"
 
     ```bash
     sudo apt install dnsutils
-    nslookup vnet2dns.v5ant3az2hbe1edzthhvwwkcse.bx.internal.cloudapp.net
+    nslookup vnet2dns.v5ant3az2hbe1edzthhvwwkcse.bx.internal.chinacloudapp.cn
     ```
 
     > [!IMPORTANT]
-    > 将 `vnet2dns.v5ant3az2hbe1edzthhvwwkcse.bx.internal.cloudapp.net` 替换为另一网络中 DNS 虚拟机的完全限定的域名 (FQDN)。
+    > 将 `vnet2dns.v5ant3az2hbe1edzthhvwwkcse.bx.internal.chinacloudapp.cn` 替换为另一网络中 DNS 虚拟机的完全限定的域名 (FQDN)。
     >
     > 将 `10.2.0.4` 替换为另一虚拟网络中自定义 DNS 服务器的内部 IP 地址  。
 
@@ -236,7 +236,7 @@ ms.locfileid: "75631105"
     Address:        10.2.0.4#53
     
     Non-authoritative answer:
-    Name:   vnet2dns.v5ant3az2hbe1edzthhvwwkcse.bx.internal.cloudapp.net
+    Name:   vnet2dns.v5ant3az2hbe1edzthhvwwkcse.bx.internal.chinacloudapp.cn
     Address: 10.2.0.4
     ```
 

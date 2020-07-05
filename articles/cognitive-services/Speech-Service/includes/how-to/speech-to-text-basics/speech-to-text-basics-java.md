@@ -3,14 +3,14 @@ author: trevorbye
 ms.service: cognitive-services
 ms.topic: include
 origin.date: 03/11/2020
-ms.date: 04/20/2020
+ms.date: 06/19/2020
 ms.author: v-tawe
-ms.openlocfilehash: 953c019e69f981a726b43538b3f2e0e05b93a252
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.openlocfilehash: 537c82fb6526f0cb2bc1e2fecf4aff166729fabf
+ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82126763"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85613390"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -84,7 +84,7 @@ SpeechRecognizer recognizer = new SpeechRecognizer(config, audioConfig);
 用于 Java 的语音 SDK 的[识别器类](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer?view=azure-java-stable)公开了一些可用于语音识别的方法。
 
 * 单步识别（异步）- 在非阻塞（异步）模式下执行识别。 这将识别单个言语。 单个言语的结束是通过在结束时倾听静音或处理最长 15 秒音频时确定的。
-* 连续识别（异步）- 异步启动连续识别操作。 如果要提供音频文件而不是使用麦克风，则仍需要提供。 若要停止异步连续识别，请调用 [stopContinuousRecognitionAsync](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer.stopcontinuousrecognitionasync)。
+* 连续识别（异步）- 异步启动连续识别操作。 如果要提供音频文件而不是使用麦克风，则仍需要提供 `audioConfig`。 若要停止异步连续识别，请调用 [stopContinuousRecognitionAsync](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer.stopcontinuousrecognitionasync)。
 
 > [!NOTE]
 > 详细了解如何[选择语音识别模式](../../../how-to-choose-recognition-mode.md)。

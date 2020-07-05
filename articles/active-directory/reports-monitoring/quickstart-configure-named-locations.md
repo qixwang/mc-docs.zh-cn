@@ -12,16 +12,16 @@ ms.subservice: report-monitor
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 05/27/2020
+ms.date: 07/03/2020
 ms.author: v-junlch
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f8318c232ebfc8815c1362c650ef13269cac0a79
-ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
+ms.openlocfilehash: bd375e5d43152365c80b1103c4bfad10115508ee
+ms.sourcegitcommit: 1008ad28745709e8d666f07a90e02a79dbbe2be5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84186953"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945285"
 ---
 # <a name="quickstart-configure-named-locations-in-azure-active-directory"></a>快速入门：在 Azure Active Directory 中配置命名位置
 
@@ -63,6 +63,5 @@ ms.locfileid: "84186953"
 
 有关详细信息，请参阅：
 
-- [Azure AD 条件访问](/active-directory/conditional-access/overview)。
-- [Azure AD 条件访问中的位置条件](../conditional-access/location-condition.md)
+- [条件访问中条件的位置](../conditional-access/concept-conditional-access-conditions.md#locations)。
 

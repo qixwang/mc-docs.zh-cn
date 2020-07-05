@@ -1,5 +1,5 @@
 ---
-title: 通过 C++ 连接到 Azure Database for MySQL
+title: 使用 C++ 进行连接 - Azure Database for MySQL
 description: 本快速入门提供一个 C++ 代码示例，使用该示例可连接到 Azure Database for MySQL 并查询其中的数据。
 author: WenJason
 ms.author: v-jay
@@ -7,14 +7,14 @@ ms.service: mysql
 ms.custom: mvc
 ms.devlang: cpp
 ms.topic: quickstart
-origin.date: 04/12/2018
-ms.date: 07/15/2019
-ms.openlocfilehash: 895b1d1fd9532c4e1b9dfacdbba744ab2da3c252
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+origin.date: 5/26/2020
+ms.date: 06/29/2020
+ms.openlocfilehash: 4ecbde1c0df4e87a352fd2d4a3e70de0c3401c49
+ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "67845110"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85516776"
 ---
 # <a name="azure-database-for-mysql-use-connectorc-to-connect-and-query-data"></a>Azure Database for MySQL：使用 Connector/C++ 连接和查询数据
 
@@ -34,6 +34,9 @@ ms.locfileid: "67845110"
 - 安装 [MySQL Connector/C++](https://dev.mysql.com/downloads/connector/cpp/) 
 - 安装 [Boost](https://www.boost.org/)
 
+> [!IMPORTANT] 
+> 确保已使用 [Azure 门户](./howto-manage-firewall-using-portal.md)或 [Azure CLI](./howto-manage-firewall-using-cli.md) 将服务器的防火墙规则添加到连接的 IP 地址
+
 ## <a name="install-visual-studio-and-net"></a>安装 Visual Studio 和 .NET
 本部分的步骤假定你熟悉如何使用 .NET 进行开发。
 
@@ -42,7 +45,7 @@ ms.locfileid: "67845110"
    1. 下载 [Visual Studio 2019 安装程序](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15)。 
    2. 运行该安装程序，并遵照安装提示完成安装。
 
-### <a name="configure-visual-studio"></a> 配置 Visual Studio
+### <a name="configure-visual-studio"></a>配置 Visual Studio
 1. 从 Visual Studio 的“项目”->“属性”->“链接器”->“常规”>“其他库目录”中，添加 C++ 连接器的“lib\opt”目录（例如：C:\Program Files (x86)\MySQL\MySQL Connector C++ 1.1.9\lib\opt）。
 2. 在 Visual Studio 的“项目”->“属性”->“C/C++”->“常规”->“其他 Include 目录”中：
    - 添加 c++ 连接器的“\include”目录（例如：C:\Program Files (x86)\MySQL\MySQL Connector C++ 1.1.9\include\)）。
@@ -54,13 +57,13 @@ ms.locfileid: "67845110"
 获取连接到 Azure Database for MySQL 所需的连接信息。 需要完全限定的服务器名称和登录凭据。
 
 1. 登录到 [Azure 门户](https://portal.azure.cn/)。
-2. 在 Azure 门户的左侧菜单中，单击“所有资源”  ，然后搜索已创建的服务器（例如 mydemoserver  ）。
+2. 在 Azure 门户的左侧菜单中，单击“所有资源”，然后搜索已创建的服务器（例如 mydemoserver）。
 3. 单击服务器名称。
-4. 从服务器的“概览”面板中记下“服务器名称”和“服务器管理员登录名”。    如果忘记了密码，也可通过此面板来重置密码。
+4. 从服务器的“概览”面板中记下“服务器名称”和“服务器管理员登录名”。   如果忘记了密码，也可通过此面板来重置密码。
  ![Azure Database for MySQL 服务器名称](./media/connect-cpp/1_server-overview-name-login.png)
 
 ## <a name="connect-create-table-and-insert-data"></a>进行连接，创建表，然后插入数据
-通过以下代码进行连接，然后使用 CREATE TABLE  和 INSERT INTO  SQL 语句加载数据。 代码使用 sql::Driver 类，通过 connect() 方法建立到 MySQL 的连接。 然后，代码使用 createStatement() 和 execute() 方法运行数据库命令。 
+通过以下代码进行连接，然后使用 CREATE TABLE 和 INSERT INTO SQL 语句加载数据。 代码使用 sql::Driver 类，通过 connect() 方法建立到 MySQL 的连接。 然后，代码使用 createStatement() 和 execute() 方法运行数据库命令。 
 
 替换 Host、DBName、User 和 Password 参数。 可以将这些参数替换为你在创建服务器和数据库时指定的值。 
 
@@ -134,7 +137,7 @@ int main()
 
 ## <a name="read-data"></a>读取数据
 
-使用以下代码进行连接，并使用 SELECT  SQL 语句读取数据。 代码使用 sql::Driver 类，通过 connect() 方法建立到 MySQL 的连接。 然后，代码使用 prepareStatement() 和 executeQuery() 方法运行 select 命令。 然后，代码使用 next() 转到结果中的记录。 最后，代码使用 getInt() 和 getString() 分析记录中的值。
+使用以下代码进行连接，并使用 SELECT SQL 语句读取数据。 代码使用 sql::Driver 类，通过 connect() 方法建立到 MySQL 的连接。 然后，代码使用 prepareStatement() 和 executeQuery() 方法运行 select 命令。 然后，代码使用 next() 转到结果中的记录。 最后，代码使用 getInt() 和 getString() 分析记录中的值。
 
 替换 Host、DBName、User 和 Password 参数。 可以将这些参数替换为你在创建服务器和数据库时指定的值。 
 
@@ -193,7 +196,7 @@ int main()
 ```
 
 ## <a name="update-data"></a>更新数据
-使用以下代码进行连接，并使用 UPDATE  SQL 语句读取数据。 代码使用 sql::Driver 类，通过 connect() 方法建立到 MySQL 的连接。 然后，代码使用 prepareStatement() 和 executeQuery() 方法运行 update 命令。 
+使用以下代码进行连接，并使用 UPDATE SQL 语句读取数据。 代码使用 sql::Driver 类，通过 connect() 方法建立到 MySQL 的连接。 然后，代码使用 prepareStatement() 和 executeQuery() 方法运行 update 命令。 
 
 替换 Host、DBName、User 和 Password 参数。 可以将这些参数替换为你在创建服务器和数据库时指定的值。 
 
@@ -251,7 +254,7 @@ int main()
 
 
 ## <a name="delete-data"></a>删除数据
-使用以下代码进行连接，并使用 DELETE  SQL 语句读取数据。 代码使用 sql::Driver 类，通过 connect() 方法建立到 MySQL 的连接。 然后，代码使用 prepareStatement() 和 executeQuery() 方法运行 delete 命令。
+使用以下代码进行连接，并使用 DELETE SQL 语句读取数据。 代码使用 sql::Driver 类，通过 connect() 方法建立到 MySQL 的连接。 然后，代码使用 prepareStatement() 和 executeQuery() 方法运行 delete 命令。
 
 替换 Host、DBName、User 和 Password 参数。 可以将这些参数替换为你在创建服务器和数据库时指定的值。 
 

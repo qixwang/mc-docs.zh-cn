@@ -15,12 +15,12 @@ ms.topic: conceptual
 origin.date: 01/16/2020
 ms.date: 03/02/2020
 ms.author: v-yiso
-ms.openlocfilehash: 7d140fed7ebf3e6f503d7b9a71abdb05356b8c3e
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 8893703cba478f82c5b5ddac94b2d1c99c2586a1
+ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77563512"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85516725"
 ---
 # <a name="develop-java-mapreduce-programs-for-apache-hadoop-on-hdinsight"></a>为 HDInsight 上的 Apache Hadoop 开发 Java MapReduce 程序
 
@@ -257,7 +257,7 @@ mvn clean package
 1. 将该 jar 上传到群集。 将 `CLUSTERNAME` 替换为 HDInsight 群集名称，然后输入以下命令：
 
     ```cmd
-    scp target/wordcountjava-1.0-SNAPSHOT.jar sshuser@CLUSTERNAME-ssh.azurehdinsight.net:
+    scp target/wordcountjava-1.0-SNAPSHOT.jar sshuser@CLUSTERNAME-ssh.azurehdinsight.cn:
     ```
 
 1. 连接到群集。 将 `CLUSTERNAME` 替换为 HDInsight 群集名称，然后输入以下命令：

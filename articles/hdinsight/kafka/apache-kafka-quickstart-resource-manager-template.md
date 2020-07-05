@@ -14,12 +14,12 @@ ms.workload: big-data
 origin.date: 06/12/2019
 ms.date: 10/28/2019
 ms.author: v-yiso
-ms.openlocfilehash: 2d03831a480878e77f6ddcfc03028249d9a09fc3
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 6cca8e226a477cc6a10d39be98255bbc31aa892d
+ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80634507"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85516749"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-resource-manager-template"></a>快速入门：使用资源管理器模板在 Azure HDInsight 中创建 Apache Kafka 群集
 
@@ -197,7 +197,7 @@ ms.locfileid: "80634507"
 
 ### <a name="deploy-the-template"></a>部署模板
 
-1. 选择下面的“部署到 Azure”按钮以登录到 Azure，并打开资源管理器模板  。
+1. 选择下面的“部署到 Azure”按钮以登录到 Azure，并打开资源管理器模板。
 
     <a href="https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fhdinsight-kafka-java-get-started%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="./media/apache-kafka-quickstart-resource-manager-template/hdi-deploy-to-azure1.png" alt="Deploy to Azure"></a>
 
@@ -206,7 +206,7 @@ ms.locfileid: "80634507"
     |属性 |说明 |
     |---|---|
     |订阅|从下拉列表中选择用于此群集的 Azure 订阅。|
-    |资源组|从下拉列表中选择现有资源组，或选择“新建”  。|
+    |资源组|从下拉列表中选择现有资源组，或选择“新建”。|
     |位置|将使用用于资源组的位置自动填充此值。|
     |群集名称|输入任何全局唯一的名称。 对于此模板，请只使用小写字母和数字。|
     |群集登录用户名|提供用户名，默认值为 **admin**。|
@@ -216,15 +216,15 @@ ms.locfileid: "80634507"
 
     ![模板属性的屏幕截图](./media/apache-kafka-quickstart-resource-manager-template/resource-manager-template-kafka.png)
 
-1. 查看“条款和条件”  。 接着选择“我同意上述条款和条件”，然后选择“购买”   。 你会收到一则通知，说明正在进行部署。 创建群集大约需要 20 分钟时间。
+1. 查看“条款和条件”。 接着选择“我同意上述条款和条件”，然后选择“购买” 。 你会收到一则通知，说明正在进行部署。 创建群集大约需要 20 分钟时间。
 
 ## <a name="review-deployed-resources"></a>查看已部署的资源
 
-创建群集后，你将收到“部署成功”  通知，其中包含“转到资源”  链接。 “资源组”页将列出新的 HDInsight 群集以及与此群集关联的默认存储。 每个群集都有一个 [Azure 存储](../hdinsight-hadoop-use-blob-storage.md)帐户依赖项。 该帐户称为默认存储帐户。 HDInsight 群集及其默认存储帐户必须共存于同一个 Azure 区域中。 删除群集不会删除存储帐户。
+创建群集后，你将收到“部署成功”通知，其中包含“转到资源”链接。 “资源组”页将列出新的 HDInsight 群集以及与此群集关联的默认存储。 每个群集都有一个 [Azure 存储](../hdinsight-hadoop-use-blob-storage.md)帐户依赖项。 该帐户称为默认存储帐户。 HDInsight 群集及其默认存储帐户必须共存于同一个 Azure 区域中。 删除群集不会删除存储帐户。
 
 ## <a name="get-the-apache-zookeeper-and-broker-host-information"></a>获取 Apache Zookeeper 主机和代理主机信息
 
-使用 Kafka 时，必须了解 Apache Zookeeper 和代理主机   。 Kafka API 以及 Kafka 随附的许多实用工具都使用这些主机。
+使用 Kafka 时，必须了解 Apache Zookeeper 和代理主机 。 Kafka API 以及 Kafka 随附的许多实用工具都使用这些主机。
 
 在本部分中，可以从群集上的 Ambari REST API 获取主机信息。
 
@@ -264,7 +264,7 @@ ms.locfileid: "80634507"
 
     此命令返回类似于以下文本的信息：
 
-    `zk0-kafka.eahjefxxp1netdbyklgqj5y1ud.ex.internal.cloudapp.net:2181,zk2-kafka.eahjefxxp1netdbyklgqj5y1ud.ex.internal.cloudapp.net:2181`
+    `zk0-kafka.eahjefxxp1netdbyklgqj5y1ud.ex.internal.chinacloudapp.cn:2181,zk2-kafka.eahjefxxp1netdbyklgqj5y1ud.ex.internal.chinacloudapp.cn:2181`
 
 5. 若要使用 Kafka 代理主机信息来设置环境变量，请使用以下命令：
 
@@ -282,13 +282,13 @@ ms.locfileid: "80634507"
 
     此命令返回类似于以下文本的信息：
    
-    `wn1-kafka.eahjefxxp1netdbyklgqj5y1ud.cx.internal.cloudapp.cn:9092,wn0-kafka.eahjefxxp1netdbyklgqj5y1ud.cx.internal.cloudapp.net:9092`
+    `wn1-kafka.eahjefxxp1netdbyklgqj5y1ud.cx.internal.cloudapp.cn:9092,wn0-kafka.eahjefxxp1netdbyklgqj5y1ud.cx.internal.chinacloudapp.cn:9092`
 
 ## <a name="manage-apache-kafka-topics"></a>管理 Apache Kafka 主题
 
-Kafka 在主题中存储数据流  。 可以使用 `kafka-topics.sh` 实用工具来管理主题。
+Kafka 在主题中存储数据流。 可以使用 `kafka-topics.sh` 实用工具来管理主题。
 
-* 若要创建主题，请在 SSH 连接中使用以下命令  ：
+* 若要创建主题，请在 SSH 连接中使用以下命令：
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --create --replication-factor 3 --partitions 8 --topic test --zookeeper $KAFKAZKHOSTS
@@ -316,7 +316,7 @@ Kafka 在主题中存储数据流  。 可以使用 `kafka-topics.sh` 实用工�
 
         * 纵向扩展群集
 
-* 若要列出主题，请使用以下命令  ：
+* 若要列出主题，请使用以下命令：
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --list --zookeeper $KAFKAZKHOSTS
@@ -324,7 +324,7 @@ Kafka 在主题中存储数据流  。 可以使用 `kafka-topics.sh` 实用工�
 
     此命令列出 Kafka 群集上可用的主题。
 
-* 若要删除主题，使用以下命令  ：
+* 若要删除主题，使用以下命令：
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --delete --topic topicname --zookeeper $KAFKAZKHOSTS
@@ -343,7 +343,7 @@ Kafka 在主题中存储数据流  。 可以使用 `kafka-topics.sh` 实用工�
 
 ## <a name="produce-and-consume-records"></a>生成和使用记录
 
-Kafka 将*记录*存储在主题中。 记录由*生成者*生成，由*使用者*使用。 生产者与使用者通过 Kafka 代理服务通信  。 HDInsight 群集中的每个工作节点都是 Kafka 代理主机。
+Kafka 将*记录*存储在主题中。 记录由*生成者*生成，由*使用者*使用。 生产者与使用者通过 Kafka 代理服务通信。 HDInsight 群集中的每个工作节点都是 Kafka 代理主机。
 
 若要将记录存储到之前创建的测试主题，并通过使用者对其进行读取，请使用以下步骤：
 
@@ -375,11 +375,11 @@ Kafka 将*记录*存储在主题中。 记录由*生成者*生成，由*使用�
 
 完成本快速入门后，可以删除群集。 有了 HDInsight，便可以将数据存储在 Azure 存储中，因此可以在群集不用时安全地删除群集。 此外，还需要为 HDInsight 群集付费，即使不用也是如此。 由于群集费用数倍于存储空间费用，因此在群集不用时删除群集可以节省费用。
 
-从 Azure 门户导航到群集，然后选择“删除”。 
+从 Azure 门户导航到群集，然后选择“删除”。
 
 ![资源管理器模板 HBase](./media/apache-kafka-quickstart-resource-manager-template/azure-portal-delete-kafka.png)
 
-还可以选择资源组名称来打开“资源组”页，然后选择“删除资源组”  。 通过删除资源组，可以删除 HDInsight 群集和默认存储帐户。
+还可以选择资源组名称来打开“资源组”页，然后选择“删除资源组”。 通过删除资源组，可以删除 HDInsight 群集和默认存储帐户。
 
 ## <a name="next-steps"></a>后续步骤
 

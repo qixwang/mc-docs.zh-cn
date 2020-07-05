@@ -9,15 +9,15 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
 origin.date: 02/10/2020
-ms.date: 04/20/2020
+ms.date: 06/19/2020
 ms.author: v-tawe
-zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 2101948792f1c612b095f5051484e4273ff6fbdf
-ms.sourcegitcommit: 304d3ef3c9e65c3e85977b3afb9985fbc0f908d6
+zone_pivot_groups: programming-languages-set-two-with-js-spx
+ms.openlocfilehash: bc887408049c9737540c1cc03bbfa8ef276cac2e
+ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85095989"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85613309"
 ---
 # <a name="quickstart-translate-speech-to-text"></a>快速入门：将语音翻译为文本
 
@@ -46,6 +46,19 @@ ms.locfileid: "85095989"
 [!INCLUDE [Header](../includes/quickstarts/translate-stt/header.md)]
 [!INCLUDE [Header](../includes/quickstarts/translate-stt/python/header.md)]
 [!INCLUDE [python](../includes/quickstarts/translate-stt/python/python.md)]
+::: zone-end
+
+::: zone pivot="programming-language-javascript"
+[!INCLUDE [Header](../includes/quickstarts/translate-stt/header.md)]
+[!INCLUDE [Header](../includes/quickstarts/translate-stt/javascript/header.md)]
+[!INCLUDE [javascript](../includes/quickstarts/translate-stt/javascript/javascript.md)]
+::: zone-end
+
+::: zone pivot="programmer-tool-spx"
+[!INCLUDE [Header](../includes/quickstarts/translate-stt/spx/header.md)]
+[!INCLUDE [SPX Setup](../includes/spx-setup.md)]
+[!INCLUDE [spx](../includes/quickstarts/translate-stt/spx/spx.md)]
+[!INCLUDE [next steps to spx basics](../includes/quickstarts/spx-next-steps.md)]
 ::: zone-end
 
 ::: zone pivot="programming-language-more"

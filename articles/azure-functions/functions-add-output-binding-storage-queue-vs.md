@@ -1,15 +1,15 @@
 ---
 title: 使用 Visual Studio 将函数连接到 Azure 存储
 description: 了解如何使用 Visual Studio 添加输出绑定，以将 C# 类库函数连接到 Azure 存储队列。
-ms.date: 12/30/2019
+ms.date: 07/02/2020
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: 126d150de5c117d145d09eab7feeeeb06b20906c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: c943bf777cb6b25aeb19993a6889bcd0beea060c
+ms.sourcegitcommit: 1008ad28745709e8d666f07a90e02a79dbbe2be5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75624278"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945284"
 ---
 # <a name="connect-functions-to-azure-storage-using-visual-studio"></a>使用 Visual Studio 将函数连接到 Azure 存储
 
@@ -19,11 +19,11 @@ ms.locfileid: "75624278"
 
 大多数绑定都需要一个存储的连接字符串，函数将使用该字符串来访问绑定的服务。 为便于操作，请使用连同函数应用一起创建的存储帐户。 与此帐户建立的连接已存储在名为 `AzureWebJobsStorage` 的应用设置中。  
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在开始学习本文之前，必须： 
 
- - 完成 [Visual Studio 快速入门的第 1 部分](./functions-create-first-function-vs-code.md)。 
+ - 完成 [Visual Studio 快速入门的第 1 部分](./functions-create-your-first-function-visual-studio.md)。 
 
 - 从 Visual Studio 登录到 Azure 订阅。
 
@@ -31,13 +31,13 @@ ms.locfileid: "75624278"
 
 在[前一篇快速入门文章](functions-create-first-function-vs-code.md)中，你已在 Azure 中创建了一个函数应用，并创建了所需的存储帐户。 此帐户的连接字符串安全存储在 Azure 中的应用设置内。 在本文中，你要将消息写入到同一帐户中的存储队列。 若要在本地运行函数时连接到该存储帐户，必须将应用设置下载到 *local.settings.json* 文件。 
 
-1. **在“解决方案资源管理器”** 中，右键单击该项目并选择“发布”  。 
+1. **在“解决方案资源管理器”** 中，右键单击该项目并选择“发布”。 
 
-1. 在“操作”下，选择“编辑 Azure 应用服务设置”。   
+1. 在“操作”下，选择“编辑 Azure 应用服务设置”。  
 
     ![编辑应用程序设置](./media/functions-add-output-binding-storage-queue-vs/edit-app-settings.png)
 
-1. 在“AzureWebJobsStorage”下，将“Remote”字符串值复制到“Local”，然后选择“确定”。     
+1. 在“AzureWebJobsStorage”下，将“Remote”字符串值复制到“Local”，然后选择“确定”。    
 
 现在，使用 `AzureWebJobsStorage` 设置建立连接的存储绑定可以在本地运行时连接到队列存储。
 
@@ -45,7 +45,7 @@ ms.locfileid: "75624278"
 
 由于你使用的是队列存储输出绑定，因此在运行项目之前，需要安装存储绑定扩展。 绑定（HTTP 和计时器触发器除外）将实现为扩展包。 
 
-1. 在“工具”菜单中，选择“NuGet 包管理器” > “包管理器控制台”。 
+1. 在“工具”菜单中，选择“NuGet 包管理器” > “包管理器控制台”。   
 
 1. 在控制台中，运行以下 [Install-Package](https://docs.microsoft.com/nuget/tools/ps-ref-install-package) 命令安装存储扩展：
 
@@ -73,13 +73,13 @@ ms.locfileid: "75624278"
 
 ## <a name="examine-the-output-queue"></a>检查输出队列
 
-1. 在 Visual Studio 的“视图”菜单中，选择“Cloud Explorer”。  
+1. 在 Visual Studio 的“视图”菜单中，选择“Cloud Explorer”。 
 
-1. 在“Cloud Explorer”中，展开你的 Azure 订阅和“存储帐户”，然后展开函数使用的存储帐户。   如果你忘记了存储帐户名称，请查看 *local.settings.json* 文件中的 `AzureWebJobsStorage` 连接字符串设置。  
+1. 在“Cloud Explorer”中，展开你的 Azure 订阅和“存储帐户”，然后展开函数使用的存储帐户。  如果你忘记了存储帐户名称，请查看 *local.settings.json* 文件中的 `AzureWebJobsStorage` 连接字符串设置。  
 
 1. 展开“队列”节点，然后双击名为 **outqueue** 的队列，在 Visual Studio 中查看队列的内容。 
 
-   此队列包含在运行 HTTP 触发的函数时队列输出绑定创建的消息。 如果使用默认的 `name` 值 *Azure* 调用了此函数，则队列消息为“传递给函数的名称: Azure”。 
+   此队列包含在运行 HTTP 触发的函数时队列输出绑定创建的消息。 如果使用 Azure 的默认 `name` 值调用了此函数，则队列消息为“传递给函数的名称： Azure”。
 
     ![Azure 存储资源管理器中显示的队列消息](./media/functions-add-output-binding-storage-queue-vs-code/function-queue-storage-output-view-queue.png)
 
@@ -89,7 +89,7 @@ ms.locfileid: "75624278"
 
 ## <a name="redeploy-and-verify-the-updated-app"></a>重新部署并验证更新的应用
 
-1. 在“解决方案资源管理器”中，右键单击项目并选择“发布”，然后选择“发布”将项目重新发布到 Azure。   
+1. 在“解决方案资源管理器”中，右键单击项目并选择“发布”，然后选择“发布”将项目重新发布到 Azure。  
 
 1. 部署完成后，可以再次使用浏览器测试重新部署的函数。 如前所述，请在 URL 的后面追加查询字符串 `&name=<yourname>`。
 

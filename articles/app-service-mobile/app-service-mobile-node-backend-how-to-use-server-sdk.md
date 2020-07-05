@@ -8,12 +8,12 @@ ms.topic: article
 origin.date: 10/01/2016
 md.date: 03/23/2020
 ms.author: v-tawe
-ms.openlocfilehash: 522aa6820b40904f0967a08934f9504ba8fe2101
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 0168486a53922a3526a6ca08717fccf0a6862066
+ms.sourcegitcommit: 4f84bba7e509a321b6f68a2da475027c539b8fd3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80151747"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85796244"
 ---
 # <a name="how-to-use-the-mobile-apps-nodejs-sdk"></a>如何使用移动应用 Node.js SDK
 
@@ -677,7 +677,7 @@ var mobile = azureMobileApps({ swagger: process.env.NODE_ENV !== 'production' })
 
 如果希望只在本地进行开发时才使用 Swagger 支持，则也可以将 Swagger 选项添加到 azureMobile.js 文件中。
 
-## <a name="push-notifications"></a><a name="push"/>推送通知
+## <a name="push-notifications"></a><a name="push"></a>推送通知
 
 移动应用与 Azure 通知中心集成，因此，我们可以跨所有主要平台向数百万台设备发送有针对性的推送通知。 使用通知中心可将推送通知发送到 iOS、Android 和 Windows 设备。 若要详细了解通知中心的所有功能，请参阅[通知中心概述](../notification-hubs/notification-hubs-push-notification-overview.md)。
 

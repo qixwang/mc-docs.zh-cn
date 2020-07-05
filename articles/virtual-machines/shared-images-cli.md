@@ -7,15 +7,15 @@ ms.subservice: imaging
 ms.topic: how-to
 ms.workload: infrastructure
 origin.date: 05/04/2020
-ms.date: 06/01/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
 ms.reviewer: akjosh
-ms.openlocfilehash: 34b68aef4e3c7bca7b0ad3c39a866daa0a4d4637
-ms.sourcegitcommit: 981a75a78f8cf74ab5a76f9e6b0dc5978387be4b
+ms.openlocfilehash: 751650649a85c4fb551080eb9e970e18591e8ff8
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83801906"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945763"
 ---
 # <a name="create-a-shared-image-gallery-with-the-azure-cli"></a>使用 Azure CLI 创建共享映像库
 
@@ -31,5 +31,4 @@ ms.locfileid: "83801906"
 
 有关共享映像库的详细信息，请参阅[概述](./linux/shared-image-galleries.md)。 如果遇到问题，请参阅[排查共享映像库问题](troubleshooting-shared-images.md)。
 
-<!-- Update_Description: new article about shared images cli -->
-<!--NEW.date: 06/01/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

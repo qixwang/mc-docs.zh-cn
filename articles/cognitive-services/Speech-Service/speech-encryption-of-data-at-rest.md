@@ -10,12 +10,12 @@ ms.topic: conceptual
 origin.date: 03/13/2020
 ms.date: 03/16/2020
 ms.author: v-tawe
-ms.openlocfilehash: d0f5eb09e24afe2b2bb00f241c53471377aae287
-ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
+ms.openlocfilehash: 097da7ccda99f479e270eef60135a7b51fe4ac31
+ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82588620"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85611874"
 ---
 # <a name="speech-service-encryption-of-data-at-rest"></a>语音识别服务静态数据的加密
 
@@ -49,7 +49,7 @@ To request access to bring your own storage, fill out and submit the [Speech s
 BYOS is currently available in these regions:
 
 * US South Central
-* West US 2
+* China East 2 2
 * East US
 
 -->

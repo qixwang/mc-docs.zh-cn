@@ -10,22 +10,23 @@ metadata:
   ms.topic: landing-page
   author: MarkusVi
   ms.author: v-junlch
-  origin.date: 08/29/2019
-  ms.date: 10/11/2019
+  ms.date: 07/03/2020
   ms.collection: M365-identity-device-management
-  ms.openlocfilehash: 8e1e23e3dbcd55e8f4ea61cd06e57f44ff2a1bfe
-  ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+  ms.openlocfilehash: 147ce12b8c0c13ec775b606b4cfc10c1b8e80f91
+  ms.sourcegitcommit: 1008ad28745709e8d666f07a90e02a79dbbe2be5
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 04/17/2020
-  ms.locfileid: "72292103"
+  ms.lasthandoff: 07/03/2020
+  ms.locfileid: "85945236"
 landingContent:
 - title: 关于 Azure Active Directory 报表和监视
   linkLists:
   - linkListType: overview
     links:
-    - text: 什么是 Azure Active Directory 报表？
+    - text: 什么是 Azure Active Directory 报告？
       url: overview-reports.md
+    - text: 什么是 Azure Active Directory 监视？
+      url: overview-monitoring.md
   - linkListType: concept
     links:
     - text: 审核日志

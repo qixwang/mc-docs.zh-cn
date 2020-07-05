@@ -16,12 +16,12 @@ ms.workload: big-data
 origin.date: 12/17/2019
 ms.date: 03/02/2020
 ms.author: v-yiso
-ms.openlocfilehash: f25e3d3176f1ea029acc81fa5aff0006574c1dec
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: b55f49f1ee5ada1aa20fa335fb4d06cf926b3259
+ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77563368"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85516755"
 ---
 # <a name="bulk-load-data-into-apache-phoenix-using-psql"></a>使用 psql 将数据批量加载到 Apache Phoenix
 
@@ -77,13 +77,13 @@ ms.locfileid: "77563368"
 1. 打开命令提示符，然后将目录更改到新创建的文件的位置。 将下面的 CLUSTERNAME 替换为你的 HBase 群集的实际名称。 然后执行代码，将文件上传到你的群集的头节点：
 
     ```cmd
-    scp customers.csv customers2.csv createCustomersTable.sql listCustomers.sql sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/tmp
+    scp customers.csv customers2.csv createCustomersTable.sql listCustomers.sql sshuser@CLUSTERNAME-ssh.azurehdinsight.cn:/tmp
     ```
 
 1. 使用 [ssh 命令](../hdinsight-hadoop-linux-use-ssh-unix.md)连接到群集。 编辑以下命令（将 CLUSTERNAME 替换为群集的名称），然后输入该命令：
 
     ```cmd
-    ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
+    ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.cn
     ```
 
 1. 从 ssh 会话中，将目录更改到 **psql** 工具的位置。 执行以下命令：

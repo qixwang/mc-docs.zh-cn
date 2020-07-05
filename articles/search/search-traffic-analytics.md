@@ -8,13 +8,13 @@ ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 03/18/2020
-ms.date: 06/09/2020
-ms.openlocfilehash: f9f56ec7a052ace9dfb616ac539fd935921e8f8d
-ms.sourcegitcommit: c4fc01b7451951ef7a9616fca494e1baf29db714
+ms.date: 07/02/2020
+ms.openlocfilehash: 2edd40de3fd0ade65d8bac50c424cc0995a2c28a
+ms.sourcegitcommit: 5afd7c4c3be9b80c4c67ec55f66fcf347aad74c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84564348"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85942580"
 ---
 # <a name="collect-telemetry-data-for-search-traffic-analytics"></a>收集遥测数据以用于分析搜索流量
 

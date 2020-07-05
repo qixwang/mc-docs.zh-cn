@@ -16,12 +16,12 @@ ms.workload: big-data
 origin.date: 11/29/2019
 ms.date: 03/23/2020
 ms.author: v-yiso
-ms.openlocfilehash: fb5567527dd7846189aed8a0bdd637ea123a3c21
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 3f33b636285e0300c292629efcff02b753bf4852
+ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79295950"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85516764"
 ---
 # <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight"></a>使用 MirrorMaker 通过 Kafka on HDInsight 复制 Apache Kafka 主题
 
@@ -98,7 +98,7 @@ ms.locfileid: "79295950"
 
 配置 IP 播发，使客户端可以使用中转站 IP 地址而不是域名进行连接。
 
-1. 转到主要群集的 Ambari 仪表板：`https://PRIMARYCLUSTERNAME.azurehdinsight.net`。
+1. 转到主要群集的 Ambari 仪表板：`https://PRIMARYCLUSTERNAME.azurehdinsight.cn`。
 1. 选择“服务” > “Kafka”。   单击“配置”选项卡  。
 1. 将以下配置行添加到底部的 **kafka-env template** 节。 选择“保存”  。
 

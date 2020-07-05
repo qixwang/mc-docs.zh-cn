@@ -5,14 +5,14 @@ author: WenJason
 ms.author: v-jay
 ms.service: mariadb
 ms.topic: conceptual
-origin.date: 12/02/2019
-ms.date: 02/17/2020
-ms.openlocfilehash: 82ca4833c7de4a2288c14ff93723b65abfe3a096
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+origin.date: 3/18/2020
+ms.date: 07/06/2020
+ms.openlocfilehash: 4ebbdbbcaf93bab1bf705c718280d611a35f4588
+ms.sourcegitcommit: 7ea2d04481512e185a60fa3b0f7b0761e3ed7b59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77192475"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85845813"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mariadb"></a>对 Azure Database for MariaDB 使用虚拟网络服务终结点和规则
 
@@ -25,7 +25,7 @@ ms.locfileid: "77192475"
 > [!NOTE]
 > Azure 中的所有区域均提供此功能，其中 Azure Database for MariaDB 部署用于常规用途和内存优化服务器。
 
-<a name="anch-terminology-and-description-82f" />
+<a name="anch-terminology-and-description-82f"></a>
 
 ## <a name="terminology-and-description"></a>术语和说明
 
@@ -45,7 +45,7 @@ ms.locfileid: "77192475"
 
 
 
-<a name="anch-benefits-of-a-vnet-rule-68b" />
+<a name="anch-benefits-of-a-vnet-rule-68b"></a>
 
 ## <a name="benefits-of-a-virtual-network-rule"></a>虚拟网络规则的优势
 
@@ -69,7 +69,7 @@ ms.locfileid: "77192475"
 
 但截至 2018 年 8 月，Azure Database for MariaDB 服务仍然无法直接分配给子网。
 
-<a name="anch-details-about-vnet-rules-38q" />
+<a name="anch-details-about-vnet-rules-38q"></a>
 
 ## <a name="details-about-virtual-network-rules"></a>虚拟网络规则详细信息
 

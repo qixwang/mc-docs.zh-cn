@@ -4,7 +4,7 @@
       href: ../sql/virtual-machines-windows-sql-server-iaas-overview.md?toc=%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json
     - name: 定价
       href: 'https://www.azure.cn/pricing/details/virtual-machines/'
-    - name: 常见问题解答
+    - name: 常见问题
       href: ../sql/virtual-machines-windows-sql-server-iaas-faq.md?toc=%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json
 - name: 入门
   items:
@@ -68,8 +68,8 @@
       href: 'https://docs.microsoft.com/rest/api/'
 - name: 资源
   items:
-    - name: Azure 支持
-      href: 'https://support.azure.cn/support/contact/'
+    - name: Azure Q&A 问题页
+      href: 'https://docs.microsoft.com/answers/topics/azure-virtual-machines.html'
     - name: 定价计算器
       href: 'https://www.azure.cn/pricing/calculator/'
     - name: SQL Server Data Tools (SSDT)

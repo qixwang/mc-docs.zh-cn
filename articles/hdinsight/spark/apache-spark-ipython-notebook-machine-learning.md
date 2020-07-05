@@ -11,12 +11,12 @@ ms.topic: tutorial
 origin.date: 06/26/2019
 ms.date: 07/22/2019
 ms.author: v-yiso
-ms.openlocfilehash: b2cb4e701e3cd0201d96a53ddd26ab4ccc1b9eab
-ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
+ms.openlocfilehash: 56aaeee57b11c32695f985cf7e61f3d5e56a1f27
+ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84186451"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85516592"
 ---
 # <a name="tutorial-build-an-apache-spark-machine-learning-application-in-azure-hdinsight"></a>教程：在 Azure HDInsight 中生成 Apache Spark 机器学习应用程序
 
@@ -24,11 +24,9 @@ ms.locfileid: "84186451"
 
 [MLlib](https://spark.apache.org/docs/latest/ml-guide.html) 是 Spark 的自适应机器学习库，由常见的学习算法和实用工具组成。 （分类、回归、聚类、协作筛选和维数约简， 以及底层优化基元。）
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 > [!div class="checklist"]
 > * 开发 Apache Spark 机器学习应用程序
-
-如果没有 Azure 订阅，请在开始前[创建一个试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -47,7 +45,7 @@ ms.locfileid: "84186451"
 此应用程序使用 Spark [ML 管道](https://spark.apache.org/docs/2.2.0/ml-pipeline.html)来执行文档分类。 ML 管道提供建立在数据帧基础之上的统一的一组高级 API。 数据帧可帮助用户创建和优化实用的机器学习管道。 在管道中，可将文档分割成单字、将单字转换成数字特征向量，最后使用特征向量和标签创建预测模型。 按下列步骤创建应用程序。
 
 1. 使用 PySpark 内核创建 Jupyter Notebook。 有关说明，请参阅[创建 Jupyter Notebook](./apache-spark-jupyter-spark-sql.md#create-a-jupyter-notebook)。
-2. 导入此方案所需的类型。 将以下代码段粘贴到空白单元格中，并按 **SHIFT + ENTER**。 
+2. 导入此方案所需的类型。 将以下代码段粘贴到空白单元格中，然后按 **Shift+Enter**。 
 
     ```PySpark
     from pyspark.ml import Pipeline
@@ -88,7 +86,7 @@ ms.locfileid: "84186451"
     training = documents.toDF()
     ```
 
-    在此代码片段中，定义用于比较实际温度与目标温度的函数。 如果实际温度较高，则表示建筑物处于高温状态，用值 **1.0**表示。 否则建筑物处于低温状态，用值 **0.0** 表示。 
+    在此代码片段中，定义用于比较实际温度与目标温度的函数。 如果实际温度较高，则表示建筑物处于高温状态，以值 **1.0** 表示。 否则建筑物处于低温状态，用值 **0.0** 表示。 
 
 4. 设置包括三个阶段的 Spark 机器学习管道：tokenizer、hashingTF 和 lr。 
 
@@ -107,7 +105,7 @@ ms.locfileid: "84186451"
     model = pipeline.fit(training)
     ```
 
-6. 验证训练文档以根据应用程序进度创建检查点。
+6. 验证训练文档以根据应用程序的进度创建检查点。
    
     ```PySpark
     training.show()
@@ -146,9 +144,9 @@ ms.locfileid: "84186451"
 
     ![Spark 机器学习示例的输出数据快照](./media/apache-spark-ipython-notebook-machine-learning/spark-machine-learning-output-data.png "Spark 机器学习示例的输出数据快照")
 
-    请注意，实际温度比目标温度低表示建筑物处于低温状态。 因此在训练输出中，第一行中的 **label** 值为 **0.0**，表示建筑物并非处于高温状态。
+    请注意，实际温度比目标温度低的情况表示建筑物处于低温状态。 因此在训练输出中，第一行中的 **label** 值为 **0.0**，表示建筑物并非处于高温状态。
 
-1. 准备要对其运行训练模型的数据集。 为此，需要传递系统 ID 和系统年数（在训练输出中以 SystemInfo 表示）。 模型将预测具有该系统 ID 和系统年数的建筑物温度是更高（由 1.0 表示）还是更低（由 0.0 表示）。
+1. 准备要对其运行已训练模型的数据集。 为此，需要传递系统 ID 和系统年数（在训练输出中以 SystemInfo 表示）。 模型将预测具有该系统 ID 和系统年数的建筑物温度是更高（由 1.0 表示）还是更低（由 0.0 表示）。
 
     ```PySpark
     # SystemInfo here is a combination of system ID followed by system age
@@ -182,18 +180,18 @@ ms.locfileid: "84186451"
     Row(SystemInfo=u'7 22', prediction=0.0, probability=DenseVector([0.5015, 0.4985]))
     ```
 
-   观察预测结果中的第一行。 对于 ID 为 20 且系统年数为 25 年的 HVAC 系统，建筑物温度很高（预测结果=1.0）。 DenseVector (0.49999) 的第一个值对应于预测 0.0，第二个值 (0.5001) 对应于预测 1.0。 在输出中，即使第二个值仅稍微偏高，模型仍显示 **prediction=1.0**。
+   观察预测结果中的第一行。 对于 ID 为 20 且系统年数为 25 年的 HVAC 系统，建筑物温度很高（预测结果=1.0）。 DenseVector (0.49999) 的第一个值对应于预测 0.0，第二个值 (0.5001) 对应于预测 1.0。 在输出中，即使第二个值只稍高一点，模型也仍旧显示 **prediction=1.0**。
 
-1. 关闭 Notebook 以释放资源。 为此，请在 Notebook 的“文件”菜单中选择“关闭并停止” 。 此操作会关闭 Notebook。
+1. 关闭笔记本以释放资源。 为此，请在 Notebook 的“文件”菜单中选择“关闭并停止” 。 此操作会关闭 Notebook。
 
 ## <a name="use-anaconda-scikit-learn-library-for-spark-machine-learning"></a>将 Anaconda scikit-learn 库用于 Spark 机器学习
-HDInsight 中的 Apache Spark 群集包含 Anaconda 库。 它还包括适用于机器学习的 scikit-learn 库。 该库还包含可用于直接从 Jupyter notebook 生成示例应用程序的各种数据集。 有关 scikit-learn 库的用法示例，请参阅 [https://scikit-learn.org/stable/auto_examples/index.html](https://scikit-learn.org/stable/auto_examples/index.html)。
+HDInsight 中的 Apache Spark 群集包含 Anaconda 库。 它还包括适用于机器学习的 scikit-learn 库。 该库还包含用于直接从 Jupyter 笔记本生成示例应用程序的各种数据集。 有关使用 scikit-learn 库的示例，请参阅 [https://scikit-learn.org/stable/auto_examples/index.html](https://scikit-learn.org/stable/auto_examples/index.html)。
 
 ## <a name="clean-up-resources"></a>清理资源
 
 如果不打算继续使用此应用程序，请使用以下步骤删除创建的群集：
 
-1. 登录到 [Azure 门户](https://portal.azure.cn/)。
+1. 登录 [Azure 门户](https://portal.azure.cn/)。
 
 1. 在顶部的“搜索”框中，键入 **HDInsight**。
 
@@ -201,7 +199,7 @@ HDInsight 中的 Apache Spark 群集包含 Anaconda 库。 它还包括适用于
 
 1. 在显示的 HDInsight 群集列表中，选择为本教程创建的群集旁边的“...”。
 
-1. 选择“删除” 。 请选择“是”。
+1. 选择“删除”。 请选择“是”。
 
 ![删除 HDInsight 群集](./media/apache-spark-ipython-notebook-machine-learning/hdinsight-azure-portal-delete-cluster.png "删除 HDInsight 群集")
 

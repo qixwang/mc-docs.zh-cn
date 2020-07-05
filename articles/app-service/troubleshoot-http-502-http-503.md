@@ -6,15 +6,15 @@ keywords: 502 错误的网关, 503 服务不可用, 错误 503, 错误 502
 ms.assetid: 51cd331a-a3fa-438f-90ef-385e755e50d5
 ms.topic: article
 origin.date: 07/06/2016
-ms.date: 01/13/2020
+ms.date: 06/22/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 184f0b965fa0a248bf2b09f79adbb03952abc2e3
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 4a964b578902732fab1099f5a814d5d6804d81d4
+ms.sourcegitcommit: 4f84bba7e509a321b6f68a2da475027c539b8fd3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75600224"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85796194"
 ---
 # <a name="troubleshoot-http-errors-of-502-bad-gateway-and-503-service-unavailable-in-azure-app-service"></a>排查 Azure 应用服务中出现的 HTTP 错误“502 错误的网关”和“503 服务不可用”
 [Azure 应用服务](overview.md)中托管的应用经常出现“502 错误的网关”和“503 服务不可用”错误。 本文帮助你排查这些错误。
@@ -40,14 +40,14 @@ ms.locfileid: "75600224"
 
 [应用服务](overview.md)在每个步骤提供了多种选项。
 
-<a name="observe" />
+<a name="observe"></a>
 
 ### <a name="1-observe-and-monitor-application-behavior"></a>1.观察和监视应用程序行为
 #### <a name="track-service-health"></a>跟踪服务运行状况
 每次发生服务中断或性能下降时 Azure 会进行宣传。 可以在 [Azure 门户](https://portal.azure.cn/)中跟踪服务的运行状况。
 
 #### <a name="monitor-your-app"></a>监视应用
-此选项可让你找出应用程序是否存在任何问题。 在应用的边栏选项卡中，单击“请求和错误”磁贴  。 “指标”边栏选项卡显示所有可以添加的指标。 
+此选项可让你找出应用程序是否存在任何问题。 在应用的边栏选项卡中，单击“请求和错误”磁贴。 “指标”边栏选项卡显示所有可以添加的指标。
 
 可能需要在应用中监视的一些指标包括
 
@@ -64,7 +64,7 @@ ms.locfileid: "75600224"
 * [监视 Azure 应用服务中的应用](web-sites-monitor.md)
 * [接收警报通知](/azure-monitor/platform/alerts-overview)
 
-<a name="collect" />
+<a name="collect" ></a>
 
 ### <a name="2-collect-data"></a>2.收集数据
 
@@ -85,13 +85,13 @@ Kudu 的另一项有用功能是，如果应用程序引发第一次异常，可
 
 有关 Kudu 提供的功能的详细信息，请参阅[你应该了解的 Azure 网站联机工具](https://azure.microsoft.com/blog/windows-azure-websites-online-tools-you-should-know-about/)。
 
-<a name="mitigate" />
+<a name="mitigate"></a>
 
 ### <a name="3-mitigate-the-issue"></a>3.缓解问题
 #### <a name="scale-the-app"></a>缩放应用
 在 Azure 应用服务中，为了提高性能和吞吐量，可以调整运行应用程序的规模。 纵向扩展应用涉及到两个相关操作：将应用服务计划更改为较高的定价层，以及在切换到较高的定价层后配置特定的设置。
 
-有关缩放的详细信息，请参阅[缩放 Azure 应用服务中的应用](web-sites-scale.md)。
+有关缩放的详细信息，请参阅[缩放 Azure 应用服务中的应用](manage-scale-up.md)。
 
 此外，可以选择在多个实例上运行应用程序。 这不仅能提供更强大的处理能力，而且还能提供一定程度的容错。 如果进程在某个实例上中断，其他实例仍将继续处理请求。
 

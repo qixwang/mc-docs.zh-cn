@@ -7,15 +7,15 @@ ms.subservice: imaging
 ms.topic: how-to
 ms.workload: infrastructure
 origin.date: 05/04/2020
-ms.date: 06/01/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
 ms.reviewer: akjosh
-ms.openlocfilehash: b10f99ff60b1be06edad9dcb6f894864a670700e
-ms.sourcegitcommit: 981a75a78f8cf74ab5a76f9e6b0dc5978387be4b
+ms.openlocfilehash: c05df5722f2251b1bad9dad268c0397d59331ed2
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83801819"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945998"
 ---
 <!--Verified successfully-->
 # <a name="copy-an-image-from-another-gallery"></a>复制另一个库中的映像
@@ -165,5 +165,4 @@ az sig image-version create \
 
 <!--Not Available on [Azure Image Builder (preview)](./linux/image-builder-overview.md)-->
 
-<!-- Update_Description: new article about image version another gallery cli -->
-<!--NEW.date: 06/01/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

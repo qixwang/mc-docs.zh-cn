@@ -7,15 +7,15 @@ ms.subservice: imaging
 ms.topic: how-to
 ms.workload: infrastructure
 origin.date: 05/01/2020
-ms.date: 06/01/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
 ms.reviewer: akjosh
-ms.openlocfilehash: 9134c639644f85043f86b3a72a5be03b0570bb83
-ms.sourcegitcommit: 981a75a78f8cf74ab5a76f9e6b0dc5978387be4b
+ms.openlocfilehash: 2df3df809c60e589d8515417e78bb0b30eddb86c
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83801816"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945994"
 ---
 <!--Verified successfully-->
 # <a name="create-an-image-version-from-a-vm-in-azure-using-the-azure-cli"></a>使用 Azure CLI 从 Azure 中的 VM 创建映像版本
@@ -111,5 +111,4 @@ az sig image-version create \
 
 使用 Azure CLI 从[通用化映像](vm-generalized-image-version-cli.md)创建 VM。
 
-<!-- Update_Description: new article about image version vm cli -->
-<!--NEW.date: 06/01/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

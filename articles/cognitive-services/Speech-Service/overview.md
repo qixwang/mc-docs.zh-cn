@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: overview
 origin.date: 03/12/2020
-ms.date: 04/20/2020
+ms.date: 06/19/2020
 ms.author: v-tawe
-ms.openlocfilehash: 7f8c40a1bcd517c46b9b4392caf35ddcc68c974a
-ms.sourcegitcommit: 304d3ef3c9e65c3e85977b3afb9985fbc0f908d6
+ms.openlocfilehash: 00e559e9d6009b0ae4ac271e1e0e46a5ec992666
+ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85095889"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85613369"
 ---
 # <a name="what-is-the-speech-service"></a>什么是语音服务？
 

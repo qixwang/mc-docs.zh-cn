@@ -5,16 +5,19 @@ author: WenJason
 ms.author: v-jay
 ms.service: mysql
 ms.topic: conceptual
-origin.date: 4/29/2020
-ms.date: 06/01/2020
-ms.openlocfilehash: 42c85d42345ae06d39aa2c45d032fbb3d4f827d1
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+origin.date: 6/10/2020
+ms.date: 06/29/2020
+ms.openlocfilehash: 1fbc5a79b4e5d11269d6508716cadfe02f064431
+ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84200238"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85516627"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-powershell"></a>如何使用 PowerShell 在 Azure Database for MySQL 中创建和管理只读副本
+
+> [!NOTE] 
+> 将要查看的是 Azure Database for MySQL 的新服务。 若要查看经典 MySQL Database for Azure 的文档，请访问[此页](https://docs.azure.cn/zh-cn/mysql-database-on-azure/)。
 
 本文介绍如何使用 PowerShell 在 Azure Database for MySQL 服务中创建和管理只读副本。 若要详细了解只读副本，请参阅[概述](concepts-read-replicas.md)。
 
@@ -39,6 +42,9 @@ ms.locfileid: "84200238"
 > 只读副本功能仅适用于“常规用途”或“内存优化”定价层中的 Azure Database for MySQL 服务器。 请确保主服务器位于其中一个定价层中。
 
 ### <a name="create-a-read-replica"></a>创建只读副本
+
+> [!IMPORTANT]
+> 为没有现有副本的主服务器创建副本时，主服务器将首先重启以便为复制做好准备。 请考虑这一点并在非高峰期执行这些操作。
 
 可以使用以下命令创建只读副本服务器：
 

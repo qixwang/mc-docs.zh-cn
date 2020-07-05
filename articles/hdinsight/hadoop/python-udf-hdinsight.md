@@ -10,12 +10,12 @@ ms.topic: conceptual
 origin.date: 11/15/2019
 ms.date: 12/23/2019
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: fb1b29bb9cb41bc6712cb0d8fddeb8a893182d88
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: e28f44fbdec893069625c9b787ecfc673e7233e1
+ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75335879"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85516750"
 ---
 # <a name="use-python-user-defined-functions-udf-with-apache-hive-and-apache-pig-in-hdinsight"></a>在 HDInsight 中通过 Apache Hive 和 Apache Pig 使用 Python 用户定义函数 (UDF)
 
@@ -567,13 +567,22 @@ Get-AzHDInsightJobOutput `
 
 可以使用 PowerShell 语句删除 CR 字符，然后再将文件上传到 HDInsight：
 
-<!--[!code-powershell[main](../../../powershell_scripts/hdinsight/run-python-udf/run-python-udf.ps1?range=148-150)]-->
+```PowerShell
+Write-Progress -Activity $activity -Status "Waiting for the Pig job to complete..."
+
+# Wait for completion or failure of specified job
+```
 
 ### <a name="powershell-scripts"></a>PowerShell 脚本
 
 用于运行示例的两个示例 PowerShell 脚本都包含一个带注释的行，该行显示作业的错误输出。 如果未看到作业的预期输出，请取消注释以下行，并查看错误信息中是否指明了问题。
 
-<!--[!code-powershell[main](../../../powershell_scripts/hdinsight/run-python-udf/run-python-udf.ps1?range=135-139)]-->
+```PowerShell
+$activity="Pig job"
+
+# Progress bar (optional)
+Write-Progress -Activity $activity -Status "Starting job..."
+```
 
 错误信息 (STDERR) 和作业的结果 (STDOUT) 也记录到 HDInsight 存储。
 
@@ -589,7 +598,4 @@ Get-AzHDInsightJobOutput `
 若要了解使用 Pig、Hive 的其他方式以及如何使用 MapReduce，请参阅以下文档：
 
 * [将 Apache Hive 和 HDInsight 配合使用](hdinsight-use-hive.md)
-* [将 Apache Pig 和 HDInsight 配合使用](hdinsight-use-pig.md)
 * [将 MapReduce 与 HDInsight 配合使用](hdinsight-use-mapreduce.md)
-
-<!--Update_Description: change 'wasbs' into 'wasb'-->

@@ -1,5 +1,5 @@
 ---
-title: 快速入门 - 使用简单的 Azure CLI 命令 az mysql up 创建 Azure Database for MySQL（预览）
+title: 快速入门：使用 az mysql up 创建 Azure Database for MySQL
 description: 有关使用 Azure CLI（命令行接口）up 命令创建 Azure Database for MySQL 服务器的快速入门指南。
 author: WenJason
 ms.author: v-jay
@@ -7,14 +7,14 @@ ms.service: mysql
 ms.devlang: azurecli
 ms.topic: quickstart
 origin.date: 3/18/2019
-ms.date: 04/01/2019
+ms.date: 06/29/2019
 ms.custom: mvc
-ms.openlocfilehash: 706d7642d1b1c140d067dc5d47103a89ef1b8962
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 174981d8367df191f898e031f488bc8193fb6298
+ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "63860788"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85516653"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-using-a-simple-azure-cli-command---az-mysql-up-preview"></a>快速入门：使用简单的 Azure CLI 命令 az mysql up 创建 Azure Database for MySQL（预览）
 
@@ -39,7 +39,7 @@ az cloud set --name AzureChinaCloud
 az login
 ```
 
-如果有多个订阅，请选择应计费的资源所在的相应订阅。 使用 [az account set](/cli/account) 命令选择帐户下的特定订阅 ID。 将订阅 ID 占位符替换为订阅的 az login 输出中的“订阅 ID”属性   。
+如果有多个订阅，请选择应计费的资源所在的相应订阅。 使用 [az account set](/cli/account) 命令选择帐户下的特定订阅 ID。 将 az login 输出中的你的订阅的订阅 ID 属性替换到订阅 ID 占位符中 。
 
 ```azurecli
 az account set --subscription <subscription id>
@@ -68,7 +68,7 @@ resource-group | 系统生成的 | 新的 Azure 资源组。
 sku-name | GP_Gen5_2 | SKU 的名称。 遵循约定“{定价层}\_{计算代系}\_{vCores}”的简写形式。 默认为带 2 个 vCore 的常规用途 Gen5 服务器。 有关各层的详细信息，请参阅[定价页](https://azure.cn/pricing/details/mysql/)。
 backup-retention | 7 | 备份保留时间。 单位为天。
 geo-redundant-backup | 已禁用 | 是否应为此服务器启用异地冗余备份。
-ssl-enforcement | 已禁用 | 是否应为此服务器启用 SSL。
+ssl-enforcement | Enabled | 是否应该为此服务器启用 SSL。
 storage-size | 5120 | 服务器的存储容量（以 MB 为单位）。
 版本 | 5.7 | MySQL 主版本。
 admin-user | 系统生成的 | 管理员的登录用户名。

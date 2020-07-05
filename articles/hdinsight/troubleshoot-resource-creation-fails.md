@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: seoapr2020
 ms.date: 04/22/2020
-ms.openlocfilehash: 97ed659ec0b8453b908482d43a8da538aaf7b318
-ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
+ms.openlocfilehash: 6a8a514c132fa12bc8dafb81a19a2b99a6f63853
+ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84723859"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85516617"
 ---
 # <a name="troubleshoot-resource-creation-failures-in-azure-hdinsight"></a>排查 Azure HDInsight 中的资源创建失败问题
 
@@ -33,7 +33,7 @@ Azure 的配额限制为每个资源组 800 个部署。 将按资源组、订�
 
 若要请求增加配额，请按以下步骤操作：
 
-1. 转到 [Azure 门户](https://portal.azure.com)并选择“帮助 + 支持”。****
+1. 转到 [Azure 门户](https://portal.azure.cn)并选择“帮助 + 支持”。****
 
 1. 选择“新建支持请求”****。
 
@@ -49,4 +49,4 @@ Azure 的配额限制为每个资源组 800 个部署。 将按资源组、订�
 
 如果你的问题未在本文中列出，或者无法解决问题，请访问以下渠道以获取更多支持：
 
-* 如果需要更多帮助，可以从 [Azure 门户](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支持请求。
+* 如果需要更多帮助，可以从 [Azure 门户](https://portal.azure.cn/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支持请求。

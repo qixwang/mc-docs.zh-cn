@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 origin.date: 02/25/2020
 ms.date: 03/23/2020
-ms.openlocfilehash: 287ae282f73c236d56059b69113afc71990a115c
-ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
+ms.openlocfilehash: 3f54b696e1268ff35e24455fde3e6fce0bc2563c
+ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84723283"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85516780"
 ---
 # <a name="plan-a-virtual-network-for-azure-hdinsight"></a>规划 Azure HDInsight 的虚拟网络
 
@@ -120,8 +120,8 @@ Azure 为安装在虚拟网络中的 Azure 服务提供名称解析。 此内置
 
 * 同一 Azure 虚拟网络中能够使用资源的内部 DNS 名称连接的的任何资源。 例如，在使用默认的名称解析时，下面是分配给 HDInsight 工作器节点的内部 DNS 名称示例：
 
-  * wn0-hdinsi.0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net
-  * wn2-hdinsi.0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net
+  * wn0-hdinsi.0owcbllr5hze3hxdja3mqlrhhe.ex.internal.chinacloudapp.cn
+  * wn2-hdinsi.0owcbllr5hze3hxdja3mqlrhhe.ex.internal.chinacloudapp.cn
 
     这两个节点均可使用内部 DNS 名称直接相互通信，以及与 HDInsight 中的其他节点通信。
 
@@ -136,7 +136,7 @@ Azure 为安装在虚拟网络中的 Azure 服务提供名称解析。 此内置
 
 2. 将虚拟网络配置为使用自定义 DNS 服务器。
 
-3. 为虚拟网络找出 Azure 分配的 DNS 后缀。 该值类似于 `0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net`。 有关查找 DNS 后缀的信息，请参阅[示例：自定义 DNS](hdinsight-create-virtual-network.md#example-dns) 部分。
+3. 为虚拟网络找出 Azure 分配的 DNS 后缀。 该值类似于 `0owcbllr5hze3hxdja3mqlrhhe.ex.internal.chinacloudapp.cn`。 有关查找 DNS 后缀的信息，请参阅[示例：自定义 DNS](hdinsight-create-virtual-network.md#example-dns) 部分。
 
 4. 配置 DNS 服务器之间的转发。 此配置取决于远程网络的类型。
 
@@ -168,7 +168,7 @@ Azure 为安装在虚拟网络中的 Azure 服务提供名称解析。 此内置
 
 ## <a name="directly-connect-to-apache-hadoop-services"></a>直接连接到 Apache Hadoop 服务
 
-可以通过 `https://CLUSTERNAME.azurehdinsight.net` 连接到该群集。 此地址使用公共 IP，如果已使用 NSG 来限制来自 Internet 的传入流量，则可能无法访问此地址。 此外，在 VNet 中部署群集时，可以使用专用终结点 `https://CLUSTERNAME-int.azurehdinsight.net` 访问它。 此终结点可解析为 VNet 中的专用 IP，以进行群集访问。
+可以通过 `https://CLUSTERNAME.azurehdinsight.cn` 连接到该群集。 此地址使用公共 IP，如果已使用 NSG 来限制来自 Internet 的传入流量，则可能无法访问此地址。 此外，在 VNet 中部署群集时，可以使用专用终结点 `https://CLUSTERNAME-int.azurehdinsight.cn` 访问它。 此终结点可解析为 VNet 中的专用 IP，以进行群集访问。
 
 若要通过虚拟网络连接到 Apache Ambari 以及其他网页，请使用以下步骤：
 

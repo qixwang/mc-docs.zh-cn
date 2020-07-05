@@ -4,14 +4,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
 origin.date: 02/20/2020
-ms.date: 04/20/2020
+ms.date: 06/19/2019
 ms.author: v-tawe
-ms.openlocfilehash: ef0b821621a7a0152486d4b8be24f528f9c984a1
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.openlocfilehash: 405ed6a98b82d669ede5d653aeb42661dc812d0f
+ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82126782"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85805362"
 ---
 本快速入门介绍如何使用适用于 Android 的语音设备 SDK 来生成支持语音的产品。
 
@@ -19,7 +19,7 @@ ms.locfileid: "82126782"
 
 示例应用程序的源代码随附在语音设备 SDK 中， 也可在 [GitHub 上获取](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 开始使用语音设备 SDK 之前，需要：
 
@@ -46,9 +46,9 @@ ms.locfileid: "82126782"
 
    ![Vysor](../media/speech-devices-sdk/qsg-3.png)
 
-1. 你的设备应列在“选择设备”下。  选择设备旁边的“视图”按钮。 
+1. 你的设备应列在“选择设备”下。 选择设备旁边的“视图”按钮。
 
-1. 选择文件夹图标，然后选择“设置” **“WLAN”连接到无线网络。**  >  
+1. 选择文件夹图标，然后选择“设置” > “WLAN”连接到无线网络。 
 
    ![Vysor WLAN](../media/speech-devices-sdk/qsg-4.png)
 
@@ -59,7 +59,7 @@ ms.locfileid: "82126782"
    >
    > ![Vysor 文件夹](../media/speech-devices-sdk/qsg-10.png)
    >
-   > 选择“设置”。  搜索“mac 地址”，然后选择“Mac 地址” **“高级 WLAN”。**  >   记下对话框底部附近显示的 MAC 地址。
+   > Select <bpt id="p1">**</bpt>Settings<ept id="p1">**</ept>. 搜索“mac 地址”，然后选择“Mac 地址” > “高级 WLAN”。  记下对话框底部附近显示的 MAC 地址。
    >
    > ![Vysor MAC 地址](../media/speech-devices-sdk/qsg-11.png)
    >
@@ -71,11 +71,11 @@ ms.locfileid: "82126782"
 
 1. 启动 Android Studio。
 
-1. 选择“打开现有 Android Studio 项目”  。
+1. 选择“打开现有 Android Studio 项目”。
 
    ![Android Studio - 打开现有项目](../media/speech-devices-sdk/qsg-5.png)
 
-1. 转到 C:\SDSDK\Android-Sample-Release\example。 选择“确定”打开示例项目。 
+1. 转到 C:\SDSDK\Android-Sample-Release\example。 选择“确定”打开示例项目。
 
 1. 配置 Gradle 以引用语音 SDK。 可以在 Android Studio 的 **Gradle Scripts** 下找到以下文件。
 
@@ -97,7 +97,7 @@ ms.locfileid: "82126782"
     通过将以下行添加到 dependencies 节来更新 **build.gradle(Module:app)** 。 
 
     ```xml
-    implementation'com.microsoft.cognitiveservices.speech:client-sdk:1.11.0'
+    implementation'com.microsoft.cognitiveservices.speech:client-sdk:1.12.1'
     ```
 
 1. 将语音订阅密钥添加到源代码。
@@ -143,9 +143,9 @@ ms.locfileid: "82126782"
    |          |         | 使用所有麦克风的线性开发工具包：`Linear4` |
    |          |         | 使用两个麦克风的线性开发工具包：`Linear2` |
 
-1. 若要生成应用程序，请在“运行”菜单中选择“运行‘应用’”。   此时会显示“选择部署目标”对话框。 
+1. 若要生成应用程序，请在“运行”菜单中选择“运行‘应用’”。  此时会显示“选择部署目标”对话框。
 
-1. 选择设备，然后选择“确定”，将应用程序部署到设备。 
+1. 选择设备，然后选择“确定”，将应用程序部署到设备。
 
    ![“选择部署目标”对话框](../media/speech-devices-sdk/qsg-7.png)
 

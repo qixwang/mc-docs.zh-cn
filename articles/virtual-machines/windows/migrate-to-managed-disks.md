@@ -3,17 +3,17 @@ title: 将 Azure VM 迁移到托管磁盘
 description: 迁移使用存储帐户中的非托管磁盘创建的 Azure 虚拟机以使用托管磁盘。
 author: rockboyfor
 ms.service: virtual-machines-windows
-ms.topic: conceptual
+ms.topic: how-to
 origin.date: 05/30/2019
-ms.date: 04/27/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
 ms.subservice: disks
-ms.openlocfilehash: aef54467167af4465f57fd2bcd65e0a3ec4b41b9
-ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
+ms.openlocfilehash: a6309276c2041a132fb9da327f22caaea59b4840
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83392166"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945599"
 ---
 # <a name="migrate-azure-vms-to-managed-disks-in-azure"></a>将 Azure VM 迁移到 Azure 中的托管磁盘
 

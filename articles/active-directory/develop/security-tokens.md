@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/25/2020
+ms.date: 06/30/2020
 ms.author: v-junlch
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 1505102c4bae1246164dda0cedbb42fc13566fde
-ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
+ms.openlocfilehash: baca00802f93dfcb2c5222b59508c883e44c694d
+ms.sourcegitcommit: 1008ad28745709e8d666f07a90e02a79dbbe2be5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84186968"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945227"
 ---
 # <a name="security-tokens"></a>安全令牌
 
@@ -74,7 +74,7 @@ Microsoft 标识平台将安全令牌实现为包含“声明”的“JSON Web �
 |-----|----------|----------|--------------|---------------|--------------------|
 |[授权代码流](v2-oauth2-auth-code-flow.md) | | x | x | x | x|
 |[隐式流](v2-oauth2-implicit-grant-flow.md) | | x        | x    |      |                    |
-|[混合 OIDC 流](v2-protocols-oidc.md#get-access-tokens)| | x  | |          |            x   |
+|[混合 OIDC 流](v2-protocols-oidc.md#protocol-diagram-access-token-acquisition)| | x  | |          |            x   |
 |[刷新令牌兑换](v2-oauth2-auth-code-flow.md#refresh-the-access-token) | 刷新令牌 | x | x | x| |
 |[代理流](v2-oauth2-on-behalf-of-flow.md) | 访问令牌| x| x| x| |
 |[客户端凭据](v2-oauth2-client-creds-grant-flow.md) | | | x（仅限应用）| | |

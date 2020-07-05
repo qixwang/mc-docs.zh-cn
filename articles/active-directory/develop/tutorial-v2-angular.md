@@ -9,20 +9,17 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 05/28/2020
+ms.date: 06/30/2020
 ms.author: v-junlch
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: b77ae341d4386fc068fd94e1fe2d60bc3fdbb79c
-ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
+ms.openlocfilehash: 8aaf47f2d7d83316b8414aa89f24422fb1adb326
+ms.sourcegitcommit: 1008ad28745709e8d666f07a90e02a79dbbe2be5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84186862"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945228"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-angular-single-page-application"></a>教程：从 Angular 单页应用程序将用户登录并调用 Microsoft Graph API
-
-> [!IMPORTANT]
-> 此功能目前以预览版提供。 需同意[补充使用条款](https://www.azure.cn/support/legal/)才可使用预览版。 在正式版 (GA) 推出之前，此功能的某些方面可能会更改。
 
 本教程演示了 Angular 单页应用程序 (SPA) 如何执行以下操作：
 - 登录工作帐户或学校帐户。
@@ -54,7 +51,7 @@ ms.locfileid: "84186862"
 
 ## <a name="prerequisites"></a>先决条件
 
-要运行本教程，需要：
+若要运行本教程，需要：
 
 * 本地 Web 服务器，例如 [Node.js](https://nodejs.org/en/download/)。 本教程中的说明基于 Node.js。
 * 集成开发环境 (IDE)（例如 [Visual Studio Code](https://code.visualstudio.com/download)），用于编辑项目文件。

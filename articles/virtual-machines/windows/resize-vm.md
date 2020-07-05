@@ -1,26 +1,20 @@
 ---
 title: 调整 Windows VM 的大小
 description: 更改用于 Azure 虚拟机的 VM 大小。
-services: virtual-machines-windows
-documentationcenter: ''
 author: rockboyfor
-manager: digimobile
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 057ff274-6dad-415e-891c-58f8eea9ed78
 ms.service: virtual-machines-windows
-ms.workload: na
-ms.tgt_pltfrm: vm-windows
+ms.subservice: sizes
+ms.workload: infrastructure
 ms.topic: article
 origin.date: 01/13/2020
-ms.date: 02/10/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 59d0a501e230531a929ee7c914b8304f1915a2c0
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 5ae45d9c70256acf935f132921e0206b7c9de60d
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77428527"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945746"
 ---
 # <a name="resize-a-windows-vm"></a>调整 Windows VM 的大小
 
@@ -34,8 +28,8 @@ ms.locfileid: "77428527"
 
 1. 打开 [Azure 门户](https://portal.azure.cn)。
 1. 在虚拟机所对应的页。
-1. 在左侧菜单中，选择“大小”  。
-1. 从可用大小列表中选取新大小，然后选择“重设大小”  。
+1. 在左侧菜单中，选择“大小”。
+1. 从可用大小列表中选取新大小，然后选择“重设大小”。
 
 如果虚拟机当前正在运行，更改其大小会导致其重启。 停止虚拟机可能会显示其他大小。
 
@@ -134,5 +128,4 @@ $vmIds = $as.VirtualMachinesReferences
 
 若要提高可伸缩性，请运行多个 VM 实例并进行横向扩展。有关详细信息，请参阅 [自动缩放虚拟机规模集中的 Windows 计算机](../../virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-powershell.md)。
 
-<!-- REDIRECT virtual-machine-scale-sets-windows-autoscale.md to virtual-machine-scale-sets-autoscale-powershell.md -->
-<!-- Update_Description: update meta properties, update link -->
+<!-- Update_Description: update meta properties, wording update, update link -->

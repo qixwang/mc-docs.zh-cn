@@ -17,12 +17,12 @@ ms.topic: article
 origin.date: 12/06/2019
 ms.date: 01/13/2020
 ms.author: v-yiso
-ms.openlocfilehash: 0381e7ee2e3be258d126624dfc563ee4b3a93672
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: d13a54d6cdf5f8176df011ade3616da2152cbae5
+ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75630868"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85516447"
 ---
 # <a name="use-c-user-defined-functions-with-apache-hive-and-apache-pig-on-apache-hadoop-in-hdinsight"></a>在 HDInsight 中的 Apache Hadoop 上将 C# 用户定义函数与 Apache Hive 和 Apache Pig 配合使用
 
@@ -239,7 +239,7 @@ Hive 和 Pig 都可以将数据传递到外部应用程序以进行处理。 此
 
 也可以运行使用 Pig UDF 应用程序的 Pig 作业。
 
-1. 使用 SSH 连接到 HDInsight 群集。 （例如，运行命令 `ssh sshuser@<clustername>-ssh.azurehdinsight.net`。）有关详细信息，请参阅[将 SSH 与 HDInsight 配合使用](../hdinsight-hadoop-linux-use-ssh-unix.md)。
+1. 使用 SSH 连接到 HDInsight 群集。 （例如，运行命令 `ssh sshuser@<clustername>-ssh.azurehdinsight.cn`。）有关详细信息，请参阅[将 SSH 与 HDInsight 配合使用](../hdinsight-hadoop-linux-use-ssh-unix.md)。
 
 2. 使用以下命令启动 Pig 命令行：
 

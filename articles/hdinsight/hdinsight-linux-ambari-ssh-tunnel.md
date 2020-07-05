@@ -10,12 +10,12 @@ ms.topic: conceptual
 origin.date: 04/14/2020
 ms.date: 06/22/2020
 ms.author: hrasheed
-ms.openlocfilehash: 0994d7329285c7913bf14240480e8e3fe384717f
-ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
+ms.openlocfilehash: 648204d9707b40148372f291cc4dcfbfb2b5bd76
+ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84723683"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85516591"
 ---
 # <a name="use-ssh-tunneling-to-access-apache-ambari-web-ui-jobhistory-namenode-apache-oozie-and-other-uis"></a>使用 SSH 隧道访问 Apache Ambari Web UI、JobHistory、NameNode、Apache Oozie 和其他 UI
 
@@ -85,33 +85,33 @@ ssh -C2qTnNf -D 9876 sshuser@clustername-ssh.azurehdinsight.cn
 
 ### <a name="create-or-load-a-session"></a>创建或加载会话
 
-1. 打开 PuTTY，并确保在左侧菜单中选择“会话”****。 如果已保存了一个会话，请从“已保存的会话”列表中选择该会话名称并选择“加载”。**** ****
+1. 打开 PuTTY，并确保在左侧菜单中选择“会话”。 如果已保存了一个会话，请从“已保存的会话”列表中选择该会话名称并选择“加载”。 
 
 1. 如果你没有已保存的会话，请输入你的连接信息：
 
     |属性 |Value |
     |---|---|
-    |主机名（或 IP 地址）|HDInsight 群集的 SSH 地址。 例如， **mycluster-ssh.azurehdinsight.net**。|
+    |主机名（或 IP 地址）|HDInsight 群集的 SSH 地址。 例如 **mycluster-ssh.azurehdinsight.cn**。|
     |端口|22|
     |连接类型|SSH|
 
-1. 选择“保存”****
+1. 选择“保存”
 
     ![创建 SSH 会话](./media/hdinsight-linux-ambari-ssh-tunnel/hdinsight-create-putty-session.png)
 
-2. 在对话框左侧的“类别****”部分中，依次展开“连接”**** 和“SSH”****，并选择“隧道”****。
+2. 在对话框左侧的“类别”部分中，依次展开“连接”和“SSH”，并选择“隧道”。
 
-1. 提供以下有关“用于控制 SSH 端口转发的选项”**** 窗体的信息：
+1. 提供以下有关“用于控制 SSH 端口转发的选项”窗体的信息：
 
     |属性 |Value |
     |---|---|
     |Source Port|客户端上要转发的端口。 例如 **9876**。|
-    |目标|HDInsight 群集的 SSH 地址。 例如， **mycluster-ssh.azurehdinsight.net**。|
+    |目标|HDInsight 群集的 SSH 地址。 例如 **mycluster-ssh.azurehdinsight.cn**。|
     |动态|启用动态 SOCKS 代理路由。|
 
     ![PuTTY 配置隧道选项](./media/hdinsight-linux-ambari-ssh-tunnel/hdinsight-putty-tunnel.png)
 
-1. 选择“添加”**** 以添加设置，然后选择“打开”**** 以打开 SSH 连接。
+1. 选择“添加”以添加设置，然后选择“打开”以打开 SSH 连接。
 
 1. 出现提示时，登录到服务器。
 
@@ -125,7 +125,7 @@ ssh -C2qTnNf -D 9876 sshuser@clustername-ssh.azurehdinsight.cn
     ![Firefox 设置图像](./media/hdinsight-linux-ambari-ssh-tunnel/firefox-proxy-settings.png)
    
    > [!NOTE]
-   > 通过选择“远程 DNS”****，可使用 HDInsight 群集解析域名系统 (DNS) 请求。 此设置使用群集的头节点解析 DNS。
+   > 通过选择“远程 DNS”，可使用 HDInsight 群集解析域名系统 (DNS) 请求。 此设置使用群集的头节点解析 DNS。
 
 2. 通过访问 [https://www.whatismyip.com/](https://www.whatismyip.com/) 等网站验证隧道是否正常工作。 返回的 IP 应是 Microsoft Azure 数据中心使用的 IP。
 
@@ -142,14 +142,14 @@ ssh -C2qTnNf -D 9876 sshuser@clustername-ssh.azurehdinsight.cn
 
     ![已选择“HDFS”的截图](./media/hdinsight-linux-ambari-ssh-tunnel/hdfs-service-selected.png)
 
-3. 显示 HDFS 服务信息时，请选择“快速链接”****。 会显示群集头节点列表。 选择其中一个头节点，并选择“NameNode UI”****。
+3. 显示 HDFS 服务信息时，请选择“快速链接”。 会显示群集头节点列表。 选择其中一个头节点，并选择“NameNode UI”。
 
     ![已展开“快速链接”菜单的截图](./media/hdinsight-linux-ambari-ssh-tunnel/namenode-drop-down-menu.png)
 
     > [!NOTE]  
-    > 选择“快速链接”时，可能会看到等待指示器。____ 如果 Internet 连接速度慢，则可能会出现此情况。 请等待一两分钟，让系统从服务器接收数据，然后再次尝试列出节点列表。
+    > 选择“快速链接”时，可能会看到等待指示器。 如果 Internet 连接速度慢，则可能会出现此情况。 请等待一两分钟，让系统从服务器接收数据，然后再次尝试列出节点列表。
    >
-   > “快速链接”菜单中的某些项可能在屏幕右侧截断。**** 如果是这样，请使用鼠标展开菜单，然后使用向右键向右滚动屏幕，查看菜单的余下内容。
+   > “快速链接”菜单中的某些项可能在屏幕右侧截断。 如果是这样，请使用鼠标展开菜单，然后使用向右键向右滚动屏幕，查看菜单的余下内容。
 
 4. 随后将显示类似于下图的页面：
 

@@ -20,8 +20,6 @@
           href: functions-create-your-first-function-visual-studio.md
         - name: 命令行
           href: functions-create-first-azure-function-azure-cli.md
-        - name: Maven/Gradle (Java)
-          href: functions-create-first-java-maven.md
     - name: 连接到存储
       items:
         - name: Visual Studio Code
@@ -30,8 +28,6 @@
           href: functions-add-output-binding-storage-queue-vs.md
         - name: 命令行
           href: functions-add-output-binding-storage-queue-cli.md
-        - name: Maven/Gradle (Java)
-          href: functions-add-output-binding-storage-queue-java.md
 - name: 教程
   items:
     - name: 使用事件网格调整图像大小
@@ -46,11 +42,11 @@
       href: 'https://www.serverlesslibrary.net/'
     - name: Azure 示例
       items:
-        - name: 'C#'
+        - name: C#
           href: 'https://docs.microsoft.com/samples/browse/?products=azure-functions&languages=csharp'
         - name: Java
           href: 'https://docs.microsoft.com/samples/browse/?products=azure-functions&languages=java'
-        - name: JavaScript
+        - name: Javascript
           href: 'https://docs.microsoft.com/samples/browse/?products=azure-functions&languages=javascript'
         - name: PowerShell
           href: 'https://docs.microsoft.com/samples/browse/?products=azure-functions&languages=azurepowershell'
@@ -85,22 +81,27 @@
           href: functions-bindings-return-value.md
         - name: 处理绑定错误
           href: functions-bindings-errors.md
-    - name: Languages
+    - name: 语言
       items:
         - name: 支持的语言
           href: supported-languages.md
-        - name: 'C#（类库）'
+        - name: C#（类库）
           href: functions-dotnet-class-library.md
-        - name: 'C# 脚本 (.csx)'
+        - name: C# 脚本 (.csx)
           href: functions-reference-csharp.md
-        - name: 'F#'
+        - name: F#
           href: functions-reference-fsharp.md
-        - name: JavaScript
+        - name: Javascript
           href: functions-reference-node.md
         - name: Java
           href: functions-reference-java.md
         - name: TypeScript
-          href: 'functions-reference-node.md#typescript'
+          href: functions-reference-node.md#typescript
+    - name: 安全性
+      items:
+        - name: 安全概述
+          href: security-concepts.md
+          displayName: 'secure, ssl'
     - name: 消耗计划成本
       href: functions-consumption-costs.md
     - name: 性能注意事项
@@ -117,7 +118,7 @@
       href: ip-addresses.md
     - name: 自定义处理程序
       href: functions-custom-handlers.md
-- name: 操作方法指南
+- name: 操作指南
   items:
     - name: 开发
       items:
@@ -141,6 +142,10 @@
                   href: functions-create-first-azure-function.md
                 - name: 命令行
                   href: functions-create-first-azure-function-azure-cli.md
+                - name: Visual Studio
+                  href: functions-create-your-first-function-visual-studio.md
+                - name: Visual Studio Code
+                  href: functions-create-first-function-vs-code.md
                 - name: 使用 Eclipse 的 Java
                   href: functions-create-maven-eclipse.md
                 - name: 使用 IntelliJ IDEA 的 Java
@@ -163,6 +168,8 @@
               href: functions-add-output-binding-storage-queue-vs-code.md
             - name: 存储 - Visual Studio
               href: functions-add-output-binding-storage-queue-vs.md
+            - name: 存储 - Java
+              href: functions-add-output-binding-storage-queue-java.md
         - name: 调试和测试
           items:
             - name: 测试函数
@@ -253,6 +260,12 @@
   items:
     - name: API 参考
       items:
+        - name: ARM 模板
+          href: 'https://docs.microsoft.com/azure/templates/microsoft.web/2018-11-01/sites/functions'
+        - name: Azure CLI
+          href: /cli/functionapp
+        - name: Azure PowerShell
+          href: 'https://docs.microsoft.com/powershell/module/az.functions'
         - name: Java
           href: 'https://docs.microsoft.com/java/api/overview/azure/functions/runtime?view=azure-java-stable'
     - name: 应用设置参考
@@ -262,12 +275,16 @@
         - name: Blob 存储
           items:
             - name: 概述
+              displayName: Blob storage
               href: functions-bindings-storage-blob.md
             - name: 触发器
+              displayName: Blob storage
               href: functions-bindings-storage-blob-trigger.md
             - name: 输入
+              displayName: Blob storage
               href: functions-bindings-storage-blob-input.md
             - name: 输出
+              displayName: Blob storage
               href: functions-bindings-storage-blob-output.md
         - name: Azure Cosmos DB
           items:
@@ -293,10 +310,13 @@
           items:
             - name: 概述
               href: functions-bindings-event-grid.md
+              displayName: Event Grid
             - name: 触发器
               href: functions-bindings-event-grid-trigger.md
+              displayName: Event Grid
             - name: 输出
               href: functions-bindings-event-grid-output.md
+              displayName: Event Grid
         - name: 事件中心
           items:
             - name: 概述
@@ -323,13 +343,16 @@
           items:
             - name: 概述
               href: functions-bindings-http-webhook.md
+              displayName: HTTP
             - name: 触发器
               href: functions-bindings-http-webhook-trigger.md
+              displayName: HTTP
             - name: 输出
               href: functions-bindings-http-webhook-output.md
+              displayName: HTTP
         - name: Microsoft Graph
           href: functions-bindings-microsoft-graph.md
-        - name: 移动应用
+        - name: Mobile Apps
           href: functions-bindings-mobile-apps.md
         - name: 通知中心
           href: functions-bindings-notification-hubs.md
@@ -337,24 +360,33 @@
           items:
             - name: 概述
               href: functions-bindings-storage-queue.md
+              displayName: Queue storage
             - name: 触发器
               href: functions-bindings-storage-queue-trigger.md
+              displayName: Queue storage
             - name: 输出
               href: functions-bindings-storage-queue-output.md
+              displayName: Queue storage
         - name: SendGrid
           href: functions-bindings-sendgrid.md
         - name: 服务总线
           items:
             - name: 概述
               href: functions-bindings-service-bus.md
+              displayName: Service Bus
             - name: 触发器
               href: functions-bindings-service-bus-trigger.md
+              displayName: Service Bus
             - name: 输出
               href: functions-bindings-service-bus-output.md
+              displayName: Service Bus
         - name: SignalR 服务
           items:
             - name: 概述
               href: functions-bindings-signalr-service.md
+              displayName: SignalR Service
+            - name: 触发器
+              href: functions-bindings-signalr-service-trigger.md
               displayName: SignalR Service
             - name: 输入
               href: functions-bindings-signalr-service-input.md
@@ -383,16 +415,16 @@
     - name: 定价计算器
       href: 'https://www.azure.cn/pricing/calculator/'
     - name: 配额信息
-      href: 'functions-scale.md#service-limits'
+      href: functions-scale.md#service-limits
     - name: 区域可用性
       href: 'https://azure.microsoft.com/regions/services/'
-    - name: MSDN 论坛
-      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureFunctions'
-    - name: 堆栈溢出
+    - name: Microsoft Q&A 问题页面
+      href: 'https://docs.microsoft.com/answers/topics/azure-functions.html'
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-functions'
     - name: 提供产品反馈
       href: 'https://feedback.azure.com/forums/355860-azure-functions'
     - name: Azure Functions GitHub 存储库
-      href: 'https://github.com/azure-functions/'
+      href: 'https://github.com/Azure/Azure-Functions/'
     - name: Azure 更新
       href: 'https://azure.microsoft.com/updates/?product=functions&updatetype=&platform='

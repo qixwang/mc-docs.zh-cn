@@ -1,19 +1,19 @@
 ---
-title: 将应用与 Azure 虚拟网络进行集成
+title: 将应用与 Azure 虚拟网络集成
 description: 将 Azure 应用服务中的应用与 Azure 虚拟网络集成。
 author: ccompy
 ms.assetid: 90bc6ec6-133d-4d87-a867-fcf77da75f5a
 ms.topic: article
-origin.date: 04/16/2020
-ms.date: 05/22/2020
+origin.date: 06/08/2020
+ms.date: 06/22/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 27e7a596eafc1a96a200f19a8b9f3a9e376f4263
-ms.sourcegitcommit: 981a75a78f8cf74ab5a76f9e6b0dc5978387be4b
+ms.openlocfilehash: 12be295e23c4804c8545aa340c455ef784d6abf1
+ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83801330"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85613323"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>将应用与 Azure 虚拟网络集成
 
@@ -109,13 +109,13 @@ Azure 应用服务有两种变体：
 
 ## <a name="manage-vnet-integration"></a>管理 VNet 集成
 
-与 VNet 连接和断开连接是在应用级别发生的。 可能影响多个应用的 VNet 集成的操作在应用服务计划级别执行。 可以通过应用 >“网络” > “VNet 集成”门户获取 VNet 的详细信息。 可以在“应用服务计划” > “网络” > “VNet 集成”门户中查看应用服务计划级别的类似信息。
+与 VNet 连接和断开连接都在应用级别进行的。 可能影响多个应用的 VNet 集成的操作在应用服务计划级别执行。 可以通过应用 >“网络” > “VNet 集成”门户获取 VNet 的详细信息。 可以在“应用服务计划” > “网络” > “VNet 集成”门户中查看应用服务计划级别的类似信息。
 
 在 VNet 集成实例的应用视图中，能够执行的唯一操作是断开应用与当前连接到的 VNet 的连接。 若要断开应用与 VNet 的连接，请选择“断开连接”。 断开与 VNet 的连接后，应用会重启。 断开连接操作不会更改 VNet。 不会删除子网或网关。 若要删除 VNet，请先断开应用与该 VNet 的连接，然后删除该 VNet 中的资源，例如网关。
 
 应用服务计划 VNet 集成 UI 会显示应用服务计划中的应用使用的所有 VNet 集成。 若要查看单个 VNet 的详细信息，请选择你感兴趣的 VNet。 在此处，可以针对需要网关的 VNet 集成执行两项操作：
 
-* **同步网络**：同步网络操作仅用于网关相关的 VNet 集成功能。 执行同步网络操作可确保证书和网络信息保持同步。如果添加或更改 VNet 的 DNS，请执行同步网络操作。 此操作会重启所有使用此 VNet 的应用。
+* **同步网络**：同步网络操作仅用于网关相关的 VNet 集成功能。 执行同步网络操作确保了证书与网络信息是同步的。如果添加或更改 VNet 的 DNS，请执行同步网络操作。 此操作会重启所有使用此 VNet 的应用。
 * **添加路由**：添加路由会驱动出站流量进入 VNet。
 
 ### <a name="gateway-required-vnet-integration-routing"></a>需要网关的 VNet 集成路由

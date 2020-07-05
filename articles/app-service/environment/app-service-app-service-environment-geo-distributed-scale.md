@@ -5,15 +5,15 @@ author: stefsch
 ms.assetid: c1b05ca8-3703-4d87-a9ae-819d741787fb
 ms.topic: article
 origin.date: 09/07/2016
-ms.date: 01/13/2020
+ms.date: 06/22/2020
 ms.author: v-tawe
-ms.custom: seodec18
-ms.openlocfilehash: 8773e3f8bbaca22afadb092ca4a131a1e6925d4b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.custom: seodec18, references_regions
+ms.openlocfilehash: 805f2ad6ddd724e54d68159a12227099b3df4605
+ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75600486"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85613335"
 ---
 # <a name="geo-distributed-scale-with-app-service-environments"></a>应用服务环境的异地分布式缩放
 ## <a name="overview"></a>概述

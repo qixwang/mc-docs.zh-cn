@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 02/21/2020
+ms.date: 07/01/2020
 ms.author: v-junlch
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4783f83a2bdad57df2e07aa469656f34c7b0b37a
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 90f16526d86203532e6ffb14422e0444bc7a28cd
+ms.sourcegitcommit: 1008ad28745709e8d666f07a90e02a79dbbe2be5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79134171"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945061"
 ---
 # <a name="conditional-access-session"></a>条件访问：会话
 
@@ -48,7 +48,7 @@ ms.locfileid: "79134171"
 
 有关详细信息，请参阅[为特色应用部署条件访问应用控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)一文。
 
-## <a name="sign-in-frequency-preview"></a>登录频率（预览版）
+## <a name="sign-in-frequency"></a>登录频率
 
 登录频率定义在用户尝试访问资源时，要求用户重新登录之前所要经过的时限。
 
@@ -64,7 +64,7 @@ ms.locfileid: "79134171"
 - Dynamics CRM Online
 - Azure 门户
 
-## <a name="persistent-browser-session-preview"></a>永久性浏览器会话（预览版）
+## <a name="persistent-browser-session"></a>持久性浏览器会话
 
 持久性浏览器会话可让用户在关闭再重新打开其浏览器窗口后保持登录状态。
 

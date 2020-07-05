@@ -4,18 +4,18 @@ description: 快速入门 - 使用适用于 IoT 中心设备预配服务 (DPS) �
 author: wesmc7777
 ms.author: v-tawe
 origin.date: 11/08/2018
-ms.date: 03/23/2020
+ms.date: 07/01/2020
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.devlang: python
-ms.custom: mvc
-ms.openlocfilehash: 882df323fdbfb003819fa7ac6d0ace2c94ec30cb
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.custom: mvc, tracking-python
+ms.openlocfilehash: d16e03f2cbeb31e80f989e16edd76617381c635f
+ms.sourcegitcommit: 4f84bba7e509a321b6f68a2da475027c539b8fd3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79133796"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85796137"
 ---
 # <a name="quickstart-create-and-provision-a-simulated-tpm-device-using-python-device-sdk-for-iot-hub-device-provisioning-service"></a>快速入门：使用适用于 IoT 中心设备预配服务的 Python 设备 SDK 创建和预配模拟的 TPM 设备
 

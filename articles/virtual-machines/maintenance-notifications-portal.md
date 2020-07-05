@@ -4,16 +4,16 @@ description: 使用门户查看在 Azure 中运行的虚拟机的维护通知并
 author: rockboyfor
 ms.service: virtual-machines
 ms.workload: infrastructure-services
-ms.topic: article
+ms.topic: how-to
 origin.date: 11/19/2019
-ms.date: 04/27/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 1e6a6a177759de3a6e84d98ec06051ddada224a1
-ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
+ms.openlocfilehash: 2e7cd3e8d23343b5d05bff51ea54558b2a00b627
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83392323"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945990"
 ---
 <!--Verified successfully-->
 # <a name="handling-planned-maintenance-notifications-using-the-portal"></a>使用门户处理计划内维护通知

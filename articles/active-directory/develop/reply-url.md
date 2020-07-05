@@ -1,32 +1,33 @@
 ---
 title: 重定向 URI 和回复 URL 限制 - Microsoft 标识平台 | Azure
-description: 回复 URL/重定向 URI 的局限性和限制
+description: 回复 URL/重定向 URI 限制和局限
 author: SureshJa
 ms.author: v-junlch
 manager: CelesteDG
-ms.date: 03/10/2020
+ms.date: 06/30/2020
 ms.topic: conceptual
 ms.subservice: develop
 ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
-ms.openlocfilehash: 35c3fbe01de85bb6f7b97cb0910345fdf061b7e1
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 6cfd8c0f0c7aa8a970f7996eb15807b8e9287f8f
+ms.sourcegitcommit: 1008ad28745709e8d666f07a90e02a79dbbe2be5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79133815"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85944996"
 ---
 # <a name="redirect-urireply-url-restrictions-and-limitations"></a>重定向 URI/答复 URL 限制和局限
 
-重定向 URI（或回复 URL）是在为应用成功授权并为其授予授权代码或访问令牌后，授权服务器将用户发送到的位置。 该代码或令牌包含在重定向 URI 或回复令牌中，因此在应用注册过程中注册正确的位置非常重要。
+重定向 URI（或回复 URL）是在为应用成功授权并为其授予授权代码或访问令牌后，授权服务器将用户发送到的位置。 代码或令牌包含在重定向 URI 或回复令牌中，因此在应用注册过程中注册正确的位置非常重要。
 
- 以下限制适用于回复 URL：
+ 下面的限制适用于回复 URL：
 
-    * 回复 URL 必须以方案 `https` 开头。
-    * 回复 URL 区分大小写。 其大小写必须与正在运行的应用程序的 URL 路径的大小写匹配。 例如，如果应用程序在其路径中包括 `.../abc/response-oidc`，请不要在回复 URL 中指定 `.../ABC/response-oidc`。 由于 Web 浏览器将路径视为区分大小写，因此如果重定向到大小写不匹配的 `.../ABC/response-oidc` URL，则可能会排除与 `.../abc/response-oidc` 关联的 Cookie。
+* 回复 URL 必须以方案 `https` 开头。
+
+* 回复 URL 区分大小写。 其大小写必须与正在运行的应用程序的 URL 路径的大小写匹配。 例如，如果应用程序在其路径中包括 `.../abc/response-oidc`，请不要在回复 URL 中指定 `.../ABC/response-oidc`。 由于 Web 浏览器将路径视为区分大小写，因此在重定向到大小写不匹配的 `.../ABC/response-oidc` URL 时，可能会排除与 `.../abc/response-oidc` 关联的 cookie。
     
-## <a name="maximum-number-of-redirect-uris"></a>最大重定向 URI 数
+## <a name="maximum-number-of-redirect-uris"></a>重定向 URI 的最大数量
 
 下表显示了注册应用时可添加的最大重定向 URI 数。
 
@@ -36,22 +37,22 @@ ms.locfileid: "79133815"
 
 ## <a name="maximum-uri-length"></a>最大 URI 长度
 
-对于要添加到应用注册中的每个重定向 URI，最多可以使用 256 个字符。
+对于向应用注册添加的每个重定向 URI，最多可以使用 256 个字符。
 
 ## <a name="supported-schemes"></a>支持的方案
-Azure AD 应用程序模型目前支持 HTTP 和 HTTPS 方案，用于在任何组织的 Azure Active Directory (Azure AD) 租户中登录 Microsoft 工作或学校帐户的应用程序。 也就是说，应用程序清单中的 `signInAudience` 字段设置为“AzureADMyOrg”  或“AzureADMultipleOrgs”  。 
+Azure AD 应用程序模型目前支持 HTTP 和 HTTPS 方案，用于在任何组织的 Azure Active Directory (Azure AD) 租户中登录 Microsoft 工作或学校帐户的应用程序。 也就是说，应用程序清单中的 `signInAudience` 字段设置为“AzureADMyOrg”或“AzureADMultipleOrgs”。 
 
 > [!NOTE]
 > 新的[应用注册](https://portal.azure.cn/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)体验不允许开发人员在 UI 中添加使用 HTTP 方案的 URI。 对于登录工作或学校帐户的应用，仅支持通过应用清单编辑器添加 HTTP URI。 今后，新应用将无法在重定向 URI 中使用 HTTP 方案。 但是，在重定向 URI 中包含 HTTP 方案的早期应用将继续正常运行。 开发人员必须在重定向 URI 中使用 HTTPS 方案。
 
-## <a name="restrictions-using-a-wildcard-in-uris"></a>在 URI 中使用通配符时的限制
+## <a name="restrictions-using-a-wildcard-in-uris"></a>在 URI 中使用通配符的限制
 
 通配符 URI（例如 `https://*.contoso.com`）可提供便利，但应避免使用。 在重定向 URI 中使用通配符会影响安全性。 根据 OAuth 2.0 规范（[RFC 6749 第 3.1.2 部分](https://tools.ietf.org/html/rfc6749#section-3.1.2)），重定向终结点 URI 必须是绝对 URI。 
 
 对于配置为使用工作帐户或学校帐户登录的应用，Azure AD 应用程序模型不支持通配符 URI。 但是，目前对于组织 Azure AD 租户中配置为使用工作或学校帐户登录的应用，允许使用通配符 URI。 
  
 > [!NOTE]
-> 新的[应用注册](https://portal.azure.cn/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)体验不允许开发人员在 UI 中添加通配符 URI。 对于使用工作或学校帐户登录的应用，仅支持通过应用清单编辑器添加通配符 URI。 今后，新应用无法在重定向 URI 中使用通配符。 但是，在重定向 URI 中包含通配符的早期应用可继续正常运行。
+> 新的[应用注册](https://portal.azure.cn/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)体验不允许开发人员在 UI 中添加通配符 URI。 对于使用工作或学校帐户登录的应用，仅支持通过应用清单编辑器添加通配符 URI。 今后，新应用无法在重定向 URI 中使用通配符。 但是，在重定向 URI 中包含通配符的旧应用程序将继续正常工作。
 
 如果方案所需的重定向 URI 数目超过允许的最大限制，请不要添加通配符重定向 URI，而是考虑以下方法。
 
@@ -68,10 +69,9 @@ Azure AD 应用程序模型目前支持 HTTP 和 HTTPS 方案，用于在任何�
 1. 然后，应用程序可以使用状态参数中的值来确定要进一步将用户发送到哪个 URL。 确保验证 CSRF 保护措施。
 
 > [!NOTE]
-> 此方法允许遭到攻击的客户端修改状态参数中发送的其他参数，从而将用户重定向到其他 URL，这就是 RFC 6819 中所述的[开放重定向程序威胁](https://tools.ietf.org/html/rfc6819#section-4.2.4)。 因此，客户端必须加密状态，或通过其他某些方式来验证这些参数（例如，根据令牌验证重定向 URI 中的域名），以此保护这些参数。
+> 此方法允许遭到攻击的客户端修改状态参数中发送的其他参数，从而将用户重定向到其他 URL，这就是 RFC 6819 中所述的[开放重定向程序威胁](https://tools.ietf.org/html/rfc6819#section-4.2.4)。 因此，客户端必须对状态加密或通过其他一些方式进行验证（如根据令牌验证重定向 URI 中的域名），从而保护这些参数。
 
 ## <a name="next-steps"></a>后续步骤
 
 - 了解[应用程序清单](reference-app-manifest.md)
 
-<!-- Update_Description: wording update -->

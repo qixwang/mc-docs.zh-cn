@@ -9,12 +9,12 @@ origin.date: 07/09/2019
 ms.date: 05/29/2020
 ms.topic: article
 ms.service: event-hubs
-ms.openlocfilehash: dbedb426cecc9b28fc9e47a9085d9391469f7b61
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+ms.openlocfilehash: 6f06ed087701630487d9546d186fdaf986b502dc
+ms.sourcegitcommit: 5afd7c4c3be9b80c4c67ec55f66fcf347aad74c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84199863"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85942565"
 ---
 # <a name="process-data-from-your-event-hub-using-azure-stream-analytics"></a>使用 Azure 流分析处理事件中心的数据 
 利用 Azure 流分析服务，可以轻松地通过 Azure 事件中心引入、处理和分析流数据，获得进行实时操作所需的强大洞察力。 此集成使你可以快速创建热路径分析管道。 可以通过 Azure 门户直观显示传入数据以及编写流分析查询。 查询准备就绪后，单击几下鼠标即可将其移到生产环境中。 
@@ -27,7 +27,7 @@ ms.locfileid: "84199863"
 
 ## <a name="end-to-end-flow"></a>端到端流
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。 
+1. 登录到 [Azure 门户](https://portal.azure.cn)。 
 1. 导航到你的**事件中心命名空间**，然后导航到包含传入数据的**事件中心**。 
 1. 在事件中心页上选择“处理数据”。  
 

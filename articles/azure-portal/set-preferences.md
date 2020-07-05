@@ -6,16 +6,16 @@ keywords: 设置, 超时, 语言, 区域
 author: mgblythe
 ms.author: v-tawe
 origin.date: 12/19/2019
-ms.date: 02/17/2020
-ms.topic: conceptual
+ms.date: 06/22/2020
+ms.topic: how-to
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: a405e8fc648e5e2cf93e9bd202861c8c6527a0fe
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 13beb03bc17849df9bc374f4fd17fd7140791fb9
+ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80243980"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85611882"
 ---
 # <a name="set-your-azure-portal-preferences"></a>设置 Azure 门户首选项
 

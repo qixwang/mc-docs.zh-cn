@@ -10,12 +10,12 @@ ms.date: 11/26/2018
 ms.topic: tutorial
 ms.service: service-bus-messaging
 ms.custom: mvc
-ms.openlocfilehash: f16726ef4ed7eb9fd0937ed9ec9716b0c159b876
-ms.sourcegitcommit: 1fbdefdace8a1d3412900c6c3f89678d8a9b29bc
+ms.openlocfilehash: fe5028eb0bf026a46adda259acaa4718c2d190b5
+ms.sourcegitcommit: 4f84bba7e509a321b6f68a2da475027c539b8fd3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82886923"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85796135"
 ---
 # <a name="tutorial-update-inventory-using-powershell-and-topicssubscriptions"></a>教程：使用 PowerShell 和主题/订阅更新库存
 
@@ -270,6 +270,9 @@ static async Task ProcessMessagesAsync(Message message, CancellationToken token)
 }
 ```
 
+> [!NOTE]
+> 可以使用[服务总线资源管理器](https://github.com/paolosalvatori/ServiceBusExplorer/)管理服务总线资源。 服务总线资源管理器允许用户连接到服务总线命名空间并以一种简单的方式管理消息传送实体。 该工具提供高级功能，如导入/导出功能或用于对主题、队列、订阅、中继服务、通知中心和事件中心进行测试的功能。 
+
 ## <a name="next-steps"></a>后续步骤
 
 在本教程中，你已使用 Azure PowerShell 预配了资源，然后从服务总线主题及其订阅发送并接收了消息。 你已了解如何：
@@ -289,4 +292,4 @@ static async Task ProcessMessagesAsync(Message message, CancellationToken token)
 > [使用 PowerShell 和主题/订阅更新库存](service-bus-tutorial-topics-subscriptions-cli.md)
 
 [试用帐户]: https://www.azure.cn/pricing/1rmb-trial/
-[安装和配置 Azure PowerShell]: https://docs.azure.cn/powershell-install-configure
+[安装和配置 Azure PowerShell]: https://docs.microsoft.com/powershell/azure/install-Az-ps

@@ -8,16 +8,16 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: ''
 origin.date: 11/22/2019
-ms.date: 05/11/2020
+ms.date: 07/06/2020
 ms.author: v-jay
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 2b3acc21ae147dc3baf74682add635141cb2e195
-ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
+ms.openlocfilehash: de7f253ca722b872a887470a31b991dbc40569f0
+ms.sourcegitcommit: 7ea2d04481512e185a60fa3b0f7b0761e3ed7b59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82198711"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85845905"
 ---
 # <a name="data-warehouse-units-dwus"></a>数据仓库单位 (DWU)
 
@@ -108,7 +108,7 @@ Azure 资源的内置角色（如 SQL DB 参与者和 SQL Server 参与者）可
 查看当前的 DWU 设置：
 
 1. 在 Visual Studio 中打开“SQL Server 对象资源管理器”。
-2. 连接到与逻辑 SQL 数据库服务器关联的 master 数据库。
+2. 连接到与逻辑 SQL 服务器关联的 master 数据库。
 3. 从 sys.database_service_objectives 动态管理视图中选择。 以下是示例：
 
 ```sql
@@ -126,11 +126,11 @@ JOIN    sys.databases                     AS db ON ds.database_id = db.database_
 
 更改 DWU：
 
-1. 打开 [Azure 门户](https://portal.azure.cn)，打开数据库，并单击“缩放”  。
+1. 打开 [Azure 门户](https://portal.azure.cn)，打开数据库，并单击“缩放”。
 
-2. 在“缩放”下，向左或向右移动滑块，以更改 DWU 设置  。
+2. 在“缩放”下，向左或向右移动滑块，以更改 DWU 设置。
 
-3. 单击“保存”  。 此时会显示确认消息。 单击“是”  确认，或者单击“否”  取消。
+3. 单击“保存” 。 此时会显示确认消息。 单击“是”确认，或者单击“否”取消。
 
 #### <a name="powershell"></a>PowerShell
 
@@ -150,7 +150,7 @@ Set-AzSqlDatabase -DatabaseName "MySQLDW" -ServerName "MyServer" -RequestedServi
 
 若要更改 DWU，请执行以下操作：
 
-1. 连接到与逻辑 SQL 数据库服务器关联的 master 数据库。
+1. 连接到与服务器关联的 master 数据库。
 2. 使用 [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) TSQL 语句。 以下示例将数据库 MySQLDW 的服务级别目标设置为 DW1000c。 
 
 ```Sql
@@ -186,7 +186,7 @@ DWU 更改可能需要几分钟才能完成。 如果要自动缩放，建议实
 
 检查 DWU 更改的状态：
 
-1. 连接到与逻辑 SQL 数据库服务器关联的 master 数据库。
+1. 连接到与服务器关联的 master 数据库。
 2. 提交以下查询以检查数据库状态。
 
 ```sql

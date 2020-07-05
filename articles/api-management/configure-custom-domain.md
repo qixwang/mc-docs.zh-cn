@@ -13,16 +13,16 @@ origin.date: 01/13/2020
 author: Johnnytechn
 ms.date: 06/04/2020
 ms.author: v-johya
-ms.openlocfilehash: 58f376f790d2125482d5f1b54c131116eac50ea9
-ms.sourcegitcommit: 5ae04a3b8e025986a3a257a6ed251b575dbf60a1
+ms.openlocfilehash: ca7ff714adcfa487330001042df90be6862df3ef
+ms.sourcegitcommit: 372899a2a21794e631eda1c6a11b4fd5c38751d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84440415"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85852076"
 ---
 # <a name="configure-a-custom-domain-name"></a>配置自定义域名
 
-创建 Azure API 管理服务实例时，Azure 会为其分配 `azure-api.net` 的子域（例如，`apim-service-name.azure-api.net`）。 不过，你可以使用自己的自定义域名（例如 **contoso.com**）公开 API 管理终结点。 本教程演示了如何将现有的自定义 DNS 名称映射到 API 管理实例公开的终结点。
+创建 Azure API 管理服务实例时，Azure 会为其分配 `azure-api.cn` 的子域（例如，`apim-service-name.azure-api.cn`）。 不过，你可以使用自己的自定义域名（例如 **contoso.com**）公开 API 管理终结点。 本教程演示了如何将现有的自定义 DNS 名称映射到 API 管理实例公开的终结点。
 
 > [!IMPORTANT]
 > API 管理仅接受[主机头](https://tools.ietf.org/html/rfc2616#section-14.23)值与默认域名或任何已配置的自定义域名匹配的请求。
@@ -50,11 +50,11 @@ ms.locfileid: "84440415"
 
     可以为许多终结点分配自定义域名。 当前有以下终结点可用：
 
-    - **网关**（默认值为：`<apim-service-name>.azure-api.net`），
-    - **门户**（默认值为：`<apim-service-name>.portal.azure-api.net`），
-    - **管理**（默认值为：`<apim-service-name>.management.azure-api.net`），
-    - **SCM**（默认值为：`<apim-service-name>.scm.azure-api.net`），
-    - **NewPortal**（默认值为：`<apim-service-name>.developer.azure-api.net`）。
+    - **网关**（默认值为：`<apim-service-name>.azure-api.cn`），
+    - **门户**（默认值为：`<apim-service-name>.portal.azure-api.cn`），
+    - **管理**（默认值为：`<apim-service-name>.management.azure-api.cn`），
+    - **SCM**（默认值为：`<apim-service-name>.scm.azure-api.cn`），
+    - **NewPortal**（默认值为：`<apim-service-name>.developer.azure-api.cn`）。
 
     > [!NOTE]
     > 只有“网关”终结点可用于“消耗”层中的配置。

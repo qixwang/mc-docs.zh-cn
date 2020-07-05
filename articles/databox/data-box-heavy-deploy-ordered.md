@@ -7,15 +7,15 @@ ms.service: databox
 ms.subservice: heavy
 ms.topic: tutorial
 origin.date: 07/03/2019
-ms.date: 05/11/2020
+ms.date: 07/06/2020
 ms.author: v-jay
 ms.localizationpriority: high
-ms.openlocfilehash: 5482da23e810d15ee121e9cd113628c78cb3bb04
-ms.sourcegitcommit: 95efd248f5ee3701f671dbd5cfe0aec9c9959a24
+ms.openlocfilehash: 5abebf08e86534468f591dfd04de3260eff877b9
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82507737"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945984"
 ---
 # <a name="tutorial-order-azure-data-box-heavy"></a>教程：订购 Azure Data Box Heavy
 
@@ -64,35 +64,35 @@ Azure Data Box Heavy 是一个混合解决方案，可以快速、方便、可�
 在 Azure 门户中执行以下步骤以订购设备。
 
 1. 使用 Microsoft Azure 凭据在以下 URL 登录：[https://portal.azure.cn](https://portal.azure.cn)。
-2. 选择“+ 创建资源”并搜索 *Azure Data Box*。  选择“Azure Data Box”  。
+2. 选择“+ 创建资源”并搜索 *Azure Data Box*。 选择“Azure Data Box”。
     
    [![搜索“Azure Data Box 1”](media/data-box-deploy-ordered/search-azure-data-box1.png)](media/data-box-deploy-ordered/search-azure-data-box1.png#lightbox)
 
-3. 选择“创建”  。
+3. 选择“创建”。
 
-4. 检查 Data Box 服务是否在你的区域可用。 输入或选择以下信息，然后选择“应用”。 
+4. 检查 Data Box 服务是否在你的区域可用。 输入或选择以下信息，然后选择“应用”。
 
-    |设置  |Value  |
+    |设置  |值  |
     |---------|---------|
-    |订阅     | 对于 Data Box 服务，选择一个 EA、CSP 或 Azure 赞助订阅。 <br> 该订阅将链接到计费帐户。       |
-    |传输类型     | 选择“导入到 Azure”。         |
-    |来源国家/地区     | 选择数据当前所在的国家/地区。         |
+    |订阅     | 对于 Data Box 服务，选择一个 EA、CSP 或 Azure 赞助订阅。 <br> 订阅链接到计费帐户。       |
+    |传输类型     | 选择“导入到 Azure”。        |
+    |源国家/地区     | 选择数据当前所在的国家/地区。         |
     |目标 Azure 区域     | 选择要在其中传输数据的 Azure 区域。        |
 
     [![选择 Data Box 系列可用性](media/data-box-deploy-ordered/select-data-box-option1.png)](media/data-box-deploy-ordered/select-data-box-option1.png#lightbox)
 
-5. 选择“Data Box Heavy”。  单次订购的最大可用容量为 770 TB。
+5. 选择“Data Box Heavy”。 单次订购的最大可用容量为 770 TB。
 
     [![选择 Data Box Heavy](media/data-box-heavy-deploy-ordered/select-data-box-heavy.png)
 
-6. 在“订单”中指定“订单详细信息”。   输入或选择以下信息，然后选择“下一步”。 
+6. 在“订单”中指定“订单详细信息”。  输入或选择以下信息，然后选择“下一步”。
     
-    |设置  |Value  |
+    |设置  |值  |
     |---------|---------|
     |名称     | 提供友好名称用于跟踪订单。 <br> 名称可以为 3 到 24 个字符，包括字母、数字和连字符。 <br> 名称必须以字母或数字开头和结尾。      |
     |资源组     | 使用现有资源组，或创建新的资源组。 <br> 资源组是可以统一管理或部署的资源的逻辑容器。         |
     |目标 Azure 区域     | 选择存储帐户的区域。        |
-    |存储目标     | 选择存储帐户和/或托管磁盘。 <br> 根据指定的 Azure 区域，从现有存储帐户的筛选列表中选择一个或多个存储帐户。 <br>Data Box Heavy 可以与最多 10 个存储帐户关联。 <br> 也可以创建新的**常规用途 v1**、**常规用途 v2** 或 **Blob 存储帐户**。 <br> 不支持 Azure Data Lake Storage Gen 2 帐户。 请参阅[设备支持的存储帐户](data-box-heavy-system-requirements.md#supported-storage-accounts)。 <br>支持使用虚拟网络的存储帐户。 若要允许 Data Box 服务使用受保护的存储帐户，请在存储帐户网络防火墙设置中启用受信任的服务。 有关详细信息，请了解如何[将 Azure Data Box 服务添加为受信任的服务](../storage/common/storage-network-security.md#exceptions)。|
+    |存储目标     | 从存储帐户和/或托管磁盘中进行选择。 <br> 根据指定的 Azure 区域，从现有存储帐户的筛选列表中选择一个或多个存储帐户。 <br>Data Box Heavy 可以与最多 10 个存储帐户关联。 <br> 也可以创建新的**常规用途 v1**、**常规用途 v2** 或 **Blob 存储帐户**。 <br>请参阅[设备支持的存储帐户](data-box-heavy-system-requirements.md#supported-storage-accounts)。 <br>支持使用虚拟网络的存储帐户。 若要允许 Data Box 服务使用受保护的存储帐户，请在存储帐户网络防火墙设置中启用受信任的服务。 有关详细信息，请了解如何[将 Azure Data Box 服务添加为受信任的服务](../storage/common/storage-network-security.md#exceptions)。|
 
     如果使用存储帐户作为存储目标，则会看到以下屏幕截图：
 
@@ -102,28 +102,28 @@ Azure Data Box Heavy 是一个混合解决方案，可以快速、方便、可�
 
     |设置  |Value  |
     |---------|---------|
-    |资源组     | 若要从本地 VHD 创建托管磁盘，请创建新的资源组。 使用现有资源组的前提是，资源组是在以前由 Data Box 服务为托管磁盘创建 Data Box Heavy 订单时创建的。 <br> 可以指定多个资源组并用分号分隔。 最多支持 10 个资源组。|
+    |资源组     | 若要从本地 VHD 创建托管磁盘，请创建新的资源组。 使用现有资源组的前提是，资源组是在以前由 Data Box 服务为托管磁盘创建 Data Box Heavy 订单时创建的。 <br> 指定多个用分号分隔的资源组。 最多支持 10 个资源组。|
 
     ![托管磁盘的 Data Box Heavy 订单](media/data-box-heavy-deploy-ordered/order-managed-disks.png)
 
-    为托管磁盘指定的存储帐户用作临时存储帐户。 Data Box 服务将 VHD 作为页 Blob 上传到临时存储帐户，然后将其转换为托管磁盘并转移到资源组。 有关详细信息，请参阅[验证 Azure 中的数据上传](data-box-deploy-picked-up.md#verify-data-upload-to-azure)。
+    为托管磁盘指定的存储帐户用作临时存储帐户。 Data Box 服务将 VHD 作为页 Blob 上传到临时存储帐户，然后将其转换为托管磁盘并移到资源组。 有关详细信息，请参阅[验证 Azure 中的数据上传](data-box-deploy-picked-up.md#verify-data-upload-to-azure)。
 
-7. 在“寄送地址”中，提供你的姓名、公司的名称和邮政地址，以及有效的电话号码。  选择“验证地址”。  
+7. 在“寄送地址”中，提供你的姓名、公司的名称和邮政地址，以及有效的电话号码。 选择“验证地址”。 
 
     服务将验证寄送地址，以确定服务是否在该区域可用。 如果服务在指定的寄送地址可用，则会将结果通知给你。 选择“**下一步**”。
 
-8. 在“通知详细信息”中，指定电子邮件地址。  服务会将有关任何订单状态更新的电子邮件通知发送到指定的电子邮件地址。
+8. 在“通知详细信息”中，指定电子邮件地址。 服务会将有关任何订单状态更新的电子邮件通知发送到指定的电子邮件地址。
 
     我们建议使用组电子邮件，以便在组中的管理员离任后，可以持续收到通知。
 
 9. 查看与订单、联系人、通知和隐私条款相关的信息**摘要**。 选中对应于同意隐私条款的复选框。
 
-10. 选择“订单”。  创建订单需要几分钟时间。
+10. 选择“订单”。 创建订单需要几分钟时间。
 
 
 ## <a name="track-the-order"></a>跟踪订单
 
-下单后，可以从 Azure 门户跟踪订单状态。 转到你的 Data Box Heavy 订单，然后转到“概览”来查看状态。  门户中会显示订单处于“已订购”状态。 
+下单后，可以从 Azure 门户跟踪订单状态。 转到你的 Data Box Heavy 订单，然后转到“概览”来查看状态。 门户中会显示订单处于“已订购”状态。
 
 如果设备缺货，你会收到通知。 如果设备有货，Azure 会确定要发货的设备，并准备发货。 在设备准备期间，会执行以下操作：
 
@@ -132,21 +132,21 @@ Azure Data Box Heavy 是一个混合解决方案，可以快速、方便、可�
 - 也会生成用于解锁设备的设备密码。
 - 锁定 Data Box Heavy 的目的是在任何时候防止对设备进行未经授权的访问。
 
-设备准备完成后，门户会显示订单处于“已处理”状态。 
+设备准备完成后，门户会显示订单处于“已处理”状态。
 
 ![处理的 Data Box Heavy 订单](media/data-box-overview/data-box-order-status-processed.png)
 
-然后，Azure 会安排区域承运人发运设备。 设备发货后，你会收到跟踪号。 门户会显示订单处于“已发运”状态。 
+然后，Azure 会安排区域承运人发运设备。 设备发货后，你会收到跟踪号。 门户会显示订单处于“已发运”状态。
 
 ![派遣的 Data Box Heavy 订单](media/data-box-overview/data-box-order-status-dispatched.png)
 
 ## <a name="cancel-the-order"></a>取消订单
 
-若要取消此订单，请在 Azure 门户中转到“概览”，然后在命令栏中单击“取消”。  
+若要取消此订单，请在 Azure 门户中转到“概览”，然后在命令栏中单击“取消”。 
 
 下单后，只要订单状态尚未标记为“已处理”，就可以随时取消订单。
  
-若要删除已取消的订单，请转到“概况”，然后在命令栏中单击“删除”。  
+若要删除已取消的订单，请转到“概况”，然后在命令栏中单击“删除”。 
 
 ## <a name="next-steps"></a>后续步骤
 

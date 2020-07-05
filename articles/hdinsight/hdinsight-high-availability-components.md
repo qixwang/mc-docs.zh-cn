@@ -8,16 +8,23 @@ ms.service: hdinsight
 ms.topic: conceptual
 origin.date: 11/11/2019
 ms.date: 12/23/2019
-ms.openlocfilehash: d3fe3e03b1e9fa46f64f02ffe03848e8e6fdd6ee
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: f0d86cb1b6f5277f89ed7f2f2e1b85fe1a1dc7b2
+ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75348527"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85516663"
 ---
 # <a name="high-availability-services-supported-by-azure-hdinsight"></a>Azure HDInsight 支持的高可用性服务
 
  为了给分析组件提供最佳的可用性级别，我们使用独特的体系结构开发了 HDInsight，以确保关键服务的高可用性 (HA)。 此体系结构的某些组件由 Microsoft 开发，旨在提供自动故障转移。 其他组件是为了支持特定的服务而部署的标准 Apache 组件。 本文介绍 HDInsight 中 HA 服务模型的体系结构，HDInsight 如何支持 HA 服务的故障转移，以及在其他服务发生中断后如何进行恢复。
+ 
+> [!NOTE]
+> 无偏差通信
+>
+> Microsoft 支持多样化的包容性环境。 本文包含对单词 slave 的引用。 Microsoft 的[无偏差通信风格指南](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md)将其视为排他性单词。 本文使用该单词旨在保持一致性，因为目前软件中使用的是该单词。 如果软件更新后删除了该单词，则本文也将更新以保持一致。
+>
+
 
 ## <a name="high-availability-infrastructure"></a>高可用性基础结构
 
@@ -47,7 +54,7 @@ HDInsight 提供自定义的基础结构，以确保四个主要服务具有高�
 
 ## <a name="hdinsight-high-availability-services"></a>HDInsight 高可用性服务
 
-Microsoft 为下表中所述的 HDInsight 群集中的四个 Apache 服务提供支持。 为了将这些服务与 Apache 组件支持的高可用性服务区分开来，下表中将它们称作“HDInsight HA 服务”。 
+Microsoft 为下表中所述的 HDInsight 群集中的四个 Apache 服务提供支持。 为了将这些服务与 Apache 组件支持的高可用性服务区分开来，下表中将它们称作“HDInsight HA 服务”。
 
 | 服务 | 群集节点 | 群集类型 | 目的 |
 |---|---|---|---|

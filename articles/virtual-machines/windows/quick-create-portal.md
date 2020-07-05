@@ -1,25 +1,20 @@
 ---
 title: 快速入门 - 在 Azure 门户中创建 Windows VM
 description: 本快速入门介绍了如何使用 Azure 门户创建 Windows 虚拟机
-services: virtual-machines-windows
-documentationcenter: virtual-machines
 author: rockboyfor
-manager: digimobile
-tags: azure-resource-manager
 ms.service: virtual-machines-windows
 ms.topic: quickstart
-ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 origin.date: 11/05/2019
-ms.date: 04/27/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 324fcca3e26660aba080c7770490b9f6553a991c
-ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
+ms.openlocfilehash: b2b435497ed29e9bc87879fe6a2307ea104dbb82
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83392220"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85946075"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建 Windows 虚拟机
 
@@ -32,6 +27,8 @@ ms.locfileid: "83392220"
 通过 https://portal.azure.cn 登录到 Azure 门户。
 
 ## <a name="create-virtual-machine"></a>创建虚拟机
+
+<!--MOONCAKE CUSTOMIZATION TILL ON 06/30/2020-->
 
 1. 在 Azure 门户的左上角选择“创建资源”。
 
@@ -46,7 +43,8 @@ ms.locfileid: "83392220"
 1. 在“实例详细信息”下，对于“虚拟机名称”键入“myVM”，对于“区域”选择“中国东部”。 保留其他默认值。
 
     <!--Not Available on and then choose *Windows Server 2019 Datacenter* for the **Image**-->
-
+    <!--MOONCAKE CUSTOMIZATION TILL ON 06/30/2020-->
+    
     ![“实例详细信息”部分](./media/quick-create-portal/instance-details.png)
 
 1. 在“管理员帐户”下，提供用户名（例如 *azureuser*）和密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](faq.md#what-are-the-password-requirements-when-creating-a-vm)。

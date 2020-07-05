@@ -1,5 +1,5 @@
 ---
-title: 快速入门：在门户中创建搜索服务
+title: 在门户中创建搜索服务
 titleSuffix: Azure Cognitive Search
 description: 本门户快速入门介绍如何在 Azure 门户中设置 Azure 认知搜索资源。 选择资源组、区域以及 SKU 或定价层。
 manager: nitinme
@@ -7,18 +7,18 @@ author: tchristiani
 ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: quickstart
-origin.date: 02/10/2020
-ms.date: 03/16/2020
-ms.openlocfilehash: f6827e6367bd7de1a7f84df512f64f2d246ad6e2
-ms.sourcegitcommit: b80d236ce3c706abc25bbaa41b0ccddd896e48fc
+origin.date: 06/07/2020
+ms.date: 07/02/2020
+ms.openlocfilehash: c5c6c9eca88b180237c805bf50dd32169e45b26a
+ms.sourcegitcommit: 5afd7c4c3be9b80c4c67ec55f66fcf347aad74c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81873120"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85942546"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>快速入门：在门户中创建 Azure 认知搜索服务
 
-Azure 认知搜索是用于在自定义应用中插入搜索体验的独立资源。 Azure 认知搜索可与其他 Azure 服务、网络服务器上的应用或其他云平台上运行的软件轻松集成。
+Azure 认知搜索是用于在自定义应用中插入搜索体验的独立资源。 认知搜索可与其他 Azure 服务、网络服务器上的应用或其他云平台上运行的软件轻松集成。
 
 本文介绍如何在 [Azure 门户](https://portal.azure.cn/)中创建资源。
 
@@ -35,8 +35,10 @@ Azure 认知搜索是用于在自定义应用中插入搜索体验的独立资�
 ## <a name="find-azure-cognitive-search"></a>查找 Azure 认知搜索
 
 1. 登录到 [Azure 门户](https://portal.azure.cn/)。
-2. 单击左上角的加号（“+ 创建资源”）。
-3. 使用搜索栏查找“Azure 认知搜索”，或通过“Web” > “Azure 认知搜索”导航到资源   。
+
+1. 单击左上角的加号（“+ 创建资源”）。
+
+1. 使用搜索栏查找“Azure 认知搜索”，或通过“Web” > “Azure 认知搜索”导航到资源 。
 
 ![在门户中创建资源](./media/search-create-service-portal/find-search3.png "在门户中创建资源")
 
@@ -61,7 +63,7 @@ Azure 认知搜索是用于在自定义应用中插入搜索体验的独立资�
 
 ## <a name="name-the-service"></a>为服务命名
 
-在“实例详细信息”中的“URL”字段内提供服务名称。  该名称是 URL 终结点的一部分，API 调用针对此终结点发出：`https://your-service-name.search.azure.cn`。 例如，如果希望终结点为 `https://myservice.search.azure.cn`，则输入 `myservice`。
+在“实例详细信息”中的“URL”字段内提供服务名称。 该名称是 URL 终结点的一部分，API 调用针对此终结点发出：`https://your-service-name.search.azure.cn`。 例如，如果希望终结点为 `https://myservice.search.azure.cn`，则输入 `myservice`。
 
 服务名称要求：
 
@@ -76,14 +78,20 @@ Azure 认知搜索是用于在自定义应用中插入搜索体验的独立资�
 
 ## <a name="choose-a-location"></a>选择位置
 
-作为 Azure 服务，Azure 认知搜索可托管在世界各地的数据中心中。 支持的区域列表可在[定价页](https://www.azure.cn/pricing/details/search/)中找到。 
-
-为多个服务选择同一位置可以最大程度地减少或避免带宽费用。 例如，在为另一 Azure 服务（Azure 存储、Azure Cosmos DB、Azure SQL 数据库）提供的数据编制索引时，在同一区域中创建 Azure 认知搜索服务可以避免带宽费用（当服务位于同一区域时，出站数据不会产生费用）。
-
-如果使用 AI 扩充，请在认知服务所在的相同区域中创建搜索服务。 *将 Azure 认知搜索和认知服务归置在同一区域中是 AI 扩充的必要条件*。
+Azure 认知搜索在大多数区域中可用。 支持的区域列表可在[定价页](https://www.azure.cn/pricing/details/search/)中找到。 
 
 > [!Note]
-> 印度中部目前无法提供新服务。 对于已在印度中部的服务，你可以无限制地纵向扩展，并且你的服务在该区域是完全受支持的。 对此区域的限制是临时的，仅限于新服务。 如果该限制不再适用，我们将删除此说明。
+> 为多个服务选择同一位置可以最大程度地减少或避免带宽费用。 例如，在为另一 Azure 服务（Azure 存储、Azure Cosmos DB、Azure SQL 数据库）提供的数据编制索引时，在同一区域中创建 Azure 认知搜索服务可以避免带宽费用（当服务位于同一区域时，出站数据不会产生费用）。
+
+### <a name="requirements"></a>要求
+
+ 如果使用 AI 扩充，请在认知服务所在的相同区域中创建搜索服务。 *将 Azure 认知搜索和认知服务归置在同一区域中是 AI 扩充的必要条件*。
+
+ 具有业务连续性和灾难恢复 (BCDR) 要求的客户应在[区域对](https://docs.microsoft.com/azure/best-practices-availability-paired-regions#azure-regional-pairs)中创建其服务。 例如，如果你在北美运营，则可以为每个服务选择“美国东部和美国西部”或“美国中北部和美国中南部”。
+
+### <a name="recommendations"></a>建议
+
+如果使用多个 Azure 服务，请选择同时托管数据或应用程序服务的区域。 这样做可以最大程度地减少或避免出站数据的带宽费用（当服务位于同一区域时，出站数据没有任何费用）。
 
 ## <a name="choose-a-pricing-tier-sku"></a>选择定价层 (SKU)
 
@@ -107,9 +115,9 @@ Azure 认知搜索是用于在自定义应用中插入搜索体验的独立资�
 
 除非使用门户访问新服务，否则以编程方式访问新服务需要提供 URL 终结点和身份验证 API 密钥。
 
-1. 在“概览”  页的右侧找到并复制 URL 终结点。
+1. 在“概览”页的右侧找到并复制 URL 终结点。
 
-2. 在“密钥”  页上，复制其中一个管理密钥（它们等同）。 在服务上创建、更新和删除对象需要管理员 API 密钥。 相反，查询键提供索引内容的读取访问权限。
+2. 在“密钥”页上，复制其中一个管理密钥（它们等同）。 在服务上创建、更新和删除对象需要管理员 API 密钥。 相反，查询键提供索引内容的读取访问权限。
 
    ![包含 URL 终结点的服务概览页](./media/search-create-service-portal/get-url-key.png "URL 终结点和其他服务详细信息")
 
@@ -129,7 +137,7 @@ Azure 认知搜索是用于在自定义应用中插入搜索体验的独立资�
 > 一个服务必须具有[2 个用于只读 SLA 的副本和 3 个用于读/写 SLA 的副本](https://www.azure.cn/support/legal/sla/)。
 
 1. 在 Azure 门户中转到“搜索服务”页。
-2. 在左侧导航窗格中，选择“设置”   > “缩放”  。
+2. 在左侧导航窗格中，选择“设置” > “缩放”。
 3. 使用滑块添加任一类型的资源。
 
 ![添加容量](./media/search-create-service-portal/settings-scale.png "通过副本和分区添加容量")
@@ -143,9 +151,11 @@ Azure 认知搜索是用于在自定义应用中插入搜索体验的独立资�
 
 尽管大多数客户只使用一个服务，但若有以下操作要求，则可能需要提供服务冗余：
 
-* 灾难恢复（数据中心服务中断）。 Azure 认知搜索在发生服务中断时不提供即时故障转移。 请参阅[服务管理](search-manage.md)获取相关建议和指南。
-* 通过调查多租户建模，确定附加服务是最佳设计。 有关详细信息，请参阅[多租户设计](search-modeling-multitenant-saas-applications.md)。
-* 对于在全球部署的应用程序，可能需要在多个区域运行 Azure 认知搜索实例，以尽量减少应用程序国际流量的延迟。
++ [业务连续性和灾难恢复 (BCDR)](https://docs.azure.cn/best-practices-availability-paired-regions)。 Azure 认知搜索在发生服务中断时不提供即时故障转移。
+
++ [多租户体系结构](search-modeling-multitenant-saas-applications.md)有时会调用两个或更多服务。
+
++ 全局部署的应用程序可能需要在每个地理位置中使用搜索服务，以最大程度地减小延迟。
 
 > [!NOTE]
 > 在 Azure 认知搜索中，无法分离索引操作和查询操作；因此永远无需为分离的工作负荷创建多个服务。 查询索引时，始终是在创建该索引时所在的服务中查询（不能在一个服务中创建索引，然后将其复制到另一个服务）。

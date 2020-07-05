@@ -4,18 +4,18 @@ description: 本教程介绍如何从主题和订阅发送和接收消息，以�
 services: service-bus-messaging
 author: lingliw
 manager: digimobile
-ms.author: v-lingwu
+ms.author: v-tawe
 origin.date: 01/21/2020
-ms.date: 2/6/2020
+ms.date: 07/01/2020
 ms.topic: tutorial
 ms.service: service-bus-messaging
 ms.custom: mvc
-ms.openlocfilehash: 28920a56172ff9b6e3f7354e9d2c30aa6ed72430
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: aa66daa95e3eb3baca2e34785b01b9edc08c7813
+ms.sourcegitcommit: 4f84bba7e509a321b6f68a2da475027c539b8fd3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77067966"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85796149"
 ---
 # <a name="tutorial-update-inventory-using-azure-portal-and-topicssubscriptions"></a>教程：使用 Azure 门户和主题/订阅更新库存
 
@@ -56,7 +56,7 @@ ms.locfileid: "77067966"
 
 预配命名空间和主题/订阅并且拥有所需的凭据后，便可以在订阅上创建筛选规则，然后发送和接收消息。 可以在[此 GitHub 示例文件夹](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus/TopicFilters)中检查代码。
 
-### <a name="send-and-receive-messages"></a>发送和接收消息
+## <a name="send-and-receive-messages"></a>发送和接收消息
 
 若要运行此代码，请执行以下操作：
 
@@ -394,6 +394,9 @@ private async Task ReceiveMessages(string subscription)
     await receiver.CloseAsync();
 }
 ```
+
+> [!NOTE]
+> 可以使用[服务总线资源管理器](https://github.com/paolosalvatori/ServiceBusExplorer/)管理服务总线资源。 服务总线资源管理器允许用户连接到服务总线命名空间并以一种简单的方式管理消息传送实体。 该工具提供高级功能，如导入/导出功能或用于对主题、队列、订阅、中继服务、通知中心和事件中心进行测试的功能。 
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 origin.date: 02/18/2020
 ms.date: 03/23/2020
-ms.openlocfilehash: 98ad33b7c5cda47bda89375fff2af0f48bfb08ae
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 00ab9ab945b5b4925c191342f2a9ca4d37701be1
+ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79295935"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85516709"
 ---
 # <a name="debug-wasb-file-operations-in-azure-hdinsight"></a>在 Azure HDInsight 中调试 WASB 文件操作
 
@@ -27,7 +27,7 @@ ms.locfileid: "79295935"
 
 ## <a name="turn-on-wasb-debug-log-for-file-operations"></a>为文件操作启用 WASB 调试日志
 
-1. 在 Web 浏览器中，导航到 `https://CLUSTERNAME.azurehdinsight.net/#/main/services/SPARK2/configs`，其中 `CLUSTERNAME` 是你的 Spark 群集的名称。
+1. 在 Web 浏览器中，导航到 `https://CLUSTERNAME.azurehdinsight.cn/#/main/services/SPARK2/configs`，其中 `CLUSTERNAME` 是你的 Spark 群集的名称。
 
 1. 导航到“advanced spark2-log4j-properties”  。
 

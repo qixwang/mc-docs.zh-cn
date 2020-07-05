@@ -1,17 +1,16 @@
 ---
 title: Azure CLI 示例 - Azure Functions
 description: Azure CLI 示例 - Azure Functions
-author: syntaxc4
 ms.assetid: 577d2f13-de4d-40d2-9dfc-86ecc79f3ab0
 ms.topic: sample
-ms.date: 12/04/2019
+ms.date: 07/02/2020
 ms.custom: mvc
-ms.openlocfilehash: 9993aad91f69de4deb4a4a08c25a8ea6c11b7522
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: aae7c6b01e502a258650602e3c760096443da32a
+ms.sourcegitcommit: 1008ad28745709e8d666f07a90e02a79dbbe2be5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79293248"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945266"
 ---
 # <a name="azure-cli-samples"></a>Azure CLI 示例
 
@@ -21,7 +20,7 @@ ms.locfileid: "79293248"
 
 | 创建应用 | 说明 |
 |---|---|
-| [创建可无服务器执行的 Function App](scripts/functions-cli-create-serverless.md) | 在消耗计划中创建 Function App。  |
+| [创建可无服务器执行的 Function App](scripts/functions-cli-create-serverless.md) | 在消耗计划中创建函数应用。  |
 | [在专用（应用服务）计划中创建函数应用](scripts/functions-cli-create-app-service-plan.md) | 在专用应用服务计划中创建 Function App。 |
 
 | 集成 | 说明|

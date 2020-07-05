@@ -8,13 +8,13 @@ ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 11/04/2019
-ms.date: 06/09/2020
-ms.openlocfilehash: 3ff6ea8d78588220db63136dbdfb5c0a1829ddf9
-ms.sourcegitcommit: c4fc01b7451951ef7a9616fca494e1baf29db714
+ms.date: 07/02/2020
+ms.openlocfilehash: 899ad98a76e15558ce6039bc6e082f2a673474ab
+ms.sourcegitcommit: 5afd7c4c3be9b80c4c67ec55f66fcf347aad74c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84564326"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85942590"
 ---
 # <a name="add-full-text-search-to-azure-blob-data-using-azure-cognitive-search"></a>使用 Azure 认知搜索将全文搜索添加到 Azure Blob 数据
 

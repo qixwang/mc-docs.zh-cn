@@ -9,12 +9,12 @@ ms.topic: quickstart
 origin.date: 06/12/2019
 ms.date: 03/02/2020
 ms.author: v-yiso
-ms.openlocfilehash: 4fc7813defa12cdb9914a47a8fe4313d43a87610
-ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
+ms.openlocfilehash: 7200794b021eadc211169a366c5a86dd6bad94d4
+ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84186447"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85516596"
 ---
 # <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-resource-manager-template"></a>快速入门：使用资源管理器模板在 Azure HDInsight 中创建 Apache Spark 群集
 
@@ -185,7 +185,7 @@ ms.locfileid: "84186447"
 
 1. 选择下面的“部署到 Azure”按钮以登录到 Azure，并打开资源管理器模板。
 
-    [![“部署到 Azure”](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-spark-linux%2Fazuredeploy.json)
+    [![“部署到 Azure”](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-spark-linux%2Fazuredeploy.json)
 
 1. 输入或选择下列值：
 

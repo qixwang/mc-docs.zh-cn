@@ -6,13 +6,13 @@ ms.author: v-jay
 ms.service: mysql
 ms.topic: sample
 origin.date: 02/28/2018
-ms.date: 11/04/2019
-ms.openlocfilehash: ec2c8d7cfc1e80a80f2314f31b9fac44b19b22a0
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 06/29/2020
+ms.openlocfilehash: e13e1dcd9ac9d546660ee6d1dd6379ea17a5d79f
+ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "73142207"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85516646"
 ---
 # <a name="java-sample-to-illustrate-connection-pooling"></a>演示连接池的 Java 示例
 
@@ -84,7 +84,7 @@ public class MySQLConnectionPool {
         // For Azure Database for MySQL, if there is no action on one connection for some
         // time, the connection is lost. By this, make sure the connection is
         // active. Otherwise reconnect it.
-        makeAvailable(conn);
+        conn = makeAvailable(conn);
         return conn;
     }
 
@@ -141,12 +141,7 @@ public class MySQLConnectionPool {
      */
     private Connection createNewConnection() throws SQLException {
         Connection conn = null;
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection(databaseUrl, userName, password);
-        } catch (ClassNotFoundException cnfe) {
-            throw new SQLException(cnfe);
-        }
+        conn = DriverManager.getConnection(databaseUrl, userName, password);
         return conn;
     }
 

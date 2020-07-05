@@ -1,24 +1,20 @@
 ---
 title: 适用于 Windows 的 Azure 诊断扩展
 description: 使用 Azure 诊断扩展监视 Azure Windows VM
-services: virtual-machines-windows
-documentationcenter: ''
 author: rockboyfor
 manager: digimobile
-editor: ''
 ms.service: virtual-machines-windows
-ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.topic: how-to
 ms.workload: infrastructure-services
 origin.date: 04/06/2018
-ms.date: 04/27/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: bd0a9ee80f9d7b6b70c22066ec61d5c28aa7a6ea
-ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
+ms.openlocfilehash: 6f7d12daf5c36280412609566a2cdc53c1b7678e
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83392450"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945635"
 ---
 # <a name="azure-diagnostics-extension-for-windows-vms"></a>适用于 Windows VM 的 Azure 诊断扩展
 
@@ -30,9 +26,7 @@ Azure 诊断 VM 扩展可用来从 Windows VM 收集监视数据，例如性能�
 
 ### <a name="operating-system"></a>操作系统
 
-Azure 诊断扩展可以针对 Windows Server 2008 R2、2012、2012 R2 和 2016 运行。
-
-<!--Not Available on Windows 10 Client-->
+Azure 诊断扩展可以针对 Windows 10 客户端，Windows Server 2008 R2、2012、2012 R2 和 2016 运行。
 
 ### <a name="internet-connectivity"></a>Internet 连接
 

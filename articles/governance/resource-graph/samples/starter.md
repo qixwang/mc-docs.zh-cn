@@ -6,12 +6,12 @@ ms.author: v-tawe
 origin.date: 04/27/2020
 ms.date: 06/01/2020
 ms.topic: sample
-ms.openlocfilehash: 44c9dd6e349663577805d34b818ddcafb7b777c2
-ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
+ms.openlocfilehash: 62596c418c7e1a4d6346babb7c95a38ec5a53439
+ms.sourcegitcommit: 4f84bba7e509a321b6f68a2da475027c539b8fd3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84275544"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85796165"
 ---
 # <a name="starter-resource-graph-query-samples"></a>初学者 Resource Graph 查询示例
 
@@ -42,7 +42,7 @@ ms.locfileid: "84275544"
 
 Azure CLI（通过扩展）和 Azure PowerShell（通过模块）支持 Azure 资源图表。 在运行以下任何查询之前，请检查环境是否已准备就绪。 有关安装和验证所选 shell 环境的步骤，请参阅 [Azure CLI](../first-query-azurecli.md#add-the-resource-graph-extension) 和 [Azure PowerShell](../first-query-powershell.md#add-the-resource-graph-module)。
 
-## <a name="count-azure-resources"></a><a name="count-resources" /> 对 Azure 资源进行计数
+## <a name="count-azure-resources"></a><a name="count-resources" ></a>对 Azure 资源进行计数
 
 此查询返回有权访问的订阅中存在的 Azure 资源的数量。 这是一个良好查询，用于验证所选 shell 是否已安装适当的 Azure 资源图表组件并处于正常工作状态。
 
@@ -63,7 +63,7 @@ az graph query -q "Resources | summarize count()"
 Search-AzGraph -Query "Resources | summarize count()"
 ```
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
 ![Resource Graph 浏览器图标](../media/resource-graph-small.png) 在 Azure Resource Graph 浏览器中尝试此查询：
 
@@ -71,7 +71,7 @@ Search-AzGraph -Query "Resources | summarize count()"
 
 ---
 
-## <a name="count-key-vault-resources"></a><a name="count-keyvaults" />统计密钥保管库资源
+## <a name="count-key-vault-resources"></a><a name="count-keyvaults" ></a>统计密钥保管库资源
 
 此查询使用 `count` 而不是 `summarize` 来计算返回的记录数。 只有密钥保管库才包括在计数中。
 
@@ -93,7 +93,7 @@ az graph query -q "Resources | where type =~ 'microsoft.keyvault/vaults' | count
 Search-AzGraph -Query "Resources | where type =~ 'microsoft.keyvault/vaults' | count"
 ```
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
 ![Resource Graph 浏览器图标](../media/resource-graph-small.png) 在 Azure Resource Graph 浏览器中尝试此查询：
 
@@ -101,7 +101,7 @@ Search-AzGraph -Query "Resources | where type =~ 'microsoft.keyvault/vaults' | c
 
 ---
 
-## <a name="list-resources-sorted-by-name"></a><a name="list-resources" /> 列出按名称排序的资源
+## <a name="list-resources-sorted-by-name"></a><a name="list-resources" ></a> 列出按名称排序的资源
 
 此查询返回任意类型的资源，但只返回“名称”、“类型”和“位置”属性。   它使用 `order by`以升序 (`asc`) 按“名称”属性对属性排序。
 
@@ -123,7 +123,7 @@ az graph query -q "Resources | project name, type, location | order by name asc"
 Search-AzGraph -Query "Resources | project name, type, location | order by name asc"
 ```
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
 ![Resource Graph 浏览器图标](../media/resource-graph-small.png) 在 Azure Resource Graph 浏览器中尝试此查询：
 
@@ -131,7 +131,7 @@ Search-AzGraph -Query "Resources | project name, type, location | order by name 
 
 ---
 
-## <a name="show-all-virtual-machines-ordered-by-name-in-descending-order"></a><a name="show-vms" /> 按降序显示按名称排序的所有虚拟机
+## <a name="show-all-virtual-machines-ordered-by-name-in-descending-order"></a><a name="show-vms" ></a> 按降序显示按名称排序的所有虚拟机
 
 若要只列出虚拟机（类型为 `Microsoft.Compute/virtualMachines`），我们可在结果中匹配属性“类型”。 与上一查询类似，`desc` 将 `order by` 更改为降序。 类型匹配中的 `=~` 告知资源图表不区分大小写。
 
@@ -154,7 +154,7 @@ az graph query -q "Resources | project name, location, type| where type =~ 'Micr
 Search-AzGraph -Query "Resources | project name, location, type| where type =~ 'Microsoft.Compute/virtualMachines' | order by name desc"
 ```
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
 ![Resource Graph 浏览器图标](../media/resource-graph-small.png) 在 Azure Resource Graph 浏览器中尝试此查询：
 
@@ -162,7 +162,7 @@ Search-AzGraph -Query "Resources | project name, location, type| where type =~ '
 
 ---
 
-## <a name="show-first-five-virtual-machines-by-name-and-their-os-type"></a><a name="show-sorted" /> 按名称及其 OS 类型显示前五个虚拟机
+## <a name="show-first-five-virtual-machines-by-name-and-their-os-type"></a><a name="show-sorted" ></a> 按名称及其 OS 类型显示前五个虚拟机
 
 此查询将使用 `top` 仅检索按名称排序的五条匹配记录。 Azure 资源的类型为 `Microsoft.Compute/virtualMachines`。 `project` 告诉 Azure 资源图表要包含哪些属性。
 
@@ -185,7 +185,7 @@ az graph query -q "Resources | where type =~ 'Microsoft.Compute/virtualMachines'
 Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/virtualMachines' | project name, properties.storageProfile.osDisk.osType | top 5 by name desc"
 ```
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
 ![Resource Graph 浏览器图标](../media/resource-graph-small.png) 在 Azure Resource Graph 浏览器中尝试此查询：
 
@@ -193,7 +193,7 @@ Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/virtualMachi
 
 ---
 
-## <a name="count-virtual-machines-by-os-type"></a><a name="count-os" /> 按 OS 类型对虚拟机进行计数
+## <a name="count-virtual-machines-by-os-type"></a><a name="count-os" ></a> 按 OS 类型对虚拟机进行计数
 
 基于前面的查询，我们仍受限于类型 `Microsoft.Compute/virtualMachines` 的 Azure 资源，但不再限制返回的记录数量。
 相反，我们使用 `summarize` 和 `count()` 来定义如何按属性对值进行分组和聚合，在此示例中为 `properties.storageProfile.osDisk.osType`。 有关此字符串在完整对象中的外观示例，请参阅[浏览资源 - 虚拟机发现](../concepts/explore-resources.md#virtual-machine-discovery)。
@@ -216,7 +216,7 @@ az graph query -q "Resources | where type =~ 'Microsoft.Compute/virtualMachines'
 Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/virtualMachines' | summarize count() by tostring(properties.storageProfile.osDisk.osType)"
 ```
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
 ![Resource Graph 浏览器图标](../media/resource-graph-small.png) 在 Azure Resource Graph 浏览器中尝试此查询：
 
@@ -245,7 +245,7 @@ az graph query -q "Resources | where type =~ 'Microsoft.Compute/virtualMachines'
 Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/virtualMachines' | extend os = properties.storageProfile.osDisk.osType | summarize count() by tostring(os)"
 ```
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
 ![Resource Graph 浏览器图标](../media/resource-graph-small.png) 在 Azure Resource Graph 浏览器中尝试此查询：
 
@@ -256,7 +256,7 @@ Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/virtualMachi
 > [!NOTE]
 > 请注意，虽然 `=~` 允许不区分大小写的匹配，但在查询中使用属性（例如 properties.storageProfile.osDisk.osType）要求大小写正确。 如果属性的大小写不正确，则会返回 null 值或不正确值，但分组或汇总可能不正确。
 
-## <a name="show-resources-that-contain-storage"></a><a name="show-storage" /> 显示包含存储的资源
+## <a name="show-resources-that-contain-storage"></a><a name="show-storage" ></a>显示包含存储的资源
 
 此示例查询不显式定义要匹配的类型，而是查找 `contains` 单词“存储”的任何 Azure 资源。
 
@@ -277,7 +277,7 @@ az graph query -q "Resources | where type contains 'storage' | distinct type"
 Search-AzGraph -Query "Resources | where type contains 'storage' | distinct type"
 ```
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
 ![Resource Graph 浏览器图标](../media/resource-graph-small.png) 在 Azure Resource Graph 浏览器中尝试此查询：
 
@@ -285,7 +285,7 @@ Search-AzGraph -Query "Resources | where type contains 'storage' | distinct type
 
 ---
 
-## <a name="list-all-public-ip-addresses"></a><a name="list-publicip" /> 列出所有公共 IP 地址
+## <a name="list-all-public-ip-addresses"></a><a name="list-publicip" ></a> 列出所有公共 IP 地址
 
 与上一查询类似，查找包含单词“publicIPAddresses”的所有类型。
 此查询扩展了该模式，以仅包括 properties.ipAddress 为
@@ -311,7 +311,7 @@ az graph query -q "Resources | where type contains 'publicIPAddresses' and isnot
 Search-AzGraph -Query "Resources | where type contains 'publicIPAddresses' and isnotempty(properties.ipAddress) | project properties.ipAddress | limit 100"
 ```
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
 ![Resource Graph 浏览器图标](../media/resource-graph-small.png) 在 Azure Resource Graph 浏览器中尝试此查询：
 
@@ -319,7 +319,7 @@ Search-AzGraph -Query "Resources | where type contains 'publicIPAddresses' and i
 
 ---
 
-## <a name="count-resources-that-have-ip-addresses-configured-by-subscription"></a><a name="count-resources-by-ip" /> 对具有由订阅配置的 IP 地址的资源进行计数
+## <a name="count-resources-that-have-ip-addresses-configured-by-subscription"></a><a name="count-resources-by-ip" ></a> 对具有由订阅配置的 IP 地址的资源进行计数
 
 使用前面的示例查询并添加 `summarize` 和 `count()`，我们可通过订阅配置了 IP 地址的资源来获取列表。
 
@@ -341,7 +341,7 @@ az graph query -q "Resources | where type contains 'publicIPAddresses' and isnot
 Search-AzGraph -Query "Resources | where type contains 'publicIPAddresses' and isnotempty(properties.ipAddress) | summarize count () by subscriptionId"
 ```
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
 ![Resource Graph 浏览器图标](../media/resource-graph-small.png) 在 Azure Resource Graph 浏览器中尝试此查询：
 
@@ -349,7 +349,7 @@ Search-AzGraph -Query "Resources | where type contains 'publicIPAddresses' and i
 
 ---
 
-## <a name="list-resources-with-a-specific-tag-value"></a><a name="list-tag" /> 列出具有特定标记值的资源
+## <a name="list-resources-with-a-specific-tag-value"></a><a name="list-tag" ></a> 列出具有特定标记值的资源
 
 我们可通过 Azure 资源类型以外的属性（如标记）来限制结果。 在此示例中，我们正在筛选 Azure 资源，其标记名为“环境”，其值为 Internal 。
 
@@ -371,7 +371,7 @@ az graph query -q "Resources | where tags.environment=~'internal' | project name
 Search-AzGraph -Query "Resources | where tags.environment=~'internal' | project name"
 ```
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
 ![Resource Graph 浏览器图标](../media/resource-graph-small.png) 在 Azure Resource Graph 浏览器中尝试此查询：
 
@@ -399,7 +399,7 @@ az graph query -q "Resources | where tags.environment=~'internal' | project name
 Search-AzGraph -Query "Resources | where tags.environment=~'internal' | project name, tags"
 ```
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
 ![Resource Graph 浏览器图标](../media/resource-graph-small.png) 在 Azure Resource Graph 浏览器中尝试此查询：
 
@@ -407,7 +407,7 @@ Search-AzGraph -Query "Resources | where tags.environment=~'internal' | project 
 
 ---
 
-## <a name="list-all-storage-accounts-with-specific-tag-value"></a><a name="list-specific-tag" /> 列出具有特定标记值的所有存储帐户
+## <a name="list-all-storage-accounts-with-specific-tag-value"></a><a name="list-specific-tag" ></a> 列出具有特定标记值的所有存储帐户
 
 组合前面示例的筛选功能，按“类型”属性筛选 Azure 资源类型。 此查询还使用特定的标记名称和值来限制对 Azure 资源特定类型的搜索。
 
@@ -429,7 +429,7 @@ az graph query -q "Resources | where type =~ 'Microsoft.Storage/storageAccounts'
 Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Storage/storageAccounts' | where tags['tag with a space']=='Custom value'"
 ```
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
 ![Resource Graph 浏览器图标](../media/resource-graph-small.png) 在 Azure Resource Graph 浏览器中尝试此查询：
 
@@ -440,7 +440,7 @@ Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Storage/storageAccou
 > [!NOTE]
 > 此示例使用 `==` 进行匹配，而不是使用 `=~` 条件。 `==` 是区分大小写的匹配项。
 
-## <a name="show-aliases-for-a-virtual-machine-resource"></a><a name="show-aliases" /> 显示虚拟机资源的别名
+## <a name="show-aliases-for-a-virtual-machine-resource"></a><a name="show-aliases" ></a>显示虚拟机资源的别名
 
 Azure Policy 使用 [Azure Policy 别名](../../policy/concepts/definition-structure.md#aliases)管理资源符合性。 Azure Resource Graph 可以返回资源类型的别名。 创建自定义策略定义后，这些值可用于比较别名的当前值。 默认情况下，查询结果中不提供别名数组。 使用 `project aliases` 将其显式添加到结果中。
 
@@ -463,7 +463,7 @@ az graph query -q "Resources | where type =~ 'Microsoft.Compute/virtualMachines'
 Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/virtualMachines' | limit 1 | project aliases" | ConvertTo-Json
 ```
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
 ![Resource Graph 浏览器图标](../media/resource-graph-small.png) 在 Azure Resource Graph 浏览器中尝试此查询：
 
@@ -471,7 +471,7 @@ Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/virtualMachi
 
 ---
 
-## <a name="show-distinct-values-for-a-specific-alias"></a><a name="distinct-alias-values" /> 显示特定别名的非重复值
+## <a name="show-distinct-values-for-a-specific-alias"></a><a name="distinct-alias-values" ></a> 显示特定别名的非重复值
 
 在单个资源上查看别名的值，这非常有用，但这不会显示使用 Azure Resource Graph 在订阅中进行查询的真实值。 本示例查看特定别名的所有值，并返回不同的值。
 
@@ -494,7 +494,7 @@ az graph query -q "Resources | where type=~'Microsoft.Compute/virtualMachines' |
 Search-AzGraph -Query "Resources | where type=~'Microsoft.Compute/virtualMachines' | extend alias = aliases['Microsoft.Compute/virtualMachines/storageProfile.osDisk.managedDisk.storageAccountType'] | distinct tostring(alias)"
 ```
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
 ![Resource Graph 浏览器图标](../media/resource-graph-small.png) 在 Azure Resource Graph 浏览器中尝试此查询：
 
@@ -502,7 +502,7 @@ Search-AzGraph -Query "Resources | where type=~'Microsoft.Compute/virtualMachine
 
 ---
 
-## <a name="show-unassociated-network-security-groups"></a><a name="unassociated-nsgs" />显示未关联的网络安全组
+## <a name="show-unassociated-network-security-groups"></a><a name="unassociated-nsgs" ></a>显示未关联的网络安全组
 
 此查询返回未与网络接口或子网关联的网络安全组 (NSG)。
 
@@ -525,7 +525,7 @@ az graph query -q "Resources | where type =~ 'microsoft.network/networksecurityg
 Search-AzGraph -Query "Resources | where type =~ 'microsoft.network/networksecuritygroups' and isnull(properties.networkInterfaces) and isnull(properties.subnets) | project name, resourceGroup | sort by name asc"
 ```
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
 ![Resource Graph 浏览器图标](../media/resource-graph-small.png) 在 Azure Resource Graph 浏览器中尝试此查询：
 
@@ -533,7 +533,7 @@ Search-AzGraph -Query "Resources | where type =~ 'microsoft.network/networksecur
 
 ---
 
-## <a name="get-cost-savings-summary-from-azure-advisor"></a><a name="advisor-savings" />从 Azure 顾问获取成本节约情况摘要
+## <a name="get-cost-savings-summary-from-azure-advisor"></a><a name="advisor-savings" ></a>从 Azure 顾问获取成本节约情况摘要
 
 此查询汇总了每个 [Azure 顾问](../../../advisor/advisor-overview.md)建议的成本节约情况。
 
@@ -566,7 +566,7 @@ az graph query -q "advisorresources | where type == 'microsoft.advisor/recommend
 Search-AzGraph -Query "advisorresources | where type == 'microsoft.advisor/recommendations' | where properties.category == 'Cost' | extend resources = tostring(properties.resourceMetadata.resourceId), savings = todouble(properties.extendedProperties.savingsAmount), solution = tostring(properties.shortDescription.solution), currency = tostring(properties.extendedProperties.savingsCurrency) | summarize dcount(resources), bin(sum(savings), 0.01) by solution, currency | project solution, dcount_resources, sum_savings, currency | order by sum_savings desc"
 ```
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
 ![Resource Graph 浏览器图标](../media/resource-graph-small.png) 在 Azure Resource Graph 浏览器中尝试此查询：
 

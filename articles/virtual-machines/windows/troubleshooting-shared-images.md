@@ -1,27 +1,21 @@
 ---
 title: 排查共享映像库问题
 description: 了解如何排查共享映像库的问题。
-services: virtual-machine-windows
-documentationcenter: virtual-machine-scale-sets
 author: rockboyfor
-manager: digimobile
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.topic: article
-ms.tgt_pltfrm: ''
+ms.topic: troubleshooting
 ms.workload: infrastructure
 origin.date: 04/25/2019
-ms.date: 04/27/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
 ms.reviewer: cynthn
 ms.custom: ''
-ms.openlocfilehash: 163652c33164daa6c10a2bc3ce0bd01c837d7716
-ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
+ms.openlocfilehash: 99ce65735f88a5c36783150ed5eb56e0e10495e7
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83392365"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945893"
 ---
 # <a name="troubleshooting-shared-image-galleries"></a>排查共享映像库问题
 
@@ -31,4 +25,4 @@ ms.locfileid: "83392365"
 
 详细了解[共享映像库](shared-image-galleries.md)。
 
-<!-- Update_Description: update meta properties -->
+<!-- Update_Description: update meta properties, wording update, update link -->

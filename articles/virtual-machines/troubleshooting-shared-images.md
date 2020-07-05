@@ -2,21 +2,20 @@
 title: 排查 Azure 中共享映像的问题
 description: 了解如何排查共享映像库的问题。
 author: rockboyfor
-manager: digimobile
 ms.service: virtual-machines
 ms.subservice: imaging
-ms.topic: article
+ms.topic: troubleshooting
 ms.workload: infrastructure
 origin.date: 04/17/2020
-ms.date: 06/01/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
 ms.reviewer: cynthn
-ms.openlocfilehash: 0e49907b585466893bc762494220b933097b89a6
-ms.sourcegitcommit: 981a75a78f8cf74ab5a76f9e6b0dc5978387be4b
+ms.openlocfilehash: 438eb2911e64a8e56849521437e771674a7fa115
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83801918"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85946052"
 ---
 # <a name="troubleshooting-shared-image-galleries"></a>排查共享映像库问题
 
@@ -26,5 +25,4 @@ ms.locfileid: "83801918"
 
 详细了解[共享映像库](./linux/shared-image-galleries.md)。
 
-<!-- Update_Description: new article about troubleshooting shared images -->
-<!--NEW.date: 06/01/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

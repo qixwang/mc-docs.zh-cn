@@ -1,20 +1,18 @@
 ---
 title: 将与维护配置关联的资源移到另一区域
 description: 了解如何将与 VM 维护配置关联的资源移到另一 Azure 区域
-services: virtual-machines
 author: rockboyfor
 ms.service: virtual-machines
-ms.topic: article
-ms.tgt_pltfrm: vm
+ms.topic: how-to
 origin.date: 03/04/2020
-ms.date: 05/06/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 378cd86d86eda5c8bce9734666464881d17c1dcc
-ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
+ms.openlocfilehash: 4845ad03625d172540642a83dcc9805701a09fdb
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "83002306"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85946049"
 ---
 # <a name="move-resources-in-a-maintenance-control-configuration-to-another-region"></a>将维护控制配置中的资源移到另一区域
 
@@ -79,7 +77,7 @@ ms.locfileid: "83002306"
 
 ## <a name="move"></a>移动 
 
-1. [按照这些说明](/site-recovery/azure-to-azure-tutorial-migrate?toc=/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json)将 Azure VM 移到新区域。
+1. [按照这些说明](/site-recovery/azure-to-azure-tutorial-migrate?toc=/virtual-machines/windows/toc.json&bc=/virtual-machines/windows/breadcrumb/toc.json)将 Azure VM 移到新区域。
 2. 移动资源后，根据需要将维护配置重新应用于新区域中的资源，具体取决于是否移动了维护配置。 可以使用 [PowerShell](../virtual-machines/maintenance-control-powershell.md) 或 [CLI](../virtual-machines/maintenance-control-cli.md) 将维护配置应用于资源。
 
 ## <a name="verify-the-move"></a>验证移动情况
@@ -92,7 +90,6 @@ ms.locfileid: "83002306"
 
 ## <a name="next-steps"></a>后续步骤
 
-如果需要移动维护配置，请按照[这些说明](move-region-maintenance-configuration.md)操作。 
+如果需要移动维护配置，请按照[这些说明](move-region-maintenance-configuration.md)操作。
 
-<!-- Update_Description: new article about move region maintenance configuration resources -->
-<!--NEW.date: 05/06/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

@@ -11,12 +11,12 @@ ms.topic: article
 origin.date: 12/20/2019
 ms.date: 05/21/2020
 ms.author: v-tawe
-ms.openlocfilehash: 76effdfe9cb1eac7420da6c8221060f965784edf
-ms.sourcegitcommit: a04b0b1009b0c62f2deb7c7acee75a1304d98f87
+ms.openlocfilehash: 985e4f71b7c723f952990f7628eaf94103144a87
+ms.sourcegitcommit: 4f84bba7e509a321b6f68a2da475027c539b8fd3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83796724"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85796326"
 ---
 # <a name="configure-virtual-network-service-endpoints-for-azure-service-bus"></a>为 Azure 服务总线配置虚拟网络服务终结点
 
@@ -112,7 +112,7 @@ ms.locfileid: "83796724"
 
 ```json
 {
-    "$schema": "https://schema.management.chinacloudapi.cn/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
       "servicebusNamespaceName": {

@@ -10,12 +10,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 origin.date: 11/20/2019
 ms.date: 02/24/2020
-ms.openlocfilehash: 688b245bd809e3677261bfcbf9734d715eb48ea7
-ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
+ms.openlocfilehash: b54a3a29f0fc4b8457364c0239282c040095f98c
+ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84723609"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85516733"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight：常见问题
 
@@ -189,11 +189,11 @@ Clamscan 是在 HDInsight 群集上运行的防病毒软件，Azure 安全性服
 
 ### <a name="can-i-add-an-azure-data-lake-storage-gen2-to-an-existing-hdinsight-cluster-as-an-additional-storage-account"></a>是否可将 Azure Data Lake Storage Gen2 作为附加存储帐户添加到现有的 HDInsight 群集？
 
-否，目前无法将 Azure Data Lake Storage Gen2 存储帐户添加到使用 Blob 存储作为主要存储的群集。 有关详细信息，请参阅[存储选项的比较](hdinsight-hadoop-compare-storage-options.md)。
+否，目前无法将 Azure Data Lake Storage Gen2 存储帐户添加到使用 Blob 存储作为主要存储的群集。 
 
 ### <a name="how-can-i-find-the-currently-linked-service-principal-for-a-data-lake-storage-account"></a>如何查找 Data Lake 存储帐户当前链接的服务主体？
 
-可以在 Azure 门户中群集属性下的“Data Lake Storage Gen1 访问”中找到相关设置。**** 有关详细信息，请参阅[验证群集设置](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md#verify-cluster-set-up)。
+可以在 Azure 门户中群集属性下的“Data Lake Storage Gen1 访问”中找到相关设置。**** 
  
 ### <a name="how-can-i-calculate-the-usage-of-storage-accounts-and-blob-containers-for-my-hdinsight-clusters"></a>如何计算 HDInsight 群集的存储帐户和 Blob 容器的用量？
 

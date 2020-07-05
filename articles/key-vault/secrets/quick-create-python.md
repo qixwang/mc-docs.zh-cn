@@ -4,16 +4,17 @@ description: 了解如何使用 Python 客户端库在 Azure 密钥保管库中�
 author: msmbaldwin
 ms.author: v-tawe
 origin.date: 10/20/2019
-ms.date: 04/20/2020
+ms.date: 07/01/2020
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.openlocfilehash: 5d00713f553db0821ee1b0a53404ac96c73a8f30
-ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
+ms.custom: tracking-python
+ms.openlocfilehash: 8c9aaade229ac162727af299b5fd3995e32e8882
+ms.sourcegitcommit: 4f84bba7e509a321b6f68a2da475027c539b8fd3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84275422"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85796152"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-python"></a>快速入门：适用于 Python 的 Azure Key Vault 客户端库
 

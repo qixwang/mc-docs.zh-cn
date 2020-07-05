@@ -7,15 +7,15 @@ ms.subservice: imaging
 ms.workload: infrastructure-services
 ms.topic: how-to
 origin.date: 04/23/2020
-ms.date: 05/25/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
 ms.reviewer: akjosh
-ms.openlocfilehash: fafa0d7f4cf9f901a6e95ee098882177e778b3fe
-ms.sourcegitcommit: 981a75a78f8cf74ab5a76f9e6b0dc5978387be4b
+ms.openlocfilehash: e67f27fb4a1a5eeb69b200fe1672c76ffbfb4047
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83801812"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945792"
 ---
 <!--Verified successfully-->
 # <a name="create-a-vm-using-a-specialized-image-version-with-the-azure-cli"></a>使用 Azure CLI 通过专用化映像版本创建 VM
@@ -62,5 +62,4 @@ az vm create --resource-group myResourceGroup \
 - [在共享映像库中创建映像版本](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sig-image-version-create/)
 - [根据映像版本创建 VM](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-sig/)
 
-<!-- Update_Description: new article about vm specialized image version cli -->
-<!--NEW.date: 06/01/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

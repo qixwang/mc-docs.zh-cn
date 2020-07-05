@@ -15,12 +15,12 @@ ms.topic: conceptual
 origin.date: 01/27/2020
 ms.date: 2/6/2020
 ms.author: aschhab
-ms.openlocfilehash: 0973478d48c438ac7fb26b5f7f673101ff8409a1
-ms.sourcegitcommit: a04b0b1009b0c62f2deb7c7acee75a1304d98f87
+ms.openlocfilehash: 00252ba81bd415c99838b714051ffc9da21b1dbd
+ms.sourcegitcommit: 4f84bba7e509a321b6f68a2da475027c539b8fd3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83796720"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85796323"
 ---
 # <a name="azure-service-bus-to-event-grid-integration-overview"></a>Azure 服务总线到事件网格的集成概述
 
@@ -179,6 +179,7 @@ New-AzEVentGridSubscription -EventSubscriptionName "<YOUR EVENT GRID SUBSCRIPTIO
 
 ## <a name="next-steps"></a>后续步骤
 
+* 获取服务总线和事件网格的[示例](service-bus-to-event-grid-integration-example.md)。
 * 详细了解[事件网格](https://docs.azure.cn/event-grid/)。
 * 详细了解 [Azure Functions](https://docs.azure.cn/azure-functions/)。
 * 了解有关[逻辑应用](https://docs.azure.cn/logic-apps/)的详细信息。

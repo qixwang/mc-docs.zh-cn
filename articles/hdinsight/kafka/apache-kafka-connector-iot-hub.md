@@ -11,12 +11,12 @@ ms.workload: big-data
 origin.date: 11/26/2019
 ms.date: 03/02/2020
 ms.author: v-yiso
-ms.openlocfilehash: 42787ecfa14150a49e77c46b41f0b8ac82b0a96c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 0cc74abcdcafe9acf75dd21e6553f57988a44b0a
+ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77563495"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85516724"
 ---
 # <a name="use-apache-kafka-on-hdinsight-with-azure-iot-hub"></a>将 Apache Kafka on HDInsight 与 Azure IoT 中心配合使用
 
@@ -105,7 +105,7 @@ ms.locfileid: "77563495"
 
     复制这些值供稍后使用。 返回的值类似于下文：
 
-    `wn0-kafka.w5ijyohcxt5uvdhhuaz5ra4u5f.ex.internal.cloudapp.net:9092,wn1-kafka.w5ijyohcxt5uvdhhuaz5ra4u5f.ex.internal.cloudapp.net:9092`
+    `wn0-kafka.w5ijyohcxt5uvdhhuaz5ra4u5f.ex.internal.chinacloudapp.cn:9092,wn1-kafka.w5ijyohcxt5uvdhhuaz5ra4u5f.ex.internal.chinacloudapp.cn:9092`
 
 1. 获取 Apache Zookeeper 节点的地址。 群集中有多个 Zookeeper 节点，但只需引用其中的一到两个。 使用以下变量存储变量 `KAFKAZKHOSTS` 中的地址：
 

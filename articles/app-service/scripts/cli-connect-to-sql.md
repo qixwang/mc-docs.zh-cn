@@ -7,15 +7,15 @@ ms.assetid: 7c2efdd0-f553-4038-a77a-e953021b3f77
 ms.devlang: azurecli
 ms.topic: sample
 origin.date: 12/11/2017
-ms.date: 03/30/2020
+ms.date: 06/22/2020
 ms.author: v-tawe
 ms.custom: mvc, seodec18
-ms.openlocfilehash: ccd3352b2f139196253272e3f92cf1262c1f61e3
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: ec930a4873b2d80afcd742371f382c79ae8cddc7
+ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80522111"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85613395"
 ---
 # <a name="connect-an-app-service-app-to-a-sql-database-using-cli"></a>使用 CLI 将应用服务应用连接到 SQL 数据库
 
@@ -78,13 +78,13 @@ az webapp config appsettings set --name $appName --resource-group myResourceGrou
 
 此脚本使用以下命令创建资源组、应用服务应用、SQL 数据库和所有相关资源。 表中的每条命令均链接到特定于命令的文档。
 
-| Command | 说明 |
+| 命令 | 说明 |
 |---|---|
 | [`az group create`](/cli/group?view=azure-cli-latest#az-group-create) | 创建用于存储所有资源的资源组。 |
 | [`az appservice plan create`](/cli/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | 创建应用服务计划。 |
 | [`az webapp create`](/cli/webapp?view=azure-cli-latest#az-webapp-create) | 创建应用服务应用。 |
-| [`az sql server create`](/cli/sql/server?view=azure-cli-latest#az-sql-server-create) | 创建 SQL 数据库服务器。  |
-| [`az sql db create`](/cli/sql/db?view=azure-cli-latest#az-sql-db-create) | 使用 SQL 数据库服务器创建新的数据库。 |
+| [`az sql server create`](/cli/sql/server?view=azure-cli-latest#az-sql-server-create) | 创建服务器。  |
+| [`az sql db create`](/cli/sql/db?view=azure-cli-latest#az-sql-db-create) | 创建新数据库。 |
 | [`az sql db show-connection-string`](/cli/sql/db?view=azure-cli-latest#az-sql-db-show-connection-string) | 生成数据库的连接字符串。 |
 | [`az webapp config appsettings set`](/cli/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) | 创建或更新应用服务应用的应用设置。 应用设置将作为应用的环境变量公开。 |
 

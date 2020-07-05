@@ -9,15 +9,16 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
 origin.date: 02/10/2020
-ms.date: 04/20/2020
+ms.date: 06/19/2020
 ms.author: v-tawe
-zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 23bb8836cb97e8e7a72ee027559fab3b2597e4aa
-ms.sourcegitcommit: 304d3ef3c9e65c3e85977b3afb9985fbc0f908d6
+ms.custom: tracking-python
+zone_pivot_groups: programming-languages-set-two-with-js-go-spx
+ms.openlocfilehash: 3783981d99cc174c4f21ffd965396cd1fa5dcea4
+ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85095903"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85611923"
 ---
 # <a name="quickstart-recognize-speech-from-a-microphone"></a>快速入门：识别来自麦克风的语音
 
@@ -61,6 +62,38 @@ ms.locfileid: "85095903"
 [!INCLUDE [Python Header](../includes/quickstarts/from-microphone/python/header.md)]
 
 [!INCLUDE [python](../includes/quickstarts/from-microphone/python/python.md)]
+
+::: zone-end
+
+::: zone pivot="programmer-tool-spx"
+
+[!INCLUDE [SPX Header](../includes/quickstarts/from-microphone/spx/header.md)]
+
+[!INCLUDE [](../includes/spx-setup.md)]
+
+[!INCLUDE [spx](../includes/quickstarts/from-microphone/spx/spx.md)]
+
+[!INCLUDE [next steps to spx basics](../includes/quickstarts/spx-next-steps.md)]
+
+::: zone-end
+
+::: zone pivot="programming-language-go"
+
+[!INCLUDE [Header](../includes/quickstarts/from-microphone/header.md)]
+
+[!INCLUDE [Go Header](../includes/quickstarts/from-microphone/go/header.md)]
+
+[!INCLUDE [go](../includes/quickstarts/from-microphone/go/go.md)]
+
+::: zone-end
+
+::: zone pivot="programming-language-javascript"
+
+[!INCLUDE [Header](../includes/quickstarts/from-microphone/header.md)]
+
+[!INCLUDE [JavaScript Header](../includes/quickstarts/from-microphone/javascript/header.md)]
+
+[!INCLUDE [javascript](../includes/quickstarts/from-microphone/javascript/javascript.md)]
 
 ::: zone-end
 

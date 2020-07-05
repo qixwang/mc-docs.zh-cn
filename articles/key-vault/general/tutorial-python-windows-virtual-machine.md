@@ -8,15 +8,15 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: tutorial
 origin.date: 05/11/2020
-ms.date: 06/02/2020
+ms.date: 07/01/2020
 ms.author: v-tawe
 ms.custom: mvc
-ms.openlocfilehash: 05dbc74ddd50e77cdb502103a1e546064b906adf
-ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
+ms.openlocfilehash: b1ed663b4c36714f27070b57dac7380e577b9346
+ms.sourcegitcommit: 4f84bba7e509a321b6f68a2da475027c539b8fd3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84275473"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85796269"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-windows-virtual-machine-in-python"></a>教程：将 Azure Key Vault 与通过 Python 编写的 Windows 虚拟机配合使用
 

@@ -8,21 +8,21 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: ''
 origin.date: 04/02/2019
-ms.date: 05/11/2020
+ms.date: 07/06/2020
 ms.author: v-jay
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tag: azure-synapse
-ms.openlocfilehash: bdd7571fb3df530db6eff5080c563f77111a2427
-ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
+ms.openlocfilehash: b4c782f902d51f33aea8e354738bf17cf1915659
+ms.sourcegitcommit: 7ea2d04481512e185a60fa3b0f7b0761e3ed7b59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82198525"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85845738"
 ---
-# <a name="authenticate-to-azure-synapse-analytics"></a>向 Azure Synapse Analytics 进行身份验证
+# <a name="authenticate-to-azure-synapse-analytics"></a>对 Azure Synapse Analytics 进行身份验证
 
-了解如何使用 Azure Active Directory (AAD) 或 SQL Server 身份验证向 Azure Synapse 中的 SQL Analytics 进行身份验证。
+了解如何使用 Azure Active Directory (AAD) 或 SQL Server 身份验证对 Azure Synapse 中的 Synapse SQL 进行身份验证。
 
 若要连接到 SQL 池，必须传入安全凭据进行身份验证。 建立连接时，特定的连接设置已配置为建立查询会话的一部分。  
 
@@ -38,7 +38,7 @@ ms.locfileid: "82198525"
 * 密码
 * 默认数据库（可选）
 
-默认情况下，你的连接连接到 master  数据库而不是用户数据库。 若要连接到用户数据库，可以选择执行以下两项操作之一：
+默认情况下，你的连接连接到 master 数据库而不是用户数据库。 若要连接到用户数据库，可以选择执行以下两项操作之一：
 
 * 在 SSDT、SSMS 或应用程序连接字符串中将您的服务器注册到 SQL Server 对象资源管理器时指定默认数据库。 例如，包含 ODBC 连接的 InitialCatalog 参数。
 * 在 SSDT 中创建会话之前先突出显示用户数据库。
@@ -55,13 +55,13 @@ ms.locfileid: "82198525"
 Azure Active Directory 的优点包括：
 
 * 提供一个 SQL Server 身份验证的替代方法。
-* 帮助阻止用户标识在数据库服务器之间激增。
+* 帮助阻止用户标识在服务器之间激增。
 * 允许在单一位置中轮换密码
 * 使用外部 (Azure AD) 组管理数据库权限。
 * 通过启用集成的 Windows 身份验证和 Azure Active Directory 支持的其他形式的身份验证来消除存储密码。
 * 使用包含的数据库用户在数据库级别对标识进行身份验证。
 * 支持对连接到 SQL 池的应用程序进行基于令牌的身份验证。
-* 支持通过各种工具（包括 [SQL Server Management Studio](../../sql-database/sql-database-ssms-mfa-authentication.md?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 和 [SQL Server Data Tools](https://docs.microsoft.com/sql/ssdt/azure-active-directory?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)）的 Active Directory 通用身份验证进行多重身份验证。
+* 通过对各种工具（包括 [SQL Server Management Studio](../../sql-database/sql-database-ssms-mfa-authentication.md?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 和 [SQL Server Data Tools](https://docs.microsoft.com/sql/ssdt/azure-active-directory?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)）的 Active Directory 通用身份验证支持多重身份验证。
 
 > [!NOTE]
 > Azure Active Directory 仍然相对较新，具有某些限制。 若要确保 Azure Active Directory 适用于环境，请参阅 [Azure AD features and limitations](../../sql-database/sql-database-aad-authentication.md?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#azure-ad-features-and-limitations)（Azure AD 功能和限制），尤其是那些需要额外考虑的内容。
@@ -81,7 +81,7 @@ Azure Active Directory 的优点包括：
 
 ### <a name="find-the-details"></a>查看详细信息
 
-* 配置和使用 Azure Active Directory 身份验证的步骤与适用于 Azure SQL 数据库和 Azure Synapse 中的 SQL Analytics 的步骤几乎完全相同。 请执行[使用 Azure Active Directory 身份验证连接到 SQL 数据库或 SQL 池](../../sql-database/sql-database-aad-authentication.md?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)主题中的详细步骤。
+* 配置和使用 Azure Active Directory 身份验证的步骤与适用于 Azure SQL 数据库和 Azure Synapse 中的 Synapse SQL 的步骤几乎完全相同。 请遵循主题[使用 Azure Active Directory 身份验证连接到 SQL 数据库或 SQL 池](../../sql-database/sql-database-aad-authentication.md?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)中的详细步骤。
 * 创建自定义数据库角色，并向角色添加用户。 然后授予角色具体权限。 有关详细信息，请参阅 [数据库引擎权限入门](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/getting-started-with-database-engine-permissions?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。
 
 ## <a name="next-steps"></a>后续步骤

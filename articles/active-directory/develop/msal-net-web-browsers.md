@@ -1,46 +1,45 @@
 ---
 title: 使用 Web 浏览器 (MSAL.NET) | Azure
 titleSuffix: Microsoft identity platform
-description: 了解将 Xamarin Android 与适用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 配合使用时的具体注意事项。
+description: 了解将 Xamarin Android 与适用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 一起使用时的特定注意事项。
 services: active-directory
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 01/06/2020
+ms.date: 06/30/2020
 ms.author: v-junlch
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30f148b70cb4155f72ce45e4a03ac22366193774
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 2c87f756afdc6f7cc025326758b947fadff0f3c2
+ms.sourcegitcommit: 1008ad28745709e8d666f07a90e02a79dbbe2be5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79291067"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945015"
 ---
 # <a name="using-web-browsers-msalnet"></a>使用 Web 浏览器 (MSAL.NET)
 
-完成交互式身份验证需要使用 Web 浏览器。 默认情况下，MSAL.NET 支持 Xamarin.iOS 和 Xamarin.Android 上的[系统 Web 浏览器](#system-web-browser-on-xamarinios-xamarinandroid)。 但是，也可以根据 [Xamarin.iOS](#choosing-between-embedded-web-browser-or-system-browser-on-xamarinios) 和 [Xamarin.Android](#detecting-the-presence-of-custom-tabs-on-xamarinandroid) 应用中的要求（UX、单一登录 (SSO) 的需求、安全性），[启用嵌入式 Web 浏览器](#enable-embedded-webviews-on-ios-and-android)。 甚至可以根据 Android 中是否存在 Chrome 或支持 Chrome 自定义标签页的浏览器，[动态选择](#detecting-the-presence-of-custom-tabs-on-xamarinandroid)要使用的 Web 浏览器。 MSAL.NET 仅支持 .NET Core 桌面应用程序中的系统浏览器。
+交互式身份验证需要使用 Web 浏览器。 默认情况下，MSAL.NET 支持 Xamarin.iOS 和 Xamarin.Android 上的[系统 Web 浏览器](#system-web-browser-on-xamarinios-xamarinandroid)。 但是，也可以根据 [Xamarin.iOS](#choosing-between-embedded-web-browser-or-system-browser-on-xamarinios) 和 [Xamarin.Android](#detecting-the-presence-of-custom-tabs-on-xamarinandroid) 应用中的要求（UX、单一登录 (SSO) 的需求、安全性），[启用嵌入式 Web 浏览器](#enable-embedded-webviews-on-ios-and-android)。 你甚至还可以根据 Android 中是否有 Chrome 或支持 Chrome 自定义选项卡的浏览器，来[动态选择](#detecting-the-presence-of-custom-tabs-on-xamarinandroid)要使用的 Web 浏览器。 MSAL.NET 仅支持 .NET Core 桌面应用程序中的系统浏览器。
 
 ## <a name="web-browsers-in-msalnet"></a>MSAL.NET 中的 Web 浏览器
 
 ### <a name="interaction-happens-in-a-web-browser"></a>交互在 Web 浏览器中发生
 
-必须知道，在以交互方式获取令牌时，对话框的内容不是由该库提供，而是由 STS（安全令牌服务）提供。 身份验证终结点将发回一些用于控制交互的 HTML 和 JavaScript 内容，这些内容在 Web 浏览器或 Web 控件中呈现。 让 STS 处理 HTML 交互可以带来诸多好处：
+必须知道，在以交互方式获取令牌时，对话框的内容不是由该库提供，而是由 STS（安全令牌服务）提供。 身份验证终结点发回一些 HTML 和 JavaScript，以控制在 Web 浏览器或 Web 控件中呈现的交互。 让 STS 处理 HTML 交互可以带来诸多好处：
 
 - 应用程序和身份验证库永远不会存储密码（如果用户键入了密码）。
 - 可重定向到其他标识提供者（例如，在 Azure AD B2C 中使用工作和学校帐户或社交帐户登录）。
-- 可让 STS 控制条件访问，例如，让用户在身份验证阶段执行多重身份验证 (MFA)（输入 Windows Hello PIN、在手机上接听来电，或者在手机上的身份验证应用中接收验证码）。 如果尚未设置所需的多重身份验证方法，用户可以在同一个对话框中及时设置该方法。  用户输入其手机号码后，系统会引导他们安装身份验证应用程序，然后用户扫描 QR 标记即可添加其帐户。 此服务器驱动的交互方式是一种极佳的体验！
+- 允许 STS 控制条件访问，例如，让用户在身份验证阶段进行[多重身份验证 (MFA)](../authentication/concept-mfa-howitworks.md)（在其手机上或手机上的身份验证应用中输入 Windows Hello PIN 或接听电话）。 如果尚未设置所需的多重身份验证，用户可以在同一对话框中及时设置。  用户输入手机号码后，系统会引导他们安装身份验证应用程序并扫描 QR 标记以添加其帐户。 此服务器驱动的交互方式是一种极佳的体验！
 - 用户密码过期时，可让用户在同一个对话框中更改密码（分别提供旧密码和新密码的字段）。
 - 支持为 Azure AD 租户管理员/应用程序所有者控制的租户或应用程序（映像）设计品牌形象。
-- 可让用户只许可应用程序在身份验证后访问资源/其名称中的范围。
+- 使用户能够在身份验证之后同意让应用程序以其名义访问资源/范围。
 
-### <a name="embedded-vs-system-web-ui"></a>嵌入式 Web UI 与系统 Web UI
+### <a name="embedded-vs-system-web-ui"></a>嵌入式与系统 Web UI
 
-MSAL.NET 是一个多框架库，它包含框架特定的代码用于在 UI 控件中承载浏览器（例如，在 .Net Classic 中，它使用 WinForms；在 Xamarin 中，它使用本机移动控件）。 此控件称为 `embedded` Web UI。 另外，MSAL.NET 还能够启动系统 OS 浏览器。
+MSAL.NET 是一个多框架库，它具有特定于框架的代码，可在 UI 控件中托管浏览器（例如，在 .NET Classic 中，它使用 WinForms；在 Xamarin 中，它使用本机移动控件，等等）。 此控件称为 `embedded` Web UI。 另外，MSAL.NET 还能够启动系统 OS 浏览器。
 
 一般情况下，我们建议使用平台默认设置（通常是系统浏览器）。 系统浏览器能够更好地记住以前登录的用户。 如果需要更改此行为，请使用 `WithUseEmbeddedWebView(bool)`
 
@@ -60,7 +59,7 @@ MSAL.NET 是一个多框架库，它包含框架特定的代码用于在 UI 控�
 
 ## <a name="system-web-browser-on-xamarinios-xamarinandroid"></a>Xamarin.iOS 和 Xamarin.Android 上的系统 Web 浏览器
 
-默认情况下，MSAL.NET 支持 Xamarin.iOS、Xamarin.Android 和 .NET Core 上的系统 Web 浏览器。 用于提供 UI 的所有平台（非 .NET Core），该库会提供一个嵌入了 Web 浏览器控件的对话框。 对于 .NET Desktop 以及 UWP 平台的  WAB，MSAL.NET 还会使用嵌入式 Web 视图。 但是，它默认利用 Xamarin iOS 和 Xamarin Android 应用程序的**系统 Web 浏览器**。 在 iOS 上，它甚至会根据操作系统的版本（iOS12、iOS11 和更低）选择要使用的 Web 视图。
+默认情况下，MSAL.NET 支持 Xamarin.iOS、Xamarin.Android 和 .NET Core 上的系统 Web 浏览器。 对于提供 UI 的所有平台（即，不是 .NET Core），该库提供一个对话框来嵌入 Web 浏览器控件。 对于 .NET Desktop 以及 UWP 平台的  WAB，MSAL.NET 还会使用嵌入式 Web 视图。 但是，它默认利用 Xamarin iOS 和 Xamarin Android 应用程序的**系统 Web 浏览器**。 在 iOS 上，它甚至根据操作系统版本（iOS12、iOS11 和更早版本）选择要使用的 Web 视图。
 
 使用系统浏览器可获得的重要优势是，无需使用中介（公司门户/Authenticator）即可与其他应用程序和 Web 应用程序共享 SSO 状态。 默认情况下，适用于 Xamarin iOS 和 Xamarin Android 平台的 MSAL.NET 中使用了系统浏览器，因为在这些平台上，系统 Web 浏览器会占据整个屏幕，因此用户体验更佳。 系统 Web 视图与对话框并无区别。 但在 iOS 上，用户可能需要许可浏览器回调应用程序，这是一个烦人的操作。
 
@@ -99,8 +98,7 @@ IPublicClientApplication pca = PublicClientApplicationBuilder
 
 ### <a name="linux-and-mac"></a>Linux 和 MAC
 
-在 Linux 上，MSAL.NET 将使用 xdg-open 工具打开默认的 OS 浏览器。 若要进行故障排除，请从终端运行该工具，例如 `xdg-open "https://www.bing.com"`  
-在 Mac 上，可通过调用 `open <url>` 打开浏览器
+在 Linux 上，MSAL.NET 将使用 xdg-open 工具打开默认 OS 浏览器。 若要进行故障排除，请从终端运行该工具，例如 `xdg-open "https://www.bing.com"`。 在 Mac 上，通过调用 `open <url>` 打开该浏览器。
 
 ### <a name="customizing-the-experience"></a>自定义体验
 
@@ -135,15 +133,15 @@ var options = new SystemWebViewOptions()
 
 ### <a name="uwp-doesnt-use-the-system-webview"></a>UWP 不使用系统 Web 视图
 
-但是，对于桌面应用程序，启动系统 Web 视图会导致欠佳的用户体验，因为用户会看到浏览器，而他们可能已在其中打开了其他标签页。 发生身份验证时，用户会看到一个页面，其中要求他们关闭此窗口。 用户可能会一不小心关闭的整个进程（包括与身份验证不相关的其他标签页）。 在桌面上利用系统浏览器还需要打开本地端口并在其上侦听，这可能需要应用程序的高级权限。 开发人员、用户或管理员可能不情愿迎合此要求。
+但是，对于桌面应用程序，启动系统 Web 视图会导致用户体验欠佳，因为用户会看到浏览器，而他们可能已经打开了其他选项卡。 身份验证发生后，用户会获得一个页面，要求他们关闭此窗口。 用户可能会一不小心关闭的整个进程（包括与身份验证不相关的其他标签页）。 如果使用桌面上的系统浏览器，还需要打开本地端口并进行侦听，这可能需要对应用程序具有高级权限。 身为开发人员、用户或管理员的你可能不愿意遵守此要求。
 
 ## <a name="enable-embedded-webviews-on-ios-and-android"></a>在 iOS 和 Android 上启用嵌入式 Web 视图
 
-也可以在 Xamarin.iOS 和 Xamarin.Android 应用中启用嵌入式 Web 视图。 从 MSAL.NET 2.0.0-preview 开始，MSAL.NET 也支持使用**嵌入式** Web 视图选项。 对于 ADAL.NET 而言，嵌入式 Web 视图是唯一支持的选项。
+你还可以在 Xamarin.iOS 和 Xamarin.Android 应用中启用嵌入式 Web 视图。 从 MSAL.NET 2.0.0-preview 开始，MSAL.NET 也支持使用**嵌入式** Web 视图选项。 对于 ADAL.NET 而言，嵌入式 Web 视图是唯一支持的选项。
 
-开发人员在使用面向 Xamarin 的 MSAL.NET 时，可以选择使用嵌入式 Web 视图或系统浏览器。 可以根据用户体验和安全考虑因素做出选择。
+开发人员在使用面向 Xamarin 的 MSAL.NET 时，可以选择使用嵌入式 Web 视图或系统浏览器。 你可以根据要实现的用户体验和要解决的安全问题来进行选择。
 
-目前，MSAL.NET 尚不支持 Android 和 iOS 代理。 MSAL.NET 正在规划支持在嵌入式 Web 浏览器中使用代理。
+目前，MSAL.NET 尚不支持 Android 和 iOS 代理。 因此，如果需要提供单一登录 (SSO)，系统浏览器可能仍是一个更好的选择。 在嵌入式 Web 浏览器中支持代理属于 MSAL.NET 积压工作。
 
 ### <a name="differences-between-embedded-webview-and-system-browser"></a>嵌入式 Web 视图与系统浏览器之间的差异
 MSAL.NET 中嵌入式 Web 视图与系统浏览器之间一些视觉差异。
@@ -189,7 +187,7 @@ MSAL.NET 中嵌入式 Web 视图与系统浏览器之间一些视觉差异。
 App.ParentWindow = null; // no UI parent on iOS
 ```
 
-#### <a name="choosing-between-embedded-web-browser-or-system-browser-on-xamarinandroid"></a>在 Xamarin.Android 上的嵌入式 Web 浏览器与系统浏览器之间进行选择
+#### <a name="choosing-between-embedded-web-browser-or-system-browser-on-xamarinandroid"></a>在 Xamarin.Android 上的嵌入式 Web 浏览器或系统浏览器之间进行选择
 
 在 Android 应用中，可在 `MainActivity.cs` 中设置父活动，以便将身份验证结果返回到其中：
 

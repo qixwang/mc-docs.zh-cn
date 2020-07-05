@@ -1,18 +1,18 @@
 ---
-title: 创建和管理只读副本（Azure 门户）- Azure Database for MySQL
+title: 管理只读副本 - Azure 门户 - Azure Database for MySQL
 description: 了解如何使用 Azure 门户在 Azure Database for MySQL 中设置和管理只读副本。
 author: WenJason
 ms.author: v-jay
 ms.service: mysql
 ms.topic: conceptual
-origin.date: 09/04/2019
-ms.date: 09/30/2019
-ms.openlocfilehash: 8f52e0de0cd4610027168c95d3c07f74300c2be8
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+origin.date: 6/10/2020
+ms.date: 06/29/2020
+ms.openlocfilehash: b8f773766caf70faf1e1fb22eef61bcff48c9aa1
+ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "73142156"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85516638"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-portal"></a>如何使用 Azure 门户在 Azure Database for MySQL 中创建和管理只读副本
 
@@ -21,7 +21,7 @@ ms.locfileid: "73142156"
 
 本文介绍如何使用 Azure 门户在 Azure Database for MySQL 服务中创建和管理只读副本。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - 将用作主服务器的 [Azure Database for MySQL 服务器](quickstart-create-mysql-server-database-using-azure-portal.md)。
 
@@ -30,15 +30,18 @@ ms.locfileid: "73142156"
 
 ## <a name="create-a-read-replica"></a>创建只读副本
 
+> [!IMPORTANT]
+> 如果为没有现有副本的主服务器创建副本，主服务器将首先重启以便为复制准备自身。 请考虑这一点并在非高峰期执行这些操作。
+
 可以使用以下步骤创建只读副本服务器：
 
 1. 登录到 [Azure 门户](https://portal.azure.cn/)。
 
-2. 选择要用作主服务器的现有 Azure Database for MySQL 服务器。 此操作将打开“概述”  页。
+2. 选择要用作主服务器的现有 Azure Database for MySQL 服务器。 此操作将打开“概述”页。
 
 3. 从菜单中的“设置”下，选择“复制”。
 
-4. 选择“添加副本”  。
+4. 选择“添加副本”。
 
    ![Azure Database for MySQL - 复制](./media/howto-read-replica-portal/add-replica.png)
 
@@ -53,12 +56,12 @@ ms.locfileid: "73142156"
    > [!NOTE]
    > 若要详细了解可以在哪些区域中创建副本，请访问[只读副本概念文章](concepts-read-replicas.md)。 
 
-7. 选择“确定”以确认创建该副本。 
+7. 选择“确定”以确认创建副本。
 
 > [!NOTE]
-> 只读副本使用与主服务器相同的服务器配置创建。 副本服务器配置在创建后可以更改。 建议副本服务器的配置应保持在与主服务器相同或更大的值，以确保副本能够跟上主服务器。
+> 只读副本使用与主服务器相同的服务器配置创建。 副本服务器配置在创建后可以更改。 副本服务器始终在与主服务器相同的资源组和订阅中创建。 如果要将副本服务器创建到不同的资源组或不同的订阅，可以在创建后[移动副本服务器](/azure-resource-manager/management/move-resource-group-and-subscription)。 建议副本服务器的配置应保持在与主服务器相同或更大的值，以确保副本能够跟上主服务器。
 
-一旦创建副本服务器，可以从“复制”  边栏选项卡中进行查看。
+一旦创建副本服务器，可以从“复制”边栏选项卡中进行查看。
 
    ![Azure Database for MySQL - 列出副本](./media/howto-read-replica-portal/list-replica.png)
 
@@ -77,11 +80,11 @@ ms.locfileid: "73142156"
 
    ![Azure Database for MySQL - 停止复制选择服务器](./media/howto-read-replica-portal/stop-replication-select.png)
 
-4. 选择“停止复制”  。
+4. 选择“停止复制”。
 
    ![Azure Database for MySQL - 停止复制](./media/howto-read-replica-portal/stop-replication.png)
 
-5. 通过单击“确定”  ，确认要停止复制。
+5. 通过单击“确定”，确认要停止复制。
 
    ![Azure Database for MySQL - 停止复制确认](./media/howto-read-replica-portal/stop-replication-confirm.png)
 
@@ -97,11 +100,11 @@ ms.locfileid: "73142156"
 
    ![Azure Database for MySQL - 删除副本选择服务器](./media/howto-read-replica-portal/delete-replica-select.png)
 
-4. 选择“删除副本” 
+4. 选择“删除副本”
 
    ![Azure Database for MySQL - 删除副本](./media/howto-read-replica-portal/delete-replica.png)
 
-5. 键入副本的名称，然后单击“删除”  以确认删除副本。  
+5. 键入副本的名称，然后单击“删除”以确认删除副本。  
 
    ![Azure Database for MySQL - 删除副本确认](./media/howto-read-replica-portal/delete-replica-confirm.png)
 
@@ -114,11 +117,11 @@ ms.locfileid: "73142156"
 
 1. 在 Azure 门户中，选择主 Azure Database for MySQL 服务器。
 
-2. 从“概览”  中，选择“删除”  。
+2. 从“概览”中，选择“删除”。
 
    ![Azure Database for MySQL - 删除主服务器](./media/howto-read-replica-portal/delete-master-overview.png)
 
-3. 键入主服务器的名称，然后单击“删除”  以确认删除主服务器。  
+3. 键入主服务器的名称，然后单击“删除”以确认删除主服务器。  
 
    ![Azure Database for MySQL - 删除主服务器](./media/howto-read-replica-portal/delete-master-confirm.png)
 
@@ -126,9 +129,9 @@ ms.locfileid: "73142156"
 
 1. 在 [Azure 门户](https://portal.azure.cn/)中，选择要监视的副本 Azure Database for MySQL 服务器。
 
-2. 在边栏的“监视”  部分，选择“指标”  ：
+2. 在边栏的“监视”部分，选择“指标”：
 
-3. 从可用指标的下拉列表中选择“复制延迟(秒)”  。
+3. 从可用指标的下拉列表中选择“复制延迟(秒)”。
 
    ![选择复制延迟时间](./media/howto-read-replica-portal/monitor-select-replication-lag.png)
 

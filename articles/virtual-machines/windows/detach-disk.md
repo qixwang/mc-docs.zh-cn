@@ -1,35 +1,33 @@
 ---
 title: 如何从 Windows 虚拟机分离数据磁盘
 description: 在 Azure 中从使用资源管理器部署模型的虚拟机分离磁盘。
-services: virtual-machines-windows
 author: rockboyfor
-manager: digimobile
 ms.service: virtual-machines-windows
-ms.workload: infrastructure-services
-ms.topic: article
-origin.date: 01/08/2020
-ms.date: 02/10/2020
-ms.author: v-yeche
 ms.subservice: disks
-ms.openlocfilehash: 79a30601566eebee9e07ce5409f373bc28ee27e4
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.workload: infrastructure-services
+ms.topic: how-to
+origin.date: 01/08/2020
+ms.date: 07/06/2020
+ms.author: v-yeche
+ms.openlocfilehash: 3305e91139049d74e05a40bc40f0fe9a12cd1dd9
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77428553"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85946013"
 ---
 # <a name="how-to-detach-a-data-disk-from-a-windows-virtual-machine"></a>如何从 Windows 虚拟机分离数据磁盘
 
-不再需要附加到虚拟机的数据磁盘时，可以轻松地分离它。 这会从虚拟机中删除磁盘，但不会从存储中删除它。
+当不再需要附加到虚拟机的数据磁盘时，可以轻松地分离它。 这会从虚拟机中删除该磁盘，但不会从存储中删除它。
 
 > [!WARNING]
-> 如果分离磁盘，它将不会自动删除。 如果订阅了高级存储，则将继续承担该磁盘的存储费用。 有关详细信息，请参阅[使用高级存储时的定价和计费方式](disks-types.md#billing)。
+> 如果用户分离磁盘，它不会自动删除。 如果用户订阅了高级存储，则将继续承担该磁盘的存储费用。 有关详细信息，请参阅[使用高级存储时的定价和计费方式](disks-types.md#billing)。
 
 如果希望再次使用磁盘上的现有数据，可以将其重新附加到相同的虚拟机或另一个虚拟机。
 
 ## <a name="detach-a-data-disk-using-powershell"></a>使用 PowerShell 分离数据磁盘
 
-可以使用 PowerShell 热  删除数据磁盘，但在从 VM 中分离磁盘之前，请确保没有任何设备正在使用该磁盘。
+可以使用 PowerShell 热删除数据磁盘，但在从 VM 中分离磁盘之前，请确保没有任何设备正在使用该磁盘。
 
 在此示例中，我们从 **myResourceGroup** 资源组的 VM **myVM** 中删除名为 **myDisk** 的磁盘。 首先，使用 [Remove-AzVMDataDisk](https://docs.microsoft.com/powershell/module/az.compute/remove-azvmdatadisk) cmdlet 删除磁盘。 然后，使用 [Update-AzVM](https://docs.microsoft.com/powershell/module/az.compute/update-azvm) cmdlet 更新虚拟机的状态，完成数据磁盘删除过程。
 
@@ -50,19 +48,19 @@ Update-AzVM `
 
 ## <a name="detach-a-data-disk-using-the-portal"></a>使用门户分离数据磁盘
 
-可以热  删除数据磁盘，但在从 VM 中分离该磁盘之前，请确保没有任何设备正在活跃地使用该磁盘。
+可以热删除数据磁盘，但在从 VM 中分离该磁盘之前，请确保没有任何设备正在活跃地使用该磁盘。
 
-1. 在左侧菜单中，选择“虚拟机”  。
+1. 在左侧菜单中，选择“虚拟机”。
 1. 选择具有要分离的数据磁盘的虚拟机。
-1. 在“设置”下，选择“磁盘”   。
-1. 在“磁盘”  窗格的顶部，选择“编辑”  。
-1. 在“磁盘”  窗格中，在要分离的数据磁盘的最右侧，选择“分离”  。
-1. 选择页面顶部的“保存”  以保存更改。
+1. 在“设置”下，选择“磁盘” 。
+1. 在“磁盘”窗格的顶部，选择“编辑”。
+1. 在“磁盘”窗格中，在要分离的数据磁盘的最右侧，选择“分离”。
+1. 选择页面顶部的“保存”以保存更改。
 
 磁盘保留在存储中，但不再附加到虚拟机。
 
 ## <a name="next-steps"></a>后续步骤
 
-如果想要重新使用数据磁盘，只需将它[附加到另一个 VM](attach-managed-disk-portal.md?toc=%2fvirtual-machines%2fwindows%2ftoc.json)
+要重新使用数据磁盘，只需[将其附加到其他 VM](attach-managed-disk-portal.md?toc=%2fvirtual-machines%2fwindows%2ftoc.json) 即可
 
 <!-- Update_Description: update meta properties, wording update, update link -->

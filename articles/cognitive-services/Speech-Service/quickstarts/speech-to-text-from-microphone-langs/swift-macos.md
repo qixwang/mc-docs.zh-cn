@@ -11,12 +11,12 @@ ms.topic: quickstart
 origin.date: 12/23/2019
 ms.date: 01/27/2020
 ms.author: v-tawe
-ms.openlocfilehash: 82d12548f46c8f70dfe1f3394f6f9dd72bb3c926
-ms.sourcegitcommit: 304d3ef3c9e65c3e85977b3afb9985fbc0f908d6
+ms.openlocfilehash: 4b16c535eca5b95afa5a009864999e061352005f
+ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85095899"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85613413"
 ---
 # <a name="quickstart-recognize-speech-in-swift-on-macos-using-the-speech-sdk"></a>快速入门：在 macOS 上使用语音 SDK 通过 Swift 识别语音
 
@@ -30,22 +30,19 @@ ms.locfileid: "85095899"
 
 * 语音服务的[订阅密钥](~/articles/cognitive-services/Speech-Service/get-started.md)。
 * 安装了 [Xcode 9.4.1](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12) 或更高版本以及 [CocoaPods](https://cocoapods.org/) 的 macOS 计算机。
+* 需要语音 SDK 1.11.0 或更高版本。
 
 ## <a name="get-the-speech-sdk-for-macos"></a>获取适用于 macOS 的语音 SDK
 
 [!INCLUDE [License Notice](~/includes/cognitive-services-speech-service-license-notice.md)]
 
-> [!IMPORTANT]
-> 需要语音 SDK 版本 1.11.0 或更高版本。
-
-请注意，本教程不适用于 1.6.0 之前的 SDK 版本。
 
 适用于 macOS 的认知服务语音 SDK 目前以框架捆绑包的形式分发。
 可在 Xcode 项目将它作为 [CocoaPod](https://cocoapods.org/) 使用，或者从 https://aka.ms/csspeech/macosbinary 下载，然后手动与它建立链接。 本指南使用 CocoaPod。
 
 ## <a name="create-an-xcode-project"></a>创建 Xcode 项目
 
-启动 Xcode，然后通过单击“文件” > “新建” > “项目”来启动新项目。**** **** ****
+启动 Xcode，然后通过单击“文件” > “新建” > “项目”来启动新项目。  
 在模板选择对话框中，选择“Cocoa 应用”模板。
 
 在随后的对话框中，进行以下选择：
@@ -79,7 +76,7 @@ ms.locfileid: "85095899"
     
     #endif /* MicrosoftCognitiveServicesSpeech_Bridging_Header_h */
     ```
-1. 在“Objective-C 桥接头文件”** 字段![标头属性](~/articles/cognitive-services/Speech-Service/media/sdk/qs-swift-macos-bridging-header.png)中，将桥接头文件的相对路径 `helloworld/MicrosoftCognitiveServicesSpeech-Bridging-Header.h` 添加到 helloworld 目标的 Swift 项目设置中
+1. 在“Objective-C 桥接头文件”字段![标头属性](~/articles/cognitive-services/Speech-Service/media/sdk/qs-swift-macos-bridging-header.png)中，将桥接头文件的相对路径 `helloworld/MicrosoftCognitiveServicesSpeech-Bridging-Header.h` 添加到 helloworld 目标的 Swift 项目设置中
 1. 通过以下方式替换自动生成的 `AppDelegate.swift` 文件的内容：
 
     ```swift
@@ -184,8 +181,8 @@ ms.locfileid: "85095899"
 ## <a name="build-and-run-the-sample"></a>生成并运行示例
 
 1. 在 Xcode 中打开 `helloworld.xcworkspace` 工作区。
-1. 使调试输出可见（“视图”**** > “调试区域”**** > ****“激活控制台”）。
-1. 在菜单中选择“产品” > “运行”，或者单击“播放”按钮，以生成并运行示例代码。**** **** ****
+1. 使调试输出可见（“视图” > “调试区域” > “激活控制台”）。
+1. 在菜单中选择“产品” > “运行”，或者单击“播放”按钮，以生成并运行示例代码。  
 1. 单击应用中的“识别”按钮并讲几句话后，应会在应用窗口的下部看到讲出的文本。
 
 ## <a name="next-steps"></a>后续步骤

@@ -6,15 +6,15 @@ author: rockboyfor
 ms.service: virtual-machines
 ms.topic: include
 origin.date: 03/24/2020
-ms.date: 06/01/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: ec60ba4d7b079be76284059d78dd36e3c68cb8fa
-ms.sourcegitcommit: 981a75a78f8cf74ab5a76f9e6b0dc5978387be4b
+ms.openlocfilehash: 667df6794286db3961afa695baf7d8990f0496ff
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83801288"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945764"
 ---
 ## <a name="create-an-image-gallery"></a>创建映像库 
 

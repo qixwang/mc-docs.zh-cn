@@ -9,14 +9,15 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: how-to
 origin.date: 04/13/2020
-ms.date: 04/20/2020
+ms.date: 06/19/2020
 ms.author: v-tawe
-ms.openlocfilehash: 0fd660eb8f3ef483f6eb4172f1446c70deead102
-ms.sourcegitcommit: 304d3ef3c9e65c3e85977b3afb9985fbc0f908d6
+ms.custom: tracking-python
+ms.openlocfilehash: 745de0ccd0fe10344998b4e35965f858847be9ac
+ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85095885"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85613337"
 ---
 # <a name="convert-text-to-speech-using-python"></a>使用 Python 将文本转换为语音
 

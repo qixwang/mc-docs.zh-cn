@@ -1,0 +1,36 @@
+### YamlMime:Landing
+title: Azure 顾问文档
+summary: Azure 顾问会扫描 Azure 配置，并提出更改建议，以便优化部署、提高安全性以及节省资金。
+metadata:
+  title: Azure 顾问文档
+  description: Azure 顾问是一种个性化的云顾问，可帮助遵循最佳做法来优化 Azure 部署。 它分析资源配置和使用情况遥测数据。 然后，它推荐解决方案，帮助提高资源的性能、安全性和高可用性，同时寻找机会减少总体 Azure 支出。
+  ms.topic: landing-page
+  author: rboucher
+  ms.author: v-tawe
+  ms.date: 06/28/2020
+  origin.date: 10/16/2019
+  ms.openlocfilehash: 780b320b13574bcb3c465314e60ebf098b433514
+  ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 06/28/2020
+  ms.locfileid: "85516818"
+landingContent:
+- title: 关于 Azure 顾问
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 了解 Azure 顾问
+      url: advisor-overview.md
+- title: 入门
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Azure 顾问入门
+      url: advisor-get-started.md
+- title: 参考
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: 公共语言接口 (CLI)
+      url: /cli/advisor?view=azure-cli-latest

@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 05/27/2020
+ms.date: 06/30/2020
 ms.author: v-junlch
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: 273259edb766c12ffdd94186dad6bbc67317925f
-ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
+ms.openlocfilehash: 2892f7edf6dc5381e99441fa5edea88eef93fcc5
+ms.sourcegitcommit: 1008ad28745709e8d666f07a90e02a79dbbe2be5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84186882"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945231"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>快速入门：向 ASP.NET Core Web 应用添加 Microsoft 登录功能
 本快速入门通过代码示例了解 ASP.NET Core Web 应用如何从任何 Azure Active Directory (Azure AD) 实例登录工作和学校帐户。 （有关说明，请参阅[示例工作原理](#how-the-sample-works)。）
@@ -155,7 +155,7 @@ public void ConfigureServices(IServiceCollection services)
 > 在本快速入门中，设置 `ValidateIssuer = false` 是一种简化操作。 在实际应用程序中，需验证颁发者。
 > 查看示例，了解如何执行该操作。
 >
-> 另请注意 `Configure` 方法，其中包含两个重要方法：`app.UserCookiePolicy()` 和 `app.UseAuthentication()`
+> 另请注意 `Configure` 方法，其中包含两个重要方法：`app.UseCookiePolicy()` 和 `app.UseAuthentication()`
 
 ```csharp
 // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

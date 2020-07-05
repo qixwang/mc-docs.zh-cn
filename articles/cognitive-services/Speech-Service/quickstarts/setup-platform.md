@@ -9,15 +9,16 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
 origin.date: 04/04/2020
-ms.date: 04/20/2020
+ms.date: 06/19/2020
 ms.author: v-tawe
-zone_pivot_groups: programming-languages-set-three
-ms.openlocfilehash: afec3b70110e3d8e1870e4c78f055382928ae501
-ms.sourcegitcommit: 304d3ef3c9e65c3e85977b3afb9985fbc0f908d6
+ms.custom: tracking-python
+zone_pivot_groups: programming-languages-speech-services-one-nomore
+ms.openlocfilehash: 40149e0c9f0da525b057dc61b4fb9d174b470795
+ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85095927"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85613440"
 ---
 # <a name="quickstart-setup-development-environment"></a>快速入门：安装开发环境
 
@@ -89,4 +90,26 @@ ms.locfileid: "85095927"
 
 [!INCLUDE [python](../includes/quickstarts/platform/python.md)]
 
+::: zone-end
+
+::: zone pivot="programming-language-go"
+
+[!INCLUDE [go-linux](../includes/quickstarts/platform/go-linux.md)]
+
+* * *
+::: zone-end
+
+::: zone pivot="programming-language-javascript"
+
+**选择目标环境**
+
+#### <a name="browser-based"></a>[基于浏览器](#tab/browser)
+
+[!INCLUDE [browser](../includes/quickstarts/platform/javascript-browser.md)]
+
+#### <a name="nodejs"></a>[NodeJS](#tab/nodejs)
+
+[!INCLUDE [node](../includes/quickstarts/platform/javascript-node.md)]
+
+* * *
 ::: zone-end

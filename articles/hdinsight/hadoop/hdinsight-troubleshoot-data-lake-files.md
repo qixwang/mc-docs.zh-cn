@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: v-yiso
 origin.date: 08/13/2019
 ms.date: 09/23/2019
-ms.openlocfilehash: 6df0f944e9668855a7f2f9f5efa78ac3b5872101
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: e9e5e5b86d8087c1cdb815684f12c8e90465aa92
+ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "70921383"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85516767"
 ---
 # <a name="unable-to-access-data-lake-storage-files-in-azure-hdinsight"></a>无法访问 Azure HDInsight 中的 Data Lake 存储文件
 
@@ -63,7 +63,7 @@ Token Refresh failed - Received invalid http response: 500
 1. 确认错误消息类似于以下内容：
 
     ```
-    {"stderr": "-ls: Token Refresh failed - Received invalid http response: 500, text = Response{protocol=http/1.1, code=500, message=Internal Server Error, url=http://gw0-abccluster.24ajrd4341lebfgq5unsrzq0ue.fx.internal.cloudapp.net:909/api/oauthtoken}}...
+    {"stderr": "-ls: Token Refresh failed - Received invalid http response: 500, text = Response{protocol=http/1.1, code=500, message=Internal Server Error, url=http://gw0-abccluster.24ajrd4341lebfgq5unsrzq0ue.fx.internal.chinacloudapp.cn:909/api/oauthtoken}}...
     ```
 
 1. 从 `core-site.xml property` - `fs.azure.datalake.token.provider.service.urls` 获取一个URL。
@@ -71,7 +71,7 @@ Token Refresh failed - Received invalid http response: 500
 1. 运行以下 curl 命令检索 OAuth 令牌。
 
     ```
-    curl gw0-abccluster.24ajrd4341lebfgq5unsrzq0ue.fx.internal.cloudapp.net:909/api/oauthtoken
+    curl gw0-abccluster.24ajrd4341lebfgq5unsrzq0ue.fx.internal.chinacloudapp.cn:909/api/oauthtoken
     ```
 
 1. 如果服务主体有效，则输出应如下所示：
@@ -96,7 +96,7 @@ Token Refresh failed - Received invalid http response: 500
 1. 如果尝试从 HDI 群集访问 ADLS 时遇到以下错误： 按上述步骤检查证书是否已过期。
 
     ```
-    Error: java.lang.IllegalArgumentException: Token Refresh failed - Received invalid http response: 500, text = Response{protocol=http/1.1, code=500, message=Internal Server Error, url=http://clustername.hmssomerandomstringc.cx.internal.cloudapp.net:909/api/oauthtoken}
+    Error: java.lang.IllegalArgumentException: Token Refresh failed - Received invalid http response: 500, text = Response{protocol=http/1.1, code=500, message=Internal Server Error, url=http://clustername.hmssomerandomstringc.cx.internal.chinacloudapp.cn:909/api/oauthtoken}
     ```
 
 ### <a name="resolution"></a>解决方法

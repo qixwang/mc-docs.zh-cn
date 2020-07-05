@@ -13,12 +13,12 @@ ms.topic: article
 origin.date: 11/22/2019
 ms.date: 02/24/2020
 ms.author: v-yiso
-ms.openlocfilehash: 20c2daf1e73bc41c111d9eb1f9b29950e22e2b47
-ms.sourcegitcommit: b80d236ce3c706abc25bbaa41b0ccddd896e48fc
+ms.openlocfilehash: 5d0704a34003334e629c7f67da4f7e23e2453656
+ms.sourcegitcommit: 372899a2a21794e631eda1c6a11b4fd5c38751d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81873118"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85852073"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Azure API 管理开发人员门户概述
 
@@ -72,7 +72,7 @@ API 管理内容包括 API、操作、产品和订阅等实体。
 
 本部分解答有关新开发人员门户的一般性常见问题。 有关自承载版本的特定问题，请参阅 [GitHub 存储库的 wiki 部分](https://github.com/Azure/api-management-developer-portal/wiki)。
 
-### <a name="how-can-i-migrate-from-the-preview-version-of-the-portal"></a><a id="preview-to-ga"/> 如何从门户预览版迁移？
+### <a name="how-can-i-migrate-from-the-preview-version-of-the-portal"></a><a id="preview-to-ga"></a> 如何从门户预览版迁移？
 
 你已使用开发人员门户预览版在 API 管理服务中预配了预览内容。 为了提供更好的用户体验，默认内容已在正式版中进行重大修改。 正式版中还包括新的小组件。
 

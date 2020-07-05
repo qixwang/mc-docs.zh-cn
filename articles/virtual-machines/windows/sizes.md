@@ -1,30 +1,23 @@
 ---
 title: Azure 中 Windows 虚拟机的大小
-description: 列出 Azure 中 Windows 虚拟机的不同可用大小。
-services: virtual-machines-windows
-documentationcenter: ''
+description: 列出 Azure 中虚拟机的不同可用大小。
 author: rockboyfor
-manager: digimobile
-editor: ''
-tags: azure-resource-manager,azure-service-management
-ms.assetid: aabf0d30-04eb-4d34-b44a-69f8bfb84f22
-ms.service: virtual-machines-windows
-ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.service: virtual-machines
+ms.topic: conceptual
 ms.workload: infrastructure-services
 origin.date: 02/03/2020
-ms.date: 04/27/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: cb654752878268da2f4dd9103deb3695061c0f53
-ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
+ms.openlocfilehash: 0cd4880b8a21867c8969ff767267574b036a862d
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83392424"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945582"
 ---
 # <a name="sizes-for-windows-virtual-machines-in-azure"></a>Azure 中 Windows 虚拟机的大小
 
-本文介绍可用于运行 Windows 应用和工作负荷的 Azure 虚拟机的可用大小和选项。 此外，还提供在计划使用这些资源时要考虑的部署注意事项。  本文也适用于 [Linux 虚拟机](../linux/sizes.md)。
+本文介绍可用于运行 Windows 应用和工作负荷的 Azure 虚拟机的可用大小和选项。 此外，还提供在计划使用这些资源时要考虑的部署注意事项。  本文适用于 Windows 和 Linux VM。
 
 | 类型 | 大小 | 说明 |
 |------|-------|-------------|
@@ -37,7 +30,7 @@ ms.locfileid: "83392424"
 <!-- Not Available  Easv4, Eav4, Mv2, -->
 <!-- Not Available [Storage optimized](../virtual-machines-windows-sizes-storage.md)        | Lsv2 -->
 <!-- Not Available [GPU](sizes-gpu.md)            | NC, NVv2, ND, NDv2 (Preview), NV, NVv3, NVv4 (Preview)   -->
-<!-- Not Available [High performance compute](sizes-hpc.md) | HB, HC,  H-->
+<!-- Not Available [High performance compute](sizes-hpc.md) | HB, HBv2, HC, H-->
 
 
 - 有关不同大小的定价信息，请参阅[虚拟机定价](https://www.azure.cn/pricing/details/virtual-machines/)。

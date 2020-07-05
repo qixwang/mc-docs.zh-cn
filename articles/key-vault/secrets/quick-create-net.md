@@ -4,16 +4,16 @@ description: 了解如何使用 .NET 客户端库 (v4) 在 Azure 密钥保管库
 author: msmbaldwin
 ms.author: v-tawe
 origin.date: 05/20/2019
-ms.date: 06/02/2020
+ms.date: 07/01/2020
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.openlocfilehash: 262aa993cff3bf0303be28924ffe7b1fcb54cc89
-ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
+ms.openlocfilehash: b81b07ae72e7e9e9960884ece610f0b712f35270
+ms.sourcegitcommit: 4f84bba7e509a321b6f68a2da475027c539b8fd3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84275423"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85796259"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-net-sdk-v4"></a>快速入门：适用于 .NET 的 Azure Key Vault 客户端库 (SDK v4)
 
@@ -206,7 +206,7 @@ using Azure.Security.KeyVault.Secrets;
 
 ### <a name="authenticate-and-create-a-client"></a>进行身份验证并创建客户端
 
-向密钥保管库进行身份验证和创建密钥保管库客户端，依赖于上面[设置环境变量](#set-environmental-variables)步骤中的环境变量。 密钥保管库的名称将扩展为密钥保管库 URI，格式为“https://\<your-key-vault-name\>.vault.azure.cn”。
+向密钥保管库进行身份验证和创建密钥保管库客户端，依赖于上面[设置环境变量](#set-environmental-variables)步骤中的环境变量。 密钥保管库的名称将扩展为密钥保管库 URI，格式为“https://\<your-key-vault-name\>.vault.azure.cn”。 下面的代码使用[“DefaultAzureCredential()”](https://docs.microsoft.com/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet)向密钥保管库进行身份验证，该密钥保管库会读取环境变量来检索访问令牌。 
 
 ```csharp
 string keyVaultName = Environment.GetEnvironmentVariable("KEY_VAULT_NAME");
@@ -275,7 +275,7 @@ az group delete -g "myResourceGroup"
 Remove-AzResourceGroup -Name "myResourceGroup"
 ```
 
-## <a name="sample-code"></a>代码示例
+## <a name="sample-code"></a>示例代码
 
 ```csharp
 using System;

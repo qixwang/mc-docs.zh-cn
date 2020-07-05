@@ -1,31 +1,33 @@
 ---
 title: Azure 计算单元概述 | Azure
 description: Azure 计算单位的概念概述。 ACU 提供了一种在 Azure SKU 中比较 CPU 性能的方法。
-services: virtual-machines
-documentationcenter: ''
 author: rockboyfor
-manager: digimobile
-editor: ''
-tags: azure-resource-manager,azure-service-management
 ms.service: virtual-machines
-ms.devlang: na
+ms.subservice: sizes
 ms.topic: article
 ms.workload: infrastructure-services
 origin.date: 02/03/2020
-ms.date: 04/27/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 9b797c2294cc47a414fd6c7e6937003d99c2803a
-ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
+ms.reviewer: davberg
+ms.openlocfilehash: cf53f52e499fc3d0a001d26d0dea9dc9d48975b3
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83392227"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85946077"
 ---
 <!--Verified successfully-->
 <!--Partical Content from verified-->
 # <a name="azure-compute-unit-acu"></a>Azure 计算单元 (ACU)
 
 Azure 计算单位 (ACU) 这一概念提供一种比较 Azure SKU 的计算 (CPU) 性能的方法。 这有助于轻松确定最有可能满足性能需求的 SKU。 ACU 目前在小型 (Standard_A1) VM 上标准为 100，而所有其他 SKU 表示 SKU 在运行标准基准测试时大约可以有多快。
+
+*ACU 使用 Intel® Turbo 技术来增加 CPU 频率和提升性能。  性能提升程度可能因 VM 大小、工作负荷和同一主机上运行的其他工作负荷而有所不同。
+
+**ACU 使用 AMD® Boost 技术来增加 CPU 频率和提升性能。  性能提升程度可能因 VM 大小、工作负荷和同一主机上运行的其他工作负荷而有所不同。
+
+***超线程，能够运行嵌套虚拟化
 
 > [!IMPORTANT]
 > ACU 只是一种规则。 工作负荷的结果可能会有所不同。
@@ -60,10 +62,6 @@ Azure 计算单位 (ACU) 这一概念提供一种比较 Azure SKU 的计算 (CPU
 <!-- Not Available  [HC] -->
 <!-- Not Available  [L4s - L32s]  -->
 <!-- Not Available  [L8s_v2 - L80s_v2]  -->
-
-*ACU 使用 Intel® Turbo 技术来增加 CPU 频率和提升性能。  性能提升程度可能因 VM 大小、工作负荷和同一主机上运行的其他工作负荷而有所不同。
-**ACU 使用 AMD® Boost 技术来增加 CPU 频率和提升性能。  性能提升程度可能因 VM 大小、工作负荷和同一主机上运行的其他工作负荷而有所不同。
-***超线程，能够运行嵌套虚拟化
 
 有关各种大小的详细信息，请访问以下链接：
 

@@ -17,6 +17,12 @@
 - name: 概念
   expanded: true
   items:
+    - name: 安全性
+      items:
+        - name: 保护远程辅助角色
+          href: concept-secure-remote-workers.md
+        - name: 连续访问评估
+          href: concept-fundamentals-continuous-access-evaluation.md
     - name: 组和用户
       items:
         - name: 组和访问管理
@@ -44,6 +50,8 @@
           href: active-directory-get-started-premium.md
         - name: 添加自定义域名
           href: add-custom-domain.md
+        - name: 配置“保持登录状态?”
+          href: keep-me-signed-in.md
         - name: 关联 Azure 订阅
           href: active-directory-how-subscriptions-associated-directory.md
         - name: 添加隐私信息
@@ -62,13 +70,15 @@
           href: active-directory-groups-settings-azure-portal.md
         - name: 添加或删除组所有者
           href: active-directory-accessmanagement-managing-group-owners.md
+        - name: 使用组管理对资源的访问
+          href: active-directory-manage-groups.md
     - name: 用户
       items:
         - name: 添加或删除新用户
           href: add-users-azure-active-directory.md
         - name: 添加或更改用户配置文件信息
           href: active-directory-users-profile-azure-portal.md
-        - name: 重置用户的密码
+        - name: 重置用户密码
           href: active-directory-users-reset-password-azure-portal.md
         - name: 向用户分配角色
           href: active-directory-users-assign-role-azure-portal.md
@@ -76,7 +86,7 @@
           href: license-users-groups.md
         - name: 还原已删除的用户
           href: active-directory-users-restore.md
-- name: 资源
+- name: 疑难解答
   expanded: true
   items:
     - name: 获取对 Azure Active Directory 的支持

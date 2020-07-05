@@ -1,40 +1,41 @@
 ---
 title: 使用 PowerShell 配置 v2 自定义规则
 titleSuffix: Azure Web Application Firewall
-description: 了解如何使用 Azure PowerShell 配置 WAF v2 自定义规则。 可以为通过防火墙传递的每个请求创建自己的评估规则。
+description: 了解如何使用 Azure PowerShell 配置 Web 应用程序防火墙 (WAF) v2 自定义规则。 可以为通过防火墙传递的每个请求创建自己的评估规则。
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: article
-ms.date: 03/02/2020
+ms.date: 06/24/2020
 ms.author: v-junlch
-ms.openlocfilehash: 994f3be59bbd1ae6883cc20337e88e0c119a49d4
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 0ddb83209b7ab584bc62a60e16b4bd61c5752cd2
+ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78266098"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85516676"
 ---
 # <a name="configure-web-application-firewall-v2-on-application-gateway-with-a-custom-rule-using-azure-powershell"></a>通过 Azure PowerShell 在应用程序网关上使用自定义规则配置 Web 应用程序防火墙 v2
 
 <!--- If you make any changes to the PowerShell in this article, also make the change in the corresponding Sample file: azure-docs-powershell-samples/application-gateway/waf-rules/waf-custom-rules.ps1 --->
 
-自定义规则允许你创建自己的规则，对通过 Web 应用程序防火墙 (WAF) v2 进行传递的每个请求进行评估。 这些规则的优先级高于托管规则集中的其余规则。 自定义规则具有一个操作（允许或阻止）、一个匹配条件和一个运算符以允许完全自定义。
+使用自定义规则，可为通过 Web 应用程序防火墙 (WAF) v2 传递的每个请求创建自己的规则。 这些规则的优先级高于托管规则集中的其余规则。 自定义规则具有一个操作（允许或阻止）、一个匹配条件和一个运算符以允许完全自定义。
 
 本文创建使用自定义规则的应用程序网关 WAF v2。 如果请求标头包含用户代理 *evilbot*，该自定义规则会阻止流量。
 
 若要查看更多自定义规则示例，请参阅[创建和使用自定义 Web 应用程序防火墙规则](create-custom-waf-rules.md)
 
-## <a name="prerequisites"></a>必备条件
+
+## <a name="prerequisites"></a>先决条件
 
 ### <a name="azure-powershell-module"></a>Azure PowerShell 模块
 
 如果选择在本地安装并使用 Azure PowerShell，则此脚本需要安装 Azure PowerShell 模块 2.1.0 或更高版本。
 
-1. 要查找版本，请运行 `Get-Module -ListAvailable Az`。 如果需要升级，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)。
+1. 若要查找版本，请运行 `Get-Module -ListAvailable Az`。 如果需要进行升级，请参阅 [Install Azure PowerShell module](https://docs.microsoft.com/powershell/azure/install-az-ps)（安装 Azure PowerShell 模块）。
 2. 若要创建与 Azure 的连接，请运行 `Connect-AzAccount -Environment AzureChinaCloud`。
 
-如果没有 Azure 订阅，可在开始前创建一个 [试用帐户](https://www.azure.cn/pricing/1rmb-trial) 。
+如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 
 ## <a name="example-script"></a>示例脚本
 
@@ -43,7 +44,7 @@ ms.locfileid: "78266098"
 ```azurepowershell
 $rgname = "CustomRulesTest"
 
-$location = "China North"
+$location = "China North 2"
 
 $appgwName = "WAFCustomRules"
 ```
@@ -82,12 +83,12 @@ $gipconfig = New-AzApplicationGatewayIPConfiguration -Name "AppGwIpConfig" -Subn
 $fipconfig01 = New-AzApplicationGatewayFrontendIPConfig -Name "fipconfig" -PublicIPAddress $publicip
 
 $pool = New-AzApplicationGatewayBackendAddressPool -Name "pool1" `
-  -BackendIPAddresses testbackend1.chinanorth.chinacloudapp.cn, testbackend2.chinanorth.chinacloudapp.cn
+  -BackendIPAddresses testbackend1.chinanorth2.chinacloudapp.cn, testbackend2.chinanorth2.chinacloudapp.cn
 
 $fp01 = New-AzApplicationGatewayFrontendPort -Name "port1" -Port 80
 ```
 
-### <a name="create-a-listener-http-setting-rule-and-autoscale"></a>创建侦听器、http 设置、规则和自动缩放
+### <a name="create-a-listener-http-setting-rule-and-autoscale"></a>创建侦听器、HTTP 设置、规则和自动缩放
 
 ```azurepowershell
 $listener01 = New-AzApplicationGatewayHttpListener -Name "listener1" -Protocol Http `
@@ -136,8 +137,20 @@ $appgw = New-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname `
   -FirewallPolicy $wafPolicy
 ```
 
+## <a name="update-your-waf"></a>更新 WAF
+
+创建 WAF 后，可以使用类似于以下代码的程序对其进行更新：
+
+```azurepowershell
+# Get the existing policy
+$policy = Get-AzApplicationGatewayFirewallPolicy -Name $policyName -ResourceGroupName $RGname
+# Add an existing rule named $rule
+$policy.CustomRules.Add($rule)
+# Update the policy
+Set-AzApplicationGatewayFirewallPolicy -InputObject $policy
+```
+
 ## <a name="next-steps"></a>后续步骤
 
 [详细了解应用程序网关上的 Web 应用程序防火墙](ag-overview.md)
 
-<!-- Update_Description: code update -->

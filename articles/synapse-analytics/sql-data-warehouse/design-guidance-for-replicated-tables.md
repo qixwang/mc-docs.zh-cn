@@ -1,6 +1,6 @@
 ---
-title: 复制表的设计指南
-description: 有关在 Synapse SQL 中设计复制表的建议
+title: 复制表设计指南
+description: 有关在 Synapse SQL 池中设计复制表的建议
 services: synapse-analytics
 author: WenJason
 manager: digimobile
@@ -8,40 +8,40 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: ''
 origin.date: 03/19/2019
-ms.date: 05/11/2020
+ms.date: 07/06/2020
 ms.author: v-jay
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 07e9a994234171c83f31fec268a548524173ce5d
-ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
+ms.openlocfilehash: 97f6994bf94d04bc1d512563640030e4dd88d7d6
+ms.sourcegitcommit: 7ea2d04481512e185a60fa3b0f7b0761e3ed7b59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82198652"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85845827"
 ---
-# <a name="design-guidance-for-using-replicated-tables-in-sql-analytics"></a>有关在 SQL Analytics 中使用复制表的设计指南
+# <a name="design-guidance-for-using-replicated-tables-in-synapse-sql-pool"></a>有关在 Synapse SQL 池中使用复制表的设计指南
 
-本文提供了有关如何在 SQL Analytics 架构中设计复制表的建议。 可以使用这些建议通过减少数据移动和降低查询复杂性来提高查询性能。
+本文提供了有关在 Synapse SQL 池架构中设计复制表的建议。 可以使用这些建议通过减少数据移动和降低查询复杂性来提高查询性能。
 
 ## <a name="prerequisites"></a>先决条件
 
-本文假定你熟悉 SQL Analytics 中的数据分发和数据移动概念。  有关详细信息，请参阅[体系结构](massively-parallel-processing-mpp-architecture.md)一文。
+本文假设读者熟悉 SQL 池中的数据分布和数据移动概念。  有关详细信息，请参阅[体系结构](massively-parallel-processing-mpp-architecture.md)一文。
 
 作为表设计的一部分，请尽可能多地去了解你的数据及其查询方式。  例如，请考虑以下问题：
 
 - 表有多大？
 - 表的刷新频率是多少？
-- 我在 SQL Analytics 数据库中是否有事实数据表和维度表？
+- SQL 池数据库中是否包含事实数据表和维度表？
 
 ## <a name="what-is-a-replicated-table"></a>什么是复制的表？
 
 复制的表具有可在每个计算节点上访问的完整表副本。 复制表后，在执行联接或聚合前将无需在计算节点之间传输数据。 由于表具有多个副本，因此当表压缩后的大小小于 2 GB 时，复制的表性能最佳。  2 GB 不是硬性限制。  如果数据为静态数据，不会更改，则可复制更大的表。
 
-下图显示了可在每个计算节点上访问的复制表。 在 SQL Analytics 中，复制表会完整复制到每个计算节点上的分发数据库。
+下图显示了可在每个计算节点上访问的复制表。 在 SQL 池中，复制表完整复制到每个计算节点上的分发数据库。
 
 ![复制表](./media/design-guidance-for-replicated-tables/replicated-table.png "复制表")  
 
-复制的表比较适合星型架构中的维度表。 维度表通常联接到事实数据表，后者的分发不同于维度表。  通常情况下，维度的大小让存储并维护多个副本变得可行。 维度存储着不常更改的描述性数据，例如，客户名称和地址以及产品详细信息。 该数据的缓变本性使复制的表不会经历太多的维护。
+复制表非常适合星型架构中的维度表。 维度表通常联接到事实数据表，后者的分发不同于维度表。  通常情况下，维度的大小让存储并维护多个副本变得可行。 维度存储着不常更改的描述性数据，例如，客户名称和地址以及产品详细信息。 该数据的缓变本性使复制的表不会经历太多的维护。
 
 在下列情况下，请考虑使用复制的表：
 
@@ -51,8 +51,8 @@ ms.locfileid: "82198652"
 在下列情况下，复制的表可能不会产生最佳查询性能：
 
 - 表具有频繁的插入、更新和删除操作。 这些数据操作语言 (DML) 操作要求重新生成复制表。 频繁地重新生成会导致性能降低。
-- SQL Analytics 数据库会频繁地缩放。 缩放 SQL Analytics 数据库会更改计算节点的数目，这会重新生成复制表。
-- 表具有大量列，但数据操作通常仅访问少量的列。 在这种情况下，与复制整个表相比，将表分发，然后对经常访问的列创建索引可能更为高效。 当查询需要进行数据移动时，SQL Analytics 仅移动所请求列中的数据。
+- SQL 池数据库会频繁缩放。 缩放 SQL 池数据库会更改计算节点数，这会重新生成复制表。
+- 表具有大量列，但数据操作通常仅访问少量的列。 在这种情况下，与复制整个表相比，将表分发，然后对经常访问的列创建索引可能更为高效。 当查询需要进行数据移动时，SQL 池仅移动所请求列中的数据。
 
 ## <a name="use-replicated-tables-with-simple-query-predicates"></a>将复制的表与简单的查询谓词一起使用
 
@@ -123,7 +123,7 @@ WHERE d.FiscalYear = 2004
 
 ## <a name="performance-considerations-for-modifying-replicated-tables"></a>修改复制的表时的性能注意事项
 
-SQL Analytics 通过维护表的主版本来实现复制表。 它将主版本复制到每个计算节点上的第一个分发数据库。 发生更改时，SQL Analytics 首先更新主版本，然后在每个计算节点上重新生成表。 重新生成复制表包括将表复制到每个计算节点，然后生成索引。  例如，DW2000c 上的复制表有 5 个数据副本。  每个计算节点上均存在主控副本和完整副本。  所有数据均存储在分发数据库中。 SQL Analytics 使用此模型来支持更快的数据修改语句和灵活的缩放操作。
+SQL 池通过维护表的主版本来实现复制表。 它将主版本复制到每个计算节点上的第一个分发数据库。 发生更改时，会先更新主版本，然后重新生成每个计算节点上的表。 重新生成复制表包括将表复制到每个计算节点，然后生成索引。  例如，DW2000c 上的复制表有 5 个数据副本。  每个计算节点上均存在主控副本和完整副本。  所有数据均存储在分发数据库中。 SQL 池使用此模型来支持更快的数据修改语句和灵活的缩放操作。
 
 发生下列情况后，需要重新生成：
 
@@ -140,7 +140,7 @@ SQL Analytics 通过维护表的主版本来实现复制表。 它将主版本�
 
 ### <a name="use-indexes-conservatively"></a>谨慎使用索引
 
-标准索引做法适用于复制的表。 在重新生成过程中，SQL Analytics 会重新生成每个复制表索引。 只有当提升性能比重新生成索引的成本更重要时，才应使用索引。
+标准索引做法适用于复制的表。 SQL 池在重新生成的过程中重新生成每个复制表索引。 只有当提升性能比重新生成索引的成本更重要时，才应使用索引。
 
 ### <a name="batch-data-load"></a>批量数据加载
 
@@ -192,7 +192,7 @@ SELECT TOP 1 * FROM [ReplicatedTable]
 
 若要创建复制的表，请使用下列语句之一：
 
-- [CREATE TABLE (SQL Analytics)](https://docs.microsoft.com/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [CREATE TABLE AS SELECT (SQL Analytics)](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [CREATE TABLE（SQL 池）](https://docs.microsoft.com/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [CREATE TABLE AS SELECT（SQL 池）](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
 有关分布式表的概述，请参阅[分布式表](sql-data-warehouse-tables-distribute.md)。

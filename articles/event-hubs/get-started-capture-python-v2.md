@@ -11,14 +11,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
 origin.date: 01/30/2020
-ms.date: 05/29/2020
+ms.date: 07/01/2020
 ms.author: v-tawe
-ms.openlocfilehash: 075aa43fd607b2197fb0461c847b8425c8b74c1f
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+ms.custom: tracking-python
+ms.openlocfilehash: 0165746dca3719dd7d391f3d5772b020238222ed
+ms.sourcegitcommit: 4f84bba7e509a321b6f68a2da475027c539b8fd3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84199765"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85796310"
 ---
 # <a name="capture-event-hubs-data-in-azure-storage-and-read-it-by-using-python-azure-eventhub-version-5"></a>使用 Python 在 Azure 存储中捕获事件中心数据并读取该数据（azure-eventhub 版本 5）
 

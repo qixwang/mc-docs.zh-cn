@@ -2,17 +2,17 @@
 title: 监视警报和报告常见问题解答
 description: 本文介绍有关 Azure 备份监视警报和 Azure 备份报告的常见问题解答。
 ms.reviewer: srinathv
-author: lingliw
+author: Johnnytechn
 ms.topic: conceptual
 origin.date: 07/08/2019
-ms.date: 03/06/2020
-ms.author: v-lingwu
-ms.openlocfilehash: 64fde6064ca127374852ab4d3f9aad38c6170624
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 06/29/2020
+ms.author: v-johya
+ms.openlocfilehash: f50588560225c76c7249d0c42b3d393ea7e3d1f9
+ms.sourcegitcommit: 372899a2a21794e631eda1c6a11b4fd5c38751d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78850263"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851978"
 ---
 # <a name="azure-backup-monitoring-alert---faq"></a>Azure 备份监视警报 - 常见问题解答
 
@@ -22,7 +22,7 @@ ms.locfileid: "78850263"
 
 ### <a name="how-do-i-check-if-reporting-data-has-started-flowing-into-a-log-analytics-la-workspace"></a>如何确定报告数据是否已开始流向 Log Analytics (LA) 工作区？
 
-导航到已配置的 LA 工作区，导航到“日志”  菜单项，然后运行查询 CoreAzureBackup | 选择 1。 如果看到返回了记录，则表示数据已开始流入工作区。 初始数据推送可能需要长达 24 小时。
+导航到已配置的 LA 工作区，导航到“日志”菜单项，然后运行查询 CoreAzureBackup | 选择 1。 如果看到返回了记录，则表示数据已开始流入工作区。 初始数据推送可能需要长达 24 小时。
 
 ### <a name="what-is-the-frequency-of-data-push-to-an-la-workspace"></a>向 LA 工作区推送数据的频率是怎样的？
 
@@ -46,7 +46,6 @@ ms.locfileid: "78850263"
 ### <a name="can-i-view-reports-across-vaults-and-subscriptions"></a>能否跨保管库和订阅查看报表？
 
 能，你可以跨保管库、订阅以及区域查看报告。 你的数据可能驻留在单个 LA 工作区或一组 LA 工作区中。
-能，可以跨各种保管库配置同一存储帐户，以便跨保管库查看报表。 此外，还可以跨订阅为保管库配置同一存储帐户。 然后，可以在连接到 Power BI 中的 Azure 备份内容包时使用此存储帐户来查看报表。 所选存储帐户必须位于与恢复服务保管库相同的区域。
 
 ### <a name="how-long-does-it-take-for-the-azure-backup-agent-job-status-to-reflect-in-the-portal"></a>多长时间后，门户中会反映 Azure 备份代理作业状态？
 
@@ -86,4 +85,6 @@ Azure 备份失败后，会在 20 分钟内引发警报。
 
 阅读其他常见问题：
 
-- 有关 Azure VM 备份的[常见问题](backup-azure-vm-backup-faq.md)。
+* 有关 Azure VM 备份的[常见问题](backup-azure-vm-backup-faq.md)。
+* 有关 Azure 备份代理的[常见问题](backup-azure-file-folder-backup-faq.md)
+

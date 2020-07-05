@@ -3,17 +3,17 @@ title: 更新托管磁盘的存储类型
 description: 如何使用 Azure PowerShell 将 Azure 托管磁盘从标准类型转换为高级类型，或者从高级类型转换为标准类型。
 author: rockboyfor
 ms.service: virtual-machines-windows
-ms.topic: conceptual
+ms.topic: how-to
 origin.date: 02/22/2019
-ms.date: 02/10/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
 ms.subservice: disks
-ms.openlocfilehash: 0030effc3e1c758e90528a63ad9979c3ab59d471
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 42e9a9797dd9c3f39c097dafeb30c5d2a977221f
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77428894"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85946024"
 ---
 # <a name="update-the-storage-type-of-a-managed-disk"></a>更新托管磁盘的存储类型
 
@@ -21,12 +21,13 @@ Azure 托管磁盘有三种磁盘类型：高级 SSD、标准 SSD 和标准 HDD�
 
 非托管磁盘不支持此功能。 但是，可以轻松[将非托管磁盘转换为托管磁盘](convert-unmanaged-to-managed-disks.md)，然后即可切换磁盘类型。
 
+<!--GA on Q3 2020 China East 2-->
 <!--Not Available on Azure ultra SSDs (preview)-->
 <!--Not Available on You are not yet able to switch from or to an ultra SSD, you must deploy a new one.-->
 
 [!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 由于转换需要重启虚拟机 (VM)，因此请在预先存在的维护时段内计划磁盘存储迁移。
 * 对于非托管磁盘，请先[将其转换为托管磁盘](convert-unmanaged-to-managed-disks.md)，以便可以在存储选项之间切换。
@@ -120,16 +121,16 @@ Start-AzVM -ResourceGroupName $vm.ResourceGroupName -Name $vm.Name
 
 ## <a name="convert-managed-disks-from-standard-to-premium-in-the-azure-portal"></a>在 Azure 门户中将托管磁盘从标准类型转换为高级类型
 
-执行以下步骤:
+执行以下步骤：
 
-1. 登录 [Azure 门户](https://portal.azure.cn)。
-2. 在门户上的“虚拟机”列表中选择 VM。 
-3. 如果该 VM 未停止，请在 VM“概述”窗格的顶部选择“停止”，然后等待该 VM 停止。  
-3. 在 VM 对应的窗格中，从菜单中选择“磁盘”  。
+1. 登录到 [Azure 门户](https://portal.azure.cn)。
+2. 在门户上的“虚拟机”列表中选择 VM。
+3. 如果该 VM 未停止，请在 VM“概述”窗格的顶部选择“停止”，然后等待该 VM 停止。 
+3. 在 VM 对应的窗格中，从菜单中选择“磁盘”。
 4. 选择要转换的磁盘。
-5. 在菜单中选择“配置”  。
-6. 将“帐户类型”从“标准 HDD”更改为“高级 SSD”。   
-7. 单击“保存”并关闭磁盘窗格。 
+5. 在菜单中选择“配置”。
+6. 将“帐户类型”从“标准 HDD”更改为“高级 SSD”。  
+7. 单击“保存”并关闭磁盘窗格。
 
 磁盘类型转换会瞬间完成。 可以在转换后启动 VM。
 
@@ -168,4 +169,4 @@ Start-AzVM -ResourceGroupName $vm.ResourceGroupName -Name $vm.Name
 
 使用[快照](snapshot-copy-managed-disk.md)创建 VM 的只读副本。
 
-<!--Update_Description: update meta properties, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

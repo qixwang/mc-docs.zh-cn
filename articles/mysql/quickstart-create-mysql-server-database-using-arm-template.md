@@ -1,24 +1,23 @@
 ---
 title: 使用 ARM 模板创建 Azure DB for MySQL
 description: 本文介绍了如何使用 Azure 资源管理器模板创建集成了虚拟网络的 Azure Database for MySQL 服务器。
-services: azure-resource-manager
 author: WenJason
 ms.service: mysql
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: v-jay
-origin.date: 04/27/2020
-ms.date: 06/01/2020
-ms.openlocfilehash: c9587d47ea6f54a3ed1565ea07bcec0e6bb7ea5c
-ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
+origin.date: 05/19/2020
+ms.date: 06/29/2020
+ms.openlocfilehash: 464a3a8ce6137799934d242fc03b72fc3ac89dd5
+ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84723279"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85516639"
 ---
-# <a name="quickstart-create-an-azure-database-for-mysql-server-by-using-the-arm-template"></a>快速入门：使用 ARM 模板创建 Azure Database for MySQL 服务器
+# <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-mysql-server"></a>快速入门：使用 ARM 模板创建 Azure Database for MySQL 服务器
 
-Azure Database for MySQL 是一种托管服务，可用于在云中运行、管理和缩放具有高可用性的 MySQL 数据库。 本快速入门介绍了如何使用预定义的 Azure 资源管理器 (ARM) 模板创建集成了虚拟网络的 Azure Database for MySQL 服务器。 可以使用 Azure 门户、Azure CLI 或 Azure PowerShell 创建该服务器。
+Azure Database for MySQL 是一种托管服务，可用于在云中运行、管理和缩放具有高可用性的 MySQL 数据库。 本快速入门介绍了如何使用 ARM 模板创建集成了虚拟网络的 Azure Database for MySQL 服务器。 可通过 Azure 门户、Azure CLI 或 Azure PowerShell 创建该服务器。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -46,7 +45,7 @@ Azure Database for MySQL 是一种托管服务，可用于在云中运行、管�
 
 ### <a name="review-the-template"></a>查看模板
 
-本快速入门中使用的模板来自 [Azure 快速入门模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-managed-mysql-with-vnet/)。
+本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/101-managed-mysql-with-vnet/)。
 
 ```JSON
 {

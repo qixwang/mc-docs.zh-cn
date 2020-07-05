@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 04/22/2020
+ms.date: 06/30/2020
 ms.author: v-junlch
 ms.custom: aaddev
-ms.openlocfilehash: 6b6f1b4bb68b5e8ee6f4d70104336b36abdd451e
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.openlocfilehash: 802c5ac98a6542a543ca2a6ab25661782fe53acd
+ms.sourcegitcommit: 1008ad28745709e8d666f07a90e02a79dbbe2be5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82126452"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945108"
 ---
 # <a name="protected-web-api-verify-scopes-and-app-roles"></a>受保护的 Web API：验证范围和应用角色
 
@@ -149,7 +149,7 @@ private void ValidateAppRole(string appRole)
 }
 ```
 
-这一次的代码片段适用于 ASP.NET。 对于 ASP.NET Core，只需将 `ClaimsPrincipal.Current` 替换为 `HttpContext.User`，并将声明名称 `"roles"` 替换为 `"http://schemas.microsoft.com/identity/claims/roles"`。 另请参阅本文上文中的代码片段。
+这一次的代码片段适用于 ASP.NET。 对于 ASP.NET Core，只需将 `ClaimsPrincipal.Current` 替换为 `HttpContext.User`，并将声明名称 `"roles"` 替换为 `"http://schemas.microsoft.com/ws/2008/06/identity/claims/role"`。 另请参阅本文上文中的代码片段。
 
 ### <a name="accepting-app-only-tokens-if-the-web-api-should-be-called-only-by-daemon-apps"></a>当 Web API 只能由守护程序应用调用时接受仅限应用的令牌
 

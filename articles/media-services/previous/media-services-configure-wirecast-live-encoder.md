@@ -16,12 +16,12 @@ origin.date: 03/14/2019
 ms.date: 06/08/2020
 ms.author: v-jay
 ms.reviewer: cenkdin;anilmur
-ms.openlocfilehash: 115f08a9ba7641f87b979a1e1d30c2efa3acba76
-ms.sourcegitcommit: 79c99a9ea013b3c74706a1038a505f4eea2aaac4
+ms.openlocfilehash: 32804655d5ef93bc2f083e60085b0037b2a01432
+ms.sourcegitcommit: 7ea2d04481512e185a60fa3b0f7b0761e3ed7b59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84439533"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85845752"
 ---
 # <a name="use-the-wirecast-encoder-to-send-a-single-bitrate-live-stream"></a>使用 Wirecast 编码器发送单比特率实时流 
 > [!div class="op_single_selector"]
@@ -71,7 +71,7 @@ ms.locfileid: "84439533"
 >
 >
 
-## <a name="configure-the-telestream-wirecast-encoder"></a><a id="configure_wirecast_rtmp" />配置 Telestream Wirecast 编码器
+## <a name="configure-the-telestream-wirecast-encoder"></a><a id="configure_wirecast_rtmp"></a>配置 Telestream Wirecast 编码器
 在本教程中，将使用以下输出设置。 本部分的其余内容介绍更详细的配置步骤。
 
 **视频**：

@@ -9,14 +9,14 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: tutorial
 origin.date: 08/12/2019
-ms.date: 06/02/2020
+ms.date: 07/01/2020
 ms.author: v-tawe
-ms.openlocfilehash: 003cfdd66266b137b84225ce9cede7d1d52c3cb1
-ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
+ms.openlocfilehash: b0c343fa44b58fa832ec049204db87de1da333f5
+ms.sourcegitcommit: 4f84bba7e509a321b6f68a2da475027c539b8fd3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84275559"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85796175"
 ---
 # <a name="access-azure-key-vault-behind-a-firewall"></a>访问防火墙后面的 Azure Key Vault
 
@@ -38,17 +38,19 @@ ms.locfileid: "84275559"
 
 密钥保管库客户端应用程序需要访问 Azure Active Directory 终结点进行身份验证。 使用的终结点取决于 Azure AD 租户配置、主体类型（用户主体或服务主体）以及帐户类型（如 Microsoft 帐户或者工作或学校帐户）。  
 
+<!-- no need to change -->
 | 主体类型 | 终结点：端口 |
 | --- | --- |
 | 使用 Microsoft 帐户的用户<br> （例如：user@hotmail.com） |**Azure China：**<br> login.chinacloudapi.cn:443<br><br> and <br>login.live.com:443 |
 | 使用 Azure AD 的工作或学校帐户的用户或服务主体（如 user@contoso.com） |**Azure China：**<br> login.chinacloudapi.cn:443<br><br> |
 
-还有其他可能的复杂情况。 有关其他信息，请参阅 [Azure Active Directory 身份验证流](/active-directory/develop/authentication-scenarios)、[将应用程序与 Azure Active Directory 集成](/active-directory/develop/active-directory-how-to-integrate)和 [Active Directory 身份验证协议](/active-directory/develop/active-directory-developers-guide)。  
+还有其他可能的复杂情况。 有关其他信息，请参阅 [Azure Active Directory 身份验证流](/active-directory/develop/authentication-vs-authorization)、[将应用程序与 Azure Active Directory 集成](/active-directory/develop/active-directory-how-to-integrate)和 [Active Directory 身份验证协议](/active-directory/develop/active-directory-developers-guide)。  
 
 ## <a name="key-vault-management"></a>Key Vault 管理
 
 对于 Key Vault 管理（CRUD 和设置访问策略），Key Vault 客户端应用程序需要访问 Azure Resource Manager 终结点。  
 
+<!-- no need to change -->
 | 操作类型 | 终结点：端口 |
 | --- | --- |
 | 通过 Azure Resource Manager 进行的<br> Key Vault 控制平面操作 |**Azure China：**<br> management.chinacloudapi.cn:443<br><br> |
@@ -58,6 +60,7 @@ ms.locfileid: "84275559"
 
 对于所有密钥保管库对象（密钥和密码）管理和加密操作，密钥保管库客户端需要访问密钥保管库终结点。 根据密钥保管库的位置，终结点 DNS 后缀会有所不同。 密钥保管库终结点的格式是 vault-name.region-specific-dns-suffix，如下表所示 。  
 
+<!-- no need to change -->
 | 操作类型 | 终结点：端口 |
 | --- | --- |
 | 操作包括对密钥的加密操作；创建、读取、更新和删除密钥和密码；设置或获取密钥保管库对象（密钥或密码）上的标记和其他属性 |**Azure China：**<br> &lt;vault-name&gt;.vault.azure.cn:443<br><br> |

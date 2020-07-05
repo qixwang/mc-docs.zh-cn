@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
 origin.date: 10/14/2019
-ms.date: 03/16/2020
+ms.date: 06/19/2020
 ms.author: v-tawe
-ms.openlocfilehash: b51286f1af9f28042fe265c7854aef5a94b55ac3
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.openlocfilehash: bf9f163c0d5b06176777f871d0fb464d355297b0
+ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82150930"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85613444"
 ---
 本指南介绍如何安装用于 Linux 的[语音 SDK](~/articles/cognitive-services/speech-service/speech-sdk.md)
 
@@ -24,15 +24,13 @@ ms.locfileid: "82150930"
 
 ## <a name="system-requirements"></a>系统要求
 
-Linux（Ubuntu 16.04、Ubuntu 18.04、Debian 9、RHEL 8、CentOS 8）
+Linux（Ubuntu 16.04、Ubuntu 18.04、Debian 9、RHEL 7/8、CentOS 7/8）
 
 ## <a name="prerequisites"></a>先决条件
 
 若要完成本快速入门，你需要：
 
 * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
-
-* 需要语音 SDK 版本 1.10.0 或更高版本。
 
 * 支持的 Linux 平台会要求安装某些库（要求安装 `libssl` 以获取安全套接字层支持；要求安装 `libasound2` 以获取声音支持）。 请参阅下面的发行版，了解安装这些库的正确版本所需的命令。
 
@@ -50,7 +48,7 @@ Linux（Ubuntu 16.04、Ubuntu 18.04、Debian 9、RHEL 8、CentOS 8）
      sudo apt-get install build-essential libssl1.0.2 libasound2 wget
      ```
 
-   * 在 RHEL/CentOS 8 上：
+   * 在 RHEL/CentOS 上：
 
      ```sh
      sudo yum update
@@ -59,44 +57,10 @@ Linux（Ubuntu 16.04、Ubuntu 18.04、Debian 9、RHEL 8、CentOS 8）
      ```
 
 > [!NOTE]
-> 在 RHEL/CentOS 8 上，按照[如何配置 OpenSSL for Linux](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md) 上的说明进行操作。
+> - 在 RHEL/CentOS 7 上，按照[如何为语音 SDK 配置 RHEL/CentOS 7](~/articles/cognitive-services/speech-service/how-to-configure-rhel-centos-7.md) 上的说明进行操作。
+> - 在 RHEL/CentOS 8 上，按照[如何配置 OpenSSL for Linux](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md) 上的说明进行操作。
 
-## <a name="install-speech-sdk"></a>安装语音 SDK
-
-适用于 Linux 的语音 SDK 可用于构建 64 位和 32 位应用程序。 可以从 https://aka.ms/csspeech/linuxbinary 以 tar 文件格式下载必需的库和头文件。
-
-下载并安装 SDK，如下所示：
-
-1. 选择应将语音 SDK 文件提取到的目录，然后将 `SPEECHSDK_ROOT` 环境变量设置为指向该目录。 使用此变量，在将来的命令中可以轻松引用目录。 例如，如果要使用主目录中的 `speechsdk` 目录，请使用如下所示的命令：
-
-   ```sh
-   export SPEECHSDK_ROOT="$HOME/speechsdk"
-   ```
-
-1. 如果该目录尚不存在，请创建该目录。
-
-   ```sh
-   mkdir -p "$SPEECHSDK_ROOT"
-   ```
-
-1. 下载并提取包含语音 SDK 二进制文件的 `.tar.gz` 存档：
-
-   ```sh
-   wget -O SpeechSDK-Linux.tar.gz https://aka.ms/csspeech/linuxbinary
-   tar --strip 1 -xzf SpeechSDK-Linux.tar.gz -C "$SPEECHSDK_ROOT"
-   ```
-
-1. 验证所提取的程序包的顶级目录的内容：
-
-   ```sh
-   ls -l "$SPEECHSDK_ROOT"
-   ```
-
-   目录列表应当包含第三方通告和许可证文件，以及一个包含头文件 (`.h`) 的 `include` 目录和一个包含库的 `lib` 目录。
-
-   [!INCLUDE [Linux Binary Archive Content](~/includes/cognitive-services-speech-service-linuxbinary-content.md)]
-
-现在可以继续完成下面的[后续步骤](#next-steps)。
+[!INCLUDE [linux-install-sdk](linux-install-sdk.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

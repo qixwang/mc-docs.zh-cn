@@ -6,17 +6,17 @@ keywords: 收藏夹,门户
 author: mgblythe
 ms.author: v-tawe
 origin.date: 12/20/2019
-ms.date: 02/17/2020
-ms.topic: conceptual
+ms.date: 06/22/2020
+ms.topic: how-to
 ms.service: azure-portal
 ms.custom: ''
 manager: mtillman
-ms.openlocfilehash: 5ea0eaabf3b0021a743cf395d0ea6ff372874b2f
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 9dd4ceb97ae37cbc09aebe38587a1350fc92c6d0
+ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77028223"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85613410"
 ---
 # <a name="add-remove-and-rearrange-favorites"></a>添加、删除和重新排列收藏夹
 

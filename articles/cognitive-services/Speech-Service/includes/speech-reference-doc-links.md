@@ -8,14 +8,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
 origin.date: 12/06/2019
-ms.date: 04/20/2020
+ms.date: 06/19/2019
 ms.author: v-tawe
-ms.openlocfilehash: fa60a3bebbcee5b77c041c421c4e305029ec1714
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.openlocfilehash: d77dcd89ba75129dce6bead092975d6b78537d21
+ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82126748"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85613386"
 ---
 ## <a name="reference-docs"></a>参考文档
 
@@ -42,6 +42,8 @@ ms.locfileid: "82126748"
 ### <a name="rest-api-references"></a>REST API 参考
 
 有关各种语音服务 REST API 的参考，请参阅下面的列表：
+
+<!-- - [REST API: Pronunciation assessment](../rest-speech-to-text.md#pronunciation-assessment-parameters) -->
 
 - [REST API：语音转文本](../rest-speech-to-text.md)
 - [REST API：文本转语音](../rest-text-to-speech.md)

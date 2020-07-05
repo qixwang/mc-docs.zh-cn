@@ -12,7 +12,7 @@
       href: azure-portal-dashboard-share-access.md
     - name: 以编程方式创建 Azure 仪表板
       href: azure-portal-dashboards-create-programmatically.md
-- name: 操作方法指南
+- name: 操作指南
   items:
     - name: 设置 Azure 门户首选项
       href: set-preferences.md
@@ -42,11 +42,13 @@
       href: azure-portal-safelist-urls.md
     - name: Azure 仪表板结构
       href: azure-portal-dashboards-structure.md
+    - name: Azure CLI
+      href: 'https://docs.microsoft.com/cli/azure/ext/portal/portal'
 - name: 资源
   items:
     - name: 定价计算器
       href: 'https://www.azure.cn/pricing/calculator/'
     - name: 区域可用性
       href: 'https://www.azure.cn/home/features/products-by-region'
-    - name: 堆栈溢出
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-management-portal'

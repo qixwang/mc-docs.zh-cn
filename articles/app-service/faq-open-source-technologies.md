@@ -7,15 +7,15 @@ tags: top-support-issue
 ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.topic: article
 origin.date: 10/31/2018
-ms.date: 05/22/2020
+ms.date: 06/22/2020
 ms.author: v-tawe
-ms.custom: seodec18
-ms.openlocfilehash: 8907be84e12dd4c1142b396f1e69323288ccb7c5
-ms.sourcegitcommit: 981a75a78f8cf74ab5a76f9e6b0dc5978387be4b
+ms.custom: seodec18, tracking-python
+ms.openlocfilehash: 603273b2933b25af45b0f954ebe62eb7daefe1dd
+ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83801177"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85613378"
 ---
 # <a name="open-source-technologies-faqs-for-web-apps-in-azure"></a>针对 Azure 中 Web 应用的开源技术常见问题的解答
 

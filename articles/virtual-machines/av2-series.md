@@ -1,19 +1,19 @@
 ---
-title: Av2 系列 - Azure 虚拟机
+title: Av2 系列
 description: Av2 系列 VM 的规范。
-services: virtual-machines
 author: rockboyfor
 ms.service: virtual-machines
+ms.subservice: sizes
 ms.topic: article
 origin.date: 02/03/2020
-ms.date: 04/27/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 531ae72536dafbb0f9dd703f0798eae0bb1eceba
-ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
+ms.openlocfilehash: 9f366b95d32a9397c4bb938a4fefae3c427b40d1
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83392229"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945601"
 ---
 <!--Verified successfully-->
 <!--Partical Content from verified articles-->

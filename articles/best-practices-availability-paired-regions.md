@@ -6,14 +6,15 @@ manager: barbkess
 ms.service: multiple
 ms.topic: conceptual
 origin.date: 03/03/2020
-ms.date: 06/02/2020
+ms.date: 07/02/2020
 ms.author: v-tawe
-ms.openlocfilehash: 2a27c8b0c6993373fc654fbc6d05c6ca33d2bed4
-ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
+ms.custom: references_regions
+ms.openlocfilehash: 74ca530e6a279e5a5a812517f870fd02ab8fa14a
+ms.sourcegitcommit: 7ea2d04481512e185a60fa3b0f7b0761e3ed7b59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84275675"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85845914"
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>业务连续性和灾难恢复 (BCDR)：Azure 配对区域
 

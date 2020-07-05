@@ -7,12 +7,12 @@ origin.date: 01/31/2019
 ms.topic: conceptual
 ms.author: v-johya
 ms.date: 05/11/2020
-ms.openlocfilehash: d414eec6bcc1102e479c9ad148ce0bd662609aa0
-ms.sourcegitcommit: 08b42258a48d96d754244064d065e4d5703f1cfb
+ms.openlocfilehash: c0e178951268855d08d8c7e50962de01744a67ec
+ms.sourcegitcommit: 372899a2a21794e631eda1c6a11b4fd5c38751d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/18/2020
-ms.locfileid: "83445175"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85852095"
 ---
 # <a name="back-up-an-exchange-server-to-azure-backup-with-system-center-2012-r2-dpm"></a>使用 System Center 2012 R2 DPM 将 Exchange Server 备份到 Azure 备份
 
@@ -29,7 +29,7 @@ ms.locfileid: "83445175"
 
 ## <a name="prerequisites"></a>先决条件
 
-继续下一步之前，请确保符合使用 Azure 备份保护工作负荷的所有[先决条件](backup-azure-dpm-introduction.md#prerequisites-and-limitations)。 这些先决条件包括：
+继续下一步之前，请确保符合使用 Azure 备份保护工作负荷的所有先决条件。 这些先决条件包括：
 
 * Azure 网站上已创建备份保管库。
 * 代理和保管库凭据已下载到 DPM 服务器。

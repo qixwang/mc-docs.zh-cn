@@ -6,16 +6,16 @@ keywords: ''
 author: mgblythe
 ms.author: v-tawe
 origin.date: 01/08/2020
-ms.date: 02/17/2020
-ms.topic: conceptual
+ms.date: 06/22/2020
+ms.topic: how-to
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: b318bc64e68757d1df37833088466870200f939d
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 969da0e4b5eb4c84c0a8863f334e6c1a28927ec0
+ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77028196"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85613301"
 ---
 # <a name="use-a-markdown-tile-on-azure-dashboards-to-show-custom-content"></a>在 Azure 仪表板上使用 Markdown 磁贴显示自定义内容
 

@@ -9,14 +9,14 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
 origin.date: 05/11/2020
-ms.date: 06/02/2020
+ms.date: 07/01/2020
 ms.author: v-tawe
-ms.openlocfilehash: 3a6ba34c173a9d71b45ed05de6d064a83e01e49d
-ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
+ms.openlocfilehash: c0aa93956bc2ce77555c97cd6979ec0adeb9bf63
+ms.sourcegitcommit: 4f84bba7e509a321b6f68a2da475027c539b8fd3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84275542"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85796273"
 ---
 # <a name="secure-access-to-a-key-vault"></a>保护对密钥保管库的访问
 
@@ -39,7 +39,7 @@ Azure 密钥保管库是一种云服务，用于保护加密密钥和机密（�
 - **用户加应用程序访问**：应用程序代表已登录的用户访问密钥保管库。 此类访问的示例包括 Azure PowerShell 和 Azure 门户。 用户访问权限通过两种方式授予。 用户可以从任何应用程序访问密钥保管库，或者用户必须使用特定的应用程序（称为_复合标识_）。
 - **仅限应用程序的访问**：应用程序作为守护程序服务或后台作业运行。 向应用程序标识授予访问密钥保管库的权限。
 
-对于这两种类型的访问，应用程序都使用 Azure AD 进行身份验证。 应用程序根据应用程序类型使用任何[支持的身份验证方法](/active-directory/develop/authentication-scenarios)。 应用程序通过获取平面中资源的令牌来授予访问权限。 资源是管理平面或数据平面中基于 Azure 环境的终结点。 应用程序使用令牌并向密钥保管库发送 REST API 请求。 若要了解详细信息，请查看[整个身份验证流](../../active-directory/develop/v2-oauth2-auth-code-flow.md)。
+对于这两种类型的访问，应用程序都使用 Azure AD 进行身份验证。 应用程序根据应用程序类型使用任何[支持的身份验证方法](../../active-directory/develop/authentication-vs-authorization.md)。 应用程序通过获取平面中资源的令牌来授予访问权限。 资源是管理平面或数据平面中基于 Azure 环境的终结点。 应用程序使用令牌并向密钥保管库发送 REST API 请求。 若要了解详细信息，请查看[整个身份验证流](../../active-directory/develop/v2-oauth2-auth-code-flow.md)。
 
 对这两种平面使用单一身份验证机制模型具有多个优点：
 
@@ -91,7 +91,7 @@ Azure 密钥保管库是一种云服务，用于保护加密密钥和机密（�
 
 ## <a name="example"></a>示例
 
-在此示例中，我们将开发一个应用程序，该应用程序使用证书来实现 TLS/SSL、使用 Azure 存储进行数据存储，并使用 RSA 2,048 位密钥进行签名操作。 我们的应用程序在 Azure 虚拟机 (VM)（或虚拟机规模集）中运行。 我们可以使用密钥保管库来存储应用程序机密。 我们可以存储应用程序用于通过 Azure AD 进行身份验证的启动证书。
+在此示例中，我们正在开发一个应用程序，该应用程序使用 TLS/SSL 证书，使用 Azure 存储进行数据存储，并使用 RSA 2048 位密钥进行签名操作。 我们的应用程序在 Azure 虚拟机 (VM)（或虚拟机规模集）中运行。 我们可以使用密钥保管库来存储应用程序机密。 我们可以存储应用程序用于通过 Azure AD 进行身份验证的启动证书。
 
 我们需要对以下存储密钥和机密的访问权限：
 - **TLS/SSL 证书**：用于 TLS/SSL。
@@ -100,7 +100,7 @@ Azure 密钥保管库是一种云服务，用于保护加密密钥和机密（�
 - **启动证书**：用于使用 Azure AD 进行身份验证。 授予访问权限后，可以提取存储密钥并使用 RSA 密钥进行签名。
 
 我们需要定义以下角色，以指定可以管理、部署和审核应用程序的用户：
-- **安全团队**：CSO（首席安全官）办公室中的 IT 人员或类似参与者。 安全团队负责机密的适当保管。 机密可能包括 TLS/SSL 证书、用于签名的 RSA 密钥、连接字符串和存储帐户密钥。
+- **安全团队**：CSO（首席安全官）办公室中的 IT 人员或类似参与者。 安全团队负责机密的适当保管。 机密可以包括 TLS/SSL 证书、用于签名的 RSA 密钥、连接字符串和存储帐户密钥。
 - **开发人员和操作人员**：开发应用程序并在 Azure 中进行部署的人员。 此团队的成员不属于安全人员。 他们不应有权访问 TLS/SSL 证书和 RSA 密钥等敏感数据。 仅他们部署的应用程序才应有权访问敏感数据。
 - **审核员**：此角色适用于不属于开发人员或一般 IT 人员的参与者。 他们评审证书、密钥和机密的使用及维护，确保符合安全标准。
 
@@ -117,7 +117,7 @@ Azure 密钥保管库是一种云服务，用于保护加密密钥和机密（�
 - 定期滚动密钥和机密。
 
 **开发人员和操作人员**
-- 从安全团队获取启动证书和 TLS/SSL 证书（指纹）、存储密钥（机密 URI）以及用于签名的 RSA 密钥（密钥 URI）的引用。
+- 从安全团队获取启动证书和 TLS/SSL 证书引用（指纹）、存储密钥（机密 URI）以及用于签名的 RSA 密钥（密钥 URI）。
 - 以编程方式开发和部署用于访问密钥和机密的应用程序。
 
 **审核人员**
@@ -136,7 +136,7 @@ Azure 密钥保管库是一种云服务，用于保护加密密钥和机密（�
 
 有关如何以编程方式部署证书、访问密钥和机密的详细信息，请参阅以下资源：
 - 了解如何[将证书从客户托管的密钥保管库部署到 VM](https://blogs.technet.microsoft.com/kv/2016/09/14/updated-deploy-certificates-to-vms-from-customer-managed-key-vault/)（博客文章）。
-- 查看 [Azure Key Vault 客户端示例](https://docs.microsoft.com/samples/browse/?term=Key%20Vault)。 此内容介绍了如何使用启动证书对 Azure AD 进行身份验证以访问密钥保管库。
+- 查看 [Azure 密钥保管库客户端示例](https://docs.microsoft.com/samples/browse/?term=Key%20Vault)。 此内容介绍了如何使用启动证书对 Azure AD 进行身份验证以访问密钥保管库。
 
 可以通过使用 Azure 门户授予大部分访问权限。 若要授予粒度权限，可以使用 Azure PowerShell 或 Azure CLI。
 
@@ -185,7 +185,7 @@ Set-AzKeyVaultAccessPolicy -VaultName ContosoKeyVault -ObjectId (Get-AzADGroup -
 
 定义的自定义角色只能分配给创建 **ContosoAppRG** 资源组所在的订阅。 若要将自定义角色用于其他订阅中的其他项目，请将其他订阅添加到角色的范围。
 
-对于我们的开发运营人员，密钥保管库 `deploy/action` 权限的自定义角色分配范围限定为资源组。 仅允许在 **ContosoAppRG** 资源组中创建的 VM 访问机密（TLS/SSL 和启动证书）。 即使 VM 具有机密 URI，由开发运营成员在其他资源组中创建的 VM 也无法访问这些机密。
+对于我们的开发运营人员，密钥保管库 `deploy/action` 权限的自定义角色分配范围限定为资源组。 仅允许在 ContosoAppRG 资源组中创建的 VM 访问机密（TLS/SSL 和启动证书）。 即使 VM 具有机密 URI，由开发运营成员在其他资源组中创建的 VM 也无法访问这些机密。
 
 我们的示例介绍了一个简单的方案。 现实方案可能更复杂。 可以根据需要调整密钥保管库的权限。 我们假设安全团队提供密钥和机密引用（URI 和指纹），开发运营员工在其应用程序中使用这些引用。 开发人员和操作员不需要任何数据平面访问权限。 我们将重点放在如何保护密钥保管库上。 对于保护 [VM](https://azure.microsoft.com/services/virtual-machines/security/)、[存储帐户](../../storage/blobs/security-recommendations.md)和其他 Azure 资源，应进行类似的考虑。
 

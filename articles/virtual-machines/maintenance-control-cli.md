@@ -3,17 +3,16 @@ title: 使用 CLI 对 Azure 虚拟机进行维护控制
 description: 了解如何使用维护控制和 CLI 来控制对 Azure VM 应用维护的时间。
 author: rockboyfor
 ms.service: virtual-machines
-ms.topic: article
+ms.topic: how-to
 ms.workload: infrastructure-services
-origin.date: 04/20/2020
-ms.date: 04/30/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: afe8cbfe2af0c953b0701cfe5f45651e03bd9dac
-ms.sourcegitcommit: bfbd6694da33f703481386f2a3f16850c4e94bfa
+ms.openlocfilehash: 051a068a8d9f2ecd51249929272fa97e0bab2824
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83417710"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85946078"
 ---
 <!--WAITING FOR STEVE NOTIFICATION-->
 <!--Verified successfully-->
@@ -257,5 +256,4 @@ az maintenance configuration delete \
 ## <a name="next-steps"></a>后续步骤
 若要了解详细信息，请参阅[维护和更新](maintenance-and-updates.md)。
 
-<!-- Update_Description: new article about maintenance control cli -->
-<!--NEW.date: 04/27/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

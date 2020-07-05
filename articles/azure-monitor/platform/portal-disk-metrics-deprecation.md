@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: Johnnytechn
 ms.author: v-johya
 ms.date: 05/20/2020
-ms.openlocfilehash: e7135f2d06046a40c721fd709e5143f08fc4da12
-ms.sourcegitcommit: a04b0b1009b0c62f2deb7c7acee75a1304d98f87
+ms.openlocfilehash: 964a7c7656cbb6043e4330b185a420875fa7810f
+ms.sourcegitcommit: 372899a2a21794e631eda1c6a11b4fd5c38751d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83796911"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851943"
 ---
 # <a name="disk-metrics-deprecation-in-the-azure-portal"></a>Azure 门户中已弃用的磁盘指标
 
@@ -35,7 +35,7 @@ ms.locfileid: "83796911"
 |OS 写入字节数/秒（已弃用）|OS 写入字节数/秒（预览版）|
 |OS 写入操作数/秒（已弃用）|OS 写入操作数/秒（预览版）|
 
-<a id="update-metrics" />
+<a id="update-metrics" ></a>
 
 ## <a name="migrate-metrics-in-your-metric-alerts"></a>迁移指标警报中的指标
 

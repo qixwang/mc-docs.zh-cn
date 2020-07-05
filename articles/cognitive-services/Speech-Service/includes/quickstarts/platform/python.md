@@ -3,14 +3,14 @@ author: trevorbye
 ms.service: cognitive-services
 ms.topic: include
 origin.date: 04/04/2020
-ms.date: 04/20/2020
+ms.date: 06/19/2020
 ms.author: v-tawe
-ms.openlocfilehash: 64cb5ca7a92c6404689f5170d4e0b17efb3d0753
-ms.sourcegitcommit: 304d3ef3c9e65c3e85977b3afb9985fbc0f908d6
+ms.openlocfilehash: 1f27781981001617783f2d757ab2e64e688de86e
+ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85095924"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85613442"
 ---
 本指南介绍如何安装用于 Python 的[语音 SDK](~/articles/cognitive-services/speech-service/speech-sdk.md)。 如果只是需要包名称以便自行开始，请运行 `pip install azure-cognitiveservices-speech`。
 
@@ -43,7 +43,7 @@ ms.locfileid: "85095924"
         sudo apt-get install build-essential libssl1.0.2 libasound2
         ```
 
-  - 在 RHEL/CentOS 8 上，请运行以下命令来安装所需的包：
+  - 在 RHEL/CentOS 上，请运行以下命令来安装所需的包：
 
         ```sh
         sudo yum update
@@ -51,7 +51,8 @@ ms.locfileid: "85095924"
         ```
 
 > [!NOTE]
-> 在 RHEL/CentOS 8 上，按照[如何配置 OpenSSL for Linux](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md) 上的说明进行操作。
+> - 在 RHEL/CentOS 7 上，按照[如何为语音 SDK 配置 RHEL/CentOS 7](~/articles/cognitive-services/speech-service/how-to-configure-rhel-centos-7.md) 上的说明进行操作。
+> - 在 RHEL/CentOS 8 上，按照[如何配置 OpenSSL for Linux](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md) 上的说明进行操作。
 
 - 在 Windows 上，需要安装适用于平台的 [Microsoft Visual C++ Redistributable for Visual Studio 2019](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)。 请注意，首次安装它时，可能需要重启 Windows 才能继续使用本指南。
 - 最后，需要 [Python 3.5 到 3.8](https://www.python.org/downloads/)。 若要检查安装，请打开命令提示符并键入命令 `python --version`，然后检查结果。 如果安装正确，将会收到“Python 3.5.1”或类似的响应。

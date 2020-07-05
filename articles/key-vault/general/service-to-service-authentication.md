@@ -7,16 +7,16 @@ manager: rkarlin
 services: key-vault
 ms.author: v-tawe
 origin.date: 08/28/2019
-ms.date: 04/20/2020
+ms.date: 07/01/2020
 ms.topic: conceptual
 ms.service: key-vault
 ms.subservice: general
-ms.openlocfilehash: 73d3182f644e3e1493dc347ff6813b5b184b913a
-ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
+ms.openlocfilehash: 726322e463e1c63cb492c39b19ea68b4c1c8ff3f
+ms.sourcegitcommit: 4f84bba7e509a321b6f68a2da475027c539b8fd3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84275540"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85796229"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>使用 .NET 向 Azure Key Vault 进行服务到服务身份验证
 
@@ -134,7 +134,7 @@ ms.locfileid: "84275540"
 
 在启用托管标识的 Azure 应用服务或 Azure VM 上运行代码时，库自动使用托管标识。 无需更改代码，但托管标识必须对 Key Vault 拥有 *get* 权限。 可以通过 Key Vault 的访问策略为托管标识授予 *get* 权限。
 
-或者，可以使用用户分配的标识进行身份验证。 有关用户分配的标识的详细信息，请参阅[关于 Azure 资源的托管标识](../../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-work)。 若要使用用户分配的标识进行身份验证，需要在连接字符串中指定用户分配的标识的客户端 ID。 在[连接字符串支持](#connection-string-support)中已指定连接字符串。
+或者，可以使用用户分配的标识进行身份验证。 有关用户分配的标识的详细信息，请参阅[关于 Azure 资源的托管标识](../../active-directory/managed-identities-azure-resources/overview.md)。 若要使用用户分配的标识进行身份验证，需要在连接字符串中指定用户分配的标识的客户端 ID。 在[连接字符串支持](#connection-string-support)中已指定连接字符串。
 
 ## <a name="running-the-application-using-a-service-principal"></a>使用服务主体运行应用程序
 
@@ -238,7 +238,7 @@ ms.locfileid: "84275540"
 | `RunAs=Developer; DeveloperTool=VisualStudio` | 本地开发 | `AzureServiceTokenProvider` 使用 Visual Studio 获取令牌。 |
 | `RunAs=CurrentUser` | 本地开发 | `AzureServiceTokenProvider` 使用 Azure AD 集成身份验证获取令牌。 |
 | `RunAs=App` | [Azure 资源的托管标识](../../active-directory/managed-identities-azure-resources/index.yml) | `AzureServiceTokenProvider` 使用托管标识获取令牌。 |
-| `RunAs=App;AppId={ClientId of user-assigned identity}` | [Azure 资源的用户分配标识](../../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-work) | `AzureServiceTokenProvider` 使用用户分配的标识获取令牌。 |
+| `RunAs=App;AppId={ClientId of user-assigned identity}` | [Azure 资源的用户分配标识](../../active-directory/managed-identities-azure-resources/overview.md) | `AzureServiceTokenProvider` 使用用户分配的标识获取令牌。 |
 | `RunAs=App;AppId={TestAppId};KeyVaultCertificateSecretIdentifier={KeyVaultCertificateSecretIdentifier}` | 自定义服务身份验证 | `KeyVaultCertificateSecretIdentifier` 是证书的机密标识符。 |
 | `RunAs=App;AppId={AppId};TenantId={TenantId};CertificateThumbprint={Thumbprint};CertificateStoreLocation={LocalMachine or CurrentUser}`| 服务主体 | `AzureServiceTokenProvider` 使用证书从 Azure AD 获取令牌。 |
 | `RunAs=App;AppId={AppId};TenantId={TenantId};CertificateSubjectName={Subject};CertificateStoreLocation={LocalMachine or CurrentUser}` | 服务主体 | `AzureServiceTokenProvider` 使用证书从 Azure AD 获取令牌|

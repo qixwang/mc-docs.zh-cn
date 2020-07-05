@@ -7,17 +7,23 @@ ms.assetid: 582bb3c2-164b-42f5-b081-95bfcb7a502a
 ms.devlang: Java
 ms.topic: quickstart
 origin.date: 05/29/2019
-ms.date: 05/22/2020
+ms.date: 06/22/2020
 ms.author: v-tawe
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 588c6ec81241802e4263f152c47d760edea3f693
-ms.sourcegitcommit: 981a75a78f8cf74ab5a76f9e6b0dc5978387be4b
+ms.openlocfilehash: 6865f6222a649eb937f5d51304e6f4a7c786dfcf
+ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83801299"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85613399"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service-on-windows"></a>快速入门：在 Windows 上的 Azure 应用服务中创建 Java 应用
+
+<!--
+> [!NOTE]
+> This article deploys an app to App Service on Windows. To deploy to App Service on _Linux_, see [Create Java web app on Linux](./containers/quickstart-java.md).
+>
+-->
 
 [Azure 应用服务](overview.md)提供高度可缩放、自修复的 Web 托管服务。  本快速入门介绍如何将 [Azure CLI](/cli/get-started-with-azure-cli) 与[用于 Maven 的 Azure Web 应用插件](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin)配合使用来部署 Java Web 存档 (WAR) 文件。
 
@@ -28,25 +34,31 @@ ms.locfileid: "83801299"
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-
+<!-- [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] -->
 
 ## <a name="create-a-java-app"></a>创建 Java 应用
 
 在 Azure CLI 提示符下，执行以下 Maven 命令来创建一个名为 `helloworld` 的新应用：
 
 ```bash
-mvn archetype:generate -DgroupId=example.demo -DartifactId=helloworld -DarchetypeArtifactId=maven-archetype-webapp
+mvn archetype:generate -DgroupId=example.demo -DartifactId=helloworld -DarchetypeArtifactId=maven-archetype-webapp -Dversion=1.0-SNAPSHOT
+```
+
+然后，将工作目录更改为项目文件夹：
+
+```bash
+cd helloworld
 ```
 
 ## <a name="configure-the-maven-plugin"></a>配置 Maven 插件
 
-若要从 Maven 进行部署，请在 Azure CLI 中使用代码编辑器打开 `helloworld` 目录中的项目 `pom.xml` 文件。 
+可以在命令提示符中运行以下 maven 命令以配置部署，在第一步中为 Windows OS 选择“2”并按 Enter 接受默认配置，直到出现“确认(Y/N)”提示，然后按“y”完成配置    。 
 
 ```bash
-code pom.xml
+mvn com.microsoft.azure:azure-webapp-maven-plugin:1.9.1:config
 ```
 
-然后在 `pom.xml` 文件的 `<build>` 元素内添加以下插件定义。
+示例过程如下所示：
 
 ```xml
 <plugins>
@@ -89,19 +101,36 @@ code pom.xml
 <!-- > [!NOTE] -->
 <!-- > In this article we are only working with Java apps packaged in WAR files. The plugin also supports JAR web applications, visit [Deploy a Java SE JAR file to App Service on Linux](/java/spring-framework/deploy-spring-boot-java-app-with-maven-plugin?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) to try it out. -->
 
+打开 `pom.xml`，查看更新后的配置。
 
-更新插件配置中的以下占位符：
+```bash
+code pom.xml
+```
 
-| 占位符 | 说明 |
-| ----------- | ----------- |
-| `SUBSCRIPTION_ID` | 想要将应用部署到的订阅的唯一 ID。 可以使用 `az account show` 命令从 Azure CLI 中找到默认订阅的 ID。 对于所有可用的订阅，请使用 `az account list` 命令。|
-| `RESOURCEGROUP_NAME` | 要在其中创建应用的新资源组的名称。 通过将应用的所有资源都放在一个组中，可以一起管理它们。 例如，删除资源组会删除与该应用关联的所有资源。 使用唯一的新资源组名称（例如 *myResourceGroup*）更新此值。 将在后面的部分使用此资源组名称来清除所有 Azure 资源。 |
-| `WEBAPP_NAME` | 部署到 Azure (WEBAPP_NAME.chinacloudsites.cn) 时，应用名称将成为应用的主机名的一部分。 使用将托管 Java 应用的新应用服务应用的唯一名称（例如 *contoso*）更新此值。 |
-| `REGION` | 托管着应用的 Azure 区域，例如 chinaeast2。 可以从 Azure CLI 使用 `az account list-locations` 命令获取区域列表。 |
+如果需要，可以直接在 pom 文件中修改应用服务的配置，下面列出了一些常见配置：
+
+ 属性 | 必须 | 说明 | 版本
+---|---|---|---
+`<schemaVersion>` | false | 指定配置架构的版本。 支持的值是：`v1`、`v2`。 | 1.5.2
+`<resourceGroup>` | 是 | 用于 Web 应用的 Azure 资源组。 | 0.1.0+
+`<appName>` | 是 | Web 应用的名称。 | 0.1.0+
+`<region>` | 是 | 指定将托管 Web 应用的区域；默认值为“westeurope”。 [支持的区域](/java/api/overview/maven/azure-webapp-maven-plugin/readme)部分中列出了所有有效区域。 | 0.1.0+
+`<pricingTier>` | false | Web 应用的定价层。 默认值为 **P1V2**。| 0.1.0+
+`<runtime>` | 是 | 运行时环境配置，可以在[此处](/java/api/overview/maven/azure-webapp-maven-plugin/readme)查看详细信息。 | 0.1.0+
+`<deployment>` | 是 | 部署配置，可以在[此处](/java/api/overview/maven/azure-webapp-maven-plugin/readme)查看详细信息。 | 0.1.0+
+
+> [!div class="nextstepaction"]
+> [我遇到了问题](https://www.research.net/r/javae2e?tutorial=app-service-web-get-started-java&step=config)
 
 ## <a name="deploy-the-app"></a>部署应用
 
-使用以下命令将 Java 应用部署到 Azure：
+部署到 Azure 应用服务的过程中会使用 Azure CLI 中的帐户凭据。 在继续操作之前[使用 Azure CLI 登录](/cli/authenticate-azure-cli?view=azure-cli-latest)。
+
+```azurecli
+az cloud set -n AzureChinaCloud
+az login
+```
+然后可以使用以下命令将 Java 应用部署到 Azure：
 
 ```bash
 mvn package azure-webapp:deploy

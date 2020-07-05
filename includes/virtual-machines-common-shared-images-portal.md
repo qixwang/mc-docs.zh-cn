@@ -6,15 +6,15 @@ author: rockboyfor
 ms.service: virtual-machines
 ms.topic: include
 origin.date: 11/06/2019
-ms.date: 06/01/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: 56cb9444874ee1064572099fec78d390265706e8
-ms.sourcegitcommit: 981a75a78f8cf74ab5a76f9e6b0dc5978387be4b
+ms.openlocfilehash: bc8ec4afba0ff7385a7adf376319f82241ffbee4
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83806249"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945585"
 ---
 ## <a name="create-an-image-gallery"></a>创建映像库
 
@@ -43,7 +43,7 @@ ms.locfileid: "83806249"
 1. 在“向共享映像库添加新的映像定义”中，对于“区域”，选择“中国东部”。
 1. 对于“映像定义名称”，请键入 *myImageDefinition*。
 1. 对于“操作系统”，请根据源 VM 选择正确的选项。
-1. 对于“VM 代系”，请根据源 VM 选择适当的选项。 大多数情况下都会选择“第 1 代”。 有关详细信息，请参阅[对第 2 代 VM 的支持](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2)。
+1. 对于“VM 代系”，请根据源 VM 选择适当的选项。 大多数情况下都会选择“第 1 代”。 有关详细信息，请参阅[对第 2 代 VM 的支持](/virtual-machines/windows/generation-2)。
 1. 对于“操作系统状态”，请根据源 VM 选择适当的选项。 有关详细信息，请参阅[通用化和专用化](../articles/virtual-machines/linux/shared-image-galleries.md#generalized-and-specialized-images)。
 1. 对于“发布者”，请键入 *myPublisher*。 
 1. 对于“套餐”，请键入 *myOffer*。
@@ -104,5 +104,4 @@ ms.locfileid: "83806249"
 
 如果该用户不在你的组织中，他（她）会收到一封邀请加入组织的电子邮件。 该用户需要接受邀请，才能在其资源列表中看到库以及所有映像定义和版本。
 
-<!-- Update_Description: new article about virtual machines common shared images portal -->
-<!--NEW.date: 12/16/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

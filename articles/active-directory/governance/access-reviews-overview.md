@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 02/25/2020
+ms.date: 07/02/2020
 ms.author: v-junlch
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a6e8f103e07b8e45b7cf3bee5b88927a22986a1f
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 41fc770b638a27267de4774c6be28421055d9d2f
+ms.sourcegitcommit: 1008ad28745709e8d666f07a90e02a79dbbe2be5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79291009"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85944992"
 ---
 # <a name="what-are-azure-ad-access-reviews"></a>Azure AD 访问评审是什么？
 
@@ -62,19 +62,24 @@ Azure AD 支持在组织内进行内部协作和与外部组织的用户（例�
 
 若要创建访问评审，请执行以下步骤：
 
-1. 转到 [Azure 门户](https://portal.azure.cn)来管理访问评审并以全局管理员或用户管理员身份登录。
+1. 转到 [Azure 门户](https://portal.azure.cn)，以全局管理员或用户管理员身份登录并管理访问评审。
 
-1. 搜索并选择“Azure Active Directory”  。
+1. 搜索并选择“Azure Active Directory”。
 
       ![在 Azure 门户中搜索 Azure Active Directory](./media/access-reviews-overview/search-azure-active-directory.png)
 
-1. 选择“标识监管”  。
+1. 选择 Identity Governance。
 
-1. 在“开始使用”页上，单击“创建访问评审”  按钮。
+1. 在“开始使用”页上，单击“创建访问评审”按钮。
 
-   ![访问评审启动页](./media/access-reviews-overview/access-reviews-overview-create-access-reviews.png) 
+   ![访问评审起始页](./media/access-reviews-overview/access-reviews-overview-create-access-reviews.png) 
 
+### <a name="creating-access-review-on-a-group-that-can-be-assigned-to-azure-ad-role"></a>对可分配到 Azure AD 角色的组创建访问评审
+如果你使用最新版访问评审（审阅者默认进入“我的访问权限”），则仅全局管理员可以对可分配角色的组创建访问评审。 但是，如果你使用旧版本的访问评审（审阅者默认进入“访问面板”），全局管理员和用户管理员均可以对可分配角色的组创建访问评审。  
 
+新版体验将于 2020 年 8 月 1 日向所有客户推出。如果你想尽快升级，请在 [Azure AD 访问评审 - 我的访问权限新审阅者体验登记表中](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR5dv-S62099HtxdeKIcgO-NUOFJaRDFDWUpHRk8zQ1BWVU1MMTcyQ1FFUi4u)提出申请。
+
+[详细了解将组分配给 Azure AD 角色](https://go.microsoft.com/fwlink/?linkid=2103037)。
 
 ## <a name="license-requirements"></a>许可要求
 
@@ -82,16 +87,18 @@ Azure AD 支持在组织内进行内部协作和与外部组织的用户（例�
 
 ### <a name="how-many-licenses-must-you-have"></a>必须拥有多少个许可证？
 
-确保你的目录具有的 Azure AD Premium P2 许可证至少与将执行以下任务的员工一样多：
+确保目录拥有的 Azure AD Premium P2 许可证与要执行以下任务的员工数相同：
 
 - 指定为审阅者的成员和来宾用户
 - 执行自我评审的成员和来宾用户
 - 执行访问评审的组所有者
 - 执行访问评审的应用程序所有者
 
-对于以下任务，不需要  使用 Azure AD Premium P2 许可证：
+以下任务无需 Azure AD Premium P2 许可证：
 
-- 具有“全局管理员”或“用户管理员”角色的用户不需要任何许可证，这些用户可设置访问评审、配置设置或应用基于评审做出的决策。
+- 具有全局管理员或用户管理员角色的用户不需要任何许可证，这些用户可设置访问评审、配置设置或根据评审作出决策。
+
+对于你分配给自己组织的用户之一的每个付费 Azure AD Premium P2 许可证，你可以使用 Azure AD 企业到企业 (B2B) 在“外部用户限额”下最多邀请五名来宾用户。 这些来宾用户也可以使用 Azure AD Premium P2 功能。 有关详细信息，请参阅 [Azure AD B2B 协作许可指南](../b2b/licensing-guidance.md)。
 
 有关许可证的详细信息，请参阅[使用 Azure Active Directory 门户分配或删除许可证](../fundamentals/license-users-groups.md)。
 
@@ -103,9 +110,9 @@ Azure AD 支持在组织内进行内部协作和与外部组织的用户（例�
 | --- | --- | --- |
 | 管理员创建组 A 的访问评审，该组包含 75 个用户和 1 个组所有者，并将该组所有者指定为审阅者。 | 作为审阅者的组所有者需要 1 个许可证 | 1 |
 | 管理员创建组 B 的访问评审，该组包含 500 个用户和 3 个组所有者，并将这 3 个组所有者指定为审阅者。 | 作为审阅者的各个组所有者共需 3 个许可证 | 3 |
-| 管理员创建具有 500 个用户的组 B 的访问评审。 将其设为自我评审。 | 各个用户进行自我评审共需 500 个许可证 | 500 |
-| 管理员创建具有 50 个成员用户和 25 个来宾用户的组 C 的访问评审。 将其设为自我评审。 | 各个用户进行自我评审共需 50 个许可证。<br/>（按所需的 1:5 比例包含来宾用户） | 50 |
-| 管理员创建具有 6 个成员用户和 108 个来宾用户的组 D 的访问评审。 将其设为自我评审。 | 充当自我审阅者的各个用户共需 6 个许可证 + 按所要求的 1:5 比例涵盖所有 108 位来宾用户需要 16 个额外的许可证。 6 个许可证，涵盖 6\*5=30 个来宾用户。 对于余下的 (108-6\*5)=78 位来宾用户，需要 78/5=16 个额外的许可证。 因此，总共需要 6+16=22 个许可证。 | 22 |
+| 管理员创建具有 500 个用户的组 B 的访问评审。 并使其成为自我评审。 | 各个用户进行自我评审共需 500 个许可证 | 500 |
+| 管理员创建具有 50 个成员用户和 25 个来宾用户的组 C 的访问评审。 并使其成为自我评审。 | 各个用户进行自我评审共需 50 个许可证。<br/>（来宾用户已涵盖在要求的 1:5 比例内）。 | 50 |
+| 管理员创建具有 6 个成员用户和 108 个来宾用户的组 D 的访问评审。 并使其成为自我评审。 | 充当自我审阅者的各个用户共需 6 个许可证 + 按所要求的 1:5 比例涵盖所有 108 位来宾用户需要 16 个额外的许可证。 6 个许可证，涵盖 6\*5=30 个来宾用户。 对于余下的 (108-6\*5)=78 位来宾用户，需要 78/5=16 个额外的许可证。 因此，总共需要 22 个许可证 (6+16)。 | 22 |
 
 ## <a name="next-steps"></a>后续步骤
 

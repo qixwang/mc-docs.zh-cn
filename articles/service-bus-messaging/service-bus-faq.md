@@ -7,15 +7,15 @@ manager: digimobile
 editor: spelluru
 ms.service: service-bus-messaging
 ms.topic: article
-origin.date: 01/24/2020
-ms.date: 2/6/2020
+origin.date: 06/10/2020
+ms.date: 06/30/2020
 ms.author: v-lingwu
-ms.openlocfilehash: 3aca51653595e87019fc42d6c280374ae9988087
-ms.sourcegitcommit: a04b0b1009b0c62f2deb7c7acee75a1304d98f87
+ms.openlocfilehash: 3e7db10755ba15bb9c7d541cb62cf020d7b0c80e
+ms.sourcegitcommit: 4f84bba7e509a321b6f68a2da475027c539b8fd3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83796820"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85796315"
 ---
 # <a name="azure-service-bus---frequently-asked-questions-faq"></a>Azure 服务总线 - 常见问题解答 (FAQ)
 
@@ -123,13 +123,6 @@ Azure 服务总线最近升级了计费组件。 因此，如果你有服务总�
 ## <a name="quotas"></a>配额
 
 有关服务总线限制和配额的列表，请参阅[服务总线配额概述][Quotas overview]。
-
-### <a name="does-service-bus-have-any-usage-quotas"></a>服务总线是否有任何使用率配额？
-默认情况下，对于任何云服务，Azure 都会设置一个聚合的每月使用率配额，此配额基于客户的所有订阅进行计算。 如果你需要更多配额，可以随时联系客户服务，以便了解你的需求并相应地调整这些限制。 对于服务总线，总用量配额是每月 50 亿条消息。
-
-Azure 保留禁用在给定月份超过使用配额的客户帐户的权利，但仍然会在采取任何措施前发送电子邮件通知并多次尝试与客户联系。 超过这些配额的客户仍需负责超出配额的费用。
-
-至于 Azure 上的其他服务，服务总线会强制使用一组特定配额，以确保资源的公平使用。 可以在[服务总线配额概述][Quotas overview]中找到有关这些配额的更多详细信息。
 
 ### <a name="how-to-handle-messages-of-size--1-mb"></a>如何处理大小 > 1 MB 的消息？
 服务总线消息服务（队列和主题/订阅）允许应用程序发送大小不超过 256 KB（标准层）或 1 MB（高级层）的消息。 若要处理大小超过 1 MB 的消息，请使用[此博客文章](https://www.serverless360.com/blog/deal-with-large-service-bus-messages-using-claim-check-pattern)中所述的声明检查模式。

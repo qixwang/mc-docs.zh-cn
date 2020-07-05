@@ -1,26 +1,19 @@
 ---
 title: 适用于 Azure 虚拟网络的常见 PowerShell 命令
 description: 可用于为 VM 创建虚拟网络及其关联资源的常用 PowerShell 命令。
-services: virtual-machines-windows
-documentationcenter: ''
 author: rockboyfor
-manager: digimobile
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 56e1a73c-8299-4996-bd03-f74585caa1dc
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: na
-ms.topic: article
+ms.topic: how-to
 origin.date: 07/17/2017
-ms.date: 04/27/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 86073be3f6574e62071dc906a6857addd6644a97
-ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
+ms.openlocfilehash: 828b947775a271361a5dba29270a9dec42fd363a
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83392444"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945983"
 ---
 # <a name="common-powershell-commands-for-azure-virtual-networks"></a>适用于 Azure 虚拟网络的常见 PowerShell 命令
 
@@ -39,7 +32,7 @@ ms.locfileid: "83392444"
 | ---- | ------- |
 | 创建子网配置 |$subnet1 = [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig) -Name "mySubnet1" -AddressPrefix XX.X.X.X/XX<br />$subnet2 = New-AzVirtualNetworkSubnetConfig -Name "mySubnet2" -AddressPrefix XX.X.X.X/XX<br /><br />典型的网络可能包含用于[面向 Internet 的负载均衡器](../../load-balancer/load-balancer-internet-overview.md)的子网，以及用于[内部负载均衡器](../../load-balancer/load-balancer-internal-overview.md)的独立子网。 |
 | 创建虚拟网络 |$vnet = [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork) -Name "myVNet" -ResourceGroupName $myResourceGroup -Location $location -AddressPrefix XX.X.X.X/XX -Subnet $subnet1, $subnet2 |
-| 测试唯一域名 |[Test-AzDnsAvailability](https://docs.microsoft.com/powershell/module/az.network/test-azdnsavailability) -DomainNameLabel "myDNS" -Location $location<br /><br />可以为[公共 IP 资源](../../virtual-network/virtual-network-ip-addresses-overview-arm.md)指定一个 DNS 域名，以便在 Azure 托管的 DNS 服务器中创建 domainname.location.cloudapp.chinacloudapi.cn 到公共 IP 地址的映射。 字段只能包含字母、数字和连字符。 第一个和最后一个字符必须是字母或数字，域名在其 Azure 位置内必须是唯一的。 如果返回 **True** ，则建议的名称是全局唯一的。 |
+| 测试唯一域名 |[Test-AzDnsAvailability](https://docs.microsoft.com/powershell/module/az.network/test-azdnsavailability) -DomainNameLabel "myDNS" -Location $location<br /><br />可以为[公共 IP 资源](../../virtual-network/public-ip-addresses.md)指定一个 DNS 域名，以便在 Azure 托管的 DNS 服务器中创建 domainname.location.cloudapp.chinacloudapi.cn 到公共 IP 地址的映射。 字段只能包含字母、数字和连字符。 第一个和最后一个字符必须是字母或数字，域名在其 Azure 位置内必须是唯一的。 如果返回 **True** ，则建议的名称是全局唯一的。 |
 | 创建公共 IP 地址 |$pip = [New-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress) -Name "myPublicIp" -ResourceGroupName $myResourceGroup -DomainNameLabel "myDNS" -Location $location -AllocationMethod Dynamic<br /><br />公共 IP 地址使用前面测试过的并由负载均衡器前端配置使用的域名。 |
 | 创建前端 IP 配置 |$frontendIP = [New-AzLoadBalancerFrontendIpConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerfrontendipconfig) -Name "myFrontendIP" -PublicIpAddress $pip<br /><br />前端配置包括前面针对传入网络流量创建的公共 IP 地址。 |
 | 创建后端地址池 |$beAddressPool = [New-AzLoadBalancerBackendAddressPoolConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig) -Name "myBackendAddressPool"<br /><br />提供可通过网络接口访问的负载均衡器后端内部地址。 |

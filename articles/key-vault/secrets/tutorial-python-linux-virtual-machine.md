@@ -8,15 +8,15 @@ ms.service: key-vault
 ms.subservice: secrets
 ms.topic: tutorial
 origin.date: 09/05/2018
-ms.date: 03/30/2020
+ms.date: 07/01/2020
 ms.author: v-tawe
-ms.custom: mvc
-ms.openlocfilehash: 45ba2ab86279a20bb33332f7aabbf3f1acb98228
-ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
+ms.custom: mvc, tracking-python
+ms.openlocfilehash: 5dc9c091f189e27c87c73bb361871b3a213948c5
+ms.sourcegitcommit: 4f84bba7e509a321b6f68a2da475027c539b8fd3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82588816"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85796320"
 ---
 # <a name="tutorial-use-a-linux-vm-and-a-python-app-to-store-secrets-in-azure-key-vault"></a>教程：使用 Linux VM 和 Python 应用在 Azure Key Vault 中存储机密
 
@@ -92,7 +92,7 @@ az keyvault create --name "<YourKeyVaultName>" --resource-group "<YourResourceGr
 
 我们将添加机密以帮助说明这是如何工作的。 可能要存储 SQL 连接字符串，或者需要保持安全并可供应用程序使用的其他任何信息。
 
-键入以下命令，在名为 *AppSecret* 的密钥保管库中创建机密。 此机密将存储值“MySecret”。 
+键入以下命令，在名为 *AppSecret* 的密钥保管库中创建机密。 此机密将存储值“MySecret”。
 
 ```azurecli
 az keyvault secret set --vault-name "<YourKeyVaultName>" --name "AppSecret" --value "MySecret"
@@ -171,7 +171,7 @@ ssh azureuser@<PublicIpAddress>
 
 ## <a name="create-edit-and-run-the-sample-python-app"></a>创建、编辑并运行示例 Python 应用
 
-创建名为 Sample.py  的 Python 文件。
+创建名为 Sample.py 的 Python 文件。
 
 打开 Sample.py 并编辑它以包含以下代码：
 
@@ -210,7 +210,7 @@ python Sample.py
 
 ## <a name="clean-up-resources"></a>清理资源
 
-不再需要资源组、虚拟机和所有相关的资源时，可将其删除。 为此，请选择适用于 VM 的资源组，然后选择“删除”。 
+不再需要资源组、虚拟机和所有相关的资源时，可将其删除。 为此，请选择适用于 VM 的资源组，然后选择“删除”。
 
 使用 `az keyvault delete` 命令删除密钥保管库：
 

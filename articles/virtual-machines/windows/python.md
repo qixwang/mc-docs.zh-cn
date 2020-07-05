@@ -1,25 +1,20 @@
 ---
 title: 在 Azure 中使用 Python 创建和管理 Windows VM
 description: 了解如何使用 Python 在 Azure 中创建和管理 Windows VM。
-services: virtual-machines-windows
-documentationcenter: ''
 author: rockboyfor
-manager: digimobile
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.workload: na
-ms.tgt_pltfrm: vm-windows
+ms.workload: infrastructure
 ms.topic: article
 origin.date: 06/22/2017
-ms.date: 04/27/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: ad7005a9c6a4233b413977e728c0bd799204687c
-ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
+ms.custom: tracking-python
+ms.openlocfilehash: f3b1d17ad45ef32b31abcb93e9acb4f8770ff944
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83392221"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85946070"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-python"></a>在 Azure 中使用 Python 创建和管理 Windows VM
 
@@ -44,8 +39,8 @@ ms.locfileid: "83392221"
 
 ## <a name="install-packages"></a>安装包
 
-1. 在解决方案资源管理器的“myPythonProject”下，右键单击“Python 环境”，然后选择“添加虚拟环境” 。
-2. 在“添加虚拟环境”屏幕上，接受默认名“env”，确保已选择“Python 3.6（64 位）”作为基础解释器，然后单击“创建” 。
+1. 在解决方案资源管理器的“myPythonProject”下，右键单击“Python 环境”，然后选择“添加虚拟环境”。
+2. 在“添加虚拟环境”屏幕上，接受默认名称“env”，确保已选择“Python 3.6（64 位）”作为基础解释器，然后单击“创建”。
 3. 右键单击所创建的 env 环境，然后单击“安装 Python 包”，并在搜索框中输入“azure”，然后按 Enter 键。
 
 应在输出窗口中看到 azure 包已成功安装。 
@@ -176,7 +171,7 @@ compute_client = ComputeManagementClient(
     input('Availability set created. Press enter to continue...')
     ```
 
-与虚拟机通信需要[公共 IP 地址](../../virtual-network/virtual-network-ip-addresses-overview-arm.md)。
+与虚拟机通信需要[公共 IP 地址](../../virtual-network/public-ip-addresses.md)。
 
 1. 若要创建虚拟机的公共 IP 地址，请在 .py 文件中的变量后添加此函数：
 

@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 origin.date: 07/23/2019
 ms.date: 09/16/2019
-ms.openlocfilehash: 27d4d8c27e50e1740954e6e67ccf2eeb59f9ae1f
-ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
+ms.openlocfilehash: 28cb34a51ac962b7b81f1d323411710ff56af6b8
+ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84723610"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85516564"
 ---
 # <a name="create-virtual-networks-for-azure-hdinsight-clusters"></a>为 Azure HDInsight 群集创建虚拟网络
 
@@ -242,13 +242,13 @@ az network nsg rule create -g RESOURCEGROUP --nsg-name hdisecure -n ssh --protoc
 
     ```
     // Forward requests for the virtual network suffix to Azure recursive resolver
-    zone "0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net" {
+    zone "0owcbllr5hze3hxdja3mqlrhhe.ex.internal.chinacloudapp.cn" {
         type forward;
         forwarders {168.63.129.16;}; # Azure recursive resolver
     };
     ```
 
-    将 `0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net` 值替换为虚拟网络的 DNS 后缀。
+    将 `0owcbllr5hze3hxdja3mqlrhhe.ex.internal.chinacloudapp.cn` 值替换为虚拟网络的 DNS 后缀。
 
     此配置将针对虚拟网络 DNS 后缀的所有 DNS 请求路由到 Azure 递归解析程序。
 
@@ -324,13 +324,13 @@ az network nsg rule create -g RESOURCEGROUP --nsg-name hdisecure -n ssh --protoc
 
     ```
     // Forward requests for the virtual network suffix to Azure recursive resolver
-    zone "0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net" {
+    zone "0owcbllr5hze3hxdja3mqlrhhe.ex.internal.chinacloudapp.cn" {
         type forward;
         forwarders {10.0.0.4;}; # The IP address of the DNS server in the other virtual network
     };
     ```
 
-    将 `0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net` 值替换为另一虚拟网络的 DNS 后缀。____ 此项将对远程网络 DNS 后缀的请求路由到该网络中的自定义 DNS。
+    将 `0owcbllr5hze3hxdja3mqlrhhe.ex.internal.chinacloudapp.cn` 值替换为另一虚拟网络的 DNS 后缀。____ 此项将对远程网络 DNS 后缀的请求路由到该网络中的自定义 DNS。
 
 3. 在两个虚拟网络的自定义 DNS 服务器上，使用以下文本作为 `/etc/bind/named.conf.options` 文件的内容：
 

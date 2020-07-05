@@ -8,16 +8,16 @@ ms.service: synapse-analytics
 ms.topic: quickstart
 ms.subservice: ''
 origin.date: 04/27/2020
-ms.date: 06/15/2020
+ms.date: 07/06/2020
 ms.author: v-jay
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 59bbf74eb49580cbdb21dd3d8620bc111958d477
-ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
+ms.openlocfilehash: 432d554eb9b42fb05c398198a6134e58dd5172ec
+ms.sourcegitcommit: 7ea2d04481512e185a60fa3b0f7b0761e3ed7b59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84723549"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85845907"
 ---
 # <a name="quickstart-configure-workload-isolation-using-t-sql"></a>快速入门：使用 T-SQL 配置工作负荷隔离
 
@@ -26,11 +26,11 @@ ms.locfileid: "84723549"
 如果没有 Azure 订阅，可在开始前创建一个 [1 元人民币试用](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth)帐户。
 
 > [!NOTE]
-> 在 Azure Synapse Analytics 中创建一个 SQL Analytics 实例可能会产生一个新的计费服务。  有关详细信息，请参阅 [Azure Synapse Analytics 定价](https://azure.cn/pricing/details/sql-data-warehouse/)。
+> 在 Azure Synapse Analytics 中创建一个 Synapse SQL 实例可能会产生一个新的可计费服务。  有关详细信息，请参阅 [Azure Synapse Analytics 定价](https://azure.cn/pricing/details/sql-data-warehouse/)。
 
 ## <a name="prerequisites"></a>先决条件
 
-本快速入门假定你已在 Azure Synapse 中有 SQL Analytics 实例，并且具有 CONTROL DATABASE 权限。 如果需要创建一个 SQL 数据仓库，可使用[创建并连接 - 门户](create-data-warehouse-portal.md)创建名为“mySampleDataWarehouse”的数据仓库。
+本快速入门假定你已在 Azure Synapse 中有 Synapse SQL 实例，并且具有 CONTROL DATABASE 权限。 如果需要创建一个 SQL 数据仓库，可使用[创建并连接 - 门户](create-data-warehouse-portal.md)创建名为“mySampleDataWarehouse”的数据仓库。
 
 ## <a name="create-login-for-dataloads"></a>为 DataLoads 创建登录名
 

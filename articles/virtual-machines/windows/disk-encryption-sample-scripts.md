@@ -2,18 +2,19 @@
 title: Azure 磁盘加密示例脚本
 description: 本文是适用于 Windows VM 的 Azure 磁盘加密的附录。
 author: rockboyfor
-ms.service: security
+ms.service: virtual-machines-windows
+ms.subservice: security
 ms.topic: article
-ms.author: v-yeche
 origin.date: 08/06/2019
-ms.date: 11/11/2019
+ms.date: 07/06/2020
+ms.author: v-yeche
 ms.custom: seodec18
-ms.openlocfilehash: 55ec8ada3f7beb24364f7e74d9a3ec07194e30d4
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 7e292833b0f841371c4350de23d16207d6cb6eea
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292448"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85946008"
 ---
 # <a name="azure-disk-encryption-sample-scripts"></a>Azure 磁盘加密示例脚本 
 
@@ -76,22 +77,30 @@ Get-AzKeyVaultSecret -VaultName $KeyVaultName | where {$_.Tags.ContainsKey('Disk
 ### <a name="install-bitlocker-feature-components"></a>安装 BitLocker 功能组件
 对于 Windows Server 2012 或更高版本，请使用以下命令：
 
+```
     dism /online /Enable-Feature /all /FeatureName:BitLocker /quiet /norestart
+```
 
 对于 Windows Server 2008 R2，请使用以下命令：
 
+```
     ServerManagerCmd -install BitLockers
+```
 
 ### <a name="prepare-the-os-volume-for-bitlocker-by-using-bdehdcfg"></a>使用 `bdehdcfg` 为 BitLocker 准备 OS 卷
 若要压缩 OS 分区并为 BitLocker 准备计算机，请根据需要执行 [bdehdcfg](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-basic-deployment)：
 
+```
     bdehdcfg -target c: shrink -quiet 
+```
 
 ### <a name="protect-the-os-volume-by-using-bitlocker"></a>使用 BitLocker 保护 OS 卷
 使用 [`manage-bde`](https://technet.microsoft.com/library/ff829849.aspx) 命令在使用外部密钥保护程序的引导卷上启用加密。 此外将外部密钥（.bek 文件）放在外部驱动器或卷上。 下次重启后，会在系统/引导卷上启用加密。
 
+```
     manage-bde -on %systemdrive% -sk [ExternalDriveOrVolume]
     reboot
+```
 
 > [!NOTE]
 > 使用独立的数据/资源 VHD 准备 VM，以使用 BitLocker 获取外部密钥。
@@ -264,5 +273,4 @@ Set-AzKeyVaultAccessPolicy -VaultName $kvname -UserPrincipalName $acctid -Permis
             -KeyEncryptionKeyURL $KeyEncryptionKey.Id
 ```
 
-<!--Update_Description: new articles on disk encryption sample scripts -->
-<!--New.date: 11/04/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

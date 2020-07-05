@@ -12,20 +12,20 @@ ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
 origin.date: 02/11/2020
-ms.date: 05/29/2020
+ms.date: 07/01/2020
 ms.author: v-tawe
-ms.openlocfilehash: 136f57d2a6f01779f133ae0c256e1920859d4bb8
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+ms.openlocfilehash: 75029f370bcef804eb795cec4d5fa4566a94c60b
+ms.sourcegitcommit: 5afd7c4c3be9b80c4c67ec55f66fcf347aad74c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84199766"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85942558"
 ---
-# <a name="send-events-to-and-receive-events-from-azure-event-hubs---net-core-azuremessagingeventhubs"></a>向/从 Azure 事件中心发送/接收事件 - .NET Core (Azure.Messaging.EventHubs) 
-本快速入门介绍如何使用 **Azure.Messaging.EventHubs** .NET Core 库向事件中心发送事件以及从事件中心接收事件。 
+# <a name="send-events-to-and-receive-events-from-azure-event-hubs---net-azuremessagingeventhubs"></a>向 Azure 事件中心发送事件及从 Azure 事件中心接收事件 - .NET (Azure.Messaging.EventHubs) 
+本快速入门介绍如何使用 Azure.Messaging.EventHubs .NET 库向事件中心发送事件以及从事件中心接收事件。 
 
 > [!IMPORTANT]
-> 本快速入门使用新的 **Azure.Messaging.EventHubs** 库。 有关使用旧的 **Microsoft.Azure.EventHubs** 库的快速入门，请参阅[使用 Microsoft.Azure.EventHubs 库发送和接收事件](event-hubs-dotnet-standard-getstarted-send.md)。 
+> 本快速入门使用新的 Azure.Messaging.EventHubs 库。 有关使用旧的 Microsoft.Azure.EventHubs 库的快速入门，请参阅[使用 Microsoft.Azure.EventHubs 库发送和接收事件](event-hubs-dotnet-standard-getstarted-send.md)。 
 
 
 
@@ -35,31 +35,31 @@ ms.locfileid: "84199766"
 若要完成本快速入门，需要具备以下先决条件：
 
 - **Azure 订阅**。 若要使用 Azure 服务（包括 Azure 事件中心），需要一个订阅。  如果没有现有 Azure 帐户，可以注册 [1 元试用版](https://wd.azure.cn/pricing/1rmb-trial/)或[创建帐户](https://wd.azure.cn/pricing/pia/)。
-- **Microsoft Visual Studio 2019**。 Azure 事件中心客户端库利用 C# 8.0 中引入的新功能。  仍可以在旧版 C# 中使用该库，但该库的某些功能不可用。  若要启用这些功能，必须[将 .NET Core 3.0 用作目标](https://docs.microsoft.com/dotnet/standard/frameworks#how-to-specify-target-frameworks)，或指定要使用的[语言版本](https://docs.microsoft.com/dotnet/csharp/language-reference/configure-language-version#override-a-default)（8.0 或更高）。 如果使用 Visual Studio，Visual Studio 2019 以前的版本与用于生成 C# 8.0 项目的工具将不兼容。 可在[此处](https://visualstudio.microsoft.com/vs/)下载 Visual Studio 2019（包括免费的 Community Edition）
-- **创建事件中心命名空间和事件中心**。 第一步是使用 [Azure 门户](https://portal.azure.cn)创建事件中心类型的命名空间，并获取应用程序与事件中心进行通信所需的管理凭据。 要创建命名空间和事件中心，请按照[此文](event-hubs-create.md)中的步骤操作。 然后，按照以下文章中的说明获取**事件中心命名空间的连接字符串**：[获取连接字符串](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)。 本教程后面的步骤将使用此连接字符串。
+- Microsoft Visual Studio 2019。 Azure 事件中心客户端库利用 C# 8.0 中引入的新功能。  你仍可使用以前的 C# 语言版本的库，但新语法将不可用。 若要使用完整语法，建议使用 [.NET Core SDK](https://dotnet.microsoft.com/download) 3.0 或更高版本进行编译，并将[语言版本](https://docs.microsoft.com/dotnet/csharp/language-reference/configure-language-version#override-a-default) 设置为 `latest`。 如果使用 Visual Studio，Visual Studio 2019 以前的版本与生成 C# 8.0 项目时所需的工具将不兼容。 可在[此处](https://visualstudio.microsoft.com/vs/)下载 Visual Studio 2019（包括免费的 Community Edition）。
+- 创建事件中心命名空间和事件中心。 第一步是使用 [Azure 门户](https://portal.azure.cn)创建事件中心类型的命名空间，并获取应用程序与事件中心进行通信所需的管理凭据。 要创建命名空间和事件中心，请按照[此文](event-hubs-create.md)中的步骤操作。 然后，按照以下文章中的说明获取事件中心命名空间的连接字符串：[获取连接字符串](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)。 稍后将在本快速入门中使用连接字符串。
 
 ## <a name="send-events"></a>发送事件 
-此部分介绍如何创建可将事件发送到事件中心的 .NET Core 控制台应用程序。 
+本部分介绍如何创建一个向事件中心发送事件的 .NET Core 控制台应用程序。 
 
 ### <a name="create-a-console-application"></a>创建控制台应用程序
 
 1. 启动 Visual Studio 2019。 
-1. 选择“创建新项目”。  
-1. 在“创建新项目”对话框中执行以下步骤：  如果看不到此对话框，请在菜单中选择“文件”，然后依次选择“新建”、“项目”。    
-    1. 选择“C#”作为编程语言。 
-    1. 选择“控制台”作为应用程序类型。  
-    1. 从结果列表中选择“控制台应用(.NET Core)”。  
-    1. 然后，选择“下一步”  。 
+1. 选择“创建新项目”。 
+1. 在“创建新项目”对话框中执行以下步骤：如果看不到此对话框，请在菜单中选择“文件”，然后依次选择“新建”、“项目”。   
+    1. 选择“C#”作为编程语言。
+    1. 选择“控制台”作为应用程序类型。 
+    1. 从结果列表中选择“控制台应用(.NET Core)”。 
+    1. 然后，选择“下一步”。 
 
         ![“新建项目”对话框](./media/getstarted-dotnet-standard-send-v2/new-send-project.png)    
-1. 输入 **EventHubsSender** 作为项目名称，输入 **EventHubsQuickStart** 作为解决方案名称，然后选择“确定”以创建项目。  
+1. 输入 EventHubsSender 作为项目名称，输入 EventHubsQuickStart 作为解决方案名称，然后选择“确定”以创建项目。   
 
     ![C# > 控制台应用](./media/getstarted-dotnet-standard-send-v2/project-solution-names.png)
 
 ### <a name="add-the-event-hubs-nuget-package"></a>添加事件中心 NuGet 包
 
-1. 在菜单中选择“工具”   > “NuGet 包管理器”   > “包管理器控制台”  。 
-1. 运行以下命令安装 **Azure.Messaging.EventHubs** NuGet 包：
+1. 在菜单中选择“工具” > “NuGet 包管理器” > “包管理器控制台”。 
+1. 运行以下命令安装 Azure.Messaging.EventHubs NuGet 包：
 
     ```cmd
     Install-Package Azure.Messaging.EventHubs
@@ -68,7 +68,7 @@ ms.locfileid: "84199766"
 
 ### <a name="write-code-to-send-messages-to-the-event-hub"></a>编写代码以将消息发送到事件中心
 
-1. 在 **Program.cs** 文件顶部添加以下 `using` 语句：
+1. 在 Program.cs 文件顶部添加以下 `using` 语句：
 
     ```csharp
     using System.Text;
@@ -108,7 +108,7 @@ ms.locfileid: "84199766"
     ```
 5. 生成项目并确保没有错误。
 6. 运行程序并等待出现确认消息。 
-7. 在 Azure 门户中，可以验证事件中心是否已收到消息。 在“指标”部分切换到“消息”视图。   刷新页面以更新图表。 可能需要在几秒钟后才会显示已收到消息。 
+7. 在 Azure 门户中，可以验证事件中心是否已收到消息。 在“指标”部分切换到“消息”视图。  刷新页面以更新图表。 可能需要在几秒钟后才会显示已收到消息。 
 
     [![验证事件中心是否已收到消息](./media/getstarted-dotnet-standard-send-v2/verify-messages-portal.png)](./media/getstarted-dotnet-standard-send-v2/verify-messages-portal.png#lightbox)
 
@@ -134,19 +134,19 @@ ms.locfileid: "84199766"
 
 ### <a name="create-a-project-for-the-receiver"></a>为接收器创建项目
 
-1. 在“解决方案资源管理器”窗口中，右键单击“EventHubQuickStart”解决方案，指向“添加”，然后选择“新建项目”。    
-1. 依次选择“控制台应用(.NET Core)”、“下一步”。   
-1. 输入 **EventHubsReceiver** 作为**项目名称**，然后选择“创建”。  
+1. 在“解决方案资源管理器”窗口中，右键单击“EventHubQuickStart”解决方案，指向“添加”，然后选择“新建项目”。   
+1. 依次选择“控制台应用(.NET Core)”、“下一步”。  
+1. 输入 EventHubsReceiver 作为“项目名称”，然后选择“创建”。   
 
 ### <a name="add-the-event-hubs-nuget-package"></a>添加事件中心 NuGet 包
 
-1. 在菜单中选择“工具”   > “NuGet 包管理器”   > “包管理器控制台”  。 
-1. 运行以下命令安装 **Azure.Messaging.EventHubs** NuGet 包：
+1. 在菜单中选择“工具” > “NuGet 包管理器” > “包管理器控制台”。 
+1. 运行以下命令安装 Azure.Messaging.EventHubs NuGet 包：
 
     ```cmd
     Install-Package Azure.Messaging.EventHubs
     ```
-1. 运行以下命令安装 **Azure.Messaging.EventHubs.Processor** NuGet 包：
+1. 运行以下命令安装 Azure.Messaging.EventHubs.Processor NuGet 包：
 
     ```cmd
     Install-Package Azure.Messaging.EventHubs.Processor
@@ -154,7 +154,7 @@ ms.locfileid: "84199766"
 
 ### <a name="update-the-main-method"></a>更新 Main 方法 
 
-1. 在 **Program.cs** 文件顶部添加以下 `using` 语句。
+1. 在 Program.cs 文件顶部添加以下 `using` 语句。
 
     ```csharp
     using System.Text;

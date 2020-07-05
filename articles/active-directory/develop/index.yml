@@ -3,18 +3,18 @@ title: Microsoft 标识平台文档
 summary: 开发人员可以通过 Microsoft 标识平台来生成应用程序，从而可以采用所有 Microsoft 标识登录，以及获取令牌来调用 Microsoft API（如 Microsoft Graph）或你已生成的 API。 这一全功能平台包含符合 OAuth 2.0 和 OpenID Connect 标准的身份验证服务、开源库、应用程序注册和配置、可靠的概念和参考文档、快速入门、代码示例、教程以及操作方法指南。
 metadata:
   ms.topic: landing-page
-  ms.date: 04/22/2020
+  ms.date: 06/29/2020
   author: CelesteDG
   ms.author: v-junlch
   ms.service: active-directory
   ms.subservice: develop
   ms.workload: identity
-  ms.openlocfilehash: 26e64902a642ee6872a0f3d538f5941247e68d93
-  ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+  ms.openlocfilehash: 6e726c30cd2dda20ee20862254b43a1adf76f0a7
+  ms.sourcegitcommit: 1008ad28745709e8d666f07a90e02a79dbbe2be5
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 04/24/2020
-  ms.locfileid: "82126235"
+  ms.lasthandoff: 07/03/2020
+  ms.locfileid: "85945033"
 landingContent:
 - title: 关于 Microsoft 标识平台
   linkLists:
@@ -42,13 +42,13 @@ landingContent:
       url: scenario-spa-overview.md
   - linkListType: quickstart
     links:
-    - text: Javascript
+    - text: JavaScript - 隐式
       url: quickstart-v2-javascript.md
     - text: Angular
       url: quickstart-v2-angular.md
   - linkListType: tutorial
     links:
-    - text: Javascript
+    - text: JavaScript - 隐式
       url: tutorial-v2-javascript-spa.md
   - linkListType: download
     links:

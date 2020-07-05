@@ -1,5 +1,5 @@
 ---
-title: 在 Azure VM 中禁用来宾 OS 防火墙 | Azure
+title: 在 Azure VM 中禁用来宾 OS 防火墙
 description: 了解用于对以下情况进行故障排除时的解决方法，即来宾操作系统防火墙正在筛选发往 VM 的部分或全部流量。
 services: virtual-machines-windows
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 origin.date: 11/22/2018
-ms.date: 04/27/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 369a7b2286a936e11e6f55dafb1e5993e142c00a
-ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
+ms.openlocfilehash: 3364b50225c266ac0a70a9cda106f5da3c7afe59
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82596365"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945790"
 ---
 <!-- Verify part successfully-->
 # <a name="disable-the-guest-os-firewall-in-azure-vm"></a>在 Azure VM 中禁用来宾 OS 防火墙
@@ -51,7 +51,7 @@ ms.locfileid: "82596365"
 >   ```
 >   Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile' -name "EnableFirewall" -Value 0
 >   Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile' -name "EnableFirewall" -Value 0
->   Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\StandardProfile' name "EnableFirewall" -Value 0
+>   Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\StandardProfile' -name "EnableFirewall" -Value 0
 >   Restart-Service -Name mpssvc
 >   ```
 >   但是，只要再次应用该策略，就会被踢出远程会话。 此问题的永久性解决方法是修改此计算机上应用的策略。
@@ -76,9 +76,9 @@ ms.locfileid: "82596365"
 
 按以下步骤来使用[远程注册表](https://support.microsoft.com/help/314837/how-to-manage-remote-access-to-the-registry)。
 
-1. 在故障排除 VM 上，启动注册表编辑器，然后转到“文件” > “连接网络注册表”   。
+1. 在故障排除 VM 上，启动注册表编辑器，然后转到“文件” > “连接网络注册表” 。
 
-2. 打开 TARGET MACHINE  \SYSTEM 分支，指定以下值：
+2. 打开 TARGET MACHINE\SYSTEM 分支，指定以下值：
 
     ```
     <TARGET MACHINE>\SYSTEM\CurrentControlSet\services\SharedAccess\Parameters\FirewallPolicy\DomainProfile\EnableFirewall           -->        0 
@@ -88,11 +88,11 @@ ms.locfileid: "82596365"
 
 3. 重启服务。 由于无法使用远程注册表执行此操作，因此必须使用“远程服务控制台”。
 
-4. 打开 **Services.msc** 的实例。
+4. 打开 Services.msc 的实例。
 
-5. 单击“服务(本地)”  。
+5. 单击“服务(本地)”。
 
-6. 选择“连接到另一台计算机”。 
+6. 选择“连接到另一台计算机”。
 
 7. 输入问题 VM 的**专用 IP 地址 (DIP)** 。
 

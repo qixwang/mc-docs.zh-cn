@@ -8,13 +8,13 @@ ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 04/01/2020
-ms.date: 06/09/2020
-ms.openlocfilehash: ef737d34ce9f37ad77b372a20cf714723fdee591
-ms.sourcegitcommit: c4fc01b7451951ef7a9616fca494e1baf29db714
+ms.date: 07/02/2020
+ms.openlocfilehash: 9979cbfd506c8b0e1975eebcd9d0cbfd6dafa4a4
+ms.sourcegitcommit: 5afd7c4c3be9b80c4c67ec55f66fcf347aad74c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84564220"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85942583"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>如何在 Azure 认知搜索中使用搜索结果
 
@@ -127,8 +127,6 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2019-05-06
     '<em>super bowl</em> is super awesome with a bowl of chips'
     ```
   请注意，字词“bowl of chips”没有任何突出显示效果，因为它不与完整短语匹配**。
-  
-* 可以指定返回的要突出显示的片段大小。 片段大小以字符数指定（最大 1000 个字符）。
 
 编写实现命中项突出显示的客户端代码时，请注意此项更改。 请注意，除非创建全新的搜索服务，否则你不会受到影响。
 

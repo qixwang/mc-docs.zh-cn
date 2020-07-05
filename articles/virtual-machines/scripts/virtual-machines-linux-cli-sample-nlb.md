@@ -1,5 +1,5 @@
 ---
-title: Azure CLI 脚本示例 - 创建高度可用的 VM
+title: 创建高度可用 VM
 description: Azure CLI 脚本示例 - 使用 NLB 创建 Linux VM
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -13,15 +13,15 @@ ms.topic: sample
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 origin.date: 02/27/2017
-ms.date: 04/27/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 24128cedc8abce4057360eed2c88d64f0f0949cc
-ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
+ms.openlocfilehash: 612a18e5099540e31d52c80ac2186184d4cfa20c
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82596043"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945679"
 ---
 # <a name="create-a-highly-available-vm"></a>创建高度可用 VM
 

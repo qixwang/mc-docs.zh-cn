@@ -1,5 +1,5 @@
 ---
-title: 排查 Azure VM 分配故障 | Azure
+title: 在 Azure 中创建、重启 VM 或重设其大小时排查分配失败
 description: 在 Azure 中创建、重启 VM 或重设其大小时排查分配失败
 services: virtual-machines
 documentationcenter: ''
@@ -11,14 +11,14 @@ ms.assetid: 1ef41144-6dd6-4a56-b180-9d8b3d05eae7
 ms.service: virtual-machines
 ms.topic: troubleshooting
 origin.date: 04/13/2018
-ms.date: 04/27/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 02a3200e6872c201c60e41a7b67925dfea6a4025
-ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
+ms.openlocfilehash: 4237775d2d2cc234fff064ec17896c9077c5655d
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82596290"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945978"
 ---
 # <a name="troubleshoot-allocation-failures-when-you-create-restart-or-resize-vms-in-azure"></a>在 Azure 中创建、重启 VM 或重设其大小时排查分配失败
 

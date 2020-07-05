@@ -11,12 +11,12 @@ ms.topic: quickstart
 origin.date: 04/13/2019
 ms.date: 04/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: ba48f7f54692bba718a6feb31bdff9d4488af8a6
-ms.sourcegitcommit: 304d3ef3c9e65c3e85977b3afb9985fbc0f908d6
+ms.openlocfilehash: 302cb48a5ca06f008da6da78f6bd6fa36fa54a0c
+ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85095887"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85613353"
 ---
 # <a name="quickstart-get-the-list-of-text-to-speech-voices-using-nodejs"></a>快速入门：使用 Node.js 获取“文本转语音”语音的列表
 
@@ -77,7 +77,7 @@ function getAccessToken(subscriptionKey) {
 
 ## <a name="make-a-request-and-save-the-response"></a>发出请求并保存响应
 
-此处我们将要生成请求并保存返回的语音列表。 此示例假设使用“美国西部”终结点。 如果已将资源注册到其他区域，请务必更新 `uri`。 有关详细信息，请参阅[语音服务区域](https://docs.azure.cn/cognitive-services/speech-service/regions#text-to-speech)。
+此处我们将要生成请求并保存返回的语音列表。 此示例假设使用“中国东部 2”终结点。 如果已将资源注册到其他区域，请务必更新 `uri`。 有关详细信息，请参阅[语音服务区域](https://docs.azure.cn/cognitive-services/speech-service/regions#text-to-speech)。
 
 接下来，为请求添加所需的标头。 最后，向服务发出请求。 如果请求成功，并返回 200 状态代码，则响应将写入文件。
 

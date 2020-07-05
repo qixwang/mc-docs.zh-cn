@@ -2,29 +2,23 @@
 title: 使用 Java 创建和管理 Azure 虚拟机
 description: 使用 Java 和 Azure 资源管理器部署虚拟机及其所有支持资源。
 services: virtual-machines-windows
-documentationcenter: ''
 author: rockboyfor
-manager: digimobile
-editor: tysonn
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.workload: na
-ms.tgt_pltfrm: vm-windows
-ms.topic: article
+ms.workload: infrastructure
+ms.topic: how-to
 origin.date: 07/17/2017
-ms.date: 02/10/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 466e4e827f25e9f5be9cbc11f80f8b714601fc02
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 728652a311d5c9a37f44030b0229bafa6a4003df
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77428647"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945765"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-java"></a>使用 Java 创建和管理 Azure 中的 Windows VM
 
-[Azure 虚拟机](overview.md?toc=%2fvirtual-machines%2fwindows%2ftoc.json) (VM) 需要多个支持性 Azure 资源。 本文介绍如何使用 Java 创建、管理和删除 VM 资源。 学习如何：
+[Azure 虚拟机](overview.md?toc=%2fvirtual-machines%2fwindows%2ftoc.json) (VM) 需要多个支持性 Azure 资源。 本文介绍如何使用 Java 创建、管理和删除 VM 资源。 你将学习如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建 Maven 项目
@@ -117,7 +111,7 @@ ms.locfileid: "77428647"
 
 ## <a name="create-credentials"></a>创建凭据
 
-在开始此步骤之前，请确保能够访问 [Active Directory 服务主体](../../active-directory/develop/howto-create-service-principal-portal.md)。 还应该记录稍后步骤需要的应用程序 ID、身份验证秘钥和的租户 ID。
+在开始此步骤之前，请确保能够访问 [Active Directory 服务主体](../../active-directory/develop/howto-create-service-principal-portal.md)。 此外，应记下应用程序 ID、身份验证密钥和租户 ID，以便在后面的步骤中使用。
 
 ### <a name="create-the-authorization-file"></a>创建授权文件
 
@@ -134,7 +128,7 @@ ms.locfileid: "77428647"
     graphURL=https://graph.chinacloudapi.cn/
     ```
 
-    将 &lt;subscription-id&gt; 替换为订阅标识符，&lt;application-id&gt; 替换为 Active Directory 应用程序标识符，&lt;authentication-key&gt; 替换为授权密钥，&lt;tenant-id&gt; 替换为租户标识符   。
+    将 &lt;subscription-id&gt; 替换为订阅标识符，将 &lt;application-id&gt; 替换为 Active Directory 应用程序标识符，将 &lt;authentication-key&gt; 替换为应用程序密钥，将 &lt;tenant-id&gt; 替换为租户标识符   。
 
 2. 保存文件。
 3. 在 shell 中将包含完整路径的环境变量 AZURE_AUTH_LOCATION 设置为身份验证文件。
@@ -203,7 +197,7 @@ ResourceGroup resourceGroup = azure.resourceGroups()
 
 ### <a name="create-the-availability-set"></a>创建可用性集
 
-[可用性集](tutorial-availability-sets.md)可以方便你维护应用程序所使用的虚拟机。
+使用[可用性集](tutorial-availability-sets.md)可以更方便地维护应用程序所用的虚拟机。
 
 若要创建可用性集，请将此代码添加到 main 方法的 try 块：
 
@@ -218,7 +212,7 @@ AvailabilitySet availabilitySet = azure.availabilitySets()
 ```
 ### <a name="create-the-public-ip-address"></a>创建公共 IP 地址
 
-与虚拟机通信需要[公共 IP 地址](../../virtual-network/virtual-network-ip-addresses-overview-arm.md)。
+与虚拟机通信需要[公共 IP 地址](../../virtual-network/public-ip-addresses.md)。
 
 若要创建虚拟机的公共 IP 地址，请将此代码添加到 main 方法的 try 块：
 
@@ -234,7 +228,7 @@ PublicIPAddress publicIPAddress = azure.publicIPAddresses()
 
 ### <a name="create-the-virtual-network"></a>创建虚拟网络
 
-虚拟机必须是[虚拟网络](../../virtual-network/virtual-networks-overview.md)的子网。
+虚拟机必须在[虚拟网络](../../virtual-network/virtual-networks-overview.md)的子网中。
 
 若要创建子网和虚拟网络，请将此代码添加到 main 方法的 try 块：
 
@@ -270,7 +264,7 @@ NetworkInterface networkInterface = azure.networkInterfaces()
 
 ### <a name="create-the-virtual-machine"></a>创建虚拟机
 
-创建所有支持的资源后，可以创建虚拟机。
+创建所有支持资源后，即可创建虚拟机。
 
 若要创建虚拟机，请将此代码添加到 main 方法的 try 块：
 
@@ -294,7 +288,7 @@ input.nextLine();
 ```
 
 > [!NOTE]
-> 本教程创建运行 Windows Server 操作系统版本的虚拟机。 若要详细了解如何选择其他映像，请参阅 [Navigate and select Azure virtual machine images with Windows PowerShell and the Azure CLI](../linux/cli-ps-findimage.md?toc=%2fvirtual-machines%2flinux%2ftoc.json)（使用 Windows PowerShell 和 Azure CLI 来导航和选择 Azure 虚拟机映像）。
+> 本教程创建运行 Windows Server 操作系统版本的虚拟机。 若要详细了解如何选择其他映像，请参阅[使用 Windows PowerShell 和 Azure CLI 来导航和选择 Azure 虚拟机映像](../linux/cli-ps-findimage.md?toc=%2fvirtual-machines%2flinux%2ftoc.json)。
 > 
 >
 
@@ -389,7 +383,7 @@ input.nextLine();
 
 ### <a name="stop-the-vm"></a>停止 VM
 
-可以停止虚拟机并保留其所有设置但继续支付其费用，也可以停止虚拟机并将其解除分配。 解除分配某个虚拟机也会解除分配与其关联的所有资源，并停止该虚拟机的计费。
+可停止虚拟机并保留其所有设置，但需继续付费；还可停止虚拟机并解除分配。 解除分配虚拟机时，也会解除分配与其关联的所有资源并将停止计费。
 
 若要停止虚拟机而不解除分配虚拟机，请将此代码添加到 main 方法的 try 块：
 
@@ -400,7 +394,7 @@ System.out.println("Press enter to continue...");
 input.nextLine();
 ```
 
-如果要解除分配虚拟机，请将 PowerOff 调用更改为以下代码：
+要解除分配虚拟机，请将 PowerOff 调用更改为以下代码：
 
 ```java
 vm.deallocate();
@@ -468,7 +462,7 @@ input.nextLine();
     mvn compile exec:java
     ```
 
-2. 在按 **Enter** 开始删除资源之前，可能需要在 Azure 门户中花几分钟时间来验证资源的创建。 单击部署状态以查看有关部署的信息。
+2. 在按 **Enter** 开始删除资源之前，可能需要在 Azure 门户中花几分钟时间来验证这些资源是否已创建。 单击部署状态以查看有关部署的信息。
 
 ## <a name="next-steps"></a>后续步骤
 * 详细了解如何使用[用于 Java 的 Azure 库](https://docs.azure.cn/java/java-sdk-azure-overview)。

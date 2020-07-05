@@ -8,14 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
 origin.date: 05/11/2020
-ms.date: 06/12/2020
+ms.date: 07/01/2020
 ms.author: v-tawe
-ms.openlocfilehash: 57e3369deeb93c9476dff5dd7e80ccad7ae20917
-ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
+ms.custom: tracking-python
+ms.openlocfilehash: d4cee9e58a1bfaaa038d5a7a7c89fe451ffa631c
+ms.sourcegitcommit: 4f84bba7e509a321b6f68a2da475027c539b8fd3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84723845"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85796262"
 ---
 # <a name="azure-cognitive-services-security"></a>Azure 认知服务安全性
 

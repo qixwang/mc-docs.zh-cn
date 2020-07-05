@@ -7,15 +7,15 @@ ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
 origin.date: 05/08/2020
-ms.date: 06/08/2020
+ms.date: 07/06/2020
 ms.author: v-jay
 ms.localizationpriority: high
-ms.openlocfilehash: 304ae5be38f3a0316d6e47d6166d6ae5195b2cf0
-ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
+ms.openlocfilehash: 72b2ca8007f4227b49c43961c1e9eb5bec2c3111
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84723618"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945717"
 ---
 ::: zone target="docs"
 
@@ -168,7 +168,7 @@ ms.locfileid: "84723618"
 
     ```
     To: adbops@microsoft.com
-    Subject: Request for Azure Data Box Disk drop-off for order: ‘orderName’
+    Subject: Request for Azure Data Box Disk drop-off for order: 'orderName'
     Body: 
      a. Order name
      b. Contact name of the person dropping off. You will need to display a Government approved ID during the drop off.

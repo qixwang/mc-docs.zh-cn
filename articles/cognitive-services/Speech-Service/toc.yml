@@ -5,13 +5,15 @@
   items:
     - name: 什么是语音服务？
       href: overview.md
-    - name: 试用语音服务
+    - name: 免费试用语音服务
       href: get-started.md
     - name: 语言和语音支持
       displayName: 'languages,locales,voice,gender,language code,locale,locale code,neural voice,standard voice'
       href: language-support.md
     - name: 区域支持
       href: regions.md
+    - name: Docs 中的新增内容
+      href: whats-new.md
 - name: 语音转文本
   items:
     - name: 语音转文本文档
@@ -32,6 +34,8 @@
           href: quickstarts/speech-to-text-from-file.md
         - name: 识别存储在 Blob 存储中的语音
           href: quickstarts/from-blob.md
+        - name: 在 Speech Studio 中使用音频文件测试模型
+          href: quickstarts/speech-studio-test-model.md
     - name: 操作指南
       items:
         - name: 选择语音识别模式
@@ -271,6 +275,10 @@
           href: speech-devices-sdk-roobo-v1.md
         - name: Roobo v2 详细信息
           href: speech-devices-sdk-roobo-v2.md
+    - name: 操作指南
+      items:
+        - name: 如何配置麦克风阵列
+          href: how-to-devices-microphone-array-configuration.md
     - name: 快速入门
       items:
         - name: 使用语音设备 SDK
@@ -283,6 +291,21 @@
       items:
         - name: 语音设备 SDK 发行说明
           href: devices-sdk-release-notes.md
+- name: 工具
+  items:
+    - name: 语音 CLI
+      displayName: SPX
+      items:
+        - name: 什么是语音 CLI？
+          displayName: What is SPX?
+          href: spx-overview.md
+        - name: 语音 CLI 基础知识
+          displayName: SPX basics
+          href: spx-basics.md
+    - name: Speech Studio
+      items:
+        - name: 什么是 Speech Studio？
+          href: 'https://speech.azure.cn'
 - name: 资源
   items:
     - name: 支持

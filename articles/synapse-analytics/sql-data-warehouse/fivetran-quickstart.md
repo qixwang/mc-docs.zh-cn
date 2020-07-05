@@ -8,40 +8,40 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: ''
 origin.date: 10/12/2018
-ms.date: 05/11/2020
+ms.date: 07/06/2020
 ms.author: v-jay
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: aeada9a785e047a76df2876c723c9ac97b0b6927
-ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
+ms.openlocfilehash: 94cd2ba5adf266c396a3462d2a1d59175937839b
+ms.sourcegitcommit: 7ea2d04481512e185a60fa3b0f7b0761e3ed7b59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82198647"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85845824"
 ---
-# <a name="quickstart-fivetran-with-data-warehouse"></a>快速入门：带数据仓库的 Fivetran 
+# <a name="quickstart-fivetran-with-data-warehouse"></a>快速入门：Fivetran 和数据仓库 
 
-本快速入门介绍如何设置一个新的 Fivetran 用户，以便使用预配了 SQL 池的 Azure Synapse Analytics 数据仓库。 本文假定你已有数据仓库。
+本快速入门介绍了如何设置新的 Fivetran 用户，以使用通过 SQL 池预配的 Synapse Analytics 数据仓库。 本文假定你已有数据仓库。
 
 ## <a name="set-up-a-connection"></a>设置连接
 
-1. 查找用于连接到数据仓库的完全限定的服务器名和数据库名。
+1. 查找用于连接到数据仓库的完全限定的服务器名称和数据库名。
     
-    如果在查找该信息时需要帮助，请参阅[连接到数据仓库](sql-data-warehouse-connect-overview.md)。
+    如果需要有关查找此信息的帮助，请参阅[连接到数据仓库](sql-data-warehouse-connect-overview.md)。
 
 2. 在安装向导中，选择是要直接连接数据库还是通过 SSH 隧道进行连接。
 
    如果选择直接连接数据库，则必须创建防火墙规则，用于允许访问。 此方法是最简单且最安全的方法。
 
-   如果选择使用 SSH 隧道进行连接，则 Fivetran 会连接到网络中一个单独的服务器。 服务器提供一个连接到数据库的 SSH 隧道。 如果数据库位于虚拟网络上一个无法访问的子网中，则必须使用此方法。
+   如果选择通过 SSH 隧道进行连接，Fivetran 会连接到网络中一个单独的服务器。 服务器提供一个连接到数据库的 SSH 隧道。 如果数据库位于虚拟网络上一个无法访问的子网中，则必须使用此方法。
 
-3. 在服务器级防火墙中添加 IP 地址 52.0.2.4  ，以允许从 Fivetran 到数据仓库实例的传入连接。
+3. 在服务器级别的防火墙中添加 IP 地址“52.0.2.4”，允许传入从 Fivetran 到数据仓库实例的连接。
 
    有关详细信息，请参阅[创建服务器级防火墙规则](create-data-warehouse-portal.md#create-a-server-level-firewall-rule)。
 
 ## <a name="set-up-user-credentials"></a>设置用户凭据
 
-1. 使用 SQL Server Management Studio (SSMS) 或你喜欢使用的工具连接到数据仓库。 以服务器管理员用户身份登录。 然后，运行以下 SQL 命令，为 Fivetran 创建一个用户：
+1. 使用 SQL Server Management Studio (SSMS) 或首选工具连接到数据仓库。 以服务器管理员用户身份登录。 然后，运行以下 SQL 命令，为 Fivetran 创建一个用户：
 
     - 在 master 数据库中： 
     
@@ -57,7 +57,7 @@ ms.locfileid: "82198647"
       GRANT IMPERSONATE on USER::fivetran_user_without_login to fivetran;
       ```
 
-2. 向 Fivetran 用户授予对数据仓库的以下权限：
+2. 向 Fivetran 用户授予以下数据仓库权限：
 
     ```sql
     GRANT CONTROL to fivetran;
@@ -76,12 +76,12 @@ ms.locfileid: "82198647"
     有关详细信息，请阅读[内存和并发限制](memory-concurrency-limits.md)和[资源类](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md#ways-to-allocate-more-memory)。
 
 
-## <a name="connect-from-fivetran"></a>从 Fivetran 进行连接
+## <a name="connect-from-fivetran"></a>从 Fivetran 连接
 
-若要从 Fivetran 帐户连接到数据仓库，请输入用于访问数据仓库的凭据： 
+要从 Fivetran 帐户连接到数据仓库，请输入用于访问数据仓库的凭据： 
 
 * 主机（服务器名称）。
 * 端口。
 * 数据库。
 * 用户（用户名应该为 fivetran\@_server_name_，其中的 server_name 是 Azure 主机 URI _server\_name_.database.chinacloudapi.cn 的一部分）。   
-* 密码。
+* Password。

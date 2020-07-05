@@ -5,15 +5,15 @@ tags: azure-service-management
 ms.assetid: b7d46d6f-44fd-454c-8008-87dab6eefbc1
 ms.topic: sample
 origin.date: 03/20/2017
-ms.date: 01/13/2020
+ms.date: 06/22/2020
 ms.author: v-tawe
 ms.custom: mvc
-ms.openlocfilehash: 929c677318f1d4a96a0d4c87214a5db29b1f4050
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 893fef4040740bcb545793820a63d159984ed274
+ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75600255"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85611875"
 ---
 # <a name="upload-files-to-a-web-app-using-ftp"></a>使用 FTP 将文件上传到 Web 应用
 
@@ -71,7 +71,7 @@ $webclient.Dispose()
 运行脚本示例后，可以使用以下命令删除资源组、Web 应用以及所有相关资源。
 
 ```powershell
-Remove-AzResourceGroup -Name $webappname -Force
+Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
 ## <a name="script-explanation"></a>脚本说明

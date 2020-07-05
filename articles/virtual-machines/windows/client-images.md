@@ -6,15 +6,17 @@ ms.subservice: imaging
 ms.service: virtual-machines-windows
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 05/25/2020
+origin.date: 12/15/2017
+ms.date: 07/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 044d88981889e2816a3972e2c28f4c9fd5bf6edd
-ms.sourcegitcommit: 981a75a78f8cf74ab5a76f9e6b0dc5978387be4b
+ms.openlocfilehash: 29b1e65cff783ffc162bddc9f4c3a5d571d71415
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83801904"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945702"
 ---
+<!--Verified successfully-->
 # <a name="use-windows-client-in-azure-for-devtest-scenarios"></a>在 Azure 中使用 Windows 客户端实现开发/测试方案
 如果有相应的 Visual Studio（以前为 MSDN）订阅，可以在 Azure 中使用 Windows 7 或 Windows 10 企业版 (x64) 实施开发/测试方案。 本文概述在 Azure 中运行 Windows 7、Windows 10 企业版和使用以下 Azure 库映像所要满足的条件。
 

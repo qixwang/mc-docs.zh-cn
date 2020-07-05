@@ -2,13 +2,15 @@
 title: 安装 Azure 恢复服务 (MARS) 代理
 description: 了解如何安装用于备份 Windows 计算机的 Azure 恢复服务 (MARS) 代理。
 ms.topic: conceptual
-ms.date: 05/13/2020
-ms.openlocfilehash: ecbb0770fd3868e24675712edc3b58204077150a
-ms.sourcegitcommit: 08b42258a48d96d754244064d065e4d5703f1cfb
+author: Johnnytechn
+ms.date: 06/22/2020
+ms.author: v-johya
+ms.openlocfilehash: fd29836ce969691305ef304db2bbae5f18475500
+ms.sourcegitcommit: 372899a2a21794e631eda1c6a11b4fd5c38751d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/18/2020
-ms.locfileid: "83445232"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85852042"
 ---
 # <a name="install-the-azure-backup-mars-agent"></a>安装 Azure 备份 MARS 代理
 
@@ -66,9 +68,9 @@ Azure 备份使用 MARS 代理备份本地计算机和 Azure VM 中的文件、�
 如果计算机的 Internet 访问状态受限，请确保计算机或代理上的防火墙设置允许以下 URL 和 IP 地址：
 
 * URL
-  * `www\.msftncsi.com`
+  * `www.msftncsi.com`
   * `*.Microsoft.com`
-  * `*.WindowsAzure.com`
+  * `*.WindowsAzure.cn`
   * `*.partner.microsoftonline.cn`
   * `*.chinacloudapi.cn`
 * IP 地址
@@ -93,7 +95,7 @@ Azure 备份使用 MARS 代理备份本地计算机和 Azure VM 中的文件、�
 * Azure 区域（取决于你的恢复服务保管库的位置）
 * Azure 存储（取决于你的恢复服务保管库的位置）
 
-有关详细信息，请参阅 [ExpressRoute 路由要求](https://docs.microsoft.com/azure/expressroute/expressroute-routing)。
+有关详细信息，请参阅 [ExpressRoute 路由要求](/expressroute/expressroute-routing)。
 
 > [!NOTE]
 > 对于新线路，公共对等互连已弃用。

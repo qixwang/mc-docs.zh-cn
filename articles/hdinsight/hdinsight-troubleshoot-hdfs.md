@@ -12,12 +12,12 @@ ms.topic: conceptual
 origin.date: 04/27/2020
 ms.date: 06/22/2020
 ms.author: v-yiso
-ms.openlocfilehash: 58a5ab47f82e6306d69dd5caccc3f109404abd4e
-ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
+ms.openlocfilehash: 6b8209046d0cbec15cb6e5be328fd406e4dc77a0
+ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84723202"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85516555"
 ---
 # <a name="troubleshoot-apache-hadoop-hdfs-by-using-azure-hdinsight"></a>使用 Azure HDInsight 对 Apache Hadoop HDFS 进行故障排除
 
@@ -117,7 +117,7 @@ hadoop -fs -D fs.azure.write.request.size=4194304 -copyFromLocal test_large_file
 
 还可使用 Apache Ambari 以全局方式增加 `fs.azure.write.request.size` 的值。 可以使用以下步骤在 Ambari Web UI 中更改该值：
 
-1. 在浏览器中，转到群集的 Ambari Web UI。 URL 为 `https://CLUSTERNAME.azurehdinsight.net`，其中 `CLUSTERNAME` 是群集的名称。 出现提示时，输入群集的管理员名称和密码。
+1. 在浏览器中，转到群集的 Ambari Web UI。 URL 为 `https://CLUSTERNAME.azurehdinsight.cn`，其中 `CLUSTERNAME` 是群集的名称。 出现提示时，输入群集的管理员名称和密码。
 2. 在屏幕左侧选择“HDFS”，然后选择“配置”选项卡**** ****。
 3. 在“筛选...”字段中输入 `fs.azure.write.request.size`****。
 4. 将值从 262144 (256 KB) 更改为新的值。 例如，4194304 (4 MB)。

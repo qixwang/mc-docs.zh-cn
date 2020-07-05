@@ -9,15 +9,15 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
 origin.date: 05/05/2020
-ms.date: 06/02/2020
+ms.date: 07/01/2020
 ms.author: v-tawe
 Customer intent: As a key vault administrator, I want to move my vault to another subscription.
-ms.openlocfilehash: 4a8e73feaf25b20652b0883c254d88bd4731f9f6
-ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
+ms.openlocfilehash: 360675b364220bfb35732ad2aed57ae1c662d931
+ms.sourcegitcommit: 4f84bba7e509a321b6f68a2da475027c539b8fd3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84275716"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85796251"
 ---
 # <a name="moving-an-azure-key-vault-to-another-subscription"></a>将 Azure Key Vault 移动到另一个订阅
 
@@ -67,9 +67,8 @@ ms.locfileid: "84275716"
 4. 选择“移动”按钮
 5. 从下拉选项中选择“移动到另一个订阅”
 6. 选择要将密钥保管库移动到其中的资源组
-7. 选择要将密钥保管库移动到其中的资源组
-8. 确认有关移动资源的警告
-9. 选择“确定”
+7. 确认有关移动资源的警告
+8. 选择“确定”
 
 ### <a name="additional-steps-post-move"></a>其他步骤（移动后）
 
@@ -102,3 +101,5 @@ az keyvault update -n myvault --set Properties.tenantId=$tenantId          # Upd
 如果使用 Azure 资源的托管标识，则还需要将其更新为新的 Azure AD 租户。 有关托管标识的详细信息，请参阅[使用托管标识提供 Key Vault 身份验证](managed-identity.md)。
 
 如果使用的是 MSI，则还必须更新 MSI 标识，因为旧标识将不再位于相应的 AAD 租户中。
+
+

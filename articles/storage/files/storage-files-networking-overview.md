@@ -8,12 +8,12 @@ origin.date: 02/22/2020
 ms.date: 03/09/2020
 ms.author: v-jay
 ms.subservice: files
-ms.openlocfilehash: bd341ecd992926bb5da7de861b92347a36ec4442
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: ff5f25792902b5ced5229d7030ccc98c0296d412
+ms.sourcegitcommit: 7ea2d04481512e185a60fa3b0f7b0761e3ed7b59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78412307"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85845744"
 ---
 # <a name="azure-files-networking-considerations"></a>Azure 文件存储的网络注意事项 
 可以通过一种方式连接到 Azure 文件共享：
@@ -49,7 +49,7 @@ Azure 文件存储支持通过以下机制在本地工作站和服务器与 Azur
 
 - [Azure VPN 网关](../../vpn-gateway/vpn-gateway-about-vpngateways.md)：VPN 网关是特定类型的虚拟网关，用于通过 Internet 在 Azure 虚拟网络和备用位置（例如，本地）之间发送加密的流量。 Azure VPN 网关是一种 Azure 资源，可以与存储帐户或其他 Azure 资源一起部署在资源组中。 VPN 网关公开了两种不同类型的连接：
     - [点到站点 (P2S) VPN](../../vpn-gateway/point-to-site-about.md) 网关连接，这是 Azure 与单个客户端之间建立的 VPN 连接。 对于那些不属于组织的本地网络的设备（例如，希望能够在家中、咖啡店或酒店随时随地装载 Azure 文件共享的远程办公人员），此解决方案非常有用。 若要将 P2S VPN 连接与 Azure 文件存储一起使用，需要为每个要连接的客户端配置 P2S VPN 连接。 
-    - [站点到站点 (S2S) VPN](../../vpn-gateway/vpn-gateway-about-vpngateways.md#s2smulti)，这是 Azure 与组织的网络之间建立的 VPN 连接。 通过 S2S VPN 连接，你可以为组织的网络上托管的 VPN 服务器或设备一次性配置 VPN 连接，而不是为需要访问 Azure 文件共享的每个客户端设备都进行一次配置。
+    - [站点到站点 (S2S) VPN](../../vpn-gateway/design.md#s2smulti)，这是 Azure 与组织的网络之间建立的 VPN 连接。 通过 S2S VPN 连接，你可以为组织的网络上托管的 VPN 服务器或设备一次性配置 VPN 连接，而不是为需要访问 Azure 文件共享的每个客户端设备都进行一次配置。
 - [ExpressRoute](../../expressroute/expressroute-introduction.md)，使你可以在 Azure 与不经过 Internet 的本地网络之间创建定义的路由。 因为 ExpressRoute 在本地数据中心和 Azure 之间提供了专用路径，所以当存在网络性能方面的顾虑时，ExpressRoute 可能会很有用。 组织的策略或法规要求使用确定的路径访问云中的资源时，ExpressRoute 也是一个不错的选择。
 
 无论使用哪种隧道方法来访问 Azure 文件共享，都需要通过某种机制来确保发往存储帐户的流量经过隧道，而不是经过普通的 Internet 连接。 在技术上可以将流量路由到存储帐户的公共终结点，但这需要对区域中 Azure 存储群集的所有 IP 地址进行硬编码，因为存储帐户随时都可能在存储群集之间移动。 此外，还需要经常更新 IP 地址映射，因为新群集在不断地添加。
@@ -57,7 +57,7 @@ Azure 文件存储支持通过以下机制在本地工作站和服务器与 Azur
 ## <a name="storage-account-firewall-settings"></a>存储帐户防火墙设置
 防火墙是一种网络策略，控制允许哪些请求访问存储帐户的公共终结点。 使用存储帐户防火墙，可以仅限特定的 IP 地址、IP 范围或虚拟网络访问存储帐户的公共终结点。 通常，大多数针对存储帐户的防火墙策略仅限一个或多个虚拟网络进行网络访问。 
 
-可通过一种方法来仅限虚拟网络访问存储帐户：仅限一个或多个虚拟网络访问公共终结点。 为此，可以使用称作“服务终结点”的虚拟网络功能。  通过服务终结点限制发往存储帐户的流量时，仍会通过公共 IP 地址访问存储帐户。
+可通过一种方法来仅限虚拟网络访问存储帐户：仅限一个或多个虚拟网络访问公共终结点。 为此，可以使用称作“服务终结点”的虚拟网络功能。 通过服务终结点限制发往存储帐户的流量时，仍会通过公共 IP 地址访问存储帐户。
 
 若要详细了解如何配置存储帐户防火墙，请参阅[配置 Azure 存储防火墙和虚拟网络](../common/storage-network-security.md?toc=%2fstorage%2ffiles%2ftoc.json)。
 

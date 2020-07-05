@@ -8,22 +8,22 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: ''
 origin.date: 04/30/2020
-ms.date: 06/15/2020
+ms.date: 07/06/2020
 ms.author: v-jay
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: d96a0d561f2466435a014ac6f29e4703d0928862
-ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
+ms.openlocfilehash: 1ff9e49ada773fba6c94c955eeb71a4c2bb6c155
+ms.sourcegitcommit: 7ea2d04481512e185a60fa3b0f7b0761e3ed7b59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84723542"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85845734"
 ---
 # <a name="synapse-sql-recommendations"></a>Synapse SQL 建议
 
 本文介绍了通过 Azure 顾问提供的 Synapse SQL 建议。  
 
-SQL Analytics 提供了一些建议，确保数据仓库工作负载始终针对性能进行优化。 建议与 [Azure 顾问](../../advisor/advisor-performance-recommendations.md?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)紧密集成，直接在 [Azure 门户](https://portal.azure.cn/#blade/Microsoft_Azure_Expert/AdvisorBlade)中为你提供最佳做法。 SQL Analytics 每天收集活动工作负载的遥测数据并提出建议。 下面概述了支持的建议方案，以及如何应用建议的操作。
+Synapse SQL 提供建议，确保以一致的方式优化数据仓库工作负荷的性能。 建议与 [Azure 顾问](../../advisor/advisor-performance-recommendations.md?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)紧密集成，直接在 [Azure 门户](https://portal.azure.cn/#blade/Microsoft_Azure_Expert/AdvisorBlade)中为你提供最佳做法。 Synapse SQL 每天收集一次活动工作负荷的遥测和外围应用建议。 下面概述了支持的建议方案，以及如何应用建议的操作。
 
 可以立即[查看你的建议](https://portal.azure.cn/#blade/Microsoft_Azure_Expert/AdvisorMenuBlade)！ 
 

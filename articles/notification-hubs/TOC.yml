@@ -13,14 +13,15 @@
       href: create-notification-hub-portal.md
     - name: 创建通知中心 - Azure CLI
       href: create-notification-hub-azure-cli.md
+    - name: 创建通知中心 - Azure 模板
+      displayName: Resource Manager
+      href: create-notification-hub-template.md
     - name: 配置通知中心
       href: configure-notification-hub-portal-pns-settings.md
 - name: 教程
   items:
     - name: Android
-      items:
-        - name: 使用百度云推送来推送通知
-          href: notification-hubs-baidu-china-android-notifications-get-started.md
+      items: null
     - name: iOS
       items:
         - name: 适用于 iOS 13 的通知中心更新
@@ -119,7 +120,7 @@
     - name: 使用应用程序后端注册
       href: notification-hubs-ios-aspnet-register-user-from-backend-to-push-notification.md
     - name: 在 Apple 设备中使用基于令牌的身份验证
-      href: notification-hubs-push-notification-http2-token-authentification.md
+      href: notification-hubs-push-notification-http2-token-authentication.md
     - name: 排查通知丢弃问题
       href: notification-hubs-push-notification-fixer.md
     - name: 使用百度云推送来推送通知

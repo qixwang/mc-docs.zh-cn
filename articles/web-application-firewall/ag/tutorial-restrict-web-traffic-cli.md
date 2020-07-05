@@ -4,15 +4,15 @@ description: 了解如何通过 Azure CLI 在应用程序网关上使用 Web 应
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 03/30/2020
+ms.date: 06/24/2020
 ms.author: v-junlch
 ms.topic: overview
-ms.openlocfilehash: b4d022faf56dff415aeb05540a36eed6dd65bea4
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 996067ea7ccac220ed937fc3c86515b0ee32da46
+ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80581813"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85516744"
 ---
 # <a name="enable-web-application-firewall-using-the-azure-cli"></a>使用 Azure CLI 启用 Web 应用程序防火墙
 
@@ -39,18 +39,18 @@ ms.locfileid: "80581813"
 资源组是在其中部署和管理 Azure 资源的逻辑容器。 使用 [az group create](/cli/group#az-group-create) 创建名为 *myResourceGroupAG* 的 Azure 资源组。
 
 ```azurecli
-az group create --name myResourceGroupAG --location chinanorth
+az group create --name myResourceGroupAG --location chinanorth2
 ```
 
 ## <a name="create-network-resources"></a>创建网络资源
 
-虚拟网络和子网用于提供与应用程序网关及其关联资源的网络连接。 创建名为 myVNet  的虚拟网络和名为 myAGSubnet  的子网。 创建名为 myAGPublicIPAddress  的公共 IP 地址。
+虚拟网络和子网用于提供与应用程序网关及其关联资源的网络连接。 创建名为 myVNet 的虚拟网络和名为 myAGSubnet 的子网。 创建名为 myAGPublicIPAddress 的公共 IP 地址。
 
 ```azurecli
 az network vnet create `
   --name myVNet `
   --resource-group myResourceGroupAG `
-  --location chinanorth `
+  --location chinanorth2 `
   --address-prefix 10.0.0.0/16 `
   --subnet-name myBackendSubnet `
   --subnet-prefix 10.0.1.0/24
@@ -70,12 +70,12 @@ az network public-ip create `
 
 ## <a name="create-an-application-gateway-with-a-waf"></a>创建具有 WAF 的应用程序网关
 
-可以使用 [az network application-gateway create](/cli/network/application-gateway) 创建名为 *myAppGateway* 的应用程序网关。 使用 Azure CLI 创建应用程序网关时，请指定配置信息，例如容量、sku 和 HTTP 设置。 将应用程序网关分配给 myAGSubnet  和 myAGPublicIPAddress  。
+可以使用 [az network application-gateway create](/cli/network/application-gateway) 创建名为 *myAppGateway* 的应用程序网关。 使用 Azure CLI 创建应用程序网关时，请指定配置信息，例如容量、sku 和 HTTP 设置。 将应用程序网关分配给 myAGSubnet 和 myAGPublicIPAddress。
 
 ```azurecli
 az network application-gateway create `
   --name myAppGateway `
-  --location chinanorth `
+  --location chinanorth2 `
   --resource-group myResourceGroupAG `
   --vnet-name myVNet `
   --subnet myAGSubnet `
@@ -147,9 +147,9 @@ az vmss extension set `
 az storage account create `
   --name myagstore1 `
   --resource-group myResourceGroupAG `
-  --location chinanorth `
+  --location chinanorth2 `
   --sku Standard_LRS `
-  --encryption blob
+  --encryption-services blob
 ```
 
 ### <a name="configure-diagnostics"></a>配置诊断

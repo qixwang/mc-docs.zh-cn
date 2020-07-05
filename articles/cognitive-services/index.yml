@@ -10,14 +10,14 @@ metadata:
   author: nitinme
   ms.author: v-tawe
   manager: nitinme
-  origin.date: 03/17/2020
-  ms.date: 04/20/2020
-  ms.openlocfilehash: b7a4d51976b4177204f8ae7ac82c1cef539d628a
-  ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+  origin.date: 03/24/2020
+  ms.date: 07/01/2020
+  ms.openlocfilehash: 742f323e0f3f482cb49e72d192877514c1100e8e
+  ms.sourcegitcommit: 4f84bba7e509a321b6f68a2da475027c539b8fd3
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 04/24/2020
-  ms.locfileid: "82126882"
+  ms.lasthandoff: 07/01/2020
+  ms.locfileid: "85796204"
 highlightedContent:
   items:
   - title: 什么是认知服务？
@@ -80,7 +80,7 @@ tools:
   - title: Java
     imageSrc: https://docs.microsoft.com/media/logos/logo_java.svg
     url: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client?view=azure-java-stable
-  - title: Javascript
+  - title: JavaScript
     imageSrc: https://docs.microsoft.com/media/logos/logo_js.svg
     url: https://docs.microsoft.com/javascript/api/overview/azure/cognitive-services?view=azure-node-latest
   - title: Python

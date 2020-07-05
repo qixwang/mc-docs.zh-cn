@@ -10,14 +10,14 @@ ms.subservice: certificates
 ms.topic: quickstart
 ms.custom: mvc
 origin.date: 03/24/2020
-ms.date: 04/20/2020
+ms.date: 07/01/2020
 ms.author: v-tawe
-ms.openlocfilehash: a85c0b621e113a33241a04415fda796e1c7bd5cc
-ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
+ms.openlocfilehash: 2d6e128d5a4e70afa8816b6bec7015f219094c27
+ms.sourcegitcommit: 4f84bba7e509a321b6f68a2da475027c539b8fd3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82588879"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85796186"
 ---
 # <a name="quickstart-set-and-retrieve-a-certificate-from-azure-key-vault-using-the-azure-portal"></a>快速入门：使用 Azure 门户在 Azure Key Vault 中设置和检索证书
 
@@ -31,21 +31,21 @@ Azure Key Vault 是一项云服务，它为机密提供了安全的存储。 可
 
 ## <a name="create-a-vault"></a>创建保管库
 
-1. 在 Azure 门户菜单或“主页”中，选择“创建资源”   。
-2. 在“搜索”框中输入“Key Vault”  。
-3. 从结果列表中选择“Key Vault”  。
-4. 在“Key Vault”部分，选择“创建”  。
-5. 在“创建密钥保管库”部分，提供以下信息： 
-    - **名称**：必须提供唯一的名称。 在本快速入门中，我们使用 Example-Vault  。 
-    - **订阅**：选择订阅。
-    - 在“资源组”  下选择“新建”  ，然后输入资源组名称。
-    - 在“位置”下拉菜单中选择一个位置。 
+1. 在 Azure 门户菜单或“主页”中，选择“创建资源” 。
+2. 在“搜索”框中输入“Key Vault”。
+3. 从结果列表中选择“Key Vault”。
+4. 在“Key Vault”部分，选择“创建”。
+5. 在“创建密钥保管库”部分，提供以下信息：
+    - 名称：必须提供唯一的名称。 在本快速入门中，我们使用 Example-Vault。 
+    - 订阅：选择订阅。
+    - 在“资源组”下选择“新建”，然后输入资源组名称。
+    - 在“位置”下拉菜单中选择一个位置。
     - 让其他选项保留默认值。
-6. 提供上述信息后，选择“创建”  。
+6. 提供上述信息后，选择“创建”。
 
 请记下下面列出的两个属性：
 
-* **保管库名称**：在示例中，此项为 Example-Vault  。 将在其他步骤中使用此名称。
+* **保管库名称**：在示例中，此项为 Example-Vault。 将在其他步骤中使用此名称。
 * **保管库 URI**：在本示例中，此项为 https://example-vault.vault.azure.cn/ 。 通过其 REST API 使用保管库的应用程序必须使用此 URI。
 
 目前，只有你的 Azure 帐户有权对这个新保管库执行操作。
@@ -54,11 +54,11 @@ Azure Key Vault 是一项云服务，它为机密提供了安全的存储。 可
 
 ## <a name="add-a-certificate-to-key-vault"></a>向密钥保管库中添加证书
 
-若要向保管库中添加证书，只需再执行几个步骤即可。 在此示例中，我们添加可供应用程序使用的自签名证书。 此证书称为 ExampleCertificate。 
+若要向保管库中添加证书，只需再执行几个步骤即可。 在此示例中，我们添加可供应用程序使用的自签名证书。 此证书称为 ExampleCertificate。
 
-1. 在密钥保管库属性页中，选择“证书”  。
-2. 单击“生成/导入”  。
-3. 在“创建证书”  屏幕上，选择以下值：
+1. 在密钥保管库属性页中，选择“证书”。
+2. 单击“生成/导入”。
+3. 在“创建证书”屏幕上，选择以下值：
     - **证书创建方法**：生成。
     - **证书名称**：ExampleCertificate。
     - **使用者**：CN=ExampleDomain
@@ -68,6 +68,7 @@ Azure Key Vault 是一项云服务，它为机密提供了安全的存储。 可
 
 ![证书属性](../media/certificates/quick-create-portal/current-version-hidden.png)
 
+## <a name="export-certificate-from-key-vault"></a>导出来自 Key Vault 的证书
 单击“使用 CER 格式下载”或“使用 PFX/PEM 格式下载”按钮即可下载证书。 
 
 ![证书下载](../media/certificates/quick-create-portal/current-version-shown.png)
@@ -78,8 +79,8 @@ Azure Key Vault 是一项云服务，它为机密提供了安全的存储。 可
 如果不再需要资源组，可以将其删除，这将删除 Key Vault 和相关的资源。 要通过门户删除资源组，请执行以下操作：
 
 1. 在门户顶部的“搜索”框中输入资源组的名称。 在搜索结果中看到在本快速入门中使用的资源组后，将其选中。
-2. 选择“删除资源组”  。
-3. 在“键入资源组名称:”框中，键入资源组的名称，然后选择“删除”   。
+2. 选择“删除资源组”。
+3. 在“键入资源组名称:”框中，键入资源组的名称，然后选择“删除” 。
 
 
 ## <a name="next-steps"></a>后续步骤

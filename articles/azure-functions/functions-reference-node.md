@@ -3,13 +3,13 @@ title: Azure Functions JavaScript 开发者参考
 description: 了解如何使用 JavaScript 开发函数。
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: reference
-ms.date: 03/19/2020
-ms.openlocfilehash: 5259625ed9d7965b8e49589d5cb9af24775b5bbc
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 07/02/2020
+ms.openlocfilehash: 6b0d2dc3b39cd256bc5cc76906c1357fb86805f3
+ms.sourcegitcommit: 1008ad28745709e8d666f07a90e02a79dbbe2be5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79546868"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945237"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions JavaScript 开发人员指南
 
@@ -75,7 +75,7 @@ module.exports = async function (context) {
 
 导出异步函数时，还可配置输出绑定，以使用 `return` 值。 如果只有一个输出绑定，则建议使用此值。
 
-若要使用 `return` 分配输出，请将 `name` 属性更改为 `function.json` 中的 `$return`。
+若要使用 `return` 分配输出，请在 `function.json` 中将 `name` 属性更改为 `$return`。
 
 ```json
 {
@@ -102,7 +102,7 @@ module.exports = async function (context, req) {
 
 ### <a name="inputs"></a>输入
 在 Azure Functions 中，输入分为两种类别：一种是触发器输入，另一种则是附加输入。 函数可通过三种方式读取触发器和其他输入绑定（`direction === "in"` 的绑定）：
- - **_[建议]_ 以传递给函数的参数的形式。** 它们以与 function.json  中定义的顺序相同的顺序传递给函数。 *function.json* 中定义的 `name` 属性不需要与参数名称匹配，不过两者应该匹配。
+ - **_[建议]_ 以传递给函数的参数的形式。** 它们以与 function.json 中定义的顺序相同的顺序传递给函数。 *function.json* 中定义的 `name` 属性不需要与参数名称匹配，不过两者应该匹配。
  
    ```javascript
    module.exports = async function(context, myTrigger, myInput, myOtherInput) { ... };
@@ -175,7 +175,7 @@ module.exports = async function (context, req) {
 }
 ```
 
-`dataType` 的选项包括：`binary`、`stream` 和 `string`。
+`dataType` 的选项为 `binary`、`stream` 和 `string`。
 
 ## <a name="context-object"></a>上下文对象
 运行时使用 `context` 对象将数据传入和传出函数，并能与其进行通信。 上下文对象可用于从绑定读取和设置数据、写入日志，以及当导出的函数是同步函数时使用 `context.done` 回调。
@@ -242,9 +242,9 @@ context.done([err],[propertyBag])
 
 让运行时知道代码已完成。 如果函数使用 [`async function`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/async_function) 声明，则你不需要使用 `context.done()`。 `context.done` 回调是隐式调用的。 异步函数在 Node 8 或更高版本（需要 Functions 运行时版本 2.x）中可用。
 
-如果函数不是异步函数，则必须调用  **来告知运行时函数是完整的**`context.done`。 如果缺少它，则执行将会超时。
+如果函数不是异步函数，则必须调用 `context.done` 来告知运行时函数是完整的。 如果缺少它，则执行将会超时。
 
-`context.done` 方法允许将用户定义的错误传递回运行时以及包含输出绑定数据的 JSON 对象。 传递给 `context.done` 的属性将覆盖 `context.bindings` 对象上设置的任何内容。
+使用 `context.done` 方法可向运行时传回用户定义的错误，以及传回包含输出绑定数据的 JSON 对象。 传递给 `context.done` 的属性将覆盖 `context.bindings` 对象上设置的任何内容。
 
 ```javascript
 // Even though we set myOutput to have:
@@ -272,7 +272,7 @@ context.log(message)
 | **info(_message_)**    | 向信息级日志记录或更低级别进行写入。    |
 | **verbose(_message_)** | 向详细级日志记录进行写入。           |
 
-以下示例在警告跟踪级别写入日志：
+以下示例在警告跟踪级别向日志进行写入：
 
 ```javascript
 context.log.warn("Something has happened."); 
@@ -283,7 +283,7 @@ context.log.warn("Something has happened.");
 
 ## <a name="writing-trace-output-to-the-console"></a>将跟踪输出写入到控制台 
 
-在 Functions 中，可以使用 `context.log` 方法将跟踪输出写入到控制台。 在 Functions v2.x 中，使用 `console.log` 的跟踪输出在函数应用级别捕获。 这意味着 `console.log` 的输出不受限于特定的函数调用，因此不会显示在特定函数的日志中。 在 Functions v1.x 中，不能使用 `console.log` 向控制台进行写入。
+在 Functions 中，可以使用 `context.log` 方法将跟踪输出写入到控制台。 在 Functions v2.x 中，使用 `console.log` 的跟踪输出在函数应用级别捕获。 这意味着 `console.log` 的输出不受限于特定的函数调用，因此不会显示在特定函数的日志中。 在 Functions v1.x 中，不能使用 `console.log` 写入到控制台。
 
 调用 `context.log()` 时，消息会在默认跟踪级别（即_信息_跟踪级别）写入到控制台。 以下代码在信息跟踪级别向控制台进行写入：
 
@@ -291,7 +291,7 @@ context.log.warn("Something has happened.");
 context.log({hello: 'world'});  
 ```
 
-此代码等同于上面的代码：
+此代码等同于上述代码：
 
 ```javascript
 context.log.info({hello: 'world'});  
@@ -341,7 +341,7 @@ HTTP 和 webhook 触发器以及 HTTP 输出绑定使用请求和响应对象来
 
 `context.req`（请求）对象具有以下属性：
 
-| properties      | 说明                                                    |
+| 属性      | 说明                                                    |
 | ------------- | -------------------------------------------------------------- |
 | _body_        | 一个包含请求正文的对象。               |
 | _headers_     | 一个包含请求标头的对象。                   |
@@ -356,7 +356,7 @@ HTTP 和 webhook 触发器以及 HTTP 输出绑定使用请求和响应对象来
 
 `context.res`（响应）对象具有以下属性：
 
-| properties  | 说明                                               |
+| 属性  | 说明                                               |
 | --------- | --------------------------------------------------------- |
 | _body_    | 一个包含响应正文的对象。         |
 | _headers_ | 一个包含响应标头的对象。             |
@@ -366,7 +366,7 @@ HTTP 和 webhook 触发器以及 HTTP 输出绑定使用请求和响应对象来
 
 ### <a name="accessing-the-request-and-response"></a>访问请求和响应 
 
-使用 HTTP 触发器时，可采用多种方式来访问 HTTP 请求和响应对象：
+使用 HTTP 触发器时，可采用多种方式来访问 HTTP 响应和请求对象：
 
 + **通过 `context` 对象的 `req` 和 `res` 属性。** 采用此方式时，可以使用传统模式通过上下文对象访问 HTTP 数据，而不必使用完整的 `context.bindings.name` 模式。 以下示例展示了如何访问 `context` 上的 `req` 和 `res` 对象：
 
@@ -389,7 +389,7 @@ HTTP 和 webhook 触发器以及 HTTP 输出绑定使用请求和响应对象来
     ```javascript
     context.bindings.response = { status: 201, body: "Insert succeeded." };
     ```
-+ **_[仅响应]_ 通过调用 `context.res.send(body?: any)`。** 创建 HTTP 响应时使用输入 `body` 作为响应正文。 `context.done()` 是隐式调用的。
++ **_[仅响应]_ 通过调用 `context.res.send(body?: any)`。** HTTP 响应是使用输入 `body` 作为响应正文创建的。 隐式调用 `context.done()`。
 
 + **_[仅响应]_ 通过调用 `context.done()`。** 有一种特殊类型的 HTTP 绑定可返回传递到 `context.done()` 方法的响应。 以下 HTTP 输出绑定定义了一个 `$return` 输出参数：
 
@@ -460,7 +460,7 @@ module.exports = function(context) {
 ### <a name="using-kudu"></a>使用 Kudu
 1. 转到  `https://<function_app_name>.scm.chinacloudsites.cn` 。
 
-2. 单击“调试控制台”，选择“CMD”。   >  
+2. 单击“调试控制台”，选择“CMD”。 > 
 
 3. 转到 `D:\home\site\wwwroot`，然后将 package.json 文件拖到页面上半部分中的 **wwwroot** 文件夹上。  
     还可采用其他方式将文件上传到 Function App。 有关详细信息，请参阅[如何更新 Function App 文件](functions-reference.md#fileupdate)。 
@@ -572,9 +572,6 @@ module.exports = myObj;
 
 TypeScript 文件 (.ts) 转译为 `dist` 输出目录中的 JavaScript (.js) 文件。 TypeScript 模板使用 `function.json` 中的 [`scriptFile` 参数](#using-scriptfile)来指示 `dist` 文件夹中相应 .js 文件的位置。 模板使用 `tsconfig.json` 文件中的 `outDir` 参数设置输出位置。 如果更改此设置或文件夹的名称，则运行时将找不到要运行的代码。
 
-> [!NOTE]
-> 1\.x 版 Functions 运行时提供 TypeScript 的试验性支持。 调用函数时，试验版本会将 TypeScript 文件转译为 JavaScript 文件。 在版本 2.x 中，此试验性支持已由工具驱动的方法取代，该方法在初始化主机之前以及部署期间执行转译。
-
 在本地通过 TypeScript 项目进行开发和部署的方式取决于所用的开发工具。
 
 ### <a name="visual-studio-code"></a>Visual Studio Code
@@ -585,7 +582,7 @@ TypeScript 文件 (.ts) 转译为 `dist` 输出目录中的 JavaScript (.js) 文
 
 按下 **F5** 在本地运行应用时，会先执行转译，然后再初始化主机 (func.exe)。 
 
-使用“部署到函数应用...”按钮将函数应用部署到 Azure 时，Azure Functions 扩展首先会基于 TypeScript 源文件生成一个可随时在生产环境中使用的 JavaScript 文件版本。 
+使用“部署到函数应用...”按钮将函数应用部署到 Azure 时，Azure Functions 扩展首先会基于 TypeScript 源文件生成一个可随时在生产环境中使用的 JavaScript 文件版本。
 
 ### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
 
@@ -638,7 +635,7 @@ func azure functionapp publish <APP_NAME>
 
 ### <a name="cold-start"></a>冷启动
 
-对于无服务器托管模型中开发 Azure Functions，冷启动已成为现实。 “冷启动”是指在函数应用处于非活动状态一段时间后进行第一次启动时，将需要较长时间才能启动。  具体而言，对于具有较大依赖项树的 JavaScript 函数，冷启动可能不足以解决问题。 为了加快冷启动过程，请尽量[以包文件的形式运行函数](run-functions-from-deployment-package.md)。 许多部署方法默认使用包模型中的运行，但如果遇到大规模的冷启动而不是以这种方式运行，则此项更改可以提供明显的改善。
+对于无服务器托管模型中开发 Azure Functions，冷启动已成为现实。 “冷启动”是指在函数应用处于非活动状态一段时间后进行第一次启动时，将需要较长时间才能启动。 具体而言，对于具有较大依赖项树的 JavaScript 函数，冷启动可能不足以解决问题。 为了加快冷启动过程，请尽量[以包文件的形式运行函数](run-functions-from-deployment-package.md)。 许多部署方法默认使用包模型中的运行，但如果遇到大规模的冷启动而不是以这种方式运行，则此项更改可以提供明显的改善。
 
 ### <a name="connection-limits"></a>连接限制
 

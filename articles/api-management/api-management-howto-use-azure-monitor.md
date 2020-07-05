@@ -11,12 +11,12 @@ origin.date: 06/15/2018
 author: Johnnytechn
 ms.date: 06/04/2020
 ms.author: v-johya
-ms.openlocfilehash: b4180357b7b91dd8ad71cddc74f71fd9647aa1ba
-ms.sourcegitcommit: 5ae04a3b8e025986a3a257a6ed251b575dbf60a1
+ms.openlocfilehash: f711e3ff6da9301d3c10014b544427c0c77931da
+ms.sourcegitcommit: 372899a2a21794e631eda1c6a11b4fd5c38751d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84440550"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85852086"
 ---
 # <a name="monitor-published-apis"></a>监视已发布的 API
 
@@ -29,10 +29,6 @@ ms.locfileid: "84440550"
 > * 查看资源日志
 > * 查看 API 的指标 
 > * 针对 API 收到的未经授权的调用设置警报规则
-
-下方视频介绍如何使用 Azure Monitor 监视 API 管理。 
-
-> [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Monitor-API-Management-with-Azure-Monitor/player]
 
 ## <a name="prerequisites"></a>先决条件
 

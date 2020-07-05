@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 05/28/2020
+ms.date: 06/30/2020
 ms.author: v-junlch
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: a18056a121a367860fa12a6eff88b5ee10a3c029
-ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
+ms.openlocfilehash: b46c92b32c479502bfa5fe907415d08d0a7d1315
+ms.sourcegitcommit: 1008ad28745709e8d666f07a90e02a79dbbe2be5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84186859"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945226"
 ---
 # <a name="tutorial-build-a-multitenant-daemon-that-uses-the-microsoft-identity-platform-endpoint"></a>教程：生成使用 Microsoft 标识平台终结点的多租户守护程序
 
@@ -235,8 +235,8 @@ Visual Studio 将发布项目，同时自动打开浏览器并加载该项目的
 1. 返回到 [Azure 门户](https://portal.azure.cn)。
 1. 在左侧窗格中选择“Azure Active Directory”服务，然后选择“应用注册”。 
 1. 选择 **dotnet-web-daemon-v2** 应用程序。
-1. 在应用程序的“身份验证”页上，使用服务地址更新“注销 URL”字段。  例如，使用 [https://dotnet-web-daemon-v2-contoso.chinacloudsites.cn](https://dotnet-web-daemon-v2-contoso.chinacloudsites.cn)。
-1. 在“品牌”菜单中，将“主页 URL”更新为服务地址。  例如，使用 [https://dotnet-web-daemon-v2-contoso.chinacloudsites.cn](https://dotnet-web-daemon-v2-contoso.chinacloudsites.cn)。
+1. 在应用程序的“身份验证”页上，使用服务地址更新“注销 URL”字段。  例如，使用 `https://dotnet-web-daemon-v2-contoso.chinacloudsites.cn`。
+1. 在“品牌”菜单中，将“主页 URL”更新为服务地址。  例如，使用 `https://dotnet-web-daemon-v2-contoso.chinacloudsites.cn`。
 1. 保存配置。
 1. 在“身份验证” > “重定向 URI”菜单的值列表中添加相同的 URL。  如果有多个重定向 URL，请确保每个重定向 URL 都有一个使用应用服务的 URI 的新条目。
 

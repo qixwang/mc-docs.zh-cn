@@ -9,15 +9,16 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
 origin.date: 04/14/2020
-ms.date: 04/20/2020
+ms.date: 06/19/2020
 ms.author: v-tawe
-zone_pivot_groups: programming-languages-set-sixteen
-ms.openlocfilehash: 597c16ead5d7d7bc40d86f8e301bded6112d2d69
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.custom: tracking-python
+zone_pivot_groups: programming-languages-set-two-with-js
+ms.openlocfilehash: f3d00d636f897d3db681fb776977c879c94af187
+ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82127223"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85613384"
 ---
 # <a name="learn-the-basics-of-speech-synthesis"></a>了解语音合成的基础知识
 

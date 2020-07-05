@@ -2,18 +2,19 @@
 title: 为 Windows VM 启用 Azure 磁盘加密
 description: 本文提供有关如何为 Windows VM 启用 Azure 磁盘加密的说明。
 author: rockboyfor
-ms.service: security
+ms.service: virtual-machines-windows
+ms.subservice: security
 ms.topic: article
 origin.date: 10/05/2019
-ms.date: 04/27/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
 ms.custom: seodec18
-ms.openlocfilehash: 10d5f22459b11d3314c185785e42153b9cfb112a
-ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
+ms.openlocfilehash: d103a12d53f885680dcba3cdcfdf17e1c466b18c
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "83001897"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85946007"
 ---
 # <a name="azure-disk-encryption-for-windows-vms"></a>适用于 Windows VM 的 Azure 磁盘加密 
 
@@ -62,7 +63,7 @@ Azure 磁盘加密在[第 2 代 VM](generation-2.md#generation-1-vs-generation-2
   - 若要获取用于连接到密钥保管库的令牌，Windows VM 必须能够连接到 Azure Active Directory 终结点 \[login.chinacloudapi.cn\]。
   - 若要将加密密钥写入密钥保管库，Windows VM 必须能够连接到密钥保管库终结点。
   - Windows VM 必须能够连接到托管 Azure 扩展存储库的 Azure 存储终结点和托管 VHD 文件的 Azure 存储帐户。
-  -  如果安全策略限制从 Azure VM 到 Internet 的访问，可以解析上述 URI，并配置特定的规则以允许与这些 IP 建立出站连接。 有关详细信息，请参阅[防火墙后的 Azure Key Vault](../../key-vault/key-vault-access-behind-firewall.md)。    
+  - 如果安全策略限制从 Azure VM 到 Internet 的访问，可以解析上述 URI，并配置特定的规则以允许与这些 IP 建立出站连接。 有关详细信息，请参阅[防火墙后的 Azure Key Vault](../../key-vault/general/access-behind-firewall.md)。    
 
 <a name="group-policy-requirements"></a>
 ## <a name="group-policy-requirements"></a>组策略要求
@@ -81,7 +82,7 @@ Azure 磁盘加密需要 Azure Key Vault 来控制和管理磁盘加密密钥和
 有关详细信息，请参阅[创建和配置用于 Azure 磁盘加密的密钥保管库](disk-encryption-key-vault.md)。
 
 ## <a name="terminology"></a>术语
-下表定义了 Azure 磁盘加密文档中的一些常用术语：
+下表定义了 Azure 磁盘加密文档中使用的一些常用术语：
 
 | 术语 | 定义 |
 | --- | --- |

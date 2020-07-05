@@ -5,15 +5,14 @@ services: application-gateway
 author: caya
 ms.service: application-gateway
 ms.topic: article
-origin.date: 11/04/2019
-ms.date: 11/19/2019
+ms.date: 06/24/2020
 ms.author: v-junlch
-ms.openlocfilehash: bc50ae98f5074a348a80ac6e389d7b070f3bc181
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: dd2250ce2c23fb3b50a05bbe152bbe5b9c7904bc
+ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74328433"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85516737"
 ---
 # <a name="add-health-probes-to-your-service"></a>向服务添加运行状况探测
 默认情况下，入口控制器将为公开的 Pod 预配 HTTP GET 探测。
@@ -48,7 +47,7 @@ spec:
 
 Kubernetes API 参考：
 * [容器探测](https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes)
-* [HttpGet 操作](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.14/#httpgetaction-v1-core)
+* [HttpGet 操作](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#httpgetaction-v1-core)
 
 > [!NOTE]
 > * 配置了 `httpGet` 时，支持 `readinessProbe` 和 `livenessProbe`。

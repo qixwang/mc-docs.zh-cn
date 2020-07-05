@@ -4,16 +4,17 @@ description: 了解如何使用 Python 客户端库在 Azure Key Vault 中创建
 author: msmbaldwin
 ms.author: v-tawe
 origin.date: 03/30/2020
-ms.date: 04/20/2020
+ms.date: 07/01/2020
 ms.service: key-vault
 ms.subservice: keys
 ms.topic: quickstart
-ms.openlocfilehash: 580878660fc89356074a596b2eca8f1a9abef1f7
-ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
+ms.custom: tracking-python
+ms.openlocfilehash: 71710658d2457fd7b30fb31500c0d485f0ebd15d
+ms.sourcegitcommit: 4f84bba7e509a321b6f68a2da475027c539b8fd3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84275400"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85796179"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-python"></a>快速入门：适用于 Python 的 Azure Key Vault 客户端库
 

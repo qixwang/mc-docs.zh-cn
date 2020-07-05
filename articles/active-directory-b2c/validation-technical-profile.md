@@ -8,21 +8,21 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/01/2020
+ms.date: 06/28/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: cdebc69d5223b8e76dd713df66ee10583990a4f8
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: b50a924e1c9499ce3e1c0a2820b558846ad117c8
+ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80581666"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85516448"
 ---
 # <a name="define-a-validation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>定义采用 Azure Active Directory B2C 的自定义策略的验证技术配置文件
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-验证技术配置文件是来自任何协议（如 [Azure Active Directory](active-directory-technical-profile.md) 或 [REST API](restful-technical-profile.md)）的普通技术配置文件。 验证技术配置文件返回输出声明，或返回 4xx HTTP 状态代码，其中包含以下数据。 有关详细信息，请参阅[返回错误消息](restful-technical-profile.md#returning-error-message)
+验证技术配置文件是来自任何协议（如 [Azure Active Directory](active-directory-technical-profile.md) 或 [REST API](restful-technical-profile.md)）的普通技术配置文件。 验证技术配置文件返回输出声明，或返回 4xx HTTP 状态代码，其中包含以下数据。 有关详细信息，请参阅[返回错误消息](restful-technical-profile.md#returning-validation-error-message)
 
 ```JSON
 {
@@ -119,4 +119,3 @@ Precondition  元素包含以下元素：
 </ValidationTechnicalProfiles>
 ```
 
-<!-- Update_Description: wording update -->

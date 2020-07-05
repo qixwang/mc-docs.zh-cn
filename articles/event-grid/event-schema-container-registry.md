@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: v-johya
-ms.openlocfilehash: baddc8bb9963f50bc3c4b6e2cb3cb91dd3ef882d
-ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
+ms.openlocfilehash: 51e58db113a62be2de8d65a613f59c14fc8a6176
+ms.sourcegitcommit: 4f84bba7e509a321b6f68a2da475027c539b8fd3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "83001968"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85796231"
 ---
 # <a name="azure-container-registry-as-an-event-grid-source"></a>充当事件网格源的 Azure 容器注册表
 
@@ -57,7 +57,7 @@ Azure 容器注册表发出以下事件类型：
     },
     "request": {
       "id": "7c66f28b-de19-40a4-821c-6f5f6c0003a4",
-      "host": "demo.azurecr.io",
+      "host": "demo.azurecr.cn",
       "method": "PUT",
       "useragent": "docker/18.03.0-ce go/go1.9.4 git-commit/0520e24 os/windows arch/amd64 UpstreamClient(Docker-Client/18.03.0-ce \\\\(windows\\\\))"
     }
@@ -87,7 +87,7 @@ Azure 容器注册表发出以下事件类型：
     },
     "request": {
       "id": "aeda5b99-4197-409f-b8a8-ff539edb7de2",
-      "host": "demo.azurecr.io",
+      "host": "demo.azurecr.cn",
       "method": "DELETE",
       "useragent": "python-requests/2.18.4"
     }

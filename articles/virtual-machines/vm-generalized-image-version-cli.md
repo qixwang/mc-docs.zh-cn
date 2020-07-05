@@ -7,14 +7,14 @@ ms.subservice: imaging
 ms.topic: how-to
 ms.workload: infrastructure
 origin.date: 05/04/2020
-ms.date: 05/25/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 3504ec057ffd131fcd19b568626d947575b9abd1
-ms.sourcegitcommit: 981a75a78f8cf74ab5a76f9e6b0dc5978387be4b
+ms.openlocfilehash: 8a375c1b648d2351e2e0715ac2582b91cbf9de64
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83801917"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945607"
 ---
 <!--Verified successfully-->
 # <a name="create-a-vm-from-a-generalized-image-version-using-the-cli"></a>使用 CLI 从通用化映像版本创建 VM
@@ -61,5 +61,4 @@ az vm create\
 <!--Not Available on [Azure Image Builder (preview)](./windows/image-builder-overview.md)-->
 <!--Not Available on [create a new image version from an existing image version](./windows/image-builder-gallery-update-image-version.md)-->
 
-<!-- Update_Description: new article about vm generalized image version cli -->
-<!--NEW.date: 06/01/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

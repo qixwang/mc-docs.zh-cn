@@ -9,20 +9,20 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/27/2020
+ms.date: 06/29/2020
 ms.author: v-junlch
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: 471554ca084a609dacb57a27ab890d8127b33e58
-ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
+ms.openlocfilehash: f2ce2bd55d60b8010c4cc4991201f95ca81af782
+ms.sourcegitcommit: 1008ad28745709e8d666f07a90e02a79dbbe2be5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84186771"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945125"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Microsoft 标识平台访问令牌
 
-客户端可以使用访问令牌安全调用受保护的 API。 Microsoft 标识平台访问令牌为 [JWT](https://tools.ietf.org/html/rfc7519)，即 Microsoft 标识平台签名的 Base64 编码 JSON 对象。 客户端应将访问令牌视为不透明的字符串，作为令牌的内容仅适用于资源。 在验证和调试时，开发人员可以使用 [jwt.ms](https://jwt.ms) 等站点来解码 JWT（JSON Web 令牌）。 客户端可以使用各种协议从 v1.0 终结点或 v2.0 终结点获取访问令牌。
+客户端可以使用访问令牌安全调用受保护的 API。 Microsoft 标识平台访问令牌为 [JWT](https://tools.ietf.org/html/rfc7519)，即 Microsoft 标识平台签名的 Base64 编码 JSON 对象。 客户端应将访问令牌视为不透明的字符串，作为令牌的内容仅适用于资源。 在验证和调试时，开发人员可以使用 [jwt.ms](https://jwt.ms) 等站点来解码 JWT（JSON Web 令牌）。 客户端可以使用各种协议从 v1.0 或 v2.0 终结点获取访问令牌。
 
 当客户端请求访问令牌时，Microsoft 标识平台还是会返回一些有关访问令牌的元数据以供应用使用。 此信息包含访问令牌的过期时间及其有效范围。 此数据可让应用执行访问令牌的智能缓存，而无需分析访问令牌本身。
 
@@ -31,7 +31,7 @@ ms.locfileid: "84186771"
 请参阅以下部分，了解资源如何验证和使用访问令牌中的声明。
 
 > [!IMPORTANT]
-> 访问令牌是根据令牌的受众（即，拥有令牌中范围的应用程序）创建的。  如果在[应用清单](reference-app-manifest.md#manifest-reference)中将资源设置 `accessTokenAcceptedVersion` 指定为 `2`，则允许客户端调用 v1.0 终结点来接收 v2.0 访问令牌。  同样，这就是为什么更改客户端的访问令牌[可选声明](active-directory-optional-claims.md)不会更改为 `user.read` 请求令牌时收到的访问令牌的原因，该令牌归资源所有。
+> 访问令牌是根据令牌的受众（即，拥有令牌中范围的应用程序）创建的。  这就是将[应用部件清单](reference-app-manifest.md#manifest-reference)中的资源设置 `accessTokenAcceptedVersion` 设置为 `2` 以允许调用 v1.0 终结点的客户端接收 v2.0 访问令牌的方式。  同样，这就是为什么更改客户端的访问令牌[可选声明](active-directory-optional-claims.md)不会更改为 `user.read` 请求令牌时收到的访问令牌的原因，该令牌归资源所有。
 > 
 
 ## <a name="sample-tokens"></a>示例令牌
@@ -99,7 +99,7 @@ JWT（JSON Web 令牌）拆分成三个部分：
 | `preferred_username` | String | 表示用户的主用户名。 可以是电子邮件地址、电话号码或未指定格式的一般用户名。 其值是可变的，可能随时改变。 由于此值是可变的，因此它不能用于做出授权决定。  但它可以用于用户名提示。 需要 `profile` 范围才能接收此声明。 |
 | `name` | String | 提供一个用户可读值，用于标识令牌使用者。 该值不一定唯一，而且可变，只能用于显示目的。 需要 `profile` 范围才能接收此声明。 |
 | `scp` | 字符串，范围的空格分隔列表 | 应用程序公开的、客户端应用程序已请求（和接收）其许可的范围集。 应用应该验证这些范围是否为应用公开的有效范围，并根据这些范围的值做出授权决策。 仅为[用户令牌](#user-and-application-tokens)包含此值。 |
-| `roles` | 字符串数组，权限列表 | 应用程序公开的、请求方应用程序或用户有权调用的权限集。 对于[应用程序令牌](#user-and-application-tokens)，在执行客户端凭据流（[v1.0](../azuread-dev/v1-oauth2-client-creds-grant-flow.md)、[v2.0](v2-oauth2-client-creds-grant-flow.md)）期间使用此声明代替用户范围。  对于[用户令牌](#user-and-application-tokens)，此值将填充为在目标应用程序上分配给用户的角色。 |
+| `roles` | 字符串数组、权限列表 | 应用程序公开的、请求方应用程序或用户有权调用的权限集。 对于[应用程序令牌](#user-and-application-tokens)，在执行客户端凭据流（[v1.0](../azuread-dev/v1-oauth2-client-creds-grant-flow.md)、[v2.0](v2-oauth2-client-creds-grant-flow.md)）期间使用此声明代替用户范围。  对于[用户令牌](#user-and-application-tokens)，使用用户在目标应用程序上分配的角色进行填充。 |
 | `wids` | [RoleTemplateID](/active-directory/users-groups-roles/directory-assign-admin-roles#role-template-ids) GUID 的数组 | 表示在[管理员角色页](/active-directory/users-groups-roles/directory-assign-admin-roles#role-template-ids)中的角色部分分配给此用户的租户级角色。  此声明是通过[应用程序清单](reference-app-manifest.md)的 `groupMembershipClaims` 属性按应用程序定义的。  必须将其设置为“All”或“DirectoryRole”。  由于令牌长度方面的原因，它在通过隐式流获取的令牌中可能不存在。 |
 | `groups` | GUID 的 JSON 数组 | 指定表示使用者的组成员身份的对象 ID。 这些值具有唯一性（请参阅对象 ID），可安全地用于管理访问，例如强制要求授权访问资源。 组声明中包含的组通过[应用程序清单](reference-app-manifest.md)的 `groupMembershipClaims` 属性基于每个应用程序进行配置。 值为 null 将排除所有组；值为“SecurityGroup”将只包括 Active Directory 安全组成员身份；值为“All”将包括安全组和 Office 365 通讯组列表。 <br><br>有关将 `groups` 声明与隐式授权一起使用的详细信息，请参阅下文中的 `hasgroups` 声明。 <br>对于其他流，如果用户所在的组数超出了某个限制（对于 SAML，为 150，对于 JWT，为 200），则会将超额声明添加到指向包含该用户的组列表的 Microsoft Graph 终结点的声明源。 |
 | `hasgroups` | 布尔 | 如果存在，始终为 `true`，表示用户至少在一个组中。 如果完整组声明将导致 URI 片段超出 URL 长度限制（当前为 6 个或更多组），则在隐式授权流中用来替代 JWT 的 `groups` 声明。 指示客户端应当使用 Microsoft Graph API 来确定用户的组 (`https://microsoftgraph.chinacloudapi.cn/v1.0/users/{userID}/getMemberObjects`)。 |
@@ -114,7 +114,7 @@ JWT（JSON Web 令牌）拆分成三个部分：
 
 **组超额声明**
 
-为了确保令牌大小不超过 HTTP 标头大小限制，Azure AD 对它包含在组声明中的对象 ID 数进行了限制。 如果用户所属的组数超过超额限制（SAML 令牌为 150 个，JWT 令牌为 200 个），则 Azure AD 不会在令牌中发出组声明。 但是，它会在令牌中包含超额声明，该声明指示应用程序查询 Microsoft Graph API 以检索用户的组成员身份。
+为了确保令牌大小不超过 HTTP 标头大小限制，Azure AD 对它包含在组声明中的对象 ID 数进行了限制。 如果某用户所属的组超过超额限制（对于 SAML 令牌，为 150；对于 JWT 令牌，为 200），则 Azure AD 不会在令牌中发出组声明。 但是，它会在令牌中包含超额声明，该声明指示应用程序查询 Microsoft Graph API 以检索用户的组成员身份。
 
 ```JSON
 {
@@ -133,7 +133,7 @@ JWT（JSON Web 令牌）拆分成三个部分：
  }
  ```
 
-可以使用 [App Creation Scripts](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/5-WebApp-AuthZ/5-2-Groups/AppCreationScripts) 文件夹中提供的 `BulkCreateGroups.ps1` 来帮助测试超额方案。
+可使用[应用创建脚本](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/5-WebApp-AuthZ/5-2-Groups/AppCreationScripts)文件夹中提供的 `BulkCreateGroups.ps1` 来帮助测试超额方案。
 
 #### <a name="v10-basic-claims"></a>v1.0 基本声明
 
@@ -162,7 +162,7 @@ Microsoft 标识可以通过与应用程序相关的不同方式进行身份验�
 | `otp` | 使用电子邮件或短信的一次性密码。 |
 | `fed` | 使用了联合身份验证断言（例如 JWT 或 SAML）。 |
 | `wia` | Windows 集成身份验证 |
-| `mfa` | 使用了多重身份验证。 如果存在这种情况，则也会包含其他身份验证方法。 |
+| `mfa` | 使用了[多重身份验证](../authentication/concept-mfa-howitworks.md)。 如果存在这种情况，则也会包含其他身份验证方法。 |
 | `ngcmfa` | 等效于 `mfa`，用于预配某些高级凭据类型。 |
 | `wiaormfa`| 用户已使用 Windows 或 MFA 凭据进行身份验证。 |
 | `none` | 未执行任何身份验证。 |
@@ -211,7 +211,7 @@ https://login.partner.microsoftonline.cn/common/v2.0/.well-known/openid-configur
 > [!NOTE]
 > V1.0 终结点返回 `x5t` 和 `kid` 声明，尽管 v2.0 终结点仅使用 `kid` 声明进行响应。 从目前开始，我们建议使用 `kid` 声明来验证令牌。
 
-执行签名验证超出了本文档的范围 - 有许多开源库可帮助你执行验证（如有必要）。  但是，Microsoft 标识平台具有标准的一个令牌签名扩展 - 自定义签名密钥。
+执行签名验证超出了本文档的范围 - 有许多开放源代码库可帮助这么做（如有必要）。  但是，Microsoft 标识平台具有一个标准的令牌签名扩展 - 自定义签名密钥。
 
 如果应用因使用[声明映射](active-directory-claims-mapping.md)功能而具有自定义签名密钥，则必须追加包含应用 ID 的 `appid` 查询参数，以获取指向应用的签名密钥信息的 `jwks_uri`，该信息应该用于验证。 例如：`https://login.partner.microsoftonline.cn/{tenant}/.well-known/openid-configuration?appid=6731de76-14a6-49ae-97bc-6eba6914391e` 包含 `https://login.partner.microsoftonline.cn/{tenant}/discovery/keys?appid=6731de76-14a6-49ae-97bc-6eba6914391e` 的 `jwks_uri`。
 

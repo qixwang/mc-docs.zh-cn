@@ -2,18 +2,19 @@
 title: 使用 Azure AD 进行 Azure 磁盘加密（以前版本）
 description: 本文提供了对 IaaS VM 使用 Azure 磁盘加密所要满足的先决条件。
 author: rockboyfor
-ms.service: security
+ms.service: virtual-machines-windows
+ms.subservice: security
 ms.topic: article
 origin.date: 03/15/2019
-ms.date: 04/27/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
 ms.custom: seodec18
-ms.openlocfilehash: db9e4f291aaf8f7325795eb70eea60e6d0e8b183
-ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
+ms.openlocfilehash: 79e030386ea4d394ad06708092095a42f12155d2
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "83001895"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85946006"
 ---
 # <a name="azure-disk-encryption-with-azure-ad-previous-release"></a>使用 Azure AD 进行 Azure 磁盘加密（以前版本）
 

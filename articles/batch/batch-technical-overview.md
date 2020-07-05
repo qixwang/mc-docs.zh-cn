@@ -6,12 +6,12 @@ ms.date: 04/26/2020
 ms.author: v-tawe
 ms.custom: mvc
 origin.date: 01/19/2018
-ms.openlocfilehash: c69cf1c82fa1d8fcd142d1a2020abe88fdd93ebf
-ms.sourcegitcommit: cbaa1aef101f67bd094f6ad0b4be274bbc2d2537
+ms.openlocfilehash: b435e4e0ca987420a0bfeb40ee627bf51dfbd470
+ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84126691"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85613333"
 ---
 # <a name="what-is-azure-batch"></a>什么是 Azure Batch？
 
@@ -84,5 +84,4 @@ Batch 的常用方案涉及在计算节点池中横向扩展本质并行工作�
 * [使用 Azure CLI 运行第一个 Batch 作业](quick-create-cli.md)
 * [使用 Azure 门户运行第一个 Batch 作业](quick-create-portal.md)
 * [使用 .NET API 运行第一个 Batch 作业](quick-run-dotnet.md)
-* [使用 Python API 运行第一个 Batch 作业](quick-run-python.md)
 

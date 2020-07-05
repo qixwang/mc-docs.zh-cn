@@ -4,6 +4,8 @@
   items:
     - name: 什么是 Azure AD 报表？
       href: overview-reports.md
+    - name: 什么是 Azure AD 监视？
+      href: overview-monitoring.md
 - name: 快速入门
   expanded: true
   items:
@@ -11,6 +13,16 @@
       href: quickstart-download-sign-in-report.md
     - name: 下载审核报表
       href: quickstart-download-audit-report.md
+    - name: 配置命名位置
+      href: quickstart-configure-named-locations.md
+    - name: 将日志路由到存储帐户
+      href: quickstart-azure-monitor-route-logs-to-storage-account.md
+- name: 教程
+  items:
+    - name: 使用证书访问报告 API
+      href: tutorial-access-api-with-certificates.md
+    - name: 将日志流式传输到事件中心
+      href: tutorial-azure-monitor-stream-logs-to-event-hub.md
 - name: 概念
   items:
     - name: 审核日志
@@ -24,8 +36,18 @@
       items:
         - name: 管理 Azure AD 中的非活动用户帐户
           href: howto-manage-inactive-user-accounts.md
+        - name: 排查用户登录错误
+          href: howto-troubleshoot-sign-in-errors.md
         - name: 配置报告 API 的先决条件
           href: howto-configure-prerequisites-for-reporting-api.md
+    - name: 监视
+      items:
+        - name: 将活动日志与 ArcSight 集成
+          href: howto-integrate-activity-logs-with-arcsight.md
+        - name: 将活动日志与 Splunk 集成
+          href: howto-integrate-activity-logs-with-splunk.md
+        - name: 将活动日志与 SumoLogic 集成
+          href: howto-integrate-activity-logs-with-sumologic.md
     - name: 故障排除
       items:
         - name: 缺少审核数据
@@ -49,3 +71,5 @@
       href: reference-sign-ins-error-codes.md
     - name: 审核日志架构
       href: reference-azure-monitor-audit-log-schema.md
+    - name: 登录日志架构
+      href: reference-azure-monitor-sign-ins-log-schema.md

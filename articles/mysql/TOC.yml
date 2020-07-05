@@ -117,6 +117,8 @@
           href: concepts-query-performance-insight.md
         - name: 性能建议
           href: concepts-performance-recommendations.md
+        - name: 服务器参数
+          href: concepts-server-parameters.md
     - name: 开发
       items:
         - name: 驱动程序和工具兼容性
@@ -175,6 +177,8 @@
           href: howto-connection-string.md
         - name: 配置 SSL
           href: howto-configure-ssl.md
+        - name: 配置 TLS
+          href: howto-tls-configurations.md
         - name: Web 应用
           href: howto-connect-webapp.md
         - name: 通过重定向进行连接
@@ -261,10 +265,6 @@
       href: 'https://azure.cn/pricing/details/mysql/'
     - name: MSDN 论坛
       href: 'https://social.msdn.microsoft.com/forums/security/zh-CN/home?forum=AzureDatabaseforMySQL'
-    - name: 视频
-      items:
-        - name: 产品视频
-          href: videos.md
     - name: 上市区域
       href: 'https://azure.microsoft.com/global-infrastructure/services/?regions=china-non-regional,china-east,china-east-2,china-north,china-north-2&products=mysql'
     - name: 支持选项

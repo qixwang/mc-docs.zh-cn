@@ -5,24 +5,24 @@ author: ggailey777
 ms.devlang: dotnet
 ms.topic: article
 origin.date: 02/18/2019
-ms.date: 05/22/2020
+ms.date: 06/22/2020
 ms.author: v-tawe
-ms.openlocfilehash: 77ce7155b780fc2e9b7b66159a5d9c3c391559e2
-ms.sourcegitcommit: 981a75a78f8cf74ab5a76f9e6b0dc5978387be4b
+ms.openlocfilehash: a0441978a02f8c0734c9e7222dc7929549f435b7
+ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83801321"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85613427"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>用于事件驱动的后台处理的 Azure WebJobs SDK 入门
 
-本文介绍如何使用 Visual Studio 2019 创建 Azure WebJobs SDK 项目、在本地运行它，然后将其部署到 [Azure 应用服务](overview.md)。 WebJobs SDK 的 3.x 版同时支持 .NET Core 和 .NET Framework 控制台应用。 若要详细了解如何使用 WebJobs SDK，请参阅[如何使用 Azure WebJobs SDK 进行事件驱动的后台处理](webjobs-sdk-how-to.md)。
+本文介绍如何使用 Visual Studio 2019 创建 Azure WebJobs SDK 项目、在本地运行它，然后将其部署到 [Azure 应用服务](overview.md)。 WebJobs SDK 的 3.x 版同时支持 .NET Core 和 .NET Framework 控制台应用。 若要了解关于使用 WebJobs SDK 的详细信息，请参阅[如何将 Azure WebJobs SDK 用于处理事件驱动的后台](webjobs-sdk-how-to.md)。
 
 本文介绍如何将 WebJobs 部署为 .NET Core 控制台应用。 若要将 WebJobs 部署为 .NET Framework 控制台应用，请参阅 [WebJobs 作为 .NET Framework 控制台应用](webjobs-dotnet-deploy-vs.md#webjobs-as-net-framework-console-apps)。 如果你对仅支持 .NET Framework 的 WebJobs SDK 版本 2.x 感兴趣，请参阅[使用 Visual Studio 开发和部署 WebJob - Azure 应用服务](webjobs-dotnet-deploy-vs.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
-* [安装 Visual Studio 2019](https://docs.microsoft.com/visualstudio/install/)（包含 **Azure 开发**工作负荷）。 如果已安装 Visual Studio，但未配置该工作负荷，请选择“工具”>“获取工具和功能”添加该工作负荷。
+* [安装 Visual Studio 2019](https://docs.microsoft.com/visualstudio/install/)其中包含 Azure 开发工作负荷。 如果已安装 Visual Studio，但未配置该工作负荷，请选择“工具”>“获取工具和功能”添加该工作负荷。
 
 * 必须有一个 [Azure 帐户](https://www.azure.cn/pricing/1rmb-trial)才能将 WebJobs SDK 项目发布到 Azure。
 
@@ -81,23 +81,22 @@ ms.locfileid: "83801321"
 
 ## <a name="enable-console-logging"></a>启用控制台日志记录
 
-在本部分，设置使用 [ASP.NET Core 日志记录框架](https://docs.microsoft.com/aspnet/core/fundamentals/logging)的控制台日志记录。
+本部分介绍如何设置使用 [ASP.NET Core 记录框架](https://docs.microsoft.com/aspnet/core/fundamentals/logging)的控制台日志记录。
 
 1. 安装 [`Microsoft.Extensions.Logging.Console` NuGet 包](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Console/)的最新稳定版本，其中包括 `Microsoft.Extensions.Logging`。
 
-   下面是包管理器控制台命令：
+   下面是“包管理器控制台”命令：
 
    ```powershell
    Install-Package Microsoft.Extensions.Logging.Console -version <3_X_VERSION>
    ```
+   在此命令中，将 `<3_X_VERSION>` 替换为包的受支持的 3.x 版本。
 
 1. 在 *Program.cs* 中，添加 `using` 语句：
 
    ```cs
    using Microsoft.Extensions.Logging;
    ```
-
-    在此命令中，将 `<3_X_VERSION>` 替换为包的受支持 3.x 版本。
 
 1. 在 [`HostBuilder`](https://docs.microsoft.com/dotnet/api/microsoft.extensions.hosting.hostbuilder) 上调用 [`ConfigureLogging`](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderextensions.configurelogging) 方法。 [`AddConsole`](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.consoleloggerextensions.addconsole) 方法将控制台日志记录添加到配置中。
 
@@ -298,7 +297,7 @@ WebJobs SDK 在 Azure 的“应用程序设置”中查找存储连接字符串�
 
 1. 关闭控制台窗口。 
 
-1. 返回“队列”窗口并刷新。 该消息已消失，因为本地运行的函数已对其进行处理。 
+1. 返回“队列”窗口并刷新。 消息已消失，因为已由本地运行的函数处理了。 
 
 ## <a name="add-application-insights-logging"></a>添加 Application Insights 日志记录
 

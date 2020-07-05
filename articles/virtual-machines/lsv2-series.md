@@ -1,22 +1,21 @@
 ---
 title: Lsv2 系列 - Azure 虚拟机
 description: Lsv2 系列 VM 的规范。
-services: virtual-machines
 author: rockboyfor
 ms.service: virtual-machines
+ms.subservice: sizes
 ms.topic: article
-origin.date: 02/03/2020
-ms.date: 5/18/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 8d49fa141b8e979f1210662d4f9429ccedd1301d
-ms.sourcegitcommit: c4fc01b7451951ef7a9616fca494e1baf29db714
+ms.openlocfilehash: ab1754b7e4d2e431616dae32602fca2e23fd16b0
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84564316"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945989"
 ---
-<!--CHECK THE L8-L80 SPECIFICATION BEFORE RELEASE-->
 <!--NOT AVAILABLE ON MOONCAKE-->
+<!--CHECK THE L8-L80 SPECIFICATION BEFORE RELEASE-->
 # <a name="lsv2-series"></a>Lsv2 系列
 
 Lsv2 系列具有高吞吐量、低延迟、在 [AMD EPYC<sup>TM</sup>7551 处理器](https://www.amd.com/en/products/epyc-7000-series)上运行的直接映射的本地 NVMe 存储，且所有核心提升 2.55GHz，最大提升 3.0GHz。 Lsv2 系列 VM 提供同时进行的多线程配置中的 8 到 80 个 vCPU。  每个 vCPU 有 8 GiB 内存，每 8 个 vCPU 有一个 1.92TB 的 NVMe SSD M.2 设备，并且在 L80s v2 上可以使用最多 19.2TB (10x1.92TB)。

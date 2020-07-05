@@ -2,18 +2,19 @@
 title: 使用 Azure AD 对 Windows VM 进行 Azure 磁盘加密（以前版本）
 description: 本文提供有关如何为 Windows IaaS VM 启用 Azure 磁盘加密的说明。
 author: rockboyfor
-ms.service: security
+ms.service: virtual-machines
+ms.subservice: security
 ms.topic: article
-ms.author: v-yeche
 origin.date: 03/15/2019
-ms.date: 11/11/2019
+ms.date: 07/06/2020
+ms.author: v-yeche
 ms.custom: seodec18
-ms.openlocfilehash: 8d1a1c5f0d20a413611907dff3a410292824746e
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 86feed408fa6d1030a36694c4ed5df224664f9f7
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "73730643"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85946003"
 ---
 # <a name="azure-disk-encryption-with-azure-ad-for-windows-vms-previous-release"></a>使用 Azure AD 对 Windows VM 进行 Azure 磁盘加密（以前版本）
 
@@ -325,5 +326,4 @@ Set-AzVMDiskEncryptionExtension -ResourceGroupName $VMRGName -VMName $VMName -Aa
 > [!div class="nextstepaction"]
 > [Azure 磁盘加密概述](disk-encryption-overview.md)
 
-<!--Update_Description: new articles on disk encryption windows aad -->
-<!--New.date: 11/04/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

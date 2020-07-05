@@ -1,5 +1,5 @@
 ---
-title: 排查 fstab 错误导致的 Linux VM 启动问题 | Azure
+title: 排查 fstab 错误导致的 Linux VM 启动问题
 description: 解释 Linux VM 为何无法启动，以及如何解决此问题。
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 origin.date: 10/09/2019
-ms.date: 11/11/2019
+ms.date: 07/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: abf0d89a385594020adb6bf3196af5478c137fa0
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 6e88b177aba6478da358ae1cf60000b2fd6b2a25
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74116946"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85946030"
 ---
 <!--Verified successfully-->
 # <a name="troubleshoot-linux-vm-starting-issues-due-to-fstab-errors"></a>排查 fstab 错误导致的 Linux VM 启动问题

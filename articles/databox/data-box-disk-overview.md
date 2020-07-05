@@ -7,15 +7,15 @@ ms.service: databox
 ms.subservice: disk
 ms.topic: overview
 origin.date: 06/18/2019
-ms.date: 12/02/2019
+ms.date: 07/06/2019
 ms.author: v-jay
 Customer intent: As an IT admin, I need to understand what Data Box Disk is and how it works so I can use it to import on-premises data into Azure.
-ms.openlocfilehash: 01e173debe48217b6ad30fc1f5d7b7fc419bd128
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: c40665f210d7830146befb8d200cf0eab9d8c56a
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79293235"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945869"
 ---
 # <a name="what-is-azure-data-box-disk"></a>什么是 Azure Data Box 磁盘？
 
@@ -25,11 +25,19 @@ ms.locfileid: "79293235"
 
 ## <a name="use-cases"></a>用例
 
-在无网络连接或者连接受限的情况下，使用 Data Box 磁盘传输 TB 量级的数据。 数据移动的方式可以是一次性的、定期的，或者先执行批量数据传输，再定期传输。 
+在无网络连接或者连接受限的情况下，使用 Data Box 磁盘传输 TB 量级的数据。 数据移动的方式可以是一次性的、定期的，或者先执行批量数据传输，再定期传输。
 
 - **一次性迁移** - 需要将大量本地数据移到 Azure 时。 例如，将离线磁带中的数据移到 Azure 冷存储中的存档数据。
-- **增量传输** - 需要先使用 Data Box 磁盘（种子）执行初始批量传输，然后通过网络执行增量传输时。 例如，使用 Commvault 和 Data Box 磁盘将备份副本移到 Azure。 完成此迁移后，再通过网络将增量数据复制到 Azure 存储。 
+- **增量传输** - 需要先使用 Data Box 磁盘（种子）执行初始批量传输，然后通过网络执行增量传输时。 例如，使用 Commvault 和 Data Box 磁盘将备份副本移到 Azure。 完成此迁移后，使用网络将增量数据复制到 Azure 存储。
 - **定期上传** - 定期生成大量数据，并需要将这些数据移到 Azure 时。 例如，能源勘探领域生成有关钻井平台和风力发电农场的视频内容。
+
+### <a name="ingestion-of-data-from-data-box"></a>从 Data Box 引入数据
+
+Azure 提供程序和非 Azure 提供程序均可以从 Azure Data Box 引入数据。 提供 Azure Data Box 数据引入功能的 Azure 服务包括：
+
+- **SharePoint Online** - 使用 Azure Data Box 和 SharePoint 迁移工具 (SPMT) 将文件共享内容迁移到 SharePoint Online。 使用 Data Box，可以删除用于传输数据的 WAN 链接上依赖项。 有关详细信息，请参阅[使用 Azure Data Box Heavy 将文件共享内容迁移到 SharePoint Online](data-box-heavy-migrate-spo.md)。
+
+- **Azure 备份** - 使你能够通过脱机机制将关键企业数据的大型备份移动到 Azure 恢复服务保管库。 有关详细信息，请参阅 [Azure 备份概述](../backup/backup-overview.md)。
 
 ## <a name="the-workflow"></a>工作流
 
@@ -38,7 +46,7 @@ ms.locfileid: "79293235"
 1. **订购** - 在 Azure 门户中创建订单，提供发货信息和数据的目标 Azure 存储帐户。 如果磁盘有货，则 Azure 会加密、准备、寄送磁盘并随附发货跟踪 ID。
 
 2. **接收** - 收到磁盘后，打开包装并将磁盘连接到要复制数据的计算机。 解锁磁盘。
-    
+
 3. **复制数据** - 通过拖放操作复制磁盘上的数据。
 
 4. **退回** - 准备好磁盘并寄回到 Azure 数据中心。
@@ -47,38 +55,35 @@ ms.locfileid: "79293235"
 
 在整个过程中，你会收到有关所有状态更改的电子邮件通知。 有关详细流的详细信息，请参阅[在 Azure 门户中部署 Data Box 磁盘](data-box-disk-quickstart-portal.md)。
 
-
 ## <a name="benefits"></a>优点
 
 Data Box 磁盘旨在将大量数据移到 Azure，且不影响网络。 该解决方案具有以下优点：
 
-- **速度** - Data Box 磁盘使用 USB 3.0 连接，在不到一周内将最多 35 TB 数据移到 Azure。   
+- **速度** - Data Box 磁盘使用 USB 3.0 连接，在不到一周内将最多 35 TB 数据移到 Azure。
 
 - **易用** - Data Box 是一种简单易用的解决方案。
 
-    - 磁盘使用 USB 连接，几乎不需要任何设置。
-    - 磁盘的外形规格较小，使之易于操控。
-    - 磁盘没有外部电源要求。
-    - 可以在数据中心服务器、台式机或便携式计算机上使用这些磁盘。
-    - 该解决方案通过 Azure 门户提供端到端的跟踪。    
+  - 磁盘使用 USB 连接，几乎不需要任何设置。
+  - 磁盘的外形规格较小，使之易于操控。
+  - 磁盘没有外部电源要求。
+  - 可以在数据中心服务器、台式机或便携式计算机上使用这些磁盘。
+  - 该解决方案使用 Azure 门户提供端到端的跟踪。
 
-- **安全** - Data Box 磁盘为磁盘、数据和服务提供内置安全保护。 
-    - 磁盘可防篡改，支持安全更新功能。 
-    - 磁盘上的数据始终受到 AES 128 位加密的保护。 
-    - 只能使用 Azure 门户中提供的密钥解锁磁盘。 
-    - 服务受 Azure 安全功能的保护。 
-    - 将数据上传到 Azure 后，会根据 NIST 800-88r1 标准完全擦除磁盘数据。  
-    
+- **安全** - Data Box 磁盘为磁盘、数据和服务提供内置安全保护。
+  - 磁盘可防篡改，支持安全更新功能。
+  - 磁盘上的数据始终受到 AES 128 位加密的保护。
+  - 只能使用 Azure 门户中提供的密钥解锁磁盘。
+  - 服务受 Azure 安全功能的保护。
+  - 将数据上传到 Azure 后，会根据 NIST 800-88r1 标准完全擦除磁盘数据。  
+
 有关详细信息，请参阅 [Azure Data Box 磁盘安全性和数据保护](data-box-disk-security.md)。
 
-
 ## <a name="features-and-specifications"></a>功能和规格
-
 
 | 规范                                          | 说明              |
 |---------------------------------------------------------|--------------------------|
 | 重量                                                  | < 0.9 千克 /盒。 每盒最多 5 块磁盘                |
-| 维度                                              | 磁盘 - 2.5 英寸 SSD |            
+| 维度                                              | 磁盘 - 2.5 英寸 SSD |
 | 电缆                                                  | 每块磁盘配 1 根 USB 3.1 连接线|
 | 每笔订单的存储容量                              | 40 TB（可用容量大约为 35 TB）|
 | 磁盘存储容量                                   | 8 TB（可用容量大约为 7 TB）|
@@ -87,11 +92,9 @@ Data Box 磁盘旨在将大量数据移到 Azure，且不影响网络。 该解�
 | 数据传输率                                      | 最高 430 MBps，具体取决于文件大小      |
 |管理                                               | Azure 门户 |
 
-
 ## <a name="region-availability"></a>上市区域
 
 有关适用地区的信息，请转到 [Azure 可用产品（按区域）](https://azure.microsoft.com/global-infrastructure/services/?regions=china-non-regional,china-east,china-east-2,china-north,china-north-2&products=all)。
-
 
 ## <a name="pricing"></a>定价
 

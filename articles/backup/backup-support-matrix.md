@@ -4,14 +4,14 @@ description: 汇总 Azure 备份服务的支持设置和限制。
 ms.topic: conceptual
 author: Johnnytechn
 origin.date: 02/17/2019
-ms.date: 06/09/2020
+ms.date: 06/22/2020
 ms.author: v-johya
-ms.openlocfilehash: 6fd25f870733fb8f81560b2f743a12d8febbf010
-ms.sourcegitcommit: 285649db9b21169f3136729c041e4d04d323229a
+ms.openlocfilehash: 9bed3b00d17c484719db17287705da2c75224c50
+ms.sourcegitcommit: 372899a2a21794e631eda1c6a11b4fd5c38751d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84684013"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85852118"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure 备份的支持矩阵
 
@@ -58,7 +58,7 @@ Azure 备份使用恢复服务保管库来安排和管理备份。 它还使用�
 
 **限制** | **详细信息**
 --- | ---
-**Azure VM 数据磁盘** | 限制为 16 个 <br> 若要注册获取包含 16 个以上磁盘（最多 32 个磁盘）的有限预览版 VM，请向我们发送电子邮件：AskAzureBackupTeam@microsoft.com
+**Azure VM 数据磁盘** | 查看 [Azure VM 备份的支持矩阵](/backup/backup-support-matrix-iaas#vm-storage-support)。
 **Azure VM 数据磁盘大小** | 对于 VM 中的所有磁盘，单个磁盘大小最大为 32 TB，组合磁盘大小最大为 256 TB。
 
 ### <a name="azure-vm-backup-options"></a>Azure VM 备份选项
@@ -86,7 +86,7 @@ Azure 备份使用恢复服务保管库来安排和管理备份。 它还使用�
 
 ## <a name="daylight-saving-time-support"></a>夏令时支持
 
-Azure 备份不支持根据 Azure VM 备份的夏令时时自动调整时钟。 它不会将备份的时间向前或向后移动。 若要确保备份在所需的时间运行，请根据需要手动修改备份策略。
+Azure 备份不支持 Azure VM 备份的夏令时自动时钟调整。 它不会将备份的时间向前或向后移动。 若要确保备份在所需的时间运行，请根据需要手动修改备份策略。
 
 ## <a name="disk-deduplication-support"></a>磁盘重复数据删除支持
 
@@ -103,15 +103,15 @@ Azure 备份支持针对传输中数据和静态数据的加密。
 
 - 从服务器到恢复服务保管库的备份流量通过高级加密标准 256 进行加密。
 - 备份数据通过安全 HTTPS 链接进行发送。
+
+### <a name="data-security"></a>数据安全性
+
 - 备份数据以加密格式存储在恢复服务保管库中。
 - 只有你有解锁此数据的通行短语。 Microsoft 无法解密任何恢复点的备份数据。
 
     > [!WARNING]
     > 设置保管库后，只有你才能访问加密密钥。 Microsoft 不保留副本，且没有访问该密钥的权限。 如果客户丢失了密钥，Microsoft 无法恢复备份数据。
-
-### <a name="data-security"></a>数据安全性
-
-- 备份 Azure VM 时，需要在虚拟机内部** 设置加密。
+- 备份 Azure VM 时，需要在虚拟机内部设置加密。
 - Azure 备份支持 Azure 磁盘加密，后者在 Windows 虚拟机上使用 BitLocker，在 Linux 虚拟机上使用 **dm-crypt**。
 - 在后端，Azure 备份使用 [Azure 存储服务加密](../storage/common/storage-service-encryption.md)来保护静态数据。
 
@@ -145,7 +145,7 @@ Azure 备份支持对备份流量进行压缩，详细情况汇总在下表中�
 **备份到保管库时的最高备份频率** | **本地 Windows 计算机或运行 MARS 的 Azure VM：** 每天三次<br/><br/> **DPM/MABS：** 每天两次<br/><br/> **Azure VM 备份：** 每天一次
 **恢复点保留期** | 每日、每周、每月、每年
 **最大保留期** | 取决于备份频率
-**DPM/MABS 磁盘上的恢复点数** | 文件服务器为 64 个；应用服务器为 448 个 <br/><br/>对于本地 DPM 来说，磁带恢复点没有限制
+**DPM/MABS 磁盘上的恢复点数** | 文件服务器为 64 个；应用服务器为 448 个 <br/><br/>对于本地 DPM 而言，磁带恢复点数没有限制
 
 ## <a name="cross-region-restore"></a>跨区域还原
 

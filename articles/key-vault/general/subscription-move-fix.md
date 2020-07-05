@@ -1,6 +1,6 @@
 ---
 title: 订阅移动后更改密钥保管库租户ID - Azure 密钥保管库 | Azure
-description: 了解将订阅移至不同的租户后如何切换密钥保管库的租户 ID
+description: 了解如何在订阅移至不同的租户后切换密钥保管库的租户 ID
 services: key-vault
 author: amitbapat
 manager: rkarlin
@@ -9,14 +9,14 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: tutorial
 origin.date: 08/12/2019
-ms.date: 04/20/2020
+ms.date: 07/01/2020
 ms.author: v-tawe
-ms.openlocfilehash: e0f22de47044ddbe579eca4289919d4446369be3
-ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
+ms.openlocfilehash: 2f7a21400fd99c7eaa8658f5faa6238116fd8ef9
+ms.sourcegitcommit: 4f84bba7e509a321b6f68a2da475027c539b8fd3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82588822"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85796226"
 ---
 # <a name="change-a-key-vault-tenant-id-after-a-subscription-move"></a>订阅移动后更改密钥保管库租户 ID
 
@@ -48,7 +48,7 @@ Set-AzResource -ResourceId $vaultResourceId -Properties $vault.Properties  # Mod
 
 ```azurecli
 az account set -s <your-subscriptionId>                                    # Select your Azure Subscription
-tenantId=$(az account show --query tenantId)                               # Get your tenantId
+$tenantId=$(az account show --query tenantId)                               # Get your tenantId
 az keyvault update -n myvault --remove Properties.accessPolicies           # Remove the access policies
 az keyvault update -n myvault --set Properties.tenantId=$tenantId          # Update the key vault tenantId
 ```

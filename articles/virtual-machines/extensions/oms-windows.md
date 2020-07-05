@@ -15,13 +15,14 @@ ms.workload: infrastructure-services
 origin.date: 01/30/2020
 ms.date: 04/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: 37548583449a1ea386de52757165b6c689b24ba0
-ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
+ms.openlocfilehash: b50cd92aeeafba157abb6c68fa2a137e09211840
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82596412"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945977"
 ---
+<!--Verified successfully the Extension Type-->
 # <a name="log-analytics-virtual-machine-extension-for-windows"></a>适用于 Windows 的 Log Analytics 虚拟机扩展
 
 Azure Monitor 日志提供跨云和本地资产的监视功能。 适用于 Windows 的 Log Analytics 代理虚拟机扩展由 Azure 发布和提供支持。 该扩展在 Azure 虚拟机上安装 Log Analytics 代理，并将虚拟机注册到现有的 Log Analytics 工作区中。 本文档详细介绍适用于 Windows 的 Log Analytics 虚拟机扩展支持的平台、配置和部署选项。
@@ -39,7 +40,7 @@ Azure Monitor 日志提供跨云和本地资产的监视功能。 适用于 Wind
 
 | Log Analytics Windows 代理捆绑包版本 | Log Analytics Windows VM 扩展版本 | 发布日期 | 发行说明 |
 |--------------------------------|--------------------------|--------------------------|--------------------------|
-| 10.20.18029 | 1.0.18029 | 2020 年 3 月   | <ul><li>添加 SHA-2 代码签名支持</li><li>改进了 VM 扩展安装和管理</li><li>解决了用于服务器的 Azure Arc 集成中的 Bug</li><li>添加了用于客户支持的内置故障排除工具</li><li>添加了对其他 Azure 中国云区域的支持</li> |
+| 10.20.18029 | 1.0.18029 | 2020 年 3 月   | <ul><li>添加 SHA-2 代码签名支持</li><li>改进了 VM 扩展安装和管理</li><li>解决了用于服务器的 Azure Arc 集成中的 Bug</li><li>添加了用于客户支持的内置故障排除工具</li> |
 | 10.20.18018 | 1.0.18018 | 2019 年 10 月 | <ul><li> 次要 bug 修复和稳定性改进 </li></ul> |
 | 10.20.18011 | 1.0.18011 | 2019 年 7 月 | <ul><li> 次要 bug 修复和稳定性改进 </li><li> MaxExpressionDepth 已增加到10000 </li></ul> |
 | 10.20.18001 | 1.0.18001 | 2019 年 6 月 | <ul><li> 次要 bug 修复和稳定性改进 </li><li> 添加了在建立代理连接时禁用默认凭据的功能（支持 WINHTTP_AUTOLOGON_SECURITY_LEVEL_HIGH） </li></ul>|
@@ -50,6 +51,8 @@ Azure Monitor 日志提供跨云和本地资产的监视功能。 适用于 Wind
 | 8.0.11081 | 1.0.11081 | 2017 年 11 月 | | 
 | 8.0.11072 | 1.0.11072 | 2017 年 9 月 | |
 | 8.0.11049 | 1.0.11049 | 2017 年 2 月 | |
+
+<!--Not Available on <li>Adds support for additional Azure China Cloud regions</li>-->
 
 ### <a name="azure-security-center"></a>Azure 安全中心
 

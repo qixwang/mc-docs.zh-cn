@@ -17,12 +17,12 @@ ms.workload: big-data
 origin.date: 12/16/2019
 ms.date: 03/23/2020
 ms.author: v-yiso
-ms.openlocfilehash: 091b4fa4e0068276945120a7929749e72368efd5
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 37f0b9fb6872c78cda31cfb1faeed482b80a3116
+ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79295909"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85516626"
 ---
 # <a name="develop-apache-storm-topologies-using-python-on-hdinsight"></a>在 HDInsight 上使用 Python 开发 Apache Storm 拓扑
 
@@ -45,7 +45,7 @@ ms.locfileid: "79295909"
 
 ## <a name="storm-multi-language-support"></a>Storm 多语言支持
 
-Apache Storm 设计为与使用任何编程语言编写的组件配合使用。 组件必须了解如何使用 [Storm 的 Thrift 定义](https://github.com/apache/storm/blob/master/storm-core/src/storm.thrift)。 对于 Python，会以 Apache Storm 项目的一部分提供模块，让用户可以轻松与 Storm 进行交互。 可以在 [https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py](https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py) 上找到此模块。
+Apache Storm 设计为与使用任何编程语言编写的组件配合使用。 组件必须了解如何使用 Storm 的 Thrift 定义。 对于 Python，会以 Apache Storm 项目的一部分提供模块，让用户可以轻松与 Storm 进行交互。 可以在 [https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py](https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py) 上找到此模块。
 
 Storm 是在 Java 虚拟机 (JVM) 上运行的 Java 进程。 使用其他语言编写的组件作为子进程执行。 Storm 使用通过 stdin/stdout 发送的 JSON 消息与这些子进程通信。 有关组件间通信的更多详细信息，请参阅 [Multi-lang Protocol](https://storm.apache.org/releases/current/Multilang-protocol.html)（多语言协议）文档。
 
@@ -123,7 +123,7 @@ Flux 需要 Python 脚本位于包含拓扑的 jar 文件内的 `/resources` 目
     storm kill wordcount
     ```
 
-    或者，可以使用 Storm UI。 在拓扑的“拓扑操作”下，选择“终止”   。
+    或者，可以使用 Storm UI。 在拓扑的“拓扑操作”下，选择“终止” 。
 
 ## <a name="run-the-topology-locally"></a>在本地运行拓扑
 

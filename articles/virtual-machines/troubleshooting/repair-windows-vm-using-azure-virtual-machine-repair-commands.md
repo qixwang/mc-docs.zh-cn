@@ -1,26 +1,26 @@
 ---
-title: 使用 Azure 虚拟机修复命令修复 Windows VM | Azure
+title: 使用 Azure 虚拟机修复命令修复 Windows VM
 description: 本文详细介绍如何使用 Azure VM 修复命令将磁盘连接到另一个 Windows VM 来修复所有错误，然后重新生成原始 VM。
 services: virtual-machines-windows
 documentationcenter: ''
 author: rockboyfor
 manager: digimobile
 editor: ''
-tags: ''
+tags: virtual-machines
 ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 origin.date: 09/10/2019
-ms.date: 11/11/2019
+ms.date: 07/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 772805319ccbc761b1f36c0cf35e7f7c6a601774
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 979262c47dada39442efa87ad6ff5b60f0ded99c
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "73730731"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945973"
 ---
 # <a name="repair-a-windows-vm-by-using-the-azure-virtual-machine-repair-commands"></a>使用 Azure 虚拟机修复命令修复 Windows VM
 
@@ -41,7 +41,7 @@ ms.locfileid: "73730731"
 4. 运行 az vm repair run。
 5. 运行 az vm repair restore。
 
-有关其他文档和说明，请参阅 [az vm repair](https://docs.azure.cn/cli/ext/vm-repair/vm/repair?view=azure-cli-latest#az-vm-repair)。
+有关其他文档和说明，请参阅 [az vm repair](https://docs.microsoft.com/cli/azure/ext/vm-repair/vm/repair?view=azure-cli-latest#az-vm-repair)。
 
 ## <a name="repair-process-example"></a>修复过程示例
 
@@ -61,31 +61,31 @@ ms.locfileid: "73730731"
 
 2. 如果是首次使用 `az vm repair` 命令，请添加 vm-repair CLI 扩展。
 
-    ```powershell
+    ```azurecli
     az extension add -n vm-repair
     ```
 
     如果以前使用过 `az vm repair` 命令，请将任何更新应用于 vm-repair 扩展。
 
-    ```powershell
+    ```azurecli
     az extension update -n vm-repair
     ```
 
-3. 运行 `az vm repair create`。 此命令将为无法运行的 VM 创建 OS 磁盘的副本，创建修复 VM 并附加磁盘。
+3. 运行 `az vm repair create`。 此命令将为非功能性 VM 创建 OS 磁盘的副本，在新资源组中创建修复 VM，并附加 OS 磁盘副本。  修复 VM 的大小和区域将与指定的非功能性 VM 相同。 所有步骤中使用的资源组和 VM 名称都将用于非功能性 VM。
 
-    ```powershell
+    ```azurecli
     az vm repair create -g MyResourceGroup -n myVM --repair-username username --repair-password password!234 --verbose
     ```
 
-4. 运行 `az vm repair run`。 此命令将通过修复 VM 在附加的磁盘上运行指定的修复脚本。
+4. 运行 `az vm repair run`。 此命令将通过修复 VM 在附加的磁盘上运行指定的修复脚本。 如果你使用的故障排除指南指定了 run-id，请在此处使用它，否则可以使用 `az vm repair list-scripts` 来查看可用的修复脚本。 此处使用的资源组和 VM 名称适用于第 3 步中使用的非功能性 VM。
 
-    ```powershell
-    az vm repair run  -g MyResourceGroup -n MyVM --run-on-repair --run-id 2 --verbose
+    ```azurecli
+    az vm repair run -g MyResourceGroup -n MyVM --run-on-repair --run-id win-hello-world --verbose
     ```
 
-5. 运行 `az vm repair restore`。 此命令会将已修复的 OS 磁盘与 VM 的原始 OS 磁盘交换。
+5. 运行 `az vm repair restore`。 此命令会将已修复的 OS 磁盘与 VM 的原始 OS 磁盘交换。 此处使用的资源组和 VM 名称适用于第 3 步中使用的非功能性 VM。
 
-    ```powershell
+    ```azurecli
     az vm repair restore -g MyResourceGroup -n MyVM --verbose
     ```
 
@@ -95,7 +95,7 @@ ms.locfileid: "73730731"
 
 Azure CLI
 
-```powershell
+```azurecli
 az vm boot-diagnostics enable --name myVMDeployed --resource-group myResourceGroup --storage https://mystor.blob.core.chinacloudapi.cn/
 ```
 
@@ -103,7 +103,6 @@ az vm boot-diagnostics enable --name myVMDeployed --resource-group myResourceGro
 
 * 如果在连接到 VM 时遇到问题，请参阅[对 Azure VM 的 RDP 连接进行故障排除](/virtual-machines/troubleshooting/troubleshoot-rdp-connection)。
 * 如果在访问 VM 上运行的应用程序时遇到问题，请参阅[排查 Azure 中虚拟机上的应用程序连接问题](/virtual-machines/troubleshooting/troubleshoot-app-connection)。
-* 有关资源组的详细信息，请参阅 [Azure 资源管理器概述](/azure-resource-manager/resource-group-overview)。
+* 有关使用 Resource Manager 的详细信息，请参阅 [Azure Resource Manager 概述](/azure-resource-manager/resource-group-overview)。
 
-<!--Update_Description: new articles on repair windows VM using repair commands -->
-<!--New.date: 11/11/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

@@ -5,18 +5,18 @@ services: azure-portal
 keywords: ''
 author: santhoshsomayajula
 origin.date: 01/29/2020
-ms.date: 02/17/2020
-ms.topic: conceptual
+ms.date: 06/22/2020
+ms.topic: how-to
 ms.service: azure-portal
 ms.custom: ''
 manager: mtillman
 ms.author: v-tawe
-ms.openlocfilehash: 97369b52ffc60297da8711ffc2345db54023021d
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 0084883e0cf8a7ae99a6738db267f5161c1dc6e5
+ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77028202"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85613300"
 ---
 # <a name="export-or-delete-user-settings"></a>导出或删除用户设置
 

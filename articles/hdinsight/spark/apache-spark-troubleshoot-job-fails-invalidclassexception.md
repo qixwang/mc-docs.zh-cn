@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: v-yiso
 origin.date: 07/29/2019
 ms.date: 12/09/2019
-ms.openlocfilehash: 11172e72e11b7be58e2000a427d9aabaa73981e6
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 3354caf58d0d7eeac06166f386372a613605da68
+ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74657996"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85516577"
 ---
 # <a name="apache-spark-job-fails-with-invalidclassexception-class-version-mismatch-in-azure-hdinsight"></a>在 Azure HDInsight 中，Apache Spark 作业因 InvalidClassException（类版本不匹配）而失败
 
@@ -23,7 +23,7 @@ ms.locfileid: "74657996"
 尝试在 Spark 2.x 群集中创建 Apache Spark 作业。 它失败，出现类似于以下内容的错误：
 
 ```
-18/09/18 09:32:26 WARN TaskSetManager: Lost task 0.0 in stage 1.0 (TID 1, wn7-dev-co.2zyfbddadfih0xdq0cdja4g.ax.internal.cloudapp.net, executor 4): java.io.InvalidClassException:
+18/09/18 09:32:26 WARN TaskSetManager: Lost task 0.0 in stage 1.0 (TID 1, wn7-dev-co.2zyfbddadfih0xdq0cdja4g.ax.internal.chinacloudapp.cn, executor 4): java.io.InvalidClassException:
 org.apache.commons.lang3.time.FastDateFormat; local class incompatible: stream classdesc serialVersionUID = 2, local class serialVersionUID = 1
         at java.io.ObjectStreamClass.initNonProxy(ObjectStreamClass.java:699)
         at java.io.ObjectInputStream.readNonProxyDesc(ObjectInputStream.java:1885)

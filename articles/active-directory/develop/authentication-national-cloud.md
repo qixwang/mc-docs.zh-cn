@@ -1,29 +1,24 @@
 ---
-title: 在国家云中使用 Azure Active Directory 进行身份验证
+title: Azure AD 身份验证和国家云 | Azure
+titleSuffix: Microsoft identity platform
 description: 了解国家云的应用注册和身份验证终结点。
 services: active-directory
-documentationcenter: ''
 author: negoe
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-origin.date: 08/28/2019
-ms.date: 10/08/2019
+ms.date: 06/29/2020
 ms.author: v-junlch
-ms.reviewer: negoe,CelesteDG
-ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f6a6b8ab68453c4e10378dbf82e9a2203f5862b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.reviewer: negoe,celested
+ms.custom: aaddev,references_regions
+ms.openlocfilehash: 6065f41fa9223e30758d2104f59bb66e8184bf49
+ms.sourcegitcommit: 1008ad28745709e8d666f07a90e02a79dbbe2be5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79291083"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945118"
 ---
 # <a name="national-clouds"></a>国家云
 
@@ -65,10 +60,10 @@ ms.locfileid: "79291083"
 
 可以使用适当的特定于区域的基 URL 来形成对 Azure AD 授权或令牌终结点的请求。 例如，对于 Azure 德国：
 
-  - 授权常用终结点为 `https://login.microsoftonline.de/common/oauth2/authorize`。
-  - 令牌常用终结点为 `https://login.microsoftonline.de/common/oauth2/token`。
+  - 授权常用终结点为 `https://login.microsoftonline.de/common/oauth2/v2.0/authorize`。
+  - 令牌常用终结点为 `https://login.microsoftonline.de/common/oauth2/v2.0/token`。
 
-对于单租户应用程序，请将先前 URL 中的“common”替换为你的租户 ID 或名称。 示例为 `https://login.microsoftonline.de/contoso.com`。
+对于单租户应用程序，请将先前 URL 中的“common”替换为你的租户 ID 或名称。 例如 `https://login.microsoftonline.de/contoso.com`。
 
 ## <a name="microsoft-graph-api"></a>Microsoft Graph API
 

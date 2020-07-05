@@ -3,14 +3,14 @@ author: trevorbye
 ms.service: cognitive-services
 ms.topic: include
 origin.date: 04/04/2020
-ms.date: 04/20/2020
+ms.date: 06/19/2020
 ms.author: v-tawe
-ms.openlocfilehash: f034af37ae5d7220344b136d8c9a643adf8a1b99
-ms.sourcegitcommit: 304d3ef3c9e65c3e85977b3afb9985fbc0f908d6
+ms.openlocfilehash: d645324f29e8637968c3b2f02abcecb842909a01
+ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85095892"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85611908"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -37,7 +37,7 @@ sudo apt-get update
 sudo apt-get install build-essential libssl1.0.2 libasound2
 ```
 
-# <a name="rhel--centos-8"></a>[RHEL / CentOS 8](#tab/rhel-centos)
+# <a name="rhelcentos"></a>[RHEL/CentOS](#tab/rhel-centos)
 
 ```Bash
 sudo yum update
@@ -45,7 +45,8 @@ sudo yum install alsa-lib openssl python3
 ```
 
 > [!NOTE]
-> 在 RHEL/CentOS 7/8 上，按照[如何配置为 Linux 配置 OpenSSL](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md) 上的说明进行操作。
+> - 在 RHEL/CentOS 7 上，按照[如何为语音 SDK 配置 RHEL/CentOS 7](~/articles/cognitive-services/speech-service/how-to-configure-rhel-centos-7.md) 上的说明进行操作。
+> - 在 RHEL/CentOS 8 上，按照[如何配置 OpenSSL for Linux](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md) 上的说明进行操作。
 
 ---
 
@@ -81,7 +82,7 @@ python quickstart.py
 
 或者，可以从[语音 SDK 示例存储库](https://github.com/Azure-Samples/cognitive-services-speech-sdk/)以 [Jupyter](https://jupyter.org) Notebook 的形式下载本快速入门教程，并将其作为 Notebook 运行。
 
-### <a name="sample-code"></a>代码示例
+### <a name="sample-code"></a>示例代码
 
 ````python
 import azure.cognitiveservices.speech as speechsdk
@@ -124,7 +125,7 @@ elif result.reason == speechsdk.ResultReason.Canceled:
    ![安装 Python 扩展](~/articles/cognitive-services/Speech-Service/media/sdk/qs-python-vscode-python-extension.png)
 
 1. 创建一个文件夹用于存储项目。 例如，使用 Windows 资源管理器。
-1. 在 Visual Studio Code 中选择“文件”图标。**** 然后打开创建的文件夹。
+1. 在 Visual Studio Code 中选择“文件”图标。 然后打开创建的文件夹。
 
    ![打开文件夹](~/articles/cognitive-services/Speech-Service/media/sdk/qs-python-vscode-python-open-folder.png)
 
@@ -139,7 +140,7 @@ elif result.reason == speechsdk.ResultReason.Canceled:
 1. 如果尚未为所选的 Python 解释器安装， 可以从 Visual Studio Code 内部安装语音 SDK Python 包。
    若要安装语音 SDK 包，请打开终端。 再次启动命令面板 (<kbd>Ctrl+Shift+P</kbd>) 并输入 **Terminal:Create New Integrated Terminal** 来打开终端。
    在打开的终端中，输入命令 `python -m pip install azure-cognitiveservices-speech`，或者输入适用于系统的命令。
-1. 若要运行示例代码，请在编辑器中的某个位置单击右键。 选择“在终端中运行 Python 文件”。****
+1. 若要运行示例代码，请在编辑器中的某个位置单击右键。 选择“在终端中运行 Python 文件”。
    文本转换为语音，并保存在指定的音频数据中。
 
    ```console

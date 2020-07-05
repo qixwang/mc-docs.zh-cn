@@ -6,17 +6,17 @@ services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.author: v-junlch
-ms.date: 05/18/2020
+ms.date: 06/28/2020
 ms.custom: mvc, seo-javascript-september2019
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: ab674f064fffff319df88fc9ecfc016c00b7ec74
-ms.sourcegitcommit: 87e789550ea49ff77c7f19bc68fad228009fcf44
+ms.openlocfilehash: 8665c69a06a21c74247b1b8ff8cd28ba545eacc6
+ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83748090"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85516464"
 ---
 # <a name="tutorial-enable-authentication-in-a-single-page-application-with-azure-ad-b2c"></a>教程：使用 Azure AD B2C 在单页应用程序中启用身份验证
 
@@ -51,28 +51,28 @@ ms.locfileid: "83748090"
 
 在按照先决条件完成的第二个教程中，你已在 Azure AD B2C 中注册了 Web 应用程序。 若要使用本教程中的代码示例实现通信，请将一个回复 URL（也称为重定向 URI）添加到应用程序注册。
 
-你可以使用当前的“应用程序”体验，或者使用我们新推出的统一“应用注册(预览版)”体验来更新应用程序 。 [详细了解此新体验](/active-directory/develop/app-registrations-training-guide-for-app-registrations-legacy-users)。
+要更新 Azure AD B2C 租户中的应用程序，可以使用新的统一“应用注册”体验或旧版“应用程序(旧版)”体验 。 [详细了解此新体验](/active-directory-b2c/app-registrations-training-guide)。
 
-#### <a name="applications"></a>[应用程序](#tab/applications/)
+#### <a name="app-registrations"></a>[应用注册](#tab/app-reg-ga/)
+
+1. 登录 [Azure 门户](https://portal.azure.cn)。
+1. 在顶部菜单中选择“目录 + 订阅”筛选器，然后选择包含Azure AD B2C 租户的目录。
+1. 在左侧菜单中，选择“Azure AD B2C”。 或者，选择“所有服务”并搜索并选择“Azure AD B2C”。
+1. 依次选择“应用注册(预览版)”、“拥有的应用程序”选项卡，然后选择“webapp1”应用程序 。
+1. 在“Web”下，选择“添加 URI”链接，输入 `http://localhost:6420`。
+1. 在“隐式授权”下，选中“访问令牌”和“ID 令牌”复选框，然后选择“保存”。
+1. 选择“概述”。
+1. 记录“应用程序(客户端) ID”，以便稍后在单页 Web 应用程序中更新代码时使用。
+
+#### <a name="applications-legacy"></a>[应用程序（旧版）](#tab/applications-legacy/)
 
 1. 登录到 [Azure 门户](https://portal.azure.cn)。
 1. 请确保使用包含 Azure AD B2C 租户的目录，方法是选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录。
 1. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C” 。
-1. 选择“应用程序”，然后选择“webapp1”应用程序。
+1. 选择“应用程序(旧版)”，然后选择“webapp1”应用程序。
 1. 在“回复 URL”下添加 `http://localhost:6420`。
-1. 选择“保存” 。
+1. 选择“保存”。
 1. 在属性页上记录“应用程序 ID”。 在后面的步骤中，当你在单页 Web 应用程序中更新代码时，需使用此应用 ID。
-
-#### <a name="app-registrations-preview"></a>[应用注册（预览版）](#tab/app-reg-preview/)
-
-1. 登录到 [Azure 门户](https://portal.azure.cn)。
-1. 在顶部菜单中选择“目录 + 订阅”筛选器，然后选择包含Azure AD B2C 租户的目录。
-1. 在左侧菜单中，选择“Azure AD B2C”。 或者，选择“所有服务”并搜索并选择“Azure AD B2C”。
-1. 依次选择“应用注册(预览版)”、“拥有的应用程序”选项卡，然后选择“webapp1”应用程序 。
-1. 选择“身份验证”，然后选择“尝试新体验”（如果显示） 。
-1. 在“Web”下，选择“添加 URI”链接，输入 `https://localhost:6420`，然后选择“保存”  。
-1. 选择“概述”。
-1. 记录“应用程序(客户端) ID”，以便稍后在单页 Web 应用程序中更新代码时使用。
 
 * * *
 
@@ -98,14 +98,22 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-
     ```javascript
     const msalConfig = {
         auth: {
-            clientId: "00000000-0000-0000-0000-000000000000", // Replace this value with your Application (client) ID
-            authority: "https://your-b2c-tenant.b2clogin.cn/your-b2c-tenant.partner.onmschina.cn/B2C_1_signupsignin1", // Update with your tenant and user flow names
-            validateAuthority: false
+          clientId: "00000000-0000-0000-0000-000000000000", // Replace this value with your Application (client) ID
+          authority: b2cPolicies.authorities.signUpSignIn.authority,
+          validateAuthority: false
         },
         cache: {
-            cacheLocation: "localStorage",
-            storeAuthStateInCookie: true
+          cacheLocation: "localStorage",
+          storeAuthStateInCookie: true
         }
+    };
+
+    const loginRequest = {
+       scopes: ["openid", "profile"],
+    };
+
+    const tokenRequest = {
+      scopes: apiConfig.b2cScopes // i.e. ["https://fabrikamb2c.partner.onmschina.cn/helloapi/demo.read"]
     };
     ```
 

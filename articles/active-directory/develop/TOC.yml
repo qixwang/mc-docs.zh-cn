@@ -28,7 +28,7 @@
       items:
         - name: Angular
           href: quickstart-v2-angular.md
-        - name: Javascript
+        - name: JavaScript - 隐式流
           href: quickstart-v2-javascript.md
     - name: Web 应用
       items:
@@ -73,7 +73,7 @@
       items:
         - name: Angular
           href: tutorial-v2-angular.md
-        - name: Javascript
+        - name: JavaScript - 隐式流
           href: tutorial-v2-javascript-spa.md
     - name: Web 应用
       items:
@@ -301,7 +301,7 @@
         - name: iOS 和 macOS
           items:
             - name: 与 Azure AD B2C 集成
-              href: 'config-authority.md#b2c'
+              href: config-authority.md#b2c
             - name: 迁移到 MSAL.iOS/macOS
               href: migrate-objc-adal-msal.md
             - name: 适用于 iOS 设备的共享设备模式
@@ -406,6 +406,8 @@
               href: id-tokens.md
             - name: 访问令牌
               href: access-tokens.md
+            - name: UserInfo 终结点
+              href: userinfo.md
             - name: 证书凭据
               href: active-directory-certificate-credentials.md
     - name: 应用程序配置
@@ -448,6 +450,10 @@
           href: active-directory-claims-mapping.md
         - name: 配置可选声明
           href: active-directory-optional-claims.md
+        - name: 在 Chrome 浏览器中处理 SameSite Cookie 更改
+          href: howto-handle-samesite-cookie-changes-chrome-browser.md
+        - name: 在 Safari 中处理 ITP
+          href: reference-third-party-cookies-spas.md
     - name: 应用程序配置
       displayName: App configuration
       items:
@@ -499,6 +505,9 @@
               href: msal-js-pass-custom-state-authentication-request.md
             - name: 提示行为
               href: msal-js-prompt-behavior.md
+            - name: 将 SPA 从使用隐式授权迁移到使用身份验证代码流
+              href: migrate-spa-implicit-to-auth-code.md
+              displayName: 'authorization, single-page app, 2.0'
         - name: 适用于 iOS 和 MacOS 的 MSAL
           items:
             - name: 分别适用于 iOS 和 macOS 的 MSAL 的差异
@@ -521,6 +530,8 @@
               href: msal-java-token-cache-serialization.md
             - name: 在令牌缓存中获取和删除帐户
               href: msal-java-get-remove-accounts-token-cache.md
+    - name: 使用 Microsoft Graph API
+      href: microsoft-graph-intro.md
     - name: 使用 Visual Studio
       items:
         - name: 使用 Active Directory 连接服务
@@ -546,7 +557,7 @@
       displayName: 'MSAL, auth library, SDK'
       href: reference-v2-libraries.md
     - name: Microsoft Graph 中的标识和访问 API
-      href: 'https://docs.microsoft.com/graph/api/resources/azure-ad-overview?view=graph-rest-beta'
+      href: 'https://docs.microsoft.com/graph/api/resources/azure-ad-overview'
     - name: 身份验证和授权错误代码
       displayName: AADSTS
       href: reference-aadsts-error-codes.md

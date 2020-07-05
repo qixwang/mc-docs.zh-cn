@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 origin.date: 04/03/2020
 ms.date: 06/22/2020
-ms.openlocfilehash: 481a5d12b71dfb6295720b0c8c1e98bfbf0c483a
-ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
+ms.openlocfilehash: f382e5b43e1178638d3ff3717c572c04717f6ad8
+ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84723579"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85516598"
 ---
 # <a name="interact-with-apache-kafka-clusters-in-azure-hdinsight-using-a-rest-proxy"></a>使用 REST 代理与 Azure HDInsight 中的 Apache Kafka 群集交互
 
@@ -42,6 +42,9 @@ ms.locfileid: "84723579"
 > [!NOTE]  
 > 请参阅[使用 Azure Active Directory 组管理应用和资源访问](../../active-directory/fundamentals/active-directory-manage-groups.md)来详细了解 AAD 安全组。 有关 OAuth 令牌工作原理的详细信息，请参阅[使用 OAuth 2.0 代码授权流来授权访问 Azure Active Directory Web 应用程序](../../active-directory/develop/v1-protocols-oauth-code.md)。
 
+## <a name="kafka-rest-proxy-with-network-security-groups"></a>包含网络安全组的 Kafka REST 代理
+如果你引入自己的 VNet 并通过网络安全组控制网络流量，则除端口 443 外，还应允许端口 9400 上的入站流量。 这将确保 Kafka REST 代理服务器可以访问。
+
 ## <a name="prerequisites"></a>先决条件
 
 1. 将一个应用程序注册到 Azure AD。 编写的用来与 Kafka REST 代理交互的客户端应用程序将使用此应用程序的 ID 和机密对 Azure 进行身份验证。
@@ -54,9 +57,11 @@ ms.locfileid: "84723579"
     验证该应用程序是否为该组的成员。
     ![检查成员身份](./media/rest-proxy/rest-proxy-membergroup.png)
 
-## <a name="create-a-kafka-cluster-with-rest-proxy-enabled"></a>创建启用 REST 代理的 Kafka 群集
+## <a name="create-a-kafka-cluster-with-rest-proxy-enabled"></a>创建已启用 REST 代理的 Kafka 群集
 
-1. 在 Kafka 群集创建工作流期间，在“安全 + 网络”选项卡中，选中“启用 Kafka REST 代理”选项**** ****。
+以下步骤使用 Azure 门户。 有关使用 Azure CLI 的示例，请参阅[使用 Azure CLI 创建 Apache Kafka REST 代理群集](tutorial-cli-rest-proxy.md)。
+
+1. 在 Kafka 群集创建工作流期间，在“安全 + 网络”选项卡中，选中“启用 Kafka REST 代理”选项 。
 
      ![启用 Kafka REST 代理并选择安全组](./media/rest-proxy/azure-portal-cluster-security-networking-kafka-rest.png)
 
@@ -108,11 +113,11 @@ client_id = 'XYZABCDE-1234-1234-1234-ABCDEFGHIJKL'
 # Your Client Credentials
 client_secret = 'password'
 # kafka rest proxy -endpoint
-kafkarest_endpoint = "https://<clustername>-kafkarest.azurehdinsight.net"
+kafkarest_endpoint = "https://<clustername>-kafkarest.azurehdinsight.cn"
 #--------------------------Configure these properties-------------------------------#
 
 # Scope
-scope = 'https://hib.azurehdinsight.net/.default'
+scope = 'https://hib.azurehdinsight.cn/.default'
 #Authority
 authority = 'https://login.microsoftonline.com/' + tenant_id
 
@@ -139,7 +144,7 @@ response = requests.get(request_url, headers={'Authorization': accessToken})
 print(response.content)
 ```
 
-下面是另外一个示例，说明如何使用 curl 命令从 Azure 获取用于 REST 代理的令牌。 请注意，我们需要在获取令牌时指定 `scope=https://hib.azurehdinsight.net/.default`****。
+下面是另外一个示例，说明如何使用 curl 命令从 Azure 获取用于 REST 代理的令牌。 请注意，我们需要在获取令牌时指定 `scope=https://hib.azurehdinsight.cn/.default`****。
 
 ```cmd
 curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=<clientid>&client_secret=<clientsecret>&grant_type=client_credentials&scope=https://hib.azurehdinsight.cn/.default' 'https://login.microsoftonline.com/<tenantid>/oauth2/v2.0/token'

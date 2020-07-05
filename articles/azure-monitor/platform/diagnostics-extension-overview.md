@@ -7,12 +7,12 @@ author: lingliw
 origin.date: 02/13/2019
 ms.date: 6/4/2019
 ms.author: v-lingwu
-ms.openlocfilehash: c09ca6b99a0abb04ccf4dc75bd22fe29d9879568
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 7b800aa5d4aa60b2093c23e82c8073f43e589e6e
+ms.sourcegitcommit: 372899a2a21794e631eda1c6a11b4fd5c38751d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79452466"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85852024"
 ---
 # <a name="azure-diagnostics-extension-overview"></a>Azure 诊断扩展概述
 Azure 诊断扩展是 [Azure Monitor 中的代理](agents-overview.md)，可从 Azure 计算资源（包括虚拟机）的来宾操作系统中收集监视数据。 本文概述了 Azure 诊断扩展，其中包括它支持的具体功能以及用于安装和配置的选项。 
@@ -61,13 +61,12 @@ Azure 诊断扩展不会产生费用，但可能会产生数据引入费用。 �
 ## <a name="data-destinations"></a>数据目标
 Windows 和 Linux 的 Azure 诊断扩展始终将数据收集到 Azure 存储帐户中。 请参阅[安装并配置 Windows Azure 诊断扩展 (WAD)](diagnostics-extension-windows-install.md) 和[使用 Linux 诊断扩展监视指标和日志](../../virtual-machines/extensions/diagnostics-linux.md)，获取一系列特定的表和 blob，可以在其中收集该数据。
 
-配置一个或多个数据接收器  ，以便将数据发送到其他额外的目标。 以下部分列出了适用于 Windows 和 Linux 诊断扩展的接收器。
+配置一个或多个数据接收器，以便将数据发送到其他额外的目标。 以下部分列出了适用于 Windows 和 Linux 诊断扩展的接收器。
 
 ### <a name="windows-diagnostics-extension-wad"></a>Windows 诊断扩展 (WAD)
 
 | 目标 | 说明 |
 |:---|:---|
-| Azure Monitor 指标 | 将性能数据收集到 Azure Monitor 指标。 请参阅[向 Azure Monitor 指标数据库发送来宾 OS 指标](collect-custom-metrics-guestos-resource-manager-vm.md)。  |
 | 事件中心 | 使用 Azure 事件中心在 Azure 外部发送数据。 请参阅[将 Azure 诊断数据流式传输到事件中心](diagnostics-extension-stream-event-hubs.md) |
 | Azure 存储 Blob | 除了表以外，还会将数据写入 Azure 存储中的 blob。 |
 | Application Insights | 将数据从 VM 中运行的应用程序收集到可以与其他应用程序监视功能集成的 Application Insights。 请参阅[将诊断数据发送到 Application Insights](diagnostics-extension-to-application-insights.md)。 |
@@ -82,13 +81,11 @@ LAD 将数据写入 Azure 存储中的表。 它支持下表中的接收器。
 |:---|:---|
 | 事件中心 | 使用 Azure 事件中心在 Azure 外部发送数据。 |
 | Azure 存储 Blob | 除了表以外，还会将数据写入 Azure 存储中的 blob。 |
-| Azure Monitor 指标 | 除了 LAD 外，还安装 Telegraf 代理。 请参阅[使用 InfluxData Telegraf 代理收集 Linux VM 的自定义指标](collect-custom-metrics-linux-telegraf.md)。
-
 
 ## <a name="installation-and-configuration"></a>安装和配置
 诊断扩展作为 Azure 中的[虚拟机扩展](../../virtual-machines/extensions/overview.md)实现，因此，它支持相同的、使用资源管理器模板、PowerShell 和 CLI 的安装选项。 有关安装和维护虚拟机扩展的常规详细信息，请参阅[适用于 Windows 的虚拟机扩展和功能](../../virtual-machines/extensions/features-windows.md)和[适用于 Linux 的虚拟机扩展和功能](../../virtual-machines/extensions/features-linux.md)。
 
-还可以在 Azure 门户中虚拟机菜单的“监视”部分的“诊断设置”下安装并配置 Windows 和 Linux 诊断扩展。  
+还可以在 Azure 门户中虚拟机菜单的“监视”部分的“诊断设置”下安装并配置 Windows 和 Linux 诊断扩展。 
 
 有关安装并配置适用于 Windows 和 Linux 的诊断扩展的详细信息，请参阅以下文章。
 

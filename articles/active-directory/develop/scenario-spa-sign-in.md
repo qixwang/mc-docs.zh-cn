@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 04/22/2020
+ms.date: 06/30/2020
 ms.author: v-junlch
 ms.custom: aaddev
-ms.openlocfilehash: 18bc1d0411e0a8e634a122b9de1c8ec8da33cd38
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.openlocfilehash: 4bdb8873faeeea0e8b8f47ac758098d74840d5d8
+ms.sourcegitcommit: 1008ad28745709e8d666f07a90e02a79dbbe2be5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82126442"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85944998"
 ---
 # <a name="single-page-application-sign-in-and-sign-out"></a>单页应用程序：登录和注销
 
@@ -45,17 +45,29 @@ ms.locfileid: "82126442"
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
+
+const config = {
+    auth: {
+        clientId: 'your_app_id',
+        redirectUri: "your_app_redirect_uri", //defaults to application start page
+        postLogoutRedirectUri: "your_app_logout_redirect_uri"
+    }
+}
+
 const loginRequest = {
     scopes: ["https://microsoftgraph.chinacloudapi.cn/User.ReadWrite"]
 }
 
-userAgentApplication.loginPopup(loginRequest).then(function (loginResponse) {
-    //login success
-    let idToken = loginResponse.idToken;
-}).catch(function (error) {
-    //login failure
-    console.log(error);
-});
+const myMsal = new userAgentApplication(config);
+
+myMsal.loginPopup(loginRequest)
+    .then(function (loginResponse) {
+        //login success
+        let idToken = loginResponse.idToken;
+    }).catch(function (error) {
+        //login failure
+        console.log(error);
+    });
 ```
 
 # <a name="angular"></a>[Angular](#tab/angular)
@@ -117,17 +129,28 @@ export class AppRoutingModule { }
 重定向方法不会返回承诺，因为已从主应用离开。 若要处理并访问返回的令牌，需要在调用重定向方法之前注册成功和错误回叫。
 
 ```javascript
-function authCallback(error, response) {
-    //handle redirect response
-}
 
-userAgentApplication.handleRedirectCallback(authCallback);
+const config = {
+    auth: {
+        clientId: 'your_app_id',
+        redirectUri: "your_app_redirect_uri", //defaults to application start page
+        postLogoutRedirectUri: "your_app_logout_redirect_uri"
+    }
+}
 
 const loginRequest = {
     scopes: ["https://microsoftgraph.chinacloudapi.cn/User.ReadWrite"]
 }
 
-userAgentApplication.loginRedirect(loginRequest);
+const myMsal = new userAgentApplication(config);
+
+function authCallback(error, response) {
+    //handle redirect response
+}
+
+myMsal.handleRedirectCallback(authCallback);
+
+myMsal.loginRedirect(loginRequest);
 ```
 
 # <a name="angular"></a>[Angular](#tab/angular)
@@ -156,9 +179,9 @@ const config = {
     }
 }
 
-const userAgentApplication = new UserAgentApplication(config);
-userAgentApplication.logout();
+const myMsal = new UserAgentApplication(config);
 
+myMsal.logout();
 ```
 
 # <a name="angular"></a>[Angular](#tab/angular)

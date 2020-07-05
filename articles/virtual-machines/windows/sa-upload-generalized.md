@@ -1,38 +1,33 @@
 ---
 title: 将通用化 VHD 上传到 Azure 以创建新 VM
-description: 将通用化 VHD 上传到 Azure 存储帐户，创建要用于资源管理器部署模型的 Windows VM。
-services: virtual-machines-windows
-documentationcenter: ''
+description: 将通用化 VHD 上传到 Azure 存储帐户，创建一个 Windows VM，将其用于 Resource Manager 部署模型。
 author: rockboyfor
-manager: digimobile
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
-ms.topic: article
+ms.topic: how-to
 origin.date: 05/18/2017
-ms.date: 04/27/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
 ROBOTS: NOINDEX
-ms.openlocfilehash: 9ab0b45e9a8e9b71169c31b4e952cf165172960e
-ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
+ms.custom: storage-accounts
+ms.openlocfilehash: 4aaeef8e7bdc75d01738745df82e28db69839b07
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83392409"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945785"
 ---
-# <a name="upload-a-generalized-vhd-to-azure-to-create-a-new-vm"></a>将通用化 VHD 上传到 Azure 以创建新 VM
+# <a name="upload-a-generalized-vhd-to-azure-to-create-a-new-vm"></a>将通用化 VHD 上传到 Azure，创建新 VM
 
-本主题介绍如何将通用化非托管磁盘上传到存储帐户，然后使用上传的磁盘创建新 VM。 通用 VHD 映像已使用 Sysprep 删除了所有个人帐户信息。 
+本主题介绍如何将通用化非托管磁盘上传到存储帐户，然后使用上传的磁盘创建新 VM。 通用 VHD 映像包含使用 Sysprep 删除的所有个人帐户信息。 
 
 如果要基于存储帐户中的专用 VHD 创建 VM，请参阅[从专用 VHD 创建 VM](sa-create-vm-specialized.md)。
 
-本主题介绍如何使用存储帐户，但建议客户转到改用托管磁盘。 有关如何使用托管磁盘准备、上传和创建新 VM 的完整演练，请参阅[使用托管磁盘从上传到 Azure 的通用化 VHD 创建新 VM](upload-generalized-managed.md)。
+本主题介绍如何使用存储帐户，但建议客户改用托管磁盘。 有关如何使用托管磁盘准备、上传和创建新 VM 的完整演练，请参阅[使用托管磁盘从上传到 Azure 的通用化 VHD 中创建新的 VM](upload-generalized-managed.md)。
 
 ## <a name="prepare-the-vm"></a>准备 VM
 
-通用 VHD 已使用 Sysprep 删除了所有个人帐户信息。 如果想要使用 VHD 作为映像来创建新的 VM，应该：
+通用 VHD 已使用 Sysprep 删除了所有个人帐户信息。 如果打算使用 VHD 作为映像来创建新 VM，应该：
 
   * [准备好要上传到 Azure 的 Windows VHD](prepare-for-upload-vhd-image.md)。 
   * 使用 Sysprep 将虚拟机通用化
@@ -40,7 +35,7 @@ ms.locfileid: "83392409"
 ### <a name="generalize-a-windows-virtual-machine-using-sysprep"></a>使用 Sysprep 通用化 Windows 虚拟机
 本部分说明如何通用化可用作映像的 Windows 虚拟机。 Sysprep 将删除所有个人帐户信息及其他某些数据，并准备好要用作映像的计算机。 有关 Sysprep 的详细信息，请参阅[如何使用 Sysprep：简介](https://technet.microsoft.com/library/bb457073.aspx)。
 
-确保 Sysprep 支持计算机上运行的服务器角色。 有关详细信息，请参阅 [Sysprep Support for Server Roles](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)
+确保 Sysprep 支持计算机上运行的服务器角色。 有关详细信息，请参阅 [Sysprep 对服务器角色的支持](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)
 
 > [!IMPORTANT]
 > 如果在首次将 VHD 上传到 Azure 之前运行 Sysprep，请确保先[准备好 VM](prepare-for-upload-vhd-image.md?toc=%2fvirtual-machines%2fwindows%2ftoc.json)，然后再运行 Sysprep。 
@@ -50,11 +45,11 @@ ms.locfileid: "83392409"
 1. 登录到 Windows 虚拟机。
 2. 以管理员身份打开“命令提示符”窗口。 将目录切换到 **%windir%\system32\sysprep**，然后运行 `sysprep.exe`。
 3. 在“系统准备工具”对话框中，选择“进入系统全新体验(OOBE)”，确保已选中“通用化”复选框。  
-4. 在“关机选项”中选择“关机”。 
-5. 单击 **“确定”** 。
+4. 在“关机选项”中选择“关机”。
+5. 单击“确定”。
 
     ![启动 Sysprep](./media/upload-generalized-managed/sysprepgeneral.png)
-6. 在 Sysprep 完成时，它会关闭虚拟机。 
+6. Sysprep 在完成运行后会关闭虚拟机。 
 
     > [!IMPORTANT]
     > 将 VHD 上传到 Azure 或从 VM 创建映像完成之前不要重启 VM。 如果 VM 意外重启，请运行 Sysprep 将其再次通用化。
@@ -67,7 +62,7 @@ ms.locfileid: "83392409"
 将 VHD 上传到 Azure 存储帐户。
 
 ### <a name="log-in-to-azure"></a>登录 Azure
-如果尚未安装 Azure PowerShell 1.4 版或更高版本，请阅读 [如何安装和配置 Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)。
+如果尚未安装 Azure PowerShell 1.4 或更高版本，请阅读 [How to install and configure Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)（如何安装和配置 Azure PowerShell）。
 
 1. 打开 Azure PowerShell 并登录到 Azure 帐户。 此时会打开一个弹出窗口让输入 Azure 帐户凭据。
 
@@ -79,16 +74,16 @@ ms.locfileid: "83392409"
     ```powershell
     Get-AzSubscription
     ```
-3. 使用订阅 ID 设置正确的订阅。 将 `<subscriptionID>` 替换为正确订阅的 ID。
+3. 使用订阅 ID 设置正确的订阅。 将 `<subscriptionID>` 替换为适当订阅的 ID。
 
     ```powershell
     Select-AzSubscription -SubscriptionId "<subscriptionID>"
     ```
 
 ### <a name="get-the-storage-account"></a>获取存储帐户
-需要在 Azure 中创建存储帐户来存储上传的 VM 映像。 可以使用现有存储帐户，也可以创建新存储帐户。 
+需要在 Azure 中创建一个存储帐户用于存储上传的 VM 映像。 可以使用现有存储帐户，也可以创建新的存储帐户。 
 
-显示可用的存储帐户，请键入：
+若要显示可用的存储帐户，请键入：
 
 ```powershell
 Get-AzStorageAccount
@@ -96,9 +91,9 @@ Get-AzStorageAccount
 
 如果要使用现有存储帐户，请转到“上传 VM 映像”部分。
 
-若要创建存储帐户，请执行以下步骤：
+如果需要创建存储帐户，请执行以下步骤：
 
-1. 需要应在其中创建存储帐户的资源组的名称。 若要查找订阅中的所有资源组，请键入：
+1. 需要使用要在其中创建存储帐户的资源组的名称。 若要找出订阅中的所有资源组，请键入：
 
     ```powershell
     Get-AzResourceGroup
@@ -142,7 +137,7 @@ LocalFilePath           DestinationUri
 C:\Users\Public\Doc...  https://mystorageaccount.blob.core.chinacloudapi.cn/mycontainer/myUploadedVHD.vhd
 ```
 
-完成执行此命令可能需要一段时间，具体取决于网络连接速度和 VHD 文件的大小。
+根据网络连接速度和 VHD 文件的大小，可能需要一段时间才能完成此命令。
 
 ## <a name="create-a-new-vm"></a>创建新 VM 
 
@@ -176,16 +171,16 @@ $imageURI = "https://mystorageaccount.blob.core.chinacloudapi.cn/mycontainer/myV
     ```    
 
 ### <a name="create-a-public-ip-address-and-network-interface"></a>创建公共 IP 地址和网络接口
-若要与虚拟网络中的虚拟机通信，需要一个 [公共 IP 地址](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) 和网络接口。
+若要与虚拟网络中的虚拟机通信，需要一个 [公共 IP 地址](../../virtual-network/public-ip-addresses.md) 和网络接口。
 
-1. 创建公共 IP 地址。 此示例创建名为 **myPip**的公共 IP 地址。 
+1. 创建公共 IP 地址。 此示例创建名为 **myPip** 的公共 IP 地址。 
 
     ```powershell
     $ipName = "myPip"
     $pip = New-AzPublicIpAddress -Name $ipName -ResourceGroupName $rgName -Location $location `
         -AllocationMethod Dynamic
     ```       
-2. 创建 NIC。 此示例创建名为 **myNic**的 NIC。 
+2. 创建 NIC。 此示例创建名为 **myNic** 的 NIC。 
 
     ```powershell
     $nicName = "myNic"
@@ -218,7 +213,7 @@ $vnet = Get-AzVirtualNetwork -ResourceGroupName $rgName -Name $vnetName
 ```
 
 ### <a name="create-the-vm"></a>创建 VM
-以下 PowerShell 脚本演示如何设置虚拟机配置，并使用上传的 VM 映像作为新安装的源。
+以下 PowerShell 脚本演示如何设置虚拟机配置和使用已上传的 VM 映像作为新安装的源。
 
 ```powershell
 # Enter a new user name and password to use as the local administrator account 
@@ -282,6 +277,6 @@ New-AzVM -ResourceGroupName $rgName -Location $location -VM $vm
 ```
 
 ## <a name="next-steps"></a>后续步骤
-若要使用 Azure PowerShell 管理新虚拟机，请参阅[使用 Azure Resource Manager 与 PowerShell 来管理虚拟机](tutorial-manage-vm.md?toc=%2fvirtual-machines%2fwindows%2ftoc.json)。
+若要使用 Azure PowerShell 管理新虚拟机，请参阅[使用 Azure 资源管理器与 PowerShell 来管理虚拟机](tutorial-manage-vm.md?toc=%2fvirtual-machines%2fwindows%2ftoc.json)。
 
 <!-- Update_Description: update meta properties, wording update -->

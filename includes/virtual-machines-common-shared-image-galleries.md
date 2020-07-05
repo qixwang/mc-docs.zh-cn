@@ -5,17 +5,17 @@ author: rockboyfor
 ms.service: virtual-machines
 ms.topic: include
 origin.date: 04/16/2020
-ms.date: 06/01/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: c6b5691fee83e15fb6adebe2aa5607fad69499a9
-ms.sourcegitcommit: 981a75a78f8cf74ab5a76f9e6b0dc5978387be4b
+ms.openlocfilehash: 114462f121470d5ea222af681601dc0bc85bc912
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83806218"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945591"
 ---
-共享映像库是一种可以帮助你围绕托管映像构建结构和组织的服务。 共享映像库提供以下功能：
+共享映像库是可以帮助你围绕托管映像生成结构和组织的服务。 共享映像库提供：
 
 - 对映像进行托管式全局复制。
 - 对映像进行版本控制和分组，以便于管理。
@@ -24,7 +24,7 @@ ms.locfileid: "83806218"
     <!--Not Avaialble on Zone Redundant Storage (ZRS)-->
 
 - 高级存储支持 (Premium_LRS)。
-- 使用 RBAC 跨订阅以及甚至在 Active Directory (AD) 租户之间共享。
+- 使用 RBAC 在订阅之间，甚至在 Active Directory (AD) 租户之间共享。
 - 使用每个区域中的映像副本缩放部署。
 
 使用共享映像库，可以将映像共享给组织内的不同用户、服务主体或 AD 组。 共享映像可以复制到多个区域，以便更快地扩展部署。
@@ -48,9 +48,9 @@ ms.locfileid: "83806218"
 
 ## <a name="image-definitions"></a>映像定义
 
-映像定义是映像版本的逻辑分组。 映像定义包含的信息涉及创建映像的原因、映像适用的 OS，以及映像的用法。 映像定义类似于一个计划，提供了有关如何创建特定映像的所有详细信息。 不要从映像定义部署 VM，而要从基于该定义创建的映像版本部署 VM。
+映像定义是映像版本的逻辑分组。 映像定义包含的信息涉及创建映像的原因、映像适用的 OS，以及映像的用法。 映像定义就像围绕创建特定映像计划所有详细信息。 不要从映像定义部署 VM，而要从基于该定义创建的映像版本部署 VM。
 
-对于每个映像定义，将组合使用“发布者”、“套餐”和“SKU”这三个参数。   这些参数用于查找特定的映像定义。 可以拥有共享一个或两个但不是全部三个值的映像版本。  例如，以下是三个映像定义及其值：
+每个映像定义有三个可以组合使用的参数：发布者、产品/服务和 SKU  。 这些参数用于查找特定的映像定义。 可以拥有共享一个或两个但不是全部三个值的映像版本。  例如，以下是三个映像定义及其值：
 
 |映像定义|发布者|产品/服务|SKU|
 |---|---|---|---|
@@ -60,29 +60,29 @@ ms.locfileid: "83806218"
 
 所有这三个映像都有唯一的一组值。 格式类似于当前在 Azure PowerShell 中为 [Azure 市场映像](../articles/virtual-machines/windows/cli-ps-findimage.md)指定发布者、套餐和 SKU，以获取最新市场映像版本的方式。 每个映像定义需要包含一组唯一的这些值。
 
-下面是可以在映像定义中设置的其他参数，它们可让你更轻松地跟踪自己的资源：
+下面是可在映像定义上设置的其他参数，以便你可以更轻松地跟踪资源：
 
 * 操作系统状态 - 可将 OS 状态设置为[通用化或专用化](#generalized-and-specialized-images)。
 * 操作系统 - 可以是 Windows 或 Linux。
 * 说明 - 使用说明可以更详细地解释该映像定义为何存在。 例如，可为预装了应用程序的前端服务器创建一个映像定义。
 * Eula - 可用于指向特定于映像定义的最终用户许可协议。
-* 隐私声明和发行说明 - 在 Azure 存储中存储发行说明和隐私声明，并提供一个 URI 用于访问这些信息（作为映像定义的一部分）。
+* 隐私声明和发行说明 - 将发行说明和隐私声明存储在 Azure 存储中，并提供在映像定义中用于访问它们的 URI。
 * 生命周期结束日期 - 将生命周期结束日期附加到映像定义，以便能够使用自动化功能删除旧的映像定义。
-* 标记 - 创建映像定义时可以添加标记。 有关标记的详细信息，请参阅[使用标记来组织资源](../articles/azure-resource-manager/management/tag-resources.md)。
+* 标记 - 可以在创建映像定义时添加标记。 有关标记的详细信息，请参阅[使用标记来组织资源](../articles/azure-resource-manager/management/tag-resources.md)。
 * 最小和最大 vCPU 与内存建议量 - 如果映像附带 vCPU 和内存建议量，则你可以将该信息附加到映像定义。
-* 不允许的磁盘类型 - 可以提供有关 VM 所需存储的信息。 例如，如果映像不适合用于标准 HDD 磁盘，请将此类磁盘添加到禁止列表。
+* 不允许的磁盘类型 - 可以提供有关 VM 所需存储的信息。 例如，如果映像不适合标准 HDD 磁盘，请将其添加到禁止列表。
 * Hyper-V 生成 - 可以指定是从第 1 代还是从第 2 代 Hyper-V VHD 创建映像。
 
 ## <a name="generalized-and-specialized-images"></a><a name="generalized-and-specialized-images"></a>通用化和专用映像
 
-共享映像库支持两种操作系统状态。 通常，映像要求在创建映像之前，用于创建映像的 VM 已通用化。 通用化是从 VM 中删除计算机和用户特定信息的过程。 对于 Windows，也可以使用 Sysprep。 对于 Linux，可以使用 [waagent](https://github.com/Azure/WALinuxAgent) `-deprovision` 或 `-deprovision+user` 参数。
+共享映像库支持两种操作系统状态。 通常，映像要求在创建映像之前，用于创建映像的 VM 已通用化。 通用化是从 VM 中删除计算机和用户特定信息的过程。 对于 Windows，使用 Sysprep 工具。 对于 Linux，可以使用 [waagent](https://github.com/Azure/WALinuxAgent) `-deprovision` 或 `-deprovision+user` 参数。
 
-专用化 VM 尚未经历删除计算机特定信息和帐户的过程。 此外，从专用化映像创建的 VM 没有关联的 `osProfile`。 这意味着，除了某些优点外，专用化映像还存在一些限制。
+专用化 VM 尚未经历删除计算机特定信息和帐户的过程。 此外，使用专用映像创建的 VM 不具有与其关联的 `osProfile`。 这意味着，除了某些优点外，专用化映像还存在一些限制。
 
 - 从专用映像创建的 VM 和规模集可以更快地启动并运行。 由于它们是从已经开始启动的源创建的，因此从这些映像创建的 VM 启动速度会更快。
-- 也可以在使用专用化映像创建的任何 VM 上（该映像是从该 VM 创建的），使用可用于登录到 VM 的帐户。
+- 可用于登录到 VM 的帐户也可用于通过使用该 VM 创建的专用映像创建的任何 VM。
 - VM 具有用于创建映像的 VM 的**计算机名**。 应更改计算机名以避免冲突。
-- `osProfile` 是使用 `secrets` 将某些敏感信息传递给 VM 的方式。 在使用 KeyVault、WinRM，以及在 `osProfile` 中使用 `secrets` 的其他功能时，这可能会导致出现问题。 在某些情况下，可以使用托管服务标识 (MSI) 来解决这些限制。
+- `osProfile` 是使用 `secrets` 将某些敏感信息传递给 VM 的方式。 在使用 KeyVault、WinRM，以及在 `osProfile` 中使用 `secrets` 的其他功能时，这可能会导致出现问题。 在某些情况下，可以使用托管服务标识 (MSI) 解决这些限制。
 
 ## <a name="regional-support"></a>区域支持
 
@@ -99,19 +99,19 @@ ms.locfileid: "83806218"
 使用共享映像库部署资源时，每个订阅存在限制：
 - 每个区域的每个订阅限制为 100 个共享映像库
 - 每个区域的每个订阅限制为 1,000 个映像定义
-- 每个区域的每个订阅限制为 10,000 个映像版本
+- 每个区域每个订阅限 10,000 个映像版本
 - 每个区域的每个订阅限制为 10 个映像版本副本
-- 附加到映像的任何磁盘的大小都必须小于或等于 1TB
+- 附加到映像的任何磁盘的大小必须小于或等于 1 TB
 
-有关详细信息，请参阅[根据限制检查资源用量](/networking/check-usage-against-limits)，其中提供了有关如何检查当前用量的示例。
+有关详细信息，请参阅[根据限制检查资源使用情况](/networking/check-usage-against-limits)，以获取有关如何检查当前使用情况的示例。
 
 ## <a name="scaling"></a>扩展
 使用共享映像库可以指定要让 Azure 保留的映像副本数。 这有助于实现多 VM 部署方案，因为可将 VM 部署分散到不同的副本，减少单个副本过载导致实例创建过程受到限制的可能性。
 
 现在，使用共享映像库，最多可在虚拟机规模集中部署 1,000 个 VM 实例（相比使用托管映像部署 600 个有所增加）。 映像副本可用于提高部署性能、可靠性和一致性。  可以在每个目标区域中设置不同的副本计数，具体视该区域的缩放需求而定。 由于每个副本是映像的深层复制，因此，这有助于使用每个额外的副本线性地缩放部署。 虽然我们了解没有两个映像或区域是相同的，但是，需要遵循下面有关如何在区域中使用副本的一般原则：
 
-- 对于非虚拟机规模集 (VMSS) 部署 - 对于同时创建的每 20 个 VM，我们建议保留一个副本。 例如，如果要在区域中使用相同映像并行创建 120 个 VM，我们建议至少保留映像的 6 个副本。 
-- 对于虚拟机规模集 (VMSS) 部署 - 对于包含多达 600 个实例的每个规模集部署，我们建议至少保留一个副本。 例如，如果要创建 5 个规模集，而每个规模集都包含在单个区域中使用相同映像创建的 600 个 VM 实例，我们建议至少保留映像的 5 个副本。 
+- 对于非虚拟机规模集 (VMSS) 部署 - 对于同时创建的每 20 个 VM，我们建议保留一个副本。 例如，如果使用某个区域中的同一映像同时创建 120 个 VM，我们建议你保留至少 6 个映像副本。 
+- 对于虚拟机规模集 (VMSS) 部署 - 对于包含多达 600 个实例的每个规模集部署，我们建议至少保留一个副本。 例如，如果同时创建 5 个规模集，每个规模集具有 600 个使用某个区域中的同一映像的 VM 实例，则建议至少保留 5 个映像副本。 
 
 鉴于映像大小、内容和 OS 类型等因素，我们始终建议保留的副本数应超出该副本数。
 
@@ -136,13 +136,13 @@ ms.locfileid: "83806218"
 | 共享的映像库 | 是                  | 是          | 是                  |
 | 映像定义     | 否                   | 是          | 是                  |
 
-我们建议在库级别共享，以获得最佳体验。 我们建议不要共享单个映像版本。 有关 RBAC 的详细信息，请参阅[使用 RBAC 管理 Azure 资源的访问权限](../articles/role-based-access-control/role-assignments-portal.md)。
+建议在库级别共享以获得最佳体验。 我们建议不要共享单个映像版本。 有关 RBAC 的详细信息，请参阅[使用 RBAC 管理对 Azure 资源的访问权限](../articles/role-based-access-control/role-assignments-portal.md)。
 
-此外，还可以使用多租户应用注册大规模共享映像，甚至是跨租户共享。 有关在租户之间共享映像的详细信息，请参阅[在 Azure 租户之间共享库 VM 映像](../articles/virtual-machines/linux/share-images-across-tenants.md)。
+此外，还可以使用多租户应用注册大规模共享映像，甚至是跨租户共享。 有关跨租户共享映像的详细信息，请参阅[在 Azure 租户之间共享库 VM 映像](../articles/virtual-machines/linux/share-images-across-tenants.md)。
 
 ## <a name="billing"></a>计费
 使用共享映像库服务不会产生额外的费用。 以下资源会产生费用：
-- 存储共享映像版本的存储费用。 具体费用取决于映像版本的副本数，以及版本要复制到的区域数。 例如，如果你有 2 个映像，并将其同时复制到 3 个区域，则你需要根据映像的大小，为 6 个托管磁盘付费。 有关详细信息，请参阅[托管磁盘定价](https://www.azure.cn/pricing/details/storage/managed-disks/)。
+- 存储共享映像版本的存储费用。 费用取决于映像版本的副本数，以及版本要复制到的区域数。 例如，如果你有 2 个映像，并将其同时复制到 3 个区域，则你需要根据映像的大小，为 6 个托管磁盘付费。 有关详细信息，请参阅[托管磁盘定价](https://www.azure.cn/pricing/details/storage/managed-disks/)。
 - 将第一个映像版本从源区域复制到目标区域的网络传出费用。 后续副本将在区域中处理，因此不会产生额外的费用。 
 
 ## <a name="updating-resources"></a>更新资源
@@ -190,8 +190,11 @@ ms.locfileid: "83806218"
 * [如何列出不同订阅中的所有共享映像库资源？](#how-can-i-list-all-the-shared-image-gallery-resources-across-subscriptions) 
 * [是否可将现有的映像移到共享映像库？](#can-i-move-my-existing-image-to-the-shared-image-gallery)
 * [是否可以从专用磁盘创建映像版本？](#can-i-create-an-image-version-from-a-specialized-disk)
-* [创建共享映像库资源后，是否可将它移到其他订阅？](#can-i-move-the-shared-image-gallery-resource-to-a-different-subscription-after-it-has-been-created)
+* [创建共享映像库资源后，是否可以将其移动到其他订阅中？](#can-i-move-the-shared-image-gallery-resource-to-a-different-subscription-after-it-has-been-created)
 * [是否可以跨云（例如，Azure 中国世纪互联、Azure 德国云或 Azure 政府云）复制映像版本？](#can-i-replicate-my-image-versions-across-clouds-such-as-azure-china-21vianet-or-azure-germany-or-azure-government-cloud)
+
+    <!--CORRECT ON  Azure China 21Vianet or Azure Germany or Azure Government Cloud-->
+    
 * [是否可以跨订阅复制映像版本？](#can-i-replicate-my-image-versions-across-subscriptions)
 * [是否可以跨 Azure AD 租户共享映像版本？](#can-i-share-image-versions-across-azure-ad-tenants)
 * [跨目标区域复制映像版本需要多长时间？](#how-long-does-it-take-to-replicate-image-versions-across-the-target-regions)
@@ -201,7 +204,7 @@ ms.locfileid: "83806218"
 * [是否可以不在创建映像定义和映像版本的位置创建共享映像库？](#can-i-create-the-shared-image-gallery-in-a-different-location-than-the-one-for-the-image-definition-and-image-version)
 * [使用共享映像库会产生哪些费用？](#what-are-the-charges-for-using-the-shared-image-gallery)
 * [应使用哪个 API 版本来创建共享映像库、映像定义和映像版本？](#what-api-version-should-i-use-to-create-shared-image-gallery-and-image-definition-and-image-version)
-* [应使用哪个 API 版本基于映像版本创建共享 VM 或虚拟机规模集？](#what-api-version-should-i-use-to-create-shared-vm-or-virtual-machine-scale-set-out-of-the-image-version)
+* [我应该使用哪种 API 版本来通过映像版本创建共享 VM 或虚拟机规模集？](#what-api-version-should-i-use-to-create-shared-vm-or-virtual-machine-scale-set-out-of-the-image-version)
 * [能否将使用托管映像创建的虚拟机规模集更新为使用共享映像库映像？]
 
 ### <a name="how-can-i-list-all-the-shared-image-gallery-resources-across-subscriptions"></a>如何列出不同订阅中的所有共享映像库资源？
@@ -236,20 +239,20 @@ ms.locfileid: "83806218"
 
 ### <a name="can-i-create-an-image-version-from-a-specialized-disk"></a>是否可以从专用化磁盘创建映像版本？
 
-是，将专用化磁盘用作映像的支持已推出预览版。 只能使用门户、PowerShell 和 API 从专用映像创建 VM。 
+是的，支持专用磁盘，因为映像为预览版。 只能使用门户、PowerShell 和 API 从专用映像创建 VM。 
 
 使用 [PowerShell 创建专用 VM 的映像](../articles/virtual-machines/image-version-vm-powershell.md)。
 
 使用门户创建 [Windows](../articles/virtual-machines/linux/shared-images-portal.md) 或 [Linux] (../articles/virtual-machines/linux/shared-images-portal.md) 映像。 
 
-### <a name="can-i-move-the-shared-image-gallery-resource-to-a-different-subscription-after-it-has-been-created"></a>创建共享映像库资源后，是否可将它移到其他订阅？
+### <a name="can-i-move-the-shared-image-gallery-resource-to-a-different-subscription-after-it-has-been-created"></a>创建共享映像库资源后，是否可以将其移动到其他订阅中？
 
 不可以，无法将共享映像库资源移到其他订阅。 可以将库中的映像版本复制到其他区域，也可以使用 [Azure CLI](../articles/virtual-machines/image-version-another-gallery-cli.md) 或 [PowerShell](../articles/virtual-machines/image-version-another-gallery-powershell.md) 从其他库复制映像。
 
 <a name="can-i-replicate-my-image-versions-across-clouds-such-as-azure-china-21vianet-or-azure-germany-or-azure-government-cloud"></a>
-### <a name="can-i-replicate-my-image-versions-across-clouds-such-as-azure-china-21vianet-or-azure-germany-or-azure-government-cloud"></a>是否可以跨云（例如，Azure 中国世纪互联、Azure 德国云或 Azure 政府云）复制映像版本？
+### <a name="can-i-replicate-my-image-versions-across-clouds-such-as-azure-china-21vianet-or-azure-germany-or-azure-government-cloud"></a>是否可以跨云（例如 Azure 中国世纪互联、Azure 德国或 Azure 政府云）复制映像版本？
 
-<!--MOONCAKE: CORRECT ON Azure Public Cloud-->
+<!--CORRECT ON  Azure China 21Vianet or Azure Germany or Azure Government Cloud-->
 
 无法跨云复制映像版本。
 
@@ -259,7 +262,7 @@ ms.locfileid: "83806218"
 
 ### <a name="can-i-share-image-versions-across-azure-ad-tenants"></a>是否可以跨 Azure AD 租户共享映像版本？ 
 
-是的，可以使用 RBAC 在租户之间对个人共享。 但是，若要大规模共享，请参阅如何使用 [PowerShell](../articles/virtual-machines/windows/share-images-across-tenants.md) 或 [CLI](../articles/virtual-machines/linux/share-images-across-tenants.md)“在 Azure 租户之间共享库映像”。
+是的，可以使用 RBAC 跨租户共享给个人。 但若要大规模共享，请参阅使用 [PowerShell](../articles/virtual-machines/windows/share-images-across-tenants.md) 或 [CLI](../articles/virtual-machines/linux/share-images-across-tenants.md)“跨 Azure 租户共享库映像”。
 
 ### <a name="how-long-does-it-take-to-replicate-image-versions-across-the-target-regions"></a>跨目标区域复制映像版本需要多长时间？
 

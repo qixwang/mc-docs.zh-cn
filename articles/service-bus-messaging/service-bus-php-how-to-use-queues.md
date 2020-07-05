@@ -3,8 +3,8 @@ title: 如何通过 PHP 使用 Azure 服务总线队列
 description: 本教程介绍如何创建 PHP 应用程序，以便向服务总线队列发送消息以及从中接收消息。
 services: service-bus-messaging
 documentationcenter: php
-author: lingliw
-manager: digimobile
+author: axisc
+manager: timlt
 editor: spelluru
 ms.assetid: e29c829b-44c5-4350-8f2e-39e0c380a9f2
 ms.service: service-bus-messaging
@@ -15,12 +15,12 @@ ms.topic: quickstart
 origin.date: 01/24/2020
 ms.date: 2/6/2020
 ms.author: v-lingwu
-ms.openlocfilehash: 87d27af524cb75e39e49cdcee79bff7de04fca9d
-ms.sourcegitcommit: a04b0b1009b0c62f2deb7c7acee75a1304d98f87
+ms.openlocfilehash: 7ef61ee3e5b6624be05c045b222eecde2f09de62
+ms.sourcegitcommit: 4f84bba7e509a321b6f68a2da475027c539b8fd3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83796784"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85796322"
 ---
 # <a name="quickstart-how-to-use-service-bus-queues-with-php"></a>快速入门：如何通过 PHP 使用服务总线队列
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
@@ -39,7 +39,7 @@ ms.locfileid: "83796784"
 3. [Azure SDK for PHP](https://github.com/Azure/azure-sdk-for-php)
 
 ## <a name="create-a-php-application"></a>创建 PHP 应用程序
-创建访问 Azure Blob 服务的 PHP 应用程序的唯一要求是从代码内引用[用于 PHP 的 Azure SDK](../php-download-sdk.md) 中的类。 可以使用任何开发工具或记事本创建应用程序。
+创建访问 Azure Blob 服务的 PHP 应用程序的唯一要求是从代码内引用[用于 PHP 的 Azure SDK](https://github.com/Azure/azure-sdk-for-php) 中的类。 可以使用任何开发工具或记事本创建应用程序。
 
 > [!NOTE]
 > PHP 安装还必须已安装并启用 [OpenSSL 扩展](https://php.net/openssl)。
@@ -76,7 +76,7 @@ use WindowsAzure\Common\ServicesBuilder;
 Endpoint=[yourEndpoint];SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=[Primary Key]
 ```
 
-其中，Endpoint 的格式通常为 `[yourNamespace].servicebus.chinacloudapi.cn`。
+其中，`Endpoint` 的格式通常为 `[yourNamespace].servicebus.chinacloudapi.cn`。
 
 若要创建任何 Azure 服务客户端，必须使用 `ServicesBuilder` 类。 方法：
 
@@ -170,13 +170,13 @@ catch(ServiceException $e){
 
 ## <a name="receive-messages-from-a-queue"></a>从队列接收消息
 
-从队列接收消息的最佳方法是使用 `ServiceBusRestProxy->receiveQueueMessage` 方法。 可在两种不同的模式下接收消息：[*ReceiveAndDelete*](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.receivemode) 和 [*PeekLock*](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.receivemode#Microsoft_ServiceBus_Messaging_ReceiveMode_PeekLock)。 **PeekLock** 是默认设置。
+从队列接收消息的最佳方法是使用 `ServiceBusRestProxy->receiveQueueMessage` 方法。 可在两种不同的模式下接收消息：[*ReceiveAndDelete*](/dotnet/api/microsoft.servicebus.messaging.receivemode) 和 [*PeekLock*](/dotnet/api/microsoft.servicebus.messaging.receivemode#Microsoft_ServiceBus_Messaging_ReceiveMode_PeekLock)。 **PeekLock** 是默认设置。
 
-使用 [ReceiveAndDelete](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.receivemode) 模式时，接收是一项单步操作，即当服务总线接收到队列中某条消息的读取请求时，它会将该消息标记为“已使用”并将其返回给应用程序。 [ReceiveAndDelete](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.receivemode) 模式是最简单的模式，最适合在发生故障时应用程序允许不处理消息的情况。 为了理解这一点，可以考虑这样一种情形：使用方发出接收请求，但在处理该请求前发生了崩溃。 由于服务总线会将消息标记为“已使用”，因此当应用程序重启并重新开始使用消息时，它会遗漏在发生崩溃前使用的消息。
+使用 [ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode) 模式时，接收是一项单步操作，即当服务总线接收到队列中某条消息的读取请求时，它会将该消息标记为“已使用”并将其返回给应用程序。 [ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode) 模式是最简单的模式，最适合在发生故障时应用程序允许不处理消息的情况。 为了理解这一点，可以考虑这样一种情形：使用方发出接收请求，但在处理该请求前发生了崩溃。 由于服务总线会将消息标记为“已使用”，因此当应用程序重启并重新开始使用消息时，它会遗漏在发生崩溃前使用的消息。
 
-在默认的 [PeekLock](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.receivemode#Microsoft_ServiceBus_Messaging_ReceiveMode_PeekLock) 模式下，接收消息会变成一个双阶段操作，这将能够支持不能允许丢失消息的应用程序。 当 Service Bus 收到请求时，它会找到要使用的下一个消息，将其锁定以防其他使用方接收它，并将该消息返回给应用程序。 应用程序完成消息处理（或可靠地存储消息以供日后处理）后，它会将收到的消息传递到 `ServiceBusRestProxy->deleteMessage`，从而完成接收过程的第二阶段。 当服务总线发现 `deleteMessage` 调用时，它会将消息标记为“已使用”并将其从队列中删除。
+在默认的 [PeekLock](/dotnet/api/microsoft.servicebus.messaging.receivemode#Microsoft_ServiceBus_Messaging_ReceiveMode_PeekLock) 模式下，接收消息会变成一个双阶段操作，这将能够支持不能允许丢失消息的应用程序。 当 Service Bus 收到请求时，它会找到要使用的下一个消息，将其锁定以防其他使用方接收它，并将该消息返回给应用程序。 应用程序完成消息处理（或可靠地存储消息以供日后处理）后，它会将收到的消息传递到 `ServiceBusRestProxy->deleteMessage`，从而完成接收过程的第二阶段。 当服务总线发现 `deleteMessage` 调用时，它会将消息标记为“已使用”并将其从队列中删除。
 
-以下示例演示了如何使用 [PeekLock](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.receivemode#Microsoft_ServiceBus_Messaging_ReceiveMode_PeekLock) 模式（默认模式）接收和处理消息。
+以下示例演示了如何使用 [PeekLock](/dotnet/api/microsoft.servicebus.messaging.receivemode#Microsoft_ServiceBus_Messaging_ReceiveMode_PeekLock) 模式（默认模式）接收和处理消息。
 
 ```php
 require_once 'vendor/autoload.php';
@@ -224,11 +224,16 @@ Service Bus 提供了相关功能来帮助你轻松地从应用程序错误或�
 
 如果在处理消息之后，发出 `deleteMessage` 请求之前，应用程序发生崩溃，则在应用程序重启时会将该消息重新传送给它。 此情况通常称作*至少处理一次*，即每条消息将至少被处理一次，但在某些情况下，同一消息可能会被重新传送。 如果某个场景不允许重复处理，则建议向应用程序添加其他逻辑来处理重复消息传送。 这通常可以通过使用消息的 `getMessageId` 方法来实现，消息在多次传送尝试中保持不变。
 
+> [!NOTE]
+> 可以使用[服务总线资源管理器](https://github.com/paolosalvatori/ServiceBusExplorer/)管理服务总线资源。 服务总线资源管理器允许用户连接到服务总线命名空间并以一种简单的方式管理消息传送实体。 该工具提供高级功能，如导入/导出功能或用于对主题、队列、订阅、中继服务、通知中心和事件中心进行测试的功能。 
+
 ## <a name="next-steps"></a>后续步骤
 现在，已了解服务总线队列的基础知识，请参阅[队列、主题和订阅][Queues, topics, and subscriptions] 以获取更多信息。
 
-有关详细信息，另请访问 [PHP 开发人员中心](https://docs.microsoft.com/develop/php/)。
+有关详细信息，另请访问 [PHP 开发人员中心](https://docs.azure.cn/develop/php/)。
 
 [BrokeredMessage]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage
-[Queues, Topics, and Subscriptions]: ./service-bus-queues-topics-subscriptions.md
-[require_once]: http://php.net/require_once
+[Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
+[require_once]: https://php.net/require_once
+
+

@@ -7,14 +7,15 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: v-johya
 ms.subservice: disks
-ms.openlocfilehash: b6ca6309c412541bac6a7ef4b52a9b15ac827501
-ms.sourcegitcommit: 285649db9b21169f3136729c041e4d04d323229a
+ms.openlocfilehash: a75b6ab15a4d44ecb92c9b71ae253ae7fb6b3cbf
+ms.sourcegitcommit: 372899a2a21794e631eda1c6a11b4fd5c38751d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84683912"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85852084"
 ---
-# <a name="azure-premium-storage-design-for-high-performance"></a>Azure 高级存储：高性能设计
+# <a name="design-for-performance-on-linux-vms"></a>Linux VM 的性能设计
+
 [!INCLUDE [virtual-machines-common-premium-storage-introduction](../../../includes/virtual-machines-common-premium-storage-introduction.md)]
 
 > [!NOTE]

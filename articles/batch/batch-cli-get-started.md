@@ -1,17 +1,17 @@
 ---
 title: Azure CLI for Batch 入门
 description: Azure CLI 中用于管理 Azure Batch 服务资源的 Batch 命令简介
-ms.topic: conceptual
+ms.topic: how-to
 origin.date: 07/24/2018
-ms.date: 10/19/2018
-ms.author: v-lingwu
+ms.date: 06/28/2020
+ms.author: v-tawe
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6332161b00dbc1e010d1b5f60235fbcbe9fca9af
-ms.sourcegitcommit: cbaa1aef101f67bd094f6ad0b4be274bbc2d2537
+ms.openlocfilehash: 4e6be38b983536f94ca5cb4ab14ebdc35b109183
+ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84126789"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85613406"
 ---
 # <a name="manage-batch-resources-with-azure-cli"></a>使用 Azure CLI 管理 Batch 资源
 
@@ -53,8 +53,8 @@ Azure CLI 是 Azure 的命令行体验，用于管理 Azure 资源。 它可以�
 
 可以通过多种不同的方式登录到 Azure，详见[使用 Azure CLI 登录](/cli/authenticate-azure-cli)：
 
-1. [以交互方式登录](/cli/authenticate-azure-cli#az-authenticate-azure-cli-interactive-log-in)。 从命令行自行运行 Azure CLI 命令时，请以交互方式登录。
-2. [使用服务主体登录](/cli/authenticate-azure-cli#az-authenticate-azure-cli-logging-in-with-a-service-principal)。 从脚本或应用程序运行 Azure CLI 命令时，请使用服务主体登录。
+1. [以交互方式登录](/cli/authenticate-azure-cli)。 从命令行自行运行 Azure CLI 命令时，请以交互方式登录。
+2. [使用服务主体登录](/cli/authenticate-azure-cli)。 从脚本或应用程序运行 Azure CLI 命令时，请使用服务主体登录。
 
 本文的目的是介绍如何以交互方式登录到 Azure。 在命令行中键入 [az login](/cli/reference-index#az-login)：
 
@@ -165,9 +165,9 @@ az batch task list --job-id job001
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](/cli)。
-- 有关 Batch 资源的详细信息，请参阅[适用于开发人员的 Azure Batch 概述](batch-api-basics.md)。
-- 若要详细了解如何在不编写代码的情况下使用 Batch 模板来创建池、作业和任务，请参阅[使用 Azure Batch CLI 模板和文件传输](batch-cli-templates.md)。
+* 请参阅 [Azure CLI 文档](/cli)。
+* 了解 [Batch 服务工作流和主要资源](batch-service-workflow-features.md)，例如池、节点、作业和任务。
+* 在[使用 Azure Batch CLI 模板和文件传输](batch-cli-templates.md)中了解如何在不编写代码的情况下使用 Batch 模板来创建池、作业和任务。
 
 [github_readme]: https://github.com/Azure/azure-xplat-cli/blob/dev/README.md
 [rest_api]: https://msdn.microsoft.com/library/azure/dn820158.aspx

@@ -8,12 +8,12 @@ ms.topic: conceptual
 origin.date: 01/21/2020
 ms.date: 2/6/2020
 ms.author: v-lingwu
-ms.openlocfilehash: 0128adecfe99f265089016660ecfb60edb223d1a
-ms.sourcegitcommit: cada23b6400453ff9c08cfb08393e635e2fddac1
+ms.openlocfilehash: 55e1a7667541b8701c3848f03b9b4ade09cc2833
+ms.sourcegitcommit: 4f84bba7e509a321b6f68a2da475027c539b8fd3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83734624"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85796243"
 ---
 # <a name="security-controls-for-azure-relay"></a>Azure 中继的安全控制
 
@@ -60,3 +60,7 @@ ms.locfileid: "83734624"
 | 安全控制 | Yes/No | 注释| 文档 |
 |---|---|--|--|
 | 配置管理支持（配置的版本控制等）| 是 | 通过 [Azure 资源管理器](../azure-resource-manager/index.yml)。|   |
+
+## <a name="next-steps"></a>后续步骤
+
+- 详细了解[跨 Azure 服务的内置安全控制](../security/fundamentals/security-controls.md)。

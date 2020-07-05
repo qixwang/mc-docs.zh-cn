@@ -54,10 +54,14 @@ groups:
     title: C#
   - id: programming-language-cpp
     title: C++
+  - id: programming-language-go
+    title: Go
   - id: programming-language-java
     title: Java
   - id: programming-language-python
     title: Python
+  - id: programming-language-javascript
+    title: Javascript
 - id: programming-languages-set-four
   title: 编程语言
   prompt: 选择编程语言
@@ -268,7 +272,55 @@ groups:
     title: Java
   - id: programming-language-more
     title: 更多语言...
+- id: programming-languages-set-fifteen
+  title: 编程语言
+  prompt: 选择编程语言
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-go
+    title: Go
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-more
+    title: 更多语言...
 - id: programming-languages-set-sixteen
+  title: 编程语言
+  prompt: 选择编程语言
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-cpp
+    title: C++
+  - id: programming-language-go
+    title: Go
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-python
+    title: Python
+  - id: programming-language-more
+    title: 更多语言...
+- id: programming-languages-set-seventeen
+  title: 编程语言
+  prompt: 选择编程语言
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-javascript
+    title: Javascript
+  - id: programming-language-python
+    title: Python
+- id: programming-languages-set-eighteen
+  title: 编程语言
+  prompt: 选择编程语言
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-go
+    title: Go
+  - id: programming-language-python
+    title: Python
+- id: programming-languages-set-two-with-js
   title: 编程语言
   prompt: 选择编程语言
   pivots:
@@ -278,24 +330,142 @@ groups:
     title: C++
   - id: programming-language-java
     title: Java
-  - id: programming-language-javascript
-    title: Javascript
   - id: programming-language-python
     title: Python
+  - id: programming-language-javascript
+    title: Javascript
   - id: programming-language-more
     title: 更多语言...
-- id: kql-flavors
-  title: Kusto 查询语言风格
-  prompt: 选择 Azure 服务
+- id: programming-languages-set-two-with-js-spx
+  title: 编程语言
+  prompt: 选择编程语言或 CLI
   pivots:
-  - id: azuredataexplorer
-    title: Azure 数据资源管理器
-  - id: azuremonitor
-    title: Azure Monitor
+  - id: programmer-tool-spx
+    title: CLI
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-cpp
+    title: C++
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-python
+    title: Python
+  - id: programming-language-javascript
+    title: Javascript
+  - id: programming-language-more
+    title: 更多语言...
+- id: programming-languages-set-two-with-js-go
+  title: 编程语言
+  prompt: 选择编程语言
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-cpp
+    title: C++
+  - id: programming-language-go
+    title: Go
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-python
+    title: Python
+  - id: programming-language-javascript
+    title: Javascript
+  - id: programming-language-more
+    title: 更多语言...
+- id: programming-languages-set-two-with-js-go-spx
+  title: 编程语言
+  prompt: 选择编程语言或 CLI
+  pivots:
+  - id: programmer-tool-spx
+    title: CLI
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-cpp
+    title: C++
+  - id: programming-language-go
+    title: Go
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-python
+    title: Python
+  - id: programming-language-javascript
+    title: Javascript
+  - id: programming-language-more
+    title: 更多语言...
+- id: programming-languages-speech-services-one-nomore
+  title: 编程语言
+  prompt: 选择编程语言
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-cpp
+    title: C++
+  - id: programming-language-go
+    title: Go
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-python
+    title: Python
+  - id: programming-language-javascript
+    title: Javascript
+- id: programming-languages-speech-services-one-nomore-no-go
+  title: 编程语言
+  prompt: 选择编程语言
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-cpp
+    title: C++
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-python
+    title: Python
+  - id: programming-language-javascript
+    title: Javascript
+- id: programming-languages-speech-services-nomore-variant
+  title: 编程语言
+  prompt: 选择编程语言
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-cpp
+    title: C++
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-python
+    title: Python
+  - id: programming-language-javascript
+    title: Javascript
+  - id: programming-language-objectivec
+    title: Objective-C
+- id: programming-languages-set-nineteen
+  title: 编程语言
+  prompt: 选择编程语言
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-cpp
+    title: C++
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-python
+    title: Python
+  - id: programming-language-objectivec
+    title: Objective-C
+- id: programming-languages-set-twenty
+  title: 编程语言
+  prompt: 选择编程语言
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-nodejs
+    title: Node.js
+  - id: programming-language-swift
+    title: Swift
 metadata:
-  ms.openlocfilehash: 9e16ee2dcaf49650a1acb9e5d83d865ad33fb1dc
-  ms.sourcegitcommit: bfbd6694da33f703481386f2a3f16850c4e94bfa
+  ms.openlocfilehash: 7ca8afe115416996cb5d92c4aae9b9ec365efe4c
+  ms.sourcegitcommit: 7ea2d04481512e185a60fa3b0f7b0761e3ed7b59
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 05/15/2020
-  ms.locfileid: "83417779"
+  ms.lasthandoff: 07/02/2020
+  ms.locfileid: "85845913"

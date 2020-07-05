@@ -2,19 +2,19 @@
 title: B 系列可突增 - Azure 虚拟机
 description: 描述 B 系列可突增 Azure VM 大小。
 services: virtual-machines
+ms.subservice: sizes
 author: rockboyfor
-manager: digimobile
 ms.service: virtual-machines
 ms.topic: article
 origin.date: 02/03/2020
-ms.date: 04/27/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 68d2519623a5141aaac35f02ea458a64b764284e
-ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
+ms.openlocfilehash: 3bbddf87490f36088ed753b3aea609c9628bf366
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83392431"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945616"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>B 系列可突增虚拟机大小
 

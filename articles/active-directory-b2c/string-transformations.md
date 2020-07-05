@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 05/18/2020
+ms.date: 06/28/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 6da66fb64a494de76df3846242f47ec33baca489
-ms.sourcegitcommit: 87e789550ea49ff77c7f19bc68fad228009fcf44
+ms.openlocfilehash: 4d490124899bd46a7e4d55223d1ed26057c51b6b
+ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83748111"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85516486"
 ---
 # <a name="string-claims-transformations"></a>字符串声明转换
 
@@ -34,7 +34,7 @@ ms.locfileid: "83748111"
 | InputClaim | inputClaim2 | string | 要比较的第二个声明的类型。 |
 | InputParameter | stringComparison | string | 字符串比较，值为下列其中一项：Ordinal、OrdinalIgnoreCase。 |
 
-AssertStringClaimsAreEqual 声明转换始终从[验证技术配置文件](validation-technical-profile.md)执行，该文件由[自断言技术配置文件](self-asserted-technical-profile.md)或 [DisplayConrtol](display-controls.md) 调用。 自断言技术配置文件的 `UserMessageIfClaimsTransformationStringsAreNotEqual` 元数据控制向用户显示的错误消息。 可以将错误消息[本地化](localization-string-ids.md#claims-transformations-error-messages)。
+AssertStringClaimsAreEqual 声明转换始终从[验证技术配置文件](validation-technical-profile.md)执行，该文件由[自断言技术配置文件](self-asserted-technical-profile.md)或 [DisplayConrtol](display-controls.md) 调用。 自断言技术配置文件的 `UserMessageIfClaimsTransformationStringsAreNotEqual` 元数据控制向用户显示的错误消息。 错误消息可以[本地化](localization-string-ids.md#claims-transformations-error-messages)。
 
 
 ![AssertStringClaimsAreEqual 执行](./media/string-transformations/assert-execution.png)
@@ -371,11 +371,11 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 | ---- | ----------------------- | --------- | ----- |
 | OutputClaim | 本地化的字符串的名称 | string | 调用此声明转换后生成的声明类型列表。 |
 
-若要使用 GetLocalizedStringsTransformation 声明转换：
+使用 GetLocalizedStringsTransformation 声明转换：
 
-1. 定义一个[本地化字符串](localization.md)，并将其关联到某个[自我断言技术配置文件](self-asserted-technical-profile.md)。
+1. 定义[本地化字符串](localization.md)并将其与 [self-asserted-technical-profile](self-asserted-technical-profile.md) 相关联。
 1. `LocalizedString` 元素的 `ElementType` 必须设为 `GetLocalizedStringsTransformationClaimType`。
-1. `StringId` 是定义的唯一标识符，稍后将在声明转换中使用它。
+1. `StringId` 是定义的唯一标识符，稍后会用于声明转换。
 1. 在声明转换中，指定要使用本地化字符串设置的声明列表。 `ClaimTypeReferenceId` 是对在策略的 ClaimsSchema 节中已定义的 ClaimType 的引用。 `TransformationClaimType` 是在 `LocalizedString` 元素的 `StringId` 中定义的已本地化字符串的名称。
 1. 在[自我断言技术配置文件](self-asserted-technical-profile.md)或[显示控制](display-controls.md)输入或输出声明转换中引用你的声明转换。
 
@@ -516,9 +516,9 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
     - test.com: c7026f88-4299-4cdb-965d-3f166464b8a9
     - errorOnFailedLookup: false
 - 输出声明：
-    - outputClaim:  c7026f88-4299-4cdb-965d-3f166464b8a9
+    - outputClaim：c7026f88-4299-4cdb-965d-3f166464b8a9
 
-将 `errorOnFailedLookup` 输入参数设置为 `true` 时，**LookupValue** 声明转换始终从[验证技术配置文件](validation-technical-profile.md)执行，该文件由[自断言技术配置文件](self-asserted-technical-profile.md)或 [DisplayConrtol](display-controls.md) 调用。 自断言技术配置文件的 `LookupNotFound` 元数据控制向用户显示的错误消息。
+将 `errorOnFailedLookup` 输入参数设置为 `true` 时，LookupValue 声明转换始终从[验证技术配置文件](validation-technical-profile.md)执行，该文件由[自断言技术配置文件](self-asserted-technical-profile.md)或 [DisplayConrtol](display-controls.md) 调用。 自断言技术配置文件的 `LookupNotFound` 元数据控制向用户显示的错误消息。
 
 ![AssertStringClaimsAreEqual 执行](./media/string-transformations/assert-execution.png)
 
@@ -615,9 +615,9 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 | inputClaim | claimToMatch | string | 要比较的声明类型。 |
 | InputParameter | matchTo | string | 要匹配的正则表达式。 |
 | InputParameter | outputClaimIfMatched | string | 字符串相等情况下要设置的值。 |
-| InputParameter | extractGroups | boolean | [可选] 指定正则表达式匹配是否应提取组值。 可能的值：`true` 或 `false`（默认值）。 | 
+| InputParameter | extractGroups | boolean | [可选] 指定正则表达式匹配是否应提取组值。 可能的值：`true` 或 `false`（默认）。 | 
 | OutputClaim | outputClaim | string | 如果正则表达式是匹配项，此输出声明包含 `outputClaimIfMatched` 输入参数的值。 如果没有匹配项，则为 null。 |
-| OutputClaim | regexCompareResultClaim | boolean | 正则表达式匹配结果输出声明类型，根据匹配结果设置为 `true` 或 `false`。 |
+| OutputClaim | regexCompareResultClaim | boolean | 正则表达式匹配结果输出声明类型，将基于匹配结果设置为 `true` 或 `false`。 |
 | OutputClaim| 声明名称| string | 如果 extractGroups 输入参数设置为 true，调用此声明转换后生成的声明类型列表。 ClaimType 的名称必须与正则表达式组名称匹配。 | 
 
 ### <a name="example-1"></a>示例 1
@@ -647,7 +647,7 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
     - **outputClaimIfMatched**:  "isPhone"
 - 输出声明：
     - **outputClaim**: "isPhone"
-    - **regexCompareResultClaim**: true
+    - regexCompareResultClaim：true
 
 ### <a name="example-2"></a>示例 2
 
@@ -679,7 +679,7 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
     - **extractGroups**: true
 - 输出声明：
     - **outputClaim**: "isEmail"
-    - **regexCompareResultClaim**: true
+    - regexCompareResultClaim：true
     - **mailAlias**: emily
     
 ## <a name="setclaimsifstringsareequal"></a>SetClaimsIfStringsAreEqual
@@ -823,9 +823,9 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 | InputClaim | inputClaim | string | 包含该字符串的声明类型。 |
 | InputParameter | startIndex | int | 某个子字符串在此实例中的从零开始的起始字符位置。 |
 | InputParameter | length | int | 子字符串中的字符数。 |
-| OutputClaim | outputClaim | boolean | 一个字符串，等效于长度在此实例中从 startIndex 开始的子字符串；如果 startIndex 等于此实例的长度并且长度为零，则为空。 |
+| OutputClaim | outputClaim | boolean | 与此实例中在 startIndex 处开头、具有指定长度的子字符串等效的一个字符串；如果 startIndex 等于此实例的长度且长度为零，则为空。 |
 
-例如，获取电话号码的国家/地区前缀。
+例如，获取国家/地区电话号码前缀。
 
 
 ```XML
@@ -959,7 +959,7 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 - 输入参数：
   - **delimiter**: ","
 - 输出声明：
-  - **outputClaim**: [ "Admin", "Author", "Reader" ]
+  - outputClaim：[ "Admin", "Author", "Reader" ]
 
 ## <a name="string-claim-transformations-expressions"></a>字符串声明转换表达式
 Azure AD B2C 自定义策略中的声明转换表达式提供了有关租户 ID 和技术配置文件 ID 的上下文信息。

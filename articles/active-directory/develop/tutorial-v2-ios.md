@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 04/22/2020
+ms.date: 06/30/2020
 ms.author: v-junlch
 ms.reviewer: oldalton
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 935d5114bade1cb3327566561b45ac5ab4395a91
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.openlocfilehash: ae968264a82397864dfa9c86ca83a9bc69e76db0
+ms.sourcegitcommit: 1008ad28745709e8d666f07a90e02a79dbbe2be5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82126407"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945223"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-from-an-ios-or-macos-app"></a>从 iOS 或 macOS 应用将用户登录并调用 Microsoft Graph
 
@@ -28,15 +28,15 @@ ms.locfileid: "82126407"
 >[!NOTE]
 > 如果你不熟悉 Microsoft 标识平台，我们建议你从[从 iOS 或 macOS 应用登录用户并调用 Microsoft Graph API](quickstart-v2-ios.md) 开始。
 
-## <a name="how-this-tutorial-works"></a>本教程的工作原理
+## <a name="how-this-tutorial-works"></a>本教程工作原理
 
 ![显示本教程生成的示例应用的工作原理](../../../includes/media/active-directory-develop-guidedsetup-ios-introduction/iosintro.svg)
 
 本教程中的应用会将用户登录并代表他们获取数据。  将通过一个受保护 API（在本例中为 Microsoft Graph API）访问该数据，该 API 要求授权并且受 Microsoft 标识平台保护。
 
-更具体地说：
+更具体说来：
 
-* 应用将通过浏览器或 Microsoft Authenticator 来让用户登录。
+* 你的应用将通过浏览器或 Microsoft Authenticator 使用户登录。
 * 最终用户将接受应用程序请求的权限。
 * 将为你的应用颁发 Microsoft Graph API 的一个访问令牌。
 * 该访问令牌将包括在对 Web API 的 HTTP 请求中。
@@ -51,31 +51,31 @@ ms.locfileid: "82126407"
 - XCode 11.x 或更高版本是在本指南中构建应用所必需的。 可以从 [iTunes 网站](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12 "XCode 下载 URL")下载 XCode。
 - Microsoft 身份验证库 ([MSAL.framework](https://github.com/AzureAD/microsoft-authentication-library-for-objc))。 可使用依赖项管理器或手动添加库。 以下说明演示了如何操作。
 
-本教程将创建一个新项目。 如果想要改为下载完整教程，请下载代码：
+本教程将创建新项目。 如果想要改为下载完整教程，请下载代码：
 - [iOS 示例代码](https://github.com/Azure-Samples/active-directory-ios-swift-native-v2/archive/master.zip)
 - [macOS 示例代码](https://github.com/Azure-Samples/active-directory-macOS-swift-native-v2/archive/master.zip)
 
 ## <a name="create-a-new-project"></a>创建新项目
 
-1. 打开 Xcode，并选择“新建 Xcode 项目”  。
-2. 对于 iOS 应用，请选择“iOS”   > “单一视图应用”  并选择“下一步”  。
-3. 对于 macOS 应用，请选择“macOS”   > “Cocoa 应用”  并选择“下一步”  。
+1. 打开 Xcode，并选择“新建 Xcode 项目”。
+2. 对于 iOS 应用，请选择“iOS” > “单一视图应用”并选择“下一步”。
+3. 对于 macOS 应用，请选择“macOS” > “Cocoa 应用”并选择“下一步”。
 4. 提供产品名称。
-5. 将“语言”设置为“Swift”，然后选择“下一步”。   
-6. 选择一个文件夹用于创建应用，然后单击“创建”。 
+5. 将“语言”设置为“Swift”，然后选择“下一步”。  
+6. 选择一个文件夹以创建应用，然后单击“创建”。
 
 ## <a name="register-your-application"></a>注册应用程序
 
 1. 转到 [Azure 门户](https://portal.azure.cn/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)
-2. 打开“应用注册”边栏选项卡，单击“+新建注册”。 
-3. 输入应用的“名称”，不设置重定向 URI。 
+2. 打开“应用注册”边栏选项卡，单击“+新建注册”。
+3. 输入应用的“名称”，不设置重定向 URI。
 4. 在“支持的帐户类型”  下，选择“任何组织目录(任何 Azure AD 目录 - 多租户)中的帐户”  。
-5. 单击“注册” 
-6. 在显示的窗格的“管理”部分，  选择“身份验证”  。
+5. 单击“注册”
+6. 在显示的窗格的“管理”部分，选择“身份验证”。
 
-7. 单击靠近屏幕顶部的“尝试新体验”，  打开新的应用注册体验，然后单击“+ 新建注册”   > “+ 添加平台”   >   “iOS/macOS”。
-    - 输入项目的捆绑 ID。 如果下载了代码，则此 ID 是 `com.microsoft.identitysample.MSALiOS`。 若要创建自己的项目，请在 Xcode 中选择项目，然后打开“常规”选项卡。  此时捆绑标识符会显示在“标识”部分。 
-8. 单击 `Configure` 并保存出现在“MSAL 配置”页中的“MSAL 配置”   ，以便在稍后配置应用时输入它。  单击“Done”（完成）  。
+7. 单击靠近屏幕顶部的“尝试新体验”，打开新的应用注册体验，然后单击“+ 新建注册” > “+ 添加平台” > “iOS/macOS”。
+    - 输入项目的捆绑 ID。 如果下载了代码，则为 `com.microsoft.identitysample.MSALiOS`。 若要创建自己的项目，请在 Xcode 中选择项目，然后打开“常规”选项卡。此时捆绑标识符会显示在“标识”部分。
+8. 单击 `Configure` 并保存出现在“MSAL 配置”页中的“MSAL 配置” ，以便在稍后配置应用时输入它。  单击“完成”。
 
 ## <a name="add-msal"></a>添加 MSAL
 
@@ -151,11 +151,17 @@ var currentAccount: MSALAccount?
 
 需要修改的唯一值是分配给 `kClientID` 作为[应用程序 ID](/active-directory/develop/developer-glossary#application-id-client-id) 的值。 此值是你在本教程开头的步骤中保存的 MSAL 配置数据的一部分，该步骤用于在 Azure 门户中注册应用程序。
 
+## <a name="configure-xcode-project-settings"></a>配置 Xcode 项目设置
+
+将新的密钥链组添加到项目的“签名和功能”。 密钥链组在 iOS 上应为 `com.microsoft.adalcache`，在 macOS 上应为 `com.microsoft.identity.universalstorage`。
+
+![显示应如何设置密钥链组的 Xcode UI](../../../includes/media/active-directory-develop-guidedsetup-ios-introduction/iosintro-keychainShare.png)
+
 ## <a name="for-ios-only-configure-url-schemes"></a>仅对于 iOS，配置 URL 方案
 
 在此步骤中需注册 `CFBundleURLSchemes`，以便用户在登录后可重定向回应用。 另外，`LSApplicationQueriesSchemes` 也允许应用使用 Microsoft Authenticator。
 
-在 Xcode 中将 `Info.plist` 作为源代码文件打开，在 `<dict>` 节中添加以下内容。 将 `[BUNDLE_ID]` 替换为在 Azure 门户中使用过的值。如果你已下载代码，则应知道该值为 `com.microsoft.identitysample.MSALiOS`。 若要创建自己的项目，请在 Xcode 中选择项目，然后打开“常规”选项卡。  此时捆绑标识符会显示在“标识”部分。 
+在 Xcode 中将 `Info.plist` 作为源代码文件打开，在 `<dict>` 节中添加以下内容。 将 `[BUNDLE_ID]` 替换为在 Azure 门户中使用过的值。如果你已下载代码，则应知道该值为 `com.microsoft.identitysample.MSALiOS`。 若要创建自己的项目，请在 Xcode 中选择项目，然后打开“常规”选项卡。此时捆绑标识符会显示在“标识”部分。
 
 ```xml
 <key>CFBundleURLTypes</key>
@@ -176,10 +182,10 @@ var currentAccount: MSALAccount?
 
 ## <a name="for-macos-only-configure-app-sandbox"></a>仅对于 macOS，配置应用沙盒
 
-1. 转到 Xcode 项目设置 >“功能”选项卡   >   “应用沙盒”
-2. 选中“传出连接(客户端)”  复选框。 
+1. 转到 Xcode 项目设置 >“功能”选项卡 > “应用沙盒”
+2. 选中“传出连接(客户端)”复选框。 
 
-## <a name="create-your-apps-ui"></a>创建应用的 UI
+## <a name="create-your-apps-ui"></a>创建应用 UI
 
 现在，请将以下代码添加到 `ViewController` 类，以便创建一个 UI，其中包含用于调用 Microsoft Graph API 的按钮，用于注销的按钮，以及用于查看某些输出的文本视图：
 
@@ -620,7 +626,7 @@ func acquireTokenInteractively() {
 
 | 标头密钥    | 值                 |
 | ------------- | --------------------- |
-| 授权 | 持有者 \<access-token> |
+| 授权 | Bearer \<access-token> |
 
 将以下代码添加到 `ViewController` 类：
 
@@ -656,7 +662,7 @@ func acquireTokenInteractively() {
 
 请参阅 [Microsoft Graph API](https://microsoftgraph.chinacloudapi.cn)，了解有关 Microsoft Graph API 的详细信息。
 
-### <a name="use-msal-for-sign-out"></a>使用 MSAL 注销
+### <a name="use-msal-for-sign-out"></a>使用 MSAL 进行注销
 
 接下来，添加注销支持。
 
@@ -705,10 +711,10 @@ func acquireTokenInteractively() {
 
 若要启用令牌缓存，请执行以下操作：
 1. 确保应用程序已正确签名
-2. 转到 Xcode 项目设置 >“功能”选项卡   >   “启用密钥链共享”
-3. 单击 **+** 并输入以下“密钥链组”  条目：3.a 对于 iOS，输入 `com.microsoft.adalcache` 3.b 对于 macOS，输入 `com.microsoft.identity.universalstorage`
+2. 转到 Xcode 项目设置 >“功能”选项卡 > “启用密钥链共享”
+3. 单击 **+** 并输入以下“密钥链组”条目：3.a 对于 iOS，输入 `com.microsoft.adalcache` 3.b 对于 macOS，输入 `com.microsoft.identity.universalstorage`
 
-### <a name="add-helper-methods"></a>添加帮助器方法
+### <a name="add-helper-methods"></a>添加帮助程序方法
 将以下帮助程序方法添加到 `ViewController` 类以完成此示例。
 
 ### <a name="ios-ui"></a>iOS UI：
@@ -822,9 +828,9 @@ func acquireTokenInteractively() {
 
 ### <a name="multi-account-applications"></a>多帐户应用程序
 
-此应用是针对单帐户方案生成的。 MSAL 也支持多帐户方案，但它需要应用的一些额外工作。 需要创建 UI 来帮助用户选择他们想要对每个需要令牌的操作使用的帐户。 或者，应用可以实现一种启发式算法，通过查询 MSAL 中的所有帐户来选择要使用的帐户。 有关示例，请参阅 `accountsFromDeviceForParameters:completionBlock:` [API](https://azuread.github.io/microsoft-authentication-library-for-objc/Classes/MSALPublicClientApplication.html#/c:objc(cs)MSALPublicClientApplication(im)accountsFromDeviceForParameters:completionBlock:)
+该应用针对单个帐户方案生成。 MSAL 也支持多帐户方案，但它需要应用的一些额外工作。 需要创建 UI 来帮助用户选择他们想要对每个需要令牌的操作使用的帐户。 或者，应用可以实现一种启发式算法，通过查询 MSAL 中的所有帐户来选择要使用的帐户。 有关示例，请参阅 `accountsFromDeviceForParameters:completionBlock:` [API](https://azuread.github.io/microsoft-authentication-library-for-objc/Classes/MSALPublicClientApplication.html#/c:objc(cs)MSALPublicClientApplication(im)accountsFromDeviceForParameters:completionBlock:)
 
-## <a name="test-your-app"></a>测试应用程序
+## <a name="test-your-app"></a>测试应用
 
 ### <a name="run-locally"></a>在本地运行
 

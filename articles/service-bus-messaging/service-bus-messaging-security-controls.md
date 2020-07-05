@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/29/2020
 ms.author: v-tawe
 origin.date: 09/23/2019
-ms.openlocfilehash: 5d7694a19ff1378b072658d6d6efeb6c45ac78a5
-ms.sourcegitcommit: 1fbdefdace8a1d3412900c6c3f89678d8a9b29bc
+ms.openlocfilehash: 9e0cdab177d9ec23a03f2a7354438b3b00a25e3d
+ms.sourcegitcommit: 4f84bba7e509a321b6f68a2da475027c539b8fd3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82886956"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85796287"
 ---
 # <a name="security-controls-for-azure-service-bus-messaging"></a>Azure 服务总线消息的安全控制
 
@@ -60,3 +60,7 @@ ms.locfileid: "82886956"
 | 安全控制 | Yes/No | 注释| 文档 |
 |---|---|--|--|
 | 配置管理支持（配置的版本控制等）| 是 | 支持通过 [Azure 资源管理器 API](https://docs.microsoft.com/rest/api/resources/) 进行资源提供程序版本控制。|   |
+
+## <a name="next-steps"></a>后续步骤
+
+- 详细了解[跨 Azure 服务的内置安全控制](../security/fundamentals/security-controls.md)。

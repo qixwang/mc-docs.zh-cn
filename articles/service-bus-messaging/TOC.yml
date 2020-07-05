@@ -66,6 +66,8 @@
       href: service-bus-tutorial-topics-subscriptions-portal.md
     - name: 更新清单 - CLI
       href: service-bus-tutorial-topics-subscriptions-cli.md
+    - name: 通过事件网格响应事件
+      href: service-bus-to-event-grid-integration-example.md
 - name: 示例
   items:
     - name: 服务总线示例
@@ -75,8 +77,6 @@
       href: ./policy-samples.md
 - name: 概念
   items:
-    - name: 基于角色的访问控制（预览）
-      href: service-bus-managed-service-identity.md
     - name: 高级消息传送
       href: service-bus-premium-messaging.md
     - name: Azure 队列与服务总线队列的比较
@@ -184,6 +184,8 @@
           href: service-bus-nodejs-how-to-use-topics-subscriptions.md
     - name: 管理
       items:
+        - name: 自动更新消息传送单元
+          href: automate-update-messaging-units.md
         - name: 使用 Azure PowerShell 预配实体
           href: service-bus-manage-with-ps.md
         - name: 使用 Azure Monitor 监视服务总线
@@ -194,7 +196,9 @@
           href: service-bus-diagnostic-logs.md
         - name: 暂停和重新激活消息传递实体
           href: entity-suspend.md
-        - name: 使用 Azure 资源管理器模板
+        - name: 使用服务总线资源管理器在服务总线上执行数据操作
+          href: explorer.md
+        - name: 使用 ARM 模板
           href: service-bus-resource-manager-overview.md
           items:
             - name: 创建命名空间
@@ -229,6 +233,8 @@
           href: /dotnet/api/microsoft.azure.servicebus
     - name: Java
       href: /java/api/overview/servicebus
+    - name: Python
+      href: 'https://docs.microsoft.com/python/api/overview/azure/servicebus?view=azure-python'
     - name: Node.js
       href: 'https://docs.microsoft.com/javascript/api/overview/azure/service-bus'
     - name: PHP
@@ -238,7 +244,7 @@
     - name: Go
       href: 'https://github.com/Azure/azure-service-bus-go'
     - name: Azure PowerShell
-      href: 'https://docs.microsoft.com/powershell/module/azurerm.servicebus'
+      href: 'https://docs.microsoft.com/powershell/module/az.servicebus'
     - name: REST
       href: 'https://docs.microsoft.com/rest/api/servicebus'
     - name: 配额

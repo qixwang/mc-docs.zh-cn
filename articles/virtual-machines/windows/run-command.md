@@ -2,24 +2,24 @@
 title: 使用“运行命令”在 Windows VM 中运行 PowerShell 脚本
 description: 本主题介绍了如何使用“运行命令”功能在 Azure Windows 虚拟机中运行 PowerShell 脚本
 services: automation
-ms.service: automation
+ms.service: virtual-machines
 author: rockboyfor
-ms.author: v-yeche
 origin.date: 04/26/2019
-ms.date: 11/11/2019
-ms.topic: article
+ms.date: 07/06/2020
+ms.author: v-yeche
+ms.topic: how-to
 manager: digimobile
-ms.openlocfilehash: 8a37305d5da65405f71b7503239b56baa8bc52fa
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 4f1ca8a59cf57e90799317d6d19edf958e8d881b
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74116961"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945749"
 ---
 <!--Verfiy succesfully-->
 # <a name="run-powershell-scripts-in-your-windows-vm-by-using-run-command"></a>使用“运行命令”在 Windows VM 中运行 PowerShell 脚本
 
-“运行命令”功能使用虚拟机 (VM) 代理在 Azure Windows VM 中运行 PowerShell 脚本。 可以使用这些脚本进行一般性的计算机或应用程序管理。 它们可以帮助你快速诊断和修正 VM 访问与网络问题，使 VM 恢复正常状态。
+“运行命令”功能使用虚拟机 (VM) 代理在 Azure Windows VM 中运行 PowerShell 脚本。 可以使用这些脚本进行常规计算机或应用程序管理。 它们可以帮助你快速诊断和修正 VM 访问与网络问题，使 VM 恢复正常状态。
 
 [!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
@@ -27,7 +27,7 @@ ms.locfileid: "74116961"
 
 可通过多种方式访问虚拟机。 “运行命令”可以使用 VM 代理在虚拟机上以远程方式运行脚本。 通过 Windows VM 的 Azure 门户、[REST API](https://docs.microsoft.com/rest/api/compute/virtual%20machines%20run%20commands/runcommand) 或 [PowerShell](https://docs.microsoft.com/powershell/module/az.compute/invoke-azvmruncommand) 使用“运行命令”。
 
-此功能适用于要在虚拟机中运行脚本的所有方案。 它是排查和修正因网络或管理用户配置错误而未打开 RDP 或 SSH 端口的虚拟机的唯一方法。
+在需要在虚拟机中运行脚本的所有方案中，此功能都很有用。 它是排查和修正因网络或管理用户配置错误而未打开 RDP 或 SSH 端口的虚拟机的唯一方法。
 
 ## <a name="restrictions"></a>限制
 
@@ -39,13 +39,13 @@ ms.locfileid: "74116961"
 * 一次只能运行一个脚本。
 * 不支持提示输入信息（交互模式）的脚本。
 * 无法取消正在运行的脚本。
-* 脚本最长可以运行 90 分钟。 之后，它会超时。
+* 脚本最多可以运行 90 分钟。 之后，它会超时。
 * 需要从 VM 建立出站连接才能返回脚本的结果。
 
 > [!NOTE]
 > 若要正常工作，“运行命令”需要连接（通过端口 443）到 Azure 公共 IP 地址。 如果扩展无法访问这些终结点，则脚本可能会成功运行，但不会返回结果。 如果要阻止虚拟机上的流量，可以使用[服务标记](../../virtual-network/security-overview.md#service-tags)以通过 `AzureChinaCloud` 标记允许流量发往 Azure 公共 IP 地址。
 
-## <a name="available-commands"></a>可用命令
+## <a name="available-commands"></a>可用的命令
 
 下表显示了可用于 Windows VM 的命令的列表。 可以使用 **RunPowerShellScript** 命令运行所需的任何自定义脚本。 使用 Azure CLI 或 PowerShell 运行命令时，为 `--command-id` 或 `-CommandId` 参数提供的值必须是下面列出的值之一。 如果指定的值不是可用的命令，将会收到以下错误：
 
@@ -60,7 +60,7 @@ The entity was not found in this Azure location
 |**EnableAdminAccount**|检查本地管理员帐户是否被禁用，如果是，则启用它。|
 |**IPConfig**| 显示绑定到 TCP/IP 的每个适配器的 IP 地址、子网掩码和默认网关的详细信息。|
 |**RDPSettings**|检查注册表设置和域策略设置。 提供策略操作建议（如果计算机属于某个域），或者将设置修改为默认值。|
-|**ResetRDPCert**|删除绑定到 RDP 侦听器的 SSL 证书，并将 RDP 侦听器安全性还原为默认值。 如果看到与证书有关的任何问题，请使用此脚本。|
+|**ResetRDPCert**|删除绑定到 RDP 侦听器的 TLS/SSL 证书，并将 RDP 侦听器安全性还原为默认值。 如果看到与证书有关的任何问题，请使用此脚本。|
 |**SetRDPPort**|为远程桌面连接设置默认的或用户指定的端口号。 为端口的入站访问启用防火墙规则。|
 
 ## <a name="azure-cli"></a>Azure CLI
@@ -90,9 +90,9 @@ Invoke-AzVMRunCommand -ResourceGroupName '<myResourceGroup>' -Name '<myVMName>' 
 
 ## <a name="limiting-access-to-run-command"></a>限制对“运行命令”的访问
 
-列出运行命令或显示命令详细信息需要订阅级别的 `Microsoft.Compute/locations/runCommands/read` 权限。 内置[读取者](../../role-based-access-control/built-in-roles.md#reader)角色和更高级别的角色具有此权限。
+列出“运行命令”或显示某个命令的详细信息需要 `Microsoft.Compute/locations/runCommands/read` 权限。 内置[读者](../../role-based-access-control/built-in-roles.md#reader)角色和更高级别具有此权限。
 
-运行命令需要订阅级别的 `Microsoft.Compute/virtualMachines/runCommand/action` 权限。 [虚拟机参与者](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)角色和更高级别的角色具有此权限。
+运行命令需要 `Microsoft.Compute/virtualMachines/runCommand/action` 权限。 [虚拟机参与者](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)角色和更高级别具有此权限。
 
 若要使用“运行命令”，可以使用[内置角色](../../role-based-access-control/built-in-roles.md)之一，也可以创建一个[自定义角色](../../role-based-access-control/custom-roles.md)。
 

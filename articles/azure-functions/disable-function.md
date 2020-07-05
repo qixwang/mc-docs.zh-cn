@@ -2,13 +2,13 @@
 title: 如何在 Azure Functions 中禁用函数
 description: 了解如何在 Azure Functions 中禁用与启用函数。
 ms.topic: conceptual
-ms.date: 06/05/2020
-ms.openlocfilehash: 542f602d13dd9954cad735525abc3173f41bec91
-ms.sourcegitcommit: f1a76ee3242698123a3d77f44c860db040b48f70
+ms.date: 07/02/2020
+ms.openlocfilehash: feb2ece9b43aa54b5f91d421a9914aaadb0a6437
+ms.sourcegitcommit: 1008ad28745709e8d666f07a90e02a79dbbe2be5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84563820"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945247"
 ---
 # <a name="how-to-disable-functions-in-azure-functions"></a>如何在 Azure Functions 中禁用函数
 
@@ -122,7 +122,8 @@ public static class QueueFunctions
 
 在第二个示例中，当存在名为 IS_DISABLED 的应用设置且其值设置为 `true` 或 1 时，将禁用相应的函数。
 
-可以在 Azure 门户中编辑该文件，或者使用函数的“概览”页上的“启用”和“禁用”按钮。 门户开关的工作方式是更改 *function.json* 文件。
+>[!IMPORTANT]  
+>门户现在使用应用程序设置来禁用 v1.x 函数。 当应用程序设置与 function.json 文件冲突时，可能会出现错误。 应从 function.json 文件中删除 `disabled` 属性，以防止出现错误。 
 
 
 ## <a name="next-steps"></a>后续步骤

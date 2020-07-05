@@ -1,18 +1,18 @@
 ---
 title: 备份应用
-description: 了解如何在 Azure 应用服务中创建应用备份。 运行手动或计划备份。 通过包括附加的数据库来自定义备份。
+description: 了解如何在 Azure 应用服务中创建应用备份。 运行手动或计划的备份。 通过包含附加的数据库来自定义备份。
 ms.assetid: 6223b6bd-84ec-48df-943f-461d84605694
 ms.topic: article
 origin.date: 10/16/2019
-ms.date: 05/22/2020
+ms.date: 06/22/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 6fd0b0f963719e2fb6ac78bce9665cff05bbcc9b
-ms.sourcegitcommit: 981a75a78f8cf74ab5a76f9e6b0dc5978387be4b
+ms.openlocfilehash: 203535e88a9380c924264ebe04b67d6be89cc6eb
+ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83801178"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85613372"
 ---
 # <a name="back-up-your-app-in-azure"></a>在 Azure 中备份应用
 利用 [Azure App Service](overview.md) 中的备份和还原功能，可以轻松地手动或按计划创建应用备份。 可以将备份配置为无限期保留。 通过覆盖现有应用或还原为另一应用可将应用还原为先前状态的快照。
@@ -43,7 +43,7 @@ ms.locfileid: "83801178"
 <a name="requirements"></a>
 
 ## <a name="requirements-and-restrictions"></a>要求和限制
-* 备份和还原功能要求应用服务计划处于标准层或高级层 。 有关缩放应用服务计划以使用更高层的详细信息，请参阅[增加 Azure 中的应用](manage-scale-up.md)。 与**标准**层相比，**高级**层每日允许更多备份量。
+* 备份和还原功能要求应用服务计划处于标准层、高级层或隔离层  。 有关缩放应用服务计划以使用更高层的详细信息，请参阅[增加 Azure 中的应用](manage-scale-up.md)。 与标准层相比，高级层和隔离层每日允许更多备份量  。
 * 在要备份的应用所在的订阅中，需要一个 Azure 存储帐户和容器。 有关 Azure 存储帐户的详细信息，请参阅 [Azure 存储帐户概述](/storage/common/storage-account-overview)。
 * 最多可备份 10 GB 的应用和数据库内容。 如果备份大小超过此限制，会出错。
 * 不支持备份启用了 TLS 的 Azure Database for MySQL。 如果配置备份，备份将失败。
@@ -66,15 +66,15 @@ ms.locfileid: "83801178"
     > 
     > 
 
-2. 在“备份”页中，选择“未配置备份。单击此处为应用配置备份”。
+2. 在“备份”页上，选择“未配置备份”。 单击此处为应用配置备份。
 
     ![单击“配置”](./media/manage-backup/configure-start.png)
 
-3. 在“备份配置”页中，单击“存储未配置”来配置存储帐户 。
+3. 在“备份配置”页中，单击“未配置存储”来配置存储帐户 。
 
     ![选择存储帐户](./media/manage-backup/configure-storage.png)
 
-4. 选择“存储帐户”和“容器”来选择备份目标。 该存储帐户必须与要备份的应用属于同一订阅。 也可在各自的页面中新建存储帐户或容器。 完成后，单击“选择” 。
+4. 选择“存储帐户”和“容器”来选择备份目标。 该存储帐户必须与要备份的应用属于同一订阅。 也可在各自的页面中新建存储帐户或容器。 完成后，单击“选择”。
 
 5. 在仍处于打开状态的“备份配置”页中，可配置“备份数据库”，然后选择备份要包含的数据库（SQL 数据库或 MySQL），然后单击“确定”  。
 
@@ -98,31 +98,31 @@ ms.locfileid: "83801178"
 
 <a name="automatedbackups"></a>
 
-## <a name="configure-automated-backups"></a>配置自动备份
+## <a name="configure-automated-backups"></a>配置自动执行的备份
 1. 在“备份配置”页中，将“计划备份”设置为“开”  。 
 
     ![启用自动化的备份](./media/manage-backup/scheduled-backup.png)
 
-2. 根据需要配置备份计划，然后选择“确定”。
+2. 根据需要配置备份计划，并选择“确定”。
 
 <a name="partialbackups"></a>
 
 ## <a name="configure-partial-backups"></a>配置部分备份
 有时你不想备份应用中的所有内容。 以下是一些示例：
 
-* [设置每周备份](#configure-automated-backups) 应用，其中包含永远不会更改的静态内容，例如旧的博客文章或图映像。
+* [设置每周备份](#configure-automated-backups)应用，其中包含永远不会更改的静态内容，例如旧的博客文章或图像。
 * 应用的内容超过 10 GB（这是一次可以备份的最大量）。
 * 不想备份日志文件。
 
 使用部分备份可以精确选择需要备份的文件。
 
 > [!NOTE]
-> 备份中的单个数据库最大可以为 4GB，但备份的最大总大小为 10GB
+> 备份中的单个数据库最大可为 4GB，但备份的最大总大小为 10GB
 
 ### <a name="exclude-files-from-your-backup"></a>从备份中排除文件
 假定应用中包含的日志文件和静态映像已经过备份且不会发生更改。 这种情况下，可排除这些文件夹和文件，以免其存储在将来的备份中。 若要从备份中排除文件和文件夹，请在应用的 `D:\home\site\wwwroot` 文件夹中创建一个 `_backup.filter` 文件。 指定要在此文件中排除的文件和文件夹列表。 
 
-可以通过导航到 `https://<app-name>.scm.chinacloudsites.cn/DebugConsole` 来访问文件。 如果出现系统提示，请登录到 Azure 帐户。
+可以通过导航到 `https://<app-name>.scm.chinacloudsites.cn/DebugConsole` 来访问文件。 如果出现系统提示，请登录到你的 Azure 帐户。
 
 确定要从备份中排除的文件夹。 例如，筛选出突出显示的文件夹和文件。
 
@@ -143,7 +143,7 @@ ms.locfileid: "83801178"
 > [!NOTE]
 > 采用与[还原定期备份](web-sites-restore.md)相同的方式，还原站点的部分备份。 还原过程会执行正确的操作。
 > 
-> 还原完整备份后，站点上的所有内容都被替换为备份中的所有内容。 如果文件在站点上但不在备份中，则会将其删除。 但是，还原部分备份时，位于其中一个方块列表目录或任何方块列表文件中的任何内容都保持不变。
+> 还原完整备份后，站点上的所有内容都被替换为备份中的任何内容。 如果文件在站点上但不在备份中，则会将其删除。 但是，还原部分备份时，位于其中一个方块列表目录或任何方块列表文件中的任何内容都保持不变。
 > 
 
 
@@ -159,7 +159,7 @@ ms.locfileid: "83801178"
 > 
 > 
 
-## <a name="automate-with-scripts"></a>使用脚本自动执行
+## <a name="automate-with-scripts"></a>使用脚本自动化
 
 可以在 [Azure CLI](/cli/install-azure-cli?view=azure-cli-lastest) 或 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) 中使用脚本自动备份管理。
 

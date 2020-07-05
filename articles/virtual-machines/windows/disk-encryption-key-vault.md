@@ -1,23 +1,24 @@
 ---
-title: 创建和配置用于 Azure 磁盘加密的 Key Vault
-description: 本文介绍如何创建和配置用于 Azure 磁盘加密的 Key Vault
+title: 创建和配置用于 Azure 磁盘加密的密钥保管库
+description: 本文介绍创建和配置用于 Azure 磁盘加密的密钥保管库的步骤
 ms.service: virtual-machines
+ms.subservice: security
 ms.topic: article
 author: rockboyfor
 origin.date: 08/06/2019
-ms.date: 04/27/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
 ms.custom: seodec18
-ms.openlocfilehash: 3402e9ba521021bf5c01d649f3703d4a6f678475
-ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
+ms.openlocfilehash: ef60debaf41371dd6583834eba4943824aa0cd0f
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "83001903"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85946010"
 ---
-# <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption"></a>创建和配置用于 Azure 磁盘加密的 Key Vault
+# <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption"></a>创建和配置用于 Azure 磁盘加密的密钥保管库
 
-Azure 磁盘加密使用 Azure Key Vault 来控制和管理磁盘加密密钥和机密。  有关 Key Vault 的详细信息，请参阅 [Azure Key Vault 入门](../../key-vault/key-vault-get-started.md)和[保护 Key Vault](../../key-vault/key-vault-secure-your-key-vault.md)。 
+Azure Disk Encryption 使用 Azure Key Vault 来控制和管理磁盘加密密钥和机密。  有关 Key Vault 的详细信息，请参阅 [Azure Key Vault 入门](../../key-vault/key-vault-get-started.md)和[保护 Key Vault](../../key-vault/general/secure-your-key-vault.md)。 
 
 > [!WARNING]
 > - 如果之前是使用 Azure 磁盘加密与 Azure AD 来加密 VM，则必须继续使用此选项来加密 VM。 有关详细信息，请参阅[使用 Azure AD 创建和配置用于 Azure 磁盘加密的 Key Vault（以前版本）](disk-encryption-key-vault-aad.md)。
@@ -25,13 +26,13 @@ Azure 磁盘加密使用 Azure Key Vault 来控制和管理磁盘加密密钥和
 创建和配置用于 Azure 磁盘加密的 Key Vault 需要三个步骤：
 
 1. 创建资源组（如果需要）。
-2. 创建 Key Vault。 
-3. 设置 Key Vault 高级访问策略。
+2. 创建密钥保管库。 
+3. 设置密钥保管库高级访问策略。
 
 以下快速入门说明了这些步骤：
 
 - [使用 Azure CLI 创建和加密 Windows VM](disk-encryption-cli-quickstart.md)
-- [使用 Azure PowerShell 创建和加密 Windows VM](disk-encryption-cli-quickstart.md)
+- [使用 Azure PowerShell 创建和加密 Windows VM](disk-encryption-powershell-quickstart.md)
 
 还可以根据需要生成或导入密钥加密密钥 (KEK)。
 

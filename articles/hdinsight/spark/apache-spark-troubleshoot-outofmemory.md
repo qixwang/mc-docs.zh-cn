@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: v-yiso
 origin.date: 08/15/2019
 ms.date: 10/28/2019
-ms.openlocfilehash: d976c0438f1131f197c655247e22d146eccc991e
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 0066eedef327cfac7f31e9b718aaa60e0bdc1b33
+ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79293071"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85516574"
 ---
 # <a name="outofmemoryerror-exceptions-for-apache-spark-in-azure-hdinsight"></a>Azure HDInsight 中的 Apache Spark 的 OutOfMemoryError 异常
 
@@ -153,7 +153,7 @@ Livy 服务器无法在 Apache Spark [Linux 上的 Spark 2.1 (HDI 3.6)] 上启�
 17/07/27 17:52:50 INFO ZooKeeper: Client environment:user.name=livy
 17/07/27 17:52:50 INFO ZooKeeper: Client environment:user.home=/home/livy
 17/07/27 17:52:50 INFO ZooKeeper: Client environment:user.dir=/home/livy
-17/07/27 17:52:50 INFO ZooKeeper: Initiating client connection, connectString=zk2-kcspark.cxtzifsbseee1genzixf44zzga.gx.internal.cloudapp.net:2181,zk3-kcspark.cxtzifsbseee1genzixf44zzga.gx.internal.cloudapp.net:2181,zk6-kcspark.cxtzifsbseee1genzixf44zzga.gx.internal.cloudapp.net:2181 sessionTimeout=60000 watcher=org.apache.curator.ConnectionState@25fb8912
+17/07/27 17:52:50 INFO ZooKeeper: Initiating client connection, connectString=zk2-kcspark.cxtzifsbseee1genzixf44zzga.gx.internal.chinacloudapp.cn:2181,zk3-kcspark.cxtzifsbseee1genzixf44zzga.gx.internal.chinacloudapp.cn:2181,zk6-kcspark.cxtzifsbseee1genzixf44zzga.gx.internal.chinacloudapp.cn:2181 sessionTimeout=60000 watcher=org.apache.curator.ConnectionState@25fb8912
 17/07/27 17:52:50 INFO StateStore$: Using ZooKeeperStateStore for recovery.
 17/07/27 17:52:50 INFO ClientCnxn: Opening socket connection to server 10.0.0.61/10.0.0.61:2181. Will not attempt to authenticate using SASL (unknown error)
 17/07/27 17:52:50 INFO ClientCnxn: Socket connection established to 10.0.0.61/10.0.0.61:2181, initiating session
@@ -213,7 +213,7 @@ Exception in thread "main" java.lang.OutOfMemoryError: unable to create new nati
 1. 上述命令列出了群集的所有 Zookeeper
 
     ```bash
-    /etc/hadoop/conf/core-site.xml:      <value>zk1-hwxspa.lnuwp5akw5ie1j2gi2amtuuimc.dx.internal.cloudapp.net:2181,zk2-      hwxspa.lnuwp5akw5ie1j2gi2amtuuimc.dx.internal.cloudapp.net:2181,zk4-hwxspa.lnuwp5akw5ie1j2gi2amtuuimc.dx.internal.cloudapp.net:2181</value>
+    /etc/hadoop/conf/core-site.xml:      <value>zk1-hwxspa.lnuwp5akw5ie1j2gi2amtuuimc.dx.internal.chinacloudapp.cn:2181,zk2-      hwxspa.lnuwp5akw5ie1j2gi2amtuuimc.dx.internal.chinacloudapp.cn:2181,zk4-hwxspa.lnuwp5akw5ie1j2gi2amtuuimc.dx.internal.chinacloudapp.cn:2181</value>
     ```
 
 1. 使用 ping 获取 Zookeeper 节点的所有 IP 地址，或者使用 Zookeeper 名称从头节点连接到 Zookeeper

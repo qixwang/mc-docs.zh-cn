@@ -7,14 +7,14 @@ tags: keyvault
 ms.service: virtual-machines-linux
 ms.topic: article
 origin.date: 06/22/2020
-ms.date: 06/22/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 4bc1ba0f5d1d683e2ad17b1e443ea761ee280957
-ms.sourcegitcommit: 4d824957213536e79cf097fd29bd0bd0f8306066
+ms.openlocfilehash: 7dc1d315e455b3a498b39b9a7fb7878e0781e427
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84901927"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945553"
 ---
 <!--Verified successfully-->
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>适用于 Linux 的 Key Vault 虚拟机扩展

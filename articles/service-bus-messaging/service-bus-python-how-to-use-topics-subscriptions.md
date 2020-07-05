@@ -15,12 +15,12 @@ ms.topic: quickstart
 origin.date: 01/27/2020
 ms.date: 2/6/2020
 ms.author: v-lingwu
-ms.openlocfilehash: 36b5a7e5297ab9a2468db10fcd7ad494ecfd5ea6
-ms.sourcegitcommit: a04b0b1009b0c62f2deb7c7acee75a1304d98f87
+ms.openlocfilehash: 8028df6cdf92129026956f425777447e5b336ec4
+ms.sourcegitcommit: 4f84bba7e509a321b6f68a2da475027c539b8fd3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83796776"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85796215"
 ---
 # <a name="quickstart-use-service-bus-topics-and-subscriptions-with-python"></a>快速入门：通过 Python 使用服务总线主题和订阅
 
@@ -35,9 +35,9 @@ ms.locfileid: "83796776"
 - 删除主题和订阅
 
 ## <a name="prerequisites"></a>先决条件
-1. Azure 订阅。 若要完成本教程，需要一个 Azure 帐户。 你可以注册[试用帐户](https://www.azure.cn/pricing/1rmb-trial/)或[预付费](https://wd.azure.cn/pricing/pia-waiting-list/?form-type=identityauth)。
+1. Azure 订阅。 若要完成本教程，需要一个 Azure 帐户。 你可以注册[试用帐户](https://www.azure.cn/pricing/1rmb-trial/)或购买[预付费订阅](https://wd.azure.cn/pricing/pia-waiting-list/?form-type=identityauth)。
 - 遵循以下文章中的步骤创建的服务总线命名空间：[快速入门：使用 Azure 门户创建服务总线主题和订阅](service-bus-quickstart-topics-subscriptions-portal.md)。 复制“共享访问策略”屏幕中的命名空间名称、共享访问密钥名称和主密钥值，以便稍后在本快速入门中使用。 
-- 装有 [Azure Python SDK][Azure Python package] 包的 Python 3.4x 或更高版本。 有关详细信息，请参阅 [Python 安装指南](/azure/python/python-sdk-azure-install)。
+- 装有 [Azure Python SDK][Azure Python package] 包的 Python 3.4x 或更高版本。<!-- delete invalid link -->
 
 ## <a name="create-a-servicebusservice-object"></a>创建 ServiceBusService 对象
 
@@ -133,9 +133,9 @@ for i in range(5):
 
 ### <a name="message-size-limits-and-quotas"></a>消息大小限制和配额
 
-服务总线主题在[标准层](service-bus-premium-messaging.md)中支持的最大消息大小为 256 KB，在[高级层](service-bus-premium-messaging.md)中则为 1 MB。 标头最大大小为 64 KB，其中包括标准和自定义应用程序属性。 主题中可以包含的消息数量不受限制，但主题包含的消息总大小有上限。 可以在创建时定义主题大小，上限为 5 GB。 
+服务总线主题在[标准层](service-bus-premium-messaging.md)中支持的最大消息容量为 256 KB，在[高级层](service-bus-premium-messaging.md)中则为 1 MB。 标头最大大小为 64 KB，其中包括标准和自定义应用程序属性。 主题中可以包含的消息数量不受限制，但主题包含的消息总大小有上限。 可以在创建时定义主题大小，上限为 5 GB。 
 
-有关配额的详细信息，请参阅 [服务总线配额][Service Bus quotas]。
+有关配额的详细信息，请参阅[服务总线配额][Service Bus quotas]。
 
 ## <a name="receive-messages-from-a-subscription"></a>从订阅接收消息
 
@@ -163,7 +163,7 @@ if msg.body is not None:
 
 ## <a name="handle-application-crashes-and-unreadable-messages"></a>处理应用程序崩溃和不可读消息
 
-Service Bus 提供了相关功能来帮助你轻松地从应用程序错误或消息处理问题中恢复。 如果接收方应用程序因某种原因无法处理消息，则可对 **Message** 对象调用 `unlock` 方法。 服务总线解锁订阅中的消息，并使其能够重新被同一个或另一个使用方应用程序接收。
+服务总线提供了相关功能，帮助你轻松地从应用程序错误或消息处理问题中恢复。 如果接收方应用程序因某种原因无法处理消息，则可对 **Message** 对象调用 `unlock` 方法。 服务总线解锁订阅中的消息，并使其能够重新被同一个或另一个使用方应用程序接收。
 
 订阅中锁定的消息还存在超时。 如果应用程序无法在锁定超时期满前处理消息（例如，如果应用程序崩溃），服务总线会自动解锁消息，让它再次可供接收。
 

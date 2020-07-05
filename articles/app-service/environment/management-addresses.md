@@ -4,16 +4,16 @@ description: 查找用于控制应用服务环境的管理地址。 在路由表
 author: ccompy
 ms.assetid: a7738a24-89ef-43d3-bff1-77f43d5a3952
 ms.topic: article
-origin.date: 11/13/2019
-ms.date: 05/22/2020
+origin.date: 05/10/2020
+ms.date: 06/22/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: a4395f7db7d09e675bb4f8aa7ad3ac4b461f17f4
-ms.sourcegitcommit: 981a75a78f8cf74ab5a76f9e6b0dc5978387be4b
+ms.openlocfilehash: f269a8882516dc1245b75edb268c1d33d352d7a6
+ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83801279"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85613329"
 ---
 # <a name="app-service-environment-management-addresses"></a>应用服务环境管理地址
 

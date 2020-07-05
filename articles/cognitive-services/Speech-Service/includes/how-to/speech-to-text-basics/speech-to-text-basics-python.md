@@ -3,14 +3,14 @@ author: trevorbye
 ms.service: cognitive-services
 ms.topic: include
 origin.date: 03/11/2020
-ms.date: 04/20/2020
+ms.date: 06/19/2020
 ms.author: v-tawe
-ms.openlocfilehash: 30f70cd9d4f2afa5eea5af9cac1682060e9e9ec5
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.openlocfilehash: 460695f093473f0493601e80898671967b980fae
+ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82126766"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85613388"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -107,7 +107,7 @@ speech_recognizer = speechsdk.SpeechRecognizer(speech_config=speech_config, audi
 result = speech_recognizer.recognize_once()
 ```
 
-下面是使用 [`recognize_once_async()`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.recognizer?view=azure-python#recognize-once-async------azure-cognitiveservices-speech-resultfuture) 进行同步单步识别的示例：
+下面是使用 [`recognize_once_async()`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.recognizer?view=azure-python#recognize-once-async------azure-cognitiveservices-speech-resultfuture) 进行异步单步识别的示例：
 
 ```Python
 result = speech_recognizer.recognize_once_async()

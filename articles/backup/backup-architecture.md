@@ -7,12 +7,12 @@ ms.topic: conceptual
 origin.date: 02/19/2019
 ms.date: 12/04/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 70124455229253d221682f809fdc66ca043bd283
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 518d538f5c17e33aec357f4d4bf6745b0a09c48c
+ms.sourcegitcommit: 372899a2a21794e631eda1c6a11b4fd5c38751d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79291468"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85852010"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Azure 备份体系结构和组件 <a name="architecture-built-in-azure-vm-backup"></a>
 
@@ -220,7 +220,6 @@ Azure VM 使用磁盘来存储其操作系统、应用和数据。 每个 Azure 
   - [备份 Azure VM](backup-azure-arm-vms-prepare.md)。
   - 不使用备份服务器[直接备份 Windows 计算机](tutorial-backup-windows-server-to-azure.md)。
   - [设置 MABS](backup-azure-microsoft-azure-backup.md) 以备份到 Azure，然后将工作负荷备份到 MABS。
-  - [设置 DPM](backup-azure-dpm-introduction.md) 以备份到 Azure，然后将工作负荷备份到 DPM。
 
 [green]: ./media/backup-architecture/green.png
 [yellow]: ./media/backup-architecture/yellow.png

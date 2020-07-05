@@ -4,15 +4,15 @@ description: 使用 Azure Monitor 监视 Azure 备份工作负荷及创建自定
 ms.topic: conceptual
 author: Johnnytechn
 origin.date: 06/04/2019
-ms.date: 06/09/2020
+ms.date: 06/22/2020
 ms.author: v-johya
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: ffff17a43865c26d471288fd58797135f24161ee
-ms.sourcegitcommit: 285649db9b21169f3136729c041e4d04d323229a
+ms.openlocfilehash: 9b020a3889529b41a7c6cc58137c41ba83d4ea9c
+ms.sourcegitcommit: 372899a2a21794e631eda1c6a11b4fd5c38751d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84683998"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851981"
 ---
 # <a name="monitor-at-scale-by-using-azure-monitor"></a>使用 Azure Monitor 进行大规模监视
 
@@ -48,6 +48,9 @@ Azure 备份在恢复服务保管库中提供[内置的监视和警报功能](ba
 
 如果需要，可以编辑 Kusto 查询。 选择阈值、期限和频率。 阈值确定何时引发警报。 期限是运行查询的时间范围。 例如，如果阈值大于 0，期限为 5 分钟，频率为 5 分钟，那么，该规则将每隔 5 分钟运行一次查询，并检查前 5 分钟的数据。 如果结果数大于 0，则系统将通过所选的操作组通知你。
 
+> [!NOTE]
+> 若要为在给定日期创建的所有事件/日志每天运行一次预警规则，请将“时间范围”和“频率”值都更改为 1440（即 24小时）。
+
 #### <a name="alert-action-groups"></a>警报操作组
 
 使用操作组指定通知通道。 若要查看可用的通知机制，请在“操作组”下选择“新建”。**** ****
@@ -67,6 +70,7 @@ Azure 备份在恢复服务保管库中提供[内置的监视和警报功能](ba
     ````Kusto
     AddonAzureBackupJobs
     | where JobOperation=="Backup"
+    | summarize arg_max(TimeGenerated,*) by JobUniqueId
     | where JobStatus=="Completed"
     ````
 
@@ -75,6 +79,7 @@ Azure 备份在恢复服务保管库中提供[内置的监视和警报功能](ba
     ````Kusto
     AddonAzureBackupJobs
     | where JobOperation=="Backup"
+    | summarize arg_max(TimeGenerated,*) by JobUniqueId
     | where JobStatus=="Failed"
     ````
 
@@ -83,6 +88,7 @@ Azure 备份在恢复服务保管库中提供[内置的监视和警报功能](ba
     ````Kusto
     AddonAzureBackupJobs
     | where JobOperation=="Backup"
+    | summarize arg_max(TimeGenerated,*) by JobUniqueId
     | where JobStatus=="Completed"
     | join kind=inner
     (
@@ -99,6 +105,7 @@ Azure 备份在恢复服务保管库中提供[内置的监视和警报功能](ba
     ````Kusto
     AddonAzureBackupJobs
     | where JobOperation=="Backup" and JobOperationSubType=="Log"
+    | summarize arg_max(TimeGenerated,*) by JobUniqueId
     | where JobStatus=="Completed"
     | join kind=inner
     (
@@ -115,6 +122,7 @@ Azure 备份在恢复服务保管库中提供[内置的监视和警报功能](ba
     ````Kusto
     AddonAzureBackupJobs
     | where JobOperation=="Backup"
+    | summarize arg_max(TimeGenerated,*) by JobUniqueId
     | where JobStatus=="Completed"
     | join kind=inner
     (
@@ -164,8 +172,8 @@ Azure 备份在恢复服务保管库中提供[内置的监视和警报功能](ba
 还可以使用活动日志来获取事件通知，例如备份成功。 遵循以下步骤开始：
 
 1. 登录 Azure 门户。
-1. 打开相关的恢复服务保管库。
-1. 在保管库的属性中，打开“活动日志”部分。****
+2. 打开相关的恢复服务保管库。
+3. 在保管库的属性中，打开“活动日志”部分。****
 
 若要识别相应的日志并创建警报：
 
@@ -173,9 +181,9 @@ Azure 备份在恢复服务保管库中提供[内置的监视和警报功能](ba
 
    ![通过筛选找到 Azure VM 备份的活动日志](./media/backup-azure-monitoring-laworkspace/activitylogs-azurebackup-vmbackups.png)
 
-1. 选择操作名称以查看相关详细信息。
-1. 选择“新建警报规则”打开“创建规则”页。**** ****
-1. 遵循[使用 Azure Monitor 创建、查看和管理活动日志警报](/azure-monitor/platform/alerts-activity-log)中的步骤创建警报。
+2. 选择操作名称以查看相关详细信息。
+3. 选择“新建警报规则”打开“创建规则”页。**** ****
+4. 遵循[使用 Azure Monitor 创建、查看和管理活动日志警报](/azure-monitor/platform/alerts-activity-log)中的步骤创建警报。
 
    ![新建警报规则](./media/backup-azure-monitoring-laworkspace/new-alert-rule.png)
 

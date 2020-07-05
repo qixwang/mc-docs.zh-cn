@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: v-yiso
 origin.date: 07/29/2019
 ms.date: 10/28/2019
-ms.openlocfilehash: 894ba968a6f851cb4f7014094f50051a4e9aac6f
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: ab5b6c2d63e24ad78144d39aa7b9aaa793c03e3c
+ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "72583639"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85516575"
 ---
 # <a name="apache-spark-streaming-job-that-reads-apache-kafka-data-fails-with-noclassdeffounderror-in-hdinsight"></a>读取 Apache Kafka 数据的 Apache Spark 流式处理作业失败，在 HDInsight 中显示 NoClassDefFoundError
 
@@ -23,7 +23,7 @@ ms.locfileid: "72583639"
 Apache Spark 群集运行从 Apache Kafka 群集读取数据的 Spark 流式处理作业。 如果启用了 Kafka 流压缩，则 Spark 流式处理作业将会失败。 在这种情况下，由于出现错误，Spark 流式处理 Yarn 应用 application_1525986016285_0193 失败：
 
 ```
-18/05/17 20:01:33 WARN YarnAllocator: Container marked as failed: container_e25_1525986016285_0193_01_000032 on host: wn87-Scaled.2ajnsmlgqdsutaqydyzfzii3le.cx.internal.cloudapp.net. Exit status: 50. Diagnostics: Exception from container-launch.
+18/05/17 20:01:33 WARN YarnAllocator: Container marked as failed: container_e25_1525986016285_0193_01_000032 on host: wn87-Scaled.2ajnsmlgqdsutaqydyzfzii3le.cx.internal.chinacloudapp.cn. Exit status: 50. Diagnostics: Exception from container-launch.
 Container id: container_e25_1525986016285_0193_01_000032
 Exit code: 50
 Stack trace: ExitCodeException exitCode=50: 

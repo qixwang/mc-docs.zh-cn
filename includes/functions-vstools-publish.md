@@ -5,19 +5,19 @@ services: functions
 author: ggailey777
 ms.service: azure-functions
 ms.topic: include
-ms.date: 06/05/2020
+ms.date: 07/01/2020
 ms.author: v-junlch
 ms.custom: include file
-ms.openlocfilehash: 13553447287828e6741fd358b903480d1a452c59
-ms.sourcegitcommit: f1a76ee3242698123a3d77f44c860db040b48f70
+ms.openlocfilehash: 2613aba2533a955bb98ee7a52cc9039011d4beea
+ms.sourcegitcommit: 1008ad28745709e8d666f07a90e02a79dbbe2be5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84563773"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945263"
 ---
 1. **在“解决方案资源管理器”** 中，右键单击该项目并选择“发布”****。
 
-2. 在“选取发布目标”**** 中，使用下表中指定的发布选项： 
+1. 在“选取发布目标”**** 中，使用下表中指定的发布选项： 
 
     | 选项      | 说明                                |
     | ------------ |  -------------------------------------------------- |
@@ -25,12 +25,12 @@ ms.locfileid: "84563773"
     | **新建** | 在 Azure 中创建具有相关资源的新函数应用。 <br/>如果选择“选择现有”****，则 Azure 中现有函数应用中的所有文件都会被本地项目中的文件覆盖。 只有在将更新重新发布到现有函数应用时，才使用此选项。 |
     | **从包文件运行** | 启用[从包运行](../articles/azure-functions/run-functions-from-deployment-package.md)模式，函数应用将使用 [Zip 部署](../articles/azure-functions/functions-deployment-technologies.md#zip-deploy)进行部署。 此部署可以提高性能，建议通过它来运行函数。 <br/>如果不使用此选项，请确保在将函数应用项目发布到 Azure 之前，先停止其在本地的运行。 |
 
-    ![选取发布目标](./media/functions-vstools-publish/functions-visual-studio-publish-profile.png)
+    :::image type="content" source="media/functions-vstools-publish/functions-visual-studio-publish-profile.png" alt-text="创建发布配置文件":::
 
 
-3. 选择“创建配置文件”****。 如果尚未从 Visual Studio 登录到 Azure 帐户，请选择“登录”****。 也可以创建一个 Azure 帐户。
+1. 选择“创建配置文件”****。 如果尚未从 Visual Studio 登录到 Azure 帐户，请选择“登录”****。 也可以创建一个 Azure 帐户。
 
-4. 在“应用服务:**** 新建”中，使用下表中指定的值：
+1. 在“应用服务:**** 新建”中，使用下表中指定的值：
 
     | 设置      | Value  | 说明                                |
     | ------------ |  ------- | -------------------------------------------------- |
@@ -38,14 +38,20 @@ ms.locfileid: "84563773"
     | **订阅** | 你的订阅 | 要使用的 Azure 订阅。 接受此订阅，或从下拉列表中选择一个新订阅。 |
     | **[资源组](../articles/azure-resource-manager/management/overview.md)** | 资源组的名称 |  要在其中创建函数应用的资源组。 从下拉列表中选择现有资源组，或者选择“新建”来创建新的资源组。****|
     | **[托管计划](../articles/azure-functions/functions-scale.md)** | 托管计划的名称 | 选择“新建”即可配置一个无服务器计划。**** 确保在“大小”下选择“消耗量”。**** **** 将项目发布到在[消耗计划](../articles/azure-functions/functions-scale.md#consumption-plan)中运行的函数应用时，只需为函数应用的执行付费。 其他托管计划会产生更高的成本。 如果在“消耗”之外的计划中运行，则必须管理[函数应用的缩放](../articles/azure-functions/functions-scale.md)。****  |
-    | **位置** | 应用服务的位置 | 在靠近你或者靠近函数访问的其他服务的 `region` 中选择一个位置****。 |
+    | **位置** | 应用服务的位置 | 在靠近你或者靠近函数访问的其他服务的[区域](https://azure.microsoft.com/regions/)中选择一个**位置**。 |
     | **[Azure 存储](../articles/storage/common/storage-account-create.md)** | 常规用途存储帐户 | Functions 运行时需要 Azure 存储帐户。 选择“新建”即可配置常规用途存储帐户。**** 也可选择一个符合[存储帐户要求](../articles/azure-functions/functions-scale.md#storage-account-requirements)的现有帐户。  |
 
     ![“创建应用服务”对话框](./media/functions-vstools-publish/functions-visual-studio-publish.png)
 
-5. 选择“创建”****，使用这些设置在 Azure 中创建函数应用及其相关的资源，并部署函数项目代码。 
+1. 选择“创建”****，使用这些设置在 Azure 中创建函数应用及其相关的资源，并部署函数项目代码。 
 
-6. 选择“发布”，并且在完成部署后记下“站点 URL”**** 值，这是函数应用在 Azure 中的地址。
+1. 选择“发布”，然后等待部署完成。 
 
-    ![发布成功消息](./media/functions-vstools-publish/functions-visual-studio-publish-complete.png)
+    部署完成后，Azure 中函数应用的根 URL 将显示在“发布”选项卡中。 
+    
+1.  在“发布”选项卡中，请选择“在 Cloud Explorer 中管理”。 此操作会在 Cloud Explorer 中打开新的函数应用 Azure 资源。 
+    
+    :::image type="content" source="media/functions-vstools-publish/functions-visual-studio-publish-complete.png" alt-text="发布成功消息":::
+    
+    借助 Cloud Explorer，可使用 Visual Studio 来查看网站的内容，启动和停止函数应用，并直接浏览到 Azure 上和 Azure 门户中的函数应用资源。 
 

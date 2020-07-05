@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/18/2020
+ms.date: 06/28/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: b8a759bd5a3f82ae79098ce6177469933e81d4e9
-ms.sourcegitcommit: 87e789550ea49ff77c7f19bc68fad228009fcf44
+ms.openlocfilehash: c5a7edd4bfbb4bfe8154097e748fcc3c9ce7c7ee
+ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83748064"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85516525"
 ---
 # <a name="recommendations-and-best-practices-for-azure-active-directory-b2c"></a>适用于 Azure Active Directory B2C 的建议和最佳做法
 
@@ -24,7 +24,7 @@ ms.locfileid: "83748064"
 
 ## <a name="fundamentals"></a>基本
 
-|  |  |
+| 最佳做法 | 说明 |
 |--|--|
 | 选择大多数方案的用户流 | Azure AD B2C 的 Identity Experience Framework 是该服务的核心优势。 策略充分描述了标识体验，例如注册、登录或配置文件编辑。 为了帮助你设置最常见的标识任务，Azure AD B2C 门户中提供了称作“用户流”的预定义可配置策略。 使用用户流，只需按几下鼠标就能快速创建极佳的用户体验。 [了解用户流与自定义策略的使用时机](custom-policy-overview.md#comparing-user-flows-and-custom-policies)。|
 | 应用注册 | 必须在 Azure AD B2C 中注册每个要保护的应用程序（Web、本机）和 API。 如果应用具有 iOS 和 Android 的 Web 版与本机版，则你可以使用相同的客户端 ID 在 Azure AD B2C 中将其注册为一个应用程序。 了解如何[注册 OIDC、SAML、Web 和本机应用](/active-directory-b2c/tutorial-register-applications?tabs=applications)。 详细了解[可在 Azure AD B2C 中使用的应用程序类型](/active-directory-b2c/application-types)。 |
@@ -34,7 +34,7 @@ ms.locfileid: "83748064"
 
 定义应用程序和服务体系结构、盘点当前系统，并计划迁移到 Azure AD B2C。
 
-|  |  |
+| 最佳做法 | 说明 |
 |--|--|
 | 构建端到端解决方案 | 规划 Azure AD B2C 集成时，请考虑到应用程序的所有依赖项。 考虑环境中当前存在的或者可能需要添加到解决方案的所有服务和产品，例如 Azure Functions、客户关系管理 (CRM) 系统、Azure API 管理网关和存储服务。 考虑所有服务的安全性和可伸缩性。 |
 | 阐述用户体验 | 详细说明客户可以在应用程序中体验到的所有用户旅程。 包括客户在与应用程序的标识和配置文件交互时，可能会看到的每个屏幕和任何分支流。 在规划中包括可用性、可访问性和本地化。 |
@@ -49,7 +49,7 @@ ms.locfileid: "83748064"
 
 在实施阶段，请考虑以下建议。
 
-|  |  |
+| 最佳做法 | 说明 |
 |--|--|
 | 使用 Visual Studio Code 的 Azure AD B2C 扩展编辑自定义策略 | 从 [Visual Studio Code 市场](https://marketplace.visualstudio.com/items?itemName=AzureADB2CTools.aadb2c)下载 Visual Studio Code 以及社区开发的此扩展。 尽管 Visual Studio Code 的 Azure AD B2C 扩展不是 Microsoft 官方产品，但其中的多项功能可帮助简化自定义策略的处理。 |
 | 了解如何排查 Azure AD B2C 问题 | 了解如何在开发期间[排查自定义策略问题](/active-directory-b2c/troubleshoot-custom-policies?tabs=applications)。 了解常规身份验证流的大致形式，并使用相应的工具来发现异常和错误。 |
@@ -60,7 +60,7 @@ ms.locfileid: "83748064"
 
 测试并自动化 Azure AD B2C 的实施。
 
-|  |  |
+| 最佳做法 | 说明 |
 |--|--|
 | 考虑全局流量 | 使用来自不同全局地址的流量源来测试性能和本地化要求。 确保所有 HTMLs、CSS 和依赖项符合性能需求。 |
 | 功能和 UI 测试 | 测试端到端的用户流。 使用 Selenium、VS Web Test 等工具每隔几分钟添加一次综合测试。 |
@@ -74,7 +74,7 @@ ms.locfileid: "83748064"
 
 管理 Azure AD B2C 环境。
 
-|  |  |
+| 最佳做法 | 说明 |
 |--|--|
 | 创建多个环境 | 为了更轻松地实施操作和部署，请创建单独的环境用于开发、测试、预生产和生产。 为每个环境创建 Azure AD B2C 租户。 |
 | 对自定义策略使用版本控制 | 考虑对 Azure AD B2C 自定义策略使用 GitHub、Azure Repos 或其他基于云的版本控制系统。 |
@@ -87,7 +87,7 @@ ms.locfileid: "83748064"
 
 随时关注服务状态并查找支持选项。
 
-|  |  |
+| 最佳做法 | 说明 |
 |--|--|
 | [服务更新](https://azure.microsoft.com/updates/?product=active-directory-b2c) |  随时关注 Azure AD B2C 产品更新和公告。 |
 | [Microsoft 支持部门](support-options.md) | 遇到 Azure AD B2C 技术问题时请提出支持请求。 计费和订阅管理支持免费提供。 |

@@ -9,13 +9,13 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.custom: subject-armqs
 origin.date: 03/20/2020
-ms.date: 03/20/2020
-ms.openlocfilehash: b899f4d3a4d67716ab2d7d7a57c821c52b73c79f
-ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
+ms.date: 07/02/2020
+ms.openlocfilehash: 32911b5fe236d678ec5953096234216749261862
+ms.sourcegitcommit: 5afd7c4c3be9b80c4c67ec55f66fcf347aad74c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82588957"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85942500"
 ---
 # <a name="quickstart-deploy-cognitive-search-using-a-resource-manager-template"></a>快速入门：使用资源管理器模板部署认知搜索
 
@@ -31,7 +31,7 @@ ms.locfileid: "82588957"
 
 ### <a name="review-the-template"></a>查看模板
 
-本快速入门中使用的模板取自 [Azure 模板](https://docs.microsoft.com/azure/templates/Microsoft.Search/2015-08-19/searchservices)。
+本快速入门中使用的模板来自 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/101-azure-search-create/)。
 
 ```json
 {
@@ -130,7 +130,7 @@ ms.locfileid: "82588957"
 
 选择下图登录到 Azure 并打开一个模板。 该模板将创建一个 Azure 认知搜索资源。
 
-[![部署到 Azure](./media/search-get-started-arm/arm-deploybuttona.png)](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure%2Fazure-quickstart-templates%2Fmaster%2F101-azure-search-create%2Fazuredeploy.json)
+[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure%2Fazure-quickstart-templates%2Fmaster%2F101-azure-search-create%2Fazuredeploy.json)
 
 门户将显示一个窗体，可在其中轻松提供参数值。 某些参数已由模板中的默认值预先填充。 需要提供自己的订阅、资源组、位置和服务名称。 若要在 [AI 扩充](https://docs.azure.cn/search/cognitive-search-concept-intro)管道中使用认知服务（例如，要分析文本的二进制图像文件），请选择同时提供认知搜索和认知服务的位置。 对于 AI 扩充工作负载，这两个服务必须位于同一区域。 填写窗体后，需要同意条款和条件，然后选择“购买”按钮以完成部署。
 

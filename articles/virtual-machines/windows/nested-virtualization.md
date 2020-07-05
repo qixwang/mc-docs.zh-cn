@@ -1,23 +1,19 @@
 ---
 title: 如何在 Azure VM 中启用嵌套虚拟化
 description: 如何在 Azure 虚拟机中启用嵌套虚拟化
-services: virtual-machines-windows
-documentationcenter: virtual-machines
 author: rockboyfor
-manager: digimobile
 origin.date: 10/09/2017
-ms.date: 04/27/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: virtual-machines-windows
-ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.openlocfilehash: f84dd6a37187e5f66d5618b088c898eb5a6b32c3
-ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
+ms.openlocfilehash: ccb636b885af68d3d60f795033676360b4ffb742
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83392391"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85946036"
 ---
 # <a name="how-to-enable-nested-virtualization-in-an-azure-vm"></a>如何在 Azure VM 中启用嵌套虚拟化
 
@@ -31,7 +27,9 @@ ms.locfileid: "83392391"
 
 请记住选择足够大的 VM 大小来支持来宾虚拟机的需求。 在此示例中，我们将使用 D3_v3 大小的 Azure VM。 
 
-可以在[此处](https://status.azure.com/status/)查看 Dv3 或 Ev3 系列虚拟机的区域可用性。
+可以在[此处](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines)查看 Dv3 或 Ev3 系列虚拟机的区域可用性。
+
+<!--CORRECT THE URL OF https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines-->
 
 >[!NOTE]
 >

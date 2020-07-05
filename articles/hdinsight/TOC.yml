@@ -19,8 +19,6 @@
           href: ./hdinsight-administer-use-powershell.md
         - name: 使用 Runbook 创建群集
           href: ./manage-clusters-runbooks.md
-        - name: Apache Ambari 电子邮件通知
-          href: ./apache-ambari-email.md
         - name: 构建 ETL 管道
           href: ./hdinsight-sales-insights-etl.md
     - name: 示例
@@ -117,8 +115,6 @@
               href: ./use-scp.md
             - name: 限制数据访问
               href: hdinsight-storage-sharedaccesssignature-permissions.md
-            - name: 授权用户访问 Apache Ambari 视图
-              href: hdinsight-authorize-users-to-ambari.md
         - name: 迁移
           items:
             - name: 动机和权益
@@ -209,12 +205,16 @@
               href: ./cluster-availability-monitor-logs.md
         - name: 故障排除
           items:
+            - name: CPU 核心配额增加请求
+              href: ./quota-increase-request.md
             - name: 排查脚本操作问题
               href: ./troubleshoot-script-action.md
             - name: 资源创建失败
               href: ./troubleshoot-resource-creation-fails.md
             - name: 排查 Apache Oozie 故障
               href: ./troubleshoot-oozie.md
+            - name: 了解和解决 WebHCat 错误
+              href: ./hdinsight-hadoop-templeton-webhcat-debug-errors.md
     - name: 参考
       items:
         - name: Azure PowerShell
@@ -257,10 +257,8 @@
           href: ./hdinsight-hadoop-access-yarn-app-logs-linux.md
         - name: 为 Apache Hadoop 服务启用堆转储
           href: ./hdinsight-hadoop-collect-debug-heap-dump-linux.md
-        - name: 了解和解决 WebHCat 错误
-          href: ./hdinsight-hadoop-templeton-webhcat-debug-errors.md
-        - name: 在论坛上获取帮助
-          href: 'https://social.msdn.microsoft.com/forums/azure/home?forum=hdinsight'
+        - name: 在 Microsoft Q&A 问题页面上获取帮助
+          href: 'https://docs.microsoft.com/answers/topics/azure-hdinsight.html'
         - name: 定价计算器
           href: 'https://www.azure.cn/pricing/calculator/'
         - name: 适用于 HDInsight 的 Windows 工具
@@ -279,7 +277,8 @@
           href: ./spark/apache-spark-jupyter-spark-sql-use-powershell.md
         - name: 创建 Apache Spark 群集 - Azure CLI
           href: ./spark/apache-spark-create-cluster-cli.md
-        - name: 创建 Apache Spark 群集 - 模板
+        - name: 创建 Apache Spark 群集 - ARM 模板
+          displayName: Resource Manager
           href: ./spark/apache-spark-jupyter-spark-sql.md
     - name: 教程
       items:
@@ -299,8 +298,20 @@
           href: ./spark/spark-best-practices.md
         - name: 配置 Apache Spark 设置
           href: ./spark/apache-spark-settings.md
-        - name: 优化 Apache Spark 作业
-          href: ./spark/apache-spark-perf.md
+        - name: 优化
+          items:
+            - name: 优化 Apache Spark 作业
+              href: ./spark/apache-spark-perf.md
+            - name: 优化数据处理
+              href: ./spark/optimize-data-processing.md
+            - name: 优化数据存储
+              href: ./spark/optimize-data-storage.md
+            - name: 优化内存使用率
+              href: ./spark/optimize-memory-usage.md
+            - name: 优化群集配置
+              href: ./spark/optimize-cluster-configuration.md
+        - name: 迁移到 Spark 2.3 或 2.4
+          href: ./spark/migrate-versions.md
     - name: 如何
       items:
         - name: 使用工具
@@ -456,7 +467,7 @@
                   href: ./hadoop/apache-hadoop-run-samples-linux.md
                 - name: 运行自定义 Apache Hadoop MapReduce 程序
                   href: ./hadoop/apache-hadoop-run-custom-programs.md
-                - name: '开发 C# 流式处理 MapReduce 程序'
+                - name: 开发 C# 流式处理 MapReduce 程序
                   href: ./hadoop/apache-hadoop-dotnet-csharp-mapreduce-streaming.md
                 - name: 开发 Java MapReduce 程序
                   href: ./hadoop/apache-hadoop-develop-deploy-java-mapreduce-linux.md
@@ -703,22 +714,30 @@
       items:
         - name: 网关最佳做法
           href: ./interactive-query/gateway-best-practices.md
+        - name: 调整指导原则大小
+          href: ./interactive-query/sizing-guidelines.md
     - name: 如何
       items:
         - name: 开发
           items:
             - name: 处理和分析 JSON 文档
               href: ./hadoop/using-json-in-hive.md
-            - name: '使用 C# 用户定义的函数'
+            - name: 使用 C# 用户定义的函数
               href: ./hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md
             - name: 将 Python 与 Apache Hive 和 Apache Pig 配合使用
               href: ./hadoop/python-udf-hdinsight.md
-            - name: 将 Apache Hive 与 Apache Spark 配合使用
+            - name: 将 HWC 与 Apache Spark 和 Apache Hive 集成
               href: ./interactive-query/apache-hive-warehouse-connector.md
+            - name: HWC 和 Apache Spark 操作
+              href: ./interactive-query/apache-hive-warehouse-connector-operations.md
+            - name: 将 HWC 与 Apache Zeppelin 集成
+              href: ./interactive-query/apache-hive-warehouse-connector-zeppelin.md
             - name: 将 Apache Hive 与 Hadoop 配合使用
               href: ./hadoop/hdinsight-use-hive.md
             - name: 使用 Apache Hive 视图
               href: ./hadoop/apache-hadoop-use-hive-ambari-view.md
+            - name: 连接到 Apache Beeline
+              href: ./hadoop/connect-install-beeline.md
             - name: 使用 Apache Hive Beeline
               href: ./hadoop/apache-hadoop-use-hive-beeline.md
             - name: 使用 Grafana
@@ -747,6 +766,8 @@
               href: ./hdinsight-hadoop-hive-out-of-memory-error-oom.md
             - name: Apache Tez 应用程序挂起
               href: ./interactive-query/interactive-query-troubleshoot-tez-hangs.md
+            - name: Apache Hive LLAP 大小调整指南
+              href: ./interactive-query/hive-llap-sizing-guide.md
             - name: Apache Hive LLAP 查询性能
               href: ./interactive-query/interactive-query-troubleshoot-query-performance.md
             - name: 减速器运行速度缓慢
@@ -797,7 +818,7 @@
                   href: ./storm/apache-storm-develop-java-topology.md
                 - name: 使用 Python 开发拓扑
                   href: ./storm/apache-storm-develop-python-topology.md
-                - name: '使用 C# 开发拓扑'
+                - name: 使用 C# 开发拓扑
                   href: ./storm/apache-storm-develop-csharp-visual-studio-topology.md
                 - name: SCP.NET 编程指南
                   href: ./storm/apache-storm-scp-programming-guide.md
@@ -805,7 +826,7 @@
                   href: ./storm/apache-storm-example-topology.md
             - name: 流式处理管道
               items:
-                - name: '事件中心和 Apache Storm（C# 和 Java）'
+                - name: 事件中心和 Apache Storm（C# 和 Java）
                   href: ./storm/apache-storm-develop-csharp-event-hub-topology.md
         - name: 管理
           items:

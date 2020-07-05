@@ -6,12 +6,12 @@ origin.date: 05/24/2018
 ms.date: 06/28/2018
 ms.author: v-lingwu
 ms.custom: ''
-ms.openlocfilehash: 8d6cf48ce3e64c4c6b8e1adda386c6457c04ad05
-ms.sourcegitcommit: cbaa1aef101f67bd094f6ad0b4be274bbc2d2537
+ms.openlocfilehash: 27afa069edc9202936263a59ffcaf0457a6ccc5f
+ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84126723"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85611871"
 ---
 # <a name="use-an-azure-file-share-with-a-batch-pool"></a>将 Batch 池与 Azure 文件共享配合使用
 
@@ -139,17 +139,18 @@ mount -t cifs //mystorageaccountname.file.core.chinacloudapi.cn/myfileshare /mnt
 ```python
 pool = batch.models.PoolAddParameter(
     id=pool_id,
-    virtual_machine_configuration = batchmodels.VirtualMachineConfiguration(
-        image_reference = batchmodels.ImageReference(
+    virtual_machine_configuration=batchmodels.VirtualMachineConfiguration(
+        image_reference=batchmodels.ImageReference(
             publisher="Canonical",
             offer="UbuntuServer",
             sku="16.04.0-LTS",
             version="latest"),
-        node_agent_sku_id = "batch.node.ubuntu 16.04"),
+        node_agent_sku_id="batch.node.ubuntu 16.04"),
     vm_size=_POOL_VM_SIZE,
     target_dedicated_nodes=_POOL_NODE_COUNT,
     start_task=batchmodels.StartTask(
         command_line="/bin/bash -c \"apt-get update && apt-get install cifs-utils && mkdir -p {} && mount -t cifs {} {} -o vers=3.0,username={},password={},dir_mode=0777,file_mode=0777,serverino\"".format(_COMPUTE_NODE_MOUNT_POINT, _STORAGE_ACCOUNT_SHARE_ENDPOINT, _COMPUTE_NODE_MOUNT_POINT, _STORAGE_ACCOUNT_NAME, _STORAGE_ACCOUNT_KEY),
+            _COMPUTE_NODE_MOUNT_POINT, _STORAGE_ACCOUNT_SHARE_ENDPOINT, _COMPUTE_NODE_MOUNT_POINT, _STORAGE_ACCOUNT_NAME, _STORAGE_ACCOUNT_KEY),
         wait_for_success=True,
         user_identity=batchmodels.UserIdentity(
             auto_user=batchmodels.AutoUserSpecification(
@@ -174,7 +175,5 @@ batch_service_client.task.add(job_id, task)
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关 Batch 中用于读取和写入数据的其他选项，请参阅 [Batch 功能概述](batch-api-basics.md)及[保存作业和任务的输出](batch-task-output.md)。
-
-- 另请参阅 [Batch Shipyard](https://github.com/Azure/batch-shipyard) 工具包，其中包含用于部署 Batch 容器工作负荷文件系统的 [Shipyard 脚本](https://github.com/Azure/batch-shipyard/tree/master/recipes)。
-
+* 有关 Batch 中用于读取和写入数据的其他选项，请参阅[保存作业和任务的输出](batch-task-output.md)。
+* 另请参阅 [Batch Shipyard](https://github.com/Azure/batch-shipyard) 工具包，其中包含用于部署 Batch 容器工作负荷文件系统的 [Shipyard 脚本](https://github.com/Azure/batch-shipyard/tree/master/recipes)。

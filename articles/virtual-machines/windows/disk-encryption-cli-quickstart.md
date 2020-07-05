@@ -2,17 +2,18 @@
 title: 使用 Azure CLI 创建和加密 Windows VM
 description: 本快速入门介绍如何使用 Azure CLI 创建和加密 Windows 虚拟机
 author: rockboyfor
-ms.author: v-yeche
-ms.service: security
+ms.service: virtual-machines-windows
+ms.subservice: security
 ms.topic: quickstart
 origin.date: 05/17/2019
-ms.date: 11/11/2019
-ms.openlocfilehash: 808c4856316bd8dd46d5ecba04509568696594e5
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 07/06/2020
+ms.author: v-yeche
+ms.openlocfilehash: b5e563e5b5780036ad0f83ed74db5674857218b6
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "73730682"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85946012"
 ---
 # <a name="quickstart-create-and-encrypt-a-windows-vm-with-the-azure-cli"></a>快速入门：使用 Azure CLI 创建和加密 Windows VM
 
@@ -22,11 +23,11 @@ Azure CLI 用于从命令行或脚本创建和管理 Azure 资源。 本快速�
 
 [!INCLUDE [azure-cli-2-azurechinacloud-environment-parameter](../../../includes/azure-cli-2-azurechinacloud-environment-parameter.md)]
 
-如果选择在本地安装并使用 CLI，本快速入门要求运行 Azure CLI 2.0.30 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest)。
+如果选择在本地安装并使用 Azure CLI，本快速入门要求运行 Azure CLI 2.0.30 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest)。
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-使用 [az group create](https://docs.azure.cn/cli/group?view=azure-cli-latest#az-group-create) 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 以下示例在“chinaeast”  位置创建名为“myResourceGroup”  的资源组：
+使用 [az group create](https://docs.azure.cn/cli/group?view=azure-cli-latest#az-group-create) 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 以下示例在“chinaeast”位置创建名为“myResourceGroup”的资源组：
 
 ```azurecli
 az group create --name myResourceGroup --location chinaeast
@@ -34,7 +35,7 @@ az group create --name myResourceGroup --location chinaeast
 
 ## <a name="create-a-virtual-machine"></a>创建虚拟机
 
-使用 [az vm create](https://docs.azure.cn/cli/vm?view=azure-cli-latest#az-vm-create) 创建 VM。 以下示例创建一个名为 myVM  的 VM。 此示例使用 azureuser  作为管理用户名，使用 myPassword12  作为密码。 
+使用 [az vm create](https://docs.azure.cn/cli/vm?view=azure-cli-latest#az-vm-create) 创建 VM。 以下示例创建一个名为 myVM 的 VM。 此示例使用 azureuser 作为管理用户名，使用 myPassword12 作为密码。
 
 ```azurecli
 az vm create \
@@ -64,7 +65,7 @@ az vm create \
 
 Azure 磁盘加密将其加密密钥存储在 Azure 密钥保管库中。 使用 [az keyvault create](https://docs.azure.cn/cli/keyvault?view=azure-cli-latest#az-keyvault-create) 创建密钥保管库。 要使密钥保管库能够存储加密密钥，请使用 --enabled-for-disk-encryption 参数。
 > [!Important]
-> 每个密钥保管库必须具有唯一的名称。 以下示例创建名为“myKV”  的密钥保管库，但你必须将其命名为不同的名称。
+> 每个密钥保管库必须具有唯一的名称。 以下示例创建名为“myKV”的密钥保管库，但你必须将其命名为不同的名称。
 
 ```azurecli
 az keyvault create --name "myKV" --resource-group "myResourceGroup" --location chinaeast --enabled-for-disk-encryption
@@ -92,7 +93,7 @@ az vm show --name MyVM -g MyResourceGroup
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不再需要资源组、VM 和密钥保管库，可以使用 [az group delete](https://docs.azure.cn/cli/group?view=azure-cli-latest#az-group-delete) 命令将其删除。 
+如果不再需要资源组、VM 和密钥保管库，可以使用 [az group delete](https://docs.azure.cn/cli/group?view=azure-cli-latest#az-group-delete) 命令将其删除。
 
 ```azurecli
 az group delete --name myResourceGroup
@@ -105,5 +106,4 @@ az group delete --name myResourceGroup
 > [!div class="nextstepaction"]
 > [Azure 磁盘加密概述](disk-encryption-overview.md)
 
-<!--Update_Description: new articles on disk encryption cli quickstart -->
-<!--New.date: 11/11/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

@@ -1,26 +1,26 @@
 ---
-title: 使用 Azure 虚拟机修复命令修复 Linux VM | Azure
+title: 使用 Azure 虚拟机修复命令修复 Linux VM
 description: 本文详细介绍如何使用 Azure 虚拟机修复命令将磁盘连接到另一个 Linux VM 来修复所有错误，然后重新生成原始 VM。
 services: virtual-machines-linux
 documentationcenter: ''
 author: rockboyfor
 manager: digimobile
 editor: ''
-tags: ''
+tags: virtual-machines
 ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 origin.date: 09/10/2019
-ms.date: 11/11/2019
+ms.date: 07/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: d14120c72d392993140ceb9ecd1dc6dd67bd7950
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 0b17cbc2408fa4922ee1b559e777935411ff8bf5
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "73730733"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85946048"
 ---
 # <a name="repair-a-linux-vm-by-using-the-azure-virtual-machine-repair-commands"></a>使用 Azure 虚拟机修复命令修复 Linux VM
 
@@ -41,7 +41,7 @@ ms.locfileid: "73730733"
 4. 执行缓解步骤
 5. 运行 az vm repair restore
 
-有关其他文档和说明，请参阅 [az vm repair](https://docs.azure.cn/cli/ext/vm-repair/vm/repair?view=azure-cli-latest#az-vm-repair)。
+有关其他文档和说明，请参阅 [az vm repair](https://docs.microsoft.com/cli/azure/ext/vm-repair/vm/repair?view=azure-cli-latest#az-vm-repair)。
 
 ## <a name="repair-process-example"></a>修复过程示例
 
@@ -65,7 +65,7 @@ ms.locfileid: "73730733"
     az extension update -n vm-repair
     ```
 
-3. 运行 `az vm repair create`。 此命令将为无法运行的 VM 创建 OS 磁盘的副本，创建修复 VM 并附加磁盘。
+3. 运行 `az vm repair create`。 此命令将为非功能性 VM 创建 OS 磁盘的副本，在新资源组中创建修复 VM，并附加 OS 磁盘副本。  修复 VM 的大小和区域将与指定的非功能性 VM 相同。 所有步骤中使用的资源组和 VM 名称都将用于非功能性 VM。
 
     ```azurecli
     az vm repair create -g MyResourceGroup -n myVM --repair-username username --repair-password password!234 --verbose
@@ -73,7 +73,7 @@ ms.locfileid: "73730733"
 
 4. 在创建的修复 VM 上执行任何所需的缓解步骤，然后继续执行步骤 5。
 
-5. 运行 `az vm repair restore`。 此命令会将已修复的 OS 磁盘与 VM 的原始 OS 磁盘交换。
+5. 运行 `az vm repair restore`。 此命令会将已修复的 OS 磁盘与 VM 的原始 OS 磁盘交换。 此处使用的资源组和 VM 名称适用于第 3 步中使用的非功能性 VM。
 
     ```azurecli
     az vm repair restore -g MyResourceGroup -n MyVM --verbose
@@ -93,7 +93,7 @@ az vm boot-diagnostics enable --name myVMDeployed --resource-group myResourceGro
 
 * 如果在连接到 VM 时遇到问题，请参阅[对 Azure 虚拟机的 RDP 连接进行故障排除](/virtual-machines/troubleshooting/troubleshoot-rdp-connection)。
 * 如果在访问 VM 上运行的应用程序时遇到问题，请参阅[排查 Azure 中虚拟机上的应用程序连接问题](/virtual-machines/troubleshooting/troubleshoot-app-connection)。
-* 有关资源组的详细信息，请参阅 [Azure 资源管理器概述](/azure-resource-manager/resource-group-overview)。
+* 有关使用 Resource Manager 的详细信息，请参阅 [Azure Resource Manager 概述](/azure-resource-manager/resource-group-overview)。
 
 <!--Update_Description: new articles on repair linux vm using repair commands -->
 <!--New.date: 11/11/2019-->

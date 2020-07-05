@@ -1,22 +1,20 @@
 ---
 title: 请于 2023 年 3 月 1 日之前将 IaaS 资源迁移到 Azure 资源管理器
 description: 本文概述了经典 VM 停用
-services: virtual-machines
 author: rockboyfor
 manager: digimobile
 ms.service: virtual-machines
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
 ms.topic: article
 origin.date: 02/10/2020
-ms.date: 04/27/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: b0175424a2a7832286cb1e91b9f99583997facb2
-ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
+ms.openlocfilehash: ecc165bd904c565249f6c704e44f51cec10ab146
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83392383"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945878"
 ---
 # <a name="migrate-your-iaas-resources-to-azure-resource-manager-by-march-1-2023"></a>请于 2023 年 3 月 1 日之前将 IaaS 资源迁移到 Azure 资源管理器 
 

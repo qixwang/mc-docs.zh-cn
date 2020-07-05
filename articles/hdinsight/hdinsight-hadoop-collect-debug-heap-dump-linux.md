@@ -17,12 +17,12 @@ ms.topic: conceptual
 origin.date: 01/02/2020
 ms.date: 02/24/2020
 ms.author: v-yiso
-ms.openlocfilehash: 131a19d6531f28e7fd82e3b4de6ceaf5ecbb0fbd
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 8203731b97b834f8739bbce8ded48b543990429a
+ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77428808"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85516572"
 ---
 # <a name="enable-heap-dumps-for-apache-hadoop-services-on-linux-based-hdinsight"></a>在基于 Linux 的 HDInsight 上为 Apache Hadoop 服务启用堆转储
 
@@ -90,7 +90,7 @@ ms.locfileid: "77428808"
 
 若要修改服务配置，请使用以下步骤：
 
-1. 在 Web 浏览器中导航到 `https://CLUSTERNAME.azurehdinsight.net`，其中的 `CLUSTERNAME` 是群集的名称。
+1. 在 Web 浏览器中导航到 `https://CLUSTERNAME.azurehdinsight.cn`，其中的 `CLUSTERNAME` 是群集的名称。
 
 2. 使用左侧的列表，选择你想要修改的服务区。 例如，**HDFS**。 在中心区域，选择“配置”  选项卡。
 

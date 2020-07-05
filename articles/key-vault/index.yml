@@ -13,13 +13,13 @@ metadata:
   author: msmbaldwin
   ms.author: v-tawe
   origin.date: 04/07/2020
-  ms.date: 06/02/2020
-  ms.openlocfilehash: f8d774221491bc1c0b57f75da9d1e8dfc4156fce
-  ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
+  ms.date: 07/01/2020
+  ms.openlocfilehash: fe5c435b3114a2e708ef6437160660107f815268
+  ms.sourcegitcommit: 4f84bba7e509a321b6f68a2da475027c539b8fd3
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 06/02/2020
-  ms.locfileid: "84275316"
+  ms.lasthandoff: 07/01/2020
+  ms.locfileid: "85796299"
 highlightedContent:
   items:
   - title: Azure Key Vault 简介
@@ -112,3 +112,17 @@ conceptualContent:
     - url: ../virtual-machines/linux/disk-encryption-key-vault.md
       itemType: overview
       text: 将 Key Vault 与 Azure 磁盘加密配合使用 - Linux
+  - title: Key Vault 集成
+    links:
+    - url: ../app-service/app-service-key-vault-references.md
+      itemType: overview
+      text: 应用服务 - 在应用服务中引用 Key Vault 机密
+    - url: ../app-service/configure-ssl-certificate.md
+      itemType: overview
+      text: 应用服务 - 在 Key Vault 中维护应用服务证书
+    - url: ../aks/developer-best-practices-pod-security.md#use-azure-key-vault-with-secrets-store-csi-driver
+      itemType: overview
+      text: Azure Kubernetes 服务 - 在 AKS 中使用 Key Vault 机密、证书和密钥
+    - url: ../data-factory/store-credentials-in-key-vault.md
+      itemType: overview
+      text: Azure 数据工厂 - 在 Key Vault 中维护凭据

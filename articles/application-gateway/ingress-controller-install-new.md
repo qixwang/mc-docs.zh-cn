@@ -5,14 +5,14 @@ services: application-gateway
 author: caya
 ms.service: application-gateway
 ms.topic: article
-ms.date: 04/26/2020
+ms.date: 06/24/2020
 ms.author: v-junlch
-ms.openlocfilehash: 5b003550b116cbe83e488f00a512b1614b641bb5
-ms.sourcegitcommit: e3512c5c2bbe61704d5c8cbba74efd56bfe91927
+ms.openlocfilehash: 4de32074b673b6ebda01157e224e0de57db56954
+ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82267559"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85516674"
 ---
 # <a name="how-to-install-an-application-gateway-ingress-controller-agic-using-a-new-application-gateway"></a>如何安装使用新应用程序网关的应用程序网关入口控制器 (AGIC)
 
@@ -58,7 +58,7 @@ ms.locfileid: "82267559"
     }
     EOF
     ```
-    若要部署启用 **RBAC** 的群集，请将 `aksEnabledRBAC` 字段设置为 `true`
+    若要部署启用 **RBAC** 的群集，请将 `aksEnableRBAC` 字段设置为 `true`
 
 ## <a name="deploy-components"></a>部署组件
 此步骤将以下组件添加到订阅：

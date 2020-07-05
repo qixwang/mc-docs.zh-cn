@@ -9,14 +9,14 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: tutorial
 origin.date: 09/27/2019
-ms.date: 06/02/2020
+ms.date: 07/01/2020
 ms.author: v-tawe
-ms.openlocfilehash: 55b783796f93cf9fe42c03561362bd39e16601bf
-ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
+ms.openlocfilehash: 98a8fe0888b6ef20546f552ca32a2faf4bafd9df
+ms.sourcegitcommit: 4f84bba7e509a321b6f68a2da475027c539b8fd3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84275551"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85796254"
 ---
 # <a name="provide-key-vault-authentication-with-an-access-control-policy"></a>使用访问控制策略提供 Key Vault 身份验证
 
@@ -108,9 +108,6 @@ Get-AzADGroup -SearchString <search-string>
 Id                    : 1cef38c4-388c-45a9-b5ae-3d88375e166a
 ...
 ```
-
-> [!WARNING]
-> 具有托管标识的 Azure AD 组最多需要 8 小时才能刷新令牌并生效。
 
 #### <a name="users"></a>用户
 
@@ -226,6 +223,9 @@ Add-AzADGroupMember -TargetGroupObjectId <groupId> -MemberObjectId <objectId>
 最后，使用 Azure CLI [az keyvault set-policy](/cli/keyvault?view=azure-cli-latest#az-keyvault-set-policy) 命令或 Azure PowerShell [Set-AzKeyVaultAccessPolicy](https://docs.microsoft.com/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy?view=azps-2.7.0) cmdlet，为 AD 组授予对 Key Vault 的权限。 有关示例，请参阅前面的[为应用程序、Azure AD 组或用户授予对 Key Vault 的访问权限](#give-the-principal-access-to-your-key-vault)。
 
 应用程序还需要将至少一个标识和访问管理 (IAM) 角色分配给密钥保管库。 否则，它将无法登录并且会失败，因为没有足够权限来访问订阅。
+
+> [!WARNING]
+> 具有托管标识的 Azure AD 组可能最多需要 8 小时才能刷新令牌并生效。
 
 ## <a name="next-steps"></a>后续步骤
 

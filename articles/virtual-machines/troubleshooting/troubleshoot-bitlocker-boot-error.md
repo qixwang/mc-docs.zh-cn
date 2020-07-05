@@ -1,5 +1,5 @@
 ---
-title: Azure VM 上的 BitLocker 启动错误 | Azure
+title: Azure VM 上的 BitLocker 启动错误
 description: 了解如何排查 Azure VM 中的 BitLocker 启动错误
 services: virtual-machines-windows
 documentationCenter: ''
@@ -11,14 +11,15 @@ ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 origin.date: 08/23/2019
-ms.date: 11/11/2019
+ms.date: 07/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: b892d867b985dda71bbb81ea2f2989dfec024e8a
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.custom: has-adal-ref
+ms.openlocfilehash: 13fce9dfe2139bdc32027ea50b39df7d98704d58
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79293352"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85946079"
 ---
 # <a name="bitlocker-boot-errors-on-an-azure-vm"></a>Azure VM 上的 BitLocker 启动错误
 
@@ -49,7 +50,7 @@ Windows VM 不启动。 检查[启动诊断](../windows/boot-diagnostics.md)窗�
 如果此方法未能解决此问题，请执行以下步骤，手动还原 BEK 文件：
 
 1. 拍摄受影响的 VM 的系统磁盘的快照作为备份。 有关详细信息，请参阅[拍摄磁盘快照](../windows/snapshot-copy-managed-disk.md)。
-2. [将系统磁盘附加到恢复 VM](troubleshoot-recovery-disks-portal-windows.md)。 若要在步骤 7 中运行 [manage-bde](https://docs.microsoft.com/windows-server/administration/windows-commands/manage-bde) 命令，必须在恢复 VM 中启用“BitLocker 驱动器加密”  功能。
+2. [将系统磁盘附加到恢复 VM](troubleshoot-recovery-disks-portal-windows.md)。 若要在步骤 7 中运行 [manage-bde](https://docs.microsoft.com/windows-server/administration/windows-commands/manage-bde) 命令，必须在恢复 VM 中启用“BitLocker 驱动器加密”功能。
 
     附加托管磁盘时，可能会收到“包含加密设置，因此不能用作数据磁盘”错误消息。 在此情况下，运行以下脚本，重试附加磁盘：
 
@@ -106,7 +107,7 @@ Windows VM 不启动。 检查[启动诊断](../windows/boot-diagnostics.md)窗�
 
     如果看到两个重复的卷，具有较新时间戳的卷为恢复 VM 使用的当前 BEK 文件。
 
-    如果“内容类型”  值为“包装的 BEK”  ，请转到[密钥加密密钥 (KEK) 方案](#key-encryption-key-scenario)。
+    如果“内容类型”值为“包装的 BEK”，请转到[密钥加密密钥 (KEK) 方案](#key-encryption-key-scenario)。
 
     获取驱动器的 BEK 文件名称后，须创建 secret-file-name.BEK 文件以解锁驱动器。
 
@@ -137,18 +138,22 @@ Windows VM 不启动。 检查[启动诊断](../windows/boot-diagnostics.md)窗�
 9. 如果新的 VM 仍然不能正常启动，请在解锁设备后尝试下述步骤之一：
 
     - 暂停保护，以便运行以下命令，暂时关闭 BitLocker：
-
+        
+        ```
             manage-bde -protectors -disable F: -rc 0
+        ```
 
     - 完全解密该驱动器。 为此，请运行以下命令：
-
+        
+        ```
             manage-bde -off F:
+        ```
 
 ### <a name="key-encryption-key-scenario"></a>密钥加密密钥方案
 
 对于密钥加密密钥方案，请执行以下步骤：
 
-1. 请确保登录的用户帐户需要“用户|密钥权限|加密操作|解包密钥”  中 Key Vault 访问策略中的“解包”权限。
+1. 请确保登录的用户帐户需要“用户|密钥权限|加密操作|解包密钥”中 Key Vault 访问策略中的“解包”权限。
 2. 将以下脚本保存到 .PS1 文件：
 
     ```powershell
@@ -235,20 +240,25 @@ Windows VM 不启动。 检查[启动诊断](../windows/boot-diagnostics.md)窗�
     $bekFileBytes = [System.Convert]::FromBase64String($base64Bek);
     [System.IO.File]::WriteAllBytes($bekFilePath,$bekFileBytes)
     ```
+    
 3. 设置参数。 该脚本处理 KEK 机密以创建 BEK 密钥，然后将其保存到恢复 VM 上的本地文件夹中。 如果在运行脚本时收到错误，请参阅[脚本故障排除](#script-troubleshooting)部分。
 
 4. 脚本开始时，将看到以下输出：
-
+    
+    ```
         GAC    Version        Location                                                                              
         ---    -------        --------                                                                              
         False  v4.0.30319     C:\Program Files\WindowsPowerShell\Modules\Az.Accounts\...
         False  v4.0.30319     C:\Program Files\WindowsPowerShell\Modules\Az.Accounts\...
+    ```
 
     脚本完成后，将看到以下输出：
-
+    
+    ```
         VERBOSE: POST https://myvault.vault.azure.cn/keys/rondomkey/<KEY-ID>/unwrapkey?api-
         version=2015-06-01 with -1-byte payload
         VERBOSE: received 360-byte response of content type application/json; charset=utf-8
+    ```
 
 5. 若要使用 BEK 文件解锁附加磁盘，请运行以下命令：
 
@@ -265,12 +275,16 @@ Windows VM 不启动。 检查[启动诊断](../windows/boot-diagnostics.md)窗�
 7. 如果新的 VM 仍然不能正常启动，请在解锁设备后尝试下述步骤之一：
 
     - 暂停保护，以便运行以下命令，暂时关闭 BitLocker：
-
+        
+        ```
             manage-bde -protectors -disable F: -rc 0
+        ```
 
     - 完全解密该驱动器。 为此，请运行以下命令：
-
+        
+        ```
             manage-bde -off F:
+        ```
 ## <a name="script-troubleshooting"></a>脚本故障排除
 
 **错误：无法加载文件或程序集**

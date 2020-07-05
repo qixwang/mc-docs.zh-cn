@@ -15,12 +15,12 @@ ms.topic: conceptual
 origin.date: 12/24/2019
 ms.date: 03/02/2020
 ms.author: v-yiso
-ms.openlocfilehash: b106751665d498fd1b07ce521ec9a59e9e91e39a
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 9f356b07f5143c68677b709bfd7ac4996bf065eb
+ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77563505"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85516748"
 ---
 # <a name="run-apache-hive-queries-using-hdinsight-net-sdk"></a>使用 HDInsight .NET SDK 运行 Apache Hive 查询
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
@@ -75,7 +75,7 @@ HDInsight .NET SDK 提供 .NET 客户端库，可简化从 .NET 中使用 HDInsi
                 private const string DefaultStorageAccountName = "<Default Storage Account Name>";
                 private const string DefaultStorageAccountKey = "<Default Storage Account Key>";
                 private const string DefaultStorageContainerName = "<Default Blob Container Name>";
-                private const string ExistingClusterUri = ExistingClusterName + ".azurehdinsight.net";
+                private const string ExistingClusterUri = ExistingClusterName + ".azurehdinsight.cn";
 
                 static void Main(string[] args)
                 {

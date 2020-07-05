@@ -11,7 +11,7 @@
 - name: 快速入门
   expanded: true
   items:
-    - name: '创建持久函数 - C#'
+    - name: 创建持久函数 - C#
       href: durable-functions-create-first-csharp.md
       displayName: 'get started, chaining'
     - name: 创建持久函数 - JavaScript
@@ -70,7 +70,7 @@
 - name: 参考
   items:
     - name: Host.json 设置
-      href: 'durable-functions-bindings.md#host-json'
+      href: durable-functions-bindings.md#host-json
     - name: 绑定
       href: durable-functions-bindings.md
     - name: HTTP API
@@ -115,8 +115,8 @@
       href: 'https://www.azure.cn/pricing/calculator/'
     - name: 区域可用性
       href: 'https://azure.microsoft.com/regions/services/'
-    - name: MSDN 论坛
-      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureFunctions'
+    - name: Microsoft Q&A 问题页面
+      href: 'https://docs.microsoft.com/answers/topics/azure-functions.html'
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-functions'
     - name: 提供产品反馈

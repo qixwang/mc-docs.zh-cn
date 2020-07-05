@@ -4,16 +4,16 @@ description: 使用 PowerShell 查看在 Azure 中运行的虚拟机的维护通
 author: rockboyfor
 ms.service: virtual-machines
 ms.workload: infrastructure-services
-ms.topic: article
+ms.topic: how-to
 origin.date: 11/19/2019
-ms.date: 04/27/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: b6963e9abc890fd575ce0185b68fd92ce33a1cb8
-ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
+ms.openlocfilehash: 1cca72e887c58e6d2d358f183eb700b725296b1c
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83392474"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945605"
 ---
 # <a name="handling-planned-maintenance-using-powershell"></a>使用 PowerShell 处理计划内维护
 

@@ -13,16 +13,17 @@ ms.tgt_pltfrm: python
 ms.devlang: php
 ms.topic: article
 origin.date: 01/04/2019
-ms.date: 03/02/2020
+ms.date: 07/01/2020
 ms.author: v-tawe
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 871dafdb0e4892b5d2aeb3e0079ef40dc95acad8
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.custom: tracking-python
+ms.openlocfilehash: c210a896183324c0cb49912dc8e920e275dccb8b
+ms.sourcegitcommit: 4f84bba7e509a321b6f68a2da475027c539b8fd3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77501455"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85796237"
 ---
 # <a name="how-to-use-notification-hubs-from-python"></a>如何通过 Python 使用通知中心
 

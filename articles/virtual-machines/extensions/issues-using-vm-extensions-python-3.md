@@ -12,15 +12,15 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 origin.date: 04/22/2020
-ms.date: 05/25/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
 ms.assetid: 3cd520fd-eaf7-4ef9-b4d3-4827057e5028
-ms.openlocfilehash: beb89c41feb589db60a5accdc1263dfb35c2a235
-ms.sourcegitcommit: 981a75a78f8cf74ab5a76f9e6b0dc5978387be4b
+ms.openlocfilehash: 5c31669622de0898f3b18fbbd9eb55c599582185
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83801900"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945550"
 ---
 <!--Verified successfully-->
 # <a name="issues-using-vm-extensions-in-python-3-enabled-linux-azure-virtual-machines-systems"></a>在启用 Python 3 的 Linux Azure 虚拟机系统中使用 VM 扩展时遇到的问题
@@ -82,13 +82,13 @@ ms.locfileid: "83801900"
 
     - REST API
 
-      在可以使用此属性部署 VM 时禁用和启用扩展：
+        在可以使用此属性部署 VM 时禁用和启用扩展：
 
-      ```
+        ```
         "osProfile": {
           "allowExtensionOperations": false
         },
-      ```
+        ```
 
 ## <a name="next-steps"></a>后续步骤
 

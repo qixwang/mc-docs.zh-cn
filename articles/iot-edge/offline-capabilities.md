@@ -4,16 +4,16 @@ description: 了解 IoT Edge 设备和模块如何能够长时间在无 Internet
 author: kgremban
 ms.author: v-tawe
 origin.date: 11/22/2019
-ms.date: 06/01/2020
+ms.date: 07/01/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 7b022afed91b713835dfdf9c431ce391e32b722c
-ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
+ms.openlocfilehash: 921ac626baaba6ec79172a1050d5a2ca6f6b728b
+ms.sourcegitcommit: 4f84bba7e509a321b6f68a2da475027c539b8fd3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84275620"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85796297"
 ---
 # <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices"></a>了解有关 IoT Edge 设备、模块和子设备的扩展脱机功能
 
@@ -27,7 +27,7 @@ Azure IoT Edge 支持 IoT Edge 设备上的扩展脱机操作，同时在非 IoT
 
 1. **配置设备**
 
-   IoT Edge 设备自动启用脱机功能。 若要将此功能扩展到其他 IoT 设备，需要在 IoT 中心声明设备之间的父子关系。 然后，将子设备配置为信任分配给它们的父设备，并通过父设备（用作网关）路由设备到云的通信。
+   IoT Edge 设备自动启用脱机功能。 若要将此功能扩展到其他 IoT 设备，需要在 IoT 中心声明设备之间的父子关系。 然后，将子设备配置为信任其分配的父设备，并通过作为网关的父设备路由设备到云的通信。
 
 2. **与 IoT 中心同步**
 
@@ -39,7 +39,7 @@ Azure IoT Edge 支持 IoT Edge 设备上的扩展脱机操作，同时在非 IoT
 
 4. **与 IoT 中心重新连接和重新同步**
 
-   一旦还原与 IoT 中心的连接，IoT Edge 设备会再次同步。 本地存储的消息会立即传递到 IoT 中心，但取决于连接速度、IoT 中心延迟和相关因素。 这些消息会按照存储它们的相同顺序传递。
+   一旦还原与 IoT 中心的连接，IoT Edge 设备会再次同步。 本地存储的消息会立即传递到 IoT 中心，但取决于连接速度、IoT 中心延迟和相关因素。 这些消息按照它们存储的相同顺序传递。
 
    模块和设备的所需属性和报告属性之间的差异已得到协调。 IoT Edge 设备更新对其分配的 IoT 子设备集所做的任何更改。
 
@@ -69,7 +69,7 @@ IoT Edge 设备及其分配的子设备可以在初始一次性同步之后无�
 
 #### <a name="option-2-use-the-az-command-line-tool"></a>选项 2：使用 `az` 命令行工具
 
-将 [Azure 命令行接口](/cli/?view=azure-cli-latest)与 [IoT 扩展](https://github.com/azure/azure-iot-cli-extension)（v0.7.0 或更高版本）配合使用时，可以通过 [device-identity](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest) 子命令管理父子关系。 以下示例使用一个查询将中心内的所有非 IoT Edge 设备分配为 IoT Edge 设备的子设备。 
+将 [Azure 命令行接口](/cli/?view=azure-cli-latest)与 [IoT 扩展](https://github.com/azure/azure-iot-cli-extension)（v0.7.0 或更高版本）配合使用时，可以通过 [device-identity](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub/device-identity?view=azure-cli-latest) 子命令管理父子关系。 以下示例使用一个查询将中心内的所有非 IoT Edge 设备分配为 IoT Edge 设备的子设备。 
 
 ```azurecli
 # Set IoT Edge parent device
@@ -92,11 +92,11 @@ az iot hub device-identity add-children \
   --subscription replace-with-sub-name
 ```
 
-可以修改[查询](../iot-hub/iot-hub-devguide-query-language.md)，选择另一部分设备。 如果指定大的设备集，此命令可能需要数秒钟才能完成。
+可以修改“[查询](../iot-hub/iot-hub-devguide-query-language.md)”以选择其他部分设备。 如果指定大的设备集，此命令可能需要数秒钟才能完成。
 
 #### <a name="option-3-use-iot-hub-service-sdk"></a>选项 3：使用 IoT 中心服务 SDK
 
-最后，可以使用 C#、Java 或 Node.js IoT 中心服务 SDK 以编程方式管理父子关系。 这是使用 C# SDK [分配子设备的示例](https://aka.ms/set-child-iot-device-c-sharp)。
+最后，可以使用 C#、Java 或 Node.js IoT 中心服务 SDK 以编程方式管理父子关系。 下面是使用 C# SDK [分配子设备的示例](https://aka.ms/set-child-iot-device-c-sharp)。
 
 ### <a name="set-up-the-parent-device-as-a-gateway"></a>将父设备设为网关
 
@@ -121,7 +121,7 @@ az iot hub device-identity add-children \
 
 生存时间设置是指在过期之前消息可以等待传递的时间量（以秒为单位）。 默认为 7200 秒（两个小时）。 此最大值仅受整数变量的最大值（约为 20 亿）限制。
 
-此设置是 IoT Edge 中心的所需属性，它存储在模块孪生中。 可以在 Azure 门户中或者直接在部署清单中配置此项设置。
+此设置是 IoT Edge 中心的所需属性，它存储在模块孪生中。 可以在 Azure 门户中或直接在部署清单中进行配置。
 
 ```json
 "$edgeHub": {
@@ -137,7 +137,7 @@ az iot hub device-identity add-children \
 
 ### <a name="host-storage-for-system-modules"></a>系统模块的主机存储
 
-默认情况下，消息和模块状态信息存储在 IoT Edge 中心的本地容器文件系统中。 若要改进可靠性，尤其是在脱机操作时改进可靠性，也可在主机 IoT Edge 设备上设置专用存储。 有关详细信息，请参阅[向模块授予对设备本地存储的访问权限](how-to-access-host-storage-from-module.md)
+默认情况下，消息和模块状态信息存储在 IoT Edge 中心的本地容器文件系统中。 为了提高可靠性，尤其是在脱机操作时，还可以在主机 IoT Edge 设备上专门使用存储。 有关详细信息，请参阅[向模块授予对设备本地存储的访问权限](how-to-access-host-storage-from-module.md)
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -16,12 +16,12 @@ origin.date: 06/01/2017
 ms.date: 02/10/2020
 ms.author: v-yeche
 ms.reviewer: jroth
-ms.openlocfilehash: 6505c9ce6bfa01fd7b3a325e431ffb949a676bb3
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 67664632ceb7835e9503d44269422bb1868d9c62
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77428678"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945930"
 ---
 # <a name="use-azure-premium-storage-with-sql-server-on-virtual-machines"></a>将 Azure 高级存储用于虚拟机上的 SQL Server
 
@@ -143,11 +143,11 @@ New-AzureStorageAccount -StorageAccountName $newstorageaccountname -Location "Ch
 1. 记下 DiskName 和 LUN。
 
     ![DisknameAndLUN][2]
-1. 通过远程桌面连接到 VM。 然后依次转到“计算机管理”   | “设备管理器”   | “磁盘驱动器”  。 查看每个 Microsoft 虚拟磁盘的属性
+1. 通过远程桌面连接到 VM。 然后依次转到“计算机管理” | “设备管理器” | “磁盘驱动器”。 查看每个“Microsoft 虚拟磁盘”的属性
 
     ![VirtualDiskProperties][3]
 1. 此处的 LUN 编号是对将 VHD 附加到 VM 时指定的 LUN 编号的引用。
-1. 对于“Microsoft 虚拟磁盘”，转到“详细信息”  选项卡，然后在“属性”  列表中转到“驱动程序键”  。 在“值”  中，注意“偏移量”  ，该项在下面的屏幕截图中为 0002。 0002 表示存储池引用的 PhysicalDisk2。
+1. 对于“Microsoft 虚拟磁盘”，转到“详细信息”选项卡，然后在“属性”列表中转到“驱动程序键”。 在“值”中，注意“偏移量”，该项在下面的屏幕截图中为 0002。 0002 表示存储池引用的 PhysicalDisk2。
 
     ![VirtualDiskPropertyDetails][4]
 1. 转储每个存储池关联的磁盘：
@@ -330,8 +330,8 @@ $originalstorage =  Get-AzureStorageKey -StorageAccountName $origstorageaccountn
 $xiostorage = Get-AzureStorageKey -StorageAccountName $newxiostorageaccountname
 
 #Set up contexts for the storage accounts:
-$origContext = New-AzureStorageContext -StorageAccountName $origstorageaccountname -StorageAccountKey $originalstorage.Primary
-$destContext = New-AzureStorageContext -StorageAccountName $newxiostorageaccountname -StorageAccountKey $xiostorage.Primary  
+$origContext = New-AzureStorageContext -Environment AzureChinaCloud  -StorageAccountName $origstorageaccountname -StorageAccountKey $originalstorage.Primary
+$destContext = New-AzureStorageContext -Environment AzureChinaCloud  -StorageAccountName $newxiostorageaccountname -StorageAccountKey $xiostorage.Primary  
 ```
 
 #### <a name="step-4-copy-blob-between-storage-accounts"></a>步骤 4：在存储帐户之间复制 Blob
@@ -474,8 +474,8 @@ $vmConfigsl2 | New-AzureVM -ServiceName $destcloudsvc -VNetName $vnet
 7. 将新节点添加到群集并运行完整验证。
 8. 成功验证后，启动所有 SQL Server 服务。
 9. 备份事务日志并还原用户数据库。
-10. 将新节点添加到 AlwaysOn 可用性组中，并将复制置为“同步”  。
-11. 根据 [附录](#appendix-migrating-a-multisite-always-on-cluster-to-premium-storage)中的多站点示例，通过 PowerShell 为 AlwaysOn 添加新云服务 ILB/ELB 的 IP 地址资源。 在 Windows 群集中，将 **IP 地址**资源的**可能所有者**设置为新节点 old。 请参阅 [附录](#appendix-migrating-a-multisite-always-on-cluster-to-premium-storage)的“在同一子网中添加 IP 地址资源”部分。
+10. 将新节点添加到 AlwaysOn 可用性组中，并将复制置为“同步” 。
+11. 根据 [附录](#appendix-migrating-a-multisite-always-on-cluster-to-premium-storage)中的多站点示例，通过 PowerShell 为 AlwaysOn 添加新云服务 ILB/ELB 的 IP 地址资源。 在 Windows 群集中，将 **IP 地址**资源的**可能所有者**设置为新节点 old。 请参阅[附录](#appendix-migrating-a-multisite-always-on-cluster-to-premium-storage)的“在同一子网中添加 IP 地址资源”部分。
 12. 故障转移到新节点之一。
 13. 将新节点设为“自动故障转移伙伴”并测试故障转移。
 14. 从可用性组中删除原始节点。
@@ -535,7 +535,7 @@ $vmConfigsl2 | New-AzureVM -ServiceName $destcloudsvc -VNetName $vnet
 * 如果选择使 AlwaysOn 群集组脱机以提取 IP 地址，则停机时间会增加。 可对添加的 IP 地址资源使用 OR 依赖关系和可能的所有者，进而避免出现这种情况。 请参阅 [附录](#appendix-migrating-a-multisite-always-on-cluster-to-premium-storage)的“在同一子网中添加 IP 地址资源”部分。
 
     > [!NOTE]
-    > 如果想让添加的节点用作 AlwaysOn 故障转移伙伴，需要添加引用负载均衡集的 Azure 终结点。 运行 Add-AzureEndpoint 命令来执行此操作时，当前连接保持断开，但在更新负载均衡器之后，才能建立到侦听器的新连接  。 在测试时，此现像持续了 90 到 120 秒，应该对此进行测试。
+    > 如果想让添加的节点用作 AlwaysOn 故障转移伙伴，需要添加引用负载均衡集的 Azure 终结点。 运行 Add-AzureEndpoint 命令来执行此操作时，当前连接保持断开，但在更新负载均衡器之后，才能建立到侦听器的新连接。 在测试时，此现像持续了 90 到 120 秒，应该对此进行测试。
 
 ##### <a name="advantages"></a>优点
 
@@ -565,7 +565,7 @@ $vmConfigsl2 | New-AzureVM -ServiceName $destcloudsvc -VNetName $vnet
 * 配置 ILB/ELB 并添加终结点。
 * 通过以下任一方法更新侦听器：
     * 使 AlwaysOn 组脱机，并使用新的 ILB/ELB IP 地址更新 AlwaysOn 侦听器。
-    * 或者通过 PowerShell 将新云服务 ILB/ELB 的 IP 地址资源添加到 Windows 群集。 然后，将 IP 地址资源的可能所有者设置为已迁移节点 SQL2，并在网络名称中将此项设置为 OR 依赖关系。 请参阅 [附录](#appendix-migrating-a-multisite-always-on-cluster-to-premium-storage)的“在同一子网中添加 IP 地址资源”部分。
+    * 或者通过 PowerShell 将新云服务 ILB/ELB 的 IP 地址资源添加到 Windows 群集。 然后，将 IP 地址资源的可能所有者设置为已迁移节点 SQL2，并在网络名称中将此项设置为 OR 依赖关系。 请参阅[附录](#appendix-migrating-a-multisite-always-on-cluster-to-premium-storage)的“在同一子网中添加 IP 地址资源”部分。
 * 检查客户端的 DNS 配置/传播。
 * 迁移 SQL1 VM，并完成步骤 2 - 4。
 * 如果使用步骤 5ii，则将 SQL1 添加为已添加 IP 地址资源的可能所有者
@@ -683,9 +683,9 @@ $destcloudsvc = "danNewSvcAms"
 New-AzureService $destcloudsvc -Location $location
 ```
 
-#### <a name="step-2-increase-the-permitted-failures-on-resources-optional"></a>步骤 2：在资源上增加允许的故障 \<可选>
+#### <a name="step-2-increase-the-permitted-failures-on-resources-optional"></a>步骤 2：在资源上增加允许的故障 \<Optional>
 
-在 AlwaysOn 可用性组中包含的某些资源上，限定了在群集服务尝试重启资源组的固定时间内可出现的失败数。 在执行此过程时，建议增加此限制，因为如果未手动故障转移或通过关闭计算机来触发故障转移，则可能会接近此限制。
+在 AlwaysOn 可用性组中包含的某些资源上，限定了在群集服务尝试重启资源组的固定时间内可出现的失败数。 在完成此过程时，建议增加此限制，因为如果未手动故障转移或通过关闭计算机来触发故障转移，则可能会接近此限制。
 
 最好使允许的故障数加倍，为此，请在故障转移群集管理器中转到 AlwaysOn 资源组的属性：
 
@@ -693,7 +693,7 @@ New-AzureService $destcloudsvc -Location $location
 
 将最大故障数更改为 6。
 
-#### <a name="step-3-addition-ip-address-resource-for-cluster-group-optional"></a>步骤 3：为群集组添加 IP 地址资源 \<可选>
+#### <a name="step-3-addition-ip-address-resource-for-cluster-group-optional"></a>步骤 3：为群集组添加 IP 地址资源 \<Optional>
 
 如果群集组只有一个 IP 地址，而此地址分配给了云子网，则请注意，如果意外地使此玩过上云端的所有群集脱机，群集 IP 资源和群集网络名称将无法再联机。 此情况下，这会阻止更新到其他群集资源。
 
@@ -707,11 +707,11 @@ New-AzureService $destcloudsvc -Location $location
 
 连接到 SQL Server 时，SQL Server 客户端驱动程序会检索与侦听器关联的 DNS 记录，并尝试连接到每个关联到 AlwaysOn 的 IP 地址。 接下来，将讨论会影响此进程的一些因素。
 
-与侦听器名称关联的并发 DNS 记录数取决于关联的 IP 地址数，还取决于 AlwaysON VNN 资源的故障转移群集的“RegisterAllIpProviders”设置。
+与侦听器名称关联的并发 DNS 记录数不仅取决于关联的 IP 地址数，而且还取决于 Always ON VNN 资源的故障转移群集的“RegisterAllIpProviders”设置。
 
-在 Azure 中部署 AlwaysOn 时，可使用不同的步骤创建侦听器和 IP 地址，必须手动将“RegisterAllIpProviders”配置为 1，这与本地 Always On 部署不同，后者已设置为 1。
+在 Azure 中部署 Always On 时，可使用不同的步骤创建侦听器和 IP 地址，必须手动将“RegisterAllIpProviders”配置为 1，这与本地 Always On 部署不同，后者已设置为 1。
 
-如果“RegisterAllIpProviders”为 0，则与侦听器关联的 DNS 中仅显示一条 DNS 记录：
+如果“RegisterAllIpProviders”为零，则与侦听器关联的 DNS 中仅显示一条 DNS 记录：
 
 ![Appendix4][14]
 
@@ -778,7 +778,7 @@ Get-AzureVM -ServiceName $destcloudsvc -Name $vmNameToMigrate | Get-AzureAclConf
 
 #### <a name="step-7-change-failover-partners-and-replication-modes"></a>步骤 7：更改故障转移伙伴和复制模式
 
-如果使用两个以上的 SQL Server，则应将另一个 DC 或本地中的另一个辅助副本的故障转移更改为“同步”，并将其设为“自动故障转移伙伴”(AFP)，这样便可以在进行更改的同时保持高可用性。 可以通过修改 TSQL 来执行此操作（虽然 SSMS 也可以）：
+如果具有两个以上的 SQL Server，则必须将另一 DC 或本地项中另一辅助节点的故障转移设置为“同步”，并将其设置为自动故障转移伙伴 (AFP)，这样即可在进行更改时保证高可用性。 可以通过修改 TSQL 来执行此操作（虽然 SSMS 也可以）：
 
 ![Appendix6][16]
 
@@ -1234,10 +1234,10 @@ Get-AzureVM -ServiceName $destcloudsvc -Name $vmNameToMigrate  | Add-AzureEndpoi
 
 若要添加 IP 地址，请参阅“附录”步骤 14。
 
-1. 对于当前 IP 地址资源，将可能的所有者更改为“现有主 SQL Server”（在本例中为“dansqlams4”）：
+1. 对于当前 IP 地址资源，将可能具有的所有者更改为“现有主 SQL Server”（在本例中为“dansqlams4”）：
 
     ![Appendix13][23]
-2. 对于新的 IP 地址资源，将可能的所有者更改为“迁移的辅助 SQL Server”（在本例中为“dansqlams5”）：
+2. 对于新的 IP 地址资源，将可能具有的所有者更改为“已迁移的辅助 SQL Server”（在本例中为“dansqlams5”）：
 
     ![Appendix14][24]
 3. 设置了此项后便可以进行故障转移了，迁移了最后一个节点后，应编辑“可能的所有者”，以便将该节点添加为可能的所有者：

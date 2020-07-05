@@ -1,29 +1,22 @@
 ---
-title: 存储优化虚拟机大小 | Azure
+title: 存储优化虚拟机大小
 description: 列出适用于 Azure 中虚拟机的各种存储优化大小。 列出了有关此系列中各大小的 vCPU 数、数据磁盘数和 NIC 数以及存储吞吐量和网络带宽的信息。
-services: virtual-machines
-documentationcenter: ''
+ms.subservice: sizes
 author: rockboyfor
-manager: digimobile
-editor: ''
-tags: azure-resource-manager,azure-service-management
-ms.assetid: ''
 ms.service: virtual-machines
-ms.devlang: na
 ms.topic: article
 ms.workload: infrastructure-services
-origin.date: 02/03/2020
-ms.date: 5/18/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 2443bf49dd0d8a0e8ec47405f31c27f2e3402995
-ms.sourcegitcommit: c4fc01b7451951ef7a9616fca494e1baf29db714
+ms.openlocfilehash: 9ac19d24dfc96106111b33eebbfb15e6c4a1c6ed
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84564218"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945656"
 ---
-<!--CHECK THE BURSTING FEATHER BEFORE RELEASE-->
 <!--Not Available on MOONCAKE-->
+<!--CHECK THE BURSTING FEATHER BEFORE RELEASE-->
 # <a name="storage-optimized-virtual-machine-sizes"></a>存储优化虚拟机大小
 
 存储优化 VM 大小可提供较高的磁盘吞吐量和 IO，非常适合于大数据、SQL、NoSQL 数据库、数据仓库和大型事务数据库。  示例包括 Cassandra、MongoDB、Cloudera 和 Redis。 本文介绍 vCPU、数据磁盘和 NIC 的数量以及每个优化大小的本地存储吞吐量和网络带宽。

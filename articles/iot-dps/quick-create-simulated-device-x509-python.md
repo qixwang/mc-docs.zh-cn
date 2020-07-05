@@ -4,18 +4,18 @@ description: 快速入门 - 使用适用于 IoT 中心设备预配服务 (DPS) �
 author: wesmc7777
 ms.author: v-tawe
 origin.date: 11/08/2019
-ms.date: 03/23/2020
+ms.date: 07/01/2020
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.devlang: python
-ms.custom: mvc
-ms.openlocfilehash: 3c9a2544a52b68ced30beb276e9b0bc2e3392ddb
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.custom: mvc, tracking-python
+ms.openlocfilehash: 21b7dc403d9350ce28a0a92f9935bb900152ba3c
+ms.sourcegitcommit: 4f84bba7e509a321b6f68a2da475027c539b8fd3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79133793"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85796131"
 ---
 # <a name="quickstart-create-and-provision-a-simulated-x509-device-using-python-device-sdk-for-iot-hub-device-provisioning-service"></a>快速入门：使用适用于 IoT 中心设备预配服务的 Python 设备 SDK 创建和预配模拟的 X.509 设备
 
@@ -90,11 +90,15 @@ Azure IoT 设备预配服务支持两类注册：
     
     将第一个证书复制到剪贴板。 从第一次出现以下项开始：
     
-        -----BEGIN CERTIFICATE----- 
+    ```
+    -----BEGIN CERTIFICATE----- 
+    ```
         
     在第一次出现以下项后复制结束：
     
-        -----END CERTIFICATE-----
+    ```
+    -----END CERTIFICATE-----
+    ```
         
     请确保也包含这两行。 
 

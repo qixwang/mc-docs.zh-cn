@@ -7,15 +7,15 @@ ms.service: virtual-machines
 ms.workload: infrastructure
 ms.topic: how-to
 origin.date: 01/23/2017
-ms.date: 06/15/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
 ms.subservice: disks
-ms.openlocfilehash: 419a282099f283513ffe83e04b9772a5bf8c2577
-ms.sourcegitcommit: c4fc01b7451951ef7a9616fca494e1baf29db714
+ms.openlocfilehash: 65c5ab058df2a71d62eab98f94567dce3cf60eb1
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84564364"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945632"
 ---
 <!--Verified successfully by PG team-->
 # <a name="back-up-azure-unmanaged-vm-disks-with-incremental-snapshots"></a>通过递增快照备份 Azure 非托管 VM 磁盘

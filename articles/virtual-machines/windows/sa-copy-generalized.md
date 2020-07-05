@@ -1,41 +1,35 @@
 ---
 title: 如何从 Azure VM 创建非托管 VM 映像
-description: 创建通用化 Windows VM 的非托管映像，用于在 Azure 中创建 VM 的多个副本。
-services: virtual-machines-windows
-documentationcenter: ''
+description: 创建通用化 Windows VM 的非托管映像，从而在 Azure 中创建多个 VM 的副本。
 author: rockboyfor
-manager: digimobile
-editor: tysonn
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
 ms.topic: article
 origin.date: 05/23/2017
-ms.date: 04/27/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
 ROBOTS: NOINDEX
-ms.openlocfilehash: 8966200b01b8279c436dbf38d6f634d7801449c8
-ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
+ms.custom: storage-accounts
+ms.openlocfilehash: 3a754368a50e45aaef5afcf1331ebe1d748d8ad0
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83392454"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85946069"
 ---
 # <a name="how-to-create-an-unmanaged-vm-image-from-an-azure-vm"></a>如何从 Azure VM 创建非托管 VM 映像
 
-本文涉及到使用存储帐户。 我们建议使用托管磁盘和托管映像，而不要使用存储帐户。 有关详细信息，请参阅[捕获 Azure 中通用化 VM 的托管映像](capture-image-resource.md)。
+本文介绍如何使用存储帐户。 建议使用托管磁盘和托管映像而不是使用存储帐户。 有关详细信息，请参阅[在 Azure 中捕获通用 VM 的托管映像](capture-image-resource.md)。
 
-本文说明如何通过 Azure PowerShell 使用存储帐户创建通用化 Azure VM 的映像。 然后可以使用该映像来创建另一个 VM。 该映像包含 OS 磁盘和附加到虚拟机的数据磁盘。 该映像不包含虚拟网络资源，因此，创建新 VM 时需要设置这些资源。 
+本文介绍如何通过 Azure PowerShell 使用存储帐户创建通用化 Azure VM 的映像。 然后可以使用该映像创建另一个 VM。 该映像包含 OS 磁盘和附加到虚拟机的数据磁盘。 该映像不包含虚拟网络资源，因此，创建新 VM 时需要设置这些资源。 
 
-## <a name="generalize-the-vm"></a>通用化 VM 
-本部分说明如何通用化可用作映像的 Windows 虚拟机。 通用化 VM 会删除所有个人帐户信息及其他某些数据，并准备好要用作映像的计算机。 有关 Sysprep 的详细信息，请参阅[如何使用 Sysprep：简介](https://technet.microsoft.com/library/bb457073.aspx)。
+## <a name="generalize-the-vm"></a>一般化 VM 
+本部分说明如何通用化可用作映像的 Windows 虚拟机。 通用化 VM 将删除所有个人帐户信息及其他某些数据，并准备好要用作映像的计算机。 有关 Sysprep 的详细信息，请参阅[如何使用 Sysprep：简介](https://technet.microsoft.com/library/bb457073.aspx)。
 
-确保 Sysprep 支持计算机上运行的服务器角色。 有关详细信息，请参阅 [Sysprep Support for Server Roles](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)
+确保 Sysprep 支持计算机上运行的服务器角色。 有关详细信息，请参阅 [Sysprep 对服务器角色的支持](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)
 
 > [!IMPORTANT]
-> 首次将 VHD 上传到 Azure 时，请确保先[准备好 VM](prepare-for-upload-vhd-image.md?toc=%2fvirtual-machines%2fwindows%2ftoc.json)，然后再运行 Sysprep。 
+> 如果是首次将 VHD 上传到 Azure，请确保先[准备好 VM](prepare-for-upload-vhd-image.md?toc=%2fvirtual-machines%2fwindows%2ftoc.json)，然后再运行 Sysprep。 
 > 
 > 
 
@@ -44,11 +38,11 @@ ms.locfileid: "83392454"
 1. 登录到 Windows 虚拟机。
 2. 以管理员身份打开“命令提示符”窗口。 将目录切换到 **%windir%\system32\sysprep**，然后运行 `sysprep.exe`。
 3. 在“系统准备工具”对话框中，选择“进入系统全新体验(OOBE)”，确保已选中“通用化”复选框。  
-4. 在“关机选项”中选择“关机”。 
-5. 单击 **“确定”** 。
+4. 在“关机选项”中选择“关机”。
+5. 单击“确定”。
 
     ![启动 Sysprep](./media/upload-generalized-managed/sysprepgeneral.png)
-6. 在 Sysprep 完成时，它会关闭虚拟机。 
+6. Sysprep 在完成运行后会关闭虚拟机。 
 
     > [!IMPORTANT]
     > 将 VHD 上传到 Azure 或从 VM 创建映像完成之前不要重启 VM。 如果 VM 意外重启，请运行 Sysprep 将其再次通用化。
@@ -86,7 +80,7 @@ ms.locfileid: "83392454"
     Stop-AzVM -ResourceGroupName <resourceGroup> -Name <vmName>
     ```
 
-    Azure 门户中该 VM 的“状态”将从“已停止”更改为“已停止(已解除分配)” 。
+    Azure 门户中该 VM 的“状态”将从“已停止”更改为“已停止(已解除分配)”。 
 2. 将虚拟机的状态设置为“通用化”。 
 
     ```powershell
@@ -101,7 +95,7 @@ ms.locfileid: "83392454"
 
 ## <a name="create-the-image"></a>创建映像
 
-使用以下命令在目标存储容器中创建非托管虚拟机映像。 该映像在创建时所在的存储帐户与原始虚拟机的相同。 `-Path` 参数将源 VM 的 JSON 模板副本保存到本地计算机。 `-DestinationContainerName` 参数是要在其中保存映像的容器的名称。 如果该容器不存在，系统自动创建。
+使用此命令在目标存储容器中创建非托管虚拟机映像。 该映像在创建时所在的存储帐户与原始虚拟机的相同。 `-Path` 参数将源 VM 的 JSON 模板的副本保存到本地计算机。 `-DestinationContainerName` 参数是要在其中保存映像的容器的名称。 如果该容器不存在，系统会自动创建。
 
 ```powershell
 Save-AzVMImage -ResourceGroupName <resourceGroupName> -Name <vmName> `
@@ -109,13 +103,13 @@ Save-AzVMImage -ResourceGroupName <resourceGroupName> -Name <vmName> `
     -Path <C:\local\Filepath\Filename.json>
 ```
 
-可以从 JSON 文件模板获取映像的 URL。 转到“资源” > “storageProfile” > “osDisk” > “映像” > “URI”部分即可查找映像的完整路径    。 `https://<storageAccountName>.blob.core.chinacloudapi.cn/system/Microsoft.Compute/Images/<imagesContainer>/<templatePrefix-osDisk>.xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.vhd`。
+可以从 JSON 文件模板获取映像的 URL。 转到“资源” > “storageProfile” > “osDisk” > “映像” > “URI”部分即可查找映像的完整路径    。 映像的 URL 如下所示：`https://<storageAccountName>.blob.core.chinacloudapi.cn/system/Microsoft.Compute/Images/<imagesContainer>/<templatePrefix-osDisk>.xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.vhd`。
 
-也可以在门户中验证 URI。 映像将复制到存储帐户中名为 **system** 的容器。 
+也可以在门户中验证 URI。 映像将复制到存储帐户中名为 **system** 的容器中。 
 
 ## <a name="create-a-vm-from-the-image"></a>从映像创建 VM
 
-现在，可以从非托管映像创建一个或多个 VM。
+现在可从非托管映像创建一个或多个 VM。
 
 ### <a name="set-the-uri-of-the-vhd"></a>设置 VHD 的 URI
 
@@ -145,16 +139,16 @@ $imageURI = "https://mystorageaccount.blob.core.chinacloudapi.cn/mycontainer/myV
     ```    
 
 ### <a name="create-a-public-ip-address-and-network-interface"></a>创建公共 IP 地址和网络接口
-若要与虚拟网络中的虚拟机通信，需要一个 [公共 IP 地址](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) 和网络接口。
+若要与虚拟网络中的虚拟机通信，需要一个 [公共 IP 地址](../../virtual-network/public-ip-addresses.md) 和网络接口。
 
-1. 创建公共 IP 地址。 此示例创建名为 **myPip**的公共 IP 地址。 
+1. 创建公共 IP 地址。 此示例创建名为 **myPip** 的公共 IP 地址。 
 
     ```powershell
     $ipName = "myPip"
     $pip = New-AzPublicIpAddress -Name $ipName -ResourceGroupName $rgName -Location $location `
         -AllocationMethod Dynamic
     ```       
-2. 创建 NIC。 此示例创建名为 **myNic**的 NIC。 
+2. 创建 NIC。 此示例创建名为 **myNic** 的 NIC。 
 
     ```powershell
     $nicName = "myNic"
@@ -187,7 +181,7 @@ $vnet = Get-AzVirtualNetwork -ResourceGroupName $rgName -Name $vnetName
 ```
 
 ### <a name="create-the-vm"></a>创建 VM
-以下 PowerShell 脚本完成虚拟机配置，并使用非托管映像作为新安装的源。
+以下 PowerShell 可完成虚拟机配置并使用非托管映像作为新安装的源。
 
 <br />
 
@@ -253,6 +247,6 @@ $vnet = Get-AzVirtualNetwork -ResourceGroupName $rgName -Name $vnetName
 ```
 
 ## <a name="next-steps"></a>后续步骤
-若要使用 Azure PowerShell 管理新虚拟机，请参阅[使用 Azure Resource Manager 与 PowerShell 来管理虚拟机](tutorial-manage-vm.md?toc=%2fvirtual-machines%2fwindows%2ftoc.json)。
+若要使用 Azure PowerShell 管理新虚拟机，请参阅[使用 Azure 资源管理器与 PowerShell 来管理虚拟机](tutorial-manage-vm.md?toc=%2fvirtual-machines%2fwindows%2ftoc.json)。
 
-<!-- Update_Description: update meta properties, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

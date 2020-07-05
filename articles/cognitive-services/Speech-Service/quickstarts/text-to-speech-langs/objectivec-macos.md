@@ -11,12 +11,12 @@ ms.topic: quickstart
 origin.date: 12/09/2019
 ms.date: 01/27/2020
 ms.author: v-tawe
-ms.openlocfilehash: 131411e0227727518c9d7d9490a951f8817f9406
-ms.sourcegitcommit: 304d3ef3c9e65c3e85977b3afb9985fbc0f908d6
+ms.openlocfilehash: 58f4ce6fd501db9be6d0fe0d18c22ccfae053df4
+ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85095881"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85613393"
 ---
 # <a name="quickstart-synthesize-speech-in-objective-c-on-macos-using-the-speech-sdk"></a>快速入门：在 macOS 上使用语音 SDK 通过 Objective-C 合成语音
 
@@ -28,20 +28,19 @@ ms.locfileid: "85095881"
 
 * 语音服务的[订阅密钥](~/articles/cognitive-services/Speech-Service/get-started.md)。
 * 装有 [Xcode 9.4.1](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12) 或更高版本以及 macOS 10.13 或更高版本的 macOS 计算机
+* 需要语音 SDK 1.11.0 或更高版本。
 
 ## <a name="get-the-speech-sdk-for-macos"></a>获取适用于 macOS 的语音 SDK
 
 [!INCLUDE [License Notice](~/includes/cognitive-services-speech-service-license-notice.md)]
 
-> [!IMPORTANT]
-> 需要语音 SDK 1.11.0 或更高版本。
 
 适用于 Mac 的认知服务语音 SDK 目前以框架捆绑包的形式分发。
 可在 Xcode 项目将它作为 [CocoaPod](https://cocoapods.org/) 使用，或者从 https://aka.ms/csspeech/macosbinary 下载，然后手动与它建立链接。 本指南使用 CocoaPod。
 
 ## <a name="create-an-xcode-project"></a>创建 Xcode 项目
 
-启动 Xcode，然后通过单击“文件” > “新建” > “项目”来启动新项目。**** **** ****
+启动 Xcode，然后通过单击“文件” > “新建” > “项目”来启动新项目。  
 在模板选择对话框中，选择“Cocoa 应用”模板。
 
 在随后的对话框中，进行以下选择：
@@ -145,8 +144,8 @@ ms.locfileid: "85095881"
 
 ## <a name="build-and-run-the-sample"></a>生成并运行示例
 
-1. 使调试输出可见（“视图”**** > “调试区域”**** > ****“激活控制台”）。
-1. 在菜单中选择“产品” -> “运行”，或者单击“播放”按钮，以生成并运行示例代码。**** **** ****
+1. 使调试输出可见（“视图” > “调试区域” > “激活控制台”）。
+1. 在菜单中选择“产品” -> “运行”，或者单击“播放”按钮，以生成并运行示例代码。  
 1. 在输入一些文本并单击应用中的按钮后，你应该会听到播放的合成音频。
 
 ## <a name="next-steps"></a>后续步骤

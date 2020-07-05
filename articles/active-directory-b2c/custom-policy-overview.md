@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/18/2020
+ms.date: 06/28/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 73e2d1727ca6e7e5603e0c73e59312d2076d8f39
-ms.sourcegitcommit: 87e789550ea49ff77c7f19bc68fad228009fcf44
+ms.openlocfilehash: 408c749e50ba1fa6e33bd932ac38409ce0ef5594
+ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83748048"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85516509"
 ---
 # <a name="custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的自定义策略
 
@@ -25,7 +25,7 @@ ms.locfileid: "83748048"
 
 ## <a name="comparing-user-flows-and-custom-policies"></a>比较用户流和自定义策略
 
-| | 用户流 | 自定义策略 |
+| 上下文 | 用户流 | 自定义策略 |
 |-|-------------------|-----------------|
 | 目标用户 | 具有或不具有标识专业知识的所有应用程序开发人员。 | 标识专业人员、系统集成人员、顾问和内部标识团队。 他们能够熟悉运作 OpenID Connect 流，并了解标识提供者和基于声明的身份验证。 |
 | 配置方法 | 具有用户友好用户界面 (UI) 的 Azure 门户。 | 直接编辑 XML 文件，并上传到 Azure 门户。 |

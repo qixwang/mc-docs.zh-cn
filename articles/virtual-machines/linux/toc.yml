@@ -144,9 +144,6 @@
               href: ../scripts/virtual-machines-linux-powershell-sample-copy-managed-disks-to-same-or-different-subscription.md?toc=%2fvirtual-machines%2flinux%2ftoc.json
             - name: 使用 PowerShell 收集订阅中所有 VM 的详细信息
               href: ../scripts/virtual-machines-powershell-sample-collect-vm-details.md?toc=%2fvirtual-machines%2flinux%2ftoc.json
-    - name: Azure Policy 内置策略定义
-      displayName: 'samples, policies, definitions'
-      href: ../policy-samples.md?toc=/virtual-machines/linux/toc.json&bc=/virtual-machines/linux/breadcrumb/toc.json
 - name: 概念
   items:
     - name: 映像
@@ -542,8 +539,6 @@
                   items:
                     - name: 概述
                       href: ../../azure-monitor/../virtual-machines/extensions/diagnostics-linux.md?toc=/virtual-machines/linux/toc.json&bc=/virtual-machines/linux/breadcrumb/toc.json?toc=/azure-monitor/toc.json
-                    - name: 使用 Telegraf 收集指标
-                      href: ../../azure-monitor/platform/collect-custom-metrics-linux-telegraf.md?toc=/virtual-machines/linux/toc.json&bc=/virtual-machines/linux/breadcrumb/toc.json
             - name: Log Analytics 代理
               items:
                 - name: 概述

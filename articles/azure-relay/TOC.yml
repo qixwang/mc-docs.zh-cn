@@ -42,6 +42,8 @@
       href: relay-hybrid-connections-protocol.md
 - name: 如何
   items:
+    - name: 从 Azure Service Manager（经典）API 迁移到资源管理器 API
+      href: ../service-bus-messaging/deprecate-service-bus-management.md?toc=service-bus-relay%2ftoc.json
     - name: 规划和设计
       items:
         - name: 从 ACS 迁移到 SAS
@@ -57,10 +59,16 @@
               href: relay-hybrid-connections-dotnet-api-overview.md
             - name: 节点
               href: relay-hybrid-connections-node-ws-api-overview.md
+    - name: 安全
+      items:
+        - name: 配置 IP 防火墙（预览版）
+          href: ip-firewall-virtual-networks.md
     - name: 管理
       items:
         - name: 使用 Azure 监视来监视 Azure 中继
           href: relay-metrics-azure-monitor.md
+        - name: 设置诊断日志
+          href: diagnostic-logs.md
 - name: 参考
   items:
     - name: .NET

@@ -1,5 +1,5 @@
 ---
-title: Azure Data Box 磁盘系统要求 | Microsoft Docs
+title: Microsoft Azure Data Box 磁盘系统要求 | Microsoft Docs
 description: 了解 Azure Data Box 磁盘的软件和网络要求
 services: databox
 author: WenJason
@@ -7,15 +7,15 @@ ms.service: databox
 ms.subservice: disk
 ms.topic: article
 origin.date: 09/04/2019
-ms.date: 12/09/2019
+ms.date: 07/06/2020
 ms.author: v-jay
 ms.localizationpriority: high
-ms.openlocfilehash: e708fcbe569c0051122b538767cd6f18e07f5378
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: bd3962f62eab56a5cb2405bcc2af3d9b4d73c920
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79293310"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945866"
 ---
 ::: zone target="docs"
 
@@ -56,8 +56,8 @@ ms.locfileid: "79293310"
 | **软件**| **版本** |
 | --- | --- |
 | Windows PowerShell |5.0 |
-| .NET framework |4.5.1 |
-| Windows Management Framework |5.0|
+| .NET Framework |4.5.1 |
+| Windows Management Framework |5.1|
 | BitLocker| - |
 
 ## <a name="other-required-software-for-linux-clients"></a>Linux 客户端所需的其他软件
@@ -77,17 +77,13 @@ ms.locfileid: "79293310"
 
 | **存储帐户** | **说明** |
 | --- | --- |
-| 经典 | 标准 |
+| 经典 | Standard |
 | 常规用途  |标准；同时支持 V1 和 V2。 同时支持热层和冷层。 |
 | Blob 存储帐户 | |
 
->[!NOTE]
-> 不支持 Azure Data Lake Storage Gen 2 帐户。
+## <a name="supported-storage-types-for-upload"></a>上传操作支持的存储类型
 
-
-## <a name="supported-storage-types-for-upload"></a>支持的用于上传的存储类型
-
-下面是一个列表，其中的存储类型可以使用 Data Box Disk 上传到 Azure。
+下面是使用 Data Box Disk 上传到 Azure 时支持的存储类型的列表。
 
 | **文件格式** | **说明** |
 | --- | --- |

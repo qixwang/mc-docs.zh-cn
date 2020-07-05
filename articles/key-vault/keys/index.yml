@@ -11,12 +11,12 @@ metadata:
   author: msmbaldwin
   ms.author: mbaldwin
   ms.date: 04/07/2020
-  ms.openlocfilehash: eca671495a0e97bea484c10bd88fb0f53e13c1c3
-  ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
+  ms.openlocfilehash: ad53e342ad757117c722bc94548ddef17187f14c
+  ms.sourcegitcommit: 4f84bba7e509a321b6f68a2da475027c539b8fd3
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 04/30/2020
-  ms.locfileid: "82588984"
+  ms.lasthandoff: 07/01/2020
+  ms.locfileid: "85796181"
 landingContent:
 - title: 密钥
   linkLists:

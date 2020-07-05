@@ -4,14 +4,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
 origin.date: 02/20/2020
-ms.date: 04/20/2020
+ms.date: 06/19/2019
 ms.author: v-tawe
-ms.openlocfilehash: 62ff4da3bc5ce10173be9cf985f273be007bf961
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.openlocfilehash: 2f75ceedbd1808cae2406642d613f63d88ed6721
+ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82126783"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85805590"
 ---
 本快速入门介绍如何使用适用于 Windows 的语音设备 SDK 来生成支持语音的产品。
 
@@ -43,19 +43,19 @@ ms.locfileid: "82126783"
 
 1. 启动 Eclipse。
 
-1. 在 Eclipse IDE Launcher 的“工作区”字段中，输入新工作区目录的名称   。 然后选择“启动”。 
+1. 在 Eclipse IDE Launcher 的“工作区”字段中，输入新工作区目录的名称 。 然后选择“启动”。
 
    ![Eclipse Launcher 的屏幕截图](../media/speech-devices-sdk/eclipse-launcher.png)
 
 1. 片刻之后，Eclipse IDE 的主窗口将会显示。 如果出现了欢迎屏幕，请将其关闭。
 
-1. 从 Eclipse 菜单栏上，依次选择“文件”   > “新建”   > “Java 项目”以新建一个项目  。 如果不可用，请依次选择“项目”  和“Java 项目”  。
+1. 从 Eclipse 菜单栏上，依次选择“文件” > “新建” > “Java 项目”以新建一个项目。 如果不可用，请依次选择“项目”和“Java 项目”。
 
-1. 此时将启动“新建 Java 项目”向导  。 **浏览**示例项目所在的位置。 选择“完成”。 
+1. 此时将启动“新建 Java 项目”向导。 **浏览**示例项目所在的位置。 选择“完成”。
 
    ![“新建 Java 项目”向导的屏幕截图](../media/speech-devices-sdk/eclipse-new-java-project.png)
 
-1. 在“包资源管理器”  中，右键单击你的项目。 从上下文菜单中选择“配置” > “转换为 Maven 项目”。   选择“完成”。 
+1. 在“包资源管理器”中，右键单击你的项目。 从上下文菜单中选择“配置” > “转换为 Maven 项目”。  选择“完成”。
 
    ![包资源管理器的屏幕截图](../media/speech-devices-sdk/eclipse-convert-to-maven.png)
 
@@ -75,12 +75,12 @@ ms.locfileid: "82126783"
         <dependency>
              <groupId>com.microsoft.cognitiveservices.speech</groupId>
              <artifactId>client-sdk</artifactId>
-             <version>1.11.0</version>
+             <version>1.12.1</version>
         </dependency>
     </dependencies>
    ```
 
-1. 将 Windows-x64  的内容复制到 Java 项目位置，如 **C:\SDSDK\JRE-Sample-Release**
+1. 将 Windows-x64 的内容复制到 Java 项目位置，如 **C:\SDSDK\JRE-Sample-Release**
 
 1. 将 `kws.table`、`participants.properties`、`Microsoft.CognitiveServices.Speech.extension.pma.dll` 复制到项目文件夹 **target\classes**
 
@@ -110,7 +110,7 @@ ms.locfileid: "82126783"
 
     要使用新的关键字，请更新 `FunctionsList.java` 中的下面一行，并将关键字复制到应用。 例如，要使用关键字包 `machine.zip` 中的关键字“Machine”，请执行以下操作：
 
-   * 将 `kws.table` 文件从 zip 包复制到项目文件夹“target/classes”中  。
+   * 将 `kws.table` 文件从 zip 包复制到项目文件夹“target/classes”中。
    * 使用关键字名称更新 `FunctionsList.java`：
 
      ```java
@@ -119,7 +119,7 @@ ms.locfileid: "82126783"
 
 ## <a name="run-the-sample-application-from-eclipse"></a>从 Eclipse 运行示例应用程序
 
-1. 从 Eclipse 菜单栏中，依次选择“运行”   > “运行方式”   >   “Java 应用程序”。 然后选择“FunctionsList”和“确定”。  
+1. 从 Eclipse 菜单栏中，依次选择“运行” > “运行方式” > “Java 应用程序”。 然后选择“FunctionsList”和“确定”。 
 
    ![选择 Java 应用程序的屏幕截图](../media/speech-devices-sdk/eclipse-run-sample.png)
 
@@ -133,13 +133,13 @@ ms.locfileid: "82126783"
 
 ## <a name="create-and-run-a-standalone-application"></a>创建并运行独立应用程序
 
-1. 在“包资源管理器”  中，右键单击你的项目。 选择“导出”  。
+1. 在“包资源管理器”中，右键单击你的项目。 选择“导出”。
 
-1. 此时将显示“导出”  窗口。 展开“Java”  ，选择“可运行的 JAR 文件”  ，然后选择“下一步”  。
+1. 此时将显示“导出”窗口。 展开“Java”，选择“可运行的 JAR 文件”，然后选择“下一步”。
 
    ![“导出”窗口的屏幕截图](../media/speech-devices-sdk/eclipse-export-windows.png)
 
-1. 此时将显示“可运行的 JAR 文件导出”  窗口。 为应用程序选择“导出目标”  ，然后选择“完成”  。
+1. 此时将显示“可运行的 JAR 文件导出”窗口。 为应用程序选择“导出目标”，然后选择“完成”。
 
    ![“可运行的 JAR 文件导出”的屏幕截图](../media/speech-devices-sdk/eclipse-export-jar-windows.png)
 

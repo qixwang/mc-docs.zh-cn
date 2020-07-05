@@ -7,12 +7,12 @@ ms.topic: sample
 origin.date: 11/08/2019
 ms.date: 12/23/2019
 ms.author: hrasheed
-ms.openlocfilehash: aa5f6e31b16b8fbfdb80927b07fbf53e8d25dc06
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 62c4f800c08ecfd16517da256fce9e0292908577
+ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75335930"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85516563"
 ---
 # <a name="azure-hdinsight-python-samples"></a>Azure HDInsight：Python 示例
 
@@ -25,7 +25,7 @@ ms.locfileid: "75335930"
 > [!Important]
 > Python 2.7 将于 2020 年 1 月 1 日弃用。 如果你仍在使用 Python 2.7，请升级到 3.7 以使用 HDInsight Python SDK。  
 
-本文提供：
+本文将提供：
 
 * 有关群集创建任务的示例链接。
 * 有关其他管理任务的参考内容链接。
@@ -38,10 +38,10 @@ ms.locfileid: "75335930"
 
 ## <a name="cluster-management---creation"></a>群集管理 - 创建
 
-* [创建 Kafka 群集](https://github.com/Azure-Samples/hdinsight-python-sdk-samples/blob/master/samples/create_kafka_cluster_sample.py)
-* [创建 Spark 群集](https://github.com/Azure-Samples/hdinsight-python-sdk-samples/blob/master/samples/create_spark_cluster_sample.py)
-* [创建包含 Azure Data Lake Storage Gen2 的 Spark 群集](https://github.com/Azure-Samples/hdinsight-python-sdk-samples/blob/master/samples/create_hadoop_cluster_with_adls_gen2_sample.py)
-* [创建包含企业安全性套餐 (ESP) 的 Spark 群集](https://github.com/Azure-Samples/hdinsight-python-sdk-samples/blob/master/samples/create_esp_cluster_sample.py)
+* [创建 Apache Kafka 群集](https://github.com/Azure-Samples/hdinsight-python-sdk-samples/blob/master/samples/create_kafka_cluster_sample.py)
+* [创建 Apache Spark 群集](https://github.com/Azure-Samples/hdinsight-python-sdk-samples/blob/master/samples/create_spark_cluster_sample.py)
+* [使用 Azure Data Lake Storage Gen2 创建 Apache Spark 群集](https://github.com/Azure-Samples/hdinsight-python-sdk-samples/blob/master/samples/create_hadoop_cluster_with_adls_gen2_sample.py)
+* [创建包含企业安全性套餐 (ESP) 的 Apache Spark 群集](https://github.com/Azure-Samples/hdinsight-python-sdk-samples/blob/master/samples/create_esp_cluster_sample.py)
 
 通过克隆 [hdinsight-python-sdk-samples](https://github.com/Azure-Samples/hdinsight-python-sdk-samples) GitHub 存储库，可获取 Python 的这些示例。
 

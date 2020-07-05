@@ -1,45 +1,44 @@
 ---
 title: Azure 上的 Visual Studio 映像
 description: 在 Azure 虚拟机上使用 Visual Studio。
-services: virtual-machines-windows
-documentationcenter: virtual-machines
 author: rockboyfor
 manager: digimobile
-tags: azure-resource-manager
 ms.service: virtual-machines-windows
 ms.custom: vs-azure
 ms.workload: azure-vs
-ms.topic: article
-ms.tgt_pltfrm: vm-windows
-origin.date: 12/04/2019
-ms.date: 04/27/2020
+ms.topic: conceptual
+origin.date: 04/23/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
 keywords: visualstudio
-ms.openlocfilehash: 89e7310c0777daf77959b4b8519f9ccdbb1aa4b1
-ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
+ms.openlocfilehash: 5791da4e5e272c4043b61871606f000d62961720
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83392447"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945834"
 ---
 <a name="top"></a>
 # <a name="visual-studio-images-on-azure"></a>Azure 上的 Visual Studio 映像
-使用预配置的 Azure 虚拟机 (VM) 中的 Visual Studio 是从无到启动并运行的开发环境的简单快捷方法。 具有不同 Visual Studio 配置的系统映像位于 [Azure 市场](https://market.azure.cn/marketplace/apps?search=Visual%20Studio&page=1)。
+使用预配置的 Azure 虚拟机 (VM) 中的 Visual Studio 是从无到启动并运行的开发环境的简单快捷方法。 具有不同 Visual Studio 配置的系统映像位于 [Azure 市场](https://market.azure.cn/marketplace/apps/filter?search=Visual%20Studio)。
 
-<!-- Notice: URL is correct on https://market.azure.cn/marketplace/apps?search=Visual%20Studio&page=1-->
+<!-- Notice: URL is correct on https://market.azure.cn/marketplace/apps/filter?search=Visual%20Studio-->
 
 不熟悉 Azure？ [创建一个 Azure 试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 
+> [!NOTE]
+> 并非所有订阅都可以部署 Windows 10 映像。 有关详细信息，请参阅[在 Azure 中使用 Windows 客户端实现开发/测试方案](/virtual-machines/windows/client-images)
+
 ## <a name="what-configurations-and-versions-are-available"></a>提供了哪些配置和版本？
-在 Azure 市场中，可找到最新主版本的映像：Visual Studio 2019、Visual Studio 2017 和 Visual Studio 2015。  对于发布的每个主版本，可看到最初的“发布到 Web”(RTW) 版本和最新更新版本。  其中每个版本都提供 Visual Studio Enterprise 和 Visual Studio Community 版本。  这些映像至少每个月更新一次，以包括最新的 Visual Studio 和 Windows 更新。  尽管映像的名称保持不变，但每个映像的说明包括已安装的产品版本和映像的截止日期。
+在 Azure 市场中，可以找到最新主版本（Visual Studio 2019、Visual Studio 2017 和 Visual Studio 2015）的映像。  对于发布的每个主版本，都可以看到最初的“发布到 Web”(RTW) 版本和最新更新版本。  其中每个版本都提供 Visual Studio Enterprise 和 Visual Studio Community 版本。  这些映像至少每个月更新一次，以包括最新的 Visual Studio 和 Windows 更新。  尽管映像的名称保持不变，但每个映像的说明包括已安装的产品版本和映像的截止日期。
 
 | 发行版本                                                                                                                                                | 版本              | 产品版本   |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------:|:-----------------:|
-| [Visual Studio 2019：最新（版本 16.4）](https://market.azure.cn/marketplace/apps/microsoftvisualstudio.visualstudio2019latest?tab=Overview) | Enterprise、Community | 版本 16.4.0    |
-| [Visual Studio 2019：RTW](https://market.azure.cn/marketplace/apps/microsoftvisualstudio.visualstudio2019?tab=Overview)                         | Enterprise、Community | 版本 16.0.9    |
-| [Visual Studio 2017：最新（版本 15.9）](https://market.azure.cn/marketplace/apps/microsoftvisualstudio.visualstudio?tab=Overview)           | Enterprise、Community | 版本 15.9.17   |
-| [Visual Studio 2017：RTW](https://market.azure.cn/marketplace/apps/microsoftvisualstudio.visualstudio?tab=Overview)                             | Enterprise、Community | 版本 15.0.27  |
-| [Visual Studio 2015：最新 (Update 3)](https://market.azure.cn/marketplace/apps/microsoftvisualstudio.visualstudio?tab=Overview)               | Enterprise、Community | 版本 14.0.25431.01 |
+| [Visual Studio 2019：最新（版本 16.5）](https://market.azure.cn/marketplace/apps/filter?search=Visual%20Studio%202019%20Latest) | Enterprise、Community | 版本 16.5.4    |
+| Visual Studio 2019：RTW                         | Enterprise | 版本 16.0.13    |
+| Visual Studio 2017：最新（版本 15.9）           | Enterprise、Community | 版本 15.9.22   |
+| Visual Studio 2017：RTW                             | Enterprise、Community | 版本 15.0.28  |
+| Visual Studio 2015：最新 (Update 3)               | Enterprise、Community | 版本 14.0.25431.01 |
 
 > [!NOTE]
 > 根据 Azure 服务策略，Visual Studio 2015 最初发布的 (RTW) 版本已过期，无法提供服务。 Visual Studio 2015 Update 3 是为 Visual Studio 2015 产品线提供的唯一剩余版本。
@@ -97,7 +96,7 @@ Visual Studio 遵循 Azure 中的“自带许可”模式。 与专有硬件上�
 
 开发环境的范围很大，而构建出较复杂环境有一些相关的实际成本。 不管环境如何配置，都可以将已配置的 VM 保存为或捕获为“基础映像”供将来使用或供团队的其他成员使用。 然后，启动新的 VM 时，从基础映像（而不是 Azure 市场映像）对其进行预配。
 
-快速摘要：使用系统准备工具 (Sysprep) 关闭正在运行的 VM，然后通过 Azure 门户的 UI 将 VM 捕获为映像（图 1）  。 Azure 会将包含该映像的 `.vhd` 文件保存在所选存储帐户中。 然后，新映像在订阅的资源列表中显示为映像资源。
+快速摘要：使用系统准备工具 (Sysprep) 关闭正在运行的 VM，然后通过 Azure 门户的 UI 将 VM 捕获为映像（图 1）。 Azure 会将包含该映像的 `.vhd` 文件保存在所选存储帐户中。 然后，新映像在订阅的资源列表中显示为映像资源。
 
 <img src="media/using-visual-studio-vm/capture-vm.png" alt="Capture an image through the Azure portal UI" style="border:3px solid Silver; display: block; margin: auto;"><center> *（图 1）通过 Azure 门户 UI 捕获映像。* </center>
 
@@ -111,7 +110,7 @@ Visual Studio 遵循 Azure 中的“自带许可”模式。 与专有硬件上�
 
 <!-- Notice: Change dollers to CNY-->
 
-此外，开发任务或技术可能需要更大的规模，如各种开发配置和多种计算机配置。 可使用 Azure 开发测试实验室，创建可自动构造“黄金映像”的配方  。 还可以使用开发测试实验室管理团队正在运行的 VM 策略。 
+此外，开发任务或技术可能需要更大的规模，如各种开发配置和多种计算机配置。 可使用 Azure 开发测试实验室，创建可自动构造“黄金映像”的配方。 还可以使用开发测试实验室管理团队正在运行的 VM 策略。 
 
 <!-- Not Available on [Using Azure DevTest Labs for developers](/devtest-lab/devtest-lab-developer-lab) -->
 

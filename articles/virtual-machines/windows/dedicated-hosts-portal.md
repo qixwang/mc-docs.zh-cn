@@ -5,17 +5,18 @@ author: rockboyfor
 ms.service: virtual-machines-windows
 ms.topic: article
 ms.workload: infrastructure
-ms.date: 05/25/2020
+origin.date: 03/10/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
 ms.reviewer: zivr
-ms.openlocfilehash: 2be45070ed9eb7a73f33153b85baa78b53e599d1
-ms.sourcegitcommit: 8a2fbc0eae8d8f7297f5334f508ff868b4077f32
+ms.openlocfilehash: 31f1db628f8d8e47c7f4163cce0da08d48aa36c1
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84320997"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85946017"
 ---
-<!--Verified the Portal UI-->
+<!--Verified the Portal UI and confirmed with Peter Gu-->
 <!--CAN NOT VERIFIED DUE TO LIMITED CPU VCORE-->
 # <a name="deploy-vms-to-dedicated-hosts-using-the-portal"></a>使用门户将 VM 部署到专用主机
 
@@ -46,7 +47,7 @@ ms.locfileid: "84320997"
 
 - VM 大小必须属于专用主机所用的同一大小系列。 例如，如果专用主机是 DSv3，则 VM 大小可以是 Standard_D4s_v3，但不能是 Standard_A4_v2。 
 - VM 需要位于专用主机所在的同一区域。
-- VM 不能是邻近放置组的一部分。 在将 VM 移动到专用主机之前，请先从邻近放置组中删除该 VM。 有关详细信息，请参阅[将 VM 移出邻近放置组](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups#move-an-existing-vm-out-of-a-proximity-placement-group)
+- VM 不能是邻近放置组的一部分。 在将 VM 移动到专用主机之前，请先从邻近放置组中删除该 VM。 有关详细信息，请参阅[将 VM 移出邻近放置组](/virtual-machines/windows/proximity-placement-groups#move-an-existing-vm-out-of-a-proximity-placement-group)
 - VM 不能位于可用性集中。
 
     <!--Not Available on  availability zone-->
@@ -69,6 +70,4 @@ ms.locfileid: "84320997"
 
 - 你还可以使用 [Azure PowerShell](dedicated-hosts-powershell.md) 部署专用主机。
 
-
-<!-- Update_Description: new article about dedicated hosts portal -->
-<!--NEW.date: 06/01/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

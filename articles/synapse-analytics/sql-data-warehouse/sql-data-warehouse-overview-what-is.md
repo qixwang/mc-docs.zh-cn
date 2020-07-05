@@ -8,15 +8,15 @@ ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: ''
 origin.date: 11/04/2019
-ms.date: 05/11/2020
+ms.date: 07/06/2020
 ms.author: v-jay
 ms.reviewer: igorstan
-ms.openlocfilehash: 89c51ce3b459e50cdf77da1624f330a46f4222a8
-ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
+ms.openlocfilehash: 9bdab35b1901fac5cbf2c4db6dd2c907f9096dc5
+ms.sourcegitcommit: 7ea2d04481512e185a60fa3b0f7b0761e3ed7b59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82198599"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85845812"
 ---
 # <a name="what-is-azure-synapse-analytics-formerly-sql-dw"></a>什么是 Azure Synapse Analytics（以前称为 SQL DW）？
 
@@ -26,10 +26,10 @@ Azure Synapse 包含四个组件：
 
 - Synapse SQL：基于 T-SQL 的完整分析 - 正式版
   - SQL 池（按预配的 DWU 付费）
-  - SQL 随选（按处理的 TB 付费）-（预览）
+  - SQL 按需（按处理的 TB 付费）（预览）
 - Spark：深度集成的 Apache Spark（预览）
 - Synapse 管道：混合数据集成（预览）
-- 工作室：统一的用户体验。  （预览版）
+- 工作室：统一的用户体验。 （预览版）
 
 ## <a name="synapse-sql-pool-in-azure-synapse"></a>Azure Synapse 中的 Synapse SQL 池
 

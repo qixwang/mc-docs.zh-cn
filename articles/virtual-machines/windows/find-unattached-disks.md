@@ -1,19 +1,19 @@
 ---
-title: 查找并删除未连接的 Azure 托管和非托管磁盘 | Azure
+title: 查找并删除未连接的 Azure 托管和非托管磁盘
 description: 如何使用 Azure PowerShell 查找并删除未连接的 Azure 托管和非托管（VHD/页 blob）磁盘。
 author: rockboyfor
 ms.service: virtual-machines-windows
-ms.topic: conceptual
+ms.topic: how-to
 origin.date: 02/22/2019
-ms.date: 09/16/2019
+ms.date: 07/06/2020
 ms.author: v-yeche
 ms.subservice: disks
-ms.openlocfilehash: 48ac02c5736b1f52dcb69cd761d629de1bf34aba
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: a4b5bfa3f4239455060c16f8d67a8e608a6536bd
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "70921217"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945877"
 ---
 # <a name="find-and-delete-unattached-azure-managed-and-unmanaged-disks"></a>查找并删除未连接的 Azure 托管和非托管磁盘
 
@@ -21,12 +21,12 @@ ms.locfileid: "70921217"
 
 ## <a name="managed-disks-find-and-delete-unattached-disks"></a>托管磁盘：查找并删除未附加的磁盘
 
-以下脚本通过检查 ManagedBy 属性的值查找未附加的[托管磁盘](managed-disks-overview.md)  。 有托管磁盘附加到 VM 时，ManagedBy 属性包含 VM 的资源 ID  。 未附加托管磁盘时，ManagedBy  属性为 null。 该脚本检查 Azure 订阅中的所有托管磁盘。 当脚本找到一个 ManagedBy 属性设置为 null 的托管磁盘时，脚本将确定该磁盘为未附加  。
+以下脚本通过检查 ManagedBy 属性的值查找未附加的[托管磁盘](managed-disks-overview.md)****。 有托管磁盘附加到 VM 时，ManagedBy 属性包含 VM 的资源 ID****。 未附加托管磁盘时，ManagedBy**** 属性为 null。 该脚本检查 Azure 订阅中的所有托管磁盘。 当脚本找到一个 ManagedBy 属性设置为 null 的托管磁盘时，脚本将确定该磁盘为未附加****。
 
 >[!IMPORTANT]
->首先，通过将 deleteUnattachedDisks  变量设置为 0 来运行脚本。 通过此操作可查找并查看所有未附加的托管磁盘。
+>首先，通过将 deleteUnattachedDisks**** 变量设置为 0 来运行脚本。 通过此操作可查找并查看所有未附加的托管磁盘。
 >
->在检查所有未附加磁盘后，再次运行脚本并将 deleteUnattachedDisks  变量设置为 1。 通过此操作可删除所有未附加的托管磁盘。
+>在检查所有未附加磁盘后，再次运行脚本并将 deleteUnattachedDisks**** 变量设置为 1。 通过此操作可删除所有未附加的托管磁盘。
 
 ```powershell
 # Set deleteUnattachedDisks=1 if you want to delete unattached Managed Disks
@@ -50,12 +50,12 @@ foreach ($md in $managedDisks) {
 
 ## <a name="unmanaged-disks-find-and-delete-unattached-disks"></a>非托管磁盘：查找并删除未附加的磁盘
 
-非托管磁盘是指以[页 blob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-page-blobs) 形式存储在 [Azure 存储帐户](../../storage/common/storage-create-storage-account.md)中的 VHD 文件。 以下脚本通过检查 LeaseStatus  属性的值，查找未附加的非托管磁盘（页 blob）。 如果非托管磁盘附加到 VM，则 LeaseStatus  属性设置为“已锁定”  。 如果非托管磁盘未附加，则 LeaseStatus  属性设置为“未锁定”  。 脚本会检查 Azure 订阅中所有 Azure 存储帐户中的所有非托管磁盘。 当脚本找到一个 LeaseStatus 属性设置为“未锁定”的托管磁盘时，脚本将确定该磁盘为未附加   。
+非托管磁盘是指以[页 blob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-page-blobs) 形式存储在 [Azure 存储帐户](../../storage/common/storage-account-overview.md)中的 VHD 文件。 以下脚本通过检查 LeaseStatus**** 属性的值，查找未附加的非托管磁盘（页 blob）。 如果非托管磁盘附加到 VM，则 LeaseStatus**** 属性设置为“已锁定”****。 如果非托管磁盘未附加，则 LeaseStatus**** 属性设置为“未锁定”****。 脚本会检查 Azure 订阅中所有 Azure 存储帐户中的所有非托管磁盘。 当脚本找到一个 LeaseStatus 属性设置为“未锁定”的托管磁盘时，脚本将确定该磁盘为未附加**** ****。
 
 >[!IMPORTANT]
->首先，通过将 deleteUnattachedVHDs  变量设置为 0 来运行脚本。 通过此操作可查找并查看所有未附加的非托管 VHD。
+>首先，通过将 deleteUnattachedVHDs**** 变量设置为 0 来运行脚本。 通过此操作可查找并查看所有未附加的非托管 VHD。
 >
->在检查所有未附加磁盘后，再次运行脚本并将 deleteUnattachedVHDs  变量设置为 1。 通过此操作可删除所有未附加的非托管 VHD。
+>在检查所有未附加磁盘后，再次运行脚本并将 deleteUnattachedVHDs**** 变量设置为 1。 通过此操作可删除所有未附加的非托管 VHD。
 
 ```powershell
 # Sign in the Azure China Cloud
@@ -90,6 +90,6 @@ foreach($storageAccount in $storageAccounts){
 
 ## <a name="next-steps"></a>后续步骤
 
-有关详细信息，请参阅[删除存储帐户](../../storage/common/storage-create-storage-account.md)和[使用 PowerShell 标识孤立磁盘](https://blogs.technet.microsoft.com/ukplatforms/2018/02/21/azure-cost-optimisation-series-identify-orphaned-disks-using-powershell/)
+有关详细信息，请参阅[删除存储帐户](../../storage/common/storage-account-create.md#delete-a-storage-account)和[使用 PowerShell 标识孤立磁盘](https://blogs.technet.microsoft.com/ukplatforms/2018/02/21/azure-cost-optimisation-series-identify-orphaned-disks-using-powershell/)
 
-<!-- Update_Description: update meta properties, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

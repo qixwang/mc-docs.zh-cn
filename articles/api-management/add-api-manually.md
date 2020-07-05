@@ -13,12 +13,12 @@ ms.topic: tutorial
 origin.date: 08/27/2018
 ms.date: 06/04/2020
 ms.author: v-johya
-ms.openlocfilehash: b2596a1e321f7a88c30ecfa11597a8f5aecf717b
-ms.sourcegitcommit: 1c01c98a2a42a7555d756569101a85e3245732fd
+ms.openlocfilehash: 50826b3e45e93faa6a642b4c8de78abc8c33b890
+ms.sourcegitcommit: 372899a2a21794e631eda1c6a11b4fd5c38751d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85097156"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85852124"
 ---
 # <a name="add-an-api-manually"></a>手动添加 API
 
@@ -39,7 +39,8 @@ ms.locfileid: "85097156"
 1. 在 Azure 门户中导航到 API 管理服务，然后从菜单中选择“API”。
 2. 在左侧菜单中，选择“+ 添加 API”。
 3. 从列表中选择“空白 API”。  
-    空白 API![](./media/add-api-manually/blank-api.png)  
+
+    ![空白 API](./media/add-api-manually/blank-api.png)  
 4. 输入 API 的设置。 在[导入和发布第一个 API](import-and-publish.md) 教程中对这些设置进行了说明。
 5. 选择“创建” 。
 

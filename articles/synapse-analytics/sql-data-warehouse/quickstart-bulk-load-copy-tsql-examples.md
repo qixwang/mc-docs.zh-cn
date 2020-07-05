@@ -7,15 +7,15 @@ ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: ''
 origin.date: 05/06/2020
-ms.date: 06/15/2020
+ms.date: 07/06/2020
 ms.author: v-jay
 ms.reviewer: jrasnick
-ms.openlocfilehash: 33e81a5c0fc05bfc1aba4b2aa2d6db68371ee541
-ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
+ms.openlocfilehash: 6489d45397648df6fa52dbdb026c671b0b9fa2f5
+ms.sourcegitcommit: 7ea2d04481512e185a60fa3b0f7b0761e3ed7b59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84723827"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85845908"
 ---
 # <a name="securely-load-data-using-synapse-sql"></a>使用 Synapse SQL 安全地加载数据
 
@@ -29,7 +29,7 @@ ms.locfileid: "84723827"
 |  Azure Blob 存储  | SAS/MSI/SERVICE PRINCIPAL/KEY/AAD |              SAS/KEY              |              SAS/KEY              |
 | Azure Data Lake Gen2 | SAS/MSI/SERVICE PRINCIPAL/KEY/AAD | SAS/MSI/SERVICE PRINCIPAL/KEY/AAD | SAS/MSI/SERVICE PRINCIPAL/KEY/AAD |
 
-## <a name="a-storage-account-key-with-lf-as-the-row-terminator"></a>A. 以 LF 作为行终止符的存储帐户密钥
+## <a name="a-storage-account-key-with-lf-as-the-row-terminator-unix-style-new-line"></a>A. 以 LF 作为行终止符的存储帐户密钥（Unix 样式的新行）
 
 
 ```sql
@@ -48,7 +48,7 @@ WITH (
 >
 > - 使用十六进制值 (0x0A) 指定换行符。 请注意，COPY 语句会将“\n”字符串解释为“\r\n”（回车换行符）。
 
-## <a name="b-shared-access-signatures-sas-with-crlf-as-the-row-terminator"></a>B. 以 CRLF 作为行终止符的共享访问签名 (SAS)
+## <a name="b-shared-access-signatures-sas-with-crlf-as-the-row-terminator-windows-style-new-line"></a>B. 使用 CRLF 作为行终止符的共享访问签名 (SAS)（Windows 样式新行）
 ```sql
 COPY INTO target_table
 FROM 'https://adlsgen2account.dfs.core.chinacloudapi.cn/myblobcontainer/folder1/'

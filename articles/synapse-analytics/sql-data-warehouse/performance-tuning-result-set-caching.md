@@ -8,20 +8,20 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: ''
 origin.date: 10/10/2019
-ms.date: 06/15/2020
+ms.date: 07/06/2020
 ms.author: v-jay
 ms.reviewer: nidejaco;
 ms.custom: azure-synapse
-ms.openlocfilehash: a21aaeb422033d43b66b1f97d43bf18553a9d672
-ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
+ms.openlocfilehash: befc8a5eca6eb9353cfc535c8709cce5bad44698
+ms.sourcegitcommit: 7ea2d04481512e185a60fa3b0f7b0761e3ed7b59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84723148"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85845910"
 ---
 # <a name="performance-tuning-with-result-set-caching"></a>使用结果集缓存优化性能
 
-启用结果集缓存后，SQL Analytics 将在用户数据库中自动缓存查询结果，以供重复使用。  这样，后续的查询执行就能直接从持久性缓存中获取结果，因此无需重新计算。   结果集缓存提高了查询性能，并减少了计算资源的用量。  此外，使用缓存结果集的查询不会占用任何并发槽，因此不会计入现有的并发限制。 出于安全考虑，如果访问方用户的数据访问权限与创建缓存结果的用户相同，则访问方用户只能访问缓存的结果。  
+启用结果集缓存后，Synapse SQL 会自动将查询结果缓存到用户数据库中，以供重复使用。  这样，后续的查询执行就能直接从持久性缓存中获取结果，因此无需重新计算。   结果集缓存提高了查询性能，并减少了计算资源的用量。  此外，使用缓存结果集的查询不会占用任何并发槽，因此不会计入现有的并发限制。 出于安全考虑，如果访问方用户的数据访问权限与创建缓存结果的用户相同，则访问方用户只能访问缓存的结果。  
 
 ## <a name="key-commands"></a>关键命令
 
@@ -82,7 +82,7 @@ WHERE request_id = <'Your_Query_Request_ID'>
 
 每个数据库的结果集缓存最大大小为 1 TB。  当底层查询数据发生更改时，缓存结果会自动失效。  
 
-缓存逐出由 SQL Analytics 按以下计划自动管理：
+缓存逐出由 Synapse SQL 按照以下计划自动管理：
 
 - 如果结果集在 48 小时间隔时间内未使用，或者已失效。
 - 当结果集缓存接近最大大小时。

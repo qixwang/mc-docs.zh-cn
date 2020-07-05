@@ -1,25 +1,19 @@
 ---
 title: 使用 PowerShell 从专用磁盘创建 Windows VM
 description: 使用资源管理器部署模型，通过将专用托管磁盘附加为 OS 磁盘来创建新的 Windows VM。
-services: virtual-machines-windows
 author: rockboyfor
-manager: digimobile
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 3b7d3cd5-e3d7-4041-a2a7-0290447458ea
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
 ms.topic: article
 origin.date: 10/10/2019
-ms.date: 02/10/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: aee98e4e4094a15b59705dcf5e01a7f4ca1c99f3
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: d14522cb68aa55f1717beaacf4e8eb7e36bce7de
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79291817"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85946020"
 ---
 # <a name="create-a-windows-vm-from-a-specialized-disk-by-using-powershell"></a>使用 PowerShell 从专用磁盘创建 Windows VM
 
@@ -68,9 +62,9 @@ $osDisk = Get-AzDisk `
 
 现在可以直接将 VHD 上传到托管磁盘中。 有关说明，请参阅[使用 Azure PowerShell 将 VHD 上传到 Azure](disks-upload-vhd-to-managed-disk-powershell.md)。
 
-## <a name="option-3-copy-an-existing-azure-vm"></a>选项 3：复制现有 Azure VM
+## <a name="option-3-copy-an-existing-azure-vm"></a>选项 3：复制现有的 Azure VM
 
-通过拍摄 VM 快照来创建使用托管磁盘的 VM 副本，然后使用该快照创建一个新的托管磁盘和一个新 VM。
+通过创建 VM 快照来创建使用托管磁盘的 VM 副本，然后使用该快照创建一个新的托管磁盘和一个新 VM。
 
 如果要将现有 VM 复制到其他区域，可能需要使用 azcopy [在其他区域中创建磁盘副本](disks-upload-vhd-to-managed-disk-powershell.md#copy-a-managed-disk)。 
 
@@ -110,7 +104,7 @@ $snapshotConfig =  New-AzSnapshotConfig `
    -Location $location 
 ```
 
-拍摄快照。
+创建快照。
 
 ```powershell
 $snapShot = New-AzSnapshot `
@@ -123,7 +117,7 @@ $snapShot = New-AzSnapshot `
 
 ### <a name="create-a-new-disk-from-the-snapshot"></a>从快照创建新磁盘
 
-使用 [New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/new-azdisk) 基于快照创建托管磁盘。 此示例使用“myOSDisk”作为磁盘名称  。
+使用 [New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/new-azdisk) 基于快照创建托管磁盘。 此示例使用“myOSDisk”作为磁盘名称。
 
 创建适用于新 VM 的新资源组。
 
@@ -156,7 +150,7 @@ $osDisk = New-AzDisk -DiskName $osDiskName -Disk `
 
 为 VM 创建[虚拟网络](../../virtual-network/virtual-networks-overview.md)和子网。
 
-1. 创建子网。 本示例在资源组“myDestinationResourceGroup”中创建名为“mySubNet”的子网，并将子网地址前缀设置为 10.0.0.0/24    。
+1. 创建子网。 本示例在资源组“myDestinationResourceGroup”中创建名为“mySubNet”的子网，并将子网地址前缀设置为 10.0.0.0/24  。
 
     ```powershell
     $subnetName = 'mySubNet'
@@ -165,7 +159,7 @@ $osDisk = New-AzDisk -DiskName $osDiskName -Disk `
        -AddressPrefix 10.0.0.0/24
     ```
 
-2. 创建虚拟网络。 本示例将虚拟网络名称设置为 *myVnetName*，将位置设置为“中国北部”  ，将虚拟网络的地址前缀设置为 *10.0.0.0/16*。 
+2. 创建虚拟网络。 本示例将虚拟网络名称设置为 *myVnetName*，将位置设置为“中国北部”，将虚拟网络的地址前缀设置为 *10.0.0.0/16*。 
 
     ```powershell
     $vnetName = "myVnetName"
@@ -198,9 +192,9 @@ $nsg = New-AzNetworkSecurityGroup `
 有关终结点和 NSG 规则的详细信息，请参阅[使用 PowerShell 在 Azure 中打开 VM 端口](nsg-quickstart-powershell.md?toc=%2fvirtual-machines%2fwindows%2ftoc.json)。
 
 ### <a name="create-a-public-ip-address-and-nic"></a>创建公共 IP 地址和 NIC
-若要与虚拟网络中的虚拟机通信，需要一个 [公共 IP 地址](../../virtual-network/virtual-network-ip-addresses-overview-arm.md)和网络接口。
+若要与虚拟网络中的虚拟机通信，需要一个 [公共 IP 地址](../../virtual-network/public-ip-addresses.md)和网络接口。
 
-1. 创建公共 IP 地址。 在本示例中，公共 IP 地址名称设置为 *myIP*。
+1. 创建公共 IP。 在此示例中，公共 IP 地址名称设置为 *myIP*。
 
     ```powershell
     $ipName = "myIP"
@@ -210,7 +204,7 @@ $nsg = New-AzNetworkSecurityGroup `
        -AllocationMethod Dynamic
     ```       
 
-2. 创建 NIC。 在本示例中，NIC 名称设置为 *myNicName*。
+2. 创建 NIC。 在此示例中，NIC 名称设置为 *myNicName*。
 
     ```powershell
     $nicName = "myNicName"
@@ -223,7 +217,7 @@ $nsg = New-AzNetworkSecurityGroup `
 
 ### <a name="set-the-vm-name-and-size"></a>设置 VM 名称和大小
 
-此示例将 VM 名称设置为“myVM”，将 VM 大小设置为“Standard_A2”   。
+此示例将 VM 名称设置为“myVM”，将 VM 大小设置为“Standard_A2” 。
 
 ```powershell
 $vmName = "myVM"
@@ -245,7 +239,7 @@ $vm = Set-AzVMOSDisk -VM $vm -ManagedDiskId $osDisk.Id -StorageAccountType Stand
     -DiskSizeInGB 128 -CreateOption Attach -Windows
 ```
 
-### <a name="complete-the-vm"></a>完成 VM 
+### <a name="complete-the-vm"></a>完成该 VM 
 
 使用 [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) 以及刚才创建的配置创建 VM。
 
@@ -263,7 +257,7 @@ RequestId IsSuccessStatusCode StatusCode ReasonPhrase
 ```
 
 ### <a name="verify-that-the-vm-was-created"></a>验证是否已创建 VM
-应会在 [Azure 门户](https://portal.azure.cn)的“浏览” > “虚拟机”下看到新建的 VM，也可以使用以下 PowerShell 命令查看该 VM。
+应会在 [Azure 门户](https://portal.azure.cn)的“浏览” > “虚拟机”下看到新建的 VM，也可以使用以下 PowerShell 命令查看该 VM。 
 
 ```powershell
 $vmList = Get-AzVM -ResourceGroupName $destinationResourceGroup

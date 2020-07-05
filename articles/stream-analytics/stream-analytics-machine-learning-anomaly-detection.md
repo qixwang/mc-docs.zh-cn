@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 origin.date: 06/21/2019
 ms.date: 08/09/2019
-ms.openlocfilehash: d1f9d84256274e402062e7448b74f151379df684
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 15782a94d98b94fb6c8e06e0f39d34d655efdfa3
+ms.sourcegitcommit: 372899a2a21794e631eda1c6a11b4fd5c38751d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75856726"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85852011"
 ---
 # <a name="anomaly-detection-in-azure-stream-analytics"></a>Azure 流分析中的异常情况检测
 
@@ -148,12 +148,6 @@ Azure 示例[大规模流式处理存储库](https://github.com/Azure-Samples/st
 
 ### <a name="identifying-bottlenecks"></a>识别瓶颈
 使用 Azure 流分析作业中的“指标”窗格可识别管道中的瓶颈。 查看针对吞吐量的“输入/输出事件”，以及[“水印延迟”](https://azure.microsoft.com/blog/new-metric-in-azure-stream-analytics-tracks-latency-of-your-streaming-pipeline/)或“积压事件”，可以确定作业是否跟得上输入速率。 对于事件中心指标，请查看“受限制的请求数”并相应地调整阈值单位。  对于 Cosmos DB 指标，请查看“吞吐量”下的“每个分区键范围的最大 RU/秒消耗量”，以确保均匀消耗分区键范围。  对于 Azure SQL 数据库，请监视“日志 IO”和“CPU”。  
-
-## <a name="anomaly-detection-using-machine-learning-in-azure-stream-analytics"></a>使用 Azure 流分析中的机器学习进行异常情况检测
-
-以下视频演示了如何使用 Azure 流分析中的机器学习函数实时检测异常情况。 
-
-> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Anomaly-detection-using-machine-learning-in-Azure-Stream-Analytics/player]
 
 ## <a name="next-steps"></a>后续步骤
 

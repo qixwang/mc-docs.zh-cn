@@ -1,26 +1,20 @@
 ---
-title: 适用于 Windows 虚拟机的 Azure CLI 示例
+title: Azure CLI 示例 Windows
 description: Azure CLI 示例 Windows
-services: virtual-machines-windows
-documentationcenter: virtual-machines
 author: rockboyfor
-manager: digimobile
-tags: azure-service-management
-ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 origin.date: 03/01/2019
-ms.date: 04/27/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 2e3b648cced8b6271be1f978e7b13d0b01be6b08
-ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
+ms.openlocfilehash: 632743838c1ef37642a2819b409752ff832a356e
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82596380"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945701"
 ---
 # <a name="azure-cli-samples-for-windows-virtual-machines"></a>适用于 Windows 虚拟机的 Azure CLI 示例
 

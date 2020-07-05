@@ -1,21 +1,21 @@
 ---
 title: 针对 Azure 中 Windows 虚拟机的安全建议
 description: 应用这些建议可帮助履行共担责任模型中所述的安全义务，并提高部署的整体安全性。
-services: virtual-machines
 author: rockboyfor
 manager: digimobile
 ms.service: virtual-machines
-ms.topic: article
+ms.subservice: security
+ms.topic: conceptual
 origin.date: 11/13/2019
-ms.date: 04/27/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
 ms.custom: security-recommendations
-ms.openlocfilehash: c0b1f2fc3e2bfa0bb32a9057dd18550e0a8c1319
-ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
+ms.openlocfilehash: 860d3757e0fcd5f3c32ae51a7fc3f3dccdcbb9dc
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83392257"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945596"
 ---
 # <a name="security-recommendations-for-windows-virtual-machines-in-azure"></a>针对 Azure 中 Windows 虚拟机的安全建议
 

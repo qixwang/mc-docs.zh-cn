@@ -2,17 +2,18 @@
 title: 使用 Azure PowerShell 创建和加密 Windows VM
 description: 本快速入门介绍如何使用 Azure PowerShell 创建和加密 Windows 虚拟机
 author: rockboyfor
-ms.author: v-yeche
-ms.service: security
+ms.service: virtual-machines-windows
+ms.subservice: security
 ms.topic: quickstart
 origin.date: 05/17/2019
-ms.date: 11/11/2019
-ms.openlocfilehash: f36ff19e73d0f513bca713da76ec48f10e449baa
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 07/06/2020
+ms.author: v-yeche
+ms.openlocfilehash: 51aec07697e16462226e9dcc2110fe0e89935b92
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "73730673"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85946005"
 ---
 <!--Verify successfully-->
 # <a name="quickstart-create-and-encrypt-a-windows-virtual-machine-in-azure-with-powershell"></a>快速入门：使用 PowerShell 在 Azure 中创建和加密 Windows 虚拟机
@@ -46,7 +47,7 @@ New-AzVM -Name MyVm -Credential $cred -ResourceGroupName MyResourceGroup -Image 
 Azure 磁盘加密将其加密密钥存储在 Azure 密钥保管库中。 使用 [New-AzKeyvault](https://docs.microsoft.com/powershell/module/az.keyvault/new-azkeyvault) 创建一个密钥保管库。 要使密钥保管库能够存储加密密钥，请使用 -EnabledForDiskEncryption 参数。
 
 > [!Important]
-> 每个密钥保管库必须具有唯一的名称。 以下示例创建名为“myKV”  的密钥保管库，但你必须将其命名为不同的名称。
+> 每个密钥保管库必须具有唯一的名称。 以下示例创建名为“myKV”的密钥保管库，但你必须将其命名为不同的名称。
 
 ```powershell
 New-AzKeyvault -name MyKV -ResourceGroupName myResourceGroup -Location ChinaEast -EnabledForDiskEncryption
@@ -102,5 +103,4 @@ Remove-AzResourceGroup -Name "myResourceGroup"
 > [!div class="nextstepaction"]
 > [Azure 磁盘加密概述](disk-encryption-overview.md)
 
-<!--Update_Description: new articles on disk encryption powershell quickstart -->
-<!--ms.date: 11/11/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

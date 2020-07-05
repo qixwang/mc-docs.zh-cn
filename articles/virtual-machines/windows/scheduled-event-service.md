@@ -1,22 +1,19 @@
 ---
-title: 监视 Azure 中 Windows VM 的计划事件 | Azure
+title: 监视计划事件
 description: 了解如何监视 Azure 虚拟机的计划事件。
-services: virtual-machines-windows
-documentationcenter: ''
 author: rockboyfor
-manager: digimobile
 ms.service: virtual-machines-windows
-ms.tgt_pltfrm: vm-windows
+ms.subservice: monitoring
 origin.date: 08/20/2019
-ms.date: 11/11/2019
+ms.date: 07/06/2020
 ms.author: v-yeche
-ms.topic: conceptual
-ms.openlocfilehash: d8468bc0f2e6e0aac2fff02e90c8aff87d51b84f
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.topic: how-to
+ms.openlocfilehash: ec6dea054afbf64d41fb59c64d77b99590d3d734
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "74116960"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85946068"
 ---
 <!--Verify full content successfully-->
 # <a name="monitoring-scheduled-events"></a>监视计划事件
@@ -33,7 +30,7 @@ ms.locfileid: "74116960"
 
 ![显示事件生命周期的示意图](./media/notifications/events.png)
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 对于本示例，需要[在可用性集中创建一个 Windows 虚拟机](tutorial-availability-sets.md)。 对于可能会影响可用性集、云服务、虚拟机规模集或独立 VM 中的任何虚拟机的更改，计划事件会提供相关的通知。 我们将运行一个[服务](https://github.com/microsoft/AzureScheduledEventsService)来轮询充当收集器的某个 VM 上的计划事件，以获取可用性集中所有其他 VM 的事件。    
 
@@ -67,7 +64,7 @@ New-AzVm `
 .\SchService.ps1 -Setup
 ```
 
-启动服务。
+启动该服务。
 
 ```powershell
 .\SchService.ps1 -Start
@@ -107,24 +104,24 @@ New-AzVm `
 若要将计划事件路由到事件日志（服务会将其保存为应用程序日志），需要将虚拟机连接到 Log Analytics 工作区。  
 
 1. 打开所创建的工作区的页面。
-1. 在“连接到数据源”下，选择“Azure 虚拟机(VM)”。  
+1. 在“连接到数据源”下，选择“Azure 虚拟机(VM)”。 
 
     ![连接到用作数据源的 VM](./media/notifications/connect-to-data-source.png)
 
-1. 搜索并选择“myCollectorVM”。  
-1. 在“myCollectorVM”的新页面上，选择“连接”。  
+1. 搜索并选择“myCollectorVM”。 
+1. 在“myCollectorVM”的新页面上，选择“连接”。 
 
 这会在虚拟机中安装 [Microsoft 监视代理](/virtual-machines/extensions/oms-windows)。 将 VM 连接到工作区并安装扩展的过程需要几分钟时间。 
 
 ## <a name="configure-the-workspace"></a>配置工作区
 
-1. 打开工作区的页面，选择“高级设置”。 
-1. 在左侧菜单中选择“数据”，然后选择“Windows 事件日志”。  
-1. 在“从以下事件日志收集”中键入“应用程序”，然后从列表中选择“应用程序”。   
+1. 打开工作区的页面，选择“高级设置”。
+1. 在左侧菜单中选择“数据”，然后选择“Windows 事件日志”。 
+1. 在“从以下事件日志收集”中键入“应用程序”，然后从列表中选择“应用程序”。
 
     ![选择“高级设置”](./media/notifications/advanced.png)
 
-1. 保留“错误”、“警告”和“信息”，然后选择“保存”以保存设置。    
+1. 保留“错误”、“警告”和“信息”，然后选择“保存”以保存设置。   
 
     > [!NOTE]
     > 此时会出现一定的延迟，最长可能需要在 10 分钟之后才会显示日志。 
@@ -133,7 +130,7 @@ New-AzVm `
 
 将事件推送到 Log Analytics 后，可运行以下[查询](/azure-monitor/log-query/get-started-portal)来查找计划事件。
 
-1. 在页面顶部选择“日志”，将以下内容粘贴到文本框中： 
+1. 在页面顶部选择“日志”，将以下内容粘贴到文本框中：
 
     ```
     Event
@@ -149,32 +146,32 @@ New-AzVm `
     | project-away RenderedDescription,ReqJson
     ```
 
-1. 选择“保存”，键入 *logQuery* 作为名称，保留“查询”作为类型，键入 *VMLogs* 作为**类别**，然后选择“保存”。 
+1. 选择“保存”，键入 *logQuery* 作为名称，保留“查询”作为类型，键入 *VMLogs* 作为**类别**，然后选择“保存”。   
 
     ![保存查询](./media/notifications/save-query.png)
 
-1. 选择“新建警报规则”。  
+1. 选择“新建警报规则”。 
 1. 在“创建规则”页中，保留 `collectorworkspace` 作为**资源**。
-1. 在“条件”下，选择条目“每当客户日志搜索为 <login undefined> 时”。 此时将打开“配置信号逻辑”页。 
-1. 在“阈值”下输入 *0*，然后选择“完成”。
-1. 在“操作”下，选择“创建操作组”。   此时将打开“添加操作组”页。 
+1. 在“条件”下，选择条目“每当客户日志搜索为 <login undefined> 时”。 此时将打开“配置信号逻辑”页。
+1. 在“阈值”下输入 *0*，然后选择“完成”。 
+1. 在“操作”下，选择“创建操作组”。  此时将打开“添加操作组”页。
 1. 在“操作组名称”中键入 *myActionGroup*。
-1. 在“短名称”中键入 **myActionGroup**。
-1. 在“资源组”中选择“myResourceGroupAvailability”。  
-1. 在“操作”下的“操作名称”中键入“电子邮件”，然后选择“电子邮件/短信”。    此时将打开“电子邮件/短信”页。 
+1. 在“短名称”中键入 myActionGroup 。
+1. 在“资源组”中选择“myResourceGroupAvailability”。 
+1. 在“操作”下的“操作名称”中键入“电子邮件”，然后选择“电子邮件/短信”。   此时将打开“电子邮件/短信”页。
     
     <!--MOONCAKE: CORRECT ON Email/SMS-->
 
-1. 选择“电子邮件”，键入电子邮件地址，然后选择“确定”。  
-1. 在“添加操作组”页中选择“确定”。   
-1. 在“创建规则”页中的“警报详细信息”下，为“警报规则名称”键入 *myAlert*，然后为“说明”键入“电子邮件警报规则”。
-1. 完成后，选择“创建警报规则”。 
+1. 选择“电子邮件”，键入电子邮件地址，然后选择“确定”。 
+1. 在“添加操作组”页中选择“确定”。  
+1. 在“创建规则”页中的“警报详细信息”下，为“警报规则名称”键入 *myAlert*，然后为“说明”键入“电子邮件警报规则”。  
+1. 完成后，选择“创建警报规则”。
 1. 重启可用性集中的一个 VM。 几分钟后，你应会收到一封电子邮件，指出已触发该警报。
 
-若要管理警报规则，请转到资源组，在左侧菜单中选择“警报”，然后在页面顶部选择“管理警报规则”。  
+若要管理警报规则，请转到资源组，在左侧菜单中选择“警报”，然后在页面顶部选择“管理警报规则”。 
 
 ## <a name="next-steps"></a>后续步骤
 
 有关详细信息，请参阅 GitHub 上的[计划事件服务](https://github.com/microsoft/AzureScheduledEventsService)页。
 
-<!--Update_Description: wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

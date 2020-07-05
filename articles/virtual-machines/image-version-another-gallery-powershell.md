@@ -7,15 +7,15 @@ ms.subservice: imaging
 ms.topic: how-to
 ms.workload: infrastructure
 origin.date: 05/04/2020
-ms.date: 05/25/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
 ms.reviewer: akjosh
-ms.openlocfilehash: 02ddbf994b00be974f9d4ac1f7bae730c996630c
-ms.sourcegitcommit: 981a75a78f8cf74ab5a76f9e6b0dc5978387be4b
+ms.openlocfilehash: d2d5753064687db0ee3131ba7dad78527b04d0d8
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83801817"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945997"
 ---
 <!--Verified successfully-->
 # <a name="copy-an-image-from-another-gallery"></a>复制另一个库中的映像
@@ -153,6 +153,7 @@ $job.State
 >
 
 <!--Not Available on , or [Zone Redundant Storage](/storage/common/storage-redundancy-zrs) by adding `-StorageAccountType Standard_ZRS`-->
+
 ## <a name="next-steps"></a>后续步骤
 
 从[通用化](vm-generalized-image-version-powershell.md)或[专用化](vm-specialized-image-version-powershell.md)映像版本创建 VM。
@@ -160,5 +161,4 @@ $job.State
 <!--Not Available on [Azure Image Builder (preview)](./linux/image-builder-overview.md)-->
 <!--Not Available on [create a new image version from an existing image version](./linux/image-builder-gallery-update-image-version.md)-->
 
-<!-- Update_Description: new article about image version another gallery powershell -->
-<!--NEW.date: 06/01/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

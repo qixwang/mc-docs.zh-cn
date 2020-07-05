@@ -6,14 +6,14 @@ ms.author: v-jay
 ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
-origin.date: 3/18/2020
-ms.date: 06/01/2020
-ms.openlocfilehash: fded96e6b96bd8a8c8ed799a35a24ff4852d52d6
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+origin.date: 5/26/2020
+ms.date: 06/29/2020
+ms.openlocfilehash: b9ee9d2d242991b1b2f8b8887eafa197ea5a0a6f
+ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84199578"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85516608"
 ---
 # <a name="azure-database-for-mysql-use-mysql-workbench-to-connect-and-query-data"></a>Azure Database for MySQL：使用 MySQL Workbench 连接和查询数据
 
@@ -26,6 +26,9 @@ ms.locfileid: "84199578"
 此快速入门使用以下任意指南中创建的资源作为起点：
 - [使用 Azure 门户创建用于 MySQL 服务器的 Azure 数据库](./quickstart-create-mysql-server-database-using-azure-portal.md)
 - [使用 Azure CLI 创建用于 MySQL 服务器的 Azure 数据库](./quickstart-create-mysql-server-database-using-azure-cli.md)
+
+> [!IMPORTANT] 
+> 确保已使用 [Azure 门户](./howto-manage-firewall-using-portal.md)或 [Azure CLI](./howto-manage-firewall-using-cli.md) 将服务器的防火墙规则添加到连接的 IP 地址
 
 ## <a name="install-mysql-workbench"></a>安装 MySQL Workbench
 在计算机上从 [MySQL 网站](https://dev.mysql.com/downloads/workbench/)下载并安装 MySQL Workbench。
@@ -49,16 +52,16 @@ ms.locfileid: "84199578"
 
 2.    在“设置新连接”对话框的“参数”选项卡上，输入以下信息：
 
-    ![设置新连接](./media/connect-workbench/2-setup-new-connection.png)
-    
-   | **设置** | **建议的值** | **字段说明** |
-   |---|---|---|
-   |    连接名称 | 演示连接 | 指定此连接的标签。 |
-   | 连接方法 | 标准 (TCP/IP) | 标准 (TCP/IP) 就足够了。 |
+![设置新连接](./media/connect-workbench/2-setup-new-connection.png)
+
+| **设置** | **建议的值** | **字段说明** |
+|---|---|---|
+|    连接名称 | 演示连接 | 指定此连接的标签。 |
+| 连接方法 | 标准 (TCP/IP) | 标准 (TCP/IP) 就足够了。 |
    | 主机名 | 服务器名称 | 指定此前在创建 Azure Database for MySQL 时使用过的服务器名称值。 显示的示例服务器为 mydemoserver.mysql.database.chinacloudapi.cn。 请使用完全限定的域名 (\*.mysql.database.chinacloudapi.cn)，如示例中所示。 如果记不起服务器名称，请按上一部分的步骤操作，以便获取连接信息。  |
-   | 端口 | 3306 | 在连接到 Azure Database for MySQL 时，始终使用端口 3306。 |
-   | 用户名 |  服务器管理员登录名 | 键入此前在创建 Azure Database for MySQL 时提供的服务器管理员登录用户名。 示例用户名为 myadmin@mydemoserver。 如果记不起用户名，请按上一部分的步骤操作，以便获取连接信息。 格式为 username\@servername。
-   | 密码 | 你的密码 | 单击“在保管库中存储...”按钮来保存密码。 |
+| 端口 | 3306 | 在连接到 Azure Database for MySQL 时，始终使用端口 3306。 |
+| 用户名 |  服务器管理员登录名 | 键入此前在创建 Azure Database for MySQL 时提供的服务器管理员登录用户名。 示例用户名为 myadmin@mydemoserver。 如果记不起用户名，请按上一部分的步骤操作，以便获取连接信息。 格式为 username\@servername。
+| 密码 | 你的密码 | 单击“在保管库中存储...”按钮来保存密码。 |
 
 3.   单击“测试连接”以测试是否所有参数均已正确配置。 
 

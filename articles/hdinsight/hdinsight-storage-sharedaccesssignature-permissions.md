@@ -16,12 +16,12 @@ ms.workload: big-data
 origin.date: 04/28/2020
 ms.date: 06/22/2020
 ms.author: v-yiso
-ms.openlocfilehash: 91bd7cae3cbe89ac17850ce22122fbbd13a76164
-ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
+ms.openlocfilehash: 6768a13d67b430d44e8c0bcd0a47917b8b500938
+ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84723205"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85516553"
 ---
 # <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>使用 Azure 存储共享访问签名来限制访问 HDInsight 中的数据
 
@@ -447,4 +447,4 @@ Remove-AzResourceGroup `
 现在你已了解如何将访问受限的存储添加到 HDInsight 群集，接下来请了解在群集上处理数据的其他方法：
 
 * [将 SSH 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)
-* [授权用户访问 Apache Ambari 视图](hdinsight-authorize-users-to-ambari.md)
+

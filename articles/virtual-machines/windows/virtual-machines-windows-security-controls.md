@@ -1,21 +1,20 @@
 ---
 title: Azure Windows 虚拟机的安全控制
 description: 用于评估 Azure Windows 虚拟机的安全控制的清单
-services: virtual-machines
 ms.service: virtual-machines
-documentationcenter: ''
+ms.subservice: security
 author: rockboyfor
 manager: digimobile
 ms.topic: conceptual
 origin.date: 09/05/2019
-ms.date: 04/27/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: ef802ee6f9b435f9b2372f142cc1cb5fa87d30a9
-ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
+ms.openlocfilehash: bf8a1fdc341f061bd414538c5ab2365336a476ee
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83392446"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945832"
 ---
 # <a name="security-controls-for-windows-virtual-machines"></a>Windows 虚拟机的安全控制
 
@@ -63,7 +62,8 @@ ms.locfileid: "83392446"
 |---|---|--|
 | 配置管理支持（配置的版本控制等）| 是 |  | 
 
-<!--Not Available on ## Next steps-->
-<!--Not Available on [built-in security controls across Azure services](../../security/fundamentals/security-controls.md)-->
+## <a name="next-steps"></a>后续步骤
 
-<!-- Update_Description: wording update -->
+- 详细了解[跨 Azure 服务的内置安全控制](../../security/fundamentals/security-controls.md)。
+
+<!-- Update_Description: update meta properties, wording update, update link -->

@@ -6,14 +6,15 @@ ms.service: signalr
 ms.devlang: python
 ms.topic: quickstart
 origin.date: 12/14/2019
-ms.date: 01/13/2020
+ms.date: 07/01/2020
 ms.author: v-tawe
-ms.openlocfilehash: a6ab329cad7adf751d81bd5e75991e0ae59dc147
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.custom: tracking-python
+ms.openlocfilehash: e9450dcee61758f34fc2392dbe5dbfa038d961bc
+ms.sourcegitcommit: 4f84bba7e509a321b6f68a2da475027c539b8fd3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75600587"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85796285"
 ---
 # <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-python"></a>快速入门：使用 Python 通过 Azure Functions 和 SignalR 服务创建聊天室
 

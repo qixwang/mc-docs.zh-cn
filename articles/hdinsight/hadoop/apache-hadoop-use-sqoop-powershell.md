@@ -14,23 +14,24 @@ ms.topic: conceptual
 origin.date: 01/10/2020
 ms.date: 03/02/2020
 ms.author: v-yiso
-ms.openlocfilehash: 5917faf927177ff63a47f92737f051ce2cbb9ccb
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: ca62ffb7f7022d82da91e783035f23c51917f353
+ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77563496"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85516694"
 ---
-# <a name="run-apache-sqoop-jobs-by-using-azure-powershell-for-apache-hadoop-in-hdinsight"></a>使用 HDInsight 中用于 Apache Hadoop 的 Azure PowerShell 运行 Apache Sqoop 作业
+# <a name="run-apache-sqoop-jobs-with-azure-powershell-in-hdinsight"></a>在 HDInsight 中使用 Azure PowerShell 运行 Apache Sqoop 作业
+
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
 
-了解如何使用 Azure PowerShell 运行 Azure HDInsight 中的 Apache Sqoop 作业，以便在 HDInsight 群集与 Azure SQL 数据库或 SQL Server 数据库之间导入和导出数据。  本文是[在 HDInsight 中将 Apache Sqoop 与 Hadoop 配合使用](./hdinsight-use-sqoop.md)的续篇。
+了解如何使用 Azure PowerShell 在 Azure HDInsight 中运行 Apache Sqoop 作业，以便在 HDInsight 群集与 Azure SQL 数据库或 SQL Server 数据库之间导入和导出数据。  本文是[在 HDInsight 中将 Apache Sqoop 与 Hadoop 配合使用](./hdinsight-use-sqoop.md)一文的延续。
 
 ## <a name="prerequisites"></a>先决条件
 
-* 安装有 Azure PowerShell [AZ 模块](https://docs.microsoft.com/powershell/azure/overview)的工作站。
+* 一个安装有 Azure PowerShell [AZ 模块](https://docs.microsoft.com/powershell/azure/overview)的工作站。
 
-* 从[在 HDInsight 中将 Apache Sqoop 与 Hadoop 配合使用](./hdinsight-use-sqoop.md)中完成[设置测试环境](./hdinsight-use-sqoop.md#create-cluster-and-sql-database)。
+* 已完成[在 HDInsight 中将 Apache Sqoop 与 Hadoop 配合使用](./hdinsight-use-sqoop.md)一文中的[设置测试环境](./hdinsight-use-sqoop.md#create-cluster-and-sql-database)步骤。
 
 * 熟悉 Sqoop。 有关详细信息，请参阅 [Sqoop 用户指南](https://sqoop.apache.org/docs/1.4.7/SqoopUserGuide.html)。
 
@@ -133,7 +134,7 @@ Get-AzHDInsightJobOutput `
 
 这是一个说服力很强的示例，它从默认存储帐户中的 `/tutorials/usesqoop/data/sample.log` 导出数据，然后将其导入到 SQL Server 数据库中名为 `log4jlogs` 的表中。 此示例不依赖于前面的示例。
 
-下面的 PowerShell 脚本预处理源文件，然后将它导出到 Azure SQL 数据库中的 `log4jlogs` 表中。 将 `CLUSTERNAME`、`CLUSTERPASSWORD` 和 `SQLPASSWORD` 替换为你在先决条件中使用的值。
+下面的 PowerShell 脚本预处理源文件，然后将它导出到 Azure SQL 数据库中的 `log4jlogs` 表中。 请将 `CLUSTERNAME`、`CLUSTERPASSWORD` 和 `SQLPASSWORD` 替换为在先决条件部分使用的值。
 
 ```powershell 
 <#------ BEGIN USER INPUT ------#>

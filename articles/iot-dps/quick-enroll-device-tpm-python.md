@@ -4,18 +4,18 @@ description: 快速入门 - 使用 Python 预配服务 SDK 将 TPM 设备注册�
 author: wesmc7777
 ms.author: v-tawe
 origin.date: 11/08/2019
-ms.date: 03/23/2020
+ms.date: 07/01/2020
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.devlang: python
-ms.custom: mvc
-ms.openlocfilehash: ca0ee3afd5c7ca7183512fcae4409a1eddcc43af
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.custom: mvc, tracking-python
+ms.openlocfilehash: 78214e88a6d3eedfe14d9c2954043fce3cf3fa28
+ms.sourcegitcommit: 4f84bba7e509a321b6f68a2da475027c539b8fd3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79133985"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85796129"
 ---
 # <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-python-provisioning-service-sdk"></a>快速入门：使用 Python 预配服务 SDK 将 TPM 设备注册到 IoT 中心设备预配服务
 

@@ -91,6 +91,12 @@
           href: time-series-insights-update-how-to-tsm.md
         - name: 针对传入和查询调整 JSON
           href: time-series-insights-update-how-to-shape-events.md
+- name: 重大更改
+  items:
+    - name: Azure 时序见解预览版
+      items:
+        - name: 添加对 Long 数据类型的支持
+          href: time-series-insights-long-data-type.md
 - name: 参考
   items:
     - name: 时序见解

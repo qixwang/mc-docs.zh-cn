@@ -6,13 +6,13 @@ ms.topic: conceptual
 author: Johnnytechn
 origin.date: 09/17/2019
 ms.author: v-johya
-ms.date: 06/09/2020
-ms.openlocfilehash: fa886f7eec876559535abc02c6a4b32b88bfe32e
-ms.sourcegitcommit: 285649db9b21169f3136729c041e4d04d323229a
+ms.date: 06/22/2020
+ms.openlocfilehash: b7c6ebe20db37ba29455190414fbb37037b62192
+ms.sourcegitcommit: 372899a2a21794e631eda1c6a11b4fd5c38751d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84683991"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851944"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>如何在 Azure 门户中还原 Azure VM 数据
 
@@ -194,7 +194,7 @@ Azure 备份提供多种方法用于还原 VM。
 **裸机还原** | Azure VM 与本地虚拟机监控程序之间的主要差别是 Azure 中不提供 VM 控制台。 某些方案（如使用裸机恢复 (BMR) 类型备份进行恢复）需要控制台。 但是，通过保管库进行 VM 还原完全取代了 BMR。
 **还原采用特殊网络配置的 VM** | 特殊网络配置包括使用内部或外部负载均衡、使用多个 NIC 或多个保留 IP 地址的 VM。 可使用[还原磁盘选项](#restore-disks)还原这些 VM。 此选项会将 VHD 复制到指定的存储帐户，然后，你可以根据配置，使用[内部](https://azure.microsoft.com/documentation/articles/load-balancer-internal-getstarted/)或[外部](/load-balancer/quickstart-create-standard-load-balancer-powershell)负载均衡器、[多个 NIC](../virtual-machines/windows/multiple-nics.md) 或[多个保留 IP 地址](../virtual-network/virtual-network-multiple-ip-addresses-powershell.md)创建 VM。
 **NIC/子网上的网络安全组 (NSG)** | Azure VM 备份支持在 VNet、子网和 NIC 级别备份和还原 NSG 信息。
-<!-- Pending -->
+<!-- Not available in MC -->
 
 ## <a name="track-the-restore-operation"></a>跟踪还原操作
 

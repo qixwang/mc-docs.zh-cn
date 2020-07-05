@@ -12,14 +12,14 @@ metadata:
   author: msmbaldwin
   ms.author: mbaldwin
   manager: rkarlin
-  ms.date: 05/28/2020
+  ms.date: 07/02/2020
   origin.date: 12/23/2019
-  ms.openlocfilehash: 529cbfc9d95e6aeae17844f43e0d21fbaba5382b
-  ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+  ms.openlocfilehash: efb0fa77f5b629a64b5634bf8683a2727e361a92
+  ms.sourcegitcommit: 7ea2d04481512e185a60fa3b0f7b0761e3ed7b59
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 05/29/2020
-  ms.locfileid: "84199891"
+  ms.lasthandoff: 07/02/2020
+  ms.locfileid: "85845763"
 landingContent:
 - title: 关于 Azure 安全基准
   linkLists:
@@ -45,3 +45,13 @@ landingContent:
       url: security-control-vulnerability-management.md
     - text: 查看详细信息
       url: security-control-inventory-asset-management.md
+- title: 更多 Azure 安全信息
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: Azure 安全基础知识
+      url: ../fundamentals/index.yml
+    - text: 云中责任分担
+      url: ../fundamentals/shared-responsibility.md
+    - text: Azure 安全中心
+      url: ../../security-center/index.yml

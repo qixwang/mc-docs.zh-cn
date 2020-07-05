@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 05/28/2020
+ms.date: 06/30/2020
 ms.author: v-junlch
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript
-ms.openlocfilehash: 43be8d2a6d49e430d97930713734946776a84ed4
-ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
+ms.openlocfilehash: d807f01bcd8b5fbaea9477e4800798a2ae1a8859
+ms.sourcegitcommit: 1008ad28745709e8d666f07a90e02a79dbbe2be5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84186718"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945008"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>快速入门：在 JavaScript SPA 中登录用户并获得访问令牌
 
@@ -92,7 +92,7 @@ ms.locfileid: "84186718"
 >  const msalConfig = {
 >    auth: {
 >      clientId: "Enter_the_Application_Id_Here",
->      authority: "Enter_the_Cloud_Instance_Id_Here_OR_Enter_the_Tenant_Info_Here",
+>      authority: "Enter_the_Cloud_Instance_Id_Here/Enter_the_Tenant_Info_Here",
 >      redirectUri: "Enter_the_Redirect_Uri_Here",
 >    },
 >    cache: {
@@ -110,7 +110,7 @@ ms.locfileid: "84186718"
 > [!div renderon="docs"]
 >
 > 其中：
-> - \<Enter_the_Application_Id_Here> 是已注册应用程序的应用程序（客户端）ID。
+> - \<Enter_the_Application_Id_Here> 是所注册应用程序的应用程序（客户端）ID。
 > - \<Enter_the_Cloud_Instance_Id_Here> 是 Azure 云的实例。 对于**国家**云（例如“中国”云），请参阅[国家云](/active-directory/develop/authentication-national-cloud)。
 > - \<Enter_the_Tenant_info_here> 设置为以下选项之一：
 >    - 如果应用程序支持“此组织目录中的帐户”，请将此值替换为“租户 ID”或“租户名称”（例如，*contoso.microsoft.com*）。
@@ -130,8 +130,8 @@ ms.locfileid: "84186718"
 > ```javascript
 >   // Add here the endpoints for MS Graph API services you would like to use.
 >   const graphConfig = {
->     graphMeEndpoint: "Enter_the_Graph_Endpoint_Herev1.0/me",
->     graphMailEndpoint: "Enter_the_Graph_Endpoint_Herev1.0/me/messages"
+>     graphMeEndpoint: "Enter_the_Graph_Endpoint_Here/v1.0/me",
+>     graphMailEndpoint: "Enter_the_Graph_Endpoint_Here/v1.0/me/messages"
 >   };
 >
 >   // Add here scopes for access token to be used at MS Graph API endpoints.

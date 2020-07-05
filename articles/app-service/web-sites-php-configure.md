@@ -5,16 +5,16 @@ author: msangapu-msft
 ms.assetid: 95c4072b-8570-496b-9c48-ee21a223fb60
 ms.devlang: php
 ms.topic: article
-origin.date: 04/11/2018
-ms.date: 05/22/2020
+origin.date: 04/13/2018
+ms.date: 06/22/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 53033b39a9dea7d6698cc79010920c4239f67752
-ms.sourcegitcommit: 981a75a78f8cf74ab5a76f9e6b0dc5978387be4b
+ms.openlocfilehash: b1725c89baf08b52eed319801250bc2113c349f3
+ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83801327"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85613322"
 ---
 # <a name="configure-php-in-azure-app-service"></a>在 Azure 应用服务中配置 PHP
 
@@ -134,7 +134,7 @@ ms.locfileid: "83801327"
 10. 在底部，单击“更新”以完成添加处理程序映射。
 11. 单击“保存”以保存更改。
 
-<a name="composer" />
+<a name="composer"></a>
 
 ## <a name="how-to-enable-composer-automation-in-azure"></a>如何：在 Azure 中启用编辑器自动化
 

@@ -2,30 +2,19 @@
 title: 向字符串字段添加自定义分析器
 titleSuffix: Azure Cognitive Search
 description: 配置 Azure 认知搜索全文搜索查询中所用的文本 tokenizer 和字符筛选器。
+author: HeidiSteen
 manager: nitinme
-author: Yahnoosh
 ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
-origin.date: 04/27/2020
-ms.date: 06/09/2020
-translation.priority.mt:
-- de-de
-- es-es
-- fr-fr
-- it-it
-- ja-jp
-- ko-kr
-- pt-br
-- ru-ru
-- zh-cn
-- zh-tw
-ms.openlocfilehash: 1b9079a8a7a7d23b4be4b6b762024759fde7f681
-ms.sourcegitcommit: c4fc01b7451951ef7a9616fca494e1baf29db714
+origin.date: 06/05/2020
+ms.date: 07/02/2020
+ms.openlocfilehash: 1a9c71057449f978978160a8f0b15557c5220c9b
+ms.sourcegitcommit: 5afd7c4c3be9b80c4c67ec55f66fcf347aad74c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84564375"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85942577"
 ---
 # <a name="add-custom-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>向 Azure 认知搜索索引中的字符串字段添加自定义分析器
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 origin.date: 12/10/2019
 ms.date: 03/02/2020
 ms.author: v-yiso
-ms.openlocfilehash: 82c777c183f48e80c7fca0ac3a2451b3b89a4073
-ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
+ms.openlocfilehash: 3b2f1c05823410fca1c0f3dc62c55533a28c8dd8
+ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84723038"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85516702"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight"></a>将本地 Apache Hadoop 群集迁移到 Azure HDInsight
 
@@ -120,7 +120,7 @@ Data Lake Storage Gen2 的一个基本功能是，在 Blob 存储服务中添加
 **预配凭据：**
 
 ```bash
-hadoop credential create fs.azure.account.key.account.blob.core.chinacloudapi.cn -value <storage key> -provider jceks://hdfs@headnode.xx.internal.cloudapp.net/path/to/jceks/file
+hadoop credential create fs.azure.account.key.account.blob.core.chinacloudapi.cn -value <storage key> -provider jceks://hdfs@headnode.xx.internal.chinacloudapp.cn/path/to/jceks/file
 ```
 
 **将上述提供程序路径添加到 core-site.xml 或自定义核心站点下的 Ambari 配置：**
@@ -129,7 +129,7 @@ hadoop credential create fs.azure.account.key.account.blob.core.chinacloudapi.cn
 <property>
     <name>hadoop.security.credential.provider.path</name>
         <value>
-        jceks://hdfs@headnode.xx.internal.cloudapp.net/path/to/jceks
+        jceks://hdfs@headnode.xx.internal.chinacloudapp.cn/path/to/jceks
         </value>
     <description>Path to interrogate for protected credentials.</description>
 </property>
@@ -139,7 +139,7 @@ hadoop credential create fs.azure.account.key.account.blob.core.chinacloudapi.cn
 > 也可将提供程序路径属性添加到 distcp 命令行，而不是将密钥存储在 core-site.xml 的群集级别，如下所示：
 
 ```bash
-hadoop distcp -D hadoop.security.credential.provider.path=jceks://hdfs@headnode.xx.internal.cloudapp.net/path/to/jceks /user/user1/ wasb:<//yourcontainer@youraccount.blob.core.chinacloudapi.cn/>user1
+hadoop distcp -D hadoop.security.credential.provider.path=jceks://hdfs@headnode.xx.internal.chinacloudapp.cn/path/to/jceks /user/user1/ wasb:<//yourcontainer@youraccount.blob.core.chinacloudapi.cn/>user1
 ```
 
 ## <a name="restrict-azure-storage-data-access-using-sas"></a>使用 SAS 限制 Azure 存储数据访问

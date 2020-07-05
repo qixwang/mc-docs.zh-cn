@@ -1,26 +1,21 @@
 ---
 title: 创建快照
-description: 了解如何创建 Azure VM 的副本用作备份或用于解决问题。
-documentationcenter: ''
+description: 了解如何创建 Azure VM 的副本，以便将其用作备份或用于排查问题。
 author: rockboyfor
 manager: digimobile
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 15eb778e-fc07-45ef-bdc8-9090193a6d20
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
-ms.topic: article
+ms.topic: how-to
 origin.date: 10/08/2018
-ms.date: 02/10/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
 ms.subservice: disks
-ms.openlocfilehash: 0733e9d03284aca9893e02c4649c16e9b693e486
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: cb6bce521cf38fc2bd229fab026aa8bfb96fe0da
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77428793"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945581"
 ---
 # <a name="create-a-snapshot"></a>创建快照
 
@@ -31,15 +26,15 @@ ms.locfileid: "77428793"
 ## <a name="use-the-azure-portal"></a>使用 Azure 门户 
 
 若要创建快照，请完成以下步骤： 
-1. 在 [Azure 门户](https://portal.azure.cn)中，选择“创建资源”  。
-2. 搜索并选择“快照”  。
-3. 在“快照”窗口，选择“创建”   。 此时将显示“创建快照”窗口  。
-4. 输入快照的“名称”  。
+1. 在 [Azure 门户](https://portal.azure.cn)中，选择“创建资源”。
+2. 搜索并选择“快照”。
+3. 在“快照”窗口，选择“创建” 。 此时将显示“创建快照”窗口。
+4. 输入快照的 **名称** 。
 5. 选择现有的[资源组](../../azure-resource-manager/management/overview.md#resource-groups)，或键入新资源组的名称。 
-6. 选择 Azure 数据中心的**位置**。  
+6. 选择 Azure 数据中心“位置” 。  
 7. 对于**源磁盘**，选择要获取其快照的托管磁盘。
-8. 选择用于存储快照的“帐户类型”  。 选择“Standard_HDD”，除非需要将快照存储在高性能磁盘上  。
-9. 选择“创建”  。
+8. 选择用于存储快照的“帐户类型”。 选择“Standard_HDD”，除非需要将快照存储在高性能磁盘上。
+9. 选择“创建” 。
 
 ## <a name="use-powershell"></a>使用 PowerShell
 
@@ -84,6 +79,6 @@ ms.locfileid: "77428793"
 
 ## <a name="next-steps"></a>后续步骤
 
-通过从快照创建托管磁盘，然后将新的托管磁盘附加为 OS 磁盘来从快照创建虚拟机。 有关详细信息，请参阅[使用 PowerShell 从快照创建 VM](./../scripts/virtual-machines-windows-powershell-sample-create-vm-from-snapshot.md) 中的示例。
+通过从快照创建托管磁盘，然后将新的托管磁盘附加为 OS 磁盘，来从快照创建虚拟机。 有关详细信息，请参阅[使用 PowerShell 从快照创建 VM](./../scripts/virtual-machines-windows-powershell-sample-create-vm-from-snapshot.md) 中的示例。
 
 <!--Update_Description: update meta properties, wording update -->

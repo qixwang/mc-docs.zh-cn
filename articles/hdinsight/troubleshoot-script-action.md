@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: e44b9789abb5646b400c656763a1469045c78d26
-ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
+ms.openlocfilehash: 77b569a53f14588c512b84bba7dd3cff2428581d
+ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84723831"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85516621"
 ---
 # <a name="troubleshoot-script-actions-in-azure-hdinsight"></a>排查 Azure HDInsight 中的脚本操作问题
 
@@ -25,7 +25,7 @@ ms.locfileid: "84723831"
 
 ### <a name="apache-ambari-web-ui"></a>Apache Ambari web UI
 
-1. 在 Web 浏览器中，导航到 `https://CLUSTERNAME.azurehdinsight.net`，其中 `CLUSTERNAME` 是群集的名称。
+1. 在 Web 浏览器中，导航到 `https://CLUSTERNAME.azurehdinsight.cn`，其中 `CLUSTERNAME` 是群集的名称。
 
 1. 从页面顶部栏中选择“操作”条目 **** 。 此时会显示通过 Ambari 在群集上执行的当前操作和以前操作的列表。
 
@@ -47,11 +47,11 @@ ms.locfileid: "84723831"
 
     在此目录下，日志分别针对**头节点**、**工作器节点**和 **Zookeeper 节点**进行组织。 请看以下示例：
 
-    * **头节点**：`<ACTIVE-HEADNODE-NAME>.cloudapp.net`
+    * **头节点**：`<ACTIVE-HEADNODE-NAME>.chinacloudapp.cn`
 
-    * **工作节点**：`<ACTIVE-WORKERNODE-NAME>.cloudapp.net`
+    * **工作节点**：`<ACTIVE-WORKERNODE-NAME>.chinacloudapp.cn`
 
-    * **Zookeeper 节点**：`<ACTIVE-ZOOKEEPERNODE-NAME>.cloudapp.net`
+    * **Zookeeper 节点**：`<ACTIVE-ZOOKEEPERNODE-NAME>.chinacloudapp.cn`
 
 * 相应主机的所有 **stdout** 和 **stderr** 将上传到存储帐户。 每个脚本操作各有一个 **output-\*.txt** 和 **errors-\*.txt**。 **output-*.txt** 文件包含有关在主机上运行的脚本的 URI 信息。 以下文本是此信息的示例：
 

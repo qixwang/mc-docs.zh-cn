@@ -534,12 +534,8 @@
                           href: ../virtual-machines/extensions/diagnostics-template.md?toc=/azure/azure-monitor/toc.json
                     - name: 发送到 Azure Monitor 指标存储
                       items:
-                        - name: 虚拟机
-                          href: platform/collect-custom-metrics-guestos-resource-manager-vm.md
                         - name: VM 规模集
                           href: platform/collect-custom-metrics-guestos-resource-manager-vmss.md
-                        - name: VM 经典
-                          href: platform/collect-custom-metrics-guestos-vm-classic.md
                         - name: 云服务
                           href: platform/collect-custom-metrics-guestos-vm-cloud-service-classic.md
                     - name: 发送到事件中心
@@ -559,8 +555,6 @@
                   items:
                     - name: 概述
                       href: ../virtual-machines/extensions/diagnostics-linux.md?toc=/azure/azure-monitor/toc.json
-                    - name: 使用 Telegraf 收集指标
-                      href: platform/collect-custom-metrics-linux-telegraf.md
             - name: Log Analytics 代理
               items:
                 - name: 概述
@@ -708,10 +702,6 @@
               href: insights/surface-hubs.md
     - name: 收集自定义数据
       items:
-        - name: 自定义指标
-          href: platform/metrics-custom-overview.md
-        - name: 指标 REST API
-          href: platform/metrics-store-custom-rest-api.md
         - name: Log Analytics 数据收集器 API
           href: platform/data-collector-api.md
     - name: 分析数据

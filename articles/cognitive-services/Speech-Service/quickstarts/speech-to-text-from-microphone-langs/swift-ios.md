@@ -11,12 +11,12 @@ ms.topic: quickstart
 origin.date: 12/23/2019
 ms.date: 01/27/2020
 ms.author: v-tawe
-ms.openlocfilehash: 41b783d9dcfe302b7a044a78a9e363cdde9fd278
-ms.sourcegitcommit: 304d3ef3c9e65c3e85977b3afb9985fbc0f908d6
+ms.openlocfilehash: 3cc406484ffc6945a05ed23d0052c4c038f62258
+ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85095923"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85613411"
 ---
 # <a name="quickstart-recognize-speech-in-swift-on-ios-by-using-the-speech-sdk"></a>快速入门：在 iOS 上使用语音 SDK 通过 Swift 识别语音
 
@@ -30,15 +30,11 @@ ms.locfileid: "85095923"
 
 * 语音服务的[订阅密钥](~/articles/cognitive-services/Speech-Service/get-started.md)。
 * 安装了 [Xcode 9.4.1](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12) 或更高版本以及 [CocoaPods](https://cocoapods.org/) 的 macOS 计算机。
+* 需要语音 SDK 1.11.0 或更高版本。
 
 ## <a name="get-the-speech-sdk-for-ios"></a>获取用于 iOS 的语音 SDK
 
 [!INCLUDE [License notice](~/includes/cognitive-services-speech-service-license-notice.md)]
-
-> [!IMPORTANT]
-> 需要语音 SDK 版本 1.11.0 或更高版本。
-
-本教程不适用于 1.6.0 之前的 SDK 版本。
 
 适用于 iOS 的认知服务语音 SDK 目前以框架捆绑包的形式分发。 可在 Xcode 项目将它作为 [CocoaPod](https://cocoapods.org/) 使用，或者从 https://aka.ms/csspeech/iosbinary 下载，然后手动与它建立链接。 本文使用 CocoaPod。
 

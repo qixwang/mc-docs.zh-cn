@@ -6,16 +6,16 @@ keywords: 设置, 超时
 author: mgblythe
 ms.author: v-tawe
 origin.date: 02/10/2020
-ms.date: 03/16/2020
-ms.topic: conceptual
+ms.date: 06/22/2020
+ms.topic: how-to
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 1adc66cd6d099c8d9acc5803c2ada83c725252e2
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 172983d763a3f79294b9d8258e0e358f3f2046d6
+ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80151717"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85611899"
 ---
 # <a name="set-directory-level-inactivity-timeout"></a>设置目录级别的非活动超时
 

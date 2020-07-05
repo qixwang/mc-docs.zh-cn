@@ -1,19 +1,19 @@
 ---
-title: 使用 CLI 获取维护通知
+title: 使用 Azure CLI 处理计划内维护通知
 description: 使用 Azure CLI 查看在 Azure 中运行的虚拟机的维护通知并启动自助维护。
 author: rockboyfor
 ms.service: virtual-machines
 ms.workload: infrastructure-services
-ms.topic: article
+ms.topic: how-to
 origin.date: 11/19/2019
-ms.date: 04/27/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: ceb7b9e834542b138c2c8f79ac8c2f275ae9d8a3
-ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
+ms.openlocfilehash: a53e70fcddd0086f840f4180f53b3eddd5a3ceed
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83392330"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945969"
 ---
 # <a name="handling-planned-maintenance-notifications-using-the-azure-cli"></a>使用 Azure CLI 处理计划内维护通知
 
@@ -47,7 +47,7 @@ az vm perform-maintenance -g myResourceGroup -n myVM
 azure config mode asm
 ```
 
-若要获取名为“myVM”的 VM 的维护状态，请键入：
+若要获取名为 myVM 的 VM 维护状态，请键入：
 
 ```
 azure vm show myVM 

@@ -3,14 +3,14 @@ title: Azure Functions 网络选项
 description: 在 Azure Functions 中可用的所有网络选项的概述。
 author: alexkarcher-msft
 ms.topic: conceptual
-ms.date: 06/08/2020
+ms.date: 07/02/2020
 ms.author: v-junlch
-ms.openlocfilehash: 28ea2ed9b00e8fa0dd9784f33721afa8727910a1
-ms.sourcegitcommit: f1a76ee3242698123a3d77f44c860db040b48f70
+ms.openlocfilehash: 131663b5d9204d9fe9d1915059f5861929e0eba6
+ms.sourcegitcommit: 1008ad28745709e8d666f07a90e02a79dbbe2be5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84563601"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945253"
 ---
 # <a name="azure-functions-networking-options"></a>Azure Functions 网络选项
 
@@ -46,13 +46,7 @@ ms.locfileid: "84563601"
 
 ## <a name="private-site-access"></a>专用站点访问
 
-专用站点访问是指使应用只能从专用网络（例如 Azure 虚拟网络）进行访问。
-
-* 配置了服务终结点时，[消耗](functions-scale.md#consumption-plan)和[应用服务](functions-scale.md#app-service-plan)计划中会提供专用站点访问。
-    * 可以在“平台功能”**** > “网络”**** > “配置访问限制”**** > “添加规则”**** 下，针对每个应用配置服务终结点。 现在可以选择虚拟网络作为规则类型。
-    * 有关详细信息，请参阅[虚拟网络服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)。
-    * 请记住，使用服务终结点时，即使配置了虚拟网络集成，你的函数也还是对 Internet 具有完全出站访问权限。
-* 已配置了内部负载均衡器 (ILB) 的应用服务环境内也提供专用站点访问。 有关详细信息，请参阅[在应用服务环境中创建并使用内部负载均衡器](../app-service/environment/create-ilb-ase.md)。
+[!INCLUDE [functions-private-site-access](../../includes/functions-private-site-access.md)]
 
 ## <a name="virtual-network-integration"></a>虚拟网络集成
 
@@ -108,7 +102,7 @@ Azure Functions 中的虚拟网络集成使用与应用服务 Web 应用共享�
 
 将应用服务计划中的函数应用与虚拟网络集成时，默认情况下，该应用仍可对 Internet 进行出站调用。 通过添加应用程序设置 `WEBSITE_VNET_ROUTE_ALL=1`，可强制将所有出站流量发送到虚拟网络中，在其中可以使用网络安全组规则限制流量。
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
 [!INCLUDE [app-service-web-vnet-troubleshooting](../../includes/app-service-web-vnet-troubleshooting.md)]
 

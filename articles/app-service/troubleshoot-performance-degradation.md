@@ -6,15 +6,15 @@ keywords: Web 应用性能，缓慢应用，应用缓慢
 ms.assetid: b8783c10-3a4a-4dd6-af8c-856baafbdde5
 ms.topic: article
 origin.date: 08/03/2016
-ms.date: 01/13/2020
+ms.date: 06/22/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 8bc42d8b2fb981b43c623bc9ae65b530e32ed2b3
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 67b256bd30ecea7ce8aad7e632bad6c866a0c8be
+ms.sourcegitcommit: 4f84bba7e509a321b6f68a2da475027c539b8fd3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75600223"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85796192"
 ---
 # <a name="troubleshoot-slow-app-performance-issues-in-azure-app-service"></a>排查 Azure 应用服务中应用性能缓慢的问题
 本文帮助排查 [Azure 应用服务](./overview.md)中应用性能缓慢的问题。
@@ -41,14 +41,14 @@ ms.locfileid: "75600223"
 
 [应用服务](overview.md)在每个步骤提供了多种选项。
 
-<a name="observe" />
+<a name="observe"></a>
 
 ### <a name="1-observe-and-monitor-application-behavior"></a>1.观察和监视应用程序行为
 #### <a name="track-service-health"></a>跟踪服务运行状况
 每次发生服务中断或性能下降时 Azure 会进行宣传。 可以在 [Azure 门户](https://portal.azure.cn/)中跟踪服务的运行状况。
 
 #### <a name="monitor-your-app"></a>监视应用
-此选项可让你找出应用程序是否存在任何问题。 在应用的边栏选项卡中，单击“请求和错误”磁贴  。 “指标”边栏选项卡显示所有可以添加的指标。 
+此选项可让你找出应用程序是否存在任何问题。 在应用的边栏选项卡中，单击“请求和错误”磁贴。 “指标”边栏选项卡显示所有可以添加的指标。
 
 可能需要在应用中监视的一些指标包括
 
@@ -66,7 +66,7 @@ ms.locfileid: "75600223"
 * [接收警报通知](/azure-monitor/platform/alerts-overview)
 
 #### <a name="monitor-web-endpoint-status"></a>监视 Web 终结点状态
-如果在“标准”定价层中运行应用，应用服务允许从三个地理位置监视两个终结点。 
+如果在“标准”定价层中运行应用，应用服务允许从三个地理位置监视两个终结点。
 
 终结点监视可从测试 Web URL 的响应时间和运行时间的分布式地理位置配置 Web 测试。 该测试可对 Web URL 执行 HTTP GET 操作，以从每个位置确定响应时间和运行时间。 每个已配置位置每 5 分钟运行一次测试。
 
@@ -75,7 +75,7 @@ ms.locfileid: "75600223"
 有关详细信息，请参阅[在 Azure 应用服务中监视应用](web-sites-monitor.md)
 
 #### <a name="application-performance-monitoring-using-extensions"></a>使用扩展的应用程序性能监视
-还可以使用站点扩展监视应用程序的性能。 
+还可以使用站点扩展监视应用程序的性能。
 
 每个应用服务应用都提供了一个可扩展的管理终结点，通过此终结点可使用一组作为站点扩展部署的功能强大的工具。 扩展包括： 
 
@@ -83,7 +83,7 @@ ms.locfileid: "75600223"
 - 连接的资源（如连接到应用的 MySQL 数据库）的管理工具。
 
 
-<a name="collect" />
+<a name="collect"></a>
 
 ### <a name="2-collect-data"></a>2.收集数据
 应用服务为 Web 服务器和 Web 应用程序中的日志记录信息提供诊断功能。 此信息分为 Web 服务器诊断和应用程序诊断。
@@ -105,7 +105,7 @@ ms.locfileid: "75600223"
 
 
 #### <a name="use-the-kudu-debug-console"></a>使用 Kudu 调试控制台
-应用服务随附可用于调试、浏览和上传文件的调试控制台，以及用于获取环境相关信息的 JSON 终结点。 此控制台称为应用的 Kudu 控制台或 SCM 仪表板。  
+应用服务随附可用于调试、浏览和上传文件的调试控制台，以及用于获取环境相关信息的 JSON 终结点。 此控制台称为应用的 Kudu 控制台或 SCM 仪表板。 
 
 转到链接 **https://&lt;Your app name>.scm.chinacloudsites.cn/** 即可访问此仪表板。
 
@@ -120,7 +120,7 @@ Kudu 的另一项有用功能是，如果应用程序引发第一次异常，可
 
 有关 Kudu 提供的功能的详细信息，请参阅[你应该了解的 Azure DevOps 工具](https://azure.microsoft.com/blog/windows-azure-websites-online-tools-you-should-know-about/)。
 
-<a name="mitigate" />
+<a name="mitigate" ></a>
 
 ### <a name="3-mitigate-the-issue"></a>3.缓解问题
 #### <a name="scale-the-app"></a>缩放应用

@@ -1,19 +1,19 @@
 ---
 title: NCv3 系列 - Azure 虚拟机
 description: NCv3 系列 VM 的规范。
-services: virtual-machines
+ms.subservice: sizes
 author: rockboyfor
 ms.service: virtual-machines
 ms.topic: article
 origin.date: 02/03/2020
-ms.date: 04/27/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 525c724b35aef010bcad30ed67c72341f39a0655
-ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
+ms.openlocfilehash: 17cec2235d867b6b524ed372abb3cec050f5893e
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83392433"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945939"
 ---
 # <a name="ncv3-series"></a>NCv3 系列
 

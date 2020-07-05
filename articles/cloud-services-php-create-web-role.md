@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: PHP
 ms.topic: article
 origin.date: 04/11/2018
-ms.date: 09/10/2018
-ms.author: v-junlch
-ms.openlocfilehash: 75a5d20d815467163c91943159383d86bae97e69
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 07/02/2020
+ms.author: v-tawe
+ms.openlocfilehash: a90e786fbd9bb8e1e26d8967db64d0713442d48e
+ms.sourcegitcommit: 7ea2d04481512e185a60fa3b0f7b0761e3ed7b59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "63847294"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85845893"
 ---
 # <a name="create-php-web-and-worker-roles"></a>创建 PHP Web 角色和辅助角色
 
@@ -57,53 +57,6 @@ Azure 提供了三种用于运行应用程序的计算模型：Azure 应用服�
 
 > [!NOTE]
 > `roleName` 参数是可选的。 如果省略该参数，则自动生成角色名称。 创建的第一个 Web 角色将为 `WebRole1`，第二个 Web 角色为 `WebRole2`，依此类推。 创建的第一个辅助角色将为 `WorkerRole1`，第二个辅助角色为 `WorkerRole2`，依此类推。
->
->
-
-## <a name="specify-the-built-in-php-version"></a>指定内置 PHP 版本
-
-在将 PHP Web 角色或辅助角色添加到项目时，将修改项目的配置文件，以便在部署应用程序的每个 Web 实例或辅助进程实例时在其上安装 PHP。 若要查看默认情况下安装的 PHP 的版本，请运行以下命令：
-
-    PS C:\myProject> Get-AzureServiceProjectRoleRuntime
-
-上述命令的输出与下图中所示类似。 在此示例中，将 PHP 5.3.17 的 `IsDefault` 标志设置为 `true`，这指示它将是安装的默认 PHP 版本。
-
-```
-Runtime Version     PackageUri                      IsDefault
-------- -------     ----------                      ---------
-Node 0.6.17         http://nodertncu.blob.core...   False
-Node 0.6.20         http://nodertncu.blob.core...   True
-Node 0.8.4          http://nodertncu.blob.core...   False
-IISNode 0.1.21      http://nodertncu.blob.core...   True
-Cache 1.8.0         http://nodertncu.blob.core...   True
-PHP 5.3.17          http://nodertncu.blob.core...   True
-PHP 5.4.0           http://nodertncu.blob.core...   False
-```
-
-可以将 PHP 运行时版本设置为列出的任意 PHP 版本。 例如，若要将 PHP 版本（对于名为 `roleName` 的角色）设置为 5.4.0，请使用以下命令：
-
-    PS C:\myProject> Set-AzureServiceProjectRole roleName php 5.4.0
-
-> [!NOTE]
-> 可用的 PHP 版本将来可能会改变。
->
->
-
-## <a name="customize-the-built-in-php-runtime"></a>自定义内置 PHP 运行时
-
-当按上述步骤进行操作时，可以完全控制所安装的 PHP 运行时的配置，包括修改 `php.ini` 设置和启用扩展。
-
-若要自定义内置 PHP 运行时，请执行下列步骤：
-
-1. 将一个名为 `php` 的新文件夹添加到 Web 角色的 `bin` 目录。 对于辅助角色，将该文件夹添加到角色的根目录。
-2. 在 `php` 文件夹中，创建另一个名为 `ext` 的文件夹。 将要启用的任何扩展名为 `.dll` 的文件（例如，`php_mongo.dll`）置于此文件夹中。
-3. 将 `php.ini` 文件添加到 `php` 文件夹中。 启用任何自定义扩展，并在此文件中设置任何 PHP 指令。 例如，若要打开 `display_errors` 并启用 `php_mongo.dll` 扩展，则 `php.ini` 文件的内容将如下所示：
-
-        display_errors=On
-        extension=php_mongo.dll
-
-> [!NOTE]
-> 所提供的 `php.ini` 文件中未显式设置的所有设置都将自动设为其默认值。 但请记住，可以添加整个 `php.ini` 文件。
 >
 >
 
@@ -218,12 +171,10 @@ Azure 模拟器提供了一个本地环境，可在将 Azure 应用程序部署�
 
 有关详细信息，请参阅 [PHP 开发人员中心](/develop/php/)。
 
-[install ps and emulators]: http://go.microsoft.com/fwlink/p/?linkid=320376&clcid=0x409
-[服务定义 (.csdef)]: http://msdn.microsoft.com/library/windowsazure/ee758711.aspx
-[服务配置 (.cscfg)]: http://msdn.microsoft.com/library/windowsazure/ee758710.aspx
-[iis.net]: http://www.iis.net/
+[install ps and emulators]: https://go.microsoft.com/fwlink/p/?linkid=320376&clcid=0x409
+[服务定义 (.csdef)]: https://msdn.microsoft.com/library/windowsazure/ee758711.aspx
+[服务配置 (.cscfg)]: https://msdn.microsoft.com/library/windowsazure/ee758710.aspx
+[iis.net]: https://www.iis.net/
 [sql native client]: https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation
-[sqlsrv drivers]: http://php.net/sqlsrv
-[sqlncli.msi x64 安装程序]: http://go.microsoft.com/fwlink/?LinkID=239648
-
-<!-- Update_Description: link update -->
+[sqlsrv drivers]: https://php.net/sqlsrv
+[sqlncli.msi x64 安装程序]: https://go.microsoft.com/fwlink/?LinkID=239648

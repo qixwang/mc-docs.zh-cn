@@ -1,23 +1,30 @@
 ---
-title: 适用于 Windows 虚拟机的 Azure 磁盘加密常见问题解答 | Azure
+title: 适用于 Windows 虚拟机的 Azure 磁盘加密常见问题解答
 description: 本文提供有关适用于 Windows IaaS VM 的 Azure 磁盘加密的常见问题解答。
 author: rockboyfor
-ms.service: security
+ms.service: virtual-machines-windows
+ms.subservice: security
 ms.topic: article
 origin.date: 11/01/2019
-ms.date: 04/27/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
 ms.custom: seodec18
-ms.openlocfilehash: f3313e3b6472f82a42a5eae47e67d70be3eee76d
-ms.sourcegitcommit: b469d275694fb86bbe37a21227e24019043b9e88
+ms.openlocfilehash: 85854043fa7ae18b4eee136e2ef55a51c6c065a0
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82596009"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85946009"
 ---
 # <a name="azure-disk-encryption-for-windows-virtual-machines-faq"></a>适用于 Windows 虚拟机的 Azure 磁盘加密常见问题解答
 
 本文提供有关适用于 Windows VM 的 Azure 磁盘加密的常见问题解答 (FAQ)。 有关此服务的详细信息，请参阅 [Azure 磁盘加密概述](disk-encryption-overview.md)。
+
+## <a name="what-is-azure-disk-encryption-for-windows-vms"></a>什么是适用于 Windows VM 的 Azure 磁盘加密？
+
+适用于 Windows VM 的 Azure 磁盘加密使用 Windows 的 BitLocker 功能为 OS 磁盘和数据磁盘提供全盘加密。 此外，[VolumeType 参数为 All](disk-encryption-windows.md#enable-encryption-on-a-newly-added-data-disk) 时，它提供临时磁盘加密。  加密内容从 VM 流向存储后端。 因此，使用客户托管密钥提供端对端加密。
+
+请参阅[支持的 VM 和操作系统](disk-encryption-overview.md#supported-vms-and-operating-systems)。
 
 <!--Not Available on ## Where is Azure Disk Encryption in general availability (GA)?-->
 
@@ -35,17 +42,21 @@ Azure 磁盘加密正式版支持 Azure 资源管理器模板、Azure PowerShell
 
 ## <a name="what-vm-sizes-and-operating-systems-support-azure-disk-encryption"></a>哪些 VM 大小和操作系统支持 Azure 磁盘加密？
 
-[Azure 磁盘加密概述](disk-encryption-overview.md)一文列出了支持 Azure 磁盘加密的 [VM 大小](disk-encryption-overview.md#supported-vm-sizes)和 [VM 操作系统](disk-encryption-overview.md#supported-operating-systems)。
+[Azure 磁盘加密概述](disk-encryption-overview.md)一文列出了支持 Azure 磁盘加密的 [VM 大小](disk-encryption-overview.md#supported-vms)和 [VM 操作系统](disk-encryption-overview.md#supported-operating-systems)。
 
 ## <a name="can-i-encrypt-both-boot-and-data-volumes-with-azure-disk-encryption"></a>是否可以使用 Azure 磁盘加密来加密引导卷和数据卷？
 
-可以加密启动卷和数据卷，但若未事先加密 OS 卷，则无法加密数据。
+可以加密引导卷和数据卷，但不能在未先加密 OS 卷的情况下加密数据。
 
-加密 OS 卷之后，不支持在 OS 卷上禁用加密。
+## <a name="can-i-encrypt-an-unmounted-volume-with-azure-disk-encryption"></a>我可以使用 Azure 磁盘加密来加密未装入的卷吗？
 
-## <a name="can-i-encrypt-an-unmounted-volume-with-azure-disk-encryption"></a>是否可以使用 Azure 磁盘加密来加密未装载的卷？
+不可以，Azure 磁盘加密只加密已装入的卷。
 
-否。Azure 磁盘加密只能加密已装载的卷。
+## <a name="what-is-storage-server-side-encryption"></a>什么是存储服务器端加密？
+
+存储服务器端加密会在 Azure 存储中加密 Azure 托管磁盘。 默认情况下，托管磁盘使用平台托管密钥通过服务器端加密进行加密（从 2017 年 6 月 10 日开始）。 指定一个由客户托管的密钥，即可实现对使用自己的密钥加密托管磁盘的管理。 有关详细信息，请参阅 [Azure 托管磁盘的服务器端加密](disk-encryption.md)。
+
+<!--Not Avaialble on ## How is Azure Disk Encryption different from Storage server-side encryption with customer-managed key and when should I use each solution?-->
 
 ## <a name="how-do-i-rotate-secrets-or-encryption-keys"></a>如何轮换机密或加密密钥？
 
@@ -86,7 +97,7 @@ Azure 磁盘加密具有先决条件。 请参阅[使用 Azure AD 的 Azure 磁�
 
 ## <a name="what-version-of-azure-powershell-does-azure-disk-encryption-support"></a>Azure 磁盘加密支持哪些 Azure PowerShell 版本？
 
-使用最新版的 Azure PowerShell SDK 来配置 Azure 磁盘加密。 下载最新版本的 [Azure PowerShell](https://github.com/Azure/azure-powershell/releases)。 Azure SDK 版本 1.1.0 不  支持 Azure 磁盘加密。
+使用最新版的 Azure PowerShell SDK 来配置 Azure 磁盘加密。 下载最新版本的 [Azure PowerShell](https://github.com/Azure/azure-powershell/releases)。 Azure SDK 版本 1.1.0 不支持 Azure 磁盘加密。
 
 ## <a name="what-is-the-disk-bek-volume-or-mntazure_bek_disk"></a>磁盘“Bek 卷”或“/mnt/azure_bek_disk”是什么？
 
@@ -97,26 +108,31 @@ Azure 磁盘加密具有先决条件。 请参阅[使用 Azure AD 的 Azure 磁�
 
 ## <a name="what-encryption-method-does-azure-disk-encryption-use"></a>Azure 磁盘加密使用何种加密方法？
 
-Azure 磁盘加密使用 BitLocker AES256 加密方法（Windows Server 2012 之前版本上的 AES256WithDiffuser）。 
+Azure 磁盘加密在 BitLocker 中根据 Windows 版本选择加密方法，如下所示：
 
-## <a name="if-i-use-encryptformatall-and-specify-all-volume-types-will-it-erase-the-data-on-the-data-drives-that-we-already-encrypted"></a>如果我使用 EncryptFormatAll 并指定了所有卷类型，它是否会擦除我们已加密的数据驱动器上的数据？
-否，不会擦除已使用 Azure 磁盘加密进行了加密的数据驱动器上的数据。 与 EncryptFormatAll 不重新加密 OS 驱动器类似，它也不会重新加密已加密的数据驱动器。 
+| Windows 版本                 | 版本 | 加密方法        |
+|----------------------------------|--------|--------------------------|
+| Windows Server 2012 以及 Windows 10 或更高版本  | >=1511 |256 位 XTS-AES           |
+| Windows Server 2012 以及 Windows 8、8.1、10 | < 1511 |256 位 AES* |
+| Windows Server 2008R2            |        |使用扩散器的 256 位 AES |
 
-## <a name="can-i-backup-and-restore-an-encrypted-vm"></a>能否备份和还原加密的 VM？ 
+\* Windows 2012 及更高版本中不支持使用扩散器的 256 位 AES。
 
-Azure 备份提供一个机制，可以用来备份和还原同一订阅与区域中的已加密 VM。  有关说明，请参阅[使用 Azure 备份来备份和还原已加密的虚拟机](../../backup/backup-azure-vms-encryption.md)。  目前不支持将已加密的 VM 还原到另一区域。  
+若要确定 Windows OS 版本，请在虚拟机中运行“winver”工具。
+
+## <a name="can-i-backup-and-restore-an-encrypted-vm"></a>我可以备份和还原已加密的 VM 吗？ 
+
+Azure 备份提供一个机制，可以用来备份和还原同一订阅与区域中的已加密 VM。  相关说明，请参阅[通过 Azure 备份来备份和还原加密的虚拟机](../../backup/backup-azure-vms-encryption.md)。  目前不支持将已加密的 VM 还原到另一区域。  
 
 ## <a name="where-can-i-go-to-ask-questions-or-provide-feedback"></a>可以在何处提问或提供反馈？
 
-可在 [Azure 磁盘加密论坛](https://support.azure.cn/support/contact/)上提问或提供反馈。
+你可以在 [Microsoft Q&A 的 Azure 磁盘加密问题页面](https://docs.microsoft.com/answers/topics/azure-disk-encryption.html)提问或提供反馈。
 
 ## <a name="next-steps"></a>后续步骤
 本文档详细描述了有关 Azure 磁盘加密的最常见问题。 有关此服务的详细信息，请参阅以下文章：
 
 - [Azure 磁盘加密概述](disk-encryption-overview.md)
-    
-    <!--Not Available on - [Apply disk encryption in Azure Security Center](/security-center/security-center-apply-disk-encryption)-->
-    <!--Not Available on - [Azure data encryption at rest](../../security/fundamentals/encryption-atrest.md)-->
+- [在 Azure 安全中心应用磁盘加密](/security-center/security-center-apply-disk-encryption)
+- [Azure 静态数据加密](../../security/fundamentals/encryption-atrest.md)
 
-<!--Update_Description: new articles on disk encryption faq -->
-<!--New.date: 11/11/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

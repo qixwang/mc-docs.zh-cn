@@ -8,14 +8,14 @@ ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
 origin.date: 06/12/2019
-ms.date: 03/02/2020
+ms.date: 07/01/2020
 ms.author: v-tawe
-ms.openlocfilehash: ddbb7d112fffad23be07b8fcc5def6dbdfb0285f
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 7a1b2aa0e63704845bd6fc31a8107bd31e48f78e
+ms.sourcegitcommit: 4f84bba7e509a321b6f68a2da475027c539b8fd3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77494069"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85796182"
 ---
 # <a name="run-azure-iot-edge-on-windows-server-virtual-machines"></a>在 Windows Server 虚拟机上运行 Azure IoT Edge
 

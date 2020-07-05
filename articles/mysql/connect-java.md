@@ -7,14 +7,14 @@ ms.service: mysql
 ms.custom: mvc, devcenter, seo-java-july2019, seo-java-august2019
 ms.topic: quickstart
 ms.devlang: java
-origin.date: 3/18/2020
-ms.date: 06/01/2020
-ms.openlocfilehash: 4622baf6f4033b79fff243705b0459b62a8aa87d
-ms.sourcegitcommit: be0a8e909fbce6b1b09699a721268f2fc7eb89de
+origin.date: 5/26/2020
+ms.date: 06/29/2020
+ms.openlocfilehash: fc7b678a4e9975970ea636a04545802a7ba42b66
+ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84199757"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85516773"
 ---
 # <a name="quickstart-use-java-to-connect-to-and-query-data-in-azure-database-for-mysql"></a>快速入门：使用 Java 连接到 Azure Database for MySQL 并查询其中的数据
 
@@ -30,6 +30,9 @@ ms.locfileid: "84199757"
 - 具有活动订阅的 Azure 帐户。 [创建 1 元试用帐户](https://wd.azure.cn/zh-cn/pricing/1rmb-trial-full)。
 - Azure Database for MySQL 服务器。 [使用 Azure 门户创建 Azure Database for MySQL 服务器](quickstart-create-mysql-server-database-using-azure-portal.md)或[使用 Azure CLI 创建 Azure Database for MySQL 服务器](quickstart-create-mysql-server-database-using-azure-cli.md)。
 - Azure Database for MySQL 连接安全性配置为打开防火墙，并为应用程序配置了 SSL 连接设置。
+
+> [!IMPORTANT] 
+> 确保已使用 [Azure 门户](./howto-manage-firewall-using-portal.md)或 [Azure CLI](./howto-manage-firewall-using-cli.md) 将服务器的防火墙规则添加到连接的 IP 地址
 
 ## <a name="obtain-the-mariadb-connector"></a>获取 MariaDB 连接器
 

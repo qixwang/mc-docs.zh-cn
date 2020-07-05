@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/18/2020
+ms.date: 06/28/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 71a2e94937406d3bcfee4616548be1f09ddb7c71
-ms.sourcegitcommit: 87e789550ea49ff77c7f19bc68fad228009fcf44
+ms.openlocfilehash: 8f78a02ead1f37f07892928de77573d4c2507847
+ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83748046"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85516515"
 ---
 # <a name="developer-notes-for-custom-policies-in-azure-active-directory-b2c"></a>有关 Azure Active Directory B2C 中的自定义策略的开发人员说明
 
@@ -69,7 +69,7 @@ Azure Active Directory B2C 中的自定义策略配置现已正式发布。 此�
 | [OAuth2 隐式流](implicit-flow-single-page-application.md) |  |  | X |  |
 | OAuth2 资源所有者密码凭据 |  | X |  |  |
 | [OIDC 连接](openid-connect.md) |  |  | X |  |
-| SAML2 |  |X  |  | POST 和重定向绑定。 |
+| SAML2 |  |  |X  | POST 和重定向绑定。 |
 | OAuth1 |  |  |  | 不支持。 |
 | WSFED | X |  |  |  |
 
@@ -158,5 +158,5 @@ Azure Active Directory B2C 中的自定义策略配置现已正式发布。 此�
 ## <a name="next-steps"></a>后续步骤
 
 - 请参阅[可用于 Azure AD B2C 的 Microsoft Graph 操作](microsoft-graph-operations.md)
-- 详细了解[自定义策略及其与用户流的差异](custom-policy-overview.md)。
+- 详细了解[自定义策略以及与用户流的区别](custom-policy-overview.md)。
 

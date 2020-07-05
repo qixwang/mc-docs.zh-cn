@@ -5,14 +5,14 @@ author: WenJason
 ms.author: v-jay
 ms.service: mysql
 ms.topic: conceptual
-origin.date: 12/02/2019
-ms.date: 02/10/2020
-ms.openlocfilehash: 9f21fa151bc4baaedf620d715688970b7ae88ee7
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+origin.date: 3/18/2020
+ms.date: 06/29/2020
+ms.openlocfilehash: ee65d4414fb6a0dae824605595c76913172cc4c2
+ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77068350"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85516664"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mysql"></a>对 Azure Database for MySQL 使用虚拟网络服务终结点和规则
 
@@ -29,7 +29,7 @@ ms.locfileid: "77068350"
 > Azure 的所有区域均提供此功能，其中 Azure Database for MySQL 部署用于常规用途和内存优化服务器。
 > 在 VNet 对等互连的情况下，如果流量通过具有服务终结点的公共 VPN 网关流动，并且应该流向对等机，请创建 ACL/VNet 规则，以便网关 VNet 中的 Azure 虚拟机能够访问 Azure Database for MySQL 服务器。
 
-<a name="anch-terminology-and-description-82f" />
+<a name="anch-terminology-and-description-82f"></a>
 
 ## <a name="terminology-and-description"></a>术语和说明
 
@@ -43,7 +43,7 @@ ms.locfileid: "77068350"
 
 虚拟网络规则要求 Azure Database for MySQL 服务器接受来自该子网上所有节点的通信。
 
-<a name="anch-benefits-of-a-vnet-rule-68b" />
+<a name="anch-benefits-of-a-vnet-rule-68b"></a>
 
 ## <a name="benefits-of-a-virtual-network-rule"></a>虚拟网络规则的优势
 
@@ -67,7 +67,7 @@ ms.locfileid: "77068350"
 
 但截至 2018 年 8 月，Azure Database for MySQL 服务仍然无法直接分配给子网。
 
-<a name="anch-details-about-vnet-rules-38q" />
+<a name="anch-details-about-vnet-rules-38q"></a>
 
 ## <a name="details-about-virtual-network-rules"></a>虚拟网络规则详细信息
 

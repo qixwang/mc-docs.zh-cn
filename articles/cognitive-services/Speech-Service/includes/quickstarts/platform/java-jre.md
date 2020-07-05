@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
 origin.date: 10/11/2019
-ms.date: 03/16/2020
+ms.date: 06/19/2020
 ms.author: v-tawe
-ms.openlocfilehash: d63944b5f4ea26493d3da755026978b887318fde
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.openlocfilehash: 4d86bd8a2c4c063388ef53d170bb4f33d723a160
+ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82150887"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85613439"
 ---
 本指南介绍如何安装用于 64 位 Java 8 JRE 的[语音 SDK](~/articles/cognitive-services/speech-service/speech-sdk.md)。 如果只是需要包名称以便自行开始，那么请知悉在 Maven 中央存储库中未提供 Java SDK。 无论是使用 Gradle 还是 `pom.xml` 依赖项文件，都需要添加指向 `https://csspeechstorage.blob.core.windows.net/maven/` 的自定义存储库（请参阅下文了解包名称）。
 
@@ -28,9 +28,9 @@ ms.locfileid: "82150887"
 ## <a name="supported-operating-systems"></a>支持的操作系统
 
 - Java 语音 SDK 包适用于以下操作系统：
-  - Windows:仅 64 位
+  - Windows：仅 64 位
   - Mac：macOS X 10.13 或更高版本
-  - Linux：仅 64 位的 Ubuntu 16.04、Ubuntu 18.04、Debian 9、RHEL 8、CentOS 8
+  - Linux：仅 64 位的 Ubuntu 16.04、Ubuntu 18.04、Debian 9、RHEL 7/8、CentOS 7/8
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -38,7 +38,7 @@ ms.locfileid: "82150887"
 
 - [Eclipse Java IDE](https://www.eclipse.org/downloads/)（要求已安装 Java）
 
-- 需要语音 SDK 版本 1.10.0 或更高版本。
+- 需要语音 SDK 版本 1.11.0 或更高版本。
 
 - 支持的 Linux 平台会要求安装某些库（要求安装 `libssl` 以获取安全套接字层支持；要求安装 `libasound2` 以获取声音支持）。 请参阅下面的发行版，了解安装这些库的正确版本所需的命令。
 
@@ -56,7 +56,7 @@ ms.locfileid: "82150887"
         sudo apt-get install build-essential libssl1.0.2 libasound2
         ```
 
-  - 在 RHEL/CentOS 8 上，请运行以下命令来安装所需的包：
+  - 在 RHEL/CentOS 上，请运行以下命令来安装所需的包：
 
         ```sh
         sudo yum update
@@ -64,7 +64,8 @@ ms.locfileid: "82150887"
         ```
 
 > [!NOTE]
-> 在 RHEL/CentOS 8 上，按照[如何配置 OpenSSL for Linux](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md) 上的说明进行操作。
+> - 在 RHEL/CentOS 7 上，按照[如何为语音 SDK 配置 RHEL/CentOS 7](~/articles/cognitive-services/speech-service/how-to-configure-rhel-centos-7.md) 上的说明进行操作。
+> - 在 RHEL/CentOS 8 上，按照[如何配置 OpenSSL for Linux](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md) 上的说明进行操作。
 
 - 在 Windows 上，需要安装适用于平台的 [Microsoft Visual C++ Redistributable for Visual Studio 2019](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)。 请注意，首次安装它时，可能需要重启 Windows 才能继续使用本指南。
 

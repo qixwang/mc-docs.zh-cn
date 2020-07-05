@@ -1,25 +1,20 @@
 ---
 title: Azure 对第 2 代 VM 的支持
 description: 第 2 代 VM 的 Azure 支持概述
-services: virtual-machines-windows
-documentationcenter: ''
 author: rockboyfor
-manager: digimobile
-editor: ''
-tags: azure-resource-manager
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.subservice: sizes
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
-ms.topic: article
+ms.topic: how-to
 origin.date: 02/11/2020
-ms.date: 04/27/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: ad804073dcb062adcfdfb20024e7af70c756a82e
-ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
+ms.openlocfilehash: d834c5809625536f6bdd17631d134371593f28be
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83392150"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85946047"
 ---
 <!--Verify sucessfully-->
 # <a name="support-for-generation-2-vms-on-azure"></a>Azure 对第 2 代 VM 的支持
@@ -50,7 +45,8 @@ Azure 中的所有 VM 大小都支持第 1 代 VM。 Azure 目前为以下选定
     <!--Not Available on * [HB-series](../hb-series.md)-->
     <!--Not Available on * [HC-series](../hc-series.md)-->
     <!--Not Available on * [Ls-series](/virtual-machines/windows/sizes-previous-gen#ls-series) and [Lsv2-series](../lsv2-series.md)-->
-    <!--Not Available on * [Mv2-series](../mv2-series.md)-->
+
+* [M 系列](../m-series.md)
     
 * [NCv3 系列](../ncv3-series.md)
     
@@ -137,22 +133,16 @@ Azure 目前不支持本地 Hyper-V 对第 2 代 VM 所支持的某些特性。
 1. 选择[支持的第 2 代 VM](#generation-2-vm-sizes)。
 1. 通过 [Azure 门户创建流](quick-create-portal.md)完成 VM 的创建。
 
-![选择“第 1 代”或“第 2 代”VM](./media/generation-2/gen1-gen2-select.png)
+![选择第 1 代或第 2 代 VM](./media/generation-2/gen1-gen2-select.png)
 
 #### <a name="powershell"></a>PowerShell
 
 也可以使用 PowerShell 通过直接引用第 1 代或第 2 代 SKU 来创建 VM。
 
-例如，使用以下 PowerShell cmdlet 获取 `WindowsServer` 产品中的 SKU 列表。
+例如，使用以下 PowerShell cmdlet 获取 `WindowsServer` 产品/服务中的 SKU 列表。
 
 ```powershell
 Get-AzVMImageSku -Location chinanorth2 -PublisherName MicrosoftWindowsServer -Offer WindowsServer
-```
-
-或者，可以使用 Azure CLI 查看按 **Publisher** 列出的任何可用第 2 代映像。
-
-```azurecli
-az vm image list --publisher Canonical --sku gen2 --output table --all
 ```
 
 如果要创建使用 Windows Server 2012 作为操作系统的 VM，则将选择第 1 代 (BIOS) 或第 2 代 (UEFI) VM SKU，如下所示：
@@ -162,7 +152,15 @@ az vm image list --publisher Canonical --sku gen2 --output table --all
 2012-datacenter-gensecond
 ```
 
-有关最新的受支持市场映像列表，请参阅[特性和功能](#features-and-capabilities)部分。
+有关支持的市场映像的最新列表，请参阅[特性和功能](#features-and-capabilities)部分。
+
+#### <a name="azure-cli"></a>Azure CLI
+
+或者，可以使用 Azure CLI 查看按 **Publisher** 列出的任何可用第 2 代映像。
+
+```azurecli
+az vm image list --publisher Canonical --sku gen2 --output table --all
+```
 
 ### <a name="managed-image-or-managed-disk"></a>托管映像或托管磁盘
 
@@ -185,7 +183,7 @@ az vm image list --publisher Canonical --sku gen2 --output table --all
     是的，你可以将第 2 代 .vhd 文件带到 Azure，并使用该文件创建第 2 代 VM。 请使用以下步骤来执行该操作：
     
     1. 将 .vhd 上传到你要创建 VM 的同一区域中的存储帐户。
-    1. 从 .vhd 文件创建托管磁盘。 将“Hyper-V Generation”属性设置为 V2。 以下 PowerShell 命令在创建托管磁盘时设置“Hyper-V Generation”属性。
+    1. 从该 .vhd 文件创建托管磁盘。 将“Hyper-V Generation”属性设置为 V2。 以下 PowerShell 命令在创建托管磁盘时设置“Hyper-V Generation”属性。
 
         ```powershell
         $sourceUri = 'https://xyzstorage.blob.core.chinacloudapi.cn/vhd/abcd.vhd'. #<Provide location to your uploaded .vhd file>
@@ -195,7 +193,7 @@ az vm image list --publisher Canonical --sku gen2 --output table --all
         ```
 
     1. 磁盘可用后，请通过附加此磁盘来创建 VM。 创建的 VM 将是第 2 代 VM。
-    创建第 2 代 VM 时，可以选择通用化此 VM 的映像。 通过通用化映像，可以使用它来创建多个 VM。
+    创建第 2 代 VM 时，可以选择将此 VM 的映像通用化。 将该映像通用化后，可以使用它来创建多个 VM。
 
 * **如何增大 OS 磁盘的大小？**  
     大于 2 TB 的 OS 磁盘是第 2 代 VM 的新配置。 默认情况下，第 2 代 VM 的 OS 磁盘小于 2 TB。 可将磁盘大小增大至 4 TB（建议的最大大小）。 使用 Azure CLI 或 Azure 门户增大 OS 磁盘大小。 有关如何以编程方式扩展磁盘的信息，请参阅[调整磁盘大小](expand-os-disk.md)。

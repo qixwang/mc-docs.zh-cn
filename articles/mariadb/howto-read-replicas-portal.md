@@ -5,14 +5,14 @@ author: WenJason
 ms.author: v-jay
 ms.service: mariadb
 ms.topic: conceptual
-origin.date: 4/21/2020
-ms.date: 06/08/2020
-ms.openlocfilehash: 95e7a66ce60dd3e55402955b71278eb889a6a03e
-ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
+origin.date: 6/10/2020
+ms.date: 07/06/2020
+ms.openlocfilehash: b5d79d9633eec9b1fa4e48b309fec88cb864e6dc
+ms.sourcegitcommit: 7ea2d04481512e185a60fa3b0f7b0761e3ed7b59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84275606"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85845773"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-the-azure-portal"></a>如何使用 Azure 门户在 Azure Database for MariaDB 中创建和管理只读副本
 
@@ -26,6 +26,9 @@ ms.locfileid: "84275606"
 > 只读副本功能仅适用于“常规用途”或“内存优化”定价层中的 Azure Database for MariaDB 服务器。 请确保主服务器位于其中一个定价层中。
 
 ## <a name="create-a-read-replica"></a>创建只读副本
+
+> [!IMPORTANT]
+> 如果为没有现有副本的主服务器创建副本，主服务器将首先重启以便为复制准备自身。 请考虑这一点并在非高峰期执行这些操作。
 
 可以使用以下步骤创建只读副本服务器：
 

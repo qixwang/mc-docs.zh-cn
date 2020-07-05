@@ -7,14 +7,14 @@ metadata:
   ms.service: notification-hubs
   ms.topic: landing-page
   origin.date: 03/11/2020
-  ms.date: 04/20/2020
+  ms.date: 07/01/2020
   ms.author: v-tawe
-  ms.openlocfilehash: e006670477c18b0410263a9b42097f62a30a5248
-  ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
+  ms.openlocfilehash: 89b8d6bca42dffacd174e3a87bb694da059ffea3
+  ms.sourcegitcommit: 4f84bba7e509a321b6f68a2da475027c539b8fd3
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 04/30/2020
-  ms.locfileid: "82588480"
+  ms.lasthandoff: 07/01/2020
+  ms.locfileid: "85796318"
 landingContent:
 - title: 关于 Azure 通知中心
   linkLists:

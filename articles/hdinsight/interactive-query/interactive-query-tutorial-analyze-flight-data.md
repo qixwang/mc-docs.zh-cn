@@ -1,5 +1,5 @@
 ---
-title: 教程：在 Azure HDInsight 上使用交互式查询执行提取、转换、加载 (ETL) 操作
+title: 教程：使用交互式查询执行 ETL 操作 - Azure HDInsight
 description: 教程 - 了解如何从原始 CSV 数据集提取数据，在 HDInsight 上使用交互式查询将其转换，然后使用 Apache Sqoop 将已转换的数据加载到 Azure SQL 数据库。
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -9,12 +9,12 @@ origin.date: 07/02/2019
 ms.date: 08/19/2019
 ms.author: v-yiso
 ms.custom: hdinsightactive,mvc
-ms.openlocfilehash: 86def21beffadd0b1b8b26ac99eea06d220b6c78
-ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
+ms.openlocfilehash: 365247dade23219b64574fb0866af47e0e9c8a95
+ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84723162"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85516544"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-interactive-query-in-azure-hdinsight"></a>教程：在 Azure HDInsight 中使用交互式查询提取、转换和加载数据
 
@@ -206,7 +206,7 @@ ms.locfileid: "84723162"
     sudo apt-get --assume-yes install freetds-dev freetds-bin
     ```
 
-2. 安装完成后，使用以下命令连接到 SQL 数据库服务器。
+2. 安装完成后，使用以下命令连接到 SQL 数据库。
 
     ```bash
     TDSVER=8.0 tsql -H $SQLSERVERNAME.database.chinacloudapi.cn -U $SQLUSER -p 1433 -D $DATABASE -P $SQLPASWORD

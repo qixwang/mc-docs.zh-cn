@@ -6,14 +6,14 @@ ms.tgt_pltfrm: html
 ms.devlang: javascript
 ms.topic: article
 origin.date: 06/25/2019
-md.date: 03/23/2020
+md.date: 07/03/2020
 ms.author: v-tawe
-ms.openlocfilehash: 53b3e301209da97ef4485d8ade23140139441da6
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 527b521a7f5f82aada1b4a07a01be4dab758e3a4
+ms.sourcegitcommit: 5afd7c4c3be9b80c4c67ec55f66fcf347aad74c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80151742"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85942592"
 ---
 # <a name="how-to-use-the-javascript-client-library-for-azure-mobile-apps"></a>如何使用适用于 Azure 移动应用的 JavaScript 客户端库
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
@@ -46,6 +46,8 @@ import * as WindowsAzure from 'azure-mobile-apps-client';
 
 还可直接从 CDN 下载使用预建版本的 SDK：
 
+<!-- do no need to change the endpoint -->
+
 ```html
 <script src="https://zumo.blob.core.windows.net/sdk/azure-mobile-apps-client.min.js"></script>
 ```
@@ -76,10 +78,12 @@ Azure 应用服务支持使用各种外部标识提供者对应用用户进行�
 6. 单击“编辑”  按钮启用对资源的编辑。
 7. 查找 **allowedExternalRedirectUrls** 元素，此元素应为 null。 在数组中添加 URL：
 
-         "allowedExternalRedirectUrls": [
-             "http://localhost:3000",
-             "https://localhost:3000"
-         ],
+    ```json
+    "allowedExternalRedirectUrls": [
+        "http://localhost:3000",
+        "https://localhost:3000"
+    ],
+    ```
 
     将数组中的 URL 替换为服务的 URL，在本示例中为本地 Node.js 示例服务的 `http://localhost:3000` 。 对于 Ripple 服务，也可以根据应用的配置方式，使用 `http://localhost:4400` 或其他某个 URL。
 8. 在页面顶部，单击“读/写”  ，然后单击“PUT”  保存更新。

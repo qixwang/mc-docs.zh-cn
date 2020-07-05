@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 05/28/2020
+ms.date: 06/30/2020
 ms.author: v-junlch
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 4ae92e51918e82912f91c0f2664e4a8bbed2e1e6
-ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
+ms.openlocfilehash: dd07d5c83ae27a7d5fb7673701dd7e5da653b44e
+ms.sourcegitcommit: 1008ad28745709e8d666f07a90e02a79dbbe2be5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84186856"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945225"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>让用户登录并从 JavaScript 单页应用程序 (SPA) 调用 Microsoft 图形 API
 
@@ -26,7 +26,7 @@ ms.locfileid: "84186856"
 - 从 Microsoft 标识平台终结点调用需要访问令牌的 Microsoft Graph API 或其他 API
 
 >[!NOTE]
-> 如果你不熟悉 Microsoft 标识平台，我们建议你从[在 JavaScript SPA 中登录用户并获取访问令牌快速入门](quickstart-v2-javascript.md)开始。
+> 如果你不熟悉 Microsoft 标识平台，我们建议先阅读[在 JavaScript SPA 中使用户登录和获取访问令牌](quickstart-v2-javascript.md)快速入门。
 
 ## <a name="how-the-sample-app-generated-by-this-guide-works"></a>本指南生成的示例应用的工作原理
 
@@ -56,13 +56,26 @@ ms.locfileid: "84186856"
 
 * 本指南中的说明基于 Node.js 中生成的 Web 服务器。 建议使用 [Visual Studio Code](https://code.visualstudio.com/download) 作为集成开发环境 (IDE)。
 
+* 新式 Web 浏览器。 此 JavaScript 示例使用 [ES6](http://www.ecma-international.org/ecma-262/6.0/) 约定，因此不支持 Internet Explorer 。
+
 ## <a name="create-your-project"></a>创建项目
 
 确保已安装 [Node.js](https://nodejs.org/en/download/)，然后创建一个用于托管应用程序的文件夹。 我们将在此处实现一个简单的 [Express](https://expressjs.com/) Web 服务器来为 `index.html` 文件提供服务。
 
-1. 首先，使用 Visual Studio Code 集成终端找到项目文件夹，然后使用 NPM 安装 Express。
+1. 使用终端（如 Visual Studio Code 集成终端）找到项目文件夹，然后键入：
 
-1. 接下来，创建名为 `server.js` 的 .js 文件并添加以下代码：
+   ```console
+   npm init
+   ```
+
+2. 接下来，安装必需的依赖项：
+
+   ```console
+   npm install express --save
+   npm install morgan --save
+   ```
+
+1. 现在，创建一个名为 `index.js` 的 .js 文件并添加以下代码：
 
    ```JavaScript
    const express = require('express');
@@ -255,7 +268,7 @@ ms.locfileid: "84186856"
 
 在继续进行身份验证之前，请在 **Azure Active Directory** 中注册你的应用程序。
 
-1. 登录到 [Azure 门户](https://portal.azure.cn/)。
+1. 登录 [Azure 门户](https://portal.azure.cn/)。
 1. 如果帐户提供访问多个租户的权限，请在右上方选择该帐户，然后将门户会话设置为要使用的 Azure AD 租户。
 1. 转到面向开发人员的 Microsoft 标识平台的[应用注册](https://portal.azure.cn/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)页。
 1. “注册应用程序”页显示后，请输入应用程序的名称。
@@ -265,16 +278,16 @@ ms.locfileid: "84186856"
 1. 在应用的“概述”页上，记下“应用程序(客户端) ID”值，供稍后使用 。
 1. 本快速入门要求启用[隐式授权流](v2-oauth2-implicit-grant-flow.md)。 在已注册的应用程序的左窗格中，选择“身份验证”。
 1. 在“高级设置”部分的“隐式授权”下，选中“ID 令牌”和“访问令牌”复选框   。 由于此应用必须将用户登录并调用 API，因此需要 ID 令牌和访问令牌。
-1. 选择“保存” 。
+1. 选择“保存”。
 
 > ### <a name="set-a-redirect-url-for-nodejs"></a>设置 Node.js 的重定向 URL
 >
-> 对于 Node.js，可以在 *server.js* 文件中设置 Web 服务器端口。 本教程使用端口 3000，但你可以使用任何其他可用端口。
+> 对于 Node.js，可在 index.js 文件中设置 Web 服务器端口。 本教程使用端口 3000，但你可以使用任何其他可用端口。
 >
 > 若要设置应用程序注册信息中的重定向 URL，请切换回“应用程序注册”窗格，然后执行以下两项操作之一：
 >
 > - 将 *`http://localhost:3000/`* 设置为“重定向 URL”。
-> - 如果使用的是自定义 TCP 端口，请使用 *`http://localhost:<port>/`* （其中， *\<port>* 是自定义 TCP 端口号）。
+> - 如果使用的是自定义 TCP 端口，请使用 `http://localhost:<port>/`（其中，\<port> 是自定义 TCP 端口号） 。
 >   1. 复制“URL”的值。
 >   1. 切换回“应用程序注册”窗格，然后将已复制的值粘贴为“重定向 URL”。
 >
@@ -308,7 +321,7 @@ ms.locfileid: "84186856"
 ```
 
  其中：
- - \<Enter_the_Application_Id_Here> 是所注册应用程序的应用程序（客户端）ID。
+ - \<Enter_the_Application_Id_Here> 是已注册的应用程序的应用程序（客户端）ID。
  - \<Enter_the_Cloud_Instance_Id_Here> 是 Azure 云的实例。 对于主要或全球 Azure 云，只需输入 *https://login.partner.microsoftonline.cn* 。 对于**国家**云（例如“中国”云），请参阅[国家云](/active-directory/develop/authentication-national-cloud)。
  - \<Enter_the_Tenant_info_here> 设置为以下选项之一：
    - 如果应用程序支持“此组织目录中的帐户”，请将此值替换为“租户 ID”或“租户名称”（例如，*contoso.microsoft.com*）。
@@ -396,7 +409,7 @@ ms.locfileid: "84186856"
 
 用户首次选择“登录”按钮后，`signIn` 方法将调用 `loginPopup` 以将用户登录。 此方法会打开一个包含 Microsoft 标识平台终结点的弹出窗口，以提示并验证用户的凭据。 成功登录后，用户将重定向回到原始的 *index.html* 页。 他们将接收到一个由 `msal.js` 处理的令牌，该令牌包含的信息已缓存。 该令牌称为 ID令牌，并包含有关用户的基本信息，如用户显示名。 如果计划将此令牌提供的数据用于任何目的，则需确保此令牌已由后端服务器验证，以保证将令牌颁发给应用程序的有效用户。
 
-本指南生成的 SPA 调用 `acquireTokenSilent` 和/或 `acquireTokenPopup` 来获取用于查询 Microsoft Graph API 以获取用户配置文件信息的访问令牌。 如果需要验证 ID 令牌的示例，请查看 GitHub 中的[此](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2 "GitHub active-directory-javascript-singlepageapp-dotnet-webapi-v2 示例")示例应用程序。 该示例使用 ASP.NET Web API 进行令牌验证。
+本指南生成的 SPA 调用 `acquireTokenSilent` 和/或 `acquireTokenPopup` 来获取用于查询 Microsoft Graph API 以获取用户配置文件信息的访问令牌。 如果需要用于验证 ID 令牌的示例，请查看 GitHub 中的[此](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2 "GitHub active-directory-javascript-singlepageapp-dotnet-webapi-v2 示例")示例应用程序。 该示例使用 ASP.NET Web API 进行令牌验证。
 
 #### <a name="get-a-user-token-interactively"></a>以交互方式获取用户令牌
 
@@ -494,8 +507,6 @@ Microsoft Graph API 需要 *https://microsoftgraph.chinacloudapi.cn/user.read* �
 
 > [!NOTE]
 > 当你增加作用域数量时，可能会提示用户另外进行许可。
-
-如果后端 API 不需要范围（不建议），则你可以将 *clientId* 用作调用中的范围来获取令牌。
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 

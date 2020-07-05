@@ -1,23 +1,18 @@
 ---
 author: CelesteDG
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.topic: include
-origin.date: 08/06/2018
-ms.date: 09/06/2018
+ms.date: 07/03/2020
 ms.author: v-junlch
-ms.openlocfilehash: 097ed469b45b9584c94cea63783f619067e75d32
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 51175b2942a80f8c0fbbfb6b4ebfd60e7fbbb7a1
+ms.sourcegitcommit: 1008ad28745709e8d666f07a90e02a79dbbe2be5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "63823223"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945004"
 ---
 ## <a name="help-and-support"></a>帮助和支持
 
-如果需要帮助、需要报告问题，或者需要详细了解支持选项，请参阅以下文章：
+如果需要帮助、需要报告问题，或者需要详细了解支持选项，请参阅[面向开发人员的帮助和支持](../articles/active-directory/develop/developer-support-help-options.md)。
 
-> [!div class="nextstepaction"]
-> [面向开发人员的帮助和支持](../articles/active-directory/develop/developer-support-help-options.md)
-
-<!-- ms.date: 09/06/2018 -->

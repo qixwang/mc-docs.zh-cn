@@ -1,20 +1,20 @@
 ### YamlMime:Landing
 title: 应用服务文档
-summary: 使用 Azure 应用服务可以采用所选编程语言构建和托管 Web 应用、移动后端以及 RESTful API，而无需管理基础结构。 它提供自动缩放和高可用性，支持 Windows 和 Linux，并支持从 GitHub、Azure DevOps 或任何 Git 存储库进行自动部署。 可以参考我们的快速入门、教程和示例来了解如何使用 Azure 应用服务。
+summary: Azure 应用服务可以让你采用所选编程语言构建和托管 Web 应用、移动后端以及 RESTful API，而无需管理基础结构。 它提供自动缩放和高可用性，支持 Windows 和 Linux，并支持从 GitHub、Azure DevOps 或任何 Git 存储库进行自动部署。 可以参考我们的快速入门、教程和示例来了解如何使用 Azure 应用服务。
 metadata:
   title: Azure 应用服务文档
   description: 在 Azure 应用服务中托管网站、Web 应用、RESTful API 和移动后端。 查找快速入门、教程和示例，以便帮助你成功使用应用服务。
   ms.topic: landing-page
   ms.service: app-service
   origin.date: 02/26/2020
-  ms.date: 03/16/2020
+  ms.date: 06/22/2020
   ms.author: v-tawe
-  ms.openlocfilehash: 88fcbd8456324a74f7d3de08174529da416d5584
-  ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+  ms.openlocfilehash: f905d1182f753136bf75b78b605a36c12a7eb8a7
+  ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 04/17/2020
-  ms.locfileid: "79546949"
+  ms.lasthandoff: 07/01/2020
+  ms.locfileid: "85613371"
 landingContent:
 - title: 关于应用服务
   linkLists:
@@ -40,6 +40,8 @@ landingContent:
       url: app-service-web-get-started-nodejs.md
     - text: 第一个 PHP 应用
       url: app-service-web-get-started-php.md
+    - text: 第一个 Java 应用
+      url: app-service-web-get-started-java.md
 - title: 常见任务
   linkLists:
   - linkListType: tutorial
@@ -116,5 +118,5 @@ landingContent:
       url: https://docs.microsoft.com/powershell/module/az.websites/#app_service
     - text: REST API
       url: https://docs.microsoft.com/rest/api/appservice/
-    - text: 资源管理器
+    - text: Resource Manager
       url: https://docs.microsoft.com/azure/templates/microsoft.web/allversions

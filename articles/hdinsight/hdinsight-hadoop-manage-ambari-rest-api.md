@@ -10,12 +10,12 @@ ms.topic: conceptual
 origin.date: 06/07/2019
 ms.date: 11/11/2019
 ms.author: v-yiso
-ms.openlocfilehash: f9c1521214bb613c9959c2dcc52436f7fc10b728
-ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
+ms.openlocfilehash: 36d2a7432b193ba0ef73cb67a1674506d2e30f09
+ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84723231"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85516662"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-rest-api"></a>使用 Apache Ambari REST API 管理 HDInsight 群集
 
@@ -512,4 +512,4 @@ $resp.Content
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 REST API 的完整参考，请参阅 [Apache Ambari API 参考 V1](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)。  另请参阅[授权用户访问 Apache Ambari 视图](./hdinsight-authorize-users-to-ambari.md)
+有关 REST API 的完整参考，请参阅 [Apache Ambari API 参考 V1](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)。  

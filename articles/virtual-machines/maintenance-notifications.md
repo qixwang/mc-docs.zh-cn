@@ -4,16 +4,16 @@ description: 概述了在 Azure 中运行的虚拟机的维护通知。
 author: rockboyfor
 ms.service: virtual-machines
 ms.workload: infrastructure-services
-ms.topic: article
+ms.topic: conceptual
 origin.date: 11/19/2019
-ms.date: 04/27/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 0cb9272bb30638e9c5ddc6e0d5f00fbf4cc9dc6a
-ms.sourcegitcommit: 2d8950c6c255361eb6c66406988e25c69cf4e0f5
+ms.openlocfilehash: e71a939a0569ed809dffcb3623985cf1006b9580
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83392203"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85946076"
 ---
 <!--Verified successfully-->
 <!--Merge with windows and linux maintenace notification-->

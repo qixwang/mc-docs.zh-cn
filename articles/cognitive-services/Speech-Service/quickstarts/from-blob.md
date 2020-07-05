@@ -9,15 +9,15 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
 origin.date: 02/10/2020
-ms.date: 04/20/2020
+ms.date: 06/19/2019
 ms.author: v-tawe
-zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: f751ca551254528b91c5c13d07e97b7f1f3ba3d7
-ms.sourcegitcommit: 304d3ef3c9e65c3e85977b3afb9985fbc0f908d6
+zone_pivot_groups: programming-languages-set-two-with-js
+ms.openlocfilehash: 76e08f33f5a07b6ae2d940307447d11d59694184
+ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85095976"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85613345"
 ---
 # <a name="quickstart-recognize-speech-stored-in-blob-storage"></a>快速入门：识别存储在 Blob 存储中的语音
 
@@ -48,7 +48,14 @@ ms.locfileid: "85095976"
 [!INCLUDE [python](../includes/quickstarts/from-blob/python/python.md)]
 ::: zone-end
 
+::: zone pivot="programming-language-javascript"
+[!INCLUDE [Header](../includes/quickstarts/from-blob/header.md)]
+[!INCLUDE [Header](../includes/quickstarts/from-blob/javascript/header.md)]
+[!INCLUDE [python](../includes/quickstarts/from-blob/javascript/javascript.md)]
+::: zone-end
+
 ::: zone pivot="programming-language-more"
 [!INCLUDE [Header](../includes/quickstarts/from-file/more/header.md)]
 [!INCLUDE [More samples](../includes/quickstarts/from-blob/more/more.md)]
+
 ::: zone-end

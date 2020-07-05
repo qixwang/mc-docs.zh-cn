@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 05/28/2020
+ms.date: 06/30/2020
 ms.author: v-junlch
-ms.custom: aaddev, scenarios:getting-started, languages:Python
-ms.openlocfilehash: 40b2177c234c749ab74aa5f9ae864a631df45c75
-ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
+ms.custom: aaddev, tracking-python, scenarios:getting-started, languages:Python
+ms.openlocfilehash: c90f81ec5d889efbdc7d6a73c9ea560e6ed113fd
+ms.sourcegitcommit: 1008ad28745709e8d666f07a90e02a79dbbe2be5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84186714"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945005"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-python-web-app"></a>快速入门：向 Python Web 应用添加 Microsoft 登录功能
 
@@ -24,13 +24,12 @@ ms.locfileid: "84186714"
 
 完成本指南后，该应用程序将接受任何公司或组织中使用 Azure Active Directory 的工作或学校帐户进行登录。 （有关说明，请参阅[示例工作原理](#how-the-sample-works)。）
 
-
 ## <a name="prerequisites"></a>先决条件
 
 若要运行此示例，需要：
 
 - [Python 2.7+](https://www.python.org/downloads/release/python-2713) 或 [Python 3+](https://www.python.org/downloads/release/python-364/)
-- [Flask](http://flask.pocoo.org/)、Flask-Session、[requests](https://requests.kennethreitz.org/en/master/)
+- [Flask](http://flask.pocoo.org/)、[Flask-Session](https://pypi.org/project/Flask-Session/)、[请求](https://requests.kennethreitz.org/en/master/)
 - [MSAL Python](https://github.com/AzureAD/microsoft-authentication-library-for-python)
 
 > [!div renderon="docs"]

@@ -1,26 +1,25 @@
 ---
 title: 将维护配置移动到另一个 Azure 区域
 description: 了解如何将 VM 维护配置移动到另一个 Azure 区域
-services: virtual-machines
 author: rockboyfor
 ms.service: virtual-machines
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: vm
 origin.date: 03/04/2020
-ms.date: 05/06/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 5ba5b8545a3054d2c468b38ea27a75ea49dd519f
-ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
+ms.openlocfilehash: 3ab6b3de168145ad87d0d5c0f9bc84657e1e0402
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "83002305"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945642"
 ---
 # <a name="move-a-maintenance-control-configuration-to-another-region"></a>将维护控制配置移动到另一个区域
 
 按照本文将维护控制配置移动到另一个 Azure 区域。 出于多种原因，你可能需要移动配置。 例如，利用新的区域、部署在特定区域中可用的功能或服务、满足内部策略和治理要求，或者响应容量规划。
 
-使用带自定义维护配置的维护控制，你可以对如何将平台更新应用到 [Windows](/virtual-machines/maintenance-control-cli?toc=/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json) VM、[Linux](/virtual-machines/maintenance-control-cli?toc=%2Fazure%2Fvirtual-machines%2Flinux%2Ftoc.json&bc=%2Fazure%2Fvirtual-machines%2Flinux%2Fbreadcrumb%2Ftoc.json&view=azure-java-stable) VM 和 Azure 专用主机进行控制。 跨区域移动维护控制有几种场景：
+使用带自定义维护配置的维护控制，你可以对如何将平台更新应用到 [Windows](/virtual-machines/maintenance-control-cli?toc=/virtual-machines/windows/toc.json&bc=/virtual-machines/windows/breadcrumb/toc.json) VM、[Linux](/virtual-machines/maintenance-control-cli?toc=%2Fazure%2Fvirtual-machines%2Flinux%2Ftoc.json&bc=%2Fazure%2Fvirtual-machines%2Flinux%2Fbreadcrumb%2Ftoc.json&view=azure-java-stable) VM 和 Azure 专用主机进行控制。 跨区域移动维护控制有几种场景：
 
 - 若要移动维护控制配置，但不移动与配置关联的资源，请按本文中的说明进行操作。
 - 若要移动与维护配置关联的资源，但不移动配置本身，请按照[这些说明](move-region-maintenance-configuration-resources.md)进行操作。
@@ -68,7 +67,6 @@ ms.locfileid: "83002305"
 
 ## <a name="next-steps"></a>后续步骤
 
-如果需要移动与维护配置关联的资源，请按照[这些说明](move-region-maintenance-configuration-resources.md)进行操作。 
+如果需要移动与维护配置关联的资源，请按照[这些说明](move-region-maintenance-configuration-resources.md)进行操作。
 
-<!-- Update_Description: new article about move region maintenance configuration -->
-<!--NEW.date: 05/06/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

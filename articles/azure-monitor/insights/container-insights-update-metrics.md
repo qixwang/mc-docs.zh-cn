@@ -8,12 +8,12 @@ author: Johnnytechn
 ms.author: v-johya
 origin.date: 11/11/2019
 ms.date: 11/18/2019
-ms.openlocfilehash: 99daa2dd3daf29d8ae8b84b88a2b92df8f138c69
-ms.sourcegitcommit: 5ae04a3b8e025986a3a257a6ed251b575dbf60a1
+ms.openlocfilehash: dc59ce0bd1be9d61638f881c9988138eda10c745
+ms.sourcegitcommit: 372899a2a21794e631eda1c6a11b4fd5c38751d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84440460"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85852120"
 ---
 # <a name="how-to-update-azure-monitor-for-containers-to-enable-metrics"></a>如何更新用于容器的 Azure Monitor 以启用指标
 
@@ -32,29 +32,28 @@ ms.locfileid: "84440460"
 
 可以通过 Azure 门户、Azure PowerShell 或 Azure CLI 更新群集，使其支持这些新功能。 使用 Azure PowerShell 和 CLI 可为每个群集或者为订阅中的所有群集启用此功能。 AKS 的新部署将自动包含此配置更改和功能。
 
-上述任一过程会将“监视指标发布者”角色分配到群集的服务主体，以便可将代理收集的数据发布到群集资源。  监视指标发布者仅有权向资源推送指标，而无法更改任何状态、更新资源或读取任何数据。 有关角色的更多信息，请参阅[“监视指标发布者”角色](../../role-based-access-control/built-in-roles.md#monitoring-metrics-publisher)。
+上述任一过程会将“监视指标发布者”角色分配到群集的服务主体，以便可将代理收集的数据发布到群集资源。 监视指标发布者仅有权向资源推送指标，而无法更改任何状态、更新资源或读取任何数据。 有关角色的更多信息，请参阅[“监视指标发布者”角色](../../role-based-access-control/built-in-roles.md#monitoring-metrics-publisher)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在开始之前，请确认以下事项：
 
-* 自定义指标只在一部分 Azure 区域中可用。 受支持的区域列表在[此处](../platform/metrics-custom-overview.md)记录。
 * 你是 AKS 群集资源上的 **[所有者](../../role-based-access-control/built-in-roles.md#owner)** 角色的成员，这样才能收集节点和 Pod 自定义性能指标。 
 
 如果选择使用 Azure CLI，首先需要在本地安装和使用 CLI。 必须运行 Azure CLI 2.0.59 或更高版本。 若要确定版本，请运行 `az --version`。 如果需要安装或升级 Azure CLI，请参阅[安装 Azure CLI](/cli/install-azure-cli)。 
 
 ## <a name="upgrade-a-cluster-from-the-azure-portal"></a>通过 Azure 门户升级群集
 
-对于用于容器的 Azure Monitor 监视的现有 AKS 群集，在从 Azure Monitor 中的多群集视图选择要查看其运行状况的群集，或者直接从左窗格中的“见解”选择该群集后，门户顶部应会显示一个横幅。 
+对于用于容器的 Azure Monitor 监视的现有 AKS 群集，在从 Azure Monitor 中的多群集视图选择要查看其运行状况的群集，或者直接从左窗格中的“见解”选择该群集后，门户顶部应会显示一个横幅。
 
 ![Azure 门户中的“升级 AKS 群集”横幅](./media/container-insights-update-metrics/portal-banner-enable-01.png)
 
-单击“启用”会启动升级群集的过程。  完成此过程可能需要几秒钟，可在菜单中的“通知”下面跟踪进度。
+单击“启用”会启动升级群集的过程。 完成此过程可能需要几秒钟，可在菜单中的“通知”下面跟踪进度。
 
 ## <a name="upgrade-all-clusters-using-bash-in-azure-command-shell"></a>在 Azure 命令外壳中使用 Bash 升级所有群集
 执行以下步骤，在 Azure 命令外壳中使用 Bash 更新订阅中的所有群集。
 
-1. 使用 Azure CLI 运行以下命令。  使用 AKS 群集的“AKS 概述”页中的值编辑 **subscriptionId** 的值。 
+1. 使用 Azure CLI 运行以下命令。  使用 AKS 群集的“AKS 概述”页中的值编辑 **subscriptionId** 的值。
 
     ```azurecli
     az login
@@ -71,7 +70,7 @@ ms.locfileid: "84440460"
 ## <a name="upgrade-per-cluster-using-azure-cli"></a>使用 Azure CLI 升级每个群集
 执行以下步骤，使用 Azure CLI 更新订阅中的特定群集。
 
-1. 使用 Azure CLI 运行以下命令。 使用 AKS 群集的“AKS 概述”页中的值编辑 **subscriptionId**、**resourceGroupName** 和 **clusterName** 的值。   运行命令 `az aks show` 后会返回 **clientIdOfSPN** 的值，如以下示例所示。
+1. 使用 Azure CLI 运行以下命令。 使用 AKS 群集的“AKS 概述”页中的值编辑 **subscriptionId**、**resourceGroupName** 和 **clusterName** 的值。  运行命令 `az aks show` 后会返回 **clientIdOfSPN** 的值，如以下示例所示。
 
     ```azurecli
     az login
@@ -324,7 +323,7 @@ ms.locfileid: "84440460"
     ```
 
 2. 将此文件作为 **onboard_metrics_atscale.ps1** 保存到本地文件夹中。
-3. 使用 Azure PowerShell 运行以下命令。  使用 AKS 群集的“AKS 概述”页中的值编辑 **subscriptionId** 的值。 
+3. 使用 Azure PowerShell 运行以下命令。  使用 AKS 群集的“AKS 概述”页中的值编辑 **subscriptionId** 的值。
 
     ```powershell
     .\onboard_metrics_atscale.ps1 subscriptionId
@@ -573,7 +572,7 @@ ms.locfileid: "84440460"
     ```
 
 2. 将此文件作为 **onboard_metrics.ps1** 保存到本地文件夹中。
-3. 使用 Azure PowerShell 运行以下命令。 使用 AKS 群集的“AKS 概述”页中的值编辑 **subscriptionId**、**resourceGroupName** 和 **clusterName** 的值。 
+3. 使用 Azure PowerShell 运行以下命令。 使用 AKS 群集的“AKS 概述”页中的值编辑 **subscriptionId**、**resourceGroupName** 和 **clusterName** 的值。
 
     ```powershell
     .\onboard_metrics.ps1 subscriptionId <subscriptionId> resourceGroupName <resourceGroupName> clusterName <clusterName>
@@ -586,4 +585,4 @@ ms.locfileid: "84440460"
     ```
 
 ## <a name="verify-update"></a>验证更新 
-使用上述方法之一启动更新后，可以使用 Azure Monitor 指标资源管理器验证“指标命名空间”中是否列出了“见解”。   如果是，则表示可以继续，并开始设置[指标警报](../platform/alerts-metric.md)或者将图表固定到[仪表板](../../azure-portal/azure-portal-dashboards.md)。  
+使用上述方法之一启动更新后，可以使用 Azure Monitor 指标资源管理器验证“指标命名空间”中是否列出了“见解”。  如果是，则表示可以继续，并开始设置[指标警报](../platform/alerts-metric.md)或者将图表固定到[仪表板](../../azure-portal/azure-portal-dashboards.md)。  

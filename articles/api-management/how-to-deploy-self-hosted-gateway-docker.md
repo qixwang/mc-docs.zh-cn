@@ -10,12 +10,12 @@ ms.service: api-management
 ms.topic: article
 ms.date: 06/04/2020
 ms.author: v-johya
-ms.openlocfilehash: a742a75b3cf0ffc8b19fa836b240905bff2478ff
-ms.sourcegitcommit: 5ae04a3b8e025986a3a257a6ed251b575dbf60a1
+ms.openlocfilehash: 1b53137de80b54daf3491ba89bdf06a8b91857be
+ms.sourcegitcommit: 372899a2a21794e631eda1c6a11b4fd5c38751d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84440761"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85852001"
 ---
 # <a name="deploy-an-azure-api-management-self-hosted-gateway-to-docker"></a>将 Azure API 管理自承载网关部署到 Docker
 
@@ -39,21 +39,21 @@ ms.locfileid: "84440761"
 2. 选择要部署的网关资源。
 3. 选择“部署”。
 4. 请注意，“令牌”文本框中已使用默认“过期时间”和“机密密钥”值自动生成了访问令牌  。 如果需要，请在其中一个或两个控件中选择所需的值以生成新令牌。
-4. 确保在“部署脚本”下选择“Docker”。 
-5. 选择“环境”旁边的“env.conf”链接以下载该文件。 
-6. 选择“运行”文本框右侧的“复制”图标，将 Docker 命令复制到剪贴板 。
-7. 将该命令粘贴到终端（或命令）窗口。 根据需要调整端口映射和容器名称。 请注意，该命令假定下载的环境文件位于当前目录中。
-```
-    docker run -d -p 80:8080 -p 443:8081 --name <gateway-name> --env-file env.conf mcr.microsoft.com/azure-api-management/gateway:<tag>
-```
-8. 执行命令。 该命令指示 Docker 环境使用从 Microsoft 容器注册表下载的[容器映像](https://aka.ms/apim/sputnik/dhub)运行容器，并将该容器的 HTTP (8080) 和 HTTPS (8081) 端口映射到主机上的端口 80 和 443。
-9. 运行以下命令来检查网关容器是否正在运行：
-```console
-docker ps
-CONTAINER ID        IMAGE                                                 COMMAND                  CREATED             STATUS              PORTS                                         NAMES
-895ef0ecf13b        mcr.microsoft.com/azure-api-management/gateway:latest   "/bin/sh -c 'dotnet …"   5 seconds ago       Up 3 seconds        0.0.0.0:80->8080/tcp, 0.0.0.0:443->8081/tcp   my-gateway
-```
-10. 返回到 Azure 门户，单击“概述”并确认刚刚部署的自承载网关容器正在报告运行状况。
+5. 确保在“部署脚本”下选择“Docker”。 
+6. 选择“环境”旁边的“env.conf”链接以下载该文件。 
+7. 选择“运行”文本框右侧的“复制”图标，将 Docker 命令复制到剪贴板 。
+8. 将该命令粘贴到终端（或命令）窗口。 根据需要调整端口映射和容器名称。 请注意，该命令假定下载的环境文件位于当前目录中。
+   ```
+      docker run -d -p 80:8080 -p 443:8081 --name <gateway-name> --env-file env.conf mcr.microsoft.com/azure-api-management/gateway:<tag>
+   ```
+9. 执行命令。 该命令指示 Docker 环境使用从 Microsoft 容器注册表下载的[容器映像](https://aka.ms/apim/sputnik/dhub)运行容器，并将该容器的 HTTP (8080) 和 HTTPS (8081) 端口映射到主机上的端口 80 和 443。
+10. 运行以下命令来检查网关容器是否正在运行：
+    ```console
+       docker ps
+       CONTAINER ID        IMAGE                                                 COMMAND                  CREATED             STATUS              PORTS                                         NAMES
+       895ef0ecf13b        mcr.microsoft.com/azure-api-management/gateway:latest   "/bin/sh -c 'dotnet …"   5 seconds ago       Up 3 seconds        0.0.0.0:80->8080/tcp, 0.0.0.0:443->8081/tcp   my-gateway
+    ```
+11. 返回到 Azure 门户，单击“概述”并确认刚刚部署的自承载网关容器正在报告运行状况。
 
 ![网关状态](./media/how-to-deploy-self-hosted-gateway-docker/status.png)
 
@@ -66,4 +66,3 @@ CONTAINER ID        IMAGE                                                 COMMAN
 
 * 若要详细了解自承载网关，请参阅 [Azure API 管理自承载网关概述](self-hosted-gateway-overview.md)。
 * [为自承载网关配置自定义域名](api-management-howto-configure-custom-domain-gateway.md)。
-

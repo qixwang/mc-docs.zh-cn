@@ -8,13 +8,13 @@ ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 04/27/2020
-ms.date: 06/09/2020
-ms.openlocfilehash: 5ca595c549e06933556b8215e885e643d5af1794
-ms.sourcegitcommit: c4fc01b7451951ef7a9616fca494e1baf29db714
+ms.date: 07/02/2020
+ms.openlocfilehash: 6e73460daa81d156b064aae05fd3bd578b948386
+ms.sourcegitcommit: 5afd7c4c3be9b80c4c67ec55f66fcf347aad74c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84574627"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85942527"
 ---
 # <a name="similarity-and-scoring-in-azure-cognitive-search"></a>Azure 认知搜索中的相似性和评分
 
@@ -37,7 +37,9 @@ ms.locfileid: "84574627"
 
 计分概要文件属于索引定义的一部分，由加权字段、函数和参数组成。 有关定义计分概要文件的详细信息，请参阅[计分概要文件](index-add-scoring-profiles.md)。
 
-## <a name="scoring-statistics"></a>评分统计信息
+<a name="scoring-statistics"></a>
+
+## <a name="scoring-statistics-and-sticky-sessions-preview"></a>评分统计信息和粘滞会话（预览版）
 
 为了实现可伸缩性，Azure 认知搜索会通过分片过程横向分布每个索引，这意味着，索引的某些部分在物理上是独立的。
 
@@ -48,11 +50,19 @@ ms.locfileid: "84574627"
 ```http
 GET https://[service name].search.azure.cn/indexes/[index name]/docs?scoringStatistics=global
   Content-Type: application/json
-  api-key: [admin key]  
+  api-key: [admin or query key]  
 ```
+使用 scoringStatistics 可确保同一副本中的所有分片提供相同的结果。 也就是说，不同的副本相互之间可能略有不同，因为它们始终会随着索引的最新更改而更新。 在某些情况下，你可能希望用户在“查询会话”期间获得更一致的结果。 在这种情况下，可以提供 `sessionId` 作为查询的一部分。 `sessionId` 是你创建的用于引用唯一用户会话的唯一字符串。
+
+```http
+GET https://[service name].search.windows.net/indexes/[index name]/docs?sessionId=[string]&api-version=2019-05-06-Preview&search=[search term]
+  Content-Type: application/json
+  api-key: [admin or query key]  
+```
+只要使用相同的 `sessionId`，就会尽力而为地以同一副本为目标，从而提高用户看到的结果的一致性。 
 
 > [!NOTE]
-> `scoringStatistics` 参数需要 admin api-key。
+> 反复使用相同的 `sessionId` 值可能会干扰跨副本对请求进行负载均衡，并对搜索服务的性能产生负面影响。 用作 sessionId 的值不能以“_”字符开头。
 
 ## <a name="similarity-ranking-algorithms"></a>相似性排名算法
 

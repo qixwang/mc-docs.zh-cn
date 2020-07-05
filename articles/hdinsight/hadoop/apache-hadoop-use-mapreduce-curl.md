@@ -12,12 +12,12 @@ ms.workload: big-data
 origin.date: 01/13/2020
 ms.date: 03/02/2020
 ms.author: v-yiso
-ms.openlocfilehash: b82b6961c9ab74d659e3c2b506dad219d0324439
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: f46ca50eb8f3871ae95d7d0b5b1dfc752afef8d2
+ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77563501"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85516677"
 ---
 # <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-rest"></a>使用 REST 通过 HDInsight 上的 Apache Hadoop 运行 MapReduce 作业
 
@@ -75,7 +75,7 @@ ms.locfileid: "77563501"
     curl -u admin:%PASSWORD% -d user.name=admin ^
     -d jar=/example/jars/hadoop-mapreduce-examples.jar ^
     -d class=wordcount -d arg=/example/data/gutenberg/davinci.txt -d arg=/example/data/output ^
-    https://%CLUSTERNAME%.azurehdinsight.net/templeton/v1/mapreduce/jar | ^
+    https://%CLUSTERNAME%.azurehdinsight.cn/templeton/v1/mapreduce/jar | ^
     C:\HDI\jq-win64.exe .id
     ```
 
@@ -96,7 +96,7 @@ ms.locfileid: "77563501"
     ```cmd
     set JOBID=job_1415651640909_0026
 
-    curl -G -u admin:%PASSWORD% -d user.name=admin https://%CLUSTERNAME%.azurehdinsight.net/templeton/v1/jobs/%JOBID% | ^
+    curl -G -u admin:%PASSWORD% -d user.name=admin https://%CLUSTERNAME%.azurehdinsight.cn/templeton/v1/jobs/%JOBID% | ^
     C:\HDI\jq-win64.exe .status.state
     ```
 

@@ -6,15 +6,15 @@ author: rockboyfor
 ms.service: virtual-wan
 ms.topic: include
 origin.date: 03/24/2020
-ms.date: 06/15/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: deac35db6eee0286c24be350a450770da6da9d23
-ms.sourcegitcommit: 8dae792aefbe44e8388f961b813e3da6564423ec
+ms.openlocfilehash: 3066024f5dc0b087977c7efb188e60d2cdf39a40
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84655110"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85946534"
 ---
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>用户是否需要将中心辐射型拓扑与 SD-WAN/VPN 设备配合使用才能使用 Azure 虚拟 WAN？
 
@@ -33,7 +33,7 @@ ms.locfileid: "84655110"
 可以通过两个选项为 P2S 客户端添加 DNS 服务器。
 
 1. 使用 Azure 打开支持票证，并用其将你的 DNS 服务器添加到中心
-2. 或者，如果你使用的是适用于 Windows 10 的 Azure VPN 客户端，则可修改下载的 XML 配置文件，在导入该文件之前添加 \<dnsservers>\<dnsserver> \</dnsserver>\</dnsservers> 标记****。
+2. 或者，如果你使用的是适用于 Windows 10 的 Azure VPN 客户端，则可修改下载的 XML 配置文件，在导入该文件之前添加 \<dnsservers>\<dnsserver> \</dnsserver>\</dnsservers> 标记。
 
     ```
     <azvpnprofile>

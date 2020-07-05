@@ -11,13 +11,13 @@ ms.topic: quickstart
 origin.date: 02/10/2020
 ms.date: 04/20/2020
 ms.author: v-tawe
-zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 506c1fcdb94484f7ef257f5c8e9bba52ca13ac04
-ms.sourcegitcommit: 304d3ef3c9e65c3e85977b3afb9985fbc0f908d6
+zone_pivot_groups: programming-languages-set-two-with-js
+ms.openlocfilehash: 1eddf90cae6687c08400ed6ad353a1883389f398
+ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85095969"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85613368"
 ---
 # <a name="quickstart-translate-speech-to-speech"></a>快速入门：将语音翻译为语音
 

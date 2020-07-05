@@ -7,27 +7,37 @@ author: HeidiSteen
 ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: overview
-origin.date: 03/24/2020
-ms.date: 06/09/2020
-ms.openlocfilehash: c6f1d0103eee001b165a841fc0876e192453dc38
-ms.sourcegitcommit: c4fc01b7451951ef7a9616fca494e1baf29db714
+origin.date: 06/08/2020
+ms.date: 07/02/2020
+ms.openlocfilehash: 6c83d99b7fca9f2d84fda995dbf8ac5e2745ba69
+ms.sourcegitcommit: 5afd7c4c3be9b80c4c67ec55f66fcf347aad74c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84564261"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85942540"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure 认知搜索中的新增功能
 
 了解服务中的新增功能。 请将本页加入书签，以随时了解该服务的最新信息。
 
-<a name="new-service-name"></a>
+## <a name="feature-announcements"></a>功能增强
 
-## <a name="new-service-name"></a>新服务名称
+<!--
+### June 2020
 
-Azure 搜索现已重命名为 **Azure 认知搜索**，以反映认知技能和 AI 处理在核心操作中的更广泛用途（但仍为可选）。 API 版本、NuGet 包、命名空间和终结点未有变化。 新的和现有的搜索解决方案不受服务名称更改的影响。
+Azure Machine Learning skill is new skill type to integrate an inferencing endpoint from Azure Machine Learning. The portal experience supports discovery and integration of your Azure Machine Learning endpoint within a Cognitive Search skillset. The discovery requires your Cognitive Search and Azure ML services be deployed in the same subscription. To sign up for the AML skill preview, [please fill out the form](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0jK7x7HQYdDm__YfEsbtcZUMTFGTFVTOE5XMkVUMFlDVFBTTlYzSlpLTi4u). Get started with [this tutorial](cognitive-search-tutorial-aml-custom-skill.md).
+-->
 
-## <a name="feature-announcements"></a>功能公告
+<!--
+### May 2020 (Microsoft Build)
 
++ [Debug sessions](cognitive-search-debug-session.md) feature is now in preview. [Sign up to request access](https://aka.ms/DebugSessions). Debug sessions provides a portal-based interface to investigate and resolve issues with a skillset. Fixes created in the debug session can be saved to production skillsets. Get started with [this tutorial](cognitive-search-tutorial-debug-sessions.md).
++ Security enhancements include the ability to [set up a private search endpoint (preview)](service-create-private-endpoint.md) that is inaccessible on the public internet. You can also [configure IP rules for in-bound firewall support (preview)](service-configure-firewall.md).
+
++ Use a [system-managed identity (preview)](search-howto-managed-identities-data-sources.md) to set up a connection to an Azure data source for indexing. Applies to [indexers](search-indexer-overview.md) that ingest content from Azure data sources such as Azure SQL Database, Azure Cosmos DB, and Azure Storage.
+
++ Change the basis for how search scores are computed, from per-shard to all-shards, using the [scoringStatistics=global](index-similarity-and-scoring.md#scoring-statistics) and sessionId query parameters.
+-->
 
 ### <a name="march-2020"></a>2020 年 3 月
 

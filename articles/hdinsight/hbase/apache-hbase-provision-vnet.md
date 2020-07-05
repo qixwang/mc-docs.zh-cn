@@ -11,12 +11,12 @@ ms.topic: conceptual
 origin.date: 12/23/2019
 ms.date: 03/02/2020
 ms.author: v-yiso
-ms.openlocfilehash: ed5ef33f0245b8a2758884fa683d75fb5875fea1
-ms.sourcegitcommit: 4aeecfcc59cb42ba0b712a729d278d03bffc719a
+ms.openlocfilehash: f055113c586ac59adcd8b8d2104c955d6271279d
+ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81791019"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85516754"
 ---
 # <a name="create-apache-hbase-clusters-on-hdinsight-in-azure-virtual-network"></a>在 Azure 虚拟网络中的 HDInsight 上创建 Apache HBase 群集
 了解如何在 [Azure 虚拟网络][1]中创建 Azure HDInsight Apache HBase 群集。
@@ -111,7 +111,7 @@ ms.locfileid: "81791019"
      在返回的 JavaScript 对象表示法 (JSON) 数据中，找到“host_name”条目。 此条目包含群集中的节点的 FQDN。 例如：
 
 ```
-"host_name" : "hn0-hbaseg.hjfrnszlumfuhfk4pi1guh410c.bx.internal.cloudapp.net"
+"host_name" : "hn0-hbaseg.hjfrnszlumfuhfk4pi1guh410c.bx.internal.chinacloudapp.cn"
 ```
 
 以群集名称开头的域名的部分是 DNS 后缀。 例如，`hjfrnszlumfuhfk4pi1guh410c.bx.internal.chinacloudapp.cn`。

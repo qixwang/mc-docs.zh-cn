@@ -6,15 +6,15 @@ author: WenJason
 ms.service: vpn-gateway
 ms.topic: include
 origin.date: 02/19/2020
-ms.date: 04/06/2020
+ms.date: 07/06/2020
 ms.author: v-jay
 ms.custom: include file
-ms.openlocfilehash: 4500d6f661685fccdd05350734e0af19a72da94c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: a5938804ec15231825dff7e6d6371b263d040b40
+ms.sourcegitcommit: 7ea2d04481512e185a60fa3b0f7b0761e3ed7b59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80634399"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85845865"
 ---
 ### <a name="how-many-vpn-client-endpoints-can-i-have-in-my-point-to-site-configuration"></a>在我的点到站点配置中，可以有多少 VPN 客户端终结点？
 
@@ -30,6 +30,7 @@ ms.locfileid: "80634399"
 * Windows Server 2012（仅 64 位）
 * Windows Server 2012 R2（仅 64 位）
 * Windows Server 2016（仅 64 位）
+* Windows Server 2019（仅限 64 位）
 * Windows 10
 * Mac OS X 版本 10.11 或更高版本
 * Linux (StrongSwan)

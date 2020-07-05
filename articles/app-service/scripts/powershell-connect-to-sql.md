@@ -8,12 +8,12 @@ origin.date: 03/20/2017
 ms.date: 01/13/2020
 ms.author: v-tawe
 ms.custom: mvc
-ms.openlocfilehash: d60d196b600108dc3de3b70a0ee535606a9f8ab2
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 9511c2904d7cdc4c3e298883e6117dbe2777be69
+ms.sourcegitcommit: d24e12d49708bbe78db450466eb4fccbc2eb5f99
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75600290"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85613370"
 ---
 # <a name="connect-an-app-service-app-to-a-sql-database"></a>将应用服务应用连接到 SQL 数据库
 
@@ -80,8 +80,8 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 | [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) | 创建用于存储所有资源的资源组。 |
 | [New-AzAppServicePlan](https://docs.microsoft.com/powershell/module/az.websites/new-azappserviceplan) | 创建应用服务计划。 |
 | [New-AzWebApp](https://docs.microsoft.com/powershell/module/az.websites/new-azwebapp) | 创建应用服务应用。 |
-| [New-AzSQLServer](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlserver) | 创建 SQL 数据库服务器。 |
-| [New-AzSqlServerFirewallRule](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlserverfirewallrule) | 为 SQL 数据库服务器创建防火墙规则。 |
+| [New-AzSQLServer](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlserver) | 创建服务器。 |
+| [New-AzSqlServerFirewallRule](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlserverfirewallrule) | 创建服务器级防火墙规则。 |
 | [New-AzSQLDatabase](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabase) | 创建数据库或弹性数据库。 |
 | [Set-AzWebApp](https://docs.microsoft.com/powershell/module/az.websites/set-azwebapp) | 修改应用服务应用的配置。 |
 

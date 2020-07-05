@@ -3,18 +3,19 @@ title: 使用 Azure PowerShell 创建共享映像库
 description: 了解如何使用 Azure PowerShell 在 Azure 中创建共享映像库
 author: rockboyfor
 ms.service: virtual-machines
+ms.subservice: imaging
 ms.topic: how-to
 ms.workload: infrastructure
 origin.date: 05/04/2020
-ms.date: 05/25/2020
+ms.date: 07/06/2020
 ms.author: v-yeche
 ms.reviewer: akjosh
-ms.openlocfilehash: ea067833f191092da7f5361b8be692d679af9cb4
-ms.sourcegitcommit: 981a75a78f8cf74ab5a76f9e6b0dc5978387be4b
+ms.openlocfilehash: a8abb9a02aab7288ece1583718d6db0d1d34cb83
+ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83801905"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945759"
 ---
 # <a name="create-a-shared-image-gallery-with-azure-powershell"></a>使用 Azure PowerShell 创建共享映像库 
 
@@ -44,5 +45,4 @@ ms.locfileid: "83801905"
 - [在共享映像库中创建映像版本](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sig-image-version-create/)
 - [根据映像版本创建 VM](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-sig/)
 
-<!-- Update_Description: new article about shared images powershell -->
-<!--NEW.date: 06/01/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->
