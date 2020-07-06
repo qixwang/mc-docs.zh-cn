@@ -196,7 +196,7 @@ Azure 安全中心使用 Log Analytics 代理（Azure Monitor 服务同样使用
 
 在进行安全操作时，还应采取预防性措施，限制对 VM 的访问，并控制在 VM 上运行的应用程序。 锁定到 Azure VM 的入站流量即可降低受攻击的风险，同时可以轻松进行访问，视需要连接到 VM。 使用[实时 VM](https://docs.azure.cn/security-center/security-center-just-in-time) 访问功能，以强化 VM 访问控制。
 
-可以使用[自适应应用程序控制](https://docs.azure.cn/security-center/security-center-adaptive-application)来限制可在 Azure 中的 VM 上运行的应用程序。 除其他优势外，这种控制还强化了 VM 抵御恶意软件侵害的能力。 安全中心可以使用机器学习分析在 VM 中运行的进程，以帮助创建白名单规则。
+可以使用[自适应应用程序控制](https://docs.azure.cn/security-center/security-center-adaptive-application)来限制可在 Azure 中的 VM 上运行的应用程序。 除其他优势外，这种控制还强化了 VM 抵御恶意软件侵害的能力。 安全中心可以使用机器学习分析在 VM 中运行的进程，以帮助创建允许列表规则。
 
 
 ## <a name="incident-response"></a>事件响应

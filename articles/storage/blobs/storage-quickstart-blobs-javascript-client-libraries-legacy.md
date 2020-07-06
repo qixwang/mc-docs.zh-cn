@@ -123,7 +123,7 @@ az storage account generate-sas \
 
 ### <a name="configure-the-debugger"></a>配置调试器
 
-若要在 VS Code 中设置调试器扩展，请选择“调试”>“添加配置...”，然后根据在前面“先决条件”部分选择的扩展，选择“Chrome”或“Edge”。   此操作会创建 *launch.json* 文件并在编辑器中打开它。
+若要在 VS Code 中设置调试器扩展，请选择“调试”>“添加配置...”，然后根据在前面“先决条件”部分选择的扩展，选择“Chrome”或“Microsoft Edge”。   此操作会创建 *launch.json* 文件并在编辑器中打开它。
 
 接下来，修改 *launch.json* 文件，使 `url` 值包含 `/index.html`，如下所示：
 

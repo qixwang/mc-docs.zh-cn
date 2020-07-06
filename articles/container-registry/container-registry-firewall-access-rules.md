@@ -1,6 +1,6 @@
 ---
 title: 防火墙访问规则
-description: 通过允许访问（“加入白名单”）REST API 和数据终结点域名或特定于服务的 IP 地址范围，来配置规则以访问防火墙后的 Azure 容器注册表。
+description: 通过允许访问（“加入允许列表”）REST API 和数据终结点域名或特定于服务的 IP 地址范围，来配置规则以访问防火墙后的 Azure 容器注册表。
 ms.topic: article
 ms.date: 06/08/2020
 ms.author: v-yeche
@@ -40,10 +40,10 @@ ms.locfileid: "84654899"
 
 如果你的组织具有仅允许访问特定 IP 地址或地址范围的策略，请下载 [Azure IP 范围和服务标记 - 中国云](https://www.microsoft.com/download/confirmation.aspx?id=57062)。
 
-若要查找需要允许访问的 ACR REST 终结点 IP 范围，请在 JSON 文件中搜索 AzureContainerRegistry****。
+若要查找需要允许访问的 ACR REST 终结点 IP 范围，请在 JSON 文件中搜索 AzureContainerRegistry。
 
 > [!IMPORTANT]
-> Azure 服务的 IP 地址范围可以更改，每周发布一次更新。 定期下载 JSON 文件，并在访问规则中进行必要的更新。 如果你的方案涉及在 Azure 虚拟网络中配置网络安全组规则，或者使用 Azure 防火墙，请改为使用 AzureContainerRegistry [服务标记](#allow-access-by-service-tag)****。
+> Azure 服务的 IP 地址范围可以更改，每周发布一次更新。 定期下载 JSON 文件，并在访问规则中进行必要的更新。 如果你的方案涉及在 Azure 虚拟网络中配置网络安全组规则，或者使用 Azure 防火墙，请改为使用 AzureContainerRegistry [服务标记](#allow-access-by-service-tag)。
 >
 
 ### <a name="rest-ip-addresses-for-all-regions"></a>所有区域的 REST IP 地址
@@ -67,7 +67,7 @@ ms.locfileid: "84654899"
 
 ### <a name="rest-ip-addresses-for-a-specific-region"></a>特定区域的 REST IP 地址
 
-搜索特定的区域，例如 AzureContainerRegistry.ChinaNorth****。
+搜索特定的区域，例如 AzureContainerRegistry.ChinaNorth。
 
 ```json
 {
@@ -104,7 +104,7 @@ ms.locfileid: "84654899"
 
 ### <a name="storage-ip-addresses-for-specific-regions"></a>特定区域的存储 IP 地址
 
-搜索特定的区域，例如 Storage.ChinaNorth****。
+搜索特定的区域，例如 Storage.ChinaNorth。
 
 ```json
 {
@@ -124,9 +124,9 @@ ms.locfileid: "84654899"
 
 ## <a name="allow-access-by-service-tag"></a>允许通过服务标记访问
 
-在 Azure 虚拟网络中，使用网络安全规则筛选从虚拟机等资源到容器注册表的流量。 若要简化 Azure 网络规则的创建，请使用 AzureContainerRegistry [服务标记](../virtual-network/security-overview.md#service-tags)****。 服务标记代表一组用于全局或每个 Azure 区域访问 Azure 服务的 IP 地址前缀。 当地址更改时，将自动更新标记。 
+在 Azure 虚拟网络中，使用网络安全规则筛选从虚拟机等资源到容器注册表的流量。 若要简化 Azure 网络规则的创建，请使用 AzureContainerRegistry [服务标记](../virtual-network/security-overview.md#service-tags)。 服务标记代表一组用于全局或每个 Azure 区域访问 Azure 服务的 IP 地址前缀。 当地址更改时，将自动更新标记。 
 
-例如，创建包含目标 AzureContainerRegistry 的出站网络安全组规则，以允许流量流向 Azure 容器注册表****。 若要仅允许在特定区域中访问服务标记，请按以下格式指定区域：AzureContainerRegistry.[区域名称]******。
+例如，创建包含目标 AzureContainerRegistry 的出站网络安全组规则，以允许流量流向 Azure 容器注册表。 若要仅允许在特定区域中访问服务标记，请按以下格式指定区域：AzureContainerRegistry.[区域名称]。
 
 ## <a name="enable-dedicated-data-endpoints-preview"></a>启用专用数据终结点（预览）
 
@@ -135,9 +135,9 @@ ms.locfileid: "84654899"
 > [!WARNING]
 > 如果以前配置了对现有 `*.blob.core.chinacloudapi.cn` 终结点的客户端防火墙访问，则切换到专用数据终结点会影响客户端连接，从而导致拉取失败。 若要确保客户端具有一致的访问权限，请将新的数据终结点规则添加到客户端防火墙规则。 完成后，使用 Azure CLI 或其他工具为你的注册表启用专用数据终结点。
 
-专用数据终结点是高级容器注册表服务层的一项可选功能****。 有关注册表服务层级和限制的信息，请参阅 [Azure 容器注册表层](container-registry-skus.md)。 若要使用 Azure CLI 启用数据终结点，请使用 Azure CLI 版本 2.4.0 或更高版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest)。
+专用数据终结点是高级容器注册表服务层的一项可选功能。 有关注册表服务层级和限制的信息，请参阅 [Azure 容器注册表层](container-registry-skus.md)。 若要使用 Azure CLI 启用数据终结点，请使用 Azure CLI 版本 2.4.0 或更高版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest)。
 
-下面的 [az acr update][az-acr-update] 命令启用注册表 myregistry 上的专用数据终结点**。 出于演示目的，假设在两个区域复制了注册表：
+下面的 [az acr update][az-acr-update] 命令启用注册表 myregistry 上的专用数据终结点。 出于演示目的，假设在两个区域复制了注册表：
 
 ```azurecli
 az acr update --name myregistry --data-endpoint-enabled
