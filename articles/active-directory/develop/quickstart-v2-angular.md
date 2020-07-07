@@ -10,16 +10,18 @@ ms.subservice: develop
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 06/30/2020
+ms.date: 04/21/2020
 ms.author: v-junlch
-ms.openlocfilehash: bd414af4ef9824b02044f99a8bcf60d579e4d6e1
-ms.sourcegitcommit: 1008ad28745709e8d666f07a90e02a79dbbe2be5
-ms.translationtype: HT
+ms.openlocfilehash: f6fe333071c4b53b5ec75ebf4193be364eb30a8c
+ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85945016"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82127190"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-an-angular-single-page-application"></a>快速入门：在 Angular 单页应用程序中将用户登录并获取访问令牌
+
+> [!IMPORTANT]
+> 此功能目前以预览版提供。 需同意[补充使用条款](https://www.azure.cn/support/legal/)才可使用预览版。 在正式版 (GA) 推出之前，此功能的某些方面可能会更改。
 
 在本快速入门中，你将通过代码示例了解 Angular 单页应用程序 (SPA) 如何将具有工作帐户或学校帐户的用户登录。 Angular SPA 还可以获取用于调用 Microsoft Graph API 或任何 Web API 的访问令牌。
 
@@ -35,7 +37,7 @@ ms.locfileid: "85945016"
 >
 > ### <a name="option-1-express-register-and-automatically-configure-the-app-and-then-download-the-code-sample"></a>选项 1（快速）：注册并自动配置应用，然后下载代码示例
 >
-> 1. 登录 [Azure 门户](https://portal.azure.cn)。
+> 1. 登录到 [Azure 门户](https://portal.azure.cn)。
 > 1. 如果帐户有权访问多个租户，请在右上角选择该帐户，然后将门户会话设置为要使用的 Azure Active Directory (Azure AD) 租户。
 > 1. 在 Azure 门户中打开新的[应用注册](https://portal.azure.cn/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs)窗格。
 > 1. 输入应用程序的名称并选择“注册”。
@@ -45,7 +47,7 @@ ms.locfileid: "85945016"
 >
 > #### <a name="step-1-register-the-application"></a>步骤 1：注册应用程序
 >
-> 1. 登录 [Azure 门户](https://portal.azure.cn)。
+> 1. 登录到 [Azure 门户](https://portal.azure.cn)。
 > 1. 如果帐户有权访问多个租户，请在右上角选择该帐户，然后将门户会话设置为要使用的 Azure AD 租户。
 > 1. 按照说明在 Azure 门户中[注册单页应用程序](/active-directory/develop/scenario-spa-app-registration)。
 > 1. 在应用注册的“身份验证”窗格中添加新的平台，并注册重定向 URI：`http://localhost:4200/`。
@@ -103,7 +105,7 @@ ms.locfileid: "85945016"
 >|Enter_the_Tenant_Info_Here| 设置为以下选项之一：如果应用程序支持此组织目录中的帐户，请将此值替换为目录（租户）ID 或租户名称（例如 contoso.microsoft.com）。 如果应用程序支持“任何组织目录中的帐户”，请将此值替换为 **organizations**。 如果应用程序支持“任何组织目录中的帐户”，请将此值替换为“common” |
 >|Enter_the_Redirect_Uri_Here|替换为 http://localhost:4200。|
 >|cacheLocation  | （可选）针对身份验证状态设置浏览器存储。 默认值为 sessionStorage。   |
->|storeAuthStateInCookie  | （可选）标识用于存储身份验证请求状态的库。 在浏览器 Cookie 中验证身份验证流时需要此状态。 此 Cookie 为 Internet Explorer 和 Edge 设置，可以适应这两个浏览器。 有关更多详细信息，请参阅[已知问题](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues->on-IE-and-Edge-Browser#issues)。 |
+>|storeAuthStateInCookie  | （可选）标识用于存储身份验证请求状态的库。 在浏览器 Cookie 中验证身份验证流时需要此状态。 此 Cookie 为 Internet Explorer 和 Microsoft Edge 设置，可以适应这两个浏览器。 有关更多详细信息，请参阅[已知问题](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues->on-IE-and-Edge-Browser#issues)。 |
 > > [!TIP]
 > > 若要查找“应用程序(客户端) ID”、“目录(租户) ID”和“支持的帐户类型”的值，请转到 Azure 门户中应用的“概述”页。   
 
@@ -127,7 +129,7 @@ ms.locfileid: "85945016"
    ```
 
 1. 浏览到 **http://localhost:4200/** 。
-1. 选择“登录”。
+1. 选择“登录名”。
 1. 选择“个人资料”以调用 Microsoft Graph。
 
 在浏览器加载应用程序后，选择“登录”。 首次开始登录时，系统会提示你允许应用程序访问你的个人资料并将你登录。 成功登录后，选择“个人资料”，你的用户个人资料信息随即会显示在页面上。
