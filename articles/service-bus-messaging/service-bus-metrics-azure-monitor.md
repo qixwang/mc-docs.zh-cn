@@ -7,15 +7,15 @@ author: axisc
 editor: spelluru
 ms.service: service-bus-messaging
 ms.topic: article
-origin.date: 01/27/2020
-ms.date: 2/6/2020
-ms.author: v-lingwu
-ms.openlocfilehash: 20850be9dffea36cbf4f2315aedc2f39ed38da25
-ms.sourcegitcommit: a04b0b1009b0c62f2deb7c7acee75a1304d98f87
+origin.date: 05/20/2020
+ms.date: 06/30/2020
+ms.author: v-tawe
+ms.openlocfilehash: 39a70b7d853a9fa465b6393f492eb020684f532b
+ms.sourcegitcommit: 4f84bba7e509a321b6f68a2da475027c539b8fd3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83796803"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85796236"
 ---
 # <a name="azure-service-bus-metrics-in-azure-monitor"></a>Azure Monitor 中的 Azure 服务总线指标
 
@@ -36,11 +36,11 @@ Azure Monitor 提供多种访问指标的方法。 可通过 [Azure 门户](http
 
 可在 [Azure 门户](https://portal.azure.cn)中监视一段时间内的指标。 以下示例演示了如何在帐户级别查看成功的请求和传入的请求：
 
-![][1]
+![service-bus-monitor1][1]
 
 也可以直接通过命名空间来访问指标。 为此，请选择命名空间，然后单击“指标”。 若要显示筛选到实体范围的指标，请选择实体，然后单击“指标”。
 
-![][2]
+![service-bus-monitor2][2]
 
 对于支持维度的指标，必须使用所需的维度值进行筛选。
 
@@ -74,7 +74,7 @@ Azure Monitor 提供多种访问指标的方法。 可通过 [Azure 门户](http
 下面两种类型的错误被归类为用户错误：
 
 1. 客户端错误（在 HTTP 中为 400 错误）。
-2. 在处理消息时发生的错误，如 [MessageLockLostException](https://docs.azure.cn/dotnet/api/microsoft.azure.servicebus.messagelocklostexception)。
+2. 在处理消息时发生的错误，如 [MessageLockLostException](/dotnet/api/microsoft.azure.servicebus.messagelocklostexception)。
 
 
 ## <a name="message-metrics"></a>消息指标
@@ -100,6 +100,8 @@ Azure Monitor 提供多种访问指标的方法。 可通过 [Azure 门户](http
 | 指标名称 | 说明 |
 | ------------------- | ----------------- |
 |ActiveConnections|命名空间以及实体上的活动连接数。<br/><br/> 单元：计数 <br/> 聚合类型：总计 <br/> 维度：EntityName|
+|打开的连接数 |打开的连接数。<br/><br/> 单元：计数 <br/> 聚合类型：总计 <br/> 维度：EntityName|
+|关闭的连接数 |关闭的连接数。<br/><br/> 单元：计数 <br/> 聚合类型：总计 <br/> 维度：EntityName|
 
 ## <a name="resource-usage-metrics"></a>资源使用情况指标
 
