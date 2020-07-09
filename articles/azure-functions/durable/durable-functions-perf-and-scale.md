@@ -3,14 +3,14 @@ title: Durable Functions 中的性能和缩放 - Azure
 description: Azure Functions 的 Durable Functions 扩展简介。
 author: cgillum
 ms.topic: conceptual
-ms.date: 03/03/2020
+ms.date: 07/02/2020
 ms.author: v-junlch
-ms.openlocfilehash: 1df994af966663895744807b5fb79c894543678c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: e826ad9fabdcd7c4c73e7d35fb26d5022b544adb
+ms.sourcegitcommit: 1008ad28745709e8d666f07a90e02a79dbbe2be5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292920"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85945250"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Durable Functions 中的性能和缩放 (Azure Functions)
 
@@ -20,29 +20,29 @@ ms.locfileid: "79292920"
 
 ## <a name="history-table"></a>历史记录表
 
-“历史记录”表是一个 Azure 存储表，包含任务中心内所有业务流程实例的历史记录事件。  此表的名称采用 *TaskHubName*History 格式。 当实例运行时，会在此表中添加新行。 此表的分区键派生自业务流程的实例 ID。 实例 ID 在大多数情况下是随机的，确保在 Azure 存储中以最佳方式分配内部分区。
+“历史记录”表是一个 Azure 存储表，包含任务中心内所有业务流程实例的历史记录事件。 此表的名称采用 *TaskHubName*History 格式。 当实例运行时，会在此表中添加新行。 此表的分区键派生自业务流程的实例 ID。 实例 ID 在大多数情况下是随机的，确保在 Azure 存储中以最佳方式分配内部分区。
 
-需要运行业务流程实例时，会将“历史记录”表的相应行载入内存。 然后，这些历史记录事件将重播到业务流程协调程序函数代码中，使其恢复到以前的检查点状态。  
+需要运行业务流程实例时，会将“历史记录”表的相应行载入内存。 然后，这些历史记录事件将重播到业务流程协调程序函数代码中，使其恢复到以前的检查点状态。 
 
 ## <a name="instances-table"></a>实例表
 
-“实例”表是另一个 Azure 存储表，包含任务中心内所有业务流程和实体实例的状态。  创建实例时，会在此表中添加新行。 此表的分区键是业务流程实例 ID 或实体键，行键是固定的常量。 每个业务流程或实体实例对应一行。
+“实例”表是另一个 Azure 存储表，包含任务中心内所有业务流程和实体实例的状态。 创建实例时，会在此表中添加新行。 此表的分区键是业务流程实例 ID 或实体键，行键是固定的常量。 每个业务流程或实体实例对应一行。
 
-使用此表可以满足来自 `GetStatusAsync` (.NET) 和 `getStatus` (JavaScript) API 以及[状态查询 HTTP API](durable-functions-http-api.md#get-instance-status) 的实例查询请求。 它与前面所述的“历史记录”表内容保持最终一致。  
+使用此表可以满足来自 `GetStatusAsync` (.NET) 和 `getStatus` (JavaScript) API 以及[状态查询 HTTP API](durable-functions-http-api.md#get-instance-status) 的实例查询请求。 它与前面所述的“历史记录”表内容保持最终一致。 
 
 ## <a name="internal-queue-triggers"></a>内部队列触发器
 
-业务流程协调程序函数和活动函数都由函数应用任务中心内的内部队列触发。 以这种方式使用队列可以提供可靠的“至少一次”消息传送保证。 Durable Functions 中有两种类型的队列：“控制队列”和“工作项队列”   。
+业务流程协调程序函数和活动函数都由函数应用任务中心内的内部队列触发。 以这种方式使用队列可以提供可靠的“至少一次”消息传送保证。 Durable Functions 中有两种类型的队列：“控制队列”和“工作项队列” 。
 
 ### <a name="the-work-item-queue"></a>工作项队列
 
-Durable Functions 中的每个任务中心都有一个工作项队列。 它是一个基本队列，其行为类似于 Azure Functions 中的其他任何 `queueTrigger` 队列。 此队列每次将一条消息取消排队，可用于触发无状态活动函数。  其中的每个消息包含活动函数输入和其他元数据，例如要执行的函数。 当 Durable Functions 应用程序横向扩展到多个 VM 时，所有这些 VM 将会竞争，以从工作项队列中获取工作。
+Durable Functions 中的每个任务中心都有一个工作项队列。 它是一个基本队列，其行为类似于 Azure Functions 中的其他任何 `queueTrigger` 队列。 此队列每次将一条消息取消排队，可用于触发无状态活动函数。 其中的每个消息包含活动函数输入和其他元数据，例如要执行的函数。 当 Durable Functions 应用程序横向扩展到多个 VM 时，所有这些 VM 将会竞争，以从工作项队列中获取工作。
 
 ### <a name="control-queues"></a>控制队列
 
-Durable Functions 中的每个任务中心有多个控制队列。  与较为简单的工作项队列相比，控制队列更加复杂。  控制队列用于触发有状态的业务流程协调程序和实体函数。 由于业务流程协调程序和实体函数实例是有状态的单一实例，无法使用竞争性使用者模型在 VM 之间分配负载。 业务流程协调程序和实体消息会在控制队列之间进行负载均衡。 后续部分将会更详细地介绍此行为。
+Durable Functions 中的每个任务中心有多个控制队列。 与较为简单的工作项队列相比，控制队列更加复杂。 控制队列用于触发有状态的业务流程协调程序和实体函数。 由于业务流程协调程序和实体函数实例是有状态的单一实例，无法使用竞争性使用者模型在 VM 之间分配负载。 业务流程协调程序和实体消息会在控制队列之间进行负载均衡。 后续部分将会更详细地介绍此行为。
 
-控制队列包含各种业务流程生命周期消息类型。 示例包括[业务流程协调程序控制消息](durable-functions-instance-management.md)、活动函数响应消息和计时器消息。  在单次轮询中，最多会从一个控制队列中取消 32 条消息的排队。 这些消息包含有效负载数据以及元数据，包括适用的业务流程实例。 如果将多个取消排队的消息用于同一业务流程实例，将会批处理这些消息。
+控制队列包含各种业务流程生命周期消息类型。 示例包括[业务流程协调程序控制消息](durable-functions-instance-management.md)、活动函数响应消息和计时器消息。 在单次轮询中，最多会从一个控制队列中取消 32 条消息的排队。 这些消息包含有效负载数据以及元数据，包括适用的业务流程实例。 如果将多个取消排队的消息用于同一业务流程实例，将会批处理这些消息。
 
 ### <a name="queue-polling"></a>队列轮询
 
@@ -52,6 +52,13 @@ Durable Task 扩展实现了随机指数退让算法，以降低空闲队列轮�
 
 > [!NOTE]
 > 在 Azure Functions 消耗计划中运行时，[Azure Functions 缩放控制器](../functions-scale.md#how-the-consumption-plans-work)每隔 10 秒就会轮询每个控件和工作项队列一次。 若要确定何时激活函数应用实例并进行缩放决策，这种额外的轮询是必需的。 在撰写本文时，这种 10 秒的时间间隔为常量，不能进行配置。
+
+### <a name="orchestration-start-delays"></a>业务流程启动延迟
+通过在某个任务中心的控制队列中放置 `ExecutionStarted` 消息来启动业务流程实例。 在某些情况下，你可能会观察到计划的业务流程运行时间与它实际开始运行的时间之间存在数秒延迟。 在此时间间隔内，业务流程实例仍处于 `Pending` 状态。 造成这种延迟的潜在原因有两个：
+
+1. 积压的控制队列：如果此实例的控制队列包含大量消息，则运行时可能需要一段时间才能接收并处理 `ExecutionStarted` 消息。 当业务流程同时处理大量事件时，可能会出现消息积压。 进入控制队列的事件包括业务流程启动事件、活动完成、持久计时器、终止和外部事件。 如果在正常情况下发生此延迟，请考虑创建具有大量分区的新任务中心。 配置更多分区会使运行时创建更多用于分配负载的控制队列。
+
+2. 回退轮询延迟：业务流程延迟的另一个常见原因是之[前所说的控制队列的回退轮询行为](#queue-polling)。 但是，仅当应用横向扩展到两个或更多实例时，才会出现这种延迟。 如果只有一个应用实例，或启动业务流程的应用实例与轮询目标控制队列的是同一个实例，则不会出现队列轮询延迟。 如前所述，可以通过更新 host.json 设置来减少回退轮询延迟。
 
 ## <a name="storage-account-selection"></a>存储帐户的选择
 
@@ -87,7 +94,7 @@ Durable Task 扩展实现了随机指数退让算法，以降低空闲队列轮�
 
 ## <a name="orchestrator-scale-out"></a>业务流程协调程序横向扩展
 
-活动函数是无状态的，可通过添加 VM 自动进行横向扩展。 另一方面，业务流程协调程序函数和实体已在一个或多个控制队列中分区。  控制队列的数目在 **host.json** 文件中定义。 以下示例 host.json 片段将 `durableTask/storageProvider/partitionCount` 属性（或 Durable Functions 1.x 中的 `durableTask/partitionCount`）设置为 `3`。
+活动函数是无状态的，可通过添加 VM 自动进行横向扩展。 另一方面，业务流程协调程序函数和实体已在一个或多个控制队列中分区。 控制队列的数目在 **host.json** 文件中定义。 以下示例 host.json 片段将 `durableTask/storageProvider/partitionCount` 属性（或 Durable Functions 1.x 中的 `durableTask/partitionCount`）设置为 `3`。
 
 ### <a name="durable-functions-2x"></a>Durable Functions 2.x
 
@@ -217,7 +224,7 @@ Azure Functions 支持在单个应用实例中并发执行多个函数。 这种
 
 ### <a name="orchestrator-function-replay"></a>业务流程协调程序函数重播
 
-如前所述，业务流程协调程序函数是使用“历史记录”表的内容重播的。  默认情况下，每当从控制队列中取消一批消息的排队时，都会重播业务流程协调程序函数代码。 即使你使用扇出、扇入模式并等待所有任务完成（例如，在 .NET 中使用 `Task.WhenAll` 或在 JavaScript 中使用 `context.df.Task.all`），也会在一段时间内处理成批任务响应时发生重播。 启用扩展会话后，业务流程协调程序函数实例将在内存中保存更长时间，同时，无需重播完整历史记录即可处理新消息。
+如前所述，业务流程协调程序函数是使用“历史记录”表的内容重播的。 默认情况下，每当从控制队列中取消一批消息的排队时，都会重播业务流程协调程序函数代码。 即使你使用扇出、扇入模式并等待所有任务完成（例如，在 .NET 中使用 `Task.WhenAll` 或在 JavaScript 中使用 `context.df.Task.all`），也会在一段时间内处理成批任务响应时发生重播。 启用扩展会话后，业务流程协调程序函数实例将在内存中保存更长时间，同时，无需重播完整历史记录即可处理新消息。
 
 对于以下情况，往往可以观测到扩展会话对性能的改进：
 
@@ -243,12 +250,12 @@ Azure Functions 支持在单个应用实例中并发执行多个函数。 这种
 * **并行活动执行**：此方案描述的业务流程协调程序函数使用[扇出扇入](durable-functions-cloud-backup.md)模式并行执行多个活动函数。
 * **并行响应处理**：此方案是[扇出扇入](durable-functions-cloud-backup.md)模式的后半部分。 它侧重于扇入性能。 必须注意，与扇出不同，扇入是由单个业务流程协调程序函数实例执行的，因此只能在单个 VM 上运行。
 * **外部事件处理**：此方案表示一次等待一个[外部事件](durable-functions-external-events.md)的单个业务流程协调程序函数实例。
-* **实体操作处理**：此方案测试单个[计数器实体](durable-functions-entities.md)处理恒定操作流的速度。 
+* **实体操作处理**：此方案测试单个[计数器实体](durable-functions-entities.md)处理恒定操作流的速度。
 
 > [!TIP]
 > 与扇出不同，扇入操作限制为单个 VM。 如果应用程序使用扇出扇入模式，并且你关注扇入性能，请考虑在多个[子业务流程](durable-functions-sub-orchestrations.md)之间分割活动函数扇出。
 
-下表显示了前面所述方案的预期最大吞吐量数字。  “实例”是指在 Azure 应用服务中单个小型 ([A1](../../virtual-machines/windows/sizes-previous-gen.md#a-series)) VM 上运行的业务流程协调程序函数的单个实例。 在各种情况下，都假设已启用[扩展会话](#orchestrator-function-replay)。 实际结果可能根据函数代码执行的 CPU 或 I/O 工作而异。
+下表显示了前面所述方案的预期最大吞吐量数字。 “实例”是指在 Azure 应用服务中单个小型 ([A1](../../virtual-machines/sizes-previous-gen.md)) VM 上运行的业务流程协调程序函数的单个实例。 在各种情况下，都假设已启用[扩展会话](#orchestrator-function-replay)。 实际结果可能根据函数代码执行的 CPU 或 I/O 工作而异。
 
 | 方案 | 最大吞吐量 |
 |-|-|

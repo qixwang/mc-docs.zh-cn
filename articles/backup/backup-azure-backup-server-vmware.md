@@ -5,13 +5,13 @@ ms.topic: conceptual
 author: Johnnytechn
 origin.date: 12/11/2018
 ms.author: v-johya
-ms.date: 05/11/2020
-ms.openlocfilehash: a0f9e02bf5faa1abe2565de2377bf4e1533ef12c
-ms.sourcegitcommit: 08b42258a48d96d754244064d065e4d5703f1cfb
+ms.date: 06/22/2020
+ms.openlocfilehash: 38a0660cc2e65cc10ed4c8bb4ef8943c0ff9564c
+ms.sourcegitcommit: 372899a2a21794e631eda1c6a11b4fd5c38751d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/18/2020
-ms.locfileid: "83445186"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85852014"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>使用 Azure 备份服务器备份 VMware VM
 
@@ -29,6 +29,10 @@ ms.locfileid: "83445186"
 
 - 验证运行的是否是支持备份的 vCenter/ESXi 版本。 请参阅[此处](/backup/backup-mabs-protection-matrix)的支持矩阵。
 - 确保已设置 Azure 备份服务器。 如果没有，请在开始之前进行[设置](backup-azure-microsoft-azure-backup.md)。 应运行装有最新更新的 Azure 备份服务器。
+- 确保以下网络端口处于打开状态：
+    - MABS 与 vCenter 之间的 TCP 443
+    - MABS 与 ESXi 主机之间的 TCP 443 和 TCP 902
+
 
 ## <a name="create-a-secure-connection-to-the-vcenter-server"></a>与 vCenter 服务器建立安全连接
 
@@ -370,6 +374,21 @@ Azure 备份服务器需要一个有权访问 V-Center 服务器/ESXi 主机的�
 
     ![保护组成员和设置摘要](./media/backup-azure-backup-server-vmware/protection-group-summary.png)
 
+## <a name="vmware-parallel-backups"></a>VMware 并行备份
+
+>[!NOTE]
+> 此功能适用于 MABS V3 UR1。
+
+早期版本的 MABS 仅跨保护组执行并行备份。 借助 MABS V3 UR1，单个保护组中的所有 VMWare VM 备份将并行进行，从而提高 VM 备份速度。 所有 VMWare 增量复制作业将并行运行。 默认情况下，并行运行的作业数设置为 8。
+
+你可以如下所示使用注册表项来修改作业数（默认情况下不存在此注册表项，你需要添加它）：
+
+**注册表项路径**：`Software\Microsoft\Microsoft Data Protection Manager\Configuration\ MaxParallelIncrementalJobs\VMWare`<BR>
+**注册表项类型**：DWORD（32 位）值。
+
+> [!NOTE]
+> 你可以将作业数修改为较高的值。 如果将作业数设置为 1，则复制作业将按顺序运行。 若要将此数量增加到更大的值，则必须考虑 VMWare 性能。 考虑 VMWare vSphere Server 上正在使用的资源数量和所需的额外使用量，并确定要并行运行的增量复制作业的数量。 此外，此更改将仅影响新创建的保护组。 对于现有保护组，你必须临时向保护组中添加另一个 VM。 这会相应地更新保护组配置。 完成此过程后，可以从保护组中删除此 VM。
+
 ## <a name="vmware-vsphere-67"></a>VMWare vSphere 6.7
 
 若要备份 vSphere 6.7，请执行以下操作：
@@ -399,6 +418,126 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319]
 "SystemDefaultTlsVersions"=dword:00000001
 "SchUseStrongCrypto"=dword:00000001
+```
+
+## <a name="exclude-disk-from-vmware-vm-backup"></a>从 VMware VM 备份中排除磁盘
+
+> [!NOTE]
+> 此功能适用于 MABS V3 UR1。
+
+使用 MABS V3 UR1，你可以从 VMware VM 备份中排除特定的磁盘。 配置脚本 **ExcludeDisk.ps1** 位于 `C:\Program Files\Azure Backup Server\DPM\DPM\bin folder` 中。
+
+若要配置磁盘排除，请执行以下步骤：
+
+### <a name="identify-the-vmware-vm-and-disk-details-to-be-excluded"></a>识别要排除的 VMWare VM 和磁盘详细信息
+
+  1. 在 VMware 控制台上，转到你要为其排除磁盘的 VM 设置。
+  2. 选择要排除的磁盘并记下该磁盘的路径。
+
+        例如，从 TestVM4 中排除硬盘 2 时，硬盘 2 的路径是 **[datastore1] TestVM4/TestVM4\_1.vmdk**。
+
+        ![要排除的硬盘](./media/backup-azure-backup-server-vmware/test-vm.png)
+
+### <a name="configure-mabs-server"></a>配置 MABS 服务器
+
+导航到为 VMware VM 配置了保护的 MABS 服务器，以配置磁盘排除。
+
+  1. 获取在 MABS 服务器上受保护的 VMware 主机的详细信息。
+
+        ```powershell
+        $psInfo = get-DPMProductionServer
+        $psInfo
+        ```
+
+        ```output
+        ServerName   ClusterName     Domain            ServerProtectionState
+        ----------   -----------     ------            ---------------------
+        Vcentervm1                   Contoso.COM       NoDatasourcesProtected
+        ```
+
+  2. 选择 VMware 主机，并列出 VMware 主机的 VM 保护。
+
+        ```powershell
+        $vmDsInfo = get-DPMDatasource -ProductionServer $psInfo[0] -Inquire
+        $vmDsInfo
+        ```
+
+        ```output
+        Computer     Name     ObjectType
+        --------     ----     ----------
+        Vcentervm1  TestVM2      VMware
+        Vcentervm1  TestVM1      VMware
+        Vcentervm1  TestVM4      VMware
+        ```
+
+  3. 选择要为其排除磁盘的 VM。
+
+        ```powershell
+        $vmDsInfo[2]
+        ```
+
+        ```output
+        Computer     Name      ObjectType
+        --------     ----      ----------
+        Vcentervm1   TestVM4   VMware
+        ```
+
+  4. 若要排除磁盘，请导航到 `Bin` 文件夹，并使用以下参数运行 *ExcludeDisk.ps1* 脚本：
+
+        > [!NOTE]
+        > 在运行此命令之前，请在 MABS 服务器上停止 DPMRA 服务。 否则，该脚本将返回成功，但不会更新排除列表。 在停止服务之前，请确保没有正在进行的作业。
+
+     **若要在排除中添加/删除磁盘，请运行以下命令：**
+
+      ```powershell
+      ./ExcludeDisk.ps1 -Datasource $vmDsInfo[0] [-Add|Remove] "[Datastore] vmdk/vmdk.vmdk"
+      ```
+
+     **示例**：
+
+     若要为 TestVM4 添加磁盘排除，请运行以下命令：
+
+       ```powershell
+      C:\Program Files\Azure Backup Server\DPM\DPM\bin> ./ExcludeDisk.ps1 -Datasource $vmDsInfo[2] -Add "[datastore1] TestVM4/TestVM4\_1.vmdk"
+       ```
+
+      ```output
+       Creating C:\Program Files\Azure Backup Server\DPM\DPM\bin\excludedisk.xml
+       Disk : [datastore1] TestVM4/TestVM4\_1.vmdk, has been added to disk exclusion list.
+      ```
+
+  5. 验证是否已添加要排除的磁盘。
+
+     **若要查看特定 VM 的现有排除，请运行以下命令：**
+
+        ```powershell
+        ./ExcludeDisk.ps1 -Datasource $vmDsInfo[0] [-view]
+        ```
+
+     **示例**
+
+        ```powershell
+        C:\Program Files\Azure Backup Server\DPM\DPM\bin> ./ExcludeDisk.ps1 -Datasource $vmDsInfo[2] -view
+        ```
+
+        ```output
+        <VirtualMachine>
+        <UUID>52b2b1b6-5a74-1359-a0a5-1c3627c7b96a</UUID>
+        <ExcludeDisk>[datastore1] TestVM4/TestVM4\_1.vmdk</ExcludeDisk>
+        </VirtualMachine>
+        ```
+
+     为此 VM 配置保护后，在保护期间将不会列出已排除的磁盘。
+
+        > [!NOTE]
+        > 如果为已受保护的 VM 执行这些步骤，则需在添要排除的磁盘后手动运行一致性检查。
+
+### <a name="remove-the-disk-from-exclusion"></a>从排除中删除磁盘
+
+若要从排除中删除磁盘，请运行以下命令：
+
+```powershell
+C:\Program Files\Azure Backup Server\DPM\DPM\bin> ./ExcludeDisk.ps1 -Datasource $vmDsInfo[2] -Remove "[datastore1] TestVM4/TestVM4\_1.vmdk"
 ```
 
 ## <a name="next-steps"></a>后续步骤

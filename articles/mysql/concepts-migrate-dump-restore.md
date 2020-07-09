@@ -6,13 +6,13 @@ ms.author: v-jay
 ms.service: mysql
 ms.topic: conceptual
 origin.date: 2/27/2020
-ms.date: 03/16/2020
-ms.openlocfilehash: dbe30340f59f968d9fa5b3b3709ab0b976045ff6
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 06/29/2020
+ms.openlocfilehash: d9d6ae2bf62ab4adb50dbb28c6833aa693952242
+ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79295890"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85516607"
 ---
 # <a name="migrate-your-mysql-database-to-azure-database-for-mysql-using-dump-and-restore"></a>使用转储和还原将 MySQL 数据库迁移到 Azure Database for MySQL
 
@@ -23,7 +23,7 @@ ms.locfileid: "79295890"
 - 从命令行转储和还原（使用 mysqldump） 
 - 使用 PHPMyAdmin 转储和还原 
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 若要逐步执行本操作方法指南，需要具备以下条件：
 - [创建 Azure Database for MySQL 服务器 - Azure 门户](quickstart-create-mysql-server-database-using-azure-portal.md)
 - 已在计算机上安装 [mysqldump](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html) 命令行实用程序。
@@ -87,7 +87,7 @@ $ mysqldump -u root -p --databases testdb1 testdb3 testdb5 > testdb135_backup.sq
 ## <a name="create-a-database-on-the-target-azure-database-for-mysql-server"></a>在 Azure Database for MySQL 目标服务器上创建数据库
 在要迁移数据的 Azure Database for MySQL 目标服务器上创建一个空数据库。 使用 MySQL Workbench 等工具创建数据库。 数据库名称可与包含转储数据的数据库名称相同，或可以创建一个不同名称的数据库。
 
-若要获取连接，请在 Azure Database for MySQL 的“概述”中找到连接信息  。
+若要获取连接，请在 Azure Database for MySQL 的“概述”中找到连接信息。
 
 ![在 Azure 门户中找到连接信息](./media/concepts-migrate-dump-restore/1_server-overview-name-login.png)
 
@@ -95,6 +95,17 @@ $ mysqldump -u root -p --databases testdb1 testdb3 testdb5 > testdb135_backup.sq
 
 ![MySQL Workbench 连接字符串](./media/concepts-migrate-dump-restore/2_setup-new-connection.png)
 
+## <a name="preparing-the-target-azure-database-for-mysql-server-for-fast-data-loads"></a>准备目标 Azure Database for MySQL 服务器以实现快速数据加载
+若要准备目标 Azure Database for MySQL 服务器以实现快速数据加载，需要更改以下服务器参数和配置。
+- max_allowed_packet � 设置为 1073741824（即 1 GB），以防止由于长行而引起的溢出问题。
+- slow_query_log � 设置为“关闭”以关闭慢速查询日志。 这将消除数据加载过程中由慢速查询日志记录导致的开销。
+- query_store_capture_mode � 设置为“无”以关闭查询存储。 这将消除由查询存储的采样活动导致的开销。
+- innodb_buffer_pool_size � 在迁移期间从门户的定价层纵向扩展服务器到 32 vCore 内存优化 SKU，以增大 innodb_buffer_pool_size。 只能通过纵向扩展 Azure Database for MySQL 服务器的计算来增大 innodb_buffer_pool_size。
+- innodb_io_capacity 和 innodb_io_capacity_max - 从 Azure 门户中的服务器参数更改为 9000，以提高 IO 利用率，从而优化迁移速度。
+- innodb_write_io_threads 和 innodb_write_io_threads - 从 Azure 门户中的服务器参数更改为 4 以加快迁移速度。
+- 纵向扩展存储层 � 随着存储层的增加，Azure Database for MySQL 服务器的 IOP 也会逐渐增加。 为了更快地加载，可能需要增加存储层以增加预配的 IOP。 请记住，存储只能纵向扩展，而不能横向扩展。
+
+迁移完成后，可以将服务器参数和计算层配置还原为以前的值。 
 
 ## <a name="restore-your-mysql-database-using-command-line-or-mysql-workbench"></a>使用命令行或 MySQL Workbench 还原 MySQL 数据库
 创建目标数据库后，可以使用 mysql 命令或 MySQL Workbench 将数据从转储文件还原到新创建的特定数据库。
@@ -105,24 +116,23 @@ mysql -h [hostname] -u [uname] -p[pass] [db_to_restore] < [backupfile.sql]
 ```bash
 $ mysql -h mydemoserver.mysql.database.chinacloudapi.cn -u myadmin@mydemoserver -p testdb < testdb_backup.sql
 ```
-
 ## <a name="export-using-phpmyadmin"></a>使用 PHPMyAdmin 进行导出
 若要导出，可以使用可能已安装在本地环境中的常用工具 phpMyAdmin。 使用 PHPMyAdmin 导出 MySQL 数据库：
 1. 打开 phpMyAdmin。
 2. 选择数据库。 单击左侧列表中的数据库名称。 
-3. 单击“导出”  链接。 这将显示一个新页面，可查看数据库转储情况。
-4. 在“导出”区域中，单击“全选”  链接，选择数据库中的表。 
+3. 单击“导出”链接。 这将显示一个新页面，可查看数据库转储情况。
+4. 在“导出”区域中，单击“全选”链接，选择数据库中的表。 
 5. 在 SQL 选项区域中，单击适当的选项。 
-6. 单击“另存为文件”  选项及相应的压缩选项，然后单击“执行”  按钮。 将出现一个对话框，提示在本地保存该文件。
+6. 单击“另存为文件”选项及相应的压缩选项，然后单击“执行”按钮。 将出现一个对话框，提示在本地保存该文件。
 
 ## <a name="import-using-phpmyadmin"></a>使用 PHPMyAdmin 进行导入
 导入数据库的方法与导出类似。 执行以下操作：
 1. 打开 phpMyAdmin。 
-2. 在 phpMyAdmin 设置页中，单击“添加”  可添加 Azure Database for MySQL 服务器。 提供连接详细信息和登录信息。
-3. 创建适当命名的数据库，并在屏幕左侧选中该数据库。 若要重写现有数据库，请单击数据库名称，选中所有表名称旁边的复选框，再选择“删除”  以删除现有表。 
-4. 单击“SQL”  链接，显示可在其中键入 SQL 命令或上传 SQL 文件的页面。 
-5. 使用“浏览”  按钮查找数据库文件。 
-6. 单击“执行”  按钮，导出备份、执行 SQL 命令并重新创建数据库。
+2. 在 phpMyAdmin 设置页中，单击“添加”可添加 Azure Database for MySQL 服务器。 提供连接详细信息和登录信息。
+3. 创建适当命名的数据库，并在屏幕左侧选中该数据库。 若要重写现有数据库，请单击数据库名称，选中所有表名称旁边的复选框，再选择“删除”以删除现有表。 
+4. 单击“SQL”链接，显示可在其中键入 SQL 命令或上传 SQL 文件的页面。 
+5. 使用“浏览”按钮查找数据库文件。 
+6. 单击“执行”按钮，导出备份、执行 SQL 命令并重新创建数据库。
 
 ## <a name="next-steps"></a>后续步骤
 - [将应用程序连接到 Azure Database for MySQL](./howto-connection-string.md)。
