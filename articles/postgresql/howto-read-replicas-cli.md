@@ -5,45 +5,54 @@ author: WenJason
 ms.author: v-jay
 ms.service: postgresql
 ms.topic: conceptual
-origin.date: 01/23/2020
-ms.date: 02/10/2020
-ms.openlocfilehash: 5ef482f87cdd5f0c0f368d131c61a68b1a6cbbed
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+origin.date: 06/09/2020
+ms.date: 07/06/2020
+ms.openlocfilehash: a8a3e73c2f5c4ba62cfd7187b8ac6bf67c0488ed
+ms.sourcegitcommit: 7ea2d04481512e185a60fa3b0f7b0761e3ed7b59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77068377"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85845877"
 ---
 # <a name="create-and-manage-read-replicas-from-the-azure-cli-rest-api"></a>通过 Azure CLI、REST API 创建和管理只读副本
 
 本文介绍如何使用 Azure CLI 和 REST API 在 Azure Database for PostgreSQL 中创建和管理只读副本。 若要详细了解只读副本，请参阅[概述](concepts-read-replicas.md)。
 
+## <a name="azure-replication-support"></a>Azure 复制支持
+[只读副本](concepts-read-replicas.md)和[逻辑解码](concepts-logical.md)都依赖于 Postgres 预写日志 (WAL) 来获取信息。 这两个功能需要来自 Postgres 的不同级别的日志记录。 逻辑解码需要的日志记录的级别比只读副本需要的更高。
+
+若要配置正确的日志记录级别，请使用 Azure 复制支持参数。 Azure 复制支持有三个设置选项：
+
+* 关闭 - 记录到 WAL 中的信息最少。 大多数 Azure Database for PostgreSQL 服务器上都不提供此设置。  
+* 副本 - 详细程度高于“关闭” 。 这是[只读副本](concepts-read-replicas.md)正常工作所需的最低日志记录级别。 此设置是大多数服务器上的默认设置。
+* 逻辑 - 详细程度高于“副本” 。 这是逻辑解码正常工作所需的最低日志记录级别。 使用此设置时，只读副本也可以正常工作。
+
+更改此参数后，需要重新启动服务器。 在内部，此参数设置 Postgres 参数 `wal_level`、`max_replication_slots` 和 `max_wal_senders`。
+
 ## <a name="azure-cli"></a>Azure CLI
 可以使用 Azure CLI 创建和管理只读副本。
 
-### <a name="prerequisites"></a>必备条件
+### <a name="prerequisites"></a>先决条件
 
 - [安装 Azure CLI 2.0](/cli/install-azure-cli?view=azure-cli-latest)
 - 用作主服务器的 [Azure Database for PostgreSQL 服务器](quickstart-create-server-up-azure-cli.md)。
 
 
 ### <a name="prepare-the-master-server"></a>准备主服务器
-必须使用以下步骤在“常规用途”和“内存优化”层中准备主服务器。
 
-主服务器上的 `azure.replication_support` 参数必须设置为 **REPLICA**。 更改此静态参数后，需要重启服务器才能使更改生效。
+1. 检查主服务器的 `azure.replication_support` 值。 该值至少应该是“REPLICA”，只读副本才能正常工作。
 
-1. 将 `azure.replication_support` 设置为 REPLICA。
+   ```azurecli
+   az postgres server configuration show --resource-group myresourcegroup --server-name mydemoserver --name azure.replication_support
+   ```
+
+2. 如果 `azure.replication_support` 并非至少是“REPLICA”，请将其设置为“REPLICA”。 
 
    ```azurecli
    az postgres server configuration set --resource-group myresourcegroup --server-name mydemoserver --name azure.replication_support --value REPLICA
    ```
 
-> [!NOTE]
-> 如果尝试在 Azure CLI 中设置 azure.replication_support 时出现“给定的值无效”错误，则可能是服务器在默认情况下已设置 REPLICA。 Bug 阻止此设置正确反映在 REPLICA 为内部默认值的较新服务器上。 <br><br>
-> 可以跳过“准备主服务器”步骤，转到“创建副本”。 <br><br>
-> 若要确认服务器是否属于此类别，请访问 Azure 门户中服务器的复制页。 在工具栏中，“禁用复制”会灰显，“添加副本”会处于活动状态。
-
-2. 重启服务器以应用更改。
+3. 重启服务器以应用更改。
 
    ```azurecli
    az postgres server restart --name mydemoserver --resource-group myresourcegroup
@@ -57,7 +66,7 @@ ms.locfileid: "77068377"
 | --- | --- | --- |
 | resource-group | myresourcegroup |  要在其中创建副本服务器的资源组。  |
 | name | mydemoserver-replica | 所创建的新副本服务器的名称。 |
-| source-server | mydemoserver | 要从中进行复制的现有主服务器的名称或资源 ID。 |
+| source-server | mydemoserver | 要从中进行复制的现有主服务器的名称或资源 ID。 如果希望副本和主服务器的资源组不同，请使用资源 ID。 |
 
 在下面的 CLI 示例中，副本在主服务器所在的区域中创建。
 
@@ -110,11 +119,14 @@ az postgres server delete --name myserver --resource-group myresourcegroup
 可以使用 [Azure REST API](https://docs.microsoft.com/rest/api/azure/) 创建和管理只读副本。
 
 ### <a name="prepare-the-master-server"></a>准备主服务器
-必须使用以下步骤在“常规用途”和“内存优化”层中准备主服务器。
 
-主服务器上的 `azure.replication_support` 参数必须设置为 **REPLICA**。 更改此静态参数后，需要重启服务器才能使更改生效。
+1. 检查主服务器的 `azure.replication_support` 值。 该值至少应该是“REPLICA”，只读副本才能正常工作。
 
-1. 将 `azure.replication_support` 设置为 REPLICA。
+   ```http
+   GET https://management.chinacloudapi.cn/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/servers/{masterServerName}/configurations/azure.replication_support?api-version=2017-12-01
+   ```
+
+2. 如果 `azure.replication_support` 并非至少是“REPLICA”，请将其设置为“REPLICA”。
 
    ```http
    PUT https://management.chinacloudapi.cn/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/servers/{masterServerName}/configurations/azure.replication_support?api-version=2017-12-01
